@@ -21,13 +21,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Object containing other custom data.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionEventsDataInnerCustomData   {
-  @JsonProperty("currency")
-  private String currency;
+  @JsonProperty("content_brand")
+  private String contentBrand;
 
-  @JsonProperty("value")
-  private String value;
+  @JsonProperty("content_category")
+  private String contentCategory;
 
   @JsonProperty("content_ids")
   
@@ -36,65 +36,74 @@ public class ConversionEventsDataInnerCustomData   {
   @JsonProperty("content_name")
   private String contentName;
 
-  @JsonProperty("content_category")
-  private String contentCategory;
-
-  @JsonProperty("content_brand")
-  private String contentBrand;
-
   @JsonProperty("contents")
   
   private List<ConversionEventsDataInnerCustomDataContentsInner> contents = null;
 
-  @JsonProperty("num_items")
-  private Long numItems;
+  @JsonProperty("currency")
+  private String currency;
 
-  @JsonProperty("order_id")
-  private String orderId;
+  @JsonProperty("external_measurement_id")
+  private String externalMeasurementId;
 
-  @JsonProperty("search_string")
-  private String searchString;
-
-  @JsonProperty("opt_out_type")
-  private String optOutType;
+  @JsonProperty("external_measurement_vendor_id")
+  private Integer externalMeasurementVendorId;
 
   @JsonProperty("np")
   private String np;
 
-  public ConversionEventsDataInnerCustomData currency(String currency) {
-    this.currency = currency;
+  @JsonProperty("num_items")
+  private Long numItems;
+
+  @JsonProperty("opt_out_type")
+  private String optOutType;
+
+  @JsonProperty("order_id")
+  private String orderId;
+
+  @JsonProperty("predicted_ltv")
+  private String predictedLtv;
+
+  @JsonProperty("search_string")
+  private String searchString;
+
+  @JsonProperty("value")
+  private String value;
+
+  public ConversionEventsDataInnerCustomData contentBrand(String contentBrand) {
+    this.contentBrand = contentBrand;
     return this;
   }
 
   /**
-   * The ISO-4217 currency code. If not provided, we will default to the advertiser's currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.
-   * @return currency
+   * The brand of the content associated with the event.
+   * @return contentBrand
    */
-  @ApiModelProperty(example = "USD", value = "The ISO-4217 currency code. If not provided, we will default to the advertiser's currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.")
-  public String getCurrency() {
-    return currency;
+  @ApiModelProperty(example = "pinterest-brand", value = "The brand of the content associated with the event.")
+  public String getContentBrand() {
+    return contentBrand;
   }
 
-  public void setCurrency(String currency) {
-    this.currency = currency;
+  public void setContentBrand(String contentBrand) {
+    this.contentBrand = contentBrand;
   }
 
-  public ConversionEventsDataInnerCustomData value(String value) {
-    this.value = value;
+  public ConversionEventsDataInnerCustomData contentCategory(String contentCategory) {
+    this.contentCategory = contentCategory;
     return this;
   }
 
   /**
-   * Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.
-   * @return value
+   * The category of the content associated with the event.
+   * @return contentCategory
    */
-  @ApiModelProperty(example = "72.39", value = "Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.")
-  public String getValue() {
-    return value;
+  @ApiModelProperty(example = "shirts", value = "The category of the content associated with the event.")
+  public String getContentCategory() {
+    return contentCategory;
   }
 
-  public void setValue(String value) {
-    this.value = value;
+  public void setContentCategory(String contentCategory) {
+    this.contentCategory = contentCategory;
   }
 
   public ConversionEventsDataInnerCustomData contentIds(List<String> contentIds) {
@@ -114,7 +123,7 @@ public class ConversionEventsDataInnerCustomData   {
    * List of products IDs. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
    * @return contentIds
    */
-  @ApiModelProperty(example = "[\"red-pinterest-shirt-logo-1\",\"purple-pinterest-shirt-logo-3\"]", value = "List of products IDs. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).")
+  @ApiModelProperty(example = "[\"product-id-001\",\"product-id-002\"]", value = "List of products IDs. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).")
   public List<String> getContentIds() {
     return contentIds;
   }
@@ -141,42 +150,6 @@ public class ConversionEventsDataInnerCustomData   {
     this.contentName = contentName;
   }
 
-  public ConversionEventsDataInnerCustomData contentCategory(String contentCategory) {
-    this.contentCategory = contentCategory;
-    return this;
-  }
-
-  /**
-   * The category of the content associated with the event.
-   * @return contentCategory
-   */
-  @ApiModelProperty(example = "shirts", value = "The category of the content associated with the event.")
-  public String getContentCategory() {
-    return contentCategory;
-  }
-
-  public void setContentCategory(String contentCategory) {
-    this.contentCategory = contentCategory;
-  }
-
-  public ConversionEventsDataInnerCustomData contentBrand(String contentBrand) {
-    this.contentBrand = contentBrand;
-    return this;
-  }
-
-  /**
-   * The brand of the content associated with the event.
-   * @return contentBrand
-   */
-  @ApiModelProperty(example = "pinterest-brand", value = "The brand of the content associated with the event.")
-  public String getContentBrand() {
-    return contentBrand;
-  }
-
-  public void setContentBrand(String contentBrand) {
-    this.contentBrand = contentBrand;
-  }
-
   public ConversionEventsDataInnerCustomData contents(List<ConversionEventsDataInnerCustomDataContentsInner> contents) {
     this.contents = contents;
     return this;
@@ -194,7 +167,7 @@ public class ConversionEventsDataInnerCustomData   {
    * A list of objects containing information about products, such as price and quantity. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
    * @return contents
    */
-  @ApiModelProperty(value = "A list of objects containing information about products, such as price and quantity. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).")
+  @ApiModelProperty(example = "[{\"id\":\"product-id-001\",\"item_price\":\"14.99\",\"quantity\":3,\"item_name\":\"pinterest-shirt-girl\",\"item_category\":\"pinterest-clothing-shirts\",\"item_brand\":\"pinterest\"},{\"id\":\"product-id-002\",\"item_price\":\"13.71\",\"quantity\":2,\"item_name\":\"pinterest-shirt-men\",\"item_category\":\"pinterest-clothing-shirts\",\"item_brand\":\"pinterest\"}]", value = "A list of objects containing information about products, such as price and quantity. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).")
   public List<ConversionEventsDataInnerCustomDataContentsInner> getContents() {
     return contents;
   }
@@ -203,76 +176,58 @@ public class ConversionEventsDataInnerCustomData   {
     this.contents = contents;
   }
 
-  public ConversionEventsDataInnerCustomData numItems(Long numItems) {
-    this.numItems = numItems;
+  public ConversionEventsDataInnerCustomData currency(String currency) {
+    this.currency = currency;
     return this;
   }
 
   /**
-   * Total number of products of the event. For example, the total number of items purchased in a checkout event. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
-   * @return numItems
+   * The ISO-4217 currency code. If not provided, we will default to the advertiser's currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.
+   * @return currency
    */
-  @ApiModelProperty(example = "2", value = "Total number of products of the event. For example, the total number of items purchased in a checkout event. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).")
-  public Long getNumItems() {
-    return numItems;
+  @ApiModelProperty(example = "USD", value = "The ISO-4217 currency code. If not provided, we will default to the advertiser's currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.")
+  public String getCurrency() {
+    return currency;
   }
 
-  public void setNumItems(Long numItems) {
-    this.numItems = numItems;
+  public void setCurrency(String currency) {
+    this.currency = currency;
   }
 
-  public ConversionEventsDataInnerCustomData orderId(String orderId) {
-    this.orderId = orderId;
+  public ConversionEventsDataInnerCustomData externalMeasurementId(String externalMeasurementId) {
+    this.externalMeasurementId = externalMeasurementId;
     return this;
   }
 
   /**
-   * The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest.
-   * @return orderId
+   * Only use when instructed.
+   * @return externalMeasurementId
    */
-  @ApiModelProperty(example = "my_order_id", value = "The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest.")
-  public String getOrderId() {
-    return orderId;
+  @ApiModelProperty(example = "rbos-cb7a9e56-4988-4ca0-801b-05c79b29785f", value = "Only use when instructed.")
+  public String getExternalMeasurementId() {
+    return externalMeasurementId;
   }
 
-  public void setOrderId(String orderId) {
-    this.orderId = orderId;
+  public void setExternalMeasurementId(String externalMeasurementId) {
+    this.externalMeasurementId = externalMeasurementId;
   }
 
-  public ConversionEventsDataInnerCustomData searchString(String searchString) {
-    this.searchString = searchString;
+  public ConversionEventsDataInnerCustomData externalMeasurementVendorId(Integer externalMeasurementVendorId) {
+    this.externalMeasurementVendorId = externalMeasurementVendorId;
     return this;
   }
 
   /**
-   * The search string related to the user conversion event.
-   * @return searchString
+   * Only use when instructed.
+   * @return externalMeasurementVendorId
    */
-  @ApiModelProperty(example = "sample string", value = "The search string related to the user conversion event.")
-  public String getSearchString() {
-    return searchString;
+  @ApiModelProperty(example = "1", value = "Only use when instructed.")
+  public Integer getExternalMeasurementVendorId() {
+    return externalMeasurementVendorId;
   }
 
-  public void setSearchString(String searchString) {
-    this.searchString = searchString;
-  }
-
-  public ConversionEventsDataInnerCustomData optOutType(String optOutType) {
-    this.optOutType = optOutType;
-    return this;
-  }
-
-  /**
-   * Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"/docs/api-features/conversion-overview/\" target=\"_blank\">dev site</a> for specific opt_out_type set up.
-   * @return optOutType
-   */
-  @ApiModelProperty(example = "LDP", value = "Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"/docs/api-features/conversion-overview/\" target=\"_blank\">dev site</a> for specific opt_out_type set up.")
-  public String getOptOutType() {
-    return optOutType;
-  }
-
-  public void setOptOutType(String optOutType) {
-    this.optOutType = optOutType;
+  public void setExternalMeasurementVendorId(Integer externalMeasurementVendorId) {
+    this.externalMeasurementVendorId = externalMeasurementVendorId;
   }
 
   public ConversionEventsDataInnerCustomData np(String np) {
@@ -293,6 +248,114 @@ public class ConversionEventsDataInnerCustomData   {
     this.np = np;
   }
 
+  public ConversionEventsDataInnerCustomData numItems(Long numItems) {
+    this.numItems = numItems;
+    return this;
+  }
+
+  /**
+   * Total number of products of the event. For example, the total number of items purchased in a checkout event. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
+   * @return numItems
+   */
+  @ApiModelProperty(example = "5", value = "Total number of products of the event. For example, the total number of items purchased in a checkout event. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).")
+  public Long getNumItems() {
+    return numItems;
+  }
+
+  public void setNumItems(Long numItems) {
+    this.numItems = numItems;
+  }
+
+  public ConversionEventsDataInnerCustomData optOutType(String optOutType) {
+    this.optOutType = optOutType;
+    return this;
+  }
+
+  /**
+   * Flags for different privacy rights laws to opt out users of sharing personal information. Separate values with commas. See the Help Center article about <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">limited data processing</a> and the developer's guide for <a href=\"/docs/track-conversions/track-conversions-in-the-api/#whether-the-user-has-opted-out-of-web-or-offline-conversion-events\" target=\"_blank\">tracking conversion events</a> for help with using this parameter.
+   * @return optOutType
+   */
+  @ApiModelProperty(example = "LDP", value = "Flags for different privacy rights laws to opt out users of sharing personal information. Separate values with commas. See the Help Center article about <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">limited data processing</a> and the developer's guide for <a href=\"/docs/track-conversions/track-conversions-in-the-api/#whether-the-user-has-opted-out-of-web-or-offline-conversion-events\" target=\"_blank\">tracking conversion events</a> for help with using this parameter.")
+  public String getOptOutType() {
+    return optOutType;
+  }
+
+  public void setOptOutType(String optOutType) {
+    this.optOutType = optOutType;
+  }
+
+  public ConversionEventsDataInnerCustomData orderId(String orderId) {
+    this.orderId = orderId;
+    return this;
+  }
+
+  /**
+   * The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest.
+   * @return orderId
+   */
+  @ApiModelProperty(example = "my_order_id", value = "The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest.")
+  public String getOrderId() {
+    return orderId;
+  }
+
+  public void setOrderId(String orderId) {
+    this.orderId = orderId;
+  }
+
+  public ConversionEventsDataInnerCustomData predictedLtv(String predictedLtv) {
+    this.predictedLtv = predictedLtv;
+    return this;
+  }
+
+  /**
+   * Predicted lifetime value of user associated with the event. Accepted as a string in the request; it will be parsed into a double.
+   * @return predictedLtv
+   */
+  @ApiModelProperty(example = "2794.82", value = "Predicted lifetime value of user associated with the event. Accepted as a string in the request; it will be parsed into a double.")
+  public String getPredictedLtv() {
+    return predictedLtv;
+  }
+
+  public void setPredictedLtv(String predictedLtv) {
+    this.predictedLtv = predictedLtv;
+  }
+
+  public ConversionEventsDataInnerCustomData searchString(String searchString) {
+    this.searchString = searchString;
+    return this;
+  }
+
+  /**
+   * The search string related to the user conversion event.
+   * @return searchString
+   */
+  @ApiModelProperty(example = "sample string", value = "The search string related to the user conversion event.")
+  public String getSearchString() {
+    return searchString;
+  }
+
+  public void setSearchString(String searchString) {
+    this.searchString = searchString;
+  }
+
+  public ConversionEventsDataInnerCustomData value(String value) {
+    this.value = value;
+    return this;
+  }
+
+  /**
+   * Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.
+   * @return value
+   */
+  @ApiModelProperty(example = "72.39", value = "Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.")
+  public String getValue() {
+    return value;
+  }
+
+  public void setValue(String value) {
+    this.value = value;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -303,23 +366,26 @@ public class ConversionEventsDataInnerCustomData   {
       return false;
     }
     ConversionEventsDataInnerCustomData conversionEventsDataInnerCustomData = (ConversionEventsDataInnerCustomData) o;
-    return Objects.equals(this.currency, conversionEventsDataInnerCustomData.currency) &&
-        Objects.equals(this.value, conversionEventsDataInnerCustomData.value) &&
+    return Objects.equals(this.contentBrand, conversionEventsDataInnerCustomData.contentBrand) &&
+        Objects.equals(this.contentCategory, conversionEventsDataInnerCustomData.contentCategory) &&
         Objects.equals(this.contentIds, conversionEventsDataInnerCustomData.contentIds) &&
         Objects.equals(this.contentName, conversionEventsDataInnerCustomData.contentName) &&
-        Objects.equals(this.contentCategory, conversionEventsDataInnerCustomData.contentCategory) &&
-        Objects.equals(this.contentBrand, conversionEventsDataInnerCustomData.contentBrand) &&
         Objects.equals(this.contents, conversionEventsDataInnerCustomData.contents) &&
+        Objects.equals(this.currency, conversionEventsDataInnerCustomData.currency) &&
+        Objects.equals(this.externalMeasurementId, conversionEventsDataInnerCustomData.externalMeasurementId) &&
+        Objects.equals(this.externalMeasurementVendorId, conversionEventsDataInnerCustomData.externalMeasurementVendorId) &&
+        Objects.equals(this.np, conversionEventsDataInnerCustomData.np) &&
         Objects.equals(this.numItems, conversionEventsDataInnerCustomData.numItems) &&
-        Objects.equals(this.orderId, conversionEventsDataInnerCustomData.orderId) &&
-        Objects.equals(this.searchString, conversionEventsDataInnerCustomData.searchString) &&
         Objects.equals(this.optOutType, conversionEventsDataInnerCustomData.optOutType) &&
-        Objects.equals(this.np, conversionEventsDataInnerCustomData.np);
+        Objects.equals(this.orderId, conversionEventsDataInnerCustomData.orderId) &&
+        Objects.equals(this.predictedLtv, conversionEventsDataInnerCustomData.predictedLtv) &&
+        Objects.equals(this.searchString, conversionEventsDataInnerCustomData.searchString) &&
+        Objects.equals(this.value, conversionEventsDataInnerCustomData.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(currency, value, contentIds, contentName, contentCategory, contentBrand, contents, numItems, orderId, searchString, optOutType, np);
+    return Objects.hash(contentBrand, contentCategory, contentIds, contentName, contents, currency, externalMeasurementId, externalMeasurementVendorId, np, numItems, optOutType, orderId, predictedLtv, searchString, value);
   }
 
   @Override
@@ -327,18 +393,21 @@ public class ConversionEventsDataInnerCustomData   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionEventsDataInnerCustomData {\n");
     
-    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    contentBrand: ").append(toIndentedString(contentBrand)).append("\n");
+    sb.append("    contentCategory: ").append(toIndentedString(contentCategory)).append("\n");
     sb.append("    contentIds: ").append(toIndentedString(contentIds)).append("\n");
     sb.append("    contentName: ").append(toIndentedString(contentName)).append("\n");
-    sb.append("    contentCategory: ").append(toIndentedString(contentCategory)).append("\n");
-    sb.append("    contentBrand: ").append(toIndentedString(contentBrand)).append("\n");
     sb.append("    contents: ").append(toIndentedString(contents)).append("\n");
-    sb.append("    numItems: ").append(toIndentedString(numItems)).append("\n");
-    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
-    sb.append("    searchString: ").append(toIndentedString(searchString)).append("\n");
-    sb.append("    optOutType: ").append(toIndentedString(optOutType)).append("\n");
+    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
+    sb.append("    externalMeasurementId: ").append(toIndentedString(externalMeasurementId)).append("\n");
+    sb.append("    externalMeasurementVendorId: ").append(toIndentedString(externalMeasurementVendorId)).append("\n");
     sb.append("    np: ").append(toIndentedString(np)).append("\n");
+    sb.append("    numItems: ").append(toIndentedString(numItems)).append("\n");
+    sb.append("    optOutType: ").append(toIndentedString(optOutType)).append("\n");
+    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
+    sb.append("    predictedLtv: ").append(toIndentedString(predictedLtv)).append("\n");
+    sb.append("    searchString: ").append(toIndentedString(searchString)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }

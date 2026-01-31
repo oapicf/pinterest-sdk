@@ -11,7 +11,7 @@ module BusinessAssetPartnersGet200Response =
 
 
   type business_asset_partners_get_200_response = {
-    Items : UserSingleAssetBinding[];
     Bookmark : string option;
+    Items : UserSingleAssetBinding[];
   }
   //#endregion

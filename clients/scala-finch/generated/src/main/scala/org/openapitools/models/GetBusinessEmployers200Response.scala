@@ -10,11 +10,11 @@ import scala.collection.immutable.Seq
 
 /**
  * 
- * @param items List of employers.
  * @param bookmark 
+ * @param items List of employers.
  */
-case class GetBusinessEmployers200Response(items: Seq[UserBusinessRoleBinding],
-                bookmark: Option[String]
+case class GetBusinessEmployers200Response(bookmark: Option[String],
+                items: Seq[UserBusinessRoleBinding]
                 )
 
 object GetBusinessEmployers200Response {

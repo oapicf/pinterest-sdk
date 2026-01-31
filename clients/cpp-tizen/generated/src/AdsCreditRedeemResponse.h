@@ -45,13 +45,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
-	 */
-	bool getSuccess();
-
-	/*! \brief Set Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
-	 */
-	void setSuccess(bool  success);
 	/*! \brief Get Error code type if error occurs
 	 */
 	int getErrorCode();
@@ -66,11 +59,18 @@ public:
 	/*! \brief Set Reason for failure
 	 */
 	void setErrorMessage(std::string  errorMessage);
+	/*! \brief Get Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
+	 */
+	bool getSuccess();
+
+	/*! \brief Set Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
+	 */
+	void setSuccess(bool  success);
 
 private:
-	bool success;
 	int errorCode;
 	std::string errorMessage;
+	bool success;
 	void __init();
 	void __cleanup();
 

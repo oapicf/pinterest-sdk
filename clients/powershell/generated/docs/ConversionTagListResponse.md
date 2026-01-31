@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**ConversionTagResponse[]**](ConversionTagResponse.md) |  | [optional] 
+**Items** | [**ConversionTag[]**](ConversionTag.md) |  | [optional] 
 
 ## Examples
 

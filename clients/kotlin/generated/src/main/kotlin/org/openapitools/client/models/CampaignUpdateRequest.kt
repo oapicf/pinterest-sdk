@@ -15,6 +15,7 @@
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.CampaignBidOptionsUpdate
 import org.openapitools.client.models.EntityStatus
 import org.openapitools.client.models.ObjectiveType
 import org.openapitools.client.models.TrackingUrls
@@ -27,18 +28,20 @@ import com.squareup.moshi.JsonClass
  *
  * @param id Campaign ID.
  * @param adAccountId Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
- * @param name Campaign name.
- * @param status 
- * @param lifetimeSpendCap Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
  * @param dailySpendCap Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
- * @param orderLineId Order line ID that appears on the invoice.
- * @param trackingUrls 
- * @param startTime Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
- * @param endTime Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
- * @param isFlexibleDailyBudgets Determine if a campaign has flexible daily budgets setup.
- * @param defaultAdGroupBudgetInMicroCurrency When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
+ * @param endTime Timestamp in Unix format for scheduling when ads in the campaign stop appearing. Must occur after any end times for child ad groups. If `end_time` is not specified for the campaign, ads run indefinitely unless you update the campaign, changing their status to `paused`. Learn about <a href=\"/docs/api-features/managing-campaigns/#campaign-scheduling\" target=\"blank\">scheduling campaigns</a>. Different end times can be set for the campaign's child ad groups, but they cannot occur after an `end_time` specified for the campaign. - If your campaign has a child ad group with an end time specified, and if you update that campaign with an `end_time` that is earlier than that of the ad group, the campaign `end_time` will supersede the ad group `end_time`, and the request will not return an error. - In this scenario, if you call <a href=\"/docs/api/v5/campaigns-list\" target=\"blank\">List campaigns</a> or <a href=\"/docs/api/v5/ad_groups-list\" target=\"blank\">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.
  * @param isAutomatedCampaign Specifies whether the campaign was created in the automated campaign flow
+ * @param isFlexibleDailyBudgets Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\".
+ * @param lifetimeSpendCap Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
+ * @param name Campaign name.
+ * @param orderLineId Order line ID that appears on the invoice.
+ * @param startTime Timestamp in Unix format for scheduling when ads in the campaign start to appear. Must precede any start times set for child ad groups. Defaults to current time if no time is specified. Learn about <a href=\"/docs/api-features/managing-campaigns/#campaign-scheduling\" target=\"blank\">scheduling campaigns</a>. Different start times can be set for the campaign's child ad groups, but they cannot occur before a `start_time` specified for the campaign. - If your campaign has a child ad group with a start time specified, and if you update that campaign with a `start_time` that is later than that of the ad group, the campaign `start_time` will supersede the ad group `start_time`, and the request will not return an error. - In this scenario, if you call <a href=\"/docs/api/v5/campaigns-list\" target=\"blank\">List campaigns</a> or <a href=\"/docs/api/v5/ad_groups-list\" target=\"blank\">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.
+ * @param status 
+ * @param trackingUrls 
+ * @param defaultAdGroupBudgetInMicroCurrency When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
  * @param isCampaignBudgetOptimization Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
+ * @param bidOptions 
+ * @param isPerformancePlus Enable Pinterest Performance+ for your campaign. To learn more, see <a href=\"https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\">Pinterest Performance+ Setup</a>. This field is immutable, except only for campaigns in draft status which may update this field.
  * @param objectiveType 
  */
 
@@ -53,51 +56,58 @@ data class CampaignUpdateRequest (
     @Json(name = "ad_account_id")
     val adAccountId: kotlin.String,
 
-    /* Campaign name. */
-    @Json(name = "name")
-    val name: kotlin.String? = null,
-
-    @Json(name = "status")
-    val status: EntityStatus? = null,
-
-    /* Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time. */
-    @Json(name = "lifetime_spend_cap")
-    val lifetimeSpendCap: kotlin.Int? = null,
-
     /* Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time. */
     @Json(name = "daily_spend_cap")
     val dailySpendCap: kotlin.Int? = null,
 
-    /* Order line ID that appears on the invoice. */
-    @Json(name = "order_line_id")
-    val orderLineId: kotlin.String? = null,
-
-    @Json(name = "tracking_urls")
-    val trackingUrls: TrackingUrls? = null,
-
-    /* Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. */
-    @Json(name = "start_time")
-    val startTime: kotlin.Int? = null,
-
-    /* Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. */
+    /* Timestamp in Unix format for scheduling when ads in the campaign stop appearing. Must occur after any end times for child ad groups. If `end_time` is not specified for the campaign, ads run indefinitely unless you update the campaign, changing their status to `paused`. Learn about <a href=\"/docs/api-features/managing-campaigns/#campaign-scheduling\" target=\"blank\">scheduling campaigns</a>. Different end times can be set for the campaign's child ad groups, but they cannot occur after an `end_time` specified for the campaign. - If your campaign has a child ad group with an end time specified, and if you update that campaign with an `end_time` that is earlier than that of the ad group, the campaign `end_time` will supersede the ad group `end_time`, and the request will not return an error. - In this scenario, if you call <a href=\"/docs/api/v5/campaigns-list\" target=\"blank\">List campaigns</a> or <a href=\"/docs/api/v5/ad_groups-list\" target=\"blank\">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence. */
     @Json(name = "end_time")
     val endTime: kotlin.Int? = null,
-
-    /* Determine if a campaign has flexible daily budgets setup. */
-    @Json(name = "is_flexible_daily_budgets")
-    val isFlexibleDailyBudgets: kotlin.Boolean? = null,
-
-    /* When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account. */
-    @Json(name = "default_ad_group_budget_in_micro_currency")
-    val defaultAdGroupBudgetInMicroCurrency: kotlin.Int? = null,
 
     /* Specifies whether the campaign was created in the automated campaign flow */
     @Json(name = "is_automated_campaign")
     val isAutomatedCampaign: kotlin.Boolean? = null,
 
+    /* Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\". */
+    @Json(name = "is_flexible_daily_budgets")
+    val isFlexibleDailyBudgets: kotlin.Boolean? = null,
+
+    /* Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time. */
+    @Json(name = "lifetime_spend_cap")
+    val lifetimeSpendCap: kotlin.Int? = null,
+
+    /* Campaign name. */
+    @Json(name = "name")
+    val name: kotlin.String? = null,
+
+    /* Order line ID that appears on the invoice. */
+    @Json(name = "order_line_id")
+    val orderLineId: kotlin.String? = null,
+
+    /* Timestamp in Unix format for scheduling when ads in the campaign start to appear. Must precede any start times set for child ad groups. Defaults to current time if no time is specified. Learn about <a href=\"/docs/api-features/managing-campaigns/#campaign-scheduling\" target=\"blank\">scheduling campaigns</a>. Different start times can be set for the campaign's child ad groups, but they cannot occur before a `start_time` specified for the campaign. - If your campaign has a child ad group with a start time specified, and if you update that campaign with a `start_time` that is later than that of the ad group, the campaign `start_time` will supersede the ad group `start_time`, and the request will not return an error. - In this scenario, if you call <a href=\"/docs/api/v5/campaigns-list\" target=\"blank\">List campaigns</a> or <a href=\"/docs/api/v5/ad_groups-list\" target=\"blank\">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence. */
+    @Json(name = "start_time")
+    val startTime: kotlin.Int? = null,
+
+    @Json(name = "status")
+    val status: EntityStatus? = null,
+
+    @Json(name = "tracking_urls")
+    val trackingUrls: TrackingUrls? = null,
+
+    /* When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account. */
+    @Json(name = "default_ad_group_budget_in_micro_currency")
+    val defaultAdGroupBudgetInMicroCurrency: kotlin.Int? = null,
+
     /* Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared. */
     @Json(name = "is_campaign_budget_optimization")
     val isCampaignBudgetOptimization: kotlin.Boolean? = null,
+
+    @Json(name = "bid_options")
+    val bidOptions: CampaignBidOptionsUpdate? = null,
+
+    /* Enable Pinterest Performance+ for your campaign. To learn more, see <a href=\"https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\">Pinterest Performance+ Setup</a>. This field is immutable, except only for campaigns in draft status which may update this field. */
+    @Json(name = "is_performance_plus")
+    val isPerformancePlus: kotlin.Boolean? = null,
 
     @Json(name = "objective_type")
     val objectiveType: ObjectiveType? = null

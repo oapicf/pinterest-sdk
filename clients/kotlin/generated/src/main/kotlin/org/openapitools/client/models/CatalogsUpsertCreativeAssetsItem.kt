@@ -23,23 +23,23 @@ import com.squareup.moshi.JsonClass
 /**
  * A creative assets item to be upserted.
  *
+ * @param attributes 
  * @param creativeAssetsId The catalog creative assets id in the merchant namespace
  * @param operation 
- * @param attributes 
  */
 
 
 data class CatalogsUpsertCreativeAssetsItem (
+
+    @Json(name = "attributes")
+    val attributes: CatalogsCreativeAssetsAttributes,
 
     /* The catalog creative assets id in the merchant namespace */
     @Json(name = "creative_assets_id")
     val creativeAssetsId: kotlin.String,
 
     @Json(name = "operation")
-    val operation: CatalogsUpsertCreativeAssetsItem.Operation,
-
-    @Json(name = "attributes")
-    val attributes: CatalogsCreativeAssetsAttributes
+    val operation: CatalogsUpsertCreativeAssetsItem.Operation
 
 ) {
 

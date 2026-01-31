@@ -19,8 +19,8 @@
   | {'IMAGE_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   | {'IMAGE_LINK_MISSING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   | {'INVALID_DOMAIN', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
-  | {'ITEMID_MISSING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   | {'ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'ITEMID_MISSING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   | {'LINK_FORMAT_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   | {'LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   | {'LIST_PRICE_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
@@ -49,8 +49,8 @@ openapi_catalogs_item_validation_errors(Fields) ->
             , {'IMAGE_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             , {'IMAGE_LINK_MISSING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             , {'INVALID_DOMAIN', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
-            , {'ITEMID_MISSING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             , {'ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'ITEMID_MISSING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             , {'LINK_FORMAT_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             , {'LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             , {'LIST_PRICE_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }

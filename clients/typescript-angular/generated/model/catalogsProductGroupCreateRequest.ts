@@ -14,17 +14,17 @@ import { CatalogsProductGroupFiltersRequest } from './catalogsProductGroupFilter
  * Request object for creating a product group.
  */
 export interface CatalogsProductGroupCreateRequest { 
-    name: string;
     description?: string | null;
+    /**
+     * Catalog Feed id pertaining to the catalog product group.
+     */
+    feed_id: string;
+    filters: CatalogsProductGroupFiltersRequest;
     /**
      * boolean indicator of whether the product group is being featured or not
      * @deprecated
      */
     is_featured?: boolean;
-    filters: CatalogsProductGroupFiltersRequest;
-    /**
-     * Catalog Feed id pertaining to the catalog product group.
-     */
-    feed_id: string;
+    name: string;
 }
 

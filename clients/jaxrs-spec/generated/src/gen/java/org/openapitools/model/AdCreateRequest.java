@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CreativeType;
+import org.openapitools.model.CustomizableCTAType;
+import org.openapitools.model.DisclosureType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
 import org.openapitools.model.QuizPinData;
@@ -25,7 +27,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("AdCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdCreateRequest   {
   private String adGroupId;
   private String androidDeepLink;
@@ -34,65 +36,20 @@ public class AdCreateRequest   {
   private @Valid List<String> carouselIosDeepLinks;
   private String clickTrackingUrl;
   private CreativeType creativeType;
+  private CustomizableCTAType customizableCtaType;
   private String destinationUrl;
+  private DisclosureType disclosureType;
+  private String disclosureUrl;
+  private GridClickType gridClickType;
   private String iosDeepLink;
   private Boolean isPinDeleted;
   private Boolean isRemovable;
+  private String leadFormId;
   private String name;
+  private QuizPinData quizPinData;
   private EntityStatus status;
   private TrackingUrls trackingUrls;
   private String viewTrackingUrl;
-  private String leadFormId;
-  private GridClickType gridClickType;
-  public enum CustomizableCtaTypeEnum {
-
-    GET_OFFER(String.valueOf("GET_OFFER")), LEARN_MORE(String.valueOf("LEARN_MORE")), ORDER_NOW(String.valueOf("ORDER_NOW")), SHOP_NOW(String.valueOf("SHOP_NOW")), SIGN_UP(String.valueOf("SIGN_UP")), SUBSCRIBE(String.valueOf("SUBSCRIBE")), BUY_NOW(String.valueOf("BUY_NOW")), CONTACT_US(String.valueOf("CONTACT_US")), GET_QUOTE(String.valueOf("GET_QUOTE")), VISIT_SITE(String.valueOf("VISIT_SITE")), APPLY_NOW(String.valueOf("APPLY_NOW")), BOOK_NOW(String.valueOf("BOOK_NOW")), REQUEST_DEMO(String.valueOf("REQUEST_DEMO")), REGISTER_NOW(String.valueOf("REGISTER_NOW")), FIND_A_DEALER(String.valueOf("FIND_A_DEALER")), ADD_TO_CART(String.valueOf("ADD_TO_CART")), WATCH_NOW(String.valueOf("WATCH_NOW")), READ_MORE(String.valueOf("READ_MORE"));
-
-
-    private String value;
-
-    CustomizableCtaTypeEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /**
-     * Convert a String into String, as specified in the
-     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
-     */
-    public static CustomizableCtaTypeEnum fromString(String s) {
-        for (CustomizableCtaTypeEnum b : CustomizableCtaTypeEnum.values()) {
-            // using Objects.toString() to be safe if value type non-object type
-            // because types like 'int' etc. will be auto-boxed
-            if (java.util.Objects.toString(b.value).equals(s)) {
-                return b;
-            }
-        }
-        return null;
-    }
-
-    @JsonCreator
-    public static CustomizableCtaTypeEnum fromValue(String value) {
-        for (CustomizableCtaTypeEnum b : CustomizableCtaTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        return null;
-    }
-}
-
-  private CustomizableCtaTypeEnum customizableCtaType;
-  private QuizPinData quizPinData;
   private String pinId;
 
   public AdCreateRequest() {
@@ -297,6 +254,25 @@ public class AdCreateRequest   {
   }
 
   /**
+   **/
+  public AdCreateRequest customizableCtaType(CustomizableCTAType customizableCtaType) {
+    this.customizableCtaType = customizableCtaType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("customizable_cta_type")
+  public CustomizableCTAType getCustomizableCtaType() {
+    return customizableCtaType;
+  }
+
+  @JsonProperty("customizable_cta_type")
+  public void setCustomizableCtaType(CustomizableCTAType customizableCtaType) {
+    this.customizableCtaType = customizableCtaType;
+  }
+
+  /**
    * Destination URL.
    **/
   public AdCreateRequest destinationUrl(String destinationUrl) {
@@ -314,6 +290,64 @@ public class AdCreateRequest   {
   @JsonProperty("destination_url")
   public void setDestinationUrl(String destinationUrl) {
     this.destinationUrl = destinationUrl;
+  }
+
+  /**
+   **/
+  public AdCreateRequest disclosureType(DisclosureType disclosureType) {
+    this.disclosureType = disclosureType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("disclosure_type")
+  public DisclosureType getDisclosureType() {
+    return disclosureType;
+  }
+
+  @JsonProperty("disclosure_type")
+  public void setDisclosureType(DisclosureType disclosureType) {
+    this.disclosureType = disclosureType;
+  }
+
+  /**
+   * URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
+   **/
+  public AdCreateRequest disclosureUrl(String disclosureUrl) {
+    this.disclosureUrl = disclosureUrl;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.")
+  @JsonProperty("disclosure_url")
+  public String getDisclosureUrl() {
+    return disclosureUrl;
+  }
+
+  @JsonProperty("disclosure_url")
+  public void setDisclosureUrl(String disclosureUrl) {
+    this.disclosureUrl = disclosureUrl;
+  }
+
+  /**
+   **/
+  public AdCreateRequest gridClickType(GridClickType gridClickType) {
+    this.gridClickType = gridClickType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("grid_click_type")
+  public GridClickType getGridClickType() {
+    return gridClickType;
+  }
+
+  @JsonProperty("grid_click_type")
+  public void setGridClickType(GridClickType gridClickType) {
+    this.gridClickType = gridClickType;
   }
 
   /**
@@ -377,6 +411,26 @@ public class AdCreateRequest   {
   }
 
   /**
+   * Lead form ID for lead ad generation.
+   **/
+  public AdCreateRequest leadFormId(String leadFormId) {
+    this.leadFormId = leadFormId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Lead form ID for lead ad generation.")
+  @JsonProperty("lead_form_id")
+   @Pattern(regexp="^(AG)?\\d+$")public String getLeadFormId() {
+    return leadFormId;
+  }
+
+  @JsonProperty("lead_form_id")
+  public void setLeadFormId(String leadFormId) {
+    this.leadFormId = leadFormId;
+  }
+
+  /**
    * Name of the ad - 255 chars max.
    **/
   public AdCreateRequest name(String name) {
@@ -394,6 +448,26 @@ public class AdCreateRequest   {
   @JsonProperty("name")
   public void setName(String name) {
     this.name = name;
+  }
+
+  /**
+   * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
+   **/
+  public AdCreateRequest quizPinData(QuizPinData quizPinData) {
+    this.quizPinData = quizPinData;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.")
+  @JsonProperty("quiz_pin_data")
+  @Valid public QuizPinData getQuizPinData() {
+    return quizPinData;
+  }
+
+  @JsonProperty("quiz_pin_data")
+  public void setQuizPinData(QuizPinData quizPinData) {
+    this.quizPinData = quizPinData;
   }
 
   /**
@@ -455,85 +529,6 @@ public class AdCreateRequest   {
   }
 
   /**
-   * Lead form ID for lead ad generation.
-   **/
-  public AdCreateRequest leadFormId(String leadFormId) {
-    this.leadFormId = leadFormId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Lead form ID for lead ad generation.")
-  @JsonProperty("lead_form_id")
-   @Pattern(regexp="^(AG)?\\d+$")public String getLeadFormId() {
-    return leadFormId;
-  }
-
-  @JsonProperty("lead_form_id")
-  public void setLeadFormId(String leadFormId) {
-    this.leadFormId = leadFormId;
-  }
-
-  /**
-   **/
-  public AdCreateRequest gridClickType(GridClickType gridClickType) {
-    this.gridClickType = gridClickType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("grid_click_type")
-  public GridClickType getGridClickType() {
-    return gridClickType;
-  }
-
-  @JsonProperty("grid_click_type")
-  public void setGridClickType(GridClickType gridClickType) {
-    this.gridClickType = gridClickType;
-  }
-
-  /**
-   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
-   **/
-  public AdCreateRequest customizableCtaType(CustomizableCtaTypeEnum customizableCtaType) {
-    this.customizableCtaType = customizableCtaType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "LEARN_MORE", value = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)")
-  @JsonProperty("customizable_cta_type")
-  public CustomizableCtaTypeEnum getCustomizableCtaType() {
-    return customizableCtaType;
-  }
-
-  @JsonProperty("customizable_cta_type")
-  public void setCustomizableCtaType(CustomizableCtaTypeEnum customizableCtaType) {
-    this.customizableCtaType = customizableCtaType;
-  }
-
-  /**
-   * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
-   **/
-  public AdCreateRequest quizPinData(QuizPinData quizPinData) {
-    this.quizPinData = quizPinData;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.")
-  @JsonProperty("quiz_pin_data")
-  @Valid public QuizPinData getQuizPinData() {
-    return quizPinData;
-  }
-
-  @JsonProperty("quiz_pin_data")
-  public void setQuizPinData(QuizPinData quizPinData) {
-    this.quizPinData = quizPinData;
-  }
-
-  /**
    * Pin ID.
    **/
   public AdCreateRequest pinId(String pinId) {
@@ -570,24 +565,26 @@ public class AdCreateRequest   {
         Objects.equals(this.carouselIosDeepLinks, adCreateRequest.carouselIosDeepLinks) &&
         Objects.equals(this.clickTrackingUrl, adCreateRequest.clickTrackingUrl) &&
         Objects.equals(this.creativeType, adCreateRequest.creativeType) &&
+        Objects.equals(this.customizableCtaType, adCreateRequest.customizableCtaType) &&
         Objects.equals(this.destinationUrl, adCreateRequest.destinationUrl) &&
+        Objects.equals(this.disclosureType, adCreateRequest.disclosureType) &&
+        Objects.equals(this.disclosureUrl, adCreateRequest.disclosureUrl) &&
+        Objects.equals(this.gridClickType, adCreateRequest.gridClickType) &&
         Objects.equals(this.iosDeepLink, adCreateRequest.iosDeepLink) &&
         Objects.equals(this.isPinDeleted, adCreateRequest.isPinDeleted) &&
         Objects.equals(this.isRemovable, adCreateRequest.isRemovable) &&
+        Objects.equals(this.leadFormId, adCreateRequest.leadFormId) &&
         Objects.equals(this.name, adCreateRequest.name) &&
+        Objects.equals(this.quizPinData, adCreateRequest.quizPinData) &&
         Objects.equals(this.status, adCreateRequest.status) &&
         Objects.equals(this.trackingUrls, adCreateRequest.trackingUrls) &&
         Objects.equals(this.viewTrackingUrl, adCreateRequest.viewTrackingUrl) &&
-        Objects.equals(this.leadFormId, adCreateRequest.leadFormId) &&
-        Objects.equals(this.gridClickType, adCreateRequest.gridClickType) &&
-        Objects.equals(this.customizableCtaType, adCreateRequest.customizableCtaType) &&
-        Objects.equals(this.quizPinData, adCreateRequest.quizPinData) &&
         Objects.equals(this.pinId, adCreateRequest.pinId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adGroupId, androidDeepLink, carouselAndroidDeepLinks, carouselDestinationUrls, carouselIosDeepLinks, clickTrackingUrl, creativeType, destinationUrl, iosDeepLink, isPinDeleted, isRemovable, name, status, trackingUrls, viewTrackingUrl, leadFormId, gridClickType, customizableCtaType, quizPinData, pinId);
+    return Objects.hash(adGroupId, androidDeepLink, carouselAndroidDeepLinks, carouselDestinationUrls, carouselIosDeepLinks, clickTrackingUrl, creativeType, customizableCtaType, destinationUrl, disclosureType, disclosureUrl, gridClickType, iosDeepLink, isPinDeleted, isRemovable, leadFormId, name, quizPinData, status, trackingUrls, viewTrackingUrl, pinId);
   }
 
   @Override
@@ -602,18 +599,20 @@ public class AdCreateRequest   {
     sb.append("    carouselIosDeepLinks: ").append(toIndentedString(carouselIosDeepLinks)).append("\n");
     sb.append("    clickTrackingUrl: ").append(toIndentedString(clickTrackingUrl)).append("\n");
     sb.append("    creativeType: ").append(toIndentedString(creativeType)).append("\n");
+    sb.append("    customizableCtaType: ").append(toIndentedString(customizableCtaType)).append("\n");
     sb.append("    destinationUrl: ").append(toIndentedString(destinationUrl)).append("\n");
+    sb.append("    disclosureType: ").append(toIndentedString(disclosureType)).append("\n");
+    sb.append("    disclosureUrl: ").append(toIndentedString(disclosureUrl)).append("\n");
+    sb.append("    gridClickType: ").append(toIndentedString(gridClickType)).append("\n");
     sb.append("    iosDeepLink: ").append(toIndentedString(iosDeepLink)).append("\n");
     sb.append("    isPinDeleted: ").append(toIndentedString(isPinDeleted)).append("\n");
     sb.append("    isRemovable: ").append(toIndentedString(isRemovable)).append("\n");
+    sb.append("    leadFormId: ").append(toIndentedString(leadFormId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    quizPinData: ").append(toIndentedString(quizPinData)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    viewTrackingUrl: ").append(toIndentedString(viewTrackingUrl)).append("\n");
-    sb.append("    leadFormId: ").append(toIndentedString(leadFormId)).append("\n");
-    sb.append("    gridClickType: ").append(toIndentedString(gridClickType)).append("\n");
-    sb.append("    customizableCtaType: ").append(toIndentedString(customizableCtaType)).append("\n");
-    sb.append("    quizPinData: ").append(toIndentedString(quizPinData)).append("\n");
     sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
     sb.append("}");
     return sb.toString();

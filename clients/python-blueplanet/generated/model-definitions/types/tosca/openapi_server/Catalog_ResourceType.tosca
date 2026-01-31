@@ -1,0 +1,57 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server Catalog"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a Catalog"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsType = openapi_server.resourceTypes.CatalogsType
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  Catalog {
+    title = Catalog
+    description = Catalog
+    derivedFrom = Root
+    properties {
+        created_at {
+          type =  string
+          description = ""
+          optional = true
+        }
+        id {
+          type =  string
+          description = "ID of the catalog entity."
+          optional = true
+        }
+        updated_at {
+          type =  string
+          description = ""
+          optional = true
+        }
+        catalog_type {
+          type = CatalogsType
+          description = ""
+          optional = true
+        }
+        name {
+          type =  string
+          description = "A human-friendly name associated to a catalog entity."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  Catalog {
+    title = Catalog
+    description = Catalog
+    implements = openapi_server.resourceTypes.Catalog
+
+  }
+}

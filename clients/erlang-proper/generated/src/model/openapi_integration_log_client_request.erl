@@ -9,8 +9,8 @@
 -export_type([openapi_integration_log_client_request/0]).
 
 -type openapi_integration_log_client_request() ::
-  [ {'method', binary() }
-  | {'host', binary() }
+  [ {'host', binary() }
+  | {'method', binary() }
   | {'path', binary() }
   | {'request_headers', map() }
   | {'response_headers', map() }
@@ -22,8 +22,8 @@ openapi_integration_log_client_request() ->
     openapi_integration_log_client_request([]).
 
 openapi_integration_log_client_request(Fields) ->
-  Default = [ {'method', elements([<<"GET">>, <<"HEAD">>, <<"POST">>, <<"PUT">>, <<"DELETE">>, <<"CONNECT">>, <<"OPTIONS">>, <<"TRACE">>, <<"PATCH">>]) }
-            , {'host', binary() }
+  Default = [ {'host', binary() }
+            , {'method', elements([<<"GET">>, <<"HEAD">>, <<"POST">>, <<"PUT">>, <<"DELETE">>, <<"CONNECT">>, <<"OPTIONS">>, <<"TRACE">>, <<"PATCH">>]) }
             , {'path', binary() }
             , {'request_headers', map() }
             , {'response_headers', map() }

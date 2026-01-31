@@ -10,10 +10,10 @@ module UserWebsiteVerifyRequest =
 
   [<CLIMutable>]
   type UserWebsiteVerifyRequest = {
-    [<JsonProperty(PropertyName = "website")>]
-    Website : string;
     [<JsonProperty(PropertyName = "verification_method")>]
     VerificationMethod : string;
+    [<JsonProperty(PropertyName = "website")>]
+    Website : string;
   }
 
   //#endregion

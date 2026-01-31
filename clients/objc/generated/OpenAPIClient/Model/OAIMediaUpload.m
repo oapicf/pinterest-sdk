@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"mediaId": @"media_id", @"mediaType": @"media_type", @"uploadUrl": @"upload_url", @"uploadParameters": @"upload_parameters" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"mediaId": @"media_id", @"mediaType": @"media_type", @"uploadParameters": @"upload_parameters", @"uploadUrl": @"upload_url" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"mediaId", @"mediaType", @"uploadUrl", @"uploadParameters"];
+  NSArray *optionalProperties = @[@"uploadParameters", @"uploadUrl"];
   return [optionalProperties containsObject:propertyName];
 }
 

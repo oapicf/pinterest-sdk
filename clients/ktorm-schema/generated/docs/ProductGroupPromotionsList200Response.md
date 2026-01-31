@@ -5,18 +5,18 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;ProductGroupPromotionResponseItem&gt;**](ProductGroupPromotionResponseItem.md) |  | 
+**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;ProductGroupPromotion&gt;**](ProductGroupPromotion.md) |  | 
 **bookmark** | bookmark | text |  | **kotlin.String** |  |  [optional]
 
 
-# **Table `ProductGroupPromotionsList200ResponseProductGroupPromotionResponseItem`**
-(mapped from: ProductGroupPromotionsList200ResponseProductGroupPromotionResponseItem)
+# **Table `ProductGroupPromotionsList200ResponseProductGroupPromotion`**
+(mapped from: ProductGroupPromotionsList200ResponseProductGroupPromotion)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 productGroupPromotionsList200Response | productGroupPromotionsList200Response | long | | kotlin.Long | Primary Key | *one*
-productGroupPromotionResponseItem | productGroupPromotionResponseItem | long | | kotlin.Long | Foreign Key | *many*
+productGroupPromotion | productGroupPromotion | long | | kotlin.Long | Foreign Key | *many*
 
 
 

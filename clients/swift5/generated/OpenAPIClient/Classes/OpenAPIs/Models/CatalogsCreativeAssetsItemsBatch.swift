@@ -15,31 +15,31 @@ public struct CatalogsCreativeAssetsItemsBatch: Codable, JSONEncodable, Hashable
 
     /** Id of the catalogs items batch */
     public var batchId: String?
-    /** Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss */
-    public var createdTime: Date?
+    public var catalogType: CatalogsType
     /** Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss */
     public var completedTime: Date?
-    public var status: BatchOperationStatus?
-    public var catalogType: CatalogsType
+    /** Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss */
+    public var createdTime: Date?
     /** Array with the catalogs items processing records part of the catalogs items batch */
     public var items: [CreativeAssetsProcessingRecord]?
+    public var status: BatchOperationStatus?
 
-    public init(batchId: String? = nil, createdTime: Date? = nil, completedTime: Date? = nil, status: BatchOperationStatus? = nil, catalogType: CatalogsType, items: [CreativeAssetsProcessingRecord]? = nil) {
+    public init(batchId: String? = nil, catalogType: CatalogsType, completedTime: Date? = nil, createdTime: Date? = nil, items: [CreativeAssetsProcessingRecord]? = nil, status: BatchOperationStatus? = nil) {
         self.batchId = batchId
-        self.createdTime = createdTime
-        self.completedTime = completedTime
-        self.status = status
         self.catalogType = catalogType
+        self.completedTime = completedTime
+        self.createdTime = createdTime
         self.items = items
+        self.status = status
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case batchId = "batch_id"
-        case createdTime = "created_time"
-        case completedTime = "completed_time"
-        case status
         case catalogType = "catalog_type"
+        case completedTime = "completed_time"
+        case createdTime = "created_time"
         case items
+        case status
     }
 
     // Encodable protocol methods
@@ -47,11 +47,11 @@ public struct CatalogsCreativeAssetsItemsBatch: Codable, JSONEncodable, Hashable
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(batchId, forKey: .batchId)
-        try container.encodeIfPresent(createdTime, forKey: .createdTime)
-        try container.encodeIfPresent(completedTime, forKey: .completedTime)
-        try container.encodeIfPresent(status, forKey: .status)
         try container.encode(catalogType, forKey: .catalogType)
+        try container.encodeIfPresent(completedTime, forKey: .completedTime)
+        try container.encodeIfPresent(createdTime, forKey: .createdTime)
         try container.encodeIfPresent(items, forKey: .items)
+        try container.encodeIfPresent(status, forKey: .status)
     }
 }
 

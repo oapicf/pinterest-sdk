@@ -76,7 +76,7 @@ Cancel membership/partnership invites and/or requests.
 //import org.openapitools.client.api.BusinessAccessInviteApi;
 
 BusinessAccessInviteApi apiInstance = new BusinessAccessInviteApi();
-String businessId = 729090764583391194; // String | Business id
+String businessId = 729090764583391194; // String | Unique identifier of the requesting business.
 CancelInvitesBody cancelInvitesBody = new CancelInvitesBody(); // CancelInvitesBody | A list with invite ids
 try {
     DeleteInvitesResultsResponseArray result = apiInstance.cancelInvitesOrRequests(businessId, cancelInvitesBody);
@@ -92,7 +92,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **businessId** | **String**| Business id | [default to null]
+ **businessId** | **String**| Unique identifier of the requesting business. | [default to null]
  **cancelInvitesBody** | [**CancelInvitesBody**](CancelInvitesBody.md)| A list with invite ids |
 
 ### Return type
@@ -172,7 +172,7 @@ Create batch invites or requests. Can create batch invites or requests as descri
 //import org.openapitools.client.api.BusinessAccessInviteApi;
 
 BusinessAccessInviteApi apiInstance = new BusinessAccessInviteApi();
-String businessId = 729090764583391194; // String | Business id
+String businessId = 729090764583391194; // String | Unique identifier of the requesting business.
 CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody = new CreateMembershipOrPartnershipInvitesBody(); // CreateMembershipOrPartnershipInvitesBody | An object with the properties: invite_type, partners, members, business_role
 try {
     CreateInvitesResultsResponseArray result = apiInstance.createMembershipOrPartnershipInvites(businessId, createMembershipOrPartnershipInvitesBody);
@@ -188,7 +188,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **businessId** | **String**| Business id | [default to null]
+ **businessId** | **String**| Unique identifier of the requesting business. | [default to null]
  **createMembershipOrPartnershipInvitesBody** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md)| An object with the properties: invite_type, partners, members, business_role |
 
 ### Return type

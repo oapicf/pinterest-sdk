@@ -11,8 +11,8 @@ module AdsAnalyticsCreateAsyncResponse =
 
 
   type AdsAnalyticsCreateAsyncResponse = {
+    Message : string option;
     ReportStatus : BulkReportingJobStatus;
     Token : string;
-    Message : string option;
   }
   //#endregion

@@ -21,12 +21,12 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("DeletePartnerAssetAccessBody_accesses_inner")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class DeletePartnerAssetAccessBodyAccessesInner {
 
-  private String partnerId;
-
   private String assetId;
+
+  private String partnerId;
 
   /**
    * If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset.
@@ -72,28 +72,8 @@ public class DeletePartnerAssetAccessBodyAccessesInner {
   /**
    * Constructor with only required parameters
    */
-  public DeletePartnerAssetAccessBodyAccessesInner(String partnerId, String assetId) {
-    this.partnerId = partnerId;
+  public DeletePartnerAssetAccessBodyAccessesInner(String assetId, String partnerId) {
     this.assetId = assetId;
-  }
-
-  public DeletePartnerAssetAccessBodyAccessesInner partnerId(String partnerId) {
-    this.partnerId = partnerId;
-    return this;
-  }
-
-  /**
-   * Unique identifier of a business partner to update asset access to.
-   * @return partnerId
-   */
-  @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 25) 
-  @Schema(name = "partner_id", example = "1234567890123", description = "Unique identifier of a business partner to update asset access to.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("partner_id")
-  public String getPartnerId() {
-    return partnerId;
-  }
-
-  public void setPartnerId(String partnerId) {
     this.partnerId = partnerId;
   }
 
@@ -115,6 +95,26 @@ public class DeletePartnerAssetAccessBodyAccessesInner {
 
   public void setAssetId(String assetId) {
     this.assetId = assetId;
+  }
+
+  public DeletePartnerAssetAccessBodyAccessesInner partnerId(String partnerId) {
+    this.partnerId = partnerId;
+    return this;
+  }
+
+  /**
+   * Unique identifier of a business partner to update asset access to.
+   * @return partnerId
+   */
+  @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 25) 
+  @Schema(name = "partner_id", example = "1234567890123", description = "Unique identifier of a business partner to update asset access to.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("partner_id")
+  public String getPartnerId() {
+    return partnerId;
+  }
+
+  public void setPartnerId(String partnerId) {
+    this.partnerId = partnerId;
   }
 
   public DeletePartnerAssetAccessBodyAccessesInner partnerType(PartnerTypeEnum partnerType) {
@@ -146,22 +146,22 @@ public class DeletePartnerAssetAccessBodyAccessesInner {
       return false;
     }
     DeletePartnerAssetAccessBodyAccessesInner deletePartnerAssetAccessBodyAccessesInner = (DeletePartnerAssetAccessBodyAccessesInner) o;
-    return Objects.equals(this.partnerId, deletePartnerAssetAccessBodyAccessesInner.partnerId) &&
-        Objects.equals(this.assetId, deletePartnerAssetAccessBodyAccessesInner.assetId) &&
+    return Objects.equals(this.assetId, deletePartnerAssetAccessBodyAccessesInner.assetId) &&
+        Objects.equals(this.partnerId, deletePartnerAssetAccessBodyAccessesInner.partnerId) &&
         Objects.equals(this.partnerType, deletePartnerAssetAccessBodyAccessesInner.partnerType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(partnerId, assetId, partnerType);
+    return Objects.hash(assetId, partnerId, partnerType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DeletePartnerAssetAccessBodyAccessesInner {\n");
-    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("    assetId: ").append(toIndentedString(assetId)).append("\n");
+    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("    partnerType: ").append(toIndentedString(partnerType)).append("\n");
     sb.append("}");
     return sb.toString();

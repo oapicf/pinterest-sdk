@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.ImageMetadata;
-import org.openapitools.model.PinMedia;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -23,11 +22,66 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Pin with multiple images.")
 @JsonTypeName("PinMediaWithImages")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class PinMediaWithImages extends PinMedia  {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+public class PinMediaWithImages   {
   private @Valid List<@Valid ImageMetadata> items = new ArrayList<>();
+  public enum MediaTypeEnum {
+
+    MULTIPLE_IMAGES(String.valueOf("multiple_images"));
+
+
+    private String value;
+
+    MediaTypeEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    /**
+     * Convert a String into String, as specified in the
+     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
+     */
+    public static MediaTypeEnum fromString(String s) {
+        for (MediaTypeEnum b : MediaTypeEnum.values()) {
+            // using Objects.toString() to be safe if value type non-object type
+            // because types like 'int' etc. will be auto-boxed
+            if (java.util.Objects.toString(b.value).equals(s)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
+    }
+
+    @JsonCreator
+    public static MediaTypeEnum fromValue(String value) {
+        for (MediaTypeEnum b : MediaTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+  private MediaTypeEnum mediaType;
 
   public PinMediaWithImages() {
+  }
+
+  @JsonCreator
+  public PinMediaWithImages(
+    @JsonProperty(required = true, value = "media_type") MediaTypeEnum mediaType
+  ) {
+    this.mediaType = mediaType;
   }
 
   /**
@@ -65,6 +119,25 @@ public class PinMediaWithImages extends PinMedia  {
 
     return this;
   }
+  /**
+   **/
+  public PinMediaWithImages mediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "media_type")
+  @NotNull public MediaTypeEnum getMediaType() {
+    return mediaType;
+  }
+
+  @JsonProperty(required = true, value = "media_type")
+  public void setMediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -76,20 +149,21 @@ public class PinMediaWithImages extends PinMedia  {
     }
     PinMediaWithImages pinMediaWithImages = (PinMediaWithImages) o;
     return Objects.equals(this.items, pinMediaWithImages.items) &&
-        super.equals(o);
+        Objects.equals(this.mediaType, pinMediaWithImages.mediaType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, super.hashCode());
+    return Objects.hash(items, mediaType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaWithImages {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

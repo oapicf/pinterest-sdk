@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 Create lead form test data
 
-Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.
 
 ### Example
 ```swift
@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 
 Create lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’ s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
 
 ### Example
 ```swift
@@ -132,7 +132,7 @@ Create lead forms
 import OpenAPIClient
 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
-let leadFormCreateRequest = [LeadFormCreateRequest(name: "name_example", privacyPolicyLink: "privacyPolicyLink_example", hasAcceptedTerms: false, completionMessage: "completionMessage_example", status: LeadFormStatus(), disclosureLanguage: "disclosureLanguage_example", questions: [LeadFormQuestion(questionType: LeadFormQuestionType(), customQuestionFieldType: LeadFormQuestionFieldType(), customQuestionLabel: "customQuestionLabel_example", customQuestionOptions: ["customQuestionOptions_example"])], policyLinks: [LeadFormCommon_policy_links_inner(label: "label_example", link: "link_example")])] // [LeadFormCreateRequest] | List of lead forms to create, size limit [1, 30].
+let leadFormCreateRequest = [LeadFormCreateRequest(completionMessage: "completionMessage_example", disclosureLanguage: "disclosureLanguage_example", hasAcceptedTerms: false, name: "name_example", policyLinks: [LeadFormCommon_policy_links_inner(label: "label_example", link: "link_example")], privacyPolicyLink: "privacyPolicyLink_example", questions: [LeadFormQuestion(customQuestionFieldType: LeadFormQuestionFieldType(), customQuestionLabel: "customQuestionLabel_example", customQuestionOptions: ["customQuestionOptions_example"], questionType: LeadFormQuestionType())], status: LeadFormStatus())] // [LeadFormCreateRequest] | List of lead forms to create, size limit [1, 30].
 
 // Create lead forms
 LeadFormsAPI.leadFormsCreate(adAccountId: adAccountId, leadFormCreateRequest: leadFormCreateRequest) { (response, error) in
@@ -240,7 +240,7 @@ Update lead forms
 import OpenAPIClient
 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
-let leadFormUpdateRequest = [LeadFormUpdateRequest(name: "name_example", privacyPolicyLink: "privacyPolicyLink_example", hasAcceptedTerms: false, completionMessage: "completionMessage_example", status: LeadFormStatus(), disclosureLanguage: "disclosureLanguage_example", questions: [LeadFormQuestion(questionType: LeadFormQuestionType(), customQuestionFieldType: LeadFormQuestionFieldType(), customQuestionLabel: "customQuestionLabel_example", customQuestionOptions: ["customQuestionOptions_example"])], policyLinks: [LeadFormCommon_policy_links_inner(label: "label_example", link: "link_example")], id: "id_example")] // [LeadFormUpdateRequest] | List of lead forms to update, size limit [1, 30].
+let leadFormUpdateRequest = [LeadFormUpdateRequest(completionMessage: "completionMessage_example", disclosureLanguage: "disclosureLanguage_example", hasAcceptedTerms: false, name: "name_example", policyLinks: [LeadFormCommon_policy_links_inner(label: "label_example", link: "link_example")], privacyPolicyLink: "privacyPolicyLink_example", questions: [LeadFormQuestion(customQuestionFieldType: LeadFormQuestionFieldType(), customQuestionLabel: "customQuestionLabel_example", customQuestionOptions: ["customQuestionOptions_example"], questionType: LeadFormQuestionType())], status: LeadFormStatus(), id: "id_example")] // [LeadFormUpdateRequest] | List of lead forms to update, size limit [1, 30].
 
 // Update lead forms
 LeadFormsAPI.leadFormsUpdate(adAccountId: adAccountId, leadFormUpdateRequest: leadFormUpdateRequest) { (response, error) in

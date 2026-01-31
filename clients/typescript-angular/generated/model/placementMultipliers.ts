@@ -21,7 +21,8 @@ export interface PlacementMultipliers {
 export namespace PlacementMultipliers {
     export const PLACEMENTEnum = {
         Search: 'SEARCH',
-        Browse: 'BROWSE'
+        Browse: 'BROWSE',
+        RelatedPins: 'RELATED_PINS'
     } as const;
     export type PLACEMENTEnum = typeof PLACEMENTEnum[keyof typeof PLACEMENTEnum];
 }

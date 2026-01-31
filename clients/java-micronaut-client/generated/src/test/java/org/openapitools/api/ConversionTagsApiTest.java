@@ -1,11 +1,12 @@
 package org.openapitools.api;
 
 import org.openapitools.model.ConversionEventResponse;
+import org.openapitools.model.ConversionTag;
 import org.openapitools.model.ConversionTagCreate;
-import org.openapitools.model.ConversionTagListResponse;
-import org.openapitools.model.ConversionTagResponse;
+import org.openapitools.model.ConversionTagsList200Response;
 import org.openapitools.model.Error;
 import org.openapitools.model.PageVisitConversionTagsGet200Response;
+import org.openapitools.model.PinterestLibError;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -31,17 +32,17 @@ public class ConversionTagsApiTest {
     /**
      * Create conversion tag
      *
-     * Create a conversion tag, also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Pinterest tag&lt;/a&gt;, with the option to enable enhanced match.&lt;p/&gt; The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.&lt;p/&gt; For more information, see:&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot;&gt;Set up the Pinterest tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/\&quot;&gt;Pinterest Tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/#enhanced-match\&quot;&gt;Enhanced match&lt;/a&gt;
+     * Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account&#39;s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
      */
     @Test
     @Disabled("Not Implemented")
     public void conversionTagsCreateTest() {
         // given
         String adAccountId = "example";
-        ConversionTagCreate conversionTagCreate = new ConversionTagCreate();
+        ConversionTagCreate conversionTagCreate = new ConversionTagCreate("ACME Checkout Test Tag");
 
         // when
-        ConversionTagResponse body = api.conversionTagsCreate(adAccountId, conversionTagCreate).block();
+        ConversionTag body = api.conversionTagsCreate(adAccountId, conversionTagCreate).block();
 
         // then
         // TODO implement the conversionTagsCreateTest()
@@ -61,7 +62,7 @@ public class ConversionTagsApiTest {
         String conversionTagId = "2617998078212";
 
         // when
-        ConversionTagResponse body = api.conversionTagsGet(adAccountId, conversionTagId).block();
+        ConversionTag body = api.conversionTagsGet(adAccountId, conversionTagId).block();
 
         // then
         // TODO implement the conversionTagsGetTest()
@@ -69,7 +70,7 @@ public class ConversionTagsApiTest {
 
     
     /**
-     * Get conversion tags
+     * List conversion tags
      *
      * List conversion tags associated with an ad account.
      */
@@ -81,7 +82,7 @@ public class ConversionTagsApiTest {
         Boolean filterDeleted = false;
 
         // when
-        ConversionTagListResponse body = api.conversionTagsList(adAccountId, filterDeleted).block();
+        ConversionTagsList200Response body = api.conversionTagsList(adAccountId, filterDeleted).block();
 
         // then
         // TODO implement the conversionTagsListTest()

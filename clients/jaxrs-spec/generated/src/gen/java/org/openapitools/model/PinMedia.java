@@ -5,6 +5,18 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.ImageSize;
+import org.openapitools.model.PinMediaMetadata;
+import org.openapitools.model.PinMediaWithImage;
+import org.openapitools.model.PinMediaWithImageAndVideo;
+import org.openapitools.model.PinMediaWithImages;
+import org.openapitools.model.PinMediaWithVideo;
+import org.openapitools.model.PinMediaWithVideos;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -25,36 +37,250 @@ import org.openapitools.jackson.nullable.JsonNullable;
   @JsonSubTypes.Type(value = PinMediaWithVideo.class, name = "video"),
 })
 /**
- * Pin media objects.
+ * Pin media that can be an image, video, or a mix of both.
  **/
-@ApiModel(description = "Pin media objects.")
+@ApiModel(description = "Pin media that can be an image, video, or a mix of both.")
 @JsonTypeName("PinMedia")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinMedia   {
-  private String mediaType;
+  private ImageSize images;
+  public enum MediaTypeEnum {
+
+    MULTIPLE_MIXED(String.valueOf("multiple_mixed"));
+
+
+    private String value;
+
+    MediaTypeEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    /**
+     * Convert a String into String, as specified in the
+     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
+     */
+    public static MediaTypeEnum fromString(String s) {
+        for (MediaTypeEnum b : MediaTypeEnum.values()) {
+            // using Objects.toString() to be safe if value type non-object type
+            // because types like 'int' etc. will be auto-boxed
+            if (java.util.Objects.toString(b.value).equals(s)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected string value '" + s + "'");
+    }
+
+    @JsonCreator
+    public static MediaTypeEnum fromValue(String value) {
+        for (MediaTypeEnum b : MediaTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+  private MediaTypeEnum mediaType;
+  private String coverImageUrl;
+  private BigDecimal duration;
+  private Integer height;
+  private String videoUrl;
+  private Integer width;
+  private @Valid List<PinMediaMetadata> items = new ArrayList<>();
 
   public PinMedia() {
   }
 
+  @JsonCreator
+  public PinMedia(
+    @JsonProperty(required = true, value = "media_type") MediaTypeEnum mediaType
+  ) {
+    this.mediaType = mediaType;
+  }
+
   /**
    **/
-  public PinMedia mediaType(String mediaType) {
-    this.mediaType = mediaType;
+  public PinMedia images(ImageSize images) {
+    this.images = images;
     return this;
   }
 
   
   @ApiModelProperty(value = "")
-  @JsonProperty("media_type")
-  public String getMediaType() {
+  @JsonProperty("images")
+  @Valid public ImageSize getImages() {
+    return images;
+  }
+
+  @JsonProperty("images")
+  public void setImages(ImageSize images) {
+    this.images = images;
+  }
+
+  /**
+   **/
+  public PinMedia mediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "media_type")
+  @NotNull public MediaTypeEnum getMediaType() {
     return mediaType;
   }
 
-  @JsonProperty("media_type")
-  public void setMediaType(String mediaType) {
+  @JsonProperty(required = true, value = "media_type")
+  public void setMediaType(MediaTypeEnum mediaType) {
     this.mediaType = mediaType;
   }
 
+  /**
+   **/
+  public PinMedia coverImageUrl(String coverImageUrl) {
+    this.coverImageUrl = coverImageUrl;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("cover_image_url")
+  public String getCoverImageUrl() {
+    return coverImageUrl;
+  }
+
+  @JsonProperty("cover_image_url")
+  public void setCoverImageUrl(String coverImageUrl) {
+    this.coverImageUrl = coverImageUrl;
+  }
+
+  /**
+   * Duration (in miliseconds). Field maybe null after creation due to video processing time.
+   **/
+  public PinMedia duration(BigDecimal duration) {
+    this.duration = duration;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Duration (in miliseconds). Field maybe null after creation due to video processing time.")
+  @JsonProperty("duration")
+  @Valid public BigDecimal getDuration() {
+    return duration;
+  }
+
+  @JsonProperty("duration")
+  public void setDuration(BigDecimal duration) {
+    this.duration = duration;
+  }
+
+  /**
+   * Height (in pixels). Field maybe null after creation due to video processing time.
+   **/
+  public PinMedia height(Integer height) {
+    this.height = height;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Height (in pixels). Field maybe null after creation due to video processing time.")
+  @JsonProperty("height")
+  public Integer getHeight() {
+    return height;
+  }
+
+  @JsonProperty("height")
+  public void setHeight(Integer height) {
+    this.height = height;
+  }
+
+  /**
+   * Video url (720p).  **Note:** This field is limited and not available to all apps.
+   **/
+  public PinMedia videoUrl(String videoUrl) {
+    this.videoUrl = videoUrl;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Video url (720p).  **Note:** This field is limited and not available to all apps.")
+  @JsonProperty("video_url")
+  public String getVideoUrl() {
+    return videoUrl;
+  }
+
+  @JsonProperty("video_url")
+  public void setVideoUrl(String videoUrl) {
+    this.videoUrl = videoUrl;
+  }
+
+  /**
+   * Width (in pixels). Field maybe null after creation due to video processing time.
+   **/
+  public PinMedia width(Integer width) {
+    this.width = width;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Width (in pixels). Field maybe null after creation due to video processing time.")
+  @JsonProperty("width")
+  public Integer getWidth() {
+    return width;
+  }
+
+  @JsonProperty("width")
+  public void setWidth(Integer width) {
+    this.width = width;
+  }
+
+  /**
+   **/
+  public PinMedia items(List<PinMediaMetadata> items) {
+    this.items = items;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("items")
+  @Valid public List<@Valid PinMediaMetadata> getItems() {
+    return items;
+  }
+
+  @JsonProperty("items")
+  public void setItems(List<PinMediaMetadata> items) {
+    this.items = items;
+  }
+
+  public PinMedia addItemsItem(PinMediaMetadata itemsItem) {
+    if (this.items == null) {
+      this.items = new ArrayList<>();
+    }
+
+    this.items.add(itemsItem);
+    return this;
+  }
+
+  public PinMedia removeItemsItem(PinMediaMetadata itemsItem) {
+    if (itemsItem != null && this.items != null) {
+      this.items.remove(itemsItem);
+    }
+
+    return this;
+  }
 
   @Override
   public boolean equals(Object o) {
@@ -65,12 +291,19 @@ public class PinMedia   {
       return false;
     }
     PinMedia pinMedia = (PinMedia) o;
-    return Objects.equals(this.mediaType, pinMedia.mediaType);
+    return Objects.equals(this.images, pinMedia.images) &&
+        Objects.equals(this.mediaType, pinMedia.mediaType) &&
+        Objects.equals(this.coverImageUrl, pinMedia.coverImageUrl) &&
+        Objects.equals(this.duration, pinMedia.duration) &&
+        Objects.equals(this.height, pinMedia.height) &&
+        Objects.equals(this.videoUrl, pinMedia.videoUrl) &&
+        Objects.equals(this.width, pinMedia.width) &&
+        Objects.equals(this.items, pinMedia.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(mediaType);
+    return Objects.hash(images, mediaType, coverImageUrl, duration, height, videoUrl, width, items);
   }
 
   @Override
@@ -78,7 +311,14 @@ public class PinMedia   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMedia {\n");
     
+    sb.append("    images: ").append(toIndentedString(images)).append("\n");
     sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
+    sb.append("    coverImageUrl: ").append(toIndentedString(coverImageUrl)).append("\n");
+    sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
+    sb.append("    height: ").append(toIndentedString(height)).append("\n");
+    sb.append("    videoUrl: ").append(toIndentedString(videoUrl)).append("\n");
+    sb.append("    width: ").append(toIndentedString(width)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

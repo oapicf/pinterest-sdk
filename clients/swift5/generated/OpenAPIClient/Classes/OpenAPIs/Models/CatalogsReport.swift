@@ -17,21 +17,21 @@ public struct CatalogsReport: Codable, JSONEncodable, Hashable {
         case inProgress = "IN_PROGRESS"
     }
     public var reportStatus: ReportStatus?
-    /** URL to download the report */
-    public var url: String?
     /** Size of the report in bytes */
     public var size: Double?
+    /** URL to download the report */
+    public var url: String?
 
-    public init(reportStatus: ReportStatus? = nil, url: String? = nil, size: Double? = nil) {
+    public init(reportStatus: ReportStatus? = nil, size: Double? = nil, url: String? = nil) {
         self.reportStatus = reportStatus
-        self.url = url
         self.size = size
+        self.url = url
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case reportStatus = "report_status"
-        case url
         case size
+        case url
     }
 
     // Encodable protocol methods
@@ -39,8 +39,8 @@ public struct CatalogsReport: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(reportStatus, forKey: .reportStatus)
-        try container.encodeIfPresent(url, forKey: .url)
         try container.encodeIfPresent(size, forKey: .size)
+        try container.encodeIfPresent(url, forKey: .url)
     }
 }
 

@@ -9,20 +9,29 @@ import org.openapitools.vertxweb.server.model.ConversionTagType;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ConversionEventResponse   {
   
+  private String adAccountId;
   private ConversionTagType conversionEvent;
   private String conversionTagId;
-  private String adAccountId;
   private Integer createdTime;
 
   public ConversionEventResponse () {
 
   }
 
-  public ConversionEventResponse (ConversionTagType conversionEvent, String conversionTagId, String adAccountId, Integer createdTime) {
+  public ConversionEventResponse (String adAccountId, ConversionTagType conversionEvent, String conversionTagId, Integer createdTime) {
+    this.adAccountId = adAccountId;
     this.conversionEvent = conversionEvent;
     this.conversionTagId = conversionTagId;
-    this.adAccountId = adAccountId;
     this.createdTime = createdTime;
+  }
+
+    
+  @JsonProperty("ad_account_id")
+  public String getAdAccountId() {
+    return adAccountId;
+  }
+  public void setAdAccountId(String adAccountId) {
+    this.adAccountId = adAccountId;
   }
 
     
@@ -44,15 +53,6 @@ public class ConversionEventResponse   {
   }
 
     
-  @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
-    return adAccountId;
-  }
-  public void setAdAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
-  }
-
-    
   @JsonProperty("created_time")
   public Integer getCreatedTime() {
     return createdTime;
@@ -71,15 +71,15 @@ public class ConversionEventResponse   {
       return false;
     }
     ConversionEventResponse conversionEventResponse = (ConversionEventResponse) o;
-    return Objects.equals(conversionEvent, conversionEventResponse.conversionEvent) &&
+    return Objects.equals(adAccountId, conversionEventResponse.adAccountId) &&
+        Objects.equals(conversionEvent, conversionEventResponse.conversionEvent) &&
         Objects.equals(conversionTagId, conversionEventResponse.conversionTagId) &&
-        Objects.equals(adAccountId, conversionEventResponse.adAccountId) &&
         Objects.equals(createdTime, conversionEventResponse.createdTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(conversionEvent, conversionTagId, adAccountId, createdTime);
+    return Objects.hash(adAccountId, conversionEvent, conversionTagId, createdTime);
   }
 
   @Override
@@ -87,9 +87,9 @@ public class ConversionEventResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionEventResponse {\n");
     
+    sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    conversionEvent: ").append(toIndentedString(conversionEvent)).append("\n");
     sb.append("    conversionTagId: ").append(toIndentedString(conversionTagId)).append("\n");
-    sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("}");
     return sb.toString();

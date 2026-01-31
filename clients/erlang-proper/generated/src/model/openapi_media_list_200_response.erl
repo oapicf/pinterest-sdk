@@ -9,8 +9,8 @@
 -export_type([openapi_media_list_200_response/0]).
 
 -type openapi_media_list_200_response() ::
-  [ {'items', list(openapi_media_upload_details:openapi_media_upload_details()) }
-  | {'bookmark', binary() }
+  [ {'bookmark', binary() }
+  | {'items', list(openapi_media:openapi_media()) }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_media_list_200_response() ->
     openapi_media_list_200_response([]).
 
 openapi_media_list_200_response(Fields) ->
-  Default = [ {'items', list(openapi_media_upload_details:openapi_media_upload_details()) }
-            , {'bookmark', binary() }
+  Default = [ {'bookmark', binary() }
+            , {'items', list(openapi_media:openapi_media()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

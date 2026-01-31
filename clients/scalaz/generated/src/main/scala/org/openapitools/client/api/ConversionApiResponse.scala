@@ -12,12 +12,12 @@ import org.joda.time.DateTime
 import ConversionApiResponse._
 
 case class ConversionApiResponse (
-  /* Total number of events received in the request. */
-  numEventsReceived: Integer,
+  /* Specific messages for each event received. The order will match the order in which the events were received in the request. */
+  events: List[ConversionApiResponseEventsInner],
 /* Number of events that were successfully processed from the events. */
   numEventsProcessed: Integer,
-/* Specific messages for each event received. The order will match the order in which the events were received in the request. */
-  events: List[ConversionApiResponseEventsInner])
+/* Total number of events received in the request. */
+  numEventsReceived: Integer)
 
 object ConversionApiResponse {
   import DateTimeCodecs._

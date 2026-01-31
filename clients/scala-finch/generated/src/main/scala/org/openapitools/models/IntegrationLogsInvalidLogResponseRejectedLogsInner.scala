@@ -8,15 +8,15 @@ import org.openapitools._
 
 /**
  * 
- * @param logUnderscoreindex Index of the log in the batch.
  * @param field The field name containing an invalid value.
- * @param value The value that is invalid.
+ * @param logUnderscoreindex Index of the log in the batch.
  * @param reason The reason the value is invalid.
+ * @param value The value that is invalid.
  */
-case class IntegrationLogsInvalidLogResponseRejectedLogsInner(logUnderscoreindex: Option[Int],
-                field: String,
-                value: String,
-                reason: String
+case class IntegrationLogsInvalidLogResponseRejectedLogsInner(field: String,
+                logUnderscoreindex: Option[Int],
+                reason: String,
+                value: String
                 )
 
 object IntegrationLogsInvalidLogResponseRejectedLogsInner {

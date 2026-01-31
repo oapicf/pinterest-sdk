@@ -16,11 +16,6 @@ void main() {
   // final instance = BulkUpsertRequestUpdate();
 
   group('test BulkUpsertRequestUpdate', () {
-    // List<CampaignUpdateRequest> campaigns (default value: const [])
-    test('to test the property `campaigns`', () async {
-      // TODO
-    });
-
     // List<AdGroupUpdateRequest> adGroups (default value: const [])
     test('to test the property `adGroups`', () async {
       // TODO
@@ -31,13 +26,28 @@ void main() {
       // TODO
     });
 
-    // List<ProductGroupPromotionUpdateRequest> productGroups (default value: const [])
-    test('to test the property `productGroups`', () async {
+    // List<CampaignUpdateRequest> campaigns (default value: const [])
+    test('to test the property `campaigns`', () async {
+      // TODO
+    });
+
+    // List<CatalogsProductGroupsUpdateRequest> catalogProductGroups (default value: const [])
+    test('to test the property `catalogProductGroups`', () async {
       // TODO
     });
 
     // List<KeywordUpdate> keywords (default value: const [])
     test('to test the property `keywords`', () async {
+      // TODO
+    });
+
+    // List<LabelBulkUpdateRequest> labels (default value: const [])
+    test('to test the property `labels`', () async {
+      // TODO
+    });
+
+    // List<ProductGroupPromotionUpdateRequest> productGroups (default value: const [])
+    test('to test the property `productGroups`', () async {
       // TODO
     });
 

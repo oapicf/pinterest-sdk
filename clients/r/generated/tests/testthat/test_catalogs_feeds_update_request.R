@@ -5,6 +5,13 @@ context("Test CatalogsFeedsUpdateRequest")
 
 model_instance <- CatalogsFeedsUpdateRequest$new()
 
+test_that("credentials", {
+  # tests for the property `credentials` (CatalogsFeedCredentials)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`credentials`, "EXPECTED_RESULT")
+})
+
 test_that("default_availability", {
   # tests for the property `default_availability` (ProductAvailabilityType)
 
@@ -19,26 +26,11 @@ test_that("default_currency", {
   #expect_equal(model.instance$`default_currency`, "EXPECTED_RESULT")
 })
 
-test_that("name", {
-  # tests for the property `name` (character)
-  # A human-friendly name associated to a given feed.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
-})
-
 test_that("format", {
   # tests for the property `format` (CatalogsFormat)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`format`, "EXPECTED_RESULT")
-})
-
-test_that("credentials", {
-  # tests for the property `credentials` (CatalogsFeedCredentials)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`credentials`, "EXPECTED_RESULT")
 })
 
 test_that("location", {
@@ -47,6 +39,14 @@ test_that("location", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`location`, "EXPECTED_RESULT")
+})
+
+test_that("name", {
+  # tests for the property `name` (character)
+  # A human-friendly name associated to a given feed.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
 })
 
 test_that("preferred_processing_schedule", {

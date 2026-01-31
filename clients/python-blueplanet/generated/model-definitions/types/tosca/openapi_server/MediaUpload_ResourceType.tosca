@@ -1,0 +1,53 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server MediaUpload"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a MediaUpload"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  MediaUploadParameters = openapi_server.resourceTypes.MediaUploadParameters
+  MediaUploadType = openapi_server.resourceTypes.MediaUploadType
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  MediaUpload {
+    title = MediaUpload
+    description = MediaUpload
+    derivedFrom = Root
+    properties {
+        media_id {
+          type =  string
+          description = "Unique identifier for this media upload. Used to track status and for attaching during Pin creation."
+          optional = true
+        }
+        media_type {
+          type = MediaUploadType
+          description = ""
+          optional = true
+        }
+        upload_parameters {
+          type = MediaUploadParameters
+          description = "The list of parameter key/value pairs you will need to send with your POST request to upload your media file."
+          optional = false
+        }
+        upload_url {
+          type =  string
+          description = "The URL where you will POST your media file."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  MediaUpload {
+    title = MediaUpload
+    description = MediaUpload
+    implements = openapi_server.resourceTypes.MediaUpload
+
+  }
+}

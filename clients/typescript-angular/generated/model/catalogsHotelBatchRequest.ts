@@ -15,20 +15,20 @@ import { CatalogsHotelBatchItem } from './catalogsHotelBatchItem';
  * Request object to update catalogs hotel items
  */
 export interface CatalogsHotelBatchRequest { 
+    /**
+     * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+     */
+    catalog_id?: string;
     catalog_type: CatalogsHotelBatchRequest.CatalogTypeEnum;
     country: Country;
-    /**
-     * We recommend using the CatalogsLocale values.
-     */
-    language: CatalogsHotelBatchRequest.LanguageEnum;
     /**
      * Array with catalogs item operations
      */
     items: Array<CatalogsHotelBatchItem>;
     /**
-     * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+     * We recommend using the CatalogsLocale values.
      */
-    catalog_id?: string;
+    language: CatalogsHotelBatchRequest.LanguageEnum;
 }
 export namespace CatalogsHotelBatchRequest {
     export const CatalogTypeEnum = {

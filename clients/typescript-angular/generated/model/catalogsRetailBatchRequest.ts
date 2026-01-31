@@ -15,16 +15,20 @@ import { Country } from './country';
  * A request object that can have multiple operations on a single retail batch
  */
 export interface CatalogsRetailBatchRequest { 
+    /**
+     * Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
+     */
+    catalog_id?: string;
     catalog_type: CatalogsRetailBatchRequest.CatalogTypeEnum;
     country: Country;
-    /**
-     * We recommend using the CatalogsLocale values.
-     */
-    language: CatalogsRetailBatchRequest.LanguageEnum;
     /**
      * Array with catalogs item operations
      */
     items: Array<CatalogsRetailBatchRequestItemsInner>;
+    /**
+     * We recommend using the CatalogsLocale values.
+     */
+    language: CatalogsRetailBatchRequest.LanguageEnum;
 }
 export namespace CatalogsRetailBatchRequest {
     export const CatalogTypeEnum = {

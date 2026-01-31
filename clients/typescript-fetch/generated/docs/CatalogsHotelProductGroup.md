@@ -6,14 +6,15 @@
 
 Name | Type
 ------------ | -------------
+`catalogId` | string
 `catalogType` | string
-`id` | string
-`name` | string
+`createdAt` | number
 `description` | string
 `filters` | [CatalogsHotelProductGroupFilters](CatalogsHotelProductGroupFilters.md)
-`createdAt` | number
+`id` | string
+`name` | string
+`type` | [CatalogsHotelProductGroupType](CatalogsHotelProductGroupType.md)
 `updatedAt` | number
-`catalogId` | string
 
 ## Example
 
@@ -22,14 +23,15 @@ import type { CatalogsHotelProductGroup } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "catalogId": null,
   "catalogType": null,
-  "id": 443727193917,
-  "name": Most Popular,
+  "createdAt": 1621350033000,
   "description": null,
   "filters": null,
-  "createdAt": 1621350033000,
+  "id": 443727193917,
+  "name": Most Popular,
+  "type": null,
   "updatedAt": 1622742155000,
-  "catalogId": null,
 } satisfies CatalogsHotelProductGroup
 
 console.log(example)

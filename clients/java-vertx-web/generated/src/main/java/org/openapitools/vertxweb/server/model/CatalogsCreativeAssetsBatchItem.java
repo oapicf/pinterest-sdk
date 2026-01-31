@@ -16,6 +16,7 @@ import org.openapitools.vertxweb.server.model.CatalogsUpsertCreativeAssetsItem;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsCreativeAssetsBatchItem   {
   
+  private CatalogsUpdatableCreativeAssetsAttributes attributes;
   private String creativeAssetsId;
 
 
@@ -36,15 +37,23 @@ public class CatalogsCreativeAssetsBatchItem   {
   }
 
   private OperationEnum operation;
-  private CatalogsUpdatableCreativeAssetsAttributes attributes;
 
   public CatalogsCreativeAssetsBatchItem () {
 
   }
 
-  public CatalogsCreativeAssetsBatchItem (String creativeAssetsId, OperationEnum operation, CatalogsUpdatableCreativeAssetsAttributes attributes) {
+  public CatalogsCreativeAssetsBatchItem (CatalogsUpdatableCreativeAssetsAttributes attributes, String creativeAssetsId, OperationEnum operation) {
+    this.attributes = attributes;
     this.creativeAssetsId = creativeAssetsId;
     this.operation = operation;
+  }
+
+    
+  @JsonProperty("attributes")
+  public CatalogsUpdatableCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(CatalogsUpdatableCreativeAssetsAttributes attributes) {
     this.attributes = attributes;
   }
 
@@ -66,15 +75,6 @@ public class CatalogsCreativeAssetsBatchItem   {
     this.operation = operation;
   }
 
-    
-  @JsonProperty("attributes")
-  public CatalogsUpdatableCreativeAssetsAttributes getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(CatalogsUpdatableCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -85,14 +85,14 @@ public class CatalogsCreativeAssetsBatchItem   {
       return false;
     }
     CatalogsCreativeAssetsBatchItem catalogsCreativeAssetsBatchItem = (CatalogsCreativeAssetsBatchItem) o;
-    return Objects.equals(creativeAssetsId, catalogsCreativeAssetsBatchItem.creativeAssetsId) &&
-        Objects.equals(operation, catalogsCreativeAssetsBatchItem.operation) &&
-        Objects.equals(attributes, catalogsCreativeAssetsBatchItem.attributes);
+    return Objects.equals(attributes, catalogsCreativeAssetsBatchItem.attributes) &&
+        Objects.equals(creativeAssetsId, catalogsCreativeAssetsBatchItem.creativeAssetsId) &&
+        Objects.equals(operation, catalogsCreativeAssetsBatchItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(creativeAssetsId, operation, attributes);
+    return Objects.hash(attributes, creativeAssetsId, operation);
   }
 
   @Override
@@ -100,9 +100,9 @@ public class CatalogsCreativeAssetsBatchItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsBatchItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

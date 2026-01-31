@@ -20,10 +20,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Object uniquely identifying a retail catalog item")
 @JsonTypeName("AdvancedAuctionItemsGetRecord")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionItemsGetRecord   {
-  private String itemId;
   private Country country;
+  private String itemId;
   private Language language;
 
   public AdvancedAuctionItemsGetRecord() {
@@ -31,13 +31,32 @@ public class AdvancedAuctionItemsGetRecord   {
 
   @JsonCreator
   public AdvancedAuctionItemsGetRecord(
-    @JsonProperty(required = true, value = "item_id") String itemId,
     @JsonProperty(required = true, value = "country") Country country,
+    @JsonProperty(required = true, value = "item_id") String itemId,
     @JsonProperty(required = true, value = "language") Language language
   ) {
-    this.itemId = itemId;
     this.country = country;
+    this.itemId = itemId;
     this.language = language;
+  }
+
+  /**
+   **/
+  public AdvancedAuctionItemsGetRecord country(Country country) {
+    this.country = country;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "country")
+  @NotNull public Country getCountry() {
+    return country;
+  }
+
+  @JsonProperty(required = true, value = "country")
+  public void setCountry(Country country) {
+    this.country = country;
   }
 
   /**
@@ -58,25 +77,6 @@ public class AdvancedAuctionItemsGetRecord   {
   @JsonProperty(required = true, value = "item_id")
   public void setItemId(String itemId) {
     this.itemId = itemId;
-  }
-
-  /**
-   **/
-  public AdvancedAuctionItemsGetRecord country(Country country) {
-    this.country = country;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "country")
-  @NotNull public Country getCountry() {
-    return country;
-  }
-
-  @JsonProperty(required = true, value = "country")
-  public void setCountry(Country country) {
-    this.country = country;
   }
 
   /**
@@ -108,14 +108,14 @@ public class AdvancedAuctionItemsGetRecord   {
       return false;
     }
     AdvancedAuctionItemsGetRecord advancedAuctionItemsGetRecord = (AdvancedAuctionItemsGetRecord) o;
-    return Objects.equals(this.itemId, advancedAuctionItemsGetRecord.itemId) &&
-        Objects.equals(this.country, advancedAuctionItemsGetRecord.country) &&
+    return Objects.equals(this.country, advancedAuctionItemsGetRecord.country) &&
+        Objects.equals(this.itemId, advancedAuctionItemsGetRecord.itemId) &&
         Objects.equals(this.language, advancedAuctionItemsGetRecord.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, country, language);
+    return Objects.hash(country, itemId, language);
   }
 
   @Override
@@ -123,8 +123,8 @@ public class AdvancedAuctionItemsGetRecord   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvancedAuctionItemsGetRecord {\n");
     
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();

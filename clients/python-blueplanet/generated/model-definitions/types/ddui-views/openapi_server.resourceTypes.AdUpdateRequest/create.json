@@ -1,0 +1,39 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "ad_group_id" },
+      {"model": "android_deep_link" },
+      {"model": "carousel_android_deep_links" },
+      {"model": "carousel_destination_urls" },
+      {"model": "carousel_ios_deep_links" },
+      {"model": "click_tracking_url" },
+      {"model": "creative_type" },
+      {"model": "customizable_cta_type" },
+      {"model": "destination_url" },
+      {"model": "disclosure_type" },
+      {"model": "disclosure_url" },
+      {"model": "grid_click_type" },
+      {"model": "ios_deep_link" },
+      {"model": "is_pin_deleted" },
+      {"model": "is_removable" },
+      {"model": "lead_form_id" },
+      {"model": "name" },
+      {"model": "quiz_pin_data" },
+      {"model": "status" },
+      {"model": "tracking_urls" },
+      {"model": "view_tracking_url" },
+      {"model": "id" },
+      {"model": "pin_id" },
+    ]
+  }]
+}

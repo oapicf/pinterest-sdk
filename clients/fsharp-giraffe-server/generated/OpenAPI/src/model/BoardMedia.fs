@@ -9,7 +9,7 @@ module BoardMedia =
   //#region BoardMedia
 
 
-  type Board_media = {
+  type BoardMedia = {
     ImageCoverUrl : string option;
     PinThumbnailUrls : string[];
   }

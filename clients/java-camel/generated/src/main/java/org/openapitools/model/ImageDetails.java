@@ -18,14 +18,14 @@ import javax.annotation.Generated;
  * ImageDetails
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ImageDetails {
 
-  private Integer width;
-
-  private JsonNullable<@Min(value = 100) Integer> height = JsonNullable.<Integer>undefined();
+  private JsonNullable<Integer> height = JsonNullable.<Integer>undefined();
 
   private String url;
+
+  private JsonNullable<Integer> width = JsonNullable.<Integer>undefined();
 
   public ImageDetails() {
     super();
@@ -34,31 +34,10 @@ public class ImageDetails {
   /**
    * Constructor with only required parameters
    */
-  public ImageDetails(Integer width, Integer height, String url) {
-    this.width = width;
+  public ImageDetails(Integer height, String url, Integer width) {
     this.height = JsonNullable.of(height);
     this.url = url;
-  }
-
-  public ImageDetails width(Integer width) {
-    this.width = width;
-    return this;
-  }
-
-  /**
-   * Get width
-   * minimum: 100
-   * @return width
-   */
-  @NotNull @Min(value = 100) 
-  @Schema(name = "width", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("width")
-  public Integer getWidth() {
-    return width;
-  }
-
-  public void setWidth(Integer width) {
-    this.width = width;
+    this.width = JsonNullable.of(width);
   }
 
   public ImageDetails height(Integer height) {
@@ -68,13 +47,12 @@ public class ImageDetails {
 
   /**
    * Get height
-   * minimum: 100
    * @return height
    */
-  @NotNull @Min(value = 100) 
+  @NotNull 
   @Schema(name = "height", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("height")
-  public JsonNullable<@Min(value = 100) Integer> getHeight() {
+  public JsonNullable<Integer> getHeight() {
     return height;
   }
 
@@ -102,6 +80,26 @@ public class ImageDetails {
     this.url = url;
   }
 
+  public ImageDetails width(Integer width) {
+    this.width = JsonNullable.of(width);
+    return this;
+  }
+
+  /**
+   * Get width
+   * @return width
+   */
+  @NotNull 
+  @Schema(name = "width", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("width")
+  public JsonNullable<Integer> getWidth() {
+    return width;
+  }
+
+  public void setWidth(JsonNullable<Integer> width) {
+    this.width = width;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -111,23 +109,23 @@ public class ImageDetails {
       return false;
     }
     ImageDetails imageDetails = (ImageDetails) o;
-    return Objects.equals(this.width, imageDetails.width) &&
-        Objects.equals(this.height, imageDetails.height) &&
-        Objects.equals(this.url, imageDetails.url);
+    return Objects.equals(this.height, imageDetails.height) &&
+        Objects.equals(this.url, imageDetails.url) &&
+        Objects.equals(this.width, imageDetails.width);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(width, height, url);
+    return Objects.hash(height, url, width);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ImageDetails {\n");
-    sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
+    sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("}");
     return sb.toString();
   }

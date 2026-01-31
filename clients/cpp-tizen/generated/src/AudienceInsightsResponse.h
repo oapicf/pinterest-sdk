@@ -56,20 +56,6 @@ public:
 	/*! \brief Set Category interest distribution
 	 */
 	void setCategories(std::list <AudienceCategory> categories);
-	/*! \brief Get 
-	 */
-	AudienceDemographics getDemographics();
-
-	/*! \brief Set 
-	 */
-	void setDemographics(AudienceDemographics  demographics);
-	/*! \brief Get 
-	 */
-	AudienceInsightType getType();
-
-	/*! \brief Set 
-	 */
-	void setType(AudienceInsightType  type);
 	/*! \brief Get Generation date
 	 */
 	std::string getDate();
@@ -77,6 +63,13 @@ public:
 	/*! \brief Set Generation date
 	 */
 	void setDate(std::string  date);
+	/*! \brief Get 
+	 */
+	AudienceDemographics getDemographics();
+
+	/*! \brief Set 
+	 */
+	void setDemographics(AudienceDemographics  demographics);
 	/*! \brief Get Population count.
 	 */
 	int getSize();
@@ -91,14 +84,21 @@ public:
 	/*! \brief Set Indicates whether the audience size has been rounded up to the next highest upper boundary.
 	 */
 	void setSizeIsUpperBound(bool  size_is_upper_bound);
+	/*! \brief Get 
+	 */
+	AudienceInsightType getType();
+
+	/*! \brief Set 
+	 */
+	void setType(AudienceInsightType  type);
 
 private:
 	std::list <AudienceCategory>categories;
-	AudienceDemographics demographics;
-	AudienceInsightType type;
 	std::string date;
+	AudienceDemographics demographics;
 	int size;
 	bool size_is_upper_bound;
+	AudienceInsightType type;
 	void __init();
 	void __cleanup();
 

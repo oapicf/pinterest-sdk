@@ -73,8 +73,8 @@ private class OASCatalogsReportFeedIngestionFilterTest {
     private static void maintainRenamedProperties() {
         OASCatalogsReportFeedIngestionFilter catalogsReportFeedIngestionFilter = new OASCatalogsReportFeedIngestionFilter();
         Map<String, String> x-property-mappings = catalogsReportFeedIngestionFilter.getx-property-mappings();
-        System.assertEquals('reportType', x-property-mappings.get('report_type'));
         System.assertEquals('feedId', x-property-mappings.get('feed_id'));
         System.assertEquals('processingResultId', x-property-mappings.get('processing_result_id'));
+        System.assertEquals('reportType', x-property-mappings.get('report_type'));
     }
 }

@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `ImageMetadata`
 --
-SELECT `item_type`, `title`, `description`, `link`, `images` FROM `ImageMetadata` WHERE 1;
+SELECT `description`, `images`, `item_type`, `link`, `title` FROM `ImageMetadata` WHERE 1;
 
 --
 -- INSERT template for table `ImageMetadata`
 --
-INSERT INTO `ImageMetadata`(`item_type`, `title`, `description`, `link`, `images`) VALUES (?, ?, ?, ?, ?);
+INSERT INTO `ImageMetadata`(`description`, `images`, `item_type`, `link`, `title`) VALUES (?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `ImageMetadata`
 --
-UPDATE `ImageMetadata` SET `item_type` = ?, `title` = ?, `description` = ?, `link` = ?, `images` = ? WHERE 1;
+UPDATE `ImageMetadata` SET `description` = ?, `images` = ?, `item_type` = ?, `link` = ?, `title` = ? WHERE 1;
 
 --
 -- DELETE template for table `ImageMetadata`

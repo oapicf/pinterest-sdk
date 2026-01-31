@@ -6,35 +6,35 @@
 
 
 static catalogs_product_group_update_request_t *catalogs_product_group_update_request_create_internal(
-    char *name,
     char *description,
+    catalogs_product_group_filters_request_t *filters,
     int is_featured,
-    catalogs_product_group_filters_request_t *filters
+    char *name
     ) {
     catalogs_product_group_update_request_t *catalogs_product_group_update_request_local_var = malloc(sizeof(catalogs_product_group_update_request_t));
     if (!catalogs_product_group_update_request_local_var) {
         return NULL;
     }
-    catalogs_product_group_update_request_local_var->name = name;
     catalogs_product_group_update_request_local_var->description = description;
-    catalogs_product_group_update_request_local_var->is_featured = is_featured;
     catalogs_product_group_update_request_local_var->filters = filters;
+    catalogs_product_group_update_request_local_var->is_featured = is_featured;
+    catalogs_product_group_update_request_local_var->name = name;
 
     catalogs_product_group_update_request_local_var->_library_owned = 1;
     return catalogs_product_group_update_request_local_var;
 }
 
 __attribute__((deprecated)) catalogs_product_group_update_request_t *catalogs_product_group_update_request_create(
-    char *name,
     char *description,
+    catalogs_product_group_filters_request_t *filters,
     int is_featured,
-    catalogs_product_group_filters_request_t *filters
+    char *name
     ) {
     return catalogs_product_group_update_request_create_internal (
-        name,
         description,
+        filters,
         is_featured,
-        filters
+        name
         );
 }
 
@@ -47,10 +47,6 @@ void catalogs_product_group_update_request_free(catalogs_product_group_update_re
         return ;
     }
     listEntry_t *listEntry;
-    if (catalogs_product_group_update_request->name) {
-        free(catalogs_product_group_update_request->name);
-        catalogs_product_group_update_request->name = NULL;
-    }
     if (catalogs_product_group_update_request->description) {
         free(catalogs_product_group_update_request->description);
         catalogs_product_group_update_request->description = NULL;
@@ -59,32 +55,20 @@ void catalogs_product_group_update_request_free(catalogs_product_group_update_re
         catalogs_product_group_filters_request_free(catalogs_product_group_update_request->filters);
         catalogs_product_group_update_request->filters = NULL;
     }
+    if (catalogs_product_group_update_request->name) {
+        free(catalogs_product_group_update_request->name);
+        catalogs_product_group_update_request->name = NULL;
+    }
     free(catalogs_product_group_update_request);
 }
 
 cJSON *catalogs_product_group_update_request_convertToJSON(catalogs_product_group_update_request_t *catalogs_product_group_update_request) {
     cJSON *item = cJSON_CreateObject();
 
-    // catalogs_product_group_update_request->name
-    if(catalogs_product_group_update_request->name) {
-    if(cJSON_AddStringToObject(item, "name", catalogs_product_group_update_request->name) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // catalogs_product_group_update_request->description
     if(catalogs_product_group_update_request->description) {
     if(cJSON_AddStringToObject(item, "description", catalogs_product_group_update_request->description) == NULL) {
     goto fail; //String
-    }
-    }
-
-
-    // catalogs_product_group_update_request->is_featured
-    if(catalogs_product_group_update_request->is_featured) {
-    if(cJSON_AddBoolToObject(item, "is_featured", catalogs_product_group_update_request->is_featured) == NULL) {
-    goto fail; //Bool
     }
     }
 
@@ -98,6 +82,22 @@ cJSON *catalogs_product_group_update_request_convertToJSON(catalogs_product_grou
     cJSON_AddItemToObject(item, "filters", filters_local_JSON);
     if(item->child == NULL) {
     goto fail;
+    }
+    }
+
+
+    // catalogs_product_group_update_request->is_featured
+    if(catalogs_product_group_update_request->is_featured) {
+    if(cJSON_AddBoolToObject(item, "is_featured", catalogs_product_group_update_request->is_featured) == NULL) {
+    goto fail; //Bool
+    }
+    }
+
+
+    // catalogs_product_group_update_request->name
+    if(catalogs_product_group_update_request->name) {
+    if(cJSON_AddStringToObject(item, "name", catalogs_product_group_update_request->name) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -116,18 +116,6 @@ catalogs_product_group_update_request_t *catalogs_product_group_update_request_p
     // define the local variable for catalogs_product_group_update_request->filters
     catalogs_product_group_filters_request_t *filters_local_nonprim = NULL;
 
-    // catalogs_product_group_update_request->name
-    cJSON *name = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_update_requestJSON, "name");
-    if (cJSON_IsNull(name)) {
-        name = NULL;
-    }
-    if (name) { 
-    if(!cJSON_IsString(name) && !cJSON_IsNull(name))
-    {
-    goto end; //String
-    }
-    }
-
     // catalogs_product_group_update_request->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_update_requestJSON, "description");
     if (cJSON_IsNull(description)) {
@@ -138,6 +126,15 @@ catalogs_product_group_update_request_t *catalogs_product_group_update_request_p
     {
     goto end; //String
     }
+    }
+
+    // catalogs_product_group_update_request->filters
+    cJSON *filters = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_update_requestJSON, "filters");
+    if (cJSON_IsNull(filters)) {
+        filters = NULL;
+    }
+    if (filters) { 
+    filters_local_nonprim = catalogs_product_group_filters_request_parseFromJSON(filters); //nonprimitive
     }
 
     // catalogs_product_group_update_request->is_featured
@@ -152,21 +149,24 @@ catalogs_product_group_update_request_t *catalogs_product_group_update_request_p
     }
     }
 
-    // catalogs_product_group_update_request->filters
-    cJSON *filters = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_update_requestJSON, "filters");
-    if (cJSON_IsNull(filters)) {
-        filters = NULL;
+    // catalogs_product_group_update_request->name
+    cJSON *name = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_update_requestJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
     }
-    if (filters) { 
-    filters_local_nonprim = catalogs_product_group_filters_request_parseFromJSON(filters); //nonprimitive
+    if (name) { 
+    if(!cJSON_IsString(name) && !cJSON_IsNull(name))
+    {
+    goto end; //String
+    }
     }
 
 
     catalogs_product_group_update_request_local_var = catalogs_product_group_update_request_create_internal (
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
+        filters ? filters_local_nonprim : NULL,
         is_featured ? is_featured->valueint : 0,
-        filters ? filters_local_nonprim : NULL
+        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL
         );
 
     return catalogs_product_group_update_request_local_var;

@@ -6,10 +6,36 @@ goog.provide('API.Client.CatalogsHotelProductGroup');
 API.Client.CatalogsHotelProductGroup = function() {}
 
 /**
+ * Catalog id pertaining to the hotel product group.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsHotelProductGroup.prototype.catalogId;
+
+/**
  * @type {!string}
  * @export
  */
 API.Client.CatalogsHotelProductGroup.prototype.catalogType;
+
+/**
+ * Unix timestamp in seconds of when catalog product group was created.
+ * @type {!number}
+ * @export
+ */
+API.Client.CatalogsHotelProductGroup.prototype.createdAt;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsHotelProductGroup.prototype.description;
+
+/**
+ * @type {!API.Client.CatalogsHotelProductGroupFilters}
+ * @export
+ */
+API.Client.CatalogsHotelProductGroup.prototype.filters;
 
 /**
  * ID of the hotel product group.
@@ -26,23 +52,10 @@ API.Client.CatalogsHotelProductGroup.prototype.id;
 API.Client.CatalogsHotelProductGroup.prototype.name;
 
 /**
- * @type {!string}
+ * @type {!API.Client.CatalogsHotelProductGroupType}
  * @export
  */
-API.Client.CatalogsHotelProductGroup.prototype.description;
-
-/**
- * @type {!API.Client.CatalogsHotelProductGroupFilters}
- * @export
- */
-API.Client.CatalogsHotelProductGroup.prototype.filters;
-
-/**
- * Unix timestamp in seconds of when catalog product group was created.
- * @type {!number}
- * @export
- */
-API.Client.CatalogsHotelProductGroup.prototype.createdAt;
+API.Client.CatalogsHotelProductGroup.prototype.type;
 
 /**
  * Unix timestamp in seconds of last time catalog product group was updated.
@@ -50,13 +63,6 @@ API.Client.CatalogsHotelProductGroup.prototype.createdAt;
  * @export
  */
 API.Client.CatalogsHotelProductGroup.prototype.updatedAt;
-
-/**
- * Catalog id pertaining to the hotel product group.
- * @type {!string}
- * @export
- */
-API.Client.CatalogsHotelProductGroup.prototype.catalogId;
 
 /** @enum {string} */
 API.Client.CatalogsHotelProductGroup.CatalogTypeEnum = { 

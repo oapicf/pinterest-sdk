@@ -4,15 +4,23 @@ Exposes the following operation IDs:
 
 - `POST` to `/ad_accounts/:ad_account_id/ads_credit/redeem`, OperationId: `ads_credit/redeem`:
 Redeem ad credits.
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 - `GET` to `/ad_accounts/:ad_account_id/ads_credit/discounts`, OperationId: `ads_credits_discounts/get`:
 Get ads credit discounts.
-Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+
+- `GET` to `/ad_accounts/:ad_account_id/billing_invoice/:billing_invoice_id/download`, OperationId: `billing_invoice_download/get`:
+Get download url for a billing invoice.
+Get download url for a billing invoice.
+
+- `GET` to `/ad_accounts/:ad_account_id/billing_invoices`, OperationId: `billing_invoices/get`:
+Get billing invoices.
+Get billing invoices in the advertiser account.
 
 - `GET` to `/ad_accounts/:ad_account_id/billing_profiles`, OperationId: `billing_profiles/get`:
 Get billing profiles.
-Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 - `GET` to `/ad_accounts/:ad_account_id/ssio/accounts`, OperationId: `ssio_accounts/get`:
 Get Salesforce account details including bill-to information..
@@ -63,6 +71,8 @@ Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;
 -type operation_id() ::
     'ads_credit/redeem' %% Redeem ad credits
     | 'ads_credits_discounts/get' %% Get ads credit discounts
+    | 'billing_invoice_download/get' %% Get download url for a billing invoice
+    | 'billing_invoices/get' %% Get billing invoices
     | 'billing_profiles/get' %% Get billing profiles
     | 'ssio_accounts/get' %% Get Salesforce account details including bill-to information.
     | 'ssio_insertion_order/create' %% Create insertion order through SSIO.
@@ -101,6 +111,10 @@ allowed_methods(Req, #state{operation_id = 'ads_credit/redeem'} = State) ->
     {[<<"POST">>], Req, State};
 allowed_methods(Req, #state{operation_id = 'ads_credits_discounts/get'} = State) ->
     {[<<"GET">>], Req, State};
+allowed_methods(Req, #state{operation_id = 'billing_invoice_download/get'} = State) ->
+    {[<<"GET">>], Req, State};
+allowed_methods(Req, #state{operation_id = 'billing_invoices/get'} = State) ->
+    {[<<"GET">>], Req, State};
 allowed_methods(Req, #state{operation_id = 'billing_profiles/get'} = State) ->
     {[<<"GET">>], Req, State};
 allowed_methods(Req, #state{operation_id = 'ssio_accounts/get'} = State) ->
@@ -131,6 +145,24 @@ is_authorized(Req0,
     end;
 is_authorized(Req0,
               #state{operation_id = 'ads_credits_discounts/get' = OperationID,
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
+    end;
+is_authorized(Req0,
+              #state{operation_id = 'billing_invoice_download/get' = OperationID,
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
+    end;
+is_authorized(Req0,
+              #state{operation_id = 'billing_invoices/get' = OperationID,
                      api_key_callback = Handler} = State) ->
     case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
@@ -212,6 +244,10 @@ content_types_accepted(Req, #state{operation_id = 'ads_credit/redeem'} = State) 
      ], Req, State};
 content_types_accepted(Req, #state{operation_id = 'ads_credits_discounts/get'} = State) ->
     {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'billing_invoice_download/get'} = State) ->
+    {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'billing_invoices/get'} = State) ->
+    {[], Req, State};
 content_types_accepted(Req, #state{operation_id = 'billing_profiles/get'} = State) ->
     {[], Req, State};
 content_types_accepted(Req, #state{operation_id = 'ssio_accounts/get'} = State) ->
@@ -239,6 +275,10 @@ valid_content_headers(Req, #state{operation_id = 'ads_credit/redeem'} = State) -
     {true, Req, State};
 valid_content_headers(Req, #state{operation_id = 'ads_credits_discounts/get'} = State) ->
     {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'billing_invoice_download/get'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'billing_invoices/get'} = State) ->
+    {true, Req, State};
 valid_content_headers(Req, #state{operation_id = 'billing_profiles/get'} = State) ->
     {true, Req, State};
 valid_content_headers(Req, #state{operation_id = 'ssio_accounts/get'} = State) ->
@@ -263,6 +303,14 @@ content_types_provided(Req, #state{operation_id = 'ads_credit/redeem'} = State) 
       {<<"application/json">>, handle_type_provided}
      ], Req, State};
 content_types_provided(Req, #state{operation_id = 'ads_credits_discounts/get'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'billing_invoice_download/get'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'billing_invoices/get'} = State) ->
     {[
       {<<"application/json">>, handle_type_provided}
      ], Req, State};

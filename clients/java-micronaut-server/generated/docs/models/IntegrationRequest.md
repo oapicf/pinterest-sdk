@@ -10,19 +10,19 @@ The class is defined in **[IntegrationRequest.java](../../src/main/java/org/open
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**externalBusinessId** | `String` | External business ID for the integration. |  [optional property]
-**connectedMerchantId** | `String` |  |  [optional property]
+**additionalId1** | `String` |  |  [optional property]
 **connectedAdvertiserId** | `String` |  |  [optional property]
 **connectedLbaId** | `String` |  |  [optional property]
+**connectedMerchantId** | `String` |  |  [optional property]
 **connectedTagId** | `String` |  |  [optional property]
+**externalBusinessId** | `String` | External business ID for the integration. |  [optional property]
 **partnerAccessToken** | `String` |  |  [optional property]
-**partnerRefreshToken** | `String` |  |  [optional property]
-**partnerPrimaryEmail** | `String` |  |  [optional property]
 **partnerAccessTokenExpiry** | `Integer` |  |  [optional property]
+**partnerMetadata** | `String` |  |  [optional property]
+**partnerPrimaryEmail** | `String` |  |  [optional property]
+**partnerRefreshToken** | `String` |  |  [optional property]
 **partnerRefreshTokenExpiry** | `Integer` |  |  [optional property]
 **scopes** | `String` |  |  [optional property]
-**additionalId1** | `String` |  |  [optional property]
-**partnerMetadata** | `String` |  |  [optional property]
 
 
 

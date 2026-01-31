@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[Keyword]**](Keyword.md) |  | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[Keyword]**](Keyword.md) |  | 
 
 

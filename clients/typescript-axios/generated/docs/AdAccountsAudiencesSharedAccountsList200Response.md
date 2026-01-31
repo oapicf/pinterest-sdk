@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Array&lt;SharedAudienceAccount&gt;**](SharedAudienceAccount.md) |  | [default to undefined]
 **bookmark** | **string** |  | [optional] [default to undefined]
+**items** | [**Array&lt;SharedAudienceAccount&gt;**](SharedAudienceAccount.md) |  | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { AdAccountsAudiencesSharedAccountsList200Response } from './api';
 
 const instance: AdAccountsAudiencesSharedAccountsList200Response = {
-    items,
     bookmark,
+    items,
 };
 ```
 

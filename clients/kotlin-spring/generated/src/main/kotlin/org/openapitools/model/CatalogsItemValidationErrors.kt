@@ -26,8 +26,8 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param IMAGE_LINK_LENGTH_TOO_LONG 
  * @param IMAGE_LINK_MISSING 
  * @param INVALID_DOMAIN 
- * @param ITEMID_MISSING 
  * @param ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE 
+ * @param ITEMID_MISSING 
  * @param LINK_FORMAT_INVALID 
  * @param LINK_LENGTH_TOO_LONG 
  * @param LIST_PRICE_INVALID 
@@ -84,11 +84,11 @@ data class CatalogsItemValidationErrors(
 
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("ITEMID_MISSING") val ITEMID_MISSING: CatalogsItemValidationDetails? = null,
+    @get:JsonProperty("ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE") val ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE: CatalogsItemValidationDetails? = null,
 
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE") val ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE: CatalogsItemValidationDetails? = null,
+    @get:JsonProperty("ITEMID_MISSING") val ITEMID_MISSING: CatalogsItemValidationDetails? = null,
 
     @field:Valid
     @Schema(example = "null", description = "")

@@ -14,8 +14,8 @@ module CatalogsItemsFilters =
 
   type CatalogsItemsFilters = {
     CatalogType : CatalogsType;
-    ItemIds : string[];
     CatalogId : string;
+    ItemIds : string[];
     HotelIds : string[];
     CreativeAssetsIds : string[];
   }

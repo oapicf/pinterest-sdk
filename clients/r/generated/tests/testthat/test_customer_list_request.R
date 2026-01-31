@@ -5,6 +5,13 @@ context("Test CustomerListRequest")
 
 model_instance <- CustomerListRequest$new()
 
+test_that("list_type", {
+  # tests for the property `list_type` (UserListType)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`list_type`, "EXPECTED_RESULT")
+})
+
 test_that("name", {
   # tests for the property `name` (character)
   # Customer list name.
@@ -19,19 +26,4 @@ test_that("records", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`records`, "EXPECTED_RESULT")
-})
-
-test_that("list_type", {
-  # tests for the property `list_type` (UserListType)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`list_type`, "EXPECTED_RESULT")
-})
-
-test_that("exceptions", {
-  # tests for the property `exceptions` (object)
-  # Customer list errors.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`exceptions`, "EXPECTED_RESULT")
 })

@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ConversionReportTimeType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ConversionReportTimeType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  ConversionReportTimeType {
+    title = ConversionReportTimeType
+    description = ConversionReportTimeType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  ConversionReportTimeType {
+    title = ConversionReportTimeType
+    description = ConversionReportTimeType
+    implements = openapi_server.resourceTypes.ConversionReportTimeType
+
+  }
+}

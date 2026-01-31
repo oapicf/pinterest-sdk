@@ -10,8 +10,8 @@ module ConversionApiResponse =
 
 
   type ConversionApiResponse = {
-    NumEventsReceived : int;
-    NumEventsProcessed : int;
     Events : ConversionApiResponseEventsInner[];
+    NumEventsProcessed : int;
+    NumEventsReceived : int;
   }
   //#endregion

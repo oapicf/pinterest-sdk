@@ -20,35 +20,36 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param name Internal name of the lead form.
- * @param privacyPolicyLink A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
- * @param hasAcceptedTerms Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
  * @param completionMessage A message for people who complete the form to let them know what happens next.
- * @param status 
  * @param disclosureLanguage Additional disclosure language to be included in the lead form.
- * @param questions List of questions to be displayed on the lead form.
+ * @param hasAcceptedTerms Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
+ * @param name Internal name of the lead form.
  * @param policyLinks List of additional policy links to be displayed on the lead form.
+ * @param privacyPolicyLink A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
+ * @param questions List of questions to be displayed on the lead form.
+ * @param status 
  */
 data class LeadFormCreateRequest(
-
-    @Schema(example = "Lead Form 3/14/2023", description = "Internal name of the lead form.")
-    @get:JsonProperty("name") val name: kotlin.String? = null,
-
-    @Schema(example = "https://www.advertisername.com/privacy-policy", description = "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.")
-    @get:JsonProperty("privacy_policy_link") val privacyPolicyLink: kotlin.String? = null,
-
-    @Schema(example = "false", description = "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO")
-    @get:JsonProperty("has_accepted_terms") val hasAcceptedTerms: kotlin.Boolean? = null,
 
     @Schema(example = "Thank you for submitting. We will contact you soon.", description = "A message for people who complete the form to let them know what happens next.")
     @get:JsonProperty("completion_message") val completionMessage: kotlin.String? = null,
 
-    @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("status") val status: LeadFormStatus? = null,
-
     @Schema(example = "By entering your personal information, you agree that your data will be collected and used.", description = "Additional disclosure language to be included in the lead form.")
     @get:JsonProperty("disclosure_language") val disclosureLanguage: kotlin.String? = null,
+
+    @Schema(example = "false", description = "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO")
+    @get:JsonProperty("has_accepted_terms") val hasAcceptedTerms: kotlin.Boolean? = null,
+
+    @Schema(example = "Lead Form 3/14/2023", description = "Internal name of the lead form.")
+    @get:JsonProperty("name") val name: kotlin.String? = null,
+
+    @field:Valid
+    @get:Size(min=0,max=3) 
+    @Schema(example = "[{label=Copyright, link=https://policy.pinterest.com/en/copyright}]", description = "List of additional policy links to be displayed on the lead form.")
+    @get:JsonProperty("policy_links") val policyLinks: kotlin.collections.List<LeadFormCommonPolicyLinksInner>? = null,
+
+    @Schema(example = "https://www.advertisername.com/privacy-policy", description = "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.")
+    @get:JsonProperty("privacy_policy_link") val privacyPolicyLink: kotlin.String? = null,
 
     @field:Valid
     @get:Size(min=0,max=10) 
@@ -56,9 +57,8 @@ data class LeadFormCreateRequest(
     @get:JsonProperty("questions") val questions: kotlin.collections.List<LeadFormQuestion>? = null,
 
     @field:Valid
-    @get:Size(min=0,max=3) 
-    @Schema(example = "[{label=Copyright, link=https://policy.pinterest.com/en/copyright}]", description = "List of additional policy links to be displayed on the lead form.")
-    @get:JsonProperty("policy_links") val policyLinks: kotlin.collections.List<LeadFormCommonPolicyLinksInner>? = null
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("status") val status: LeadFormStatus? = null
 ) {
 
 }

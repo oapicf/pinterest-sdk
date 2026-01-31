@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ItemId** | **String** | The catalog item id in the merchant namespace | 
+**LastUpdatedTime** | **Int64** | The millisecond timestamp when the item was lastly modified by the merchant. | [optional] 
 **Operation** | **String** |  | 
 
 ## Examples
@@ -11,6 +12,7 @@ Name | Type | Description | Notes
 - Prepare the resource
 ```powershell
 $CatalogsDeleteRetailItem = Initialize-PSOpenAPIToolsCatalogsDeleteRetailItem  -ItemId DS0294-M `
+ -LastUpdatedTime 1641483432072 `
  -Operation null
 ```
 

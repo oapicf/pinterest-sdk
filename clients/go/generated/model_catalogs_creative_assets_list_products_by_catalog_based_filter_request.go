@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,9 +22,9 @@ var _ MappedNullable = &CatalogsCreativeAssetsListProductsByCatalogBasedFilterRe
 
 // CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest Request object to list products for a given creative assets catalog_id and product group filter.
 type CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest struct {
-	CatalogType string `json:"catalog_type"`
 	// Catalog id pertaining to the creative assets product group.
 	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
+	CatalogType string `json:"catalog_type"`
 	Filters CatalogsCreativeAssetsProductGroupFilters `json:"filters"`
 }
 
@@ -34,10 +34,10 @@ type _CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest CatalogsCrea
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest(catalogType string, catalogId string, filters CatalogsCreativeAssetsProductGroupFilters) *CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest {
+func NewCatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest(catalogId string, catalogType string, filters CatalogsCreativeAssetsProductGroupFilters) *CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest {
 	this := CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest{}
-	this.CatalogType = catalogType
 	this.CatalogId = catalogId
+	this.CatalogType = catalogType
 	this.Filters = filters
 	return &this
 }
@@ -48,30 +48,6 @@ func NewCatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest(catalogTyp
 func NewCatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestWithDefaults() *CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest {
 	this := CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest{}
 	return &this
-}
-
-// GetCatalogType returns the CatalogType field value
-func (o *CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest) GetCatalogType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.CatalogType
-}
-
-// GetCatalogTypeOk returns a tuple with the CatalogType field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest) GetCatalogTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CatalogType, true
-}
-
-// SetCatalogType sets field value
-func (o *CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest) SetCatalogType(v string) {
-	o.CatalogType = v
 }
 
 // GetCatalogId returns the CatalogId field value
@@ -96,6 +72,30 @@ func (o *CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest) GetCatal
 // SetCatalogId sets field value
 func (o *CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest) SetCatalogId(v string) {
 	o.CatalogId = v
+}
+
+// GetCatalogType returns the CatalogType field value
+func (o *CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest) GetCatalogType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CatalogType
+}
+
+// GetCatalogTypeOk returns a tuple with the CatalogType field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest) GetCatalogTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CatalogType, true
+}
+
+// SetCatalogType sets field value
+func (o *CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest) SetCatalogType(v string) {
+	o.CatalogType = v
 }
 
 // GetFilters returns the Filters field value
@@ -132,8 +132,8 @@ func (o CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest) MarshalJS
 
 func (o CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["catalog_type"] = o.CatalogType
 	toSerialize["catalog_id"] = o.CatalogId
+	toSerialize["catalog_type"] = o.CatalogType
 	toSerialize["filters"] = o.Filters
 	return toSerialize, nil
 }
@@ -143,8 +143,8 @@ func (o *CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest) Unmarsha
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"catalog_type",
 		"catalog_id",
+		"catalog_type",
 		"filters",
 	}
 

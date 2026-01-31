@@ -14,8 +14,8 @@ import java.util.HashMap
 import AdGroupsAnalyticsResponseInner._
 
 case class AdGroupsAnalyticsResponseInner (
-  /* The ID of the ad group that this metrics belongs to. */
-  AD_GROUP_ID: String,
+  /* The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true. */
+  AD_GROUP_ID: Option[String],
 /* Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`) */
   DATE: Option[LocalDate])
 

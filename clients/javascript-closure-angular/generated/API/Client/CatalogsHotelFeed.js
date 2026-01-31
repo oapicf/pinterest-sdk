@@ -25,17 +25,11 @@ API.Client.CatalogsHotelFeed.prototype.id;
 API.Client.CatalogsHotelFeed.prototype.updatedAt;
 
 /**
- * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+ * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
  * @type {!string}
  * @export
  */
-API.Client.CatalogsHotelFeed.prototype.name;
-
-/**
- * @type {!API.Client.CatalogsFormat}
- * @export
- */
-API.Client.CatalogsHotelFeed.prototype.format;
+API.Client.CatalogsHotelFeed.prototype.catalogId;
 
 /**
  * @type {!API.Client.CatalogsType}
@@ -48,25 +42,6 @@ API.Client.CatalogsHotelFeed.prototype.catalogType;
  * @export
  */
 API.Client.CatalogsHotelFeed.prototype.credentials;
-
-/**
- * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
- * @type {!string}
- * @export
- */
-API.Client.CatalogsHotelFeed.prototype.location;
-
-/**
- * @type {!API.Client.CatalogsFeedProcessingSchedule}
- * @export
- */
-API.Client.CatalogsHotelFeed.prototype.preferredProcessingSchedule;
-
-/**
- * @type {!API.Client.CatalogsStatus}
- * @export
- */
-API.Client.CatalogsHotelFeed.prototype.status;
 
 /**
  * @type {!API.Client.NullableCurrency}
@@ -82,9 +57,34 @@ API.Client.CatalogsHotelFeed.prototype.defaultCurrency;
 API.Client.CatalogsHotelFeed.prototype.defaultLocale;
 
 /**
- * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
+ * @type {!API.Client.CatalogsFormat}
+ * @export
+ */
+API.Client.CatalogsHotelFeed.prototype.format;
+
+/**
+ * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
  * @type {!string}
  * @export
  */
-API.Client.CatalogsHotelFeed.prototype.catalogId;
+API.Client.CatalogsHotelFeed.prototype.location;
+
+/**
+ * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsHotelFeed.prototype.name;
+
+/**
+ * @type {!API.Client.CatalogsFeedProcessingSchedule}
+ * @export
+ */
+API.Client.CatalogsHotelFeed.prototype.preferredProcessingSchedule;
+
+/**
+ * @type {!API.Client.CatalogsStatus}
+ * @export
+ */
+API.Client.CatalogsHotelFeed.prototype.status;
 

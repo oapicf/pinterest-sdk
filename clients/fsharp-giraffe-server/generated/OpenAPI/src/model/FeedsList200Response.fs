@@ -11,7 +11,7 @@ module FeedsList200Response =
 
 
   type feeds_list_200_response = {
-    Items : CatalogsFeed[];
     Bookmark : string option;
+    Items : CatalogsFeed[];
   }
   //#endregion

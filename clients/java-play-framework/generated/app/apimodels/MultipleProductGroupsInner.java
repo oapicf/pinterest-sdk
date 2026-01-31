@@ -16,27 +16,12 @@ import javax.validation.Valid;
 /**
  * MultipleProductGroupsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class MultipleProductGroupsInner   {
-  @JsonProperty("name")
-  @NotNull
-
-  private String name;
-
   @JsonProperty("description")
   
   private String description;
-
-  @JsonProperty("is_featured")
-  
-  private Boolean isFeatured = false;
-
-  @JsonProperty("filters")
-  @NotNull
-@Valid
-
-  private CatalogsProductGroupFiltersRequest filters;
 
   @JsonProperty("feed_id")
   @NotNull
@@ -44,22 +29,20 @@ public class MultipleProductGroupsInner   {
 
   private String feedId;
 
-  public MultipleProductGroupsInner name(String name) {
-    this.name = name;
-    return this;
-  }
+  @JsonProperty("filters")
+  @NotNull
+@Valid
 
-   /**
-   * Get name
-   * @return name
-  **/
-  public String getName() {
-    return name;
-  }
+  private CatalogsProductGroupFiltersRequest filters;
 
-  public void setName(String name) {
-    this.name = name;
-  }
+  @JsonProperty("is_featured")
+  
+  private Boolean isFeatured = false;
+
+  @JsonProperty("name")
+  @NotNull
+
+  private String name;
 
   public MultipleProductGroupsInner description(String description) {
     this.description = description;
@@ -76,40 +59,6 @@ public class MultipleProductGroupsInner   {
 
   public void setDescription(String description) {
     this.description = description;
-  }
-
-  public MultipleProductGroupsInner isFeatured(Boolean isFeatured) {
-    this.isFeatured = isFeatured;
-    return this;
-  }
-
-   /**
-   * boolean indicator of whether the product group is being featured or not
-   * @return isFeatured
-  **/
-  public Boolean getIsFeatured() {
-    return isFeatured;
-  }
-
-  public void setIsFeatured(Boolean isFeatured) {
-    this.isFeatured = isFeatured;
-  }
-
-  public MultipleProductGroupsInner filters(CatalogsProductGroupFiltersRequest filters) {
-    this.filters = filters;
-    return this;
-  }
-
-   /**
-   * Get filters
-   * @return filters
-  **/
-  public CatalogsProductGroupFiltersRequest getFilters() {
-    return filters;
-  }
-
-  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
-    this.filters = filters;
   }
 
   public MultipleProductGroupsInner feedId(String feedId) {
@@ -129,6 +78,57 @@ public class MultipleProductGroupsInner   {
     this.feedId = feedId;
   }
 
+  public MultipleProductGroupsInner filters(CatalogsProductGroupFiltersRequest filters) {
+    this.filters = filters;
+    return this;
+  }
+
+   /**
+   * Get filters
+   * @return filters
+  **/
+  public CatalogsProductGroupFiltersRequest getFilters() {
+    return filters;
+  }
+
+  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
+    this.filters = filters;
+  }
+
+  public MultipleProductGroupsInner isFeatured(Boolean isFeatured) {
+    this.isFeatured = isFeatured;
+    return this;
+  }
+
+   /**
+   * boolean indicator of whether the product group is being featured or not
+   * @return isFeatured
+  **/
+  public Boolean getIsFeatured() {
+    return isFeatured;
+  }
+
+  public void setIsFeatured(Boolean isFeatured) {
+    this.isFeatured = isFeatured;
+  }
+
+  public MultipleProductGroupsInner name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -139,16 +139,16 @@ public class MultipleProductGroupsInner   {
       return false;
     }
     MultipleProductGroupsInner multipleProductGroupsInner = (MultipleProductGroupsInner) o;
-    return Objects.equals(name, multipleProductGroupsInner.name) &&
-        Objects.equals(description, multipleProductGroupsInner.description) &&
-        Objects.equals(isFeatured, multipleProductGroupsInner.isFeatured) &&
+    return Objects.equals(description, multipleProductGroupsInner.description) &&
+        Objects.equals(feedId, multipleProductGroupsInner.feedId) &&
         Objects.equals(filters, multipleProductGroupsInner.filters) &&
-        Objects.equals(feedId, multipleProductGroupsInner.feedId);
+        Objects.equals(isFeatured, multipleProductGroupsInner.isFeatured) &&
+        Objects.equals(name, multipleProductGroupsInner.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, isFeatured, filters, feedId);
+    return Objects.hash(description, feedId, filters, isFeatured, name);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -157,11 +157,11 @@ public class MultipleProductGroupsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class MultipleProductGroupsInner {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
-    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

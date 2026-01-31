@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,8 +20,8 @@ var _ MappedNullable = &RelatedTermsRelatedTermsListInner{}
 
 // RelatedTermsRelatedTermsListInner struct for RelatedTermsRelatedTermsListInner
 type RelatedTermsRelatedTermsListInner struct {
-	Term *string `json:"term,omitempty"`
 	RelatedTerms []string `json:"related_terms,omitempty"`
+	Term *string `json:"term,omitempty"`
 }
 
 // NewRelatedTermsRelatedTermsListInner instantiates a new RelatedTermsRelatedTermsListInner object
@@ -39,38 +39,6 @@ func NewRelatedTermsRelatedTermsListInner() *RelatedTermsRelatedTermsListInner {
 func NewRelatedTermsRelatedTermsListInnerWithDefaults() *RelatedTermsRelatedTermsListInner {
 	this := RelatedTermsRelatedTermsListInner{}
 	return &this
-}
-
-// GetTerm returns the Term field value if set, zero value otherwise.
-func (o *RelatedTermsRelatedTermsListInner) GetTerm() string {
-	if o == nil || IsNil(o.Term) {
-		var ret string
-		return ret
-	}
-	return *o.Term
-}
-
-// GetTermOk returns a tuple with the Term field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RelatedTermsRelatedTermsListInner) GetTermOk() (*string, bool) {
-	if o == nil || IsNil(o.Term) {
-		return nil, false
-	}
-	return o.Term, true
-}
-
-// HasTerm returns a boolean if a field has been set.
-func (o *RelatedTermsRelatedTermsListInner) HasTerm() bool {
-	if o != nil && !IsNil(o.Term) {
-		return true
-	}
-
-	return false
-}
-
-// SetTerm gets a reference to the given string and assigns it to the Term field.
-func (o *RelatedTermsRelatedTermsListInner) SetTerm(v string) {
-	o.Term = &v
 }
 
 // GetRelatedTerms returns the RelatedTerms field value if set, zero value otherwise.
@@ -105,6 +73,38 @@ func (o *RelatedTermsRelatedTermsListInner) SetRelatedTerms(v []string) {
 	o.RelatedTerms = v
 }
 
+// GetTerm returns the Term field value if set, zero value otherwise.
+func (o *RelatedTermsRelatedTermsListInner) GetTerm() string {
+	if o == nil || IsNil(o.Term) {
+		var ret string
+		return ret
+	}
+	return *o.Term
+}
+
+// GetTermOk returns a tuple with the Term field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RelatedTermsRelatedTermsListInner) GetTermOk() (*string, bool) {
+	if o == nil || IsNil(o.Term) {
+		return nil, false
+	}
+	return o.Term, true
+}
+
+// HasTerm returns a boolean if a field has been set.
+func (o *RelatedTermsRelatedTermsListInner) HasTerm() bool {
+	if o != nil && !IsNil(o.Term) {
+		return true
+	}
+
+	return false
+}
+
+// SetTerm gets a reference to the given string and assigns it to the Term field.
+func (o *RelatedTermsRelatedTermsListInner) SetTerm(v string) {
+	o.Term = &v
+}
+
 func (o RelatedTermsRelatedTermsListInner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -115,11 +115,11 @@ func (o RelatedTermsRelatedTermsListInner) MarshalJSON() ([]byte, error) {
 
 func (o RelatedTermsRelatedTermsListInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Term) {
-		toSerialize["term"] = o.Term
-	}
 	if !IsNil(o.RelatedTerms) {
 		toSerialize["related_terms"] = o.RelatedTerms
+	}
+	if !IsNil(o.Term) {
+		toSerialize["term"] = o.Term
 	}
 	return toSerialize, nil
 }

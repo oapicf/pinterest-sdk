@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Method** | **string** |  | 
 **Host** | **string** | HTTP request host from host header. | 
+**Method** | **string** |  | 
 **Path** | **string** | HTTP request path. | 
 **RequestHeaders** | Pointer to **map[string]string** | HTTP request headers as key-value pairs. | [optional] 
 **ResponseHeaders** | Pointer to **map[string]string** | HTTP response headers as key-value pairs. | [optional] 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewIntegrationLogClientRequest
 
-`func NewIntegrationLogClientRequest(method string, host string, path string, ) *IntegrationLogClientRequest`
+`func NewIntegrationLogClientRequest(host string, method string, path string, ) *IntegrationLogClientRequest`
 
 NewIntegrationLogClientRequest instantiates a new IntegrationLogClientRequest object
 This constructor will assign default values to properties that have it defined,
@@ -29,26 +29,6 @@ will change when the set of required properties is changed
 NewIntegrationLogClientRequestWithDefaults instantiates a new IntegrationLogClientRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetMethod
-
-`func (o *IntegrationLogClientRequest) GetMethod() string`
-
-GetMethod returns the Method field if non-nil, zero value otherwise.
-
-### GetMethodOk
-
-`func (o *IntegrationLogClientRequest) GetMethodOk() (*string, bool)`
-
-GetMethodOk returns a tuple with the Method field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMethod
-
-`func (o *IntegrationLogClientRequest) SetMethod(v string)`
-
-SetMethod sets Method field to given value.
-
 
 ### GetHost
 
@@ -68,6 +48,26 @@ and a boolean to check if the value has been set.
 `func (o *IntegrationLogClientRequest) SetHost(v string)`
 
 SetHost sets Host field to given value.
+
+
+### GetMethod
+
+`func (o *IntegrationLogClientRequest) GetMethod() string`
+
+GetMethod returns the Method field if non-nil, zero value otherwise.
+
+### GetMethodOk
+
+`func (o *IntegrationLogClientRequest) GetMethodOk() (*string, bool)`
+
+GetMethodOk returns a tuple with the Method field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMethod
+
+`func (o *IntegrationLogClientRequest) SetMethod(v string)`
+
+SetMethod sets Method field to given value.
 
 
 ### GetPath

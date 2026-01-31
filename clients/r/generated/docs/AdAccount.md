@@ -4,13 +4,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **character** |  | [optional] 
-**name** | **character** |  | [optional] 
-**owner** | [**AdAccountOwner**](Ad_account_owner.md) |  | [optional] 
 **country** | [**Country**](Country.md) |  | [optional] [Enum: ] 
+**created_time** | **integer** |  Creation time. Unix timestamp in seconds. | [optional] [readonly] 
 **currency** | [**Currency**](Currency.md) |  | [optional] [Enum: ] 
-**permissions** | [**array[BusinessAccessRole]**](BusinessAccessRole.md) |  | [optional] 
-**created_time** | **integer** | Creation time. Unix timestamp in seconds. | [optional] 
-**updated_time** | **integer** | Last update time. Unix timestamp in seconds. | [optional] 
+**id** | **character** |  | [Pattern: ^\\d+$] [Max. length: 18] 
+**name** | **character** | Ad account name. | [optional] [Max. length: 256] 
+**owner** | [**AdAccountOwner**](AdAccountOwner.md) | Ad account owner | [optional] [readonly] 
+**permissions** | [**array[BusinessAccessRole]**](BusinessAccessRole.md) |  | [optional] [readonly] 
+**updated_time** | **integer** |  | [optional] [readonly] 
 
 

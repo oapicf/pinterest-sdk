@@ -20,8 +20,8 @@ import io.swagger.v3.oas.annotations.media.Schema
 /**
  * Object describing a creative assets item error
  * @param catalogType 
- * @param creativeAssetsId The catalog creative assets id in the merchant namespace
  * @param errors Array with the errors for the item id requested
+ * @param creativeAssetsId The catalog creative assets id in the merchant namespace
  */
 data class CatalogsCreativeAssetsItemErrorResponse(
 
@@ -29,12 +29,12 @@ data class CatalogsCreativeAssetsItemErrorResponse(
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsType,
 
-    @Schema(example = "DS0294-M", description = "The catalog creative assets id in the merchant namespace")
-    @get:JsonProperty("creative_assets_id") val creativeAssetsId: kotlin.String? = null,
-
     @field:Valid
-    @Schema(example = "null", description = "Array with the errors for the item id requested")
-    @get:JsonProperty("errors") val errors: kotlin.collections.List<ItemValidationEvent>? = null
+    @Schema(example = "null", required = true, description = "Array with the errors for the item id requested")
+    @get:JsonProperty("errors", required = true) val errors: kotlin.collections.List<ItemValidationEvent>,
+
+    @Schema(example = "DS0294-M", description = "The catalog creative assets id in the merchant namespace")
+    @get:JsonProperty("creative_assets_id") val creativeAssetsId: kotlin.String? = null
 ) {
 
 }

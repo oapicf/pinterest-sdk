@@ -3,21 +3,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CatalogId** | **String** | Catalog id pertaining to the hotel product group. | 
 **CatalogType** | **String** |  | 
-**Name** | **String** |  | 
 **Description** | **String** |  | [optional] 
 **Filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | 
-**CatalogId** | **String** | Catalog id pertaining to the hotel product group. | 
+**Name** | **String** |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsHotelProductGroupCreateRequest = Initialize-PSOpenAPIToolsCatalogsHotelProductGroupCreateRequest  -CatalogType null `
- -Name null `
+$CatalogsHotelProductGroupCreateRequest = Initialize-PSOpenAPIToolsCatalogsHotelProductGroupCreateRequest  -CatalogId 2680059592705 `
+ -CatalogType null `
  -Description null `
  -Filters null `
- -CatalogId 2680059592705
+ -Name null
 ```
 
 - Convert the resource to JSON

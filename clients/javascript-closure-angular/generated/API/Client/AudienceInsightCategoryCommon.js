@@ -9,6 +9,18 @@ API.Client.AudienceInsightCategoryCommon = function() {}
  * @type {!string}
  * @export
  */
+API.Client.AudienceInsightCategoryCommon.prototype.id;
+
+/**
+ * @type {!number}
+ * @export
+ */
+API.Client.AudienceInsightCategoryCommon.prototype.index;
+
+/**
+ * @type {!string}
+ * @export
+ */
 API.Client.AudienceInsightCategoryCommon.prototype.key;
 
 /**
@@ -22,16 +34,4 @@ API.Client.AudienceInsightCategoryCommon.prototype.name;
  * @export
  */
 API.Client.AudienceInsightCategoryCommon.prototype.ratio;
-
-/**
- * @type {!number}
- * @export
- */
-API.Client.AudienceInsightCategoryCommon.prototype.index;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.AudienceInsightCategoryCommon.prototype.id;
 

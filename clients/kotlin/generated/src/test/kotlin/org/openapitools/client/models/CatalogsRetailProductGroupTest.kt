@@ -28,28 +28,16 @@ class CatalogsRetailProductGroupTest : ShouldSpec() {
         // uncomment below to create an instance of CatalogsRetailProductGroup
         //val modelInstance = CatalogsRetailProductGroup()
 
-        // to test the property `catalogType`
-        should("test catalogType") {
-            // uncomment below to test the property
-            //modelInstance.catalogType shouldBe ("TODO")
-        }
-
-        // to test the property `id` - ID of the catalog product group.
-        should("test id") {
-            // uncomment below to test the property
-            //modelInstance.id shouldBe ("TODO")
-        }
-
-        // to test the property `filters`
-        should("test filters") {
-            // uncomment below to test the property
-            //modelInstance.filters shouldBe ("TODO")
-        }
-
         // to test the property `catalogId` - Catalog id pertaining to the retail product group.
         should("test catalogId") {
             // uncomment below to test the property
             //modelInstance.catalogId shouldBe ("TODO")
+        }
+
+        // to test the property `catalogType`
+        should("test catalogType") {
+            // uncomment below to test the property
+            //modelInstance.catalogType shouldBe ("TODO")
         }
 
         // to test the property `feedId` - id of the catalogs feed belonging to this catalog product group
@@ -58,10 +46,34 @@ class CatalogsRetailProductGroupTest : ShouldSpec() {
             //modelInstance.feedId shouldBe ("TODO")
         }
 
-        // to test the property `name` - Name of catalog product group
-        should("test name") {
+        // to test the property `filters`
+        should("test filters") {
             // uncomment below to test the property
-            //modelInstance.name shouldBe ("TODO")
+            //modelInstance.filters shouldBe ("TODO")
+        }
+
+        // to test the property `id` - ID of the catalog product group.
+        should("test id") {
+            // uncomment below to test the property
+            //modelInstance.id shouldBe ("TODO")
+        }
+
+        // to test the property `type`
+        should("test type") {
+            // uncomment below to test the property
+            //modelInstance.type shouldBe ("TODO")
+        }
+
+        // to test the property `country`
+        should("test country") {
+            // uncomment below to test the property
+            //modelInstance.country shouldBe ("TODO")
+        }
+
+        // to test the property `createdAt` - Unix timestamp in seconds of when catalog product group was created.
+        should("test createdAt") {
+            // uncomment below to test the property
+            //modelInstance.createdAt shouldBe ("TODO")
         }
 
         // to test the property `description`
@@ -76,10 +88,16 @@ class CatalogsRetailProductGroupTest : ShouldSpec() {
             //modelInstance.isFeatured shouldBe ("TODO")
         }
 
-        // to test the property `type`
-        should("test type") {
+        // to test the property `locale`
+        should("test locale") {
             // uncomment below to test the property
-            //modelInstance.type shouldBe ("TODO")
+            //modelInstance.locale shouldBe ("TODO")
+        }
+
+        // to test the property `name` - Name of catalog product group
+        should("test name") {
+            // uncomment below to test the property
+            //modelInstance.name shouldBe ("TODO")
         }
 
         // to test the property `status`
@@ -88,28 +106,10 @@ class CatalogsRetailProductGroupTest : ShouldSpec() {
             //modelInstance.status shouldBe ("TODO")
         }
 
-        // to test the property `createdAt` - Unix timestamp in seconds of when catalog product group was created.
-        should("test createdAt") {
-            // uncomment below to test the property
-            //modelInstance.createdAt shouldBe ("TODO")
-        }
-
         // to test the property `updatedAt` - Unix timestamp in seconds of last time catalog product group was updated.
         should("test updatedAt") {
             // uncomment below to test the property
             //modelInstance.updatedAt shouldBe ("TODO")
-        }
-
-        // to test the property `country`
-        should("test country") {
-            // uncomment below to test the property
-            //modelInstance.country shouldBe ("TODO")
-        }
-
-        // to test the property `locale`
-        should("test locale") {
-            // uncomment below to test the property
-            //modelInstance.locale shouldBe ("TODO")
         }
 
     }

@@ -1,0 +1,35 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server FollowUserRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a FollowUserRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  FollowUserRequest {
+    title = FollowUserRequest
+    description = FollowUserRequest
+    derivedFrom = Root
+    properties {
+        auto_follow {
+          type =  boolean
+          description = "Whether this request comes as result of auto-follow after clicking on a link. Follow links can be used by partners on their site or in emails. Only selected partners can be followed this way. We verify that partner can be auto-followed."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  FollowUserRequest {
+    title = FollowUserRequest
+    description = FollowUserRequest
+    implements = openapi_server.resourceTypes.FollowUserRequest
+
+  }
+}

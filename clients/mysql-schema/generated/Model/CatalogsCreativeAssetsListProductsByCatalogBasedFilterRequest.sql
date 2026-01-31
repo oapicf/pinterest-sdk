@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest`
 --
-SELECT `catalog_type`, `catalog_id`, `filters` FROM `CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest` WHERE 1;
+SELECT `catalog_id`, `catalog_type`, `filters` FROM `CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest`
 --
-INSERT INTO `CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest`(`catalog_type`, `catalog_id`, `filters`) VALUES (?, ?, ?);
+INSERT INTO `CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest`(`catalog_id`, `catalog_type`, `filters`) VALUES (?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest`
 --
-UPDATE `CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest` SET `catalog_type` = ?, `catalog_id` = ?, `filters` = ? WHERE 1;
+UPDATE `CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest` SET `catalog_id` = ?, `catalog_type` = ?, `filters` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest`

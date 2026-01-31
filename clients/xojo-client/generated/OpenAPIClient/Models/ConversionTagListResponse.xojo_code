@@ -2,7 +2,7 @@
 Protected Class ConversionTagListResponse
 
 	#tag Property, Flags = &h0
-		items() As OpenAPIClient.Models.ConversionTagResponse
+		items() As OpenAPIClient.Models.ConversionTag
 	#tag EndProperty
 
 
@@ -47,7 +47,7 @@ Protected Class ConversionTagListResponse
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="ConversionTagResponse"
+			Type="ConversionTag"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

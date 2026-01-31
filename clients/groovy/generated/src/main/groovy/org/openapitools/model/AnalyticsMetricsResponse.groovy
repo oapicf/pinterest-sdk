@@ -11,8 +11,8 @@ import org.openapitools.model.AnalyticsDailyMetrics;
 
 @Canonical
 class AnalyticsMetricsResponse {
-    /* The metric name and value over the requested period for each requested metric */
-    Map<String, BigDecimal> summaryMetrics = new HashMap<>()
     /* Array with the requested daily metric records */
     List<AnalyticsDailyMetrics> dailyMetrics = new ArrayList<>()
+    /* The metric name and value over the requested period for each requested metric */
+    Map<String, BigDecimal> summaryMetrics = new HashMap<>()
 }

@@ -7,7 +7,7 @@ Protected Interface LeadAdsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub AdAccountsSubscriptionsGetByIdCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AdAccountGetSubscriptionResponse)
+		Sub AdAccountsSubscriptionsGetByIdCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.LeadSubscription)
 		  
 		End Sub
 	#tag EndMethod
@@ -19,7 +19,7 @@ Protected Interface LeadAdsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub AdAccountsSubscriptionsPostCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AdAccountCreateSubscriptionResponse)
+		Sub AdAccountsSubscriptionsPostCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.LeadSubscription)
 		  
 		End Sub
 	#tag EndMethod

@@ -8,8 +8,8 @@
 
 (def feed-processing-results-list-200-response-data
   {
-   (ds/req :items) (s/coll-of catalogs-feed-processing-result-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of catalogs-feed-processing-result-spec)
    })
 
 (def feed-processing-results-list-200-response-spec

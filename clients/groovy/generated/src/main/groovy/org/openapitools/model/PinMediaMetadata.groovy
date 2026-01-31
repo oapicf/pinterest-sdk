@@ -6,29 +6,29 @@ import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ImageMetadata;
-import org.openapitools.model.ImageMetadataImages;
-import org.openapitools.model.VideoMetadata;
+import org.openapitools.model.ImageSize;
+import org.openapitools.model.VideoMetadataWithItemType;
 
 @Canonical
 class PinMediaMetadata {
     
-    String itemType
-    
-    String title
-    
     String description
+    
+    ImageSize images
+    
+    String itemType
     
     String link
     
-    ImageMetadataImages images
+    String title
     
     String coverImageUrl
-    /* Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps. */
-    String videoUrl
-    /* Duration (in milliseconds) */
+    /* Duration (in miliseconds). Field maybe null after creation due to video processing time. */
     BigDecimal duration
-    /* Height (in pixels) */
+    /* Height (in pixels). Field maybe null after creation due to video processing time. */
     Integer height
-    /* Width (in pixels) */
+    /* Video url (720p).  **Note:** This field is limited and not available to all apps. */
+    String videoUrl
+    /* Width (in pixels). Field maybe null after creation due to video processing time. */
     Integer width
 }

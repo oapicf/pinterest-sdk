@@ -9,12 +9,8 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}auto_targeting_enabled`,
-                label: `Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. - [${labelPrefix}auto_targeting_enabled]`,
+                label: `Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>. - [${labelPrefix}auto_targeting_enabled]`,
                 type: 'boolean',
-            },
-            {
-                key: `${keyPrefix}placement_group`,
-                ...PlacementGroupType.fields(`${keyPrefix}placement_group`, isInput),
             },
             {
                 key: `${keyPrefix}creative_types`,
@@ -24,29 +20,33 @@ module.exports = {
                 choices: [
                 ],
             },
-            ...TargetingSpec.fields(`${keyPrefix}targeting_spec`, isInput),
+            {
+                key: `${keyPrefix}keywords`,
+                label: `[${labelPrefix}keywords]`,
+                children: AdGroupAudienceSizingRequest_keywords_inner.fields(`${keyPrefix}keywords${!isInput ? '[]' : ''}`, isInput, true), 
+            },
+            {
+                key: `${keyPrefix}placement_group`,
+                ...PlacementGroupType.fields(`${keyPrefix}placement_group`, isInput),
+            },
             {
                 key: `${keyPrefix}product_group_ids`,
                 label: `Targeted product group IDs. </p><strong>Note:</strong> This can only be combined with shopping/catalog sales campaigns. For more information, <a href=\"https://help.pinterest.com/en/business/article/shopping-ads#section-14571\" target=\"_blank\">click here</a>. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored. - [${labelPrefix}product_group_ids]`,
                 list: true,
                 type: 'string',
             },
-            {
-                key: `${keyPrefix}keywords`,
-                label: `[${labelPrefix}keywords]`,
-                children: AdGroupAudienceSizingRequest_keywords_inner.fields(`${keyPrefix}keywords${!isInput ? '[]' : ''}`, isInput, true), 
-            },
+            ...TargetingSpec.fields(`${keyPrefix}targeting_spec`, isInput),
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'auto_targeting_enabled': bundle.inputData?.[`${keyPrefix}auto_targeting_enabled`],
-            'placement_group': bundle.inputData?.[`${keyPrefix}placement_group`],
             'creative_types': bundle.inputData?.[`${keyPrefix}creative_types`],
-            'targeting_spec': utils.removeIfEmpty(TargetingSpec.mapping(bundle, `${keyPrefix}targeting_spec`)),
-            'product_group_ids': bundle.inputData?.[`${keyPrefix}product_group_ids`],
             'keywords': utils.childMapping(bundle.inputData?.[`${keyPrefix}keywords`], `${keyPrefix}keywords`, AdGroupAudienceSizingRequest_keywords_inner),
+            'placement_group': bundle.inputData?.[`${keyPrefix}placement_group`],
+            'product_group_ids': bundle.inputData?.[`${keyPrefix}product_group_ids`],
+            'targeting_spec': utils.removeIfEmpty(TargetingSpec.mapping(bundle, `${keyPrefix}targeting_spec`)),
         }
     },
 }

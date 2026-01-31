@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.vertxweb.server.model.PinUpdateCarouselSlotsInner;
+import org.openapitools.vertxweb.server.model.CarouselSlot;
 
 /**
- * Pin fields for updates
+ * Resource create or update operation model.
  **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PinUpdate   {
@@ -18,25 +18,23 @@ public class PinUpdate   {
   private String altText;
   private String boardId;
   private String boardSectionId;
+  private List<CarouselSlot> carouselSlots = new ArrayList<>();
   private String description;
   private String link;
   private String title;
-  private List<PinUpdateCarouselSlotsInner> carouselSlots = new ArrayList<>();
-  private String note;
 
   public PinUpdate () {
 
   }
 
-  public PinUpdate (String altText, String boardId, String boardSectionId, String description, String link, String title, List<PinUpdateCarouselSlotsInner> carouselSlots, String note) {
+  public PinUpdate (String altText, String boardId, String boardSectionId, List<CarouselSlot> carouselSlots, String description, String link, String title) {
     this.altText = altText;
     this.boardId = boardId;
     this.boardSectionId = boardSectionId;
+    this.carouselSlots = carouselSlots;
     this.description = description;
     this.link = link;
     this.title = title;
-    this.carouselSlots = carouselSlots;
-    this.note = note;
   }
 
     
@@ -67,6 +65,15 @@ public class PinUpdate   {
   }
 
     
+  @JsonProperty("carousel_slots")
+  public List<CarouselSlot> getCarouselSlots() {
+    return carouselSlots;
+  }
+  public void setCarouselSlots(List<CarouselSlot> carouselSlots) {
+    this.carouselSlots = carouselSlots;
+  }
+
+    
   @JsonProperty("description")
   public String getDescription() {
     return description;
@@ -93,24 +100,6 @@ public class PinUpdate   {
     this.title = title;
   }
 
-    
-  @JsonProperty("carousel_slots")
-  public List<PinUpdateCarouselSlotsInner> getCarouselSlots() {
-    return carouselSlots;
-  }
-  public void setCarouselSlots(List<PinUpdateCarouselSlotsInner> carouselSlots) {
-    this.carouselSlots = carouselSlots;
-  }
-
-    
-  @JsonProperty("note")
-  public String getNote() {
-    return note;
-  }
-  public void setNote(String note) {
-    this.note = note;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -124,16 +113,15 @@ public class PinUpdate   {
     return Objects.equals(altText, pinUpdate.altText) &&
         Objects.equals(boardId, pinUpdate.boardId) &&
         Objects.equals(boardSectionId, pinUpdate.boardSectionId) &&
+        Objects.equals(carouselSlots, pinUpdate.carouselSlots) &&
         Objects.equals(description, pinUpdate.description) &&
         Objects.equals(link, pinUpdate.link) &&
-        Objects.equals(title, pinUpdate.title) &&
-        Objects.equals(carouselSlots, pinUpdate.carouselSlots) &&
-        Objects.equals(note, pinUpdate.note);
+        Objects.equals(title, pinUpdate.title);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(altText, boardId, boardSectionId, description, link, title, carouselSlots, note);
+    return Objects.hash(altText, boardId, boardSectionId, carouselSlots, description, link, title);
   }
 
   @Override
@@ -144,11 +132,10 @@ public class PinUpdate   {
     sb.append("    altText: ").append(toIndentedString(altText)).append("\n");
     sb.append("    boardId: ").append(toIndentedString(boardId)).append("\n");
     sb.append("    boardSectionId: ").append(toIndentedString(boardSectionId)).append("\n");
+    sb.append("    carouselSlots: ").append(toIndentedString(carouselSlots)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    carouselSlots: ").append(toIndentedString(carouselSlots)).append("\n");
-    sb.append("    note: ").append(toIndentedString(note)).append("\n");
     sb.append("}");
     return sb.toString();
   }

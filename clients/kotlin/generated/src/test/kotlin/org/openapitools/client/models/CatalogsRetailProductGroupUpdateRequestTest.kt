@@ -34,10 +34,10 @@ class CatalogsRetailProductGroupUpdateRequestTest : ShouldSpec() {
             //modelInstance.catalogType shouldBe ("TODO")
         }
 
-        // to test the property `name`
-        should("test name") {
+        // to test the property `country`
+        should("test country") {
             // uncomment below to test the property
-            //modelInstance.name shouldBe ("TODO")
+            //modelInstance.country shouldBe ("TODO")
         }
 
         // to test the property `description`
@@ -52,16 +52,16 @@ class CatalogsRetailProductGroupUpdateRequestTest : ShouldSpec() {
             //modelInstance.filters shouldBe ("TODO")
         }
 
-        // to test the property `country`
-        should("test country") {
-            // uncomment below to test the property
-            //modelInstance.country shouldBe ("TODO")
-        }
-
         // to test the property `locale`
         should("test locale") {
             // uncomment below to test the property
             //modelInstance.locale shouldBe ("TODO")
+        }
+
+        // to test the property `name`
+        should("test name") {
+            // uncomment below to test the property
+            //modelInstance.name shouldBe ("TODO")
         }
 
     }

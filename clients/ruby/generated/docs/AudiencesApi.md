@@ -5,7 +5,6 @@ All URIs are relative to *https://api.pinterest.com/v5*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**audiences_create**](AudiencesApi.md#audiences_create) | **POST** /ad_accounts/{ad_account_id}/audiences | Create audience |
-| [**audiences_create_custom**](AudiencesApi.md#audiences_create_custom) | **POST** /ad_accounts/{ad_account_id}/audiences/custom | Create custom audience |
 | [**audiences_get**](AudiencesApi.md#audiences_get) | **GET** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Get audience |
 | [**audiences_list**](AudiencesApi.md#audiences_list) | **GET** /ad_accounts/{ad_account_id}/audiences | List audiences |
 | [**audiences_update**](AudiencesApi.md#audiences_update) | **PATCH** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Update audience |
@@ -17,7 +16,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Create audience
 
-Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.
+Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
 
 ### Examples
 
@@ -82,77 +81,6 @@ end
 - **Accept**: application/json
 
 
-## audiences_create_custom
-
-> <Audience> audiences_create_custom(ad_account_id, audience_create_custom_request)
-
-Create custom audience
-
-Create a custom audience and find the audiences you want your ads to reach.
-
-### Examples
-
-```ruby
-require 'time'
-require 'pinterest_sdk'
-# setup authorization
-PinterestSdkClient.configure do |config|
-  # Configure OAuth2 access token for authorization: pinterest_oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = PinterestSdkClient::AudiencesApi.new
-ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-audience_create_custom_request = PinterestSdkClient::AudienceCreateCustomRequest.new({name: 'string', rule: PinterestSdkClient::AudienceRule.new, sharing_type: PinterestSdkClient::AudienceSharingType::CUSTOM, data_party: PinterestSdkClient::AudienceDataParty::N1P}) # AudienceCreateCustomRequest | Custom audience to create.
-
-begin
-  # Create custom audience
-  result = api_instance.audiences_create_custom(ad_account_id, audience_create_custom_request)
-  p result
-rescue PinterestSdkClient::ApiError => e
-  puts "Error when calling AudiencesApi->audiences_create_custom: #{e}"
-end
-```
-
-#### Using the audiences_create_custom_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<Audience>, Integer, Hash)> audiences_create_custom_with_http_info(ad_account_id, audience_create_custom_request)
-
-```ruby
-begin
-  # Create custom audience
-  data, status_code, headers = api_instance.audiences_create_custom_with_http_info(ad_account_id, audience_create_custom_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <Audience>
-rescue PinterestSdkClient::ApiError => e
-  puts "Error when calling AudiencesApi->audiences_create_custom_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **audience_create_custom_request** | [**AudienceCreateCustomRequest**](AudienceCreateCustomRequest.md) | Custom audience to create. |  |
-
-### Return type
-
-[**Audience**](Audience.md)
-
-### Authorization
-
-[pinterest_oauth2](../README.md#pinterest_oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
 ## audiences_get
 
 > <Audience> audiences_get(ad_account_id, audience_id)
@@ -169,6 +97,9 @@ require 'pinterest_sdk'
 # setup authorization
 PinterestSdkClient.configure do |config|
   # Configure OAuth2 access token for authorization: pinterest_oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure OAuth2 access token for authorization: client_credentials
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
@@ -216,7 +147,7 @@ end
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -240,6 +171,9 @@ require 'pinterest_sdk'
 # setup authorization
 PinterestSdkClient.configure do |config|
   # Configure OAuth2 access token for authorization: pinterest_oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure OAuth2 access token for authorization: client_credentials
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
@@ -295,7 +229,7 @@ end
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -305,7 +239,7 @@ end
 
 ## audiences_update
 
-> <Audience> audiences_update(ad_account_id, audience_id, opts)
+> <Audience> audiences_update(ad_account_id, audience_id, audience_update_request)
 
 Update audience
 
@@ -325,13 +259,11 @@ end
 api_instance = PinterestSdkClient::AudiencesApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
 audience_id = 'audience_id_example' # String | Unique identifier of an audience
-opts = {
-  audience_update_request: PinterestSdkClient::AudienceUpdateRequest.new # AudienceUpdateRequest | The audience to be updated.
-}
+audience_update_request = PinterestSdkClient::AudienceUpdateRequest.new # AudienceUpdateRequest | The audience to be updated.
 
 begin
   # Update audience
-  result = api_instance.audiences_update(ad_account_id, audience_id, opts)
+  result = api_instance.audiences_update(ad_account_id, audience_id, audience_update_request)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling AudiencesApi->audiences_update: #{e}"
@@ -342,12 +274,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Audience>, Integer, Hash)> audiences_update_with_http_info(ad_account_id, audience_id, opts)
+> <Array(<Audience>, Integer, Hash)> audiences_update_with_http_info(ad_account_id, audience_id, audience_update_request)
 
 ```ruby
 begin
   # Update audience
-  data, status_code, headers = api_instance.audiences_update_with_http_info(ad_account_id, audience_id, opts)
+  data, status_code, headers = api_instance.audiences_update_with_http_info(ad_account_id, audience_id, audience_update_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Audience>
@@ -362,7 +294,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
 | **audience_id** | **String** | Unique identifier of an audience |  |
-| **audience_update_request** | [**AudienceUpdateRequest**](AudienceUpdateRequest.md) | The audience to be updated. | [optional] |
+| **audience_update_request** | [**AudienceUpdateRequest**](AudienceUpdateRequest.md) | The audience to be updated. |  |
 
 ### Return type
 

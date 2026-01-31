@@ -11,7 +11,7 @@ module SsioOrderLinesGetByAdAccount200Response =
 
 
   type ssio_order_lines_get_by_ad_account_200_response = {
-    Items : SSIOOrderLine[];
     Bookmark : string option;
+    Items : SSIOOrderLine[];
   }
   //#endregion

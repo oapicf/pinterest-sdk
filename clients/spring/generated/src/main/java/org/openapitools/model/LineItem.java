@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * LineItem
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LineItem {
 
   private @Nullable String productBrand;
@@ -44,11 +44,11 @@ public class LineItem {
   }
 
   /**
-   * Product brand. For example, \"Parker\".
+   * Product brand. For example, 'Parker'.
    * @return productBrand
    */
   
-  @Schema(name = "product_brand", example = "Parker", description = "Product brand. For example, \"Parker\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "product_brand", example = "Parker", description = "Product brand. For example, 'Parker'.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_brand")
   public @Nullable String getProductBrand() {
     return productBrand;
@@ -64,11 +64,11 @@ public class LineItem {
   }
 
   /**
-   * Product category. For example, \"Shoes\".
+   * Product category. For example, 'Shoes'.
    * @return productCategory
    */
   
-  @Schema(name = "product_category", example = "Shoes", description = "Product category. For example, \"Shoes\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "product_category", example = "Shoes", description = "Product category. For example, 'Shoes'.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_category")
   public @Nullable String getProductCategory() {
     return productCategory;
@@ -104,11 +104,11 @@ public class LineItem {
   }
 
   /**
-   * Product name. For example, \"Parker Boots\".
+   * Product name. For example, 'Parker Boots'.
    * @return productName
    */
   
-  @Schema(name = "product_name", example = "Parker Boots", description = "Product name. For example, \"Parker Boots\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "product_name", example = "Parker Boots", description = "Product name. For example, 'Parker Boots'.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_name")
   public @Nullable String getProductName() {
     return productName;
@@ -124,11 +124,11 @@ public class LineItem {
   }
 
   /**
-   * Product price. For example, \"99.99\".
+   * Product price. For example, '99.99'.
    * @return productPrice
    */
   
-  @Schema(name = "product_price", example = "99.99", description = "Product price. For example, \"99.99\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "product_price", example = "99.99", description = "Product price. For example, '99.99'.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_price")
   public @Nullable String getProductPrice() {
     return productPrice;
@@ -164,11 +164,11 @@ public class LineItem {
   }
 
   /**
-   * Product variant. For example, \"Red\".
+   * Product variant. For example, 'Red'.
    * @return productVariant
    */
   
-  @Schema(name = "product_variant", example = "Red", description = "Product variant. For example, \"Red\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "product_variant", example = "Red", description = "Product variant. For example, 'Red'.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_variant")
   public @Nullable String getProductVariant() {
     return productVariant;
@@ -184,11 +184,11 @@ public class LineItem {
   }
 
   /**
-   * Product variant ID. For example, \"1414-34832\".
+   * Product variant ID. For example, '1414-34832'.
    * @return productVariantId
    */
   
-  @Schema(name = "product_variant_id", example = "1414-34832", description = "Product variant ID. For example, \"1414-34832\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "product_variant_id", example = "1414-34832", description = "Product variant ID. For example, '1414-34832'.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_variant_id")
   public @Nullable String getProductVariantId() {
     return productVariantId;

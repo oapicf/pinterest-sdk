@@ -4,23 +4,23 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DefaultCurrency** | Pointer to [**NullableNullableCurrency**](NullableCurrency.md) |  | [optional] 
-**Name** | **string** | A human-friendly name associated to a given feed. | 
-**Format** | [**CatalogsFormat**](CatalogsFormat.md) |  | 
-**DefaultLocale** | [**CatalogsFeedsCreateRequestDefaultLocale**](CatalogsFeedsCreateRequestDefaultLocale.md) |  | 
-**DefaultCountry** | [**Country**](Country.md) |  | 
-**Credentials** | Pointer to [**NullableCatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] 
-**Location** | **string** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | 
-**PreferredProcessingSchedule** | Pointer to [**NullableCatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
+**CatalogId** | Pointer to **string** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. | [optional] 
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
-**CatalogId** | Pointer to **NullableString** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. | [optional] 
+**Credentials** | Pointer to [**NullableCatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] 
+**DefaultCountry** | [**Country**](Country.md) |  | 
+**DefaultCurrency** | Pointer to [**NullableNullableCurrency**](NullableCurrency.md) |  | [optional] 
+**DefaultLocale** | [**CatalogsFeedsCreateRequestDefaultLocale**](CatalogsFeedsCreateRequestDefaultLocale.md) |  | 
+**Format** | [**CatalogsFormat**](CatalogsFormat.md) |  | 
+**Location** | **string** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | 
+**Name** | **string** | A human-friendly name associated to a given feed. | 
+**PreferredProcessingSchedule** | Pointer to [**NullableCatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
 **Status** | Pointer to [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] [default to ACTIVE]
 
 ## Methods
 
 ### NewCatalogsCreativeAssetsFeedsCreateRequest
 
-`func NewCatalogsCreativeAssetsFeedsCreateRequest(name string, format CatalogsFormat, defaultLocale CatalogsFeedsCreateRequestDefaultLocale, defaultCountry Country, location string, catalogType CatalogsType, ) *CatalogsCreativeAssetsFeedsCreateRequest`
+`func NewCatalogsCreativeAssetsFeedsCreateRequest(catalogType CatalogsType, defaultCountry Country, defaultLocale CatalogsFeedsCreateRequestDefaultLocale, format CatalogsFormat, location string, name string, ) *CatalogsCreativeAssetsFeedsCreateRequest`
 
 NewCatalogsCreativeAssetsFeedsCreateRequest instantiates a new CatalogsCreativeAssetsFeedsCreateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -35,119 +35,49 @@ NewCatalogsCreativeAssetsFeedsCreateRequestWithDefaults instantiates a new Catal
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetDefaultCurrency
+### GetCatalogId
 
-`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetDefaultCurrency() NullableCurrency`
+`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetCatalogId() string`
 
-GetDefaultCurrency returns the DefaultCurrency field if non-nil, zero value otherwise.
+GetCatalogId returns the CatalogId field if non-nil, zero value otherwise.
 
-### GetDefaultCurrencyOk
+### GetCatalogIdOk
 
-`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetDefaultCurrencyOk() (*NullableCurrency, bool)`
+`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetCatalogIdOk() (*string, bool)`
 
-GetDefaultCurrencyOk returns a tuple with the DefaultCurrency field if it's non-nil, zero value otherwise
+GetCatalogIdOk returns a tuple with the CatalogId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDefaultCurrency
+### SetCatalogId
 
-`func (o *CatalogsCreativeAssetsFeedsCreateRequest) SetDefaultCurrency(v NullableCurrency)`
+`func (o *CatalogsCreativeAssetsFeedsCreateRequest) SetCatalogId(v string)`
 
-SetDefaultCurrency sets DefaultCurrency field to given value.
+SetCatalogId sets CatalogId field to given value.
 
-### HasDefaultCurrency
+### HasCatalogId
 
-`func (o *CatalogsCreativeAssetsFeedsCreateRequest) HasDefaultCurrency() bool`
+`func (o *CatalogsCreativeAssetsFeedsCreateRequest) HasCatalogId() bool`
 
-HasDefaultCurrency returns a boolean if a field has been set.
+HasCatalogId returns a boolean if a field has been set.
 
-### SetDefaultCurrencyNil
+### GetCatalogType
 
-`func (o *CatalogsCreativeAssetsFeedsCreateRequest) SetDefaultCurrencyNil(b bool)`
+`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetCatalogType() CatalogsType`
 
- SetDefaultCurrencyNil sets the value for DefaultCurrency to be an explicit nil
+GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
 
-### UnsetDefaultCurrency
-`func (o *CatalogsCreativeAssetsFeedsCreateRequest) UnsetDefaultCurrency()`
+### GetCatalogTypeOk
 
-UnsetDefaultCurrency ensures that no value is present for DefaultCurrency, not even an explicit nil
-### GetName
+`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetCatalogTypeOk() (*CatalogsType, bool)`
 
-`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetName
+### SetCatalogType
 
-`func (o *CatalogsCreativeAssetsFeedsCreateRequest) SetName(v string)`
+`func (o *CatalogsCreativeAssetsFeedsCreateRequest) SetCatalogType(v CatalogsType)`
 
-SetName sets Name field to given value.
-
-
-### GetFormat
-
-`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetFormat() CatalogsFormat`
-
-GetFormat returns the Format field if non-nil, zero value otherwise.
-
-### GetFormatOk
-
-`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetFormatOk() (*CatalogsFormat, bool)`
-
-GetFormatOk returns a tuple with the Format field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFormat
-
-`func (o *CatalogsCreativeAssetsFeedsCreateRequest) SetFormat(v CatalogsFormat)`
-
-SetFormat sets Format field to given value.
-
-
-### GetDefaultLocale
-
-`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetDefaultLocale() CatalogsFeedsCreateRequestDefaultLocale`
-
-GetDefaultLocale returns the DefaultLocale field if non-nil, zero value otherwise.
-
-### GetDefaultLocaleOk
-
-`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetDefaultLocaleOk() (*CatalogsFeedsCreateRequestDefaultLocale, bool)`
-
-GetDefaultLocaleOk returns a tuple with the DefaultLocale field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDefaultLocale
-
-`func (o *CatalogsCreativeAssetsFeedsCreateRequest) SetDefaultLocale(v CatalogsFeedsCreateRequestDefaultLocale)`
-
-SetDefaultLocale sets DefaultLocale field to given value.
-
-
-### GetDefaultCountry
-
-`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetDefaultCountry() Country`
-
-GetDefaultCountry returns the DefaultCountry field if non-nil, zero value otherwise.
-
-### GetDefaultCountryOk
-
-`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetDefaultCountryOk() (*Country, bool)`
-
-GetDefaultCountryOk returns a tuple with the DefaultCountry field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDefaultCountry
-
-`func (o *CatalogsCreativeAssetsFeedsCreateRequest) SetDefaultCountry(v Country)`
-
-SetDefaultCountry sets DefaultCountry field to given value.
+SetCatalogType sets CatalogType field to given value.
 
 
 ### GetCredentials
@@ -185,6 +115,101 @@ HasCredentials returns a boolean if a field has been set.
 `func (o *CatalogsCreativeAssetsFeedsCreateRequest) UnsetCredentials()`
 
 UnsetCredentials ensures that no value is present for Credentials, not even an explicit nil
+### GetDefaultCountry
+
+`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetDefaultCountry() Country`
+
+GetDefaultCountry returns the DefaultCountry field if non-nil, zero value otherwise.
+
+### GetDefaultCountryOk
+
+`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetDefaultCountryOk() (*Country, bool)`
+
+GetDefaultCountryOk returns a tuple with the DefaultCountry field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultCountry
+
+`func (o *CatalogsCreativeAssetsFeedsCreateRequest) SetDefaultCountry(v Country)`
+
+SetDefaultCountry sets DefaultCountry field to given value.
+
+
+### GetDefaultCurrency
+
+`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetDefaultCurrency() NullableCurrency`
+
+GetDefaultCurrency returns the DefaultCurrency field if non-nil, zero value otherwise.
+
+### GetDefaultCurrencyOk
+
+`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetDefaultCurrencyOk() (*NullableCurrency, bool)`
+
+GetDefaultCurrencyOk returns a tuple with the DefaultCurrency field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultCurrency
+
+`func (o *CatalogsCreativeAssetsFeedsCreateRequest) SetDefaultCurrency(v NullableCurrency)`
+
+SetDefaultCurrency sets DefaultCurrency field to given value.
+
+### HasDefaultCurrency
+
+`func (o *CatalogsCreativeAssetsFeedsCreateRequest) HasDefaultCurrency() bool`
+
+HasDefaultCurrency returns a boolean if a field has been set.
+
+### SetDefaultCurrencyNil
+
+`func (o *CatalogsCreativeAssetsFeedsCreateRequest) SetDefaultCurrencyNil(b bool)`
+
+ SetDefaultCurrencyNil sets the value for DefaultCurrency to be an explicit nil
+
+### UnsetDefaultCurrency
+`func (o *CatalogsCreativeAssetsFeedsCreateRequest) UnsetDefaultCurrency()`
+
+UnsetDefaultCurrency ensures that no value is present for DefaultCurrency, not even an explicit nil
+### GetDefaultLocale
+
+`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetDefaultLocale() CatalogsFeedsCreateRequestDefaultLocale`
+
+GetDefaultLocale returns the DefaultLocale field if non-nil, zero value otherwise.
+
+### GetDefaultLocaleOk
+
+`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetDefaultLocaleOk() (*CatalogsFeedsCreateRequestDefaultLocale, bool)`
+
+GetDefaultLocaleOk returns a tuple with the DefaultLocale field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultLocale
+
+`func (o *CatalogsCreativeAssetsFeedsCreateRequest) SetDefaultLocale(v CatalogsFeedsCreateRequestDefaultLocale)`
+
+SetDefaultLocale sets DefaultLocale field to given value.
+
+
+### GetFormat
+
+`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetFormat() CatalogsFormat`
+
+GetFormat returns the Format field if non-nil, zero value otherwise.
+
+### GetFormatOk
+
+`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetFormatOk() (*CatalogsFormat, bool)`
+
+GetFormatOk returns a tuple with the Format field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFormat
+
+`func (o *CatalogsCreativeAssetsFeedsCreateRequest) SetFormat(v CatalogsFormat)`
+
+SetFormat sets Format field to given value.
+
+
 ### GetLocation
 
 `func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetLocation() string`
@@ -203,6 +228,26 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsCreativeAssetsFeedsCreateRequest) SetLocation(v string)`
 
 SetLocation sets Location field to given value.
+
+
+### GetName
+
+`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *CatalogsCreativeAssetsFeedsCreateRequest) SetName(v string)`
+
+SetName sets Name field to given value.
 
 
 ### GetPreferredProcessingSchedule
@@ -240,61 +285,6 @@ HasPreferredProcessingSchedule returns a boolean if a field has been set.
 `func (o *CatalogsCreativeAssetsFeedsCreateRequest) UnsetPreferredProcessingSchedule()`
 
 UnsetPreferredProcessingSchedule ensures that no value is present for PreferredProcessingSchedule, not even an explicit nil
-### GetCatalogType
-
-`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetCatalogType() CatalogsType`
-
-GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
-
-### GetCatalogTypeOk
-
-`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetCatalogTypeOk() (*CatalogsType, bool)`
-
-GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCatalogType
-
-`func (o *CatalogsCreativeAssetsFeedsCreateRequest) SetCatalogType(v CatalogsType)`
-
-SetCatalogType sets CatalogType field to given value.
-
-
-### GetCatalogId
-
-`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetCatalogId() string`
-
-GetCatalogId returns the CatalogId field if non-nil, zero value otherwise.
-
-### GetCatalogIdOk
-
-`func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetCatalogIdOk() (*string, bool)`
-
-GetCatalogIdOk returns a tuple with the CatalogId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCatalogId
-
-`func (o *CatalogsCreativeAssetsFeedsCreateRequest) SetCatalogId(v string)`
-
-SetCatalogId sets CatalogId field to given value.
-
-### HasCatalogId
-
-`func (o *CatalogsCreativeAssetsFeedsCreateRequest) HasCatalogId() bool`
-
-HasCatalogId returns a boolean if a field has been set.
-
-### SetCatalogIdNil
-
-`func (o *CatalogsCreativeAssetsFeedsCreateRequest) SetCatalogIdNil(b bool)`
-
- SetCatalogIdNil sets the value for CatalogId to be an explicit nil
-
-### UnsetCatalogId
-`func (o *CatalogsCreativeAssetsFeedsCreateRequest) UnsetCatalogId()`
-
-UnsetCatalogId ensures that no value is present for CatalogId, not even an explicit nil
 ### GetStatus
 
 `func (o *CatalogsCreativeAssetsFeedsCreateRequest) GetStatus() CatalogsStatus`

@@ -1,0 +1,48 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdsAnalyticsMetricsFilter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdsAnalyticsMetricsFilter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AdsAnalyticsFilterColumn = openapi_server.resourceTypes.AdsAnalyticsFilterColumn
+  AdsAnalyticsFilterOperator = openapi_server.resourceTypes.AdsAnalyticsFilterOperator
+}
+resourceTypes {
+
+  AdsAnalyticsMetricsFilter {
+    title = AdsAnalyticsMetricsFilter
+    description = AdsAnalyticsMetricsFilter
+    derivedFrom = Root
+    properties {
+        _field {
+          type = AdsAnalyticsFilterColumn
+          description = ""
+          optional = true
+        }
+        operator {
+          type = AdsAnalyticsFilterOperator
+          description = ""
+          optional = true
+        }
+        values {
+          type = array
+          items.type =  
+          description = "List of values for filtering"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdsAnalyticsMetricsFilter {
+    title = AdsAnalyticsMetricsFilter
+    description = AdsAnalyticsMetricsFilter
+    implements = openapi_server.resourceTypes.AdsAnalyticsMetricsFilter
+
+  }
+}

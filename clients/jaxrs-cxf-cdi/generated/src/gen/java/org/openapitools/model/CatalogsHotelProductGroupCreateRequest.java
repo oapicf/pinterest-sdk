@@ -20,6 +20,8 @@ import java.util.Objects;
 @ApiModel(description = "Request object for creating a hotel product group.")
 public class CatalogsHotelProductGroupCreateRequest   {
   
+  private String catalogId;
+
 
 public enum CatalogTypeEnum {
 
@@ -53,13 +55,31 @@ public enum CatalogTypeEnum {
 
   private CatalogTypeEnum catalogType;
 
-  private String name;
-
   private String description;
 
   private CatalogsHotelProductGroupFilters filters;
 
-  private String catalogId;
+  private String name;
+
+  /**
+   * Catalog id pertaining to the hotel product group.
+   **/
+  public CatalogsHotelProductGroupCreateRequest catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the hotel product group.")
+  @JsonProperty("catalog_id")
+  @NotNull
+ @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
 
   /**
    **/
@@ -77,25 +97,6 @@ public enum CatalogTypeEnum {
   }
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
-  }
-
-
-  /**
-   **/
-  public CatalogsHotelProductGroupCreateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("name")
-  @NotNull
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
   }
 
 
@@ -137,22 +138,21 @@ public enum CatalogTypeEnum {
 
 
   /**
-   * Catalog id pertaining to the hotel product group.
    **/
-  public CatalogsHotelProductGroupCreateRequest catalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public CatalogsHotelProductGroupCreateRequest name(String name) {
+    this.name = name;
     return this;
   }
 
   
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the hotel product group.")
-  @JsonProperty("catalog_id")
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("name")
   @NotNull
- @Pattern(regexp="^\\d+$")  public String getCatalogId() {
-    return catalogId;
+  public String getName() {
+    return name;
   }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -166,16 +166,16 @@ public enum CatalogTypeEnum {
       return false;
     }
     CatalogsHotelProductGroupCreateRequest catalogsHotelProductGroupCreateRequest = (CatalogsHotelProductGroupCreateRequest) o;
-    return Objects.equals(this.catalogType, catalogsHotelProductGroupCreateRequest.catalogType) &&
-        Objects.equals(this.name, catalogsHotelProductGroupCreateRequest.name) &&
+    return Objects.equals(this.catalogId, catalogsHotelProductGroupCreateRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsHotelProductGroupCreateRequest.catalogType) &&
         Objects.equals(this.description, catalogsHotelProductGroupCreateRequest.description) &&
         Objects.equals(this.filters, catalogsHotelProductGroupCreateRequest.filters) &&
-        Objects.equals(this.catalogId, catalogsHotelProductGroupCreateRequest.catalogId);
+        Objects.equals(this.name, catalogsHotelProductGroupCreateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters, catalogId);
+    return Objects.hash(catalogId, catalogType, description, filters, name);
   }
 
   @Override
@@ -183,11 +183,11 @@ public enum CatalogTypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelProductGroupCreateRequest {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

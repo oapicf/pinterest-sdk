@@ -69,7 +69,7 @@ bool assetAccessRequestsCreateAsync(char * accessToken,
 /*! \brief Cancel invites/requests. *Synchronous*
  *
  * Cancel membership/partnership invites and/or requests.
- * \param businessId Business id *Required*
+ * \param businessId Unique identifier of the requesting business. *Required*
  * \param cancelInvitesBody A list with invite ids *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -83,7 +83,7 @@ bool cancelInvitesOrRequestsSync(char * accessToken,
 /*! \brief Cancel invites/requests. *Asynchronous*
  *
  * Cancel membership/partnership invites and/or requests.
- * \param businessId Business id *Required*
+ * \param businessId Unique identifier of the requesting business. *Required*
  * \param cancelInvitesBody A list with invite ids *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -127,7 +127,7 @@ bool createAssetInvitesAsync(char * accessToken,
 /*! \brief Create invites or requests. *Synchronous*
  *
  * Create batch invites or requests. Can create batch invites or requests as described below. - Invite members to join the business. This would required specifying the following:     - invite_type=\"MEMBER_INVITE\"     - business_role=\"EMPLOYEE\" OR business_role=\"BIZ_ADMIN\" (To learn more about business roles, visit     https://help.pinterest.com/en/business/article/profile-permissions-in-business-access.)     - members - Invite partners to access your business assets. This would require specifying the following:     - invite_type=\"PARTNER_INVITE\"     - business_role=\"PARTNER\"     - partners - Request to be a partner so you can access their assets. This would require specifying the following:     - invite_type=\"PARTNER_REQUEST\"     - business_role=\"PARTNER\"     - partners
- * \param businessId Business id *Required*
+ * \param businessId Unique identifier of the requesting business. *Required*
  * \param createMembershipOrPartnershipInvitesBody An object with the properties: invite_type, partners, members, business_role *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -141,7 +141,7 @@ bool createMembershipOrPartnershipInvitesSync(char * accessToken,
 /*! \brief Create invites or requests. *Asynchronous*
  *
  * Create batch invites or requests. Can create batch invites or requests as described below. - Invite members to join the business. This would required specifying the following:     - invite_type=\"MEMBER_INVITE\"     - business_role=\"EMPLOYEE\" OR business_role=\"BIZ_ADMIN\" (To learn more about business roles, visit     https://help.pinterest.com/en/business/article/profile-permissions-in-business-access.)     - members - Invite partners to access your business assets. This would require specifying the following:     - invite_type=\"PARTNER_INVITE\"     - business_role=\"PARTNER\"     - partners - Request to be a partner so you can access their assets. This would require specifying the following:     - invite_type=\"PARTNER_REQUEST\"     - business_role=\"PARTNER\"     - partners
- * \param businessId Business id *Required*
+ * \param businessId Unique identifier of the requesting business. *Required*
  * \param createMembershipOrPartnershipInvitesBody An object with the properties: invite_type, partners, members, business_role *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*

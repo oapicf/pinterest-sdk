@@ -1,0 +1,20 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "questions" },
+      {"model": "results" },
+      {"model": "tie_breaker_custom_result" },
+      {"model": "tie_breaker_type" },
+    ]
+  }]
+}

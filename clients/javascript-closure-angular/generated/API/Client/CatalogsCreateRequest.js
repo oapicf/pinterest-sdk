@@ -7,8 +7,7 @@ goog.provide('API.Client.CatalogsCreateRequest');
 API.Client.CatalogsCreateRequest = function() {}
 
 /**
- * Type of the catalog entity.
- * @type {!string}
+ * @type {!API.Client.CatalogsType}
  * @export
  */
 API.Client.CatalogsCreateRequest.prototype.catalogType;
@@ -20,7 +19,3 @@ API.Client.CatalogsCreateRequest.prototype.catalogType;
  */
 API.Client.CatalogsCreateRequest.prototype.name;
 
-/** @enum {string} */
-API.Client.CatalogsCreateRequest.CatalogTypeEnum = { 
-  HOTEL: 'HOTEL',
-}

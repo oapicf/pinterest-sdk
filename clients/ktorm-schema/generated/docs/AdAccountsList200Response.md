@@ -5,7 +5,7 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;AdAccount&gt;**](AdAccount.md) | Ad accounts | 
+**items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;AdAccount&gt;**](AdAccount.md) |  | 
 **bookmark** | bookmark | text |  | **kotlin.String** |  |  [optional]
 
 

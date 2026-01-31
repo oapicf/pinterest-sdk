@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BidInMicroCurrency** | Pointer to **NullableInt64** | Bid price in micro currency. A value of 0 will stop distribution for this item in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. A value of &#x60;null&#x60; will fallback to the ad group&#39;s &#x60;bid_in_micro_currency&#x60;. | [optional] 
 **AppTypeMultipliers** | Pointer to [**NullableAppTypeMultipliers**](AppTypeMultipliers.md) |  | [optional] 
+**BidInMicroCurrency** | Pointer to **NullableInt64** | Bid price in micro currency. A value of 0 will stop distribution for this item in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. A value of &#x60;null&#x60; will fallback to the ad group&#39;s &#x60;bid_in_micro_currency&#x60;. | [optional] 
 **PlacementMultipliers** | Pointer to [**NullablePlacementMultipliers**](PlacementMultipliers.md) |  | [optional] 
 
 ## Methods
@@ -27,41 +27,6 @@ NewAdvancedAuctionBidOptionsWithDefaults instantiates a new AdvancedAuctionBidOp
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetBidInMicroCurrency
-
-`func (o *AdvancedAuctionBidOptions) GetBidInMicroCurrency() int64`
-
-GetBidInMicroCurrency returns the BidInMicroCurrency field if non-nil, zero value otherwise.
-
-### GetBidInMicroCurrencyOk
-
-`func (o *AdvancedAuctionBidOptions) GetBidInMicroCurrencyOk() (*int64, bool)`
-
-GetBidInMicroCurrencyOk returns a tuple with the BidInMicroCurrency field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBidInMicroCurrency
-
-`func (o *AdvancedAuctionBidOptions) SetBidInMicroCurrency(v int64)`
-
-SetBidInMicroCurrency sets BidInMicroCurrency field to given value.
-
-### HasBidInMicroCurrency
-
-`func (o *AdvancedAuctionBidOptions) HasBidInMicroCurrency() bool`
-
-HasBidInMicroCurrency returns a boolean if a field has been set.
-
-### SetBidInMicroCurrencyNil
-
-`func (o *AdvancedAuctionBidOptions) SetBidInMicroCurrencyNil(b bool)`
-
- SetBidInMicroCurrencyNil sets the value for BidInMicroCurrency to be an explicit nil
-
-### UnsetBidInMicroCurrency
-`func (o *AdvancedAuctionBidOptions) UnsetBidInMicroCurrency()`
-
-UnsetBidInMicroCurrency ensures that no value is present for BidInMicroCurrency, not even an explicit nil
 ### GetAppTypeMultipliers
 
 `func (o *AdvancedAuctionBidOptions) GetAppTypeMultipliers() AppTypeMultipliers`
@@ -97,6 +62,41 @@ HasAppTypeMultipliers returns a boolean if a field has been set.
 `func (o *AdvancedAuctionBidOptions) UnsetAppTypeMultipliers()`
 
 UnsetAppTypeMultipliers ensures that no value is present for AppTypeMultipliers, not even an explicit nil
+### GetBidInMicroCurrency
+
+`func (o *AdvancedAuctionBidOptions) GetBidInMicroCurrency() int64`
+
+GetBidInMicroCurrency returns the BidInMicroCurrency field if non-nil, zero value otherwise.
+
+### GetBidInMicroCurrencyOk
+
+`func (o *AdvancedAuctionBidOptions) GetBidInMicroCurrencyOk() (*int64, bool)`
+
+GetBidInMicroCurrencyOk returns a tuple with the BidInMicroCurrency field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBidInMicroCurrency
+
+`func (o *AdvancedAuctionBidOptions) SetBidInMicroCurrency(v int64)`
+
+SetBidInMicroCurrency sets BidInMicroCurrency field to given value.
+
+### HasBidInMicroCurrency
+
+`func (o *AdvancedAuctionBidOptions) HasBidInMicroCurrency() bool`
+
+HasBidInMicroCurrency returns a boolean if a field has been set.
+
+### SetBidInMicroCurrencyNil
+
+`func (o *AdvancedAuctionBidOptions) SetBidInMicroCurrencyNil(b bool)`
+
+ SetBidInMicroCurrencyNil sets the value for BidInMicroCurrency to be an explicit nil
+
+### UnsetBidInMicroCurrency
+`func (o *AdvancedAuctionBidOptions) UnsetBidInMicroCurrency()`
+
+UnsetBidInMicroCurrency ensures that no value is present for BidInMicroCurrency, not even an explicit nil
 ### GetPlacementMultipliers
 
 `func (o *AdvancedAuctionBidOptions) GetPlacementMultipliers() PlacementMultipliers`

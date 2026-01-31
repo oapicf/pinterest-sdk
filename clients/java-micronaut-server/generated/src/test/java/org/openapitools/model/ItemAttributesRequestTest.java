@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ItemAttributesRequestAllOfImageLink;
+import org.openapitools.model.UpdatableItemAttributesGtin;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -26,11 +27,379 @@ public class ItemAttributesRequestTest {
     }
 
     /**
+     * Test the property 'adImage0Link'
+     */
+    @Test
+    public void adImage0LinkTest() {
+        // TODO: test adImage0Link
+    }
+
+    /**
+     * Test the property 'adImage0Tag'
+     */
+    @Test
+    public void adImage0TagTest() {
+        // TODO: test adImage0Tag
+    }
+
+    /**
+     * Test the property 'adImage10Link'
+     */
+    @Test
+    public void adImage10LinkTest() {
+        // TODO: test adImage10Link
+    }
+
+    /**
+     * Test the property 'adImage10Tag'
+     */
+    @Test
+    public void adImage10TagTest() {
+        // TODO: test adImage10Tag
+    }
+
+    /**
+     * Test the property 'adImage11Link'
+     */
+    @Test
+    public void adImage11LinkTest() {
+        // TODO: test adImage11Link
+    }
+
+    /**
+     * Test the property 'adImage11Tag'
+     */
+    @Test
+    public void adImage11TagTest() {
+        // TODO: test adImage11Tag
+    }
+
+    /**
+     * Test the property 'adImage12Link'
+     */
+    @Test
+    public void adImage12LinkTest() {
+        // TODO: test adImage12Link
+    }
+
+    /**
+     * Test the property 'adImage12Tag'
+     */
+    @Test
+    public void adImage12TagTest() {
+        // TODO: test adImage12Tag
+    }
+
+    /**
+     * Test the property 'adImage13Link'
+     */
+    @Test
+    public void adImage13LinkTest() {
+        // TODO: test adImage13Link
+    }
+
+    /**
+     * Test the property 'adImage13Tag'
+     */
+    @Test
+    public void adImage13TagTest() {
+        // TODO: test adImage13Tag
+    }
+
+    /**
+     * Test the property 'adImage14Link'
+     */
+    @Test
+    public void adImage14LinkTest() {
+        // TODO: test adImage14Link
+    }
+
+    /**
+     * Test the property 'adImage14Tag'
+     */
+    @Test
+    public void adImage14TagTest() {
+        // TODO: test adImage14Tag
+    }
+
+    /**
+     * Test the property 'adImage15Link'
+     */
+    @Test
+    public void adImage15LinkTest() {
+        // TODO: test adImage15Link
+    }
+
+    /**
+     * Test the property 'adImage15Tag'
+     */
+    @Test
+    public void adImage15TagTest() {
+        // TODO: test adImage15Tag
+    }
+
+    /**
+     * Test the property 'adImage16Link'
+     */
+    @Test
+    public void adImage16LinkTest() {
+        // TODO: test adImage16Link
+    }
+
+    /**
+     * Test the property 'adImage16Tag'
+     */
+    @Test
+    public void adImage16TagTest() {
+        // TODO: test adImage16Tag
+    }
+
+    /**
+     * Test the property 'adImage17Link'
+     */
+    @Test
+    public void adImage17LinkTest() {
+        // TODO: test adImage17Link
+    }
+
+    /**
+     * Test the property 'adImage17Tag'
+     */
+    @Test
+    public void adImage17TagTest() {
+        // TODO: test adImage17Tag
+    }
+
+    /**
+     * Test the property 'adImage18Link'
+     */
+    @Test
+    public void adImage18LinkTest() {
+        // TODO: test adImage18Link
+    }
+
+    /**
+     * Test the property 'adImage18Tag'
+     */
+    @Test
+    public void adImage18TagTest() {
+        // TODO: test adImage18Tag
+    }
+
+    /**
+     * Test the property 'adImage19Link'
+     */
+    @Test
+    public void adImage19LinkTest() {
+        // TODO: test adImage19Link
+    }
+
+    /**
+     * Test the property 'adImage19Tag'
+     */
+    @Test
+    public void adImage19TagTest() {
+        // TODO: test adImage19Tag
+    }
+
+    /**
+     * Test the property 'adImage1Link'
+     */
+    @Test
+    public void adImage1LinkTest() {
+        // TODO: test adImage1Link
+    }
+
+    /**
+     * Test the property 'adImage1Tag'
+     */
+    @Test
+    public void adImage1TagTest() {
+        // TODO: test adImage1Tag
+    }
+
+    /**
+     * Test the property 'adImage2Link'
+     */
+    @Test
+    public void adImage2LinkTest() {
+        // TODO: test adImage2Link
+    }
+
+    /**
+     * Test the property 'adImage2Tag'
+     */
+    @Test
+    public void adImage2TagTest() {
+        // TODO: test adImage2Tag
+    }
+
+    /**
+     * Test the property 'adImage3Link'
+     */
+    @Test
+    public void adImage3LinkTest() {
+        // TODO: test adImage3Link
+    }
+
+    /**
+     * Test the property 'adImage3Tag'
+     */
+    @Test
+    public void adImage3TagTest() {
+        // TODO: test adImage3Tag
+    }
+
+    /**
+     * Test the property 'adImage4Link'
+     */
+    @Test
+    public void adImage4LinkTest() {
+        // TODO: test adImage4Link
+    }
+
+    /**
+     * Test the property 'adImage4Tag'
+     */
+    @Test
+    public void adImage4TagTest() {
+        // TODO: test adImage4Tag
+    }
+
+    /**
+     * Test the property 'adImage5Link'
+     */
+    @Test
+    public void adImage5LinkTest() {
+        // TODO: test adImage5Link
+    }
+
+    /**
+     * Test the property 'adImage5Tag'
+     */
+    @Test
+    public void adImage5TagTest() {
+        // TODO: test adImage5Tag
+    }
+
+    /**
+     * Test the property 'adImage6Link'
+     */
+    @Test
+    public void adImage6LinkTest() {
+        // TODO: test adImage6Link
+    }
+
+    /**
+     * Test the property 'adImage6Tag'
+     */
+    @Test
+    public void adImage6TagTest() {
+        // TODO: test adImage6Tag
+    }
+
+    /**
+     * Test the property 'adImage7Link'
+     */
+    @Test
+    public void adImage7LinkTest() {
+        // TODO: test adImage7Link
+    }
+
+    /**
+     * Test the property 'adImage7Tag'
+     */
+    @Test
+    public void adImage7TagTest() {
+        // TODO: test adImage7Tag
+    }
+
+    /**
+     * Test the property 'adImage8Link'
+     */
+    @Test
+    public void adImage8LinkTest() {
+        // TODO: test adImage8Link
+    }
+
+    /**
+     * Test the property 'adImage8Tag'
+     */
+    @Test
+    public void adImage8TagTest() {
+        // TODO: test adImage8Tag
+    }
+
+    /**
+     * Test the property 'adImage9Link'
+     */
+    @Test
+    public void adImage9LinkTest() {
+        // TODO: test adImage9Link
+    }
+
+    /**
+     * Test the property 'adImage9Tag'
+     */
+    @Test
+    public void adImage9TagTest() {
+        // TODO: test adImage9Tag
+    }
+
+    /**
      * Test the property 'adLink'
      */
     @Test
     public void adLinkTest() {
         // TODO: test adLink
+    }
+
+    /**
+     * Test the property 'adVideo0Link'
+     */
+    @Test
+    public void adVideo0LinkTest() {
+        // TODO: test adVideo0Link
+    }
+
+    /**
+     * Test the property 'adVideo0Tag'
+     */
+    @Test
+    public void adVideo0TagTest() {
+        // TODO: test adVideo0Tag
+    }
+
+    /**
+     * Test the property 'adVideo1Link'
+     */
+    @Test
+    public void adVideo1LinkTest() {
+        // TODO: test adVideo1Link
+    }
+
+    /**
+     * Test the property 'adVideo1Tag'
+     */
+    @Test
+    public void adVideo1TagTest() {
+        // TODO: test adVideo1Tag
+    }
+
+    /**
+     * Test the property 'adVideo2Link'
+     */
+    @Test
+    public void adVideo2LinkTest() {
+        // TODO: test adVideo2Link
+    }
+
+    /**
+     * Test the property 'adVideo2Tag'
+     */
+    @Test
+    public void adVideo2TagTest() {
+        // TODO: test adVideo2Tag
     }
 
     /**
@@ -47,6 +416,14 @@ public class ItemAttributesRequestTest {
     @Test
     public void ageGroupTest() {
         // TODO: test ageGroup
+    }
+
+    /**
+     * Test the property 'androidDeepLink'
+     */
+    @Test
+    public void androidDeepLinkTest() {
+        // TODO: test androidDeepLink
     }
 
     /**
@@ -138,6 +515,46 @@ public class ItemAttributesRequestTest {
     }
 
     /**
+     * Test the property 'customNumber0'
+     */
+    @Test
+    public void customNumber0Test() {
+        // TODO: test customNumber0
+    }
+
+    /**
+     * Test the property 'customNumber1'
+     */
+    @Test
+    public void customNumber1Test() {
+        // TODO: test customNumber1
+    }
+
+    /**
+     * Test the property 'customNumber2'
+     */
+    @Test
+    public void customNumber2Test() {
+        // TODO: test customNumber2
+    }
+
+    /**
+     * Test the property 'customNumber3'
+     */
+    @Test
+    public void customNumber3Test() {
+        // TODO: test customNumber3
+    }
+
+    /**
+     * Test the property 'customNumber4'
+     */
+    @Test
+    public void customNumber4Test() {
+        // TODO: test customNumber4
+    }
+
+    /**
      * Test the property 'description'
      */
     @Test
@@ -191,6 +608,22 @@ public class ItemAttributesRequestTest {
     @Test
     public void idTest() {
         // TODO: test id
+    }
+
+    /**
+     * Test the property 'installmentPrice'
+     */
+    @Test
+    public void installmentPriceTest() {
+        // TODO: test installmentPrice
+    }
+
+    /**
+     * Test the property 'iosDeepLink'
+     */
+    @Test
+    public void iosDeepLinkTest() {
+        // TODO: test iosDeepLink
     }
 
     /**
@@ -290,11 +723,27 @@ public class ItemAttributesRequestTest {
     }
 
     /**
+     * Test the property 'promotionId'
+     */
+    @Test
+    public void promotionIdTest() {
+        // TODO: test promotionId
+    }
+
+    /**
      * Test the property 'salePrice'
      */
     @Test
     public void salePriceTest() {
         // TODO: test salePrice
+    }
+
+    /**
+     * Test the property 'salePriceEffectiveDate'
+     */
+    @Test
+    public void salePriceEffectiveDateTest() {
+        // TODO: test salePriceEffectiveDate
     }
 
     /**
@@ -370,6 +819,22 @@ public class ItemAttributesRequestTest {
     }
 
     /**
+     * Test the property 'unitPricingBaseMeasure'
+     */
+    @Test
+    public void unitPricingBaseMeasureTest() {
+        // TODO: test unitPricingBaseMeasure
+    }
+
+    /**
+     * Test the property 'unitPricingMeasure'
+     */
+    @Test
+    public void unitPricingMeasureTest() {
+        // TODO: test unitPricingMeasure
+    }
+
+    /**
      * Test the property 'variantNames'
      */
     @Test
@@ -399,6 +864,14 @@ public class ItemAttributesRequestTest {
     @Test
     public void imageLinkTest() {
         // TODO: test imageLink
+    }
+
+    /**
+     * Test the property 'savePinDisabled'
+     */
+    @Test
+    public void savePinDisabledTest() {
+        // TODO: test savePinDisabled
     }
 
     /**

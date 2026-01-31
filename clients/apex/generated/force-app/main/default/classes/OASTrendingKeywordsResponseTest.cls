@@ -72,6 +72,6 @@ private class OASTrendingKeywordsResponseTest {
     @isTest
     private static void defaultValuesPopulated() {
         OASTrendingKeywordsResponse trendingKeywordsResponse = new OASTrendingKeywordsResponse();
-        System.assertEquals(new List<OASTrendingKeywordsResponseTrendsInn>(), trendingKeywordsResponse.trends);
+        System.assertEquals(new List<OASTrendingKeyword>(), trendingKeywordsResponse.trends);
     }
 }

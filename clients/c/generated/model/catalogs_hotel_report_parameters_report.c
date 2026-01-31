@@ -5,13 +5,13 @@
 
 
 char* catalogs_hotel_report_parameters_report_report_type_ToString(pinterest_rest_api_catalogs_hotel_report_parameters_report_REPORTTYPE_e report_type) {
-    char* report_typeArray[] =  { "NULL", "FEED_INGESTION_ISSUES", "DISTRIBUTION_ISSUES" };
+    char* report_typeArray[] =  { "NULL", "FEED_INGESTION_ISSUES", "DISTRIBUTION_ISSUES", "ALL_ITEMS" };
     return report_typeArray[report_type];
 }
 
 pinterest_rest_api_catalogs_hotel_report_parameters_report_REPORTTYPE_e catalogs_hotel_report_parameters_report_report_type_FromString(char* report_type){
     int stringToReturn = 0;
-    char *report_typeArray[] =  { "NULL", "FEED_INGESTION_ISSUES", "DISTRIBUTION_ISSUES" };
+    char *report_typeArray[] =  { "NULL", "FEED_INGESTION_ISSUES", "DISTRIBUTION_ISSUES", "ALL_ITEMS" };
     size_t sizeofArray = sizeof(report_typeArray) / sizeof(report_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(report_type, report_typeArray[stringToReturn]) == 0) {

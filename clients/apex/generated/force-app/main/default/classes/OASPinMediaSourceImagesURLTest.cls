@@ -79,8 +79,8 @@ private class OASPinMediaSourceImagesURLTest {
     @isTest
     private static void defaultValuesPopulated() {
         OASPinMediaSourceImagesURL pinMediaSourceImagesURL = new OASPinMediaSourceImagesURL();
-        System.assertEquals(new List<OASPinMediaSourceImagesURLItemsInner>(), pinMediaSourceImagesURL.items);
-        System.assertEquals(null, pinMediaSourceImagesURL.sourceType);
+        System.assertEquals(new List<OASPinMediaSourceImagesURLItem>(), pinMediaSourceImagesURL.items);
         System.assertEquals(null, pinMediaSourceImagesURL.index);
+        System.assertEquals(null, pinMediaSourceImagesURL.sourceType);
     }
 }

@@ -38,7 +38,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Validated
 @Tag(name = "resources", description = "View metadata about available metrics and targeting options in the Pinterest API.")
 public interface ResourcesApi {
@@ -69,7 +69,8 @@ public interface ResourcesApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -122,7 +123,8 @@ public interface ResourcesApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read", "pins:read", "user_accounts:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read", "pins:read", "user_accounts:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read", "pins:read", "user_accounts:read" })
         }
     )
     @RequestMapping(
@@ -175,7 +177,8 @@ public interface ResourcesApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -208,7 +211,7 @@ public interface ResourcesApi {
     String PATH_LEAD_FORM_QUESTIONS_GET = "/resources/lead_form_questions";
     /**
      * GET /resources/lead_form_questions : Get lead form questions
-     * Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      *
      * @return Success (status code 200)
      *         or Unexpected error (status code 200)
@@ -216,7 +219,7 @@ public interface ResourcesApi {
     @Operation(
         operationId = "leadFormQuestionsGet",
         summary = "Get lead form questions",
-        description = "Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>",
+        description = "Get a list of all lead form question type names. Some questions might not be used.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>",
         tags = { "resources" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success"),
@@ -330,7 +333,8 @@ public interface ResourcesApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(

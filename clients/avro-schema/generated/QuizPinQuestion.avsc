@@ -5,6 +5,15 @@
   "name": "QuizPinQuestion",
   "fields": [
     {
+      "name": "options",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.QuizPinOption"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
       "name": "question_id",
       "type": ["null", "double"],
       "doc": "",
@@ -13,15 +22,6 @@
     {
       "name": "question_text",
       "type": ["null", "string"],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "options",
-      "type": ["null", {
-        "type": "array",
-        "items": "model.QuizPinOption"
-      }],
       "doc": "",
       "default": null
     }

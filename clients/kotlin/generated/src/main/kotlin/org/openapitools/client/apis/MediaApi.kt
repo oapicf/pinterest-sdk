@@ -19,11 +19,11 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.Media
 import org.openapitools.client.models.MediaList200Response
 import org.openapitools.client.models.MediaUpload
-import org.openapitools.client.models.MediaUploadDetails
-import org.openapitools.client.models.MediaUploadRequest
+import org.openapitools.client.models.MediaUploadCreate
+import org.openapitools.client.models.PinterestLibError
 
 import com.squareup.moshi.Json
 
@@ -52,8 +52,8 @@ open class MediaApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     /**
      * POST /media
      * Register media upload
-     * Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using &lt;tt&gt;curl&lt;/tt&gt;, for example) to &lt;tt&gt;upload_url&lt;/tt&gt; using the &lt;tt&gt;Content-Type&lt;/tt&gt; header value. Send the media file&#39;s contents as the request&#39;s &lt;tt&gt;file&lt;/tt&gt; parameter and also include all of the parameters from &lt;tt&gt;upload_parameters&lt;/tt&gt;.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
-     * @param mediaUploadRequest Create a media upload request
+     * Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using &#x60;curl&#x60;, for example) to &#x60;upload_url&#x60; using the &#x60;Content-Type&#x60; header value. Send the media file&#39;s contents as the request&#39;s &#x60;file&#x60; parameter and also include all of the parameters from &#x60;upload_parameters&#x60;.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
+     * @param mediaUploadCreate 
      * @return MediaUpload
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -63,8 +63,8 @@ open class MediaApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun mediaCreate(mediaUploadRequest: MediaUploadRequest) : MediaUpload {
-        val localVarResponse = mediaCreateWithHttpInfo(mediaUploadRequest = mediaUploadRequest)
+    fun mediaCreate(mediaUploadCreate: MediaUploadCreate) : MediaUpload {
+        val localVarResponse = mediaCreateWithHttpInfo(mediaUploadCreate = mediaUploadCreate)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as MediaUpload
@@ -84,18 +84,18 @@ open class MediaApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     /**
      * POST /media
      * Register media upload
-     * Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using &lt;tt&gt;curl&lt;/tt&gt;, for example) to &lt;tt&gt;upload_url&lt;/tt&gt; using the &lt;tt&gt;Content-Type&lt;/tt&gt; header value. Send the media file&#39;s contents as the request&#39;s &lt;tt&gt;file&lt;/tt&gt; parameter and also include all of the parameters from &lt;tt&gt;upload_parameters&lt;/tt&gt;.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
-     * @param mediaUploadRequest Create a media upload request
+     * Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using &#x60;curl&#x60;, for example) to &#x60;upload_url&#x60; using the &#x60;Content-Type&#x60; header value. Send the media file&#39;s contents as the request&#39;s &#x60;file&#x60; parameter and also include all of the parameters from &#x60;upload_parameters&#x60;.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
+     * @param mediaUploadCreate 
      * @return ApiResponse<MediaUpload?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun mediaCreateWithHttpInfo(mediaUploadRequest: MediaUploadRequest) : ApiResponse<MediaUpload?> {
-        val localVariableConfig = mediaCreateRequestConfig(mediaUploadRequest = mediaUploadRequest)
+    fun mediaCreateWithHttpInfo(mediaUploadCreate: MediaUploadCreate) : ApiResponse<MediaUpload?> {
+        val localVariableConfig = mediaCreateRequestConfig(mediaUploadCreate = mediaUploadCreate)
 
-        return request<MediaUploadRequest, MediaUpload>(
+        return request<MediaUploadCreate, MediaUpload>(
             localVariableConfig
         )
     }
@@ -103,11 +103,11 @@ open class MediaApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     /**
      * To obtain the request config of the operation mediaCreate
      *
-     * @param mediaUploadRequest Create a media upload request
+     * @param mediaUploadCreate 
      * @return RequestConfig
      */
-    fun mediaCreateRequestConfig(mediaUploadRequest: MediaUploadRequest) : RequestConfig<MediaUploadRequest> {
-        val localVariableBody = mediaUploadRequest
+    fun mediaCreateRequestConfig(mediaUploadCreate: MediaUploadCreate) : RequestConfig<MediaUploadCreate> {
+        val localVariableBody = mediaUploadCreate
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"
@@ -126,9 +126,9 @@ open class MediaApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     /**
      * GET /media/{media_id}
      * Get media upload details
-     * Get details for a registered media upload, including its current status.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
-     * @param mediaId Media identifier
-     * @return MediaUploadDetails
+     * Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
+     * @param mediaId Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
+     * @return Media
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -137,11 +137,11 @@ open class MediaApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun mediaGet(mediaId: kotlin.String) : MediaUploadDetails {
+    fun mediaGet(mediaId: kotlin.String) : Media {
         val localVarResponse = mediaGetWithHttpInfo(mediaId = mediaId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as MediaUploadDetails
+            ResponseType.Success -> (localVarResponse as Success<*>).data as Media
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -158,18 +158,18 @@ open class MediaApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     /**
      * GET /media/{media_id}
      * Get media upload details
-     * Get details for a registered media upload, including its current status.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
-     * @param mediaId Media identifier
-     * @return ApiResponse<MediaUploadDetails?>
+     * Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
+     * @param mediaId Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
+     * @return ApiResponse<Media?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun mediaGetWithHttpInfo(mediaId: kotlin.String) : ApiResponse<MediaUploadDetails?> {
+    fun mediaGetWithHttpInfo(mediaId: kotlin.String) : ApiResponse<Media?> {
         val localVariableConfig = mediaGetRequestConfig(mediaId = mediaId)
 
-        return request<Unit, MediaUploadDetails>(
+        return request<Unit, Media>(
             localVariableConfig
         )
     }
@@ -177,7 +177,7 @@ open class MediaApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     /**
      * To obtain the request config of the operation mediaGet
      *
-     * @param mediaId Media identifier
+     * @param mediaId Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
      * @return RequestConfig
      */
     fun mediaGetRequestConfig(mediaId: kotlin.String) : RequestConfig<Unit> {
@@ -199,9 +199,9 @@ open class MediaApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     /**
      * GET /media
      * List media uploads
-     * List media uploads filtered by given parameters.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
+     * List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return MediaList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -232,9 +232,9 @@ open class MediaApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
     /**
      * GET /media
      * List media uploads
-     * List media uploads filtered by given parameters.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
+     * List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return ApiResponse<MediaList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -253,7 +253,7 @@ open class MediaApi(basePath: kotlin.String = defaultBasePath, client: Call.Fact
      * To obtain the request config of the operation mediaList
      *
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
     fun mediaListRequestConfig(bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {

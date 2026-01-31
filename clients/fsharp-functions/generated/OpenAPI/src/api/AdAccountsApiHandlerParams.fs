@@ -2,12 +2,13 @@ namespace OpenAPI
 
 open OpenAPI.Model.AdAccount
 open OpenAPI.Model.AdAccountAnalyticsResponseInner
-open OpenAPI.Model.AdAccountCreateRequest
+open OpenAPI.Model.AdAccountCreate
 open OpenAPI.Model.AdAccountsList200Response
 open OpenAPI.Model.AdsAnalyticsCreateAsyncRequest
 open OpenAPI.Model.AdsAnalyticsCreateAsyncResponse
 open OpenAPI.Model.AdsAnalyticsGetAsyncResponse
 open OpenAPI.Model.AdsAnalyticsTargetingType
+open OpenAPI.Model.ConversionProductReportRequest
 open OpenAPI.Model.ConversionReportAttributionType
 open OpenAPI.Model.CreateMMMReportRequest
 open OpenAPI.Model.CreateMMMReportResponse
@@ -15,6 +16,9 @@ open OpenAPI.Model.Error
 open OpenAPI.Model.GetMMMReportResponse
 open OpenAPI.Model.Granularity
 open OpenAPI.Model.MetricsResponse
+open OpenAPI.Model.PinterestLibError
+open OpenAPI.Model.ReportingTimeZone
+open OpenAPI.Model.TemplateBasedReport
 open OpenAPI.Model.TemplatesList200Response
 open System.Collections.Generic
 open System
@@ -53,6 +57,9 @@ module AdAccountsApiHandlerParams =
 
 
       conversionReportTime : string option;
+
+
+      reportingTimezone : ReportingTimeZone option;
 
     }
     //#endregion
@@ -115,7 +122,10 @@ module AdAccountsApiHandlerParams =
       conversionReportTime : string option;
 
 
-      attributionTypes : ConversionReportAttributionType option;
+      attributionTypes : ConversionReportAttributionType[] option;
+
+
+      reportingTimezone : ReportingTimeZone option;
 
     }
     //#endregion
@@ -139,7 +149,7 @@ module AdAccountsApiHandlerParams =
 
     //#region Body parameters
     [<CLIMutable>]
-    type AdAccountsCreateBodyParams = AdAccountCreateRequest
+    type AdAccountsCreateBodyParams = AdAccountCreate
     //#endregion
 
 
@@ -148,11 +158,41 @@ module AdAccountsApiHandlerParams =
       
     }
 
-    type AdAccountsCreateDefaultStatusCodeResponse = {
-      content:Error;
+    type AdAccountsCreateStatusCode201Response = {
+      content:AdAccount;
       
     }
-    type AdAccountsCreateResult = AdAccountsCreateStatusCode200 of AdAccountsCreateStatusCode200Response|AdAccountsCreateDefaultStatusCode of AdAccountsCreateDefaultStatusCodeResponse
+
+    type AdAccountsCreateStatusCode400Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountsCreateStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountsCreateStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountsCreateStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountsCreateStatusCode429Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountsCreateDefaultStatusCodeResponse = {
+      content:PinterestLibError;
+      
+    }
+    type AdAccountsCreateResult = AdAccountsCreateStatusCode200 of AdAccountsCreateStatusCode200Response|AdAccountsCreateStatusCode201 of AdAccountsCreateStatusCode201Response|AdAccountsCreateStatusCode400 of AdAccountsCreateStatusCode400Response|AdAccountsCreateStatusCode401 of AdAccountsCreateStatusCode401Response|AdAccountsCreateStatusCode403 of AdAccountsCreateStatusCode403Response|AdAccountsCreateStatusCode404 of AdAccountsCreateStatusCode404Response|AdAccountsCreateStatusCode429 of AdAccountsCreateStatusCode429Response|AdAccountsCreateDefaultStatusCode of AdAccountsCreateDefaultStatusCodeResponse
 
     type AdAccountsCreateArgs = {
       bodyParams:AdAccountsCreateBodyParams
@@ -170,11 +210,36 @@ module AdAccountsApiHandlerParams =
       
     }
 
-    type AdAccountsGetDefaultStatusCodeResponse = {
-      content:Error;
+    type AdAccountsGetStatusCode400Response = {
+      content:PinterestLibError;
       
     }
-    type AdAccountsGetResult = AdAccountsGetStatusCode200 of AdAccountsGetStatusCode200Response|AdAccountsGetDefaultStatusCode of AdAccountsGetDefaultStatusCodeResponse
+
+    type AdAccountsGetStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountsGetStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountsGetStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountsGetStatusCode429Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountsGetDefaultStatusCodeResponse = {
+      content:PinterestLibError;
+      
+    }
+    type AdAccountsGetResult = AdAccountsGetStatusCode200 of AdAccountsGetStatusCode200Response|AdAccountsGetStatusCode400 of AdAccountsGetStatusCode400Response|AdAccountsGetStatusCode401 of AdAccountsGetStatusCode401Response|AdAccountsGetStatusCode403 of AdAccountsGetStatusCode403Response|AdAccountsGetStatusCode404 of AdAccountsGetStatusCode404Response|AdAccountsGetStatusCode429 of AdAccountsGetStatusCode429Response|AdAccountsGetDefaultStatusCode of AdAccountsGetDefaultStatusCodeResponse
 
     type AdAccountsGetArgs = {
       pathParams:AdAccountsGetPathParams;
@@ -183,13 +248,13 @@ module AdAccountsApiHandlerParams =
     //#region Query parameters
     [<CLIMutable>]
     type AdAccountsListQueryParams = {
+      includeSharedAccounts : bool option;
+
+
       bookmark : string option;
 
 
       pageSize : int option;
-
-
-      includeSharedAccounts : bool option;
 
     }
     //#endregion
@@ -200,14 +265,72 @@ module AdAccountsApiHandlerParams =
       
     }
 
-    type AdAccountsListDefaultStatusCodeResponse = {
-      content:Error;
+    type AdAccountsListStatusCode400Response = {
+      content:PinterestLibError;
       
     }
-    type AdAccountsListResult = AdAccountsListStatusCode200 of AdAccountsListStatusCode200Response|AdAccountsListDefaultStatusCode of AdAccountsListDefaultStatusCodeResponse
+
+    type AdAccountsListStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountsListStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountsListStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountsListStatusCode429Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AdAccountsListDefaultStatusCodeResponse = {
+      content:PinterestLibError;
+      
+    }
+    type AdAccountsListResult = AdAccountsListStatusCode200 of AdAccountsListStatusCode200Response|AdAccountsListStatusCode400 of AdAccountsListStatusCode400Response|AdAccountsListStatusCode401 of AdAccountsListStatusCode401Response|AdAccountsListStatusCode403 of AdAccountsListStatusCode403Response|AdAccountsListStatusCode404 of AdAccountsListStatusCode404Response|AdAccountsListStatusCode429 of AdAccountsListStatusCode429Response|AdAccountsListDefaultStatusCode of AdAccountsListDefaultStatusCodeResponse
 
     type AdAccountsListArgs = {
       queryParams:Result<AdAccountsListQueryParams,string>;
+    }
+    //#region Path parameters
+    [<CLIMutable>]
+    type AnalyticsCreateConversionProductReportPathParams = {
+      adAccountId : string ;
+    }
+    //#endregion
+
+    //#region Body parameters
+    [<CLIMutable>]
+    type AnalyticsCreateConversionProductReportBodyParams = ConversionProductReportRequest
+    //#endregion
+
+
+    type AnalyticsCreateConversionProductReportStatusCode200Response = {
+      content:AdsAnalyticsCreateAsyncResponse;
+      
+    }
+
+    type AnalyticsCreateConversionProductReportStatusCode400Response = {
+      content:Error;
+      
+    }
+
+    type AnalyticsCreateConversionProductReportDefaultStatusCodeResponse = {
+      content:Error;
+      
+    }
+    type AnalyticsCreateConversionProductReportResult = AnalyticsCreateConversionProductReportStatusCode200 of AnalyticsCreateConversionProductReportStatusCode200Response|AnalyticsCreateConversionProductReportStatusCode400 of AnalyticsCreateConversionProductReportStatusCode400Response|AnalyticsCreateConversionProductReportDefaultStatusCode of AnalyticsCreateConversionProductReportDefaultStatusCodeResponse
+
+    type AnalyticsCreateConversionProductReportArgs = {
+      pathParams:AnalyticsCreateConversionProductReportPathParams;
+      bodyParams:AnalyticsCreateConversionProductReportBodyParams
     }
     //#region Path parameters
     [<CLIMutable>]
@@ -300,24 +423,85 @@ module AdAccountsApiHandlerParams =
 
 
     type AnalyticsCreateTemplateReportStatusCode200Response = {
-      content:AdsAnalyticsCreateAsyncResponse;
+      content:TemplateBasedReport;
+      
+    }
+
+    type AnalyticsCreateTemplateReportStatusCode201Response = {
+      content:TemplateBasedReport;
       
     }
 
     type AnalyticsCreateTemplateReportStatusCode400Response = {
-      content:Error;
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsCreateTemplateReportStatusCode401Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsCreateTemplateReportStatusCode403Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsCreateTemplateReportStatusCode404Response = {
+      content:PinterestLibError;
+      
+    }
+
+    type AnalyticsCreateTemplateReportStatusCode429Response = {
+      content:PinterestLibError;
       
     }
 
     type AnalyticsCreateTemplateReportDefaultStatusCodeResponse = {
-      content:Error;
+      content:PinterestLibError;
       
     }
-    type AnalyticsCreateTemplateReportResult = AnalyticsCreateTemplateReportStatusCode200 of AnalyticsCreateTemplateReportStatusCode200Response|AnalyticsCreateTemplateReportStatusCode400 of AnalyticsCreateTemplateReportStatusCode400Response|AnalyticsCreateTemplateReportDefaultStatusCode of AnalyticsCreateTemplateReportDefaultStatusCodeResponse
+    type AnalyticsCreateTemplateReportResult = AnalyticsCreateTemplateReportStatusCode200 of AnalyticsCreateTemplateReportStatusCode200Response|AnalyticsCreateTemplateReportStatusCode201 of AnalyticsCreateTemplateReportStatusCode201Response|AnalyticsCreateTemplateReportStatusCode400 of AnalyticsCreateTemplateReportStatusCode400Response|AnalyticsCreateTemplateReportStatusCode401 of AnalyticsCreateTemplateReportStatusCode401Response|AnalyticsCreateTemplateReportStatusCode403 of AnalyticsCreateTemplateReportStatusCode403Response|AnalyticsCreateTemplateReportStatusCode404 of AnalyticsCreateTemplateReportStatusCode404Response|AnalyticsCreateTemplateReportStatusCode429 of AnalyticsCreateTemplateReportStatusCode429Response|AnalyticsCreateTemplateReportDefaultStatusCode of AnalyticsCreateTemplateReportDefaultStatusCodeResponse
 
     type AnalyticsCreateTemplateReportArgs = {
       pathParams:AnalyticsCreateTemplateReportPathParams;
       queryParams:Result<AnalyticsCreateTemplateReportQueryParams,string>;
+    }
+    //#region Path parameters
+    [<CLIMutable>]
+    type AnalyticsGetConversionProductReportPathParams = {
+      adAccountId : string ;
+    }
+    //#endregion
+
+    //#region Query parameters
+    [<CLIMutable>]
+    type AnalyticsGetConversionProductReportQueryParams = {
+      token : string ;
+
+    }
+    //#endregion
+
+
+    type AnalyticsGetConversionProductReportStatusCode200Response = {
+      content:AdsAnalyticsGetAsyncResponse;
+      
+    }
+
+    type AnalyticsGetConversionProductReportStatusCode400Response = {
+      content:Error;
+      
+    }
+
+    type AnalyticsGetConversionProductReportDefaultStatusCodeResponse = {
+      content:Error;
+      
+    }
+    type AnalyticsGetConversionProductReportResult = AnalyticsGetConversionProductReportStatusCode200 of AnalyticsGetConversionProductReportStatusCode200Response|AnalyticsGetConversionProductReportStatusCode400 of AnalyticsGetConversionProductReportStatusCode400Response|AnalyticsGetConversionProductReportDefaultStatusCode of AnalyticsGetConversionProductReportDefaultStatusCodeResponse
+
+    type AnalyticsGetConversionProductReportArgs = {
+      pathParams:AnalyticsGetConversionProductReportPathParams;
+      queryParams:Result<AnalyticsGetConversionProductReportQueryParams,string>;
     }
     //#region Path parameters
     [<CLIMutable>]

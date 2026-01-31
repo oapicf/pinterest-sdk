@@ -15,5 +15,7 @@ The class is defined in **[GetBusinessAssetTypeResponse.java](../../src/main/jav
 
 * `CONVERSION_TAG` (value: `"CONVERSION_TAG"`)
 
+* `CATALOG` (value: `"CATALOG"`)
+
 
 

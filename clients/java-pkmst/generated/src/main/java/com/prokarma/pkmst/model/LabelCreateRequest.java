@@ -1,0 +1,115 @@
+package com.prokarma.pkmst.model;
+
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.prokarma.pkmst.model.LabelCreateRequestLabelsInner;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+/**
+ * Response class to be returned by Api
+ * @author pkmst
+ *
+ */
+/**
+ * LabelCreateRequest
+ */
+
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+public class LabelCreateRequest   {
+  @JsonProperty("labels")
+  
+  private List<LabelCreateRequestLabelsInner> labels = new ArrayList<>();
+
+  @JsonProperty("parent_id")
+  private String parentId;
+
+  public LabelCreateRequest labels(List<LabelCreateRequestLabelsInner> labels) {
+    this.labels = labels;
+    return this;
+  }
+
+  public LabelCreateRequest addLabelsItem(LabelCreateRequestLabelsInner labelsItem) {
+    if (this.labels == null) {
+      this.labels = new ArrayList<>();
+    }
+    this.labels.add(labelsItem);
+    return this;
+  }
+
+  /**
+   * Labels that you are applying to the campaign.
+   * @return labels
+   */
+  @ApiModelProperty(required = true, value = "Labels that you are applying to the campaign.")
+  public List<LabelCreateRequestLabelsInner> getLabels() {
+    return labels;
+  }
+
+  public void setLabels(List<LabelCreateRequestLabelsInner> labels) {
+    this.labels = labels;
+  }
+
+  public LabelCreateRequest parentId(String parentId) {
+    this.parentId = parentId;
+    return this;
+  }
+
+  /**
+   * Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
+   * @return parentId
+   */
+  @ApiModelProperty(example = "626753052072", required = true, value = "Unique identifier of the asset you are labelling. Currently, you can only label campaigns.")
+  public String getParentId() {
+    return parentId;
+  }
+
+  public void setParentId(String parentId) {
+    this.parentId = parentId;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    LabelCreateRequest labelCreateRequest = (LabelCreateRequest) o;
+    return Objects.equals(this.labels, labelCreateRequest.labels) &&
+        Objects.equals(this.parentId, labelCreateRequest.parentId);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(labels, parentId);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class LabelCreateRequest {\n");
+    
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+    sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}
+

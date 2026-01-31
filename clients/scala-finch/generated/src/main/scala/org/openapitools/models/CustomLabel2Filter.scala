@@ -5,13 +5,13 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.CatalogsProductGroupMultipleStringCriteria
+import org.openapitools.models.CatalogsProductGroupFilterOperatorTypeCriteria
 
 /**
  * 
  * @param CUSTOMUnderscoreLABELUnderscore2 
  */
-case class CustomLabel2Filter(CUSTOMUnderscoreLABELUnderscore2: CatalogsProductGroupMultipleStringCriteria
+case class CustomLabel2Filter(CUSTOMUnderscoreLABELUnderscore2: CatalogsProductGroupFilterOperatorTypeCriteria
                 )
 
 object CustomLabel2Filter {

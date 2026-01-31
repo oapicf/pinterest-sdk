@@ -73,22 +73,24 @@ private class OASConversionEventsDataInnerTest {
     private static void maintainRenamedProperties() {
         OASConversionEventsDataInner conversionEventsDataInner = new OASConversionEventsDataInner();
         Map<String, String> x-property-mappings = conversionEventsDataInner.getx-property-mappings();
-        System.assertEquals('eventName', x-property-mappings.get('event_name'));
         System.assertEquals('actionSource', x-property-mappings.get('action_source'));
-        System.assertEquals('eventTime', x-property-mappings.get('event_time'));
-        System.assertEquals('eventId', x-property-mappings.get('event_id'));
-        System.assertEquals('eventSourceUrl', x-property-mappings.get('event_source_url'));
-        System.assertEquals('optOut', x-property-mappings.get('opt_out'));
-        System.assertEquals('partnerName', x-property-mappings.get('partner_name'));
-        System.assertEquals('userData', x-property-mappings.get('user_data'));
-        System.assertEquals('customData', x-property-mappings.get('custom_data'));
         System.assertEquals('appId', x-property-mappings.get('app_id'));
+        System.assertEquals('appInfo', x-property-mappings.get('app_info'));
         System.assertEquals('appName', x-property-mappings.get('app_name'));
         System.assertEquals('appVersion', x-property-mappings.get('app_version'));
+        System.assertEquals('customData', x-property-mappings.get('custom_data'));
         System.assertEquals('deviceBrand', x-property-mappings.get('device_brand'));
         System.assertEquals('deviceCarrier', x-property-mappings.get('device_carrier'));
+        System.assertEquals('deviceInfo', x-property-mappings.get('device_info'));
         System.assertEquals('deviceModel', x-property-mappings.get('device_model'));
         System.assertEquals('deviceType', x-property-mappings.get('device_type'));
+        System.assertEquals('eventId', x-property-mappings.get('event_id'));
+        System.assertEquals('eventName', x-property-mappings.get('event_name'));
+        System.assertEquals('eventSourceUrl', x-property-mappings.get('event_source_url'));
+        System.assertEquals('eventTime', x-property-mappings.get('event_time'));
+        System.assertEquals('optOut', x-property-mappings.get('opt_out'));
         System.assertEquals('osVersion', x-property-mappings.get('os_version'));
+        System.assertEquals('partnerName', x-property-mappings.get('partner_name'));
+        System.assertEquals('userData', x-property-mappings.get('user_data'));
     }
 }

@@ -12,12 +12,31 @@ import AnyCodable
 
 public struct AdsAnalyticsCreateAsyncRequest: Codable, JSONEncodable, Hashable {
 
+    public enum TargetingTypes: String, Codable, CaseIterable {
+        case keyword = "KEYWORD"
+        case apptype = "APPTYPE"
+        case gender = "GENDER"
+        case location = "LOCATION"
+        case placement = "PLACEMENT"
+        case country = "COUNTRY"
+        case targetedInterest = "TARGETED_INTEREST"
+        case pinnerInterest = "PINNER_INTEREST"
+        case audienceInclude = "AUDIENCE_INCLUDE"
+        case geo = "GEO"
+        case ageBucket = "AGE_BUCKET"
+        case region = "REGION"
+        case mediaType = "MEDIA_TYPE"
+        case ageBucketAndGender = "AGE_BUCKET_AND_GENDER"
+        case audienceMultiplier = "AUDIENCE_MULTIPLIER"
+        case creativeEnhancements = "CREATIVE_ENHANCEMENTS"
+        case localAdsStoreCode = "LOCAL_ADS_STORE_CODE"
+    }
     public enum PrimarySort: String, Codable, CaseIterable {
         case byId = "BY_ID"
         case byDate = "BY_DATE"
     }
-    public static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
     public static let endDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
+    public static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
     public static let campaignIdsRule = ArrayRule(minItems: 1, maxItems: 500, uniqueItems: false)
     public static let campaignStatusesRule = ArrayRule(minItems: 1, maxItems: 6, uniqueItems: false)
     public static let campaignObjectiveTypesRule = ArrayRule(minItems: 1, maxItems: 7, uniqueItems: false)
@@ -30,30 +49,32 @@ public struct AdsAnalyticsCreateAsyncRequest: Codable, JSONEncodable, Hashable {
     public static let productItemIdsRule = ArrayRule(minItems: 1, maxItems: 500, uniqueItems: false)
     public static let targetingTypesRule = ArrayRule(minItems: 1, maxItems: 5, uniqueItems: false)
     public static let metricsFiltersRule = ArrayRule(minItems: 1, maxItems: nil, uniqueItems: false)
-    public static let startHourRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: 23, exclusiveMaximum: false, multipleOf: nil)
     public static let endHourRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: 23, exclusiveMaximum: false, multipleOf: nil)
-    /** Metric report start date (UTC). Format: YYYY-MM-DD */
-    public var startDate: String
-    /** Metric report end date (UTC). Format: YYYY-MM-DD */
-    public var endDate: String
-    /** TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly */
-    public var granularity: Granularity
-    /** Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. */
-    public var clickWindowDays: ConversionAttributionWindowDays? = ConversionAttributionWindowDays__30
-    /** Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. */
-    public var engagementWindowDays: ConversionAttributionWindowDays? = ConversionAttributionWindowDays__30
-    /** Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. */
-    public var viewWindowDays: ConversionAttributionWindowDays? = ConversionAttributionWindowDays__1
-    /** The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. */
-    public var conversionReportTime: ConversionReportTimeType? = "TIME_OF_AD_ACTION"
+    public static let startHourRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: 23, exclusiveMaximum: false, multipleOf: nil)
     /** List of types of attribution for the conversion report */
     public var attributionTypes: [ConversionReportAttributionType]?
+    /** Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. */
+    public var clickWindowDays: ConversionAttributionWindowDays? = ConversionAttributionWindowDays__30
+    /** The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. */
+    public var conversionReportTime: ConversionReportTimeType? = "TIME_OF_AD_ACTION"
+    /** Metric report end date (UTC). Format: YYYY-MM-DD */
+    public var endDate: String
+    /** Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. */
+    public var engagementWindowDays: ConversionAttributionWindowDays? = ConversionAttributionWindowDays__30
+    /** TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly */
+    public var granularity: Granularity
+    /** Metric report start date (UTC). Format: YYYY-MM-DD */
+    public var startDate: String
+    /** Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. */
+    public var viewWindowDays: ConversionAttributionWindowDays? = ConversionAttributionWindowDays__1
     /** List of campaign ids */
     public var campaignIds: [String]?
     /** List of status values for filtering */
     public var campaignStatuses: [CampaignSummaryStatus]?
     /** List of values for filtering. [\"WEB_SESSIONS\"] in BETA. */
     public var campaignObjectiveTypes: [ObjectiveType]?
+    /** Campaign brand label for filtering. */
+    public var campaignBrandLabel: String?
     /** List of ad group ids */
     public var adGroupIds: [String]?
     /** List of values for filtering */
@@ -68,35 +89,42 @@ public struct AdsAnalyticsCreateAsyncRequest: Codable, JSONEncodable, Hashable {
     public var productGroupStatuses: [ProductGroupSummaryStatus]?
     /** List of product item ids */
     public var productItemIds: [String]?
-    /** List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. */
-    public var targetingTypes: [AdsAnalyticsTargetingType]?
+    /** List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AUDIENCE_MULTIPLIER\"] is only available in CAMPAIGN_TARGETING level. [\"MEDIA_TYPE\"] is only available in PRODUCT_ITEM_TARGETING level. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. */
+    public var targetingTypes: [TargetingTypes]?
     /** List of metrics filters */
     public var metricsFilters: [AdsAnalyticsMetricsFilter]?
     /** Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports. */
     public var columns: [ReportingColumnAsync]
-    /** Level of the report */
-    public var level: MetricsReportingLevel
-    /** Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0. */
-    public var reportFormat: DataOutputFormat? = "JSON"
-    /** Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests. */
-    public var primarySort: PrimarySort?
-    /** Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports. */
-    public var startHour: Int?
+    /** Determines if the targeting types included in the request should be consolidated into a single breakdown. For example, when combine_targeting_types is set to true, if GENDER and COUNTRY are targeting types in the request, the response will have a targeting type of GENDER_AND_COUNTRY and targeting values such as female&US. This feature is currently in BETA and is not available to all users. */
+    public var combineTargetingTypes: Bool? = false
+    /** List of advertiser-defined custom conversion event metrics to include in the report */
+    public var customConversionEventMetrics: [AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics]?
     /** Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports. */
     public var endHour: Int?
+    /** Level of the report */
+    public var level: MetricsReportingLevel
+    /** Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests. */
+    public var primarySort: PrimarySort?
+    /** Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0. */
+    public var reportFormat: DataOutputFormat? = "JSON"
+    /** Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. */
+    public var reportingTimezone: ReportingTimeZone?
+    /** Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports. */
+    public var startHour: Int?
 
-    public init(startDate: String, endDate: String, granularity: Granularity, clickWindowDays: ConversionAttributionWindowDays? = ConversionAttributionWindowDays__30, engagementWindowDays: ConversionAttributionWindowDays? = ConversionAttributionWindowDays__30, viewWindowDays: ConversionAttributionWindowDays? = ConversionAttributionWindowDays__1, conversionReportTime: ConversionReportTimeType? = "TIME_OF_AD_ACTION", attributionTypes: [ConversionReportAttributionType]? = nil, campaignIds: [String]? = nil, campaignStatuses: [CampaignSummaryStatus]? = nil, campaignObjectiveTypes: [ObjectiveType]? = nil, adGroupIds: [String]? = nil, adGroupStatuses: [AdGroupSummaryStatus]? = nil, adIds: [String]? = nil, adStatuses: [PinPromotionSummaryStatus]? = nil, productGroupIds: [String]? = nil, productGroupStatuses: [ProductGroupSummaryStatus]? = nil, productItemIds: [String]? = nil, targetingTypes: [AdsAnalyticsTargetingType]? = nil, metricsFilters: [AdsAnalyticsMetricsFilter]? = nil, columns: [ReportingColumnAsync], level: MetricsReportingLevel, reportFormat: DataOutputFormat? = "JSON", primarySort: PrimarySort? = nil, startHour: Int? = nil, endHour: Int? = nil) {
-        self.startDate = startDate
-        self.endDate = endDate
-        self.granularity = granularity
-        self.clickWindowDays = clickWindowDays
-        self.engagementWindowDays = engagementWindowDays
-        self.viewWindowDays = viewWindowDays
-        self.conversionReportTime = conversionReportTime
+    public init(attributionTypes: [ConversionReportAttributionType]? = nil, clickWindowDays: ConversionAttributionWindowDays? = ConversionAttributionWindowDays__30, conversionReportTime: ConversionReportTimeType? = "TIME_OF_AD_ACTION", endDate: String, engagementWindowDays: ConversionAttributionWindowDays? = ConversionAttributionWindowDays__30, granularity: Granularity, startDate: String, viewWindowDays: ConversionAttributionWindowDays? = ConversionAttributionWindowDays__1, campaignIds: [String]? = nil, campaignStatuses: [CampaignSummaryStatus]? = nil, campaignObjectiveTypes: [ObjectiveType]? = nil, campaignBrandLabel: String? = nil, adGroupIds: [String]? = nil, adGroupStatuses: [AdGroupSummaryStatus]? = nil, adIds: [String]? = nil, adStatuses: [PinPromotionSummaryStatus]? = nil, productGroupIds: [String]? = nil, productGroupStatuses: [ProductGroupSummaryStatus]? = nil, productItemIds: [String]? = nil, targetingTypes: [TargetingTypes]? = nil, metricsFilters: [AdsAnalyticsMetricsFilter]? = nil, columns: [ReportingColumnAsync], combineTargetingTypes: Bool? = false, customConversionEventMetrics: [AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics]? = nil, endHour: Int? = nil, level: MetricsReportingLevel, primarySort: PrimarySort? = nil, reportFormat: DataOutputFormat? = "JSON", reportingTimezone: ReportingTimeZone? = nil, startHour: Int? = nil) {
         self.attributionTypes = attributionTypes
+        self.clickWindowDays = clickWindowDays
+        self.conversionReportTime = conversionReportTime
+        self.endDate = endDate
+        self.engagementWindowDays = engagementWindowDays
+        self.granularity = granularity
+        self.startDate = startDate
+        self.viewWindowDays = viewWindowDays
         self.campaignIds = campaignIds
         self.campaignStatuses = campaignStatuses
         self.campaignObjectiveTypes = campaignObjectiveTypes
+        self.campaignBrandLabel = campaignBrandLabel
         self.adGroupIds = adGroupIds
         self.adGroupStatuses = adGroupStatuses
         self.adIds = adIds
@@ -107,25 +135,29 @@ public struct AdsAnalyticsCreateAsyncRequest: Codable, JSONEncodable, Hashable {
         self.targetingTypes = targetingTypes
         self.metricsFilters = metricsFilters
         self.columns = columns
-        self.level = level
-        self.reportFormat = reportFormat
-        self.primarySort = primarySort
-        self.startHour = startHour
+        self.combineTargetingTypes = combineTargetingTypes
+        self.customConversionEventMetrics = customConversionEventMetrics
         self.endHour = endHour
+        self.level = level
+        self.primarySort = primarySort
+        self.reportFormat = reportFormat
+        self.reportingTimezone = reportingTimezone
+        self.startHour = startHour
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case startDate = "start_date"
-        case endDate = "end_date"
-        case granularity
-        case clickWindowDays = "click_window_days"
-        case engagementWindowDays = "engagement_window_days"
-        case viewWindowDays = "view_window_days"
-        case conversionReportTime = "conversion_report_time"
         case attributionTypes = "attribution_types"
+        case clickWindowDays = "click_window_days"
+        case conversionReportTime = "conversion_report_time"
+        case endDate = "end_date"
+        case engagementWindowDays = "engagement_window_days"
+        case granularity
+        case startDate = "start_date"
+        case viewWindowDays = "view_window_days"
         case campaignIds = "campaign_ids"
         case campaignStatuses = "campaign_statuses"
         case campaignObjectiveTypes = "campaign_objective_types"
+        case campaignBrandLabel = "campaign_brand_label"
         case adGroupIds = "ad_group_ids"
         case adGroupStatuses = "ad_group_statuses"
         case adIds = "ad_ids"
@@ -136,28 +168,32 @@ public struct AdsAnalyticsCreateAsyncRequest: Codable, JSONEncodable, Hashable {
         case targetingTypes = "targeting_types"
         case metricsFilters = "metrics_filters"
         case columns
-        case level
-        case reportFormat = "report_format"
-        case primarySort = "primary_sort"
-        case startHour = "start_hour"
+        case combineTargetingTypes = "combine_targeting_types"
+        case customConversionEventMetrics = "custom_conversion_event_metrics"
         case endHour = "end_hour"
+        case level
+        case primarySort = "primary_sort"
+        case reportFormat = "report_format"
+        case reportingTimezone = "reporting_timezone"
+        case startHour = "start_hour"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(startDate, forKey: .startDate)
-        try container.encode(endDate, forKey: .endDate)
-        try container.encode(granularity, forKey: .granularity)
-        try container.encodeIfPresent(clickWindowDays, forKey: .clickWindowDays)
-        try container.encodeIfPresent(engagementWindowDays, forKey: .engagementWindowDays)
-        try container.encodeIfPresent(viewWindowDays, forKey: .viewWindowDays)
-        try container.encodeIfPresent(conversionReportTime, forKey: .conversionReportTime)
         try container.encodeIfPresent(attributionTypes, forKey: .attributionTypes)
+        try container.encodeIfPresent(clickWindowDays, forKey: .clickWindowDays)
+        try container.encodeIfPresent(conversionReportTime, forKey: .conversionReportTime)
+        try container.encode(endDate, forKey: .endDate)
+        try container.encodeIfPresent(engagementWindowDays, forKey: .engagementWindowDays)
+        try container.encode(granularity, forKey: .granularity)
+        try container.encode(startDate, forKey: .startDate)
+        try container.encodeIfPresent(viewWindowDays, forKey: .viewWindowDays)
         try container.encodeIfPresent(campaignIds, forKey: .campaignIds)
         try container.encodeIfPresent(campaignStatuses, forKey: .campaignStatuses)
         try container.encodeIfPresent(campaignObjectiveTypes, forKey: .campaignObjectiveTypes)
+        try container.encodeIfPresent(campaignBrandLabel, forKey: .campaignBrandLabel)
         try container.encodeIfPresent(adGroupIds, forKey: .adGroupIds)
         try container.encodeIfPresent(adGroupStatuses, forKey: .adGroupStatuses)
         try container.encodeIfPresent(adIds, forKey: .adIds)
@@ -168,11 +204,14 @@ public struct AdsAnalyticsCreateAsyncRequest: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(targetingTypes, forKey: .targetingTypes)
         try container.encodeIfPresent(metricsFilters, forKey: .metricsFilters)
         try container.encode(columns, forKey: .columns)
-        try container.encode(level, forKey: .level)
-        try container.encodeIfPresent(reportFormat, forKey: .reportFormat)
-        try container.encodeIfPresent(primarySort, forKey: .primarySort)
-        try container.encodeIfPresent(startHour, forKey: .startHour)
+        try container.encodeIfPresent(combineTargetingTypes, forKey: .combineTargetingTypes)
+        try container.encodeIfPresent(customConversionEventMetrics, forKey: .customConversionEventMetrics)
         try container.encodeIfPresent(endHour, forKey: .endHour)
+        try container.encode(level, forKey: .level)
+        try container.encodeIfPresent(primarySort, forKey: .primarySort)
+        try container.encodeIfPresent(reportFormat, forKey: .reportFormat)
+        try container.encodeIfPresent(reportingTimezone, forKey: .reportingTimezone)
+        try container.encodeIfPresent(startHour, forKey: .startHour)
     }
 }
 

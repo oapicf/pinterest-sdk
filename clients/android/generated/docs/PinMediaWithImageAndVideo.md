@@ -6,8 +6,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**mediaType** | **String** |  |  [optional]
 **items** | [**List&lt;PinMediaMetadata&gt;**](PinMediaMetadata.md) |  |  [optional]
+**mediaType** | [**MediaTypeEnum**](#MediaTypeEnum) |  | 
+
+
+## Enum: MediaTypeEnum
+
+Name | Value
+---- | -----
 
 
 

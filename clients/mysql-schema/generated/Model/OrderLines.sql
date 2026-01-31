@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `OrderLines`
 --
-SELECT `id`, `type`, `ad_account_id`, `purchase_order_id`, `start_time`, `end_time`, `budget`, `paid_budget`, `status`, `name`, `paid_type` FROM `OrderLines` WHERE 1;
+SELECT `ad_account_id`, `budget`, `end_time`, `id`, `name`, `paid_budget`, `paid_type`, `purchase_order_id`, `start_time`, `status`, `type` FROM `OrderLines` WHERE 1;
 
 --
 -- INSERT template for table `OrderLines`
 --
-INSERT INTO `OrderLines`(`id`, `type`, `ad_account_id`, `purchase_order_id`, `start_time`, `end_time`, `budget`, `paid_budget`, `status`, `name`, `paid_type`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `OrderLines`(`ad_account_id`, `budget`, `end_time`, `id`, `name`, `paid_budget`, `paid_type`, `purchase_order_id`, `start_time`, `status`, `type`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `OrderLines`
 --
-UPDATE `OrderLines` SET `id` = ?, `type` = ?, `ad_account_id` = ?, `purchase_order_id` = ?, `start_time` = ?, `end_time` = ?, `budget` = ?, `paid_budget` = ?, `status` = ?, `name` = ?, `paid_type` = ? WHERE 1;
+UPDATE `OrderLines` SET `ad_account_id` = ?, `budget` = ?, `end_time` = ?, `id` = ?, `name` = ?, `paid_budget` = ?, `paid_type` = ?, `purchase_order_id` = ?, `start_time` = ?, `status` = ?, `type` = ? WHERE 1;
 
 --
 -- DELETE template for table `OrderLines`

@@ -6,27 +6,27 @@
 
 
 static search_partner_pins_200_response_t *search_partner_pins_200_response_create_internal(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     search_partner_pins_200_response_t *search_partner_pins_200_response_local_var = malloc(sizeof(search_partner_pins_200_response_t));
     if (!search_partner_pins_200_response_local_var) {
         return NULL;
     }
-    search_partner_pins_200_response_local_var->items = items;
     search_partner_pins_200_response_local_var->bookmark = bookmark;
+    search_partner_pins_200_response_local_var->items = items;
 
     search_partner_pins_200_response_local_var->_library_owned = 1;
     return search_partner_pins_200_response_local_var;
 }
 
 __attribute__((deprecated)) search_partner_pins_200_response_t *search_partner_pins_200_response_create(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     return search_partner_pins_200_response_create_internal (
-        items,
-        bookmark
+        bookmark,
+        items
         );
 }
 
@@ -39,6 +39,10 @@ void search_partner_pins_200_response_free(search_partner_pins_200_response_t *s
         return ;
     }
     listEntry_t *listEntry;
+    if (search_partner_pins_200_response->bookmark) {
+        free(search_partner_pins_200_response->bookmark);
+        search_partner_pins_200_response->bookmark = NULL;
+    }
     if (search_partner_pins_200_response->items) {
         list_ForEach(listEntry, search_partner_pins_200_response->items) {
             summary_pin_free(listEntry->data);
@@ -46,15 +50,19 @@ void search_partner_pins_200_response_free(search_partner_pins_200_response_t *s
         list_freeList(search_partner_pins_200_response->items);
         search_partner_pins_200_response->items = NULL;
     }
-    if (search_partner_pins_200_response->bookmark) {
-        free(search_partner_pins_200_response->bookmark);
-        search_partner_pins_200_response->bookmark = NULL;
-    }
     free(search_partner_pins_200_response);
 }
 
 cJSON *search_partner_pins_200_response_convertToJSON(search_partner_pins_200_response_t *search_partner_pins_200_response) {
     cJSON *item = cJSON_CreateObject();
+
+    // search_partner_pins_200_response->bookmark
+    if(search_partner_pins_200_response->bookmark) {
+    if(cJSON_AddStringToObject(item, "bookmark", search_partner_pins_200_response->bookmark) == NULL) {
+    goto fail; //String
+    }
+    }
+
 
     // search_partner_pins_200_response->items
     if (!search_partner_pins_200_response->items) {
@@ -76,14 +84,6 @@ cJSON *search_partner_pins_200_response_convertToJSON(search_partner_pins_200_re
     }
     }
 
-
-    // search_partner_pins_200_response->bookmark
-    if(search_partner_pins_200_response->bookmark) {
-    if(cJSON_AddStringToObject(item, "bookmark", search_partner_pins_200_response->bookmark) == NULL) {
-    goto fail; //String
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -98,6 +98,18 @@ search_partner_pins_200_response_t *search_partner_pins_200_response_parseFromJS
 
     // define the local list for search_partner_pins_200_response->items
     list_t *itemsList = NULL;
+
+    // search_partner_pins_200_response->bookmark
+    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(search_partner_pins_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
+    if (bookmark) { 
+    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
+    {
+    goto end; //String
+    }
+    }
 
     // search_partner_pins_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(search_partner_pins_200_responseJSON, "items");
@@ -126,22 +138,10 @@ search_partner_pins_200_response_t *search_partner_pins_200_response_parseFromJS
         list_addElement(itemsList, itemsItem);
     }
 
-    // search_partner_pins_200_response->bookmark
-    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(search_partner_pins_200_responseJSON, "bookmark");
-    if (cJSON_IsNull(bookmark)) {
-        bookmark = NULL;
-    }
-    if (bookmark) { 
-    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
-    {
-    goto end; //String
-    }
-    }
-
 
     search_partner_pins_200_response_local_var = search_partner_pins_200_response_create_internal (
-        itemsList,
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
+        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        itemsList
         );
 
     return search_partner_pins_200_response_local_var;

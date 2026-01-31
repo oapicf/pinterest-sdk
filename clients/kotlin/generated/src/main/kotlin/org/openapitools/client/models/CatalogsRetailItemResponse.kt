@@ -26,9 +26,9 @@ import com.squareup.moshi.JsonClass
  * Object describing a retail item record
  *
  * @param catalogType 
+ * @param attributes 
  * @param itemId The catalog retail item id in the merchant namespace
  * @param pins The pins mapped to the item
- * @param attributes 
  */
 
 
@@ -37,16 +37,16 @@ data class CatalogsRetailItemResponse (
     @Json(name = "catalog_type")
     val catalogType: CatalogsType,
 
+    @Json(name = "attributes")
+    val attributes: ItemAttributes? = null,
+
     /* The catalog retail item id in the merchant namespace */
     @Json(name = "item_id")
     val itemId: kotlin.String? = null,
 
     /* The pins mapped to the item */
     @Json(name = "pins")
-    val pins: kotlin.collections.List<Pin>? = null,
-
-    @Json(name = "attributes")
-    val attributes: ItemAttributes? = null
+    val pins: kotlin.collections.List<Pin>? = null
 
 ) {
 

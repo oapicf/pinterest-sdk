@@ -212,6 +212,13 @@ export class AdvancedAuctionApiResponseProcessor {
             ) as AdvancedAuctionProcessedItems;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("206", response.httpStatusCode)) {
+            const body: AdvancedAuctionProcessedItems = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "AdvancedAuctionProcessedItems", ""
+            ) as AdvancedAuctionProcessedItems;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
         if (isCodeInRange("400", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),

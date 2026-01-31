@@ -7,11 +7,12 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
 import com.fasterxml.jackson.annotation.JsonValue
+import org.openapitools.model.ContentType
 import org.openapitools.model.PinMediaSourceImageBase64
 import org.openapitools.model.PinMediaSourceImageURL
 import org.openapitools.model.PinMediaSourceImagesBase64
 import org.openapitools.model.PinMediaSourceImagesURL
-import org.openapitools.model.PinMediaSourceImagesURLItemsInner
+import org.openapitools.model.PinMediaSourceImagesURLItem
 import org.openapitools.model.PinMediaSourcePinURL
 import org.openapitools.model.PinMediaSourceVideoID
 import javax.validation.constraints.DecimalMax
@@ -26,17 +27,18 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
- * Pin media source.
- * @param sourceType 
+ * Pin media source that can be an image, video, or a mix of both passed in as a request.
  * @param contentType 
  * @param &#x60;data&#x60; 
+ * @param sourceType 
  * @param url 
  * @param mediaId 
  * @param items Array with image objects.
  * @param isStandard Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
- * @param coverImageUrl Cover image url.
  * @param coverImageContentType Content type for cover image Base64.
  * @param coverImageData Cover image Base64.
+ * @param coverImageKeyFrameTime Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.
+ * @param coverImageUrl Cover image URL.
  * @param index 
  * @param isAffiliateLink This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
  */
@@ -56,13 +58,13 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 interface PinMediaSource {
                 @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
-        val sourceType: PinMediaSource.SourceType
-
-                @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
-        val contentType: PinMediaSource.ContentType
+        val contentType: ContentType
 
                 @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
         val `data`: kotlin.String
+
+                @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
+        val sourceType: PinMediaSource.SourceType
 
                 @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
         val url: kotlin.String
@@ -71,19 +73,22 @@ interface PinMediaSource {
         val mediaId: kotlin.String
 
                 @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "Array with image objects.")
-        val items: kotlin.collections.List<PinMediaSourceImagesURLItemsInner>
+        val items: kotlin.collections.List<PinMediaSourceImagesURLItem>
 
                 @get:Schema(example = "null", description = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.")
         val isStandard: kotlin.Boolean? 
 
-                @get:Schema(example = "null", description = "Cover image url.")
-        val coverImageUrl: kotlin.String? 
-
                 @get:Schema(example = "null", description = "Content type for cover image Base64.")
-        val coverImageContentType: PinMediaSource.CoverImageContentType? 
+        val coverImageContentType: ContentType? 
 
                 @get:Schema(example = "null", description = "Cover image Base64.")
         val coverImageData: kotlin.String? 
+
+                @get:Schema(example = "null", description = "Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.")
+        val coverImageKeyFrameTime: kotlin.Int? 
+
+                @get:Schema(example = "null", description = "Cover image URL.")
+        val coverImageUrl: kotlin.String? 
 
                 @get:Schema(example = "null", description = "")
         val index: kotlin.Int? 
@@ -104,44 +109,6 @@ interface PinMediaSource {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): SourceType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PinMediaSource'")
-            }
-        }
-    }
-
-    /**
-    * 
-    * Values: imageSlashJpeg,imageSlashPng
-    */
-    enum class ContentType(@get:JsonValue val value: kotlin.String) {
-
-        imageSlashJpeg("image/jpeg"),
-        imageSlashPng("image/png");
-
-        companion object {
-            @JvmStatic
-            @JsonCreator
-            fun forValue(value: kotlin.String): ContentType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PinMediaSource'")
-            }
-        }
-    }
-
-    /**
-    * Content type for cover image Base64.
-    * Values: imageSlashJpeg,imageSlashPng
-    */
-    enum class CoverImageContentType(@get:JsonValue val value: kotlin.String) {
-
-        imageSlashJpeg("image/jpeg"),
-        imageSlashPng("image/png");
-
-        companion object {
-            @JvmStatic
-            @JsonCreator
-            fun forValue(value: kotlin.String): CoverImageContentType {
                 return values().firstOrNull{it -> it.value == value}
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PinMediaSource'")
             }

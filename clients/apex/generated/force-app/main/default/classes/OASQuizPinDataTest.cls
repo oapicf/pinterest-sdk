@@ -73,8 +73,8 @@ private class OASQuizPinDataTest {
     private static void maintainRenamedProperties() {
         OASQuizPinData quizPinData = new OASQuizPinData();
         Map<String, String> x-property-mappings = quizPinData.getx-property-mappings();
-        System.assertEquals('tieBreakerType', x-property-mappings.get('tie_breaker_type'));
         System.assertEquals('tieBreakerCustomResult', x-property-mappings.get('tie_breaker_custom_result'));
+        System.assertEquals('tieBreakerType', x-property-mappings.get('tie_breaker_type'));
     }
 
     @isTest
@@ -82,7 +82,7 @@ private class OASQuizPinDataTest {
         OASQuizPinData quizPinData = new OASQuizPinData();
         System.assertEquals(new List<OASQuizPinQuestion>(), quizPinData.questions);
         System.assertEquals(new List<OASQuizPinResult>(), quizPinData.results);
-        System.assertEquals(null, quizPinData.tieBreakerType);
         System.assertEquals(null, quizPinData.tieBreakerCustomResult);
+        System.assertEquals(null, quizPinData.tieBreakerType);
     }
 }

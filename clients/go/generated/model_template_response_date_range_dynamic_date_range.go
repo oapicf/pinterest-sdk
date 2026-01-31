@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,10 +20,10 @@ var _ MappedNullable = &TemplateResponseDateRangeDynamicDateRange{}
 
 // TemplateResponseDateRangeDynamicDateRange The dynamic date range of the template
 type TemplateResponseDateRangeDynamicDateRange struct {
-	// The date range type
-	Type *string `json:"type,omitempty"`
 	// The dynamic range type
 	Range *string `json:"range,omitempty"`
+	// The date range type
+	Type *string `json:"type,omitempty"`
 }
 
 // NewTemplateResponseDateRangeDynamicDateRange instantiates a new TemplateResponseDateRangeDynamicDateRange object
@@ -41,38 +41,6 @@ func NewTemplateResponseDateRangeDynamicDateRange() *TemplateResponseDateRangeDy
 func NewTemplateResponseDateRangeDynamicDateRangeWithDefaults() *TemplateResponseDateRangeDynamicDateRange {
 	this := TemplateResponseDateRangeDynamicDateRange{}
 	return &this
-}
-
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *TemplateResponseDateRangeDynamicDateRange) GetType() string {
-	if o == nil || IsNil(o.Type) {
-		var ret string
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TemplateResponseDateRangeDynamicDateRange) GetTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.Type) {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *TemplateResponseDateRangeDynamicDateRange) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *TemplateResponseDateRangeDynamicDateRange) SetType(v string) {
-	o.Type = &v
 }
 
 // GetRange returns the Range field value if set, zero value otherwise.
@@ -107,6 +75,38 @@ func (o *TemplateResponseDateRangeDynamicDateRange) SetRange(v string) {
 	o.Range = &v
 }
 
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *TemplateResponseDateRangeDynamicDateRange) GetType() string {
+	if o == nil || IsNil(o.Type) {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TemplateResponseDateRangeDynamicDateRange) GetTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *TemplateResponseDateRangeDynamicDateRange) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *TemplateResponseDateRangeDynamicDateRange) SetType(v string) {
+	o.Type = &v
+}
+
 func (o TemplateResponseDateRangeDynamicDateRange) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -117,11 +117,11 @@ func (o TemplateResponseDateRangeDynamicDateRange) MarshalJSON() ([]byte, error)
 
 func (o TemplateResponseDateRangeDynamicDateRange) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
 	if !IsNil(o.Range) {
 		toSerialize["range"] = o.Range
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
 	return toSerialize, nil
 }

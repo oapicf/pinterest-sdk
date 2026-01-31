@@ -12,11 +12,10 @@
   [ {'alt_text', binary() }
   | {'board_id', binary() }
   | {'board_section_id', binary() }
+  | {'carousel_slots', list(openapi_carousel_slot:openapi_carousel_slot()) }
   | {'description', binary() }
   | {'link', binary() }
   | {'title', binary() }
-  | {'carousel_slots', list(openapi_pin_update_carousel_slots_inner:openapi_pin_update_carousel_slots_inner()) }
-  | {'note', binary() }
   ].
 
 
@@ -27,11 +26,10 @@ openapi_pin_update(Fields) ->
   Default = [ {'alt_text', binary() }
             , {'board_id', binary() }
             , {'board_section_id', binary() }
+            , {'carousel_slots', list(openapi_carousel_slot:openapi_carousel_slot()) }
             , {'description', binary() }
             , {'link', binary() }
             , {'title', binary() }
-            , {'carousel_slots', list(openapi_pin_update_carousel_slots_inner:openapi_pin_update_carousel_slots_inner()) }
-            , {'note', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

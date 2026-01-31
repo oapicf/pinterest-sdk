@@ -7,13 +7,14 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**refreshToken** | **String** |  |  |
-|**refreshTokenExpiresIn** | **Integer** |  |  |
-|**responseType** | [**ResponseTypeEnum**](#ResponseTypeEnum) |  |  [optional] |
+|**refreshToken** | **String** |  |  [optional] |
+|**refreshTokenExpiresAt** | **Integer** |  |  [optional] |
+|**refreshTokenExpiresIn** | **Integer** |  |  [optional] |
 |**accessToken** | **String** |  |  |
-|**tokenType** | **String** |  |  |
 |**expiresIn** | **Integer** |  |  |
+|**responseType** | [**ResponseTypeEnum**](#ResponseTypeEnum) |  |  [optional] |
 |**scope** | **String** |  |  |
+|**tokenType** | **String** |  |  |
 
 
 

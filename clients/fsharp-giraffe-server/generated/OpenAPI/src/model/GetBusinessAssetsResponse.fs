@@ -3,6 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open OpenAPI.Model.AssetGroupBinding
+open OpenAPI.Model.GetBusinessAssetsResponseCatalogInfo
 
 module GetBusinessAssetsResponse =
 
@@ -10,8 +11,9 @@ module GetBusinessAssetsResponse =
 
 
   type GetBusinessAssetsResponse = {
+    AssetGroupInfo : AssetGroupBinding;
     AssetId : string;
     AssetType : string;
-    AssetGroupInfo : AssetGroupBinding;
+    CatalogInfo : GetBusinessAssetsResponseCatalogInfo;
   }
   //#endregion

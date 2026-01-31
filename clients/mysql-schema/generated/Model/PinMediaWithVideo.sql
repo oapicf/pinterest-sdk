@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `PinMediaWithVideo`
 --
-SELECT `media_type`, `images`, `cover_image_url`, `video_url`, `duration`, `height`, `width` FROM `PinMediaWithVideo` WHERE 1;
+SELECT `cover_image_url`, `duration`, `height`, `images`, `media_type`, `video_url`, `width` FROM `PinMediaWithVideo` WHERE 1;
 
 --
 -- INSERT template for table `PinMediaWithVideo`
 --
-INSERT INTO `PinMediaWithVideo`(`media_type`, `images`, `cover_image_url`, `video_url`, `duration`, `height`, `width`) VALUES (?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `PinMediaWithVideo`(`cover_image_url`, `duration`, `height`, `images`, `media_type`, `video_url`, `width`) VALUES (?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `PinMediaWithVideo`
 --
-UPDATE `PinMediaWithVideo` SET `media_type` = ?, `images` = ?, `cover_image_url` = ?, `video_url` = ?, `duration` = ?, `height` = ?, `width` = ? WHERE 1;
+UPDATE `PinMediaWithVideo` SET `cover_image_url` = ?, `duration` = ?, `height` = ?, `images` = ?, `media_type` = ?, `video_url` = ?, `width` = ? WHERE 1;
 
 --
 -- DELETE template for table `PinMediaWithVideo`

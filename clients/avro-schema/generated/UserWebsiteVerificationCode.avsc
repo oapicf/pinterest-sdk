@@ -5,21 +5,15 @@
   "name": "UserWebsiteVerificationCode",
   "fields": [
     {
-      "name": "verification_code",
-      "type": ["null", "string"],
-      "doc": "Code to check against the user claiming the website",
-      "default": null
-    },
-    {
       "name": "dns_txt_record",
       "type": ["null", "string"],
       "doc": "DNS TXT record to check against for the website to be claimed",
       "default": null
     },
     {
-      "name": "metatag",
+      "name": "file_content",
       "type": ["null", "string"],
-      "doc": "Metatag the verification process searchs for the website to be claimed",
+      "doc": "A full html file to upload to the website in order for it to be claimed",
       "default": null
     },
     {
@@ -29,9 +23,15 @@
       "default": null
     },
     {
-      "name": "file_content",
+      "name": "metatag",
       "type": ["null", "string"],
-      "doc": "A full html file to upload to the website in order for it to be claimed",
+      "doc": "Metatag the verification process searchs for the website to be claimed",
+      "default": null
+    },
+    {
+      "name": "verification_code",
+      "type": ["null", "string"],
+      "doc": "Code to check against the user claiming the website",
       "default": null
     }
   ]

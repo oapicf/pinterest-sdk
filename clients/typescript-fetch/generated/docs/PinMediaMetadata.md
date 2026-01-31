@@ -6,15 +6,15 @@
 
 Name | Type
 ------------ | -------------
-`itemType` | string
-`title` | string
 `description` | string
+`images` | [ImageSize](ImageSize.md)
+`itemType` | string
 `link` | string
-`images` | [ImageMetadataImages](ImageMetadataImages.md)
+`title` | string
 `coverImageUrl` | string
-`videoUrl` | string
 `duration` | number
 `height` | number
+`videoUrl` | string
 `width` | number
 
 ## Example
@@ -24,15 +24,15 @@ import type { PinMediaMetadata } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "itemType": null,
-  "title": null,
   "description": null,
-  "link": null,
   "images": null,
+  "itemType": null,
+  "link": null,
+  "title": null,
   "coverImageUrl": null,
-  "videoUrl": null,
   "duration": null,
   "height": null,
+  "videoUrl": null,
   "width": null,
 } satisfies PinMediaMetadata
 

@@ -1,0 +1,45 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BusinessAccessUserSummary"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BusinessAccessUserSummary"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  BusinessAccessUserSummary {
+    title = BusinessAccessUserSummary
+    description = BusinessAccessUserSummary
+    derivedFrom = Root
+    properties {
+        email {
+          type =  string
+          description = "Email of the business member/partner."
+          optional = false
+        }
+        id {
+          type =  string
+          description = "Unique identifier of the business member/partner."
+          optional = false
+        }
+        username {
+          type =  string
+          description = "Username of the business member/partner."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BusinessAccessUserSummary {
+    title = BusinessAccessUserSummary
+    description = BusinessAccessUserSummary
+    implements = openapi_server.resourceTypes.BusinessAccessUserSummary
+
+  }
+}

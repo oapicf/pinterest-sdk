@@ -1,0 +1,52 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server InviteExceptionResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a InviteExceptionResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  InviteExceptionResponse {
+    title = InviteExceptionResponse
+    description = InviteExceptionResponse
+    derivedFrom = Root
+    properties {
+        code {
+          type =  integer
+          description = "Error code associated with the error in performing the action on the invite/request."
+          optional = false
+        }
+        invite_or_request_id {
+          type =  string
+          description = "Unique identifier of the invite/request."
+          optional = false
+        }
+        message {
+          type =  string
+          description = "Error message associated with the error in performing the action on the invite/request."
+          optional = false
+        }
+        users_or_partner_ids {
+          type = array
+          items.type =  string
+          description = "A list of users&#39; usernames or emails OR a list of partner ids that caused the error."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  InviteExceptionResponse {
+    title = InviteExceptionResponse
+    description = InviteExceptionResponse
+    implements = openapi_server.resourceTypes.InviteExceptionResponse
+
+  }
+}

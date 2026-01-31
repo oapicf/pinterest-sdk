@@ -3,25 +3,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CatalogId** | **String** | Catalog id pertaining to the creative assets product group. | 
 **CatalogType** | **String** |  | 
-**Name** | **String** |  | 
+**Country** | [**Country**](Country.md) |  | [optional] 
 **Description** | **String** |  | [optional] 
 **Filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
-**CatalogId** | **String** | Catalog id pertaining to the creative assets product group. | 
-**Country** | [**Country**](Country.md) |  | 
-**Locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | 
+**Locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | [optional] 
+**Name** | **String** |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsVerticalProductGroupCreateRequest = Initialize-PSOpenAPIToolsCatalogsVerticalProductGroupCreateRequest  -CatalogType null `
- -Name null `
+$CatalogsVerticalProductGroupCreateRequest = Initialize-PSOpenAPIToolsCatalogsVerticalProductGroupCreateRequest  -CatalogId 2680059592705 `
+ -CatalogType null `
+ -Country null `
  -Description null `
  -Filters null `
- -CatalogId 2680059592705 `
- -Country null `
- -Locale null
+ -Locale null `
+ -Name null
 ```
 
 - Convert the resource to JSON

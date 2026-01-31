@@ -17,27 +17,9 @@ import java.util.Objects;
 
 public class LeadsExportResponseData   {
   
-  private LeadsExportStatus exportStatus;
-
   private String downloadUrl;
 
-  /**
-   **/
-  public LeadsExportResponseData exportStatus(LeadsExportStatus exportStatus) {
-    this.exportStatus = exportStatus;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("export_status")
-  public LeadsExportStatus getExportStatus() {
-    return exportStatus;
-  }
-  public void setExportStatus(LeadsExportStatus exportStatus) {
-    this.exportStatus = exportStatus;
-  }
-
+  private LeadsExportStatus exportStatus;
 
   /**
    **/
@@ -57,6 +39,24 @@ public class LeadsExportResponseData   {
   }
 
 
+  /**
+   **/
+  public LeadsExportResponseData exportStatus(LeadsExportStatus exportStatus) {
+    this.exportStatus = exportStatus;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("export_status")
+  public LeadsExportStatus getExportStatus() {
+    return exportStatus;
+  }
+  public void setExportStatus(LeadsExportStatus exportStatus) {
+    this.exportStatus = exportStatus;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -67,13 +67,13 @@ public class LeadsExportResponseData   {
       return false;
     }
     LeadsExportResponseData leadsExportResponseData = (LeadsExportResponseData) o;
-    return Objects.equals(this.exportStatus, leadsExportResponseData.exportStatus) &&
-        Objects.equals(this.downloadUrl, leadsExportResponseData.downloadUrl);
+    return Objects.equals(this.downloadUrl, leadsExportResponseData.downloadUrl) &&
+        Objects.equals(this.exportStatus, leadsExportResponseData.exportStatus);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(exportStatus, downloadUrl);
+    return Objects.hash(downloadUrl, exportStatus);
   }
 
   @Override
@@ -81,8 +81,8 @@ public class LeadsExportResponseData   {
     StringBuilder sb = new StringBuilder();
     sb.append("class LeadsExportResponseData {\n");
     
-    sb.append("    exportStatus: ").append(toIndentedString(exportStatus)).append("\n");
     sb.append("    downloadUrl: ").append(toIndentedString(downloadUrl)).append("\n");
+    sb.append("    exportStatus: ").append(toIndentedString(exportStatus)).append("\n");
     sb.append("}");
     return sb.toString();
   }

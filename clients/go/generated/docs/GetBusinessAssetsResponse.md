@@ -4,9 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AssetId** | Pointer to **string** | Unique identifier of a business asset. | [optional] 
-**AssetType** | Pointer to **string** | Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. | [optional] 
 **AssetGroupInfo** | Pointer to [**AssetGroupBinding**](AssetGroupBinding.md) |  | [optional] 
+**AssetId** | Pointer to **string** | Unique identifier of a business asset. | [optional] 
+**AssetType** | Pointer to **string** | Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. | [optional] 
+**CatalogInfo** | Pointer to [**NullableGetBusinessAssetsResponseCatalogInfo**](GetBusinessAssetsResponseCatalogInfo.md) |  | [optional] 
 
 ## Methods
 
@@ -26,6 +27,31 @@ will change when the set of required properties is changed
 NewGetBusinessAssetsResponseWithDefaults instantiates a new GetBusinessAssetsResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAssetGroupInfo
+
+`func (o *GetBusinessAssetsResponse) GetAssetGroupInfo() AssetGroupBinding`
+
+GetAssetGroupInfo returns the AssetGroupInfo field if non-nil, zero value otherwise.
+
+### GetAssetGroupInfoOk
+
+`func (o *GetBusinessAssetsResponse) GetAssetGroupInfoOk() (*AssetGroupBinding, bool)`
+
+GetAssetGroupInfoOk returns a tuple with the AssetGroupInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAssetGroupInfo
+
+`func (o *GetBusinessAssetsResponse) SetAssetGroupInfo(v AssetGroupBinding)`
+
+SetAssetGroupInfo sets AssetGroupInfo field to given value.
+
+### HasAssetGroupInfo
+
+`func (o *GetBusinessAssetsResponse) HasAssetGroupInfo() bool`
+
+HasAssetGroupInfo returns a boolean if a field has been set.
 
 ### GetAssetId
 
@@ -77,31 +103,41 @@ SetAssetType sets AssetType field to given value.
 
 HasAssetType returns a boolean if a field has been set.
 
-### GetAssetGroupInfo
+### GetCatalogInfo
 
-`func (o *GetBusinessAssetsResponse) GetAssetGroupInfo() AssetGroupBinding`
+`func (o *GetBusinessAssetsResponse) GetCatalogInfo() GetBusinessAssetsResponseCatalogInfo`
 
-GetAssetGroupInfo returns the AssetGroupInfo field if non-nil, zero value otherwise.
+GetCatalogInfo returns the CatalogInfo field if non-nil, zero value otherwise.
 
-### GetAssetGroupInfoOk
+### GetCatalogInfoOk
 
-`func (o *GetBusinessAssetsResponse) GetAssetGroupInfoOk() (*AssetGroupBinding, bool)`
+`func (o *GetBusinessAssetsResponse) GetCatalogInfoOk() (*GetBusinessAssetsResponseCatalogInfo, bool)`
 
-GetAssetGroupInfoOk returns a tuple with the AssetGroupInfo field if it's non-nil, zero value otherwise
+GetCatalogInfoOk returns a tuple with the CatalogInfo field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAssetGroupInfo
+### SetCatalogInfo
 
-`func (o *GetBusinessAssetsResponse) SetAssetGroupInfo(v AssetGroupBinding)`
+`func (o *GetBusinessAssetsResponse) SetCatalogInfo(v GetBusinessAssetsResponseCatalogInfo)`
 
-SetAssetGroupInfo sets AssetGroupInfo field to given value.
+SetCatalogInfo sets CatalogInfo field to given value.
 
-### HasAssetGroupInfo
+### HasCatalogInfo
 
-`func (o *GetBusinessAssetsResponse) HasAssetGroupInfo() bool`
+`func (o *GetBusinessAssetsResponse) HasCatalogInfo() bool`
 
-HasAssetGroupInfo returns a boolean if a field has been set.
+HasCatalogInfo returns a boolean if a field has been set.
 
+### SetCatalogInfoNil
+
+`func (o *GetBusinessAssetsResponse) SetCatalogInfoNil(b bool)`
+
+ SetCatalogInfoNil sets the value for CatalogInfo to be an explicit nil
+
+### UnsetCatalogInfo
+`func (o *GetBusinessAssetsResponse) UnsetCatalogInfo()`
+
+UnsetCatalogInfo ensures that no value is present for CatalogInfo, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

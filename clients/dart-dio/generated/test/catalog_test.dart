@@ -23,14 +23,14 @@ void main() {
       // TODO
     });
 
-    // A human-friendly name associated to a catalog entity.
-    // String name
-    test('to test the property `name`', () async {
+    // CatalogsType catalogType
+    test('to test the property `catalogType`', () async {
       // TODO
     });
 
-    // CatalogsType catalogType
-    test('to test the property `catalogType`', () async {
+    // A human-friendly name associated to a catalog entity.
+    // String name
+    test('to test the property `name`', () async {
       // TODO
     });
 

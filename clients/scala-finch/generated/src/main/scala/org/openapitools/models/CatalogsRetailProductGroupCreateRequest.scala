@@ -11,21 +11,21 @@ import org.openapitools.models.Country
 
 /**
  * Request object for creating a product group.
+ * @param catalogUnderscoreid Catalog id pertaining to the retail product group.
  * @param catalogUnderscoretype Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
- * @param name 
+ * @param country 
  * @param description 
  * @param filters 
- * @param catalogUnderscoreid Catalog id pertaining to the retail product group.
- * @param country 
  * @param locale 
+ * @param name 
  */
-case class CatalogsRetailProductGroupCreateRequest(catalogUnderscoretype: String,
-                name: String,
+case class CatalogsRetailProductGroupCreateRequest(catalogUnderscoreid: String,
+                catalogUnderscoretype: String,
+                country: Option[Country],
                 description: Option[String],
                 filters: CatalogsProductGroupFiltersRequest,
-                catalogUnderscoreid: String,
-                country: Country,
-                locale: CatalogsLocale
+                locale: Option[CatalogsLocale],
+                name: String
                 )
 
 object CatalogsRetailProductGroupCreateRequest {

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,26 +20,28 @@ var _ MappedNullable = &AssetGroupBinding{}
 
 // AssetGroupBinding struct for AssetGroupBinding
 type AssetGroupBinding struct {
-	// Asset Group ID.
-	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
-	// Asset Group name
-	AssetGroupName NullableString `json:"asset_group_name,omitempty"`
-	// Asset group description
-	AssetGroupDescription NullableString `json:"asset_group_description,omitempty"`
-	// Asset group types
-	AssetGroupTypes []string `json:"asset_group_types,omitempty"`
 	// A list of ad account IDs under the asset group
 	AdAccountsIds []string `json:"ad_accounts_ids,omitempty"`
-	// A list of profile IDs under asset group
-	ProfilesIds []string `json:"profiles_ids,omitempty"`
-	// The creation time of the asset group
-	CreatedTime NullableInt32 `json:"created_time,omitempty"`
-	// The last update time of the asset group
-	UpdatedTime NullableInt32 `json:"updated_time,omitempty"`
-	// The data of the business that owns the asset group.
-	Owner NullableBusinessAccessUserSummary `json:"owner,omitempty"`
+	// Asset group description
+	AssetGroupDescription NullableString `json:"asset_group_description,omitempty"`
+	// Asset Group name
+	AssetGroupName NullableString `json:"asset_group_name,omitempty"`
+	// Asset group types
+	AssetGroupTypes []string `json:"asset_group_types,omitempty"`
+	// A list of catalog IDs under asset group
+	CatalogsIds []string `json:"catalogs_ids,omitempty"`
 	// The data of the user that created the asset group.
 	CreatedBy NullableBusinessAccessUserSummary `json:"created_by,omitempty"`
+	// The creation time of the asset group
+	CreatedTime NullableInt32 `json:"created_time,omitempty"`
+	// Asset Group ID.
+	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	// The data of the business that owns the asset group.
+	Owner NullableBusinessAccessUserSummary `json:"owner,omitempty"`
+	// A list of profile IDs under asset group
+	ProfilesIds []string `json:"profiles_ids,omitempty"`
+	// The last update time of the asset group
+	UpdatedTime NullableInt32 `json:"updated_time,omitempty"`
 }
 
 // NewAssetGroupBinding instantiates a new AssetGroupBinding object
@@ -59,78 +61,37 @@ func NewAssetGroupBindingWithDefaults() *AssetGroupBinding {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *AssetGroupBinding) GetId() string {
-	if o == nil || IsNil(o.Id) {
-		var ret string
+// GetAdAccountsIds returns the AdAccountsIds field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AssetGroupBinding) GetAdAccountsIds() []string {
+	if o == nil {
+		var ret []string
 		return ret
 	}
-	return *o.Id
+	return o.AdAccountsIds
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AssetGroupBinding) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *AssetGroupBinding) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *AssetGroupBinding) SetId(v string) {
-	o.Id = &v
-}
-
-// GetAssetGroupName returns the AssetGroupName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AssetGroupBinding) GetAssetGroupName() string {
-	if o == nil || IsNil(o.AssetGroupName.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.AssetGroupName.Get()
-}
-
-// GetAssetGroupNameOk returns a tuple with the AssetGroupName field value if set, nil otherwise
+// GetAdAccountsIdsOk returns a tuple with the AdAccountsIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AssetGroupBinding) GetAssetGroupNameOk() (*string, bool) {
-	if o == nil {
+func (o *AssetGroupBinding) GetAdAccountsIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.AdAccountsIds) {
 		return nil, false
 	}
-	return o.AssetGroupName.Get(), o.AssetGroupName.IsSet()
+	return o.AdAccountsIds, true
 }
 
-// HasAssetGroupName returns a boolean if a field has been set.
-func (o *AssetGroupBinding) HasAssetGroupName() bool {
-	if o != nil && o.AssetGroupName.IsSet() {
+// HasAdAccountsIds returns a boolean if a field has been set.
+func (o *AssetGroupBinding) HasAdAccountsIds() bool {
+	if o != nil && !IsNil(o.AdAccountsIds) {
 		return true
 	}
 
 	return false
 }
 
-// SetAssetGroupName gets a reference to the given NullableString and assigns it to the AssetGroupName field.
-func (o *AssetGroupBinding) SetAssetGroupName(v string) {
-	o.AssetGroupName.Set(&v)
-}
-// SetAssetGroupNameNil sets the value for AssetGroupName to be an explicit nil
-func (o *AssetGroupBinding) SetAssetGroupNameNil() {
-	o.AssetGroupName.Set(nil)
-}
-
-// UnsetAssetGroupName ensures that no value is present for AssetGroupName, not even an explicit nil
-func (o *AssetGroupBinding) UnsetAssetGroupName() {
-	o.AssetGroupName.Unset()
+// SetAdAccountsIds gets a reference to the given []string and assigns it to the AdAccountsIds field.
+func (o *AssetGroupBinding) SetAdAccountsIds(v []string) {
+	o.AdAccountsIds = v
 }
 
 // GetAssetGroupDescription returns the AssetGroupDescription field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -175,6 +136,48 @@ func (o *AssetGroupBinding) UnsetAssetGroupDescription() {
 	o.AssetGroupDescription.Unset()
 }
 
+// GetAssetGroupName returns the AssetGroupName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AssetGroupBinding) GetAssetGroupName() string {
+	if o == nil || IsNil(o.AssetGroupName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AssetGroupName.Get()
+}
+
+// GetAssetGroupNameOk returns a tuple with the AssetGroupName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AssetGroupBinding) GetAssetGroupNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AssetGroupName.Get(), o.AssetGroupName.IsSet()
+}
+
+// HasAssetGroupName returns a boolean if a field has been set.
+func (o *AssetGroupBinding) HasAssetGroupName() bool {
+	if o != nil && o.AssetGroupName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAssetGroupName gets a reference to the given NullableString and assigns it to the AssetGroupName field.
+func (o *AssetGroupBinding) SetAssetGroupName(v string) {
+	o.AssetGroupName.Set(&v)
+}
+// SetAssetGroupNameNil sets the value for AssetGroupName to be an explicit nil
+func (o *AssetGroupBinding) SetAssetGroupNameNil() {
+	o.AssetGroupName.Set(nil)
+}
+
+// UnsetAssetGroupName ensures that no value is present for AssetGroupName, not even an explicit nil
+func (o *AssetGroupBinding) UnsetAssetGroupName() {
+	o.AssetGroupName.Unset()
+}
+
 // GetAssetGroupTypes returns the AssetGroupTypes field value if set, zero value otherwise.
 func (o *AssetGroupBinding) GetAssetGroupTypes() []string {
 	if o == nil || IsNil(o.AssetGroupTypes) {
@@ -207,196 +210,37 @@ func (o *AssetGroupBinding) SetAssetGroupTypes(v []string) {
 	o.AssetGroupTypes = v
 }
 
-// GetAdAccountsIds returns the AdAccountsIds field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AssetGroupBinding) GetAdAccountsIds() []string {
+// GetCatalogsIds returns the CatalogsIds field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AssetGroupBinding) GetCatalogsIds() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
-	return o.AdAccountsIds
+	return o.CatalogsIds
 }
 
-// GetAdAccountsIdsOk returns a tuple with the AdAccountsIds field value if set, nil otherwise
+// GetCatalogsIdsOk returns a tuple with the CatalogsIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AssetGroupBinding) GetAdAccountsIdsOk() ([]string, bool) {
-	if o == nil || IsNil(o.AdAccountsIds) {
+func (o *AssetGroupBinding) GetCatalogsIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.CatalogsIds) {
 		return nil, false
 	}
-	return o.AdAccountsIds, true
+	return o.CatalogsIds, true
 }
 
-// HasAdAccountsIds returns a boolean if a field has been set.
-func (o *AssetGroupBinding) HasAdAccountsIds() bool {
-	if o != nil && !IsNil(o.AdAccountsIds) {
+// HasCatalogsIds returns a boolean if a field has been set.
+func (o *AssetGroupBinding) HasCatalogsIds() bool {
+	if o != nil && !IsNil(o.CatalogsIds) {
 		return true
 	}
 
 	return false
 }
 
-// SetAdAccountsIds gets a reference to the given []string and assigns it to the AdAccountsIds field.
-func (o *AssetGroupBinding) SetAdAccountsIds(v []string) {
-	o.AdAccountsIds = v
-}
-
-// GetProfilesIds returns the ProfilesIds field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AssetGroupBinding) GetProfilesIds() []string {
-	if o == nil {
-		var ret []string
-		return ret
-	}
-	return o.ProfilesIds
-}
-
-// GetProfilesIdsOk returns a tuple with the ProfilesIds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AssetGroupBinding) GetProfilesIdsOk() ([]string, bool) {
-	if o == nil || IsNil(o.ProfilesIds) {
-		return nil, false
-	}
-	return o.ProfilesIds, true
-}
-
-// HasProfilesIds returns a boolean if a field has been set.
-func (o *AssetGroupBinding) HasProfilesIds() bool {
-	if o != nil && !IsNil(o.ProfilesIds) {
-		return true
-	}
-
-	return false
-}
-
-// SetProfilesIds gets a reference to the given []string and assigns it to the ProfilesIds field.
-func (o *AssetGroupBinding) SetProfilesIds(v []string) {
-	o.ProfilesIds = v
-}
-
-// GetCreatedTime returns the CreatedTime field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AssetGroupBinding) GetCreatedTime() int32 {
-	if o == nil || IsNil(o.CreatedTime.Get()) {
-		var ret int32
-		return ret
-	}
-	return *o.CreatedTime.Get()
-}
-
-// GetCreatedTimeOk returns a tuple with the CreatedTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AssetGroupBinding) GetCreatedTimeOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.CreatedTime.Get(), o.CreatedTime.IsSet()
-}
-
-// HasCreatedTime returns a boolean if a field has been set.
-func (o *AssetGroupBinding) HasCreatedTime() bool {
-	if o != nil && o.CreatedTime.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedTime gets a reference to the given NullableInt32 and assigns it to the CreatedTime field.
-func (o *AssetGroupBinding) SetCreatedTime(v int32) {
-	o.CreatedTime.Set(&v)
-}
-// SetCreatedTimeNil sets the value for CreatedTime to be an explicit nil
-func (o *AssetGroupBinding) SetCreatedTimeNil() {
-	o.CreatedTime.Set(nil)
-}
-
-// UnsetCreatedTime ensures that no value is present for CreatedTime, not even an explicit nil
-func (o *AssetGroupBinding) UnsetCreatedTime() {
-	o.CreatedTime.Unset()
-}
-
-// GetUpdatedTime returns the UpdatedTime field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AssetGroupBinding) GetUpdatedTime() int32 {
-	if o == nil || IsNil(o.UpdatedTime.Get()) {
-		var ret int32
-		return ret
-	}
-	return *o.UpdatedTime.Get()
-}
-
-// GetUpdatedTimeOk returns a tuple with the UpdatedTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AssetGroupBinding) GetUpdatedTimeOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.UpdatedTime.Get(), o.UpdatedTime.IsSet()
-}
-
-// HasUpdatedTime returns a boolean if a field has been set.
-func (o *AssetGroupBinding) HasUpdatedTime() bool {
-	if o != nil && o.UpdatedTime.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetUpdatedTime gets a reference to the given NullableInt32 and assigns it to the UpdatedTime field.
-func (o *AssetGroupBinding) SetUpdatedTime(v int32) {
-	o.UpdatedTime.Set(&v)
-}
-// SetUpdatedTimeNil sets the value for UpdatedTime to be an explicit nil
-func (o *AssetGroupBinding) SetUpdatedTimeNil() {
-	o.UpdatedTime.Set(nil)
-}
-
-// UnsetUpdatedTime ensures that no value is present for UpdatedTime, not even an explicit nil
-func (o *AssetGroupBinding) UnsetUpdatedTime() {
-	o.UpdatedTime.Unset()
-}
-
-// GetOwner returns the Owner field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AssetGroupBinding) GetOwner() BusinessAccessUserSummary {
-	if o == nil || IsNil(o.Owner.Get()) {
-		var ret BusinessAccessUserSummary
-		return ret
-	}
-	return *o.Owner.Get()
-}
-
-// GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AssetGroupBinding) GetOwnerOk() (*BusinessAccessUserSummary, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Owner.Get(), o.Owner.IsSet()
-}
-
-// HasOwner returns a boolean if a field has been set.
-func (o *AssetGroupBinding) HasOwner() bool {
-	if o != nil && o.Owner.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOwner gets a reference to the given NullableBusinessAccessUserSummary and assigns it to the Owner field.
-func (o *AssetGroupBinding) SetOwner(v BusinessAccessUserSummary) {
-	o.Owner.Set(&v)
-}
-// SetOwnerNil sets the value for Owner to be an explicit nil
-func (o *AssetGroupBinding) SetOwnerNil() {
-	o.Owner.Set(nil)
-}
-
-// UnsetOwner ensures that no value is present for Owner, not even an explicit nil
-func (o *AssetGroupBinding) UnsetOwner() {
-	o.Owner.Unset()
+// SetCatalogsIds gets a reference to the given []string and assigns it to the CatalogsIds field.
+func (o *AssetGroupBinding) SetCatalogsIds(v []string) {
+	o.CatalogsIds = v
 }
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -441,6 +285,197 @@ func (o *AssetGroupBinding) UnsetCreatedBy() {
 	o.CreatedBy.Unset()
 }
 
+// GetCreatedTime returns the CreatedTime field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AssetGroupBinding) GetCreatedTime() int32 {
+	if o == nil || IsNil(o.CreatedTime.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.CreatedTime.Get()
+}
+
+// GetCreatedTimeOk returns a tuple with the CreatedTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AssetGroupBinding) GetCreatedTimeOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CreatedTime.Get(), o.CreatedTime.IsSet()
+}
+
+// HasCreatedTime returns a boolean if a field has been set.
+func (o *AssetGroupBinding) HasCreatedTime() bool {
+	if o != nil && o.CreatedTime.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedTime gets a reference to the given NullableInt32 and assigns it to the CreatedTime field.
+func (o *AssetGroupBinding) SetCreatedTime(v int32) {
+	o.CreatedTime.Set(&v)
+}
+// SetCreatedTimeNil sets the value for CreatedTime to be an explicit nil
+func (o *AssetGroupBinding) SetCreatedTimeNil() {
+	o.CreatedTime.Set(nil)
+}
+
+// UnsetCreatedTime ensures that no value is present for CreatedTime, not even an explicit nil
+func (o *AssetGroupBinding) UnsetCreatedTime() {
+	o.CreatedTime.Unset()
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *AssetGroupBinding) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssetGroupBinding) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *AssetGroupBinding) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *AssetGroupBinding) SetId(v string) {
+	o.Id = &v
+}
+
+// GetOwner returns the Owner field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AssetGroupBinding) GetOwner() BusinessAccessUserSummary {
+	if o == nil || IsNil(o.Owner.Get()) {
+		var ret BusinessAccessUserSummary
+		return ret
+	}
+	return *o.Owner.Get()
+}
+
+// GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AssetGroupBinding) GetOwnerOk() (*BusinessAccessUserSummary, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Owner.Get(), o.Owner.IsSet()
+}
+
+// HasOwner returns a boolean if a field has been set.
+func (o *AssetGroupBinding) HasOwner() bool {
+	if o != nil && o.Owner.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOwner gets a reference to the given NullableBusinessAccessUserSummary and assigns it to the Owner field.
+func (o *AssetGroupBinding) SetOwner(v BusinessAccessUserSummary) {
+	o.Owner.Set(&v)
+}
+// SetOwnerNil sets the value for Owner to be an explicit nil
+func (o *AssetGroupBinding) SetOwnerNil() {
+	o.Owner.Set(nil)
+}
+
+// UnsetOwner ensures that no value is present for Owner, not even an explicit nil
+func (o *AssetGroupBinding) UnsetOwner() {
+	o.Owner.Unset()
+}
+
+// GetProfilesIds returns the ProfilesIds field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AssetGroupBinding) GetProfilesIds() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.ProfilesIds
+}
+
+// GetProfilesIdsOk returns a tuple with the ProfilesIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AssetGroupBinding) GetProfilesIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.ProfilesIds) {
+		return nil, false
+	}
+	return o.ProfilesIds, true
+}
+
+// HasProfilesIds returns a boolean if a field has been set.
+func (o *AssetGroupBinding) HasProfilesIds() bool {
+	if o != nil && !IsNil(o.ProfilesIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetProfilesIds gets a reference to the given []string and assigns it to the ProfilesIds field.
+func (o *AssetGroupBinding) SetProfilesIds(v []string) {
+	o.ProfilesIds = v
+}
+
+// GetUpdatedTime returns the UpdatedTime field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AssetGroupBinding) GetUpdatedTime() int32 {
+	if o == nil || IsNil(o.UpdatedTime.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.UpdatedTime.Get()
+}
+
+// GetUpdatedTimeOk returns a tuple with the UpdatedTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AssetGroupBinding) GetUpdatedTimeOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.UpdatedTime.Get(), o.UpdatedTime.IsSet()
+}
+
+// HasUpdatedTime returns a boolean if a field has been set.
+func (o *AssetGroupBinding) HasUpdatedTime() bool {
+	if o != nil && o.UpdatedTime.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedTime gets a reference to the given NullableInt32 and assigns it to the UpdatedTime field.
+func (o *AssetGroupBinding) SetUpdatedTime(v int32) {
+	o.UpdatedTime.Set(&v)
+}
+// SetUpdatedTimeNil sets the value for UpdatedTime to be an explicit nil
+func (o *AssetGroupBinding) SetUpdatedTimeNil() {
+	o.UpdatedTime.Set(nil)
+}
+
+// UnsetUpdatedTime ensures that no value is present for UpdatedTime, not even an explicit nil
+func (o *AssetGroupBinding) UnsetUpdatedTime() {
+	o.UpdatedTime.Unset()
+}
+
 func (o AssetGroupBinding) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -451,35 +486,38 @@ func (o AssetGroupBinding) MarshalJSON() ([]byte, error) {
 
 func (o AssetGroupBinding) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if o.AssetGroupName.IsSet() {
-		toSerialize["asset_group_name"] = o.AssetGroupName.Get()
+	if o.AdAccountsIds != nil {
+		toSerialize["ad_accounts_ids"] = o.AdAccountsIds
 	}
 	if o.AssetGroupDescription.IsSet() {
 		toSerialize["asset_group_description"] = o.AssetGroupDescription.Get()
 	}
+	if o.AssetGroupName.IsSet() {
+		toSerialize["asset_group_name"] = o.AssetGroupName.Get()
+	}
 	if !IsNil(o.AssetGroupTypes) {
 		toSerialize["asset_group_types"] = o.AssetGroupTypes
 	}
-	if o.AdAccountsIds != nil {
-		toSerialize["ad_accounts_ids"] = o.AdAccountsIds
+	if o.CatalogsIds != nil {
+		toSerialize["catalogs_ids"] = o.CatalogsIds
 	}
-	if o.ProfilesIds != nil {
-		toSerialize["profiles_ids"] = o.ProfilesIds
+	if o.CreatedBy.IsSet() {
+		toSerialize["created_by"] = o.CreatedBy.Get()
 	}
 	if o.CreatedTime.IsSet() {
 		toSerialize["created_time"] = o.CreatedTime.Get()
 	}
-	if o.UpdatedTime.IsSet() {
-		toSerialize["updated_time"] = o.UpdatedTime.Get()
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
 	}
 	if o.Owner.IsSet() {
 		toSerialize["owner"] = o.Owner.Get()
 	}
-	if o.CreatedBy.IsSet() {
-		toSerialize["created_by"] = o.CreatedBy.Get()
+	if o.ProfilesIds != nil {
+		toSerialize["profiles_ids"] = o.ProfilesIds
+	}
+	if o.UpdatedTime.IsSet() {
+		toSerialize["updated_time"] = o.UpdatedTime.Get()
 	}
 	return toSerialize, nil
 }

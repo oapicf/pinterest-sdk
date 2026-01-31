@@ -20,21 +20,23 @@ typedef struct summary_pin_t summary_pin_t;
 
 
 typedef struct summary_pin_t {
-    struct pin_media_t *media; //model
     char *alt_text; // string
-    char *link; // string
-    char *title; // string
     char *description; // string
+    char *id; // string
+    char *link; // string
+    struct pin_media_t *media; //model
+    char *title; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } summary_pin_t;
 
 __attribute__((deprecated)) summary_pin_t *summary_pin_create(
-    pin_media_t *media,
     char *alt_text,
+    char *description,
+    char *id,
     char *link,
-    char *title,
-    char *description
+    pin_media_t *media,
+    char *title
 );
 
 void summary_pin_free(summary_pin_t *summary_pin);

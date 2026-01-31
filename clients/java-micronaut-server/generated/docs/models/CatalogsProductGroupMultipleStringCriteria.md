@@ -8,8 +8,8 @@ The class is defined in **[CatalogsProductGroupMultipleStringCriteria.java](../.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**values** | `List&lt;String&gt;` |  | 
 **negated** | `Boolean` |  |  [optional property]
+**values** | `List&lt;String&gt;` |  | 
 
 
 

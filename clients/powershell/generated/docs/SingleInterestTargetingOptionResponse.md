@@ -3,19 +3,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **String** |  | [optional] 
-**Name** | **String** |  | [optional] 
 **ChildInterests** | **String[]** |  | [optional] 
+**Id** | **String** |  | [optional] 
 **Level** | **Int32** |  | [optional] 
+**Name** | **String** |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$SingleInterestTargetingOptionResponse = Initialize-PSOpenAPIToolsSingleInterestTargetingOptionResponse  -Id 945391946569 `
- -Name Dress `
- -ChildInterests null `
- -Level 2
+$SingleInterestTargetingOptionResponse = Initialize-PSOpenAPIToolsSingleInterestTargetingOptionResponse  -ChildInterests null `
+ -Id 945391946569 `
+ -Level 2 `
+ -Name Dress
 ```
 
 - Convert the resource to JSON

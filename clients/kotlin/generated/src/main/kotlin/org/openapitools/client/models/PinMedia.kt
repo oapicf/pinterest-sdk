@@ -15,21 +15,62 @@
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.ImageSize
+import org.openapitools.client.models.PinMediaMetadata
+import org.openapitools.client.models.PinMediaWithImage
+import org.openapitools.client.models.PinMediaWithImageAndVideo
+import org.openapitools.client.models.PinMediaWithImages
+import org.openapitools.client.models.PinMediaWithVideo
+import org.openapitools.client.models.PinMediaWithVideos
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Pin media objects.
+ * Pin media that can be an image, video, or a mix of both.
  *
  * @param mediaType 
+ * @param images 
+ * @param coverImageUrl 
+ * @param duration Duration (in miliseconds). Field maybe null after creation due to video processing time.
+ * @param height Height (in pixels). Field maybe null after creation due to video processing time.
+ * @param videoUrl Video url (720p).  **Note:** This field is limited and not available to all apps.
+ * @param width Width (in pixels). Field maybe null after creation due to video processing time.
+ * @param items 
  */
 
 
 interface PinMedia {
 
     @Json(name = "media_type")
-    val mediaType: kotlin.String?
+    val mediaType: PinMedia.MediaType
+    @Json(name = "images")
+    val images: ImageSize?
+    @Json(name = "cover_image_url")
+    val coverImageUrl: kotlin.String?
+    /* Duration (in miliseconds). Field maybe null after creation due to video processing time. */
+    @Json(name = "duration")
+    val duration: java.math.BigDecimal?
+    /* Height (in pixels). Field maybe null after creation due to video processing time. */
+    @Json(name = "height")
+    val height: kotlin.Int?
+    /* Video url (720p).  **Note:** This field is limited and not available to all apps. */
+    @Json(name = "video_url")
+    val videoUrl: kotlin.String?
+    /* Width (in pixels). Field maybe null after creation due to video processing time. */
+    @Json(name = "width")
+    val width: kotlin.Int?
+    @Json(name = "items")
+    val items: kotlin.collections.List<PinMediaMetadata>?
+    /**
+     * 
+     *
+     * Values: multiple_mixed
+     */
+    @JsonClass(generateAdapter = false)
+    enum class MediaType(val value: kotlin.String) {
+        @Json(name = "multiple_mixed") multiple_mixed("multiple_mixed");
+    }
 
 }
 

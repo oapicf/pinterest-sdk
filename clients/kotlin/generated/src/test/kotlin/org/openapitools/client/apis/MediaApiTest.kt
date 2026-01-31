@@ -19,11 +19,11 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.MediaApi
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.Media
 import org.openapitools.client.models.MediaList200Response
 import org.openapitools.client.models.MediaUpload
-import org.openapitools.client.models.MediaUploadDetails
-import org.openapitools.client.models.MediaUploadRequest
+import org.openapitools.client.models.MediaUploadCreate
+import org.openapitools.client.models.PinterestLibError
 
 class MediaApiTest : ShouldSpec() {
     init {
@@ -33,16 +33,16 @@ class MediaApiTest : ShouldSpec() {
         // to test mediaCreate
         should("test mediaCreate") {
             // uncomment below to test mediaCreate
-            //val mediaUploadRequest : MediaUploadRequest =  // MediaUploadRequest | Create a media upload request
-            //val result : MediaUpload = apiInstance.mediaCreate(mediaUploadRequest)
+            //val mediaUploadCreate : MediaUploadCreate =  // MediaUploadCreate | 
+            //val result : MediaUpload = apiInstance.mediaCreate(mediaUploadCreate)
             //result shouldBe ("TODO")
         }
 
         // to test mediaGet
         should("test mediaGet") {
             // uncomment below to test mediaGet
-            //val mediaId : kotlin.String = mediaId_example // kotlin.String | Media identifier
-            //val result : MediaUploadDetails = apiInstance.mediaGet(mediaId)
+            //val mediaId : kotlin.String = mediaId_example // kotlin.String | Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
+            //val result : Media = apiInstance.mediaGet(mediaId)
             //result shouldBe ("TODO")
         }
 
@@ -50,7 +50,7 @@ class MediaApiTest : ShouldSpec() {
         should("test mediaList") {
             // uncomment below to test mediaList
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
             //val result : MediaList200Response = apiInstance.mediaList(bookmark, pageSize)
             //result shouldBe ("TODO")
         }

@@ -11,10 +11,10 @@ import { UserBusinessRoleBinding } from './userBusinessRoleBinding';
 
 
 export interface GetBusinessMembers200Response { 
+    bookmark?: string | null;
     /**
      * List of business members.
      */
     items: Array<UserBusinessRoleBinding>;
-    bookmark?: string | null;
 }
 

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,8 +22,8 @@ var _ MappedNullable = &PageVisitConversionTagsGet200Response{}
 
 // PageVisitConversionTagsGet200Response struct for PageVisitConversionTagsGet200Response
 type PageVisitConversionTagsGet200Response struct {
-	Items []ConversionEventResponse `json:"items"`
 	Bookmark NullableString `json:"bookmark,omitempty"`
+	Items []ConversionEventResponse `json:"items"`
 }
 
 type _PageVisitConversionTagsGet200Response PageVisitConversionTagsGet200Response
@@ -44,30 +44,6 @@ func NewPageVisitConversionTagsGet200Response(items []ConversionEventResponse) *
 func NewPageVisitConversionTagsGet200ResponseWithDefaults() *PageVisitConversionTagsGet200Response {
 	this := PageVisitConversionTagsGet200Response{}
 	return &this
-}
-
-// GetItems returns the Items field value
-func (o *PageVisitConversionTagsGet200Response) GetItems() []ConversionEventResponse {
-	if o == nil {
-		var ret []ConversionEventResponse
-		return ret
-	}
-
-	return o.Items
-}
-
-// GetItemsOk returns a tuple with the Items field value
-// and a boolean to check if the value has been set.
-func (o *PageVisitConversionTagsGet200Response) GetItemsOk() ([]ConversionEventResponse, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Items, true
-}
-
-// SetItems sets field value
-func (o *PageVisitConversionTagsGet200Response) SetItems(v []ConversionEventResponse) {
-	o.Items = v
 }
 
 // GetBookmark returns the Bookmark field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -112,6 +88,30 @@ func (o *PageVisitConversionTagsGet200Response) UnsetBookmark() {
 	o.Bookmark.Unset()
 }
 
+// GetItems returns the Items field value
+func (o *PageVisitConversionTagsGet200Response) GetItems() []ConversionEventResponse {
+	if o == nil {
+		var ret []ConversionEventResponse
+		return ret
+	}
+
+	return o.Items
+}
+
+// GetItemsOk returns a tuple with the Items field value
+// and a boolean to check if the value has been set.
+func (o *PageVisitConversionTagsGet200Response) GetItemsOk() ([]ConversionEventResponse, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Items, true
+}
+
+// SetItems sets field value
+func (o *PageVisitConversionTagsGet200Response) SetItems(v []ConversionEventResponse) {
+	o.Items = v
+}
+
 func (o PageVisitConversionTagsGet200Response) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -122,10 +122,10 @@ func (o PageVisitConversionTagsGet200Response) MarshalJSON() ([]byte, error) {
 
 func (o PageVisitConversionTagsGet200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["items"] = o.Items
 	if o.Bookmark.IsSet() {
 		toSerialize["bookmark"] = o.Bookmark.Get()
 	}
+	toSerialize["items"] = o.Items
 	return toSerialize, nil
 }
 

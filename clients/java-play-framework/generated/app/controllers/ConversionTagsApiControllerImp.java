@@ -1,12 +1,13 @@
 package controllers;
 
 import apimodels.ConversionEventResponse;
+import apimodels.ConversionTag;
 import apimodels.ConversionTagCreate;
-import apimodels.ConversionTagListResponse;
-import apimodels.ConversionTagResponse;
+import apimodels.ConversionTagsList200Response;
 import apimodels.Error;
 import java.util.Map;
 import apimodels.PageVisitConversionTagsGet200Response;
+import apimodels.PinterestLibError;
 
 import play.mvc.Http;
 import java.util.List;
@@ -17,24 +18,24 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionTagsApiControllerImp extends ConversionTagsApiControllerImpInterface {
     @Override
-    public ConversionTagResponse conversionTagsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ConversionTagCreate conversionTagCreate) throws Exception {
+    public ConversionTag conversionTagsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ConversionTagCreate conversionTagCreate) throws Exception {
         //Do your magic!!!
-        return new ConversionTagResponse();
+        return new ConversionTag();
     }
 
     @Override
-    public ConversionTagResponse conversionTagsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String conversionTagId) throws Exception {
+    public ConversionTag conversionTagsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String conversionTagId) throws Exception {
         //Do your magic!!!
-        return new ConversionTagResponse();
+        return new ConversionTag();
     }
 
     @Override
-    public ConversionTagListResponse conversionTagsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, Boolean filterDeleted) throws Exception {
+    public ConversionTagsList200Response conversionTagsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, Boolean filterDeleted) throws Exception {
         //Do your magic!!!
-        return new ConversionTagListResponse();
+        return new ConversionTagsList200Response();
     }
 
     @Override

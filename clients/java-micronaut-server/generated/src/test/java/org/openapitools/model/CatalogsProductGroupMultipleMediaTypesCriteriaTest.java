@@ -24,19 +24,19 @@ public class CatalogsProductGroupMultipleMediaTypesCriteriaTest {
     }
 
     /**
-     * Test the property 'values'
-     */
-    @Test
-    public void valuesTest() {
-        // TODO: test values
-    }
-
-    /**
      * Test the property 'negated'
      */
     @Test
     public void negatedTest() {
         // TODO: test negated
+    }
+
+    /**
+     * Test the property 'values'
+     */
+    @Test
+    public void valuesTest() {
+        // TODO: test values
     }
 
 }

@@ -1,0 +1,24 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "country" },
+      {"model": "created_time" },
+      {"model": "currency" },
+      {"model": "id" },
+      {"model": "name" },
+      {"model": "owner" },
+      {"model": "permissions" },
+      {"model": "updated_time" },
+    ]
+  }]
+}

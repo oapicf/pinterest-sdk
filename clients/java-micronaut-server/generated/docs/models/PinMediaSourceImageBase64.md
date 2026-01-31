@@ -2,7 +2,7 @@
 
 # PinMediaSourceImageBase64
 
-Base64-encoded image media source
+Image Base64-based media source.
 
 The class is defined in **[PinMediaSourceImageBase64.java](../../src/main/java/org/openapitools/model/PinMediaSourceImageBase64.java)**
 
@@ -10,24 +10,18 @@ The class is defined in **[PinMediaSourceImageBase64.java](../../src/main/java/o
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sourceType** | [**SourceTypeEnum**](#SourceTypeEnum) |  | 
-**contentType** | [**ContentTypeEnum**](#ContentTypeEnum) |  | 
+**contentType** | `ContentType` |  | 
 **data** | `String` |  | 
 **isStandard** | `Boolean` | Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users. |  [optional property]
+**sourceType** | [**SourceTypeEnum**](#SourceTypeEnum) | The source type of the media. | 
+
+
+
 
 ## SourceTypeEnum
 
 Name | Value
 ---- | -----
 IMAGE_BASE64 | `"image_base64"`
-
-## ContentTypeEnum
-
-Name | Value
----- | -----
-IMAGE_JPEG | `"image/jpeg"`
-IMAGE_PNG | `"image/png"`
-
-
 
 

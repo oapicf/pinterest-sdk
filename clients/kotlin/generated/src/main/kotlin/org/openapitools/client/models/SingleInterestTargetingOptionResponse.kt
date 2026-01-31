@@ -22,26 +22,26 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param id 
- * @param name 
  * @param childInterests 
+ * @param id 
  * @param level 
+ * @param name 
  */
 
 
 data class SingleInterestTargetingOptionResponse (
 
-    @Json(name = "id")
-    val id: kotlin.String? = null,
-
-    @Json(name = "name")
-    val name: kotlin.String? = null,
-
     @Json(name = "child_interests")
     val childInterests: kotlin.collections.List<kotlin.String>? = null,
 
+    @Json(name = "id")
+    val id: kotlin.String? = null,
+
     @Json(name = "level")
-    val level: kotlin.Int? = null
+    val level: kotlin.Int? = null,
+
+    @Json(name = "name")
+    val name: kotlin.String? = null
 
 ) {
 

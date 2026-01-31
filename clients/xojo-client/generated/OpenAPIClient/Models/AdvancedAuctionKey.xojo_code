@@ -2,15 +2,15 @@
 Protected Class AdvancedAuctionKey
 
 	#tag Property, Flags = &h0
-		#tag Note
-			The catalog retail item id in the merchant namespace
-		#tag EndNote
-		item_id As String
+		country As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		country As String
+		#tag Note
+			The catalog retail item id in the merchant namespace
+		#tag EndNote
+		item_id As String
 	#tag EndProperty
 
 
@@ -56,19 +56,19 @@ Protected Class AdvancedAuctionKey
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="item_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="country"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="Country"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="item_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

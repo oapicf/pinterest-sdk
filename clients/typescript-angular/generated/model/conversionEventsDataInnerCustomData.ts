@@ -15,13 +15,13 @@ import { ConversionEventsDataInnerCustomDataContentsInner } from './conversionEv
  */
 export interface ConversionEventsDataInnerCustomData { 
     /**
-     * The ISO-4217 currency code. If not provided, we will default to the advertiser\'s currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.
+     * The brand of the content associated with the event.
      */
-    currency?: string | null;
+    content_brand?: string | null;
     /**
-     * Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.
+     * The category of the content associated with the event.
      */
-    value?: string | null;
+    content_category?: string | null;
     /**
      * List of products IDs. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
      */
@@ -31,36 +31,48 @@ export interface ConversionEventsDataInnerCustomData {
      */
     content_name?: string | null;
     /**
-     * The category of the content associated with the event.
-     */
-    content_category?: string | null;
-    /**
-     * The brand of the content associated with the event.
-     */
-    content_brand?: string | null;
-    /**
      * A list of objects containing information about products, such as price and quantity. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
      */
     contents?: Array<ConversionEventsDataInnerCustomDataContentsInner>;
+    /**
+     * The ISO-4217 currency code. If not provided, we will default to the advertiser\'s currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.
+     */
+    currency?: string | null;
+    /**
+     * Only use when instructed.
+     */
+    external_measurement_id?: string | null;
+    /**
+     * Only use when instructed.
+     */
+    external_measurement_vendor_id?: number | null;
+    /**
+     * Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided.
+     */
+    np?: string | null;
     /**
      * Total number of products of the event. For example, the total number of items purchased in a checkout event. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
      */
     num_items?: number;
     /**
+     * Flags for different privacy rights laws to opt out users of sharing personal information. Separate values with commas. See the Help Center article about <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">limited data processing</a> and the developer\'s guide for <a href=\"/docs/track-conversions/track-conversions-in-the-api/#whether-the-user-has-opted-out-of-web-or-offline-conversion-events\" target=\"_blank\">tracking conversion events</a> for help with using this parameter.
+     */
+    opt_out_type?: string | null;
+    /**
      * The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest.
      */
     order_id?: string | null;
+    /**
+     * Predicted lifetime value of user associated with the event. Accepted as a string in the request; it will be parsed into a double.
+     */
+    predicted_ltv?: string | null;
     /**
      * The search string related to the user conversion event.
      */
     search_string?: string | null;
     /**
-     * Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"/docs/api-features/conversion-overview/\" target=\"_blank\">dev site</a> for specific opt_out_type set up.
+     * Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.
      */
-    opt_out_type?: string | null;
-    /**
-     * Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided.
-     */
-    np?: string | null;
+    value?: string | null;
 }
 

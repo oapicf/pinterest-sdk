@@ -8,11 +8,11 @@ use WWW::OpenAPIClient::Object::AudienceInsightCategoryCommon;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **string** |  | [optional] 
+**index** | **double** |  | [optional] 
 **key** | **string** |  | [optional] 
 **name** | **string** |  | [optional] 
 **ratio** | **double** |  | [optional] 
-**index** | **double** |  | [optional] 
-**id** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

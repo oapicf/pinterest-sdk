@@ -18,12 +18,12 @@ import { CatalogsDeleteHotelItem } from './catalogsDeleteHotelItem';
  * Hotel batch item
  */
 export interface CatalogsHotelBatchItem { 
+    attributes: CatalogsUpdatableHotelAttributes;
     /**
      * The catalog hotel id in the merchant namespace
      */
     hotel_id: string;
     operation: CatalogsHotelBatchItem.OperationEnum;
-    attributes: CatalogsUpdatableHotelAttributes;
 }
 export namespace CatalogsHotelBatchItem {
     export const OperationEnum = {

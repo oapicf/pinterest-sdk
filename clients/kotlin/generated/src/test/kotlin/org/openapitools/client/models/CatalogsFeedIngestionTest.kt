@@ -26,10 +26,10 @@ class CatalogsFeedIngestionTest : ShouldSpec() {
         // uncomment below to create an instance of CatalogsFeedIngestion
         //val modelInstance = CatalogsFeedIngestion()
 
-        // to test the property `id`
-        should("test id") {
+        // to test the property `createdAt`
+        should("test createdAt") {
             // uncomment below to test the property
-            //modelInstance.id shouldBe ("TODO")
+            //modelInstance.createdAt shouldBe ("TODO")
         }
 
         // to test the property `feedId`
@@ -38,10 +38,10 @@ class CatalogsFeedIngestionTest : ShouldSpec() {
             //modelInstance.feedId shouldBe ("TODO")
         }
 
-        // to test the property `createdAt`
-        should("test createdAt") {
+        // to test the property `id`
+        should("test id") {
             // uncomment below to test the property
-            //modelInstance.createdAt shouldBe ("TODO")
+            //modelInstance.id shouldBe ("TODO")
         }
 
         // to test the property `status`

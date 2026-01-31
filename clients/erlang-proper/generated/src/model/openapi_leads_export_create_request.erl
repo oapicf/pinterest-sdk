@@ -9,9 +9,9 @@
 -export_type([openapi_leads_export_create_request/0]).
 
 -type openapi_leads_export_create_request() ::
-  [ {'start_date', binary() }
+  [ {'ad_id', binary() }
   | {'end_date', binary() }
-  | {'ad_id', binary() }
+  | {'start_date', binary() }
   ].
 
 
@@ -19,9 +19,9 @@ openapi_leads_export_create_request() ->
     openapi_leads_export_create_request([]).
 
 openapi_leads_export_create_request(Fields) ->
-  Default = [ {'start_date', binary() }
+  Default = [ {'ad_id', binary() }
             , {'end_date', binary() }
-            , {'ad_id', binary() }
+            , {'start_date', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

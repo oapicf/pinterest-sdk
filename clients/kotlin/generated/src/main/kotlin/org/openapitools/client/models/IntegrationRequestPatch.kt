@@ -22,25 +22,25 @@ import com.squareup.moshi.JsonClass
 /**
  * Schema used for updating the integration metadata.
  *
- * @param connectedMerchantId 
+ * @param additionalId1 
  * @param connectedAdvertiserId 
  * @param connectedLbaId 
+ * @param connectedMerchantId 
  * @param connectedTagId 
  * @param partnerAccessToken 
- * @param partnerRefreshToken 
- * @param partnerPrimaryEmail 
  * @param partnerAccessTokenExpiry 
+ * @param partnerMetadata 
+ * @param partnerPrimaryEmail 
+ * @param partnerRefreshToken 
  * @param partnerRefreshTokenExpiry 
  * @param scopes 
- * @param additionalId1 
- * @param partnerMetadata 
  */
 
 
 data class IntegrationRequestPatch (
 
-    @Json(name = "connected_merchant_id")
-    val connectedMerchantId: kotlin.String? = null,
+    @Json(name = "additional_id_1")
+    val additionalId1: kotlin.String? = null,
 
     @Json(name = "connected_advertiser_id")
     val connectedAdvertiserId: kotlin.String? = null,
@@ -48,32 +48,32 @@ data class IntegrationRequestPatch (
     @Json(name = "connected_lba_id")
     val connectedLbaId: kotlin.String? = null,
 
+    @Json(name = "connected_merchant_id")
+    val connectedMerchantId: kotlin.String? = null,
+
     @Json(name = "connected_tag_id")
     val connectedTagId: kotlin.String? = null,
 
     @Json(name = "partner_access_token")
     val partnerAccessToken: kotlin.String? = null,
 
-    @Json(name = "partner_refresh_token")
-    val partnerRefreshToken: kotlin.String? = null,
+    @Json(name = "partner_access_token_expiry")
+    val partnerAccessTokenExpiry: java.math.BigDecimal? = null,
+
+    @Json(name = "partner_metadata")
+    val partnerMetadata: kotlin.String? = null,
 
     @Json(name = "partner_primary_email")
     val partnerPrimaryEmail: kotlin.String? = null,
 
-    @Json(name = "partner_access_token_expiry")
-    val partnerAccessTokenExpiry: java.math.BigDecimal? = null,
+    @Json(name = "partner_refresh_token")
+    val partnerRefreshToken: kotlin.String? = null,
 
     @Json(name = "partner_refresh_token_expiry")
     val partnerRefreshTokenExpiry: java.math.BigDecimal? = null,
 
     @Json(name = "scopes")
-    val scopes: kotlin.String? = null,
-
-    @Json(name = "additional_id_1")
-    val additionalId1: kotlin.String? = null,
-
-    @Json(name = "partner_metadata")
-    val partnerMetadata: kotlin.String? = null
+    val scopes: kotlin.String? = null
 
 ) {
 

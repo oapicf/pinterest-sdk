@@ -23,27 +23,27 @@ pinterest_rest_api_catalogs_report_distribution_issue_filter_REPORTTYPE_e catalo
 }
 
 static catalogs_report_distribution_issue_filter_t *catalogs_report_distribution_issue_filter_create_internal(
-    pinterest_rest_api_catalogs_report_distribution_issue_filter_REPORTTYPE_e report_type,
-    char *catalog_id
+    char *catalog_id,
+    pinterest_rest_api_catalogs_report_distribution_issue_filter_REPORTTYPE_e report_type
     ) {
     catalogs_report_distribution_issue_filter_t *catalogs_report_distribution_issue_filter_local_var = malloc(sizeof(catalogs_report_distribution_issue_filter_t));
     if (!catalogs_report_distribution_issue_filter_local_var) {
         return NULL;
     }
-    catalogs_report_distribution_issue_filter_local_var->report_type = report_type;
     catalogs_report_distribution_issue_filter_local_var->catalog_id = catalog_id;
+    catalogs_report_distribution_issue_filter_local_var->report_type = report_type;
 
     catalogs_report_distribution_issue_filter_local_var->_library_owned = 1;
     return catalogs_report_distribution_issue_filter_local_var;
 }
 
 __attribute__((deprecated)) catalogs_report_distribution_issue_filter_t *catalogs_report_distribution_issue_filter_create(
-    pinterest_rest_api_catalogs_report_distribution_issue_filter_REPORTTYPE_e report_type,
-    char *catalog_id
+    char *catalog_id,
+    pinterest_rest_api_catalogs_report_distribution_issue_filter_REPORTTYPE_e report_type
     ) {
     return catalogs_report_distribution_issue_filter_create_internal (
-        report_type,
-        catalog_id
+        catalog_id,
+        report_type
         );
 }
 
@@ -66,6 +66,14 @@ void catalogs_report_distribution_issue_filter_free(catalogs_report_distribution
 cJSON *catalogs_report_distribution_issue_filter_convertToJSON(catalogs_report_distribution_issue_filter_t *catalogs_report_distribution_issue_filter) {
     cJSON *item = cJSON_CreateObject();
 
+    // catalogs_report_distribution_issue_filter->catalog_id
+    if(catalogs_report_distribution_issue_filter->catalog_id) {
+    if(cJSON_AddStringToObject(item, "catalog_id", catalogs_report_distribution_issue_filter->catalog_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
     // catalogs_report_distribution_issue_filter->report_type
     if (pinterest_rest_api_catalogs_report_distribution_issue_filter_REPORTTYPE_NULL == catalogs_report_distribution_issue_filter->report_type) {
         goto fail;
@@ -73,14 +81,6 @@ cJSON *catalogs_report_distribution_issue_filter_convertToJSON(catalogs_report_d
     if(cJSON_AddStringToObject(item, "report_type", catalogs_report_distribution_issue_filter_report_type_ToString(catalogs_report_distribution_issue_filter->report_type)) == NULL)
     {
     goto fail; //Enum
-    }
-
-
-    // catalogs_report_distribution_issue_filter->catalog_id
-    if(catalogs_report_distribution_issue_filter->catalog_id) {
-    if(cJSON_AddStringToObject(item, "catalog_id", catalogs_report_distribution_issue_filter->catalog_id) == NULL) {
-    goto fail; //String
-    }
     }
 
     return item;
@@ -94,6 +94,18 @@ fail:
 catalogs_report_distribution_issue_filter_t *catalogs_report_distribution_issue_filter_parseFromJSON(cJSON *catalogs_report_distribution_issue_filterJSON){
 
     catalogs_report_distribution_issue_filter_t *catalogs_report_distribution_issue_filter_local_var = NULL;
+
+    // catalogs_report_distribution_issue_filter->catalog_id
+    cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_report_distribution_issue_filterJSON, "catalog_id");
+    if (cJSON_IsNull(catalog_id)) {
+        catalog_id = NULL;
+    }
+    if (catalog_id) { 
+    if(!cJSON_IsString(catalog_id) && !cJSON_IsNull(catalog_id))
+    {
+    goto end; //String
+    }
+    }
 
     // catalogs_report_distribution_issue_filter->report_type
     cJSON *report_type = cJSON_GetObjectItemCaseSensitive(catalogs_report_distribution_issue_filterJSON, "report_type");
@@ -112,22 +124,10 @@ catalogs_report_distribution_issue_filter_t *catalogs_report_distribution_issue_
     }
     report_typeVariable = catalogs_report_distribution_issue_filter_report_type_FromString(report_type->valuestring);
 
-    // catalogs_report_distribution_issue_filter->catalog_id
-    cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_report_distribution_issue_filterJSON, "catalog_id");
-    if (cJSON_IsNull(catalog_id)) {
-        catalog_id = NULL;
-    }
-    if (catalog_id) { 
-    if(!cJSON_IsString(catalog_id) && !cJSON_IsNull(catalog_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     catalogs_report_distribution_issue_filter_local_var = catalogs_report_distribution_issue_filter_create_internal (
-        report_typeVariable,
-        catalog_id && !cJSON_IsNull(catalog_id) ? strdup(catalog_id->valuestring) : NULL
+        catalog_id && !cJSON_IsNull(catalog_id) ? strdup(catalog_id->valuestring) : NULL,
+        report_typeVariable
         );
 
     return catalogs_report_distribution_issue_filter_local_var;

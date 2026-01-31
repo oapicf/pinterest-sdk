@@ -10,8 +10,14 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * CatalogsReportFeedIngestionFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsReportFeedIngestionFilter   {
+  @JsonProperty("feed_id")
+  private String feedId;
+
+  @JsonProperty("processing_result_id")
+  private String processingResultId;
+
   /**
    * Gets or Sets reportType
    */
@@ -43,30 +49,6 @@ public class CatalogsReportFeedIngestionFilter   {
 
   @JsonProperty("report_type")
   private ReportTypeEnum reportType;
-
-  @JsonProperty("feed_id")
-  private String feedId;
-
-  @JsonProperty("processing_result_id")
-  private String processingResultId;
-
-  public CatalogsReportFeedIngestionFilter reportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-    return this;
-  }
-
-   /**
-   * Get reportType
-   * @return reportType
-  **/
-  @ApiModelProperty(required = true, value = "")
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-
-  public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
 
   public CatalogsReportFeedIngestionFilter feedId(String feedId) {
     this.feedId = feedId;
@@ -104,6 +86,24 @@ public class CatalogsReportFeedIngestionFilter   {
     this.processingResultId = processingResultId;
   }
 
+  public CatalogsReportFeedIngestionFilter reportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+    return this;
+  }
+
+   /**
+   * Get reportType
+   * @return reportType
+  **/
+  @ApiModelProperty(required = true, value = "")
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -114,14 +114,14 @@ public class CatalogsReportFeedIngestionFilter   {
       return false;
     }
     CatalogsReportFeedIngestionFilter catalogsReportFeedIngestionFilter = (CatalogsReportFeedIngestionFilter) o;
-    return Objects.equals(this.reportType, catalogsReportFeedIngestionFilter.reportType) &&
-        Objects.equals(this.feedId, catalogsReportFeedIngestionFilter.feedId) &&
-        Objects.equals(this.processingResultId, catalogsReportFeedIngestionFilter.processingResultId);
+    return Objects.equals(this.feedId, catalogsReportFeedIngestionFilter.feedId) &&
+        Objects.equals(this.processingResultId, catalogsReportFeedIngestionFilter.processingResultId) &&
+        Objects.equals(this.reportType, catalogsReportFeedIngestionFilter.reportType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, feedId, processingResultId);
+    return Objects.hash(feedId, processingResultId, reportType);
   }
 
   @Override
@@ -129,9 +129,9 @@ public class CatalogsReportFeedIngestionFilter   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportFeedIngestionFilter {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
     sb.append("    processingResultId: ").append(toIndentedString(processingResultId)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

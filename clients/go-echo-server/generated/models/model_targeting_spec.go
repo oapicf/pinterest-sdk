@@ -1,13 +1,13 @@
 package models
 
-// TargetingSpec - Ad group targeting specification defining the ad group target audience. For example, `{\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"AGE_BUCKET\":[\"25-34\"]}`
+// TargetingSpec - Ad group targeting specification defining the ad group target audience. For example, `{\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"MINIMUM_AGE\":\"18\", \"MAXIMUM_AGE\":\"65+\"}`
 type TargetingSpec struct {
 
-	// Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted.
-	AGE_BUCKET *[]string `json:"AGE_BUCKET,omitempty"`
+	// **Legacy field.** Predefined age ranges. We recommend using MINIMUM_AGE and MAXIMUM_AGE instead for more flexible targeting. Cannot be combined with MINIMUM_AGE/MAXIMUM_AGE. If neither AGE_BUCKET nor MINIMUM_AGE/MAXIMUM_AGE are specified, all ages will be targeted.
+	AGE_BUCKET *[]TargetingSpecAgeBucket `json:"AGE_BUCKET,omitempty"`
 
 	// Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted.
-	APPTYPE *[]string `json:"APPTYPE,omitempty"`
+	APPTYPE *[]TargetingSpecAppType `json:"APPTYPE,omitempty"`
 
 	// Excluded customer list IDs. Used to drive new customer acquisition goals. For example: [\"2542620905475\"]. Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_EXCLUDE field is missing, the default behavior in terms of ad delivery is that **No users will be excluded**.
 	AUDIENCE_EXCLUDE *[]string `json:"AUDIENCE_EXCLUDE,omitempty"`
@@ -16,7 +16,7 @@ type TargetingSpec struct {
 	AUDIENCE_INCLUDE *[]string `json:"AUDIENCE_INCLUDE,omitempty"`
 
 	// Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.
-	GENDER *[]string `json:"GENDER,omitempty"`
+	GENDER *[]TargetingSpecGender `json:"GENDER,omitempty"`
 
 	// Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a> or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both. At least one of LOCATION or GEO must be specified. If the GEO field is missing, then only LOCATION values will be targeted (see LOCATION field below).
 	GEO *[]string `json:"GEO,omitempty"`
@@ -24,11 +24,17 @@ type TargetingSpec struct {
 	// Array of interest object IDs. If the INTEREST field is missing, the default behavior in terms of ad delivery is that **All interests will be targeted**.
 	INTEREST []string `json:"INTEREST,omitempty"`
 
-	// 24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be targeted, only english non-sublanguage will be targeted**.
+	// 24 ISO 639-1 two-letter language codes. If the LOCALE field is not included in the request, all languages are targeted.
 	LOCALE *[]string `json:"LOCALE,omitempty"`
 
-	// 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, click here. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
+	// 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a>. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
 	LOCATION *[]string `json:"LOCATION,omitempty"`
+
+	// Maximum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\", \"65+\". Must be used together with `MINIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
+	MAXIMUM_AGE string `json:"MAXIMUM_AGE,omitempty" validate:"regexp=^\\\\d+\\\\+?$"`
+
+	// Minimum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\". Note: 65+ is not allowed for minimum age. Must be used together with `MAXIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
+	MINIMUM_AGE string `json:"MINIMUM_AGE,omitempty" validate:"regexp=^\\\\d+$"`
 
 	// Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting
 	SHOPPING_RETARGETING *[]TargetingSpecShoppingRetargeting `json:"SHOPPING_RETARGETING,omitempty"`

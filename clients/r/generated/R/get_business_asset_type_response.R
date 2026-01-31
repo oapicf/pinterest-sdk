@@ -92,7 +92,7 @@ GetBusinessAssetTypeResponse <- R6::R6Class(
 
 # add to utils.R
 .parse_GetBusinessAssetTypeResponse <- function(vals) {
-  res <- gsub("^\\[|\\]$", "", "[AD_ACCOUNT, PROFILE, ASSET_GROUP, CONVERSION_TAG]")
+  res <- gsub("^\\[|\\]$", "", "[AD_ACCOUNT, PROFILE, ASSET_GROUP, CONVERSION_TAG, CATALOG]")
   unlist(strsplit(res, ", "))
 }
 

@@ -79,10 +79,11 @@ class BusinessAccessAssetsApiTest : ShouldSpec() {
             // uncomment below to test businessAssetMembersGet
             //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
             //val assetId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of a business asset.
+            //val fetchSystemUsers : kotlin.Boolean = true // kotlin.Boolean | Fetches system users if True. Fetches regular user employees if False.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
             //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val startIndex : kotlin.Int = 0 // kotlin.Int | An index to start fetching the results from. Only the results starting from this index will be returned.
-            //val result : BusinessAssetMembersGet200Response = apiInstance.businessAssetMembersGet(businessId, assetId, bookmark, pageSize, startIndex)
+            //val result : BusinessAssetMembersGet200Response = apiInstance.businessAssetMembersGet(businessId, assetId, fetchSystemUsers, bookmark, pageSize, startIndex)
             //result shouldBe ("TODO")
         }
 

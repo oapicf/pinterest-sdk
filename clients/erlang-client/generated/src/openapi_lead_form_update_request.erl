@@ -5,34 +5,34 @@
 -export_type([openapi_lead_form_update_request/0]).
 
 -type openapi_lead_form_update_request() ::
-    #{ 'name' => binary(),
-       'privacy_policy_link' => binary(),
-       'has_accepted_terms' => boolean(),
-       'completion_message' => binary(),
-       'status' => openapi_lead_form_status:openapi_lead_form_status(),
+    #{ 'completion_message' => binary(),
        'disclosure_language' => binary(),
-       'questions' => list(),
+       'has_accepted_terms' => boolean(),
+       'name' => binary(),
        'policy_links' => list(),
+       'privacy_policy_link' => binary(),
+       'questions' => list(),
+       'status' => openapi_lead_form_status:openapi_lead_form_status(),
        'id' := binary()
      }.
 
-encode(#{ 'name' := Name,
-          'privacy_policy_link' := PrivacyPolicyLink,
-          'has_accepted_terms' := HasAcceptedTerms,
-          'completion_message' := CompletionMessage,
-          'status' := Status,
+encode(#{ 'completion_message' := CompletionMessage,
           'disclosure_language' := DisclosureLanguage,
-          'questions' := Questions,
+          'has_accepted_terms' := HasAcceptedTerms,
+          'name' := Name,
           'policy_links' := PolicyLinks,
+          'privacy_policy_link' := PrivacyPolicyLink,
+          'questions' := Questions,
+          'status' := Status,
           'id' := Id
         }) ->
-    #{ 'name' => Name,
-       'privacy_policy_link' => PrivacyPolicyLink,
-       'has_accepted_terms' => HasAcceptedTerms,
-       'completion_message' => CompletionMessage,
-       'status' => Status,
+    #{ 'completion_message' => CompletionMessage,
        'disclosure_language' => DisclosureLanguage,
-       'questions' => Questions,
+       'has_accepted_terms' => HasAcceptedTerms,
+       'name' => Name,
        'policy_links' => PolicyLinks,
+       'privacy_policy_link' => PrivacyPolicyLink,
+       'questions' => Questions,
+       'status' => Status,
        'id' => Id
      }.

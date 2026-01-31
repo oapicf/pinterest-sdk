@@ -17,105 +17,126 @@ public struct AdGroupCommon: Codable, JSONEncodable, Hashable {
         case maxBid = "MAX_BID"
         case targetAvg = "TARGET_AVG"
     }
+    public enum PromotionApplicationLevel: String, Codable, CaseIterable {
+        case _none = "NONE"
+        case item = "ITEM"
+        case adGroup = "AD_GROUP"
+    }
     public static let campaignIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^[C]?\\d+$/")
+    public static let promotionIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public static let targetingTemplateIdsRule = ArrayRule(minItems: nil, maxItems: 1, uniqueItems: false)
-    /** Ad group name. */
-    public var name: String?
-    /** Ad group/entity status. */
-    public var status: EntityStatus?
+    /** Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>. */
+    public var autoTargetingEnabled: Bool?
+    /** Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH. */
+    public var bidInMicroCurrency: Int?
+    /** Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\". */
+    public var bidStrategyType: BidStrategyType?
+    public var billableEvent: ActionType?
     /** Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups. */
     public var budgetInMicroCurrency: Int?
-    /** Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC. */
-    public var bidInMicroCurrency: Int?
-    /** Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`. */
-    public var optimizationGoalMetadata: OptimizationGoalMetadata?
     public var budgetType: BudgetType?
-    /** Ad group start time. Unix timestamp in seconds. Defaults to current time. */
-    public var startTime: Int?
-    /** Ad group end time. Unix timestamp in seconds. */
-    public var endTime: Int?
-    public var targetingSpec: TargetingSpec?
-    /** Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field. */
-    public var lifetimeFrequencyCap: Int?
-    /** Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>. */
-    public var trackingUrls: TrackingUrls?
-    /** Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. */
-    public var autoTargetingEnabled: Bool?
-    /** <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>. */
-    public var placementGroup: PlacementGroupType?
-    public var pacingDeliveryType: PacingDeliveryType?
     /** Campaign ID of the ad group. */
     public var campaignId: String?
-    public var billableEvent: ActionType?
-    /** Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID. */
-    public var bidStrategyType: BidStrategyType?
+    /** Timestamp in Unix format for scheduling when ads in the ad group stop appearing. If not specified, ads run indefinitely unless you update the ad group by changing their status to `paused`. Cannot occur after `end_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO. */
+    public var endTime: Int?
+    /** Enable creative optimization for the ad group, default value is FALSE. When enabled, you allow Pinterest to automatically turn your product Pins into ads in different formats (collections and shopping) and deliver those ads to users at scale. */
+    public var isCreativeOptimization: Bool?
+    /** Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field. */
+    public var lifetimeFrequencyCap: Int?
+    /** Ad group name. */
+    public var name: String?
+    /** Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`. */
+    public var optimizationGoalMetadata: OptimizationGoalMetadata?
+    public var pacingDeliveryType: PacingDeliveryType?
+    /** <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>. */
+    public var placementGroup: PlacementGroupType?
+    /** Specify if the promotion is applied at ad group or item level */
+    public var promotionApplicationLevel: PromotionApplicationLevel?
+    /** Promotion ID. To clear this field, set to null. */
+    public var promotionId: String? = "0"
+    /** Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign's `start_time`. Cannot precede `start_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO. */
+    public var startTime: Int?
+    /** Ad group/entity status. */
+    public var status: EntityStatus?
+    public var targetingSpec: TargetingSpec?
     /** Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0']. */
     public var targetingTemplateIds: [String]?
+    /** Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>. */
+    public var trackingUrls: TrackingUrls?
 
-    public init(name: String? = nil, status: EntityStatus? = nil, budgetInMicroCurrency: Int? = nil, bidInMicroCurrency: Int? = nil, optimizationGoalMetadata: OptimizationGoalMetadata? = nil, budgetType: BudgetType? = nil, startTime: Int? = nil, endTime: Int? = nil, targetingSpec: TargetingSpec? = nil, lifetimeFrequencyCap: Int? = nil, trackingUrls: TrackingUrls? = nil, autoTargetingEnabled: Bool? = nil, placementGroup: PlacementGroupType? = nil, pacingDeliveryType: PacingDeliveryType? = nil, campaignId: String? = nil, billableEvent: ActionType? = nil, bidStrategyType: BidStrategyType? = nil, targetingTemplateIds: [String]? = nil) {
-        self.name = name
-        self.status = status
-        self.budgetInMicroCurrency = budgetInMicroCurrency
-        self.bidInMicroCurrency = bidInMicroCurrency
-        self.optimizationGoalMetadata = optimizationGoalMetadata
-        self.budgetType = budgetType
-        self.startTime = startTime
-        self.endTime = endTime
-        self.targetingSpec = targetingSpec
-        self.lifetimeFrequencyCap = lifetimeFrequencyCap
-        self.trackingUrls = trackingUrls
+    public init(autoTargetingEnabled: Bool? = nil, bidInMicroCurrency: Int? = nil, bidStrategyType: BidStrategyType? = nil, billableEvent: ActionType? = nil, budgetInMicroCurrency: Int? = nil, budgetType: BudgetType? = nil, campaignId: String? = nil, endTime: Int? = nil, isCreativeOptimization: Bool? = nil, lifetimeFrequencyCap: Int? = nil, name: String? = nil, optimizationGoalMetadata: OptimizationGoalMetadata? = nil, pacingDeliveryType: PacingDeliveryType? = nil, placementGroup: PlacementGroupType? = nil, promotionApplicationLevel: PromotionApplicationLevel? = nil, promotionId: String? = "0", startTime: Int? = nil, status: EntityStatus? = nil, targetingSpec: TargetingSpec? = nil, targetingTemplateIds: [String]? = nil, trackingUrls: TrackingUrls? = nil) {
         self.autoTargetingEnabled = autoTargetingEnabled
-        self.placementGroup = placementGroup
-        self.pacingDeliveryType = pacingDeliveryType
-        self.campaignId = campaignId
-        self.billableEvent = billableEvent
+        self.bidInMicroCurrency = bidInMicroCurrency
         self.bidStrategyType = bidStrategyType
+        self.billableEvent = billableEvent
+        self.budgetInMicroCurrency = budgetInMicroCurrency
+        self.budgetType = budgetType
+        self.campaignId = campaignId
+        self.endTime = endTime
+        self.isCreativeOptimization = isCreativeOptimization
+        self.lifetimeFrequencyCap = lifetimeFrequencyCap
+        self.name = name
+        self.optimizationGoalMetadata = optimizationGoalMetadata
+        self.pacingDeliveryType = pacingDeliveryType
+        self.placementGroup = placementGroup
+        self.promotionApplicationLevel = promotionApplicationLevel
+        self.promotionId = promotionId
+        self.startTime = startTime
+        self.status = status
+        self.targetingSpec = targetingSpec
         self.targetingTemplateIds = targetingTemplateIds
+        self.trackingUrls = trackingUrls
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case name
-        case status
-        case budgetInMicroCurrency = "budget_in_micro_currency"
-        case bidInMicroCurrency = "bid_in_micro_currency"
-        case optimizationGoalMetadata = "optimization_goal_metadata"
-        case budgetType = "budget_type"
-        case startTime = "start_time"
-        case endTime = "end_time"
-        case targetingSpec = "targeting_spec"
-        case lifetimeFrequencyCap = "lifetime_frequency_cap"
-        case trackingUrls = "tracking_urls"
         case autoTargetingEnabled = "auto_targeting_enabled"
-        case placementGroup = "placement_group"
-        case pacingDeliveryType = "pacing_delivery_type"
-        case campaignId = "campaign_id"
-        case billableEvent = "billable_event"
+        case bidInMicroCurrency = "bid_in_micro_currency"
         case bidStrategyType = "bid_strategy_type"
+        case billableEvent = "billable_event"
+        case budgetInMicroCurrency = "budget_in_micro_currency"
+        case budgetType = "budget_type"
+        case campaignId = "campaign_id"
+        case endTime = "end_time"
+        case isCreativeOptimization = "is_creative_optimization"
+        case lifetimeFrequencyCap = "lifetime_frequency_cap"
+        case name
+        case optimizationGoalMetadata = "optimization_goal_metadata"
+        case pacingDeliveryType = "pacing_delivery_type"
+        case placementGroup = "placement_group"
+        case promotionApplicationLevel = "promotion_application_level"
+        case promotionId = "promotion_id"
+        case startTime = "start_time"
+        case status
+        case targetingSpec = "targeting_spec"
         case targetingTemplateIds = "targeting_template_ids"
+        case trackingUrls = "tracking_urls"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(name, forKey: .name)
-        try container.encodeIfPresent(status, forKey: .status)
-        try container.encodeIfPresent(budgetInMicroCurrency, forKey: .budgetInMicroCurrency)
-        try container.encodeIfPresent(bidInMicroCurrency, forKey: .bidInMicroCurrency)
-        try container.encodeIfPresent(optimizationGoalMetadata, forKey: .optimizationGoalMetadata)
-        try container.encodeIfPresent(budgetType, forKey: .budgetType)
-        try container.encodeIfPresent(startTime, forKey: .startTime)
-        try container.encodeIfPresent(endTime, forKey: .endTime)
-        try container.encodeIfPresent(targetingSpec, forKey: .targetingSpec)
-        try container.encodeIfPresent(lifetimeFrequencyCap, forKey: .lifetimeFrequencyCap)
-        try container.encodeIfPresent(trackingUrls, forKey: .trackingUrls)
         try container.encodeIfPresent(autoTargetingEnabled, forKey: .autoTargetingEnabled)
-        try container.encodeIfPresent(placementGroup, forKey: .placementGroup)
-        try container.encodeIfPresent(pacingDeliveryType, forKey: .pacingDeliveryType)
-        try container.encodeIfPresent(campaignId, forKey: .campaignId)
-        try container.encodeIfPresent(billableEvent, forKey: .billableEvent)
+        try container.encodeIfPresent(bidInMicroCurrency, forKey: .bidInMicroCurrency)
         try container.encodeIfPresent(bidStrategyType, forKey: .bidStrategyType)
+        try container.encodeIfPresent(billableEvent, forKey: .billableEvent)
+        try container.encodeIfPresent(budgetInMicroCurrency, forKey: .budgetInMicroCurrency)
+        try container.encodeIfPresent(budgetType, forKey: .budgetType)
+        try container.encodeIfPresent(campaignId, forKey: .campaignId)
+        try container.encodeIfPresent(endTime, forKey: .endTime)
+        try container.encodeIfPresent(isCreativeOptimization, forKey: .isCreativeOptimization)
+        try container.encodeIfPresent(lifetimeFrequencyCap, forKey: .lifetimeFrequencyCap)
+        try container.encodeIfPresent(name, forKey: .name)
+        try container.encodeIfPresent(optimizationGoalMetadata, forKey: .optimizationGoalMetadata)
+        try container.encodeIfPresent(pacingDeliveryType, forKey: .pacingDeliveryType)
+        try container.encodeIfPresent(placementGroup, forKey: .placementGroup)
+        try container.encodeIfPresent(promotionApplicationLevel, forKey: .promotionApplicationLevel)
+        try container.encodeIfPresent(promotionId, forKey: .promotionId)
+        try container.encodeIfPresent(startTime, forKey: .startTime)
+        try container.encodeIfPresent(status, forKey: .status)
+        try container.encodeIfPresent(targetingSpec, forKey: .targetingSpec)
         try container.encodeIfPresent(targetingTemplateIds, forKey: .targetingTemplateIds)
+        try container.encodeIfPresent(trackingUrls, forKey: .trackingUrls)
     }
 }
 

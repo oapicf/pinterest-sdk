@@ -12,24 +12,15 @@ import org.openapitools.vertxweb.server.model.SSIOOrderLine;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SsioOrderLinesGetByAdAccount200Response   {
   
-  private List<SSIOOrderLine> items = new ArrayList<>();
   private String bookmark;
+  private List<SSIOOrderLine> items = new ArrayList<>();
 
   public SsioOrderLinesGetByAdAccount200Response () {
 
   }
 
-  public SsioOrderLinesGetByAdAccount200Response (List<SSIOOrderLine> items, String bookmark) {
-    this.items = items;
+  public SsioOrderLinesGetByAdAccount200Response (String bookmark, List<SSIOOrderLine> items) {
     this.bookmark = bookmark;
-  }
-
-    
-  @JsonProperty("items")
-  public List<SSIOOrderLine> getItems() {
-    return items;
-  }
-  public void setItems(List<SSIOOrderLine> items) {
     this.items = items;
   }
 
@@ -42,6 +33,15 @@ public class SsioOrderLinesGetByAdAccount200Response   {
     this.bookmark = bookmark;
   }
 
+    
+  @JsonProperty("items")
+  public List<SSIOOrderLine> getItems() {
+    return items;
+  }
+  public void setItems(List<SSIOOrderLine> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -52,13 +52,13 @@ public class SsioOrderLinesGetByAdAccount200Response   {
       return false;
     }
     SsioOrderLinesGetByAdAccount200Response ssioOrderLinesGetByAdAccount200Response = (SsioOrderLinesGetByAdAccount200Response) o;
-    return Objects.equals(items, ssioOrderLinesGetByAdAccount200Response.items) &&
-        Objects.equals(bookmark, ssioOrderLinesGetByAdAccount200Response.bookmark);
+    return Objects.equals(bookmark, ssioOrderLinesGetByAdAccount200Response.bookmark) &&
+        Objects.equals(items, ssioOrderLinesGetByAdAccount200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -66,8 +66,8 @@ public class SsioOrderLinesGetByAdAccount200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SsioOrderLinesGetByAdAccount200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

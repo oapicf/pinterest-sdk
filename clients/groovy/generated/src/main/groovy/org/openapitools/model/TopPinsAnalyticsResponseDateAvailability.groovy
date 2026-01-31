@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 @Canonical
 class TopPinsAnalyticsResponseDateAvailability {
     
-    BigDecimal latestAvailableTimestamp
-    
     Boolean isRealtime
+    
+    BigDecimal latestAvailableTimestamp
 }

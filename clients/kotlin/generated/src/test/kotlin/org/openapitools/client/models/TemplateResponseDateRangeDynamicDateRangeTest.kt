@@ -25,16 +25,16 @@ class TemplateResponseDateRangeDynamicDateRangeTest : ShouldSpec() {
         // uncomment below to create an instance of TemplateResponseDateRangeDynamicDateRange
         //val modelInstance = TemplateResponseDateRangeDynamicDateRange()
 
-        // to test the property `type` - The date range type
-        should("test type") {
-            // uncomment below to test the property
-            //modelInstance.type shouldBe ("TODO")
-        }
-
         // to test the property `range` - The dynamic range type
         should("test range") {
             // uncomment below to test the property
             //modelInstance.range shouldBe ("TODO")
+        }
+
+        // to test the property `type` - The date range type
+        should("test type") {
+            // uncomment below to test the property
+            //modelInstance.type shouldBe ("TODO")
         }
 
     }

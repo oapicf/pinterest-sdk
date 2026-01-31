@@ -7,9 +7,10 @@ Name | Type | Description | Notes
 **Id** | **String** |  | 
 **UpdatedAt** | **System.DateTime** |  | 
 **IngestionDetails** | [**CatalogsFeedIngestionDetails**](CatalogsFeedIngestionDetails.md) |  | 
-**Status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | 
 **ProductCounts** | [**CatalogsFeedProductCounts**](CatalogsFeedProductCounts.md) |  | 
+**Status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | 
 **ValidationDetails** | [**CatalogsFeedValidationDetails**](CatalogsFeedValidationDetails.md) |  | 
+**VideoCounts** | [**CatalogsFeedVideoCounts**](CatalogsFeedVideoCounts.md) |  | [optional] 
 
 ## Examples
 
@@ -19,9 +20,10 @@ $CatalogsFeedProcessingResult = Initialize-PSOpenAPIToolsCatalogsFeedProcessingR
  -Id null `
  -UpdatedAt 2022-03-14T15:16:34Z `
  -IngestionDetails null `
- -Status null `
  -ProductCounts null `
- -ValidationDetails null
+ -Status null `
+ -ValidationDetails null `
+ -VideoCounts null
 ```
 
 - Convert the resource to JSON

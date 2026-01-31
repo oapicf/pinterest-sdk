@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CampaignObjectivesFilter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CampaignObjectivesFilter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ObjectiveType = openapi_server.resourceTypes.ObjectiveType
+}
+resourceTypes {
+
+  CampaignObjectivesFilter {
+    title = CampaignObjectivesFilter
+    description = CampaignObjectivesFilter
+    derivedFrom = Root
+    properties {
+        campaign_objective_types {
+          type = array
+          items.type = ObjectiveType
+          description = "List of values for filtering. [\&quot;WEB_SESSIONS\&quot;] in BETA."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CampaignObjectivesFilter {
+    title = CampaignObjectivesFilter
+    description = CampaignObjectivesFilter
+    implements = openapi_server.resourceTypes.CampaignObjectivesFilter
+
+  }
+}

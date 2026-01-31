@@ -29,22 +29,22 @@ pinterest_rest_api_update_asset_group_body_asset_groups_to_update_inner__e updat
 
 typedef struct update_asset_group_body_asset_groups_to_update_inner_t {
     char *asset_group_id; // string
-    char *name; // string
-    char *description; // string
     list_t *asset_group_types; //nonprimitive container
     list_t *assets_to_add; //primitive container
     list_t *assets_to_remove; //primitive container
+    char *description; // string
+    char *name; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } update_asset_group_body_asset_groups_to_update_inner_t;
 
 __attribute__((deprecated)) update_asset_group_body_asset_groups_to_update_inner_t *update_asset_group_body_asset_groups_to_update_inner_create(
     char *asset_group_id,
-    char *name,
-    char *description,
     list_t *asset_group_types,
     list_t *assets_to_add,
-    list_t *assets_to_remove
+    list_t *assets_to_remove,
+    char *description,
+    char *name
 );
 
 void update_asset_group_body_asset_groups_to_update_inner_free(update_asset_group_body_asset_groups_to_update_inner_t *update_asset_group_body_asset_groups_to_update_inner);

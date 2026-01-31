@@ -10,12 +10,12 @@ module CatalogsRetailItemsPostFilter =
 
   [<CLIMutable>]
   type CatalogsRetailItemsPostFilter = {
+    [<JsonProperty(PropertyName = "catalog_id")>]
+    CatalogId : string;
     [<JsonProperty(PropertyName = "catalog_type")>]
     CatalogType : string;
     [<JsonProperty(PropertyName = "item_ids")>]
     ItemIds : string[];
-    [<JsonProperty(PropertyName = "catalog_id")>]
-    CatalogId : string;
   }
 
   //#endregion

@@ -20,6 +20,8 @@ public class CatalogsDeleteRetailItem   {
   
   private String itemId;
 
+  private Long lastUpdatedTime;
+
 
 public enum OperationEnum {
 
@@ -74,6 +76,25 @@ public enum OperationEnum {
 
 
   /**
+   * The millisecond timestamp when the item was lastly modified by the merchant.
+   **/
+  public CatalogsDeleteRetailItem lastUpdatedTime(Long lastUpdatedTime) {
+    this.lastUpdatedTime = lastUpdatedTime;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "1641483432072", value = "The millisecond timestamp when the item was lastly modified by the merchant.")
+  @JsonProperty("last_updated_time")
+  public Long getLastUpdatedTime() {
+    return lastUpdatedTime;
+  }
+  public void setLastUpdatedTime(Long lastUpdatedTime) {
+    this.lastUpdatedTime = lastUpdatedTime;
+  }
+
+
+  /**
    **/
   public CatalogsDeleteRetailItem operation(OperationEnum operation) {
     this.operation = operation;
@@ -103,12 +124,13 @@ public enum OperationEnum {
     }
     CatalogsDeleteRetailItem catalogsDeleteRetailItem = (CatalogsDeleteRetailItem) o;
     return Objects.equals(this.itemId, catalogsDeleteRetailItem.itemId) &&
+        Objects.equals(this.lastUpdatedTime, catalogsDeleteRetailItem.lastUpdatedTime) &&
         Objects.equals(this.operation, catalogsDeleteRetailItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, operation);
+    return Objects.hash(itemId, lastUpdatedTime, operation);
   }
 
   @Override
@@ -117,6 +139,7 @@ public enum OperationEnum {
     sb.append("class CatalogsDeleteRetailItem {\n");
     
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
+    sb.append("    lastUpdatedTime: ").append(toIndentedString(lastUpdatedTime)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
     sb.append("}");
     return sb.toString();

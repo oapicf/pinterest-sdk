@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 Search pins by a given search term
 
-&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
 
 ### Example
 
@@ -201,7 +201,7 @@ No authorization required
 
 ## searchUserPinsList
 
-> searchUserPinsList(searchUserPinsListRequest): ApiRequest[PinsList200Response]
+> searchUserPinsList(searchUserPinsListRequest): ApiRequest[SearchUserPinsList200Response]
 
 Search user&#39;s Pins
 
@@ -268,7 +268,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-ApiRequest[[**PinsList200Response**](PinsList200Response.md)]
+ApiRequest[[**SearchUserPinsList200Response**](SearchUserPinsList200Response.md)]
 
 
 ### Authorization

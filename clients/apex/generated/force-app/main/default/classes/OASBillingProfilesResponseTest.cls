@@ -73,8 +73,9 @@ private class OASBillingProfilesResponseTest {
     private static void maintainRenamedProperties() {
         OASBillingProfilesResponse billingProfilesResponse = new OASBillingProfilesResponse();
         Map<String, String> x-property-mappings = billingProfilesResponse.getx-property-mappings();
-        System.assertEquals('cardType', x-property-mappings.get('card_type'));
         System.assertEquals('advertiserId', x-property-mappings.get('advertiser_id'));
+        System.assertEquals('billingType', x-property-mappings.get('billing_type'));
+        System.assertEquals('cardType', x-property-mappings.get('card_type'));
         System.assertEquals('paymentMethodBrand', x-property-mappings.get('payment_method_brand'));
     }
 }

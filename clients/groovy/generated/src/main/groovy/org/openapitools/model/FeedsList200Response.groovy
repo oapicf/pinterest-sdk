@@ -11,7 +11,7 @@ import org.openapitools.model.CatalogsFeed;
 @Canonical
 class FeedsList200Response {
     
-    List<CatalogsFeed> items = new ArrayList<>()
-    
     String bookmark
+    
+    List<CatalogsFeed> items = new ArrayList<>()
 }

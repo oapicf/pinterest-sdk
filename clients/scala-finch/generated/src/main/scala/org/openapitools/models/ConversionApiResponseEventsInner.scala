@@ -8,12 +8,12 @@ import org.openapitools._
 
 /**
  * 
- * @param status Whether the event was processed successfully.
  * @param errorUnderscoremessage Error message containing more information about why the event failed to be processed.
+ * @param status Whether the event was processed successfully.
  * @param warningUnderscoremessage Warning messages about any fields in the event which are not standard. These are not critical to event processing.
  */
-case class ConversionApiResponseEventsInner(status: String,
-                errorUnderscoremessage: Option[String],
+case class ConversionApiResponseEventsInner(errorUnderscoremessage: Option[String],
+                status: String,
                 warningUnderscoremessage: Option[String]
                 )
 

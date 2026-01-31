@@ -28,7 +28,7 @@ const asset_access_requests/create = ({ businessUnderscoreid, createAssetAccessR
 * Cancel invites/requests
 * Cancel membership/partnership invites and/or requests.
 *
-* businessUnderscoreid String Business id
+* businessUnderscoreid String Unique identifier of the requesting business.
 * cancelInvitesBody CancelInvitesBody A list with invite ids
 * returns DeleteInvitesResultsResponseArray
 * */
@@ -74,7 +74,7 @@ const create_asset_invites = ({ businessUnderscoreid, createAssetInvitesRequest 
 * Create invites or requests
 * Create batch invites or requests. Can create batch invites or requests as described below. - Invite members to join the business. This would required specifying the following:     - invite_type=\"MEMBER_INVITE\"     - business_role=\"EMPLOYEE\" OR business_role=\"BIZ_ADMIN\" (To learn more about business roles, visit     https://help.pinterest.com/en/business/article/profile-permissions-in-business-access.)     - members - Invite partners to access your business assets. This would require specifying the following:     - invite_type=\"PARTNER_INVITE\"     - business_role=\"PARTNER\"     - partners - Request to be a partner so you can access their assets. This would require specifying the following:     - invite_type=\"PARTNER_REQUEST\"     - business_role=\"PARTNER\"     - partners
 *
-* businessUnderscoreid String Business id
+* businessUnderscoreid String Unique identifier of the requesting business.
 * createMembershipOrPartnershipInvitesBody CreateMembershipOrPartnershipInvitesBody An object with the properties: invite_type, partners, members, business_role
 * returns CreateInvitesResultsResponseArray
 * */

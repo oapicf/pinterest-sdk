@@ -1,11 +1,12 @@
 package org.openapitools.server.api.verticle
 
 import org.openapitools.server.api.model.ConversionEventResponse
+import org.openapitools.server.api.model.ConversionTag
 import org.openapitools.server.api.model.ConversionTagCreate
-import org.openapitools.server.api.model.ConversionTagListResponse
-import org.openapitools.server.api.model.ConversionTagResponse
+import org.openapitools.server.api.model.ConversionTagsList200Response
 import org.openapitools.server.api.model.Error
 import org.openapitools.server.api.model.PageVisitConversionTagsGet200Response
+import org.openapitools.server.api.model.PinterestLibError
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
@@ -24,13 +25,13 @@ interface ConversionTagsApi  {
     fun init(vertx:Vertx,config:JsonObject)
     /* conversionTagsCreate
      * Create conversion tag */
-    suspend fun conversionTagsCreate(adAccountId:kotlin.String?,conversionTagCreate:ConversionTagCreate?,context:OperationRequest):Response<ConversionTagResponse>
+    suspend fun conversionTagsCreate(adAccountId:kotlin.String?,conversionTagCreate:ConversionTagCreate?,context:OperationRequest):Response<ConversionTag>
     /* conversionTagsGet
      * Get conversion tag */
-    suspend fun conversionTagsGet(adAccountId:kotlin.String?,conversionTagId:kotlin.String?,context:OperationRequest):Response<ConversionTagResponse>
+    suspend fun conversionTagsGet(adAccountId:kotlin.String?,conversionTagId:kotlin.String?,context:OperationRequest):Response<ConversionTag>
     /* conversionTagsList
-     * Get conversion tags */
-    suspend fun conversionTagsList(adAccountId:kotlin.String?,filterDeleted:kotlin.Boolean?,context:OperationRequest):Response<ConversionTagListResponse>
+     * List conversion tags */
+    suspend fun conversionTagsList(adAccountId:kotlin.String?,filterDeleted:kotlin.Boolean?,context:OperationRequest):Response<ConversionTagsList200Response>
     /* ocpmEligibleConversionTagsGet
      * Get Ocpm eligible conversion tags */
     suspend fun ocpmEligibleConversionTagsGet(adAccountId:kotlin.String?,context:OperationRequest):Response<kotlin.collections.Map<kotlin.String, kotlin.Array<ConversionEventResponse>>>

@@ -4,10 +4,12 @@ import apimodels.Error;
 import apimodels.Granularity;
 import java.time.LocalDate;
 import apimodels.ProductGroupAnalyticsResponseInner;
+import apimodels.ProductGroupPromotion;
 import apimodels.ProductGroupPromotionCreateRequest;
 import apimodels.ProductGroupPromotionResponse;
 import apimodels.ProductGroupPromotionUpdateRequest;
 import apimodels.ProductGroupPromotionsList200Response;
+import apimodels.ReportingTimeZone;
 
 import play.mvc.Http;
 import java.util.List;
@@ -18,7 +20,7 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ProductGroupPromotionsApiControllerImp extends ProductGroupPromotionsApiControllerImpInterface {
     @Override
     public ProductGroupPromotionResponse productGroupPromotionsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, ProductGroupPromotionCreateRequest productGroupPromotionCreateRequest) throws Exception {
@@ -27,13 +29,13 @@ public class ProductGroupPromotionsApiControllerImp extends ProductGroupPromotio
     }
 
     @Override
-    public ProductGroupPromotionResponse productGroupPromotionsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String productGroupPromotionId) throws Exception {
+    public ProductGroupPromotion productGroupPromotionsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String productGroupPromotionId) throws Exception {
         //Do your magic!!!
-        return new ProductGroupPromotionResponse();
+        return new ProductGroupPromotion();
     }
 
     @Override
-    public ProductGroupPromotionsList200Response productGroupPromotionsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Size(min=1,max=100)List<@Pattern(regexp = "^\\d+$")String> productGroupPromotionIds, List<String> entityStatuses,  @Pattern(regexp="^\\d+$") @Size(max=18)String adGroupId,  @Min(1) @Max(250)Integer pageSize, String order, String bookmark) throws Exception {
+    public ProductGroupPromotionsList200Response productGroupPromotionsList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Size(min=1,max=250)List<@Pattern(regexp = "^\\d+$")String> productGroupPromotionIds, List<String> entityStatuses,  @Pattern(regexp="^\\d+$") @Size(max=18)String adGroupId,  @Min(1) @Max(250)Integer pageSize, String order, String bookmark) throws Exception {
         //Do your magic!!!
         return new ProductGroupPromotionsList200Response();
     }
@@ -45,7 +47,7 @@ public class ProductGroupPromotionsApiControllerImp extends ProductGroupPromotio
     }
 
     @Override
-    public List<ProductGroupAnalyticsResponseInner> productGroupsAnalytics(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull  @Size(min=1,max=100)List<@Pattern(regexp = "^\\d+$")String> productGroupIds, @NotNull List<String> columns, @NotNull Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime) throws Exception {
+    public List<ProductGroupAnalyticsResponseInner> productGroupsAnalytics(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull LocalDate startDate, @NotNull LocalDate endDate, @NotNull  @Size(min=1,max=250)List<@Pattern(regexp = "^\\d+$")String> productGroupIds, @NotNull List<String> columns, @NotNull Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone) throws Exception {
         //Do your magic!!!
         return new ArrayList<ProductGroupAnalyticsResponseInner>();
     }

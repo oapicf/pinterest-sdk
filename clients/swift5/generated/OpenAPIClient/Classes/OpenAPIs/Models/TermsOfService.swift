@@ -12,37 +12,37 @@ import AnyCodable
 
 public struct TermsOfService: Codable, JSONEncodable, Hashable {
 
-    /** The ID of the terms of service */
-    public var id: String?
-    /** The terms of service content */
-    public var html: String?
-    /** Whether the ad account has accepted terms of service. */
-    public var hasAccepted: Bool?
     /** The ID of the ad account. */
     public var adAccountId: String?
+    /** Whether the ad account has accepted terms of service. */
+    public var hasAccepted: Bool?
+    /** The terms of service content */
+    public var html: String?
+    /** The ID of the terms of service */
+    public var id: String?
 
-    public init(id: String? = nil, html: String? = nil, hasAccepted: Bool? = nil, adAccountId: String? = nil) {
-        self.id = id
-        self.html = html
-        self.hasAccepted = hasAccepted
+    public init(adAccountId: String? = nil, hasAccepted: Bool? = nil, html: String? = nil, id: String? = nil) {
         self.adAccountId = adAccountId
+        self.hasAccepted = hasAccepted
+        self.html = html
+        self.id = id
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case id
-        case html
-        case hasAccepted = "has_accepted"
         case adAccountId = "ad_account_id"
+        case hasAccepted = "has_accepted"
+        case html
+        case id
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(html, forKey: .html)
-        try container.encodeIfPresent(hasAccepted, forKey: .hasAccepted)
         try container.encodeIfPresent(adAccountId, forKey: .adAccountId)
+        try container.encodeIfPresent(hasAccepted, forKey: .hasAccepted)
+        try container.encodeIfPresent(html, forKey: .html)
+        try container.encodeIfPresent(id, forKey: .id)
     }
 }
 

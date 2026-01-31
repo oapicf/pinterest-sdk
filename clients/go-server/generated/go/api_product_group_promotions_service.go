@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -76,8 +76,8 @@ func (s *ProductGroupPromotionsAPIService) ProductGroupPromotionsGet(ctx context
 	// TODO - update ProductGroupPromotionsGet with the required logic for this service method.
 	// Add api_product_group_promotions_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, ProductGroupPromotionResponse{}) or use other options such as http.Ok ...
-	// return Response(200, ProductGroupPromotionResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, ProductGroupPromotion{}) or use other options such as http.Ok ...
+	// return Response(200, ProductGroupPromotion{}), nil
 
 	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
 	// return Response(0, Error{}), nil
@@ -86,7 +86,7 @@ func (s *ProductGroupPromotionsAPIService) ProductGroupPromotionsGet(ctx context
 }
 
 // ProductGroupsAnalytics - Get product group analytics
-func (s *ProductGroupPromotionsAPIService) ProductGroupsAnalytics(ctx context.Context, adAccountId string, startDate string, endDate string, productGroupIds []string, columns []string, granularity Granularity, clickWindowDays int32, engagementWindowDays int32, viewWindowDays int32, conversionReportTime string) (ImplResponse, error) {
+func (s *ProductGroupPromotionsAPIService) ProductGroupsAnalytics(ctx context.Context, adAccountId string, startDate string, endDate string, productGroupIds []string, columns []string, granularity Granularity, clickWindowDays int32, engagementWindowDays int32, viewWindowDays int32, conversionReportTime string, reportingTimezone ReportingTimeZone) (ImplResponse, error) {
 	// TODO - update ProductGroupsAnalytics with the required logic for this service method.
 	// Add api_product_group_promotions_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

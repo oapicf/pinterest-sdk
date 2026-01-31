@@ -3,16 +3,16 @@ package org.openapitools.client.model
 
 
 case class UserSummary (
-    /* Username */
-    _username: Option[String],
     /* Always \"user\" */
-    _type: Option[String]
+    _type: Option[String],
+    /* Username */
+    _username: Option[String]
 )
 object UserSummary {
-    def toStringBody(var_username: Object, var_type: Object) =
+    def toStringBody(var_type: Object, var_username: Object) =
         s"""
         | {
-        | "username":$var_username,"type":$var_type
+        | "type":$var_type,"username":$var_username
         | }
         """.stripMargin
 }

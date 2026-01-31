@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "CatalogsType.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -45,13 +46,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Type of the catalog entity.
+	/*! \brief Get 
 	 */
-	std::string getCatalogType();
+	CatalogsType getCatalogType();
 
-	/*! \brief Set Type of the catalog entity.
+	/*! \brief Set 
 	 */
-	void setCatalogType(std::string  catalog_type);
+	void setCatalogType(CatalogsType  catalog_type);
 	/*! \brief Get A human-friendly name associated to a given catalog.
 	 */
 	std::string getName();
@@ -61,7 +62,7 @@ public:
 	void setName(std::string  name);
 
 private:
-	std::string catalog_type;
+	CatalogsType catalog_type;
 	std::string name;
 	void __init();
 	void __cleanup();

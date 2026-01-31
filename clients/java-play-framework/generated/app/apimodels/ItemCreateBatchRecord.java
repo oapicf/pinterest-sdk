@@ -10,34 +10,17 @@ import javax.validation.Valid;
 /**
  * Object describing an item batch record to create items
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class ItemCreateBatchRecord   {
-  @JsonProperty("item_id")
-  
-  private String itemId;
-
   @JsonProperty("attributes")
   @Valid
 
   private ItemAttributesRequest attributes;
 
-  public ItemCreateBatchRecord itemId(String itemId) {
-    this.itemId = itemId;
-    return this;
-  }
-
-   /**
-   * The catalog item id in the merchant namespace
-   * @return itemId
-  **/
-  public String getItemId() {
-    return itemId;
-  }
-
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
-  }
+  @JsonProperty("item_id")
+  
+  private String itemId;
 
   public ItemCreateBatchRecord attributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
@@ -56,6 +39,23 @@ public class ItemCreateBatchRecord   {
     this.attributes = attributes;
   }
 
+  public ItemCreateBatchRecord itemId(String itemId) {
+    this.itemId = itemId;
+    return this;
+  }
+
+   /**
+   * The catalog item id in the merchant namespace
+   * @return itemId
+  **/
+  public String getItemId() {
+    return itemId;
+  }
+
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -66,13 +66,13 @@ public class ItemCreateBatchRecord   {
       return false;
     }
     ItemCreateBatchRecord itemCreateBatchRecord = (ItemCreateBatchRecord) o;
-    return Objects.equals(itemId, itemCreateBatchRecord.itemId) &&
-        Objects.equals(attributes, itemCreateBatchRecord.attributes);
+    return Objects.equals(attributes, itemCreateBatchRecord.attributes) &&
+        Objects.equals(itemId, itemCreateBatchRecord.itemId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, attributes);
+    return Objects.hash(attributes, itemId);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -81,8 +81,8 @@ public class ItemCreateBatchRecord   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ItemCreateBatchRecord {\n");
     
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

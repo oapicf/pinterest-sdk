@@ -7,7 +7,7 @@
 -define(BASE_URL, <<"/v5">>).
 
 %% @doc Get advertiser entities in bulk
-%% Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, and/or keywords; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+%% Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
 -spec bulk_download/create(ctx:ctx(), binary(), openapi_bulk_download_request:openapi_bulk_download_request()) -> {ok, openapi_bulk_download_response:openapi_bulk_download_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 bulk_download/create(Ctx, AdAccountId, OpenapiBulkDownloadRequest) ->
     bulk_download/create(Ctx, AdAccountId, OpenapiBulkDownloadRequest, #{}).
@@ -49,7 +49,7 @@ bulk_request/get(Ctx, AdAccountId, BulkRequestId, Optional) ->
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Create/update ad entities in bulk
-%% Either create or update any combination of campaigns, ad groups, product groups, ads, or keywords. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
+%% Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
 -spec bulk_upsert/create(ctx:ctx(), binary(), openapi_bulk_upsert_request:openapi_bulk_upsert_request()) -> {ok, openapi_bulk_upsert_response:openapi_bulk_upsert_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 bulk_upsert/create(Ctx, AdAccountId, OpenapiBulkUpsertRequest) ->
     bulk_upsert/create(Ctx, AdAccountId, OpenapiBulkUpsertRequest, #{}).

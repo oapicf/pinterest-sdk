@@ -13,11 +13,11 @@ import org.openapitools.model.Pin;
 @Canonical
 class CatalogsCreativeAssetsItemResponse {
     
+    CatalogsCreativeAssetsAttributes attributes
+    
     CatalogsType catalogType
     /* The catalog creative assets id in the merchant namespace */
     String creativeAssetsId
     /* The pins mapped to the item */
     List<Pin> pins
-    
-    CatalogsCreativeAssetsAttributes attributes
 }

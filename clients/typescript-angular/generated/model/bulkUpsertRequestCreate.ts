@@ -9,6 +9,8 @@
  */
 import { CampaignCreateRequest } from './campaignCreateRequest';
 import { AdGroupCreateRequest } from './adGroupCreateRequest';
+import { LabelCreateRequest } from './labelCreateRequest';
+import { MultipleProductGroupsInner } from './multipleProductGroupsInner';
 import { KeywordsRequest } from './keywordsRequest';
 import { AdCreateRequest } from './adCreateRequest';
 import { ProductGroupPromotionCreateRequest } from './productGroupPromotionCreateRequest';
@@ -18,10 +20,12 @@ import { ProductGroupPromotionCreateRequest } from './productGroupPromotionCreat
  * Request for creation of entities in bulk.
  */
 export interface BulkUpsertRequestCreate { 
-    campaigns?: Array<CampaignCreateRequest>;
     ad_groups?: Array<AdGroupCreateRequest>;
     ads?: Array<AdCreateRequest>;
-    product_groups?: Array<ProductGroupPromotionCreateRequest>;
+    campaigns?: Array<CampaignCreateRequest>;
+    catalog_product_groups?: Array<MultipleProductGroupsInner>;
     keywords?: Array<KeywordsRequest>;
+    labels?: Array<LabelCreateRequest>;
+    product_groups?: Array<ProductGroupPromotionCreateRequest>;
 }
 

@@ -14,14 +14,14 @@ import { CatalogsCreativeAssetsProductGroupFilters } from './catalogsCreativeAss
  * Request object for creating a creative assets product group.
  */
 export interface CatalogsCreativeAssetsProductGroupCreateRequest { 
-    catalog_type: CatalogsCreativeAssetsProductGroupCreateRequest.CatalogTypeEnum;
-    name: string;
-    description?: string | null;
-    filters: CatalogsCreativeAssetsProductGroupFilters;
     /**
      * Catalog id pertaining to the creative assets product group.
      */
     catalog_id: string;
+    catalog_type: CatalogsCreativeAssetsProductGroupCreateRequest.CatalogTypeEnum;
+    description?: string | null;
+    filters: CatalogsCreativeAssetsProductGroupFilters;
+    name: string;
 }
 export namespace CatalogsCreativeAssetsProductGroupCreateRequest {
     export const CatalogTypeEnum = {

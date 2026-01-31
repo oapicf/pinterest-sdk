@@ -1,0 +1,29 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Featured trending topics for a specific interest and market",
+  "name": "FeaturedTrend",
+  "fields": [
+    {
+      "name": "interest",
+      "type": "model.InterestsEnum",
+      "doc": "The main interest category"
+    },
+    {
+      "name": "market",
+      "type": ["null", "model.ProductCategoryRegion"],
+      "doc": "Market code (e.g., 'US', 'UK', etc.)",
+      "default": null
+    },
+    {
+      "name": "trends",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.TrendingTopic"
+      }],
+      "doc": "List of trending topics within this interest category",
+      "default": null
+    }
+  ]
+
+}

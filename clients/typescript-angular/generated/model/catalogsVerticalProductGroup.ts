@@ -10,7 +10,7 @@
 import { CatalogsRetailProductGroup } from './catalogsRetailProductGroup';
 import { CatalogsProductGroupStatus } from './catalogsProductGroupStatus';
 import { CatalogsCreativeAssetsProductGroup } from './catalogsCreativeAssetsProductGroup';
-import { CatalogsProductGroupType } from './catalogsProductGroupType';
+import { CatalogsHotelProductGroupType } from './catalogsHotelProductGroupType';
 import { CatalogsCreativeAssetsProductGroupFilters } from './catalogsCreativeAssetsProductGroupFilters';
 import { CatalogsHotelProductGroup } from './catalogsHotelProductGroup';
 

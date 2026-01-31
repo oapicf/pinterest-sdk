@@ -35,24 +35,24 @@ pinterest_rest_api_catalogs_report_feed_ingestion_stats_SEVERITY_e catalogs_repo
 
 
 typedef struct catalogs_report_feed_ingestion_stats_t {
-    pinterest_rest_api_catalogs_report_feed_ingestion_stats_REPORTTYPE_e report_type; //enum
     char *catalog_id; // string
     int code; //numeric
     char *code_label; // string
     char *message; // string
     int occurrences; //numeric
+    pinterest_rest_api_catalogs_report_feed_ingestion_stats_REPORTTYPE_e report_type; //enum
     pinterest_rest_api_catalogs_report_feed_ingestion_stats_SEVERITY_e severity; //enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_report_feed_ingestion_stats_t;
 
 __attribute__((deprecated)) catalogs_report_feed_ingestion_stats_t *catalogs_report_feed_ingestion_stats_create(
-    pinterest_rest_api_catalogs_report_feed_ingestion_stats_REPORTTYPE_e report_type,
     char *catalog_id,
     int code,
     char *code_label,
     char *message,
     int occurrences,
+    pinterest_rest_api_catalogs_report_feed_ingestion_stats_REPORTTYPE_e report_type,
     pinterest_rest_api_catalogs_report_feed_ingestion_stats_SEVERITY_e severity
 );
 

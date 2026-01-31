@@ -8,9 +8,9 @@
 
 (def catalogs-create-retail-item-data
   {
+   (ds/req :attributes) item-attributes-request-spec
    (ds/req :item_id) string?
    (ds/req :operation) string?
-   (ds/req :attributes) item-attributes-request-spec
    })
 
 (def catalogs-create-retail-item-spec

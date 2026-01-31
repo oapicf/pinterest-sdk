@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -49,11 +49,23 @@ func NewOauthAPIController(s OauthAPIServicer, opts ...OauthAPIOption) *OauthAPI
 // Routes returns all the api routes for the OauthAPIController
 func (c *OauthAPIController) Routes() Routes {
 	return Routes{
+		"OauthConversionToken": Route{
+			"OauthConversionToken",
+			strings.ToUpper("Post"),
+			"/v5/oauth/conversion_token",
+			c.OauthConversionToken,
+		},
 		"OauthToken": Route{
 			"OauthToken",
 			strings.ToUpper("Post"),
 			"/v5/oauth/token",
 			c.OauthToken,
+		},
+		"TokenRevoke": Route{
+			"TokenRevoke",
+			strings.ToUpper("Post"),
+			"/v5/oauth/token/revoke",
+			c.TokenRevoke,
 		},
 	}
 }
@@ -62,15 +74,39 @@ func (c *OauthAPIController) Routes() Routes {
 func (c *OauthAPIController) OrderedRoutes() []Route {
 	return []Route{
 		Route{
+			"OauthConversionToken",
+			strings.ToUpper("Post"),
+			"/v5/oauth/conversion_token",
+			c.OauthConversionToken,
+		},
+		Route{
 			"OauthToken",
 			strings.ToUpper("Post"),
 			"/v5/oauth/token",
 			c.OauthToken,
 		},
+		Route{
+			"TokenRevoke",
+			strings.ToUpper("Post"),
+			"/v5/oauth/token/revoke",
+			c.TokenRevoke,
+		},
 	}
 }
 
 
+
+// OauthConversionToken - Generate OAuth access token for conversion API
+func (c *OauthAPIController) OauthConversionToken(w http.ResponseWriter, r *http.Request) {
+	result, err := c.service.OauthConversionToken(r.Context())
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
 
 // OauthToken - Generate OAuth access token
 func (c *OauthAPIController) OauthToken(w http.ResponseWriter, r *http.Request) {
@@ -82,6 +118,28 @@ func (c *OauthAPIController) OauthToken(w http.ResponseWriter, r *http.Request) 
 	
 	grantTypeParam := r.FormValue("grant_type")
 	result, err := c.service.OauthToken(r.Context(), grantTypeParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// TokenRevoke - Revoke a token
+func (c *OauthAPIController) TokenRevoke(w http.ResponseWriter, r *http.Request) {
+	if err := r.ParseForm(); err != nil {
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	
+	
+	tokenParam := r.FormValue("token")
+	
+	
+	tokenTypeHintParam := r.FormValue("token_type_hint")
+	result, err := c.service.TokenRevoke(r.Context(), tokenParam, tokenTypeHintParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

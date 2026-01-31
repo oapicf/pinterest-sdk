@@ -16,128 +16,128 @@ public struct SSIOCreateInsertionOrderRequest: Codable, JSONEncodable, Hashable 
         case budget = "BUDGET"
         case perpetuals = "PERPETUALS"
     }
-    public static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
     public static let endDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
-    /** Starting date of time period. Format: YYYY-MM-DD */
-    public var startDate: String
-    /** End date of time period. Format: YYYY-MM-DD */
-    public var endDate: String?
-    /** The po number */
-    public var poNumber: String
-    /** If Budget order line, the budget amount. */
-    public var budgetAmount: Double?
+    public static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})$/")
+    /** URL link for agency */
+    public var agencyLink: String?
+    /** The billing contact email */
+    public var billingContactEmail: String
     /** The billing contact first name */
     public var billingContactFirstname: String
     /** The billing contact last name */
     public var billingContactLastname: String
-    /** The billing contact email */
-    public var billingContactEmail: String
+    /** If Budget order line, the budget amount. */
+    public var budgetAmount: Double?
+    /** End date of time period. Format: YYYY-MM-DD */
+    public var endDate: String?
+    /** The media contact email */
+    public var mediaContactEmail: String
     /** The media contact first name */
     public var mediaContactFirstname: String
     /** The media contact last name */
     public var mediaContactLastname: String
-    /** The media contact email */
-    public var mediaContactEmail: String
-    /** URL link for agency */
-    public var agencyLink: String?
+    /** The po number */
+    public var poNumber: String
+    /** Starting date of time period. Format: YYYY-MM-DD */
+    public var startDate: String
     /** The email of user submitting the insertion order */
     public var userEmail: String?
-    /** The UTC timestamp (to the nearest sec) of when terms were accepted */
-    public var acceptedTermsTime: Int?
-    /** The pmp id */
-    public var pmpId: String
-    /** The order name */
-    public var orderName: String
-    /** Type can be Budget or Perpetual */
-    public var orderLineType: OrderLineType
     /** The SFDC id for the terms */
     public var acceptedTermsId: String
-    /** The bill-to company id */
-    public var billtoCompanyId: String
-    /** The bill-to business address id */
-    public var billtoBusinessAddressId: String
+    /** The UTC timestamp (to the nearest sec) of when terms were accepted */
+    public var acceptedTermsTime: Int?
     /** The bill-to billing address id */
     public var billtoBillingAddressId: String
+    /** The bill-to business address id */
+    public var billtoBusinessAddressId: String
+    /** The bill-to company id */
+    public var billtoCompanyId: String
+    public var currencyInfo: Currency
     /** If Ongoing (perpetual) order line, the estimated monthly spend */
     public var estimatedMonthlySpend: Double?
-    public var currencyInfo: Currency
+    /** Type can be Budget or Perpetual */
+    public var orderLineType: OrderLineType
+    /** The order name */
+    public var orderName: String
+    /** The pmp id */
+    public var pmpId: String
 
-    public init(startDate: String, endDate: String? = nil, poNumber: String, budgetAmount: Double? = nil, billingContactFirstname: String, billingContactLastname: String, billingContactEmail: String, mediaContactFirstname: String, mediaContactLastname: String, mediaContactEmail: String, agencyLink: String? = nil, userEmail: String? = nil, acceptedTermsTime: Int? = nil, pmpId: String, orderName: String, orderLineType: OrderLineType, acceptedTermsId: String, billtoCompanyId: String, billtoBusinessAddressId: String, billtoBillingAddressId: String, estimatedMonthlySpend: Double? = nil, currencyInfo: Currency) {
-        self.startDate = startDate
-        self.endDate = endDate
-        self.poNumber = poNumber
-        self.budgetAmount = budgetAmount
+    public init(agencyLink: String? = nil, billingContactEmail: String, billingContactFirstname: String, billingContactLastname: String, budgetAmount: Double? = nil, endDate: String? = nil, mediaContactEmail: String, mediaContactFirstname: String, mediaContactLastname: String, poNumber: String, startDate: String, userEmail: String? = nil, acceptedTermsId: String, acceptedTermsTime: Int? = nil, billtoBillingAddressId: String, billtoBusinessAddressId: String, billtoCompanyId: String, currencyInfo: Currency, estimatedMonthlySpend: Double? = nil, orderLineType: OrderLineType, orderName: String, pmpId: String) {
+        self.agencyLink = agencyLink
+        self.billingContactEmail = billingContactEmail
         self.billingContactFirstname = billingContactFirstname
         self.billingContactLastname = billingContactLastname
-        self.billingContactEmail = billingContactEmail
+        self.budgetAmount = budgetAmount
+        self.endDate = endDate
+        self.mediaContactEmail = mediaContactEmail
         self.mediaContactFirstname = mediaContactFirstname
         self.mediaContactLastname = mediaContactLastname
-        self.mediaContactEmail = mediaContactEmail
-        self.agencyLink = agencyLink
+        self.poNumber = poNumber
+        self.startDate = startDate
         self.userEmail = userEmail
-        self.acceptedTermsTime = acceptedTermsTime
-        self.pmpId = pmpId
-        self.orderName = orderName
-        self.orderLineType = orderLineType
         self.acceptedTermsId = acceptedTermsId
-        self.billtoCompanyId = billtoCompanyId
-        self.billtoBusinessAddressId = billtoBusinessAddressId
+        self.acceptedTermsTime = acceptedTermsTime
         self.billtoBillingAddressId = billtoBillingAddressId
-        self.estimatedMonthlySpend = estimatedMonthlySpend
+        self.billtoBusinessAddressId = billtoBusinessAddressId
+        self.billtoCompanyId = billtoCompanyId
         self.currencyInfo = currencyInfo
+        self.estimatedMonthlySpend = estimatedMonthlySpend
+        self.orderLineType = orderLineType
+        self.orderName = orderName
+        self.pmpId = pmpId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case startDate = "start_date"
-        case endDate = "end_date"
-        case poNumber = "po_number"
-        case budgetAmount = "budget_amount"
+        case agencyLink = "agency_link"
+        case billingContactEmail = "billing_contact_email"
         case billingContactFirstname = "billing_contact_firstname"
         case billingContactLastname = "billing_contact_lastname"
-        case billingContactEmail = "billing_contact_email"
+        case budgetAmount = "budget_amount"
+        case endDate = "end_date"
+        case mediaContactEmail = "media_contact_email"
         case mediaContactFirstname = "media_contact_firstname"
         case mediaContactLastname = "media_contact_lastname"
-        case mediaContactEmail = "media_contact_email"
-        case agencyLink = "agency_link"
+        case poNumber = "po_number"
+        case startDate = "start_date"
         case userEmail = "user_email"
-        case acceptedTermsTime = "accepted_terms_time"
-        case pmpId = "pmp_id"
-        case orderName = "order_name"
-        case orderLineType = "order_line_type"
         case acceptedTermsId = "accepted_terms_id"
-        case billtoCompanyId = "billto_company_id"
-        case billtoBusinessAddressId = "billto_business_address_id"
+        case acceptedTermsTime = "accepted_terms_time"
         case billtoBillingAddressId = "billto_billing_address_id"
-        case estimatedMonthlySpend = "estimated_monthly_spend"
+        case billtoBusinessAddressId = "billto_business_address_id"
+        case billtoCompanyId = "billto_company_id"
         case currencyInfo = "currency_info"
+        case estimatedMonthlySpend = "estimated_monthly_spend"
+        case orderLineType = "order_line_type"
+        case orderName = "order_name"
+        case pmpId = "pmp_id"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(startDate, forKey: .startDate)
-        try container.encodeIfPresent(endDate, forKey: .endDate)
-        try container.encode(poNumber, forKey: .poNumber)
-        try container.encodeIfPresent(budgetAmount, forKey: .budgetAmount)
+        try container.encodeIfPresent(agencyLink, forKey: .agencyLink)
+        try container.encode(billingContactEmail, forKey: .billingContactEmail)
         try container.encode(billingContactFirstname, forKey: .billingContactFirstname)
         try container.encode(billingContactLastname, forKey: .billingContactLastname)
-        try container.encode(billingContactEmail, forKey: .billingContactEmail)
+        try container.encodeIfPresent(budgetAmount, forKey: .budgetAmount)
+        try container.encodeIfPresent(endDate, forKey: .endDate)
+        try container.encode(mediaContactEmail, forKey: .mediaContactEmail)
         try container.encode(mediaContactFirstname, forKey: .mediaContactFirstname)
         try container.encode(mediaContactLastname, forKey: .mediaContactLastname)
-        try container.encode(mediaContactEmail, forKey: .mediaContactEmail)
-        try container.encodeIfPresent(agencyLink, forKey: .agencyLink)
+        try container.encode(poNumber, forKey: .poNumber)
+        try container.encode(startDate, forKey: .startDate)
         try container.encodeIfPresent(userEmail, forKey: .userEmail)
-        try container.encodeIfPresent(acceptedTermsTime, forKey: .acceptedTermsTime)
-        try container.encode(pmpId, forKey: .pmpId)
-        try container.encode(orderName, forKey: .orderName)
-        try container.encode(orderLineType, forKey: .orderLineType)
         try container.encode(acceptedTermsId, forKey: .acceptedTermsId)
-        try container.encode(billtoCompanyId, forKey: .billtoCompanyId)
-        try container.encode(billtoBusinessAddressId, forKey: .billtoBusinessAddressId)
+        try container.encodeIfPresent(acceptedTermsTime, forKey: .acceptedTermsTime)
         try container.encode(billtoBillingAddressId, forKey: .billtoBillingAddressId)
-        try container.encodeIfPresent(estimatedMonthlySpend, forKey: .estimatedMonthlySpend)
+        try container.encode(billtoBusinessAddressId, forKey: .billtoBusinessAddressId)
+        try container.encode(billtoCompanyId, forKey: .billtoCompanyId)
         try container.encode(currencyInfo, forKey: .currencyInfo)
+        try container.encodeIfPresent(estimatedMonthlySpend, forKey: .estimatedMonthlySpend)
+        try container.encode(orderLineType, forKey: .orderLineType)
+        try container.encode(orderName, forKey: .orderName)
+        try container.encode(pmpId, forKey: .pmpId)
     }
 }
 

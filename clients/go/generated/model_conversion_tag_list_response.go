@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,7 +20,7 @@ var _ MappedNullable = &ConversionTagListResponse{}
 
 // ConversionTagListResponse struct for ConversionTagListResponse
 type ConversionTagListResponse struct {
-	Items []ConversionTagResponse `json:"items,omitempty"`
+	Items []ConversionTag `json:"items,omitempty"`
 }
 
 // NewConversionTagListResponse instantiates a new ConversionTagListResponse object
@@ -41,9 +41,9 @@ func NewConversionTagListResponseWithDefaults() *ConversionTagListResponse {
 }
 
 // GetItems returns the Items field value if set, zero value otherwise.
-func (o *ConversionTagListResponse) GetItems() []ConversionTagResponse {
+func (o *ConversionTagListResponse) GetItems() []ConversionTag {
 	if o == nil || IsNil(o.Items) {
-		var ret []ConversionTagResponse
+		var ret []ConversionTag
 		return ret
 	}
 	return o.Items
@@ -51,7 +51,7 @@ func (o *ConversionTagListResponse) GetItems() []ConversionTagResponse {
 
 // GetItemsOk returns a tuple with the Items field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ConversionTagListResponse) GetItemsOk() ([]ConversionTagResponse, bool) {
+func (o *ConversionTagListResponse) GetItemsOk() ([]ConversionTag, bool) {
 	if o == nil || IsNil(o.Items) {
 		return nil, false
 	}
@@ -67,8 +67,8 @@ func (o *ConversionTagListResponse) HasItems() bool {
 	return false
 }
 
-// SetItems gets a reference to the given []ConversionTagResponse and assigns it to the Items field.
-func (o *ConversionTagListResponse) SetItems(v []ConversionTagResponse) {
+// SetItems gets a reference to the given []ConversionTag and assigns it to the Items field.
+func (o *ConversionTagListResponse) SetItems(v []ConversionTag) {
 	o.Items = v
 }
 

@@ -11,7 +11,7 @@ import javax.validation.Valid;
 /**
  * AudienceCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AudienceCreateRequest   {
   @JsonProperty("ad_account_id")
@@ -30,15 +30,15 @@ public class AudienceCreateRequest   {
 
   private AudienceRule rule;
 
-  @JsonProperty("description")
-  
-  private String description;
-
   @JsonProperty("audience_type")
   @NotNull
 @Valid
 
   private AudienceType audienceType;
+
+  @JsonProperty("description")
+  
+  private String description;
 
   public AudienceCreateRequest adAccountId(String adAccountId) {
     this.adAccountId = adAccountId;
@@ -91,23 +91,6 @@ public class AudienceCreateRequest   {
     this.rule = rule;
   }
 
-  public AudienceCreateRequest description(String description) {
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * Audience description.
-   * @return description
-  **/
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
   public AudienceCreateRequest audienceType(AudienceType audienceType) {
     this.audienceType = audienceType;
     return this;
@@ -125,6 +108,23 @@ public class AudienceCreateRequest   {
     this.audienceType = audienceType;
   }
 
+  public AudienceCreateRequest description(String description) {
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Audience description.
+   * @return description
+  **/
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -138,13 +138,13 @@ public class AudienceCreateRequest   {
     return Objects.equals(adAccountId, audienceCreateRequest.adAccountId) &&
         Objects.equals(name, audienceCreateRequest.name) &&
         Objects.equals(rule, audienceCreateRequest.rule) &&
-        Objects.equals(description, audienceCreateRequest.description) &&
-        Objects.equals(audienceType, audienceCreateRequest.audienceType);
+        Objects.equals(audienceType, audienceCreateRequest.audienceType) &&
+        Objects.equals(description, audienceCreateRequest.description);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, name, rule, description, audienceType);
+    return Objects.hash(adAccountId, name, rule, audienceType, description);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -156,8 +156,8 @@ public class AudienceCreateRequest   {
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    rule: ").append(toIndentedString(rule)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    audienceType: ").append(toIndentedString(audienceType)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
     return sb.toString();
   }

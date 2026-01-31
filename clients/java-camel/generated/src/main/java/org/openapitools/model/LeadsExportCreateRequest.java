@@ -18,14 +18,14 @@ import javax.annotation.Generated;
  * LeadsExportCreateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LeadsExportCreateRequest {
 
-  private String startDate;
+  private String adId;
 
   private String endDate;
 
-  private String adId;
+  private String startDate;
 
   public LeadsExportCreateRequest() {
     super();
@@ -34,50 +34,10 @@ public class LeadsExportCreateRequest {
   /**
    * Constructor with only required parameters
    */
-  public LeadsExportCreateRequest(String startDate, String endDate, String adId) {
-    this.startDate = startDate;
-    this.endDate = endDate;
+  public LeadsExportCreateRequest(String adId, String endDate, String startDate) {
     this.adId = adId;
-  }
-
-  public LeadsExportCreateRequest startDate(String startDate) {
-    this.startDate = startDate;
-    return this;
-  }
-
-  /**
-   * Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
-   * @return startDate
-   */
-  @NotNull @Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})$") 
-  @Schema(name = "start_date", example = "2020-12-20", description = "Export leads collected on and after start date (UTC). Format: YYYY-MM-DD", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("start_date")
-  public String getStartDate() {
-    return startDate;
-  }
-
-  public void setStartDate(String startDate) {
-    this.startDate = startDate;
-  }
-
-  public LeadsExportCreateRequest endDate(String endDate) {
     this.endDate = endDate;
-    return this;
-  }
-
-  /**
-   * Export leads collected on and before end date (UTC). Format: YYYY-MM-DD
-   * @return endDate
-   */
-  @NotNull @Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})$") 
-  @Schema(name = "end_date", example = "2020-12-20", description = "Export leads collected on and before end date (UTC). Format: YYYY-MM-DD", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("end_date")
-  public String getEndDate() {
-    return endDate;
-  }
-
-  public void setEndDate(String endDate) {
-    this.endDate = endDate;
+    this.startDate = startDate;
   }
 
   public LeadsExportCreateRequest adId(String adId) {
@@ -100,6 +60,46 @@ public class LeadsExportCreateRequest {
     this.adId = adId;
   }
 
+  public LeadsExportCreateRequest endDate(String endDate) {
+    this.endDate = endDate;
+    return this;
+  }
+
+  /**
+   * Export leads collected on and before end date (UTC). Format: YYYY-MM-DD
+   * @return endDate
+   */
+  @NotNull @Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})$") 
+  @Schema(name = "end_date", example = "2020-12-20", description = "Export leads collected on and before end date (UTC). Format: YYYY-MM-DD", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("end_date")
+  public String getEndDate() {
+    return endDate;
+  }
+
+  public void setEndDate(String endDate) {
+    this.endDate = endDate;
+  }
+
+  public LeadsExportCreateRequest startDate(String startDate) {
+    this.startDate = startDate;
+    return this;
+  }
+
+  /**
+   * Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
+   * @return startDate
+   */
+  @NotNull @Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})$") 
+  @Schema(name = "start_date", example = "2020-12-20", description = "Export leads collected on and after start date (UTC). Format: YYYY-MM-DD", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("start_date")
+  public String getStartDate() {
+    return startDate;
+  }
+
+  public void setStartDate(String startDate) {
+    this.startDate = startDate;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -109,23 +109,23 @@ public class LeadsExportCreateRequest {
       return false;
     }
     LeadsExportCreateRequest leadsExportCreateRequest = (LeadsExportCreateRequest) o;
-    return Objects.equals(this.startDate, leadsExportCreateRequest.startDate) &&
+    return Objects.equals(this.adId, leadsExportCreateRequest.adId) &&
         Objects.equals(this.endDate, leadsExportCreateRequest.endDate) &&
-        Objects.equals(this.adId, leadsExportCreateRequest.adId);
+        Objects.equals(this.startDate, leadsExportCreateRequest.startDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, endDate, adId);
+    return Objects.hash(adId, endDate, startDate);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LeadsExportCreateRequest {\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    adId: ").append(toIndentedString(adId)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }

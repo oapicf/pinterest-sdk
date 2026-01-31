@@ -12,25 +12,25 @@ import AnyCodable
 
 public struct UpdatePartnerAssetAccessBodyAccessesInner: Codable, JSONEncodable, Hashable {
 
-    public static let partnerIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
     public static let assetIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
+    public static let partnerIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
     public static let permissionsRule = ArrayRule(minItems: 1, maxItems: 50, uniqueItems: false)
-    /** Unique identifier of a business partner to update asset access to. */
-    public var partnerId: String
     /** Unique identifier of the business asset. */
     public var assetId: String
+    /** Unique identifier of a business partner to update asset access to. */
+    public var partnerId: String
     /** A non-empty array of permissions to assign to the partner. */
     public var permissions: [Permissions]
 
-    public init(partnerId: String, assetId: String, permissions: [Permissions]) {
-        self.partnerId = partnerId
+    public init(assetId: String, partnerId: String, permissions: [Permissions]) {
         self.assetId = assetId
+        self.partnerId = partnerId
         self.permissions = permissions
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case partnerId = "partner_id"
         case assetId = "asset_id"
+        case partnerId = "partner_id"
         case permissions
     }
 
@@ -38,8 +38,8 @@ public struct UpdatePartnerAssetAccessBodyAccessesInner: Codable, JSONEncodable,
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(partnerId, forKey: .partnerId)
         try container.encode(assetId, forKey: .assetId)
+        try container.encode(partnerId, forKey: .partnerId)
         try container.encode(permissions, forKey: .permissions)
     }
 }

@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"leadFormId": @"lead_form_id", @"webhookUrl": @"webhook_url", @"_id": @"id", @"userAccountId": @"user_account_id", @"adAccountId": @"ad_account_id", @"apiVersion": @"api_version", @"cryptographicKey": @"cryptographic_key", @"cryptographicAlgorithm": @"cryptographic_algorithm", @"createdTime": @"created_time" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"leadFormId": @"lead_form_id", @"webhookUrl": @"webhook_url", @"adAccountId": @"ad_account_id", @"apiVersion": @"api_version", @"createdTime": @"created_time", @"cryptographicAlgorithm": @"cryptographic_algorithm", @"cryptographicKey": @"cryptographic_key", @"_id": @"id", @"userAccountId": @"user_account_id" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"leadFormId", @"webhookUrl", @"_id", @"userAccountId", @"adAccountId", @"apiVersion", @"cryptographicKey", @"cryptographicAlgorithm", @"createdTime"];
+  NSArray *optionalProperties = @[@"leadFormId", @"webhookUrl", @"adAccountId", @"apiVersion", @"createdTime", @"cryptographicAlgorithm", @"cryptographicKey", @"_id", @"userAccountId"];
   return [optionalProperties containsObject:propertyName];
 }
 

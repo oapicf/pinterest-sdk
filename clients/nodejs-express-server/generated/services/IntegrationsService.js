@@ -92,7 +92,7 @@ const integrations_commerce/get = ({ externalUnderscorebusinessUnderscoreid }) =
 * Update commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 *
 * externalUnderscorebusinessUnderscoreid String External business ID for the integration.
-* integrationRequestPatch IntegrationRequestPatch Parameters to get create/update the Integration Metadata (optional)
+* integrationRequestPatch IntegrationRequestPatch Parameters to get create/update the Integration Metadata
 * returns IntegrationMetadata
 * */
 const integrations_commerce/patch = ({ externalUnderscorebusinessUnderscoreid, integrationRequestPatch }) => new Promise(
@@ -114,7 +114,7 @@ const integrations_commerce/patch = ({ externalUnderscorebusinessUnderscoreid, i
 * Create commerce integration
 * Create commerce integration metadata to link an external business ID with a Pinterest merchant & ad account. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 *
-* integrationRequest IntegrationRequest Parameters to get create/update the Integration Metadata (optional)
+* integrationRequest IntegrationRequest Parameters to get create/update the Integration Metadata
 * returns IntegrationMetadata
 * */
 const integrations_commerce/post = ({ integrationRequest }) => new Promise(

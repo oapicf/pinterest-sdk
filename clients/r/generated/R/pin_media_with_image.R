@@ -7,17 +7,16 @@
 #' @title PinMediaWithImage
 #' @description PinMediaWithImage Class
 #' @format An \code{R6Class} generator object
-#' @field media_type  character [optional]
-#' @field images  \link{PinMediaWithImageAllOfImages} [optional]
+#' @field images  \link{ImageSize} [optional]
+#' @field media_type  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 PinMediaWithImage <- R6::R6Class(
   "PinMediaWithImage",
-  inherit = PinMedia,
   public = list(
-    `media_type` = NULL,
     `images` = NULL,
+    `media_type` = NULL,
 
     #' @description
     #' Initialize a new PinMediaWithImage class.
@@ -25,8 +24,11 @@ PinMediaWithImage <- R6::R6Class(
     #' @param media_type media_type
     #' @param images images
     #' @param ... Other optional arguments.
-    initialize = function(`media_type` = NULL, `images` = NULL, ...) {
-      if (!is.null(`media_type`)) {
+    initialize = function(`media_type`, `images` = NULL, ...) {
+      if (!missing(`media_type`)) {
+        if (!(`media_type` %in% c("image"))) {
+          stop(paste("Error! \"", `media_type`, "\" cannot be assigned to `media_type`. Must be \"image\".", sep = ""))
+        }
         if (!(is.character(`media_type`) && length(`media_type`) == 1)) {
           stop(paste("Error! Invalid data for `media_type`. Must be a string:", `media_type`))
         }
@@ -69,13 +71,13 @@ PinMediaWithImage <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       PinMediaWithImageObject <- list()
-      if (!is.null(self$`media_type`)) {
-        PinMediaWithImageObject[["media_type"]] <-
-          self$`media_type`
-      }
       if (!is.null(self$`images`)) {
         PinMediaWithImageObject[["images"]] <-
           self$`images`$toSimpleType()
+      }
+      if (!is.null(self$`media_type`)) {
+        PinMediaWithImageObject[["media_type"]] <-
+          self$`media_type`
       }
       return(PinMediaWithImageObject)
     },
@@ -87,13 +89,16 @@ PinMediaWithImage <- R6::R6Class(
     #' @return the instance of PinMediaWithImage
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`media_type`)) {
-        self$`media_type` <- this_object$`media_type`
-      }
       if (!is.null(this_object$`images`)) {
-        `images_object` <- PinMediaWithImageAllOfImages$new()
+        `images_object` <- ImageSize$new()
         `images_object`$fromJSON(jsonlite::toJSON(this_object$`images`, auto_unbox = TRUE, digits = NA))
         self$`images` <- `images_object`
+      }
+      if (!is.null(this_object$`media_type`)) {
+        if (!is.null(this_object$`media_type`) && !(this_object$`media_type` %in% c("image"))) {
+          stop(paste("Error! \"", this_object$`media_type`, "\" cannot be assigned to `media_type`. Must be \"image\".", sep = ""))
+        }
+        self$`media_type` <- this_object$`media_type`
       }
       self
     },
@@ -116,8 +121,11 @@ PinMediaWithImage <- R6::R6Class(
     #' @return the instance of PinMediaWithImage
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`images` <- ImageSize$new()$fromJSON(jsonlite::toJSON(this_object$`images`, auto_unbox = TRUE, digits = NA))
+      if (!is.null(this_object$`media_type`) && !(this_object$`media_type` %in% c("image"))) {
+        stop(paste("Error! \"", this_object$`media_type`, "\" cannot be assigned to `media_type`. Must be \"image\".", sep = ""))
+      }
       self$`media_type` <- this_object$`media_type`
-      self$`images` <- PinMediaWithImageAllOfImages$new()$fromJSON(jsonlite::toJSON(this_object$`images`, auto_unbox = TRUE, digits = NA))
       self
     },
 
@@ -127,6 +135,14 @@ PinMediaWithImage <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `media_type`
+      if (!is.null(input_json$`media_type`)) {
+        if (!(is.character(input_json$`media_type`) && length(input_json$`media_type`) == 1)) {
+          stop(paste("Error! Invalid data for `media_type`. Must be a string:", input_json$`media_type`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for PinMediaWithImage: the required field `media_type` is missing."))
+      }
     },
 
     #' @description
@@ -142,6 +158,11 @@ PinMediaWithImage <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      # check if the required `media_type` is null
+      if (is.null(self$`media_type`)) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -151,6 +172,11 @@ PinMediaWithImage <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `media_type` is null
+      if (is.null(self$`media_type`)) {
+        invalid_fields["media_type"] <- "Non-nullable required field `media_type` cannot be null."
+      }
+
       invalid_fields
     },
 

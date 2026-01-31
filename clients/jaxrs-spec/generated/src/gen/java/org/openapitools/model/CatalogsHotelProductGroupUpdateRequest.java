@@ -20,7 +20,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Request object for updating a hotel product group.")
 @JsonTypeName("CatalogsHotelProductGroupUpdateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelProductGroupUpdateRequest   {
   public enum CatalogTypeEnum {
 
@@ -70,9 +70,9 @@ public class CatalogsHotelProductGroupUpdateRequest   {
 }
 
   private CatalogTypeEnum catalogType;
-  private String name;
   private String description;
   private CatalogsHotelProductGroupFilters filters;
+  private String name;
 
   public CatalogsHotelProductGroupUpdateRequest() {
   }
@@ -94,25 +94,6 @@ public class CatalogsHotelProductGroupUpdateRequest   {
   @JsonProperty("catalog_type")
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
-  }
-
-  /**
-   **/
-  public CatalogsHotelProductGroupUpdateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-
-  @JsonProperty("name")
-  public void setName(String name) {
-    this.name = name;
   }
 
   /**
@@ -153,6 +134,25 @@ public class CatalogsHotelProductGroupUpdateRequest   {
     this.filters = filters;
   }
 
+  /**
+   **/
+  public CatalogsHotelProductGroupUpdateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  @JsonProperty("name")
+  public void setName(String name) {
+    this.name = name;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -164,14 +164,14 @@ public class CatalogsHotelProductGroupUpdateRequest   {
     }
     CatalogsHotelProductGroupUpdateRequest catalogsHotelProductGroupUpdateRequest = (CatalogsHotelProductGroupUpdateRequest) o;
     return Objects.equals(this.catalogType, catalogsHotelProductGroupUpdateRequest.catalogType) &&
-        Objects.equals(this.name, catalogsHotelProductGroupUpdateRequest.name) &&
         Objects.equals(this.description, catalogsHotelProductGroupUpdateRequest.description) &&
-        Objects.equals(this.filters, catalogsHotelProductGroupUpdateRequest.filters);
+        Objects.equals(this.filters, catalogsHotelProductGroupUpdateRequest.filters) &&
+        Objects.equals(this.name, catalogsHotelProductGroupUpdateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters);
+    return Objects.hash(catalogType, description, filters, name);
   }
 
   @Override
@@ -180,9 +180,9 @@ public class CatalogsHotelProductGroupUpdateRequest   {
     sb.append("class CatalogsHotelProductGroupUpdateRequest {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -6,8 +6,8 @@ import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsCreativeAssetsAttributes;
 import org.openapitools.model.CatalogsType;
-import org.openapitools.model.ItemResponseAnyOf;
-import org.openapitools.model.ItemResponseAnyOf1;
+import org.openapitools.model.ItemResponseOneOf;
+import org.openapitools.model.ItemResponseOneOf1;
 import org.openapitools.model.ItemValidationEvent;
 import org.openapitools.model.Pin;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
@@ -38,6 +38,14 @@ public class ItemResponseTest {
     }
 
     /**
+     * Test the property 'attributes'
+     */
+    @Test
+    public void attributesTest() {
+        // TODO: test attributes
+    }
+
+    /**
      * Test the property 'itemId'
      */
     @Test
@@ -51,14 +59,6 @@ public class ItemResponseTest {
     @Test
     public void pinsTest() {
         // TODO: test pins
-    }
-
-    /**
-     * Test the property 'attributes'
-     */
-    @Test
-    public void attributesTest() {
-        // TODO: test attributes
     }
 
     /**

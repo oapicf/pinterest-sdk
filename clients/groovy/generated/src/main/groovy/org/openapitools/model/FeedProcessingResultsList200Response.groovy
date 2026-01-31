@@ -11,7 +11,7 @@ import org.openapitools.model.CatalogsFeedProcessingResult;
 @Canonical
 class FeedProcessingResultsList200Response {
     
-    List<CatalogsFeedProcessingResult> items = new ArrayList<>()
-    
     String bookmark
+    
+    List<CatalogsFeedProcessingResult> items = new ArrayList<>()
 }

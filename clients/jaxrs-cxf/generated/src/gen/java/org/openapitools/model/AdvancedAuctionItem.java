@@ -15,18 +15,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AdvancedAuctionItem  {
   
+  @ApiModelProperty(required = true, value = "")
+
+  @Valid
+
+  private Country country;
+
  /**
   * The catalog retail item id in the merchant namespace
   */
   @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog retail item id in the merchant namespace")
 
   private String itemId;
-
-  @ApiModelProperty(required = true, value = "")
-
-  @Valid
-
-  private Country country;
 
   @ApiModelProperty(required = true, value = "")
 
@@ -39,25 +39,6 @@ public class AdvancedAuctionItem  {
   @Valid
 
   private AdvancedAuctionBidOptions bidOptions;
- /**
-   * The catalog retail item id in the merchant namespace
-   * @return itemId
-  **/
-  @JsonProperty("item_id")
-  @NotNull
-  public String getItemId() {
-    return itemId;
-  }
-
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
-  }
-
-  public AdvancedAuctionItem itemId(String itemId) {
-    this.itemId = itemId;
-    return this;
-  }
-
  /**
    * Get country
    * @return country
@@ -74,6 +55,25 @@ public class AdvancedAuctionItem  {
 
   public AdvancedAuctionItem country(Country country) {
     this.country = country;
+    return this;
+  }
+
+ /**
+   * The catalog retail item id in the merchant namespace
+   * @return itemId
+  **/
+  @JsonProperty("item_id")
+  @NotNull
+  public String getItemId() {
+    return itemId;
+  }
+
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
+  }
+
+  public AdvancedAuctionItem itemId(String itemId) {
+    this.itemId = itemId;
     return this;
   }
 
@@ -124,15 +124,15 @@ public class AdvancedAuctionItem  {
       return false;
     }
     AdvancedAuctionItem advancedAuctionItem = (AdvancedAuctionItem) o;
-    return Objects.equals(this.itemId, advancedAuctionItem.itemId) &&
-        Objects.equals(this.country, advancedAuctionItem.country) &&
+    return Objects.equals(this.country, advancedAuctionItem.country) &&
+        Objects.equals(this.itemId, advancedAuctionItem.itemId) &&
         Objects.equals(this.language, advancedAuctionItem.language) &&
         Objects.equals(this.bidOptions, advancedAuctionItem.bidOptions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, country, language, bidOptions);
+    return Objects.hash(country, itemId, language, bidOptions);
   }
 
   @Override
@@ -140,8 +140,8 @@ public class AdvancedAuctionItem  {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvancedAuctionItem {\n");
     
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    bidOptions: ").append(toIndentedString(bidOptions)).append("\n");
     sb.append("}");

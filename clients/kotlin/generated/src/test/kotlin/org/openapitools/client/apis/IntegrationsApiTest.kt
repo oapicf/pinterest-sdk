@@ -19,7 +19,6 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.IntegrationsApi
-import org.openapitools.client.models.DetailedError
 import org.openapitools.client.models.Error
 import org.openapitools.client.models.IntegrationLogsRequest
 import org.openapitools.client.models.IntegrationLogsSuccessResponse
@@ -28,6 +27,7 @@ import org.openapitools.client.models.IntegrationRecord
 import org.openapitools.client.models.IntegrationRequest
 import org.openapitools.client.models.IntegrationRequestPatch
 import org.openapitools.client.models.IntegrationsGetList200Response
+import org.openapitools.client.models.IntegrationsLogsPost400Response
 
 class IntegrationsApiTest : ShouldSpec() {
     init {

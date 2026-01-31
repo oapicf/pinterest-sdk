@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -22,25 +22,25 @@ import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsCreativeAssetsAttributes;
 import org.openapitools.model.CatalogsType;
-import org.openapitools.model.ItemResponseAnyOf;
-import org.openapitools.model.ItemResponseAnyOf1;
+import org.openapitools.model.ItemResponseOneOf;
+import org.openapitools.model.ItemResponseOneOf1;
 import org.openapitools.model.ItemValidationEvent;
 import org.openapitools.model.Pin;
 
 
 
 /**
- * Object describing an item record
+ * Object describing an item record or error
  */
 
-@ApiModel(description = "Object describing an item record")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description = "Object describing an item record or error")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ItemResponse   {
   
   private CatalogsType catalogType;
+  private CatalogsCreativeAssetsAttributes attributes;
   private String itemId;
   private List<Pin> pins;
-  private CatalogsCreativeAssetsAttributes attributes;
   private String hotelId;
   private String creativeAssetsId;
   private List<ItemValidationEvent> errors = new ArrayList<>();
@@ -60,6 +60,23 @@ public class ItemResponse   {
   }
   public void setCatalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
+  }
+
+  /**
+   */
+  public ItemResponse attributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("attributes")
+  public CatalogsCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
   }
 
   /**
@@ -96,23 +113,6 @@ public class ItemResponse   {
   }
   public void setPins(List<Pin> pins) {
     this.pins = pins;
-  }
-
-  /**
-   */
-  public ItemResponse attributes(CatalogsCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("attributes")
-  public CatalogsCreativeAssetsAttributes getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
   }
 
   /**
@@ -160,7 +160,7 @@ public class ItemResponse   {
   }
 
   
-  @ApiModelProperty(value = "Array with the errors for the item id requested")
+  @ApiModelProperty(required = true, value = "Array with the errors for the item id requested")
   @JsonProperty("errors")
   public List<ItemValidationEvent> getErrors() {
     return errors;
@@ -180,9 +180,9 @@ public class ItemResponse   {
     }
     ItemResponse itemResponse = (ItemResponse) o;
     return Objects.equals(catalogType, itemResponse.catalogType) &&
+        Objects.equals(attributes, itemResponse.attributes) &&
         Objects.equals(itemId, itemResponse.itemId) &&
         Objects.equals(pins, itemResponse.pins) &&
-        Objects.equals(attributes, itemResponse.attributes) &&
         Objects.equals(hotelId, itemResponse.hotelId) &&
         Objects.equals(creativeAssetsId, itemResponse.creativeAssetsId) &&
         Objects.equals(errors, itemResponse.errors);
@@ -190,7 +190,7 @@ public class ItemResponse   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, pins, attributes, hotelId, creativeAssetsId, errors);
+    return Objects.hash(catalogType, attributes, itemId, pins, hotelId, creativeAssetsId, errors);
   }
 
   @Override
@@ -199,9 +199,9 @@ public class ItemResponse   {
     sb.append("class ItemResponse {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");

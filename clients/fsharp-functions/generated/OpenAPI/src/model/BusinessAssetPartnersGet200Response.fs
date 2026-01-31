@@ -12,10 +12,10 @@ module BusinessAssetPartnersGet200Response =
 
   [<CLIMutable>]
   type BusinessAssetPartnersGet200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : UserSingleAssetBinding[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : UserSingleAssetBinding[];
   }
 
   //#endregion

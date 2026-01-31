@@ -7,6 +7,11 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
+                key: `${keyPrefix}catalog_id`,
+                label: `Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog - [${labelPrefix}catalog_id]`,
+                type: 'string',
+            },
+            {
                 key: `${keyPrefix}catalog_type`,
                 label: `[${labelPrefix}catalog_type]`,
                 required: true,
@@ -18,6 +23,11 @@ module.exports = {
             {
                 key: `${keyPrefix}country`,
                 ...Country.fields(`${keyPrefix}country`, isInput),
+            },
+            {
+                key: `${keyPrefix}items`,
+                label: `[${labelPrefix}items]`,
+                children: CatalogsCreativeAssetsBatchItem.fields(`${keyPrefix}items${!isInput ? '[]' : ''}`, isInput, true), 
             },
             {
                 key: `${keyPrefix}language`,
@@ -134,26 +144,16 @@ module.exports = {
                     'ZH',
                 ],
             },
-            {
-                key: `${keyPrefix}items`,
-                label: `[${labelPrefix}items]`,
-                children: CatalogsCreativeAssetsBatchItem.fields(`${keyPrefix}items${!isInput ? '[]' : ''}`, isInput, true), 
-            },
-            {
-                key: `${keyPrefix}catalog_id`,
-                label: `Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog - [${labelPrefix}catalog_id]`,
-                type: 'string',
-            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
+            'catalog_id': bundle.inputData?.[`${keyPrefix}catalog_id`],
             'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
             'country': bundle.inputData?.[`${keyPrefix}country`],
-            'language': bundle.inputData?.[`${keyPrefix}language`],
             'items': utils.childMapping(bundle.inputData?.[`${keyPrefix}items`], `${keyPrefix}items`, CatalogsCreativeAssetsBatchItem),
-            'catalog_id': bundle.inputData?.[`${keyPrefix}catalog_id`],
+            'language': bundle.inputData?.[`${keyPrefix}language`],
         }
     },
 }

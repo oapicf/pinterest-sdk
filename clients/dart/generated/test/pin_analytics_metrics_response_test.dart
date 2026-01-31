@@ -16,15 +16,15 @@ void main() {
   // final instance = PinAnalyticsMetricsResponse();
 
   group('test PinAnalyticsMetricsResponse', () {
-    // The lifetime metric name and value.
-    // Map<String, int> lifetimeMetrics (default value: const {})
-    test('to test the property `lifetimeMetrics`', () async {
-      // TODO
-    });
-
     // Array with the requested daily metric records
     // List<PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics (default value: const [])
     test('to test the property `dailyMetrics`', () async {
+      // TODO
+    });
+
+    // The lifetime metric name and value.
+    // Map<String, int> lifetimeMetrics (default value: const {})
+    test('to test the property `lifetimeMetrics`', () async {
       // TODO
     });
 

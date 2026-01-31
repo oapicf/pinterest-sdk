@@ -29,8 +29,10 @@ import javax.annotation.Generated;
  * CatalogsRetailProductGroup
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup {
+
+  private String catalogId;
 
   /**
    * Gets or Sets catalogType
@@ -67,32 +69,30 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
 
   private CatalogTypeEnum catalogType;
 
-  private String id;
+  private JsonNullable<String> country = JsonNullable.<String>undefined();
 
-  private @Nullable String name;
+  private @Nullable Integer createdAt;
 
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
+  private JsonNullable<@Pattern(regexp = "^\\d+$") String> feedId = JsonNullable.<String>undefined();
+
   private CatalogsProductGroupFilters filters;
+
+  private String id;
 
   @Deprecated
   private @Nullable Boolean isFeatured;
 
-  private @Nullable CatalogsProductGroupType type;
+  private JsonNullable<String> locale = JsonNullable.<String>undefined();
+
+  private @Nullable String name;
 
   private @Nullable CatalogsProductGroupStatus status;
 
-  private @Nullable Integer createdAt;
+  private CatalogsProductGroupType type;
 
   private @Nullable Integer updatedAt;
-
-  private String catalogId;
-
-  private JsonNullable<@Pattern(regexp = "^\\d+$") String> feedId = JsonNullable.<String>undefined();
-
-  private JsonNullable<String> country = JsonNullable.<String>undefined();
-
-  private JsonNullable<String> locale = JsonNullable.<String>undefined();
 
   public CatalogsRetailProductGroup() {
     super();
@@ -101,12 +101,33 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
   /**
    * Constructor with only required parameters
    */
-  public CatalogsRetailProductGroup(CatalogTypeEnum catalogType, String id, CatalogsProductGroupFilters filters, String catalogId, String feedId) {
-    this.catalogType = catalogType;
-    this.id = id;
-    this.filters = filters;
+  public CatalogsRetailProductGroup(String catalogId, CatalogTypeEnum catalogType, String feedId, CatalogsProductGroupFilters filters, String id, CatalogsProductGroupType type) {
     this.catalogId = catalogId;
+    this.catalogType = catalogType;
     this.feedId = JsonNullable.of(feedId);
+    this.filters = filters;
+    this.id = id;
+    this.type = type;
+  }
+
+  public CatalogsRetailProductGroup catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  /**
+   * Catalog id pertaining to the retail product group.
+   * @return catalogId
+   */
+  @NotNull @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "catalog_id", description = "Catalog id pertaining to the retail product group.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
   }
 
   public CatalogsRetailProductGroup catalogType(CatalogTypeEnum catalogType) {
@@ -129,44 +150,44 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
     this.catalogType = catalogType;
   }
 
-  public CatalogsRetailProductGroup id(String id) {
-    this.id = id;
+  public CatalogsRetailProductGroup country(String country) {
+    this.country = JsonNullable.of(country);
     return this;
   }
 
   /**
-   * ID of the catalog product group.
-   * @return id
-   */
-  @NotNull @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "id", example = "443727193917", description = "ID of the catalog product group.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public CatalogsRetailProductGroup name(@Nullable String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Name of catalog product group
-   * @return name
+   * Get country
+   * @return country
    */
   
-  @Schema(name = "name", example = "Most Popular", description = "Name of catalog product group", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("name")
-  public @Nullable String getName() {
-    return name;
+  @Schema(name = "country", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("country")
+  public JsonNullable<String> getCountry() {
+    return country;
   }
 
-  public void setName(@Nullable String name) {
-    this.name = name;
+  public void setCountry(JsonNullable<String> country) {
+    this.country = country;
+  }
+
+  public CatalogsRetailProductGroup createdAt(@Nullable Integer createdAt) {
+    this.createdAt = createdAt;
+    return this;
+  }
+
+  /**
+   * Unix timestamp in seconds of when catalog product group was created.
+   * @return createdAt
+   */
+  
+  @Schema(name = "created_at", example = "1621350033000", description = "Unix timestamp in seconds of when catalog product group was created.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("created_at")
+  public @Nullable Integer getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(@Nullable Integer createdAt) {
+    this.createdAt = createdAt;
   }
 
   public CatalogsRetailProductGroup description(String description) {
@@ -189,6 +210,26 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
     this.description = description;
   }
 
+  public CatalogsRetailProductGroup feedId(String feedId) {
+    this.feedId = JsonNullable.of(feedId);
+    return this;
+  }
+
+  /**
+   * id of the catalogs feed belonging to this catalog product group
+   * @return feedId
+   */
+  @NotNull @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "feed_id", example = "2680059592705", description = "id of the catalogs feed belonging to this catalog product group", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("feed_id")
+  public JsonNullable<@Pattern(regexp = "^\\d+$") String> getFeedId() {
+    return feedId;
+  }
+
+  public void setFeedId(JsonNullable<String> feedId) {
+    this.feedId = feedId;
+  }
+
   public CatalogsRetailProductGroup filters(CatalogsProductGroupFilters filters) {
     this.filters = filters;
     return this;
@@ -207,6 +248,26 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
 
   public void setFilters(CatalogsProductGroupFilters filters) {
     this.filters = filters;
+  }
+
+  public CatalogsRetailProductGroup id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * ID of the catalog product group.
+   * @return id
+   */
+  @NotNull @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "id", example = "443727193917", description = "ID of the catalog product group.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
   }
 
   public CatalogsRetailProductGroup isFeatured(@Nullable Boolean isFeatured) {
@@ -235,24 +296,44 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
     this.isFeatured = isFeatured;
   }
 
-  public CatalogsRetailProductGroup type(@Nullable CatalogsProductGroupType type) {
-    this.type = type;
+  public CatalogsRetailProductGroup locale(String locale) {
+    this.locale = JsonNullable.of(locale);
     return this;
   }
 
   /**
-   * Get type
-   * @return type
+   * Get locale
+   * @return locale
    */
-  @Valid 
-  @Schema(name = "type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("type")
-  public @Nullable CatalogsProductGroupType getType() {
-    return type;
+  
+  @Schema(name = "locale", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("locale")
+  public JsonNullable<String> getLocale() {
+    return locale;
   }
 
-  public void setType(@Nullable CatalogsProductGroupType type) {
-    this.type = type;
+  public void setLocale(JsonNullable<String> locale) {
+    this.locale = locale;
+  }
+
+  public CatalogsRetailProductGroup name(@Nullable String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Name of catalog product group
+   * @return name
+   */
+  
+  @Schema(name = "name", example = "Most Popular", description = "Name of catalog product group", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("name")
+  public @Nullable String getName() {
+    return name;
+  }
+
+  public void setName(@Nullable String name) {
+    this.name = name;
   }
 
   public CatalogsRetailProductGroup status(@Nullable CatalogsProductGroupStatus status) {
@@ -275,24 +356,24 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
     this.status = status;
   }
 
-  public CatalogsRetailProductGroup createdAt(@Nullable Integer createdAt) {
-    this.createdAt = createdAt;
+  public CatalogsRetailProductGroup type(CatalogsProductGroupType type) {
+    this.type = type;
     return this;
   }
 
   /**
-   * Unix timestamp in seconds of when catalog product group was created.
-   * @return createdAt
+   * Get type
+   * @return type
    */
-  
-  @Schema(name = "created_at", example = "1621350033000", description = "Unix timestamp in seconds of when catalog product group was created.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("created_at")
-  public @Nullable Integer getCreatedAt() {
-    return createdAt;
+  @NotNull @Valid 
+  @Schema(name = "type", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("type")
+  public CatalogsProductGroupType getType() {
+    return type;
   }
 
-  public void setCreatedAt(@Nullable Integer createdAt) {
-    this.createdAt = createdAt;
+  public void setType(CatalogsProductGroupType type) {
+    this.type = type;
   }
 
   public CatalogsRetailProductGroup updatedAt(@Nullable Integer updatedAt) {
@@ -315,86 +396,6 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
     this.updatedAt = updatedAt;
   }
 
-  public CatalogsRetailProductGroup catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-  /**
-   * Catalog id pertaining to the retail product group.
-   * @return catalogId
-   */
-  @NotNull @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "catalog_id", description = "Catalog id pertaining to the retail product group.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
-  }
-
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
-  public CatalogsRetailProductGroup feedId(String feedId) {
-    this.feedId = JsonNullable.of(feedId);
-    return this;
-  }
-
-  /**
-   * id of the catalogs feed belonging to this catalog product group
-   * @return feedId
-   */
-  @NotNull @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "feed_id", example = "2680059592705", description = "id of the catalogs feed belonging to this catalog product group", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("feed_id")
-  public JsonNullable<@Pattern(regexp = "^\\d+$") String> getFeedId() {
-    return feedId;
-  }
-
-  public void setFeedId(JsonNullable<String> feedId) {
-    this.feedId = feedId;
-  }
-
-  public CatalogsRetailProductGroup country(String country) {
-    this.country = JsonNullable.of(country);
-    return this;
-  }
-
-  /**
-   * Get country
-   * @return country
-   */
-  
-  @Schema(name = "country", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("country")
-  public JsonNullable<String> getCountry() {
-    return country;
-  }
-
-  public void setCountry(JsonNullable<String> country) {
-    this.country = country;
-  }
-
-  public CatalogsRetailProductGroup locale(String locale) {
-    this.locale = JsonNullable.of(locale);
-    return this;
-  }
-
-  /**
-   * Get locale
-   * @return locale
-   */
-  
-  @Schema(name = "locale", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("locale")
-  public JsonNullable<String> getLocale() {
-    return locale;
-  }
-
-  public void setLocale(JsonNullable<String> locale) {
-    this.locale = locale;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -404,20 +405,20 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
       return false;
     }
     CatalogsRetailProductGroup catalogsRetailProductGroup = (CatalogsRetailProductGroup) o;
-    return Objects.equals(this.catalogType, catalogsRetailProductGroup.catalogType) &&
-        Objects.equals(this.id, catalogsRetailProductGroup.id) &&
-        Objects.equals(this.name, catalogsRetailProductGroup.name) &&
-        equalsNullable(this.description, catalogsRetailProductGroup.description) &&
-        Objects.equals(this.filters, catalogsRetailProductGroup.filters) &&
-        Objects.equals(this.isFeatured, catalogsRetailProductGroup.isFeatured) &&
-        Objects.equals(this.type, catalogsRetailProductGroup.type) &&
-        Objects.equals(this.status, catalogsRetailProductGroup.status) &&
-        Objects.equals(this.createdAt, catalogsRetailProductGroup.createdAt) &&
-        Objects.equals(this.updatedAt, catalogsRetailProductGroup.updatedAt) &&
-        Objects.equals(this.catalogId, catalogsRetailProductGroup.catalogId) &&
-        Objects.equals(this.feedId, catalogsRetailProductGroup.feedId) &&
+    return Objects.equals(this.catalogId, catalogsRetailProductGroup.catalogId) &&
+        Objects.equals(this.catalogType, catalogsRetailProductGroup.catalogType) &&
         equalsNullable(this.country, catalogsRetailProductGroup.country) &&
-        equalsNullable(this.locale, catalogsRetailProductGroup.locale);
+        Objects.equals(this.createdAt, catalogsRetailProductGroup.createdAt) &&
+        equalsNullable(this.description, catalogsRetailProductGroup.description) &&
+        Objects.equals(this.feedId, catalogsRetailProductGroup.feedId) &&
+        Objects.equals(this.filters, catalogsRetailProductGroup.filters) &&
+        Objects.equals(this.id, catalogsRetailProductGroup.id) &&
+        Objects.equals(this.isFeatured, catalogsRetailProductGroup.isFeatured) &&
+        equalsNullable(this.locale, catalogsRetailProductGroup.locale) &&
+        Objects.equals(this.name, catalogsRetailProductGroup.name) &&
+        Objects.equals(this.status, catalogsRetailProductGroup.status) &&
+        Objects.equals(this.type, catalogsRetailProductGroup.type) &&
+        Objects.equals(this.updatedAt, catalogsRetailProductGroup.updatedAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -426,7 +427,7 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, id, name, hashCodeNullable(description), filters, isFeatured, type, status, createdAt, updatedAt, catalogId, feedId, hashCodeNullable(country), hashCodeNullable(locale));
+    return Objects.hash(catalogId, catalogType, hashCodeNullable(country), createdAt, hashCodeNullable(description), feedId, filters, id, isFeatured, hashCodeNullable(locale), name, status, type, updatedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -440,20 +441,20 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailProductGroup {\n");
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
-    sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,0 +1,45 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows {
+    title = OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows
+    description = OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows
+    derivedFrom = Root
+    properties {
+        click_window_days {
+          type =  integer
+          description = ""
+          optional = false
+        }
+        engagement_window_days {
+          type =  integer
+          description = ""
+          optional = false
+        }
+        view_window_days {
+          type =  integer
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows {
+    title = OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows
+    description = OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows
+    implements = openapi_server.resourceTypes.OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows
+
+  }
+}

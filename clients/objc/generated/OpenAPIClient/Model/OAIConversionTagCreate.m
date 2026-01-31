@@ -6,13 +6,14 @@
   self = [super init];
   if (self) {
     // initialize property's default value, if any
-    self.aemEnabled = @(NO);
-    self.mdFrequency = @1;
-    self.aemFnlnEnabled = @(NO);
-    self.aemPhEnabled = @(NO);
-    self.aemGeEnabled = @(NO);
     self.aemDbEnabled = @(NO);
+    self.aemEnabled = @(NO);
+    self.aemExternalIdEnabled = @(NO);
+    self.aemFnlnEnabled = @(NO);
+    self.aemGeEnabled = @(NO);
     self.aemLocEnabled = @(NO);
+    self.aemPhEnabled = @(NO);
+    self.mdFrequency = @1;
     
   }
   return self;
@@ -24,7 +25,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"aemEnabled": @"aem_enabled", @"mdFrequency": @"md_frequency", @"aemFnlnEnabled": @"aem_fnln_enabled", @"aemPhEnabled": @"aem_ph_enabled", @"aemGeEnabled": @"aem_ge_enabled", @"aemDbEnabled": @"aem_db_enabled", @"aemLocEnabled": @"aem_loc_enabled", @"name": @"name" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"aemDbEnabled": @"aem_db_enabled", @"aemEnabled": @"aem_enabled", @"aemExternalIdEnabled": @"aem_external_id_enabled", @"aemFnlnEnabled": @"aem_fnln_enabled", @"aemGeEnabled": @"aem_ge_enabled", @"aemLocEnabled": @"aem_loc_enabled", @"aemPhEnabled": @"aem_ph_enabled", @"mdFrequency": @"md_frequency", @"name": @"name" }];
 }
 
 /**
@@ -34,7 +35,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"aemEnabled", @"mdFrequency", @"aemFnlnEnabled", @"aemPhEnabled", @"aemGeEnabled", @"aemDbEnabled", @"aemLocEnabled", ];
+  NSArray *optionalProperties = @[@"aemDbEnabled", @"aemEnabled", @"aemExternalIdEnabled", @"aemFnlnEnabled", @"aemGeEnabled", @"aemLocEnabled", @"aemPhEnabled", @"mdFrequency", ];
   return [optionalProperties containsObject:propertyName];
 }
 

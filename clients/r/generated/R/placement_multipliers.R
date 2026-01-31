@@ -29,8 +29,8 @@ PlacementMultipliers <- R6::R6Class(
     #' @param ... Other optional arguments.
     initialize = function(`PLACEMENT` = NULL, additional_properties = NULL, ...) {
       if (!is.null(`PLACEMENT`)) {
-        if (!(`PLACEMENT` %in% c("SEARCH", "BROWSE"))) {
-          stop(paste("Error! \"", `PLACEMENT`, "\" cannot be assigned to `PLACEMENT`. Must be \"SEARCH\", \"BROWSE\".", sep = ""))
+        if (!(`PLACEMENT` %in% c("SEARCH", "BROWSE", "RELATED_PINS"))) {
+          stop(paste("Error! \"", `PLACEMENT`, "\" cannot be assigned to `PLACEMENT`. Must be \"SEARCH\", \"BROWSE\", \"RELATED_PINS\".", sep = ""))
         }
         if (!(is.character(`PLACEMENT`) && length(`PLACEMENT`) == 1)) {
           stop(paste("Error! Invalid data for `PLACEMENT`. Must be a string:", `PLACEMENT`))
@@ -94,8 +94,8 @@ PlacementMultipliers <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`PLACEMENT`)) {
-        if (!is.null(this_object$`PLACEMENT`) && !(this_object$`PLACEMENT` %in% c("SEARCH", "BROWSE"))) {
-          stop(paste("Error! \"", this_object$`PLACEMENT`, "\" cannot be assigned to `PLACEMENT`. Must be \"SEARCH\", \"BROWSE\".", sep = ""))
+        if (!is.null(this_object$`PLACEMENT`) && !(this_object$`PLACEMENT` %in% c("SEARCH", "BROWSE", "RELATED_PINS"))) {
+          stop(paste("Error! \"", this_object$`PLACEMENT`, "\" cannot be assigned to `PLACEMENT`. Must be \"SEARCH\", \"BROWSE\", \"RELATED_PINS\".", sep = ""))
         }
         self$`PLACEMENT` <- this_object$`PLACEMENT`
       }
@@ -130,8 +130,8 @@ PlacementMultipliers <- R6::R6Class(
     #' @return the instance of PlacementMultipliers
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`PLACEMENT`) && !(this_object$`PLACEMENT` %in% c("SEARCH", "BROWSE"))) {
-        stop(paste("Error! \"", this_object$`PLACEMENT`, "\" cannot be assigned to `PLACEMENT`. Must be \"SEARCH\", \"BROWSE\".", sep = ""))
+      if (!is.null(this_object$`PLACEMENT`) && !(this_object$`PLACEMENT` %in% c("SEARCH", "BROWSE", "RELATED_PINS"))) {
+        stop(paste("Error! \"", this_object$`PLACEMENT`, "\" cannot be assigned to `PLACEMENT`. Must be \"SEARCH\", \"BROWSE\", \"RELATED_PINS\".", sep = ""))
       }
       self$`PLACEMENT` <- this_object$`PLACEMENT`
       # process additional properties/fields in the payload

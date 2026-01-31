@@ -26,6 +26,11 @@ public enum UpdateMaskFieldType: String, Codable, CaseIterable {
     case customLabel2 = "custom_label_2"
     case customLabel3 = "custom_label_3"
     case customLabel4 = "custom_label_4"
+    case customNumber0 = "custom_number_0"
+    case customNumber1 = "custom_number_1"
+    case customNumber2 = "custom_number_2"
+    case customNumber3 = "custom_number_3"
+    case customNumber4 = "custom_number_4"
     case description = "description"
     case freeShippingLabel = "free_shipping_label"
     case freeShippingLimit = "free_shipping_limit"
@@ -55,4 +60,5 @@ public enum UpdateMaskFieldType: String, Codable, CaseIterable {
     case title = "title"
     case variantNames = "variant_names"
     case variantValues = "variant_values"
+    case promotionId = "promotion_id"
 }

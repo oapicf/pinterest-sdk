@@ -8,8 +8,8 @@
 
 (def business-assets-get-200-response-data
   {
-   (ds/req :items) (s/coll-of get-business-assets-response-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of get-business-assets-response-spec)
    })
 
 (def business-assets-get-200-response-spec

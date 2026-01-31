@@ -3,6 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open OpenAPI.Model.ConversionEventsDataInnerCustomDataContentsInner
+open OpenAPI.Model.int option
 open OpenAPI.Model.string option
 
 module ConversionEventsDataInnerCustomData =
@@ -11,17 +12,20 @@ module ConversionEventsDataInnerCustomData =
 
 
   type ConversionEvents_data_inner_custom_data = {
-    Currency : string option;
-    Value : string option;
+    ContentBrand : string option;
+    ContentCategory : string option;
     ContentIds : string[];
     ContentName : string option;
-    ContentCategory : string option;
-    ContentBrand : string option;
     Contents : ConversionEventsDataInnerCustomDataContentsInner[];
-    NumItems : int64;
-    OrderId : string option;
-    SearchString : string option;
-    OptOutType : string option;
+    Currency : string option;
+    ExternalMeasurementId : string option;
+    ExternalMeasurementVendorId : int option;
     Np : string option;
+    NumItems : int64;
+    OptOutType : string option;
+    OrderId : string option;
+    PredictedLtv : string option;
+    SearchString : string option;
+    Value : string option;
   }
   //#endregion

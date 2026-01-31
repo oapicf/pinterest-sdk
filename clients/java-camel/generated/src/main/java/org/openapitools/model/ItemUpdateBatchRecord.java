@@ -26,35 +26,15 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "ItemUpdateBatchRecord", description = "Object describing an item batch record to update items")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ItemUpdateBatchRecord implements ItemBatchRecord {
-
-  private String itemId;
 
   private UpdatableItemAttributes attributes;
 
+  private String itemId;
+
   @Valid
   private JsonNullable<List<UpdateMaskFieldType>> updateMask = JsonNullable.<List<UpdateMaskFieldType>>undefined();
-
-  public ItemUpdateBatchRecord itemId(String itemId) {
-    this.itemId = itemId;
-    return this;
-  }
-
-  /**
-   * The catalog item id in the merchant namespace
-   * @return itemId
-   */
-  
-  @Schema(name = "item_id", example = "DS0294-M", description = "The catalog item id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("item_id")
-  public String getItemId() {
-    return itemId;
-  }
-
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
-  }
 
   public ItemUpdateBatchRecord attributes(UpdatableItemAttributes attributes) {
     this.attributes = attributes;
@@ -74,6 +54,26 @@ public class ItemUpdateBatchRecord implements ItemBatchRecord {
 
   public void setAttributes(UpdatableItemAttributes attributes) {
     this.attributes = attributes;
+  }
+
+  public ItemUpdateBatchRecord itemId(String itemId) {
+    this.itemId = itemId;
+    return this;
+  }
+
+  /**
+   * The catalog item id in the merchant namespace
+   * @return itemId
+   */
+  
+  @Schema(name = "item_id", example = "DS0294-M", description = "The catalog item id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("item_id")
+  public String getItemId() {
+    return itemId;
+  }
+
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
   }
 
   public ItemUpdateBatchRecord updateMask(List<UpdateMaskFieldType> updateMask) {
@@ -113,8 +113,8 @@ public class ItemUpdateBatchRecord implements ItemBatchRecord {
       return false;
     }
     ItemUpdateBatchRecord itemUpdateBatchRecord = (ItemUpdateBatchRecord) o;
-    return Objects.equals(this.itemId, itemUpdateBatchRecord.itemId) &&
-        Objects.equals(this.attributes, itemUpdateBatchRecord.attributes) &&
+    return Objects.equals(this.attributes, itemUpdateBatchRecord.attributes) &&
+        Objects.equals(this.itemId, itemUpdateBatchRecord.itemId) &&
         equalsNullable(this.updateMask, itemUpdateBatchRecord.updateMask);
   }
 
@@ -124,7 +124,7 @@ public class ItemUpdateBatchRecord implements ItemBatchRecord {
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, attributes, hashCodeNullable(updateMask));
+    return Objects.hash(attributes, itemId, hashCodeNullable(updateMask));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -138,8 +138,8 @@ public class ItemUpdateBatchRecord implements ItemBatchRecord {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ItemUpdateBatchRecord {\n");
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    updateMask: ").append(toIndentedString(updateMask)).append("\n");
     sb.append("}");
     return sb.toString();

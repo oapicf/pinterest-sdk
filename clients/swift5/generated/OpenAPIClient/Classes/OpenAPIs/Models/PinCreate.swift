@@ -10,92 +10,73 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Pin */
+/** Resource create operation model. */
 public struct PinCreate: Codable, JSONEncodable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let linkRule = StringRule(minLength: nil, maxLength: 2048, pattern: nil)
-    public static let titleRule = StringRule(minLength: nil, maxLength: 100, pattern: nil)
-    public static let descriptionRule = StringRule(minLength: nil, maxLength: 800, pattern: nil)
     public static let altTextRule = StringRule(minLength: nil, maxLength: 500, pattern: nil)
     public static let boardIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public static let boardSectionIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let descriptionRule = StringRule(minLength: nil, maxLength: 800, pattern: nil)
+    public static let linkRule = StringRule(minLength: nil, maxLength: 2048, pattern: nil)
     public static let parentPinIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public var id: String?
-    public var createdAt: Date?
-    public var link: String?
-    public var title: String?
-    public var description: String?
-    /** Dominant pin color. Hex number, e.g. \\\"#6E7874\\\". */
-    public var dominantColor: String?
+    public static let sponsorIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let titleRule = StringRule(minLength: nil, maxLength: 100, pattern: nil)
     public var altText: String?
     /** The board to which this Pin belongs. */
     public var boardId: String?
     /** The board section to which this Pin belongs. */
     public var boardSectionId: String?
-    public var boardOwner: BoardOwner?
-    public var media: PinMedia?
+    public var description: String?
+    /** Dominant pin color. Hex number, e.g. `#6E7874`. */
+    public var dominantColor: String?
+    public var link: String?
     public var mediaSource: PinMediaSource?
-    /** The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>. */
+    /** The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest). */
     public var parentPinId: String?
-    /** Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>. */
-    public var note: String?
+    /** The sponsor account id to request paid partnership from.  Currently the field is only available to a list of users in a closed beta. */
+    public var sponsorId: String?
+    public var title: String?
 
-    public init(id: String? = nil, createdAt: Date? = nil, link: String? = nil, title: String? = nil, description: String? = nil, dominantColor: String? = nil, altText: String? = nil, boardId: String? = nil, boardSectionId: String? = nil, boardOwner: BoardOwner? = nil, media: PinMedia? = nil, mediaSource: PinMediaSource? = nil, parentPinId: String? = nil, note: String? = nil) {
-        self.id = id
-        self.createdAt = createdAt
-        self.link = link
-        self.title = title
-        self.description = description
-        self.dominantColor = dominantColor
+    public init(altText: String? = nil, boardId: String? = nil, boardSectionId: String? = nil, description: String? = nil, dominantColor: String? = nil, link: String? = nil, mediaSource: PinMediaSource? = nil, parentPinId: String? = nil, sponsorId: String? = nil, title: String? = nil) {
         self.altText = altText
         self.boardId = boardId
         self.boardSectionId = boardSectionId
-        self.boardOwner = boardOwner
-        self.media = media
+        self.description = description
+        self.dominantColor = dominantColor
+        self.link = link
         self.mediaSource = mediaSource
         self.parentPinId = parentPinId
-        self.note = note
+        self.sponsorId = sponsorId
+        self.title = title
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case id
-        case createdAt = "created_at"
-        case link
-        case title
-        case description
-        case dominantColor = "dominant_color"
         case altText = "alt_text"
         case boardId = "board_id"
         case boardSectionId = "board_section_id"
-        case boardOwner = "board_owner"
-        case media
+        case description
+        case dominantColor = "dominant_color"
+        case link
         case mediaSource = "media_source"
         case parentPinId = "parent_pin_id"
-        case note
+        case sponsorId = "sponsor_id"
+        case title
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(createdAt, forKey: .createdAt)
-        try container.encodeIfPresent(link, forKey: .link)
-        try container.encodeIfPresent(title, forKey: .title)
-        try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(dominantColor, forKey: .dominantColor)
         try container.encodeIfPresent(altText, forKey: .altText)
         try container.encodeIfPresent(boardId, forKey: .boardId)
         try container.encodeIfPresent(boardSectionId, forKey: .boardSectionId)
-        try container.encodeIfPresent(boardOwner, forKey: .boardOwner)
-        try container.encodeIfPresent(media, forKey: .media)
+        try container.encodeIfPresent(description, forKey: .description)
+        try container.encodeIfPresent(dominantColor, forKey: .dominantColor)
+        try container.encodeIfPresent(link, forKey: .link)
         try container.encodeIfPresent(mediaSource, forKey: .mediaSource)
         try container.encodeIfPresent(parentPinId, forKey: .parentPinId)
-        try container.encodeIfPresent(note, forKey: .note)
+        try container.encodeIfPresent(sponsorId, forKey: .sponsorId)
+        try container.encodeIfPresent(title, forKey: .title)
     }
 }
 
-
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
-extension PinCreate: Identifiable {}

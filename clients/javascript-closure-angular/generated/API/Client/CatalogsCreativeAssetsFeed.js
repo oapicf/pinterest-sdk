@@ -25,17 +25,11 @@ API.Client.CatalogsCreativeAssetsFeed.prototype.id;
 API.Client.CatalogsCreativeAssetsFeed.prototype.updatedAt;
 
 /**
- * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+ * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
  * @type {!string}
  * @export
  */
-API.Client.CatalogsCreativeAssetsFeed.prototype.name;
-
-/**
- * @type {!API.Client.CatalogsFormat}
- * @export
- */
-API.Client.CatalogsCreativeAssetsFeed.prototype.format;
+API.Client.CatalogsCreativeAssetsFeed.prototype.catalogId;
 
 /**
  * @type {!API.Client.CatalogsType}
@@ -50,23 +44,10 @@ API.Client.CatalogsCreativeAssetsFeed.prototype.catalogType;
 API.Client.CatalogsCreativeAssetsFeed.prototype.credentials;
 
 /**
- * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
- * @type {!string}
+ * @type {!API.Client.Country}
  * @export
  */
-API.Client.CatalogsCreativeAssetsFeed.prototype.location;
-
-/**
- * @type {!API.Client.CatalogsFeedProcessingSchedule}
- * @export
- */
-API.Client.CatalogsCreativeAssetsFeed.prototype.preferredProcessingSchedule;
-
-/**
- * @type {!API.Client.CatalogsStatus}
- * @export
- */
-API.Client.CatalogsCreativeAssetsFeed.prototype.status;
+API.Client.CatalogsCreativeAssetsFeed.prototype.defaultCountry;
 
 /**
  * @type {!API.Client.NullableCurrency}
@@ -82,15 +63,34 @@ API.Client.CatalogsCreativeAssetsFeed.prototype.defaultCurrency;
 API.Client.CatalogsCreativeAssetsFeed.prototype.defaultLocale;
 
 /**
- * @type {!API.Client.Country}
+ * @type {!API.Client.CatalogsFormat}
  * @export
  */
-API.Client.CatalogsCreativeAssetsFeed.prototype.defaultCountry;
+API.Client.CatalogsCreativeAssetsFeed.prototype.format;
 
 /**
- * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
+ * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
  * @type {!string}
  * @export
  */
-API.Client.CatalogsCreativeAssetsFeed.prototype.catalogId;
+API.Client.CatalogsCreativeAssetsFeed.prototype.location;
+
+/**
+ * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsFeed.prototype.name;
+
+/**
+ * @type {!API.Client.CatalogsFeedProcessingSchedule}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsFeed.prototype.preferredProcessingSchedule;
+
+/**
+ * @type {!API.Client.CatalogsStatus}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsFeed.prototype.status;
 

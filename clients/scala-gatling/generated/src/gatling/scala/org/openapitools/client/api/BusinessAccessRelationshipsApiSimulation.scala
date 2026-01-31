@@ -56,16 +56,21 @@ class BusinessAccessRelationshipsApiSimulation extends Simulation {
     }
 
     // Setup all the operations per second for the test to ultimately be generated from configs
+    val brandAccountsCreatePerSecond = config.getDouble("performance.operationsPerSecond.brandAccountsCreate") * rateMultiplier * instanceMultiplier
+    val brandAccountsUpdatePerSecond = config.getDouble("performance.operationsPerSecond.brandAccountsUpdate") * rateMultiplier * instanceMultiplier
     val deleteBusinessMembershipPerSecond = config.getDouble("performance.operationsPerSecond.deleteBusinessMembership") * rateMultiplier * instanceMultiplier
     val deleteBusinessPartnersPerSecond = config.getDouble("performance.operationsPerSecond.deleteBusinessPartners") * rateMultiplier * instanceMultiplier
     val getBusinessEmployersPerSecond = config.getDouble("performance.operationsPerSecond.getBusinessEmployers") * rateMultiplier * instanceMultiplier
     val getBusinessMembersPerSecond = config.getDouble("performance.operationsPerSecond.getBusinessMembers") * rateMultiplier * instanceMultiplier
     val getBusinessPartnersPerSecond = config.getDouble("performance.operationsPerSecond.getBusinessPartners") * rateMultiplier * instanceMultiplier
+    val systemUserUpdatePerSecond = config.getDouble("performance.operationsPerSecond.systemUserUpdate") * rateMultiplier * instanceMultiplier
     val updateBusinessMembershipsPerSecond = config.getDouble("performance.operationsPerSecond.updateBusinessMemberships") * rateMultiplier * instanceMultiplier
 
     val scenarioBuilders: mutable.MutableList[PopulationBuilder] = new mutable.MutableList[PopulationBuilder]()
 
     // Set up CSV feeders
+    val brand_accounts/createPATHFeeder = csv(userDataDirectory + File.separator + "brandAccountsCreate-pathParams.csv").random
+    val brand_accounts/updatePATHFeeder = csv(userDataDirectory + File.separator + "brandAccountsUpdate-pathParams.csv").random
     val delete_business_membershipPATHFeeder = csv(userDataDirectory + File.separator + "deleteBusinessMembership-pathParams.csv").random
     val delete_business_partnersPATHFeeder = csv(userDataDirectory + File.separator + "deleteBusinessPartners-pathParams.csv").random
     val get/business_employersQUERYFeeder = csv(userDataDirectory + File.separator + "getBusinessEmployers-queryParams.csv").random
@@ -73,9 +78,38 @@ class BusinessAccessRelationshipsApiSimulation extends Simulation {
     val get/business_membersPATHFeeder = csv(userDataDirectory + File.separator + "getBusinessMembers-pathParams.csv").random
     val get/business_partnersQUERYFeeder = csv(userDataDirectory + File.separator + "getBusinessPartners-queryParams.csv").random
     val get/business_partnersPATHFeeder = csv(userDataDirectory + File.separator + "getBusinessPartners-pathParams.csv").random
+    val system_user/updatePATHFeeder = csv(userDataDirectory + File.separator + "systemUserUpdate-pathParams.csv").random
     val update/business_membershipsPATHFeeder = csv(userDataDirectory + File.separator + "updateBusinessMemberships-pathParams.csv").random
 
     // Setup all scenarios
+
+    
+    val scnbrandAccountsCreate = scenario("brandAccountsCreateSimulation")
+        .feed(brand_accounts/createPATHFeeder)
+        .exec(http("brandAccountsCreate")
+        .httpRequest("POST","/business_access/business_hierarchy/${business_hierarchy_id}/brand_accounts")
+)
+
+    // Run scnbrandAccountsCreate with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnbrandAccountsCreate.inject(
+        rampUsersPerSec(1) to(brandAccountsCreatePerSecond) during(rampUpSeconds),
+        constantUsersPerSec(brandAccountsCreatePerSecond) during(durationSeconds),
+        rampUsersPerSec(brandAccountsCreatePerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scnbrandAccountsUpdate = scenario("brandAccountsUpdateSimulation")
+        .feed(brand_accounts/updatePATHFeeder)
+        .exec(http("brandAccountsUpdate")
+        .httpRequest("PATCH","/business_access/business_hierarchy/${business_hierarchy_id}/brand_accounts/${brand_account_id}")
+)
+
+    // Run scnbrandAccountsUpdate with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnbrandAccountsUpdate.inject(
+        rampUsersPerSec(1) to(brandAccountsUpdatePerSecond) during(rampUpSeconds),
+        constantUsersPerSec(brandAccountsUpdatePerSecond) during(durationSeconds),
+        rampUsersPerSec(brandAccountsUpdatePerSecond) to(1) during(rampDownSeconds)
+    )
 
     
     val scndeleteBusinessMembership = scenario("deleteBusinessMembershipSimulation")
@@ -110,8 +144,8 @@ class BusinessAccessRelationshipsApiSimulation extends Simulation {
         .feed(get/business_employersQUERYFeeder)
         .exec(http("getBusinessEmployers")
         .httpRequest("GET","/businesses/employers")
-        .queryParam("page_size","${page_size}")
         .queryParam("bookmark","${bookmark}")
+        .queryParam("page_size","${page_size}")
 )
 
     // Run scngetBusinessEmployers with warm up and reach a constant rate for entire duration
@@ -127,12 +161,13 @@ class BusinessAccessRelationshipsApiSimulation extends Simulation {
         .feed(get/business_membersPATHFeeder)
         .exec(http("getBusinessMembers")
         .httpRequest("GET","/businesses/${business_id}/members")
-        .queryParam("start_index","${start_index}")
-        .queryParam("bookmark","${bookmark}")
-        .queryParam("page_size","${page_size}")
-        .queryParam("business_roles","${business_roles}")
         .queryParam("assets_summary","${assets_summary}")
         .queryParam("member_ids","${member_ids}")
+        .queryParam("start_index","${start_index}")
+        .queryParam("bookmark","${bookmark}")
+        .queryParam("business_roles","${business_roles}")
+        .queryParam("page_size","${page_size}")
+        .queryParam("fetch_system_users","${fetch_system_users}")
 )
 
     // Run scngetBusinessMembers with warm up and reach a constant rate for entire duration
@@ -148,11 +183,11 @@ class BusinessAccessRelationshipsApiSimulation extends Simulation {
         .feed(get/business_partnersPATHFeeder)
         .exec(http("getBusinessPartners")
         .httpRequest("GET","/businesses/${business_id}/partners")
-        .queryParam("start_index","${start_index}")
-        .queryParam("page_size","${page_size}")
-        .queryParam("bookmark","${bookmark}")
-        .queryParam("partner_ids","${partner_ids}")
         .queryParam("assets_summary","${assets_summary}")
+        .queryParam("start_index","${start_index}")
+        .queryParam("bookmark","${bookmark}")
+        .queryParam("page_size","${page_size}")
+        .queryParam("partner_ids","${partner_ids}")
         .queryParam("partner_type","${partner_type}")
 )
 
@@ -161,6 +196,20 @@ class BusinessAccessRelationshipsApiSimulation extends Simulation {
         rampUsersPerSec(1) to(getBusinessPartnersPerSecond) during(rampUpSeconds),
         constantUsersPerSec(getBusinessPartnersPerSecond) during(durationSeconds),
         rampUsersPerSec(getBusinessPartnersPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scnsystemUserUpdate = scenario("systemUserUpdateSimulation")
+        .feed(system_user/updatePATHFeeder)
+        .exec(http("systemUserUpdate")
+        .httpRequest("PATCH","/businesses/${business_id}/system_users/${system_user_id}")
+)
+
+    // Run scnsystemUserUpdate with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnsystemUserUpdate.inject(
+        rampUsersPerSec(1) to(systemUserUpdatePerSecond) during(rampUpSeconds),
+        constantUsersPerSec(systemUserUpdatePerSecond) during(durationSeconds),
+        rampUsersPerSec(systemUserUpdatePerSecond) to(1) during(rampDownSeconds)
     )
 
     

@@ -11,7 +11,7 @@ module ItemsIssuesList200Response =
 
 
   type items_issues_list_200_response = {
-    Items : CatalogsItemValidationIssues[];
     Bookmark : string option;
+    Items : CatalogsItemValidationIssues[];
   }
   //#endregion

@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;AdGroupResponse&gt;](AdGroupResponse.md)
 `bookmark` | string
+`items` | [Array&lt;AdGroupResponse&gt;](AdGroupResponse.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { AdGroupsList200Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "items": null,
   "bookmark": null,
+  "items": null,
 } satisfies AdGroupsList200Response
 
 console.log(example)

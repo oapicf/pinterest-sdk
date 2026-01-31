@@ -27,13 +27,13 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("search_user_boards_get_200_response")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SearchUserBoardsGet200Response {
+
+  private JsonNullable<String> bookmark = JsonNullable.<String>undefined();
 
   @Valid
   private List<@Valid Board> items = new ArrayList<>();
-
-  private JsonNullable<String> bookmark = JsonNullable.<String>undefined();
 
   public SearchUserBoardsGet200Response() {
     super();
@@ -44,6 +44,26 @@ public class SearchUserBoardsGet200Response {
    */
   public SearchUserBoardsGet200Response(List<@Valid Board> items) {
     this.items = items;
+  }
+
+  public SearchUserBoardsGet200Response bookmark(String bookmark) {
+    this.bookmark = JsonNullable.of(bookmark);
+    return this;
+  }
+
+  /**
+   * Get bookmark
+   * @return bookmark
+   */
+  
+  @Schema(name = "bookmark", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("bookmark")
+  public JsonNullable<String> getBookmark() {
+    return bookmark;
+  }
+
+  public void setBookmark(JsonNullable<String> bookmark) {
+    this.bookmark = bookmark;
   }
 
   public SearchUserBoardsGet200Response items(List<@Valid Board> items) {
@@ -74,26 +94,6 @@ public class SearchUserBoardsGet200Response {
     this.items = items;
   }
 
-  public SearchUserBoardsGet200Response bookmark(String bookmark) {
-    this.bookmark = JsonNullable.of(bookmark);
-    return this;
-  }
-
-  /**
-   * Get bookmark
-   * @return bookmark
-   */
-  
-  @Schema(name = "bookmark", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("bookmark")
-  public JsonNullable<String> getBookmark() {
-    return bookmark;
-  }
-
-  public void setBookmark(JsonNullable<String> bookmark) {
-    this.bookmark = bookmark;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -103,8 +103,8 @@ public class SearchUserBoardsGet200Response {
       return false;
     }
     SearchUserBoardsGet200Response searchUserBoardsGet200Response = (SearchUserBoardsGet200Response) o;
-    return Objects.equals(this.items, searchUserBoardsGet200Response.items) &&
-        equalsNullable(this.bookmark, searchUserBoardsGet200Response.bookmark);
+    return equalsNullable(this.bookmark, searchUserBoardsGet200Response.bookmark) &&
+        Objects.equals(this.items, searchUserBoardsGet200Response.items);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -113,7 +113,7 @@ public class SearchUserBoardsGet200Response {
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, hashCodeNullable(bookmark));
+    return Objects.hash(hashCodeNullable(bookmark), items);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -127,8 +127,8 @@ public class SearchUserBoardsGet200Response {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SearchUserBoardsGet200Response {\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

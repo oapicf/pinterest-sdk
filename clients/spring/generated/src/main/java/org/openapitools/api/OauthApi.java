@@ -5,7 +5,9 @@
  */
 package org.openapitools.api;
 
+import org.openapitools.model.ConversionAccessTokenResponse;
 import org.openapitools.model.Error;
+import org.springframework.lang.Nullable;
 import org.openapitools.model.OauthAccessTokenResponse;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
@@ -34,7 +36,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Validated
 @Tag(name = "oauth", description = "Generate and refresh OAuth access tokens.")
 public interface OauthApi {
@@ -43,10 +45,62 @@ public interface OauthApi {
         return Optional.empty();
     }
 
+    String PATH_OAUTH_CONVERSION_TOKEN = "/oauth/conversion_token";
+    /**
+     * POST /oauth/conversion_token : Generate OAuth access token for conversion API
+     * Generate a new and long-lived OAuth access token dedicated for sending conversions using a valid access token.
+     *
+     * @return response (status code 200)
+     *         or Unexpected error (status code 200)
+     */
+    @Operation(
+        operationId = "oauthConversionToken",
+        summary = "Generate OAuth access token for conversion API",
+        description = "Generate a new and long-lived OAuth access token dedicated for sending conversions using a valid access token.",
+        tags = { "oauth" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "response", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = ConversionAccessTokenResponse.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            })
+        },
+        security = {
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:write" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.POST,
+        value = OauthApi.PATH_OAUTH_CONVERSION_TOKEN,
+        produces = { "application/json" }
+    )
+    default ResponseEntity<ConversionAccessTokenResponse> oauthConversionToken(
+        
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"access_token\" : \"access_token\", \"token_type\" : \"conversion\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
     String PATH_OAUTH_TOKEN = "/oauth/token";
     /**
      * POST /oauth/token : Generate OAuth access token
-     * Generate an OAuth access token by using an authorization code or a refresh token.  IMPORTANT: You need to start the OAuth flow via www.pinterest.com/oauth before calling this endpoint (or have an existing refresh token).  See &lt;a href&#x3D;&#39;/docs/getting-started/authentication-and-scopes/&#39;&gt;Authentication&lt;/a&gt; for more.  &lt;strong&gt;Parameter &lt;i&gt;refresh_on&lt;/i&gt; and its corresponding response type &lt;i&gt;everlasting_refresh&lt;/i&gt; are now available to all apps! Later this year, continuous refresh will become the default behavior (ie you will no longer need to send this parameter). &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  &lt;strong&gt;Grant type &lt;i&gt;client_credentials&lt;/i&gt; and its corresponding response type are not fully available. You will likely get a default error if you attempt to use this grant_type.&lt;/strong&gt;
+     * Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for &lt;a href&#x3D;&#39;/docs/getting-started/set-up-authentication-and-authorization/&#39; target&#x3D;&#39;blank&#39;&gt;requesting and refreshing tokens&lt;/a&gt;.  &lt;strong&gt;Note:&lt;/strong&gt; If your app was created &lt;strong&gt;before September 25, 2025&lt;/strong&gt;, make sure to set the &lt;code&gt;continuous_refresh&lt;/code&gt; parameter to &lt;code&gt;true&lt;/code&gt; to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use &lt;a href&#x3D;&#39;/docs/developer-tools/token-debugger/&#39; target&#x3D;&#39;blank&#39;&gt;Token Debugger&lt;/a&gt; to validate and inspect your access token.
      *
      * @param grantType  (required)
      * @return response (status code 200)
@@ -55,7 +109,7 @@ public interface OauthApi {
     @Operation(
         operationId = "oauthToken",
         summary = "Generate OAuth access token",
-        description = "Generate an OAuth access token by using an authorization code or a refresh token.  IMPORTANT: You need to start the OAuth flow via www.pinterest.com/oauth before calling this endpoint (or have an existing refresh token).  See <a href='/docs/getting-started/authentication-and-scopes/'>Authentication</a> for more.  <strong>Parameter <i>refresh_on</i> and its corresponding response type <i>everlasting_refresh</i> are now available to all apps! Later this year, continuous refresh will become the default behavior (ie you will no longer need to send this parameter). <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  <strong>Grant type <i>client_credentials</i> and its corresponding response type are not fully available. You will likely get a default error if you attempt to use this grant_type.</strong>",
+        description = "Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for <a href='/docs/getting-started/set-up-authentication-and-authorization/' target='blank'>requesting and refreshing tokens</a>.  <strong>Note:</strong> If your app was created <strong>before September 25, 2025</strong>, make sure to set the <code>continuous_refresh</code> parameter to <code>true</code> to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use <a href='/docs/developer-tools/token-debugger/' target='blank'>Token Debugger</a> to validate and inspect your access token.",
         tags = { "oauth" },
         responses = {
             @ApiResponse(responseCode = "200", description = "response", content = {
@@ -82,6 +136,73 @@ public interface OauthApi {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                     String exampleString = "{ \"access_token\" : \"access_token\", \"scope\" : \"scope\", \"response_type\" : \"authorization_code\", \"token_type\" : \"bearer\", \"expires_in\" : 0 }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    String PATH_TOKEN_REVOKE = "/oauth/token/revoke";
+    /**
+     * POST /oauth/token/revoke : Revoke a token
+     * Revokes an access or refresh token. Only tokens issued for system users are currently supported. Revoked tokens become immediately invalid and unusable.
+     *
+     * @param token The token to revoke. (required)
+     * @param tokenTypeHint The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. (optional)
+     * @return Successful token revocation. No content is returned. (status code 200)
+     *         or Client authentication error. (status code 401)
+     *         or Client is not allowed to revoke token. (status code 403)
+     *         or Unexpected error (status code 200)
+     */
+    @Operation(
+        operationId = "tokenRevoke",
+        summary = "Revoke a token",
+        description = "Revokes an access or refresh token. Only tokens issued for system users are currently supported. Revoked tokens become immediately invalid and unusable.",
+        tags = { "oauth" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Successful token revocation. No content is returned."),
+            @ApiResponse(responseCode = "401", description = "Client authentication error.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            }),
+            @ApiResponse(responseCode = "403", description = "Client is not allowed to revoke token.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            })
+        },
+        security = {
+            @SecurityRequirement(name = "basic")
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.POST,
+        value = OauthApi.PATH_TOKEN_REVOKE,
+        produces = { "application/json" },
+        consumes = { "application/x-www-form-urlencoded" }
+    )
+    default ResponseEntity<Void> tokenRevoke(
+        @Parameter(name = "token", description = "The token to revoke.", required = true) @Valid @RequestParam(value = "token", required = true) String token,
+        @Parameter(name = "token_type_hint", description = "The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information.") @Valid @RequestParam(value = "token_type_hint", required = false) String tokenTypeHint
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

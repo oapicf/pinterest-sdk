@@ -24,8 +24,8 @@ void
 CatalogsItemsRequest::__init()
 {
 	//country = new Country();
-	//language = std::string();
 	//filters = new CatalogsItemsPostFilters();
+	//language = std::string();
 }
 
 void
@@ -36,15 +36,15 @@ CatalogsItemsRequest::__cleanup()
 	//delete country;
 	//country = NULL;
 	//}
-	//if(language != NULL) {
-	//
-	//delete language;
-	//language = NULL;
-	//}
 	//if(filters != NULL) {
 	//
 	//delete filters;
 	//filters = NULL;
+	//}
+	//if(language != NULL) {
+	//
+	//delete language;
+	//language = NULL;
 	//}
 	//
 }
@@ -68,17 +68,6 @@ CatalogsItemsRequest::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *languageKey = "language";
-	node = json_object_get_member(pJsonObject, languageKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&language, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *filtersKey = "filters";
 	node = json_object_get_member(pJsonObject, filtersKey);
 	if (node !=NULL) {
@@ -90,6 +79,17 @@ CatalogsItemsRequest::fromJson(char* jsonStr)
 			
 			CatalogsItemsPostFilters* obj = static_cast<CatalogsItemsPostFilters*> (&filters);
 			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *languageKey = "language";
+	node = json_object_get_member(pJsonObject, languageKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&language, node, "std::string", "");
+		} else {
 			
 		}
 	}
@@ -119,15 +119,6 @@ CatalogsItemsRequest::toJson()
 	}
 	const gchar *countryKey = "country";
 	json_object_set_member(pJsonObject, countryKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getLanguage();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *languageKey = "language";
-	json_object_set_member(pJsonObject, languageKey, node);
 	if (isprimitive("CatalogsItemsPostFilters")) {
 		CatalogsItemsPostFilters obj = getFilters();
 		node = converttoJson(&obj, "CatalogsItemsPostFilters", "");
@@ -142,6 +133,15 @@ CatalogsItemsRequest::toJson()
 	}
 	const gchar *filtersKey = "filters";
 	json_object_set_member(pJsonObject, filtersKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getLanguage();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *languageKey = "language";
+	json_object_set_member(pJsonObject, languageKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -162,18 +162,6 @@ CatalogsItemsRequest::setCountry(Country  country)
 	this->country = country;
 }
 
-std::string
-CatalogsItemsRequest::getLanguage()
-{
-	return language;
-}
-
-void
-CatalogsItemsRequest::setLanguage(std::string  language)
-{
-	this->language = language;
-}
-
 CatalogsItemsPostFilters
 CatalogsItemsRequest::getFilters()
 {
@@ -184,6 +172,18 @@ void
 CatalogsItemsRequest::setFilters(CatalogsItemsPostFilters  filters)
 {
 	this->filters = filters;
+}
+
+std::string
+CatalogsItemsRequest::getLanguage()
+{
+	return language;
+}
+
+void
+CatalogsItemsRequest::setLanguage(std::string  language)
+{
+	this->language = language;
 }
 
 

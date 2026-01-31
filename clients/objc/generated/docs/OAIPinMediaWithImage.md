@@ -3,7 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**images** | [**OAIPinMediaWithImageAllOfImages***](OAIPinMediaWithImageAllOfImages.md) |  | [optional] 
+**images** | [**OAIImageSize***](OAIImageSize.md) |  | [optional] 
+**mediaType** | **NSString*** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

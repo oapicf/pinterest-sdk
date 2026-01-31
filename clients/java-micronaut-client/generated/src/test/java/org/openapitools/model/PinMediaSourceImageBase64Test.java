@@ -1,5 +1,6 @@
 package org.openapitools.model;
 
+import org.openapitools.model.ContentType;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -17,14 +18,6 @@ public class PinMediaSourceImageBase64Test {
     @Test
     public void testPinMediaSourceImageBase64() {
         // TODO: test PinMediaSourceImageBase64
-    }
-
-    /**
-     * Test the property 'sourceType'
-     */
-    @Test
-    public void sourceTypeTest() {
-        // TODO: test sourceType
     }
 
     /**
@@ -49,6 +42,14 @@ public class PinMediaSourceImageBase64Test {
     @Test
     public void isStandardTest() {
         // TODO: test isStandard
+    }
+
+    /**
+     * Test the property 'sourceType'
+     */
+    @Test
+    public void sourceTypeTest() {
+        // TODO: test sourceType
     }
 
 }

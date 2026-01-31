@@ -28,7 +28,7 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::AdvancedAuctionApi.new
-advanced_auction_items_get_request = PinterestSdkClient::AdvancedAuctionItemsGetRequest.new({catalog_id: '2680059592705', items: [PinterestSdkClient::AdvancedAuctionItemsGetRecord.new({item_id: 'DS0294-M', country: PinterestSdkClient::Country::AD, language: PinterestSdkClient::Language::AM})]}) # AdvancedAuctionItemsGetRequest | Request object used to get bid options values for a batch of retail catalog items
+advanced_auction_items_get_request = PinterestSdkClient::AdvancedAuctionItemsGetRequest.new({catalog_id: '2680059592705', items: [PinterestSdkClient::AdvancedAuctionItemsGetRecord.new({country: PinterestSdkClient::Country::AD, item_id: 'DS0294-M', language: PinterestSdkClient::Language::AM})]}) # AdvancedAuctionItemsGetRequest | Request object used to get bid options values for a batch of retail catalog items
 opts = {
   ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
 }
@@ -101,7 +101,7 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::AdvancedAuctionApi.new
-advanced_auction_items_submit_request = PinterestSdkClient::AdvancedAuctionItemsSubmitRequest.new({catalog_id: '2680059592705', items: [PinterestSdkClient::AdvancedAuctionItemsSubmitDeleteRecord.new({item_id: 'DS0294-M', country: PinterestSdkClient::Country::AD, language: PinterestSdkClient::Language::AM})]}) # AdvancedAuctionItemsSubmitRequest | Request object used to upsert or delete bid options for a batch of retail catalog items
+advanced_auction_items_submit_request = PinterestSdkClient::AdvancedAuctionItemsSubmitRequest.new({catalog_id: '2680059592705', items: [PinterestSdkClient::AdvancedAuctionItemsSubmitDeleteRecord.new({country: PinterestSdkClient::Country::AD, item_id: 'DS0294-M', language: PinterestSdkClient::Language::AM})]}) # AdvancedAuctionItemsSubmitRequest | Request object used to upsert or delete bid options for a batch of retail catalog items
 opts = {
   ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
 }

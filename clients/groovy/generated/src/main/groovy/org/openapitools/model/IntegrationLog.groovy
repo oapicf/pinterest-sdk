@@ -9,8 +9,14 @@ import org.openapitools.model.IntegrationLogClientRequest;
 
 @Canonical
 class IntegrationLog {
+    
+    String advertiserId
+    /* Version number of the integration application. */
+    String appVersionNumber
     /* Timestamp in milliseconds of when the log was executed at the client. */
     Integer clientTimestamp
+    
+    IntegrationLogClientError error
 
     enum EventTypeEnum {
     
@@ -36,6 +42,10 @@ class IntegrationLog {
 
     /* Log event type */
     EventTypeEnum eventType
+    
+    String externalBusinessId
+    
+    String feedProfileId
 
     enum LogLevelEnum {
     
@@ -64,23 +74,13 @@ class IntegrationLog {
     /* Log level type */
     LogLevelEnum logLevel
     
-    String externalBusinessId
-    
-    String advertiserId
-    
     String merchantId
-    
-    String tagId
-    
-    String feedProfileId
     /* Explanation of the event that occured. */
     String message
-    /* Version number of the integration application. */
-    String appVersionNumber
     /* Version number of the platform the integration application is running on. */
     String platformVersionNumber
     
-    IntegrationLogClientError error
-    
     IntegrationLogClientRequest request
+    
+    String tagId
 }

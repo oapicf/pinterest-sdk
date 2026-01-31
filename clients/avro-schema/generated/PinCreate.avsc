@@ -1,45 +1,9 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "Pin",
+  "doc": "Resource create operation model.",
   "name": "PinCreate",
   "fields": [
-    {
-      "name": "id",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "created_at",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "link",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "title",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "description",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "dominant_color",
-      "type": ["null", "string"],
-      "doc": "Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".",
-      "default": null
-    },
     {
       "name": "alt_text",
       "type": ["null", "string"],
@@ -59,14 +23,20 @@
       "default": null
     },
     {
-      "name": "board_owner",
-      "type": ["null", "model.BoardOwner"],
+      "name": "description",
+      "type": ["null", "string"],
       "doc": "",
       "default": null
     },
     {
-      "name": "media",
-      "type": ["null", "model.PinMedia"],
+      "name": "dominant_color",
+      "type": ["null", "string"],
+      "doc": "Dominant pin color. Hex number, e.g. `#6E7874`.",
+      "default": null
+    },
+    {
+      "name": "link",
+      "type": ["null", "string"],
       "doc": "",
       "default": null
     },
@@ -79,13 +49,19 @@
     {
       "name": "parent_pin_id",
       "type": ["null", "string"],
-      "doc": "The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.",
+      "doc": "The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).",
       "default": null
     },
     {
-      "name": "note",
+      "name": "sponsor_id",
       "type": ["null", "string"],
-      "doc": "Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.",
+      "doc": "The sponsor account id to request paid partnership from.  Currently the field is only available to a list of users in a closed beta.",
+      "default": null
+    },
+    {
+      "name": "title",
+      "type": ["null", "string"],
+      "doc": "",
       "default": null
     }
   ]

@@ -26,7 +26,8 @@ export const AdsAnalyticsCampaignTargetingType = {
     AgeBucket: 'AGE_BUCKET',
     Region: 'REGION',
     CreativeType: 'CREATIVE_TYPE',
-    AgeBucketAndGender: 'AGE_BUCKET_AND_GENDER'
+    AgeBucketAndGender: 'AGE_BUCKET_AND_GENDER',
+    AudienceMultiplier: 'AUDIENCE_MULTIPLIER'
 } as const;
 export type AdsAnalyticsCampaignTargetingType = typeof AdsAnalyticsCampaignTargetingType[keyof typeof AdsAnalyticsCampaignTargetingType];
 

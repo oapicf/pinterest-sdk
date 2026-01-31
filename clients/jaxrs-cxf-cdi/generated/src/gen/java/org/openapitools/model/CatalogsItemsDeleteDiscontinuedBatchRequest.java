@@ -26,6 +26,8 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
   
   private Country country;
 
+  private List<@Valid ItemDeleteDiscontinuedBatchRecord> items = new ArrayList<>();
+
 
 public enum LanguageEnum {
 
@@ -61,8 +63,6 @@ public enum LanguageEnum {
 
   private BatchOperation operation;
 
-  private List<@Valid ItemDeleteDiscontinuedBatchRecord> items = new ArrayList<>();
-
   /**
    **/
   public CatalogsItemsDeleteDiscontinuedBatchRequest country(Country country) {
@@ -79,6 +79,34 @@ public enum LanguageEnum {
   }
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+
+  /**
+   * Array with catalogs items
+   **/
+  public CatalogsItemsDeleteDiscontinuedBatchRequest items(List<@Valid ItemDeleteDiscontinuedBatchRecord> items) {
+    this.items = items;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "Array with catalogs items")
+  @JsonProperty("items")
+  @NotNull
+  public List<@Valid ItemDeleteDiscontinuedBatchRecord> getItems() {
+    return items;
+  }
+  public void setItems(List<@Valid ItemDeleteDiscontinuedBatchRecord> items) {
+    this.items = items;
+  }
+
+  public CatalogsItemsDeleteDiscontinuedBatchRequest addItemsItem(ItemDeleteDiscontinuedBatchRecord itemsItem) {
+    if (this.items == null) {
+      this.items = new ArrayList<>();
+    }
+    this.items.add(itemsItem);
+    return this;
   }
 
 
@@ -121,34 +149,6 @@ public enum LanguageEnum {
   }
 
 
-  /**
-   * Array with catalogs items
-   **/
-  public CatalogsItemsDeleteDiscontinuedBatchRequest items(List<@Valid ItemDeleteDiscontinuedBatchRecord> items) {
-    this.items = items;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "Array with catalogs items")
-  @JsonProperty("items")
-  @NotNull
-  public List<@Valid ItemDeleteDiscontinuedBatchRecord> getItems() {
-    return items;
-  }
-  public void setItems(List<@Valid ItemDeleteDiscontinuedBatchRecord> items) {
-    this.items = items;
-  }
-
-  public CatalogsItemsDeleteDiscontinuedBatchRequest addItemsItem(ItemDeleteDiscontinuedBatchRecord itemsItem) {
-    if (this.items == null) {
-      this.items = new ArrayList<>();
-    }
-    this.items.add(itemsItem);
-    return this;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -160,14 +160,14 @@ public enum LanguageEnum {
     }
     CatalogsItemsDeleteDiscontinuedBatchRequest catalogsItemsDeleteDiscontinuedBatchRequest = (CatalogsItemsDeleteDiscontinuedBatchRequest) o;
     return Objects.equals(this.country, catalogsItemsDeleteDiscontinuedBatchRequest.country) &&
+        Objects.equals(this.items, catalogsItemsDeleteDiscontinuedBatchRequest.items) &&
         Objects.equals(this.language, catalogsItemsDeleteDiscontinuedBatchRequest.language) &&
-        Objects.equals(this.operation, catalogsItemsDeleteDiscontinuedBatchRequest.operation) &&
-        Objects.equals(this.items, catalogsItemsDeleteDiscontinuedBatchRequest.items);
+        Objects.equals(this.operation, catalogsItemsDeleteDiscontinuedBatchRequest.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, language, operation, items);
+    return Objects.hash(country, items, language, operation);
   }
 
   @Override
@@ -176,9 +176,9 @@ public enum LanguageEnum {
     sb.append("class CatalogsItemsDeleteDiscontinuedBatchRequest {\n");
     
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

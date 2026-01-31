@@ -10,20 +10,15 @@ Protected Class AudienceInsightsResponse
 
 
 	#tag Property, Flags = &h0
-		demographics As OpenAPIClient.Models.AudienceDemographics
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		type As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		#tag Note
 			Generation date
 		#tag EndNote
 		date As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		demographics As OpenAPIClient.Models.AudienceDemographics
 	#tag EndProperty
 
 
@@ -40,6 +35,11 @@ Protected Class AudienceInsightsResponse
 			Indicates whether the audience size has been rounded up to the next highest upper boundary.
 		#tag EndNote
 		size_is_upper_bound As Xoson.O.OptionalBoolean
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		type As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -88,27 +88,19 @@ Protected Class AudienceInsightsResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="demographics"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="AudienceDemographics"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="AudienceInsightType"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="date"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="demographics"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="AudienceDemographics"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -125,6 +117,14 @@ Protected Class AudienceInsightsResponse
 			Group="Behavior"
 			InitialValue=""
 			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="AudienceInsightType"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

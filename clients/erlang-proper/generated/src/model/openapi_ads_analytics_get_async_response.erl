@@ -10,8 +10,8 @@
 
 -type openapi_ads_analytics_get_async_response() ::
   [ {'report_status', openapi_bulk_reporting_job_status:openapi_bulk_reporting_job_status() }
-  | {'url', binary() }
   | {'size', integer() }
+  | {'url', binary() }
   ].
 
 
@@ -20,8 +20,8 @@ openapi_ads_analytics_get_async_response() ->
 
 openapi_ads_analytics_get_async_response(Fields) ->
   Default = [ {'report_status', openapi_bulk_reporting_job_status:openapi_bulk_reporting_job_status() }
-            , {'url', binary() }
             , {'size', integer() }
+            , {'url', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

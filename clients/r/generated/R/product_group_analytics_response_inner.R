@@ -7,8 +7,8 @@
 #' @title ProductGroupAnalyticsResponseInner
 #' @description ProductGroupAnalyticsResponseInner Class
 #' @format An \code{R6Class} generator object
-#' @field PRODUCT_GROUP_ID The ID of the product group that this metrics belongs to. character
 #' @field DATE Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`) character [optional]
+#' @field PRODUCT_GROUP_ID The ID of the product group that this metrics belongs to. character
 #' @field _field_list a list of fields list(character)
 #' @field additional_properties additional properties list(character) [optional]
 #' @importFrom R6 R6Class
@@ -18,9 +18,9 @@ ProductGroupAnalyticsResponseInner <- R6::R6Class(
   "ProductGroupAnalyticsResponseInner",
   inherit = AnyType,
   public = list(
-    `PRODUCT_GROUP_ID` = NULL,
     `DATE` = NULL,
-    `_field_list` = c("PRODUCT_GROUP_ID", "DATE"),
+    `PRODUCT_GROUP_ID` = NULL,
+    `_field_list` = c("DATE", "PRODUCT_GROUP_ID"),
     `additional_properties` = list(),
 
     #' @description
@@ -81,13 +81,13 @@ ProductGroupAnalyticsResponseInner <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       ProductGroupAnalyticsResponseInnerObject <- list()
-      if (!is.null(self$`PRODUCT_GROUP_ID`)) {
-        ProductGroupAnalyticsResponseInnerObject[["PRODUCT_GROUP_ID"]] <-
-          self$`PRODUCT_GROUP_ID`
-      }
       if (!is.null(self$`DATE`)) {
         ProductGroupAnalyticsResponseInnerObject[["DATE"]] <-
           self$`DATE`
+      }
+      if (!is.null(self$`PRODUCT_GROUP_ID`)) {
+        ProductGroupAnalyticsResponseInnerObject[["PRODUCT_GROUP_ID"]] <-
+          self$`PRODUCT_GROUP_ID`
       }
       for (key in names(self$additional_properties)) {
         ProductGroupAnalyticsResponseInnerObject[[key]] <- self$additional_properties[[key]]
@@ -103,11 +103,11 @@ ProductGroupAnalyticsResponseInner <- R6::R6Class(
     #' @return the instance of ProductGroupAnalyticsResponseInner
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`PRODUCT_GROUP_ID`)) {
-        self$`PRODUCT_GROUP_ID` <- this_object$`PRODUCT_GROUP_ID`
-      }
       if (!is.null(this_object$`DATE`)) {
         self$`DATE` <- this_object$`DATE`
+      }
+      if (!is.null(this_object$`PRODUCT_GROUP_ID`)) {
+        self$`PRODUCT_GROUP_ID` <- this_object$`PRODUCT_GROUP_ID`
       }
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
@@ -140,8 +140,8 @@ ProductGroupAnalyticsResponseInner <- R6::R6Class(
     #' @return the instance of ProductGroupAnalyticsResponseInner
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`PRODUCT_GROUP_ID` <- this_object$`PRODUCT_GROUP_ID`
       self$`DATE` <- this_object$`DATE`
+      self$`PRODUCT_GROUP_ID` <- this_object$`PRODUCT_GROUP_ID`
       # process additional properties/fields in the payload
       for (key in names(this_object)) {
         if (!(key %in% self$`_field_list`)) { # json key not in list of fields

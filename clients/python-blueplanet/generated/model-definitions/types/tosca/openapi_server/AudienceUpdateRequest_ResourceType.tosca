@@ -1,0 +1,58 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AudienceUpdateRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AudienceUpdateRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AudienceRule = openapi_server.resourceTypes.AudienceRule
+  AudienceUpdateOperationType = openapi_server.resourceTypes.AudienceUpdateOperationType
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  AudienceUpdateRequest {
+    title = AudienceUpdateRequest
+    description = AudienceUpdateRequest
+    derivedFrom = Root
+    properties {
+        ad_account_id {
+          type =  string
+          description = "Ad account ID."
+          optional = false
+        }
+        name {
+          type =  string
+          description = "Audience name."
+          optional = false
+        }
+        rule {
+          type = AudienceRule
+          description = ""
+          optional = false
+        }
+        description {
+          type =  string
+          description = "Audience description."
+          optional = false
+        }
+        operation_type {
+          type = AudienceUpdateOperationType
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AudienceUpdateRequest {
+    title = AudienceUpdateRequest
+    description = AudienceUpdateRequest
+    implements = openapi_server.resourceTypes.AudienceUpdateRequest
+
+  }
+}

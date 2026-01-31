@@ -7,10 +7,7 @@ package org.openapitools.api;
 
 import org.openapitools.model.AdAccount;
 import org.openapitools.model.AdAccountAnalyticsResponseInner;
-import org.openapitools.model.AdAccountCreateRequest;
-import org.openapitools.model.AdAccountCreateSubscriptionRequest;
-import org.openapitools.model.AdAccountCreateSubscriptionResponse;
-import org.openapitools.model.AdAccountGetSubscriptionResponse;
+import org.openapitools.model.AdAccountCreate;
 import org.openapitools.model.AdAccountsAudiencesSharedAccountsList200Response;
 import org.openapitools.model.AdAccountsList200Response;
 import org.openapitools.model.AdAccountsSubscriptionsGetList200Response;
@@ -24,10 +21,12 @@ import org.openapitools.model.AdGroupResponse;
 import org.openapitools.model.AdGroupUpdateRequest;
 import org.openapitools.model.AdGroupsAnalyticsResponseInner;
 import org.openapitools.model.AdGroupsList200Response;
+import org.openapitools.model.AdPinAnalytics;
 import org.openapitools.model.AdPreviewRequest;
 import org.openapitools.model.AdPreviewURLResponse;
 import org.openapitools.model.AdResponse;
 import org.openapitools.model.AdUpdateRequest;
+import org.openapitools.model.AdsAnalyticsAdGroupTargetingType;
 import org.openapitools.model.AdsAnalyticsAdTargetingType;
 import org.openapitools.model.AdsAnalyticsCampaignTargetingType;
 import org.openapitools.model.AdsAnalyticsCreateAsyncRequest;
@@ -39,9 +38,9 @@ import org.openapitools.model.AdsCreditRedeemRequest;
 import org.openapitools.model.AdsCreditRedeemResponse;
 import org.openapitools.model.AdsCreditsDiscountsGet200Response;
 import org.openapitools.model.AdsList200Response;
+import org.openapitools.model.AdvertiserDefinedEventsResponse;
 import org.openapitools.model.Audience;
 import org.openapitools.model.AudienceAccountType;
-import org.openapitools.model.AudienceCreateCustomRequest;
 import org.openapitools.model.AudienceCreateRequest;
 import org.openapitools.model.AudienceDefinitionResponse;
 import org.openapitools.model.AudienceInsightType;
@@ -50,6 +49,8 @@ import org.openapitools.model.AudienceUpdateRequest;
 import org.openapitools.model.AudiencesList200Response;
 import org.openapitools.model.BidFloor;
 import org.openapitools.model.BidFloorRequest;
+import org.openapitools.model.BillingInvoiceDownloadResponse;
+import org.openapitools.model.BillingInvoicesGet200Response;
 import org.openapitools.model.BillingProfilesGet200Response;
 import org.openapitools.model.BulkDownloadRequest;
 import org.openapitools.model.BulkDownloadResponse;
@@ -68,26 +69,37 @@ import org.openapitools.model.CampaignsList200Response;
 import org.openapitools.model.ConversionApiResponse;
 import org.openapitools.model.ConversionEventResponse;
 import org.openapitools.model.ConversionEvents;
+import org.openapitools.model.ConversionMSOTEvents;
+import org.openapitools.model.ConversionProductReportRequest;
 import org.openapitools.model.ConversionReportAttributionType;
+import org.openapitools.model.ConversionTag;
 import org.openapitools.model.ConversionTagCreate;
-import org.openapitools.model.ConversionTagListResponse;
-import org.openapitools.model.ConversionTagResponse;
+import org.openapitools.model.ConversionTagsList200Response;
 import org.openapitools.model.CreateMMMReportRequest;
 import org.openapitools.model.CreateMMMReportResponse;
 import org.openapitools.model.CustomerList;
 import org.openapitools.model.CustomerListRequest;
 import org.openapitools.model.CustomerListUpdateRequest;
+import org.openapitools.model.CustomerListUploadCreateRequest;
+import org.openapitools.model.CustomerListUploadCreateResponse;
+import org.openapitools.model.CustomerListUploadResponse;
 import org.openapitools.model.CustomerListsList200Response;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.openapitools.model.DetailedError;
 import org.openapitools.model.Error;
+import org.openapitools.model.EventQualityScore;
 import org.openapitools.model.GetMMMReportResponse;
 import org.openapitools.model.Granularity;
+import org.openapitools.model.IngestionSourceOptions;
 import org.openapitools.model.KeywordUpdateBody;
 import org.openapitools.model.KeywordsGet200Response;
 import org.openapitools.model.KeywordsMetricsArrayResponse;
 import org.openapitools.model.KeywordsRequest;
 import org.openapitools.model.KeywordsResponse;
+import org.openapitools.model.LabelCreateRequest;
+import org.openapitools.model.LabelUpdateRequest;
+import org.openapitools.model.LabelsList200Response;
+import org.openapitools.model.LabelsResponse;
 import org.openapitools.model.LeadFormArrayResponse;
 import org.openapitools.model.LeadFormCreateRequest;
 import org.openapitools.model.LeadFormResponse;
@@ -95,10 +107,13 @@ import org.openapitools.model.LeadFormTestRequest;
 import org.openapitools.model.LeadFormTestResponse;
 import org.openapitools.model.LeadFormUpdateRequest;
 import org.openapitools.model.LeadFormsList200Response;
+import org.openapitools.model.LeadSubscription;
+import org.openapitools.model.LeadSubscriptionPostParamsCreate;
 import org.openapitools.model.LeadsExportCreateRequest;
 import org.openapitools.model.LeadsExportCreateResponse;
 import org.openapitools.model.LeadsExportResponseData;
 import java.time.LocalDate;
+import org.openapitools.model.LookbackPeriodOptions;
 import java.util.Map;
 import org.openapitools.model.MatchType;
 import org.openapitools.model.MetricsResponse;
@@ -106,11 +121,19 @@ import org.springframework.lang.Nullable;
 import org.openapitools.model.OrderLine;
 import org.openapitools.model.OrderLinesList200Response;
 import org.openapitools.model.PageVisitConversionTagsGet200Response;
+import org.openapitools.model.PinterestLibError;
 import org.openapitools.model.ProductGroupAnalyticsResponseInner;
+import org.openapitools.model.ProductGroupPromotion;
 import org.openapitools.model.ProductGroupPromotionCreateRequest;
 import org.openapitools.model.ProductGroupPromotionResponse;
 import org.openapitools.model.ProductGroupPromotionUpdateRequest;
 import org.openapitools.model.ProductGroupPromotionsList200Response;
+import org.openapitools.model.PromotionCreateRequest;
+import org.openapitools.model.PromotionResponse;
+import org.openapitools.model.PromotionUpdateRequest;
+import org.openapitools.model.PromotionsList200Response;
+import org.openapitools.model.PromotionsResponse;
+import org.openapitools.model.ReportingTimeZone;
 import org.openapitools.model.SSIOAccountResponse;
 import org.openapitools.model.SSIOCreateInsertionOrderRequest;
 import org.openapitools.model.SSIOCreateInsertionOrderResponse;
@@ -119,12 +142,14 @@ import org.openapitools.model.SSIOEditInsertionOrderResponse;
 import org.openapitools.model.SSIOInsertionOrderStatusResponse;
 import org.openapitools.model.SharedAudience;
 import org.openapitools.model.SharedAudienceResponse;
+import org.openapitools.model.SourcePlatformOptions;
 import org.openapitools.model.SsioInsertionOrdersStatusGetByAdAccount200Response;
 import org.openapitools.model.SsioOrderLinesGetByAdAccount200Response;
 import org.openapitools.model.TargetingTemplateCreate;
 import org.openapitools.model.TargetingTemplateGetResponseData;
 import org.openapitools.model.TargetingTemplateList200Response;
 import org.openapitools.model.TargetingTemplateUpdateRequest;
+import org.openapitools.model.TemplateBasedReport;
 import org.openapitools.model.TemplatesList200Response;
 import org.openapitools.model.TermsOfService;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
@@ -154,7 +179,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Validated
 @Tag(name = "ad_accounts", description = "View analytical information about advertising.   Note: If the current operation_user_account (defined by the access token) has access to another user's Ad Accounts via <a href='/docs/getting-started/using-business-access/'>Pinterest Business Access</a>, you can modify your request to use the current operation_user_account's permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).")
 public interface AdAccountsApi {
@@ -166,7 +191,7 @@ public interface AdAccountsApi {
     String PATH_AD_ACCOUNT_ANALYTICS = "/ad_accounts/{ad_account_id}/analytics";
     /**
      * GET /ad_accounts/{ad_account_id}/analytics : Get ad account analytics
-     * Get analytics for the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time.
+     * Get analytics for the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time.
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. (required)
@@ -174,9 +199,10 @@ public interface AdAccountsApi {
      * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned (required)
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly (required)
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
-     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
+     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to 30)
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to 1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to TIME_OF_AD_ACTION)
+     * @param reportingTimezone Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
      * @return Success (status code 200)
      *         or Invalid ad account analytics parameters. (status code 400)
      *         or Unexpected error (status code 200)
@@ -184,7 +210,7 @@ public interface AdAccountsApi {
     @Operation(
         operationId = "adAccountAnalytics",
         summary = "Get ad account analytics",
-        description = "Get analytics for the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time.",
+        description = "Get analytics for the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time.",
         tags = { "ad_accounts" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
@@ -198,7 +224,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -213,9 +240,10 @@ public interface AdAccountsApi {
         @NotNull @Parameter(name = "columns", description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "columns", required = true) List<String> columns,
         @NotNull @Parameter(name = "granularity", description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "granularity", required = true) Granularity granularity,
         @Parameter(name = "click_window_days", description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") Integer clickWindowDays,
-        @Parameter(name = "engagement_window_days", description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") Integer engagementWindowDays,
+        @Parameter(name = "engagement_window_days", description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") Integer engagementWindowDays,
         @Parameter(name = "view_window_days", description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") Integer viewWindowDays,
-        @Parameter(name = "conversion_report_time", description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") String conversionReportTime
+        @Parameter(name = "conversion_report_time", description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") String conversionReportTime,
+        @Parameter(name = "reporting_timezone", description = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "reporting_timezone", required = false) @Nullable ReportingTimeZone reportingTimezone
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -244,7 +272,7 @@ public interface AdAccountsApi {
     String PATH_AD_ACCOUNT_TARGETING_ANALYTICS_GET = "/ad_accounts/{ad_account_id}/targeting_analytics";
     /**
      * GET /ad_accounts/{ad_account_id}/targeting_analytics : Get targeting analytics for an ad account
-     * Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. (required)
@@ -253,17 +281,18 @@ public interface AdAccountsApi {
      * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned (required)
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly (required)
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
-     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
+     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to 30)
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to 1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to TIME_OF_AD_ACTION)
      * @param attributionTypes List of types of attribution for the conversion report (optional)
+     * @param reportingTimezone Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
      * @return Success (status code 200)
      *         or Unexpected error (status code 200)
      */
     @Operation(
         operationId = "adAccountTargetingAnalyticsGet",
         summary = "Get targeting analytics for an ad account",
-        description = "Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.",
+        description = "Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.",
         tags = { "ad_accounts" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
@@ -274,7 +303,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -290,10 +320,11 @@ public interface AdAccountsApi {
         @NotNull @Parameter(name = "columns", description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "columns", required = true) List<String> columns,
         @NotNull @Parameter(name = "granularity", description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "granularity", required = true) Granularity granularity,
         @Parameter(name = "click_window_days", description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") Integer clickWindowDays,
-        @Parameter(name = "engagement_window_days", description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") Integer engagementWindowDays,
+        @Parameter(name = "engagement_window_days", description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") Integer engagementWindowDays,
         @Parameter(name = "view_window_days", description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") Integer viewWindowDays,
         @Parameter(name = "conversion_report_time", description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") String conversionReportTime,
-        @Parameter(name = "attribution_types", description = "List of types of attribution for the conversion report", in = ParameterIn.QUERY) @Valid @RequestParam(value = "attribution_types", required = false) @Nullable ConversionReportAttributionType attributionTypes
+        @Size(max = 2) @Parameter(name = "attribution_types", description = "List of types of attribution for the conversion report", in = ParameterIn.QUERY) @Valid @RequestParam(value = "attribution_types", required = false) @Nullable List<ConversionReportAttributionType> attributionTypes,
+        @Parameter(name = "reporting_timezone", description = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "reporting_timezone", required = false) @Nullable ReportingTimeZone reportingTimezone
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -349,7 +380,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -396,23 +428,47 @@ public interface AdAccountsApi {
     String PATH_AD_ACCOUNTS_CREATE = "/ad_accounts";
     /**
      * POST /ad_accounts : Create ad account
-     * Create a new ad account. Different ad accounts can support different currencies, payment methods, etc. An ad account is needed to create campaigns, ad groups, and ads; other accounts (your employees or partners) can be assigned business access and appropriate roles to access an ad account. &lt;p/&gt; You can set up up to 50 ad accounts per user. (The user must have a business account to create an ad account.) &lt;p/&gt; For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/create-an-advertiser-account\&quot;&gt;Create an advertiser account&lt;/a&gt;.
+     * Create a new ad account. Different ad accounts can support different currencies, payment methods, etc. An ad account is needed to create campaigns, ad groups, and ads; other accounts (your employees or partners) can be assigned business access and appropriate roles to access an ad account.  You can set up up to 50 ad accounts per user. (The user must have a business account to create an ad account.) For more, see [Create an advertiser account](https://help.pinterest.com/en/business/article/create-an-advertiser-account).
      *
-     * @param adAccountCreateRequest Ad account to create. (required)
-     * @return Success (status code 200)
-     *         or Unexpected error (status code 200)
+     * @param adAccountCreate  (required)
+     * @return The request has succeeded. (status code 200)
+     *         or Resource create operation completed successfully. (status code 201)
+     *         or The request could not be understood by the server due to unexpected data. (status code 400)
+     *         or Authentication is required and has either failed or not been provided. (status code 401)
+     *         or The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. (status code 403)
+     *         or The requested resource could not be found on this server. (status code 404)
+     *         or The user has sent too many requests in a given amount of time and is being rate limited. (status code 429)
+     *         or An unexpected error response. (status code 200)
      */
     @Operation(
         operationId = "adAccountsCreate",
         summary = "Create ad account",
-        description = "Create a new ad account. Different ad accounts can support different currencies, payment methods, etc. An ad account is needed to create campaigns, ad groups, and ads; other accounts (your employees or partners) can be assigned business access and appropriate roles to access an ad account. <p/> You can set up up to 50 ad accounts per user. (The user must have a business account to create an ad account.) <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/create-an-advertiser-account\">Create an advertiser account</a>.",
+        description = "Create a new ad account. Different ad accounts can support different currencies, payment methods, etc. An ad account is needed to create campaigns, ad groups, and ads; other accounts (your employees or partners) can be assigned business access and appropriate roles to access an ad account.  You can set up up to 50 ad accounts per user. (The user must have a business account to create an ad account.) For more, see [Create an advertiser account](https://help.pinterest.com/en/business/article/create-an-advertiser-account).",
         tags = { "ad_accounts" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "Success", content = {
+            @ApiResponse(responseCode = "200", description = "The request has succeeded.", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = AdAccount.class))
             }),
-            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "201", description = "Resource create operation completed successfully.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = AdAccount.class))
+            }),
+            @ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "An unexpected error response.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             })
         },
         security = {
@@ -426,17 +482,47 @@ public interface AdAccountsApi {
         consumes = { "application/json" }
     )
     default ResponseEntity<AdAccount> adAccountsCreate(
-        @Parameter(name = "AdAccountCreateRequest", description = "Ad account to create.", required = true) @Valid @RequestBody AdAccountCreateRequest adAccountCreateRequest
+        @Parameter(name = "AdAccountCreate", description = "", required = true) @Valid @RequestBody AdAccountCreate adAccountCreate
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"owner\" : { \"id\" : \"id\", \"username\" : \"username\" }, \"country\" : \"US\", \"created_time\" : 1451431341, \"updated_time\" : 1451431341, \"permissions\" : [ \"ADMIN\", \"ADMIN\" ], \"name\" : \"name\", \"currency\" : \"USD\", \"id\" : \"id\" }";
+                    String exampleString = "{ \"owner\" : \"\", \"country\" : \"AD\", \"created_time\" : 0, \"updated_time\" : 6, \"permissions\" : [ \"OWNER\", \"OWNER\" ], \"name\" : \"name\", \"currency\" : \"UNK\", \"id\" : \"id\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"owner\" : \"\", \"country\" : \"AD\", \"created_time\" : 0, \"updated_time\" : 6, \"permissions\" : [ \"OWNER\", \"OWNER\" ], \"name\" : \"name\", \"currency\" : \"UNK\", \"id\" : \"id\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -452,9 +538,14 @@ public interface AdAccountsApi {
      * GET /ad_accounts/{ad_account_id} : Get ad account
      * Get an ad account
      *
-     * @param adAccountId Unique identifier of an ad account. (required)
-     * @return Success (status code 200)
-     *         or Unexpected error (status code 200)
+     * @param adAccountId  (required)
+     * @return The request has succeeded. (status code 200)
+     *         or The request could not be understood by the server due to unexpected data. (status code 400)
+     *         or Authentication is required and has either failed or not been provided. (status code 401)
+     *         or The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. (status code 403)
+     *         or The requested resource could not be found on this server. (status code 404)
+     *         or The user has sent too many requests in a given amount of time and is being rate limited. (status code 429)
+     *         or An unexpected error response. (status code 200)
      */
     @Operation(
         operationId = "adAccountsGet",
@@ -462,15 +553,31 @@ public interface AdAccountsApi {
         description = "Get an ad account",
         tags = { "ad_accounts" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "Success", content = {
+            @ApiResponse(responseCode = "200", description = "The request has succeeded.", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = AdAccount.class))
             }),
-            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "An unexpected error response.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -479,17 +586,42 @@ public interface AdAccountsApi {
         produces = { "application/json" }
     )
     default ResponseEntity<AdAccount> adAccountsGet(
-        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"owner\" : { \"id\" : \"id\", \"username\" : \"username\" }, \"country\" : \"US\", \"created_time\" : 1451431341, \"updated_time\" : 1451431341, \"permissions\" : [ \"ADMIN\", \"ADMIN\" ], \"name\" : \"name\", \"currency\" : \"USD\", \"id\" : \"id\" }";
+                    String exampleString = "{ \"owner\" : \"\", \"country\" : \"AD\", \"created_time\" : 0, \"updated_time\" : 6, \"permissions\" : [ \"OWNER\", \"OWNER\" ], \"name\" : \"name\", \"currency\" : \"UNK\", \"id\" : \"id\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -503,29 +635,50 @@ public interface AdAccountsApi {
     String PATH_AD_ACCOUNTS_LIST = "/ad_accounts";
     /**
      * GET /ad_accounts : List ad accounts
-     * Get a list of the ad_accounts that the \&quot;operation user_account\&quot; has access to. - This includes ad_accounts they own and ad_accounts that are owned by others who have granted them &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;.
+     * Get a list of the ad_accounts that the \&quot;operation user_account\&quot; has access to.         - This includes ad_accounts they own and ad_accounts that are owned by others who have granted them [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts).
      *
-     * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param includeSharedAccounts Include shared ad accounts (optional, default to true)
-     * @return response (status code 200)
-     *         or Unexpected error (status code 200)
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @return The request has succeeded. (status code 200)
+     *         or The request could not be understood by the server due to unexpected data. (status code 400)
+     *         or Authentication is required and has either failed or not been provided. (status code 401)
+     *         or The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. (status code 403)
+     *         or The requested resource could not be found on this server. (status code 404)
+     *         or The user has sent too many requests in a given amount of time and is being rate limited. (status code 429)
+     *         or An unexpected error response. (status code 200)
      */
     @Operation(
         operationId = "adAccountsList",
         summary = "List ad accounts",
-        description = "Get a list of the ad_accounts that the \"operation user_account\" has access to. - This includes ad_accounts they own and ad_accounts that are owned by others who have granted them <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>.",
+        description = "Get a list of the ad_accounts that the \"operation user_account\" has access to.         - This includes ad_accounts they own and ad_accounts that are owned by others who have granted them [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts).",
         tags = { "ad_accounts" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "response", content = {
+            @ApiResponse(responseCode = "200", description = "The request has succeeded.", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = AdAccountsList200Response.class))
             }),
-            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "An unexpected error response.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -534,19 +687,44 @@ public interface AdAccountsApi {
         produces = { "application/json" }
     )
     default ResponseEntity<AdAccountsList200Response> adAccountsList(
+        @Parameter(name = "include_shared_accounts", description = "Include shared ad accounts", in = ParameterIn.QUERY) @Valid @RequestParam(value = "include_shared_accounts", required = false, defaultValue = "true") Boolean includeSharedAccounts,
         @Parameter(name = "bookmark", description = "Cursor used to fetch the next page of items", in = ParameterIn.QUERY) @Valid @RequestParam(value = "bookmark", required = false) @Nullable String bookmark,
-        @Min(value = 1) @Max(value = 250) @Parameter(name = "page_size", description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") Integer pageSize,
-        @Parameter(name = "include_shared_accounts", description = "Include shared ad accounts", in = ParameterIn.QUERY) @Valid @RequestParam(value = "include_shared_accounts", required = false, defaultValue = "true") Boolean includeSharedAccounts
+        @Min(value = 1) @Max(value = 250) @Parameter(name = "page_size", description = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") Integer pageSize
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"owner\" : { \"id\" : \"id\", \"username\" : \"username\" }, \"country\" : \"US\", \"created_time\" : 1451431341, \"updated_time\" : 1451431341, \"permissions\" : [ \"ADMIN\", \"ADMIN\" ], \"name\" : \"name\", \"currency\" : \"USD\", \"id\" : \"id\" }, { \"owner\" : { \"id\" : \"id\", \"username\" : \"username\" }, \"country\" : \"US\", \"created_time\" : 1451431341, \"updated_time\" : 1451431341, \"permissions\" : [ \"ADMIN\", \"ADMIN\" ], \"name\" : \"name\", \"currency\" : \"USD\", \"id\" : \"id\" } ] }";
+                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"owner\" : \"\", \"country\" : \"AD\", \"created_time\" : 0, \"updated_time\" : 6, \"permissions\" : [ \"OWNER\", \"OWNER\" ], \"name\" : \"name\", \"currency\" : \"UNK\", \"id\" : \"id\" }, { \"owner\" : \"\", \"country\" : \"AD\", \"created_time\" : 0, \"updated_time\" : 6, \"permissions\" : [ \"OWNER\", \"OWNER\" ], \"name\" : \"name\", \"currency\" : \"UNK\", \"id\" : \"id\" } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -560,46 +738,42 @@ public interface AdAccountsApi {
     String PATH_AD_ACCOUNTS_SUBSCRIPTIONS_DEL_BY_ID = "/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}";
     /**
      * DELETE /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} : Delete lead ads subscription
-     * Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.&#39;
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param subscriptionId Unique identifier of a subscription. (required)
-     * @return Subscription deleted successfully (status code 204)
-     *         or Invalid input parameters. (status code 400)
-     *         or You are not authorized to delete this subscription. (status code 403)
-     *         or Subscription not found. (status code 404)
-     *         or Unexpected error. (status code 200)
+     * @return Resource deleted successfully. (status code 204)
+     *         or The request could not be understood by the server due to unexpected data. (status code 400)
+     *         or Authentication is required and has either failed or not been provided. (status code 401)
+     *         or The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. (status code 403)
+     *         or The requested resource could not be found on this server. (status code 404)
+     *         or The user has sent too many requests in a given amount of time and is being rate limited. (status code 429)
+     *         or An unexpected error response. (status code 200)
      */
     @Operation(
         operationId = "adAccountsSubscriptionsDelById",
         summary = "Delete lead ads subscription",
-        description = "Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>",
+        description = "Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'",
         tags = { "lead_ads" },
         responses = {
-            @ApiResponse(responseCode = "204", description = "Subscription deleted successfully"),
-            @ApiResponse(responseCode = "400", description = "Invalid input parameters.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "204", description = "Resource deleted successfully."),
+            @ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "403", description = "You are not authorized to delete this subscription.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class), examples = {
-                    @ExampleObject(
-                        name = "",
-                        value = "{\"code\":29,\"message\":\"You are not permitted to access that resource.\"}"
-                    )
-                })
-
+            @ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "404", description = "Subscription not found.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class), examples = {
-                    @ExampleObject(
-                        name = "",
-                        value = "{\"code\":4517,\"message\":\"Subscription for given ids not found.\"}"
-                    )
-                })
-
+            @ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "default", description = "Unexpected error.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "An unexpected error response.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             })
         },
         security = {
@@ -618,22 +792,32 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -646,53 +830,50 @@ public interface AdAccountsApi {
 
     String PATH_AD_ACCOUNTS_SUBSCRIPTIONS_GET_BY_ID = "/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}";
     /**
-     * GET /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} : Get lead ads subscription
-     * Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * GET /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} : Get lead ads subscription by ID
+     * Get an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.&#39;
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param subscriptionId Unique identifier of a subscription. (required)
-     * @return Success (status code 200)
-     *         or Invalid input parameters. (status code 400)
-     *         or Can&#39;t access this subscription. (status code 403)
-     *         or Subscription not found. (status code 404)
-     *         or Unexpected error. (status code 200)
+     * @return The request has succeeded. (status code 200)
+     *         or The request could not be understood by the server due to unexpected data. (status code 400)
+     *         or Authentication is required and has either failed or not been provided. (status code 401)
+     *         or The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. (status code 403)
+     *         or The requested resource could not be found on this server. (status code 404)
+     *         or The user has sent too many requests in a given amount of time and is being rate limited. (status code 429)
+     *         or An unexpected error response. (status code 200)
      */
     @Operation(
         operationId = "adAccountsSubscriptionsGetById",
-        summary = "Get lead ads subscription",
-        description = "Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>",
+        summary = "Get lead ads subscription by ID",
+        description = "Get an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'",
         tags = { "lead_ads" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "Success", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = AdAccountGetSubscriptionResponse.class))
+            @ApiResponse(responseCode = "200", description = "The request has succeeded.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = LeadSubscription.class))
             }),
-            @ApiResponse(responseCode = "400", description = "Invalid input parameters.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "403", description = "Can't access this subscription.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class), examples = {
-                    @ExampleObject(
-                        name = "",
-                        value = "{\"code\":29,\"message\":\"You are not permitted to access that resource.\"}"
-                    )
-                })
-
+            @ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "404", description = "Subscription not found.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class), examples = {
-                    @ExampleObject(
-                        name = "",
-                        value = "{\"code\":4517,\"message\":\"Subscription for given ids not found.\"}"
-                    )
-                })
-
+            @ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "default", description = "Unexpected error.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "An unexpected error response.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -700,34 +881,44 @@ public interface AdAccountsApi {
         value = AdAccountsApi.PATH_AD_ACCOUNTS_SUBSCRIPTIONS_GET_BY_ID,
         produces = { "application/json" }
     )
-    default ResponseEntity<AdAccountGetSubscriptionResponse> adAccountsSubscriptionsGetById(
+    default ResponseEntity<LeadSubscription> adAccountsSubscriptionsGetById(
         @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
         @NotNull @Pattern(regexp = "^\\d+$") @Parameter(name = "subscription_id", description = "Unique identifier of a subscription.", required = true, in = ParameterIn.PATH) @PathVariable("subscription_id") String subscriptionId
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"cryptographic_key\" : \"ucvxbV2Tdss0vNeYsdh4Qfa/1Khm2b0PqXvXeTTZh54\", \"created_time\" : 1699209842000, \"user_account_id\" : \"549755885175\", \"webhook_url\" : \"https://webhook.example.com/xyz\", \"lead_form_id\" : \"383791336903426390\", \"cryptographic_algorithm\" : \"AES-256-GCM\", \"id\" : \"8078432025948590686\", \"api_version\" : \"v5\", \"ad_account_id\" : \"549755885176\" }";
+                    String exampleString = "{ \"cryptographic_key\" : \"cryptographic_key\", \"created_time\" : 0, \"user_account_id\" : \"user_account_id\", \"webhook_url\" : \"webhook_url\", \"lead_form_id\" : \"lead_form_id\", \"cryptographic_algorithm\" : \"cryptographic_algorithm\", \"id\" : \"id\", \"api_version\" : \"api_version\", \"ad_account_id\" : \"ad_account_id\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -741,35 +932,45 @@ public interface AdAccountsApi {
     String PATH_AD_ACCOUNTS_SUBSCRIPTIONS_GET_LIST = "/ad_accounts/{ad_account_id}/leads/subscriptions";
     /**
      * GET /ad_accounts/{ad_account_id}/leads/subscriptions : Get lead ads subscriptions
-     * Get the advertiser&#39;s list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get the advertiser&#39;s list of lead ads subscriptions. Only requests for the OWNER or ADMIN of the ad_account will be allowed.
      *
      * @param adAccountId Unique identifier of an ad account. (required)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @return Success (status code 200)
-     *         or Can&#39;t access this subscription. (status code 403)
-     *         or Unexpected error. (status code 200)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @return The request has succeeded. (status code 200)
+     *         or The request could not be understood by the server due to unexpected data. (status code 400)
+     *         or Authentication is required and has either failed or not been provided. (status code 401)
+     *         or The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. (status code 403)
+     *         or The requested resource could not be found on this server. (status code 404)
+     *         or The user has sent too many requests in a given amount of time and is being rate limited. (status code 429)
+     *         or An unexpected error response. (status code 200)
      */
     @Operation(
         operationId = "adAccountsSubscriptionsGetList",
         summary = "Get lead ads subscriptions",
-        description = "Get the advertiser's list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>",
+        description = "Get the advertiser's list of lead ads subscriptions. Only requests for the OWNER or ADMIN of the ad_account will be allowed.",
         tags = { "lead_ads" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "Success", content = {
+            @ApiResponse(responseCode = "200", description = "The request has succeeded.", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = AdAccountsSubscriptionsGetList200Response.class))
             }),
-            @ApiResponse(responseCode = "403", description = "Can't access this subscription.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class), examples = {
-                    @ExampleObject(
-                        name = "",
-                        value = "{\"code\":29,\"message\":\"You are not permitted to access that resource.\"}"
-                    )
-                })
-
+            @ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "default", description = "Unexpected error.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "An unexpected error response.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             })
         },
         security = {
@@ -783,23 +984,43 @@ public interface AdAccountsApi {
     )
     default ResponseEntity<AdAccountsSubscriptionsGetList200Response> adAccountsSubscriptionsGetList(
         @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
-        @Min(value = 1) @Max(value = 250) @Parameter(name = "page_size", description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") Integer pageSize,
-        @Parameter(name = "bookmark", description = "Cursor used to fetch the next page of items", in = ParameterIn.QUERY) @Valid @RequestParam(value = "bookmark", required = false) @Nullable String bookmark
+        @Parameter(name = "bookmark", description = "Cursor used to fetch the next page of items", in = ParameterIn.QUERY) @Valid @RequestParam(value = "bookmark", required = false) @Nullable String bookmark,
+        @Min(value = 1) @Max(value = 250) @Parameter(name = "page_size", description = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") Integer pageSize
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"cryptographic_key\" : \"ucvxbV2Tdss0vNeYsdh4Qfa/1Khm2b0PqXvXeTTZh54\", \"created_time\" : 1699209842000, \"user_account_id\" : \"549755885175\", \"webhook_url\" : \"https://webhook.example.com/xyz\", \"lead_form_id\" : \"383791336903426390\", \"cryptographic_algorithm\" : \"AES-256-GCM\", \"id\" : \"8078432025948590686\", \"api_version\" : \"v5\", \"ad_account_id\" : \"549755885176\" }, { \"cryptographic_key\" : \"ucvxbV2Tdss0vNeYsdh4Qfa/1Khm2b0PqXvXeTTZh54\", \"created_time\" : 1699209842000, \"user_account_id\" : \"549755885175\", \"webhook_url\" : \"https://webhook.example.com/xyz\", \"lead_form_id\" : \"383791336903426390\", \"cryptographic_algorithm\" : \"AES-256-GCM\", \"id\" : \"8078432025948590686\", \"api_version\" : \"v5\", \"ad_account_id\" : \"549755885176\" } ] }";
+                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"cryptographic_key\" : \"cryptographic_key\", \"created_time\" : 0, \"user_account_id\" : \"user_account_id\", \"webhook_url\" : \"webhook_url\", \"lead_form_id\" : \"lead_form_id\", \"cryptographic_algorithm\" : \"cryptographic_algorithm\", \"id\" : \"id\", \"api_version\" : \"api_version\", \"ad_account_id\" : \"ad_account_id\" }, { \"cryptographic_key\" : \"cryptographic_key\", \"created_time\" : 0, \"user_account_id\" : \"user_account_id\", \"webhook_url\" : \"webhook_url\", \"lead_form_id\" : \"lead_form_id\", \"cryptographic_algorithm\" : \"cryptographic_algorithm\", \"id\" : \"id\", \"api_version\" : \"api_version\", \"ad_account_id\" : \"ad_account_id\" } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -813,38 +1034,32 @@ public interface AdAccountsApi {
     String PATH_AD_ACCOUNTS_SUBSCRIPTIONS_POST = "/ad_accounts/{ad_account_id}/leads/subscriptions";
     /**
      * POST /ad_accounts/{ad_account_id}/leads/subscriptions : Create lead ads subscription
-     * Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.   - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.   - For data security, egress lead data is encrypted with AES-256-GCM.
      *
      * @param adAccountId Unique identifier of an ad account. (required)
-     * @param adAccountCreateSubscriptionRequest Subscription to create. (required)
-     * @return Success (status code 200)
-     *         or Invalid input parameters. (status code 400)
-     *         or Can&#39;t access this subscription. (status code 403)
-     *         or Unexpected error. (status code 200)
+     * @param leadSubscriptionPostParamsCreate  (required)
+     * @return The request has succeeded. (status code 200)
+     *         or The request could not be understood by the server due to unexpected data. (status code 400)
+     *         or The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. (status code 403)
+     *         or An unexpected error response. (status code 200)
      */
     @Operation(
         operationId = "adAccountsSubscriptionsPost",
         summary = "Create lead ads subscription",
-        description = "Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>",
+        description = "Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.   - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.   - For data security, egress lead data is encrypted with AES-256-GCM.",
         tags = { "lead_ads" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "Success", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = AdAccountCreateSubscriptionResponse.class))
+            @ApiResponse(responseCode = "200", description = "The request has succeeded.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = LeadSubscription.class))
             }),
-            @ApiResponse(responseCode = "400", description = "Invalid input parameters.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "403", description = "Can't access this subscription.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class), examples = {
-                    @ExampleObject(
-                        name = "",
-                        value = "{\"code\":4182,\"message\":\"Can't access this subscription.\"}"
-                    )
-                })
-
+            @ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "default", description = "Unexpected error.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "default", description = "An unexpected error response.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             })
         },
         security = {
@@ -857,29 +1072,29 @@ public interface AdAccountsApi {
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    default ResponseEntity<AdAccountCreateSubscriptionResponse> adAccountsSubscriptionsPost(
+    default ResponseEntity<LeadSubscription> adAccountsSubscriptionsPost(
         @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
-        @Parameter(name = "AdAccountCreateSubscriptionRequest", description = "Subscription to create.", required = true) @Valid @RequestBody AdAccountCreateSubscriptionRequest adAccountCreateSubscriptionRequest
+        @Parameter(name = "LeadSubscriptionPostParamsCreate", description = "", required = true) @Valid @RequestBody LeadSubscriptionPostParamsCreate leadSubscriptionPostParamsCreate
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"cryptographic_key\" : \"ucvxbV2Tdss0vNeYsdh4Qfa/1Khm2b0PqXvXeTTZh54\", \"created_time\" : 1699209842000, \"cryptographic_algorithm\" : \"AES-256-GCM\", \"id\" : \"8078432025948590686\" }";
+                    String exampleString = "{ \"cryptographic_key\" : \"cryptographic_key\", \"created_time\" : 0, \"user_account_id\" : \"user_account_id\", \"webhook_url\" : \"webhook_url\", \"lead_form_id\" : \"lead_form_id\", \"cryptographic_algorithm\" : \"cryptographic_algorithm\", \"id\" : \"id\", \"api_version\" : \"api_version\", \"ad_account_id\" : \"ad_account_id\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -893,7 +1108,7 @@ public interface AdAccountsApi {
     String PATH_AD_GROUPS_ANALYTICS = "/ad_accounts/{ad_account_id}/ad_groups/analytics";
     /**
      * GET /ad_accounts/{ad_account_id}/ad_groups/analytics : Get ad group analytics
-     * Get analytics for the specified ad groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the specified ad groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. (required)
@@ -902,9 +1117,11 @@ public interface AdAccountsApi {
      * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned (required)
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly (required)
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
-     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
+     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to 30)
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to 1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to TIME_OF_AD_ACTION)
+     * @param aggregateReportRows Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users. (optional, default to false)
+     * @param reportingTimezone Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
      * @return Success (status code 200)
      *         or Invalid ad account group analytics parameters. (status code 400)
      *         or Unexpected error (status code 200)
@@ -912,7 +1129,7 @@ public interface AdAccountsApi {
     @Operation(
         operationId = "adGroupsAnalytics",
         summary = "Get ad group analytics",
-        description = "Get analytics for the specified ad groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.",
+        description = "Get analytics for the specified ad groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.",
         tags = { "ad_groups" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
@@ -926,7 +1143,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -938,13 +1156,15 @@ public interface AdAccountsApi {
         @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
         @NotNull @Parameter(name = "start_date", description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "start_date", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
         @NotNull @Parameter(name = "end_date", description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "end_date", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
-        @NotNull @Size(min = 1, max = 100) @Parameter(name = "ad_group_ids", description = "List of Ad group Ids to use to filter the results.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_group_ids", required = true) List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds,
+        @NotNull @Size(min = 1, max = 250) @Parameter(name = "ad_group_ids", description = "List of Ad group Ids to use to filter the results.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_group_ids", required = true) List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds,
         @NotNull @Parameter(name = "columns", description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "columns", required = true) List<String> columns,
         @NotNull @Parameter(name = "granularity", description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "granularity", required = true) Granularity granularity,
         @Parameter(name = "click_window_days", description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") Integer clickWindowDays,
-        @Parameter(name = "engagement_window_days", description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") Integer engagementWindowDays,
+        @Parameter(name = "engagement_window_days", description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") Integer engagementWindowDays,
         @Parameter(name = "view_window_days", description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") Integer viewWindowDays,
-        @Parameter(name = "conversion_report_time", description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") String conversionReportTime
+        @Parameter(name = "conversion_report_time", description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") String conversionReportTime,
+        @Parameter(name = "aggregate_report_rows", description = "Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "aggregate_report_rows", required = false, defaultValue = "false") Boolean aggregateReportRows,
+        @Parameter(name = "reporting_timezone", description = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "reporting_timezone", required = false) @Nullable ReportingTimeZone reportingTimezone
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -976,7 +1196,7 @@ public interface AdAccountsApi {
      * Get potential audience size for an ad group with given targeting criteria.  Potential audience size estimates the number of people you may be able to reach per month with your campaign.  It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.
      *
      * @param adAccountId Unique identifier of an ad account. (required)
-     * @param adGroupAudienceSizingRequest  (optional)
+     * @param adGroupAudienceSizingRequest  (required)
      * @return Success (status code 200)
      *         or Invalid ad group audience sizing parameters. (status code 400)
      *         or No access to requested audience list or product group. (status code 403)
@@ -1002,7 +1222,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -1013,7 +1234,7 @@ public interface AdAccountsApi {
     )
     default ResponseEntity<AdGroupAudienceSizingResponse> adGroupsAudienceSizing(
         @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
-        @Parameter(name = "AdGroupAudienceSizingRequest", description = "") @Valid @RequestBody(required = false) @Nullable AdGroupAudienceSizingRequest adGroupAudienceSizingRequest
+        @Parameter(name = "AdGroupAudienceSizingRequest", description = "", required = true) @Valid @RequestBody AdGroupAudienceSizingRequest adGroupAudienceSizingRequest
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -1047,7 +1268,7 @@ public interface AdAccountsApi {
     String PATH_AD_GROUPS_BID_FLOOR_GET = "/ad_accounts/{ad_account_id}/bid_floor";
     /**
      * POST /ad_accounts/{ad_account_id}/bid_floor : Get bid floors
-     * List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt;  &lt;/ul&gt; For more on bid floors see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-your-bid\&quot;&gt; Set your bid&lt;/a&gt;.
+     * List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt; For more on bid floors see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-your-bid\&quot;&gt; Set your bid&lt;/a&gt;.
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param bidFloorRequest Parameters to get bid_floor info (required)
@@ -1057,7 +1278,7 @@ public interface AdAccountsApi {
     @Operation(
         operationId = "adGroupsBidFloorGet",
         summary = "Get bid floors",
-        description = "List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li>  </ul> For more on bid floors see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-your-bid\"> Set your bid</a>.",
+        description = "List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> For more on bid floors see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-your-bid\"> Set your bid</a>.",
         tags = { "ad_groups" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
@@ -1068,7 +1289,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -1103,7 +1325,7 @@ public interface AdAccountsApi {
     String PATH_AD_GROUPS_CREATE = "/ad_accounts/{ad_account_id}/ad_groups";
     /**
      * POST /ad_accounts/{ad_account_id}/ad_groups : Create ad groups
-     * Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/campaign-structure\&quot; target&#x3D;\&quot;_blank\&quot;&gt; click here&lt;/a&gt;.&lt;/p&gt; &lt;strong&gt;Note:&lt;/strong&gt; - &#39;bid_in_micro_currency&#39; and &#39;budget_in_micro_currency&#39; should be expressed in microcurrency amounts based on the currency field set in the advertiser&#39;s profile.&lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt;  &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt; - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Start and end time cannot be set for ad groups that belong to CBO campaigns. Currently, campaigns with the following objective types: TRAFFIC, AWARENESS, WEB_CONVERSIONS, and CATALOG_SALES will default to CBO.
+     * Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/campaign-structure\&quot; target&#x3D;\&quot;_blank\&quot;&gt; click here&lt;/a&gt;. &lt;strong&gt;Notes:&lt;/strong&gt; - &#x60;bid_in_micro_currency&#x60; and &#x60;budget_in_micro_currency&#x60; should be expressed in microcurrency amounts based on the currency field set in the advertiser&#39;s profile.&lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt; - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Certain organizations with &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;closed beta&lt;/a&gt; access can set &#x60;start_time&#x60; and &#x60;end_time&#x60; at the ad group level for campaigns with Campaign Budget Optimization (CBO) objectives: &#x60;TRAFFIC&#x60;, &#x60;AWARENESS&#x60;, &#x60;WEB_CONVERSIONS&#x60;, and &#x60;CATALOG_SALES&#x60;. All other organizations can set these scheduling parameters for non-CBO campaigns only. - If the parent ad campaign has start and end times set, ad group start and end times must occur within the parent campaign schedule. 
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param adGroupCreateRequest List of ad groups to create, size limit [1, 30]. (required)
@@ -1113,7 +1335,7 @@ public interface AdAccountsApi {
     @Operation(
         operationId = "adGroupsCreate",
         summary = "Create ad groups",
-        description = "Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, <a href=\"https://help.pinterest.com/en/business/article/campaign-structure\" target=\"_blank\"> click here</a>.</p> <strong>Note:</strong> - 'bid_in_micro_currency' and 'budget_in_micro_currency' should be expressed in microcurrency amounts based on the currency field set in the advertiser's profile.<p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>  <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Start and end time cannot be set for ad groups that belong to CBO campaigns. Currently, campaigns with the following objective types: TRAFFIC, AWARENESS, WEB_CONVERSIONS, and CATALOG_SALES will default to CBO.",
+        description = "Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, <a href=\"https://help.pinterest.com/en/business/article/campaign-structure\" target=\"_blank\"> click here</a>. <strong>Notes:</strong> - `bid_in_micro_currency` and `budget_in_micro_currency` should be expressed in microcurrency amounts based on the currency field set in the advertiser's profile.<p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul> - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message. - Certain organizations with <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">closed beta</a> access can set `start_time` and `end_time` at the ad group level for campaigns with Campaign Budget Optimization (CBO) objectives: `TRAFFIC`, `AWARENESS`, `WEB_CONVERSIONS`, and `CATALOG_SALES`. All other organizations can set these scheduling parameters for non-CBO campaigns only. - If the parent ad campaign has start and end times set, ad group start and end times must occur within the parent campaign schedule. ",
         tags = { "ad_groups" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
@@ -1140,7 +1362,7 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"items\" : [ { \"data\" : { \"updated_time\" : 1476477189, \"targeting_template_ids\" : [ \"643\" ], \"type\" : \"adgroup\", \"tracking_urls\" : \"{}\", \"budget_in_micro_currency\" : 5000000, \"bid_strategy_type\" : \"MAX_BID\", \"ad_account_id\" : \"549755885175\", \"conversion_learning_mode_type\" : \"ACTIVE\", \"dca_assets\" : \"\", \"feed_profile_id\" : \"626736533506\", \"lifetime_frequency_cap\" : 100, \"id\" : \"2680060704746\", \"optimization_goal_metadata\" : \"{}\", \"placement_group\" : \"placement_group\", \"budget_type\" : \"budget_type\", \"campaign_id\" : \"626736533506\", \"pacing_delivery_type\" : \"pacing_delivery_type\", \"created_time\" : 1476477189, \"bid_in_micro_currency\" : 5000000, \"end_time\" : 5705424000, \"summary_status\" : \"summary_status\", \"auto_targeting_enabled\" : true, \"start_time\" : 5686848000, \"billable_event\" : \"CLICKTHROUGH\", \"targeting_spec\" : { \"GEO\" : [ \"GEO\", \"GEO\" ], \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ], \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ], \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ], \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ], \"SHOPPING_RETARGETING\" : [ { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] }, { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] } ], \"GENDER\" : [ \"unknown\", \"unknown\" ], \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ], \"APPTYPE\" : [ \"ipad\", \"iphone\" ], \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ], \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ] }, \"name\" : \"Ad Group For Pin: 687195905986\", \"status\" : \"status\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] }, { \"data\" : { \"updated_time\" : 1476477189, \"targeting_template_ids\" : [ \"643\" ], \"type\" : \"adgroup\", \"tracking_urls\" : \"{}\", \"budget_in_micro_currency\" : 5000000, \"bid_strategy_type\" : \"MAX_BID\", \"ad_account_id\" : \"549755885175\", \"conversion_learning_mode_type\" : \"ACTIVE\", \"dca_assets\" : \"\", \"feed_profile_id\" : \"626736533506\", \"lifetime_frequency_cap\" : 100, \"id\" : \"2680060704746\", \"optimization_goal_metadata\" : \"{}\", \"placement_group\" : \"placement_group\", \"budget_type\" : \"budget_type\", \"campaign_id\" : \"626736533506\", \"pacing_delivery_type\" : \"pacing_delivery_type\", \"created_time\" : 1476477189, \"bid_in_micro_currency\" : 5000000, \"end_time\" : 5705424000, \"summary_status\" : \"summary_status\", \"auto_targeting_enabled\" : true, \"start_time\" : 5686848000, \"billable_event\" : \"CLICKTHROUGH\", \"targeting_spec\" : { \"GEO\" : [ \"GEO\", \"GEO\" ], \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ], \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ], \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ], \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ], \"SHOPPING_RETARGETING\" : [ { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] }, { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] } ], \"GENDER\" : [ \"unknown\", \"unknown\" ], \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ], \"APPTYPE\" : [ \"ipad\", \"iphone\" ], \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ], \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ] }, \"name\" : \"Ad Group For Pin: 687195905986\", \"status\" : \"status\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] } ] }";
+                    String exampleString = "{ \"items\" : [ { \"data\" : { \"updated_time\" : 1476477189, \"targeting_template_ids\" : [ \"643\" ], \"promotion_application_level\" : \"ITEM\", \"promotion_id\" : \"7834020347906\", \"bid_multiplier\" : 1, \"type\" : \"adgroup\", \"tracking_urls\" : \"{}\", \"budget_in_micro_currency\" : 5000000, \"bid_strategy_type\" : \"MAX_BID\", \"ad_account_id\" : \"549755885175\", \"conversion_learning_mode_type\" : \"ACTIVE\", \"dca_assets\" : \"\", \"feed_profile_id\" : \"626736533506\", \"lifetime_frequency_cap\" : 100, \"id\" : \"2680060704746\", \"optimization_goal_metadata\" : \"{}\", \"placement_group\" : \"placement_group\", \"budget_type\" : \"budget_type\", \"campaign_id\" : \"626736533506\", \"pacing_delivery_type\" : \"pacing_delivery_type\", \"created_time\" : 1476477189, \"bid_in_micro_currency\" : 5000000, \"is_creative_optimization\" : true, \"end_time\" : 5705424000, \"summary_status\" : \"summary_status\", \"auto_targeting_enabled\" : true, \"start_time\" : 5686848000, \"billable_event\" : \"CLICKTHROUGH\", \"targeting_spec\" : { \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ], \"MAXIMUM_AGE\" : \"65+\", \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ], \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ], \"SHOPPING_RETARGETING\" : [ { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] }, { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] } ], \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ], \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ], \"GEO\" : [ \"GEO\", \"GEO\" ], \"MINIMUM_AGE\" : \"18\", \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ], \"GENDER\" : [ \"unknown\", \"unknown\" ], \"APPTYPE\" : [ \"ipad\", \"iphone\" ], \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ] }, \"name\" : \"Ad Group For Pin: 687195905986\", \"status\" : \"status\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] }, { \"data\" : { \"updated_time\" : 1476477189, \"targeting_template_ids\" : [ \"643\" ], \"promotion_application_level\" : \"ITEM\", \"promotion_id\" : \"7834020347906\", \"bid_multiplier\" : 1, \"type\" : \"adgroup\", \"tracking_urls\" : \"{}\", \"budget_in_micro_currency\" : 5000000, \"bid_strategy_type\" : \"MAX_BID\", \"ad_account_id\" : \"549755885175\", \"conversion_learning_mode_type\" : \"ACTIVE\", \"dca_assets\" : \"\", \"feed_profile_id\" : \"626736533506\", \"lifetime_frequency_cap\" : 100, \"id\" : \"2680060704746\", \"optimization_goal_metadata\" : \"{}\", \"placement_group\" : \"placement_group\", \"budget_type\" : \"budget_type\", \"campaign_id\" : \"626736533506\", \"pacing_delivery_type\" : \"pacing_delivery_type\", \"created_time\" : 1476477189, \"bid_in_micro_currency\" : 5000000, \"is_creative_optimization\" : true, \"end_time\" : 5705424000, \"summary_status\" : \"summary_status\", \"auto_targeting_enabled\" : true, \"start_time\" : 5686848000, \"billable_event\" : \"CLICKTHROUGH\", \"targeting_spec\" : { \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ], \"MAXIMUM_AGE\" : \"65+\", \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ], \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ], \"SHOPPING_RETARGETING\" : [ { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] }, { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] } ], \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ], \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ], \"GEO\" : [ \"GEO\", \"GEO\" ], \"MINIMUM_AGE\" : \"18\", \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ], \"GENDER\" : [ \"unknown\", \"unknown\" ], \"APPTYPE\" : [ \"ipad\", \"iphone\" ], \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ] }, \"name\" : \"Ad Group For Pin: 687195905986\", \"status\" : \"status\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -1159,7 +1381,7 @@ public interface AdAccountsApi {
     String PATH_AD_GROUPS_GET = "/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}";
     /**
      * GET /ad_accounts/{ad_account_id}/ad_groups/{ad_group_id} : Get ad group
-     * Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will contain additional information from the Ad Review process. For more information about our policies and rejection reasons see the &lt;a href&#x3D;\&quot;https://www.pinterest.com/_/_/policy/advertising-guidelines/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Pinterest advertising standards&lt;/a&gt;.
+     * Get a specific ad group given the ad group ID.
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param adGroupId Unique identifier of an ad group. (required)
@@ -1169,7 +1391,7 @@ public interface AdAccountsApi {
     @Operation(
         operationId = "adGroupsGet",
         summary = "Get ad group",
-        description = "Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will contain additional information from the Ad Review process. For more information about our policies and rejection reasons see the <a href=\"https://www.pinterest.com/_/_/policy/advertising-guidelines/\" target=\"_blank\">Pinterest advertising standards</a>.",
+        description = "Get a specific ad group given the ad group ID.",
         tags = { "ad_groups" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
@@ -1180,7 +1402,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -1195,7 +1418,7 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"updated_time\" : 1476477189, \"targeting_template_ids\" : [ \"643\" ], \"type\" : \"adgroup\", \"tracking_urls\" : \"{}\", \"budget_in_micro_currency\" : 5000000, \"bid_strategy_type\" : \"MAX_BID\", \"ad_account_id\" : \"549755885175\", \"conversion_learning_mode_type\" : \"ACTIVE\", \"dca_assets\" : \"\", \"feed_profile_id\" : \"626736533506\", \"lifetime_frequency_cap\" : 100, \"id\" : \"2680060704746\", \"optimization_goal_metadata\" : \"{}\", \"placement_group\" : \"placement_group\", \"budget_type\" : \"budget_type\", \"campaign_id\" : \"626736533506\", \"pacing_delivery_type\" : \"pacing_delivery_type\", \"created_time\" : 1476477189, \"bid_in_micro_currency\" : 5000000, \"end_time\" : 5705424000, \"summary_status\" : \"summary_status\", \"auto_targeting_enabled\" : true, \"start_time\" : 5686848000, \"billable_event\" : \"CLICKTHROUGH\", \"targeting_spec\" : { \"GEO\" : [ \"GEO\", \"GEO\" ], \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ], \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ], \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ], \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ], \"SHOPPING_RETARGETING\" : [ { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] }, { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] } ], \"GENDER\" : [ \"unknown\", \"unknown\" ], \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ], \"APPTYPE\" : [ \"ipad\", \"iphone\" ], \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ], \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ] }, \"name\" : \"Ad Group For Pin: 687195905986\", \"status\" : \"status\" }";
+                    String exampleString = "{ \"updated_time\" : 1476477189, \"targeting_template_ids\" : [ \"643\" ], \"promotion_application_level\" : \"ITEM\", \"promotion_id\" : \"7834020347906\", \"bid_multiplier\" : 1, \"type\" : \"adgroup\", \"tracking_urls\" : \"{}\", \"budget_in_micro_currency\" : 5000000, \"bid_strategy_type\" : \"MAX_BID\", \"ad_account_id\" : \"549755885175\", \"conversion_learning_mode_type\" : \"ACTIVE\", \"dca_assets\" : \"\", \"feed_profile_id\" : \"626736533506\", \"lifetime_frequency_cap\" : 100, \"id\" : \"2680060704746\", \"optimization_goal_metadata\" : \"{}\", \"placement_group\" : \"placement_group\", \"budget_type\" : \"budget_type\", \"campaign_id\" : \"626736533506\", \"pacing_delivery_type\" : \"pacing_delivery_type\", \"created_time\" : 1476477189, \"bid_in_micro_currency\" : 5000000, \"is_creative_optimization\" : true, \"end_time\" : 5705424000, \"summary_status\" : \"summary_status\", \"auto_targeting_enabled\" : true, \"start_time\" : 5686848000, \"billable_event\" : \"CLICKTHROUGH\", \"targeting_spec\" : { \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ], \"MAXIMUM_AGE\" : \"65+\", \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ], \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ], \"SHOPPING_RETARGETING\" : [ { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] }, { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] } ], \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ], \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ], \"GEO\" : [ \"GEO\", \"GEO\" ], \"MINIMUM_AGE\" : \"18\", \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ], \"GENDER\" : [ \"unknown\", \"unknown\" ], \"APPTYPE\" : [ \"ipad\", \"iphone\" ], \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ] }, \"name\" : \"Ad Group For Pin: 687195905986\", \"status\" : \"status\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -1245,7 +1468,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -1255,8 +1479,8 @@ public interface AdAccountsApi {
     )
     default ResponseEntity<AdGroupsList200Response> adGroupsList(
         @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
-        @Size(min = 1, max = 100) @Parameter(name = "campaign_ids", description = "List of Campaign Ids to use to filter the results.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "campaign_ids", required = false) @Nullable List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,
-        @Size(min = 1, max = 100) @Parameter(name = "ad_group_ids", description = "List of Ad group Ids to use to filter the results.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_group_ids", required = false) @Nullable List<@Pattern(regexp = "^\\d+$")String> adGroupIds,
+        @Size(min = 1, max = 250) @Parameter(name = "campaign_ids", description = "List of Campaign Ids to use to filter the results.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "campaign_ids", required = false) @Nullable List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,
+        @Size(min = 1, max = 250) @Parameter(name = "ad_group_ids", description = "List of Ad group Ids to use to filter the results.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_group_ids", required = false) @Nullable List<@Pattern(regexp = "^\\d+$")String> adGroupIds,
         @Parameter(name = "entity_statuses", description = "Entity status", in = ParameterIn.QUERY) @Valid @RequestParam(value = "entity_statuses", required = false, defaultValue = "ACTIVE,PAUSED") List<String> entityStatuses,
         @Min(value = 1) @Max(value = 250) @Parameter(name = "page_size", description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") Integer pageSize,
         @Parameter(name = "order", description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "order", required = false) @Nullable String order,
@@ -1266,7 +1490,7 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"updated_time\" : 1476477189, \"targeting_template_ids\" : [ \"643\" ], \"type\" : \"adgroup\", \"tracking_urls\" : \"{}\", \"budget_in_micro_currency\" : 5000000, \"bid_strategy_type\" : \"MAX_BID\", \"ad_account_id\" : \"549755885175\", \"conversion_learning_mode_type\" : \"ACTIVE\", \"dca_assets\" : \"\", \"feed_profile_id\" : \"626736533506\", \"lifetime_frequency_cap\" : 100, \"id\" : \"2680060704746\", \"optimization_goal_metadata\" : \"{}\", \"placement_group\" : \"placement_group\", \"budget_type\" : \"budget_type\", \"campaign_id\" : \"626736533506\", \"pacing_delivery_type\" : \"pacing_delivery_type\", \"created_time\" : 1476477189, \"bid_in_micro_currency\" : 5000000, \"end_time\" : 5705424000, \"summary_status\" : \"summary_status\", \"auto_targeting_enabled\" : true, \"start_time\" : 5686848000, \"billable_event\" : \"CLICKTHROUGH\", \"targeting_spec\" : { \"GEO\" : [ \"GEO\", \"GEO\" ], \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ], \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ], \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ], \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ], \"SHOPPING_RETARGETING\" : [ { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] }, { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] } ], \"GENDER\" : [ \"unknown\", \"unknown\" ], \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ], \"APPTYPE\" : [ \"ipad\", \"iphone\" ], \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ], \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ] }, \"name\" : \"Ad Group For Pin: 687195905986\", \"status\" : \"status\" }, { \"updated_time\" : 1476477189, \"targeting_template_ids\" : [ \"643\" ], \"type\" : \"adgroup\", \"tracking_urls\" : \"{}\", \"budget_in_micro_currency\" : 5000000, \"bid_strategy_type\" : \"MAX_BID\", \"ad_account_id\" : \"549755885175\", \"conversion_learning_mode_type\" : \"ACTIVE\", \"dca_assets\" : \"\", \"feed_profile_id\" : \"626736533506\", \"lifetime_frequency_cap\" : 100, \"id\" : \"2680060704746\", \"optimization_goal_metadata\" : \"{}\", \"placement_group\" : \"placement_group\", \"budget_type\" : \"budget_type\", \"campaign_id\" : \"626736533506\", \"pacing_delivery_type\" : \"pacing_delivery_type\", \"created_time\" : 1476477189, \"bid_in_micro_currency\" : 5000000, \"end_time\" : 5705424000, \"summary_status\" : \"summary_status\", \"auto_targeting_enabled\" : true, \"start_time\" : 5686848000, \"billable_event\" : \"CLICKTHROUGH\", \"targeting_spec\" : { \"GEO\" : [ \"GEO\", \"GEO\" ], \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ], \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ], \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ], \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ], \"SHOPPING_RETARGETING\" : [ { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] }, { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] } ], \"GENDER\" : [ \"unknown\", \"unknown\" ], \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ], \"APPTYPE\" : [ \"ipad\", \"iphone\" ], \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ], \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ] }, \"name\" : \"Ad Group For Pin: 687195905986\", \"status\" : \"status\" } ] }";
+                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"updated_time\" : 1476477189, \"targeting_template_ids\" : [ \"643\" ], \"promotion_application_level\" : \"ITEM\", \"promotion_id\" : \"7834020347906\", \"bid_multiplier\" : 1, \"type\" : \"adgroup\", \"tracking_urls\" : \"{}\", \"budget_in_micro_currency\" : 5000000, \"bid_strategy_type\" : \"MAX_BID\", \"ad_account_id\" : \"549755885175\", \"conversion_learning_mode_type\" : \"ACTIVE\", \"dca_assets\" : \"\", \"feed_profile_id\" : \"626736533506\", \"lifetime_frequency_cap\" : 100, \"id\" : \"2680060704746\", \"optimization_goal_metadata\" : \"{}\", \"placement_group\" : \"placement_group\", \"budget_type\" : \"budget_type\", \"campaign_id\" : \"626736533506\", \"pacing_delivery_type\" : \"pacing_delivery_type\", \"created_time\" : 1476477189, \"bid_in_micro_currency\" : 5000000, \"is_creative_optimization\" : true, \"end_time\" : 5705424000, \"summary_status\" : \"summary_status\", \"auto_targeting_enabled\" : true, \"start_time\" : 5686848000, \"billable_event\" : \"CLICKTHROUGH\", \"targeting_spec\" : { \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ], \"MAXIMUM_AGE\" : \"65+\", \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ], \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ], \"SHOPPING_RETARGETING\" : [ { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] }, { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] } ], \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ], \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ], \"GEO\" : [ \"GEO\", \"GEO\" ], \"MINIMUM_AGE\" : \"18\", \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ], \"GENDER\" : [ \"unknown\", \"unknown\" ], \"APPTYPE\" : [ \"ipad\", \"iphone\" ], \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ] }, \"name\" : \"Ad Group For Pin: 687195905986\", \"status\" : \"status\" }, { \"updated_time\" : 1476477189, \"targeting_template_ids\" : [ \"643\" ], \"promotion_application_level\" : \"ITEM\", \"promotion_id\" : \"7834020347906\", \"bid_multiplier\" : 1, \"type\" : \"adgroup\", \"tracking_urls\" : \"{}\", \"budget_in_micro_currency\" : 5000000, \"bid_strategy_type\" : \"MAX_BID\", \"ad_account_id\" : \"549755885175\", \"conversion_learning_mode_type\" : \"ACTIVE\", \"dca_assets\" : \"\", \"feed_profile_id\" : \"626736533506\", \"lifetime_frequency_cap\" : 100, \"id\" : \"2680060704746\", \"optimization_goal_metadata\" : \"{}\", \"placement_group\" : \"placement_group\", \"budget_type\" : \"budget_type\", \"campaign_id\" : \"626736533506\", \"pacing_delivery_type\" : \"pacing_delivery_type\", \"created_time\" : 1476477189, \"bid_in_micro_currency\" : 5000000, \"is_creative_optimization\" : true, \"end_time\" : 5705424000, \"summary_status\" : \"summary_status\", \"auto_targeting_enabled\" : true, \"start_time\" : 5686848000, \"billable_event\" : \"CLICKTHROUGH\", \"targeting_spec\" : { \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ], \"MAXIMUM_AGE\" : \"65+\", \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ], \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ], \"SHOPPING_RETARGETING\" : [ { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] }, { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] } ], \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ], \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ], \"GEO\" : [ \"GEO\", \"GEO\" ], \"MINIMUM_AGE\" : \"18\", \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ], \"GENDER\" : [ \"unknown\", \"unknown\" ], \"APPTYPE\" : [ \"ipad\", \"iphone\" ], \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ] }, \"name\" : \"Ad Group For Pin: 687195905986\", \"status\" : \"status\" } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -1290,27 +1514,28 @@ public interface AdAccountsApi {
     String PATH_AD_GROUPS_TARGETING_ANALYTICS_GET = "/ad_accounts/{ad_account_id}/ad_groups/targeting_analytics";
     /**
      * GET /ad_accounts/{ad_account_id}/ad_groups/targeting_analytics : Get targeting analytics for ad groups
-     * Get targeting analytics for one or more ad groups. For the requested ad group(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get targeting analytics for one or more ad groups. For the requested ad group(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param adGroupIds List of Ad group Ids to use to filter the results. (required)
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. (required)
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. (required)
-     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users. (required)
+     * @param targetingTypes Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;, \&quot;CREATIVE_ENHANCEMENTS\&quot;] are in BETA and not yet available to all users. (required)
      * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned (required)
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly (required)
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
-     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
+     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to 30)
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to 1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to TIME_OF_AD_ACTION)
      * @param attributionTypes List of types of attribution for the conversion report (optional)
+     * @param reportingTimezone Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
      * @return Success (status code 200)
      *         or Unexpected error (status code 200)
      */
     @Operation(
         operationId = "adGroupsTargetingAnalyticsGet",
         summary = "Get targeting analytics for ad groups",
-        description = "Get targeting analytics for one or more ad groups. For the requested ad group(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.",
+        description = "Get targeting analytics for one or more ad groups. For the requested ad group(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.",
         tags = { "ad_groups" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
@@ -1321,7 +1546,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -1331,17 +1557,18 @@ public interface AdAccountsApi {
     )
     default ResponseEntity<MetricsResponse> adGroupsTargetingAnalyticsGet(
         @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
-        @NotNull @Size(min = 1, max = 100) @Parameter(name = "ad_group_ids", description = "List of Ad group Ids to use to filter the results.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_group_ids", required = true) List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds,
+        @NotNull @Size(min = 1, max = 250) @Parameter(name = "ad_group_ids", description = "List of Ad group Ids to use to filter the results.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_group_ids", required = true) List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds,
         @NotNull @Parameter(name = "start_date", description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "start_date", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
         @NotNull @Parameter(name = "end_date", description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "end_date", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
-        @NotNull @Size(min = 1, max = 15) @Parameter(name = "targeting_types", description = "Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "targeting_types", required = true) List<AdsAnalyticsTargetingType> targetingTypes,
+        @NotNull @Size(min = 1, max = 14) @Parameter(name = "targeting_types", description = "Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\", \"CREATIVE_ENHANCEMENTS\"] are in BETA and not yet available to all users.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "targeting_types", required = true) List<AdsAnalyticsAdGroupTargetingType> targetingTypes,
         @NotNull @Parameter(name = "columns", description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "columns", required = true) List<String> columns,
         @NotNull @Parameter(name = "granularity", description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "granularity", required = true) Granularity granularity,
         @Parameter(name = "click_window_days", description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") Integer clickWindowDays,
-        @Parameter(name = "engagement_window_days", description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") Integer engagementWindowDays,
+        @Parameter(name = "engagement_window_days", description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") Integer engagementWindowDays,
         @Parameter(name = "view_window_days", description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") Integer viewWindowDays,
         @Parameter(name = "conversion_report_time", description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") String conversionReportTime,
-        @Parameter(name = "attribution_types", description = "List of types of attribution for the conversion report", in = ParameterIn.QUERY) @Valid @RequestParam(value = "attribution_types", required = false) @Nullable ConversionReportAttributionType attributionTypes
+        @Size(max = 2) @Parameter(name = "attribution_types", description = "List of types of attribution for the conversion report", in = ParameterIn.QUERY) @Valid @RequestParam(value = "attribution_types", required = false) @Nullable List<ConversionReportAttributionType> attributionTypes,
+        @Parameter(name = "reporting_timezone", description = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "reporting_timezone", required = false) @Nullable ReportingTimeZone reportingTimezone
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -1402,7 +1629,90 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"items\" : [ { \"data\" : { \"updated_time\" : 1476477189, \"targeting_template_ids\" : [ \"643\" ], \"type\" : \"adgroup\", \"tracking_urls\" : \"{}\", \"budget_in_micro_currency\" : 5000000, \"bid_strategy_type\" : \"MAX_BID\", \"ad_account_id\" : \"549755885175\", \"conversion_learning_mode_type\" : \"ACTIVE\", \"dca_assets\" : \"\", \"feed_profile_id\" : \"626736533506\", \"lifetime_frequency_cap\" : 100, \"id\" : \"2680060704746\", \"optimization_goal_metadata\" : \"{}\", \"placement_group\" : \"placement_group\", \"budget_type\" : \"budget_type\", \"campaign_id\" : \"626736533506\", \"pacing_delivery_type\" : \"pacing_delivery_type\", \"created_time\" : 1476477189, \"bid_in_micro_currency\" : 5000000, \"end_time\" : 5705424000, \"summary_status\" : \"summary_status\", \"auto_targeting_enabled\" : true, \"start_time\" : 5686848000, \"billable_event\" : \"CLICKTHROUGH\", \"targeting_spec\" : { \"GEO\" : [ \"GEO\", \"GEO\" ], \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ], \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ], \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ], \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ], \"SHOPPING_RETARGETING\" : [ { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] }, { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] } ], \"GENDER\" : [ \"unknown\", \"unknown\" ], \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ], \"APPTYPE\" : [ \"ipad\", \"iphone\" ], \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ], \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ] }, \"name\" : \"Ad Group For Pin: 687195905986\", \"status\" : \"status\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] }, { \"data\" : { \"updated_time\" : 1476477189, \"targeting_template_ids\" : [ \"643\" ], \"type\" : \"adgroup\", \"tracking_urls\" : \"{}\", \"budget_in_micro_currency\" : 5000000, \"bid_strategy_type\" : \"MAX_BID\", \"ad_account_id\" : \"549755885175\", \"conversion_learning_mode_type\" : \"ACTIVE\", \"dca_assets\" : \"\", \"feed_profile_id\" : \"626736533506\", \"lifetime_frequency_cap\" : 100, \"id\" : \"2680060704746\", \"optimization_goal_metadata\" : \"{}\", \"placement_group\" : \"placement_group\", \"budget_type\" : \"budget_type\", \"campaign_id\" : \"626736533506\", \"pacing_delivery_type\" : \"pacing_delivery_type\", \"created_time\" : 1476477189, \"bid_in_micro_currency\" : 5000000, \"end_time\" : 5705424000, \"summary_status\" : \"summary_status\", \"auto_targeting_enabled\" : true, \"start_time\" : 5686848000, \"billable_event\" : \"CLICKTHROUGH\", \"targeting_spec\" : { \"GEO\" : [ \"GEO\", \"GEO\" ], \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ], \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ], \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ], \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ], \"SHOPPING_RETARGETING\" : [ { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] }, { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] } ], \"GENDER\" : [ \"unknown\", \"unknown\" ], \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ], \"APPTYPE\" : [ \"ipad\", \"iphone\" ], \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ], \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ] }, \"name\" : \"Ad Group For Pin: 687195905986\", \"status\" : \"status\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] } ] }";
+                    String exampleString = "{ \"items\" : [ { \"data\" : { \"updated_time\" : 1476477189, \"targeting_template_ids\" : [ \"643\" ], \"promotion_application_level\" : \"ITEM\", \"promotion_id\" : \"7834020347906\", \"bid_multiplier\" : 1, \"type\" : \"adgroup\", \"tracking_urls\" : \"{}\", \"budget_in_micro_currency\" : 5000000, \"bid_strategy_type\" : \"MAX_BID\", \"ad_account_id\" : \"549755885175\", \"conversion_learning_mode_type\" : \"ACTIVE\", \"dca_assets\" : \"\", \"feed_profile_id\" : \"626736533506\", \"lifetime_frequency_cap\" : 100, \"id\" : \"2680060704746\", \"optimization_goal_metadata\" : \"{}\", \"placement_group\" : \"placement_group\", \"budget_type\" : \"budget_type\", \"campaign_id\" : \"626736533506\", \"pacing_delivery_type\" : \"pacing_delivery_type\", \"created_time\" : 1476477189, \"bid_in_micro_currency\" : 5000000, \"is_creative_optimization\" : true, \"end_time\" : 5705424000, \"summary_status\" : \"summary_status\", \"auto_targeting_enabled\" : true, \"start_time\" : 5686848000, \"billable_event\" : \"CLICKTHROUGH\", \"targeting_spec\" : { \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ], \"MAXIMUM_AGE\" : \"65+\", \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ], \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ], \"SHOPPING_RETARGETING\" : [ { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] }, { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] } ], \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ], \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ], \"GEO\" : [ \"GEO\", \"GEO\" ], \"MINIMUM_AGE\" : \"18\", \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ], \"GENDER\" : [ \"unknown\", \"unknown\" ], \"APPTYPE\" : [ \"ipad\", \"iphone\" ], \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ] }, \"name\" : \"Ad Group For Pin: 687195905986\", \"status\" : \"status\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] }, { \"data\" : { \"updated_time\" : 1476477189, \"targeting_template_ids\" : [ \"643\" ], \"promotion_application_level\" : \"ITEM\", \"promotion_id\" : \"7834020347906\", \"bid_multiplier\" : 1, \"type\" : \"adgroup\", \"tracking_urls\" : \"{}\", \"budget_in_micro_currency\" : 5000000, \"bid_strategy_type\" : \"MAX_BID\", \"ad_account_id\" : \"549755885175\", \"conversion_learning_mode_type\" : \"ACTIVE\", \"dca_assets\" : \"\", \"feed_profile_id\" : \"626736533506\", \"lifetime_frequency_cap\" : 100, \"id\" : \"2680060704746\", \"optimization_goal_metadata\" : \"{}\", \"placement_group\" : \"placement_group\", \"budget_type\" : \"budget_type\", \"campaign_id\" : \"626736533506\", \"pacing_delivery_type\" : \"pacing_delivery_type\", \"created_time\" : 1476477189, \"bid_in_micro_currency\" : 5000000, \"is_creative_optimization\" : true, \"end_time\" : 5705424000, \"summary_status\" : \"summary_status\", \"auto_targeting_enabled\" : true, \"start_time\" : 5686848000, \"billable_event\" : \"CLICKTHROUGH\", \"targeting_spec\" : { \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ], \"MAXIMUM_AGE\" : \"65+\", \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ], \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ], \"SHOPPING_RETARGETING\" : [ { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] }, { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] } ], \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ], \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ], \"GEO\" : [ \"GEO\", \"GEO\" ], \"MINIMUM_AGE\" : \"18\", \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ], \"GENDER\" : [ \"unknown\", \"unknown\" ], \"APPTYPE\" : [ \"ipad\", \"iphone\" ], \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ] }, \"name\" : \"Ad Group For Pin: 687195905986\", \"status\" : \"status\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] } ] }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    String PATH_AD_PINS_ANALYTICS = "/ad_accounts/{ad_account_id}/pins/analytics";
+    /**
+     * GET /ad_accounts/{ad_account_id}/pins/analytics : Get pins analytics
+     * Get analytics for the pins given a campaign and pins in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. Data will not be provided for conversion metrics but will be available for non-conversion metrics.
+     *
+     * @param adAccountId Unique identifier of an ad account. (required)
+     * @param campaignId Campaign Id to use to filter the results. (required)
+     * @param pinIds List of Pin IDs. (required)
+     * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. (required)
+     * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. (required)
+     * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned (required)
+     * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly (required)
+     * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
+     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to 30)
+     * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to 1)
+     * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to TIME_OF_AD_ACTION)
+     * @return Success (status code 200)
+     *         or Invalid ad account pins analytics parameters. (status code 400)
+     *         or Unexpected error (status code 200)
+     */
+    @Operation(
+        operationId = "adPinsAnalytics",
+        summary = "Get pins analytics",
+        description = "Get analytics for the pins given a campaign and pins in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. Data will not be provided for conversion metrics but will be available for non-conversion metrics.",
+        tags = { "campaigns" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Success", content = {
+                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = AdPinAnalytics.class)))
+            }),
+            @ApiResponse(responseCode = "400", description = "Invalid ad account pins analytics parameters.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            })
+        },
+        security = {
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.GET,
+        value = AdAccountsApi.PATH_AD_PINS_ANALYTICS,
+        produces = { "application/json" }
+    )
+    default ResponseEntity<List<AdPinAnalytics>> adPinsAnalytics(
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "campaign_id", description = "Campaign Id to use to filter the results.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "campaign_id", required = true) String campaignId,
+        @NotNull @Size(min = 1, max = 100) @Parameter(name = "pin_ids", description = "List of Pin IDs.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "pin_ids", required = true) List<@Pattern(regexp = "^\\d+$")String> pinIds,
+        @NotNull @Parameter(name = "start_date", description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "start_date", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+        @NotNull @Parameter(name = "end_date", description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "end_date", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
+        @NotNull @Parameter(name = "columns", description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "columns", required = true) List<String> columns,
+        @NotNull @Parameter(name = "granularity", description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "granularity", required = true) Granularity granularity,
+        @Parameter(name = "click_window_days", description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") Integer clickWindowDays,
+        @Parameter(name = "engagement_window_days", description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") Integer engagementWindowDays,
+        @Parameter(name = "view_window_days", description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") Integer viewWindowDays,
+        @Parameter(name = "conversion_report_time", description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") String conversionReportTime
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "[ { \"DATE\" : \"2021-04-01\", \"PIN_ID\" : \"217861700718936379\", \"SPEND_IN_DOLLAR\" : 30, \"TOTAL_CLICKTHROUGH\" : 216 }, { \"DATE\" : \"2021-04-01\", \"PIN_ID\" : \"217861700718936379\", \"SPEND_IN_DOLLAR\" : 30, \"TOTAL_CLICKTHROUGH\" : 216 } ]";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -1421,7 +1731,7 @@ public interface AdAccountsApi {
     String PATH_AD_PREVIEWS_CREATE = "/ad_accounts/{ad_account_id}/ad_previews";
     /**
      * POST /ad_accounts/{ad_account_id}/ad_previews : Create ad preview with pin or image
-     * Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
+     * Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.  Creating ad preview from catalog product group is currently in BETA and is not available to all users.
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param adPreviewRequest Create ad preview with pin or image. (required)
@@ -1432,7 +1742,7 @@ public interface AdAccountsApi {
     @Operation(
         operationId = "adPreviewsCreate",
         summary = "Create ad preview with pin or image",
-        description = "Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href=\"https://help.pinterest.com/en/business/article/promoted-pins-overview\" target=\"_blank\">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.",
+        description = "Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href=\"https://help.pinterest.com/en/business/article/promoted-pins-overview\" target=\"_blank\">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.  Creating ad preview from catalog product group is currently in BETA and is not available to all users.",
         tags = { "ads" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Successful ad preview creation.", content = {
@@ -1492,7 +1802,7 @@ public interface AdAccountsApi {
     String PATH_AD_TARGETING_ANALYTICS_GET = "/ad_accounts/{ad_account_id}/ads/targeting_analytics";
     /**
      * GET /ad_accounts/{ad_account_id}/ads/targeting_analytics : Get targeting analytics for ads
-     * Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param adIds List of Ad Ids to use to filter the results. (required)
@@ -1502,17 +1812,18 @@ public interface AdAccountsApi {
      * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned (required)
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly (required)
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
-     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
+     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to 30)
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to 1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to TIME_OF_AD_ACTION)
      * @param attributionTypes List of types of attribution for the conversion report (optional)
+     * @param reportingTimezone Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
      * @return Success (status code 200)
      *         or Unexpected error (status code 200)
      */
     @Operation(
         operationId = "adTargetingAnalyticsGet",
         summary = "Get targeting analytics for ads",
-        description = "Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.",
+        description = "Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.",
         tags = { "ads" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
@@ -1523,7 +1834,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -1533,17 +1845,18 @@ public interface AdAccountsApi {
     )
     default ResponseEntity<MetricsResponse> adTargetingAnalyticsGet(
         @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
-        @NotNull @Size(min = 1, max = 100) @Parameter(name = "ad_ids", description = "List of Ad Ids to use to filter the results.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_ids", required = true) List<@Pattern(regexp = "^\\d+$")String> adIds,
+        @NotNull @Size(min = 1, max = 250) @Parameter(name = "ad_ids", description = "List of Ad Ids to use to filter the results.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_ids", required = true) List<@Pattern(regexp = "^\\d+$")String> adIds,
         @NotNull @Parameter(name = "start_date", description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "start_date", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
         @NotNull @Parameter(name = "end_date", description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "end_date", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
         @NotNull @Size(min = 1, max = 14) @Parameter(name = "targeting_types", description = "Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "targeting_types", required = true) List<AdsAnalyticsAdTargetingType> targetingTypes,
         @NotNull @Parameter(name = "columns", description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "columns", required = true) List<String> columns,
         @NotNull @Parameter(name = "granularity", description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "granularity", required = true) Granularity granularity,
         @Parameter(name = "click_window_days", description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") Integer clickWindowDays,
-        @Parameter(name = "engagement_window_days", description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") Integer engagementWindowDays,
+        @Parameter(name = "engagement_window_days", description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") Integer engagementWindowDays,
         @Parameter(name = "view_window_days", description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") Integer viewWindowDays,
         @Parameter(name = "conversion_report_time", description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") String conversionReportTime,
-        @Parameter(name = "attribution_types", description = "List of types of attribution for the conversion report", in = ParameterIn.QUERY) @Valid @RequestParam(value = "attribution_types", required = false) @Nullable ConversionReportAttributionType attributionTypes
+        @Size(max = 2) @Parameter(name = "attribution_types", description = "List of types of attribution for the conversion report", in = ParameterIn.QUERY) @Valid @RequestParam(value = "attribution_types", required = false) @Nullable List<ConversionReportAttributionType> attributionTypes,
+        @Parameter(name = "reporting_timezone", description = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "reporting_timezone", required = false) @Nullable ReportingTimeZone reportingTimezone
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -1567,7 +1880,7 @@ public interface AdAccountsApi {
     String PATH_ADS_ANALYTICS = "/ad_accounts/{ad_account_id}/ads/analytics";
     /**
      * GET /ad_accounts/{ad_account_id}/ads/analytics : Get ad analytics
-     * Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. (required)
@@ -1576,11 +1889,12 @@ public interface AdAccountsApi {
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly (required)
      * @param adIds List of Ad Ids to use to filter the results. (optional)
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
-     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
+     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to 30)
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to 1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to TIME_OF_AD_ACTION)
      * @param pinIds List of Pin IDs. (optional)
      * @param campaignIds List of Campaign Ids to use to filter the results. (optional)
+     * @param reportingTimezone Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
      * @return Success (status code 200)
      *         or Invalid ad account ads analytics parameters. (status code 400)
      *         or Unexpected error (status code 200)
@@ -1588,7 +1902,7 @@ public interface AdAccountsApi {
     @Operation(
         operationId = "adsAnalytics",
         summary = "Get ad analytics",
-        description = "Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.",
+        description = "Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.",
         tags = { "ads" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
@@ -1602,7 +1916,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -1616,13 +1931,14 @@ public interface AdAccountsApi {
         @NotNull @Parameter(name = "end_date", description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "end_date", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
         @NotNull @Parameter(name = "columns", description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "columns", required = true) List<String> columns,
         @NotNull @Parameter(name = "granularity", description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "granularity", required = true) Granularity granularity,
-        @Size(min = 1, max = 100) @Parameter(name = "ad_ids", description = "List of Ad Ids to use to filter the results.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_ids", required = false) @Nullable List<@Pattern(regexp = "^\\d+$")String> adIds,
+        @Size(min = 1, max = 250) @Parameter(name = "ad_ids", description = "List of Ad Ids to use to filter the results.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_ids", required = false) @Nullable List<@Pattern(regexp = "^\\d+$")String> adIds,
         @Parameter(name = "click_window_days", description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") Integer clickWindowDays,
-        @Parameter(name = "engagement_window_days", description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") Integer engagementWindowDays,
+        @Parameter(name = "engagement_window_days", description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") Integer engagementWindowDays,
         @Parameter(name = "view_window_days", description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") Integer viewWindowDays,
         @Parameter(name = "conversion_report_time", description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") String conversionReportTime,
         @Size(min = 1, max = 100) @Parameter(name = "pin_ids", description = "List of Pin IDs.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "pin_ids", required = false) @Nullable List<@Pattern(regexp = "^\\d+$")String> pinIds,
-        @Size(min = 1, max = 100) @Parameter(name = "campaign_ids", description = "List of Campaign Ids to use to filter the results.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "campaign_ids", required = false) @Nullable List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds
+        @Size(min = 1, max = 250) @Parameter(name = "campaign_ids", description = "List of Campaign Ids to use to filter the results.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "campaign_ids", required = false) @Nullable List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,
+        @Parameter(name = "reporting_timezone", description = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "reporting_timezone", required = false) @Nullable ReportingTimeZone reportingTimezone
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -1651,7 +1967,7 @@ public interface AdAccountsApi {
     String PATH_ADS_CREATE = "/ad_accounts/{ad_account_id}/ads";
     /**
      * POST /ad_accounts/{ad_account_id}/ads : Create ads
-     * Create multiple new ads. Request must contain ad_group_id, creative_type, and the source Pin pin_id.
+     * Create multiple new ads. Request must contain &#x60;ad_group_id&#x60;, &#x60;creative_type&#x60;, and the source Pin &#x60;pin_id&#x60;.
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param adCreateRequest List of ads to create, size limit [1, 30]. (required)
@@ -1661,7 +1977,7 @@ public interface AdAccountsApi {
     @Operation(
         operationId = "adsCreate",
         summary = "Create ads",
-        description = "Create multiple new ads. Request must contain ad_group_id, creative_type, and the source Pin pin_id.",
+        description = "Create multiple new ads. Request must contain `ad_group_id`, `creative_type`, and the source Pin `pin_id`.",
         tags = { "ads" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
@@ -1688,7 +2004,7 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"items\" : [ { \"data\" : { \"is_removable\" : false, \"updated_time\" : 1451431341, \"collection_items_destination_url_template\" : \"collection_items_destination_url_template\", \"destination_url\" : \"destination_url\", \"type\" : \"pinpromotion\", \"tracking_urls\" : \"{}\", \"ios_deep_link\" : \"ios_deep_link\", \"ad_account_id\" : \"549755885175\", \"is_pin_deleted\" : false, \"creative_type\" : \"REGULAR\", \"grid_click_type\" : \"CLOSEUP\", \"rejection_labels\" : [ \"rejection_labels\", \"rejection_labels\" ], \"id\" : \"687195134316\", \"review_status\" : \"PENDING\", \"ad_group_id\" : \"2680059592705\", \"pin_id\" : \"394205773611545468\", \"campaign_id\" : \"626735565838\", \"created_time\" : 1451431341, \"view_tracking_url\" : \"view_tracking_url\", \"android_deep_link\" : \"android_deep_link\", \"summary_status\" : \"summary_status\", \"carousel_android_deep_links\" : [ \"carousel_android_deep_links\", \"carousel_android_deep_links\" ], \"carousel_destination_urls\" : [ \"carousel_destination_urls\", \"carousel_destination_urls\" ], \"carousel_ios_deep_links\" : [ \"carousel_ios_deep_links\", \"carousel_ios_deep_links\" ], \"click_tracking_url\" : \"click_tracking_url\", \"quiz_pin_data\" : \"{}\", \"name\" : \"name\", \"lead_form_id\" : \"lead_form_id\", \"customizable_cta_type\" : \"LEARN_MORE\", \"rejected_reasons\" : [ \"HASHTAGS\", \"HASHTAGS\" ], \"status\" : \"ACTIVE\" }, \"exceptions\" : { \"code\" : 2, \"message\" : \"Advertiser not found.\" } }, { \"data\" : { \"is_removable\" : false, \"updated_time\" : 1451431341, \"collection_items_destination_url_template\" : \"collection_items_destination_url_template\", \"destination_url\" : \"destination_url\", \"type\" : \"pinpromotion\", \"tracking_urls\" : \"{}\", \"ios_deep_link\" : \"ios_deep_link\", \"ad_account_id\" : \"549755885175\", \"is_pin_deleted\" : false, \"creative_type\" : \"REGULAR\", \"grid_click_type\" : \"CLOSEUP\", \"rejection_labels\" : [ \"rejection_labels\", \"rejection_labels\" ], \"id\" : \"687195134316\", \"review_status\" : \"PENDING\", \"ad_group_id\" : \"2680059592705\", \"pin_id\" : \"394205773611545468\", \"campaign_id\" : \"626735565838\", \"created_time\" : 1451431341, \"view_tracking_url\" : \"view_tracking_url\", \"android_deep_link\" : \"android_deep_link\", \"summary_status\" : \"summary_status\", \"carousel_android_deep_links\" : [ \"carousel_android_deep_links\", \"carousel_android_deep_links\" ], \"carousel_destination_urls\" : [ \"carousel_destination_urls\", \"carousel_destination_urls\" ], \"carousel_ios_deep_links\" : [ \"carousel_ios_deep_links\", \"carousel_ios_deep_links\" ], \"click_tracking_url\" : \"click_tracking_url\", \"quiz_pin_data\" : \"{}\", \"name\" : \"name\", \"lead_form_id\" : \"lead_form_id\", \"customizable_cta_type\" : \"LEARN_MORE\", \"rejected_reasons\" : [ \"HASHTAGS\", \"HASHTAGS\" ], \"status\" : \"ACTIVE\" }, \"exceptions\" : { \"code\" : 2, \"message\" : \"Advertiser not found.\" } } ] }";
+                    String exampleString = "{ \"items\" : [ { \"data\" : { \"is_removable\" : false, \"updated_time\" : 1451431341, \"collection_items_destination_url_template\" : \"collection_items_destination_url_template\", \"disclosure_type\" : \"MED_GUIDE\", \"destination_url\" : \"destination_url\", \"type\" : \"pinpromotion\", \"tracking_urls\" : \"{}\", \"ios_deep_link\" : \"ios_deep_link\", \"ad_account_id\" : \"549755885175\", \"is_pin_deleted\" : false, \"creative_type\" : \"REGULAR\", \"grid_click_type\" : \"CLOSEUP\", \"rejection_labels\" : [ \"rejection_labels\", \"rejection_labels\" ], \"id\" : \"687195134316\", \"review_status\" : \"PENDING\", \"ad_group_id\" : \"2680059592705\", \"pin_id\" : \"394205773611545468\", \"campaign_id\" : \"626735565838\", \"created_time\" : 1451431341, \"view_tracking_url\" : \"view_tracking_url\", \"android_deep_link\" : \"android_deep_link\", \"summary_status\" : \"summary_status\", \"carousel_android_deep_links\" : [ \"carousel_android_deep_links\", \"carousel_android_deep_links\" ], \"carousel_destination_urls\" : [ \"carousel_destination_urls\", \"carousel_destination_urls\" ], \"carousel_ios_deep_links\" : [ \"carousel_ios_deep_links\", \"carousel_ios_deep_links\" ], \"click_tracking_url\" : \"click_tracking_url\", \"disclosure_url\" : \"disclosure_url\", \"quiz_pin_data\" : \"{}\", \"name\" : \"name\", \"customizable_cta_type\" : \"LEARN_MORE\", \"lead_form_id\" : \"lead_form_id\", \"rejected_reasons\" : [ \"HASHTAGS\", \"HASHTAGS\" ], \"status\" : \"ACTIVE\" }, \"exceptions\" : { \"code\" : 2, \"message\" : \"Advertiser not found.\" } }, { \"data\" : { \"is_removable\" : false, \"updated_time\" : 1451431341, \"collection_items_destination_url_template\" : \"collection_items_destination_url_template\", \"disclosure_type\" : \"MED_GUIDE\", \"destination_url\" : \"destination_url\", \"type\" : \"pinpromotion\", \"tracking_urls\" : \"{}\", \"ios_deep_link\" : \"ios_deep_link\", \"ad_account_id\" : \"549755885175\", \"is_pin_deleted\" : false, \"creative_type\" : \"REGULAR\", \"grid_click_type\" : \"CLOSEUP\", \"rejection_labels\" : [ \"rejection_labels\", \"rejection_labels\" ], \"id\" : \"687195134316\", \"review_status\" : \"PENDING\", \"ad_group_id\" : \"2680059592705\", \"pin_id\" : \"394205773611545468\", \"campaign_id\" : \"626735565838\", \"created_time\" : 1451431341, \"view_tracking_url\" : \"view_tracking_url\", \"android_deep_link\" : \"android_deep_link\", \"summary_status\" : \"summary_status\", \"carousel_android_deep_links\" : [ \"carousel_android_deep_links\", \"carousel_android_deep_links\" ], \"carousel_destination_urls\" : [ \"carousel_destination_urls\", \"carousel_destination_urls\" ], \"carousel_ios_deep_links\" : [ \"carousel_ios_deep_links\", \"carousel_ios_deep_links\" ], \"click_tracking_url\" : \"click_tracking_url\", \"disclosure_url\" : \"disclosure_url\", \"quiz_pin_data\" : \"{}\", \"name\" : \"name\", \"customizable_cta_type\" : \"LEARN_MORE\", \"lead_form_id\" : \"lead_form_id\", \"rejected_reasons\" : [ \"HASHTAGS\", \"HASHTAGS\" ], \"status\" : \"ACTIVE\" }, \"exceptions\" : { \"code\" : 2, \"message\" : \"Advertiser not found.\" } } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -1707,7 +2023,7 @@ public interface AdAccountsApi {
     String PATH_ADS_CREDIT_REDEEM = "/ad_accounts/{ad_account_id}/ads_credit/redeem";
     /**
      * POST /ad_accounts/{ad_account_id}/ads_credit/redeem : Redeem ad credits
-     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param adsCreditRedeemRequest Redeem ad credits request. (required)
@@ -1718,7 +2034,7 @@ public interface AdAccountsApi {
     @Operation(
         operationId = "adsCreditRedeem",
         summary = "Redeem ad credits",
-        description = "Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>",
+        description = "Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>",
         tags = { "billing" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Successfully redeemed ad credits.", content = {
@@ -1778,7 +2094,7 @@ public interface AdAccountsApi {
     String PATH_ADS_CREDITS_DISCOUNTS_GET = "/ad_accounts/{ad_account_id}/ads_credit/discounts";
     /**
      * GET /ad_accounts/{ad_account_id}/ads_credit/discounts : Get ads credit discounts
-     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param bookmark Cursor used to fetch the next page of items (optional)
@@ -1789,7 +2105,7 @@ public interface AdAccountsApi {
     @Operation(
         operationId = "adsCreditsDiscountsGet",
         summary = "Get ads credit discounts",
-        description = "Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>",
+        description = "Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>",
         tags = { "billing" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
@@ -1856,7 +2172,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -1871,7 +2188,7 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"is_removable\" : false, \"updated_time\" : 1451431341, \"collection_items_destination_url_template\" : \"collection_items_destination_url_template\", \"destination_url\" : \"destination_url\", \"type\" : \"pinpromotion\", \"tracking_urls\" : \"{}\", \"ios_deep_link\" : \"ios_deep_link\", \"ad_account_id\" : \"549755885175\", \"is_pin_deleted\" : false, \"creative_type\" : \"REGULAR\", \"grid_click_type\" : \"CLOSEUP\", \"rejection_labels\" : [ \"rejection_labels\", \"rejection_labels\" ], \"id\" : \"687195134316\", \"review_status\" : \"PENDING\", \"ad_group_id\" : \"2680059592705\", \"pin_id\" : \"394205773611545468\", \"campaign_id\" : \"626735565838\", \"created_time\" : 1451431341, \"view_tracking_url\" : \"view_tracking_url\", \"android_deep_link\" : \"android_deep_link\", \"summary_status\" : \"summary_status\", \"carousel_android_deep_links\" : [ \"carousel_android_deep_links\", \"carousel_android_deep_links\" ], \"carousel_destination_urls\" : [ \"carousel_destination_urls\", \"carousel_destination_urls\" ], \"carousel_ios_deep_links\" : [ \"carousel_ios_deep_links\", \"carousel_ios_deep_links\" ], \"click_tracking_url\" : \"click_tracking_url\", \"quiz_pin_data\" : \"{}\", \"name\" : \"name\", \"lead_form_id\" : \"lead_form_id\", \"customizable_cta_type\" : \"LEARN_MORE\", \"rejected_reasons\" : [ \"HASHTAGS\", \"HASHTAGS\" ], \"status\" : \"ACTIVE\" }";
+                    String exampleString = "{ \"is_removable\" : false, \"updated_time\" : 1451431341, \"collection_items_destination_url_template\" : \"collection_items_destination_url_template\", \"disclosure_type\" : \"MED_GUIDE\", \"destination_url\" : \"destination_url\", \"type\" : \"pinpromotion\", \"tracking_urls\" : \"{}\", \"ios_deep_link\" : \"ios_deep_link\", \"ad_account_id\" : \"549755885175\", \"is_pin_deleted\" : false, \"creative_type\" : \"REGULAR\", \"grid_click_type\" : \"CLOSEUP\", \"rejection_labels\" : [ \"rejection_labels\", \"rejection_labels\" ], \"id\" : \"687195134316\", \"review_status\" : \"PENDING\", \"ad_group_id\" : \"2680059592705\", \"pin_id\" : \"394205773611545468\", \"campaign_id\" : \"626735565838\", \"created_time\" : 1451431341, \"view_tracking_url\" : \"view_tracking_url\", \"android_deep_link\" : \"android_deep_link\", \"summary_status\" : \"summary_status\", \"carousel_android_deep_links\" : [ \"carousel_android_deep_links\", \"carousel_android_deep_links\" ], \"carousel_destination_urls\" : [ \"carousel_destination_urls\", \"carousel_destination_urls\" ], \"carousel_ios_deep_links\" : [ \"carousel_ios_deep_links\", \"carousel_ios_deep_links\" ], \"click_tracking_url\" : \"click_tracking_url\", \"disclosure_url\" : \"disclosure_url\", \"quiz_pin_data\" : \"{}\", \"name\" : \"name\", \"customizable_cta_type\" : \"LEARN_MORE\", \"lead_form_id\" : \"lead_form_id\", \"rejected_reasons\" : [ \"HASHTAGS\", \"HASHTAGS\" ], \"status\" : \"ACTIVE\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -1921,7 +2238,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -1931,9 +2249,9 @@ public interface AdAccountsApi {
     )
     default ResponseEntity<AdsList200Response> adsList(
         @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
-        @Size(min = 1, max = 100) @Parameter(name = "campaign_ids", description = "List of Campaign Ids to use to filter the results.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "campaign_ids", required = false) @Nullable List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,
-        @Size(min = 1, max = 100) @Parameter(name = "ad_group_ids", description = "List of Ad group Ids to use to filter the results.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_group_ids", required = false) @Nullable List<@Pattern(regexp = "^\\d+$")String> adGroupIds,
-        @Size(min = 1, max = 100) @Parameter(name = "ad_ids", description = "List of Ad Ids to use to filter the results.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_ids", required = false) @Nullable List<@Pattern(regexp = "^\\d+$")String> adIds,
+        @Size(min = 1, max = 250) @Parameter(name = "campaign_ids", description = "List of Campaign Ids to use to filter the results.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "campaign_ids", required = false) @Nullable List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,
+        @Size(min = 1, max = 250) @Parameter(name = "ad_group_ids", description = "List of Ad group Ids to use to filter the results.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_group_ids", required = false) @Nullable List<@Pattern(regexp = "^\\d+$")String> adGroupIds,
+        @Size(min = 1, max = 250) @Parameter(name = "ad_ids", description = "List of Ad Ids to use to filter the results.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_ids", required = false) @Nullable List<@Pattern(regexp = "^\\d+$")String> adIds,
         @Parameter(name = "entity_statuses", description = "Entity status", in = ParameterIn.QUERY) @Valid @RequestParam(value = "entity_statuses", required = false, defaultValue = "ACTIVE,PAUSED") List<String> entityStatuses,
         @Min(value = 1) @Max(value = 250) @Parameter(name = "page_size", description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") Integer pageSize,
         @Parameter(name = "order", description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "order", required = false) @Nullable String order,
@@ -1942,7 +2260,7 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"is_removable\" : false, \"updated_time\" : 1451431341, \"collection_items_destination_url_template\" : \"collection_items_destination_url_template\", \"destination_url\" : \"destination_url\", \"type\" : \"pinpromotion\", \"tracking_urls\" : \"{}\", \"ios_deep_link\" : \"ios_deep_link\", \"ad_account_id\" : \"549755885175\", \"is_pin_deleted\" : false, \"creative_type\" : \"REGULAR\", \"grid_click_type\" : \"CLOSEUP\", \"rejection_labels\" : [ \"rejection_labels\", \"rejection_labels\" ], \"id\" : \"687195134316\", \"review_status\" : \"PENDING\", \"ad_group_id\" : \"2680059592705\", \"pin_id\" : \"394205773611545468\", \"campaign_id\" : \"626735565838\", \"created_time\" : 1451431341, \"view_tracking_url\" : \"view_tracking_url\", \"android_deep_link\" : \"android_deep_link\", \"summary_status\" : \"summary_status\", \"carousel_android_deep_links\" : [ \"carousel_android_deep_links\", \"carousel_android_deep_links\" ], \"carousel_destination_urls\" : [ \"carousel_destination_urls\", \"carousel_destination_urls\" ], \"carousel_ios_deep_links\" : [ \"carousel_ios_deep_links\", \"carousel_ios_deep_links\" ], \"click_tracking_url\" : \"click_tracking_url\", \"quiz_pin_data\" : \"{}\", \"name\" : \"name\", \"lead_form_id\" : \"lead_form_id\", \"customizable_cta_type\" : \"LEARN_MORE\", \"rejected_reasons\" : [ \"HASHTAGS\", \"HASHTAGS\" ], \"status\" : \"ACTIVE\" }, { \"is_removable\" : false, \"updated_time\" : 1451431341, \"collection_items_destination_url_template\" : \"collection_items_destination_url_template\", \"destination_url\" : \"destination_url\", \"type\" : \"pinpromotion\", \"tracking_urls\" : \"{}\", \"ios_deep_link\" : \"ios_deep_link\", \"ad_account_id\" : \"549755885175\", \"is_pin_deleted\" : false, \"creative_type\" : \"REGULAR\", \"grid_click_type\" : \"CLOSEUP\", \"rejection_labels\" : [ \"rejection_labels\", \"rejection_labels\" ], \"id\" : \"687195134316\", \"review_status\" : \"PENDING\", \"ad_group_id\" : \"2680059592705\", \"pin_id\" : \"394205773611545468\", \"campaign_id\" : \"626735565838\", \"created_time\" : 1451431341, \"view_tracking_url\" : \"view_tracking_url\", \"android_deep_link\" : \"android_deep_link\", \"summary_status\" : \"summary_status\", \"carousel_android_deep_links\" : [ \"carousel_android_deep_links\", \"carousel_android_deep_links\" ], \"carousel_destination_urls\" : [ \"carousel_destination_urls\", \"carousel_destination_urls\" ], \"carousel_ios_deep_links\" : [ \"carousel_ios_deep_links\", \"carousel_ios_deep_links\" ], \"click_tracking_url\" : \"click_tracking_url\", \"quiz_pin_data\" : \"{}\", \"name\" : \"name\", \"lead_form_id\" : \"lead_form_id\", \"customizable_cta_type\" : \"LEARN_MORE\", \"rejected_reasons\" : [ \"HASHTAGS\", \"HASHTAGS\" ], \"status\" : \"ACTIVE\" } ] }";
+                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"is_removable\" : false, \"updated_time\" : 1451431341, \"collection_items_destination_url_template\" : \"collection_items_destination_url_template\", \"disclosure_type\" : \"MED_GUIDE\", \"destination_url\" : \"destination_url\", \"type\" : \"pinpromotion\", \"tracking_urls\" : \"{}\", \"ios_deep_link\" : \"ios_deep_link\", \"ad_account_id\" : \"549755885175\", \"is_pin_deleted\" : false, \"creative_type\" : \"REGULAR\", \"grid_click_type\" : \"CLOSEUP\", \"rejection_labels\" : [ \"rejection_labels\", \"rejection_labels\" ], \"id\" : \"687195134316\", \"review_status\" : \"PENDING\", \"ad_group_id\" : \"2680059592705\", \"pin_id\" : \"394205773611545468\", \"campaign_id\" : \"626735565838\", \"created_time\" : 1451431341, \"view_tracking_url\" : \"view_tracking_url\", \"android_deep_link\" : \"android_deep_link\", \"summary_status\" : \"summary_status\", \"carousel_android_deep_links\" : [ \"carousel_android_deep_links\", \"carousel_android_deep_links\" ], \"carousel_destination_urls\" : [ \"carousel_destination_urls\", \"carousel_destination_urls\" ], \"carousel_ios_deep_links\" : [ \"carousel_ios_deep_links\", \"carousel_ios_deep_links\" ], \"click_tracking_url\" : \"click_tracking_url\", \"disclosure_url\" : \"disclosure_url\", \"quiz_pin_data\" : \"{}\", \"name\" : \"name\", \"customizable_cta_type\" : \"LEARN_MORE\", \"lead_form_id\" : \"lead_form_id\", \"rejected_reasons\" : [ \"HASHTAGS\", \"HASHTAGS\" ], \"status\" : \"ACTIVE\" }, { \"is_removable\" : false, \"updated_time\" : 1451431341, \"collection_items_destination_url_template\" : \"collection_items_destination_url_template\", \"disclosure_type\" : \"MED_GUIDE\", \"destination_url\" : \"destination_url\", \"type\" : \"pinpromotion\", \"tracking_urls\" : \"{}\", \"ios_deep_link\" : \"ios_deep_link\", \"ad_account_id\" : \"549755885175\", \"is_pin_deleted\" : false, \"creative_type\" : \"REGULAR\", \"grid_click_type\" : \"CLOSEUP\", \"rejection_labels\" : [ \"rejection_labels\", \"rejection_labels\" ], \"id\" : \"687195134316\", \"review_status\" : \"PENDING\", \"ad_group_id\" : \"2680059592705\", \"pin_id\" : \"394205773611545468\", \"campaign_id\" : \"626735565838\", \"created_time\" : 1451431341, \"view_tracking_url\" : \"view_tracking_url\", \"android_deep_link\" : \"android_deep_link\", \"summary_status\" : \"summary_status\", \"carousel_android_deep_links\" : [ \"carousel_android_deep_links\", \"carousel_android_deep_links\" ], \"carousel_destination_urls\" : [ \"carousel_destination_urls\", \"carousel_destination_urls\" ], \"carousel_ios_deep_links\" : [ \"carousel_ios_deep_links\", \"carousel_ios_deep_links\" ], \"click_tracking_url\" : \"click_tracking_url\", \"disclosure_url\" : \"disclosure_url\", \"quiz_pin_data\" : \"{}\", \"name\" : \"name\", \"customizable_cta_type\" : \"LEARN_MORE\", \"lead_form_id\" : \"lead_form_id\", \"rejected_reasons\" : [ \"HASHTAGS\", \"HASHTAGS\" ], \"status\" : \"ACTIVE\" } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -2003,7 +2321,126 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"items\" : [ { \"data\" : { \"is_removable\" : false, \"updated_time\" : 1451431341, \"collection_items_destination_url_template\" : \"collection_items_destination_url_template\", \"destination_url\" : \"destination_url\", \"type\" : \"pinpromotion\", \"tracking_urls\" : \"{}\", \"ios_deep_link\" : \"ios_deep_link\", \"ad_account_id\" : \"549755885175\", \"is_pin_deleted\" : false, \"creative_type\" : \"REGULAR\", \"grid_click_type\" : \"CLOSEUP\", \"rejection_labels\" : [ \"rejection_labels\", \"rejection_labels\" ], \"id\" : \"687195134316\", \"review_status\" : \"PENDING\", \"ad_group_id\" : \"2680059592705\", \"pin_id\" : \"394205773611545468\", \"campaign_id\" : \"626735565838\", \"created_time\" : 1451431341, \"view_tracking_url\" : \"view_tracking_url\", \"android_deep_link\" : \"android_deep_link\", \"summary_status\" : \"summary_status\", \"carousel_android_deep_links\" : [ \"carousel_android_deep_links\", \"carousel_android_deep_links\" ], \"carousel_destination_urls\" : [ \"carousel_destination_urls\", \"carousel_destination_urls\" ], \"carousel_ios_deep_links\" : [ \"carousel_ios_deep_links\", \"carousel_ios_deep_links\" ], \"click_tracking_url\" : \"click_tracking_url\", \"quiz_pin_data\" : \"{}\", \"name\" : \"name\", \"lead_form_id\" : \"lead_form_id\", \"customizable_cta_type\" : \"LEARN_MORE\", \"rejected_reasons\" : [ \"HASHTAGS\", \"HASHTAGS\" ], \"status\" : \"ACTIVE\" }, \"exceptions\" : { \"code\" : 2, \"message\" : \"Advertiser not found.\" } }, { \"data\" : { \"is_removable\" : false, \"updated_time\" : 1451431341, \"collection_items_destination_url_template\" : \"collection_items_destination_url_template\", \"destination_url\" : \"destination_url\", \"type\" : \"pinpromotion\", \"tracking_urls\" : \"{}\", \"ios_deep_link\" : \"ios_deep_link\", \"ad_account_id\" : \"549755885175\", \"is_pin_deleted\" : false, \"creative_type\" : \"REGULAR\", \"grid_click_type\" : \"CLOSEUP\", \"rejection_labels\" : [ \"rejection_labels\", \"rejection_labels\" ], \"id\" : \"687195134316\", \"review_status\" : \"PENDING\", \"ad_group_id\" : \"2680059592705\", \"pin_id\" : \"394205773611545468\", \"campaign_id\" : \"626735565838\", \"created_time\" : 1451431341, \"view_tracking_url\" : \"view_tracking_url\", \"android_deep_link\" : \"android_deep_link\", \"summary_status\" : \"summary_status\", \"carousel_android_deep_links\" : [ \"carousel_android_deep_links\", \"carousel_android_deep_links\" ], \"carousel_destination_urls\" : [ \"carousel_destination_urls\", \"carousel_destination_urls\" ], \"carousel_ios_deep_links\" : [ \"carousel_ios_deep_links\", \"carousel_ios_deep_links\" ], \"click_tracking_url\" : \"click_tracking_url\", \"quiz_pin_data\" : \"{}\", \"name\" : \"name\", \"lead_form_id\" : \"lead_form_id\", \"customizable_cta_type\" : \"LEARN_MORE\", \"rejected_reasons\" : [ \"HASHTAGS\", \"HASHTAGS\" ], \"status\" : \"ACTIVE\" }, \"exceptions\" : { \"code\" : 2, \"message\" : \"Advertiser not found.\" } } ] }";
+                    String exampleString = "{ \"items\" : [ { \"data\" : { \"is_removable\" : false, \"updated_time\" : 1451431341, \"collection_items_destination_url_template\" : \"collection_items_destination_url_template\", \"disclosure_type\" : \"MED_GUIDE\", \"destination_url\" : \"destination_url\", \"type\" : \"pinpromotion\", \"tracking_urls\" : \"{}\", \"ios_deep_link\" : \"ios_deep_link\", \"ad_account_id\" : \"549755885175\", \"is_pin_deleted\" : false, \"creative_type\" : \"REGULAR\", \"grid_click_type\" : \"CLOSEUP\", \"rejection_labels\" : [ \"rejection_labels\", \"rejection_labels\" ], \"id\" : \"687195134316\", \"review_status\" : \"PENDING\", \"ad_group_id\" : \"2680059592705\", \"pin_id\" : \"394205773611545468\", \"campaign_id\" : \"626735565838\", \"created_time\" : 1451431341, \"view_tracking_url\" : \"view_tracking_url\", \"android_deep_link\" : \"android_deep_link\", \"summary_status\" : \"summary_status\", \"carousel_android_deep_links\" : [ \"carousel_android_deep_links\", \"carousel_android_deep_links\" ], \"carousel_destination_urls\" : [ \"carousel_destination_urls\", \"carousel_destination_urls\" ], \"carousel_ios_deep_links\" : [ \"carousel_ios_deep_links\", \"carousel_ios_deep_links\" ], \"click_tracking_url\" : \"click_tracking_url\", \"disclosure_url\" : \"disclosure_url\", \"quiz_pin_data\" : \"{}\", \"name\" : \"name\", \"customizable_cta_type\" : \"LEARN_MORE\", \"lead_form_id\" : \"lead_form_id\", \"rejected_reasons\" : [ \"HASHTAGS\", \"HASHTAGS\" ], \"status\" : \"ACTIVE\" }, \"exceptions\" : { \"code\" : 2, \"message\" : \"Advertiser not found.\" } }, { \"data\" : { \"is_removable\" : false, \"updated_time\" : 1451431341, \"collection_items_destination_url_template\" : \"collection_items_destination_url_template\", \"disclosure_type\" : \"MED_GUIDE\", \"destination_url\" : \"destination_url\", \"type\" : \"pinpromotion\", \"tracking_urls\" : \"{}\", \"ios_deep_link\" : \"ios_deep_link\", \"ad_account_id\" : \"549755885175\", \"is_pin_deleted\" : false, \"creative_type\" : \"REGULAR\", \"grid_click_type\" : \"CLOSEUP\", \"rejection_labels\" : [ \"rejection_labels\", \"rejection_labels\" ], \"id\" : \"687195134316\", \"review_status\" : \"PENDING\", \"ad_group_id\" : \"2680059592705\", \"pin_id\" : \"394205773611545468\", \"campaign_id\" : \"626735565838\", \"created_time\" : 1451431341, \"view_tracking_url\" : \"view_tracking_url\", \"android_deep_link\" : \"android_deep_link\", \"summary_status\" : \"summary_status\", \"carousel_android_deep_links\" : [ \"carousel_android_deep_links\", \"carousel_android_deep_links\" ], \"carousel_destination_urls\" : [ \"carousel_destination_urls\", \"carousel_destination_urls\" ], \"carousel_ios_deep_links\" : [ \"carousel_ios_deep_links\", \"carousel_ios_deep_links\" ], \"click_tracking_url\" : \"click_tracking_url\", \"disclosure_url\" : \"disclosure_url\", \"quiz_pin_data\" : \"{}\", \"name\" : \"name\", \"customizable_cta_type\" : \"LEARN_MORE\", \"lead_form_id\" : \"lead_form_id\", \"rejected_reasons\" : [ \"HASHTAGS\", \"HASHTAGS\" ], \"status\" : \"ACTIVE\" }, \"exceptions\" : { \"code\" : 2, \"message\" : \"Advertiser not found.\" } } ] }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    String PATH_ADVERTISER_DEFINED_EVENTS_GET = "/ad_accounts/{ad_account_id}/advertiser_defined_events";
+    /**
+     * GET /ad_accounts/{ad_account_id}/advertiser_defined_events : Get advertiser defined events
+     * &lt;p&gt;Get advertiser defined events for the given ad account.&lt;/p&gt;
+     *
+     * @param adAccountId Unique identifier of an ad account. (required)
+     * @return Success (status code 200)
+     *         or Unexpected error (status code 200)
+     */
+    @Operation(
+        operationId = "advertiserDefinedEventsGet",
+        summary = "Get advertiser defined events",
+        description = "<p>Get advertiser defined events for the given ad account.</p>",
+        tags = { "conversions" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Success", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = AdvertiserDefinedEventsResponse.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            })
+        },
+        security = {
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.GET,
+        value = AdAccountsApi.PATH_ADVERTISER_DEFINED_EVENTS_GET,
+        produces = { "application/json" }
+    )
+    default ResponseEntity<AdvertiserDefinedEventsResponse> advertiserDefinedEventsGet(
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"items\" : [ { \"name\" : \"download_picture\", \"mapped_conversion_type\" : \"PAGE_LOAD\" }, { \"name\" : \"download_picture\", \"mapped_conversion_type\" : \"PAGE_LOAD\" } ] }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    String PATH_ANALYTICS_CREATE_CONVERSION_PRODUCT_REPORT = "/ad_accounts/{ad_account_id}/reports/brand_category_sku";
+    /**
+     * POST /ad_accounts/{ad_account_id}/reports/brand_category_sku : Create a request for a brand, category, SKU report
+     * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; This creates an asynchronous brand, category, SKU report based on the given request. This request returns a token that you can use to download the report when it is ready.
+     *
+     * @param adAccountId Unique identifier of an ad account. (required)
+     * @param conversionProductReportRequest  (required)
+     * @return Success (status code 200)
+     *         or Invalid ad account ads analytics brand, category, SKU parameters (status code 400)
+     *         or Unexpected error (status code 200)
+     */
+    @Operation(
+        operationId = "analyticsCreateConversionProductReport",
+        summary = "Create a request for a brand, category, SKU report",
+        description = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> This creates an asynchronous brand, category, SKU report based on the given request. This request returns a token that you can use to download the report when it is ready.",
+        tags = { "ad_accounts" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Success", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = AdsAnalyticsCreateAsyncResponse.class))
+            }),
+            @ApiResponse(responseCode = "400", description = "Invalid ad account ads analytics brand, category, SKU parameters", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            })
+        },
+        security = {
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.POST,
+        value = AdAccountsApi.PATH_ANALYTICS_CREATE_CONVERSION_PRODUCT_REPORT,
+        produces = { "application/json" },
+        consumes = { "application/json" }
+    )
+    default ResponseEntity<AdsAnalyticsCreateAsyncResponse> analyticsCreateConversionProductReport(
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
+        @Parameter(name = "ConversionProductReportRequest", description = "", required = true) @Valid @RequestBody ConversionProductReportRequest conversionProductReportRequest
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"report_status\" : \"report_status\", \"message\" : \"message\", \"token\" : \"token\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -2063,7 +2500,7 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"data\" : { \"report_status\" : \"report_status\", \"message\" : \"message\", \"token\" : \"token\", \"status\" : \"success\" } }";
+                    String exampleString = "{ \"code\" : 0, \"data\" : { \"report_status\" : \"report_status\", \"message\" : \"message\", \"status\" : \"success\", \"token\" : \"token\" } }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -2087,7 +2524,7 @@ public interface AdAccountsApi {
     String PATH_ANALYTICS_CREATE_REPORT = "/ad_accounts/{ad_account_id}/reports";
     /**
      * POST /ad_accounts/{ad_account_id}/reports : Create async request for an account analytics report
-     * This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 914 days before the current date in UTC time and the max time range supported is 186 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. - If level is PRODUCT_ITEM, the furthest back you can are allowed to pull data is 92 days before the current date in UTC time and the max time range supported is 31 days. - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
+     * This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 914 days before the current date in UTC time, with a maximum time range of 186 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days. - If level is PRODUCT_ITEM, you can pull data from up to 92 days before the current date in UTC time, with a maximum time range of 31 days. - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param adsAnalyticsCreateAsyncRequest  (required)
@@ -2098,7 +2535,7 @@ public interface AdAccountsApi {
     @Operation(
         operationId = "analyticsCreateReport",
         summary = "Create async request for an account analytics report",
-        description = "This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 914 days before the current date in UTC time and the max time range supported is 186 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. - If level is PRODUCT_ITEM, the furthest back you can are allowed to pull data is 92 days before the current date in UTC time and the max time range supported is 31 days. - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.",
+        description = "This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 914 days before the current date in UTC time, with a maximum time range of 186 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days. - If level is PRODUCT_ITEM, you can pull data from up to 92 days before the current date in UTC time, with a maximum time range of 31 days. - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.",
         tags = { "ad_accounts" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
@@ -2152,31 +2589,51 @@ public interface AdAccountsApi {
     String PATH_ANALYTICS_CREATE_TEMPLATE_REPORT = "/ad_accounts/{ad_account_id}/templates/{template_id}/reports";
     /**
      * POST /ad_accounts/{ad_account_id}/templates/{template_id}/reports : Create async request for an analytics report using a template
-     * This takes a template ID and an optional custom timeframe and constructs an asynchronous report based on the template. It returns a token that you can use to download the report when it is ready.
+     *    This takes a template ID and an optional custom timeframe and   constructs an asynchronous report based on the template. It returns   a token that you can use to download the report when it is ready.
      *
-     * @param adAccountId Unique identifier of an ad account. (required)
+     * @param adAccountId  (required)
      * @param templateId Unique identifier of a template. (required)
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years back from today. (optional)
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years past start date. (optional)
-     * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly (optional)
-     * @return Success (status code 200)
-     *         or Invalid ad account ads analytics template parameters. (status code 400)
-     *         or Unexpected error (status code 200)
+     * @param granularity    TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEKLY - metrics are broken down weekly.    MONTHLY - metrics are broken down monthly (optional)
+     * @return The request has succeeded. (status code 200)
+     *         or Resource create operation completed successfully. (status code 201)
+     *         or The request could not be understood by the server due to unexpected data. (status code 400)
+     *         or Authentication is required and has either failed or not been provided. (status code 401)
+     *         or The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. (status code 403)
+     *         or The requested resource could not be found on this server. (status code 404)
+     *         or The user has sent too many requests in a given amount of time and is being rate limited. (status code 429)
+     *         or An unexpected error response. (status code 200)
      */
     @Operation(
         operationId = "analyticsCreateTemplateReport",
         summary = "Create async request for an analytics report using a template",
-        description = "This takes a template ID and an optional custom timeframe and constructs an asynchronous report based on the template. It returns a token that you can use to download the report when it is ready.",
+        description = "   This takes a template ID and an optional custom timeframe and   constructs an asynchronous report based on the template. It returns   a token that you can use to download the report when it is ready.",
         tags = { "ad_accounts" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "Success", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = AdsAnalyticsCreateAsyncResponse.class))
+            @ApiResponse(responseCode = "200", description = "The request has succeeded.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = TemplateBasedReport.class))
             }),
-            @ApiResponse(responseCode = "400", description = "Invalid ad account ads analytics template parameters.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "201", description = "Resource create operation completed successfully.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = TemplateBasedReport.class))
             }),
-            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "An unexpected error response.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             })
         },
         security = {
@@ -2188,17 +2645,106 @@ public interface AdAccountsApi {
         value = AdAccountsApi.PATH_ANALYTICS_CREATE_TEMPLATE_REPORT,
         produces = { "application/json" }
     )
-    default ResponseEntity<AdsAnalyticsCreateAsyncResponse> analyticsCreateTemplateReport(
-        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
-        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "template_id", description = "Unique identifier of a template.", required = true, in = ParameterIn.PATH) @PathVariable("template_id") String templateId,
+    default ResponseEntity<TemplateBasedReport> analyticsCreateTemplateReport(
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
+        @NotNull @Size(max = 18) @Parameter(name = "template_id", description = "Unique identifier of a template.", required = true, in = ParameterIn.PATH) @PathVariable("template_id") String templateId,
         @Parameter(name = "start_date", description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years back from today.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "start_date", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @Nullable LocalDate startDate,
         @Parameter(name = "end_date", description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years past start date.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "end_date", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @Nullable LocalDate endDate,
-        @Parameter(name = "granularity", description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", in = ParameterIn.QUERY) @Valid @RequestParam(value = "granularity", required = false) @Nullable Granularity granularity
+        @Parameter(name = "granularity", description = "   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEKLY - metrics are broken down weekly.    MONTHLY - metrics are broken down monthly", in = ParameterIn.QUERY) @Valid @RequestParam(value = "granularity", required = false) @Nullable Granularity granularity
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"report_status\" : \"report_status\", \"message\" : \"message\", \"token\" : \"token\" }";
+                    String exampleString = "{ \"report_status\" : \"FINISHED\", \"template_id\" : \"template_id\", \"message\" : \"message\", \"token\" : \"token\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"report_status\" : \"FINISHED\", \"template_id\" : \"template_id\", \"message\" : \"message\", \"token\" : \"token\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    String PATH_ANALYTICS_GET_CONVERSION_PRODUCT_REPORT = "/ad_accounts/{ad_account_id}/reports/brand_category_sku";
+    /**
+     * GET /ad_accounts/{ad_account_id}/reports/brand_category_sku : Get advertiser brand, category, SKU report
+     * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; Get a brand, category, SKU report for an ad account. This call returns the URL for the report that matches the token returned in the request to the Create brand, category, SKU report endpoint.
+     *
+     * @param adAccountId Unique identifier of an ad account. (required)
+     * @param token Token returned from the post request creation call (required)
+     * @return Success (status code 200)
+     *         or Invalid ad account ads analytics parameters. (status code 400)
+     *         or Unexpected error (status code 200)
+     */
+    @Operation(
+        operationId = "analyticsGetConversionProductReport",
+        summary = "Get advertiser brand, category, SKU report",
+        description = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> Get a brand, category, SKU report for an ad account. This call returns the URL for the report that matches the token returned in the request to the Create brand, category, SKU report endpoint.",
+        tags = { "ad_accounts" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Success", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = AdsAnalyticsGetAsyncResponse.class))
+            }),
+            @ApiResponse(responseCode = "400", description = "Invalid ad account ads analytics parameters.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            })
+        },
+        security = {
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.GET,
+        value = AdAccountsApi.PATH_ANALYTICS_GET_CONVERSION_PRODUCT_REPORT,
+        produces = { "application/json" }
+    )
+    default ResponseEntity<AdsAnalyticsGetAsyncResponse> analyticsGetConversionProductReport(
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
+        @NotNull @Parameter(name = "token", description = "Token returned from the post request creation call", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "token", required = true) String token
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"size\" : 0.8008281904610115, \"report_status\" : \"report_status\", \"url\" : \"url\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -2371,7 +2917,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -2386,7 +2933,7 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"date\" : \"2022-10-09\", \"size\" : 10000, \"categories\" : [ { \"name\" : \"travel\", \"index\" : 1.2, \"id\" : \"1234567\", \"subcategories\" : [ { \"name\" : \"travel destinations\", \"index\" : 1.2, \"id\" : \"958862518888\", \"key\" : \"958862518888\", \"ratio\" : 0.482 }, { \"name\" : \"travel destinations\", \"index\" : 1.2, \"id\" : \"958862518888\", \"key\" : \"958862518888\", \"ratio\" : 0.482 } ], \"key\" : \"1234567\", \"ratio\" : 0.551 }, { \"name\" : \"travel\", \"index\" : 1.2, \"id\" : \"1234567\", \"subcategories\" : [ { \"name\" : \"travel destinations\", \"index\" : 1.2, \"id\" : \"958862518888\", \"key\" : \"958862518888\", \"ratio\" : 0.482 }, { \"name\" : \"travel destinations\", \"index\" : 1.2, \"id\" : \"958862518888\", \"key\" : \"958862518888\", \"ratio\" : 0.482 } ], \"key\" : \"1234567\", \"ratio\" : 0.551 } ], \"type\" : \"YOUR_TOTAL_AUDIENCE\", \"size_is_upper_bound\" : true, \"demographics\" : { \"devices\" : [ { \"name\" : \"United States\", \"key\" : \"us\", \"ratio\" : 0.551 }, { \"name\" : \"United States\", \"key\" : \"us\", \"ratio\" : 0.551 } ], \"ages\" : [ { \"name\" : \"United States\", \"key\" : \"us\", \"ratio\" : 0.551 }, { \"name\" : \"United States\", \"key\" : \"us\", \"ratio\" : 0.551 } ], \"genders\" : [ { \"name\" : \"United States\", \"key\" : \"us\", \"ratio\" : 0.551 }, { \"name\" : \"United States\", \"key\" : \"us\", \"ratio\" : 0.551 } ], \"countries\" : [ { \"name\" : \"United States\", \"key\" : \"us\", \"ratio\" : 0.551 }, { \"name\" : \"United States\", \"key\" : \"us\", \"ratio\" : 0.551 } ], \"metros\" : [ { \"name\" : \"United States\", \"key\" : \"us\", \"ratio\" : 0.551 }, { \"name\" : \"United States\", \"key\" : \"us\", \"ratio\" : 0.551 } ] } }";
+                    String exampleString = "{ \"date\" : \"2022-10-09\", \"size\" : 10000, \"categories\" : [ { \"name\" : \"travel\", \"index\" : 1.2, \"id\" : \"1234567\", \"subcategories\" : [ { \"name\" : \"travel destinations\", \"index\" : 1.2, \"id\" : \"958862518888\", \"key\" : \"958862518888\", \"ratio\" : 0.482 }, { \"name\" : \"travel destinations\", \"index\" : 1.2, \"id\" : \"958862518888\", \"key\" : \"958862518888\", \"ratio\" : 0.482 } ], \"key\" : \"1234567\", \"ratio\" : 0.551 }, { \"name\" : \"travel\", \"index\" : 1.2, \"id\" : \"1234567\", \"subcategories\" : [ { \"name\" : \"travel destinations\", \"index\" : 1.2, \"id\" : \"958862518888\", \"key\" : \"958862518888\", \"ratio\" : 0.482 }, { \"name\" : \"travel destinations\", \"index\" : 1.2, \"id\" : \"958862518888\", \"key\" : \"958862518888\", \"ratio\" : 0.482 } ], \"key\" : \"1234567\", \"ratio\" : 0.551 } ], \"size_is_upper_bound\" : true, \"type\" : \"YOUR_TOTAL_AUDIENCE\", \"demographics\" : { \"devices\" : [ { \"name\" : \"United States\", \"key\" : \"us\", \"ratio\" : 0.551 }, { \"name\" : \"United States\", \"key\" : \"us\", \"ratio\" : 0.551 } ], \"ages\" : [ { \"name\" : \"United States\", \"key\" : \"us\", \"ratio\" : 0.551 }, { \"name\" : \"United States\", \"key\" : \"us\", \"ratio\" : 0.551 } ], \"genders\" : [ { \"name\" : \"United States\", \"key\" : \"us\", \"ratio\" : 0.551 }, { \"name\" : \"United States\", \"key\" : \"us\", \"ratio\" : 0.551 } ], \"countries\" : [ { \"name\" : \"United States\", \"key\" : \"us\", \"ratio\" : 0.551 }, { \"name\" : \"United States\", \"key\" : \"us\", \"ratio\" : 0.551 } ], \"metros\" : [ { \"name\" : \"United States\", \"key\" : \"us\", \"ratio\" : 0.551 }, { \"name\" : \"United States\", \"key\" : \"us\", \"ratio\" : 0.551 } ] } }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -2425,7 +2972,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -2458,7 +3006,7 @@ public interface AdAccountsApi {
     String PATH_AUDIENCES_CREATE = "/ad_accounts/{ad_account_id}/audiences";
     /**
      * POST /ad_accounts/{ad_account_id}/audiences : Create audience
-     * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. &lt;p/&gt; For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt;.
+     * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;.
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param audienceCreateRequest List of ads to create, size limit [1, 30] (required)
@@ -2468,7 +3016,7 @@ public interface AdAccountsApi {
     @Operation(
         operationId = "audiencesCreate",
         summary = "Create audience",
-        description = "Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.",
+        description = "Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.",
         tags = { "audiences" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
@@ -2495,63 +3043,7 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"size\" : 1000, \"audience_type\" : \"audience_type\", \"updated_timestamp\" : 1451431341, \"name\" : \"ACME Tools\", \"description\" : \"People who love making quilts.\", \"rule\" : { \"country\" : \"US\", \"visitor_source_id\" : \"549755885175\", \"prefill\" : true, \"customer_list_id\" : \"5497558859876\", \"event_source\" : { \"=\" : [ \"web\", \"mobile\" ] }, \"objective_type\" : [ \"AWARENESS\" ], \"event_data\" : { \"video_title\" : \"How to style your Parker Boots\", \"page_name\" : \"Our Favorite Pins on Pinterest.\", \"order_quantity\" : 1, \"property\" : \"Athleta\", \"currency\" : \"USD\", \"lead_type\" : \"Newsletter\", \"promo_code\" : \"WINTER10\", \"line_items\" : { \"product_id\" : 1414, \"product_variant\" : \"Red\", \"product_brand\" : \"Parker\", \"product_price\" : \"99.99\", \"product_variant_id\" : \"1414-34832\", \"product_name\" : \"Parker Boots\", \"product_category\" : \"Shoes\", \"product_quantity\" : 2 }, \"search_query\" : \"boots\", \"order_id\" : \"X-151481\", \"value\" : \"199.98\" }, \"seed_id\" : [ \"2542620639259\", \"2542620639261\" ], \"url\" : [ \"url\", \"url\" ], \"ad_account_id\" : \"549755885175\", \"ingestion_source\" : { \"=\" : [ \"tag\" ] }, \"ad_id\" : [ \"687201361754\" ], \"retention_days\" : 30, \"engager_type\" : 1, \"engagement_type\" : \"click\", \"percentage\" : 3, \"engagement_domain\" : [ \"www.somedomain.com\" ], \"event\" : \"checkout\", \"pin_id\" : [ \"34567\" ], \"campaign_id\" : [ \"626744528398\" ] }, \"created_timestamp\" : 1451431341, \"id\" : \"1234\", \"type\" : \"audience\", \"ad_account_id\" : \"549755885175\", \"status\" : \"status\" }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
-        });
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
-
-    }
-
-
-    String PATH_AUDIENCES_CREATE_CUSTOM = "/ad_accounts/{ad_account_id}/audiences/custom";
-    /**
-     * POST /ad_accounts/{ad_account_id}/audiences/custom : Create custom audience
-     * Create a custom audience and find the audiences you want your ads to reach.
-     *
-     * @param adAccountId Unique identifier of an ad account. (required)
-     * @param audienceCreateCustomRequest Custom audience to create. (required)
-     * @return Success (status code 200)
-     *         or Unexpected error (status code 200)
-     */
-    @Operation(
-        operationId = "audiencesCreateCustom",
-        summary = "Create custom audience",
-        description = "Create a custom audience and find the audiences you want your ads to reach.",
-        tags = { "audiences" },
-        responses = {
-            @ApiResponse(responseCode = "200", description = "Success", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Audience.class))
-            }),
-            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
-            })
-        },
-        security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:write" })
-        }
-    )
-    @RequestMapping(
-        method = RequestMethod.POST,
-        value = AdAccountsApi.PATH_AUDIENCES_CREATE_CUSTOM,
-        produces = { "application/json" },
-        consumes = { "application/json" }
-    )
-    default ResponseEntity<Audience> audiencesCreateCustom(
-        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
-        @Parameter(name = "AudienceCreateCustomRequest", description = "Custom audience to create.", required = true) @Valid @RequestBody AudienceCreateCustomRequest audienceCreateCustomRequest
-    ) {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"size\" : 1000, \"audience_type\" : \"audience_type\", \"updated_timestamp\" : 1451431341, \"name\" : \"ACME Tools\", \"description\" : \"People who love making quilts.\", \"rule\" : { \"country\" : \"US\", \"visitor_source_id\" : \"549755885175\", \"prefill\" : true, \"customer_list_id\" : \"5497558859876\", \"event_source\" : { \"=\" : [ \"web\", \"mobile\" ] }, \"objective_type\" : [ \"AWARENESS\" ], \"event_data\" : { \"video_title\" : \"How to style your Parker Boots\", \"page_name\" : \"Our Favorite Pins on Pinterest.\", \"order_quantity\" : 1, \"property\" : \"Athleta\", \"currency\" : \"USD\", \"lead_type\" : \"Newsletter\", \"promo_code\" : \"WINTER10\", \"line_items\" : { \"product_id\" : 1414, \"product_variant\" : \"Red\", \"product_brand\" : \"Parker\", \"product_price\" : \"99.99\", \"product_variant_id\" : \"1414-34832\", \"product_name\" : \"Parker Boots\", \"product_category\" : \"Shoes\", \"product_quantity\" : 2 }, \"search_query\" : \"boots\", \"order_id\" : \"X-151481\", \"value\" : \"199.98\" }, \"seed_id\" : [ \"2542620639259\", \"2542620639261\" ], \"url\" : [ \"url\", \"url\" ], \"ad_account_id\" : \"549755885175\", \"ingestion_source\" : { \"=\" : [ \"tag\" ] }, \"ad_id\" : [ \"687201361754\" ], \"retention_days\" : 30, \"engager_type\" : 1, \"engagement_type\" : \"click\", \"percentage\" : 3, \"engagement_domain\" : [ \"www.somedomain.com\" ], \"event\" : \"checkout\", \"pin_id\" : [ \"34567\" ], \"campaign_id\" : [ \"626744528398\" ] }, \"created_timestamp\" : 1451431341, \"id\" : \"1234\", \"type\" : \"audience\", \"ad_account_id\" : \"549755885175\", \"status\" : \"status\" }";
+                    String exampleString = "{ \"size\" : 1000, \"audience_type\" : \"audience_type\", \"updated_timestamp\" : 1451431341, \"name\" : \"ACME Tools\", \"description\" : \"People who love making quilts.\", \"rule\" : { \"country\" : \"US\", \"visitor_source_id\" : \"549755885175\", \"prefill\" : true, \"customer_list_id\" : \"5497558859876\", \"event_source\" : { \"=\" : [ \"web\", \"mobile\" ] }, \"objective_type\" : [ \"AWARENESS\" ], \"event_data\" : { \"video_title\" : \"How to style your Parker Boots\", \"page_name\" : \"Our Favorite Pins on Pinterest\", \"order_quantity\" : 1, \"property\" : \"Athleta\", \"currency\" : \"\", \"lead_type\" : \"Newsletter\", \"promo_code\" : \"WINTER10\", \"line_items\" : \"\", \"search_query\" : \"boots\", \"order_id\" : \"X-151481\", \"value\" : \"199.98\" }, \"seed_id\" : [ \"2542620639259\", \"2542620639261\" ], \"url\" : [ \"url\", \"url\" ], \"ad_account_id\" : \"549755885175\", \"ad_id\" : [ \"687201361754\" ], \"ingestion_source\" : { \"=\" : [ \"tag\" ] }, \"engager_type\" : 1, \"retention_days\" : 30, \"engagement_type\" : \"click\", \"percentage\" : 3, \"engagement_domain\" : [ \"www.somedomain.com\" ], \"event\" : \"checkout\", \"pin_id\" : [ \"34567\" ], \"campaign_id\" : [ \"626744528398\" ] }, \"created_timestamp\" : 1451431341, \"id\" : \"1234\", \"type\" : \"audience\", \"ad_account_id\" : \"549755885175\", \"created_by_company_name\" : \"Pinterest\", \"status\" : \"status\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -2595,7 +3087,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -2610,7 +3103,7 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"size\" : 1000, \"audience_type\" : \"audience_type\", \"updated_timestamp\" : 1451431341, \"name\" : \"ACME Tools\", \"description\" : \"People who love making quilts.\", \"rule\" : { \"country\" : \"US\", \"visitor_source_id\" : \"549755885175\", \"prefill\" : true, \"customer_list_id\" : \"5497558859876\", \"event_source\" : { \"=\" : [ \"web\", \"mobile\" ] }, \"objective_type\" : [ \"AWARENESS\" ], \"event_data\" : { \"video_title\" : \"How to style your Parker Boots\", \"page_name\" : \"Our Favorite Pins on Pinterest.\", \"order_quantity\" : 1, \"property\" : \"Athleta\", \"currency\" : \"USD\", \"lead_type\" : \"Newsletter\", \"promo_code\" : \"WINTER10\", \"line_items\" : { \"product_id\" : 1414, \"product_variant\" : \"Red\", \"product_brand\" : \"Parker\", \"product_price\" : \"99.99\", \"product_variant_id\" : \"1414-34832\", \"product_name\" : \"Parker Boots\", \"product_category\" : \"Shoes\", \"product_quantity\" : 2 }, \"search_query\" : \"boots\", \"order_id\" : \"X-151481\", \"value\" : \"199.98\" }, \"seed_id\" : [ \"2542620639259\", \"2542620639261\" ], \"url\" : [ \"url\", \"url\" ], \"ad_account_id\" : \"549755885175\", \"ingestion_source\" : { \"=\" : [ \"tag\" ] }, \"ad_id\" : [ \"687201361754\" ], \"retention_days\" : 30, \"engager_type\" : 1, \"engagement_type\" : \"click\", \"percentage\" : 3, \"engagement_domain\" : [ \"www.somedomain.com\" ], \"event\" : \"checkout\", \"pin_id\" : [ \"34567\" ], \"campaign_id\" : [ \"626744528398\" ] }, \"created_timestamp\" : 1451431341, \"id\" : \"1234\", \"type\" : \"audience\", \"ad_account_id\" : \"549755885175\", \"status\" : \"status\" }";
+                    String exampleString = "{ \"size\" : 1000, \"audience_type\" : \"audience_type\", \"updated_timestamp\" : 1451431341, \"name\" : \"ACME Tools\", \"description\" : \"People who love making quilts.\", \"rule\" : { \"country\" : \"US\", \"visitor_source_id\" : \"549755885175\", \"prefill\" : true, \"customer_list_id\" : \"5497558859876\", \"event_source\" : { \"=\" : [ \"web\", \"mobile\" ] }, \"objective_type\" : [ \"AWARENESS\" ], \"event_data\" : { \"video_title\" : \"How to style your Parker Boots\", \"page_name\" : \"Our Favorite Pins on Pinterest\", \"order_quantity\" : 1, \"property\" : \"Athleta\", \"currency\" : \"\", \"lead_type\" : \"Newsletter\", \"promo_code\" : \"WINTER10\", \"line_items\" : \"\", \"search_query\" : \"boots\", \"order_id\" : \"X-151481\", \"value\" : \"199.98\" }, \"seed_id\" : [ \"2542620639259\", \"2542620639261\" ], \"url\" : [ \"url\", \"url\" ], \"ad_account_id\" : \"549755885175\", \"ad_id\" : [ \"687201361754\" ], \"ingestion_source\" : { \"=\" : [ \"tag\" ] }, \"engager_type\" : 1, \"retention_days\" : 30, \"engagement_type\" : \"click\", \"percentage\" : 3, \"engagement_domain\" : [ \"www.somedomain.com\" ], \"event\" : \"checkout\", \"pin_id\" : [ \"34567\" ], \"campaign_id\" : [ \"626744528398\" ] }, \"created_timestamp\" : 1451431341, \"id\" : \"1234\", \"type\" : \"audience\", \"ad_account_id\" : \"549755885175\", \"created_by_company_name\" : \"Pinterest\", \"status\" : \"status\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -2662,7 +3155,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -2680,7 +3174,7 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"size\" : 1000, \"audience_type\" : \"audience_type\", \"updated_timestamp\" : 1451431341, \"name\" : \"ACME Tools\", \"description\" : \"People who love making quilts.\", \"rule\" : { \"country\" : \"US\", \"visitor_source_id\" : \"549755885175\", \"prefill\" : true, \"customer_list_id\" : \"5497558859876\", \"event_source\" : { \"=\" : [ \"web\", \"mobile\" ] }, \"objective_type\" : [ \"AWARENESS\" ], \"event_data\" : { \"video_title\" : \"How to style your Parker Boots\", \"page_name\" : \"Our Favorite Pins on Pinterest.\", \"order_quantity\" : 1, \"property\" : \"Athleta\", \"currency\" : \"USD\", \"lead_type\" : \"Newsletter\", \"promo_code\" : \"WINTER10\", \"line_items\" : { \"product_id\" : 1414, \"product_variant\" : \"Red\", \"product_brand\" : \"Parker\", \"product_price\" : \"99.99\", \"product_variant_id\" : \"1414-34832\", \"product_name\" : \"Parker Boots\", \"product_category\" : \"Shoes\", \"product_quantity\" : 2 }, \"search_query\" : \"boots\", \"order_id\" : \"X-151481\", \"value\" : \"199.98\" }, \"seed_id\" : [ \"2542620639259\", \"2542620639261\" ], \"url\" : [ \"url\", \"url\" ], \"ad_account_id\" : \"549755885175\", \"ingestion_source\" : { \"=\" : [ \"tag\" ] }, \"ad_id\" : [ \"687201361754\" ], \"retention_days\" : 30, \"engager_type\" : 1, \"engagement_type\" : \"click\", \"percentage\" : 3, \"engagement_domain\" : [ \"www.somedomain.com\" ], \"event\" : \"checkout\", \"pin_id\" : [ \"34567\" ], \"campaign_id\" : [ \"626744528398\" ] }, \"created_timestamp\" : 1451431341, \"id\" : \"1234\", \"type\" : \"audience\", \"ad_account_id\" : \"549755885175\", \"status\" : \"status\" }, { \"size\" : 1000, \"audience_type\" : \"audience_type\", \"updated_timestamp\" : 1451431341, \"name\" : \"ACME Tools\", \"description\" : \"People who love making quilts.\", \"rule\" : { \"country\" : \"US\", \"visitor_source_id\" : \"549755885175\", \"prefill\" : true, \"customer_list_id\" : \"5497558859876\", \"event_source\" : { \"=\" : [ \"web\", \"mobile\" ] }, \"objective_type\" : [ \"AWARENESS\" ], \"event_data\" : { \"video_title\" : \"How to style your Parker Boots\", \"page_name\" : \"Our Favorite Pins on Pinterest.\", \"order_quantity\" : 1, \"property\" : \"Athleta\", \"currency\" : \"USD\", \"lead_type\" : \"Newsletter\", \"promo_code\" : \"WINTER10\", \"line_items\" : { \"product_id\" : 1414, \"product_variant\" : \"Red\", \"product_brand\" : \"Parker\", \"product_price\" : \"99.99\", \"product_variant_id\" : \"1414-34832\", \"product_name\" : \"Parker Boots\", \"product_category\" : \"Shoes\", \"product_quantity\" : 2 }, \"search_query\" : \"boots\", \"order_id\" : \"X-151481\", \"value\" : \"199.98\" }, \"seed_id\" : [ \"2542620639259\", \"2542620639261\" ], \"url\" : [ \"url\", \"url\" ], \"ad_account_id\" : \"549755885175\", \"ingestion_source\" : { \"=\" : [ \"tag\" ] }, \"ad_id\" : [ \"687201361754\" ], \"retention_days\" : 30, \"engager_type\" : 1, \"engagement_type\" : \"click\", \"percentage\" : 3, \"engagement_domain\" : [ \"www.somedomain.com\" ], \"event\" : \"checkout\", \"pin_id\" : [ \"34567\" ], \"campaign_id\" : [ \"626744528398\" ] }, \"created_timestamp\" : 1451431341, \"id\" : \"1234\", \"type\" : \"audience\", \"ad_account_id\" : \"549755885175\", \"status\" : \"status\" } ] }";
+                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"size\" : 1000, \"audience_type\" : \"audience_type\", \"updated_timestamp\" : 1451431341, \"name\" : \"ACME Tools\", \"description\" : \"People who love making quilts.\", \"rule\" : { \"country\" : \"US\", \"visitor_source_id\" : \"549755885175\", \"prefill\" : true, \"customer_list_id\" : \"5497558859876\", \"event_source\" : { \"=\" : [ \"web\", \"mobile\" ] }, \"objective_type\" : [ \"AWARENESS\" ], \"event_data\" : { \"video_title\" : \"How to style your Parker Boots\", \"page_name\" : \"Our Favorite Pins on Pinterest\", \"order_quantity\" : 1, \"property\" : \"Athleta\", \"currency\" : \"\", \"lead_type\" : \"Newsletter\", \"promo_code\" : \"WINTER10\", \"line_items\" : \"\", \"search_query\" : \"boots\", \"order_id\" : \"X-151481\", \"value\" : \"199.98\" }, \"seed_id\" : [ \"2542620639259\", \"2542620639261\" ], \"url\" : [ \"url\", \"url\" ], \"ad_account_id\" : \"549755885175\", \"ad_id\" : [ \"687201361754\" ], \"ingestion_source\" : { \"=\" : [ \"tag\" ] }, \"engager_type\" : 1, \"retention_days\" : 30, \"engagement_type\" : \"click\", \"percentage\" : 3, \"engagement_domain\" : [ \"www.somedomain.com\" ], \"event\" : \"checkout\", \"pin_id\" : [ \"34567\" ], \"campaign_id\" : [ \"626744528398\" ] }, \"created_timestamp\" : 1451431341, \"id\" : \"1234\", \"type\" : \"audience\", \"ad_account_id\" : \"549755885175\", \"created_by_company_name\" : \"Pinterest\", \"status\" : \"status\" }, { \"size\" : 1000, \"audience_type\" : \"audience_type\", \"updated_timestamp\" : 1451431341, \"name\" : \"ACME Tools\", \"description\" : \"People who love making quilts.\", \"rule\" : { \"country\" : \"US\", \"visitor_source_id\" : \"549755885175\", \"prefill\" : true, \"customer_list_id\" : \"5497558859876\", \"event_source\" : { \"=\" : [ \"web\", \"mobile\" ] }, \"objective_type\" : [ \"AWARENESS\" ], \"event_data\" : { \"video_title\" : \"How to style your Parker Boots\", \"page_name\" : \"Our Favorite Pins on Pinterest\", \"order_quantity\" : 1, \"property\" : \"Athleta\", \"currency\" : \"\", \"lead_type\" : \"Newsletter\", \"promo_code\" : \"WINTER10\", \"line_items\" : \"\", \"search_query\" : \"boots\", \"order_id\" : \"X-151481\", \"value\" : \"199.98\" }, \"seed_id\" : [ \"2542620639259\", \"2542620639261\" ], \"url\" : [ \"url\", \"url\" ], \"ad_account_id\" : \"549755885175\", \"ad_id\" : [ \"687201361754\" ], \"ingestion_source\" : { \"=\" : [ \"tag\" ] }, \"engager_type\" : 1, \"retention_days\" : 30, \"engagement_type\" : \"click\", \"percentage\" : 3, \"engagement_domain\" : [ \"www.somedomain.com\" ], \"event\" : \"checkout\", \"pin_id\" : [ \"34567\" ], \"campaign_id\" : [ \"626744528398\" ] }, \"created_timestamp\" : 1451431341, \"id\" : \"1234\", \"type\" : \"audience\", \"ad_account_id\" : \"549755885175\", \"created_by_company_name\" : \"Pinterest\", \"status\" : \"status\" } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -2708,7 +3202,7 @@ public interface AdAccountsApi {
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param audienceId Unique identifier of an audience (required)
-     * @param audienceUpdateRequest The audience to be updated. (optional)
+     * @param audienceUpdateRequest The audience to be updated. (required)
      * @return Success (status code 200)
      *         or Unexpected error (status code 200)
      */
@@ -2738,12 +3232,154 @@ public interface AdAccountsApi {
     default ResponseEntity<Audience> audiencesUpdate(
         @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
         @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "audience_id", description = "Unique identifier of an audience", required = true, in = ParameterIn.PATH) @PathVariable("audience_id") String audienceId,
-        @Parameter(name = "AudienceUpdateRequest", description = "The audience to be updated.") @Valid @RequestBody(required = false) @Nullable AudienceUpdateRequest audienceUpdateRequest
+        @Parameter(name = "AudienceUpdateRequest", description = "The audience to be updated.", required = true) @Valid @RequestBody AudienceUpdateRequest audienceUpdateRequest
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"size\" : 1000, \"audience_type\" : \"audience_type\", \"updated_timestamp\" : 1451431341, \"name\" : \"ACME Tools\", \"description\" : \"People who love making quilts.\", \"rule\" : { \"country\" : \"US\", \"visitor_source_id\" : \"549755885175\", \"prefill\" : true, \"customer_list_id\" : \"5497558859876\", \"event_source\" : { \"=\" : [ \"web\", \"mobile\" ] }, \"objective_type\" : [ \"AWARENESS\" ], \"event_data\" : { \"video_title\" : \"How to style your Parker Boots\", \"page_name\" : \"Our Favorite Pins on Pinterest.\", \"order_quantity\" : 1, \"property\" : \"Athleta\", \"currency\" : \"USD\", \"lead_type\" : \"Newsletter\", \"promo_code\" : \"WINTER10\", \"line_items\" : { \"product_id\" : 1414, \"product_variant\" : \"Red\", \"product_brand\" : \"Parker\", \"product_price\" : \"99.99\", \"product_variant_id\" : \"1414-34832\", \"product_name\" : \"Parker Boots\", \"product_category\" : \"Shoes\", \"product_quantity\" : 2 }, \"search_query\" : \"boots\", \"order_id\" : \"X-151481\", \"value\" : \"199.98\" }, \"seed_id\" : [ \"2542620639259\", \"2542620639261\" ], \"url\" : [ \"url\", \"url\" ], \"ad_account_id\" : \"549755885175\", \"ingestion_source\" : { \"=\" : [ \"tag\" ] }, \"ad_id\" : [ \"687201361754\" ], \"retention_days\" : 30, \"engager_type\" : 1, \"engagement_type\" : \"click\", \"percentage\" : 3, \"engagement_domain\" : [ \"www.somedomain.com\" ], \"event\" : \"checkout\", \"pin_id\" : [ \"34567\" ], \"campaign_id\" : [ \"626744528398\" ] }, \"created_timestamp\" : 1451431341, \"id\" : \"1234\", \"type\" : \"audience\", \"ad_account_id\" : \"549755885175\", \"status\" : \"status\" }";
+                    String exampleString = "{ \"size\" : 1000, \"audience_type\" : \"audience_type\", \"updated_timestamp\" : 1451431341, \"name\" : \"ACME Tools\", \"description\" : \"People who love making quilts.\", \"rule\" : { \"country\" : \"US\", \"visitor_source_id\" : \"549755885175\", \"prefill\" : true, \"customer_list_id\" : \"5497558859876\", \"event_source\" : { \"=\" : [ \"web\", \"mobile\" ] }, \"objective_type\" : [ \"AWARENESS\" ], \"event_data\" : { \"video_title\" : \"How to style your Parker Boots\", \"page_name\" : \"Our Favorite Pins on Pinterest\", \"order_quantity\" : 1, \"property\" : \"Athleta\", \"currency\" : \"\", \"lead_type\" : \"Newsletter\", \"promo_code\" : \"WINTER10\", \"line_items\" : \"\", \"search_query\" : \"boots\", \"order_id\" : \"X-151481\", \"value\" : \"199.98\" }, \"seed_id\" : [ \"2542620639259\", \"2542620639261\" ], \"url\" : [ \"url\", \"url\" ], \"ad_account_id\" : \"549755885175\", \"ad_id\" : [ \"687201361754\" ], \"ingestion_source\" : { \"=\" : [ \"tag\" ] }, \"engager_type\" : 1, \"retention_days\" : 30, \"engagement_type\" : \"click\", \"percentage\" : 3, \"engagement_domain\" : [ \"www.somedomain.com\" ], \"event\" : \"checkout\", \"pin_id\" : [ \"34567\" ], \"campaign_id\" : [ \"626744528398\" ] }, \"created_timestamp\" : 1451431341, \"id\" : \"1234\", \"type\" : \"audience\", \"ad_account_id\" : \"549755885175\", \"created_by_company_name\" : \"Pinterest\", \"status\" : \"status\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    String PATH_BILLING_INVOICE_DOWNLOAD_GET = "/ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download";
+    /**
+     * GET /ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download : Get download url for a billing invoice
+     * Get download url for a billing invoice.
+     *
+     * @param adAccountId Unique identifier of an ad account. (required)
+     * @param billingInvoiceId Unique identifier of a billing invoice. (required)
+     * @return Successfully fetched Billing invoice information for a given ad account (status code 200)
+     *         or Invalid request parameter. (status code 400)
+     *         or Unexpected error (status code 200)
+     */
+    @Operation(
+        operationId = "billingInvoiceDownloadGet",
+        summary = "Get download url for a billing invoice",
+        description = "Get download url for a billing invoice.",
+        tags = { "billing" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Successfully fetched Billing invoice information for a given ad account", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = BillingInvoiceDownloadResponse.class))
+            }),
+            @ApiResponse(responseCode = "400", description = "Invalid request parameter.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            })
+        },
+        security = {
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read", "billing:read" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.GET,
+        value = AdAccountsApi.PATH_BILLING_INVOICE_DOWNLOAD_GET,
+        produces = { "application/json" }
+    )
+    default ResponseEntity<BillingInvoiceDownloadResponse> billingInvoiceDownloadGet(
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "billing_invoice_id", description = "Unique identifier of a billing invoice.", required = true, in = ParameterIn.PATH) @PathVariable("billing_invoice_id") String billingInvoiceId
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"download_url\" : \"download_url\", \"id\" : \"id\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    String PATH_BILLING_INVOICES_GET = "/ad_accounts/{ad_account_id}/billing_invoices";
+    /**
+     * GET /ad_accounts/{ad_account_id}/billing_invoices : Get billing invoices
+     * Get billing invoices in the advertiser account.
+     *
+     * @param adAccountId Unique identifier of an ad account. (required)
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param sort Field of which to sort billing invoices (optional, default to DUE_DATE)
+     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     * @param status Status of billing invoices to filter by (optional)
+     * @param documentType Document type of billing invoices to filter by (optional)
+     * @param startDueDate Starting point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
+     * @param endDueDate Ending point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
+     * @return Success (status code 200)
+     *         or Invalid request parameter. (status code 400)
+     *         or Unexpected error (status code 200)
+     */
+    @Operation(
+        operationId = "billingInvoicesGet",
+        summary = "Get billing invoices",
+        description = "Get billing invoices in the advertiser account.",
+        tags = { "billing" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Success", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = BillingInvoicesGet200Response.class))
+            }),
+            @ApiResponse(responseCode = "400", description = "Invalid request parameter.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            })
+        },
+        security = {
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read", "billing:read" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.GET,
+        value = AdAccountsApi.PATH_BILLING_INVOICES_GET,
+        produces = { "application/json" }
+    )
+    default ResponseEntity<BillingInvoicesGet200Response> billingInvoicesGet(
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
+        @Parameter(name = "bookmark", description = "Cursor used to fetch the next page of items", in = ParameterIn.QUERY) @Valid @RequestParam(value = "bookmark", required = false) @Nullable String bookmark,
+        @Min(value = 1) @Max(value = 250) @Parameter(name = "page_size", description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") Integer pageSize,
+        @Parameter(name = "sort", description = "Field of which to sort billing invoices", in = ParameterIn.QUERY) @Valid @RequestParam(value = "sort", required = false, defaultValue = "DUE_DATE") String sort,
+        @Parameter(name = "order", description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "order", required = false) @Nullable String order,
+        @Parameter(name = "status", description = "Status of billing invoices to filter by", in = ParameterIn.QUERY) @Valid @RequestParam(value = "status", required = false) @Nullable String status,
+        @Parameter(name = "document_type", description = "Document type of billing invoices to filter by", in = ParameterIn.QUERY) @Valid @RequestParam(value = "document_type", required = false) @Nullable String documentType,
+        @Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})$") @Parameter(name = "start_due_date", description = "Starting point for due dates when searching for invoices. Format: YYYY-MM-DD", in = ParameterIn.QUERY) @Valid @RequestParam(value = "start_due_date", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @Nullable LocalDate startDueDate,
+        @Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})$") @Parameter(name = "end_due_date", description = "Ending point for due dates when searching for invoices. Format: YYYY-MM-DD", in = ParameterIn.QUERY) @Valid @RequestParam(value = "end_due_date", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @Nullable LocalDate endDueDate
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"amount_tax_micro_currency\" : 5, \"billing_period_start_date\" : \"2000-01-23\", \"ad_account_name\" : \"ad_account_name\", \"amount_billed_micro_currency\" : 0, \"payment_terms\" : \"NET 30\", \"amount_net_micro_currency\" : 1, \"bill_to_country\" : \"bill_to_country\", \"amount_discount_micro_currency\" : 6, \"ad_account_id\" : \"ad_account_id\", \"invoice_due_date\" : \"2000-01-23\", \"billing_period_end_date\" : \"2000-01-23\", \"currency\" : \"UNK\", \"id\" : \"id\", \"document_type\" : \"INVOICE\", \"status\" : \"OPEN\" }, { \"amount_tax_micro_currency\" : 5, \"billing_period_start_date\" : \"2000-01-23\", \"ad_account_name\" : \"ad_account_name\", \"amount_billed_micro_currency\" : 0, \"payment_terms\" : \"NET 30\", \"amount_net_micro_currency\" : 1, \"bill_to_country\" : \"bill_to_country\", \"amount_discount_micro_currency\" : 6, \"ad_account_id\" : \"ad_account_id\", \"invoice_due_date\" : \"2000-01-23\", \"billing_period_end_date\" : \"2000-01-23\", \"currency\" : \"UNK\", \"id\" : \"id\", \"document_type\" : \"INVOICE\", \"status\" : \"OPEN\" } ] }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -2762,7 +3398,7 @@ public interface AdAccountsApi {
     String PATH_BILLING_PROFILES_GET = "/ad_accounts/{ad_account_id}/billing_profiles";
     /**
      * GET /ad_accounts/{ad_account_id}/billing_profiles : Get billing profiles
-     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param isActive Return active billing profiles, if false return all billing profiles. (required)
@@ -2774,7 +3410,7 @@ public interface AdAccountsApi {
     @Operation(
         operationId = "billingProfilesGet",
         summary = "Get billing profiles",
-        description = "Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>",
+        description = "Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>",
         tags = { "billing" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
@@ -2802,7 +3438,7 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"payment_method_brand\" : \"VISA\", \"id\" : \"12312451231\", \"card_type\" : \"VISA\", \"status\" : \"INVALID\", \"advertiser_id\" : \"12312451231\" }, { \"payment_method_brand\" : \"VISA\", \"id\" : \"12312451231\", \"card_type\" : \"VISA\", \"status\" : \"INVALID\", \"advertiser_id\" : \"12312451231\" } ] }";
+                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"payment_method_brand\" : \"VISA\", \"billing_type\" : \"CREDIT_CARD\", \"id\" : \"12312451231\", \"card_type\" : \"VISA\", \"advertiser_id\" : \"12312451231\", \"status\" : \"INVALID\" }, { \"payment_method_brand\" : \"VISA\", \"billing_type\" : \"CREDIT_CARD\", \"id\" : \"12312451231\", \"card_type\" : \"VISA\", \"advertiser_id\" : \"12312451231\", \"status\" : \"INVALID\" } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -2821,7 +3457,7 @@ public interface AdAccountsApi {
     String PATH_BULK_DOWNLOAD_CREATE = "/ad_accounts/{ad_account_id}/bulk/download";
     /**
      * POST /ad_accounts/{ad_account_id}/bulk/download : Get advertiser entities in bulk
-     * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, and/or keywords; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+     * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param bulkDownloadRequest Parameters to get ad entities in bulk (required)
@@ -2831,7 +3467,7 @@ public interface AdAccountsApi {
     @Operation(
         operationId = "bulkDownloadCreate",
         summary = "Get advertiser entities in bulk",
-        description = "Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, and/or keywords; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.",
+        description = "Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.",
         tags = { "bulk" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
@@ -2899,7 +3535,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -2934,7 +3571,7 @@ public interface AdAccountsApi {
     String PATH_BULK_UPSERT_CREATE = "/ad_accounts/{ad_account_id}/bulk/upsert";
     /**
      * POST /ad_accounts/{ad_account_id}/bulk/upsert : Create/update ad entities in bulk
-     * Either create or update any combination of campaigns, ad groups, product groups, ads, or keywords. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
+     * Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param bulkUpsertRequest Parameters to get create/update ad entities in bulk (required)
@@ -2944,7 +3581,7 @@ public interface AdAccountsApi {
     @Operation(
         operationId = "bulkUpsertCreate",
         summary = "Create/update ad entities in bulk",
-        description = "Either create or update any combination of campaigns, ad groups, product groups, ads, or keywords. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.",
+        description = "Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.",
         tags = { "bulk" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
@@ -2990,7 +3627,7 @@ public interface AdAccountsApi {
     String PATH_CAMPAIGN_TARGETING_ANALYTICS_GET = "/ad_accounts/{ad_account_id}/campaigns/targeting_analytics";
     /**
      * GET /ad_accounts/{ad_account_id}/campaigns/targeting_analytics : Get targeting analytics for campaigns
-     * Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param campaignIds List of Campaign Ids to use to filter the results. (required)
@@ -3000,17 +3637,18 @@ public interface AdAccountsApi {
      * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned (required)
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly (required)
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
-     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
+     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to 30)
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to 1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to TIME_OF_AD_ACTION)
      * @param attributionTypes List of types of attribution for the conversion report (optional)
+     * @param reportingTimezone Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
      * @return Success (status code 200)
      *         or Unexpected error (status code 200)
      */
     @Operation(
         operationId = "campaignTargetingAnalyticsGet",
         summary = "Get targeting analytics for campaigns",
-        description = "Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.",
+        description = "Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.",
         tags = { "campaigns" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
@@ -3021,7 +3659,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -3031,17 +3670,18 @@ public interface AdAccountsApi {
     )
     default ResponseEntity<MetricsResponse> campaignTargetingAnalyticsGet(
         @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
-        @NotNull @Size(min = 1, max = 100) @Parameter(name = "campaign_ids", description = "List of Campaign Ids to use to filter the results.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "campaign_ids", required = true) List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,
+        @NotNull @Size(min = 1, max = 250) @Parameter(name = "campaign_ids", description = "List of Campaign Ids to use to filter the results.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "campaign_ids", required = true) List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,
         @NotNull @Parameter(name = "start_date", description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "start_date", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
         @NotNull @Parameter(name = "end_date", description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "end_date", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
         @NotNull @Size(min = 1, max = 14) @Parameter(name = "targeting_types", description = "Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "targeting_types", required = true) List<AdsAnalyticsCampaignTargetingType> targetingTypes,
         @NotNull @Parameter(name = "columns", description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "columns", required = true) List<String> columns,
         @NotNull @Parameter(name = "granularity", description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "granularity", required = true) Granularity granularity,
         @Parameter(name = "click_window_days", description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") Integer clickWindowDays,
-        @Parameter(name = "engagement_window_days", description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") Integer engagementWindowDays,
+        @Parameter(name = "engagement_window_days", description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") Integer engagementWindowDays,
         @Parameter(name = "view_window_days", description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") Integer viewWindowDays,
         @Parameter(name = "conversion_report_time", description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") String conversionReportTime,
-        @Parameter(name = "attribution_types", description = "List of types of attribution for the conversion report", in = ParameterIn.QUERY) @Valid @RequestParam(value = "attribution_types", required = false) @Nullable ConversionReportAttributionType attributionTypes
+        @Size(max = 2) @Parameter(name = "attribution_types", description = "List of types of attribution for the conversion report", in = ParameterIn.QUERY) @Valid @RequestParam(value = "attribution_types", required = false) @Nullable List<ConversionReportAttributionType> attributionTypes,
+        @Parameter(name = "reporting_timezone", description = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "reporting_timezone", required = false) @Nullable ReportingTimeZone reportingTimezone
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -3065,7 +3705,7 @@ public interface AdAccountsApi {
     String PATH_CAMPAIGNS_ANALYTICS = "/ad_accounts/{ad_account_id}/campaigns/analytics";
     /**
      * GET /ad_accounts/{ad_account_id}/campaigns/analytics : Get campaign analytics
-     * Get analytics for the specified campaigns in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the specified campaigns in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. (required)
@@ -3074,9 +3714,11 @@ public interface AdAccountsApi {
      * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned (required)
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly (required)
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
-     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
+     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to 30)
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to 1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to TIME_OF_AD_ACTION)
+     * @param aggregateReportRows Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users. (optional, default to false)
+     * @param reportingTimezone Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
      * @return Success (status code 200)
      *         or Invalid ad account campaign analytics parameters. (status code 400)
      *         or Unexpected error (status code 200)
@@ -3084,7 +3726,7 @@ public interface AdAccountsApi {
     @Operation(
         operationId = "campaignsAnalytics",
         summary = "Get campaign analytics",
-        description = "Get analytics for the specified campaigns in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.",
+        description = "Get analytics for the specified campaigns in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.",
         tags = { "campaigns" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
@@ -3098,7 +3740,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -3110,13 +3753,15 @@ public interface AdAccountsApi {
         @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
         @NotNull @Parameter(name = "start_date", description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "start_date", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
         @NotNull @Parameter(name = "end_date", description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "end_date", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
-        @NotNull @Size(min = 1, max = 100) @Parameter(name = "campaign_ids", description = "List of Campaign Ids to use to filter the results.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "campaign_ids", required = true) List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,
+        @NotNull @Size(min = 1, max = 250) @Parameter(name = "campaign_ids", description = "List of Campaign Ids to use to filter the results.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "campaign_ids", required = true) List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,
         @NotNull @Parameter(name = "columns", description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "columns", required = true) List<String> columns,
         @NotNull @Parameter(name = "granularity", description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "granularity", required = true) Granularity granularity,
         @Parameter(name = "click_window_days", description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") Integer clickWindowDays,
-        @Parameter(name = "engagement_window_days", description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") Integer engagementWindowDays,
+        @Parameter(name = "engagement_window_days", description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") Integer engagementWindowDays,
         @Parameter(name = "view_window_days", description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") Integer viewWindowDays,
-        @Parameter(name = "conversion_report_time", description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") String conversionReportTime
+        @Parameter(name = "conversion_report_time", description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") String conversionReportTime,
+        @Parameter(name = "aggregate_report_rows", description = "Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "aggregate_report_rows", required = false, defaultValue = "false") Boolean aggregateReportRows,
+        @Parameter(name = "reporting_timezone", description = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "reporting_timezone", required = false) @Nullable ReportingTimeZone reportingTimezone
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -3145,7 +3790,7 @@ public interface AdAccountsApi {
     String PATH_CAMPAIGNS_CREATE = "/ad_accounts/{ad_account_id}/campaigns";
     /**
      * POST /ad_accounts/{ad_account_id}/campaigns : Create campaigns
-     * Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-your-campaign/\&quot;&gt;Set up your campaign&lt;/a&gt;. &lt;p/&gt; &lt;strong&gt;Note:&lt;/strong&gt; - The values for &#39;lifetime_spend_cap&#39; and &#39;daily_spend_cap&#39; are microcurrency amounts based on the currency field set in the advertiser&#39;s profile. (e.g. USD) &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt;  &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt;
+     * Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-your-campaign/\&quot;&gt;Set up your campaign&lt;/a&gt;. &lt;p/&gt; &lt;strong&gt;Note:&lt;/strong&gt; - The values for &#39;lifetime_spend_cap&#39; and &#39;daily_spend_cap&#39; are microcurrency amounts based on the currency field set in the advertiser&#39;s profile. (e.g. USD) &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt;
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param campaignCreateRequest Array of campaigns. (required)
@@ -3155,7 +3800,7 @@ public interface AdAccountsApi {
     @Operation(
         operationId = "campaignsCreate",
         summary = "Create campaigns",
-        description = "Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see <a href=\"https://help.pinterest.com/en/business/article/set-up-your-campaign/\">Set up your campaign</a>. <p/> <strong>Note:</strong> - The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>  <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>",
+        description = "Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see <a href=\"https://help.pinterest.com/en/business/article/set-up-your-campaign/\">Set up your campaign</a>. <p/> <strong>Note:</strong> - The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>",
         tags = { "campaigns" },
         responses = {
             @ApiResponse(responseCode = "200", description = "response", content = {
@@ -3182,7 +3827,7 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"items\" : [ { \"data\" : { \"created_time\" : 1432744744, \"updated_time\" : 1432744744, \"default_ad_group_budget_in_micro_currency\" : 0, \"lifetime_spend_cap\" : 1432744744, \"end_time\" : 1644023526, \"is_flexible_daily_budgets\" : true, \"daily_spend_cap\" : 1432744744, \"is_campaign_budget_optimization\" : true, \"summary_status\" : \"RUNNING\", \"type\" : \"campaign\", \"tracking_urls\" : \"{}\", \"ad_account_id\" : \"549755885175\", \"is_automated_campaign\" : true, \"start_time\" : 1580865126, \"name\" : \"ACME Tools\", \"order_line_id\" : \"549755885175\", \"id\" : \"549755885175\", \"status\" : \"status\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] }, { \"data\" : { \"created_time\" : 1432744744, \"updated_time\" : 1432744744, \"default_ad_group_budget_in_micro_currency\" : 0, \"lifetime_spend_cap\" : 1432744744, \"end_time\" : 1644023526, \"is_flexible_daily_budgets\" : true, \"daily_spend_cap\" : 1432744744, \"is_campaign_budget_optimization\" : true, \"summary_status\" : \"RUNNING\", \"type\" : \"campaign\", \"tracking_urls\" : \"{}\", \"ad_account_id\" : \"549755885175\", \"is_automated_campaign\" : true, \"start_time\" : 1580865126, \"name\" : \"ACME Tools\", \"order_line_id\" : \"549755885175\", \"id\" : \"549755885175\", \"status\" : \"status\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] } ] }";
+                    String exampleString = "{ \"items\" : [ { \"data\" : { \"bid_options\" : { \"placement_multipliers\" : { \"browse\" : 0.9, \"search\" : 1.2, \"related_pins\" : 1.1 }, \"app_type_multipliers\" : { \"android_mobile\" : 1.1, \"android_tablet\" : 1.1, \"ipad\" : 1.2, \"iphone\" : 1.2, \"web\" : 0.9, \"web_mobile\" : 0.8 }, \"audience_multipliers\" : { \"123\" : 1.1, \"456\" : 1.2 } }, \"created_time\" : 1432744744, \"updated_time\" : 1432744744, \"default_ad_group_budget_in_micro_currency\" : 0, \"lifetime_spend_cap\" : 1432744744, \"end_time\" : 1644023526, \"is_flexible_daily_budgets\" : true, \"daily_spend_cap\" : 1432744744, \"is_campaign_budget_optimization\" : true, \"summary_status\" : \"RUNNING\", \"is_performance_plus\" : true, \"type\" : \"campaign\", \"tracking_urls\" : \"{}\", \"ad_account_id\" : \"549755885175\", \"is_automated_campaign\" : true, \"start_time\" : 1580865126, \"name\" : \"ACME Tools\", \"order_line_id\" : \"549755885175\", \"id\" : \"549755885175\", \"status\" : \"status\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] }, { \"data\" : { \"bid_options\" : { \"placement_multipliers\" : { \"browse\" : 0.9, \"search\" : 1.2, \"related_pins\" : 1.1 }, \"app_type_multipliers\" : { \"android_mobile\" : 1.1, \"android_tablet\" : 1.1, \"ipad\" : 1.2, \"iphone\" : 1.2, \"web\" : 0.9, \"web_mobile\" : 0.8 }, \"audience_multipliers\" : { \"123\" : 1.1, \"456\" : 1.2 } }, \"created_time\" : 1432744744, \"updated_time\" : 1432744744, \"default_ad_group_budget_in_micro_currency\" : 0, \"lifetime_spend_cap\" : 1432744744, \"end_time\" : 1644023526, \"is_flexible_daily_budgets\" : true, \"daily_spend_cap\" : 1432744744, \"is_campaign_budget_optimization\" : true, \"summary_status\" : \"RUNNING\", \"is_performance_plus\" : true, \"type\" : \"campaign\", \"tracking_urls\" : \"{}\", \"ad_account_id\" : \"549755885175\", \"is_automated_campaign\" : true, \"start_time\" : 1580865126, \"name\" : \"ACME Tools\", \"order_line_id\" : \"549755885175\", \"id\" : \"549755885175\", \"status\" : \"status\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -3222,7 +3867,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -3237,7 +3883,7 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"created_time\" : 1432744744, \"updated_time\" : 1432744744, \"lifetime_spend_cap\" : 1432744744, \"end_time\" : 1644023526, \"is_flexible_daily_budgets\" : true, \"daily_spend_cap\" : 1432744744, \"objective_type\" : \"AWARENESS\", \"is_campaign_budget_optimization\" : true, \"summary_status\" : \"RUNNING\", \"type\" : \"campaign\", \"tracking_urls\" : \"{}\", \"ad_account_id\" : \"549755885175\", \"start_time\" : 1580865126, \"name\" : \"ACME Tools\", \"order_line_id\" : \"549755885175\", \"id\" : \"549755885175\", \"status\" : \"status\" }";
+                    String exampleString = "{ \"bid_options\" : { \"placement_multipliers\" : { \"browse\" : 0.9, \"search\" : 1.2, \"related_pins\" : 1.1 }, \"app_type_multipliers\" : { \"android_mobile\" : 1.1, \"android_tablet\" : 1.1, \"ipad\" : 1.2, \"iphone\" : 1.2, \"web\" : 0.9, \"web_mobile\" : 0.8 }, \"audience_multipliers\" : { \"123\" : 1.1, \"456\" : 1.2 } }, \"created_time\" : 1432744744, \"updated_time\" : 1432744744, \"lifetime_spend_cap\" : 1432744744, \"end_time\" : 1644023526, \"is_flexible_daily_budgets\" : true, \"daily_spend_cap\" : 1432744744, \"objective_type\" : \"AWARENESS\", \"is_campaign_budget_optimization\" : true, \"summary_status\" : \"RUNNING\", \"is_performance_plus\" : true, \"type\" : \"campaign\", \"tracking_urls\" : \"{}\", \"ad_account_id\" : \"549755885175\", \"is_automated_campaign\" : true, \"start_time\" : 1580865126, \"name\" : \"ACME Tools\", \"order_line_id\" : \"549755885175\", \"id\" : \"549755885175\", \"status\" : \"status\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -3285,7 +3931,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -3295,7 +3942,7 @@ public interface AdAccountsApi {
     )
     default ResponseEntity<CampaignsList200Response> campaignsList(
         @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
-        @Size(min = 1, max = 100) @Parameter(name = "campaign_ids", description = "List of Campaign Ids to use to filter the results.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "campaign_ids", required = false) @Nullable List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,
+        @Size(min = 1, max = 250) @Parameter(name = "campaign_ids", description = "List of Campaign Ids to use to filter the results.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "campaign_ids", required = false) @Nullable List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,
         @Parameter(name = "entity_statuses", description = "Entity status", in = ParameterIn.QUERY) @Valid @RequestParam(value = "entity_statuses", required = false, defaultValue = "ACTIVE,PAUSED") List<String> entityStatuses,
         @Min(value = 1) @Max(value = 250) @Parameter(name = "page_size", description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") Integer pageSize,
         @Parameter(name = "order", description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "order", required = false) @Nullable String order,
@@ -3304,7 +3951,7 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"created_time\" : 1432744744, \"updated_time\" : 1432744744, \"lifetime_spend_cap\" : 1432744744, \"end_time\" : 1644023526, \"is_flexible_daily_budgets\" : true, \"daily_spend_cap\" : 1432744744, \"objective_type\" : \"AWARENESS\", \"is_campaign_budget_optimization\" : true, \"summary_status\" : \"RUNNING\", \"type\" : \"campaign\", \"tracking_urls\" : \"{}\", \"ad_account_id\" : \"549755885175\", \"start_time\" : 1580865126, \"name\" : \"ACME Tools\", \"order_line_id\" : \"549755885175\", \"id\" : \"549755885175\", \"status\" : \"status\" }, { \"created_time\" : 1432744744, \"updated_time\" : 1432744744, \"lifetime_spend_cap\" : 1432744744, \"end_time\" : 1644023526, \"is_flexible_daily_budgets\" : true, \"daily_spend_cap\" : 1432744744, \"objective_type\" : \"AWARENESS\", \"is_campaign_budget_optimization\" : true, \"summary_status\" : \"RUNNING\", \"type\" : \"campaign\", \"tracking_urls\" : \"{}\", \"ad_account_id\" : \"549755885175\", \"start_time\" : 1580865126, \"name\" : \"ACME Tools\", \"order_line_id\" : \"549755885175\", \"id\" : \"549755885175\", \"status\" : \"status\" } ] }";
+                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"bid_options\" : { \"placement_multipliers\" : { \"browse\" : 0.9, \"search\" : 1.2, \"related_pins\" : 1.1 }, \"app_type_multipliers\" : { \"android_mobile\" : 1.1, \"android_tablet\" : 1.1, \"ipad\" : 1.2, \"iphone\" : 1.2, \"web\" : 0.9, \"web_mobile\" : 0.8 }, \"audience_multipliers\" : { \"123\" : 1.1, \"456\" : 1.2 } }, \"created_time\" : 1432744744, \"updated_time\" : 1432744744, \"lifetime_spend_cap\" : 1432744744, \"end_time\" : 1644023526, \"is_flexible_daily_budgets\" : true, \"daily_spend_cap\" : 1432744744, \"objective_type\" : \"AWARENESS\", \"is_campaign_budget_optimization\" : true, \"summary_status\" : \"RUNNING\", \"is_performance_plus\" : true, \"type\" : \"campaign\", \"tracking_urls\" : \"{}\", \"ad_account_id\" : \"549755885175\", \"is_automated_campaign\" : true, \"start_time\" : 1580865126, \"name\" : \"ACME Tools\", \"order_line_id\" : \"549755885175\", \"id\" : \"549755885175\", \"status\" : \"status\" }, { \"bid_options\" : { \"placement_multipliers\" : { \"browse\" : 0.9, \"search\" : 1.2, \"related_pins\" : 1.1 }, \"app_type_multipliers\" : { \"android_mobile\" : 1.1, \"android_tablet\" : 1.1, \"ipad\" : 1.2, \"iphone\" : 1.2, \"web\" : 0.9, \"web_mobile\" : 0.8 }, \"audience_multipliers\" : { \"123\" : 1.1, \"456\" : 1.2 } }, \"created_time\" : 1432744744, \"updated_time\" : 1432744744, \"lifetime_spend_cap\" : 1432744744, \"end_time\" : 1644023526, \"is_flexible_daily_budgets\" : true, \"daily_spend_cap\" : 1432744744, \"objective_type\" : \"AWARENESS\", \"is_campaign_budget_optimization\" : true, \"summary_status\" : \"RUNNING\", \"is_performance_plus\" : true, \"type\" : \"campaign\", \"tracking_urls\" : \"{}\", \"ad_account_id\" : \"549755885175\", \"is_automated_campaign\" : true, \"start_time\" : 1580865126, \"name\" : \"ACME Tools\", \"order_line_id\" : \"549755885175\", \"id\" : \"549755885175\", \"status\" : \"status\" } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -3328,7 +3975,7 @@ public interface AdAccountsApi {
     String PATH_CAMPAIGNS_UPDATE = "/ad_accounts/{ad_account_id}/campaigns";
     /**
      * PATCH /ad_accounts/{ad_account_id}/campaigns : Update campaigns
-     * Update multiple ad campaigns based on campaign_ids. &lt;p/&gt; &lt;strong&gt;Note:&lt;/strong&gt;&lt;p/&gt;  - &lt;p&gt;The values for &#39;lifetime_spend_cap&#39; and &#39;daily_spend_cap&#39; are microcurrency amounts based on the currency field set in the advertiser&#39;s profile. (e.g. USD) &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt;
+     * &lt;p&gt;Update multiple ad campaigns based on campaign_ids. &lt;/p&gt; &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/p&gt; - &lt;p&gt;The values for &#x60;lifetime_spend_cap&#x60; and &#x60;daily_spend_cap&#x60; are microcurrency amounts based on the currency field set in the advertiser&#39;s profile. (e.g. USD) &lt;p/&gt; &lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser&#39;s profile.&lt;/p&gt; &lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser&#39;s profile.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;   &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt; &lt;ul&gt;   &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;   &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt; &lt;/ul&gt;
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param campaignUpdateRequest Array of campaigns. (required)
@@ -3338,7 +3985,7 @@ public interface AdAccountsApi {
     @Operation(
         operationId = "campaignsUpdate",
         summary = "Update campaigns",
-        description = "Update multiple ad campaigns based on campaign_ids. <p/> <strong>Note:</strong><p/>  - <p>The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>",
+        description = "<p>Update multiple ad campaigns based on campaign_ids. </p> <p><strong>Note:</strong></p> - <p>The values for `lifetime_spend_cap` and `daily_spend_cap` are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser's profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser's profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>",
         tags = { "campaigns" },
         responses = {
             @ApiResponse(responseCode = "200", description = "response", content = {
@@ -3365,7 +4012,7 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"items\" : [ { \"data\" : { \"created_time\" : 1432744744, \"updated_time\" : 1432744744, \"default_ad_group_budget_in_micro_currency\" : 0, \"lifetime_spend_cap\" : 1432744744, \"end_time\" : 1644023526, \"is_flexible_daily_budgets\" : true, \"daily_spend_cap\" : 1432744744, \"is_campaign_budget_optimization\" : true, \"summary_status\" : \"RUNNING\", \"type\" : \"campaign\", \"tracking_urls\" : \"{}\", \"ad_account_id\" : \"549755885175\", \"is_automated_campaign\" : true, \"start_time\" : 1580865126, \"name\" : \"ACME Tools\", \"order_line_id\" : \"549755885175\", \"id\" : \"549755885175\", \"status\" : \"status\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] }, { \"data\" : { \"created_time\" : 1432744744, \"updated_time\" : 1432744744, \"default_ad_group_budget_in_micro_currency\" : 0, \"lifetime_spend_cap\" : 1432744744, \"end_time\" : 1644023526, \"is_flexible_daily_budgets\" : true, \"daily_spend_cap\" : 1432744744, \"is_campaign_budget_optimization\" : true, \"summary_status\" : \"RUNNING\", \"type\" : \"campaign\", \"tracking_urls\" : \"{}\", \"ad_account_id\" : \"549755885175\", \"is_automated_campaign\" : true, \"start_time\" : 1580865126, \"name\" : \"ACME Tools\", \"order_line_id\" : \"549755885175\", \"id\" : \"549755885175\", \"status\" : \"status\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] } ] }";
+                    String exampleString = "{ \"items\" : [ { \"data\" : { \"bid_options\" : { \"placement_multipliers\" : { \"browse\" : 0.9, \"search\" : 1.2, \"related_pins\" : 1.1 }, \"app_type_multipliers\" : { \"android_mobile\" : 1.1, \"android_tablet\" : 1.1, \"ipad\" : 1.2, \"iphone\" : 1.2, \"web\" : 0.9, \"web_mobile\" : 0.8 }, \"audience_multipliers\" : { \"123\" : 1.1, \"456\" : 1.2 } }, \"created_time\" : 1432744744, \"updated_time\" : 1432744744, \"default_ad_group_budget_in_micro_currency\" : 0, \"lifetime_spend_cap\" : 1432744744, \"end_time\" : 1644023526, \"is_flexible_daily_budgets\" : true, \"daily_spend_cap\" : 1432744744, \"is_campaign_budget_optimization\" : true, \"summary_status\" : \"RUNNING\", \"is_performance_plus\" : true, \"type\" : \"campaign\", \"tracking_urls\" : \"{}\", \"ad_account_id\" : \"549755885175\", \"is_automated_campaign\" : true, \"start_time\" : 1580865126, \"name\" : \"ACME Tools\", \"order_line_id\" : \"549755885175\", \"id\" : \"549755885175\", \"status\" : \"status\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] }, { \"data\" : { \"bid_options\" : { \"placement_multipliers\" : { \"browse\" : 0.9, \"search\" : 1.2, \"related_pins\" : 1.1 }, \"app_type_multipliers\" : { \"android_mobile\" : 1.1, \"android_tablet\" : 1.1, \"ipad\" : 1.2, \"iphone\" : 1.2, \"web\" : 0.9, \"web_mobile\" : 0.8 }, \"audience_multipliers\" : { \"123\" : 1.1, \"456\" : 1.2 } }, \"created_time\" : 1432744744, \"updated_time\" : 1432744744, \"default_ad_group_budget_in_micro_currency\" : 0, \"lifetime_spend_cap\" : 1432744744, \"end_time\" : 1644023526, \"is_flexible_daily_budgets\" : true, \"daily_spend_cap\" : 1432744744, \"is_campaign_budget_optimization\" : true, \"summary_status\" : \"RUNNING\", \"is_performance_plus\" : true, \"type\" : \"campaign\", \"tracking_urls\" : \"{}\", \"ad_account_id\" : \"549755885175\", \"is_automated_campaign\" : true, \"start_time\" : 1580865126, \"name\" : \"ACME Tools\", \"order_line_id\" : \"549755885175\", \"id\" : \"549755885175\", \"status\" : \"status\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -3381,27 +4028,156 @@ public interface AdAccountsApi {
     }
 
 
+    String PATH_CONVERSION_EQS_LIST = "/ad_accounts/{ad_account_id}/conversion_eqs";
+    /**
+     * GET /ad_accounts/{ad_account_id}/conversion_eqs : Get event quality score (EQS)
+     * Get the Event Quality Score (EQS) of your conversion signals.  [Event Quality Score](https://help.pinterest.com/en/business/article/eqs) indicates how effective the customer information and event insights (metadata) passed with your web, app and offline conversion events may be at matching to a Pinterest user.
+     *
+     * @param lookbackPeriod Lookback window (number of days). (required)
+     * @param adAccountId Unique identifier of an ad account. (required)
+     * @param sourcePlatform Source platform of event. (optional)
+     * @param ingestionSource Ingestion source of event. (optional)
+     * @return The request has succeeded. (status code 200)
+     *         or The request could not be understood by the server due to unexpected data. (status code 400)
+     *         or Authentication is required and has either failed or not been provided. (status code 401)
+     *         or The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. (status code 403)
+     *         or The requested resource could not be found on this server. (status code 404)
+     *         or The user has sent too many requests in a given amount of time and is being rate limited. (status code 429)
+     *         or An unexpected error response. (status code 200)
+     */
+    @Operation(
+        operationId = "conversionEqsList",
+        summary = "Get event quality score (EQS)",
+        description = "Get the Event Quality Score (EQS) of your conversion signals.  [Event Quality Score](https://help.pinterest.com/en/business/article/eqs) indicates how effective the customer information and event insights (metadata) passed with your web, app and offline conversion events may be at matching to a Pinterest user.",
+        tags = { "conversion_eqs" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "The request has succeeded.", content = {
+                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = EventQualityScore.class)))
+            }),
+            @ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "An unexpected error response.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            })
+        },
+        security = {
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.GET,
+        value = AdAccountsApi.PATH_CONVERSION_EQS_LIST,
+        produces = { "application/json" }
+    )
+    default ResponseEntity<List<EventQualityScore>> conversionEqsList(
+        @NotNull @Parameter(name = "lookback_period", description = "Lookback window (number of days).", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "lookback_period", required = true) LookbackPeriodOptions lookbackPeriod,
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
+        @Parameter(name = "source_platform", description = "Source platform of event.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "source_platform", required = false) @Nullable SourcePlatformOptions sourcePlatform,
+        @Parameter(name = "ingestion_source", description = "Ingestion source of event.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "ingestion_source", required = false) @Nullable IngestionSourceOptions ingestionSource
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "[ { \"source_platform\" : \"WEB\", \"ingestion_source\" : \"TAG\", \"overall_status\" : \"NEEDS_IMPROVEMENT\", \"lookback_period\" : \"1d\", \"quality_components\" : { \"click_id_epik\" : { \"key\" : { \"coverage\" : 0.8008281904610115, \"overlap\" : 6.027456183070403, \"issues\" : [ { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" }, { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" } ] } }, \"advertiser_external_id\" : { \"key\" : { \"coverage\" : 0.8008281904610115, \"overlap\" : 6.027456183070403, \"issues\" : [ { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" }, { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" } ] } }, \"product_id\" : { \"key\" : { \"coverage\" : 0.8008281904610115, \"overlap\" : 6.027456183070403, \"issues\" : [ { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" }, { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" } ] } }, \"hashed_email\" : { \"key\" : { \"coverage\" : 0.8008281904610115, \"overlap\" : 6.027456183070403, \"issues\" : [ { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" }, { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" } ] } }, \"ip_address\" : { \"key\" : { \"coverage\" : 0.8008281904610115, \"overlap\" : 6.027456183070403, \"issues\" : [ { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" }, { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" } ] } }, \"hashed_maid\" : { \"key\" : { \"coverage\" : 0.8008281904610115, \"overlap\" : 6.027456183070403, \"issues\" : [ { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" }, { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" } ] } }, \"order_id\" : { \"key\" : { \"coverage\" : 0.8008281904610115, \"overlap\" : 6.027456183070403, \"issues\" : [ { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" }, { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" } ] } }, \"source_url\" : { \"key\" : { \"coverage\" : 0.8008281904610115, \"overlap\" : 6.027456183070403, \"issues\" : [ { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" }, { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" } ] } }, \"user_agent\" : { \"key\" : { \"coverage\" : 0.8008281904610115, \"overlap\" : 6.027456183070403, \"issues\" : [ { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" }, { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" } ] } }, \"external_event_id\" : { \"key\" : { \"coverage\" : 0.8008281904610115, \"overlap\" : 6.027456183070403, \"issues\" : [ { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" }, { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" } ] } }, \"order_value\" : { \"key\" : { \"coverage\" : 0.8008281904610115, \"overlap\" : 6.027456183070403, \"issues\" : [ { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" }, { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" } ] } } } }, { \"source_platform\" : \"WEB\", \"ingestion_source\" : \"TAG\", \"overall_status\" : \"NEEDS_IMPROVEMENT\", \"lookback_period\" : \"1d\", \"quality_components\" : { \"click_id_epik\" : { \"key\" : { \"coverage\" : 0.8008281904610115, \"overlap\" : 6.027456183070403, \"issues\" : [ { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" }, { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" } ] } }, \"advertiser_external_id\" : { \"key\" : { \"coverage\" : 0.8008281904610115, \"overlap\" : 6.027456183070403, \"issues\" : [ { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" }, { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" } ] } }, \"product_id\" : { \"key\" : { \"coverage\" : 0.8008281904610115, \"overlap\" : 6.027456183070403, \"issues\" : [ { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" }, { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" } ] } }, \"hashed_email\" : { \"key\" : { \"coverage\" : 0.8008281904610115, \"overlap\" : 6.027456183070403, \"issues\" : [ { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" }, { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" } ] } }, \"ip_address\" : { \"key\" : { \"coverage\" : 0.8008281904610115, \"overlap\" : 6.027456183070403, \"issues\" : [ { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" }, { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" } ] } }, \"hashed_maid\" : { \"key\" : { \"coverage\" : 0.8008281904610115, \"overlap\" : 6.027456183070403, \"issues\" : [ { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" }, { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" } ] } }, \"order_id\" : { \"key\" : { \"coverage\" : 0.8008281904610115, \"overlap\" : 6.027456183070403, \"issues\" : [ { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" }, { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" } ] } }, \"source_url\" : { \"key\" : { \"coverage\" : 0.8008281904610115, \"overlap\" : 6.027456183070403, \"issues\" : [ { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" }, { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" } ] } }, \"user_agent\" : { \"key\" : { \"coverage\" : 0.8008281904610115, \"overlap\" : 6.027456183070403, \"issues\" : [ { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" }, { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" } ] } }, \"external_event_id\" : { \"key\" : { \"coverage\" : 0.8008281904610115, \"overlap\" : 6.027456183070403, \"issues\" : [ { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" }, { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" } ] } }, \"order_value\" : { \"key\" : { \"coverage\" : 0.8008281904610115, \"overlap\" : 6.027456183070403, \"issues\" : [ { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" }, { \"reason\" : \"reason\", \"name\" : \"name\", \"id\" : \"id\" } ] } } } } ]";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
     String PATH_CONVERSION_TAGS_CREATE = "/ad_accounts/{ad_account_id}/conversion_tags";
     /**
      * POST /ad_accounts/{ad_account_id}/conversion_tags : Create conversion tag
-     * Create a conversion tag, also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Pinterest tag&lt;/a&gt;, with the option to enable enhanced match.&lt;p/&gt; The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.&lt;p/&gt; For more information, see:&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot;&gt;Set up the Pinterest tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/\&quot;&gt;Pinterest Tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/#enhanced-match\&quot;&gt;Enhanced match&lt;/a&gt;
+     * Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account&#39;s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
      *
      * @param adAccountId Unique identifier of an ad account. (required)
-     * @param conversionTagCreate Conversion Tag to create (required)
-     * @return Success (status code 200)
-     *         or Unexpected error (status code 200)
+     * @param conversionTagCreate  (required)
+     * @return The request has succeeded. (status code 200)
+     *         or Resource create operation completed successfully. (status code 201)
+     *         or The request could not be understood by the server due to unexpected data. (status code 400)
+     *         or Authentication is required and has either failed or not been provided. (status code 401)
+     *         or The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. (status code 403)
+     *         or The requested resource could not be found on this server. (status code 404)
+     *         or The user has sent too many requests in a given amount of time and is being rate limited. (status code 429)
+     *         or An unexpected error response. (status code 200)
      */
     @Operation(
         operationId = "conversionTagsCreate",
         summary = "Create conversion tag",
-        description = "Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\" target=\"_blank\">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\">Set up the Pinterest tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/\">Pinterest Tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/#enhanced-match\">Enhanced match</a>",
+        description = "Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account's website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)",
         tags = { "conversion_tags" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "Success", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = ConversionTagResponse.class))
+            @ApiResponse(responseCode = "200", description = "The request has succeeded.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = ConversionTag.class))
             }),
-            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "201", description = "Resource create operation completed successfully.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = ConversionTag.class))
+            }),
+            @ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "An unexpected error response.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             })
         },
         security = {
@@ -3414,19 +4190,49 @@ public interface AdAccountsApi {
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    default ResponseEntity<ConversionTagResponse> conversionTagsCreate(
+    default ResponseEntity<ConversionTag> conversionTagsCreate(
         @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
-        @Parameter(name = "ConversionTagCreate", description = "Conversion Tag to create", required = true) @Valid @RequestBody ConversionTagCreate conversionTagCreate
+        @Parameter(name = "ConversionTagCreate", description = "", required = true) @Valid @RequestBody ConversionTagCreate conversionTagCreate
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code_snippet\" : \"<script type=text/javascript> [...]\", \"configs\" : { \"aem_fnln_enabled\" : true, \"aem_enabled\" : true, \"aem_db_enabled\" : true, \"md_frequency\" : 0.6, \"aem_ph_enabled\" : true, \"aem_ge_enabled\" : true, \"aem_loc_enabled\" : true }, \"name\" : \"ACME Checkout Test Tag\", \"enhanced_match_status\" : \"VALIDATION_COMPLETE\", \"id\" : \"2617998078212\", \"last_fired_time_ms\" : 1599030000000, \"version\" : \"3\", \"ad_account_id\" : \"549755885175\", \"status\" : \"ACTIVE\" }";
+                    String exampleString = "{ \"code_snippet\" : \"<script type=text/javascript> [...]\", \"configs\" : \"\", \"name\" : \"ACME Checkout Test Tag\", \"enhanced_match_status\" : \"VALIDATION_COMPLETE\", \"id\" : \"2617998078212\", \"last_fired_time_ms\" : 1599030000000, \"version\" : \"3\", \"ad_account_id\" : \"549755885175\", \"status\" : \"\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code_snippet\" : \"<script type=text/javascript> [...]\", \"configs\" : \"\", \"name\" : \"ACME Checkout Test Tag\", \"enhanced_match_status\" : \"VALIDATION_COMPLETE\", \"id\" : \"2617998078212\", \"last_fired_time_ms\" : 1599030000000, \"version\" : \"3\", \"ad_account_id\" : \"549755885175\", \"status\" : \"\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -3454,14 +4260,15 @@ public interface AdAccountsApi {
         tags = { "conversion_tags" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = ConversionTagResponse.class))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = ConversionTag.class))
             }),
             @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -3469,14 +4276,14 @@ public interface AdAccountsApi {
         value = AdAccountsApi.PATH_CONVERSION_TAGS_GET,
         produces = { "application/json" }
     )
-    default ResponseEntity<ConversionTagResponse> conversionTagsGet(
+    default ResponseEntity<ConversionTag> conversionTagsGet(
         @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
         @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "conversion_tag_id", description = "Id of the conversion tag.", required = true, in = ParameterIn.PATH) @PathVariable("conversion_tag_id") String conversionTagId
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code_snippet\" : \"<script type=text/javascript> [...]\", \"configs\" : { \"aem_fnln_enabled\" : true, \"aem_enabled\" : true, \"aem_db_enabled\" : true, \"md_frequency\" : 0.6, \"aem_ph_enabled\" : true, \"aem_ge_enabled\" : true, \"aem_loc_enabled\" : true }, \"name\" : \"ACME Checkout Test Tag\", \"enhanced_match_status\" : \"VALIDATION_COMPLETE\", \"id\" : \"2617998078212\", \"last_fired_time_ms\" : 1599030000000, \"version\" : \"3\", \"ad_account_id\" : \"549755885175\", \"status\" : \"ACTIVE\" }";
+                    String exampleString = "{ \"code_snippet\" : \"<script type=text/javascript> [...]\", \"configs\" : \"\", \"name\" : \"ACME Checkout Test Tag\", \"enhanced_match_status\" : \"VALIDATION_COMPLETE\", \"id\" : \"2617998078212\", \"last_fired_time_ms\" : 1599030000000, \"version\" : \"3\", \"ad_account_id\" : \"549755885175\", \"status\" : \"\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -3494,29 +4301,50 @@ public interface AdAccountsApi {
 
     String PATH_CONVERSION_TAGS_LIST = "/ad_accounts/{ad_account_id}/conversion_tags";
     /**
-     * GET /ad_accounts/{ad_account_id}/conversion_tags : Get conversion tags
+     * GET /ad_accounts/{ad_account_id}/conversion_tags : List conversion tags
      * List conversion tags associated with an ad account.
      *
      * @param adAccountId Unique identifier of an ad account. (required)
-     * @param filterDeleted Filter out deleted tags. (optional, default to false)
-     * @return Success (status code 200)
-     *         or Unexpected error (status code 200)
+     * @param filterDeleted Filter by deleted status (optional, default to false)
+     * @return The request has succeeded. (status code 200)
+     *         or The request could not be understood by the server due to unexpected data. (status code 400)
+     *         or Authentication is required and has either failed or not been provided. (status code 401)
+     *         or The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. (status code 403)
+     *         or The requested resource could not be found on this server. (status code 404)
+     *         or The user has sent too many requests in a given amount of time and is being rate limited. (status code 429)
+     *         or An unexpected error response. (status code 200)
      */
     @Operation(
         operationId = "conversionTagsList",
-        summary = "Get conversion tags",
+        summary = "List conversion tags",
         description = "List conversion tags associated with an ad account.",
         tags = { "conversion_tags" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "Success", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = ConversionTagListResponse.class))
+            @ApiResponse(responseCode = "200", description = "The request has succeeded.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = ConversionTagsList200Response.class))
             }),
-            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "An unexpected error response.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -3524,19 +4352,44 @@ public interface AdAccountsApi {
         value = AdAccountsApi.PATH_CONVERSION_TAGS_LIST,
         produces = { "application/json" }
     )
-    default ResponseEntity<ConversionTagListResponse> conversionTagsList(
+    default ResponseEntity<ConversionTagsList200Response> conversionTagsList(
         @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
-        @Parameter(name = "filter_deleted", description = "Filter out deleted tags.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "filter_deleted", required = false, defaultValue = "false") Boolean filterDeleted
+        @Parameter(name = "filter_deleted", description = "Filter by deleted status", in = ParameterIn.QUERY) @Valid @RequestParam(value = "filter_deleted", required = false, defaultValue = "false") Boolean filterDeleted
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"items\" : [ { \"code_snippet\" : \"<script type=text/javascript> [...]\", \"configs\" : { \"aem_fnln_enabled\" : true, \"aem_enabled\" : true, \"aem_db_enabled\" : true, \"md_frequency\" : 0.6, \"aem_ph_enabled\" : true, \"aem_ge_enabled\" : true, \"aem_loc_enabled\" : true }, \"name\" : \"ACME Checkout Test Tag\", \"enhanced_match_status\" : \"VALIDATION_COMPLETE\", \"id\" : \"2617998078212\", \"last_fired_time_ms\" : 1599030000000, \"version\" : \"3\", \"ad_account_id\" : \"549755885175\", \"status\" : \"ACTIVE\" }, { \"code_snippet\" : \"<script type=text/javascript> [...]\", \"configs\" : { \"aem_fnln_enabled\" : true, \"aem_enabled\" : true, \"aem_db_enabled\" : true, \"md_frequency\" : 0.6, \"aem_ph_enabled\" : true, \"aem_ge_enabled\" : true, \"aem_loc_enabled\" : true }, \"name\" : \"ACME Checkout Test Tag\", \"enhanced_match_status\" : \"VALIDATION_COMPLETE\", \"id\" : \"2617998078212\", \"last_fired_time_ms\" : 1599030000000, \"version\" : \"3\", \"ad_account_id\" : \"549755885175\", \"status\" : \"ACTIVE\" } ] }";
+                    String exampleString = "{ \"items\" : [ { \"code_snippet\" : \"<script type=text/javascript> [...]\", \"configs\" : \"\", \"name\" : \"ACME Checkout Test Tag\", \"enhanced_match_status\" : \"VALIDATION_COMPLETE\", \"id\" : \"2617998078212\", \"last_fired_time_ms\" : 1599030000000, \"version\" : \"3\", \"ad_account_id\" : \"549755885175\", \"status\" : \"\" }, { \"code_snippet\" : \"<script type=text/javascript> [...]\", \"configs\" : \"\", \"name\" : \"ACME Checkout Test Tag\", \"enhanced_match_status\" : \"VALIDATION_COMPLETE\", \"id\" : \"2617998078212\", \"last_fired_time_ms\" : 1599030000000, \"version\" : \"3\", \"ad_account_id\" : \"549755885175\", \"status\" : \"\" } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -3572,7 +4425,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -3588,7 +4442,179 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"data\" : [ { \"metrics\" : { \"avg_cpc_in_micro_currency\" : 100000, \"keyword_query_volume\" : \"5M+\" }, \"keyword\" : \"animals\" }, { \"metrics\" : { \"avg_cpc_in_micro_currency\" : 100000, \"keyword_query_volume\" : \"5M+\" }, \"keyword\" : \"animals\" } ] }";
+                    String exampleString = "{ \"data\" : [ { \"metrics\" : { \"keyword_query_volume\" : \"5M+\" }, \"keyword\" : \"animals\" }, { \"metrics\" : { \"keyword_query_volume\" : \"5M+\" }, \"keyword\" : \"animals\" } ] }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    String PATH_CUSTOMER_LIST_UPLOADS_CREATE = "/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads";
+    /**
+     * POST /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads : Create customer list upload
+     * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt;  &lt;p&gt;Create a customer list upload request for multipart S3 upload.&lt;/p&gt; &lt;p&gt;Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.&lt;/p&gt; &lt;p&gt;&lt;b&gt;Please review the &lt;u&gt;&lt;a href&#x3D;\&quot;/docs/api/v5/customer_lists-update/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;update customer list endpoint&lt;/a&gt;&lt;/u&gt; documentation for additional information.&lt;/b&gt;&lt;/p&gt;
+     *
+     * @param adAccountId Unique identifier of an ad account. (required)
+     * @param customerListId Unique identifier of a customer list (required)
+     * @param customerListUploadCreateRequest Parameters to create a customer list upload request (required)
+     * @return Success (status code 200)
+     *         or Unexpected error (status code 200)
+     */
+    @Operation(
+        operationId = "customerListUploadsCreate",
+        summary = "Create customer list upload",
+        description = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a>  <p>Create a customer list upload request for multipart S3 upload.</p> <p>Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.</p> <p><b>Please review the <u><a href=\"/docs/api/v5/customer_lists-update/\" target=\"_blank\">update customer list endpoint</a></u> documentation for additional information.</b></p>",
+        tags = { "customer_list_uploads" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Success", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = CustomerListUploadCreateResponse.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            })
+        },
+        security = {
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:write" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.POST,
+        value = AdAccountsApi.PATH_CUSTOMER_LIST_UPLOADS_CREATE,
+        produces = { "application/json" },
+        consumes = { "application/json" }
+    )
+    default ResponseEntity<CustomerListUploadCreateResponse> customerListUploadsCreate(
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "customer_list_id", description = "Unique identifier of a customer list", required = true, in = ParameterIn.PATH) @PathVariable("customer_list_id") String customerListId,
+        @Parameter(name = "CustomerListUploadCreateRequest", description = "Parameters to create a customer list upload request", required = true) @Valid @RequestBody CustomerListUploadCreateRequest customerListUploadCreateRequest
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"s3_multipart_upload_data\" : { \"file_parts\" : [ { \"part_number\" : 1, \"presigned_url\" : \"presigned_url\" }, { \"part_number\" : 1, \"presigned_url\" : \"presigned_url\" } ] }, \"customer_list_upload\" : { \"creation_time\" : 1728606435, \"updated_time\" : 1728606435, \"record_counts\" : { \"valid\" : 950, \"processed\" : 1000, \"invalid\" : 50 }, \"customer_list_id\" : \"59854745824\", \"id\" : \"1234567890\", \"state\" : \"RUNNING\", \"error_counts\" : [ { \"error_code\" : 42, \"message\" : \"Invalid email\", \"count\" : 20 } ], \"operation\" : \"REMOVE\", \"ad_account_id\" : \"9876543210\" } }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    String PATH_CUSTOMER_LIST_UPLOADS_GET = "/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id}";
+    /**
+     * GET /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id} : Get customer list upload
+     * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt; &lt;p&gt;Get the metadata for a given upload by its ID.&lt;/p&gt;
+     *
+     * @param adAccountId Unique identifier of an ad account. (required)
+     * @param customerListId Unique identifier of a customer list (required)
+     * @param customerListUploadId Unique identifier of a customer list upload (required)
+     * @return Success (status code 200)
+     *         or Unexpected error (status code 200)
+     */
+    @Operation(
+        operationId = "customerListUploadsGet",
+        summary = "Get customer list upload",
+        description = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a> <p>Get the metadata for a given upload by its ID.</p>",
+        tags = { "customer_list_uploads" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Success", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = CustomerListUploadResponse.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            })
+        },
+        security = {
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.GET,
+        value = AdAccountsApi.PATH_CUSTOMER_LIST_UPLOADS_GET,
+        produces = { "application/json" }
+    )
+    default ResponseEntity<CustomerListUploadResponse> customerListUploadsGet(
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "customer_list_id", description = "Unique identifier of a customer list", required = true, in = ParameterIn.PATH) @PathVariable("customer_list_id") String customerListId,
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "customer_list_upload_id", description = "Unique identifier of a customer list upload", required = true, in = ParameterIn.PATH) @PathVariable("customer_list_upload_id") String customerListUploadId
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"creation_time\" : 1728606435, \"updated_time\" : 1728606435, \"record_counts\" : { \"valid\" : 950, \"processed\" : 1000, \"invalid\" : 50 }, \"customer_list_id\" : \"59854745824\", \"id\" : \"1234567890\", \"state\" : \"RUNNING\", \"error_counts\" : [ { \"error_code\" : 42, \"message\" : \"Invalid email\", \"count\" : 20 } ], \"operation\" : \"REMOVE\", \"ad_account_id\" : \"9876543210\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    String PATH_CUSTOMER_LIST_UPLOADS_RUN = "/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id}/run";
+    /**
+     * POST /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id}/run : Run customer list upload
+     * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Closed beta&lt;/a&gt; &lt;p&gt;Begin processing a customer list upload.&lt;/p&gt;
+     *
+     * @param adAccountId Unique identifier of an ad account. (required)
+     * @param customerListId Unique identifier of a customer list (required)
+     * @param customerListUploadId Unique identifier of a customer list upload (required)
+     * @return Success (status code 200)
+     *         or Unexpected error (status code 200)
+     */
+    @Operation(
+        operationId = "customerListUploadsRun",
+        summary = "Run customer list upload",
+        description = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"_blank\">Closed beta</a> <p>Begin processing a customer list upload.</p>",
+        tags = { "customer_list_uploads" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Success", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = CustomerListUploadResponse.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            })
+        },
+        security = {
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:write" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.POST,
+        value = AdAccountsApi.PATH_CUSTOMER_LIST_UPLOADS_RUN,
+        produces = { "application/json" }
+    )
+    default ResponseEntity<CustomerListUploadResponse> customerListUploadsRun(
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "customer_list_id", description = "Unique identifier of a customer list", required = true, in = ParameterIn.PATH) @PathVariable("customer_list_id") String customerListId,
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "customer_list_upload_id", description = "Unique identifier of a customer list upload", required = true, in = ParameterIn.PATH) @PathVariable("customer_list_upload_id") String customerListUploadId
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"creation_time\" : 1728606435, \"updated_time\" : 1728606435, \"record_counts\" : { \"valid\" : 950, \"processed\" : 1000, \"invalid\" : 50 }, \"customer_list_id\" : \"59854745824\", \"id\" : \"1234567890\", \"state\" : \"RUNNING\", \"error_counts\" : [ { \"error_code\" : 42, \"message\" : \"Invalid email\", \"count\" : 20 } ], \"operation\" : \"REMOVE\", \"ad_account_id\" : \"9876543210\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -3607,7 +4633,7 @@ public interface AdAccountsApi {
     String PATH_CUSTOMER_LISTS_CREATE = "/ad_accounts/{ad_account_id}/customer_lists";
     /**
      * POST /ad_accounts/{ad_account_id}/customer_lists : Create customer lists
-     * &lt;p&gt;Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).&lt;/p&gt; &lt;p&gt;A customer list is one of the four types of Pinterest audiences: for more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt; or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;p/&gt;  &lt;p&gt;&lt;b&gt;Please review our &lt;u&gt;&lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting#section-13341\&quot; target&#x3D;\&quot;_blank\&quot;&gt;requirements&lt;/a&gt;&lt;/u&gt; for what type of information is allowed when uploading a customer list.&lt;/b&gt;&lt;/p&gt; &lt;p&gt;When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.&lt;/p&gt; &lt;p&gt;Note that once you have created your customer list, you must convert it into an audience (of the “ CUSTOMER_LIST” type) using the &lt;a href&#x3D;\&quot;#operation/create_audience_handler\&quot;&gt;create audience endpoint&lt;/a&gt; before it can be used.&lt;/p&gt;
+     * &lt;p&gt;Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).&lt;/p&gt; &lt;p&gt;A customer list is one of the four types of Pinterest audiences: for more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt; or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;p/&gt; &lt;p&gt;&lt;b&gt;Please review our &lt;u&gt;&lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting#section-13341\&quot; target&#x3D;\&quot;_blank\&quot;&gt;requirements&lt;/a&gt;&lt;/u&gt; for what type of information is allowed when uploading a customer list.&lt;/b&gt;&lt;/p&gt; &lt;p&gt;When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.&lt;/p&gt; &lt;p&gt;To use your customer list after creating it, convert it into a customer list audience by passing the &#x60;CUSTOMER_LIST&#x60; audience type at the &lt;a href&#x3D;\&quot;https://developer.pinterest.com/docs/api/v5/audiences-create\&quot; target&#x3D;\&quot;blank\&quot;&gt;create audience endpoint&lt;/a&gt;.&lt;/p&gt;
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param customerListRequest Parameters to get Customer lists info (required)
@@ -3617,7 +4643,7 @@ public interface AdAccountsApi {
     @Operation(
         operationId = "customerListsCreate",
         summary = "Create customer lists",
-        description = "<p>Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).</p> <p>A customer list is one of the four types of Pinterest audiences: for more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.<p/>  <p><b>Please review our <u><a href=\"https://help.pinterest.com/en/business/article/audience-targeting#section-13341\" target=\"_blank\">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p> <p>When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.</p> <p>Note that once you have created your customer list, you must convert it into an audience (of the “ CUSTOMER_LIST” type) using the <a href=\"#operation/create_audience_handler\">create audience endpoint</a> before it can be used.</p>",
+        description = "<p>Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).</p> <p>A customer list is one of the four types of Pinterest audiences: for more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.<p/> <p><b>Please review our <u><a href=\"https://help.pinterest.com/en/business/article/audience-targeting#section-13341\" target=\"_blank\">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p> <p>When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.</p> <p>To use your customer list after creating it, convert it into a customer list audience by passing the `CUSTOMER_LIST` audience type at the <a href=\"https://developer.pinterest.com/docs/api/v5/audiences-create\" target=\"blank\">create audience endpoint</a>.</p>",
         tags = { "customer_lists" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
@@ -3684,7 +4710,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -3777,7 +4804,7 @@ public interface AdAccountsApi {
     String PATH_CUSTOMER_LISTS_UPDATE = "/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}";
     /**
      * PATCH /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id} : Update customer list
-     * &lt;p&gt;Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)&lt;/p&gt; &lt;p&gt;When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records  to add will be deleted when the matching process is complete.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt; or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;/p&gt;
+     * &lt;p&gt;Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)&lt;/p&gt; &lt;p&gt;When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records to add will be deleted when the matching process is complete.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt; or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;/p&gt;
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param customerListId Unique identifier of a customer list (required)
@@ -3788,7 +4815,7 @@ public interface AdAccountsApi {
     @Operation(
         operationId = "customerListsUpdate",
         summary = "Update customer list",
-        description = "<p>Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)</p> <p>When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records  to add will be deleted when the matching process is complete.</p> <p>For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>",
+        description = "<p>Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)</p> <p>When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records to add will be deleted when the matching process is complete.</p> <p>For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>",
         tags = { "customer_lists" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
@@ -3911,7 +4938,7 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"num_events_processed\" : 6, \"num_events_received\" : 0, \"events\" : [ { \"error_message\" : \"error_message\", \"warning_message\" : \"warning_message\", \"status\" : \"processed\" }, { \"error_message\" : \"error_message\", \"warning_message\" : \"warning_message\", \"status\" : \"processed\" } ] }";
+                    String exampleString = "{ \"num_events_processed\" : 0, \"num_events_received\" : 6, \"events\" : [ { \"error_message\" : \"error_message\", \"warning_message\" : \"warning_message\", \"status\" : \"processed\" }, { \"error_message\" : \"error_message\", \"warning_message\" : \"warning_message\", \"status\" : \"processed\" } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -4021,8 +5048,9 @@ public interface AdAccountsApi {
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param campaignId Campaign Id to use to filter the results. (optional)
      * @param adGroupId Ad group Id. (optional)
+     * @param adGroupIds List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. (optional)
      * @param matchTypes Keyword &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot;&gt;match type&lt;/a&gt; (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return Success (status code 200)
      *         or Unexpected error (status code 200)
@@ -4041,7 +5069,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -4053,8 +5082,9 @@ public interface AdAccountsApi {
         @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
         @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "campaign_id", description = "Campaign Id to use to filter the results.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "campaign_id", required = false) @Nullable String campaignId,
         @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_group_id", description = "Ad group Id.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_group_id", required = false) @Nullable String adGroupId,
+        @Size(min = 1, max = 250) @Parameter(name = "ad_group_ids", description = "List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_group_ids", required = false) @Nullable List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds,
         @Size(min = 1, max = 5) @Parameter(name = "match_types", description = "Keyword <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type</a>", in = ParameterIn.QUERY) @Valid @RequestParam(value = "match_types", required = false) @Nullable List<MatchType> matchTypes,
-        @Min(value = 1) @Max(value = 250) @Parameter(name = "page_size", description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") Integer pageSize,
+        @Min(value = 1) @Parameter(name = "page_size", description = "Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") Integer pageSize,
         @Parameter(name = "bookmark", description = "Cursor used to fetch the next page of items", in = ParameterIn.QUERY) @Valid @RequestParam(value = "bookmark", required = false) @Nullable String bookmark
     ) {
         getRequest().ifPresent(request -> {
@@ -4117,6 +5147,192 @@ public interface AdAccountsApi {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                     String exampleString = "{ \"keywords\" : [ { \"archived\" : false, \"parent_id\" : \"383791336903426391\", \"match_type\" : \"BROAD\", \"id\" : \"383791336903426391\", \"bid\" : 0, \"parent_type\" : \"campaign\", \"type\" : \"keyword\", \"value\" : \"value\" }, { \"archived\" : false, \"parent_id\" : \"383791336903426391\", \"match_type\" : \"BROAD\", \"id\" : \"383791336903426391\", \"bid\" : 0, \"parent_type\" : \"campaign\", \"type\" : \"keyword\", \"value\" : \"value\" } ], \"errors\" : [ { \"data\" : { \"archived\" : false, \"parent_id\" : \"383791336903426391\", \"match_type\" : \"BROAD\", \"id\" : \"383791336903426391\", \"bid\" : 0, \"parent_type\" : \"campaign\", \"type\" : \"keyword\", \"value\" : \"value\" }, \"error_messages\" : [ \"error_messages\", \"error_messages\" ] }, { \"data\" : { \"archived\" : false, \"parent_id\" : \"383791336903426391\", \"match_type\" : \"BROAD\", \"id\" : \"383791336903426391\", \"bid\" : 0, \"parent_type\" : \"campaign\", \"type\" : \"keyword\", \"value\" : \"value\" }, \"error_messages\" : [ \"error_messages\", \"error_messages\" ] } ] }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    String PATH_LABELS_CREATE = "/ad_accounts/{ad_account_id}/labels";
+    /**
+     * POST /ad_accounts/{ad_account_id}/labels : Create labels
+     * &lt;p&gt; &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; This endpoint is not available to all users. &lt;/p&gt; &lt;p&gt;   Apply one or more labels to a campaign.   Currently, you can apply brand and custom labels. Future releases will provide more options.    &lt;b&gt;Note:&lt;/b&gt; You can only apply one brand label to a campaign. You can apply 30 custom labels to a campaign.  &lt;/p&gt;
+     *
+     * @param adAccountId Unique identifier of an ad account. (required)
+     * @param labelCreateRequest  (required)
+     * @return Success (status code 200)
+     *         or Unexpected error (status code 200)
+     */
+    @Operation(
+        operationId = "labelsCreate",
+        summary = "Create labels",
+        description = "<p> <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> This endpoint is not available to all users. </p> <p>   Apply one or more labels to a campaign.   Currently, you can apply brand and custom labels. Future releases will provide more options.    <b>Note:</b> You can only apply one brand label to a campaign. You can apply 30 custom labels to a campaign.  </p>",
+        tags = { "labels" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Success", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = LabelsResponse.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            })
+        },
+        security = {
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:write" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.POST,
+        value = AdAccountsApi.PATH_LABELS_CREATE,
+        produces = { "application/json" },
+        consumes = { "application/json" }
+    )
+    default ResponseEntity<LabelsResponse> labelsCreate(
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
+        @Parameter(name = "LabelCreateRequest", description = "", required = true) @Valid @RequestBody LabelCreateRequest labelCreateRequest
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"errors\" : [ { \"data\" : { \"parent_id\" : \"626753052072\", \"label_type\" : \"BRAND\", \"id\" : \"1106385754497\", \"parent_type\" : \"CAMPAIGN\", \"value\" : \"value\", \"status\" : \"ACTIVE\" }, \"error_messages\" : [ \"error_messages\", \"error_messages\" ] }, { \"data\" : { \"parent_id\" : \"626753052072\", \"label_type\" : \"BRAND\", \"id\" : \"1106385754497\", \"parent_type\" : \"CAMPAIGN\", \"value\" : \"value\", \"status\" : \"ACTIVE\" }, \"error_messages\" : [ \"error_messages\", \"error_messages\" ] } ], \"labels\" : [ { \"parent_id\" : \"626753052072\", \"label_type\" : \"BRAND\", \"id\" : \"1106385754497\", \"parent_type\" : \"CAMPAIGN\", \"value\" : \"value\", \"status\" : \"ACTIVE\" }, { \"parent_id\" : \"626753052072\", \"label_type\" : \"BRAND\", \"id\" : \"1106385754497\", \"parent_type\" : \"CAMPAIGN\", \"value\" : \"value\", \"status\" : \"ACTIVE\" } ] }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    String PATH_LABELS_LIST = "/ad_accounts/{ad_account_id}/labels";
+    /**
+     * GET /ad_accounts/{ad_account_id}/labels : List labels
+     * &lt;p&gt;   &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;   This endpoint is not available to all users. &lt;/p&gt; &lt;p&gt;   See a list of labels for assets that your account owns, and filter the list by different criteria. &lt;/p&gt;
+     *
+     * @param adAccountId Unique identifier of an ad account. (required)
+     * @param campaignIds List of Campaign Ids to use to filter the results. (optional)
+     * @param labelIds List of Label Ids to use to filter the results. (optional)
+     * @param entityStatuses Label entity status (optional, default to ACTIVE)
+     * @param labelTypes Label type. (optional, default to BRAND,CUSTOM)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @return Success (status code 200)
+     *         or Invalid ad account ads parameters. (status code 400)
+     *         or Unexpected error (status code 200)
+     */
+    @Operation(
+        operationId = "labelsList",
+        summary = "List labels",
+        description = "<p>   <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>   This endpoint is not available to all users. </p> <p>   See a list of labels for assets that your account owns, and filter the list by different criteria. </p>",
+        tags = { "labels" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Success", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = LabelsList200Response.class))
+            }),
+            @ApiResponse(responseCode = "400", description = "Invalid ad account ads parameters.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            })
+        },
+        security = {
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.GET,
+        value = AdAccountsApi.PATH_LABELS_LIST,
+        produces = { "application/json" }
+    )
+    default ResponseEntity<LabelsList200Response> labelsList(
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
+        @Size(min = 1, max = 250) @Parameter(name = "campaign_ids", description = "List of Campaign Ids to use to filter the results.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "campaign_ids", required = false) @Nullable List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,
+        @Size(min = 1, max = 250) @Parameter(name = "label_ids", description = "List of Label Ids to use to filter the results.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "label_ids", required = false) @Nullable List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> labelIds,
+        @Parameter(name = "entity_statuses", description = "Label entity status", in = ParameterIn.QUERY) @Valid @RequestParam(value = "entity_statuses", required = false, defaultValue = "ACTIVE") List<String> entityStatuses,
+        @Parameter(name = "label_types", description = "Label type.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "label_types", required = false, defaultValue = "BRAND,CUSTOM") List<String> labelTypes,
+        @Min(value = 1) @Max(value = 250) @Parameter(name = "page_size", description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") Integer pageSize,
+        @Parameter(name = "bookmark", description = "Cursor used to fetch the next page of items", in = ParameterIn.QUERY) @Valid @RequestParam(value = "bookmark", required = false) @Nullable String bookmark
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"errors\" : [ { \"data\" : { \"parent_id\" : \"626753052072\", \"label_type\" : \"BRAND\", \"id\" : \"1106385754497\", \"parent_type\" : \"CAMPAIGN\", \"value\" : \"value\", \"status\" : \"ACTIVE\" }, \"error_messages\" : [ \"error_messages\", \"error_messages\" ] }, { \"data\" : { \"parent_id\" : \"626753052072\", \"label_type\" : \"BRAND\", \"id\" : \"1106385754497\", \"parent_type\" : \"CAMPAIGN\", \"value\" : \"value\", \"status\" : \"ACTIVE\" }, \"error_messages\" : [ \"error_messages\", \"error_messages\" ] } ], \"labels\" : [ { \"parent_id\" : \"626753052072\", \"label_type\" : \"BRAND\", \"id\" : \"1106385754497\", \"parent_type\" : \"CAMPAIGN\", \"value\" : \"value\", \"status\" : \"ACTIVE\" }, { \"parent_id\" : \"626753052072\", \"label_type\" : \"BRAND\", \"id\" : \"1106385754497\", \"parent_type\" : \"CAMPAIGN\", \"value\" : \"value\", \"status\" : \"ACTIVE\" } ] }, { \"errors\" : [ { \"data\" : { \"parent_id\" : \"626753052072\", \"label_type\" : \"BRAND\", \"id\" : \"1106385754497\", \"parent_type\" : \"CAMPAIGN\", \"value\" : \"value\", \"status\" : \"ACTIVE\" }, \"error_messages\" : [ \"error_messages\", \"error_messages\" ] }, { \"data\" : { \"parent_id\" : \"626753052072\", \"label_type\" : \"BRAND\", \"id\" : \"1106385754497\", \"parent_type\" : \"CAMPAIGN\", \"value\" : \"value\", \"status\" : \"ACTIVE\" }, \"error_messages\" : [ \"error_messages\", \"error_messages\" ] } ], \"labels\" : [ { \"parent_id\" : \"626753052072\", \"label_type\" : \"BRAND\", \"id\" : \"1106385754497\", \"parent_type\" : \"CAMPAIGN\", \"value\" : \"value\", \"status\" : \"ACTIVE\" }, { \"parent_id\" : \"626753052072\", \"label_type\" : \"BRAND\", \"id\" : \"1106385754497\", \"parent_type\" : \"CAMPAIGN\", \"value\" : \"value\", \"status\" : \"ACTIVE\" } ] } ] }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    String PATH_LABELS_UPDATE = "/ad_accounts/{ad_account_id}/labels";
+    /**
+     * PATCH /ad_accounts/{ad_account_id}/labels : Update labels
+     * &lt;p&gt;   &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;   This endpoint is not available to all users. &lt;/p&gt; &lt;p&gt;   Change the properties of one or more labels. &lt;/p&gt;
+     *
+     * @param adAccountId Unique identifier of an ad account. (required)
+     * @param labelUpdateRequest  (required)
+     * @return Success (status code 200)
+     *         or Unexpected error (status code 200)
+     */
+    @Operation(
+        operationId = "labelsUpdate",
+        summary = "Update labels",
+        description = "<p>   <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>   This endpoint is not available to all users. </p> <p>   Change the properties of one or more labels. </p>",
+        tags = { "labels" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Success", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = LabelsResponse.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            })
+        },
+        security = {
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:write" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.PATCH,
+        value = AdAccountsApi.PATH_LABELS_UPDATE,
+        produces = { "application/json" },
+        consumes = { "application/json" }
+    )
+    default ResponseEntity<LabelsResponse> labelsUpdate(
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
+        @Parameter(name = "LabelUpdateRequest", description = "", required = true) @Valid @RequestBody LabelUpdateRequest labelUpdateRequest
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"errors\" : [ { \"data\" : { \"parent_id\" : \"626753052072\", \"label_type\" : \"BRAND\", \"id\" : \"1106385754497\", \"parent_type\" : \"CAMPAIGN\", \"value\" : \"value\", \"status\" : \"ACTIVE\" }, \"error_messages\" : [ \"error_messages\", \"error_messages\" ] }, { \"data\" : { \"parent_id\" : \"626753052072\", \"label_type\" : \"BRAND\", \"id\" : \"1106385754497\", \"parent_type\" : \"CAMPAIGN\", \"value\" : \"value\", \"status\" : \"ACTIVE\" }, \"error_messages\" : [ \"error_messages\", \"error_messages\" ] } ], \"labels\" : [ { \"parent_id\" : \"626753052072\", \"label_type\" : \"BRAND\", \"id\" : \"1106385754497\", \"parent_type\" : \"CAMPAIGN\", \"value\" : \"value\", \"status\" : \"ACTIVE\" }, { \"parent_id\" : \"626753052072\", \"label_type\" : \"BRAND\", \"id\" : \"1106385754497\", \"parent_type\" : \"CAMPAIGN\", \"value\" : \"value\", \"status\" : \"ACTIVE\" } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -4208,7 +5424,7 @@ public interface AdAccountsApi {
     String PATH_LEAD_FORM_TEST_CREATE = "/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test";
     /**
      * POST /ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test : Create lead form test data
-     * Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param leadFormId Unique identifier of a lead form. (required)
@@ -4221,7 +5437,7 @@ public interface AdAccountsApi {
     @Operation(
         operationId = "leadFormTestCreate",
         summary = "Create lead form test data",
-        description = "Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>",
+        description = "Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.",
         tags = { "lead_forms" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
@@ -4284,7 +5500,7 @@ public interface AdAccountsApi {
     String PATH_LEAD_FORMS_CREATE = "/ad_accounts/{ad_account_id}/lead_forms";
     /**
      * POST /ad_accounts/{ad_account_id}/lead_forms : Create lead forms
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’ s description, questions and confirmation sections.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param leadFormCreateRequest List of lead forms to create, size limit [1, 30]. (required)
@@ -4295,7 +5511,7 @@ public interface AdAccountsApi {
     @Operation(
         operationId = "leadFormsCreate",
         summary = "Create lead forms",
-        description = "<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’ s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.",
+        description = "<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.",
         tags = { "lead_forms" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
@@ -4617,6 +5833,91 @@ public interface AdAccountsApi {
     }
 
 
+    String PATH_MSOT_EVENTS_CREATE = "/ad_accounts/{ad_account_id}/msot/events";
+    /**
+     * POST /ad_accounts/{ad_account_id}/msot/events : Send Measurement Source Of Truth (MSOT) attributed conversion events
+     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt; &lt;br&gt; &lt;p&gt;Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their &lt;code&gt;ad_account_id&lt;/code&gt;. The request body should be a JSON object.&lt;/p&gt; - These events will NOT be used in Reporting.
+     *
+     * @param adAccountId Unique identifier of an ad account. (required)
+     * @param conversionMSOTEvents Attributed MSOT conversion events (required)
+     * @return Success (status code 200)
+     *         or The request was invalid (status code 400)
+     *         or Not authorized to send MSOT conversion events (status code 401)
+     *         or Unauthorized access (status code 403)
+     *         or This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window. (status code 429)
+     *         or Unexpected errors (status code 200)
+     */
+    @Operation(
+        operationId = "msotEventsCreate",
+        summary = "Send Measurement Source Of Truth (MSOT) attributed conversion events",
+        description = "<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong> <br> <p>Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their <code>ad_account_id</code>. The request body should be a JSON object.</p> - These events will NOT be used in Reporting.",
+        tags = { "msot_events" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Success"),
+            @ApiResponse(responseCode = "400", description = "The request was invalid", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            }),
+            @ApiResponse(responseCode = "401", description = "Not authorized to send MSOT conversion events", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            }),
+            @ApiResponse(responseCode = "403", description = "Unauthorized access", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            }),
+            @ApiResponse(responseCode = "429", description = "This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "Unexpected errors", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            })
+        },
+        security = {
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "msot:write" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.POST,
+        value = AdAccountsApi.PATH_MSOT_EVENTS_CREATE,
+        produces = { "application/json" },
+        consumes = { "application/json" }
+    )
+    default ResponseEntity<Void> msotEventsCreate(
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
+        @Parameter(name = "ConversionMSOTEvents", description = "Attributed MSOT conversion events", required = true) @Valid @RequestBody ConversionMSOTEvents conversionMSOTEvents
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
     String PATH_OCPM_ELIGIBLE_CONVERSION_TAGS_GET = "/ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible";
     /**
      * GET /ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible : Get Ocpm eligible conversion tags
@@ -4640,7 +5941,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -4810,7 +6112,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -4883,7 +6186,7 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"items\" : [ { \"data\" : { \"catalog_product_group_id\" : \"1231235\", \"bid_in_micro_currency\" : 14000000, \"relative_definition\" : \"product_type_1='beverage appliances'\", \"slideshow_collections_description\" : \"slideshow description\", \"collections_hero_pin_id\" : \"123123\", \"catalog_product_group_name\" : \"catalogProductGroupName\", \"slideshow_collections_title\" : \"slideshow title\", \"is_mdl\" : true, \"parent_id\" : \"1231234\", \"grid_click_type\" : \"CLOSEUP\", \"creative_type\" : \"REGULAR\", \"definition\" : \"*/product_type_0='kitchen'/product_type_1='beverage appliances'\", \"id\" : \"2680059592705\", \"ad_group_id\" : \"2680059592705\", \"collections_hero_destination_url\" : \"http://www.pinterest.com\", \"included\" : true, \"tracking_url\" : \"https://www.pinterest.com\", \"status\" : \"ACTIVE\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] }, { \"data\" : { \"catalog_product_group_id\" : \"1231235\", \"bid_in_micro_currency\" : 14000000, \"relative_definition\" : \"product_type_1='beverage appliances'\", \"slideshow_collections_description\" : \"slideshow description\", \"collections_hero_pin_id\" : \"123123\", \"catalog_product_group_name\" : \"catalogProductGroupName\", \"slideshow_collections_title\" : \"slideshow title\", \"is_mdl\" : true, \"parent_id\" : \"1231234\", \"grid_click_type\" : \"CLOSEUP\", \"creative_type\" : \"REGULAR\", \"definition\" : \"*/product_type_0='kitchen'/product_type_1='beverage appliances'\", \"id\" : \"2680059592705\", \"ad_group_id\" : \"2680059592705\", \"collections_hero_destination_url\" : \"http://www.pinterest.com\", \"included\" : true, \"tracking_url\" : \"https://www.pinterest.com\", \"status\" : \"ACTIVE\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] } ] }";
+                    String exampleString = "{ \"items\" : [ { \"data\" : { \"catalog_product_group_id\" : \"1231235\", \"bid_in_micro_currency\" : 14000000, \"selected_video_tag\" : \"holiday_sale\", \"relative_definition\" : \"product_type_1='beverage appliances'\", \"slideshow_collections_description\" : \"slideshow description\", \"collections_hero_pin_id\" : \"123123\", \"catalog_product_group_name\" : \"catalogProductGroupName\", \"is_generate_background\" : true, \"slideshow_collections_title\" : \"slideshow title\", \"is_mdl\" : true, \"selected_image_tag\" : \"holiday_sale\", \"collections_header_type\" : \"SHOP_THIS_COLLECTION\", \"parent_id\" : \"1231234\", \"creative_type\" : \"REGULAR\", \"grid_click_type\" : \"CLOSEUP\", \"preferred_media_type\" : \"VIDEO\", \"customizable_cta_type\" : \"SHOP_NOW\", \"definition\" : \"*/product_type_0='kitchen'/product_type_1='beverage appliances'\", \"id\" : \"2680059592705\", \"ad_group_id\" : \"2680059592705\", \"collections_hero_destination_url\" : \"http://www.pinterest.com\", \"included\" : true, \"tracking_url\" : \"https://www.pinterest.com\", \"status\" : \"ACTIVE\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] }, { \"data\" : { \"catalog_product_group_id\" : \"1231235\", \"bid_in_micro_currency\" : 14000000, \"selected_video_tag\" : \"holiday_sale\", \"relative_definition\" : \"product_type_1='beverage appliances'\", \"slideshow_collections_description\" : \"slideshow description\", \"collections_hero_pin_id\" : \"123123\", \"catalog_product_group_name\" : \"catalogProductGroupName\", \"is_generate_background\" : true, \"slideshow_collections_title\" : \"slideshow title\", \"is_mdl\" : true, \"selected_image_tag\" : \"holiday_sale\", \"collections_header_type\" : \"SHOP_THIS_COLLECTION\", \"parent_id\" : \"1231234\", \"creative_type\" : \"REGULAR\", \"grid_click_type\" : \"CLOSEUP\", \"preferred_media_type\" : \"VIDEO\", \"customizable_cta_type\" : \"SHOP_NOW\", \"definition\" : \"*/product_type_0='kitchen'/product_type_1='beverage appliances'\", \"id\" : \"2680059592705\", \"ad_group_id\" : \"2680059592705\", \"collections_hero_destination_url\" : \"http://www.pinterest.com\", \"included\" : true, \"tracking_url\" : \"https://www.pinterest.com\", \"status\" : \"ACTIVE\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -4916,7 +6219,7 @@ public interface AdAccountsApi {
         tags = { "product_group_promotions" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = ProductGroupPromotionResponse.class))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = ProductGroupPromotion.class))
             }),
             @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
@@ -4931,14 +6234,14 @@ public interface AdAccountsApi {
         value = AdAccountsApi.PATH_PRODUCT_GROUP_PROMOTIONS_GET,
         produces = { "application/json" }
     )
-    default ResponseEntity<ProductGroupPromotionResponse> productGroupPromotionsGet(
+    default ResponseEntity<ProductGroupPromotion> productGroupPromotionsGet(
         @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
         @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "product_group_promotion_id", description = "Unique identifier of a product group promotion", required = true, in = ParameterIn.PATH) @PathVariable("product_group_promotion_id") String productGroupPromotionId
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"items\" : [ { \"data\" : { \"catalog_product_group_id\" : \"1231235\", \"bid_in_micro_currency\" : 14000000, \"relative_definition\" : \"product_type_1='beverage appliances'\", \"slideshow_collections_description\" : \"slideshow description\", \"collections_hero_pin_id\" : \"123123\", \"catalog_product_group_name\" : \"catalogProductGroupName\", \"slideshow_collections_title\" : \"slideshow title\", \"is_mdl\" : true, \"parent_id\" : \"1231234\", \"grid_click_type\" : \"CLOSEUP\", \"creative_type\" : \"REGULAR\", \"definition\" : \"*/product_type_0='kitchen'/product_type_1='beverage appliances'\", \"id\" : \"2680059592705\", \"ad_group_id\" : \"2680059592705\", \"collections_hero_destination_url\" : \"http://www.pinterest.com\", \"included\" : true, \"tracking_url\" : \"https://www.pinterest.com\", \"status\" : \"ACTIVE\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] }, { \"data\" : { \"catalog_product_group_id\" : \"1231235\", \"bid_in_micro_currency\" : 14000000, \"relative_definition\" : \"product_type_1='beverage appliances'\", \"slideshow_collections_description\" : \"slideshow description\", \"collections_hero_pin_id\" : \"123123\", \"catalog_product_group_name\" : \"catalogProductGroupName\", \"slideshow_collections_title\" : \"slideshow title\", \"is_mdl\" : true, \"parent_id\" : \"1231234\", \"grid_click_type\" : \"CLOSEUP\", \"creative_type\" : \"REGULAR\", \"definition\" : \"*/product_type_0='kitchen'/product_type_1='beverage appliances'\", \"id\" : \"2680059592705\", \"ad_group_id\" : \"2680059592705\", \"collections_hero_destination_url\" : \"http://www.pinterest.com\", \"included\" : true, \"tracking_url\" : \"https://www.pinterest.com\", \"status\" : \"ACTIVE\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] } ] }";
+                    String exampleString = "{ \"catalog_product_group_id\" : \"1231235\", \"bid_in_micro_currency\" : 14000000, \"selected_video_tag\" : \"holiday_sale\", \"relative_definition\" : \"product_type_1='beverage appliances'\", \"slideshow_collections_description\" : \"slideshow description\", \"collections_hero_pin_id\" : \"123123\", \"catalog_product_group_name\" : \"catalogProductGroupName\", \"is_generate_background\" : true, \"slideshow_collections_title\" : \"slideshow title\", \"is_mdl\" : true, \"selected_image_tag\" : \"holiday_sale\", \"collections_header_type\" : \"SHOP_THIS_COLLECTION\", \"parent_id\" : \"1231234\", \"creative_type\" : \"REGULAR\", \"grid_click_type\" : \"CLOSEUP\", \"preferred_media_type\" : \"VIDEO\", \"customizable_cta_type\" : \"SHOP_NOW\", \"definition\" : \"*/product_type_0='kitchen'/product_type_1='beverage appliances'\", \"id\" : \"2680059592705\", \"ad_group_id\" : \"2680059592705\", \"collections_hero_destination_url\" : \"http://www.pinterest.com\", \"included\" : true, \"tracking_url\" : \"https://www.pinterest.com\", \"status\" : \"ACTIVE\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -4993,7 +6296,7 @@ public interface AdAccountsApi {
     )
     default ResponseEntity<ProductGroupPromotionsList200Response> productGroupPromotionsList(
         @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
-        @Size(min = 1, max = 100) @Parameter(name = "product_group_promotion_ids", description = "List of Product group promotion Ids.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "product_group_promotion_ids", required = false) @Nullable List<@Pattern(regexp = "^\\d+$")String> productGroupPromotionIds,
+        @Size(min = 1, max = 250) @Parameter(name = "product_group_promotion_ids", description = "List of Product group promotion Ids.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "product_group_promotion_ids", required = false) @Nullable List<@Pattern(regexp = "^\\d+$")String> productGroupPromotionIds,
         @Parameter(name = "entity_statuses", description = "Entity status", in = ParameterIn.QUERY) @Valid @RequestParam(value = "entity_statuses", required = false, defaultValue = "ACTIVE,PAUSED") List<String> entityStatuses,
         @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_group_id", description = "Ad group Id.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_group_id", required = false) @Nullable String adGroupId,
         @Min(value = 1) @Max(value = 250) @Parameter(name = "page_size", description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") Integer pageSize,
@@ -5003,7 +6306,7 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"data\" : { \"catalog_product_group_id\" : \"1231235\", \"bid_in_micro_currency\" : 14000000, \"relative_definition\" : \"product_type_1='beverage appliances'\", \"slideshow_collections_description\" : \"slideshow description\", \"collections_hero_pin_id\" : \"123123\", \"catalog_product_group_name\" : \"catalogProductGroupName\", \"slideshow_collections_title\" : \"slideshow title\", \"is_mdl\" : true, \"parent_id\" : \"1231234\", \"grid_click_type\" : \"CLOSEUP\", \"creative_type\" : \"REGULAR\", \"definition\" : \"*/product_type_0='kitchen'/product_type_1='beverage appliances'\", \"id\" : \"2680059592705\", \"ad_group_id\" : \"2680059592705\", \"collections_hero_destination_url\" : \"http://www.pinterest.com\", \"included\" : true, \"tracking_url\" : \"https://www.pinterest.com\", \"status\" : \"ACTIVE\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] }, { \"data\" : { \"catalog_product_group_id\" : \"1231235\", \"bid_in_micro_currency\" : 14000000, \"relative_definition\" : \"product_type_1='beverage appliances'\", \"slideshow_collections_description\" : \"slideshow description\", \"collections_hero_pin_id\" : \"123123\", \"catalog_product_group_name\" : \"catalogProductGroupName\", \"slideshow_collections_title\" : \"slideshow title\", \"is_mdl\" : true, \"parent_id\" : \"1231234\", \"grid_click_type\" : \"CLOSEUP\", \"creative_type\" : \"REGULAR\", \"definition\" : \"*/product_type_0='kitchen'/product_type_1='beverage appliances'\", \"id\" : \"2680059592705\", \"ad_group_id\" : \"2680059592705\", \"collections_hero_destination_url\" : \"http://www.pinterest.com\", \"included\" : true, \"tracking_url\" : \"https://www.pinterest.com\", \"status\" : \"ACTIVE\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] } ] }";
+                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"catalog_product_group_id\" : \"1231235\", \"bid_in_micro_currency\" : 14000000, \"selected_video_tag\" : \"holiday_sale\", \"relative_definition\" : \"product_type_1='beverage appliances'\", \"slideshow_collections_description\" : \"slideshow description\", \"collections_hero_pin_id\" : \"123123\", \"catalog_product_group_name\" : \"catalogProductGroupName\", \"is_generate_background\" : true, \"slideshow_collections_title\" : \"slideshow title\", \"is_mdl\" : true, \"selected_image_tag\" : \"holiday_sale\", \"collections_header_type\" : \"SHOP_THIS_COLLECTION\", \"parent_id\" : \"1231234\", \"creative_type\" : \"REGULAR\", \"grid_click_type\" : \"CLOSEUP\", \"preferred_media_type\" : \"VIDEO\", \"customizable_cta_type\" : \"SHOP_NOW\", \"definition\" : \"*/product_type_0='kitchen'/product_type_1='beverage appliances'\", \"id\" : \"2680059592705\", \"ad_group_id\" : \"2680059592705\", \"collections_hero_destination_url\" : \"http://www.pinterest.com\", \"included\" : true, \"tracking_url\" : \"https://www.pinterest.com\", \"status\" : \"ACTIVE\" }, { \"catalog_product_group_id\" : \"1231235\", \"bid_in_micro_currency\" : 14000000, \"selected_video_tag\" : \"holiday_sale\", \"relative_definition\" : \"product_type_1='beverage appliances'\", \"slideshow_collections_description\" : \"slideshow description\", \"collections_hero_pin_id\" : \"123123\", \"catalog_product_group_name\" : \"catalogProductGroupName\", \"is_generate_background\" : true, \"slideshow_collections_title\" : \"slideshow title\", \"is_mdl\" : true, \"selected_image_tag\" : \"holiday_sale\", \"collections_header_type\" : \"SHOP_THIS_COLLECTION\", \"parent_id\" : \"1231234\", \"creative_type\" : \"REGULAR\", \"grid_click_type\" : \"CLOSEUP\", \"preferred_media_type\" : \"VIDEO\", \"customizable_cta_type\" : \"SHOP_NOW\", \"definition\" : \"*/product_type_0='kitchen'/product_type_1='beverage appliances'\", \"id\" : \"2680059592705\", \"ad_group_id\" : \"2680059592705\", \"collections_hero_destination_url\" : \"http://www.pinterest.com\", \"included\" : true, \"tracking_url\" : \"https://www.pinterest.com\", \"status\" : \"ACTIVE\" } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -5059,7 +6362,7 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"items\" : [ { \"data\" : { \"catalog_product_group_id\" : \"1231235\", \"bid_in_micro_currency\" : 14000000, \"relative_definition\" : \"product_type_1='beverage appliances'\", \"slideshow_collections_description\" : \"slideshow description\", \"collections_hero_pin_id\" : \"123123\", \"catalog_product_group_name\" : \"catalogProductGroupName\", \"slideshow_collections_title\" : \"slideshow title\", \"is_mdl\" : true, \"parent_id\" : \"1231234\", \"grid_click_type\" : \"CLOSEUP\", \"creative_type\" : \"REGULAR\", \"definition\" : \"*/product_type_0='kitchen'/product_type_1='beverage appliances'\", \"id\" : \"2680059592705\", \"ad_group_id\" : \"2680059592705\", \"collections_hero_destination_url\" : \"http://www.pinterest.com\", \"included\" : true, \"tracking_url\" : \"https://www.pinterest.com\", \"status\" : \"ACTIVE\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] }, { \"data\" : { \"catalog_product_group_id\" : \"1231235\", \"bid_in_micro_currency\" : 14000000, \"relative_definition\" : \"product_type_1='beverage appliances'\", \"slideshow_collections_description\" : \"slideshow description\", \"collections_hero_pin_id\" : \"123123\", \"catalog_product_group_name\" : \"catalogProductGroupName\", \"slideshow_collections_title\" : \"slideshow title\", \"is_mdl\" : true, \"parent_id\" : \"1231234\", \"grid_click_type\" : \"CLOSEUP\", \"creative_type\" : \"REGULAR\", \"definition\" : \"*/product_type_0='kitchen'/product_type_1='beverage appliances'\", \"id\" : \"2680059592705\", \"ad_group_id\" : \"2680059592705\", \"collections_hero_destination_url\" : \"http://www.pinterest.com\", \"included\" : true, \"tracking_url\" : \"https://www.pinterest.com\", \"status\" : \"ACTIVE\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] } ] }";
+                    String exampleString = "{ \"items\" : [ { \"data\" : { \"catalog_product_group_id\" : \"1231235\", \"bid_in_micro_currency\" : 14000000, \"selected_video_tag\" : \"holiday_sale\", \"relative_definition\" : \"product_type_1='beverage appliances'\", \"slideshow_collections_description\" : \"slideshow description\", \"collections_hero_pin_id\" : \"123123\", \"catalog_product_group_name\" : \"catalogProductGroupName\", \"is_generate_background\" : true, \"slideshow_collections_title\" : \"slideshow title\", \"is_mdl\" : true, \"selected_image_tag\" : \"holiday_sale\", \"collections_header_type\" : \"SHOP_THIS_COLLECTION\", \"parent_id\" : \"1231234\", \"creative_type\" : \"REGULAR\", \"grid_click_type\" : \"CLOSEUP\", \"preferred_media_type\" : \"VIDEO\", \"customizable_cta_type\" : \"SHOP_NOW\", \"definition\" : \"*/product_type_0='kitchen'/product_type_1='beverage appliances'\", \"id\" : \"2680059592705\", \"ad_group_id\" : \"2680059592705\", \"collections_hero_destination_url\" : \"http://www.pinterest.com\", \"included\" : true, \"tracking_url\" : \"https://www.pinterest.com\", \"status\" : \"ACTIVE\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] }, { \"data\" : { \"catalog_product_group_id\" : \"1231235\", \"bid_in_micro_currency\" : 14000000, \"selected_video_tag\" : \"holiday_sale\", \"relative_definition\" : \"product_type_1='beverage appliances'\", \"slideshow_collections_description\" : \"slideshow description\", \"collections_hero_pin_id\" : \"123123\", \"catalog_product_group_name\" : \"catalogProductGroupName\", \"is_generate_background\" : true, \"slideshow_collections_title\" : \"slideshow title\", \"is_mdl\" : true, \"selected_image_tag\" : \"holiday_sale\", \"collections_header_type\" : \"SHOP_THIS_COLLECTION\", \"parent_id\" : \"1231234\", \"creative_type\" : \"REGULAR\", \"grid_click_type\" : \"CLOSEUP\", \"preferred_media_type\" : \"VIDEO\", \"customizable_cta_type\" : \"SHOP_NOW\", \"definition\" : \"*/product_type_0='kitchen'/product_type_1='beverage appliances'\", \"id\" : \"2680059592705\", \"ad_group_id\" : \"2680059592705\", \"collections_hero_destination_url\" : \"http://www.pinterest.com\", \"included\" : true, \"tracking_url\" : \"https://www.pinterest.com\", \"status\" : \"ACTIVE\" }, \"exceptions\" : [ { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, { \"code\" : 2, \"message\" : \"Advertiser not found.\" } ] } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -5078,7 +6381,7 @@ public interface AdAccountsApi {
     String PATH_PRODUCT_GROUPS_ANALYTICS = "/ad_accounts/{ad_account_id}/product_groups/analytics";
     /**
      * GET /ad_accounts/{ad_account_id}/product_groups/analytics : Get product group analytics
-     * Get analytics for the specified product groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the specified product groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. (required)
@@ -5087,9 +6390,10 @@ public interface AdAccountsApi {
      * @param columns Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned (required)
      * @param granularity TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly (required)
      * @param clickWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
-     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
+     * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to 30)
      * @param viewWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to 1)
      * @param conversionReportTime The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to TIME_OF_AD_ACTION)
+     * @param reportingTimezone Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
      * @return Success (status code 200)
      *         or Invalid ad account ads analytics parameters. (status code 400)
      *         or Unexpected error (status code 200)
@@ -5097,7 +6401,7 @@ public interface AdAccountsApi {
     @Operation(
         operationId = "productGroupsAnalytics",
         summary = "Get product group analytics",
-        description = "Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.",
+        description = "Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.",
         tags = { "product_group_promotions" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
@@ -5111,7 +6415,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -5123,18 +6428,329 @@ public interface AdAccountsApi {
         @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
         @NotNull @Parameter(name = "start_date", description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "start_date", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
         @NotNull @Parameter(name = "end_date", description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "end_date", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
-        @NotNull @Size(min = 1, max = 100) @Parameter(name = "product_group_ids", description = "List of Product group Ids to use to filter the results.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "product_group_ids", required = true) List<@Pattern(regexp = "^\\d+$")String> productGroupIds,
+        @NotNull @Size(min = 1, max = 250) @Parameter(name = "product_group_ids", description = "List of Product group Ids to use to filter the results.", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "product_group_ids", required = true) List<@Pattern(regexp = "^\\d+$")String> productGroupIds,
         @NotNull @Parameter(name = "columns", description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "columns", required = true) List<String> columns,
         @NotNull @Parameter(name = "granularity", description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "granularity", required = true) Granularity granularity,
         @Parameter(name = "click_window_days", description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") Integer clickWindowDays,
-        @Parameter(name = "engagement_window_days", description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") Integer engagementWindowDays,
+        @Parameter(name = "engagement_window_days", description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") Integer engagementWindowDays,
         @Parameter(name = "view_window_days", description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") Integer viewWindowDays,
-        @Parameter(name = "conversion_report_time", description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") String conversionReportTime
+        @Parameter(name = "conversion_report_time", description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") String conversionReportTime,
+        @Parameter(name = "reporting_timezone", description = "Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "reporting_timezone", required = false) @Nullable ReportingTimeZone reportingTimezone
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                     String exampleString = "[ { \"DATE\" : \"2021-04-01\", \"PRODUCT_GROUP_ID\" : \"74629351736530\", \"SPEND_IN_DOLLAR\" : 30, \"TOTAL_CLICKTHROUGH\" : 216 }, { \"DATE\" : \"2021-04-01\", \"PRODUCT_GROUP_ID\" : \"74629351736530\", \"SPEND_IN_DOLLAR\" : 30, \"TOTAL_CLICKTHROUGH\" : 216 } ]";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    String PATH_PROMOTIONS_CREATE = "/ad_accounts/{ad_account_id}/promotions";
+    /**
+     * POST /ad_accounts/{ad_account_id}/promotions : Create promotions
+     * Create multiple new promotions.
+     *
+     * @param adAccountId Unique identifier of an ad account. (required)
+     * @param promotionCreateRequest List of promotions to create, size limit [1, 30]. (required)
+     * @return Success (status code 200)
+     *         or Invalid create promotions request parameters. (status code 400)
+     *         or Unexpected error (status code 200)
+     */
+    @Operation(
+        operationId = "promotionsCreate",
+        summary = "Create promotions",
+        description = "Create multiple new promotions.",
+        tags = { "promotions" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Success", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PromotionsResponse.class))
+            }),
+            @ApiResponse(responseCode = "400", description = "Invalid create promotions request parameters.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            })
+        },
+        security = {
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:write" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.POST,
+        value = AdAccountsApi.PATH_PROMOTIONS_CREATE,
+        produces = { "application/json" },
+        consumes = { "application/json" }
+    )
+    default ResponseEntity<PromotionsResponse> promotionsCreate(
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
+        @Parameter(name = "PromotionCreateRequest", description = "List of promotions to create, size limit [1, 30].", required = true) @Valid@Size(min = 1, max = 30)  @RequestBody List<@Valid PromotionCreateRequest> promotionCreateRequest
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"promotions\" : [ { \"exception\" : { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, \"data\" : { \"promotion_type\" : \"VARIABLE\", \"promotion_title\" : \"Black Friday 10% off\", \"promotion_code\" : \"blackfriday10\", \"end_time\" : 1678003860, \"external_id\" : \"abc\", \"template_values\" : [ { \"amount\" : 100, \"custom_text\" : \"My promotion\", \"percent\" : 10, \"currency_code\" : \"UNK\" }, { \"amount\" : 100, \"custom_text\" : \"My promotion\", \"percent\" : 10, \"currency_code\" : \"UNK\" } ], \"ad_account_id\" : \"549755885175\", \"start_time\" : 1677003860, \"promotion_custom_id\" : \"freeshipping_2025\", \"discount_status\" : \"ACTIVE\", \"platform_type\" : \"DEFAULT\", \"id\" : \"7834020347906\", \"status\" : \"ACTIVE\" } }, { \"exception\" : { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, \"data\" : { \"promotion_type\" : \"VARIABLE\", \"promotion_title\" : \"Black Friday 10% off\", \"promotion_code\" : \"blackfriday10\", \"end_time\" : 1678003860, \"external_id\" : \"abc\", \"template_values\" : [ { \"amount\" : 100, \"custom_text\" : \"My promotion\", \"percent\" : 10, \"currency_code\" : \"UNK\" }, { \"amount\" : 100, \"custom_text\" : \"My promotion\", \"percent\" : 10, \"currency_code\" : \"UNK\" } ], \"ad_account_id\" : \"549755885175\", \"start_time\" : 1677003860, \"promotion_custom_id\" : \"freeshipping_2025\", \"discount_status\" : \"ACTIVE\", \"platform_type\" : \"DEFAULT\", \"id\" : \"7834020347906\", \"status\" : \"ACTIVE\" } } ] }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    String PATH_PROMOTIONS_DELETE = "/ad_accounts/{ad_account_id}/promotions/{promotion_id}";
+    /**
+     * DELETE /ad_accounts/{ad_account_id}/promotions/{promotion_id} : Delete promotion by id
+     * Delete a promotion within Pinterest.
+     *
+     * @param adAccountId Unique identifier of an ad account. (required)
+     * @param promotionId Unique identifier of a promotion (required)
+     * @return Promotion deleted successfully (status code 204)
+     *         or Unexpected error (status code 200)
+     */
+    @Operation(
+        operationId = "promotionsDelete",
+        summary = "Delete promotion by id",
+        description = "Delete a promotion within Pinterest.",
+        tags = { "promotions" },
+        responses = {
+            @ApiResponse(responseCode = "204", description = "Promotion deleted successfully"),
+            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            })
+        },
+        security = {
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:write" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.DELETE,
+        value = AdAccountsApi.PATH_PROMOTIONS_DELETE,
+        produces = { "application/json" }
+    )
+    default ResponseEntity<Void> promotionsDelete(
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "promotion_id", description = "Unique identifier of a promotion", required = true, in = ParameterIn.PATH) @PathVariable("promotion_id") String promotionId
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    String PATH_PROMOTIONS_GET = "/ad_accounts/{ad_account_id}/promotions/{promotion_id}";
+    /**
+     * GET /ad_accounts/{ad_account_id}/promotions/{promotion_id} : Get promotion by id
+     * Get a promotion by its Pinterest-specific id. It must be associated with the provided ad account id.
+     *
+     * @param adAccountId Unique identifier of an ad account. (required)
+     * @param promotionId Unique identifier of a promotion (required)
+     * @return Success (status code 200)
+     *         or The promotion ID for the given ad account ID was not found. (status code 404)
+     *         or Unexpected error (status code 200)
+     */
+    @Operation(
+        operationId = "promotionsGet",
+        summary = "Get promotion by id",
+        description = "Get a promotion by its Pinterest-specific id. It must be associated with the provided ad account id.",
+        tags = { "promotions" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Success", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PromotionResponse.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "The promotion ID for the given ad account ID was not found.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            })
+        },
+        security = {
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.GET,
+        value = AdAccountsApi.PATH_PROMOTIONS_GET,
+        produces = { "application/json" }
+    )
+    default ResponseEntity<PromotionResponse> promotionsGet(
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "promotion_id", description = "Unique identifier of a promotion", required = true, in = ParameterIn.PATH) @PathVariable("promotion_id") String promotionId
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"promotion_type\" : \"VARIABLE\", \"promotion_title\" : \"Black Friday 10% off\", \"promotion_code\" : \"blackfriday10\", \"end_time\" : 1678003860, \"external_id\" : \"abc\", \"template_values\" : [ { \"amount\" : 100, \"custom_text\" : \"My promotion\", \"percent\" : 10, \"currency_code\" : \"UNK\" }, { \"amount\" : 100, \"custom_text\" : \"My promotion\", \"percent\" : 10, \"currency_code\" : \"UNK\" } ], \"ad_account_id\" : \"549755885175\", \"start_time\" : 1677003860, \"promotion_custom_id\" : \"freeshipping_2025\", \"discount_status\" : \"ACTIVE\", \"platform_type\" : \"DEFAULT\", \"id\" : \"7834020347906\", \"status\" : \"ACTIVE\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    String PATH_PROMOTIONS_LIST = "/ad_accounts/{ad_account_id}/promotions";
+    /**
+     * GET /ad_accounts/{ad_account_id}/promotions : Get promotions
+     * Gets all promotions associated with an ad account ID that can be applied to an ad group. Can be either internally-saved promotions or external promotions imported from a commerce integration.
+     *
+     * @param adAccountId Unique identifier of an ad account. (required)
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @return Success (status code 200)
+     *         or Invalid ad account promotions parameters. (status code 400)
+     *         or Unexpected error (status code 200)
+     */
+    @Operation(
+        operationId = "promotionsList",
+        summary = "Get promotions",
+        description = "Gets all promotions associated with an ad account ID that can be applied to an ad group. Can be either internally-saved promotions or external promotions imported from a commerce integration.",
+        tags = { "promotions" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Success", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PromotionsList200Response.class))
+            }),
+            @ApiResponse(responseCode = "400", description = "Invalid ad account promotions parameters.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            })
+        },
+        security = {
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.GET,
+        value = AdAccountsApi.PATH_PROMOTIONS_LIST,
+        produces = { "application/json" }
+    )
+    default ResponseEntity<PromotionsList200Response> promotionsList(
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
+        @Min(value = 1) @Max(value = 250) @Parameter(name = "page_size", description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") Integer pageSize,
+        @Parameter(name = "order", description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "order", required = false) @Nullable String order,
+        @Parameter(name = "bookmark", description = "Cursor used to fetch the next page of items", in = ParameterIn.QUERY) @Valid @RequestParam(value = "bookmark", required = false) @Nullable String bookmark
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"promotion_type\" : \"VARIABLE\", \"promotion_title\" : \"Black Friday 10% off\", \"promotion_code\" : \"blackfriday10\", \"end_time\" : 1678003860, \"external_id\" : \"abc\", \"template_values\" : [ { \"amount\" : 100, \"custom_text\" : \"My promotion\", \"percent\" : 10, \"currency_code\" : \"UNK\" }, { \"amount\" : 100, \"custom_text\" : \"My promotion\", \"percent\" : 10, \"currency_code\" : \"UNK\" } ], \"ad_account_id\" : \"549755885175\", \"start_time\" : 1677003860, \"promotion_custom_id\" : \"freeshipping_2025\", \"discount_status\" : \"ACTIVE\", \"platform_type\" : \"DEFAULT\", \"id\" : \"7834020347906\", \"status\" : \"ACTIVE\" }, { \"promotion_type\" : \"VARIABLE\", \"promotion_title\" : \"Black Friday 10% off\", \"promotion_code\" : \"blackfriday10\", \"end_time\" : 1678003860, \"external_id\" : \"abc\", \"template_values\" : [ { \"amount\" : 100, \"custom_text\" : \"My promotion\", \"percent\" : 10, \"currency_code\" : \"UNK\" }, { \"amount\" : 100, \"custom_text\" : \"My promotion\", \"percent\" : 10, \"currency_code\" : \"UNK\" } ], \"ad_account_id\" : \"549755885175\", \"start_time\" : 1677003860, \"promotion_custom_id\" : \"freeshipping_2025\", \"discount_status\" : \"ACTIVE\", \"platform_type\" : \"DEFAULT\", \"id\" : \"7834020347906\", \"status\" : \"ACTIVE\" } ] }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    String PATH_PROMOTIONS_UPDATE = "/ad_accounts/{ad_account_id}/promotions";
+    /**
+     * PATCH /ad_accounts/{ad_account_id}/promotions : Update promotions
+     * Update multiple promotions.
+     *
+     * @param adAccountId Unique identifier of an ad account. (required)
+     * @param promotionUpdateRequest List of promotions to create, size limit [1, 30]. (required)
+     * @return Success (status code 200)
+     *         or Invalid create promotions request parameters. (status code 400)
+     *         or Unexpected error (status code 200)
+     */
+    @Operation(
+        operationId = "promotionsUpdate",
+        summary = "Update promotions",
+        description = "Update multiple promotions.",
+        tags = { "promotions" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Success", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PromotionsResponse.class))
+            }),
+            @ApiResponse(responseCode = "400", description = "Invalid create promotions request parameters.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            })
+        },
+        security = {
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:write" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.PATCH,
+        value = AdAccountsApi.PATH_PROMOTIONS_UPDATE,
+        produces = { "application/json" },
+        consumes = { "application/json" }
+    )
+    default ResponseEntity<PromotionsResponse> promotionsUpdate(
+        @NotNull @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", required = true, in = ParameterIn.PATH) @PathVariable("ad_account_id") String adAccountId,
+        @Parameter(name = "PromotionUpdateRequest", description = "List of promotions to create, size limit [1, 30].", required = true) @Valid@Size(min = 1, max = 30)  @RequestBody List<@Valid PromotionUpdateRequest> promotionUpdateRequest
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"promotions\" : [ { \"exception\" : { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, \"data\" : { \"promotion_type\" : \"VARIABLE\", \"promotion_title\" : \"Black Friday 10% off\", \"promotion_code\" : \"blackfriday10\", \"end_time\" : 1678003860, \"external_id\" : \"abc\", \"template_values\" : [ { \"amount\" : 100, \"custom_text\" : \"My promotion\", \"percent\" : 10, \"currency_code\" : \"UNK\" }, { \"amount\" : 100, \"custom_text\" : \"My promotion\", \"percent\" : 10, \"currency_code\" : \"UNK\" } ], \"ad_account_id\" : \"549755885175\", \"start_time\" : 1677003860, \"promotion_custom_id\" : \"freeshipping_2025\", \"discount_status\" : \"ACTIVE\", \"platform_type\" : \"DEFAULT\", \"id\" : \"7834020347906\", \"status\" : \"ACTIVE\" } }, { \"exception\" : { \"code\" : 2, \"message\" : \"Advertiser not found.\" }, \"data\" : { \"promotion_type\" : \"VARIABLE\", \"promotion_title\" : \"Black Friday 10% off\", \"promotion_code\" : \"blackfriday10\", \"end_time\" : 1678003860, \"external_id\" : \"abc\", \"template_values\" : [ { \"amount\" : 100, \"custom_text\" : \"My promotion\", \"percent\" : 10, \"currency_code\" : \"UNK\" }, { \"amount\" : 100, \"custom_text\" : \"My promotion\", \"percent\" : 10, \"currency_code\" : \"UNK\" } ], \"ad_account_id\" : \"549755885175\", \"start_time\" : 1677003860, \"promotion_custom_id\" : \"freeshipping_2025\", \"discount_status\" : \"ACTIVE\", \"platform_type\" : \"DEFAULT\", \"id\" : \"7834020347906\", \"status\" : \"ACTIVE\" } } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -5258,7 +6874,7 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"billto_infos\" : [ { \"us_terms_id\" : \"a2S1N000000bKIOUA2\", \"row_terms_id\" : \"a2S1N000000bKHhUAM\", \"us_terms\" : \"This Insertion Order (\\"IO\\") is subject to the Pinterest Addendum To IAB Standard Terms and Conditions for Internet Advertising For Media Buys One Year or Less (Version 3.0), as executed by Pinterest, Inc. and GroupM Worldwide LLC on May 7, 2014 and Amendment No. 1 to Pinterest Addendum to IAB Standard Terms and Conditions for Internet Advertising For Media Buys One Year or Less (Version 3.0) as executed by Pinterest, Inc. and GroupM Worldwide LLC on August 20, 2015. The parties agree that Agency may apply any of the budget listed on this IO to any auction bid type or ad product. Price will be determined by auction closing price, plus any applicable non-auction fees.The terms of the Addendum supersede any terms on this IO. ANY ADDITIONAL TERMS AND CONDITIONS ON THIS IO ARE NULL AND VOID.\", \"row_terms\" : \"The IO is governed by the terms available at\r\nhttps://business.pinterest.com/en-gb/pinterest-advertising-services-agreement\", \"addresses\" : [ { \"order_legal_entity\" : \"PIN US OU\", \"purpose\" : \"Billing\", \"display\" : \"475 Brannan Street, San Francisco, CA 94103\", \"address_id\" : \"a1C1N000004MUrLUAW\" }, { \"order_legal_entity\" : \"PIN US OU\", \"purpose\" : \"Billing\", \"display\" : \"475 Brannan Street, San Francisco, CA 94103\", \"address_id\" : \"a1C1N000004MUrLUAW\" } ], \"io_terms\" : \"The IO is governed by the terms available at https://business.pinterest.com/en/pinterest-advertising-services-agreement/. If a budget is listed on this IO, the parties agree that Advertiser (or if applicable, its Agency) may apply any of the budget to any auction bid type or ad product. Price will be determined by auction closing price, plus any applicable non-auction fees. The terms of the Agreement supersede any terms on this IO. ANY ADDITIONAL TERMS AND CONDITIONS ON THIS IO ARE NULL AND VOID.\", \"io_terms_id\" : \"a2S1N000000bKHgUAM\", \"io_type\" : \"Pinterest Paper\", \"id\" : \"0011N00001LW8kAQAT\" }, { \"us_terms_id\" : \"a2S1N000000bKIOUA2\", \"row_terms_id\" : \"a2S1N000000bKHhUAM\", \"us_terms\" : \"This Insertion Order (\\"IO\\") is subject to the Pinterest Addendum To IAB Standard Terms and Conditions for Internet Advertising For Media Buys One Year or Less (Version 3.0), as executed by Pinterest, Inc. and GroupM Worldwide LLC on May 7, 2014 and Amendment No. 1 to Pinterest Addendum to IAB Standard Terms and Conditions for Internet Advertising For Media Buys One Year or Less (Version 3.0) as executed by Pinterest, Inc. and GroupM Worldwide LLC on August 20, 2015. The parties agree that Agency may apply any of the budget listed on this IO to any auction bid type or ad product. Price will be determined by auction closing price, plus any applicable non-auction fees.The terms of the Addendum supersede any terms on this IO. ANY ADDITIONAL TERMS AND CONDITIONS ON THIS IO ARE NULL AND VOID.\", \"row_terms\" : \"The IO is governed by the terms available at\r\nhttps://business.pinterest.com/en-gb/pinterest-advertising-services-agreement\", \"addresses\" : [ { \"order_legal_entity\" : \"PIN US OU\", \"purpose\" : \"Billing\", \"display\" : \"475 Brannan Street, San Francisco, CA 94103\", \"address_id\" : \"a1C1N000004MUrLUAW\" }, { \"order_legal_entity\" : \"PIN US OU\", \"purpose\" : \"Billing\", \"display\" : \"475 Brannan Street, San Francisco, CA 94103\", \"address_id\" : \"a1C1N000004MUrLUAW\" } ], \"io_terms\" : \"The IO is governed by the terms available at https://business.pinterest.com/en/pinterest-advertising-services-agreement/. If a budget is listed on this IO, the parties agree that Advertiser (or if applicable, its Agency) may apply any of the budget to any auction bid type or ad product. Price will be determined by auction closing price, plus any applicable non-auction fees. The terms of the Agreement supersede any terms on this IO. ANY ADDITIONAL TERMS AND CONDITIONS ON THIS IO ARE NULL AND VOID.\", \"io_terms_id\" : \"a2S1N000000bKHgUAM\", \"io_type\" : \"Pinterest Paper\", \"id\" : \"0011N00001LW8kAQAT\" } ], \"eligible\" : true, \"can_edit\" : true, \"currency\" : \"USD\", \"error\" : \"No Error\", \"pmp_names\" : [ { \"name\" : \"Bidalgo\", \"id\" : \"0011N00001LW2aSQAT\" }, { \"name\" : \"Bidalgo\", \"id\" : \"0011N00001LW2aSQAT\" } ] }";
+                    String exampleString = "{ \"billto_infos\" : [ { \"us_terms_id\" : \"a2S1N000000bKIOUA2\", \"row_terms_id\" : \"a2S1N000000bKHhUAM\", \"addresses\" : [ { \"order_legal_entity\" : \"PIN US OU\", \"purpose\" : \"Billing\", \"display\" : \"475 Brannan Street, San Francisco, CA 94103\", \"address_id\" : \"a1C1N000004MUrLUAW\" }, { \"order_legal_entity\" : \"PIN US OU\", \"purpose\" : \"Billing\", \"display\" : \"475 Brannan Street, San Francisco, CA 94103\", \"address_id\" : \"a1C1N000004MUrLUAW\" } ], \"row_terms\" : \"The IO is governed by the terms available at\r\nhttps://business.pinterest.com/en-gb/pinterest-advertising-services-agreement\", \"us_terms\" : \"This Insertion Order (\\"IO\\") is subject to the Pinterest Addendum To IAB Standard Terms and Conditions for Internet Advertising For Media Buys One Year or Less (Version 3.0), as executed by Pinterest, Inc. and GroupM Worldwide LLC on May 7, 2014 and Amendment No. 1 to Pinterest Addendum to IAB Standard Terms and Conditions for Internet Advertising For Media Buys One Year or Less (Version 3.0) as executed by Pinterest, Inc. and GroupM Worldwide LLC on August 20, 2015. The parties agree that Agency may apply any of the budget listed on this IO to any auction bid type or ad product. Price will be determined by auction closing price, plus any applicable non-auction fees.The terms of the Addendum supersede any terms on this IO. ANY ADDITIONAL TERMS AND CONDITIONS ON THIS IO ARE NULL AND VOID.\", \"io_terms\" : \"The IO is governed by the terms available at https://business.pinterest.com/en/pinterest-advertising-services-agreement/. If a budget is listed on this IO, the parties agree that Advertiser (or if applicable, its Agency) may apply any of the budget to any auction bid type or ad product. Price will be determined by auction closing price, plus any applicable non-auction fees. The terms of the Agreement supersede any terms on this IO. ANY ADDITIONAL TERMS AND CONDITIONS ON THIS IO ARE NULL AND VOID.\", \"io_terms_id\" : \"a2S1N000000bKHgUAM\", \"io_type\" : \"Pinterest Paper\", \"id\" : \"0011N00001LW8kAQAT\" }, { \"us_terms_id\" : \"a2S1N000000bKIOUA2\", \"row_terms_id\" : \"a2S1N000000bKHhUAM\", \"addresses\" : [ { \"order_legal_entity\" : \"PIN US OU\", \"purpose\" : \"Billing\", \"display\" : \"475 Brannan Street, San Francisco, CA 94103\", \"address_id\" : \"a1C1N000004MUrLUAW\" }, { \"order_legal_entity\" : \"PIN US OU\", \"purpose\" : \"Billing\", \"display\" : \"475 Brannan Street, San Francisco, CA 94103\", \"address_id\" : \"a1C1N000004MUrLUAW\" } ], \"row_terms\" : \"The IO is governed by the terms available at\r\nhttps://business.pinterest.com/en-gb/pinterest-advertising-services-agreement\", \"us_terms\" : \"This Insertion Order (\\"IO\\") is subject to the Pinterest Addendum To IAB Standard Terms and Conditions for Internet Advertising For Media Buys One Year or Less (Version 3.0), as executed by Pinterest, Inc. and GroupM Worldwide LLC on May 7, 2014 and Amendment No. 1 to Pinterest Addendum to IAB Standard Terms and Conditions for Internet Advertising For Media Buys One Year or Less (Version 3.0) as executed by Pinterest, Inc. and GroupM Worldwide LLC on August 20, 2015. The parties agree that Agency may apply any of the budget listed on this IO to any auction bid type or ad product. Price will be determined by auction closing price, plus any applicable non-auction fees.The terms of the Addendum supersede any terms on this IO. ANY ADDITIONAL TERMS AND CONDITIONS ON THIS IO ARE NULL AND VOID.\", \"io_terms\" : \"The IO is governed by the terms available at https://business.pinterest.com/en/pinterest-advertising-services-agreement/. If a budget is listed on this IO, the parties agree that Advertiser (or if applicable, its Agency) may apply any of the budget to any auction bid type or ad product. Price will be determined by auction closing price, plus any applicable non-auction fees. The terms of the Agreement supersede any terms on this IO. ANY ADDITIONAL TERMS AND CONDITIONS ON THIS IO ARE NULL AND VOID.\", \"io_terms_id\" : \"a2S1N000000bKHgUAM\", \"io_type\" : \"Pinterest Paper\", \"id\" : \"0011N00001LW8kAQAT\" } ], \"eligible\" : true, \"can_edit\" : true, \"currency\" : \"USD\", \"error\" : \"No Error\", \"pmp_names\" : [ { \"name\" : \"Bidalgo\", \"id\" : \"0011N00001LW2aSQAT\" }, { \"name\" : \"Bidalgo\", \"id\" : \"0011N00001LW2aSQAT\" } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -5586,7 +7202,7 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"end_date\" : \"2020-10-05\", \"pmp_name\" : \"pmp_name\", \"salesforce_order_line_id\" : \"salesforce_order_line_id\", \"billing_contact_firstname\" : \"Mary\", \"ads_manager_order_line_id\" : \"ads_manager_order_line_id\", \"currency_info\" : \"USD\", \"bill_to_company_name\" : \"Home Depot Inc.\", \"billing_contact_email\" : \"mail@test.com\", \"estimated_monthly_spend\" : 0.8008281904610115, \"media_contact_email\" : \"mail@test.com\", \"billing_contact_lastname\" : \"Smith\", \"order_name\" : \"order_name\", \"agency_link\" : \"\", \"po_number\" : \"po_number\", \"accepted_terms_id\" : \"accepted_terms_id\", \"accepted_terms_time\" : \"2020-10-06T13:07:04.000Z\", \"pin_order_id\" : \"pin_order_id\", \"media_contact_lastname\" : \"Doe\", \"last_modified_date_time\" : \"2020-10-06T13:07:04.000Z\", \"start_date\" : \"2018-03-01\", \"media_contact_firstname\" : \"John\", \"budget_amount\" : 5000000 }, { \"end_date\" : \"2020-10-05\", \"pmp_name\" : \"pmp_name\", \"salesforce_order_line_id\" : \"salesforce_order_line_id\", \"billing_contact_firstname\" : \"Mary\", \"ads_manager_order_line_id\" : \"ads_manager_order_line_id\", \"currency_info\" : \"USD\", \"bill_to_company_name\" : \"Home Depot Inc.\", \"billing_contact_email\" : \"mail@test.com\", \"estimated_monthly_spend\" : 0.8008281904610115, \"media_contact_email\" : \"mail@test.com\", \"billing_contact_lastname\" : \"Smith\", \"order_name\" : \"order_name\", \"agency_link\" : \"\", \"po_number\" : \"po_number\", \"accepted_terms_id\" : \"accepted_terms_id\", \"accepted_terms_time\" : \"2020-10-06T13:07:04.000Z\", \"pin_order_id\" : \"pin_order_id\", \"media_contact_lastname\" : \"Doe\", \"last_modified_date_time\" : \"2020-10-06T13:07:04.000Z\", \"start_date\" : \"2018-03-01\", \"media_contact_firstname\" : \"John\", \"budget_amount\" : 5000000 } ] }";
+                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"end_date\" : \"2020-10-05\", \"pmp_name\" : \"pmp_name\", \"salesforce_order_line_id\" : \"salesforce_order_line_id\", \"billing_contact_firstname\" : \"Mary\", \"ads_manager_order_line_id\" : \"ads_manager_order_line_id\", \"currency_info\" : \"UNK\", \"bill_to_company_name\" : \"Home Depot Inc.\", \"billing_contact_email\" : \"mail@test.com\", \"estimated_monthly_spend\" : 0.8008281904610115, \"media_contact_email\" : \"mail@test.com\", \"billing_contact_lastname\" : \"Smith\", \"order_name\" : \"order_name\", \"agency_link\" : \"\", \"po_number\" : \"po_number\", \"accepted_terms_id\" : \"accepted_terms_id\", \"accepted_terms_time\" : \"2020-10-06T13:07:04.000Z\", \"media_contact_lastname\" : \"Doe\", \"pin_order_id\" : \"pin_order_id\", \"last_modified_date_time\" : \"2020-10-06T13:07:04.000Z\", \"budget_amount\" : 5000000, \"media_contact_firstname\" : \"John\", \"start_date\" : \"2018-03-01\" }, { \"end_date\" : \"2020-10-05\", \"pmp_name\" : \"pmp_name\", \"salesforce_order_line_id\" : \"salesforce_order_line_id\", \"billing_contact_firstname\" : \"Mary\", \"ads_manager_order_line_id\" : \"ads_manager_order_line_id\", \"currency_info\" : \"UNK\", \"bill_to_company_name\" : \"Home Depot Inc.\", \"billing_contact_email\" : \"mail@test.com\", \"estimated_monthly_spend\" : 0.8008281904610115, \"media_contact_email\" : \"mail@test.com\", \"billing_contact_lastname\" : \"Smith\", \"order_name\" : \"order_name\", \"agency_link\" : \"\", \"po_number\" : \"po_number\", \"accepted_terms_id\" : \"accepted_terms_id\", \"accepted_terms_time\" : \"2020-10-06T13:07:04.000Z\", \"media_contact_lastname\" : \"Doe\", \"pin_order_id\" : \"pin_order_id\", \"last_modified_date_time\" : \"2020-10-06T13:07:04.000Z\", \"budget_amount\" : 5000000, \"media_contact_firstname\" : \"John\", \"start_date\" : \"2018-03-01\" } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -5651,7 +7267,7 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"sizing\" : { \"reach_estimate\" : { \"estimate\" : 63492000, \"lower_bound\" : 47619000, \"upper_bound\" : 79365000 } }, \"created_time\" : 1432744744, \"updated_time\" : 1432744744, \"keywords\" : [ { \"value\" : \"cats\", \"match_type\" : \"EXACT_NEGATIVE\" } ], \"auto_targeting_enabled\" : true, \"tracking_urls\" : { \"impression\" : [ \"URL1\", \"URL2\" ], \"click\" : [ \"URL1\", \"URL2\" ], \"engagement\" : [ \"URL1\", \"URL2\" ], \"buyable_button\" : [ \"URL1\", \"URL2\" ], \"audience_verification\" : [ \"URL1\", \"URL2\" ] }, \"ad_account_id\" : \"549755885175\", \"targeting_attributes\" : { \"GEO\" : [ \"GEO\", \"GEO\" ], \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ], \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ], \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ], \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ], \"SHOPPING_RETARGETING\" : [ { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] }, { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] } ], \"GENDER\" : [ \"unknown\", \"unknown\" ], \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ], \"APPTYPE\" : [ \"ipad\", \"iphone\" ], \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ], \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ] }, \"valid\" : true, \"name\" : \"Gaming\", \"id\" : \"643\", \"placement_group\" : \"ALL\", \"status\" : \"ACTIVE\" }";
+                    String exampleString = "{ \"sizing\" : { \"reach_estimate\" : { \"estimate\" : 63492000, \"lower_bound\" : 47619000, \"upper_bound\" : 79365000 } }, \"created_time\" : 1432744744, \"updated_time\" : 1432744744, \"keywords\" : [ { \"value\" : \"cats\", \"match_type\" : \"EXACT_NEGATIVE\" } ], \"auto_targeting_enabled\" : true, \"tracking_urls\" : { \"impression\" : [ \"URL1\", \"URL2\" ], \"click\" : [ \"URL1\", \"URL2\" ], \"engagement\" : [ \"URL1\", \"URL2\" ], \"buyable_button\" : [ \"URL1\", \"URL2\" ], \"audience_verification\" : [ \"URL1\", \"URL2\" ] }, \"ad_account_id\" : \"549755885175\", \"targeting_attributes\" : { \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ], \"MAXIMUM_AGE\" : \"65+\", \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ], \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ], \"SHOPPING_RETARGETING\" : [ { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] }, { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] } ], \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ], \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ], \"GEO\" : [ \"GEO\", \"GEO\" ], \"MINIMUM_AGE\" : \"18\", \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ], \"GENDER\" : [ \"unknown\", \"unknown\" ], \"APPTYPE\" : [ \"ipad\", \"iphone\" ], \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ] }, \"valid\" : true, \"name\" : \"Gaming\", \"id\" : \"643\", \"placement_group\" : \"ALL\", \"status\" : \"ACTIVE\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -5704,7 +7320,8 @@ public interface AdAccountsApi {
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "ads:read" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "ads:read" })
         }
     )
     @RequestMapping(
@@ -5723,7 +7340,7 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"targeting_attributes\" : { \"GEO\" : [ \"GEO\", \"GEO\" ], \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ], \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ], \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ], \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ], \"SHOPPING_RETARGETING\" : [ { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] }, { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] } ], \"GENDER\" : [ \"unknown\", \"unknown\" ], \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ], \"APPTYPE\" : [ \"ipad\", \"iphone\" ], \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ], \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ] }, \"sizing\" : { \"reach_estimate\" : { \"estimate\" : 63492000, \"lower_bound\" : 47619000, \"upper_bound\" : 79365000 } }, \"created_time\" : 1432744744, \"updated_time\" : 1432744744, \"keywords\" : [ { \"value\" : \"cats\", \"match_type\" : \"EXACT_NEGATIVE\" } ], \"name\" : \"Gaming\", \"id\" : \"643\", \"auto_targeting_enabled\" : true, \"placement_group\" : \"ALL\", \"tracking_urls\" : { \"impression\" : [ \"URL1\", \"URL2\" ], \"click\" : [ \"URL1\", \"URL2\" ], \"engagement\" : [ \"URL1\", \"URL2\" ], \"buyable_button\" : [ \"URL1\", \"URL2\" ], \"audience_verification\" : [ \"URL1\", \"URL2\" ] }, \"ad_account_id\" : \"549755885175\", \"status\" : \"ACTIVE\" }, { \"targeting_attributes\" : { \"GEO\" : [ \"GEO\", \"GEO\" ], \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ], \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ], \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ], \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ], \"SHOPPING_RETARGETING\" : [ { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] }, { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] } ], \"GENDER\" : [ \"unknown\", \"unknown\" ], \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ], \"APPTYPE\" : [ \"ipad\", \"iphone\" ], \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ], \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ] }, \"sizing\" : { \"reach_estimate\" : { \"estimate\" : 63492000, \"lower_bound\" : 47619000, \"upper_bound\" : 79365000 } }, \"created_time\" : 1432744744, \"updated_time\" : 1432744744, \"keywords\" : [ { \"value\" : \"cats\", \"match_type\" : \"EXACT_NEGATIVE\" } ], \"name\" : \"Gaming\", \"id\" : \"643\", \"auto_targeting_enabled\" : true, \"placement_group\" : \"ALL\", \"tracking_urls\" : { \"impression\" : [ \"URL1\", \"URL2\" ], \"click\" : [ \"URL1\", \"URL2\" ], \"engagement\" : [ \"URL1\", \"URL2\" ], \"buyable_button\" : [ \"URL1\", \"URL2\" ], \"audience_verification\" : [ \"URL1\", \"URL2\" ] }, \"ad_account_id\" : \"549755885175\", \"status\" : \"ACTIVE\" } ] }";
+                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"sizing\" : { \"reach_estimate\" : { \"estimate\" : 63492000, \"lower_bound\" : 47619000, \"upper_bound\" : 79365000 } }, \"created_time\" : 1432744744, \"updated_time\" : 1432744744, \"keywords\" : [ { \"value\" : \"cats\", \"match_type\" : \"EXACT_NEGATIVE\" } ], \"auto_targeting_enabled\" : true, \"tracking_urls\" : { \"impression\" : [ \"URL1\", \"URL2\" ], \"click\" : [ \"URL1\", \"URL2\" ], \"engagement\" : [ \"URL1\", \"URL2\" ], \"buyable_button\" : [ \"URL1\", \"URL2\" ], \"audience_verification\" : [ \"URL1\", \"URL2\" ] }, \"ad_account_id\" : \"549755885175\", \"targeting_attributes\" : { \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ], \"MAXIMUM_AGE\" : \"65+\", \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ], \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ], \"SHOPPING_RETARGETING\" : [ { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] }, { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] } ], \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ], \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ], \"GEO\" : [ \"GEO\", \"GEO\" ], \"MINIMUM_AGE\" : \"18\", \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ], \"GENDER\" : [ \"unknown\", \"unknown\" ], \"APPTYPE\" : [ \"ipad\", \"iphone\" ], \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ] }, \"valid\" : true, \"name\" : \"Gaming\", \"id\" : \"643\", \"placement_group\" : \"ALL\", \"status\" : \"ACTIVE\" }, { \"sizing\" : { \"reach_estimate\" : { \"estimate\" : 63492000, \"lower_bound\" : 47619000, \"upper_bound\" : 79365000 } }, \"created_time\" : 1432744744, \"updated_time\" : 1432744744, \"keywords\" : [ { \"value\" : \"cats\", \"match_type\" : \"EXACT_NEGATIVE\" } ], \"auto_targeting_enabled\" : true, \"tracking_urls\" : { \"impression\" : [ \"URL1\", \"URL2\" ], \"click\" : [ \"URL1\", \"URL2\" ], \"engagement\" : [ \"URL1\", \"URL2\" ], \"buyable_button\" : [ \"URL1\", \"URL2\" ], \"audience_verification\" : [ \"URL1\", \"URL2\" ] }, \"ad_account_id\" : \"549755885175\", \"targeting_attributes\" : { \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ], \"MAXIMUM_AGE\" : \"65+\", \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ], \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ], \"SHOPPING_RETARGETING\" : [ { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] }, { \"lookback_window\" : 30, \"exclusion_window\" : 14, \"tag_types\" : [ 0, 6 ] } ], \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ], \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ], \"GEO\" : [ \"GEO\", \"GEO\" ], \"MINIMUM_AGE\" : \"18\", \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ], \"GENDER\" : [ \"unknown\", \"unknown\" ], \"APPTYPE\" : [ \"ipad\", \"iphone\" ], \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ] }, \"valid\" : true, \"name\" : \"Gaming\", \"id\" : \"643\", \"placement_group\" : \"ALL\", \"status\" : \"ACTIVE\" } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -5849,7 +7466,7 @@ public interface AdAccountsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"updated_time\" : 1432744744, \"ad_account_ids\" : [ \"547664674848\" ], \"report_level\" : \"CAMPAIGN\", \"report_format\" : \"JSON\", \"view_window_days\" : 7, \"columns\" : [ \"SPEND_IN_DOLLAR\" ], \"click_window_days\" : 7, \"ingestion_sources\" : [ \"CONVERSIONS_API\", \"CONVERSIONS_API\" ], \"type\" : \"BULK\", \"conversion_report_time_type\" : \"TIME_OF_AD_ACTION\", \"ad_account_id\" : \"547664674848\", \"is_deleted\" : false, \"id\" : \"6739202847590\", \"is_scheduled\" : true, \"custom_column_ids\" : [ \"1597252063\" ], \"date_range\" : { \"absolute_date_range\" : { \"end_date\" : 6.027456183070403, \"type\" : \"absolute\", \"start_date\" : 0.8008281904610115 }, \"relative_date_range\" : { \"end_days_in_past\" : 7, \"type\" : \"relative\", \"start_days_in_past\" : 14 }, \"dynamic_date_range\" : { \"range\" : \"YEAR_TO_DATE\", \"type\" : \"dynamic\" } }, \"is_owned_by_user\" : true, \"report_start_relative_days_in_past\" : 7, \"report_end_relative_days_in_past\" : 7, \"user_id\" : \"784762938748396\", \"granularity\" : \"TOTAL\", \"filters_json\" : \"[{\\"field\\": \\"SPEND_IN_DOLLAR\\", \\"operator\\": \\"=\\", \\"value\\": 100}]\", \"creation_source\" : \"ADS_MANAGER_REPORT_BUILDER\", \"name\" : \"Week over week spend\", \"engagement_window_days\" : 7 }, { \"updated_time\" : 1432744744, \"ad_account_ids\" : [ \"547664674848\" ], \"report_level\" : \"CAMPAIGN\", \"report_format\" : \"JSON\", \"view_window_days\" : 7, \"columns\" : [ \"SPEND_IN_DOLLAR\" ], \"click_window_days\" : 7, \"ingestion_sources\" : [ \"CONVERSIONS_API\", \"CONVERSIONS_API\" ], \"type\" : \"BULK\", \"conversion_report_time_type\" : \"TIME_OF_AD_ACTION\", \"ad_account_id\" : \"547664674848\", \"is_deleted\" : false, \"id\" : \"6739202847590\", \"is_scheduled\" : true, \"custom_column_ids\" : [ \"1597252063\" ], \"date_range\" : { \"absolute_date_range\" : { \"end_date\" : 6.027456183070403, \"type\" : \"absolute\", \"start_date\" : 0.8008281904610115 }, \"relative_date_range\" : { \"end_days_in_past\" : 7, \"type\" : \"relative\", \"start_days_in_past\" : 14 }, \"dynamic_date_range\" : { \"range\" : \"YEAR_TO_DATE\", \"type\" : \"dynamic\" } }, \"is_owned_by_user\" : true, \"report_start_relative_days_in_past\" : 7, \"report_end_relative_days_in_past\" : 7, \"user_id\" : \"784762938748396\", \"granularity\" : \"TOTAL\", \"filters_json\" : \"[{\\"field\\": \\"SPEND_IN_DOLLAR\\", \\"operator\\": \\"=\\", \\"value\\": 100}]\", \"creation_source\" : \"ADS_MANAGER_REPORT_BUILDER\", \"name\" : \"Week over week spend\", \"engagement_window_days\" : 7 } ] }";
+                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"updated_time\" : 1432744744, \"ad_account_ids\" : [ \"547664674848\" ], \"report_level\" : \"CAMPAIGN\", \"report_format\" : \"JSON\", \"view_window_days\" : 7, \"columns\" : [ \"SPEND_IN_DOLLAR\" ], \"click_window_days\" : 7, \"ingestion_sources\" : [ \"CONVERSIONS_API\", \"CONVERSIONS_API\" ], \"type\" : \"BULK\", \"conversion_report_time_type\" : \"TIME_OF_AD_ACTION\", \"ad_account_id\" : \"547664674848\", \"is_deleted\" : false, \"id\" : \"6739202847590\", \"is_scheduled\" : true, \"custom_column_ids\" : [ \"1597252063\" ], \"date_range\" : { \"absolute_date_range\" : { \"end_date\" : 6.027456183070403, \"type\" : \"absolute\", \"start_date\" : 0.8008281904610115 }, \"relative_date_range\" : { \"end_days_in_past\" : 7, \"type\" : \"relative\", \"start_days_in_past\" : 14 }, \"dynamic_date_range\" : { \"range\" : \"YEAR_TO_DATE\", \"type\" : \"dynamic\" } }, \"is_owned_by_user\" : true, \"report_start_relative_days_in_past\" : 7, \"report_end_relative_days_in_past\" : 7, \"user_id\" : \"784762938748396\", \"creation_source\" : \"ADS_MANAGER_REPORT_BUILDER\", \"filters_json\" : \"[{\\"field\\": \\"SPEND_IN_DOLLAR\\", \\"operator\\": \\"=\\", \\"value\\": 100}]\", \"granularity\" : \"TOTAL\", \"name\" : \"Week over week spend\", \"engagement_window_days\" : 7 }, { \"updated_time\" : 1432744744, \"ad_account_ids\" : [ \"547664674848\" ], \"report_level\" : \"CAMPAIGN\", \"report_format\" : \"JSON\", \"view_window_days\" : 7, \"columns\" : [ \"SPEND_IN_DOLLAR\" ], \"click_window_days\" : 7, \"ingestion_sources\" : [ \"CONVERSIONS_API\", \"CONVERSIONS_API\" ], \"type\" : \"BULK\", \"conversion_report_time_type\" : \"TIME_OF_AD_ACTION\", \"ad_account_id\" : \"547664674848\", \"is_deleted\" : false, \"id\" : \"6739202847590\", \"is_scheduled\" : true, \"custom_column_ids\" : [ \"1597252063\" ], \"date_range\" : { \"absolute_date_range\" : { \"end_date\" : 6.027456183070403, \"type\" : \"absolute\", \"start_date\" : 0.8008281904610115 }, \"relative_date_range\" : { \"end_days_in_past\" : 7, \"type\" : \"relative\", \"start_days_in_past\" : 14 }, \"dynamic_date_range\" : { \"range\" : \"YEAR_TO_DATE\", \"type\" : \"dynamic\" } }, \"is_owned_by_user\" : true, \"report_start_relative_days_in_past\" : 7, \"report_end_relative_days_in_past\" : 7, \"user_id\" : \"784762938748396\", \"creation_source\" : \"ADS_MANAGER_REPORT_BUILDER\", \"filters_json\" : \"[{\\"field\\": \\"SPEND_IN_DOLLAR\\", \\"operator\\": \\"=\\", \\"value\\": 100}]\", \"granularity\" : \"TOTAL\", \"name\" : \"Week over week spend\", \"engagement_window_days\" : 7 } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -5930,7 +7547,7 @@ public interface AdAccountsApi {
     String PATH_UPDATE_AD_ACCOUNT_TO_AD_ACCOUNT_SHARED_AUDIENCE = "/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared";
     /**
      * PATCH /ad_accounts/{ad_account_id}/audiences/ad_accounts/shared : Update audience sharing between ad accounts
-     * From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/create-and-manage-accounts&#39;&gt;Pinterest Business Hierarchy&lt;/a&gt; as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.
+     * From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/create-and-manage-accounts&#39;&gt;Pinterest Business Hierarchy&lt;/a&gt; as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param sharedAudience  (required)
@@ -5941,7 +7558,7 @@ public interface AdAccountsApi {
     @Operation(
         operationId = "updateAdAccountToAdAccountSharedAudience",
         summary = "Update audience sharing between ad accounts",
-        description = "From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.",
+        description = "From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.",
         tags = { "audience_sharing" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {
@@ -5995,7 +7612,7 @@ public interface AdAccountsApi {
     String PATH_UPDATE_AD_ACCOUNT_TO_BUSINESS_SHARED_AUDIENCE = "/ad_accounts/{ad_account_id}/audiences/businesses/shared";
     /**
      * PATCH /ad_accounts/{ad_account_id}/audiences/businesses/shared : Update audience sharing from an ad account to businesses
-     * From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.
+     * From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
      *
      * @param adAccountId Unique identifier of an ad account. (required)
      * @param businessSharedAudience  (required)
@@ -6006,7 +7623,7 @@ public interface AdAccountsApi {
     @Operation(
         operationId = "updateAdAccountToBusinessSharedAudience",
         summary = "Update audience sharing from an ad account to businesses",
-        description = "From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.",
+        description = "From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.",
         tags = { "audience_sharing" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Success", content = {

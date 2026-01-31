@@ -10,20 +10,20 @@ The class is defined in **[CatalogsVerticalProductGroupCreateRequest.java](../..
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**catalogId** | `String` | Catalog id pertaining to the creative assets product group. | 
 **catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
-**name** | `String` |  | 
+**country** | `Country` |  |  [optional property]
 **description** | `String` |  |  [optional property]
 **filters** | [`CatalogsCreativeAssetsProductGroupFilters`](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
-**catalogId** | `String` | Catalog id pertaining to the creative assets product group. | 
-**country** | `Country` |  | 
-**locale** | `CatalogsLocale` |  | 
+**locale** | `CatalogsLocale` |  |  [optional property]
+**name** | `String` |  | 
+
 
 ## CatalogTypeEnum
 
 Name | Value
 ---- | -----
 CREATIVE_ASSETS | `"CREATIVE_ASSETS"`
-
 
 
 

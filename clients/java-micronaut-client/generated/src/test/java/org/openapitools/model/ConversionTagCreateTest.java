@@ -22,6 +22,14 @@ public class ConversionTagCreateTest {
     }
 
     /**
+     * Test the property 'aemDbEnabled'
+     */
+    @Test
+    public void aemDbEnabledTest() {
+        // TODO: test aemDbEnabled
+    }
+
+    /**
      * Test the property 'aemEnabled'
      */
     @Test
@@ -30,11 +38,11 @@ public class ConversionTagCreateTest {
     }
 
     /**
-     * Test the property 'mdFrequency'
+     * Test the property 'aemExternalIdEnabled'
      */
     @Test
-    public void mdFrequencyTest() {
-        // TODO: test mdFrequency
+    public void aemExternalIdEnabledTest() {
+        // TODO: test aemExternalIdEnabled
     }
 
     /**
@@ -46,14 +54,6 @@ public class ConversionTagCreateTest {
     }
 
     /**
-     * Test the property 'aemPhEnabled'
-     */
-    @Test
-    public void aemPhEnabledTest() {
-        // TODO: test aemPhEnabled
-    }
-
-    /**
      * Test the property 'aemGeEnabled'
      */
     @Test
@@ -62,19 +62,27 @@ public class ConversionTagCreateTest {
     }
 
     /**
-     * Test the property 'aemDbEnabled'
-     */
-    @Test
-    public void aemDbEnabledTest() {
-        // TODO: test aemDbEnabled
-    }
-
-    /**
      * Test the property 'aemLocEnabled'
      */
     @Test
     public void aemLocEnabledTest() {
         // TODO: test aemLocEnabled
+    }
+
+    /**
+     * Test the property 'aemPhEnabled'
+     */
+    @Test
+    public void aemPhEnabledTest() {
+        // TODO: test aemPhEnabled
+    }
+
+    /**
+     * Test the property 'mdFrequency'
+     */
+    @Test
+    public void mdFrequencyTest() {
+        // TODO: test mdFrequency
     }
 
     /**

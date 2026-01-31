@@ -7,11 +7,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { ProductGroupPromotionResponseItem } from './productGroupPromotionResponseItem';
+import { ProductGroupPromotion } from './productGroupPromotion';
 
 
 export interface ProductGroupPromotionsList200Response { 
-    items: Array<ProductGroupPromotionResponseItem>;
     bookmark?: string | null;
+    items: Array<ProductGroupPromotion>;
 }
 

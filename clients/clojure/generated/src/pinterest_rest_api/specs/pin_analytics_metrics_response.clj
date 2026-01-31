@@ -8,8 +8,8 @@
 
 (def pin-analytics-metrics-response-data
   {
-   (ds/opt :lifetime_metrics) (s/map-of string? int?)
    (ds/opt :daily_metrics) (s/coll-of pin-analytics-metrics-response-daily-metrics-inner-spec)
+   (ds/opt :lifetime_metrics) (s/map-of string? int?)
    (ds/opt :summary_metrics) (s/map-of string? float?)
    })
 

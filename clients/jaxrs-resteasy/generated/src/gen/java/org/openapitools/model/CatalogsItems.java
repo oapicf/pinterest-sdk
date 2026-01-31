@@ -14,10 +14,10 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Response object of catalogs items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Response object of catalogs items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItems   {
   
-  private List<@Valid ItemResponse> items = new ArrayList<>();
+  private List<ItemResponse> items = new ArrayList<>();
 
   /**
    * Array with catalogs items
@@ -26,10 +26,10 @@ public class CatalogsItems   {
   @ApiModelProperty(value = "Array with catalogs items")
   @JsonProperty("items")
   @Valid
-  public List<@Valid ItemResponse> getItems() {
+  public List<ItemResponse> getItems() {
     return items;
   }
-  public void setItems(List<@Valid ItemResponse> items) {
+  public void setItems(List<ItemResponse> items) {
     this.items = items;
   }
 

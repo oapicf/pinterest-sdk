@@ -8,10 +8,10 @@
 
 (def catalogs-product-group-pricing-currency-criteria-data
   {
-   (ds/req :operator) string?
-   (ds/req :value) float?
    (ds/req :currency) non-nullable-catalogs-currency-spec
    (ds/opt :negated) boolean?
+   (ds/req :operator) string?
+   (ds/req :value) float?
    })
 
 (def catalogs-product-group-pricing-currency-criteria-spec

@@ -8,8 +8,8 @@ The class is defined in **[AdAccountsSubscriptionsGetList200Response.java](../..
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;AdAccountGetSubscriptionResponse&gt;`](AdAccountGetSubscriptionResponse.md) |  | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;LeadSubscription&gt;`](LeadSubscription.md) |  | 
 
 
 

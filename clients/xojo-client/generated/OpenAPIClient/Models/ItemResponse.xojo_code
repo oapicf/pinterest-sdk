@@ -7,6 +7,11 @@ Protected Class ItemResponse
 
 
 	#tag Property, Flags = &h0
+		Escapedattributes As OpenAPIClient.Models.CatalogsCreativeAssetsAttributes
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		#tag Note
 			The catalog item id in the merchant namespace
 		#tag EndNote
@@ -19,11 +24,6 @@ Protected Class ItemResponse
 			The pins mapped to the item
 		#tag EndNote
 		pins() As OpenAPIClient.Models.Pin
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		Escapedattributes As OpenAPIClient.Models.CatalogsCreativeAssetsAttributes
 	#tag EndProperty
 
 
@@ -96,6 +96,14 @@ Protected Class ItemResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Escapedattributes"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsCreativeAssetsAttributes"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="item_id"
 			Visible=false
 			Group="Behavior"
@@ -109,14 +117,6 @@ Protected Class ItemResponse
 			Group="Behavior"
 			InitialValue=""
 			Type="Pin"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Escapedattributes"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="CatalogsCreativeAssetsAttributes"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

@@ -10,12 +10,12 @@ import scala.collection.immutable.Seq
 
 /**
  * 
- * @param partnerUnderscoreid Unique identifier of a business partner to update asset access to.
  * @param assetUnderscoreid Unique identifier of the business asset.
+ * @param partnerUnderscoreid Unique identifier of a business partner to update asset access to.
  * @param permissions A non-empty array of permissions to assign to the partner.
  */
-case class UpdatePartnerAssetAccessBodyAccessesInner(partnerUnderscoreid: String,
-                assetUnderscoreid: String,
+case class UpdatePartnerAssetAccessBodyAccessesInner(assetUnderscoreid: String,
+                partnerUnderscoreid: String,
                 permissions: Seq[Permissions]
                 )
 

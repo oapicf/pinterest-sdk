@@ -17,54 +17,54 @@ public struct CatalogsCreativeAssetsFeed: Codable, JSONEncodable, Hashable {
     public var createdAt: Date
     public var id: String
     public var updatedAt: Date
-    /** A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. */
-    public var name: String?
-    public var format: CatalogsFormat
+    /** Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. */
+    public var catalogId: String
     public var catalogType: CatalogsType
     public var credentials: CatalogsFeedCredentials?
-    /** The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
-    public var location: String
-    public var preferredProcessingSchedule: CatalogsFeedProcessingSchedule?
-    public var status: CatalogsStatus
+    public var defaultCountry: Country
     public var defaultCurrency: NullableCurrency?
     /** The locale used within a feed for product descriptions. */
     public var defaultLocale: String
-    public var defaultCountry: Country
-    /** Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. */
-    public var catalogId: String?
+    public var format: CatalogsFormat
+    /** The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
+    public var location: String
+    /** A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. */
+    public var name: String?
+    public var preferredProcessingSchedule: CatalogsFeedProcessingSchedule?
+    public var status: CatalogsStatus
 
-    public init(createdAt: Date, id: String, updatedAt: Date, name: String?, format: CatalogsFormat, catalogType: CatalogsType, credentials: CatalogsFeedCredentials?, location: String, preferredProcessingSchedule: CatalogsFeedProcessingSchedule?, status: CatalogsStatus, defaultCurrency: NullableCurrency?, defaultLocale: String, defaultCountry: Country, catalogId: String?) {
+    public init(createdAt: Date, id: String, updatedAt: Date, catalogId: String, catalogType: CatalogsType, credentials: CatalogsFeedCredentials?, defaultCountry: Country, defaultCurrency: NullableCurrency?, defaultLocale: String, format: CatalogsFormat, location: String, name: String?, preferredProcessingSchedule: CatalogsFeedProcessingSchedule?, status: CatalogsStatus) {
         self.createdAt = createdAt
         self.id = id
         self.updatedAt = updatedAt
-        self.name = name
-        self.format = format
+        self.catalogId = catalogId
         self.catalogType = catalogType
         self.credentials = credentials
-        self.location = location
-        self.preferredProcessingSchedule = preferredProcessingSchedule
-        self.status = status
+        self.defaultCountry = defaultCountry
         self.defaultCurrency = defaultCurrency
         self.defaultLocale = defaultLocale
-        self.defaultCountry = defaultCountry
-        self.catalogId = catalogId
+        self.format = format
+        self.location = location
+        self.name = name
+        self.preferredProcessingSchedule = preferredProcessingSchedule
+        self.status = status
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case createdAt = "created_at"
         case id
         case updatedAt = "updated_at"
-        case name
-        case format
+        case catalogId = "catalog_id"
         case catalogType = "catalog_type"
         case credentials
-        case location
-        case preferredProcessingSchedule = "preferred_processing_schedule"
-        case status
+        case defaultCountry = "default_country"
         case defaultCurrency = "default_currency"
         case defaultLocale = "default_locale"
-        case defaultCountry = "default_country"
-        case catalogId = "catalog_id"
+        case format
+        case location
+        case name
+        case preferredProcessingSchedule = "preferred_processing_schedule"
+        case status
     }
 
     // Encodable protocol methods
@@ -74,17 +74,17 @@ public struct CatalogsCreativeAssetsFeed: Codable, JSONEncodable, Hashable {
         try container.encode(createdAt, forKey: .createdAt)
         try container.encode(id, forKey: .id)
         try container.encode(updatedAt, forKey: .updatedAt)
-        try container.encode(name, forKey: .name)
-        try container.encode(format, forKey: .format)
+        try container.encode(catalogId, forKey: .catalogId)
         try container.encode(catalogType, forKey: .catalogType)
         try container.encode(credentials, forKey: .credentials)
-        try container.encode(location, forKey: .location)
-        try container.encode(preferredProcessingSchedule, forKey: .preferredProcessingSchedule)
-        try container.encode(status, forKey: .status)
+        try container.encode(defaultCountry, forKey: .defaultCountry)
         try container.encode(defaultCurrency, forKey: .defaultCurrency)
         try container.encode(defaultLocale, forKey: .defaultLocale)
-        try container.encode(defaultCountry, forKey: .defaultCountry)
-        try container.encode(catalogId, forKey: .catalogId)
+        try container.encode(format, forKey: .format)
+        try container.encode(location, forKey: .location)
+        try container.encode(name, forKey: .name)
+        try container.encode(preferredProcessingSchedule, forKey: .preferredProcessingSchedule)
+        try container.encode(status, forKey: .status)
     }
 }
 

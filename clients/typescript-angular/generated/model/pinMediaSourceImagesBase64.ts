@@ -7,19 +7,22 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { PinMediaSourceImagesBase64ItemsInner } from './pinMediaSourceImagesBase64ItemsInner';
+import { PinMediaSourceImagesBase64Item } from './pinMediaSourceImagesBase64Item';
 
 
 /**
- * Multiple Base64-encoded images media source
+ * Multiple Base64-based images media source
  */
 export interface PinMediaSourceImagesBase64 { 
-    source_type?: PinMediaSourceImagesBase64.SourceTypeEnum;
+    index?: number;
     /**
      * Array with image objects.
      */
-    items: Array<PinMediaSourceImagesBase64ItemsInner>;
-    index?: number;
+    items: Array<PinMediaSourceImagesBase64Item>;
+    /**
+     * The source type of the media.
+     */
+    source_type: PinMediaSourceImagesBase64.SourceTypeEnum;
 }
 export namespace PinMediaSourceImagesBase64 {
     export const SourceTypeEnum = {

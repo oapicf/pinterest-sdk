@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `MembersToDeleteBody_members_inner`
 --
-SELECT `member_id`, `business_role` FROM `MembersToDeleteBody_members_inner` WHERE 1;
+SELECT `business_role`, `member_id` FROM `MembersToDeleteBody_members_inner` WHERE 1;
 
 --
 -- INSERT template for table `MembersToDeleteBody_members_inner`
 --
-INSERT INTO `MembersToDeleteBody_members_inner`(`member_id`, `business_role`) VALUES (?, ?);
+INSERT INTO `MembersToDeleteBody_members_inner`(`business_role`, `member_id`) VALUES (?, ?);
 
 --
 -- UPDATE template for table `MembersToDeleteBody_members_inner`
 --
-UPDATE `MembersToDeleteBody_members_inner` SET `member_id` = ?, `business_role` = ? WHERE 1;
+UPDATE `MembersToDeleteBody_members_inner` SET `business_role` = ?, `member_id` = ? WHERE 1;
 
 --
 -- DELETE template for table `MembersToDeleteBody_members_inner`

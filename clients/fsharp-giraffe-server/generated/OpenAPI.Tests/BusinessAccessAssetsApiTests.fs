@@ -251,7 +251,7 @@ module BusinessAccessAssetsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/businesses/{business_id}/assets/{asset_id}/members".Replace("businessId", "ADDME").Replace("assetId", "ADDME") + "?bookmark=ADDME&pageSize=ADDME&startIndex=ADDME"
+      let path = "/v5/businesses/{business_id}/assets/{asset_id}/members".Replace("businessId", "ADDME").Replace("assetId", "ADDME") + "?fetchSystemUsers=ADDME&bookmark=ADDME&pageSize=ADDME&startIndex=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(200))
@@ -268,7 +268,7 @@ module BusinessAccessAssetsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/businesses/{business_id}/assets/{asset_id}/members".Replace("businessId", "ADDME").Replace("assetId", "ADDME") + "?bookmark=ADDME&pageSize=ADDME&startIndex=ADDME"
+      let path = "/v5/businesses/{business_id}/assets/{asset_id}/members".Replace("businessId", "ADDME").Replace("assetId", "ADDME") + "?fetchSystemUsers=ADDME&bookmark=ADDME&pageSize=ADDME&startIndex=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(0))

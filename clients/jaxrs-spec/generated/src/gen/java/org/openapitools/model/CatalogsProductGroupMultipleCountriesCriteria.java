@@ -20,10 +20,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CatalogsProductGroupMultipleCountriesCriteria")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsProductGroupMultipleCountriesCriteria   {
-  private @Valid List<Country> values = new ArrayList<>();
   private Boolean negated = false;
+  private @Valid List<Country> values = new ArrayList<>();
 
   public CatalogsProductGroupMultipleCountriesCriteria() {
   }
@@ -33,6 +33,25 @@ public class CatalogsProductGroupMultipleCountriesCriteria   {
     @JsonProperty(required = true, value = "values") List<Country> values
   ) {
     this.values = values;
+  }
+
+  /**
+   **/
+  public CatalogsProductGroupMultipleCountriesCriteria negated(Boolean negated) {
+    this.negated = negated;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("negated")
+  public Boolean getNegated() {
+    return negated;
+  }
+
+  @JsonProperty("negated")
+  public void setNegated(Boolean negated) {
+    this.negated = negated;
   }
 
   /**
@@ -70,25 +89,6 @@ public class CatalogsProductGroupMultipleCountriesCriteria   {
 
     return this;
   }
-  /**
-   **/
-  public CatalogsProductGroupMultipleCountriesCriteria negated(Boolean negated) {
-    this.negated = negated;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("negated")
-  public Boolean getNegated() {
-    return negated;
-  }
-
-  @JsonProperty("negated")
-  public void setNegated(Boolean negated) {
-    this.negated = negated;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -99,13 +99,13 @@ public class CatalogsProductGroupMultipleCountriesCriteria   {
       return false;
     }
     CatalogsProductGroupMultipleCountriesCriteria catalogsProductGroupMultipleCountriesCriteria = (CatalogsProductGroupMultipleCountriesCriteria) o;
-    return Objects.equals(this.values, catalogsProductGroupMultipleCountriesCriteria.values) &&
-        Objects.equals(this.negated, catalogsProductGroupMultipleCountriesCriteria.negated);
+    return Objects.equals(this.negated, catalogsProductGroupMultipleCountriesCriteria.negated) &&
+        Objects.equals(this.values, catalogsProductGroupMultipleCountriesCriteria.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, negated);
+    return Objects.hash(negated, values);
   }
 
   @Override
@@ -113,8 +113,8 @@ public class CatalogsProductGroupMultipleCountriesCriteria   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupMultipleCountriesCriteria {\n");
     
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

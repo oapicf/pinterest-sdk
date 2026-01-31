@@ -21,7 +21,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsCreativeAssetsItemsFilter.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelItemsFilter.class, name = "HOTEL"),
@@ -31,8 +31,8 @@ import io.swagger.annotations.*;
 public class CatalogsItemsFilters   {
   
   private CatalogsType catalogType;
-  private List<String> itemIds = new ArrayList<>();
   private String catalogId;
+  private List<String> itemIds = new ArrayList<>();
   private List<String> hotelIds = new ArrayList<>();
   private List<String> creativeAssetsIds = new ArrayList<>();
 
@@ -50,19 +50,6 @@ public class CatalogsItemsFilters   {
   }
 
   /**
-   **/
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("item_ids")
-  @NotNull
- @Size(min=1,max=100)  public List<String> getItemIds() {
-    return itemIds;
-  }
-  public void setItemIds(List<String> itemIds) {
-    this.itemIds = itemIds;
-  }
-
-  /**
    * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
    **/
   
@@ -73,6 +60,19 @@ public class CatalogsItemsFilters   {
   }
   public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
+  }
+
+  /**
+   **/
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("item_ids")
+  @NotNull
+ @Size(min=1,max=100)  public List<String> getItemIds() {
+    return itemIds;
+  }
+  public void setItemIds(List<String> itemIds) {
+    this.itemIds = itemIds;
   }
 
   /**
@@ -112,15 +112,15 @@ public class CatalogsItemsFilters   {
     }
     CatalogsItemsFilters catalogsItemsFilters = (CatalogsItemsFilters) o;
     return Objects.equals(this.catalogType, catalogsItemsFilters.catalogType) &&
-        Objects.equals(this.itemIds, catalogsItemsFilters.itemIds) &&
         Objects.equals(this.catalogId, catalogsItemsFilters.catalogId) &&
+        Objects.equals(this.itemIds, catalogsItemsFilters.itemIds) &&
         Objects.equals(this.hotelIds, catalogsItemsFilters.hotelIds) &&
         Objects.equals(this.creativeAssetsIds, catalogsItemsFilters.creativeAssetsIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemIds, catalogId, hotelIds, creativeAssetsIds);
+    return Objects.hash(catalogType, catalogId, itemIds, hotelIds, creativeAssetsIds);
   }
 
   @Override
@@ -129,8 +129,8 @@ public class CatalogsItemsFilters   {
     sb.append("class CatalogsItemsFilters {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    itemIds: ").append(toIndentedString(itemIds)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    itemIds: ").append(toIndentedString(itemIds)).append("\n");
     sb.append("    hotelIds: ").append(toIndentedString(hotelIds)).append("\n");
     sb.append("    creativeAssetsIds: ").append(toIndentedString(creativeAssetsIds)).append("\n");
     sb.append("}");

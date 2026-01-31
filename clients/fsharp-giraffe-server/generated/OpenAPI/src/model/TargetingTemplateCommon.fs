@@ -13,11 +13,11 @@ module TargetingTemplateCommon =
 
 
   type TargetingTemplateCommon = {
-    Name : string;
     AutoTargetingEnabled : bool;
-    TargetingAttributes : TargetingSpec;
-    PlacementGroup : PlacementGroupType;
     Keywords : TargetingTemplateKeyword[];
+    Name : string;
+    PlacementGroup : PlacementGroupType;
+    TargetingAttributes : TargetingSpec;
     TrackingUrls : TrackingUrls;
   }
   //#endregion

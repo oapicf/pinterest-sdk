@@ -9,33 +9,16 @@ import javax.validation.Valid;
 /**
  * The counts can be null early in the process.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsFeedProductCounts   {
-  @JsonProperty("original")
-  
-  private Integer original;
-
   @JsonProperty("ingested")
   
   private Integer ingested;
 
-  public CatalogsFeedProductCounts original(Integer original) {
-    this.original = original;
-    return this;
-  }
-
-   /**
-   * The number of products in the feed file.
-   * @return original
-  **/
-  public Integer getOriginal() {
-    return original;
-  }
-
-  public void setOriginal(Integer original) {
-    this.original = original;
-  }
+  @JsonProperty("original")
+  
+  private Integer original;
 
   public CatalogsFeedProductCounts ingested(Integer ingested) {
     this.ingested = ingested;
@@ -54,6 +37,23 @@ public class CatalogsFeedProductCounts   {
     this.ingested = ingested;
   }
 
+  public CatalogsFeedProductCounts original(Integer original) {
+    this.original = original;
+    return this;
+  }
+
+   /**
+   * The number of products in the feed file.
+   * @return original
+  **/
+  public Integer getOriginal() {
+    return original;
+  }
+
+  public void setOriginal(Integer original) {
+    this.original = original;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -64,13 +64,13 @@ public class CatalogsFeedProductCounts   {
       return false;
     }
     CatalogsFeedProductCounts catalogsFeedProductCounts = (CatalogsFeedProductCounts) o;
-    return Objects.equals(original, catalogsFeedProductCounts.original) &&
-        Objects.equals(ingested, catalogsFeedProductCounts.ingested);
+    return Objects.equals(ingested, catalogsFeedProductCounts.ingested) &&
+        Objects.equals(original, catalogsFeedProductCounts.original);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(original, ingested);
+    return Objects.hash(ingested, original);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -79,8 +79,8 @@ public class CatalogsFeedProductCounts   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsFeedProductCounts {\n");
     
-    sb.append("    original: ").append(toIndentedString(original)).append("\n");
     sb.append("    ingested: ").append(toIndentedString(ingested)).append("\n");
+    sb.append("    original: ").append(toIndentedString(original)).append("\n");
     sb.append("}");
     return sb.toString();
   }

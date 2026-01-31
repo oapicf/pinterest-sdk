@@ -6,31 +6,31 @@
 
 
 static quiz_pin_question_t *quiz_pin_question_create_internal(
+    list_t *options,
     double question_id,
-    char *question_text,
-    list_t *options
+    char *question_text
     ) {
     quiz_pin_question_t *quiz_pin_question_local_var = malloc(sizeof(quiz_pin_question_t));
     if (!quiz_pin_question_local_var) {
         return NULL;
     }
+    quiz_pin_question_local_var->options = options;
     quiz_pin_question_local_var->question_id = question_id;
     quiz_pin_question_local_var->question_text = question_text;
-    quiz_pin_question_local_var->options = options;
 
     quiz_pin_question_local_var->_library_owned = 1;
     return quiz_pin_question_local_var;
 }
 
 __attribute__((deprecated)) quiz_pin_question_t *quiz_pin_question_create(
+    list_t *options,
     double question_id,
-    char *question_text,
-    list_t *options
+    char *question_text
     ) {
     return quiz_pin_question_create_internal (
+        options,
         question_id,
-        question_text,
-        options
+        question_text
         );
 }
 
@@ -43,10 +43,6 @@ void quiz_pin_question_free(quiz_pin_question_t *quiz_pin_question) {
         return ;
     }
     listEntry_t *listEntry;
-    if (quiz_pin_question->question_text) {
-        free(quiz_pin_question->question_text);
-        quiz_pin_question->question_text = NULL;
-    }
     if (quiz_pin_question->options) {
         list_ForEach(listEntry, quiz_pin_question->options) {
             quiz_pin_option_free(listEntry->data);
@@ -54,27 +50,15 @@ void quiz_pin_question_free(quiz_pin_question_t *quiz_pin_question) {
         list_freeList(quiz_pin_question->options);
         quiz_pin_question->options = NULL;
     }
+    if (quiz_pin_question->question_text) {
+        free(quiz_pin_question->question_text);
+        quiz_pin_question->question_text = NULL;
+    }
     free(quiz_pin_question);
 }
 
 cJSON *quiz_pin_question_convertToJSON(quiz_pin_question_t *quiz_pin_question) {
     cJSON *item = cJSON_CreateObject();
-
-    // quiz_pin_question->question_id
-    if(quiz_pin_question->question_id) {
-    if(cJSON_AddNumberToObject(item, "question_id", quiz_pin_question->question_id) == NULL) {
-    goto fail; //Numeric
-    }
-    }
-
-
-    // quiz_pin_question->question_text
-    if(quiz_pin_question->question_text) {
-    if(cJSON_AddStringToObject(item, "question_text", quiz_pin_question->question_text) == NULL) {
-    goto fail; //String
-    }
-    }
-
 
     // quiz_pin_question->options
     if(quiz_pin_question->options) {
@@ -95,6 +79,22 @@ cJSON *quiz_pin_question_convertToJSON(quiz_pin_question_t *quiz_pin_question) {
     }
     }
 
+
+    // quiz_pin_question->question_id
+    if(quiz_pin_question->question_id) {
+    if(cJSON_AddNumberToObject(item, "question_id", quiz_pin_question->question_id) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
+    // quiz_pin_question->question_text
+    if(quiz_pin_question->question_text) {
+    if(cJSON_AddStringToObject(item, "question_text", quiz_pin_question->question_text) == NULL) {
+    goto fail; //String
+    }
+    }
+
     return item;
 fail:
     if (item) {
@@ -109,30 +109,6 @@ quiz_pin_question_t *quiz_pin_question_parseFromJSON(cJSON *quiz_pin_questionJSO
 
     // define the local list for quiz_pin_question->options
     list_t *optionsList = NULL;
-
-    // quiz_pin_question->question_id
-    cJSON *question_id = cJSON_GetObjectItemCaseSensitive(quiz_pin_questionJSON, "question_id");
-    if (cJSON_IsNull(question_id)) {
-        question_id = NULL;
-    }
-    if (question_id) { 
-    if(!cJSON_IsNumber(question_id))
-    {
-    goto end; //Numeric
-    }
-    }
-
-    // quiz_pin_question->question_text
-    cJSON *question_text = cJSON_GetObjectItemCaseSensitive(quiz_pin_questionJSON, "question_text");
-    if (cJSON_IsNull(question_text)) {
-        question_text = NULL;
-    }
-    if (question_text) { 
-    if(!cJSON_IsString(question_text) && !cJSON_IsNull(question_text))
-    {
-    goto end; //String
-    }
-    }
 
     // quiz_pin_question->options
     cJSON *options = cJSON_GetObjectItemCaseSensitive(quiz_pin_questionJSON, "options");
@@ -158,11 +134,35 @@ quiz_pin_question_t *quiz_pin_question_parseFromJSON(cJSON *quiz_pin_questionJSO
     }
     }
 
+    // quiz_pin_question->question_id
+    cJSON *question_id = cJSON_GetObjectItemCaseSensitive(quiz_pin_questionJSON, "question_id");
+    if (cJSON_IsNull(question_id)) {
+        question_id = NULL;
+    }
+    if (question_id) { 
+    if(!cJSON_IsNumber(question_id))
+    {
+    goto end; //Numeric
+    }
+    }
+
+    // quiz_pin_question->question_text
+    cJSON *question_text = cJSON_GetObjectItemCaseSensitive(quiz_pin_questionJSON, "question_text");
+    if (cJSON_IsNull(question_text)) {
+        question_text = NULL;
+    }
+    if (question_text) { 
+    if(!cJSON_IsString(question_text) && !cJSON_IsNull(question_text))
+    {
+    goto end; //String
+    }
+    }
+
 
     quiz_pin_question_local_var = quiz_pin_question_create_internal (
+        options ? optionsList : NULL,
         question_id ? question_id->valuedouble : 0,
-        question_text && !cJSON_IsNull(question_text) ? strdup(question_text->valuestring) : NULL,
-        options ? optionsList : NULL
+        question_text && !cJSON_IsNull(question_text) ? strdup(question_text->valuestring) : NULL
         );
 
     return quiz_pin_question_local_var;

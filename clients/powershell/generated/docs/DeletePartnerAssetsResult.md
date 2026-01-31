@@ -4,10 +4,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssetId** | **String** | Unique identifier of a business asset. | [optional] 
-**AssetType** | **String** | Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. | [optional] 
-**Permissions** | **String[]** | Permission levels member or partner has on an asset. | [optional] 
+**AssetType** | **String** | Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. | [optional] 
 **IsSharedPartner** | **Boolean** | If is_shared_partner&#x3D;FALSE, you terminated a partner&#39;s asset access to your business asset.&lt;br&gt; If is_shared_partner&#x3D;TRUE, you terminated your asset access to your partner&#39;s business asset. | [optional] 
 **PartnerId** | **String** | Unique identifier of a business partner. | [optional] 
+**Permissions** | **String[]** | Permission levels member or partner has on an asset. | [optional] 
 
 ## Examples
 
@@ -15,9 +15,9 @@ Name | Type | Description | Notes
 ```powershell
 $DeletePartnerAssetsResult = Initialize-PSOpenAPIToolsDeletePartnerAssetsResult  -AssetId 549755885175 `
  -AssetType AD_ACCOUNT `
- -Permissions [&quot;FINANCE_MANAGER&quot;,&quot;CATALOGS_MANAGER&quot;,&quot;AUDIENCE_MANAGER&quot;] `
  -IsSharedPartner false `
- -PartnerId 140943737684417
+ -PartnerId 140943737684417 `
+ -Permissions [&quot;FINANCE_MANAGER&quot;,&quot;CATALOGS_MANAGER&quot;,&quot;AUDIENCE_MANAGER&quot;]
 ```
 
 - Convert the resource to JSON

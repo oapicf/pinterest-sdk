@@ -19,9 +19,27 @@ import java.util.Objects;
 @ApiModel(description = "Object describing an item batch record to create items")
 public class ItemCreateBatchRecord   {
   
+  private ItemAttributesRequest attributes;
+
   private String itemId;
 
-  private ItemAttributesRequest attributes;
+  /**
+   **/
+  public ItemCreateBatchRecord attributes(ItemAttributesRequest attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("attributes")
+  public ItemAttributesRequest getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(ItemAttributesRequest attributes) {
+    this.attributes = attributes;
+  }
+
 
   /**
    * The catalog item id in the merchant namespace
@@ -42,24 +60,6 @@ public class ItemCreateBatchRecord   {
   }
 
 
-  /**
-   **/
-  public ItemCreateBatchRecord attributes(ItemAttributesRequest attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("attributes")
-  public ItemAttributesRequest getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(ItemAttributesRequest attributes) {
-    this.attributes = attributes;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -70,13 +70,13 @@ public class ItemCreateBatchRecord   {
       return false;
     }
     ItemCreateBatchRecord itemCreateBatchRecord = (ItemCreateBatchRecord) o;
-    return Objects.equals(this.itemId, itemCreateBatchRecord.itemId) &&
-        Objects.equals(this.attributes, itemCreateBatchRecord.attributes);
+    return Objects.equals(this.attributes, itemCreateBatchRecord.attributes) &&
+        Objects.equals(this.itemId, itemCreateBatchRecord.itemId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, attributes);
+    return Objects.hash(attributes, itemId);
   }
 
   @Override
@@ -84,8 +84,8 @@ public class ItemCreateBatchRecord   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ItemCreateBatchRecord {\n");
     
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

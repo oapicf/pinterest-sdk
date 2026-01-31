@@ -13,9 +13,9 @@ import CatalogsItemsRequest._
 
 case class CatalogsItemsRequest (
   country: Country,
+filters: CatalogsItemsPostFilters,
 /* We recommend using the CatalogsLocale values. */
-  language: Language,
-filters: CatalogsItemsPostFilters)
+  language: Language)
 
 object CatalogsItemsRequest {
   import DateTimeCodecs._

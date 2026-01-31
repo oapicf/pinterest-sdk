@@ -16,6 +16,18 @@ void main() {
   // final instance = AudienceSubcategory();
 
   group('test AudienceSubcategory', () {
+    // Subinterest ID.
+    // String id
+    test('to test the property `id`', () async {
+      // TODO
+    });
+
+    // Subinterest affinity index.
+    // num index
+    test('to test the property `index`', () async {
+      // TODO
+    });
+
     // Interest unique key (same as ID).
     // String key
     test('to test the property `key`', () async {
@@ -31,18 +43,6 @@ void main() {
     // Subinterest's percent of category's total audience.
     // num ratio
     test('to test the property `ratio`', () async {
-      // TODO
-    });
-
-    // Subinterest affinity index.
-    // num index
-    test('to test the property `index`', () async {
-      // TODO
-    });
-
-    // Subinterest ID.
-    // String id
-    test('to test the property `id`', () async {
       // TODO
     });
 

@@ -1,0 +1,23 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "active" },
+      {"model": "advertiser_id" },
+      {"model": "discount_currency" },
+      {"model": "discount_in_micro_currency" },
+      {"model": "discount_type" },
+      {"model": "remaining_discount_in_micro_currency" },
+      {"model": "title" },
+    ]
+  }]
+}

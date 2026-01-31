@@ -72,7 +72,7 @@ module.exports = {
             inputFields: [
                 {
                     key: 'business_id',
-                    label: 'Business id',
+                    label: 'Unique identifier of the requesting business.',
                     type: 'string',
                     required: true,
                 },
@@ -162,7 +162,7 @@ module.exports = {
             inputFields: [
                 {
                     key: 'business_id',
-                    label: 'Business id',
+                    label: 'Unique identifier of the requesting business.',
                     type: 'string',
                     required: true,
                 },

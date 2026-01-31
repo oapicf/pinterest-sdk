@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Pin media source. */
+/** Pin media source that can be an image, video, or a mix of both passed in as a request. */
 public enum PinMediaSource: Codable, JSONEncodable, Hashable {
     case typePinMediaSourceImageBase64(PinMediaSourceImageBase64)
     case typePinMediaSourceImageURL(PinMediaSourceImageURL)

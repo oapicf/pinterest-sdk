@@ -1,28 +1,8 @@
 
 <h2>Board</h2>
 <ul class="parameter">
-  <li class="param-required-false">id : String
-    <br/>
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">createdUnderscoreat : Date
-    <br/>Date and time of board creation.
-  </li>
-</ul>
-<ul class="parameter">
   <li class="param-required-false">boardUnderscorepinsUnderscoremodifiedUnderscoreat : Date
     <br/>Date and time of last board pins modified.
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-true">name : String
-    <br/>
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">description : String
-    <br/>
   </li>
 </ul>
 <ul class="parameter">
@@ -31,8 +11,13 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">pinUnderscorecount : Integer
-    <br/>Count of pins on the board.
+  <li class="param-required-false">createdUnderscoreat : Date
+    <br/>Date and time of board creation.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">description : String
+    <br/>
   </li>
 </ul>
 <ul class="parameter">
@@ -41,8 +26,23 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">media : Board_media
+  <li class="param-required-true">id : String
     <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">isUnderscoreadsUnderscoreonly : Boolean
+    <br/>If set to &#x60;true&#x60;, the board will be ad-only and can store ad-only Pins.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">media : BoardMedia
+    <br/>Board media.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">name : String
+    <br/>     Name of the board.      **Note:** If you create an ad-only board by setting &#x60;is_ads_only&#x60;     to &#x60;true&#x60;, the board name automatically becomes \&quot;Ad-only Pins\&quot;.
   </li>
 </ul>
 <ul class="parameter">
@@ -51,14 +51,12 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">privacy : String
-    <br/>Privacy setting for a board. Learn more about &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/secret-boards\&quot;&gt;secret boards&lt;/a&gt; and &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/protected-boards\&quot;&gt;protected boards&lt;/a&gt;
-      <dl class="param-enum">
-        <dt>Enum:
-            <dd>PUBLIC</dd>
-            <dd>PROTECTED</dd>
-            <dd>SECRET</dd>
-        </dt>
-      </dl>
+  <li class="param-required-false">pinUnderscorecount : Integer
+    <br/>Count of Pins on the board.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">privacy : BoardPrivacy
+    <br/>    Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting &#x60;is_ads_only&#x60;     to &#x60;true&#x60;, the &#x60;privacy&#x60; settng automatically becomes &#x60;PROTECTED&#x60;. 
   </li>
 </ul>

@@ -14,7 +14,7 @@ import org.openapitools.model.AuthRespondInvitesBodyInvitesInner;
  * An object with a list of all the invites the user would like to respond to and the action to take.
  */
 @ApiModel(description = "An object with a list of all the invites the user would like to respond to and the action to take.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AuthRespondInvitesBody   {
   @JsonProperty("invites")
   private List<@Valid AuthRespondInvitesBodyInvitesInner> invites = new ArrayList<>();

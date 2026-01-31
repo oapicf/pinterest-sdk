@@ -11,9 +11,9 @@ import org.openapitools.model.QuizPinOption;
 @Canonical
 class QuizPinQuestion {
     
+    List<QuizPinOption> options = new ArrayList<>()
+    
     BigDecimal questionId
     
     String questionText
-    
-    List<QuizPinOption> options = new ArrayList<>()
 }

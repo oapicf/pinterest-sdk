@@ -7,32 +7,32 @@
 #' @title TopPinsAnalyticsResponseDateAvailability
 #' @description TopPinsAnalyticsResponseDateAvailability Class
 #' @format An \code{R6Class} generator object
-#' @field latest_available_timestamp  numeric [optional]
 #' @field is_realtime  character [optional]
+#' @field latest_available_timestamp  numeric [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 TopPinsAnalyticsResponseDateAvailability <- R6::R6Class(
   "TopPinsAnalyticsResponseDateAvailability",
   public = list(
-    `latest_available_timestamp` = NULL,
     `is_realtime` = NULL,
+    `latest_available_timestamp` = NULL,
 
     #' @description
     #' Initialize a new TopPinsAnalyticsResponseDateAvailability class.
     #'
-    #' @param latest_available_timestamp latest_available_timestamp
     #' @param is_realtime is_realtime
+    #' @param latest_available_timestamp latest_available_timestamp
     #' @param ... Other optional arguments.
-    initialize = function(`latest_available_timestamp` = NULL, `is_realtime` = NULL, ...) {
-      if (!is.null(`latest_available_timestamp`)) {
-        self$`latest_available_timestamp` <- `latest_available_timestamp`
-      }
+    initialize = function(`is_realtime` = NULL, `latest_available_timestamp` = NULL, ...) {
       if (!is.null(`is_realtime`)) {
         if (!(is.logical(`is_realtime`) && length(`is_realtime`) == 1)) {
           stop(paste("Error! Invalid data for `is_realtime`. Must be a boolean:", `is_realtime`))
         }
         self$`is_realtime` <- `is_realtime`
+      }
+      if (!is.null(`latest_available_timestamp`)) {
+        self$`latest_available_timestamp` <- `latest_available_timestamp`
       }
     },
 
@@ -67,13 +67,13 @@ TopPinsAnalyticsResponseDateAvailability <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       TopPinsAnalyticsResponseDateAvailabilityObject <- list()
-      if (!is.null(self$`latest_available_timestamp`)) {
-        TopPinsAnalyticsResponseDateAvailabilityObject[["latest_available_timestamp"]] <-
-          self$`latest_available_timestamp`
-      }
       if (!is.null(self$`is_realtime`)) {
         TopPinsAnalyticsResponseDateAvailabilityObject[["is_realtime"]] <-
           self$`is_realtime`
+      }
+      if (!is.null(self$`latest_available_timestamp`)) {
+        TopPinsAnalyticsResponseDateAvailabilityObject[["latest_available_timestamp"]] <-
+          self$`latest_available_timestamp`
       }
       return(TopPinsAnalyticsResponseDateAvailabilityObject)
     },
@@ -85,11 +85,11 @@ TopPinsAnalyticsResponseDateAvailability <- R6::R6Class(
     #' @return the instance of TopPinsAnalyticsResponseDateAvailability
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`latest_available_timestamp`)) {
-        self$`latest_available_timestamp` <- this_object$`latest_available_timestamp`
-      }
       if (!is.null(this_object$`is_realtime`)) {
         self$`is_realtime` <- this_object$`is_realtime`
+      }
+      if (!is.null(this_object$`latest_available_timestamp`)) {
+        self$`latest_available_timestamp` <- this_object$`latest_available_timestamp`
       }
       self
     },
@@ -112,8 +112,8 @@ TopPinsAnalyticsResponseDateAvailability <- R6::R6Class(
     #' @return the instance of TopPinsAnalyticsResponseDateAvailability
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`latest_available_timestamp` <- this_object$`latest_available_timestamp`
       self$`is_realtime` <- this_object$`is_realtime`
+      self$`latest_available_timestamp` <- this_object$`latest_available_timestamp`
       self
     },
 

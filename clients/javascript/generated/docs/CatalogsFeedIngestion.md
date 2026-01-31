@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | 
-**feedId** | **String** |  | 
 **createdAt** | **Date** |  | 
+**feedId** | **String** |  | 
+**id** | **String** |  | 
 **status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | 
 
 

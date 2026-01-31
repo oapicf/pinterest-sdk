@@ -1,7 +1,7 @@
 /*
  * ConversionTagCreate.h
  *
- * 
+ * Resource create operation model.
  */
 
 #ifndef _ConversionTagCreate_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief 
+/*! \brief Resource create operation model.
  *
  *  \ingroup Models
  *
@@ -45,13 +45,55 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
+	/*! \brief Get Whether Automatic Enhanced Match birthdate is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+	 */
+	bool getAemDbEnabled();
+
+	/*! \brief Set Whether Automatic Enhanced Match birthdate is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+	 */
+	void setAemDbEnabled(bool  aem_db_enabled);
+	/*! \brief Get Whether Automatic Enhanced Match email is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
 	 */
 	bool getAemEnabled();
 
-	/*! \brief Set Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
+	/*! \brief Set Whether Automatic Enhanced Match email is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
 	 */
 	void setAemEnabled(bool  aem_enabled);
+	/*! \brief Get Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+	 */
+	bool getAemExternalIdEnabled();
+
+	/*! \brief Set Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+	 */
+	void setAemExternalIdEnabled(bool  aem_external_id_enabled);
+	/*! \brief Get Whether Automatic Enhanced Match name is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+	 */
+	bool getAemFnlnEnabled();
+
+	/*! \brief Set Whether Automatic Enhanced Match name is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+	 */
+	void setAemFnlnEnabled(bool  aem_fnln_enabled);
+	/*! \brief Get Whether Automatic Enhanced Match gender is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+	 */
+	bool getAemGeEnabled();
+
+	/*! \brief Set Whether Automatic Enhanced Match gender is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+	 */
+	void setAemGeEnabled(bool  aem_ge_enabled);
+	/*! \brief Get Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+	 */
+	bool getAemLocEnabled();
+
+	/*! \brief Set Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+	 */
+	void setAemLocEnabled(bool  aem_loc_enabled);
+	/*! \brief Get Whether Automatic Enhanced Match phone is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+	 */
+	bool getAemPhEnabled();
+
+	/*! \brief Set Whether Automatic Enhanced Match phone is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+	 */
+	void setAemPhEnabled(bool  aem_ph_enabled);
 	/*! \brief Get Metadata ingestion frequency.
 	 */
 	long long getMdFrequency();
@@ -59,41 +101,6 @@ public:
 	/*! \brief Set Metadata ingestion frequency.
 	 */
 	void setMdFrequency(long long  md_frequency);
-	/*! \brief Get Whether Automatic Enhanced Match name is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-	 */
-	bool getAemFnlnEnabled();
-
-	/*! \brief Set Whether Automatic Enhanced Match name is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-	 */
-	void setAemFnlnEnabled(bool  aem_fnln_enabled);
-	/*! \brief Get Whether Automatic Enhanced Match phone is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-	 */
-	bool getAemPhEnabled();
-
-	/*! \brief Set Whether Automatic Enhanced Match phone is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-	 */
-	void setAemPhEnabled(bool  aem_ph_enabled);
-	/*! \brief Get Whether Automatic Enhanced Match gender is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-	 */
-	bool getAemGeEnabled();
-
-	/*! \brief Set Whether Automatic Enhanced Match gender is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-	 */
-	void setAemGeEnabled(bool  aem_ge_enabled);
-	/*! \brief Get Whether Automatic Enhanced Match birthdate is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-	 */
-	bool getAemDbEnabled();
-
-	/*! \brief Set Whether Automatic Enhanced Match birthdate is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-	 */
-	void setAemDbEnabled(bool  aem_db_enabled);
-	/*! \brief Get Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-	 */
-	bool getAemLocEnabled();
-
-	/*! \brief Set Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-	 */
-	void setAemLocEnabled(bool  aem_loc_enabled);
 	/*! \brief Get Conversion tag name.
 	 */
 	std::string getName();
@@ -103,13 +110,14 @@ public:
 	void setName(std::string  name);
 
 private:
-	bool aem_enabled;
-	long long md_frequency;
-	bool aem_fnln_enabled;
-	bool aem_ph_enabled;
-	bool aem_ge_enabled;
 	bool aem_db_enabled;
+	bool aem_enabled;
+	bool aem_external_id_enabled;
+	bool aem_fnln_enabled;
+	bool aem_ge_enabled;
 	bool aem_loc_enabled;
+	bool aem_ph_enabled;
+	long long md_frequency;
 	std::string name;
 	void __init();
 	void __cleanup();

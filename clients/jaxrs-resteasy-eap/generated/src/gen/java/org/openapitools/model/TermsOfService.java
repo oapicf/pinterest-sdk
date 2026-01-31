@@ -11,38 +11,25 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TermsOfService   {
   
-  private String id;
-  private String html;
-  private Boolean hasAccepted;
   private String adAccountId;
+  private Boolean hasAccepted;
+  private String html;
+  private String id;
 
   /**
-   * The ID of the terms of service
+   * The ID of the ad account.
    **/
   
-  @ApiModelProperty(example = "2650449554526", value = "The ID of the terms of service")
-  @JsonProperty("id")
-  public String getId() {
-    return id;
+  @ApiModelProperty(example = "549755885175", value = "The ID of the ad account.")
+  @JsonProperty("ad_account_id")
+  public String getAdAccountId() {
+    return adAccountId;
   }
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  /**
-   * The terms of service content
-   **/
-  
-  @ApiModelProperty(example = "example test", value = "The terms of service content")
-  @JsonProperty("html")
-  public String getHtml() {
-    return html;
-  }
-  public void setHtml(String html) {
-    this.html = html;
+  public void setAdAccountId(String adAccountId) {
+    this.adAccountId = adAccountId;
   }
 
   /**
@@ -59,16 +46,29 @@ public class TermsOfService   {
   }
 
   /**
-   * The ID of the ad account.
+   * The terms of service content
    **/
   
-  @ApiModelProperty(example = "549755885175", value = "The ID of the ad account.")
-  @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
-    return adAccountId;
+  @ApiModelProperty(example = "example test", value = "The terms of service content")
+  @JsonProperty("html")
+  public String getHtml() {
+    return html;
   }
-  public void setAdAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
+  public void setHtml(String html) {
+    this.html = html;
+  }
+
+  /**
+   * The ID of the terms of service
+   **/
+  
+  @ApiModelProperty(example = "2650449554526", value = "The ID of the terms of service")
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
   }
 
 
@@ -81,15 +81,15 @@ public class TermsOfService   {
       return false;
     }
     TermsOfService termsOfService = (TermsOfService) o;
-    return Objects.equals(this.id, termsOfService.id) &&
-        Objects.equals(this.html, termsOfService.html) &&
+    return Objects.equals(this.adAccountId, termsOfService.adAccountId) &&
         Objects.equals(this.hasAccepted, termsOfService.hasAccepted) &&
-        Objects.equals(this.adAccountId, termsOfService.adAccountId);
+        Objects.equals(this.html, termsOfService.html) &&
+        Objects.equals(this.id, termsOfService.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, html, hasAccepted, adAccountId);
+    return Objects.hash(adAccountId, hasAccepted, html, id);
   }
 
   @Override
@@ -97,10 +97,10 @@ public class TermsOfService   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TermsOfService {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    html: ").append(toIndentedString(html)).append("\n");
-    sb.append("    hasAccepted: ").append(toIndentedString(hasAccepted)).append("\n");
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
+    sb.append("    hasAccepted: ").append(toIndentedString(hasAccepted)).append("\n");
+    sb.append("    html: ").append(toIndentedString(html)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

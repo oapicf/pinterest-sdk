@@ -11,12 +11,12 @@ module CatalogsUpsertRetailItem =
 
   [<CLIMutable>]
   type CatalogsUpsertRetailItem = {
+    [<JsonProperty(PropertyName = "attributes")>]
+    Attributes : ItemAttributesRequest;
     [<JsonProperty(PropertyName = "item_id")>]
     ItemId : string;
     [<JsonProperty(PropertyName = "operation")>]
     Operation : string;
-    [<JsonProperty(PropertyName = "attributes")>]
-    Attributes : ItemAttributesRequest;
   }
 
   //#endregion

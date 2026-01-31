@@ -1,0 +1,48 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Request containing OTP and Amazon storefront info called by Amazon",
+  "name": "AmazonConnectRequest",
+  "fields": [
+    {
+      "name": "amazon_storefront_id",
+      "type": ["null", "string"],
+      "doc": "The Amazon storefront id",
+      "default": null
+    },
+    {
+      "name": "amazon_storefront_name",
+      "type": "string",
+      "doc": "The Amazon storefront name"
+    },
+    {
+      "name": "amazon_storefront_url",
+      "type": "string",
+      "doc": "The Amazon storefront url"
+    },
+    {
+      "name": "amazon_user_id",
+      "type": ["null", "string"],
+      "doc": "The Amazon user id",
+      "default": null
+    },
+    {
+      "name": "is_amazon_account_linked",
+      "type": "boolean",
+      "doc": "The Amazon account linking status"
+    },
+    {
+      "name": "one_time_passcode",
+      "type": ["null", "string"],
+      "doc": "The one time passcode for Pinterest-initiated linking requests",
+      "default": null
+    },
+    {
+      "name": "pinterest_user_id",
+      "type": ["null", "string"],
+      "doc": "The Pinterest user id for Amazon-initiated linking requests",
+      "default": null
+    }
+  ]
+
+}

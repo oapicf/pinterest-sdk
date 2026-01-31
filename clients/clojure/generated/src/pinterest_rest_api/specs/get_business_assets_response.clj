@@ -2,15 +2,17 @@
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
             [pinterest-rest-api.specs.asset-group-binding :refer :all]
+            [pinterest-rest-api.specs.get-business-assets-response-catalog-info :refer :all]
             )
   (:import (java.io File)))
 
 
 (def get-business-assets-response-data
   {
+   (ds/opt :asset_group_info) asset-group-binding-spec
    (ds/opt :asset_id) string?
    (ds/opt :asset_type) string?
-   (ds/opt :asset_group_info) asset-group-binding-spec
+   (ds/opt :catalog_info) get-business-assets-response-catalog-info-spec
    })
 
 (def get-business-assets-response-spec

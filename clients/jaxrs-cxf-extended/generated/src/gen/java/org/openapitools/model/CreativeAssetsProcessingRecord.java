@@ -35,16 +35,16 @@ public class CreativeAssetsProcessingRecord  {
   @Valid
   private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
 
+  @ApiModelProperty(value = "")
+  @Valid
+  private ItemProcessingStatus status;
+
  /**
   * Array with the validation warnings for the item processing record
   */
   @ApiModelProperty(value = "Array with the validation warnings for the item processing record")
   @Valid
   private List<@Valid ItemValidationEvent> warnings = new ArrayList<>();
-
-  @ApiModelProperty(value = "")
-  @Valid
-  private ItemProcessingStatus status;
  /**
   * The catalog creative assets id in the merchant namespace
   * @return creativeAssetsId
@@ -102,6 +102,30 @@ public class CreativeAssetsProcessingRecord  {
   }
 
  /**
+  * Get status
+  * @return status
+  */
+  @JsonProperty("status")
+  public ItemProcessingStatus getStatus() {
+    return status;
+  }
+
+  /**
+   * Sets the <code>status</code> property.
+   */
+ public void setStatus(ItemProcessingStatus status) {
+    this.status = status;
+  }
+
+  /**
+   * Sets the <code>status</code> property.
+   */
+  public CreativeAssetsProcessingRecord status(ItemProcessingStatus status) {
+    this.status = status;
+    return this;
+  }
+
+ /**
   * Array with the validation warnings for the item processing record
   * @return warnings
   */
@@ -133,30 +157,6 @@ public class CreativeAssetsProcessingRecord  {
     return this;
   }
 
- /**
-  * Get status
-  * @return status
-  */
-  @JsonProperty("status")
-  public ItemProcessingStatus getStatus() {
-    return status;
-  }
-
-  /**
-   * Sets the <code>status</code> property.
-   */
- public void setStatus(ItemProcessingStatus status) {
-    this.status = status;
-  }
-
-  /**
-   * Sets the <code>status</code> property.
-   */
-  public CreativeAssetsProcessingRecord status(ItemProcessingStatus status) {
-    this.status = status;
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -169,13 +169,13 @@ public class CreativeAssetsProcessingRecord  {
     CreativeAssetsProcessingRecord creativeAssetsProcessingRecord = (CreativeAssetsProcessingRecord) o;
     return Objects.equals(this.creativeAssetsId, creativeAssetsProcessingRecord.creativeAssetsId) &&
         Objects.equals(this.errors, creativeAssetsProcessingRecord.errors) &&
-        Objects.equals(this.warnings, creativeAssetsProcessingRecord.warnings) &&
-        Objects.equals(this.status, creativeAssetsProcessingRecord.status);
+        Objects.equals(this.status, creativeAssetsProcessingRecord.status) &&
+        Objects.equals(this.warnings, creativeAssetsProcessingRecord.warnings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(creativeAssetsId, errors, warnings, status);
+    return Objects.hash(creativeAssetsId, errors, status, warnings);
   }
 
   @Override
@@ -185,8 +185,8 @@ public class CreativeAssetsProcessingRecord  {
     
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -12,110 +12,118 @@ import AnyCodable
 
 public struct ConversionEventsDataInner: Codable, JSONEncodable, Hashable {
 
-    /** <p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p>  */
-    public var eventName: String
-    /** <p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p>  */
+    /** <p>The source indicating where the conversion event occurred.</p> - `app_android` - `app_ios` - `web` - `offline` */
     public var actionSource: String
-    /** The time when the event happened. Unix timestamp in seconds. */
-    public var eventTime: Int64
-    /** A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API. */
-    public var eventId: String
-    /** URL of the web conversion event. */
-    public var eventSourceUrl: String?
-    /** When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device. */
-    public var optOut: Bool?
-    /** The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’ */
-    public var partnerName: String?
-    public var userData: ConversionEventsUserData
-    public var customData: ConversionEventsDataInnerCustomData?
     /** The app store app ID. */
     public var appId: String?
+    public var appInfo: ConversionEventAppInfo?
     /** Name of the app. */
     public var appName: String?
     /** Version of the app. */
     public var appVersion: String?
+    public var customData: ConversionEventsDataInnerCustomData?
     /** Brand of the user device. */
     public var deviceBrand: String?
     /** User device's mobile carrier. */
     public var deviceCarrier: String?
+    public var deviceInfo: ConversionEventDeviceInfo?
     /** Model of the user device. */
     public var deviceModel: String?
     /** Type of the user device. */
     public var deviceType: String?
-    /** Version of the device operating system. */
-    public var osVersion: String?
-    /** Whether the event occurred when the user device was connected to wifi. */
-    public var wifi: Bool?
+    /** A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API. */
+    public var eventId: String
+    /** <p>The type of the user event. Please use the right event_name; otherwise the event will not be accepted and show up correctly in reports.</p>  - `add_payment_info` - `add_to_cart` - `add_to_wishlist` - `app_install` - `checkout` - `custom` - `initiate_checkout` - `lead` - `page_visit` - `search` - `signup` - `subscribe` - `view_category` - `view_content` - `watch_video` */
+    public var eventName: String
+    /** URL of the web conversion event. */
+    public var eventSourceUrl: String?
+    /** The time when the event happened. Unix timestamp in seconds. */
+    public var eventTime: Int64
     /** Two-character ISO-639-1 language code indicating the user's language. */
     public var language: String?
+    /** When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device. */
+    public var optOut: Bool?
+    /** Version of the device operating system. */
+    public var osVersion: String?
+    /** The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’ */
+    public var partnerName: String?
+    public var userData: ConversionEventsUserData
+    /** Whether the event occurred when the user device was connected to wifi. */
+    public var wifi: Bool?
 
-    public init(eventName: String, actionSource: String, eventTime: Int64, eventId: String, eventSourceUrl: String? = nil, optOut: Bool? = nil, partnerName: String? = nil, userData: ConversionEventsUserData, customData: ConversionEventsDataInnerCustomData? = nil, appId: String? = nil, appName: String? = nil, appVersion: String? = nil, deviceBrand: String? = nil, deviceCarrier: String? = nil, deviceModel: String? = nil, deviceType: String? = nil, osVersion: String? = nil, wifi: Bool? = nil, language: String? = nil) {
-        self.eventName = eventName
+    public init(actionSource: String, appId: String? = nil, appInfo: ConversionEventAppInfo? = nil, appName: String? = nil, appVersion: String? = nil, customData: ConversionEventsDataInnerCustomData? = nil, deviceBrand: String? = nil, deviceCarrier: String? = nil, deviceInfo: ConversionEventDeviceInfo? = nil, deviceModel: String? = nil, deviceType: String? = nil, eventId: String, eventName: String, eventSourceUrl: String? = nil, eventTime: Int64, language: String? = nil, optOut: Bool? = nil, osVersion: String? = nil, partnerName: String? = nil, userData: ConversionEventsUserData, wifi: Bool? = nil) {
         self.actionSource = actionSource
-        self.eventTime = eventTime
-        self.eventId = eventId
-        self.eventSourceUrl = eventSourceUrl
-        self.optOut = optOut
-        self.partnerName = partnerName
-        self.userData = userData
-        self.customData = customData
         self.appId = appId
+        self.appInfo = appInfo
         self.appName = appName
         self.appVersion = appVersion
+        self.customData = customData
         self.deviceBrand = deviceBrand
         self.deviceCarrier = deviceCarrier
+        self.deviceInfo = deviceInfo
         self.deviceModel = deviceModel
         self.deviceType = deviceType
-        self.osVersion = osVersion
-        self.wifi = wifi
+        self.eventId = eventId
+        self.eventName = eventName
+        self.eventSourceUrl = eventSourceUrl
+        self.eventTime = eventTime
         self.language = language
+        self.optOut = optOut
+        self.osVersion = osVersion
+        self.partnerName = partnerName
+        self.userData = userData
+        self.wifi = wifi
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case eventName = "event_name"
         case actionSource = "action_source"
-        case eventTime = "event_time"
-        case eventId = "event_id"
-        case eventSourceUrl = "event_source_url"
-        case optOut = "opt_out"
-        case partnerName = "partner_name"
-        case userData = "user_data"
-        case customData = "custom_data"
         case appId = "app_id"
+        case appInfo = "app_info"
         case appName = "app_name"
         case appVersion = "app_version"
+        case customData = "custom_data"
         case deviceBrand = "device_brand"
         case deviceCarrier = "device_carrier"
+        case deviceInfo = "device_info"
         case deviceModel = "device_model"
         case deviceType = "device_type"
-        case osVersion = "os_version"
-        case wifi
+        case eventId = "event_id"
+        case eventName = "event_name"
+        case eventSourceUrl = "event_source_url"
+        case eventTime = "event_time"
         case language
+        case optOut = "opt_out"
+        case osVersion = "os_version"
+        case partnerName = "partner_name"
+        case userData = "user_data"
+        case wifi
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(eventName, forKey: .eventName)
         try container.encode(actionSource, forKey: .actionSource)
-        try container.encode(eventTime, forKey: .eventTime)
-        try container.encode(eventId, forKey: .eventId)
-        try container.encodeIfPresent(eventSourceUrl, forKey: .eventSourceUrl)
-        try container.encodeIfPresent(optOut, forKey: .optOut)
-        try container.encodeIfPresent(partnerName, forKey: .partnerName)
-        try container.encode(userData, forKey: .userData)
-        try container.encodeIfPresent(customData, forKey: .customData)
         try container.encodeIfPresent(appId, forKey: .appId)
+        try container.encodeIfPresent(appInfo, forKey: .appInfo)
         try container.encodeIfPresent(appName, forKey: .appName)
         try container.encodeIfPresent(appVersion, forKey: .appVersion)
+        try container.encodeIfPresent(customData, forKey: .customData)
         try container.encodeIfPresent(deviceBrand, forKey: .deviceBrand)
         try container.encodeIfPresent(deviceCarrier, forKey: .deviceCarrier)
+        try container.encodeIfPresent(deviceInfo, forKey: .deviceInfo)
         try container.encodeIfPresent(deviceModel, forKey: .deviceModel)
         try container.encodeIfPresent(deviceType, forKey: .deviceType)
-        try container.encodeIfPresent(osVersion, forKey: .osVersion)
-        try container.encodeIfPresent(wifi, forKey: .wifi)
+        try container.encode(eventId, forKey: .eventId)
+        try container.encode(eventName, forKey: .eventName)
+        try container.encodeIfPresent(eventSourceUrl, forKey: .eventSourceUrl)
+        try container.encode(eventTime, forKey: .eventTime)
         try container.encodeIfPresent(language, forKey: .language)
+        try container.encodeIfPresent(optOut, forKey: .optOut)
+        try container.encodeIfPresent(osVersion, forKey: .osVersion)
+        try container.encodeIfPresent(partnerName, forKey: .partnerName)
+        try container.encode(userData, forKey: .userData)
+        try container.encodeIfPresent(wifi, forKey: .wifi)
     }
 }
 

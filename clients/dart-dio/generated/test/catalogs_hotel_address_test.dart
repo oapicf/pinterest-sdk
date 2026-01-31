@@ -19,12 +19,6 @@ void main() {
       // TODO
     });
 
-    // State, county, province, where the hotel is located.
-    // String region
-    test('to test the property `region`', () async {
-      // TODO
-    });
-
     // Country where the hotel is located.
     // String country
     test('to test the property `country`', () async {
@@ -34,6 +28,12 @@ void main() {
     // Required for countries with a postal code system. Postal or zip code of the hotel.
     // String postalCode
     test('to test the property `postalCode`', () async {
+      // TODO
+    });
+
+    // State, county, province, where the hotel is located.
+    // String region
+    test('to test the property `region`', () async {
       // TODO
     });
 

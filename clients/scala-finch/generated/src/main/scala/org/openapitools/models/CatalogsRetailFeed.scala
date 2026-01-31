@@ -20,32 +20,32 @@ import org.openapitools.models.ProductAvailabilityType
  * @param createdUnderscoreat 
  * @param id 
  * @param updatedUnderscoreat 
- * @param name A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
- * @param format 
  * @param catalogUnderscoretype 
  * @param credentials 
- * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
- * @param preferredUnderscoreprocessingUnderscoreschedule 
- * @param status 
+ * @param defaultUnderscoreavailability 
+ * @param defaultUnderscorecountry 
  * @param defaultUnderscorecurrency 
  * @param defaultUnderscorelocale The locale used within a feed for product descriptions.
- * @param defaultUnderscorecountry 
- * @param defaultUnderscoreavailability 
+ * @param format 
+ * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+ * @param name A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+ * @param preferredUnderscoreprocessingUnderscoreschedule 
+ * @param status 
  */
 case class CatalogsRetailFeed(createdUnderscoreat: ZonedDateTime,
                 id: String,
                 updatedUnderscoreat: ZonedDateTime,
-                name: String,
-                format: CatalogsFormat,
                 catalogUnderscoretype: CatalogsType,
                 credentials: CatalogsFeedCredentials,
-                location: String,
-                preferredUnderscoreprocessingUnderscoreschedule: CatalogsFeedProcessingSchedule,
-                status: CatalogsStatus,
+                defaultUnderscoreavailability: ProductAvailabilityType,
+                defaultUnderscorecountry: Country,
                 defaultUnderscorecurrency: NullableCurrency,
                 defaultUnderscorelocale: String,
-                defaultUnderscorecountry: Country,
-                defaultUnderscoreavailability: ProductAvailabilityType
+                format: CatalogsFormat,
+                location: String,
+                name: String,
+                preferredUnderscoreprocessingUnderscoreschedule: CatalogsFeedProcessingSchedule,
+                status: CatalogsStatus
                 )
 
 object CatalogsRetailFeed {

@@ -2,6 +2,9 @@
 Protected Class OptimizationGoalMetadataFrequencyGoalMetadata
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Frequency target can only be between 2 and 20
+		#tag EndNote
 		frequency As Xoson.O.OptionalInteger
 	#tag EndProperty
 

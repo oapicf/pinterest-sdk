@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CampaignSummaryStatus"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CampaignSummaryStatus"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CampaignSummaryStatus {
+    title = CampaignSummaryStatus
+    description = CampaignSummaryStatus
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  CampaignSummaryStatus {
+    title = CampaignSummaryStatus
+    description = CampaignSummaryStatus
+    implements = openapi_server.resourceTypes.CampaignSummaryStatus
+
+  }
+}

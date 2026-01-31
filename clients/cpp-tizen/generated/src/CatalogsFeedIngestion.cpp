@@ -23,29 +23,29 @@ CatalogsFeedIngestion::~CatalogsFeedIngestion()
 void
 CatalogsFeedIngestion::__init()
 {
-	//id = std::string();
-	//feed_id = std::string();
 	//created_at = null;
+	//feed_id = std::string();
+	//id = std::string();
 	//status = new CatalogsFeedProcessingStatus();
 }
 
 void
 CatalogsFeedIngestion::__cleanup()
 {
-	//if(id != NULL) {
+	//if(created_at != NULL) {
 	//
-	//delete id;
-	//id = NULL;
+	//delete created_at;
+	//created_at = NULL;
 	//}
 	//if(feed_id != NULL) {
 	//
 	//delete feed_id;
 	//feed_id = NULL;
 	//}
-	//if(created_at != NULL) {
+	//if(id != NULL) {
 	//
-	//delete created_at;
-	//created_at = NULL;
+	//delete id;
+	//id = NULL;
 	//}
 	//if(status != NULL) {
 	//
@@ -60,13 +60,13 @@ CatalogsFeedIngestion::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *idKey = "id";
-	node = json_object_get_member(pJsonObject, idKey);
+	const gchar *created_atKey = "created_at";
+	node = json_object_get_member(pJsonObject, created_atKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&id, node, "std::string", "");
+			jsonToValue(&created_at, node, "std::string", "");
 		} else {
 			
 		}
@@ -82,13 +82,13 @@ CatalogsFeedIngestion::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *created_atKey = "created_at";
-	node = json_object_get_member(pJsonObject, created_atKey);
+	const gchar *idKey = "id";
+	node = json_object_get_member(pJsonObject, idKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&created_at, node, "std::string", "");
+			jsonToValue(&id, node, "std::string", "");
 		} else {
 			
 		}
@@ -120,14 +120,14 @@ CatalogsFeedIngestion::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
-		std::string obj = getId();
+		std::string obj = getCreatedAt();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *idKey = "id";
-	json_object_set_member(pJsonObject, idKey, node);
+	const gchar *created_atKey = "created_at";
+	json_object_set_member(pJsonObject, created_atKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getFeedId();
 		node = converttoJson(&obj, "std::string", "");
@@ -138,14 +138,14 @@ CatalogsFeedIngestion::toJson()
 	const gchar *feed_idKey = "feed_id";
 	json_object_set_member(pJsonObject, feed_idKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getCreatedAt();
+		std::string obj = getId();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *created_atKey = "created_at";
-	json_object_set_member(pJsonObject, created_atKey, node);
+	const gchar *idKey = "id";
+	json_object_set_member(pJsonObject, idKey, node);
 	if (isprimitive("CatalogsFeedProcessingStatus")) {
 		CatalogsFeedProcessingStatus obj = getStatus();
 		node = converttoJson(&obj, "CatalogsFeedProcessingStatus", "");
@@ -169,15 +169,15 @@ CatalogsFeedIngestion::toJson()
 }
 
 std::string
-CatalogsFeedIngestion::getId()
+CatalogsFeedIngestion::getCreatedAt()
 {
-	return id;
+	return created_at;
 }
 
 void
-CatalogsFeedIngestion::setId(std::string  id)
+CatalogsFeedIngestion::setCreatedAt(std::string  created_at)
 {
-	this->id = id;
+	this->created_at = created_at;
 }
 
 std::string
@@ -193,15 +193,15 @@ CatalogsFeedIngestion::setFeedId(std::string  feed_id)
 }
 
 std::string
-CatalogsFeedIngestion::getCreatedAt()
+CatalogsFeedIngestion::getId()
 {
-	return created_at;
+	return id;
 }
 
 void
-CatalogsFeedIngestion::setCreatedAt(std::string  created_at)
+CatalogsFeedIngestion::setId(std::string  id)
 {
-	this->created_at = created_at;
+	this->id = id;
 }
 
 CatalogsFeedProcessingStatus

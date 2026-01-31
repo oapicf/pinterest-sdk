@@ -10,24 +10,15 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class RelatedTermsRelatedTermsListInner   {
   
-  private String term;
   private List<String> relatedTerms = new ArrayList<>();
+  private String term;
 
   public RelatedTermsRelatedTermsListInner () {
 
   }
 
-  public RelatedTermsRelatedTermsListInner (String term, List<String> relatedTerms) {
-    this.term = term;
+  public RelatedTermsRelatedTermsListInner (List<String> relatedTerms, String term) {
     this.relatedTerms = relatedTerms;
-  }
-
-    
-  @JsonProperty("term")
-  public String getTerm() {
-    return term;
-  }
-  public void setTerm(String term) {
     this.term = term;
   }
 
@@ -40,6 +31,15 @@ public class RelatedTermsRelatedTermsListInner   {
     this.relatedTerms = relatedTerms;
   }
 
+    
+  @JsonProperty("term")
+  public String getTerm() {
+    return term;
+  }
+  public void setTerm(String term) {
+    this.term = term;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -50,13 +50,13 @@ public class RelatedTermsRelatedTermsListInner   {
       return false;
     }
     RelatedTermsRelatedTermsListInner relatedTermsRelatedTermsListInner = (RelatedTermsRelatedTermsListInner) o;
-    return Objects.equals(term, relatedTermsRelatedTermsListInner.term) &&
-        Objects.equals(relatedTerms, relatedTermsRelatedTermsListInner.relatedTerms);
+    return Objects.equals(relatedTerms, relatedTermsRelatedTermsListInner.relatedTerms) &&
+        Objects.equals(term, relatedTermsRelatedTermsListInner.term);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(term, relatedTerms);
+    return Objects.hash(relatedTerms, term);
   }
 
   @Override
@@ -64,8 +64,8 @@ public class RelatedTermsRelatedTermsListInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class RelatedTermsRelatedTermsListInner {\n");
     
-    sb.append("    term: ").append(toIndentedString(term)).append("\n");
     sb.append("    relatedTerms: ").append(toIndentedString(relatedTerms)).append("\n");
+    sb.append("    term: ").append(toIndentedString(term)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,6 +1,6 @@
 package org.openapitools.model;
 
-import org.openapitools.model.CatalogsProductGroupMultipleStringCriteria;
+import org.openapitools.model.CatalogsProductGroupFilterOperatorTypeCriteria;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -15,22 +15,22 @@ public class CustomLabel0Filter  {
 
   @Valid
 
-  private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_0;
+  private CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_0;
  /**
    * Get CUSTOM_LABEL_0
    * @return CUSTOM_LABEL_0
   **/
   @JsonProperty("CUSTOM_LABEL_0")
   @NotNull
-  public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL0() {
+  public CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL0() {
     return CUSTOM_LABEL_0;
   }
 
-  public void setCUSTOMLABEL0(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_0) {
+  public void setCUSTOMLABEL0(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_0) {
     this.CUSTOM_LABEL_0 = CUSTOM_LABEL_0;
   }
 
-  public CustomLabel0Filter CUSTOM_LABEL_0(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_0) {
+  public CustomLabel0Filter CUSTOM_LABEL_0(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_0) {
     this.CUSTOM_LABEL_0 = CUSTOM_LABEL_0;
     return this;
   }

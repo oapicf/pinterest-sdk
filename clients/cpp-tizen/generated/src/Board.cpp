@@ -23,71 +23,77 @@ Board::~Board()
 void
 Board::__init()
 {
-	//id = std::string();
-	//created_at = null;
 	//board_pins_modified_at = null;
-	//name = std::string();
-	//description = std::string();
 	//collaborator_count = int(0);
-	//pin_count = int(0);
+	//created_at = null;
+	//description = std::string();
 	//follower_count = int(0);
-	//media = new Board_media();
+	//id = std::string();
+	//is_ads_only = bool(false);
+	//media = null;
+	//name = std::string();
 	//owner = null;
-	//privacy = std::string();
+	//pin_count = int(0);
+	//privacy = null;
 }
 
 void
 Board::__cleanup()
 {
-	//if(id != NULL) {
-	//
-	//delete id;
-	//id = NULL;
-	//}
-	//if(created_at != NULL) {
-	//
-	//delete created_at;
-	//created_at = NULL;
-	//}
 	//if(board_pins_modified_at != NULL) {
 	//
 	//delete board_pins_modified_at;
 	//board_pins_modified_at = NULL;
-	//}
-	//if(name != NULL) {
-	//
-	//delete name;
-	//name = NULL;
-	//}
-	//if(description != NULL) {
-	//
-	//delete description;
-	//description = NULL;
 	//}
 	//if(collaborator_count != NULL) {
 	//
 	//delete collaborator_count;
 	//collaborator_count = NULL;
 	//}
-	//if(pin_count != NULL) {
+	//if(created_at != NULL) {
 	//
-	//delete pin_count;
-	//pin_count = NULL;
+	//delete created_at;
+	//created_at = NULL;
+	//}
+	//if(description != NULL) {
+	//
+	//delete description;
+	//description = NULL;
 	//}
 	//if(follower_count != NULL) {
 	//
 	//delete follower_count;
 	//follower_count = NULL;
 	//}
+	//if(id != NULL) {
+	//
+	//delete id;
+	//id = NULL;
+	//}
+	//if(is_ads_only != NULL) {
+	//
+	//delete is_ads_only;
+	//is_ads_only = NULL;
+	//}
 	//if(media != NULL) {
 	//
 	//delete media;
 	//media = NULL;
 	//}
+	//if(name != NULL) {
+	//
+	//delete name;
+	//name = NULL;
+	//}
 	//if(owner != NULL) {
 	//
 	//delete owner;
 	//owner = NULL;
+	//}
+	//if(pin_count != NULL) {
+	//
+	//delete pin_count;
+	//pin_count = NULL;
 	//}
 	//if(privacy != NULL) {
 	//
@@ -102,28 +108,6 @@ Board::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *idKey = "id";
-	node = json_object_get_member(pJsonObject, idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&id, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *created_atKey = "created_at";
-	node = json_object_get_member(pJsonObject, created_atKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&created_at, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *board_pins_modified_atKey = "board_pins_modified_at";
 	node = json_object_get_member(pJsonObject, board_pins_modified_atKey);
 	if (node !=NULL) {
@@ -131,28 +115,6 @@ Board::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&board_pins_modified_at, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *nameKey = "name";
-	node = json_object_get_member(pJsonObject, nameKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&name, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *descriptionKey = "description";
-	node = json_object_get_member(pJsonObject, descriptionKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&description, node, "std::string", "");
 		} else {
 			
 		}
@@ -168,13 +130,24 @@ Board::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *pin_countKey = "pin_count";
-	node = json_object_get_member(pJsonObject, pin_countKey);
+	const gchar *created_atKey = "created_at";
+	node = json_object_get_member(pJsonObject, created_atKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("int")) {
-			jsonToValue(&pin_count, node, "int", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&created_at, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *descriptionKey = "description";
+	node = json_object_get_member(pJsonObject, descriptionKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&description, node, "std::string", "");
 		} else {
 			
 		}
@@ -190,17 +163,50 @@ Board::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *idKey = "id";
+	node = json_object_get_member(pJsonObject, idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *is_ads_onlyKey = "is_ads_only";
+	node = json_object_get_member(pJsonObject, is_ads_onlyKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&is_ads_only, node, "bool", "");
+		} else {
+			
+		}
+	}
 	const gchar *mediaKey = "media";
 	node = json_object_get_member(pJsonObject, mediaKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("Board_media")) {
-			jsonToValue(&media, node, "Board_media", "Board_media");
+		if (isprimitive("BoardMedia")) {
+			jsonToValue(&media, node, "BoardMedia", "BoardMedia");
 		} else {
 			
-			Board_media* obj = static_cast<Board_media*> (&media);
+			BoardMedia* obj = static_cast<BoardMedia*> (&media);
 			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *nameKey = "name";
+	node = json_object_get_member(pJsonObject, nameKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&name, node, "std::string", "");
+		} else {
 			
 		}
 	}
@@ -218,14 +224,28 @@ Board::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *pin_countKey = "pin_count";
+	node = json_object_get_member(pJsonObject, pin_countKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&pin_count, node, "int", "");
+		} else {
+			
+		}
+	}
 	const gchar *privacyKey = "privacy";
 	node = json_object_get_member(pJsonObject, privacyKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&privacy, node, "std::string", "");
+		if (isprimitive("BoardPrivacy")) {
+			jsonToValue(&privacy, node, "BoardPrivacy", "BoardPrivacy");
 		} else {
+			
+			BoardPrivacy* obj = static_cast<BoardPrivacy*> (&privacy);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -242,14 +262,23 @@ Board::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
-		std::string obj = getId();
+		std::string obj = getBoardPinsModifiedAt();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *idKey = "id";
-	json_object_set_member(pJsonObject, idKey, node);
+	const gchar *board_pins_modified_atKey = "board_pins_modified_at";
+	json_object_set_member(pJsonObject, board_pins_modified_atKey, node);
+	if (isprimitive("int")) {
+		int obj = getCollaboratorCount();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *collaborator_countKey = "collaborator_count";
+	json_object_set_member(pJsonObject, collaborator_countKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getCreatedAt();
 		node = converttoJson(&obj, "std::string", "");
@@ -260,24 +289,6 @@ Board::toJson()
 	const gchar *created_atKey = "created_at";
 	json_object_set_member(pJsonObject, created_atKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getBoardPinsModifiedAt();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *board_pins_modified_atKey = "board_pins_modified_at";
-	json_object_set_member(pJsonObject, board_pins_modified_atKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getName();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *nameKey = "name";
-	json_object_set_member(pJsonObject, nameKey, node);
-	if (isprimitive("std::string")) {
 		std::string obj = getDescription();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -287,24 +298,6 @@ Board::toJson()
 	const gchar *descriptionKey = "description";
 	json_object_set_member(pJsonObject, descriptionKey, node);
 	if (isprimitive("int")) {
-		int obj = getCollaboratorCount();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *collaborator_countKey = "collaborator_count";
-	json_object_set_member(pJsonObject, collaborator_countKey, node);
-	if (isprimitive("int")) {
-		int obj = getPinCount();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *pin_countKey = "pin_count";
-	json_object_set_member(pJsonObject, pin_countKey, node);
-	if (isprimitive("int")) {
 		int obj = getFollowerCount();
 		node = converttoJson(&obj, "int", "");
 	}
@@ -313,13 +306,31 @@ Board::toJson()
 	}
 	const gchar *follower_countKey = "follower_count";
 	json_object_set_member(pJsonObject, follower_countKey, node);
-	if (isprimitive("Board_media")) {
-		Board_media obj = getMedia();
-		node = converttoJson(&obj, "Board_media", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getId();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
-		Board_media obj = static_cast<Board_media> (getMedia());
+	}
+	const gchar *idKey = "id";
+	json_object_set_member(pJsonObject, idKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getIsAdsOnly();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *is_ads_onlyKey = "is_ads_only";
+	json_object_set_member(pJsonObject, is_ads_onlyKey, node);
+	if (isprimitive("BoardMedia")) {
+		BoardMedia obj = getMedia();
+		node = converttoJson(&obj, "BoardMedia", "");
+	}
+	else {
+		
+		BoardMedia obj = static_cast<BoardMedia> (getMedia());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -327,6 +338,15 @@ Board::toJson()
 	}
 	const gchar *mediaKey = "media";
 	json_object_set_member(pJsonObject, mediaKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getName();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *nameKey = "name";
+	json_object_set_member(pJsonObject, nameKey, node);
 	if (isprimitive("BoardOwner")) {
 		BoardOwner obj = getOwner();
 		node = converttoJson(&obj, "BoardOwner", "");
@@ -341,11 +361,25 @@ Board::toJson()
 	}
 	const gchar *ownerKey = "owner";
 	json_object_set_member(pJsonObject, ownerKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getPrivacy();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("int")) {
+		int obj = getPinCount();
+		node = converttoJson(&obj, "int", "");
 	}
 	else {
+		
+	}
+	const gchar *pin_countKey = "pin_count";
+	json_object_set_member(pJsonObject, pin_countKey, node);
+	if (isprimitive("BoardPrivacy")) {
+		BoardPrivacy obj = getPrivacy();
+		node = converttoJson(&obj, "BoardPrivacy", "");
+	}
+	else {
+		
+		BoardPrivacy obj = static_cast<BoardPrivacy> (getPrivacy());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *privacyKey = "privacy";
@@ -359,15 +393,27 @@ Board::toJson()
 }
 
 std::string
-Board::getId()
+Board::getBoardPinsModifiedAt()
 {
-	return id;
+	return board_pins_modified_at;
 }
 
 void
-Board::setId(std::string  id)
+Board::setBoardPinsModifiedAt(std::string  board_pins_modified_at)
 {
-	this->id = id;
+	this->board_pins_modified_at = board_pins_modified_at;
+}
+
+int
+Board::getCollaboratorCount()
+{
+	return collaborator_count;
+}
+
+void
+Board::setCollaboratorCount(int  collaborator_count)
+{
+	this->collaborator_count = collaborator_count;
 }
 
 std::string
@@ -383,30 +429,6 @@ Board::setCreatedAt(std::string  created_at)
 }
 
 std::string
-Board::getBoardPinsModifiedAt()
-{
-	return board_pins_modified_at;
-}
-
-void
-Board::setBoardPinsModifiedAt(std::string  board_pins_modified_at)
-{
-	this->board_pins_modified_at = board_pins_modified_at;
-}
-
-std::string
-Board::getName()
-{
-	return name;
-}
-
-void
-Board::setName(std::string  name)
-{
-	this->name = name;
-}
-
-std::string
 Board::getDescription()
 {
 	return description;
@@ -416,30 +438,6 @@ void
 Board::setDescription(std::string  description)
 {
 	this->description = description;
-}
-
-int
-Board::getCollaboratorCount()
-{
-	return collaborator_count;
-}
-
-void
-Board::setCollaboratorCount(int  collaborator_count)
-{
-	this->collaborator_count = collaborator_count;
-}
-
-int
-Board::getPinCount()
-{
-	return pin_count;
-}
-
-void
-Board::setPinCount(int  pin_count)
-{
-	this->pin_count = pin_count;
 }
 
 int
@@ -454,16 +452,52 @@ Board::setFollowerCount(int  follower_count)
 	this->follower_count = follower_count;
 }
 
-Board_media
+std::string
+Board::getId()
+{
+	return id;
+}
+
+void
+Board::setId(std::string  id)
+{
+	this->id = id;
+}
+
+bool
+Board::getIsAdsOnly()
+{
+	return is_ads_only;
+}
+
+void
+Board::setIsAdsOnly(bool  is_ads_only)
+{
+	this->is_ads_only = is_ads_only;
+}
+
+BoardMedia
 Board::getMedia()
 {
 	return media;
 }
 
 void
-Board::setMedia(Board_media  media)
+Board::setMedia(BoardMedia  media)
 {
 	this->media = media;
+}
+
+std::string
+Board::getName()
+{
+	return name;
+}
+
+void
+Board::setName(std::string  name)
+{
+	this->name = name;
 }
 
 BoardOwner
@@ -478,14 +512,26 @@ Board::setOwner(BoardOwner  owner)
 	this->owner = owner;
 }
 
-std::string
+int
+Board::getPinCount()
+{
+	return pin_count;
+}
+
+void
+Board::setPinCount(int  pin_count)
+{
+	this->pin_count = pin_count;
+}
+
+BoardPrivacy
 Board::getPrivacy()
 {
 	return privacy;
 }
 
 void
-Board::setPrivacy(std::string  privacy)
+Board::setPrivacy(BoardPrivacy  privacy)
 {
 	this->privacy = privacy;
 }

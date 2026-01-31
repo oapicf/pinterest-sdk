@@ -2,17 +2,17 @@
 Protected Class PinMediaMetadata
 
 	#tag Property, Flags = &h0
-		item_type As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		title As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		description As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		images As OpenAPIClient.Models.ImageSize
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		item_type As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -22,7 +22,7 @@ Protected Class PinMediaMetadata
 
 
 	#tag Property, Flags = &h0
-		images As OpenAPIClient.Models.ImageMetadataImages
+		title As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -33,15 +33,7 @@ Protected Class PinMediaMetadata
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
-		#tag EndNote
-		video_url As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Duration (in milliseconds)
+			Duration (in miliseconds). Field maybe null after creation due to video processing time.
 		#tag EndNote
 		duration As Xoson.O.OptionalDouble
 	#tag EndProperty
@@ -49,7 +41,7 @@ Protected Class PinMediaMetadata
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Height (in pixels)
+			Height (in pixels). Field maybe null after creation due to video processing time.
 		#tag EndNote
 		height As Xoson.O.OptionalInteger
 	#tag EndProperty
@@ -57,7 +49,15 @@ Protected Class PinMediaMetadata
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Width (in pixels)
+			Video url (720p).  **Note:** This field is limited and not available to all apps.
+		#tag EndNote
+		video_url As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Width (in pixels). Field maybe null after creation due to video processing time.
 		#tag EndNote
 		width As Xoson.O.OptionalInteger
 	#tag EndProperty
@@ -100,23 +100,23 @@ Protected Class PinMediaMetadata
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="item_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="title"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="description"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="images"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="ImageSize"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="item_type"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -132,15 +132,7 @@ Protected Class PinMediaMetadata
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="images"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="ImageMetadataImages"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="cover_image_url"
+			Name="title"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -148,7 +140,7 @@ Protected Class PinMediaMetadata
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="video_url"
+			Name="cover_image_url"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -169,6 +161,14 @@ Protected Class PinMediaMetadata
 			Group="Behavior"
 			InitialValue=""
 			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="video_url"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

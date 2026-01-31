@@ -38,13 +38,12 @@ public class MediaApi extends RouteBuilder {
                 .produces("application/json")
                 .outType(MediaUpload.class)
                 .consumes("application/json")
-                .type(MediaUploadRequest.class)
+                .type(MediaUploadCreate.class)
                 
                 .param()
-                    .name("mediaUploadRequest")
+                    .name("mediaUploadCreate")
                     .type(RestParamType.body)
                     .required(true)
-                    .description("Create a media upload request")
                 .endParam()
                 .to("direct:mediaCreate");
         
@@ -65,12 +64,12 @@ public class MediaApi extends RouteBuilder {
                 .description("Get media upload details")
                 .id("mediaGetApi")
                 .produces("application/json")
-                .outType(MediaUploadDetails.class)
+                .outType(Media.class)
                 .param()
                     .name("mediaId")
                     .type(RestParamType.path)
                     .required(true)
-                    .description("Media identifier")
+                    .description("Unique identifier for this media upload. Used to track status and for attaching during Pin creation.")
                 .endParam()
                 .to("direct:mediaGet");
         
@@ -102,7 +101,7 @@ public class MediaApi extends RouteBuilder {
                     .name("pageSize")
                     .type(RestParamType.query)
                     .required(false)
-                    .description("Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.")
+                    .description("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")
                 .endParam()
                 .to("direct:mediaList");
         

@@ -5,9 +5,9 @@
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
 | **country** | [**Country**](Country.md) |  |  |
+| **items** | [**kotlin.collections.List&lt;ItemUpsertBatchRecord&gt;**](ItemUpsertBatchRecord.md) | Array with catalogs items |  |
 | **language** | [**inline**](#Language) | We recommend using the CatalogsLocale values. |  |
 | **operation** | [**BatchOperation**](BatchOperation.md) |  |  |
-| **items** | [**kotlin.collections.List&lt;ItemUpsertBatchRecord&gt;**](ItemUpsertBatchRecord.md) | Array with catalogs items |  |
 
 
 <a id="Language"></a>

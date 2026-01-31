@@ -7,13 +7,13 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(LeadsExportResponseData, () {
-    // LeadsExportStatus exportStatus
-    test('to test the property `exportStatus`', () async {
+    // String downloadUrl
+    test('to test the property `downloadUrl`', () async {
       // TODO
     });
 
-    // String downloadUrl
-    test('to test the property `downloadUrl`', () async {
+    // LeadsExportStatus exportStatus
+    test('to test the property `exportStatus`', () async {
       // TODO
     });
 

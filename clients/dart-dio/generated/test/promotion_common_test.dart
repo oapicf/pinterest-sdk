@@ -1,0 +1,70 @@
+import 'package:test/test.dart';
+import 'package:openapi/openapi.dart';
+
+// tests for PromotionCommon
+void main() {
+  //final instance = PromotionCommonBuilder();
+  // TODO add properties to the builder and call build()
+
+  group(PromotionCommon, () {
+    // Discount status based on the current time and start and end time of discount
+    // String discountStatus
+    test('to test the property `discountStatus`', () async {
+      // TODO
+    });
+
+    // Promotion end time. Unix timestamp in seconds. Independent of campaign end time.
+    // int endTime
+    test('to test the property `endTime`', () async {
+      // TODO
+    });
+
+    // Platform-specific ID for this promotion. Will be null for promotions first created within Pinterest.
+    // String externalId
+    test('to test the property `externalId`', () async {
+      // TODO
+    });
+
+    // The source integration platform used when creating the promotion. Currently supported values are 'DEFAULT' and 'SHOPIFY'.
+    // String platformType
+    test('to test the property `platformType`', () async {
+      // TODO
+    });
+
+    // Code that can be used to redeem a promotion.
+    // String promotionCode
+    test('to test the property `promotionCode`', () async {
+      // TODO
+    });
+
+    // An optional field for user defined promotion ID for this promotion. Will copy from Pinterest system generated ID if user did not provide one.
+    // String promotionCustomId
+    test('to test the property `promotionCustomId`', () async {
+      // TODO
+    });
+
+    // Internal name for the promotion.
+    // String promotionTitle
+    test('to test the property `promotionTitle`', () async {
+      // TODO
+    });
+
+    // PromotionType promotionType
+    test('to test the property `promotionType`', () async {
+      // TODO
+    });
+
+    // Promotion start time. Unix timestamp in seconds. Independent of campaign start time.
+    // int startTime
+    test('to test the property `startTime`', () async {
+      // TODO
+    });
+
+    // List of values to be inserted in the promotion type-specific template.
+    // BuiltList<PromotionTemplateValue> templateValues
+    test('to test the property `templateValues`', () async {
+      // TODO
+    });
+
+  });
+}

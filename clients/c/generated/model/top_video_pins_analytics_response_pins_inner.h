@@ -28,16 +28,16 @@ pinterest_rest_api_top_video_pins_analytics_response_pins_inner__e top_video_pin
 
 
 typedef struct top_video_pins_analytics_response_pins_inner_t {
-    list_t* metrics; //map
     list_t* data_status; //map
+    list_t* metrics; //map
     char *pin_id; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } top_video_pins_analytics_response_pins_inner_t;
 
 __attribute__((deprecated)) top_video_pins_analytics_response_pins_inner_t *top_video_pins_analytics_response_pins_inner_create(
-    list_t* metrics,
     list_t* data_status,
+    list_t* metrics,
     char *pin_id
 );
 

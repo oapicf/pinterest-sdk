@@ -4,6 +4,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.openapitools.vertxweb.server.model.CatalogsType;
 
 /**
  * Request object for creating a catalog.
@@ -11,42 +12,24 @@ import com.fasterxml.jackson.annotation.JsonValue;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsCreateRequest   {
   
-
-
-  public enum CatalogTypeEnum {
-    HOTEL("HOTEL");
-
-    private String value;
-
-    CatalogTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private CatalogTypeEnum catalogType;
+  private CatalogsType catalogType;
   private String name;
 
   public CatalogsCreateRequest () {
 
   }
 
-  public CatalogsCreateRequest (CatalogTypeEnum catalogType, String name) {
+  public CatalogsCreateRequest (CatalogsType catalogType, String name) {
     this.catalogType = catalogType;
     this.name = name;
   }
 
     
   @JsonProperty("catalog_type")
-  public CatalogTypeEnum getCatalogType() {
+  public CatalogsType getCatalogType() {
     return catalogType;
   }
-  public void setCatalogType(CatalogTypeEnum catalogType) {
+  public void setCatalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
   }
 

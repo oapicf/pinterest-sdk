@@ -5,20 +5,20 @@ context("Test SSIOAccountItem")
 
 model_instance <- SSIOAccountItem$new()
 
+test_that("addresses", {
+  # tests for the property `addresses` (array[SSIOAccountAddress])
+  # Address information that is associated with this account.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`addresses`, "EXPECTED_RESULT")
+})
+
 test_that("id", {
   # tests for the property `id` (character)
   # Salesforce id for billto_info
 
   # uncomment below to test the property
   #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
-})
-
-test_that("io_terms_id", {
-  # tests for the property `io_terms_id` (character)
-  # Salesforce id for IO Terms and Conditions
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`io_terms_id`, "EXPECTED_RESULT")
 })
 
 test_that("io_terms", {
@@ -29,36 +29,12 @@ test_that("io_terms", {
   #expect_equal(model.instance$`io_terms`, "EXPECTED_RESULT")
 })
 
-test_that("us_terms_id", {
-  # tests for the property `us_terms_id` (character)
-  # Salesforce id for US Terms and Conditions
+test_that("io_terms_id", {
+  # tests for the property `io_terms_id` (character)
+  # Salesforce id for IO Terms and Conditions
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`us_terms_id`, "EXPECTED_RESULT")
-})
-
-test_that("us_terms", {
-  # tests for the property `us_terms` (character)
-  # Salesforce text for US Terms and Conditions
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`us_terms`, "EXPECTED_RESULT")
-})
-
-test_that("row_terms_id", {
-  # tests for the property `row_terms_id` (character)
-  # Salesforce id for Rest of the World Terms and Conditions
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`row_terms_id`, "EXPECTED_RESULT")
-})
-
-test_that("row_terms", {
-  # tests for the property `row_terms` (character)
-  # Salesforce text for Rest of the World Terms and Conditions
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`row_terms`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`io_terms_id`, "EXPECTED_RESULT")
 })
 
 test_that("io_type", {
@@ -69,10 +45,34 @@ test_that("io_type", {
   #expect_equal(model.instance$`io_type`, "EXPECTED_RESULT")
 })
 
-test_that("addresses", {
-  # tests for the property `addresses` (array[SSIOAccountAddress])
-  # Address information that is associated with this account.
+test_that("row_terms", {
+  # tests for the property `row_terms` (character)
+  # Salesforce text for Rest of the World Terms and Conditions
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`addresses`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`row_terms`, "EXPECTED_RESULT")
+})
+
+test_that("row_terms_id", {
+  # tests for the property `row_terms_id` (character)
+  # Salesforce id for Rest of the World Terms and Conditions
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`row_terms_id`, "EXPECTED_RESULT")
+})
+
+test_that("us_terms", {
+  # tests for the property `us_terms` (character)
+  # Salesforce text for US Terms and Conditions
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`us_terms`, "EXPECTED_RESULT")
+})
+
+test_that("us_terms_id", {
+  # tests for the property `us_terms_id` (character)
+  # Salesforce id for US Terms and Conditions
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`us_terms_id`, "EXPECTED_RESULT")
 })

@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 ## SearchUserPinsList
 
-> PinsList200Response SearchUserPinsList(ctx).Query(query).AdAccountId(adAccountId).Bookmark(bookmark).Execute()
+> SearchUserPinsList200Response SearchUserPinsList(ctx).Query(query).AdAccountId(adAccountId).Bookmark(bookmark).Execute()
 
 Search user's Pins
 
@@ -188,7 +188,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchUserPinsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SearchUserPinsList`: PinsList200Response
+	// response from `SearchUserPinsList`: SearchUserPinsList200Response
 	fmt.Fprintf(os.Stdout, "Response from `SearchAPI.SearchUserPinsList`: %v\n", resp)
 }
 ```
@@ -210,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PinsList200Response**](PinsList200Response.md)
+[**SearchUserPinsList200Response**](SearchUserPinsList200Response.md)
 
 ### Authorization
 

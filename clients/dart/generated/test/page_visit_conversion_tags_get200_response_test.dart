@@ -16,13 +16,13 @@ void main() {
   // final instance = PageVisitConversionTagsGet200Response();
 
   group('test PageVisitConversionTagsGet200Response', () {
-    // List<ConversionEventResponse> items (default value: const [])
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // List<ConversionEventResponse> items (default value: const [])
+    test('to test the property `items`', () async {
       // TODO
     });
 

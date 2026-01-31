@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server UserWebsiteVerifyRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a UserWebsiteVerifyRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  UserWebsiteVerifyRequest {
+    title = UserWebsiteVerifyRequest
+    description = UserWebsiteVerifyRequest
+    derivedFrom = Root
+    properties {
+        verification_method {
+          type =  string
+          description = ""
+          enum = ["FILENAME", "METATAG", "DNSTXT"]
+          optional = false
+        }
+        website {
+          type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  UserWebsiteVerifyRequest {
+    title = UserWebsiteVerifyRequest
+    description = UserWebsiteVerifyRequest
+    implements = openapi_server.resourceTypes.UserWebsiteVerifyRequest
+
+  }
+}

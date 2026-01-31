@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,9 +21,9 @@ var _ MappedNullable = &CatalogsCreativeAssetsProductGroupUpdateRequest{}
 // CatalogsCreativeAssetsProductGroupUpdateRequest Request object for updating a creative assets product group.
 type CatalogsCreativeAssetsProductGroupUpdateRequest struct {
 	CatalogType *string `json:"catalog_type,omitempty"`
-	Name *string `json:"name,omitempty"`
 	Description NullableString `json:"description,omitempty"`
 	Filters *CatalogsCreativeAssetsProductGroupFilters `json:"filters,omitempty"`
+	Name *string `json:"name,omitempty"`
 }
 
 // NewCatalogsCreativeAssetsProductGroupUpdateRequest instantiates a new CatalogsCreativeAssetsProductGroupUpdateRequest object
@@ -73,38 +73,6 @@ func (o *CatalogsCreativeAssetsProductGroupUpdateRequest) HasCatalogType() bool 
 // SetCatalogType gets a reference to the given string and assigns it to the CatalogType field.
 func (o *CatalogsCreativeAssetsProductGroupUpdateRequest) SetCatalogType(v string) {
 	o.CatalogType = &v
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *CatalogsCreativeAssetsProductGroupUpdateRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsCreativeAssetsProductGroupUpdateRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *CatalogsCreativeAssetsProductGroupUpdateRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *CatalogsCreativeAssetsProductGroupUpdateRequest) SetName(v string) {
-	o.Name = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -181,6 +149,38 @@ func (o *CatalogsCreativeAssetsProductGroupUpdateRequest) SetFilters(v CatalogsC
 	o.Filters = &v
 }
 
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *CatalogsCreativeAssetsProductGroupUpdateRequest) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsCreativeAssetsProductGroupUpdateRequest) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *CatalogsCreativeAssetsProductGroupUpdateRequest) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *CatalogsCreativeAssetsProductGroupUpdateRequest) SetName(v string) {
+	o.Name = &v
+}
+
 func (o CatalogsCreativeAssetsProductGroupUpdateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -194,14 +194,14 @@ func (o CatalogsCreativeAssetsProductGroupUpdateRequest) ToMap() (map[string]int
 	if !IsNil(o.CatalogType) {
 		toSerialize["catalog_type"] = o.CatalogType
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
 	if !IsNil(o.Filters) {
 		toSerialize["filters"] = o.Filters
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	return toSerialize, nil
 }

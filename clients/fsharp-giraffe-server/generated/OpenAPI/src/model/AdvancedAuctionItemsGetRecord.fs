@@ -11,8 +11,8 @@ module AdvancedAuctionItemsGetRecord =
 
 
   type AdvancedAuctionItemsGetRecord = {
-    ItemId : string;
     Country : Country;
+    ItemId : string;
     Language : Language;
   }
   //#endregion

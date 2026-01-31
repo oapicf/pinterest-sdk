@@ -20,55 +20,55 @@ typedef struct ssio_order_line_t ssio_order_line_t;
 
 
 typedef struct ssio_order_line_t {
-    char *salesforce_order_line_id; // string
+    char *accepted_terms_id; // string
+    char *accepted_terms_time; // string
     char *ads_manager_order_line_id; // string
-    char *pin_order_id; // string
-    char *last_modified_date_time; // string
-    char *start_date; //date
-    char *end_date; //date
+    char *agency_link; // string
     char *bill_to_company_name; // string
+    char *billing_contact_email; // string
     char *billing_contact_firstname; // string
     char *billing_contact_lastname; // string
-    char *billing_contact_email; // string
+    double budget_amount; //numeric
+    pinterest_rest_api_currency__e currency_info; //referenced enum
+    char *end_date; //date
+    double estimated_monthly_spend; //numeric
+    char *last_modified_date_time; // string
     char *media_contact_email; // string
     char *media_contact_firstname; // string
     char *media_contact_lastname; // string
-    pinterest_rest_api_currency__e currency_info; //referenced enum
-    char *agency_link; // string
-    char *po_number; // string
     char *order_name; // string
+    char *pin_order_id; // string
     char *pmp_name; // string
-    char *accepted_terms_id; // string
-    char *accepted_terms_time; // string
-    double budget_amount; //numeric
-    double estimated_monthly_spend; //numeric
+    char *po_number; // string
+    char *salesforce_order_line_id; // string
+    char *start_date; //date
 
     int _library_owned; // Is the library responsible for freeing this object?
 } ssio_order_line_t;
 
 __attribute__((deprecated)) ssio_order_line_t *ssio_order_line_create(
-    char *salesforce_order_line_id,
+    char *accepted_terms_id,
+    char *accepted_terms_time,
     char *ads_manager_order_line_id,
-    char *pin_order_id,
-    char *last_modified_date_time,
-    char *start_date,
-    char *end_date,
+    char *agency_link,
     char *bill_to_company_name,
+    char *billing_contact_email,
     char *billing_contact_firstname,
     char *billing_contact_lastname,
-    char *billing_contact_email,
+    double budget_amount,
+    pinterest_rest_api_currency__e currency_info,
+    char *end_date,
+    double estimated_monthly_spend,
+    char *last_modified_date_time,
     char *media_contact_email,
     char *media_contact_firstname,
     char *media_contact_lastname,
-    pinterest_rest_api_currency__e currency_info,
-    char *agency_link,
-    char *po_number,
     char *order_name,
+    char *pin_order_id,
     char *pmp_name,
-    char *accepted_terms_id,
-    char *accepted_terms_time,
-    double budget_amount,
-    double estimated_monthly_spend
+    char *po_number,
+    char *salesforce_order_line_id,
+    char *start_date
 );
 
 void ssio_order_line_free(ssio_order_line_t *ssio_order_line);

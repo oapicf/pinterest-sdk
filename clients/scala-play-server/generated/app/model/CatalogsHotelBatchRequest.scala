@@ -4,17 +4,17 @@ import play.api.libs.json._
 
 /**
   * Request object to update catalogs hotel items
-  * @param language We recommend using the CatalogsLocale values.
-  * @param items Array with catalogs item operations
   * @param catalogId Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+  * @param items Array with catalogs item operations
+  * @param language We recommend using the CatalogsLocale values.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class CatalogsHotelBatchRequest(
+  catalogId: Option[String],
   catalogType: CatalogsHotelBatchRequest.CatalogType.Value,
   country: Country,
-  language: CatalogsHotelBatchRequest.Language.Value,
   items: List[CatalogsHotelBatchItem],
-  catalogId: Option[String]
+  language: CatalogsHotelBatchRequest.Language.Value
 )
 
 object CatalogsHotelBatchRequest {

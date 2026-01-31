@@ -18,7 +18,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"sourceType": @"source_type", @"isAffiliateLink": @"is_affiliate_link" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"isAffiliateLink": @"is_affiliate_link", @"sourceType": @"source_type" }];
 }
 
 /**
@@ -28,7 +28,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"isAffiliateLink"];
+  NSArray *optionalProperties = @[@"isAffiliateLink", ];
   return [optionalProperties containsObject:propertyName];
 }
 

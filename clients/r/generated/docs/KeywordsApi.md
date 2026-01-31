@@ -32,6 +32,8 @@ var_keywords <- c("inner_example") # array[character] | Comma-separated keywords
 api_instance <- KeywordsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# Configure OAuth2 access token for authorization: client_credentials
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$CountryKeywordsMetricsGet(var_ad_account_id, var_country_code, var_keywordsdata_file = "result.txt")
 result <- api_instance$CountryKeywordsMetricsGet(var_ad_account_id, var_country_code, var_keywords)
@@ -52,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -118,7 +120,7 @@ Name | Type | Description  | Notes
 | **0** | Unexpected error |  -  |
 
 # **KeywordsGet**
-> KeywordsGet200Response KeywordsGet(ad_account_id, campaign_id = var.campaign_id, ad_group_id = var.ad_group_id, match_types = var.match_types, page_size = 25, bookmark = var.bookmark)
+> KeywordsGet200Response KeywordsGet(ad_account_id, campaign_id = var.campaign_id, ad_group_id = var.ad_group_id, ad_group_ids = var.ad_group_ids, match_types = var.match_types, page_size = 25, bookmark = var.bookmark)
 
 Get keywords
 
@@ -134,16 +136,19 @@ library(openapi)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
 var_campaign_id <- "campaign_id_example" # character | Campaign Id to use to filter the results. (Optional)
 var_ad_group_id <- "123123123" # character | Ad group Id. (Optional)
+var_ad_group_ids <- c("inner_example") # array[character] | List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. (Optional)
 var_match_types <- c(MatchType$new()) # array[MatchType] | Keyword <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type</a> (Optional)
-var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
+var_page_size <- 25 # integer | Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (Optional)
 var_bookmark <- "bookmark_example" # character | Cursor used to fetch the next page of items (Optional)
 
 api_instance <- KeywordsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
+# Configure OAuth2 access token for authorization: client_credentials
+# api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$KeywordsGet(var_ad_account_id, campaign_id = var_campaign_id, ad_group_id = var_ad_group_id, match_types = var_match_types, page_size = var_page_size, bookmark = var_bookmarkdata_file = "result.txt")
-result <- api_instance$KeywordsGet(var_ad_account_id, campaign_id = var_campaign_id, ad_group_id = var_ad_group_id, match_types = var_match_types, page_size = var_page_size, bookmark = var_bookmark)
+# result <- api_instance$KeywordsGet(var_ad_account_id, campaign_id = var_campaign_id, ad_group_id = var_ad_group_id, ad_group_ids = var_ad_group_ids, match_types = var_match_types, page_size = var_page_size, bookmark = var_bookmarkdata_file = "result.txt")
+result <- api_instance$KeywordsGet(var_ad_account_id, campaign_id = var_campaign_id, ad_group_id = var_ad_group_id, ad_group_ids = var_ad_group_ids, match_types = var_match_types, page_size = var_page_size, bookmark = var_bookmark)
 dput(result)
 ```
 
@@ -154,8 +159,9 @@ Name | Type | Description  | Notes
  **ad_account_id** | **character**| Unique identifier of an ad account. | 
  **campaign_id** | **character**| Campaign Id to use to filter the results. | [optional] 
  **ad_group_id** | **character**| Ad group Id. | [optional] 
+ **ad_group_ids** | list( **character** )| List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. | [optional] 
  **match_types** | list( [**MatchType**](MatchType.md) )| Keyword &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot;&gt;match type&lt;/a&gt; | [optional] 
- **page_size** | **integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **integer**| Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **bookmark** | **character**| Cursor used to fetch the next page of items | [optional] 
 
 ### Return type
@@ -164,7 +170,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -230,7 +236,7 @@ Name | Type | Description  | Notes
 | **0** | Unexpected error |  -  |
 
 # **TrendingKeywordsList**
-> TrendingKeywordsResponse TrendingKeywordsList(region, trend_type, interests = var.interests, genders = var.genders, ages = var.ages, include_keywords = var.include_keywords, normalize_against_group = FALSE, limit = 50)
+> TrendingKeywordsResponse TrendingKeywordsList(region, trend_type, interests = var.interests, genders = var.genders, ages = var.ages, include_keywords = var.include_keywords, normalize_against_group = FALSE, limit = 50, include_prediction = FALSE, include_demographics = FALSE)
 
 List trending keywords
 
@@ -251,13 +257,15 @@ var_ages <- c("18-24") # array[character] | If set, filters the results to trend
 var_include_keywords <- c("inner_example") # array[character] | If set, filters the results to top trends which include at least one of the specified keywords.<br /> If unset, no keyword filtering logic is applied. (Optional)
 var_normalize_against_group <- FALSE # character | Governs how the resulting time series data will be normalized to a [0-100] scale.<br /> By default (`false`), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword's time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.<br /> If set to `true`, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords. (Optional)
 var_limit <- 50 # integer | The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a `limit` of 50 will return the top 50 trends. (Optional)
+var_include_prediction <- FALSE # character | <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including predicted weekly search volume data for the next 90 days. By default (`false`), the response will not include predicted data. (Optional)
+var_include_demographics <- FALSE # character | <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including the age and gender distribution for each keyword. By default (`false`), the response will not include demographics data. (Optional)
 
 api_instance <- KeywordsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 api_instance$api_client$access_token <- Sys.getenv("ACCESS_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$TrendingKeywordsList(var_region, var_trend_type, interests = var_interests, genders = var_genders, ages = var_ages, include_keywords = var_include_keywords, normalize_against_group = var_normalize_against_group, limit = var_limitdata_file = "result.txt")
-result <- api_instance$TrendingKeywordsList(var_region, var_trend_type, interests = var_interests, genders = var_genders, ages = var_ages, include_keywords = var_include_keywords, normalize_against_group = var_normalize_against_group, limit = var_limit)
+# result <- api_instance$TrendingKeywordsList(var_region, var_trend_type, interests = var_interests, genders = var_genders, ages = var_ages, include_keywords = var_include_keywords, normalize_against_group = var_normalize_against_group, limit = var_limit, include_prediction = var_include_prediction, include_demographics = var_include_demographicsdata_file = "result.txt")
+result <- api_instance$TrendingKeywordsList(var_region, var_trend_type, interests = var_interests, genders = var_genders, ages = var_ages, include_keywords = var_include_keywords, normalize_against_group = var_normalize_against_group, limit = var_limit, include_prediction = var_include_prediction, include_demographics = var_include_demographics)
 dput(result)
 ```
 
@@ -273,6 +281,8 @@ Name | Type | Description  | Notes
  **include_keywords** | list( **character** )| If set, filters the results to top trends which include at least one of the specified keywords.&lt;br /&gt; If unset, no keyword filtering logic is applied. | [optional] 
  **normalize_against_group** | **character**| Governs how the resulting time series data will be normalized to a [0-100] scale.&lt;br /&gt; By default (&#x60;false&#x60;), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword&#39;s time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.&lt;br /&gt; If set to &#x60;true&#x60;, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords. | [optional] [default to FALSE]
  **limit** | **integer**| The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a &#x60;limit&#x60; of 50 will return the top 50 trends. | [optional] [default to 50]
+ **include_prediction** | **character**| &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including predicted weekly search volume data for the next 90 days. By default (&#x60;false&#x60;), the response will not include predicted data. | [optional] [default to FALSE]
+ **include_demographics** | **character**| &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including the age and gender distribution for each keyword. By default (&#x60;false&#x60;), the response will not include demographics data. | [optional] [default to FALSE]
 
 ### Return type
 

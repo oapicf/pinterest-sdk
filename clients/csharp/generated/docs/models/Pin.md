@@ -1,29 +1,27 @@
 # Org.OpenAPITools.Model.Pin
-Pin
+Pin model containing properties related to a Pinterest Pin.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | [optional] [readonly] 
-**CreatedAt** | **DateTime** |  | [optional] [readonly] 
-**Link** | **string** |  | [optional] 
-**Title** | **string** |  | [optional] 
-**Description** | **string** |  | [optional] 
-**DominantColor** | **string** | Dominant pin color. Hex number, e.g. \\\&quot;#6E7874\\\&quot;. | [optional] 
+**Id** | **string** |  | 
 **AltText** | **string** |  | [optional] 
-**CreativeType** | **CreativeType** |  | [optional] [readonly] 
 **BoardId** | **string** | The board to which this Pin belongs. | [optional] 
-**BoardSectionId** | **string** | The board section to which this Pin belongs. | [optional] 
 **BoardOwner** | [**BoardOwner**](BoardOwner.md) |  | [optional] [readonly] 
-**IsOwner** | **bool** | Whether the \&quot;operation user_account\&quot; is the Pin owner. | [optional] [readonly] 
-**Media** | [**PinMedia**](PinMedia.md) |  | [optional] [readonly] 
-**MediaSource** | [**PinMediaSource**](PinMediaSource.md) |  | [optional] 
-**ParentPinId** | **string** | The source pin id if this pin was saved from another pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/article/save-pins-on-pinterest\&quot;&gt;Learn more&lt;/a&gt;. | [optional] 
-**IsStandard** | **bool** | Whether the Pin is standard or not. See documentation on &lt;a href&#x3D;\&quot;/docs/api-features/content-overview/\&quot;&gt;Changes to Pin creation&lt;/a&gt; for more information. | [optional] 
+**BoardSectionId** | **string** | The board section to which this Pin belongs. | [optional] 
+**CreatedAt** | **DateTime** |  | [optional] [readonly] 
+**CreativeType** | **CreativeType** |  | [optional] [readonly] 
+**Description** | **string** |  | [optional] 
+**DominantColor** | **string** | Dominant pin color. Hex number, e.g. &#x60;#6E7874&#x60;. | [optional] 
 **HasBeenPromoted** | **bool** | Whether the Pin has been promoted or not. | [optional] [readonly] 
-**Note** | **string** | Private note for this Pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/add-notes-to-your-pins\&quot;&gt;Learn more&lt;/a&gt;. | [optional] 
-**PinMetrics** | **Object** | Pin metrics with associated time intervals if any. | [optional] 
+**IsOwner** | **bool** | Whether the \&quot;operation user_account\&quot; is the Pin owner. | [optional] [readonly] 
+**IsStandard** | **bool** | Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information. | [optional] [readonly] 
+**Link** | **string** |  | [optional] 
+**Media** | [**PinMedia**](PinMedia.md) |  | [optional] [readonly] 
+**ParentPinId** | **string** | The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest). | [optional] 
+**PinMetrics** | **Object** | Pin metrics with associated time intervals if any. | [optional] [readonly] 
+**Title** | **string** |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

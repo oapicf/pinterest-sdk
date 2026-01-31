@@ -9,10 +9,10 @@ module AudienceInsightCategoryCommon =
 
 
   type AudienceInsightCategoryCommon = {
+    Id : string;
+    Index : decimal;
     Key : string;
     Name : string;
     Ratio : decimal;
-    Index : decimal;
-    Id : string;
   }
   //#endregion

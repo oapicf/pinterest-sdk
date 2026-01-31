@@ -9,12 +9,12 @@
 
 (def catalogs-retail-product-metadata-data
   {
-   (ds/req :item_id) string?
-   (ds/req :item_group_id) string?
    (ds/req :availability) non-nullable-product-availability-type-spec
+   (ds/req :currency) non-nullable-catalogs-currency-spec
+   (ds/req :item_group_id) string?
+   (ds/req :item_id) string?
    (ds/req :price) float?
    (ds/req :sale_price) float?
-   (ds/req :currency) non-nullable-catalogs-currency-spec
    })
 
 (def catalogs-retail-product-metadata-spec

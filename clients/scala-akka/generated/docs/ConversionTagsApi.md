@@ -8,8 +8,8 @@ Method | HTTP request | Description
 [**conversionTagsCreateWithHttpInfo**](ConversionTagsApi.md#conversionTagsCreateWithHttpInfo) | **POST** /ad_accounts/{ad_account_id}/conversion_tags | Create conversion tag
 [**conversionTagsGet**](ConversionTagsApi.md#conversionTagsGet) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id} | Get conversion tag
 [**conversionTagsGetWithHttpInfo**](ConversionTagsApi.md#conversionTagsGetWithHttpInfo) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id} | Get conversion tag
-[**conversionTagsList**](ConversionTagsApi.md#conversionTagsList) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | Get conversion tags
-[**conversionTagsListWithHttpInfo**](ConversionTagsApi.md#conversionTagsListWithHttpInfo) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | Get conversion tags
+[**conversionTagsList**](ConversionTagsApi.md#conversionTagsList) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | List conversion tags
+[**conversionTagsListWithHttpInfo**](ConversionTagsApi.md#conversionTagsListWithHttpInfo) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | List conversion tags
 [**ocpmEligibleConversionTagsGet**](ConversionTagsApi.md#ocpmEligibleConversionTagsGet) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible | Get Ocpm eligible conversion tags
 [**ocpmEligibleConversionTagsGetWithHttpInfo**](ConversionTagsApi.md#ocpmEligibleConversionTagsGetWithHttpInfo) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible | Get Ocpm eligible conversion tags
 [**pageVisitConversionTagsGet**](ConversionTagsApi.md#pageVisitConversionTagsGet) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/page_visit | Get page visit conversion tags
@@ -19,11 +19,11 @@ Method | HTTP request | Description
 
 ## conversionTagsCreate
 
-> conversionTagsCreate(conversionTagsCreateRequest): ApiRequest[ConversionTagResponse]
+> conversionTagsCreate(conversionTagsCreateRequest): ApiRequest[ConversionTag]
 
 Create conversion tag
 
-Create a conversion tag, also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Pinterest tag&lt;/a&gt;, with the option to enable enhanced match.&lt;p/&gt; The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.&lt;p/&gt; For more information, see:&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot;&gt;Set up the Pinterest tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/\&quot;&gt;Pinterest Tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/#enhanced-match\&quot;&gt;Enhanced match&lt;/a&gt;
+Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account&#39;s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
 
 ### Example
 
@@ -49,7 +49,7 @@ object Example extends App {
     val apiInstance = ConversionTagsApi("https://api.pinterest.com/v5")
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
-    val conversionTagCreate: ConversionTagCreate =  // ConversionTagCreate | Conversion Tag to create
+    val conversionTagCreate: ConversionTagCreate =  // ConversionTagCreate | 
     
     val request = apiInstance.conversionTagsCreate(adAccountId, conversionTagCreate)
     val response = apiInvoker.execute(request)
@@ -80,11 +80,11 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. |
- **conversionTagCreate** | [**ConversionTagCreate**](ConversionTagCreate.md)| Conversion Tag to create |
+ **conversionTagCreate** | [**ConversionTagCreate**](ConversionTagCreate.md)|  |
 
 ### Return type
 
-ApiRequest[[**ConversionTagResponse**](ConversionTagResponse.md)]
+ApiRequest[[**ConversionTag**](ConversionTag.md)]
 
 
 ### Authorization
@@ -99,13 +99,19 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## conversionTagsGet
 
-> conversionTagsGet(conversionTagsGetRequest): ApiRequest[ConversionTagResponse]
+> conversionTagsGet(conversionTagsGetRequest): ApiRequest[ConversionTag]
 
 Get conversion tag
 
@@ -169,7 +175,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-ApiRequest[[**ConversionTagResponse**](ConversionTagResponse.md)]
+ApiRequest[[**ConversionTag**](ConversionTag.md)]
 
 
 ### Authorization
@@ -190,9 +196,9 @@ No authorization required
 
 ## conversionTagsList
 
-> conversionTagsList(conversionTagsListRequest): ApiRequest[ConversionTagListResponse]
+> conversionTagsList(conversionTagsListRequest): ApiRequest[ConversionTagsList200Response]
 
-Get conversion tags
+List conversion tags
 
 List conversion tags associated with an ad account.
 
@@ -219,7 +225,7 @@ object Example extends App {
     val apiInstance = ConversionTagsApi("https://api.pinterest.com/v5")
     val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
 
-    val filterDeleted: Boolean = true // Boolean | Filter out deleted tags.
+    val filterDeleted: Boolean = true // Boolean | Filter by deleted status
     
     val request = apiInstance.conversionTagsList(adAccountId, filterDeleted)
     val response = apiInvoker.execute(request)
@@ -250,11 +256,11 @@ object Example extends App {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. |
- **filterDeleted** | **Boolean**| Filter out deleted tags. | [optional]
+ **filterDeleted** | **Boolean**| Filter by deleted status | [optional]
 
 ### Return type
 
-ApiRequest[[**ConversionTagListResponse**](ConversionTagListResponse.md)]
+ApiRequest[[**ConversionTagsList200Response**](ConversionTagsList200Response.md)]
 
 
 ### Authorization
@@ -269,8 +275,13 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 
 ## ocpmEligibleConversionTagsGet

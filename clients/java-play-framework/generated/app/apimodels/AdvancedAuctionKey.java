@@ -11,42 +11,25 @@ import javax.validation.Valid;
 /**
  * Object uniquely identifying a retail catalog item
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AdvancedAuctionKey   {
-  @JsonProperty("item_id")
-  @NotNull
-
-  private String itemId;
-
   @JsonProperty("country")
   @NotNull
 @Valid
 
   private Country country;
 
+  @JsonProperty("item_id")
+  @NotNull
+
+  private String itemId;
+
   @JsonProperty("language")
   @NotNull
 @Valid
 
   private Language language;
-
-  public AdvancedAuctionKey itemId(String itemId) {
-    this.itemId = itemId;
-    return this;
-  }
-
-   /**
-   * The catalog retail item id in the merchant namespace
-   * @return itemId
-  **/
-  public String getItemId() {
-    return itemId;
-  }
-
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
-  }
 
   public AdvancedAuctionKey country(Country country) {
     this.country = country;
@@ -63,6 +46,23 @@ public class AdvancedAuctionKey   {
 
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+  public AdvancedAuctionKey itemId(String itemId) {
+    this.itemId = itemId;
+    return this;
+  }
+
+   /**
+   * The catalog retail item id in the merchant namespace
+   * @return itemId
+  **/
+  public String getItemId() {
+    return itemId;
+  }
+
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
   }
 
   public AdvancedAuctionKey language(Language language) {
@@ -92,14 +92,14 @@ public class AdvancedAuctionKey   {
       return false;
     }
     AdvancedAuctionKey advancedAuctionKey = (AdvancedAuctionKey) o;
-    return Objects.equals(itemId, advancedAuctionKey.itemId) &&
-        Objects.equals(country, advancedAuctionKey.country) &&
+    return Objects.equals(country, advancedAuctionKey.country) &&
+        Objects.equals(itemId, advancedAuctionKey.itemId) &&
         Objects.equals(language, advancedAuctionKey.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, country, language);
+    return Objects.hash(country, itemId, language);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -108,8 +108,8 @@ public class AdvancedAuctionKey   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvancedAuctionKey {\n");
     
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();

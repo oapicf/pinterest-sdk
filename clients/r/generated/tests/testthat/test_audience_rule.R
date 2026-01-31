@@ -5,6 +5,30 @@ context("Test AudienceRule")
 
 model_instance <- AudienceRule$new()
 
+test_that("ad_account_id", {
+  # tests for the property `ad_account_id` (character)
+  # Ad account ID.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_account_id`, "EXPECTED_RESULT")
+})
+
+test_that("ad_id", {
+  # tests for the property `ad_id` (array[character])
+  # Ad ID for engagement audience filter.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ad_id`, "EXPECTED_RESULT")
+})
+
+test_that("campaign_id", {
+  # tests for the property `campaign_id` (array[character])
+  # Campaign ID for engagement audience filter.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`campaign_id`, "EXPECTED_RESULT")
+})
+
 test_that("country", {
   # tests for the property `country` (character)
   # Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;.
@@ -37,6 +61,14 @@ test_that("engagement_type", {
   #expect_equal(model.instance$`engagement_type`, "EXPECTED_RESULT")
 })
 
+test_that("engager_type", {
+  # tests for the property `engager_type` (integer)
+  # Optional for ENGAGEMENT. Engager type value should be 1-2.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`engager_type`, "EXPECTED_RESULT")
+})
+
 test_that("event", {
   # tests for the property `event` (character)
   # A Pinterest tag event. Optional for VISITOR &#x60;audience_type&#x60;. Possible values are &#x60;pagevisit&#x60;, &#x60;signup&#x60;, &#x60;checkout&#x60;, &#x60;viewcategory&#x60;, &#x60;search&#x60;, &#x60;addtocart&#x60;, &#x60;watchvideo&#x60;, &#x60;lead&#x60;, and &#x60;custom&#x60;. This field also accepts a partner-defined Pinterest tag event.
@@ -46,10 +78,34 @@ test_that("event", {
 })
 
 test_that("event_data", {
-  # tests for the property `event_data` (PinterestTagEventData)
+  # tests for the property `event_data` (EventData)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`event_data`, "EXPECTED_RESULT")
+})
+
+test_that("event_source", {
+  # tests for the property `event_source` (object)
+  # Optional for VISITOR. You can use it as a {&#39;&#x3D;&#39;: [value]}. Supported values are: web, mobile, offline
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`event_source`, "EXPECTED_RESULT")
+})
+
+test_that("ingestion_source", {
+  # tests for the property `ingestion_source` (object)
+  # Optional for VISITOR. You can use it as a {&#39;&#x3D;&#39;: [value]}. Supported values are: tag, mmp, file_upload, conversions_api
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ingestion_source`, "EXPECTED_RESULT")
+})
+
+test_that("objective_type", {
+  # tests for the property `objective_type` (array[ObjectiveType])
+  # Objective for engagement audience filter.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`objective_type`, "EXPECTED_RESULT")
 })
 
 test_that("percentage", {
@@ -106,60 +162,4 @@ test_that("visitor_source_id", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`visitor_source_id`, "EXPECTED_RESULT")
-})
-
-test_that("event_source", {
-  # tests for the property `event_source` (object)
-  # Optional for VISITOR. You can use it as a {&#39;&#x3D;&#39;: [value]}. Supported values are: web, mobile, offline
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`event_source`, "EXPECTED_RESULT")
-})
-
-test_that("ingestion_source", {
-  # tests for the property `ingestion_source` (object)
-  # Optional for VISITOR. You can use it as a {&#39;&#x3D;&#39;: [value]}. Supported values are: tag, mmp, file_upload, conversions_api
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`ingestion_source`, "EXPECTED_RESULT")
-})
-
-test_that("engager_type", {
-  # tests for the property `engager_type` (integer)
-  # Optional for ENGAGEMENT. Engager type value should be 1-2.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`engager_type`, "EXPECTED_RESULT")
-})
-
-test_that("campaign_id", {
-  # tests for the property `campaign_id` (array[character])
-  # Campaign ID for engagement audience filter.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`campaign_id`, "EXPECTED_RESULT")
-})
-
-test_that("ad_id", {
-  # tests for the property `ad_id` (array[character])
-  # Ad ID for engagement audience filter.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`ad_id`, "EXPECTED_RESULT")
-})
-
-test_that("objective_type", {
-  # tests for the property `objective_type` (array[ObjectiveType])
-  # Objective for engagement audience filter.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`objective_type`, "EXPECTED_RESULT")
-})
-
-test_that("ad_account_id", {
-  # tests for the property `ad_account_id` (character)
-  # Ad account ID.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`ad_account_id`, "EXPECTED_RESULT")
 })

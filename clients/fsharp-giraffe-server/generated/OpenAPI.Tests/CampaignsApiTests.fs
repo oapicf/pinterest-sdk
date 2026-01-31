@@ -16,6 +16,7 @@ open TestHelper
 open CampaignsApiHandlerTestsHelper
 open OpenAPI.CampaignsApiHandler
 open OpenAPI.CampaignsApiHandlerParams
+open OpenAPI.Model.AdPinAnalytics
 open OpenAPI.Model.AdsAnalyticsCampaignTargetingType
 open OpenAPI.Model.CampaignCreateRequest
 open OpenAPI.Model.CampaignCreateResponse
@@ -28,12 +29,64 @@ open OpenAPI.Model.ConversionReportAttributionType
 open OpenAPI.Model.Error
 open OpenAPI.Model.Granularity
 open OpenAPI.Model.MetricsResponse
+open OpenAPI.Model.ReportingTimeZone
 
 module CampaignsApiHandlerTests =
 
   // ---------------------------------
   // Tests
   // ---------------------------------
+
+  [<Fact>]
+  let ``AdPinsAnalytics - Get pins analytics returns 200 where Success`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/ad_accounts/{ad_account_id}/pins/analytics".Replace("adAccountId", "ADDME") + "?campaignId=ADDME&pinIds=ADDME&startDate=ADDME&endDate=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(200))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``AdPinsAnalytics - Get pins analytics returns 400 where Invalid ad account pins analytics parameters.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/ad_accounts/{ad_account_id}/pins/analytics".Replace("adAccountId", "ADDME") + "?campaignId=ADDME&pinIds=ADDME&startDate=ADDME&endDate=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(400))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``AdPinsAnalytics - Get pins analytics returns 0 where Unexpected error`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/ad_accounts/{ad_account_id}/pins/analytics".Replace("adAccountId", "ADDME") + "?campaignId=ADDME&pinIds=ADDME&startDate=ADDME&endDate=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(0))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
 
   [<Fact>]
   let ``CampaignTargetingAnalyticsGet - Get targeting analytics for campaigns returns 200 where Success`` () =
@@ -43,7 +96,7 @@ module CampaignsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/ad_accounts/{ad_account_id}/campaigns/targeting_analytics".Replace("adAccountId", "ADDME") + "?campaignIds=ADDME&startDate=ADDME&endDate=ADDME&targetingTypes=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME&attributionTypes=ADDME"
+      let path = "/v5/ad_accounts/{ad_account_id}/campaigns/targeting_analytics".Replace("adAccountId", "ADDME") + "?campaignIds=ADDME&startDate=ADDME&endDate=ADDME&targetingTypes=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME&attributionTypes=ADDME&reportingTimezone=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(200))
@@ -60,7 +113,7 @@ module CampaignsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/ad_accounts/{ad_account_id}/campaigns/targeting_analytics".Replace("adAccountId", "ADDME") + "?campaignIds=ADDME&startDate=ADDME&endDate=ADDME&targetingTypes=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME&attributionTypes=ADDME"
+      let path = "/v5/ad_accounts/{ad_account_id}/campaigns/targeting_analytics".Replace("adAccountId", "ADDME") + "?campaignIds=ADDME&startDate=ADDME&endDate=ADDME&targetingTypes=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME&attributionTypes=ADDME&reportingTimezone=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(0))
@@ -77,7 +130,7 @@ module CampaignsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/ad_accounts/{ad_account_id}/campaigns/analytics".Replace("adAccountId", "ADDME") + "?startDate=ADDME&endDate=ADDME&campaignIds=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME"
+      let path = "/v5/ad_accounts/{ad_account_id}/campaigns/analytics".Replace("adAccountId", "ADDME") + "?startDate=ADDME&endDate=ADDME&campaignIds=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME&aggregateReportRows=ADDME&reportingTimezone=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(200))
@@ -94,7 +147,7 @@ module CampaignsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/ad_accounts/{ad_account_id}/campaigns/analytics".Replace("adAccountId", "ADDME") + "?startDate=ADDME&endDate=ADDME&campaignIds=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME"
+      let path = "/v5/ad_accounts/{ad_account_id}/campaigns/analytics".Replace("adAccountId", "ADDME") + "?startDate=ADDME&endDate=ADDME&campaignIds=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME&aggregateReportRows=ADDME&reportingTimezone=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(400))
@@ -111,7 +164,7 @@ module CampaignsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/ad_accounts/{ad_account_id}/campaigns/analytics".Replace("adAccountId", "ADDME") + "?startDate=ADDME&endDate=ADDME&campaignIds=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME"
+      let path = "/v5/ad_accounts/{ad_account_id}/campaigns/analytics".Replace("adAccountId", "ADDME") + "?startDate=ADDME&endDate=ADDME&campaignIds=ADDME&columns=ADDME&granularity=ADDME&clickWindowDays=ADDME&engagementWindowDays=ADDME&viewWindowDays=ADDME&conversionReportTime=ADDME&aggregateReportRows=ADDME&reportingTimezone=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(0))

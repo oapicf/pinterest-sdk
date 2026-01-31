@@ -11,8 +11,9 @@
 #' @field conversion_event  character [optional]
 #' @field conversion_tag_id  character [optional]
 #' @field cpa_goal_value_in_micro_currency  character [optional]
-#' @field is_roas_optimized ROAS optimization is not supported character [optional]
+#' @field is_roas_optimized Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when `conversion_event` is set to `\"CHECKOUT\"` and `bid_strategy_type` is set to `\"AUTOMATIC_BID\"`. <br>This parameter is not enabled for all advertisers. <a href=\"https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/\">Learn more</a>. character [optional]
 #' @field learning_mode_type Conversion learning model type character [optional]
+#' @field reporting_event Event name for custom or standard events mapped to an oCPM model character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -25,6 +26,7 @@ OptimizationGoalMetadataConversionTagV3GoalMetadata <- R6::R6Class(
     `cpa_goal_value_in_micro_currency` = NULL,
     `is_roas_optimized` = NULL,
     `learning_mode_type` = NULL,
+    `reporting_event` = NULL,
 
     #' @description
     #' Initialize a new OptimizationGoalMetadataConversionTagV3GoalMetadata class.
@@ -33,10 +35,11 @@ OptimizationGoalMetadataConversionTagV3GoalMetadata <- R6::R6Class(
     #' @param conversion_event conversion_event
     #' @param conversion_tag_id conversion_tag_id
     #' @param cpa_goal_value_in_micro_currency cpa_goal_value_in_micro_currency
-    #' @param is_roas_optimized ROAS optimization is not supported
+    #' @param is_roas_optimized Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when `conversion_event` is set to `\"CHECKOUT\"` and `bid_strategy_type` is set to `\"AUTOMATIC_BID\"`. <br>This parameter is not enabled for all advertisers. <a href=\"https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/\">Learn more</a>.
     #' @param learning_mode_type Conversion learning model type
+    #' @param reporting_event Event name for custom or standard events mapped to an oCPM model
     #' @param ... Other optional arguments.
-    initialize = function(`attribution_windows` = NULL, `conversion_event` = NULL, `conversion_tag_id` = NULL, `cpa_goal_value_in_micro_currency` = NULL, `is_roas_optimized` = NULL, `learning_mode_type` = NULL, ...) {
+    initialize = function(`attribution_windows` = NULL, `conversion_event` = NULL, `conversion_tag_id` = NULL, `cpa_goal_value_in_micro_currency` = NULL, `is_roas_optimized` = NULL, `learning_mode_type` = NULL, `reporting_event` = NULL, ...) {
       if (!is.null(`attribution_windows`)) {
         stopifnot(R6::is.R6(`attribution_windows`))
         self$`attribution_windows` <- `attribution_windows`
@@ -76,6 +79,12 @@ OptimizationGoalMetadataConversionTagV3GoalMetadata <- R6::R6Class(
           stop(paste("Error! Invalid data for `learning_mode_type`. Must be a string:", `learning_mode_type`))
         }
         self$`learning_mode_type` <- `learning_mode_type`
+      }
+      if (!is.null(`reporting_event`)) {
+        if (!(is.character(`reporting_event`) && length(`reporting_event`) == 1)) {
+          stop(paste("Error! Invalid data for `reporting_event`. Must be a string:", `reporting_event`))
+        }
+        self$`reporting_event` <- `reporting_event`
       }
     },
 
@@ -134,6 +143,10 @@ OptimizationGoalMetadataConversionTagV3GoalMetadata <- R6::R6Class(
         OptimizationGoalMetadataConversionTagV3GoalMetadataObject[["learning_mode_type"]] <-
           self$`learning_mode_type`
       }
+      if (!is.null(self$`reporting_event`)) {
+        OptimizationGoalMetadataConversionTagV3GoalMetadataObject[["reporting_event"]] <-
+          self$`reporting_event`
+      }
       return(OptimizationGoalMetadataConversionTagV3GoalMetadataObject)
     },
 
@@ -170,6 +183,9 @@ OptimizationGoalMetadataConversionTagV3GoalMetadata <- R6::R6Class(
         }
         self$`learning_mode_type` <- this_object$`learning_mode_type`
       }
+      if (!is.null(this_object$`reporting_event`)) {
+        self$`reporting_event` <- this_object$`reporting_event`
+      }
       self
     },
 
@@ -203,6 +219,7 @@ OptimizationGoalMetadataConversionTagV3GoalMetadata <- R6::R6Class(
         stop(paste("Error! \"", this_object$`learning_mode_type`, "\" cannot be assigned to `learning_mode_type`. Must be \"NOT_ACTIVE\", \"ACTIVE\".", sep = ""))
       }
       self$`learning_mode_type` <- this_object$`learning_mode_type`
+      self$`reporting_event` <- this_object$`reporting_event`
       self
     },
 

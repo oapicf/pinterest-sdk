@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.ConversionTagResponse;
+import org.openapitools.model.ConversionTag;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -14,26 +14,26 @@ public class ConversionTagListResponse  {
   
   @ApiModelProperty(value = "")
 
-  private List<ConversionTagResponse> items = new ArrayList<>();
+  private List<ConversionTag> items = new ArrayList<>();
  /**
    * Get items
    * @return items
   **/
   @JsonProperty("items")
-  public List<ConversionTagResponse> getItems() {
+  public List<ConversionTag> getItems() {
     return items;
   }
 
-  public void setItems(List<ConversionTagResponse> items) {
+  public void setItems(List<ConversionTag> items) {
     this.items = items;
   }
 
-  public ConversionTagListResponse items(List<ConversionTagResponse> items) {
+  public ConversionTagListResponse items(List<ConversionTag> items) {
     this.items = items;
     return this;
   }
 
-  public ConversionTagListResponse addItemsItem(ConversionTagResponse itemsItem) {
+  public ConversionTagListResponse addItemsItem(ConversionTag itemsItem) {
     this.items.add(itemsItem);
     return this;
   }

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -18,10 +18,10 @@ type CatalogsItemsPostFilters struct {
 
 	CatalogType CatalogsType `json:"catalog_type"`
 
-	ItemIds []string `json:"item_ids"`
-
 	// Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
 	CatalogId string `json:"catalog_id,omitempty"`
+
+	ItemIds []string `json:"item_ids"`
 
 	HotelIds []string `json:"hotel_ids"`
 

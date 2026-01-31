@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,11 +16,11 @@ package openapi
 
 type AnalyticsMetricsResponse struct {
 
-	// The metric name and value over the requested period for each requested metric
-	SummaryMetrics map[string]float32 `json:"summary_metrics,omitempty"`
-
 	// Array with the requested daily metric records
 	DailyMetrics []AnalyticsDailyMetrics `json:"daily_metrics,omitempty"`
+
+	// The metric name and value over the requested period for each requested metric
+	SummaryMetrics map[string]float32 `json:"summary_metrics,omitempty"`
 }
 
 // AssertAnalyticsMetricsResponseRequired checks if the required fields are not zero-ed

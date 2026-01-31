@@ -80,6 +80,11 @@ module AdvancedAuctionApiHandlerParams =
       
     }
 
+    type AdvancedAuctionItemsSubmitPostStatusCode206Response = {
+      content:AdvancedAuctionProcessedItems;
+      
+    }
+
     type AdvancedAuctionItemsSubmitPostStatusCode400Response = {
       content:Error;
       
@@ -104,7 +109,7 @@ module AdvancedAuctionApiHandlerParams =
       content:Error;
       
     }
-    type AdvancedAuctionItemsSubmitPostResult = AdvancedAuctionItemsSubmitPostStatusCode200 of AdvancedAuctionItemsSubmitPostStatusCode200Response|AdvancedAuctionItemsSubmitPostStatusCode400 of AdvancedAuctionItemsSubmitPostStatusCode400Response|AdvancedAuctionItemsSubmitPostStatusCode401 of AdvancedAuctionItemsSubmitPostStatusCode401Response|AdvancedAuctionItemsSubmitPostStatusCode403 of AdvancedAuctionItemsSubmitPostStatusCode403Response|AdvancedAuctionItemsSubmitPostStatusCode500 of AdvancedAuctionItemsSubmitPostStatusCode500Response|AdvancedAuctionItemsSubmitPostDefaultStatusCode of AdvancedAuctionItemsSubmitPostDefaultStatusCodeResponse
+    type AdvancedAuctionItemsSubmitPostResult = AdvancedAuctionItemsSubmitPostStatusCode200 of AdvancedAuctionItemsSubmitPostStatusCode200Response|AdvancedAuctionItemsSubmitPostStatusCode206 of AdvancedAuctionItemsSubmitPostStatusCode206Response|AdvancedAuctionItemsSubmitPostStatusCode400 of AdvancedAuctionItemsSubmitPostStatusCode400Response|AdvancedAuctionItemsSubmitPostStatusCode401 of AdvancedAuctionItemsSubmitPostStatusCode401Response|AdvancedAuctionItemsSubmitPostStatusCode403 of AdvancedAuctionItemsSubmitPostStatusCode403Response|AdvancedAuctionItemsSubmitPostStatusCode500 of AdvancedAuctionItemsSubmitPostStatusCode500Response|AdvancedAuctionItemsSubmitPostDefaultStatusCode of AdvancedAuctionItemsSubmitPostDefaultStatusCodeResponse
 
     type AdvancedAuctionItemsSubmitPostArgs = {
       queryParams:Result<AdvancedAuctionItemsSubmitPostQueryParams,string>;

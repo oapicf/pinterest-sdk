@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -28,6 +28,11 @@ type CatalogsProductGroupFilterKeys struct {
 	CustomLabel2Filter *CustomLabel2Filter
 	CustomLabel3Filter *CustomLabel3Filter
 	CustomLabel4Filter *CustomLabel4Filter
+	CustomNumber0Filter *CustomNumber0Filter
+	CustomNumber1Filter *CustomNumber1Filter
+	CustomNumber2Filter *CustomNumber2Filter
+	CustomNumber3Filter *CustomNumber3Filter
+	CustomNumber4Filter *CustomNumber4Filter
 	GenderFilter *GenderFilter
 	GoogleProductCategory0Filter *GoogleProductCategory0Filter
 	GoogleProductCategory1Filter *GoogleProductCategory1Filter
@@ -47,6 +52,7 @@ type CatalogsProductGroupFilterKeys struct {
 	ProductType2Filter *ProductType2Filter
 	ProductType3Filter *ProductType3Filter
 	ProductType4Filter *ProductType4Filter
+	TitleKeywordsFilter *TitleKeywordsFilter
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
@@ -167,6 +173,71 @@ func (dst *CatalogsProductGroupFilterKeys) UnmarshalJSON(data []byte) error {
 		}
 	} else {
 		dst.CustomLabel4Filter = nil
+	}
+
+	// try to unmarshal JSON data into CustomNumber0Filter
+	err = json.Unmarshal(data, &dst.CustomNumber0Filter);
+	if err == nil {
+		jsonCustomNumber0Filter, _ := json.Marshal(dst.CustomNumber0Filter)
+		if string(jsonCustomNumber0Filter) == "{}" { // empty struct
+			dst.CustomNumber0Filter = nil
+		} else {
+			return nil // data stored in dst.CustomNumber0Filter, return on the first match
+		}
+	} else {
+		dst.CustomNumber0Filter = nil
+	}
+
+	// try to unmarshal JSON data into CustomNumber1Filter
+	err = json.Unmarshal(data, &dst.CustomNumber1Filter);
+	if err == nil {
+		jsonCustomNumber1Filter, _ := json.Marshal(dst.CustomNumber1Filter)
+		if string(jsonCustomNumber1Filter) == "{}" { // empty struct
+			dst.CustomNumber1Filter = nil
+		} else {
+			return nil // data stored in dst.CustomNumber1Filter, return on the first match
+		}
+	} else {
+		dst.CustomNumber1Filter = nil
+	}
+
+	// try to unmarshal JSON data into CustomNumber2Filter
+	err = json.Unmarshal(data, &dst.CustomNumber2Filter);
+	if err == nil {
+		jsonCustomNumber2Filter, _ := json.Marshal(dst.CustomNumber2Filter)
+		if string(jsonCustomNumber2Filter) == "{}" { // empty struct
+			dst.CustomNumber2Filter = nil
+		} else {
+			return nil // data stored in dst.CustomNumber2Filter, return on the first match
+		}
+	} else {
+		dst.CustomNumber2Filter = nil
+	}
+
+	// try to unmarshal JSON data into CustomNumber3Filter
+	err = json.Unmarshal(data, &dst.CustomNumber3Filter);
+	if err == nil {
+		jsonCustomNumber3Filter, _ := json.Marshal(dst.CustomNumber3Filter)
+		if string(jsonCustomNumber3Filter) == "{}" { // empty struct
+			dst.CustomNumber3Filter = nil
+		} else {
+			return nil // data stored in dst.CustomNumber3Filter, return on the first match
+		}
+	} else {
+		dst.CustomNumber3Filter = nil
+	}
+
+	// try to unmarshal JSON data into CustomNumber4Filter
+	err = json.Unmarshal(data, &dst.CustomNumber4Filter);
+	if err == nil {
+		jsonCustomNumber4Filter, _ := json.Marshal(dst.CustomNumber4Filter)
+		if string(jsonCustomNumber4Filter) == "{}" { // empty struct
+			dst.CustomNumber4Filter = nil
+		} else {
+			return nil // data stored in dst.CustomNumber4Filter, return on the first match
+		}
+	} else {
+		dst.CustomNumber4Filter = nil
 	}
 
 	// try to unmarshal JSON data into GenderFilter
@@ -416,6 +487,19 @@ func (dst *CatalogsProductGroupFilterKeys) UnmarshalJSON(data []byte) error {
 		dst.ProductType4Filter = nil
 	}
 
+	// try to unmarshal JSON data into TitleKeywordsFilter
+	err = json.Unmarshal(data, &dst.TitleKeywordsFilter);
+	if err == nil {
+		jsonTitleKeywordsFilter, _ := json.Marshal(dst.TitleKeywordsFilter)
+		if string(jsonTitleKeywordsFilter) == "{}" { // empty struct
+			dst.TitleKeywordsFilter = nil
+		} else {
+			return nil // data stored in dst.TitleKeywordsFilter, return on the first match
+		}
+	} else {
+		dst.TitleKeywordsFilter = nil
+	}
+
 	return fmt.Errorf("data failed to match schemas in anyOf(CatalogsProductGroupFilterKeys)")
 }
 
@@ -455,6 +539,26 @@ func (src CatalogsProductGroupFilterKeys) MarshalJSON() ([]byte, error) {
 
 	if src.CustomLabel4Filter != nil {
 		return json.Marshal(&src.CustomLabel4Filter)
+	}
+
+	if src.CustomNumber0Filter != nil {
+		return json.Marshal(&src.CustomNumber0Filter)
+	}
+
+	if src.CustomNumber1Filter != nil {
+		return json.Marshal(&src.CustomNumber1Filter)
+	}
+
+	if src.CustomNumber2Filter != nil {
+		return json.Marshal(&src.CustomNumber2Filter)
+	}
+
+	if src.CustomNumber3Filter != nil {
+		return json.Marshal(&src.CustomNumber3Filter)
+	}
+
+	if src.CustomNumber4Filter != nil {
+		return json.Marshal(&src.CustomNumber4Filter)
 	}
 
 	if src.GenderFilter != nil {
@@ -531,6 +635,10 @@ func (src CatalogsProductGroupFilterKeys) MarshalJSON() ([]byte, error) {
 
 	if src.ProductType4Filter != nil {
 		return json.Marshal(&src.ProductType4Filter)
+	}
+
+	if src.TitleKeywordsFilter != nil {
+		return json.Marshal(&src.TitleKeywordsFilter)
 	}
 
 	return nil, nil // no data in anyOf schemas

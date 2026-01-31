@@ -3,9 +3,9 @@ Protected Class SSIOAccountResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Advertiser eligible to create order lines
+			An array of Salesforce account information that includes address, io terms, etc.
 		#tag EndNote
-		eligible As Xoson.O.OptionalBoolean
+		billto_infos() As OpenAPIClient.Models.SSIOAccountItem
 	#tag EndProperty
 
 
@@ -18,20 +18,15 @@ Protected Class SSIOAccountResponse
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			An array of Salesforce account information that includes address, io terms, etc.
-		#tag EndNote
-		billto_infos() As OpenAPIClient.Models.SSIOAccountItem
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		currency As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		pmp_names() As OpenAPIClient.Models.SSIOAccountPMPName
+		#tag Note
+			Advertiser eligible to create order lines
+		#tag EndNote
+		eligible As Xoson.O.OptionalBoolean
 	#tag EndProperty
 
 
@@ -40,6 +35,11 @@ Protected Class SSIOAccountResponse
 			Error indicator from Salesforce which could be "No Error"
 		#tag EndNote
 		error As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		pmp_names() As OpenAPIClient.Models.SSIOAccountPMPName
 	#tag EndProperty
 
 
@@ -80,11 +80,11 @@ Protected Class SSIOAccountResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="eligible"
+			Name="billto_infos"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Boolean"
+			Type="SSIOAccountItem"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -96,15 +96,23 @@ Protected Class SSIOAccountResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="billto_infos"
+			Name="currency"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="SSIOAccountItem"
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="currency"
+			Name="eligible"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="error"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -117,14 +125,6 @@ Protected Class SSIOAccountResponse
 			Group="Behavior"
 			InitialValue=""
 			Type="SSIOAccountPMPName"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="error"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

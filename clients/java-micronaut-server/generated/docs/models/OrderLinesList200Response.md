@@ -8,8 +8,8 @@ The class is defined in **[OrderLinesList200Response.java](../../src/main/java/o
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;OrderLine&gt;`](OrderLine.md) |  | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;OrderLine&gt;`](OrderLine.md) |  | 
 
 
 

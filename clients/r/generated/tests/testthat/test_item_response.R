@@ -12,6 +12,13 @@ test_that("catalog_type", {
   #expect_equal(model.instance$`catalog_type`, "EXPECTED_RESULT")
 })
 
+test_that("attributes", {
+  # tests for the property `attributes` (CatalogsCreativeAssetsAttributes)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`attributes`, "EXPECTED_RESULT")
+})
+
 test_that("item_id", {
   # tests for the property `item_id` (character)
   # The catalog item id in the merchant namespace
@@ -26,13 +33,6 @@ test_that("pins", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`pins`, "EXPECTED_RESULT")
-})
-
-test_that("attributes", {
-  # tests for the property `attributes` (CatalogsCreativeAssetsAttributes)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`attributes`, "EXPECTED_RESULT")
 })
 
 test_that("hotel_id", {

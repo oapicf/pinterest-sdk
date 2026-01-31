@@ -27,43 +27,11 @@ public class LeadFormCreateRequestTest {
     }
 
     /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
-     * Test the property 'privacyPolicyLink'
-     */
-    @Test
-    public void privacyPolicyLinkTest() {
-        // TODO: test privacyPolicyLink
-    }
-
-    /**
-     * Test the property 'hasAcceptedTerms'
-     */
-    @Test
-    public void hasAcceptedTermsTest() {
-        // TODO: test hasAcceptedTerms
-    }
-
-    /**
      * Test the property 'completionMessage'
      */
     @Test
     public void completionMessageTest() {
         // TODO: test completionMessage
-    }
-
-    /**
-     * Test the property 'status'
-     */
-    @Test
-    public void statusTest() {
-        // TODO: test status
     }
 
     /**
@@ -75,11 +43,19 @@ public class LeadFormCreateRequestTest {
     }
 
     /**
-     * Test the property 'questions'
+     * Test the property 'hasAcceptedTerms'
      */
     @Test
-    public void questionsTest() {
-        // TODO: test questions
+    public void hasAcceptedTermsTest() {
+        // TODO: test hasAcceptedTerms
+    }
+
+    /**
+     * Test the property 'name'
+     */
+    @Test
+    public void nameTest() {
+        // TODO: test name
     }
 
     /**
@@ -88,6 +64,30 @@ public class LeadFormCreateRequestTest {
     @Test
     public void policyLinksTest() {
         // TODO: test policyLinks
+    }
+
+    /**
+     * Test the property 'privacyPolicyLink'
+     */
+    @Test
+    public void privacyPolicyLinkTest() {
+        // TODO: test privacyPolicyLink
+    }
+
+    /**
+     * Test the property 'questions'
+     */
+    @Test
+    public void questionsTest() {
+        // TODO: test questions
+    }
+
+    /**
+     * Test the property 'status'
+     */
+    @Test
+    public void statusTest() {
+        // TODO: test status
     }
 
 }

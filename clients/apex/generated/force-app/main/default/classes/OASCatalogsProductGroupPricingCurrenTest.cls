@@ -80,8 +80,8 @@ private class OASCatalogsProductGroupPricingCurrenTest {
     private static void defaultValuesPopulated() {
         OASCatalogsProductGroupPricingCurren catalogsProductGroupPricingCurrencyCriteria = new OASCatalogsProductGroupPricingCurren();
         System.assertEquals(false, catalogsProductGroupPricingCurrencyCriteria.negated);
+        System.assertEquals(null, catalogsProductGroupPricingCurrencyCriteria.r_currency);
         System.assertEquals(null, catalogsProductGroupPricingCurrencyCriteria.operator);
         System.assertEquals(null, catalogsProductGroupPricingCurrencyCriteria.value);
-        System.assertEquals(null, catalogsProductGroupPricingCurrencyCriteria.r_currency);
     }
 }

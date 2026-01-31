@@ -15,39 +15,13 @@ import org.openapitools.model.UpdateAssetGroupResponseExceptionsInner;
 /**
  * UpdateAssetGroupResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UpdateAssetGroupResponse   {
-  @JsonProperty("updated_asset_groups")
-  private List<@Valid AssetGroupBinding> updatedAssetGroups = null;
-
   @JsonProperty("exceptions")
   private List<@Valid UpdateAssetGroupResponseExceptionsInner> exceptions = null;
 
-  public UpdateAssetGroupResponse updatedAssetGroups(List<@Valid AssetGroupBinding> updatedAssetGroups) {
-    this.updatedAssetGroups = updatedAssetGroups;
-    return this;
-  }
-
-  public UpdateAssetGroupResponse addUpdatedAssetGroupsItem(AssetGroupBinding updatedAssetGroupsItem) {
-    if (this.updatedAssetGroups == null) {
-      this.updatedAssetGroups = new ArrayList<>();
-    }
-    this.updatedAssetGroups.add(updatedAssetGroupsItem);
-    return this;
-  }
-
-   /**
-   * A list of successfully edited asset groups.
-   * @return updatedAssetGroups
-  **/
-  @ApiModelProperty(value = "A list of successfully edited asset groups.")
-  public List<@Valid AssetGroupBinding> getUpdatedAssetGroups() {
-    return updatedAssetGroups;
-  }
-
-  public void setUpdatedAssetGroups(List<@Valid AssetGroupBinding> updatedAssetGroups) {
-    this.updatedAssetGroups = updatedAssetGroups;
-  }
+  @JsonProperty("updated_asset_groups")
+  private List<@Valid AssetGroupBinding> updatedAssetGroups = null;
 
   public UpdateAssetGroupResponse exceptions(List<@Valid UpdateAssetGroupResponseExceptionsInner> exceptions) {
     this.exceptions = exceptions;
@@ -75,6 +49,32 @@ public class UpdateAssetGroupResponse   {
     this.exceptions = exceptions;
   }
 
+  public UpdateAssetGroupResponse updatedAssetGroups(List<@Valid AssetGroupBinding> updatedAssetGroups) {
+    this.updatedAssetGroups = updatedAssetGroups;
+    return this;
+  }
+
+  public UpdateAssetGroupResponse addUpdatedAssetGroupsItem(AssetGroupBinding updatedAssetGroupsItem) {
+    if (this.updatedAssetGroups == null) {
+      this.updatedAssetGroups = new ArrayList<>();
+    }
+    this.updatedAssetGroups.add(updatedAssetGroupsItem);
+    return this;
+  }
+
+   /**
+   * A list of successfully edited asset groups.
+   * @return updatedAssetGroups
+  **/
+  @ApiModelProperty(value = "A list of successfully edited asset groups.")
+  public List<@Valid AssetGroupBinding> getUpdatedAssetGroups() {
+    return updatedAssetGroups;
+  }
+
+  public void setUpdatedAssetGroups(List<@Valid AssetGroupBinding> updatedAssetGroups) {
+    this.updatedAssetGroups = updatedAssetGroups;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -85,13 +85,13 @@ public class UpdateAssetGroupResponse   {
       return false;
     }
     UpdateAssetGroupResponse updateAssetGroupResponse = (UpdateAssetGroupResponse) o;
-    return Objects.equals(this.updatedAssetGroups, updateAssetGroupResponse.updatedAssetGroups) &&
-        Objects.equals(this.exceptions, updateAssetGroupResponse.exceptions);
+    return Objects.equals(this.exceptions, updateAssetGroupResponse.exceptions) &&
+        Objects.equals(this.updatedAssetGroups, updateAssetGroupResponse.updatedAssetGroups);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(updatedAssetGroups, exceptions);
+    return Objects.hash(exceptions, updatedAssetGroups);
   }
 
   @Override
@@ -99,8 +99,8 @@ public class UpdateAssetGroupResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateAssetGroupResponse {\n");
     
-    sb.append("    updatedAssetGroups: ").append(toIndentedString(updatedAssetGroups)).append("\n");
     sb.append("    exceptions: ").append(toIndentedString(exceptions)).append("\n");
+    sb.append("    updatedAssetGroups: ").append(toIndentedString(updatedAssetGroups)).append("\n");
     sb.append("}");
     return sb.toString();
   }

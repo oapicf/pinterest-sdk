@@ -12,9 +12,9 @@ module CatalogsRetailItemResponse =
 
 
   type CatalogsRetailItemResponse = {
+    Attributes : ItemAttributes;
     CatalogType : CatalogsType;
     ItemId : string;
     Pins : Pin[];
-    Attributes : ItemAttributes;
   }
   //#endregion

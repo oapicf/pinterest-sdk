@@ -52,7 +52,7 @@ Cancel invites/requests
 
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **business\_id** | **String**| Business id | [default to null] |
+| **business\_id** | **String**| Unique identifier of the requesting business. | [default to null] |
 | **CancelInvitesBody** | [**CancelInvitesBody**](../Models/CancelInvitesBody.md)| A list with invite ids | |
 
 ### Return type
@@ -108,7 +108,7 @@ Create invites or requests
 
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **business\_id** | **String**| Business id | [default to null] |
+| **business\_id** | **String**| Unique identifier of the requesting business. | [default to null] |
 | **CreateMembershipOrPartnershipInvitesBody** | [**CreateMembershipOrPartnershipInvitesBody**](../Models/CreateMembershipOrPartnershipInvitesBody.md)| An object with the properties: invite_type, partners, members, business_role | |
 
 ### Return type

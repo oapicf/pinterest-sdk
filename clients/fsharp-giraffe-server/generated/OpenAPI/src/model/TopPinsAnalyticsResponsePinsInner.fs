@@ -11,8 +11,8 @@ module TopPinsAnalyticsResponsePinsInner =
 
 
   type TopPinsAnalyticsResponse_pins_inner = {
-    Metrics : IDictionary<string, decimal>;
     DataStatus : IDictionary<string, DataStatus>;
+    Metrics : IDictionary<string, decimal>;
     PinId : string;
   }
   //#endregion

@@ -15,13 +15,14 @@ open OpenAPI.Model.AdGroupResponse
 open OpenAPI.Model.AdGroupUpdateRequest
 open OpenAPI.Model.AdGroupsAnalyticsResponseInner
 open OpenAPI.Model.AdGroupsList200Response
-open OpenAPI.Model.AdsAnalyticsTargetingType
+open OpenAPI.Model.AdsAnalyticsAdGroupTargetingType
 open OpenAPI.Model.BidFloor
 open OpenAPI.Model.BidFloorRequest
 open OpenAPI.Model.ConversionReportAttributionType
 open OpenAPI.Model.Error
 open OpenAPI.Model.Granularity
 open OpenAPI.Model.MetricsResponse
+open OpenAPI.Model.ReportingTimeZone
 
 module AdGroupsApiHandler =
 

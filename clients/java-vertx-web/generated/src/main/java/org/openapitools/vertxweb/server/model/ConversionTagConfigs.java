@@ -4,76 +4,38 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ConversionTagConfigs   {
   
-  private Boolean aemEnabled = false;
-  private BigDecimal mdFrequency = new BigDecimal("1");
-  private Boolean aemFnlnEnabled = false;
-  private Boolean aemPhEnabled = false;
-  private Boolean aemGeEnabled = false;
   private Boolean aemDbEnabled = false;
+  private Boolean aemEnabled = false;
+  private Boolean aemExternalIdEnabled = false;
+  private Boolean aemFnlnEnabled = false;
+  private Boolean aemGeEnabled = false;
   private Boolean aemLocEnabled = false;
+  private Boolean aemPhEnabled = false;
+  private BigDecimal mdFrequency = new BigDecimal("1");
+  private List<String> noCodeCapiDomains = new ArrayList<>();
 
   public ConversionTagConfigs () {
 
   }
 
-  public ConversionTagConfigs (Boolean aemEnabled, BigDecimal mdFrequency, Boolean aemFnlnEnabled, Boolean aemPhEnabled, Boolean aemGeEnabled, Boolean aemDbEnabled, Boolean aemLocEnabled) {
-    this.aemEnabled = aemEnabled;
-    this.mdFrequency = mdFrequency;
-    this.aemFnlnEnabled = aemFnlnEnabled;
-    this.aemPhEnabled = aemPhEnabled;
-    this.aemGeEnabled = aemGeEnabled;
+  public ConversionTagConfigs (Boolean aemDbEnabled, Boolean aemEnabled, Boolean aemExternalIdEnabled, Boolean aemFnlnEnabled, Boolean aemGeEnabled, Boolean aemLocEnabled, Boolean aemPhEnabled, BigDecimal mdFrequency, List<String> noCodeCapiDomains) {
     this.aemDbEnabled = aemDbEnabled;
-    this.aemLocEnabled = aemLocEnabled;
-  }
-
-    
-  @JsonProperty("aem_enabled")
-  public Boolean getAemEnabled() {
-    return aemEnabled;
-  }
-  public void setAemEnabled(Boolean aemEnabled) {
     this.aemEnabled = aemEnabled;
-  }
-
-    
-  @JsonProperty("md_frequency")
-  public BigDecimal getMdFrequency() {
-    return mdFrequency;
-  }
-  public void setMdFrequency(BigDecimal mdFrequency) {
-    this.mdFrequency = mdFrequency;
-  }
-
-    
-  @JsonProperty("aem_fnln_enabled")
-  public Boolean getAemFnlnEnabled() {
-    return aemFnlnEnabled;
-  }
-  public void setAemFnlnEnabled(Boolean aemFnlnEnabled) {
+    this.aemExternalIdEnabled = aemExternalIdEnabled;
     this.aemFnlnEnabled = aemFnlnEnabled;
-  }
-
-    
-  @JsonProperty("aem_ph_enabled")
-  public Boolean getAemPhEnabled() {
-    return aemPhEnabled;
-  }
-  public void setAemPhEnabled(Boolean aemPhEnabled) {
-    this.aemPhEnabled = aemPhEnabled;
-  }
-
-    
-  @JsonProperty("aem_ge_enabled")
-  public Boolean getAemGeEnabled() {
-    return aemGeEnabled;
-  }
-  public void setAemGeEnabled(Boolean aemGeEnabled) {
     this.aemGeEnabled = aemGeEnabled;
+    this.aemLocEnabled = aemLocEnabled;
+    this.aemPhEnabled = aemPhEnabled;
+    this.mdFrequency = mdFrequency;
+    this.noCodeCapiDomains = noCodeCapiDomains;
   }
 
     
@@ -86,12 +48,75 @@ public class ConversionTagConfigs   {
   }
 
     
+  @JsonProperty("aem_enabled")
+  public Boolean getAemEnabled() {
+    return aemEnabled;
+  }
+  public void setAemEnabled(Boolean aemEnabled) {
+    this.aemEnabled = aemEnabled;
+  }
+
+    
+  @JsonProperty("aem_external_id_enabled")
+  public Boolean getAemExternalIdEnabled() {
+    return aemExternalIdEnabled;
+  }
+  public void setAemExternalIdEnabled(Boolean aemExternalIdEnabled) {
+    this.aemExternalIdEnabled = aemExternalIdEnabled;
+  }
+
+    
+  @JsonProperty("aem_fnln_enabled")
+  public Boolean getAemFnlnEnabled() {
+    return aemFnlnEnabled;
+  }
+  public void setAemFnlnEnabled(Boolean aemFnlnEnabled) {
+    this.aemFnlnEnabled = aemFnlnEnabled;
+  }
+
+    
+  @JsonProperty("aem_ge_enabled")
+  public Boolean getAemGeEnabled() {
+    return aemGeEnabled;
+  }
+  public void setAemGeEnabled(Boolean aemGeEnabled) {
+    this.aemGeEnabled = aemGeEnabled;
+  }
+
+    
   @JsonProperty("aem_loc_enabled")
   public Boolean getAemLocEnabled() {
     return aemLocEnabled;
   }
   public void setAemLocEnabled(Boolean aemLocEnabled) {
     this.aemLocEnabled = aemLocEnabled;
+  }
+
+    
+  @JsonProperty("aem_ph_enabled")
+  public Boolean getAemPhEnabled() {
+    return aemPhEnabled;
+  }
+  public void setAemPhEnabled(Boolean aemPhEnabled) {
+    this.aemPhEnabled = aemPhEnabled;
+  }
+
+    
+  @JsonProperty("md_frequency")
+  public BigDecimal getMdFrequency() {
+    return mdFrequency;
+  }
+  public void setMdFrequency(BigDecimal mdFrequency) {
+    this.mdFrequency = mdFrequency;
+  }
+
+    
+  @JsonProperty("no_code_capi_domains")
+  public List<String> getNoCodeCapiDomains() {
+    return noCodeCapiDomains;
+  }
+  public void setNoCodeCapiDomains(List<String> noCodeCapiDomains) {
+    this.noCodeCapiDomains = noCodeCapiDomains;
   }
 
 
@@ -104,18 +129,20 @@ public class ConversionTagConfigs   {
       return false;
     }
     ConversionTagConfigs conversionTagConfigs = (ConversionTagConfigs) o;
-    return Objects.equals(aemEnabled, conversionTagConfigs.aemEnabled) &&
-        Objects.equals(mdFrequency, conversionTagConfigs.mdFrequency) &&
+    return Objects.equals(aemDbEnabled, conversionTagConfigs.aemDbEnabled) &&
+        Objects.equals(aemEnabled, conversionTagConfigs.aemEnabled) &&
+        Objects.equals(aemExternalIdEnabled, conversionTagConfigs.aemExternalIdEnabled) &&
         Objects.equals(aemFnlnEnabled, conversionTagConfigs.aemFnlnEnabled) &&
-        Objects.equals(aemPhEnabled, conversionTagConfigs.aemPhEnabled) &&
         Objects.equals(aemGeEnabled, conversionTagConfigs.aemGeEnabled) &&
-        Objects.equals(aemDbEnabled, conversionTagConfigs.aemDbEnabled) &&
-        Objects.equals(aemLocEnabled, conversionTagConfigs.aemLocEnabled);
+        Objects.equals(aemLocEnabled, conversionTagConfigs.aemLocEnabled) &&
+        Objects.equals(aemPhEnabled, conversionTagConfigs.aemPhEnabled) &&
+        Objects.equals(mdFrequency, conversionTagConfigs.mdFrequency) &&
+        Objects.equals(noCodeCapiDomains, conversionTagConfigs.noCodeCapiDomains);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aemEnabled, mdFrequency, aemFnlnEnabled, aemPhEnabled, aemGeEnabled, aemDbEnabled, aemLocEnabled);
+    return Objects.hash(aemDbEnabled, aemEnabled, aemExternalIdEnabled, aemFnlnEnabled, aemGeEnabled, aemLocEnabled, aemPhEnabled, mdFrequency, noCodeCapiDomains);
   }
 
   @Override
@@ -123,13 +150,15 @@ public class ConversionTagConfigs   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionTagConfigs {\n");
     
-    sb.append("    aemEnabled: ").append(toIndentedString(aemEnabled)).append("\n");
-    sb.append("    mdFrequency: ").append(toIndentedString(mdFrequency)).append("\n");
-    sb.append("    aemFnlnEnabled: ").append(toIndentedString(aemFnlnEnabled)).append("\n");
-    sb.append("    aemPhEnabled: ").append(toIndentedString(aemPhEnabled)).append("\n");
-    sb.append("    aemGeEnabled: ").append(toIndentedString(aemGeEnabled)).append("\n");
     sb.append("    aemDbEnabled: ").append(toIndentedString(aemDbEnabled)).append("\n");
+    sb.append("    aemEnabled: ").append(toIndentedString(aemEnabled)).append("\n");
+    sb.append("    aemExternalIdEnabled: ").append(toIndentedString(aemExternalIdEnabled)).append("\n");
+    sb.append("    aemFnlnEnabled: ").append(toIndentedString(aemFnlnEnabled)).append("\n");
+    sb.append("    aemGeEnabled: ").append(toIndentedString(aemGeEnabled)).append("\n");
     sb.append("    aemLocEnabled: ").append(toIndentedString(aemLocEnabled)).append("\n");
+    sb.append("    aemPhEnabled: ").append(toIndentedString(aemPhEnabled)).append("\n");
+    sb.append("    mdFrequency: ").append(toIndentedString(mdFrequency)).append("\n");
+    sb.append("    noCodeCapiDomains: ").append(toIndentedString(noCodeCapiDomains)).append("\n");
     sb.append("}");
     return sb.toString();
   }

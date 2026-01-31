@@ -6,7 +6,9 @@ import java.util.List;
 import org.openapitools.model.AdGroupUpdateRequest;
 import org.openapitools.model.AdUpdateRequest;
 import org.openapitools.model.CampaignUpdateRequest;
+import org.openapitools.model.CatalogsProductGroupsUpdateRequest;
 import org.openapitools.model.KeywordUpdate;
+import org.openapitools.model.LabelBulkUpdateRequest;
 import org.openapitools.model.ProductGroupPromotionUpdateRequest;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
@@ -28,14 +30,6 @@ public class BulkUpsertRequestUpdateTest {
     }
 
     /**
-     * Test the property 'campaigns'
-     */
-    @Test
-    public void campaignsTest() {
-        // TODO: test campaigns
-    }
-
-    /**
      * Test the property 'adGroups'
      */
     @Test
@@ -52,11 +46,19 @@ public class BulkUpsertRequestUpdateTest {
     }
 
     /**
-     * Test the property 'productGroups'
+     * Test the property 'campaigns'
      */
     @Test
-    public void productGroupsTest() {
-        // TODO: test productGroups
+    public void campaignsTest() {
+        // TODO: test campaigns
+    }
+
+    /**
+     * Test the property 'catalogProductGroups'
+     */
+    @Test
+    public void catalogProductGroupsTest() {
+        // TODO: test catalogProductGroups
     }
 
     /**
@@ -65,6 +67,22 @@ public class BulkUpsertRequestUpdateTest {
     @Test
     public void keywordsTest() {
         // TODO: test keywords
+    }
+
+    /**
+     * Test the property 'labels'
+     */
+    @Test
+    public void labelsTest() {
+        // TODO: test labels
+    }
+
+    /**
+     * Test the property 'productGroups'
+     */
+    @Test
+    public void productGroupsTest() {
+        // TODO: test productGroups
     }
 
 }

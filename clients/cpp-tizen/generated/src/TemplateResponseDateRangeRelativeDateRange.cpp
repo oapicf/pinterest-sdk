@@ -23,28 +23,28 @@ TemplateResponse_date_range_relative_date_range::~TemplateResponse_date_range_re
 void
 TemplateResponse_date_range_relative_date_range::__init()
 {
-	//type = std::string();
-	//start_days_in_past = double(0);
 	//end_days_in_past = double(0);
+	//start_days_in_past = double(0);
+	//type = std::string();
 }
 
 void
 TemplateResponse_date_range_relative_date_range::__cleanup()
 {
-	//if(type != NULL) {
+	//if(end_days_in_past != NULL) {
 	//
-	//delete type;
-	//type = NULL;
+	//delete end_days_in_past;
+	//end_days_in_past = NULL;
 	//}
 	//if(start_days_in_past != NULL) {
 	//
 	//delete start_days_in_past;
 	//start_days_in_past = NULL;
 	//}
-	//if(end_days_in_past != NULL) {
+	//if(type != NULL) {
 	//
-	//delete end_days_in_past;
-	//end_days_in_past = NULL;
+	//delete type;
+	//type = NULL;
 	//}
 	//
 }
@@ -54,14 +54,17 @@ TemplateResponse_date_range_relative_date_range::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *typeKey = "type";
-	node = json_object_get_member(pJsonObject, typeKey);
+	const gchar *end_days_in_pastKey = "end_days_in_past";
+	node = json_object_get_member(pJsonObject, end_days_in_pastKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&type, node, "std::string", "");
+		if (isprimitive("long long")) {
+			jsonToValue(&end_days_in_past, node, "long long", "");
 		} else {
+			
+			long long* obj = static_cast<long long*> (&end_days_in_past);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -79,17 +82,14 @@ TemplateResponse_date_range_relative_date_range::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *end_days_in_pastKey = "end_days_in_past";
-	node = json_object_get_member(pJsonObject, end_days_in_pastKey);
+	const gchar *typeKey = "type";
+	node = json_object_get_member(pJsonObject, typeKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("long long")) {
-			jsonToValue(&end_days_in_past, node, "long long", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&type, node, "std::string", "");
 		} else {
-			
-			long long* obj = static_cast<long long*> (&end_days_in_past);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -105,29 +105,6 @@ TemplateResponse_date_range_relative_date_range::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getType();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *typeKey = "type";
-	json_object_set_member(pJsonObject, typeKey, node);
-	if (isprimitive("long long")) {
-		long long obj = getStartDaysInPast();
-		node = converttoJson(&obj, "long long", "");
-	}
-	else {
-		
-		long long obj = static_cast<long long> (getStartDaysInPast());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *start_days_in_pastKey = "start_days_in_past";
-	json_object_set_member(pJsonObject, start_days_in_pastKey, node);
 	if (isprimitive("long long")) {
 		long long obj = getEndDaysInPast();
 		node = converttoJson(&obj, "long long", "");
@@ -142,6 +119,29 @@ TemplateResponse_date_range_relative_date_range::toJson()
 	}
 	const gchar *end_days_in_pastKey = "end_days_in_past";
 	json_object_set_member(pJsonObject, end_days_in_pastKey, node);
+	if (isprimitive("long long")) {
+		long long obj = getStartDaysInPast();
+		node = converttoJson(&obj, "long long", "");
+	}
+	else {
+		
+		long long obj = static_cast<long long> (getStartDaysInPast());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *start_days_in_pastKey = "start_days_in_past";
+	json_object_set_member(pJsonObject, start_days_in_pastKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getType();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *typeKey = "type";
+	json_object_set_member(pJsonObject, typeKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -150,16 +150,16 @@ TemplateResponse_date_range_relative_date_range::toJson()
 	return ret;
 }
 
-std::string
-TemplateResponse_date_range_relative_date_range::getType()
+long long
+TemplateResponse_date_range_relative_date_range::getEndDaysInPast()
 {
-	return type;
+	return end_days_in_past;
 }
 
 void
-TemplateResponse_date_range_relative_date_range::setType(std::string  type)
+TemplateResponse_date_range_relative_date_range::setEndDaysInPast(long long  end_days_in_past)
 {
-	this->type = type;
+	this->end_days_in_past = end_days_in_past;
 }
 
 long long
@@ -174,16 +174,16 @@ TemplateResponse_date_range_relative_date_range::setStartDaysInPast(long long  s
 	this->start_days_in_past = start_days_in_past;
 }
 
-long long
-TemplateResponse_date_range_relative_date_range::getEndDaysInPast()
+std::string
+TemplateResponse_date_range_relative_date_range::getType()
 {
-	return end_days_in_past;
+	return type;
 }
 
 void
-TemplateResponse_date_range_relative_date_range::setEndDaysInPast(long long  end_days_in_past)
+TemplateResponse_date_range_relative_date_range::setType(std::string  type)
 {
-	this->end_days_in_past = end_days_in_past;
+	this->type = type;
 }
 
 

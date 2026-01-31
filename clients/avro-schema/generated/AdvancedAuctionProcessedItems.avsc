@@ -14,7 +14,7 @@
       "name": "items",
       "type": ["null", {
         "type": "array",
-        "items": "model.AdvancedAuctionProcessedItem"
+        "items": "model.AdvancedAuctionItemsSubmitRecord"
       }],
       "doc": "Array of advanced auction processed items",
       "default": null

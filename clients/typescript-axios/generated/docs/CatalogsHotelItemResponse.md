@@ -6,10 +6,10 @@ Object describing a hotel record
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**attributes** | [**CatalogsHotelAttributes**](CatalogsHotelAttributes.md) |  | [optional] [default to undefined]
 **catalog_type** | [**CatalogsType**](CatalogsType.md) |  | [default to undefined]
 **hotel_id** | **string** | The catalog hotel id in the merchant namespace | [optional] [default to undefined]
 **pins** | [**Array&lt;Pin&gt;**](Pin.md) | The pins mapped to the item | [optional] [default to undefined]
-**attributes** | [**CatalogsHotelAttributes**](CatalogsHotelAttributes.md) |  | [optional] [default to undefined]
 
 ## Example
 
@@ -17,10 +17,10 @@ Name | Type | Description | Notes
 import { CatalogsHotelItemResponse } from './api';
 
 const instance: CatalogsHotelItemResponse = {
+    attributes,
     catalog_type,
     hotel_id,
     pins,
-    attributes,
 };
 ```
 

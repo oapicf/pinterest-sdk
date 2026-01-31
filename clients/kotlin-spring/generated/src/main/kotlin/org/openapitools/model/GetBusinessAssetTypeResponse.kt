@@ -17,14 +17,15 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
 * Type of asset.
-* Values: AD_ACCOUNT,PROFILE,ASSET_GROUP,CONVERSION_TAG
+* Values: AD_ACCOUNT,PROFILE,ASSET_GROUP,CONVERSION_TAG,CATALOG
 */
 enum class GetBusinessAssetTypeResponse(@get:JsonValue val value: kotlin.String) {
 
     AD_ACCOUNT("AD_ACCOUNT"),
     PROFILE("PROFILE"),
     ASSET_GROUP("ASSET_GROUP"),
-    CONVERSION_TAG("CONVERSION_TAG");
+    CONVERSION_TAG("CONVERSION_TAG"),
+    CATALOG("CATALOG");
 
     companion object {
         @JvmStatic

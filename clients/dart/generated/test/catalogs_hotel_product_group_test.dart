@@ -16,8 +16,30 @@ void main() {
   // final instance = CatalogsHotelProductGroup();
 
   group('test CatalogsHotelProductGroup', () {
+    // Catalog id pertaining to the hotel product group.
+    // String catalogId
+    test('to test the property `catalogId`', () async {
+      // TODO
+    });
+
     // String catalogType
     test('to test the property `catalogType`', () async {
+      // TODO
+    });
+
+    // Unix timestamp in seconds of when catalog product group was created.
+    // int createdAt
+    test('to test the property `createdAt`', () async {
+      // TODO
+    });
+
+    // String description
+    test('to test the property `description`', () async {
+      // TODO
+    });
+
+    // CatalogsHotelProductGroupFilters filters
+    test('to test the property `filters`', () async {
       // TODO
     });
 
@@ -33,31 +55,14 @@ void main() {
       // TODO
     });
 
-    // String description
-    test('to test the property `description`', () async {
-      // TODO
-    });
-
-    // CatalogsHotelProductGroupFilters filters
-    test('to test the property `filters`', () async {
-      // TODO
-    });
-
-    // Unix timestamp in seconds of when catalog product group was created.
-    // int createdAt
-    test('to test the property `createdAt`', () async {
+    // CatalogsHotelProductGroupType type
+    test('to test the property `type`', () async {
       // TODO
     });
 
     // Unix timestamp in seconds of last time catalog product group was updated.
     // int updatedAt
     test('to test the property `updatedAt`', () async {
-      // TODO
-    });
-
-    // Catalog id pertaining to the hotel product group.
-    // String catalogId
-    test('to test the property `catalogId`', () async {
       // TODO
     });
 

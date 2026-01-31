@@ -4,28 +4,28 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SalesforceOrderLineId** | Pointer to **NullableString** | OrderLineId in SFDC | [optional] 
+**AcceptedTermsId** | Pointer to **NullableString** | The SFDC id for the terms | [optional] 
+**AcceptedTermsTime** | Pointer to **NullableString** | The UTC timestamp (to the nearest sec) of when terms were accepted | [optional] 
 **AdsManagerOrderLineId** | Pointer to **NullableString** | Ads manager OrderLineId | [optional] 
-**PinOrderId** | Pointer to **NullableString** | The pin order id associated with the order line in SFDC | [optional] 
-**LastModifiedDateTime** | Pointer to **NullableString** | Last modified date. | [optional] 
-**StartDate** | Pointer to **NullableString** | Start date of the order line. | [optional] 
-**EndDate** | Pointer to **NullableString** | End date of the order line. | [optional] 
+**AgencyLink** | Pointer to **NullableString** | Agency link | [optional] 
 **BillToCompanyName** | Pointer to **NullableString** | Bill To Company name | [optional] 
+**BillingContactEmail** | Pointer to **NullableString** | Billing contact email | [optional] 
 **BillingContactFirstname** | Pointer to **NullableString** | Billing contact first name | [optional] 
 **BillingContactLastname** | Pointer to **NullableString** | Billing contact last name | [optional] 
-**BillingContactEmail** | Pointer to **NullableString** | Billing contact email | [optional] 
+**BudgetAmount** | Pointer to **NullableFloat32** | If Budget order line, the budget amount. | [optional] 
+**CurrencyInfo** | Pointer to [**Currency**](Currency.md) |  | [optional] 
+**EndDate** | Pointer to **NullableString** | End date of the order line. | [optional] 
+**EstimatedMonthlySpend** | Pointer to **NullableFloat32** | If Ongoing (perpetual) order line, the estimated monthly spend | [optional] 
+**LastModifiedDateTime** | Pointer to **NullableString** | Last modified date. | [optional] 
 **MediaContactEmail** | Pointer to **NullableString** | Billing media email | [optional] 
 **MediaContactFirstname** | Pointer to **NullableString** | Billing contact first name | [optional] 
 **MediaContactLastname** | Pointer to **NullableString** | Billing contact first name | [optional] 
-**CurrencyInfo** | Pointer to [**Currency**](Currency.md) |  | [optional] 
-**AgencyLink** | Pointer to **NullableString** | Agency link | [optional] 
-**PoNumber** | Pointer to **NullableString** | The po number | [optional] 
 **OrderName** | Pointer to **NullableString** | The order name | [optional] 
+**PinOrderId** | Pointer to **NullableString** | The pin order id associated with the order line in SFDC | [optional] 
 **PmpName** | Pointer to **NullableString** | The Pinterest marketing partner name | [optional] 
-**AcceptedTermsId** | Pointer to **NullableString** | The SFDC id for the terms | [optional] 
-**AcceptedTermsTime** | Pointer to **NullableString** | The UTC timestamp (to the nearest sec) of when terms were accepted | [optional] 
-**BudgetAmount** | Pointer to **NullableFloat32** | If Budget order line, the budget amount. | [optional] 
-**EstimatedMonthlySpend** | Pointer to **NullableFloat32** | If Ongoing (perpetual) order line, the estimated monthly spend | [optional] 
+**PoNumber** | Pointer to **NullableString** | The po number | [optional] 
+**SalesforceOrderLineId** | Pointer to **NullableString** | OrderLineId in SFDC | [optional] 
+**StartDate** | Pointer to **NullableString** | Start date of the order line. | [optional] 
 
 ## Methods
 
@@ -46,41 +46,76 @@ NewSSIOOrderLineWithDefaults instantiates a new SSIOOrderLine object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetSalesforceOrderLineId
+### GetAcceptedTermsId
 
-`func (o *SSIOOrderLine) GetSalesforceOrderLineId() string`
+`func (o *SSIOOrderLine) GetAcceptedTermsId() string`
 
-GetSalesforceOrderLineId returns the SalesforceOrderLineId field if non-nil, zero value otherwise.
+GetAcceptedTermsId returns the AcceptedTermsId field if non-nil, zero value otherwise.
 
-### GetSalesforceOrderLineIdOk
+### GetAcceptedTermsIdOk
 
-`func (o *SSIOOrderLine) GetSalesforceOrderLineIdOk() (*string, bool)`
+`func (o *SSIOOrderLine) GetAcceptedTermsIdOk() (*string, bool)`
 
-GetSalesforceOrderLineIdOk returns a tuple with the SalesforceOrderLineId field if it's non-nil, zero value otherwise
+GetAcceptedTermsIdOk returns a tuple with the AcceptedTermsId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSalesforceOrderLineId
+### SetAcceptedTermsId
 
-`func (o *SSIOOrderLine) SetSalesforceOrderLineId(v string)`
+`func (o *SSIOOrderLine) SetAcceptedTermsId(v string)`
 
-SetSalesforceOrderLineId sets SalesforceOrderLineId field to given value.
+SetAcceptedTermsId sets AcceptedTermsId field to given value.
 
-### HasSalesforceOrderLineId
+### HasAcceptedTermsId
 
-`func (o *SSIOOrderLine) HasSalesforceOrderLineId() bool`
+`func (o *SSIOOrderLine) HasAcceptedTermsId() bool`
 
-HasSalesforceOrderLineId returns a boolean if a field has been set.
+HasAcceptedTermsId returns a boolean if a field has been set.
 
-### SetSalesforceOrderLineIdNil
+### SetAcceptedTermsIdNil
 
-`func (o *SSIOOrderLine) SetSalesforceOrderLineIdNil(b bool)`
+`func (o *SSIOOrderLine) SetAcceptedTermsIdNil(b bool)`
 
- SetSalesforceOrderLineIdNil sets the value for SalesforceOrderLineId to be an explicit nil
+ SetAcceptedTermsIdNil sets the value for AcceptedTermsId to be an explicit nil
 
-### UnsetSalesforceOrderLineId
-`func (o *SSIOOrderLine) UnsetSalesforceOrderLineId()`
+### UnsetAcceptedTermsId
+`func (o *SSIOOrderLine) UnsetAcceptedTermsId()`
 
-UnsetSalesforceOrderLineId ensures that no value is present for SalesforceOrderLineId, not even an explicit nil
+UnsetAcceptedTermsId ensures that no value is present for AcceptedTermsId, not even an explicit nil
+### GetAcceptedTermsTime
+
+`func (o *SSIOOrderLine) GetAcceptedTermsTime() string`
+
+GetAcceptedTermsTime returns the AcceptedTermsTime field if non-nil, zero value otherwise.
+
+### GetAcceptedTermsTimeOk
+
+`func (o *SSIOOrderLine) GetAcceptedTermsTimeOk() (*string, bool)`
+
+GetAcceptedTermsTimeOk returns a tuple with the AcceptedTermsTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAcceptedTermsTime
+
+`func (o *SSIOOrderLine) SetAcceptedTermsTime(v string)`
+
+SetAcceptedTermsTime sets AcceptedTermsTime field to given value.
+
+### HasAcceptedTermsTime
+
+`func (o *SSIOOrderLine) HasAcceptedTermsTime() bool`
+
+HasAcceptedTermsTime returns a boolean if a field has been set.
+
+### SetAcceptedTermsTimeNil
+
+`func (o *SSIOOrderLine) SetAcceptedTermsTimeNil(b bool)`
+
+ SetAcceptedTermsTimeNil sets the value for AcceptedTermsTime to be an explicit nil
+
+### UnsetAcceptedTermsTime
+`func (o *SSIOOrderLine) UnsetAcceptedTermsTime()`
+
+UnsetAcceptedTermsTime ensures that no value is present for AcceptedTermsTime, not even an explicit nil
 ### GetAdsManagerOrderLineId
 
 `func (o *SSIOOrderLine) GetAdsManagerOrderLineId() string`
@@ -116,146 +151,41 @@ HasAdsManagerOrderLineId returns a boolean if a field has been set.
 `func (o *SSIOOrderLine) UnsetAdsManagerOrderLineId()`
 
 UnsetAdsManagerOrderLineId ensures that no value is present for AdsManagerOrderLineId, not even an explicit nil
-### GetPinOrderId
+### GetAgencyLink
 
-`func (o *SSIOOrderLine) GetPinOrderId() string`
+`func (o *SSIOOrderLine) GetAgencyLink() string`
 
-GetPinOrderId returns the PinOrderId field if non-nil, zero value otherwise.
+GetAgencyLink returns the AgencyLink field if non-nil, zero value otherwise.
 
-### GetPinOrderIdOk
+### GetAgencyLinkOk
 
-`func (o *SSIOOrderLine) GetPinOrderIdOk() (*string, bool)`
+`func (o *SSIOOrderLine) GetAgencyLinkOk() (*string, bool)`
 
-GetPinOrderIdOk returns a tuple with the PinOrderId field if it's non-nil, zero value otherwise
+GetAgencyLinkOk returns a tuple with the AgencyLink field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPinOrderId
+### SetAgencyLink
 
-`func (o *SSIOOrderLine) SetPinOrderId(v string)`
+`func (o *SSIOOrderLine) SetAgencyLink(v string)`
 
-SetPinOrderId sets PinOrderId field to given value.
+SetAgencyLink sets AgencyLink field to given value.
 
-### HasPinOrderId
+### HasAgencyLink
 
-`func (o *SSIOOrderLine) HasPinOrderId() bool`
+`func (o *SSIOOrderLine) HasAgencyLink() bool`
 
-HasPinOrderId returns a boolean if a field has been set.
+HasAgencyLink returns a boolean if a field has been set.
 
-### SetPinOrderIdNil
+### SetAgencyLinkNil
 
-`func (o *SSIOOrderLine) SetPinOrderIdNil(b bool)`
+`func (o *SSIOOrderLine) SetAgencyLinkNil(b bool)`
 
- SetPinOrderIdNil sets the value for PinOrderId to be an explicit nil
+ SetAgencyLinkNil sets the value for AgencyLink to be an explicit nil
 
-### UnsetPinOrderId
-`func (o *SSIOOrderLine) UnsetPinOrderId()`
+### UnsetAgencyLink
+`func (o *SSIOOrderLine) UnsetAgencyLink()`
 
-UnsetPinOrderId ensures that no value is present for PinOrderId, not even an explicit nil
-### GetLastModifiedDateTime
-
-`func (o *SSIOOrderLine) GetLastModifiedDateTime() string`
-
-GetLastModifiedDateTime returns the LastModifiedDateTime field if non-nil, zero value otherwise.
-
-### GetLastModifiedDateTimeOk
-
-`func (o *SSIOOrderLine) GetLastModifiedDateTimeOk() (*string, bool)`
-
-GetLastModifiedDateTimeOk returns a tuple with the LastModifiedDateTime field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLastModifiedDateTime
-
-`func (o *SSIOOrderLine) SetLastModifiedDateTime(v string)`
-
-SetLastModifiedDateTime sets LastModifiedDateTime field to given value.
-
-### HasLastModifiedDateTime
-
-`func (o *SSIOOrderLine) HasLastModifiedDateTime() bool`
-
-HasLastModifiedDateTime returns a boolean if a field has been set.
-
-### SetLastModifiedDateTimeNil
-
-`func (o *SSIOOrderLine) SetLastModifiedDateTimeNil(b bool)`
-
- SetLastModifiedDateTimeNil sets the value for LastModifiedDateTime to be an explicit nil
-
-### UnsetLastModifiedDateTime
-`func (o *SSIOOrderLine) UnsetLastModifiedDateTime()`
-
-UnsetLastModifiedDateTime ensures that no value is present for LastModifiedDateTime, not even an explicit nil
-### GetStartDate
-
-`func (o *SSIOOrderLine) GetStartDate() string`
-
-GetStartDate returns the StartDate field if non-nil, zero value otherwise.
-
-### GetStartDateOk
-
-`func (o *SSIOOrderLine) GetStartDateOk() (*string, bool)`
-
-GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStartDate
-
-`func (o *SSIOOrderLine) SetStartDate(v string)`
-
-SetStartDate sets StartDate field to given value.
-
-### HasStartDate
-
-`func (o *SSIOOrderLine) HasStartDate() bool`
-
-HasStartDate returns a boolean if a field has been set.
-
-### SetStartDateNil
-
-`func (o *SSIOOrderLine) SetStartDateNil(b bool)`
-
- SetStartDateNil sets the value for StartDate to be an explicit nil
-
-### UnsetStartDate
-`func (o *SSIOOrderLine) UnsetStartDate()`
-
-UnsetStartDate ensures that no value is present for StartDate, not even an explicit nil
-### GetEndDate
-
-`func (o *SSIOOrderLine) GetEndDate() string`
-
-GetEndDate returns the EndDate field if non-nil, zero value otherwise.
-
-### GetEndDateOk
-
-`func (o *SSIOOrderLine) GetEndDateOk() (*string, bool)`
-
-GetEndDateOk returns a tuple with the EndDate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEndDate
-
-`func (o *SSIOOrderLine) SetEndDate(v string)`
-
-SetEndDate sets EndDate field to given value.
-
-### HasEndDate
-
-`func (o *SSIOOrderLine) HasEndDate() bool`
-
-HasEndDate returns a boolean if a field has been set.
-
-### SetEndDateNil
-
-`func (o *SSIOOrderLine) SetEndDateNil(b bool)`
-
- SetEndDateNil sets the value for EndDate to be an explicit nil
-
-### UnsetEndDate
-`func (o *SSIOOrderLine) UnsetEndDate()`
-
-UnsetEndDate ensures that no value is present for EndDate, not even an explicit nil
+UnsetAgencyLink ensures that no value is present for AgencyLink, not even an explicit nil
 ### GetBillToCompanyName
 
 `func (o *SSIOOrderLine) GetBillToCompanyName() string`
@@ -291,6 +221,41 @@ HasBillToCompanyName returns a boolean if a field has been set.
 `func (o *SSIOOrderLine) UnsetBillToCompanyName()`
 
 UnsetBillToCompanyName ensures that no value is present for BillToCompanyName, not even an explicit nil
+### GetBillingContactEmail
+
+`func (o *SSIOOrderLine) GetBillingContactEmail() string`
+
+GetBillingContactEmail returns the BillingContactEmail field if non-nil, zero value otherwise.
+
+### GetBillingContactEmailOk
+
+`func (o *SSIOOrderLine) GetBillingContactEmailOk() (*string, bool)`
+
+GetBillingContactEmailOk returns a tuple with the BillingContactEmail field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBillingContactEmail
+
+`func (o *SSIOOrderLine) SetBillingContactEmail(v string)`
+
+SetBillingContactEmail sets BillingContactEmail field to given value.
+
+### HasBillingContactEmail
+
+`func (o *SSIOOrderLine) HasBillingContactEmail() bool`
+
+HasBillingContactEmail returns a boolean if a field has been set.
+
+### SetBillingContactEmailNil
+
+`func (o *SSIOOrderLine) SetBillingContactEmailNil(b bool)`
+
+ SetBillingContactEmailNil sets the value for BillingContactEmail to be an explicit nil
+
+### UnsetBillingContactEmail
+`func (o *SSIOOrderLine) UnsetBillingContactEmail()`
+
+UnsetBillingContactEmail ensures that no value is present for BillingContactEmail, not even an explicit nil
 ### GetBillingContactFirstname
 
 `func (o *SSIOOrderLine) GetBillingContactFirstname() string`
@@ -361,41 +326,171 @@ HasBillingContactLastname returns a boolean if a field has been set.
 `func (o *SSIOOrderLine) UnsetBillingContactLastname()`
 
 UnsetBillingContactLastname ensures that no value is present for BillingContactLastname, not even an explicit nil
-### GetBillingContactEmail
+### GetBudgetAmount
 
-`func (o *SSIOOrderLine) GetBillingContactEmail() string`
+`func (o *SSIOOrderLine) GetBudgetAmount() float32`
 
-GetBillingContactEmail returns the BillingContactEmail field if non-nil, zero value otherwise.
+GetBudgetAmount returns the BudgetAmount field if non-nil, zero value otherwise.
 
-### GetBillingContactEmailOk
+### GetBudgetAmountOk
 
-`func (o *SSIOOrderLine) GetBillingContactEmailOk() (*string, bool)`
+`func (o *SSIOOrderLine) GetBudgetAmountOk() (*float32, bool)`
 
-GetBillingContactEmailOk returns a tuple with the BillingContactEmail field if it's non-nil, zero value otherwise
+GetBudgetAmountOk returns a tuple with the BudgetAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBillingContactEmail
+### SetBudgetAmount
 
-`func (o *SSIOOrderLine) SetBillingContactEmail(v string)`
+`func (o *SSIOOrderLine) SetBudgetAmount(v float32)`
 
-SetBillingContactEmail sets BillingContactEmail field to given value.
+SetBudgetAmount sets BudgetAmount field to given value.
 
-### HasBillingContactEmail
+### HasBudgetAmount
 
-`func (o *SSIOOrderLine) HasBillingContactEmail() bool`
+`func (o *SSIOOrderLine) HasBudgetAmount() bool`
 
-HasBillingContactEmail returns a boolean if a field has been set.
+HasBudgetAmount returns a boolean if a field has been set.
 
-### SetBillingContactEmailNil
+### SetBudgetAmountNil
 
-`func (o *SSIOOrderLine) SetBillingContactEmailNil(b bool)`
+`func (o *SSIOOrderLine) SetBudgetAmountNil(b bool)`
 
- SetBillingContactEmailNil sets the value for BillingContactEmail to be an explicit nil
+ SetBudgetAmountNil sets the value for BudgetAmount to be an explicit nil
 
-### UnsetBillingContactEmail
-`func (o *SSIOOrderLine) UnsetBillingContactEmail()`
+### UnsetBudgetAmount
+`func (o *SSIOOrderLine) UnsetBudgetAmount()`
 
-UnsetBillingContactEmail ensures that no value is present for BillingContactEmail, not even an explicit nil
+UnsetBudgetAmount ensures that no value is present for BudgetAmount, not even an explicit nil
+### GetCurrencyInfo
+
+`func (o *SSIOOrderLine) GetCurrencyInfo() Currency`
+
+GetCurrencyInfo returns the CurrencyInfo field if non-nil, zero value otherwise.
+
+### GetCurrencyInfoOk
+
+`func (o *SSIOOrderLine) GetCurrencyInfoOk() (*Currency, bool)`
+
+GetCurrencyInfoOk returns a tuple with the CurrencyInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCurrencyInfo
+
+`func (o *SSIOOrderLine) SetCurrencyInfo(v Currency)`
+
+SetCurrencyInfo sets CurrencyInfo field to given value.
+
+### HasCurrencyInfo
+
+`func (o *SSIOOrderLine) HasCurrencyInfo() bool`
+
+HasCurrencyInfo returns a boolean if a field has been set.
+
+### GetEndDate
+
+`func (o *SSIOOrderLine) GetEndDate() string`
+
+GetEndDate returns the EndDate field if non-nil, zero value otherwise.
+
+### GetEndDateOk
+
+`func (o *SSIOOrderLine) GetEndDateOk() (*string, bool)`
+
+GetEndDateOk returns a tuple with the EndDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEndDate
+
+`func (o *SSIOOrderLine) SetEndDate(v string)`
+
+SetEndDate sets EndDate field to given value.
+
+### HasEndDate
+
+`func (o *SSIOOrderLine) HasEndDate() bool`
+
+HasEndDate returns a boolean if a field has been set.
+
+### SetEndDateNil
+
+`func (o *SSIOOrderLine) SetEndDateNil(b bool)`
+
+ SetEndDateNil sets the value for EndDate to be an explicit nil
+
+### UnsetEndDate
+`func (o *SSIOOrderLine) UnsetEndDate()`
+
+UnsetEndDate ensures that no value is present for EndDate, not even an explicit nil
+### GetEstimatedMonthlySpend
+
+`func (o *SSIOOrderLine) GetEstimatedMonthlySpend() float32`
+
+GetEstimatedMonthlySpend returns the EstimatedMonthlySpend field if non-nil, zero value otherwise.
+
+### GetEstimatedMonthlySpendOk
+
+`func (o *SSIOOrderLine) GetEstimatedMonthlySpendOk() (*float32, bool)`
+
+GetEstimatedMonthlySpendOk returns a tuple with the EstimatedMonthlySpend field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEstimatedMonthlySpend
+
+`func (o *SSIOOrderLine) SetEstimatedMonthlySpend(v float32)`
+
+SetEstimatedMonthlySpend sets EstimatedMonthlySpend field to given value.
+
+### HasEstimatedMonthlySpend
+
+`func (o *SSIOOrderLine) HasEstimatedMonthlySpend() bool`
+
+HasEstimatedMonthlySpend returns a boolean if a field has been set.
+
+### SetEstimatedMonthlySpendNil
+
+`func (o *SSIOOrderLine) SetEstimatedMonthlySpendNil(b bool)`
+
+ SetEstimatedMonthlySpendNil sets the value for EstimatedMonthlySpend to be an explicit nil
+
+### UnsetEstimatedMonthlySpend
+`func (o *SSIOOrderLine) UnsetEstimatedMonthlySpend()`
+
+UnsetEstimatedMonthlySpend ensures that no value is present for EstimatedMonthlySpend, not even an explicit nil
+### GetLastModifiedDateTime
+
+`func (o *SSIOOrderLine) GetLastModifiedDateTime() string`
+
+GetLastModifiedDateTime returns the LastModifiedDateTime field if non-nil, zero value otherwise.
+
+### GetLastModifiedDateTimeOk
+
+`func (o *SSIOOrderLine) GetLastModifiedDateTimeOk() (*string, bool)`
+
+GetLastModifiedDateTimeOk returns a tuple with the LastModifiedDateTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastModifiedDateTime
+
+`func (o *SSIOOrderLine) SetLastModifiedDateTime(v string)`
+
+SetLastModifiedDateTime sets LastModifiedDateTime field to given value.
+
+### HasLastModifiedDateTime
+
+`func (o *SSIOOrderLine) HasLastModifiedDateTime() bool`
+
+HasLastModifiedDateTime returns a boolean if a field has been set.
+
+### SetLastModifiedDateTimeNil
+
+`func (o *SSIOOrderLine) SetLastModifiedDateTimeNil(b bool)`
+
+ SetLastModifiedDateTimeNil sets the value for LastModifiedDateTime to be an explicit nil
+
+### UnsetLastModifiedDateTime
+`func (o *SSIOOrderLine) UnsetLastModifiedDateTime()`
+
+UnsetLastModifiedDateTime ensures that no value is present for LastModifiedDateTime, not even an explicit nil
 ### GetMediaContactEmail
 
 `func (o *SSIOOrderLine) GetMediaContactEmail() string`
@@ -501,101 +596,6 @@ HasMediaContactLastname returns a boolean if a field has been set.
 `func (o *SSIOOrderLine) UnsetMediaContactLastname()`
 
 UnsetMediaContactLastname ensures that no value is present for MediaContactLastname, not even an explicit nil
-### GetCurrencyInfo
-
-`func (o *SSIOOrderLine) GetCurrencyInfo() Currency`
-
-GetCurrencyInfo returns the CurrencyInfo field if non-nil, zero value otherwise.
-
-### GetCurrencyInfoOk
-
-`func (o *SSIOOrderLine) GetCurrencyInfoOk() (*Currency, bool)`
-
-GetCurrencyInfoOk returns a tuple with the CurrencyInfo field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCurrencyInfo
-
-`func (o *SSIOOrderLine) SetCurrencyInfo(v Currency)`
-
-SetCurrencyInfo sets CurrencyInfo field to given value.
-
-### HasCurrencyInfo
-
-`func (o *SSIOOrderLine) HasCurrencyInfo() bool`
-
-HasCurrencyInfo returns a boolean if a field has been set.
-
-### GetAgencyLink
-
-`func (o *SSIOOrderLine) GetAgencyLink() string`
-
-GetAgencyLink returns the AgencyLink field if non-nil, zero value otherwise.
-
-### GetAgencyLinkOk
-
-`func (o *SSIOOrderLine) GetAgencyLinkOk() (*string, bool)`
-
-GetAgencyLinkOk returns a tuple with the AgencyLink field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAgencyLink
-
-`func (o *SSIOOrderLine) SetAgencyLink(v string)`
-
-SetAgencyLink sets AgencyLink field to given value.
-
-### HasAgencyLink
-
-`func (o *SSIOOrderLine) HasAgencyLink() bool`
-
-HasAgencyLink returns a boolean if a field has been set.
-
-### SetAgencyLinkNil
-
-`func (o *SSIOOrderLine) SetAgencyLinkNil(b bool)`
-
- SetAgencyLinkNil sets the value for AgencyLink to be an explicit nil
-
-### UnsetAgencyLink
-`func (o *SSIOOrderLine) UnsetAgencyLink()`
-
-UnsetAgencyLink ensures that no value is present for AgencyLink, not even an explicit nil
-### GetPoNumber
-
-`func (o *SSIOOrderLine) GetPoNumber() string`
-
-GetPoNumber returns the PoNumber field if non-nil, zero value otherwise.
-
-### GetPoNumberOk
-
-`func (o *SSIOOrderLine) GetPoNumberOk() (*string, bool)`
-
-GetPoNumberOk returns a tuple with the PoNumber field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPoNumber
-
-`func (o *SSIOOrderLine) SetPoNumber(v string)`
-
-SetPoNumber sets PoNumber field to given value.
-
-### HasPoNumber
-
-`func (o *SSIOOrderLine) HasPoNumber() bool`
-
-HasPoNumber returns a boolean if a field has been set.
-
-### SetPoNumberNil
-
-`func (o *SSIOOrderLine) SetPoNumberNil(b bool)`
-
- SetPoNumberNil sets the value for PoNumber to be an explicit nil
-
-### UnsetPoNumber
-`func (o *SSIOOrderLine) UnsetPoNumber()`
-
-UnsetPoNumber ensures that no value is present for PoNumber, not even an explicit nil
 ### GetOrderName
 
 `func (o *SSIOOrderLine) GetOrderName() string`
@@ -631,6 +631,41 @@ HasOrderName returns a boolean if a field has been set.
 `func (o *SSIOOrderLine) UnsetOrderName()`
 
 UnsetOrderName ensures that no value is present for OrderName, not even an explicit nil
+### GetPinOrderId
+
+`func (o *SSIOOrderLine) GetPinOrderId() string`
+
+GetPinOrderId returns the PinOrderId field if non-nil, zero value otherwise.
+
+### GetPinOrderIdOk
+
+`func (o *SSIOOrderLine) GetPinOrderIdOk() (*string, bool)`
+
+GetPinOrderIdOk returns a tuple with the PinOrderId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPinOrderId
+
+`func (o *SSIOOrderLine) SetPinOrderId(v string)`
+
+SetPinOrderId sets PinOrderId field to given value.
+
+### HasPinOrderId
+
+`func (o *SSIOOrderLine) HasPinOrderId() bool`
+
+HasPinOrderId returns a boolean if a field has been set.
+
+### SetPinOrderIdNil
+
+`func (o *SSIOOrderLine) SetPinOrderIdNil(b bool)`
+
+ SetPinOrderIdNil sets the value for PinOrderId to be an explicit nil
+
+### UnsetPinOrderId
+`func (o *SSIOOrderLine) UnsetPinOrderId()`
+
+UnsetPinOrderId ensures that no value is present for PinOrderId, not even an explicit nil
 ### GetPmpName
 
 `func (o *SSIOOrderLine) GetPmpName() string`
@@ -666,146 +701,111 @@ HasPmpName returns a boolean if a field has been set.
 `func (o *SSIOOrderLine) UnsetPmpName()`
 
 UnsetPmpName ensures that no value is present for PmpName, not even an explicit nil
-### GetAcceptedTermsId
+### GetPoNumber
 
-`func (o *SSIOOrderLine) GetAcceptedTermsId() string`
+`func (o *SSIOOrderLine) GetPoNumber() string`
 
-GetAcceptedTermsId returns the AcceptedTermsId field if non-nil, zero value otherwise.
+GetPoNumber returns the PoNumber field if non-nil, zero value otherwise.
 
-### GetAcceptedTermsIdOk
+### GetPoNumberOk
 
-`func (o *SSIOOrderLine) GetAcceptedTermsIdOk() (*string, bool)`
+`func (o *SSIOOrderLine) GetPoNumberOk() (*string, bool)`
 
-GetAcceptedTermsIdOk returns a tuple with the AcceptedTermsId field if it's non-nil, zero value otherwise
+GetPoNumberOk returns a tuple with the PoNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAcceptedTermsId
+### SetPoNumber
 
-`func (o *SSIOOrderLine) SetAcceptedTermsId(v string)`
+`func (o *SSIOOrderLine) SetPoNumber(v string)`
 
-SetAcceptedTermsId sets AcceptedTermsId field to given value.
+SetPoNumber sets PoNumber field to given value.
 
-### HasAcceptedTermsId
+### HasPoNumber
 
-`func (o *SSIOOrderLine) HasAcceptedTermsId() bool`
+`func (o *SSIOOrderLine) HasPoNumber() bool`
 
-HasAcceptedTermsId returns a boolean if a field has been set.
+HasPoNumber returns a boolean if a field has been set.
 
-### SetAcceptedTermsIdNil
+### SetPoNumberNil
 
-`func (o *SSIOOrderLine) SetAcceptedTermsIdNil(b bool)`
+`func (o *SSIOOrderLine) SetPoNumberNil(b bool)`
 
- SetAcceptedTermsIdNil sets the value for AcceptedTermsId to be an explicit nil
+ SetPoNumberNil sets the value for PoNumber to be an explicit nil
 
-### UnsetAcceptedTermsId
-`func (o *SSIOOrderLine) UnsetAcceptedTermsId()`
+### UnsetPoNumber
+`func (o *SSIOOrderLine) UnsetPoNumber()`
 
-UnsetAcceptedTermsId ensures that no value is present for AcceptedTermsId, not even an explicit nil
-### GetAcceptedTermsTime
+UnsetPoNumber ensures that no value is present for PoNumber, not even an explicit nil
+### GetSalesforceOrderLineId
 
-`func (o *SSIOOrderLine) GetAcceptedTermsTime() string`
+`func (o *SSIOOrderLine) GetSalesforceOrderLineId() string`
 
-GetAcceptedTermsTime returns the AcceptedTermsTime field if non-nil, zero value otherwise.
+GetSalesforceOrderLineId returns the SalesforceOrderLineId field if non-nil, zero value otherwise.
 
-### GetAcceptedTermsTimeOk
+### GetSalesforceOrderLineIdOk
 
-`func (o *SSIOOrderLine) GetAcceptedTermsTimeOk() (*string, bool)`
+`func (o *SSIOOrderLine) GetSalesforceOrderLineIdOk() (*string, bool)`
 
-GetAcceptedTermsTimeOk returns a tuple with the AcceptedTermsTime field if it's non-nil, zero value otherwise
+GetSalesforceOrderLineIdOk returns a tuple with the SalesforceOrderLineId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAcceptedTermsTime
+### SetSalesforceOrderLineId
 
-`func (o *SSIOOrderLine) SetAcceptedTermsTime(v string)`
+`func (o *SSIOOrderLine) SetSalesforceOrderLineId(v string)`
 
-SetAcceptedTermsTime sets AcceptedTermsTime field to given value.
+SetSalesforceOrderLineId sets SalesforceOrderLineId field to given value.
 
-### HasAcceptedTermsTime
+### HasSalesforceOrderLineId
 
-`func (o *SSIOOrderLine) HasAcceptedTermsTime() bool`
+`func (o *SSIOOrderLine) HasSalesforceOrderLineId() bool`
 
-HasAcceptedTermsTime returns a boolean if a field has been set.
+HasSalesforceOrderLineId returns a boolean if a field has been set.
 
-### SetAcceptedTermsTimeNil
+### SetSalesforceOrderLineIdNil
 
-`func (o *SSIOOrderLine) SetAcceptedTermsTimeNil(b bool)`
+`func (o *SSIOOrderLine) SetSalesforceOrderLineIdNil(b bool)`
 
- SetAcceptedTermsTimeNil sets the value for AcceptedTermsTime to be an explicit nil
+ SetSalesforceOrderLineIdNil sets the value for SalesforceOrderLineId to be an explicit nil
 
-### UnsetAcceptedTermsTime
-`func (o *SSIOOrderLine) UnsetAcceptedTermsTime()`
+### UnsetSalesforceOrderLineId
+`func (o *SSIOOrderLine) UnsetSalesforceOrderLineId()`
 
-UnsetAcceptedTermsTime ensures that no value is present for AcceptedTermsTime, not even an explicit nil
-### GetBudgetAmount
+UnsetSalesforceOrderLineId ensures that no value is present for SalesforceOrderLineId, not even an explicit nil
+### GetStartDate
 
-`func (o *SSIOOrderLine) GetBudgetAmount() float32`
+`func (o *SSIOOrderLine) GetStartDate() string`
 
-GetBudgetAmount returns the BudgetAmount field if non-nil, zero value otherwise.
+GetStartDate returns the StartDate field if non-nil, zero value otherwise.
 
-### GetBudgetAmountOk
+### GetStartDateOk
 
-`func (o *SSIOOrderLine) GetBudgetAmountOk() (*float32, bool)`
+`func (o *SSIOOrderLine) GetStartDateOk() (*string, bool)`
 
-GetBudgetAmountOk returns a tuple with the BudgetAmount field if it's non-nil, zero value otherwise
+GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBudgetAmount
+### SetStartDate
 
-`func (o *SSIOOrderLine) SetBudgetAmount(v float32)`
+`func (o *SSIOOrderLine) SetStartDate(v string)`
 
-SetBudgetAmount sets BudgetAmount field to given value.
+SetStartDate sets StartDate field to given value.
 
-### HasBudgetAmount
+### HasStartDate
 
-`func (o *SSIOOrderLine) HasBudgetAmount() bool`
+`func (o *SSIOOrderLine) HasStartDate() bool`
 
-HasBudgetAmount returns a boolean if a field has been set.
+HasStartDate returns a boolean if a field has been set.
 
-### SetBudgetAmountNil
+### SetStartDateNil
 
-`func (o *SSIOOrderLine) SetBudgetAmountNil(b bool)`
+`func (o *SSIOOrderLine) SetStartDateNil(b bool)`
 
- SetBudgetAmountNil sets the value for BudgetAmount to be an explicit nil
+ SetStartDateNil sets the value for StartDate to be an explicit nil
 
-### UnsetBudgetAmount
-`func (o *SSIOOrderLine) UnsetBudgetAmount()`
+### UnsetStartDate
+`func (o *SSIOOrderLine) UnsetStartDate()`
 
-UnsetBudgetAmount ensures that no value is present for BudgetAmount, not even an explicit nil
-### GetEstimatedMonthlySpend
-
-`func (o *SSIOOrderLine) GetEstimatedMonthlySpend() float32`
-
-GetEstimatedMonthlySpend returns the EstimatedMonthlySpend field if non-nil, zero value otherwise.
-
-### GetEstimatedMonthlySpendOk
-
-`func (o *SSIOOrderLine) GetEstimatedMonthlySpendOk() (*float32, bool)`
-
-GetEstimatedMonthlySpendOk returns a tuple with the EstimatedMonthlySpend field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEstimatedMonthlySpend
-
-`func (o *SSIOOrderLine) SetEstimatedMonthlySpend(v float32)`
-
-SetEstimatedMonthlySpend sets EstimatedMonthlySpend field to given value.
-
-### HasEstimatedMonthlySpend
-
-`func (o *SSIOOrderLine) HasEstimatedMonthlySpend() bool`
-
-HasEstimatedMonthlySpend returns a boolean if a field has been set.
-
-### SetEstimatedMonthlySpendNil
-
-`func (o *SSIOOrderLine) SetEstimatedMonthlySpendNil(b bool)`
-
- SetEstimatedMonthlySpendNil sets the value for EstimatedMonthlySpend to be an explicit nil
-
-### UnsetEstimatedMonthlySpend
-`func (o *SSIOOrderLine) UnsetEstimatedMonthlySpend()`
-
-UnsetEstimatedMonthlySpend ensures that no value is present for EstimatedMonthlySpend, not even an explicit nil
+UnsetStartDate ensures that no value is present for StartDate, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

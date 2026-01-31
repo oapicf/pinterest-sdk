@@ -16,13 +16,13 @@ void main() {
   // final instance = UserWebsitesGet200Response();
 
   group('test UserWebsitesGet200Response', () {
-    // List<UserWebsiteSummary> items (default value: const [])
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // List<UserWebsiteSummary> items (default value: const [])
+    test('to test the property `items`', () async {
       // TODO
     });
 

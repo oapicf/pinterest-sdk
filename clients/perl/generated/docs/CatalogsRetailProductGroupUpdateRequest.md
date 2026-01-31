@@ -9,11 +9,11 @@ use WWW::OpenAPIClient::Object::CatalogsRetailProductGroupUpdateRequest;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalog_type** | **string** | Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. | [optional] 
-**name** | **string** |  | [optional] 
+**country** | [**Country**](Country.md) |  | [optional] 
 **description** | **string** |  | [optional] 
 **filters** | [**CatalogsProductGroupFiltersRequest**](CatalogsProductGroupFiltersRequest.md) |  | [optional] 
-**country** | [**Country**](Country.md) |  | [optional] 
 **locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | [optional] 
+**name** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -8,17 +8,17 @@ import org.openapitools.jackson.nullable.JsonNullable;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsCreativeAssetsAttributes   {
   
-  private String title;
-  private String description;
-  private String link;
-  private String iosDeepLink;
   private String androidDeepLink;
-  private String googleProductCategory;
   private String customLabel0;
   private String customLabel1;
   private String customLabel2;
   private String customLabel3;
   private String customLabel4;
+  private String description;
+  private String googleProductCategory;
+  private String iosDeepLink;
+  private String link;
+  private String title;
   private String visibility;
   private String imageLink;
   private String videoLink;
@@ -27,57 +27,21 @@ public class CatalogsCreativeAssetsAttributes   {
 
   }
 
-  public CatalogsCreativeAssetsAttributes (String title, String description, String link, String iosDeepLink, String androidDeepLink, String googleProductCategory, String customLabel0, String customLabel1, String customLabel2, String customLabel3, String customLabel4, String visibility, String imageLink, String videoLink) {
-    this.title = title;
-    this.description = description;
-    this.link = link;
-    this.iosDeepLink = iosDeepLink;
+  public CatalogsCreativeAssetsAttributes (String androidDeepLink, String customLabel0, String customLabel1, String customLabel2, String customLabel3, String customLabel4, String description, String googleProductCategory, String iosDeepLink, String link, String title, String visibility, String imageLink, String videoLink) {
     this.androidDeepLink = androidDeepLink;
-    this.googleProductCategory = googleProductCategory;
     this.customLabel0 = customLabel0;
     this.customLabel1 = customLabel1;
     this.customLabel2 = customLabel2;
     this.customLabel3 = customLabel3;
     this.customLabel4 = customLabel4;
+    this.description = description;
+    this.googleProductCategory = googleProductCategory;
+    this.iosDeepLink = iosDeepLink;
+    this.link = link;
+    this.title = title;
     this.visibility = visibility;
     this.imageLink = imageLink;
     this.videoLink = videoLink;
-  }
-
-    
-  @JsonProperty("title")
-  public String getTitle() {
-    return title;
-  }
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-    
-  @JsonProperty("description")
-  public String getDescription() {
-    return description;
-  }
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-    
-  @JsonProperty("link")
-  public String getLink() {
-    return link;
-  }
-  public void setLink(String link) {
-    this.link = link;
-  }
-
-    
-  @JsonProperty("ios_deep_link")
-  public String getIosDeepLink() {
-    return iosDeepLink;
-  }
-  public void setIosDeepLink(String iosDeepLink) {
-    this.iosDeepLink = iosDeepLink;
   }
 
     
@@ -87,15 +51,6 @@ public class CatalogsCreativeAssetsAttributes   {
   }
   public void setAndroidDeepLink(String androidDeepLink) {
     this.androidDeepLink = androidDeepLink;
-  }
-
-    
-  @JsonProperty("google_product_category")
-  public String getGoogleProductCategory() {
-    return googleProductCategory;
-  }
-  public void setGoogleProductCategory(String googleProductCategory) {
-    this.googleProductCategory = googleProductCategory;
   }
 
     
@@ -144,6 +99,51 @@ public class CatalogsCreativeAssetsAttributes   {
   }
 
     
+  @JsonProperty("description")
+  public String getDescription() {
+    return description;
+  }
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+    
+  @JsonProperty("google_product_category")
+  public String getGoogleProductCategory() {
+    return googleProductCategory;
+  }
+  public void setGoogleProductCategory(String googleProductCategory) {
+    this.googleProductCategory = googleProductCategory;
+  }
+
+    
+  @JsonProperty("ios_deep_link")
+  public String getIosDeepLink() {
+    return iosDeepLink;
+  }
+  public void setIosDeepLink(String iosDeepLink) {
+    this.iosDeepLink = iosDeepLink;
+  }
+
+    
+  @JsonProperty("link")
+  public String getLink() {
+    return link;
+  }
+  public void setLink(String link) {
+    this.link = link;
+  }
+
+    
+  @JsonProperty("title")
+  public String getTitle() {
+    return title;
+  }
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+    
   @JsonProperty("visibility")
   public String getVisibility() {
     return visibility;
@@ -180,17 +180,17 @@ public class CatalogsCreativeAssetsAttributes   {
       return false;
     }
     CatalogsCreativeAssetsAttributes catalogsCreativeAssetsAttributes = (CatalogsCreativeAssetsAttributes) o;
-    return Objects.equals(title, catalogsCreativeAssetsAttributes.title) &&
-        Objects.equals(description, catalogsCreativeAssetsAttributes.description) &&
-        Objects.equals(link, catalogsCreativeAssetsAttributes.link) &&
-        Objects.equals(iosDeepLink, catalogsCreativeAssetsAttributes.iosDeepLink) &&
-        Objects.equals(androidDeepLink, catalogsCreativeAssetsAttributes.androidDeepLink) &&
-        Objects.equals(googleProductCategory, catalogsCreativeAssetsAttributes.googleProductCategory) &&
+    return Objects.equals(androidDeepLink, catalogsCreativeAssetsAttributes.androidDeepLink) &&
         Objects.equals(customLabel0, catalogsCreativeAssetsAttributes.customLabel0) &&
         Objects.equals(customLabel1, catalogsCreativeAssetsAttributes.customLabel1) &&
         Objects.equals(customLabel2, catalogsCreativeAssetsAttributes.customLabel2) &&
         Objects.equals(customLabel3, catalogsCreativeAssetsAttributes.customLabel3) &&
         Objects.equals(customLabel4, catalogsCreativeAssetsAttributes.customLabel4) &&
+        Objects.equals(description, catalogsCreativeAssetsAttributes.description) &&
+        Objects.equals(googleProductCategory, catalogsCreativeAssetsAttributes.googleProductCategory) &&
+        Objects.equals(iosDeepLink, catalogsCreativeAssetsAttributes.iosDeepLink) &&
+        Objects.equals(link, catalogsCreativeAssetsAttributes.link) &&
+        Objects.equals(title, catalogsCreativeAssetsAttributes.title) &&
         Objects.equals(visibility, catalogsCreativeAssetsAttributes.visibility) &&
         Objects.equals(imageLink, catalogsCreativeAssetsAttributes.imageLink) &&
         Objects.equals(videoLink, catalogsCreativeAssetsAttributes.videoLink);
@@ -198,7 +198,7 @@ public class CatalogsCreativeAssetsAttributes   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, description, link, iosDeepLink, androidDeepLink, googleProductCategory, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, visibility, imageLink, videoLink);
+    return Objects.hash(androidDeepLink, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, googleProductCategory, iosDeepLink, link, title, visibility, imageLink, videoLink);
   }
 
   @Override
@@ -206,17 +206,17 @@ public class CatalogsCreativeAssetsAttributes   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsAttributes {\n");
     
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    link: ").append(toIndentedString(link)).append("\n");
-    sb.append("    iosDeepLink: ").append(toIndentedString(iosDeepLink)).append("\n");
     sb.append("    androidDeepLink: ").append(toIndentedString(androidDeepLink)).append("\n");
-    sb.append("    googleProductCategory: ").append(toIndentedString(googleProductCategory)).append("\n");
     sb.append("    customLabel0: ").append(toIndentedString(customLabel0)).append("\n");
     sb.append("    customLabel1: ").append(toIndentedString(customLabel1)).append("\n");
     sb.append("    customLabel2: ").append(toIndentedString(customLabel2)).append("\n");
     sb.append("    customLabel3: ").append(toIndentedString(customLabel3)).append("\n");
     sb.append("    customLabel4: ").append(toIndentedString(customLabel4)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    googleProductCategory: ").append(toIndentedString(googleProductCategory)).append("\n");
+    sb.append("    iosDeepLink: ").append(toIndentedString(iosDeepLink)).append("\n");
+    sb.append("    link: ").append(toIndentedString(link)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    visibility: ").append(toIndentedString(visibility)).append("\n");
     sb.append("    imageLink: ").append(toIndentedString(imageLink)).append("\n");
     sb.append("    videoLink: ").append(toIndentedString(videoLink)).append("\n");

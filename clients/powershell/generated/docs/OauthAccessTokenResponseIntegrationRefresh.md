@@ -5,11 +5,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RefreshToken** | **String** |  | 
 **RefreshTokenExpiresIn** | **Int32** |  | 
-**ResponseType** | **String** |  | [optional] 
 **AccessToken** | **String** |  | 
-**TokenType** | **String** |  | [default to "bearer"]
 **ExpiresIn** | **Int32** |  | 
+**ResponseType** | **String** |  | [optional] 
 **Scope** | **String** |  | 
+**TokenType** | **String** |  | [default to "bearer"]
 
 ## Examples
 
@@ -17,11 +17,11 @@ Name | Type | Description | Notes
 ```powershell
 $OauthAccessTokenResponseIntegrationRefresh = Initialize-PSOpenAPIToolsOauthAccessTokenResponseIntegrationRefresh  -RefreshToken null `
  -RefreshTokenExpiresIn null `
- -ResponseType null `
  -AccessToken null `
- -TokenType null `
  -ExpiresIn null `
- -Scope null
+ -ResponseType null `
+ -Scope null `
+ -TokenType null
 ```
 
 - Convert the resource to JSON

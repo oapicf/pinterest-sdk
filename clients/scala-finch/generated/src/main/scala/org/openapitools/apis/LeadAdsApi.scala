@@ -3,11 +3,10 @@ package org.openapitools.apis
 import java.io._
 import org.openapitools._
 import org.openapitools.models._
-import org.openapitools.models.AdAccountCreateSubscriptionRequest
-import org.openapitools.models.AdAccountCreateSubscriptionResponse
-import org.openapitools.models.AdAccountGetSubscriptionResponse
 import org.openapitools.models.AdAccountsSubscriptionsGetList200Response
-import org.openapitools.models.Error
+import org.openapitools.models.LeadSubscription
+import org.openapitools.models.LeadSubscriptionPostParamsCreate
+import org.openapitools.models.PinterestLibError
 import io.finch.circe._
 import io.circe.generic.semiauto._
 import com.twitter.concurrent.AsyncStream
@@ -70,9 +69,9 @@ object LeadAdsApi {
 
         /**
         * 
-        * @return An endpoint representing a AdAccountGetSubscriptionResponse
+        * @return An endpoint representing a LeadSubscription
         */
-        private def adAccountsSubscriptions/getById(da: DataAccessor): Endpoint[AdAccountGetSubscriptionResponse] =
+        private def adAccountsSubscriptions/getById(da: DataAccessor): Endpoint[LeadSubscription] =
         get("ad_accounts" :: string :: "leads" :: "subscriptions" :: string) { (adAccountId: String, subscriptionId: String) =>
           da.LeadAds_adAccountsSubscriptions/getById(adAccountId, subscriptionId) match {
             case Left(error) => checkError(error)
@@ -87,8 +86,8 @@ object LeadAdsApi {
         * @return An endpoint representing a AdAccountsSubscriptionsGetList200Response
         */
         private def adAccountsSubscriptions/getList(da: DataAccessor): Endpoint[AdAccountsSubscriptionsGetList200Response] =
-        get("ad_accounts" :: string :: "leads" :: "subscriptions" :: paramOption("page_size").map(_.map(_.toInt)) :: paramOption("bookmark")) { (adAccountId: String, pageSize: Option[Int], bookmark: Option[String]) =>
-          da.LeadAds_adAccountsSubscriptions/getList(adAccountId, pageSize, bookmark) match {
+        get("ad_accounts" :: string :: "leads" :: "subscriptions" :: paramOption("bookmark") :: paramOption("page_size").map(_.map(_.toInt))) { (adAccountId: String, bookmark: Option[String], pageSize: Option[Int]) =>
+          da.LeadAds_adAccountsSubscriptions/getList(adAccountId, bookmark, pageSize) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }
@@ -98,11 +97,11 @@ object LeadAdsApi {
 
         /**
         * 
-        * @return An endpoint representing a AdAccountCreateSubscriptionResponse
+        * @return An endpoint representing a LeadSubscription
         */
-        private def adAccountsSubscriptions/post(da: DataAccessor): Endpoint[AdAccountCreateSubscriptionResponse] =
-        post("ad_accounts" :: string :: "leads" :: "subscriptions" :: jsonBody[AdAccountCreateSubscriptionRequest]) { (adAccountId: String, adAccountCreateSubscriptionRequest: AdAccountCreateSubscriptionRequest) =>
-          da.LeadAds_adAccountsSubscriptions/post(adAccountId, adAccountCreateSubscriptionRequest) match {
+        private def adAccountsSubscriptions/post(da: DataAccessor): Endpoint[LeadSubscription] =
+        post("ad_accounts" :: string :: "leads" :: "subscriptions" :: jsonBody[LeadSubscriptionPostParamsCreate]) { (adAccountId: String, leadSubscriptionPostParamsCreate: LeadSubscriptionPostParamsCreate) =>
+          da.LeadAds_adAccountsSubscriptions/post(adAccountId, leadSubscriptionPostParamsCreate) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }

@@ -35,7 +35,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}is_roas_optimized`,
-                label: `ROAS optimization is not supported - [${labelPrefix}is_roas_optimized]`,
+                label: `Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when `conversion_event` is set to `\"CHECKOUT\"` and `bid_strategy_type` is set to `\"AUTOMATIC_BID\"`. <br>This parameter is not enabled for all advertisers. <a href=\"https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/\">Learn more</a>. - [${labelPrefix}is_roas_optimized]`,
                 type: 'boolean',
             },
             {
@@ -46,6 +46,11 @@ module.exports = {
                     'NOT_ACTIVE',
                     'ACTIVE',
                 ],
+            },
+            {
+                key: `${keyPrefix}reporting_event`,
+                label: `Event name for custom or standard events mapped to an oCPM model - [${labelPrefix}reporting_event]`,
+                type: 'string',
             },
         ]
     },
@@ -58,6 +63,7 @@ module.exports = {
             'cpa_goal_value_in_micro_currency': bundle.inputData?.[`${keyPrefix}cpa_goal_value_in_micro_currency`],
             'is_roas_optimized': bundle.inputData?.[`${keyPrefix}is_roas_optimized`],
             'learning_mode_type': bundle.inputData?.[`${keyPrefix}learning_mode_type`],
+            'reporting_event': bundle.inputData?.[`${keyPrefix}reporting_event`],
         }
     },
 }

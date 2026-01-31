@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server PinterestLibStatus204"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a PinterestLibStatus204"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  PinterestLibStatus204 {
+    title = PinterestLibStatus204
+    description = PinterestLibStatus204
+    derivedFrom = Root
+    properties {
+        status_code {
+          type =  
+          description = ""
+          enum = ["204"]
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  PinterestLibStatus204 {
+    title = PinterestLibStatus204
+    description = PinterestLibStatus204
+    implements = openapi_server.resourceTypes.PinterestLibStatus204
+
+  }
+}

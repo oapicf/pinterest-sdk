@@ -10,8 +10,8 @@ import org.openapitools.model.Board;
 
 @Canonical
 class SearchUserBoardsGet200Response {
-    /* items */
-    List<Board> items = new ArrayList<>()
     
     String bookmark
+    /* items */
+    List<Board> items = new ArrayList<>()
 }

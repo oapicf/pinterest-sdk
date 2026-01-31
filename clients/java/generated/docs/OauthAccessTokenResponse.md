@@ -8,11 +8,11 @@ A successful OAuth access token response.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**responseType** | [**ResponseTypeEnum**](#ResponseTypeEnum) |  |  [optional] |
 |**accessToken** | **String** |  |  |
-|**tokenType** | **String** |  |  |
 |**expiresIn** | **Integer** |  |  |
+|**responseType** | [**ResponseTypeEnum**](#ResponseTypeEnum) |  |  [optional] |
 |**scope** | **String** |  |  |
+|**tokenType** | **String** |  |  |
 
 
 

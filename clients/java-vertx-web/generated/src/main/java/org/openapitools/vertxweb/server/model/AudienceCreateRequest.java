@@ -13,19 +13,19 @@ public class AudienceCreateRequest   {
   private String adAccountId;
   private String name;
   private AudienceRule rule;
-  private String description;
   private AudienceType audienceType;
+  private String description;
 
   public AudienceCreateRequest () {
 
   }
 
-  public AudienceCreateRequest (String adAccountId, String name, AudienceRule rule, String description, AudienceType audienceType) {
+  public AudienceCreateRequest (String adAccountId, String name, AudienceRule rule, AudienceType audienceType, String description) {
     this.adAccountId = adAccountId;
     this.name = name;
     this.rule = rule;
-    this.description = description;
     this.audienceType = audienceType;
+    this.description = description;
   }
 
     
@@ -56,21 +56,21 @@ public class AudienceCreateRequest   {
   }
 
     
-  @JsonProperty("description")
-  public String getDescription() {
-    return description;
-  }
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-    
   @JsonProperty("audience_type")
   public AudienceType getAudienceType() {
     return audienceType;
   }
   public void setAudienceType(AudienceType audienceType) {
     this.audienceType = audienceType;
+  }
+
+    
+  @JsonProperty("description")
+  public String getDescription() {
+    return description;
+  }
+  public void setDescription(String description) {
+    this.description = description;
   }
 
 
@@ -86,13 +86,13 @@ public class AudienceCreateRequest   {
     return Objects.equals(adAccountId, audienceCreateRequest.adAccountId) &&
         Objects.equals(name, audienceCreateRequest.name) &&
         Objects.equals(rule, audienceCreateRequest.rule) &&
-        Objects.equals(description, audienceCreateRequest.description) &&
-        Objects.equals(audienceType, audienceCreateRequest.audienceType);
+        Objects.equals(audienceType, audienceCreateRequest.audienceType) &&
+        Objects.equals(description, audienceCreateRequest.description);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, name, rule, description, audienceType);
+    return Objects.hash(adAccountId, name, rule, audienceType, description);
   }
 
   @Override
@@ -103,8 +103,8 @@ public class AudienceCreateRequest   {
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    rule: ").append(toIndentedString(rule)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    audienceType: ").append(toIndentedString(audienceType)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
     return sb.toString();
   }

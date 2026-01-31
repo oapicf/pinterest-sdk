@@ -5,6 +5,12 @@
   "name": "ConversionApiResponseEventsInner",
   "fields": [
     {
+      "name": "error_message",
+      "type": ["null", "string"],
+      "doc": "Error message containing more information about why the event failed to be processed.",
+      "default": null
+    },
+    {
       "name": "status",
       "type": {
         "type": "enum",
@@ -15,12 +21,6 @@
         ]
       },
       "doc": "Whether the event was processed successfully."
-    },
-    {
-      "name": "error_message",
-      "type": ["null", "string"],
-      "doc": "Error message containing more information about why the event failed to be processed.",
-      "default": null
     },
     {
       "name": "warning_message",

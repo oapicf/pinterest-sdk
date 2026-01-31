@@ -10,6 +10,7 @@ Protected Class PlacementMultipliers
         
         Search
         Browse
+        RelatedPins
         
     #tag EndEnum
 
@@ -22,6 +23,8 @@ Protected Class PlacementMultipliers
 		      Return "SEARCH"
 		    Case PLACEMENTEnum.Browse
 		      Return "BROWSE"
+		    Case PLACEMENTEnum.RelatedPins
+		      Return "RELATED_PINS"
 		    
 		  End Select
 		  Return ""

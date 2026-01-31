@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CreativeType;
+import org.openapitools.model.CustomizableCTAType;
+import org.openapitools.model.DisclosureType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
 import org.openapitools.model.PinPromotionSummaryStatus;
@@ -86,11 +88,43 @@ public class AdResponseTest {
     }
 
     /**
+     * Test the property 'customizableCtaType'
+     */
+    @Test
+    public void customizableCtaTypeTest() {
+        // TODO: test customizableCtaType
+    }
+
+    /**
      * Test the property 'destinationUrl'
      */
     @Test
     public void destinationUrlTest() {
         // TODO: test destinationUrl
+    }
+
+    /**
+     * Test the property 'disclosureType'
+     */
+    @Test
+    public void disclosureTypeTest() {
+        // TODO: test disclosureType
+    }
+
+    /**
+     * Test the property 'disclosureUrl'
+     */
+    @Test
+    public void disclosureUrlTest() {
+        // TODO: test disclosureUrl
+    }
+
+    /**
+     * Test the property 'gridClickType'
+     */
+    @Test
+    public void gridClickTypeTest() {
+        // TODO: test gridClickType
     }
 
     /**
@@ -118,11 +152,27 @@ public class AdResponseTest {
     }
 
     /**
+     * Test the property 'leadFormId'
+     */
+    @Test
+    public void leadFormIdTest() {
+        // TODO: test leadFormId
+    }
+
+    /**
      * Test the property 'name'
      */
     @Test
     public void nameTest() {
         // TODO: test name
+    }
+
+    /**
+     * Test the property 'quizPinData'
+     */
+    @Test
+    public void quizPinDataTest() {
+        // TODO: test quizPinData
     }
 
     /**
@@ -147,38 +197,6 @@ public class AdResponseTest {
     @Test
     public void viewTrackingUrlTest() {
         // TODO: test viewTrackingUrl
-    }
-
-    /**
-     * Test the property 'leadFormId'
-     */
-    @Test
-    public void leadFormIdTest() {
-        // TODO: test leadFormId
-    }
-
-    /**
-     * Test the property 'gridClickType'
-     */
-    @Test
-    public void gridClickTypeTest() {
-        // TODO: test gridClickType
-    }
-
-    /**
-     * Test the property 'customizableCtaType'
-     */
-    @Test
-    public void customizableCtaTypeTest() {
-        // TODO: test customizableCtaType
-    }
-
-    /**
-     * Test the property 'quizPinData'
-     */
-    @Test
-    public void quizPinDataTest() {
-        // TODO: test quizPinData
     }
 
     /**
@@ -254,6 +272,14 @@ public class AdResponseTest {
     }
 
     /**
+     * Test the property 'summaryStatus'
+     */
+    @Test
+    public void summaryStatusTest() {
+        // TODO: test summaryStatus
+    }
+
+    /**
      * Test the property 'type'
      */
     @Test
@@ -267,14 +293,6 @@ public class AdResponseTest {
     @Test
     public void updatedTimeTest() {
         // TODO: test updatedTime
-    }
-
-    /**
-     * Test the property 'summaryStatus'
-     */
-    @Test
-    public void summaryStatusTest() {
-        // TODO: test summaryStatus
     }
 
 }

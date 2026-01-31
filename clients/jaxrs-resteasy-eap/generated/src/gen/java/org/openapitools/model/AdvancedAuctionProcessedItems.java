@@ -9,16 +9,16 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.AdvancedAuctionProcessedItem;
+import org.openapitools.model.AdvancedAuctionItemsSubmitRecord;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Response object containing the results of an operation on an item bid option")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Response object containing the results of an operation on an item bid option")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionProcessedItems   {
   
   private String catalogId;
-  private List<@Valid AdvancedAuctionProcessedItem> items = new ArrayList<>();
+  private List<@Valid AdvancedAuctionItemsSubmitRecord> items = new ArrayList<>();
 
   /**
    * Catalog id pertaining to all items
@@ -39,10 +39,10 @@ public class AdvancedAuctionProcessedItems   {
   
   @ApiModelProperty(value = "Array of advanced auction processed items")
   @JsonProperty("items")
-  public List<@Valid AdvancedAuctionProcessedItem> getItems() {
+  public List<@Valid AdvancedAuctionItemsSubmitRecord> getItems() {
     return items;
   }
-  public void setItems(List<@Valid AdvancedAuctionProcessedItem> items) {
+  public void setItems(List<@Valid AdvancedAuctionItemsSubmitRecord> items) {
     this.items = items;
   }
 

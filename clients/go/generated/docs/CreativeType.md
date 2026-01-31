@@ -23,6 +23,12 @@
 
 * `QUIZ` (value: `"QUIZ"`)
 
+* `COLLAGE` (value: `"COLLAGE"`)
+
+* `MAX_WIDTH_REGULAR_COLLECTION` (value: `"MAX_WIDTH_REGULAR_COLLECTION"`)
+
+* `MAX_WIDTH_VIDEO_COLLECTION` (value: `"MAX_WIDTH_VIDEO_COLLECTION"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

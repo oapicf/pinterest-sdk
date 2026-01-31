@@ -11,27 +11,18 @@ import org.openapitools.vertxweb.server.model.AssetGroupType;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateAssetGroupBody   {
   
-  private String assetGroupName;
   private String assetGroupDescription;
+  private String assetGroupName;
   private List<AssetGroupType> assetGroupTypes = new ArrayList<>();
 
   public CreateAssetGroupBody () {
 
   }
 
-  public CreateAssetGroupBody (String assetGroupName, String assetGroupDescription, List<AssetGroupType> assetGroupTypes) {
-    this.assetGroupName = assetGroupName;
+  public CreateAssetGroupBody (String assetGroupDescription, String assetGroupName, List<AssetGroupType> assetGroupTypes) {
     this.assetGroupDescription = assetGroupDescription;
-    this.assetGroupTypes = assetGroupTypes;
-  }
-
-    
-  @JsonProperty("asset_group_name")
-  public String getAssetGroupName() {
-    return assetGroupName;
-  }
-  public void setAssetGroupName(String assetGroupName) {
     this.assetGroupName = assetGroupName;
+    this.assetGroupTypes = assetGroupTypes;
   }
 
     
@@ -41,6 +32,15 @@ public class CreateAssetGroupBody   {
   }
   public void setAssetGroupDescription(String assetGroupDescription) {
     this.assetGroupDescription = assetGroupDescription;
+  }
+
+    
+  @JsonProperty("asset_group_name")
+  public String getAssetGroupName() {
+    return assetGroupName;
+  }
+  public void setAssetGroupName(String assetGroupName) {
+    this.assetGroupName = assetGroupName;
   }
 
     
@@ -62,14 +62,14 @@ public class CreateAssetGroupBody   {
       return false;
     }
     CreateAssetGroupBody createAssetGroupBody = (CreateAssetGroupBody) o;
-    return Objects.equals(assetGroupName, createAssetGroupBody.assetGroupName) &&
-        Objects.equals(assetGroupDescription, createAssetGroupBody.assetGroupDescription) &&
+    return Objects.equals(assetGroupDescription, createAssetGroupBody.assetGroupDescription) &&
+        Objects.equals(assetGroupName, createAssetGroupBody.assetGroupName) &&
         Objects.equals(assetGroupTypes, createAssetGroupBody.assetGroupTypes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetGroupName, assetGroupDescription, assetGroupTypes);
+    return Objects.hash(assetGroupDescription, assetGroupName, assetGroupTypes);
   }
 
   @Override
@@ -77,8 +77,8 @@ public class CreateAssetGroupBody   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateAssetGroupBody {\n");
     
-    sb.append("    assetGroupName: ").append(toIndentedString(assetGroupName)).append("\n");
     sb.append("    assetGroupDescription: ").append(toIndentedString(assetGroupDescription)).append("\n");
+    sb.append("    assetGroupName: ").append(toIndentedString(assetGroupName)).append("\n");
     sb.append("    assetGroupTypes: ").append(toIndentedString(assetGroupTypes)).append("\n");
     sb.append("}");
     return sb.toString();

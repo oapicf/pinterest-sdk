@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server UpdatePartnerAssetAccessBody"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a UpdatePartnerAssetAccessBody"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  UpdatePartnerAssetAccessBodyAccessesInner = openapi_server.resourceTypes.UpdatePartnerAssetAccessBodyAccessesInner
+}
+resourceTypes {
+
+  UpdatePartnerAssetAccessBody {
+    title = UpdatePartnerAssetAccessBody
+    description = UpdatePartnerAssetAccessBody
+    derivedFrom = Root
+    properties {
+        accesses {
+          type = array
+          items.type = UpdatePartnerAssetAccessBodyAccessesInner
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  UpdatePartnerAssetAccessBody {
+    title = UpdatePartnerAssetAccessBody
+    description = UpdatePartnerAssetAccessBody
+    implements = openapi_server.resourceTypes.UpdatePartnerAssetAccessBody
+
+  }
+}

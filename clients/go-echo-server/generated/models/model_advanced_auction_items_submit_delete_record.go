@@ -3,10 +3,13 @@ package models
 // AdvancedAuctionItemsSubmitDeleteRecord - Object describing an item bid option deletion operation
 type AdvancedAuctionItemsSubmitDeleteRecord struct {
 
+	Country Country `json:"country"`
+
 	// The catalog retail item id in the merchant namespace
 	ItemId string `json:"item_id"`
 
-	Country Country `json:"country"`
-
 	Language Language `json:"language"`
+
+	// Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+	Errors []AdvancedAuctionOperationError `json:"errors,omitempty"`
 }

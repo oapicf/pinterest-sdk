@@ -5,7 +5,7 @@
   "name": "CatalogsFeedIngestion",
   "fields": [
     {
-      "name": "id",
+      "name": "created_at",
       "type": "string",
       "doc": ""
     },
@@ -15,7 +15,7 @@
       "doc": ""
     },
     {
-      "name": "created_at",
+      "name": "id",
       "type": "string",
       "doc": ""
     },

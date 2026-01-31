@@ -1,0 +1,23 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "cover_image_url" },
+      {"model": "duration" },
+      {"model": "height" },
+      {"model": "images" },
+      {"model": "media_type" },
+      {"model": "video_url" },
+      {"model": "width" },
+    ]
+  }]
+}

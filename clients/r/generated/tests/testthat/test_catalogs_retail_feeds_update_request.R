@@ -5,26 +5,11 @@ context("Test CatalogsRetailFeedsUpdateRequest")
 
 model_instance <- CatalogsRetailFeedsUpdateRequest$new()
 
-test_that("default_currency", {
-  # tests for the property `default_currency` (NullableCurrency)
+test_that("catalog_type", {
+  # tests for the property `catalog_type` (CatalogsType)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`default_currency`, "EXPECTED_RESULT")
-})
-
-test_that("name", {
-  # tests for the property `name` (character)
-  # A human-friendly name associated to a given feed.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
-})
-
-test_that("format", {
-  # tests for the property `format` (CatalogsFormat)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`format`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`catalog_type`, "EXPECTED_RESULT")
 })
 
 test_that("credentials", {
@@ -34,12 +19,41 @@ test_that("credentials", {
   #expect_equal(model.instance$`credentials`, "EXPECTED_RESULT")
 })
 
+test_that("default_availability", {
+  # tests for the property `default_availability` (ProductAvailabilityType)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`default_availability`, "EXPECTED_RESULT")
+})
+
+test_that("default_currency", {
+  # tests for the property `default_currency` (NullableCurrency)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`default_currency`, "EXPECTED_RESULT")
+})
+
+test_that("format", {
+  # tests for the property `format` (CatalogsFormat)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`format`, "EXPECTED_RESULT")
+})
+
 test_that("location", {
   # tests for the property `location` (character)
   # The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`location`, "EXPECTED_RESULT")
+})
+
+test_that("name", {
+  # tests for the property `name` (character)
+  # A human-friendly name associated to a given feed.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
 })
 
 test_that("preferred_processing_schedule", {
@@ -54,18 +68,4 @@ test_that("status", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
-})
-
-test_that("catalog_type", {
-  # tests for the property `catalog_type` (CatalogsType)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`catalog_type`, "EXPECTED_RESULT")
-})
-
-test_that("default_availability", {
-  # tests for the property `default_availability` (ProductAvailabilityType)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`default_availability`, "EXPECTED_RESULT")
 })

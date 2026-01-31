@@ -9,8 +9,8 @@
 -export_type([openapi_user_following_get_200_response/0]).
 
 -type openapi_user_following_get_200_response() ::
-  [ {'items', list(openapi_user_summary:openapi_user_summary()) }
-  | {'bookmark', binary() }
+  [ {'bookmark', binary() }
+  | {'items', list(openapi_user_summary:openapi_user_summary()) }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_user_following_get_200_response() ->
     openapi_user_following_get_200_response([]).
 
 openapi_user_following_get_200_response(Fields) ->
-  Default = [ {'items', list(openapi_user_summary:openapi_user_summary()) }
-            , {'bookmark', binary() }
+  Default = [ {'bookmark', binary() }
+            , {'items', list(openapi_user_summary:openapi_user_summary()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

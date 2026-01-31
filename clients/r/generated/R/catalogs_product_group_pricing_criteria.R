@@ -8,8 +8,8 @@
 #' @description CatalogsProductGroupPricingCriteria Class
 #' @format An \code{R6Class} generator object
 #' @field inclusion  character [optional]
-#' @field values  numeric
 #' @field negated  character [optional]
+#' @field values  numeric
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -17,8 +17,8 @@ CatalogsProductGroupPricingCriteria <- R6::R6Class(
   "CatalogsProductGroupPricingCriteria",
   public = list(
     `inclusion` = NULL,
-    `values` = NULL,
     `negated` = NULL,
+    `values` = NULL,
 
     #' @description
     #' Initialize a new CatalogsProductGroupPricingCriteria class.
@@ -80,13 +80,13 @@ CatalogsProductGroupPricingCriteria <- R6::R6Class(
         CatalogsProductGroupPricingCriteriaObject[["inclusion"]] <-
           self$`inclusion`
       }
-      if (!is.null(self$`values`)) {
-        CatalogsProductGroupPricingCriteriaObject[["values"]] <-
-          self$`values`
-      }
       if (!is.null(self$`negated`)) {
         CatalogsProductGroupPricingCriteriaObject[["negated"]] <-
           self$`negated`
+      }
+      if (!is.null(self$`values`)) {
+        CatalogsProductGroupPricingCriteriaObject[["values"]] <-
+          self$`values`
       }
       return(CatalogsProductGroupPricingCriteriaObject)
     },
@@ -101,11 +101,11 @@ CatalogsProductGroupPricingCriteria <- R6::R6Class(
       if (!is.null(this_object$`inclusion`)) {
         self$`inclusion` <- this_object$`inclusion`
       }
-      if (!is.null(this_object$`values`)) {
-        self$`values` <- this_object$`values`
-      }
       if (!is.null(this_object$`negated`)) {
         self$`negated` <- this_object$`negated`
+      }
+      if (!is.null(this_object$`values`)) {
+        self$`values` <- this_object$`values`
       }
       self
     },
@@ -129,8 +129,8 @@ CatalogsProductGroupPricingCriteria <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`inclusion` <- this_object$`inclusion`
-      self$`values` <- this_object$`values`
       self$`negated` <- this_object$`negated`
+      self$`values` <- this_object$`values`
       self
     },
 

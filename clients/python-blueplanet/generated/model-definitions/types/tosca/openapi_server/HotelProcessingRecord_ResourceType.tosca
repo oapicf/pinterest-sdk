@@ -1,0 +1,54 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server HotelProcessingRecord"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a HotelProcessingRecord"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ItemProcessingStatus = openapi_server.resourceTypes.ItemProcessingStatus
+  ItemValidationEvent = openapi_server.resourceTypes.ItemValidationEvent
+}
+resourceTypes {
+
+  HotelProcessingRecord {
+    title = HotelProcessingRecord
+    description = HotelProcessingRecord
+    derivedFrom = Root
+    properties {
+        errors {
+          type = array
+          items.type = ItemValidationEvent
+          description = "Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail."
+          optional = false
+        }
+        hotel_id {
+          type =  string
+          description = "The catalog hotel id in the merchant namespace"
+          optional = false
+        }
+        status {
+          type = ItemProcessingStatus
+          description = ""
+          optional = false
+        }
+        warnings {
+          type = array
+          items.type = ItemValidationEvent
+          description = "Array with the validation warnings for the item processing record"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  HotelProcessingRecord {
+    title = HotelProcessingRecord
+    description = HotelProcessingRecord
+    implements = openapi_server.resourceTypes.HotelProcessingRecord
+
+  }
+}

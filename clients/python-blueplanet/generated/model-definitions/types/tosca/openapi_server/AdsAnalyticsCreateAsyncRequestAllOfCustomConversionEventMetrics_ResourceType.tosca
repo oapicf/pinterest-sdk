@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics {
+    title = AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics
+    description = AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics
+    derivedFrom = Root
+    properties {
+        custom_event_metrics_type {
+          type =  string
+          description = "Metrics for custom defined conversion event."
+          enum = ["ADE_COST_PER_ACTION", "ADE_ROAS", "ADE_TOTAL_CONVERSIONS", "ADE_TOTAL_VALUE_IN_MICRO_DOLLAR", "ADE_AVERAGE_VALUE_IN_MICRO_DOLLAR", "ADE_TOTAL_CLICK", "ADE_TOTAL_CLICK_VALUE_IN_MICRO_DOLLAR", "ADE_TOTAL_VIEW", "ADE_TOTAL_VIEW_VALUE_IN_MICRO_DOLLAR", "ADE_TOTAL_CONVERSION_RATE", "ADE_WEB_COST_PER_ACTION", "ADE_WEB_ROAS", "ADE_TOTAL_WEB_CONVERSIONS", "ADE_TOTAL_WEB_VALUE_IN_MICRO_DOLLAR", "ADE_TOTAL_WEB_CLICK", "ADE_TOTAL_WEB_CLICK_VALUE_IN_MICRO_DOLLAR", "ADE_TOTAL_WEB_VIEW", "ADE_TOTAL_WEB_VIEW_VALUE_IN_MICRO_DOLLAR", "ADE_INAPP_COST_PER_ACTION", "ADE_INAPP_ROAS", "ADE_TOTAL_INAPP_CONVERSIONS", "ADE_TOTAL_INAPP_VALUE_IN_MICRO_DOLLAR", "ADE_TOTAL_INAPP_CLICK", "ADE_TOTAL_INAPP_CLICK_VALUE_IN_MICRO_DOLLAR", "ADE_TOTAL_INAPP_VIEW", "ADE_TOTAL_INAPP_VIEW_VALUE_IN_MICRO_DOLLAR", "ADE_OFFLINE_COST_PER_ACTION", "ADE_OFFLINE_ROAS", "ADE_TOTAL_OFFLINE_CONVERSIONS", "ADE_TOTAL_OFFLINE_VALUE_IN_MICRO_DOLLAR", "ADE_TOTAL_OFFLINE_CLICK", "ADE_TOTAL_OFFLINE_CLICK_VALUE_IN_MICRO_DOLLAR", "ADE_TOTAL_OFFLINE_VIEW", "ADE_TOTAL_OFFLINE_VIEW_VALUE_IN_MICRO_DOLLAR", "ADE_TOTAL_CONVERSION_PRODUCT_QUANTITY", "ADE_TOTAL_CONVERSION_PRODUCT_VALUE", "ADE_TOTAL_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS", "ADE_TOTAL_CONVERSION_PRODUCT_VALUE_IN_USD", "ADE_TOTAL_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD", "ADE_TOTAL_WEB_CONVERSION_PRODUCT_QUANTITY", "ADE_TOTAL_WEB_CONVERSION_PRODUCT_VALUE", "ADE_TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS", "ADE_TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_USD", "ADE_TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD", "ADE_TOTAL_INAPP_CONVERSION_PRODUCT_QUANTITY", "ADE_TOTAL_INAPP_CONVERSION_PRODUCT_VALUE", "ADE_TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS", "ADE_TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_USD", "ADE_TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD", "ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_QUANTITY", "ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE", "ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS", "ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_USD", "ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"]
+          optional = true
+        }
+        custom_event_name {
+          type =  string
+          description = "Name of the advertiser-defined custom conversion event"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics {
+    title = AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics
+    description = AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics
+    implements = openapi_server.resourceTypes.AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics
+
+  }
+}

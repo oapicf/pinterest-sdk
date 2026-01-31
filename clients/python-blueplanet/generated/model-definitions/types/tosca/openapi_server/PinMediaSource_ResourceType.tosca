@@ -1,0 +1,106 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server PinMediaSource"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a PinMediaSource"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ContentType = openapi_server.resourceTypes.ContentType
+  PinMediaSourceImageBase64 = openapi_server.resourceTypes.PinMediaSourceImageBase64
+  PinMediaSourceImageURL = openapi_server.resourceTypes.PinMediaSourceImageURL
+  PinMediaSourceImagesBase64 = openapi_server.resourceTypes.PinMediaSourceImagesBase64
+  PinMediaSourceImagesURL = openapi_server.resourceTypes.PinMediaSourceImagesURL
+  PinMediaSourceImagesURLItem = openapi_server.resourceTypes.PinMediaSourceImagesURLItem
+  PinMediaSourcePinURL = openapi_server.resourceTypes.PinMediaSourcePinURL
+  PinMediaSourceVideoID = openapi_server.resourceTypes.PinMediaSourceVideoID
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  PinMediaSource {
+    title = PinMediaSource
+    description = PinMediaSource
+    derivedFrom = Root
+    properties {
+        content_type {
+          type = ContentType
+          description = ""
+          optional = true
+        }
+        data {
+          type =  string
+          description = ""
+          optional = true
+        }
+        is_standard {
+          type =  boolean
+          description = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users."
+          optional = false
+        }
+        source_type {
+          type =  string
+          description = ""
+          enum = ["pin_url"]
+          optional = true
+        }
+        url {
+          type =  string
+          description = ""
+          optional = true
+        }
+        cover_image_content_type {
+          type = ContentType
+          description = "Content type for cover image Base64."
+          optional = false
+        }
+        cover_image_data {
+          type =  string
+          description = "Cover image Base64."
+          optional = false
+        }
+        cover_image_key_frame_time {
+          type =  integer
+          description = "Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used."
+          optional = false
+        }
+        cover_image_url {
+          type =  string
+          description = "Cover image URL."
+          optional = false
+        }
+        media_id {
+          type =  string
+          description = ""
+          optional = true
+        }
+        index {
+          type =  integer
+          description = ""
+          optional = false
+        }
+        items {
+          type = array
+          items.type = PinMediaSourceImagesURLItem
+          description = "Array with image objects."
+          optional = true
+        }
+        is_affiliate_link {
+          type =  boolean
+          description = "This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  PinMediaSource {
+    title = PinMediaSource
+    description = PinMediaSource
+    implements = openapi_server.resourceTypes.PinMediaSource
+
+  }
+}

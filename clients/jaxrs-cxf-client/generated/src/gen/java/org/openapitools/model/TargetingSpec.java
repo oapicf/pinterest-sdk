@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.TargetingSpecSHOPPINGRETARGETING;
+import org.openapitools.model.TargetingSpecAgeBucket;
+import org.openapitools.model.TargetingSpecAppType;
+import org.openapitools.model.TargetingSpecGender;
+import org.openapitools.model.TargetingSpecShoppingRetargeting;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -12,85 +15,25 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Ad group targeting specification defining the ad group target audience. For example, `{\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"AGE_BUCKET\":[\"25-34\"]}`
+ * Ad group targeting specification defining the ad group target audience. For example, `{\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"MINIMUM_AGE\":\"18\", \"MAXIMUM_AGE\":\"65+\"}`
  */
-@ApiModel(description="Ad group targeting specification defining the ad group target audience. For example, `{\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"AGE_BUCKET\":[\"25-34\"]}`")
+@ApiModel(description="Ad group targeting specification defining the ad group target audience. For example, `{\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"MINIMUM_AGE\":\"18\", \"MAXIMUM_AGE\":\"65+\"}`")
 
 public class TargetingSpec  {
   
-public enum AGEBUCKETEnum {
-
-_18_24(String.valueOf("18-24")), _21_(String.valueOf("21+")), _25_34(String.valueOf("25-34")), _35_44(String.valueOf("35-44")), _45_49(String.valueOf("45-49")), _50_54(String.valueOf("50-54")), _55_64(String.valueOf("55-64")), _65_(String.valueOf("65+"));
-
-
-    private String value;
-
-    AGEBUCKETEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static AGEBUCKETEnum fromValue(String value) {
-        for (AGEBUCKETEnum b : AGEBUCKETEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
  /**
-  * Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted.
+  * **Legacy field.** Predefined age ranges. We recommend using MINIMUM_AGE and MAXIMUM_AGE instead for more flexible targeting. Cannot be combined with MINIMUM_AGE/MAXIMUM_AGE. If neither AGE_BUCKET nor MINIMUM_AGE/MAXIMUM_AGE are specified, all ages will be targeted.
   */
-  @ApiModelProperty(example = "[\"35-44\",\"50-54\"]", value = "Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted.")
+  @ApiModelProperty(example = "[\"35-44\",\"50-54\"]", value = "**Legacy field.** Predefined age ranges. We recommend using MINIMUM_AGE and MAXIMUM_AGE instead for more flexible targeting. Cannot be combined with MINIMUM_AGE/MAXIMUM_AGE. If neither AGE_BUCKET nor MINIMUM_AGE/MAXIMUM_AGE are specified, all ages will be targeted.")
 
-  private List<AGEBUCKETEnum> AGE_BUCKET;
-
-public enum APPTYPEEnum {
-
-ANDROID_MOBILE(String.valueOf("android_mobile")), ANDROID_TABLET(String.valueOf("android_tablet")), IPAD(String.valueOf("ipad")), IPHONE(String.valueOf("iphone")), WEB(String.valueOf("web")), WEB_MOBILE(String.valueOf("web_mobile"));
-
-
-    private String value;
-
-    APPTYPEEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static APPTYPEEnum fromValue(String value) {
-        for (APPTYPEEnum b : APPTYPEEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
+  private List<TargetingSpecAgeBucket> AGE_BUCKET;
 
  /**
   * Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted.
   */
   @ApiModelProperty(example = "[\"ipad\",\"iphone\"]", value = "Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted.")
 
-  private List<APPTYPEEnum> APPTYPE;
+  private List<TargetingSpecAppType> APPTYPE;
 
  /**
   * Excluded customer list IDs. Used to drive new customer acquisition goals. For example: [\"2542620905475\"]. Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_EXCLUDE field is missing, the default behavior in terms of ad delivery is that **No users will be excluded**.
@@ -106,42 +49,12 @@ ANDROID_MOBILE(String.valueOf("android_mobile")), ANDROID_TABLET(String.valueOf(
 
   private List<String> AUDIENCE_INCLUDE;
 
-public enum GENDEREnum {
-
-UNKNOWN(String.valueOf("unknown")), MALE(String.valueOf("male")), FEMALE(String.valueOf("female"));
-
-
-    private String value;
-
-    GENDEREnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static GENDEREnum fromValue(String value) {
-        for (GENDEREnum b : GENDEREnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
  /**
   * Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.
   */
   @ApiModelProperty(value = "Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.")
 
-  private List<GENDEREnum> GENDER;
+  private List<TargetingSpecGender> GENDER;
 
  /**
   * Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a> or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both. At least one of LOCATION or GEO must be specified. If the GEO field is missing, then only LOCATION values will be targeted (see LOCATION field below).
@@ -158,25 +71,39 @@ UNKNOWN(String.valueOf("unknown")), MALE(String.valueOf("male")), FEMALE(String.
   private List<String> INTEREST = new ArrayList<>();
 
  /**
-  * 24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be targeted, only english non-sublanguage will be targeted**.
+  * 24 ISO 639-1 two-letter language codes. If the LOCALE field is not included in the request, all languages are targeted.
   */
-  @ApiModelProperty(value = "24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be targeted, only english non-sublanguage will be targeted**.")
+  @ApiModelProperty(value = "24 ISO 639-1 two-letter language codes. If the LOCALE field is not included in the request, all languages are targeted.")
 
   private List<String> LOCALE;
 
  /**
-  * 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, click here. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
+  * 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a>. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
   */
-  @ApiModelProperty(value = "22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, click here. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).")
+  @ApiModelProperty(value = "22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a>. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).")
 
   private List<String> LOCATION;
+
+ /**
+  * Maximum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\", \"65+\". Must be used together with `MINIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
+  */
+  @ApiModelProperty(example = "65+", value = "Maximum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\", \"65+\". Must be used together with `MINIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.")
+
+  private String MAXIMUM_AGE;
+
+ /**
+  * Minimum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\". Note: 65+ is not allowed for minimum age. Must be used together with `MAXIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
+  */
+  @ApiModelProperty(example = "18", value = "Minimum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\". Note: 65+ is not allowed for minimum age. Must be used together with `MAXIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.")
+
+  private String MINIMUM_AGE;
 
  /**
   * Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting
   */
   @ApiModelProperty(value = "Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting")
 
-  private List<TargetingSpecSHOPPINGRETARGETING> SHOPPING_RETARGETING;
+  private List<TargetingSpecShoppingRetargeting> SHOPPING_RETARGETING;
 
 public enum TARGETINGSTRATEGYEnum {
 
@@ -215,24 +142,24 @@ CHOOSE_YOUR_OWN(String.valueOf("CHOOSE_YOUR_OWN")), FIND_NEW_CUSTOMERS(String.va
 
   private List<TARGETINGSTRATEGYEnum> TARGETING_STRATEGY;
  /**
-   * Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted.
+   * **Legacy field.** Predefined age ranges. We recommend using MINIMUM_AGE and MAXIMUM_AGE instead for more flexible targeting. Cannot be combined with MINIMUM_AGE/MAXIMUM_AGE. If neither AGE_BUCKET nor MINIMUM_AGE/MAXIMUM_AGE are specified, all ages will be targeted.
    * @return AGE_BUCKET
   **/
   @JsonProperty("AGE_BUCKET")
-  public List<AGEBUCKETEnum> getAGEBUCKET() {
+  public List<TargetingSpecAgeBucket> getAGEBUCKET() {
     return AGE_BUCKET;
   }
 
-  public void setAGEBUCKET(List<AGEBUCKETEnum> AGE_BUCKET) {
+  public void setAGEBUCKET(List<TargetingSpecAgeBucket> AGE_BUCKET) {
     this.AGE_BUCKET = AGE_BUCKET;
   }
 
-  public TargetingSpec AGE_BUCKET(List<AGEBUCKETEnum> AGE_BUCKET) {
+  public TargetingSpec AGE_BUCKET(List<TargetingSpecAgeBucket> AGE_BUCKET) {
     this.AGE_BUCKET = AGE_BUCKET;
     return this;
   }
 
-  public TargetingSpec addAGEBUCKETItem(AGEBUCKETEnum AGE_BUCKETItem) {
+  public TargetingSpec addAGEBUCKETItem(TargetingSpecAgeBucket AGE_BUCKETItem) {
     this.AGE_BUCKET.add(AGE_BUCKETItem);
     return this;
   }
@@ -242,20 +169,20 @@ CHOOSE_YOUR_OWN(String.valueOf("CHOOSE_YOUR_OWN")), FIND_NEW_CUSTOMERS(String.va
    * @return APPTYPE
   **/
   @JsonProperty("APPTYPE")
-  public List<APPTYPEEnum> getAPPTYPE() {
+  public List<TargetingSpecAppType> getAPPTYPE() {
     return APPTYPE;
   }
 
-  public void setAPPTYPE(List<APPTYPEEnum> APPTYPE) {
+  public void setAPPTYPE(List<TargetingSpecAppType> APPTYPE) {
     this.APPTYPE = APPTYPE;
   }
 
-  public TargetingSpec APPTYPE(List<APPTYPEEnum> APPTYPE) {
+  public TargetingSpec APPTYPE(List<TargetingSpecAppType> APPTYPE) {
     this.APPTYPE = APPTYPE;
     return this;
   }
 
-  public TargetingSpec addAPPTYPEItem(APPTYPEEnum APPTYPEItem) {
+  public TargetingSpec addAPPTYPEItem(TargetingSpecAppType APPTYPEItem) {
     this.APPTYPE.add(APPTYPEItem);
     return this;
   }
@@ -311,20 +238,20 @@ CHOOSE_YOUR_OWN(String.valueOf("CHOOSE_YOUR_OWN")), FIND_NEW_CUSTOMERS(String.va
    * @return GENDER
   **/
   @JsonProperty("GENDER")
-  public List<GENDEREnum> getGENDER() {
+  public List<TargetingSpecGender> getGENDER() {
     return GENDER;
   }
 
-  public void setGENDER(List<GENDEREnum> GENDER) {
+  public void setGENDER(List<TargetingSpecGender> GENDER) {
     this.GENDER = GENDER;
   }
 
-  public TargetingSpec GENDER(List<GENDEREnum> GENDER) {
+  public TargetingSpec GENDER(List<TargetingSpecGender> GENDER) {
     this.GENDER = GENDER;
     return this;
   }
 
-  public TargetingSpec addGENDERItem(GENDEREnum GENDERItem) {
+  public TargetingSpec addGENDERItem(TargetingSpecGender GENDERItem) {
     this.GENDER.add(GENDERItem);
     return this;
   }
@@ -376,7 +303,7 @@ CHOOSE_YOUR_OWN(String.valueOf("CHOOSE_YOUR_OWN")), FIND_NEW_CUSTOMERS(String.va
   }
 
  /**
-   * 24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be targeted, only english non-sublanguage will be targeted**.
+   * 24 ISO 639-1 two-letter language codes. If the LOCALE field is not included in the request, all languages are targeted.
    * @return LOCALE
   **/
   @JsonProperty("LOCALE")
@@ -399,7 +326,7 @@ CHOOSE_YOUR_OWN(String.valueOf("CHOOSE_YOUR_OWN")), FIND_NEW_CUSTOMERS(String.va
   }
 
  /**
-   * 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\&quot;US\&quot;, \&quot;807\&quot;]). For complete list, click here. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
+   * 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\&quot;US\&quot;, \&quot;807\&quot;]). For complete list, &lt;a href&#x3D;\&quot;https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\&quot; target&#x3D;\&quot;_blank\&quot;&gt;click here&lt;/a&gt;. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
    * @return LOCATION
   **/
   @JsonProperty("LOCATION")
@@ -422,24 +349,60 @@ CHOOSE_YOUR_OWN(String.valueOf("CHOOSE_YOUR_OWN")), FIND_NEW_CUSTOMERS(String.va
   }
 
  /**
+   * Maximum age to target (inclusive). Values: \&quot;18\&quot;, \&quot;19\&quot;, ..., \&quot;65\&quot;, \&quot;65+\&quot;. Must be used together with &#x60;MINIMUM_AGE&#x60;. Cannot be combined with &#x60;AGE_BUCKET&#x60;. If neither &#x60;MINIMUM_AGE&#x60;/&#x60;MAXIMUM_AGE&#x60; nor &#x60;AGE_BUCKET&#x60; are specified, all ages will be targeted.
+   * @return MAXIMUM_AGE
+  **/
+  @JsonProperty("MAXIMUM_AGE")
+  public String getMAXIMUMAGE() {
+    return MAXIMUM_AGE;
+  }
+
+  public void setMAXIMUMAGE(String MAXIMUM_AGE) {
+    this.MAXIMUM_AGE = MAXIMUM_AGE;
+  }
+
+  public TargetingSpec MAXIMUM_AGE(String MAXIMUM_AGE) {
+    this.MAXIMUM_AGE = MAXIMUM_AGE;
+    return this;
+  }
+
+ /**
+   * Minimum age to target (inclusive). Values: \&quot;18\&quot;, \&quot;19\&quot;, ..., \&quot;65\&quot;. Note: 65+ is not allowed for minimum age. Must be used together with &#x60;MAXIMUM_AGE&#x60;. Cannot be combined with &#x60;AGE_BUCKET&#x60;. If neither &#x60;MINIMUM_AGE&#x60;/&#x60;MAXIMUM_AGE&#x60; nor &#x60;AGE_BUCKET&#x60; are specified, all ages will be targeted.
+   * @return MINIMUM_AGE
+  **/
+  @JsonProperty("MINIMUM_AGE")
+  public String getMINIMUMAGE() {
+    return MINIMUM_AGE;
+  }
+
+  public void setMINIMUMAGE(String MINIMUM_AGE) {
+    this.MINIMUM_AGE = MINIMUM_AGE;
+  }
+
+  public TargetingSpec MINIMUM_AGE(String MINIMUM_AGE) {
+    this.MINIMUM_AGE = MINIMUM_AGE;
+    return this;
+  }
+
+ /**
    * Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting
    * @return SHOPPING_RETARGETING
   **/
   @JsonProperty("SHOPPING_RETARGETING")
-  public List<TargetingSpecSHOPPINGRETARGETING> getSHOPPINGRETARGETING() {
+  public List<TargetingSpecShoppingRetargeting> getSHOPPINGRETARGETING() {
     return SHOPPING_RETARGETING;
   }
 
-  public void setSHOPPINGRETARGETING(List<TargetingSpecSHOPPINGRETARGETING> SHOPPING_RETARGETING) {
+  public void setSHOPPINGRETARGETING(List<TargetingSpecShoppingRetargeting> SHOPPING_RETARGETING) {
     this.SHOPPING_RETARGETING = SHOPPING_RETARGETING;
   }
 
-  public TargetingSpec SHOPPING_RETARGETING(List<TargetingSpecSHOPPINGRETARGETING> SHOPPING_RETARGETING) {
+  public TargetingSpec SHOPPING_RETARGETING(List<TargetingSpecShoppingRetargeting> SHOPPING_RETARGETING) {
     this.SHOPPING_RETARGETING = SHOPPING_RETARGETING;
     return this;
   }
 
-  public TargetingSpec addSHOPPINGRETARGETINGItem(TargetingSpecSHOPPINGRETARGETING SHOPPING_RETARGETINGItem) {
+  public TargetingSpec addSHOPPINGRETARGETINGItem(TargetingSpecShoppingRetargeting SHOPPING_RETARGETINGItem) {
     this.SHOPPING_RETARGETING.add(SHOPPING_RETARGETINGItem);
     return this;
   }
@@ -485,13 +448,15 @@ CHOOSE_YOUR_OWN(String.valueOf("CHOOSE_YOUR_OWN")), FIND_NEW_CUSTOMERS(String.va
         Objects.equals(this.INTEREST, targetingSpec.INTEREST) &&
         Objects.equals(this.LOCALE, targetingSpec.LOCALE) &&
         Objects.equals(this.LOCATION, targetingSpec.LOCATION) &&
+        Objects.equals(this.MAXIMUM_AGE, targetingSpec.MAXIMUM_AGE) &&
+        Objects.equals(this.MINIMUM_AGE, targetingSpec.MINIMUM_AGE) &&
         Objects.equals(this.SHOPPING_RETARGETING, targetingSpec.SHOPPING_RETARGETING) &&
         Objects.equals(this.TARGETING_STRATEGY, targetingSpec.TARGETING_STRATEGY);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(AGE_BUCKET, APPTYPE, AUDIENCE_EXCLUDE, AUDIENCE_INCLUDE, GENDER, GEO, INTEREST, LOCALE, LOCATION, SHOPPING_RETARGETING, TARGETING_STRATEGY);
+    return Objects.hash(AGE_BUCKET, APPTYPE, AUDIENCE_EXCLUDE, AUDIENCE_INCLUDE, GENDER, GEO, INTEREST, LOCALE, LOCATION, MAXIMUM_AGE, MINIMUM_AGE, SHOPPING_RETARGETING, TARGETING_STRATEGY);
   }
 
   @Override
@@ -508,6 +473,8 @@ CHOOSE_YOUR_OWN(String.valueOf("CHOOSE_YOUR_OWN")), FIND_NEW_CUSTOMERS(String.va
     sb.append("    INTEREST: ").append(toIndentedString(INTEREST)).append("\n");
     sb.append("    LOCALE: ").append(toIndentedString(LOCALE)).append("\n");
     sb.append("    LOCATION: ").append(toIndentedString(LOCATION)).append("\n");
+    sb.append("    MAXIMUM_AGE: ").append(toIndentedString(MAXIMUM_AGE)).append("\n");
+    sb.append("    MINIMUM_AGE: ").append(toIndentedString(MINIMUM_AGE)).append("\n");
     sb.append("    SHOPPING_RETARGETING: ").append(toIndentedString(SHOPPING_RETARGETING)).append("\n");
     sb.append("    TARGETING_STRATEGY: ").append(toIndentedString(TARGETING_STRATEGY)).append("\n");
     sb.append("}");

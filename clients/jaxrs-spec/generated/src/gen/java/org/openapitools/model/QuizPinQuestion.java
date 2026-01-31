@@ -23,15 +23,50 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "A specific quiz inquiry.")
 @JsonTypeName("QuizPinQuestion")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class QuizPinQuestion   {
+  private @Valid List<@Valid QuizPinOption> options = new ArrayList<>();
   private BigDecimal questionId;
   private String questionText;
-  private @Valid List<@Valid QuizPinOption> options = new ArrayList<>();
 
   public QuizPinQuestion() {
   }
 
+  /**
+   **/
+  public QuizPinQuestion options(List<@Valid QuizPinOption> options) {
+    this.options = options;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("options")
+  @Valid public List<@Valid QuizPinOption> getOptions() {
+    return options;
+  }
+
+  @JsonProperty("options")
+  public void setOptions(List<@Valid QuizPinOption> options) {
+    this.options = options;
+  }
+
+  public QuizPinQuestion addOptionsItem(QuizPinOption optionsItem) {
+    if (this.options == null) {
+      this.options = new ArrayList<>();
+    }
+
+    this.options.add(optionsItem);
+    return this;
+  }
+
+  public QuizPinQuestion removeOptionsItem(QuizPinOption optionsItem) {
+    if (optionsItem != null && this.options != null) {
+      this.options.remove(optionsItem);
+    }
+
+    return this;
+  }
   /**
    **/
   public QuizPinQuestion questionId(BigDecimal questionId) {
@@ -70,41 +105,6 @@ public class QuizPinQuestion   {
     this.questionText = questionText;
   }
 
-  /**
-   **/
-  public QuizPinQuestion options(List<@Valid QuizPinOption> options) {
-    this.options = options;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("options")
-  @Valid public List<@Valid QuizPinOption> getOptions() {
-    return options;
-  }
-
-  @JsonProperty("options")
-  public void setOptions(List<@Valid QuizPinOption> options) {
-    this.options = options;
-  }
-
-  public QuizPinQuestion addOptionsItem(QuizPinOption optionsItem) {
-    if (this.options == null) {
-      this.options = new ArrayList<>();
-    }
-
-    this.options.add(optionsItem);
-    return this;
-  }
-
-  public QuizPinQuestion removeOptionsItem(QuizPinOption optionsItem) {
-    if (optionsItem != null && this.options != null) {
-      this.options.remove(optionsItem);
-    }
-
-    return this;
-  }
 
   @Override
   public boolean equals(Object o) {
@@ -115,14 +115,14 @@ public class QuizPinQuestion   {
       return false;
     }
     QuizPinQuestion quizPinQuestion = (QuizPinQuestion) o;
-    return Objects.equals(this.questionId, quizPinQuestion.questionId) &&
-        Objects.equals(this.questionText, quizPinQuestion.questionText) &&
-        Objects.equals(this.options, quizPinQuestion.options);
+    return Objects.equals(this.options, quizPinQuestion.options) &&
+        Objects.equals(this.questionId, quizPinQuestion.questionId) &&
+        Objects.equals(this.questionText, quizPinQuestion.questionText);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(questionId, questionText, options);
+    return Objects.hash(options, questionId, questionText);
   }
 
   @Override
@@ -130,9 +130,9 @@ public class QuizPinQuestion   {
     StringBuilder sb = new StringBuilder();
     sb.append("class QuizPinQuestion {\n");
     
+    sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("    questionId: ").append(toIndentedString(questionId)).append("\n");
     sb.append("    questionText: ").append(toIndentedString(questionText)).append("\n");
-    sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("}");
     return sb.toString();
   }

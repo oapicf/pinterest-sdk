@@ -8,11 +8,11 @@
 
 (def catalogs-product-group-create-request-data
   {
-   (ds/req :name) string?
    (ds/opt :description) string?
-   (ds/opt :is_featured) boolean?
-   (ds/req :filters) catalogs-product-group-filters-request-spec
    (ds/req :feed_id) string?
+   (ds/req :filters) catalogs-product-group-filters-request-spec
+   (ds/opt :is_featured) boolean?
+   (ds/req :name) string?
    })
 
 (def catalogs-product-group-create-request-spec

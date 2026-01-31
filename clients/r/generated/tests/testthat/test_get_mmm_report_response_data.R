@@ -12,16 +12,16 @@ test_that("report_status", {
   #expect_equal(model.instance$`report_status`, "EXPECTED_RESULT")
 })
 
-test_that("url", {
-  # tests for the property `url` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`url`, "EXPECTED_RESULT")
-})
-
 test_that("size", {
   # tests for the property `size` (numeric)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`size`, "EXPECTED_RESULT")
+})
+
+test_that("url", {
+  # tests for the property `url` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`url`, "EXPECTED_RESULT")
 })

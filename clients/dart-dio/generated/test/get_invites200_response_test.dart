@@ -7,14 +7,14 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(GetInvites200Response, () {
-    // List of invite and request data.
-    // BuiltList<InviteResponse> items
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // List of invite and request data.
+    // BuiltList<InviteResponse> items
+    test('to test the property `items`', () async {
       // TODO
     });
 

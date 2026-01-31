@@ -9,10 +9,10 @@ test_that("ConversionTagsCreate", {
   # tests for ConversionTagsCreate
   # base path: https://api.pinterest.com/v5
   # Create conversion tag
-  # Create a conversion tag, also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Pinterest tag&lt;/a&gt;, with the option to enable enhanced match.&lt;p/&gt; The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.&lt;p/&gt; For more information, see:&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot;&gt;Set up the Pinterest tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/\&quot;&gt;Pinterest Tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/#enhanced-match\&quot;&gt;Enhanced match&lt;/a&gt;
+  # Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account&#39;s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
   # @param ad_account_id character Unique identifier of an ad account.
-  # @param conversion_tag_create ConversionTagCreate Conversion Tag to create
-  # @return [ConversionTagResponse]
+  # @param conversion_tag_create ConversionTagCreate 
+  # @return [ConversionTag]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -25,7 +25,7 @@ test_that("ConversionTagsGet", {
   # Get information about an existing conversion tag.
   # @param ad_account_id character Unique identifier of an ad account.
   # @param conversion_tag_id character Id of the conversion tag.
-  # @return [ConversionTagResponse]
+  # @return [ConversionTag]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -34,11 +34,11 @@ test_that("ConversionTagsGet", {
 test_that("ConversionTagsList", {
   # tests for ConversionTagsList
   # base path: https://api.pinterest.com/v5
-  # Get conversion tags
+  # List conversion tags
   # List conversion tags associated with an ad account.
   # @param ad_account_id character Unique identifier of an ad account.
-  # @param filter_deleted character Filter out deleted tags. (optional)
-  # @return [ConversionTagListResponse]
+  # @param filter_deleted character Filter by deleted status (optional)
+  # @return [ConversionTagsList200Response]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")

@@ -27,7 +27,7 @@ import java.util.List;
  */
 @ApiModel(description = "A request object that can have multiple operations on a single batch")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsCreativeAssetsBatchRequest.class, name = "CREATIVE_ASSETS"),
@@ -36,6 +36,9 @@ import java.util.List;
 })
 
 public class CatalogsVerticalBatchRequest   {
+  @JsonProperty("catalog_id")
+  private String catalogId;
+
   /**
    * Gets or Sets catalogType
    */
@@ -70,6 +73,10 @@ public class CatalogsVerticalBatchRequest   {
 
   @JsonProperty("country")
   private Country country;
+
+  @JsonProperty("items")
+  
+  private List<CatalogsCreativeAssetsBatchItem> items = new ArrayList<>();
 
   /**
    * We recommend using the CatalogsLocale values.
@@ -315,12 +322,23 @@ public class CatalogsVerticalBatchRequest   {
   @JsonProperty("language")
   private LanguageEnum language;
 
-  @JsonProperty("items")
-  
-  private List<CatalogsCreativeAssetsBatchItem> items = new ArrayList<>();
+  public CatalogsVerticalBatchRequest catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
 
-  @JsonProperty("catalog_id")
-  private String catalogId;
+  /**
+   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+   * @return catalogId
+   */
+  @ApiModelProperty(example = "2680059592705", value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
+  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
 
   public CatalogsVerticalBatchRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
@@ -358,24 +376,6 @@ public class CatalogsVerticalBatchRequest   {
     this.country = country;
   }
 
-  public CatalogsVerticalBatchRequest language(LanguageEnum language) {
-    this.language = language;
-    return this;
-  }
-
-  /**
-   * We recommend using the CatalogsLocale values.
-   * @return language
-   */
-  @ApiModelProperty(required = true, value = "We recommend using the CatalogsLocale values.")
-  public LanguageEnum getLanguage() {
-    return language;
-  }
-
-  public void setLanguage(LanguageEnum language) {
-    this.language = language;
-  }
-
   public CatalogsVerticalBatchRequest items(List<CatalogsCreativeAssetsBatchItem> items) {
     this.items = items;
     return this;
@@ -402,22 +402,22 @@ public class CatalogsVerticalBatchRequest   {
     this.items = items;
   }
 
-  public CatalogsVerticalBatchRequest catalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public CatalogsVerticalBatchRequest language(LanguageEnum language) {
+    this.language = language;
     return this;
   }
 
   /**
-   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-   * @return catalogId
+   * We recommend using the CatalogsLocale values.
+   * @return language
    */
-  @ApiModelProperty(example = "2680059592705", value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
-  public String getCatalogId() {
-    return catalogId;
+  @ApiModelProperty(required = true, value = "We recommend using the CatalogsLocale values.")
+  public LanguageEnum getLanguage() {
+    return language;
   }
 
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public void setLanguage(LanguageEnum language) {
+    this.language = language;
   }
 
 
@@ -430,16 +430,16 @@ public class CatalogsVerticalBatchRequest   {
       return false;
     }
     CatalogsVerticalBatchRequest catalogsVerticalBatchRequest = (CatalogsVerticalBatchRequest) o;
-    return Objects.equals(this.catalogType, catalogsVerticalBatchRequest.catalogType) &&
+    return Objects.equals(this.catalogId, catalogsVerticalBatchRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsVerticalBatchRequest.catalogType) &&
         Objects.equals(this.country, catalogsVerticalBatchRequest.country) &&
-        Objects.equals(this.language, catalogsVerticalBatchRequest.language) &&
         Objects.equals(this.items, catalogsVerticalBatchRequest.items) &&
-        Objects.equals(this.catalogId, catalogsVerticalBatchRequest.catalogId);
+        Objects.equals(this.language, catalogsVerticalBatchRequest.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, country, language, items, catalogId);
+    return Objects.hash(catalogId, catalogType, country, items, language);
   }
 
   @Override
@@ -447,11 +447,11 @@ public class CatalogsVerticalBatchRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsVerticalBatchRequest {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();
   }

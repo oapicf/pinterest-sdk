@@ -21,16 +21,16 @@ module CatalogsRetailFeed =
     CreatedAt : DateTime;
     Id : string;
     UpdatedAt : DateTime;
-    Name : string option;
-    Format : CatalogsFormat;
     CatalogType : CatalogsType;
     Credentials : CatalogsFeedCredentials;
-    Location : string;
-    PreferredProcessingSchedule : CatalogsFeedProcessingSchedule;
-    Status : CatalogsStatus;
+    DefaultAvailability : ProductAvailabilityType;
+    DefaultCountry : Country;
     DefaultCurrency : NullableCurrency;
     DefaultLocale : string;
-    DefaultCountry : Country;
-    DefaultAvailability : ProductAvailabilityType;
+    Format : CatalogsFormat;
+    Location : string;
+    Name : string option;
+    PreferredProcessingSchedule : CatalogsFeedProcessingSchedule;
+    Status : CatalogsStatus;
   }
   //#endregion

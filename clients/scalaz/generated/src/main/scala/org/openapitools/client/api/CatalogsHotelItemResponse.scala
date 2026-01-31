@@ -12,12 +12,12 @@ import org.joda.time.DateTime
 import CatalogsHotelItemResponse._
 
 case class CatalogsHotelItemResponse (
-  catalogType: CatalogsType,
+  attributes: Option[CatalogsHotelAttributes],
+catalogType: CatalogsType,
 /* The catalog hotel id in the merchant namespace */
   hotelId: Option[String],
 /* The pins mapped to the item */
-  pins: Option[List[Pin]],
-attributes: Option[CatalogsHotelAttributes])
+  pins: Option[List[Pin]])
 
 object CatalogsHotelItemResponse {
   import DateTimeCodecs._

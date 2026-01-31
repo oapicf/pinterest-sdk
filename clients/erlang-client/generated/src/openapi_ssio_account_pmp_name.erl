@@ -5,13 +5,13 @@
 -export_type([openapi_ssio_account_pmp_name/0]).
 
 -type openapi_ssio_account_pmp_name() ::
-    #{ 'name' => binary(),
-       'id' => binary()
+    #{ 'id' => binary(),
+       'name' => binary()
      }.
 
-encode(#{ 'name' := Name,
-          'id' := Id
+encode(#{ 'id' := Id,
+          'name' := Name
         }) ->
-    #{ 'name' => Name,
-       'id' => Id
+    #{ 'id' => Id,
+       'name' => Name
      }.

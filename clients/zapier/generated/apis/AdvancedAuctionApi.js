@@ -94,7 +94,7 @@ module.exports = {
                     return results;
                 })
             },
-            sample: samples['AdvancedAuctionProcessedItemsSample']
+            sample: samples['AdvancedAuctionProcessedItemsSample']samples['AdvancedAuctionProcessedItemsSample']
         }
     },
 }

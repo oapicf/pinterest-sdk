@@ -14,12 +14,12 @@ module CatalogsHotelProductGroupUpdateRequest =
   type CatalogsHotelProductGroupUpdateRequest = {
     [<JsonProperty(PropertyName = "catalog_type")>]
     CatalogType : string;
-    [<JsonProperty(PropertyName = "name")>]
-    Name : string;
     [<JsonProperty(PropertyName = "description")>]
     Description : string option;
     [<JsonProperty(PropertyName = "filters")>]
     Filters : CatalogsHotelProductGroupFilters;
+    [<JsonProperty(PropertyName = "name")>]
+    Name : string;
   }
 
   //#endregion

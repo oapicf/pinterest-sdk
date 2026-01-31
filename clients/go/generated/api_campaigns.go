@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -25,288 +25,14 @@ import (
 // CampaignsAPIService CampaignsAPI service
 type CampaignsAPIService service
 
-type ApiCampaignTargetingAnalyticsGetRequest struct {
+type ApiAdPinsAnalyticsRequest struct {
 	ctx context.Context
 	ApiService *CampaignsAPIService
 	adAccountId string
-	campaignIds *[]string
+	campaignId *string
+	pinIds *[]string
 	startDate *string
 	endDate *string
-	targetingTypes *[]AdsAnalyticsCampaignTargetingType
-	columns *[]string
-	granularity *Granularity
-	clickWindowDays *int32
-	engagementWindowDays *int32
-	viewWindowDays *int32
-	conversionReportTime *string
-	attributionTypes *ConversionReportAttributionType
-}
-
-// List of Campaign Ids to use to filter the results.
-func (r ApiCampaignTargetingAnalyticsGetRequest) CampaignIds(campaignIds []string) ApiCampaignTargetingAnalyticsGetRequest {
-	r.campaignIds = &campaignIds
-	return r
-}
-
-// Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
-func (r ApiCampaignTargetingAnalyticsGetRequest) StartDate(startDate string) ApiCampaignTargetingAnalyticsGetRequest {
-	r.startDate = &startDate
-	return r
-}
-
-// Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-func (r ApiCampaignTargetingAnalyticsGetRequest) EndDate(endDate string) ApiCampaignTargetingAnalyticsGetRequest {
-	r.endDate = &endDate
-	return r
-}
-
-// Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
-func (r ApiCampaignTargetingAnalyticsGetRequest) TargetingTypes(targetingTypes []AdsAnalyticsCampaignTargetingType) ApiCampaignTargetingAnalyticsGetRequest {
-	r.targetingTypes = &targetingTypes
-	return r
-}
-
-// Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
-func (r ApiCampaignTargetingAnalyticsGetRequest) Columns(columns []string) ApiCampaignTargetingAnalyticsGetRequest {
-	r.columns = &columns
-	return r
-}
-
-// TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
-func (r ApiCampaignTargetingAnalyticsGetRequest) Granularity(granularity Granularity) ApiCampaignTargetingAnalyticsGetRequest {
-	r.granularity = &granularity
-	return r
-}
-
-// Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
-func (r ApiCampaignTargetingAnalyticsGetRequest) ClickWindowDays(clickWindowDays int32) ApiCampaignTargetingAnalyticsGetRequest {
-	r.clickWindowDays = &clickWindowDays
-	return r
-}
-
-// Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
-func (r ApiCampaignTargetingAnalyticsGetRequest) EngagementWindowDays(engagementWindowDays int32) ApiCampaignTargetingAnalyticsGetRequest {
-	r.engagementWindowDays = &engagementWindowDays
-	return r
-}
-
-// Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.
-func (r ApiCampaignTargetingAnalyticsGetRequest) ViewWindowDays(viewWindowDays int32) ApiCampaignTargetingAnalyticsGetRequest {
-	r.viewWindowDays = &viewWindowDays
-	return r
-}
-
-// The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
-func (r ApiCampaignTargetingAnalyticsGetRequest) ConversionReportTime(conversionReportTime string) ApiCampaignTargetingAnalyticsGetRequest {
-	r.conversionReportTime = &conversionReportTime
-	return r
-}
-
-// List of types of attribution for the conversion report
-func (r ApiCampaignTargetingAnalyticsGetRequest) AttributionTypes(attributionTypes ConversionReportAttributionType) ApiCampaignTargetingAnalyticsGetRequest {
-	r.attributionTypes = &attributionTypes
-	return r
-}
-
-func (r ApiCampaignTargetingAnalyticsGetRequest) Execute() (*MetricsResponse, *http.Response, error) {
-	return r.ApiService.CampaignTargetingAnalyticsGetExecute(r)
-}
-
-/*
-CampaignTargetingAnalyticsGet Get targeting analytics for campaigns
-
-Get targeting analytics for one or more campaigns.
-For the requested account and metrics, the response will include the requested metric information
-(e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. "age_bucket") for applicable values (e.g. "45-49"). <p/>
-- The token's user_account must either be the Owner of the specified ad account, or have one
-of the necessary roles granted to them via
-<a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager.
-- If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days.
-- If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param adAccountId Unique identifier of an ad account.
- @return ApiCampaignTargetingAnalyticsGetRequest
-*/
-func (a *CampaignsAPIService) CampaignTargetingAnalyticsGet(ctx context.Context, adAccountId string) ApiCampaignTargetingAnalyticsGetRequest {
-	return ApiCampaignTargetingAnalyticsGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		adAccountId: adAccountId,
-	}
-}
-
-// Execute executes the request
-//  @return MetricsResponse
-func (a *CampaignsAPIService) CampaignTargetingAnalyticsGetExecute(r ApiCampaignTargetingAnalyticsGetRequest) (*MetricsResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MetricsResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CampaignsAPIService.CampaignTargetingAnalyticsGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/ad_accounts/{ad_account_id}/campaigns/targeting_analytics"
-	localVarPath = strings.Replace(localVarPath, "{"+"ad_account_id"+"}", url.PathEscape(parameterValueToString(r.adAccountId, "adAccountId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if strlen(r.adAccountId) > 18 {
-		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
-	}
-	if r.campaignIds == nil {
-		return localVarReturnValue, nil, reportError("campaignIds is required and must be specified")
-	}
-	if len(*r.campaignIds) < 1 {
-		return localVarReturnValue, nil, reportError("campaignIds must have at least 1 elements")
-	}
-	if len(*r.campaignIds) > 100 {
-		return localVarReturnValue, nil, reportError("campaignIds must have less than 100 elements")
-	}
-	if r.startDate == nil {
-		return localVarReturnValue, nil, reportError("startDate is required and must be specified")
-	}
-	if r.endDate == nil {
-		return localVarReturnValue, nil, reportError("endDate is required and must be specified")
-	}
-	if r.targetingTypes == nil {
-		return localVarReturnValue, nil, reportError("targetingTypes is required and must be specified")
-	}
-	if len(*r.targetingTypes) < 1 {
-		return localVarReturnValue, nil, reportError("targetingTypes must have at least 1 elements")
-	}
-	if len(*r.targetingTypes) > 14 {
-		return localVarReturnValue, nil, reportError("targetingTypes must have less than 14 elements")
-	}
-	if r.columns == nil {
-		return localVarReturnValue, nil, reportError("columns is required and must be specified")
-	}
-	if r.granularity == nil {
-		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
-	}
-
-	{
-		t := *r.campaignIds
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", t, "form", "multi")
-		}
-	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "targeting_types", r.targetingTypes, "form", "csv")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "columns", r.columns, "form", "csv")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
-	if r.clickWindowDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "click_window_days", r.clickWindowDays, "form", "")
-	} else {
-        var defaultValue int32 = 30
-        parameterAddToHeaderOrQuery(localVarQueryParams, "click_window_days", defaultValue, "form", "")
-        r.clickWindowDays = &defaultValue
-	}
-	if r.engagementWindowDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "engagement_window_days", r.engagementWindowDays, "form", "")
-	} else {
-        var defaultValue int32 = 30
-        parameterAddToHeaderOrQuery(localVarQueryParams, "engagement_window_days", defaultValue, "form", "")
-        r.engagementWindowDays = &defaultValue
-	}
-	if r.viewWindowDays != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "view_window_days", r.viewWindowDays, "form", "")
-	} else {
-        var defaultValue int32 = 1
-        parameterAddToHeaderOrQuery(localVarQueryParams, "view_window_days", defaultValue, "form", "")
-        r.viewWindowDays = &defaultValue
-	}
-	if r.conversionReportTime != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", r.conversionReportTime, "form", "")
-	} else {
-        var defaultValue string = "TIME_OF_AD_ACTION"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", defaultValue, "form", "")
-        r.conversionReportTime = &defaultValue
-	}
-	if r.attributionTypes != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "attribution_types", r.attributionTypes, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiCampaignsAnalyticsRequest struct {
-	ctx context.Context
-	ApiService *CampaignsAPIService
-	adAccountId string
-	startDate *string
-	endDate *string
-	campaignIds *[]string
 	columns *[]string
 	granularity *Granularity
 	clickWindowDays *int32
@@ -315,78 +41,84 @@ type ApiCampaignsAnalyticsRequest struct {
 	conversionReportTime *string
 }
 
+// Campaign Id to use to filter the results.
+func (r ApiAdPinsAnalyticsRequest) CampaignId(campaignId string) ApiAdPinsAnalyticsRequest {
+	r.campaignId = &campaignId
+	return r
+}
+
+// List of Pin IDs.
+func (r ApiAdPinsAnalyticsRequest) PinIds(pinIds []string) ApiAdPinsAnalyticsRequest {
+	r.pinIds = &pinIds
+	return r
+}
+
 // Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
-func (r ApiCampaignsAnalyticsRequest) StartDate(startDate string) ApiCampaignsAnalyticsRequest {
+func (r ApiAdPinsAnalyticsRequest) StartDate(startDate string) ApiAdPinsAnalyticsRequest {
 	r.startDate = &startDate
 	return r
 }
 
 // Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-func (r ApiCampaignsAnalyticsRequest) EndDate(endDate string) ApiCampaignsAnalyticsRequest {
+func (r ApiAdPinsAnalyticsRequest) EndDate(endDate string) ApiAdPinsAnalyticsRequest {
 	r.endDate = &endDate
 	return r
 }
 
-// List of Campaign Ids to use to filter the results.
-func (r ApiCampaignsAnalyticsRequest) CampaignIds(campaignIds []string) ApiCampaignsAnalyticsRequest {
-	r.campaignIds = &campaignIds
-	return r
-}
-
 // Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
-func (r ApiCampaignsAnalyticsRequest) Columns(columns []string) ApiCampaignsAnalyticsRequest {
+func (r ApiAdPinsAnalyticsRequest) Columns(columns []string) ApiAdPinsAnalyticsRequest {
 	r.columns = &columns
 	return r
 }
 
 // TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
-func (r ApiCampaignsAnalyticsRequest) Granularity(granularity Granularity) ApiCampaignsAnalyticsRequest {
+func (r ApiAdPinsAnalyticsRequest) Granularity(granularity Granularity) ApiAdPinsAnalyticsRequest {
 	r.granularity = &granularity
 	return r
 }
 
 // Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
-func (r ApiCampaignsAnalyticsRequest) ClickWindowDays(clickWindowDays int32) ApiCampaignsAnalyticsRequest {
+func (r ApiAdPinsAnalyticsRequest) ClickWindowDays(clickWindowDays int32) ApiAdPinsAnalyticsRequest {
 	r.clickWindowDays = &clickWindowDays
 	return r
 }
 
-// Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
-func (r ApiCampaignsAnalyticsRequest) EngagementWindowDays(engagementWindowDays int32) ApiCampaignsAnalyticsRequest {
+// Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.
+func (r ApiAdPinsAnalyticsRequest) EngagementWindowDays(engagementWindowDays int32) ApiAdPinsAnalyticsRequest {
 	r.engagementWindowDays = &engagementWindowDays
 	return r
 }
 
 // Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.
-func (r ApiCampaignsAnalyticsRequest) ViewWindowDays(viewWindowDays int32) ApiCampaignsAnalyticsRequest {
+func (r ApiAdPinsAnalyticsRequest) ViewWindowDays(viewWindowDays int32) ApiAdPinsAnalyticsRequest {
 	r.viewWindowDays = &viewWindowDays
 	return r
 }
 
 // The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
-func (r ApiCampaignsAnalyticsRequest) ConversionReportTime(conversionReportTime string) ApiCampaignsAnalyticsRequest {
+func (r ApiAdPinsAnalyticsRequest) ConversionReportTime(conversionReportTime string) ApiAdPinsAnalyticsRequest {
 	r.conversionReportTime = &conversionReportTime
 	return r
 }
 
-func (r ApiCampaignsAnalyticsRequest) Execute() ([]CampaignsAnalyticsResponseInner, *http.Response, error) {
-	return r.ApiService.CampaignsAnalyticsExecute(r)
+func (r ApiAdPinsAnalyticsRequest) Execute() ([]AdPinAnalytics, *http.Response, error) {
+	return r.ApiService.AdPinsAnalyticsExecute(r)
 }
 
 /*
-CampaignsAnalytics Get campaign analytics
+AdPinsAnalytics Get pins analytics
 
-Get analytics for the specified campaigns in the specified <code>ad_account_id</code>, filtered by the specified options.
+Get analytics for the pins given a campaign and pins in the specified <code>ad_account_id</code>, filtered by the specified options.
 - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager.
 - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days.
-- If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+- If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. Data will not be provided for conversion metrics but will be available for non-conversion metrics.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
- @return ApiCampaignsAnalyticsRequest
+ @return ApiAdPinsAnalyticsRequest
 */
-func (a *CampaignsAPIService) CampaignsAnalytics(ctx context.Context, adAccountId string) ApiCampaignsAnalyticsRequest {
-	return ApiCampaignsAnalyticsRequest{
+func (a *CampaignsAPIService) AdPinsAnalytics(ctx context.Context, adAccountId string) ApiAdPinsAnalyticsRequest {
+	return ApiAdPinsAnalyticsRequest{
 		ApiService: a,
 		ctx: ctx,
 		adAccountId: adAccountId,
@@ -394,21 +126,21 @@ func (a *CampaignsAPIService) CampaignsAnalytics(ctx context.Context, adAccountI
 }
 
 // Execute executes the request
-//  @return []CampaignsAnalyticsResponseInner
-func (a *CampaignsAPIService) CampaignsAnalyticsExecute(r ApiCampaignsAnalyticsRequest) ([]CampaignsAnalyticsResponseInner, *http.Response, error) {
+//  @return []AdPinAnalytics
+func (a *CampaignsAPIService) AdPinsAnalyticsExecute(r ApiAdPinsAnalyticsRequest) ([]AdPinAnalytics, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []CampaignsAnalyticsResponseInner
+		localVarReturnValue  []AdPinAnalytics
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CampaignsAPIService.CampaignsAnalytics")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CampaignsAPIService.AdPinsAnalytics")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/ad_accounts/{ad_account_id}/campaigns/analytics"
+	localVarPath := localBasePath + "/ad_accounts/{ad_account_id}/pins/analytics"
 	localVarPath = strings.Replace(localVarPath, "{"+"ad_account_id"+"}", url.PathEscape(parameterValueToString(r.adAccountId, "adAccountId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -417,20 +149,26 @@ func (a *CampaignsAPIService) CampaignsAnalyticsExecute(r ApiCampaignsAnalyticsR
 	if strlen(r.adAccountId) > 18 {
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
+	if r.campaignId == nil {
+		return localVarReturnValue, nil, reportError("campaignId is required and must be specified")
+	}
+	if strlen(*r.campaignId) > 18 {
+		return localVarReturnValue, nil, reportError("campaignId must have less than 18 elements")
+	}
+	if r.pinIds == nil {
+		return localVarReturnValue, nil, reportError("pinIds is required and must be specified")
+	}
+	if len(*r.pinIds) < 1 {
+		return localVarReturnValue, nil, reportError("pinIds must have at least 1 elements")
+	}
+	if len(*r.pinIds) > 100 {
+		return localVarReturnValue, nil, reportError("pinIds must have less than 100 elements")
+	}
 	if r.startDate == nil {
 		return localVarReturnValue, nil, reportError("startDate is required and must be specified")
 	}
 	if r.endDate == nil {
 		return localVarReturnValue, nil, reportError("endDate is required and must be specified")
-	}
-	if r.campaignIds == nil {
-		return localVarReturnValue, nil, reportError("campaignIds is required and must be specified")
-	}
-	if len(*r.campaignIds) < 1 {
-		return localVarReturnValue, nil, reportError("campaignIds must have at least 1 elements")
-	}
-	if len(*r.campaignIds) > 100 {
-		return localVarReturnValue, nil, reportError("campaignIds must have less than 100 elements")
 	}
 	if r.columns == nil {
 		return localVarReturnValue, nil, reportError("columns is required and must be specified")
@@ -439,19 +177,20 @@ func (a *CampaignsAPIService) CampaignsAnalyticsExecute(r ApiCampaignsAnalyticsR
 		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_id", r.campaignId, "form", "")
 	{
-		t := *r.campaignIds
+		t := *r.pinIds
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", s.Index(i).Interface(), "form", "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "pin_ids", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", t, "form", "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "pin_ids", t, "form", "multi")
 		}
 	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "form", "")
 	parameterAddToHeaderOrQuery(localVarQueryParams, "columns", r.columns, "form", "csv")
 	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
 	if r.clickWindowDays != nil {
@@ -555,6 +294,570 @@ func (a *CampaignsAPIService) CampaignsAnalyticsExecute(r ApiCampaignsAnalyticsR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiCampaignTargetingAnalyticsGetRequest struct {
+	ctx context.Context
+	ApiService *CampaignsAPIService
+	adAccountId string
+	campaignIds *[]string
+	startDate *string
+	endDate *string
+	targetingTypes *[]AdsAnalyticsCampaignTargetingType
+	columns *[]string
+	granularity *Granularity
+	clickWindowDays *int32
+	engagementWindowDays *int32
+	viewWindowDays *int32
+	conversionReportTime *string
+	attributionTypes *[]ConversionReportAttributionType
+	reportingTimezone *ReportingTimeZone
+}
+
+// List of Campaign Ids to use to filter the results.
+func (r ApiCampaignTargetingAnalyticsGetRequest) CampaignIds(campaignIds []string) ApiCampaignTargetingAnalyticsGetRequest {
+	r.campaignIds = &campaignIds
+	return r
+}
+
+// Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
+func (r ApiCampaignTargetingAnalyticsGetRequest) StartDate(startDate string) ApiCampaignTargetingAnalyticsGetRequest {
+	r.startDate = &startDate
+	return r
+}
+
+// Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
+func (r ApiCampaignTargetingAnalyticsGetRequest) EndDate(endDate string) ApiCampaignTargetingAnalyticsGetRequest {
+	r.endDate = &endDate
+	return r
+}
+
+// Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
+func (r ApiCampaignTargetingAnalyticsGetRequest) TargetingTypes(targetingTypes []AdsAnalyticsCampaignTargetingType) ApiCampaignTargetingAnalyticsGetRequest {
+	r.targetingTypes = &targetingTypes
+	return r
+}
+
+// Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
+func (r ApiCampaignTargetingAnalyticsGetRequest) Columns(columns []string) ApiCampaignTargetingAnalyticsGetRequest {
+	r.columns = &columns
+	return r
+}
+
+// TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
+func (r ApiCampaignTargetingAnalyticsGetRequest) Granularity(granularity Granularity) ApiCampaignTargetingAnalyticsGetRequest {
+	r.granularity = &granularity
+	return r
+}
+
+// Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
+func (r ApiCampaignTargetingAnalyticsGetRequest) ClickWindowDays(clickWindowDays int32) ApiCampaignTargetingAnalyticsGetRequest {
+	r.clickWindowDays = &clickWindowDays
+	return r
+}
+
+// Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.
+func (r ApiCampaignTargetingAnalyticsGetRequest) EngagementWindowDays(engagementWindowDays int32) ApiCampaignTargetingAnalyticsGetRequest {
+	r.engagementWindowDays = &engagementWindowDays
+	return r
+}
+
+// Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.
+func (r ApiCampaignTargetingAnalyticsGetRequest) ViewWindowDays(viewWindowDays int32) ApiCampaignTargetingAnalyticsGetRequest {
+	r.viewWindowDays = &viewWindowDays
+	return r
+}
+
+// The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
+func (r ApiCampaignTargetingAnalyticsGetRequest) ConversionReportTime(conversionReportTime string) ApiCampaignTargetingAnalyticsGetRequest {
+	r.conversionReportTime = &conversionReportTime
+	return r
+}
+
+// List of types of attribution for the conversion report
+func (r ApiCampaignTargetingAnalyticsGetRequest) AttributionTypes(attributionTypes []ConversionReportAttributionType) ApiCampaignTargetingAnalyticsGetRequest {
+	r.attributionTypes = &attributionTypes
+	return r
+}
+
+// Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+func (r ApiCampaignTargetingAnalyticsGetRequest) ReportingTimezone(reportingTimezone ReportingTimeZone) ApiCampaignTargetingAnalyticsGetRequest {
+	r.reportingTimezone = &reportingTimezone
+	return r
+}
+
+func (r ApiCampaignTargetingAnalyticsGetRequest) Execute() (*MetricsResponse, *http.Response, error) {
+	return r.ApiService.CampaignTargetingAnalyticsGetExecute(r)
+}
+
+/*
+CampaignTargetingAnalyticsGet Get targeting analytics for campaigns
+
+Get targeting analytics for one or more campaigns.
+For the requested account and metrics, the response will include the requested metric information
+(e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. "age_bucket") for applicable values (e.g. "45-49"). <p/>
+- The token's user_account must either be the Owner of the specified ad account, or have one
+of the necessary roles granted to them via
+<a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager.
+- If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.
+- If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param adAccountId Unique identifier of an ad account.
+ @return ApiCampaignTargetingAnalyticsGetRequest
+*/
+func (a *CampaignsAPIService) CampaignTargetingAnalyticsGet(ctx context.Context, adAccountId string) ApiCampaignTargetingAnalyticsGetRequest {
+	return ApiCampaignTargetingAnalyticsGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		adAccountId: adAccountId,
+	}
+}
+
+// Execute executes the request
+//  @return MetricsResponse
+func (a *CampaignsAPIService) CampaignTargetingAnalyticsGetExecute(r ApiCampaignTargetingAnalyticsGetRequest) (*MetricsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *MetricsResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CampaignsAPIService.CampaignTargetingAnalyticsGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/ad_accounts/{ad_account_id}/campaigns/targeting_analytics"
+	localVarPath = strings.Replace(localVarPath, "{"+"ad_account_id"+"}", url.PathEscape(parameterValueToString(r.adAccountId, "adAccountId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if strlen(r.adAccountId) > 18 {
+		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
+	}
+	if r.campaignIds == nil {
+		return localVarReturnValue, nil, reportError("campaignIds is required and must be specified")
+	}
+	if len(*r.campaignIds) < 1 {
+		return localVarReturnValue, nil, reportError("campaignIds must have at least 1 elements")
+	}
+	if len(*r.campaignIds) > 250 {
+		return localVarReturnValue, nil, reportError("campaignIds must have less than 250 elements")
+	}
+	if r.startDate == nil {
+		return localVarReturnValue, nil, reportError("startDate is required and must be specified")
+	}
+	if r.endDate == nil {
+		return localVarReturnValue, nil, reportError("endDate is required and must be specified")
+	}
+	if r.targetingTypes == nil {
+		return localVarReturnValue, nil, reportError("targetingTypes is required and must be specified")
+	}
+	if len(*r.targetingTypes) < 1 {
+		return localVarReturnValue, nil, reportError("targetingTypes must have at least 1 elements")
+	}
+	if len(*r.targetingTypes) > 14 {
+		return localVarReturnValue, nil, reportError("targetingTypes must have less than 14 elements")
+	}
+	if r.columns == nil {
+		return localVarReturnValue, nil, reportError("columns is required and must be specified")
+	}
+	if r.granularity == nil {
+		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
+	}
+
+	{
+		t := *r.campaignIds
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", t, "form", "multi")
+		}
+	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "targeting_types", r.targetingTypes, "form", "csv")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "columns", r.columns, "form", "csv")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
+	if r.clickWindowDays != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "click_window_days", r.clickWindowDays, "form", "")
+	} else {
+        var defaultValue int32 = 30
+        parameterAddToHeaderOrQuery(localVarQueryParams, "click_window_days", defaultValue, "form", "")
+        r.clickWindowDays = &defaultValue
+	}
+	if r.engagementWindowDays != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "engagement_window_days", r.engagementWindowDays, "form", "")
+	} else {
+        var defaultValue int32 = 30
+        parameterAddToHeaderOrQuery(localVarQueryParams, "engagement_window_days", defaultValue, "form", "")
+        r.engagementWindowDays = &defaultValue
+	}
+	if r.viewWindowDays != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "view_window_days", r.viewWindowDays, "form", "")
+	} else {
+        var defaultValue int32 = 1
+        parameterAddToHeaderOrQuery(localVarQueryParams, "view_window_days", defaultValue, "form", "")
+        r.viewWindowDays = &defaultValue
+	}
+	if r.conversionReportTime != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", r.conversionReportTime, "form", "")
+	} else {
+        var defaultValue string = "TIME_OF_AD_ACTION"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", defaultValue, "form", "")
+        r.conversionReportTime = &defaultValue
+	}
+	if r.attributionTypes != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "attribution_types", r.attributionTypes, "form", "csv")
+	}
+	if r.reportingTimezone != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "reporting_timezone", r.reportingTimezone, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCampaignsAnalyticsRequest struct {
+	ctx context.Context
+	ApiService *CampaignsAPIService
+	adAccountId string
+	startDate *string
+	endDate *string
+	campaignIds *[]string
+	columns *[]string
+	granularity *Granularity
+	clickWindowDays *int32
+	engagementWindowDays *int32
+	viewWindowDays *int32
+	conversionReportTime *string
+	aggregateReportRows *bool
+	reportingTimezone *ReportingTimeZone
+}
+
+// Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
+func (r ApiCampaignsAnalyticsRequest) StartDate(startDate string) ApiCampaignsAnalyticsRequest {
+	r.startDate = &startDate
+	return r
+}
+
+// Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
+func (r ApiCampaignsAnalyticsRequest) EndDate(endDate string) ApiCampaignsAnalyticsRequest {
+	r.endDate = &endDate
+	return r
+}
+
+// List of Campaign Ids to use to filter the results.
+func (r ApiCampaignsAnalyticsRequest) CampaignIds(campaignIds []string) ApiCampaignsAnalyticsRequest {
+	r.campaignIds = &campaignIds
+	return r
+}
+
+// Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned
+func (r ApiCampaignsAnalyticsRequest) Columns(columns []string) ApiCampaignsAnalyticsRequest {
+	r.columns = &columns
+	return r
+}
+
+// TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
+func (r ApiCampaignsAnalyticsRequest) Granularity(granularity Granularity) ApiCampaignsAnalyticsRequest {
+	r.granularity = &granularity
+	return r
+}
+
+// Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
+func (r ApiCampaignsAnalyticsRequest) ClickWindowDays(clickWindowDays int32) ApiCampaignsAnalyticsRequest {
+	r.clickWindowDays = &clickWindowDays
+	return r
+}
+
+// Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.
+func (r ApiCampaignsAnalyticsRequest) EngagementWindowDays(engagementWindowDays int32) ApiCampaignsAnalyticsRequest {
+	r.engagementWindowDays = &engagementWindowDays
+	return r
+}
+
+// Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.
+func (r ApiCampaignsAnalyticsRequest) ViewWindowDays(viewWindowDays int32) ApiCampaignsAnalyticsRequest {
+	r.viewWindowDays = &viewWindowDays
+	return r
+}
+
+// The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
+func (r ApiCampaignsAnalyticsRequest) ConversionReportTime(conversionReportTime string) ApiCampaignsAnalyticsRequest {
+	r.conversionReportTime = &conversionReportTime
+	return r
+}
+
+// Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users.
+func (r ApiCampaignsAnalyticsRequest) AggregateReportRows(aggregateReportRows bool) ApiCampaignsAnalyticsRequest {
+	r.aggregateReportRows = &aggregateReportRows
+	return r
+}
+
+// Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+func (r ApiCampaignsAnalyticsRequest) ReportingTimezone(reportingTimezone ReportingTimeZone) ApiCampaignsAnalyticsRequest {
+	r.reportingTimezone = &reportingTimezone
+	return r
+}
+
+func (r ApiCampaignsAnalyticsRequest) Execute() ([]CampaignsAnalyticsResponseInner, *http.Response, error) {
+	return r.ApiService.CampaignsAnalyticsExecute(r)
+}
+
+/*
+CampaignsAnalytics Get campaign analytics
+
+Get analytics for the specified campaigns in the specified <code>ad_account_id</code>, filtered by the specified options.
+- The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager.
+- If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.
+- If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param adAccountId Unique identifier of an ad account.
+ @return ApiCampaignsAnalyticsRequest
+*/
+func (a *CampaignsAPIService) CampaignsAnalytics(ctx context.Context, adAccountId string) ApiCampaignsAnalyticsRequest {
+	return ApiCampaignsAnalyticsRequest{
+		ApiService: a,
+		ctx: ctx,
+		adAccountId: adAccountId,
+	}
+}
+
+// Execute executes the request
+//  @return []CampaignsAnalyticsResponseInner
+func (a *CampaignsAPIService) CampaignsAnalyticsExecute(r ApiCampaignsAnalyticsRequest) ([]CampaignsAnalyticsResponseInner, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []CampaignsAnalyticsResponseInner
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CampaignsAPIService.CampaignsAnalytics")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/ad_accounts/{ad_account_id}/campaigns/analytics"
+	localVarPath = strings.Replace(localVarPath, "{"+"ad_account_id"+"}", url.PathEscape(parameterValueToString(r.adAccountId, "adAccountId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if strlen(r.adAccountId) > 18 {
+		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
+	}
+	if r.startDate == nil {
+		return localVarReturnValue, nil, reportError("startDate is required and must be specified")
+	}
+	if r.endDate == nil {
+		return localVarReturnValue, nil, reportError("endDate is required and must be specified")
+	}
+	if r.campaignIds == nil {
+		return localVarReturnValue, nil, reportError("campaignIds is required and must be specified")
+	}
+	if len(*r.campaignIds) < 1 {
+		return localVarReturnValue, nil, reportError("campaignIds must have at least 1 elements")
+	}
+	if len(*r.campaignIds) > 250 {
+		return localVarReturnValue, nil, reportError("campaignIds must have less than 250 elements")
+	}
+	if r.columns == nil {
+		return localVarReturnValue, nil, reportError("columns is required and must be specified")
+	}
+	if r.granularity == nil {
+		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "start_date", r.startDate, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "end_date", r.endDate, "form", "")
+	{
+		t := *r.campaignIds
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "campaign_ids", t, "form", "multi")
+		}
+	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "columns", r.columns, "form", "csv")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
+	if r.clickWindowDays != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "click_window_days", r.clickWindowDays, "form", "")
+	} else {
+        var defaultValue int32 = 30
+        parameterAddToHeaderOrQuery(localVarQueryParams, "click_window_days", defaultValue, "form", "")
+        r.clickWindowDays = &defaultValue
+	}
+	if r.engagementWindowDays != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "engagement_window_days", r.engagementWindowDays, "form", "")
+	} else {
+        var defaultValue int32 = 30
+        parameterAddToHeaderOrQuery(localVarQueryParams, "engagement_window_days", defaultValue, "form", "")
+        r.engagementWindowDays = &defaultValue
+	}
+	if r.viewWindowDays != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "view_window_days", r.viewWindowDays, "form", "")
+	} else {
+        var defaultValue int32 = 1
+        parameterAddToHeaderOrQuery(localVarQueryParams, "view_window_days", defaultValue, "form", "")
+        r.viewWindowDays = &defaultValue
+	}
+	if r.conversionReportTime != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", r.conversionReportTime, "form", "")
+	} else {
+        var defaultValue string = "TIME_OF_AD_ACTION"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", defaultValue, "form", "")
+        r.conversionReportTime = &defaultValue
+	}
+	if r.aggregateReportRows != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "aggregate_report_rows", r.aggregateReportRows, "form", "")
+	} else {
+        var defaultValue bool = false
+        parameterAddToHeaderOrQuery(localVarQueryParams, "aggregate_report_rows", defaultValue, "form", "")
+        r.aggregateReportRows = &defaultValue
+	}
+	if r.reportingTimezone != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "reporting_timezone", r.reportingTimezone, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiCampaignsCreateRequest struct {
 	ctx context.Context
 	ApiService *CampaignsAPIService
@@ -581,7 +884,7 @@ For more, see <a href="https://help.pinterest.com/en/business/article/set-up-you
 - The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/>
 <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p>
 <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>
- <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
+<p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
 <ul>
   <li>$1 = 1,000,000 microdollars</li>
   <li>1 microdollar = $0.000001 </li>
@@ -1043,11 +1346,11 @@ func (r ApiCampaignsUpdateRequest) Execute() (*CampaignUpdateResponse, *http.Res
 /*
 CampaignsUpdate Update campaigns
 
-Update multiple ad campaigns based on campaign_ids. <p/>
-<strong>Note:</strong><p/>
- - <p>The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/>
-<p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p>
-<p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p>
+<p>Update multiple ad campaigns based on campaign_ids. </p>
+<p><strong>Note:</strong></p>
+- <p>The values for `lifetime_spend_cap` and `daily_spend_cap` are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/>
+<p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser's profile.</p>
+<p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser's profile.</p>
 <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
 <ul>
   <li>$1 = 1,000,000 microdollars</li>

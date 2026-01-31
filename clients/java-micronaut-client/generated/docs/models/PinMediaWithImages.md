@@ -11,6 +11,13 @@ The class is defined in **[PinMediaWithImages.java](../../src/main/java/org/open
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **items** | [`List&lt;ImageMetadata&gt;`](ImageMetadata.md) |  |  [optional property]
+**mediaType** | [**MediaTypeEnum**](#MediaTypeEnum) |  | 
 
+
+## MediaTypeEnum
+
+Name | Value
+---- | -----
+MULTIPLE_IMAGES | `"multiple_images"`
 
 

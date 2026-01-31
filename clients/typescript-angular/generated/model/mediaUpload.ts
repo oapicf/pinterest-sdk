@@ -7,7 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { MediaUploadAllOfUploadParameters } from './mediaUploadAllOfUploadParameters';
+import { MediaUploadParameters } from './mediaUploadParameters';
 import { MediaUploadType } from './mediaUploadType';
 
 
@@ -18,13 +18,16 @@ export interface MediaUpload {
     /**
      * Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
      */
-    media_id?: string;
-    media_type?: MediaUploadType;
+    readonly media_id: string;
+    media_type: MediaUploadType;
+    /**
+     * The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
+     */
+    readonly upload_parameters?: MediaUploadParameters;
     /**
      * The URL where you will POST your media file.
      */
-    upload_url?: string;
-    upload_parameters?: MediaUploadAllOfUploadParameters;
+    readonly upload_url?: string;
 }
 export namespace MediaUpload {
 }

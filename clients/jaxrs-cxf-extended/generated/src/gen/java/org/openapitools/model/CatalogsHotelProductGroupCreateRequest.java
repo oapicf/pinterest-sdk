@@ -19,6 +19,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsHotelProductGroupCreateRequest  {
   
+ /**
+  * Catalog id pertaining to the hotel product group.
+  */
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the hotel product group.")
+  private String catalogId;
+
 public enum CatalogTypeEnum {
 
     @JsonProperty("HOTEL") HOTEL(String.valueOf("HOTEL"));
@@ -51,9 +57,6 @@ public enum CatalogTypeEnum {
   @ApiModelProperty(required = true, value = "")
   private CatalogTypeEnum catalogType;
 
-  @ApiModelProperty(required = true, value = "")
-  private String name;
-
   @ApiModelProperty(value = "")
   private String description;
 
@@ -61,11 +64,33 @@ public enum CatalogTypeEnum {
   @Valid
   private CatalogsHotelProductGroupFilters filters;
 
+  @ApiModelProperty(required = true, value = "")
+  private String name;
  /**
   * Catalog id pertaining to the hotel product group.
+  * @return catalogId
   */
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the hotel product group.")
-  private String catalogId;
+  @JsonProperty("catalog_id")
+  @NotNull
+ @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+    return catalogId;
+  }
+
+  /**
+   * Sets the <code>catalogId</code> property.
+   */
+ public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
+  /**
+   * Sets the <code>catalogId</code> property.
+   */
+  public CatalogsHotelProductGroupCreateRequest catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
  /**
   * Get catalogType
   * @return catalogType
@@ -88,31 +113,6 @@ public enum CatalogTypeEnum {
    */
   public CatalogsHotelProductGroupCreateRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
-    return this;
-  }
-
- /**
-  * Get name
-  * @return name
-  */
-  @JsonProperty("name")
-  @NotNull
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * Sets the <code>name</code> property.
-   */
- public void setName(String name) {
-    this.name = name;
-  }
-
-  /**
-   * Sets the <code>name</code> property.
-   */
-  public CatalogsHotelProductGroupCreateRequest name(String name) {
-    this.name = name;
     return this;
   }
 
@@ -166,27 +166,27 @@ public enum CatalogTypeEnum {
   }
 
  /**
-  * Catalog id pertaining to the hotel product group.
-  * @return catalogId
+  * Get name
+  * @return name
   */
-  @JsonProperty("catalog_id")
+  @JsonProperty("name")
   @NotNull
- @Pattern(regexp="^\\d+$")  public String getCatalogId() {
-    return catalogId;
+  public String getName() {
+    return name;
   }
 
   /**
-   * Sets the <code>catalogId</code> property.
+   * Sets the <code>name</code> property.
    */
- public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
+ public void setName(String name) {
+    this.name = name;
   }
 
   /**
-   * Sets the <code>catalogId</code> property.
+   * Sets the <code>name</code> property.
    */
-  public CatalogsHotelProductGroupCreateRequest catalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public CatalogsHotelProductGroupCreateRequest name(String name) {
+    this.name = name;
     return this;
   }
 
@@ -200,16 +200,16 @@ public enum CatalogTypeEnum {
       return false;
     }
     CatalogsHotelProductGroupCreateRequest catalogsHotelProductGroupCreateRequest = (CatalogsHotelProductGroupCreateRequest) o;
-    return Objects.equals(this.catalogType, catalogsHotelProductGroupCreateRequest.catalogType) &&
-        Objects.equals(this.name, catalogsHotelProductGroupCreateRequest.name) &&
+    return Objects.equals(this.catalogId, catalogsHotelProductGroupCreateRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsHotelProductGroupCreateRequest.catalogType) &&
         Objects.equals(this.description, catalogsHotelProductGroupCreateRequest.description) &&
         Objects.equals(this.filters, catalogsHotelProductGroupCreateRequest.filters) &&
-        Objects.equals(this.catalogId, catalogsHotelProductGroupCreateRequest.catalogId);
+        Objects.equals(this.name, catalogsHotelProductGroupCreateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters, catalogId);
+    return Objects.hash(catalogId, catalogType, description, filters, name);
   }
 
   @Override
@@ -217,11 +217,11 @@ public enum CatalogTypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelProductGroupCreateRequest {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

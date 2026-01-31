@@ -9,6 +9,7 @@ module CampaignsApiServiceInterface =
 
     //#region Service interface
     type ICampaignsApiService =
+      abstract member AdPinsAnalytics:HttpContext -> AdPinsAnalyticsArgs->AdPinsAnalyticsResult
       abstract member CampaignTargetingAnalyticsGet:HttpContext -> CampaignTargetingAnalyticsGetArgs->CampaignTargetingAnalyticsGetResult
       abstract member CampaignsAnalytics:HttpContext -> CampaignsAnalyticsArgs->CampaignsAnalyticsResult
       abstract member CampaignsCreate:HttpContext -> CampaignsCreateArgs->CampaignsCreateResult

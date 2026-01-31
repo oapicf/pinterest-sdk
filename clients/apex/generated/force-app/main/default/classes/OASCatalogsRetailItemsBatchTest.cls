@@ -74,9 +74,9 @@ private class OASCatalogsRetailItemsBatchTest {
         OASCatalogsRetailItemsBatch catalogsRetailItemsBatch = new OASCatalogsRetailItemsBatch();
         Map<String, String> x-property-mappings = catalogsRetailItemsBatch.getx-property-mappings();
         System.assertEquals('batchId', x-property-mappings.get('batch_id'));
-        System.assertEquals('createdTime', x-property-mappings.get('created_time'));
-        System.assertEquals('completedTime', x-property-mappings.get('completed_time'));
         System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
+        System.assertEquals('completedTime', x-property-mappings.get('completed_time'));
+        System.assertEquals('createdTime', x-property-mappings.get('created_time'));
     }
 
     @isTest
@@ -84,9 +84,9 @@ private class OASCatalogsRetailItemsBatchTest {
         OASCatalogsRetailItemsBatch catalogsRetailItemsBatch = new OASCatalogsRetailItemsBatch();
         System.assertEquals(new List<OASItemProcessingRecord>(), catalogsRetailItemsBatch.items);
         System.assertEquals(null, catalogsRetailItemsBatch.batchId);
-        System.assertEquals(null, catalogsRetailItemsBatch.createdTime);
-        System.assertEquals(null, catalogsRetailItemsBatch.completedTime);
-        System.assertEquals(null, catalogsRetailItemsBatch.status);
         System.assertEquals(null, catalogsRetailItemsBatch.catalogType);
+        System.assertEquals(null, catalogsRetailItemsBatch.completedTime);
+        System.assertEquals(null, catalogsRetailItemsBatch.createdTime);
+        System.assertEquals(null, catalogsRetailItemsBatch.status);
     }
 }

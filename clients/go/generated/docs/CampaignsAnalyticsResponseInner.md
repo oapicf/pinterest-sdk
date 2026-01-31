@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CAMPAIGN_ID** | **string** | The ID of the campaing that this metrics belongs to. | 
+**CAMPAIGN_ID** | Pointer to **string** | The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true. | [optional] 
 **DATE** | Pointer to **string** | Current metrics date. Only returned when granularity is a time-based value (&#x60;DAY&#x60;, &#x60;HOUR&#x60;, &#x60;WEEK&#x60;, &#x60;MONTH&#x60;) | [optional] 
 
 ## Methods
 
 ### NewCampaignsAnalyticsResponseInner
 
-`func NewCampaignsAnalyticsResponseInner(cAMPAIGNID string, ) *CampaignsAnalyticsResponseInner`
+`func NewCampaignsAnalyticsResponseInner() *CampaignsAnalyticsResponseInner`
 
 NewCampaignsAnalyticsResponseInner instantiates a new CampaignsAnalyticsResponseInner object
 This constructor will assign default values to properties that have it defined,
@@ -45,6 +45,11 @@ and a boolean to check if the value has been set.
 
 SetCAMPAIGN_ID sets CAMPAIGN_ID field to given value.
 
+### HasCAMPAIGN_ID
+
+`func (o *CampaignsAnalyticsResponseInner) HasCAMPAIGN_ID() bool`
+
+HasCAMPAIGN_ID returns a boolean if a field has been set.
 
 ### GetDATE
 

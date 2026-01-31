@@ -11,14 +11,14 @@ import scala.collection.immutable.Seq
 
 /**
  * An item to be updated
+ * @param attributes 
  * @param itemUnderscoreid The catalog item id in the merchant namespace
  * @param operation 
- * @param attributes 
  * @param updateUnderscoremask The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
  */
-case class CatalogsUpdateRetailItem(itemUnderscoreid: String,
+case class CatalogsUpdateRetailItem(attributes: UpdatableItemAttributes,
+                itemUnderscoreid: String,
                 operation: String,
-                attributes: UpdatableItemAttributes,
                 updateUnderscoremask: Option[Seq[UpdateMaskFieldType]]
                 )
 

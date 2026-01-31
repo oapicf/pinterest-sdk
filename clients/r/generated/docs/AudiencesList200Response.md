@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**array[Audience]**](Audience.md) |  | 
 **bookmark** | **character** |  | [optional] 
+**items** | [**array[Audience]**](Audience.md) |  | 
 
 

@@ -1,0 +1,2 @@
+testCase,httpStatusCode,feedId,bookmark,pageSize,adAccountId,feedsCreateRequest,adAccountId,feedId,adAccountId,feedId,adAccountId,feedId,adAccountId,bookmark,pageSize,catalogId,adAccountId,feedId,feedsUpdateRequest,adAccountId,processingResultId,bookmark,pageSize,itemNumbers,itemValidationIssue,adAccountId
+Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

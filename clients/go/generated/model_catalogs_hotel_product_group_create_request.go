@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,12 +22,12 @@ var _ MappedNullable = &CatalogsHotelProductGroupCreateRequest{}
 
 // CatalogsHotelProductGroupCreateRequest Request object for creating a hotel product group.
 type CatalogsHotelProductGroupCreateRequest struct {
-	CatalogType string `json:"catalog_type"`
-	Name string `json:"name"`
-	Description NullableString `json:"description,omitempty"`
-	Filters CatalogsHotelProductGroupFilters `json:"filters"`
 	// Catalog id pertaining to the hotel product group.
 	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
+	CatalogType string `json:"catalog_type"`
+	Description NullableString `json:"description,omitempty"`
+	Filters CatalogsHotelProductGroupFilters `json:"filters"`
+	Name string `json:"name"`
 }
 
 type _CatalogsHotelProductGroupCreateRequest CatalogsHotelProductGroupCreateRequest
@@ -36,12 +36,12 @@ type _CatalogsHotelProductGroupCreateRequest CatalogsHotelProductGroupCreateRequ
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsHotelProductGroupCreateRequest(catalogType string, name string, filters CatalogsHotelProductGroupFilters, catalogId string) *CatalogsHotelProductGroupCreateRequest {
+func NewCatalogsHotelProductGroupCreateRequest(catalogId string, catalogType string, filters CatalogsHotelProductGroupFilters, name string) *CatalogsHotelProductGroupCreateRequest {
 	this := CatalogsHotelProductGroupCreateRequest{}
-	this.CatalogType = catalogType
-	this.Name = name
-	this.Filters = filters
 	this.CatalogId = catalogId
+	this.CatalogType = catalogType
+	this.Filters = filters
+	this.Name = name
 	return &this
 }
 
@@ -51,6 +51,30 @@ func NewCatalogsHotelProductGroupCreateRequest(catalogType string, name string, 
 func NewCatalogsHotelProductGroupCreateRequestWithDefaults() *CatalogsHotelProductGroupCreateRequest {
 	this := CatalogsHotelProductGroupCreateRequest{}
 	return &this
+}
+
+// GetCatalogId returns the CatalogId field value
+func (o *CatalogsHotelProductGroupCreateRequest) GetCatalogId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CatalogId
+}
+
+// GetCatalogIdOk returns a tuple with the CatalogId field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsHotelProductGroupCreateRequest) GetCatalogIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CatalogId, true
+}
+
+// SetCatalogId sets field value
+func (o *CatalogsHotelProductGroupCreateRequest) SetCatalogId(v string) {
+	o.CatalogId = v
 }
 
 // GetCatalogType returns the CatalogType field value
@@ -75,30 +99,6 @@ func (o *CatalogsHotelProductGroupCreateRequest) GetCatalogTypeOk() (*string, bo
 // SetCatalogType sets field value
 func (o *CatalogsHotelProductGroupCreateRequest) SetCatalogType(v string) {
 	o.CatalogType = v
-}
-
-// GetName returns the Name field value
-func (o *CatalogsHotelProductGroupCreateRequest) GetName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsHotelProductGroupCreateRequest) GetNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Name, true
-}
-
-// SetName sets field value
-func (o *CatalogsHotelProductGroupCreateRequest) SetName(v string) {
-	o.Name = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -167,28 +167,28 @@ func (o *CatalogsHotelProductGroupCreateRequest) SetFilters(v CatalogsHotelProdu
 	o.Filters = v
 }
 
-// GetCatalogId returns the CatalogId field value
-func (o *CatalogsHotelProductGroupCreateRequest) GetCatalogId() string {
+// GetName returns the Name field value
+func (o *CatalogsHotelProductGroupCreateRequest) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.CatalogId
+	return o.Name
 }
 
-// GetCatalogIdOk returns a tuple with the CatalogId field value
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsHotelProductGroupCreateRequest) GetCatalogIdOk() (*string, bool) {
+func (o *CatalogsHotelProductGroupCreateRequest) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.CatalogId, true
+	return &o.Name, true
 }
 
-// SetCatalogId sets field value
-func (o *CatalogsHotelProductGroupCreateRequest) SetCatalogId(v string) {
-	o.CatalogId = v
+// SetName sets field value
+func (o *CatalogsHotelProductGroupCreateRequest) SetName(v string) {
+	o.Name = v
 }
 
 func (o CatalogsHotelProductGroupCreateRequest) MarshalJSON() ([]byte, error) {
@@ -201,13 +201,13 @@ func (o CatalogsHotelProductGroupCreateRequest) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsHotelProductGroupCreateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["catalog_id"] = o.CatalogId
 	toSerialize["catalog_type"] = o.CatalogType
-	toSerialize["name"] = o.Name
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
 	toSerialize["filters"] = o.Filters
-	toSerialize["catalog_id"] = o.CatalogId
+	toSerialize["name"] = o.Name
 	return toSerialize, nil
 }
 
@@ -216,10 +216,10 @@ func (o *CatalogsHotelProductGroupCreateRequest) UnmarshalJSON(data []byte) (err
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"catalog_type",
-		"name",
-		"filters",
 		"catalog_id",
+		"catalog_type",
+		"filters",
+		"name",
 	}
 
 	allProperties := make(map[string]interface{})

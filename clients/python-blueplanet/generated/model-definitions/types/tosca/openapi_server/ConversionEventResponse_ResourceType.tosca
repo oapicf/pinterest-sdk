@@ -1,0 +1,52 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ConversionEventResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ConversionEventResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ConversionTagType = openapi_server.resourceTypes.ConversionTagType
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  ConversionEventResponse {
+    title = ConversionEventResponse
+    description = ConversionEventResponse
+    derivedFrom = Root
+    properties {
+        ad_account_id {
+          type =  string
+          description = "Id of the ad account."
+          optional = false
+        }
+        conversion_event {
+          type = ConversionTagType
+          description = ""
+          optional = false
+        }
+        conversion_tag_id {
+          type =  string
+          description = "Id of the tag."
+          optional = false
+        }
+        created_time {
+          type =  integer
+          description = "Creation date in epoch format."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ConversionEventResponse {
+    title = ConversionEventResponse
+    description = ConversionEventResponse
+    implements = openapi_server.resourceTypes.ConversionEventResponse
+
+  }
+}

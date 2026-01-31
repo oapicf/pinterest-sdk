@@ -1,0 +1,101 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server IntegrationMetadata"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a IntegrationMetadata"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  IntegrationMetadata {
+    title = IntegrationMetadata
+    description = IntegrationMetadata
+    derivedFrom = Root
+    properties {
+        additional_id_1 {
+          type =  string
+          description = ""
+          optional = false
+        }
+        connected_advertiser_id {
+          type =  string
+          description = ""
+          optional = false
+        }
+        connected_lba_id {
+          type =  string
+          description = ""
+          optional = false
+        }
+        connected_merchant_id {
+          type =  string
+          description = ""
+          optional = false
+        }
+        connected_tag_id {
+          type =  string
+          description = ""
+          optional = false
+        }
+        connected_user_id {
+          type =  string
+          description = ""
+          optional = false
+        }
+        created_timestamp {
+          type =  
+          description = ""
+          optional = false
+        }
+        external_business_id {
+          type =  string
+          description = ""
+          optional = false
+        }
+        id {
+          type =  string
+          description = ""
+          optional = false
+        }
+        partner_access_token_expiry {
+          type =  
+          description = ""
+          optional = false
+        }
+        partner_metadata {
+          type =  string
+          description = ""
+          optional = false
+        }
+        partner_refresh_token_expiry {
+          type =  
+          description = ""
+          optional = false
+        }
+        scopes {
+          type =  string
+          description = ""
+          optional = false
+        }
+        updated_timestamp {
+          type =  
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  IntegrationMetadata {
+    title = IntegrationMetadata
+    description = IntegrationMetadata
+    implements = openapi_server.resourceTypes.IntegrationMetadata
+
+  }
+}

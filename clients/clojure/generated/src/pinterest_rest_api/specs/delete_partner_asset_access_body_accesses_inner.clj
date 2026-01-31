@@ -7,8 +7,8 @@
 
 (def delete-partner-asset-access-body-accesses-inner-data
   {
-   (ds/req :partner_id) string?
    (ds/req :asset_id) string?
+   (ds/req :partner_id) string?
    (ds/opt :partner_type) string?
    })
 

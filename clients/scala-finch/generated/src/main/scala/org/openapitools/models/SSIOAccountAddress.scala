@@ -8,15 +8,15 @@ import org.openapitools._
 
 /**
  * 
- * @param display Address display
- * @param purpose Purpose for which the address is used, usually Billing or Businness
  * @param addressUnderscoreid Salesforce id for address
+ * @param display Address display
  * @param orderUnderscorelegalUnderscoreentity Legal entity for this insertion order
+ * @param purpose Purpose for which the address is used, usually Billing or Businness
  */
-case class SSIOAccountAddress(display: Option[String],
-                purpose: Option[String],
-                addressUnderscoreid: Option[String],
-                orderUnderscorelegalUnderscoreentity: Option[String]
+case class SSIOAccountAddress(addressUnderscoreid: Option[String],
+                display: Option[String],
+                orderUnderscorelegalUnderscoreentity: Option[String],
+                purpose: Option[String]
                 )
 
 object SSIOAccountAddress {

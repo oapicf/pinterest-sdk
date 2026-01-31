@@ -4,11 +4,14 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**brandAccountsCreate**](BusinessAccessRelationshipsApiInterface.md#brandAccountsCreate) | **POST** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts | Create a Brand Account
+[**brandAccountsUpdate**](BusinessAccessRelationshipsApiInterface.md#brandAccountsUpdate) | **PATCH** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id} | Update a Brand Account
 [**deleteBusinessMembership**](BusinessAccessRelationshipsApiInterface.md#deleteBusinessMembership) | **DELETE** /businesses/{business_id}/members | Terminate business memberships
 [**deleteBusinessPartners**](BusinessAccessRelationshipsApiInterface.md#deleteBusinessPartners) | **DELETE** /businesses/{business_id}/partners | Terminate business partnerships
 [**getBusinessEmployers**](BusinessAccessRelationshipsApiInterface.md#getBusinessEmployers) | **GET** /businesses/employers | List business employers for user
 [**getBusinessMembers**](BusinessAccessRelationshipsApiInterface.md#getBusinessMembers) | **GET** /businesses/{business_id}/members | Get business members
 [**getBusinessPartners**](BusinessAccessRelationshipsApiInterface.md#getBusinessPartners) | **GET** /businesses/{business_id}/partners | Get business partners
+[**systemUserUpdate**](BusinessAccessRelationshipsApiInterface.md#systemUserUpdate) | **PATCH** /businesses/{business_id}/system_users/{system_user_id} | Update a system user information.
 [**updateBusinessMemberships**](BusinessAccessRelationshipsApiInterface.md#updateBusinessMemberships) | **PATCH** /businesses/{business_id}/members | Update member&#39;s business role
 
 
@@ -22,6 +25,133 @@ services:
             - { name: "open_api_server.api", api: "businessAccessRelationships" }
     # ...
 ```
+
+## **brandAccountsCreate**
+> OpenAPI\Server\Model\BrandAccountsCreate200Response brandAccountsCreate($businessHierarchyId, $brandAccountsCreateRequest)
+
+Create a Brand Account
+
+Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+
+### Example Implementation
+```php
+<?php
+// src/Acme/MyBundle/Api/BusinessAccessRelationshipsApiInterface.php
+
+namespace Acme\MyBundle\Api;
+
+use OpenAPI\Server\Api\BusinessAccessRelationshipsApiInterface;
+
+class BusinessAccessRelationshipsApi implements BusinessAccessRelationshipsApiInterface
+{
+
+    /**
+     * Configure OAuth2 access token for authorization: pinterest_oauth2
+     */
+    public function setpinterest_oauth2($oauthToken)
+    {
+        // Retrieve logged in user from $oauthToken ...
+    }
+
+    // ...
+
+    /**
+     * Implementation of BusinessAccessRelationshipsApiInterface#brandAccountsCreate
+     */
+    public function brandAccountsCreate(string $businessHierarchyId, BrandAccountsCreateRequest $brandAccountsCreateRequest, int &$responseCode, array &$responseHeaders): array|object|null
+    {
+        // Implement the operation ...
+    }
+
+    // ...
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **businessHierarchyId** | **string**| business hierarchy node id |
+ **brandAccountsCreateRequest** | [**OpenAPI\Server\Model\BrandAccountsCreateRequest**](../Model/BrandAccountsCreateRequest.md)|  |
+
+### Return type
+
+[**OpenAPI\Server\Model\BrandAccountsCreate200Response**](../Model/BrandAccountsCreate200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+## **brandAccountsUpdate**
+> OpenAPI\Server\Model\BrandAccountsCreate200Response brandAccountsUpdate($businessHierarchyId, $brandAccountId, $brandAccountsUpdateRequest)
+
+Update a Brand Account
+
+Update an existing Brand Account
+
+### Example Implementation
+```php
+<?php
+// src/Acme/MyBundle/Api/BusinessAccessRelationshipsApiInterface.php
+
+namespace Acme\MyBundle\Api;
+
+use OpenAPI\Server\Api\BusinessAccessRelationshipsApiInterface;
+
+class BusinessAccessRelationshipsApi implements BusinessAccessRelationshipsApiInterface
+{
+
+    /**
+     * Configure OAuth2 access token for authorization: pinterest_oauth2
+     */
+    public function setpinterest_oauth2($oauthToken)
+    {
+        // Retrieve logged in user from $oauthToken ...
+    }
+
+    // ...
+
+    /**
+     * Implementation of BusinessAccessRelationshipsApiInterface#brandAccountsUpdate
+     */
+    public function brandAccountsUpdate(string $businessHierarchyId, string $brandAccountId, BrandAccountsUpdateRequest $brandAccountsUpdateRequest, int &$responseCode, array &$responseHeaders): array|object|null
+    {
+        // Implement the operation ...
+    }
+
+    // ...
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **businessHierarchyId** | **string**| business hierarchy node id |
+ **brandAccountId** | **string**| Unique identifier of a brand account. |
+ **brandAccountsUpdateRequest** | [**OpenAPI\Server\Model\BrandAccountsUpdateRequest**](../Model/BrandAccountsUpdateRequest.md)|  |
+
+### Return type
+
+[**OpenAPI\Server\Model\BrandAccountsCreate200Response**](../Model/BrandAccountsCreate200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **deleteBusinessMembership**
 > OpenAPI\Server\Model\DeletedMembersResponse deleteBusinessMembership($businessId, $membersToDeleteBody)
@@ -213,7 +343,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **getBusinessMembers**
-> OpenAPI\Server\Model\GetBusinessMembers200Response getBusinessMembers($businessId, $assetsSummary, $businessRoles, $memberIds, $startIndex, $bookmark, $pageSize)
+> OpenAPI\Server\Model\GetBusinessMembers200Response getBusinessMembers($businessId, $fetchSystemUsers, $assetsSummary, $businessRoles, $memberIds, $startIndex, $bookmark, $pageSize)
 
 Get business members
 
@@ -244,7 +374,7 @@ class BusinessAccessRelationshipsApi implements BusinessAccessRelationshipsApiIn
     /**
      * Implementation of BusinessAccessRelationshipsApiInterface#getBusinessMembers
      */
-    public function getBusinessMembers(string $businessId, bool $assetsSummary, ?array $businessRoles, ?string $memberIds, int $startIndex, ?string $bookmark, int $pageSize, int &$responseCode, array &$responseHeaders): array|object|null
+    public function getBusinessMembers(string $businessId, bool $fetchSystemUsers, bool $assetsSummary, ?array $businessRoles, ?string $memberIds, int $startIndex, ?string $bookmark, int $pageSize, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -258,6 +388,7 @@ class BusinessAccessRelationshipsApi implements BusinessAccessRelationshipsApiIn
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string**| Unique identifier of the requesting business. |
+ **fetchSystemUsers** | **bool**| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to false]
  **assetsSummary** | **bool**| Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to false]
  **businessRoles** | [**OpenAPI\Server\Model\MemberBusinessRole**](../Model/OpenAPI\Server\Model\MemberBusinessRole.md)| A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. | [optional]
  **memberIds** | **string**| A list of business members ids separated by comma. | [optional]
@@ -344,6 +475,70 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+## **systemUserUpdate**
+> systemUserUpdate($businessId, $systemUserId, $systemUserUpdateRequest)
+
+Update a system user information.
+
+Update a system user information such as name.
+
+### Example Implementation
+```php
+<?php
+// src/Acme/MyBundle/Api/BusinessAccessRelationshipsApiInterface.php
+
+namespace Acme\MyBundle\Api;
+
+use OpenAPI\Server\Api\BusinessAccessRelationshipsApiInterface;
+
+class BusinessAccessRelationshipsApi implements BusinessAccessRelationshipsApiInterface
+{
+
+    /**
+     * Configure OAuth2 access token for authorization: pinterest_oauth2
+     */
+    public function setpinterest_oauth2($oauthToken)
+    {
+        // Retrieve logged in user from $oauthToken ...
+    }
+
+    // ...
+
+    /**
+     * Implementation of BusinessAccessRelationshipsApiInterface#systemUserUpdate
+     */
+    public function systemUserUpdate(string $businessId, string $systemUserId, SystemUserUpdateRequest $systemUserUpdateRequest, int &$responseCode, array &$responseHeaders): void
+    {
+        // Implement the operation ...
+    }
+
+    // ...
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **businessId** | **string**| Unique identifier of the requesting business. |
+ **systemUserId** | **string**| Unique identifier of a system user. |
+ **systemUserUpdateRequest** | [**OpenAPI\Server\Model\SystemUserUpdateRequest**](../Model/SystemUserUpdateRequest.md)|  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[pinterest_oauth2](../../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)

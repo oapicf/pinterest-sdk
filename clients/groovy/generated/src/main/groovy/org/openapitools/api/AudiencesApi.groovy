@@ -2,7 +2,6 @@ package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
 import org.openapitools.model.Audience
-import org.openapitools.model.AudienceCreateCustomRequest
 import org.openapitools.model.AudienceCreateRequest
 import org.openapitools.model.AudienceUpdateRequest
 import org.openapitools.model.AudiencesList200Response
@@ -35,36 +34,6 @@ class AudiencesApi {
 
         contentType = 'application/json';
         bodyParams = audienceCreateRequest
-
-
-        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
-                    "POST", "",
-                    Audience.class )
-
-    }
-
-    def audiencesCreateCustom ( String adAccountId, AudienceCreateCustomRequest audienceCreateCustomRequest, Closure onSuccess, Closure onFailure)  {
-        String resourcePath = "/ad_accounts/${ad_account_id}/audiences/custom"
-
-        // params
-        def queryParams = [:]
-        def headerParams = [:]
-        def bodyParams
-        def contentType
-
-        // verify required params are set
-        if (adAccountId == null) {
-            throw new RuntimeException("missing required params adAccountId")
-        }
-        // verify required params are set
-        if (audienceCreateCustomRequest == null) {
-            throw new RuntimeException("missing required params audienceCreateCustomRequest")
-        }
-
-
-
-        contentType = 'application/json';
-        bodyParams = audienceCreateCustomRequest
 
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
@@ -153,6 +122,10 @@ class AudiencesApi {
         // verify required params are set
         if (audienceId == null) {
             throw new RuntimeException("missing required params audienceId")
+        }
+        // verify required params are set
+        if (audienceUpdateRequest == null) {
+            throw new RuntimeException("missing required params audienceUpdateRequest")
         }
 
 

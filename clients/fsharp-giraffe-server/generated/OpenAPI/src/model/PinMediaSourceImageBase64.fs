@@ -2,6 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
+open OpenAPI.Model.ContentType
 
 module PinMediaSourceImageBase64 =
 
@@ -10,14 +11,11 @@ module PinMediaSourceImageBase64 =
   //#region enums
   type SourceTypeEnum = ImageBase64Enum of string  
   //#endregion
-  //#region enums
-  type ContentTypeEnum = ImageJpegEnum of string  |  ImagePngEnum of string  
-  //#endregion
 
   type PinMediaSourceImageBase64 = {
-    SourceType : SourceTypeEnum;
-    ContentType : ContentTypeEnum;
+    ContentType : ContentType;
     Data : string;
     IsStandard : bool;
+    SourceType : SourceTypeEnum;
   }
   //#endregion

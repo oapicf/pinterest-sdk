@@ -16,12 +16,7 @@ void main() {
   // final instance = PinMediaSource();
 
   group('test PinMediaSource', () {
-    // String sourceType
-    test('to test the property `sourceType`', () async {
-      // TODO
-    });
-
-    // String contentType
+    // ContentType contentType
     test('to test the property `contentType`', () async {
       // TODO
     });
@@ -37,19 +32,18 @@ void main() {
       // TODO
     });
 
+    // String sourceType
+    test('to test the property `sourceType`', () async {
+      // TODO
+    });
+
     // String url
     test('to test the property `url`', () async {
       // TODO
     });
 
-    // Cover image url.
-    // String coverImageUrl
-    test('to test the property `coverImageUrl`', () async {
-      // TODO
-    });
-
     // Content type for cover image Base64.
-    // String coverImageContentType
+    // ContentType coverImageContentType
     test('to test the property `coverImageContentType`', () async {
       // TODO
     });
@@ -60,19 +54,31 @@ void main() {
       // TODO
     });
 
+    // Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.
+    // int coverImageKeyFrameTime
+    test('to test the property `coverImageKeyFrameTime`', () async {
+      // TODO
+    });
+
+    // Cover image URL.
+    // String coverImageUrl
+    test('to test the property `coverImageUrl`', () async {
+      // TODO
+    });
+
     // String mediaId
     test('to test the property `mediaId`', () async {
       // TODO
     });
 
-    // Array with image objects.
-    // List<PinMediaSourceImagesURLItemsInner> items (default value: const [])
-    test('to test the property `items`', () async {
+    // int index
+    test('to test the property `index`', () async {
       // TODO
     });
 
-    // int index
-    test('to test the property `index`', () async {
+    // Array with image objects.
+    // List<PinMediaSourceImagesURLItem> items (default value: const [])
+    test('to test the property `items`', () async {
       // TODO
     });
 

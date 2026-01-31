@@ -22,11 +22,11 @@ public class TemplateResponseDateRangeRelativeDateRangeTest {
     }
 
     /**
-     * Test the property 'type'
+     * Test the property 'endDaysInPast'
      */
     @Test
-    public void typeTest() {
-        // TODO: test type
+    public void endDaysInPastTest() {
+        // TODO: test endDaysInPast
     }
 
     /**
@@ -38,11 +38,11 @@ public class TemplateResponseDateRangeRelativeDateRangeTest {
     }
 
     /**
-     * Test the property 'endDaysInPast'
+     * Test the property 'type'
      */
     @Test
-    public void endDaysInPastTest() {
-        // TODO: test endDaysInPast
+    public void typeTest() {
+        // TODO: test type
     }
 
 }

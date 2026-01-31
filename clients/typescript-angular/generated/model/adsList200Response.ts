@@ -11,7 +11,7 @@ import { AdResponse } from './adResponse';
 
 
 export interface AdsList200Response { 
-    items: Array<AdResponse>;
     bookmark?: string | null;
+    items: Array<AdResponse>;
 }
 

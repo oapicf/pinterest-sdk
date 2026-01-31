@@ -6,19 +6,10 @@ module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
+            ...CatalogsHotelAddress.fields(`${keyPrefix}address`, isInput),
             {
-                key: `${keyPrefix}name`,
-                label: `The hotel's name. - [${labelPrefix}name]`,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}link`,
-                label: `Link to the product page - [${labelPrefix}link]`,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}description`,
-                label: `Brief description of the hotel. - [${labelPrefix}description]`,
+                key: `${keyPrefix}base_price`,
+                label: `Base price of the hotel room per night followed by the ISO currency code - [${labelPrefix}base_price]`,
                 type: 'string',
             },
             {
@@ -27,22 +18,10 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}latitude`,
-                label: `Latitude of the hotel. - [${labelPrefix}latitude]`,
-                type: 'number',
-            },
-            {
-                key: `${keyPrefix}longitude`,
-                label: `Longitude of the hotel. - [${labelPrefix}longitude]`,
-                type: 'number',
-            },
-            {
-                key: `${keyPrefix}neighborhood`,
-                label: `A list of neighborhoods where the hotel is located - [${labelPrefix}neighborhood]`,
-                list: true,
+                key: `${keyPrefix}category`,
+                label: `The type of property. The category can be any type of internal description desired. - [${labelPrefix}category]`,
                 type: 'string',
             },
-            ...CatalogsHotelAddress.fields(`${keyPrefix}address`, isInput),
             {
                 key: `${keyPrefix}custom_label_0`,
                 label: `Custom grouping of hotels - [${labelPrefix}custom_label_0]`,
@@ -69,13 +48,35 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}category`,
-                label: `The type of property. The category can be any type of internal description desired. - [${labelPrefix}category]`,
+                key: `${keyPrefix}description`,
+                label: `Brief description of the hotel. - [${labelPrefix}description]`,
+                type: 'string',
+            },
+            ...CatalogsHotelGuestRatings.fields(`${keyPrefix}guest_ratings`, isInput),
+            {
+                key: `${keyPrefix}latitude`,
+                label: `Latitude of the hotel. - [${labelPrefix}latitude]`,
+                type: 'number',
+            },
+            {
+                key: `${keyPrefix}link`,
+                label: `Link to the product page - [${labelPrefix}link]`,
                 type: 'string',
             },
             {
-                key: `${keyPrefix}base_price`,
-                label: `Base price of the hotel room per night followed by the ISO currency code - [${labelPrefix}base_price]`,
+                key: `${keyPrefix}longitude`,
+                label: `Longitude of the hotel. - [${labelPrefix}longitude]`,
+                type: 'number',
+            },
+            {
+                key: `${keyPrefix}name`,
+                label: `The hotel's name. - [${labelPrefix}name]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}neighborhood`,
+                label: `A list of neighborhoods where the hotel is located - [${labelPrefix}neighborhood]`,
+                list: true,
                 type: 'string',
             },
             {
@@ -83,29 +84,28 @@ module.exports = {
                 label: `Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel. - [${labelPrefix}sale_price]`,
                 type: 'string',
             },
-            ...CatalogsHotelGuestRatings.fields(`${keyPrefix}guest_ratings`, isInput),
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'name': bundle.inputData?.[`${keyPrefix}name`],
-            'link': bundle.inputData?.[`${keyPrefix}link`],
-            'description': bundle.inputData?.[`${keyPrefix}description`],
-            'brand': bundle.inputData?.[`${keyPrefix}brand`],
-            'latitude': bundle.inputData?.[`${keyPrefix}latitude`],
-            'longitude': bundle.inputData?.[`${keyPrefix}longitude`],
-            'neighborhood': bundle.inputData?.[`${keyPrefix}neighborhood`],
             'address': utils.removeIfEmpty(CatalogsHotelAddress.mapping(bundle, `${keyPrefix}address`)),
+            'base_price': bundle.inputData?.[`${keyPrefix}base_price`],
+            'brand': bundle.inputData?.[`${keyPrefix}brand`],
+            'category': bundle.inputData?.[`${keyPrefix}category`],
             'custom_label_0': bundle.inputData?.[`${keyPrefix}custom_label_0`],
             'custom_label_1': bundle.inputData?.[`${keyPrefix}custom_label_1`],
             'custom_label_2': bundle.inputData?.[`${keyPrefix}custom_label_2`],
             'custom_label_3': bundle.inputData?.[`${keyPrefix}custom_label_3`],
             'custom_label_4': bundle.inputData?.[`${keyPrefix}custom_label_4`],
-            'category': bundle.inputData?.[`${keyPrefix}category`],
-            'base_price': bundle.inputData?.[`${keyPrefix}base_price`],
-            'sale_price': bundle.inputData?.[`${keyPrefix}sale_price`],
+            'description': bundle.inputData?.[`${keyPrefix}description`],
             'guest_ratings': utils.removeIfEmpty(CatalogsHotelGuestRatings.mapping(bundle, `${keyPrefix}guest_ratings`)),
+            'latitude': bundle.inputData?.[`${keyPrefix}latitude`],
+            'link': bundle.inputData?.[`${keyPrefix}link`],
+            'longitude': bundle.inputData?.[`${keyPrefix}longitude`],
+            'name': bundle.inputData?.[`${keyPrefix}name`],
+            'neighborhood': bundle.inputData?.[`${keyPrefix}neighborhood`],
+            'sale_price': bundle.inputData?.[`${keyPrefix}sale_price`],
         }
     },
 }

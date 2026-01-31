@@ -5,17 +5,22 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
 package openapi
 
 
+import (
+	"errors"
+)
+
 
 
 type OptimizationGoalMetadataFrequencyGoalMetadata struct {
 
+	// Frequency target can only be between 2 and 20
 	Frequency int32 `json:"frequency,omitempty"`
 
 	// User entity counts time range
@@ -29,5 +34,11 @@ func AssertOptimizationGoalMetadataFrequencyGoalMetadataRequired(obj Optimizatio
 
 // AssertOptimizationGoalMetadataFrequencyGoalMetadataConstraints checks if the values respects the defined constraints
 func AssertOptimizationGoalMetadataFrequencyGoalMetadataConstraints(obj OptimizationGoalMetadataFrequencyGoalMetadata) error {
+	if obj.Frequency < 2 {
+		return &ParsingError{Param: "Frequency", Err: errors.New(errMsgMinValueConstraint)}
+	}
+	if obj.Frequency > 20 {
+		return &ParsingError{Param: "Frequency", Err: errors.New(errMsgMaxValueConstraint)}
+	}
 	return nil
 }

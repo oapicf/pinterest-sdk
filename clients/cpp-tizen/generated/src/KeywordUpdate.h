@@ -45,13 +45,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Keyword ID.
-	 */
-	std::string getId();
-
-	/*! \brief Set Keyword ID.
-	 */
-	void setId(std::string  id);
 	/*! \brief Get Is keyword archived?
 	 */
 	bool getArchived();
@@ -66,11 +59,18 @@ public:
 	/*! \brief Set </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
 	 */
 	void setBid(int  bid);
+	/*! \brief Get Keyword ID.
+	 */
+	std::string getId();
+
+	/*! \brief Set Keyword ID.
+	 */
+	void setId(std::string  id);
 
 private:
-	std::string id;
 	bool archived;
 	int bid;
+	std::string id;
 	void __init();
 	void __cleanup();
 

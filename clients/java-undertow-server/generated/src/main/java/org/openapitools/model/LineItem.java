@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -20,7 +20,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LineItem   {
   
   private String productBrand;
@@ -33,7 +33,7 @@ public class LineItem   {
   private String productVariantId;
 
   /**
-   * Product brand. For example, \"Parker\".
+   * Product brand. For example, 'Parker'.
    */
   public LineItem productBrand(String productBrand) {
     this.productBrand = productBrand;
@@ -41,7 +41,7 @@ public class LineItem   {
   }
 
   
-  @ApiModelProperty(example = "Parker", value = "Product brand. For example, \"Parker\".")
+  @ApiModelProperty(example = "Parker", value = "Product brand. For example, 'Parker'.")
   @JsonProperty("product_brand")
   public String getProductBrand() {
     return productBrand;
@@ -51,7 +51,7 @@ public class LineItem   {
   }
 
   /**
-   * Product category. For example, \"Shoes\".
+   * Product category. For example, 'Shoes'.
    */
   public LineItem productCategory(String productCategory) {
     this.productCategory = productCategory;
@@ -59,7 +59,7 @@ public class LineItem   {
   }
 
   
-  @ApiModelProperty(example = "Shoes", value = "Product category. For example, \"Shoes\".")
+  @ApiModelProperty(example = "Shoes", value = "Product category. For example, 'Shoes'.")
   @JsonProperty("product_category")
   public String getProductCategory() {
     return productCategory;
@@ -87,7 +87,7 @@ public class LineItem   {
   }
 
   /**
-   * Product name. For example, \"Parker Boots\".
+   * Product name. For example, 'Parker Boots'.
    */
   public LineItem productName(String productName) {
     this.productName = productName;
@@ -95,7 +95,7 @@ public class LineItem   {
   }
 
   
-  @ApiModelProperty(example = "Parker Boots", value = "Product name. For example, \"Parker Boots\".")
+  @ApiModelProperty(example = "Parker Boots", value = "Product name. For example, 'Parker Boots'.")
   @JsonProperty("product_name")
   public String getProductName() {
     return productName;
@@ -105,7 +105,7 @@ public class LineItem   {
   }
 
   /**
-   * Product price. For example, \"99.99\".
+   * Product price. For example, '99.99'.
    */
   public LineItem productPrice(String productPrice) {
     this.productPrice = productPrice;
@@ -113,7 +113,7 @@ public class LineItem   {
   }
 
   
-  @ApiModelProperty(example = "99.99", value = "Product price. For example, \"99.99\".")
+  @ApiModelProperty(example = "99.99", value = "Product price. For example, '99.99'.")
   @JsonProperty("product_price")
   public String getProductPrice() {
     return productPrice;
@@ -141,7 +141,7 @@ public class LineItem   {
   }
 
   /**
-   * Product variant. For example, \"Red\".
+   * Product variant. For example, 'Red'.
    */
   public LineItem productVariant(String productVariant) {
     this.productVariant = productVariant;
@@ -149,7 +149,7 @@ public class LineItem   {
   }
 
   
-  @ApiModelProperty(example = "Red", value = "Product variant. For example, \"Red\".")
+  @ApiModelProperty(example = "Red", value = "Product variant. For example, 'Red'.")
   @JsonProperty("product_variant")
   public String getProductVariant() {
     return productVariant;
@@ -159,7 +159,7 @@ public class LineItem   {
   }
 
   /**
-   * Product variant ID. For example, \"1414-34832\".
+   * Product variant ID. For example, '1414-34832'.
    */
   public LineItem productVariantId(String productVariantId) {
     this.productVariantId = productVariantId;
@@ -167,7 +167,7 @@ public class LineItem   {
   }
 
   
-  @ApiModelProperty(example = "1414-34832", value = "Product variant ID. For example, \"1414-34832\".")
+  @ApiModelProperty(example = "1414-34832", value = "Product variant ID. For example, '1414-34832'.")
   @JsonProperty("product_variant_id")
   public String getProductVariantId() {
     return productVariantId;

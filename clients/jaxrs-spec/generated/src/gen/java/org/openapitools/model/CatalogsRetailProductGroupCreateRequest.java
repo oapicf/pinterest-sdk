@@ -22,8 +22,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Request object for creating a product group.")
 @JsonTypeName("CatalogsRetailProductGroupCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailProductGroupCreateRequest   {
+  private String catalogId;
   public enum CatalogTypeEnum {
 
     RETAIL(String.valueOf("RETAIL"));
@@ -72,31 +73,46 @@ public class CatalogsRetailProductGroupCreateRequest   {
 }
 
   private CatalogTypeEnum catalogType;
-  private String name;
+  private Country country;
   private String description;
   private CatalogsProductGroupFiltersRequest filters;
-  private String catalogId;
-  private Country country;
   private CatalogsLocale locale;
+  private String name;
 
   public CatalogsRetailProductGroupCreateRequest() {
   }
 
   @JsonCreator
   public CatalogsRetailProductGroupCreateRequest(
-    @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType,
-    @JsonProperty(required = true, value = "name") String name,
-    @JsonProperty(required = true, value = "filters") CatalogsProductGroupFiltersRequest filters,
     @JsonProperty(required = true, value = "catalog_id") String catalogId,
-    @JsonProperty(required = true, value = "country") Country country,
-    @JsonProperty(required = true, value = "locale") CatalogsLocale locale
+    @JsonProperty(required = true, value = "catalog_type") CatalogTypeEnum catalogType,
+    @JsonProperty(required = true, value = "filters") CatalogsProductGroupFiltersRequest filters,
+    @JsonProperty(required = true, value = "name") String name
   ) {
-    this.catalogType = catalogType;
-    this.name = name;
-    this.filters = filters;
     this.catalogId = catalogId;
-    this.country = country;
-    this.locale = locale;
+    this.catalogType = catalogType;
+    this.filters = filters;
+    this.name = name;
+  }
+
+  /**
+   * Catalog id pertaining to the retail product group.
+   **/
+  public CatalogsRetailProductGroupCreateRequest catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the retail product group.")
+  @JsonProperty(required = true, value = "catalog_id")
+  @NotNull  @Pattern(regexp="^\\d+$")public String getCatalogId() {
+    return catalogId;
+  }
+
+  @JsonProperty(required = true, value = "catalog_id")
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
   }
 
   /**
@@ -121,21 +137,21 @@ public class CatalogsRetailProductGroupCreateRequest   {
 
   /**
    **/
-  public CatalogsRetailProductGroupCreateRequest name(String name) {
-    this.name = name;
+  public CatalogsRetailProductGroupCreateRequest country(Country country) {
+    this.country = country;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "name")
-  @NotNull public String getName() {
-    return name;
+  @ApiModelProperty(value = "")
+  @JsonProperty("country")
+  public Country getCountry() {
+    return country;
   }
 
-  @JsonProperty(required = true, value = "name")
-  public void setName(String name) {
-    this.name = name;
+  @JsonProperty("country")
+  public void setCountry(Country country) {
+    this.country = country;
   }
 
   /**
@@ -177,45 +193,6 @@ public class CatalogsRetailProductGroupCreateRequest   {
   }
 
   /**
-   * Catalog id pertaining to the retail product group.
-   **/
-  public CatalogsRetailProductGroupCreateRequest catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the retail product group.")
-  @JsonProperty(required = true, value = "catalog_id")
-  @NotNull  @Pattern(regexp="^\\d+$")public String getCatalogId() {
-    return catalogId;
-  }
-
-  @JsonProperty(required = true, value = "catalog_id")
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
-  /**
-   **/
-  public CatalogsRetailProductGroupCreateRequest country(Country country) {
-    this.country = country;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "country")
-  @NotNull public Country getCountry() {
-    return country;
-  }
-
-  @JsonProperty(required = true, value = "country")
-  public void setCountry(Country country) {
-    this.country = country;
-  }
-
-  /**
    **/
   public CatalogsRetailProductGroupCreateRequest locale(CatalogsLocale locale) {
     this.locale = locale;
@@ -223,15 +200,34 @@ public class CatalogsRetailProductGroupCreateRequest   {
   }
 
   
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "locale")
-  @NotNull public CatalogsLocale getLocale() {
+  @ApiModelProperty(value = "")
+  @JsonProperty("locale")
+  public CatalogsLocale getLocale() {
     return locale;
   }
 
-  @JsonProperty(required = true, value = "locale")
+  @JsonProperty("locale")
   public void setLocale(CatalogsLocale locale) {
     this.locale = locale;
+  }
+
+  /**
+   **/
+  public CatalogsRetailProductGroupCreateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "name")
+  @NotNull public String getName() {
+    return name;
+  }
+
+  @JsonProperty(required = true, value = "name")
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -244,18 +240,18 @@ public class CatalogsRetailProductGroupCreateRequest   {
       return false;
     }
     CatalogsRetailProductGroupCreateRequest catalogsRetailProductGroupCreateRequest = (CatalogsRetailProductGroupCreateRequest) o;
-    return Objects.equals(this.catalogType, catalogsRetailProductGroupCreateRequest.catalogType) &&
-        Objects.equals(this.name, catalogsRetailProductGroupCreateRequest.name) &&
+    return Objects.equals(this.catalogId, catalogsRetailProductGroupCreateRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsRetailProductGroupCreateRequest.catalogType) &&
+        Objects.equals(this.country, catalogsRetailProductGroupCreateRequest.country) &&
         Objects.equals(this.description, catalogsRetailProductGroupCreateRequest.description) &&
         Objects.equals(this.filters, catalogsRetailProductGroupCreateRequest.filters) &&
-        Objects.equals(this.catalogId, catalogsRetailProductGroupCreateRequest.catalogId) &&
-        Objects.equals(this.country, catalogsRetailProductGroupCreateRequest.country) &&
-        Objects.equals(this.locale, catalogsRetailProductGroupCreateRequest.locale);
+        Objects.equals(this.locale, catalogsRetailProductGroupCreateRequest.locale) &&
+        Objects.equals(this.name, catalogsRetailProductGroupCreateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters, catalogId, country, locale);
+    return Objects.hash(catalogId, catalogType, country, description, filters, locale, name);
   }
 
   @Override
@@ -263,13 +259,13 @@ public class CatalogsRetailProductGroupCreateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailProductGroupCreateRequest {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
-    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

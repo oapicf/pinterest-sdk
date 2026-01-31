@@ -40,6 +40,9 @@ open class KeywordsAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter adAccountId: (path) Unique identifier of an ad account. 
      - parameter countryCode: (query) Two letter country code (ISO 3166-1 alpha-2) 
      - parameter keywords: (query) Comma-separated keywords 
@@ -128,15 +131,16 @@ open class KeywordsAPI {
      - parameter adAccountId: (path) Unique identifier of an ad account. 
      - parameter campaignId: (query) Campaign Id to use to filter the results. (optional)
      - parameter adGroupId: (query) Ad group Id. (optional)
+     - parameter adGroupIds: (query) List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. (optional)
      - parameter matchTypes: (query) Keyword &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot;&gt;match type&lt;/a&gt; (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func keywordsGet(adAccountId: String, campaignId: String? = nil, adGroupId: String? = nil, matchTypes: [MatchType]? = nil, pageSize: Int? = nil, bookmark: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: KeywordsGet200Response?, _ error: Error?) -> Void)) -> RequestTask {
-        return keywordsGetWithRequestBuilder(adAccountId: adAccountId, campaignId: campaignId, adGroupId: adGroupId, matchTypes: matchTypes, pageSize: pageSize, bookmark: bookmark).execute(apiResponseQueue) { result in
+    open class func keywordsGet(adAccountId: String, campaignId: String? = nil, adGroupId: String? = nil, adGroupIds: [String]? = nil, matchTypes: [MatchType]? = nil, pageSize: Int? = nil, bookmark: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: KeywordsGet200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return keywordsGetWithRequestBuilder(adAccountId: adAccountId, campaignId: campaignId, adGroupId: adGroupId, adGroupIds: adGroupIds, matchTypes: matchTypes, pageSize: pageSize, bookmark: bookmark).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -153,15 +157,19 @@ open class KeywordsAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter adAccountId: (path) Unique identifier of an ad account. 
      - parameter campaignId: (query) Campaign Id to use to filter the results. (optional)
      - parameter adGroupId: (query) Ad group Id. (optional)
+     - parameter adGroupIds: (query) List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. (optional)
      - parameter matchTypes: (query) Keyword &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot;&gt;match type&lt;/a&gt; (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
      - returns: RequestBuilder<KeywordsGet200Response> 
      */
-    open class func keywordsGetWithRequestBuilder(adAccountId: String, campaignId: String? = nil, adGroupId: String? = nil, matchTypes: [MatchType]? = nil, pageSize: Int? = nil, bookmark: String? = nil) -> RequestBuilder<KeywordsGet200Response> {
+    open class func keywordsGetWithRequestBuilder(adAccountId: String, campaignId: String? = nil, adGroupId: String? = nil, adGroupIds: [String]? = nil, matchTypes: [MatchType]? = nil, pageSize: Int? = nil, bookmark: String? = nil) -> RequestBuilder<KeywordsGet200Response> {
         var localVariablePath = "/ad_accounts/{ad_account_id}/keywords"
         let adAccountIdPreEscape = "\(APIHelper.mapValueToPathItem(adAccountId))"
         let adAccountIdPostEscape = adAccountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -173,6 +181,7 @@ open class KeywordsAPI {
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "campaign_id": (wrappedValue: campaignId?.encodeToJSON(), isExplode: true),
             "ad_group_id": (wrappedValue: adGroupId?.encodeToJSON(), isExplode: true),
+            "ad_group_ids": (wrappedValue: adGroupIds?.encodeToJSON(), isExplode: true),
             "match_types": (wrappedValue: matchTypes?.encodeToJSON(), isExplode: true),
             "page_size": (wrappedValue: pageSize?.encodeToJSON(), isExplode: true),
             "bookmark": (wrappedValue: bookmark?.encodeToJSON(), isExplode: true),
@@ -304,12 +313,14 @@ open class KeywordsAPI {
      - parameter includeKeywords: (query) If set, filters the results to top trends which include at least one of the specified keywords.&lt;br /&gt; If unset, no keyword filtering logic is applied. (optional)
      - parameter normalizeAgainstGroup: (query) Governs how the resulting time series data will be normalized to a [0-100] scale.&lt;br /&gt; By default (&#x60;false&#x60;), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword&#39;s time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.&lt;br /&gt; If set to &#x60;true&#x60;, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords. (optional, default to false)
      - parameter limit: (query) The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a &#x60;limit&#x60; of 50 will return the top 50 trends. (optional, default to 50)
+     - parameter includePrediction: (query) &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including predicted weekly search volume data for the next 90 days. By default (&#x60;false&#x60;), the response will not include predicted data. (optional, default to false)
+     - parameter includeDemographics: (query) &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including the age and gender distribution for each keyword. By default (&#x60;false&#x60;), the response will not include demographics data. (optional, default to false)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func trendingKeywordsList(region: TrendsSupportedRegion, trendType: TrendType, interests: [Interests_trendingKeywordsList]? = nil, genders: [Genders_trendingKeywordsList]? = nil, ages: [Ages_trendingKeywordsList]? = nil, includeKeywords: [String]? = nil, normalizeAgainstGroup: Bool? = nil, limit: Int? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TrendingKeywordsResponse?, _ error: Error?) -> Void)) -> RequestTask {
-        return trendingKeywordsListWithRequestBuilder(region: region, trendType: trendType, interests: interests, genders: genders, ages: ages, includeKeywords: includeKeywords, normalizeAgainstGroup: normalizeAgainstGroup, limit: limit).execute(apiResponseQueue) { result in
+    open class func trendingKeywordsList(region: TrendsSupportedRegion, trendType: TrendType, interests: [Interests_trendingKeywordsList]? = nil, genders: [Genders_trendingKeywordsList]? = nil, ages: [Ages_trendingKeywordsList]? = nil, includeKeywords: [String]? = nil, normalizeAgainstGroup: Bool? = nil, limit: Int? = nil, includePrediction: Bool? = nil, includeDemographics: Bool? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TrendingKeywordsResponse?, _ error: Error?) -> Void)) -> RequestTask {
+        return trendingKeywordsListWithRequestBuilder(region: region, trendType: trendType, interests: interests, genders: genders, ages: ages, includeKeywords: includeKeywords, normalizeAgainstGroup: normalizeAgainstGroup, limit: limit, includePrediction: includePrediction, includeDemographics: includeDemographics).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -334,9 +345,11 @@ open class KeywordsAPI {
      - parameter includeKeywords: (query) If set, filters the results to top trends which include at least one of the specified keywords.&lt;br /&gt; If unset, no keyword filtering logic is applied. (optional)
      - parameter normalizeAgainstGroup: (query) Governs how the resulting time series data will be normalized to a [0-100] scale.&lt;br /&gt; By default (&#x60;false&#x60;), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword&#39;s time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.&lt;br /&gt; If set to &#x60;true&#x60;, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords. (optional, default to false)
      - parameter limit: (query) The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a &#x60;limit&#x60; of 50 will return the top 50 trends. (optional, default to 50)
+     - parameter includePrediction: (query) &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including predicted weekly search volume data for the next 90 days. By default (&#x60;false&#x60;), the response will not include predicted data. (optional, default to false)
+     - parameter includeDemographics: (query) &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including the age and gender distribution for each keyword. By default (&#x60;false&#x60;), the response will not include demographics data. (optional, default to false)
      - returns: RequestBuilder<TrendingKeywordsResponse> 
      */
-    open class func trendingKeywordsListWithRequestBuilder(region: TrendsSupportedRegion, trendType: TrendType, interests: [Interests_trendingKeywordsList]? = nil, genders: [Genders_trendingKeywordsList]? = nil, ages: [Ages_trendingKeywordsList]? = nil, includeKeywords: [String]? = nil, normalizeAgainstGroup: Bool? = nil, limit: Int? = nil) -> RequestBuilder<TrendingKeywordsResponse> {
+    open class func trendingKeywordsListWithRequestBuilder(region: TrendsSupportedRegion, trendType: TrendType, interests: [Interests_trendingKeywordsList]? = nil, genders: [Genders_trendingKeywordsList]? = nil, ages: [Ages_trendingKeywordsList]? = nil, includeKeywords: [String]? = nil, normalizeAgainstGroup: Bool? = nil, limit: Int? = nil, includePrediction: Bool? = nil, includeDemographics: Bool? = nil) -> RequestBuilder<TrendingKeywordsResponse> {
         var localVariablePath = "/trends/keywords/{region}/top/{trend_type}"
         let regionPreEscape = "\(APIHelper.mapValueToPathItem(region))"
         let regionPostEscape = regionPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -355,6 +368,8 @@ open class KeywordsAPI {
             "include_keywords": (wrappedValue: includeKeywords?.encodeToJSON(), isExplode: true),
             "normalize_against_group": (wrappedValue: normalizeAgainstGroup?.encodeToJSON(), isExplode: true),
             "limit": (wrappedValue: limit?.encodeToJSON(), isExplode: true),
+            "include_prediction": (wrappedValue: includePrediction?.encodeToJSON(), isExplode: true),
+            "include_demographics": (wrappedValue: includeDemographics?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [

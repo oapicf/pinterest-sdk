@@ -5,11 +5,11 @@ import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
 import model.Error
-import model.PinsList200Response
 import model.SearchPartnerPins200Response
 import model.SearchUserBoardsGet200Response
+import model.SearchUserPinsList200Response
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Singleton
 class SearchApiController @Inject()(cc: ControllerComponents, api: SearchApi) extends AbstractController(cc) {
   /**
@@ -68,7 +68,7 @@ class SearchApiController @Inject()(cc: ControllerComponents, api: SearchApi) ex
     * GET /v5/search/pins?adAccountId=[value]&query=[value]&bookmark=[value]
     */
   def searchUserPinsList(): Action[AnyContent] = Action { request =>
-    def executeApi(): PinsList200Response = {
+    def executeApi(): SearchUserPinsList200Response = {
       val adAccountId = request.getQueryString("ad_account_id")
         
       val query = request.getQueryString("query")

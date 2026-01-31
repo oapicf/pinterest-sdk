@@ -12,9 +12,9 @@ import AnyCodable
 
 public struct ConversionTagListResponse: Codable, JSONEncodable, Hashable {
 
-    public var items: [ConversionTagResponse]?
+    public var items: [ConversionTag]?
 
-    public init(items: [ConversionTagResponse]? = nil) {
+    public init(items: [ConversionTag]? = nil) {
         self.items = items
     }
 

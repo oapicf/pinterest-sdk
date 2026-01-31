@@ -75,5 +75,15 @@ private class OASAdPreviewRequestTest {
         Map<String, String> x-property-mappings = adPreviewRequest.getx-property-mappings();
         System.assertEquals('imageUrl', x-property-mappings.get('image_url'));
         System.assertEquals('pinId', x-property-mappings.get('pin_id'));
+        System.assertEquals('catalogProductGroupId', x-property-mappings.get('catalog_product_group_id'));
+        System.assertEquals('creativeType', x-property-mappings.get('creative_type'));
+        System.assertEquals('customizableCtaType', x-property-mappings.get('customizable_cta_type'));
+        System.assertEquals('heroImageTitle', x-property-mappings.get('hero_image_title'));
+        System.assertEquals('heroImageUrl', x-property-mappings.get('hero_image_url'));
+        System.assertEquals('heroPinId', x-property-mappings.get('hero_pin_id'));
+        System.assertEquals('imageTag', x-property-mappings.get('image_tag'));
+        System.assertEquals('itemId', x-property-mappings.get('item_id'));
+        System.assertEquals('preferredMediaType', x-property-mappings.get('preferred_media_type'));
+        System.assertEquals('videoTag', x-property-mappings.get('video_tag'));
     }
 }

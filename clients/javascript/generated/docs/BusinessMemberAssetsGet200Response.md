@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[AssetIdPermissions]**](AssetIdPermissions.md) | List asset permissions the given member was granted. | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[AssetIdPermissions]**](AssetIdPermissions.md) | List asset permissions the given member was granted. | 
 
 

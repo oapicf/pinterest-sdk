@@ -13,14 +13,14 @@ module CatalogsRetailItemResponse =
 
   [<CLIMutable>]
   type CatalogsRetailItemResponse = {
+    [<JsonProperty(PropertyName = "attributes")>]
+    Attributes : ItemAttributes;
     [<JsonProperty(PropertyName = "catalog_type")>]
     CatalogType : CatalogsType;
     [<JsonProperty(PropertyName = "item_id")>]
     ItemId : string;
     [<JsonProperty(PropertyName = "pins")>]
     Pins : Pin[];
-    [<JsonProperty(PropertyName = "attributes")>]
-    Attributes : ItemAttributes;
   }
 
   //#endregion

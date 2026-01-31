@@ -12,8 +12,8 @@ import org.joda.time.DateTime
 import LeadsExportResponseData._
 
 case class LeadsExportResponseData (
-  exportStatus: Option[LeadsExportStatus],
-downloadUrl: Option[String])
+  downloadUrl: Option[String],
+exportStatus: Option[LeadsExportStatus])
 
 object LeadsExportResponseData {
   import DateTimeCodecs._

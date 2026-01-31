@@ -1,0 +1,58 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AudienceCreateRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AudienceCreateRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AudienceRule = openapi_server.resourceTypes.AudienceRule
+  AudienceType = openapi_server.resourceTypes.AudienceType
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  AudienceCreateRequest {
+    title = AudienceCreateRequest
+    description = AudienceCreateRequest
+    derivedFrom = Root
+    properties {
+        ad_account_id {
+          type =  string
+          description = "Ad account ID."
+          optional = false
+        }
+        name {
+          type =  string
+          description = "Audience name."
+          optional = true
+        }
+        rule {
+          type = AudienceRule
+          description = ""
+          optional = true
+        }
+        audience_type {
+          type = AudienceType
+          description = "&lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive."
+          optional = true
+        }
+        description {
+          type =  string
+          description = "Audience description."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AudienceCreateRequest {
+    title = AudienceCreateRequest
+    description = AudienceCreateRequest
+    implements = openapi_server.resourceTypes.AudienceCreateRequest
+
+  }
+}

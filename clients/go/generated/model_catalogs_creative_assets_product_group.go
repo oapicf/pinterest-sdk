@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,19 +22,19 @@ var _ MappedNullable = &CatalogsCreativeAssetsProductGroup{}
 
 // CatalogsCreativeAssetsProductGroup struct for CatalogsCreativeAssetsProductGroup
 type CatalogsCreativeAssetsProductGroup struct {
+	// Catalog id pertaining to the creative assets product group.
+	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
 	CatalogType string `json:"catalog_type"`
+	// Unix timestamp in seconds of when catalog product group was created.
+	CreatedAt *int32 `json:"created_at,omitempty"`
+	Description NullableString `json:"description,omitempty"`
+	Filters CatalogsCreativeAssetsProductGroupFilters `json:"filters"`
 	// ID of the creative assets product group.
 	Id string `json:"id" validate:"regexp=^\\\\d+$"`
 	// Name of creative assets product group
 	Name *string `json:"name,omitempty"`
-	Description NullableString `json:"description,omitempty"`
-	Filters CatalogsCreativeAssetsProductGroupFilters `json:"filters"`
-	// Unix timestamp in seconds of when catalog product group was created.
-	CreatedAt *int32 `json:"created_at,omitempty"`
 	// Unix timestamp in seconds of last time catalog product group was updated.
 	UpdatedAt *int32 `json:"updated_at,omitempty"`
-	// Catalog id pertaining to the creative assets product group.
-	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
 }
 
 type _CatalogsCreativeAssetsProductGroup CatalogsCreativeAssetsProductGroup
@@ -43,12 +43,12 @@ type _CatalogsCreativeAssetsProductGroup CatalogsCreativeAssetsProductGroup
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsCreativeAssetsProductGroup(catalogType string, id string, filters CatalogsCreativeAssetsProductGroupFilters, catalogId string) *CatalogsCreativeAssetsProductGroup {
+func NewCatalogsCreativeAssetsProductGroup(catalogId string, catalogType string, filters CatalogsCreativeAssetsProductGroupFilters, id string) *CatalogsCreativeAssetsProductGroup {
 	this := CatalogsCreativeAssetsProductGroup{}
-	this.CatalogType = catalogType
-	this.Id = id
-	this.Filters = filters
 	this.CatalogId = catalogId
+	this.CatalogType = catalogType
+	this.Filters = filters
+	this.Id = id
 	return &this
 }
 
@@ -58,6 +58,30 @@ func NewCatalogsCreativeAssetsProductGroup(catalogType string, id string, filter
 func NewCatalogsCreativeAssetsProductGroupWithDefaults() *CatalogsCreativeAssetsProductGroup {
 	this := CatalogsCreativeAssetsProductGroup{}
 	return &this
+}
+
+// GetCatalogId returns the CatalogId field value
+func (o *CatalogsCreativeAssetsProductGroup) GetCatalogId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CatalogId
+}
+
+// GetCatalogIdOk returns a tuple with the CatalogId field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsCreativeAssetsProductGroup) GetCatalogIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CatalogId, true
+}
+
+// SetCatalogId sets field value
+func (o *CatalogsCreativeAssetsProductGroup) SetCatalogId(v string) {
+	o.CatalogId = v
 }
 
 // GetCatalogType returns the CatalogType field value
@@ -84,60 +108,36 @@ func (o *CatalogsCreativeAssetsProductGroup) SetCatalogType(v string) {
 	o.CatalogType = v
 }
 
-// GetId returns the Id field value
-func (o *CatalogsCreativeAssetsProductGroup) GetId() string {
-	if o == nil {
-		var ret string
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+func (o *CatalogsCreativeAssetsProductGroup) GetCreatedAt() int32 {
+	if o == nil || IsNil(o.CreatedAt) {
+		var ret int32
 		return ret
 	}
-
-	return o.Id
+	return *o.CreatedAt
 }
 
-// GetIdOk returns a tuple with the Id field value
+// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsCreativeAssetsProductGroup) GetIdOk() (*string, bool) {
-	if o == nil {
+func (o *CatalogsCreativeAssetsProductGroup) GetCreatedAtOk() (*int32, bool) {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
-	return &o.Id, true
+	return o.CreatedAt, true
 }
 
-// SetId sets field value
-func (o *CatalogsCreativeAssetsProductGroup) SetId(v string) {
-	o.Id = v
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *CatalogsCreativeAssetsProductGroup) GetName() string {
-	if o == nil || IsNil(o.Name) {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsCreativeAssetsProductGroup) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *CatalogsCreativeAssetsProductGroup) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+// HasCreatedAt returns a boolean if a field has been set.
+func (o *CatalogsCreativeAssetsProductGroup) HasCreatedAt() bool {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *CatalogsCreativeAssetsProductGroup) SetName(v string) {
-	o.Name = &v
+// SetCreatedAt gets a reference to the given int32 and assigns it to the CreatedAt field.
+func (o *CatalogsCreativeAssetsProductGroup) SetCreatedAt(v int32) {
+	o.CreatedAt = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -206,36 +206,60 @@ func (o *CatalogsCreativeAssetsProductGroup) SetFilters(v CatalogsCreativeAssets
 	o.Filters = v
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *CatalogsCreativeAssetsProductGroup) GetCreatedAt() int32 {
-	if o == nil || IsNil(o.CreatedAt) {
-		var ret int32
+// GetId returns the Id field value
+func (o *CatalogsCreativeAssetsProductGroup) GetId() string {
+	if o == nil {
+		var ret string
 		return ret
 	}
-	return *o.CreatedAt
+
+	return o.Id
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsCreativeAssetsProductGroup) GetCreatedAtOk() (*int32, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+func (o *CatalogsCreativeAssetsProductGroup) GetIdOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt, true
+	return &o.Id, true
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *CatalogsCreativeAssetsProductGroup) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
+// SetId sets field value
+func (o *CatalogsCreativeAssetsProductGroup) SetId(v string) {
+	o.Id = v
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *CatalogsCreativeAssetsProductGroup) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsCreativeAssetsProductGroup) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *CatalogsCreativeAssetsProductGroup) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given int32 and assigns it to the CreatedAt field.
-func (o *CatalogsCreativeAssetsProductGroup) SetCreatedAt(v int32) {
-	o.CreatedAt = &v
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *CatalogsCreativeAssetsProductGroup) SetName(v string) {
+	o.Name = &v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
@@ -270,30 +294,6 @@ func (o *CatalogsCreativeAssetsProductGroup) SetUpdatedAt(v int32) {
 	o.UpdatedAt = &v
 }
 
-// GetCatalogId returns the CatalogId field value
-func (o *CatalogsCreativeAssetsProductGroup) GetCatalogId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.CatalogId
-}
-
-// GetCatalogIdOk returns a tuple with the CatalogId field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsCreativeAssetsProductGroup) GetCatalogIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CatalogId, true
-}
-
-// SetCatalogId sets field value
-func (o *CatalogsCreativeAssetsProductGroup) SetCatalogId(v string) {
-	o.CatalogId = v
-}
-
 func (o CatalogsCreativeAssetsProductGroup) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -304,22 +304,22 @@ func (o CatalogsCreativeAssetsProductGroup) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsCreativeAssetsProductGroup) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["catalog_id"] = o.CatalogId
 	toSerialize["catalog_type"] = o.CatalogType
-	toSerialize["id"] = o.Id
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if !IsNil(o.CreatedAt) {
+		toSerialize["created_at"] = o.CreatedAt
 	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
 	toSerialize["filters"] = o.Filters
-	if !IsNil(o.CreatedAt) {
-		toSerialize["created_at"] = o.CreatedAt
+	toSerialize["id"] = o.Id
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
-	toSerialize["catalog_id"] = o.CatalogId
 	return toSerialize, nil
 }
 
@@ -328,10 +328,10 @@ func (o *CatalogsCreativeAssetsProductGroup) UnmarshalJSON(data []byte) (err err
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"catalog_type",
-		"id",
-		"filters",
 		"catalog_id",
+		"catalog_type",
+		"filters",
+		"id",
 	}
 
 	allProperties := make(map[string]interface{})

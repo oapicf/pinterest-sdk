@@ -1,0 +1,12 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "",
+  "name": "ProductCategoryDetailLookbackWindow",
+  "symbols": [
+    _90,
+    _180,
+    _365,
+    _730
+  ]
+}

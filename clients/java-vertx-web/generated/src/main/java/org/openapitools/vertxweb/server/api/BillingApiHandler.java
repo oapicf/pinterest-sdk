@@ -3,8 +3,11 @@ package org.openapitools.vertxweb.server.api;
 import org.openapitools.vertxweb.server.model.AdsCreditRedeemRequest;
 import org.openapitools.vertxweb.server.model.AdsCreditRedeemResponse;
 import org.openapitools.vertxweb.server.model.AdsCreditsDiscountsGet200Response;
+import org.openapitools.vertxweb.server.model.BillingInvoiceDownloadResponse;
+import org.openapitools.vertxweb.server.model.BillingInvoicesGet200Response;
 import org.openapitools.vertxweb.server.model.BillingProfilesGet200Response;
 import org.openapitools.vertxweb.server.model.Error;
+import java.time.LocalDate;
 import org.openapitools.vertxweb.server.model.SSIOAccountResponse;
 import org.openapitools.vertxweb.server.model.SSIOCreateInsertionOrderRequest;
 import org.openapitools.vertxweb.server.model.SSIOCreateInsertionOrderResponse;
@@ -46,6 +49,8 @@ public class BillingApiHandler {
     public void mount(RouterBuilder builder) {
         builder.operation("adsCreditRedeem").handler(this::adsCreditRedeem);
         builder.operation("adsCreditsDiscountsGet").handler(this::adsCreditsDiscountsGet);
+        builder.operation("billingInvoiceDownloadGet").handler(this::billingInvoiceDownloadGet);
+        builder.operation("billingInvoicesGet").handler(this::billingInvoicesGet);
         builder.operation("billingProfilesGet").handler(this::billingProfilesGet);
         builder.operation("ssioAccountsGet").handler(this::ssioAccountsGet);
         builder.operation("ssioInsertionOrderCreate").handler(this::ssioInsertionOrderCreate);
@@ -95,6 +100,68 @@ public class BillingApiHandler {
         logger.debug("Parameter pageSize is {}", pageSize);
 
         api.adsCreditsDiscountsGet(adAccountId, bookmark, pageSize)
+            .onSuccess(apiResponse -> {
+                routingContext.response().setStatusCode(apiResponse.getStatusCode());
+                if (apiResponse.hasData()) {
+                    routingContext.json(apiResponse.getData());
+                } else {
+                    routingContext.response().end();
+                }
+            })
+            .onFailure(routingContext::fail);
+    }
+
+    private void billingInvoiceDownloadGet(RoutingContext routingContext) {
+        logger.info("billingInvoiceDownloadGet()");
+
+        // Param extraction
+        RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
+
+        String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
+        String billingInvoiceId = requestParameters.pathParameter("billing_invoice_id") != null ? requestParameters.pathParameter("billing_invoice_id").getString() : null;
+
+        logger.debug("Parameter adAccountId is {}", adAccountId);
+        logger.debug("Parameter billingInvoiceId is {}", billingInvoiceId);
+
+        api.billingInvoiceDownloadGet(adAccountId, billingInvoiceId)
+            .onSuccess(apiResponse -> {
+                routingContext.response().setStatusCode(apiResponse.getStatusCode());
+                if (apiResponse.hasData()) {
+                    routingContext.json(apiResponse.getData());
+                } else {
+                    routingContext.response().end();
+                }
+            })
+            .onFailure(routingContext::fail);
+    }
+
+    private void billingInvoicesGet(RoutingContext routingContext) {
+        logger.info("billingInvoicesGet()");
+
+        // Param extraction
+        RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
+
+        String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
+        String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
+        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
+        String sort = requestParameters.queryParameter("sort") != null ? requestParameters.queryParameter("sort").getString() : "DUE_DATE";
+        String order = requestParameters.queryParameter("order") != null ? requestParameters.queryParameter("order").getString() : null;
+        String status = requestParameters.queryParameter("status") != null ? requestParameters.queryParameter("status").getString() : null;
+        String documentType = requestParameters.queryParameter("document_type") != null ? requestParameters.queryParameter("document_type").getString() : null;
+        LocalDate startDueDate = requestParameters.queryParameter("start_due_date") != null ? requestParameters.queryParameter("start_due_date").getLocalDate() : null;
+        LocalDate endDueDate = requestParameters.queryParameter("end_due_date") != null ? requestParameters.queryParameter("end_due_date").getLocalDate() : null;
+
+        logger.debug("Parameter adAccountId is {}", adAccountId);
+        logger.debug("Parameter bookmark is {}", bookmark);
+        logger.debug("Parameter pageSize is {}", pageSize);
+        logger.debug("Parameter sort is {}", sort);
+        logger.debug("Parameter order is {}", order);
+        logger.debug("Parameter status is {}", status);
+        logger.debug("Parameter documentType is {}", documentType);
+        logger.debug("Parameter startDueDate is {}", startDueDate);
+        logger.debug("Parameter endDueDate is {}", endDueDate);
+
+        api.billingInvoicesGet(adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

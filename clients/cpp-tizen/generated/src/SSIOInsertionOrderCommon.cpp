@@ -23,42 +23,32 @@ SSIOInsertionOrderCommon::~SSIOInsertionOrderCommon()
 void
 SSIOInsertionOrderCommon::__init()
 {
-	//start_date = std::string();
-	//end_date = std::string();
-	//po_number = std::string();
-	//budget_amount = double(0);
+	//agency_link = std::string();
+	//billing_contact_email = std::string();
 	//billing_contact_firstname = std::string();
 	//billing_contact_lastname = std::string();
-	//billing_contact_email = std::string();
+	//budget_amount = double(0);
+	//end_date = std::string();
+	//media_contact_email = std::string();
 	//media_contact_firstname = std::string();
 	//media_contact_lastname = std::string();
-	//media_contact_email = std::string();
-	//agency_link = std::string();
+	//po_number = std::string();
+	//start_date = std::string();
 	//user_email = std::string();
 }
 
 void
 SSIOInsertionOrderCommon::__cleanup()
 {
-	//if(start_date != NULL) {
+	//if(agency_link != NULL) {
 	//
-	//delete start_date;
-	//start_date = NULL;
+	//delete agency_link;
+	//agency_link = NULL;
 	//}
-	//if(end_date != NULL) {
+	//if(billing_contact_email != NULL) {
 	//
-	//delete end_date;
-	//end_date = NULL;
-	//}
-	//if(po_number != NULL) {
-	//
-	//delete po_number;
-	//po_number = NULL;
-	//}
-	//if(budget_amount != NULL) {
-	//
-	//delete budget_amount;
-	//budget_amount = NULL;
+	//delete billing_contact_email;
+	//billing_contact_email = NULL;
 	//}
 	//if(billing_contact_firstname != NULL) {
 	//
@@ -70,10 +60,20 @@ SSIOInsertionOrderCommon::__cleanup()
 	//delete billing_contact_lastname;
 	//billing_contact_lastname = NULL;
 	//}
-	//if(billing_contact_email != NULL) {
+	//if(budget_amount != NULL) {
 	//
-	//delete billing_contact_email;
-	//billing_contact_email = NULL;
+	//delete budget_amount;
+	//budget_amount = NULL;
+	//}
+	//if(end_date != NULL) {
+	//
+	//delete end_date;
+	//end_date = NULL;
+	//}
+	//if(media_contact_email != NULL) {
+	//
+	//delete media_contact_email;
+	//media_contact_email = NULL;
 	//}
 	//if(media_contact_firstname != NULL) {
 	//
@@ -85,15 +85,15 @@ SSIOInsertionOrderCommon::__cleanup()
 	//delete media_contact_lastname;
 	//media_contact_lastname = NULL;
 	//}
-	//if(media_contact_email != NULL) {
+	//if(po_number != NULL) {
 	//
-	//delete media_contact_email;
-	//media_contact_email = NULL;
+	//delete po_number;
+	//po_number = NULL;
 	//}
-	//if(agency_link != NULL) {
+	//if(start_date != NULL) {
 	//
-	//delete agency_link;
-	//agency_link = NULL;
+	//delete start_date;
+	//start_date = NULL;
 	//}
 	//if(user_email != NULL) {
 	//
@@ -108,50 +108,25 @@ SSIOInsertionOrderCommon::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *start_dateKey = "start_date";
-	node = json_object_get_member(pJsonObject, start_dateKey);
+	const gchar *agency_linkKey = "agency_link";
+	node = json_object_get_member(pJsonObject, agency_linkKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&start_date, node, "std::string", "");
+			jsonToValue(&agency_link, node, "std::string", "");
 		} else {
 			
 		}
 	}
-	const gchar *end_dateKey = "end_date";
-	node = json_object_get_member(pJsonObject, end_dateKey);
+	const gchar *billing_contact_emailKey = "billing_contact_email";
+	node = json_object_get_member(pJsonObject, billing_contact_emailKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&end_date, node, "std::string", "");
+			jsonToValue(&billing_contact_email, node, "std::string", "");
 		} else {
-			
-		}
-	}
-	const gchar *po_numberKey = "po_number";
-	node = json_object_get_member(pJsonObject, po_numberKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&po_number, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *budget_amountKey = "budget_amount";
-	node = json_object_get_member(pJsonObject, budget_amountKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("long long")) {
-			jsonToValue(&budget_amount, node, "long long", "");
-		} else {
-			
-			long long* obj = static_cast<long long*> (&budget_amount);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -177,13 +152,38 @@ SSIOInsertionOrderCommon::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *billing_contact_emailKey = "billing_contact_email";
-	node = json_object_get_member(pJsonObject, billing_contact_emailKey);
+	const gchar *budget_amountKey = "budget_amount";
+	node = json_object_get_member(pJsonObject, budget_amountKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("long long")) {
+			jsonToValue(&budget_amount, node, "long long", "");
+		} else {
+			
+			long long* obj = static_cast<long long*> (&budget_amount);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *end_dateKey = "end_date";
+	node = json_object_get_member(pJsonObject, end_dateKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&billing_contact_email, node, "std::string", "");
+			jsonToValue(&end_date, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *media_contact_emailKey = "media_contact_email";
+	node = json_object_get_member(pJsonObject, media_contact_emailKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&media_contact_email, node, "std::string", "");
 		} else {
 			
 		}
@@ -210,24 +210,24 @@ SSIOInsertionOrderCommon::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *media_contact_emailKey = "media_contact_email";
-	node = json_object_get_member(pJsonObject, media_contact_emailKey);
+	const gchar *po_numberKey = "po_number";
+	node = json_object_get_member(pJsonObject, po_numberKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&media_contact_email, node, "std::string", "");
+			jsonToValue(&po_number, node, "std::string", "");
 		} else {
 			
 		}
 	}
-	const gchar *agency_linkKey = "agency_link";
-	node = json_object_get_member(pJsonObject, agency_linkKey);
+	const gchar *start_dateKey = "start_date";
+	node = json_object_get_member(pJsonObject, start_dateKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&agency_link, node, "std::string", "");
+			jsonToValue(&start_date, node, "std::string", "");
 		} else {
 			
 		}
@@ -256,46 +256,23 @@ SSIOInsertionOrderCommon::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
-		std::string obj = getStartDate();
+		std::string obj = getAgencyLink();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *start_dateKey = "start_date";
-	json_object_set_member(pJsonObject, start_dateKey, node);
+	const gchar *agency_linkKey = "agency_link";
+	json_object_set_member(pJsonObject, agency_linkKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getEndDate();
+		std::string obj = getBillingContactEmail();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *end_dateKey = "end_date";
-	json_object_set_member(pJsonObject, end_dateKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getPoNumber();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *po_numberKey = "po_number";
-	json_object_set_member(pJsonObject, po_numberKey, node);
-	if (isprimitive("long long")) {
-		long long obj = getBudgetAmount();
-		node = converttoJson(&obj, "long long", "");
-	}
-	else {
-		
-		long long obj = static_cast<long long> (getBudgetAmount());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *budget_amountKey = "budget_amount";
-	json_object_set_member(pJsonObject, budget_amountKey, node);
+	const gchar *billing_contact_emailKey = "billing_contact_email";
+	json_object_set_member(pJsonObject, billing_contact_emailKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getBillingContactFirstname();
 		node = converttoJson(&obj, "std::string", "");
@@ -314,15 +291,38 @@ SSIOInsertionOrderCommon::toJson()
 	}
 	const gchar *billing_contact_lastnameKey = "billing_contact_lastname";
 	json_object_set_member(pJsonObject, billing_contact_lastnameKey, node);
+	if (isprimitive("long long")) {
+		long long obj = getBudgetAmount();
+		node = converttoJson(&obj, "long long", "");
+	}
+	else {
+		
+		long long obj = static_cast<long long> (getBudgetAmount());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *budget_amountKey = "budget_amount";
+	json_object_set_member(pJsonObject, budget_amountKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getBillingContactEmail();
+		std::string obj = getEndDate();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *billing_contact_emailKey = "billing_contact_email";
-	json_object_set_member(pJsonObject, billing_contact_emailKey, node);
+	const gchar *end_dateKey = "end_date";
+	json_object_set_member(pJsonObject, end_dateKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getMediaContactEmail();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *media_contact_emailKey = "media_contact_email";
+	json_object_set_member(pJsonObject, media_contact_emailKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getMediaContactFirstname();
 		node = converttoJson(&obj, "std::string", "");
@@ -342,23 +342,23 @@ SSIOInsertionOrderCommon::toJson()
 	const gchar *media_contact_lastnameKey = "media_contact_lastname";
 	json_object_set_member(pJsonObject, media_contact_lastnameKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getMediaContactEmail();
+		std::string obj = getPoNumber();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *media_contact_emailKey = "media_contact_email";
-	json_object_set_member(pJsonObject, media_contact_emailKey, node);
+	const gchar *po_numberKey = "po_number";
+	json_object_set_member(pJsonObject, po_numberKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getAgencyLink();
+		std::string obj = getStartDate();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *agency_linkKey = "agency_link";
-	json_object_set_member(pJsonObject, agency_linkKey, node);
+	const gchar *start_dateKey = "start_date";
+	json_object_set_member(pJsonObject, start_dateKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getUserEmail();
 		node = converttoJson(&obj, "std::string", "");
@@ -377,51 +377,27 @@ SSIOInsertionOrderCommon::toJson()
 }
 
 std::string
-SSIOInsertionOrderCommon::getStartDate()
+SSIOInsertionOrderCommon::getAgencyLink()
 {
-	return start_date;
+	return agency_link;
 }
 
 void
-SSIOInsertionOrderCommon::setStartDate(std::string  start_date)
+SSIOInsertionOrderCommon::setAgencyLink(std::string  agency_link)
 {
-	this->start_date = start_date;
+	this->agency_link = agency_link;
 }
 
 std::string
-SSIOInsertionOrderCommon::getEndDate()
+SSIOInsertionOrderCommon::getBillingContactEmail()
 {
-	return end_date;
+	return billing_contact_email;
 }
 
 void
-SSIOInsertionOrderCommon::setEndDate(std::string  end_date)
+SSIOInsertionOrderCommon::setBillingContactEmail(std::string  billing_contact_email)
 {
-	this->end_date = end_date;
-}
-
-std::string
-SSIOInsertionOrderCommon::getPoNumber()
-{
-	return po_number;
-}
-
-void
-SSIOInsertionOrderCommon::setPoNumber(std::string  po_number)
-{
-	this->po_number = po_number;
-}
-
-long long
-SSIOInsertionOrderCommon::getBudgetAmount()
-{
-	return budget_amount;
-}
-
-void
-SSIOInsertionOrderCommon::setBudgetAmount(long long  budget_amount)
-{
-	this->budget_amount = budget_amount;
+	this->billing_contact_email = billing_contact_email;
 }
 
 std::string
@@ -448,16 +424,40 @@ SSIOInsertionOrderCommon::setBillingContactLastname(std::string  billing_contact
 	this->billing_contact_lastname = billing_contact_lastname;
 }
 
-std::string
-SSIOInsertionOrderCommon::getBillingContactEmail()
+long long
+SSIOInsertionOrderCommon::getBudgetAmount()
 {
-	return billing_contact_email;
+	return budget_amount;
 }
 
 void
-SSIOInsertionOrderCommon::setBillingContactEmail(std::string  billing_contact_email)
+SSIOInsertionOrderCommon::setBudgetAmount(long long  budget_amount)
 {
-	this->billing_contact_email = billing_contact_email;
+	this->budget_amount = budget_amount;
+}
+
+std::string
+SSIOInsertionOrderCommon::getEndDate()
+{
+	return end_date;
+}
+
+void
+SSIOInsertionOrderCommon::setEndDate(std::string  end_date)
+{
+	this->end_date = end_date;
+}
+
+std::string
+SSIOInsertionOrderCommon::getMediaContactEmail()
+{
+	return media_contact_email;
+}
+
+void
+SSIOInsertionOrderCommon::setMediaContactEmail(std::string  media_contact_email)
+{
+	this->media_contact_email = media_contact_email;
 }
 
 std::string
@@ -485,27 +485,27 @@ SSIOInsertionOrderCommon::setMediaContactLastname(std::string  media_contact_las
 }
 
 std::string
-SSIOInsertionOrderCommon::getMediaContactEmail()
+SSIOInsertionOrderCommon::getPoNumber()
 {
-	return media_contact_email;
+	return po_number;
 }
 
 void
-SSIOInsertionOrderCommon::setMediaContactEmail(std::string  media_contact_email)
+SSIOInsertionOrderCommon::setPoNumber(std::string  po_number)
 {
-	this->media_contact_email = media_contact_email;
+	this->po_number = po_number;
 }
 
 std::string
-SSIOInsertionOrderCommon::getAgencyLink()
+SSIOInsertionOrderCommon::getStartDate()
 {
-	return agency_link;
+	return start_date;
 }
 
 void
-SSIOInsertionOrderCommon::setAgencyLink(std::string  agency_link)
+SSIOInsertionOrderCommon::setStartDate(std::string  start_date)
 {
-	this->agency_link = agency_link;
+	this->start_date = start_date;
 }
 
 std::string

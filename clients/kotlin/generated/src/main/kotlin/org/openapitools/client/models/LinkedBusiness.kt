@@ -22,35 +22,35 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param username Username
- * @param imageSmallUrl image_small_url
- * @param imageMediumUrl image_medium_url
  * @param imageLargeUrl image_large_url
+ * @param imageMediumUrl image_medium_url
+ * @param imageSmallUrl image_small_url
  * @param imageXlargeUrl image_xlarge_url
+ * @param username Username
  */
 
 
 data class LinkedBusiness (
 
-    /* Username */
-    @Json(name = "username")
-    val username: kotlin.String? = null,
-
-    /* image_small_url */
-    @Json(name = "image_small_url")
-    val imageSmallUrl: kotlin.String? = null,
+    /* image_large_url */
+    @Json(name = "image_large_url")
+    val imageLargeUrl: kotlin.String? = null,
 
     /* image_medium_url */
     @Json(name = "image_medium_url")
     val imageMediumUrl: kotlin.String? = null,
 
-    /* image_large_url */
-    @Json(name = "image_large_url")
-    val imageLargeUrl: kotlin.String? = null,
+    /* image_small_url */
+    @Json(name = "image_small_url")
+    val imageSmallUrl: kotlin.String? = null,
 
     /* image_xlarge_url */
     @Json(name = "image_xlarge_url")
-    val imageXlargeUrl: kotlin.String? = null
+    val imageXlargeUrl: kotlin.String? = null,
+
+    /* Username */
+    @Json(name = "username")
+    val username: kotlin.String? = null
 
 ) {
 

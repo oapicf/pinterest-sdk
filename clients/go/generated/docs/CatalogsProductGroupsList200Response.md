@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**[]CatalogsVerticalProductGroup**](CatalogsVerticalProductGroup.md) |  | 
 **Bookmark** | Pointer to **NullableString** |  | [optional] 
+**Items** | [**[]CatalogsVerticalProductGroup**](CatalogsVerticalProductGroup.md) |  | 
 
 ## Methods
 
@@ -25,26 +25,6 @@ will change when the set of required properties is changed
 NewCatalogsProductGroupsList200ResponseWithDefaults instantiates a new CatalogsProductGroupsList200Response object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetItems
-
-`func (o *CatalogsProductGroupsList200Response) GetItems() []CatalogsVerticalProductGroup`
-
-GetItems returns the Items field if non-nil, zero value otherwise.
-
-### GetItemsOk
-
-`func (o *CatalogsProductGroupsList200Response) GetItemsOk() (*[]CatalogsVerticalProductGroup, bool)`
-
-GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetItems
-
-`func (o *CatalogsProductGroupsList200Response) SetItems(v []CatalogsVerticalProductGroup)`
-
-SetItems sets Items field to given value.
-
 
 ### GetBookmark
 
@@ -81,6 +61,26 @@ HasBookmark returns a boolean if a field has been set.
 `func (o *CatalogsProductGroupsList200Response) UnsetBookmark()`
 
 UnsetBookmark ensures that no value is present for Bookmark, not even an explicit nil
+### GetItems
+
+`func (o *CatalogsProductGroupsList200Response) GetItems() []CatalogsVerticalProductGroup`
+
+GetItems returns the Items field if non-nil, zero value otherwise.
+
+### GetItemsOk
+
+`func (o *CatalogsProductGroupsList200Response) GetItemsOk() (*[]CatalogsVerticalProductGroup, bool)`
+
+GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItems
+
+`func (o *CatalogsProductGroupsList200Response) SetItems(v []CatalogsVerticalProductGroup)`
+
+SetItems sets Items field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -12,22 +12,22 @@ import AnyCodable
 
 public struct PinAnalyticsMetricsResponse: Codable, JSONEncodable, Hashable {
 
-    /** The lifetime metric name and value. */
-    public var lifetimeMetrics: [String: Int]?
     /** Array with the requested daily metric records */
     public var dailyMetrics: [PinAnalyticsMetricsResponseDailyMetricsInner]?
+    /** The lifetime metric name and value. */
+    public var lifetimeMetrics: [String: Int]?
     /** The metric name and value over the requested period for each requested metric */
     public var summaryMetrics: [String: Double]?
 
-    public init(lifetimeMetrics: [String: Int]? = nil, dailyMetrics: [PinAnalyticsMetricsResponseDailyMetricsInner]? = nil, summaryMetrics: [String: Double]? = nil) {
-        self.lifetimeMetrics = lifetimeMetrics
+    public init(dailyMetrics: [PinAnalyticsMetricsResponseDailyMetricsInner]? = nil, lifetimeMetrics: [String: Int]? = nil, summaryMetrics: [String: Double]? = nil) {
         self.dailyMetrics = dailyMetrics
+        self.lifetimeMetrics = lifetimeMetrics
         self.summaryMetrics = summaryMetrics
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case lifetimeMetrics = "lifetime_metrics"
         case dailyMetrics = "daily_metrics"
+        case lifetimeMetrics = "lifetime_metrics"
         case summaryMetrics = "summary_metrics"
     }
 
@@ -35,8 +35,8 @@ public struct PinAnalyticsMetricsResponse: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(lifetimeMetrics, forKey: .lifetimeMetrics)
         try container.encodeIfPresent(dailyMetrics, forKey: .dailyMetrics)
+        try container.encodeIfPresent(lifetimeMetrics, forKey: .lifetimeMetrics)
         try container.encodeIfPresent(summaryMetrics, forKey: .summaryMetrics)
     }
 }

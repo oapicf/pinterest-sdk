@@ -11,27 +11,18 @@ import org.openapitools.vertxweb.server.model.Permissions;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UpdatePartnerAssetAccessBodyAccessesInner   {
   
-  private String partnerId;
   private String assetId;
+  private String partnerId;
   private List<Permissions> permissions = new ArrayList<>();
 
   public UpdatePartnerAssetAccessBodyAccessesInner () {
 
   }
 
-  public UpdatePartnerAssetAccessBodyAccessesInner (String partnerId, String assetId, List<Permissions> permissions) {
-    this.partnerId = partnerId;
+  public UpdatePartnerAssetAccessBodyAccessesInner (String assetId, String partnerId, List<Permissions> permissions) {
     this.assetId = assetId;
-    this.permissions = permissions;
-  }
-
-    
-  @JsonProperty("partner_id")
-  public String getPartnerId() {
-    return partnerId;
-  }
-  public void setPartnerId(String partnerId) {
     this.partnerId = partnerId;
+    this.permissions = permissions;
   }
 
     
@@ -41,6 +32,15 @@ public class UpdatePartnerAssetAccessBodyAccessesInner   {
   }
   public void setAssetId(String assetId) {
     this.assetId = assetId;
+  }
+
+    
+  @JsonProperty("partner_id")
+  public String getPartnerId() {
+    return partnerId;
+  }
+  public void setPartnerId(String partnerId) {
+    this.partnerId = partnerId;
   }
 
     
@@ -62,14 +62,14 @@ public class UpdatePartnerAssetAccessBodyAccessesInner   {
       return false;
     }
     UpdatePartnerAssetAccessBodyAccessesInner updatePartnerAssetAccessBodyAccessesInner = (UpdatePartnerAssetAccessBodyAccessesInner) o;
-    return Objects.equals(partnerId, updatePartnerAssetAccessBodyAccessesInner.partnerId) &&
-        Objects.equals(assetId, updatePartnerAssetAccessBodyAccessesInner.assetId) &&
+    return Objects.equals(assetId, updatePartnerAssetAccessBodyAccessesInner.assetId) &&
+        Objects.equals(partnerId, updatePartnerAssetAccessBodyAccessesInner.partnerId) &&
         Objects.equals(permissions, updatePartnerAssetAccessBodyAccessesInner.permissions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(partnerId, assetId, permissions);
+    return Objects.hash(assetId, partnerId, permissions);
   }
 
   @Override
@@ -77,8 +77,8 @@ public class UpdatePartnerAssetAccessBodyAccessesInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdatePartnerAssetAccessBodyAccessesInner {\n");
     
-    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("    assetId: ").append(toIndentedString(assetId)).append("\n");
+    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
     sb.append("}");
     return sb.toString();

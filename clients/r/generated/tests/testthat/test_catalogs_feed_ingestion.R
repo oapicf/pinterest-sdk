@@ -5,11 +5,11 @@ context("Test CatalogsFeedIngestion")
 
 model_instance <- CatalogsFeedIngestion$new()
 
-test_that("id", {
-  # tests for the property `id` (character)
+test_that("created_at", {
+  # tests for the property `created_at` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`created_at`, "EXPECTED_RESULT")
 })
 
 test_that("feed_id", {
@@ -19,11 +19,11 @@ test_that("feed_id", {
   #expect_equal(model.instance$`feed_id`, "EXPECTED_RESULT")
 })
 
-test_that("created_at", {
-  # tests for the property `created_at` (character)
+test_that("id", {
+  # tests for the property `id` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`created_at`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
 })
 
 test_that("status", {

@@ -61,6 +61,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setCountry(Country  country);
+	/*! \brief Get Array with catalogs items
+	 */
+	std::list<ItemDeleteBatchRecord> getItems();
+
+	/*! \brief Set Array with catalogs items
+	 */
+	void setItems(std::list <ItemDeleteBatchRecord> items);
 	/*! \brief Get We recommend using the CatalogsLocale values.
 	 */
 	std::string getLanguage();
@@ -75,19 +82,12 @@ public:
 	/*! \brief Set 
 	 */
 	void setOperation(BatchOperation  operation);
-	/*! \brief Get Array with catalogs items
-	 */
-	std::list<ItemDeleteBatchRecord> getItems();
-
-	/*! \brief Set Array with catalogs items
-	 */
-	void setItems(std::list <ItemDeleteBatchRecord> items);
 
 private:
 	Country country;
+	std::list <ItemDeleteBatchRecord>items;
 	std::string language;
 	BatchOperation operation;
-	std::list <ItemDeleteBatchRecord>items;
 	void __init();
 	void __cleanup();
 

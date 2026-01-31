@@ -1,5 +1,4 @@
 const utils = require('../utils/utils');
-const TargetingSpecAppType = require('../models/TargetingSpecAppType');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -7,7 +6,16 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}APP_TYPE`,
-                ...TargetingSpecAppType.fields(`${keyPrefix}APP_TYPE`, isInput),
+                label: `[${labelPrefix}APP_TYPE]`,
+                type: 'string',
+                choices: [
+                    'android_mobile',
+                    'android_tablet',
+                    'ipad',
+                    'iphone',
+                    'web',
+                    'web_mobile',
+                ],
             },
         ]
     },

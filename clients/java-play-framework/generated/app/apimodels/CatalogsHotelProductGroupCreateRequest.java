@@ -11,9 +11,15 @@ import javax.validation.Valid;
 /**
  * Request object for creating a hotel product group.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsHotelProductGroupCreateRequest   {
+  @JsonProperty("catalog_id")
+  @NotNull
+@Pattern(regexp="^\\d+$")
+
+  private String catalogId;
+
   /**
    * Gets or Sets catalogType
    */
@@ -48,11 +54,6 @@ public class CatalogsHotelProductGroupCreateRequest   {
 
   private CatalogTypeEnum catalogType;
 
-  @JsonProperty("name")
-  @NotNull
-
-  private String name;
-
   @JsonProperty("description")
   
   private String description;
@@ -63,11 +64,27 @@ public class CatalogsHotelProductGroupCreateRequest   {
 
   private CatalogsHotelProductGroupFilters filters;
 
-  @JsonProperty("catalog_id")
+  @JsonProperty("name")
   @NotNull
-@Pattern(regexp="^\\d+$")
 
-  private String catalogId;
+  private String name;
+
+  public CatalogsHotelProductGroupCreateRequest catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+   /**
+   * Catalog id pertaining to the hotel product group.
+   * @return catalogId
+  **/
+  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
 
   public CatalogsHotelProductGroupCreateRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
@@ -84,23 +101,6 @@ public class CatalogsHotelProductGroupCreateRequest   {
 
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
-  }
-
-  public CatalogsHotelProductGroupCreateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Get name
-   * @return name
-  **/
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
   }
 
   public CatalogsHotelProductGroupCreateRequest description(String description) {
@@ -137,21 +137,21 @@ public class CatalogsHotelProductGroupCreateRequest   {
     this.filters = filters;
   }
 
-  public CatalogsHotelProductGroupCreateRequest catalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public CatalogsHotelProductGroupCreateRequest name(String name) {
+    this.name = name;
     return this;
   }
 
    /**
-   * Catalog id pertaining to the hotel product group.
-   * @return catalogId
+   * Get name
+   * @return name
   **/
-  public String getCatalogId() {
-    return catalogId;
+  public String getName() {
+    return name;
   }
 
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -164,16 +164,16 @@ public class CatalogsHotelProductGroupCreateRequest   {
       return false;
     }
     CatalogsHotelProductGroupCreateRequest catalogsHotelProductGroupCreateRequest = (CatalogsHotelProductGroupCreateRequest) o;
-    return Objects.equals(catalogType, catalogsHotelProductGroupCreateRequest.catalogType) &&
-        Objects.equals(name, catalogsHotelProductGroupCreateRequest.name) &&
+    return Objects.equals(catalogId, catalogsHotelProductGroupCreateRequest.catalogId) &&
+        Objects.equals(catalogType, catalogsHotelProductGroupCreateRequest.catalogType) &&
         Objects.equals(description, catalogsHotelProductGroupCreateRequest.description) &&
         Objects.equals(filters, catalogsHotelProductGroupCreateRequest.filters) &&
-        Objects.equals(catalogId, catalogsHotelProductGroupCreateRequest.catalogId);
+        Objects.equals(name, catalogsHotelProductGroupCreateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters, catalogId);
+    return Objects.hash(catalogId, catalogType, description, filters, name);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -182,11 +182,11 @@ public class CatalogsHotelProductGroupCreateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelProductGroupCreateRequest {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

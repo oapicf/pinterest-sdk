@@ -11,7 +11,7 @@ import { Country } from './country';
 
 
 export interface CatalogsProductGroupMultipleCountriesCriteria { 
-    values: Array<Country>;
     negated?: boolean;
+    values: Array<Country>;
 }
 

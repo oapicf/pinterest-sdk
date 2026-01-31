@@ -20,19 +20,19 @@ public class UserWebsiteVerifyRequestTest {
     }
 
     /**
-     * Test the property 'website'
-     */
-    @Test
-    public void websiteTest() {
-        // TODO: test website
-    }
-
-    /**
      * Test the property 'verificationMethod'
      */
     @Test
     public void verificationMethodTest() {
         // TODO: test verificationMethod
+    }
+
+    /**
+     * Test the property 'website'
+     */
+    @Test
+    public void websiteTest() {
+        // TODO: test website
     }
 
 }

@@ -73,8 +73,8 @@ private class OASPinMediaWithVideoTest {
     private static void maintainRenamedProperties() {
         OASPinMediaWithVideo pinMediaWithVideo = new OASPinMediaWithVideo();
         Map<String, String> x-property-mappings = pinMediaWithVideo.getx-property-mappings();
-        System.assertEquals('mediaType', x-property-mappings.get('media_type'));
         System.assertEquals('coverImageUrl', x-property-mappings.get('cover_image_url'));
+        System.assertEquals('mediaType', x-property-mappings.get('media_type'));
         System.assertEquals('videoUrl', x-property-mappings.get('video_url'));
     }
 }

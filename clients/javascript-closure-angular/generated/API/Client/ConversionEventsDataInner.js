@@ -6,65 +6,11 @@ goog.provide('API.Client.ConversionEvents_data_inner');
 API.Client.ConversionEventsDataInner = function() {}
 
 /**
- * <p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p> 
- * @type {!string}
- * @export
- */
-API.Client.ConversionEventsDataInner.prototype.eventName;
-
-/**
- * <p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p> 
+ * <p>The source indicating where the conversion event occurred.</p> - `app_android` - `app_ios` - `web` - `offline`
  * @type {!string}
  * @export
  */
 API.Client.ConversionEventsDataInner.prototype.actionSource;
-
-/**
- * The time when the event happened. Unix timestamp in seconds.
- * @type {!number}
- * @export
- */
-API.Client.ConversionEventsDataInner.prototype.eventTime;
-
-/**
- * A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.
- * @type {!string}
- * @export
- */
-API.Client.ConversionEventsDataInner.prototype.eventId;
-
-/**
- * URL of the web conversion event.
- * @type {!string}
- * @export
- */
-API.Client.ConversionEventsDataInner.prototype.eventSourceUrl;
-
-/**
- * When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.
- * @type {!boolean}
- * @export
- */
-API.Client.ConversionEventsDataInner.prototype.optOut;
-
-/**
- * The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’
- * @type {!string}
- * @export
- */
-API.Client.ConversionEventsDataInner.prototype.partnerName;
-
-/**
- * @type {!API.Client.ConversionEventsUserData}
- * @export
- */
-API.Client.ConversionEventsDataInner.prototype.userData;
-
-/**
- * @type {!API.Client.ConversionEvents_data_inner_custom_data}
- * @export
- */
-API.Client.ConversionEventsDataInner.prototype.customData;
 
 /**
  * The app store app ID.
@@ -72,6 +18,12 @@ API.Client.ConversionEventsDataInner.prototype.customData;
  * @export
  */
 API.Client.ConversionEventsDataInner.prototype.appId;
+
+/**
+ * @type {!API.Client.ConversionEventAppInfo}
+ * @export
+ */
+API.Client.ConversionEventsDataInner.prototype.appInfo;
 
 /**
  * Name of the app.
@@ -88,6 +40,12 @@ API.Client.ConversionEventsDataInner.prototype.appName;
 API.Client.ConversionEventsDataInner.prototype.appVersion;
 
 /**
+ * @type {!API.Client.ConversionEvents_data_inner_custom_data}
+ * @export
+ */
+API.Client.ConversionEventsDataInner.prototype.customData;
+
+/**
  * Brand of the user device.
  * @type {!string}
  * @export
@@ -100,6 +58,12 @@ API.Client.ConversionEventsDataInner.prototype.deviceBrand;
  * @export
  */
 API.Client.ConversionEventsDataInner.prototype.deviceCarrier;
+
+/**
+ * @type {!API.Client.ConversionEventDeviceInfo}
+ * @export
+ */
+API.Client.ConversionEventsDataInner.prototype.deviceInfo;
 
 /**
  * Model of the user device.
@@ -116,18 +80,32 @@ API.Client.ConversionEventsDataInner.prototype.deviceModel;
 API.Client.ConversionEventsDataInner.prototype.deviceType;
 
 /**
- * Version of the device operating system.
+ * A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.
  * @type {!string}
  * @export
  */
-API.Client.ConversionEventsDataInner.prototype.osVersion;
+API.Client.ConversionEventsDataInner.prototype.eventId;
 
 /**
- * Whether the event occurred when the user device was connected to wifi.
- * @type {!boolean}
+ * <p>The type of the user event. Please use the right event_name; otherwise the event will not be accepted and show up correctly in reports.</p>  - `add_payment_info` - `add_to_cart` - `add_to_wishlist` - `app_install` - `checkout` - `custom` - `initiate_checkout` - `lead` - `page_visit` - `search` - `signup` - `subscribe` - `view_category` - `view_content` - `watch_video`
+ * @type {!string}
  * @export
  */
-API.Client.ConversionEventsDataInner.prototype.wifi;
+API.Client.ConversionEventsDataInner.prototype.eventName;
+
+/**
+ * URL of the web conversion event.
+ * @type {!string}
+ * @export
+ */
+API.Client.ConversionEventsDataInner.prototype.eventSourceUrl;
+
+/**
+ * The time when the event happened. Unix timestamp in seconds.
+ * @type {!number}
+ * @export
+ */
+API.Client.ConversionEventsDataInner.prototype.eventTime;
 
 /**
  * Two-character ISO-639-1 language code indicating the user's language.
@@ -135,4 +113,38 @@ API.Client.ConversionEventsDataInner.prototype.wifi;
  * @export
  */
 API.Client.ConversionEventsDataInner.prototype.language;
+
+/**
+ * When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.
+ * @type {!boolean}
+ * @export
+ */
+API.Client.ConversionEventsDataInner.prototype.optOut;
+
+/**
+ * Version of the device operating system.
+ * @type {!string}
+ * @export
+ */
+API.Client.ConversionEventsDataInner.prototype.osVersion;
+
+/**
+ * The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’
+ * @type {!string}
+ * @export
+ */
+API.Client.ConversionEventsDataInner.prototype.partnerName;
+
+/**
+ * @type {!API.Client.ConversionEventsUserData}
+ * @export
+ */
+API.Client.ConversionEventsDataInner.prototype.userData;
+
+/**
+ * Whether the event occurred when the user device was connected to wifi.
+ * @type {!boolean}
+ * @export
+ */
+API.Client.ConversionEventsDataInner.prototype.wifi;
 

@@ -12,8 +12,8 @@ import org.joda.time.DateTime
 import BulkUpsertStatusResponse._
 
 case class BulkUpsertStatusResponse (
-  status: Option[BulkUpsertStatus],
-resultUrl: Option[String])
+  resultUrl: Option[String],
+status: Option[BulkUpsertStatus])
 
 object BulkUpsertStatusResponse {
   import DateTimeCodecs._

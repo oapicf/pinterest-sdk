@@ -45,13 +45,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
-	 */
-	std::string getReportType();
-
-	/*! \brief Set 
-	 */
-	void setReportType(std::string  report_type);
 	/*! \brief Get ID of the catalog entity.
 	 */
 	std::string getCatalogId();
@@ -87,6 +80,13 @@ public:
 	/*! \brief Set Number of occurrences of the issue
 	 */
 	void setOccurrences(int  occurrences);
+	/*! \brief Get 
+	 */
+	std::string getReportType();
+
+	/*! \brief Set 
+	 */
+	void setReportType(std::string  report_type);
 	/*! \brief Get An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
 	 */
 	std::string getSeverity();
@@ -96,12 +96,12 @@ public:
 	void setSeverity(std::string  severity);
 
 private:
-	std::string report_type;
 	std::string catalog_id;
 	int code;
 	std::string code_label;
 	std::string message;
 	int occurrences;
+	std::string report_type;
 	std::string severity;
 	void __init();
 	void __cleanup();

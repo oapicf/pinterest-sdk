@@ -2,12 +2,12 @@
 Protected Class ProductGroupPromotionsList200Response
 
 	#tag Property, Flags = &h0
-		items() As OpenAPIClient.Models.ProductGroupPromotionResponseItem
+		bookmark As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		bookmark As Xoson.O.OptionalString
+		items() As OpenAPIClient.Models.ProductGroupPromotion
 	#tag EndProperty
 
 
@@ -48,19 +48,19 @@ Protected Class ProductGroupPromotionsList200Response
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="items"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="ProductGroupPromotionResponseItem"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="bookmark"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="items"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="ProductGroupPromotion"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

@@ -26,9 +26,9 @@ public class UpdatePartnerAssetsResult  {
   private String assetId;
 
  /**
-  * Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+  * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
   */
-  @ApiModelProperty(example = "AD_ACCOUNT", value = "Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.")
+  @ApiModelProperty(example = "AD_ACCOUNT", value = "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.")
 
   private String assetType;
 
@@ -64,7 +64,7 @@ public class UpdatePartnerAssetsResult  {
   }
 
  /**
-   * Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+   * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
    * @return assetType
   **/
   @JsonProperty("asset_type")

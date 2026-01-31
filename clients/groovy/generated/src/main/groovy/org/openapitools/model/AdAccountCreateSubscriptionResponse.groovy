@@ -7,12 +7,22 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 @Canonical
 class AdAccountCreateSubscriptionResponse {
-    /* Subscription ID. */
-    String id
-    /* Base64 encoded key for client to decrypt lead data. */
-    String cryptographicKey
-    /* Lead data encryption algorithm. */
-    String cryptographicAlgorithm
+    /* The Ad Account ID that this lead form belongs to. */
+    String adAccountId
+    /* API version. */
+    String apiVersion
     /* Subscription creation time. Unix timestamp in milliseconds. */
     Integer createdTime
+    /* Lead data encryption algorithm. */
+    String cryptographicAlgorithm
+    /* Base64 encoded key for client to decrypt lead data. */
+    String cryptographicKey
+    /* Subscription ID. */
+    String id
+    /* Lead form ID. */
+    String leadFormId
+    /* User account used to subscribe lead data. */
+    String userAccountId
+    /* Standard HTTPS webhook URL. */
+    String webhookUrl
 }

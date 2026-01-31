@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,16 +17,16 @@ package openapi
 // ItemProcessingRecord - Object describing an item processing record
 type ItemProcessingRecord struct {
 
-	// The catalog item id in the merchant namespace
-	ItemId string `json:"item_id,omitempty"`
-
 	// Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
 	Errors []ItemValidationEvent `json:"errors,omitempty"`
 
-	// Array with the validation warnings for the item processing record
-	Warnings []ItemValidationEvent `json:"warnings,omitempty"`
+	// The catalog item id in the merchant namespace
+	ItemId string `json:"item_id,omitempty"`
 
 	Status ItemProcessingStatus `json:"status,omitempty"`
+
+	// Array with the validation warnings for the item processing record
+	Warnings []ItemValidationEvent `json:"warnings,omitempty"`
 }
 
 // AssertItemProcessingRecordRequired checks if the required fields are not zero-ed

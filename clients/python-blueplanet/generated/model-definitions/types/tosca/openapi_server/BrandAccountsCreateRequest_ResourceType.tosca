@@ -1,0 +1,62 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BrandAccountsCreateRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BrandAccountsCreateRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  Country = openapi_server.resourceTypes.Country
+  ImageBase64 = openapi_server.resourceTypes.ImageBase64
+}
+resourceTypes {
+
+  BrandAccountsCreateRequest {
+    title = BrandAccountsCreateRequest
+    description = BrandAccountsCreateRequest
+    derivedFrom = Root
+    properties {
+        name {
+          type =  string
+          description = "Brand Account name"
+          optional = true
+        }
+        username {
+          type =  string
+          description = "Brand Account username"
+          optional = true
+        }
+        country {
+          type = Country
+          description = ""
+          optional = true
+        }
+        about {
+          type =  string
+          description = "Brand Account about information"
+          optional = false
+        }
+        website {
+          type =  string
+          description = "Brand Account website"
+          optional = false
+        }
+        profile_image {
+          type = ImageBase64
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BrandAccountsCreateRequest {
+    title = BrandAccountsCreateRequest
+    description = BrandAccountsCreateRequest
+    implements = openapi_server.resourceTypes.BrandAccountsCreateRequest
+
+  }
+}

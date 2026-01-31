@@ -5,20 +5,20 @@ context("Test InviteExceptionResponse")
 
 model_instance <- InviteExceptionResponse$new()
 
-test_that("invite_or_request_id", {
-  # tests for the property `invite_or_request_id` (character)
-  # Unique identifier of the invite/request.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`invite_or_request_id`, "EXPECTED_RESULT")
-})
-
 test_that("code", {
   # tests for the property `code` (integer)
   # Error code associated with the error in performing the action on the invite/request.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`code`, "EXPECTED_RESULT")
+})
+
+test_that("invite_or_request_id", {
+  # tests for the property `invite_or_request_id` (character)
+  # Unique identifier of the invite/request.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`invite_or_request_id`, "EXPECTED_RESULT")
 })
 
 test_that("message", {

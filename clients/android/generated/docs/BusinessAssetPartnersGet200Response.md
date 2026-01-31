@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**List&lt;UserSingleAssetBinding&gt;**](UserSingleAssetBinding.md) | List of partners with permissions to the asset. | 
 **bookmark** | **String** |  |  [optional]
+**items** | [**List&lt;UserSingleAssetBinding&gt;**](UserSingleAssetBinding.md) | List of partners with permissions to the asset. | 
 
 
 

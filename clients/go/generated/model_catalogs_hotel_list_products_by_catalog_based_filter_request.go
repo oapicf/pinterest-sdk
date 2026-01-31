@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,9 +22,9 @@ var _ MappedNullable = &CatalogsHotelListProductsByCatalogBasedFilterRequest{}
 
 // CatalogsHotelListProductsByCatalogBasedFilterRequest Request object to list products for a given hotel catalog_id and product group filter.
 type CatalogsHotelListProductsByCatalogBasedFilterRequest struct {
-	CatalogType string `json:"catalog_type"`
 	// Catalog id pertaining to the hotel product group.
 	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
+	CatalogType string `json:"catalog_type"`
 	Filters CatalogsHotelProductGroupFilters `json:"filters"`
 }
 
@@ -34,10 +34,10 @@ type _CatalogsHotelListProductsByCatalogBasedFilterRequest CatalogsHotelListProd
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsHotelListProductsByCatalogBasedFilterRequest(catalogType string, catalogId string, filters CatalogsHotelProductGroupFilters) *CatalogsHotelListProductsByCatalogBasedFilterRequest {
+func NewCatalogsHotelListProductsByCatalogBasedFilterRequest(catalogId string, catalogType string, filters CatalogsHotelProductGroupFilters) *CatalogsHotelListProductsByCatalogBasedFilterRequest {
 	this := CatalogsHotelListProductsByCatalogBasedFilterRequest{}
-	this.CatalogType = catalogType
 	this.CatalogId = catalogId
+	this.CatalogType = catalogType
 	this.Filters = filters
 	return &this
 }
@@ -48,30 +48,6 @@ func NewCatalogsHotelListProductsByCatalogBasedFilterRequest(catalogType string,
 func NewCatalogsHotelListProductsByCatalogBasedFilterRequestWithDefaults() *CatalogsHotelListProductsByCatalogBasedFilterRequest {
 	this := CatalogsHotelListProductsByCatalogBasedFilterRequest{}
 	return &this
-}
-
-// GetCatalogType returns the CatalogType field value
-func (o *CatalogsHotelListProductsByCatalogBasedFilterRequest) GetCatalogType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.CatalogType
-}
-
-// GetCatalogTypeOk returns a tuple with the CatalogType field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsHotelListProductsByCatalogBasedFilterRequest) GetCatalogTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CatalogType, true
-}
-
-// SetCatalogType sets field value
-func (o *CatalogsHotelListProductsByCatalogBasedFilterRequest) SetCatalogType(v string) {
-	o.CatalogType = v
 }
 
 // GetCatalogId returns the CatalogId field value
@@ -96,6 +72,30 @@ func (o *CatalogsHotelListProductsByCatalogBasedFilterRequest) GetCatalogIdOk() 
 // SetCatalogId sets field value
 func (o *CatalogsHotelListProductsByCatalogBasedFilterRequest) SetCatalogId(v string) {
 	o.CatalogId = v
+}
+
+// GetCatalogType returns the CatalogType field value
+func (o *CatalogsHotelListProductsByCatalogBasedFilterRequest) GetCatalogType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CatalogType
+}
+
+// GetCatalogTypeOk returns a tuple with the CatalogType field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsHotelListProductsByCatalogBasedFilterRequest) GetCatalogTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CatalogType, true
+}
+
+// SetCatalogType sets field value
+func (o *CatalogsHotelListProductsByCatalogBasedFilterRequest) SetCatalogType(v string) {
+	o.CatalogType = v
 }
 
 // GetFilters returns the Filters field value
@@ -132,8 +132,8 @@ func (o CatalogsHotelListProductsByCatalogBasedFilterRequest) MarshalJSON() ([]b
 
 func (o CatalogsHotelListProductsByCatalogBasedFilterRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["catalog_type"] = o.CatalogType
 	toSerialize["catalog_id"] = o.CatalogId
+	toSerialize["catalog_type"] = o.CatalogType
 	toSerialize["filters"] = o.Filters
 	return toSerialize, nil
 }
@@ -143,8 +143,8 @@ func (o *CatalogsHotelListProductsByCatalogBasedFilterRequest) UnmarshalJSON(dat
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"catalog_type",
 		"catalog_id",
+		"catalog_type",
 		"filters",
 	}
 

@@ -29,13 +29,32 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Object describing an item batch record")
 @JsonTypeName("ItemBatchRecord")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ItemBatchRecord   {
-  private String itemId;
   private ItemAttributesRequest attributes;
+  private String itemId;
   private @Valid List<UpdateMaskFieldType> updateMask;
 
   public ItemBatchRecord() {
+  }
+
+  /**
+   **/
+  public ItemBatchRecord attributes(ItemAttributesRequest attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("attributes")
+  @Valid public ItemAttributesRequest getAttributes() {
+    return attributes;
+  }
+
+  @JsonProperty("attributes")
+  public void setAttributes(ItemAttributesRequest attributes) {
+    this.attributes = attributes;
   }
 
   /**
@@ -56,25 +75,6 @@ public class ItemBatchRecord   {
   @JsonProperty("item_id")
   public void setItemId(String itemId) {
     this.itemId = itemId;
-  }
-
-  /**
-   **/
-  public ItemBatchRecord attributes(ItemAttributesRequest attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("attributes")
-  @Valid public ItemAttributesRequest getAttributes() {
-    return attributes;
-  }
-
-  @JsonProperty("attributes")
-  public void setAttributes(ItemAttributesRequest attributes) {
-    this.attributes = attributes;
   }
 
   /**
@@ -123,14 +123,14 @@ public class ItemBatchRecord   {
       return false;
     }
     ItemBatchRecord itemBatchRecord = (ItemBatchRecord) o;
-    return Objects.equals(this.itemId, itemBatchRecord.itemId) &&
-        Objects.equals(this.attributes, itemBatchRecord.attributes) &&
+    return Objects.equals(this.attributes, itemBatchRecord.attributes) &&
+        Objects.equals(this.itemId, itemBatchRecord.itemId) &&
         Objects.equals(this.updateMask, itemBatchRecord.updateMask);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, attributes, updateMask);
+    return Objects.hash(attributes, itemId, updateMask);
   }
 
   @Override
@@ -138,8 +138,8 @@ public class ItemBatchRecord   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ItemBatchRecord {\n");
     
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    updateMask: ").append(toIndentedString(updateMask)).append("\n");
     sb.append("}");
     return sb.toString();

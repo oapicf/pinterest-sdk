@@ -8,79 +8,41 @@ import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.vertxweb.server.model.BoardMedia;
 import org.openapitools.vertxweb.server.model.BoardOwner;
+import org.openapitools.vertxweb.server.model.BoardPrivacy;
 
-/**
- * Board
- **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Board   {
   
-  private String id;
-  private OffsetDateTime createdAt;
   private OffsetDateTime boardPinsModifiedAt;
-  private String name;
-  private String description;
   private Integer collaboratorCount;
-  private Integer pinCount;
+  private OffsetDateTime createdAt;
+  private String description;
   private Integer followerCount;
+  private String id;
+  private Boolean isAdsOnly = false;
   private BoardMedia media;
+  private String name;
   private BoardOwner owner;
-
-
-  public enum PrivacyEnum {
-    PUBLIC("PUBLIC"),
-    PROTECTED("PROTECTED"),
-    SECRET("SECRET");
-
-    private String value;
-
-    PrivacyEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private PrivacyEnum privacy = PrivacyEnum.PUBLIC;
+  private Integer pinCount;
+  private BoardPrivacy privacy = BoardPrivacy.PUBLIC;
 
   public Board () {
 
   }
 
-  public Board (String id, OffsetDateTime createdAt, OffsetDateTime boardPinsModifiedAt, String name, String description, Integer collaboratorCount, Integer pinCount, Integer followerCount, BoardMedia media, BoardOwner owner, PrivacyEnum privacy) {
-    this.id = id;
-    this.createdAt = createdAt;
+  public Board (OffsetDateTime boardPinsModifiedAt, Integer collaboratorCount, OffsetDateTime createdAt, String description, Integer followerCount, String id, Boolean isAdsOnly, BoardMedia media, String name, BoardOwner owner, Integer pinCount, BoardPrivacy privacy) {
     this.boardPinsModifiedAt = boardPinsModifiedAt;
-    this.name = name;
-    this.description = description;
     this.collaboratorCount = collaboratorCount;
-    this.pinCount = pinCount;
-    this.followerCount = followerCount;
-    this.media = media;
-    this.owner = owner;
-    this.privacy = privacy;
-  }
-
-    
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-  public void setId(String id) {
-    this.id = id;
-  }
-
-    
-  @JsonProperty("created_at")
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-  public void setCreatedAt(OffsetDateTime createdAt) {
     this.createdAt = createdAt;
+    this.description = description;
+    this.followerCount = followerCount;
+    this.id = id;
+    this.isAdsOnly = isAdsOnly;
+    this.media = media;
+    this.name = name;
+    this.owner = owner;
+    this.pinCount = pinCount;
+    this.privacy = privacy;
   }
 
     
@@ -93,12 +55,21 @@ public class Board   {
   }
 
     
-  @JsonProperty("name")
-  public String getName() {
-    return name;
+  @JsonProperty("collaborator_count")
+  public Integer getCollaboratorCount() {
+    return collaboratorCount;
   }
-  public void setName(String name) {
-    this.name = name;
+  public void setCollaboratorCount(Integer collaboratorCount) {
+    this.collaboratorCount = collaboratorCount;
+  }
+
+    
+  @JsonProperty("created_at")
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
+  }
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
   }
 
     
@@ -111,30 +82,30 @@ public class Board   {
   }
 
     
-  @JsonProperty("collaborator_count")
-  public Integer getCollaboratorCount() {
-    return collaboratorCount;
-  }
-  public void setCollaboratorCount(Integer collaboratorCount) {
-    this.collaboratorCount = collaboratorCount;
-  }
-
-    
-  @JsonProperty("pin_count")
-  public Integer getPinCount() {
-    return pinCount;
-  }
-  public void setPinCount(Integer pinCount) {
-    this.pinCount = pinCount;
-  }
-
-    
   @JsonProperty("follower_count")
   public Integer getFollowerCount() {
     return followerCount;
   }
   public void setFollowerCount(Integer followerCount) {
     this.followerCount = followerCount;
+  }
+
+    
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
+  }
+
+    
+  @JsonProperty("is_ads_only")
+  public Boolean getIsAdsOnly() {
+    return isAdsOnly;
+  }
+  public void setIsAdsOnly(Boolean isAdsOnly) {
+    this.isAdsOnly = isAdsOnly;
   }
 
     
@@ -147,6 +118,15 @@ public class Board   {
   }
 
     
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+
+    
   @JsonProperty("owner")
   public BoardOwner getOwner() {
     return owner;
@@ -156,11 +136,20 @@ public class Board   {
   }
 
     
+  @JsonProperty("pin_count")
+  public Integer getPinCount() {
+    return pinCount;
+  }
+  public void setPinCount(Integer pinCount) {
+    this.pinCount = pinCount;
+  }
+
+    
   @JsonProperty("privacy")
-  public PrivacyEnum getPrivacy() {
+  public BoardPrivacy getPrivacy() {
     return privacy;
   }
-  public void setPrivacy(PrivacyEnum privacy) {
+  public void setPrivacy(BoardPrivacy privacy) {
     this.privacy = privacy;
   }
 
@@ -174,22 +163,23 @@ public class Board   {
       return false;
     }
     Board board = (Board) o;
-    return Objects.equals(id, board.id) &&
-        Objects.equals(createdAt, board.createdAt) &&
-        Objects.equals(boardPinsModifiedAt, board.boardPinsModifiedAt) &&
-        Objects.equals(name, board.name) &&
-        Objects.equals(description, board.description) &&
+    return Objects.equals(boardPinsModifiedAt, board.boardPinsModifiedAt) &&
         Objects.equals(collaboratorCount, board.collaboratorCount) &&
-        Objects.equals(pinCount, board.pinCount) &&
+        Objects.equals(createdAt, board.createdAt) &&
+        Objects.equals(description, board.description) &&
         Objects.equals(followerCount, board.followerCount) &&
+        Objects.equals(id, board.id) &&
+        Objects.equals(isAdsOnly, board.isAdsOnly) &&
         Objects.equals(media, board.media) &&
+        Objects.equals(name, board.name) &&
         Objects.equals(owner, board.owner) &&
+        Objects.equals(pinCount, board.pinCount) &&
         Objects.equals(privacy, board.privacy);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, boardPinsModifiedAt, name, description, collaboratorCount, pinCount, followerCount, media, owner, privacy);
+    return Objects.hash(boardPinsModifiedAt, collaboratorCount, createdAt, description, followerCount, id, isAdsOnly, media, name, owner, pinCount, privacy);
   }
 
   @Override
@@ -197,16 +187,17 @@ public class Board   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Board {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    boardPinsModifiedAt: ").append(toIndentedString(boardPinsModifiedAt)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    collaboratorCount: ").append(toIndentedString(collaboratorCount)).append("\n");
-    sb.append("    pinCount: ").append(toIndentedString(pinCount)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    followerCount: ").append(toIndentedString(followerCount)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    isAdsOnly: ").append(toIndentedString(isAdsOnly)).append("\n");
     sb.append("    media: ").append(toIndentedString(media)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
+    sb.append("    pinCount: ").append(toIndentedString(pinCount)).append("\n");
     sb.append("    privacy: ").append(toIndentedString(privacy)).append("\n");
     sb.append("}");
     return sb.toString();

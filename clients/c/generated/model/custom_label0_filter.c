@@ -6,7 +6,7 @@
 
 
 static custom_label0_filter_t *custom_label0_filter_create_internal(
-    catalogs_product_group_multiple_string_criteria_t *custom_label_0
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_0
     ) {
     custom_label0_filter_t *custom_label0_filter_local_var = malloc(sizeof(custom_label0_filter_t));
     if (!custom_label0_filter_local_var) {
@@ -19,7 +19,7 @@ static custom_label0_filter_t *custom_label0_filter_create_internal(
 }
 
 __attribute__((deprecated)) custom_label0_filter_t *custom_label0_filter_create(
-    catalogs_product_group_multiple_string_criteria_t *custom_label_0
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_0
     ) {
     return custom_label0_filter_create_internal (
         custom_label_0

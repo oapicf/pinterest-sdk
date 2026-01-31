@@ -6,13 +6,6 @@ goog.provide('API.Client.KeywordUpdate');
 API.Client.KeywordUpdate = function() {}
 
 /**
- * Keyword ID.
- * @type {!string}
- * @export
- */
-API.Client.KeywordUpdate.prototype.id;
-
-/**
  * Is keyword archived?
  * @type {!boolean}
  * @export
@@ -25,4 +18,11 @@ API.Client.KeywordUpdate.prototype.archived;
  * @export
  */
 API.Client.KeywordUpdate.prototype.bid;
+
+/**
+ * Keyword ID.
+ * @type {!string}
+ * @export
+ */
+API.Client.KeywordUpdate.prototype.id;
 

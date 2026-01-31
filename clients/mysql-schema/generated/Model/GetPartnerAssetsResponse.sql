@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `GetPartnerAssetsResponse`
 --
-SELECT `asset_id`, `asset_type`, `permissions`, `asset_group_info` FROM `GetPartnerAssetsResponse` WHERE 1;
+SELECT `asset_group_info`, `asset_id`, `asset_type`, `permissions` FROM `GetPartnerAssetsResponse` WHERE 1;
 
 --
 -- INSERT template for table `GetPartnerAssetsResponse`
 --
-INSERT INTO `GetPartnerAssetsResponse`(`asset_id`, `asset_type`, `permissions`, `asset_group_info`) VALUES (?, ?, ?, ?);
+INSERT INTO `GetPartnerAssetsResponse`(`asset_group_info`, `asset_id`, `asset_type`, `permissions`) VALUES (?, ?, ?, ?);
 
 --
 -- UPDATE template for table `GetPartnerAssetsResponse`
 --
-UPDATE `GetPartnerAssetsResponse` SET `asset_id` = ?, `asset_type` = ?, `permissions` = ?, `asset_group_info` = ? WHERE 1;
+UPDATE `GetPartnerAssetsResponse` SET `asset_group_info` = ?, `asset_id` = ?, `asset_type` = ?, `permissions` = ? WHERE 1;
 
 --
 -- DELETE template for table `GetPartnerAssetsResponse`

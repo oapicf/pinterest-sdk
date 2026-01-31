@@ -12,10 +12,10 @@ module AdsCreditsDiscountsGet200Response =
 
   [<CLIMutable>]
   type AdsCreditsDiscountsGet200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : AdsCreditDiscountsResponse[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : AdsCreditDiscountsResponse[];
   }
 
   //#endregion

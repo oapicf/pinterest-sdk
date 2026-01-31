@@ -15,9 +15,15 @@ import javax.validation.Valid;
 /**
  * An item to be updated
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsUpdateRetailItem   {
+  @JsonProperty("attributes")
+  @NotNull
+@Valid
+
+  private UpdatableItemAttributes attributes;
+
   @JsonProperty("item_id")
   @NotNull
 
@@ -57,16 +63,27 @@ public class CatalogsUpdateRetailItem   {
 
   private OperationEnum operation;
 
-  @JsonProperty("attributes")
-  @NotNull
-@Valid
-
-  private UpdatableItemAttributes attributes;
-
   @JsonProperty("update_mask")
   @Valid
 
   private List<UpdateMaskFieldType> updateMask = null;
+
+  public CatalogsUpdateRetailItem attributes(UpdatableItemAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  public UpdatableItemAttributes getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(UpdatableItemAttributes attributes) {
+    this.attributes = attributes;
+  }
 
   public CatalogsUpdateRetailItem itemId(String itemId) {
     this.itemId = itemId;
@@ -100,23 +117,6 @@ public class CatalogsUpdateRetailItem   {
 
   public void setOperation(OperationEnum operation) {
     this.operation = operation;
-  }
-
-  public CatalogsUpdateRetailItem attributes(UpdatableItemAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  public UpdatableItemAttributes getAttributes() {
-    return attributes;
-  }
-
-  public void setAttributes(UpdatableItemAttributes attributes) {
-    this.attributes = attributes;
   }
 
   public CatalogsUpdateRetailItem updateMask(List<UpdateMaskFieldType> updateMask) {
@@ -154,15 +154,15 @@ public class CatalogsUpdateRetailItem   {
       return false;
     }
     CatalogsUpdateRetailItem catalogsUpdateRetailItem = (CatalogsUpdateRetailItem) o;
-    return Objects.equals(itemId, catalogsUpdateRetailItem.itemId) &&
+    return Objects.equals(attributes, catalogsUpdateRetailItem.attributes) &&
+        Objects.equals(itemId, catalogsUpdateRetailItem.itemId) &&
         Objects.equals(operation, catalogsUpdateRetailItem.operation) &&
-        Objects.equals(attributes, catalogsUpdateRetailItem.attributes) &&
         Objects.equals(updateMask, catalogsUpdateRetailItem.updateMask);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, operation, attributes, updateMask);
+    return Objects.hash(attributes, itemId, operation, updateMask);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -171,9 +171,9 @@ public class CatalogsUpdateRetailItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsUpdateRetailItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    updateMask: ").append(toIndentedString(updateMask)).append("\n");
     sb.append("}");
     return sb.toString();

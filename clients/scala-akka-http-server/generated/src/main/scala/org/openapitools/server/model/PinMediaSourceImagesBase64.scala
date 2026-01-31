@@ -2,17 +2,17 @@ package org.openapitools.server.model
 
 
 /**
- * = Images Base64 =
+ * = Object containing Base64 image definitions =
  *
- * Multiple Base64-encoded images media source
+ * Multiple Base64-based images media source
  *
- * @param sourceType  for example: ''null''
- * @param items Array with image objects. for example: ''null''
  * @param index  for example: ''null''
+ * @param items Array with image objects. for example: ''null''
+ * @param sourceType The source type of the media. for example: ''null''
 */
 final case class PinMediaSourceImagesBase64 (
-  sourceType: Option[String] = None,
-  items: Seq[PinMediaSourceImagesBase64ItemsInner],
-  index: Option[Int] = None
+  index: Option[Int] = None,
+  items: Seq[PinMediaSourceImagesBase64Item],
+  sourceType: String
 )
 

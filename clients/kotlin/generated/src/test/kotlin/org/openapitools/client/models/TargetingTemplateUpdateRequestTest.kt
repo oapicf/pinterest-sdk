@@ -19,11 +19,18 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.TargetingTemplateUpdateRequest
+import org.openapitools.client.models.TargetingSpec
 
 class TargetingTemplateUpdateRequestTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of TargetingTemplateUpdateRequest
         //val modelInstance = TargetingTemplateUpdateRequest()
+
+        // to test the property `id` - Targeting template ID
+        should("test id") {
+            // uncomment below to test the property
+            //modelInstance.id shouldBe ("TODO")
+        }
 
         // to test the property `operationType`
         should("test operationType") {
@@ -31,10 +38,10 @@ class TargetingTemplateUpdateRequestTest : ShouldSpec() {
             //modelInstance.operationType shouldBe ("TODO")
         }
 
-        // to test the property `id` - Targeting template ID
-        should("test id") {
+        // to test the property `targetingAttributes`
+        should("test targetingAttributes") {
             // uncomment below to test the property
-            //modelInstance.id shouldBe ("TODO")
+            //modelInstance.targetingAttributes shouldBe ("TODO")
         }
 
     }

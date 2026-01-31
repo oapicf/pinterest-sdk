@@ -15,9 +15,9 @@ public struct ProductGroupPromotionCreateRequest: Codable, JSONEncodable, Hashab
     public static let adGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(AG)?\\d+$/")
     /** ID of the Ad Group the Product Group Promotion belongs to. */
     public var adGroupId: String
-    public var productGroupPromotion: [ProductGroupPromotionCreateRequestElement]
+    public var productGroupPromotion: [ProductGroupPromotion]
 
-    public init(adGroupId: String, productGroupPromotion: [ProductGroupPromotionCreateRequestElement]) {
+    public init(adGroupId: String, productGroupPromotion: [ProductGroupPromotion]) {
         self.adGroupId = adGroupId
         self.productGroupPromotion = productGroupPromotion
     }

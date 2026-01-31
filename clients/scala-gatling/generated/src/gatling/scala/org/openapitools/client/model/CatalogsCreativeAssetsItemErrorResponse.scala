@@ -7,7 +7,7 @@ case class CatalogsCreativeAssetsItemErrorResponse (
     /* The catalog creative assets id in the merchant namespace */
     _creativeAssetsId: Option[String],
     /* Array with the errors for the item id requested */
-    _errors: Option[List[ItemValidationEvent]]
+    _errors: List[ItemValidationEvent]
 )
 object CatalogsCreativeAssetsItemErrorResponse {
     def toStringBody(var_catalogType: Object, var_creativeAssetsId: Object, var_errors: Object) =

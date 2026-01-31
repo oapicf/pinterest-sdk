@@ -2,11 +2,11 @@ package models
 
 type CreateMmmReportResponseData struct {
 
-	ReportStatus BulkReportingJobStatus `json:"report_status,omitempty"`
-
-	Token string `json:"token,omitempty"`
-
 	Message *string `json:"message,omitempty"`
 
+	ReportStatus BulkReportingJobStatus `json:"report_status,omitempty"`
+
 	Status string `json:"status,omitempty"`
+
+	Token string `json:"token,omitempty"`
 }

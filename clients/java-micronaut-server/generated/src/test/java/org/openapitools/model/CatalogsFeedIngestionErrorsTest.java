@@ -20,22 +20,6 @@ public class CatalogsFeedIngestionErrorsTest {
     }
 
     /**
-     * Test the property 'LINE_LEVEL_INTERNAL_ERROR'
-     */
-    @Test
-    public void LINE_LEVEL_INTERNAL_ERRORTest() {
-        // TODO: test LINE_LEVEL_INTERNAL_ERROR
-    }
-
-    /**
-     * Test the property 'LARGE_PRODUCT_COUNT_DECREASE'
-     */
-    @Test
-    public void LARGE_PRODUCT_COUNT_DECREASETest() {
-        // TODO: test LARGE_PRODUCT_COUNT_DECREASE
-    }
-
-    /**
      * Test the property 'ACCOUNT_FLAGGED'
      */
     @Test
@@ -44,11 +28,11 @@ public class CatalogsFeedIngestionErrorsTest {
     }
 
     /**
-     * Test the property 'IMAGE_LEVEL_INTERNAL_ERROR'
+     * Test the property 'FETCH_GOOGLE_SHEET_NOT_SHARED'
      */
     @Test
-    public void IMAGE_LEVEL_INTERNAL_ERRORTest() {
-        // TODO: test IMAGE_LEVEL_INTERNAL_ERROR
+    public void FETCH_GOOGLE_SHEET_NOT_SHAREDTest() {
+        // TODO: test FETCH_GOOGLE_SHEET_NOT_SHARED
     }
 
     /**
@@ -57,14 +41,6 @@ public class CatalogsFeedIngestionErrorsTest {
     @Test
     public void IMAGE_FILE_NOT_ACCESSIBLETest() {
         // TODO: test IMAGE_FILE_NOT_ACCESSIBLE
-    }
-
-    /**
-     * Test the property 'IMAGE_MALFORMED_URL'
-     */
-    @Test
-    public void IMAGE_MALFORMED_URLTest() {
-        // TODO: test IMAGE_MALFORMED_URL
     }
 
     /**
@@ -81,6 +57,38 @@ public class CatalogsFeedIngestionErrorsTest {
     @Test
     public void IMAGE_INVALID_FILETest() {
         // TODO: test IMAGE_INVALID_FILE
+    }
+
+    /**
+     * Test the property 'IMAGE_LEVEL_INTERNAL_ERROR'
+     */
+    @Test
+    public void IMAGE_LEVEL_INTERNAL_ERRORTest() {
+        // TODO: test IMAGE_LEVEL_INTERNAL_ERROR
+    }
+
+    /**
+     * Test the property 'IMAGE_MALFORMED_URL'
+     */
+    @Test
+    public void IMAGE_MALFORMED_URLTest() {
+        // TODO: test IMAGE_MALFORMED_URL
+    }
+
+    /**
+     * Test the property 'LARGE_PRODUCT_COUNT_DECREASE'
+     */
+    @Test
+    public void LARGE_PRODUCT_COUNT_DECREASETest() {
+        // TODO: test LARGE_PRODUCT_COUNT_DECREASE
+    }
+
+    /**
+     * Test the property 'LINE_LEVEL_INTERNAL_ERROR'
+     */
+    @Test
+    public void LINE_LEVEL_INTERNAL_ERRORTest() {
+        // TODO: test LINE_LEVEL_INTERNAL_ERROR
     }
 
 }

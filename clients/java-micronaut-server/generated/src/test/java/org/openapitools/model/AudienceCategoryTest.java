@@ -25,6 +25,22 @@ public class AudienceCategoryTest {
     }
 
     /**
+     * Test the property 'id'
+     */
+    @Test
+    public void idTest() {
+        // TODO: test id
+    }
+
+    /**
+     * Test the property 'index'
+     */
+    @Test
+    public void indexTest() {
+        // TODO: test index
+    }
+
+    /**
      * Test the property 'key'
      */
     @Test
@@ -46,22 +62,6 @@ public class AudienceCategoryTest {
     @Test
     public void ratioTest() {
         // TODO: test ratio
-    }
-
-    /**
-     * Test the property 'index'
-     */
-    @Test
-    public void indexTest() {
-        // TODO: test index
-    }
-
-    /**
-     * Test the property 'id'
-     */
-    @Test
-    public void idTest() {
-        // TODO: test id
     }
 
     /**

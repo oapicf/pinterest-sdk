@@ -4,9 +4,9 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
+| **attributes** | [**CatalogsUpdatableCreativeAssetsAttributes**](CatalogsUpdatableCreativeAssetsAttributes.md) |  |  |
 | **creativeAssetsId** | **kotlin.String** | The catalog creative assets id in the merchant namespace |  |
 | **operation** | [**inline**](#Operation) |  |  |
-| **attributes** | [**CatalogsUpdatableCreativeAssetsAttributes**](CatalogsUpdatableCreativeAssetsAttributes.md) |  |  |
 
 
 <a id="Operation"></a>

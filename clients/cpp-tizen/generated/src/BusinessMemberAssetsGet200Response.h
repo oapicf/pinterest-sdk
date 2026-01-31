@@ -47,13 +47,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get List asset permissions the given member was granted.
-	 */
-	std::list<AssetIdPermissions> getItems();
-
-	/*! \brief Set List asset permissions the given member was granted.
-	 */
-	void setItems(std::list <AssetIdPermissions> items);
 	/*! \brief Get 
 	 */
 	std::string getBookmark();
@@ -61,10 +54,17 @@ public:
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
+	/*! \brief Get List asset permissions the given member was granted.
+	 */
+	std::list<AssetIdPermissions> getItems();
+
+	/*! \brief Set List asset permissions the given member was granted.
+	 */
+	void setItems(std::list <AssetIdPermissions> items);
 
 private:
-	std::list <AssetIdPermissions>items;
 	std::string bookmark;
+	std::list <AssetIdPermissions>items;
 	void __init();
 	void __cleanup();
 

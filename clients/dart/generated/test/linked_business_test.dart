@@ -16,15 +16,9 @@ void main() {
   // final instance = LinkedBusiness();
 
   group('test LinkedBusiness', () {
-    // Username
-    // String username
-    test('to test the property `username`', () async {
-      // TODO
-    });
-
-    // image_small_url
-    // String imageSmallUrl
-    test('to test the property `imageSmallUrl`', () async {
+    // image_large_url
+    // String imageLargeUrl
+    test('to test the property `imageLargeUrl`', () async {
       // TODO
     });
 
@@ -34,15 +28,21 @@ void main() {
       // TODO
     });
 
-    // image_large_url
-    // String imageLargeUrl
-    test('to test the property `imageLargeUrl`', () async {
+    // image_small_url
+    // String imageSmallUrl
+    test('to test the property `imageSmallUrl`', () async {
       // TODO
     });
 
     // image_xlarge_url
     // String imageXlargeUrl
     test('to test the property `imageXlargeUrl`', () async {
+      // TODO
+    });
+
+    // Username
+    // String username
+    test('to test the property `username`', () async {
       // TODO
     });
 

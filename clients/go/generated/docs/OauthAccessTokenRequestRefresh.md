@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RefreshToken** | **string** |  | 
 **Scope** | Pointer to **string** |  | [optional] 
-**RefreshOn** | Pointer to **bool** | Setting this field to &lt;code&gt;true&lt;/code&gt; will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \&quot;everlasting_refresh\&quot;. | [optional] 
 **GrantType** | **string** |  | 
 
 ## Methods
@@ -72,31 +71,6 @@ SetScope sets Scope field to given value.
 `func (o *OauthAccessTokenRequestRefresh) HasScope() bool`
 
 HasScope returns a boolean if a field has been set.
-
-### GetRefreshOn
-
-`func (o *OauthAccessTokenRequestRefresh) GetRefreshOn() bool`
-
-GetRefreshOn returns the RefreshOn field if non-nil, zero value otherwise.
-
-### GetRefreshOnOk
-
-`func (o *OauthAccessTokenRequestRefresh) GetRefreshOnOk() (*bool, bool)`
-
-GetRefreshOnOk returns a tuple with the RefreshOn field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRefreshOn
-
-`func (o *OauthAccessTokenRequestRefresh) SetRefreshOn(v bool)`
-
-SetRefreshOn sets RefreshOn field to given value.
-
-### HasRefreshOn
-
-`func (o *OauthAccessTokenRequestRefresh) HasRefreshOn() bool`
-
-HasRefreshOn returns a boolean if a field has been set.
 
 ### GetGrantType
 

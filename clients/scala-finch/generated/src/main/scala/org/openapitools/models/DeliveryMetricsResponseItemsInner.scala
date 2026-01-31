@@ -8,15 +8,15 @@ import org.openapitools._
 
 /**
  * 
- * @param name Metric's name.
  * @param category Category name
  * @param definition How the metric is defined.
  * @param displayUnderscorename Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.
+ * @param name Metric's name.
  */
-case class DeliveryMetricsResponseItemsInner(name: Option[String],
-                category: Option[String],
+case class DeliveryMetricsResponseItemsInner(category: Option[String],
                 definition: Option[String],
-                displayUnderscorename: Option[String]
+                displayUnderscorename: Option[String],
+                name: Option[String]
                 )
 
 object DeliveryMetricsResponseItemsInner {

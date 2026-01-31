@@ -11,21 +11,13 @@
 
 export interface SSIOInsertionOrderCommon { 
     /**
-     * Starting date of time period. Format: YYYY-MM-DD
+     * URL link for agency
      */
-    start_date?: string;
+    agency_link?: string;
     /**
-     * End date of time period. Format: YYYY-MM-DD
+     * The billing contact email
      */
-    end_date?: string;
-    /**
-     * The po number
-     */
-    po_number?: string;
-    /**
-     * If Budget order line, the budget amount.
-     */
-    budget_amount?: number;
+    billing_contact_email?: string;
     /**
      * The billing contact first name
      */
@@ -35,9 +27,17 @@ export interface SSIOInsertionOrderCommon {
      */
     billing_contact_lastname?: string;
     /**
-     * The billing contact email
+     * If Budget order line, the budget amount.
      */
-    billing_contact_email?: string;
+    budget_amount?: number;
+    /**
+     * End date of time period. Format: YYYY-MM-DD
+     */
+    end_date?: string;
+    /**
+     * The media contact email
+     */
+    media_contact_email?: string;
     /**
      * The media contact first name
      */
@@ -47,13 +47,13 @@ export interface SSIOInsertionOrderCommon {
      */
     media_contact_lastname?: string;
     /**
-     * The media contact email
+     * The po number
      */
-    media_contact_email?: string;
+    po_number?: string;
     /**
-     * URL link for agency
+     * Starting date of time period. Format: YYYY-MM-DD
      */
-    agency_link?: string;
+    start_date?: string;
     /**
      * The email of user submitting the insertion order
      */

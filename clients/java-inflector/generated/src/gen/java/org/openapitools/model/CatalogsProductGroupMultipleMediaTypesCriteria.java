@@ -14,30 +14,13 @@ import org.openapitools.model.MediaType;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsProductGroupMultipleMediaTypesCriteria   {
-  @JsonProperty("values")
-  private List<MediaType> values = new ArrayList<>();
-
   @JsonProperty("negated")
   private Boolean negated = false;
 
-  /**
-   **/
-  public CatalogsProductGroupMultipleMediaTypesCriteria values(List<MediaType> values) {
-    this.values = values;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty("values")
-  public List<MediaType> getValues() {
-    return values;
-  }
-  public void setValues(List<MediaType> values) {
-    this.values = values;
-  }
+  private List<MediaType> values = new ArrayList<>();
 
   /**
    **/
@@ -56,6 +39,23 @@ public class CatalogsProductGroupMultipleMediaTypesCriteria   {
     this.negated = negated;
   }
 
+  /**
+   **/
+  public CatalogsProductGroupMultipleMediaTypesCriteria values(List<MediaType> values) {
+    this.values = values;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("values")
+  public List<MediaType> getValues() {
+    return values;
+  }
+  public void setValues(List<MediaType> values) {
+    this.values = values;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -66,13 +66,13 @@ public class CatalogsProductGroupMultipleMediaTypesCriteria   {
       return false;
     }
     CatalogsProductGroupMultipleMediaTypesCriteria catalogsProductGroupMultipleMediaTypesCriteria = (CatalogsProductGroupMultipleMediaTypesCriteria) o;
-    return Objects.equals(values, catalogsProductGroupMultipleMediaTypesCriteria.values) &&
-        Objects.equals(negated, catalogsProductGroupMultipleMediaTypesCriteria.negated);
+    return Objects.equals(negated, catalogsProductGroupMultipleMediaTypesCriteria.negated) &&
+        Objects.equals(values, catalogsProductGroupMultipleMediaTypesCriteria.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, negated);
+    return Objects.hash(negated, values);
   }
 
   @Override
@@ -80,8 +80,8 @@ public class CatalogsProductGroupMultipleMediaTypesCriteria   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupMultipleMediaTypesCriteria {\n");
     
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

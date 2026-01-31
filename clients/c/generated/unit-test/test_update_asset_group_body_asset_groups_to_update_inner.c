@@ -23,20 +23,20 @@ update_asset_group_body_asset_groups_to_update_inner_t* instantiate_update_asset
   if (include_optional) {
     update_asset_group_body_asset_groups_to_update_inner = update_asset_group_body_asset_groups_to_update_inner_create(
       "666791336903426391",
-      "Canada Ad Accounts",
-      "Asset groups that has ad accounts shared in Canada",
       ["BRAND","LOCATION_OR_LANGUAGE","PRODUCT_LINE","OTHER"],
       list_createList(),
-      list_createList()
+      list_createList(),
+      "Asset groups that has ad accounts shared in Canada",
+      "Canada Ad Accounts"
     );
   } else {
     update_asset_group_body_asset_groups_to_update_inner = update_asset_group_body_asset_groups_to_update_inner_create(
       "666791336903426391",
-      "Canada Ad Accounts",
-      "Asset groups that has ad accounts shared in Canada",
       ["BRAND","LOCATION_OR_LANGUAGE","PRODUCT_LINE","OTHER"],
       list_createList(),
-      list_createList()
+      list_createList(),
+      "Asset groups that has ad accounts shared in Canada",
+      "Canada Ad Accounts"
     );
   }
 

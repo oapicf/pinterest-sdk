@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[Interest]**](Interest.md) |  | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[Interest]**](Interest.md) |  | 
 
 

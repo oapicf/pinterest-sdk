@@ -7,36 +7,36 @@
 #' @title MembersToDeleteBodyMembersInner
 #' @description MembersToDeleteBodyMembersInner Class
 #' @format An \code{R6Class} generator object
-#' @field member_id Unique identifier of the member character
 #' @field business_role  \link{BusinessRoleForMembers}
+#' @field member_id Unique identifier of the member character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 MembersToDeleteBodyMembersInner <- R6::R6Class(
   "MembersToDeleteBodyMembersInner",
   public = list(
-    `member_id` = NULL,
     `business_role` = NULL,
+    `member_id` = NULL,
 
     #' @description
     #' Initialize a new MembersToDeleteBodyMembersInner class.
     #'
-    #' @param member_id Unique identifier of the member
     #' @param business_role business_role
+    #' @param member_id Unique identifier of the member
     #' @param ... Other optional arguments.
-    initialize = function(`member_id`, `business_role`, ...) {
-      if (!missing(`member_id`)) {
-        if (!(is.character(`member_id`) && length(`member_id`) == 1)) {
-          stop(paste("Error! Invalid data for `member_id`. Must be a string:", `member_id`))
-        }
-        self$`member_id` <- `member_id`
-      }
+    initialize = function(`business_role`, `member_id`, ...) {
       if (!missing(`business_role`)) {
         if (!(`business_role` %in% c())) {
           stop(paste("Error! \"", `business_role`, "\" cannot be assigned to `business_role`. Must be .", sep = ""))
         }
         stopifnot(R6::is.R6(`business_role`))
         self$`business_role` <- `business_role`
+      }
+      if (!missing(`member_id`)) {
+        if (!(is.character(`member_id`) && length(`member_id`) == 1)) {
+          stop(paste("Error! Invalid data for `member_id`. Must be a string:", `member_id`))
+        }
+        self$`member_id` <- `member_id`
       }
     },
 
@@ -71,13 +71,13 @@ MembersToDeleteBodyMembersInner <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       MembersToDeleteBodyMembersInnerObject <- list()
-      if (!is.null(self$`member_id`)) {
-        MembersToDeleteBodyMembersInnerObject[["member_id"]] <-
-          self$`member_id`
-      }
       if (!is.null(self$`business_role`)) {
         MembersToDeleteBodyMembersInnerObject[["business_role"]] <-
           self$`business_role`$toSimpleType()
+      }
+      if (!is.null(self$`member_id`)) {
+        MembersToDeleteBodyMembersInnerObject[["member_id"]] <-
+          self$`member_id`
       }
       return(MembersToDeleteBodyMembersInnerObject)
     },
@@ -89,13 +89,13 @@ MembersToDeleteBodyMembersInner <- R6::R6Class(
     #' @return the instance of MembersToDeleteBodyMembersInner
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`member_id`)) {
-        self$`member_id` <- this_object$`member_id`
-      }
       if (!is.null(this_object$`business_role`)) {
         `business_role_object` <- BusinessRoleForMembers$new()
         `business_role_object`$fromJSON(jsonlite::toJSON(this_object$`business_role`, auto_unbox = TRUE, digits = NA))
         self$`business_role` <- `business_role_object`
+      }
+      if (!is.null(this_object$`member_id`)) {
+        self$`member_id` <- this_object$`member_id`
       }
       self
     },
@@ -118,8 +118,8 @@ MembersToDeleteBodyMembersInner <- R6::R6Class(
     #' @return the instance of MembersToDeleteBodyMembersInner
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`member_id` <- this_object$`member_id`
       self$`business_role` <- BusinessRoleForMembers$new()$fromJSON(jsonlite::toJSON(this_object$`business_role`, auto_unbox = TRUE, digits = NA))
+      self$`member_id` <- this_object$`member_id`
       self
     },
 
@@ -129,6 +129,12 @@ MembersToDeleteBodyMembersInner <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `business_role`
+      if (!is.null(input_json$`business_role`)) {
+        stopifnot(R6::is.R6(input_json$`business_role`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for MembersToDeleteBodyMembersInner: the required field `business_role` is missing."))
+      }
       # check the required field `member_id`
       if (!is.null(input_json$`member_id`)) {
         if (!(is.character(input_json$`member_id`) && length(input_json$`member_id`) == 1)) {
@@ -136,12 +142,6 @@ MembersToDeleteBodyMembersInner <- R6::R6Class(
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for MembersToDeleteBodyMembersInner: the required field `member_id` is missing."))
-      }
-      # check the required field `business_role`
-      if (!is.null(input_json$`business_role`)) {
-        stopifnot(R6::is.R6(input_json$`business_role`))
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for MembersToDeleteBodyMembersInner: the required field `business_role` is missing."))
       }
     },
 
@@ -158,6 +158,11 @@ MembersToDeleteBodyMembersInner <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      # check if the required `business_role` is null
+      if (is.null(self$`business_role`)) {
+        return(FALSE)
+      }
+
       # check if the required `member_id` is null
       if (is.null(self$`member_id`)) {
         return(FALSE)
@@ -167,11 +172,6 @@ MembersToDeleteBodyMembersInner <- R6::R6Class(
         return(FALSE)
       }
       if (!str_detect(self$`member_id`, "^\\d+$")) {
-        return(FALSE)
-      }
-
-      # check if the required `business_role` is null
-      if (is.null(self$`business_role`)) {
         return(FALSE)
       }
 
@@ -184,6 +184,11 @@ MembersToDeleteBodyMembersInner <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `business_role` is null
+      if (is.null(self$`business_role`)) {
+        invalid_fields["business_role"] <- "Non-nullable required field `business_role` cannot be null."
+      }
+
       # check if the required `member_id` is null
       if (is.null(self$`member_id`)) {
         invalid_fields["member_id"] <- "Non-nullable required field `member_id` cannot be null."
@@ -194,11 +199,6 @@ MembersToDeleteBodyMembersInner <- R6::R6Class(
       }
       if (!str_detect(self$`member_id`, "^\\d+$")) {
         invalid_fields["member_id"] <- "Invalid value for `member_id`, must conform to the pattern ^\\d+$."
-      }
-
-      # check if the required `business_role` is null
-      if (is.null(self$`business_role`)) {
-        invalid_fields["business_role"] <- "Non-nullable required field `business_role` cannot be null."
       }
 
       invalid_fields

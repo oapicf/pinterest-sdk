@@ -16,13 +16,13 @@ void main() {
   // final instance = BulkUpsertStatusResponse();
 
   group('test BulkUpsertStatusResponse', () {
-    // BulkUpsertStatus status
-    test('to test the property `status`', () async {
+    // String resultUrl
+    test('to test the property `resultUrl`', () async {
       // TODO
     });
 
-    // String resultUrl
-    test('to test the property `resultUrl`', () async {
+    // BulkUpsertStatus status
+    test('to test the property `status`', () async {
       // TODO
     });
 

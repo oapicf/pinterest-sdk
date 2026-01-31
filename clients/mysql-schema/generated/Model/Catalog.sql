@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `Catalog`
 --
-SELECT `created_at`, `id`, `updated_at`, `name`, `catalog_type` FROM `Catalog` WHERE 1;
+SELECT `created_at`, `id`, `updated_at`, `catalog_type`, `name` FROM `Catalog` WHERE 1;
 
 --
 -- INSERT template for table `Catalog`
 --
-INSERT INTO `Catalog`(`created_at`, `id`, `updated_at`, `name`, `catalog_type`) VALUES (?, ?, ?, ?, ?);
+INSERT INTO `Catalog`(`created_at`, `id`, `updated_at`, `catalog_type`, `name`) VALUES (?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `Catalog`
 --
-UPDATE `Catalog` SET `created_at` = ?, `id` = ?, `updated_at` = ?, `name` = ?, `catalog_type` = ? WHERE 1;
+UPDATE `Catalog` SET `created_at` = ?, `id` = ?, `updated_at` = ?, `catalog_type` = ?, `name` = ? WHERE 1;
 
 --
 -- DELETE template for table `Catalog`

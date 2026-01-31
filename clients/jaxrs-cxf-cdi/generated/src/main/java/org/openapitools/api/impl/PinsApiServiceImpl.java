@@ -5,6 +5,7 @@ import org.openapitools.model.*;
 
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 
+import org.openapitools.model.CreativeType;
 import org.openapitools.model.Error;
 import org.joda.time.LocalDate;
 import java.util.Map;
@@ -14,6 +15,7 @@ import org.openapitools.model.PinCreate;
 import org.openapitools.model.PinUpdate;
 import org.openapitools.model.PinsList200Response;
 import org.openapitools.model.PinsSaveRequest;
+import org.openapitools.model.PinterestLibError;
 
 import java.util.List;
 
@@ -27,7 +29,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-01-26T05:37:19.298233885Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-01-31T04:54:28.741368951Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinsApiServiceImpl implements PinsApiService {
       @Override
       public Response multiPinsAnalytics(List<@Pattern(regexp = "^\\d+$")String> pinIds, LocalDate startDate, LocalDate endDate, List<String> metricTypes, String appTypes, String adAccountId, SecurityContext securityContext) {
@@ -50,12 +52,12 @@ public class PinsApiServiceImpl implements PinsApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response pinsGet(String pinId, Boolean pinMetrics, String adAccountId, SecurityContext securityContext) {
+      public Response pinsGet(String pinId, String adAccountId, Boolean pinMetrics, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response pinsList(String bookmark, Integer pageSize, String pinFilter, Boolean includeProtectedPins, String pinType, List<String> creativeTypes, String adAccountId, Boolean pinMetrics, SecurityContext securityContext) {
+      public Response pinsList(String pinFilter, Boolean pinMetrics, Boolean includeProtectedPins, String pinType, List<CreativeType> creativeTypes, String adAccountId, String bookmark, Integer pageSize, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }

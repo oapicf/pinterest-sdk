@@ -3,14 +3,14 @@ package org.openapitools.client.model
 
 
 case class UserWebsiteVerifyRequest (
-    _website: Option[String],
-    _verificationMethod: Option[String]
+    _verificationMethod: Option[String],
+    _website: Option[String]
 )
 object UserWebsiteVerifyRequest {
-    def toStringBody(var_website: Object, var_verificationMethod: Object) =
+    def toStringBody(var_verificationMethod: Object, var_website: Object) =
         s"""
         | {
-        | "website":$var_website,"verificationMethod":$var_verificationMethod
+        | "verificationMethod":$var_verificationMethod,"website":$var_website
         | }
         """.stripMargin
 }

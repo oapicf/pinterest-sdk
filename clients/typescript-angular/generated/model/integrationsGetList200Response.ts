@@ -11,7 +11,7 @@ import { IntegrationRecord } from './integrationRecord';
 
 
 export interface IntegrationsGetList200Response { 
-    items: Array<IntegrationRecord>;
     bookmark?: string | null;
+    items: Array<IntegrationRecord>;
 }
 

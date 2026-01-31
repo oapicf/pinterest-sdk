@@ -24,18 +24,18 @@ catalogs_item_validation_issues_t* instantiate_catalogs_item_validation_issues(i
   catalogs_item_validation_issues_t* catalogs_item_validation_issues = NULL;
   if (include_optional) {
     catalogs_item_validation_issues = catalogs_item_validation_issues_create(
-      0,
-      "DS0294-L",
        // false, not to have infinite recursion
       instantiate_catalogs_item_validation_errors(0),
+      "DS0294-L",
+      0,
        // false, not to have infinite recursion
       instantiate_catalogs_item_validation_warnings(0)
     );
   } else {
     catalogs_item_validation_issues = catalogs_item_validation_issues_create(
-      0,
-      "DS0294-L",
       NULL,
+      "DS0294-L",
+      0,
       NULL
     );
   }

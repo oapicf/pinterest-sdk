@@ -7,11 +7,6 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(CatalogsReportDistributionStats, () {
-    // String reportType
-    test('to test the property `reportType`', () async {
-      // TODO
-    });
-
     // ID of the catalog entity.
     // String catalogId
     test('to test the property `catalogId`', () async {
@@ -30,6 +25,18 @@ void main() {
       // TODO
     });
 
+    // Indicates if issue makes items ineligible for ads distribution
+    // bool ineligibleForAds
+    test('to test the property `ineligibleForAds`', () async {
+      // TODO
+    });
+
+    // Indicates if issue makes items ineligible for organic distribution
+    // bool ineligibleForOrganic
+    test('to test the property `ineligibleForOrganic`', () async {
+      // TODO
+    });
+
     // Title message describing the diagnostic issue
     // String message
     test('to test the property `message`', () async {
@@ -42,15 +49,8 @@ void main() {
       // TODO
     });
 
-    // Indicates if issue makes items ineligible for ads distribution
-    // bool ineligibleForAds
-    test('to test the property `ineligibleForAds`', () async {
-      // TODO
-    });
-
-    // Indicates if issue makes items ineligible for organic distribution
-    // bool ineligibleForOrganic
-    test('to test the property `ineligibleForOrganic`', () async {
+    // String reportType
+    test('to test the property `reportType`', () async {
       // TODO
     });
 

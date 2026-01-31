@@ -5,6 +5,986 @@ context("Test CatalogsItemValidationWarnings")
 
 model_instance <- CatalogsItemValidationWarnings$new()
 
+test_that("AD_IMAGE_0_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_0_LINK_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_0_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_0_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_0_LINK_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_0_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_0_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_0_LINK_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_0_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_0_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_0_LINK_WARNING` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_0_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_0_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_0_TAG_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_0_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_0_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_0_TAG_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_0_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_0_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_0_TAG_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_0_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_10_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_10_LINK_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_10_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_10_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_10_LINK_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_10_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_10_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_10_LINK_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_10_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_10_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_10_LINK_WARNING` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_10_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_10_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_10_TAG_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_10_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_10_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_10_TAG_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_10_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_10_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_10_TAG_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_10_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_11_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_11_LINK_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_11_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_11_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_11_LINK_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_11_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_11_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_11_LINK_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_11_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_11_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_11_LINK_WARNING` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_11_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_11_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_11_TAG_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_11_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_11_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_11_TAG_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_11_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_11_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_11_TAG_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_11_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_12_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_12_LINK_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_12_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_12_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_12_LINK_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_12_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_12_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_12_LINK_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_12_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_12_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_12_LINK_WARNING` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_12_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_12_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_12_TAG_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_12_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_12_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_12_TAG_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_12_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_12_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_12_TAG_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_12_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_13_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_13_LINK_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_13_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_13_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_13_LINK_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_13_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_13_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_13_LINK_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_13_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_13_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_13_LINK_WARNING` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_13_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_13_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_13_TAG_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_13_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_13_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_13_TAG_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_13_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_13_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_13_TAG_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_13_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_14_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_14_LINK_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_14_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_14_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_14_LINK_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_14_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_14_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_14_LINK_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_14_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_14_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_14_LINK_WARNING` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_14_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_14_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_14_TAG_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_14_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_14_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_14_TAG_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_14_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_14_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_14_TAG_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_14_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_15_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_15_LINK_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_15_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_15_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_15_LINK_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_15_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_15_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_15_LINK_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_15_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_15_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_15_LINK_WARNING` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_15_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_15_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_15_TAG_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_15_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_15_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_15_TAG_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_15_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_15_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_15_TAG_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_15_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_16_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_16_LINK_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_16_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_16_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_16_LINK_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_16_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_16_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_16_LINK_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_16_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_16_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_16_LINK_WARNING` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_16_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_16_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_16_TAG_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_16_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_16_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_16_TAG_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_16_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_16_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_16_TAG_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_16_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_17_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_17_LINK_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_17_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_17_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_17_LINK_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_17_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_17_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_17_LINK_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_17_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_17_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_17_LINK_WARNING` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_17_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_17_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_17_TAG_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_17_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_17_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_17_TAG_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_17_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_17_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_17_TAG_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_17_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_18_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_18_LINK_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_18_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_18_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_18_LINK_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_18_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_18_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_18_LINK_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_18_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_18_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_18_LINK_WARNING` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_18_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_18_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_18_TAG_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_18_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_18_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_18_TAG_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_18_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_18_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_18_TAG_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_18_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_19_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_19_LINK_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_19_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_19_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_19_LINK_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_19_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_19_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_19_LINK_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_19_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_19_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_19_LINK_WARNING` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_19_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_19_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_19_TAG_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_19_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_19_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_19_TAG_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_19_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_19_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_19_TAG_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_19_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_1_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_1_LINK_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_1_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_1_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_1_LINK_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_1_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_1_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_1_LINK_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_1_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_1_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_1_LINK_WARNING` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_1_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_1_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_1_TAG_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_1_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_1_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_1_TAG_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_1_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_1_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_1_TAG_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_1_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_2_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_2_LINK_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_2_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_2_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_2_LINK_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_2_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_2_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_2_LINK_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_2_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_2_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_2_LINK_WARNING` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_2_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_2_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_2_TAG_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_2_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_2_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_2_TAG_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_2_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_2_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_2_TAG_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_2_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_3_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_3_LINK_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_3_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_3_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_3_LINK_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_3_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_3_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_3_LINK_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_3_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_3_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_3_LINK_WARNING` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_3_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_3_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_3_TAG_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_3_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_3_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_3_TAG_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_3_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_3_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_3_TAG_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_3_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_4_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_4_LINK_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_4_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_4_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_4_LINK_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_4_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_4_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_4_LINK_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_4_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_4_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_4_LINK_WARNING` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_4_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_4_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_4_TAG_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_4_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_4_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_4_TAG_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_4_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_4_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_4_TAG_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_4_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_5_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_5_LINK_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_5_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_5_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_5_LINK_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_5_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_5_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_5_LINK_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_5_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_5_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_5_LINK_WARNING` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_5_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_5_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_5_TAG_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_5_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_5_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_5_TAG_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_5_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_5_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_5_TAG_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_5_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_6_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_6_LINK_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_6_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_6_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_6_LINK_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_6_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_6_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_6_LINK_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_6_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_6_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_6_LINK_WARNING` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_6_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_6_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_6_TAG_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_6_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_6_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_6_TAG_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_6_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_6_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_6_TAG_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_6_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_7_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_7_LINK_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_7_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_7_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_7_LINK_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_7_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_7_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_7_LINK_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_7_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_7_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_7_LINK_WARNING` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_7_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_7_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_7_TAG_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_7_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_7_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_7_TAG_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_7_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_7_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_7_TAG_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_7_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_8_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_8_LINK_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_8_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_8_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_8_LINK_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_8_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_8_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_8_LINK_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_8_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_8_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_8_LINK_WARNING` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_8_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_8_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_8_TAG_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_8_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_8_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_8_TAG_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_8_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_8_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_8_TAG_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_8_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_9_LINK_DUPLICATED", {
+  # tests for the property `AD_IMAGE_9_LINK_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_9_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_9_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_9_LINK_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_9_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_9_LINK_REQUIRED", {
+  # tests for the property `AD_IMAGE_9_LINK_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_9_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_9_LINK_WARNING", {
+  # tests for the property `AD_IMAGE_9_LINK_WARNING` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_9_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_9_TAG_DUPLICATED", {
+  # tests for the property `AD_IMAGE_9_TAG_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_9_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_9_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_IMAGE_9_TAG_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_9_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_9_TAG_REQUIRED", {
+  # tests for the property `AD_IMAGE_9_TAG_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_9_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
 test_that("AD_LINK_FORMAT_WARNING", {
   # tests for the property `AD_LINK_FORMAT_WARNING` (CatalogsItemValidationDetails)
 
@@ -17,6 +997,153 @@ test_that("AD_LINK_SAME_AS_LINK", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`AD_LINK_SAME_AS_LINK`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_0_LINK_DUPLICATED", {
+  # tests for the property `AD_VIDEO_0_LINK_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_0_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_0_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_VIDEO_0_LINK_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_0_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_0_LINK_REQUIRED", {
+  # tests for the property `AD_VIDEO_0_LINK_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_0_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_0_LINK_WARNING", {
+  # tests for the property `AD_VIDEO_0_LINK_WARNING` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_0_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_0_TAG_DUPLICATED", {
+  # tests for the property `AD_VIDEO_0_TAG_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_0_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_0_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_VIDEO_0_TAG_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_0_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_0_TAG_REQUIRED", {
+  # tests for the property `AD_VIDEO_0_TAG_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_0_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_1_LINK_DUPLICATED", {
+  # tests for the property `AD_VIDEO_1_LINK_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_1_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_1_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_VIDEO_1_LINK_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_1_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_1_LINK_REQUIRED", {
+  # tests for the property `AD_VIDEO_1_LINK_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_1_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_1_LINK_WARNING", {
+  # tests for the property `AD_VIDEO_1_LINK_WARNING` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_1_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_1_TAG_DUPLICATED", {
+  # tests for the property `AD_VIDEO_1_TAG_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_1_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_1_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_VIDEO_1_TAG_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_1_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_1_TAG_REQUIRED", {
+  # tests for the property `AD_VIDEO_1_TAG_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_1_TAG_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_2_LINK_DUPLICATED", {
+  # tests for the property `AD_VIDEO_2_LINK_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_2_LINK_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_2_LINK_LENGTH_TOO_LONG", {
+  # tests for the property `AD_VIDEO_2_LINK_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_2_LINK_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_2_LINK_REQUIRED", {
+  # tests for the property `AD_VIDEO_2_LINK_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_2_LINK_REQUIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_2_LINK_WARNING", {
+  # tests for the property `AD_VIDEO_2_LINK_WARNING` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_2_LINK_WARNING`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_2_TAG_DUPLICATED", {
+  # tests for the property `AD_VIDEO_2_TAG_DUPLICATED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_2_TAG_DUPLICATED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_2_TAG_LENGTH_TOO_LONG", {
+  # tests for the property `AD_VIDEO_2_TAG_LENGTH_TOO_LONG` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_2_TAG_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_2_TAG_REQUIRED", {
+  # tests for the property `AD_VIDEO_2_TAG_REQUIRED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_2_TAG_REQUIRED`, "EXPECTED_RESULT")
 })
 
 test_that("ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG", {
@@ -52,13 +1179,6 @@ test_that("AGE_GROUP_INVALID", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`AGE_GROUP_INVALID`, "EXPECTED_RESULT")
-})
-
-test_that("SIZE_SYSTEM_INVALID", {
-  # tests for the property `SIZE_SYSTEM_INVALID` (CatalogsItemValidationDetails)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`SIZE_SYSTEM_INVALID`, "EXPECTED_RESULT")
 })
 
 test_that("ANDROID_DEEP_LINK_INVALID", {
@@ -215,18 +1335,18 @@ test_that("PRODUCT_TYPE_LENGTH_TOO_LONG", {
   #expect_equal(model.instance$`PRODUCT_TYPE_LENGTH_TOO_LONG`, "EXPECTED_RESULT")
 })
 
+test_that("SALE_DATE_INVALID", {
+  # tests for the property `SALE_DATE_INVALID` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`SALE_DATE_INVALID`, "EXPECTED_RESULT")
+})
+
 test_that("SALES_PRICE_INVALID", {
   # tests for the property `SALES_PRICE_INVALID` (CatalogsItemValidationDetails)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`SALES_PRICE_INVALID`, "EXPECTED_RESULT")
-})
-
-test_that("SALES_PRICE_TOO_LOW", {
-  # tests for the property `SALES_PRICE_TOO_LOW` (CatalogsItemValidationDetails)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`SALES_PRICE_TOO_LOW`, "EXPECTED_RESULT")
 })
 
 test_that("SALES_PRICE_TOO_HIGH", {
@@ -236,18 +1356,11 @@ test_that("SALES_PRICE_TOO_HIGH", {
   #expect_equal(model.instance$`SALES_PRICE_TOO_HIGH`, "EXPECTED_RESULT")
 })
 
-test_that("SALE_DATE_INVALID", {
-  # tests for the property `SALE_DATE_INVALID` (CatalogsItemValidationDetails)
+test_that("SALES_PRICE_TOO_LOW", {
+  # tests for the property `SALES_PRICE_TOO_LOW` (CatalogsItemValidationDetails)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`SALE_DATE_INVALID`, "EXPECTED_RESULT")
-})
-
-test_that("SHIPPING_INVALID", {
-  # tests for the property `SHIPPING_INVALID` (CatalogsItemValidationDetails)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`SHIPPING_INVALID`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`SALES_PRICE_TOO_LOW`, "EXPECTED_RESULT")
 })
 
 test_that("SHIPPING_HEIGHT_INVALID", {
@@ -255,6 +1368,13 @@ test_that("SHIPPING_HEIGHT_INVALID", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`SHIPPING_HEIGHT_INVALID`, "EXPECTED_RESULT")
+})
+
+test_that("SHIPPING_INVALID", {
+  # tests for the property `SHIPPING_INVALID` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`SHIPPING_INVALID`, "EXPECTED_RESULT")
 })
 
 test_that("SHIPPING_WEIGHT_INVALID", {
@@ -269,6 +1389,13 @@ test_that("SHIPPING_WIDTH_INVALID", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`SHIPPING_WIDTH_INVALID`, "EXPECTED_RESULT")
+})
+
+test_that("SIZE_SYSTEM_INVALID", {
+  # tests for the property `SIZE_SYSTEM_INVALID` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`SIZE_SYSTEM_INVALID`, "EXPECTED_RESULT")
 })
 
 test_that("SIZE_TYPE_INVALID", {
@@ -304,6 +1431,13 @@ test_that("UTM_SOURCE_AUTO_CORRECTED", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`UTM_SOURCE_AUTO_CORRECTED`, "EXPECTED_RESULT")
+})
+
+test_that("VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED", {
+  # tests for the property `VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED` (CatalogsItemValidationDetails)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED`, "EXPECTED_RESULT")
 })
 
 test_that("WEIGHT_UNIT_INVALID", {

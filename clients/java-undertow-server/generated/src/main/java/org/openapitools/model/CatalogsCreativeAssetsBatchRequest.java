@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -29,9 +29,10 @@ import org.openapitools.model.Country;
  */
 
 @ApiModel(description = "Request object to update catalogs creative assets items")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsBatchRequest   {
   
+  private String catalogId;
 
 
   public enum CatalogTypeEnum {
@@ -52,6 +53,7 @@ public class CatalogsCreativeAssetsBatchRequest   {
 
   private CatalogTypeEnum catalogType;
   private Country country;
+  private List<CatalogsCreativeAssetsBatchItem> items = new ArrayList<>();
 
 
   public enum LanguageEnum {
@@ -177,8 +179,24 @@ public class CatalogsCreativeAssetsBatchRequest   {
   }
 
   private LanguageEnum language;
-  private List<CatalogsCreativeAssetsBatchItem> items = new ArrayList<>();
-  private String catalogId;
+
+  /**
+   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+   */
+  public CatalogsCreativeAssetsBatchRequest catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "2680059592705", value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
 
   /**
    */
@@ -215,24 +233,6 @@ public class CatalogsCreativeAssetsBatchRequest   {
   }
 
   /**
-   * We recommend using the CatalogsLocale values.
-   */
-  public CatalogsCreativeAssetsBatchRequest language(LanguageEnum language) {
-    this.language = language;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "We recommend using the CatalogsLocale values.")
-  @JsonProperty("language")
-  public LanguageEnum getLanguage() {
-    return language;
-  }
-  public void setLanguage(LanguageEnum language) {
-    this.language = language;
-  }
-
-  /**
    * Array with creative assets item operations
    */
   public CatalogsCreativeAssetsBatchRequest items(List<CatalogsCreativeAssetsBatchItem> items) {
@@ -251,21 +251,21 @@ public class CatalogsCreativeAssetsBatchRequest   {
   }
 
   /**
-   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+   * We recommend using the CatalogsLocale values.
    */
-  public CatalogsCreativeAssetsBatchRequest catalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public CatalogsCreativeAssetsBatchRequest language(LanguageEnum language) {
+    this.language = language;
     return this;
   }
 
   
-  @ApiModelProperty(example = "2680059592705", value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
+  @ApiModelProperty(required = true, value = "We recommend using the CatalogsLocale values.")
+  @JsonProperty("language")
+  public LanguageEnum getLanguage() {
+    return language;
   }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public void setLanguage(LanguageEnum language) {
+    this.language = language;
   }
 
 
@@ -278,16 +278,16 @@ public class CatalogsCreativeAssetsBatchRequest   {
       return false;
     }
     CatalogsCreativeAssetsBatchRequest catalogsCreativeAssetsBatchRequest = (CatalogsCreativeAssetsBatchRequest) o;
-    return Objects.equals(catalogType, catalogsCreativeAssetsBatchRequest.catalogType) &&
+    return Objects.equals(catalogId, catalogsCreativeAssetsBatchRequest.catalogId) &&
+        Objects.equals(catalogType, catalogsCreativeAssetsBatchRequest.catalogType) &&
         Objects.equals(country, catalogsCreativeAssetsBatchRequest.country) &&
-        Objects.equals(language, catalogsCreativeAssetsBatchRequest.language) &&
         Objects.equals(items, catalogsCreativeAssetsBatchRequest.items) &&
-        Objects.equals(catalogId, catalogsCreativeAssetsBatchRequest.catalogId);
+        Objects.equals(language, catalogsCreativeAssetsBatchRequest.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, country, language, items, catalogId);
+    return Objects.hash(catalogId, catalogType, country, items, language);
   }
 
   @Override
@@ -295,11 +295,11 @@ public class CatalogsCreativeAssetsBatchRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsBatchRequest {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();
   }

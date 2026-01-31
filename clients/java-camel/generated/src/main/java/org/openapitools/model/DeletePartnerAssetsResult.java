@@ -22,19 +22,19 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "DeletePartnerAssetsResult", description = "The terminated asset access.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class DeletePartnerAssetsResult {
 
   private String assetId;
 
   private String assetType;
 
-  @Valid
-  private List<String> permissions = new ArrayList<>();
-
   private Boolean isSharedPartner;
 
   private String partnerId;
+
+  @Valid
+  private List<String> permissions = new ArrayList<>();
 
   public DeletePartnerAssetsResult assetId(String assetId) {
     this.assetId = assetId;
@@ -62,11 +62,11 @@ public class DeletePartnerAssetsResult {
   }
 
   /**
-   * Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+   * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
    * @return assetType
    */
   
-  @Schema(name = "asset_type", example = "AD_ACCOUNT", description = "Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "asset_type", example = "AD_ACCOUNT", description = "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("asset_type")
   public String getAssetType() {
     return assetType;
@@ -74,34 +74,6 @@ public class DeletePartnerAssetsResult {
 
   public void setAssetType(String assetType) {
     this.assetType = assetType;
-  }
-
-  public DeletePartnerAssetsResult permissions(List<String> permissions) {
-    this.permissions = permissions;
-    return this;
-  }
-
-  public DeletePartnerAssetsResult addPermissionsItem(String permissionsItem) {
-    if (this.permissions == null) {
-      this.permissions = new ArrayList<>();
-    }
-    this.permissions.add(permissionsItem);
-    return this;
-  }
-
-  /**
-   * Permission levels member or partner has on an asset.
-   * @return permissions
-   */
-  
-  @Schema(name = "permissions", example = "[\"FINANCE_MANAGER\",\"CATALOGS_MANAGER\",\"AUDIENCE_MANAGER\"]", description = "Permission levels member or partner has on an asset.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("permissions")
-  public List<String> getPermissions() {
-    return permissions;
-  }
-
-  public void setPermissions(List<String> permissions) {
-    this.permissions = permissions;
   }
 
   public DeletePartnerAssetsResult isSharedPartner(Boolean isSharedPartner) {
@@ -144,6 +116,34 @@ public class DeletePartnerAssetsResult {
     this.partnerId = partnerId;
   }
 
+  public DeletePartnerAssetsResult permissions(List<String> permissions) {
+    this.permissions = permissions;
+    return this;
+  }
+
+  public DeletePartnerAssetsResult addPermissionsItem(String permissionsItem) {
+    if (this.permissions == null) {
+      this.permissions = new ArrayList<>();
+    }
+    this.permissions.add(permissionsItem);
+    return this;
+  }
+
+  /**
+   * Permission levels member or partner has on an asset.
+   * @return permissions
+   */
+  
+  @Schema(name = "permissions", example = "[\"FINANCE_MANAGER\",\"CATALOGS_MANAGER\",\"AUDIENCE_MANAGER\"]", description = "Permission levels member or partner has on an asset.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("permissions")
+  public List<String> getPermissions() {
+    return permissions;
+  }
+
+  public void setPermissions(List<String> permissions) {
+    this.permissions = permissions;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -155,14 +155,14 @@ public class DeletePartnerAssetsResult {
     DeletePartnerAssetsResult deletePartnerAssetsResult = (DeletePartnerAssetsResult) o;
     return Objects.equals(this.assetId, deletePartnerAssetsResult.assetId) &&
         Objects.equals(this.assetType, deletePartnerAssetsResult.assetType) &&
-        Objects.equals(this.permissions, deletePartnerAssetsResult.permissions) &&
         Objects.equals(this.isSharedPartner, deletePartnerAssetsResult.isSharedPartner) &&
-        Objects.equals(this.partnerId, deletePartnerAssetsResult.partnerId);
+        Objects.equals(this.partnerId, deletePartnerAssetsResult.partnerId) &&
+        Objects.equals(this.permissions, deletePartnerAssetsResult.permissions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetId, assetType, permissions, isSharedPartner, partnerId);
+    return Objects.hash(assetId, assetType, isSharedPartner, partnerId, permissions);
   }
 
   @Override
@@ -171,9 +171,9 @@ public class DeletePartnerAssetsResult {
     sb.append("class DeletePartnerAssetsResult {\n");
     sb.append("    assetId: ").append(toIndentedString(assetId)).append("\n");
     sb.append("    assetType: ").append(toIndentedString(assetType)).append("\n");
-    sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
     sb.append("    isSharedPartner: ").append(toIndentedString(isSharedPartner)).append("\n");
     sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
+    sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,8 +22,8 @@ var _ MappedNullable = &TemplatesList200Response{}
 
 // TemplatesList200Response struct for TemplatesList200Response
 type TemplatesList200Response struct {
-	Items []TemplateResponse `json:"items"`
 	Bookmark NullableString `json:"bookmark,omitempty"`
+	Items []TemplateResponse `json:"items"`
 }
 
 type _TemplatesList200Response TemplatesList200Response
@@ -44,30 +44,6 @@ func NewTemplatesList200Response(items []TemplateResponse) *TemplatesList200Resp
 func NewTemplatesList200ResponseWithDefaults() *TemplatesList200Response {
 	this := TemplatesList200Response{}
 	return &this
-}
-
-// GetItems returns the Items field value
-func (o *TemplatesList200Response) GetItems() []TemplateResponse {
-	if o == nil {
-		var ret []TemplateResponse
-		return ret
-	}
-
-	return o.Items
-}
-
-// GetItemsOk returns a tuple with the Items field value
-// and a boolean to check if the value has been set.
-func (o *TemplatesList200Response) GetItemsOk() ([]TemplateResponse, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Items, true
-}
-
-// SetItems sets field value
-func (o *TemplatesList200Response) SetItems(v []TemplateResponse) {
-	o.Items = v
 }
 
 // GetBookmark returns the Bookmark field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -112,6 +88,30 @@ func (o *TemplatesList200Response) UnsetBookmark() {
 	o.Bookmark.Unset()
 }
 
+// GetItems returns the Items field value
+func (o *TemplatesList200Response) GetItems() []TemplateResponse {
+	if o == nil {
+		var ret []TemplateResponse
+		return ret
+	}
+
+	return o.Items
+}
+
+// GetItemsOk returns a tuple with the Items field value
+// and a boolean to check if the value has been set.
+func (o *TemplatesList200Response) GetItemsOk() ([]TemplateResponse, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Items, true
+}
+
+// SetItems sets field value
+func (o *TemplatesList200Response) SetItems(v []TemplateResponse) {
+	o.Items = v
+}
+
 func (o TemplatesList200Response) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -122,10 +122,10 @@ func (o TemplatesList200Response) MarshalJSON() ([]byte, error) {
 
 func (o TemplatesList200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["items"] = o.Items
 	if o.Bookmark.IsSet() {
 		toSerialize["bookmark"] = o.Bookmark.Get()
 	}
+	toSerialize["items"] = o.Items
 	return toSerialize, nil
 }
 

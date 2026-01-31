@@ -16,9 +16,10 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="A request object that can have multiple operations on a single retail batch")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="A request object that can have multiple operations on a single retail batch")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailBatchRequest   {
   
+  private String catalogId;
 
   /**
    * Gets or Sets catalogType
@@ -40,6 +41,7 @@ public class CatalogsRetailBatchRequest   {
 
   private CatalogTypeEnum catalogType;
   private Country country;
+  private List<CatalogsRetailBatchRequestItemsInner> items = new ArrayList<>();
 
   /**
    * We recommend using the CatalogsLocale values.
@@ -272,7 +274,19 @@ public class CatalogsRetailBatchRequest   {
   }
 
   private LanguageEnum language;
-  private List<CatalogsRetailBatchRequestItemsInner> items = new ArrayList<>();
+
+  /**
+   * Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
+   **/
+  
+  @ApiModelProperty(example = "2680059592705", value = "Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog")
+  @JsonProperty("catalog_id")
+ @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
 
   /**
    **/
@@ -302,20 +316,6 @@ public class CatalogsRetailBatchRequest   {
   }
 
   /**
-   * We recommend using the CatalogsLocale values.
-   **/
-  
-  @ApiModelProperty(required = true, value = "We recommend using the CatalogsLocale values.")
-  @JsonProperty("language")
-  @NotNull
-  public LanguageEnum getLanguage() {
-    return language;
-  }
-  public void setLanguage(LanguageEnum language) {
-    this.language = language;
-  }
-
-  /**
    * Array with catalogs item operations
    **/
   
@@ -330,6 +330,20 @@ public class CatalogsRetailBatchRequest   {
     this.items = items;
   }
 
+  /**
+   * We recommend using the CatalogsLocale values.
+   **/
+  
+  @ApiModelProperty(required = true, value = "We recommend using the CatalogsLocale values.")
+  @JsonProperty("language")
+  @NotNull
+  public LanguageEnum getLanguage() {
+    return language;
+  }
+  public void setLanguage(LanguageEnum language) {
+    this.language = language;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -340,15 +354,16 @@ public class CatalogsRetailBatchRequest   {
       return false;
     }
     CatalogsRetailBatchRequest catalogsRetailBatchRequest = (CatalogsRetailBatchRequest) o;
-    return Objects.equals(this.catalogType, catalogsRetailBatchRequest.catalogType) &&
+    return Objects.equals(this.catalogId, catalogsRetailBatchRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsRetailBatchRequest.catalogType) &&
         Objects.equals(this.country, catalogsRetailBatchRequest.country) &&
-        Objects.equals(this.language, catalogsRetailBatchRequest.language) &&
-        Objects.equals(this.items, catalogsRetailBatchRequest.items);
+        Objects.equals(this.items, catalogsRetailBatchRequest.items) &&
+        Objects.equals(this.language, catalogsRetailBatchRequest.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, country, language, items);
+    return Objects.hash(catalogId, catalogType, country, items, language);
   }
 
   @Override
@@ -356,10 +371,11 @@ public class CatalogsRetailBatchRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailBatchRequest {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();
   }

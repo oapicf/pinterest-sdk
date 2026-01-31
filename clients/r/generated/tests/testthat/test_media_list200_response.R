@@ -5,17 +5,16 @@ context("Test MediaList200Response")
 
 model_instance <- MediaList200Response$new()
 
-test_that("items", {
-  # tests for the property `items` (array[MediaUploadDetails])
-  # Media
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`items`, "EXPECTED_RESULT")
-})
-
 test_that("bookmark", {
   # tests for the property `bookmark` (character)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`bookmark`, "EXPECTED_RESULT")
+})
+
+test_that("items", {
+  # tests for the property `items` (array[Media])
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`items`, "EXPECTED_RESULT")
 })

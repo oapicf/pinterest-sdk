@@ -24,22 +24,22 @@ catalogs_product_groups_update_request_t* instantiate_catalogs_product_groups_up
   if (include_optional) {
     catalogs_product_groups_update_request = catalogs_product_groups_update_request_create(
       "0",
-      "0",
-      1,
        // false, not to have infinite recursion
       instantiate_catalogs_creative_assets_product_group_filters(0),
+      1,
+      "0",
       pinterest_rest_api_catalogs_product_groups_update_request_CATALOGTYPE_CREATIVE_ASSETS,
-      pinterest_rest_api_catalogs_product_groups_update_request__"US",
+      pinterest_rest_api_catalogs_product_groups_update_request__AD,
       pinterest_rest_api_catalogs_product_groups_update_request__af-ZA
     );
   } else {
     catalogs_product_groups_update_request = catalogs_product_groups_update_request_create(
       "0",
-      "0",
-      1,
       NULL,
+      1,
+      "0",
       pinterest_rest_api_catalogs_product_groups_update_request_CATALOGTYPE_CREATIVE_ASSETS,
-      pinterest_rest_api_catalogs_product_groups_update_request__"US",
+      pinterest_rest_api_catalogs_product_groups_update_request__AD,
       pinterest_rest_api_catalogs_product_groups_update_request__af-ZA
     );
   }

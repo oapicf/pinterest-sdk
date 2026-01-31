@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CatalogId** | **string** | Catalog id pertaining to the hotel product group. | 
 **CatalogType** | **string** |  | 
-**Name** | **string** |  | 
 **Description** | Pointer to **NullableString** |  | [optional] 
 **Filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | 
-**CatalogId** | **string** | Catalog id pertaining to the hotel product group. | 
+**Name** | **string** |  | 
 
 ## Methods
 
 ### NewCatalogsHotelProductGroupCreateRequest
 
-`func NewCatalogsHotelProductGroupCreateRequest(catalogType string, name string, filters CatalogsHotelProductGroupFilters, catalogId string, ) *CatalogsHotelProductGroupCreateRequest`
+`func NewCatalogsHotelProductGroupCreateRequest(catalogId string, catalogType string, filters CatalogsHotelProductGroupFilters, name string, ) *CatalogsHotelProductGroupCreateRequest`
 
 NewCatalogsHotelProductGroupCreateRequest instantiates a new CatalogsHotelProductGroupCreateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -28,6 +28,26 @@ will change when the set of required properties is changed
 NewCatalogsHotelProductGroupCreateRequestWithDefaults instantiates a new CatalogsHotelProductGroupCreateRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCatalogId
+
+`func (o *CatalogsHotelProductGroupCreateRequest) GetCatalogId() string`
+
+GetCatalogId returns the CatalogId field if non-nil, zero value otherwise.
+
+### GetCatalogIdOk
+
+`func (o *CatalogsHotelProductGroupCreateRequest) GetCatalogIdOk() (*string, bool)`
+
+GetCatalogIdOk returns a tuple with the CatalogId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCatalogId
+
+`func (o *CatalogsHotelProductGroupCreateRequest) SetCatalogId(v string)`
+
+SetCatalogId sets CatalogId field to given value.
+
 
 ### GetCatalogType
 
@@ -47,26 +67,6 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsHotelProductGroupCreateRequest) SetCatalogType(v string)`
 
 SetCatalogType sets CatalogType field to given value.
-
-
-### GetName
-
-`func (o *CatalogsHotelProductGroupCreateRequest) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *CatalogsHotelProductGroupCreateRequest) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *CatalogsHotelProductGroupCreateRequest) SetName(v string)`
-
-SetName sets Name field to given value.
 
 
 ### GetDescription
@@ -124,24 +124,24 @@ and a boolean to check if the value has been set.
 SetFilters sets Filters field to given value.
 
 
-### GetCatalogId
+### GetName
 
-`func (o *CatalogsHotelProductGroupCreateRequest) GetCatalogId() string`
+`func (o *CatalogsHotelProductGroupCreateRequest) GetName() string`
 
-GetCatalogId returns the CatalogId field if non-nil, zero value otherwise.
+GetName returns the Name field if non-nil, zero value otherwise.
 
-### GetCatalogIdOk
+### GetNameOk
 
-`func (o *CatalogsHotelProductGroupCreateRequest) GetCatalogIdOk() (*string, bool)`
+`func (o *CatalogsHotelProductGroupCreateRequest) GetNameOk() (*string, bool)`
 
-GetCatalogIdOk returns a tuple with the CatalogId field if it's non-nil, zero value otherwise
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCatalogId
+### SetName
 
-`func (o *CatalogsHotelProductGroupCreateRequest) SetCatalogId(v string)`
+`func (o *CatalogsHotelProductGroupCreateRequest) SetName(v string)`
 
-SetCatalogId sets CatalogId field to given value.
+SetName sets Name field to given value.
 
 
 

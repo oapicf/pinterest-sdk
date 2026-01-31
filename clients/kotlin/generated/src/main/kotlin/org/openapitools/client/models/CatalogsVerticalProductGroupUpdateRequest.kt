@@ -29,11 +29,11 @@ import com.squareup.moshi.JsonClass
  * Request object for updating a catalog based product group.
  *
  * @param catalogType 
- * @param name 
+ * @param country 
  * @param description 
  * @param filters 
- * @param country 
  * @param locale 
+ * @param name 
  */
 
 
@@ -41,16 +41,16 @@ interface CatalogsVerticalProductGroupUpdateRequest {
 
     @Json(name = "catalog_type")
     val catalogType: CatalogsVerticalProductGroupUpdateRequest.CatalogType?
-    @Json(name = "name")
-    val name: kotlin.String?
+    @Json(name = "country")
+    val country: Country?
     @Json(name = "description")
     val description: kotlin.String?
     @Json(name = "filters")
     val filters: CatalogsCreativeAssetsProductGroupFilters?
-    @Json(name = "country")
-    val country: Country?
     @Json(name = "locale")
     val locale: CatalogsLocale?
+    @Json(name = "name")
+    val name: kotlin.String?
     /**
      * 
      *

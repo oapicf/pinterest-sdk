@@ -24,9 +24,9 @@ void
 CatalogsHotelProductGroupUpdateRequest::__init()
 {
 	//catalog_type = std::string();
-	//name = std::string();
 	//description = std::string();
 	//filters = new CatalogsHotelProductGroupFilters();
+	//name = std::string();
 }
 
 void
@@ -37,11 +37,6 @@ CatalogsHotelProductGroupUpdateRequest::__cleanup()
 	//delete catalog_type;
 	//catalog_type = NULL;
 	//}
-	//if(name != NULL) {
-	//
-	//delete name;
-	//name = NULL;
-	//}
 	//if(description != NULL) {
 	//
 	//delete description;
@@ -51,6 +46,11 @@ CatalogsHotelProductGroupUpdateRequest::__cleanup()
 	//
 	//delete filters;
 	//filters = NULL;
+	//}
+	//if(name != NULL) {
+	//
+	//delete name;
+	//name = NULL;
 	//}
 	//
 }
@@ -67,17 +67,6 @@ CatalogsHotelProductGroupUpdateRequest::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&catalog_type, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *nameKey = "name";
-	node = json_object_get_member(pJsonObject, nameKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&name, node, "std::string", "");
 		} else {
 			
 		}
@@ -107,6 +96,17 @@ CatalogsHotelProductGroupUpdateRequest::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *nameKey = "name";
+	node = json_object_get_member(pJsonObject, nameKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&name, node, "std::string", "");
+		} else {
+			
+		}
+	}
 }
 
 CatalogsHotelProductGroupUpdateRequest::CatalogsHotelProductGroupUpdateRequest(char* json)
@@ -128,15 +128,6 @@ CatalogsHotelProductGroupUpdateRequest::toJson()
 	}
 	const gchar *catalog_typeKey = "catalog_type";
 	json_object_set_member(pJsonObject, catalog_typeKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getName();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *nameKey = "name";
-	json_object_set_member(pJsonObject, nameKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getDescription();
 		node = converttoJson(&obj, "std::string", "");
@@ -160,6 +151,15 @@ CatalogsHotelProductGroupUpdateRequest::toJson()
 	}
 	const gchar *filtersKey = "filters";
 	json_object_set_member(pJsonObject, filtersKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getName();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *nameKey = "name";
+	json_object_set_member(pJsonObject, nameKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -178,18 +178,6 @@ void
 CatalogsHotelProductGroupUpdateRequest::setCatalogType(std::string  catalog_type)
 {
 	this->catalog_type = catalog_type;
-}
-
-std::string
-CatalogsHotelProductGroupUpdateRequest::getName()
-{
-	return name;
-}
-
-void
-CatalogsHotelProductGroupUpdateRequest::setName(std::string  name)
-{
-	this->name = name;
 }
 
 std::string
@@ -214,6 +202,18 @@ void
 CatalogsHotelProductGroupUpdateRequest::setFilters(CatalogsHotelProductGroupFilters  filters)
 {
 	this->filters = filters;
+}
+
+std::string
+CatalogsHotelProductGroupUpdateRequest::getName()
+{
+	return name;
+}
+
+void
+CatalogsHotelProductGroupUpdateRequest::setName(std::string  name)
+{
+	this->name = name;
 }
 
 

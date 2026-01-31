@@ -91,5 +91,10 @@ private class OASCatalogsProductGroupFilterKeysTest {
         System.assertEquals('goOGLEPRODUCTCATEGORY2', x-property-mappings.get('GOOGLE_PRODUCT_CATEGORY_2'));
         System.assertEquals('goOGLEPRODUCTCATEGORY1', x-property-mappings.get('GOOGLE_PRODUCT_CATEGORY_1'));
         System.assertEquals('goOGLEPRODUCTCATEGORY0', x-property-mappings.get('GOOGLE_PRODUCT_CATEGORY_0'));
+        System.assertEquals('cuSTOMNUMBER0', x-property-mappings.get('CUSTOM_NUMBER_0'));
+        System.assertEquals('cuSTOMNUMBER1', x-property-mappings.get('CUSTOM_NUMBER_1'));
+        System.assertEquals('cuSTOMNUMBER2', x-property-mappings.get('CUSTOM_NUMBER_2'));
+        System.assertEquals('cuSTOMNUMBER3', x-property-mappings.get('CUSTOM_NUMBER_3'));
+        System.assertEquals('cuSTOMNUMBER4', x-property-mappings.get('CUSTOM_NUMBER_4'));
     }
 }

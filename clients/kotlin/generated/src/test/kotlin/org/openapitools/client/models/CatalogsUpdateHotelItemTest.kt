@@ -26,6 +26,12 @@ class CatalogsUpdateHotelItemTest : ShouldSpec() {
         // uncomment below to create an instance of CatalogsUpdateHotelItem
         //val modelInstance = CatalogsUpdateHotelItem()
 
+        // to test the property `attributes`
+        should("test attributes") {
+            // uncomment below to test the property
+            //modelInstance.attributes shouldBe ("TODO")
+        }
+
         // to test the property `hotelId` - The catalog hotel item id in the merchant namespace
         should("test hotelId") {
             // uncomment below to test the property
@@ -36,12 +42,6 @@ class CatalogsUpdateHotelItemTest : ShouldSpec() {
         should("test operation") {
             // uncomment below to test the property
             //modelInstance.operation shouldBe ("TODO")
-        }
-
-        // to test the property `attributes`
-        should("test attributes") {
-            // uncomment below to test the property
-            //modelInstance.attributes shouldBe ("TODO")
         }
 
     }

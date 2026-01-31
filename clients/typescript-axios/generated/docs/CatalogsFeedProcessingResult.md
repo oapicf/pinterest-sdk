@@ -9,9 +9,10 @@ Name | Type | Description | Notes
 **id** | **string** |  | [default to undefined]
 **updated_at** | **string** |  | [default to undefined]
 **ingestion_details** | [**CatalogsFeedIngestionDetails**](CatalogsFeedIngestionDetails.md) |  | [default to undefined]
-**status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | [default to undefined]
 **product_counts** | [**CatalogsFeedProductCounts**](CatalogsFeedProductCounts.md) |  | [default to undefined]
+**status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | [default to undefined]
 **validation_details** | [**CatalogsFeedValidationDetails**](CatalogsFeedValidationDetails.md) |  | [default to undefined]
+**video_counts** | [**CatalogsFeedVideoCounts**](CatalogsFeedVideoCounts.md) |  | [optional] [default to undefined]
 
 ## Example
 
@@ -23,9 +24,10 @@ const instance: CatalogsFeedProcessingResult = {
     id,
     updated_at,
     ingestion_details,
-    status,
     product_counts,
+    status,
     validation_details,
+    video_counts,
 };
 ```
 

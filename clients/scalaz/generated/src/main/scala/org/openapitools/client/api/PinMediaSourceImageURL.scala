@@ -12,10 +12,11 @@ import org.joda.time.DateTime
 import PinMediaSourceImageURL._
 
 case class PinMediaSourceImageURL (
+  /* Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users. */
+  isStandard: Option[Boolean],
+/* The source type of the media. */
   sourceType: SourceType,
-url: String,
-/* Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users. */
-  isStandard: Option[Boolean])
+url: String)
 
 object PinMediaSourceImageURL {
   import DateTimeCodecs._

@@ -11,7 +11,7 @@
   {
    (ds/req :catalog_type) catalogs-type-spec
    (ds/opt :creative_assets_id) string?
-   (ds/opt :errors) (s/coll-of item-validation-event-spec)
+   (ds/req :errors) (s/coll-of item-validation-event-spec)
    })
 
 (def catalogs-creative-assets-item-error-response-spec

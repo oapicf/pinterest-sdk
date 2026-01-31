@@ -22,10 +22,12 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsItemsRequest", description = "Request object of catalogs items")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItemsRequest {
 
   private Country country;
+
+  private CatalogsItemsPostFilters filters;
 
   /**
    * We recommend using the CatalogsLocale values.
@@ -274,8 +276,6 @@ public class CatalogsItemsRequest {
 
   private LanguageEnum language;
 
-  private CatalogsItemsPostFilters filters;
-
   public CatalogsItemsRequest() {
     super();
   }
@@ -283,10 +283,10 @@ public class CatalogsItemsRequest {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsItemsRequest(Country country, LanguageEnum language, CatalogsItemsPostFilters filters) {
+  public CatalogsItemsRequest(Country country, CatalogsItemsPostFilters filters, LanguageEnum language) {
     this.country = country;
-    this.language = language;
     this.filters = filters;
+    this.language = language;
   }
 
   public CatalogsItemsRequest country(Country country) {
@@ -309,26 +309,6 @@ public class CatalogsItemsRequest {
     this.country = country;
   }
 
-  public CatalogsItemsRequest language(LanguageEnum language) {
-    this.language = language;
-    return this;
-  }
-
-  /**
-   * We recommend using the CatalogsLocale values.
-   * @return language
-   */
-  @NotNull 
-  @Schema(name = "language", description = "We recommend using the CatalogsLocale values.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("language")
-  public LanguageEnum getLanguage() {
-    return language;
-  }
-
-  public void setLanguage(LanguageEnum language) {
-    this.language = language;
-  }
-
   public CatalogsItemsRequest filters(CatalogsItemsPostFilters filters) {
     this.filters = filters;
     return this;
@@ -349,6 +329,26 @@ public class CatalogsItemsRequest {
     this.filters = filters;
   }
 
+  public CatalogsItemsRequest language(LanguageEnum language) {
+    this.language = language;
+    return this;
+  }
+
+  /**
+   * We recommend using the CatalogsLocale values.
+   * @return language
+   */
+  @NotNull 
+  @Schema(name = "language", description = "We recommend using the CatalogsLocale values.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("language")
+  public LanguageEnum getLanguage() {
+    return language;
+  }
+
+  public void setLanguage(LanguageEnum language) {
+    this.language = language;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -359,13 +359,13 @@ public class CatalogsItemsRequest {
     }
     CatalogsItemsRequest catalogsItemsRequest = (CatalogsItemsRequest) o;
     return Objects.equals(this.country, catalogsItemsRequest.country) &&
-        Objects.equals(this.language, catalogsItemsRequest.language) &&
-        Objects.equals(this.filters, catalogsItemsRequest.filters);
+        Objects.equals(this.filters, catalogsItemsRequest.filters) &&
+        Objects.equals(this.language, catalogsItemsRequest.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, language, filters);
+    return Objects.hash(country, filters, language);
   }
 
   @Override
@@ -373,8 +373,8 @@ public class CatalogsItemsRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsItemsRequest {\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();
   }

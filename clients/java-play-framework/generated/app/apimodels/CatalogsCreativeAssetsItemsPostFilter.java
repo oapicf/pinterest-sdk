@@ -12,9 +12,14 @@ import javax.validation.Valid;
 /**
  * CatalogsCreativeAssetsItemsPostFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsCreativeAssetsItemsPostFilter   {
+  @JsonProperty("catalog_id")
+  @Pattern(regexp="^\\d+$")
+
+  private String catalogId;
+
   /**
    * Gets or Sets catalogType
    */
@@ -55,10 +60,22 @@ public class CatalogsCreativeAssetsItemsPostFilter   {
 
   private List<String> creativeAssetsIds = new ArrayList<>();
 
-  @JsonProperty("catalog_id")
-  @Pattern(regexp="^\\d+$")
+  public CatalogsCreativeAssetsItemsPostFilter catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
 
-  private String catalogId;
+   /**
+   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+   * @return catalogId
+  **/
+  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
 
   public CatalogsCreativeAssetsItemsPostFilter catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
@@ -102,23 +119,6 @@ public class CatalogsCreativeAssetsItemsPostFilter   {
     this.creativeAssetsIds = creativeAssetsIds;
   }
 
-  public CatalogsCreativeAssetsItemsPostFilter catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-   /**
-   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-   * @return catalogId
-  **/
-  public String getCatalogId() {
-    return catalogId;
-  }
-
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -129,14 +129,14 @@ public class CatalogsCreativeAssetsItemsPostFilter   {
       return false;
     }
     CatalogsCreativeAssetsItemsPostFilter catalogsCreativeAssetsItemsPostFilter = (CatalogsCreativeAssetsItemsPostFilter) o;
-    return Objects.equals(catalogType, catalogsCreativeAssetsItemsPostFilter.catalogType) &&
-        Objects.equals(creativeAssetsIds, catalogsCreativeAssetsItemsPostFilter.creativeAssetsIds) &&
-        Objects.equals(catalogId, catalogsCreativeAssetsItemsPostFilter.catalogId);
+    return Objects.equals(catalogId, catalogsCreativeAssetsItemsPostFilter.catalogId) &&
+        Objects.equals(catalogType, catalogsCreativeAssetsItemsPostFilter.catalogType) &&
+        Objects.equals(creativeAssetsIds, catalogsCreativeAssetsItemsPostFilter.creativeAssetsIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, creativeAssetsIds, catalogId);
+    return Objects.hash(catalogId, catalogType, creativeAssetsIds);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -145,9 +145,9 @@ public class CatalogsCreativeAssetsItemsPostFilter   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsItemsPostFilter {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    creativeAssetsIds: ").append(toIndentedString(creativeAssetsIds)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

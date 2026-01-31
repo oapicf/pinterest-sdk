@@ -8,36 +8,44 @@ import org.openapitools.model.Currency;
 
 @Canonical
 class SSIOCreateInsertionOrderRequest {
-    /* Starting date of time period. Format: YYYY-MM-DD */
-    String startDate
-    /* End date of time period. Format: YYYY-MM-DD */
-    String endDate
-    /* The po number */
-    String poNumber
-    /* If Budget order line, the budget amount. */
-    BigDecimal budgetAmount
+    /* URL link for agency */
+    String agencyLink
+    /* The billing contact email */
+    String billingContactEmail
     /* The billing contact first name */
     String billingContactFirstname
     /* The billing contact last name */
     String billingContactLastname
-    /* The billing contact email */
-    String billingContactEmail
+    /* If Budget order line, the budget amount. */
+    BigDecimal budgetAmount
+    /* End date of time period. Format: YYYY-MM-DD */
+    String endDate
+    /* The media contact email */
+    String mediaContactEmail
     /* The media contact first name */
     String mediaContactFirstname
     /* The media contact last name */
     String mediaContactLastname
-    /* The media contact email */
-    String mediaContactEmail
-    /* URL link for agency */
-    String agencyLink
+    /* The po number */
+    String poNumber
+    /* Starting date of time period. Format: YYYY-MM-DD */
+    String startDate
     /* The email of user submitting the insertion order */
     String userEmail
+    /* The SFDC id for the terms */
+    String acceptedTermsId
     /* The UTC timestamp (to the nearest sec) of when terms were accepted */
     Integer acceptedTermsTime
-    /* The pmp id */
-    String pmpId
-    /* The order name */
-    String orderName
+    /* The bill-to billing address id */
+    String billtoBillingAddressId
+    /* The bill-to business address id */
+    String billtoBusinessAddressId
+    /* The bill-to company id */
+    String billtoCompanyId
+    
+    Currency currencyInfo
+    /* If Ongoing (perpetual) order line, the estimated monthly spend */
+    BigDecimal estimatedMonthlySpend
 
     enum OrderLineTypeEnum {
     
@@ -63,16 +71,8 @@ class SSIOCreateInsertionOrderRequest {
 
     /* Type can be Budget or Perpetual */
     OrderLineTypeEnum orderLineType
-    /* The SFDC id for the terms */
-    String acceptedTermsId
-    /* The bill-to company id */
-    String billtoCompanyId
-    /* The bill-to business address id */
-    String billtoBusinessAddressId
-    /* The bill-to billing address id */
-    String billtoBillingAddressId
-    /* If Ongoing (perpetual) order line, the estimated monthly spend */
-    BigDecimal estimatedMonthlySpend
-    
-    Currency currencyInfo
+    /* The order name */
+    String orderName
+    /* The pmp id */
+    String pmpId
 }

@@ -9,15 +9,15 @@ import org.openapitools.models.BulkReportingJobStatus
 
 /**
  * 
- * @param reportUnderscorestatus 
- * @param token 
  * @param message 
+ * @param reportUnderscorestatus 
  * @param status 
+ * @param token 
  */
-case class CreateMMMReportResponseData(reportUnderscorestatus: Option[BulkReportingJobStatus],
-                token: Option[String],
-                message: Option[String],
-                status: Option[String]
+case class CreateMMMReportResponseData(message: Option[String],
+                reportUnderscorestatus: Option[BulkReportingJobStatus],
+                status: Option[String],
+                token: Option[String]
                 )
 
 object CreateMMMReportResponseData {

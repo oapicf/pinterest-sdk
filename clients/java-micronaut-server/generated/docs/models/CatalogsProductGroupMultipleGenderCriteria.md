@@ -8,8 +8,8 @@ The class is defined in **[CatalogsProductGroupMultipleGenderCriteria.java](../.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**values** | `List&lt;Gender&gt;` |  | 
 **negated** | `Boolean` |  |  [optional property]
+**values** | `List&lt;Gender&gt;` |  | 
 
 
 

@@ -9,14 +9,14 @@ import play.api.libs.json._
   * @param size Population count.
   * @param sizeIsUpperBound Indicates whether the audience size has been rounded up to the next highest upper boundary.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class AudienceInsightsResponse(
   categories: Option[List[AudienceCategory]],
-  demographics: Option[AudienceDemographics],
-  `type`: Option[AudienceInsightType],
   date: Option[String],
+  demographics: Option[AudienceDemographics],
   size: Option[Int],
-  sizeIsUpperBound: Option[Boolean]
+  sizeIsUpperBound: Option[Boolean],
+  `type`: Option[AudienceInsightType]
 )
 
 object AudienceInsightsResponse {

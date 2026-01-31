@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CustomLabel1Filter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CustomLabel1Filter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsProductGroupFilterOperatorTypeCriteria = openapi_server.resourceTypes.CatalogsProductGroupFilterOperatorTypeCriteria
+}
+resourceTypes {
+
+  CustomLabel1Filter {
+    title = CustomLabel1Filter
+    description = CustomLabel1Filter
+    derivedFrom = Root
+    properties {
+        custom_label_1 {
+          type = CatalogsProductGroupFilterOperatorTypeCriteria
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CustomLabel1Filter {
+    title = CustomLabel1Filter
+    description = CustomLabel1Filter
+    implements = openapi_server.resourceTypes.CustomLabel1Filter
+
+  }
+}

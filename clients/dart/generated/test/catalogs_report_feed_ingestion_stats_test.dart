@@ -16,11 +16,6 @@ void main() {
   // final instance = CatalogsReportFeedIngestionStats();
 
   group('test CatalogsReportFeedIngestionStats', () {
-    // String reportType
-    test('to test the property `reportType`', () async {
-      // TODO
-    });
-
     // ID of the catalog entity.
     // String catalogId
     test('to test the property `catalogId`', () async {
@@ -48,6 +43,11 @@ void main() {
     // Number of occurrences of the issue
     // int occurrences
     test('to test the property `occurrences`', () async {
+      // TODO
+    });
+
+    // String reportType
+    test('to test the property `reportType`', () async {
       // TODO
     });
 

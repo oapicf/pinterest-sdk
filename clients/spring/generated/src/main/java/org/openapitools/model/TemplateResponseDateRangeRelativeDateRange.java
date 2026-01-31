@@ -23,33 +23,33 @@ import javax.annotation.Generated;
 
 @Schema(name = "TemplateResponse_date_range_relative_date_range", description = "The relative date range of the template")
 @JsonTypeName("TemplateResponse_date_range_relative_date_range")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TemplateResponseDateRangeRelativeDateRange {
-
-  private @Nullable String type;
-
-  private @Nullable BigDecimal startDaysInPast;
 
   private @Nullable BigDecimal endDaysInPast;
 
-  public TemplateResponseDateRangeRelativeDateRange type(@Nullable String type) {
-    this.type = type;
+  private @Nullable BigDecimal startDaysInPast;
+
+  private @Nullable String type;
+
+  public TemplateResponseDateRangeRelativeDateRange endDaysInPast(@Nullable BigDecimal endDaysInPast) {
+    this.endDaysInPast = endDaysInPast;
     return this;
   }
 
   /**
-   * The date range type
-   * @return type
+   * The end date of the date range
+   * @return endDaysInPast
    */
-  
-  @Schema(name = "type", example = "relative", description = "The date range type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("type")
-  public @Nullable String getType() {
-    return type;
+  @Valid 
+  @Schema(name = "end_days_in_past", example = "7", description = "The end date of the date range", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("end_days_in_past")
+  public @Nullable BigDecimal getEndDaysInPast() {
+    return endDaysInPast;
   }
 
-  public void setType(@Nullable String type) {
-    this.type = type;
+  public void setEndDaysInPast(@Nullable BigDecimal endDaysInPast) {
+    this.endDaysInPast = endDaysInPast;
   }
 
   public TemplateResponseDateRangeRelativeDateRange startDaysInPast(@Nullable BigDecimal startDaysInPast) {
@@ -72,24 +72,24 @@ public class TemplateResponseDateRangeRelativeDateRange {
     this.startDaysInPast = startDaysInPast;
   }
 
-  public TemplateResponseDateRangeRelativeDateRange endDaysInPast(@Nullable BigDecimal endDaysInPast) {
-    this.endDaysInPast = endDaysInPast;
+  public TemplateResponseDateRangeRelativeDateRange type(@Nullable String type) {
+    this.type = type;
     return this;
   }
 
   /**
-   * The end date of the date range
-   * @return endDaysInPast
+   * The date range type
+   * @return type
    */
-  @Valid 
-  @Schema(name = "end_days_in_past", example = "7", description = "The end date of the date range", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("end_days_in_past")
-  public @Nullable BigDecimal getEndDaysInPast() {
-    return endDaysInPast;
+  
+  @Schema(name = "type", example = "relative", description = "The date range type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("type")
+  public @Nullable String getType() {
+    return type;
   }
 
-  public void setEndDaysInPast(@Nullable BigDecimal endDaysInPast) {
-    this.endDaysInPast = endDaysInPast;
+  public void setType(@Nullable String type) {
+    this.type = type;
   }
 
   @Override
@@ -101,23 +101,23 @@ public class TemplateResponseDateRangeRelativeDateRange {
       return false;
     }
     TemplateResponseDateRangeRelativeDateRange templateResponseDateRangeRelativeDateRange = (TemplateResponseDateRangeRelativeDateRange) o;
-    return Objects.equals(this.type, templateResponseDateRangeRelativeDateRange.type) &&
+    return Objects.equals(this.endDaysInPast, templateResponseDateRangeRelativeDateRange.endDaysInPast) &&
         Objects.equals(this.startDaysInPast, templateResponseDateRangeRelativeDateRange.startDaysInPast) &&
-        Objects.equals(this.endDaysInPast, templateResponseDateRangeRelativeDateRange.endDaysInPast);
+        Objects.equals(this.type, templateResponseDateRangeRelativeDateRange.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, startDaysInPast, endDaysInPast);
+    return Objects.hash(endDaysInPast, startDaysInPast, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TemplateResponseDateRangeRelativeDateRange {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    startDaysInPast: ").append(toIndentedString(startDaysInPast)).append("\n");
     sb.append("    endDaysInPast: ").append(toIndentedString(endDaysInPast)).append("\n");
+    sb.append("    startDaysInPast: ").append(toIndentedString(startDaysInPast)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

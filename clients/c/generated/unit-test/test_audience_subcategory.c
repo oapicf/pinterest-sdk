@@ -23,18 +23,18 @@ audience_subcategory_t* instantiate_audience_subcategory(int include_optional) {
   if (include_optional) {
     audience_subcategory = audience_subcategory_create(
       "958862518888",
-      "travel destinations",
-      0.482,
       1.2,
-      "958862518888"
+      "958862518888",
+      "travel destinations",
+      0.482
     );
   } else {
     audience_subcategory = audience_subcategory_create(
       "958862518888",
-      "travel destinations",
-      0.482,
       1.2,
-      "958862518888"
+      "958862518888",
+      "travel destinations",
+      0.482
     );
   }
 

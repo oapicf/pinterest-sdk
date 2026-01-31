@@ -6,9 +6,9 @@ A specific quiz inquiry.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**_options** | [**Array&lt;QuizPinOption&gt;**](QuizPinOption.md) |  | [optional] [default to undefined]
 **question_id** | **number** |  | [optional] [default to undefined]
 **question_text** | **string** |  | [optional] [default to undefined]
-**_options** | [**Array&lt;QuizPinOption&gt;**](QuizPinOption.md) |  | [optional] [default to undefined]
 
 ## Example
 
@@ -16,9 +16,9 @@ Name | Type | Description | Notes
 import { QuizPinQuestion } from './api';
 
 const instance: QuizPinQuestion = {
+    _options,
     question_id,
     question_text,
-    _options,
 };
 ```
 

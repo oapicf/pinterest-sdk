@@ -8,11 +8,11 @@ import org.openapitools.model.CatalogsFeedProcessingStatus;
 @Canonical
 class CatalogsFeedIngestion {
     
-    String id
+    Date createdAt
     
     String feedId
     
-    Date createdAt
+    String id
     
     CatalogsFeedProcessingStatus status
 }

@@ -48,6 +48,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+	 */
+	std::string getCatalogId();
+
+	/*! \brief Set Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+	 */
+	void setCatalogId(std::string  catalog_id);
 	/*! \brief Get 
 	 */
 	std::string getCatalogType();
@@ -62,13 +69,6 @@ public:
 	/*! \brief Set 
 	 */
 	void setCountry(Country  country);
-	/*! \brief Get We recommend using the CatalogsLocale values.
-	 */
-	std::string getLanguage();
-
-	/*! \brief Set We recommend using the CatalogsLocale values.
-	 */
-	void setLanguage(std::string  language);
 	/*! \brief Get Array with catalogs item operations
 	 */
 	std::list<CatalogsHotelBatchItem> getItems();
@@ -76,20 +76,20 @@ public:
 	/*! \brief Set Array with catalogs item operations
 	 */
 	void setItems(std::list <CatalogsHotelBatchItem> items);
-	/*! \brief Get Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+	/*! \brief Get We recommend using the CatalogsLocale values.
 	 */
-	std::string getCatalogId();
+	std::string getLanguage();
 
-	/*! \brief Set Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+	/*! \brief Set We recommend using the CatalogsLocale values.
 	 */
-	void setCatalogId(std::string  catalog_id);
+	void setLanguage(std::string  language);
 
 private:
+	std::string catalog_id;
 	std::string catalog_type;
 	Country country;
-	std::string language;
 	std::list <CatalogsHotelBatchItem>items;
-	std::string catalog_id;
+	std::string language;
 	void __init();
 	void __cleanup();
 

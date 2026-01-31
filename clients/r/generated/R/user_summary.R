@@ -7,35 +7,35 @@
 #' @title UserSummary
 #' @description UserSummary Class
 #' @format An \code{R6Class} generator object
-#' @field username Username character [optional]
 #' @field type Always \"user\" character [optional]
+#' @field username Username character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 UserSummary <- R6::R6Class(
   "UserSummary",
   public = list(
-    `username` = NULL,
     `type` = NULL,
+    `username` = NULL,
 
     #' @description
     #' Initialize a new UserSummary class.
     #'
-    #' @param username Username
     #' @param type Always \"user\"
+    #' @param username Username
     #' @param ... Other optional arguments.
-    initialize = function(`username` = NULL, `type` = NULL, ...) {
-      if (!is.null(`username`)) {
-        if (!(is.character(`username`) && length(`username`) == 1)) {
-          stop(paste("Error! Invalid data for `username`. Must be a string:", `username`))
-        }
-        self$`username` <- `username`
-      }
+    initialize = function(`type` = NULL, `username` = NULL, ...) {
       if (!is.null(`type`)) {
         if (!(is.character(`type`) && length(`type`) == 1)) {
           stop(paste("Error! Invalid data for `type`. Must be a string:", `type`))
         }
         self$`type` <- `type`
+      }
+      if (!is.null(`username`)) {
+        if (!(is.character(`username`) && length(`username`) == 1)) {
+          stop(paste("Error! Invalid data for `username`. Must be a string:", `username`))
+        }
+        self$`username` <- `username`
       }
     },
 
@@ -70,13 +70,13 @@ UserSummary <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       UserSummaryObject <- list()
-      if (!is.null(self$`username`)) {
-        UserSummaryObject[["username"]] <-
-          self$`username`
-      }
       if (!is.null(self$`type`)) {
         UserSummaryObject[["type"]] <-
           self$`type`
+      }
+      if (!is.null(self$`username`)) {
+        UserSummaryObject[["username"]] <-
+          self$`username`
       }
       return(UserSummaryObject)
     },
@@ -88,11 +88,11 @@ UserSummary <- R6::R6Class(
     #' @return the instance of UserSummary
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`username`)) {
-        self$`username` <- this_object$`username`
-      }
       if (!is.null(this_object$`type`)) {
         self$`type` <- this_object$`type`
+      }
+      if (!is.null(this_object$`username`)) {
+        self$`username` <- this_object$`username`
       }
       self
     },
@@ -115,8 +115,8 @@ UserSummary <- R6::R6Class(
     #' @return the instance of UserSummary
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`username` <- this_object$`username`
       self$`type` <- this_object$`type`
+      self$`username` <- this_object$`username`
       self
     },
 

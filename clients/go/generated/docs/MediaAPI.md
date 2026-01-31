@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## MediaCreate
 
-> MediaUpload MediaCreate(ctx).MediaUploadRequest(mediaUploadRequest).Execute()
+> MediaUpload MediaCreate(ctx).MediaUploadCreate(mediaUploadCreate).Execute()
 
 Register media upload
 
@@ -31,11 +31,11 @@ import (
 )
 
 func main() {
-	mediaUploadRequest := *openapiclient.NewMediaUploadRequest(openapiclient.MediaUploadType("video")) // MediaUploadRequest | Create a media upload request
+	mediaUploadCreate := *openapiclient.NewMediaUploadCreate(openapiclient.MediaUploadType("video")) // MediaUploadCreate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MediaAPI.MediaCreate(context.Background()).MediaUploadRequest(mediaUploadRequest).Execute()
+	resp, r, err := apiClient.MediaAPI.MediaCreate(context.Background()).MediaUploadCreate(mediaUploadCreate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MediaAPI.MediaCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -56,7 +56,7 @@ Other parameters are passed through a pointer to a apiMediaCreateRequest struct 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **mediaUploadRequest** | [**MediaUploadRequest**](MediaUploadRequest.md) | Create a media upload request | 
+ **mediaUploadCreate** | [**MediaUploadCreate**](MediaUploadCreate.md) |  | 
 
 ### Return type
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 
 ## MediaGet
 
-> MediaUploadDetails MediaGet(ctx, mediaId).Execute()
+> Media MediaGet(ctx, mediaId).Execute()
 
 Get media upload details
 
@@ -97,7 +97,7 @@ import (
 )
 
 func main() {
-	mediaId := "mediaId_example" // string | Media identifier
+	mediaId := "mediaId_example" // string | Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -106,7 +106,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `MediaAPI.MediaGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `MediaGet`: MediaUploadDetails
+	// response from `MediaGet`: Media
 	fmt.Fprintf(os.Stdout, "Response from `MediaAPI.MediaGet`: %v\n", resp)
 }
 ```
@@ -117,7 +117,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**mediaId** | **string** | Media identifier | 
+**mediaId** | **string** | Unique identifier for this media upload. Used to track status and for attaching during Pin creation. | 
 
 ### Other Parameters
 
@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MediaUploadDetails**](MediaUploadDetails.md)
+[**Media**](Media.md)
 
 ### Authorization
 
@@ -168,7 +168,7 @@ import (
 
 func main() {
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -194,7 +194,7 @@ Other parameters are passed through a pointer to a apiMediaListRequest struct vi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 

@@ -11,7 +11,7 @@ import { OrderLine } from './orderLine';
 
 
 export interface OrderLinesList200Response { 
-    items: Array<OrderLine>;
     bookmark?: string | null;
+    items: Array<OrderLine>;
 }
 

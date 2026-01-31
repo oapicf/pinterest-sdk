@@ -53,6 +53,13 @@ public:
 
 	/*! \brief Get 
 	 */
+	CatalogsFeedCredentials getCredentials();
+
+	/*! \brief Set 
+	 */
+	void setCredentials(CatalogsFeedCredentials  credentials);
+	/*! \brief Get 
+	 */
 	ProductAvailabilityType getDefaultAvailability();
 
 	/*! \brief Set 
@@ -65,13 +72,6 @@ public:
 	/*! \brief Set 
 	 */
 	void setDefaultCurrency(NullableCurrency  default_currency);
-	/*! \brief Get A human-friendly name associated to a given feed.
-	 */
-	std::string getName();
-
-	/*! \brief Set A human-friendly name associated to a given feed.
-	 */
-	void setName(std::string  name);
 	/*! \brief Get 
 	 */
 	CatalogsFormat getFormat();
@@ -79,13 +79,6 @@ public:
 	/*! \brief Set 
 	 */
 	void setFormat(CatalogsFormat  format);
-	/*! \brief Get 
-	 */
-	CatalogsFeedCredentials getCredentials();
-
-	/*! \brief Set 
-	 */
-	void setCredentials(CatalogsFeedCredentials  credentials);
 	/*! \brief Get The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
 	 */
 	std::string getLocation();
@@ -93,6 +86,13 @@ public:
 	/*! \brief Set The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
 	 */
 	void setLocation(std::string  location);
+	/*! \brief Get A human-friendly name associated to a given feed.
+	 */
+	std::string getName();
+
+	/*! \brief Set A human-friendly name associated to a given feed.
+	 */
+	void setName(std::string  name);
 	/*! \brief Get 
 	 */
 	CatalogsFeedProcessingSchedule getPreferredProcessingSchedule();
@@ -109,12 +109,12 @@ public:
 	void setStatus(CatalogsStatus  status);
 
 private:
+	CatalogsFeedCredentials credentials;
 	ProductAvailabilityType default_availability;
 	NullableCurrency default_currency;
-	std::string name;
 	CatalogsFormat format;
-	CatalogsFeedCredentials credentials;
 	std::string location;
+	std::string name;
 	CatalogsFeedProcessingSchedule preferred_processing_schedule;
 	CatalogsStatus status;
 	void __init();

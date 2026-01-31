@@ -7,27 +7,27 @@ Protected Class CatalogsCreativeAssetsProductGroupFilterKeys
 
 
 	#tag Property, Flags = &h0
-		CUSTOM_LABEL_0 As CatalogsProductGroupMultipleStringCriteria
+		CUSTOM_LABEL_0 As CatalogsProductGroupFilterOperatorTypeCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		CUSTOM_LABEL_1 As CatalogsProductGroupMultipleStringCriteria
+		CUSTOM_LABEL_1 As CatalogsProductGroupFilterOperatorTypeCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		CUSTOM_LABEL_2 As CatalogsProductGroupMultipleStringCriteria
+		CUSTOM_LABEL_2 As CatalogsProductGroupFilterOperatorTypeCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		CUSTOM_LABEL_3 As CatalogsProductGroupMultipleStringCriteria
+		CUSTOM_LABEL_3 As CatalogsProductGroupFilterOperatorTypeCriteria
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		CUSTOM_LABEL_4 As CatalogsProductGroupMultipleStringCriteria
+		CUSTOM_LABEL_4 As CatalogsProductGroupFilterOperatorTypeCriteria
 	#tag EndProperty
 
 
@@ -68,6 +68,11 @@ Protected Class CatalogsCreativeAssetsProductGroupFilterKeys
 
 	#tag Property, Flags = &h0
 		MEDIA_TYPE As CatalogsProductGroupMultipleMediaTypesCriteria
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		TITLE_KEYWORDS As CatalogsProductGroupMultipleStringCriteria
 	#tag EndProperty
 
 
@@ -120,7 +125,7 @@ Protected Class CatalogsCreativeAssetsProductGroupFilterKeys
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsProductGroupMultipleStringCriteria"
+			Type="CatalogsProductGroupFilterOperatorTypeCriteria"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -128,7 +133,7 @@ Protected Class CatalogsCreativeAssetsProductGroupFilterKeys
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsProductGroupMultipleStringCriteria"
+			Type="CatalogsProductGroupFilterOperatorTypeCriteria"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -136,7 +141,7 @@ Protected Class CatalogsCreativeAssetsProductGroupFilterKeys
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsProductGroupMultipleStringCriteria"
+			Type="CatalogsProductGroupFilterOperatorTypeCriteria"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -144,7 +149,7 @@ Protected Class CatalogsCreativeAssetsProductGroupFilterKeys
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsProductGroupMultipleStringCriteria"
+			Type="CatalogsProductGroupFilterOperatorTypeCriteria"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -152,7 +157,7 @@ Protected Class CatalogsCreativeAssetsProductGroupFilterKeys
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="CatalogsProductGroupMultipleStringCriteria"
+			Type="CatalogsProductGroupFilterOperatorTypeCriteria"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -217,6 +222,14 @@ Protected Class CatalogsCreativeAssetsProductGroupFilterKeys
 			Group="Behavior"
 			InitialValue=""
 			Type="CatalogsProductGroupMultipleMediaTypesCriteria"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="TITLE_KEYWORDS"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsProductGroupMultipleStringCriteria"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

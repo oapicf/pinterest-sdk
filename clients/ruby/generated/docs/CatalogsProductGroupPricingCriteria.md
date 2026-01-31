@@ -5,8 +5,8 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **inclusion** | **Boolean** |  | [optional][default to true] |
-| **values** | **Float** |  |  |
 | **negated** | **Boolean** |  | [optional][default to false] |
+| **values** | **Float** |  |  |
 
 ## Example
 
@@ -15,8 +15,8 @@ require 'pinterest_sdk'
 
 instance = PinterestSdkClient::CatalogsProductGroupPricingCriteria.new(
   inclusion: null,
-  values: null,
-  negated: null
+  negated: null,
+  values: null
 )
 ```
 

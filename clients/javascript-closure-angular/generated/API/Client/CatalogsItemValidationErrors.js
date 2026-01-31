@@ -69,13 +69,13 @@ API.Client.CatalogsItemValidationErrors.prototype.INVALID_DOMAIN;
  * @type {!API.Client.CatalogsItemValidationDetails}
  * @export
  */
-API.Client.CatalogsItemValidationErrors.prototype.ITEMID_MISSING;
+API.Client.CatalogsItemValidationErrors.prototype.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
 
 /**
  * @type {!API.Client.CatalogsItemValidationDetails}
  * @export
  */
-API.Client.CatalogsItemValidationErrors.prototype.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
+API.Client.CatalogsItemValidationErrors.prototype.ITEMID_MISSING;
 
 /**
  * @type {!API.Client.CatalogsItemValidationDetails}

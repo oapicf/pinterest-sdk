@@ -47,13 +47,6 @@ public:
 
 	/*! \brief Get 
 	 */
-	int getWidth();
-
-	/*! \brief Set 
-	 */
-	void setWidth(int  width);
-	/*! \brief Get 
-	 */
 	int getHeight();
 
 	/*! \brief Set 
@@ -66,11 +59,18 @@ public:
 	/*! \brief Set 
 	 */
 	void setUrl(std::string  url);
+	/*! \brief Get 
+	 */
+	int getWidth();
+
+	/*! \brief Set 
+	 */
+	void setWidth(int  width);
 
 private:
-	int width;
 	int height;
 	std::string url;
+	int width;
 	void __init();
 	void __cleanup();
 

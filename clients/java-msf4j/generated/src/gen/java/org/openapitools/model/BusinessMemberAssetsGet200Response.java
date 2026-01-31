@@ -15,13 +15,31 @@ import org.openapitools.model.AssetIdPermissions;
 /**
  * BusinessMemberAssetsGet200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BusinessMemberAssetsGet200Response   {
+  @JsonProperty("bookmark")
+  private String bookmark;
+
   @JsonProperty("items")
   private List<@Valid AssetIdPermissions> items = new ArrayList<>();
 
-  @JsonProperty("bookmark")
-  private String bookmark;
+  public BusinessMemberAssetsGet200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
+   /**
+   * Get bookmark
+   * @return bookmark
+  **/
+  @ApiModelProperty(value = "")
+  public String getBookmark() {
+    return bookmark;
+  }
+
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
 
   public BusinessMemberAssetsGet200Response items(List<@Valid AssetIdPermissions> items) {
     this.items = items;
@@ -46,24 +64,6 @@ public class BusinessMemberAssetsGet200Response   {
     this.items = items;
   }
 
-  public BusinessMemberAssetsGet200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
-   /**
-   * Get bookmark
-   * @return bookmark
-  **/
-  @ApiModelProperty(value = "")
-  public String getBookmark() {
-    return bookmark;
-  }
-
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -74,13 +74,13 @@ public class BusinessMemberAssetsGet200Response   {
       return false;
     }
     BusinessMemberAssetsGet200Response businessMemberAssetsGet200Response = (BusinessMemberAssetsGet200Response) o;
-    return Objects.equals(this.items, businessMemberAssetsGet200Response.items) &&
-        Objects.equals(this.bookmark, businessMemberAssetsGet200Response.bookmark);
+    return Objects.equals(this.bookmark, businessMemberAssetsGet200Response.bookmark) &&
+        Objects.equals(this.items, businessMemberAssetsGet200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -88,8 +88,8 @@ public class BusinessMemberAssetsGet200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class BusinessMemberAssetsGet200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

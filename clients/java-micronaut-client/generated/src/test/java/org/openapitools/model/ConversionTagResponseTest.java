@@ -25,19 +25,19 @@ public class ConversionTagResponseTest {
     }
 
     /**
-     * Test the property 'adAccountId'
-     */
-    @Test
-    public void adAccountIdTest() {
-        // TODO: test adAccountId
-    }
-
-    /**
      * Test the property 'codeSnippet'
      */
     @Test
     public void codeSnippetTest() {
         // TODO: test codeSnippet
+    }
+
+    /**
+     * Test the property 'configs'
+     */
+    @Test
+    public void configsTest() {
+        // TODO: test configs
     }
 
     /**
@@ -73,14 +73,6 @@ public class ConversionTagResponseTest {
     }
 
     /**
-     * Test the property 'status'
-     */
-    @Test
-    public void statusTest() {
-        // TODO: test status
-    }
-
-    /**
      * Test the property 'version'
      */
     @Test
@@ -89,11 +81,19 @@ public class ConversionTagResponseTest {
     }
 
     /**
-     * Test the property 'configs'
+     * Test the property 'adAccountId'
      */
     @Test
-    public void configsTest() {
-        // TODO: test configs
+    public void adAccountIdTest() {
+        // TODO: test adAccountId
+    }
+
+    /**
+     * Test the property 'status'
+     */
+    @Test
+    public void statusTest() {
+        // TODO: test status
     }
 
 }

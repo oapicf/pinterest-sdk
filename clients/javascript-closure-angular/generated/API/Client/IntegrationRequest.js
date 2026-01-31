@@ -7,17 +7,10 @@ goog.provide('API.Client.IntegrationRequest');
 API.Client.IntegrationRequest = function() {}
 
 /**
- * External business ID for the integration.
  * @type {!string}
  * @export
  */
-API.Client.IntegrationRequest.prototype.externalBusinessId;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.IntegrationRequest.prototype.connectedMerchantId;
+API.Client.IntegrationRequest.prototype.additionalId1;
 
 /**
  * @type {!string}
@@ -35,7 +28,20 @@ API.Client.IntegrationRequest.prototype.connectedLbaId;
  * @type {!string}
  * @export
  */
+API.Client.IntegrationRequest.prototype.connectedMerchantId;
+
+/**
+ * @type {!string}
+ * @export
+ */
 API.Client.IntegrationRequest.prototype.connectedTagId;
+
+/**
+ * External business ID for the integration.
+ * @type {!string}
+ * @export
+ */
+API.Client.IntegrationRequest.prototype.externalBusinessId;
 
 /**
  * @type {!string}
@@ -44,10 +50,16 @@ API.Client.IntegrationRequest.prototype.connectedTagId;
 API.Client.IntegrationRequest.prototype.partnerAccessToken;
 
 /**
+ * @type {!number}
+ * @export
+ */
+API.Client.IntegrationRequest.prototype.partnerAccessTokenExpiry;
+
+/**
  * @type {!string}
  * @export
  */
-API.Client.IntegrationRequest.prototype.partnerRefreshToken;
+API.Client.IntegrationRequest.prototype.partnerMetadata;
 
 /**
  * @type {!string}
@@ -56,10 +68,10 @@ API.Client.IntegrationRequest.prototype.partnerRefreshToken;
 API.Client.IntegrationRequest.prototype.partnerPrimaryEmail;
 
 /**
- * @type {!number}
+ * @type {!string}
  * @export
  */
-API.Client.IntegrationRequest.prototype.partnerAccessTokenExpiry;
+API.Client.IntegrationRequest.prototype.partnerRefreshToken;
 
 /**
  * @type {!number}
@@ -72,16 +84,4 @@ API.Client.IntegrationRequest.prototype.partnerRefreshTokenExpiry;
  * @export
  */
 API.Client.IntegrationRequest.prototype.scopes;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.IntegrationRequest.prototype.additionalId1;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.IntegrationRequest.prototype.partnerMetadata;
 

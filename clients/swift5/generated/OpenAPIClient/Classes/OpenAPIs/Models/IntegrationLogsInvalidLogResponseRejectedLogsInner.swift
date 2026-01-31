@@ -12,37 +12,37 @@ import AnyCodable
 
 public struct IntegrationLogsInvalidLogResponseRejectedLogsInner: Codable, JSONEncodable, Hashable {
 
-    /** Index of the log in the batch. */
-    public var logIndex: Int?
     /** The field name containing an invalid value. */
     public var field: String
-    /** The value that is invalid. */
-    public var value: String
+    /** Index of the log in the batch. */
+    public var logIndex: Int?
     /** The reason the value is invalid. */
     public var reason: String
+    /** The value that is invalid. */
+    public var value: String
 
-    public init(logIndex: Int? = nil, field: String, value: String, reason: String) {
-        self.logIndex = logIndex
+    public init(field: String, logIndex: Int? = nil, reason: String, value: String) {
         self.field = field
-        self.value = value
+        self.logIndex = logIndex
         self.reason = reason
+        self.value = value
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case logIndex = "log_index"
         case field
-        case value
+        case logIndex = "log_index"
         case reason
+        case value
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(logIndex, forKey: .logIndex)
         try container.encode(field, forKey: .field)
-        try container.encode(value, forKey: .value)
+        try container.encodeIfPresent(logIndex, forKey: .logIndex)
         try container.encode(reason, forKey: .reason)
+        try container.encode(value, forKey: .value)
     }
 }
 

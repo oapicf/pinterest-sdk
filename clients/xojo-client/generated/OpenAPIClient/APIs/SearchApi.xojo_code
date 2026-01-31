@@ -14,7 +14,7 @@ Protected Class SearchApi
 		  // Invokes SearchApiCallbackHandler.SearchPartnerPinsCallback(SearchPartnerPins200Response) on completion. 
 		  //
 		  // - GET /search/partner/pins
-		  // - <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+		  // - <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -298,7 +298,7 @@ Protected Class SearchApi
 		  // - parameter adAccountId: (query) Unique identifier of an ad account. (optional, default to Sample)
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
 		  //
-		  // Invokes SearchApiCallbackHandler.SearchUserPinsListCallback(PinsList200Response) on completion. 
+		  // Invokes SearchApiCallbackHandler.SearchUserPinsListCallback(SearchUserPinsList200Response) on completion. 
 		  //
 		  // - GET /search/pins
 		  // - Search for pins for the "operation user_account". - By default, the "operation user_account" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
@@ -342,7 +342,7 @@ Protected Class SearchApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function SearchUserPinsListPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.PinsList200Response) As Boolean
+		Private Function SearchUserPinsListPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.SearchUserPinsList200Response) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -350,7 +350,7 @@ Protected Class SearchApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.PinsList200Response
+			  outData = New OpenAPIClient.Models.SearchUserPinsList200Response
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -403,7 +403,7 @@ Protected Class SearchApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.PinsList200Response
+		  Dim data As OpenAPIClient.Models.SearchUserPinsList200Response
 		  CallbackHandler.SearchUserPinsListCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -417,7 +417,7 @@ Protected Class SearchApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.PinsList200Response
+		  Dim data As OpenAPIClient.Models.SearchUserPinsList200Response
 		  Call SearchUserPinsListPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.SearchUserPinsListCallback(error, data)

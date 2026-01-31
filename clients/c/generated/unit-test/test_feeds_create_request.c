@@ -16,8 +16,8 @@
 #include "../model/feeds_create_request.h"
 feeds_create_request_t* instantiate_feeds_create_request(int include_optional);
 
-#include "test_catalogs_feeds_create_request_default_locale.c"
 #include "test_catalogs_feed_credentials.c"
+#include "test_catalogs_feeds_create_request_default_locale.c"
 #include "test_catalogs_feed_processing_schedule.c"
 
 
@@ -25,35 +25,35 @@ feeds_create_request_t* instantiate_feeds_create_request(int include_optional) {
   feeds_create_request_t* feeds_create_request = NULL;
   if (include_optional) {
     feeds_create_request = feeds_create_request_create(
-      pinterest_rest_api_feeds_create_request__"USD",
-      "0",
-      pinterest_rest_api_feeds_create_request__TSV,
-      en-US,
+      "a",
+      pinterest_rest_api_feeds_create_request__RETAIL,
        // false, not to have infinite recursion
       instantiate_catalogs_feed_credentials(0),
+      pinterest_rest_api_feeds_create_request__IN_STOCK,
+      pinterest_rest_api_feeds_create_request__AD,
+      pinterest_rest_api_feeds_create_request__"USD",
+      en-US,
+      pinterest_rest_api_feeds_create_request__TSV,
       "a",
+      "0",
        // false, not to have infinite recursion
       instantiate_catalogs_feed_processing_schedule(0),
-      pinterest_rest_api_feeds_create_request__RETAIL,
-      pinterest_rest_api_feeds_create_request__"US",
-      pinterest_rest_api_feeds_create_request__IN_STOCK,
-      ACTIVE,
-      "a"
+      ACTIVE
     );
   } else {
     feeds_create_request = feeds_create_request_create(
-      pinterest_rest_api_feeds_create_request__"USD",
-      "0",
-      pinterest_rest_api_feeds_create_request__TSV,
-      en-US,
-      NULL,
       "a",
-      NULL,
       pinterest_rest_api_feeds_create_request__RETAIL,
-      pinterest_rest_api_feeds_create_request__"US",
+      NULL,
       pinterest_rest_api_feeds_create_request__IN_STOCK,
-      ACTIVE,
-      "a"
+      pinterest_rest_api_feeds_create_request__AD,
+      pinterest_rest_api_feeds_create_request__"USD",
+      en-US,
+      pinterest_rest_api_feeds_create_request__TSV,
+      "a",
+      "0",
+      NULL,
+      ACTIVE
     );
   }
 

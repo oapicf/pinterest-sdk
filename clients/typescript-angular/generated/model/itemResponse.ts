@@ -7,20 +7,21 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { ItemResponseAnyOf1 } from './itemResponseAnyOf1';
+import { ItemResponseOneOf1 } from './itemResponseOneOf1';
 import { Pin } from './pin';
 import { ItemValidationEvent } from './itemValidationEvent';
 import { CatalogsType } from './catalogsType';
 import { CatalogsCreativeAssetsAttributes } from './catalogsCreativeAssetsAttributes';
-import { ItemResponseAnyOf } from './itemResponseAnyOf';
+import { ItemResponseOneOf } from './itemResponseOneOf';
 
 
 /**
- * Object describing an item record
+ * Object describing an item record or error
  */
-export interface ItemResponse { 
-}
-export namespace ItemResponse {
-}
-
+/**
+ * @type ItemResponse
+ * Object describing an item record or error
+ * @export
+ */
+export type ItemResponse = ItemResponseOneOf | ItemResponseOneOf1;
 

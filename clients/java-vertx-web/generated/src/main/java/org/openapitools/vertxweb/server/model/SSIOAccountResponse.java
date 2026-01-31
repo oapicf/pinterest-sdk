@@ -12,42 +12,24 @@ import org.openapitools.vertxweb.server.model.SSIOAccountPMPName;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SSIOAccountResponse   {
   
-  private Boolean eligible;
-  private Boolean canEdit;
   private List<SSIOAccountItem> billtoInfos = new ArrayList<>();
+  private Boolean canEdit;
   private String currency;
-  private List<SSIOAccountPMPName> pmpNames = new ArrayList<>();
+  private Boolean eligible;
   private String error;
+  private List<SSIOAccountPMPName> pmpNames = new ArrayList<>();
 
   public SSIOAccountResponse () {
 
   }
 
-  public SSIOAccountResponse (Boolean eligible, Boolean canEdit, List<SSIOAccountItem> billtoInfos, String currency, List<SSIOAccountPMPName> pmpNames, String error) {
-    this.eligible = eligible;
-    this.canEdit = canEdit;
+  public SSIOAccountResponse (List<SSIOAccountItem> billtoInfos, Boolean canEdit, String currency, Boolean eligible, String error, List<SSIOAccountPMPName> pmpNames) {
     this.billtoInfos = billtoInfos;
-    this.currency = currency;
-    this.pmpNames = pmpNames;
-    this.error = error;
-  }
-
-    
-  @JsonProperty("eligible")
-  public Boolean getEligible() {
-    return eligible;
-  }
-  public void setEligible(Boolean eligible) {
-    this.eligible = eligible;
-  }
-
-    
-  @JsonProperty("can_edit")
-  public Boolean getCanEdit() {
-    return canEdit;
-  }
-  public void setCanEdit(Boolean canEdit) {
     this.canEdit = canEdit;
+    this.currency = currency;
+    this.eligible = eligible;
+    this.error = error;
+    this.pmpNames = pmpNames;
   }
 
     
@@ -60,6 +42,15 @@ public class SSIOAccountResponse   {
   }
 
     
+  @JsonProperty("can_edit")
+  public Boolean getCanEdit() {
+    return canEdit;
+  }
+  public void setCanEdit(Boolean canEdit) {
+    this.canEdit = canEdit;
+  }
+
+    
   @JsonProperty("currency")
   public String getCurrency() {
     return currency;
@@ -69,12 +60,12 @@ public class SSIOAccountResponse   {
   }
 
     
-  @JsonProperty("pmp_names")
-  public List<SSIOAccountPMPName> getPmpNames() {
-    return pmpNames;
+  @JsonProperty("eligible")
+  public Boolean getEligible() {
+    return eligible;
   }
-  public void setPmpNames(List<SSIOAccountPMPName> pmpNames) {
-    this.pmpNames = pmpNames;
+  public void setEligible(Boolean eligible) {
+    this.eligible = eligible;
   }
 
     
@@ -84,6 +75,15 @@ public class SSIOAccountResponse   {
   }
   public void setError(String error) {
     this.error = error;
+  }
+
+    
+  @JsonProperty("pmp_names")
+  public List<SSIOAccountPMPName> getPmpNames() {
+    return pmpNames;
+  }
+  public void setPmpNames(List<SSIOAccountPMPName> pmpNames) {
+    this.pmpNames = pmpNames;
   }
 
 
@@ -96,17 +96,17 @@ public class SSIOAccountResponse   {
       return false;
     }
     SSIOAccountResponse ssIOAccountResponse = (SSIOAccountResponse) o;
-    return Objects.equals(eligible, ssIOAccountResponse.eligible) &&
+    return Objects.equals(billtoInfos, ssIOAccountResponse.billtoInfos) &&
         Objects.equals(canEdit, ssIOAccountResponse.canEdit) &&
-        Objects.equals(billtoInfos, ssIOAccountResponse.billtoInfos) &&
         Objects.equals(currency, ssIOAccountResponse.currency) &&
-        Objects.equals(pmpNames, ssIOAccountResponse.pmpNames) &&
-        Objects.equals(error, ssIOAccountResponse.error);
+        Objects.equals(eligible, ssIOAccountResponse.eligible) &&
+        Objects.equals(error, ssIOAccountResponse.error) &&
+        Objects.equals(pmpNames, ssIOAccountResponse.pmpNames);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(eligible, canEdit, billtoInfos, currency, pmpNames, error);
+    return Objects.hash(billtoInfos, canEdit, currency, eligible, error, pmpNames);
   }
 
   @Override
@@ -114,12 +114,12 @@ public class SSIOAccountResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSIOAccountResponse {\n");
     
-    sb.append("    eligible: ").append(toIndentedString(eligible)).append("\n");
-    sb.append("    canEdit: ").append(toIndentedString(canEdit)).append("\n");
     sb.append("    billtoInfos: ").append(toIndentedString(billtoInfos)).append("\n");
+    sb.append("    canEdit: ").append(toIndentedString(canEdit)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
-    sb.append("    pmpNames: ").append(toIndentedString(pmpNames)).append("\n");
+    sb.append("    eligible: ").append(toIndentedString(eligible)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("    pmpNames: ").append(toIndentedString(pmpNames)).append("\n");
     sb.append("}");
     return sb.toString();
   }

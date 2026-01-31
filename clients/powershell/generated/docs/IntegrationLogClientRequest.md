@@ -3,8 +3,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Method** | **String** |  | 
 **VarHost** | **String** | HTTP request host from host header. | 
+**Method** | **String** |  | 
 **Path** | **String** | HTTP request path. | 
 **RequestHeaders** | **System.Collections.Hashtable** | HTTP request headers as key-value pairs. | [optional] 
 **ResponseHeaders** | **System.Collections.Hashtable** | HTTP response headers as key-value pairs. | [optional] 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$IntegrationLogClientRequest = Initialize-PSOpenAPIToolsIntegrationLogClientRequest  -Method null `
- -VarHost null `
+$IntegrationLogClientRequest = Initialize-PSOpenAPIToolsIntegrationLogClientRequest  -VarHost null `
+ -Method null `
  -Path null `
  -RequestHeaders null `
  -ResponseHeaders null `

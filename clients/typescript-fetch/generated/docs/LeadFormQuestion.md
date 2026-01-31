@@ -6,10 +6,10 @@
 
 Name | Type
 ------------ | -------------
-`questionType` | [LeadFormQuestionType](LeadFormQuestionType.md)
 `customQuestionFieldType` | [LeadFormQuestionFieldType](LeadFormQuestionFieldType.md)
 `customQuestionLabel` | string
 `customQuestionOptions` | Array&lt;string&gt;
+`questionType` | [LeadFormQuestionType](LeadFormQuestionType.md)
 
 ## Example
 
@@ -18,10 +18,10 @@ import type { LeadFormQuestion } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "questionType": null,
   "customQuestionFieldType": null,
   "customQuestionLabel": null,
   "customQuestionOptions": null,
+  "questionType": null,
 } satisfies LeadFormQuestion
 
 console.log(example)

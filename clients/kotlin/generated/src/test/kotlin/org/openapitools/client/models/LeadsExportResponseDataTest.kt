@@ -26,16 +26,16 @@ class LeadsExportResponseDataTest : ShouldSpec() {
         // uncomment below to create an instance of LeadsExportResponseData
         //val modelInstance = LeadsExportResponseData()
 
-        // to test the property `exportStatus`
-        should("test exportStatus") {
-            // uncomment below to test the property
-            //modelInstance.exportStatus shouldBe ("TODO")
-        }
-
         // to test the property `downloadUrl`
         should("test downloadUrl") {
             // uncomment below to test the property
             //modelInstance.downloadUrl shouldBe ("TODO")
+        }
+
+        // to test the property `exportStatus`
+        should("test exportStatus") {
+            // uncomment below to test the property
+            //modelInstance.exportStatus shouldBe ("TODO")
         }
 
     }

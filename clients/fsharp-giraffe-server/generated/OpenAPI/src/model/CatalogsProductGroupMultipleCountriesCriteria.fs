@@ -10,7 +10,7 @@ module CatalogsProductGroupMultipleCountriesCriteria =
 
 
   type CatalogsProductGroupMultipleCountriesCriteria = {
-    Values : Country[];
     Negated : bool;
+    Values : Country[];
   }
   //#endregion

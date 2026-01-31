@@ -29,6 +29,30 @@ public class ConversionEventsDataInnerCustomDataContentsInnerTest {
     }
 
     /**
+     * Test the property 'itemBrand'
+     */
+    @Test
+    public void itemBrandTest() {
+        // TODO: test itemBrand
+    }
+
+    /**
+     * Test the property 'itemCategory'
+     */
+    @Test
+    public void itemCategoryTest() {
+        // TODO: test itemCategory
+    }
+
+    /**
+     * Test the property 'itemName'
+     */
+    @Test
+    public void itemNameTest() {
+        // TODO: test itemName
+    }
+
+    /**
      * Test the property 'itemPrice'
      */
     @Test
@@ -42,30 +66,6 @@ public class ConversionEventsDataInnerCustomDataContentsInnerTest {
     @Test
     public void quantityTest() {
         // TODO: test quantity
-    }
-
-    /**
-     * Test the property 'itemName'
-     */
-    @Test
-    public void itemNameTest() {
-        // TODO: test itemName
-    }
-
-    /**
-     * Test the property 'itemCategory'
-     */
-    @Test
-    public void itemCategoryTest() {
-        // TODO: test itemCategory
-    }
-
-    /**
-     * Test the property 'itemBrand'
-     */
-    @Test
-    public void itemBrandTest() {
-        // TODO: test itemBrand
     }
 
 }

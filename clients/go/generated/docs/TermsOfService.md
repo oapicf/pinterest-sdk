@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The ID of the terms of service | [optional] 
-**Html** | Pointer to **NullableString** | The terms of service content | [optional] 
-**HasAccepted** | Pointer to **bool** | Whether the ad account has accepted terms of service. | [optional] 
 **AdAccountId** | Pointer to **string** | The ID of the ad account. | [optional] 
+**HasAccepted** | Pointer to **bool** | Whether the ad account has accepted terms of service. | [optional] 
+**Html** | Pointer to **NullableString** | The terms of service content | [optional] 
+**Id** | Pointer to **string** | The ID of the terms of service | [optional] 
 
 ## Methods
 
@@ -28,30 +28,55 @@ NewTermsOfServiceWithDefaults instantiates a new TermsOfService object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetId
+### GetAdAccountId
 
-`func (o *TermsOfService) GetId() string`
+`func (o *TermsOfService) GetAdAccountId() string`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetAdAccountId returns the AdAccountId field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetAdAccountIdOk
 
-`func (o *TermsOfService) GetIdOk() (*string, bool)`
+`func (o *TermsOfService) GetAdAccountIdOk() (*string, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetAdAccountIdOk returns a tuple with the AdAccountId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetAdAccountId
 
-`func (o *TermsOfService) SetId(v string)`
+`func (o *TermsOfService) SetAdAccountId(v string)`
 
-SetId sets Id field to given value.
+SetAdAccountId sets AdAccountId field to given value.
 
-### HasId
+### HasAdAccountId
 
-`func (o *TermsOfService) HasId() bool`
+`func (o *TermsOfService) HasAdAccountId() bool`
 
-HasId returns a boolean if a field has been set.
+HasAdAccountId returns a boolean if a field has been set.
+
+### GetHasAccepted
+
+`func (o *TermsOfService) GetHasAccepted() bool`
+
+GetHasAccepted returns the HasAccepted field if non-nil, zero value otherwise.
+
+### GetHasAcceptedOk
+
+`func (o *TermsOfService) GetHasAcceptedOk() (*bool, bool)`
+
+GetHasAcceptedOk returns a tuple with the HasAccepted field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHasAccepted
+
+`func (o *TermsOfService) SetHasAccepted(v bool)`
+
+SetHasAccepted sets HasAccepted field to given value.
+
+### HasHasAccepted
+
+`func (o *TermsOfService) HasHasAccepted() bool`
+
+HasHasAccepted returns a boolean if a field has been set.
 
 ### GetHtml
 
@@ -88,55 +113,30 @@ HasHtml returns a boolean if a field has been set.
 `func (o *TermsOfService) UnsetHtml()`
 
 UnsetHtml ensures that no value is present for Html, not even an explicit nil
-### GetHasAccepted
+### GetId
 
-`func (o *TermsOfService) GetHasAccepted() bool`
+`func (o *TermsOfService) GetId() string`
 
-GetHasAccepted returns the HasAccepted field if non-nil, zero value otherwise.
+GetId returns the Id field if non-nil, zero value otherwise.
 
-### GetHasAcceptedOk
+### GetIdOk
 
-`func (o *TermsOfService) GetHasAcceptedOk() (*bool, bool)`
+`func (o *TermsOfService) GetIdOk() (*string, bool)`
 
-GetHasAcceptedOk returns a tuple with the HasAccepted field if it's non-nil, zero value otherwise
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetHasAccepted
+### SetId
 
-`func (o *TermsOfService) SetHasAccepted(v bool)`
+`func (o *TermsOfService) SetId(v string)`
 
-SetHasAccepted sets HasAccepted field to given value.
+SetId sets Id field to given value.
 
-### HasHasAccepted
+### HasId
 
-`func (o *TermsOfService) HasHasAccepted() bool`
+`func (o *TermsOfService) HasId() bool`
 
-HasHasAccepted returns a boolean if a field has been set.
-
-### GetAdAccountId
-
-`func (o *TermsOfService) GetAdAccountId() string`
-
-GetAdAccountId returns the AdAccountId field if non-nil, zero value otherwise.
-
-### GetAdAccountIdOk
-
-`func (o *TermsOfService) GetAdAccountIdOk() (*string, bool)`
-
-GetAdAccountIdOk returns a tuple with the AdAccountId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdAccountId
-
-`func (o *TermsOfService) SetAdAccountId(v string)`
-
-SetAdAccountId sets AdAccountId field to given value.
-
-### HasAdAccountId
-
-`func (o *TermsOfService) HasAdAccountId() bool`
-
-HasAdAccountId returns a boolean if a field has been set.
+HasId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

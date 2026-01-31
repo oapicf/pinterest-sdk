@@ -6,16 +6,16 @@
 
 
 static pin_analytics_metrics_response_t *pin_analytics_metrics_response_create_internal(
-    list_t* lifetime_metrics,
     list_t *daily_metrics,
+    list_t* lifetime_metrics,
     list_t* summary_metrics
     ) {
     pin_analytics_metrics_response_t *pin_analytics_metrics_response_local_var = malloc(sizeof(pin_analytics_metrics_response_t));
     if (!pin_analytics_metrics_response_local_var) {
         return NULL;
     }
-    pin_analytics_metrics_response_local_var->lifetime_metrics = lifetime_metrics;
     pin_analytics_metrics_response_local_var->daily_metrics = daily_metrics;
+    pin_analytics_metrics_response_local_var->lifetime_metrics = lifetime_metrics;
     pin_analytics_metrics_response_local_var->summary_metrics = summary_metrics;
 
     pin_analytics_metrics_response_local_var->_library_owned = 1;
@@ -23,13 +23,13 @@ static pin_analytics_metrics_response_t *pin_analytics_metrics_response_create_i
 }
 
 __attribute__((deprecated)) pin_analytics_metrics_response_t *pin_analytics_metrics_response_create(
-    list_t* lifetime_metrics,
     list_t *daily_metrics,
+    list_t* lifetime_metrics,
     list_t* summary_metrics
     ) {
     return pin_analytics_metrics_response_create_internal (
-        lifetime_metrics,
         daily_metrics,
+        lifetime_metrics,
         summary_metrics
         );
 }
@@ -43,6 +43,13 @@ void pin_analytics_metrics_response_free(pin_analytics_metrics_response_t *pin_a
         return ;
     }
     listEntry_t *listEntry;
+    if (pin_analytics_metrics_response->daily_metrics) {
+        list_ForEach(listEntry, pin_analytics_metrics_response->daily_metrics) {
+            pin_analytics_metrics_response_daily_metrics_inner_free(listEntry->data);
+        }
+        list_freeList(pin_analytics_metrics_response->daily_metrics);
+        pin_analytics_metrics_response->daily_metrics = NULL;
+    }
     if (pin_analytics_metrics_response->lifetime_metrics) {
         list_ForEach(listEntry, pin_analytics_metrics_response->lifetime_metrics) {
             keyValuePair_t *localKeyValue = listEntry->data;
@@ -52,13 +59,6 @@ void pin_analytics_metrics_response_free(pin_analytics_metrics_response_t *pin_a
         }
         list_freeList(pin_analytics_metrics_response->lifetime_metrics);
         pin_analytics_metrics_response->lifetime_metrics = NULL;
-    }
-    if (pin_analytics_metrics_response->daily_metrics) {
-        list_ForEach(listEntry, pin_analytics_metrics_response->daily_metrics) {
-            pin_analytics_metrics_response_daily_metrics_inner_free(listEntry->data);
-        }
-        list_freeList(pin_analytics_metrics_response->daily_metrics);
-        pin_analytics_metrics_response->daily_metrics = NULL;
     }
     if (pin_analytics_metrics_response->summary_metrics) {
         list_ForEach(listEntry, pin_analytics_metrics_response->summary_metrics) {
@@ -76,26 +76,6 @@ void pin_analytics_metrics_response_free(pin_analytics_metrics_response_t *pin_a
 cJSON *pin_analytics_metrics_response_convertToJSON(pin_analytics_metrics_response_t *pin_analytics_metrics_response) {
     cJSON *item = cJSON_CreateObject();
 
-    // pin_analytics_metrics_response->lifetime_metrics
-    if(pin_analytics_metrics_response->lifetime_metrics) {
-    cJSON *lifetime_metrics = cJSON_AddObjectToObject(item, "lifetime_metrics");
-    if(lifetime_metrics == NULL) {
-        goto fail; //primitive map container
-    }
-    cJSON *localMapObject = lifetime_metrics;
-    listEntry_t *lifetime_metricsListEntry;
-    if (pin_analytics_metrics_response->lifetime_metrics) {
-    list_ForEach(lifetime_metricsListEntry, pin_analytics_metrics_response->lifetime_metrics) {
-        keyValuePair_t *localKeyValue = lifetime_metricsListEntry->data;
-        if(cJSON_AddNumberToObject(localMapObject, localKeyValue->key, *(double *)localKeyValue->value) == NULL)
-        {
-            goto fail;
-        }
-    }
-    }
-    }
-
-
     // pin_analytics_metrics_response->daily_metrics
     if(pin_analytics_metrics_response->daily_metrics) {
     cJSON *daily_metrics = cJSON_AddArrayToObject(item, "daily_metrics");
@@ -111,6 +91,26 @@ cJSON *pin_analytics_metrics_response_convertToJSON(pin_analytics_metrics_respon
     goto fail;
     }
     cJSON_AddItemToArray(daily_metrics, itemLocal);
+    }
+    }
+    }
+
+
+    // pin_analytics_metrics_response->lifetime_metrics
+    if(pin_analytics_metrics_response->lifetime_metrics) {
+    cJSON *lifetime_metrics = cJSON_AddObjectToObject(item, "lifetime_metrics");
+    if(lifetime_metrics == NULL) {
+        goto fail; //primitive map container
+    }
+    cJSON *localMapObject = lifetime_metrics;
+    listEntry_t *lifetime_metricsListEntry;
+    if (pin_analytics_metrics_response->lifetime_metrics) {
+    list_ForEach(lifetime_metricsListEntry, pin_analytics_metrics_response->lifetime_metrics) {
+        keyValuePair_t *localKeyValue = lifetime_metricsListEntry->data;
+        if(cJSON_AddNumberToObject(localMapObject, localKeyValue->key, *(double *)localKeyValue->value) == NULL)
+        {
+            goto fail;
+        }
     }
     }
     }
@@ -147,14 +147,38 @@ pin_analytics_metrics_response_t *pin_analytics_metrics_response_parseFromJSON(c
 
     pin_analytics_metrics_response_t *pin_analytics_metrics_response_local_var = NULL;
 
-    // define the local map for pin_analytics_metrics_response->lifetime_metrics
-    list_t *lifetime_metricsList = NULL;
-
     // define the local list for pin_analytics_metrics_response->daily_metrics
     list_t *daily_metricsList = NULL;
 
+    // define the local map for pin_analytics_metrics_response->lifetime_metrics
+    list_t *lifetime_metricsList = NULL;
+
     // define the local map for pin_analytics_metrics_response->summary_metrics
     list_t *summary_metricsList = NULL;
+
+    // pin_analytics_metrics_response->daily_metrics
+    cJSON *daily_metrics = cJSON_GetObjectItemCaseSensitive(pin_analytics_metrics_responseJSON, "daily_metrics");
+    if (cJSON_IsNull(daily_metrics)) {
+        daily_metrics = NULL;
+    }
+    if (daily_metrics) { 
+    cJSON *daily_metrics_local_nonprimitive = NULL;
+    if(!cJSON_IsArray(daily_metrics)){
+        goto end; //nonprimitive container
+    }
+
+    daily_metricsList = list_createList();
+
+    cJSON_ArrayForEach(daily_metrics_local_nonprimitive,daily_metrics )
+    {
+        if(!cJSON_IsObject(daily_metrics_local_nonprimitive)){
+            goto end;
+        }
+        pin_analytics_metrics_response_daily_metrics_inner_t *daily_metricsItem = pin_analytics_metrics_response_daily_metrics_inner_parseFromJSON(daily_metrics_local_nonprimitive);
+
+        list_addElement(daily_metricsList, daily_metricsItem);
+    }
+    }
 
     // pin_analytics_metrics_response->lifetime_metrics
     cJSON *lifetime_metrics = cJSON_GetObjectItemCaseSensitive(pin_analytics_metrics_responseJSON, "lifetime_metrics");
@@ -181,30 +205,6 @@ pin_analytics_metrics_response_t *pin_analytics_metrics_response_parseFromJSON(c
             localMapKeyPair = keyValuePair_create(strdup(localMapObject->string),&localMapObject->valuedouble );
             list_addElement(lifetime_metricsList , localMapKeyPair);
         }
-    }
-    }
-
-    // pin_analytics_metrics_response->daily_metrics
-    cJSON *daily_metrics = cJSON_GetObjectItemCaseSensitive(pin_analytics_metrics_responseJSON, "daily_metrics");
-    if (cJSON_IsNull(daily_metrics)) {
-        daily_metrics = NULL;
-    }
-    if (daily_metrics) { 
-    cJSON *daily_metrics_local_nonprimitive = NULL;
-    if(!cJSON_IsArray(daily_metrics)){
-        goto end; //nonprimitive container
-    }
-
-    daily_metricsList = list_createList();
-
-    cJSON_ArrayForEach(daily_metrics_local_nonprimitive,daily_metrics )
-    {
-        if(!cJSON_IsObject(daily_metrics_local_nonprimitive)){
-            goto end;
-        }
-        pin_analytics_metrics_response_daily_metrics_inner_t *daily_metricsItem = pin_analytics_metrics_response_daily_metrics_inner_parseFromJSON(daily_metrics_local_nonprimitive);
-
-        list_addElement(daily_metricsList, daily_metricsItem);
     }
     }
 
@@ -238,13 +238,22 @@ pin_analytics_metrics_response_t *pin_analytics_metrics_response_parseFromJSON(c
 
 
     pin_analytics_metrics_response_local_var = pin_analytics_metrics_response_create_internal (
-        lifetime_metrics ? lifetime_metricsList : NULL,
         daily_metrics ? daily_metricsList : NULL,
+        lifetime_metrics ? lifetime_metricsList : NULL,
         summary_metrics ? summary_metricsList : NULL
         );
 
     return pin_analytics_metrics_response_local_var;
 end:
+    if (daily_metricsList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, daily_metricsList) {
+            pin_analytics_metrics_response_daily_metrics_inner_free(listEntry->data);
+            listEntry->data = NULL;
+        }
+        list_freeList(daily_metricsList);
+        daily_metricsList = NULL;
+    }
     if (lifetime_metricsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, lifetime_metricsList) {
@@ -256,15 +265,6 @@ end:
         }
         list_freeList(lifetime_metricsList);
         lifetime_metricsList = NULL;
-    }
-    if (daily_metricsList) {
-        listEntry_t *listEntry = NULL;
-        list_ForEach(listEntry, daily_metricsList) {
-            pin_analytics_metrics_response_daily_metrics_inner_free(listEntry->data);
-            listEntry->data = NULL;
-        }
-        list_freeList(daily_metricsList);
-        daily_metricsList = NULL;
     }
     if (summary_metricsList) {
         listEntry_t *listEntry = NULL;

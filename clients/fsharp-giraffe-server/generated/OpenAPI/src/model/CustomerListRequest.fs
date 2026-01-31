@@ -10,9 +10,8 @@ module CustomerListRequest =
 
 
   type CustomerListRequest = {
+    ListType : UserListType;
     Name : string;
     Records : string;
-    ListType : UserListType;
-    Exceptions : obj;
   }
   //#endregion

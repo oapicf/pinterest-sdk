@@ -9,6 +9,7 @@ use WWW::OpenAPIClient::Object::PinMediaWithImages;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **items** | [**ARRAY[ImageMetadata]**](ImageMetadata.md) |  | [optional] 
+**media_type** | **string** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

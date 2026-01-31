@@ -8,13 +8,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **countries** | **Seq&lt;TargetingAdvertiserCountry&gt;** | A List of countries for filtering |  [optional]
-**reportName** | **String** | Name of the Marketing Mix Modeling (MMM) report | 
-**startDate** | **String** | Metric report start date (UTC). Format: YYYY-MM-DD | 
+**columns** | **Seq&lt;MMMReportingColumn&gt;** | Metric and entity columns | 
 **endDate** | **String** | Metric report end date (UTC). Format: YYYY-MM-DD | 
 **granularity** | [**Granularity**](#Granularity) | DAY - metrics are broken down daily.&lt;br&gt; WEEK - metrics are broken down weekly. | 
 **level** | [**Level**](#Level) | Level of the report | 
+**reportName** | **String** | Name of the Marketing Mix Modeling (MMM) report | 
+**startDate** | **String** | Metric report start date (UTC). Format: YYYY-MM-DD | 
 **targetingTypes** | **Seq&lt;MMMReportingTargetingType&gt;** | List of targeting types | 
-**columns** | **Seq&lt;MMMReportingColumn&gt;** | Metric and entity columns | 
 
 
 ## Enum: Granularity

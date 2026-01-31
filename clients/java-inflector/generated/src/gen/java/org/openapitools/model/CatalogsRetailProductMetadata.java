@@ -17,16 +17,19 @@ import org.openapitools.model.NonNullableProductAvailabilityType;
  **/
 
 @ApiModel(description = "Retail product metadata entity")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailProductMetadata   {
-  @JsonProperty("item_id")
-  private String itemId;
+  @JsonProperty("availability")
+  private NonNullableProductAvailabilityType availability;
+
+  @JsonProperty("currency")
+  private NonNullableCatalogsCurrency currency;
 
   @JsonProperty("item_group_id")
   private String itemGroupId;
 
-  @JsonProperty("availability")
-  private NonNullableProductAvailabilityType availability;
+  @JsonProperty("item_id")
+  private String itemId;
 
   @JsonProperty("price")
   private BigDecimal price;
@@ -34,25 +37,38 @@ public class CatalogsRetailProductMetadata   {
   @JsonProperty("sale_price")
   private BigDecimal salePrice;
 
-  @JsonProperty("currency")
-  private NonNullableCatalogsCurrency currency;
-
   /**
-   * The user-created unique ID that represents the product.
    **/
-  public CatalogsRetailProductMetadata itemId(String itemId) {
-    this.itemId = itemId;
+  public CatalogsRetailProductMetadata availability(NonNullableProductAvailabilityType availability) {
+    this.availability = availability;
     return this;
   }
 
   
-  @ApiModelProperty(example = "DS0294-L", required = true, value = "The user-created unique ID that represents the product.")
-  @JsonProperty("item_id")
-  public String getItemId() {
-    return itemId;
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("availability")
+  public NonNullableProductAvailabilityType getAvailability() {
+    return availability;
   }
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
+  public void setAvailability(NonNullableProductAvailabilityType availability) {
+    this.availability = availability;
+  }
+
+  /**
+   **/
+  public CatalogsRetailProductMetadata currency(NonNullableCatalogsCurrency currency) {
+    this.currency = currency;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("currency")
+  public NonNullableCatalogsCurrency getCurrency() {
+    return currency;
+  }
+  public void setCurrency(NonNullableCatalogsCurrency currency) {
+    this.currency = currency;
   }
 
   /**
@@ -74,20 +90,21 @@ public class CatalogsRetailProductMetadata   {
   }
 
   /**
+   * The user-created unique ID that represents the product.
    **/
-  public CatalogsRetailProductMetadata availability(NonNullableProductAvailabilityType availability) {
-    this.availability = availability;
+  public CatalogsRetailProductMetadata itemId(String itemId) {
+    this.itemId = itemId;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("availability")
-  public NonNullableProductAvailabilityType getAvailability() {
-    return availability;
+  @ApiModelProperty(example = "DS0294-L", required = true, value = "The user-created unique ID that represents the product.")
+  @JsonProperty("item_id")
+  public String getItemId() {
+    return itemId;
   }
-  public void setAvailability(NonNullableProductAvailabilityType availability) {
-    this.availability = availability;
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
   }
 
   /**
@@ -126,23 +143,6 @@ public class CatalogsRetailProductMetadata   {
     this.salePrice = salePrice;
   }
 
-  /**
-   **/
-  public CatalogsRetailProductMetadata currency(NonNullableCatalogsCurrency currency) {
-    this.currency = currency;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("currency")
-  public NonNullableCatalogsCurrency getCurrency() {
-    return currency;
-  }
-  public void setCurrency(NonNullableCatalogsCurrency currency) {
-    this.currency = currency;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -153,17 +153,17 @@ public class CatalogsRetailProductMetadata   {
       return false;
     }
     CatalogsRetailProductMetadata catalogsRetailProductMetadata = (CatalogsRetailProductMetadata) o;
-    return Objects.equals(itemId, catalogsRetailProductMetadata.itemId) &&
+    return Objects.equals(availability, catalogsRetailProductMetadata.availability) &&
+        Objects.equals(currency, catalogsRetailProductMetadata.currency) &&
         Objects.equals(itemGroupId, catalogsRetailProductMetadata.itemGroupId) &&
-        Objects.equals(availability, catalogsRetailProductMetadata.availability) &&
+        Objects.equals(itemId, catalogsRetailProductMetadata.itemId) &&
         Objects.equals(price, catalogsRetailProductMetadata.price) &&
-        Objects.equals(salePrice, catalogsRetailProductMetadata.salePrice) &&
-        Objects.equals(currency, catalogsRetailProductMetadata.currency);
+        Objects.equals(salePrice, catalogsRetailProductMetadata.salePrice);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, itemGroupId, availability, price, salePrice, currency);
+    return Objects.hash(availability, currency, itemGroupId, itemId, price, salePrice);
   }
 
   @Override
@@ -171,12 +171,12 @@ public class CatalogsRetailProductMetadata   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailProductMetadata {\n");
     
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
-    sb.append("    itemGroupId: ").append(toIndentedString(itemGroupId)).append("\n");
     sb.append("    availability: ").append(toIndentedString(availability)).append("\n");
+    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
+    sb.append("    itemGroupId: ").append(toIndentedString(itemGroupId)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    salePrice: ").append(toIndentedString(salePrice)).append("\n");
-    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("}");
     return sb.toString();
   }

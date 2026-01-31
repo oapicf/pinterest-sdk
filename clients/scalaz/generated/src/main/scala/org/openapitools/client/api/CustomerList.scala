@@ -16,6 +16,8 @@ case class CustomerList (
   adAccountId: Option[String],
 /* Creation time. Unix timestamp in seconds. */
   createdTime: Option[BigDecimal],
+/* Customer list errors */
+  exceptions: Option[Any],
 /* Customer list ID. */
   id: Option[String],
 /* Customer list name. */
@@ -31,9 +33,7 @@ case class CustomerList (
 /* Always \"customerlist\". */
   `type`: Option[String],
 /* Last update time. Unix timestamp in seconds. */
-  updatedTime: Option[BigDecimal],
-/* Customer list errors */
-  exceptions: Option[Any])
+  updatedTime: Option[BigDecimal])
 
 object CustomerList {
   import DateTimeCodecs._

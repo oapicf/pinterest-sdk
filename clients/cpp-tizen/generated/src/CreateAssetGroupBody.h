@@ -47,13 +47,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Asset Group name
-	 */
-	std::string getAssetGroupName();
-
-	/*! \brief Set Asset Group name
-	 */
-	void setAssetGroupName(std::string  asset_group_name);
 	/*! \brief Get Asset group description
 	 */
 	std::string getAssetGroupDescription();
@@ -61,6 +54,13 @@ public:
 	/*! \brief Set Asset group description
 	 */
 	void setAssetGroupDescription(std::string  asset_group_description);
+	/*! \brief Get Asset Group name
+	 */
+	std::string getAssetGroupName();
+
+	/*! \brief Set Asset Group name
+	 */
+	void setAssetGroupName(std::string  asset_group_name);
 	/*! \brief Get Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
 	 */
 	std::list<AssetGroupType> getAssetGroupTypes();
@@ -70,8 +70,8 @@ public:
 	void setAssetGroupTypes(std::list <AssetGroupType> asset_group_types);
 
 private:
-	std::string asset_group_name;
 	std::string asset_group_description;
+	std::string asset_group_name;
 	std::list <AssetGroupType>asset_group_types;
 	void __init();
 	void __cleanup();

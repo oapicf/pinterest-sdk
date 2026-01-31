@@ -17,73 +17,73 @@ public struct Account: Codable, JSONEncodable, Hashable {
         case business = "BUSINESS"
     }
     public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    /** Type of account */
-    public var accountType: AccountType?
-    /** User account ID. */
-    public var id: String?
-    public var profileImage: String?
-    public var websiteUrl: String?
-    public var username: String?
     /** Profile about description. */
     public var about: String?
-    public var businessName: String?
+    /** Type of account */
+    public var accountType: AccountType?
     /** User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. */
     public var boardCount: Int?
-    /** User account pin count. This includes both created and saved pins. */
-    public var pinCount: Int?
+    public var businessName: String?
     /** User account follower count. */
     public var followerCount: Int?
     /** User account following count. */
     public var followingCount: Int?
+    /** User account ID. */
+    public var id: String?
     /** User account monthly views. */
     public var monthlyViews: Int?
+    /** User account pin count. This includes both created and saved pins. */
+    public var pinCount: Int?
+    public var profileImage: String?
+    public var username: String?
+    public var websiteUrl: String?
 
-    public init(accountType: AccountType? = nil, id: String? = nil, profileImage: String? = nil, websiteUrl: String? = nil, username: String? = nil, about: String? = nil, businessName: String? = nil, boardCount: Int? = nil, pinCount: Int? = nil, followerCount: Int? = nil, followingCount: Int? = nil, monthlyViews: Int? = nil) {
-        self.accountType = accountType
-        self.id = id
-        self.profileImage = profileImage
-        self.websiteUrl = websiteUrl
-        self.username = username
+    public init(about: String? = nil, accountType: AccountType? = nil, boardCount: Int? = nil, businessName: String? = nil, followerCount: Int? = nil, followingCount: Int? = nil, id: String? = nil, monthlyViews: Int? = nil, pinCount: Int? = nil, profileImage: String? = nil, username: String? = nil, websiteUrl: String? = nil) {
         self.about = about
-        self.businessName = businessName
+        self.accountType = accountType
         self.boardCount = boardCount
-        self.pinCount = pinCount
+        self.businessName = businessName
         self.followerCount = followerCount
         self.followingCount = followingCount
+        self.id = id
         self.monthlyViews = monthlyViews
+        self.pinCount = pinCount
+        self.profileImage = profileImage
+        self.username = username
+        self.websiteUrl = websiteUrl
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case accountType = "account_type"
-        case id
-        case profileImage = "profile_image"
-        case websiteUrl = "website_url"
-        case username
         case about
-        case businessName = "business_name"
+        case accountType = "account_type"
         case boardCount = "board_count"
-        case pinCount = "pin_count"
+        case businessName = "business_name"
         case followerCount = "follower_count"
         case followingCount = "following_count"
+        case id
         case monthlyViews = "monthly_views"
+        case pinCount = "pin_count"
+        case profileImage = "profile_image"
+        case username
+        case websiteUrl = "website_url"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(accountType, forKey: .accountType)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(profileImage, forKey: .profileImage)
-        try container.encodeIfPresent(websiteUrl, forKey: .websiteUrl)
-        try container.encodeIfPresent(username, forKey: .username)
         try container.encodeIfPresent(about, forKey: .about)
-        try container.encodeIfPresent(businessName, forKey: .businessName)
+        try container.encodeIfPresent(accountType, forKey: .accountType)
         try container.encodeIfPresent(boardCount, forKey: .boardCount)
-        try container.encodeIfPresent(pinCount, forKey: .pinCount)
+        try container.encodeIfPresent(businessName, forKey: .businessName)
         try container.encodeIfPresent(followerCount, forKey: .followerCount)
         try container.encodeIfPresent(followingCount, forKey: .followingCount)
+        try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(monthlyViews, forKey: .monthlyViews)
+        try container.encodeIfPresent(pinCount, forKey: .pinCount)
+        try container.encodeIfPresent(profileImage, forKey: .profileImage)
+        try container.encodeIfPresent(username, forKey: .username)
+        try container.encodeIfPresent(websiteUrl, forKey: .websiteUrl)
     }
 }
 

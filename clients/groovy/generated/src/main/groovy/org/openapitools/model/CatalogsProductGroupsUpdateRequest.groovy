@@ -13,11 +13,11 @@ import org.openapitools.model.Country;
 @Canonical
 class CatalogsProductGroupsUpdateRequest {
     
-    String name
-    
     String description
+    
+    CatalogsProductGroupFiltersRequest filters
     /* boolean indicator of whether the product group is being featured or not */
     Boolean isFeatured
     
-    CatalogsProductGroupFiltersRequest filters
+    String name
 }

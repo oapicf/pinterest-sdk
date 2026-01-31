@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsUpsertCreativeAssetsItem`
 --
-SELECT `creative_assets_id`, `operation`, `attributes` FROM `CatalogsUpsertCreativeAssetsItem` WHERE 1;
+SELECT `attributes`, `creative_assets_id`, `operation` FROM `CatalogsUpsertCreativeAssetsItem` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsUpsertCreativeAssetsItem`
 --
-INSERT INTO `CatalogsUpsertCreativeAssetsItem`(`creative_assets_id`, `operation`, `attributes`) VALUES (?, ?, ?);
+INSERT INTO `CatalogsUpsertCreativeAssetsItem`(`attributes`, `creative_assets_id`, `operation`) VALUES (?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsUpsertCreativeAssetsItem`
 --
-UPDATE `CatalogsUpsertCreativeAssetsItem` SET `creative_assets_id` = ?, `operation` = ?, `attributes` = ? WHERE 1;
+UPDATE `CatalogsUpsertCreativeAssetsItem` SET `attributes` = ?, `creative_assets_id` = ?, `operation` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsUpsertCreativeAssetsItem`

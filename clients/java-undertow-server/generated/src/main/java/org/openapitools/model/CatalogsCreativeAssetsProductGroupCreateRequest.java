@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -26,9 +26,10 @@ import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
  */
 
 @ApiModel(description = "Request object for creating a creative assets product group.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsProductGroupCreateRequest   {
   
+  private String catalogId;
 
 
   public enum CatalogTypeEnum {
@@ -48,10 +49,27 @@ public class CatalogsCreativeAssetsProductGroupCreateRequest   {
   }
 
   private CatalogTypeEnum catalogType;
-  private String name;
   private String description;
   private CatalogsCreativeAssetsProductGroupFilters filters;
-  private String catalogId;
+  private String name;
+
+  /**
+   * Catalog id pertaining to the creative assets product group.
+   */
+  public CatalogsCreativeAssetsProductGroupCreateRequest catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the creative assets product group.")
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
 
   /**
    */
@@ -68,23 +86,6 @@ public class CatalogsCreativeAssetsProductGroupCreateRequest   {
   }
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
-  }
-
-  /**
-   */
-  public CatalogsCreativeAssetsProductGroupCreateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
   }
 
   /**
@@ -122,21 +123,20 @@ public class CatalogsCreativeAssetsProductGroupCreateRequest   {
   }
 
   /**
-   * Catalog id pertaining to the creative assets product group.
    */
-  public CatalogsCreativeAssetsProductGroupCreateRequest catalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public CatalogsCreativeAssetsProductGroupCreateRequest name(String name) {
+    this.name = name;
     return this;
   }
 
   
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the creative assets product group.")
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("name")
+  public String getName() {
+    return name;
   }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -149,16 +149,16 @@ public class CatalogsCreativeAssetsProductGroupCreateRequest   {
       return false;
     }
     CatalogsCreativeAssetsProductGroupCreateRequest catalogsCreativeAssetsProductGroupCreateRequest = (CatalogsCreativeAssetsProductGroupCreateRequest) o;
-    return Objects.equals(catalogType, catalogsCreativeAssetsProductGroupCreateRequest.catalogType) &&
-        Objects.equals(name, catalogsCreativeAssetsProductGroupCreateRequest.name) &&
+    return Objects.equals(catalogId, catalogsCreativeAssetsProductGroupCreateRequest.catalogId) &&
+        Objects.equals(catalogType, catalogsCreativeAssetsProductGroupCreateRequest.catalogType) &&
         Objects.equals(description, catalogsCreativeAssetsProductGroupCreateRequest.description) &&
         Objects.equals(filters, catalogsCreativeAssetsProductGroupCreateRequest.filters) &&
-        Objects.equals(catalogId, catalogsCreativeAssetsProductGroupCreateRequest.catalogId);
+        Objects.equals(name, catalogsCreativeAssetsProductGroupCreateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters, catalogId);
+    return Objects.hash(catalogId, catalogType, description, filters, name);
   }
 
   @Override
@@ -166,11 +166,11 @@ public class CatalogsCreativeAssetsProductGroupCreateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsProductGroupCreateRequest {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

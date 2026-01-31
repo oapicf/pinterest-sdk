@@ -6,8 +6,8 @@ Used for including extra details to a base error
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Code** | **int** |  | 
-**Message** | **string** |  | 
 **Details** | **Object** |  | 
+**Message** | **string** |  | 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

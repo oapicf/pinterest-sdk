@@ -7,9 +7,9 @@
 
 (def catalogs-creative-assets-items-filter-data
   {
+   (ds/opt :catalog_id) string?
    (ds/req :catalog_type) string?
    (ds/req :creative_assets_ids) (s/coll-of string?)
-   (ds/opt :catalog_id) string?
    })
 
 (def catalogs-creative-assets-items-filter-spec

@@ -23,14 +23,18 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
+ * @param adAccountId Id of the ad account.
  * @param conversionEvent 
  * @param conversionTagId Id of the tag.
- * @param adAccountId Id of the ad account.
  * @param createdTime Creation date in epoch format.
  */
 
 
 data class ConversionEventResponse (
+
+    /* Id of the ad account. */
+    @Json(name = "ad_account_id")
+    val adAccountId: kotlin.String? = null,
 
     @Json(name = "conversion_event")
     val conversionEvent: ConversionTagType? = null,
@@ -38,10 +42,6 @@ data class ConversionEventResponse (
     /* Id of the tag. */
     @Json(name = "conversion_tag_id")
     val conversionTagId: kotlin.String? = null,
-
-    /* Id of the ad account. */
-    @Json(name = "ad_account_id")
-    val adAccountId: kotlin.String? = null,
 
     /* Creation date in epoch format. */
     @Json(name = "created_time")

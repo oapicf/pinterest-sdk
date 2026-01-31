@@ -1,10 +1,10 @@
 package org.openapitools.controller;
 
-import org.openapitools.model.Error;
+import org.openapitools.model.Media;
 import org.openapitools.model.MediaList200Response;
 import org.openapitools.model.MediaUpload;
-import org.openapitools.model.MediaUploadDetails;
-import org.openapitools.model.MediaUploadRequest;
+import org.openapitools.model.MediaUploadCreate;
+import org.openapitools.model.PinterestLibError;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
@@ -55,7 +55,7 @@ public class MediaControllerTest {
      *
      * The method should: Register media upload
      *
-     * Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using &lt;tt&gt;curl&lt;/tt&gt;, for example) to &lt;tt&gt;upload_url&lt;/tt&gt; using the &lt;tt&gt;Content-Type&lt;/tt&gt; header value. Send the media file&#39;s contents as the request&#39;s &lt;tt&gt;file&lt;/tt&gt; parameter and also include all of the parameters from &lt;tt&gt;upload_parameters&lt;/tt&gt;.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
+     * Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using &#x60;curl&#x60;, for example) to &#x60;upload_url&#x60; using the &#x60;Content-Type&#x60; header value. Send the media file&#39;s contents as the request&#39;s &#x60;file&#x60; parameter and also include all of the parameters from &#x60;upload_parameters&#x60;.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -63,10 +63,10 @@ public class MediaControllerTest {
     @Disabled("Not Implemented")
     void mediaCreateMethodTest() {
         // given
-        MediaUploadRequest mediaUploadRequest = new MediaUploadRequest(org.openapitools.model.MediaUploadType.fromValue("video"));
+        MediaUploadCreate mediaUploadCreate = new MediaUploadCreate(org.openapitools.model.MediaUploadType.fromValue("video"));
 
         // when
-        MediaUpload result = controller.mediaCreate(mediaUploadRequest).block();
+        MediaUpload result = controller.mediaCreate(mediaUploadCreate).block();
 
         // then
         Assertions.assertTrue(true);
@@ -82,10 +82,10 @@ public class MediaControllerTest {
     @Disabled("Not Implemented")
     void mediaCreateClientApiTest() throws IOException {
         // given
-        MediaUploadRequest body = new MediaUploadRequest(org.openapitools.model.MediaUploadType.fromValue("video"));
+        MediaUploadCreate body = new MediaUploadCreate(org.openapitools.model.MediaUploadType.fromValue("video"));
         String uri = UriTemplate.of("/media").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@29727534");
+            .accept("[Ljava.lang.String;@2ca10d93");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, MediaUpload.class);
@@ -99,7 +99,7 @@ public class MediaControllerTest {
      *
      * The method should: Get media upload details
      *
-     * Get details for a registered media upload, including its current status.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
+     * Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -110,7 +110,7 @@ public class MediaControllerTest {
         String mediaId = "example";
 
         // when
-        MediaUploadDetails result = controller.mediaGet(mediaId).block();
+        Media result = controller.mediaGet(mediaId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -131,10 +131,10 @@ public class MediaControllerTest {
             put("media_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@2135337a");
+            .accept("[Ljava.lang.String;@7b11904c");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, MediaUploadDetails.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, Media.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -145,7 +145,7 @@ public class MediaControllerTest {
      *
      * The method should: List media uploads
      *
-     * List media uploads filtered by given parameters.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
+     * List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -175,7 +175,7 @@ public class MediaControllerTest {
         // given
         String uri = UriTemplate.of("/media").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@2d388ef6");
+            .accept("[Ljava.lang.String;@60ed0a16");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)); // The query parameter format should be 

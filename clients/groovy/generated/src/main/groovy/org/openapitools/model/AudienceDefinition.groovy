@@ -9,8 +9,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
 class AudienceDefinition {
     /* Generation date */
     String date
-    /* Generated audience type to request. */
-    String type
-    /* Generated audience scope to request. */
+    
     String scope
+    
+    String type
 }

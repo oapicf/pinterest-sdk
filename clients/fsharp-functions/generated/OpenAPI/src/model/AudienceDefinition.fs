@@ -13,10 +13,10 @@ module AudienceDefinition =
   type AudienceDefinition = {
     [<JsonProperty(PropertyName = "date")>]
     Date : string option;
-    [<JsonProperty(PropertyName = "type")>]
-    Type : string;
     [<JsonProperty(PropertyName = "scope")>]
     Scope : string;
+    [<JsonProperty(PropertyName = "type")>]
+    Type : string;
   }
 
   //#endregion

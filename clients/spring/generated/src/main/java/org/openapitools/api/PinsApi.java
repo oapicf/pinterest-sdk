@@ -5,6 +5,7 @@
  */
 package org.openapitools.api;
 
+import org.openapitools.model.CreativeType;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.openapitools.model.Error;
 import java.time.LocalDate;
@@ -16,6 +17,7 @@ import org.openapitools.model.PinCreate;
 import org.openapitools.model.PinUpdate;
 import org.openapitools.model.PinsList200Response;
 import org.openapitools.model.PinsSaveRequest;
+import org.openapitools.model.PinterestLibError;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -43,7 +45,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Validated
 @Tag(name = "pins", description = "View, create, update, or delete information about Pins.")
 public interface PinsApi {
@@ -55,7 +57,7 @@ public interface PinsApi {
     String PATH_MULTI_PINS_ANALYTICS = "/pins/analytics";
     /**
      * GET /pins/analytics : Get multiple Pin analytics
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get analytics for multiple pins owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;\&quot;/docs/api/v5/#operation/ad_accounts/list\&quot;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get analytics for multiple pins owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;\&quot;/docs/api/v5/#operation/ad_accounts/list\&quot;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
      *
      * @param pinIds List of Pin IDs. (required)
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. (required)
@@ -73,7 +75,7 @@ public interface PinsApi {
     @Operation(
         operationId = "multiPinsAnalytics",
         summary = "Get multiple Pin analytics",
-        description = "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get analytics for multiple pins owned by the \"operation user_account\" - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.",
+        description = "<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get analytics for multiple pins owned by the \"operation user_account\" - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.",
         tags = { "pins" },
         responses = {
             @ApiResponse(responseCode = "200", description = "response", content = {
@@ -238,70 +240,53 @@ public interface PinsApi {
     String PATH_PINS_CREATE = "/pins";
     /**
      * POST /pins : Create Pin
-     * Create a Pin on a board or board section owned by the \&quot;operation user_account\&quot;.  Note: If the current \&quot;operation user_account\&quot; (defined by the access token) has access to another user&#39;s Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account&#39;s permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id&#x3D;12345&amp;...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called &#39;curated content&#39;, please use our &lt;a href&#x3D;&#39;/docs/web-features/add-ons-overview/&#39;&gt;Save button&lt;/a&gt; instead. For more tips on creating fresh content for Pinterest, review our &lt;a href&#x3D;&#39;/docs/api-features/content-overview/&#39;&gt;Content App Solutions Guide&lt;/a&gt;.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
+     *   Create a Pin on a board or board section owned by the \&quot;operation user_account\&quot;.   Note: If the current \&quot;operation user_account\&quot; (defined by the access token) has access to another user&#39;s Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account&#39;s permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id&#x3D;12345&amp;...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called &#39;curated content&#39;, please use our [Save button](/docs/web-features/add-ons-overview/) instead. For more tips on creating fresh content for Pinterest, review our [Content App Solutions Guide](/docs/api-features/content-overview/).  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-image-pins)** about image Pin creation.
      *
-     * @param pinCreate Create a new Pin. (required)
+     * @param pinCreate  (required)
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @return Successful pin creation. (status code 201)
-     *         or Invalid Pin parameters response (status code 400)
-     *         or The Pin&#39;s image is too small, too large or is broken (status code 403)
-     *         or Board or section not found (status code 404)
-     *         or This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window. (status code 429)
-     *         or Unexpected error (status code 200)
+     * @return The request has succeeded. (status code 200)
+     *         or Resource create operation completed successfully. (status code 201)
+     *         or The request could not be understood by the server due to unexpected data. (status code 400)
+     *         or Authentication is required and has either failed or not been provided. (status code 401)
+     *         or The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. (status code 403)
+     *         or The requested resource could not be found on this server. (status code 404)
+     *         or The user has sent too many requests in a given amount of time and is being rate limited. (status code 429)
+     *         or An unexpected error response. (status code 200)
      */
     @Operation(
         operationId = "pinsCreate",
         summary = "Create Pin",
-        description = "Create a Pin on a board or board section owned by the \"operation user_account\".  Note: If the current \"operation user_account\" (defined by the access token) has access to another user's Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account's permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called 'curated content', please use our <a href='/docs/web-features/add-ons-overview/'>Save button</a> instead. For more tips on creating fresh content for Pinterest, review our <a href='/docs/api-features/content-overview/'>Content App Solutions Guide</a>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.",
+        description = "  Create a Pin on a board or board section owned by the \"operation user_account\".   Note: If the current \"operation user_account\" (defined by the access token) has access to another user's Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account's permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called 'curated content', please use our [Save button](/docs/web-features/add-ons-overview/) instead. For more tips on creating fresh content for Pinterest, review our [Content App Solutions Guide](/docs/api-features/content-overview/).  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-image-pins)** about image Pin creation.",
         tags = { "pins" },
         responses = {
-            @ApiResponse(responseCode = "201", description = "Successful pin creation.", content = {
+            @ApiResponse(responseCode = "200", description = "The request has succeeded.", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = Pin.class))
             }),
-            @ApiResponse(responseCode = "400", description = "Invalid Pin parameters response", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class), examples = {
-                    @ExampleObject(
-                        name = "",
-                        value = "{\"code\":1,\"message\":\"Whoops! It looks like you entered an invalid URL. Try creating a Pin again with a valid URL.\"}"
-                    )
-                })
-
+            @ApiResponse(responseCode = "201", description = "Resource create operation completed successfully.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Pin.class))
             }),
-            @ApiResponse(responseCode = "403", description = "The Pin's image is too small, too large or is broken", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class), examples = {
-                    @ExampleObject(
-                        name = "",
-                        value = "{\"code\":233,\"message\":\"Your image is too small. Please choose a larger image and try again.\"}"
-                    ),
-                    @ExampleObject(
-                        name = "",
-                        value = "{\"code\":235,\"message\":\"Sorry, this image is broken. Please pick a different image.\"}"
-                    )
-                })
-
+            @ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "404", description = "Board or section not found", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class), examples = {
-                    @ExampleObject(
-                        name = "",
-                        value = "{\"code\":40,\"message\":\"Board not found.\"}"
-                    ),
-                    @ExampleObject(
-                        name = "",
-                        value = "{\"code\":2031,\"message\":\"Sorry! We couldn't find this board section.\"}"
-                    )
-                })
-
+            @ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "429", description = "This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "An unexpected error response.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "boards:read", "boards:write", "pins:read", "pins:write" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "boards:read", "boards:write", "pins:read", "pins:write" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "boards:read", "boards:write", "pins:read", "pins:write" })
         }
     )
     @RequestMapping(
@@ -311,38 +296,48 @@ public interface PinsApi {
         consumes = { "application/json" }
     )
     default ResponseEntity<Pin> pinsCreate(
-        @Parameter(name = "PinCreate", description = "Create a new Pin.", required = true) @Valid @RequestBody PinCreate pinCreate,
+        @Parameter(name = "PinCreate", description = "", required = true) @Valid @RequestBody PinCreate pinCreate,
         @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_account_id", required = false) @Nullable String adAccountId
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"note\" : \"note\", \"board_owner\" : \"{}\", \"media_source\" : \"{}\", \"pin_metrics\" : { \"90d\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3 }, \"lifetime_metrics\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3, \"reaction\" : 10, \"comment\" : 2 } }, \"is_owner\" : true, \"link\" : \"https://www.pinterest.com/\", \"created_at\" : \"2020-01-01T20:10:40Z\", \"description\" : \"description\", \"has_been_promoted\" : true, \"media\" : \"{}\", \"title\" : \"title\", \"board_section_id\" : \"board_section_id\", \"dominant_color\" : \"#6E7874\", \"alt_text\" : \"alt_text\", \"board_id\" : \"board_id\", \"creative_type\" : \"creative_type\", \"parent_pin_id\" : \"parent_pin_id\", \"id\" : \"813744226420795884\", \"is_standard\" : true }";
+                    String exampleString = "{ \"board_owner\" : \"\", \"pin_metrics\" : { \"90d\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3 }, \"lifetime_metrics\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3, \"reaction\" : 10, \"comment\" : 2 } }, \"is_owner\" : true, \"link\" : \"link\", \"created_at\" : \"2000-01-23T04:56:07.000+00:00\", \"description\" : \"description\", \"has_been_promoted\" : true, \"media\" : \"\", \"title\" : \"title\", \"board_section_id\" : \"board_section_id\", \"dominant_color\" : \"dominant_color\", \"alt_text\" : \"alt_text\", \"board_id\" : \"board_id\", \"creative_type\" : \"\", \"parent_pin_id\" : \"parent_pin_id\", \"id\" : \"id\", \"is_standard\" : true }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"board_owner\" : \"\", \"pin_metrics\" : { \"90d\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3 }, \"lifetime_metrics\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3, \"reaction\" : 10, \"comment\" : 2 } }, \"is_owner\" : true, \"link\" : \"link\", \"created_at\" : \"2000-01-23T04:56:07.000+00:00\", \"description\" : \"description\", \"has_been_promoted\" : true, \"media\" : \"\", \"title\" : \"title\", \"board_section_id\" : \"board_section_id\", \"dominant_color\" : \"dominant_color\", \"alt_text\" : \"alt_text\", \"board_id\" : \"board_id\", \"creative_type\" : \"\", \"parent_pin_id\" : \"parent_pin_id\", \"id\" : \"id\", \"is_standard\" : true }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -356,34 +351,47 @@ public interface PinsApi {
     String PATH_PINS_DELETE = "/pins/{pin_id}";
     /**
      * DELETE /pins/{pin_id} : Delete Pin
-     * Delete a Pins owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.
+     *    Delete a Pins owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account.   - By default, the \&quot;operation user_account\&quot; is the token user_account.    Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:    - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.   - For Pins on secret boards: Owner, Admin.
      *
-     * @param pinId Unique identifier of a Pin. (required)
+     * @param pinId  (required)
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @return Successfully deleted Pin (status code 204)
-     *         or Not authorized to access board or Pin. (status code 403)
-     *         or Pin not found. (status code 404)
-     *         or Unexpected error (status code 200)
+     * @return Resource deleted successfully. (status code 204)
+     *         or The request could not be understood by the server due to unexpected data. (status code 400)
+     *         or Authentication is required and has either failed or not been provided. (status code 401)
+     *         or The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. (status code 403)
+     *         or The requested resource could not be found on this server. (status code 404)
+     *         or The user has sent too many requests in a given amount of time and is being rate limited. (status code 429)
+     *         or An unexpected error response. (status code 200)
      */
     @Operation(
         operationId = "pinsDelete",
         summary = "Delete Pin",
-        description = "Delete a Pins owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.",
+        description = "   Delete a Pins owned by the \"operation user_account\" - or on a group board that has been shared with this account.   - By default, the \"operation user_account\" is the token user_account.    Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:    - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.   - For Pins on secret boards: Owner, Admin.",
         tags = { "pins" },
         responses = {
-            @ApiResponse(responseCode = "204", description = "Successfully deleted Pin"),
-            @ApiResponse(responseCode = "403", description = "Not authorized to access board or Pin.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "204", description = "Resource deleted successfully."),
+            @ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "404", description = "Pin not found.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "An unexpected error response.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "boards:read", "boards:write", "pins:read", "pins:write" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "boards:read", "boards:write", "pins:read", "pins:write" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "boards:read", "boards:write", "pins:read", "pins:write" })
         }
     )
     @RequestMapping(
@@ -392,23 +400,38 @@ public interface PinsApi {
         produces = { "application/json" }
     )
     default ResponseEntity<Void> pinsDelete(
-        @NotNull @Parameter(name = "pin_id", description = "Unique identifier of a Pin.", required = true, in = ParameterIn.PATH) @PathVariable("pin_id") String pinId,
+        @NotNull @Pattern(regexp = "^\\d+$") @Parameter(name = "pin_id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("pin_id") String pinId,
         @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_account_id", required = false) @Nullable String adAccountId
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -422,33 +445,45 @@ public interface PinsApi {
     String PATH_PINS_GET = "/pins/{pin_id}";
     /**
      * GET /pins/{pin_id} : Get Pin
-     * Get a Pin owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.
+     *    Get a Pin owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account.   - By default, the \&quot;operation user_account\&quot; is the token user_account.    Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:    - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.   - For Pins on secret boards: Owner, Admin.
      *
-     * @param pinId Unique identifier of a Pin. (required)
-     * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
+     * @param pinId  (required)
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @return response (status code 200)
-     *         or Not authorized to access board or Pin. (status code 403)
-     *         or Pin not found. (status code 404)
-     *         or Unexpected error (status code 200)
+     * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
+     * @return The request has succeeded. (status code 200)
+     *         or The request could not be understood by the server due to unexpected data. (status code 400)
+     *         or Authentication is required and has either failed or not been provided. (status code 401)
+     *         or The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. (status code 403)
+     *         or The requested resource could not be found on this server. (status code 404)
+     *         or The user has sent too many requests in a given amount of time and is being rate limited. (status code 429)
+     *         or An unexpected error response. (status code 200)
      */
     @Operation(
         operationId = "pinsGet",
         summary = "Get Pin",
-        description = "Get a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.",
+        description = "   Get a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account.   - By default, the \"operation user_account\" is the token user_account.    Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:    - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.   - For Pins on secret boards: Owner, Admin.",
         tags = { "pins" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "response", content = {
+            @ApiResponse(responseCode = "200", description = "The request has succeeded.", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = Pin.class))
             }),
-            @ApiResponse(responseCode = "403", description = "Not authorized to access board or Pin.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "404", description = "Pin not found.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "An unexpected error response.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             })
         },
         security = {
@@ -462,29 +497,44 @@ public interface PinsApi {
         produces = { "application/json" }
     )
     default ResponseEntity<Pin> pinsGet(
-        @NotNull @Parameter(name = "pin_id", description = "Unique identifier of a Pin.", required = true, in = ParameterIn.PATH) @PathVariable("pin_id") String pinId,
-        @Parameter(name = "pin_metrics", description = "Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "pin_metrics", required = false, defaultValue = "false") Boolean pinMetrics,
-        @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_account_id", required = false) @Nullable String adAccountId
+        @NotNull @Pattern(regexp = "^\\d+$") @Parameter(name = "pin_id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("pin_id") String pinId,
+        @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_account_id", required = false) @Nullable String adAccountId,
+        @Parameter(name = "pin_metrics", description = "Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "pin_metrics", required = false, defaultValue = "false") Boolean pinMetrics
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"note\" : \"note\", \"board_owner\" : \"{}\", \"media_source\" : \"{}\", \"pin_metrics\" : { \"90d\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3 }, \"lifetime_metrics\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3, \"reaction\" : 10, \"comment\" : 2 } }, \"is_owner\" : true, \"link\" : \"https://www.pinterest.com/\", \"created_at\" : \"2020-01-01T20:10:40Z\", \"description\" : \"description\", \"has_been_promoted\" : true, \"media\" : \"{}\", \"title\" : \"title\", \"board_section_id\" : \"board_section_id\", \"dominant_color\" : \"#6E7874\", \"alt_text\" : \"alt_text\", \"board_id\" : \"board_id\", \"creative_type\" : \"creative_type\", \"parent_pin_id\" : \"parent_pin_id\", \"id\" : \"813744226420795884\", \"is_standard\" : true }";
+                    String exampleString = "{ \"board_owner\" : \"\", \"pin_metrics\" : { \"90d\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3 }, \"lifetime_metrics\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3, \"reaction\" : 10, \"comment\" : 2 } }, \"is_owner\" : true, \"link\" : \"link\", \"created_at\" : \"2000-01-23T04:56:07.000+00:00\", \"description\" : \"description\", \"has_been_promoted\" : true, \"media\" : \"\", \"title\" : \"title\", \"board_section_id\" : \"board_section_id\", \"dominant_color\" : \"dominant_color\", \"alt_text\" : \"alt_text\", \"board_id\" : \"board_id\", \"creative_type\" : \"\", \"parent_pin_id\" : \"parent_pin_id\", \"id\" : \"id\", \"is_standard\" : true }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -498,34 +548,50 @@ public interface PinsApi {
     String PATH_PINS_LIST = "/pins";
     /**
      * GET /pins : List Pins
-     * Get a list of the Pins owned by the \&quot;operation user_account\&quot;.   - By default, the \&quot;operation user_account\&quot; is the token user_account.   - All Pins owned by the \&quot;operation user_account\&quot; are included, regardless of who owns the board they are on. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;.  Disclaimer: there are known performance issues when filtering by field &lt;code&gt;creative_type&lt;/code&gt; and including protected pins. If your request is timing out in this scenario we encourage you to use &lt;a href&#x3D;&#39;/docs/api/v5/#operation/boards/list_pins&#39;&gt;GET List Pins on Board&lt;/a&gt;.
+     *      Get a list of the Pins owned by the \&quot;operation user_account\&quot;.     - By default, the \&quot;operation user_account\&quot; is the token user_account.     - All Pins owned by the \&quot;operation user_account\&quot; are included, regardless of who owns the board they are on.      Optional: Business Access: Specify an &#x60;ad_account_id&#x60; to use the owner of that ad_account as the \&quot;operation user_account\&quot;.      Disclaimer: There are known performance issues when filtering by field &#x60;creative_type&#x60; and including protected pins.     If your request is timing out in this scenario, we encourage you to use [GET List Pins on Board](/docs/api/v5/#operation/boards/list_pins).
      *
-     * @param bookmark Cursor used to fetch the next page of items (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param pinFilter Pin filter. (optional)
-     * @param includeProtectedPins Specify if return pins from protected boards (optional, default to false)
+     * @param pinFilter The filter to apply to the pins (optional)
+     * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
+     * @param includeProtectedPins Whether to include protected pins in the results (optional, default to false)
      * @param pinType The type of pins to return, currently only enabled for private pins (optional)
-     * @param creativeTypes Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
+     * @param creativeTypes Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @param pinMetrics Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)
-     * @return Success (status code 200)
-     *         or Invalid pin filter value (status code 400)
-     *         or Unexpected error (status code 200)
+     * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
+     * @return The request has succeeded. (status code 200)
+     *         or The request could not be understood by the server due to unexpected data. (status code 400)
+     *         or Authentication is required and has either failed or not been provided. (status code 401)
+     *         or The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. (status code 403)
+     *         or The requested resource could not be found on this server. (status code 404)
+     *         or The user has sent too many requests in a given amount of time and is being rate limited. (status code 429)
+     *         or An unexpected error response. (status code 200)
      */
     @Operation(
         operationId = "pinsList",
         summary = "List Pins",
-        description = "Get a list of the Pins owned by the \"operation user_account\".   - By default, the \"operation user_account\" is the token user_account.   - All Pins owned by the \"operation user_account\" are included, regardless of who owns the board they are on. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".  Disclaimer: there are known performance issues when filtering by field <code>creative_type</code> and including protected pins. If your request is timing out in this scenario we encourage you to use <a href='/docs/api/v5/#operation/boards/list_pins'>GET List Pins on Board</a>.",
+        description = "     Get a list of the Pins owned by the \"operation user_account\".     - By default, the \"operation user_account\" is the token user_account.     - All Pins owned by the \"operation user_account\" are included, regardless of who owns the board they are on.      Optional: Business Access: Specify an `ad_account_id` to use the owner of that ad_account as the \"operation user_account\".      Disclaimer: There are known performance issues when filtering by field `creative_type` and including protected pins.     If your request is timing out in this scenario, we encourage you to use [GET List Pins on Board](/docs/api/v5/#operation/boards/list_pins).",
         tags = { "pins" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "Success", content = {
+            @ApiResponse(responseCode = "200", description = "The request has succeeded.", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = PinsList200Response.class))
             }),
-            @ApiResponse(responseCode = "400", description = "Invalid pin filter value", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "An unexpected error response.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             })
         },
         security = {
@@ -539,29 +605,49 @@ public interface PinsApi {
         produces = { "application/json" }
     )
     default ResponseEntity<PinsList200Response> pinsList(
-        @Parameter(name = "bookmark", description = "Cursor used to fetch the next page of items", in = ParameterIn.QUERY) @Valid @RequestParam(value = "bookmark", required = false) @Nullable String bookmark,
-        @Min(value = 1) @Max(value = 250) @Parameter(name = "page_size", description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") Integer pageSize,
-        @Parameter(name = "pin_filter", description = "Pin filter.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "pin_filter", required = false) @Nullable String pinFilter,
-        @Parameter(name = "include_protected_pins", description = "Specify if return pins from protected boards", in = ParameterIn.QUERY) @Valid @RequestParam(value = "include_protected_pins", required = false, defaultValue = "false") Boolean includeProtectedPins,
+        @Parameter(name = "pin_filter", description = "The filter to apply to the pins", in = ParameterIn.QUERY) @Valid @RequestParam(value = "pin_filter", required = false) @Nullable String pinFilter,
+        @Parameter(name = "pin_metrics", description = "Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "pin_metrics", required = false, defaultValue = "false") Boolean pinMetrics,
+        @Parameter(name = "include_protected_pins", description = "Whether to include protected pins in the results", in = ParameterIn.QUERY) @Valid @RequestParam(value = "include_protected_pins", required = false, defaultValue = "false") Boolean includeProtectedPins,
         @Parameter(name = "pin_type", description = "The type of pins to return, currently only enabled for private pins", in = ParameterIn.QUERY) @Valid @RequestParam(value = "pin_type", required = false) @Nullable String pinType,
-        @Parameter(name = "creative_types", description = "Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "creative_types", required = false) @Nullable List<String> creativeTypes,
+        @Parameter(name = "creative_types", description = "Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "creative_types", required = false) @Nullable List<CreativeType> creativeTypes,
         @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_account_id", required = false) @Nullable String adAccountId,
-        @Parameter(name = "pin_metrics", description = "Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "pin_metrics", required = false, defaultValue = "false") Boolean pinMetrics
+        @Parameter(name = "bookmark", description = "Cursor used to fetch the next page of items", in = ParameterIn.QUERY) @Valid @RequestParam(value = "bookmark", required = false) @Nullable String bookmark,
+        @Min(value = 1) @Max(value = 250) @Parameter(name = "page_size", description = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") Integer pageSize
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"note\" : \"note\", \"board_owner\" : \"{}\", \"media_source\" : \"{}\", \"pin_metrics\" : { \"90d\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3 }, \"lifetime_metrics\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3, \"reaction\" : 10, \"comment\" : 2 } }, \"is_owner\" : true, \"link\" : \"https://www.pinterest.com/\", \"created_at\" : \"2020-01-01T20:10:40Z\", \"description\" : \"description\", \"has_been_promoted\" : true, \"media\" : \"{}\", \"title\" : \"title\", \"board_section_id\" : \"board_section_id\", \"dominant_color\" : \"#6E7874\", \"alt_text\" : \"alt_text\", \"board_id\" : \"board_id\", \"creative_type\" : \"creative_type\", \"parent_pin_id\" : \"parent_pin_id\", \"id\" : \"813744226420795884\", \"is_standard\" : true }, { \"note\" : \"note\", \"board_owner\" : \"{}\", \"media_source\" : \"{}\", \"pin_metrics\" : { \"90d\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3 }, \"lifetime_metrics\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3, \"reaction\" : 10, \"comment\" : 2 } }, \"is_owner\" : true, \"link\" : \"https://www.pinterest.com/\", \"created_at\" : \"2020-01-01T20:10:40Z\", \"description\" : \"description\", \"has_been_promoted\" : true, \"media\" : \"{}\", \"title\" : \"title\", \"board_section_id\" : \"board_section_id\", \"dominant_color\" : \"#6E7874\", \"alt_text\" : \"alt_text\", \"board_id\" : \"board_id\", \"creative_type\" : \"creative_type\", \"parent_pin_id\" : \"parent_pin_id\", \"id\" : \"813744226420795884\", \"is_standard\" : true } ] }";
+                    String exampleString = "{ \"bookmark\" : \"bookmark\", \"items\" : [ { \"board_owner\" : \"\", \"pin_metrics\" : { \"90d\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3 }, \"lifetime_metrics\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3, \"reaction\" : 10, \"comment\" : 2 } }, \"is_owner\" : true, \"link\" : \"link\", \"created_at\" : \"2000-01-23T04:56:07.000+00:00\", \"description\" : \"description\", \"has_been_promoted\" : true, \"media\" : \"\", \"title\" : \"title\", \"board_section_id\" : \"board_section_id\", \"dominant_color\" : \"dominant_color\", \"alt_text\" : \"alt_text\", \"board_id\" : \"board_id\", \"creative_type\" : \"\", \"parent_pin_id\" : \"parent_pin_id\", \"id\" : \"id\", \"is_standard\" : true }, { \"board_owner\" : \"\", \"pin_metrics\" : { \"90d\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3 }, \"lifetime_metrics\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3, \"reaction\" : 10, \"comment\" : 2 } }, \"is_owner\" : true, \"link\" : \"link\", \"created_at\" : \"2000-01-23T04:56:07.000+00:00\", \"description\" : \"description\", \"has_been_promoted\" : true, \"media\" : \"\", \"title\" : \"title\", \"board_section_id\" : \"board_section_id\", \"dominant_color\" : \"dominant_color\", \"alt_text\" : \"alt_text\", \"board_id\" : \"board_id\", \"creative_type\" : \"\", \"parent_pin_id\" : \"parent_pin_id\", \"id\" : \"id\", \"is_standard\" : true } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -636,7 +722,7 @@ public interface PinsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"note\" : \"note\", \"board_owner\" : \"{}\", \"media_source\" : \"{}\", \"pin_metrics\" : { \"90d\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3 }, \"lifetime_metrics\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3, \"reaction\" : 10, \"comment\" : 2 } }, \"is_owner\" : true, \"link\" : \"https://www.pinterest.com/\", \"created_at\" : \"2020-01-01T20:10:40Z\", \"description\" : \"description\", \"has_been_promoted\" : true, \"media\" : \"{}\", \"title\" : \"title\", \"board_section_id\" : \"board_section_id\", \"dominant_color\" : \"#6E7874\", \"alt_text\" : \"alt_text\", \"board_id\" : \"board_id\", \"creative_type\" : \"creative_type\", \"parent_pin_id\" : \"parent_pin_id\", \"id\" : \"813744226420795884\", \"is_standard\" : true }";
+                    String exampleString = "{ \"board_owner\" : \"\", \"pin_metrics\" : { \"90d\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3 }, \"lifetime_metrics\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3, \"reaction\" : 10, \"comment\" : 2 } }, \"is_owner\" : true, \"link\" : \"link\", \"created_at\" : \"2000-01-23T04:56:07.000+00:00\", \"description\" : \"description\", \"has_been_promoted\" : true, \"media\" : \"\", \"title\" : \"title\", \"board_section_id\" : \"board_section_id\", \"dominant_color\" : \"dominant_color\", \"alt_text\" : \"alt_text\", \"board_id\" : \"board_id\", \"creative_type\" : \"\", \"parent_pin_id\" : \"parent_pin_id\", \"id\" : \"id\", \"is_standard\" : true }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -665,41 +751,50 @@ public interface PinsApi {
     String PATH_PINS_UPDATE = "/pins/{pin_id}";
     /**
      * PATCH /pins/{pin_id} : Update Pin
-     * Update a pin owned by the \&quot;operating user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Update a pin owned by the \&quot;operating user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
      *
-     * @param pinId Unique identifier of a Pin. (required)
+     * @param pinId  (required)
      * @param pinUpdate  (required)
      * @param adAccountId Unique identifier of an ad account. (optional)
-     * @return response (status code 200)
-     *         or Not authorized to update Pin. (status code 403)
-     *         or Pin not found. (status code 404)
-     *         or This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window. (status code 429)
-     *         or Unexpected error (status code 200)
+     * @return The request has succeeded. (status code 200)
+     *         or The request could not be understood by the server due to unexpected data. (status code 400)
+     *         or Authentication is required and has either failed or not been provided. (status code 401)
+     *         or The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. (status code 403)
+     *         or The requested resource could not be found on this server. (status code 404)
+     *         or The user has sent too many requests in a given amount of time and is being rate limited. (status code 429)
+     *         or An unexpected error response. (status code 200)
      */
     @Operation(
         operationId = "pinsUpdate",
         summary = "Update Pin",
-        description = "Update a pin owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>",
+        description = "Update a pin owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an `ad_account_id` (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**",
         tags = { "pins" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "response", content = {
+            @ApiResponse(responseCode = "200", description = "The request has succeeded.", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = Pin.class))
             }),
-            @ApiResponse(responseCode = "403", description = "Not authorized to update Pin.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "404", description = "Pin not found.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "429", description = "This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             }),
-            @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            @ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
+            }),
+            @ApiResponse(responseCode = "default", description = "An unexpected error response.", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PinterestLibError.class))
             })
         },
         security = {
-            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "boards:read", "boards:write", "pins:read", "pins:write" })
+            @SecurityRequirement(name = "pinterest_oauth2", scopes={ "boards:read", "boards:write", "pins:read", "pins:write" }),
+            @SecurityRequirement(name = "client_credentials", scopes={ "boards:read", "boards:write", "pins:read", "pins:write" })
         }
     )
     @RequestMapping(
@@ -709,34 +804,44 @@ public interface PinsApi {
         consumes = { "application/json" }
     )
     default ResponseEntity<Pin> pinsUpdate(
-        @NotNull @Parameter(name = "pin_id", description = "Unique identifier of a Pin.", required = true, in = ParameterIn.PATH) @PathVariable("pin_id") String pinId,
+        @NotNull @Pattern(regexp = "^\\d+$") @Parameter(name = "pin_id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("pin_id") String pinId,
         @Parameter(name = "PinUpdate", description = "", required = true) @Valid @RequestBody PinUpdate pinUpdate,
         @Pattern(regexp = "^\\d+$") @Size(max = 18) @Parameter(name = "ad_account_id", description = "Unique identifier of an ad account.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "ad_account_id", required = false) @Nullable String adAccountId
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"note\" : \"note\", \"board_owner\" : \"{}\", \"media_source\" : \"{}\", \"pin_metrics\" : { \"90d\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3 }, \"lifetime_metrics\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3, \"reaction\" : 10, \"comment\" : 2 } }, \"is_owner\" : true, \"link\" : \"https://www.pinterest.com/\", \"created_at\" : \"2020-01-01T20:10:40Z\", \"description\" : \"description\", \"has_been_promoted\" : true, \"media\" : \"{}\", \"title\" : \"title\", \"board_section_id\" : \"board_section_id\", \"dominant_color\" : \"#6E7874\", \"alt_text\" : \"alt_text\", \"board_id\" : \"board_id\", \"creative_type\" : \"creative_type\", \"parent_pin_id\" : \"parent_pin_id\", \"id\" : \"813744226420795884\", \"is_standard\" : true }";
+                    String exampleString = "{ \"board_owner\" : \"\", \"pin_metrics\" : { \"90d\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3 }, \"lifetime_metrics\" : { \"pin_click\" : 7, \"impression\" : 2, \"clickthrough\" : 3, \"reaction\" : 10, \"comment\" : 2 } }, \"is_owner\" : true, \"link\" : \"link\", \"created_at\" : \"2000-01-23T04:56:07.000+00:00\", \"description\" : \"description\", \"has_been_promoted\" : true, \"media\" : \"\", \"title\" : \"title\", \"board_section_id\" : \"board_section_id\", \"dominant_color\" : \"dominant_color\", \"alt_text\" : \"alt_text\", \"board_id\" : \"board_id\", \"creative_type\" : \"\", \"parent_pin_id\" : \"parent_pin_id\", \"id\" : \"id\", \"is_standard\" : true }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"code\" : 2, \"message\" : \"AdAccount not found.\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

@@ -6,9 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | 
-**feedId** | **String** |  | 
 **createdAt** | [**Date**](Date.md) |  | 
+**feedId** | **String** |  | 
+**id** | **String** |  | 
 **status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | 
 
 

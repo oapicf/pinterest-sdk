@@ -5,14 +5,14 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.ConversionTagResponse
+import org.openapitools.models.ConversionTag
 import scala.collection.immutable.Seq
 
 /**
  * 
  * @param items 
  */
-case class ConversionTagListResponse(items: Option[Seq[ConversionTagResponse]]
+case class ConversionTagListResponse(items: Option[Seq[ConversionTag]]
                 )
 
 object ConversionTagListResponse {

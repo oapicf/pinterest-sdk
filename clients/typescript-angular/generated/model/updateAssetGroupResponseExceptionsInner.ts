@@ -11,6 +11,10 @@
 
 export interface UpdateAssetGroupResponseExceptionsInner { 
     /**
+     * Asset group id of the exception.
+     */
+    asset_group_id?: string;
+    /**
      * Error code associated with the error editing asset group.
      */
     code?: number;
@@ -18,9 +22,5 @@ export interface UpdateAssetGroupResponseExceptionsInner {
      * Error message associated with the error editing asset group.
      */
     message?: string;
-    /**
-     * Asset group id of the exception.
-     */
-    asset_group_id?: string;
 }
 

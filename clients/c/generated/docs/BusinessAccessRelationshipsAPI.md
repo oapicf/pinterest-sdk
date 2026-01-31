@@ -4,13 +4,81 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**BusinessAccessRelationshipsAPI_brandAccountsCreate**](BusinessAccessRelationshipsAPI.md#BusinessAccessRelationshipsAPI_brandAccountsCreate) | **POST** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts | Create a Brand Account
+[**BusinessAccessRelationshipsAPI_brandAccountsUpdate**](BusinessAccessRelationshipsAPI.md#BusinessAccessRelationshipsAPI_brandAccountsUpdate) | **PATCH** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id} | Update a Brand Account
 [**BusinessAccessRelationshipsAPI_deleteBusinessMembership**](BusinessAccessRelationshipsAPI.md#BusinessAccessRelationshipsAPI_deleteBusinessMembership) | **DELETE** /businesses/{business_id}/members | Terminate business memberships
 [**BusinessAccessRelationshipsAPI_deleteBusinessPartners**](BusinessAccessRelationshipsAPI.md#BusinessAccessRelationshipsAPI_deleteBusinessPartners) | **DELETE** /businesses/{business_id}/partners | Terminate business partnerships
 [**BusinessAccessRelationshipsAPI_getBusinessEmployers**](BusinessAccessRelationshipsAPI.md#BusinessAccessRelationshipsAPI_getBusinessEmployers) | **GET** /businesses/employers | List business employers for user
 [**BusinessAccessRelationshipsAPI_getBusinessMembers**](BusinessAccessRelationshipsAPI.md#BusinessAccessRelationshipsAPI_getBusinessMembers) | **GET** /businesses/{business_id}/members | Get business members
 [**BusinessAccessRelationshipsAPI_getBusinessPartners**](BusinessAccessRelationshipsAPI.md#BusinessAccessRelationshipsAPI_getBusinessPartners) | **GET** /businesses/{business_id}/partners | Get business partners
+[**BusinessAccessRelationshipsAPI_systemUserUpdate**](BusinessAccessRelationshipsAPI.md#BusinessAccessRelationshipsAPI_systemUserUpdate) | **PATCH** /businesses/{business_id}/system_users/{system_user_id} | Update a system user information.
 [**BusinessAccessRelationshipsAPI_updateBusinessMemberships**](BusinessAccessRelationshipsAPI.md#BusinessAccessRelationshipsAPI_updateBusinessMemberships) | **PATCH** /businesses/{business_id}/members | Update member&#39;s business role
 
+
+# **BusinessAccessRelationshipsAPI_brandAccountsCreate**
+```c
+// Create a Brand Account
+//
+// Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+//
+brand_accounts_create_200_response_t* BusinessAccessRelationshipsAPI_brandAccountsCreate(apiClient_t *apiClient, char *business_hierarchy_id, brand_accounts_create_request_t *brand_accounts_create_request);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**business_hierarchy_id** | **char \*** | business hierarchy node id | 
+**brand_accounts_create_request** | **[brand_accounts_create_request_t](brand_accounts_create_request.md) \*** |  | 
+
+### Return type
+
+[brand_accounts_create_200_response_t](brand_accounts_create_200_response.md) *
+
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **BusinessAccessRelationshipsAPI_brandAccountsUpdate**
+```c
+// Update a Brand Account
+//
+// Update an existing Brand Account
+//
+brand_accounts_create_200_response_t* BusinessAccessRelationshipsAPI_brandAccountsUpdate(apiClient_t *apiClient, char *business_hierarchy_id, char *brand_account_id, brand_accounts_update_request_t *brand_accounts_update_request);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**business_hierarchy_id** | **char \*** | business hierarchy node id | 
+**brand_account_id** | **char \*** | Unique identifier of a brand account. | 
+**brand_accounts_update_request** | **[brand_accounts_update_request_t](brand_accounts_update_request.md) \*** |  | 
+
+### Return type
+
+[brand_accounts_create_200_response_t](brand_accounts_create_200_response.md) *
+
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **BusinessAccessRelationshipsAPI_deleteBusinessMembership**
 ```c
@@ -114,7 +182,7 @@ Name | Type | Description  | Notes
 //
 // Get all members of the specified business. The return response will include the member's business_role and assets they have access to if assets_summary=TRUE
 //
-get_business_members_200_response_t* BusinessAccessRelationshipsAPI_getBusinessMembers(apiClient_t *apiClient, char *business_id, int *assets_summary, list_t *business_roles, char *member_ids, int *start_index, char *bookmark, int *page_size);
+get_business_members_200_response_t* BusinessAccessRelationshipsAPI_getBusinessMembers(apiClient_t *apiClient, char *business_id, int *fetch_system_users, int *assets_summary, list_t *business_roles, char *member_ids, int *start_index, char *bookmark, int *page_size);
 ```
 
 ### Parameters
@@ -122,6 +190,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **business_id** | **char \*** | Unique identifier of the requesting business. | 
+**fetch_system_users** | **int \*** | Fetches system users if True. Fetches regular user employees if False. | [optional] [default to false]
 **assets_summary** | **int \*** | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to false]
 **business_roles** | **[list_t](member_business_role.md) \*** | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. | [optional] 
 **member_ids** | **char \*** | A list of business members ids separated by comma. | [optional] 
@@ -178,6 +247,38 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **BusinessAccessRelationshipsAPI_systemUserUpdate**
+```c
+// Update a system user information.
+//
+// Update a system user information such as name.
+//
+void BusinessAccessRelationshipsAPI_systemUserUpdate(apiClient_t *apiClient, char *business_id, char *system_user_id, system_user_update_request_t *system_user_update_request);
+```
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**apiClient** | **apiClient_t \*** | context containing the client configuration |
+**business_id** | **char \*** | Unique identifier of the requesting business. | 
+**system_user_id** | **char \*** | Unique identifier of a system user. | 
+**system_user_update_request** | **[system_user_update_request_t](system_user_update_request.md) \*** |  | 
+
+### Return type
+
+void
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -9,23 +9,23 @@ import org.openapitools.models.CatalogsCreativeAssetsProductGroupFilters
 
 /**
  * 
+ * @param catalogUnderscoreid Catalog id pertaining to the creative assets product group.
  * @param catalogUnderscoretype 
- * @param id ID of the creative assets product group.
- * @param name Name of creative assets product group
+ * @param createdUnderscoreat Unix timestamp in seconds of when catalog product group was created.
  * @param description 
  * @param filters 
- * @param createdUnderscoreat Unix timestamp in seconds of when catalog product group was created.
+ * @param id ID of the creative assets product group.
+ * @param name Name of creative assets product group
  * @param updatedUnderscoreat Unix timestamp in seconds of last time catalog product group was updated.
- * @param catalogUnderscoreid Catalog id pertaining to the creative assets product group.
  */
-case class CatalogsCreativeAssetsProductGroup(catalogUnderscoretype: String,
-                id: String,
-                name: Option[String],
+case class CatalogsCreativeAssetsProductGroup(catalogUnderscoreid: String,
+                catalogUnderscoretype: String,
+                createdUnderscoreat: Option[Int],
                 description: Option[String],
                 filters: CatalogsCreativeAssetsProductGroupFilters,
-                createdUnderscoreat: Option[Int],
-                updatedUnderscoreat: Option[Int],
-                catalogUnderscoreid: String
+                id: String,
+                name: Option[String],
+                updatedUnderscoreat: Option[Int]
                 )
 
 object CatalogsCreativeAssetsProductGroup {

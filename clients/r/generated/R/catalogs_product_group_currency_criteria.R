@@ -7,16 +7,16 @@
 #' @title CatalogsProductGroupCurrencyCriteria
 #' @description CatalogsProductGroupCurrencyCriteria Class
 #' @format An \code{R6Class} generator object
-#' @field values  \link{NonNullableCatalogsCurrency}
 #' @field negated  character [optional]
+#' @field values  \link{NonNullableCatalogsCurrency}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CatalogsProductGroupCurrencyCriteria <- R6::R6Class(
   "CatalogsProductGroupCurrencyCriteria",
   public = list(
-    `values` = NULL,
     `negated` = NULL,
+    `values` = NULL,
 
     #' @description
     #' Initialize a new CatalogsProductGroupCurrencyCriteria class.
@@ -71,13 +71,13 @@ CatalogsProductGroupCurrencyCriteria <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CatalogsProductGroupCurrencyCriteriaObject <- list()
-      if (!is.null(self$`values`)) {
-        CatalogsProductGroupCurrencyCriteriaObject[["values"]] <-
-          self$`values`$toSimpleType()
-      }
       if (!is.null(self$`negated`)) {
         CatalogsProductGroupCurrencyCriteriaObject[["negated"]] <-
           self$`negated`
+      }
+      if (!is.null(self$`values`)) {
+        CatalogsProductGroupCurrencyCriteriaObject[["values"]] <-
+          self$`values`$toSimpleType()
       }
       return(CatalogsProductGroupCurrencyCriteriaObject)
     },
@@ -89,13 +89,13 @@ CatalogsProductGroupCurrencyCriteria <- R6::R6Class(
     #' @return the instance of CatalogsProductGroupCurrencyCriteria
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`negated`)) {
+        self$`negated` <- this_object$`negated`
+      }
       if (!is.null(this_object$`values`)) {
         `values_object` <- NonNullableCatalogsCurrency$new()
         `values_object`$fromJSON(jsonlite::toJSON(this_object$`values`, auto_unbox = TRUE, digits = NA))
         self$`values` <- `values_object`
-      }
-      if (!is.null(this_object$`negated`)) {
-        self$`negated` <- this_object$`negated`
       }
       self
     },
@@ -118,8 +118,8 @@ CatalogsProductGroupCurrencyCriteria <- R6::R6Class(
     #' @return the instance of CatalogsProductGroupCurrencyCriteria
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`values` <- NonNullableCatalogsCurrency$new()$fromJSON(jsonlite::toJSON(this_object$`values`, auto_unbox = TRUE, digits = NA))
       self$`negated` <- this_object$`negated`
+      self$`values` <- NonNullableCatalogsCurrency$new()$fromJSON(jsonlite::toJSON(this_object$`values`, auto_unbox = TRUE, digits = NA))
       self
     },
 

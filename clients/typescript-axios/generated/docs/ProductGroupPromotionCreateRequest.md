@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ad_group_id** | **string** | ID of the Ad Group the Product Group Promotion belongs to. | [default to undefined]
-**product_group_promotion** | [**Array&lt;ProductGroupPromotionCreateRequestElement&gt;**](ProductGroupPromotionCreateRequestElement.md) |  | [default to undefined]
+**product_group_promotion** | [**Array&lt;ProductGroupPromotion&gt;**](ProductGroupPromotion.md) |  | [default to undefined]
 
 ## Example
 

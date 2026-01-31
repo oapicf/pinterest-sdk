@@ -2,7 +2,7 @@ package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.CatalogsProductGroupMultipleStringCriteria;
+import org.openapitools.model.CatalogsProductGroupFilterOperatorTypeCriteria;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -17,23 +17,23 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CustomLabel2Filter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CustomLabel2Filter   {
-  private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_2;
+  private CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_2;
 
   public CustomLabel2Filter() {
   }
 
   @JsonCreator
   public CustomLabel2Filter(
-    @JsonProperty(required = true, value = "CUSTOM_LABEL_2") CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_2
+    @JsonProperty(required = true, value = "CUSTOM_LABEL_2") CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_2
   ) {
     this.CUSTOM_LABEL_2 = CUSTOM_LABEL_2;
   }
 
   /**
    **/
-  public CustomLabel2Filter CUSTOM_LABEL_2(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_2) {
+  public CustomLabel2Filter CUSTOM_LABEL_2(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_2) {
     this.CUSTOM_LABEL_2 = CUSTOM_LABEL_2;
     return this;
   }
@@ -41,12 +41,12 @@ public class CustomLabel2Filter   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "CUSTOM_LABEL_2")
-  @NotNull @Valid public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL2() {
+  @NotNull @Valid public CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL2() {
     return CUSTOM_LABEL_2;
   }
 
   @JsonProperty(required = true, value = "CUSTOM_LABEL_2")
-  public void setCUSTOMLABEL2(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_2) {
+  public void setCUSTOMLABEL2(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_2) {
     this.CUSTOM_LABEL_2 = CUSTOM_LABEL_2;
   }
 

@@ -20,7 +20,6 @@ public struct CatalogsReportFeedIngestionStats: Codable, JSONEncodable, Hashable
         case error = "ERROR"
     }
     public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public var reportType: ReportType?
     /** ID of the catalog entity. */
     public var catalogId: String?
     /** The event code that a diagnostics aggregated number references */
@@ -31,26 +30,27 @@ public struct CatalogsReportFeedIngestionStats: Codable, JSONEncodable, Hashable
     public var message: String?
     /** Number of occurrences of the issue */
     public var occurrences: Int?
+    public var reportType: ReportType?
     /** An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue */
     public var severity: Severity?
 
-    public init(reportType: ReportType? = nil, catalogId: String? = nil, code: Int? = nil, codeLabel: String? = nil, message: String? = nil, occurrences: Int? = nil, severity: Severity? = nil) {
-        self.reportType = reportType
+    public init(catalogId: String? = nil, code: Int? = nil, codeLabel: String? = nil, message: String? = nil, occurrences: Int? = nil, reportType: ReportType? = nil, severity: Severity? = nil) {
         self.catalogId = catalogId
         self.code = code
         self.codeLabel = codeLabel
         self.message = message
         self.occurrences = occurrences
+        self.reportType = reportType
         self.severity = severity
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case reportType = "report_type"
         case catalogId = "catalog_id"
         case code
         case codeLabel = "code_label"
         case message
         case occurrences
+        case reportType = "report_type"
         case severity
     }
 
@@ -58,12 +58,12 @@ public struct CatalogsReportFeedIngestionStats: Codable, JSONEncodable, Hashable
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(reportType, forKey: .reportType)
         try container.encodeIfPresent(catalogId, forKey: .catalogId)
         try container.encodeIfPresent(code, forKey: .code)
         try container.encodeIfPresent(codeLabel, forKey: .codeLabel)
         try container.encodeIfPresent(message, forKey: .message)
         try container.encodeIfPresent(occurrences, forKey: .occurrences)
+        try container.encodeIfPresent(reportType, forKey: .reportType)
         try container.encodeIfPresent(severity, forKey: .severity)
     }
 }

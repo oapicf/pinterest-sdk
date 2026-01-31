@@ -12,10 +12,10 @@ import org.joda.time.DateTime
 import InviteExceptionResponse._
 
 case class InviteExceptionResponse (
-  /* Unique identifier of the invite/request. */
-  inviteOrRequestId: Option[String],
-/* Error code associated with the error in performing the action on the invite/request. */
+  /* Error code associated with the error in performing the action on the invite/request. */
   code: Option[Integer],
+/* Unique identifier of the invite/request. */
+  inviteOrRequestId: Option[String],
 /* Error message associated with the error in performing the action on the invite/request. */
   message: Option[String],
 /* A list of users' usernames or emails OR a list of partner ids that caused the error. */

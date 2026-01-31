@@ -1,6 +1,276 @@
 #tag Class
 Protected Class BusinessAccessRelationshipsApi
 	#tag Method, Flags = &h0
+		Sub BrandAccountsCreate(, businessHierarchyId As String, brandAccountsCreateRequest As OpenAPIClient.Models.BrandAccountsCreateRequest)
+		  // Operation brand_accounts/create
+		  // Create a Brand Account
+		  // - 
+		  // - parameter businessHierarchyId: (path) business hierarchy node id 
+		  // - parameter brandAccountsCreateRequest: (body)  
+		  //
+		  // Invokes BusinessAccessRelationshipsApiCallbackHandler.BrandAccountsCreateCallback(BrandAccountsCreate200Response) on completion. 
+		  //
+		  // - POST /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts
+		  // - Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+		  // - defaultResponse: Nil
+		  //
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: pinterest_oauth2
+		  //
+		  
+		  Dim localVarHTTPSocket As New HTTPSecureSocket
+		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(brandAccountsCreateRequest), "application/json")
+		  
+		  
+		  
+
+
+		  Dim localVarPath As String = "/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts"
+		  
+		  Dim localVarPathStringbusinessHierarchyId As String = businessHierarchyId
+		  
+		  localVarPath = localVarPath.ReplaceAllB("{business_hierarchy_id}", localVarPathStringbusinessHierarchyId)
+		  
+		  
+		  AddHandler localVarHTTPSocket.PageReceived, addressof me.BrandAccountsCreate_handler
+		  AddHandler localVarHTTPSocket.Error, addressof Me.BrandAccountsCreate_error
+		  
+		  
+		  localVarHTTPSocket.SendRequest("POST", Me.BasePath + localVarPath)
+		  if localVarHTTPSocket.LastErrorCode <> 0 then
+		    Dim localVarException As New OpenAPIClient.OpenAPIClientException(localVarHTTPSocket.LastErrorCode)
+			Raise localVarException
+		  end if
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function BrandAccountsCreatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.BrandAccountsCreate200Response) As Boolean
+		  Dim contentType As String = Headers.Value("Content-Type")
+		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
+		  Content = DefineEncoding(Content, contentEncoding)
+		  
+		  If HTTPStatus > 199 and HTTPStatus < 300 then
+		    If contentType.LeftB(16) = "application/json" then
+		      
+			  outData = New OpenAPIClient.Models.BrandAccountsCreate200Response
+			  Try
+		        Xoson.fromJSON(outData, Content.toText())
+
+		      Catch e As JSONException
+		        error.Message = error.Message + " with JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xojo.Data.InvalidJSONException
+		        error.Message = error.Message + " with Xojo.Data.JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xoson.XosonException
+		        error.Message = error.Message + " with Xoson parse exception: " + e.Message
+		        error.ErrorNumber = kErrorXosonProblem
+		        Return False
+
+		      End Try
+		      
+		      
+		    ElseIf contentType.LeftB(19) = "multipart/form-data" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    ElseIf contentType.LeftB(33) = "application/x-www-form-urlencoded" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    Else
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    End If
+		  Else
+		    error.Message = error.Message + ". " + Content
+			error.ErrorNumber = kErrorHTTPFail
+		    Return False
+		  End If
+		  
+		  Return True
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub BrandAccountsCreate_error(sender As HTTPSecureSocket, Code As Integer)
+		  If sender <> nil Then sender.Close()
+
+		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
+		  Dim data As OpenAPIClient.Models.BrandAccountsCreate200Response
+		  CallbackHandler.BrandAccountsCreateCallback(error, data)
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub BrandAccountsCreate_handler(sender As HTTPSecureSocket, URL As String, HTTPStatus As Integer, Headers As InternetHeaders, Content As String)
+		  #Pragma Unused URL
+		  
+
+		  If sender <> nil Then sender.Close()
+		  
+		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
+		  
+		  Dim data As OpenAPIClient.Models.BrandAccountsCreate200Response
+		  Call BrandAccountsCreatePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
+		  
+		  CallbackHandler.BrandAccountsCreateCallback(error, data)
+		End Sub
+	#tag EndMethod
+
+
+
+
+	#tag Method, Flags = &h0
+		Sub BrandAccountsUpdate(, businessHierarchyId As String, brandAccountId As String, brandAccountsUpdateRequest As OpenAPIClient.Models.BrandAccountsUpdateRequest)
+		  // Operation brand_accounts/update
+		  // Update a Brand Account
+		  // - 
+		  // - parameter businessHierarchyId: (path) business hierarchy node id 
+		  // - parameter brandAccountId: (path) Unique identifier of a brand account. 
+		  // - parameter brandAccountsUpdateRequest: (body)  
+		  //
+		  // Invokes BusinessAccessRelationshipsApiCallbackHandler.BrandAccountsUpdateCallback(BrandAccountsCreate200Response) on completion. 
+		  //
+		  // - PATCH /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}
+		  // - Update an existing Brand Account
+		  // - defaultResponse: Nil
+		  //
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: pinterest_oauth2
+		  //
+		  
+		  Dim localVarHTTPSocket As New HTTPSecureSocket
+		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(brandAccountsUpdateRequest), "application/json")
+		  
+		  
+		  
+
+
+		  Dim localVarPath As String = "/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}"
+		  
+		  Dim localVarPathStringbusinessHierarchyId As String = businessHierarchyId
+		  
+		  localVarPath = localVarPath.ReplaceAllB("{business_hierarchy_id}", localVarPathStringbusinessHierarchyId)
+		  Dim localVarPathStringbrandAccountId As String = brandAccountId
+		  
+		  localVarPath = localVarPath.ReplaceAllB("{brand_account_id}", localVarPathStringbrandAccountId)
+		  
+		  
+		  AddHandler localVarHTTPSocket.PageReceived, addressof me.BrandAccountsUpdate_handler
+		  AddHandler localVarHTTPSocket.Error, addressof Me.BrandAccountsUpdate_error
+		  
+		  
+		  localVarHTTPSocket.SendRequest("PATCH", Me.BasePath + localVarPath)
+		  if localVarHTTPSocket.LastErrorCode <> 0 then
+		    Dim localVarException As New OpenAPIClient.OpenAPIClientException(localVarHTTPSocket.LastErrorCode)
+			Raise localVarException
+		  end if
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function BrandAccountsUpdatePrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.BrandAccountsCreate200Response) As Boolean
+		  Dim contentType As String = Headers.Value("Content-Type")
+		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
+		  Content = DefineEncoding(Content, contentEncoding)
+		  
+		  If HTTPStatus > 199 and HTTPStatus < 300 then
+		    If contentType.LeftB(16) = "application/json" then
+		      
+			  outData = New OpenAPIClient.Models.BrandAccountsCreate200Response
+			  Try
+		        Xoson.fromJSON(outData, Content.toText())
+
+		      Catch e As JSONException
+		        error.Message = error.Message + " with JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xojo.Data.InvalidJSONException
+		        error.Message = error.Message + " with Xojo.Data.JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xoson.XosonException
+		        error.Message = error.Message + " with Xoson parse exception: " + e.Message
+		        error.ErrorNumber = kErrorXosonProblem
+		        Return False
+
+		      End Try
+		      
+		      
+		    ElseIf contentType.LeftB(19) = "multipart/form-data" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    ElseIf contentType.LeftB(33) = "application/x-www-form-urlencoded" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    Else
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    End If
+		  Else
+		    error.Message = error.Message + ". " + Content
+			error.ErrorNumber = kErrorHTTPFail
+		    Return False
+		  End If
+		  
+		  Return True
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub BrandAccountsUpdate_error(sender As HTTPSecureSocket, Code As Integer)
+		  If sender <> nil Then sender.Close()
+
+		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
+		  Dim data As OpenAPIClient.Models.BrandAccountsCreate200Response
+		  CallbackHandler.BrandAccountsUpdateCallback(error, data)
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub BrandAccountsUpdate_handler(sender As HTTPSecureSocket, URL As String, HTTPStatus As Integer, Headers As InternetHeaders, Content As String)
+		  #Pragma Unused URL
+		  
+
+		  If sender <> nil Then sender.Close()
+		  
+		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
+		  
+		  Dim data As OpenAPIClient.Models.BrandAccountsCreate200Response
+		  Call BrandAccountsUpdatePrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
+		  
+		  CallbackHandler.BrandAccountsUpdateCallback(error, data)
+		End Sub
+	#tag EndMethod
+
+
+
+
+	#tag Method, Flags = &h0
 		Sub DeleteBusinessMembership(, businessId As String, membersToDeleteBody As OpenAPIClient.Models.MembersToDeleteBody)
 		  // Operation delete_business_membership
 		  // Terminate business memberships
@@ -402,11 +672,12 @@ Protected Class BusinessAccessRelationshipsApi
 
 
 	#tag Method, Flags = &h0
-		Sub GetBusinessMembers(, businessId As String, Optional assetsSummary As Xoson.O.OptionalBoolean, businessRoles() As MemberBusinessRole, Optional memberIds As Xoson.O.OptionalString, Optional startIndex As Xoson.O.OptionalInteger, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
+		Sub GetBusinessMembers(, businessId As String, Optional fetchSystemUsers As Xoson.O.OptionalBoolean, Optional assetsSummary As Xoson.O.OptionalBoolean, businessRoles() As MemberBusinessRole, Optional memberIds As Xoson.O.OptionalString, Optional startIndex As Xoson.O.OptionalInteger, Optional bookmark As Xoson.O.OptionalString, Optional pageSize As Xoson.O.OptionalInteger)
 		  // Operation get/business_members
 		  // Get business members
 		  // - 
 		  // - parameter businessId: (path) Unique identifier of the requesting business. 
+		  // - parameter fetchSystemUsers: (query) Fetches system users if True. Fetches regular user employees if False. (optional, default to false)
 		  // - parameter assetsSummary: (query) Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional, default to false)
 		  // - parameter businessRoles: (query) A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. (optional, default to Nil)
 		  // - parameter memberIds: (query) A list of business members ids separated by comma. (optional, default to Sample)
@@ -429,7 +700,9 @@ Protected Class BusinessAccessRelationshipsApi
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
 		  
 		  Dim localVarQueryParams As String = "?"
-		  If assetsSummary <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("assets_summary") + "=" + EncodeURLComponent(assetsSummary.ToString)
+		  If fetchSystemUsers <> nil Then localVarQueryParams = localVarQueryParams + EncodeURLComponent("fetch_system_users") + "=" + EncodeURLComponent(fetchSystemUsers.ToString)
+		  
+		  If assetsSummary <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("assets_summary") + "=" + EncodeURLComponent(assetsSummary.ToString)
 		  
 		  
 		  Dim localVarQueryStringsbusinessRoles() As String
@@ -713,6 +986,83 @@ Protected Class BusinessAccessRelationshipsApi
 		  Call GetBusinessPartnersPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.GetBusinessPartnersCallback(error, data)
+		End Sub
+	#tag EndMethod
+
+
+
+
+	#tag Method, Flags = &h0
+		Sub SystemUserUpdate(, businessId As String, systemUserId As String, systemUserUpdateRequest As OpenAPIClient.Models.SystemUserUpdateRequest)
+		  // Operation system_user/update
+		  // Update a system user information.
+		  // - parameter businessId: (path) Unique identifier of the requesting business. 
+		  // - parameter systemUserId: (path) Unique identifier of a system user. 
+		  // - parameter systemUserUpdateRequest: (body)  
+		  //
+		  // Invokes BusinessAccessRelationshipsApiCallbackHandler.SystemUserUpdateCallback() on completion. 
+		  //
+		  // - PATCH /businesses/{business_id}/system_users/{system_user_id}
+		  // - Update a system user information such as name.
+		  //
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: pinterest_oauth2
+		  //
+		  
+		  Dim localVarHTTPSocket As New HTTPSecureSocket
+		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(systemUserUpdateRequest), "application/json")
+		  
+		  
+		  
+
+
+		  Dim localVarPath As String = "/businesses/{business_id}/system_users/{system_user_id}"
+		  
+		  Dim localVarPathStringbusinessId As String = businessId
+		  
+		  localVarPath = localVarPath.ReplaceAllB("{business_id}", localVarPathStringbusinessId)
+		  Dim localVarPathStringsystemUserId As String = systemUserId
+		  
+		  localVarPath = localVarPath.ReplaceAllB("{system_user_id}", localVarPathStringsystemUserId)
+		  
+		  
+		  AddHandler localVarHTTPSocket.PageReceived, addressof Me.SystemUserUpdate_handler
+		  AddHandler localVarHTTPSocket.Error, addressof Me.SystemUserUpdate_error
+		  
+		  localVarHTTPSocket.SendRequest("PATCH", Me.BasePath + localVarPath)
+		  if localVarHTTPSocket.LastErrorCode <> 0 then
+		    Dim localVarException As New OpenAPIClient.OpenAPIClientException(localVarHTTPSocket.LastErrorCode)
+			Raise localVarException
+		  end if
+		  
+		End Sub
+	#tag EndMethod
+
+
+	#tag Method, Flags = &h21
+		Private Sub SystemUserUpdate_error(sender As HTTPSecureSocket, Code As Integer)
+		  If sender <> nil Then sender.Close()
+
+		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
+		  CallbackHandler.SystemUserUpdateCallback(error)
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub SystemUserUpdate_handler(sender As HTTPSecureSocket, URL As String, HTTPStatus As Integer, Headers As InternetHeaders, Content As String)
+		  #Pragma Unused URL
+		  #Pragma Unused Headers
+		  #Pragma Unused Content
+
+		  If sender <> nil Then sender.Close()
+		  
+		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", "")
+		  
+		  
+		  
+		  CallbackHandler.SystemUserUpdateCallback(error)
 		End Sub
 	#tag EndMethod
 

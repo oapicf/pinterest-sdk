@@ -26,9 +26,9 @@ import com.squareup.moshi.JsonClass
  * Request object to create catalogs items
  *
  * @param country 
+ * @param items Array with catalogs items
  * @param language We recommend using the CatalogsLocale values.
  * @param operation 
- * @param items Array with catalogs items
  */
 
 
@@ -37,16 +37,16 @@ data class CatalogsItemsCreateBatchRequest (
     @Json(name = "country")
     val country: Country,
 
+    /* Array with catalogs items */
+    @Json(name = "items")
+    val items: kotlin.collections.List<ItemCreateBatchRecord>,
+
     /* We recommend using the CatalogsLocale values. */
     @Json(name = "language")
     val language: CatalogsItemsCreateBatchRequest.Language,
 
     @Json(name = "operation")
-    val operation: BatchOperation,
-
-    /* Array with catalogs items */
-    @Json(name = "items")
-    val items: kotlin.collections.List<ItemCreateBatchRecord>
+    val operation: BatchOperation
 
 ) {
 

@@ -9,8 +9,8 @@
 -export_type([openapi_catalogs_list_200_response/0]).
 
 -type openapi_catalogs_list_200_response() ::
-  [ {'items', list(openapi_catalog:openapi_catalog()) }
-  | {'bookmark', binary() }
+  [ {'bookmark', binary() }
+  | {'items', list(openapi_catalog:openapi_catalog()) }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_catalogs_list_200_response() ->
     openapi_catalogs_list_200_response([]).
 
 openapi_catalogs_list_200_response(Fields) ->
-  Default = [ {'items', list(openapi_catalog:openapi_catalog()) }
-            , {'bookmark', binary() }
+  Default = [ {'bookmark', binary() }
+            , {'items', list(openapi_catalog:openapi_catalog()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

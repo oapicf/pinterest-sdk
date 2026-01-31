@@ -36,20 +36,6 @@ func Test_openapi_AudiencesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AudiencesAPIService AudiencesCreateCustom", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var adAccountId string
-
-		resp, httpRes, err := apiClient.AudiencesAPI.AudiencesCreateCustom(context.Background(), adAccountId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test AudiencesAPIService AudiencesGet", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

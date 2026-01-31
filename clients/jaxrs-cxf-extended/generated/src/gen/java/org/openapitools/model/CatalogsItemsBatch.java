@@ -48,22 +48,18 @@ public class CatalogsItemsBatch  {
   private String batchId;
 
  /**
-  * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
-  */
-  @ApiModelProperty(value = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss")
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'hh:mm:ss.SSSX")
-  private Date createdTime;
-
- /**
   * Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
   */
   @ApiModelProperty(value = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss")
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'hh:mm:ss.SSSX")
   private Date completedTime;
 
-  @ApiModelProperty(value = "")
-  @Valid
-  private BatchOperationStatus status;
+ /**
+  * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
+  */
+  @ApiModelProperty(required = true, value = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss")
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'hh:mm:ss.SSSX")
+  private Date createdTime;
 
  /**
   * Array with the catalogs items processing records part of the catalogs items batch
@@ -71,6 +67,10 @@ public class CatalogsItemsBatch  {
   @ApiModelProperty(value = "Array with the catalogs items processing records part of the catalogs items batch")
   @Valid
   private List<@Valid CreativeAssetsProcessingRecord> items = new ArrayList<>();
+
+  @ApiModelProperty(value = "")
+  @Valid
+  private BatchOperationStatus status;
  /**
   * Get catalogType
   * @return catalogType
@@ -121,32 +121,6 @@ public class CatalogsItemsBatch  {
   }
 
  /**
-  * Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss
-  * @return createdTime
-  */
-  @JsonProperty("created_time")
-  public Date getCreatedTime() {
-    return createdTime;
-  }
-
-  /**
-   * Sets the <code>createdTime</code> property.
-   * <br><em>N.B. <code>createdTime</code> is <b>read only</b>; client code should not call this method</em>.
-   */
- public void setCreatedTime(Date createdTime) {
-    this.createdTime = createdTime;
-  }
-
-  /**
-   * Sets the <code>createdTime</code> property.
-   * <br><em>N.B. <code>createdTime</code> is <b>read only</b>; client code should not call this method</em>.
-   */
-  public CatalogsItemsBatch createdTime(Date createdTime) {
-    this.createdTime = createdTime;
-    return this;
-  }
-
- /**
   * Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss
   * @return completedTime
   */
@@ -173,26 +147,29 @@ public class CatalogsItemsBatch  {
   }
 
  /**
-  * Get status
-  * @return status
+  * Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss
+  * @return createdTime
   */
-  @JsonProperty("status")
-  public BatchOperationStatus getStatus() {
-    return status;
+  @JsonProperty("created_time")
+  @NotNull
+  public Date getCreatedTime() {
+    return createdTime;
   }
 
   /**
-   * Sets the <code>status</code> property.
+   * Sets the <code>createdTime</code> property.
+   * <br><em>N.B. <code>createdTime</code> is <b>read only</b>; client code should not call this method</em>.
    */
- public void setStatus(BatchOperationStatus status) {
-    this.status = status;
+ public void setCreatedTime(Date createdTime) {
+    this.createdTime = createdTime;
   }
 
   /**
-   * Sets the <code>status</code> property.
+   * Sets the <code>createdTime</code> property.
+   * <br><em>N.B. <code>createdTime</code> is <b>read only</b>; client code should not call this method</em>.
    */
-  public CatalogsItemsBatch status(BatchOperationStatus status) {
-    this.status = status;
+  public CatalogsItemsBatch createdTime(Date createdTime) {
+    this.createdTime = createdTime;
     return this;
   }
 
@@ -228,6 +205,30 @@ public class CatalogsItemsBatch  {
     return this;
   }
 
+ /**
+  * Get status
+  * @return status
+  */
+  @JsonProperty("status")
+  public BatchOperationStatus getStatus() {
+    return status;
+  }
+
+  /**
+   * Sets the <code>status</code> property.
+   */
+ public void setStatus(BatchOperationStatus status) {
+    this.status = status;
+  }
+
+  /**
+   * Sets the <code>status</code> property.
+   */
+  public CatalogsItemsBatch status(BatchOperationStatus status) {
+    this.status = status;
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -240,15 +241,15 @@ public class CatalogsItemsBatch  {
     CatalogsItemsBatch catalogsItemsBatch = (CatalogsItemsBatch) o;
     return Objects.equals(this.catalogType, catalogsItemsBatch.catalogType) &&
         Objects.equals(this.batchId, catalogsItemsBatch.batchId) &&
-        Objects.equals(this.createdTime, catalogsItemsBatch.createdTime) &&
         Objects.equals(this.completedTime, catalogsItemsBatch.completedTime) &&
-        Objects.equals(this.status, catalogsItemsBatch.status) &&
-        Objects.equals(this.items, catalogsItemsBatch.items);
+        Objects.equals(this.createdTime, catalogsItemsBatch.createdTime) &&
+        Objects.equals(this.items, catalogsItemsBatch.items) &&
+        Objects.equals(this.status, catalogsItemsBatch.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, batchId, createdTime, completedTime, status, items);
+    return Objects.hash(catalogType, batchId, completedTime, createdTime, items, status);
   }
 
   @Override
@@ -258,10 +259,10 @@ public class CatalogsItemsBatch  {
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    completedTime: ").append(toIndentedString(completedTime)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

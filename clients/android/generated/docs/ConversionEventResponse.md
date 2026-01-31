@@ -6,9 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**adAccountId** | **String** | Id of the ad account. |  [optional]
 **conversionEvent** | [**ConversionTagType**](ConversionTagType.md) |  |  [optional]
 **conversionTagId** | **String** | Id of the tag. |  [optional]
-**adAccountId** | **String** | Id of the ad account. |  [optional]
 **createdTime** | **Integer** | Creation date in epoch format. |  [optional]
 
 

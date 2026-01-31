@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TemplatesList200Response"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TemplatesList200Response"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  TemplateResponse = openapi_server.resourceTypes.TemplateResponse
+}
+resourceTypes {
+
+  TemplatesList200Response {
+    title = TemplatesList200Response
+    description = TemplatesList200Response
+    derivedFrom = Root
+    properties {
+        bookmark {
+          type =  string
+          description = ""
+          optional = false
+        }
+        items {
+          type = array
+          items.type = TemplateResponse
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  TemplatesList200Response {
+    title = TemplatesList200Response
+    description = TemplatesList200Response
+    implements = openapi_server.resourceTypes.TemplatesList200Response
+
+  }
+}

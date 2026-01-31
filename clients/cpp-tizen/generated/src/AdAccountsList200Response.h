@@ -47,13 +47,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Ad accounts
-	 */
-	std::list<AdAccount> getItems();
-
-	/*! \brief Set Ad accounts
-	 */
-	void setItems(std::list <AdAccount> items);
 	/*! \brief Get 
 	 */
 	std::string getBookmark();
@@ -61,10 +54,17 @@ public:
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
+	/*! \brief Get 
+	 */
+	std::list<AdAccount> getItems();
+
+	/*! \brief Set 
+	 */
+	void setItems(std::list <AdAccount> items);
 
 private:
-	std::list <AdAccount>items;
 	std::string bookmark;
+	std::list <AdAccount>items;
 	void __init();
 	void __cleanup();
 

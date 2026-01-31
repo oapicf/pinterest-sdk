@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `PinMediaSourceVideoID`
 --
-SELECT `source_type`, `cover_image_url`, `cover_image_content_type`, `cover_image_data`, `media_id`, `is_standard` FROM `PinMediaSourceVideoID` WHERE 1;
+SELECT `cover_image_content_type`, `cover_image_data`, `cover_image_key_frame_time`, `cover_image_url`, `is_standard`, `media_id`, `source_type` FROM `PinMediaSourceVideoID` WHERE 1;
 
 --
 -- INSERT template for table `PinMediaSourceVideoID`
 --
-INSERT INTO `PinMediaSourceVideoID`(`source_type`, `cover_image_url`, `cover_image_content_type`, `cover_image_data`, `media_id`, `is_standard`) VALUES (?, ?, ?, ?, ?, ?);
+INSERT INTO `PinMediaSourceVideoID`(`cover_image_content_type`, `cover_image_data`, `cover_image_key_frame_time`, `cover_image_url`, `is_standard`, `media_id`, `source_type`) VALUES (?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `PinMediaSourceVideoID`
 --
-UPDATE `PinMediaSourceVideoID` SET `source_type` = ?, `cover_image_url` = ?, `cover_image_content_type` = ?, `cover_image_data` = ?, `media_id` = ?, `is_standard` = ? WHERE 1;
+UPDATE `PinMediaSourceVideoID` SET `cover_image_content_type` = ?, `cover_image_data` = ?, `cover_image_key_frame_time` = ?, `cover_image_url` = ?, `is_standard` = ?, `media_id` = ?, `source_type` = ? WHERE 1;
 
 --
 -- DELETE template for table `PinMediaSourceVideoID`

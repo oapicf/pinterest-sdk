@@ -7,16 +7,16 @@
 #' @title GetBusinessPartners200Response
 #' @description GetBusinessPartners200Response Class
 #' @format An \code{R6Class} generator object
-#' @field items List of business partners. list(\link{UserBusinessRoleBinding})
 #' @field bookmark  character [optional]
+#' @field items List of business partners. list(\link{UserBusinessRoleBinding})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 GetBusinessPartners200Response <- R6::R6Class(
   "GetBusinessPartners200Response",
   public = list(
-    `items` = NULL,
     `bookmark` = NULL,
+    `items` = NULL,
 
     #' @description
     #' Initialize a new GetBusinessPartners200Response class.
@@ -69,13 +69,13 @@ GetBusinessPartners200Response <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       GetBusinessPartners200ResponseObject <- list()
-      if (!is.null(self$`items`)) {
-        GetBusinessPartners200ResponseObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toSimpleType())
-      }
       if (!is.null(self$`bookmark`)) {
         GetBusinessPartners200ResponseObject[["bookmark"]] <-
           self$`bookmark`
+      }
+      if (!is.null(self$`items`)) {
+        GetBusinessPartners200ResponseObject[["items"]] <-
+          lapply(self$`items`, function(x) x$toSimpleType())
       }
       return(GetBusinessPartners200ResponseObject)
     },
@@ -87,11 +87,11 @@ GetBusinessPartners200Response <- R6::R6Class(
     #' @return the instance of GetBusinessPartners200Response
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`items`)) {
-        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[UserBusinessRoleBinding]", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`bookmark`)) {
         self$`bookmark` <- this_object$`bookmark`
+      }
+      if (!is.null(this_object$`items`)) {
+        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[UserBusinessRoleBinding]", loadNamespace("openapi"))
       }
       self
     },
@@ -114,8 +114,8 @@ GetBusinessPartners200Response <- R6::R6Class(
     #' @return the instance of GetBusinessPartners200Response
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[UserBusinessRoleBinding]", loadNamespace("openapi"))
       self$`bookmark` <- this_object$`bookmark`
+      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[UserBusinessRoleBinding]", loadNamespace("openapi"))
       self
     },
 

@@ -23,22 +23,22 @@ typedef struct targeting_template_create_t targeting_template_create_t;
 
 
 typedef struct targeting_template_create_t {
-    char *name; // string
     int auto_targeting_enabled; //boolean
-    struct targeting_spec_t *targeting_attributes; //model
-    pinterest_rest_api_placement_group_type__e placement_group; //referenced enum
     list_t *keywords; //nonprimitive container
+    char *name; // string
+    pinterest_rest_api_placement_group_type__e placement_group; //referenced enum
+    struct targeting_spec_t *targeting_attributes; //model
     struct tracking_urls_t *tracking_urls; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } targeting_template_create_t;
 
 __attribute__((deprecated)) targeting_template_create_t *targeting_template_create_create(
-    char *name,
     int auto_targeting_enabled,
-    targeting_spec_t *targeting_attributes,
-    pinterest_rest_api_placement_group_type__e placement_group,
     list_t *keywords,
+    char *name,
+    pinterest_rest_api_placement_group_type__e placement_group,
+    targeting_spec_t *targeting_attributes,
     tracking_urls_t *tracking_urls
 );
 

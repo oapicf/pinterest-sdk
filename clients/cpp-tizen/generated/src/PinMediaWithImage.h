@@ -9,8 +9,7 @@
 
 
 #include <string>
-#include "PinMedia.h"
-#include "PinMediaWithImage_allOf_images.h"
+#include "ImageSize.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -49,22 +48,22 @@ public:
 
 	/*! \brief Get 
 	 */
+	ImageSize getImages();
+
+	/*! \brief Set 
+	 */
+	void setImages(ImageSize  images);
+	/*! \brief Get 
+	 */
 	std::string getMediaType();
 
 	/*! \brief Set 
 	 */
 	void setMediaType(std::string  media_type);
-	/*! \brief Get 
-	 */
-	PinMediaWithImage_allOf_images getImages();
-
-	/*! \brief Set 
-	 */
-	void setImages(PinMediaWithImage_allOf_images  images);
 
 private:
+	ImageSize images;
 	std::string media_type;
-	PinMediaWithImage_allOf_images images;
 	void __init();
 	void __cleanup();
 

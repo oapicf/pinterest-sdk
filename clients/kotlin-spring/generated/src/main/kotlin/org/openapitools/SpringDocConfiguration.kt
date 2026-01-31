@@ -32,7 +32,7 @@ class SpringDocConfiguration {
                             .name("MIT")
                             .url("https://spdx.org/licenses/MIT")
                     )
-                    .version("5.14.0")
+                    .version("5.23.0")
             )
             .components(
                 Components()

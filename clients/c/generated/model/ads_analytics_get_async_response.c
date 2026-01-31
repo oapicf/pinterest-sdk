@@ -7,16 +7,16 @@
 
 static ads_analytics_get_async_response_t *ads_analytics_get_async_response_create_internal(
     bulk_reporting_job_status_t *report_status,
-    char *url,
-    double size
+    double size,
+    char *url
     ) {
     ads_analytics_get_async_response_t *ads_analytics_get_async_response_local_var = malloc(sizeof(ads_analytics_get_async_response_t));
     if (!ads_analytics_get_async_response_local_var) {
         return NULL;
     }
     ads_analytics_get_async_response_local_var->report_status = report_status;
-    ads_analytics_get_async_response_local_var->url = url;
     ads_analytics_get_async_response_local_var->size = size;
+    ads_analytics_get_async_response_local_var->url = url;
 
     ads_analytics_get_async_response_local_var->_library_owned = 1;
     return ads_analytics_get_async_response_local_var;
@@ -24,13 +24,13 @@ static ads_analytics_get_async_response_t *ads_analytics_get_async_response_crea
 
 __attribute__((deprecated)) ads_analytics_get_async_response_t *ads_analytics_get_async_response_create(
     bulk_reporting_job_status_t *report_status,
-    char *url,
-    double size
+    double size,
+    char *url
     ) {
     return ads_analytics_get_async_response_create_internal (
         report_status,
-        url,
-        size
+        size,
+        url
         );
 }
 
@@ -70,18 +70,18 @@ cJSON *ads_analytics_get_async_response_convertToJSON(ads_analytics_get_async_re
     }
 
 
-    // ads_analytics_get_async_response->url
-    if(ads_analytics_get_async_response->url) {
-    if(cJSON_AddStringToObject(item, "url", ads_analytics_get_async_response->url) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // ads_analytics_get_async_response->size
     if(ads_analytics_get_async_response->size) {
     if(cJSON_AddNumberToObject(item, "size", ads_analytics_get_async_response->size) == NULL) {
     goto fail; //Numeric
+    }
+    }
+
+
+    // ads_analytics_get_async_response->url
+    if(ads_analytics_get_async_response->url) {
+    if(cJSON_AddStringToObject(item, "url", ads_analytics_get_async_response->url) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -109,18 +109,6 @@ ads_analytics_get_async_response_t *ads_analytics_get_async_response_parseFromJS
     report_status_local_nonprim = bulk_reporting_job_status_parseFromJSON(report_status); //custom
     }
 
-    // ads_analytics_get_async_response->url
-    cJSON *url = cJSON_GetObjectItemCaseSensitive(ads_analytics_get_async_responseJSON, "url");
-    if (cJSON_IsNull(url)) {
-        url = NULL;
-    }
-    if (url) { 
-    if(!cJSON_IsString(url) && !cJSON_IsNull(url))
-    {
-    goto end; //String
-    }
-    }
-
     // ads_analytics_get_async_response->size
     cJSON *size = cJSON_GetObjectItemCaseSensitive(ads_analytics_get_async_responseJSON, "size");
     if (cJSON_IsNull(size)) {
@@ -133,11 +121,23 @@ ads_analytics_get_async_response_t *ads_analytics_get_async_response_parseFromJS
     }
     }
 
+    // ads_analytics_get_async_response->url
+    cJSON *url = cJSON_GetObjectItemCaseSensitive(ads_analytics_get_async_responseJSON, "url");
+    if (cJSON_IsNull(url)) {
+        url = NULL;
+    }
+    if (url) { 
+    if(!cJSON_IsString(url) && !cJSON_IsNull(url))
+    {
+    goto end; //String
+    }
+    }
+
 
     ads_analytics_get_async_response_local_var = ads_analytics_get_async_response_create_internal (
         report_status ? report_status_local_nonprim : NULL,
-        url && !cJSON_IsNull(url) ? strdup(url->valuestring) : NULL,
-        size ? size->valuedouble : 0
+        size ? size->valuedouble : 0,
+        url && !cJSON_IsNull(url) ? strdup(url->valuestring) : NULL
         );
 
     return ads_analytics_get_async_response_local_var;

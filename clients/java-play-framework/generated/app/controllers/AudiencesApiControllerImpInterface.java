@@ -1,7 +1,6 @@
 package controllers;
 
 import apimodels.Audience;
-import apimodels.AudienceCreateCustomRequest;
 import apimodels.AudienceCreateRequest;
 import apimodels.AudienceUpdateRequest;
 import apimodels.AudiencesList200Response;
@@ -50,25 +49,6 @@ public abstract class AudiencesApiControllerImpInterface {
     }
 
     public abstract Audience audiencesCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AudienceCreateRequest audienceCreateRequest) throws Exception;
-
-    public Result audiencesCreateCustomHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AudienceCreateCustomRequest audienceCreateCustomRequest) throws Exception {
-        if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
-            return unauthorized();
-        }
-
-        Audience obj = audiencesCreateCustom(request, adAccountId, audienceCreateCustomRequest);
-
-        if (configuration.getBoolean("useOutputBeanValidation")) {
-            OpenAPIUtils.validate(obj);
-        }
-
-        JsonNode result = mapper.valueToTree(obj);
-
-        return ok(result);
-
-    }
-
-    public abstract Audience audiencesCreateCustom(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AudienceCreateCustomRequest audienceCreateCustomRequest) throws Exception;
 
     public Result audiencesGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String audienceId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {

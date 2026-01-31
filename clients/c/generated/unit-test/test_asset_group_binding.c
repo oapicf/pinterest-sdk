@@ -24,31 +24,33 @@ asset_group_binding_t* instantiate_asset_group_binding(int include_optional) {
   asset_group_binding_t* asset_group_binding = NULL;
   if (include_optional) {
     asset_group_binding = asset_group_binding_create(
-      "666791336903426391",
-      "Canada Ad Accounts",
-      "Asset group that has ad accounts used in Canada",
-      ["LOCATION_OR_LANGUAGE"],
       ["549755885175"],
-      ["630433785246278264"],
-      1646767577816,
-      1646767577816,
+      "Asset group that has ad accounts used in Canada",
+      "Canada Ad Accounts",
+      ["LOCATION_OR_LANGUAGE"],
+      ["4836859046874"],
        // false, not to have infinite recursion
       instantiate_business_access_user_summary(0),
+      1646767577816,
+      "666791336903426391",
        // false, not to have infinite recursion
-      instantiate_business_access_user_summary(0)
+      instantiate_business_access_user_summary(0),
+      ["630433785246278264"],
+      1646767577816
     );
   } else {
     asset_group_binding = asset_group_binding_create(
-      "666791336903426391",
-      "Canada Ad Accounts",
-      "Asset group that has ad accounts used in Canada",
-      ["LOCATION_OR_LANGUAGE"],
       ["549755885175"],
-      ["630433785246278264"],
-      1646767577816,
-      1646767577816,
+      "Asset group that has ad accounts used in Canada",
+      "Canada Ad Accounts",
+      ["LOCATION_OR_LANGUAGE"],
+      ["4836859046874"],
       NULL,
-      NULL
+      1646767577816,
+      "666791336903426391",
+      NULL,
+      ["630433785246278264"],
+      1646767577816
     );
   }
 

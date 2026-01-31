@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "Catalog", description = "Catalog entity")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class Catalog {
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
@@ -34,9 +34,9 @@ public class Catalog {
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private Date updatedAt;
 
-  private JsonNullable<String> name = JsonNullable.<String>undefined();
-
   private CatalogsType catalogType;
+
+  private JsonNullable<String> name = JsonNullable.<String>undefined();
 
   public Catalog() {
     super();
@@ -45,12 +45,12 @@ public class Catalog {
   /**
    * Constructor with only required parameters
    */
-  public Catalog(Date createdAt, String id, Date updatedAt, String name, CatalogsType catalogType) {
+  public Catalog(Date createdAt, String id, Date updatedAt, CatalogsType catalogType, String name) {
     this.createdAt = createdAt;
     this.id = id;
     this.updatedAt = updatedAt;
-    this.name = JsonNullable.of(name);
     this.catalogType = catalogType;
+    this.name = JsonNullable.of(name);
   }
 
   public Catalog createdAt(Date createdAt) {
@@ -113,26 +113,6 @@ public class Catalog {
     this.updatedAt = updatedAt;
   }
 
-  public Catalog name(String name) {
-    this.name = JsonNullable.of(name);
-    return this;
-  }
-
-  /**
-   * A human-friendly name associated to a catalog entity.
-   * @return name
-   */
-  @NotNull 
-  @Schema(name = "name", description = "A human-friendly name associated to a catalog entity.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("name")
-  public JsonNullable<String> getName() {
-    return name;
-  }
-
-  public void setName(JsonNullable<String> name) {
-    this.name = name;
-  }
-
   public Catalog catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
     return this;
@@ -153,6 +133,26 @@ public class Catalog {
     this.catalogType = catalogType;
   }
 
+  public Catalog name(String name) {
+    this.name = JsonNullable.of(name);
+    return this;
+  }
+
+  /**
+   * A human-friendly name associated to a catalog entity.
+   * @return name
+   */
+  @NotNull 
+  @Schema(name = "name", description = "A human-friendly name associated to a catalog entity.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("name")
+  public JsonNullable<String> getName() {
+    return name;
+  }
+
+  public void setName(JsonNullable<String> name) {
+    this.name = name;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -165,13 +165,13 @@ public class Catalog {
     return Objects.equals(this.createdAt, catalog.createdAt) &&
         Objects.equals(this.id, catalog.id) &&
         Objects.equals(this.updatedAt, catalog.updatedAt) &&
-        Objects.equals(this.name, catalog.name) &&
-        Objects.equals(this.catalogType, catalog.catalogType);
+        Objects.equals(this.catalogType, catalog.catalogType) &&
+        Objects.equals(this.name, catalog.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, id, updatedAt, name, catalogType);
+    return Objects.hash(createdAt, id, updatedAt, catalogType, name);
   }
 
   @Override
@@ -181,8 +181,8 @@ public class Catalog {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

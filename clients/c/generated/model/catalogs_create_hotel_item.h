@@ -28,17 +28,17 @@ pinterest_rest_api_catalogs_create_hotel_item_OPERATION_e catalogs_create_hotel_
 
 
 typedef struct catalogs_create_hotel_item_t {
+    struct catalogs_hotel_attributes_t *attributes; //model
     char *hotel_id; // string
     pinterest_rest_api_catalogs_create_hotel_item_OPERATION_e operation; //enum
-    struct catalogs_hotel_attributes_t *attributes; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_create_hotel_item_t;
 
 __attribute__((deprecated)) catalogs_create_hotel_item_t *catalogs_create_hotel_item_create(
+    catalogs_hotel_attributes_t *attributes,
     char *hotel_id,
-    pinterest_rest_api_catalogs_create_hotel_item_OPERATION_e operation,
-    catalogs_hotel_attributes_t *attributes
+    pinterest_rest_api_catalogs_create_hotel_item_OPERATION_e operation
 );
 
 void catalogs_create_hotel_item_free(catalogs_create_hotel_item_t *catalogs_create_hotel_item);

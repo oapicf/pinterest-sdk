@@ -1,29 +1,30 @@
 goog.provide('API.Client.PinMediaSourceImagesBase64');
 
 /**
- * Multiple Base64-encoded images media source
+ * Multiple Base64-based images media source
  * @record
  */
 API.Client.PinMediaSourceImagesBase64 = function() {}
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.PinMediaSourceImagesBase64.prototype.sourceType;
-
-/**
- * Array with image objects.
- * @type {!Array<!API.Client.PinMediaSourceImagesBase64_items_inner>}
- * @export
- */
-API.Client.PinMediaSourceImagesBase64.prototype.items;
 
 /**
  * @type {!number}
  * @export
  */
 API.Client.PinMediaSourceImagesBase64.prototype.index;
+
+/**
+ * Array with image objects.
+ * @type {!Array<!API.Client.PinMediaSourceImagesBase64Item>}
+ * @export
+ */
+API.Client.PinMediaSourceImagesBase64.prototype.items;
+
+/**
+ * The source type of the media.
+ * @type {!string}
+ * @export
+ */
+API.Client.PinMediaSourceImagesBase64.prototype.sourceType;
 
 /** @enum {string} */
 API.Client.PinMediaSourceImagesBase64.SourceTypeEnum = { 

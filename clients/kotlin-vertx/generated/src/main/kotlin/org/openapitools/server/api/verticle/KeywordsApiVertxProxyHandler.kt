@@ -128,6 +128,10 @@ class KeywordsApiVertxProxyHandler(private val vertx: Vertx, private val service
                     }
                     val campaignId = ApiHandlerUtils.searchStringInJson(params,"campaign_id")
                     val adGroupId = ApiHandlerUtils.searchStringInJson(params,"ad_group_id")
+                    val adGroupIdsParam = ApiHandlerUtils.searchJsonArrayInJson(params,"ad_group_ids")
+                    val adGroupIds:kotlin.Array<kotlin.String>? = if(adGroupIdsParam == null) null
+                            else Gson().fromJson(adGroupIdsParam.encode(),
+                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
                     val matchTypesParam = ApiHandlerUtils.searchJsonArrayInJson(params,"match_types")
                     val matchTypes:kotlin.Array<MatchType>? = if(matchTypesParam == null) null
                             else Gson().fromJson(matchTypesParam.encode(),
@@ -135,7 +139,7 @@ class KeywordsApiVertxProxyHandler(private val vertx: Vertx, private val service
                     val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.keywordsGet(adAccountId,campaignId,adGroupId,matchTypes,pageSize,bookmark,context)
+                        val result = service.keywordsGet(adAccountId,campaignId,adGroupId,adGroupIds,matchTypes,pageSize,bookmark,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -195,8 +199,10 @@ class KeywordsApiVertxProxyHandler(private val vertx: Vertx, private val service
                             , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
                     val normalizeAgainstGroup = ApiHandlerUtils.searchStringInJson(params,"normalize_against_group")?.toBoolean()
                     val limit = ApiHandlerUtils.searchIntegerInJson(params,"limit")
+                    val includePrediction = ApiHandlerUtils.searchStringInJson(params,"include_prediction")?.toBoolean()
+                    val includeDemographics = ApiHandlerUtils.searchStringInJson(params,"include_demographics")?.toBoolean()
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.trendingKeywordsList(region,trendType,interests,genders,ages,includeKeywords,normalizeAgainstGroup,limit,context)
+                        val result = service.trendingKeywordsList(region,trendType,interests,genders,ages,includeKeywords,normalizeAgainstGroup,limit,includePrediction,includeDemographics,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

@@ -14,14 +14,14 @@ import scala.collection.immutable.Seq
 /**
  * 
  * @param catalogUnderscoretype 
- * @param itemUnderscoreids 
  * @param catalogUnderscoreid Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+ * @param itemUnderscoreids 
  * @param hotelUnderscoreids 
  * @param creativeUnderscoreassetsUnderscoreids 
  */
 case class CatalogsItemsFilters(catalogUnderscoretype: CatalogsType,
-                itemUnderscoreids: Seq[String],
                 catalogUnderscoreid: Option[String],
+                itemUnderscoreids: Seq[String],
                 hotelUnderscoreids: Seq[String],
                 creativeUnderscoreassetsUnderscoreids: Seq[String]
                 )

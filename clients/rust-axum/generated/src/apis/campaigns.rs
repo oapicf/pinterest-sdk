@@ -10,6 +10,23 @@ use crate::{models, types::*};
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
+pub enum AdPinsSlashAnalyticsResponse {
+    /// Success
+    Status200_Success
+    (Vec<models::AdPinAnalytics>)
+    ,
+    /// Invalid ad account pins analytics parameters.
+    Status400_InvalidAdAccountPinsAnalyticsParameters
+    (models::Error)
+    ,
+    /// Unexpected error
+    Status0_UnexpectedError
+    (models::Error)
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[must_use]
+#[allow(clippy::large_enum_variant)]
 pub enum CampaignTargetingAnalyticsSlashGetResponse {
     /// Success
     Status200_Success
@@ -100,6 +117,19 @@ pub enum CampaignsSlashUpdateResponse {
 #[async_trait]
 #[allow(clippy::ptr_arg)]
 pub trait Campaigns<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHandler<E> {
+    /// Get pins analytics.
+    ///
+    /// AdPinsSlashAnalytics - GET /v5/ad_accounts/{ad_account_id}/pins/analytics
+    async fn ad_pins_slash_analytics(
+    &self,
+    
+    method: &Method,
+    host: &Host,
+    cookies: &CookieJar,
+      path_params: &models::AdPinsSlashAnalyticsPathParams,
+      query_params: &models::AdPinsSlashAnalyticsQueryParams,
+    ) -> Result<AdPinsSlashAnalyticsResponse, E>;
+
     /// Get targeting analytics for campaigns.
     ///
     /// CampaignTargetingAnalyticsSlashGet - GET /v5/ad_accounts/{ad_account_id}/campaigns/targeting_analytics

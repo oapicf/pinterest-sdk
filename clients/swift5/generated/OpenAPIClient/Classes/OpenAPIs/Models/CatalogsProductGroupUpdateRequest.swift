@@ -13,35 +13,35 @@ import AnyCodable
 /** Request object for updating a product group. */
 public struct CatalogsProductGroupUpdateRequest: Codable, JSONEncodable, Hashable {
 
-    public var name: String?
     public var description: String?
+    public var filters: CatalogsProductGroupFiltersRequest?
     /** boolean indicator of whether the product group is being featured or not */
     @available(*, deprecated, message: "This property is deprecated.")
     public var isFeatured: Bool?
-    public var filters: CatalogsProductGroupFiltersRequest?
+    public var name: String?
 
-    public init(name: String? = nil, description: String? = nil, isFeatured: Bool? = nil, filters: CatalogsProductGroupFiltersRequest? = nil) {
-        self.name = name
+    public init(description: String? = nil, filters: CatalogsProductGroupFiltersRequest? = nil, isFeatured: Bool? = nil, name: String? = nil) {
         self.description = description
-        self.isFeatured = isFeatured
         self.filters = filters
+        self.isFeatured = isFeatured
+        self.name = name
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case name
         case description
-        case isFeatured = "is_featured"
         case filters
+        case isFeatured = "is_featured"
+        case name
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(isFeatured, forKey: .isFeatured)
         try container.encodeIfPresent(filters, forKey: .filters)
+        try container.encodeIfPresent(isFeatured, forKey: .isFeatured)
+        try container.encodeIfPresent(name, forKey: .name)
     }
 }
 

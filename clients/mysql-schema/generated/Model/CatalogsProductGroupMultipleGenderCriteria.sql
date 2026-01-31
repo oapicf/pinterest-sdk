@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsProductGroupMultipleGenderCriteria`
 --
-SELECT `values`, `negated` FROM `CatalogsProductGroupMultipleGenderCriteria` WHERE 1;
+SELECT `negated`, `values` FROM `CatalogsProductGroupMultipleGenderCriteria` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsProductGroupMultipleGenderCriteria`
 --
-INSERT INTO `CatalogsProductGroupMultipleGenderCriteria`(`values`, `negated`) VALUES (?, ?);
+INSERT INTO `CatalogsProductGroupMultipleGenderCriteria`(`negated`, `values`) VALUES (?, ?);
 
 --
 -- UPDATE template for table `CatalogsProductGroupMultipleGenderCriteria`
 --
-UPDATE `CatalogsProductGroupMultipleGenderCriteria` SET `values` = ?, `negated` = ? WHERE 1;
+UPDATE `CatalogsProductGroupMultipleGenderCriteria` SET `negated` = ?, `values` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsProductGroupMultipleGenderCriteria`

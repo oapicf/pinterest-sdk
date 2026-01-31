@@ -10,14 +10,9 @@ The class is defined in **[CatalogsCreateRequest.java](../../src/main/java/org/o
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) | Type of the catalog entity. | 
+**catalogType** | `CatalogsType` |  | 
 **name** | `String` | A human-friendly name associated to a given catalog. | 
 
-## CatalogTypeEnum
-
-Name | Value
----- | -----
-HOTEL | `"HOTEL"`
 
 
 

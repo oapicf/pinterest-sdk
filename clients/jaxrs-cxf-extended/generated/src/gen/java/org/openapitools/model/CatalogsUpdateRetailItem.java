@@ -23,6 +23,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsUpdateRetailItem  {
   
+  @ApiModelProperty(required = true, value = "")
+  @Valid
+  private UpdatableItemAttributes attributes;
+
  /**
   * The catalog item id in the merchant namespace
   */
@@ -61,16 +65,37 @@ public enum OperationEnum {
   @ApiModelProperty(required = true, value = "")
   private OperationEnum operation;
 
-  @ApiModelProperty(required = true, value = "")
-  @Valid
-  private UpdatableItemAttributes attributes;
-
  /**
   * The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
   */
-  @ApiModelProperty(example = "[\"ad_link\",\"adult\",\"age_group\",\"availability\",\"average_review_rating\",\"brand\",\"checkout_enabled\",\"color\",\"condition\",\"custom_label_0\",\"custom_label_1\",\"custom_label_2\",\"custom_label_3\",\"custom_label_4\",\"description\",\"free_shipping_label\",\"free_shipping_limit\",\"gender\",\"google_product_category\",\"gtin\",\"item_group_id\",\"last_updated_time\",\"link\",\"material\",\"min_ad_price\",\"mpn\",\"number_of_ratings\",\"number_of_reviews\",\"pattern\",\"price\",\"product_type\",\"sale_price\",\"shipping\",\"shipping_height\",\"shipping_weight\",\"shipping_width\",\"size\",\"size_system\",\"size_type\",\"tax\",\"title\",\"variant_names\",\"variant_values\"]", value = "The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.")
+  @ApiModelProperty(example = "[\"ad_link\",\"adult\",\"age_group\",\"availability\",\"average_review_rating\",\"brand\",\"checkout_enabled\",\"color\",\"condition\",\"custom_label_0\",\"custom_label_1\",\"custom_label_2\",\"custom_label_3\",\"custom_label_4\",\"description\",\"free_shipping_label\",\"free_shipping_limit\",\"gender\",\"google_product_category\",\"gtin\",\"item_group_id\",\"last_updated_time\",\"link\",\"material\",\"min_ad_price\",\"mpn\",\"number_of_ratings\",\"number_of_reviews\",\"pattern\",\"price\",\"product_type\",\"sale_price\",\"shipping\",\"shipping_height\",\"shipping_weight\",\"shipping_width\",\"size\",\"size_system\",\"size_type\",\"tax\",\"title\",\"variant_names\",\"variant_values\",\"promotion_id\"]", value = "The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.")
   @Valid
   private List<UpdateMaskFieldType> updateMask;
+ /**
+  * Get attributes
+  * @return attributes
+  */
+  @JsonProperty("attributes")
+  @NotNull
+  public UpdatableItemAttributes getAttributes() {
+    return attributes;
+  }
+
+  /**
+   * Sets the <code>attributes</code> property.
+   */
+ public void setAttributes(UpdatableItemAttributes attributes) {
+    this.attributes = attributes;
+  }
+
+  /**
+   * Sets the <code>attributes</code> property.
+   */
+  public CatalogsUpdateRetailItem attributes(UpdatableItemAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
  /**
   * The catalog item id in the merchant namespace
   * @return itemId
@@ -122,31 +147,6 @@ public enum OperationEnum {
   }
 
  /**
-  * Get attributes
-  * @return attributes
-  */
-  @JsonProperty("attributes")
-  @NotNull
-  public UpdatableItemAttributes getAttributes() {
-    return attributes;
-  }
-
-  /**
-   * Sets the <code>attributes</code> property.
-   */
- public void setAttributes(UpdatableItemAttributes attributes) {
-    this.attributes = attributes;
-  }
-
-  /**
-   * Sets the <code>attributes</code> property.
-   */
-  public CatalogsUpdateRetailItem attributes(UpdatableItemAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
- /**
   * The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
   * @return updateMask
   */
@@ -188,15 +188,15 @@ public enum OperationEnum {
       return false;
     }
     CatalogsUpdateRetailItem catalogsUpdateRetailItem = (CatalogsUpdateRetailItem) o;
-    return Objects.equals(this.itemId, catalogsUpdateRetailItem.itemId) &&
+    return Objects.equals(this.attributes, catalogsUpdateRetailItem.attributes) &&
+        Objects.equals(this.itemId, catalogsUpdateRetailItem.itemId) &&
         Objects.equals(this.operation, catalogsUpdateRetailItem.operation) &&
-        Objects.equals(this.attributes, catalogsUpdateRetailItem.attributes) &&
         Objects.equals(this.updateMask, catalogsUpdateRetailItem.updateMask);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, operation, attributes, updateMask);
+    return Objects.hash(attributes, itemId, operation, updateMask);
   }
 
   @Override
@@ -204,9 +204,9 @@ public enum OperationEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsUpdateRetailItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    updateMask: ").append(toIndentedString(updateMask)).append("\n");
     sb.append("}");
     return sb.toString();

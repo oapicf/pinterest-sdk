@@ -9,28 +9,28 @@
 -export_type([openapi_ssio_order_line/0]).
 
 -type openapi_ssio_order_line() ::
-  [ {'salesforce_order_line_id', binary() }
+  [ {'accepted_terms_id', binary() }
+  | {'accepted_terms_time', binary() }
   | {'ads_manager_order_line_id', binary() }
-  | {'pin_order_id', binary() }
-  | {'last_modified_date_time', binary() }
-  | {'start_date', date() }
-  | {'end_date', date() }
+  | {'agency_link', binary() }
   | {'bill_to_company_name', binary() }
+  | {'billing_contact_email', binary() }
   | {'billing_contact_firstname', binary() }
   | {'billing_contact_lastname', binary() }
-  | {'billing_contact_email', binary() }
+  | {'budget_amount', integer() }
+  | {'currency_info', openapi_currency:openapi_currency() }
+  | {'end_date', date() }
+  | {'estimated_monthly_spend', integer() }
+  | {'last_modified_date_time', binary() }
   | {'media_contact_email', binary() }
   | {'media_contact_firstname', binary() }
   | {'media_contact_lastname', binary() }
-  | {'currency_info', openapi_currency:openapi_currency() }
-  | {'agency_link', binary() }
-  | {'po_number', binary() }
   | {'order_name', binary() }
+  | {'pin_order_id', binary() }
   | {'pmp_name', binary() }
-  | {'accepted_terms_id', binary() }
-  | {'accepted_terms_time', binary() }
-  | {'budget_amount', integer() }
-  | {'estimated_monthly_spend', integer() }
+  | {'po_number', binary() }
+  | {'salesforce_order_line_id', binary() }
+  | {'start_date', date() }
   ].
 
 
@@ -38,28 +38,28 @@ openapi_ssio_order_line() ->
     openapi_ssio_order_line([]).
 
 openapi_ssio_order_line(Fields) ->
-  Default = [ {'salesforce_order_line_id', binary() }
+  Default = [ {'accepted_terms_id', binary() }
+            , {'accepted_terms_time', binary() }
             , {'ads_manager_order_line_id', binary() }
-            , {'pin_order_id', binary() }
-            , {'last_modified_date_time', binary() }
-            , {'start_date', date() }
-            , {'end_date', date() }
+            , {'agency_link', binary() }
             , {'bill_to_company_name', binary() }
+            , {'billing_contact_email', binary() }
             , {'billing_contact_firstname', binary() }
             , {'billing_contact_lastname', binary() }
-            , {'billing_contact_email', binary() }
+            , {'budget_amount', integer() }
+            , {'currency_info', openapi_currency:openapi_currency() }
+            , {'end_date', date() }
+            , {'estimated_monthly_spend', integer() }
+            , {'last_modified_date_time', binary() }
             , {'media_contact_email', binary() }
             , {'media_contact_firstname', binary() }
             , {'media_contact_lastname', binary() }
-            , {'currency_info', openapi_currency:openapi_currency() }
-            , {'agency_link', binary() }
-            , {'po_number', binary() }
             , {'order_name', binary() }
+            , {'pin_order_id', binary() }
             , {'pmp_name', binary() }
-            , {'accepted_terms_id', binary() }
-            , {'accepted_terms_time', binary() }
-            , {'budget_amount', integer() }
-            , {'estimated_monthly_spend', integer() }
+            , {'po_number', binary() }
+            , {'salesforce_order_line_id', binary() }
+            , {'start_date', date() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

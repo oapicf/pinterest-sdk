@@ -9,8 +9,8 @@
 -export_type([openapi_paginated/0]).
 
 -type openapi_paginated() ::
-  [ {'items', list(map()) }
-  | {'bookmark', binary() }
+  [ {'bookmark', binary() }
+  | {'items', list(map()) }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_paginated() ->
     openapi_paginated([]).
 
 openapi_paginated(Fields) ->
-  Default = [ {'items', list(map()) }
-            , {'bookmark', binary() }
+  Default = [ {'bookmark', binary() }
+            , {'items', list(map()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

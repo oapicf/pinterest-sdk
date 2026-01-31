@@ -15,15 +15,15 @@ import org.openapitools.model.OptimizationGoalMetadata;
 @Canonical
 class BidFloorSpec {
     
+    ActionType billableEvent
+    
     List<Country> countries = new ArrayList<>()
+    
+    CreativeType creativeType
     
     Currency currency
     
     ObjectiveType objectiveType
     
-    ActionType billableEvent
-    
     OptimizationGoalMetadata optimizationGoalMetadata
-    
-    CreativeType creativeType
 }

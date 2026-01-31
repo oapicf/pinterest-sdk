@@ -12,24 +12,24 @@ import org.joda.time.DateTime
 import SSIOAccountItem._
 
 case class SSIOAccountItem (
-  /* Salesforce id for billto_info */
+  /* Address information that is associated with this account. */
+  addresses: Option[List[SSIOAccountAddress]],
+/* Salesforce id for billto_info */
   id: Option[String],
-/* Salesforce id for IO Terms and Conditions */
-  ioTermsId: Option[String],
 /* Salesforce text for IO Terms and Conditions */
   ioTerms: Option[String],
-/* Salesforce id for US Terms and Conditions */
-  usTermsId: Option[String],
-/* Salesforce text for US Terms and Conditions */
-  usTerms: Option[String],
-/* Salesforce id for Rest of the World Terms and Conditions */
-  rowTermsId: Option[String],
-/* Salesforce text for Rest of the World Terms and Conditions */
-  rowTerms: Option[String],
+/* Salesforce id for IO Terms and Conditions */
+  ioTermsId: Option[String],
 /* Insertion Order Type - Pinterest Paper or Agency Paper */
   ioType: Option[String],
-/* Address information that is associated with this account. */
-  addresses: Option[List[SSIOAccountAddress]])
+/* Salesforce text for Rest of the World Terms and Conditions */
+  rowTerms: Option[String],
+/* Salesforce id for Rest of the World Terms and Conditions */
+  rowTermsId: Option[String],
+/* Salesforce text for US Terms and Conditions */
+  usTerms: Option[String],
+/* Salesforce id for US Terms and Conditions */
+  usTermsId: Option[String])
 
 object SSIOAccountItem {
   import DateTimeCodecs._

@@ -14,7 +14,7 @@ import UpdatePartnerAssetsResult._
 case class UpdatePartnerAssetsResult (
   /* Unique identifier of a business asset. */
   assetId: Option[String],
-/* Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. */
+/* Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. */
   assetType: Option[String],
 /* Unique identifier of a business partner. */
   partnerId: Option[String],

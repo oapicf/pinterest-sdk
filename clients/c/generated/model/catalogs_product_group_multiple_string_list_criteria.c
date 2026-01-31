@@ -6,27 +6,27 @@
 
 
 static catalogs_product_group_multiple_string_list_criteria_t *catalogs_product_group_multiple_string_list_criteria_create_internal(
-    list_t *values,
-    int negated
+    int negated,
+    list_t *values
     ) {
     catalogs_product_group_multiple_string_list_criteria_t *catalogs_product_group_multiple_string_list_criteria_local_var = malloc(sizeof(catalogs_product_group_multiple_string_list_criteria_t));
     if (!catalogs_product_group_multiple_string_list_criteria_local_var) {
         return NULL;
     }
-    catalogs_product_group_multiple_string_list_criteria_local_var->values = values;
     catalogs_product_group_multiple_string_list_criteria_local_var->negated = negated;
+    catalogs_product_group_multiple_string_list_criteria_local_var->values = values;
 
     catalogs_product_group_multiple_string_list_criteria_local_var->_library_owned = 1;
     return catalogs_product_group_multiple_string_list_criteria_local_var;
 }
 
 __attribute__((deprecated)) catalogs_product_group_multiple_string_list_criteria_t *catalogs_product_group_multiple_string_list_criteria_create(
-    list_t *values,
-    int negated
+    int negated,
+    list_t *values
     ) {
     return catalogs_product_group_multiple_string_list_criteria_create_internal (
-        values,
-        negated
+        negated,
+        values
         );
 }
 
@@ -52,6 +52,14 @@ void catalogs_product_group_multiple_string_list_criteria_free(catalogs_product_
 cJSON *catalogs_product_group_multiple_string_list_criteria_convertToJSON(catalogs_product_group_multiple_string_list_criteria_t *catalogs_product_group_multiple_string_list_criteria) {
     cJSON *item = cJSON_CreateObject();
 
+    // catalogs_product_group_multiple_string_list_criteria->negated
+    if(catalogs_product_group_multiple_string_list_criteria->negated) {
+    if(cJSON_AddBoolToObject(item, "negated", catalogs_product_group_multiple_string_list_criteria->negated) == NULL) {
+    goto fail; //Bool
+    }
+    }
+
+
     // catalogs_product_group_multiple_string_list_criteria->values
     if (!catalogs_product_group_multiple_string_list_criteria->values) {
         goto fail;
@@ -63,14 +71,6 @@ cJSON *catalogs_product_group_multiple_string_list_criteria_convertToJSON(catalo
 
     listEntry_t *valuesListEntry;
     list_ForEach(valuesListEntry, catalogs_product_group_multiple_string_list_criteria->values) {
-    }
-
-
-    // catalogs_product_group_multiple_string_list_criteria->negated
-    if(catalogs_product_group_multiple_string_list_criteria->negated) {
-    if(cJSON_AddBoolToObject(item, "negated", catalogs_product_group_multiple_string_list_criteria->negated) == NULL) {
-    goto fail; //Bool
-    }
     }
 
     return item;
@@ -87,6 +87,18 @@ catalogs_product_group_multiple_string_list_criteria_t *catalogs_product_group_m
 
     // define the local list for catalogs_product_group_multiple_string_list_criteria->values
     list_t *valuesList = NULL;
+
+    // catalogs_product_group_multiple_string_list_criteria->negated
+    cJSON *negated = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_multiple_string_list_criteriaJSON, "negated");
+    if (cJSON_IsNull(negated)) {
+        negated = NULL;
+    }
+    if (negated) { 
+    if(!cJSON_IsBool(negated))
+    {
+    goto end; //Bool
+    }
+    }
 
     // catalogs_product_group_multiple_string_list_criteria->values
     cJSON *values = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_multiple_string_list_criteriaJSON, "values");
@@ -108,22 +120,10 @@ catalogs_product_group_multiple_string_list_criteria_t *catalogs_product_group_m
     {
     }
 
-    // catalogs_product_group_multiple_string_list_criteria->negated
-    cJSON *negated = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_multiple_string_list_criteriaJSON, "negated");
-    if (cJSON_IsNull(negated)) {
-        negated = NULL;
-    }
-    if (negated) { 
-    if(!cJSON_IsBool(negated))
-    {
-    goto end; //Bool
-    }
-    }
-
 
     catalogs_product_group_multiple_string_list_criteria_local_var = catalogs_product_group_multiple_string_list_criteria_create_internal (
-        valuesList,
-        negated ? negated->valueint : 0
+        negated ? negated->valueint : 0,
+        valuesList
         );
 
     return catalogs_product_group_multiple_string_list_criteria_local_var;

@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Search pins by a given search term
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
 
 ### Example
 ```R
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 | **0** | Unexpected error |  -  |
 
 # **SearchUserPinsList**
-> PinsList200Response SearchUserPinsList(query, ad_account_id = var.ad_account_id, bookmark = var.bookmark)
+> SearchUserPinsList200Response SearchUserPinsList(query, ad_account_id = var.ad_account_id, bookmark = var.bookmark)
 
 Search user's Pins
 
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PinsList200Response**](pins_list_200_response.md)
+[**SearchUserPinsList200Response**](search_user_pins_list_200_response.md)
 
 ### Authorization
 

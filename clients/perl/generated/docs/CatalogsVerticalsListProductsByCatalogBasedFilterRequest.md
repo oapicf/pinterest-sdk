@@ -8,10 +8,10 @@ use WWW::OpenAPIClient::Object::CatalogsVerticalsListProductsByCatalogBasedFilte
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | **string** |  | 
 **catalog_id** | **string** | Catalog id pertaining to the creative assets product group. | 
-**filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
+**catalog_type** | **string** |  | 
 **country** | [**Country**](Country.md) |  | 
+**filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
 **locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

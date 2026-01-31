@@ -5,14 +5,174 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
+**AD_IMAGE_0_LINK_DUPLICATED** | AD_IMAGE_0_LINK_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_0_LINK_LENGTH_TOO_LONG** | AD_IMAGE_0_LINK_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_0_LINK_REQUIRED** | AD_IMAGE_0_LINK_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_0_LINK_WARNING** | AD_IMAGE_0_LINK_WARNING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_0_TAG_DUPLICATED** | AD_IMAGE_0_TAG_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_0_TAG_LENGTH_TOO_LONG** | AD_IMAGE_0_TAG_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_0_TAG_REQUIRED** | AD_IMAGE_0_TAG_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_10_LINK_DUPLICATED** | AD_IMAGE_10_LINK_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_10_LINK_LENGTH_TOO_LONG** | AD_IMAGE_10_LINK_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_10_LINK_REQUIRED** | AD_IMAGE_10_LINK_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_10_LINK_WARNING** | AD_IMAGE_10_LINK_WARNING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_10_TAG_DUPLICATED** | AD_IMAGE_10_TAG_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_10_TAG_LENGTH_TOO_LONG** | AD_IMAGE_10_TAG_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_10_TAG_REQUIRED** | AD_IMAGE_10_TAG_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_11_LINK_DUPLICATED** | AD_IMAGE_11_LINK_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_11_LINK_LENGTH_TOO_LONG** | AD_IMAGE_11_LINK_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_11_LINK_REQUIRED** | AD_IMAGE_11_LINK_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_11_LINK_WARNING** | AD_IMAGE_11_LINK_WARNING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_11_TAG_DUPLICATED** | AD_IMAGE_11_TAG_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_11_TAG_LENGTH_TOO_LONG** | AD_IMAGE_11_TAG_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_11_TAG_REQUIRED** | AD_IMAGE_11_TAG_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_12_LINK_DUPLICATED** | AD_IMAGE_12_LINK_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_12_LINK_LENGTH_TOO_LONG** | AD_IMAGE_12_LINK_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_12_LINK_REQUIRED** | AD_IMAGE_12_LINK_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_12_LINK_WARNING** | AD_IMAGE_12_LINK_WARNING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_12_TAG_DUPLICATED** | AD_IMAGE_12_TAG_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_12_TAG_LENGTH_TOO_LONG** | AD_IMAGE_12_TAG_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_12_TAG_REQUIRED** | AD_IMAGE_12_TAG_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_13_LINK_DUPLICATED** | AD_IMAGE_13_LINK_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_13_LINK_LENGTH_TOO_LONG** | AD_IMAGE_13_LINK_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_13_LINK_REQUIRED** | AD_IMAGE_13_LINK_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_13_LINK_WARNING** | AD_IMAGE_13_LINK_WARNING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_13_TAG_DUPLICATED** | AD_IMAGE_13_TAG_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_13_TAG_LENGTH_TOO_LONG** | AD_IMAGE_13_TAG_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_13_TAG_REQUIRED** | AD_IMAGE_13_TAG_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_14_LINK_DUPLICATED** | AD_IMAGE_14_LINK_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_14_LINK_LENGTH_TOO_LONG** | AD_IMAGE_14_LINK_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_14_LINK_REQUIRED** | AD_IMAGE_14_LINK_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_14_LINK_WARNING** | AD_IMAGE_14_LINK_WARNING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_14_TAG_DUPLICATED** | AD_IMAGE_14_TAG_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_14_TAG_LENGTH_TOO_LONG** | AD_IMAGE_14_TAG_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_14_TAG_REQUIRED** | AD_IMAGE_14_TAG_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_15_LINK_DUPLICATED** | AD_IMAGE_15_LINK_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_15_LINK_LENGTH_TOO_LONG** | AD_IMAGE_15_LINK_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_15_LINK_REQUIRED** | AD_IMAGE_15_LINK_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_15_LINK_WARNING** | AD_IMAGE_15_LINK_WARNING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_15_TAG_DUPLICATED** | AD_IMAGE_15_TAG_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_15_TAG_LENGTH_TOO_LONG** | AD_IMAGE_15_TAG_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_15_TAG_REQUIRED** | AD_IMAGE_15_TAG_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_16_LINK_DUPLICATED** | AD_IMAGE_16_LINK_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_16_LINK_LENGTH_TOO_LONG** | AD_IMAGE_16_LINK_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_16_LINK_REQUIRED** | AD_IMAGE_16_LINK_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_16_LINK_WARNING** | AD_IMAGE_16_LINK_WARNING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_16_TAG_DUPLICATED** | AD_IMAGE_16_TAG_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_16_TAG_LENGTH_TOO_LONG** | AD_IMAGE_16_TAG_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_16_TAG_REQUIRED** | AD_IMAGE_16_TAG_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_17_LINK_DUPLICATED** | AD_IMAGE_17_LINK_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_17_LINK_LENGTH_TOO_LONG** | AD_IMAGE_17_LINK_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_17_LINK_REQUIRED** | AD_IMAGE_17_LINK_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_17_LINK_WARNING** | AD_IMAGE_17_LINK_WARNING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_17_TAG_DUPLICATED** | AD_IMAGE_17_TAG_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_17_TAG_LENGTH_TOO_LONG** | AD_IMAGE_17_TAG_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_17_TAG_REQUIRED** | AD_IMAGE_17_TAG_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_18_LINK_DUPLICATED** | AD_IMAGE_18_LINK_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_18_LINK_LENGTH_TOO_LONG** | AD_IMAGE_18_LINK_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_18_LINK_REQUIRED** | AD_IMAGE_18_LINK_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_18_LINK_WARNING** | AD_IMAGE_18_LINK_WARNING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_18_TAG_DUPLICATED** | AD_IMAGE_18_TAG_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_18_TAG_LENGTH_TOO_LONG** | AD_IMAGE_18_TAG_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_18_TAG_REQUIRED** | AD_IMAGE_18_TAG_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_19_LINK_DUPLICATED** | AD_IMAGE_19_LINK_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_19_LINK_LENGTH_TOO_LONG** | AD_IMAGE_19_LINK_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_19_LINK_REQUIRED** | AD_IMAGE_19_LINK_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_19_LINK_WARNING** | AD_IMAGE_19_LINK_WARNING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_19_TAG_DUPLICATED** | AD_IMAGE_19_TAG_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_19_TAG_LENGTH_TOO_LONG** | AD_IMAGE_19_TAG_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_19_TAG_REQUIRED** | AD_IMAGE_19_TAG_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_1_LINK_DUPLICATED** | AD_IMAGE_1_LINK_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_1_LINK_LENGTH_TOO_LONG** | AD_IMAGE_1_LINK_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_1_LINK_REQUIRED** | AD_IMAGE_1_LINK_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_1_LINK_WARNING** | AD_IMAGE_1_LINK_WARNING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_1_TAG_DUPLICATED** | AD_IMAGE_1_TAG_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_1_TAG_LENGTH_TOO_LONG** | AD_IMAGE_1_TAG_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_1_TAG_REQUIRED** | AD_IMAGE_1_TAG_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_2_LINK_DUPLICATED** | AD_IMAGE_2_LINK_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_2_LINK_LENGTH_TOO_LONG** | AD_IMAGE_2_LINK_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_2_LINK_REQUIRED** | AD_IMAGE_2_LINK_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_2_LINK_WARNING** | AD_IMAGE_2_LINK_WARNING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_2_TAG_DUPLICATED** | AD_IMAGE_2_TAG_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_2_TAG_LENGTH_TOO_LONG** | AD_IMAGE_2_TAG_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_2_TAG_REQUIRED** | AD_IMAGE_2_TAG_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_3_LINK_DUPLICATED** | AD_IMAGE_3_LINK_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_3_LINK_LENGTH_TOO_LONG** | AD_IMAGE_3_LINK_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_3_LINK_REQUIRED** | AD_IMAGE_3_LINK_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_3_LINK_WARNING** | AD_IMAGE_3_LINK_WARNING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_3_TAG_DUPLICATED** | AD_IMAGE_3_TAG_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_3_TAG_LENGTH_TOO_LONG** | AD_IMAGE_3_TAG_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_3_TAG_REQUIRED** | AD_IMAGE_3_TAG_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_4_LINK_DUPLICATED** | AD_IMAGE_4_LINK_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_4_LINK_LENGTH_TOO_LONG** | AD_IMAGE_4_LINK_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_4_LINK_REQUIRED** | AD_IMAGE_4_LINK_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_4_LINK_WARNING** | AD_IMAGE_4_LINK_WARNING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_4_TAG_DUPLICATED** | AD_IMAGE_4_TAG_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_4_TAG_LENGTH_TOO_LONG** | AD_IMAGE_4_TAG_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_4_TAG_REQUIRED** | AD_IMAGE_4_TAG_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_5_LINK_DUPLICATED** | AD_IMAGE_5_LINK_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_5_LINK_LENGTH_TOO_LONG** | AD_IMAGE_5_LINK_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_5_LINK_REQUIRED** | AD_IMAGE_5_LINK_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_5_LINK_WARNING** | AD_IMAGE_5_LINK_WARNING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_5_TAG_DUPLICATED** | AD_IMAGE_5_TAG_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_5_TAG_LENGTH_TOO_LONG** | AD_IMAGE_5_TAG_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_5_TAG_REQUIRED** | AD_IMAGE_5_TAG_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_6_LINK_DUPLICATED** | AD_IMAGE_6_LINK_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_6_LINK_LENGTH_TOO_LONG** | AD_IMAGE_6_LINK_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_6_LINK_REQUIRED** | AD_IMAGE_6_LINK_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_6_LINK_WARNING** | AD_IMAGE_6_LINK_WARNING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_6_TAG_DUPLICATED** | AD_IMAGE_6_TAG_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_6_TAG_LENGTH_TOO_LONG** | AD_IMAGE_6_TAG_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_6_TAG_REQUIRED** | AD_IMAGE_6_TAG_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_7_LINK_DUPLICATED** | AD_IMAGE_7_LINK_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_7_LINK_LENGTH_TOO_LONG** | AD_IMAGE_7_LINK_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_7_LINK_REQUIRED** | AD_IMAGE_7_LINK_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_7_LINK_WARNING** | AD_IMAGE_7_LINK_WARNING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_7_TAG_DUPLICATED** | AD_IMAGE_7_TAG_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_7_TAG_LENGTH_TOO_LONG** | AD_IMAGE_7_TAG_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_7_TAG_REQUIRED** | AD_IMAGE_7_TAG_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_8_LINK_DUPLICATED** | AD_IMAGE_8_LINK_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_8_LINK_LENGTH_TOO_LONG** | AD_IMAGE_8_LINK_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_8_LINK_REQUIRED** | AD_IMAGE_8_LINK_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_8_LINK_WARNING** | AD_IMAGE_8_LINK_WARNING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_8_TAG_DUPLICATED** | AD_IMAGE_8_TAG_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_8_TAG_LENGTH_TOO_LONG** | AD_IMAGE_8_TAG_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_8_TAG_REQUIRED** | AD_IMAGE_8_TAG_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_9_LINK_DUPLICATED** | AD_IMAGE_9_LINK_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_9_LINK_LENGTH_TOO_LONG** | AD_IMAGE_9_LINK_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_9_LINK_REQUIRED** | AD_IMAGE_9_LINK_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_9_LINK_WARNING** | AD_IMAGE_9_LINK_WARNING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_9_TAG_DUPLICATED** | AD_IMAGE_9_TAG_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_9_TAG_LENGTH_TOO_LONG** | AD_IMAGE_9_TAG_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_IMAGE_9_TAG_REQUIRED** | AD_IMAGE_9_TAG_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
 **AD_LINK_FORMAT_WARNING** | AD_LINK_FORMAT_WARNING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
 **AD_LINK_SAME_AS_LINK** | AD_LINK_SAME_AS_LINK | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_VIDEO_0_LINK_DUPLICATED** | AD_VIDEO_0_LINK_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_VIDEO_0_LINK_LENGTH_TOO_LONG** | AD_VIDEO_0_LINK_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_VIDEO_0_LINK_REQUIRED** | AD_VIDEO_0_LINK_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_VIDEO_0_LINK_WARNING** | AD_VIDEO_0_LINK_WARNING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_VIDEO_0_TAG_DUPLICATED** | AD_VIDEO_0_TAG_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_VIDEO_0_TAG_LENGTH_TOO_LONG** | AD_VIDEO_0_TAG_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_VIDEO_0_TAG_REQUIRED** | AD_VIDEO_0_TAG_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_VIDEO_1_LINK_DUPLICATED** | AD_VIDEO_1_LINK_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_VIDEO_1_LINK_LENGTH_TOO_LONG** | AD_VIDEO_1_LINK_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_VIDEO_1_LINK_REQUIRED** | AD_VIDEO_1_LINK_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_VIDEO_1_LINK_WARNING** | AD_VIDEO_1_LINK_WARNING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_VIDEO_1_TAG_DUPLICATED** | AD_VIDEO_1_TAG_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_VIDEO_1_TAG_LENGTH_TOO_LONG** | AD_VIDEO_1_TAG_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_VIDEO_1_TAG_REQUIRED** | AD_VIDEO_1_TAG_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_VIDEO_2_LINK_DUPLICATED** | AD_VIDEO_2_LINK_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_VIDEO_2_LINK_LENGTH_TOO_LONG** | AD_VIDEO_2_LINK_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_VIDEO_2_LINK_REQUIRED** | AD_VIDEO_2_LINK_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_VIDEO_2_LINK_WARNING** | AD_VIDEO_2_LINK_WARNING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_VIDEO_2_TAG_DUPLICATED** | AD_VIDEO_2_TAG_DUPLICATED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_VIDEO_2_TAG_LENGTH_TOO_LONG** | AD_VIDEO_2_TAG_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**AD_VIDEO_2_TAG_REQUIRED** | AD_VIDEO_2_TAG_REQUIRED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
 **ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG** | ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
 **ADDITIONAL_IMAGE_LINK_WARNING** | ADDITIONAL_IMAGE_LINK_WARNING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
 **ADWORDS_FORMAT_WARNING** | ADWORDS_FORMAT_WARNING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
 **ADWORDS_SAME_AS_LINK** | ADWORDS_SAME_AS_LINK | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
 **AGE_GROUP_INVALID** | AGE_GROUP_INVALID | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
-**SIZE_SYSTEM_INVALID** | SIZE_SYSTEM_INVALID | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
 **ANDROID_DEEP_LINK_INVALID** | ANDROID_DEEP_LINK_INVALID | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
 **AVAILABILITY_DATE_INVALID** | AVAILABILITY_DATE_INVALID | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
 **COUNTRY_DOES_NOT_MAP_TO_CURRENCY** | COUNTRY_DOES_NOT_MAP_TO_CURRENCY | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
@@ -35,20 +195,184 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 **OPTIONAL_PRODUCT_CATEGORY_MISSING** | OPTIONAL_PRODUCT_CATEGORY_MISSING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
 **PRODUCT_CATEGORY_DEPTH_WARNING** | PRODUCT_CATEGORY_DEPTH_WARNING | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
 **PRODUCT_TYPE_LENGTH_TOO_LONG** | PRODUCT_TYPE_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
-**SALES_PRICE_INVALID** | SALES_PRICE_INVALID | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
-**SALES_PRICE_TOO_LOW** | SALES_PRICE_TOO_LOW | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
-**SALES_PRICE_TOO_HIGH** | SALES_PRICE_TOO_HIGH | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
 **SALE_DATE_INVALID** | SALE_DATE_INVALID | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
-**SHIPPING_INVALID** | SHIPPING_INVALID | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**SALES_PRICE_INVALID** | SALES_PRICE_INVALID | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**SALES_PRICE_TOO_HIGH** | SALES_PRICE_TOO_HIGH | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**SALES_PRICE_TOO_LOW** | SALES_PRICE_TOO_LOW | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
 **SHIPPING_HEIGHT_INVALID** | SHIPPING_HEIGHT_INVALID | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**SHIPPING_INVALID** | SHIPPING_INVALID | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
 **SHIPPING_WEIGHT_INVALID** | SHIPPING_WEIGHT_INVALID | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
 **SHIPPING_WIDTH_INVALID** | SHIPPING_WIDTH_INVALID | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**SIZE_SYSTEM_INVALID** | SIZE_SYSTEM_INVALID | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
 **SIZE_TYPE_INVALID** | SIZE_TYPE_INVALID | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
 **TAX_INVALID** | TAX_INVALID | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
 **TITLE_LENGTH_TOO_LONG** | TITLE_LENGTH_TOO_LONG | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
 **TOO_MANY_ADDITIONAL_IMAGE_LINKS** | TOO_MANY_ADDITIONAL_IMAGE_LINKS | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
 **UTM_SOURCE_AUTO_CORRECTED** | UTM_SOURCE_AUTO_CORRECTED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+**VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED** | VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
 **WEIGHT_UNIT_INVALID** | WEIGHT_UNIT_INVALID | long |  | [**CatalogsItemValidationDetails**](CatalogsItemValidationDetails.md) |  |  [optional] [foreignkey]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -14,30 +14,13 @@ import org.openapitools.model.Country;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsProductGroupMultipleCountriesCriteria   {
-  @JsonProperty("values")
-  private List<Country> values = new ArrayList<>();
-
   @JsonProperty("negated")
   private Boolean negated = false;
 
-  /**
-   **/
-  public CatalogsProductGroupMultipleCountriesCriteria values(List<Country> values) {
-    this.values = values;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty("values")
-  public List<Country> getValues() {
-    return values;
-  }
-  public void setValues(List<Country> values) {
-    this.values = values;
-  }
+  private List<Country> values = new ArrayList<>();
 
   /**
    **/
@@ -56,6 +39,23 @@ public class CatalogsProductGroupMultipleCountriesCriteria   {
     this.negated = negated;
   }
 
+  /**
+   **/
+  public CatalogsProductGroupMultipleCountriesCriteria values(List<Country> values) {
+    this.values = values;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("values")
+  public List<Country> getValues() {
+    return values;
+  }
+  public void setValues(List<Country> values) {
+    this.values = values;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -66,13 +66,13 @@ public class CatalogsProductGroupMultipleCountriesCriteria   {
       return false;
     }
     CatalogsProductGroupMultipleCountriesCriteria catalogsProductGroupMultipleCountriesCriteria = (CatalogsProductGroupMultipleCountriesCriteria) o;
-    return Objects.equals(values, catalogsProductGroupMultipleCountriesCriteria.values) &&
-        Objects.equals(negated, catalogsProductGroupMultipleCountriesCriteria.negated);
+    return Objects.equals(negated, catalogsProductGroupMultipleCountriesCriteria.negated) &&
+        Objects.equals(values, catalogsProductGroupMultipleCountriesCriteria.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, negated);
+    return Objects.hash(negated, values);
   }
 
   @Override
@@ -80,8 +80,8 @@ public class CatalogsProductGroupMultipleCountriesCriteria   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupMultipleCountriesCriteria {\n");
     
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

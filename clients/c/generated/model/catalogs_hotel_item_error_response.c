@@ -7,16 +7,16 @@
 
 static catalogs_hotel_item_error_response_t *catalogs_hotel_item_error_response_create_internal(
     pinterest_rest_api_catalogs_type__e catalog_type,
-    char *hotel_id,
-    list_t *errors
+    list_t *errors,
+    char *hotel_id
     ) {
     catalogs_hotel_item_error_response_t *catalogs_hotel_item_error_response_local_var = malloc(sizeof(catalogs_hotel_item_error_response_t));
     if (!catalogs_hotel_item_error_response_local_var) {
         return NULL;
     }
     catalogs_hotel_item_error_response_local_var->catalog_type = catalog_type;
-    catalogs_hotel_item_error_response_local_var->hotel_id = hotel_id;
     catalogs_hotel_item_error_response_local_var->errors = errors;
+    catalogs_hotel_item_error_response_local_var->hotel_id = hotel_id;
 
     catalogs_hotel_item_error_response_local_var->_library_owned = 1;
     return catalogs_hotel_item_error_response_local_var;
@@ -24,13 +24,13 @@ static catalogs_hotel_item_error_response_t *catalogs_hotel_item_error_response_
 
 __attribute__((deprecated)) catalogs_hotel_item_error_response_t *catalogs_hotel_item_error_response_create(
     pinterest_rest_api_catalogs_type__e catalog_type,
-    char *hotel_id,
-    list_t *errors
+    list_t *errors,
+    char *hotel_id
     ) {
     return catalogs_hotel_item_error_response_create_internal (
         catalog_type,
-        hotel_id,
-        errors
+        errors,
+        hotel_id
         );
 }
 
@@ -43,16 +43,16 @@ void catalogs_hotel_item_error_response_free(catalogs_hotel_item_error_response_
         return ;
     }
     listEntry_t *listEntry;
-    if (catalogs_hotel_item_error_response->hotel_id) {
-        free(catalogs_hotel_item_error_response->hotel_id);
-        catalogs_hotel_item_error_response->hotel_id = NULL;
-    }
     if (catalogs_hotel_item_error_response->errors) {
         list_ForEach(listEntry, catalogs_hotel_item_error_response->errors) {
             item_validation_event_free(listEntry->data);
         }
         list_freeList(catalogs_hotel_item_error_response->errors);
         catalogs_hotel_item_error_response->errors = NULL;
+    }
+    if (catalogs_hotel_item_error_response->hotel_id) {
+        free(catalogs_hotel_item_error_response->hotel_id);
+        catalogs_hotel_item_error_response->hotel_id = NULL;
     }
     free(catalogs_hotel_item_error_response);
 }
@@ -74,16 +74,10 @@ cJSON *catalogs_hotel_item_error_response_convertToJSON(catalogs_hotel_item_erro
     }
 
 
-    // catalogs_hotel_item_error_response->hotel_id
-    if(catalogs_hotel_item_error_response->hotel_id) {
-    if(cJSON_AddStringToObject(item, "hotel_id", catalogs_hotel_item_error_response->hotel_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // catalogs_hotel_item_error_response->errors
-    if(catalogs_hotel_item_error_response->errors) {
+    if (!catalogs_hotel_item_error_response->errors) {
+        goto fail;
+    }
     cJSON *errors = cJSON_AddArrayToObject(item, "errors");
     if(errors == NULL) {
     goto fail; //nonprimitive container
@@ -98,6 +92,13 @@ cJSON *catalogs_hotel_item_error_response_convertToJSON(catalogs_hotel_item_erro
     }
     cJSON_AddItemToArray(errors, itemLocal);
     }
+    }
+
+
+    // catalogs_hotel_item_error_response->hotel_id
+    if(catalogs_hotel_item_error_response->hotel_id) {
+    if(cJSON_AddStringToObject(item, "hotel_id", catalogs_hotel_item_error_response->hotel_id) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -131,24 +132,16 @@ catalogs_hotel_item_error_response_t *catalogs_hotel_item_error_response_parseFr
     
     catalog_type_local_nonprim = catalogs_type_parseFromJSON(catalog_type); //custom
 
-    // catalogs_hotel_item_error_response->hotel_id
-    cJSON *hotel_id = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_item_error_responseJSON, "hotel_id");
-    if (cJSON_IsNull(hotel_id)) {
-        hotel_id = NULL;
-    }
-    if (hotel_id) { 
-    if(!cJSON_IsString(hotel_id) && !cJSON_IsNull(hotel_id))
-    {
-    goto end; //String
-    }
-    }
-
     // catalogs_hotel_item_error_response->errors
     cJSON *errors = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_item_error_responseJSON, "errors");
     if (cJSON_IsNull(errors)) {
         errors = NULL;
     }
-    if (errors) { 
+    if (!errors) {
+        goto end;
+    }
+
+    
     cJSON *errors_local_nonprimitive = NULL;
     if(!cJSON_IsArray(errors)){
         goto end; //nonprimitive container
@@ -165,13 +158,24 @@ catalogs_hotel_item_error_response_t *catalogs_hotel_item_error_response_parseFr
 
         list_addElement(errorsList, errorsItem);
     }
+
+    // catalogs_hotel_item_error_response->hotel_id
+    cJSON *hotel_id = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_item_error_responseJSON, "hotel_id");
+    if (cJSON_IsNull(hotel_id)) {
+        hotel_id = NULL;
+    }
+    if (hotel_id) { 
+    if(!cJSON_IsString(hotel_id) && !cJSON_IsNull(hotel_id))
+    {
+    goto end; //String
+    }
     }
 
 
     catalogs_hotel_item_error_response_local_var = catalogs_hotel_item_error_response_create_internal (
         catalog_type_local_nonprim,
-        hotel_id && !cJSON_IsNull(hotel_id) ? strdup(hotel_id->valuestring) : NULL,
-        errors ? errorsList : NULL
+        errorsList,
+        hotel_id && !cJSON_IsNull(hotel_id) ? strdup(hotel_id->valuestring) : NULL
         );
 
     return catalogs_hotel_item_error_response_local_var;

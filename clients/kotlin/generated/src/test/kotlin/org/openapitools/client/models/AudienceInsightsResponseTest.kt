@@ -34,22 +34,16 @@ class AudienceInsightsResponseTest : ShouldSpec() {
             //modelInstance.categories shouldBe ("TODO")
         }
 
-        // to test the property `demographics`
-        should("test demographics") {
-            // uncomment below to test the property
-            //modelInstance.demographics shouldBe ("TODO")
-        }
-
-        // to test the property `type`
-        should("test type") {
-            // uncomment below to test the property
-            //modelInstance.type shouldBe ("TODO")
-        }
-
         // to test the property `date` - Generation date
         should("test date") {
             // uncomment below to test the property
             //modelInstance.date shouldBe ("TODO")
+        }
+
+        // to test the property `demographics`
+        should("test demographics") {
+            // uncomment below to test the property
+            //modelInstance.demographics shouldBe ("TODO")
         }
 
         // to test the property `propertySize` - Population count.
@@ -62,6 +56,12 @@ class AudienceInsightsResponseTest : ShouldSpec() {
         should("test sizeIsUpperBound") {
             // uncomment below to test the property
             //modelInstance.sizeIsUpperBound shouldBe ("TODO")
+        }
+
+        // to test the property `type`
+        should("test type") {
+            // uncomment below to test the property
+            //modelInstance.type shouldBe ("TODO")
         }
 
     }

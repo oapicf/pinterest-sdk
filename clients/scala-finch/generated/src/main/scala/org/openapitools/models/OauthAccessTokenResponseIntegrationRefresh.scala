@@ -10,19 +10,19 @@ import org.openapitools._
  * 
  * @param refreshUnderscoretoken 
  * @param refreshUnderscoretokenUnderscoreexpiresUnderscorein 
- * @param responseUnderscoretype 
  * @param accessUnderscoretoken 
- * @param tokenUnderscoretype 
  * @param expiresUnderscorein 
+ * @param responseUnderscoretype 
  * @param scope 
+ * @param tokenUnderscoretype 
  */
 case class OauthAccessTokenResponseIntegrationRefresh(refreshUnderscoretoken: String,
                 refreshUnderscoretokenUnderscoreexpiresUnderscorein: Int,
-                responseUnderscoretype: Option[String],
                 accessUnderscoretoken: String,
-                tokenUnderscoretype: String,
                 expiresUnderscorein: Int,
-                scope: String
+                responseUnderscoretype: Option[String],
+                scope: String,
+                tokenUnderscoretype: String
                 )
 
 object OauthAccessTokenResponseIntegrationRefresh {

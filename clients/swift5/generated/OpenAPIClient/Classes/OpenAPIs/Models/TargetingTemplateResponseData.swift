@@ -16,74 +16,74 @@ public struct TargetingTemplateResponseData: Codable, JSONEncodable, Hashable {
         case active = "ACTIVE"
         case deleted = "DELETED"
     }
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    /** targeting template name */
-    public var name: String?
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. */
     public var autoTargetingEnabled: Bool? = true
-    public var targetingAttributes: TargetingSpec?
-    public var placementGroup: PlacementGroupType?
     public var keywords: [TargetingTemplateKeyword]?
+    /** targeting template name */
+    public var name: String?
+    public var placementGroup: PlacementGroupType?
+    public var targetingAttributes: TargetingSpec?
     public var trackingUrls: TrackingUrls?
-    /** Targeting template ID. */
-    public var id: String?
-    /** Targeting template created time. Unix timestamp in seconds. */
-    public var createdTime: Int?
-    /** Targeting template updated time.Unix timestamp in seconds. */
-    public var updatedTime: Int?
     /** The ID of the advertiser that this targeting template belongs to. */
     public var adAccountId: String?
+    /** Targeting template created time. Unix timestamp in seconds. */
+    public var createdTime: Int?
+    /** Targeting template ID. */
+    public var id: String?
+    public var sizing: TargetingTemplateAudienceSizing?
     /** Indicate targeting template is active or Deleted */
     public var status: Status? = .active
-    public var sizing: TargetingTemplateAudienceSizing?
+    /** Targeting template updated time.Unix timestamp in seconds. */
+    public var updatedTime: Int?
 
-    public init(name: String? = nil, autoTargetingEnabled: Bool? = true, targetingAttributes: TargetingSpec? = nil, placementGroup: PlacementGroupType? = nil, keywords: [TargetingTemplateKeyword]? = nil, trackingUrls: TrackingUrls? = nil, id: String? = nil, createdTime: Int? = nil, updatedTime: Int? = nil, adAccountId: String? = nil, status: Status? = .active, sizing: TargetingTemplateAudienceSizing? = nil) {
-        self.name = name
+    public init(autoTargetingEnabled: Bool? = true, keywords: [TargetingTemplateKeyword]? = nil, name: String? = nil, placementGroup: PlacementGroupType? = nil, targetingAttributes: TargetingSpec? = nil, trackingUrls: TrackingUrls? = nil, adAccountId: String? = nil, createdTime: Int? = nil, id: String? = nil, sizing: TargetingTemplateAudienceSizing? = nil, status: Status? = .active, updatedTime: Int? = nil) {
         self.autoTargetingEnabled = autoTargetingEnabled
-        self.targetingAttributes = targetingAttributes
-        self.placementGroup = placementGroup
         self.keywords = keywords
+        self.name = name
+        self.placementGroup = placementGroup
+        self.targetingAttributes = targetingAttributes
         self.trackingUrls = trackingUrls
-        self.id = id
-        self.createdTime = createdTime
-        self.updatedTime = updatedTime
         self.adAccountId = adAccountId
-        self.status = status
+        self.createdTime = createdTime
+        self.id = id
         self.sizing = sizing
+        self.status = status
+        self.updatedTime = updatedTime
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case name
         case autoTargetingEnabled = "auto_targeting_enabled"
-        case targetingAttributes = "targeting_attributes"
-        case placementGroup = "placement_group"
         case keywords
+        case name
+        case placementGroup = "placement_group"
+        case targetingAttributes = "targeting_attributes"
         case trackingUrls = "tracking_urls"
-        case id
-        case createdTime = "created_time"
-        case updatedTime = "updated_time"
         case adAccountId = "ad_account_id"
-        case status
+        case createdTime = "created_time"
+        case id
         case sizing
+        case status
+        case updatedTime = "updated_time"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(autoTargetingEnabled, forKey: .autoTargetingEnabled)
-        try container.encodeIfPresent(targetingAttributes, forKey: .targetingAttributes)
-        try container.encodeIfPresent(placementGroup, forKey: .placementGroup)
         try container.encodeIfPresent(keywords, forKey: .keywords)
+        try container.encodeIfPresent(name, forKey: .name)
+        try container.encodeIfPresent(placementGroup, forKey: .placementGroup)
+        try container.encodeIfPresent(targetingAttributes, forKey: .targetingAttributes)
         try container.encodeIfPresent(trackingUrls, forKey: .trackingUrls)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(createdTime, forKey: .createdTime)
-        try container.encodeIfPresent(updatedTime, forKey: .updatedTime)
         try container.encodeIfPresent(adAccountId, forKey: .adAccountId)
-        try container.encodeIfPresent(status, forKey: .status)
+        try container.encodeIfPresent(createdTime, forKey: .createdTime)
+        try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(sizing, forKey: .sizing)
+        try container.encodeIfPresent(status, forKey: .status)
+        try container.encodeIfPresent(updatedTime, forKey: .updatedTime)
     }
 }
 

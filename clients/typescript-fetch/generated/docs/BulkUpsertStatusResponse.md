@@ -7,8 +7,8 @@ ID of the bulk request.
 
 Name | Type
 ------------ | -------------
-`status` | [BulkUpsertStatus](BulkUpsertStatus.md)
 `resultUrl` | string
+`status` | [BulkUpsertStatus](BulkUpsertStatus.md)
 
 ## Example
 
@@ -17,8 +17,8 @@ import type { BulkUpsertStatusResponse } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "status": null,
   "resultUrl": https://pinterest-waterloo.s3.us-east-1.amazonaws.com/bulk_framework/AD_ENTITY_UPSERT/549763856637-1659122537-0b4d77d3-f620-48ce-bec9-616106afb8d4/(...),
+  "status": null,
 } satisfies BulkUpsertStatusResponse
 
 console.log(example)

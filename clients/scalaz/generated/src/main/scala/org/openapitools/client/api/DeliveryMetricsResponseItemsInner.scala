@@ -12,14 +12,14 @@ import org.joda.time.DateTime
 import DeliveryMetricsResponseItemsInner._
 
 case class DeliveryMetricsResponseItemsInner (
-  /* Metric's name. */
-  name: Option[String],
-/* Category name */
+  /* Category name */
   category: Option[Category],
 /* How the metric is defined. */
   definition: Option[String],
 /* Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager. */
-  displayName: Option[String])
+  displayName: Option[String],
+/* Metric's name. */
+  name: Option[String])
 
 object DeliveryMetricsResponseItemsInner {
   import DateTimeCodecs._

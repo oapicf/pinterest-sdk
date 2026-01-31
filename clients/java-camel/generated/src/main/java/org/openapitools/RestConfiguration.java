@@ -20,6 +20,6 @@ public class RestConfiguration extends RouteBuilder {
             .bindingMode(RestBindingMode.auto)
             .clientRequestValidation(false)
             .apiProperty("api.title", "Pinterest REST API")
-            .apiProperty("api.version", "5.14.0");
+            .apiProperty("api.version", "5.23.0");
     }
 }

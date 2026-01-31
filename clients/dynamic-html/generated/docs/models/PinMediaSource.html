@@ -1,24 +1,8 @@
 
 <h2>PinMediaSource</h2>
 <ul class="parameter">
-  <li class="param-required-true">sourceUnderscoretype : String
+  <li class="param-required-true">contentUnderscoretype : ContentType
     <br/>
-      <dl class="param-enum">
-        <dt>Enum:
-            <dd>pin_url</dd>
-        </dt>
-      </dl>
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-true">contentUnderscoretype : String
-    <br/>
-      <dl class="param-enum">
-        <dt>Enum:
-            <dd>image/jpeg</dd>
-            <dd>image/png</dd>
-        </dt>
-      </dl>
   </li>
 </ul>
 <ul class="parameter">
@@ -32,24 +16,23 @@
   </li>
 </ul>
 <ul class="parameter">
+  <li class="param-required-true">sourceUnderscoretype : String
+    <br/>
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>pin_url</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
   <li class="param-required-true">url : String
     <br/>
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">coverUnderscoreimageUnderscoreurl : String
-    <br/>Cover image url.
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">coverUnderscoreimageUnderscorecontentUnderscoretype : String
+  <li class="param-required-false">coverUnderscoreimageUnderscorecontentUnderscoretype : ContentType
     <br/>Content type for cover image Base64.
-      <dl class="param-enum">
-        <dt>Enum:
-            <dd>image/jpeg</dd>
-            <dd>image/png</dd>
-        </dt>
-      </dl>
   </li>
 </ul>
 <ul class="parameter">
@@ -58,18 +41,28 @@
   </li>
 </ul>
 <ul class="parameter">
+  <li class="param-required-false">coverUnderscoreimageUnderscorekeyUnderscoreframeUnderscoretime : Integer
+    <br/>Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">coverUnderscoreimageUnderscoreurl : String
+    <br/>Cover image URL.
+  </li>
+</ul>
+<ul class="parameter">
   <li class="param-required-true">mediaUnderscoreid : String
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">index : Integer
     <br/>
   </li>
 </ul>
 <ul class="parameter">
   <li class="param-required-true">items : List
     <br/>Array with image objects.
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">index : Integer
-    <br/>
   </li>
 </ul>
 <ul class="parameter">

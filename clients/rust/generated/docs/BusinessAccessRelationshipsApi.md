@@ -4,13 +4,79 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**brand_accounts_slash_create**](BusinessAccessRelationshipsApi.md#brand_accounts_slash_create) | **POST** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts | Create a Brand Account
+[**brand_accounts_slash_update**](BusinessAccessRelationshipsApi.md#brand_accounts_slash_update) | **PATCH** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id} | Update a Brand Account
 [**delete_business_membership**](BusinessAccessRelationshipsApi.md#delete_business_membership) | **DELETE** /businesses/{business_id}/members | Terminate business memberships
 [**delete_business_partners**](BusinessAccessRelationshipsApi.md#delete_business_partners) | **DELETE** /businesses/{business_id}/partners | Terminate business partnerships
 [**get_slash_business_employers**](BusinessAccessRelationshipsApi.md#get_slash_business_employers) | **GET** /businesses/employers | List business employers for user
 [**get_slash_business_members**](BusinessAccessRelationshipsApi.md#get_slash_business_members) | **GET** /businesses/{business_id}/members | Get business members
 [**get_slash_business_partners**](BusinessAccessRelationshipsApi.md#get_slash_business_partners) | **GET** /businesses/{business_id}/partners | Get business partners
+[**system_user_slash_update**](BusinessAccessRelationshipsApi.md#system_user_slash_update) | **PATCH** /businesses/{business_id}/system_users/{system_user_id} | Update a system user information.
 [**update_slash_business_memberships**](BusinessAccessRelationshipsApi.md#update_slash_business_memberships) | **PATCH** /businesses/{business_id}/members | Update member's business role
 
+
+
+## brand_accounts_slash_create
+
+> models::BrandAccountsCreate200Response brand_accounts_slash_create(business_hierarchy_id, brand_accounts_create_request)
+Create a Brand Account
+
+Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**business_hierarchy_id** | **String** | business hierarchy node id | [required] |
+**brand_accounts_create_request** | [**BrandAccountsCreateRequest**](BrandAccountsCreateRequest.md) |  | [required] |
+
+### Return type
+
+[**models::BrandAccountsCreate200Response**](brand_accounts_create_200_response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## brand_accounts_slash_update
+
+> models::BrandAccountsCreate200Response brand_accounts_slash_update(business_hierarchy_id, brand_account_id, brand_accounts_update_request)
+Update a Brand Account
+
+Update an existing Brand Account
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**business_hierarchy_id** | **String** | business hierarchy node id | [required] |
+**brand_account_id** | **String** | Unique identifier of a brand account. | [required] |
+**brand_accounts_update_request** | [**BrandAccountsUpdateRequest**](BrandAccountsUpdateRequest.md) |  | [required] |
+
+### Return type
+
+[**models::BrandAccountsCreate200Response**](brand_accounts_create_200_response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## delete_business_membership
@@ -108,7 +174,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_slash_business_members
 
-> models::GetBusinessMembers200Response get_slash_business_members(business_id, assets_summary, business_roles, member_ids, start_index, bookmark, page_size)
+> models::GetBusinessMembers200Response get_slash_business_members(business_id, fetch_system_users, assets_summary, business_roles, member_ids, start_index, bookmark, page_size)
 Get business members
 
 Get all members of the specified business. The return response will include the member's business_role and assets they have access to if assets_summary=TRUE
@@ -119,6 +185,7 @@ Get all members of the specified business. The return response will include the 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **business_id** | **String** | Unique identifier of the requesting business. | [required] |
+**fetch_system_users** | Option<**bool**> | Fetches system users if True. Fetches regular user employees if False. |  |[default to false]
 **assets_summary** | Option<**bool**> | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are |  |[default to false]
 **business_roles** | Option<[**Vec<models::MemberBusinessRole>**](models::MemberBusinessRole.md)> | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. |  |
 **member_ids** | Option<**String**> | A list of business members ids separated by comma. |  |
@@ -173,6 +240,38 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## system_user_slash_update
+
+> system_user_slash_update(business_id, system_user_id, system_user_update_request)
+Update a system user information.
+
+Update a system user information such as name.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**business_id** | **String** | Unique identifier of the requesting business. | [required] |
+**system_user_id** | **String** | Unique identifier of a system user. | [required] |
+**system_user_update_request** | [**SystemUserUpdateRequest**](SystemUserUpdateRequest.md) |  | [required] |
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -14,6 +14,8 @@ import CatalogsDeleteRetailItem._
 case class CatalogsDeleteRetailItem (
   /* The catalog item id in the merchant namespace */
   itemId: String,
+/* The millisecond timestamp when the item was lastly modified by the merchant. */
+  lastUpdatedTime: Option[Long],
 operation: Operation)
 
 object CatalogsDeleteRetailItem {

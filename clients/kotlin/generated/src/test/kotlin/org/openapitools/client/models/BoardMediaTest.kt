@@ -25,7 +25,7 @@ class BoardMediaTest : ShouldSpec() {
         // uncomment below to create an instance of BoardMedia
         //val modelInstance = BoardMedia()
 
-        // to test the property `imageCoverUrl` - Board cover image.
+        // to test the property `imageCoverUrl` - Board cover image
         should("test imageCoverUrl") {
             // uncomment below to test the property
             //modelInstance.imageCoverUrl shouldBe ("TODO")

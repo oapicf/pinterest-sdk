@@ -2,12 +2,13 @@ package controllers;
 
 import apimodels.AdAccount;
 import apimodels.AdAccountAnalyticsResponseInner;
-import apimodels.AdAccountCreateRequest;
+import apimodels.AdAccountCreate;
 import apimodels.AdAccountsList200Response;
 import apimodels.AdsAnalyticsCreateAsyncRequest;
 import apimodels.AdsAnalyticsCreateAsyncResponse;
 import apimodels.AdsAnalyticsGetAsyncResponse;
 import apimodels.AdsAnalyticsTargetingType;
+import apimodels.ConversionProductReportRequest;
 import apimodels.ConversionReportAttributionType;
 import apimodels.CreateMMMReportRequest;
 import apimodels.CreateMMMReportResponse;
@@ -16,6 +17,9 @@ import apimodels.GetMMMReportResponse;
 import apimodels.Granularity;
 import java.time.LocalDate;
 import apimodels.MetricsResponse;
+import apimodels.PinterestLibError;
+import apimodels.ReportingTimeZone;
+import apimodels.TemplateBasedReport;
 import apimodels.TemplatesList200Response;
 
 import com.typesafe.config.Config;
@@ -40,7 +44,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdAccountsApiController extends Controller {
     private final AdAccountsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -116,7 +120,14 @@ public class AdAccountsApiController extends Controller {
         } else {
             conversionReportTime = "TIME_OF_AD_ACTION";
         }
-        return imp.adAccountAnalyticsHttp(request, adAccountId, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime);
+        String valuereportingTimezone = request.getQueryString("reporting_timezone");
+        ReportingTimeZone reportingTimezone;
+        if (valuereportingTimezone != null) {
+            reportingTimezone = valuereportingTimezone;
+        } else {
+            reportingTimezone = null;
+        }
+        return imp.adAccountAnalyticsHttp(request, adAccountId, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone);
     }
 
     @ApiAction
@@ -194,29 +205,38 @@ public class AdAccountsApiController extends Controller {
         } else {
             conversionReportTime = "TIME_OF_AD_ACTION";
         }
-        String valueattributionTypes = request.getQueryString("attribution_types");
-        ConversionReportAttributionType attributionTypes;
-        if (valueattributionTypes != null) {
-            attributionTypes = valueattributionTypes;
-        } else {
-            attributionTypes = null;
+        String[] attributionTypesArray = request.queryString().get("attribution_types");
+        List<String> attributionTypesList = OpenAPIUtils.parametersToList("csv", attributionTypesArray);
+        List<ConversionReportAttributionType> attributionTypes = new ArrayList<>();
+        for (String curParam : attributionTypesList) {
+            if (!curParam.isEmpty()) {
+                //noinspection UseBulkOperation
+                attributionTypes.add(curParam);
+            }
         }
-        return imp.adAccountTargetingAnalyticsGetHttp(request, adAccountId, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes);
+        String valuereportingTimezone = request.getQueryString("reporting_timezone");
+        ReportingTimeZone reportingTimezone;
+        if (valuereportingTimezone != null) {
+            reportingTimezone = valuereportingTimezone;
+        } else {
+            reportingTimezone = null;
+        }
+        return imp.adAccountTargetingAnalyticsGetHttp(request, adAccountId, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone);
     }
 
     @ApiAction
     public Result adAccountsCreate(Http.Request request) throws Exception {
-        JsonNode nodeadAccountCreateRequest = request.body().asJson();
-        AdAccountCreateRequest adAccountCreateRequest;
-        if (nodeadAccountCreateRequest != null) {
-            adAccountCreateRequest = mapper.readValue(nodeadAccountCreateRequest.toString(), AdAccountCreateRequest.class);
+        JsonNode nodeadAccountCreate = request.body().asJson();
+        AdAccountCreate adAccountCreate;
+        if (nodeadAccountCreate != null) {
+            adAccountCreate = mapper.readValue(nodeadAccountCreate.toString(), AdAccountCreate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(adAccountCreateRequest);
+                OpenAPIUtils.validate(adAccountCreate);
             }
         } else {
-            throw new IllegalArgumentException("'AdAccountCreateRequest' parameter is required");
+            throw new IllegalArgumentException("'AdAccountCreate' parameter is required");
         }
-        return imp.adAccountsCreateHttp(request, adAccountCreateRequest);
+        return imp.adAccountsCreateHttp(request, adAccountCreate);
     }
 
     @ApiAction
@@ -226,6 +246,13 @@ public class AdAccountsApiController extends Controller {
 
     @ApiAction
     public Result adAccountsList(Http.Request request) throws Exception {
+        String valueincludeSharedAccounts = request.getQueryString("include_shared_accounts");
+        Boolean includeSharedAccounts;
+        if (valueincludeSharedAccounts != null) {
+            includeSharedAccounts = Boolean.valueOf(valueincludeSharedAccounts);
+        } else {
+            includeSharedAccounts = true;
+        }
         String valuebookmark = request.getQueryString("bookmark");
         String bookmark;
         if (valuebookmark != null) {
@@ -240,14 +267,22 @@ public class AdAccountsApiController extends Controller {
         } else {
             pageSize = 25;
         }
-        String valueincludeSharedAccounts = request.getQueryString("include_shared_accounts");
-        Boolean includeSharedAccounts;
-        if (valueincludeSharedAccounts != null) {
-            includeSharedAccounts = Boolean.valueOf(valueincludeSharedAccounts);
+        return imp.adAccountsListHttp(request, includeSharedAccounts, bookmark, pageSize);
+    }
+
+    @ApiAction
+    public Result analyticsCreateConversionProductReport(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        JsonNode nodeconversionProductReportRequest = request.body().asJson();
+        ConversionProductReportRequest conversionProductReportRequest;
+        if (nodeconversionProductReportRequest != null) {
+            conversionProductReportRequest = mapper.readValue(nodeconversionProductReportRequest.toString(), ConversionProductReportRequest.class);
+            if (configuration.getBoolean("useInputBeanValidation")) {
+                OpenAPIUtils.validate(conversionProductReportRequest);
+            }
         } else {
-            includeSharedAccounts = true;
+            throw new IllegalArgumentException("'ConversionProductReportRequest' parameter is required");
         }
-        return imp.adAccountsListHttp(request, bookmark, pageSize, includeSharedAccounts);
+        return imp.analyticsCreateConversionProductReportHttp(request, adAccountId, conversionProductReportRequest);
     }
 
     @ApiAction
@@ -281,7 +316,7 @@ public class AdAccountsApiController extends Controller {
     }
 
     @ApiAction
-    public Result analyticsCreateTemplateReport(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @Pattern(regexp="^\\d+$") @Size(max=18)String templateId) throws Exception {
+    public Result analyticsCreateTemplateReport(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @Size(max=18)String templateId) throws Exception {
         String valuestartDate = request.getQueryString("start_date");
         LocalDate startDate;
         if (valuestartDate != null) {
@@ -304,6 +339,18 @@ public class AdAccountsApiController extends Controller {
             granularity = null;
         }
         return imp.analyticsCreateTemplateReportHttp(request, adAccountId, templateId, startDate, endDate, granularity);
+    }
+
+    @ApiAction
+    public Result analyticsGetConversionProductReport(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        String valuetoken = request.getQueryString("token");
+        String token;
+        if (valuetoken != null) {
+            token = valuetoken;
+        } else {
+            throw new IllegalArgumentException("'token' parameter is required");
+        }
+        return imp.analyticsGetConversionProductReportHttp(request, adAccountId, token);
     }
 
     @ApiAction

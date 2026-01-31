@@ -12,9 +12,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AdGroupsAnalyticsResponseInner extends HashMap<String, Object> {
   
  /**
-  * The ID of the ad group that this metrics belongs to.
+  * The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
   */
-  @ApiModelProperty(required = true, value = "The ID of the ad group that this metrics belongs to.")
+  @ApiModelProperty(value = "The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true.")
 
   private String AD_GROUP_ID;
 
@@ -25,7 +25,7 @@ public class AdGroupsAnalyticsResponseInner extends HashMap<String, Object> {
 
   private LocalDate DATE;
  /**
-   * The ID of the ad group that this metrics belongs to.
+   * The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
    * @return AD_GROUP_ID
   **/
   @JsonProperty("AD_GROUP_ID")

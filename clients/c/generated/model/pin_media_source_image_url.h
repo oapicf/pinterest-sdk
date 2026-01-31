@@ -1,7 +1,7 @@
 /*
  * pin_media_source_image_url.h
  *
- * Image URL-based media source
+ * Image URL-based media source.
  */
 
 #ifndef _pin_media_source_image_url_H_
@@ -27,17 +27,17 @@ pinterest_rest_api_pin_media_source_image_url_SOURCETYPE_e pin_media_source_imag
 
 
 typedef struct pin_media_source_image_url_t {
+    int is_standard; //boolean
     pinterest_rest_api_pin_media_source_image_url_SOURCETYPE_e source_type; //enum
     char *url; // string
-    int is_standard; //boolean
 
     int _library_owned; // Is the library responsible for freeing this object?
 } pin_media_source_image_url_t;
 
 __attribute__((deprecated)) pin_media_source_image_url_t *pin_media_source_image_url_create(
+    int is_standard,
     pinterest_rest_api_pin_media_source_image_url_SOURCETYPE_e source_type,
-    char *url,
-    int is_standard
+    char *url
 );
 
 void pin_media_source_image_url_free(pin_media_source_image_url_t *pin_media_source_image_url);

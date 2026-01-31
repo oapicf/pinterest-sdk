@@ -4,7 +4,7 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **items** | [**kotlin.collections.List&lt;TargetingTemplateResponseData&gt;**](TargetingTemplateResponseData.md) |  |  |
+| **items** | [**kotlin.collections.List&lt;TargetingTemplateGetResponseData&gt;**](TargetingTemplateGetResponseData.md) |  |  |
 | **bookmark** | **kotlin.String** |  |  [optional] |
 
 

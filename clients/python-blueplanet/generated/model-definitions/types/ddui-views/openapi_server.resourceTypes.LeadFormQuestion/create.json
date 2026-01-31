@@ -1,0 +1,20 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "custom_question_field_type" },
+      {"model": "custom_question_label" },
+      {"model": "custom_question_options" },
+      {"model": "question_type" },
+    ]
+  }]
+}

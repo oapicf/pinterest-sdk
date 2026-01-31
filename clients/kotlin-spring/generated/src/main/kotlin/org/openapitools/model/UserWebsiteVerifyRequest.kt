@@ -17,16 +17,16 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * User website verification request
- * @param website 
  * @param verificationMethod 
+ * @param website 
  */
 data class UserWebsiteVerifyRequest(
 
-    @Schema(example = "pintest-website-12345678.test/test_1", description = "")
-    @get:JsonProperty("website") val website: kotlin.String? = null,
-
     @Schema(example = "null", description = "")
-    @get:JsonProperty("verification_method") val verificationMethod: UserWebsiteVerifyRequest.VerificationMethod? = VerificationMethod.METATAG
+    @get:JsonProperty("verification_method") val verificationMethod: UserWebsiteVerifyRequest.VerificationMethod? = VerificationMethod.METATAG,
+
+    @Schema(example = "pintest-website-12345678.test/test_1", description = "")
+    @get:JsonProperty("website") val website: kotlin.String? = null
 ) {
 
     /**

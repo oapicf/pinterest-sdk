@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -21,10 +21,33 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BillingProfilesResponse   {
   
-  private String id;
+  private String advertiserId;
+
+
+  public enum BillingTypeEnum {
+    CREDIT_CARD("CREDIT_CARD"),
+    INVOICE("INVOICE"),
+    INTERNAL("INTERNAL"),
+    RECURRING("RECURRING"),
+    PREPAID("PREPAID");
+
+    private String value;
+
+    BillingTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private BillingTypeEnum billingType;
 
 
   public enum CardTypeEnum {
@@ -49,32 +72,7 @@ public class BillingProfilesResponse   {
   }
 
   private CardTypeEnum cardType;
-
-
-  public enum StatusEnum {
-    UNSPECIFIED("UNSPECIFIED"),
-    VALID("VALID"),
-    INVALID("INVALID"),
-    PENDING("PENDING"),
-    DELETED("DELETED"),
-    SECONDARY("SECONDARY"),
-    PENDING_SECONDARY("PENDING_SECONDARY");
-
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return value;
-    }
-  }
-
-  private StatusEnum status;
-  private String advertiserId;
+  private String id;
 
 
   public enum PaymentMethodBrandEnum {
@@ -103,22 +101,65 @@ public class BillingProfilesResponse   {
 
   private PaymentMethodBrandEnum paymentMethodBrand;
 
+
+  public enum StatusEnum {
+    UNSPECIFIED("UNSPECIFIED"),
+    VALID("VALID"),
+    INVALID("INVALID"),
+    PENDING("PENDING"),
+    DELETED("DELETED"),
+    SECONDARY("SECONDARY"),
+    PENDING_SECONDARY("PENDING_SECONDARY");
+
+    private String value;
+
+    StatusEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private StatusEnum status;
+
   /**
-   * Billing ID.
+   * Advertiser ID of the billing.
    */
-  public BillingProfilesResponse id(String id) {
-    this.id = id;
+  public BillingProfilesResponse advertiserId(String advertiserId) {
+    this.advertiserId = advertiserId;
     return this;
   }
 
   
-  @ApiModelProperty(example = "12312451231", value = "Billing ID.")
-  @JsonProperty("id")
-  public String getId() {
-    return id;
+  @ApiModelProperty(example = "12312451231", value = "Advertiser ID of the billing.")
+  @JsonProperty("advertiser_id")
+  public String getAdvertiserId() {
+    return advertiserId;
   }
-  public void setId(String id) {
-    this.id = id;
+  public void setAdvertiserId(String advertiserId) {
+    this.advertiserId = advertiserId;
+  }
+
+  /**
+   * Billing type of the advertiser
+   */
+  public BillingProfilesResponse billingType(BillingTypeEnum billingType) {
+    this.billingType = billingType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "CREDIT_CARD", value = "Billing type of the advertiser")
+  @JsonProperty("billing_type")
+  public BillingTypeEnum getBillingType() {
+    return billingType;
+  }
+  public void setBillingType(BillingTypeEnum billingType) {
+    this.billingType = billingType;
   }
 
   /**
@@ -140,39 +181,21 @@ public class BillingProfilesResponse   {
   }
 
   /**
-   * Status of the billing.
+   * Billing ID.
    */
-  public BillingProfilesResponse status(StatusEnum status) {
-    this.status = status;
+  public BillingProfilesResponse id(String id) {
+    this.id = id;
     return this;
   }
 
   
-  @ApiModelProperty(example = "INVALID", value = "Status of the billing.")
-  @JsonProperty("status")
-  public StatusEnum getStatus() {
-    return status;
+  @ApiModelProperty(example = "12312451231", value = "Billing ID.")
+  @JsonProperty("id")
+  public String getId() {
+    return id;
   }
-  public void setStatus(StatusEnum status) {
-    this.status = status;
-  }
-
-  /**
-   * Advertiser ID of the billing.
-   */
-  public BillingProfilesResponse advertiserId(String advertiserId) {
-    this.advertiserId = advertiserId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "12312451231", value = "Advertiser ID of the billing.")
-  @JsonProperty("advertiser_id")
-  public String getAdvertiserId() {
-    return advertiserId;
-  }
-  public void setAdvertiserId(String advertiserId) {
-    this.advertiserId = advertiserId;
+  public void setId(String id) {
+    this.id = id;
   }
 
   /**
@@ -193,6 +216,24 @@ public class BillingProfilesResponse   {
     this.paymentMethodBrand = paymentMethodBrand;
   }
 
+  /**
+   * Status of the billing.
+   */
+  public BillingProfilesResponse status(StatusEnum status) {
+    this.status = status;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "INVALID", value = "Status of the billing.")
+  @JsonProperty("status")
+  public StatusEnum getStatus() {
+    return status;
+  }
+  public void setStatus(StatusEnum status) {
+    this.status = status;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -203,16 +244,17 @@ public class BillingProfilesResponse   {
       return false;
     }
     BillingProfilesResponse billingProfilesResponse = (BillingProfilesResponse) o;
-    return Objects.equals(id, billingProfilesResponse.id) &&
+    return Objects.equals(advertiserId, billingProfilesResponse.advertiserId) &&
+        Objects.equals(billingType, billingProfilesResponse.billingType) &&
         Objects.equals(cardType, billingProfilesResponse.cardType) &&
-        Objects.equals(status, billingProfilesResponse.status) &&
-        Objects.equals(advertiserId, billingProfilesResponse.advertiserId) &&
-        Objects.equals(paymentMethodBrand, billingProfilesResponse.paymentMethodBrand);
+        Objects.equals(id, billingProfilesResponse.id) &&
+        Objects.equals(paymentMethodBrand, billingProfilesResponse.paymentMethodBrand) &&
+        Objects.equals(status, billingProfilesResponse.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, cardType, status, advertiserId, paymentMethodBrand);
+    return Objects.hash(advertiserId, billingType, cardType, id, paymentMethodBrand, status);
   }
 
   @Override
@@ -220,11 +262,12 @@ public class BillingProfilesResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class BillingProfilesResponse {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    cardType: ").append(toIndentedString(cardType)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
+    sb.append("    billingType: ").append(toIndentedString(billingType)).append("\n");
+    sb.append("    cardType: ").append(toIndentedString(cardType)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    paymentMethodBrand: ").append(toIndentedString(paymentMethodBrand)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

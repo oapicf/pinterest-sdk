@@ -30,7 +30,7 @@ import (
 )
 
 func main() {
-	advancedAuctionItemsGetRequest := *openapiclient.NewAdvancedAuctionItemsGetRequest("2680059592705", []openapiclient.AdvancedAuctionItemsGetRecord{*openapiclient.NewAdvancedAuctionItemsGetRecord("DS0294-M", openapiclient.Country("AD"), openapiclient.Language("AM"))}) // AdvancedAuctionItemsGetRequest | Request object used to get bid options values for a batch of retail catalog items
+	advancedAuctionItemsGetRequest := *openapiclient.NewAdvancedAuctionItemsGetRequest("2680059592705", []openapiclient.AdvancedAuctionItemsGetRecord{*openapiclient.NewAdvancedAuctionItemsGetRecord(openapiclient.Country("AD"), "DS0294-M", openapiclient.Language("AM"))}) // AdvancedAuctionItemsGetRequest | Request object used to get bid options values for a batch of retail catalog items
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -98,7 +98,7 @@ import (
 )
 
 func main() {
-	advancedAuctionItemsSubmitRequest := *openapiclient.NewAdvancedAuctionItemsSubmitRequest("2680059592705", []openapiclient.AdvancedAuctionItemsSubmitRecord{openapiclient.AdvancedAuctionItemsSubmitRecord{AdvancedAuctionItemsSubmitDeleteRecord: openapiclient.NewAdvancedAuctionItemsSubmitDeleteRecord("DS0294-M", openapiclient.Country("AD"), openapiclient.Language("AM"))}}) // AdvancedAuctionItemsSubmitRequest | Request object used to upsert or delete bid options for a batch of retail catalog items
+	advancedAuctionItemsSubmitRequest := *openapiclient.NewAdvancedAuctionItemsSubmitRequest("2680059592705", []openapiclient.AdvancedAuctionItemsSubmitRecord{openapiclient.AdvancedAuctionItemsSubmitRecord{AdvancedAuctionItemsSubmitDeleteRecord: openapiclient.NewAdvancedAuctionItemsSubmitDeleteRecord(openapiclient.Country("AD"), "DS0294-M", openapiclient.Language("AM"))}}) // AdvancedAuctionItemsSubmitRequest | Request object used to upsert or delete bid options for a batch of retail catalog items
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()

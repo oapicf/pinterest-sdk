@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsProductGroupMultipleMediaTypesCriteria`
 --
-SELECT `values`, `negated` FROM `CatalogsProductGroupMultipleMediaTypesCriteria` WHERE 1;
+SELECT `negated`, `values` FROM `CatalogsProductGroupMultipleMediaTypesCriteria` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsProductGroupMultipleMediaTypesCriteria`
 --
-INSERT INTO `CatalogsProductGroupMultipleMediaTypesCriteria`(`values`, `negated`) VALUES (?, ?);
+INSERT INTO `CatalogsProductGroupMultipleMediaTypesCriteria`(`negated`, `values`) VALUES (?, ?);
 
 --
 -- UPDATE template for table `CatalogsProductGroupMultipleMediaTypesCriteria`
 --
-UPDATE `CatalogsProductGroupMultipleMediaTypesCriteria` SET `values` = ?, `negated` = ? WHERE 1;
+UPDATE `CatalogsProductGroupMultipleMediaTypesCriteria` SET `negated` = ?, `values` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsProductGroupMultipleMediaTypesCriteria`

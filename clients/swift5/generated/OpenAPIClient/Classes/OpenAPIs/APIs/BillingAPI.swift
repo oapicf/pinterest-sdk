@@ -35,7 +35,7 @@ open class BillingAPI {
     /**
      Redeem ad credits
      - POST /ad_accounts/{ad_account_id}/ads_credit/redeem
-     - Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+     - Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
@@ -88,7 +88,7 @@ open class BillingAPI {
     /**
      Get ads credit discounts
      - GET /ad_accounts/{ad_account_id}/ads_credit/discounts
-     - Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+     - Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
@@ -123,6 +123,172 @@ open class BillingAPI {
     }
 
     /**
+     Get download url for a billing invoice
+     
+     - parameter adAccountId: (path) Unique identifier of an ad account. 
+     - parameter billingInvoiceId: (path) Unique identifier of a billing invoice. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func billingInvoiceDownloadGet(adAccountId: String, billingInvoiceId: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BillingInvoiceDownloadResponse?, _ error: Error?) -> Void)) -> RequestTask {
+        return billingInvoiceDownloadGetWithRequestBuilder(adAccountId: adAccountId, billingInvoiceId: billingInvoiceId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get download url for a billing invoice
+     - GET /ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download
+     - Get download url for a billing invoice.
+     - OAuth:
+       - type: oauth2
+       - name: pinterest_oauth2
+     - parameter adAccountId: (path) Unique identifier of an ad account. 
+     - parameter billingInvoiceId: (path) Unique identifier of a billing invoice. 
+     - returns: RequestBuilder<BillingInvoiceDownloadResponse> 
+     */
+    open class func billingInvoiceDownloadGetWithRequestBuilder(adAccountId: String, billingInvoiceId: String) -> RequestBuilder<BillingInvoiceDownloadResponse> {
+        var localVariablePath = "/ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download"
+        let adAccountIdPreEscape = "\(APIHelper.mapValueToPathItem(adAccountId))"
+        let adAccountIdPostEscape = adAccountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{ad_account_id}", with: adAccountIdPostEscape, options: .literal, range: nil)
+        let billingInvoiceIdPreEscape = "\(APIHelper.mapValueToPathItem(billingInvoiceId))"
+        let billingInvoiceIdPostEscape = billingInvoiceIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{billing_invoice_id}", with: billingInvoiceIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<BillingInvoiceDownloadResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+     * enum for parameter sort
+     */
+    public enum Sort_billingInvoicesGet: String, CaseIterable {
+        case dueDate = "DUE_DATE"
+        case billingPeriod = "BILLING_PERIOD"
+        case documentType = "DOCUMENT_TYPE"
+        case totalAmount = "TOTAL_AMOUNT"
+        case invoiceNumber = "INVOICE_NUMBER"
+    }
+
+    /**
+     * enum for parameter order
+     */
+    public enum Order_billingInvoicesGet: String, CaseIterable {
+        case ascending = "ASCENDING"
+        case descending = "DESCENDING"
+    }
+
+    /**
+     * enum for parameter status
+     */
+    public enum Status_billingInvoicesGet: String, CaseIterable {
+        case _open = "OPEN"
+        case closed = "CLOSED"
+    }
+
+    /**
+     * enum for parameter documentType
+     */
+    public enum DocumentType_billingInvoicesGet: String, CaseIterable {
+        case invoice = "INVOICE"
+        case creditMemo = "CREDIT_MEMO"
+    }
+
+    /**
+     Get billing invoices
+     
+     - parameter adAccountId: (path) Unique identifier of an ad account. 
+     - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter sort: (query) Field of which to sort billing invoices (optional, default to .dueDate)
+     - parameter order: (query) The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     - parameter status: (query) Status of billing invoices to filter by (optional)
+     - parameter documentType: (query) Document type of billing invoices to filter by (optional)
+     - parameter startDueDate: (query) Starting point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
+     - parameter endDueDate: (query) Ending point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func billingInvoicesGet(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, sort: Sort_billingInvoicesGet? = nil, order: Order_billingInvoicesGet? = nil, status: Status_billingInvoicesGet? = nil, documentType: DocumentType_billingInvoicesGet? = nil, startDueDate: Date? = nil, endDueDate: Date? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BillingInvoicesGet200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return billingInvoicesGetWithRequestBuilder(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, sort: sort, order: order, status: status, documentType: documentType, startDueDate: startDueDate, endDueDate: endDueDate).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get billing invoices
+     - GET /ad_accounts/{ad_account_id}/billing_invoices
+     - Get billing invoices in the advertiser account.
+     - OAuth:
+       - type: oauth2
+       - name: pinterest_oauth2
+     - parameter adAccountId: (path) Unique identifier of an ad account. 
+     - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
+     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter sort: (query) Field of which to sort billing invoices (optional, default to .dueDate)
+     - parameter order: (query) The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+     - parameter status: (query) Status of billing invoices to filter by (optional)
+     - parameter documentType: (query) Document type of billing invoices to filter by (optional)
+     - parameter startDueDate: (query) Starting point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
+     - parameter endDueDate: (query) Ending point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
+     - returns: RequestBuilder<BillingInvoicesGet200Response> 
+     */
+    open class func billingInvoicesGetWithRequestBuilder(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, sort: Sort_billingInvoicesGet? = nil, order: Order_billingInvoicesGet? = nil, status: Status_billingInvoicesGet? = nil, documentType: DocumentType_billingInvoicesGet? = nil, startDueDate: Date? = nil, endDueDate: Date? = nil) -> RequestBuilder<BillingInvoicesGet200Response> {
+        var localVariablePath = "/ad_accounts/{ad_account_id}/billing_invoices"
+        let adAccountIdPreEscape = "\(APIHelper.mapValueToPathItem(adAccountId))"
+        let adAccountIdPostEscape = adAccountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{ad_account_id}", with: adAccountIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "bookmark": (wrappedValue: bookmark?.encodeToJSON(), isExplode: true),
+            "page_size": (wrappedValue: pageSize?.encodeToJSON(), isExplode: true),
+            "sort": (wrappedValue: sort?.encodeToJSON(), isExplode: true),
+            "order": (wrappedValue: order?.encodeToJSON(), isExplode: true),
+            "status": (wrappedValue: status?.encodeToJSON(), isExplode: true),
+            "document_type": (wrappedValue: documentType?.encodeToJSON(), isExplode: true),
+            "start_due_date": (wrappedValue: startDueDate?.encodeToJSON(), isExplode: true),
+            "end_due_date": (wrappedValue: endDueDate?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<BillingInvoicesGet200Response>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
      Get billing profiles
      
      - parameter adAccountId: (path) Unique identifier of an ad account. 
@@ -147,7 +313,7 @@ open class BillingAPI {
     /**
      Get billing profiles
      - GET /ad_accounts/{ad_account_id}/billing_profiles
-     - Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+     - Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2

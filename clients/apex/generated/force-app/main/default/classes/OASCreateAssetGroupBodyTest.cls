@@ -73,8 +73,8 @@ private class OASCreateAssetGroupBodyTest {
     private static void maintainRenamedProperties() {
         OASCreateAssetGroupBody createAssetGroupBody = new OASCreateAssetGroupBody();
         Map<String, String> x-property-mappings = createAssetGroupBody.getx-property-mappings();
-        System.assertEquals('assetGroupName', x-property-mappings.get('asset_group_name'));
         System.assertEquals('assetGroupDescription', x-property-mappings.get('asset_group_description'));
+        System.assertEquals('assetGroupName', x-property-mappings.get('asset_group_name'));
         System.assertEquals('assetGroupTypes', x-property-mappings.get('asset_group_types'));
     }
 
@@ -82,7 +82,7 @@ private class OASCreateAssetGroupBodyTest {
     private static void defaultValuesPopulated() {
         OASCreateAssetGroupBody createAssetGroupBody = new OASCreateAssetGroupBody();
         System.assertEquals(new List<OASAssetGroupType>(), createAssetGroupBody.assetGroupTypes);
-        System.assertEquals(null, createAssetGroupBody.assetGroupName);
         System.assertEquals(null, createAssetGroupBody.assetGroupDescription);
+        System.assertEquals(null, createAssetGroupBody.assetGroupName);
     }
 }

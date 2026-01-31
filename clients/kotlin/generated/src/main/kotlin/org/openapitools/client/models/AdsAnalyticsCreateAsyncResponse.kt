@@ -23,22 +23,22 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
+ * @param message 
  * @param reportStatus 
  * @param token 
- * @param message 
  */
 
 
 data class AdsAnalyticsCreateAsyncResponse (
 
+    @Json(name = "message")
+    val message: kotlin.String? = null,
+
     @Json(name = "report_status")
     val reportStatus: BulkReportingJobStatus? = null,
 
     @Json(name = "token")
-    val token: kotlin.String? = null,
-
-    @Json(name = "message")
-    val message: kotlin.String? = null
+    val token: kotlin.String? = null
 
 ) {
 

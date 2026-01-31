@@ -6,11 +6,11 @@
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 **catalogType** | catalog_type | text |  | [**catalog_type**](#CatalogType) |  |  [optional]
-**name** | name | text |  | **kotlin.String** |  |  [optional]
+**country** | country | long |  | [**Country**](Country.md) |  |  [optional] [foreignkey]
 **description** | description | text |  | **kotlin.String** |  |  [optional]
 **filters** | filters | long |  | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  |  [optional] [foreignkey]
-**country** | country | long |  | [**Country**](Country.md) |  |  [optional] [foreignkey]
 **locale** | locale | long |  | [**CatalogsLocale**](CatalogsLocale.md) |  |  [optional] [foreignkey]
+**name** | name | text |  | **kotlin.String** |  |  [optional]
 
 
 

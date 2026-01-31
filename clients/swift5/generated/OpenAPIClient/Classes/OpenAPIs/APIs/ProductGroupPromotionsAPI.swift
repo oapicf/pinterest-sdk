@@ -73,7 +73,7 @@ open class ProductGroupPromotionsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func productGroupPromotionsGet(adAccountId: String, productGroupPromotionId: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProductGroupPromotionResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func productGroupPromotionsGet(adAccountId: String, productGroupPromotionId: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProductGroupPromotion?, _ error: Error?) -> Void)) -> RequestTask {
         return productGroupPromotionsGetWithRequestBuilder(adAccountId: adAccountId, productGroupPromotionId: productGroupPromotionId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -93,9 +93,9 @@ open class ProductGroupPromotionsAPI {
        - name: pinterest_oauth2
      - parameter adAccountId: (path) Unique identifier of an ad account. 
      - parameter productGroupPromotionId: (path) Unique identifier of a product group promotion 
-     - returns: RequestBuilder<ProductGroupPromotionResponse> 
+     - returns: RequestBuilder<ProductGroupPromotion> 
      */
-    open class func productGroupPromotionsGetWithRequestBuilder(adAccountId: String, productGroupPromotionId: String) -> RequestBuilder<ProductGroupPromotionResponse> {
+    open class func productGroupPromotionsGetWithRequestBuilder(adAccountId: String, productGroupPromotionId: String) -> RequestBuilder<ProductGroupPromotion> {
         var localVariablePath = "/ad_accounts/{ad_account_id}/product_group_promotions/{product_group_promotion_id}"
         let adAccountIdPreEscape = "\(APIHelper.mapValueToPathItem(adAccountId))"
         let adAccountIdPostEscape = adAccountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -114,7 +114,7 @@ open class ProductGroupPromotionsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ProductGroupPromotionResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ProductGroupPromotion>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -272,7 +272,9 @@ open class ProductGroupPromotionsAPI {
         case ecpcInDollar = "ECPC_IN_DOLLAR"
         case ctr = "CTR"
         case ectr = "ECTR"
+        case outboundCtr1 = "OUTBOUND_CTR_1"
         case campaignName = "CAMPAIGN_NAME"
+        case campaignBrandLabel = "CAMPAIGN_BRAND_LABEL"
         case pinId = "PIN_ID"
         case totalEngagement = "TOTAL_ENGAGEMENT"
         case engagement1 = "ENGAGEMENT_1"
@@ -293,7 +295,13 @@ open class ProductGroupPromotionsAPI {
         case campaignObjectiveType = "CAMPAIGN_OBJECTIVE_TYPE"
         case cpmInMicroDollar = "CPM_IN_MICRO_DOLLAR"
         case cpmInDollar = "CPM_IN_DOLLAR"
+        case adGroupName = "AD_GROUP_NAME"
+        case adGroupBudgetType = "AD_GROUP_BUDGET_TYPE"
+        case adGroupBudgetInLocalCurrency = "AD_GROUP_BUDGET_IN_LOCAL_CURRENCY"
         case adGroupEntityStatus = "AD_GROUP_ENTITY_STATUS"
+        case adGroupBidMultiplier = "AD_GROUP_BID_MULTIPLIER"
+        case promoId = "PROMO_ID"
+        case promoName = "PROMO_NAME"
         case orderLineId = "ORDER_LINE_ID"
         case orderLineName = "ORDER_LINE_NAME"
         case clickthrough1 = "CLICKTHROUGH_1"
@@ -311,6 +319,7 @@ open class ProductGroupPromotionsAPI {
         case totalImpressionUser = "TOTAL_IMPRESSION_USER"
         case totalImpressionFrequency = "TOTAL_IMPRESSION_FREQUENCY"
         case costPerOutboundClickInDollar = "COST_PER_OUTBOUND_CLICK_IN_DOLLAR"
+        case costPerOutboundClickInDollar1 = "COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1"
         case totalEngagementSignup = "TOTAL_ENGAGEMENT_SIGNUP"
         case totalEngagementCheckout = "TOTAL_ENGAGEMENT_CHECKOUT"
         case totalEngagementLead = "TOTAL_ENGAGEMENT_LEAD"
@@ -332,13 +341,19 @@ open class ProductGroupPromotionsAPI {
         case totalWebSessions = "TOTAL_WEB_SESSIONS"
         case webSessions1 = "WEB_SESSIONS_1"
         case webSessions2 = "WEB_SESSIONS_2"
+        case adName = "AD_NAME"
         case campaignLifetimeSpendCap = "CAMPAIGN_LIFETIME_SPEND_CAP"
+        case adGroupOptimization = "AD_GROUP_OPTIMIZATION"
         case campaignDailySpendCap = "CAMPAIGN_DAILY_SPEND_CAP"
+        case campaignBudgetOptimization = "CAMPAIGN_BUDGET_OPTIMIZATION"
+        case isPremiereCampaign = "IS_PREMIERE_CAMPAIGN"
         case totalPageVisit = "TOTAL_PAGE_VISIT"
         case totalSignup = "TOTAL_SIGNUP"
         case totalCheckout = "TOTAL_CHECKOUT"
         case totalCustom = "TOTAL_CUSTOM"
         case totalLead = "TOTAL_LEAD"
+        case totalAddToWishlist = "TOTAL_ADD_TO_WISHLIST"
+        case totalSubscribe = "TOTAL_SUBSCRIBE"
         case totalSignupValueInMicroDollar = "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR"
         case totalCheckoutValueInMicroDollar = "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
         case totalCustomValueInMicroDollar = "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR"
@@ -346,8 +361,13 @@ open class ProductGroupPromotionsAPI {
         case pageVisitRoas = "PAGE_VISIT_ROAS"
         case checkoutRoas = "CHECKOUT_ROAS"
         case customRoas = "CUSTOM_ROAS"
+        case productGroupAdImageTag = "PRODUCT_GROUP_AD_IMAGE_TAG"
+        case productGroupAdVideoTag = "PRODUCT_GROUP_AD_VIDEO_TAG"
+        case video3secViews1 = "VIDEO_3SEC_VIEWS_1"
+        case video15secUniqueViews1 = "VIDEO_15SEC_UNIQUE_VIEWS_1"
         case videoMrcViews1 = "VIDEO_MRC_VIEWS_1"
         case video3secViews2 = "VIDEO_3SEC_VIEWS_2"
+        case video15secUniqueViews2 = "VIDEO_15SEC_UNIQUE_VIEWS_2"
         case videoP100Complete2 = "VIDEO_P100_COMPLETE_2"
         case videoP0Combined2 = "VIDEO_P0_COMBINED_2"
         case videoP25Combined2 = "VIDEO_P25_COMBINED_2"
@@ -357,10 +377,12 @@ open class ProductGroupPromotionsAPI {
         case videoMrcViews2 = "VIDEO_MRC_VIEWS_2"
         case paidVideoViewableRate = "PAID_VIDEO_VIEWABLE_RATE"
         case videoLength = "VIDEO_LENGTH"
+        case videoSpendInDollar = "VIDEO_SPEND_IN_DOLLAR"
         case ecpvInDollar = "ECPV_IN_DOLLAR"
         case ecpcvInDollar = "ECPCV_IN_DOLLAR"
         case ecpcvP95InDollar = "ECPCV_P95_IN_DOLLAR"
         case totalVideo3secViews = "TOTAL_VIDEO_3SEC_VIEWS"
+        case totalVideo15secUniqueViews = "TOTAL_VIDEO_15SEC_UNIQUE_VIEWS"
         case totalVideoP100Complete = "TOTAL_VIDEO_P100_COMPLETE"
         case totalVideoP0Combined = "TOTAL_VIDEO_P0_COMBINED"
         case totalVideoP25Combined = "TOTAL_VIDEO_P25_COMBINED"
@@ -382,6 +404,8 @@ open class ProductGroupPromotionsAPI {
         case totalWebViewCheckoutValueInMicroDollar = "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
         case inappCheckoutCostPerAction = "INAPP_CHECKOUT_COST_PER_ACTION"
         case totalOfflineCheckout = "TOTAL_OFFLINE_CHECKOUT"
+        case totalAppInstallConversionRate = "TOTAL_APP_INSTALL_CONVERSION_RATE"
+        case totalInappAppInstallConversionRate = "TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE"
         case ideaPinProductTagVisit1 = "IDEA_PIN_PRODUCT_TAG_VISIT_1"
         case ideaPinProductTagVisit2 = "IDEA_PIN_PRODUCT_TAG_VISIT_2"
         case totalIdeaPinProductTagVisit = "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT"
@@ -471,15 +495,16 @@ open class ProductGroupPromotionsAPI {
      - parameter columns: (query) Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned 
      - parameter granularity: (query) TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly 
      - parameter clickWindowDays: (query) Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ._30)
-     - parameter engagementWindowDays: (query) Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ._30)
+     - parameter engagementWindowDays: (query) Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to ._30)
      - parameter viewWindowDays: (query) Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to ._1)
      - parameter conversionReportTime: (query) The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to .timeOfAdAction)
+     - parameter reportingTimezone: (query) Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func productGroupsAnalytics(adAccountId: String, startDate: Date, endDate: Date, productGroupIds: [String], columns: [Columns_productGroupsAnalytics], granularity: Granularity, clickWindowDays: ClickWindowDays_productGroupsAnalytics? = nil, engagementWindowDays: EngagementWindowDays_productGroupsAnalytics? = nil, viewWindowDays: ViewWindowDays_productGroupsAnalytics? = nil, conversionReportTime: ConversionReportTime_productGroupsAnalytics? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [ProductGroupAnalyticsResponseInner]?, _ error: Error?) -> Void)) -> RequestTask {
-        return productGroupsAnalyticsWithRequestBuilder(adAccountId: adAccountId, startDate: startDate, endDate: endDate, productGroupIds: productGroupIds, columns: columns, granularity: granularity, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime).execute(apiResponseQueue) { result in
+    open class func productGroupsAnalytics(adAccountId: String, startDate: Date, endDate: Date, productGroupIds: [String], columns: [Columns_productGroupsAnalytics], granularity: Granularity, clickWindowDays: ClickWindowDays_productGroupsAnalytics? = nil, engagementWindowDays: EngagementWindowDays_productGroupsAnalytics? = nil, viewWindowDays: ViewWindowDays_productGroupsAnalytics? = nil, conversionReportTime: ConversionReportTime_productGroupsAnalytics? = nil, reportingTimezone: ReportingTimeZone? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [ProductGroupAnalyticsResponseInner]?, _ error: Error?) -> Void)) -> RequestTask {
+        return productGroupsAnalyticsWithRequestBuilder(adAccountId: adAccountId, startDate: startDate, endDate: endDate, productGroupIds: productGroupIds, columns: columns, granularity: granularity, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, reportingTimezone: reportingTimezone).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -492,10 +517,13 @@ open class ProductGroupPromotionsAPI {
     /**
      Get product group analytics
      - GET /ad_accounts/{ad_account_id}/product_groups/analytics
-     - Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     - Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter adAccountId: (path) Unique identifier of an ad account. 
      - parameter startDate: (query) Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. 
      - parameter endDate: (query) Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. 
@@ -503,12 +531,13 @@ open class ProductGroupPromotionsAPI {
      - parameter columns: (query) Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned 
      - parameter granularity: (query) TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly 
      - parameter clickWindowDays: (query) Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ._30)
-     - parameter engagementWindowDays: (query) Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ._30)
+     - parameter engagementWindowDays: (query) Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to ._30)
      - parameter viewWindowDays: (query) Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to ._1)
      - parameter conversionReportTime: (query) The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to .timeOfAdAction)
+     - parameter reportingTimezone: (query) Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
      - returns: RequestBuilder<[ProductGroupAnalyticsResponseInner]> 
      */
-    open class func productGroupsAnalyticsWithRequestBuilder(adAccountId: String, startDate: Date, endDate: Date, productGroupIds: [String], columns: [Columns_productGroupsAnalytics], granularity: Granularity, clickWindowDays: ClickWindowDays_productGroupsAnalytics? = nil, engagementWindowDays: EngagementWindowDays_productGroupsAnalytics? = nil, viewWindowDays: ViewWindowDays_productGroupsAnalytics? = nil, conversionReportTime: ConversionReportTime_productGroupsAnalytics? = nil) -> RequestBuilder<[ProductGroupAnalyticsResponseInner]> {
+    open class func productGroupsAnalyticsWithRequestBuilder(adAccountId: String, startDate: Date, endDate: Date, productGroupIds: [String], columns: [Columns_productGroupsAnalytics], granularity: Granularity, clickWindowDays: ClickWindowDays_productGroupsAnalytics? = nil, engagementWindowDays: EngagementWindowDays_productGroupsAnalytics? = nil, viewWindowDays: ViewWindowDays_productGroupsAnalytics? = nil, conversionReportTime: ConversionReportTime_productGroupsAnalytics? = nil, reportingTimezone: ReportingTimeZone? = nil) -> RequestBuilder<[ProductGroupAnalyticsResponseInner]> {
         var localVariablePath = "/ad_accounts/{ad_account_id}/product_groups/analytics"
         let adAccountIdPreEscape = "\(APIHelper.mapValueToPathItem(adAccountId))"
         let adAccountIdPostEscape = adAccountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -527,6 +556,7 @@ open class ProductGroupPromotionsAPI {
             "engagement_window_days": (wrappedValue: engagementWindowDays?.encodeToJSON(), isExplode: true),
             "view_window_days": (wrappedValue: viewWindowDays?.encodeToJSON(), isExplode: true),
             "conversion_report_time": (wrappedValue: conversionReportTime?.encodeToJSON(), isExplode: true),
+            "reporting_timezone": (wrappedValue: reportingTimezone?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [

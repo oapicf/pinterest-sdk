@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LeadFormQuestionFieldType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LeadFormQuestionFieldType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  LeadFormQuestionFieldType {
+    title = LeadFormQuestionFieldType
+    description = LeadFormQuestionFieldType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  LeadFormQuestionFieldType {
+    title = LeadFormQuestionFieldType
+    description = LeadFormQuestionFieldType
+    implements = openapi_server.resourceTypes.LeadFormQuestionFieldType
+
+  }
+}

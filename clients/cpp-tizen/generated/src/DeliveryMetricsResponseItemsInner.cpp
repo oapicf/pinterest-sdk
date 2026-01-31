@@ -23,20 +23,15 @@ DeliveryMetricsResponse_items_inner::~DeliveryMetricsResponse_items_inner()
 void
 DeliveryMetricsResponse_items_inner::__init()
 {
-	//name = std::string();
 	//category = std::string();
 	//definition = std::string();
 	//display_name = std::string();
+	//name = std::string();
 }
 
 void
 DeliveryMetricsResponse_items_inner::__cleanup()
 {
-	//if(name != NULL) {
-	//
-	//delete name;
-	//name = NULL;
-	//}
 	//if(category != NULL) {
 	//
 	//delete category;
@@ -52,6 +47,11 @@ DeliveryMetricsResponse_items_inner::__cleanup()
 	//delete display_name;
 	//display_name = NULL;
 	//}
+	//if(name != NULL) {
+	//
+	//delete name;
+	//name = NULL;
+	//}
 	//
 }
 
@@ -60,17 +60,6 @@ DeliveryMetricsResponse_items_inner::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *nameKey = "name";
-	node = json_object_get_member(pJsonObject, nameKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&name, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *categoryKey = "category";
 	node = json_object_get_member(pJsonObject, categoryKey);
 	if (node !=NULL) {
@@ -104,6 +93,17 @@ DeliveryMetricsResponse_items_inner::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *nameKey = "name";
+	node = json_object_get_member(pJsonObject, nameKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&name, node, "std::string", "");
+		} else {
+			
+		}
+	}
 }
 
 DeliveryMetricsResponse_items_inner::DeliveryMetricsResponse_items_inner(char* json)
@@ -116,15 +116,6 @@ DeliveryMetricsResponse_items_inner::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getName();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *nameKey = "name";
-	json_object_set_member(pJsonObject, nameKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getCategory();
 		node = converttoJson(&obj, "std::string", "");
@@ -152,24 +143,21 @@ DeliveryMetricsResponse_items_inner::toJson()
 	}
 	const gchar *display_nameKey = "display_name";
 	json_object_set_member(pJsonObject, display_nameKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getName();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *nameKey = "name";
+	json_object_set_member(pJsonObject, nameKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
-}
-
-std::string
-DeliveryMetricsResponse_items_inner::getName()
-{
-	return name;
-}
-
-void
-DeliveryMetricsResponse_items_inner::setName(std::string  name)
-{
-	this->name = name;
 }
 
 std::string
@@ -206,6 +194,18 @@ void
 DeliveryMetricsResponse_items_inner::setDisplayName(std::string  display_name)
 {
 	this->display_name = display_name;
+}
+
+std::string
+DeliveryMetricsResponse_items_inner::getName()
+{
+	return name;
+}
+
+void
+DeliveryMetricsResponse_items_inner::setName(std::string  name)
+{
+	this->name = name;
 }
 
 

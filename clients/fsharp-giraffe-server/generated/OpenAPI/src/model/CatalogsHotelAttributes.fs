@@ -14,24 +14,24 @@ module CatalogsHotelAttributes =
 
 
   type CatalogsHotelAttributes = {
-    Name : string option;
-    Link : string option;
-    Description : string option;
-    Brand : string option;
-    Latitude : decimal;
-    Longitude : decimal option;
-    Neighborhood : string[];
     Address : CatalogsHotelAddress;
+    BasePrice : string option;
+    Brand : string option;
+    Category : string option;
     CustomLabel0 : string option;
     CustomLabel1 : string option;
     CustomLabel2 : string option;
     CustomLabel3 : string option;
     CustomLabel4 : string option;
-    Category : string option;
-    BasePrice : string option;
-    SalePrice : string option;
+    Description : string option;
     GuestRatings : CatalogsHotelGuestRatings;
-    MainImage : CatalogsHotelAttributesAllOfMainImage;
+    Latitude : decimal;
+    Link : string option;
+    Longitude : decimal option;
+    Name : string option;
+    Neighborhood : string[];
+    SalePrice : string option;
     AdditionalImageLink : string[];
+    MainImage : CatalogsHotelAttributesAllOfMainImage;
   }
   //#endregion

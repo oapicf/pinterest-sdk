@@ -7,41 +7,40 @@
 #' @title SSIOAccountResponse
 #' @description SSIOAccountResponse Class
 #' @format An \code{R6Class} generator object
-#' @field eligible Advertiser eligible to create order lines character [optional]
-#' @field can_edit Advertiser eligible to update order lines character [optional]
 #' @field billto_infos An array of Salesforce account information that includes address, io terms, etc. list(\link{SSIOAccountItem}) [optional]
+#' @field can_edit Advertiser eligible to update order lines character [optional]
 #' @field currency  character [optional]
-#' @field pmp_names  list(\link{SSIOAccountPMPName}) [optional]
+#' @field eligible Advertiser eligible to create order lines character [optional]
 #' @field error Error indicator from Salesforce which could be \"No Error\" character [optional]
+#' @field pmp_names  list(\link{SSIOAccountPMPName}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 SSIOAccountResponse <- R6::R6Class(
   "SSIOAccountResponse",
   public = list(
-    `eligible` = NULL,
-    `can_edit` = NULL,
     `billto_infos` = NULL,
+    `can_edit` = NULL,
     `currency` = NULL,
-    `pmp_names` = NULL,
+    `eligible` = NULL,
     `error` = NULL,
+    `pmp_names` = NULL,
 
     #' @description
     #' Initialize a new SSIOAccountResponse class.
     #'
-    #' @param eligible Advertiser eligible to create order lines
-    #' @param can_edit Advertiser eligible to update order lines
     #' @param billto_infos An array of Salesforce account information that includes address, io terms, etc.
+    #' @param can_edit Advertiser eligible to update order lines
     #' @param currency currency
-    #' @param pmp_names pmp_names
+    #' @param eligible Advertiser eligible to create order lines
     #' @param error Error indicator from Salesforce which could be \"No Error\"
+    #' @param pmp_names pmp_names
     #' @param ... Other optional arguments.
-    initialize = function(`eligible` = NULL, `can_edit` = NULL, `billto_infos` = NULL, `currency` = NULL, `pmp_names` = NULL, `error` = NULL, ...) {
-      if (!is.null(`eligible`)) {
-        if (!(is.logical(`eligible`) && length(`eligible`) == 1)) {
-          stop(paste("Error! Invalid data for `eligible`. Must be a boolean:", `eligible`))
-        }
-        self$`eligible` <- `eligible`
+    initialize = function(`billto_infos` = NULL, `can_edit` = NULL, `currency` = NULL, `eligible` = NULL, `error` = NULL, `pmp_names` = NULL, ...) {
+      if (!is.null(`billto_infos`)) {
+        stopifnot(is.vector(`billto_infos`), length(`billto_infos`) != 0)
+        sapply(`billto_infos`, function(x) stopifnot(R6::is.R6(x)))
+        self$`billto_infos` <- `billto_infos`
       }
       if (!is.null(`can_edit`)) {
         if (!(is.logical(`can_edit`) && length(`can_edit`) == 1)) {
@@ -49,27 +48,28 @@ SSIOAccountResponse <- R6::R6Class(
         }
         self$`can_edit` <- `can_edit`
       }
-      if (!is.null(`billto_infos`)) {
-        stopifnot(is.vector(`billto_infos`), length(`billto_infos`) != 0)
-        sapply(`billto_infos`, function(x) stopifnot(R6::is.R6(x)))
-        self$`billto_infos` <- `billto_infos`
-      }
       if (!is.null(`currency`)) {
         if (!(is.character(`currency`) && length(`currency`) == 1)) {
           stop(paste("Error! Invalid data for `currency`. Must be a string:", `currency`))
         }
         self$`currency` <- `currency`
       }
-      if (!is.null(`pmp_names`)) {
-        stopifnot(is.vector(`pmp_names`), length(`pmp_names`) != 0)
-        sapply(`pmp_names`, function(x) stopifnot(R6::is.R6(x)))
-        self$`pmp_names` <- `pmp_names`
+      if (!is.null(`eligible`)) {
+        if (!(is.logical(`eligible`) && length(`eligible`) == 1)) {
+          stop(paste("Error! Invalid data for `eligible`. Must be a boolean:", `eligible`))
+        }
+        self$`eligible` <- `eligible`
       }
       if (!is.null(`error`)) {
         if (!(is.character(`error`) && length(`error`) == 1)) {
           stop(paste("Error! Invalid data for `error`. Must be a string:", `error`))
         }
         self$`error` <- `error`
+      }
+      if (!is.null(`pmp_names`)) {
+        stopifnot(is.vector(`pmp_names`), length(`pmp_names`) != 0)
+        sapply(`pmp_names`, function(x) stopifnot(R6::is.R6(x)))
+        self$`pmp_names` <- `pmp_names`
       }
     },
 
@@ -104,29 +104,29 @@ SSIOAccountResponse <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       SSIOAccountResponseObject <- list()
-      if (!is.null(self$`eligible`)) {
-        SSIOAccountResponseObject[["eligible"]] <-
-          self$`eligible`
+      if (!is.null(self$`billto_infos`)) {
+        SSIOAccountResponseObject[["billto_infos"]] <-
+          lapply(self$`billto_infos`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`can_edit`)) {
         SSIOAccountResponseObject[["can_edit"]] <-
           self$`can_edit`
       }
-      if (!is.null(self$`billto_infos`)) {
-        SSIOAccountResponseObject[["billto_infos"]] <-
-          lapply(self$`billto_infos`, function(x) x$toSimpleType())
-      }
       if (!is.null(self$`currency`)) {
         SSIOAccountResponseObject[["currency"]] <-
           self$`currency`
       }
-      if (!is.null(self$`pmp_names`)) {
-        SSIOAccountResponseObject[["pmp_names"]] <-
-          lapply(self$`pmp_names`, function(x) x$toSimpleType())
+      if (!is.null(self$`eligible`)) {
+        SSIOAccountResponseObject[["eligible"]] <-
+          self$`eligible`
       }
       if (!is.null(self$`error`)) {
         SSIOAccountResponseObject[["error"]] <-
           self$`error`
+      }
+      if (!is.null(self$`pmp_names`)) {
+        SSIOAccountResponseObject[["pmp_names"]] <-
+          lapply(self$`pmp_names`, function(x) x$toSimpleType())
       }
       return(SSIOAccountResponseObject)
     },
@@ -138,23 +138,23 @@ SSIOAccountResponse <- R6::R6Class(
     #' @return the instance of SSIOAccountResponse
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`eligible`)) {
-        self$`eligible` <- this_object$`eligible`
+      if (!is.null(this_object$`billto_infos`)) {
+        self$`billto_infos` <- ApiClient$new()$deserializeObj(this_object$`billto_infos`, "array[SSIOAccountItem]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`can_edit`)) {
         self$`can_edit` <- this_object$`can_edit`
       }
-      if (!is.null(this_object$`billto_infos`)) {
-        self$`billto_infos` <- ApiClient$new()$deserializeObj(this_object$`billto_infos`, "array[SSIOAccountItem]", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`currency`)) {
         self$`currency` <- this_object$`currency`
       }
-      if (!is.null(this_object$`pmp_names`)) {
-        self$`pmp_names` <- ApiClient$new()$deserializeObj(this_object$`pmp_names`, "array[SSIOAccountPMPName]", loadNamespace("openapi"))
+      if (!is.null(this_object$`eligible`)) {
+        self$`eligible` <- this_object$`eligible`
       }
       if (!is.null(this_object$`error`)) {
         self$`error` <- this_object$`error`
+      }
+      if (!is.null(this_object$`pmp_names`)) {
+        self$`pmp_names` <- ApiClient$new()$deserializeObj(this_object$`pmp_names`, "array[SSIOAccountPMPName]", loadNamespace("openapi"))
       }
       self
     },
@@ -177,12 +177,12 @@ SSIOAccountResponse <- R6::R6Class(
     #' @return the instance of SSIOAccountResponse
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`eligible` <- this_object$`eligible`
-      self$`can_edit` <- this_object$`can_edit`
       self$`billto_infos` <- ApiClient$new()$deserializeObj(this_object$`billto_infos`, "array[SSIOAccountItem]", loadNamespace("openapi"))
+      self$`can_edit` <- this_object$`can_edit`
       self$`currency` <- this_object$`currency`
-      self$`pmp_names` <- ApiClient$new()$deserializeObj(this_object$`pmp_names`, "array[SSIOAccountPMPName]", loadNamespace("openapi"))
+      self$`eligible` <- this_object$`eligible`
       self$`error` <- this_object$`error`
+      self$`pmp_names` <- ApiClient$new()$deserializeObj(this_object$`pmp_names`, "array[SSIOAccountPMPName]", loadNamespace("openapi"))
       self
     },
 

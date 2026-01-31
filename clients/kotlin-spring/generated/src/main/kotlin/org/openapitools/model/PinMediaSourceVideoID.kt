@@ -4,6 +4,7 @@ import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
+import org.openapitools.model.ContentType
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -16,31 +17,37 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
- * Video ID-based media source
- * @param sourceType 
+ * Video ID-based media source.
  * @param mediaId 
- * @param coverImageUrl Cover image url.
+ * @param sourceType 
  * @param coverImageContentType Content type for cover image Base64.
  * @param coverImageData Cover image Base64.
+ * @param coverImageKeyFrameTime Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.
+ * @param coverImageUrl Cover image URL.
  * @param isStandard Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
  */
 data class PinMediaSourceVideoID(
-
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("source_type", required = true) val sourceType: PinMediaSourceVideoID.SourceType,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("media_id", required = true) val mediaId: kotlin.String,
 
-    @Schema(example = "null", description = "Cover image url.")
-    @get:JsonProperty("cover_image_url") val coverImageUrl: kotlin.String? = null,
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("source_type", required = true) val sourceType: PinMediaSourceVideoID.SourceType,
 
+    @field:Valid
     @Schema(example = "null", description = "Content type for cover image Base64.")
-    @get:JsonProperty("cover_image_content_type") val coverImageContentType: PinMediaSourceVideoID.CoverImageContentType? = null,
+    @get:JsonProperty("cover_image_content_type") val coverImageContentType: ContentType? = null,
 
     @Schema(example = "null", description = "Cover image Base64.")
     @get:JsonProperty("cover_image_data") val coverImageData: kotlin.String? = null,
+
+    @get:Min(value=0)
+    @Schema(example = "null", description = "Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.")
+    @get:JsonProperty("cover_image_key_frame_time") val coverImageKeyFrameTime: kotlin.Int? = null,
+
+    @Schema(example = "null", description = "Cover image URL.")
+    @get:JsonProperty("cover_image_url") val coverImageUrl: kotlin.String? = null,
 
     @Schema(example = "null", description = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.")
     @get:JsonProperty("is_standard") val isStandard: kotlin.Boolean? = true
@@ -58,25 +65,6 @@ data class PinMediaSourceVideoID(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): SourceType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PinMediaSourceVideoID'")
-            }
-        }
-    }
-
-    /**
-    * Content type for cover image Base64.
-    * Values: imageSlashJpeg,imageSlashPng
-    */
-    enum class CoverImageContentType(@get:JsonValue val value: kotlin.String) {
-
-        imageSlashJpeg("image/jpeg"),
-        imageSlashPng("image/png");
-
-        companion object {
-            @JvmStatic
-            @JsonCreator
-            fun forValue(value: kotlin.String): CoverImageContentType {
                 return values().firstOrNull{it -> it.value == value}
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PinMediaSourceVideoID'")
             }

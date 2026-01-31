@@ -11,11 +11,11 @@ import scala.collection.immutable.Seq
 
 /**
  * 
- * @param updatedUnderscoreassetUnderscoregroups A list of successfully edited asset groups.
  * @param exceptions A list of errors associated with the asset groups. Will be returned if there is an error.
+ * @param updatedUnderscoreassetUnderscoregroups A list of successfully edited asset groups.
  */
-case class UpdateAssetGroupResponse(updatedUnderscoreassetUnderscoregroups: Option[Seq[AssetGroupBinding]],
-                exceptions: Option[Seq[UpdateAssetGroupResponseExceptionsInner]]
+case class UpdateAssetGroupResponse(exceptions: Option[Seq[UpdateAssetGroupResponseExceptionsInner]],
+                updatedUnderscoreassetUnderscoregroups: Option[Seq[AssetGroupBinding]]
                 )
 
 object UpdateAssetGroupResponse {

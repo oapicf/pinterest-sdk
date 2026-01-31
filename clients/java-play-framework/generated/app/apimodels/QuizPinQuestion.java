@@ -14,9 +14,14 @@ import javax.validation.Valid;
 /**
  * A specific quiz inquiry.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class QuizPinQuestion   {
+  @JsonProperty("options")
+  @Valid
+
+  private List<@Valid QuizPinOption> options = null;
+
   @JsonProperty("question_id")
   @Valid
 
@@ -26,10 +31,30 @@ public class QuizPinQuestion   {
   
   private String questionText;
 
-  @JsonProperty("options")
-  @Valid
+  public QuizPinQuestion options(List<@Valid QuizPinOption> options) {
+    this.options = options;
+    return this;
+  }
 
-  private List<@Valid QuizPinOption> options = null;
+  public QuizPinQuestion addOptionsItem(QuizPinOption optionsItem) {
+    if (this.options == null) {
+      this.options = new ArrayList<>();
+    }
+    this.options.add(optionsItem);
+    return this;
+  }
+
+   /**
+   * Get options
+   * @return options
+  **/
+  public List<@Valid QuizPinOption> getOptions() {
+    return options;
+  }
+
+  public void setOptions(List<@Valid QuizPinOption> options) {
+    this.options = options;
+  }
 
   public QuizPinQuestion questionId(BigDecimal questionId) {
     this.questionId = questionId;
@@ -65,31 +90,6 @@ public class QuizPinQuestion   {
     this.questionText = questionText;
   }
 
-  public QuizPinQuestion options(List<@Valid QuizPinOption> options) {
-    this.options = options;
-    return this;
-  }
-
-  public QuizPinQuestion addOptionsItem(QuizPinOption optionsItem) {
-    if (this.options == null) {
-      this.options = new ArrayList<>();
-    }
-    this.options.add(optionsItem);
-    return this;
-  }
-
-   /**
-   * Get options
-   * @return options
-  **/
-  public List<@Valid QuizPinOption> getOptions() {
-    return options;
-  }
-
-  public void setOptions(List<@Valid QuizPinOption> options) {
-    this.options = options;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -100,14 +100,14 @@ public class QuizPinQuestion   {
       return false;
     }
     QuizPinQuestion quizPinQuestion = (QuizPinQuestion) o;
-    return Objects.equals(questionId, quizPinQuestion.questionId) &&
-        Objects.equals(questionText, quizPinQuestion.questionText) &&
-        Objects.equals(options, quizPinQuestion.options);
+    return Objects.equals(options, quizPinQuestion.options) &&
+        Objects.equals(questionId, quizPinQuestion.questionId) &&
+        Objects.equals(questionText, quizPinQuestion.questionText);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(questionId, questionText, options);
+    return Objects.hash(options, questionId, questionText);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -116,9 +116,9 @@ public class QuizPinQuestion   {
     StringBuilder sb = new StringBuilder();
     sb.append("class QuizPinQuestion {\n");
     
+    sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("    questionId: ").append(toIndentedString(questionId)).append("\n");
     sb.append("    questionText: ").append(toIndentedString(questionText)).append("\n");
-    sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("}");
     return sb.toString();
   }

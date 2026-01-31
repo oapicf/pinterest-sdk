@@ -2,9 +2,9 @@ package org.openapitools.api;
 
 import org.openapitools.model.Error;
 import org.springframework.lang.Nullable;
-import org.openapitools.model.PinsList200Response;
 import org.openapitools.model.SearchPartnerPins200Response;
 import org.openapitools.model.SearchUserBoardsGet200Response;
+import org.openapitools.model.SearchUserPinsList200Response;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-25T14:29:26.456489381Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Controller
 @RequestMapping("${openapi.pinterestREST.base-path:/v5}")
 public class SearchApiController implements SearchApi {

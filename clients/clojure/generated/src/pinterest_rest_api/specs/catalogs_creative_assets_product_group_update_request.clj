@@ -9,9 +9,9 @@
 (def catalogs-creative-assets-product-group-update-request-data
   {
    (ds/opt :catalog_type) string?
-   (ds/opt :name) string?
    (ds/opt :description) string?
    (ds/opt :filters) catalogs-creative-assets-product-group-filters-spec
+   (ds/opt :name) string?
    })
 
 (def catalogs-creative-assets-product-group-update-request-spec

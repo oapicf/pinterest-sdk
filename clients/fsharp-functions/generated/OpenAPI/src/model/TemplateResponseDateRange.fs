@@ -13,12 +13,12 @@ module TemplateResponseDateRange =
 
   [<CLIMutable>]
   type TemplateResponseDateRange = {
+    [<JsonProperty(PropertyName = "absolute_date_range")>]
+    AbsoluteDateRange : TemplateResponseDateRangeAbsoluteDateRange;
     [<JsonProperty(PropertyName = "dynamic_date_range")>]
     DynamicDateRange : TemplateResponseDateRangeDynamicDateRange;
     [<JsonProperty(PropertyName = "relative_date_range")>]
     RelativeDateRange : TemplateResponseDateRangeRelativeDateRange;
-    [<JsonProperty(PropertyName = "absolute_date_range")>]
-    AbsoluteDateRange : TemplateResponseDateRangeAbsoluteDateRange;
   }
 
   //#endregion

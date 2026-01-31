@@ -5,49 +5,6 @@ context("Test PinCreate")
 
 model_instance <- PinCreate$new()
 
-test_that("id", {
-  # tests for the property `id` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
-})
-
-test_that("created_at", {
-  # tests for the property `created_at` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`created_at`, "EXPECTED_RESULT")
-})
-
-test_that("link", {
-  # tests for the property `link` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`link`, "EXPECTED_RESULT")
-})
-
-test_that("title", {
-  # tests for the property `title` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`title`, "EXPECTED_RESULT")
-})
-
-test_that("description", {
-  # tests for the property `description` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`description`, "EXPECTED_RESULT")
-})
-
-test_that("dominant_color", {
-  # tests for the property `dominant_color` (character)
-  # Dominant pin color. Hex number, e.g. \\\&quot;#6E7874\\\&quot;.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`dominant_color`, "EXPECTED_RESULT")
-})
-
 test_that("alt_text", {
   # tests for the property `alt_text` (character)
 
@@ -71,18 +28,26 @@ test_that("board_section_id", {
   #expect_equal(model.instance$`board_section_id`, "EXPECTED_RESULT")
 })
 
-test_that("board_owner", {
-  # tests for the property `board_owner` (BoardOwner)
+test_that("description", {
+  # tests for the property `description` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`board_owner`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`description`, "EXPECTED_RESULT")
 })
 
-test_that("media", {
-  # tests for the property `media` (PinMedia)
+test_that("dominant_color", {
+  # tests for the property `dominant_color` (character)
+  # Dominant pin color. Hex number, e.g. &#x60;#6E7874&#x60;.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`media`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`dominant_color`, "EXPECTED_RESULT")
+})
+
+test_that("link", {
+  # tests for the property `link` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`link`, "EXPECTED_RESULT")
 })
 
 test_that("media_source", {
@@ -94,16 +59,23 @@ test_that("media_source", {
 
 test_that("parent_pin_id", {
   # tests for the property `parent_pin_id` (character)
-  # The source pin id if this pin was saved from another pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/article/save-pins-on-pinterest\&quot;&gt;Learn more&lt;/a&gt;.
+  # The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).
 
   # uncomment below to test the property
   #expect_equal(model.instance$`parent_pin_id`, "EXPECTED_RESULT")
 })
 
-test_that("note", {
-  # tests for the property `note` (character)
-  # Private note for this Pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/add-notes-to-your-pins\&quot;&gt;Learn more&lt;/a&gt;.
+test_that("sponsor_id", {
+  # tests for the property `sponsor_id` (character)
+  # The sponsor account id to request paid partnership from.  Currently the field is only available to a list of users in a closed beta.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`note`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`sponsor_id`, "EXPECTED_RESULT")
+})
+
+test_that("title", {
+  # tests for the property `title` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`title`, "EXPECTED_RESULT")
 })

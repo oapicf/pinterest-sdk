@@ -221,8 +221,9 @@ open class KeywordsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
      * @param adAccountId Unique identifier of an ad account.
      * @param campaignId Campaign Id to use to filter the results. (optional)
      * @param adGroupId Ad group Id. (optional)
+     * @param adGroupIds List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. (optional)
      * @param matchTypes Keyword &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot;&gt;match type&lt;/a&gt; (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return KeywordsGet200Response
      * @throws IllegalStateException If the request is not correctly configured
@@ -233,8 +234,8 @@ open class KeywordsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun keywordsGet(adAccountId: kotlin.String, campaignId: kotlin.String? = null, adGroupId: kotlin.String? = null, matchTypes: kotlin.collections.List<MatchType>? = null, pageSize: kotlin.Int? = 25, bookmark: kotlin.String? = null) : KeywordsGet200Response {
-        val localVarResponse = keywordsGetWithHttpInfo(adAccountId = adAccountId, campaignId = campaignId, adGroupId = adGroupId, matchTypes = matchTypes, pageSize = pageSize, bookmark = bookmark)
+    fun keywordsGet(adAccountId: kotlin.String, campaignId: kotlin.String? = null, adGroupId: kotlin.String? = null, adGroupIds: kotlin.collections.List<kotlin.String>? = null, matchTypes: kotlin.collections.List<MatchType>? = null, pageSize: kotlin.Int? = 25, bookmark: kotlin.String? = null) : KeywordsGet200Response {
+        val localVarResponse = keywordsGetWithHttpInfo(adAccountId = adAccountId, campaignId = campaignId, adGroupId = adGroupId, adGroupIds = adGroupIds, matchTypes = matchTypes, pageSize = pageSize, bookmark = bookmark)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as KeywordsGet200Response
@@ -258,8 +259,9 @@ open class KeywordsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
      * @param adAccountId Unique identifier of an ad account.
      * @param campaignId Campaign Id to use to filter the results. (optional)
      * @param adGroupId Ad group Id. (optional)
+     * @param adGroupIds List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. (optional)
      * @param matchTypes Keyword &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot;&gt;match type&lt;/a&gt; (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return ApiResponse<KeywordsGet200Response?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -267,8 +269,8 @@ open class KeywordsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun keywordsGetWithHttpInfo(adAccountId: kotlin.String, campaignId: kotlin.String?, adGroupId: kotlin.String?, matchTypes: kotlin.collections.List<MatchType>?, pageSize: kotlin.Int?, bookmark: kotlin.String?) : ApiResponse<KeywordsGet200Response?> {
-        val localVariableConfig = keywordsGetRequestConfig(adAccountId = adAccountId, campaignId = campaignId, adGroupId = adGroupId, matchTypes = matchTypes, pageSize = pageSize, bookmark = bookmark)
+    fun keywordsGetWithHttpInfo(adAccountId: kotlin.String, campaignId: kotlin.String?, adGroupId: kotlin.String?, adGroupIds: kotlin.collections.List<kotlin.String>?, matchTypes: kotlin.collections.List<MatchType>?, pageSize: kotlin.Int?, bookmark: kotlin.String?) : ApiResponse<KeywordsGet200Response?> {
+        val localVariableConfig = keywordsGetRequestConfig(adAccountId = adAccountId, campaignId = campaignId, adGroupId = adGroupId, adGroupIds = adGroupIds, matchTypes = matchTypes, pageSize = pageSize, bookmark = bookmark)
 
         return request<Unit, KeywordsGet200Response>(
             localVariableConfig
@@ -281,12 +283,13 @@ open class KeywordsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
      * @param adAccountId Unique identifier of an ad account.
      * @param campaignId Campaign Id to use to filter the results. (optional)
      * @param adGroupId Ad group Id. (optional)
+     * @param adGroupIds List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. (optional)
      * @param matchTypes Keyword &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot;&gt;match type&lt;/a&gt; (optional)
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     * @param pageSize Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return RequestConfig
      */
-    fun keywordsGetRequestConfig(adAccountId: kotlin.String, campaignId: kotlin.String?, adGroupId: kotlin.String?, matchTypes: kotlin.collections.List<MatchType>?, pageSize: kotlin.Int?, bookmark: kotlin.String?) : RequestConfig<Unit> {
+    fun keywordsGetRequestConfig(adAccountId: kotlin.String, campaignId: kotlin.String?, adGroupId: kotlin.String?, adGroupIds: kotlin.collections.List<kotlin.String>?, matchTypes: kotlin.collections.List<MatchType>?, pageSize: kotlin.Int?, bookmark: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
@@ -295,6 +298,9 @@ open class KeywordsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
                 }
                 if (adGroupId != null) {
                     put("ad_group_id", listOf(adGroupId.toString()))
+                }
+                if (adGroupIds != null) {
+                    put("ad_group_ids", toMultiValue(adGroupIds.toList(), "multi"))
                 }
                 if (matchTypes != null) {
                     put("match_types", toMultiValue(matchTypes.toList(), "multi"))
@@ -487,6 +493,8 @@ open class KeywordsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
      * @param includeKeywords If set, filters the results to top trends which include at least one of the specified keywords.&lt;br /&gt; If unset, no keyword filtering logic is applied. (optional)
      * @param normalizeAgainstGroup Governs how the resulting time series data will be normalized to a [0-100] scale.&lt;br /&gt; By default (&#x60;false&#x60;), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword&#39;s time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.&lt;br /&gt; If set to &#x60;true&#x60;, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords. (optional, default to false)
      * @param limit The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a &#x60;limit&#x60; of 50 will return the top 50 trends. (optional, default to 50)
+     * @param includePrediction &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including predicted weekly search volume data for the next 90 days. By default (&#x60;false&#x60;), the response will not include predicted data. (optional, default to false)
+     * @param includeDemographics &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including the age and gender distribution for each keyword. By default (&#x60;false&#x60;), the response will not include demographics data. (optional, default to false)
      * @return TrendingKeywordsResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -496,8 +504,8 @@ open class KeywordsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun trendingKeywordsList(region: TrendsSupportedRegion, trendType: TrendType, interests: kotlin.collections.List<InterestsTrendingKeywordsList>? = null, genders: kotlin.collections.List<GendersTrendingKeywordsList>? = null, ages: kotlin.collections.List<AgesTrendingKeywordsList>? = null, includeKeywords: kotlin.collections.List<kotlin.String>? = null, normalizeAgainstGroup: kotlin.Boolean? = false, limit: kotlin.Int? = 50) : TrendingKeywordsResponse {
-        val localVarResponse = trendingKeywordsListWithHttpInfo(region = region, trendType = trendType, interests = interests, genders = genders, ages = ages, includeKeywords = includeKeywords, normalizeAgainstGroup = normalizeAgainstGroup, limit = limit)
+    fun trendingKeywordsList(region: TrendsSupportedRegion, trendType: TrendType, interests: kotlin.collections.List<InterestsTrendingKeywordsList>? = null, genders: kotlin.collections.List<GendersTrendingKeywordsList>? = null, ages: kotlin.collections.List<AgesTrendingKeywordsList>? = null, includeKeywords: kotlin.collections.List<kotlin.String>? = null, normalizeAgainstGroup: kotlin.Boolean? = false, limit: kotlin.Int? = 50, includePrediction: kotlin.Boolean? = false, includeDemographics: kotlin.Boolean? = false) : TrendingKeywordsResponse {
+        val localVarResponse = trendingKeywordsListWithHttpInfo(region = region, trendType = trendType, interests = interests, genders = genders, ages = ages, includeKeywords = includeKeywords, normalizeAgainstGroup = normalizeAgainstGroup, limit = limit, includePrediction = includePrediction, includeDemographics = includeDemographics)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as TrendingKeywordsResponse
@@ -526,14 +534,16 @@ open class KeywordsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
      * @param includeKeywords If set, filters the results to top trends which include at least one of the specified keywords.&lt;br /&gt; If unset, no keyword filtering logic is applied. (optional)
      * @param normalizeAgainstGroup Governs how the resulting time series data will be normalized to a [0-100] scale.&lt;br /&gt; By default (&#x60;false&#x60;), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword&#39;s time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.&lt;br /&gt; If set to &#x60;true&#x60;, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords. (optional, default to false)
      * @param limit The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a &#x60;limit&#x60; of 50 will return the top 50 trends. (optional, default to 50)
+     * @param includePrediction &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including predicted weekly search volume data for the next 90 days. By default (&#x60;false&#x60;), the response will not include predicted data. (optional, default to false)
+     * @param includeDemographics &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including the age and gender distribution for each keyword. By default (&#x60;false&#x60;), the response will not include demographics data. (optional, default to false)
      * @return ApiResponse<TrendingKeywordsResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun trendingKeywordsListWithHttpInfo(region: TrendsSupportedRegion, trendType: TrendType, interests: kotlin.collections.List<InterestsTrendingKeywordsList>?, genders: kotlin.collections.List<GendersTrendingKeywordsList>?, ages: kotlin.collections.List<AgesTrendingKeywordsList>?, includeKeywords: kotlin.collections.List<kotlin.String>?, normalizeAgainstGroup: kotlin.Boolean?, limit: kotlin.Int?) : ApiResponse<TrendingKeywordsResponse?> {
-        val localVariableConfig = trendingKeywordsListRequestConfig(region = region, trendType = trendType, interests = interests, genders = genders, ages = ages, includeKeywords = includeKeywords, normalizeAgainstGroup = normalizeAgainstGroup, limit = limit)
+    fun trendingKeywordsListWithHttpInfo(region: TrendsSupportedRegion, trendType: TrendType, interests: kotlin.collections.List<InterestsTrendingKeywordsList>?, genders: kotlin.collections.List<GendersTrendingKeywordsList>?, ages: kotlin.collections.List<AgesTrendingKeywordsList>?, includeKeywords: kotlin.collections.List<kotlin.String>?, normalizeAgainstGroup: kotlin.Boolean?, limit: kotlin.Int?, includePrediction: kotlin.Boolean?, includeDemographics: kotlin.Boolean?) : ApiResponse<TrendingKeywordsResponse?> {
+        val localVariableConfig = trendingKeywordsListRequestConfig(region = region, trendType = trendType, interests = interests, genders = genders, ages = ages, includeKeywords = includeKeywords, normalizeAgainstGroup = normalizeAgainstGroup, limit = limit, includePrediction = includePrediction, includeDemographics = includeDemographics)
 
         return request<Unit, TrendingKeywordsResponse>(
             localVariableConfig
@@ -551,9 +561,11 @@ open class KeywordsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
      * @param includeKeywords If set, filters the results to top trends which include at least one of the specified keywords.&lt;br /&gt; If unset, no keyword filtering logic is applied. (optional)
      * @param normalizeAgainstGroup Governs how the resulting time series data will be normalized to a [0-100] scale.&lt;br /&gt; By default (&#x60;false&#x60;), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword&#39;s time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.&lt;br /&gt; If set to &#x60;true&#x60;, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords. (optional, default to false)
      * @param limit The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a &#x60;limit&#x60; of 50 will return the top 50 trends. (optional, default to 50)
+     * @param includePrediction &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including predicted weekly search volume data for the next 90 days. By default (&#x60;false&#x60;), the response will not include predicted data. (optional, default to false)
+     * @param includeDemographics &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including the age and gender distribution for each keyword. By default (&#x60;false&#x60;), the response will not include demographics data. (optional, default to false)
      * @return RequestConfig
      */
-    fun trendingKeywordsListRequestConfig(region: TrendsSupportedRegion, trendType: TrendType, interests: kotlin.collections.List<InterestsTrendingKeywordsList>?, genders: kotlin.collections.List<GendersTrendingKeywordsList>?, ages: kotlin.collections.List<AgesTrendingKeywordsList>?, includeKeywords: kotlin.collections.List<kotlin.String>?, normalizeAgainstGroup: kotlin.Boolean?, limit: kotlin.Int?) : RequestConfig<Unit> {
+    fun trendingKeywordsListRequestConfig(region: TrendsSupportedRegion, trendType: TrendType, interests: kotlin.collections.List<InterestsTrendingKeywordsList>?, genders: kotlin.collections.List<GendersTrendingKeywordsList>?, ages: kotlin.collections.List<AgesTrendingKeywordsList>?, includeKeywords: kotlin.collections.List<kotlin.String>?, normalizeAgainstGroup: kotlin.Boolean?, limit: kotlin.Int?, includePrediction: kotlin.Boolean?, includeDemographics: kotlin.Boolean?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
@@ -574,6 +586,12 @@ open class KeywordsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
                 }
                 if (limit != null) {
                     put("limit", listOf(limit.toString()))
+                }
+                if (includePrediction != null) {
+                    put("include_prediction", listOf(includePrediction.toString()))
+                }
+                if (includeDemographics != null) {
+                    put("include_demographics", listOf(includeDemographics.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()

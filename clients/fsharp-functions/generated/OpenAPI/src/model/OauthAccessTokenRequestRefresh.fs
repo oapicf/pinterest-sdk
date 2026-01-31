@@ -14,8 +14,6 @@ module OauthAccessTokenRequestRefresh =
     RefreshToken : string;
     [<JsonProperty(PropertyName = "scope")>]
     Scope : string;
-    [<JsonProperty(PropertyName = "refresh_on")>]
-    RefreshOn : bool;
     [<JsonProperty(PropertyName = "grant_type")>]
     GrantType : string;
   }

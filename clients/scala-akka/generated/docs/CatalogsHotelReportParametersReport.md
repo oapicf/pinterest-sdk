@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 
 ## Enum: ReportType
-Allowed values: [FEED_INGESTION_ISSUES, DISTRIBUTION_ISSUES]
+Allowed values: [FEED_INGESTION_ISSUES, DISTRIBUTION_ISSUES, ALL_ITEMS]
 
 
 

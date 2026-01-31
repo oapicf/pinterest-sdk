@@ -1,16 +1,16 @@
 
 # PinMediaSourceImageBase64
 
-Base64-encoded image media source
+Image Base64-based media source.
 
 ## Properties
 
 Name | Type
 ------------ | -------------
-`sourceType` | string
-`contentType` | string
+`contentType` | [ContentType](ContentType.md)
 `data` | string
 `isStandard` | boolean
+`sourceType` | string
 
 ## Example
 
@@ -19,10 +19,10 @@ import type { PinMediaSourceImageBase64 } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "sourceType": null,
   "contentType": null,
   "data": null,
   "isStandard": null,
+  "sourceType": null,
 } satisfies PinMediaSourceImageBase64
 
 console.log(example)

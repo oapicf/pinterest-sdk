@@ -1,0 +1,83 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "AdPreviewShopping",
+  "fields": [
+    {
+      "name": "catalog_product_group_id",
+      "type": "string",
+      "doc": "Catalog Product Group Id."
+    },
+    {
+      "name": "creative_type",
+      "type": {
+        "type": "enum",
+        "name": "AdPreviewShopping_creativeUnderscoretype",
+        "symbols": [
+          "SHOPPING",
+          "CAROUSEL",
+          "COLLECTION",
+          "REGULAR"
+        ]
+      },
+      "doc": "Ad format of the shopping ad preview."
+    },
+    {
+      "name": "customizable_cta_type",
+      "type": ["null", "model.CustomizableCTAType"],
+      "doc": "Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are `SHOP_NOW`, `BOOK_NOW`, `ON_SALE`, `GET_DEAL`, `BUY_ONLINE_PICKUP_IN_STORE`",
+      "default": null
+    },
+    {
+      "name": "hero_image_title",
+      "type": ["null", "string"],
+      "doc": "Title displayed below ad.",
+      "default": null
+    },
+    {
+      "name": "hero_image_url",
+      "type": ["null", "string"],
+      "doc": "Hero image URL.",
+      "default": null
+    },
+    {
+      "name": "hero_pin_id",
+      "type": ["null", "string"],
+      "doc": "Pin id for the hero image. When creative type is COLLECTION, either hero_pin_id or (hero_image_url, hero_image_title) is required.",
+      "default": null
+    },
+    {
+      "name": "image_tag",
+      "type": ["null", "string"],
+      "doc": "Multi image template tag.",
+      "default": null
+    },
+    {
+      "name": "item_id",
+      "type": ["null", "string"],
+      "doc": "Item id for product to preview standard shopping ads, optional and only applicable when creative type is SHOPPING.",
+      "default": null
+    },
+    {
+      "name": "preferred_media_type",
+      "type": ["null", {
+        "type": "enum",
+        "name": "AdPreviewShopping_preferredUnderscoremediaUnderscoretype",
+        "symbols": [
+          "VIDEO",
+          "IMAGE"
+        ]
+      }],
+      "doc": "Preferred media type.",
+      "default": null
+    },
+    {
+      "name": "video_tag",
+      "type": ["null", "string"],
+      "doc": "Multi video template tag, image_tag and video_tag are mutual exclusive.",
+      "default": null
+    }
+  ]
+
+}

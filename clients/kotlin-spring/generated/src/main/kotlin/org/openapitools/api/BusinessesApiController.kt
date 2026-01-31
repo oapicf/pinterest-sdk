@@ -42,6 +42,7 @@ import org.openapitools.model.PermissionsWithOwner
 import org.openapitools.model.RespondToInvitesResponseArray
 import org.openapitools.model.SharedAudience
 import org.openapitools.model.SharedAudienceResponse
+import org.openapitools.model.SystemUserUpdateRequest
 import org.openapitools.model.UpdateAssetGroupBody
 import org.openapitools.model.UpdateAssetGroupResponse
 import org.openapitools.model.UpdateInvitesResultsResponseArray
@@ -221,6 +222,7 @@ If the requesting business is not the owner of the audience, only ad accounts ow
     fun businessAssetMembersGet(
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of a business asset.", required = true) @PathVariable("asset_id") assetId: kotlin.String,
+        @Parameter(description = "Fetches system users if True. Fetches regular user employees if False.", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "fetch_system_users", required = false, defaultValue = "false") fetchSystemUsers: kotlin.Boolean,
         @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
         @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
         @Min(value=0)@Parameter(description = "An index to start fetching the results from. Only the results starting from this index will be returned.", schema = Schema(defaultValue = "0")) @Valid @RequestParam(value = "start_index", required = false, defaultValue = "0") startIndex: kotlin.Int
@@ -273,7 +275,7 @@ you cannot be shared with a different partner.""",
         @Parameter(description = "A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned.") @Valid @RequestParam(value = "permissions", required = false) permissions: kotlin.collections.List<PermissionsWithOwner>?,
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child.") @Valid @RequestParam(value = "child_asset_id", required = false) childAssetId: kotlin.String?,
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "An asset group unique identifier. Used to fetch assets contained within the specified asset group.") @Valid @RequestParam(value = "asset_group_id", required = false) assetGroupId: kotlin.String?,
-        @Parameter(description = "A resource type to filter the assets by. Only assets of the specified type will be returned.", schema = Schema(allowableValues = ["AD_ACCOUNT", "PROFILE", "ASSET_GROUP"], defaultValue = "AD_ACCOUNT")) @Valid @RequestParam(value = "asset_type", required = false, defaultValue = "AD_ACCOUNT") assetType: kotlin.String,
+        @Parameter(description = "A resource type to filter the assets by. Only assets of the specified type will be returned.", schema = Schema(allowableValues = ["AD_ACCOUNT", "PROFILE", "ASSET_GROUP", "CATALOG", "CONSUMER"], defaultValue = "AD_ACCOUNT")) @Valid @RequestParam(value = "asset_type", required = false, defaultValue = "AD_ACCOUNT") assetType: kotlin.String,
         @Min(value=0)@Parameter(description = "An index to start fetching the results from. Only the results starting from this index will be returned.", schema = Schema(defaultValue = "0")) @Valid @RequestParam(value = "start_index", required = false, defaultValue = "0") startIndex: kotlin.Int,
         @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
         @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
@@ -301,7 +303,7 @@ The return response will include the permissions the member has to that asset an
     fun businessMemberAssetsGet(
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "The member id to fetch assets for.", required = true) @PathVariable("member_id") memberId: kotlin.String,
-        @Parameter(description = "A resource type to filter the assets by. Only assets of the specified type will be returned.", schema = Schema(allowableValues = ["AD_ACCOUNT", "PROFILE", "ASSET_GROUP"], defaultValue = "AD_ACCOUNT")) @Valid @RequestParam(value = "asset_type", required = false, defaultValue = "AD_ACCOUNT") assetType: kotlin.String,
+        @Parameter(description = "A resource type to filter the assets by. Only assets of the specified type will be returned.", schema = Schema(allowableValues = ["AD_ACCOUNT", "PROFILE", "ASSET_GROUP", "CATALOG", "CONSUMER"], defaultValue = "AD_ACCOUNT")) @Valid @RequestParam(value = "asset_type", required = false, defaultValue = "AD_ACCOUNT") assetType: kotlin.String,
         @Min(value=0)@Parameter(description = "An index to start fetching the results from. Only the results starting from this index will be returned.", schema = Schema(defaultValue = "0")) @Valid @RequestParam(value = "start_index", required = false, defaultValue = "0") startIndex: kotlin.Int,
         @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
         @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
@@ -376,7 +378,7 @@ granted your partner access to. If you specify:
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "The partner id to be bound to the Business", required = true) @PathVariable("partner_id") partnerId: kotlin.String,
         @Parameter(description = "Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.", schema = Schema(allowableValues = ["INTERNAL", "EXTERNAL"])) @Valid @RequestParam(value = "partner_type", required = false) partnerType: PartnerType?,
-        @Parameter(description = "A resource type to filter the assets by. Only assets of the specified type will be returned.", schema = Schema(allowableValues = ["AD_ACCOUNT", "PROFILE", "ASSET_GROUP"], defaultValue = "AD_ACCOUNT")) @Valid @RequestParam(value = "asset_type", required = false, defaultValue = "AD_ACCOUNT") assetType: kotlin.String,
+        @Parameter(description = "A resource type to filter the assets by. Only assets of the specified type will be returned.", schema = Schema(allowableValues = ["AD_ACCOUNT", "PROFILE", "ASSET_GROUP", "CATALOG", "CONSUMER"], defaultValue = "AD_ACCOUNT")) @Valid @RequestParam(value = "asset_type", required = false, defaultValue = "AD_ACCOUNT") assetType: kotlin.String,
         @Min(value=0)@Parameter(description = "An index to start fetching the results from. Only the results starting from this index will be returned.", schema = Schema(defaultValue = "0")) @Valid @RequestParam(value = "start_index", required = false, defaultValue = "0") startIndex: kotlin.Int,
         @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
         @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?
@@ -400,7 +402,7 @@ granted your partner access to. If you specify:
         consumes = ["application/json"]
     )
     fun cancelInvitesOrRequests(
-        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Business id", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(min=1) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
         @Parameter(description = "A list with invite ids", required = true) @Valid @RequestBody cancelInvitesBody: CancelInvitesBody
     ): ResponseEntity<DeleteInvitesResultsResponseArray> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
@@ -471,7 +473,7 @@ To learn more about permission levels, visit https://help.pinterest.com/en/busin
         consumes = ["application/json"]
     )
     fun createMembershipOrPartnershipInvites(
-        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Business id", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(min=1) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
         @Parameter(description = "An object with the properties: invite_type, partners, members, business_role", required = true) @Valid @RequestBody createMembershipOrPartnershipInvitesBody: CreateMembershipOrPartnershipInvitesBody
     ): ResponseEntity<CreateInvitesResultsResponseArray> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
@@ -585,6 +587,7 @@ The return response will include the member's business_role and assets they have
     )
     fun getBusinessMembers(
         @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Parameter(description = "Fetches system users if True. Fetches regular user employees if False.", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "fetch_system_users", required = false, defaultValue = "false") fetchSystemUsers: kotlin.Boolean,
         @Parameter(description = "Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "assets_summary", required = false, defaultValue = "false") assetsSummary: kotlin.Boolean,
         @Parameter(description = "A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.") @Valid @RequestParam(value = "business_roles", required = false) businessRoles: kotlin.collections.List<MemberBusinessRole>?,
         @Size(max=500) @Parameter(description = "A list of business members ids separated by comma.") @Valid @RequestParam(value = "member_ids", required = false) memberIds: kotlin.String?,
@@ -641,7 +644,7 @@ If the assets_summary=TRUE and:
         produces = ["application/json"]
     )
     fun getInvites(
-        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(min=1) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
         @Parameter(description = "A boolean field to indicate whether the invite is to create a partnership or a membership.", schema = Schema(defaultValue = "true")) @Valid @RequestParam(value = "is_member", required = false, defaultValue = "true") isMember: kotlin.Boolean,
         @Size(min=1) @Parameter(description = "A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.", schema = Schema(allowableValues = ["PENDING", "EXPIRED"])) @Valid @RequestParam(value = "invite_status", required = false) inviteStatus: kotlin.collections.List<kotlin.String>?,
         @Parameter(description = "Invite type to filter invites by. Only invites of the specified type will be returned.", schema = Schema(allowableValues = ["MEMBER_INVITE", "PARTNER_INVITE", "PARTNER_REQUEST"])) @Valid @RequestParam(value = "invite_type", required = false) inviteType: InviteType?,
@@ -697,6 +700,30 @@ If the assets_summary=TRUE and:
     }
 
     @Operation(
+        summary = "Update a system user information.",
+        operationId = "systemUserUpdate",
+        description = """Update a system user information such as name.""",
+        responses = [
+            ApiResponse(responseCode = "200", description = "System user updated successfully."),
+            ApiResponse(responseCode = "400", description = "Invalid parameters.", content = [Content(schema = Schema(implementation = Error::class))]),
+            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+        security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "biz_access:read", "biz_access:write" ]) ]
+    )
+    @RequestMapping(
+        method = [RequestMethod.PATCH],
+        value = [PATH_SYSTEM_USER_UPDATE /* "/businesses/{business_id}/system_users/{system_user_id}" */],
+        produces = ["application/json"],
+        consumes = ["application/json"]
+    )
+    fun systemUserUpdate(
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of a system user.", required = true) @PathVariable("system_user_id") systemUserId: kotlin.String,
+        @Parameter(description = "", required = true) @Valid @RequestBody systemUserUpdateRequest: SystemUserUpdateRequest
+    ): ResponseEntity<Unit> {
+        return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
+    }
+
+    @Operation(
         summary = "Update member's business role",
         operationId = "updateBusinessMemberships",
         description = """Update a member's business role within the business.""",
@@ -721,7 +748,7 @@ If the assets_summary=TRUE and:
     @Operation(
         summary = "Update audience sharing from a business to ad accounts",
         operationId = "updateBusinessToAdAccountSharedAudience",
-        description = """From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.""",
+        description = """From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.""",
         responses = [
             ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = SharedAudienceResponse::class))]),
             ApiResponse(responseCode = "400", description = "Invalid parameters.", content = [Content(schema = Schema(implementation = Error::class))]),
@@ -744,7 +771,7 @@ If the assets_summary=TRUE and:
     @Operation(
         summary = "Update audience sharing between businesses",
         operationId = "updateBusinessToBusinessSharedAudience",
-        description = """From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.""",
+        description = """From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.""",
         responses = [
             ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = BusinessSharedAudienceResponse::class))]),
             ApiResponse(responseCode = "400", description = "Invalid parameters.", content = [Content(schema = Schema(implementation = Error::class))]),
@@ -819,6 +846,7 @@ the type PROFILE.""",
         const val PATH_GET_INVITES: String = "/businesses/{business_id}/invites"
         const val PATH_RESPOND_BUSINESS_ACCESS_INVITES: String = "/businesses/invites"
         const val PATH_SHARED_AUDIENCES_FOR_BUSINESS_LIST: String = "/businesses/{business_id}/audiences"
+        const val PATH_SYSTEM_USER_UPDATE: String = "/businesses/{business_id}/system_users/{system_user_id}"
         const val PATH_UPDATE_BUSINESS_MEMBERSHIPS: String = "/businesses/{business_id}/members"
         const val PATH_UPDATE_BUSINESS_TO_AD_ACCOUNT_SHARED_AUDIENCE: String = "/businesses/{business_id}/audiences/ad_accounts/shared"
         const val PATH_UPDATE_BUSINESS_TO_BUSINESS_SHARED_AUDIENCE: String = "/businesses/{business_id}/audiences/businesses/shared"

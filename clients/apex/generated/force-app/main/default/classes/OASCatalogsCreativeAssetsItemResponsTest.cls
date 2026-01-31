@@ -81,8 +81,8 @@ private class OASCatalogsCreativeAssetsItemResponsTest {
     private static void defaultValuesPopulated() {
         OASCatalogsCreativeAssetsItemRespons catalogsCreativeAssetsItemResponse = new OASCatalogsCreativeAssetsItemRespons();
         System.assertEquals(new List<OASPin>(), catalogsCreativeAssetsItemResponse.pins);
+        System.assertEquals(null, catalogsCreativeAssetsItemResponse.attributes);
         System.assertEquals(null, catalogsCreativeAssetsItemResponse.catalogType);
         System.assertEquals(null, catalogsCreativeAssetsItemResponse.creativeAssetsId);
-        System.assertEquals(null, catalogsCreativeAssetsItemResponse.attributes);
     }
 }

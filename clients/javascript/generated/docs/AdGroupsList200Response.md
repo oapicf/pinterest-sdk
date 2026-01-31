@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[AdGroupResponse]**](AdGroupResponse.md) |  | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[AdGroupResponse]**](AdGroupResponse.md) |  | 
 
 

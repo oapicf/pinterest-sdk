@@ -1,0 +1,48 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BusinessSharedAudience"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BusinessSharedAudience"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  OperationType = openapi_server.resourceTypes.OperationType
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  BusinessSharedAudience {
+    title = BusinessSharedAudience
+    description = BusinessSharedAudience
+    derivedFrom = Root
+    properties {
+        audience_id {
+          type =  string
+          description = "Unique identifier of an audience"
+          optional = true
+        }
+        operation_type {
+          type = OperationType
+          description = ""
+          optional = true
+        }
+        recipient_business_ids {
+          type = array
+          items.type =  string
+          description = "List of business IDs to share with or revoke from."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BusinessSharedAudience {
+    title = BusinessSharedAudience
+    description = BusinessSharedAudience
+    implements = openapi_server.resourceTypes.BusinessSharedAudience
+
+  }
+}

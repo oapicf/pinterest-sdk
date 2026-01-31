@@ -1,0 +1,91 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AssetGroupBinding"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AssetGroupBinding"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BusinessAccessUserSummary = openapi_server.resourceTypes.BusinessAccessUserSummary
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  AssetGroupBinding {
+    title = AssetGroupBinding
+    description = AssetGroupBinding
+    derivedFrom = Root
+    properties {
+        ad_accounts_ids {
+          type = array
+          items.type =  string
+          description = "A list of ad account IDs under the asset group"
+          optional = false
+        }
+        asset_group_description {
+          type =  string
+          description = "Asset group description"
+          optional = false
+        }
+        asset_group_name {
+          type =  string
+          description = "Asset Group name"
+          optional = false
+        }
+        asset_group_types {
+          type = array
+          items.type =  string
+          description = "Asset group types"
+          optional = false
+        }
+        catalogs_ids {
+          type = array
+          items.type =  string
+          description = "A list of catalog IDs under asset group"
+          optional = false
+        }
+        created_by {
+          type = BusinessAccessUserSummary
+          description = "The data of the user that created the asset group."
+          optional = false
+        }
+        created_time {
+          type =  integer
+          description = "The creation time of the asset group"
+          optional = false
+        }
+        id {
+          type =  string
+          description = "Asset Group ID."
+          optional = false
+        }
+        owner {
+          type = BusinessAccessUserSummary
+          description = "The data of the business that owns the asset group."
+          optional = false
+        }
+        profiles_ids {
+          type = array
+          items.type =  string
+          description = "A list of profile IDs under asset group"
+          optional = false
+        }
+        updated_time {
+          type =  integer
+          description = "The last update time of the asset group"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AssetGroupBinding {
+    title = AssetGroupBinding
+    description = AssetGroupBinding
+    implements = openapi_server.resourceTypes.AssetGroupBinding
+
+  }
+}

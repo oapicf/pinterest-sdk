@@ -5,10 +5,31 @@
 -export_type([openapi_pin_media/0]).
 
 -type openapi_pin_media() ::
-    #{ 'media_type' => binary()
+    #{ 'images' => openapi_image_size:openapi_image_size(),
+       'media_type' := binary(),
+       'cover_image_url' => binary(),
+       'duration' => integer(),
+       'height' => integer(),
+       'video_url' => binary(),
+       'width' => integer(),
+       'items' => list()
      }.
 
-encode(#{ 'media_type' := MediaType
+encode(#{ 'images' := Images,
+          'media_type' := MediaType,
+          'cover_image_url' := CoverImageUrl,
+          'duration' := Duration,
+          'height' := Height,
+          'video_url' := VideoUrl,
+          'width' := Width,
+          'items' := Items
         }) ->
-    #{ 'media_type' => MediaType
+    #{ 'images' => Images,
+       'media_type' => MediaType,
+       'cover_image_url' => CoverImageUrl,
+       'duration' => Duration,
+       'height' => Height,
+       'video_url' => VideoUrl,
+       'width' => Width,
+       'items' => Items
      }.

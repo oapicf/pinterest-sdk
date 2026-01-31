@@ -11,7 +11,7 @@ import org.openapitools.model.OrderLine;
 @Canonical
 class OrderLinesList200Response {
     
-    List<OrderLine> items = new ArrayList<>()
-    
     String bookmark
+    
+    List<OrderLine> items = new ArrayList<>()
 }

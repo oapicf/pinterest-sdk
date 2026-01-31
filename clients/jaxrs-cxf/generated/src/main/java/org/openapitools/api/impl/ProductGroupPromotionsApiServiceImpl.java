@@ -5,10 +5,12 @@ import org.openapitools.model.Error;
 import org.openapitools.model.Granularity;
 import org.joda.time.LocalDate;
 import org.openapitools.model.ProductGroupAnalyticsResponseInner;
+import org.openapitools.model.ProductGroupPromotion;
 import org.openapitools.model.ProductGroupPromotionCreateRequest;
 import org.openapitools.model.ProductGroupPromotionResponse;
 import org.openapitools.model.ProductGroupPromotionUpdateRequest;
 import org.openapitools.model.ProductGroupPromotionsList200Response;
+import org.openapitools.model.ReportingTimeZone;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -47,7 +49,7 @@ public class ProductGroupPromotionsApiServiceImpl implements ProductGroupPromoti
      * Get a product group promotion by id
      *
      */
-    public ProductGroupPromotionResponse productGroupPromotionsGet(String adAccountId, String productGroupPromotionId) {
+    public ProductGroupPromotion productGroupPromotionsGet(String adAccountId, String productGroupPromotionId) {
         // TODO: Implement...
 
         return null;
@@ -80,10 +82,10 @@ public class ProductGroupPromotionsApiServiceImpl implements ProductGroupPromoti
     /**
      * Get product group analytics
      *
-     * Get analytics for the specified product groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the specified product groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      *
      */
-    public List<ProductGroupAnalyticsResponseInner> productGroupsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<@Pattern(regexp = "^\\d+$")String> productGroupIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime) {
+    public List<ProductGroupAnalyticsResponseInner> productGroupsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<@Pattern(regexp = "^\\d+$")String> productGroupIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone) {
         // TODO: Implement...
 
         return null;

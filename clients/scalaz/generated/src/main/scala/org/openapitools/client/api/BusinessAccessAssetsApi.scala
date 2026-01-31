@@ -113,7 +113,7 @@ object BusinessAccessAssetsApi {
     } yield resp
   }
 
-  def businessAssetMembersGet(host: String, businessId: String, assetId: String, bookmark: String, pageSize: Integer = 25, startIndex: Integer = 0)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], startIndexQuery: QueryParam[Integer]): Task[BusinessAssetMembersGet200Response] = {
+  def businessAssetMembersGet(host: String, businessId: String, assetId: String, fetchSystemUsers: Boolean = false, bookmark: String, pageSize: Integer = 25, startIndex: Integer = 0)(implicit fetchSystemUsersQuery: QueryParam[Boolean], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], startIndexQuery: QueryParam[Integer]): Task[BusinessAssetMembersGet200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[BusinessAssetMembersGet200Response] = jsonOf[BusinessAssetMembersGet200Response]
 
     val path = "/businesses/{business_id}/assets/{asset_id}/members".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString)).replaceAll("\\{" + "asset_id" + "\\}",escape(assetId.toString))
@@ -123,7 +123,7 @@ object BusinessAccessAssetsApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("startIndex", Some(start_indexQuery.toParamString(start_index))))
+      ("fetchSystemUsers", Some(fetch_system_usersQuery.toParamString(fetch_system_users))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("startIndex", Some(start_indexQuery.toParamString(start_index))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -372,7 +372,7 @@ class HttpServiceBusinessAccessAssetsApi(service: HttpService) {
     } yield resp
   }
 
-  def businessAssetMembersGet(businessId: String, assetId: String, bookmark: String, pageSize: Integer = 25, startIndex: Integer = 0)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], startIndexQuery: QueryParam[Integer]): Task[BusinessAssetMembersGet200Response] = {
+  def businessAssetMembersGet(businessId: String, assetId: String, fetchSystemUsers: Boolean = false, bookmark: String, pageSize: Integer = 25, startIndex: Integer = 0)(implicit fetchSystemUsersQuery: QueryParam[Boolean], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], startIndexQuery: QueryParam[Integer]): Task[BusinessAssetMembersGet200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[BusinessAssetMembersGet200Response] = jsonOf[BusinessAssetMembersGet200Response]
 
     val path = "/businesses/{business_id}/assets/{asset_id}/members".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString)).replaceAll("\\{" + "asset_id" + "\\}",escape(assetId.toString))
@@ -382,7 +382,7 @@ class HttpServiceBusinessAccessAssetsApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("startIndex", Some(start_indexQuery.toParamString(start_index))))
+      ("fetchSystemUsers", Some(fetch_system_usersQuery.toParamString(fetch_system_users))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("startIndex", Some(start_indexQuery.toParamString(start_index))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))

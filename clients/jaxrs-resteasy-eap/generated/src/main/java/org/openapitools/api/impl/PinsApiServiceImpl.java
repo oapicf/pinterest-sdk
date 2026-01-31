@@ -4,6 +4,7 @@ import org.openapitools.api.*;
 import org.openapitools.model.*;
 
 
+import org.openapitools.model.CreativeType;
 import java.util.Date;
 import org.openapitools.model.Error;
 import java.util.Map;
@@ -13,6 +14,7 @@ import org.openapitools.model.PinCreate;
 import org.openapitools.model.PinUpdate;
 import org.openapitools.model.PinsList200Response;
 import org.openapitools.model.PinsSaveRequest;
+import org.openapitools.model.PinterestLibError;
 
 import java.util.List;
 
@@ -23,7 +25,7 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinsApiServiceImpl implements PinsApi {
       public Response multiPinsAnalytics(List<@Pattern(regexp = "^\\d+$")String> pinIds,Date startDate,Date endDate,List<String> metricTypes,String appTypes,String adAccountId,SecurityContext securityContext) {
       // do some magic!
@@ -41,11 +43,11 @@ public class PinsApiServiceImpl implements PinsApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response pinsGet(String pinId,Boolean pinMetrics,String adAccountId,SecurityContext securityContext) {
+      public Response pinsGet(String pinId,String adAccountId,Boolean pinMetrics,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
-      public Response pinsList(String bookmark,Integer pageSize,String pinFilter,Boolean includeProtectedPins,String pinType,List<String> creativeTypes,String adAccountId,Boolean pinMetrics,SecurityContext securityContext) {
+      public Response pinsList(String pinFilter,Boolean pinMetrics,Boolean includeProtectedPins,String pinType,List<CreativeType> creativeTypes,String adAccountId,String bookmark,Integer pageSize,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

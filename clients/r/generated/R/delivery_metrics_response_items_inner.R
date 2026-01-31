@@ -7,36 +7,30 @@
 #' @title DeliveryMetricsResponseItemsInner
 #' @description DeliveryMetricsResponseItemsInner Class
 #' @format An \code{R6Class} generator object
-#' @field name Metric's name. character [optional]
 #' @field category Category name character [optional]
 #' @field definition How the metric is defined. character [optional]
 #' @field display_name Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager. character [optional]
+#' @field name Metric's name. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 DeliveryMetricsResponseItemsInner <- R6::R6Class(
   "DeliveryMetricsResponseItemsInner",
   public = list(
-    `name` = NULL,
     `category` = NULL,
     `definition` = NULL,
     `display_name` = NULL,
+    `name` = NULL,
 
     #' @description
     #' Initialize a new DeliveryMetricsResponseItemsInner class.
     #'
-    #' @param name Metric's name.
     #' @param category Category name
     #' @param definition How the metric is defined.
     #' @param display_name Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.
+    #' @param name Metric's name.
     #' @param ... Other optional arguments.
-    initialize = function(`name` = NULL, `category` = NULL, `definition` = NULL, `display_name` = NULL, ...) {
-      if (!is.null(`name`)) {
-        if (!(is.character(`name`) && length(`name`) == 1)) {
-          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
-        }
-        self$`name` <- `name`
-      }
+    initialize = function(`category` = NULL, `definition` = NULL, `display_name` = NULL, `name` = NULL, ...) {
       if (!is.null(`category`)) {
         if (!(`category` %in% c("ADS", "ORGANIC"))) {
           stop(paste("Error! \"", `category`, "\" cannot be assigned to `category`. Must be \"ADS\", \"ORGANIC\".", sep = ""))
@@ -57,6 +51,12 @@ DeliveryMetricsResponseItemsInner <- R6::R6Class(
           stop(paste("Error! Invalid data for `display_name`. Must be a string:", `display_name`))
         }
         self$`display_name` <- `display_name`
+      }
+      if (!is.null(`name`)) {
+        if (!(is.character(`name`) && length(`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
+        }
+        self$`name` <- `name`
       }
     },
 
@@ -91,10 +91,6 @@ DeliveryMetricsResponseItemsInner <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       DeliveryMetricsResponseItemsInnerObject <- list()
-      if (!is.null(self$`name`)) {
-        DeliveryMetricsResponseItemsInnerObject[["name"]] <-
-          self$`name`
-      }
       if (!is.null(self$`category`)) {
         DeliveryMetricsResponseItemsInnerObject[["category"]] <-
           self$`category`
@@ -107,6 +103,10 @@ DeliveryMetricsResponseItemsInner <- R6::R6Class(
         DeliveryMetricsResponseItemsInnerObject[["display_name"]] <-
           self$`display_name`
       }
+      if (!is.null(self$`name`)) {
+        DeliveryMetricsResponseItemsInnerObject[["name"]] <-
+          self$`name`
+      }
       return(DeliveryMetricsResponseItemsInnerObject)
     },
 
@@ -117,9 +117,6 @@ DeliveryMetricsResponseItemsInner <- R6::R6Class(
     #' @return the instance of DeliveryMetricsResponseItemsInner
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`name`)) {
-        self$`name` <- this_object$`name`
-      }
       if (!is.null(this_object$`category`)) {
         if (!is.null(this_object$`category`) && !(this_object$`category` %in% c("ADS", "ORGANIC"))) {
           stop(paste("Error! \"", this_object$`category`, "\" cannot be assigned to `category`. Must be \"ADS\", \"ORGANIC\".", sep = ""))
@@ -131,6 +128,9 @@ DeliveryMetricsResponseItemsInner <- R6::R6Class(
       }
       if (!is.null(this_object$`display_name`)) {
         self$`display_name` <- this_object$`display_name`
+      }
+      if (!is.null(this_object$`name`)) {
+        self$`name` <- this_object$`name`
       }
       self
     },
@@ -153,13 +153,13 @@ DeliveryMetricsResponseItemsInner <- R6::R6Class(
     #' @return the instance of DeliveryMetricsResponseItemsInner
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`name` <- this_object$`name`
       if (!is.null(this_object$`category`) && !(this_object$`category` %in% c("ADS", "ORGANIC"))) {
         stop(paste("Error! \"", this_object$`category`, "\" cannot be assigned to `category`. Must be \"ADS\", \"ORGANIC\".", sep = ""))
       }
       self$`category` <- this_object$`category`
       self$`definition` <- this_object$`definition`
       self$`display_name` <- this_object$`display_name`
+      self$`name` <- this_object$`name`
       self
     },
 

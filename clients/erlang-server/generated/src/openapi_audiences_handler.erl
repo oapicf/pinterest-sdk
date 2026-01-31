@@ -4,11 +4,7 @@ Exposes the following operation IDs:
 
 - `POST` to `/ad_accounts/:ad_account_id/audiences`, OperationId: `audiences/create`:
 Create audience.
-Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. &lt;p/&gt; For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt;.
-
-- `POST` to `/ad_accounts/:ad_account_id/audiences/custom`, OperationId: `audiences/create_custom`:
-Create custom audience.
-Create a custom audience and find the audiences you want your ads to reach.
+Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;.
 
 - `GET` to `/ad_accounts/:ad_account_id/audiences/:audience_id`, OperationId: `audiences/get`:
 Get audience.
@@ -46,7 +42,6 @@ Update (edit or remove) an existing targeting audience.
 
 -type operation_id() ::
     'audiences/create' %% Create audience
-    | 'audiences/create_custom' %% Create custom audience
     | 'audiences/get' %% Get audience
     | 'audiences/list' %% List audiences
     | 'audiences/update'. %% Update audience
@@ -79,8 +74,6 @@ init(Req, {Operations, Module}) ->
     {[binary()], cowboy_req:req(), state()}.
 allowed_methods(Req, #state{operation_id = 'audiences/create'} = State) ->
     {[<<"POST">>], Req, State};
-allowed_methods(Req, #state{operation_id = 'audiences/create_custom'} = State) ->
-    {[<<"POST">>], Req, State};
 allowed_methods(Req, #state{operation_id = 'audiences/get'} = State) ->
     {[<<"GET">>], Req, State};
 allowed_methods(Req, #state{operation_id = 'audiences/list'} = State) ->
@@ -94,15 +87,6 @@ allowed_methods(Req, State) ->
     {true | {false, iodata()}, cowboy_req:req(), state()}.
 is_authorized(Req0,
               #state{operation_id = 'audiences/create' = OperationID,
-                     api_key_callback = Handler} = State) ->
-    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
-        {true, Context, Req} ->
-            {true, Req, State#state{context = Context}};
-        {false, AuthHeader, Req} ->
-            {{false, AuthHeader}, Req, State}
-    end;
-is_authorized(Req0,
-              #state{operation_id = 'audiences/create_custom' = OperationID,
                      api_key_callback = Handler} = State) ->
     case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
         {true, Context, Req} ->
@@ -146,10 +130,6 @@ content_types_accepted(Req, #state{operation_id = 'audiences/create'} = State) -
     {[
       {<<"application/json">>, handle_type_accepted}
      ], Req, State};
-content_types_accepted(Req, #state{operation_id = 'audiences/create_custom'} = State) ->
-    {[
-      {<<"application/json">>, handle_type_accepted}
-     ], Req, State};
 content_types_accepted(Req, #state{operation_id = 'audiences/get'} = State) ->
     {[], Req, State};
 content_types_accepted(Req, #state{operation_id = 'audiences/list'} = State) ->
@@ -165,8 +145,6 @@ content_types_accepted(Req, State) ->
     {boolean(), cowboy_req:req(), state()}.
 valid_content_headers(Req, #state{operation_id = 'audiences/create'} = State) ->
     {true, Req, State};
-valid_content_headers(Req, #state{operation_id = 'audiences/create_custom'} = State) ->
-    {true, Req, State};
 valid_content_headers(Req, #state{operation_id = 'audiences/get'} = State) ->
     {true, Req, State};
 valid_content_headers(Req, #state{operation_id = 'audiences/list'} = State) ->
@@ -179,10 +157,6 @@ valid_content_headers(Req, State) ->
 -spec content_types_provided(cowboy_req:req(), state()) ->
     {[{binary(), atom()}], cowboy_req:req(), state()}.
 content_types_provided(Req, #state{operation_id = 'audiences/create'} = State) ->
-    {[
-      {<<"application/json">>, handle_type_provided}
-     ], Req, State};
-content_types_provided(Req, #state{operation_id = 'audiences/create_custom'} = State) ->
     {[
       {<<"application/json">>, handle_type_provided}
      ], Req, State};

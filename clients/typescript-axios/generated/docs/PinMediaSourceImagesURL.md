@@ -1,14 +1,14 @@
 # PinMediaSourceImagesURL
 
-Multiple images urls-based media source
+Multiple URL-based images media source
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**source_type** | **string** |  | [optional] [default to undefined]
-**items** | [**Array&lt;PinMediaSourceImagesURLItemsInner&gt;**](PinMediaSourceImagesURLItemsInner.md) | Array with image objects. | [default to undefined]
 **index** | **number** |  | [optional] [default to undefined]
+**items** | [**Array&lt;PinMediaSourceImagesURLItem&gt;**](PinMediaSourceImagesURLItem.md) | Array with image objects. | [default to undefined]
+**source_type** | **string** | The source type of the media. | [default to undefined]
 
 ## Example
 
@@ -16,9 +16,9 @@ Name | Type | Description | Notes
 import { PinMediaSourceImagesURL } from './api';
 
 const instance: PinMediaSourceImagesURL = {
-    source_type,
-    items,
     index,
+    items,
+    source_type,
 };
 ```
 

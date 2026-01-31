@@ -1,0 +1,31 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "ad_account_id" },
+      {"model": "ad_account_name" },
+      {"model": "amount_billed_micro_currency" },
+      {"model": "amount_discount_micro_currency" },
+      {"model": "amount_net_micro_currency" },
+      {"model": "amount_tax_micro_currency" },
+      {"model": "bill_to_country" },
+      {"model": "billing_period_end_date" },
+      {"model": "billing_period_start_date" },
+      {"model": "currency" },
+      {"model": "document_type" },
+      {"model": "id" },
+      {"model": "invoice_due_date" },
+      {"model": "payment_terms" },
+      {"model": "status" },
+    ]
+  }]
+}

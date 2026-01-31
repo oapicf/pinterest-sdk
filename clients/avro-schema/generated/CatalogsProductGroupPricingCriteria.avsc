@@ -11,15 +11,15 @@
       "default": true
     },
     {
-      "name": "values",
-      "type": "double",
-      "doc": ""
-    },
-    {
       "name": "negated",
       "type": ["boolean", "null"],
       "doc": "",
       "default": false
+    },
+    {
+      "name": "values",
+      "type": "double",
+      "doc": ""
     }
   ]
 

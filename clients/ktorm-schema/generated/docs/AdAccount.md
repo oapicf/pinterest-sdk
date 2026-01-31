@@ -5,14 +5,15 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**id** | id | text PRIMARY KEY |  | **kotlin.String** |  |  [optional]
-**name** | name | text |  | **kotlin.String** |  |  [optional]
-**owner** | owner | long |  | [**AdAccountOwner**](AdAccountOwner.md) |  |  [optional] [foreignkey]
+**id** | id | text NOT NULL PRIMARY KEY |  | **kotlin.String** |  | 
 **country** | country | long |  | [**Country**](Country.md) |  |  [optional] [foreignkey]
+**createdTime** | created_time | int |  | **kotlin.Int** |  Creation time. Unix timestamp in seconds. |  [optional] [readonly]
 **currency** | currency | long |  | [**Currency**](Currency.md) |  |  [optional] [foreignkey]
-**permissions** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;BusinessAccessRole&gt;**](BusinessAccessRole.md) |  |  [optional]
-**createdTime** | created_time | int |  | **kotlin.Int** | Creation time. Unix timestamp in seconds. |  [optional]
-**updatedTime** | updated_time | int |  | **kotlin.Int** | Last update time. Unix timestamp in seconds. |  [optional]
+**name** | name | text |  | **kotlin.String** | Ad account name. |  [optional]
+**owner** | owner | long |  | [**AdAccountOwner**](AdAccountOwner.md) | Ad account owner |  [optional] [readonly] [foreignkey]
+**permissions** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;BusinessAccessRole&gt;**](BusinessAccessRole.md) |  |  [optional] [readonly]
+**updatedTime** | updated_time | int |  | **kotlin.Int** |  |  [optional] [readonly]
+
 
 
 
@@ -28,7 +29,6 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 adAccount | adAccount | long | | kotlin.Long | Primary Key | *one*
 businessAccessRole | businessAccessRole | long | | kotlin.Long | Foreign Key | *many*
-
 
 
 

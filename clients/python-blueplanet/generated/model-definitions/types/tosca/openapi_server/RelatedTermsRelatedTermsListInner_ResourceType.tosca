@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server RelatedTermsRelatedTermsListInner"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a RelatedTermsRelatedTermsListInner"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  RelatedTermsRelatedTermsListInner {
+    title = RelatedTermsRelatedTermsListInner
+    description = RelatedTermsRelatedTermsListInner
+    derivedFrom = Root
+    properties {
+        related_terms {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        term {
+          type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  RelatedTermsRelatedTermsListInner {
+    title = RelatedTermsRelatedTermsListInner
+    description = RelatedTermsRelatedTermsListInner
+    implements = openapi_server.resourceTypes.RelatedTermsRelatedTermsListInner
+
+  }
+}

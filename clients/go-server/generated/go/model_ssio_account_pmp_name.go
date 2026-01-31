@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,11 +16,11 @@ package openapi
 
 type SsioAccountPmpName struct {
 
-	// Display name
-	Name string `json:"name,omitempty"`
-
 	// Salesforce id for PMP
 	Id string `json:"id,omitempty"`
+
+	// Display name
+	Name string `json:"name,omitempty"`
 }
 
 // AssertSsioAccountPmpNameRequired checks if the required fields are not zero-ed

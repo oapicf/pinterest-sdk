@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CreateMMMReportResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CreateMMMReportResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CreateMMMReportResponseData = openapi_server.resourceTypes.CreateMMMReportResponseData
+}
+resourceTypes {
+
+  CreateMMMReportResponse {
+    title = CreateMMMReportResponse
+    description = CreateMMMReportResponse
+    derivedFrom = Root
+    properties {
+        code {
+          type =  
+          description = ""
+          optional = false
+        }
+        data {
+          type = CreateMMMReportResponseData
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CreateMMMReportResponse {
+    title = CreateMMMReportResponse
+    description = CreateMMMReportResponse
+    implements = openapi_server.resourceTypes.CreateMMMReportResponse
+
+  }
+}

@@ -23,14 +23,19 @@ CatalogsCreativeAssetsBatchItem::~CatalogsCreativeAssetsBatchItem()
 void
 CatalogsCreativeAssetsBatchItem::__init()
 {
+	//attributes = new CatalogsUpdatableCreativeAssetsAttributes();
 	//creative_assets_id = std::string();
 	//operation = std::string();
-	//attributes = new CatalogsUpdatableCreativeAssetsAttributes();
 }
 
 void
 CatalogsCreativeAssetsBatchItem::__cleanup()
 {
+	//if(attributes != NULL) {
+	//
+	//delete attributes;
+	//attributes = NULL;
+	//}
 	//if(creative_assets_id != NULL) {
 	//
 	//delete creative_assets_id;
@@ -41,11 +46,6 @@ CatalogsCreativeAssetsBatchItem::__cleanup()
 	//delete operation;
 	//operation = NULL;
 	//}
-	//if(attributes != NULL) {
-	//
-	//delete attributes;
-	//attributes = NULL;
-	//}
 	//
 }
 
@@ -54,6 +54,20 @@ CatalogsCreativeAssetsBatchItem::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *attributesKey = "attributes";
+	node = json_object_get_member(pJsonObject, attributesKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CatalogsUpdatableCreativeAssetsAttributes")) {
+			jsonToValue(&attributes, node, "CatalogsUpdatableCreativeAssetsAttributes", "CatalogsUpdatableCreativeAssetsAttributes");
+		} else {
+			
+			CatalogsUpdatableCreativeAssetsAttributes* obj = static_cast<CatalogsUpdatableCreativeAssetsAttributes*> (&attributes);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 	const gchar *creative_assets_idKey = "creative_assets_id";
 	node = json_object_get_member(pJsonObject, creative_assets_idKey);
 	if (node !=NULL) {
@@ -76,20 +90,6 @@ CatalogsCreativeAssetsBatchItem::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *attributesKey = "attributes";
-	node = json_object_get_member(pJsonObject, attributesKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("CatalogsUpdatableCreativeAssetsAttributes")) {
-			jsonToValue(&attributes, node, "CatalogsUpdatableCreativeAssetsAttributes", "CatalogsUpdatableCreativeAssetsAttributes");
-		} else {
-			
-			CatalogsUpdatableCreativeAssetsAttributes* obj = static_cast<CatalogsUpdatableCreativeAssetsAttributes*> (&attributes);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
 }
 
 CatalogsCreativeAssetsBatchItem::CatalogsCreativeAssetsBatchItem(char* json)
@@ -102,6 +102,20 @@ CatalogsCreativeAssetsBatchItem::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("CatalogsUpdatableCreativeAssetsAttributes")) {
+		CatalogsUpdatableCreativeAssetsAttributes obj = getAttributes();
+		node = converttoJson(&obj, "CatalogsUpdatableCreativeAssetsAttributes", "");
+	}
+	else {
+		
+		CatalogsUpdatableCreativeAssetsAttributes obj = static_cast<CatalogsUpdatableCreativeAssetsAttributes> (getAttributes());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *attributesKey = "attributes";
+	json_object_set_member(pJsonObject, attributesKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getCreativeAssetsId();
 		node = converttoJson(&obj, "std::string", "");
@@ -120,26 +134,24 @@ CatalogsCreativeAssetsBatchItem::toJson()
 	}
 	const gchar *operationKey = "operation";
 	json_object_set_member(pJsonObject, operationKey, node);
-	if (isprimitive("CatalogsUpdatableCreativeAssetsAttributes")) {
-		CatalogsUpdatableCreativeAssetsAttributes obj = getAttributes();
-		node = converttoJson(&obj, "CatalogsUpdatableCreativeAssetsAttributes", "");
-	}
-	else {
-		
-		CatalogsUpdatableCreativeAssetsAttributes obj = static_cast<CatalogsUpdatableCreativeAssetsAttributes> (getAttributes());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *attributesKey = "attributes";
-	json_object_set_member(pJsonObject, attributesKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+CatalogsUpdatableCreativeAssetsAttributes
+CatalogsCreativeAssetsBatchItem::getAttributes()
+{
+	return attributes;
+}
+
+void
+CatalogsCreativeAssetsBatchItem::setAttributes(CatalogsUpdatableCreativeAssetsAttributes  attributes)
+{
+	this->attributes = attributes;
 }
 
 std::string
@@ -164,18 +176,6 @@ void
 CatalogsCreativeAssetsBatchItem::setOperation(std::string  operation)
 {
 	this->operation = operation;
-}
-
-CatalogsUpdatableCreativeAssetsAttributes
-CatalogsCreativeAssetsBatchItem::getAttributes()
-{
-	return attributes;
-}
-
-void
-CatalogsCreativeAssetsBatchItem::setAttributes(CatalogsUpdatableCreativeAssetsAttributes  attributes)
-{
-	this->attributes = attributes;
 }
 
 

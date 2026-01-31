@@ -20,6 +20,13 @@ API.Client.CustomerList.prototype.adAccountId;
 API.Client.CustomerList.prototype.createdTime;
 
 /**
+ * Customer list errors
+ * @type {!API.Client.Object}
+ * @export
+ */
+API.Client.CustomerList.prototype.exceptions;
+
+/**
  * Customer list ID.
  * @type {!string}
  * @export
@@ -74,13 +81,6 @@ API.Client.CustomerList.prototype.type;
  * @export
  */
 API.Client.CustomerList.prototype.updatedTime;
-
-/**
- * Customer list errors
- * @type {!API.Client.Object}
- * @export
- */
-API.Client.CustomerList.prototype.exceptions;
 
 /** @enum {string} */
 API.Client.CustomerList.StatusEnum = { 

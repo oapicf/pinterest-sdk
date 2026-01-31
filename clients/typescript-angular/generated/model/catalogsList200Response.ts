@@ -11,7 +11,7 @@ import { Catalog } from './catalog';
 
 
 export interface CatalogsList200Response { 
-    items: Array<Catalog>;
     bookmark?: string | null;
+    items: Array<Catalog>;
 }
 

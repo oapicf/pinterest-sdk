@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalog_type** | [**CatalogsType**](CatalogsType.md) |  | [default to undefined]
 **creative_assets_id** | **string** | The catalog creative assets id in the merchant namespace | [optional] [default to undefined]
-**errors** | [**Array&lt;ItemValidationEvent&gt;**](ItemValidationEvent.md) | Array with the errors for the item id requested | [optional] [default to undefined]
+**errors** | [**Array&lt;ItemValidationEvent&gt;**](ItemValidationEvent.md) | Array with the errors for the item id requested | [default to undefined]
 
 ## Example
 

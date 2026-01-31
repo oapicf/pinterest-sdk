@@ -5,13 +5,13 @@
 -export_type([openapi_catalogs_feed_product_counts/0]).
 
 -type openapi_catalogs_feed_product_counts() ::
-    #{ 'original' => integer(),
-       'ingested' => integer()
+    #{ 'ingested' => integer(),
+       'original' => integer()
      }.
 
-encode(#{ 'original' := Original,
-          'ingested' := Ingested
+encode(#{ 'ingested' := Ingested,
+          'original' := Original
         }) ->
-    #{ 'original' => Original,
-       'ingested' => Ingested
+    #{ 'ingested' => Ingested,
+       'original' => Original
      }.

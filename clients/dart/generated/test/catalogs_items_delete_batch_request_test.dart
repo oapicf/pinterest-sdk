@@ -21,6 +21,12 @@ void main() {
       // TODO
     });
 
+    // Array with catalogs items
+    // List<ItemDeleteBatchRecord> items (default value: const [])
+    test('to test the property `items`', () async {
+      // TODO
+    });
+
     // We recommend using the CatalogsLocale values.
     // String language
     test('to test the property `language`', () async {
@@ -29,12 +35,6 @@ void main() {
 
     // BatchOperation operation
     test('to test the property `operation`', () async {
-      // TODO
-    });
-
-    // Array with catalogs items
-    // List<ItemDeleteBatchRecord> items (default value: const [])
-    test('to test the property `items`', () async {
       // TODO
     });
 

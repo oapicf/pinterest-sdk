@@ -15,8 +15,7 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.PinMedia
-import org.openapitools.client.models.VideoMetadata
+import org.openapitools.client.models.VideoMetadataWithItemType
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -32,13 +31,22 @@ import com.squareup.moshi.JsonClass
 data class PinMediaWithVideos (
 
     @Json(name = "media_type")
-    override val mediaType: kotlin.String? = null,
+    val mediaType: PinMediaWithVideos.MediaType,
 
     @Json(name = "items")
-    val items: kotlin.collections.List<VideoMetadata>? = null
+    val items: kotlin.collections.List<VideoMetadataWithItemType>? = null
 
-) : PinMedia {
+) {
 
+    /**
+     * 
+     *
+     * Values: multiple_videos
+     */
+    @JsonClass(generateAdapter = false)
+    enum class MediaType(val value: kotlin.String) {
+        @Json(name = "multiple_videos") multiple_videos("multiple_videos");
+    }
 
 }
 

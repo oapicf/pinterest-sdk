@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**CatalogsProduct[]**](CatalogsProduct.md) | Pins | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**CatalogsProduct[]**](CatalogsProduct.md) | Pins | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsProductGroupPinsList200Response = Initialize-PSOpenAPIToolsCatalogsProductGroupPinsList200Response  -Items null `
- -Bookmark null
+$CatalogsProductGroupPinsList200Response = Initialize-PSOpenAPIToolsCatalogsProductGroupPinsList200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

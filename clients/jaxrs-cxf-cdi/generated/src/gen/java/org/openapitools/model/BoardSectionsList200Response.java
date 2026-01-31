@@ -21,9 +21,27 @@ import java.util.Objects;
 
 public class BoardSectionsList200Response   {
   
+  private String bookmark;
+
   private List<@Valid BoardSection> items = new ArrayList<>();
 
-  private String bookmark;
+  /**
+   **/
+  public BoardSectionsList200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("bookmark")
+  public String getBookmark() {
+    return bookmark;
+  }
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
+
 
   /**
    * Board sections
@@ -53,24 +71,6 @@ public class BoardSectionsList200Response   {
   }
 
 
-  /**
-   **/
-  public BoardSectionsList200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("bookmark")
-  public String getBookmark() {
-    return bookmark;
-  }
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -81,13 +81,13 @@ public class BoardSectionsList200Response   {
       return false;
     }
     BoardSectionsList200Response boardSectionsList200Response = (BoardSectionsList200Response) o;
-    return Objects.equals(this.items, boardSectionsList200Response.items) &&
-        Objects.equals(this.bookmark, boardSectionsList200Response.bookmark);
+    return Objects.equals(this.bookmark, boardSectionsList200Response.bookmark) &&
+        Objects.equals(this.items, boardSectionsList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -95,8 +95,8 @@ public class BoardSectionsList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class BoardSectionsList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

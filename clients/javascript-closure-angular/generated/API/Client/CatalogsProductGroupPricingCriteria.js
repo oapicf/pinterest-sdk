@@ -12,14 +12,14 @@ API.Client.CatalogsProductGroupPricingCriteria = function() {}
 API.Client.CatalogsProductGroupPricingCriteria.prototype.inclusion;
 
 /**
- * @type {!number}
- * @export
- */
-API.Client.CatalogsProductGroupPricingCriteria.prototype.values;
-
-/**
  * @type {!boolean}
  * @export
  */
 API.Client.CatalogsProductGroupPricingCriteria.prototype.negated;
+
+/**
+ * @type {!number}
+ * @export
+ */
+API.Client.CatalogsProductGroupPricingCriteria.prototype.values;
 

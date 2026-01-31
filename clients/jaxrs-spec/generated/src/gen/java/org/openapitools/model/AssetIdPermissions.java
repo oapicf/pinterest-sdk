@@ -22,14 +22,33 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "An object containing the permissions a business member has on the asset.")
 @JsonTypeName("AssetIdPermissions")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AssetIdPermissions   {
+  private AssetGroupBinding assetGroupInfo;
   private String assetId;
   private String assetType;
   private @Valid List<String> permissions = new ArrayList<>();
-  private AssetGroupBinding assetGroupInfo;
 
   public AssetIdPermissions() {
+  }
+
+  /**
+   **/
+  public AssetIdPermissions assetGroupInfo(AssetGroupBinding assetGroupInfo) {
+    this.assetGroupInfo = assetGroupInfo;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("asset_group_info")
+  @Valid public AssetGroupBinding getAssetGroupInfo() {
+    return assetGroupInfo;
+  }
+
+  @JsonProperty("asset_group_info")
+  public void setAssetGroupInfo(AssetGroupBinding assetGroupInfo) {
+    this.assetGroupInfo = assetGroupInfo;
   }
 
   /**
@@ -53,7 +72,7 @@ public class AssetIdPermissions   {
   }
 
   /**
-   * Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+   * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
    **/
   public AssetIdPermissions assetType(String assetType) {
     this.assetType = assetType;
@@ -61,7 +80,7 @@ public class AssetIdPermissions   {
   }
 
   
-  @ApiModelProperty(example = "AD_ACCOUNT", value = "Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.")
+  @ApiModelProperty(example = "AD_ACCOUNT", value = "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.")
   @JsonProperty("asset_type")
   public String getAssetType() {
     return assetType;
@@ -108,25 +127,6 @@ public class AssetIdPermissions   {
 
     return this;
   }
-  /**
-   **/
-  public AssetIdPermissions assetGroupInfo(AssetGroupBinding assetGroupInfo) {
-    this.assetGroupInfo = assetGroupInfo;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("asset_group_info")
-  @Valid public AssetGroupBinding getAssetGroupInfo() {
-    return assetGroupInfo;
-  }
-
-  @JsonProperty("asset_group_info")
-  public void setAssetGroupInfo(AssetGroupBinding assetGroupInfo) {
-    this.assetGroupInfo = assetGroupInfo;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -137,15 +137,15 @@ public class AssetIdPermissions   {
       return false;
     }
     AssetIdPermissions assetIdPermissions = (AssetIdPermissions) o;
-    return Objects.equals(this.assetId, assetIdPermissions.assetId) &&
+    return Objects.equals(this.assetGroupInfo, assetIdPermissions.assetGroupInfo) &&
+        Objects.equals(this.assetId, assetIdPermissions.assetId) &&
         Objects.equals(this.assetType, assetIdPermissions.assetType) &&
-        Objects.equals(this.permissions, assetIdPermissions.permissions) &&
-        Objects.equals(this.assetGroupInfo, assetIdPermissions.assetGroupInfo);
+        Objects.equals(this.permissions, assetIdPermissions.permissions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetId, assetType, permissions, assetGroupInfo);
+    return Objects.hash(assetGroupInfo, assetId, assetType, permissions);
   }
 
   @Override
@@ -153,10 +153,10 @@ public class AssetIdPermissions   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AssetIdPermissions {\n");
     
+    sb.append("    assetGroupInfo: ").append(toIndentedString(assetGroupInfo)).append("\n");
     sb.append("    assetId: ").append(toIndentedString(assetId)).append("\n");
     sb.append("    assetType: ").append(toIndentedString(assetType)).append("\n");
     sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
-    sb.append("    assetGroupInfo: ").append(toIndentedString(assetGroupInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -14,7 +14,7 @@ import { Pin } from './pin';
 export interface CatalogsCreativeAssetsProduct { 
     catalog_type: CatalogsCreativeAssetsProduct.CatalogTypeEnum;
     metadata: CatalogsCreativeAssetsProductMetadata;
-    pin: Pin | null;
+    pin: Pin;
 }
 export namespace CatalogsCreativeAssetsProduct {
     export const CatalogTypeEnum = {

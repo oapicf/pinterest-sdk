@@ -1,0 +1,63 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server Label"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a Label"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  LabelStatus = openapi_server.resourceTypes.LabelStatus
+  LabelType = openapi_server.resourceTypes.LabelType
+}
+resourceTypes {
+
+  Label {
+    title = Label
+    description = Label
+    derivedFrom = Root
+    properties {
+        id {
+          type =  string
+          description = "Label ID."
+          optional = false
+        }
+        label_type {
+          type = LabelType
+          description = ""
+          optional = false
+        }
+        parent_id {
+          type =  string
+          description = "Label parent entity ID."
+          optional = false
+        }
+        parent_type {
+          type =  string
+          description = "Label parent entity type."
+          enum = ["CAMPAIGN", ""]
+          optional = false
+        }
+        status {
+          type = LabelStatus
+          description = ""
+          optional = false
+        }
+        value {
+          type =  string
+          description = "Label name."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  Label {
+    title = Label
+    description = Label
+    implements = openapi_server.resourceTypes.Label
+
+  }
+}

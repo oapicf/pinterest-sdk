@@ -24,5 +24,6 @@ module OptimizationGoalMetadataConversionTagV3GoalMetadata =
     CpaGoalValueInMicroCurrency : string;
     IsRoasOptimized : bool option;
     LearningModeType : LearningModeTypeEnum;
+    ReportingEvent : string;
   }
   //#endregion

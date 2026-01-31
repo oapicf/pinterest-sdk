@@ -13,8 +13,8 @@ import CatalogsProductGroupPricingCriteria._
 
 case class CatalogsProductGroupPricingCriteria (
   inclusion: Option[Boolean],
-values: BigDecimal,
-negated: Option[Boolean])
+negated: Option[Boolean],
+values: BigDecimal)
 
 object CatalogsProductGroupPricingCriteria {
   import DateTimeCodecs._

@@ -6,8 +6,9 @@
 
 Name | Type
 ------------ | -------------
-`operationType` | string
 `id` | string
+`operationType` | string
+`targetingAttributes` | [TargetingSpec](TargetingSpec.md)
 
 ## Example
 
@@ -16,8 +17,9 @@ import type { TargetingTemplateUpdateRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "operationType": null,
   "id": 643,
+  "operationType": null,
+  "targetingAttributes": null,
 } satisfies TargetingTemplateUpdateRequest
 
 console.log(example)

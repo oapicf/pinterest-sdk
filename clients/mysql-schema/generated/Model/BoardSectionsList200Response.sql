@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `board_sections_list_200_response`
 --
-SELECT `items`, `bookmark` FROM `board_sections_list_200_response` WHERE 1;
+SELECT `bookmark`, `items` FROM `board_sections_list_200_response` WHERE 1;
 
 --
 -- INSERT template for table `board_sections_list_200_response`
 --
-INSERT INTO `board_sections_list_200_response`(`items`, `bookmark`) VALUES (?, ?);
+INSERT INTO `board_sections_list_200_response`(`bookmark`, `items`) VALUES (?, ?);
 
 --
 -- UPDATE template for table `board_sections_list_200_response`
 --
-UPDATE `board_sections_list_200_response` SET `items` = ?, `bookmark` = ? WHERE 1;
+UPDATE `board_sections_list_200_response` SET `bookmark` = ?, `items` = ? WHERE 1;
 
 --
 -- DELETE template for table `board_sections_list_200_response`

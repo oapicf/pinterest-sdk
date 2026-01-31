@@ -16,7 +16,7 @@ case class CatalogsCreativeAssetsItemErrorResponse (
 /* The catalog creative assets id in the merchant namespace */
   creativeAssetsId: Option[String],
 /* Array with the errors for the item id requested */
-  errors: Option[List[ItemValidationEvent]])
+  errors: List[ItemValidationEvent])
 
 object CatalogsCreativeAssetsItemErrorResponse {
   import DateTimeCodecs._

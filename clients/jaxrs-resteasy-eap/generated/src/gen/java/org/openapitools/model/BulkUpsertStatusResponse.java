@@ -12,23 +12,11 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="ID of the bulk request.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="ID of the bulk request.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BulkUpsertStatusResponse   {
   
-  private BulkUpsertStatus status;
   private String resultUrl;
-
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("status")
-  public BulkUpsertStatus getStatus() {
-    return status;
-  }
-  public void setStatus(BulkUpsertStatus status) {
-    this.status = status;
-  }
+  private BulkUpsertStatus status;
 
   /**
    **/
@@ -42,6 +30,18 @@ public class BulkUpsertStatusResponse   {
     this.resultUrl = resultUrl;
   }
 
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("status")
+  public BulkUpsertStatus getStatus() {
+    return status;
+  }
+  public void setStatus(BulkUpsertStatus status) {
+    this.status = status;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -52,13 +52,13 @@ public class BulkUpsertStatusResponse   {
       return false;
     }
     BulkUpsertStatusResponse bulkUpsertStatusResponse = (BulkUpsertStatusResponse) o;
-    return Objects.equals(this.status, bulkUpsertStatusResponse.status) &&
-        Objects.equals(this.resultUrl, bulkUpsertStatusResponse.resultUrl);
+    return Objects.equals(this.resultUrl, bulkUpsertStatusResponse.resultUrl) &&
+        Objects.equals(this.status, bulkUpsertStatusResponse.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, resultUrl);
+    return Objects.hash(resultUrl, status);
   }
 
   @Override
@@ -66,8 +66,8 @@ public class BulkUpsertStatusResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class BulkUpsertStatusResponse {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    resultUrl: ").append(toIndentedString(resultUrl)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

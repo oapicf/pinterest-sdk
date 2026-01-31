@@ -17,9 +17,10 @@ case class CatalogsFeedProcessingResult (
 id: String,
 updatedAt: OffsetDateTime,
 ingestionDetails: CatalogsFeedIngestionDetails,
-status: CatalogsFeedProcessingStatus,
 productCounts: CatalogsFeedProductCounts,
-validationDetails: CatalogsFeedValidationDetails)
+status: CatalogsFeedProcessingStatus,
+validationDetails: CatalogsFeedValidationDetails,
+videoCounts: Option[CatalogsFeedVideoCounts])
 
 object CatalogsFeedProcessingResult {
   import DateTimeCodecs._

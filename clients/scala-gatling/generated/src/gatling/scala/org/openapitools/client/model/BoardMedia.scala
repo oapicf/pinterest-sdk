@@ -3,7 +3,7 @@ package org.openapitools.client.model
 
 
 case class BoardMedia (
-    /* Board cover image. */
+    /* Board cover image */
     _imageCoverUrl: Option[String],
     /* Board pin thumbnail urls. */
     _pinThumbnailUrls: Option[List[String]]

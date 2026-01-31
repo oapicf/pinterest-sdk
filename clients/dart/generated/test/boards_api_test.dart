@@ -64,16 +64,16 @@ void main() {
 
     // Create board
     //
-    // Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+    // Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
     //
-    //Future<Board> boardsCreate(Board board, { String adAccountId }) async
+    //Future<Board> boardsCreate(BoardCreate boardCreate, { String adAccountId }) async
     test('test boardsCreate', () async {
       // TODO
     });
 
     // Delete board
     //
-    // Delete a board owned by the \"operation user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+    // Delete a board owned by the \"operation user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
     //
     //Future boardsDelete(String boardId, { String adAccountId }) async
     test('test boardsDelete', () async {
@@ -82,7 +82,7 @@ void main() {
 
     // Get board
     //
-    // Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+    // Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
     //
     //Future<Board> boardsGet(String boardId, { String adAccountId }) async
     test('test boardsGet', () async {
@@ -91,9 +91,9 @@ void main() {
 
     // List boards
     //
-    // Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+    // Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
     //
-    //Future<BoardsList200Response> boardsList({ String adAccountId, String bookmark, int pageSize, String privacy }) async
+    //Future<BoardsList200Response> boardsList({ String adAccountId, BoardPrivacyFilter privacy, String bookmark, int pageSize }) async
     test('test boardsList', () async {
       // TODO
     });
@@ -102,16 +102,16 @@ void main() {
     //
     // Get a list of the Pins on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
     //
-    //Future<BoardsListPins200Response> boardsListPins(String boardId, { String bookmark, int pageSize, List<String> creativeTypes, String adAccountId, bool pinMetrics }) async
+    //Future<BoardsListPins200Response> boardsListPins(String boardId, { String bookmark, int pageSize, List<CreativeType> creativeTypes, String adAccountId, bool pinMetrics }) async
     test('test boardsListPins', () async {
       // TODO
     });
 
     // Update board
     //
-    // Update a board owned by the \"operating user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+    // Update a board owned by the \"operating user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
     //
-    //Future<Board> boardsUpdate(String boardId, BoardUpdate boardUpdate, { String adAccountId }) async
+    //Future<BoardWithUpdatePrivacy> boardsUpdate(String boardId, BoardWithUpdatePrivacyUpdate boardWithUpdatePrivacyUpdate, { String adAccountId }) async
     test('test boardsUpdate', () async {
       // TODO
     });

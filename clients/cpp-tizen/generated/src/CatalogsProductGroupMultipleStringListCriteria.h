@@ -48,22 +48,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<std::list> getValues();
-
-	/*! \brief Set 
-	 */
-	void setValues(std::list <std::list> values);
-	/*! \brief Get 
-	 */
 	bool getNegated();
 
 	/*! \brief Set 
 	 */
 	void setNegated(bool  negated);
+	/*! \brief Get 
+	 */
+	std::list<std::list> getValues();
+
+	/*! \brief Set 
+	 */
+	void setValues(std::list <std::list> values);
 
 private:
-	std::list <std::list>values;
 	bool negated;
+	std::list <std::list>values;
 	void __init();
 	void __cleanup();
 

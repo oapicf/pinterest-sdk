@@ -6,18 +6,18 @@ All URIs are relative to *https://api.pinterest.com/v5*
 | ------ | ------------ | ----------- |
 | [**conversion_tags_create**](ConversionTagsApi.md#conversion_tags_create) | **POST** /ad_accounts/{ad_account_id}/conversion_tags | Create conversion tag |
 | [**conversion_tags_get**](ConversionTagsApi.md#conversion_tags_get) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id} | Get conversion tag |
-| [**conversion_tags_list**](ConversionTagsApi.md#conversion_tags_list) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | Get conversion tags |
+| [**conversion_tags_list**](ConversionTagsApi.md#conversion_tags_list) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | List conversion tags |
 | [**ocpm_eligible_conversion_tags_get**](ConversionTagsApi.md#ocpm_eligible_conversion_tags_get) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible | Get Ocpm eligible conversion tags |
 | [**page_visit_conversion_tags_get**](ConversionTagsApi.md#page_visit_conversion_tags_get) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/page_visit | Get page visit conversion tags |
 
 
 ## conversion_tags_create
 
-> <ConversionTagResponse> conversion_tags_create(ad_account_id, conversion_tag_create)
+> <ConversionTag> conversion_tags_create(ad_account_id, conversion_tag_create)
 
 Create conversion tag
 
-Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\" target=\"_blank\">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\">Set up the Pinterest tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/\">Pinterest Tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/#enhanced-match\">Enhanced match</a>
+Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account's website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
 
 ### Examples
 
@@ -32,7 +32,7 @@ end
 
 api_instance = PinterestSdkClient::ConversionTagsApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-conversion_tag_create = PinterestSdkClient::ConversionTagCreate.new({name: 'ACME Tools Tag'}) # ConversionTagCreate | Conversion Tag to create
+conversion_tag_create = PinterestSdkClient::ConversionTagCreate.new({name: 'ACME Checkout Test Tag'}) # ConversionTagCreate | 
 
 begin
   # Create conversion tag
@@ -47,7 +47,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ConversionTagResponse>, Integer, Hash)> conversion_tags_create_with_http_info(ad_account_id, conversion_tag_create)
+> <Array(<ConversionTag>, Integer, Hash)> conversion_tags_create_with_http_info(ad_account_id, conversion_tag_create)
 
 ```ruby
 begin
@@ -55,7 +55,7 @@ begin
   data, status_code, headers = api_instance.conversion_tags_create_with_http_info(ad_account_id, conversion_tag_create)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <ConversionTagResponse>
+  p data # => <ConversionTag>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling ConversionTagsApi->conversion_tags_create_with_http_info: #{e}"
 end
@@ -66,11 +66,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **conversion_tag_create** | [**ConversionTagCreate**](ConversionTagCreate.md) | Conversion Tag to create |  |
+| **conversion_tag_create** | [**ConversionTagCreate**](ConversionTagCreate.md) |  |  |
 
 ### Return type
 
-[**ConversionTagResponse**](ConversionTagResponse.md)
+[**ConversionTag**](ConversionTag.md)
 
 ### Authorization
 
@@ -84,7 +84,7 @@ end
 
 ## conversion_tags_get
 
-> <ConversionTagResponse> conversion_tags_get(ad_account_id, conversion_tag_id)
+> <ConversionTag> conversion_tags_get(ad_account_id, conversion_tag_id)
 
 Get conversion tag
 
@@ -98,6 +98,9 @@ require 'pinterest_sdk'
 # setup authorization
 PinterestSdkClient.configure do |config|
   # Configure OAuth2 access token for authorization: pinterest_oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure OAuth2 access token for authorization: client_credentials
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
@@ -118,7 +121,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ConversionTagResponse>, Integer, Hash)> conversion_tags_get_with_http_info(ad_account_id, conversion_tag_id)
+> <Array(<ConversionTag>, Integer, Hash)> conversion_tags_get_with_http_info(ad_account_id, conversion_tag_id)
 
 ```ruby
 begin
@@ -126,7 +129,7 @@ begin
   data, status_code, headers = api_instance.conversion_tags_get_with_http_info(ad_account_id, conversion_tag_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <ConversionTagResponse>
+  p data # => <ConversionTag>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling ConversionTagsApi->conversion_tags_get_with_http_info: #{e}"
 end
@@ -141,11 +144,11 @@ end
 
 ### Return type
 
-[**ConversionTagResponse**](ConversionTagResponse.md)
+[**ConversionTag**](ConversionTag.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -155,9 +158,9 @@ end
 
 ## conversion_tags_list
 
-> <ConversionTagListResponse> conversion_tags_list(ad_account_id, opts)
+> <ConversionTagsList200Response> conversion_tags_list(ad_account_id, opts)
 
-Get conversion tags
+List conversion tags
 
 List conversion tags associated with an ad account.
 
@@ -170,16 +173,19 @@ require 'pinterest_sdk'
 PinterestSdkClient.configure do |config|
   # Configure OAuth2 access token for authorization: pinterest_oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure OAuth2 access token for authorization: client_credentials
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = PinterestSdkClient::ConversionTagsApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
 opts = {
-  filter_deleted: true # Boolean | Filter out deleted tags.
+  filter_deleted: true # Boolean | Filter by deleted status
 }
 
 begin
-  # Get conversion tags
+  # List conversion tags
   result = api_instance.conversion_tags_list(ad_account_id, opts)
   p result
 rescue PinterestSdkClient::ApiError => e
@@ -191,15 +197,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ConversionTagListResponse>, Integer, Hash)> conversion_tags_list_with_http_info(ad_account_id, opts)
+> <Array(<ConversionTagsList200Response>, Integer, Hash)> conversion_tags_list_with_http_info(ad_account_id, opts)
 
 ```ruby
 begin
-  # Get conversion tags
+  # List conversion tags
   data, status_code, headers = api_instance.conversion_tags_list_with_http_info(ad_account_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <ConversionTagListResponse>
+  p data # => <ConversionTagsList200Response>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling ConversionTagsApi->conversion_tags_list_with_http_info: #{e}"
 end
@@ -210,15 +216,15 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ad_account_id** | **String** | Unique identifier of an ad account. |  |
-| **filter_deleted** | **Boolean** | Filter out deleted tags. | [optional][default to false] |
+| **filter_deleted** | **Boolean** | Filter by deleted status | [optional][default to false] |
 
 ### Return type
 
-[**ConversionTagListResponse**](ConversionTagListResponse.md)
+[**ConversionTagsList200Response**](ConversionTagsList200Response.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -242,6 +248,9 @@ require 'pinterest_sdk'
 # setup authorization
 PinterestSdkClient.configure do |config|
   # Configure OAuth2 access token for authorization: pinterest_oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure OAuth2 access token for authorization: client_credentials
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
@@ -287,7 +296,7 @@ end
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -311,6 +320,9 @@ require 'pinterest_sdk'
 # setup authorization
 PinterestSdkClient.configure do |config|
   # Configure OAuth2 access token for authorization: pinterest_oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure OAuth2 access token for authorization: client_credentials
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
@@ -364,7 +376,7 @@ end
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

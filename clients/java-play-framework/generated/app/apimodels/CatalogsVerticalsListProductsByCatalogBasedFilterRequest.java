@@ -18,9 +18,15 @@ import javax.validation.Valid;
 /**
  * Request object to list products for a given catalog_id and product group filter.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsVerticalsListProductsByCatalogBasedFilterRequest   {
+  @JsonProperty("catalog_id")
+  @NotNull
+@Pattern(regexp="^\\d+$")
+
+  private String catalogId;
+
   /**
    * Gets or Sets catalogType
    */
@@ -55,11 +61,11 @@ public class CatalogsVerticalsListProductsByCatalogBasedFilterRequest   {
 
   private CatalogTypeEnum catalogType;
 
-  @JsonProperty("catalog_id")
+  @JsonProperty("country")
   @NotNull
-@Pattern(regexp="^\\d+$")
+@Valid
 
-  private String catalogId;
+  private Country country;
 
   @JsonProperty("filters")
   @NotNull
@@ -67,34 +73,11 @@ public class CatalogsVerticalsListProductsByCatalogBasedFilterRequest   {
 
   private CatalogsCreativeAssetsProductGroupFilters filters;
 
-  @JsonProperty("country")
-  @NotNull
-@Valid
-
-  private Country country;
-
   @JsonProperty("locale")
   @NotNull
 @Valid
 
   private CatalogsLocale locale;
-
-  public CatalogsVerticalsListProductsByCatalogBasedFilterRequest catalogType(CatalogTypeEnum catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
-   /**
-   * Get catalogType
-   * @return catalogType
-  **/
-  public CatalogTypeEnum getCatalogType() {
-    return catalogType;
-  }
-
-  public void setCatalogType(CatalogTypeEnum catalogType) {
-    this.catalogType = catalogType;
-  }
 
   public CatalogsVerticalsListProductsByCatalogBasedFilterRequest catalogId(String catalogId) {
     this.catalogId = catalogId;
@@ -113,21 +96,21 @@ public class CatalogsVerticalsListProductsByCatalogBasedFilterRequest   {
     this.catalogId = catalogId;
   }
 
-  public CatalogsVerticalsListProductsByCatalogBasedFilterRequest filters(CatalogsCreativeAssetsProductGroupFilters filters) {
-    this.filters = filters;
+  public CatalogsVerticalsListProductsByCatalogBasedFilterRequest catalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
     return this;
   }
 
    /**
-   * Get filters
-   * @return filters
+   * Get catalogType
+   * @return catalogType
   **/
-  public CatalogsCreativeAssetsProductGroupFilters getFilters() {
-    return filters;
+  public CatalogTypeEnum getCatalogType() {
+    return catalogType;
   }
 
-  public void setFilters(CatalogsCreativeAssetsProductGroupFilters filters) {
-    this.filters = filters;
+  public void setCatalogType(CatalogTypeEnum catalogType) {
+    this.catalogType = catalogType;
   }
 
   public CatalogsVerticalsListProductsByCatalogBasedFilterRequest country(Country country) {
@@ -145,6 +128,23 @@ public class CatalogsVerticalsListProductsByCatalogBasedFilterRequest   {
 
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+  public CatalogsVerticalsListProductsByCatalogBasedFilterRequest filters(CatalogsCreativeAssetsProductGroupFilters filters) {
+    this.filters = filters;
+    return this;
+  }
+
+   /**
+   * Get filters
+   * @return filters
+  **/
+  public CatalogsCreativeAssetsProductGroupFilters getFilters() {
+    return filters;
+  }
+
+  public void setFilters(CatalogsCreativeAssetsProductGroupFilters filters) {
+    this.filters = filters;
   }
 
   public CatalogsVerticalsListProductsByCatalogBasedFilterRequest locale(CatalogsLocale locale) {
@@ -174,16 +174,16 @@ public class CatalogsVerticalsListProductsByCatalogBasedFilterRequest   {
       return false;
     }
     CatalogsVerticalsListProductsByCatalogBasedFilterRequest catalogsVerticalsListProductsByCatalogBasedFilterRequest = (CatalogsVerticalsListProductsByCatalogBasedFilterRequest) o;
-    return Objects.equals(catalogType, catalogsVerticalsListProductsByCatalogBasedFilterRequest.catalogType) &&
-        Objects.equals(catalogId, catalogsVerticalsListProductsByCatalogBasedFilterRequest.catalogId) &&
-        Objects.equals(filters, catalogsVerticalsListProductsByCatalogBasedFilterRequest.filters) &&
+    return Objects.equals(catalogId, catalogsVerticalsListProductsByCatalogBasedFilterRequest.catalogId) &&
+        Objects.equals(catalogType, catalogsVerticalsListProductsByCatalogBasedFilterRequest.catalogType) &&
         Objects.equals(country, catalogsVerticalsListProductsByCatalogBasedFilterRequest.country) &&
+        Objects.equals(filters, catalogsVerticalsListProductsByCatalogBasedFilterRequest.filters) &&
         Objects.equals(locale, catalogsVerticalsListProductsByCatalogBasedFilterRequest.locale);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, catalogId, filters, country, locale);
+    return Objects.hash(catalogId, catalogType, country, filters, locale);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -192,10 +192,10 @@ public class CatalogsVerticalsListProductsByCatalogBasedFilterRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsVerticalsListProductsByCatalogBasedFilterRequest {\n");
     
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
-    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -5,7 +5,7 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.AdvancedAuctionProcessedItem
+import org.openapitools.models.AdvancedAuctionItemsSubmitRecord
 import scala.collection.immutable.Seq
 
 /**
@@ -14,7 +14,7 @@ import scala.collection.immutable.Seq
  * @param items Array of advanced auction processed items
  */
 case class AdvancedAuctionProcessedItems(catalogUnderscoreid: Option[String],
-                items: Option[Seq[AdvancedAuctionProcessedItem]]
+                items: Option[Seq[AdvancedAuctionItemsSubmitRecord]]
                 )
 
 object AdvancedAuctionProcessedItems {

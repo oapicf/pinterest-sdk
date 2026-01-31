@@ -13,6 +13,7 @@ import org.openapitools.vertxweb.server.model.CatalogsCreativeAssetsProductGroup
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsCreativeAssetsProductGroupCreateRequest   {
   
+  private String catalogId;
 
 
   public enum CatalogTypeEnum {
@@ -32,20 +33,28 @@ public class CatalogsCreativeAssetsProductGroupCreateRequest   {
   }
 
   private CatalogTypeEnum catalogType;
-  private String name;
   private String description;
   private CatalogsCreativeAssetsProductGroupFilters filters;
-  private String catalogId;
+  private String name;
 
   public CatalogsCreativeAssetsProductGroupCreateRequest () {
 
   }
 
-  public CatalogsCreativeAssetsProductGroupCreateRequest (CatalogTypeEnum catalogType, String name, String description, CatalogsCreativeAssetsProductGroupFilters filters, String catalogId) {
+  public CatalogsCreativeAssetsProductGroupCreateRequest (String catalogId, CatalogTypeEnum catalogType, String description, CatalogsCreativeAssetsProductGroupFilters filters, String name) {
+    this.catalogId = catalogId;
     this.catalogType = catalogType;
-    this.name = name;
     this.description = description;
     this.filters = filters;
+    this.name = name;
+  }
+
+    
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
   }
 
@@ -56,15 +65,6 @@ public class CatalogsCreativeAssetsProductGroupCreateRequest   {
   }
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
-  }
-
-    
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
   }
 
     
@@ -86,12 +86,12 @@ public class CatalogsCreativeAssetsProductGroupCreateRequest   {
   }
 
     
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
+  @JsonProperty("name")
+  public String getName() {
+    return name;
   }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -104,16 +104,16 @@ public class CatalogsCreativeAssetsProductGroupCreateRequest   {
       return false;
     }
     CatalogsCreativeAssetsProductGroupCreateRequest catalogsCreativeAssetsProductGroupCreateRequest = (CatalogsCreativeAssetsProductGroupCreateRequest) o;
-    return Objects.equals(catalogType, catalogsCreativeAssetsProductGroupCreateRequest.catalogType) &&
-        Objects.equals(name, catalogsCreativeAssetsProductGroupCreateRequest.name) &&
+    return Objects.equals(catalogId, catalogsCreativeAssetsProductGroupCreateRequest.catalogId) &&
+        Objects.equals(catalogType, catalogsCreativeAssetsProductGroupCreateRequest.catalogType) &&
         Objects.equals(description, catalogsCreativeAssetsProductGroupCreateRequest.description) &&
         Objects.equals(filters, catalogsCreativeAssetsProductGroupCreateRequest.filters) &&
-        Objects.equals(catalogId, catalogsCreativeAssetsProductGroupCreateRequest.catalogId);
+        Objects.equals(name, catalogsCreativeAssetsProductGroupCreateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters, catalogId);
+    return Objects.hash(catalogId, catalogType, description, filters, name);
   }
 
   @Override
@@ -121,11 +121,11 @@ public class CatalogsCreativeAssetsProductGroupCreateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsProductGroupCreateRequest {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

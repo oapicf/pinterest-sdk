@@ -13,7 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class OptimizationGoalMetadataFrequencyGoalMetadata  {
   
-  @ApiModelProperty(value = "")
+ /**
+  * Frequency target can only be between 2 and 20
+  */
+  @ApiModelProperty(value = "Frequency target can only be between 2 and 20")
   private Integer frequency;
 
 public enum TimerangeEnum {
@@ -56,11 +59,13 @@ public enum TimerangeEnum {
   @ApiModelProperty(example = "DAY", value = "User entity counts time range")
   private TimerangeEnum timerange;
  /**
-  * Get frequency
+  * Frequency target can only be between 2 and 20
+  * minimum: 2
+  * maximum: 20
   * @return frequency
   */
   @JsonProperty("frequency")
-  public Integer getFrequency() {
+ @Min(2) @Max(20)  public Integer getFrequency() {
     return frequency;
   }
 

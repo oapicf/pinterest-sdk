@@ -15,16 +15,16 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param term 
  * @param relatedTerms 
+ * @param term 
  */
 data class RelatedTermsRelatedTermsListInner(
 
-    @Schema(example = "clothes", description = "")
-    @get:JsonProperty("term") val term: kotlin.String? = null,
-
     @Schema(example = "[\"shoes\",\"cute clothes\"]", description = "")
-    @get:JsonProperty("related_terms") val relatedTerms: kotlin.collections.List<kotlin.String>? = null
+    @get:JsonProperty("related_terms") val relatedTerms: kotlin.collections.List<kotlin.String>? = null,
+
+    @Schema(example = "clothes", description = "")
+    @get:JsonProperty("term") val term: kotlin.String? = null
 ) {
 
 }

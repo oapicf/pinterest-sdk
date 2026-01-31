@@ -45,18 +45,18 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Product brand. For example, \"Parker\".
+	/*! \brief Get Product brand. For example, 'Parker'.
 	 */
 	std::string getProductBrand();
 
-	/*! \brief Set Product brand. For example, \"Parker\".
+	/*! \brief Set Product brand. For example, 'Parker'.
 	 */
 	void setProductBrand(std::string  product_brand);
-	/*! \brief Get Product category. For example, \"Shoes\".
+	/*! \brief Get Product category. For example, 'Shoes'.
 	 */
 	std::string getProductCategory();
 
-	/*! \brief Set Product category. For example, \"Shoes\".
+	/*! \brief Set Product category. For example, 'Shoes'.
 	 */
 	void setProductCategory(std::string  product_category);
 	/*! \brief Get Product ID. For example, 1414.
@@ -66,18 +66,18 @@ public:
 	/*! \brief Set Product ID. For example, 1414.
 	 */
 	void setProductId(int  product_id);
-	/*! \brief Get Product name. For example, \"Parker Boots\".
+	/*! \brief Get Product name. For example, 'Parker Boots'.
 	 */
 	std::string getProductName();
 
-	/*! \brief Set Product name. For example, \"Parker Boots\".
+	/*! \brief Set Product name. For example, 'Parker Boots'.
 	 */
 	void setProductName(std::string  product_name);
-	/*! \brief Get Product price. For example, \"99.99\".
+	/*! \brief Get Product price. For example, '99.99'.
 	 */
 	std::string getProductPrice();
 
-	/*! \brief Set Product price. For example, \"99.99\".
+	/*! \brief Set Product price. For example, '99.99'.
 	 */
 	void setProductPrice(std::string  product_price);
 	/*! \brief Get Product quantity. For example, 2.
@@ -87,18 +87,18 @@ public:
 	/*! \brief Set Product quantity. For example, 2.
 	 */
 	void setProductQuantity(int  product_quantity);
-	/*! \brief Get Product variant. For example, \"Red\".
+	/*! \brief Get Product variant. For example, 'Red'.
 	 */
 	std::string getProductVariant();
 
-	/*! \brief Set Product variant. For example, \"Red\".
+	/*! \brief Set Product variant. For example, 'Red'.
 	 */
 	void setProductVariant(std::string  product_variant);
-	/*! \brief Get Product variant ID. For example, \"1414-34832\".
+	/*! \brief Get Product variant ID. For example, '1414-34832'.
 	 */
 	std::string getProductVariantId();
 
-	/*! \brief Set Product variant ID. For example, \"1414-34832\".
+	/*! \brief Set Product variant ID. For example, '1414-34832'.
 	 */
 	void setProductVariantId(std::string  product_variant_id);
 

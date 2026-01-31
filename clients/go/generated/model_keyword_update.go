@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,12 +22,12 @@ var _ MappedNullable = &KeywordUpdate{}
 
 // KeywordUpdate struct for KeywordUpdate
 type KeywordUpdate struct {
-	// Keyword ID.
-	Id string `json:"id" validate:"regexp=^\\\\d+$"`
 	// Is keyword archived?
 	Archived *bool `json:"archived,omitempty"`
 	// </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
 	Bid NullableInt32 `json:"bid,omitempty"`
+	// Keyword ID.
+	Id string `json:"id" validate:"regexp=^\\\\d+$"`
 }
 
 type _KeywordUpdate KeywordUpdate
@@ -48,30 +48,6 @@ func NewKeywordUpdate(id string) *KeywordUpdate {
 func NewKeywordUpdateWithDefaults() *KeywordUpdate {
 	this := KeywordUpdate{}
 	return &this
-}
-
-// GetId returns the Id field value
-func (o *KeywordUpdate) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *KeywordUpdate) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *KeywordUpdate) SetId(v string) {
-	o.Id = v
 }
 
 // GetArchived returns the Archived field value if set, zero value otherwise.
@@ -148,6 +124,30 @@ func (o *KeywordUpdate) UnsetBid() {
 	o.Bid.Unset()
 }
 
+// GetId returns the Id field value
+func (o *KeywordUpdate) GetId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *KeywordUpdate) GetIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *KeywordUpdate) SetId(v string) {
+	o.Id = v
+}
+
 func (o KeywordUpdate) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -158,13 +158,13 @@ func (o KeywordUpdate) MarshalJSON() ([]byte, error) {
 
 func (o KeywordUpdate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
 	if !IsNil(o.Archived) {
 		toSerialize["archived"] = o.Archived
 	}
 	if o.Bid.IsSet() {
 		toSerialize["bid"] = o.Bid.Get()
 	}
+	toSerialize["id"] = o.Id
 	return toSerialize, nil
 }
 

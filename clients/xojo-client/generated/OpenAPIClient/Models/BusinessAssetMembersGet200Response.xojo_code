@@ -2,15 +2,15 @@
 Protected Class BusinessAssetMembersGet200Response
 
 	#tag Property, Flags = &h0
-		#tag Note
-			List of members with permissions to the asset.
-		#tag EndNote
-		items() As OpenAPIClient.Models.UserSingleAssetBinding
+		bookmark As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		bookmark As Xoson.O.OptionalString
+		#tag Note
+			List of members with permissions to the asset.
+		#tag EndNote
+		items() As OpenAPIClient.Models.UserSingleAssetBinding
 	#tag EndProperty
 
 
@@ -51,19 +51,19 @@ Protected Class BusinessAssetMembersGet200Response
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="items"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="UserSingleAssetBinding"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="bookmark"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="items"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="UserSingleAssetBinding"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

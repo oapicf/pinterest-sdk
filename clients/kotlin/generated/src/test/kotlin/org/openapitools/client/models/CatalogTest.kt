@@ -44,16 +44,16 @@ class CatalogTest : ShouldSpec() {
             //modelInstance.updatedAt shouldBe ("TODO")
         }
 
-        // to test the property `name` - A human-friendly name associated to a catalog entity.
-        should("test name") {
-            // uncomment below to test the property
-            //modelInstance.name shouldBe ("TODO")
-        }
-
         // to test the property `catalogType`
         should("test catalogType") {
             // uncomment below to test the property
             //modelInstance.catalogType shouldBe ("TODO")
+        }
+
+        // to test the property `name` - A human-friendly name associated to a catalog entity.
+        should("test name") {
+            // uncomment below to test the property
+            //modelInstance.name shouldBe ("TODO")
         }
 
     }

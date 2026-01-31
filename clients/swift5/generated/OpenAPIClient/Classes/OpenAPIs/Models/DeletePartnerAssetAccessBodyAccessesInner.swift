@@ -16,24 +16,24 @@ public struct DeletePartnerAssetAccessBodyAccessesInner: Codable, JSONEncodable,
         case _internal = "INTERNAL"
         case external = "EXTERNAL"
     }
-    public static let partnerIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
     public static let assetIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
-    /** Unique identifier of a business partner to update asset access to. */
-    public var partnerId: String
+    public static let partnerIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
     /** Unique identifier of the business asset. */
     public var assetId: String
+    /** Unique identifier of a business partner to update asset access to. */
+    public var partnerId: String
     /** If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset. */
     public var partnerType: PartnerType? = ._internal
 
-    public init(partnerId: String, assetId: String, partnerType: PartnerType? = ._internal) {
-        self.partnerId = partnerId
+    public init(assetId: String, partnerId: String, partnerType: PartnerType? = ._internal) {
         self.assetId = assetId
+        self.partnerId = partnerId
         self.partnerType = partnerType
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case partnerId = "partner_id"
         case assetId = "asset_id"
+        case partnerId = "partner_id"
         case partnerType = "partner_type"
     }
 
@@ -41,8 +41,8 @@ public struct DeletePartnerAssetAccessBodyAccessesInner: Codable, JSONEncodable,
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(partnerId, forKey: .partnerId)
         try container.encode(assetId, forKey: .assetId)
+        try container.encode(partnerId, forKey: .partnerId)
         try container.encodeIfPresent(partnerType, forKey: .partnerType)
     }
 }

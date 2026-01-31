@@ -1,7 +1,7 @@
 /*
  * PinCreate.h
  *
- * Pin
+ * Resource create operation model.
  */
 
 #ifndef _PinCreate_H_
@@ -9,8 +9,6 @@
 
 
 #include <string>
-#include "BoardOwner.h"
-#include "PinMedia.h"
 #include "PinMediaSource.h"
 #include "Object.h"
 
@@ -23,7 +21,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Pin
+/*! \brief Resource create operation model.
  *
  *  \ingroup Models
  *
@@ -50,48 +48,6 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::string getId();
-
-	/*! \brief Set 
-	 */
-	void setId(std::string  id);
-	/*! \brief Get 
-	 */
-	std::string getCreatedAt();
-
-	/*! \brief Set 
-	 */
-	void setCreatedAt(std::string  created_at);
-	/*! \brief Get 
-	 */
-	std::string getLink();
-
-	/*! \brief Set 
-	 */
-	void setLink(std::string  link);
-	/*! \brief Get 
-	 */
-	std::string getTitle();
-
-	/*! \brief Set 
-	 */
-	void setTitle(std::string  title);
-	/*! \brief Get 
-	 */
-	std::string getDescription();
-
-	/*! \brief Set 
-	 */
-	void setDescription(std::string  description);
-	/*! \brief Get Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".
-	 */
-	std::string getDominantColor();
-
-	/*! \brief Set Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".
-	 */
-	void setDominantColor(std::string  dominant_color);
-	/*! \brief Get 
-	 */
 	std::string getAltText();
 
 	/*! \brief Set 
@@ -113,18 +69,25 @@ public:
 	void setBoardSectionId(std::string  board_section_id);
 	/*! \brief Get 
 	 */
-	BoardOwner getBoardOwner();
+	std::string getDescription();
 
 	/*! \brief Set 
 	 */
-	void setBoardOwner(BoardOwner  board_owner);
+	void setDescription(std::string  description);
+	/*! \brief Get Dominant pin color. Hex number, e.g. `#6E7874`.
+	 */
+	std::string getDominantColor();
+
+	/*! \brief Set Dominant pin color. Hex number, e.g. `#6E7874`.
+	 */
+	void setDominantColor(std::string  dominant_color);
 	/*! \brief Get 
 	 */
-	PinMedia getMedia();
+	std::string getLink();
 
 	/*! \brief Set 
 	 */
-	void setMedia(PinMedia  media);
+	void setLink(std::string  link);
 	/*! \brief Get 
 	 */
 	PinMediaSource getMediaSource();
@@ -132,36 +95,39 @@ public:
 	/*! \brief Set 
 	 */
 	void setMediaSource(PinMediaSource  media_source);
-	/*! \brief Get The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
+	/*! \brief Get The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).
 	 */
 	std::string getParentPinId();
 
-	/*! \brief Set The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
+	/*! \brief Set The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).
 	 */
 	void setParentPinId(std::string  parent_pin_id);
-	/*! \brief Get Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
+	/*! \brief Get The sponsor account id to request paid partnership from.  Currently the field is only available to a list of users in a closed beta.
 	 */
-	std::string getNote();
+	std::string getSponsorId();
 
-	/*! \brief Set Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
+	/*! \brief Set The sponsor account id to request paid partnership from.  Currently the field is only available to a list of users in a closed beta.
 	 */
-	void setNote(std::string  note);
+	void setSponsorId(std::string  sponsor_id);
+	/*! \brief Get 
+	 */
+	std::string getTitle();
+
+	/*! \brief Set 
+	 */
+	void setTitle(std::string  title);
 
 private:
-	std::string id;
-	std::string created_at;
-	std::string link;
-	std::string title;
-	std::string description;
-	std::string dominant_color;
 	std::string alt_text;
 	std::string board_id;
 	std::string board_section_id;
-	BoardOwner board_owner;
-	PinMedia media;
+	std::string description;
+	std::string dominant_color;
+	std::string link;
 	PinMediaSource media_source;
 	std::string parent_pin_id;
-	std::string note;
+	std::string sponsor_id;
+	std::string title;
 	void __init();
 	void __cleanup();
 

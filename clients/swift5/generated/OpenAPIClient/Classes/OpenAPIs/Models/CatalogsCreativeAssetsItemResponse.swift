@@ -14,35 +14,35 @@ import AnyCodable
 public struct CatalogsCreativeAssetsItemResponse: Codable, JSONEncodable, Hashable {
 
     public static let pinsRule = ArrayRule(minItems: nil, maxItems: 11, uniqueItems: false)
+    public var attributes: CatalogsCreativeAssetsAttributes?
     public var catalogType: CatalogsType
     /** The catalog creative assets id in the merchant namespace */
     public var creativeAssetsId: String?
     /** The pins mapped to the item */
     public var pins: [Pin]?
-    public var attributes: CatalogsCreativeAssetsAttributes?
 
-    public init(catalogType: CatalogsType, creativeAssetsId: String? = nil, pins: [Pin]? = nil, attributes: CatalogsCreativeAssetsAttributes? = nil) {
+    public init(attributes: CatalogsCreativeAssetsAttributes? = nil, catalogType: CatalogsType, creativeAssetsId: String? = nil, pins: [Pin]? = nil) {
+        self.attributes = attributes
         self.catalogType = catalogType
         self.creativeAssetsId = creativeAssetsId
         self.pins = pins
-        self.attributes = attributes
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case attributes
         case catalogType = "catalog_type"
         case creativeAssetsId = "creative_assets_id"
         case pins
-        case attributes
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(attributes, forKey: .attributes)
         try container.encode(catalogType, forKey: .catalogType)
         try container.encodeIfPresent(creativeAssetsId, forKey: .creativeAssetsId)
         try container.encodeIfPresent(pins, forKey: .pins)
-        try container.encodeIfPresent(attributes, forKey: .attributes)
     }
 }
 

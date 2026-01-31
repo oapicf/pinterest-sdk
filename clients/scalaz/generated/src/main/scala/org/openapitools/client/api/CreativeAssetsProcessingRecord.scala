@@ -16,9 +16,9 @@ case class CreativeAssetsProcessingRecord (
   creativeAssetsId: Option[String],
 /* Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail. */
   errors: Option[List[ItemValidationEvent]],
+status: Option[ItemProcessingStatus],
 /* Array with the validation warnings for the item processing record */
-  warnings: Option[List[ItemValidationEvent]],
-status: Option[ItemProcessingStatus])
+  warnings: Option[List[ItemValidationEvent]])
 
 object CreativeAssetsProcessingRecord {
   import DateTimeCodecs._

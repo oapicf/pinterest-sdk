@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**credentials** | [**CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] [default to undefined]
 **default_availability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] [default to undefined]
 **default_currency** | [**NullableCurrency**](NullableCurrency.md) |  | [optional] [default to undefined]
-**name** | **string** | A human-friendly name associated to a given feed. | [optional] [default to undefined]
 **format** | [**CatalogsFormat**](CatalogsFormat.md) |  | [optional] [default to undefined]
-**credentials** | [**CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] [default to undefined]
 **location** | **string** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | [optional] [default to undefined]
+**name** | **string** | A human-friendly name associated to a given feed. | [optional] [default to undefined]
 **preferred_processing_schedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] [default to undefined]
 **status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] [default to undefined]
 
@@ -20,12 +20,12 @@ Name | Type | Description | Notes
 import { FeedsUpdateRequest } from './api';
 
 const instance: FeedsUpdateRequest = {
+    credentials,
     default_availability,
     default_currency,
-    name,
     format,
-    credentials,
     location,
+    name,
     preferred_processing_schedule,
     status,
 };

@@ -23,12 +23,13 @@ import HelperCodecs._
 
 import org.openapitools.client.api.AdAccount
 import org.openapitools.client.api.AdAccountAnalyticsResponseInner
-import org.openapitools.client.api.AdAccountCreateRequest
+import org.openapitools.client.api.AdAccountCreate
 import org.openapitools.client.api.AdAccountsList200Response
 import org.openapitools.client.api.AdsAnalyticsCreateAsyncRequest
 import org.openapitools.client.api.AdsAnalyticsCreateAsyncResponse
 import org.openapitools.client.api.AdsAnalyticsGetAsyncResponse
 import org.openapitools.client.api.AdsAnalyticsTargetingType
+import org.openapitools.client.api.ConversionProductReportRequest
 import org.openapitools.client.api.ConversionReportAttributionType
 import org.openapitools.client.api.CreateMMMReportRequest
 import org.openapitools.client.api.CreateMMMReportResponse
@@ -37,6 +38,8 @@ import org.openapitools.client.api.GetMMMReportResponse
 import org.openapitools.client.api.Granularity
 import java.time.LocalDate
 import org.openapitools.client.api.MetricsResponse
+import org.openapitools.client.api.ReportingTimeZone
+import org.openapitools.client.api.TemplateBasedReport
 import org.openapitools.client.api.TemplatesList200Response
 
 object AdAccountsApi {
@@ -45,7 +48,7 @@ object AdAccountsApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def adAccountAnalytics(host: String, adAccountId: String, startDate: LocalDate, endDate: LocalDate, columns: List[String] = List.empty[String] , granularity: Granularity, clickWindowDays: Integer = 30, engagementWindowDays: Integer = 30, viewWindowDays: Integer = 1, conversionReportTime: String = TIME_OF_AD_ACTION)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], columnsQuery: QueryParam[List[String]], granularityQuery: QueryParam[Granularity], clickWindowDaysQuery: QueryParam[Integer], engagementWindowDaysQuery: QueryParam[Integer], viewWindowDaysQuery: QueryParam[Integer], conversionReportTimeQuery: QueryParam[String]): Task[List[AdAccountAnalyticsResponseInner]] = {
+  def adAccountAnalytics(host: String, adAccountId: String, startDate: LocalDate, endDate: LocalDate, columns: List[String] = List.empty[String] , granularity: Granularity, clickWindowDays: Integer = 30, engagementWindowDays: Integer = 30, viewWindowDays: Integer = 1, conversionReportTime: String = TIME_OF_AD_ACTION, reportingTimezone: ReportingTimeZone)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], columnsQuery: QueryParam[List[String]], granularityQuery: QueryParam[Granularity], clickWindowDaysQuery: QueryParam[Integer], engagementWindowDaysQuery: QueryParam[Integer], viewWindowDaysQuery: QueryParam[Integer], conversionReportTimeQuery: QueryParam[String], reportingTimezoneQuery: QueryParam[ReportingTimeZone]): Task[List[AdAccountAnalyticsResponseInner]] = {
     implicit val returnTypeDecoder: EntityDecoder[List[AdAccountAnalyticsResponseInner]] = jsonOf[List[AdAccountAnalyticsResponseInner]]
 
     val path = "/ad_accounts/{ad_account_id}/analytics".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
@@ -55,7 +58,7 @@ object AdAccountsApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("startDate", Some(start_dateQuery.toParamString(start_date))), ("endDate", Some(end_dateQuery.toParamString(end_date))), ("columns", Some(columnsQuery.toParamString(columns))), ("granularity", Some(granularityQuery.toParamString(granularity))), ("clickWindowDays", Some(click_window_daysQuery.toParamString(click_window_days))), ("engagementWindowDays", Some(engagement_window_daysQuery.toParamString(engagement_window_days))), ("viewWindowDays", Some(view_window_daysQuery.toParamString(view_window_days))), ("conversionReportTime", Some(conversion_report_timeQuery.toParamString(conversion_report_time))))
+      ("startDate", Some(start_dateQuery.toParamString(start_date))), ("endDate", Some(end_dateQuery.toParamString(end_date))), ("columns", Some(columnsQuery.toParamString(columns))), ("granularity", Some(granularityQuery.toParamString(granularity))), ("clickWindowDays", Some(click_window_daysQuery.toParamString(click_window_days))), ("engagementWindowDays", Some(engagement_window_daysQuery.toParamString(engagement_window_days))), ("viewWindowDays", Some(view_window_daysQuery.toParamString(view_window_days))), ("conversionReportTime", Some(conversion_report_timeQuery.toParamString(conversion_report_time))), ("reportingTimezone", Some(reporting_timezoneQuery.toParamString(reporting_timezone))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -66,7 +69,7 @@ object AdAccountsApi {
     } yield resp
   }
 
-  def adAccountTargetingAnalyticsGet(host: String, adAccountId: String, startDate: LocalDate, endDate: LocalDate, targetingTypes: List[AdsAnalyticsTargetingType] = List.empty[AdsAnalyticsTargetingType] , columns: List[String] = List.empty[String] , granularity: Granularity, clickWindowDays: Integer = 30, engagementWindowDays: Integer = 30, viewWindowDays: Integer = 1, conversionReportTime: String = TIME_OF_AD_ACTION, attributionTypes: ConversionReportAttributionType)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], targetingTypesQuery: QueryParam[List[AdsAnalyticsTargetingType]], columnsQuery: QueryParam[List[String]], granularityQuery: QueryParam[Granularity], clickWindowDaysQuery: QueryParam[Integer], engagementWindowDaysQuery: QueryParam[Integer], viewWindowDaysQuery: QueryParam[Integer], conversionReportTimeQuery: QueryParam[String], attributionTypesQuery: QueryParam[ConversionReportAttributionType]): Task[MetricsResponse] = {
+  def adAccountTargetingAnalyticsGet(host: String, adAccountId: String, startDate: LocalDate, endDate: LocalDate, targetingTypes: List[AdsAnalyticsTargetingType] = List.empty[AdsAnalyticsTargetingType] , columns: List[String] = List.empty[String] , granularity: Granularity, clickWindowDays: Integer = 30, engagementWindowDays: Integer = 30, viewWindowDays: Integer = 1, conversionReportTime: String = TIME_OF_AD_ACTION, attributionTypes: List[ConversionReportAttributionType] = List.empty[ConversionReportAttributionType] , reportingTimezone: ReportingTimeZone)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], targetingTypesQuery: QueryParam[List[AdsAnalyticsTargetingType]], columnsQuery: QueryParam[List[String]], granularityQuery: QueryParam[Granularity], clickWindowDaysQuery: QueryParam[Integer], engagementWindowDaysQuery: QueryParam[Integer], viewWindowDaysQuery: QueryParam[Integer], conversionReportTimeQuery: QueryParam[String], attributionTypesQuery: QueryParam[List[ConversionReportAttributionType]], reportingTimezoneQuery: QueryParam[ReportingTimeZone]): Task[MetricsResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[MetricsResponse] = jsonOf[MetricsResponse]
 
     val path = "/ad_accounts/{ad_account_id}/targeting_analytics".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
@@ -76,7 +79,7 @@ object AdAccountsApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("startDate", Some(start_dateQuery.toParamString(start_date))), ("endDate", Some(end_dateQuery.toParamString(end_date))), ("targetingTypes", Some(targeting_typesQuery.toParamString(targeting_types))), ("columns", Some(columnsQuery.toParamString(columns))), ("granularity", Some(granularityQuery.toParamString(granularity))), ("clickWindowDays", Some(click_window_daysQuery.toParamString(click_window_days))), ("engagementWindowDays", Some(engagement_window_daysQuery.toParamString(engagement_window_days))), ("viewWindowDays", Some(view_window_daysQuery.toParamString(view_window_days))), ("conversionReportTime", Some(conversion_report_timeQuery.toParamString(conversion_report_time))), ("attributionTypes", Some(attribution_typesQuery.toParamString(attribution_types))))
+      ("startDate", Some(start_dateQuery.toParamString(start_date))), ("endDate", Some(end_dateQuery.toParamString(end_date))), ("targetingTypes", Some(targeting_typesQuery.toParamString(targeting_types))), ("columns", Some(columnsQuery.toParamString(columns))), ("granularity", Some(granularityQuery.toParamString(granularity))), ("clickWindowDays", Some(click_window_daysQuery.toParamString(click_window_days))), ("engagementWindowDays", Some(engagement_window_daysQuery.toParamString(engagement_window_days))), ("viewWindowDays", Some(view_window_daysQuery.toParamString(view_window_days))), ("conversionReportTime", Some(conversion_report_timeQuery.toParamString(conversion_report_time))), ("attributionTypes", Some(attribution_typesQuery.toParamString(attribution_types))), ("reportingTimezone", Some(reporting_timezoneQuery.toParamString(reporting_timezone))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -87,7 +90,7 @@ object AdAccountsApi {
     } yield resp
   }
 
-  def adAccountsCreate(host: String, adAccountCreateRequest: AdAccountCreateRequest): Task[AdAccount] = {
+  def adAccountsCreate(host: String, adAccountCreate: AdAccountCreate): Task[AdAccount] = {
     implicit val returnTypeDecoder: EntityDecoder[AdAccount] = jsonOf[AdAccount]
 
     val path = "/ad_accounts"
@@ -102,7 +105,7 @@ object AdAccountsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(adAccountCreateRequest)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(adAccountCreate)
       resp          <- client.expect[AdAccount](req)
 
     } yield resp
@@ -129,7 +132,7 @@ object AdAccountsApi {
     } yield resp
   }
 
-  def adAccountsList(host: String, bookmark: String, pageSize: Integer = 25, includeSharedAccounts: Boolean = true)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], includeSharedAccountsQuery: QueryParam[Boolean]): Task[AdAccountsList200Response] = {
+  def adAccountsList(host: String, includeSharedAccounts: Boolean = true, bookmark: String, pageSize: Integer = 25)(implicit includeSharedAccountsQuery: QueryParam[Boolean], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[AdAccountsList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[AdAccountsList200Response] = jsonOf[AdAccountsList200Response]
 
     val path = "/ad_accounts"
@@ -139,13 +142,34 @@ object AdAccountsApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("includeSharedAccounts", Some(include_shared_accountsQuery.toParamString(include_shared_accounts))))
+      ("includeSharedAccounts", Some(include_shared_accountsQuery.toParamString(include_shared_accounts))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
       resp          <- client.expect[AdAccountsList200Response](req)
+
+    } yield resp
+  }
+
+  def analyticsCreateConversionProductReport(host: String, adAccountId: String, conversionProductReportRequest: ConversionProductReportRequest): Task[AdsAnalyticsCreateAsyncResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[AdsAnalyticsCreateAsyncResponse] = jsonOf[AdsAnalyticsCreateAsyncResponse]
+
+    val path = "/ad_accounts/{ad_account_id}/reports/brand_category_sku".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
+
+    val httpMethod = Method.POST
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(conversionProductReportRequest)
+      resp          <- client.expect[AdsAnalyticsCreateAsyncResponse](req)
 
     } yield resp
   }
@@ -192,8 +216,8 @@ object AdAccountsApi {
     } yield resp
   }
 
-  def analyticsCreateTemplateReport(host: String, adAccountId: String, templateId: String, startDate: LocalDate, endDate: LocalDate, granularity: Granularity)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], granularityQuery: QueryParam[Granularity]): Task[AdsAnalyticsCreateAsyncResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[AdsAnalyticsCreateAsyncResponse] = jsonOf[AdsAnalyticsCreateAsyncResponse]
+  def analyticsCreateTemplateReport(host: String, adAccountId: String, templateId: String, startDate: LocalDate, endDate: LocalDate, granularity: Granularity)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], granularityQuery: QueryParam[Granularity]): Task[TemplateBasedReport] = {
+    implicit val returnTypeDecoder: EntityDecoder[TemplateBasedReport] = jsonOf[TemplateBasedReport]
 
     val path = "/ad_accounts/{ad_account_id}/templates/{template_id}/reports".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString)).replaceAll("\\{" + "template_id" + "\\}",escape(templateId.toString))
 
@@ -208,7 +232,28 @@ object AdAccountsApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[AdsAnalyticsCreateAsyncResponse](req)
+      resp          <- client.expect[TemplateBasedReport](req)
+
+    } yield resp
+  }
+
+  def analyticsGetConversionProductReport(host: String, adAccountId: String, token: String)(implicit tokenQuery: QueryParam[String]): Task[AdsAnalyticsGetAsyncResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[AdsAnalyticsGetAsyncResponse] = jsonOf[AdsAnalyticsGetAsyncResponse]
+
+    val path = "/ad_accounts/{ad_account_id}/reports/brand_category_sku".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
+
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      ("token", Some(tokenQuery.toParamString(token))))
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.expect[AdsAnalyticsGetAsyncResponse](req)
 
     } yield resp
   }
@@ -304,7 +349,7 @@ class HttpServiceAdAccountsApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def adAccountAnalytics(adAccountId: String, startDate: LocalDate, endDate: LocalDate, columns: List[String] = List.empty[String] , granularity: Granularity, clickWindowDays: Integer = 30, engagementWindowDays: Integer = 30, viewWindowDays: Integer = 1, conversionReportTime: String = TIME_OF_AD_ACTION)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], columnsQuery: QueryParam[List[String]], granularityQuery: QueryParam[Granularity], clickWindowDaysQuery: QueryParam[Integer], engagementWindowDaysQuery: QueryParam[Integer], viewWindowDaysQuery: QueryParam[Integer], conversionReportTimeQuery: QueryParam[String]): Task[List[AdAccountAnalyticsResponseInner]] = {
+  def adAccountAnalytics(adAccountId: String, startDate: LocalDate, endDate: LocalDate, columns: List[String] = List.empty[String] , granularity: Granularity, clickWindowDays: Integer = 30, engagementWindowDays: Integer = 30, viewWindowDays: Integer = 1, conversionReportTime: String = TIME_OF_AD_ACTION, reportingTimezone: ReportingTimeZone)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], columnsQuery: QueryParam[List[String]], granularityQuery: QueryParam[Granularity], clickWindowDaysQuery: QueryParam[Integer], engagementWindowDaysQuery: QueryParam[Integer], viewWindowDaysQuery: QueryParam[Integer], conversionReportTimeQuery: QueryParam[String], reportingTimezoneQuery: QueryParam[ReportingTimeZone]): Task[List[AdAccountAnalyticsResponseInner]] = {
     implicit val returnTypeDecoder: EntityDecoder[List[AdAccountAnalyticsResponseInner]] = jsonOf[List[AdAccountAnalyticsResponseInner]]
 
     val path = "/ad_accounts/{ad_account_id}/analytics".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
@@ -314,7 +359,7 @@ class HttpServiceAdAccountsApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("startDate", Some(start_dateQuery.toParamString(start_date))), ("endDate", Some(end_dateQuery.toParamString(end_date))), ("columns", Some(columnsQuery.toParamString(columns))), ("granularity", Some(granularityQuery.toParamString(granularity))), ("clickWindowDays", Some(click_window_daysQuery.toParamString(click_window_days))), ("engagementWindowDays", Some(engagement_window_daysQuery.toParamString(engagement_window_days))), ("viewWindowDays", Some(view_window_daysQuery.toParamString(view_window_days))), ("conversionReportTime", Some(conversion_report_timeQuery.toParamString(conversion_report_time))))
+      ("startDate", Some(start_dateQuery.toParamString(start_date))), ("endDate", Some(end_dateQuery.toParamString(end_date))), ("columns", Some(columnsQuery.toParamString(columns))), ("granularity", Some(granularityQuery.toParamString(granularity))), ("clickWindowDays", Some(click_window_daysQuery.toParamString(click_window_days))), ("engagementWindowDays", Some(engagement_window_daysQuery.toParamString(engagement_window_days))), ("viewWindowDays", Some(view_window_daysQuery.toParamString(view_window_days))), ("conversionReportTime", Some(conversion_report_timeQuery.toParamString(conversion_report_time))), ("reportingTimezone", Some(reporting_timezoneQuery.toParamString(reporting_timezone))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
@@ -325,7 +370,7 @@ class HttpServiceAdAccountsApi(service: HttpService) {
     } yield resp
   }
 
-  def adAccountTargetingAnalyticsGet(adAccountId: String, startDate: LocalDate, endDate: LocalDate, targetingTypes: List[AdsAnalyticsTargetingType] = List.empty[AdsAnalyticsTargetingType] , columns: List[String] = List.empty[String] , granularity: Granularity, clickWindowDays: Integer = 30, engagementWindowDays: Integer = 30, viewWindowDays: Integer = 1, conversionReportTime: String = TIME_OF_AD_ACTION, attributionTypes: ConversionReportAttributionType)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], targetingTypesQuery: QueryParam[List[AdsAnalyticsTargetingType]], columnsQuery: QueryParam[List[String]], granularityQuery: QueryParam[Granularity], clickWindowDaysQuery: QueryParam[Integer], engagementWindowDaysQuery: QueryParam[Integer], viewWindowDaysQuery: QueryParam[Integer], conversionReportTimeQuery: QueryParam[String], attributionTypesQuery: QueryParam[ConversionReportAttributionType]): Task[MetricsResponse] = {
+  def adAccountTargetingAnalyticsGet(adAccountId: String, startDate: LocalDate, endDate: LocalDate, targetingTypes: List[AdsAnalyticsTargetingType] = List.empty[AdsAnalyticsTargetingType] , columns: List[String] = List.empty[String] , granularity: Granularity, clickWindowDays: Integer = 30, engagementWindowDays: Integer = 30, viewWindowDays: Integer = 1, conversionReportTime: String = TIME_OF_AD_ACTION, attributionTypes: List[ConversionReportAttributionType] = List.empty[ConversionReportAttributionType] , reportingTimezone: ReportingTimeZone)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], targetingTypesQuery: QueryParam[List[AdsAnalyticsTargetingType]], columnsQuery: QueryParam[List[String]], granularityQuery: QueryParam[Granularity], clickWindowDaysQuery: QueryParam[Integer], engagementWindowDaysQuery: QueryParam[Integer], viewWindowDaysQuery: QueryParam[Integer], conversionReportTimeQuery: QueryParam[String], attributionTypesQuery: QueryParam[List[ConversionReportAttributionType]], reportingTimezoneQuery: QueryParam[ReportingTimeZone]): Task[MetricsResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[MetricsResponse] = jsonOf[MetricsResponse]
 
     val path = "/ad_accounts/{ad_account_id}/targeting_analytics".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
@@ -335,7 +380,7 @@ class HttpServiceAdAccountsApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("startDate", Some(start_dateQuery.toParamString(start_date))), ("endDate", Some(end_dateQuery.toParamString(end_date))), ("targetingTypes", Some(targeting_typesQuery.toParamString(targeting_types))), ("columns", Some(columnsQuery.toParamString(columns))), ("granularity", Some(granularityQuery.toParamString(granularity))), ("clickWindowDays", Some(click_window_daysQuery.toParamString(click_window_days))), ("engagementWindowDays", Some(engagement_window_daysQuery.toParamString(engagement_window_days))), ("viewWindowDays", Some(view_window_daysQuery.toParamString(view_window_days))), ("conversionReportTime", Some(conversion_report_timeQuery.toParamString(conversion_report_time))), ("attributionTypes", Some(attribution_typesQuery.toParamString(attribution_types))))
+      ("startDate", Some(start_dateQuery.toParamString(start_date))), ("endDate", Some(end_dateQuery.toParamString(end_date))), ("targetingTypes", Some(targeting_typesQuery.toParamString(targeting_types))), ("columns", Some(columnsQuery.toParamString(columns))), ("granularity", Some(granularityQuery.toParamString(granularity))), ("clickWindowDays", Some(click_window_daysQuery.toParamString(click_window_days))), ("engagementWindowDays", Some(engagement_window_daysQuery.toParamString(engagement_window_days))), ("viewWindowDays", Some(view_window_daysQuery.toParamString(view_window_days))), ("conversionReportTime", Some(conversion_report_timeQuery.toParamString(conversion_report_time))), ("attributionTypes", Some(attribution_typesQuery.toParamString(attribution_types))), ("reportingTimezone", Some(reporting_timezoneQuery.toParamString(reporting_timezone))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
@@ -346,7 +391,7 @@ class HttpServiceAdAccountsApi(service: HttpService) {
     } yield resp
   }
 
-  def adAccountsCreate(adAccountCreateRequest: AdAccountCreateRequest): Task[AdAccount] = {
+  def adAccountsCreate(adAccountCreate: AdAccountCreate): Task[AdAccount] = {
     implicit val returnTypeDecoder: EntityDecoder[AdAccount] = jsonOf[AdAccount]
 
     val path = "/ad_accounts"
@@ -361,7 +406,7 @@ class HttpServiceAdAccountsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(adAccountCreateRequest)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(adAccountCreate)
       resp          <- client.expect[AdAccount](req)
 
     } yield resp
@@ -388,7 +433,7 @@ class HttpServiceAdAccountsApi(service: HttpService) {
     } yield resp
   }
 
-  def adAccountsList(bookmark: String, pageSize: Integer = 25, includeSharedAccounts: Boolean = true)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], includeSharedAccountsQuery: QueryParam[Boolean]): Task[AdAccountsList200Response] = {
+  def adAccountsList(includeSharedAccounts: Boolean = true, bookmark: String, pageSize: Integer = 25)(implicit includeSharedAccountsQuery: QueryParam[Boolean], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[AdAccountsList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[AdAccountsList200Response] = jsonOf[AdAccountsList200Response]
 
     val path = "/ad_accounts"
@@ -398,13 +443,34 @@ class HttpServiceAdAccountsApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("includeSharedAccounts", Some(include_shared_accountsQuery.toParamString(include_shared_accounts))))
+      ("includeSharedAccounts", Some(include_shared_accountsQuery.toParamString(include_shared_accounts))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
       resp          <- client.expect[AdAccountsList200Response](req)
+
+    } yield resp
+  }
+
+  def analyticsCreateConversionProductReport(adAccountId: String, conversionProductReportRequest: ConversionProductReportRequest): Task[AdsAnalyticsCreateAsyncResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[AdsAnalyticsCreateAsyncResponse] = jsonOf[AdsAnalyticsCreateAsyncResponse]
+
+    val path = "/ad_accounts/{ad_account_id}/reports/brand_category_sku".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
+
+    val httpMethod = Method.POST
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(conversionProductReportRequest)
+      resp          <- client.expect[AdsAnalyticsCreateAsyncResponse](req)
 
     } yield resp
   }
@@ -451,8 +517,8 @@ class HttpServiceAdAccountsApi(service: HttpService) {
     } yield resp
   }
 
-  def analyticsCreateTemplateReport(adAccountId: String, templateId: String, startDate: LocalDate, endDate: LocalDate, granularity: Granularity)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], granularityQuery: QueryParam[Granularity]): Task[AdsAnalyticsCreateAsyncResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[AdsAnalyticsCreateAsyncResponse] = jsonOf[AdsAnalyticsCreateAsyncResponse]
+  def analyticsCreateTemplateReport(adAccountId: String, templateId: String, startDate: LocalDate, endDate: LocalDate, granularity: Granularity)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], granularityQuery: QueryParam[Granularity]): Task[TemplateBasedReport] = {
+    implicit val returnTypeDecoder: EntityDecoder[TemplateBasedReport] = jsonOf[TemplateBasedReport]
 
     val path = "/ad_accounts/{ad_account_id}/templates/{template_id}/reports".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString)).replaceAll("\\{" + "template_id" + "\\}",escape(templateId.toString))
 
@@ -467,7 +533,28 @@ class HttpServiceAdAccountsApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[AdsAnalyticsCreateAsyncResponse](req)
+      resp          <- client.expect[TemplateBasedReport](req)
+
+    } yield resp
+  }
+
+  def analyticsGetConversionProductReport(adAccountId: String, token: String)(implicit tokenQuery: QueryParam[String]): Task[AdsAnalyticsGetAsyncResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[AdsAnalyticsGetAsyncResponse] = jsonOf[AdsAnalyticsGetAsyncResponse]
+
+    val path = "/ad_accounts/{ad_account_id}/reports/brand_category_sku".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
+
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      ("token", Some(tokenQuery.toParamString(token))))
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.expect[AdsAnalyticsGetAsyncResponse](req)
 
     } yield resp
   }

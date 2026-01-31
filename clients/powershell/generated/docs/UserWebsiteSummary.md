@@ -3,17 +3,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Website** | **String** | Website with path or domain only | [optional] 
 **Status** | **String** | Status of the verification process | [optional] 
 **VerifiedAt** | **String** | UTC timestamp when the verification happened - sometimes missing | [optional] 
+**Website** | **String** | Website with path or domain only | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$UserWebsiteSummary = Initialize-PSOpenAPIToolsUserWebsiteSummary  -Website mysite.test `
- -Status success `
- -VerifiedAt 2022-12-14T21:03:01.602000
+$UserWebsiteSummary = Initialize-PSOpenAPIToolsUserWebsiteSummary  -Status success `
+ -VerifiedAt 2022-12-14T21:03:01.602000 `
+ -Website mysite.test
 ```
 
 - Convert the resource to JSON

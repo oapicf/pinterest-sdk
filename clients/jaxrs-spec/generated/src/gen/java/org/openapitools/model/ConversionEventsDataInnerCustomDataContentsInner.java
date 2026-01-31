@@ -17,14 +17,14 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("ConversionEvents_data_inner_custom_data_contents_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionEventsDataInnerCustomDataContentsInner   {
   private String id;
+  private String itemBrand;
+  private String itemCategory;
+  private String itemName;
   private String itemPrice;
   private Long quantity;
-  private String itemName;
-  private String itemCategory;
-  private String itemBrand;
 
   public ConversionEventsDataInnerCustomDataContentsInner() {
   }
@@ -38,7 +38,7 @@ public class ConversionEventsDataInnerCustomDataContentsInner   {
   }
 
   
-  @ApiModelProperty(example = "red-pinterest-shirt-logo-1", value = "The id of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).")
+  @ApiModelProperty(value = "The id of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).")
   @JsonProperty("id")
   public String getId() {
     return id;
@@ -50,6 +50,66 @@ public class ConversionEventsDataInnerCustomDataContentsInner   {
   }
 
   /**
+   * The brand of a product.
+   **/
+  public ConversionEventsDataInnerCustomDataContentsInner itemBrand(String itemBrand) {
+    this.itemBrand = itemBrand;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "The brand of a product.")
+  @JsonProperty("item_brand")
+  public String getItemBrand() {
+    return itemBrand;
+  }
+
+  @JsonProperty("item_brand")
+  public void setItemBrand(String itemBrand) {
+    this.itemBrand = itemBrand;
+  }
+
+  /**
+   * The category of a product.
+   **/
+  public ConversionEventsDataInnerCustomDataContentsInner itemCategory(String itemCategory) {
+    this.itemCategory = itemCategory;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "The category of a product.")
+  @JsonProperty("item_category")
+  public String getItemCategory() {
+    return itemCategory;
+  }
+
+  @JsonProperty("item_category")
+  public void setItemCategory(String itemCategory) {
+    this.itemCategory = itemCategory;
+  }
+
+  /**
+   * The name of a product.
+   **/
+  public ConversionEventsDataInnerCustomDataContentsInner itemName(String itemName) {
+    this.itemName = itemName;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "The name of a product.")
+  @JsonProperty("item_name")
+  public String getItemName() {
+    return itemName;
+  }
+
+  @JsonProperty("item_name")
+  public void setItemName(String itemName) {
+    this.itemName = itemName;
+  }
+
+  /**
    * The price of a product. Accepted as a string in the request; it will be parsed into a double. This is the original item value before any discount. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\&quot; target&#x3D;\&quot;_blank\&quot;&gt;here&lt;/a&gt; (Install the Pinterest tag section).
    **/
   public ConversionEventsDataInnerCustomDataContentsInner itemPrice(String itemPrice) {
@@ -58,7 +118,7 @@ public class ConversionEventsDataInnerCustomDataContentsInner   {
   }
 
   
-  @ApiModelProperty(example = "1325.12", value = "The price of a product. Accepted as a string in the request; it will be parsed into a double. This is the original item value before any discount. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).")
+  @ApiModelProperty(value = "The price of a product. Accepted as a string in the request; it will be parsed into a double. This is the original item value before any discount. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).")
   @JsonProperty("item_price")
   public String getItemPrice() {
     return itemPrice;
@@ -78,7 +138,7 @@ public class ConversionEventsDataInnerCustomDataContentsInner   {
   }
 
   
-  @ApiModelProperty(example = "5", value = "The amount of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).")
+  @ApiModelProperty(value = "The amount of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).")
   @JsonProperty("quantity")
   public Long getQuantity() {
     return quantity;
@@ -87,66 +147,6 @@ public class ConversionEventsDataInnerCustomDataContentsInner   {
   @JsonProperty("quantity")
   public void setQuantity(Long quantity) {
     this.quantity = quantity;
-  }
-
-  /**
-   * The name of a product.
-   **/
-  public ConversionEventsDataInnerCustomDataContentsInner itemName(String itemName) {
-    this.itemName = itemName;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "pinterest-clothing-shirt", value = "The name of a product.")
-  @JsonProperty("item_name")
-  public String getItemName() {
-    return itemName;
-  }
-
-  @JsonProperty("item_name")
-  public void setItemName(String itemName) {
-    this.itemName = itemName;
-  }
-
-  /**
-   * The category of a product.
-   **/
-  public ConversionEventsDataInnerCustomDataContentsInner itemCategory(String itemCategory) {
-    this.itemCategory = itemCategory;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "pinterest-entertainment", value = "The category of a product.")
-  @JsonProperty("item_category")
-  public String getItemCategory() {
-    return itemCategory;
-  }
-
-  @JsonProperty("item_category")
-  public void setItemCategory(String itemCategory) {
-    this.itemCategory = itemCategory;
-  }
-
-  /**
-   * The brand of a product.
-   **/
-  public ConversionEventsDataInnerCustomDataContentsInner itemBrand(String itemBrand) {
-    this.itemBrand = itemBrand;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "pinterest", value = "The brand of a product.")
-  @JsonProperty("item_brand")
-  public String getItemBrand() {
-    return itemBrand;
-  }
-
-  @JsonProperty("item_brand")
-  public void setItemBrand(String itemBrand) {
-    this.itemBrand = itemBrand;
   }
 
 
@@ -160,16 +160,16 @@ public class ConversionEventsDataInnerCustomDataContentsInner   {
     }
     ConversionEventsDataInnerCustomDataContentsInner conversionEventsDataInnerCustomDataContentsInner = (ConversionEventsDataInnerCustomDataContentsInner) o;
     return Objects.equals(this.id, conversionEventsDataInnerCustomDataContentsInner.id) &&
-        Objects.equals(this.itemPrice, conversionEventsDataInnerCustomDataContentsInner.itemPrice) &&
-        Objects.equals(this.quantity, conversionEventsDataInnerCustomDataContentsInner.quantity) &&
-        Objects.equals(this.itemName, conversionEventsDataInnerCustomDataContentsInner.itemName) &&
+        Objects.equals(this.itemBrand, conversionEventsDataInnerCustomDataContentsInner.itemBrand) &&
         Objects.equals(this.itemCategory, conversionEventsDataInnerCustomDataContentsInner.itemCategory) &&
-        Objects.equals(this.itemBrand, conversionEventsDataInnerCustomDataContentsInner.itemBrand);
+        Objects.equals(this.itemName, conversionEventsDataInnerCustomDataContentsInner.itemName) &&
+        Objects.equals(this.itemPrice, conversionEventsDataInnerCustomDataContentsInner.itemPrice) &&
+        Objects.equals(this.quantity, conversionEventsDataInnerCustomDataContentsInner.quantity);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, itemPrice, quantity, itemName, itemCategory, itemBrand);
+    return Objects.hash(id, itemBrand, itemCategory, itemName, itemPrice, quantity);
   }
 
   @Override
@@ -178,11 +178,11 @@ public class ConversionEventsDataInnerCustomDataContentsInner   {
     sb.append("class ConversionEventsDataInnerCustomDataContentsInner {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    itemBrand: ").append(toIndentedString(itemBrand)).append("\n");
+    sb.append("    itemCategory: ").append(toIndentedString(itemCategory)).append("\n");
+    sb.append("    itemName: ").append(toIndentedString(itemName)).append("\n");
     sb.append("    itemPrice: ").append(toIndentedString(itemPrice)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
-    sb.append("    itemName: ").append(toIndentedString(itemName)).append("\n");
-    sb.append("    itemCategory: ").append(toIndentedString(itemCategory)).append("\n");
-    sb.append("    itemBrand: ").append(toIndentedString(itemBrand)).append("\n");
     sb.append("}");
     return sb.toString();
   }

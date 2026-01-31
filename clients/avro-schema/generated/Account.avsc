@@ -5,6 +5,12 @@
   "name": "Account",
   "fields": [
     {
+      "name": "about",
+      "type": ["null", "string"],
+      "doc": "Profile about description.",
+      "default": null
+    },
+    {
       "name": "account_type",
       "type": ["null", {
         "type": "enum",
@@ -18,51 +24,15 @@
       "default": null
     },
     {
-      "name": "id",
-      "type": ["null", "string"],
-      "doc": "User account ID.",
-      "default": null
-    },
-    {
-      "name": "profile_image",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "website_url",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "username",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "about",
-      "type": ["null", "string"],
-      "doc": "Profile about description.",
-      "default": null
-    },
-    {
-      "name": "business_name",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
-    },
-    {
       "name": "board_count",
       "type": ["null", "int"],
       "doc": "User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.",
       "default": null
     },
     {
-      "name": "pin_count",
-      "type": ["null", "int"],
-      "doc": "User account pin count. This includes both created and saved pins.",
+      "name": "business_name",
+      "type": ["null", "string"],
+      "doc": "",
       "default": null
     },
     {
@@ -78,9 +48,39 @@
       "default": null
     },
     {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "User account ID.",
+      "default": null
+    },
+    {
       "name": "monthly_views",
       "type": ["null", "int"],
       "doc": "User account monthly views.",
+      "default": null
+    },
+    {
+      "name": "pin_count",
+      "type": ["null", "int"],
+      "doc": "User account pin count. This includes both created and saved pins.",
+      "default": null
+    },
+    {
+      "name": "profile_image",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "username",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "website_url",
+      "type": ["null", "string"],
+      "doc": "",
       "default": null
     }
   ]

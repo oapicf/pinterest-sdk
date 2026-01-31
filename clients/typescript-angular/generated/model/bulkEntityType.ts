@@ -10,14 +10,16 @@
 
 
 /**
- * Refers ads entity type
+ * Refers ads entity type. Schedule enum is only applicable to beta users
  */
 export const BulkEntityType = {
     Campaign: 'CAMPAIGN',
     AdGroup: 'AD_GROUP',
     ProductGroup: 'PRODUCT_GROUP',
     Ad: 'AD',
-    Keyword: 'KEYWORD'
+    Keyword: 'KEYWORD',
+    Label: 'LABEL',
+    Schedule: 'SCHEDULE'
 } as const;
 export type BulkEntityType = typeof BulkEntityType[keyof typeof BulkEntityType];
 

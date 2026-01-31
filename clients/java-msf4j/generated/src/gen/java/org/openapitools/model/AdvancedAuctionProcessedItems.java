@@ -8,19 +8,19 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.AdvancedAuctionProcessedItem;
+import org.openapitools.model.AdvancedAuctionItemsSubmitRecord;
 
 /**
  * Response object containing the results of an operation on an item bid option
  */
 @ApiModel(description = "Response object containing the results of an operation on an item bid option")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionProcessedItems   {
   @JsonProperty("catalog_id")
   private String catalogId;
 
   @JsonProperty("items")
-  private List<@Valid AdvancedAuctionProcessedItem> items = null;
+  private List<@Valid AdvancedAuctionItemsSubmitRecord> items = null;
 
   public AdvancedAuctionProcessedItems catalogId(String catalogId) {
     this.catalogId = catalogId;
@@ -40,12 +40,12 @@ public class AdvancedAuctionProcessedItems   {
     this.catalogId = catalogId;
   }
 
-  public AdvancedAuctionProcessedItems items(List<@Valid AdvancedAuctionProcessedItem> items) {
+  public AdvancedAuctionProcessedItems items(List<@Valid AdvancedAuctionItemsSubmitRecord> items) {
     this.items = items;
     return this;
   }
 
-  public AdvancedAuctionProcessedItems addItemsItem(AdvancedAuctionProcessedItem itemsItem) {
+  public AdvancedAuctionProcessedItems addItemsItem(AdvancedAuctionItemsSubmitRecord itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -58,11 +58,11 @@ public class AdvancedAuctionProcessedItems   {
    * @return items
   **/
   @ApiModelProperty(value = "Array of advanced auction processed items")
-  public List<@Valid AdvancedAuctionProcessedItem> getItems() {
+  public List<@Valid AdvancedAuctionItemsSubmitRecord> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid AdvancedAuctionProcessedItem> items) {
+  public void setItems(List<@Valid AdvancedAuctionItemsSubmitRecord> items) {
     this.items = items;
   }
 

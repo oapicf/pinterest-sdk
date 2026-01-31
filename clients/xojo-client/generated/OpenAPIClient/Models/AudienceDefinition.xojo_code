@@ -10,18 +10,12 @@ Protected Class AudienceDefinition
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Generated audience type to request.
-		#tag EndNote
-		type As Xoson.O.OptionalString
+		scope As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Generated audience scope to request.
-		#tag EndNote
-		scope As Xoson.O.OptionalString
+		type As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -70,7 +64,7 @@ Protected Class AudienceDefinition
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="type"
+			Name="scope"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -78,7 +72,7 @@ Protected Class AudienceDefinition
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="scope"
+			Name="type"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

@@ -5,11 +5,11 @@
  */
 package com.prokarma.pkmst.controller;
 
-import com.prokarma.pkmst.model.Error;
+import com.prokarma.pkmst.model.Media;
 import com.prokarma.pkmst.model.MediaList200Response;
 import com.prokarma.pkmst.model.MediaUpload;
-import com.prokarma.pkmst.model.MediaUploadDetails;
-import com.prokarma.pkmst.model.MediaUploadRequest;
+import com.prokarma.pkmst.model.MediaUploadCreate;
+import com.prokarma.pkmst.model.PinterestLibError;
 
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
@@ -23,55 +23,70 @@ import java.util.List;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Api(value = "Media", description = "the Media API")
 public interface MediaApi {
 
-    @ApiOperation(value = "Register media upload", notes = "Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.", response = MediaUpload.class, authorizations = {
+    @ApiOperation(value = "Register media upload", notes = "Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using `curl`, for example) to `upload_url` using the `Content-Type` header value. Send the media file's contents as the request's `file` parameter and also include all of the parameters from `upload_parameters`.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.", response = MediaUpload.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "pins:read", description = "See your public Pins"),
             @AuthorizationScope(scope = "pins:write", description = "Create, update, or delete your public Pins") })
          }, tags={ "media", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 201, message = "response", response = MediaUpload.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = MediaUpload.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = MediaUpload.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     @RequestMapping(
         method = RequestMethod.POST,
         value = "/media",
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    ResponseEntity<MediaUpload> mediaCreate(@ApiParam(value = "Create a media upload request" ,required=true )   @RequestBody MediaUploadRequest mediaUploadRequest, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
+    ResponseEntity<MediaUpload> mediaCreate(@ApiParam(value = "" ,required=true )   @RequestBody MediaUploadCreate mediaUploadCreate, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 
-    @ApiOperation(value = "Get media upload details", notes = "Get details for a registered media upload, including its current status.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.", response = MediaUploadDetails.class, authorizations = {
+    @ApiOperation(value = "Get media upload details", notes = "Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.", response = Media.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "pins:read", description = "See your public Pins") })
          }, tags={ "media", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "response", response = MediaUploadDetails.class),
-        @ApiResponse(code = 404, message = "Media upload not found", response = Error.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = Media.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     @RequestMapping(
         method = RequestMethod.GET,
         value = "/media/{media_id}",
         produces = { "application/json" }
     )
-    ResponseEntity<MediaUploadDetails> mediaGet(@ApiParam(value = "Media identifier",required=true ) @PathVariable("media_id") String mediaId, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
+    ResponseEntity<Media> mediaGet(@ApiParam(value = "Unique identifier for this media upload. Used to track status and for attaching during Pin creation.",required=true ) @PathVariable("media_id") String mediaId, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 
-    @ApiOperation(value = "List media uploads", notes = "List media uploads filtered by given parameters.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.", response = MediaList200Response.class, authorizations = {
+    @ApiOperation(value = "List media uploads", notes = "List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.", response = MediaList200Response.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "pins:read", description = "See your public Pins") })
          }, tags={ "media", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "response", response = MediaList200Response.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = MediaList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
     @RequestMapping(
         method = RequestMethod.GET,
         value = "/media",
         produces = { "application/json" }
     )
-    ResponseEntity<MediaList200Response> mediaList(@ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
+    ResponseEntity<MediaList200Response> mediaList(@ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,@ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 }

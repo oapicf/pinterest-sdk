@@ -23,13 +23,13 @@ Multiple_product_groups_inner::~Multiple_product_groups_inner()
 void
 Multiple_product_groups_inner::__init()
 {
-	//name = std::string();
 	//description = std::string();
-	//is_featured = bool(false);
-	//filters = new CatalogsCreativeAssetsProductGroupFilters();
 	//feed_id = std::string();
-	//catalog_type = std::string();
+	//filters = new CatalogsCreativeAssetsProductGroupFilters();
+	//is_featured = bool(false);
+	//name = std::string();
 	//catalog_id = std::string();
+	//catalog_type = std::string();
 	//country = new Country();
 	//locale = new CatalogsLocale();
 }
@@ -37,40 +37,40 @@ Multiple_product_groups_inner::__init()
 void
 Multiple_product_groups_inner::__cleanup()
 {
-	//if(name != NULL) {
-	//
-	//delete name;
-	//name = NULL;
-	//}
 	//if(description != NULL) {
 	//
 	//delete description;
 	//description = NULL;
-	//}
-	//if(is_featured != NULL) {
-	//
-	//delete is_featured;
-	//is_featured = NULL;
-	//}
-	//if(filters != NULL) {
-	//
-	//delete filters;
-	//filters = NULL;
 	//}
 	//if(feed_id != NULL) {
 	//
 	//delete feed_id;
 	//feed_id = NULL;
 	//}
-	//if(catalog_type != NULL) {
+	//if(filters != NULL) {
 	//
-	//delete catalog_type;
-	//catalog_type = NULL;
+	//delete filters;
+	//filters = NULL;
+	//}
+	//if(is_featured != NULL) {
+	//
+	//delete is_featured;
+	//is_featured = NULL;
+	//}
+	//if(name != NULL) {
+	//
+	//delete name;
+	//name = NULL;
 	//}
 	//if(catalog_id != NULL) {
 	//
 	//delete catalog_id;
 	//catalog_id = NULL;
+	//}
+	//if(catalog_type != NULL) {
+	//
+	//delete catalog_type;
+	//catalog_type = NULL;
 	//}
 	//if(country != NULL) {
 	//
@@ -90,17 +90,6 @@ Multiple_product_groups_inner::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *nameKey = "name";
-	node = json_object_get_member(pJsonObject, nameKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&name, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *descriptionKey = "description";
 	node = json_object_get_member(pJsonObject, descriptionKey);
 	if (node !=NULL) {
@@ -112,13 +101,13 @@ Multiple_product_groups_inner::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *is_featuredKey = "is_featured";
-	node = json_object_get_member(pJsonObject, is_featuredKey);
+	const gchar *feed_idKey = "feed_id";
+	node = json_object_get_member(pJsonObject, feed_idKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("bool")) {
-			jsonToValue(&is_featured, node, "bool", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&feed_id, node, "std::string", "");
 		} else {
 			
 		}
@@ -137,24 +126,24 @@ Multiple_product_groups_inner::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *feed_idKey = "feed_id";
-	node = json_object_get_member(pJsonObject, feed_idKey);
+	const gchar *is_featuredKey = "is_featured";
+	node = json_object_get_member(pJsonObject, is_featuredKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&feed_id, node, "std::string", "");
+		if (isprimitive("bool")) {
+			jsonToValue(&is_featured, node, "bool", "");
 		} else {
 			
 		}
 	}
-	const gchar *catalog_typeKey = "catalog_type";
-	node = json_object_get_member(pJsonObject, catalog_typeKey);
+	const gchar *nameKey = "name";
+	node = json_object_get_member(pJsonObject, nameKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&catalog_type, node, "std::string", "");
+			jsonToValue(&name, node, "std::string", "");
 		} else {
 			
 		}
@@ -166,6 +155,17 @@ Multiple_product_groups_inner::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&catalog_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *catalog_typeKey = "catalog_type";
+	node = json_object_get_member(pJsonObject, catalog_typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&catalog_type, node, "std::string", "");
 		} else {
 			
 		}
@@ -211,15 +211,6 @@ Multiple_product_groups_inner::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
-		std::string obj = getName();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *nameKey = "name";
-	json_object_set_member(pJsonObject, nameKey, node);
-	if (isprimitive("std::string")) {
 		std::string obj = getDescription();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -228,15 +219,15 @@ Multiple_product_groups_inner::toJson()
 	}
 	const gchar *descriptionKey = "description";
 	json_object_set_member(pJsonObject, descriptionKey, node);
-	if (isprimitive("bool")) {
-		bool obj = getIsFeatured();
-		node = converttoJson(&obj, "bool", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getFeedId();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *is_featuredKey = "is_featured";
-	json_object_set_member(pJsonObject, is_featuredKey, node);
+	const gchar *feed_idKey = "feed_id";
+	json_object_set_member(pJsonObject, feed_idKey, node);
 	if (isprimitive("CatalogsCreativeAssetsProductGroupFilters")) {
 		CatalogsCreativeAssetsProductGroupFilters obj = getFilters();
 		node = converttoJson(&obj, "CatalogsCreativeAssetsProductGroupFilters", "");
@@ -251,24 +242,24 @@ Multiple_product_groups_inner::toJson()
 	}
 	const gchar *filtersKey = "filters";
 	json_object_set_member(pJsonObject, filtersKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getIsFeatured();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *is_featuredKey = "is_featured";
+	json_object_set_member(pJsonObject, is_featuredKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getFeedId();
+		std::string obj = getName();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *feed_idKey = "feed_id";
-	json_object_set_member(pJsonObject, feed_idKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getCatalogType();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *catalog_typeKey = "catalog_type";
-	json_object_set_member(pJsonObject, catalog_typeKey, node);
+	const gchar *nameKey = "name";
+	json_object_set_member(pJsonObject, nameKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getCatalogId();
 		node = converttoJson(&obj, "std::string", "");
@@ -278,6 +269,15 @@ Multiple_product_groups_inner::toJson()
 	}
 	const gchar *catalog_idKey = "catalog_id";
 	json_object_set_member(pJsonObject, catalog_idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCatalogType();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *catalog_typeKey = "catalog_type";
+	json_object_set_member(pJsonObject, catalog_typeKey, node);
 	if (isprimitive("Country")) {
 		Country obj = getCountry();
 		node = converttoJson(&obj, "Country", "");
@@ -315,18 +315,6 @@ Multiple_product_groups_inner::toJson()
 }
 
 std::string
-Multiple_product_groups_inner::getName()
-{
-	return name;
-}
-
-void
-Multiple_product_groups_inner::setName(std::string  name)
-{
-	this->name = name;
-}
-
-std::string
 Multiple_product_groups_inner::getDescription()
 {
 	return description;
@@ -336,30 +324,6 @@ void
 Multiple_product_groups_inner::setDescription(std::string  description)
 {
 	this->description = description;
-}
-
-bool
-Multiple_product_groups_inner::getIsFeatured()
-{
-	return is_featured;
-}
-
-void
-Multiple_product_groups_inner::setIsFeatured(bool  is_featured)
-{
-	this->is_featured = is_featured;
-}
-
-CatalogsCreativeAssetsProductGroupFilters
-Multiple_product_groups_inner::getFilters()
-{
-	return filters;
-}
-
-void
-Multiple_product_groups_inner::setFilters(CatalogsCreativeAssetsProductGroupFilters  filters)
-{
-	this->filters = filters;
 }
 
 std::string
@@ -374,16 +338,40 @@ Multiple_product_groups_inner::setFeedId(std::string  feed_id)
 	this->feed_id = feed_id;
 }
 
-std::string
-Multiple_product_groups_inner::getCatalogType()
+CatalogsCreativeAssetsProductGroupFilters
+Multiple_product_groups_inner::getFilters()
 {
-	return catalog_type;
+	return filters;
 }
 
 void
-Multiple_product_groups_inner::setCatalogType(std::string  catalog_type)
+Multiple_product_groups_inner::setFilters(CatalogsCreativeAssetsProductGroupFilters  filters)
 {
-	this->catalog_type = catalog_type;
+	this->filters = filters;
+}
+
+bool
+Multiple_product_groups_inner::getIsFeatured()
+{
+	return is_featured;
+}
+
+void
+Multiple_product_groups_inner::setIsFeatured(bool  is_featured)
+{
+	this->is_featured = is_featured;
+}
+
+std::string
+Multiple_product_groups_inner::getName()
+{
+	return name;
+}
+
+void
+Multiple_product_groups_inner::setName(std::string  name)
+{
+	this->name = name;
 }
 
 std::string
@@ -396,6 +384,18 @@ void
 Multiple_product_groups_inner::setCatalogId(std::string  catalog_id)
 {
 	this->catalog_id = catalog_id;
+}
+
+std::string
+Multiple_product_groups_inner::getCatalogType()
+{
+	return catalog_type;
+}
+
+void
+Multiple_product_groups_inner::setCatalogType(std::string  catalog_type)
+{
+	this->catalog_type = catalog_type;
 }
 
 Country

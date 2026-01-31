@@ -25,8 +25,8 @@ import com.squareup.moshi.JsonClass
  * Request object of catalogs items
  *
  * @param country 
- * @param language We recommend using the CatalogsLocale values.
  * @param filters 
+ * @param language We recommend using the CatalogsLocale values.
  */
 
 
@@ -35,12 +35,12 @@ data class CatalogsItemsRequest (
     @Json(name = "country")
     val country: Country,
 
+    @Json(name = "filters")
+    val filters: CatalogsItemsPostFilters,
+
     /* We recommend using the CatalogsLocale values. */
     @Json(name = "language")
-    val language: CatalogsItemsRequest.Language,
-
-    @Json(name = "filters")
-    val filters: CatalogsItemsPostFilters
+    val language: CatalogsItemsRequest.Language
 
 ) {
 

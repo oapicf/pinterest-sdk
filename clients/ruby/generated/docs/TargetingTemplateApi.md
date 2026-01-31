@@ -97,6 +97,9 @@ require 'pinterest_sdk'
 PinterestSdkClient.configure do |config|
   # Configure OAuth2 access token for authorization: pinterest_oauth2
   config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure OAuth2 access token for authorization: client_credentials
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
 
 api_instance = PinterestSdkClient::TargetingTemplateApi.new
@@ -153,7 +156,7 @@ end
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -182,7 +185,7 @@ end
 
 api_instance = PinterestSdkClient::TargetingTemplateApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-targeting_template_update_request = PinterestSdkClient::TargetingTemplateUpdateRequest.new({operation_type: 'REMOVE', id: '643'}) # TargetingTemplateUpdateRequest | Operation type and targeting template ID
+targeting_template_update_request = PinterestSdkClient::TargetingTemplateUpdateRequest.new({id: '643', operation_type: 'REMOVE'}) # TargetingTemplateUpdateRequest | Operation type and targeting template ID
 
 begin
   # Update targeting templates

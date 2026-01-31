@@ -3,21 +3,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Campaigns** | [**CampaignUpdateRequest[]**](CampaignUpdateRequest.md) |  | [optional] 
 **AdGroups** | [**AdGroupUpdateRequest[]**](AdGroupUpdateRequest.md) |  | [optional] 
 **Ads** | [**AdUpdateRequest[]**](AdUpdateRequest.md) |  | [optional] 
-**ProductGroups** | [**ProductGroupPromotionUpdateRequest[]**](ProductGroupPromotionUpdateRequest.md) |  | [optional] 
+**Campaigns** | [**CampaignUpdateRequest[]**](CampaignUpdateRequest.md) |  | [optional] 
+**CatalogProductGroups** | [**CatalogsProductGroupsUpdateRequest[]**](CatalogsProductGroupsUpdateRequest.md) |  | [optional] 
 **Keywords** | [**KeywordUpdate[]**](KeywordUpdate.md) |  | [optional] 
+**Labels** | [**LabelBulkUpdateRequest[]**](LabelBulkUpdateRequest.md) |  | [optional] 
+**ProductGroups** | [**ProductGroupPromotionUpdateRequest[]**](ProductGroupPromotionUpdateRequest.md) |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$BulkUpsertRequestUpdate = Initialize-PSOpenAPIToolsBulkUpsertRequestUpdate  -Campaigns null `
- -AdGroups null `
+$BulkUpsertRequestUpdate = Initialize-PSOpenAPIToolsBulkUpsertRequestUpdate  -AdGroups null `
  -Ads null `
- -ProductGroups null `
- -Keywords null
+ -Campaigns null `
+ -CatalogProductGroups null `
+ -Keywords null `
+ -Labels null `
+ -ProductGroups null
 ```
 
 - Convert the resource to JSON

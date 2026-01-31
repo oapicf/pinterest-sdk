@@ -12,7 +12,6 @@ import { LeadFormQuestionFieldType } from './leadFormQuestionFieldType';
 
 
 export interface LeadFormQuestion { 
-    question_type?: LeadFormQuestionType;
     custom_question_field_type?: LeadFormQuestionFieldType | null;
     /**
      * Question label for a custom question.
@@ -22,6 +21,7 @@ export interface LeadFormQuestion {
      * Question options for a custom question.
      */
     custom_question_options?: Array<string> | null;
+    question_type?: LeadFormQuestionType;
 }
 export namespace LeadFormQuestion {
 }

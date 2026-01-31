@@ -8,13 +8,13 @@ import java.math.BigDecimal;
 @Canonical
 class QuizPinResult {
     
-    String organicPinId
-    
     String androidDeepLink
+    
+    String destinationUrl
     
     String iosDeepLink
     
-    String destinationUrl
+    String organicPinId
     
     BigDecimal resultId
 }

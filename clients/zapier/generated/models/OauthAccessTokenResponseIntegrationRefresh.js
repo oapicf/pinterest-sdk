@@ -17,24 +17,8 @@ module.exports = {
                 type: 'integer',
             },
             {
-                key: `${keyPrefix}response_type`,
-                label: `[${labelPrefix}response_type]`,
-                type: 'string',
-                choices: [
-                    'authorization_code',
-                    'refresh_token',
-                    'client_credentials',
-                ],
-            },
-            {
                 key: `${keyPrefix}access_token`,
                 label: `[${labelPrefix}access_token]`,
-                required: true,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}token_type`,
-                label: `[${labelPrefix}token_type]`,
                 required: true,
                 type: 'string',
             },
@@ -45,8 +29,24 @@ module.exports = {
                 type: 'integer',
             },
             {
+                key: `${keyPrefix}response_type`,
+                label: `[${labelPrefix}response_type]`,
+                type: 'string',
+                choices: [
+                    'authorization_code',
+                    'refresh_token',
+                    'client_credentials',
+                ],
+            },
+            {
                 key: `${keyPrefix}scope`,
                 label: `[${labelPrefix}scope]`,
+                required: true,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}token_type`,
+                label: `[${labelPrefix}token_type]`,
                 required: true,
                 type: 'string',
             },
@@ -57,11 +57,11 @@ module.exports = {
         return {
             'refresh_token': bundle.inputData?.[`${keyPrefix}refresh_token`],
             'refresh_token_expires_in': bundle.inputData?.[`${keyPrefix}refresh_token_expires_in`],
-            'response_type': bundle.inputData?.[`${keyPrefix}response_type`],
             'access_token': bundle.inputData?.[`${keyPrefix}access_token`],
-            'token_type': bundle.inputData?.[`${keyPrefix}token_type`],
             'expires_in': bundle.inputData?.[`${keyPrefix}expires_in`],
+            'response_type': bundle.inputData?.[`${keyPrefix}response_type`],
             'scope': bundle.inputData?.[`${keyPrefix}scope`],
+            'token_type': bundle.inputData?.[`${keyPrefix}token_type`],
         }
     },
 }

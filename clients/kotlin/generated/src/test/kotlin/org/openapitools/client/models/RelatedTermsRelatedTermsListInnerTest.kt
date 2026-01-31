@@ -25,16 +25,16 @@ class RelatedTermsRelatedTermsListInnerTest : ShouldSpec() {
         // uncomment below to create an instance of RelatedTermsRelatedTermsListInner
         //val modelInstance = RelatedTermsRelatedTermsListInner()
 
-        // to test the property `term`
-        should("test term") {
-            // uncomment below to test the property
-            //modelInstance.term shouldBe ("TODO")
-        }
-
         // to test the property `relatedTerms`
         should("test relatedTerms") {
             // uncomment below to test the property
             //modelInstance.relatedTerms shouldBe ("TODO")
+        }
+
+        // to test the property `term`
+        should("test term") {
+            // uncomment below to test the property
+            //modelInstance.term shouldBe ("TODO")
         }
 
     }

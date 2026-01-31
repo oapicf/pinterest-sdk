@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**LogIndex** | Pointer to **int32** | Index of the log in the batch. | [optional] 
 **Field** | **string** | The field name containing an invalid value. | 
-**Value** | **string** | The value that is invalid. | 
+**LogIndex** | Pointer to **int32** | Index of the log in the batch. | [optional] 
 **Reason** | **string** | The reason the value is invalid. | 
+**Value** | **string** | The value that is invalid. | 
 
 ## Methods
 
 ### NewIntegrationLogsInvalidLogResponseRejectedLogsInner
 
-`func NewIntegrationLogsInvalidLogResponseRejectedLogsInner(field string, value string, reason string, ) *IntegrationLogsInvalidLogResponseRejectedLogsInner`
+`func NewIntegrationLogsInvalidLogResponseRejectedLogsInner(field string, reason string, value string, ) *IntegrationLogsInvalidLogResponseRejectedLogsInner`
 
 NewIntegrationLogsInvalidLogResponseRejectedLogsInner instantiates a new IntegrationLogsInvalidLogResponseRejectedLogsInner object
 This constructor will assign default values to properties that have it defined,
@@ -27,6 +27,26 @@ will change when the set of required properties is changed
 NewIntegrationLogsInvalidLogResponseRejectedLogsInnerWithDefaults instantiates a new IntegrationLogsInvalidLogResponseRejectedLogsInner object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetField
+
+`func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) GetField() string`
+
+GetField returns the Field field if non-nil, zero value otherwise.
+
+### GetFieldOk
+
+`func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) GetFieldOk() (*string, bool)`
+
+GetFieldOk returns a tuple with the Field field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetField
+
+`func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) SetField(v string)`
+
+SetField sets Field field to given value.
+
 
 ### GetLogIndex
 
@@ -53,24 +73,24 @@ SetLogIndex sets LogIndex field to given value.
 
 HasLogIndex returns a boolean if a field has been set.
 
-### GetField
+### GetReason
 
-`func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) GetField() string`
+`func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) GetReason() string`
 
-GetField returns the Field field if non-nil, zero value otherwise.
+GetReason returns the Reason field if non-nil, zero value otherwise.
 
-### GetFieldOk
+### GetReasonOk
 
-`func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) GetFieldOk() (*string, bool)`
+`func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) GetReasonOk() (*string, bool)`
 
-GetFieldOk returns a tuple with the Field field if it's non-nil, zero value otherwise
+GetReasonOk returns a tuple with the Reason field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetField
+### SetReason
 
-`func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) SetField(v string)`
+`func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) SetReason(v string)`
 
-SetField sets Field field to given value.
+SetReason sets Reason field to given value.
 
 
 ### GetValue
@@ -91,26 +111,6 @@ and a boolean to check if the value has been set.
 `func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) SetValue(v string)`
 
 SetValue sets Value field to given value.
-
-
-### GetReason
-
-`func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) GetReason() string`
-
-GetReason returns the Reason field if non-nil, zero value otherwise.
-
-### GetReasonOk
-
-`func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) GetReasonOk() (*string, bool)`
-
-GetReasonOk returns a tuple with the Reason field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReason
-
-`func (o *IntegrationLogsInvalidLogResponseRejectedLogsInner) SetReason(v string)`
-
-SetReason sets Reason field to given value.
 
 
 

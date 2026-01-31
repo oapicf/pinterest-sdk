@@ -8,17 +8,19 @@ import org.openapitools._
 
 /**
  * 
- * @param id Billing ID.
- * @param cardUnderscoretype Type of the card.
- * @param status Status of the billing.
  * @param advertiserUnderscoreid Advertiser ID of the billing.
+ * @param billingUnderscoretype Billing type of the advertiser
+ * @param cardUnderscoretype Type of the card.
+ * @param id Billing ID.
  * @param paymentUnderscoremethodUnderscorebrand Brand of the payment method.
+ * @param status Status of the billing.
  */
-case class BillingProfilesResponse(id: Option[String],
+case class BillingProfilesResponse(advertiserUnderscoreid: Option[String],
+                billingUnderscoretype: Option[String],
                 cardUnderscoretype: Option[String],
-                status: Option[String],
-                advertiserUnderscoreid: Option[String],
-                paymentUnderscoremethodUnderscorebrand: Option[String]
+                id: Option[String],
+                paymentUnderscoremethodUnderscorebrand: Option[String],
+                status: Option[String]
                 )
 
 object BillingProfilesResponse {

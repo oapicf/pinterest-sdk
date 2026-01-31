@@ -3,9 +3,17 @@ Protected Class BillingProfilesResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Billing ID.
+			Advertiser ID of the billing.
 		#tag EndNote
-		id As Xoson.O.OptionalString
+		advertiser_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Billing type of the advertiser
+		#tag EndNote
+		billing_type As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -19,17 +27,9 @@ Protected Class BillingProfilesResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Status of the billing.
+			Billing ID.
 		#tag EndNote
-		status As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Advertiser ID of the billing.
-		#tag EndNote
-		advertiser_id As Xoson.O.OptionalString
+		id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -41,6 +41,24 @@ Protected Class BillingProfilesResponse
 	#tag EndProperty
 
 
+	#tag Property, Flags = &h0
+		#tag Note
+			Status of the billing.
+		#tag EndNote
+		status As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+    #tag Enum, Name = Billing_typeEnum, Type = Integer, Flags = &h0
+        
+        CreditCard
+        Invoice
+        Internal
+        Recurring
+        Prepaid
+        
+    #tag EndEnum
+
     #tag Enum, Name = Card_typeEnum, Type = Integer, Flags = &h0
         
         Unknown
@@ -49,18 +67,6 @@ Protected Class BillingProfilesResponse
         AmericanExpress
         Discover
         Elo
-        
-    #tag EndEnum
-
-    #tag Enum, Name = StatusEnum, Type = Integer, Flags = &h0
-        
-        Unspecified
-        Valid
-        Invalid
-        Pending
-        Deleted
-        Secondary
-        PendingSecondary
         
     #tag EndEnum
 
@@ -78,7 +84,38 @@ Protected Class BillingProfilesResponse
         
     #tag EndEnum
 
+    #tag Enum, Name = StatusEnum, Type = Integer, Flags = &h0
+        
+        Unspecified
+        Valid
+        Invalid
+        Pending
+        Deleted
+        Secondary
+        PendingSecondary
+        
+    #tag EndEnum
 
+
+	#tag Method, Flags = &h0
+		Shared Function Billing_typeEnumToString(value As Billing_typeEnum) As String
+		  Select Case value
+		    
+		    Case Billing_typeEnum.CreditCard
+		      Return "CREDIT_CARD"
+		    Case Billing_typeEnum.Invoice
+		      Return "INVOICE"
+		    Case Billing_typeEnum.Internal
+		      Return "INTERNAL"
+		    Case Billing_typeEnum.Recurring
+		      Return "RECURRING"
+		    Case Billing_typeEnum.Prepaid
+		      Return "PREPAID"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
 	#tag Method, Flags = &h0
 		Shared Function Card_typeEnumToString(value As Card_typeEnum) As String
 		  Select Case value
@@ -95,29 +132,6 @@ Protected Class BillingProfilesResponse
 		      Return "DISCOVER"
 		    Case Card_typeEnum.Elo
 		      Return "ELO"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-	#tag Method, Flags = &h0
-		Shared Function StatusEnumToString(value As StatusEnum) As String
-		  Select Case value
-		    
-		    Case StatusEnum.Unspecified
-		      Return "UNSPECIFIED"
-		    Case StatusEnum.Valid
-		      Return "VALID"
-		    Case StatusEnum.Invalid
-		      Return "INVALID"
-		    Case StatusEnum.Pending
-		      Return "PENDING"
-		    Case StatusEnum.Deleted
-		      Return "DELETED"
-		    Case StatusEnum.Secondary
-		      Return "SECONDARY"
-		    Case StatusEnum.PendingSecondary
-		      Return "PENDING_SECONDARY"
 		    
 		  End Select
 		  Return ""
@@ -145,6 +159,29 @@ Protected Class BillingProfilesResponse
 		      Return "ELO"
 		    Case Payment_method_brandEnum.CarteBancaire
 		      Return "CARTE_BANCAIRE"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+	#tag Method, Flags = &h0
+		Shared Function StatusEnumToString(value As StatusEnum) As String
+		  Select Case value
+		    
+		    Case StatusEnum.Unspecified
+		      Return "UNSPECIFIED"
+		    Case StatusEnum.Valid
+		      Return "VALID"
+		    Case StatusEnum.Invalid
+		      Return "INVALID"
+		    Case StatusEnum.Pending
+		      Return "PENDING"
+		    Case StatusEnum.Deleted
+		      Return "DELETED"
+		    Case StatusEnum.Secondary
+		      Return "SECONDARY"
+		    Case StatusEnum.PendingSecondary
+		      Return "PENDING_SECONDARY"
 		    
 		  End Select
 		  Return ""
@@ -186,7 +223,7 @@ Protected Class BillingProfilesResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="id"
+			Name="advertiser_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -194,7 +231,7 @@ Protected Class BillingProfilesResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="advertiser_id"
+			Name="id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

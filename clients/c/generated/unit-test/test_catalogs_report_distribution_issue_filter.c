@@ -22,13 +22,13 @@ catalogs_report_distribution_issue_filter_t* instantiate_catalogs_report_distrib
   catalogs_report_distribution_issue_filter_t* catalogs_report_distribution_issue_filter = NULL;
   if (include_optional) {
     catalogs_report_distribution_issue_filter = catalogs_report_distribution_issue_filter_create(
-      pinterest_rest_api_catalogs_report_distribution_issue_filter_REPORTTYPE_DISTRIBUTION_ISSUES,
-      "a"
+      "a",
+      pinterest_rest_api_catalogs_report_distribution_issue_filter_REPORTTYPE_DISTRIBUTION_ISSUES
     );
   } else {
     catalogs_report_distribution_issue_filter = catalogs_report_distribution_issue_filter_create(
-      pinterest_rest_api_catalogs_report_distribution_issue_filter_REPORTTYPE_DISTRIBUTION_ISSUES,
-      "a"
+      "a",
+      pinterest_rest_api_catalogs_report_distribution_issue_filter_REPORTTYPE_DISTRIBUTION_ISSUES
     );
   }
 

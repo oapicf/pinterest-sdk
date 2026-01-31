@@ -11,8 +11,8 @@ The class is defined in **[DetailedError.java](../../src/main/java/org/openapito
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | `Integer` |  | 
-**message** | `String` |  | 
 **details** | `Object` |  | 
+**message** | `String` |  | 
 
 
 

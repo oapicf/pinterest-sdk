@@ -12,20 +12,30 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.ContentType;
 import org.openapitools.model.PinMediaSourceImageBase64;
 import org.openapitools.model.PinMediaSourceImageURL;
 import org.openapitools.model.PinMediaSourceImagesBase64;
 import org.openapitools.model.PinMediaSourceImagesURL;
-import org.openapitools.model.PinMediaSourceImagesURLItemsInner;
+import org.openapitools.model.PinMediaSourceImagesURLItem;
 import org.openapitools.model.PinMediaSourcePinURL;
 import org.openapitools.model.PinMediaSourceVideoID;
 
 /**
- * Pin media source.
+ * Pin media source that can be an image, video, or a mix of both passed in as a request.
  */
-@ApiModel(description = "Pin media source.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description = "Pin media source that can be an image, video, or a mix of both passed in as a request.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinMediaSource   {
+  @JsonProperty("content_type")
+  private ContentType contentType;
+
+  @JsonProperty("data")
+  private String data;
+
+  @JsonProperty("is_standard")
+  private Boolean isStandard = true;
+
   /**
    * Gets or Sets sourceType
    */
@@ -58,120 +68,34 @@ public class PinMediaSource   {
   @JsonProperty("source_type")
   private SourceTypeEnum sourceType;
 
-  /**
-   * Gets or Sets contentType
-   */
-  public enum ContentTypeEnum {
-    IMAGE_JPEG("image/jpeg"),
-    
-    IMAGE_PNG("image/png");
-
-    private String value;
-
-    ContentTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static ContentTypeEnum fromValue(String text) {
-      for (ContentTypeEnum b : ContentTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + text + "'");
-    }
-  }
-
-  @JsonProperty("content_type")
-  private ContentTypeEnum contentType;
-
-  @JsonProperty("data")
-  private String data;
-
-  @JsonProperty("is_standard")
-  private Boolean isStandard = true;
-
   @JsonProperty("url")
   private String url;
 
-  @JsonProperty("cover_image_url")
-  private String coverImageUrl;
-
-  /**
-   * Content type for cover image Base64.
-   */
-  public enum CoverImageContentTypeEnum {
-    IMAGE_JPEG("image/jpeg"),
-    
-    IMAGE_PNG("image/png");
-
-    private String value;
-
-    CoverImageContentTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static CoverImageContentTypeEnum fromValue(String text) {
-      for (CoverImageContentTypeEnum b : CoverImageContentTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + text + "'");
-    }
-  }
-
   @JsonProperty("cover_image_content_type")
-  private CoverImageContentTypeEnum coverImageContentType;
+  private ContentType coverImageContentType;
 
   @JsonProperty("cover_image_data")
   private String coverImageData;
 
+  @JsonProperty("cover_image_key_frame_time")
+  private Integer coverImageKeyFrameTime;
+
+  @JsonProperty("cover_image_url")
+  private String coverImageUrl;
+
   @JsonProperty("media_id")
   private String mediaId;
-
-  @JsonProperty("items")
-  private List<@Valid PinMediaSourceImagesURLItemsInner> items = new ArrayList<>();
 
   @JsonProperty("index")
   private Integer index;
 
+  @JsonProperty("items")
+  private List<@Valid PinMediaSourceImagesURLItem> items = new ArrayList<>();
+
   @JsonProperty("is_affiliate_link")
   private Boolean isAffiliateLink = false;
 
-  public PinMediaSource sourceType(SourceTypeEnum sourceType) {
-    this.sourceType = sourceType;
-    return this;
-  }
-
-   /**
-   * Get sourceType
-   * @return sourceType
-  **/
-  @ApiModelProperty(required = true, value = "")
-  public SourceTypeEnum getSourceType() {
-    return sourceType;
-  }
-
-  public void setSourceType(SourceTypeEnum sourceType) {
-    this.sourceType = sourceType;
-  }
-
-  public PinMediaSource contentType(ContentTypeEnum contentType) {
+  public PinMediaSource contentType(ContentType contentType) {
     this.contentType = contentType;
     return this;
   }
@@ -181,11 +105,11 @@ public class PinMediaSource   {
    * @return contentType
   **/
   @ApiModelProperty(required = true, value = "")
-  public ContentTypeEnum getContentType() {
+  public ContentType getContentType() {
     return contentType;
   }
 
-  public void setContentType(ContentTypeEnum contentType) {
+  public void setContentType(ContentType contentType) {
     this.contentType = contentType;
   }
 
@@ -225,6 +149,24 @@ public class PinMediaSource   {
     this.isStandard = isStandard;
   }
 
+  public PinMediaSource sourceType(SourceTypeEnum sourceType) {
+    this.sourceType = sourceType;
+    return this;
+  }
+
+   /**
+   * Get sourceType
+   * @return sourceType
+  **/
+  @ApiModelProperty(required = true, value = "")
+  public SourceTypeEnum getSourceType() {
+    return sourceType;
+  }
+
+  public void setSourceType(SourceTypeEnum sourceType) {
+    this.sourceType = sourceType;
+  }
+
   public PinMediaSource url(String url) {
     this.url = url;
     return this;
@@ -243,25 +185,7 @@ public class PinMediaSource   {
     this.url = url;
   }
 
-  public PinMediaSource coverImageUrl(String coverImageUrl) {
-    this.coverImageUrl = coverImageUrl;
-    return this;
-  }
-
-   /**
-   * Cover image url.
-   * @return coverImageUrl
-  **/
-  @ApiModelProperty(value = "Cover image url.")
-  public String getCoverImageUrl() {
-    return coverImageUrl;
-  }
-
-  public void setCoverImageUrl(String coverImageUrl) {
-    this.coverImageUrl = coverImageUrl;
-  }
-
-  public PinMediaSource coverImageContentType(CoverImageContentTypeEnum coverImageContentType) {
+  public PinMediaSource coverImageContentType(ContentType coverImageContentType) {
     this.coverImageContentType = coverImageContentType;
     return this;
   }
@@ -271,11 +195,11 @@ public class PinMediaSource   {
    * @return coverImageContentType
   **/
   @ApiModelProperty(value = "Content type for cover image Base64.")
-  public CoverImageContentTypeEnum getCoverImageContentType() {
+  public ContentType getCoverImageContentType() {
     return coverImageContentType;
   }
 
-  public void setCoverImageContentType(CoverImageContentTypeEnum coverImageContentType) {
+  public void setCoverImageContentType(ContentType coverImageContentType) {
     this.coverImageContentType = coverImageContentType;
   }
 
@@ -297,6 +221,43 @@ public class PinMediaSource   {
     this.coverImageData = coverImageData;
   }
 
+  public PinMediaSource coverImageKeyFrameTime(Integer coverImageKeyFrameTime) {
+    this.coverImageKeyFrameTime = coverImageKeyFrameTime;
+    return this;
+  }
+
+   /**
+   * Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.
+   * minimum: 0
+   * @return coverImageKeyFrameTime
+  **/
+  @ApiModelProperty(value = "Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.")
+  public Integer getCoverImageKeyFrameTime() {
+    return coverImageKeyFrameTime;
+  }
+
+  public void setCoverImageKeyFrameTime(Integer coverImageKeyFrameTime) {
+    this.coverImageKeyFrameTime = coverImageKeyFrameTime;
+  }
+
+  public PinMediaSource coverImageUrl(String coverImageUrl) {
+    this.coverImageUrl = coverImageUrl;
+    return this;
+  }
+
+   /**
+   * Cover image URL.
+   * @return coverImageUrl
+  **/
+  @ApiModelProperty(value = "Cover image URL.")
+  public String getCoverImageUrl() {
+    return coverImageUrl;
+  }
+
+  public void setCoverImageUrl(String coverImageUrl) {
+    this.coverImageUrl = coverImageUrl;
+  }
+
   public PinMediaSource mediaId(String mediaId) {
     this.mediaId = mediaId;
     return this;
@@ -313,29 +274,6 @@ public class PinMediaSource   {
 
   public void setMediaId(String mediaId) {
     this.mediaId = mediaId;
-  }
-
-  public PinMediaSource items(List<@Valid PinMediaSourceImagesURLItemsInner> items) {
-    this.items = items;
-    return this;
-  }
-
-  public PinMediaSource addItemsItem(PinMediaSourceImagesURLItemsInner itemsItem) {
-    this.items.add(itemsItem);
-    return this;
-  }
-
-   /**
-   * Array with image objects.
-   * @return items
-  **/
-  @ApiModelProperty(required = true, value = "Array with image objects.")
-  public List<@Valid PinMediaSourceImagesURLItemsInner> getItems() {
-    return items;
-  }
-
-  public void setItems(List<@Valid PinMediaSourceImagesURLItemsInner> items) {
-    this.items = items;
   }
 
   public PinMediaSource index(Integer index) {
@@ -355,6 +293,29 @@ public class PinMediaSource   {
 
   public void setIndex(Integer index) {
     this.index = index;
+  }
+
+  public PinMediaSource items(List<@Valid PinMediaSourceImagesURLItem> items) {
+    this.items = items;
+    return this;
+  }
+
+  public PinMediaSource addItemsItem(PinMediaSourceImagesURLItem itemsItem) {
+    this.items.add(itemsItem);
+    return this;
+  }
+
+   /**
+   * Array with image objects.
+   * @return items
+  **/
+  @ApiModelProperty(required = true, value = "Array with image objects.")
+  public List<@Valid PinMediaSourceImagesURLItem> getItems() {
+    return items;
+  }
+
+  public void setItems(List<@Valid PinMediaSourceImagesURLItem> items) {
+    this.items = items;
   }
 
   public PinMediaSource isAffiliateLink(Boolean isAffiliateLink) {
@@ -385,23 +346,24 @@ public class PinMediaSource   {
       return false;
     }
     PinMediaSource pinMediaSource = (PinMediaSource) o;
-    return Objects.equals(this.sourceType, pinMediaSource.sourceType) &&
-        Objects.equals(this.contentType, pinMediaSource.contentType) &&
+    return Objects.equals(this.contentType, pinMediaSource.contentType) &&
         Objects.equals(this.data, pinMediaSource.data) &&
         Objects.equals(this.isStandard, pinMediaSource.isStandard) &&
+        Objects.equals(this.sourceType, pinMediaSource.sourceType) &&
         Objects.equals(this.url, pinMediaSource.url) &&
-        Objects.equals(this.coverImageUrl, pinMediaSource.coverImageUrl) &&
         Objects.equals(this.coverImageContentType, pinMediaSource.coverImageContentType) &&
         Objects.equals(this.coverImageData, pinMediaSource.coverImageData) &&
+        Objects.equals(this.coverImageKeyFrameTime, pinMediaSource.coverImageKeyFrameTime) &&
+        Objects.equals(this.coverImageUrl, pinMediaSource.coverImageUrl) &&
         Objects.equals(this.mediaId, pinMediaSource.mediaId) &&
-        Objects.equals(this.items, pinMediaSource.items) &&
         Objects.equals(this.index, pinMediaSource.index) &&
+        Objects.equals(this.items, pinMediaSource.items) &&
         Objects.equals(this.isAffiliateLink, pinMediaSource.isAffiliateLink);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceType, contentType, data, isStandard, url, coverImageUrl, coverImageContentType, coverImageData, mediaId, items, index, isAffiliateLink);
+    return Objects.hash(contentType, data, isStandard, sourceType, url, coverImageContentType, coverImageData, coverImageKeyFrameTime, coverImageUrl, mediaId, index, items, isAffiliateLink);
   }
 
   @Override
@@ -409,17 +371,18 @@ public class PinMediaSource   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaSource {\n");
     
-    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("    contentType: ").append(toIndentedString(contentType)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    isStandard: ").append(toIndentedString(isStandard)).append("\n");
+    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
-    sb.append("    coverImageUrl: ").append(toIndentedString(coverImageUrl)).append("\n");
     sb.append("    coverImageContentType: ").append(toIndentedString(coverImageContentType)).append("\n");
     sb.append("    coverImageData: ").append(toIndentedString(coverImageData)).append("\n");
+    sb.append("    coverImageKeyFrameTime: ").append(toIndentedString(coverImageKeyFrameTime)).append("\n");
+    sb.append("    coverImageUrl: ").append(toIndentedString(coverImageUrl)).append("\n");
     sb.append("    mediaId: ").append(toIndentedString(mediaId)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    index: ").append(toIndentedString(index)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    isAffiliateLink: ").append(toIndentedString(isAffiliateLink)).append("\n");
     sb.append("}");
     return sb.toString();

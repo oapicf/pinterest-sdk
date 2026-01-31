@@ -16,18 +16,18 @@ import { ItemProcessingStatus } from './itemProcessingStatus';
  */
 export interface ItemProcessingRecord { 
     /**
-     * The catalog item id in the merchant namespace
-     */
-    item_id?: string;
-    /**
      * Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
      */
     errors?: Array<ItemValidationEvent>;
     /**
+     * The catalog item id in the merchant namespace
+     */
+    item_id?: string;
+    status?: ItemProcessingStatus;
+    /**
      * Array with the validation warnings for the item processing record
      */
     warnings?: Array<ItemValidationEvent>;
-    status?: ItemProcessingStatus;
 }
 export namespace ItemProcessingRecord {
 }

@@ -21,6 +21,14 @@ test_that("created_time", {
   #expect_equal(model.instance$`created_time`, "EXPECTED_RESULT")
 })
 
+test_that("exceptions", {
+  # tests for the property `exceptions` (object)
+  # Customer list errors
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`exceptions`, "EXPECTED_RESULT")
+})
+
 test_that("id", {
   # tests for the property `id` (character)
   # Customer list ID.
@@ -83,12 +91,4 @@ test_that("updated_time", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`updated_time`, "EXPECTED_RESULT")
-})
-
-test_that("exceptions", {
-  # tests for the property `exceptions` (object)
-  # Customer list errors
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`exceptions`, "EXPECTED_RESULT")
 })

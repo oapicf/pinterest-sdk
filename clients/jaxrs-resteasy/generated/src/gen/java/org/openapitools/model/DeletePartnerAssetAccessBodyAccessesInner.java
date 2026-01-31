@@ -12,11 +12,11 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class DeletePartnerAssetAccessBodyAccessesInner   {
   
-  private String partnerId;
   private String assetId;
+  private String partnerId;
 
   /**
    * If partner_type&#x3D;INTERNAL, the deleted asset access is for the access the partner has to your business asset.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the deleted asset access is for the access you have to the partner&#39;s business asset.
@@ -41,20 +41,6 @@ public class DeletePartnerAssetAccessBodyAccessesInner   {
   private PartnerTypeEnum partnerType = PartnerTypeEnum.INTERNAL;
 
   /**
-   * Unique identifier of a business partner to update asset access to.
-   **/
-  
-  @ApiModelProperty(example = "1234567890123", required = true, value = "Unique identifier of a business partner to update asset access to.")
-  @JsonProperty("partner_id")
-  @NotNull
- @Pattern(regexp="^\\d+$") @Size(max=25)  public String getPartnerId() {
-    return partnerId;
-  }
-  public void setPartnerId(String partnerId) {
-    this.partnerId = partnerId;
-  }
-
-  /**
    * Unique identifier of the business asset.
    **/
   
@@ -66,6 +52,20 @@ public class DeletePartnerAssetAccessBodyAccessesInner   {
   }
   public void setAssetId(String assetId) {
     this.assetId = assetId;
+  }
+
+  /**
+   * Unique identifier of a business partner to update asset access to.
+   **/
+  
+  @ApiModelProperty(example = "1234567890123", required = true, value = "Unique identifier of a business partner to update asset access to.")
+  @JsonProperty("partner_id")
+  @NotNull
+ @Pattern(regexp="^\\d+$") @Size(max=25)  public String getPartnerId() {
+    return partnerId;
+  }
+  public void setPartnerId(String partnerId) {
+    this.partnerId = partnerId;
   }
 
   /**
@@ -91,14 +91,14 @@ public class DeletePartnerAssetAccessBodyAccessesInner   {
       return false;
     }
     DeletePartnerAssetAccessBodyAccessesInner deletePartnerAssetAccessBodyAccessesInner = (DeletePartnerAssetAccessBodyAccessesInner) o;
-    return Objects.equals(this.partnerId, deletePartnerAssetAccessBodyAccessesInner.partnerId) &&
-        Objects.equals(this.assetId, deletePartnerAssetAccessBodyAccessesInner.assetId) &&
+    return Objects.equals(this.assetId, deletePartnerAssetAccessBodyAccessesInner.assetId) &&
+        Objects.equals(this.partnerId, deletePartnerAssetAccessBodyAccessesInner.partnerId) &&
         Objects.equals(this.partnerType, deletePartnerAssetAccessBodyAccessesInner.partnerType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(partnerId, assetId, partnerType);
+    return Objects.hash(assetId, partnerId, partnerType);
   }
 
   @Override
@@ -106,8 +106,8 @@ public class DeletePartnerAssetAccessBodyAccessesInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class DeletePartnerAssetAccessBodyAccessesInner {\n");
     
-    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("    assetId: ").append(toIndentedString(assetId)).append("\n");
+    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("    partnerType: ").append(toIndentedString(partnerType)).append("\n");
     sb.append("}");
     return sb.toString();

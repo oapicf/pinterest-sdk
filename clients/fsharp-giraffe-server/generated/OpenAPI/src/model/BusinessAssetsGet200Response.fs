@@ -11,7 +11,7 @@ module BusinessAssetsGet200Response =
 
 
   type business_assets_get_200_response = {
-    Items : GetBusinessAssetsResponse[];
     Bookmark : string option;
+    Items : GetBusinessAssetsResponse[];
   }
   //#endregion

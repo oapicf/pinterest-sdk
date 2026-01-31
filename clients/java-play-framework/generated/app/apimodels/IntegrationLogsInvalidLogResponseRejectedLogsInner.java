@@ -10,44 +10,27 @@ import javax.validation.Valid;
 /**
  * IntegrationLogsInvalidLogResponseRejectedLogsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
-  @JsonProperty("log_index")
-  
-  private Integer logIndex;
-
   @JsonProperty("field")
   @NotNull
 
   private String field;
 
-  @JsonProperty("value")
-  @NotNull
-
-  private String value;
+  @JsonProperty("log_index")
+  
+  private Integer logIndex;
 
   @JsonProperty("reason")
   @NotNull
 
   private String reason;
 
-  public IntegrationLogsInvalidLogResponseRejectedLogsInner logIndex(Integer logIndex) {
-    this.logIndex = logIndex;
-    return this;
-  }
+  @JsonProperty("value")
+  @NotNull
 
-   /**
-   * Index of the log in the batch.
-   * @return logIndex
-  **/
-  public Integer getLogIndex() {
-    return logIndex;
-  }
-
-  public void setLogIndex(Integer logIndex) {
-    this.logIndex = logIndex;
-  }
+  private String value;
 
   public IntegrationLogsInvalidLogResponseRejectedLogsInner field(String field) {
     this.field = field;
@@ -66,21 +49,21 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
     this.field = field;
   }
 
-  public IntegrationLogsInvalidLogResponseRejectedLogsInner value(String value) {
-    this.value = value;
+  public IntegrationLogsInvalidLogResponseRejectedLogsInner logIndex(Integer logIndex) {
+    this.logIndex = logIndex;
     return this;
   }
 
    /**
-   * The value that is invalid.
-   * @return value
+   * Index of the log in the batch.
+   * @return logIndex
   **/
-  public String getValue() {
-    return value;
+  public Integer getLogIndex() {
+    return logIndex;
   }
 
-  public void setValue(String value) {
-    this.value = value;
+  public void setLogIndex(Integer logIndex) {
+    this.logIndex = logIndex;
   }
 
   public IntegrationLogsInvalidLogResponseRejectedLogsInner reason(String reason) {
@@ -100,6 +83,23 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
     this.reason = reason;
   }
 
+  public IntegrationLogsInvalidLogResponseRejectedLogsInner value(String value) {
+    this.value = value;
+    return this;
+  }
+
+   /**
+   * The value that is invalid.
+   * @return value
+  **/
+  public String getValue() {
+    return value;
+  }
+
+  public void setValue(String value) {
+    this.value = value;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -110,15 +110,15 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
       return false;
     }
     IntegrationLogsInvalidLogResponseRejectedLogsInner integrationLogsInvalidLogResponseRejectedLogsInner = (IntegrationLogsInvalidLogResponseRejectedLogsInner) o;
-    return Objects.equals(logIndex, integrationLogsInvalidLogResponseRejectedLogsInner.logIndex) &&
-        Objects.equals(field, integrationLogsInvalidLogResponseRejectedLogsInner.field) &&
-        Objects.equals(value, integrationLogsInvalidLogResponseRejectedLogsInner.value) &&
-        Objects.equals(reason, integrationLogsInvalidLogResponseRejectedLogsInner.reason);
+    return Objects.equals(field, integrationLogsInvalidLogResponseRejectedLogsInner.field) &&
+        Objects.equals(logIndex, integrationLogsInvalidLogResponseRejectedLogsInner.logIndex) &&
+        Objects.equals(reason, integrationLogsInvalidLogResponseRejectedLogsInner.reason) &&
+        Objects.equals(value, integrationLogsInvalidLogResponseRejectedLogsInner.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(logIndex, field, value, reason);
+    return Objects.hash(field, logIndex, reason, value);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -127,10 +127,10 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class IntegrationLogsInvalidLogResponseRejectedLogsInner {\n");
     
-    sb.append("    logIndex: ").append(toIndentedString(logIndex)).append("\n");
     sb.append("    field: ").append(toIndentedString(field)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    logIndex: ").append(toIndentedString(logIndex)).append("\n");
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -73,18 +73,18 @@ private class OASItemsBatchPostRequestTest {
     private static void maintainRenamedProperties() {
         OASItemsBatchPostRequest itemsBatchPostRequest = new OASItemsBatchPostRequest();
         Map<String, String> x-property-mappings = itemsBatchPostRequest.getx-property-mappings();
-        System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
         System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
+        System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASItemsBatchPostRequest itemsBatchPostRequest = new OASItemsBatchPostRequest();
         System.assertEquals(new List<OASItemDeleteBatchRecord>(), itemsBatchPostRequest.items);
+        System.assertEquals(null, itemsBatchPostRequest.catalogId);
         System.assertEquals(null, itemsBatchPostRequest.catalogType);
         System.assertEquals(null, itemsBatchPostRequest.country);
         System.assertEquals(null, itemsBatchPostRequest.language);
-        System.assertEquals(null, itemsBatchPostRequest.catalogId);
         System.assertEquals(null, itemsBatchPostRequest.operation);
     }
 }

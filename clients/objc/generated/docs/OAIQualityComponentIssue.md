@@ -1,0 +1,12 @@
+# OAIQualityComponentIssue
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**_id** | **NSString*** | Unique identifier for the issue check. | 
+**name** | **NSString*** | Human-readable name of the issue. | 
+**reason** | **NSString*** | Detailed reason for the issue. | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

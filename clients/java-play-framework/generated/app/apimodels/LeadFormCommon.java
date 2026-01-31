@@ -16,39 +16,24 @@ import javax.validation.Valid;
 /**
  * Creation fields
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class LeadFormCommon   {
-  @JsonProperty("name")
-  
-  private String name;
-
-  @JsonProperty("privacy_policy_link")
-  
-  private String privacyPolicyLink;
-
-  @JsonProperty("has_accepted_terms")
-  
-  private Boolean hasAcceptedTerms;
-
   @JsonProperty("completion_message")
   
   private String completionMessage;
-
-  @JsonProperty("status")
-  @Valid
-
-  private LeadFormStatus status;
 
   @JsonProperty("disclosure_language")
   
   private String disclosureLanguage;
 
-  @JsonProperty("questions")
-  @Size(min=0,max=10)
-@Valid
+  @JsonProperty("has_accepted_terms")
+  
+  private Boolean hasAcceptedTerms;
 
-  private List<@Valid LeadFormQuestion> questions = null;
+  @JsonProperty("name")
+  
+  private String name;
 
   @JsonProperty("policy_links")
   @Size(min=0,max=3)
@@ -56,56 +41,20 @@ public class LeadFormCommon   {
 
   private List<@Valid LeadFormCommonPolicyLinksInner> policyLinks = null;
 
-  public LeadFormCommon name(String name) {
-    this.name = name;
-    return this;
-  }
+  @JsonProperty("privacy_policy_link")
+  
+  private String privacyPolicyLink;
 
-   /**
-   * Internal name of the lead form.
-   * @return name
-  **/
-  public String getName() {
-    return name;
-  }
+  @JsonProperty("questions")
+  @Size(min=0,max=10)
+@Valid
 
-  public void setName(String name) {
-    this.name = name;
-  }
+  private List<@Valid LeadFormQuestion> questions = null;
 
-  public LeadFormCommon privacyPolicyLink(String privacyPolicyLink) {
-    this.privacyPolicyLink = privacyPolicyLink;
-    return this;
-  }
+  @JsonProperty("status")
+  @Valid
 
-   /**
-   * A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
-   * @return privacyPolicyLink
-  **/
-  public String getPrivacyPolicyLink() {
-    return privacyPolicyLink;
-  }
-
-  public void setPrivacyPolicyLink(String privacyPolicyLink) {
-    this.privacyPolicyLink = privacyPolicyLink;
-  }
-
-  public LeadFormCommon hasAcceptedTerms(Boolean hasAcceptedTerms) {
-    this.hasAcceptedTerms = hasAcceptedTerms;
-    return this;
-  }
-
-   /**
-   * Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
-   * @return hasAcceptedTerms
-  **/
-  public Boolean getHasAcceptedTerms() {
-    return hasAcceptedTerms;
-  }
-
-  public void setHasAcceptedTerms(Boolean hasAcceptedTerms) {
-    this.hasAcceptedTerms = hasAcceptedTerms;
-  }
+  private LeadFormStatus status;
 
   public LeadFormCommon completionMessage(String completionMessage) {
     this.completionMessage = completionMessage;
@@ -122,23 +71,6 @@ public class LeadFormCommon   {
 
   public void setCompletionMessage(String completionMessage) {
     this.completionMessage = completionMessage;
-  }
-
-  public LeadFormCommon status(LeadFormStatus status) {
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  public LeadFormStatus getStatus() {
-    return status;
-  }
-
-  public void setStatus(LeadFormStatus status) {
-    this.status = status;
   }
 
   public LeadFormCommon disclosureLanguage(String disclosureLanguage) {
@@ -158,29 +90,38 @@ public class LeadFormCommon   {
     this.disclosureLanguage = disclosureLanguage;
   }
 
-  public LeadFormCommon questions(List<@Valid LeadFormQuestion> questions) {
-    this.questions = questions;
-    return this;
-  }
-
-  public LeadFormCommon addQuestionsItem(LeadFormQuestion questionsItem) {
-    if (this.questions == null) {
-      this.questions = new ArrayList<>();
-    }
-    this.questions.add(questionsItem);
+  public LeadFormCommon hasAcceptedTerms(Boolean hasAcceptedTerms) {
+    this.hasAcceptedTerms = hasAcceptedTerms;
     return this;
   }
 
    /**
-   * List of questions to be displayed on the lead form.
-   * @return questions
+   * Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
+   * @return hasAcceptedTerms
   **/
-  public List<@Valid LeadFormQuestion> getQuestions() {
-    return questions;
+  public Boolean getHasAcceptedTerms() {
+    return hasAcceptedTerms;
   }
 
-  public void setQuestions(List<@Valid LeadFormQuestion> questions) {
-    this.questions = questions;
+  public void setHasAcceptedTerms(Boolean hasAcceptedTerms) {
+    this.hasAcceptedTerms = hasAcceptedTerms;
+  }
+
+  public LeadFormCommon name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Internal name of the lead form.
+   * @return name
+  **/
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   public LeadFormCommon policyLinks(List<@Valid LeadFormCommonPolicyLinksInner> policyLinks) {
@@ -208,6 +149,65 @@ public class LeadFormCommon   {
     this.policyLinks = policyLinks;
   }
 
+  public LeadFormCommon privacyPolicyLink(String privacyPolicyLink) {
+    this.privacyPolicyLink = privacyPolicyLink;
+    return this;
+  }
+
+   /**
+   * A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
+   * @return privacyPolicyLink
+  **/
+  public String getPrivacyPolicyLink() {
+    return privacyPolicyLink;
+  }
+
+  public void setPrivacyPolicyLink(String privacyPolicyLink) {
+    this.privacyPolicyLink = privacyPolicyLink;
+  }
+
+  public LeadFormCommon questions(List<@Valid LeadFormQuestion> questions) {
+    this.questions = questions;
+    return this;
+  }
+
+  public LeadFormCommon addQuestionsItem(LeadFormQuestion questionsItem) {
+    if (this.questions == null) {
+      this.questions = new ArrayList<>();
+    }
+    this.questions.add(questionsItem);
+    return this;
+  }
+
+   /**
+   * List of questions to be displayed on the lead form.
+   * @return questions
+  **/
+  public List<@Valid LeadFormQuestion> getQuestions() {
+    return questions;
+  }
+
+  public void setQuestions(List<@Valid LeadFormQuestion> questions) {
+    this.questions = questions;
+  }
+
+  public LeadFormCommon status(LeadFormStatus status) {
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  public LeadFormStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(LeadFormStatus status) {
+    this.status = status;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -218,19 +218,19 @@ public class LeadFormCommon   {
       return false;
     }
     LeadFormCommon leadFormCommon = (LeadFormCommon) o;
-    return Objects.equals(name, leadFormCommon.name) &&
-        Objects.equals(privacyPolicyLink, leadFormCommon.privacyPolicyLink) &&
-        Objects.equals(hasAcceptedTerms, leadFormCommon.hasAcceptedTerms) &&
-        Objects.equals(completionMessage, leadFormCommon.completionMessage) &&
-        Objects.equals(status, leadFormCommon.status) &&
+    return Objects.equals(completionMessage, leadFormCommon.completionMessage) &&
         Objects.equals(disclosureLanguage, leadFormCommon.disclosureLanguage) &&
+        Objects.equals(hasAcceptedTerms, leadFormCommon.hasAcceptedTerms) &&
+        Objects.equals(name, leadFormCommon.name) &&
+        Objects.equals(policyLinks, leadFormCommon.policyLinks) &&
+        Objects.equals(privacyPolicyLink, leadFormCommon.privacyPolicyLink) &&
         Objects.equals(questions, leadFormCommon.questions) &&
-        Objects.equals(policyLinks, leadFormCommon.policyLinks);
+        Objects.equals(status, leadFormCommon.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, privacyPolicyLink, hasAcceptedTerms, completionMessage, status, disclosureLanguage, questions, policyLinks);
+    return Objects.hash(completionMessage, disclosureLanguage, hasAcceptedTerms, name, policyLinks, privacyPolicyLink, questions, status);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -239,14 +239,14 @@ public class LeadFormCommon   {
     StringBuilder sb = new StringBuilder();
     sb.append("class LeadFormCommon {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    privacyPolicyLink: ").append(toIndentedString(privacyPolicyLink)).append("\n");
-    sb.append("    hasAcceptedTerms: ").append(toIndentedString(hasAcceptedTerms)).append("\n");
     sb.append("    completionMessage: ").append(toIndentedString(completionMessage)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    disclosureLanguage: ").append(toIndentedString(disclosureLanguage)).append("\n");
-    sb.append("    questions: ").append(toIndentedString(questions)).append("\n");
+    sb.append("    hasAcceptedTerms: ").append(toIndentedString(hasAcceptedTerms)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    policyLinks: ").append(toIndentedString(policyLinks)).append("\n");
+    sb.append("    privacyPolicyLink: ").append(toIndentedString(privacyPolicyLink)).append("\n");
+    sb.append("    questions: ").append(toIndentedString(questions)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

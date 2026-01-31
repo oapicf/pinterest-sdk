@@ -5,13 +5,13 @@
 
 
 char* create_asset_access_request_body_asset_requests_inner_inner_ToString(pinterest_rest_api_create_asset_access_request_body_asset_requests_inner_INNER_e inner) {
-    char *innerArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "PROFILE_PUBLISHER" };
+    char *innerArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "FINANCE_EDIT", "FINANCE_VIEW", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "CATALOGS_VIEWER", "PROFILE_PUBLISHER", "CONSUMER_USER" };
     return innerArray[inner - 1];
 }
 
 pinterest_rest_api_create_asset_access_request_body_asset_requests_inner_INNER_e create_asset_access_request_body_asset_requests_inner_inner_FromString(char* inner) {
     int stringToReturn = 0;
-    char *innerArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "PROFILE_PUBLISHER" };
+    char *innerArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "FINANCE_EDIT", "FINANCE_VIEW", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "CATALOGS_VIEWER", "PROFILE_PUBLISHER", "CONSUMER_USER" };
     size_t sizeofArray = sizeof(innerArray) / sizeof(innerArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(inner, innerArray[stringToReturn]) == 0) {
@@ -23,27 +23,27 @@ pinterest_rest_api_create_asset_access_request_body_asset_requests_inner_INNER_e
 }
 
 static create_asset_access_request_body_asset_requests_inner_t *create_asset_access_request_body_asset_requests_inner_create_internal(
-    char *partner_id,
-    list_t* asset_id_to_permissions
+    list_t* asset_id_to_permissions,
+    char *partner_id
     ) {
     create_asset_access_request_body_asset_requests_inner_t *create_asset_access_request_body_asset_requests_inner_local_var = malloc(sizeof(create_asset_access_request_body_asset_requests_inner_t));
     if (!create_asset_access_request_body_asset_requests_inner_local_var) {
         return NULL;
     }
-    create_asset_access_request_body_asset_requests_inner_local_var->partner_id = partner_id;
     create_asset_access_request_body_asset_requests_inner_local_var->asset_id_to_permissions = asset_id_to_permissions;
+    create_asset_access_request_body_asset_requests_inner_local_var->partner_id = partner_id;
 
     create_asset_access_request_body_asset_requests_inner_local_var->_library_owned = 1;
     return create_asset_access_request_body_asset_requests_inner_local_var;
 }
 
 __attribute__((deprecated)) create_asset_access_request_body_asset_requests_inner_t *create_asset_access_request_body_asset_requests_inner_create(
-    char *partner_id,
-    list_t* asset_id_to_permissions
+    list_t* asset_id_to_permissions,
+    char *partner_id
     ) {
     return create_asset_access_request_body_asset_requests_inner_create_internal (
-        partner_id,
-        asset_id_to_permissions
+        asset_id_to_permissions,
+        partner_id
         );
 }
 
@@ -56,10 +56,6 @@ void create_asset_access_request_body_asset_requests_inner_free(create_asset_acc
         return ;
     }
     listEntry_t *listEntry;
-    if (create_asset_access_request_body_asset_requests_inner->partner_id) {
-        free(create_asset_access_request_body_asset_requests_inner->partner_id);
-        create_asset_access_request_body_asset_requests_inner->partner_id = NULL;
-    }
     if (create_asset_access_request_body_asset_requests_inner->asset_id_to_permissions) {
         list_ForEach(listEntry, create_asset_access_request_body_asset_requests_inner->asset_id_to_permissions) {
             keyValuePair_t *localKeyValue = listEntry->data;
@@ -70,20 +66,15 @@ void create_asset_access_request_body_asset_requests_inner_free(create_asset_acc
         list_freeList(create_asset_access_request_body_asset_requests_inner->asset_id_to_permissions);
         create_asset_access_request_body_asset_requests_inner->asset_id_to_permissions = NULL;
     }
+    if (create_asset_access_request_body_asset_requests_inner->partner_id) {
+        free(create_asset_access_request_body_asset_requests_inner->partner_id);
+        create_asset_access_request_body_asset_requests_inner->partner_id = NULL;
+    }
     free(create_asset_access_request_body_asset_requests_inner);
 }
 
 cJSON *create_asset_access_request_body_asset_requests_inner_convertToJSON(create_asset_access_request_body_asset_requests_inner_t *create_asset_access_request_body_asset_requests_inner) {
     cJSON *item = cJSON_CreateObject();
-
-    // create_asset_access_request_body_asset_requests_inner->partner_id
-    if (!create_asset_access_request_body_asset_requests_inner->partner_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "partner_id", create_asset_access_request_body_asset_requests_inner->partner_id) == NULL) {
-    goto fail; //String
-    }
-
 
     // create_asset_access_request_body_asset_requests_inner->asset_id_to_permissions
     if (pinterest_rest_api_create_asset_access_request_body_asset_requests_inner_ASSETIDTOPERMISSIONS_NULL == create_asset_access_request_body_asset_requests_inner->asset_id_to_permissions) {
@@ -101,6 +92,15 @@ cJSON *create_asset_access_request_body_asset_requests_inner_convertToJSON(creat
     }
     }
 
+
+    // create_asset_access_request_body_asset_requests_inner->partner_id
+    if (!create_asset_access_request_body_asset_requests_inner->partner_id) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "partner_id", create_asset_access_request_body_asset_requests_inner->partner_id) == NULL) {
+    goto fail; //String
+    }
+
     return item;
 fail:
     if (item) {
@@ -115,21 +115,6 @@ create_asset_access_request_body_asset_requests_inner_t *create_asset_access_req
 
     // define the local map for create_asset_access_request_body_asset_requests_inner->asset_id_to_permissions
     list_t *asset_id_to_permissionsList = NULL;
-
-    // create_asset_access_request_body_asset_requests_inner->partner_id
-    cJSON *partner_id = cJSON_GetObjectItemCaseSensitive(create_asset_access_request_body_asset_requests_innerJSON, "partner_id");
-    if (cJSON_IsNull(partner_id)) {
-        partner_id = NULL;
-    }
-    if (!partner_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(partner_id))
-    {
-    goto end; //String
-    }
 
     // create_asset_access_request_body_asset_requests_inner->asset_id_to_permissions
     cJSON *asset_id_to_permissions = cJSON_GetObjectItemCaseSensitive(create_asset_access_request_body_asset_requests_innerJSON, "asset_id_to_permissions");
@@ -157,10 +142,25 @@ create_asset_access_request_body_asset_requests_inner_t *create_asset_access_req
         }
     }
 
+    // create_asset_access_request_body_asset_requests_inner->partner_id
+    cJSON *partner_id = cJSON_GetObjectItemCaseSensitive(create_asset_access_request_body_asset_requests_innerJSON, "partner_id");
+    if (cJSON_IsNull(partner_id)) {
+        partner_id = NULL;
+    }
+    if (!partner_id) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(partner_id))
+    {
+    goto end; //String
+    }
+
 
     create_asset_access_request_body_asset_requests_inner_local_var = create_asset_access_request_body_asset_requests_inner_create_internal (
-        strdup(partner_id->valuestring),
-        asset_id_to_permissionsList
+        asset_id_to_permissionsList,
+        strdup(partner_id->valuestring)
         );
 
     return create_asset_access_request_body_asset_requests_inner_local_var;

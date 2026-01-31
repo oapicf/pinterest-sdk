@@ -15,26 +15,12 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UpdatePartnerAssetAccessBodyAccessesInner   {
   
-  private String partnerId;
   private String assetId;
+  private String partnerId;
   private List<Permissions> permissions = new ArrayList<>();
-
-  /**
-   * Unique identifier of a business partner to update asset access to.
-   **/
-  
-  @ApiModelProperty(example = "1234567890123", required = true, value = "Unique identifier of a business partner to update asset access to.")
-  @JsonProperty("partner_id")
-  @NotNull
- @Pattern(regexp="^\\d+$") @Size(max=25)  public String getPartnerId() {
-    return partnerId;
-  }
-  public void setPartnerId(String partnerId) {
-    this.partnerId = partnerId;
-  }
 
   /**
    * Unique identifier of the business asset.
@@ -48,6 +34,20 @@ public class UpdatePartnerAssetAccessBodyAccessesInner   {
   }
   public void setAssetId(String assetId) {
     this.assetId = assetId;
+  }
+
+  /**
+   * Unique identifier of a business partner to update asset access to.
+   **/
+  
+  @ApiModelProperty(example = "1234567890123", required = true, value = "Unique identifier of a business partner to update asset access to.")
+  @JsonProperty("partner_id")
+  @NotNull
+ @Pattern(regexp="^\\d+$") @Size(max=25)  public String getPartnerId() {
+    return partnerId;
+  }
+  public void setPartnerId(String partnerId) {
+    this.partnerId = partnerId;
   }
 
   /**
@@ -74,14 +74,14 @@ public class UpdatePartnerAssetAccessBodyAccessesInner   {
       return false;
     }
     UpdatePartnerAssetAccessBodyAccessesInner updatePartnerAssetAccessBodyAccessesInner = (UpdatePartnerAssetAccessBodyAccessesInner) o;
-    return Objects.equals(this.partnerId, updatePartnerAssetAccessBodyAccessesInner.partnerId) &&
-        Objects.equals(this.assetId, updatePartnerAssetAccessBodyAccessesInner.assetId) &&
+    return Objects.equals(this.assetId, updatePartnerAssetAccessBodyAccessesInner.assetId) &&
+        Objects.equals(this.partnerId, updatePartnerAssetAccessBodyAccessesInner.partnerId) &&
         Objects.equals(this.permissions, updatePartnerAssetAccessBodyAccessesInner.permissions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(partnerId, assetId, permissions);
+    return Objects.hash(assetId, partnerId, permissions);
   }
 
   @Override
@@ -89,8 +89,8 @@ public class UpdatePartnerAssetAccessBodyAccessesInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdatePartnerAssetAccessBodyAccessesInner {\n");
     
-    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("    assetId: ").append(toIndentedString(assetId)).append("\n");
+    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**list_t**](catalogs_product.md) \* | Pins | 
 **bookmark** | **char \*** |  | [optional] 
+**items** | [**list_t**](catalogs_product.md) \* | Pins | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

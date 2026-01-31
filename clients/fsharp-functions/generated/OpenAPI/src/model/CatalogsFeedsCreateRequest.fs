@@ -18,24 +18,24 @@ module CatalogsFeedsCreateRequest =
 
   [<CLIMutable>]
   type CatalogsFeedsCreateRequest = {
-    [<JsonProperty(PropertyName = "default_currency")>]
-    DefaultCurrency : NullableCurrency;
-    [<JsonProperty(PropertyName = "name")>]
-    Name : string;
-    [<JsonProperty(PropertyName = "format")>]
-    Format : CatalogsFormat;
-    [<JsonProperty(PropertyName = "default_locale")>]
-    DefaultLocale : CatalogsFeedsCreateRequestDefaultLocale;
     [<JsonProperty(PropertyName = "credentials")>]
     Credentials : CatalogsFeedCredentials;
-    [<JsonProperty(PropertyName = "location")>]
-    Location : string;
-    [<JsonProperty(PropertyName = "preferred_processing_schedule")>]
-    PreferredProcessingSchedule : CatalogsFeedProcessingSchedule;
-    [<JsonProperty(PropertyName = "default_country")>]
-    DefaultCountry : Country;
     [<JsonProperty(PropertyName = "default_availability")>]
     DefaultAvailability : ProductAvailabilityType;
+    [<JsonProperty(PropertyName = "default_country")>]
+    DefaultCountry : Country;
+    [<JsonProperty(PropertyName = "default_currency")>]
+    DefaultCurrency : NullableCurrency;
+    [<JsonProperty(PropertyName = "default_locale")>]
+    DefaultLocale : CatalogsFeedsCreateRequestDefaultLocale;
+    [<JsonProperty(PropertyName = "format")>]
+    Format : CatalogsFormat;
+    [<JsonProperty(PropertyName = "location")>]
+    Location : string;
+    [<JsonProperty(PropertyName = "name")>]
+    Name : string;
+    [<JsonProperty(PropertyName = "preferred_processing_schedule")>]
+    PreferredProcessingSchedule : CatalogsFeedProcessingSchedule;
     [<JsonProperty(PropertyName = "status")>]
     Status : CatalogsStatus;
   }

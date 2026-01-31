@@ -20,6 +20,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TopVideoPinsAnalyticsResponsePinsInner  {
   
+  @ApiModelProperty(value = "")
+  @Valid
+  private Map<String, DataStatus> dataStatus = new HashMap<>();
+
  /**
   * The metric name and daily value for each requested metric
   */
@@ -27,47 +31,11 @@ public class TopVideoPinsAnalyticsResponsePinsInner  {
   @Valid
   private Map<String, BigDecimal> metrics = new HashMap<>();
 
-  @ApiModelProperty(value = "")
-  @Valid
-  private Map<String, DataStatus> dataStatus = new HashMap<>();
-
  /**
   * The pin id
   */
   @ApiModelProperty(example = "642396334344813594", value = "The pin id")
   private String pinId;
- /**
-  * The metric name and daily value for each requested metric
-  * @return metrics
-  */
-  @JsonProperty("metrics")
-  public Map<String, BigDecimal> getMetrics() {
-    return metrics;
-  }
-
-  /**
-   * Sets the <code>metrics</code> property.
-   */
- public void setMetrics(Map<String, BigDecimal> metrics) {
-    this.metrics = metrics;
-  }
-
-  /**
-   * Sets the <code>metrics</code> property.
-   */
-  public TopVideoPinsAnalyticsResponsePinsInner metrics(Map<String, BigDecimal> metrics) {
-    this.metrics = metrics;
-    return this;
-  }
-
-  /**
-   * Puts a new item into the <code>metrics</code> map.
-   */
-  public TopVideoPinsAnalyticsResponsePinsInner putMetricsItem(String key, BigDecimal metricsItem) {
-    this.metrics.put(key, metricsItem);
-    return this;
-  }
-
  /**
   * Get dataStatus
   * @return dataStatus
@@ -97,6 +65,38 @@ public class TopVideoPinsAnalyticsResponsePinsInner  {
    */
   public TopVideoPinsAnalyticsResponsePinsInner putDataStatusItem(String key, DataStatus dataStatusItem) {
     this.dataStatus.put(key, dataStatusItem);
+    return this;
+  }
+
+ /**
+  * The metric name and daily value for each requested metric
+  * @return metrics
+  */
+  @JsonProperty("metrics")
+  public Map<String, BigDecimal> getMetrics() {
+    return metrics;
+  }
+
+  /**
+   * Sets the <code>metrics</code> property.
+   */
+ public void setMetrics(Map<String, BigDecimal> metrics) {
+    this.metrics = metrics;
+  }
+
+  /**
+   * Sets the <code>metrics</code> property.
+   */
+  public TopVideoPinsAnalyticsResponsePinsInner metrics(Map<String, BigDecimal> metrics) {
+    this.metrics = metrics;
+    return this;
+  }
+
+  /**
+   * Puts a new item into the <code>metrics</code> map.
+   */
+  public TopVideoPinsAnalyticsResponsePinsInner putMetricsItem(String key, BigDecimal metricsItem) {
+    this.metrics.put(key, metricsItem);
     return this;
   }
 
@@ -134,14 +134,14 @@ public class TopVideoPinsAnalyticsResponsePinsInner  {
       return false;
     }
     TopVideoPinsAnalyticsResponsePinsInner topVideoPinsAnalyticsResponsePinsInner = (TopVideoPinsAnalyticsResponsePinsInner) o;
-    return Objects.equals(this.metrics, topVideoPinsAnalyticsResponsePinsInner.metrics) &&
-        Objects.equals(this.dataStatus, topVideoPinsAnalyticsResponsePinsInner.dataStatus) &&
+    return Objects.equals(this.dataStatus, topVideoPinsAnalyticsResponsePinsInner.dataStatus) &&
+        Objects.equals(this.metrics, topVideoPinsAnalyticsResponsePinsInner.metrics) &&
         Objects.equals(this.pinId, topVideoPinsAnalyticsResponsePinsInner.pinId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(metrics, dataStatus, pinId);
+    return Objects.hash(dataStatus, metrics, pinId);
   }
 
   @Override
@@ -149,8 +149,8 @@ public class TopVideoPinsAnalyticsResponsePinsInner  {
     StringBuilder sb = new StringBuilder();
     sb.append("class TopVideoPinsAnalyticsResponsePinsInner {\n");
     
-    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    dataStatus: ").append(toIndentedString(dataStatus)).append("\n");
+    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
     sb.append("}");
     return sb.toString();

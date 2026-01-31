@@ -8,16 +8,16 @@ The class is defined in **[CatalogsRetailItemsFilter.java](../../src/main/java/o
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**catalogId** | `String` | Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog |  [optional property]
 **catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  | 
 **itemIds** | `List&lt;String&gt;` |  | 
-**catalogId** | `String` | Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog |  [optional property]
+
 
 ## CatalogTypeEnum
 
 Name | Value
 ---- | -----
 RETAIL | `"RETAIL"`
-
 
 
 

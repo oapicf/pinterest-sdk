@@ -6,9 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`records` | string
 `operationType` | [UserListOperationType](UserListOperationType.md)
-`exceptions` | [Exception](.md)
+`records` | string
 
 ## Example
 
@@ -17,9 +16,8 @@ import type { CustomerListUpdateRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "records": email2@pinterest.com,email6@pinterest.com,,
   "operationType": null,
-  "exceptions": null,
+  "records": email2@pinterest.com,email6@pinterest.com,,
 } satisfies CustomerListUpdateRequest
 
 console.log(example)

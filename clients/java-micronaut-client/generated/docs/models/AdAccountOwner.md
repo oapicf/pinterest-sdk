@@ -8,8 +8,8 @@ The class is defined in **[AdAccountOwner.java](../../src/main/java/org/openapit
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**username** | `String` | Public username for the user account |  [optional property]
 **id** | `String` | The owning account&#39;s user ID. |  [optional property]
+**username** | `String` | Public username for the user account |  [optional property]
 
 
 

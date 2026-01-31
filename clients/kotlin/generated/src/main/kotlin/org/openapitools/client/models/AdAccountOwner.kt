@@ -22,20 +22,20 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param username Public username for the user account
  * @param id The owning account's user ID.
+ * @param username Public username for the user account
  */
 
 
 data class AdAccountOwner (
 
-    /* Public username for the user account */
-    @Json(name = "username")
-    val username: kotlin.String? = null,
-
     /* The owning account's user ID. */
     @Json(name = "id")
-    val id: kotlin.String? = null
+    val id: kotlin.String? = null,
+
+    /* Public username for the user account */
+    @Json(name = "username")
+    val username: kotlin.String? = null
 
 ) {
 

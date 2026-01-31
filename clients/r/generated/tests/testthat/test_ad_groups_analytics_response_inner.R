@@ -7,7 +7,7 @@ model_instance <- AdGroupsAnalyticsResponseInner$new()
 
 test_that("AD_GROUP_ID", {
   # tests for the property `AD_GROUP_ID` (character)
-  # The ID of the ad group that this metrics belongs to.
+  # The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`AD_GROUP_ID`, "EXPECTED_RESULT")

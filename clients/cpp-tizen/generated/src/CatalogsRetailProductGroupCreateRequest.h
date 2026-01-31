@@ -48,6 +48,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get Catalog id pertaining to the retail product group.
+	 */
+	std::string getCatalogId();
+
+	/*! \brief Set Catalog id pertaining to the retail product group.
+	 */
+	void setCatalogId(std::string  catalog_id);
 	/*! \brief Get Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
 	 */
 	std::string getCatalogType();
@@ -57,11 +64,11 @@ public:
 	void setCatalogType(std::string  catalog_type);
 	/*! \brief Get 
 	 */
-	std::string getName();
+	Country getCountry();
 
 	/*! \brief Set 
 	 */
-	void setName(std::string  name);
+	void setCountry(Country  country);
 	/*! \brief Get 
 	 */
 	std::string getDescription();
@@ -76,20 +83,6 @@ public:
 	/*! \brief Set 
 	 */
 	void setFilters(CatalogsProductGroupFiltersRequest  filters);
-	/*! \brief Get Catalog id pertaining to the retail product group.
-	 */
-	std::string getCatalogId();
-
-	/*! \brief Set Catalog id pertaining to the retail product group.
-	 */
-	void setCatalogId(std::string  catalog_id);
-	/*! \brief Get 
-	 */
-	Country getCountry();
-
-	/*! \brief Set 
-	 */
-	void setCountry(Country  country);
 	/*! \brief Get 
 	 */
 	CatalogsLocale getLocale();
@@ -97,15 +90,22 @@ public:
 	/*! \brief Set 
 	 */
 	void setLocale(CatalogsLocale  locale);
+	/*! \brief Get 
+	 */
+	std::string getName();
+
+	/*! \brief Set 
+	 */
+	void setName(std::string  name);
 
 private:
+	std::string catalog_id;
 	std::string catalog_type;
-	std::string name;
+	Country country;
 	std::string description;
 	CatalogsProductGroupFiltersRequest filters;
-	std::string catalog_id;
-	Country country;
 	CatalogsLocale locale;
+	std::string name;
 	void __init();
 	void __cleanup();
 

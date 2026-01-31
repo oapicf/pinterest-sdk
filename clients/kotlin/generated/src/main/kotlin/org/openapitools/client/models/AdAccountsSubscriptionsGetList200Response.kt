@@ -15,7 +15,7 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.AdAccountGetSubscriptionResponse
+import org.openapitools.client.models.LeadSubscription
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -31,7 +31,7 @@ import com.squareup.moshi.JsonClass
 data class AdAccountsSubscriptionsGetList200Response (
 
     @Json(name = "items")
-    val items: kotlin.collections.List<AdAccountGetSubscriptionResponse>,
+    val items: kotlin.collections.List<LeadSubscription>,
 
     @Json(name = "bookmark")
     val bookmark: kotlin.String? = null

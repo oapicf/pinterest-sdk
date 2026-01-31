@@ -10,11 +10,11 @@ import scala.collection.immutable.Seq
 
 /**
  * 
- * @param partnerUnderscoreid Unique identifier of a business partner to request asset access to.
  * @param assetUnderscoreidUnderscoretoUnderscorepermissions An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
+ * @param partnerUnderscoreid Unique identifier of a business partner to request asset access to.
  */
-case class CreateAssetAccessRequestBodyAssetRequestsInner(partnerUnderscoreid: String,
-                assetUnderscoreidUnderscoretoUnderscorepermissions: Map[String, Seq[Permissions]]
+case class CreateAssetAccessRequestBodyAssetRequestsInner(assetUnderscoreidUnderscoretoUnderscorepermissions: Map[String, Seq[Permissions]],
+                partnerUnderscoreid: String
                 )
 
 object CreateAssetAccessRequestBodyAssetRequestsInner {

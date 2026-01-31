@@ -22,13 +22,13 @@ ad_accounts_audiences_shared_accounts_list_200_response_t* instantiate_ad_accoun
   ad_accounts_audiences_shared_accounts_list_200_response_t* ad_accounts_audiences_shared_accounts_list_200_response = NULL;
   if (include_optional) {
     ad_accounts_audiences_shared_accounts_list_200_response = ad_accounts_audiences_shared_accounts_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     ad_accounts_audiences_shared_accounts_list_200_response = ad_accounts_audiences_shared_accounts_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

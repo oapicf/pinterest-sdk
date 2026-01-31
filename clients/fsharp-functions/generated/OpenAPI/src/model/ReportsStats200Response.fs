@@ -12,10 +12,10 @@ module ReportsStats200Response =
 
   [<CLIMutable>]
   type ReportsStats200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : CatalogsReportStats[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : CatalogsReportStats[];
   }
 
   //#endregion

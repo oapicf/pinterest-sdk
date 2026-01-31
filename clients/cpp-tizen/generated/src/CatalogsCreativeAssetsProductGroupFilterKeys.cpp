@@ -24,11 +24,11 @@ void
 CatalogsCreativeAssetsProductGroupFilterKeys::__init()
 {
 	//cREATIVE_ASSETS_ID = new CatalogsProductGroupMultipleStringCriteria();
-	//cUSTOM_LABEL_0 = new CatalogsProductGroupMultipleStringCriteria();
-	//cUSTOM_LABEL_1 = new CatalogsProductGroupMultipleStringCriteria();
-	//cUSTOM_LABEL_2 = new CatalogsProductGroupMultipleStringCriteria();
-	//cUSTOM_LABEL_3 = new CatalogsProductGroupMultipleStringCriteria();
-	//cUSTOM_LABEL_4 = new CatalogsProductGroupMultipleStringCriteria();
+	//cUSTOM_LABEL_0 = new CatalogsProductGroupFilterOperatorTypeCriteria();
+	//cUSTOM_LABEL_1 = new CatalogsProductGroupFilterOperatorTypeCriteria();
+	//cUSTOM_LABEL_2 = new CatalogsProductGroupFilterOperatorTypeCriteria();
+	//cUSTOM_LABEL_3 = new CatalogsProductGroupFilterOperatorTypeCriteria();
+	//cUSTOM_LABEL_4 = new CatalogsProductGroupFilterOperatorTypeCriteria();
 	//gOOGLE_PRODUCT_CATEGORY_6 = new CatalogsProductGroupMultipleStringListCriteria();
 	//gOOGLE_PRODUCT_CATEGORY_5 = new CatalogsProductGroupMultipleStringListCriteria();
 	//gOOGLE_PRODUCT_CATEGORY_4 = new CatalogsProductGroupMultipleStringListCriteria();
@@ -37,6 +37,7 @@ CatalogsCreativeAssetsProductGroupFilterKeys::__init()
 	//gOOGLE_PRODUCT_CATEGORY_1 = new CatalogsProductGroupMultipleStringListCriteria();
 	//gOOGLE_PRODUCT_CATEGORY_0 = new CatalogsProductGroupMultipleStringListCriteria();
 	//mEDIA_TYPE = new CatalogsProductGroupMultipleMediaTypesCriteria();
+	//tITLE_KEYWORDS = new CatalogsProductGroupMultipleStringCriteria();
 }
 
 void
@@ -112,6 +113,11 @@ CatalogsCreativeAssetsProductGroupFilterKeys::__cleanup()
 	//delete mEDIA_TYPE;
 	//mEDIA_TYPE = NULL;
 	//}
+	//if(tITLE_KEYWORDS != NULL) {
+	//
+	//delete tITLE_KEYWORDS;
+	//tITLE_KEYWORDS = NULL;
+	//}
 	//
 }
 
@@ -139,11 +145,11 @@ CatalogsCreativeAssetsProductGroupFilterKeys::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-			jsonToValue(&cUSTOM_LABEL_0, node, "CatalogsProductGroupMultipleStringCriteria", "");
+		if (isprimitive("CatalogsProductGroupFilterOperatorTypeCriteria")) {
+			jsonToValue(&cUSTOM_LABEL_0, node, "CatalogsProductGroupFilterOperatorTypeCriteria", "");
 		} else {
 			
-			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&cUSTOM_LABEL_0);
+			CatalogsProductGroupFilterOperatorTypeCriteria* obj = static_cast<CatalogsProductGroupFilterOperatorTypeCriteria*> (&cUSTOM_LABEL_0);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -153,11 +159,11 @@ CatalogsCreativeAssetsProductGroupFilterKeys::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-			jsonToValue(&cUSTOM_LABEL_1, node, "CatalogsProductGroupMultipleStringCriteria", "");
+		if (isprimitive("CatalogsProductGroupFilterOperatorTypeCriteria")) {
+			jsonToValue(&cUSTOM_LABEL_1, node, "CatalogsProductGroupFilterOperatorTypeCriteria", "");
 		} else {
 			
-			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&cUSTOM_LABEL_1);
+			CatalogsProductGroupFilterOperatorTypeCriteria* obj = static_cast<CatalogsProductGroupFilterOperatorTypeCriteria*> (&cUSTOM_LABEL_1);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -167,11 +173,11 @@ CatalogsCreativeAssetsProductGroupFilterKeys::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-			jsonToValue(&cUSTOM_LABEL_2, node, "CatalogsProductGroupMultipleStringCriteria", "");
+		if (isprimitive("CatalogsProductGroupFilterOperatorTypeCriteria")) {
+			jsonToValue(&cUSTOM_LABEL_2, node, "CatalogsProductGroupFilterOperatorTypeCriteria", "");
 		} else {
 			
-			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&cUSTOM_LABEL_2);
+			CatalogsProductGroupFilterOperatorTypeCriteria* obj = static_cast<CatalogsProductGroupFilterOperatorTypeCriteria*> (&cUSTOM_LABEL_2);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -181,11 +187,11 @@ CatalogsCreativeAssetsProductGroupFilterKeys::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-			jsonToValue(&cUSTOM_LABEL_3, node, "CatalogsProductGroupMultipleStringCriteria", "");
+		if (isprimitive("CatalogsProductGroupFilterOperatorTypeCriteria")) {
+			jsonToValue(&cUSTOM_LABEL_3, node, "CatalogsProductGroupFilterOperatorTypeCriteria", "");
 		} else {
 			
-			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&cUSTOM_LABEL_3);
+			CatalogsProductGroupFilterOperatorTypeCriteria* obj = static_cast<CatalogsProductGroupFilterOperatorTypeCriteria*> (&cUSTOM_LABEL_3);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -195,11 +201,11 @@ CatalogsCreativeAssetsProductGroupFilterKeys::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-			jsonToValue(&cUSTOM_LABEL_4, node, "CatalogsProductGroupMultipleStringCriteria", "");
+		if (isprimitive("CatalogsProductGroupFilterOperatorTypeCriteria")) {
+			jsonToValue(&cUSTOM_LABEL_4, node, "CatalogsProductGroupFilterOperatorTypeCriteria", "");
 		} else {
 			
-			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&cUSTOM_LABEL_4);
+			CatalogsProductGroupFilterOperatorTypeCriteria* obj = static_cast<CatalogsProductGroupFilterOperatorTypeCriteria*> (&cUSTOM_LABEL_4);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -316,6 +322,20 @@ CatalogsCreativeAssetsProductGroupFilterKeys::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *tITLE_KEYWORDSKey = "TITLE_KEYWORDS";
+	node = json_object_get_member(pJsonObject, tITLE_KEYWORDSKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
+			jsonToValue(&tITLE_KEYWORDS, node, "CatalogsProductGroupMultipleStringCriteria", "");
+		} else {
+			
+			CatalogsProductGroupMultipleStringCriteria* obj = static_cast<CatalogsProductGroupMultipleStringCriteria*> (&tITLE_KEYWORDS);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 }
 
 CatalogsCreativeAssetsProductGroupFilterKeys::CatalogsCreativeAssetsProductGroupFilterKeys(char* json)
@@ -342,13 +362,13 @@ CatalogsCreativeAssetsProductGroupFilterKeys::toJson()
 	}
 	const gchar *cREATIVE_ASSETS_IDKey = "CREATIVE_ASSETS_ID";
 	json_object_set_member(pJsonObject, cREATIVE_ASSETS_IDKey, node);
-	if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-		CatalogsProductGroupMultipleStringCriteria obj = getCUSTOMLABEL0();
-		node = converttoJson(&obj, "CatalogsProductGroupMultipleStringCriteria", "");
+	if (isprimitive("CatalogsProductGroupFilterOperatorTypeCriteria")) {
+		CatalogsProductGroupFilterOperatorTypeCriteria obj = getCUSTOMLABEL0();
+		node = converttoJson(&obj, "CatalogsProductGroupFilterOperatorTypeCriteria", "");
 	}
 	else {
 		
-		CatalogsProductGroupMultipleStringCriteria obj = static_cast<CatalogsProductGroupMultipleStringCriteria> (getCUSTOMLABEL0());
+		CatalogsProductGroupFilterOperatorTypeCriteria obj = static_cast<CatalogsProductGroupFilterOperatorTypeCriteria> (getCUSTOMLABEL0());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -356,13 +376,13 @@ CatalogsCreativeAssetsProductGroupFilterKeys::toJson()
 	}
 	const gchar *cUSTOM_LABEL_0Key = "CUSTOM_LABEL_0";
 	json_object_set_member(pJsonObject, cUSTOM_LABEL_0Key, node);
-	if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-		CatalogsProductGroupMultipleStringCriteria obj = getCUSTOMLABEL1();
-		node = converttoJson(&obj, "CatalogsProductGroupMultipleStringCriteria", "");
+	if (isprimitive("CatalogsProductGroupFilterOperatorTypeCriteria")) {
+		CatalogsProductGroupFilterOperatorTypeCriteria obj = getCUSTOMLABEL1();
+		node = converttoJson(&obj, "CatalogsProductGroupFilterOperatorTypeCriteria", "");
 	}
 	else {
 		
-		CatalogsProductGroupMultipleStringCriteria obj = static_cast<CatalogsProductGroupMultipleStringCriteria> (getCUSTOMLABEL1());
+		CatalogsProductGroupFilterOperatorTypeCriteria obj = static_cast<CatalogsProductGroupFilterOperatorTypeCriteria> (getCUSTOMLABEL1());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -370,13 +390,13 @@ CatalogsCreativeAssetsProductGroupFilterKeys::toJson()
 	}
 	const gchar *cUSTOM_LABEL_1Key = "CUSTOM_LABEL_1";
 	json_object_set_member(pJsonObject, cUSTOM_LABEL_1Key, node);
-	if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-		CatalogsProductGroupMultipleStringCriteria obj = getCUSTOMLABEL2();
-		node = converttoJson(&obj, "CatalogsProductGroupMultipleStringCriteria", "");
+	if (isprimitive("CatalogsProductGroupFilterOperatorTypeCriteria")) {
+		CatalogsProductGroupFilterOperatorTypeCriteria obj = getCUSTOMLABEL2();
+		node = converttoJson(&obj, "CatalogsProductGroupFilterOperatorTypeCriteria", "");
 	}
 	else {
 		
-		CatalogsProductGroupMultipleStringCriteria obj = static_cast<CatalogsProductGroupMultipleStringCriteria> (getCUSTOMLABEL2());
+		CatalogsProductGroupFilterOperatorTypeCriteria obj = static_cast<CatalogsProductGroupFilterOperatorTypeCriteria> (getCUSTOMLABEL2());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -384,13 +404,13 @@ CatalogsCreativeAssetsProductGroupFilterKeys::toJson()
 	}
 	const gchar *cUSTOM_LABEL_2Key = "CUSTOM_LABEL_2";
 	json_object_set_member(pJsonObject, cUSTOM_LABEL_2Key, node);
-	if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-		CatalogsProductGroupMultipleStringCriteria obj = getCUSTOMLABEL3();
-		node = converttoJson(&obj, "CatalogsProductGroupMultipleStringCriteria", "");
+	if (isprimitive("CatalogsProductGroupFilterOperatorTypeCriteria")) {
+		CatalogsProductGroupFilterOperatorTypeCriteria obj = getCUSTOMLABEL3();
+		node = converttoJson(&obj, "CatalogsProductGroupFilterOperatorTypeCriteria", "");
 	}
 	else {
 		
-		CatalogsProductGroupMultipleStringCriteria obj = static_cast<CatalogsProductGroupMultipleStringCriteria> (getCUSTOMLABEL3());
+		CatalogsProductGroupFilterOperatorTypeCriteria obj = static_cast<CatalogsProductGroupFilterOperatorTypeCriteria> (getCUSTOMLABEL3());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -398,13 +418,13 @@ CatalogsCreativeAssetsProductGroupFilterKeys::toJson()
 	}
 	const gchar *cUSTOM_LABEL_3Key = "CUSTOM_LABEL_3";
 	json_object_set_member(pJsonObject, cUSTOM_LABEL_3Key, node);
-	if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
-		CatalogsProductGroupMultipleStringCriteria obj = getCUSTOMLABEL4();
-		node = converttoJson(&obj, "CatalogsProductGroupMultipleStringCriteria", "");
+	if (isprimitive("CatalogsProductGroupFilterOperatorTypeCriteria")) {
+		CatalogsProductGroupFilterOperatorTypeCriteria obj = getCUSTOMLABEL4();
+		node = converttoJson(&obj, "CatalogsProductGroupFilterOperatorTypeCriteria", "");
 	}
 	else {
 		
-		CatalogsProductGroupMultipleStringCriteria obj = static_cast<CatalogsProductGroupMultipleStringCriteria> (getCUSTOMLABEL4());
+		CatalogsProductGroupFilterOperatorTypeCriteria obj = static_cast<CatalogsProductGroupFilterOperatorTypeCriteria> (getCUSTOMLABEL4());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -524,6 +544,20 @@ CatalogsCreativeAssetsProductGroupFilterKeys::toJson()
 	}
 	const gchar *mEDIA_TYPEKey = "MEDIA_TYPE";
 	json_object_set_member(pJsonObject, mEDIA_TYPEKey, node);
+	if (isprimitive("CatalogsProductGroupMultipleStringCriteria")) {
+		CatalogsProductGroupMultipleStringCriteria obj = getTITLEKEYWORDS();
+		node = converttoJson(&obj, "CatalogsProductGroupMultipleStringCriteria", "");
+	}
+	else {
+		
+		CatalogsProductGroupMultipleStringCriteria obj = static_cast<CatalogsProductGroupMultipleStringCriteria> (getTITLEKEYWORDS());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *tITLE_KEYWORDSKey = "TITLE_KEYWORDS";
+	json_object_set_member(pJsonObject, tITLE_KEYWORDSKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -544,62 +578,62 @@ CatalogsCreativeAssetsProductGroupFilterKeys::setCREATIVEASSETSID(CatalogsProduc
 	this->cREATIVE_ASSETS_ID = cREATIVE_ASSETS_ID;
 }
 
-CatalogsProductGroupMultipleStringCriteria
+CatalogsProductGroupFilterOperatorTypeCriteria
 CatalogsCreativeAssetsProductGroupFilterKeys::getCUSTOMLABEL0()
 {
 	return cUSTOM_LABEL_0;
 }
 
 void
-CatalogsCreativeAssetsProductGroupFilterKeys::setCUSTOMLABEL0(CatalogsProductGroupMultipleStringCriteria  cUSTOM_LABEL_0)
+CatalogsCreativeAssetsProductGroupFilterKeys::setCUSTOMLABEL0(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_0)
 {
 	this->cUSTOM_LABEL_0 = cUSTOM_LABEL_0;
 }
 
-CatalogsProductGroupMultipleStringCriteria
+CatalogsProductGroupFilterOperatorTypeCriteria
 CatalogsCreativeAssetsProductGroupFilterKeys::getCUSTOMLABEL1()
 {
 	return cUSTOM_LABEL_1;
 }
 
 void
-CatalogsCreativeAssetsProductGroupFilterKeys::setCUSTOMLABEL1(CatalogsProductGroupMultipleStringCriteria  cUSTOM_LABEL_1)
+CatalogsCreativeAssetsProductGroupFilterKeys::setCUSTOMLABEL1(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_1)
 {
 	this->cUSTOM_LABEL_1 = cUSTOM_LABEL_1;
 }
 
-CatalogsProductGroupMultipleStringCriteria
+CatalogsProductGroupFilterOperatorTypeCriteria
 CatalogsCreativeAssetsProductGroupFilterKeys::getCUSTOMLABEL2()
 {
 	return cUSTOM_LABEL_2;
 }
 
 void
-CatalogsCreativeAssetsProductGroupFilterKeys::setCUSTOMLABEL2(CatalogsProductGroupMultipleStringCriteria  cUSTOM_LABEL_2)
+CatalogsCreativeAssetsProductGroupFilterKeys::setCUSTOMLABEL2(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_2)
 {
 	this->cUSTOM_LABEL_2 = cUSTOM_LABEL_2;
 }
 
-CatalogsProductGroupMultipleStringCriteria
+CatalogsProductGroupFilterOperatorTypeCriteria
 CatalogsCreativeAssetsProductGroupFilterKeys::getCUSTOMLABEL3()
 {
 	return cUSTOM_LABEL_3;
 }
 
 void
-CatalogsCreativeAssetsProductGroupFilterKeys::setCUSTOMLABEL3(CatalogsProductGroupMultipleStringCriteria  cUSTOM_LABEL_3)
+CatalogsCreativeAssetsProductGroupFilterKeys::setCUSTOMLABEL3(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_3)
 {
 	this->cUSTOM_LABEL_3 = cUSTOM_LABEL_3;
 }
 
-CatalogsProductGroupMultipleStringCriteria
+CatalogsProductGroupFilterOperatorTypeCriteria
 CatalogsCreativeAssetsProductGroupFilterKeys::getCUSTOMLABEL4()
 {
 	return cUSTOM_LABEL_4;
 }
 
 void
-CatalogsCreativeAssetsProductGroupFilterKeys::setCUSTOMLABEL4(CatalogsProductGroupMultipleStringCriteria  cUSTOM_LABEL_4)
+CatalogsCreativeAssetsProductGroupFilterKeys::setCUSTOMLABEL4(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_4)
 {
 	this->cUSTOM_LABEL_4 = cUSTOM_LABEL_4;
 }
@@ -698,6 +732,18 @@ void
 CatalogsCreativeAssetsProductGroupFilterKeys::setMEDIATYPE(CatalogsProductGroupMultipleMediaTypesCriteria  mEDIA_TYPE)
 {
 	this->mEDIA_TYPE = mEDIA_TYPE;
+}
+
+CatalogsProductGroupMultipleStringCriteria
+CatalogsCreativeAssetsProductGroupFilterKeys::getTITLEKEYWORDS()
+{
+	return tITLE_KEYWORDS;
+}
+
+void
+CatalogsCreativeAssetsProductGroupFilterKeys::setTITLEKEYWORDS(CatalogsProductGroupMultipleStringCriteria  tITLE_KEYWORDS)
+{
+	this->tITLE_KEYWORDS = tITLE_KEYWORDS;
 }
 
 

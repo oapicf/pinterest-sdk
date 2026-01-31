@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,11 +22,11 @@ var _ MappedNullable = &CreateAssetInvitesRequestItem{}
 
 // CreateAssetInvitesRequestItem Object declaring an asset role update to an invite.
 type CreateAssetInvitesRequestItem struct {
+	// An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
+	AssetIdToPermissions map[string][]Permissions `json:"asset_id_to_permissions"`
 	// Unique identifier of an invite.
 	InviteId string `json:"invite_id" validate:"regexp=^\\\\d+$"`
 	InviteType InviteType `json:"invite_type"`
-	// An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
-	AssetIdToPermissions map[string][]Permissions `json:"asset_id_to_permissions"`
 }
 
 type _CreateAssetInvitesRequestItem CreateAssetInvitesRequestItem
@@ -35,11 +35,11 @@ type _CreateAssetInvitesRequestItem CreateAssetInvitesRequestItem
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateAssetInvitesRequestItem(inviteId string, inviteType InviteType, assetIdToPermissions map[string][]Permissions) *CreateAssetInvitesRequestItem {
+func NewCreateAssetInvitesRequestItem(assetIdToPermissions map[string][]Permissions, inviteId string, inviteType InviteType) *CreateAssetInvitesRequestItem {
 	this := CreateAssetInvitesRequestItem{}
+	this.AssetIdToPermissions = assetIdToPermissions
 	this.InviteId = inviteId
 	this.InviteType = inviteType
-	this.AssetIdToPermissions = assetIdToPermissions
 	return &this
 }
 
@@ -49,6 +49,30 @@ func NewCreateAssetInvitesRequestItem(inviteId string, inviteType InviteType, as
 func NewCreateAssetInvitesRequestItemWithDefaults() *CreateAssetInvitesRequestItem {
 	this := CreateAssetInvitesRequestItem{}
 	return &this
+}
+
+// GetAssetIdToPermissions returns the AssetIdToPermissions field value
+func (o *CreateAssetInvitesRequestItem) GetAssetIdToPermissions() map[string][]Permissions {
+	if o == nil {
+		var ret map[string][]Permissions
+		return ret
+	}
+
+	return o.AssetIdToPermissions
+}
+
+// GetAssetIdToPermissionsOk returns a tuple with the AssetIdToPermissions field value
+// and a boolean to check if the value has been set.
+func (o *CreateAssetInvitesRequestItem) GetAssetIdToPermissionsOk() (*map[string][]Permissions, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AssetIdToPermissions, true
+}
+
+// SetAssetIdToPermissions sets field value
+func (o *CreateAssetInvitesRequestItem) SetAssetIdToPermissions(v map[string][]Permissions) {
+	o.AssetIdToPermissions = v
 }
 
 // GetInviteId returns the InviteId field value
@@ -99,30 +123,6 @@ func (o *CreateAssetInvitesRequestItem) SetInviteType(v InviteType) {
 	o.InviteType = v
 }
 
-// GetAssetIdToPermissions returns the AssetIdToPermissions field value
-func (o *CreateAssetInvitesRequestItem) GetAssetIdToPermissions() map[string][]Permissions {
-	if o == nil {
-		var ret map[string][]Permissions
-		return ret
-	}
-
-	return o.AssetIdToPermissions
-}
-
-// GetAssetIdToPermissionsOk returns a tuple with the AssetIdToPermissions field value
-// and a boolean to check if the value has been set.
-func (o *CreateAssetInvitesRequestItem) GetAssetIdToPermissionsOk() (*map[string][]Permissions, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.AssetIdToPermissions, true
-}
-
-// SetAssetIdToPermissions sets field value
-func (o *CreateAssetInvitesRequestItem) SetAssetIdToPermissions(v map[string][]Permissions) {
-	o.AssetIdToPermissions = v
-}
-
 func (o CreateAssetInvitesRequestItem) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -133,9 +133,9 @@ func (o CreateAssetInvitesRequestItem) MarshalJSON() ([]byte, error) {
 
 func (o CreateAssetInvitesRequestItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["asset_id_to_permissions"] = o.AssetIdToPermissions
 	toSerialize["invite_id"] = o.InviteId
 	toSerialize["invite_type"] = o.InviteType
-	toSerialize["asset_id_to_permissions"] = o.AssetIdToPermissions
 	return toSerialize, nil
 }
 
@@ -144,9 +144,9 @@ func (o *CreateAssetInvitesRequestItem) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"asset_id_to_permissions",
 		"invite_id",
 		"invite_type",
-		"asset_id_to_permissions",
 	}
 
 	allProperties := make(map[string]interface{})

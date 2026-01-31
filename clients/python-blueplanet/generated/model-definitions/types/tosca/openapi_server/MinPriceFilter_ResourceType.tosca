@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server MinPriceFilter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a MinPriceFilter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsProductGroupPricingCriteria = openapi_server.resourceTypes.CatalogsProductGroupPricingCriteria
+}
+resourceTypes {
+
+  MinPriceFilter {
+    title = MinPriceFilter
+    description = MinPriceFilter
+    derivedFrom = Root
+    properties {
+        min_price {
+          type = CatalogsProductGroupPricingCriteria
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  MinPriceFilter {
+    title = MinPriceFilter
+    description = MinPriceFilter
+    implements = openapi_server.resourceTypes.MinPriceFilter
+
+  }
+}

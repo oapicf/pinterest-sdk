@@ -8,11 +8,11 @@ import org.openapitools._
 
 /**
  * 
- * @param reportUnderscoretype 
  * @param catalogUnderscoreid Unique identifier of a catalog. If not given, oldest catalog will be used
+ * @param reportUnderscoretype 
  */
-case class CatalogsReportDistributionIssueFilter(reportUnderscoretype: String,
-                catalogUnderscoreid: Option[String]
+case class CatalogsReportDistributionIssueFilter(catalogUnderscoreid: Option[String],
+                reportUnderscoretype: String
                 )
 
 object CatalogsReportDistributionIssueFilter {

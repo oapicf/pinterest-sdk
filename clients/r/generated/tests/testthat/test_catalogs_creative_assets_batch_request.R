@@ -5,6 +5,14 @@ context("Test CatalogsCreativeAssetsBatchRequest")
 
 model_instance <- CatalogsCreativeAssetsBatchRequest$new()
 
+test_that("catalog_id", {
+  # tests for the property `catalog_id` (character)
+  # Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`catalog_id`, "EXPECTED_RESULT")
+})
+
 test_that("catalog_type", {
   # tests for the property `catalog_type` (character)
 
@@ -19,14 +27,6 @@ test_that("country", {
   #expect_equal(model.instance$`country`, "EXPECTED_RESULT")
 })
 
-test_that("language", {
-  # tests for the property `language` (character)
-  # We recommend using the CatalogsLocale values.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`language`, "EXPECTED_RESULT")
-})
-
 test_that("items", {
   # tests for the property `items` (array[CatalogsCreativeAssetsBatchItem])
   # Array with creative assets item operations
@@ -35,10 +35,10 @@ test_that("items", {
   #expect_equal(model.instance$`items`, "EXPECTED_RESULT")
 })
 
-test_that("catalog_id", {
-  # tests for the property `catalog_id` (character)
-  # Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+test_that("language", {
+  # tests for the property `language` (character)
+  # We recommend using the CatalogsLocale values.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`catalog_id`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`language`, "EXPECTED_RESULT")
 })

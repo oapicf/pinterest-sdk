@@ -48,6 +48,7 @@ import org.openapitools.model.PermissionsWithOwner;
 import org.openapitools.model.RespondToInvitesResponseArray;
 import org.openapitools.model.SharedAudience;
 import org.openapitools.model.SharedAudienceResponse;
+import org.openapitools.model.SystemUserUpdateRequest;
 import org.openapitools.model.UpdateAssetGroupBody;
 import org.openapitools.model.UpdateAssetGroupResponse;
 import org.openapitools.model.UpdateInvitesResultsResponseArray;
@@ -68,14 +69,14 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-01-26T05:37:19.298233885Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-01-31T04:54:28.741368951Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public interface BusinessesApiService {
       public Response assetAccessRequestsCreate(String businessId, CreateAssetAccessRequestBody createAssetAccessRequestBody, SecurityContext securityContext);
       public Response assetGroupCreate(String businessId, CreateAssetGroupBody createAssetGroupBody, SecurityContext securityContext);
       public Response assetGroupDelete(String businessId, DeleteAssetGroupBody deleteAssetGroupBody, SecurityContext securityContext);
       public Response assetGroupUpdate(String businessId, UpdateAssetGroupBody updateAssetGroupBody, SecurityContext securityContext);
       public Response businessAccountAudiencesSharedAccountsList(String businessId, String audienceId, AudienceAccountType accountType, Integer pageSize, String bookmark, SecurityContext securityContext);
-      public Response businessAssetMembersGet(String businessId, String assetId, String bookmark, Integer pageSize, Integer startIndex, SecurityContext securityContext);
+      public Response businessAssetMembersGet(String businessId, String assetId, Boolean fetchSystemUsers, String bookmark, Integer pageSize, Integer startIndex, SecurityContext securityContext);
       public Response businessAssetPartnersGet(String businessId, String assetId, Integer startIndex, String bookmark, Integer pageSize, SecurityContext securityContext);
       public Response businessAssetsGet(String businessId, List<PermissionsWithOwner> permissions, String childAssetId, String assetGroupId, String assetType, Integer startIndex, String bookmark, Integer pageSize, SecurityContext securityContext);
       public Response businessMemberAssetsGet(String businessId, String memberId, String assetType, Integer startIndex, String bookmark, Integer pageSize, SecurityContext securityContext);
@@ -89,11 +90,12 @@ public interface BusinessesApiService {
       public Response deleteBusinessPartners(String businessId, DeletePartnersRequest deletePartnersRequest, SecurityContext securityContext);
       public Response deletePartnerAssetAccessHandlerImpl(String businessId, DeletePartnerAssetAccessBody deletePartnerAssetAccessBody, SecurityContext securityContext);
       public Response getBusinessEmployers(Integer pageSize, String bookmark, SecurityContext securityContext);
-      public Response getBusinessMembers(String businessId, Boolean assetsSummary, List<MemberBusinessRole> businessRoles, String memberIds, Integer startIndex, String bookmark, Integer pageSize, SecurityContext securityContext);
+      public Response getBusinessMembers(String businessId, Boolean fetchSystemUsers, Boolean assetsSummary, List<MemberBusinessRole> businessRoles, String memberIds, Integer startIndex, String bookmark, Integer pageSize, SecurityContext securityContext);
       public Response getBusinessPartners(String businessId, Boolean assetsSummary, PartnerType partnerType, String partnerIds, Integer startIndex, Integer pageSize, String bookmark, SecurityContext securityContext);
       public Response getInvites(String businessId, Boolean isMember, List<String> inviteStatus, InviteType inviteType, String bookmark, Integer pageSize, SecurityContext securityContext);
       public Response respondBusinessAccessInvites(AuthRespondInvitesBody authRespondInvitesBody, SecurityContext securityContext);
       public Response sharedAudiencesForBusinessList(String businessId, String bookmark, String order, Integer pageSize, SecurityContext securityContext);
+      public Response systemUserUpdate(String businessId, String systemUserId, SystemUserUpdateRequest systemUserUpdateRequest, SecurityContext securityContext);
       public Response updateBusinessMemberships(String businessId, List<@Valid UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody, SecurityContext securityContext);
       public Response updateBusinessToAdAccountSharedAudience(String businessId, SharedAudience sharedAudience, SecurityContext securityContext);
       public Response updateBusinessToBusinessSharedAudience(String businessId, BusinessSharedAudience businessSharedAudience, SecurityContext securityContext);

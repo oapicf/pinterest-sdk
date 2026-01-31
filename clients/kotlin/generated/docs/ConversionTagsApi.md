@@ -6,18 +6,18 @@ All URIs are relative to *https://api.pinterest.com/v5*
 | ------------- | ------------- | ------------- |
 | [**conversionTagsCreate**](ConversionTagsApi.md#conversionTagsCreate) | **POST** /ad_accounts/{ad_account_id}/conversion_tags | Create conversion tag |
 | [**conversionTagsGet**](ConversionTagsApi.md#conversionTagsGet) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id} | Get conversion tag |
-| [**conversionTagsList**](ConversionTagsApi.md#conversionTagsList) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | Get conversion tags |
+| [**conversionTagsList**](ConversionTagsApi.md#conversionTagsList) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | List conversion tags |
 | [**ocpmEligibleConversionTagsGet**](ConversionTagsApi.md#ocpmEligibleConversionTagsGet) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible | Get Ocpm eligible conversion tags |
 | [**pageVisitConversionTagsGet**](ConversionTagsApi.md#pageVisitConversionTagsGet) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/page_visit | Get page visit conversion tags |
 
 
 <a id="conversionTagsCreate"></a>
 # **conversionTagsCreate**
-> ConversionTagResponse conversionTagsCreate(adAccountId, conversionTagCreate)
+> ConversionTag conversionTagsCreate(adAccountId, conversionTagCreate)
 
 Create conversion tag
 
-Create a conversion tag, also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Pinterest tag&lt;/a&gt;, with the option to enable enhanced match.&lt;p/&gt; The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.&lt;p/&gt; For more information, see:&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot;&gt;Set up the Pinterest tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/\&quot;&gt;Pinterest Tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/#enhanced-match\&quot;&gt;Enhanced match&lt;/a&gt;
+Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account&#39;s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
 
 ### Example
 ```kotlin
@@ -27,9 +27,9 @@ Create a conversion tag, also known as &lt;a href&#x3D;\&quot;https://help.pinte
 
 val apiInstance = ConversionTagsApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val conversionTagCreate : ConversionTagCreate =  // ConversionTagCreate | Conversion Tag to create
+val conversionTagCreate : ConversionTagCreate =  // ConversionTagCreate | 
 try {
-    val result : ConversionTagResponse = apiInstance.conversionTagsCreate(adAccountId, conversionTagCreate)
+    val result : ConversionTag = apiInstance.conversionTagsCreate(adAccountId, conversionTagCreate)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling ConversionTagsApi#conversionTagsCreate")
@@ -44,11 +44,11 @@ try {
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **conversionTagCreate** | [**ConversionTagCreate**](ConversionTagCreate.md)| Conversion Tag to create | |
+| **conversionTagCreate** | [**ConversionTagCreate**](ConversionTagCreate.md)|  | |
 
 ### Return type
 
-[**ConversionTagResponse**](ConversionTagResponse.md)
+[**ConversionTag**](ConversionTag.md)
 
 ### Authorization
 
@@ -63,7 +63,7 @@ Configure pinterest_oauth2:
 
 <a id="conversionTagsGet"></a>
 # **conversionTagsGet**
-> ConversionTagResponse conversionTagsGet(adAccountId, conversionTagId)
+> ConversionTag conversionTagsGet(adAccountId, conversionTagId)
 
 Get conversion tag
 
@@ -79,7 +79,7 @@ val apiInstance = ConversionTagsApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
 val conversionTagId : kotlin.String = 2617998078212 // kotlin.String | Id of the conversion tag.
 try {
-    val result : ConversionTagResponse = apiInstance.conversionTagsGet(adAccountId, conversionTagId)
+    val result : ConversionTag = apiInstance.conversionTagsGet(adAccountId, conversionTagId)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling ConversionTagsApi#conversionTagsGet")
@@ -98,12 +98,14 @@ try {
 
 ### Return type
 
-[**ConversionTagResponse**](ConversionTagResponse.md)
+[**ConversionTag**](ConversionTag.md)
 
 ### Authorization
 
 
 Configure pinterest_oauth2:
+    ApiClient.accessToken = ""
+Configure client_credentials:
     ApiClient.accessToken = ""
 
 ### HTTP request headers
@@ -113,9 +115,9 @@ Configure pinterest_oauth2:
 
 <a id="conversionTagsList"></a>
 # **conversionTagsList**
-> ConversionTagListResponse conversionTagsList(adAccountId, filterDeleted)
+> ConversionTagsList200Response conversionTagsList(adAccountId, filterDeleted)
 
-Get conversion tags
+List conversion tags
 
 List conversion tags associated with an ad account.
 
@@ -127,9 +129,9 @@ List conversion tags associated with an ad account.
 
 val apiInstance = ConversionTagsApi()
 val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-val filterDeleted : kotlin.Boolean = true // kotlin.Boolean | Filter out deleted tags.
+val filterDeleted : kotlin.Boolean = true // kotlin.Boolean | Filter by deleted status
 try {
-    val result : ConversionTagListResponse = apiInstance.conversionTagsList(adAccountId, filterDeleted)
+    val result : ConversionTagsList200Response = apiInstance.conversionTagsList(adAccountId, filterDeleted)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling ConversionTagsApi#conversionTagsList")
@@ -144,16 +146,18 @@ try {
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **filterDeleted** | **kotlin.Boolean**| Filter out deleted tags. | [optional] [default to false] |
+| **filterDeleted** | **kotlin.Boolean**| Filter by deleted status | [optional] [default to false] |
 
 ### Return type
 
-[**ConversionTagListResponse**](ConversionTagListResponse.md)
+[**ConversionTagsList200Response**](ConversionTagsList200Response.md)
 
 ### Authorization
 
 
 Configure pinterest_oauth2:
+    ApiClient.accessToken = ""
+Configure client_credentials:
     ApiClient.accessToken = ""
 
 ### HTTP request headers
@@ -202,6 +206,8 @@ try {
 
 
 Configure pinterest_oauth2:
+    ApiClient.accessToken = ""
+Configure client_credentials:
     ApiClient.accessToken = ""
 
 ### HTTP request headers
@@ -256,6 +262,8 @@ try {
 
 
 Configure pinterest_oauth2:
+    ApiClient.accessToken = ""
+Configure client_credentials:
     ApiClient.accessToken = ""
 
 ### HTTP request headers

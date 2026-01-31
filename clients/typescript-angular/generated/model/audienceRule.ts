@@ -7,14 +7,26 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { PinterestTagEventData } from './pinterestTagEventData';
+import { EventData } from './eventData';
 import { ObjectiveType } from './objectiveType';
 
 
 /**
- * JSON object defining targeted audience users. Example rule formats per audience type:<br>CUSTOMER_LIST: { \"customer_list_id\": \"&lt;customer list ID&gt;\"}<br>ACTALIKE: { \"seed_id\": [\"&lt;audience ID&gt;\"], \"country\": \"US\", \"percentage\": \"10\" }<br>(Valid countries include: \"US\", \"CA\", and \"GB\". Percentage should be 1-10.<br>The targeted audience should be this % size across Pinterest.)<br>VISITOR: { \"visitor_source_id\": [\"&lt;conversion tag ID&gt;\"], \"retention_days\": \"180\", \"event_source\": {\"=\": [\"web\", \"mobile\"]}, \"ingestion_source\": {\"=\": [\"tag\"]}}<br>(Retention days should be 1-540. Retention applies to specific customers.)<br>ENGAGEMENT: {\"engagement_domain\": [\"www.entomi.com\"], \"engager_type\": 1}<br>For more details on engagement audiences, see <a href=\"/docs/redoc/adtech_ads_v4/#section/November-2021\" target=\"_blank\">November 2021 changelog</a>.
+ * JSON object defining targeted audience users. Example rule formats per audience type:<br>CUSTOMER_LIST: { \"customer_list_id\": \"&lt;customer list ID&gt;\"}<br>ACTALIKE: { \"seed_id\": [\"&lt;audience ID&gt;\"], \"country\": \"US\", \"percentage\": \"10\" }<br>(Valid countries include: \"US\", \"CA\", and \"GB\". Percentage should be 1-10.<br>The targeted audience should be this % size across Pinterest.)<br>VISITOR: { \"visitor_source_id\": [\"&lt;conversion tag ID&gt;\"], \"retention_days\": \"180\", \"event_source\": {\"=\": [\"web\", \"mobile\"]}, \"ingestion_source\": {\"=\": [\"tag\"]}}<br>(Retention days should be 1-540. Retention applies to specific customers.)<br>ENGAGEMENT: {\"engagement_domain\": [\"www.example.com\"], \"engager_type\": 1}<br>Learn more about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/#engagement-audience\" target=\"_blank\">engagement audiences</a>.
  */
 export interface AudienceRule { 
+    /**
+     * Ad account ID.
+     */
+    ad_account_id?: string;
+    /**
+     * Ad ID for engagement audience filter.
+     */
+    ad_id?: Array<string>;
+    /**
+     * Campaign ID for engagement audience filter.
+     */
+    campaign_id?: Array<string>;
     /**
      * Valid countries include: \"US\", \"CA\", and \"GB\".
      */
@@ -32,10 +44,26 @@ export interface AudienceRule {
      */
     engagement_type?: string;
     /**
+     * Optional for ENGAGEMENT. Engager type value should be 1-2.
+     */
+    engager_type?: number;
+    /**
      * A Pinterest tag event. Optional for VISITOR `audience_type`. Possible values are `pagevisit`, `signup`, `checkout`, `viewcategory`, `search`, `addtocart`, `watchvideo`, `lead`, and `custom`. This field also accepts a partner-defined Pinterest tag event.
      */
     event?: string;
-    event_data?: PinterestTagEventData;
+    event_data?: EventData;
+    /**
+     * Optional for VISITOR. You can use it as a {\'=\': [value]}. Supported values are: web, mobile, offline
+     */
+    event_source?: object;
+    /**
+     * Optional for VISITOR. You can use it as a {\'=\': [value]}. Supported values are: tag, mmp, file_upload, conversions_api
+     */
+    ingestion_source?: object;
+    /**
+     * Objective for engagement audience filter.
+     */
+    objective_type?: Array<ObjectiveType>;
     /**
      * Percentage should be 1-10. The targeted audience should be this % size across Pinterest.
      */
@@ -64,33 +92,5 @@ export interface AudienceRule {
      * The conversion tag ID, or the Pinterest tag ID, that you use on your website. For VISITOR `audience_type`.
      */
     visitor_source_id?: string;
-    /**
-     * Optional for VISITOR. You can use it as a {\'=\': [value]}. Supported values are: web, mobile, offline
-     */
-    event_source?: object;
-    /**
-     * Optional for VISITOR. You can use it as a {\'=\': [value]}. Supported values are: tag, mmp, file_upload, conversions_api
-     */
-    ingestion_source?: object;
-    /**
-     * Optional for ENGAGEMENT. Engager type value should be 1-2.
-     */
-    engager_type?: number;
-    /**
-     * Campaign ID for engagement audience filter.
-     */
-    campaign_id?: Array<string>;
-    /**
-     * Ad ID for engagement audience filter.
-     */
-    ad_id?: Array<string>;
-    /**
-     * Objective for engagement audience filter.
-     */
-    objective_type?: Array<ObjectiveType>;
-    /**
-     * Ad account ID.
-     */
-    ad_account_id?: string;
 }
 

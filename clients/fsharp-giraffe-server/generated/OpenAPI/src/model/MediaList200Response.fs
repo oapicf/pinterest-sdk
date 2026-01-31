@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.MediaUploadDetails
+open OpenAPI.Model.Media
 open OpenAPI.Model.string option
 
 module MediaList200Response =
@@ -11,7 +11,7 @@ module MediaList200Response =
 
 
   type media_list_200_response = {
-    Items : MediaUploadDetails[];
     Bookmark : string option;
+    Items : Media[];
   }
   //#endregion

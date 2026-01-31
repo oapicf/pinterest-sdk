@@ -5,10 +5,10 @@ Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,00
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**impression** | **array[character]** |  | [optional] 
+**audience_verification** | **array[character]** |  | [optional] 
+**buyable_button** | **array[character]** |  | [optional] 
 **click** | **array[character]** |  | [optional] 
 **engagement** | **array[character]** |  | [optional] 
-**buyable_button** | **array[character]** |  | [optional] 
-**audience_verification** | **array[character]** |  | [optional] 
+**impression** | **array[character]** |  | [optional] 
 
 

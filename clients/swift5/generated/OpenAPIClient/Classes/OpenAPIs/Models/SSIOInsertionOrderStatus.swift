@@ -12,32 +12,32 @@ import AnyCodable
 
 public struct SSIOInsertionOrderStatus: Codable, JSONEncodable, Hashable {
 
+    /** Salesforce insertion order creation time */
+    public var creationTime: String?
     /** Salesforce order id */
     public var pinOrderId: String?
     /** Salesforce insertion order status */
     public var status: String?
-    /** Salesforce insertion order creation time */
-    public var creationTime: String?
 
-    public init(pinOrderId: String? = nil, status: String? = nil, creationTime: String? = nil) {
+    public init(creationTime: String? = nil, pinOrderId: String? = nil, status: String? = nil) {
+        self.creationTime = creationTime
         self.pinOrderId = pinOrderId
         self.status = status
-        self.creationTime = creationTime
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case creationTime = "creation_time"
         case pinOrderId = "pin_order_id"
         case status
-        case creationTime = "creation_time"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(creationTime, forKey: .creationTime)
         try container.encodeIfPresent(pinOrderId, forKey: .pinOrderId)
         try container.encodeIfPresent(status, forKey: .status)
-        try container.encodeIfPresent(creationTime, forKey: .creationTime)
     }
 }
 

@@ -10,6 +10,7 @@ import org.openapitools.vertxweb.server.model.CatalogsCreativeAssetsProductGroup
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsCreativeAssetsProductGroup   {
   
+  private String catalogId;
 
 
   public enum CatalogTypeEnum {
@@ -29,26 +30,34 @@ public class CatalogsCreativeAssetsProductGroup   {
   }
 
   private CatalogTypeEnum catalogType;
-  private String id;
-  private String name;
+  private Integer createdAt;
   private String description;
   private CatalogsCreativeAssetsProductGroupFilters filters;
-  private Integer createdAt;
+  private String id;
+  private String name;
   private Integer updatedAt;
-  private String catalogId;
 
   public CatalogsCreativeAssetsProductGroup () {
 
   }
 
-  public CatalogsCreativeAssetsProductGroup (CatalogTypeEnum catalogType, String id, String name, String description, CatalogsCreativeAssetsProductGroupFilters filters, Integer createdAt, Integer updatedAt, String catalogId) {
+  public CatalogsCreativeAssetsProductGroup (String catalogId, CatalogTypeEnum catalogType, Integer createdAt, String description, CatalogsCreativeAssetsProductGroupFilters filters, String id, String name, Integer updatedAt) {
+    this.catalogId = catalogId;
     this.catalogType = catalogType;
-    this.id = id;
-    this.name = name;
+    this.createdAt = createdAt;
     this.description = description;
     this.filters = filters;
-    this.createdAt = createdAt;
+    this.id = id;
+    this.name = name;
     this.updatedAt = updatedAt;
+  }
+
+    
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
   }
 
@@ -62,21 +71,12 @@ public class CatalogsCreativeAssetsProductGroup   {
   }
 
     
-  @JsonProperty("id")
-  public String getId() {
-    return id;
+  @JsonProperty("created_at")
+  public Integer getCreatedAt() {
+    return createdAt;
   }
-  public void setId(String id) {
-    this.id = id;
-  }
-
-    
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
+  public void setCreatedAt(Integer createdAt) {
+    this.createdAt = createdAt;
   }
 
     
@@ -98,12 +98,21 @@ public class CatalogsCreativeAssetsProductGroup   {
   }
 
     
-  @JsonProperty("created_at")
-  public Integer getCreatedAt() {
-    return createdAt;
+  @JsonProperty("id")
+  public String getId() {
+    return id;
   }
-  public void setCreatedAt(Integer createdAt) {
-    this.createdAt = createdAt;
+  public void setId(String id) {
+    this.id = id;
+  }
+
+    
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
   }
 
     
@@ -113,15 +122,6 @@ public class CatalogsCreativeAssetsProductGroup   {
   }
   public void setUpdatedAt(Integer updatedAt) {
     this.updatedAt = updatedAt;
-  }
-
-    
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
-  }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
   }
 
 
@@ -134,19 +134,19 @@ public class CatalogsCreativeAssetsProductGroup   {
       return false;
     }
     CatalogsCreativeAssetsProductGroup catalogsCreativeAssetsProductGroup = (CatalogsCreativeAssetsProductGroup) o;
-    return Objects.equals(catalogType, catalogsCreativeAssetsProductGroup.catalogType) &&
-        Objects.equals(id, catalogsCreativeAssetsProductGroup.id) &&
-        Objects.equals(name, catalogsCreativeAssetsProductGroup.name) &&
+    return Objects.equals(catalogId, catalogsCreativeAssetsProductGroup.catalogId) &&
+        Objects.equals(catalogType, catalogsCreativeAssetsProductGroup.catalogType) &&
+        Objects.equals(createdAt, catalogsCreativeAssetsProductGroup.createdAt) &&
         Objects.equals(description, catalogsCreativeAssetsProductGroup.description) &&
         Objects.equals(filters, catalogsCreativeAssetsProductGroup.filters) &&
-        Objects.equals(createdAt, catalogsCreativeAssetsProductGroup.createdAt) &&
-        Objects.equals(updatedAt, catalogsCreativeAssetsProductGroup.updatedAt) &&
-        Objects.equals(catalogId, catalogsCreativeAssetsProductGroup.catalogId);
+        Objects.equals(id, catalogsCreativeAssetsProductGroup.id) &&
+        Objects.equals(name, catalogsCreativeAssetsProductGroup.name) &&
+        Objects.equals(updatedAt, catalogsCreativeAssetsProductGroup.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, id, name, description, filters, createdAt, updatedAt, catalogId);
+    return Objects.hash(catalogId, catalogType, createdAt, description, filters, id, name, updatedAt);
   }
 
   @Override
@@ -154,14 +154,14 @@ public class CatalogsCreativeAssetsProductGroup   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsProductGroup {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

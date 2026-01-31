@@ -6,35 +6,35 @@
 
 
 static lead_form_question_t *lead_form_question_create_internal(
-    pinterest_rest_api_lead_form_question_type__e question_type,
     pinterest_rest_api_lead_form_question_field_type__e custom_question_field_type,
     char *custom_question_label,
-    list_t *custom_question_options
+    list_t *custom_question_options,
+    pinterest_rest_api_lead_form_question_type__e question_type
     ) {
     lead_form_question_t *lead_form_question_local_var = malloc(sizeof(lead_form_question_t));
     if (!lead_form_question_local_var) {
         return NULL;
     }
-    lead_form_question_local_var->question_type = question_type;
     lead_form_question_local_var->custom_question_field_type = custom_question_field_type;
     lead_form_question_local_var->custom_question_label = custom_question_label;
     lead_form_question_local_var->custom_question_options = custom_question_options;
+    lead_form_question_local_var->question_type = question_type;
 
     lead_form_question_local_var->_library_owned = 1;
     return lead_form_question_local_var;
 }
 
 __attribute__((deprecated)) lead_form_question_t *lead_form_question_create(
-    pinterest_rest_api_lead_form_question_type__e question_type,
     pinterest_rest_api_lead_form_question_field_type__e custom_question_field_type,
     char *custom_question_label,
-    list_t *custom_question_options
+    list_t *custom_question_options,
+    pinterest_rest_api_lead_form_question_type__e question_type
     ) {
     return lead_form_question_create_internal (
-        question_type,
         custom_question_field_type,
         custom_question_label,
-        custom_question_options
+        custom_question_options,
+        question_type
         );
 }
 
@@ -63,19 +63,6 @@ void lead_form_question_free(lead_form_question_t *lead_form_question) {
 
 cJSON *lead_form_question_convertToJSON(lead_form_question_t *lead_form_question) {
     cJSON *item = cJSON_CreateObject();
-
-    // lead_form_question->question_type
-    if(lead_form_question->question_type != pinterest_rest_api_lead_form_question_type__NULL) {
-    cJSON *question_type_local_JSON = lead_form_question_type_convertToJSON(lead_form_question->question_type);
-    if(question_type_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "question_type", question_type_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
-    }
-    }
-
 
     // lead_form_question->custom_question_field_type
     if(lead_form_question->custom_question_field_type != pinterest_rest_api_lead_form_question_field_type__NULL) {
@@ -114,6 +101,19 @@ cJSON *lead_form_question_convertToJSON(lead_form_question_t *lead_form_question
     }
     }
 
+
+    // lead_form_question->question_type
+    if(lead_form_question->question_type != pinterest_rest_api_lead_form_question_type__NULL) {
+    cJSON *question_type_local_JSON = lead_form_question_type_convertToJSON(lead_form_question->question_type);
+    if(question_type_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "question_type", question_type_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
+    }
+    }
+
     return item;
 fail:
     if (item) {
@@ -126,23 +126,14 @@ lead_form_question_t *lead_form_question_parseFromJSON(cJSON *lead_form_question
 
     lead_form_question_t *lead_form_question_local_var = NULL;
 
-    // define the local variable for lead_form_question->question_type
-    pinterest_rest_api_lead_form_question_type__e question_type_local_nonprim = 0;
-
     // define the local variable for lead_form_question->custom_question_field_type
     pinterest_rest_api_lead_form_question_field_type__e custom_question_field_type_local_nonprim = 0;
 
     // define the local list for lead_form_question->custom_question_options
     list_t *custom_question_optionsList = NULL;
 
-    // lead_form_question->question_type
-    cJSON *question_type = cJSON_GetObjectItemCaseSensitive(lead_form_questionJSON, "question_type");
-    if (cJSON_IsNull(question_type)) {
-        question_type = NULL;
-    }
-    if (question_type) { 
-    question_type_local_nonprim = lead_form_question_type_parseFromJSON(question_type); //custom
-    }
+    // define the local variable for lead_form_question->question_type
+    pinterest_rest_api_lead_form_question_type__e question_type_local_nonprim = 0;
 
     // lead_form_question->custom_question_field_type
     cJSON *custom_question_field_type = cJSON_GetObjectItemCaseSensitive(lead_form_questionJSON, "custom_question_field_type");
@@ -187,19 +178,25 @@ lead_form_question_t *lead_form_question_parseFromJSON(cJSON *lead_form_question
     }
     }
 
+    // lead_form_question->question_type
+    cJSON *question_type = cJSON_GetObjectItemCaseSensitive(lead_form_questionJSON, "question_type");
+    if (cJSON_IsNull(question_type)) {
+        question_type = NULL;
+    }
+    if (question_type) { 
+    question_type_local_nonprim = lead_form_question_type_parseFromJSON(question_type); //custom
+    }
+
 
     lead_form_question_local_var = lead_form_question_create_internal (
-        question_type ? question_type_local_nonprim : 0,
         custom_question_field_type ? custom_question_field_type_local_nonprim : 0,
         custom_question_label && !cJSON_IsNull(custom_question_label) ? strdup(custom_question_label->valuestring) : NULL,
-        custom_question_options ? custom_question_optionsList : NULL
+        custom_question_options ? custom_question_optionsList : NULL,
+        question_type ? question_type_local_nonprim : 0
         );
 
     return lead_form_question_local_var;
 end:
-    if (question_type_local_nonprim) {
-        question_type_local_nonprim = 0;
-    }
     if (custom_question_field_type_local_nonprim) {
         custom_question_field_type_local_nonprim = 0;
     }
@@ -211,6 +208,9 @@ end:
         }
         list_freeList(custom_question_optionsList);
         custom_question_optionsList = NULL;
+    }
+    if (question_type_local_nonprim) {
+        question_type_local_nonprim = 0;
     }
     return NULL;
 

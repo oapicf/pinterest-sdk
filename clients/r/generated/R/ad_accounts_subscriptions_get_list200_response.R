@@ -7,16 +7,16 @@
 #' @title AdAccountsSubscriptionsGetList200Response
 #' @description AdAccountsSubscriptionsGetList200Response Class
 #' @format An \code{R6Class} generator object
-#' @field items  list(\link{AdAccountGetSubscriptionResponse})
 #' @field bookmark  character [optional]
+#' @field items  list(\link{LeadSubscription})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 AdAccountsSubscriptionsGetList200Response <- R6::R6Class(
   "AdAccountsSubscriptionsGetList200Response",
   public = list(
-    `items` = NULL,
     `bookmark` = NULL,
+    `items` = NULL,
 
     #' @description
     #' Initialize a new AdAccountsSubscriptionsGetList200Response class.
@@ -69,13 +69,13 @@ AdAccountsSubscriptionsGetList200Response <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       AdAccountsSubscriptionsGetList200ResponseObject <- list()
-      if (!is.null(self$`items`)) {
-        AdAccountsSubscriptionsGetList200ResponseObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toSimpleType())
-      }
       if (!is.null(self$`bookmark`)) {
         AdAccountsSubscriptionsGetList200ResponseObject[["bookmark"]] <-
           self$`bookmark`
+      }
+      if (!is.null(self$`items`)) {
+        AdAccountsSubscriptionsGetList200ResponseObject[["items"]] <-
+          lapply(self$`items`, function(x) x$toSimpleType())
       }
       return(AdAccountsSubscriptionsGetList200ResponseObject)
     },
@@ -87,11 +87,11 @@ AdAccountsSubscriptionsGetList200Response <- R6::R6Class(
     #' @return the instance of AdAccountsSubscriptionsGetList200Response
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`items`)) {
-        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[AdAccountGetSubscriptionResponse]", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`bookmark`)) {
         self$`bookmark` <- this_object$`bookmark`
+      }
+      if (!is.null(this_object$`items`)) {
+        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[LeadSubscription]", loadNamespace("openapi"))
       }
       self
     },
@@ -114,8 +114,8 @@ AdAccountsSubscriptionsGetList200Response <- R6::R6Class(
     #' @return the instance of AdAccountsSubscriptionsGetList200Response
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[AdAccountGetSubscriptionResponse]", loadNamespace("openapi"))
       self$`bookmark` <- this_object$`bookmark`
+      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[LeadSubscription]", loadNamespace("openapi"))
       self
     },
 

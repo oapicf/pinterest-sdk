@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TrendType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TrendType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  TrendType {
+    title = TrendType
+    description = TrendType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  TrendType {
+    title = TrendType
+    description = TrendType
+    implements = openapi_server.resourceTypes.TrendType
+
+  }
+}

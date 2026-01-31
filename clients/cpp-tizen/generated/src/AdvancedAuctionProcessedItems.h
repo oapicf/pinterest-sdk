@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "AdvancedAuctionProcessedItem.h"
+#include "AdvancedAuctionItemsSubmitRecord.h"
 #include <list>
 #include "Object.h"
 
@@ -56,15 +56,15 @@ public:
 	void setCatalogId(std::string  catalog_id);
 	/*! \brief Get Array of advanced auction processed items
 	 */
-	std::list<AdvancedAuctionProcessedItem> getItems();
+	std::list<AdvancedAuctionItemsSubmitRecord> getItems();
 
 	/*! \brief Set Array of advanced auction processed items
 	 */
-	void setItems(std::list <AdvancedAuctionProcessedItem> items);
+	void setItems(std::list <AdvancedAuctionItemsSubmitRecord> items);
 
 private:
 	std::string catalog_id;
-	std::list <AdvancedAuctionProcessedItem>items;
+	std::list <AdvancedAuctionItemsSubmitRecord>items;
 	void __init();
 	void __cleanup();
 

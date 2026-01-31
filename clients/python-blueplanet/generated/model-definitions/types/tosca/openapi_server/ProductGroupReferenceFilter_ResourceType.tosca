@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ProductGroupReferenceFilter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ProductGroupReferenceFilter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsProductGroupMultipleStringCriteria = openapi_server.resourceTypes.CatalogsProductGroupMultipleStringCriteria
+}
+resourceTypes {
+
+  ProductGroupReferenceFilter {
+    title = ProductGroupReferenceFilter
+    description = ProductGroupReferenceFilter
+    derivedFrom = Root
+    properties {
+        product_group {
+          type = CatalogsProductGroupMultipleStringCriteria
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ProductGroupReferenceFilter {
+    title = ProductGroupReferenceFilter
+    description = ProductGroupReferenceFilter
+    implements = openapi_server.resourceTypes.ProductGroupReferenceFilter
+
+  }
+}

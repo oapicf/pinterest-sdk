@@ -3,9 +3,9 @@ Protected Class LeadsExportCreateRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
+			ID for the ad collecting leads
 		#tag EndNote
-		start_date As String
+		ad_id As String
 	#tag EndProperty
 
 
@@ -19,9 +19,9 @@ Protected Class LeadsExportCreateRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
-			ID for the ad collecting leads
+			Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
 		#tag EndNote
-		ad_id As String
+		start_date As String
 	#tag EndProperty
 
 
@@ -62,7 +62,7 @@ Protected Class LeadsExportCreateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="start_date"
+			Name="ad_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -78,7 +78,7 @@ Protected Class LeadsExportCreateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="ad_id"
+			Name="start_date"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

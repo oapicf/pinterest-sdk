@@ -1,0 +1,24 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "completion_message" },
+      {"model": "disclosure_language" },
+      {"model": "has_accepted_terms" },
+      {"model": "name" },
+      {"model": "policy_links" },
+      {"model": "privacy_policy_link" },
+      {"model": "questions" },
+      {"model": "status" },
+    ]
+  }]
+}

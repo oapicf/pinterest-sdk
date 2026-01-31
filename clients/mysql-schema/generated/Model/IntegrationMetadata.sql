@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `IntegrationMetadata`
 --
-SELECT `id`, `external_business_id`, `connected_merchant_id`, `connected_user_id`, `connected_advertiser_id`, `connected_lba_id`, `connected_tag_id`, `partner_access_token_expiry`, `partner_refresh_token_expiry`, `scopes`, `created_timestamp`, `updated_timestamp`, `additional_id_1`, `partner_metadata` FROM `IntegrationMetadata` WHERE 1;
+SELECT `additional_id_1`, `connected_advertiser_id`, `connected_lba_id`, `connected_merchant_id`, `connected_tag_id`, `connected_user_id`, `created_timestamp`, `external_business_id`, `id`, `partner_access_token_expiry`, `partner_metadata`, `partner_refresh_token_expiry`, `scopes`, `updated_timestamp` FROM `IntegrationMetadata` WHERE 1;
 
 --
 -- INSERT template for table `IntegrationMetadata`
 --
-INSERT INTO `IntegrationMetadata`(`id`, `external_business_id`, `connected_merchant_id`, `connected_user_id`, `connected_advertiser_id`, `connected_lba_id`, `connected_tag_id`, `partner_access_token_expiry`, `partner_refresh_token_expiry`, `scopes`, `created_timestamp`, `updated_timestamp`, `additional_id_1`, `partner_metadata`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `IntegrationMetadata`(`additional_id_1`, `connected_advertiser_id`, `connected_lba_id`, `connected_merchant_id`, `connected_tag_id`, `connected_user_id`, `created_timestamp`, `external_business_id`, `id`, `partner_access_token_expiry`, `partner_metadata`, `partner_refresh_token_expiry`, `scopes`, `updated_timestamp`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `IntegrationMetadata`
 --
-UPDATE `IntegrationMetadata` SET `id` = ?, `external_business_id` = ?, `connected_merchant_id` = ?, `connected_user_id` = ?, `connected_advertiser_id` = ?, `connected_lba_id` = ?, `connected_tag_id` = ?, `partner_access_token_expiry` = ?, `partner_refresh_token_expiry` = ?, `scopes` = ?, `created_timestamp` = ?, `updated_timestamp` = ?, `additional_id_1` = ?, `partner_metadata` = ? WHERE 1;
+UPDATE `IntegrationMetadata` SET `additional_id_1` = ?, `connected_advertiser_id` = ?, `connected_lba_id` = ?, `connected_merchant_id` = ?, `connected_tag_id` = ?, `connected_user_id` = ?, `created_timestamp` = ?, `external_business_id` = ?, `id` = ?, `partner_access_token_expiry` = ?, `partner_metadata` = ?, `partner_refresh_token_expiry` = ?, `scopes` = ?, `updated_timestamp` = ? WHERE 1;
 
 --
 -- DELETE template for table `IntegrationMetadata`

@@ -23,15 +23,50 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Array with metrics, status, and pin id for the requested metric")
 @JsonTypeName("TopPinsAnalyticsResponse_pins_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TopPinsAnalyticsResponsePinsInner   {
-  private @Valid Map<String, BigDecimal> metrics = new HashMap<>();
   private @Valid Map<String, DataStatus> dataStatus = new HashMap<>();
+  private @Valid Map<String, BigDecimal> metrics = new HashMap<>();
   private String pinId;
 
   public TopPinsAnalyticsResponsePinsInner() {
   }
 
+  /**
+   **/
+  public TopPinsAnalyticsResponsePinsInner dataStatus(Map<String, DataStatus> dataStatus) {
+    this.dataStatus = dataStatus;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("data_status")
+  public Map<String, DataStatus> getDataStatus() {
+    return dataStatus;
+  }
+
+  @JsonProperty("data_status")
+  public void setDataStatus(Map<String, DataStatus> dataStatus) {
+    this.dataStatus = dataStatus;
+  }
+
+  public TopPinsAnalyticsResponsePinsInner putDataStatusItem(String key, DataStatus dataStatusItem) {
+    if (this.dataStatus == null) {
+      this.dataStatus = new HashMap<>();
+    }
+
+    this.dataStatus.put(key, dataStatusItem);
+    return this;
+  }
+
+  public TopPinsAnalyticsResponsePinsInner removeDataStatusItem(String key) {
+    if (this.dataStatus != null) {
+      this.dataStatus.remove(key);
+    }
+
+    return this;
+  }
   /**
    * The metric name and daily value for each requested metric
    **/
@@ -69,41 +104,6 @@ public class TopPinsAnalyticsResponsePinsInner   {
     return this;
   }
   /**
-   **/
-  public TopPinsAnalyticsResponsePinsInner dataStatus(Map<String, DataStatus> dataStatus) {
-    this.dataStatus = dataStatus;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("data_status")
-  public Map<String, DataStatus> getDataStatus() {
-    return dataStatus;
-  }
-
-  @JsonProperty("data_status")
-  public void setDataStatus(Map<String, DataStatus> dataStatus) {
-    this.dataStatus = dataStatus;
-  }
-
-  public TopPinsAnalyticsResponsePinsInner putDataStatusItem(String key, DataStatus dataStatusItem) {
-    if (this.dataStatus == null) {
-      this.dataStatus = new HashMap<>();
-    }
-
-    this.dataStatus.put(key, dataStatusItem);
-    return this;
-  }
-
-  public TopPinsAnalyticsResponsePinsInner removeDataStatusItem(String key) {
-    if (this.dataStatus != null) {
-      this.dataStatus.remove(key);
-    }
-
-    return this;
-  }
-  /**
    * The pin id
    **/
   public TopPinsAnalyticsResponsePinsInner pinId(String pinId) {
@@ -133,14 +133,14 @@ public class TopPinsAnalyticsResponsePinsInner   {
       return false;
     }
     TopPinsAnalyticsResponsePinsInner topPinsAnalyticsResponsePinsInner = (TopPinsAnalyticsResponsePinsInner) o;
-    return Objects.equals(this.metrics, topPinsAnalyticsResponsePinsInner.metrics) &&
-        Objects.equals(this.dataStatus, topPinsAnalyticsResponsePinsInner.dataStatus) &&
+    return Objects.equals(this.dataStatus, topPinsAnalyticsResponsePinsInner.dataStatus) &&
+        Objects.equals(this.metrics, topPinsAnalyticsResponsePinsInner.metrics) &&
         Objects.equals(this.pinId, topPinsAnalyticsResponsePinsInner.pinId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(metrics, dataStatus, pinId);
+    return Objects.hash(dataStatus, metrics, pinId);
   }
 
   @Override
@@ -148,8 +148,8 @@ public class TopPinsAnalyticsResponsePinsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TopPinsAnalyticsResponsePinsInner {\n");
     
-    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    dataStatus: ").append(toIndentedString(dataStatus)).append("\n");
+    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
     sb.append("}");
     return sb.toString();

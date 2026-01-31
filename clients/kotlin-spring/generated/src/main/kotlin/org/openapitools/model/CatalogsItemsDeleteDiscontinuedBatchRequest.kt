@@ -21,9 +21,9 @@ import io.swagger.v3.oas.annotations.media.Schema
 /**
  * Request object to discontinue catalogs items
  * @param country 
+ * @param items Array with catalogs items
  * @param language We recommend using the CatalogsLocale values.
  * @param operation 
- * @param items Array with catalogs items
  */
 data class CatalogsItemsDeleteDiscontinuedBatchRequest(
 
@@ -31,16 +31,16 @@ data class CatalogsItemsDeleteDiscontinuedBatchRequest(
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("country", required = true) val country: Country,
 
+    @field:Valid
+    @Schema(example = "null", required = true, description = "Array with catalogs items")
+    @get:JsonProperty("items", required = true) val items: kotlin.collections.List<ItemDeleteDiscontinuedBatchRecord>,
+
     @Schema(example = "null", required = true, description = "We recommend using the CatalogsLocale values.")
     @get:JsonProperty("language", required = true) val language: CatalogsItemsDeleteDiscontinuedBatchRequest.Language,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("operation", required = true) val operation: BatchOperation,
-
-    @field:Valid
-    @Schema(example = "null", required = true, description = "Array with catalogs items")
-    @get:JsonProperty("items", required = true) val items: kotlin.collections.List<ItemDeleteDiscontinuedBatchRecord>
+    @get:JsonProperty("operation", required = true) val operation: BatchOperation
 ) {
 
     /**

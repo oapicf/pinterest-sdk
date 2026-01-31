@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsProductGroupStatus"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsProductGroupStatus"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CatalogsProductGroupStatus {
+    title = CatalogsProductGroupStatus
+    description = CatalogsProductGroupStatus
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsProductGroupStatus {
+    title = CatalogsProductGroupStatus
+    description = CatalogsProductGroupStatus
+    implements = openapi_server.resourceTypes.CatalogsProductGroupStatus
+
+  }
+}

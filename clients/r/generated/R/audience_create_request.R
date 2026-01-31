@@ -10,8 +10,8 @@
 #' @field ad_account_id Ad account ID. character [optional]
 #' @field name Audience name. character
 #' @field rule  \link{AudienceRule}
-#' @field description Audience description. character [optional]
 #' @field audience_type <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive. \link{AudienceType}
+#' @field description Audience description. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -21,8 +21,8 @@ AudienceCreateRequest <- R6::R6Class(
     `ad_account_id` = NULL,
     `name` = NULL,
     `rule` = NULL,
-    `description` = NULL,
     `audience_type` = NULL,
+    `description` = NULL,
 
     #' @description
     #' Initialize a new AudienceCreateRequest class.
@@ -108,13 +108,13 @@ AudienceCreateRequest <- R6::R6Class(
         AudienceCreateRequestObject[["rule"]] <-
           self$`rule`$toSimpleType()
       }
-      if (!is.null(self$`description`)) {
-        AudienceCreateRequestObject[["description"]] <-
-          self$`description`
-      }
       if (!is.null(self$`audience_type`)) {
         AudienceCreateRequestObject[["audience_type"]] <-
           self$`audience_type`$toSimpleType()
+      }
+      if (!is.null(self$`description`)) {
+        AudienceCreateRequestObject[["description"]] <-
+          self$`description`
       }
       return(AudienceCreateRequestObject)
     },
@@ -137,13 +137,13 @@ AudienceCreateRequest <- R6::R6Class(
         `rule_object`$fromJSON(jsonlite::toJSON(this_object$`rule`, auto_unbox = TRUE, digits = NA))
         self$`rule` <- `rule_object`
       }
-      if (!is.null(this_object$`description`)) {
-        self$`description` <- this_object$`description`
-      }
       if (!is.null(this_object$`audience_type`)) {
         `audience_type_object` <- AudienceType$new()
         `audience_type_object`$fromJSON(jsonlite::toJSON(this_object$`audience_type`, auto_unbox = TRUE, digits = NA))
         self$`audience_type` <- `audience_type_object`
+      }
+      if (!is.null(this_object$`description`)) {
+        self$`description` <- this_object$`description`
       }
       self
     },
@@ -169,8 +169,8 @@ AudienceCreateRequest <- R6::R6Class(
       self$`ad_account_id` <- this_object$`ad_account_id`
       self$`name` <- this_object$`name`
       self$`rule` <- AudienceRule$new()$fromJSON(jsonlite::toJSON(this_object$`rule`, auto_unbox = TRUE, digits = NA))
-      self$`description` <- this_object$`description`
       self$`audience_type` <- AudienceType$new()$fromJSON(jsonlite::toJSON(this_object$`audience_type`, auto_unbox = TRUE, digits = NA))
+      self$`description` <- this_object$`description`
       self
     },
 

@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsReportDistributionIssueFilter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsReportDistributionIssueFilter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CatalogsReportDistributionIssueFilter {
+    title = CatalogsReportDistributionIssueFilter
+    description = CatalogsReportDistributionIssueFilter
+    derivedFrom = Root
+    properties {
+        catalog_id {
+          type =  string
+          description = "Unique identifier of a catalog. If not given, oldest catalog will be used"
+          optional = false
+        }
+        report_type {
+          type =  string
+          description = ""
+          enum = ["DISTRIBUTION_ISSUES"]
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsReportDistributionIssueFilter {
+    title = CatalogsReportDistributionIssueFilter
+    description = CatalogsReportDistributionIssueFilter
+    implements = openapi_server.resourceTypes.CatalogsReportDistributionIssueFilter
+
+  }
+}

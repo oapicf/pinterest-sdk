@@ -73,8 +73,8 @@ private class OASUserWebsiteVerificationCodeTest {
     private static void maintainRenamedProperties() {
         OASUserWebsiteVerificationCode userWebsiteVerificationCode = new OASUserWebsiteVerificationCode();
         Map<String, String> x-property-mappings = userWebsiteVerificationCode.getx-property-mappings();
-        System.assertEquals('verificationCode', x-property-mappings.get('verification_code'));
         System.assertEquals('dnsTxtRecord', x-property-mappings.get('dns_txt_record'));
         System.assertEquals('fileContent', x-property-mappings.get('file_content'));
+        System.assertEquals('verificationCode', x-property-mappings.get('verification_code'));
     }
 }

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,49 +22,49 @@ var _ MappedNullable = &SSIOCreateInsertionOrderRequest{}
 
 // SSIOCreateInsertionOrderRequest struct for SSIOCreateInsertionOrderRequest
 type SSIOCreateInsertionOrderRequest struct {
-	// Starting date of time period. Format: YYYY-MM-DD
-	StartDate string `json:"start_date" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
-	// End date of time period. Format: YYYY-MM-DD
-	EndDate *string `json:"end_date,omitempty" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
-	// The po number
-	PoNumber string `json:"po_number"`
-	// If Budget order line, the budget amount.
-	BudgetAmount *float32 `json:"budget_amount,omitempty"`
+	// URL link for agency
+	AgencyLink *string `json:"agency_link,omitempty"`
+	// The billing contact email
+	BillingContactEmail string `json:"billing_contact_email"`
 	// The billing contact first name
 	BillingContactFirstname string `json:"billing_contact_firstname"`
 	// The billing contact last name
 	BillingContactLastname string `json:"billing_contact_lastname"`
-	// The billing contact email
-	BillingContactEmail string `json:"billing_contact_email"`
+	// If Budget order line, the budget amount.
+	BudgetAmount *float32 `json:"budget_amount,omitempty"`
+	// End date of time period. Format: YYYY-MM-DD
+	EndDate *string `json:"end_date,omitempty" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
+	// The media contact email
+	MediaContactEmail string `json:"media_contact_email"`
 	// The media contact first name
 	MediaContactFirstname string `json:"media_contact_firstname"`
 	// The media contact last name
 	MediaContactLastname string `json:"media_contact_lastname"`
-	// The media contact email
-	MediaContactEmail string `json:"media_contact_email"`
-	// URL link for agency
-	AgencyLink *string `json:"agency_link,omitempty"`
+	// The po number
+	PoNumber string `json:"po_number"`
+	// Starting date of time period. Format: YYYY-MM-DD
+	StartDate string `json:"start_date" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
 	// The email of user submitting the insertion order
 	UserEmail *string `json:"user_email,omitempty"`
-	// The UTC timestamp (to the nearest sec) of when terms were accepted
-	AcceptedTermsTime *int32 `json:"accepted_terms_time,omitempty"`
-	// The pmp id
-	PmpId string `json:"pmp_id"`
-	// The order name
-	OrderName string `json:"order_name"`
-	// Type can be Budget or Perpetual
-	OrderLineType string `json:"order_line_type"`
 	// The SFDC id for the terms
 	AcceptedTermsId string `json:"accepted_terms_id"`
-	// The bill-to company id
-	BilltoCompanyId string `json:"billto_company_id"`
-	// The bill-to business address id
-	BilltoBusinessAddressId string `json:"billto_business_address_id"`
+	// The UTC timestamp (to the nearest sec) of when terms were accepted
+	AcceptedTermsTime *int32 `json:"accepted_terms_time,omitempty"`
 	// The bill-to billing address id
 	BilltoBillingAddressId string `json:"billto_billing_address_id"`
+	// The bill-to business address id
+	BilltoBusinessAddressId string `json:"billto_business_address_id"`
+	// The bill-to company id
+	BilltoCompanyId string `json:"billto_company_id"`
+	CurrencyInfo Currency `json:"currency_info"`
 	// If Ongoing (perpetual) order line, the estimated monthly spend
 	EstimatedMonthlySpend *float32 `json:"estimated_monthly_spend,omitempty"`
-	CurrencyInfo Currency `json:"currency_info"`
+	// Type can be Budget or Perpetual
+	OrderLineType string `json:"order_line_type"`
+	// The order name
+	OrderName string `json:"order_name"`
+	// The pmp id
+	PmpId string `json:"pmp_id"`
 }
 
 type _SSIOCreateInsertionOrderRequest SSIOCreateInsertionOrderRequest
@@ -73,24 +73,24 @@ type _SSIOCreateInsertionOrderRequest SSIOCreateInsertionOrderRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSSIOCreateInsertionOrderRequest(startDate string, poNumber string, billingContactFirstname string, billingContactLastname string, billingContactEmail string, mediaContactFirstname string, mediaContactLastname string, mediaContactEmail string, pmpId string, orderName string, orderLineType string, acceptedTermsId string, billtoCompanyId string, billtoBusinessAddressId string, billtoBillingAddressId string, currencyInfo Currency) *SSIOCreateInsertionOrderRequest {
+func NewSSIOCreateInsertionOrderRequest(billingContactEmail string, billingContactFirstname string, billingContactLastname string, mediaContactEmail string, mediaContactFirstname string, mediaContactLastname string, poNumber string, startDate string, acceptedTermsId string, billtoBillingAddressId string, billtoBusinessAddressId string, billtoCompanyId string, currencyInfo Currency, orderLineType string, orderName string, pmpId string) *SSIOCreateInsertionOrderRequest {
 	this := SSIOCreateInsertionOrderRequest{}
-	this.StartDate = startDate
-	this.PoNumber = poNumber
+	this.BillingContactEmail = billingContactEmail
 	this.BillingContactFirstname = billingContactFirstname
 	this.BillingContactLastname = billingContactLastname
-	this.BillingContactEmail = billingContactEmail
+	this.MediaContactEmail = mediaContactEmail
 	this.MediaContactFirstname = mediaContactFirstname
 	this.MediaContactLastname = mediaContactLastname
-	this.MediaContactEmail = mediaContactEmail
-	this.PmpId = pmpId
-	this.OrderName = orderName
-	this.OrderLineType = orderLineType
+	this.PoNumber = poNumber
+	this.StartDate = startDate
 	this.AcceptedTermsId = acceptedTermsId
-	this.BilltoCompanyId = billtoCompanyId
-	this.BilltoBusinessAddressId = billtoBusinessAddressId
 	this.BilltoBillingAddressId = billtoBillingAddressId
+	this.BilltoBusinessAddressId = billtoBusinessAddressId
+	this.BilltoCompanyId = billtoCompanyId
 	this.CurrencyInfo = currencyInfo
+	this.OrderLineType = orderLineType
+	this.OrderName = orderName
+	this.PmpId = pmpId
 	return &this
 }
 
@@ -102,116 +102,60 @@ func NewSSIOCreateInsertionOrderRequestWithDefaults() *SSIOCreateInsertionOrderR
 	return &this
 }
 
-// GetStartDate returns the StartDate field value
-func (o *SSIOCreateInsertionOrderRequest) GetStartDate() string {
-	if o == nil {
+// GetAgencyLink returns the AgencyLink field value if set, zero value otherwise.
+func (o *SSIOCreateInsertionOrderRequest) GetAgencyLink() string {
+	if o == nil || IsNil(o.AgencyLink) {
 		var ret string
 		return ret
 	}
-
-	return o.StartDate
+	return *o.AgencyLink
 }
 
-// GetStartDateOk returns a tuple with the StartDate field value
+// GetAgencyLinkOk returns a tuple with the AgencyLink field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SSIOCreateInsertionOrderRequest) GetStartDateOk() (*string, bool) {
-	if o == nil {
+func (o *SSIOCreateInsertionOrderRequest) GetAgencyLinkOk() (*string, bool) {
+	if o == nil || IsNil(o.AgencyLink) {
 		return nil, false
 	}
-	return &o.StartDate, true
+	return o.AgencyLink, true
 }
 
-// SetStartDate sets field value
-func (o *SSIOCreateInsertionOrderRequest) SetStartDate(v string) {
-	o.StartDate = v
-}
-
-// GetEndDate returns the EndDate field value if set, zero value otherwise.
-func (o *SSIOCreateInsertionOrderRequest) GetEndDate() string {
-	if o == nil || IsNil(o.EndDate) {
-		var ret string
-		return ret
-	}
-	return *o.EndDate
-}
-
-// GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SSIOCreateInsertionOrderRequest) GetEndDateOk() (*string, bool) {
-	if o == nil || IsNil(o.EndDate) {
-		return nil, false
-	}
-	return o.EndDate, true
-}
-
-// HasEndDate returns a boolean if a field has been set.
-func (o *SSIOCreateInsertionOrderRequest) HasEndDate() bool {
-	if o != nil && !IsNil(o.EndDate) {
+// HasAgencyLink returns a boolean if a field has been set.
+func (o *SSIOCreateInsertionOrderRequest) HasAgencyLink() bool {
+	if o != nil && !IsNil(o.AgencyLink) {
 		return true
 	}
 
 	return false
 }
 
-// SetEndDate gets a reference to the given string and assigns it to the EndDate field.
-func (o *SSIOCreateInsertionOrderRequest) SetEndDate(v string) {
-	o.EndDate = &v
+// SetAgencyLink gets a reference to the given string and assigns it to the AgencyLink field.
+func (o *SSIOCreateInsertionOrderRequest) SetAgencyLink(v string) {
+	o.AgencyLink = &v
 }
 
-// GetPoNumber returns the PoNumber field value
-func (o *SSIOCreateInsertionOrderRequest) GetPoNumber() string {
+// GetBillingContactEmail returns the BillingContactEmail field value
+func (o *SSIOCreateInsertionOrderRequest) GetBillingContactEmail() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.PoNumber
+	return o.BillingContactEmail
 }
 
-// GetPoNumberOk returns a tuple with the PoNumber field value
+// GetBillingContactEmailOk returns a tuple with the BillingContactEmail field value
 // and a boolean to check if the value has been set.
-func (o *SSIOCreateInsertionOrderRequest) GetPoNumberOk() (*string, bool) {
+func (o *SSIOCreateInsertionOrderRequest) GetBillingContactEmailOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.PoNumber, true
+	return &o.BillingContactEmail, true
 }
 
-// SetPoNumber sets field value
-func (o *SSIOCreateInsertionOrderRequest) SetPoNumber(v string) {
-	o.PoNumber = v
-}
-
-// GetBudgetAmount returns the BudgetAmount field value if set, zero value otherwise.
-func (o *SSIOCreateInsertionOrderRequest) GetBudgetAmount() float32 {
-	if o == nil || IsNil(o.BudgetAmount) {
-		var ret float32
-		return ret
-	}
-	return *o.BudgetAmount
-}
-
-// GetBudgetAmountOk returns a tuple with the BudgetAmount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SSIOCreateInsertionOrderRequest) GetBudgetAmountOk() (*float32, bool) {
-	if o == nil || IsNil(o.BudgetAmount) {
-		return nil, false
-	}
-	return o.BudgetAmount, true
-}
-
-// HasBudgetAmount returns a boolean if a field has been set.
-func (o *SSIOCreateInsertionOrderRequest) HasBudgetAmount() bool {
-	if o != nil && !IsNil(o.BudgetAmount) {
-		return true
-	}
-
-	return false
-}
-
-// SetBudgetAmount gets a reference to the given float32 and assigns it to the BudgetAmount field.
-func (o *SSIOCreateInsertionOrderRequest) SetBudgetAmount(v float32) {
-	o.BudgetAmount = &v
+// SetBillingContactEmail sets field value
+func (o *SSIOCreateInsertionOrderRequest) SetBillingContactEmail(v string) {
+	o.BillingContactEmail = v
 }
 
 // GetBillingContactFirstname returns the BillingContactFirstname field value
@@ -262,28 +206,92 @@ func (o *SSIOCreateInsertionOrderRequest) SetBillingContactLastname(v string) {
 	o.BillingContactLastname = v
 }
 
-// GetBillingContactEmail returns the BillingContactEmail field value
-func (o *SSIOCreateInsertionOrderRequest) GetBillingContactEmail() string {
+// GetBudgetAmount returns the BudgetAmount field value if set, zero value otherwise.
+func (o *SSIOCreateInsertionOrderRequest) GetBudgetAmount() float32 {
+	if o == nil || IsNil(o.BudgetAmount) {
+		var ret float32
+		return ret
+	}
+	return *o.BudgetAmount
+}
+
+// GetBudgetAmountOk returns a tuple with the BudgetAmount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SSIOCreateInsertionOrderRequest) GetBudgetAmountOk() (*float32, bool) {
+	if o == nil || IsNil(o.BudgetAmount) {
+		return nil, false
+	}
+	return o.BudgetAmount, true
+}
+
+// HasBudgetAmount returns a boolean if a field has been set.
+func (o *SSIOCreateInsertionOrderRequest) HasBudgetAmount() bool {
+	if o != nil && !IsNil(o.BudgetAmount) {
+		return true
+	}
+
+	return false
+}
+
+// SetBudgetAmount gets a reference to the given float32 and assigns it to the BudgetAmount field.
+func (o *SSIOCreateInsertionOrderRequest) SetBudgetAmount(v float32) {
+	o.BudgetAmount = &v
+}
+
+// GetEndDate returns the EndDate field value if set, zero value otherwise.
+func (o *SSIOCreateInsertionOrderRequest) GetEndDate() string {
+	if o == nil || IsNil(o.EndDate) {
+		var ret string
+		return ret
+	}
+	return *o.EndDate
+}
+
+// GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SSIOCreateInsertionOrderRequest) GetEndDateOk() (*string, bool) {
+	if o == nil || IsNil(o.EndDate) {
+		return nil, false
+	}
+	return o.EndDate, true
+}
+
+// HasEndDate returns a boolean if a field has been set.
+func (o *SSIOCreateInsertionOrderRequest) HasEndDate() bool {
+	if o != nil && !IsNil(o.EndDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetEndDate gets a reference to the given string and assigns it to the EndDate field.
+func (o *SSIOCreateInsertionOrderRequest) SetEndDate(v string) {
+	o.EndDate = &v
+}
+
+// GetMediaContactEmail returns the MediaContactEmail field value
+func (o *SSIOCreateInsertionOrderRequest) GetMediaContactEmail() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.BillingContactEmail
+	return o.MediaContactEmail
 }
 
-// GetBillingContactEmailOk returns a tuple with the BillingContactEmail field value
+// GetMediaContactEmailOk returns a tuple with the MediaContactEmail field value
 // and a boolean to check if the value has been set.
-func (o *SSIOCreateInsertionOrderRequest) GetBillingContactEmailOk() (*string, bool) {
+func (o *SSIOCreateInsertionOrderRequest) GetMediaContactEmailOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.BillingContactEmail, true
+	return &o.MediaContactEmail, true
 }
 
-// SetBillingContactEmail sets field value
-func (o *SSIOCreateInsertionOrderRequest) SetBillingContactEmail(v string) {
-	o.BillingContactEmail = v
+// SetMediaContactEmail sets field value
+func (o *SSIOCreateInsertionOrderRequest) SetMediaContactEmail(v string) {
+	o.MediaContactEmail = v
 }
 
 // GetMediaContactFirstname returns the MediaContactFirstname field value
@@ -334,60 +342,52 @@ func (o *SSIOCreateInsertionOrderRequest) SetMediaContactLastname(v string) {
 	o.MediaContactLastname = v
 }
 
-// GetMediaContactEmail returns the MediaContactEmail field value
-func (o *SSIOCreateInsertionOrderRequest) GetMediaContactEmail() string {
+// GetPoNumber returns the PoNumber field value
+func (o *SSIOCreateInsertionOrderRequest) GetPoNumber() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.MediaContactEmail
+	return o.PoNumber
 }
 
-// GetMediaContactEmailOk returns a tuple with the MediaContactEmail field value
+// GetPoNumberOk returns a tuple with the PoNumber field value
 // and a boolean to check if the value has been set.
-func (o *SSIOCreateInsertionOrderRequest) GetMediaContactEmailOk() (*string, bool) {
+func (o *SSIOCreateInsertionOrderRequest) GetPoNumberOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.MediaContactEmail, true
+	return &o.PoNumber, true
 }
 
-// SetMediaContactEmail sets field value
-func (o *SSIOCreateInsertionOrderRequest) SetMediaContactEmail(v string) {
-	o.MediaContactEmail = v
+// SetPoNumber sets field value
+func (o *SSIOCreateInsertionOrderRequest) SetPoNumber(v string) {
+	o.PoNumber = v
 }
 
-// GetAgencyLink returns the AgencyLink field value if set, zero value otherwise.
-func (o *SSIOCreateInsertionOrderRequest) GetAgencyLink() string {
-	if o == nil || IsNil(o.AgencyLink) {
+// GetStartDate returns the StartDate field value
+func (o *SSIOCreateInsertionOrderRequest) GetStartDate() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.AgencyLink
+
+	return o.StartDate
 }
 
-// GetAgencyLinkOk returns a tuple with the AgencyLink field value if set, nil otherwise
+// GetStartDateOk returns a tuple with the StartDate field value
 // and a boolean to check if the value has been set.
-func (o *SSIOCreateInsertionOrderRequest) GetAgencyLinkOk() (*string, bool) {
-	if o == nil || IsNil(o.AgencyLink) {
+func (o *SSIOCreateInsertionOrderRequest) GetStartDateOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AgencyLink, true
+	return &o.StartDate, true
 }
 
-// HasAgencyLink returns a boolean if a field has been set.
-func (o *SSIOCreateInsertionOrderRequest) HasAgencyLink() bool {
-	if o != nil && !IsNil(o.AgencyLink) {
-		return true
-	}
-
-	return false
-}
-
-// SetAgencyLink gets a reference to the given string and assigns it to the AgencyLink field.
-func (o *SSIOCreateInsertionOrderRequest) SetAgencyLink(v string) {
-	o.AgencyLink = &v
+// SetStartDate sets field value
+func (o *SSIOCreateInsertionOrderRequest) SetStartDate(v string) {
+	o.StartDate = v
 }
 
 // GetUserEmail returns the UserEmail field value if set, zero value otherwise.
@@ -422,6 +422,30 @@ func (o *SSIOCreateInsertionOrderRequest) SetUserEmail(v string) {
 	o.UserEmail = &v
 }
 
+// GetAcceptedTermsId returns the AcceptedTermsId field value
+func (o *SSIOCreateInsertionOrderRequest) GetAcceptedTermsId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.AcceptedTermsId
+}
+
+// GetAcceptedTermsIdOk returns a tuple with the AcceptedTermsId field value
+// and a boolean to check if the value has been set.
+func (o *SSIOCreateInsertionOrderRequest) GetAcceptedTermsIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AcceptedTermsId, true
+}
+
+// SetAcceptedTermsId sets field value
+func (o *SSIOCreateInsertionOrderRequest) SetAcceptedTermsId(v string) {
+	o.AcceptedTermsId = v
+}
+
 // GetAcceptedTermsTime returns the AcceptedTermsTime field value if set, zero value otherwise.
 func (o *SSIOCreateInsertionOrderRequest) GetAcceptedTermsTime() int32 {
 	if o == nil || IsNil(o.AcceptedTermsTime) {
@@ -454,124 +478,28 @@ func (o *SSIOCreateInsertionOrderRequest) SetAcceptedTermsTime(v int32) {
 	o.AcceptedTermsTime = &v
 }
 
-// GetPmpId returns the PmpId field value
-func (o *SSIOCreateInsertionOrderRequest) GetPmpId() string {
+// GetBilltoBillingAddressId returns the BilltoBillingAddressId field value
+func (o *SSIOCreateInsertionOrderRequest) GetBilltoBillingAddressId() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.PmpId
+	return o.BilltoBillingAddressId
 }
 
-// GetPmpIdOk returns a tuple with the PmpId field value
+// GetBilltoBillingAddressIdOk returns a tuple with the BilltoBillingAddressId field value
 // and a boolean to check if the value has been set.
-func (o *SSIOCreateInsertionOrderRequest) GetPmpIdOk() (*string, bool) {
+func (o *SSIOCreateInsertionOrderRequest) GetBilltoBillingAddressIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.PmpId, true
+	return &o.BilltoBillingAddressId, true
 }
 
-// SetPmpId sets field value
-func (o *SSIOCreateInsertionOrderRequest) SetPmpId(v string) {
-	o.PmpId = v
-}
-
-// GetOrderName returns the OrderName field value
-func (o *SSIOCreateInsertionOrderRequest) GetOrderName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.OrderName
-}
-
-// GetOrderNameOk returns a tuple with the OrderName field value
-// and a boolean to check if the value has been set.
-func (o *SSIOCreateInsertionOrderRequest) GetOrderNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.OrderName, true
-}
-
-// SetOrderName sets field value
-func (o *SSIOCreateInsertionOrderRequest) SetOrderName(v string) {
-	o.OrderName = v
-}
-
-// GetOrderLineType returns the OrderLineType field value
-func (o *SSIOCreateInsertionOrderRequest) GetOrderLineType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.OrderLineType
-}
-
-// GetOrderLineTypeOk returns a tuple with the OrderLineType field value
-// and a boolean to check if the value has been set.
-func (o *SSIOCreateInsertionOrderRequest) GetOrderLineTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.OrderLineType, true
-}
-
-// SetOrderLineType sets field value
-func (o *SSIOCreateInsertionOrderRequest) SetOrderLineType(v string) {
-	o.OrderLineType = v
-}
-
-// GetAcceptedTermsId returns the AcceptedTermsId field value
-func (o *SSIOCreateInsertionOrderRequest) GetAcceptedTermsId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.AcceptedTermsId
-}
-
-// GetAcceptedTermsIdOk returns a tuple with the AcceptedTermsId field value
-// and a boolean to check if the value has been set.
-func (o *SSIOCreateInsertionOrderRequest) GetAcceptedTermsIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.AcceptedTermsId, true
-}
-
-// SetAcceptedTermsId sets field value
-func (o *SSIOCreateInsertionOrderRequest) SetAcceptedTermsId(v string) {
-	o.AcceptedTermsId = v
-}
-
-// GetBilltoCompanyId returns the BilltoCompanyId field value
-func (o *SSIOCreateInsertionOrderRequest) GetBilltoCompanyId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.BilltoCompanyId
-}
-
-// GetBilltoCompanyIdOk returns a tuple with the BilltoCompanyId field value
-// and a boolean to check if the value has been set.
-func (o *SSIOCreateInsertionOrderRequest) GetBilltoCompanyIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.BilltoCompanyId, true
-}
-
-// SetBilltoCompanyId sets field value
-func (o *SSIOCreateInsertionOrderRequest) SetBilltoCompanyId(v string) {
-	o.BilltoCompanyId = v
+// SetBilltoBillingAddressId sets field value
+func (o *SSIOCreateInsertionOrderRequest) SetBilltoBillingAddressId(v string) {
+	o.BilltoBillingAddressId = v
 }
 
 // GetBilltoBusinessAddressId returns the BilltoBusinessAddressId field value
@@ -598,28 +526,52 @@ func (o *SSIOCreateInsertionOrderRequest) SetBilltoBusinessAddressId(v string) {
 	o.BilltoBusinessAddressId = v
 }
 
-// GetBilltoBillingAddressId returns the BilltoBillingAddressId field value
-func (o *SSIOCreateInsertionOrderRequest) GetBilltoBillingAddressId() string {
+// GetBilltoCompanyId returns the BilltoCompanyId field value
+func (o *SSIOCreateInsertionOrderRequest) GetBilltoCompanyId() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.BilltoBillingAddressId
+	return o.BilltoCompanyId
 }
 
-// GetBilltoBillingAddressIdOk returns a tuple with the BilltoBillingAddressId field value
+// GetBilltoCompanyIdOk returns a tuple with the BilltoCompanyId field value
 // and a boolean to check if the value has been set.
-func (o *SSIOCreateInsertionOrderRequest) GetBilltoBillingAddressIdOk() (*string, bool) {
+func (o *SSIOCreateInsertionOrderRequest) GetBilltoCompanyIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.BilltoBillingAddressId, true
+	return &o.BilltoCompanyId, true
 }
 
-// SetBilltoBillingAddressId sets field value
-func (o *SSIOCreateInsertionOrderRequest) SetBilltoBillingAddressId(v string) {
-	o.BilltoBillingAddressId = v
+// SetBilltoCompanyId sets field value
+func (o *SSIOCreateInsertionOrderRequest) SetBilltoCompanyId(v string) {
+	o.BilltoCompanyId = v
+}
+
+// GetCurrencyInfo returns the CurrencyInfo field value
+func (o *SSIOCreateInsertionOrderRequest) GetCurrencyInfo() Currency {
+	if o == nil {
+		var ret Currency
+		return ret
+	}
+
+	return o.CurrencyInfo
+}
+
+// GetCurrencyInfoOk returns a tuple with the CurrencyInfo field value
+// and a boolean to check if the value has been set.
+func (o *SSIOCreateInsertionOrderRequest) GetCurrencyInfoOk() (*Currency, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CurrencyInfo, true
+}
+
+// SetCurrencyInfo sets field value
+func (o *SSIOCreateInsertionOrderRequest) SetCurrencyInfo(v Currency) {
+	o.CurrencyInfo = v
 }
 
 // GetEstimatedMonthlySpend returns the EstimatedMonthlySpend field value if set, zero value otherwise.
@@ -654,28 +606,76 @@ func (o *SSIOCreateInsertionOrderRequest) SetEstimatedMonthlySpend(v float32) {
 	o.EstimatedMonthlySpend = &v
 }
 
-// GetCurrencyInfo returns the CurrencyInfo field value
-func (o *SSIOCreateInsertionOrderRequest) GetCurrencyInfo() Currency {
+// GetOrderLineType returns the OrderLineType field value
+func (o *SSIOCreateInsertionOrderRequest) GetOrderLineType() string {
 	if o == nil {
-		var ret Currency
+		var ret string
 		return ret
 	}
 
-	return o.CurrencyInfo
+	return o.OrderLineType
 }
 
-// GetCurrencyInfoOk returns a tuple with the CurrencyInfo field value
+// GetOrderLineTypeOk returns a tuple with the OrderLineType field value
 // and a boolean to check if the value has been set.
-func (o *SSIOCreateInsertionOrderRequest) GetCurrencyInfoOk() (*Currency, bool) {
+func (o *SSIOCreateInsertionOrderRequest) GetOrderLineTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.CurrencyInfo, true
+	return &o.OrderLineType, true
 }
 
-// SetCurrencyInfo sets field value
-func (o *SSIOCreateInsertionOrderRequest) SetCurrencyInfo(v Currency) {
-	o.CurrencyInfo = v
+// SetOrderLineType sets field value
+func (o *SSIOCreateInsertionOrderRequest) SetOrderLineType(v string) {
+	o.OrderLineType = v
+}
+
+// GetOrderName returns the OrderName field value
+func (o *SSIOCreateInsertionOrderRequest) GetOrderName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.OrderName
+}
+
+// GetOrderNameOk returns a tuple with the OrderName field value
+// and a boolean to check if the value has been set.
+func (o *SSIOCreateInsertionOrderRequest) GetOrderNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.OrderName, true
+}
+
+// SetOrderName sets field value
+func (o *SSIOCreateInsertionOrderRequest) SetOrderName(v string) {
+	o.OrderName = v
+}
+
+// GetPmpId returns the PmpId field value
+func (o *SSIOCreateInsertionOrderRequest) GetPmpId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.PmpId
+}
+
+// GetPmpIdOk returns a tuple with the PmpId field value
+// and a boolean to check if the value has been set.
+func (o *SSIOCreateInsertionOrderRequest) GetPmpIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PmpId, true
+}
+
+// SetPmpId sets field value
+func (o *SSIOCreateInsertionOrderRequest) SetPmpId(v string) {
+	o.PmpId = v
 }
 
 func (o SSIOCreateInsertionOrderRequest) MarshalJSON() ([]byte, error) {
@@ -688,40 +688,40 @@ func (o SSIOCreateInsertionOrderRequest) MarshalJSON() ([]byte, error) {
 
 func (o SSIOCreateInsertionOrderRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["start_date"] = o.StartDate
-	if !IsNil(o.EndDate) {
-		toSerialize["end_date"] = o.EndDate
-	}
-	toSerialize["po_number"] = o.PoNumber
-	if !IsNil(o.BudgetAmount) {
-		toSerialize["budget_amount"] = o.BudgetAmount
-	}
-	toSerialize["billing_contact_firstname"] = o.BillingContactFirstname
-	toSerialize["billing_contact_lastname"] = o.BillingContactLastname
-	toSerialize["billing_contact_email"] = o.BillingContactEmail
-	toSerialize["media_contact_firstname"] = o.MediaContactFirstname
-	toSerialize["media_contact_lastname"] = o.MediaContactLastname
-	toSerialize["media_contact_email"] = o.MediaContactEmail
 	if !IsNil(o.AgencyLink) {
 		toSerialize["agency_link"] = o.AgencyLink
 	}
+	toSerialize["billing_contact_email"] = o.BillingContactEmail
+	toSerialize["billing_contact_firstname"] = o.BillingContactFirstname
+	toSerialize["billing_contact_lastname"] = o.BillingContactLastname
+	if !IsNil(o.BudgetAmount) {
+		toSerialize["budget_amount"] = o.BudgetAmount
+	}
+	if !IsNil(o.EndDate) {
+		toSerialize["end_date"] = o.EndDate
+	}
+	toSerialize["media_contact_email"] = o.MediaContactEmail
+	toSerialize["media_contact_firstname"] = o.MediaContactFirstname
+	toSerialize["media_contact_lastname"] = o.MediaContactLastname
+	toSerialize["po_number"] = o.PoNumber
+	toSerialize["start_date"] = o.StartDate
 	if !IsNil(o.UserEmail) {
 		toSerialize["user_email"] = o.UserEmail
 	}
+	toSerialize["accepted_terms_id"] = o.AcceptedTermsId
 	if !IsNil(o.AcceptedTermsTime) {
 		toSerialize["accepted_terms_time"] = o.AcceptedTermsTime
 	}
-	toSerialize["pmp_id"] = o.PmpId
-	toSerialize["order_name"] = o.OrderName
-	toSerialize["order_line_type"] = o.OrderLineType
-	toSerialize["accepted_terms_id"] = o.AcceptedTermsId
-	toSerialize["billto_company_id"] = o.BilltoCompanyId
-	toSerialize["billto_business_address_id"] = o.BilltoBusinessAddressId
 	toSerialize["billto_billing_address_id"] = o.BilltoBillingAddressId
+	toSerialize["billto_business_address_id"] = o.BilltoBusinessAddressId
+	toSerialize["billto_company_id"] = o.BilltoCompanyId
+	toSerialize["currency_info"] = o.CurrencyInfo
 	if !IsNil(o.EstimatedMonthlySpend) {
 		toSerialize["estimated_monthly_spend"] = o.EstimatedMonthlySpend
 	}
-	toSerialize["currency_info"] = o.CurrencyInfo
+	toSerialize["order_line_type"] = o.OrderLineType
+	toSerialize["order_name"] = o.OrderName
+	toSerialize["pmp_id"] = o.PmpId
 	return toSerialize, nil
 }
 
@@ -730,22 +730,22 @@ func (o *SSIOCreateInsertionOrderRequest) UnmarshalJSON(data []byte) (err error)
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"start_date",
-		"po_number",
+		"billing_contact_email",
 		"billing_contact_firstname",
 		"billing_contact_lastname",
-		"billing_contact_email",
+		"media_contact_email",
 		"media_contact_firstname",
 		"media_contact_lastname",
-		"media_contact_email",
-		"pmp_id",
-		"order_name",
-		"order_line_type",
+		"po_number",
+		"start_date",
 		"accepted_terms_id",
-		"billto_company_id",
-		"billto_business_address_id",
 		"billto_billing_address_id",
+		"billto_business_address_id",
+		"billto_company_id",
 		"currency_info",
+		"order_line_type",
+		"order_name",
+		"pmp_id",
 	}
 
 	allProperties := make(map[string]interface{})

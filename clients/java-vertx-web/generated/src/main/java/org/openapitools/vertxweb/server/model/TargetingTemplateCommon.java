@@ -16,33 +16,24 @@ import org.openapitools.vertxweb.server.model.TrackingUrls;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TargetingTemplateCommon   {
   
-  private String name;
   private Boolean autoTargetingEnabled = true;
-  private TargetingSpec targetingAttributes;
-  private PlacementGroupType placementGroup = PlacementGroupType.ALL;
   private List<TargetingTemplateKeyword> keywords = new ArrayList<>();
+  private String name;
+  private PlacementGroupType placementGroup = PlacementGroupType.ALL;
+  private TargetingSpec targetingAttributes;
   private TrackingUrls trackingUrls;
 
   public TargetingTemplateCommon () {
 
   }
 
-  public TargetingTemplateCommon (String name, Boolean autoTargetingEnabled, TargetingSpec targetingAttributes, PlacementGroupType placementGroup, List<TargetingTemplateKeyword> keywords, TrackingUrls trackingUrls) {
-    this.name = name;
+  public TargetingTemplateCommon (Boolean autoTargetingEnabled, List<TargetingTemplateKeyword> keywords, String name, PlacementGroupType placementGroup, TargetingSpec targetingAttributes, TrackingUrls trackingUrls) {
     this.autoTargetingEnabled = autoTargetingEnabled;
-    this.targetingAttributes = targetingAttributes;
-    this.placementGroup = placementGroup;
     this.keywords = keywords;
-    this.trackingUrls = trackingUrls;
-  }
-
-    
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
     this.name = name;
+    this.placementGroup = placementGroup;
+    this.targetingAttributes = targetingAttributes;
+    this.trackingUrls = trackingUrls;
   }
 
     
@@ -55,12 +46,21 @@ public class TargetingTemplateCommon   {
   }
 
     
-  @JsonProperty("targeting_attributes")
-  public TargetingSpec getTargetingAttributes() {
-    return targetingAttributes;
+  @JsonProperty("keywords")
+  public List<TargetingTemplateKeyword> getKeywords() {
+    return keywords;
   }
-  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
-    this.targetingAttributes = targetingAttributes;
+  public void setKeywords(List<TargetingTemplateKeyword> keywords) {
+    this.keywords = keywords;
+  }
+
+    
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
   }
 
     
@@ -73,12 +73,12 @@ public class TargetingTemplateCommon   {
   }
 
     
-  @JsonProperty("keywords")
-  public List<TargetingTemplateKeyword> getKeywords() {
-    return keywords;
+  @JsonProperty("targeting_attributes")
+  public TargetingSpec getTargetingAttributes() {
+    return targetingAttributes;
   }
-  public void setKeywords(List<TargetingTemplateKeyword> keywords) {
-    this.keywords = keywords;
+  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
+    this.targetingAttributes = targetingAttributes;
   }
 
     
@@ -100,17 +100,17 @@ public class TargetingTemplateCommon   {
       return false;
     }
     TargetingTemplateCommon targetingTemplateCommon = (TargetingTemplateCommon) o;
-    return Objects.equals(name, targetingTemplateCommon.name) &&
-        Objects.equals(autoTargetingEnabled, targetingTemplateCommon.autoTargetingEnabled) &&
-        Objects.equals(targetingAttributes, targetingTemplateCommon.targetingAttributes) &&
-        Objects.equals(placementGroup, targetingTemplateCommon.placementGroup) &&
+    return Objects.equals(autoTargetingEnabled, targetingTemplateCommon.autoTargetingEnabled) &&
         Objects.equals(keywords, targetingTemplateCommon.keywords) &&
+        Objects.equals(name, targetingTemplateCommon.name) &&
+        Objects.equals(placementGroup, targetingTemplateCommon.placementGroup) &&
+        Objects.equals(targetingAttributes, targetingTemplateCommon.targetingAttributes) &&
         Objects.equals(trackingUrls, targetingTemplateCommon.trackingUrls);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, autoTargetingEnabled, targetingAttributes, placementGroup, keywords, trackingUrls);
+    return Objects.hash(autoTargetingEnabled, keywords, name, placementGroup, targetingAttributes, trackingUrls);
   }
 
   @Override
@@ -118,11 +118,11 @@ public class TargetingTemplateCommon   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TargetingTemplateCommon {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    autoTargetingEnabled: ").append(toIndentedString(autoTargetingEnabled)).append("\n");
-    sb.append("    targetingAttributes: ").append(toIndentedString(targetingAttributes)).append("\n");
-    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
     sb.append("    keywords: ").append(toIndentedString(keywords)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
+    sb.append("    targetingAttributes: ").append(toIndentedString(targetingAttributes)).append("\n");
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("}");
     return sb.toString();

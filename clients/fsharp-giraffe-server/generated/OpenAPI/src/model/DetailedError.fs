@@ -10,7 +10,7 @@ module DetailedError =
 
   type DetailedError = {
     Code : int;
-    Message : string;
     Details : obj;
+    Message : string;
   }
   //#endregion

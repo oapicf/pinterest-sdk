@@ -10,10 +10,10 @@ module AdAccountOwner =
 
   [<CLIMutable>]
   type AdAccountOwner = {
-    [<JsonProperty(PropertyName = "username")>]
-    Username : string;
     [<JsonProperty(PropertyName = "id")>]
     Id : string;
+    [<JsonProperty(PropertyName = "username")>]
+    Username : string;
   }
 
   //#endregion

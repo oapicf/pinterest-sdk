@@ -4,7 +4,7 @@ open System
 open System.Collections.Generic
 open Newtonsoft.Json
 open OpenAPI.Model.Exception
-open OpenAPI.Model.ProductGroupPromotionResponseElement
+open OpenAPI.Model.ProductGroupPromotion
 
 module ProductGroupPromotionResponseItem =
 
@@ -13,7 +13,7 @@ module ProductGroupPromotionResponseItem =
   [<CLIMutable>]
   type ProductGroupPromotionResponseItem = {
     [<JsonProperty(PropertyName = "data")>]
-    Data : ProductGroupPromotionResponseElement;
+    Data : ProductGroupPromotion;
     [<JsonProperty(PropertyName = "exceptions")>]
     Exceptions : Exception[];
   }

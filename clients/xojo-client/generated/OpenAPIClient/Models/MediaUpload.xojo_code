@@ -5,12 +5,20 @@ Protected Class MediaUpload
 		#tag Note
 			Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
 		#tag EndNote
-		media_id As Xoson.O.OptionalString
+		media_id As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		media_type As Xoson.O.OptionalString
+		media_type As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
+		#tag EndNote
+		upload_parameters As OpenAPIClient.Models.MediaUploadParameters
 	#tag EndProperty
 
 
@@ -19,11 +27,6 @@ Protected Class MediaUpload
 			The URL where you will POST your media file.
 		#tag EndNote
 		upload_url As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		upload_parameters As OpenAPIClient.Models.MediaUploadAllOfUploadParameters
 	#tag EndProperty
 
 
@@ -80,19 +83,19 @@ Protected Class MediaUpload
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="upload_parameters"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="MediaUploadParameters"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="upload_url"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="upload_parameters"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="MediaUploadAllOfUploadParameters"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

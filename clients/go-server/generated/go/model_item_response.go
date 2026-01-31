@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -14,18 +14,18 @@ package openapi
 
 
 
-// ItemResponse - Object describing an item record
+// ItemResponse - Object describing an item record or error
 type ItemResponse struct {
 
 	CatalogType CatalogsType `json:"catalog_type"`
+
+	Attributes CatalogsCreativeAssetsAttributes `json:"attributes,omitempty"`
 
 	// The catalog item id in the merchant namespace
 	ItemId string `json:"item_id,omitempty"`
 
 	// The pins mapped to the item
 	Pins *[]Pin `json:"pins,omitempty"`
-
-	Attributes CatalogsCreativeAssetsAttributes `json:"attributes,omitempty"`
 
 	// The catalog hotel id in the merchant namespace
 	HotelId string `json:"hotel_id,omitempty"`
@@ -34,13 +34,14 @@ type ItemResponse struct {
 	CreativeAssetsId string `json:"creative_assets_id,omitempty"`
 
 	// Array with the errors for the item id requested
-	Errors []ItemValidationEvent `json:"errors,omitempty"`
+	Errors []ItemValidationEvent `json:"errors"`
 }
 
 // AssertItemResponseRequired checks if the required fields are not zero-ed
 func AssertItemResponseRequired(obj ItemResponse) error {
 	elements := map[string]interface{}{
 		"catalog_type": obj.CatalogType,
+		"errors": obj.Errors,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {
@@ -48,15 +49,15 @@ func AssertItemResponseRequired(obj ItemResponse) error {
 		}
 	}
 
+	if err := AssertCatalogsCreativeAssetsAttributesRequired(obj.Attributes); err != nil {
+		return err
+	}
 	if obj.Pins != nil {
 		for _, el := range *obj.Pins {
 			if err := AssertPinRequired(el); err != nil {
 				return err
 			}
 		}
-	}
-	if err := AssertCatalogsCreativeAssetsAttributesRequired(obj.Attributes); err != nil {
-		return err
 	}
 	for _, el := range obj.Errors {
 		if err := AssertItemValidationEventRequired(el); err != nil {
@@ -68,6 +69,9 @@ func AssertItemResponseRequired(obj ItemResponse) error {
 
 // AssertItemResponseConstraints checks if the values respects the defined constraints
 func AssertItemResponseConstraints(obj ItemResponse) error {
+	if err := AssertCatalogsCreativeAssetsAttributesConstraints(obj.Attributes); err != nil {
+		return err
+	}
     if obj.Pins != nil {
      	for _, el := range *obj.Pins {
      		if err := AssertPinConstraints(el); err != nil {
@@ -75,9 +79,6 @@ func AssertItemResponseConstraints(obj ItemResponse) error {
      		}
      	}
     }
-	if err := AssertCatalogsCreativeAssetsAttributesConstraints(obj.Attributes); err != nil {
-		return err
-	}
 	for _, el := range obj.Errors {
 		if err := AssertItemValidationEventConstraints(el); err != nil {
 			return err

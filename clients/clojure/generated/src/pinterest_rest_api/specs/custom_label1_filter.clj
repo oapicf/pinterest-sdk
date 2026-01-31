@@ -8,7 +8,7 @@
 
 (def custom-label1-filter-data
   {
-   (ds/req :CUSTOM_LABEL_1) catalogs-product-group-multiple-string-criteria-spec
+   (ds/req :CUSTOM_LABEL_1) catalogs-product-group-filter-operator-type-criteria-spec
    })
 
 (def custom-label1-filter-spec

@@ -17,6 +17,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AssetIdPermissions  {
   
+  @ApiModelProperty(value = "")
+
+  private AssetGroupBinding assetGroupInfo;
+
  /**
   * Unique identifier of a business asset.
   */
@@ -25,9 +29,9 @@ public class AssetIdPermissions  {
   private String assetId;
 
  /**
-  * Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+  * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
   */
-  @ApiModelProperty(example = "AD_ACCOUNT", value = "Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.")
+  @ApiModelProperty(example = "AD_ACCOUNT", value = "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.")
 
   private String assetType;
 
@@ -37,10 +41,24 @@ public class AssetIdPermissions  {
   @ApiModelProperty(example = "[\"FINANCE_MANAGER\",\"CATALOGS_MANAGER\",\"AUDIENCE_MANAGER\"]", value = "Permission levels member or partner has on an asset.")
 
   private List<String> permissions = new ArrayList<>();
+ /**
+   * Get assetGroupInfo
+   * @return assetGroupInfo
+  **/
+  @JsonProperty("asset_group_info")
+  public AssetGroupBinding getAssetGroupInfo() {
+    return assetGroupInfo;
+  }
 
-  @ApiModelProperty(value = "")
+  public void setAssetGroupInfo(AssetGroupBinding assetGroupInfo) {
+    this.assetGroupInfo = assetGroupInfo;
+  }
 
-  private AssetGroupBinding assetGroupInfo;
+  public AssetIdPermissions assetGroupInfo(AssetGroupBinding assetGroupInfo) {
+    this.assetGroupInfo = assetGroupInfo;
+    return this;
+  }
+
  /**
    * Unique identifier of a business asset.
    * @return assetId
@@ -60,7 +78,7 @@ public class AssetIdPermissions  {
   }
 
  /**
-   * Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+   * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
    * @return assetType
   **/
   @JsonProperty("asset_type")
@@ -100,24 +118,6 @@ public class AssetIdPermissions  {
     return this;
   }
 
- /**
-   * Get assetGroupInfo
-   * @return assetGroupInfo
-  **/
-  @JsonProperty("asset_group_info")
-  public AssetGroupBinding getAssetGroupInfo() {
-    return assetGroupInfo;
-  }
-
-  public void setAssetGroupInfo(AssetGroupBinding assetGroupInfo) {
-    this.assetGroupInfo = assetGroupInfo;
-  }
-
-  public AssetIdPermissions assetGroupInfo(AssetGroupBinding assetGroupInfo) {
-    this.assetGroupInfo = assetGroupInfo;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -127,15 +127,15 @@ public class AssetIdPermissions  {
       return false;
     }
     AssetIdPermissions assetIdPermissions = (AssetIdPermissions) o;
-    return Objects.equals(this.assetId, assetIdPermissions.assetId) &&
+    return Objects.equals(this.assetGroupInfo, assetIdPermissions.assetGroupInfo) &&
+        Objects.equals(this.assetId, assetIdPermissions.assetId) &&
         Objects.equals(this.assetType, assetIdPermissions.assetType) &&
-        Objects.equals(this.permissions, assetIdPermissions.permissions) &&
-        Objects.equals(this.assetGroupInfo, assetIdPermissions.assetGroupInfo);
+        Objects.equals(this.permissions, assetIdPermissions.permissions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetId, assetType, permissions, assetGroupInfo);
+    return Objects.hash(assetGroupInfo, assetId, assetType, permissions);
   }
 
   @Override
@@ -143,10 +143,10 @@ public class AssetIdPermissions  {
     StringBuilder sb = new StringBuilder();
     sb.append("class AssetIdPermissions {\n");
     
+    sb.append("    assetGroupInfo: ").append(toIndentedString(assetGroupInfo)).append("\n");
     sb.append("    assetId: ").append(toIndentedString(assetId)).append("\n");
     sb.append("    assetType: ").append(toIndentedString(assetType)).append("\n");
     sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
-    sb.append("    assetGroupInfo: ").append(toIndentedString(assetGroupInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -27,17 +27,17 @@ test_that("updated_at", {
   #expect_equal(model.instance$`updated_at`, "EXPECTED_RESULT")
 })
 
+test_that("catalog_type", {
+  # tests for the property `catalog_type` (CatalogsType)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`catalog_type`, "EXPECTED_RESULT")
+})
+
 test_that("name", {
   # tests for the property `name` (character)
   # A human-friendly name associated to a catalog entity.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
-})
-
-test_that("catalog_type", {
-  # tests for the property `catalog_type` (CatalogsType)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`catalog_type`, "EXPECTED_RESULT")
 })

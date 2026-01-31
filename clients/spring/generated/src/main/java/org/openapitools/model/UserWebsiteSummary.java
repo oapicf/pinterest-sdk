@@ -19,34 +19,14 @@ import javax.annotation.Generated;
  * UserWebsiteSummary
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UserWebsiteSummary {
-
-  private @Nullable String website;
 
   private @Nullable String status;
 
   private @Nullable String verifiedAt;
 
-  public UserWebsiteSummary website(@Nullable String website) {
-    this.website = website;
-    return this;
-  }
-
-  /**
-   * Website with path or domain only
-   * @return website
-   */
-  
-  @Schema(name = "website", example = "mysite.test", description = "Website with path or domain only", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("website")
-  public @Nullable String getWebsite() {
-    return website;
-  }
-
-  public void setWebsite(@Nullable String website) {
-    this.website = website;
-  }
+  private @Nullable String website;
 
   public UserWebsiteSummary status(@Nullable String status) {
     this.status = status;
@@ -88,6 +68,26 @@ public class UserWebsiteSummary {
     this.verifiedAt = verifiedAt;
   }
 
+  public UserWebsiteSummary website(@Nullable String website) {
+    this.website = website;
+    return this;
+  }
+
+  /**
+   * Website with path or domain only
+   * @return website
+   */
+  
+  @Schema(name = "website", example = "mysite.test", description = "Website with path or domain only", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("website")
+  public @Nullable String getWebsite() {
+    return website;
+  }
+
+  public void setWebsite(@Nullable String website) {
+    this.website = website;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -97,23 +97,23 @@ public class UserWebsiteSummary {
       return false;
     }
     UserWebsiteSummary userWebsiteSummary = (UserWebsiteSummary) o;
-    return Objects.equals(this.website, userWebsiteSummary.website) &&
-        Objects.equals(this.status, userWebsiteSummary.status) &&
-        Objects.equals(this.verifiedAt, userWebsiteSummary.verifiedAt);
+    return Objects.equals(this.status, userWebsiteSummary.status) &&
+        Objects.equals(this.verifiedAt, userWebsiteSummary.verifiedAt) &&
+        Objects.equals(this.website, userWebsiteSummary.website);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(website, status, verifiedAt);
+    return Objects.hash(status, verifiedAt, website);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserWebsiteSummary {\n");
-    sb.append("    website: ").append(toIndentedString(website)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    verifiedAt: ").append(toIndentedString(verifiedAt)).append("\n");
+    sb.append("    website: ").append(toIndentedString(website)).append("\n");
     sb.append("}");
     return sb.toString();
   }

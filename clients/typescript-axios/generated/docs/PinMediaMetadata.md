@@ -5,16 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**item_type** | **string** |  | [optional] [default to undefined]
-**title** | **string** |  | [optional] [default to undefined]
 **description** | **string** |  | [optional] [default to undefined]
+**images** | [**ImageSize**](ImageSize.md) |  | [optional] [default to undefined]
+**item_type** | **string** |  | [optional] [default to undefined]
 **link** | **string** |  | [optional] [default to undefined]
-**images** | [**ImageMetadataImages**](ImageMetadataImages.md) |  | [optional] [default to undefined]
+**title** | **string** |  | [optional] [default to undefined]
 **cover_image_url** | **string** |  | [optional] [default to undefined]
-**video_url** | **string** | Video url (720p). &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field is limited and not available to all apps. | [optional] [default to undefined]
-**duration** | **number** | Duration (in milliseconds) | [optional] [default to undefined]
-**height** | **number** | Height (in pixels) | [optional] [default to undefined]
-**width** | **number** | Width (in pixels) | [optional] [default to undefined]
+**duration** | **number** | Duration (in miliseconds). Field maybe null after creation due to video processing time. | [optional] [default to undefined]
+**height** | **number** | Height (in pixels). Field maybe null after creation due to video processing time. | [optional] [default to undefined]
+**video_url** | **string** | Video url (720p).  **Note:** This field is limited and not available to all apps. | [optional] [default to undefined]
+**width** | **number** | Width (in pixels). Field maybe null after creation due to video processing time. | [optional] [default to undefined]
 
 ## Example
 
@@ -22,15 +22,15 @@ Name | Type | Description | Notes
 import { PinMediaMetadata } from './api';
 
 const instance: PinMediaMetadata = {
-    item_type,
-    title,
     description,
-    link,
     images,
+    item_type,
+    link,
+    title,
     cover_image_url,
-    video_url,
     duration,
     height,
+    video_url,
     width,
 };
 ```

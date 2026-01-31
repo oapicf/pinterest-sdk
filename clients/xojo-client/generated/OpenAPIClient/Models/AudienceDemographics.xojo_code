@@ -11,9 +11,9 @@ Protected Class AudienceDemographics
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Gender distribution.
+			Country area distribution.
 		#tag EndNote
-		genders() As OpenAPIClient.Models.AudienceDemographicValue
+		countries() As OpenAPIClient.Models.AudienceDemographicValue
 	#tag EndProperty
 
 
@@ -27,17 +27,17 @@ Protected Class AudienceDemographics
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Geographic metro area distribution.
+			Gender distribution.
 		#tag EndNote
-		metros() As OpenAPIClient.Models.AudienceDemographicValue
+		genders() As OpenAPIClient.Models.AudienceDemographicValue
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Country area distribution.
+			Geographic metro area distribution.
 		#tag EndNote
-		countries() As OpenAPIClient.Models.AudienceDemographicValue
+		metros() As OpenAPIClient.Models.AudienceDemographicValue
 	#tag EndProperty
 
 
@@ -86,7 +86,7 @@ Protected Class AudienceDemographics
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="genders"
+			Name="countries"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -102,7 +102,7 @@ Protected Class AudienceDemographics
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="metros"
+			Name="genders"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -110,7 +110,7 @@ Protected Class AudienceDemographics
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="countries"
+			Name="metros"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

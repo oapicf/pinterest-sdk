@@ -16,6 +16,7 @@ import org.openapitools.vertxweb.server.model.Country;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsCreativeAssetsBatchRequest   {
   
+  private String catalogId;
 
 
   public enum CatalogTypeEnum {
@@ -36,6 +37,7 @@ public class CatalogsCreativeAssetsBatchRequest   {
 
   private CatalogTypeEnum catalogType;
   private Country country;
+  private List<CatalogsCreativeAssetsBatchItem> items = new ArrayList<>();
 
 
   public enum LanguageEnum {
@@ -161,18 +163,25 @@ public class CatalogsCreativeAssetsBatchRequest   {
   }
 
   private LanguageEnum language;
-  private List<CatalogsCreativeAssetsBatchItem> items = new ArrayList<>();
-  private String catalogId;
 
   public CatalogsCreativeAssetsBatchRequest () {
 
   }
 
-  public CatalogsCreativeAssetsBatchRequest (CatalogTypeEnum catalogType, Country country, LanguageEnum language, List<CatalogsCreativeAssetsBatchItem> items, String catalogId) {
+  public CatalogsCreativeAssetsBatchRequest (String catalogId, CatalogTypeEnum catalogType, Country country, List<CatalogsCreativeAssetsBatchItem> items, LanguageEnum language) {
+    this.catalogId = catalogId;
     this.catalogType = catalogType;
     this.country = country;
-    this.language = language;
     this.items = items;
+    this.language = language;
+  }
+
+    
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
   }
 
@@ -195,15 +204,6 @@ public class CatalogsCreativeAssetsBatchRequest   {
   }
 
     
-  @JsonProperty("language")
-  public LanguageEnum getLanguage() {
-    return language;
-  }
-  public void setLanguage(LanguageEnum language) {
-    this.language = language;
-  }
-
-    
   @JsonProperty("items")
   public List<CatalogsCreativeAssetsBatchItem> getItems() {
     return items;
@@ -213,12 +213,12 @@ public class CatalogsCreativeAssetsBatchRequest   {
   }
 
     
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
+  @JsonProperty("language")
+  public LanguageEnum getLanguage() {
+    return language;
   }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public void setLanguage(LanguageEnum language) {
+    this.language = language;
   }
 
 
@@ -231,16 +231,16 @@ public class CatalogsCreativeAssetsBatchRequest   {
       return false;
     }
     CatalogsCreativeAssetsBatchRequest catalogsCreativeAssetsBatchRequest = (CatalogsCreativeAssetsBatchRequest) o;
-    return Objects.equals(catalogType, catalogsCreativeAssetsBatchRequest.catalogType) &&
+    return Objects.equals(catalogId, catalogsCreativeAssetsBatchRequest.catalogId) &&
+        Objects.equals(catalogType, catalogsCreativeAssetsBatchRequest.catalogType) &&
         Objects.equals(country, catalogsCreativeAssetsBatchRequest.country) &&
-        Objects.equals(language, catalogsCreativeAssetsBatchRequest.language) &&
         Objects.equals(items, catalogsCreativeAssetsBatchRequest.items) &&
-        Objects.equals(catalogId, catalogsCreativeAssetsBatchRequest.catalogId);
+        Objects.equals(language, catalogsCreativeAssetsBatchRequest.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, country, language, items, catalogId);
+    return Objects.hash(catalogId, catalogType, country, items, language);
   }
 
   @Override
@@ -248,11 +248,11 @@ public class CatalogsCreativeAssetsBatchRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsBatchRequest {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();
   }

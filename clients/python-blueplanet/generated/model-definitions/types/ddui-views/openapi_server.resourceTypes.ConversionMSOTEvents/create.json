@@ -1,0 +1,29 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "action_timestamps" },
+      {"model": "ad_group_id" },
+      {"model": "attribution_model" },
+      {"model": "attribution_scope" },
+      {"model": "attribution_score" },
+      {"model": "campaign_id" },
+      {"model": "currency" },
+      {"model": "event_id" },
+      {"model": "event_name" },
+      {"model": "event_timestamp" },
+      {"model": "total_event_touchpoints" },
+      {"model": "total_events" },
+      {"model": "value" },
+    ]
+  }]
+}

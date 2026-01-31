@@ -20,14 +20,6 @@ public class CatalogsReportFeedIngestionStatsTest {
     }
 
     /**
-     * Test the property 'reportType'
-     */
-    @Test
-    public void reportTypeTest() {
-        // TODO: test reportType
-    }
-
-    /**
      * Test the property 'catalogId'
      */
     @Test
@@ -65,6 +57,14 @@ public class CatalogsReportFeedIngestionStatsTest {
     @Test
     public void occurrencesTest() {
         // TODO: test occurrences
+    }
+
+    /**
+     * Test the property 'reportType'
+     */
+    @Test
+    public void reportTypeTest() {
+        // TODO: test reportType
     }
 
     /**

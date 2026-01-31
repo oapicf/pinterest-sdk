@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ReportStatus** | Pointer to **string** |  | [optional] 
-**Url** | Pointer to **NullableString** | URL to download the report | [optional] 
 **Size** | Pointer to **NullableFloat32** | Size of the report in bytes | [optional] 
+**Url** | Pointer to **NullableString** | URL to download the report | [optional] 
 
 ## Methods
 
@@ -52,41 +52,6 @@ SetReportStatus sets ReportStatus field to given value.
 
 HasReportStatus returns a boolean if a field has been set.
 
-### GetUrl
-
-`func (o *CatalogsReport) GetUrl() string`
-
-GetUrl returns the Url field if non-nil, zero value otherwise.
-
-### GetUrlOk
-
-`func (o *CatalogsReport) GetUrlOk() (*string, bool)`
-
-GetUrlOk returns a tuple with the Url field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUrl
-
-`func (o *CatalogsReport) SetUrl(v string)`
-
-SetUrl sets Url field to given value.
-
-### HasUrl
-
-`func (o *CatalogsReport) HasUrl() bool`
-
-HasUrl returns a boolean if a field has been set.
-
-### SetUrlNil
-
-`func (o *CatalogsReport) SetUrlNil(b bool)`
-
- SetUrlNil sets the value for Url to be an explicit nil
-
-### UnsetUrl
-`func (o *CatalogsReport) UnsetUrl()`
-
-UnsetUrl ensures that no value is present for Url, not even an explicit nil
 ### GetSize
 
 `func (o *CatalogsReport) GetSize() float32`
@@ -122,6 +87,41 @@ HasSize returns a boolean if a field has been set.
 `func (o *CatalogsReport) UnsetSize()`
 
 UnsetSize ensures that no value is present for Size, not even an explicit nil
+### GetUrl
+
+`func (o *CatalogsReport) GetUrl() string`
+
+GetUrl returns the Url field if non-nil, zero value otherwise.
+
+### GetUrlOk
+
+`func (o *CatalogsReport) GetUrlOk() (*string, bool)`
+
+GetUrlOk returns a tuple with the Url field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUrl
+
+`func (o *CatalogsReport) SetUrl(v string)`
+
+SetUrl sets Url field to given value.
+
+### HasUrl
+
+`func (o *CatalogsReport) HasUrl() bool`
+
+HasUrl returns a boolean if a field has been set.
+
+### SetUrlNil
+
+`func (o *CatalogsReport) SetUrlNil(b bool)`
+
+ SetUrlNil sets the value for Url to be an explicit nil
+
+### UnsetUrl
+`func (o *CatalogsReport) UnsetUrl()`
+
+UnsetUrl ensures that no value is present for Url, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -92,7 +92,7 @@ public class LeadFormsControllerTest {
             put("lead_form_id", "1234567890123");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@6f886e9b");
+            .accept("[Ljava.lang.String;@769e210b");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, LeadFormResponse.class);
@@ -106,7 +106,7 @@ public class LeadFormsControllerTest {
      *
      * The method should: Create lead form test data
      *
-     * Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -142,7 +142,7 @@ public class LeadFormsControllerTest {
             put("lead_form_id", "1234567890123");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@1c9d2d9b");
+            .accept("[Ljava.lang.String;@527c7ee1");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, LeadFormTestResponse.class);
@@ -156,7 +156,7 @@ public class LeadFormsControllerTest {
      *
      * The method should: Create lead forms
      *
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’ s description, questions and confirmation sections.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -190,7 +190,7 @@ public class LeadFormsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@195cb879");
+            .accept("[Ljava.lang.String;@6a78192c");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, LeadFormArrayResponse.class);
@@ -239,7 +239,7 @@ public class LeadFormsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@4457fec");
+            .accept("[Ljava.lang.String;@3f36a813");
         request.getParameters()
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
             .add("order", "ASCENDING") // The query parameter format should be 
@@ -291,7 +291,7 @@ public class LeadFormsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@28953549");
+            .accept("[Ljava.lang.String;@38274087");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, LeadFormArrayResponse.class);

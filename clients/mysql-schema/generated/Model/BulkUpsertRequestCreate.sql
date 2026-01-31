@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `BulkUpsertRequestCreate`
 --
-SELECT `campaigns`, `ad_groups`, `ads`, `product_groups`, `keywords` FROM `BulkUpsertRequestCreate` WHERE 1;
+SELECT `ad_groups`, `ads`, `campaigns`, `catalog_product_groups`, `keywords`, `labels`, `product_groups` FROM `BulkUpsertRequestCreate` WHERE 1;
 
 --
 -- INSERT template for table `BulkUpsertRequestCreate`
 --
-INSERT INTO `BulkUpsertRequestCreate`(`campaigns`, `ad_groups`, `ads`, `product_groups`, `keywords`) VALUES (?, ?, ?, ?, ?);
+INSERT INTO `BulkUpsertRequestCreate`(`ad_groups`, `ads`, `campaigns`, `catalog_product_groups`, `keywords`, `labels`, `product_groups`) VALUES (?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `BulkUpsertRequestCreate`
 --
-UPDATE `BulkUpsertRequestCreate` SET `campaigns` = ?, `ad_groups` = ?, `ads` = ?, `product_groups` = ?, `keywords` = ? WHERE 1;
+UPDATE `BulkUpsertRequestCreate` SET `ad_groups` = ?, `ads` = ?, `campaigns` = ?, `catalog_product_groups` = ?, `keywords` = ?, `labels` = ?, `product_groups` = ? WHERE 1;
 
 --
 -- DELETE template for table `BulkUpsertRequestCreate`

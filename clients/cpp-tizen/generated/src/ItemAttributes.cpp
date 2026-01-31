@@ -23,9 +23,56 @@ ItemAttributes::~ItemAttributes()
 void
 ItemAttributes::__init()
 {
+	//ad_image_0_link = std::string();
+	//ad_image_0_tag = std::string();
+	//ad_image_10_link = std::string();
+	//ad_image_10_tag = std::string();
+	//ad_image_11_link = std::string();
+	//ad_image_11_tag = std::string();
+	//ad_image_12_link = std::string();
+	//ad_image_12_tag = std::string();
+	//ad_image_13_link = std::string();
+	//ad_image_13_tag = std::string();
+	//ad_image_14_link = std::string();
+	//ad_image_14_tag = std::string();
+	//ad_image_15_link = std::string();
+	//ad_image_15_tag = std::string();
+	//ad_image_16_link = std::string();
+	//ad_image_16_tag = std::string();
+	//ad_image_17_link = std::string();
+	//ad_image_17_tag = std::string();
+	//ad_image_18_link = std::string();
+	//ad_image_18_tag = std::string();
+	//ad_image_19_link = std::string();
+	//ad_image_19_tag = std::string();
+	//ad_image_1_link = std::string();
+	//ad_image_1_tag = std::string();
+	//ad_image_2_link = std::string();
+	//ad_image_2_tag = std::string();
+	//ad_image_3_link = std::string();
+	//ad_image_3_tag = std::string();
+	//ad_image_4_link = std::string();
+	//ad_image_4_tag = std::string();
+	//ad_image_5_link = std::string();
+	//ad_image_5_tag = std::string();
+	//ad_image_6_link = std::string();
+	//ad_image_6_tag = std::string();
+	//ad_image_7_link = std::string();
+	//ad_image_7_tag = std::string();
+	//ad_image_8_link = std::string();
+	//ad_image_8_tag = std::string();
+	//ad_image_9_link = std::string();
+	//ad_image_9_tag = std::string();
 	//ad_link = std::string();
+	//ad_video_0_link = std::string();
+	//ad_video_0_tag = std::string();
+	//ad_video_1_link = std::string();
+	//ad_video_1_tag = std::string();
+	//ad_video_2_link = std::string();
+	//ad_video_2_tag = std::string();
 	//adult = bool(false);
 	//age_group = std::string();
+	//android_deep_link = std::string();
 	//availability = std::string();
 	//average_review_rating = double(0);
 	//brand = std::string();
@@ -37,13 +84,20 @@ ItemAttributes::__init()
 	//custom_label_2 = std::string();
 	//custom_label_3 = std::string();
 	//custom_label_4 = std::string();
+	//custom_number_0 = int(0);
+	//custom_number_1 = int(0);
+	//custom_number_2 = int(0);
+	//custom_number_3 = int(0);
+	//custom_number_4 = int(0);
 	//description = std::string();
 	//free_shipping_label = bool(false);
 	//free_shipping_limit = std::string();
 	//gender = std::string();
 	//google_product_category = std::string();
-	//gtin = int(0);
+	//gtin = new UpdatableItemAttributes_gtin();
 	//id = std::string();
+	//installment_price = std::string();
+	//ios_deep_link = std::string();
 	//item_group_id = std::string();
 	//last_updated_time = long(0);
 	//link = std::string();
@@ -56,7 +110,9 @@ ItemAttributes::__init()
 	//pattern = std::string();
 	//price = std::string();
 	//product_type = std::string();
+	//promotion_id = std::string();
 	//sale_price = std::string();
+	//sale_price_effective_date = std::string();
 	//shipping = std::string();
 	//shipping_height = std::string();
 	//shipping_weight = std::string();
@@ -66,6 +122,8 @@ ItemAttributes::__init()
 	//size_type = std::string();
 	//tax = std::string();
 	//title = std::string();
+	//unit_pricing_base_measure = std::string();
+	//unit_pricing_measure = std::string();
 	//new std::list()std::list> variant_names;
 	//new std::list()std::list> variant_values;
 	//new std::list()std::list> additional_image_link;
@@ -76,10 +134,240 @@ ItemAttributes::__init()
 void
 ItemAttributes::__cleanup()
 {
+	//if(ad_image_0_link != NULL) {
+	//
+	//delete ad_image_0_link;
+	//ad_image_0_link = NULL;
+	//}
+	//if(ad_image_0_tag != NULL) {
+	//
+	//delete ad_image_0_tag;
+	//ad_image_0_tag = NULL;
+	//}
+	//if(ad_image_10_link != NULL) {
+	//
+	//delete ad_image_10_link;
+	//ad_image_10_link = NULL;
+	//}
+	//if(ad_image_10_tag != NULL) {
+	//
+	//delete ad_image_10_tag;
+	//ad_image_10_tag = NULL;
+	//}
+	//if(ad_image_11_link != NULL) {
+	//
+	//delete ad_image_11_link;
+	//ad_image_11_link = NULL;
+	//}
+	//if(ad_image_11_tag != NULL) {
+	//
+	//delete ad_image_11_tag;
+	//ad_image_11_tag = NULL;
+	//}
+	//if(ad_image_12_link != NULL) {
+	//
+	//delete ad_image_12_link;
+	//ad_image_12_link = NULL;
+	//}
+	//if(ad_image_12_tag != NULL) {
+	//
+	//delete ad_image_12_tag;
+	//ad_image_12_tag = NULL;
+	//}
+	//if(ad_image_13_link != NULL) {
+	//
+	//delete ad_image_13_link;
+	//ad_image_13_link = NULL;
+	//}
+	//if(ad_image_13_tag != NULL) {
+	//
+	//delete ad_image_13_tag;
+	//ad_image_13_tag = NULL;
+	//}
+	//if(ad_image_14_link != NULL) {
+	//
+	//delete ad_image_14_link;
+	//ad_image_14_link = NULL;
+	//}
+	//if(ad_image_14_tag != NULL) {
+	//
+	//delete ad_image_14_tag;
+	//ad_image_14_tag = NULL;
+	//}
+	//if(ad_image_15_link != NULL) {
+	//
+	//delete ad_image_15_link;
+	//ad_image_15_link = NULL;
+	//}
+	//if(ad_image_15_tag != NULL) {
+	//
+	//delete ad_image_15_tag;
+	//ad_image_15_tag = NULL;
+	//}
+	//if(ad_image_16_link != NULL) {
+	//
+	//delete ad_image_16_link;
+	//ad_image_16_link = NULL;
+	//}
+	//if(ad_image_16_tag != NULL) {
+	//
+	//delete ad_image_16_tag;
+	//ad_image_16_tag = NULL;
+	//}
+	//if(ad_image_17_link != NULL) {
+	//
+	//delete ad_image_17_link;
+	//ad_image_17_link = NULL;
+	//}
+	//if(ad_image_17_tag != NULL) {
+	//
+	//delete ad_image_17_tag;
+	//ad_image_17_tag = NULL;
+	//}
+	//if(ad_image_18_link != NULL) {
+	//
+	//delete ad_image_18_link;
+	//ad_image_18_link = NULL;
+	//}
+	//if(ad_image_18_tag != NULL) {
+	//
+	//delete ad_image_18_tag;
+	//ad_image_18_tag = NULL;
+	//}
+	//if(ad_image_19_link != NULL) {
+	//
+	//delete ad_image_19_link;
+	//ad_image_19_link = NULL;
+	//}
+	//if(ad_image_19_tag != NULL) {
+	//
+	//delete ad_image_19_tag;
+	//ad_image_19_tag = NULL;
+	//}
+	//if(ad_image_1_link != NULL) {
+	//
+	//delete ad_image_1_link;
+	//ad_image_1_link = NULL;
+	//}
+	//if(ad_image_1_tag != NULL) {
+	//
+	//delete ad_image_1_tag;
+	//ad_image_1_tag = NULL;
+	//}
+	//if(ad_image_2_link != NULL) {
+	//
+	//delete ad_image_2_link;
+	//ad_image_2_link = NULL;
+	//}
+	//if(ad_image_2_tag != NULL) {
+	//
+	//delete ad_image_2_tag;
+	//ad_image_2_tag = NULL;
+	//}
+	//if(ad_image_3_link != NULL) {
+	//
+	//delete ad_image_3_link;
+	//ad_image_3_link = NULL;
+	//}
+	//if(ad_image_3_tag != NULL) {
+	//
+	//delete ad_image_3_tag;
+	//ad_image_3_tag = NULL;
+	//}
+	//if(ad_image_4_link != NULL) {
+	//
+	//delete ad_image_4_link;
+	//ad_image_4_link = NULL;
+	//}
+	//if(ad_image_4_tag != NULL) {
+	//
+	//delete ad_image_4_tag;
+	//ad_image_4_tag = NULL;
+	//}
+	//if(ad_image_5_link != NULL) {
+	//
+	//delete ad_image_5_link;
+	//ad_image_5_link = NULL;
+	//}
+	//if(ad_image_5_tag != NULL) {
+	//
+	//delete ad_image_5_tag;
+	//ad_image_5_tag = NULL;
+	//}
+	//if(ad_image_6_link != NULL) {
+	//
+	//delete ad_image_6_link;
+	//ad_image_6_link = NULL;
+	//}
+	//if(ad_image_6_tag != NULL) {
+	//
+	//delete ad_image_6_tag;
+	//ad_image_6_tag = NULL;
+	//}
+	//if(ad_image_7_link != NULL) {
+	//
+	//delete ad_image_7_link;
+	//ad_image_7_link = NULL;
+	//}
+	//if(ad_image_7_tag != NULL) {
+	//
+	//delete ad_image_7_tag;
+	//ad_image_7_tag = NULL;
+	//}
+	//if(ad_image_8_link != NULL) {
+	//
+	//delete ad_image_8_link;
+	//ad_image_8_link = NULL;
+	//}
+	//if(ad_image_8_tag != NULL) {
+	//
+	//delete ad_image_8_tag;
+	//ad_image_8_tag = NULL;
+	//}
+	//if(ad_image_9_link != NULL) {
+	//
+	//delete ad_image_9_link;
+	//ad_image_9_link = NULL;
+	//}
+	//if(ad_image_9_tag != NULL) {
+	//
+	//delete ad_image_9_tag;
+	//ad_image_9_tag = NULL;
+	//}
 	//if(ad_link != NULL) {
 	//
 	//delete ad_link;
 	//ad_link = NULL;
+	//}
+	//if(ad_video_0_link != NULL) {
+	//
+	//delete ad_video_0_link;
+	//ad_video_0_link = NULL;
+	//}
+	//if(ad_video_0_tag != NULL) {
+	//
+	//delete ad_video_0_tag;
+	//ad_video_0_tag = NULL;
+	//}
+	//if(ad_video_1_link != NULL) {
+	//
+	//delete ad_video_1_link;
+	//ad_video_1_link = NULL;
+	//}
+	//if(ad_video_1_tag != NULL) {
+	//
+	//delete ad_video_1_tag;
+	//ad_video_1_tag = NULL;
+	//}
+	//if(ad_video_2_link != NULL) {
+	//
+	//delete ad_video_2_link;
+	//ad_video_2_link = NULL;
+	//}
+	//if(ad_video_2_tag != NULL) {
+	//
+	//delete ad_video_2_tag;
+	//ad_video_2_tag = NULL;
 	//}
 	//if(adult != NULL) {
 	//
@@ -90,6 +378,11 @@ ItemAttributes::__cleanup()
 	//
 	//delete age_group;
 	//age_group = NULL;
+	//}
+	//if(android_deep_link != NULL) {
+	//
+	//delete android_deep_link;
+	//android_deep_link = NULL;
 	//}
 	//if(availability != NULL) {
 	//
@@ -146,6 +439,31 @@ ItemAttributes::__cleanup()
 	//delete custom_label_4;
 	//custom_label_4 = NULL;
 	//}
+	//if(custom_number_0 != NULL) {
+	//
+	//delete custom_number_0;
+	//custom_number_0 = NULL;
+	//}
+	//if(custom_number_1 != NULL) {
+	//
+	//delete custom_number_1;
+	//custom_number_1 = NULL;
+	//}
+	//if(custom_number_2 != NULL) {
+	//
+	//delete custom_number_2;
+	//custom_number_2 = NULL;
+	//}
+	//if(custom_number_3 != NULL) {
+	//
+	//delete custom_number_3;
+	//custom_number_3 = NULL;
+	//}
+	//if(custom_number_4 != NULL) {
+	//
+	//delete custom_number_4;
+	//custom_number_4 = NULL;
+	//}
 	//if(description != NULL) {
 	//
 	//delete description;
@@ -180,6 +498,16 @@ ItemAttributes::__cleanup()
 	//
 	//delete id;
 	//id = NULL;
+	//}
+	//if(installment_price != NULL) {
+	//
+	//delete installment_price;
+	//installment_price = NULL;
+	//}
+	//if(ios_deep_link != NULL) {
+	//
+	//delete ios_deep_link;
+	//ios_deep_link = NULL;
 	//}
 	//if(item_group_id != NULL) {
 	//
@@ -241,10 +569,20 @@ ItemAttributes::__cleanup()
 	//delete product_type;
 	//product_type = NULL;
 	//}
+	//if(promotion_id != NULL) {
+	//
+	//delete promotion_id;
+	//promotion_id = NULL;
+	//}
 	//if(sale_price != NULL) {
 	//
 	//delete sale_price;
 	//sale_price = NULL;
+	//}
+	//if(sale_price_effective_date != NULL) {
+	//
+	//delete sale_price_effective_date;
+	//sale_price_effective_date = NULL;
 	//}
 	//if(shipping != NULL) {
 	//
@@ -291,6 +629,16 @@ ItemAttributes::__cleanup()
 	//delete title;
 	//title = NULL;
 	//}
+	//if(unit_pricing_base_measure != NULL) {
+	//
+	//delete unit_pricing_base_measure;
+	//unit_pricing_base_measure = NULL;
+	//}
+	//if(unit_pricing_measure != NULL) {
+	//
+	//delete unit_pricing_measure;
+	//unit_pricing_measure = NULL;
+	//}
 	//if(variant_names != NULL) {
 	//variant_names.RemoveAll(true);
 	//delete variant_names;
@@ -324,6 +672,446 @@ ItemAttributes::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *ad_image_0_linkKey = "ad_image_0_link";
+	node = json_object_get_member(pJsonObject, ad_image_0_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_0_link, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_0_tagKey = "ad_image_0_tag";
+	node = json_object_get_member(pJsonObject, ad_image_0_tagKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_0_tag, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_10_linkKey = "ad_image_10_link";
+	node = json_object_get_member(pJsonObject, ad_image_10_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_10_link, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_10_tagKey = "ad_image_10_tag";
+	node = json_object_get_member(pJsonObject, ad_image_10_tagKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_10_tag, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_11_linkKey = "ad_image_11_link";
+	node = json_object_get_member(pJsonObject, ad_image_11_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_11_link, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_11_tagKey = "ad_image_11_tag";
+	node = json_object_get_member(pJsonObject, ad_image_11_tagKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_11_tag, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_12_linkKey = "ad_image_12_link";
+	node = json_object_get_member(pJsonObject, ad_image_12_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_12_link, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_12_tagKey = "ad_image_12_tag";
+	node = json_object_get_member(pJsonObject, ad_image_12_tagKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_12_tag, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_13_linkKey = "ad_image_13_link";
+	node = json_object_get_member(pJsonObject, ad_image_13_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_13_link, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_13_tagKey = "ad_image_13_tag";
+	node = json_object_get_member(pJsonObject, ad_image_13_tagKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_13_tag, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_14_linkKey = "ad_image_14_link";
+	node = json_object_get_member(pJsonObject, ad_image_14_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_14_link, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_14_tagKey = "ad_image_14_tag";
+	node = json_object_get_member(pJsonObject, ad_image_14_tagKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_14_tag, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_15_linkKey = "ad_image_15_link";
+	node = json_object_get_member(pJsonObject, ad_image_15_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_15_link, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_15_tagKey = "ad_image_15_tag";
+	node = json_object_get_member(pJsonObject, ad_image_15_tagKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_15_tag, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_16_linkKey = "ad_image_16_link";
+	node = json_object_get_member(pJsonObject, ad_image_16_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_16_link, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_16_tagKey = "ad_image_16_tag";
+	node = json_object_get_member(pJsonObject, ad_image_16_tagKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_16_tag, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_17_linkKey = "ad_image_17_link";
+	node = json_object_get_member(pJsonObject, ad_image_17_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_17_link, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_17_tagKey = "ad_image_17_tag";
+	node = json_object_get_member(pJsonObject, ad_image_17_tagKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_17_tag, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_18_linkKey = "ad_image_18_link";
+	node = json_object_get_member(pJsonObject, ad_image_18_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_18_link, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_18_tagKey = "ad_image_18_tag";
+	node = json_object_get_member(pJsonObject, ad_image_18_tagKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_18_tag, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_19_linkKey = "ad_image_19_link";
+	node = json_object_get_member(pJsonObject, ad_image_19_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_19_link, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_19_tagKey = "ad_image_19_tag";
+	node = json_object_get_member(pJsonObject, ad_image_19_tagKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_19_tag, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_1_linkKey = "ad_image_1_link";
+	node = json_object_get_member(pJsonObject, ad_image_1_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_1_link, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_1_tagKey = "ad_image_1_tag";
+	node = json_object_get_member(pJsonObject, ad_image_1_tagKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_1_tag, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_2_linkKey = "ad_image_2_link";
+	node = json_object_get_member(pJsonObject, ad_image_2_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_2_link, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_2_tagKey = "ad_image_2_tag";
+	node = json_object_get_member(pJsonObject, ad_image_2_tagKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_2_tag, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_3_linkKey = "ad_image_3_link";
+	node = json_object_get_member(pJsonObject, ad_image_3_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_3_link, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_3_tagKey = "ad_image_3_tag";
+	node = json_object_get_member(pJsonObject, ad_image_3_tagKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_3_tag, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_4_linkKey = "ad_image_4_link";
+	node = json_object_get_member(pJsonObject, ad_image_4_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_4_link, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_4_tagKey = "ad_image_4_tag";
+	node = json_object_get_member(pJsonObject, ad_image_4_tagKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_4_tag, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_5_linkKey = "ad_image_5_link";
+	node = json_object_get_member(pJsonObject, ad_image_5_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_5_link, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_5_tagKey = "ad_image_5_tag";
+	node = json_object_get_member(pJsonObject, ad_image_5_tagKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_5_tag, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_6_linkKey = "ad_image_6_link";
+	node = json_object_get_member(pJsonObject, ad_image_6_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_6_link, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_6_tagKey = "ad_image_6_tag";
+	node = json_object_get_member(pJsonObject, ad_image_6_tagKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_6_tag, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_7_linkKey = "ad_image_7_link";
+	node = json_object_get_member(pJsonObject, ad_image_7_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_7_link, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_7_tagKey = "ad_image_7_tag";
+	node = json_object_get_member(pJsonObject, ad_image_7_tagKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_7_tag, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_8_linkKey = "ad_image_8_link";
+	node = json_object_get_member(pJsonObject, ad_image_8_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_8_link, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_8_tagKey = "ad_image_8_tag";
+	node = json_object_get_member(pJsonObject, ad_image_8_tagKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_8_tag, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_9_linkKey = "ad_image_9_link";
+	node = json_object_get_member(pJsonObject, ad_image_9_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_9_link, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_image_9_tagKey = "ad_image_9_tag";
+	node = json_object_get_member(pJsonObject, ad_image_9_tagKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_image_9_tag, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *ad_linkKey = "ad_link";
 	node = json_object_get_member(pJsonObject, ad_linkKey);
 	if (node !=NULL) {
@@ -331,6 +1119,72 @@ ItemAttributes::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&ad_link, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_video_0_linkKey = "ad_video_0_link";
+	node = json_object_get_member(pJsonObject, ad_video_0_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_video_0_link, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_video_0_tagKey = "ad_video_0_tag";
+	node = json_object_get_member(pJsonObject, ad_video_0_tagKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_video_0_tag, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_video_1_linkKey = "ad_video_1_link";
+	node = json_object_get_member(pJsonObject, ad_video_1_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_video_1_link, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_video_1_tagKey = "ad_video_1_tag";
+	node = json_object_get_member(pJsonObject, ad_video_1_tagKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_video_1_tag, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_video_2_linkKey = "ad_video_2_link";
+	node = json_object_get_member(pJsonObject, ad_video_2_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_video_2_link, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ad_video_2_tagKey = "ad_video_2_tag";
+	node = json_object_get_member(pJsonObject, ad_video_2_tagKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ad_video_2_tag, node, "std::string", "");
 		} else {
 			
 		}
@@ -353,6 +1207,17 @@ ItemAttributes::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&age_group, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *android_deep_linkKey = "android_deep_link";
+	node = json_object_get_member(pJsonObject, android_deep_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&android_deep_link, node, "std::string", "");
 		} else {
 			
 		}
@@ -481,6 +1346,61 @@ ItemAttributes::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *custom_number_0Key = "custom_number_0";
+	node = json_object_get_member(pJsonObject, custom_number_0Key);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&custom_number_0, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *custom_number_1Key = "custom_number_1";
+	node = json_object_get_member(pJsonObject, custom_number_1Key);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&custom_number_1, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *custom_number_2Key = "custom_number_2";
+	node = json_object_get_member(pJsonObject, custom_number_2Key);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&custom_number_2, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *custom_number_3Key = "custom_number_3";
+	node = json_object_get_member(pJsonObject, custom_number_3Key);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&custom_number_3, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *custom_number_4Key = "custom_number_4";
+	node = json_object_get_member(pJsonObject, custom_number_4Key);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&custom_number_4, node, "int", "");
+		} else {
+			
+		}
+	}
 	const gchar *descriptionKey = "description";
 	node = json_object_get_member(pJsonObject, descriptionKey);
 	if (node !=NULL) {
@@ -541,9 +1461,12 @@ ItemAttributes::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("int")) {
-			jsonToValue(&gtin, node, "int", "");
+		if (isprimitive("UpdatableItemAttributes_gtin")) {
+			jsonToValue(&gtin, node, "UpdatableItemAttributes_gtin", "UpdatableItemAttributes_gtin");
 		} else {
+			
+			UpdatableItemAttributes_gtin* obj = static_cast<UpdatableItemAttributes_gtin*> (&gtin);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -554,6 +1477,28 @@ ItemAttributes::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *installment_priceKey = "installment_price";
+	node = json_object_get_member(pJsonObject, installment_priceKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&installment_price, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *ios_deep_linkKey = "ios_deep_link";
+	node = json_object_get_member(pJsonObject, ios_deep_linkKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&ios_deep_link, node, "std::string", "");
 		} else {
 			
 		}
@@ -690,6 +1635,17 @@ ItemAttributes::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *promotion_idKey = "promotion_id";
+	node = json_object_get_member(pJsonObject, promotion_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&promotion_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *sale_priceKey = "sale_price";
 	node = json_object_get_member(pJsonObject, sale_priceKey);
 	if (node !=NULL) {
@@ -697,6 +1653,17 @@ ItemAttributes::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&sale_price, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *sale_price_effective_dateKey = "sale_price_effective_date";
+	node = json_object_get_member(pJsonObject, sale_price_effective_dateKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&sale_price_effective_date, node, "std::string", "");
 		} else {
 			
 		}
@@ -796,6 +1763,28 @@ ItemAttributes::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&title, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *unit_pricing_base_measureKey = "unit_pricing_base_measure";
+	node = json_object_get_member(pJsonObject, unit_pricing_base_measureKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&unit_pricing_base_measure, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *unit_pricing_measureKey = "unit_pricing_measure";
+	node = json_object_get_member(pJsonObject, unit_pricing_measureKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&unit_pricing_measure, node, "std::string", "");
 		} else {
 			
 		}
@@ -912,6 +1901,366 @@ ItemAttributes::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
+		std::string obj = getAdImage0Link();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_0_linkKey = "ad_image_0_link";
+	json_object_set_member(pJsonObject, ad_image_0_linkKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage0Tag();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_0_tagKey = "ad_image_0_tag";
+	json_object_set_member(pJsonObject, ad_image_0_tagKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage10Link();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_10_linkKey = "ad_image_10_link";
+	json_object_set_member(pJsonObject, ad_image_10_linkKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage10Tag();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_10_tagKey = "ad_image_10_tag";
+	json_object_set_member(pJsonObject, ad_image_10_tagKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage11Link();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_11_linkKey = "ad_image_11_link";
+	json_object_set_member(pJsonObject, ad_image_11_linkKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage11Tag();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_11_tagKey = "ad_image_11_tag";
+	json_object_set_member(pJsonObject, ad_image_11_tagKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage12Link();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_12_linkKey = "ad_image_12_link";
+	json_object_set_member(pJsonObject, ad_image_12_linkKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage12Tag();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_12_tagKey = "ad_image_12_tag";
+	json_object_set_member(pJsonObject, ad_image_12_tagKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage13Link();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_13_linkKey = "ad_image_13_link";
+	json_object_set_member(pJsonObject, ad_image_13_linkKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage13Tag();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_13_tagKey = "ad_image_13_tag";
+	json_object_set_member(pJsonObject, ad_image_13_tagKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage14Link();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_14_linkKey = "ad_image_14_link";
+	json_object_set_member(pJsonObject, ad_image_14_linkKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage14Tag();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_14_tagKey = "ad_image_14_tag";
+	json_object_set_member(pJsonObject, ad_image_14_tagKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage15Link();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_15_linkKey = "ad_image_15_link";
+	json_object_set_member(pJsonObject, ad_image_15_linkKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage15Tag();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_15_tagKey = "ad_image_15_tag";
+	json_object_set_member(pJsonObject, ad_image_15_tagKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage16Link();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_16_linkKey = "ad_image_16_link";
+	json_object_set_member(pJsonObject, ad_image_16_linkKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage16Tag();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_16_tagKey = "ad_image_16_tag";
+	json_object_set_member(pJsonObject, ad_image_16_tagKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage17Link();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_17_linkKey = "ad_image_17_link";
+	json_object_set_member(pJsonObject, ad_image_17_linkKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage17Tag();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_17_tagKey = "ad_image_17_tag";
+	json_object_set_member(pJsonObject, ad_image_17_tagKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage18Link();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_18_linkKey = "ad_image_18_link";
+	json_object_set_member(pJsonObject, ad_image_18_linkKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage18Tag();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_18_tagKey = "ad_image_18_tag";
+	json_object_set_member(pJsonObject, ad_image_18_tagKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage19Link();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_19_linkKey = "ad_image_19_link";
+	json_object_set_member(pJsonObject, ad_image_19_linkKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage19Tag();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_19_tagKey = "ad_image_19_tag";
+	json_object_set_member(pJsonObject, ad_image_19_tagKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage1Link();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_1_linkKey = "ad_image_1_link";
+	json_object_set_member(pJsonObject, ad_image_1_linkKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage1Tag();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_1_tagKey = "ad_image_1_tag";
+	json_object_set_member(pJsonObject, ad_image_1_tagKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage2Link();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_2_linkKey = "ad_image_2_link";
+	json_object_set_member(pJsonObject, ad_image_2_linkKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage2Tag();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_2_tagKey = "ad_image_2_tag";
+	json_object_set_member(pJsonObject, ad_image_2_tagKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage3Link();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_3_linkKey = "ad_image_3_link";
+	json_object_set_member(pJsonObject, ad_image_3_linkKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage3Tag();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_3_tagKey = "ad_image_3_tag";
+	json_object_set_member(pJsonObject, ad_image_3_tagKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage4Link();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_4_linkKey = "ad_image_4_link";
+	json_object_set_member(pJsonObject, ad_image_4_linkKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage4Tag();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_4_tagKey = "ad_image_4_tag";
+	json_object_set_member(pJsonObject, ad_image_4_tagKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage5Link();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_5_linkKey = "ad_image_5_link";
+	json_object_set_member(pJsonObject, ad_image_5_linkKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage5Tag();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_5_tagKey = "ad_image_5_tag";
+	json_object_set_member(pJsonObject, ad_image_5_tagKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage6Link();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_6_linkKey = "ad_image_6_link";
+	json_object_set_member(pJsonObject, ad_image_6_linkKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage6Tag();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_6_tagKey = "ad_image_6_tag";
+	json_object_set_member(pJsonObject, ad_image_6_tagKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage7Link();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_7_linkKey = "ad_image_7_link";
+	json_object_set_member(pJsonObject, ad_image_7_linkKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage7Tag();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_7_tagKey = "ad_image_7_tag";
+	json_object_set_member(pJsonObject, ad_image_7_tagKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage8Link();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_8_linkKey = "ad_image_8_link";
+	json_object_set_member(pJsonObject, ad_image_8_linkKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage8Tag();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_8_tagKey = "ad_image_8_tag";
+	json_object_set_member(pJsonObject, ad_image_8_tagKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage9Link();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_9_linkKey = "ad_image_9_link";
+	json_object_set_member(pJsonObject, ad_image_9_linkKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdImage9Tag();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_image_9_tagKey = "ad_image_9_tag";
+	json_object_set_member(pJsonObject, ad_image_9_tagKey, node);
+	if (isprimitive("std::string")) {
 		std::string obj = getAdLink();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -920,6 +2269,60 @@ ItemAttributes::toJson()
 	}
 	const gchar *ad_linkKey = "ad_link";
 	json_object_set_member(pJsonObject, ad_linkKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdVideo0Link();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_video_0_linkKey = "ad_video_0_link";
+	json_object_set_member(pJsonObject, ad_video_0_linkKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdVideo0Tag();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_video_0_tagKey = "ad_video_0_tag";
+	json_object_set_member(pJsonObject, ad_video_0_tagKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdVideo1Link();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_video_1_linkKey = "ad_video_1_link";
+	json_object_set_member(pJsonObject, ad_video_1_linkKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdVideo1Tag();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_video_1_tagKey = "ad_video_1_tag";
+	json_object_set_member(pJsonObject, ad_video_1_tagKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdVideo2Link();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_video_2_linkKey = "ad_video_2_link";
+	json_object_set_member(pJsonObject, ad_video_2_linkKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAdVideo2Tag();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ad_video_2_tagKey = "ad_video_2_tag";
+	json_object_set_member(pJsonObject, ad_video_2_tagKey, node);
 	if (isprimitive("bool")) {
 		bool obj = getAdult();
 		node = converttoJson(&obj, "bool", "");
@@ -938,6 +2341,15 @@ ItemAttributes::toJson()
 	}
 	const gchar *age_groupKey = "age_group";
 	json_object_set_member(pJsonObject, age_groupKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getAndroidDeepLink();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *android_deep_linkKey = "android_deep_link";
+	json_object_set_member(pJsonObject, android_deep_linkKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getAvailability();
 		node = converttoJson(&obj, "std::string", "");
@@ -1042,6 +2454,51 @@ ItemAttributes::toJson()
 	}
 	const gchar *custom_label_4Key = "custom_label_4";
 	json_object_set_member(pJsonObject, custom_label_4Key, node);
+	if (isprimitive("int")) {
+		int obj = getCustomNumber0();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *custom_number_0Key = "custom_number_0";
+	json_object_set_member(pJsonObject, custom_number_0Key, node);
+	if (isprimitive("int")) {
+		int obj = getCustomNumber1();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *custom_number_1Key = "custom_number_1";
+	json_object_set_member(pJsonObject, custom_number_1Key, node);
+	if (isprimitive("int")) {
+		int obj = getCustomNumber2();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *custom_number_2Key = "custom_number_2";
+	json_object_set_member(pJsonObject, custom_number_2Key, node);
+	if (isprimitive("int")) {
+		int obj = getCustomNumber3();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *custom_number_3Key = "custom_number_3";
+	json_object_set_member(pJsonObject, custom_number_3Key, node);
+	if (isprimitive("int")) {
+		int obj = getCustomNumber4();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *custom_number_4Key = "custom_number_4";
+	json_object_set_member(pJsonObject, custom_number_4Key, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getDescription();
 		node = converttoJson(&obj, "std::string", "");
@@ -1087,11 +2544,16 @@ ItemAttributes::toJson()
 	}
 	const gchar *google_product_categoryKey = "google_product_category";
 	json_object_set_member(pJsonObject, google_product_categoryKey, node);
-	if (isprimitive("int")) {
-		int obj = getGtin();
-		node = converttoJson(&obj, "int", "");
+	if (isprimitive("UpdatableItemAttributes_gtin")) {
+		UpdatableItemAttributes_gtin obj = getGtin();
+		node = converttoJson(&obj, "UpdatableItemAttributes_gtin", "");
 	}
 	else {
+		
+		UpdatableItemAttributes_gtin obj = static_cast<UpdatableItemAttributes_gtin> (getGtin());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *gtinKey = "gtin";
@@ -1105,6 +2567,24 @@ ItemAttributes::toJson()
 	}
 	const gchar *idKey = "id";
 	json_object_set_member(pJsonObject, idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getInstallmentPrice();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *installment_priceKey = "installment_price";
+	json_object_set_member(pJsonObject, installment_priceKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getIosDeepLink();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *ios_deep_linkKey = "ios_deep_link";
+	json_object_set_member(pJsonObject, ios_deep_linkKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getItemGroupId();
 		node = converttoJson(&obj, "std::string", "");
@@ -1214,6 +2694,15 @@ ItemAttributes::toJson()
 	const gchar *product_typeKey = "product_type";
 	json_object_set_member(pJsonObject, product_typeKey, node);
 	if (isprimitive("std::string")) {
+		std::string obj = getPromotionId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *promotion_idKey = "promotion_id";
+	json_object_set_member(pJsonObject, promotion_idKey, node);
+	if (isprimitive("std::string")) {
 		std::string obj = getSalePrice();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -1222,6 +2711,15 @@ ItemAttributes::toJson()
 	}
 	const gchar *sale_priceKey = "sale_price";
 	json_object_set_member(pJsonObject, sale_priceKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getSalePriceEffectiveDate();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *sale_price_effective_dateKey = "sale_price_effective_date";
+	json_object_set_member(pJsonObject, sale_price_effective_dateKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getShipping();
 		node = converttoJson(&obj, "std::string", "");
@@ -1304,6 +2802,24 @@ ItemAttributes::toJson()
 	const gchar *titleKey = "title";
 	json_object_set_member(pJsonObject, titleKey, node);
 	if (isprimitive("std::string")) {
+		std::string obj = getUnitPricingBaseMeasure();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *unit_pricing_base_measureKey = "unit_pricing_base_measure";
+	json_object_set_member(pJsonObject, unit_pricing_base_measureKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getUnitPricingMeasure();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *unit_pricing_measureKey = "unit_pricing_measure";
+	json_object_set_member(pJsonObject, unit_pricing_measureKey, node);
+	if (isprimitive("std::string")) {
 		list<std::string> new_list = static_cast<list <std::string> > (getVariantNames());
 		node = converttoJson(&new_list, "std::string", "array");
 	} else {
@@ -1381,6 +2897,486 @@ ItemAttributes::toJson()
 }
 
 std::string
+ItemAttributes::getAdImage0Link()
+{
+	return ad_image_0_link;
+}
+
+void
+ItemAttributes::setAdImage0Link(std::string  ad_image_0_link)
+{
+	this->ad_image_0_link = ad_image_0_link;
+}
+
+std::string
+ItemAttributes::getAdImage0Tag()
+{
+	return ad_image_0_tag;
+}
+
+void
+ItemAttributes::setAdImage0Tag(std::string  ad_image_0_tag)
+{
+	this->ad_image_0_tag = ad_image_0_tag;
+}
+
+std::string
+ItemAttributes::getAdImage10Link()
+{
+	return ad_image_10_link;
+}
+
+void
+ItemAttributes::setAdImage10Link(std::string  ad_image_10_link)
+{
+	this->ad_image_10_link = ad_image_10_link;
+}
+
+std::string
+ItemAttributes::getAdImage10Tag()
+{
+	return ad_image_10_tag;
+}
+
+void
+ItemAttributes::setAdImage10Tag(std::string  ad_image_10_tag)
+{
+	this->ad_image_10_tag = ad_image_10_tag;
+}
+
+std::string
+ItemAttributes::getAdImage11Link()
+{
+	return ad_image_11_link;
+}
+
+void
+ItemAttributes::setAdImage11Link(std::string  ad_image_11_link)
+{
+	this->ad_image_11_link = ad_image_11_link;
+}
+
+std::string
+ItemAttributes::getAdImage11Tag()
+{
+	return ad_image_11_tag;
+}
+
+void
+ItemAttributes::setAdImage11Tag(std::string  ad_image_11_tag)
+{
+	this->ad_image_11_tag = ad_image_11_tag;
+}
+
+std::string
+ItemAttributes::getAdImage12Link()
+{
+	return ad_image_12_link;
+}
+
+void
+ItemAttributes::setAdImage12Link(std::string  ad_image_12_link)
+{
+	this->ad_image_12_link = ad_image_12_link;
+}
+
+std::string
+ItemAttributes::getAdImage12Tag()
+{
+	return ad_image_12_tag;
+}
+
+void
+ItemAttributes::setAdImage12Tag(std::string  ad_image_12_tag)
+{
+	this->ad_image_12_tag = ad_image_12_tag;
+}
+
+std::string
+ItemAttributes::getAdImage13Link()
+{
+	return ad_image_13_link;
+}
+
+void
+ItemAttributes::setAdImage13Link(std::string  ad_image_13_link)
+{
+	this->ad_image_13_link = ad_image_13_link;
+}
+
+std::string
+ItemAttributes::getAdImage13Tag()
+{
+	return ad_image_13_tag;
+}
+
+void
+ItemAttributes::setAdImage13Tag(std::string  ad_image_13_tag)
+{
+	this->ad_image_13_tag = ad_image_13_tag;
+}
+
+std::string
+ItemAttributes::getAdImage14Link()
+{
+	return ad_image_14_link;
+}
+
+void
+ItemAttributes::setAdImage14Link(std::string  ad_image_14_link)
+{
+	this->ad_image_14_link = ad_image_14_link;
+}
+
+std::string
+ItemAttributes::getAdImage14Tag()
+{
+	return ad_image_14_tag;
+}
+
+void
+ItemAttributes::setAdImage14Tag(std::string  ad_image_14_tag)
+{
+	this->ad_image_14_tag = ad_image_14_tag;
+}
+
+std::string
+ItemAttributes::getAdImage15Link()
+{
+	return ad_image_15_link;
+}
+
+void
+ItemAttributes::setAdImage15Link(std::string  ad_image_15_link)
+{
+	this->ad_image_15_link = ad_image_15_link;
+}
+
+std::string
+ItemAttributes::getAdImage15Tag()
+{
+	return ad_image_15_tag;
+}
+
+void
+ItemAttributes::setAdImage15Tag(std::string  ad_image_15_tag)
+{
+	this->ad_image_15_tag = ad_image_15_tag;
+}
+
+std::string
+ItemAttributes::getAdImage16Link()
+{
+	return ad_image_16_link;
+}
+
+void
+ItemAttributes::setAdImage16Link(std::string  ad_image_16_link)
+{
+	this->ad_image_16_link = ad_image_16_link;
+}
+
+std::string
+ItemAttributes::getAdImage16Tag()
+{
+	return ad_image_16_tag;
+}
+
+void
+ItemAttributes::setAdImage16Tag(std::string  ad_image_16_tag)
+{
+	this->ad_image_16_tag = ad_image_16_tag;
+}
+
+std::string
+ItemAttributes::getAdImage17Link()
+{
+	return ad_image_17_link;
+}
+
+void
+ItemAttributes::setAdImage17Link(std::string  ad_image_17_link)
+{
+	this->ad_image_17_link = ad_image_17_link;
+}
+
+std::string
+ItemAttributes::getAdImage17Tag()
+{
+	return ad_image_17_tag;
+}
+
+void
+ItemAttributes::setAdImage17Tag(std::string  ad_image_17_tag)
+{
+	this->ad_image_17_tag = ad_image_17_tag;
+}
+
+std::string
+ItemAttributes::getAdImage18Link()
+{
+	return ad_image_18_link;
+}
+
+void
+ItemAttributes::setAdImage18Link(std::string  ad_image_18_link)
+{
+	this->ad_image_18_link = ad_image_18_link;
+}
+
+std::string
+ItemAttributes::getAdImage18Tag()
+{
+	return ad_image_18_tag;
+}
+
+void
+ItemAttributes::setAdImage18Tag(std::string  ad_image_18_tag)
+{
+	this->ad_image_18_tag = ad_image_18_tag;
+}
+
+std::string
+ItemAttributes::getAdImage19Link()
+{
+	return ad_image_19_link;
+}
+
+void
+ItemAttributes::setAdImage19Link(std::string  ad_image_19_link)
+{
+	this->ad_image_19_link = ad_image_19_link;
+}
+
+std::string
+ItemAttributes::getAdImage19Tag()
+{
+	return ad_image_19_tag;
+}
+
+void
+ItemAttributes::setAdImage19Tag(std::string  ad_image_19_tag)
+{
+	this->ad_image_19_tag = ad_image_19_tag;
+}
+
+std::string
+ItemAttributes::getAdImage1Link()
+{
+	return ad_image_1_link;
+}
+
+void
+ItemAttributes::setAdImage1Link(std::string  ad_image_1_link)
+{
+	this->ad_image_1_link = ad_image_1_link;
+}
+
+std::string
+ItemAttributes::getAdImage1Tag()
+{
+	return ad_image_1_tag;
+}
+
+void
+ItemAttributes::setAdImage1Tag(std::string  ad_image_1_tag)
+{
+	this->ad_image_1_tag = ad_image_1_tag;
+}
+
+std::string
+ItemAttributes::getAdImage2Link()
+{
+	return ad_image_2_link;
+}
+
+void
+ItemAttributes::setAdImage2Link(std::string  ad_image_2_link)
+{
+	this->ad_image_2_link = ad_image_2_link;
+}
+
+std::string
+ItemAttributes::getAdImage2Tag()
+{
+	return ad_image_2_tag;
+}
+
+void
+ItemAttributes::setAdImage2Tag(std::string  ad_image_2_tag)
+{
+	this->ad_image_2_tag = ad_image_2_tag;
+}
+
+std::string
+ItemAttributes::getAdImage3Link()
+{
+	return ad_image_3_link;
+}
+
+void
+ItemAttributes::setAdImage3Link(std::string  ad_image_3_link)
+{
+	this->ad_image_3_link = ad_image_3_link;
+}
+
+std::string
+ItemAttributes::getAdImage3Tag()
+{
+	return ad_image_3_tag;
+}
+
+void
+ItemAttributes::setAdImage3Tag(std::string  ad_image_3_tag)
+{
+	this->ad_image_3_tag = ad_image_3_tag;
+}
+
+std::string
+ItemAttributes::getAdImage4Link()
+{
+	return ad_image_4_link;
+}
+
+void
+ItemAttributes::setAdImage4Link(std::string  ad_image_4_link)
+{
+	this->ad_image_4_link = ad_image_4_link;
+}
+
+std::string
+ItemAttributes::getAdImage4Tag()
+{
+	return ad_image_4_tag;
+}
+
+void
+ItemAttributes::setAdImage4Tag(std::string  ad_image_4_tag)
+{
+	this->ad_image_4_tag = ad_image_4_tag;
+}
+
+std::string
+ItemAttributes::getAdImage5Link()
+{
+	return ad_image_5_link;
+}
+
+void
+ItemAttributes::setAdImage5Link(std::string  ad_image_5_link)
+{
+	this->ad_image_5_link = ad_image_5_link;
+}
+
+std::string
+ItemAttributes::getAdImage5Tag()
+{
+	return ad_image_5_tag;
+}
+
+void
+ItemAttributes::setAdImage5Tag(std::string  ad_image_5_tag)
+{
+	this->ad_image_5_tag = ad_image_5_tag;
+}
+
+std::string
+ItemAttributes::getAdImage6Link()
+{
+	return ad_image_6_link;
+}
+
+void
+ItemAttributes::setAdImage6Link(std::string  ad_image_6_link)
+{
+	this->ad_image_6_link = ad_image_6_link;
+}
+
+std::string
+ItemAttributes::getAdImage6Tag()
+{
+	return ad_image_6_tag;
+}
+
+void
+ItemAttributes::setAdImage6Tag(std::string  ad_image_6_tag)
+{
+	this->ad_image_6_tag = ad_image_6_tag;
+}
+
+std::string
+ItemAttributes::getAdImage7Link()
+{
+	return ad_image_7_link;
+}
+
+void
+ItemAttributes::setAdImage7Link(std::string  ad_image_7_link)
+{
+	this->ad_image_7_link = ad_image_7_link;
+}
+
+std::string
+ItemAttributes::getAdImage7Tag()
+{
+	return ad_image_7_tag;
+}
+
+void
+ItemAttributes::setAdImage7Tag(std::string  ad_image_7_tag)
+{
+	this->ad_image_7_tag = ad_image_7_tag;
+}
+
+std::string
+ItemAttributes::getAdImage8Link()
+{
+	return ad_image_8_link;
+}
+
+void
+ItemAttributes::setAdImage8Link(std::string  ad_image_8_link)
+{
+	this->ad_image_8_link = ad_image_8_link;
+}
+
+std::string
+ItemAttributes::getAdImage8Tag()
+{
+	return ad_image_8_tag;
+}
+
+void
+ItemAttributes::setAdImage8Tag(std::string  ad_image_8_tag)
+{
+	this->ad_image_8_tag = ad_image_8_tag;
+}
+
+std::string
+ItemAttributes::getAdImage9Link()
+{
+	return ad_image_9_link;
+}
+
+void
+ItemAttributes::setAdImage9Link(std::string  ad_image_9_link)
+{
+	this->ad_image_9_link = ad_image_9_link;
+}
+
+std::string
+ItemAttributes::getAdImage9Tag()
+{
+	return ad_image_9_tag;
+}
+
+void
+ItemAttributes::setAdImage9Tag(std::string  ad_image_9_tag)
+{
+	this->ad_image_9_tag = ad_image_9_tag;
+}
+
+std::string
 ItemAttributes::getAdLink()
 {
 	return ad_link;
@@ -1390,6 +3386,78 @@ void
 ItemAttributes::setAdLink(std::string  ad_link)
 {
 	this->ad_link = ad_link;
+}
+
+std::string
+ItemAttributes::getAdVideo0Link()
+{
+	return ad_video_0_link;
+}
+
+void
+ItemAttributes::setAdVideo0Link(std::string  ad_video_0_link)
+{
+	this->ad_video_0_link = ad_video_0_link;
+}
+
+std::string
+ItemAttributes::getAdVideo0Tag()
+{
+	return ad_video_0_tag;
+}
+
+void
+ItemAttributes::setAdVideo0Tag(std::string  ad_video_0_tag)
+{
+	this->ad_video_0_tag = ad_video_0_tag;
+}
+
+std::string
+ItemAttributes::getAdVideo1Link()
+{
+	return ad_video_1_link;
+}
+
+void
+ItemAttributes::setAdVideo1Link(std::string  ad_video_1_link)
+{
+	this->ad_video_1_link = ad_video_1_link;
+}
+
+std::string
+ItemAttributes::getAdVideo1Tag()
+{
+	return ad_video_1_tag;
+}
+
+void
+ItemAttributes::setAdVideo1Tag(std::string  ad_video_1_tag)
+{
+	this->ad_video_1_tag = ad_video_1_tag;
+}
+
+std::string
+ItemAttributes::getAdVideo2Link()
+{
+	return ad_video_2_link;
+}
+
+void
+ItemAttributes::setAdVideo2Link(std::string  ad_video_2_link)
+{
+	this->ad_video_2_link = ad_video_2_link;
+}
+
+std::string
+ItemAttributes::getAdVideo2Tag()
+{
+	return ad_video_2_tag;
+}
+
+void
+ItemAttributes::setAdVideo2Tag(std::string  ad_video_2_tag)
+{
+	this->ad_video_2_tag = ad_video_2_tag;
 }
 
 bool
@@ -1414,6 +3482,18 @@ void
 ItemAttributes::setAgeGroup(std::string  age_group)
 {
 	this->age_group = age_group;
+}
+
+std::string
+ItemAttributes::getAndroidDeepLink()
+{
+	return android_deep_link;
+}
+
+void
+ItemAttributes::setAndroidDeepLink(std::string  android_deep_link)
+{
+	this->android_deep_link = android_deep_link;
 }
 
 std::string
@@ -1548,6 +3628,66 @@ ItemAttributes::setCustomLabel4(std::string  custom_label_4)
 	this->custom_label_4 = custom_label_4;
 }
 
+int
+ItemAttributes::getCustomNumber0()
+{
+	return custom_number_0;
+}
+
+void
+ItemAttributes::setCustomNumber0(int  custom_number_0)
+{
+	this->custom_number_0 = custom_number_0;
+}
+
+int
+ItemAttributes::getCustomNumber1()
+{
+	return custom_number_1;
+}
+
+void
+ItemAttributes::setCustomNumber1(int  custom_number_1)
+{
+	this->custom_number_1 = custom_number_1;
+}
+
+int
+ItemAttributes::getCustomNumber2()
+{
+	return custom_number_2;
+}
+
+void
+ItemAttributes::setCustomNumber2(int  custom_number_2)
+{
+	this->custom_number_2 = custom_number_2;
+}
+
+int
+ItemAttributes::getCustomNumber3()
+{
+	return custom_number_3;
+}
+
+void
+ItemAttributes::setCustomNumber3(int  custom_number_3)
+{
+	this->custom_number_3 = custom_number_3;
+}
+
+int
+ItemAttributes::getCustomNumber4()
+{
+	return custom_number_4;
+}
+
+void
+ItemAttributes::setCustomNumber4(int  custom_number_4)
+{
+	this->custom_number_4 = custom_number_4;
+}
+
 std::string
 ItemAttributes::getDescription()
 {
@@ -1608,14 +3748,14 @@ ItemAttributes::setGoogleProductCategory(std::string  google_product_category)
 	this->google_product_category = google_product_category;
 }
 
-int
+UpdatableItemAttributes_gtin
 ItemAttributes::getGtin()
 {
 	return gtin;
 }
 
 void
-ItemAttributes::setGtin(int  gtin)
+ItemAttributes::setGtin(UpdatableItemAttributes_gtin  gtin)
 {
 	this->gtin = gtin;
 }
@@ -1630,6 +3770,30 @@ void
 ItemAttributes::setId(std::string  id)
 {
 	this->id = id;
+}
+
+std::string
+ItemAttributes::getInstallmentPrice()
+{
+	return installment_price;
+}
+
+void
+ItemAttributes::setInstallmentPrice(std::string  installment_price)
+{
+	this->installment_price = installment_price;
+}
+
+std::string
+ItemAttributes::getIosDeepLink()
+{
+	return ios_deep_link;
+}
+
+void
+ItemAttributes::setIosDeepLink(std::string  ios_deep_link)
+{
+	this->ios_deep_link = ios_deep_link;
 }
 
 std::string
@@ -1777,6 +3941,18 @@ ItemAttributes::setProductType(std::string  product_type)
 }
 
 std::string
+ItemAttributes::getPromotionId()
+{
+	return promotion_id;
+}
+
+void
+ItemAttributes::setPromotionId(std::string  promotion_id)
+{
+	this->promotion_id = promotion_id;
+}
+
+std::string
 ItemAttributes::getSalePrice()
 {
 	return sale_price;
@@ -1786,6 +3962,18 @@ void
 ItemAttributes::setSalePrice(std::string  sale_price)
 {
 	this->sale_price = sale_price;
+}
+
+std::string
+ItemAttributes::getSalePriceEffectiveDate()
+{
+	return sale_price_effective_date;
+}
+
+void
+ItemAttributes::setSalePriceEffectiveDate(std::string  sale_price_effective_date)
+{
+	this->sale_price_effective_date = sale_price_effective_date;
 }
 
 std::string
@@ -1894,6 +4082,30 @@ void
 ItemAttributes::setTitle(std::string  title)
 {
 	this->title = title;
+}
+
+std::string
+ItemAttributes::getUnitPricingBaseMeasure()
+{
+	return unit_pricing_base_measure;
+}
+
+void
+ItemAttributes::setUnitPricingBaseMeasure(std::string  unit_pricing_base_measure)
+{
+	this->unit_pricing_base_measure = unit_pricing_base_measure;
+}
+
+std::string
+ItemAttributes::getUnitPricingMeasure()
+{
+	return unit_pricing_measure;
+}
+
+void
+ItemAttributes::setUnitPricingMeasure(std::string  unit_pricing_measure)
+{
+	this->unit_pricing_measure = unit_pricing_measure;
 }
 
 std::list<std::string>

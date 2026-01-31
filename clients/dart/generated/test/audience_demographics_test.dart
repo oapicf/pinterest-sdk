@@ -22,9 +22,9 @@ void main() {
       // TODO
     });
 
-    // Gender distribution.
-    // List<AudienceDemographicValue> genders (default value: const [])
-    test('to test the property `genders`', () async {
+    // Country area distribution.
+    // List<AudienceDemographicValue> countries (default value: const [])
+    test('to test the property `countries`', () async {
       // TODO
     });
 
@@ -34,15 +34,15 @@ void main() {
       // TODO
     });
 
-    // Geographic metro area distribution.
-    // List<AudienceDemographicValue> metros (default value: const [])
-    test('to test the property `metros`', () async {
+    // Gender distribution.
+    // List<AudienceDemographicValue> genders (default value: const [])
+    test('to test the property `genders`', () async {
       // TODO
     });
 
-    // Country area distribution.
-    // List<AudienceDemographicValue> countries (default value: const [])
-    test('to test the property `countries`', () async {
+    // Geographic metro area distribution.
+    // List<AudienceDemographicValue> metros (default value: const [])
+    test('to test the property `metros`', () async {
       // TODO
     });
 

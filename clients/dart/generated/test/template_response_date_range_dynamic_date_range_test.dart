@@ -16,15 +16,15 @@ void main() {
   // final instance = TemplateResponseDateRangeDynamicDateRange();
 
   group('test TemplateResponseDateRangeDynamicDateRange', () {
-    // The date range type
-    // String type
-    test('to test the property `type`', () async {
-      // TODO
-    });
-
     // The dynamic range type
     // String range
     test('to test the property `range`', () async {
+      // TODO
+    });
+
+    // The date range type
+    // String type
+    test('to test the property `type`', () async {
       // TODO
     });
 

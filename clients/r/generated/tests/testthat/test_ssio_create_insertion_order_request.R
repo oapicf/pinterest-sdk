@@ -5,36 +5,20 @@ context("Test SSIOCreateInsertionOrderRequest")
 
 model_instance <- SSIOCreateInsertionOrderRequest$new()
 
-test_that("start_date", {
-  # tests for the property `start_date` (character)
-  # Starting date of time period. Format: YYYY-MM-DD
+test_that("agency_link", {
+  # tests for the property `agency_link` (character)
+  # URL link for agency
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`start_date`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`agency_link`, "EXPECTED_RESULT")
 })
 
-test_that("end_date", {
-  # tests for the property `end_date` (character)
-  # End date of time period. Format: YYYY-MM-DD
+test_that("billing_contact_email", {
+  # tests for the property `billing_contact_email` (character)
+  # The billing contact email
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`end_date`, "EXPECTED_RESULT")
-})
-
-test_that("po_number", {
-  # tests for the property `po_number` (character)
-  # The po number
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`po_number`, "EXPECTED_RESULT")
-})
-
-test_that("budget_amount", {
-  # tests for the property `budget_amount` (numeric)
-  # If Budget order line, the budget amount.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`budget_amount`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`billing_contact_email`, "EXPECTED_RESULT")
 })
 
 test_that("billing_contact_firstname", {
@@ -53,12 +37,28 @@ test_that("billing_contact_lastname", {
   #expect_equal(model.instance$`billing_contact_lastname`, "EXPECTED_RESULT")
 })
 
-test_that("billing_contact_email", {
-  # tests for the property `billing_contact_email` (character)
-  # The billing contact email
+test_that("budget_amount", {
+  # tests for the property `budget_amount` (numeric)
+  # If Budget order line, the budget amount.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`billing_contact_email`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`budget_amount`, "EXPECTED_RESULT")
+})
+
+test_that("end_date", {
+  # tests for the property `end_date` (character)
+  # End date of time period. Format: YYYY-MM-DD
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`end_date`, "EXPECTED_RESULT")
+})
+
+test_that("media_contact_email", {
+  # tests for the property `media_contact_email` (character)
+  # The media contact email
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`media_contact_email`, "EXPECTED_RESULT")
 })
 
 test_that("media_contact_firstname", {
@@ -77,20 +77,20 @@ test_that("media_contact_lastname", {
   #expect_equal(model.instance$`media_contact_lastname`, "EXPECTED_RESULT")
 })
 
-test_that("media_contact_email", {
-  # tests for the property `media_contact_email` (character)
-  # The media contact email
+test_that("po_number", {
+  # tests for the property `po_number` (character)
+  # The po number
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`media_contact_email`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`po_number`, "EXPECTED_RESULT")
 })
 
-test_that("agency_link", {
-  # tests for the property `agency_link` (character)
-  # URL link for agency
+test_that("start_date", {
+  # tests for the property `start_date` (character)
+  # Starting date of time period. Format: YYYY-MM-DD
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`agency_link`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`start_date`, "EXPECTED_RESULT")
 })
 
 test_that("user_email", {
@@ -101,38 +101,6 @@ test_that("user_email", {
   #expect_equal(model.instance$`user_email`, "EXPECTED_RESULT")
 })
 
-test_that("accepted_terms_time", {
-  # tests for the property `accepted_terms_time` (integer)
-  # The UTC timestamp (to the nearest sec) of when terms were accepted
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`accepted_terms_time`, "EXPECTED_RESULT")
-})
-
-test_that("pmp_id", {
-  # tests for the property `pmp_id` (character)
-  # The pmp id
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`pmp_id`, "EXPECTED_RESULT")
-})
-
-test_that("order_name", {
-  # tests for the property `order_name` (character)
-  # The order name
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`order_name`, "EXPECTED_RESULT")
-})
-
-test_that("order_line_type", {
-  # tests for the property `order_line_type` (character)
-  # Type can be Budget or Perpetual
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`order_line_type`, "EXPECTED_RESULT")
-})
-
 test_that("accepted_terms_id", {
   # tests for the property `accepted_terms_id` (character)
   # The SFDC id for the terms
@@ -141,20 +109,12 @@ test_that("accepted_terms_id", {
   #expect_equal(model.instance$`accepted_terms_id`, "EXPECTED_RESULT")
 })
 
-test_that("billto_company_id", {
-  # tests for the property `billto_company_id` (character)
-  # The bill-to company id
+test_that("accepted_terms_time", {
+  # tests for the property `accepted_terms_time` (integer)
+  # The UTC timestamp (to the nearest sec) of when terms were accepted
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`billto_company_id`, "EXPECTED_RESULT")
-})
-
-test_that("billto_business_address_id", {
-  # tests for the property `billto_business_address_id` (character)
-  # The bill-to business address id
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`billto_business_address_id`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`accepted_terms_time`, "EXPECTED_RESULT")
 })
 
 test_that("billto_billing_address_id", {
@@ -165,6 +125,29 @@ test_that("billto_billing_address_id", {
   #expect_equal(model.instance$`billto_billing_address_id`, "EXPECTED_RESULT")
 })
 
+test_that("billto_business_address_id", {
+  # tests for the property `billto_business_address_id` (character)
+  # The bill-to business address id
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`billto_business_address_id`, "EXPECTED_RESULT")
+})
+
+test_that("billto_company_id", {
+  # tests for the property `billto_company_id` (character)
+  # The bill-to company id
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`billto_company_id`, "EXPECTED_RESULT")
+})
+
+test_that("currency_info", {
+  # tests for the property `currency_info` (Currency)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`currency_info`, "EXPECTED_RESULT")
+})
+
 test_that("estimated_monthly_spend", {
   # tests for the property `estimated_monthly_spend` (numeric)
   # If Ongoing (perpetual) order line, the estimated monthly spend
@@ -173,9 +156,26 @@ test_that("estimated_monthly_spend", {
   #expect_equal(model.instance$`estimated_monthly_spend`, "EXPECTED_RESULT")
 })
 
-test_that("currency_info", {
-  # tests for the property `currency_info` (Currency)
+test_that("order_line_type", {
+  # tests for the property `order_line_type` (character)
+  # Type can be Budget or Perpetual
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`currency_info`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`order_line_type`, "EXPECTED_RESULT")
+})
+
+test_that("order_name", {
+  # tests for the property `order_name` (character)
+  # The order name
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`order_name`, "EXPECTED_RESULT")
+})
+
+test_that("pmp_id", {
+  # tests for the property `pmp_id` (character)
+  # The pmp id
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`pmp_id`, "EXPECTED_RESULT")
 })

@@ -20,40 +20,40 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * Request object for creating a product group.
- * @param catalogType Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
- * @param name 
- * @param filters 
  * @param catalogId Catalog id pertaining to the retail product group.
+ * @param catalogType Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
+ * @param filters 
+ * @param name 
  * @param country 
- * @param locale 
  * @param description 
+ * @param locale 
  */
 data class CatalogsRetailProductGroupCreateRequest(
-
-    @Schema(example = "null", required = true, description = "Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.")
-    @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsRetailProductGroupCreateRequest.CatalogType,
-
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("name", required = true) val name: kotlin.String,
-
-    @field:Valid
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("filters", required = true) val filters: CatalogsProductGroupFiltersRequest,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "2680059592705", required = true, description = "Catalog id pertaining to the retail product group.")
     @get:JsonProperty("catalog_id", required = true) val catalogId: kotlin.String,
 
-    @field:Valid
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("country", required = true) val country: Country,
+    @Schema(example = "null", required = true, description = "Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.")
+    @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsRetailProductGroupCreateRequest.CatalogType,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("locale", required = true) val locale: CatalogsLocale,
+    @get:JsonProperty("filters", required = true) val filters: CatalogsProductGroupFiltersRequest,
+
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("name", required = true) val name: kotlin.String,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("country") val country: Country? = null,
 
     @Schema(example = "null", description = "")
-    @get:JsonProperty("description") val description: kotlin.String? = null
+    @get:JsonProperty("description") val description: kotlin.String? = null,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("locale") val locale: CatalogsLocale? = null
 ) {
 
     /**

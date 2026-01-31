@@ -41,7 +41,7 @@ interface CatalogsProduct {
     @Json(name = "metadata")
     val metadata: CatalogsCreativeAssetsProductMetadata
     @Json(name = "pin")
-    val pin: Pin?
+    val pin: Pin
 
 }
 

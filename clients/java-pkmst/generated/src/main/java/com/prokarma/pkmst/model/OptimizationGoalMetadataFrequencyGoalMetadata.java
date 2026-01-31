@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
  * OptimizationGoalMetadataFrequencyGoalMetadata
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OptimizationGoalMetadataFrequencyGoalMetadata   {
   @JsonProperty("frequency")
   private Integer frequency;
@@ -69,10 +69,12 @@ public class OptimizationGoalMetadataFrequencyGoalMetadata   {
   }
 
   /**
-   * Get frequency
+   * Frequency target can only be between 2 and 20
+   * minimum: 2
+   * maximum: 20
    * @return frequency
    */
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Frequency target can only be between 2 and 20")
   public Integer getFrequency() {
     return frequency;
   }

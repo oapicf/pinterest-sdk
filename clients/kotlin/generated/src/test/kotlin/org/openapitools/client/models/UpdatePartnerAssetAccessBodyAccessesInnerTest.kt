@@ -26,16 +26,16 @@ class UpdatePartnerAssetAccessBodyAccessesInnerTest : ShouldSpec() {
         // uncomment below to create an instance of UpdatePartnerAssetAccessBodyAccessesInner
         //val modelInstance = UpdatePartnerAssetAccessBodyAccessesInner()
 
-        // to test the property `partnerId` - Unique identifier of a business partner to update asset access to.
-        should("test partnerId") {
-            // uncomment below to test the property
-            //modelInstance.partnerId shouldBe ("TODO")
-        }
-
         // to test the property `assetId` - Unique identifier of the business asset.
         should("test assetId") {
             // uncomment below to test the property
             //modelInstance.assetId shouldBe ("TODO")
+        }
+
+        // to test the property `partnerId` - Unique identifier of a business partner to update asset access to.
+        should("test partnerId") {
+            // uncomment below to test the property
+            //modelInstance.partnerId shouldBe ("TODO")
         }
 
         // to test the property `permissions` - A non-empty array of permissions to assign to the partner.

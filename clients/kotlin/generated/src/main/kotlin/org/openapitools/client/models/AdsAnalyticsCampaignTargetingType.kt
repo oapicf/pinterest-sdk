@@ -22,7 +22,7 @@ import com.squareup.moshi.JsonClass
 /**
  * Reporting targeting type for campaigns
  *
- * Values: KEYWORD,APPTYPE,GENDER,LOCATION,PLACEMENT,COUNTRY,TARGETED_INTEREST,PINNER_INTEREST,AUDIENCE_INCLUDE,GEO,AGE_BUCKET,REGION,CREATIVE_TYPE,AGE_BUCKET_AND_GENDER
+ * Values: KEYWORD,APPTYPE,GENDER,LOCATION,PLACEMENT,COUNTRY,TARGETED_INTEREST,PINNER_INTEREST,AUDIENCE_INCLUDE,GEO,AGE_BUCKET,REGION,CREATIVE_TYPE,AGE_BUCKET_AND_GENDER,AUDIENCE_MULTIPLIER
  */
 
 @JsonClass(generateAdapter = false)
@@ -68,7 +68,10 @@ enum class AdsAnalyticsCampaignTargetingType(val value: kotlin.String) {
     CREATIVE_TYPE("CREATIVE_TYPE"),
 
     @Json(name = "AGE_BUCKET_AND_GENDER")
-    AGE_BUCKET_AND_GENDER("AGE_BUCKET_AND_GENDER");
+    AGE_BUCKET_AND_GENDER("AGE_BUCKET_AND_GENDER"),
+
+    @Json(name = "AUDIENCE_MULTIPLIER")
+    AUDIENCE_MULTIPLIER("AUDIENCE_MULTIPLIER");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use

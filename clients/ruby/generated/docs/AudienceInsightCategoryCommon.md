@@ -4,11 +4,11 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **id** | **String** |  | [optional] |
+| **index** | **Float** |  | [optional] |
 | **key** | **String** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **ratio** | **Float** |  | [optional] |
-| **index** | **Float** |  | [optional] |
-| **id** | **String** |  | [optional] |
 
 ## Example
 
@@ -16,11 +16,11 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::AudienceInsightCategoryCommon.new(
+  id: 549755885175,
+  index: 1.2,
   key: 549755885175,
   name: travel,
-  ratio: 0.551,
-  index: 1.2,
-  id: 549755885175
+  ratio: 0.551
 )
 ```
 

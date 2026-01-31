@@ -1,0 +1,100 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsCreativeAssetsAttributes"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsCreativeAssetsAttributes"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CatalogsCreativeAssetsAttributes {
+    title = CatalogsCreativeAssetsAttributes
+    description = CatalogsCreativeAssetsAttributes
+    derivedFrom = Root
+    properties {
+        android_deep_link {
+          type =  string
+          description = "Link to the creative assets page."
+          optional = false
+        }
+        custom_label_0 {
+          type =  string
+          description = "Custom grouping of creative assets."
+          optional = false
+        }
+        custom_label_1 {
+          type =  string
+          description = "Custom grouping of creative assets."
+          optional = false
+        }
+        custom_label_2 {
+          type =  string
+          description = "Custom grouping of creative assets."
+          optional = false
+        }
+        custom_label_3 {
+          type =  string
+          description = "Custom grouping of creative assets."
+          optional = false
+        }
+        custom_label_4 {
+          type =  string
+          description = "Custom grouping of creative assets."
+          optional = false
+        }
+        description {
+          type =  string
+          description = "Brief description of the creative assets."
+          optional = false
+        }
+        google_product_category {
+          type =  string
+          description = "The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted."
+          optional = false
+        }
+        ios_deep_link {
+          type =  string
+          description = "IOS deep link to the creative assets page."
+          optional = false
+        }
+        link {
+          type =  string
+          description = "Link to the creative assets page."
+          optional = false
+        }
+        title {
+          type =  string
+          description = "The name of the creative assets."
+          optional = false
+        }
+        visibility {
+          type =  string
+          description = "Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’."
+          optional = false
+        }
+        image_link {
+          type =  string
+          description = "The creative assets image."
+          optional = false
+        }
+        video_link {
+          type =  string
+          description = "The creative assets video."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsCreativeAssetsAttributes {
+    title = CatalogsCreativeAssetsAttributes
+    description = CatalogsCreativeAssetsAttributes
+    implements = openapi_server.resourceTypes.CatalogsCreativeAssetsAttributes
+
+  }
+}

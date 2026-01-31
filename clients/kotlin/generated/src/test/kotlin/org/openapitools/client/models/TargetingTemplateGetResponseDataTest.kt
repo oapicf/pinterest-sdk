@@ -30,28 +30,10 @@ class TargetingTemplateGetResponseDataTest : ShouldSpec() {
         // uncomment below to create an instance of TargetingTemplateGetResponseData
         //val modelInstance = TargetingTemplateGetResponseData()
 
-        // to test the property `name` - targeting template name
-        should("test name") {
-            // uncomment below to test the property
-            //modelInstance.name shouldBe ("TODO")
-        }
-
         // to test the property `autoTargetingEnabled` - Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
         should("test autoTargetingEnabled") {
             // uncomment below to test the property
             //modelInstance.autoTargetingEnabled shouldBe ("TODO")
-        }
-
-        // to test the property `targetingAttributes`
-        should("test targetingAttributes") {
-            // uncomment below to test the property
-            //modelInstance.targetingAttributes shouldBe ("TODO")
-        }
-
-        // to test the property `placementGroup`
-        should("test placementGroup") {
-            // uncomment below to test the property
-            //modelInstance.placementGroup shouldBe ("TODO")
         }
 
         // to test the property `keywords`
@@ -60,28 +42,28 @@ class TargetingTemplateGetResponseDataTest : ShouldSpec() {
             //modelInstance.keywords shouldBe ("TODO")
         }
 
+        // to test the property `name` - targeting template name
+        should("test name") {
+            // uncomment below to test the property
+            //modelInstance.name shouldBe ("TODO")
+        }
+
+        // to test the property `placementGroup`
+        should("test placementGroup") {
+            // uncomment below to test the property
+            //modelInstance.placementGroup shouldBe ("TODO")
+        }
+
+        // to test the property `targetingAttributes`
+        should("test targetingAttributes") {
+            // uncomment below to test the property
+            //modelInstance.targetingAttributes shouldBe ("TODO")
+        }
+
         // to test the property `trackingUrls`
         should("test trackingUrls") {
             // uncomment below to test the property
             //modelInstance.trackingUrls shouldBe ("TODO")
-        }
-
-        // to test the property `id` - Targeting template ID.
-        should("test id") {
-            // uncomment below to test the property
-            //modelInstance.id shouldBe ("TODO")
-        }
-
-        // to test the property `createdTime` - Targeting template created time. Unix timestamp in seconds.
-        should("test createdTime") {
-            // uncomment below to test the property
-            //modelInstance.createdTime shouldBe ("TODO")
-        }
-
-        // to test the property `updatedTime` - Targeting template updated time.Unix timestamp in seconds.
-        should("test updatedTime") {
-            // uncomment below to test the property
-            //modelInstance.updatedTime shouldBe ("TODO")
         }
 
         // to test the property `adAccountId` - The ID of the advertiser that this targeting template belongs to.
@@ -90,16 +72,34 @@ class TargetingTemplateGetResponseDataTest : ShouldSpec() {
             //modelInstance.adAccountId shouldBe ("TODO")
         }
 
-        // to test the property `status` - Indicate targeting template is active or Deleted
-        should("test status") {
+        // to test the property `createdTime` - Targeting template created time. Unix timestamp in seconds.
+        should("test createdTime") {
             // uncomment below to test the property
-            //modelInstance.status shouldBe ("TODO")
+            //modelInstance.createdTime shouldBe ("TODO")
+        }
+
+        // to test the property `id` - Targeting template ID.
+        should("test id") {
+            // uncomment below to test the property
+            //modelInstance.id shouldBe ("TODO")
         }
 
         // to test the property `sizing`
         should("test sizing") {
             // uncomment below to test the property
             //modelInstance.sizing shouldBe ("TODO")
+        }
+
+        // to test the property `status` - Indicate targeting template is active or Deleted
+        should("test status") {
+            // uncomment below to test the property
+            //modelInstance.status shouldBe ("TODO")
+        }
+
+        // to test the property `updatedTime` - Targeting template updated time.Unix timestamp in seconds.
+        should("test updatedTime") {
+            // uncomment below to test the property
+            //modelInstance.updatedTime shouldBe ("TODO")
         }
 
         // to test the property `valid` - Inform if the targeting template is valid (ex. would be false if has revoked audience)

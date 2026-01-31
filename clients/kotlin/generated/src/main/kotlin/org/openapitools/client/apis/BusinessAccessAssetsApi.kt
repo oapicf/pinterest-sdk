@@ -303,6 +303,7 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * Get all the members the requesting business has granted access to on the given asset.
      * @param businessId Unique identifier of the requesting business.
      * @param assetId Unique identifier of a business asset.
+     * @param fetchSystemUsers Fetches system users if True. Fetches regular user employees if False. (optional, default to false)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
@@ -315,8 +316,8 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun businessAssetMembersGet(businessId: kotlin.String, assetId: kotlin.String, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, startIndex: kotlin.Int? = 0) : BusinessAssetMembersGet200Response {
-        val localVarResponse = businessAssetMembersGetWithHttpInfo(businessId = businessId, assetId = assetId, bookmark = bookmark, pageSize = pageSize, startIndex = startIndex)
+    fun businessAssetMembersGet(businessId: kotlin.String, assetId: kotlin.String, fetchSystemUsers: kotlin.Boolean? = false, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, startIndex: kotlin.Int? = 0) : BusinessAssetMembersGet200Response {
+        val localVarResponse = businessAssetMembersGetWithHttpInfo(businessId = businessId, assetId = assetId, fetchSystemUsers = fetchSystemUsers, bookmark = bookmark, pageSize = pageSize, startIndex = startIndex)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as BusinessAssetMembersGet200Response
@@ -339,6 +340,7 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      * Get all the members the requesting business has granted access to on the given asset.
      * @param businessId Unique identifier of the requesting business.
      * @param assetId Unique identifier of a business asset.
+     * @param fetchSystemUsers Fetches system users if True. Fetches regular user employees if False. (optional, default to false)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
@@ -348,8 +350,8 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun businessAssetMembersGetWithHttpInfo(businessId: kotlin.String, assetId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, startIndex: kotlin.Int?) : ApiResponse<BusinessAssetMembersGet200Response?> {
-        val localVariableConfig = businessAssetMembersGetRequestConfig(businessId = businessId, assetId = assetId, bookmark = bookmark, pageSize = pageSize, startIndex = startIndex)
+    fun businessAssetMembersGetWithHttpInfo(businessId: kotlin.String, assetId: kotlin.String, fetchSystemUsers: kotlin.Boolean?, bookmark: kotlin.String?, pageSize: kotlin.Int?, startIndex: kotlin.Int?) : ApiResponse<BusinessAssetMembersGet200Response?> {
+        val localVariableConfig = businessAssetMembersGetRequestConfig(businessId = businessId, assetId = assetId, fetchSystemUsers = fetchSystemUsers, bookmark = bookmark, pageSize = pageSize, startIndex = startIndex)
 
         return request<Unit, BusinessAssetMembersGet200Response>(
             localVariableConfig
@@ -361,15 +363,19 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      *
      * @param businessId Unique identifier of the requesting business.
      * @param assetId Unique identifier of a business asset.
+     * @param fetchSystemUsers Fetches system users if True. Fetches regular user employees if False. (optional, default to false)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
      * @return RequestConfig
      */
-    fun businessAssetMembersGetRequestConfig(businessId: kotlin.String, assetId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?, startIndex: kotlin.Int?) : RequestConfig<Unit> {
+    fun businessAssetMembersGetRequestConfig(businessId: kotlin.String, assetId: kotlin.String, fetchSystemUsers: kotlin.Boolean?, bookmark: kotlin.String?, pageSize: kotlin.Int?, startIndex: kotlin.Int?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
+                if (fetchSystemUsers != null) {
+                    put("fetch_system_users", listOf(fetchSystemUsers.toString()))
+                }
                 if (bookmark != null) {
                     put("bookmark", listOf(bookmark.toString()))
                 }
@@ -495,7 +501,9 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      enum class AssetTypeBusinessAssetsGet(val value: kotlin.String) {
          @Json(name = "AD_ACCOUNT") AD_ACCOUNT("AD_ACCOUNT"),
          @Json(name = "PROFILE") PROFILE("PROFILE"),
-         @Json(name = "ASSET_GROUP") ASSET_GROUP("ASSET_GROUP");
+         @Json(name = "ASSET_GROUP") ASSET_GROUP("ASSET_GROUP"),
+         @Json(name = "CATALOG") CATALOG("CATALOG"),
+         @Json(name = "CONSUMER") CONSUMER("CONSUMER");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -630,7 +638,9 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      enum class AssetTypeBusinessMemberAssetsGet(val value: kotlin.String) {
          @Json(name = "AD_ACCOUNT") AD_ACCOUNT("AD_ACCOUNT"),
          @Json(name = "PROFILE") PROFILE("PROFILE"),
-         @Json(name = "ASSET_GROUP") ASSET_GROUP("ASSET_GROUP");
+         @Json(name = "ASSET_GROUP") ASSET_GROUP("ASSET_GROUP"),
+         @Json(name = "CATALOG") CATALOG("CATALOG"),
+         @Json(name = "CONSUMER") CONSUMER("CONSUMER");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use
@@ -904,7 +914,9 @@ open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, cl
      enum class AssetTypeBusinessPartnerAssetAccessGet(val value: kotlin.String) {
          @Json(name = "AD_ACCOUNT") AD_ACCOUNT("AD_ACCOUNT"),
          @Json(name = "PROFILE") PROFILE("PROFILE"),
-         @Json(name = "ASSET_GROUP") ASSET_GROUP("ASSET_GROUP");
+         @Json(name = "ASSET_GROUP") ASSET_GROUP("ASSET_GROUP"),
+         @Json(name = "CATALOG") CATALOG("CATALOG"),
+         @Json(name = "CONSUMER") CONSUMER("CONSUMER");
 
         /**
          * Override [toString()] to avoid using the enum variable name as the value, and instead use

@@ -9,7 +9,7 @@ module CatalogsFeedProductCounts =
 
 
   type CatalogsFeedProductCounts = {
-    Original : int;
     Ingested : int;
+    Original : int;
   }
   //#endregion

@@ -5,13 +5,13 @@
 -export_type([openapi_paginated/0]).
 
 -type openapi_paginated() ::
-    #{ 'items' := list(),
-       'bookmark' => binary()
+    #{ 'bookmark' => binary(),
+       'items' := list()
      }.
 
-encode(#{ 'items' := Items,
-          'bookmark' := Bookmark
+encode(#{ 'bookmark' := Bookmark,
+          'items' := Items
         }) ->
-    #{ 'items' => Items,
-       'bookmark' => Bookmark
+    #{ 'bookmark' => Bookmark,
+       'items' => Items
      }.

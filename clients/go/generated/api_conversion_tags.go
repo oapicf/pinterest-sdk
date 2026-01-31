@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -31,25 +31,29 @@ type ApiConversionTagsCreateRequest struct {
 	conversionTagCreate *ConversionTagCreate
 }
 
-// Conversion Tag to create
 func (r ApiConversionTagsCreateRequest) ConversionTagCreate(conversionTagCreate ConversionTagCreate) ApiConversionTagsCreateRequest {
 	r.conversionTagCreate = &conversionTagCreate
 	return r
 }
 
-func (r ApiConversionTagsCreateRequest) Execute() (*ConversionTagResponse, *http.Response, error) {
+func (r ApiConversionTagsCreateRequest) Execute() (*ConversionTag, *http.Response, error) {
 	return r.ApiService.ConversionTagsCreateExecute(r)
 }
 
 /*
 ConversionTagsCreate Create conversion tag
 
-Create a conversion tag, also known as <a href="https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag" target="_blank">Pinterest tag</a>, with the option to enable enhanced match.<p/>
-The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/>
-For more information, see:<p/>
-<a class="reference external" href="https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag">Set up the Pinterest tag</a><p/>
-<a class="reference external" href="/docs/api-features/pinterest-tag/">Pinterest Tag</a><p/>
-<a class="reference external" href="/docs/api-features/pinterest-tag/#enhanced-match">Enhanced match</a>
+Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.
+
+The Pinterest Tag tracks actions people take on the ad account's website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.
+
+For more information, see:
+
+[Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)
+
+[Pinterest Tag](/docs/track-conversions/pinterest-tag/)
+
+[Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -64,13 +68,13 @@ func (a *ConversionTagsAPIService) ConversionTagsCreate(ctx context.Context, adA
 }
 
 // Execute executes the request
-//  @return ConversionTagResponse
-func (a *ConversionTagsAPIService) ConversionTagsCreateExecute(r ApiConversionTagsCreateRequest) (*ConversionTagResponse, *http.Response, error) {
+//  @return ConversionTag
+func (a *ConversionTagsAPIService) ConversionTagsCreateExecute(r ApiConversionTagsCreateRequest) (*ConversionTag, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ConversionTagResponse
+		localVarReturnValue  *ConversionTag
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConversionTagsAPIService.ConversionTagsCreate")
@@ -132,7 +136,62 @@ func (a *ConversionTagsAPIService) ConversionTagsCreateExecute(r ApiConversionTa
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -162,7 +221,7 @@ type ApiConversionTagsGetRequest struct {
 	conversionTagId string
 }
 
-func (r ApiConversionTagsGetRequest) Execute() (*ConversionTagResponse, *http.Response, error) {
+func (r ApiConversionTagsGetRequest) Execute() (*ConversionTag, *http.Response, error) {
 	return r.ApiService.ConversionTagsGetExecute(r)
 }
 
@@ -186,13 +245,13 @@ func (a *ConversionTagsAPIService) ConversionTagsGet(ctx context.Context, adAcco
 }
 
 // Execute executes the request
-//  @return ConversionTagResponse
-func (a *ConversionTagsAPIService) ConversionTagsGetExecute(r ApiConversionTagsGetRequest) (*ConversionTagResponse, *http.Response, error) {
+//  @return ConversionTag
+func (a *ConversionTagsAPIService) ConversionTagsGetExecute(r ApiConversionTagsGetRequest) (*ConversionTag, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ConversionTagResponse
+		localVarReturnValue  *ConversionTag
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConversionTagsAPIService.ConversionTagsGet")
@@ -283,18 +342,18 @@ type ApiConversionTagsListRequest struct {
 	filterDeleted *bool
 }
 
-// Filter out deleted tags.
+// Filter by deleted status
 func (r ApiConversionTagsListRequest) FilterDeleted(filterDeleted bool) ApiConversionTagsListRequest {
 	r.filterDeleted = &filterDeleted
 	return r
 }
 
-func (r ApiConversionTagsListRequest) Execute() (*ConversionTagListResponse, *http.Response, error) {
+func (r ApiConversionTagsListRequest) Execute() (*ConversionTagsList200Response, *http.Response, error) {
 	return r.ApiService.ConversionTagsListExecute(r)
 }
 
 /*
-ConversionTagsList Get conversion tags
+ConversionTagsList List conversion tags
 
 List conversion tags associated with an ad account.
 
@@ -311,13 +370,13 @@ func (a *ConversionTagsAPIService) ConversionTagsList(ctx context.Context, adAcc
 }
 
 // Execute executes the request
-//  @return ConversionTagListResponse
-func (a *ConversionTagsAPIService) ConversionTagsListExecute(r ApiConversionTagsListRequest) (*ConversionTagListResponse, *http.Response, error) {
+//  @return ConversionTagsList200Response
+func (a *ConversionTagsAPIService) ConversionTagsListExecute(r ApiConversionTagsListRequest) (*ConversionTagsList200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ConversionTagListResponse
+		localVarReturnValue  *ConversionTagsList200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConversionTagsAPIService.ConversionTagsList")
@@ -381,7 +440,62 @@ func (a *ConversionTagsAPIService) ConversionTagsListExecute(r ApiConversionTags
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v PinterestLibError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+			var v PinterestLibError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

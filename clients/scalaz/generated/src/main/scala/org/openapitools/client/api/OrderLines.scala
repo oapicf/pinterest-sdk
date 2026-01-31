@@ -12,28 +12,28 @@ import org.joda.time.DateTime
 import OrderLines._
 
 case class OrderLines (
-  /* Order line ID. */
-  id: Option[String],
-/* Always \"orderline\". */
-  `type`: Option[String],
-/* Ad account ID. */
+  /* Ad account ID. */
   adAccountId: Option[String],
+/* Order line budget in micro currency. */
+  budget: Option[BigDecimal],
+/* End time. Unix timestamp. */
+  endTime: Option[BigDecimal],
+/* Order line ID. */
+  id: Option[String],
+/* Order line name. */
+  name: Option[String],
+/* Order line paid budget in micro currency. */
+  paidBudget: Option[BigDecimal],
+/* Order line paid type. */
+  paidType: Option[OrderLinePaidType],
 /* Purchase order ID. */
   purchaseOrderId: Option[String],
 /* Start time. Unix timestamp. */
   startTime: Option[BigDecimal],
-/* End time. Unix timestamp. */
-  endTime: Option[BigDecimal],
-/* Order line budget in micro currency. */
-  budget: Option[BigDecimal],
-/* Order line paid budget in micro currency. */
-  paidBudget: Option[BigDecimal],
 /* Order line status. */
   status: Option[OrderLineStatus],
-/* Order line name. */
-  name: Option[String],
-/* Order line paid type. */
-  paidType: Option[OrderLinePaidType])
+/* Always \"orderline\". */
+  `type`: Option[String])
 
 object OrderLines {
   import DateTimeCodecs._

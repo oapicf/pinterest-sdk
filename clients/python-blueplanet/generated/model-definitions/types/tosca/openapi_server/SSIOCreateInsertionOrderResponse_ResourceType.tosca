@@ -1,0 +1,35 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server SSIOCreateInsertionOrderResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a SSIOCreateInsertionOrderResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  SSIOCreateInsertionOrderResponse {
+    title = SSIOCreateInsertionOrderResponse
+    description = SSIOCreateInsertionOrderResponse
+    derivedFrom = Root
+    properties {
+        pin_order_id {
+          type =  string
+          description = "Salesforce order id"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  SSIOCreateInsertionOrderResponse {
+    title = SSIOCreateInsertionOrderResponse
+    description = SSIOCreateInsertionOrderResponse
+    implements = openapi_server.resourceTypes.SSIOCreateInsertionOrderResponse
+
+  }
+}

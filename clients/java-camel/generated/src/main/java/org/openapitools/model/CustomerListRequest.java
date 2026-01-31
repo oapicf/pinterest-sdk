@@ -20,16 +20,14 @@ import javax.annotation.Generated;
  * CustomerListRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CustomerListRequest {
+
+  private UserListType listType = "EMAIL";
 
   private String name;
 
   private String records;
-
-  private UserListType listType = "EMAIL";
-
-  private Object exceptions;
 
   public CustomerListRequest() {
     super();
@@ -41,6 +39,26 @@ public class CustomerListRequest {
   public CustomerListRequest(String name, String records) {
     this.name = name;
     this.records = records;
+  }
+
+  public CustomerListRequest listType(UserListType listType) {
+    this.listType = listType;
+    return this;
+  }
+
+  /**
+   * Get listType
+   * @return listType
+   */
+  @Valid 
+  @Schema(name = "list_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("list_type")
+  public UserListType getListType() {
+    return listType;
+  }
+
+  public void setListType(UserListType listType) {
+    this.listType = listType;
   }
 
   public CustomerListRequest name(String name) {
@@ -83,46 +101,6 @@ public class CustomerListRequest {
     this.records = records;
   }
 
-  public CustomerListRequest listType(UserListType listType) {
-    this.listType = listType;
-    return this;
-  }
-
-  /**
-   * Get listType
-   * @return listType
-   */
-  @Valid 
-  @Schema(name = "list_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("list_type")
-  public UserListType getListType() {
-    return listType;
-  }
-
-  public void setListType(UserListType listType) {
-    this.listType = listType;
-  }
-
-  public CustomerListRequest exceptions(Object exceptions) {
-    this.exceptions = exceptions;
-    return this;
-  }
-
-  /**
-   * Customer list errors.
-   * @return exceptions
-   */
-  
-  @Schema(name = "exceptions", description = "Customer list errors.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("exceptions")
-  public Object getExceptions() {
-    return exceptions;
-  }
-
-  public void setExceptions(Object exceptions) {
-    this.exceptions = exceptions;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -132,25 +110,23 @@ public class CustomerListRequest {
       return false;
     }
     CustomerListRequest customerListRequest = (CustomerListRequest) o;
-    return Objects.equals(this.name, customerListRequest.name) &&
-        Objects.equals(this.records, customerListRequest.records) &&
-        Objects.equals(this.listType, customerListRequest.listType) &&
-        Objects.equals(this.exceptions, customerListRequest.exceptions);
+    return Objects.equals(this.listType, customerListRequest.listType) &&
+        Objects.equals(this.name, customerListRequest.name) &&
+        Objects.equals(this.records, customerListRequest.records);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, records, listType, exceptions);
+    return Objects.hash(listType, name, records);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CustomerListRequest {\n");
+    sb.append("    listType: ").append(toIndentedString(listType)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    records: ").append(toIndentedString(records)).append("\n");
-    sb.append("    listType: ").append(toIndentedString(listType)).append("\n");
-    sb.append("    exceptions: ").append(toIndentedString(exceptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

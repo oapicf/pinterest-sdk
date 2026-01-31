@@ -23,7 +23,7 @@ public class PlacementMultipliers extends HashMap<String, Double>  {
 
 public enum PLACEMENTEnum {
 
-    @JsonProperty("SEARCH") SEARCH(String.valueOf("SEARCH")), @JsonProperty("BROWSE") BROWSE(String.valueOf("BROWSE"));
+    @JsonProperty("SEARCH") SEARCH(String.valueOf("SEARCH")), @JsonProperty("BROWSE") BROWSE(String.valueOf("BROWSE")), @JsonProperty("RELATED_PINS") RELATED_PINS(String.valueOf("RELATED_PINS"));
 
 
     private String value;

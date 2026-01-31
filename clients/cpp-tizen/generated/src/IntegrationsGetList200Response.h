@@ -49,22 +49,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<IntegrationRecord> getItems();
-
-	/*! \brief Set 
-	 */
-	void setItems(std::list <IntegrationRecord> items);
-	/*! \brief Get 
-	 */
 	std::string getBookmark();
 
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
+	/*! \brief Get 
+	 */
+	std::list<IntegrationRecord> getItems();
+
+	/*! \brief Set 
+	 */
+	void setItems(std::list <IntegrationRecord> items);
 
 private:
-	std::list <IntegrationRecord>items;
 	std::string bookmark;
+	std::list <IntegrationRecord>items;
 	void __init();
 	void __cleanup();
 

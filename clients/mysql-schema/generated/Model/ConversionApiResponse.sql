@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `ConversionApiResponse`
 --
-SELECT `num_events_received`, `num_events_processed`, `events` FROM `ConversionApiResponse` WHERE 1;
+SELECT `events`, `num_events_processed`, `num_events_received` FROM `ConversionApiResponse` WHERE 1;
 
 --
 -- INSERT template for table `ConversionApiResponse`
 --
-INSERT INTO `ConversionApiResponse`(`num_events_received`, `num_events_processed`, `events`) VALUES (?, ?, ?);
+INSERT INTO `ConversionApiResponse`(`events`, `num_events_processed`, `num_events_received`) VALUES (?, ?, ?);
 
 --
 -- UPDATE template for table `ConversionApiResponse`
 --
-UPDATE `ConversionApiResponse` SET `num_events_received` = ?, `num_events_processed` = ?, `events` = ? WHERE 1;
+UPDATE `ConversionApiResponse` SET `events` = ?, `num_events_processed` = ?, `num_events_received` = ? WHERE 1;
 
 --
 -- DELETE template for table `ConversionApiResponse`

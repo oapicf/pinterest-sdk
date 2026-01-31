@@ -2,7 +2,12 @@
 Protected Class TrackingUrls
 
 	#tag Property, Flags = &h0
-		impression() As String
+		audience_verification() As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		buyable_button() As String
 	#tag EndProperty
 
 
@@ -17,12 +22,7 @@ Protected Class TrackingUrls
 
 
 	#tag Property, Flags = &h0
-		buyable_button() As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		audience_verification() As String
+		impression() As String
 	#tag EndProperty
 
 
@@ -63,7 +63,15 @@ Protected Class TrackingUrls
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="impression"
+			Name="audience_verification"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="buyable_button"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -87,15 +95,7 @@ Protected Class TrackingUrls
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="buyable_button"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="audience_verification"
+			Name="impression"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

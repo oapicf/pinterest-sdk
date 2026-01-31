@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,9 +16,9 @@ package openapi
 
 type PinsList200Response struct {
 
-	Items []Pin `json:"items"`
-
 	Bookmark *string `json:"bookmark,omitempty"`
+
+	Items []Pin `json:"items"`
 }
 
 // AssertPinsList200ResponseRequired checks if the required fields are not zero-ed

@@ -3,17 +3,17 @@ Protected Class DeletePartnerAssetAccessBodyAccessesInner
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Unique identifier of a business partner to update asset access to.
+			Unique identifier of the business asset.
 		#tag EndNote
-		partner_id As String
+		asset_id As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Unique identifier of the business asset.
+			Unique identifier of a business partner to update asset access to.
 		#tag EndNote
-		asset_id As String
+		partner_id As String
 	#tag EndProperty
 
 
@@ -82,7 +82,7 @@ Protected Class DeletePartnerAssetAccessBodyAccessesInner
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="partner_id"
+			Name="asset_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -90,7 +90,7 @@ Protected Class DeletePartnerAssetAccessBodyAccessesInner
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="asset_id"
+			Name="partner_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

@@ -73,7 +73,7 @@ private class OASTemplateResponseDateRangeRelativeTest {
     private static void maintainRenamedProperties() {
         OASTemplateResponseDateRangeRelative templateResponseDateRangeRelativeDateRange = new OASTemplateResponseDateRangeRelative();
         Map<String, String> x-property-mappings = templateResponseDateRangeRelativeDateRange.getx-property-mappings();
-        System.assertEquals('startDaysInPast', x-property-mappings.get('start_days_in_past'));
         System.assertEquals('endDaysInPast', x-property-mappings.get('end_days_in_past'));
+        System.assertEquals('startDaysInPast', x-property-mappings.get('start_days_in_past'));
     }
 }

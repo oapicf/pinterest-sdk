@@ -11,9 +11,9 @@ import { CatalogsFeedProcessingStatus } from './catalogsFeedProcessingStatus';
 
 
 export interface CatalogsFeedIngestion { 
-    id: string;
-    feed_id: string;
     created_at: string;
+    feed_id: string;
+    id: string;
     status: CatalogsFeedProcessingStatus;
 }
 export namespace CatalogsFeedIngestion {

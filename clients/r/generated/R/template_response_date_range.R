@@ -7,27 +7,31 @@
 #' @title TemplateResponseDateRange
 #' @description TemplateResponseDateRange Class
 #' @format An \code{R6Class} generator object
+#' @field absolute_date_range  \link{TemplateResponseDateRangeAbsoluteDateRange} [optional]
 #' @field dynamic_date_range  \link{TemplateResponseDateRangeDynamicDateRange} [optional]
 #' @field relative_date_range  \link{TemplateResponseDateRangeRelativeDateRange} [optional]
-#' @field absolute_date_range  \link{TemplateResponseDateRangeAbsoluteDateRange} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 TemplateResponseDateRange <- R6::R6Class(
   "TemplateResponseDateRange",
   public = list(
+    `absolute_date_range` = NULL,
     `dynamic_date_range` = NULL,
     `relative_date_range` = NULL,
-    `absolute_date_range` = NULL,
 
     #' @description
     #' Initialize a new TemplateResponseDateRange class.
     #'
+    #' @param absolute_date_range absolute_date_range
     #' @param dynamic_date_range dynamic_date_range
     #' @param relative_date_range relative_date_range
-    #' @param absolute_date_range absolute_date_range
     #' @param ... Other optional arguments.
-    initialize = function(`dynamic_date_range` = NULL, `relative_date_range` = NULL, `absolute_date_range` = NULL, ...) {
+    initialize = function(`absolute_date_range` = NULL, `dynamic_date_range` = NULL, `relative_date_range` = NULL, ...) {
+      if (!is.null(`absolute_date_range`)) {
+        stopifnot(R6::is.R6(`absolute_date_range`))
+        self$`absolute_date_range` <- `absolute_date_range`
+      }
       if (!is.null(`dynamic_date_range`)) {
         stopifnot(R6::is.R6(`dynamic_date_range`))
         self$`dynamic_date_range` <- `dynamic_date_range`
@@ -35,10 +39,6 @@ TemplateResponseDateRange <- R6::R6Class(
       if (!is.null(`relative_date_range`)) {
         stopifnot(R6::is.R6(`relative_date_range`))
         self$`relative_date_range` <- `relative_date_range`
-      }
-      if (!is.null(`absolute_date_range`)) {
-        stopifnot(R6::is.R6(`absolute_date_range`))
-        self$`absolute_date_range` <- `absolute_date_range`
       }
     },
 
@@ -73,6 +73,10 @@ TemplateResponseDateRange <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       TemplateResponseDateRangeObject <- list()
+      if (!is.null(self$`absolute_date_range`)) {
+        TemplateResponseDateRangeObject[["absolute_date_range"]] <-
+          self$`absolute_date_range`$toSimpleType()
+      }
       if (!is.null(self$`dynamic_date_range`)) {
         TemplateResponseDateRangeObject[["dynamic_date_range"]] <-
           self$`dynamic_date_range`$toSimpleType()
@@ -80,10 +84,6 @@ TemplateResponseDateRange <- R6::R6Class(
       if (!is.null(self$`relative_date_range`)) {
         TemplateResponseDateRangeObject[["relative_date_range"]] <-
           self$`relative_date_range`$toSimpleType()
-      }
-      if (!is.null(self$`absolute_date_range`)) {
-        TemplateResponseDateRangeObject[["absolute_date_range"]] <-
-          self$`absolute_date_range`$toSimpleType()
       }
       return(TemplateResponseDateRangeObject)
     },
@@ -95,6 +95,11 @@ TemplateResponseDateRange <- R6::R6Class(
     #' @return the instance of TemplateResponseDateRange
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`absolute_date_range`)) {
+        `absolute_date_range_object` <- TemplateResponseDateRangeAbsoluteDateRange$new()
+        `absolute_date_range_object`$fromJSON(jsonlite::toJSON(this_object$`absolute_date_range`, auto_unbox = TRUE, digits = NA))
+        self$`absolute_date_range` <- `absolute_date_range_object`
+      }
       if (!is.null(this_object$`dynamic_date_range`)) {
         `dynamic_date_range_object` <- TemplateResponseDateRangeDynamicDateRange$new()
         `dynamic_date_range_object`$fromJSON(jsonlite::toJSON(this_object$`dynamic_date_range`, auto_unbox = TRUE, digits = NA))
@@ -104,11 +109,6 @@ TemplateResponseDateRange <- R6::R6Class(
         `relative_date_range_object` <- TemplateResponseDateRangeRelativeDateRange$new()
         `relative_date_range_object`$fromJSON(jsonlite::toJSON(this_object$`relative_date_range`, auto_unbox = TRUE, digits = NA))
         self$`relative_date_range` <- `relative_date_range_object`
-      }
-      if (!is.null(this_object$`absolute_date_range`)) {
-        `absolute_date_range_object` <- TemplateResponseDateRangeAbsoluteDateRange$new()
-        `absolute_date_range_object`$fromJSON(jsonlite::toJSON(this_object$`absolute_date_range`, auto_unbox = TRUE, digits = NA))
-        self$`absolute_date_range` <- `absolute_date_range_object`
       }
       self
     },
@@ -131,9 +131,9 @@ TemplateResponseDateRange <- R6::R6Class(
     #' @return the instance of TemplateResponseDateRange
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`absolute_date_range` <- TemplateResponseDateRangeAbsoluteDateRange$new()$fromJSON(jsonlite::toJSON(this_object$`absolute_date_range`, auto_unbox = TRUE, digits = NA))
       self$`dynamic_date_range` <- TemplateResponseDateRangeDynamicDateRange$new()$fromJSON(jsonlite::toJSON(this_object$`dynamic_date_range`, auto_unbox = TRUE, digits = NA))
       self$`relative_date_range` <- TemplateResponseDateRangeRelativeDateRange$new()$fromJSON(jsonlite::toJSON(this_object$`relative_date_range`, auto_unbox = TRUE, digits = NA))
-      self$`absolute_date_range` <- TemplateResponseDateRangeAbsoluteDateRange$new()$fromJSON(jsonlite::toJSON(this_object$`absolute_date_range`, auto_unbox = TRUE, digits = NA))
       self
     },
 

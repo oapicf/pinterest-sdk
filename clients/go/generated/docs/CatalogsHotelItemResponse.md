@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Attributes** | Pointer to [**CatalogsHotelAttributes**](CatalogsHotelAttributes.md) |  | [optional] 
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **HotelId** | Pointer to **string** | The catalog hotel id in the merchant namespace | [optional] 
 **Pins** | Pointer to [**[]Pin**](Pin.md) | The pins mapped to the item | [optional] 
-**Attributes** | Pointer to [**CatalogsHotelAttributes**](CatalogsHotelAttributes.md) |  | [optional] 
 
 ## Methods
 
@@ -27,6 +27,31 @@ will change when the set of required properties is changed
 NewCatalogsHotelItemResponseWithDefaults instantiates a new CatalogsHotelItemResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAttributes
+
+`func (o *CatalogsHotelItemResponse) GetAttributes() CatalogsHotelAttributes`
+
+GetAttributes returns the Attributes field if non-nil, zero value otherwise.
+
+### GetAttributesOk
+
+`func (o *CatalogsHotelItemResponse) GetAttributesOk() (*CatalogsHotelAttributes, bool)`
+
+GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAttributes
+
+`func (o *CatalogsHotelItemResponse) SetAttributes(v CatalogsHotelAttributes)`
+
+SetAttributes sets Attributes field to given value.
+
+### HasAttributes
+
+`func (o *CatalogsHotelItemResponse) HasAttributes() bool`
+
+HasAttributes returns a boolean if a field has been set.
 
 ### GetCatalogType
 
@@ -108,31 +133,6 @@ HasPins returns a boolean if a field has been set.
 `func (o *CatalogsHotelItemResponse) UnsetPins()`
 
 UnsetPins ensures that no value is present for Pins, not even an explicit nil
-### GetAttributes
-
-`func (o *CatalogsHotelItemResponse) GetAttributes() CatalogsHotelAttributes`
-
-GetAttributes returns the Attributes field if non-nil, zero value otherwise.
-
-### GetAttributesOk
-
-`func (o *CatalogsHotelItemResponse) GetAttributesOk() (*CatalogsHotelAttributes, bool)`
-
-GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAttributes
-
-`func (o *CatalogsHotelItemResponse) SetAttributes(v CatalogsHotelAttributes)`
-
-SetAttributes sets Attributes field to given value.
-
-### HasAttributes
-
-`func (o *CatalogsHotelItemResponse) HasAttributes() bool`
-
-HasAttributes returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

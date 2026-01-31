@@ -24,19 +24,19 @@ public class ProductGroupAnalyticsResponseInnerTest {
     }
 
     /**
-     * Test the property 'PRODUCT_GROUP_ID'
-     */
-    @Test
-    public void PRODUCT_GROUP_IDTest() {
-        // TODO: test PRODUCT_GROUP_ID
-    }
-
-    /**
      * Test the property 'DATE'
      */
     @Test
     public void DATETest() {
         // TODO: test DATE
+    }
+
+    /**
+     * Test the property 'PRODUCT_GROUP_ID'
+     */
+    @Test
+    public void PRODUCT_GROUP_IDTest() {
+        // TODO: test PRODUCT_GROUP_ID
     }
 
 }

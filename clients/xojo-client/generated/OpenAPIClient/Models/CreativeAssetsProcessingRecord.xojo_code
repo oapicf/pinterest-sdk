@@ -18,15 +18,15 @@ Protected Class CreativeAssetsProcessingRecord
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Array with the validation warnings for the item processing record
-		#tag EndNote
-		warnings() As OpenAPIClient.Models.ItemValidationEvent
+		status As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		status As Xoson.O.OptionalString
+		#tag Note
+			Array with the validation warnings for the item processing record
+		#tag EndNote
+		warnings() As OpenAPIClient.Models.ItemValidationEvent
 	#tag EndProperty
 
 
@@ -83,19 +83,19 @@ Protected Class CreativeAssetsProcessingRecord
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="warnings"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="ItemValidationEvent"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="status"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="ItemProcessingStatus"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="warnings"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="ItemValidationEvent"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

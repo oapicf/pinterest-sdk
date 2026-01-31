@@ -7,15 +7,15 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(InviteExceptionResponse, () {
-    // Unique identifier of the invite/request.
-    // String inviteOrRequestId
-    test('to test the property `inviteOrRequestId`', () async {
-      // TODO
-    });
-
     // Error code associated with the error in performing the action on the invite/request.
     // int code
     test('to test the property `code`', () async {
+      // TODO
+    });
+
+    // Unique identifier of the invite/request.
+    // String inviteOrRequestId
+    test('to test the property `inviteOrRequestId`', () async {
       // TODO
     });
 

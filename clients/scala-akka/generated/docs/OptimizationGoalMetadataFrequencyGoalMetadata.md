@@ -7,7 +7,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**frequency** | **Int** |  |  [optional]
+**frequency** | **Int** | Frequency target can only be between 2 and 20 |  [optional]
 **timerange** | [**Timerange**](#Timerange) | User entity counts time range |  [optional]
 
 

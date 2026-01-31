@@ -2,9 +2,9 @@ package org.openapitools.api.impl;
 
 import org.openapitools.api.*;
 import org.openapitools.model.Error;
-import org.openapitools.model.PinsList200Response;
 import org.openapitools.model.SearchPartnerPins200Response;
 import org.openapitools.model.SearchUserBoardsGet200Response;
+import org.openapitools.model.SearchUserPinsList200Response;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -29,7 +29,7 @@ public class SearchApiServiceImpl implements SearchApi {
     /**
      * Search pins by a given search term
      *
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
      *
      */
     @Override
@@ -57,7 +57,7 @@ public class SearchApiServiceImpl implements SearchApi {
      *
      */
     @Override
-    public PinsList200Response searchUserPinsList(String query, String adAccountId, String bookmark) {
+    public SearchUserPinsList200Response searchUserPinsList(String query, String adAccountId, String bookmark) {
         // TODO: Implement...
         return null;
     }

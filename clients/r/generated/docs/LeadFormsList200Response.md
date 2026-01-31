@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**array[LeadFormResponse]**](LeadFormResponse.md) |  | 
 **bookmark** | **character** |  | [optional] 
+**items** | [**array[LeadFormResponse]**](LeadFormResponse.md) |  | 
 
 

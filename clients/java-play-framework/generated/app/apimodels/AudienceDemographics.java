@@ -13,7 +13,7 @@ import javax.validation.Valid;
 /**
  * Audience demographics
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AudienceDemographics   {
   @JsonProperty("ages")
@@ -21,25 +21,25 @@ public class AudienceDemographics   {
 
   private List<@Valid AudienceDemographicValue> ages = null;
 
-  @JsonProperty("genders")
+  @JsonProperty("countries")
   @Valid
 
-  private List<@Valid AudienceDemographicValue> genders = null;
+  private List<@Valid AudienceDemographicValue> countries = null;
 
   @JsonProperty("devices")
   @Valid
 
   private List<@Valid AudienceDemographicValue> devices = null;
 
+  @JsonProperty("genders")
+  @Valid
+
+  private List<@Valid AudienceDemographicValue> genders = null;
+
   @JsonProperty("metros")
   @Valid
 
   private List<@Valid AudienceDemographicValue> metros = null;
-
-  @JsonProperty("countries")
-  @Valid
-
-  private List<@Valid AudienceDemographicValue> countries = null;
 
   public AudienceDemographics ages(List<@Valid AudienceDemographicValue> ages) {
     this.ages = ages;
@@ -64,81 +64,6 @@ public class AudienceDemographics   {
 
   public void setAges(List<@Valid AudienceDemographicValue> ages) {
     this.ages = ages;
-  }
-
-  public AudienceDemographics genders(List<@Valid AudienceDemographicValue> genders) {
-    this.genders = genders;
-    return this;
-  }
-
-  public AudienceDemographics addGendersItem(AudienceDemographicValue gendersItem) {
-    if (this.genders == null) {
-      this.genders = new ArrayList<>();
-    }
-    this.genders.add(gendersItem);
-    return this;
-  }
-
-   /**
-   * Gender distribution.
-   * @return genders
-  **/
-  public List<@Valid AudienceDemographicValue> getGenders() {
-    return genders;
-  }
-
-  public void setGenders(List<@Valid AudienceDemographicValue> genders) {
-    this.genders = genders;
-  }
-
-  public AudienceDemographics devices(List<@Valid AudienceDemographicValue> devices) {
-    this.devices = devices;
-    return this;
-  }
-
-  public AudienceDemographics addDevicesItem(AudienceDemographicValue devicesItem) {
-    if (this.devices == null) {
-      this.devices = new ArrayList<>();
-    }
-    this.devices.add(devicesItem);
-    return this;
-  }
-
-   /**
-   * Device usage distribution.
-   * @return devices
-  **/
-  public List<@Valid AudienceDemographicValue> getDevices() {
-    return devices;
-  }
-
-  public void setDevices(List<@Valid AudienceDemographicValue> devices) {
-    this.devices = devices;
-  }
-
-  public AudienceDemographics metros(List<@Valid AudienceDemographicValue> metros) {
-    this.metros = metros;
-    return this;
-  }
-
-  public AudienceDemographics addMetrosItem(AudienceDemographicValue metrosItem) {
-    if (this.metros == null) {
-      this.metros = new ArrayList<>();
-    }
-    this.metros.add(metrosItem);
-    return this;
-  }
-
-   /**
-   * Geographic metro area distribution.
-   * @return metros
-  **/
-  public List<@Valid AudienceDemographicValue> getMetros() {
-    return metros;
-  }
-
-  public void setMetros(List<@Valid AudienceDemographicValue> metros) {
-    this.metros = metros;
   }
 
   public AudienceDemographics countries(List<@Valid AudienceDemographicValue> countries) {
@@ -166,6 +91,81 @@ public class AudienceDemographics   {
     this.countries = countries;
   }
 
+  public AudienceDemographics devices(List<@Valid AudienceDemographicValue> devices) {
+    this.devices = devices;
+    return this;
+  }
+
+  public AudienceDemographics addDevicesItem(AudienceDemographicValue devicesItem) {
+    if (this.devices == null) {
+      this.devices = new ArrayList<>();
+    }
+    this.devices.add(devicesItem);
+    return this;
+  }
+
+   /**
+   * Device usage distribution.
+   * @return devices
+  **/
+  public List<@Valid AudienceDemographicValue> getDevices() {
+    return devices;
+  }
+
+  public void setDevices(List<@Valid AudienceDemographicValue> devices) {
+    this.devices = devices;
+  }
+
+  public AudienceDemographics genders(List<@Valid AudienceDemographicValue> genders) {
+    this.genders = genders;
+    return this;
+  }
+
+  public AudienceDemographics addGendersItem(AudienceDemographicValue gendersItem) {
+    if (this.genders == null) {
+      this.genders = new ArrayList<>();
+    }
+    this.genders.add(gendersItem);
+    return this;
+  }
+
+   /**
+   * Gender distribution.
+   * @return genders
+  **/
+  public List<@Valid AudienceDemographicValue> getGenders() {
+    return genders;
+  }
+
+  public void setGenders(List<@Valid AudienceDemographicValue> genders) {
+    this.genders = genders;
+  }
+
+  public AudienceDemographics metros(List<@Valid AudienceDemographicValue> metros) {
+    this.metros = metros;
+    return this;
+  }
+
+  public AudienceDemographics addMetrosItem(AudienceDemographicValue metrosItem) {
+    if (this.metros == null) {
+      this.metros = new ArrayList<>();
+    }
+    this.metros.add(metrosItem);
+    return this;
+  }
+
+   /**
+   * Geographic metro area distribution.
+   * @return metros
+  **/
+  public List<@Valid AudienceDemographicValue> getMetros() {
+    return metros;
+  }
+
+  public void setMetros(List<@Valid AudienceDemographicValue> metros) {
+    this.metros = metros;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -177,15 +177,15 @@ public class AudienceDemographics   {
     }
     AudienceDemographics audienceDemographics = (AudienceDemographics) o;
     return Objects.equals(ages, audienceDemographics.ages) &&
-        Objects.equals(genders, audienceDemographics.genders) &&
+        Objects.equals(countries, audienceDemographics.countries) &&
         Objects.equals(devices, audienceDemographics.devices) &&
-        Objects.equals(metros, audienceDemographics.metros) &&
-        Objects.equals(countries, audienceDemographics.countries);
+        Objects.equals(genders, audienceDemographics.genders) &&
+        Objects.equals(metros, audienceDemographics.metros);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ages, genders, devices, metros, countries);
+    return Objects.hash(ages, countries, devices, genders, metros);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -195,10 +195,10 @@ public class AudienceDemographics   {
     sb.append("class AudienceDemographics {\n");
     
     sb.append("    ages: ").append(toIndentedString(ages)).append("\n");
-    sb.append("    genders: ").append(toIndentedString(genders)).append("\n");
-    sb.append("    devices: ").append(toIndentedString(devices)).append("\n");
-    sb.append("    metros: ").append(toIndentedString(metros)).append("\n");
     sb.append("    countries: ").append(toIndentedString(countries)).append("\n");
+    sb.append("    devices: ").append(toIndentedString(devices)).append("\n");
+    sb.append("    genders: ").append(toIndentedString(genders)).append("\n");
+    sb.append("    metros: ").append(toIndentedString(metros)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -7,16 +7,16 @@
 #' @title BusinessAssetMembersGet200Response
 #' @description BusinessAssetMembersGet200Response Class
 #' @format An \code{R6Class} generator object
-#' @field items List of members with permissions to the asset. list(\link{UserSingleAssetBinding})
 #' @field bookmark  character [optional]
+#' @field items List of members with permissions to the asset. list(\link{UserSingleAssetBinding})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 BusinessAssetMembersGet200Response <- R6::R6Class(
   "BusinessAssetMembersGet200Response",
   public = list(
-    `items` = NULL,
     `bookmark` = NULL,
+    `items` = NULL,
 
     #' @description
     #' Initialize a new BusinessAssetMembersGet200Response class.
@@ -69,13 +69,13 @@ BusinessAssetMembersGet200Response <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       BusinessAssetMembersGet200ResponseObject <- list()
-      if (!is.null(self$`items`)) {
-        BusinessAssetMembersGet200ResponseObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toSimpleType())
-      }
       if (!is.null(self$`bookmark`)) {
         BusinessAssetMembersGet200ResponseObject[["bookmark"]] <-
           self$`bookmark`
+      }
+      if (!is.null(self$`items`)) {
+        BusinessAssetMembersGet200ResponseObject[["items"]] <-
+          lapply(self$`items`, function(x) x$toSimpleType())
       }
       return(BusinessAssetMembersGet200ResponseObject)
     },
@@ -87,11 +87,11 @@ BusinessAssetMembersGet200Response <- R6::R6Class(
     #' @return the instance of BusinessAssetMembersGet200Response
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`items`)) {
-        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[UserSingleAssetBinding]", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`bookmark`)) {
         self$`bookmark` <- this_object$`bookmark`
+      }
+      if (!is.null(this_object$`items`)) {
+        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[UserSingleAssetBinding]", loadNamespace("openapi"))
       }
       self
     },
@@ -114,8 +114,8 @@ BusinessAssetMembersGet200Response <- R6::R6Class(
     #' @return the instance of BusinessAssetMembersGet200Response
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[UserSingleAssetBinding]", loadNamespace("openapi"))
       self$`bookmark` <- this_object$`bookmark`
+      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[UserSingleAssetBinding]", loadNamespace("openapi"))
       self
     },
 

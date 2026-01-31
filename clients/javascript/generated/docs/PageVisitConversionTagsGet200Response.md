@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[ConversionEventResponse]**](ConversionEventResponse.md) |  | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[ConversionEventResponse]**](ConversionEventResponse.md) |  | 
 
 

@@ -9,11 +9,11 @@ import org.openapitools.model.CatalogsProductGroupFiltersRequest;
 @Canonical
 class CatalogsProductGroupUpdateRequest {
     
-    String name
-    
     String description
+    
+    CatalogsProductGroupFiltersRequest filters
     /* boolean indicator of whether the product group is being featured or not */
     Boolean isFeatured
     
-    CatalogsProductGroupFiltersRequest filters
+    String name
 }

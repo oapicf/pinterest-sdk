@@ -8,8 +8,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reportStatus** | [**ReportStatus**](#ReportStatus) |  |  [optional]
-**url** | **String** |  |  [optional]
 **size** | **BigDecimal** |  |  [optional]
+**url** | **String** |  |  [optional]
 
 
 ## Enum: ReportStatus

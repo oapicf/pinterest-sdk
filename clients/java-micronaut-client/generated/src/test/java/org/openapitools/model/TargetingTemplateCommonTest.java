@@ -28,14 +28,6 @@ public class TargetingTemplateCommonTest {
     }
 
     /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
      * Test the property 'autoTargetingEnabled'
      */
     @Test
@@ -44,11 +36,19 @@ public class TargetingTemplateCommonTest {
     }
 
     /**
-     * Test the property 'targetingAttributes'
+     * Test the property 'keywords'
      */
     @Test
-    public void targetingAttributesTest() {
-        // TODO: test targetingAttributes
+    public void keywordsTest() {
+        // TODO: test keywords
+    }
+
+    /**
+     * Test the property 'name'
+     */
+    @Test
+    public void nameTest() {
+        // TODO: test name
     }
 
     /**
@@ -60,11 +60,11 @@ public class TargetingTemplateCommonTest {
     }
 
     /**
-     * Test the property 'keywords'
+     * Test the property 'targetingAttributes'
      */
     @Test
-    public void keywordsTest() {
-        // TODO: test keywords
+    public void targetingAttributesTest() {
+        // TODO: test targetingAttributes
     }
 
     /**

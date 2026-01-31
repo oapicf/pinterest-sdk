@@ -22,13 +22,13 @@ media_list_200_response_t* instantiate_media_list_200_response(int include_optio
   media_list_200_response_t* media_list_200_response = NULL;
   if (include_optional) {
     media_list_200_response = media_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     media_list_200_response = media_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -26,10 +26,11 @@ import org.openapitools.model.Country;
  */
 
 @ApiModel(description = "Request object of catalogs items")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItemsRequest   {
   
   private Country country;
+  private CatalogsItemsPostFilters filters;
 
 
   public enum LanguageEnum {
@@ -155,7 +156,6 @@ public class CatalogsItemsRequest   {
   }
 
   private LanguageEnum language;
-  private CatalogsItemsPostFilters filters;
 
   /**
    */
@@ -172,6 +172,23 @@ public class CatalogsItemsRequest   {
   }
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+  /**
+   */
+  public CatalogsItemsRequest filters(CatalogsItemsPostFilters filters) {
+    this.filters = filters;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("filters")
+  public CatalogsItemsPostFilters getFilters() {
+    return filters;
+  }
+  public void setFilters(CatalogsItemsPostFilters filters) {
+    this.filters = filters;
   }
 
   /**
@@ -192,23 +209,6 @@ public class CatalogsItemsRequest   {
     this.language = language;
   }
 
-  /**
-   */
-  public CatalogsItemsRequest filters(CatalogsItemsPostFilters filters) {
-    this.filters = filters;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("filters")
-  public CatalogsItemsPostFilters getFilters() {
-    return filters;
-  }
-  public void setFilters(CatalogsItemsPostFilters filters) {
-    this.filters = filters;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -220,13 +220,13 @@ public class CatalogsItemsRequest   {
     }
     CatalogsItemsRequest catalogsItemsRequest = (CatalogsItemsRequest) o;
     return Objects.equals(country, catalogsItemsRequest.country) &&
-        Objects.equals(language, catalogsItemsRequest.language) &&
-        Objects.equals(filters, catalogsItemsRequest.filters);
+        Objects.equals(filters, catalogsItemsRequest.filters) &&
+        Objects.equals(language, catalogsItemsRequest.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, language, filters);
+    return Objects.hash(country, filters, language);
   }
 
   @Override
@@ -235,8 +235,8 @@ public class CatalogsItemsRequest   {
     sb.append("class CatalogsItemsRequest {\n");
     
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();
   }

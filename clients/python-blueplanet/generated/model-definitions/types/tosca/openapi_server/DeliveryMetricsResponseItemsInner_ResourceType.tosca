@@ -1,0 +1,51 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server DeliveryMetricsResponseItemsInner"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a DeliveryMetricsResponseItemsInner"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  DeliveryMetricsResponseItemsInner {
+    title = DeliveryMetricsResponseItemsInner
+    description = DeliveryMetricsResponseItemsInner
+    derivedFrom = Root
+    properties {
+        category {
+          type =  string
+          description = "Category name"
+          enum = ["ADS", "ORGANIC"]
+          optional = false
+        }
+        definition {
+          type =  string
+          description = "How the metric is defined."
+          optional = false
+        }
+        display_name {
+          type =  string
+          description = "Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager."
+          optional = false
+        }
+        name {
+          type =  string
+          description = "Metric&#39;s name."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  DeliveryMetricsResponseItemsInner {
+    title = DeliveryMetricsResponseItemsInner
+    description = DeliveryMetricsResponseItemsInner
+    implements = openapi_server.resourceTypes.DeliveryMetricsResponseItemsInner
+
+  }
+}

@@ -1,0 +1,35 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsCreateReportResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsCreateReportResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CatalogsCreateReportResponse {
+    title = CatalogsCreateReportResponse
+    description = CatalogsCreateReportResponse
+    derivedFrom = Root
+    properties {
+        token {
+          type =  string
+          description = "Token to be used to get the report"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsCreateReportResponse {
+    title = CatalogsCreateReportResponse
+    description = CatalogsCreateReportResponse
+    implements = openapi_server.resourceTypes.CatalogsCreateReportResponse
+
+  }
+}

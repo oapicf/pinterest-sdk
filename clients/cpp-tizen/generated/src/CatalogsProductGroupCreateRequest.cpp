@@ -23,40 +23,40 @@ CatalogsProductGroupCreateRequest::~CatalogsProductGroupCreateRequest()
 void
 CatalogsProductGroupCreateRequest::__init()
 {
-	//name = std::string();
 	//description = std::string();
-	//is_featured = bool(false);
-	//filters = new CatalogsProductGroupFiltersRequest();
 	//feed_id = std::string();
+	//filters = new CatalogsProductGroupFiltersRequest();
+	//is_featured = bool(false);
+	//name = std::string();
 }
 
 void
 CatalogsProductGroupCreateRequest::__cleanup()
 {
-	//if(name != NULL) {
-	//
-	//delete name;
-	//name = NULL;
-	//}
 	//if(description != NULL) {
 	//
 	//delete description;
 	//description = NULL;
 	//}
-	//if(is_featured != NULL) {
+	//if(feed_id != NULL) {
 	//
-	//delete is_featured;
-	//is_featured = NULL;
+	//delete feed_id;
+	//feed_id = NULL;
 	//}
 	//if(filters != NULL) {
 	//
 	//delete filters;
 	//filters = NULL;
 	//}
-	//if(feed_id != NULL) {
+	//if(is_featured != NULL) {
 	//
-	//delete feed_id;
-	//feed_id = NULL;
+	//delete is_featured;
+	//is_featured = NULL;
+	//}
+	//if(name != NULL) {
+	//
+	//delete name;
+	//name = NULL;
 	//}
 	//
 }
@@ -66,17 +66,6 @@ CatalogsProductGroupCreateRequest::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *nameKey = "name";
-	node = json_object_get_member(pJsonObject, nameKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&name, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *descriptionKey = "description";
 	node = json_object_get_member(pJsonObject, descriptionKey);
 	if (node !=NULL) {
@@ -88,13 +77,13 @@ CatalogsProductGroupCreateRequest::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *is_featuredKey = "is_featured";
-	node = json_object_get_member(pJsonObject, is_featuredKey);
+	const gchar *feed_idKey = "feed_id";
+	node = json_object_get_member(pJsonObject, feed_idKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("bool")) {
-			jsonToValue(&is_featured, node, "bool", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&feed_id, node, "std::string", "");
 		} else {
 			
 		}
@@ -113,13 +102,24 @@ CatalogsProductGroupCreateRequest::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *feed_idKey = "feed_id";
-	node = json_object_get_member(pJsonObject, feed_idKey);
+	const gchar *is_featuredKey = "is_featured";
+	node = json_object_get_member(pJsonObject, is_featuredKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&is_featured, node, "bool", "");
+		} else {
+			
+		}
+	}
+	const gchar *nameKey = "name";
+	node = json_object_get_member(pJsonObject, nameKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&feed_id, node, "std::string", "");
+			jsonToValue(&name, node, "std::string", "");
 		} else {
 			
 		}
@@ -137,15 +137,6 @@ CatalogsProductGroupCreateRequest::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
-		std::string obj = getName();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *nameKey = "name";
-	json_object_set_member(pJsonObject, nameKey, node);
-	if (isprimitive("std::string")) {
 		std::string obj = getDescription();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -154,15 +145,15 @@ CatalogsProductGroupCreateRequest::toJson()
 	}
 	const gchar *descriptionKey = "description";
 	json_object_set_member(pJsonObject, descriptionKey, node);
-	if (isprimitive("bool")) {
-		bool obj = getIsFeatured();
-		node = converttoJson(&obj, "bool", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getFeedId();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *is_featuredKey = "is_featured";
-	json_object_set_member(pJsonObject, is_featuredKey, node);
+	const gchar *feed_idKey = "feed_id";
+	json_object_set_member(pJsonObject, feed_idKey, node);
 	if (isprimitive("CatalogsProductGroupFiltersRequest")) {
 		CatalogsProductGroupFiltersRequest obj = getFilters();
 		node = converttoJson(&obj, "CatalogsProductGroupFiltersRequest", "");
@@ -177,33 +168,30 @@ CatalogsProductGroupCreateRequest::toJson()
 	}
 	const gchar *filtersKey = "filters";
 	json_object_set_member(pJsonObject, filtersKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getIsFeatured();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *is_featuredKey = "is_featured";
+	json_object_set_member(pJsonObject, is_featuredKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getFeedId();
+		std::string obj = getName();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *feed_idKey = "feed_id";
-	json_object_set_member(pJsonObject, feed_idKey, node);
+	const gchar *nameKey = "name";
+	json_object_set_member(pJsonObject, nameKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
-}
-
-std::string
-CatalogsProductGroupCreateRequest::getName()
-{
-	return name;
-}
-
-void
-CatalogsProductGroupCreateRequest::setName(std::string  name)
-{
-	this->name = name;
 }
 
 std::string
@@ -218,16 +206,16 @@ CatalogsProductGroupCreateRequest::setDescription(std::string  description)
 	this->description = description;
 }
 
-bool
-CatalogsProductGroupCreateRequest::getIsFeatured()
+std::string
+CatalogsProductGroupCreateRequest::getFeedId()
 {
-	return is_featured;
+	return feed_id;
 }
 
 void
-CatalogsProductGroupCreateRequest::setIsFeatured(bool  is_featured)
+CatalogsProductGroupCreateRequest::setFeedId(std::string  feed_id)
 {
-	this->is_featured = is_featured;
+	this->feed_id = feed_id;
 }
 
 CatalogsProductGroupFiltersRequest
@@ -242,16 +230,28 @@ CatalogsProductGroupCreateRequest::setFilters(CatalogsProductGroupFiltersRequest
 	this->filters = filters;
 }
 
-std::string
-CatalogsProductGroupCreateRequest::getFeedId()
+bool
+CatalogsProductGroupCreateRequest::getIsFeatured()
 {
-	return feed_id;
+	return is_featured;
 }
 
 void
-CatalogsProductGroupCreateRequest::setFeedId(std::string  feed_id)
+CatalogsProductGroupCreateRequest::setIsFeatured(bool  is_featured)
 {
-	this->feed_id = feed_id;
+	this->is_featured = is_featured;
+}
+
+std::string
+CatalogsProductGroupCreateRequest::getName()
+{
+	return name;
+}
+
+void
+CatalogsProductGroupCreateRequest::setName(std::string  name)
+{
+	this->name = name;
 }
 
 

@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**BillingProfilesResponse[]**](BillingProfilesResponse.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**BillingProfilesResponse[]**](BillingProfilesResponse.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$BillingProfilesGet200Response = Initialize-PSOpenAPIToolsBillingProfilesGet200Response  -Items null `
- -Bookmark null
+$BillingProfilesGet200Response = Initialize-PSOpenAPIToolsBillingProfilesGet200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

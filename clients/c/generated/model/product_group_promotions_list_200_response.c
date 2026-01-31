@@ -6,27 +6,27 @@
 
 
 static product_group_promotions_list_200_response_t *product_group_promotions_list_200_response_create_internal(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     product_group_promotions_list_200_response_t *product_group_promotions_list_200_response_local_var = malloc(sizeof(product_group_promotions_list_200_response_t));
     if (!product_group_promotions_list_200_response_local_var) {
         return NULL;
     }
-    product_group_promotions_list_200_response_local_var->items = items;
     product_group_promotions_list_200_response_local_var->bookmark = bookmark;
+    product_group_promotions_list_200_response_local_var->items = items;
 
     product_group_promotions_list_200_response_local_var->_library_owned = 1;
     return product_group_promotions_list_200_response_local_var;
 }
 
 __attribute__((deprecated)) product_group_promotions_list_200_response_t *product_group_promotions_list_200_response_create(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     return product_group_promotions_list_200_response_create_internal (
-        items,
-        bookmark
+        bookmark,
+        items
         );
 }
 
@@ -39,22 +39,30 @@ void product_group_promotions_list_200_response_free(product_group_promotions_li
         return ;
     }
     listEntry_t *listEntry;
-    if (product_group_promotions_list_200_response->items) {
-        list_ForEach(listEntry, product_group_promotions_list_200_response->items) {
-            product_group_promotion_response_item_free(listEntry->data);
-        }
-        list_freeList(product_group_promotions_list_200_response->items);
-        product_group_promotions_list_200_response->items = NULL;
-    }
     if (product_group_promotions_list_200_response->bookmark) {
         free(product_group_promotions_list_200_response->bookmark);
         product_group_promotions_list_200_response->bookmark = NULL;
+    }
+    if (product_group_promotions_list_200_response->items) {
+        list_ForEach(listEntry, product_group_promotions_list_200_response->items) {
+            product_group_promotion_free(listEntry->data);
+        }
+        list_freeList(product_group_promotions_list_200_response->items);
+        product_group_promotions_list_200_response->items = NULL;
     }
     free(product_group_promotions_list_200_response);
 }
 
 cJSON *product_group_promotions_list_200_response_convertToJSON(product_group_promotions_list_200_response_t *product_group_promotions_list_200_response) {
     cJSON *item = cJSON_CreateObject();
+
+    // product_group_promotions_list_200_response->bookmark
+    if(product_group_promotions_list_200_response->bookmark) {
+    if(cJSON_AddStringToObject(item, "bookmark", product_group_promotions_list_200_response->bookmark) == NULL) {
+    goto fail; //String
+    }
+    }
+
 
     // product_group_promotions_list_200_response->items
     if (!product_group_promotions_list_200_response->items) {
@@ -68,19 +76,11 @@ cJSON *product_group_promotions_list_200_response_convertToJSON(product_group_pr
     listEntry_t *itemsListEntry;
     if (product_group_promotions_list_200_response->items) {
     list_ForEach(itemsListEntry, product_group_promotions_list_200_response->items) {
-    cJSON *itemLocal = product_group_promotion_response_item_convertToJSON(itemsListEntry->data);
+    cJSON *itemLocal = product_group_promotion_convertToJSON(itemsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
     cJSON_AddItemToArray(items, itemLocal);
-    }
-    }
-
-
-    // product_group_promotions_list_200_response->bookmark
-    if(product_group_promotions_list_200_response->bookmark) {
-    if(cJSON_AddStringToObject(item, "bookmark", product_group_promotions_list_200_response->bookmark) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -98,6 +98,18 @@ product_group_promotions_list_200_response_t *product_group_promotions_list_200_
 
     // define the local list for product_group_promotions_list_200_response->items
     list_t *itemsList = NULL;
+
+    // product_group_promotions_list_200_response->bookmark
+    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(product_group_promotions_list_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
+    if (bookmark) { 
+    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
+    {
+    goto end; //String
+    }
+    }
 
     // product_group_promotions_list_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(product_group_promotions_list_200_responseJSON, "items");
@@ -121,27 +133,15 @@ product_group_promotions_list_200_response_t *product_group_promotions_list_200_
         if(!cJSON_IsObject(items_local_nonprimitive)){
             goto end;
         }
-        product_group_promotion_response_item_t *itemsItem = product_group_promotion_response_item_parseFromJSON(items_local_nonprimitive);
+        product_group_promotion_t *itemsItem = product_group_promotion_parseFromJSON(items_local_nonprimitive);
 
         list_addElement(itemsList, itemsItem);
     }
 
-    // product_group_promotions_list_200_response->bookmark
-    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(product_group_promotions_list_200_responseJSON, "bookmark");
-    if (cJSON_IsNull(bookmark)) {
-        bookmark = NULL;
-    }
-    if (bookmark) { 
-    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
-    {
-    goto end; //String
-    }
-    }
-
 
     product_group_promotions_list_200_response_local_var = product_group_promotions_list_200_response_create_internal (
-        itemsList,
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
+        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        itemsList
         );
 
     return product_group_promotions_list_200_response_local_var;
@@ -149,7 +149,7 @@ end:
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {
-            product_group_promotion_response_item_free(listEntry->data);
+            product_group_promotion_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(itemsList);

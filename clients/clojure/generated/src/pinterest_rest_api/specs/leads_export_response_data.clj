@@ -8,8 +8,8 @@
 
 (def leads-export-response-data-data
   {
-   (ds/opt :export_status) leads-export-status-spec
    (ds/opt :download_url) string?
+   (ds/opt :export_status) leads-export-status-spec
    })
 
 (def leads-export-response-data-spec

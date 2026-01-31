@@ -12,10 +12,10 @@ module AdvancedAuctionKey =
 
   [<CLIMutable>]
   type AdvancedAuctionKey = {
-    [<JsonProperty(PropertyName = "item_id")>]
-    ItemId : string;
     [<JsonProperty(PropertyName = "country")>]
     Country : Country;
+    [<JsonProperty(PropertyName = "item_id")>]
+    ItemId : string;
     [<JsonProperty(PropertyName = "language")>]
     Language : Language;
   }

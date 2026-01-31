@@ -1,6 +1,9 @@
 #import "OAIBusinessAccessRelationshipsApi.h"
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
+#import "OAIBrandAccountsCreate200Response.h"
+#import "OAIBrandAccountsCreateRequest.h"
+#import "OAIBrandAccountsUpdateRequest.h"
 #import "OAIDeletePartnersRequest.h"
 #import "OAIDeletePartnersResponse.h"
 #import "OAIDeletedMembersResponse.h"
@@ -11,6 +14,7 @@
 #import "OAIMemberBusinessRole.h"
 #import "OAIMembersToDeleteBody.h"
 #import "OAIPartnerType.h"
+#import "OAISystemUserUpdateRequest.h"
 #import "OAIUpdateMemberBusinessRoleBody.h"
 #import "OAIUpdateMemberResultsResponseArray.h"
 
@@ -59,6 +63,189 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
 }
 
 #pragma mark - Api Methods
+
+///
+/// Create a Brand Account
+/// Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+///  @param businessHierarchyId business hierarchy node id 
+///
+///  @param brandAccountsCreateRequest  
+///
+///  @returns OAIBrandAccountsCreate200Response*
+///
+-(NSURLSessionTask*) brandAccountsCreateWithBusinessHierarchyId: (NSString*) businessHierarchyId
+    brandAccountsCreateRequest: (OAIBrandAccountsCreateRequest*) brandAccountsCreateRequest
+    completionHandler: (void (^)(OAIBrandAccountsCreate200Response* output, NSError* error)) handler {
+    // verify the required parameter 'businessHierarchyId' is set
+    if (businessHierarchyId == nil) {
+        NSParameterAssert(businessHierarchyId);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"businessHierarchyId"] };
+            NSError* error = [NSError errorWithDomain:kOAIBusinessAccessRelationshipsApiErrorDomain code:kOAIBusinessAccessRelationshipsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'brandAccountsCreateRequest' is set
+    if (brandAccountsCreateRequest == nil) {
+        NSParameterAssert(brandAccountsCreateRequest);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"brandAccountsCreateRequest"] };
+            NSError* error = [NSError errorWithDomain:kOAIBusinessAccessRelationshipsApiErrorDomain code:kOAIBusinessAccessRelationshipsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts"];
+
+    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
+    if (businessHierarchyId != nil) {
+        pathParams[@"business_hierarchy_id"] = businessHierarchyId;
+    }
+
+    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
+    [headerParams addEntriesFromDictionary:self.defaultHeaders];
+    // HTTP header `Accept`
+    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
+    if(acceptHeader.length > 0) {
+        headerParams[@"Accept"] = acceptHeader;
+    }
+
+    // response content type
+    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
+
+    // request content type
+    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[@"application/json"]];
+
+    // Authentication setting
+    NSArray *authSettings = @[@"pinterest_oauth2"];
+
+    id bodyParam = nil;
+    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+    bodyParam = brandAccountsCreateRequest;
+
+    return [self.apiClient requestWithPath: resourcePath
+                                    method: @"POST"
+                                pathParams: pathParams
+                               queryParams: queryParams
+                                formParams: formParams
+                                     files: localVarFiles
+                                      body: bodyParam
+                              headerParams: headerParams
+                              authSettings: authSettings
+                        requestContentType: requestContentType
+                       responseContentType: responseContentType
+                              responseType: @"OAIBrandAccountsCreate200Response*"
+                           completionBlock: ^(id data, NSError *error) {
+                                if(handler) {
+                                    handler((OAIBrandAccountsCreate200Response*)data, error);
+                                }
+                            }];
+}
+
+///
+/// Update a Brand Account
+/// Update an existing Brand Account
+///  @param businessHierarchyId business hierarchy node id 
+///
+///  @param brandAccountId Unique identifier of a brand account. 
+///
+///  @param brandAccountsUpdateRequest  
+///
+///  @returns OAIBrandAccountsCreate200Response*
+///
+-(NSURLSessionTask*) brandAccountsUpdateWithBusinessHierarchyId: (NSString*) businessHierarchyId
+    brandAccountId: (NSString*) brandAccountId
+    brandAccountsUpdateRequest: (OAIBrandAccountsUpdateRequest*) brandAccountsUpdateRequest
+    completionHandler: (void (^)(OAIBrandAccountsCreate200Response* output, NSError* error)) handler {
+    // verify the required parameter 'businessHierarchyId' is set
+    if (businessHierarchyId == nil) {
+        NSParameterAssert(businessHierarchyId);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"businessHierarchyId"] };
+            NSError* error = [NSError errorWithDomain:kOAIBusinessAccessRelationshipsApiErrorDomain code:kOAIBusinessAccessRelationshipsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'brandAccountId' is set
+    if (brandAccountId == nil) {
+        NSParameterAssert(brandAccountId);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"brandAccountId"] };
+            NSError* error = [NSError errorWithDomain:kOAIBusinessAccessRelationshipsApiErrorDomain code:kOAIBusinessAccessRelationshipsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'brandAccountsUpdateRequest' is set
+    if (brandAccountsUpdateRequest == nil) {
+        NSParameterAssert(brandAccountsUpdateRequest);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"brandAccountsUpdateRequest"] };
+            NSError* error = [NSError errorWithDomain:kOAIBusinessAccessRelationshipsApiErrorDomain code:kOAIBusinessAccessRelationshipsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}"];
+
+    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
+    if (businessHierarchyId != nil) {
+        pathParams[@"business_hierarchy_id"] = businessHierarchyId;
+    }
+    if (brandAccountId != nil) {
+        pathParams[@"brand_account_id"] = brandAccountId;
+    }
+
+    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
+    [headerParams addEntriesFromDictionary:self.defaultHeaders];
+    // HTTP header `Accept`
+    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
+    if(acceptHeader.length > 0) {
+        headerParams[@"Accept"] = acceptHeader;
+    }
+
+    // response content type
+    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
+
+    // request content type
+    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[@"application/json"]];
+
+    // Authentication setting
+    NSArray *authSettings = @[@"pinterest_oauth2"];
+
+    id bodyParam = nil;
+    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+    bodyParam = brandAccountsUpdateRequest;
+
+    return [self.apiClient requestWithPath: resourcePath
+                                    method: @"PATCH"
+                                pathParams: pathParams
+                               queryParams: queryParams
+                                formParams: formParams
+                                     files: localVarFiles
+                                      body: bodyParam
+                              headerParams: headerParams
+                              authSettings: authSettings
+                        requestContentType: requestContentType
+                       responseContentType: responseContentType
+                              responseType: @"OAIBrandAccountsCreate200Response*"
+                           completionBlock: ^(id data, NSError *error) {
+                                if(handler) {
+                                    handler((OAIBrandAccountsCreate200Response*)data, error);
+                                }
+                            }];
+}
 
 ///
 /// Terminate business memberships
@@ -294,6 +481,8 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
 /// Get all members of the specified business. The return response will include the member's business_role and assets they have access to if assets_summary=TRUE
 ///  @param businessId Unique identifier of the requesting business. 
 ///
+///  @param fetchSystemUsers Fetches system users if True. Fetches regular user employees if False. (optional, default to @(NO))
+///
 ///  @param assetsSummary Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional, default to @(NO))
 ///
 ///  @param businessRoles A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. (optional)
@@ -309,6 +498,7 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
 ///  @returns OAIGetBusinessMembers200Response*
 ///
 -(NSURLSessionTask*) getBusinessMembersWithBusinessId: (NSString*) businessId
+    fetchSystemUsers: (NSNumber*) fetchSystemUsers
     assetsSummary: (NSNumber*) assetsSummary
     businessRoles: (NSArray<OAIMemberBusinessRole>*) businessRoles
     memberIds: (NSString*) memberIds
@@ -335,6 +525,9 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (fetchSystemUsers != nil) {
+        queryParams[@"fetch_system_users"] = [fetchSystemUsers isEqual:@(YES)] ? @"true" : @"false";
+    }
     if (assetsSummary != nil) {
         queryParams[@"assets_summary"] = [assetsSummary isEqual:@(YES)] ? @"true" : @"false";
     }
@@ -493,6 +686,106 @@ NSInteger kOAIBusinessAccessRelationshipsApiMissingParamErrorCode = 234513;
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
                                     handler((OAIGetBusinessPartners200Response*)data, error);
+                                }
+                            }];
+}
+
+///
+/// Update a system user information.
+/// Update a system user information such as name.
+///  @param businessId Unique identifier of the requesting business. 
+///
+///  @param systemUserId Unique identifier of a system user. 
+///
+///  @param systemUserUpdateRequest  
+///
+///  @returns void
+///
+-(NSURLSessionTask*) systemUserUpdateWithBusinessId: (NSString*) businessId
+    systemUserId: (NSString*) systemUserId
+    systemUserUpdateRequest: (OAISystemUserUpdateRequest*) systemUserUpdateRequest
+    completionHandler: (void (^)(NSError* error)) handler {
+    // verify the required parameter 'businessId' is set
+    if (businessId == nil) {
+        NSParameterAssert(businessId);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"businessId"] };
+            NSError* error = [NSError errorWithDomain:kOAIBusinessAccessRelationshipsApiErrorDomain code:kOAIBusinessAccessRelationshipsApiMissingParamErrorCode userInfo:userInfo];
+            handler(error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'systemUserId' is set
+    if (systemUserId == nil) {
+        NSParameterAssert(systemUserId);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"systemUserId"] };
+            NSError* error = [NSError errorWithDomain:kOAIBusinessAccessRelationshipsApiErrorDomain code:kOAIBusinessAccessRelationshipsApiMissingParamErrorCode userInfo:userInfo];
+            handler(error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'systemUserUpdateRequest' is set
+    if (systemUserUpdateRequest == nil) {
+        NSParameterAssert(systemUserUpdateRequest);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"systemUserUpdateRequest"] };
+            NSError* error = [NSError errorWithDomain:kOAIBusinessAccessRelationshipsApiErrorDomain code:kOAIBusinessAccessRelationshipsApiMissingParamErrorCode userInfo:userInfo];
+            handler(error);
+        }
+        return nil;
+    }
+
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/businesses/{business_id}/system_users/{system_user_id}"];
+
+    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
+    if (businessId != nil) {
+        pathParams[@"business_id"] = businessId;
+    }
+    if (systemUserId != nil) {
+        pathParams[@"system_user_id"] = systemUserId;
+    }
+
+    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
+    [headerParams addEntriesFromDictionary:self.defaultHeaders];
+    // HTTP header `Accept`
+    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
+    if(acceptHeader.length > 0) {
+        headerParams[@"Accept"] = acceptHeader;
+    }
+
+    // response content type
+    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
+
+    // request content type
+    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[@"application/json"]];
+
+    // Authentication setting
+    NSArray *authSettings = @[@"pinterest_oauth2"];
+
+    id bodyParam = nil;
+    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+    bodyParam = systemUserUpdateRequest;
+
+    return [self.apiClient requestWithPath: resourcePath
+                                    method: @"PATCH"
+                                pathParams: pathParams
+                               queryParams: queryParams
+                                formParams: formParams
+                                     files: localVarFiles
+                                      body: bodyParam
+                              headerParams: headerParams
+                              authSettings: authSettings
+                        requestContentType: requestContentType
+                       responseContentType: responseContentType
+                              responseType: nil
+                           completionBlock: ^(id data, NSError *error) {
+                                if(handler) {
+                                    handler(error);
                                 }
                             }];
 }

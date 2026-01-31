@@ -1,0 +1,37 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "action_source" },
+      {"model": "app_id" },
+      {"model": "app_info" },
+      {"model": "app_name" },
+      {"model": "app_version" },
+      {"model": "custom_data" },
+      {"model": "device_brand" },
+      {"model": "device_carrier" },
+      {"model": "device_info" },
+      {"model": "device_model" },
+      {"model": "device_type" },
+      {"model": "event_id" },
+      {"model": "event_name" },
+      {"model": "event_source_url" },
+      {"model": "event_time" },
+      {"model": "language" },
+      {"model": "opt_out" },
+      {"model": "os_version" },
+      {"model": "partner_name" },
+      {"model": "user_data" },
+      {"model": "wifi" },
+    ]
+  }]
+}

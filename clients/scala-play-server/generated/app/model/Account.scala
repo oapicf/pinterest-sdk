@@ -4,29 +4,29 @@ import play.api.libs.json._
 
 /**
   * Represents the Swagger definition for Account.
-  * @param accountType Type of account
-  * @param id User account ID.
   * @param about Profile about description.
+  * @param accountType Type of account
   * @param boardCount User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
-  * @param pinCount User account pin count. This includes both created and saved pins.
   * @param followerCount User account follower count.
   * @param followingCount User account following count.
+  * @param id User account ID.
   * @param monthlyViews User account monthly views.
+  * @param pinCount User account pin count. This includes both created and saved pins.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class Account(
-  accountType: Option[Account.AccountType.Value],
-  id: Option[String],
-  profileImage: Option[String],
-  websiteUrl: Option[String],
-  username: Option[String],
   about: Option[String],
-  businessName: Option[String],
+  accountType: Option[Account.AccountType.Value],
   boardCount: Option[Int],
-  pinCount: Option[Int],
+  businessName: Option[String],
   followerCount: Option[Int],
   followingCount: Option[Int],
-  monthlyViews: Option[Int]
+  id: Option[String],
+  monthlyViews: Option[Int],
+  pinCount: Option[Int],
+  profileImage: Option[String],
+  username: Option[String],
+  websiteUrl: Option[String]
 )
 
 object Account {

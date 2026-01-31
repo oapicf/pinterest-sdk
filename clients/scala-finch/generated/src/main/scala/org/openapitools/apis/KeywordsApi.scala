@@ -94,8 +94,8 @@ object KeywordsApi {
         * @return An endpoint representing a KeywordsGet200Response
         */
         private def keywords/get(da: DataAccessor): Endpoint[KeywordsGet200Response] =
-        get("ad_accounts" :: string :: "keywords" :: paramOption("campaign_id") :: paramOption("ad_group_id") :: params("match_types") :: paramOption("page_size").map(_.map(_.toInt)) :: paramOption("bookmark")) { (adAccountId: String, campaignId: Option[String], adGroupId: Option[String], matchTypes: Seq[MatchType], pageSize: Option[Int], bookmark: Option[String]) =>
-          da.Keywords_keywords/get(adAccountId, campaignId, adGroupId, matchTypes, pageSize, bookmark) match {
+        get("ad_accounts" :: string :: "keywords" :: paramOption("campaign_id") :: paramOption("ad_group_id") :: params("ad_group_ids") :: params("match_types") :: paramOption("page_size").map(_.map(_.toInt)) :: paramOption("bookmark")) { (adAccountId: String, campaignId: Option[String], adGroupId: Option[String], adGroupIds: Seq[String], matchTypes: Seq[MatchType], pageSize: Option[Int], bookmark: Option[String]) =>
+          da.Keywords_keywords/get(adAccountId, campaignId, adGroupId, adGroupIds, matchTypes, pageSize, bookmark) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }
@@ -122,8 +122,8 @@ object KeywordsApi {
         * @return An endpoint representing a TrendingKeywordsResponse
         */
         private def trendingKeywords/list(da: DataAccessor): Endpoint[TrendingKeywordsResponse] =
-        get("trends" :: "keywords" :: trendssupportedregion :: "top" :: trendtype :: params("interests") :: params("genders") :: params("ages") :: params("include_keywords") :: paramOption("normalize_against_group").map(_.map(_.toBoolean)) :: paramOption("limit").map(_.map(_.toInt))) { (region: TrendsSupportedRegion, trendType: TrendType, interests: Seq[String], genders: Seq[String], ages: Seq[String], includeKeywords: Seq[String], normalizeAgainstGroup: Option[Boolean], limit: Option[Int]) =>
-          da.Keywords_trendingKeywords/list(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit) match {
+        get("trends" :: "keywords" :: trendssupportedregion :: "top" :: trendtype :: params("interests") :: params("genders") :: params("ages") :: params("include_keywords") :: paramOption("normalize_against_group").map(_.map(_.toBoolean)) :: paramOption("limit").map(_.map(_.toInt)) :: paramOption("include_prediction").map(_.map(_.toBoolean)) :: paramOption("include_demographics").map(_.map(_.toBoolean))) { (region: TrendsSupportedRegion, trendType: TrendType, interests: Seq[String], genders: Seq[String], ages: Seq[String], includeKeywords: Seq[String], normalizeAgainstGroup: Option[Boolean], limit: Option[Int], includePrediction: Option[Boolean], includeDemographics: Option[Boolean]) =>
+          da.Keywords_trendingKeywords/list(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, includePrediction, includeDemographics) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }

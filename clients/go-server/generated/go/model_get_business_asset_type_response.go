@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -26,6 +26,7 @@ const (
 	PROFILE GetBusinessAssetTypeResponse = "PROFILE"
 	ASSET_GROUP GetBusinessAssetTypeResponse = "ASSET_GROUP"
 	CONVERSION_TAG GetBusinessAssetTypeResponse = "CONVERSION_TAG"
+	CATALOG GetBusinessAssetTypeResponse = "CATALOG"
 )
 
 // AllowedGetBusinessAssetTypeResponseEnumValues is all the allowed values of GetBusinessAssetTypeResponse enum
@@ -34,6 +35,7 @@ var AllowedGetBusinessAssetTypeResponseEnumValues = []GetBusinessAssetTypeRespon
 	"PROFILE",
 	"ASSET_GROUP",
 	"CONVERSION_TAG",
+	"CATALOG",
 }
 
 // validGetBusinessAssetTypeResponseEnumValue provides a map of GetBusinessAssetTypeResponses for fast verification of use input
@@ -42,6 +44,7 @@ var validGetBusinessAssetTypeResponseEnumValues = map[GetBusinessAssetTypeRespon
 	"PROFILE": {},
 	"ASSET_GROUP": {},
 	"CONVERSION_TAG": {},
+	"CATALOG": {},
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise

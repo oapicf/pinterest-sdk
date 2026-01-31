@@ -49,22 +49,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<AdsCreditDiscountsResponse> getItems();
-
-	/*! \brief Set 
-	 */
-	void setItems(std::list <AdsCreditDiscountsResponse> items);
-	/*! \brief Get 
-	 */
 	std::string getBookmark();
 
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
+	/*! \brief Get 
+	 */
+	std::list<AdsCreditDiscountsResponse> getItems();
+
+	/*! \brief Set 
+	 */
+	void setItems(std::list <AdsCreditDiscountsResponse> items);
 
 private:
-	std::list <AdsCreditDiscountsResponse>items;
 	std::string bookmark;
+	std::list <AdsCreditDiscountsResponse>items;
 	void __init();
 	void __cleanup();
 

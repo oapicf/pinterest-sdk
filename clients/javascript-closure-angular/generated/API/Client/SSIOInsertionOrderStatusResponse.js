@@ -6,6 +6,13 @@ goog.provide('API.Client.SSIOInsertionOrderStatusResponse');
 API.Client.SSIOInsertionOrderStatusResponse = function() {}
 
 /**
+ * Salesforce insertion order creation time
+ * @type {!string}
+ * @export
+ */
+API.Client.SSIOInsertionOrderStatusResponse.prototype.creationTime;
+
+/**
  * Salesforce order id
  * @type {!string}
  * @export
@@ -18,11 +25,4 @@ API.Client.SSIOInsertionOrderStatusResponse.prototype.pinOrderId;
  * @export
  */
 API.Client.SSIOInsertionOrderStatusResponse.prototype.status;
-
-/**
- * Salesforce insertion order creation time
- * @type {!string}
- * @export
- */
-API.Client.SSIOInsertionOrderStatusResponse.prototype.creationTime;
 

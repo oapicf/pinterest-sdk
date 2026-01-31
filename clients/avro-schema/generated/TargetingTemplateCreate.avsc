@@ -5,26 +5,10 @@
   "name": "TargetingTemplateCreate",
   "fields": [
     {
-      "name": "name",
-      "type": "string",
-      "doc": "Name of targeting template."
-    },
-    {
       "name": "auto_targeting_enabled",
       "type": ["boolean", "null"],
       "doc": "Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.",
       "default": true
-    },
-    {
-      "name": "targeting_attributes",
-      "type": "model.TargetingSpec",
-      "doc": ""
-    },
-    {
-      "name": "placement_group",
-      "type": ["null", "model.PlacementGroupType"],
-      "doc": "",
-      "default": null
     },
     {
       "name": "keywords",
@@ -34,6 +18,22 @@
       }],
       "doc": "",
       "default": null
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "Name of targeting template."
+    },
+    {
+      "name": "placement_group",
+      "type": ["null", "model.PlacementGroupType"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "targeting_attributes",
+      "type": "model.TargetingSpec",
+      "doc": ""
     },
     {
       "name": "tracking_urls",

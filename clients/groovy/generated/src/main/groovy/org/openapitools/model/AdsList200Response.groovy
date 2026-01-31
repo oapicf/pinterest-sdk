@@ -11,7 +11,7 @@ import org.openapitools.model.AdResponse;
 @Canonical
 class AdsList200Response {
     
-    List<AdResponse> items = new ArrayList<>()
-    
     String bookmark
+    
+    List<AdResponse> items = new ArrayList<>()
 }

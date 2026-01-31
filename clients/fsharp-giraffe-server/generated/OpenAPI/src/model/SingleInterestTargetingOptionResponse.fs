@@ -9,9 +9,9 @@ module SingleInterestTargetingOptionResponse =
 
 
   type SingleInterestTargetingOptionResponse = {
-    Id : string;
-    Name : string;
     ChildInterests : string[];
+    Id : string;
     Level : int;
+    Name : string;
   }
   //#endregion

@@ -4,6 +4,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.math.BigDecimal;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * If specified, you must provide all properties
@@ -11,38 +12,20 @@ import java.math.BigDecimal;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsHotelGuestRatings   {
   
-  private BigDecimal score;
-  private Integer numberOfReviewers;
   private BigDecimal maxScore;
+  private Integer numberOfReviewers;
   private String ratingSystem;
+  private BigDecimal score;
 
   public CatalogsHotelGuestRatings () {
 
   }
 
-  public CatalogsHotelGuestRatings (BigDecimal score, Integer numberOfReviewers, BigDecimal maxScore, String ratingSystem) {
-    this.score = score;
-    this.numberOfReviewers = numberOfReviewers;
+  public CatalogsHotelGuestRatings (BigDecimal maxScore, Integer numberOfReviewers, String ratingSystem, BigDecimal score) {
     this.maxScore = maxScore;
-    this.ratingSystem = ratingSystem;
-  }
-
-    
-  @JsonProperty("score")
-  public BigDecimal getScore() {
-    return score;
-  }
-  public void setScore(BigDecimal score) {
-    this.score = score;
-  }
-
-    
-  @JsonProperty("number_of_reviewers")
-  public Integer getNumberOfReviewers() {
-    return numberOfReviewers;
-  }
-  public void setNumberOfReviewers(Integer numberOfReviewers) {
     this.numberOfReviewers = numberOfReviewers;
+    this.ratingSystem = ratingSystem;
+    this.score = score;
   }
 
     
@@ -55,12 +38,30 @@ public class CatalogsHotelGuestRatings   {
   }
 
     
+  @JsonProperty("number_of_reviewers")
+  public Integer getNumberOfReviewers() {
+    return numberOfReviewers;
+  }
+  public void setNumberOfReviewers(Integer numberOfReviewers) {
+    this.numberOfReviewers = numberOfReviewers;
+  }
+
+    
   @JsonProperty("rating_system")
   public String getRatingSystem() {
     return ratingSystem;
   }
   public void setRatingSystem(String ratingSystem) {
     this.ratingSystem = ratingSystem;
+  }
+
+    
+  @JsonProperty("score")
+  public BigDecimal getScore() {
+    return score;
+  }
+  public void setScore(BigDecimal score) {
+    this.score = score;
   }
 
 
@@ -73,15 +74,15 @@ public class CatalogsHotelGuestRatings   {
       return false;
     }
     CatalogsHotelGuestRatings catalogsHotelGuestRatings = (CatalogsHotelGuestRatings) o;
-    return Objects.equals(score, catalogsHotelGuestRatings.score) &&
+    return Objects.equals(maxScore, catalogsHotelGuestRatings.maxScore) &&
         Objects.equals(numberOfReviewers, catalogsHotelGuestRatings.numberOfReviewers) &&
-        Objects.equals(maxScore, catalogsHotelGuestRatings.maxScore) &&
-        Objects.equals(ratingSystem, catalogsHotelGuestRatings.ratingSystem);
+        Objects.equals(ratingSystem, catalogsHotelGuestRatings.ratingSystem) &&
+        Objects.equals(score, catalogsHotelGuestRatings.score);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(score, numberOfReviewers, maxScore, ratingSystem);
+    return Objects.hash(maxScore, numberOfReviewers, ratingSystem, score);
   }
 
   @Override
@@ -89,10 +90,10 @@ public class CatalogsHotelGuestRatings   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelGuestRatings {\n");
     
-    sb.append("    score: ").append(toIndentedString(score)).append("\n");
-    sb.append("    numberOfReviewers: ").append(toIndentedString(numberOfReviewers)).append("\n");
     sb.append("    maxScore: ").append(toIndentedString(maxScore)).append("\n");
+    sb.append("    numberOfReviewers: ").append(toIndentedString(numberOfReviewers)).append("\n");
     sb.append("    ratingSystem: ").append(toIndentedString(ratingSystem)).append("\n");
+    sb.append("    score: ").append(toIndentedString(score)).append("\n");
     sb.append("}");
     return sb.toString();
   }

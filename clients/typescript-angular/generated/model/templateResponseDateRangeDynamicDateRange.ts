@@ -14,20 +14,21 @@
  */
 export interface TemplateResponseDateRangeDynamicDateRange { 
     /**
-     * The date range type
-     */
-    type?: string;
-    /**
      * The dynamic range type
      */
     range?: TemplateResponseDateRangeDynamicDateRange.RangeEnum;
+    /**
+     * The date range type
+     */
+    type?: string;
 }
 export namespace TemplateResponseDateRangeDynamicDateRange {
     export const RangeEnum = {
         YearToDate: 'YEAR_TO_DATE',
         QuarterToDate: 'QUARTER_TO_DATE',
         MonthToDate: 'MONTH_TO_DATE',
-        LastMonth: 'LAST_MONTH'
+        LastMonth: 'LAST_MONTH',
+        LastQuarter: 'LAST_QUARTER'
     } as const;
     export type RangeEnum = typeof RangeEnum[keyof typeof RangeEnum];
 }

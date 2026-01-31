@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `AdvancedAuctionItemsSubmitRecord`
 --
-SELECT `operation`, `item_id`, `country`, `language`, `bid_options`, `update_mask` FROM `AdvancedAuctionItemsSubmitRecord` WHERE 1;
+SELECT `operation`, `country`, `item_id`, `language`, `bid_options`, `errors`, `update_mask` FROM `AdvancedAuctionItemsSubmitRecord` WHERE 1;
 
 --
 -- INSERT template for table `AdvancedAuctionItemsSubmitRecord`
 --
-INSERT INTO `AdvancedAuctionItemsSubmitRecord`(`operation`, `item_id`, `country`, `language`, `bid_options`, `update_mask`) VALUES (?, ?, ?, ?, ?, ?);
+INSERT INTO `AdvancedAuctionItemsSubmitRecord`(`operation`, `country`, `item_id`, `language`, `bid_options`, `errors`, `update_mask`) VALUES (?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `AdvancedAuctionItemsSubmitRecord`
 --
-UPDATE `AdvancedAuctionItemsSubmitRecord` SET `operation` = ?, `item_id` = ?, `country` = ?, `language` = ?, `bid_options` = ?, `update_mask` = ? WHERE 1;
+UPDATE `AdvancedAuctionItemsSubmitRecord` SET `operation` = ?, `country` = ?, `item_id` = ?, `language` = ?, `bid_options` = ?, `errors` = ?, `update_mask` = ? WHERE 1;
 
 --
 -- DELETE template for table `AdvancedAuctionItemsSubmitRecord`

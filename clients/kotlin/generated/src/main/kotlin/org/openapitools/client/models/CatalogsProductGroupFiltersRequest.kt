@@ -15,9 +15,9 @@
 
 package org.openapitools.client.models
 
+import org.openapitools.client.models.AllOf
+import org.openapitools.client.models.AnyOf
 import org.openapitools.client.models.CatalogsProductGroupFilterKeys
-import org.openapitools.client.models.CatalogsProductGroupFiltersRequestAnyOf
-import org.openapitools.client.models.CatalogsProductGroupFiltersRequestAnyOf1
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

@@ -13,29 +13,29 @@ import AnyCodable
 /** A specific quiz inquiry. */
 public struct QuizPinQuestion: Codable, JSONEncodable, Hashable {
 
+    public var options: [QuizPinOption]?
     public var questionId: Double?
     public var questionText: String?
-    public var options: [QuizPinOption]?
 
-    public init(questionId: Double? = nil, questionText: String? = nil, options: [QuizPinOption]? = nil) {
+    public init(options: [QuizPinOption]? = nil, questionId: Double? = nil, questionText: String? = nil) {
+        self.options = options
         self.questionId = questionId
         self.questionText = questionText
-        self.options = options
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case options
         case questionId = "question_id"
         case questionText = "question_text"
-        case options
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(options, forKey: .options)
         try container.encodeIfPresent(questionId, forKey: .questionId)
         try container.encodeIfPresent(questionText, forKey: .questionText)
-        try container.encodeIfPresent(options, forKey: .options)
     }
 }
 

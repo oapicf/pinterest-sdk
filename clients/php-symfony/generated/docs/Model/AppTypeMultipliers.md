@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**aPPTYPE** | [**OpenAPI\Server\Model\TargetingSpecAppType**](TargetingSpecAppType.md) |  | [optional] 
+**aPPTYPE** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

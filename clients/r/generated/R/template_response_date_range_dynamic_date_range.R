@@ -7,38 +7,38 @@
 #' @title TemplateResponseDateRangeDynamicDateRange
 #' @description TemplateResponseDateRangeDynamicDateRange Class
 #' @format An \code{R6Class} generator object
-#' @field type The date range type character [optional]
 #' @field range The dynamic range type character [optional]
+#' @field type The date range type character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 TemplateResponseDateRangeDynamicDateRange <- R6::R6Class(
   "TemplateResponseDateRangeDynamicDateRange",
   public = list(
-    `type` = NULL,
     `range` = NULL,
+    `type` = NULL,
 
     #' @description
     #' Initialize a new TemplateResponseDateRangeDynamicDateRange class.
     #'
-    #' @param type The date range type
     #' @param range The dynamic range type
+    #' @param type The date range type
     #' @param ... Other optional arguments.
-    initialize = function(`type` = NULL, `range` = NULL, ...) {
-      if (!is.null(`type`)) {
-        if (!(is.character(`type`) && length(`type`) == 1)) {
-          stop(paste("Error! Invalid data for `type`. Must be a string:", `type`))
-        }
-        self$`type` <- `type`
-      }
+    initialize = function(`range` = NULL, `type` = NULL, ...) {
       if (!is.null(`range`)) {
-        if (!(`range` %in% c("YEAR_TO_DATE", "QUARTER_TO_DATE", "MONTH_TO_DATE", "LAST_MONTH"))) {
-          stop(paste("Error! \"", `range`, "\" cannot be assigned to `range`. Must be \"YEAR_TO_DATE\", \"QUARTER_TO_DATE\", \"MONTH_TO_DATE\", \"LAST_MONTH\".", sep = ""))
+        if (!(`range` %in% c("YEAR_TO_DATE", "QUARTER_TO_DATE", "MONTH_TO_DATE", "LAST_MONTH", "LAST_QUARTER"))) {
+          stop(paste("Error! \"", `range`, "\" cannot be assigned to `range`. Must be \"YEAR_TO_DATE\", \"QUARTER_TO_DATE\", \"MONTH_TO_DATE\", \"LAST_MONTH\", \"LAST_QUARTER\".", sep = ""))
         }
         if (!(is.character(`range`) && length(`range`) == 1)) {
           stop(paste("Error! Invalid data for `range`. Must be a string:", `range`))
         }
         self$`range` <- `range`
+      }
+      if (!is.null(`type`)) {
+        if (!(is.character(`type`) && length(`type`) == 1)) {
+          stop(paste("Error! Invalid data for `type`. Must be a string:", `type`))
+        }
+        self$`type` <- `type`
       }
     },
 
@@ -73,13 +73,13 @@ TemplateResponseDateRangeDynamicDateRange <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       TemplateResponseDateRangeDynamicDateRangeObject <- list()
-      if (!is.null(self$`type`)) {
-        TemplateResponseDateRangeDynamicDateRangeObject[["type"]] <-
-          self$`type`
-      }
       if (!is.null(self$`range`)) {
         TemplateResponseDateRangeDynamicDateRangeObject[["range"]] <-
           self$`range`
+      }
+      if (!is.null(self$`type`)) {
+        TemplateResponseDateRangeDynamicDateRangeObject[["type"]] <-
+          self$`type`
       }
       return(TemplateResponseDateRangeDynamicDateRangeObject)
     },
@@ -91,14 +91,14 @@ TemplateResponseDateRangeDynamicDateRange <- R6::R6Class(
     #' @return the instance of TemplateResponseDateRangeDynamicDateRange
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`type`)) {
-        self$`type` <- this_object$`type`
-      }
       if (!is.null(this_object$`range`)) {
-        if (!is.null(this_object$`range`) && !(this_object$`range` %in% c("YEAR_TO_DATE", "QUARTER_TO_DATE", "MONTH_TO_DATE", "LAST_MONTH"))) {
-          stop(paste("Error! \"", this_object$`range`, "\" cannot be assigned to `range`. Must be \"YEAR_TO_DATE\", \"QUARTER_TO_DATE\", \"MONTH_TO_DATE\", \"LAST_MONTH\".", sep = ""))
+        if (!is.null(this_object$`range`) && !(this_object$`range` %in% c("YEAR_TO_DATE", "QUARTER_TO_DATE", "MONTH_TO_DATE", "LAST_MONTH", "LAST_QUARTER"))) {
+          stop(paste("Error! \"", this_object$`range`, "\" cannot be assigned to `range`. Must be \"YEAR_TO_DATE\", \"QUARTER_TO_DATE\", \"MONTH_TO_DATE\", \"LAST_MONTH\", \"LAST_QUARTER\".", sep = ""))
         }
         self$`range` <- this_object$`range`
+      }
+      if (!is.null(this_object$`type`)) {
+        self$`type` <- this_object$`type`
       }
       self
     },
@@ -121,11 +121,11 @@ TemplateResponseDateRangeDynamicDateRange <- R6::R6Class(
     #' @return the instance of TemplateResponseDateRangeDynamicDateRange
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`type` <- this_object$`type`
-      if (!is.null(this_object$`range`) && !(this_object$`range` %in% c("YEAR_TO_DATE", "QUARTER_TO_DATE", "MONTH_TO_DATE", "LAST_MONTH"))) {
-        stop(paste("Error! \"", this_object$`range`, "\" cannot be assigned to `range`. Must be \"YEAR_TO_DATE\", \"QUARTER_TO_DATE\", \"MONTH_TO_DATE\", \"LAST_MONTH\".", sep = ""))
+      if (!is.null(this_object$`range`) && !(this_object$`range` %in% c("YEAR_TO_DATE", "QUARTER_TO_DATE", "MONTH_TO_DATE", "LAST_MONTH", "LAST_QUARTER"))) {
+        stop(paste("Error! \"", this_object$`range`, "\" cannot be assigned to `range`. Must be \"YEAR_TO_DATE\", \"QUARTER_TO_DATE\", \"MONTH_TO_DATE\", \"LAST_MONTH\", \"LAST_QUARTER\".", sep = ""))
       }
       self$`range` <- this_object$`range`
+      self$`type` <- this_object$`type`
       self
     },
 

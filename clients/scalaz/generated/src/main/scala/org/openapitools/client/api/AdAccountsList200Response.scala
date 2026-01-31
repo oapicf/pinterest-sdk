@@ -12,9 +12,8 @@ import org.joda.time.DateTime
 import AdAccountsList200Response._
 
 case class AdAccountsList200Response (
-  /* Ad accounts */
-  items: List[AdAccount],
-bookmark: Option[String])
+  bookmark: Option[String],
+items: List[AdAccount])
 
 object AdAccountsList200Response {
   import DateTimeCodecs._

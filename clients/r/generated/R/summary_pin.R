@@ -7,42 +7,53 @@
 #' @title SummaryPin
 #' @description SummaryPin Class
 #' @format An \code{R6Class} generator object
-#' @field media  \link{PinMedia} [optional]
 #' @field alt_text  character [optional]
-#' @field link  character [optional]
-#' @field title  character [optional]
 #' @field description  character [optional]
+#' @field id  character [optional]
+#' @field link  character [optional]
+#' @field media  \link{PinMedia} [optional]
+#' @field title  character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 SummaryPin <- R6::R6Class(
   "SummaryPin",
   public = list(
-    `media` = NULL,
     `alt_text` = NULL,
-    `link` = NULL,
-    `title` = NULL,
     `description` = NULL,
+    `id` = NULL,
+    `link` = NULL,
+    `media` = NULL,
+    `title` = NULL,
 
     #' @description
     #' Initialize a new SummaryPin class.
     #'
-    #' @param media media
     #' @param alt_text alt_text
-    #' @param link link
-    #' @param title title
     #' @param description description
+    #' @param id id
+    #' @param link link
+    #' @param media media
+    #' @param title title
     #' @param ... Other optional arguments.
-    initialize = function(`media` = NULL, `alt_text` = NULL, `link` = NULL, `title` = NULL, `description` = NULL, ...) {
-      if (!is.null(`media`)) {
-        stopifnot(R6::is.R6(`media`))
-        self$`media` <- `media`
-      }
+    initialize = function(`alt_text` = NULL, `description` = NULL, `id` = NULL, `link` = NULL, `media` = NULL, `title` = NULL, ...) {
       if (!is.null(`alt_text`)) {
         if (!(is.character(`alt_text`) && length(`alt_text`) == 1)) {
           stop(paste("Error! Invalid data for `alt_text`. Must be a string:", `alt_text`))
         }
         self$`alt_text` <- `alt_text`
+      }
+      if (!is.null(`description`)) {
+        if (!(is.character(`description`) && length(`description`) == 1)) {
+          stop(paste("Error! Invalid data for `description`. Must be a string:", `description`))
+        }
+        self$`description` <- `description`
+      }
+      if (!is.null(`id`)) {
+        if (!(is.character(`id`) && length(`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
+        }
+        self$`id` <- `id`
       }
       if (!is.null(`link`)) {
         if (!(is.character(`link`) && length(`link`) == 1)) {
@@ -50,17 +61,15 @@ SummaryPin <- R6::R6Class(
         }
         self$`link` <- `link`
       }
+      if (!is.null(`media`)) {
+        stopifnot(R6::is.R6(`media`))
+        self$`media` <- `media`
+      }
       if (!is.null(`title`)) {
         if (!(is.character(`title`) && length(`title`) == 1)) {
           stop(paste("Error! Invalid data for `title`. Must be a string:", `title`))
         }
         self$`title` <- `title`
-      }
-      if (!is.null(`description`)) {
-        if (!(is.character(`description`) && length(`description`) == 1)) {
-          stop(paste("Error! Invalid data for `description`. Must be a string:", `description`))
-        }
-        self$`description` <- `description`
       }
     },
 
@@ -95,25 +104,29 @@ SummaryPin <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       SummaryPinObject <- list()
-      if (!is.null(self$`media`)) {
-        SummaryPinObject[["media"]] <-
-          self$`media`$toSimpleType()
-      }
       if (!is.null(self$`alt_text`)) {
         SummaryPinObject[["alt_text"]] <-
           self$`alt_text`
+      }
+      if (!is.null(self$`description`)) {
+        SummaryPinObject[["description"]] <-
+          self$`description`
+      }
+      if (!is.null(self$`id`)) {
+        SummaryPinObject[["id"]] <-
+          self$`id`
       }
       if (!is.null(self$`link`)) {
         SummaryPinObject[["link"]] <-
           self$`link`
       }
+      if (!is.null(self$`media`)) {
+        SummaryPinObject[["media"]] <-
+          self$`media`$toSimpleType()
+      }
       if (!is.null(self$`title`)) {
         SummaryPinObject[["title"]] <-
           self$`title`
-      }
-      if (!is.null(self$`description`)) {
-        SummaryPinObject[["description"]] <-
-          self$`description`
       }
       return(SummaryPinObject)
     },
@@ -125,22 +138,25 @@ SummaryPin <- R6::R6Class(
     #' @return the instance of SummaryPin
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`alt_text`)) {
+        self$`alt_text` <- this_object$`alt_text`
+      }
+      if (!is.null(this_object$`description`)) {
+        self$`description` <- this_object$`description`
+      }
+      if (!is.null(this_object$`id`)) {
+        self$`id` <- this_object$`id`
+      }
+      if (!is.null(this_object$`link`)) {
+        self$`link` <- this_object$`link`
+      }
       if (!is.null(this_object$`media`)) {
         `media_object` <- PinMedia$new()
         `media_object`$fromJSON(jsonlite::toJSON(this_object$`media`, auto_unbox = TRUE, digits = NA))
         self$`media` <- `media_object`
       }
-      if (!is.null(this_object$`alt_text`)) {
-        self$`alt_text` <- this_object$`alt_text`
-      }
-      if (!is.null(this_object$`link`)) {
-        self$`link` <- this_object$`link`
-      }
       if (!is.null(this_object$`title`)) {
         self$`title` <- this_object$`title`
-      }
-      if (!is.null(this_object$`description`)) {
-        self$`description` <- this_object$`description`
       }
       self
     },
@@ -163,11 +179,12 @@ SummaryPin <- R6::R6Class(
     #' @return the instance of SummaryPin
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`media` <- PinMedia$new()$fromJSON(jsonlite::toJSON(this_object$`media`, auto_unbox = TRUE, digits = NA))
       self$`alt_text` <- this_object$`alt_text`
-      self$`link` <- this_object$`link`
-      self$`title` <- this_object$`title`
       self$`description` <- this_object$`description`
+      self$`id` <- this_object$`id`
+      self$`link` <- this_object$`link`
+      self$`media` <- PinMedia$new()$fromJSON(jsonlite::toJSON(this_object$`media`, auto_unbox = TRUE, digits = NA))
+      self$`title` <- this_object$`title`
       self
     },
 

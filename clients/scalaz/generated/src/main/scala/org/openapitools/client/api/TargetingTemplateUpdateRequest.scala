@@ -12,23 +12,27 @@ import org.joda.time.DateTime
 import TargetingTemplateUpdateRequest._
 
 case class TargetingTemplateUpdateRequest (
-  operationType: OperationType,
-/* Targeting template ID */
-  id: String)
+  /* Targeting template ID */
+  id: String,
+operationType: OperationType,
+targetingAttributes: Option[TargetingSpec])
 
 object TargetingTemplateUpdateRequest {
   import DateTimeCodecs._
   sealed trait OperationType
   case object REMOVE extends OperationType
+  case object UPDATE extends OperationType
 
   object OperationType {
     def toOperationType(s: String): Option[OperationType] = s match {
       case "REMOVE" => Some(REMOVE)
+      case "UPDATE" => Some(UPDATE)
       case _ => None
     }
 
     def fromOperationType(x: OperationType): String = x match {
       case REMOVE => "REMOVE"
+      case UPDATE => "UPDATE"
     }
   }
 

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,8 +22,8 @@ var _ MappedNullable = &KeywordsGet200Response{}
 
 // KeywordsGet200Response struct for KeywordsGet200Response
 type KeywordsGet200Response struct {
-	Items []Keyword `json:"items"`
 	Bookmark NullableString `json:"bookmark,omitempty"`
+	Items []Keyword `json:"items"`
 }
 
 type _KeywordsGet200Response KeywordsGet200Response
@@ -44,30 +44,6 @@ func NewKeywordsGet200Response(items []Keyword) *KeywordsGet200Response {
 func NewKeywordsGet200ResponseWithDefaults() *KeywordsGet200Response {
 	this := KeywordsGet200Response{}
 	return &this
-}
-
-// GetItems returns the Items field value
-func (o *KeywordsGet200Response) GetItems() []Keyword {
-	if o == nil {
-		var ret []Keyword
-		return ret
-	}
-
-	return o.Items
-}
-
-// GetItemsOk returns a tuple with the Items field value
-// and a boolean to check if the value has been set.
-func (o *KeywordsGet200Response) GetItemsOk() ([]Keyword, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Items, true
-}
-
-// SetItems sets field value
-func (o *KeywordsGet200Response) SetItems(v []Keyword) {
-	o.Items = v
 }
 
 // GetBookmark returns the Bookmark field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -112,6 +88,30 @@ func (o *KeywordsGet200Response) UnsetBookmark() {
 	o.Bookmark.Unset()
 }
 
+// GetItems returns the Items field value
+func (o *KeywordsGet200Response) GetItems() []Keyword {
+	if o == nil {
+		var ret []Keyword
+		return ret
+	}
+
+	return o.Items
+}
+
+// GetItemsOk returns a tuple with the Items field value
+// and a boolean to check if the value has been set.
+func (o *KeywordsGet200Response) GetItemsOk() ([]Keyword, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Items, true
+}
+
+// SetItems sets field value
+func (o *KeywordsGet200Response) SetItems(v []Keyword) {
+	o.Items = v
+}
+
 func (o KeywordsGet200Response) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -122,10 +122,10 @@ func (o KeywordsGet200Response) MarshalJSON() ([]byte, error) {
 
 func (o KeywordsGet200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["items"] = o.Items
 	if o.Bookmark.IsSet() {
 		toSerialize["bookmark"] = o.Bookmark.Get()
 	}
+	toSerialize["items"] = o.Items
 	return toSerialize, nil
 }
 

@@ -8,8 +8,8 @@ The class is defined in **[BusinessMemberAssetsGet200Response.java](../../src/ma
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;AssetIdPermissions&gt;`](AssetIdPermissions.md) | List asset permissions the given member was granted. | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;AssetIdPermissions&gt;`](AssetIdPermissions.md) | List asset permissions the given member was granted. | 
 
 
 

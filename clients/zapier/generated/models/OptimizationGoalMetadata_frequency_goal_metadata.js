@@ -6,7 +6,7 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}frequency`,
-                label: `[${labelPrefix}frequency]`,
+                label: `Frequency target can only be between 2 and 20 - [${labelPrefix}frequency]`,
                 type: 'integer',
             },
             {

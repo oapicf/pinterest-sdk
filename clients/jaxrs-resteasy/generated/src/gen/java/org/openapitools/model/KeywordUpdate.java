@@ -11,26 +11,12 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class KeywordUpdate   {
   
-  private String id;
   private Boolean archived;
   private Integer bid;
-
-  /**
-   * Keyword ID.
-   **/
-  
-  @ApiModelProperty(example = "2886364308355", required = true, value = "Keyword ID.")
-  @JsonProperty("id")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getId() {
-    return id;
-  }
-  public void setId(String id) {
-    this.id = id;
-  }
+  private String id;
 
   /**
    * Is keyword archived?
@@ -58,6 +44,20 @@ public class KeywordUpdate   {
     this.bid = bid;
   }
 
+  /**
+   * Keyword ID.
+   **/
+  
+  @ApiModelProperty(example = "2886364308355", required = true, value = "Keyword ID.")
+  @JsonProperty("id")
+  @NotNull
+ @Pattern(regexp="^\\d+$")  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -68,14 +68,14 @@ public class KeywordUpdate   {
       return false;
     }
     KeywordUpdate keywordUpdate = (KeywordUpdate) o;
-    return Objects.equals(this.id, keywordUpdate.id) &&
-        Objects.equals(this.archived, keywordUpdate.archived) &&
-        Objects.equals(this.bid, keywordUpdate.bid);
+    return Objects.equals(this.archived, keywordUpdate.archived) &&
+        Objects.equals(this.bid, keywordUpdate.bid) &&
+        Objects.equals(this.id, keywordUpdate.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, archived, bid);
+    return Objects.hash(archived, bid, id);
   }
 
   @Override
@@ -83,9 +83,9 @@ public class KeywordUpdate   {
     StringBuilder sb = new StringBuilder();
     sb.append("class KeywordUpdate {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    archived: ").append(toIndentedString(archived)).append("\n");
     sb.append("    bid: ").append(toIndentedString(bid)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

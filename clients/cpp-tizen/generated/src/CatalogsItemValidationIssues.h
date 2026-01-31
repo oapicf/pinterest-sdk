@@ -47,20 +47,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
-	 */
-	int getItemNumber();
-
-	/*! \brief Set Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
-	 */
-	void setItemNumber(int  item_number);
-	/*! \brief Get The merchant-created unique ID that represents the product.
-	 */
-	std::string getItemId();
-
-	/*! \brief Set The merchant-created unique ID that represents the product.
-	 */
-	void setItemId(std::string  item_id);
 	/*! \brief Get 
 	 */
 	CatalogsItemValidationErrors getErrors();
@@ -68,6 +54,20 @@ public:
 	/*! \brief Set 
 	 */
 	void setErrors(CatalogsItemValidationErrors  errors);
+	/*! \brief Get The merchant-created unique ID that represents the product.
+	 */
+	std::string getItemId();
+
+	/*! \brief Set The merchant-created unique ID that represents the product.
+	 */
+	void setItemId(std::string  item_id);
+	/*! \brief Get Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
+	 */
+	int getItemNumber();
+
+	/*! \brief Set Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
+	 */
+	void setItemNumber(int  item_number);
 	/*! \brief Get 
 	 */
 	CatalogsItemValidationWarnings getWarnings();
@@ -77,9 +77,9 @@ public:
 	void setWarnings(CatalogsItemValidationWarnings  warnings);
 
 private:
-	int item_number;
-	std::string item_id;
 	CatalogsItemValidationErrors errors;
+	std::string item_id;
+	int item_number;
 	CatalogsItemValidationWarnings warnings;
 	void __init();
 	void __cleanup();

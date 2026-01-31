@@ -13,8 +13,8 @@ import DetailedError._
 
 case class DetailedError (
   code: Integer,
-message: String,
-details: Any)
+details: Any,
+message: String)
 
 object DetailedError {
   import DateTimeCodecs._

@@ -23,19 +23,14 @@ KeywordUpdate::~KeywordUpdate()
 void
 KeywordUpdate::__init()
 {
-	//id = std::string();
 	//archived = bool(false);
 	//bid = int(0);
+	//id = std::string();
 }
 
 void
 KeywordUpdate::__cleanup()
 {
-	//if(id != NULL) {
-	//
-	//delete id;
-	//id = NULL;
-	//}
 	//if(archived != NULL) {
 	//
 	//delete archived;
@@ -46,6 +41,11 @@ KeywordUpdate::__cleanup()
 	//delete bid;
 	//bid = NULL;
 	//}
+	//if(id != NULL) {
+	//
+	//delete id;
+	//id = NULL;
+	//}
 	//
 }
 
@@ -54,17 +54,6 @@ KeywordUpdate::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *idKey = "id";
-	node = json_object_get_member(pJsonObject, idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&id, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *archivedKey = "archived";
 	node = json_object_get_member(pJsonObject, archivedKey);
 	if (node !=NULL) {
@@ -87,6 +76,17 @@ KeywordUpdate::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *idKey = "id";
+	node = json_object_get_member(pJsonObject, idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&id, node, "std::string", "");
+		} else {
+			
+		}
+	}
 }
 
 KeywordUpdate::KeywordUpdate(char* json)
@@ -99,15 +99,6 @@ KeywordUpdate::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *idKey = "id";
-	json_object_set_member(pJsonObject, idKey, node);
 	if (isprimitive("bool")) {
 		bool obj = getArchived();
 		node = converttoJson(&obj, "bool", "");
@@ -126,24 +117,21 @@ KeywordUpdate::toJson()
 	}
 	const gchar *bidKey = "bid";
 	json_object_set_member(pJsonObject, bidKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *idKey = "id";
+	json_object_set_member(pJsonObject, idKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
-}
-
-std::string
-KeywordUpdate::getId()
-{
-	return id;
-}
-
-void
-KeywordUpdate::setId(std::string  id)
-{
-	this->id = id;
 }
 
 bool
@@ -168,6 +156,18 @@ void
 KeywordUpdate::setBid(int  bid)
 {
 	this->bid = bid;
+}
+
+std::string
+KeywordUpdate::getId()
+{
+	return id;
+}
+
+void
+KeywordUpdate::setId(std::string  id)
+{
+	this->id = id;
 }
 
 

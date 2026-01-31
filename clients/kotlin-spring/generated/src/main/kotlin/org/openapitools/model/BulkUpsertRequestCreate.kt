@@ -6,6 +6,8 @@ import org.openapitools.model.AdCreateRequest
 import org.openapitools.model.AdGroupCreateRequest
 import org.openapitools.model.CampaignCreateRequest
 import org.openapitools.model.KeywordsRequest
+import org.openapitools.model.LabelCreateRequest
+import org.openapitools.model.MultipleProductGroupsInner
 import org.openapitools.model.ProductGroupPromotionCreateRequest
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -20,17 +22,15 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * Request for creation of entities in bulk.
- * @param campaigns 
  * @param adGroups 
  * @param ads 
- * @param productGroups 
+ * @param campaigns 
+ * @param catalogProductGroups 
  * @param keywords 
+ * @param labels 
+ * @param productGroups 
  */
 data class BulkUpsertRequestCreate(
-
-    @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("campaigns") val campaigns: kotlin.collections.List<CampaignCreateRequest>? = null,
 
     @field:Valid
     @Schema(example = "null", description = "")
@@ -42,11 +42,23 @@ data class BulkUpsertRequestCreate(
 
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("product_groups") val productGroups: kotlin.collections.List<ProductGroupPromotionCreateRequest>? = null,
+    @get:JsonProperty("campaigns") val campaigns: kotlin.collections.List<CampaignCreateRequest>? = null,
 
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("keywords") val keywords: kotlin.collections.List<KeywordsRequest>? = null
+    @get:JsonProperty("catalog_product_groups") val catalogProductGroups: kotlin.collections.List<MultipleProductGroupsInner>? = null,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("keywords") val keywords: kotlin.collections.List<KeywordsRequest>? = null,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("labels") val labels: kotlin.collections.List<LabelCreateRequest>? = null,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("product_groups") val productGroups: kotlin.collections.List<ProductGroupPromotionCreateRequest>? = null
 ) {
 
 }

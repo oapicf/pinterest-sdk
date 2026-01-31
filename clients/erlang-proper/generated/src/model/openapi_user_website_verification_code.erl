@@ -9,11 +9,11 @@
 -export_type([openapi_user_website_verification_code/0]).
 
 -type openapi_user_website_verification_code() ::
-  [ {'verification_code', binary() }
-  | {'dns_txt_record', binary() }
-  | {'metatag', binary() }
-  | {'filename', binary() }
+  [ {'dns_txt_record', binary() }
   | {'file_content', binary() }
+  | {'filename', binary() }
+  | {'metatag', binary() }
+  | {'verification_code', binary() }
   ].
 
 
@@ -21,11 +21,11 @@ openapi_user_website_verification_code() ->
     openapi_user_website_verification_code([]).
 
 openapi_user_website_verification_code(Fields) ->
-  Default = [ {'verification_code', binary() }
-            , {'dns_txt_record', binary() }
-            , {'metatag', binary() }
-            , {'filename', binary() }
+  Default = [ {'dns_txt_record', binary() }
             , {'file_content', binary() }
+            , {'filename', binary() }
+            , {'metatag', binary() }
+            , {'verification_code', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

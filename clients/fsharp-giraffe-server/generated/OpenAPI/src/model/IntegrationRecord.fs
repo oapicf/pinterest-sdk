@@ -11,22 +11,22 @@ module IntegrationRecord =
 
 
   type IntegrationRecord = {
-    Id : string;
-    ExternalBusinessId : string option;
-    ConnectedMerchantId : string option;
-    ConnectedUserId : string;
+    AdditionalId1 : string option;
     ConnectedAdvertiserId : string option;
     ConnectedLbaId : string option;
+    ConnectedMerchantId : string option;
     ConnectedTagId : string option;
+    ConnectedUserId : string;
+    CreatedTime : int;
+    ExternalBusinessId : string option;
+    Id : string;
     PartnerAccessToken : string option;
-    PartnerRefreshToken : string option;
-    PartnerPrimaryEmail : string option;
     PartnerAccessTokenExpiry : int option;
+    PartnerMetadata : string option;
+    PartnerPrimaryEmail : string option;
+    PartnerRefreshToken : string option;
     PartnerRefreshTokenExpiry : int option;
     Scopes : string option;
-    PartnerMetadata : string option;
-    AdditionalId1 : string option;
-    CreatedTime : int;
     UpdatedTime : int;
   }
   //#endregion

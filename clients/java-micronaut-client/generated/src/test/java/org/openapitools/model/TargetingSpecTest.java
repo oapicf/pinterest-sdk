@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.TargetingSpecSHOPPINGRETARGETING;
+import org.openapitools.model.TargetingSpecAgeBucket;
+import org.openapitools.model.TargetingSpecAppType;
+import org.openapitools.model.TargetingSpecGender;
+import org.openapitools.model.TargetingSpecShoppingRetargeting;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -94,6 +97,22 @@ public class TargetingSpecTest {
     @Test
     public void LOCATIONTest() {
         // TODO: test LOCATION
+    }
+
+    /**
+     * Test the property 'MAXIMUM_AGE'
+     */
+    @Test
+    public void MAXIMUM_AGETest() {
+        // TODO: test MAXIMUM_AGE
+    }
+
+    /**
+     * Test the property 'MINIMUM_AGE'
+     */
+    @Test
+    public void MINIMUM_AGETest() {
+        // TODO: test MINIMUM_AGE
     }
 
     /**

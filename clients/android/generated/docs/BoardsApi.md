@@ -277,11 +277,11 @@ Name | Type | Description  | Notes
 
 ## boardsCreate
 
-> Board boardsCreate(board, adAccountId)
+> Board boardsCreate(boardCreate, adAccountId)
 
 Create board
 
-Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
 
 ### Example
 
@@ -290,10 +290,10 @@ Create a board owned by the \&quot;operation user_account\&quot;. Optional: Busi
 //import org.openapitools.client.api.BoardsApi;
 
 BoardsApi apiInstance = new BoardsApi();
-Board board = new Board(); // Board | Create a board using a single board json object.
+BoardCreate boardCreate = new BoardCreate(); // BoardCreate | 
 String adAccountId = null; // String | Unique identifier of an ad account.
 try {
-    Board result = apiInstance.boardsCreate(board, adAccountId);
+    Board result = apiInstance.boardsCreate(boardCreate, adAccountId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BoardsApi#boardsCreate");
@@ -306,7 +306,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **board** | [**Board**](Board.md)| Create a board using a single board json object. |
+ **boardCreate** | [**BoardCreate**](BoardCreate.md)|  |
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
@@ -315,7 +315,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -329,7 +329,7 @@ Name | Type | Description  | Notes
 
 Delete board
 
-Delete a board owned by the \&quot;operation user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+Delete a board owned by the \&quot;operation user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
 
 ### Example
 
@@ -338,7 +338,7 @@ Delete a board owned by the \&quot;operation user_account\&quot;. - Optional: Bu
 //import org.openapitools.client.api.BoardsApi;
 
 BoardsApi apiInstance = new BoardsApi();
-String boardId = null; // String | Unique identifier of a board.
+String boardId = null; // String | 
 String adAccountId = null; // String | Unique identifier of an ad account.
 try {
     apiInstance.boardsDelete(boardId, adAccountId);
@@ -353,7 +353,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **boardId** | **String**| Unique identifier of a board. | [default to null]
+ **boardId** | **String**|  | [default to null]
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
@@ -376,7 +376,7 @@ null (empty response body)
 
 Get board
 
-Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
 
 ### Example
 
@@ -385,7 +385,7 @@ Get a board owned by the operation user_account - or a group board that has been
 //import org.openapitools.client.api.BoardsApi;
 
 BoardsApi apiInstance = new BoardsApi();
-String boardId = null; // String | Unique identifier of a board.
+String boardId = null; // String | 
 String adAccountId = null; // String | Unique identifier of an ad account.
 try {
     Board result = apiInstance.boardsGet(boardId, adAccountId);
@@ -401,7 +401,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **boardId** | **String**| Unique identifier of a board. | [default to null]
+ **boardId** | **String**|  | [default to null]
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
@@ -420,11 +420,11 @@ Name | Type | Description  | Notes
 
 ## boardsList
 
-> BoardsList200Response boardsList(adAccountId, bookmark, pageSize, privacy)
+> BoardsList200Response boardsList(adAccountId, privacy, bookmark, pageSize)
 
 List boards
 
-Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
 
 ### Example
 
@@ -434,11 +434,11 @@ Get a list of the boards owned by the \&quot;operation user_account\&quot; + gro
 
 BoardsApi apiInstance = new BoardsApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
+BoardPrivacyFilter privacy = null; // BoardPrivacyFilter | The privacy level of the board
 String bookmark = null; // String | Cursor used to fetch the next page of items
-Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-String privacy = null; // String | Privacy setting for a board.
+Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 try {
-    BoardsList200Response result = apiInstance.boardsList(adAccountId, bookmark, pageSize, privacy);
+    BoardsList200Response result = apiInstance.boardsList(adAccountId, privacy, bookmark, pageSize);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BoardsApi#boardsList");
@@ -452,9 +452,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] [default to null]
+ **privacy** | [**BoardPrivacyFilter**](.md)| The privacy level of the board | [optional] [default to null] [enum: ALL, PUBLIC, PROTECTED, SECRET, PUBLIC_AND_SECRET]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
- **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **privacy** | **String**| Privacy setting for a board. | [optional] [default to null] [enum: ALL, PROTECTED, PUBLIC, SECRET, PUBLIC_AND_SECRET]
+ **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -488,9 +488,9 @@ BoardsApi apiInstance = new BoardsApi();
 String boardId = null; // String | Unique identifier of a board.
 String bookmark = null; // String | Cursor used to fetch the next page of items
 Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-List<String> creativeTypes = null; // List<String> | Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
+List<CreativeType> creativeTypes = null; // List<CreativeType> | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
 String adAccountId = null; // String | Unique identifier of an ad account.
-Boolean pinMetrics = false; // Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+Boolean pinMetrics = false; // Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
 try {
     BoardsListPins200Response result = apiInstance.boardsListPins(boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics);
     System.out.println(result);
@@ -508,9 +508,9 @@ Name | Type | Description  | Notes
  **boardId** | **String**| Unique identifier of a board. | [default to null]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] [default to null]
  **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **creativeTypes** | [**List&lt;String&gt;**](String.md)| Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] [default to null] [enum: REGULAR, VIDEO, SHOPPING, CAROUSEL, MAX_VIDEO, SHOP_THE_PIN, COLLECTION, IDEA]
+ **creativeTypes** | [**List&lt;CreativeType&gt;**](CreativeType.md)| Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] [default to null]
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] [default to null]
- **pinMetrics** | **Boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false]
+ **pinMetrics** | **Boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false]
 
 ### Return type
 
@@ -528,11 +528,11 @@ Name | Type | Description  | Notes
 
 ## boardsUpdate
 
-> Board boardsUpdate(boardId, boardUpdate, adAccountId)
+> BoardWithUpdatePrivacy boardsUpdate(boardId, boardWithUpdatePrivacyUpdate, adAccountId)
 
 Update board
 
-Update a board owned by the \&quot;operating user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+Update a board owned by the \&quot;operating user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
 
 ### Example
 
@@ -541,11 +541,11 @@ Update a board owned by the \&quot;operating user_account\&quot;. - Optional: Bu
 //import org.openapitools.client.api.BoardsApi;
 
 BoardsApi apiInstance = new BoardsApi();
-String boardId = null; // String | Unique identifier of a board.
-BoardUpdate boardUpdate = new BoardUpdate(); // BoardUpdate | Update a board.
+String boardId = null; // String | 
+BoardWithUpdatePrivacyUpdate boardWithUpdatePrivacyUpdate = new BoardWithUpdatePrivacyUpdate(); // BoardWithUpdatePrivacyUpdate | 
 String adAccountId = null; // String | Unique identifier of an ad account.
 try {
-    Board result = apiInstance.boardsUpdate(boardId, boardUpdate, adAccountId);
+    BoardWithUpdatePrivacy result = apiInstance.boardsUpdate(boardId, boardWithUpdatePrivacyUpdate, adAccountId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BoardsApi#boardsUpdate");
@@ -558,17 +558,17 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **boardId** | **String**| Unique identifier of a board. | [default to null]
- **boardUpdate** | [**BoardUpdate**](BoardUpdate.md)| Update a board. |
+ **boardId** | **String**|  | [default to null]
+ **boardWithUpdatePrivacyUpdate** | [**BoardWithUpdatePrivacyUpdate**](BoardWithUpdatePrivacyUpdate.md)|  |
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
 
-[**Board**](Board.md)
+[**BoardWithUpdatePrivacy**](BoardWithUpdatePrivacy.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

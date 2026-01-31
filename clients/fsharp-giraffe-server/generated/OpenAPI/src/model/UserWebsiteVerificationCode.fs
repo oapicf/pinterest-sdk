@@ -9,10 +9,10 @@ module UserWebsiteVerificationCode =
 
 
   type UserWebsiteVerificationCode = {
-    VerificationCode : string;
     DnsTxtRecord : string;
-    Metatag : string;
-    Filename : string;
     FileContent : string;
+    Filename : string;
+    Metatag : string;
+    VerificationCode : string;
   }
   //#endregion

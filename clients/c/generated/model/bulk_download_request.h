@@ -22,21 +22,21 @@ typedef struct bulk_download_request_t bulk_download_request_t;
 
 
 typedef struct bulk_download_request_t {
-    list_t *entity_types; //nonprimitive container
-    list_t *entity_ids; //primitive container
-    char *updated_since; // string
     struct bulk_download_request_campaign_filter_t *campaign_filter; //model
+    list_t *entity_ids; //primitive container
+    list_t *entity_types; //nonprimitive container
     bulk_output_format_t *output_format; // custom
+    char *updated_since; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } bulk_download_request_t;
 
 __attribute__((deprecated)) bulk_download_request_t *bulk_download_request_create(
-    list_t *entity_types,
-    list_t *entity_ids,
-    char *updated_since,
     bulk_download_request_campaign_filter_t *campaign_filter,
-    bulk_output_format_t *output_format
+    list_t *entity_ids,
+    list_t *entity_types,
+    bulk_output_format_t *output_format,
+    char *updated_since
 );
 
 void bulk_download_request_free(bulk_download_request_t *bulk_download_request);

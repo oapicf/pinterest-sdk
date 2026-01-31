@@ -3,20 +3,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**OrganicPinId** | **String** |  | [optional] 
 **AndroidDeepLink** | **String** |  | [optional] 
-**IosDeepLink** | **String** |  | [optional] 
 **DestinationUrl** | **String** |  | [optional] 
+**IosDeepLink** | **String** |  | [optional] 
+**OrganicPinId** | **String** |  | [optional] 
 **ResultId** | **Decimal** |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$QuizPinResult = Initialize-PSOpenAPIToolsQuizPinResult  -OrganicPinId null `
- -AndroidDeepLink null `
- -IosDeepLink null `
+$QuizPinResult = Initialize-PSOpenAPIToolsQuizPinResult  -AndroidDeepLink null `
  -DestinationUrl null `
+ -IosDeepLink null `
+ -OrganicPinId null `
  -ResultId null
 ```
 

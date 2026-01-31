@@ -1,0 +1,47 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsCreateRetailItem"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsCreateRetailItem"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ItemAttributesRequest = openapi_server.resourceTypes.ItemAttributesRequest
+}
+resourceTypes {
+
+  CatalogsCreateRetailItem {
+    title = CatalogsCreateRetailItem
+    description = CatalogsCreateRetailItem
+    derivedFrom = Root
+    properties {
+        attributes {
+          type = ItemAttributesRequest
+          description = ""
+          optional = true
+        }
+        item_id {
+          type =  string
+          description = "The catalog item id in the merchant namespace"
+          optional = true
+        }
+        operation {
+          type =  string
+          description = ""
+          enum = ["CREATE"]
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsCreateRetailItem {
+    title = CatalogsCreateRetailItem
+    description = CatalogsCreateRetailItem
+    implements = openapi_server.resourceTypes.CatalogsCreateRetailItem
+
+  }
+}

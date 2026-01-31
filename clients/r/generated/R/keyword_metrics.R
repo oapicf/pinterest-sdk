@@ -7,7 +7,6 @@
 #' @title KeywordMetrics
 #' @description KeywordMetrics Class
 #' @format An \code{R6Class} generator object
-#' @field avg_cpc_in_micro_currency Average cost per click numeric [optional]
 #' @field keyword_query_volume Keyword's search frequency. This value is based on keyword frequency in pepsi client response character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -15,19 +14,14 @@
 KeywordMetrics <- R6::R6Class(
   "KeywordMetrics",
   public = list(
-    `avg_cpc_in_micro_currency` = NULL,
     `keyword_query_volume` = NULL,
 
     #' @description
     #' Initialize a new KeywordMetrics class.
     #'
-    #' @param avg_cpc_in_micro_currency Average cost per click
     #' @param keyword_query_volume Keyword's search frequency. This value is based on keyword frequency in pepsi client response
     #' @param ... Other optional arguments.
-    initialize = function(`avg_cpc_in_micro_currency` = NULL, `keyword_query_volume` = NULL, ...) {
-      if (!is.null(`avg_cpc_in_micro_currency`)) {
-        self$`avg_cpc_in_micro_currency` <- `avg_cpc_in_micro_currency`
-      }
+    initialize = function(`keyword_query_volume` = NULL, ...) {
       if (!is.null(`keyword_query_volume`)) {
         if (!(is.character(`keyword_query_volume`) && length(`keyword_query_volume`) == 1)) {
           stop(paste("Error! Invalid data for `keyword_query_volume`. Must be a string:", `keyword_query_volume`))
@@ -67,10 +61,6 @@ KeywordMetrics <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       KeywordMetricsObject <- list()
-      if (!is.null(self$`avg_cpc_in_micro_currency`)) {
-        KeywordMetricsObject[["avg_cpc_in_micro_currency"]] <-
-          self$`avg_cpc_in_micro_currency`
-      }
       if (!is.null(self$`keyword_query_volume`)) {
         KeywordMetricsObject[["keyword_query_volume"]] <-
           self$`keyword_query_volume`
@@ -85,9 +75,6 @@ KeywordMetrics <- R6::R6Class(
     #' @return the instance of KeywordMetrics
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`avg_cpc_in_micro_currency`)) {
-        self$`avg_cpc_in_micro_currency` <- this_object$`avg_cpc_in_micro_currency`
-      }
       if (!is.null(this_object$`keyword_query_volume`)) {
         self$`keyword_query_volume` <- this_object$`keyword_query_volume`
       }
@@ -112,7 +99,6 @@ KeywordMetrics <- R6::R6Class(
     #' @return the instance of KeywordMetrics
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`avg_cpc_in_micro_currency` <- this_object$`avg_cpc_in_micro_currency`
       self$`keyword_query_volume` <- this_object$`keyword_query_volume`
       self
     },

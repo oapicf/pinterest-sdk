@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`username` | string
 `type` | string
+`username` | string
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { UserSummary } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "username": username,
   "type": user,
+  "username": username,
 } satisfies UserSummary
 
 console.log(example)

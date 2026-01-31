@@ -9,8 +9,8 @@
 -export_type([openapi_catalogs_product_group_pins_list_200_response/0]).
 
 -type openapi_catalogs_product_group_pins_list_200_response() ::
-  [ {'items', list(openapi_catalogs_product:openapi_catalogs_product()) }
-  | {'bookmark', binary() }
+  [ {'bookmark', binary() }
+  | {'items', list(openapi_catalogs_product:openapi_catalogs_product()) }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_catalogs_product_group_pins_list_200_response() ->
     openapi_catalogs_product_group_pins_list_200_response([]).
 
 openapi_catalogs_product_group_pins_list_200_response(Fields) ->
-  Default = [ {'items', list(openapi_catalogs_product:openapi_catalogs_product()) }
-            , {'bookmark', binary() }
+  Default = [ {'bookmark', binary() }
+            , {'items', list(openapi_catalogs_product:openapi_catalogs_product()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

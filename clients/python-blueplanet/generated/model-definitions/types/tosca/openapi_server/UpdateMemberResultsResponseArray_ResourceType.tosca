@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server UpdateMemberResultsResponseArray"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a UpdateMemberResultsResponseArray"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  UpdateMemberResult = openapi_server.resourceTypes.UpdateMemberResult
+}
+resourceTypes {
+
+  UpdateMemberResultsResponseArray {
+    title = UpdateMemberResultsResponseArray
+    description = UpdateMemberResultsResponseArray
+    derivedFrom = Root
+    properties {
+        items {
+          type = array
+          items.type = UpdateMemberResult
+          description = "List of members with updated business access role."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  UpdateMemberResultsResponseArray {
+    title = UpdateMemberResultsResponseArray
+    description = UpdateMemberResultsResponseArray
+    implements = openapi_server.resourceTypes.UpdateMemberResultsResponseArray
+
+  }
+}

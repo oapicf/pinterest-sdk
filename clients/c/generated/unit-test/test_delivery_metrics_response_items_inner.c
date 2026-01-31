@@ -22,17 +22,17 @@ delivery_metrics_response_items_inner_t* instantiate_delivery_metrics_response_i
   delivery_metrics_response_items_inner_t* delivery_metrics_response_items_inner = NULL;
   if (include_optional) {
     delivery_metrics_response_items_inner = delivery_metrics_response_items_inner_create(
-      "AD_GROUP_ID",
       pinterest_rest_api_delivery_metrics_response_items_inner_CATEGORY_"ADS",
       "Unique ID for your ad group",
-      "Ad group ID"
+      "Ad group ID",
+      "AD_GROUP_ID"
     );
   } else {
     delivery_metrics_response_items_inner = delivery_metrics_response_items_inner_create(
-      "AD_GROUP_ID",
       pinterest_rest_api_delivery_metrics_response_items_inner_CATEGORY_"ADS",
       "Unique ID for your ad group",
-      "Ad group ID"
+      "Ad group ID",
+      "AD_GROUP_ID"
     );
   }
 

@@ -9,10 +9,10 @@ module LinkedBusiness =
 
 
   type LinkedBusiness = {
-    Username : string;
-    ImageSmallUrl : string;
-    ImageMediumUrl : string;
     ImageLargeUrl : string;
+    ImageMediumUrl : string;
+    ImageSmallUrl : string;
     ImageXlargeUrl : string;
+    Username : string;
   }
   //#endregion

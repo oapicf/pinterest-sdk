@@ -10,13 +10,9 @@ import javax.validation.Valid;
 /**
  * DeliveryMetricsResponseItemsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class DeliveryMetricsResponseItemsInner   {
-  @JsonProperty("name")
-  
-  private String name;
-
   /**
    * Category name
    */
@@ -60,22 +56,9 @@ public class DeliveryMetricsResponseItemsInner   {
   
   private String displayName;
 
-  public DeliveryMetricsResponseItemsInner name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Metric's name.
-   * @return name
-  **/
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
+  @JsonProperty("name")
+  
+  private String name;
 
   public DeliveryMetricsResponseItemsInner category(CategoryEnum category) {
     this.category = category;
@@ -128,6 +111,23 @@ public class DeliveryMetricsResponseItemsInner   {
     this.displayName = displayName;
   }
 
+  public DeliveryMetricsResponseItemsInner name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Metric's name.
+   * @return name
+  **/
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -138,15 +138,15 @@ public class DeliveryMetricsResponseItemsInner   {
       return false;
     }
     DeliveryMetricsResponseItemsInner deliveryMetricsResponseItemsInner = (DeliveryMetricsResponseItemsInner) o;
-    return Objects.equals(name, deliveryMetricsResponseItemsInner.name) &&
-        Objects.equals(category, deliveryMetricsResponseItemsInner.category) &&
+    return Objects.equals(category, deliveryMetricsResponseItemsInner.category) &&
         Objects.equals(definition, deliveryMetricsResponseItemsInner.definition) &&
-        Objects.equals(displayName, deliveryMetricsResponseItemsInner.displayName);
+        Objects.equals(displayName, deliveryMetricsResponseItemsInner.displayName) &&
+        Objects.equals(name, deliveryMetricsResponseItemsInner.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, category, definition, displayName);
+    return Objects.hash(category, definition, displayName, name);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -155,10 +155,10 @@ public class DeliveryMetricsResponseItemsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class DeliveryMetricsResponseItemsInner {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    category: ").append(toIndentedString(category)).append("\n");
     sb.append("    definition: ").append(toIndentedString(definition)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

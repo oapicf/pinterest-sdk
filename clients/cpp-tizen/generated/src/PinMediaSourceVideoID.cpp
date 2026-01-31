@@ -23,27 +23,18 @@ PinMediaSourceVideoID::~PinMediaSourceVideoID()
 void
 PinMediaSourceVideoID::__init()
 {
-	//source_type = std::string();
-	//cover_image_url = std::string();
-	//cover_image_content_type = std::string();
+	//cover_image_content_type = null;
 	//cover_image_data = std::string();
-	//media_id = std::string();
+	//cover_image_key_frame_time = int(0);
+	//cover_image_url = std::string();
 	//is_standard = bool(false);
+	//media_id = std::string();
+	//source_type = std::string();
 }
 
 void
 PinMediaSourceVideoID::__cleanup()
 {
-	//if(source_type != NULL) {
-	//
-	//delete source_type;
-	//source_type = NULL;
-	//}
-	//if(cover_image_url != NULL) {
-	//
-	//delete cover_image_url;
-	//cover_image_url = NULL;
-	//}
 	//if(cover_image_content_type != NULL) {
 	//
 	//delete cover_image_content_type;
@@ -54,15 +45,30 @@ PinMediaSourceVideoID::__cleanup()
 	//delete cover_image_data;
 	//cover_image_data = NULL;
 	//}
-	//if(media_id != NULL) {
+	//if(cover_image_key_frame_time != NULL) {
 	//
-	//delete media_id;
-	//media_id = NULL;
+	//delete cover_image_key_frame_time;
+	//cover_image_key_frame_time = NULL;
+	//}
+	//if(cover_image_url != NULL) {
+	//
+	//delete cover_image_url;
+	//cover_image_url = NULL;
 	//}
 	//if(is_standard != NULL) {
 	//
 	//delete is_standard;
 	//is_standard = NULL;
+	//}
+	//if(media_id != NULL) {
+	//
+	//delete media_id;
+	//media_id = NULL;
+	//}
+	//if(source_type != NULL) {
+	//
+	//delete source_type;
+	//source_type = NULL;
 	//}
 	//
 }
@@ -72,13 +78,38 @@ PinMediaSourceVideoID::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *source_typeKey = "source_type";
-	node = json_object_get_member(pJsonObject, source_typeKey);
+	const gchar *cover_image_content_typeKey = "cover_image_content_type";
+	node = json_object_get_member(pJsonObject, cover_image_content_typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("ContentType")) {
+			jsonToValue(&cover_image_content_type, node, "ContentType", "ContentType");
+		} else {
+			
+			ContentType* obj = static_cast<ContentType*> (&cover_image_content_type);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *cover_image_dataKey = "cover_image_data";
+	node = json_object_get_member(pJsonObject, cover_image_dataKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&source_type, node, "std::string", "");
+			jsonToValue(&cover_image_data, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *cover_image_key_frame_timeKey = "cover_image_key_frame_time";
+	node = json_object_get_member(pJsonObject, cover_image_key_frame_timeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&cover_image_key_frame_time, node, "int", "");
 		} else {
 			
 		}
@@ -94,24 +125,13 @@ PinMediaSourceVideoID::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *cover_image_content_typeKey = "cover_image_content_type";
-	node = json_object_get_member(pJsonObject, cover_image_content_typeKey);
+	const gchar *is_standardKey = "is_standard";
+	node = json_object_get_member(pJsonObject, is_standardKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&cover_image_content_type, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *cover_image_dataKey = "cover_image_data";
-	node = json_object_get_member(pJsonObject, cover_image_dataKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&cover_image_data, node, "std::string", "");
+		if (isprimitive("bool")) {
+			jsonToValue(&is_standard, node, "bool", "");
 		} else {
 			
 		}
@@ -127,13 +147,13 @@ PinMediaSourceVideoID::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *is_standardKey = "is_standard";
-	node = json_object_get_member(pJsonObject, is_standardKey);
+	const gchar *source_typeKey = "source_type";
+	node = json_object_get_member(pJsonObject, source_typeKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("bool")) {
-			jsonToValue(&is_standard, node, "bool", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&source_type, node, "std::string", "");
 		} else {
 			
 		}
@@ -150,29 +170,16 @@ PinMediaSourceVideoID::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getSourceType();
-		node = converttoJson(&obj, "std::string", "");
+	if (isprimitive("ContentType")) {
+		ContentType obj = getCoverImageContentType();
+		node = converttoJson(&obj, "ContentType", "");
 	}
 	else {
 		
-	}
-	const gchar *source_typeKey = "source_type";
-	json_object_set_member(pJsonObject, source_typeKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getCoverImageUrl();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *cover_image_urlKey = "cover_image_url";
-	json_object_set_member(pJsonObject, cover_image_urlKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getCoverImageContentType();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
+		ContentType obj = static_cast<ContentType> (getCoverImageContentType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *cover_image_content_typeKey = "cover_image_content_type";
@@ -186,15 +193,24 @@ PinMediaSourceVideoID::toJson()
 	}
 	const gchar *cover_image_dataKey = "cover_image_data";
 	json_object_set_member(pJsonObject, cover_image_dataKey, node);
+	if (isprimitive("int")) {
+		int obj = getCoverImageKeyFrameTime();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *cover_image_key_frame_timeKey = "cover_image_key_frame_time";
+	json_object_set_member(pJsonObject, cover_image_key_frame_timeKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getMediaId();
+		std::string obj = getCoverImageUrl();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *media_idKey = "media_id";
-	json_object_set_member(pJsonObject, media_idKey, node);
+	const gchar *cover_image_urlKey = "cover_image_url";
+	json_object_set_member(pJsonObject, cover_image_urlKey, node);
 	if (isprimitive("bool")) {
 		bool obj = getIsStandard();
 		node = converttoJson(&obj, "bool", "");
@@ -204,6 +220,24 @@ PinMediaSourceVideoID::toJson()
 	}
 	const gchar *is_standardKey = "is_standard";
 	json_object_set_member(pJsonObject, is_standardKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getMediaId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *media_idKey = "media_id";
+	json_object_set_member(pJsonObject, media_idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getSourceType();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *source_typeKey = "source_type";
+	json_object_set_member(pJsonObject, source_typeKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -212,38 +246,14 @@ PinMediaSourceVideoID::toJson()
 	return ret;
 }
 
-std::string
-PinMediaSourceVideoID::getSourceType()
-{
-	return source_type;
-}
-
-void
-PinMediaSourceVideoID::setSourceType(std::string  source_type)
-{
-	this->source_type = source_type;
-}
-
-std::string
-PinMediaSourceVideoID::getCoverImageUrl()
-{
-	return cover_image_url;
-}
-
-void
-PinMediaSourceVideoID::setCoverImageUrl(std::string  cover_image_url)
-{
-	this->cover_image_url = cover_image_url;
-}
-
-std::string
+ContentType
 PinMediaSourceVideoID::getCoverImageContentType()
 {
 	return cover_image_content_type;
 }
 
 void
-PinMediaSourceVideoID::setCoverImageContentType(std::string  cover_image_content_type)
+PinMediaSourceVideoID::setCoverImageContentType(ContentType  cover_image_content_type)
 {
 	this->cover_image_content_type = cover_image_content_type;
 }
@@ -260,16 +270,28 @@ PinMediaSourceVideoID::setCoverImageData(std::string  cover_image_data)
 	this->cover_image_data = cover_image_data;
 }
 
-std::string
-PinMediaSourceVideoID::getMediaId()
+int
+PinMediaSourceVideoID::getCoverImageKeyFrameTime()
 {
-	return media_id;
+	return cover_image_key_frame_time;
 }
 
 void
-PinMediaSourceVideoID::setMediaId(std::string  media_id)
+PinMediaSourceVideoID::setCoverImageKeyFrameTime(int  cover_image_key_frame_time)
 {
-	this->media_id = media_id;
+	this->cover_image_key_frame_time = cover_image_key_frame_time;
+}
+
+std::string
+PinMediaSourceVideoID::getCoverImageUrl()
+{
+	return cover_image_url;
+}
+
+void
+PinMediaSourceVideoID::setCoverImageUrl(std::string  cover_image_url)
+{
+	this->cover_image_url = cover_image_url;
 }
 
 bool
@@ -282,6 +304,30 @@ void
 PinMediaSourceVideoID::setIsStandard(bool  is_standard)
 {
 	this->is_standard = is_standard;
+}
+
+std::string
+PinMediaSourceVideoID::getMediaId()
+{
+	return media_id;
+}
+
+void
+PinMediaSourceVideoID::setMediaId(std::string  media_id)
+{
+	this->media_id = media_id;
+}
+
+std::string
+PinMediaSourceVideoID::getSourceType()
+{
+	return source_type;
+}
+
+void
+PinMediaSourceVideoID::setSourceType(std::string  source_type)
+{
+	this->source_type = source_type;
 }
 
 

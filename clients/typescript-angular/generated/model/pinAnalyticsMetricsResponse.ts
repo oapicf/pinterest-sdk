@@ -12,13 +12,13 @@ import { PinAnalyticsMetricsResponseDailyMetricsInner } from './pinAnalyticsMetr
 
 export interface PinAnalyticsMetricsResponse { 
     /**
-     * The lifetime metric name and value.
-     */
-    lifetime_metrics?: { [key: string]: number; };
-    /**
      * Array with the requested daily metric records
      */
     daily_metrics?: Array<PinAnalyticsMetricsResponseDailyMetricsInner>;
+    /**
+     * The lifetime metric name and value.
+     */
+    lifetime_metrics?: { [key: string]: number; };
     /**
      * The metric name and value over the requested period for each requested metric
      */

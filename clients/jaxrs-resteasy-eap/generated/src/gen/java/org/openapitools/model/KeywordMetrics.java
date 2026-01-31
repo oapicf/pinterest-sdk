@@ -6,29 +6,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.math.BigDecimal;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Keyword metrics JSON")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Keyword metrics JSON")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class KeywordMetrics   {
   
-  private BigDecimal avgCpcInMicroCurrency;
   private String keywordQueryVolume;
-
-  /**
-   * Average cost per click
-   **/
-  
-  @ApiModelProperty(example = "100000", value = "Average cost per click")
-  @JsonProperty("avg_cpc_in_micro_currency")
-  public BigDecimal getAvgCpcInMicroCurrency() {
-    return avgCpcInMicroCurrency;
-  }
-  public void setAvgCpcInMicroCurrency(BigDecimal avgCpcInMicroCurrency) {
-    this.avgCpcInMicroCurrency = avgCpcInMicroCurrency;
-  }
 
   /**
    * Keyword&#39;s search frequency. This value is based on keyword frequency in pepsi client response
@@ -53,13 +38,12 @@ public class KeywordMetrics   {
       return false;
     }
     KeywordMetrics keywordMetrics = (KeywordMetrics) o;
-    return Objects.equals(this.avgCpcInMicroCurrency, keywordMetrics.avgCpcInMicroCurrency) &&
-        Objects.equals(this.keywordQueryVolume, keywordMetrics.keywordQueryVolume);
+    return Objects.equals(this.keywordQueryVolume, keywordMetrics.keywordQueryVolume);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(avgCpcInMicroCurrency, keywordQueryVolume);
+    return Objects.hash(keywordQueryVolume);
   }
 
   @Override
@@ -67,7 +51,6 @@ public class KeywordMetrics   {
     StringBuilder sb = new StringBuilder();
     sb.append("class KeywordMetrics {\n");
     
-    sb.append("    avgCpcInMicroCurrency: ").append(toIndentedString(avgCpcInMicroCurrency)).append("\n");
     sb.append("    keywordQueryVolume: ").append(toIndentedString(keywordQueryVolume)).append("\n");
     sb.append("}");
     return sb.toString();

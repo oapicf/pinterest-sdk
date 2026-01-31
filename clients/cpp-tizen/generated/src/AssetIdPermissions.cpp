@@ -23,15 +23,20 @@ AssetIdPermissions::~AssetIdPermissions()
 void
 AssetIdPermissions::__init()
 {
+	//asset_group_info = new AssetGroupBinding();
 	//asset_id = std::string();
 	//asset_type = std::string();
 	//new std::list()std::list> permissions;
-	//asset_group_info = new AssetGroupBinding();
 }
 
 void
 AssetIdPermissions::__cleanup()
 {
+	//if(asset_group_info != NULL) {
+	//
+	//delete asset_group_info;
+	//asset_group_info = NULL;
+	//}
 	//if(asset_id != NULL) {
 	//
 	//delete asset_id;
@@ -47,11 +52,6 @@ AssetIdPermissions::__cleanup()
 	//delete permissions;
 	//permissions = NULL;
 	//}
-	//if(asset_group_info != NULL) {
-	//
-	//delete asset_group_info;
-	//asset_group_info = NULL;
-	//}
 	//
 }
 
@@ -60,6 +60,20 @@ AssetIdPermissions::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *asset_group_infoKey = "asset_group_info";
+	node = json_object_get_member(pJsonObject, asset_group_infoKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("AssetGroupBinding")) {
+			jsonToValue(&asset_group_info, node, "AssetGroupBinding", "AssetGroupBinding");
+		} else {
+			
+			AssetGroupBinding* obj = static_cast<AssetGroupBinding*> (&asset_group_info);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 	const gchar *asset_idKey = "asset_id";
 	node = json_object_get_member(pJsonObject, asset_idKey);
 	if (node !=NULL) {
@@ -104,20 +118,6 @@ AssetIdPermissions::fromJson(char* jsonStr)
 		}
 		
 	}
-	const gchar *asset_group_infoKey = "asset_group_info";
-	node = json_object_get_member(pJsonObject, asset_group_infoKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("AssetGroupBinding")) {
-			jsonToValue(&asset_group_info, node, "AssetGroupBinding", "AssetGroupBinding");
-		} else {
-			
-			AssetGroupBinding* obj = static_cast<AssetGroupBinding*> (&asset_group_info);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
 }
 
 AssetIdPermissions::AssetIdPermissions(char* json)
@@ -130,6 +130,20 @@ AssetIdPermissions::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("AssetGroupBinding")) {
+		AssetGroupBinding obj = getAssetGroupInfo();
+		node = converttoJson(&obj, "AssetGroupBinding", "");
+	}
+	else {
+		
+		AssetGroupBinding obj = static_cast<AssetGroupBinding> (getAssetGroupInfo());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *asset_group_infoKey = "asset_group_info";
+	json_object_set_member(pJsonObject, asset_group_infoKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getAssetId();
 		node = converttoJson(&obj, "std::string", "");
@@ -163,26 +177,24 @@ AssetIdPermissions::toJson()
 	
 	const gchar *permissionsKey = "permissions";
 	json_object_set_member(pJsonObject, permissionsKey, node);
-	if (isprimitive("AssetGroupBinding")) {
-		AssetGroupBinding obj = getAssetGroupInfo();
-		node = converttoJson(&obj, "AssetGroupBinding", "");
-	}
-	else {
-		
-		AssetGroupBinding obj = static_cast<AssetGroupBinding> (getAssetGroupInfo());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *asset_group_infoKey = "asset_group_info";
-	json_object_set_member(pJsonObject, asset_group_infoKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+AssetGroupBinding
+AssetIdPermissions::getAssetGroupInfo()
+{
+	return asset_group_info;
+}
+
+void
+AssetIdPermissions::setAssetGroupInfo(AssetGroupBinding  asset_group_info)
+{
+	this->asset_group_info = asset_group_info;
 }
 
 std::string
@@ -219,18 +231,6 @@ void
 AssetIdPermissions::setPermissions(std::list <std::string> permissions)
 {
 	this->permissions = permissions;
-}
-
-AssetGroupBinding
-AssetIdPermissions::getAssetGroupInfo()
-{
-	return asset_group_info;
-}
-
-void
-AssetIdPermissions::setAssetGroupInfo(AssetGroupBinding  asset_group_info)
-{
-	this->asset_group_info = asset_group_info;
 }
 
 

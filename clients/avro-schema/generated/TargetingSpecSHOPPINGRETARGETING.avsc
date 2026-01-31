@@ -2,8 +2,14 @@
   "namespace": "model",
   "type": "record",
   "doc": "",
-  "name": "TargetingSpecSHOPPINGRETARGETING",
+  "name": "TargetingSpecShoppingRetargeting",
   "fields": [
+    {
+      "name": "exclusion_window",
+      "type": ["null", "int"],
+      "doc": "Number of days ago to stop lookback timeframe for dynamic retargeting",
+      "default": null
+    },
     {
       "name": "lookback_window",
       "type": ["null", "int"],
@@ -17,12 +23,6 @@
         "items": "int"
       }],
       "doc": "Event types to target for dynamic retargeting",
-      "default": null
-    },
-    {
-      "name": "exclusion_window",
-      "type": ["null", "int"],
-      "doc": "Number of days ago to stop lookback timeframe for dynamic retargeting",
       "default": null
     }
   ]

@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server PinMediaSourcePinURL"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a PinMediaSourcePinURL"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  PinMediaSourcePinURL {
+    title = PinMediaSourcePinURL
+    description = PinMediaSourcePinURL
+    derivedFrom = Root
+    properties {
+        is_affiliate_link {
+          type =  boolean
+          description = "This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products."
+          optional = false
+        }
+        source_type {
+          type =  string
+          description = ""
+          enum = ["pin_url"]
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  PinMediaSourcePinURL {
+    title = PinMediaSourcePinURL
+    description = PinMediaSourcePinURL
+    implements = openapi_server.resourceTypes.PinMediaSourcePinURL
+
+  }
+}

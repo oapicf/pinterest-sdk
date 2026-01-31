@@ -23,31 +23,36 @@ CatalogsRetailProductMetadata::~CatalogsRetailProductMetadata()
 void
 CatalogsRetailProductMetadata::__init()
 {
-	//item_id = std::string();
-	//item_group_id = std::string();
 	//availability = new NonNullableProductAvailabilityType();
+	//currency = new NonNullableCatalogsCurrency();
+	//item_group_id = std::string();
+	//item_id = std::string();
 	//price = double(0);
 	//sale_price = double(0);
-	//currency = new NonNullableCatalogsCurrency();
 }
 
 void
 CatalogsRetailProductMetadata::__cleanup()
 {
-	//if(item_id != NULL) {
+	//if(availability != NULL) {
 	//
-	//delete item_id;
-	//item_id = NULL;
+	//delete availability;
+	//availability = NULL;
+	//}
+	//if(currency != NULL) {
+	//
+	//delete currency;
+	//currency = NULL;
 	//}
 	//if(item_group_id != NULL) {
 	//
 	//delete item_group_id;
 	//item_group_id = NULL;
 	//}
-	//if(availability != NULL) {
+	//if(item_id != NULL) {
 	//
-	//delete availability;
-	//availability = NULL;
+	//delete item_id;
+	//item_id = NULL;
 	//}
 	//if(price != NULL) {
 	//
@@ -59,11 +64,6 @@ CatalogsRetailProductMetadata::__cleanup()
 	//delete sale_price;
 	//sale_price = NULL;
 	//}
-	//if(currency != NULL) {
-	//
-	//delete currency;
-	//currency = NULL;
-	//}
 	//
 }
 
@@ -72,14 +72,31 @@ CatalogsRetailProductMetadata::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *item_idKey = "item_id";
-	node = json_object_get_member(pJsonObject, item_idKey);
+	const gchar *availabilityKey = "availability";
+	node = json_object_get_member(pJsonObject, availabilityKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&item_id, node, "std::string", "");
+		if (isprimitive("NonNullableProductAvailabilityType")) {
+			jsonToValue(&availability, node, "NonNullableProductAvailabilityType", "NonNullableProductAvailabilityType");
 		} else {
+			
+			NonNullableProductAvailabilityType* obj = static_cast<NonNullableProductAvailabilityType*> (&availability);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *currencyKey = "currency";
+	node = json_object_get_member(pJsonObject, currencyKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("NonNullableCatalogsCurrency")) {
+			jsonToValue(&currency, node, "NonNullableCatalogsCurrency", "NonNullableCatalogsCurrency");
+		} else {
+			
+			NonNullableCatalogsCurrency* obj = static_cast<NonNullableCatalogsCurrency*> (&currency);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -94,17 +111,14 @@ CatalogsRetailProductMetadata::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *availabilityKey = "availability";
-	node = json_object_get_member(pJsonObject, availabilityKey);
+	const gchar *item_idKey = "item_id";
+	node = json_object_get_member(pJsonObject, item_idKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("NonNullableProductAvailabilityType")) {
-			jsonToValue(&availability, node, "NonNullableProductAvailabilityType", "NonNullableProductAvailabilityType");
+		if (isprimitive("std::string")) {
+			jsonToValue(&item_id, node, "std::string", "");
 		} else {
-			
-			NonNullableProductAvailabilityType* obj = static_cast<NonNullableProductAvailabilityType*> (&availability);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -136,20 +150,6 @@ CatalogsRetailProductMetadata::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *currencyKey = "currency";
-	node = json_object_get_member(pJsonObject, currencyKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("NonNullableCatalogsCurrency")) {
-			jsonToValue(&currency, node, "NonNullableCatalogsCurrency", "NonNullableCatalogsCurrency");
-		} else {
-			
-			NonNullableCatalogsCurrency* obj = static_cast<NonNullableCatalogsCurrency*> (&currency);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
 }
 
 CatalogsRetailProductMetadata::CatalogsRetailProductMetadata(char* json)
@@ -162,24 +162,6 @@ CatalogsRetailProductMetadata::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getItemId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *item_idKey = "item_id";
-	json_object_set_member(pJsonObject, item_idKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getItemGroupId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *item_group_idKey = "item_group_id";
-	json_object_set_member(pJsonObject, item_group_idKey, node);
 	if (isprimitive("NonNullableProductAvailabilityType")) {
 		NonNullableProductAvailabilityType obj = getAvailability();
 		node = converttoJson(&obj, "NonNullableProductAvailabilityType", "");
@@ -194,6 +176,38 @@ CatalogsRetailProductMetadata::toJson()
 	}
 	const gchar *availabilityKey = "availability";
 	json_object_set_member(pJsonObject, availabilityKey, node);
+	if (isprimitive("NonNullableCatalogsCurrency")) {
+		NonNullableCatalogsCurrency obj = getCurrency();
+		node = converttoJson(&obj, "NonNullableCatalogsCurrency", "");
+	}
+	else {
+		
+		NonNullableCatalogsCurrency obj = static_cast<NonNullableCatalogsCurrency> (getCurrency());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *currencyKey = "currency";
+	json_object_set_member(pJsonObject, currencyKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getItemGroupId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *item_group_idKey = "item_group_id";
+	json_object_set_member(pJsonObject, item_group_idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getItemId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *item_idKey = "item_id";
+	json_object_set_member(pJsonObject, item_idKey, node);
 	if (isprimitive("long long")) {
 		long long obj = getPrice();
 		node = converttoJson(&obj, "long long", "");
@@ -222,20 +236,6 @@ CatalogsRetailProductMetadata::toJson()
 	}
 	const gchar *sale_priceKey = "sale_price";
 	json_object_set_member(pJsonObject, sale_priceKey, node);
-	if (isprimitive("NonNullableCatalogsCurrency")) {
-		NonNullableCatalogsCurrency obj = getCurrency();
-		node = converttoJson(&obj, "NonNullableCatalogsCurrency", "");
-	}
-	else {
-		
-		NonNullableCatalogsCurrency obj = static_cast<NonNullableCatalogsCurrency> (getCurrency());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *currencyKey = "currency";
-	json_object_set_member(pJsonObject, currencyKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -244,16 +244,28 @@ CatalogsRetailProductMetadata::toJson()
 	return ret;
 }
 
-std::string
-CatalogsRetailProductMetadata::getItemId()
+NonNullableProductAvailabilityType
+CatalogsRetailProductMetadata::getAvailability()
 {
-	return item_id;
+	return availability;
 }
 
 void
-CatalogsRetailProductMetadata::setItemId(std::string  item_id)
+CatalogsRetailProductMetadata::setAvailability(NonNullableProductAvailabilityType  availability)
 {
-	this->item_id = item_id;
+	this->availability = availability;
+}
+
+NonNullableCatalogsCurrency
+CatalogsRetailProductMetadata::getCurrency()
+{
+	return currency;
+}
+
+void
+CatalogsRetailProductMetadata::setCurrency(NonNullableCatalogsCurrency  currency)
+{
+	this->currency = currency;
 }
 
 std::string
@@ -268,16 +280,16 @@ CatalogsRetailProductMetadata::setItemGroupId(std::string  item_group_id)
 	this->item_group_id = item_group_id;
 }
 
-NonNullableProductAvailabilityType
-CatalogsRetailProductMetadata::getAvailability()
+std::string
+CatalogsRetailProductMetadata::getItemId()
 {
-	return availability;
+	return item_id;
 }
 
 void
-CatalogsRetailProductMetadata::setAvailability(NonNullableProductAvailabilityType  availability)
+CatalogsRetailProductMetadata::setItemId(std::string  item_id)
 {
-	this->availability = availability;
+	this->item_id = item_id;
 }
 
 long long
@@ -302,18 +314,6 @@ void
 CatalogsRetailProductMetadata::setSalePrice(long long  sale_price)
 {
 	this->sale_price = sale_price;
-}
-
-NonNullableCatalogsCurrency
-CatalogsRetailProductMetadata::getCurrency()
-{
-	return currency;
-}
-
-void
-CatalogsRetailProductMetadata::setCurrency(NonNullableCatalogsCurrency  currency)
-{
-	this->currency = currency;
 }
 
 

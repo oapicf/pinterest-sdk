@@ -3,21 +3,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **String** |  | 
 **Description** | **String** |  | [optional] 
-**IsFeatured** | **Boolean** | boolean indicator of whether the product group is being featured or not | [optional] [default to $false]
-**Filters** | [**CatalogsProductGroupFiltersRequest**](CatalogsProductGroupFiltersRequest.md) |  | 
 **FeedId** | **String** | Catalog Feed id pertaining to the catalog product group. | 
+**Filters** | [**CatalogsProductGroupFiltersRequest**](CatalogsProductGroupFiltersRequest.md) |  | 
+**IsFeatured** | **Boolean** | boolean indicator of whether the product group is being featured or not | [optional] [default to $false]
+**Name** | **String** |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsProductGroupCreateRequest = Initialize-PSOpenAPIToolsCatalogsProductGroupCreateRequest  -Name null `
- -Description null `
- -IsFeatured null `
+$CatalogsProductGroupCreateRequest = Initialize-PSOpenAPIToolsCatalogsProductGroupCreateRequest  -Description null `
+ -FeedId 2680059592705 `
  -Filters null `
- -FeedId 2680059592705
+ -IsFeatured null `
+ -Name null
 ```
 
 - Convert the resource to JSON

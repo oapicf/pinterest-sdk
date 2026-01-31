@@ -8,8 +8,8 @@ The class is defined in **[SsioInsertionOrdersStatusGetByAdAccount200Response.ja
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;SSIOInsertionOrderStatus&gt;`](SSIOInsertionOrderStatus.md) | Insertion orders status by ad acount id | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;SSIOInsertionOrderStatus&gt;`](SSIOInsertionOrderStatus.md) | Insertion orders status by ad acount id | 
 
 
 

@@ -21,15 +21,15 @@ void main() {
       // TODO
     });
 
-    // URL to download the report
-    // String url
-    test('to test the property `url`', () async {
-      // TODO
-    });
-
     // Size of the report in bytes
     // num size
     test('to test the property `size`', () async {
+      // TODO
+    });
+
+    // URL to download the report
+    // String url
+    test('to test the property `url`', () async {
       // TODO
     });
 

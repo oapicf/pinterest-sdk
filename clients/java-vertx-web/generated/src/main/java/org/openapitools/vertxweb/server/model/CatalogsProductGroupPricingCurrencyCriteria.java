@@ -10,6 +10,8 @@ import org.openapitools.vertxweb.server.model.NonNullableCatalogsCurrency;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsProductGroupPricingCurrencyCriteria   {
   
+  private NonNullableCatalogsCurrency currency;
+  private Boolean negated = false;
 
 
   public enum OperatorEnum {
@@ -33,35 +35,15 @@ public class CatalogsProductGroupPricingCurrencyCriteria   {
 
   private OperatorEnum operator;
   private BigDecimal value;
-  private NonNullableCatalogsCurrency currency;
-  private Boolean negated = false;
 
   public CatalogsProductGroupPricingCurrencyCriteria () {
 
   }
 
-  public CatalogsProductGroupPricingCurrencyCriteria (OperatorEnum operator, BigDecimal value, NonNullableCatalogsCurrency currency, Boolean negated) {
-    this.operator = operator;
-    this.value = value;
+  public CatalogsProductGroupPricingCurrencyCriteria (NonNullableCatalogsCurrency currency, Boolean negated, OperatorEnum operator, BigDecimal value) {
     this.currency = currency;
     this.negated = negated;
-  }
-
-    
-  @JsonProperty("operator")
-  public OperatorEnum getOperator() {
-    return operator;
-  }
-  public void setOperator(OperatorEnum operator) {
     this.operator = operator;
-  }
-
-    
-  @JsonProperty("value")
-  public BigDecimal getValue() {
-    return value;
-  }
-  public void setValue(BigDecimal value) {
     this.value = value;
   }
 
@@ -83,6 +65,24 @@ public class CatalogsProductGroupPricingCurrencyCriteria   {
     this.negated = negated;
   }
 
+    
+  @JsonProperty("operator")
+  public OperatorEnum getOperator() {
+    return operator;
+  }
+  public void setOperator(OperatorEnum operator) {
+    this.operator = operator;
+  }
+
+    
+  @JsonProperty("value")
+  public BigDecimal getValue() {
+    return value;
+  }
+  public void setValue(BigDecimal value) {
+    this.value = value;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -93,15 +93,15 @@ public class CatalogsProductGroupPricingCurrencyCriteria   {
       return false;
     }
     CatalogsProductGroupPricingCurrencyCriteria catalogsProductGroupPricingCurrencyCriteria = (CatalogsProductGroupPricingCurrencyCriteria) o;
-    return Objects.equals(operator, catalogsProductGroupPricingCurrencyCriteria.operator) &&
-        Objects.equals(value, catalogsProductGroupPricingCurrencyCriteria.value) &&
-        Objects.equals(currency, catalogsProductGroupPricingCurrencyCriteria.currency) &&
-        Objects.equals(negated, catalogsProductGroupPricingCurrencyCriteria.negated);
+    return Objects.equals(currency, catalogsProductGroupPricingCurrencyCriteria.currency) &&
+        Objects.equals(negated, catalogsProductGroupPricingCurrencyCriteria.negated) &&
+        Objects.equals(operator, catalogsProductGroupPricingCurrencyCriteria.operator) &&
+        Objects.equals(value, catalogsProductGroupPricingCurrencyCriteria.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(operator, value, currency, negated);
+    return Objects.hash(currency, negated, operator, value);
   }
 
   @Override
@@ -109,10 +109,10 @@ public class CatalogsProductGroupPricingCurrencyCriteria   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupPricingCurrencyCriteria {\n");
     
-    sb.append("    operator: ").append(toIndentedString(operator)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    operator: ").append(toIndentedString(operator)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }

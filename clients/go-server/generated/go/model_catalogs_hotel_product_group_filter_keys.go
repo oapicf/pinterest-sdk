@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -22,17 +22,19 @@ type CatalogsHotelProductGroupFilterKeys struct {
 
 	BRAND CatalogsProductGroupMultipleStringCriteria `json:"BRAND"`
 
-	CUSTOMLABEL0 CatalogsProductGroupMultipleStringCriteria `json:"CUSTOM_LABEL_0"`
+	CUSTOMLABEL0 CatalogsProductGroupFilterOperatorTypeCriteria `json:"CUSTOM_LABEL_0"`
 
-	CUSTOMLABEL1 CatalogsProductGroupMultipleStringCriteria `json:"CUSTOM_LABEL_1"`
+	CUSTOMLABEL1 CatalogsProductGroupFilterOperatorTypeCriteria `json:"CUSTOM_LABEL_1"`
 
-	CUSTOMLABEL2 CatalogsProductGroupMultipleStringCriteria `json:"CUSTOM_LABEL_2"`
+	CUSTOMLABEL2 CatalogsProductGroupFilterOperatorTypeCriteria `json:"CUSTOM_LABEL_2"`
 
-	CUSTOMLABEL3 CatalogsProductGroupMultipleStringCriteria `json:"CUSTOM_LABEL_3"`
+	CUSTOMLABEL3 CatalogsProductGroupFilterOperatorTypeCriteria `json:"CUSTOM_LABEL_3"`
 
-	CUSTOMLABEL4 CatalogsProductGroupMultipleStringCriteria `json:"CUSTOM_LABEL_4"`
+	CUSTOMLABEL4 CatalogsProductGroupFilterOperatorTypeCriteria `json:"CUSTOM_LABEL_4"`
 
 	COUNTRY CatalogsProductGroupMultipleCountriesCriteria `json:"COUNTRY"`
+
+	TITLE_KEYWORDS CatalogsProductGroupMultipleStringCriteria `json:"TITLE_KEYWORDS"`
 }
 
 // AssertCatalogsHotelProductGroupFilterKeysRequired checks if the required fields are not zero-ed
@@ -47,6 +49,7 @@ func AssertCatalogsHotelProductGroupFilterKeysRequired(obj CatalogsHotelProductG
 		"CUSTOM_LABEL_3": obj.CUSTOMLABEL3,
 		"CUSTOM_LABEL_4": obj.CUSTOMLABEL4,
 		"COUNTRY": obj.COUNTRY,
+		"TITLE_KEYWORDS": obj.TITLE_KEYWORDS,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

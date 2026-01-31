@@ -13,22 +13,22 @@
  * Integration record
  */
 export interface IntegrationRecord { 
-    id?: string;
-    external_business_id?: string | null;
-    connected_merchant_id?: string | null;
-    readonly connected_user_id?: string;
+    additional_id_1?: string | null;
     readonly connected_advertiser_id?: string | null;
     connected_lba_id?: string | null;
+    connected_merchant_id?: string | null;
     connected_tag_id?: string | null;
+    readonly connected_user_id?: string;
+    created_time?: number;
+    external_business_id?: string | null;
+    id?: string;
     partner_access_token?: string | null;
-    partner_refresh_token?: string | null;
-    partner_primary_email?: string | null;
     partner_access_token_expiry?: number | null;
+    partner_metadata?: string | null;
+    partner_primary_email?: string | null;
+    partner_refresh_token?: string | null;
     partner_refresh_token_expiry?: number | null;
     scopes?: string | null;
-    partner_metadata?: string | null;
-    additional_id_1?: string | null;
-    created_time?: number;
     updated_time?: number;
 }
 

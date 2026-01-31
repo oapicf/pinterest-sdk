@@ -14,21 +14,21 @@ import org.openapitools.models.Country
 
 /**
  * Request object for creating a catalog based product group.
+ * @param catalogUnderscoreid Catalog id pertaining to the creative assets product group.
  * @param catalogUnderscoretype 
- * @param name 
+ * @param country 
  * @param description 
  * @param filters 
- * @param catalogUnderscoreid Catalog id pertaining to the creative assets product group.
- * @param country 
  * @param locale 
+ * @param name 
  */
-case class CatalogsVerticalProductGroupCreateRequest(catalogUnderscoretype: String,
-                name: String,
+case class CatalogsVerticalProductGroupCreateRequest(catalogUnderscoreid: String,
+                catalogUnderscoretype: String,
+                country: Option[Country],
                 description: Option[String],
                 filters: CatalogsCreativeAssetsProductGroupFilters,
-                catalogUnderscoreid: String,
-                country: Country,
-                locale: CatalogsLocale
+                locale: Option[CatalogsLocale],
+                name: String
                 )
 
 object CatalogsVerticalProductGroupCreateRequest {

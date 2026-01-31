@@ -8,9 +8,9 @@ Name | Type
 ------------ | -------------
 `addr1` | string
 `city` | string
-`region` | string
 `country` | string
 `postalCode` | string
+`region` | string
 
 ## Example
 
@@ -21,9 +21,9 @@ import type { CatalogsHotelAddress } from ''
 const example = {
   "addr1": null,
   "city": null,
-  "region": null,
   "country": null,
   "postalCode": null,
+  "region": null,
 } satisfies CatalogsHotelAddress
 
 console.log(example)

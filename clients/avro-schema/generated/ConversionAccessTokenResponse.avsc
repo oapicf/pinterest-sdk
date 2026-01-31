@@ -1,0 +1,20 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "A successful conversion access token response.",
+  "name": "ConversionAccessTokenResponse",
+  "fields": [
+    {
+      "name": "access_token",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "token_type",
+      "type": ["string", "null"],
+      "doc": "",
+      "default": "conversion"
+    }
+  ]
+
+}

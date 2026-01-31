@@ -16,13 +16,13 @@ void main() {
   // final instance = UserAccountFollowedInterests200Response();
 
   group('test UserAccountFollowedInterests200Response', () {
-    // List<Interest> items (default value: const [])
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // List<Interest> items (default value: const [])
+    test('to test the property `items`', () async {
       // TODO
     });
 

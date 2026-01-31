@@ -7,9 +7,9 @@
 
 (def ssio-insertion-order-status-data
   {
+   (ds/opt :creation_time) string?
    (ds/opt :pin_order_id) string?
    (ds/opt :status) string?
-   (ds/opt :creation_time) string?
    })
 
 (def ssio-insertion-order-status-spec

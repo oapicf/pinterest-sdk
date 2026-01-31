@@ -3,21 +3,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ItemType** | **String** |  | [optional] 
-**Title** | **String** |  | [optional] 
 **Description** | **String** |  | [optional] 
+**Images** | [**ImageSize**](ImageSize.md) |  | [optional] 
+**ItemType** | **String** |  | [optional] 
 **Link** | **String** |  | [optional] 
-**Images** | [**ImageMetadataImages**](ImageMetadataImages.md) |  | [optional] 
+**Title** | **String** |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$ImageMetadata = Initialize-PSOpenAPIToolsImageMetadata  -ItemType null `
- -Title null `
- -Description null `
+$ImageMetadata = Initialize-PSOpenAPIToolsImageMetadata  -Description null `
+ -Images null `
+ -ItemType null `
  -Link null `
- -Images null
+ -Title null
 ```
 
 - Convert the resource to JSON

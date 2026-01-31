@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.ConversionTagResponse;
+import apimodels.ConversionTag;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,20 +13,20 @@ import javax.validation.Valid;
 /**
  * ConversionTagListResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class ConversionTagListResponse   {
   @JsonProperty("items")
   @Valid
 
-  private List<@Valid ConversionTagResponse> items = null;
+  private List<@Valid ConversionTag> items = null;
 
-  public ConversionTagListResponse items(List<@Valid ConversionTagResponse> items) {
+  public ConversionTagListResponse items(List<@Valid ConversionTag> items) {
     this.items = items;
     return this;
   }
 
-  public ConversionTagListResponse addItemsItem(ConversionTagResponse itemsItem) {
+  public ConversionTagListResponse addItemsItem(ConversionTag itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -38,11 +38,11 @@ public class ConversionTagListResponse   {
    * Get items
    * @return items
   **/
-  public List<@Valid ConversionTagResponse> getItems() {
+  public List<@Valid ConversionTag> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid ConversionTagResponse> items) {
+  public void setItems(List<@Valid ConversionTag> items) {
     this.items = items;
   }
 

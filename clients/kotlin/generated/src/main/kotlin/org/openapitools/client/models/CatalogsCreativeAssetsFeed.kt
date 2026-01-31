@@ -32,17 +32,17 @@ import com.squareup.moshi.JsonClass
  * @param createdAt 
  * @param id 
  * @param updatedAt 
- * @param name A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
- * @param format 
+ * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
  * @param catalogType 
  * @param credentials 
- * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
- * @param preferredProcessingSchedule 
- * @param status 
+ * @param defaultCountry 
  * @param defaultCurrency 
  * @param defaultLocale The locale used within a feed for product descriptions.
- * @param defaultCountry 
- * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
+ * @param format 
+ * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+ * @param name A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+ * @param preferredProcessingSchedule 
+ * @param status 
  */
 
 
@@ -57,12 +57,9 @@ data class CatalogsCreativeAssetsFeed (
     @Json(name = "updated_at")
     val updatedAt: java.time.OffsetDateTime,
 
-    /* A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. */
-    @Json(name = "name")
-    val name: kotlin.String?,
-
-    @Json(name = "format")
-    val format: CatalogsFormat,
+    /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. */
+    @Json(name = "catalog_id")
+    val catalogId: kotlin.String,
 
     @Json(name = "catalog_type")
     val catalogType: CatalogsType,
@@ -70,15 +67,8 @@ data class CatalogsCreativeAssetsFeed (
     @Json(name = "credentials")
     val credentials: CatalogsFeedCredentials?,
 
-    /* The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
-    @Json(name = "location")
-    val location: kotlin.String,
-
-    @Json(name = "preferred_processing_schedule")
-    val preferredProcessingSchedule: CatalogsFeedProcessingSchedule?,
-
-    @Json(name = "status")
-    val status: CatalogsStatus,
+    @Json(name = "default_country")
+    val defaultCountry: Country,
 
     @Json(name = "default_currency")
     val defaultCurrency: NullableCurrency?,
@@ -87,12 +77,22 @@ data class CatalogsCreativeAssetsFeed (
     @Json(name = "default_locale")
     val defaultLocale: kotlin.String,
 
-    @Json(name = "default_country")
-    val defaultCountry: Country,
+    @Json(name = "format")
+    val format: CatalogsFormat,
 
-    /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. */
-    @Json(name = "catalog_id")
-    val catalogId: kotlin.String?
+    /* The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
+    @Json(name = "location")
+    val location: kotlin.String,
+
+    /* A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. */
+    @Json(name = "name")
+    val name: kotlin.String?,
+
+    @Json(name = "preferred_processing_schedule")
+    val preferredProcessingSchedule: CatalogsFeedProcessingSchedule?,
+
+    @Json(name = "status")
+    val status: CatalogsStatus
 
 ) {
 

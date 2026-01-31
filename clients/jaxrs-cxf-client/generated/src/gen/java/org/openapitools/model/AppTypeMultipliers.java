@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.openapitools.model.TargetingSpecAppType;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -16,23 +15,56 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AppTypeMultipliers extends HashMap<String, Double> {
   
+public enum APPTYPEEnum {
+
+ANDROID_MOBILE(String.valueOf("android_mobile")), ANDROID_TABLET(String.valueOf("android_tablet")), IPAD(String.valueOf("ipad")), IPHONE(String.valueOf("iphone")), WEB(String.valueOf("web")), WEB_MOBILE(String.valueOf("web_mobile"));
+
+
+    private String value;
+
+    APPTYPEEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static APPTYPEEnum fromValue(String value) {
+        for (APPTYPEEnum b : APPTYPEEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
   @ApiModelProperty(value = "")
 
-  private TargetingSpecAppType APP_TYPE;
+  private APPTYPEEnum APP_TYPE;
  /**
    * Get APP_TYPE
    * @return APP_TYPE
   **/
   @JsonProperty("APP_TYPE")
-  public TargetingSpecAppType getAPPTYPE() {
-    return APP_TYPE;
+  public String getAPPTYPE() {
+    if (APP_TYPE == null) {
+      return null;
+    }
+    return APP_TYPE.value();
   }
 
-  public void setAPPTYPE(TargetingSpecAppType APP_TYPE) {
+  public void setAPPTYPE(APPTYPEEnum APP_TYPE) {
     this.APP_TYPE = APP_TYPE;
   }
 
-  public AppTypeMultipliers APP_TYPE(TargetingSpecAppType APP_TYPE) {
+  public AppTypeMultipliers APP_TYPE(APPTYPEEnum APP_TYPE) {
     this.APP_TYPE = APP_TYPE;
     return this;
   }

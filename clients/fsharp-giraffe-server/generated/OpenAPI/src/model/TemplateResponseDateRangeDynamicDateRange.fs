@@ -8,11 +8,11 @@ module TemplateResponseDateRangeDynamicDateRange =
   //#region TemplateResponseDateRangeDynamicDateRange
 
   //#region enums
-  type RangeEnum = YEARTODATEEnum of string  |  QUARTERTODATEEnum of string  |  MONTHTODATEEnum of string  |  LASTMONTHEnum of string  
+  type RangeEnum = YEARTODATEEnum of string  |  QUARTERTODATEEnum of string  |  MONTHTODATEEnum of string  |  LASTMONTHEnum of string  |  LASTQUARTEREnum of string  
   //#endregion
 
   type TemplateResponse_date_range_dynamic_date_range = {
-    Type : string;
     Range : RangeEnum;
+    Type : string;
   }
   //#endregion

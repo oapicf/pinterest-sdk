@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,13 +16,13 @@ package openapi
 
 type SingleInterestTargetingOptionResponse struct {
 
-	Id string `json:"id,omitempty" validate:"regexp=\\\\d+"`
-
-	Name string `json:"name,omitempty"`
-
 	ChildInterests []string `json:"child_interests,omitempty"`
 
+	Id string `json:"id,omitempty" validate:"regexp=\\\\d+"`
+
 	Level int32 `json:"level,omitempty"`
+
+	Name string `json:"name,omitempty"`
 }
 
 // AssertSingleInterestTargetingOptionResponseRequired checks if the required fields are not zero-ed

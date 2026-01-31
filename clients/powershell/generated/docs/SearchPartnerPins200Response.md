@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**SummaryPin[]**](SummaryPin.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**SummaryPin[]**](SummaryPin.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$SearchPartnerPins200Response = Initialize-PSOpenAPIToolsSearchPartnerPins200Response  -Items null `
- -Bookmark null
+$SearchPartnerPins200Response = Initialize-PSOpenAPIToolsSearchPartnerPins200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

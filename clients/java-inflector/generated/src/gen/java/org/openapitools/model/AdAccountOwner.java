@@ -3,7 +3,6 @@ package org.openapitools.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -11,31 +10,13 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdAccountOwner   {
-  @JsonProperty("username")
-  private String username;
-
   @JsonProperty("id")
   private String id;
 
-  /**
-   * Public username for the user account
-   **/
-  public AdAccountOwner username(String username) {
-    this.username = username;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Public username for the user account")
   @JsonProperty("username")
-  public String getUsername() {
-    return username;
-  }
-  public void setUsername(String username) {
-    this.username = username;
-  }
+  private String username;
 
   /**
    * The owning account's user ID.
@@ -55,6 +36,24 @@ public class AdAccountOwner   {
     this.id = id;
   }
 
+  /**
+   * Public username for the user account
+   **/
+  public AdAccountOwner username(String username) {
+    this.username = username;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Public username for the user account")
+  @JsonProperty("username")
+  public String getUsername() {
+    return username;
+  }
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -65,13 +64,13 @@ public class AdAccountOwner   {
       return false;
     }
     AdAccountOwner adAccountOwner = (AdAccountOwner) o;
-    return Objects.equals(username, adAccountOwner.username) &&
-        Objects.equals(id, adAccountOwner.id);
+    return Objects.equals(id, adAccountOwner.id) &&
+        Objects.equals(username, adAccountOwner.username);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(username, id);
+    return Objects.hash(id, username);
   }
 
   @Override
@@ -79,8 +78,8 @@ public class AdAccountOwner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdAccountOwner {\n");
     
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("}");
     return sb.toString();
   }

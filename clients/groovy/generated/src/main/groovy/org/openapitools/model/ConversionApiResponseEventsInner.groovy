@@ -7,6 +7,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 @Canonical
 class ConversionApiResponseEventsInner {
+    /* Error message containing more information about why the event failed to be processed. */
+    String errorMessage
 
     enum StatusEnum {
     
@@ -32,8 +34,6 @@ class ConversionApiResponseEventsInner {
 
     /* Whether the event was processed successfully. */
     StatusEnum status
-    /* Error message containing more information about why the event failed to be processed. */
-    String errorMessage
     /* Warning messages about any fields in the event which are not standard. These are not critical to event processing. */
     String warningMessage
 }

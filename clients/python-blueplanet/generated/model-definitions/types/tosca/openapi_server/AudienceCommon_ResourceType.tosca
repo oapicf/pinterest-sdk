@@ -1,0 +1,47 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AudienceCommon"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AudienceCommon"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AudienceRule = openapi_server.resourceTypes.AudienceRule
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  AudienceCommon {
+    title = AudienceCommon
+    description = AudienceCommon
+    derivedFrom = Root
+    properties {
+        ad_account_id {
+          type =  string
+          description = "Ad account ID."
+          optional = false
+        }
+        name {
+          type =  string
+          description = "Audience name."
+          optional = false
+        }
+        rule {
+          type = AudienceRule
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AudienceCommon {
+    title = AudienceCommon
+    description = AudienceCommon
+    implements = openapi_server.resourceTypes.AudienceCommon
+
+  }
+}

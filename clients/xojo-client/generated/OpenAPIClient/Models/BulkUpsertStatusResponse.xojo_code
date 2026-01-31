@@ -2,12 +2,12 @@
 Protected Class BulkUpsertStatusResponse
 
 	#tag Property, Flags = &h0
-		status As Xoson.O.OptionalString
+		result_url As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		result_url As Xoson.O.OptionalString
+		status As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -48,19 +48,19 @@ Protected Class BulkUpsertStatusResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="status"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="BulkUpsertStatus"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="result_url"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="status"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="BulkUpsertStatus"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

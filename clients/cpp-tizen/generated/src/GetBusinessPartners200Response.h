@@ -47,13 +47,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get List of business partners.
-	 */
-	std::list<UserBusinessRoleBinding> getItems();
-
-	/*! \brief Set List of business partners.
-	 */
-	void setItems(std::list <UserBusinessRoleBinding> items);
 	/*! \brief Get 
 	 */
 	std::string getBookmark();
@@ -61,10 +54,17 @@ public:
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
+	/*! \brief Get List of business partners.
+	 */
+	std::list<UserBusinessRoleBinding> getItems();
+
+	/*! \brief Set List of business partners.
+	 */
+	void setItems(std::list <UserBusinessRoleBinding> items);
 
 private:
-	std::list <UserBusinessRoleBinding>items;
 	std::string bookmark;
+	std::list <UserBusinessRoleBinding>items;
 	void __init();
 	void __cleanup();
 

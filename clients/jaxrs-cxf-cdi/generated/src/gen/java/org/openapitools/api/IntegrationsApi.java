@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import org.openapitools.model.DetailedError;
 import org.openapitools.model.Error;
 import org.openapitools.model.IntegrationLogsRequest;
 import org.openapitools.model.IntegrationLogsSuccessResponse;
@@ -9,6 +8,7 @@ import org.openapitools.model.IntegrationRecord;
 import org.openapitools.model.IntegrationRequest;
 import org.openapitools.model.IntegrationRequestPatch;
 import org.openapitools.model.IntegrationsGetList200Response;
+import org.openapitools.model.IntegrationsLogsPost400Response;
 import org.openapitools.api.IntegrationsApiService;
 
 import javax.ws.rs.*;
@@ -35,7 +35,7 @@ import javax.validation.Valid;
 @Api
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-01-26T05:37:19.298233885Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-01-31T04:54:28.741368951Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 
 public class IntegrationsApi  {
 
@@ -89,7 +89,7 @@ public class IntegrationsApi  {
         @ApiResponse(code = 404, message = "Integration not found.", response = Error.class),
         @ApiResponse(code = 409, message = "Can't access this integration metadata.", response = Error.class),
         @ApiResponse(code = 200, message = "Unexpected error.", response = Error.class) })
-    public Response integrationsCommercePatch(@ApiParam(value = "External business ID for the integration.",required=true) @PathParam("external_business_id") String externalBusinessId, @ApiParam(value = "Parameters to get create/update the Integration Metadata" ) IntegrationRequestPatch integrationRequestPatch) {
+    public Response integrationsCommercePatch(@ApiParam(value = "External business ID for the integration.",required=true) @PathParam("external_business_id") String externalBusinessId, @ApiParam(value = "Parameters to get create/update the Integration Metadata" ,required=true) IntegrationRequestPatch integrationRequestPatch) {
         return delegate.integrationsCommercePatch(externalBusinessId, integrationRequestPatch, securityContext);
     }
 
@@ -106,7 +106,7 @@ public class IntegrationsApi  {
         @ApiResponse(code = 404, message = "Integration not found.", response = Error.class),
         @ApiResponse(code = 409, message = "Can't access this integration metadata.", response = Error.class),
         @ApiResponse(code = 200, message = "Unexpected error.", response = Error.class) })
-    public Response integrationsCommercePost(@ApiParam(value = "Parameters to get create/update the Integration Metadata" ) IntegrationRequest integrationRequest) {
+    public Response integrationsCommercePost(@ApiParam(value = "Parameters to get create/update the Integration Metadata" ,required=true) IntegrationRequest integrationRequest) {
         return delegate.integrationsCommercePost(integrationRequest, securityContext);
     }
 
@@ -151,7 +151,7 @@ public class IntegrationsApi  {
          }, tags={ "integrations" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success.", response = IntegrationLogsSuccessResponse.class),
-        @ApiResponse(code = 400, message = "Bad request.", response = DetailedError.class),
+        @ApiResponse(code = 400, message = "Bad request.", response = IntegrationsLogsPost400Response.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
     public Response integrationsLogsPost(@ApiParam(value = "Ingest log information from external integration application." ,required=true) IntegrationLogsRequest integrationLogsRequest) {
         return delegate.integrationsLogsPost(integrationLogsRequest, securityContext);

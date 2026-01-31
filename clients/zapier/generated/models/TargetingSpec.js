@@ -1,5 +1,8 @@
 const utils = require('../utils/utils');
-const TargetingSpec_SHOPPING_RETARGETING = require('../models/TargetingSpec_SHOPPING_RETARGETING');
+const TargetingSpecAgeBucket = require('../models/TargetingSpecAgeBucket');
+const TargetingSpecAppType = require('../models/TargetingSpecAppType');
+const TargetingSpecGender = require('../models/TargetingSpecGender');
+const TargetingSpecShoppingRetargeting = require('../models/TargetingSpecShoppingRetargeting');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -7,19 +10,15 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}AGE_BUCKET`,
-                label: `Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted. - [${labelPrefix}AGE_BUCKET]`,
                 list: true,
                 type: 'string',
-                choices: [
-                ],
+                ...TargetingSpecAgeBucket.fields(`${keyPrefix}AGE_BUCKET`, isInput),
             },
             {
                 key: `${keyPrefix}APPTYPE`,
-                label: `Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted. - [${labelPrefix}APPTYPE]`,
                 list: true,
                 type: 'string',
-                choices: [
-                ],
+                ...TargetingSpecAppType.fields(`${keyPrefix}APPTYPE`, isInput),
             },
             {
                 key: `${keyPrefix}AUDIENCE_EXCLUDE`,
@@ -35,11 +34,9 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}GENDER`,
-                label: `Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**. - [${labelPrefix}GENDER]`,
                 list: true,
                 type: 'string',
-                choices: [
-                ],
+                ...TargetingSpecGender.fields(`${keyPrefix}GENDER`, isInput),
             },
             {
                 key: `${keyPrefix}GEO`,
@@ -55,20 +52,30 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}LOCALE`,
-                label: `24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be targeted, only english non-sublanguage will be targeted**. - [${labelPrefix}LOCALE]`,
+                label: `24 ISO 639-1 two-letter language codes. If the LOCALE field is not included in the request, all languages are targeted. - [${labelPrefix}LOCALE]`,
                 list: true,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}LOCATION`,
-                label: `22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, click here. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above). - [${labelPrefix}LOCATION]`,
+                label: `22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a>. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above). - [${labelPrefix}LOCATION]`,
                 list: true,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}MAXIMUM_AGE`,
+                label: `Maximum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\", \"65+\". Must be used together with `MINIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted. - [${labelPrefix}MAXIMUM_AGE]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}MINIMUM_AGE`,
+                label: `Minimum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\". Note: 65+ is not allowed for minimum age. Must be used together with `MAXIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted. - [${labelPrefix}MINIMUM_AGE]`,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}SHOPPING_RETARGETING`,
                 label: `[${labelPrefix}SHOPPING_RETARGETING]`,
-                children: TargetingSpec_SHOPPING_RETARGETING.fields(`${keyPrefix}SHOPPING_RETARGETING${!isInput ? '[]' : ''}`, isInput, true), 
+                children: TargetingSpecShoppingRetargeting.fields(`${keyPrefix}SHOPPING_RETARGETING${!isInput ? '[]' : ''}`, isInput, true), 
             },
             {
                 key: `${keyPrefix}TARGETING_STRATEGY`,
@@ -83,16 +90,18 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'AGE_BUCKET': bundle.inputData?.[`${keyPrefix}AGE_BUCKET`],
-            'APPTYPE': bundle.inputData?.[`${keyPrefix}APPTYPE`],
+            'AGE_BUCKET': utils.childMapping(bundle.inputData?.[`${keyPrefix}AGE_BUCKET`], `${keyPrefix}AGE_BUCKET`, TargetingSpecAgeBucket),
+            'APPTYPE': utils.childMapping(bundle.inputData?.[`${keyPrefix}APPTYPE`], `${keyPrefix}APPTYPE`, TargetingSpecAppType),
             'AUDIENCE_EXCLUDE': bundle.inputData?.[`${keyPrefix}AUDIENCE_EXCLUDE`],
             'AUDIENCE_INCLUDE': bundle.inputData?.[`${keyPrefix}AUDIENCE_INCLUDE`],
-            'GENDER': bundle.inputData?.[`${keyPrefix}GENDER`],
+            'GENDER': utils.childMapping(bundle.inputData?.[`${keyPrefix}GENDER`], `${keyPrefix}GENDER`, TargetingSpecGender),
             'GEO': bundle.inputData?.[`${keyPrefix}GEO`],
             'INTEREST': bundle.inputData?.[`${keyPrefix}INTEREST`],
             'LOCALE': bundle.inputData?.[`${keyPrefix}LOCALE`],
             'LOCATION': bundle.inputData?.[`${keyPrefix}LOCATION`],
-            'SHOPPING_RETARGETING': utils.childMapping(bundle.inputData?.[`${keyPrefix}SHOPPING_RETARGETING`], `${keyPrefix}SHOPPING_RETARGETING`, TargetingSpec_SHOPPING_RETARGETING),
+            'MAXIMUM_AGE': bundle.inputData?.[`${keyPrefix}MAXIMUM_AGE`],
+            'MINIMUM_AGE': bundle.inputData?.[`${keyPrefix}MINIMUM_AGE`],
+            'SHOPPING_RETARGETING': utils.childMapping(bundle.inputData?.[`${keyPrefix}SHOPPING_RETARGETING`], `${keyPrefix}SHOPPING_RETARGETING`, TargetingSpecShoppingRetargeting),
             'TARGETING_STRATEGY': bundle.inputData?.[`${keyPrefix}TARGETING_STRATEGY`],
         }
     },

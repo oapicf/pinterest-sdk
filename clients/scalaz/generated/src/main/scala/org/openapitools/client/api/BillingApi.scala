@@ -24,8 +24,11 @@ import HelperCodecs._
 import org.openapitools.client.api.AdsCreditRedeemRequest
 import org.openapitools.client.api.AdsCreditRedeemResponse
 import org.openapitools.client.api.AdsCreditsDiscountsGet200Response
+import org.openapitools.client.api.BillingInvoiceDownloadResponse
+import org.openapitools.client.api.BillingInvoicesGet200Response
 import org.openapitools.client.api.BillingProfilesGet200Response
 import org.openapitools.client.api.Error
+import java.time.LocalDate
 import org.openapitools.client.api.SSIOAccountResponse
 import org.openapitools.client.api.SSIOCreateInsertionOrderRequest
 import org.openapitools.client.api.SSIOCreateInsertionOrderResponse
@@ -79,6 +82,48 @@ object BillingApi {
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
       resp          <- client.expect[AdsCreditsDiscountsGet200Response](req)
+
+    } yield resp
+  }
+
+  def billingInvoiceDownloadGet(host: String, adAccountId: String, billingInvoiceId: String): Task[BillingInvoiceDownloadResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[BillingInvoiceDownloadResponse] = jsonOf[BillingInvoiceDownloadResponse]
+
+    val path = "/ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString)).replaceAll("\\{" + "billing_invoice_id" + "\\}",escape(billingInvoiceId.toString))
+
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.expect[BillingInvoiceDownloadResponse](req)
+
+    } yield resp
+  }
+
+  def billingInvoicesGet(host: String, adAccountId: String, bookmark: String, pageSize: Integer = 25, sort: String = DUE_DATE, order: String, status: String, documentType: String, startDueDate: LocalDate, endDueDate: LocalDate)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], sortQuery: QueryParam[String], orderQuery: QueryParam[String], statusQuery: QueryParam[String], documentTypeQuery: QueryParam[String], startDueDateQuery: QueryParam[LocalDate], endDueDateQuery: QueryParam[LocalDate]): Task[BillingInvoicesGet200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[BillingInvoicesGet200Response] = jsonOf[BillingInvoicesGet200Response]
+
+    val path = "/ad_accounts/{ad_account_id}/billing_invoices".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
+
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("sort", Some(sortQuery.toParamString(sort))), ("order", Some(orderQuery.toParamString(order))), ("status", Some(statusQuery.toParamString(status))), ("documentType", Some(document_typeQuery.toParamString(document_type))), ("startDueDate", Some(start_due_dateQuery.toParamString(start_due_date))), ("endDueDate", Some(end_due_dateQuery.toParamString(end_due_date))))
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.expect[BillingInvoicesGet200Response](req)
 
     } yield resp
   }
@@ -275,6 +320,48 @@ class HttpServiceBillingApi(service: HttpService) {
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
       resp          <- client.expect[AdsCreditsDiscountsGet200Response](req)
+
+    } yield resp
+  }
+
+  def billingInvoiceDownloadGet(adAccountId: String, billingInvoiceId: String): Task[BillingInvoiceDownloadResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[BillingInvoiceDownloadResponse] = jsonOf[BillingInvoiceDownloadResponse]
+
+    val path = "/ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString)).replaceAll("\\{" + "billing_invoice_id" + "\\}",escape(billingInvoiceId.toString))
+
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.expect[BillingInvoiceDownloadResponse](req)
+
+    } yield resp
+  }
+
+  def billingInvoicesGet(adAccountId: String, bookmark: String, pageSize: Integer = 25, sort: String = DUE_DATE, order: String, status: String, documentType: String, startDueDate: LocalDate, endDueDate: LocalDate)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], sortQuery: QueryParam[String], orderQuery: QueryParam[String], statusQuery: QueryParam[String], documentTypeQuery: QueryParam[String], startDueDateQuery: QueryParam[LocalDate], endDueDateQuery: QueryParam[LocalDate]): Task[BillingInvoicesGet200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[BillingInvoicesGet200Response] = jsonOf[BillingInvoicesGet200Response]
+
+    val path = "/ad_accounts/{ad_account_id}/billing_invoices".replaceAll("\\{" + "ad_account_id" + "\\}",escape(adAccountId.toString))
+
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("sort", Some(sortQuery.toParamString(sort))), ("order", Some(orderQuery.toParamString(order))), ("status", Some(statusQuery.toParamString(status))), ("documentType", Some(document_typeQuery.toParamString(document_type))), ("startDueDate", Some(start_due_dateQuery.toParamString(start_due_date))), ("endDueDate", Some(end_due_dateQuery.toParamString(end_due_date))))
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.expect[BillingInvoicesGet200Response](req)
 
     } yield resp
   }

@@ -24,10 +24,10 @@ import com.squareup.moshi.JsonClass
  * Audience demographics
  *
  * @param ages Ages distribution.
- * @param genders Gender distribution.
- * @param devices Device usage distribution.
- * @param metros Geographic metro area distribution.
  * @param countries Country area distribution.
+ * @param devices Device usage distribution.
+ * @param genders Gender distribution.
+ * @param metros Geographic metro area distribution.
  */
 
 
@@ -37,21 +37,21 @@ data class AudienceDemographics (
     @Json(name = "ages")
     val ages: kotlin.collections.List<AudienceDemographicValue>? = null,
 
-    /* Gender distribution. */
-    @Json(name = "genders")
-    val genders: kotlin.collections.List<AudienceDemographicValue>? = null,
+    /* Country area distribution. */
+    @Json(name = "countries")
+    val countries: kotlin.collections.List<AudienceDemographicValue>? = null,
 
     /* Device usage distribution. */
     @Json(name = "devices")
     val devices: kotlin.collections.List<AudienceDemographicValue>? = null,
 
+    /* Gender distribution. */
+    @Json(name = "genders")
+    val genders: kotlin.collections.List<AudienceDemographicValue>? = null,
+
     /* Geographic metro area distribution. */
     @Json(name = "metros")
-    val metros: kotlin.collections.List<AudienceDemographicValue>? = null,
-
-    /* Country area distribution. */
-    @Json(name = "countries")
-    val countries: kotlin.collections.List<AudienceDemographicValue>? = null
+    val metros: kotlin.collections.List<AudienceDemographicValue>? = null
 
 ) {
 

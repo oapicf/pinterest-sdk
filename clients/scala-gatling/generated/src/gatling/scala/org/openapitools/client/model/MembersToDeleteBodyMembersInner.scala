@@ -3,15 +3,15 @@ package org.openapitools.client.model
 
 
 case class MembersToDeleteBodyMembersInner (
+    _businessRole: BusinessRoleForMembers,
     /* Unique identifier of the member */
-    _memberId: String,
-    _businessRole: BusinessRoleForMembers
+    _memberId: String
 )
 object MembersToDeleteBodyMembersInner {
-    def toStringBody(var_memberId: Object, var_businessRole: Object) =
+    def toStringBody(var_businessRole: Object, var_memberId: Object) =
         s"""
         | {
-        | "memberId":$var_memberId,"businessRole":$var_businessRole
+        | "businessRole":$var_businessRole,"memberId":$var_memberId
         | }
         """.stripMargin
 }

@@ -7,47 +7,67 @@
 #' @title AdAccount
 #' @description AdAccount Class
 #' @format An \code{R6Class} generator object
-#' @field id  character [optional]
-#' @field name  character [optional]
-#' @field owner  \link{AdAccountOwner} [optional]
 #' @field country  \link{Country} [optional]
-#' @field currency  \link{Currency} [optional]
-#' @field permissions  list(\link{BusinessAccessRole}) [optional]
 #' @field created_time Creation time. Unix timestamp in seconds. integer [optional]
-#' @field updated_time Last update time. Unix timestamp in seconds. integer [optional]
+#' @field currency  \link{Currency} [optional]
+#' @field id  character
+#' @field name Ad account name. character [optional]
+#' @field owner Ad account owner \link{AdAccountOwner} [optional]
+#' @field permissions  list(\link{BusinessAccessRole}) [optional]
+#' @field updated_time  integer [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 AdAccount <- R6::R6Class(
   "AdAccount",
   public = list(
+    `country` = NULL,
+    `created_time` = NULL,
+    `currency` = NULL,
     `id` = NULL,
     `name` = NULL,
     `owner` = NULL,
-    `country` = NULL,
-    `currency` = NULL,
     `permissions` = NULL,
-    `created_time` = NULL,
     `updated_time` = NULL,
 
     #' @description
     #' Initialize a new AdAccount class.
     #'
     #' @param id id
-    #' @param name name
-    #' @param owner owner
     #' @param country country
-    #' @param currency currency
-    #' @param permissions permissions
     #' @param created_time Creation time. Unix timestamp in seconds.
-    #' @param updated_time Last update time. Unix timestamp in seconds.
+    #' @param currency currency
+    #' @param name Ad account name.
+    #' @param owner Ad account owner
+    #' @param permissions permissions
+    #' @param updated_time updated_time
     #' @param ... Other optional arguments.
-    initialize = function(`id` = NULL, `name` = NULL, `owner` = NULL, `country` = NULL, `currency` = NULL, `permissions` = NULL, `created_time` = NULL, `updated_time` = NULL, ...) {
-      if (!is.null(`id`)) {
+    initialize = function(`id`, `country` = NULL, `created_time` = NULL, `currency` = NULL, `name` = NULL, `owner` = NULL, `permissions` = NULL, `updated_time` = NULL, ...) {
+      if (!missing(`id`)) {
         if (!(is.character(`id`) && length(`id`) == 1)) {
           stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
         }
         self$`id` <- `id`
+      }
+      if (!is.null(`country`)) {
+        if (!(`country` %in% c())) {
+          stop(paste("Error! \"", `country`, "\" cannot be assigned to `country`. Must be .", sep = ""))
+        }
+        stopifnot(R6::is.R6(`country`))
+        self$`country` <- `country`
+      }
+      if (!is.null(`created_time`)) {
+        if (!(is.numeric(`created_time`) && length(`created_time`) == 1)) {
+          stop(paste("Error! Invalid data for `created_time`. Must be an integer:", `created_time`))
+        }
+        self$`created_time` <- `created_time`
+      }
+      if (!is.null(`currency`)) {
+        if (!(`currency` %in% c())) {
+          stop(paste("Error! \"", `currency`, "\" cannot be assigned to `currency`. Must be .", sep = ""))
+        }
+        stopifnot(R6::is.R6(`currency`))
+        self$`currency` <- `currency`
       }
       if (!is.null(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
@@ -59,30 +79,10 @@ AdAccount <- R6::R6Class(
         stopifnot(R6::is.R6(`owner`))
         self$`owner` <- `owner`
       }
-      if (!is.null(`country`)) {
-        if (!(`country` %in% c())) {
-          stop(paste("Error! \"", `country`, "\" cannot be assigned to `country`. Must be .", sep = ""))
-        }
-        stopifnot(R6::is.R6(`country`))
-        self$`country` <- `country`
-      }
-      if (!is.null(`currency`)) {
-        if (!(`currency` %in% c())) {
-          stop(paste("Error! \"", `currency`, "\" cannot be assigned to `currency`. Must be .", sep = ""))
-        }
-        stopifnot(R6::is.R6(`currency`))
-        self$`currency` <- `currency`
-      }
       if (!is.null(`permissions`)) {
         stopifnot(is.vector(`permissions`), length(`permissions`) != 0)
         sapply(`permissions`, function(x) stopifnot(R6::is.R6(x)))
         self$`permissions` <- `permissions`
-      }
-      if (!is.null(`created_time`)) {
-        if (!(is.numeric(`created_time`) && length(`created_time`) == 1)) {
-          stop(paste("Error! Invalid data for `created_time`. Must be an integer:", `created_time`))
-        }
-        self$`created_time` <- `created_time`
       }
       if (!is.null(`updated_time`)) {
         if (!(is.numeric(`updated_time`) && length(`updated_time`) == 1)) {
@@ -123,6 +123,18 @@ AdAccount <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       AdAccountObject <- list()
+      if (!is.null(self$`country`)) {
+        AdAccountObject[["country"]] <-
+          self$`country`$toSimpleType()
+      }
+      if (!is.null(self$`created_time`)) {
+        AdAccountObject[["created_time"]] <-
+          self$`created_time`
+      }
+      if (!is.null(self$`currency`)) {
+        AdAccountObject[["currency"]] <-
+          self$`currency`$toSimpleType()
+      }
       if (!is.null(self$`id`)) {
         AdAccountObject[["id"]] <-
           self$`id`
@@ -135,21 +147,9 @@ AdAccount <- R6::R6Class(
         AdAccountObject[["owner"]] <-
           self$`owner`$toSimpleType()
       }
-      if (!is.null(self$`country`)) {
-        AdAccountObject[["country"]] <-
-          self$`country`$toSimpleType()
-      }
-      if (!is.null(self$`currency`)) {
-        AdAccountObject[["currency"]] <-
-          self$`currency`$toSimpleType()
-      }
       if (!is.null(self$`permissions`)) {
         AdAccountObject[["permissions"]] <-
           lapply(self$`permissions`, function(x) x$toSimpleType())
-      }
-      if (!is.null(self$`created_time`)) {
-        AdAccountObject[["created_time"]] <-
-          self$`created_time`
       }
       if (!is.null(self$`updated_time`)) {
         AdAccountObject[["updated_time"]] <-
@@ -165,6 +165,19 @@ AdAccount <- R6::R6Class(
     #' @return the instance of AdAccount
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`country`)) {
+        `country_object` <- Country$new()
+        `country_object`$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
+        self$`country` <- `country_object`
+      }
+      if (!is.null(this_object$`created_time`)) {
+        self$`created_time` <- this_object$`created_time`
+      }
+      if (!is.null(this_object$`currency`)) {
+        `currency_object` <- Currency$new()
+        `currency_object`$fromJSON(jsonlite::toJSON(this_object$`currency`, auto_unbox = TRUE, digits = NA))
+        self$`currency` <- `currency_object`
+      }
       if (!is.null(this_object$`id`)) {
         self$`id` <- this_object$`id`
       }
@@ -176,21 +189,8 @@ AdAccount <- R6::R6Class(
         `owner_object`$fromJSON(jsonlite::toJSON(this_object$`owner`, auto_unbox = TRUE, digits = NA))
         self$`owner` <- `owner_object`
       }
-      if (!is.null(this_object$`country`)) {
-        `country_object` <- Country$new()
-        `country_object`$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
-        self$`country` <- `country_object`
-      }
-      if (!is.null(this_object$`currency`)) {
-        `currency_object` <- Currency$new()
-        `currency_object`$fromJSON(jsonlite::toJSON(this_object$`currency`, auto_unbox = TRUE, digits = NA))
-        self$`currency` <- `currency_object`
-      }
       if (!is.null(this_object$`permissions`)) {
         self$`permissions` <- ApiClient$new()$deserializeObj(this_object$`permissions`, "array[BusinessAccessRole]", loadNamespace("openapi"))
-      }
-      if (!is.null(this_object$`created_time`)) {
-        self$`created_time` <- this_object$`created_time`
       }
       if (!is.null(this_object$`updated_time`)) {
         self$`updated_time` <- this_object$`updated_time`
@@ -216,13 +216,13 @@ AdAccount <- R6::R6Class(
     #' @return the instance of AdAccount
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`country` <- Country$new()$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
+      self$`created_time` <- this_object$`created_time`
+      self$`currency` <- Currency$new()$fromJSON(jsonlite::toJSON(this_object$`currency`, auto_unbox = TRUE, digits = NA))
       self$`id` <- this_object$`id`
       self$`name` <- this_object$`name`
       self$`owner` <- AdAccountOwner$new()$fromJSON(jsonlite::toJSON(this_object$`owner`, auto_unbox = TRUE, digits = NA))
-      self$`country` <- Country$new()$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
-      self$`currency` <- Currency$new()$fromJSON(jsonlite::toJSON(this_object$`currency`, auto_unbox = TRUE, digits = NA))
       self$`permissions` <- ApiClient$new()$deserializeObj(this_object$`permissions`, "array[BusinessAccessRole]", loadNamespace("openapi"))
-      self$`created_time` <- this_object$`created_time`
       self$`updated_time` <- this_object$`updated_time`
       self
     },
@@ -233,6 +233,14 @@ AdAccount <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `id`
+      if (!is.null(input_json$`id`)) {
+        if (!(is.character(input_json$`id`) && length(input_json$`id`) == 1)) {
+          stop(paste("Error! Invalid data for `id`. Must be a string:", input_json$`id`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for AdAccount: the required field `id` is missing."))
+      }
     },
 
     #' @description
@@ -248,6 +256,22 @@ AdAccount <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      # check if the required `id` is null
+      if (is.null(self$`id`)) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`id`) > 18) {
+        return(FALSE)
+      }
+      if (!str_detect(self$`id`, "^\\d+$")) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`name`) > 256) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -257,6 +281,22 @@ AdAccount <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `id` is null
+      if (is.null(self$`id`)) {
+        invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
+      }
+
+      if (nchar(self$`id`) > 18) {
+        invalid_fields["id"] <- "Invalid length for `id`, must be smaller than or equal to 18."
+      }
+      if (!str_detect(self$`id`, "^\\d+$")) {
+        invalid_fields["id"] <- "Invalid value for `id`, must conform to the pattern ^\\d+$."
+      }
+
+      if (nchar(self$`name`) > 256) {
+        invalid_fields["name"] <- "Invalid length for `name`, must be smaller than or equal to 256."
+      }
+
       invalid_fields
     },
 

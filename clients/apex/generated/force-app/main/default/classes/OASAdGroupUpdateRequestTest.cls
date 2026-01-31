@@ -73,45 +73,53 @@ private class OASAdGroupUpdateRequestTest {
     private static void maintainRenamedProperties() {
         OASAdGroupUpdateRequest adGroupUpdateRequest = new OASAdGroupUpdateRequest();
         Map<String, String> x-property-mappings = adGroupUpdateRequest.getx-property-mappings();
-        System.assertEquals('budgetInMicroCurrency', x-property-mappings.get('budget_in_micro_currency'));
-        System.assertEquals('bidInMicroCurrency', x-property-mappings.get('bid_in_micro_currency'));
-        System.assertEquals('optimizationGoalMetadata', x-property-mappings.get('optimization_goal_metadata'));
-        System.assertEquals('budgetType', x-property-mappings.get('budget_type'));
-        System.assertEquals('startTime', x-property-mappings.get('start_time'));
-        System.assertEquals('endTime', x-property-mappings.get('end_time'));
-        System.assertEquals('targetingSpec', x-property-mappings.get('targeting_spec'));
-        System.assertEquals('lifetimeFrequencyCap', x-property-mappings.get('lifetime_frequency_cap'));
-        System.assertEquals('trackingUrls', x-property-mappings.get('tracking_urls'));
         System.assertEquals('autoTargetingEnabled', x-property-mappings.get('auto_targeting_enabled'));
-        System.assertEquals('placementGroup', x-property-mappings.get('placement_group'));
-        System.assertEquals('pacingDeliveryType', x-property-mappings.get('pacing_delivery_type'));
-        System.assertEquals('campaignId', x-property-mappings.get('campaign_id'));
-        System.assertEquals('billableEvent', x-property-mappings.get('billable_event'));
+        System.assertEquals('bidInMicroCurrency', x-property-mappings.get('bid_in_micro_currency'));
         System.assertEquals('bidStrategyType', x-property-mappings.get('bid_strategy_type'));
+        System.assertEquals('billableEvent', x-property-mappings.get('billable_event'));
+        System.assertEquals('budgetInMicroCurrency', x-property-mappings.get('budget_in_micro_currency'));
+        System.assertEquals('budgetType', x-property-mappings.get('budget_type'));
+        System.assertEquals('campaignId', x-property-mappings.get('campaign_id'));
+        System.assertEquals('endTime', x-property-mappings.get('end_time'));
+        System.assertEquals('isCreativeOptimization', x-property-mappings.get('is_creative_optimization'));
+        System.assertEquals('lifetimeFrequencyCap', x-property-mappings.get('lifetime_frequency_cap'));
+        System.assertEquals('optimizationGoalMetadata', x-property-mappings.get('optimization_goal_metadata'));
+        System.assertEquals('pacingDeliveryType', x-property-mappings.get('pacing_delivery_type'));
+        System.assertEquals('placementGroup', x-property-mappings.get('placement_group'));
+        System.assertEquals('promotionApplicationLevel', x-property-mappings.get('promotion_application_level'));
+        System.assertEquals('promotionId', x-property-mappings.get('promotion_id'));
+        System.assertEquals('startTime', x-property-mappings.get('start_time'));
+        System.assertEquals('targetingSpec', x-property-mappings.get('targeting_spec'));
         System.assertEquals('targetingTemplateIds', x-property-mappings.get('targeting_template_ids'));
+        System.assertEquals('trackingUrls', x-property-mappings.get('tracking_urls'));
+        System.assertEquals('bidMultiplier', x-property-mappings.get('bid_multiplier'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASAdGroupUpdateRequest adGroupUpdateRequest = new OASAdGroupUpdateRequest();
+        System.assertEquals('0', adGroupUpdateRequest.promotionId);
         System.assertEquals(new List<String>(), adGroupUpdateRequest.targetingTemplateIds);
-        System.assertEquals(null, adGroupUpdateRequest.name);
-        System.assertEquals(null, adGroupUpdateRequest.status);
-        System.assertEquals(null, adGroupUpdateRequest.budgetInMicroCurrency);
-        System.assertEquals(null, adGroupUpdateRequest.bidInMicroCurrency);
-        System.assertEquals(null, adGroupUpdateRequest.optimizationGoalMetadata);
-        System.assertEquals(null, adGroupUpdateRequest.budgetType);
-        System.assertEquals(null, adGroupUpdateRequest.startTime);
-        System.assertEquals(null, adGroupUpdateRequest.endTime);
-        System.assertEquals(null, adGroupUpdateRequest.targetingSpec);
-        System.assertEquals(null, adGroupUpdateRequest.lifetimeFrequencyCap);
-        System.assertEquals(null, adGroupUpdateRequest.trackingUrls);
         System.assertEquals(null, adGroupUpdateRequest.autoTargetingEnabled);
-        System.assertEquals(null, adGroupUpdateRequest.placementGroup);
-        System.assertEquals(null, adGroupUpdateRequest.pacingDeliveryType);
-        System.assertEquals(null, adGroupUpdateRequest.campaignId);
-        System.assertEquals(null, adGroupUpdateRequest.billableEvent);
+        System.assertEquals(null, adGroupUpdateRequest.bidInMicroCurrency);
         System.assertEquals(null, adGroupUpdateRequest.bidStrategyType);
+        System.assertEquals(null, adGroupUpdateRequest.billableEvent);
+        System.assertEquals(null, adGroupUpdateRequest.budgetInMicroCurrency);
+        System.assertEquals(null, adGroupUpdateRequest.budgetType);
+        System.assertEquals(null, adGroupUpdateRequest.campaignId);
+        System.assertEquals(null, adGroupUpdateRequest.endTime);
+        System.assertEquals(null, adGroupUpdateRequest.isCreativeOptimization);
+        System.assertEquals(null, adGroupUpdateRequest.lifetimeFrequencyCap);
+        System.assertEquals(null, adGroupUpdateRequest.name);
+        System.assertEquals(null, adGroupUpdateRequest.optimizationGoalMetadata);
+        System.assertEquals(null, adGroupUpdateRequest.pacingDeliveryType);
+        System.assertEquals(null, adGroupUpdateRequest.placementGroup);
+        System.assertEquals(null, adGroupUpdateRequest.promotionApplicationLevel);
+        System.assertEquals(null, adGroupUpdateRequest.startTime);
+        System.assertEquals(null, adGroupUpdateRequest.status);
+        System.assertEquals(null, adGroupUpdateRequest.targetingSpec);
+        System.assertEquals(null, adGroupUpdateRequest.trackingUrls);
+        System.assertEquals(null, adGroupUpdateRequest.bidMultiplier);
         System.assertEquals(null, adGroupUpdateRequest.id);
     }
 }

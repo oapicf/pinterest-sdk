@@ -22,14 +22,46 @@ public class QuizPinQuestion  {
   
   @ApiModelProperty(value = "")
   @Valid
+  private List<@Valid QuizPinOption> options = new ArrayList<>();
+
+  @ApiModelProperty(value = "")
+  @Valid
   private BigDecimal questionId;
 
   @ApiModelProperty(value = "")
   private String questionText;
+ /**
+  * Get options
+  * @return options
+  */
+  @JsonProperty("options")
+  public List<@Valid QuizPinOption> getOptions() {
+    return options;
+  }
 
-  @ApiModelProperty(value = "")
-  @Valid
-  private List<@Valid QuizPinOption> options = new ArrayList<>();
+  /**
+   * Sets the <code>options</code> property.
+   */
+ public void setOptions(List<@Valid QuizPinOption> options) {
+    this.options = options;
+  }
+
+  /**
+   * Sets the <code>options</code> property.
+   */
+  public QuizPinQuestion options(List<@Valid QuizPinOption> options) {
+    this.options = options;
+    return this;
+  }
+
+  /**
+   * Adds a new item to the <code>options</code> list.
+   */
+  public QuizPinQuestion addOptionsItem(QuizPinOption optionsItem) {
+    this.options.add(optionsItem);
+    return this;
+  }
+
  /**
   * Get questionId
   * @return questionId
@@ -78,38 +110,6 @@ public class QuizPinQuestion  {
     return this;
   }
 
- /**
-  * Get options
-  * @return options
-  */
-  @JsonProperty("options")
-  public List<@Valid QuizPinOption> getOptions() {
-    return options;
-  }
-
-  /**
-   * Sets the <code>options</code> property.
-   */
- public void setOptions(List<@Valid QuizPinOption> options) {
-    this.options = options;
-  }
-
-  /**
-   * Sets the <code>options</code> property.
-   */
-  public QuizPinQuestion options(List<@Valid QuizPinOption> options) {
-    this.options = options;
-    return this;
-  }
-
-  /**
-   * Adds a new item to the <code>options</code> list.
-   */
-  public QuizPinQuestion addOptionsItem(QuizPinOption optionsItem) {
-    this.options.add(optionsItem);
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -120,14 +120,14 @@ public class QuizPinQuestion  {
       return false;
     }
     QuizPinQuestion quizPinQuestion = (QuizPinQuestion) o;
-    return Objects.equals(this.questionId, quizPinQuestion.questionId) &&
-        Objects.equals(this.questionText, quizPinQuestion.questionText) &&
-        Objects.equals(this.options, quizPinQuestion.options);
+    return Objects.equals(this.options, quizPinQuestion.options) &&
+        Objects.equals(this.questionId, quizPinQuestion.questionId) &&
+        Objects.equals(this.questionText, quizPinQuestion.questionText);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(questionId, questionText, options);
+    return Objects.hash(options, questionId, questionText);
   }
 
   @Override
@@ -135,9 +135,9 @@ public class QuizPinQuestion  {
     StringBuilder sb = new StringBuilder();
     sb.append("class QuizPinQuestion {\n");
     
+    sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("    questionId: ").append(toIndentedString(questionId)).append("\n");
     sb.append("    questionText: ").append(toIndentedString(questionText)).append("\n");
-    sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("}");
     return sb.toString();
   }

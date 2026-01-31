@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,17 +16,17 @@ package openapi
 
 type MembersToDeleteBodyMembersInner struct {
 
+	BusinessRole BusinessRoleForMembers `json:"business_role"`
+
 	// Unique identifier of the member
 	MemberId string `json:"member_id" validate:"regexp=^\\\\d+$"`
-
-	BusinessRole BusinessRoleForMembers `json:"business_role"`
 }
 
 // AssertMembersToDeleteBodyMembersInnerRequired checks if the required fields are not zero-ed
 func AssertMembersToDeleteBodyMembersInnerRequired(obj MembersToDeleteBodyMembersInner) error {
 	elements := map[string]interface{}{
-		"member_id": obj.MemberId,
 		"business_role": obj.BusinessRole,
+		"member_id": obj.MemberId,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

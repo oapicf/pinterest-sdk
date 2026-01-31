@@ -22,64 +22,24 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Schema describing the object in the response, which contains information about the events that were received and processed.")
 @JsonTypeName("ConversionApiResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionApiResponse   {
-  private Integer numEventsReceived;
-  private Integer numEventsProcessed;
   private @Valid List<@Valid ConversionApiResponseEventsInner> events = new ArrayList<>();
+  private Integer numEventsProcessed;
+  private Integer numEventsReceived;
 
   public ConversionApiResponse() {
   }
 
   @JsonCreator
   public ConversionApiResponse(
-    @JsonProperty(required = true, value = "num_events_received") Integer numEventsReceived,
+    @JsonProperty(required = true, value = "events") List<@Valid ConversionApiResponseEventsInner> events,
     @JsonProperty(required = true, value = "num_events_processed") Integer numEventsProcessed,
-    @JsonProperty(required = true, value = "events") List<@Valid ConversionApiResponseEventsInner> events
+    @JsonProperty(required = true, value = "num_events_received") Integer numEventsReceived
   ) {
-    this.numEventsReceived = numEventsReceived;
-    this.numEventsProcessed = numEventsProcessed;
     this.events = events;
-  }
-
-  /**
-   * Total number of events received in the request.
-   **/
-  public ConversionApiResponse numEventsReceived(Integer numEventsReceived) {
-    this.numEventsReceived = numEventsReceived;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "Total number of events received in the request.")
-  @JsonProperty(required = true, value = "num_events_received")
-  @NotNull public Integer getNumEventsReceived() {
-    return numEventsReceived;
-  }
-
-  @JsonProperty(required = true, value = "num_events_received")
-  public void setNumEventsReceived(Integer numEventsReceived) {
-    this.numEventsReceived = numEventsReceived;
-  }
-
-  /**
-   * Number of events that were successfully processed from the events.
-   **/
-  public ConversionApiResponse numEventsProcessed(Integer numEventsProcessed) {
     this.numEventsProcessed = numEventsProcessed;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "Number of events that were successfully processed from the events.")
-  @JsonProperty(required = true, value = "num_events_processed")
-  @NotNull public Integer getNumEventsProcessed() {
-    return numEventsProcessed;
-  }
-
-  @JsonProperty(required = true, value = "num_events_processed")
-  public void setNumEventsProcessed(Integer numEventsProcessed) {
-    this.numEventsProcessed = numEventsProcessed;
+    this.numEventsReceived = numEventsReceived;
   }
 
   /**
@@ -118,6 +78,46 @@ public class ConversionApiResponse   {
 
     return this;
   }
+  /**
+   * Number of events that were successfully processed from the events.
+   **/
+  public ConversionApiResponse numEventsProcessed(Integer numEventsProcessed) {
+    this.numEventsProcessed = numEventsProcessed;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "Number of events that were successfully processed from the events.")
+  @JsonProperty(required = true, value = "num_events_processed")
+  @NotNull public Integer getNumEventsProcessed() {
+    return numEventsProcessed;
+  }
+
+  @JsonProperty(required = true, value = "num_events_processed")
+  public void setNumEventsProcessed(Integer numEventsProcessed) {
+    this.numEventsProcessed = numEventsProcessed;
+  }
+
+  /**
+   * Total number of events received in the request.
+   **/
+  public ConversionApiResponse numEventsReceived(Integer numEventsReceived) {
+    this.numEventsReceived = numEventsReceived;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "Total number of events received in the request.")
+  @JsonProperty(required = true, value = "num_events_received")
+  @NotNull public Integer getNumEventsReceived() {
+    return numEventsReceived;
+  }
+
+  @JsonProperty(required = true, value = "num_events_received")
+  public void setNumEventsReceived(Integer numEventsReceived) {
+    this.numEventsReceived = numEventsReceived;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -128,14 +128,14 @@ public class ConversionApiResponse   {
       return false;
     }
     ConversionApiResponse conversionApiResponse = (ConversionApiResponse) o;
-    return Objects.equals(this.numEventsReceived, conversionApiResponse.numEventsReceived) &&
+    return Objects.equals(this.events, conversionApiResponse.events) &&
         Objects.equals(this.numEventsProcessed, conversionApiResponse.numEventsProcessed) &&
-        Objects.equals(this.events, conversionApiResponse.events);
+        Objects.equals(this.numEventsReceived, conversionApiResponse.numEventsReceived);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(numEventsReceived, numEventsProcessed, events);
+    return Objects.hash(events, numEventsProcessed, numEventsReceived);
   }
 
   @Override
@@ -143,9 +143,9 @@ public class ConversionApiResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionApiResponse {\n");
     
-    sb.append("    numEventsReceived: ").append(toIndentedString(numEventsReceived)).append("\n");
-    sb.append("    numEventsProcessed: ").append(toIndentedString(numEventsProcessed)).append("\n");
     sb.append("    events: ").append(toIndentedString(events)).append("\n");
+    sb.append("    numEventsProcessed: ").append(toIndentedString(numEventsProcessed)).append("\n");
+    sb.append("    numEventsReceived: ").append(toIndentedString(numEventsReceived)).append("\n");
     sb.append("}");
     return sb.toString();
   }

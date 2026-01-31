@@ -1,0 +1,14 @@
+package models
+
+// CampaignBidOptionsUpdate - Object describing an update to the campaign level bid multipliers.
+type CampaignBidOptionsUpdate struct {
+
+	AppTypeMultipliers *AppTypeMultipliers `json:"app_type_multipliers,omitempty"`
+
+	AudienceMultipliers CampaignAudienceMultipliers `json:"audience_multipliers,omitempty"`
+
+	PlacementMultipliers *PlacementMultipliers `json:"placement_multipliers,omitempty"`
+
+	// List of fields to update, only the fields in the list will be updated.
+	UpdateMask []string `json:"update_mask"`
+}

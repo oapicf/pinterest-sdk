@@ -1,26 +1,26 @@
 
-# TargetingSpecSHOPPINGRETARGETING
+# TargetingSpecShoppingRetargeting
 
 
 ## Properties
 
 Name | Type
 ------------ | -------------
+`exclusionWindow` | number
 `lookbackWindow` | number
 `tagTypes` | Array&lt;number&gt;
-`exclusionWindow` | number
 
 ## Example
 
 ```typescript
-import type { TargetingSpecSHOPPINGRETARGETING } from ''
+import type { TargetingSpecShoppingRetargeting } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "exclusionWindow": 14,
   "lookbackWindow": 30,
   "tagTypes": [0,6],
-  "exclusionWindow": 14,
-} satisfies TargetingSpecSHOPPINGRETARGETING
+} satisfies TargetingSpecShoppingRetargeting
 
 console.log(example)
 
@@ -29,7 +29,7 @@ const exampleJSON: string = JSON.stringify(example)
 console.log(exampleJSON)
 
 // Parse the JSON string back to an object
-const exampleParsed = JSON.parse(exampleJSON) as TargetingSpecSHOPPINGRETARGETING
+const exampleParsed = JSON.parse(exampleJSON) as TargetingSpecShoppingRetargeting
 console.log(exampleParsed)
 ```
 

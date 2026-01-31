@@ -7,8 +7,8 @@
 
 (def related-terms-related-terms-list-inner-data
   {
-   (ds/opt :term) string?
    (ds/opt :related_terms) (s/coll-of string?)
+   (ds/opt :term) string?
    })
 
 (def related-terms-related-terms-list-inner-spec

@@ -7,26 +7,26 @@
 -type openapi_oauth_access_token_response_integration_refresh() ::
     #{ 'refresh_token' := binary(),
        'refresh_token_expires_in' := integer(),
-       'response_type' => binary(),
        'access_token' := binary(),
-       'token_type' := binary(),
        'expires_in' := integer(),
-       'scope' := binary()
+       'response_type' => binary(),
+       'scope' := binary(),
+       'token_type' := binary()
      }.
 
 encode(#{ 'refresh_token' := RefreshToken,
           'refresh_token_expires_in' := RefreshTokenExpiresIn,
-          'response_type' := ResponseType,
           'access_token' := AccessToken,
-          'token_type' := TokenType,
           'expires_in' := ExpiresIn,
-          'scope' := Scope
+          'response_type' := ResponseType,
+          'scope' := Scope,
+          'token_type' := TokenType
         }) ->
     #{ 'refresh_token' => RefreshToken,
        'refresh_token_expires_in' => RefreshTokenExpiresIn,
-       'response_type' => ResponseType,
        'access_token' => AccessToken,
-       'token_type' => TokenType,
        'expires_in' => ExpiresIn,
-       'scope' => Scope
+       'response_type' => ResponseType,
+       'scope' => Scope,
+       'token_type' => TokenType
      }.

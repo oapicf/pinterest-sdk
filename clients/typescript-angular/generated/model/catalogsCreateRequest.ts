@@ -7,26 +7,20 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { CatalogsType } from './catalogsType';
 
 
 /**
  * Request object for creating a catalog.
  */
 export interface CatalogsCreateRequest { 
-    /**
-     * Type of the catalog entity.
-     */
-    catalog_type: CatalogsCreateRequest.CatalogTypeEnum;
+    catalog_type: CatalogsType;
     /**
      * A human-friendly name associated to a given catalog.
      */
     name: string;
 }
 export namespace CatalogsCreateRequest {
-    export const CatalogTypeEnum = {
-        Hotel: 'HOTEL'
-    } as const;
-    export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
 }
 
 

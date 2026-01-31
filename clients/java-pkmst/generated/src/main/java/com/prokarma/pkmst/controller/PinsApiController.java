@@ -1,5 +1,6 @@
 package com.prokarma.pkmst.controller;
 
+import com.prokarma.pkmst.model.CreativeType;
 import com.prokarma.pkmst.model.Error;
 import java.util.List;
 import java.time.LocalDate;
@@ -10,6 +11,7 @@ import com.prokarma.pkmst.model.PinCreate;
 import com.prokarma.pkmst.model.PinUpdate;
 import com.prokarma.pkmst.model.PinsList200Response;
 import com.prokarma.pkmst.model.PinsSaveRequest;
+import com.prokarma.pkmst.model.PinterestLibError;
 
 import io.swagger.annotations.*;
 
@@ -32,7 +34,7 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Controller
 public class PinsApiController implements PinsApi {
     private final ObjectMapper objectMapper;
@@ -109,10 +111,20 @@ public class PinsApiController implements PinsApi {
         return new ResponseEntity<Map<String, PinAnalyticsMetricsResponse>>(HttpStatus.OK);
     }
 
-    public ResponseEntity<Pin> pinsCreate(@ApiParam(value = "Create a new Pin." ,required=true )   @RequestBody PinCreate pinCreate,
+    public ResponseEntity<Pin> pinsCreate(@ApiParam(value = "" ,required=true )   @RequestBody PinCreate pinCreate,
         @ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<Pin>(objectMapper.readValue("", Pin.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<Pin>(objectMapper.readValue("", Pin.class), HttpStatus.OK);
+        }
+
 
         if (accept != null && accept.contains("application/json")) {
             return new ResponseEntity<Pin>(objectMapper.readValue("", Pin.class), HttpStatus.OK);
@@ -146,10 +158,25 @@ public class PinsApiController implements PinsApi {
         return new ResponseEntity<Pin>(HttpStatus.OK);
     }
 
-    public ResponseEntity<Void> pinsDelete(@ApiParam(value = "Unique identifier of a Pin.",required=true ) @PathVariable("pin_id") String pinId,
+    public ResponseEntity<Void> pinsDelete(@ApiParam(value = "",required=true ) @PathVariable("pin_id") String pinId,
         @ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<Void>(objectMapper.readValue("", Void.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<Void>(objectMapper.readValue("", Void.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<Void>(objectMapper.readValue("", Void.class), HttpStatus.OK);
+        }
+
 
         if (accept != null && accept.contains("application/json")) {
             return new ResponseEntity<Void>(objectMapper.readValue("", Void.class), HttpStatus.OK);
@@ -168,11 +195,26 @@ public class PinsApiController implements PinsApi {
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
-    public ResponseEntity<Pin> pinsGet(@ApiParam(value = "Unique identifier of a Pin.",required=true ) @PathVariable("pin_id") String pinId,
-        @ApiParam(value = "Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", defaultValue = "false")  @RequestParam(value = "pin_metrics", required = false, defaultValue="false") Boolean pinMetrics,
+    public ResponseEntity<Pin> pinsGet(@ApiParam(value = "",required=true ) @PathVariable("pin_id") String pinId,
         @ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId,
+        @ApiParam(value = "Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", defaultValue = "false")  @RequestParam(value = "pin_metrics", required = false, defaultValue="false") Boolean pinMetrics,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<Pin>(objectMapper.readValue("", Pin.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<Pin>(objectMapper.readValue("", Pin.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<Pin>(objectMapper.readValue("", Pin.class), HttpStatus.OK);
+        }
+
 
         if (accept != null && accept.contains("application/json")) {
             return new ResponseEntity<Pin>(objectMapper.readValue("", Pin.class), HttpStatus.OK);
@@ -196,16 +238,36 @@ public class PinsApiController implements PinsApi {
         return new ResponseEntity<Pin>(HttpStatus.OK);
     }
 
-    public ResponseEntity<PinsList200Response> pinsList(@ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,
-        @ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,
-        @ApiParam(value = "Pin filter.", allowableValues = "exclude_native, exclude_repins, has_been_promoted")  @RequestParam(value = "pin_filter", required = false) String pinFilter,
-        @ApiParam(value = "Specify if return pins from protected boards", defaultValue = "false")  @RequestParam(value = "include_protected_pins", required = false, defaultValue="false") Boolean includeProtectedPins,
+    public ResponseEntity<PinsList200Response> pinsList(@ApiParam(value = "The filter to apply to the pins", allowableValues = "exclude_native, exclude_repins, has_been_promoted")  @RequestParam(value = "pin_filter", required = false) String pinFilter,
+        @ApiParam(value = "Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", defaultValue = "false")  @RequestParam(value = "pin_metrics", required = false, defaultValue="false") Boolean pinMetrics,
+        @ApiParam(value = "Whether to include protected pins in the results", defaultValue = "false")  @RequestParam(value = "include_protected_pins", required = false, defaultValue="false") Boolean includeProtectedPins,
         @ApiParam(value = "The type of pins to return, currently only enabled for private pins", allowableValues = "PRIVATE")  @RequestParam(value = "pin_type", required = false) String pinType,
-        @ApiParam(value = "Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.", allowableValues = "REGULAR, VIDEO, SHOPPING, CAROUSEL, MAX_VIDEO, SHOP_THE_PIN, COLLECTION, IDEA")  @RequestParam(value = "creative_types", required = false) List<String> creativeTypes,
+        @ApiParam(value = "Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.")  @RequestParam(value = "creative_types", required = false) List<CreativeType> creativeTypes,
         @ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId,
-        @ApiParam(value = "Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", defaultValue = "false")  @RequestParam(value = "pin_metrics", required = false, defaultValue="false") Boolean pinMetrics,
+        @ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,
+        @ApiParam(value = "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<PinsList200Response>(objectMapper.readValue("", PinsList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<PinsList200Response>(objectMapper.readValue("", PinsList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<PinsList200Response>(objectMapper.readValue("", PinsList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<PinsList200Response>(objectMapper.readValue("", PinsList200Response.class), HttpStatus.OK);
+        }
+
 
         if (accept != null && accept.contains("application/json")) {
             return new ResponseEntity<PinsList200Response>(objectMapper.readValue("", PinsList200Response.class), HttpStatus.OK);
@@ -252,11 +314,21 @@ public class PinsApiController implements PinsApi {
         return new ResponseEntity<Pin>(HttpStatus.OK);
     }
 
-    public ResponseEntity<Pin> pinsUpdate(@ApiParam(value = "Unique identifier of a Pin.",required=true ) @PathVariable("pin_id") String pinId,
+    public ResponseEntity<Pin> pinsUpdate(@ApiParam(value = "",required=true ) @PathVariable("pin_id") String pinId,
         @ApiParam(value = "" ,required=true )   @RequestBody PinUpdate pinUpdate,
         @ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<Pin>(objectMapper.readValue("", Pin.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<Pin>(objectMapper.readValue("", Pin.class), HttpStatus.OK);
+        }
+
 
         if (accept != null && accept.contains("application/json")) {
             return new ResponseEntity<Pin>(objectMapper.readValue("", Pin.class), HttpStatus.OK);

@@ -13,58 +13,24 @@ import javax.validation.Valid;
 /**
  * Schema describing the object in the response, which contains information about the events that were received and processed.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class ConversionApiResponse   {
-  @JsonProperty("num_events_received")
-  @NotNull
-
-  private Integer numEventsReceived;
-
-  @JsonProperty("num_events_processed")
-  @NotNull
-
-  private Integer numEventsProcessed;
-
   @JsonProperty("events")
   @NotNull
 @Valid
 
   private List<@Valid ConversionApiResponseEventsInner> events = new ArrayList<>();
 
-  public ConversionApiResponse numEventsReceived(Integer numEventsReceived) {
-    this.numEventsReceived = numEventsReceived;
-    return this;
-  }
+  @JsonProperty("num_events_processed")
+  @NotNull
 
-   /**
-   * Total number of events received in the request.
-   * @return numEventsReceived
-  **/
-  public Integer getNumEventsReceived() {
-    return numEventsReceived;
-  }
+  private Integer numEventsProcessed;
 
-  public void setNumEventsReceived(Integer numEventsReceived) {
-    this.numEventsReceived = numEventsReceived;
-  }
+  @JsonProperty("num_events_received")
+  @NotNull
 
-  public ConversionApiResponse numEventsProcessed(Integer numEventsProcessed) {
-    this.numEventsProcessed = numEventsProcessed;
-    return this;
-  }
-
-   /**
-   * Number of events that were successfully processed from the events.
-   * @return numEventsProcessed
-  **/
-  public Integer getNumEventsProcessed() {
-    return numEventsProcessed;
-  }
-
-  public void setNumEventsProcessed(Integer numEventsProcessed) {
-    this.numEventsProcessed = numEventsProcessed;
-  }
+  private Integer numEventsReceived;
 
   public ConversionApiResponse events(List<@Valid ConversionApiResponseEventsInner> events) {
     this.events = events;
@@ -91,6 +57,40 @@ public class ConversionApiResponse   {
     this.events = events;
   }
 
+  public ConversionApiResponse numEventsProcessed(Integer numEventsProcessed) {
+    this.numEventsProcessed = numEventsProcessed;
+    return this;
+  }
+
+   /**
+   * Number of events that were successfully processed from the events.
+   * @return numEventsProcessed
+  **/
+  public Integer getNumEventsProcessed() {
+    return numEventsProcessed;
+  }
+
+  public void setNumEventsProcessed(Integer numEventsProcessed) {
+    this.numEventsProcessed = numEventsProcessed;
+  }
+
+  public ConversionApiResponse numEventsReceived(Integer numEventsReceived) {
+    this.numEventsReceived = numEventsReceived;
+    return this;
+  }
+
+   /**
+   * Total number of events received in the request.
+   * @return numEventsReceived
+  **/
+  public Integer getNumEventsReceived() {
+    return numEventsReceived;
+  }
+
+  public void setNumEventsReceived(Integer numEventsReceived) {
+    this.numEventsReceived = numEventsReceived;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -101,14 +101,14 @@ public class ConversionApiResponse   {
       return false;
     }
     ConversionApiResponse conversionApiResponse = (ConversionApiResponse) o;
-    return Objects.equals(numEventsReceived, conversionApiResponse.numEventsReceived) &&
+    return Objects.equals(events, conversionApiResponse.events) &&
         Objects.equals(numEventsProcessed, conversionApiResponse.numEventsProcessed) &&
-        Objects.equals(events, conversionApiResponse.events);
+        Objects.equals(numEventsReceived, conversionApiResponse.numEventsReceived);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(numEventsReceived, numEventsProcessed, events);
+    return Objects.hash(events, numEventsProcessed, numEventsReceived);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -117,9 +117,9 @@ public class ConversionApiResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionApiResponse {\n");
     
-    sb.append("    numEventsReceived: ").append(toIndentedString(numEventsReceived)).append("\n");
-    sb.append("    numEventsProcessed: ").append(toIndentedString(numEventsProcessed)).append("\n");
     sb.append("    events: ").append(toIndentedString(events)).append("\n");
+    sb.append("    numEventsProcessed: ").append(toIndentedString(numEventsProcessed)).append("\n");
+    sb.append("    numEventsReceived: ").append(toIndentedString(numEventsReceived)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -12,10 +12,10 @@ import org.joda.time.DateTime
 import CatalogsProductGroupPricingCurrencyCriteria._
 
 case class CatalogsProductGroupPricingCurrencyCriteria (
-  operator: Operator,
-value: BigDecimal,
-currency: NonNullableCatalogsCurrency,
-negated: Option[Boolean])
+  currency: NonNullableCatalogsCurrency,
+negated: Option[Boolean],
+operator: Operator,
+value: BigDecimal)
 
 object CatalogsProductGroupPricingCurrencyCriteria {
   import DateTimeCodecs._

@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ImageCoverUrl** | **String** | Board cover image. | [optional] 
+**ImageCoverUrl** | **String** | Board cover image | [optional] 
 **PinThumbnailUrls** | **String[]** | Board pin thumbnail urls. | [optional] 
 
 ## Examples

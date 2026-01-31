@@ -1,7 +1,6 @@
 
 # BoardMedia
 
-Board media.
 
 ## Properties
 

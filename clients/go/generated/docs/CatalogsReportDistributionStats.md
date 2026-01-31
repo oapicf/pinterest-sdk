@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ReportType** | Pointer to **string** |  | [optional] 
 **CatalogId** | Pointer to **string** | ID of the catalog entity. | [optional] 
 **Code** | Pointer to **int32** | The event code that a diagnostics aggregated number references | [optional] 
 **CodeLabel** | Pointer to **string** | A human-friendly label for the event code (e.g, &#39;SPAM&#39;) | [optional] 
-**Message** | Pointer to **string** | Title message describing the diagnostic issue | [optional] 
-**Occurrences** | Pointer to **int32** | Number of occurrences of the issue | [optional] 
 **IneligibleForAds** | Pointer to **bool** | Indicates if issue makes items ineligible for ads distribution | [optional] 
 **IneligibleForOrganic** | Pointer to **bool** | Indicates if issue makes items ineligible for organic distribution | [optional] 
+**Message** | Pointer to **string** | Title message describing the diagnostic issue | [optional] 
+**Occurrences** | Pointer to **int32** | Number of occurrences of the issue | [optional] 
+**ReportType** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -31,31 +31,6 @@ will change when the set of required properties is changed
 NewCatalogsReportDistributionStatsWithDefaults instantiates a new CatalogsReportDistributionStats object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetReportType
-
-`func (o *CatalogsReportDistributionStats) GetReportType() string`
-
-GetReportType returns the ReportType field if non-nil, zero value otherwise.
-
-### GetReportTypeOk
-
-`func (o *CatalogsReportDistributionStats) GetReportTypeOk() (*string, bool)`
-
-GetReportTypeOk returns a tuple with the ReportType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReportType
-
-`func (o *CatalogsReportDistributionStats) SetReportType(v string)`
-
-SetReportType sets ReportType field to given value.
-
-### HasReportType
-
-`func (o *CatalogsReportDistributionStats) HasReportType() bool`
-
-HasReportType returns a boolean if a field has been set.
 
 ### GetCatalogId
 
@@ -132,6 +107,56 @@ SetCodeLabel sets CodeLabel field to given value.
 
 HasCodeLabel returns a boolean if a field has been set.
 
+### GetIneligibleForAds
+
+`func (o *CatalogsReportDistributionStats) GetIneligibleForAds() bool`
+
+GetIneligibleForAds returns the IneligibleForAds field if non-nil, zero value otherwise.
+
+### GetIneligibleForAdsOk
+
+`func (o *CatalogsReportDistributionStats) GetIneligibleForAdsOk() (*bool, bool)`
+
+GetIneligibleForAdsOk returns a tuple with the IneligibleForAds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIneligibleForAds
+
+`func (o *CatalogsReportDistributionStats) SetIneligibleForAds(v bool)`
+
+SetIneligibleForAds sets IneligibleForAds field to given value.
+
+### HasIneligibleForAds
+
+`func (o *CatalogsReportDistributionStats) HasIneligibleForAds() bool`
+
+HasIneligibleForAds returns a boolean if a field has been set.
+
+### GetIneligibleForOrganic
+
+`func (o *CatalogsReportDistributionStats) GetIneligibleForOrganic() bool`
+
+GetIneligibleForOrganic returns the IneligibleForOrganic field if non-nil, zero value otherwise.
+
+### GetIneligibleForOrganicOk
+
+`func (o *CatalogsReportDistributionStats) GetIneligibleForOrganicOk() (*bool, bool)`
+
+GetIneligibleForOrganicOk returns a tuple with the IneligibleForOrganic field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIneligibleForOrganic
+
+`func (o *CatalogsReportDistributionStats) SetIneligibleForOrganic(v bool)`
+
+SetIneligibleForOrganic sets IneligibleForOrganic field to given value.
+
+### HasIneligibleForOrganic
+
+`func (o *CatalogsReportDistributionStats) HasIneligibleForOrganic() bool`
+
+HasIneligibleForOrganic returns a boolean if a field has been set.
+
 ### GetMessage
 
 `func (o *CatalogsReportDistributionStats) GetMessage() string`
@@ -182,55 +207,30 @@ SetOccurrences sets Occurrences field to given value.
 
 HasOccurrences returns a boolean if a field has been set.
 
-### GetIneligibleForAds
+### GetReportType
 
-`func (o *CatalogsReportDistributionStats) GetIneligibleForAds() bool`
+`func (o *CatalogsReportDistributionStats) GetReportType() string`
 
-GetIneligibleForAds returns the IneligibleForAds field if non-nil, zero value otherwise.
+GetReportType returns the ReportType field if non-nil, zero value otherwise.
 
-### GetIneligibleForAdsOk
+### GetReportTypeOk
 
-`func (o *CatalogsReportDistributionStats) GetIneligibleForAdsOk() (*bool, bool)`
+`func (o *CatalogsReportDistributionStats) GetReportTypeOk() (*string, bool)`
 
-GetIneligibleForAdsOk returns a tuple with the IneligibleForAds field if it's non-nil, zero value otherwise
+GetReportTypeOk returns a tuple with the ReportType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIneligibleForAds
+### SetReportType
 
-`func (o *CatalogsReportDistributionStats) SetIneligibleForAds(v bool)`
+`func (o *CatalogsReportDistributionStats) SetReportType(v string)`
 
-SetIneligibleForAds sets IneligibleForAds field to given value.
+SetReportType sets ReportType field to given value.
 
-### HasIneligibleForAds
+### HasReportType
 
-`func (o *CatalogsReportDistributionStats) HasIneligibleForAds() bool`
+`func (o *CatalogsReportDistributionStats) HasReportType() bool`
 
-HasIneligibleForAds returns a boolean if a field has been set.
-
-### GetIneligibleForOrganic
-
-`func (o *CatalogsReportDistributionStats) GetIneligibleForOrganic() bool`
-
-GetIneligibleForOrganic returns the IneligibleForOrganic field if non-nil, zero value otherwise.
-
-### GetIneligibleForOrganicOk
-
-`func (o *CatalogsReportDistributionStats) GetIneligibleForOrganicOk() (*bool, bool)`
-
-GetIneligibleForOrganicOk returns a tuple with the IneligibleForOrganic field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIneligibleForOrganic
-
-`func (o *CatalogsReportDistributionStats) SetIneligibleForOrganic(v bool)`
-
-SetIneligibleForOrganic sets IneligibleForOrganic field to given value.
-
-### HasIneligibleForOrganic
-
-`func (o *CatalogsReportDistributionStats) HasIneligibleForOrganic() bool`
-
-HasIneligibleForOrganic returns a boolean if a field has been set.
+HasReportType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

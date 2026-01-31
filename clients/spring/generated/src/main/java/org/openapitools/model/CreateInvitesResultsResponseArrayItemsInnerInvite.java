@@ -23,7 +23,7 @@ import javax.annotation.Generated;
 
 @Schema(name = "CreateInvitesResultsResponseArray_items_inner_invite", description = "An invite object if the invite/request was successfully created. Will only be provided if the an invite/request is successfully created.")
 @JsonTypeName("CreateInvitesResultsResponseArray_items_inner_invite")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreateInvitesResultsResponseArrayItemsInnerInvite {
 
   private @Nullable String id;

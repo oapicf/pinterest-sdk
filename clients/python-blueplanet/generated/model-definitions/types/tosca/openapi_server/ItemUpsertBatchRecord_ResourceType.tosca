@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ItemUpsertBatchRecord"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ItemUpsertBatchRecord"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ItemAttributesRequest = openapi_server.resourceTypes.ItemAttributesRequest
+}
+resourceTypes {
+
+  ItemUpsertBatchRecord {
+    title = ItemUpsertBatchRecord
+    description = ItemUpsertBatchRecord
+    derivedFrom = Root
+    properties {
+        attributes {
+          type = ItemAttributesRequest
+          description = ""
+          optional = false
+        }
+        item_id {
+          type =  string
+          description = "The catalog item id in the merchant namespace"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ItemUpsertBatchRecord {
+    title = ItemUpsertBatchRecord
+    description = ItemUpsertBatchRecord
+    implements = openapi_server.resourceTypes.ItemUpsertBatchRecord
+
+  }
+}

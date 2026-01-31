@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsDeleteRetailItem`
 --
-SELECT `item_id`, `operation` FROM `CatalogsDeleteRetailItem` WHERE 1;
+SELECT `item_id`, `last_updated_time`, `operation` FROM `CatalogsDeleteRetailItem` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsDeleteRetailItem`
 --
-INSERT INTO `CatalogsDeleteRetailItem`(`item_id`, `operation`) VALUES (?, ?);
+INSERT INTO `CatalogsDeleteRetailItem`(`item_id`, `last_updated_time`, `operation`) VALUES (?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsDeleteRetailItem`
 --
-UPDATE `CatalogsDeleteRetailItem` SET `item_id` = ?, `operation` = ? WHERE 1;
+UPDATE `CatalogsDeleteRetailItem` SET `item_id` = ?, `last_updated_time` = ?, `operation` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsDeleteRetailItem`

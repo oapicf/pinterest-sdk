@@ -65,13 +65,13 @@
       "default": null
     },
     {
-      "name": "ITEMID_MISSING",
+      "name": "ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE",
       "type": ["null", "model.CatalogsItemValidationDetails"],
       "doc": "",
       "default": null
     },
     {
-      "name": "ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE",
+      "name": "ITEMID_MISSING",
       "type": ["null", "model.CatalogsItemValidationDetails"],
       "doc": "",
       "default": null

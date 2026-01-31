@@ -14,19 +14,19 @@ import org.openapitools.model.NullableCurrency;
 @Canonical
 class CatalogsHotelFeedsUpdateRequest {
     
-    NullableCurrency defaultCurrency
-    /* A human-friendly name associated to a given feed. */
-    String name
-    
-    CatalogsFormat format
+    CatalogsType catalogType
     
     CatalogsFeedCredentials credentials
+    
+    NullableCurrency defaultCurrency
+    
+    CatalogsFormat format
     /* The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
     String location
+    /* A human-friendly name associated to a given feed. */
+    String name
     
     CatalogsFeedProcessingSchedule preferredProcessingSchedule
     
     CatalogsStatus status
-    
-    CatalogsType catalogType
 }

@@ -8,7 +8,7 @@
 #' @description AdvancedAuctionProcessedItems Class
 #' @format An \code{R6Class} generator object
 #' @field catalog_id Catalog id pertaining to all items character [optional]
-#' @field items Array of advanced auction processed items list(\link{AdvancedAuctionProcessedItem}) [optional]
+#' @field items Array of advanced auction processed items list(\link{AdvancedAuctionItemsSubmitRecord}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -91,7 +91,7 @@ AdvancedAuctionProcessedItems <- R6::R6Class(
         self$`catalog_id` <- this_object$`catalog_id`
       }
       if (!is.null(this_object$`items`)) {
-        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[AdvancedAuctionProcessedItem]", loadNamespace("openapi"))
+        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[AdvancedAuctionItemsSubmitRecord]", loadNamespace("openapi"))
       }
       self
     },
@@ -115,7 +115,7 @@ AdvancedAuctionProcessedItems <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`catalog_id` <- this_object$`catalog_id`
-      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[AdvancedAuctionProcessedItem]", loadNamespace("openapi"))
+      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[AdvancedAuctionItemsSubmitRecord]", loadNamespace("openapi"))
       self
     },
 

@@ -27,15 +27,15 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-"18-24""android_mobile""unknown"
-$TargetingSpecSHOPPINGRETARGETING = Initialize-TargetingSpecSHOPPINGRETARGETING -LookbackWindow 30 -TagTypes 0 -ExclusionWindow 14
-"CHOOSE_YOUR_OWN"$TargetingSpec = Initialize-TargetingSpec -AGEBUCKET "18-24" -APPTYPE "18-24""android_mobile" -AUDIENCEEXCLUDE "MyAUDIENCEEXCLUDE" -AUDIENCEINCLUDE "MyAUDIENCEINCLUDE" -GENDER "18-24""android_mobile""unknown" -GEO "MyGEO" -INTEREST "MyINTEREST" -LOCALE "MyLOCALE" -LOCATION "MyLOCATION" -SHOPPINGRETARGETING $TargetingSpecSHOPPINGRETARGETING -TARGETINGSTRATEGY "18-24""android_mobile""unknown"
-$TargetingSpecSHOPPINGRETARGETING = Initialize-TargetingSpecSHOPPINGRETARGETING -LookbackWindow 30 -TagTypes 0 -ExclusionWindow 14
+$TargetingTemplateKeyword = Initialize-TargetingTemplateKeyword -MatchType "BROAD" -Value "couples halloween costumes"
+
+$TargetingSpecShoppingRetargeting = Initialize-TargetingSpecShoppingRetargeting -ExclusionWindow 14 -LookbackWindow 30 -TagTypes 0
+"CHOOSE_YOUR_OWN"$TargetingSpec = Initialize-TargetingSpec -AGEBUCKET "18-24" -APPTYPE "android_mobile" -AUDIENCEEXCLUDE "MyAUDIENCEEXCLUDE" -AUDIENCEINCLUDE "MyAUDIENCEINCLUDE" -GENDER "unknown" -GEO "MyGEO" -INTEREST "MyINTEREST" -LOCALE "MyLOCALE" -LOCATION "MyLOCATION" -MAXIMUMAGE "65+" -MINIMUMAGE "18" -SHOPPINGRETARGETING $TargetingSpecShoppingRetargeting -TARGETINGSTRATEGY 
+$TargetingSpecShoppingRetargeting = Initialize-TargetingSpecShoppingRetargeting -ExclusionWindow 14 -LookbackWindow 30 -TagTypes 0
 "CHOOSE_YOUR_OWN"
 
-$TargetingTemplateKeyword = Initialize-TargetingTemplateKeyword -MatchType "BROAD" -Value "couples halloween costumes"
-$TrackingUrls = Initialize-TrackingUrls -Impression "MyImpression" -Click "MyClick" -Engagement "MyEngagement" -BuyableButton "MyBuyableButton" -AudienceVerification "MyAudienceVerification"
-$TargetingTemplateCreate = Initialize-TargetingTemplateCreate -Name "Gaming" -AutoTargetingEnabled $false -TargetingAttributes $TargetingSpec -PlacementGroup "ALL" -Keywords $TargetingTemplateKeyword -TrackingUrls $TrackingUrls # TargetingTemplateCreate | targeting template creation entity
+$TrackingUrls = Initialize-TrackingUrls -AudienceVerification "MyAudienceVerification" -BuyableButton "MyBuyableButton" -Click "MyClick" -Engagement "MyEngagement" -Impression "MyImpression"
+$TargetingTemplateCreate = Initialize-TargetingTemplateCreate -AutoTargetingEnabled $false -Keywords $TargetingTemplateKeyword -Name "Gaming" -PlacementGroup "ALL" -TargetingAttributes $TargetingSpec -TrackingUrls $TrackingUrls # TargetingTemplateCreate | targeting template creation entity
 
 # Create targeting templates
 try {
@@ -89,6 +89,9 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
+# Configure OAuth2 access token for authorization: client_credentials
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $Order = "ASCENDING" # String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 $IncludeSizing = $true # Boolean | Include audience sizing in result or not (optional) (default to $false)
@@ -122,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -149,7 +152,12 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$TargetingTemplateUpdateRequest = Initialize-TargetingTemplateUpdateRequest -OperationType "REMOVE" -Id "643" # TargetingTemplateUpdateRequest | Operation type and targeting template ID
+$TargetingSpecShoppingRetargeting = Initialize-TargetingSpecShoppingRetargeting -ExclusionWindow 14 -LookbackWindow 30 -TagTypes 0
+"CHOOSE_YOUR_OWN"$TargetingSpec = Initialize-TargetingSpec -AGEBUCKET "18-24" -APPTYPE "android_mobile" -AUDIENCEEXCLUDE "MyAUDIENCEEXCLUDE" -AUDIENCEINCLUDE "MyAUDIENCEINCLUDE" -GENDER "unknown" -GEO "MyGEO" -INTEREST "MyINTEREST" -LOCALE "MyLOCALE" -LOCATION "MyLOCATION" -MAXIMUMAGE "65+" -MINIMUMAGE "18" -SHOPPINGRETARGETING $TargetingSpecShoppingRetargeting -TARGETINGSTRATEGY 
+$TargetingSpecShoppingRetargeting = Initialize-TargetingSpecShoppingRetargeting -ExclusionWindow 14 -LookbackWindow 30 -TagTypes 0
+"CHOOSE_YOUR_OWN"
+
+$TargetingTemplateUpdateRequest = Initialize-TargetingTemplateUpdateRequest -Id "643" -OperationType "REMOVE" -TargetingAttributes $TargetingSpec # TargetingTemplateUpdateRequest | Operation type and targeting template ID
 
 # Update targeting templates
 try {

@@ -8,9 +8,6 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-/**
- * Board media.
- **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BoardMedia   {
   

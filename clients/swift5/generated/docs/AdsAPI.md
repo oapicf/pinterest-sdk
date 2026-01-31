@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 Create ad preview with pin or image
 
-Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href=\"https://help.pinterest.com/en/business/article/promoted-pins-overview\" target=\"_blank\">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
+Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href=\"https://help.pinterest.com/en/business/article/promoted-pins-overview\" target=\"_blank\">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.  Creating ad preview from catalog product group is currently in BETA and is not available to all users.
 
 ### Example
 ```swift
@@ -28,7 +28,7 @@ Create an ad preview given an ad account ID and either an existing organic pin I
 import OpenAPIClient
 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
-let adPreviewRequest = AdPreviewRequest(imageUrl: "imageUrl_example", title: "title_example", pinId: "pinId_example") // AdPreviewRequest | Create ad preview with pin or image.
+let adPreviewRequest = AdPreviewRequest(imageUrl: "imageUrl_example", title: "title_example", pinId: "pinId_example", catalogProductGroupId: "catalogProductGroupId_example", creativeType: "creativeType_example", customizableCtaType: CustomizableCTAType(), heroImageTitle: "heroImageTitle_example", heroImageUrl: "heroImageUrl_example", heroPinId: "heroPinId_example", imageTag: "imageTag_example", itemId: "itemId_example", preferredMediaType: "preferredMediaType_example", videoTag: "videoTag_example") // AdPreviewRequest | Create ad preview with pin or image.
 
 // Create ad preview with pin or image
 AdsAPI.adPreviewsCreate(adAccountId: adAccountId, adPreviewRequest: adPreviewRequest) { (response, error) in
@@ -67,12 +67,12 @@ Name | Type | Description  | Notes
 
 # **adTargetingAnalyticsGet**
 ```swift
-    open class func adTargetingAnalyticsGet(adAccountId: String, adIds: [String], startDate: Date, endDate: Date, targetingTypes: [AdsAnalyticsAdTargetingType], columns: [Columns_adTargetingAnalyticsGet], granularity: Granularity, clickWindowDays: ClickWindowDays_adTargetingAnalyticsGet? = nil, engagementWindowDays: EngagementWindowDays_adTargetingAnalyticsGet? = nil, viewWindowDays: ViewWindowDays_adTargetingAnalyticsGet? = nil, conversionReportTime: ConversionReportTime_adTargetingAnalyticsGet? = nil, attributionTypes: ConversionReportAttributionType? = nil, completion: @escaping (_ data: MetricsResponse?, _ error: Error?) -> Void)
+    open class func adTargetingAnalyticsGet(adAccountId: String, adIds: [String], startDate: Date, endDate: Date, targetingTypes: [AdsAnalyticsAdTargetingType], columns: [Columns_adTargetingAnalyticsGet], granularity: Granularity, clickWindowDays: ClickWindowDays_adTargetingAnalyticsGet? = nil, engagementWindowDays: EngagementWindowDays_adTargetingAnalyticsGet? = nil, viewWindowDays: ViewWindowDays_adTargetingAnalyticsGet? = nil, conversionReportTime: ConversionReportTime_adTargetingAnalyticsGet? = nil, attributionTypes: [ConversionReportAttributionType]? = nil, reportingTimezone: ReportingTimeZone? = nil, completion: @escaping (_ data: MetricsResponse?, _ error: Error?) -> Void)
 ```
 
 Get targeting analytics for ads
 
-Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 
 ### Example
 ```swift
@@ -87,13 +87,14 @@ let targetingTypes = [AdsAnalyticsAdTargetingType()] // [AdsAnalyticsAdTargeting
 let columns = ["columns_example"] // [String] | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
 let granularity = Granularity() // Granularity | TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
 let clickWindowDays = 987 // Int | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to ._30)
-let engagementWindowDays = 987 // Int | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to ._30)
+let engagementWindowDays = 987 // Int | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (optional) (default to ._30)
 let viewWindowDays = 987 // Int | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional) (default to ._1)
 let conversionReportTime = "conversionReportTime_example" // String | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional) (default to .timeOfAdAction)
-let attributionTypes = ConversionReportAttributionType() // ConversionReportAttributionType | List of types of attribution for the conversion report (optional)
+let attributionTypes = [ConversionReportAttributionType()] // [ConversionReportAttributionType] | List of types of attribution for the conversion report (optional)
+let reportingTimezone = ReportingTimeZone() // ReportingTimeZone | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
 
 // Get targeting analytics for ads
-AdsAPI.adTargetingAnalyticsGet(adAccountId: adAccountId, adIds: adIds, startDate: startDate, endDate: endDate, targetingTypes: targetingTypes, columns: columns, granularity: granularity, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, attributionTypes: attributionTypes) { (response, error) in
+AdsAPI.adTargetingAnalyticsGet(adAccountId: adAccountId, adIds: adIds, startDate: startDate, endDate: endDate, targetingTypes: targetingTypes, columns: columns, granularity: granularity, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, attributionTypes: attributionTypes, reportingTimezone: reportingTimezone) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -117,10 +118,11 @@ Name | Type | Description  | Notes
  **columns** | [**[String]**](String.md) | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned | 
  **granularity** | [**Granularity**](.md) | TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | 
  **clickWindowDays** | **Int** | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to ._30]
- **engagementWindowDays** | **Int** | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to ._30]
+ **engagementWindowDays** | **Int** | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. | [optional] [default to ._30]
  **viewWindowDays** | **Int** | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional] [default to ._1]
  **conversionReportTime** | **String** | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [optional] [default to .timeOfAdAction]
- **attributionTypes** | [**ConversionReportAttributionType**](.md) | List of types of attribution for the conversion report | [optional] 
+ **attributionTypes** | [**[ConversionReportAttributionType]**](ConversionReportAttributionType.md) | List of types of attribution for the conversion report | [optional] 
+ **reportingTimezone** | [**ReportingTimeZone**](.md) | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. | [optional] 
 
 ### Return type
 
@@ -128,7 +130,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -139,12 +141,12 @@ Name | Type | Description  | Notes
 
 # **adsAnalytics**
 ```swift
-    open class func adsAnalytics(adAccountId: String, startDate: Date, endDate: Date, columns: [Columns_adsAnalytics], granularity: Granularity, adIds: [String]? = nil, clickWindowDays: ClickWindowDays_adsAnalytics? = nil, engagementWindowDays: EngagementWindowDays_adsAnalytics? = nil, viewWindowDays: ViewWindowDays_adsAnalytics? = nil, conversionReportTime: ConversionReportTime_adsAnalytics? = nil, pinIds: [String]? = nil, campaignIds: [String]? = nil, completion: @escaping (_ data: [AdsAnalyticsResponseInner]?, _ error: Error?) -> Void)
+    open class func adsAnalytics(adAccountId: String, startDate: Date, endDate: Date, columns: [Columns_adsAnalytics], granularity: Granularity, adIds: [String]? = nil, clickWindowDays: ClickWindowDays_adsAnalytics? = nil, engagementWindowDays: EngagementWindowDays_adsAnalytics? = nil, viewWindowDays: ViewWindowDays_adsAnalytics? = nil, conversionReportTime: ConversionReportTime_adsAnalytics? = nil, pinIds: [String]? = nil, campaignIds: [String]? = nil, reportingTimezone: ReportingTimeZone? = nil, completion: @escaping (_ data: [AdsAnalyticsResponseInner]?, _ error: Error?) -> Void)
 ```
 
 Get ad analytics
 
-Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 
 ### Example
 ```swift
@@ -158,14 +160,15 @@ let columns = ["columns_example"] // [String] | Columns to retrieve, encoded as 
 let granularity = Granularity() // Granularity | TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
 let adIds = ["inner_example"] // [String] | List of Ad Ids to use to filter the results. (optional)
 let clickWindowDays = 987 // Int | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to ._30)
-let engagementWindowDays = 987 // Int | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to ._30)
+let engagementWindowDays = 987 // Int | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (optional) (default to ._30)
 let viewWindowDays = 987 // Int | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional) (default to ._1)
 let conversionReportTime = "conversionReportTime_example" // String | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional) (default to .timeOfAdAction)
 let pinIds = ["inner_example"] // [String] | List of Pin IDs. (optional)
 let campaignIds = ["inner_example"] // [String] | List of Campaign Ids to use to filter the results. (optional)
+let reportingTimezone = ReportingTimeZone() // ReportingTimeZone | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
 
 // Get ad analytics
-AdsAPI.adsAnalytics(adAccountId: adAccountId, startDate: startDate, endDate: endDate, columns: columns, granularity: granularity, adIds: adIds, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, pinIds: pinIds, campaignIds: campaignIds) { (response, error) in
+AdsAPI.adsAnalytics(adAccountId: adAccountId, startDate: startDate, endDate: endDate, columns: columns, granularity: granularity, adIds: adIds, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, pinIds: pinIds, campaignIds: campaignIds, reportingTimezone: reportingTimezone) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -188,11 +191,12 @@ Name | Type | Description  | Notes
  **granularity** | [**Granularity**](.md) | TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | 
  **adIds** | [**[String]**](String.md) | List of Ad Ids to use to filter the results. | [optional] 
  **clickWindowDays** | **Int** | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to ._30]
- **engagementWindowDays** | **Int** | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [optional] [default to ._30]
+ **engagementWindowDays** | **Int** | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. | [optional] [default to ._30]
  **viewWindowDays** | **Int** | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [optional] [default to ._1]
  **conversionReportTime** | **String** | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [optional] [default to .timeOfAdAction]
  **pinIds** | [**[String]**](String.md) | List of Pin IDs. | [optional] 
  **campaignIds** | [**[String]**](String.md) | List of Campaign Ids to use to filter the results. | [optional] 
+ **reportingTimezone** | [**ReportingTimeZone**](.md) | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. | [optional] 
 
 ### Return type
 
@@ -200,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -216,7 +220,7 @@ Name | Type | Description  | Notes
 
 Create ads
 
-Create multiple new ads. Request must contain ad_group_id, creative_type, and the source Pin pin_id.
+Create multiple new ads. Request must contain `ad_group_id`, `creative_type`, and the source Pin `pin_id`.
 
 ### Example
 ```swift
@@ -224,7 +228,7 @@ Create multiple new ads. Request must contain ad_group_id, creative_type, and th
 import OpenAPIClient
 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
-let adCreateRequest = [AdCreateRequest(adGroupId: "adGroupId_example", androidDeepLink: "androidDeepLink_example", carouselAndroidDeepLinks: ["carouselAndroidDeepLinks_example"], carouselDestinationUrls: ["carouselDestinationUrls_example"], carouselIosDeepLinks: ["carouselIosDeepLinks_example"], clickTrackingUrl: "clickTrackingUrl_example", creativeType: CreativeType(), destinationUrl: "destinationUrl_example", iosDeepLink: "iosDeepLink_example", isPinDeleted: false, isRemovable: false, name: "name_example", status: EntityStatus(), trackingUrls: TrackingUrls(impression: ["impression_example"], click: ["click_example"], engagement: ["engagement_example"], buyableButton: ["buyableButton_example"], audienceVerification: ["audienceVerification_example"]), viewTrackingUrl: "viewTrackingUrl_example", leadFormId: "leadFormId_example", gridClickType: GridClickType(), customizableCtaType: "customizableCtaType_example", quizPinData: QuizPinData(questions: [QuizPinQuestion(questionId: 123, questionText: "questionText_example", options: [QuizPinOption(id: 123, text: "text_example")])], results: [QuizPinResult(organicPinId: "organicPinId_example", androidDeepLink: "androidDeepLink_example", iosDeepLink: "iosDeepLink_example", destinationUrl: "destinationUrl_example", resultId: 123)], tieBreakerType: "tieBreakerType_example", tieBreakerCustomResult: nil), pinId: "pinId_example")] // [AdCreateRequest] | List of ads to create, size limit [1, 30].
+let adCreateRequest = [AdCreateRequest(adGroupId: "adGroupId_example", androidDeepLink: "androidDeepLink_example", carouselAndroidDeepLinks: ["carouselAndroidDeepLinks_example"], carouselDestinationUrls: ["carouselDestinationUrls_example"], carouselIosDeepLinks: ["carouselIosDeepLinks_example"], clickTrackingUrl: "clickTrackingUrl_example", creativeType: CreativeType(), customizableCtaType: CustomizableCTAType(), destinationUrl: "destinationUrl_example", disclosureType: DisclosureType(), disclosureUrl: "disclosureUrl_example", gridClickType: GridClickType(), iosDeepLink: "iosDeepLink_example", isPinDeleted: false, isRemovable: false, leadFormId: "leadFormId_example", name: "name_example", quizPinData: QuizPinData(questions: [QuizPinQuestion(options: [QuizPinOption(id: 123, text: "text_example")], questionId: 123, questionText: "questionText_example")], results: [QuizPinResult(androidDeepLink: "androidDeepLink_example", destinationUrl: "destinationUrl_example", iosDeepLink: "iosDeepLink_example", organicPinId: "organicPinId_example", resultId: 123)], tieBreakerCustomResult: nil, tieBreakerType: "tieBreakerType_example"), status: EntityStatus(), trackingUrls: TrackingUrls(audienceVerification: ["audienceVerification_example"], buyableButton: ["buyableButton_example"], click: ["click_example"], engagement: ["engagement_example"], impression: ["impression_example"]), viewTrackingUrl: "viewTrackingUrl_example", pinId: "pinId_example")] // [AdCreateRequest] | List of ads to create, size limit [1, 30].
 
 // Create ads
 AdsAPI.adsCreate(adAccountId: adAccountId, adCreateRequest: adCreateRequest) { (response, error) in
@@ -304,7 +308,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -368,7 +372,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -392,7 +396,7 @@ Update multiple existing ads
 import OpenAPIClient
 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
-let adUpdateRequest = [AdUpdateRequest(adGroupId: "adGroupId_example", androidDeepLink: "androidDeepLink_example", carouselAndroidDeepLinks: ["carouselAndroidDeepLinks_example"], carouselDestinationUrls: ["carouselDestinationUrls_example"], carouselIosDeepLinks: ["carouselIosDeepLinks_example"], clickTrackingUrl: "clickTrackingUrl_example", creativeType: CreativeType(), destinationUrl: "destinationUrl_example", iosDeepLink: "iosDeepLink_example", isPinDeleted: false, isRemovable: false, name: "name_example", status: EntityStatus(), trackingUrls: TrackingUrls(impression: ["impression_example"], click: ["click_example"], engagement: ["engagement_example"], buyableButton: ["buyableButton_example"], audienceVerification: ["audienceVerification_example"]), viewTrackingUrl: "viewTrackingUrl_example", leadFormId: "leadFormId_example", gridClickType: GridClickType(), customizableCtaType: "customizableCtaType_example", quizPinData: QuizPinData(questions: [QuizPinQuestion(questionId: 123, questionText: "questionText_example", options: [QuizPinOption(id: 123, text: "text_example")])], results: [QuizPinResult(organicPinId: "organicPinId_example", androidDeepLink: "androidDeepLink_example", iosDeepLink: "iosDeepLink_example", destinationUrl: "destinationUrl_example", resultId: 123)], tieBreakerType: "tieBreakerType_example", tieBreakerCustomResult: nil), id: "id_example", pinId: "pinId_example")] // [AdUpdateRequest] | List of ads to update, size limit [1, 30]
+let adUpdateRequest = [AdUpdateRequest(adGroupId: "adGroupId_example", androidDeepLink: "androidDeepLink_example", carouselAndroidDeepLinks: ["carouselAndroidDeepLinks_example"], carouselDestinationUrls: ["carouselDestinationUrls_example"], carouselIosDeepLinks: ["carouselIosDeepLinks_example"], clickTrackingUrl: "clickTrackingUrl_example", creativeType: CreativeType(), customizableCtaType: CustomizableCTAType(), destinationUrl: "destinationUrl_example", disclosureType: DisclosureType(), disclosureUrl: "disclosureUrl_example", gridClickType: GridClickType(), iosDeepLink: "iosDeepLink_example", isPinDeleted: false, isRemovable: false, leadFormId: "leadFormId_example", name: "name_example", quizPinData: QuizPinData(questions: [QuizPinQuestion(options: [QuizPinOption(id: 123, text: "text_example")], questionId: 123, questionText: "questionText_example")], results: [QuizPinResult(androidDeepLink: "androidDeepLink_example", destinationUrl: "destinationUrl_example", iosDeepLink: "iosDeepLink_example", organicPinId: "organicPinId_example", resultId: 123)], tieBreakerCustomResult: nil, tieBreakerType: "tieBreakerType_example"), status: EntityStatus(), trackingUrls: TrackingUrls(audienceVerification: ["audienceVerification_example"], buyableButton: ["buyableButton_example"], click: ["click_example"], engagement: ["engagement_example"], impression: ["impression_example"]), viewTrackingUrl: "viewTrackingUrl_example", id: "id_example", pinId: "pinId_example")] // [AdUpdateRequest] | List of ads to update, size limit [1, 30]
 
 // Update ads
 AdsAPI.adsUpdate(adAccountId: adAccountId, adUpdateRequest: adUpdateRequest) { (response, error) in

@@ -92,7 +92,7 @@ CreativeType <- R6::R6Class(
 
 # add to utils.R
 .parse_CreativeType <- function(vals) {
-  res <- gsub("^\\[|\\]$", "", "[REGULAR, VIDEO, SHOPPING, CAROUSEL, MAX_VIDEO, SHOP_THE_PIN, COLLECTION, IDEA, SHOWCASE, QUIZ]")
+  res <- gsub("^\\[|\\]$", "", "[REGULAR, VIDEO, SHOPPING, CAROUSEL, MAX_VIDEO, SHOP_THE_PIN, COLLECTION, IDEA, SHOWCASE, QUIZ, COLLAGE, MAX_WIDTH_REGULAR_COLLECTION, MAX_WIDTH_VIDEO_COLLECTION]")
   unlist(strsplit(res, ", "))
 }
 

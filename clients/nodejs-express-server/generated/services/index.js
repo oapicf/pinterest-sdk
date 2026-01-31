@@ -12,20 +12,32 @@ const BusinessAccessAssetsService = require('./BusinessAccessAssetsService');
 const BusinessAccessInviteService = require('./BusinessAccessInviteService');
 const BusinessAccessRelationshipsService = require('./BusinessAccessRelationshipsService');
 const CampaignsService = require('./CampaignsService');
+const CatalogFeedsService = require('./CatalogFeedsService');
+const CatalogItemsService = require('./CatalogItemsService');
+const CatalogProductGroupsService = require('./CatalogProductGroupsService');
+const CatalogReportsService = require('./CatalogReportsService');
 const CatalogsService = require('./CatalogsService');
+const ConversionEqsService = require('./ConversionEqsService');
 const ConversionEventsService = require('./ConversionEventsService');
 const ConversionTagsService = require('./ConversionTagsService');
+const ConversionsService = require('./ConversionsService');
+const CustomerListUploadsService = require('./CustomerListUploadsService');
 const CustomerListsService = require('./CustomerListsService');
 const IntegrationsService = require('./IntegrationsService');
 const KeywordsService = require('./KeywordsService');
+const LabelsService = require('./LabelsService');
 const LeadAdsService = require('./LeadAdsService');
 const LeadFormsService = require('./LeadFormsService');
 const LeadsExportService = require('./LeadsExportService');
 const MediaService = require('./MediaService');
+const MsotEventsService = require('./MsotEventsService');
+const NotificationService = require('./NotificationService');
 const OauthService = require('./OauthService');
 const OrderLinesService = require('./OrderLinesService');
 const PinsService = require('./PinsService');
+const ProductCategoriesService = require('./ProductCategoriesService');
 const ProductGroupPromotionsService = require('./ProductGroupPromotionsService');
+const PromotionsService = require('./PromotionsService');
 const ResourcesService = require('./ResourcesService');
 const SearchService = require('./SearchService');
 const TargetingTemplateService = require('./TargetingTemplateService');
@@ -48,20 +60,32 @@ module.exports = {
   BusinessAccessInviteService,
   BusinessAccessRelationshipsService,
   CampaignsService,
+  CatalogFeedsService,
+  CatalogItemsService,
+  CatalogProductGroupsService,
+  CatalogReportsService,
   CatalogsService,
+  ConversionEqsService,
   ConversionEventsService,
   ConversionTagsService,
+  ConversionsService,
+  CustomerListUploadsService,
   CustomerListsService,
   IntegrationsService,
   KeywordsService,
+  LabelsService,
   LeadAdsService,
   LeadFormsService,
   LeadsExportService,
   MediaService,
+  MsotEventsService,
+  NotificationService,
   OauthService,
   OrderLinesService,
   PinsService,
+  ProductCategoriesService,
   ProductGroupPromotionsService,
+  PromotionsService,
   ResourcesService,
   SearchService,
   TargetingTemplateService,

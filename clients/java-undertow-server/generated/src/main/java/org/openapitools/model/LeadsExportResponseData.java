@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -23,28 +23,11 @@ import org.openapitools.model.LeadsExportStatus;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LeadsExportResponseData   {
   
-  private LeadsExportStatus exportStatus;
   private String downloadUrl;
-
-  /**
-   */
-  public LeadsExportResponseData exportStatus(LeadsExportStatus exportStatus) {
-    this.exportStatus = exportStatus;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("export_status")
-  public LeadsExportStatus getExportStatus() {
-    return exportStatus;
-  }
-  public void setExportStatus(LeadsExportStatus exportStatus) {
-    this.exportStatus = exportStatus;
-  }
+  private LeadsExportStatus exportStatus;
 
   /**
    */
@@ -63,6 +46,23 @@ public class LeadsExportResponseData   {
     this.downloadUrl = downloadUrl;
   }
 
+  /**
+   */
+  public LeadsExportResponseData exportStatus(LeadsExportStatus exportStatus) {
+    this.exportStatus = exportStatus;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("export_status")
+  public LeadsExportStatus getExportStatus() {
+    return exportStatus;
+  }
+  public void setExportStatus(LeadsExportStatus exportStatus) {
+    this.exportStatus = exportStatus;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -73,13 +73,13 @@ public class LeadsExportResponseData   {
       return false;
     }
     LeadsExportResponseData leadsExportResponseData = (LeadsExportResponseData) o;
-    return Objects.equals(exportStatus, leadsExportResponseData.exportStatus) &&
-        Objects.equals(downloadUrl, leadsExportResponseData.downloadUrl);
+    return Objects.equals(downloadUrl, leadsExportResponseData.downloadUrl) &&
+        Objects.equals(exportStatus, leadsExportResponseData.exportStatus);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(exportStatus, downloadUrl);
+    return Objects.hash(downloadUrl, exportStatus);
   }
 
   @Override
@@ -87,8 +87,8 @@ public class LeadsExportResponseData   {
     StringBuilder sb = new StringBuilder();
     sb.append("class LeadsExportResponseData {\n");
     
-    sb.append("    exportStatus: ").append(toIndentedString(exportStatus)).append("\n");
     sb.append("    downloadUrl: ").append(toIndentedString(downloadUrl)).append("\n");
+    sb.append("    exportStatus: ").append(toIndentedString(exportStatus)).append("\n");
     sb.append("}");
     return sb.toString();
   }

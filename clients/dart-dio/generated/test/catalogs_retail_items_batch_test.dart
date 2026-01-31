@@ -13,9 +13,8 @@ void main() {
       // TODO
     });
 
-    // Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
-    // DateTime createdTime
-    test('to test the property `createdTime`', () async {
+    // CatalogsType catalogType
+    test('to test the property `catalogType`', () async {
       // TODO
     });
 
@@ -25,19 +24,20 @@ void main() {
       // TODO
     });
 
-    // BatchOperationStatus status
-    test('to test the property `status`', () async {
-      // TODO
-    });
-
-    // CatalogsType catalogType
-    test('to test the property `catalogType`', () async {
+    // Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.
+    // DateTime createdTime
+    test('to test the property `createdTime`', () async {
       // TODO
     });
 
     // Array with the catalogs items processing records part of the catalogs items batch
     // BuiltList<ItemProcessingRecord> items
     test('to test the property `items`', () async {
+      // TODO
+    });
+
+    // BatchOperationStatus status
+    test('to test the property `status`', () async {
       // TODO
     });
 

@@ -7,50 +7,48 @@
 #' @title ImageMetadata
 #' @description ImageMetadata Class
 #' @format An \code{R6Class} generator object
-#' @field item_type  character [optional]
-#' @field title  character [optional]
 #' @field description  character [optional]
+#' @field images  \link{ImageSize} [optional]
+#' @field item_type  character [optional]
 #' @field link  character [optional]
-#' @field images  \link{ImageMetadataImages} [optional]
+#' @field title  character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 ImageMetadata <- R6::R6Class(
   "ImageMetadata",
   public = list(
-    `item_type` = NULL,
-    `title` = NULL,
     `description` = NULL,
-    `link` = NULL,
     `images` = NULL,
+    `item_type` = NULL,
+    `link` = NULL,
+    `title` = NULL,
 
     #' @description
     #' Initialize a new ImageMetadata class.
     #'
-    #' @param item_type item_type
-    #' @param title title
     #' @param description description
-    #' @param link link
     #' @param images images
+    #' @param item_type item_type
+    #' @param link link
+    #' @param title title
     #' @param ... Other optional arguments.
-    initialize = function(`item_type` = NULL, `title` = NULL, `description` = NULL, `link` = NULL, `images` = NULL, ...) {
-      if (!is.null(`item_type`)) {
-        if (!(is.character(`item_type`) && length(`item_type`) == 1)) {
-          stop(paste("Error! Invalid data for `item_type`. Must be a string:", `item_type`))
-        }
-        self$`item_type` <- `item_type`
-      }
-      if (!is.null(`title`)) {
-        if (!(is.character(`title`) && length(`title`) == 1)) {
-          stop(paste("Error! Invalid data for `title`. Must be a string:", `title`))
-        }
-        self$`title` <- `title`
-      }
+    initialize = function(`description` = NULL, `images` = NULL, `item_type` = NULL, `link` = NULL, `title` = NULL, ...) {
       if (!is.null(`description`)) {
         if (!(is.character(`description`) && length(`description`) == 1)) {
           stop(paste("Error! Invalid data for `description`. Must be a string:", `description`))
         }
         self$`description` <- `description`
+      }
+      if (!is.null(`images`)) {
+        stopifnot(R6::is.R6(`images`))
+        self$`images` <- `images`
+      }
+      if (!is.null(`item_type`)) {
+        if (!(is.character(`item_type`) && length(`item_type`) == 1)) {
+          stop(paste("Error! Invalid data for `item_type`. Must be a string:", `item_type`))
+        }
+        self$`item_type` <- `item_type`
       }
       if (!is.null(`link`)) {
         if (!(is.character(`link`) && length(`link`) == 1)) {
@@ -58,9 +56,11 @@ ImageMetadata <- R6::R6Class(
         }
         self$`link` <- `link`
       }
-      if (!is.null(`images`)) {
-        stopifnot(R6::is.R6(`images`))
-        self$`images` <- `images`
+      if (!is.null(`title`)) {
+        if (!(is.character(`title`) && length(`title`) == 1)) {
+          stop(paste("Error! Invalid data for `title`. Must be a string:", `title`))
+        }
+        self$`title` <- `title`
       }
     },
 
@@ -95,25 +95,25 @@ ImageMetadata <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       ImageMetadataObject <- list()
-      if (!is.null(self$`item_type`)) {
-        ImageMetadataObject[["item_type"]] <-
-          self$`item_type`
-      }
-      if (!is.null(self$`title`)) {
-        ImageMetadataObject[["title"]] <-
-          self$`title`
-      }
       if (!is.null(self$`description`)) {
         ImageMetadataObject[["description"]] <-
           self$`description`
+      }
+      if (!is.null(self$`images`)) {
+        ImageMetadataObject[["images"]] <-
+          self$`images`$toSimpleType()
+      }
+      if (!is.null(self$`item_type`)) {
+        ImageMetadataObject[["item_type"]] <-
+          self$`item_type`
       }
       if (!is.null(self$`link`)) {
         ImageMetadataObject[["link"]] <-
           self$`link`
       }
-      if (!is.null(self$`images`)) {
-        ImageMetadataObject[["images"]] <-
-          self$`images`$toSimpleType()
+      if (!is.null(self$`title`)) {
+        ImageMetadataObject[["title"]] <-
+          self$`title`
       }
       return(ImageMetadataObject)
     },
@@ -125,22 +125,22 @@ ImageMetadata <- R6::R6Class(
     #' @return the instance of ImageMetadata
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`item_type`)) {
-        self$`item_type` <- this_object$`item_type`
-      }
-      if (!is.null(this_object$`title`)) {
-        self$`title` <- this_object$`title`
-      }
       if (!is.null(this_object$`description`)) {
         self$`description` <- this_object$`description`
+      }
+      if (!is.null(this_object$`images`)) {
+        `images_object` <- ImageSize$new()
+        `images_object`$fromJSON(jsonlite::toJSON(this_object$`images`, auto_unbox = TRUE, digits = NA))
+        self$`images` <- `images_object`
+      }
+      if (!is.null(this_object$`item_type`)) {
+        self$`item_type` <- this_object$`item_type`
       }
       if (!is.null(this_object$`link`)) {
         self$`link` <- this_object$`link`
       }
-      if (!is.null(this_object$`images`)) {
-        `images_object` <- ImageMetadataImages$new()
-        `images_object`$fromJSON(jsonlite::toJSON(this_object$`images`, auto_unbox = TRUE, digits = NA))
-        self$`images` <- `images_object`
+      if (!is.null(this_object$`title`)) {
+        self$`title` <- this_object$`title`
       }
       self
     },
@@ -163,11 +163,11 @@ ImageMetadata <- R6::R6Class(
     #' @return the instance of ImageMetadata
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`item_type` <- this_object$`item_type`
-      self$`title` <- this_object$`title`
       self$`description` <- this_object$`description`
+      self$`images` <- ImageSize$new()$fromJSON(jsonlite::toJSON(this_object$`images`, auto_unbox = TRUE, digits = NA))
+      self$`item_type` <- this_object$`item_type`
       self$`link` <- this_object$`link`
-      self$`images` <- ImageMetadataImages$new()$fromJSON(jsonlite::toJSON(this_object$`images`, auto_unbox = TRUE, digits = NA))
+      self$`title` <- this_object$`title`
       self
     },
 

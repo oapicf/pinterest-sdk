@@ -8,12 +8,12 @@ import org.openapitools.model.CatalogsItemValidationWarnings;
 
 @Canonical
 class CatalogsItemValidationIssues {
-    /* Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation. */
-    Integer itemNumber
-    /* The merchant-created unique ID that represents the product. */
-    String itemId
     
     CatalogsItemValidationErrors errors
+    /* The merchant-created unique ID that represents the product. */
+    String itemId
+    /* Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation. */
+    Integer itemNumber
     
     CatalogsItemValidationWarnings warnings
 }

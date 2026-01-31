@@ -16,13 +16,14 @@ void main() {
   // final instance = CatalogsCreativeAssetsProductGroupCreateRequest();
 
   group('test CatalogsCreativeAssetsProductGroupCreateRequest', () {
-    // String catalogType
-    test('to test the property `catalogType`', () async {
+    // Catalog id pertaining to the creative assets product group.
+    // String catalogId
+    test('to test the property `catalogId`', () async {
       // TODO
     });
 
-    // String name
-    test('to test the property `name`', () async {
+    // String catalogType
+    test('to test the property `catalogType`', () async {
       // TODO
     });
 
@@ -36,9 +37,8 @@ void main() {
       // TODO
     });
 
-    // Catalog id pertaining to the creative assets product group.
-    // String catalogId
-    test('to test the property `catalogId`', () async {
+    // String name
+    test('to test the property `name`', () async {
       // TODO
     });
 

@@ -3,8 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.PinMedia
-open OpenAPI.Model.VideoMetadata
+open OpenAPI.Model.VideoMetadataWithItemType
 
 module PinMediaWithVideos =
 
@@ -13,7 +12,9 @@ module PinMediaWithVideos =
   [<CLIMutable>]
   type PinMediaWithVideos = {
     [<JsonProperty(PropertyName = "items")>]
-    Items : VideoMetadata[];
+    Items : VideoMetadataWithItemType[];
+    [<JsonProperty(PropertyName = "media_type")>]
+    MediaType : string;
   }
 
   //#endregion

@@ -5,12 +5,588 @@ context("Test CatalogsFeedIngestionWarnings")
 
 model_instance <- CatalogsFeedIngestionWarnings$new()
 
-test_that("ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR", {
-  # tests for the property `ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR` (integer)
+test_that("AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR` (integer)
+  # Ad image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR` (integer)
+  # Ad image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE` (integer)
+  # Ad image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND` (integer)
+  # Ad image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_HTTP_STATUS_400", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_400` (integer)
+  # Ad image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_HTTP_STATUS_400`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_HTTP_STATUS_403", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_403` (integer)
+  # Ad image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_HTTP_STATUS_403`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_HTTP_STATUS_404", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_404` (integer)
+  # Ad image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_HTTP_STATUS_404`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_HTTP_STATUS_405", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_405` (integer)
+  # Ad image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_HTTP_STATUS_405`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_HTTP_STATUS_410", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_410` (integer)
+  # Ad image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_HTTP_STATUS_410`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_HTTP_STATUS_429", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_429` (integer)
+  # Ad image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_HTTP_STATUS_429`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_HTTP_STATUS_500", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_500` (integer)
+  # Ad image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_HTTP_STATUS_500`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_HTTP_STATUS_502", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_502` (integer)
+  # Ad image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_HTTP_STATUS_502`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_HTTP_STATUS_503", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_503` (integer)
+  # Ad image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_HTTP_STATUS_503`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_HTTP_STATUS_504", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_504` (integer)
+  # Ad image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_HTTP_STATUS_504`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_HTTP_STATUS_507", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_507` (integer)
+  # Ad image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_HTTP_STATUS_507`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_HTTP_STATUS_508", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_508` (integer)
+  # Ad image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_HTTP_STATUS_508`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_HTTP_STATUS_520", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_520` (integer)
+  # Ad image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_HTTP_STATUS_520`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_HTTP_STATUS_521", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_521` (integer)
+  # Ad image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_HTTP_STATUS_521`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_HTTP_STATUS_522", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_522` (integer)
+  # Ad image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_HTTP_STATUS_522`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_HTTP_STATUS_525", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_HTTP_STATUS_525` (integer)
+  # Ad image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_HTTP_STATUS_525`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR` (integer)
   # We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_INTERNAL_ERROR", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_INTERNAL_ERROR` (integer)
+  # We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_INTERNAL_ERROR`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD` (integer)
+  # We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL` (integer)
+  # Ad image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED` (integer)
+  # We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED` (integer)
+  # We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_INVALID_FILE", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_INVALID_FILE` (integer)
+  # Ad image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_INVALID_FILE`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_SITE_ERROR", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_SITE_ERROR` (integer)
+  # Ad image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_SITE_ERROR`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_SITE_TIMEOUT", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_SITE_TIMEOUT` (integer)
+  # Ad image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_SITE_TIMEOUT`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_SSL_ERROR", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_SSL_ERROR` (integer)
+  # Ad image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_SSL_ERROR`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR", {
+  # tests for the property `AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR` (integer)
+  # Ad image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_PROCESSING_EMPTY_FILE", {
+  # tests for the property `AD_IMAGE_PROCESSING_EMPTY_FILE` (integer)
+  # Ad image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_PROCESSING_EMPTY_FILE`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL", {
+  # tests for the property `AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL` (integer)
+  # Ad images must have a height larger than 75 pixels
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_PROCESSING_TOO_MANY_PIXELS", {
+  # tests for the property `AD_IMAGE_PROCESSING_TOO_MANY_PIXELS` (integer)
+  # Ad images must have a maximum area (width x height) of less than 89478485 pixels
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_PROCESSING_TOO_MANY_PIXELS`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_PROCESSING_TYPE_MISMATCH", {
+  # tests for the property `AD_IMAGE_PROCESSING_TYPE_MISMATCH` (integer)
+  # Some ad images could not be processed due to a file type mismatch.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_PROCESSING_TYPE_MISMATCH`, "EXPECTED_RESULT")
+})
+
+test_that("AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL", {
+  # tests for the property `AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL` (integer)
+  # Ad images must have a width larger than 75 pixels
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR` (integer)
+  # Ad video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR` (integer)
+  # Ad video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE` (integer)
+  # Ad video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND` (integer)
+  # Ad video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_HTTP_STATUS_400", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_400` (integer)
+  # Ad video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_HTTP_STATUS_400`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_HTTP_STATUS_403", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_403` (integer)
+  # Ad video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_HTTP_STATUS_403`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_HTTP_STATUS_404", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_404` (integer)
+  # Ad video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_HTTP_STATUS_404`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_HTTP_STATUS_405", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_405` (integer)
+  # Ad video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_HTTP_STATUS_405`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_HTTP_STATUS_410", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_410` (integer)
+  # Ad video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_HTTP_STATUS_410`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_HTTP_STATUS_429", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_429` (integer)
+  # Ad video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_HTTP_STATUS_429`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_HTTP_STATUS_500", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_500` (integer)
+  # Ad video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_HTTP_STATUS_500`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_HTTP_STATUS_502", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_502` (integer)
+  # Ad video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_HTTP_STATUS_502`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_HTTP_STATUS_503", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_503` (integer)
+  # Ad video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_HTTP_STATUS_503`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_HTTP_STATUS_504", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_504` (integer)
+  # Ad video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_HTTP_STATUS_504`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_HTTP_STATUS_507", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_507` (integer)
+  # Ad video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_HTTP_STATUS_507`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_HTTP_STATUS_508", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_508` (integer)
+  # Ad video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_HTTP_STATUS_508`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_HTTP_STATUS_520", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_520` (integer)
+  # Ad video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_HTTP_STATUS_520`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_HTTP_STATUS_521", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_521` (integer)
+  # Ad video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_HTTP_STATUS_521`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_HTTP_STATUS_522", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_522` (integer)
+  # Ad video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_HTTP_STATUS_522`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_HTTP_STATUS_525", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_HTTP_STATUS_525` (integer)
+  # Ad video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_HTTP_STATUS_525`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR` (integer)
+  # We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_INTERNAL_ERROR", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_INTERNAL_ERROR` (integer)
+  # We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_INTERNAL_ERROR`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD` (integer)
+  # We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL` (integer)
+  # Ad video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED` (integer)
+  # We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED` (integer)
+  # We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_INVALID_FILE", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_INVALID_FILE` (integer)
+  # Ad video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_INVALID_FILE`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_SITE_ERROR", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_SITE_ERROR` (integer)
+  # Ad video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_SITE_ERROR`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_SITE_TIMEOUT", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_SITE_TIMEOUT` (integer)
+  # Ad video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_SITE_TIMEOUT`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_SSL_ERROR", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_SSL_ERROR` (integer)
+  # Ad video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_SSL_ERROR`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR", {
+  # tests for the property `AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR` (integer)
+  # Ad video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_LENGTH_TOO_SHORT", {
+  # tests for the property `AD_VIDEO_LENGTH_TOO_SHORT` (integer)
+  # Ad videos length is too short. Please ensure that all ad videos are at least 4 seconds long.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_LENGTH_TOO_SHORT`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_PROCESSING_EMPTY_FILE", {
+  # tests for the property `AD_VIDEO_PROCESSING_EMPTY_FILE` (integer)
+  # Ad video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_PROCESSING_EMPTY_FILE`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL", {
+  # tests for the property `AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL` (integer)
+  # Ad videos must have a height larger than 75 pixels
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_PROCESSING_TOO_MANY_PIXELS", {
+  # tests for the property `AD_VIDEO_PROCESSING_TOO_MANY_PIXELS` (integer)
+  # Ad videos must have a maximum area (width x height) of less than 89478485 pixels
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_PROCESSING_TOO_MANY_PIXELS`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_PROCESSING_TYPE_MISMATCH", {
+  # tests for the property `AD_VIDEO_PROCESSING_TYPE_MISMATCH` (integer)
+  # Some ad videos could not be processed due to a file type mismatch.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_PROCESSING_TYPE_MISMATCH`, "EXPECTED_RESULT")
+})
+
+test_that("AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL", {
+  # tests for the property `AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL` (integer)
+  # Ad videos must have a width larger than 75 pixels
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL`, "EXPECTED_RESULT")
 })
 
 test_that("ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE", {
@@ -19,14 +595,6 @@ test_that("ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE`, "EXPECTED_RESULT")
-})
-
-test_that("ADDITIONAL_IMAGE_MALFORMED_URL", {
-  # tests for the property `ADDITIONAL_IMAGE_MALFORMED_URL` (integer)
-  # Additional image files are unreadable. Please check your link and upload new files to continue.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`ADDITIONAL_IMAGE_MALFORMED_URL`, "EXPECTED_RESULT")
 })
 
 test_that("ADDITIONAL_IMAGE_FILE_NOT_FOUND", {
@@ -45,10 +613,82 @@ test_that("ADDITIONAL_IMAGE_INVALID_FILE", {
   #expect_equal(model.instance$`ADDITIONAL_IMAGE_INVALID_FILE`, "EXPECTED_RESULT")
 })
 
+test_that("ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR", {
+  # tests for the property `ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR` (integer)
+  # We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR`, "EXPECTED_RESULT")
+})
+
+test_that("ADDITIONAL_IMAGE_MALFORMED_URL", {
+  # tests for the property `ADDITIONAL_IMAGE_MALFORMED_URL` (integer)
+  # Additional image files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ADDITIONAL_IMAGE_MALFORMED_URL`, "EXPECTED_RESULT")
+})
+
+test_that("FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT", {
+  # tests for the property `FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT` (integer)
+  # Update your Google Sheets sharing settings from &#39;Editor&#39; to &#39;Viewer&#39;.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT`, "EXPECTED_RESULT")
+})
+
 test_that("HOTEL_PRICE_HEADER_IS_PRESENT", {
   # tests for the property `HOTEL_PRICE_HEADER_IS_PRESENT` (integer)
-  # price is not a supported column. Use base_price and sale_price instead.
+  # Price is not a supported column. Use base_price and sale_price instead.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`HOTEL_PRICE_HEADER_IS_PRESENT`, "EXPECTED_RESULT")
+})
+
+test_that("VIDEO_DOWNLOAD_VIDEO_TOO_SHORT", {
+  # tests for the property `VIDEO_DOWNLOAD_VIDEO_TOO_SHORT` (integer)
+  # Video length is too short. Please ensure that the main video is at least 4 seconds long.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`VIDEO_DOWNLOAD_VIDEO_TOO_SHORT`, "EXPECTED_RESULT")
+})
+
+test_that("VIDEO_FILE_NOT_ACCESSIBLE", {
+  # tests for the property `VIDEO_FILE_NOT_ACCESSIBLE` (integer)
+  # Video files are unreadable. Please upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`VIDEO_FILE_NOT_ACCESSIBLE`, "EXPECTED_RESULT")
+})
+
+test_that("VIDEO_FILE_NOT_FOUND", {
+  # tests for the property `VIDEO_FILE_NOT_FOUND` (integer)
+  # Video files are unreadable. Please upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`VIDEO_FILE_NOT_FOUND`, "EXPECTED_RESULT")
+})
+
+test_that("VIDEO_INVALID_FILE", {
+  # tests for the property `VIDEO_INVALID_FILE` (integer)
+  # Video files are unreadable. Please upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`VIDEO_INVALID_FILE`, "EXPECTED_RESULT")
+})
+
+test_that("VIDEO_LEVEL_INTERNAL_ERROR", {
+  # tests for the property `VIDEO_LEVEL_INTERNAL_ERROR` (integer)
+  # We experienced a technical difficulty and were unable to download some additional videos. The next download attempt will happen in 24 hours.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`VIDEO_LEVEL_INTERNAL_ERROR`, "EXPECTED_RESULT")
+})
+
+test_that("VIDEO_MALFORMED_URL", {
+  # tests for the property `VIDEO_MALFORMED_URL` (integer)
+  # Video files are unreadable. Please check your link and upload new files to continue.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`VIDEO_MALFORMED_URL`, "EXPECTED_RESULT")
 })

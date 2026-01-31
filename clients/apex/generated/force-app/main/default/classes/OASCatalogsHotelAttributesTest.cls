@@ -73,16 +73,16 @@ private class OASCatalogsHotelAttributesTest {
     private static void maintainRenamedProperties() {
         OASCatalogsHotelAttributes catalogsHotelAttributes = new OASCatalogsHotelAttributes();
         Map<String, String> x-property-mappings = catalogsHotelAttributes.getx-property-mappings();
+        System.assertEquals('basePrice', x-property-mappings.get('base_price'));
         System.assertEquals('customLabel0', x-property-mappings.get('custom_label_0'));
         System.assertEquals('customLabel1', x-property-mappings.get('custom_label_1'));
         System.assertEquals('customLabel2', x-property-mappings.get('custom_label_2'));
         System.assertEquals('customLabel3', x-property-mappings.get('custom_label_3'));
         System.assertEquals('customLabel4', x-property-mappings.get('custom_label_4'));
-        System.assertEquals('basePrice', x-property-mappings.get('base_price'));
-        System.assertEquals('salePrice', x-property-mappings.get('sale_price'));
         System.assertEquals('guestRatings', x-property-mappings.get('guest_ratings'));
-        System.assertEquals('mainImage', x-property-mappings.get('main_image'));
+        System.assertEquals('salePrice', x-property-mappings.get('sale_price'));
         System.assertEquals('additionalImageLink', x-property-mappings.get('additional_image_link'));
+        System.assertEquals('mainImage', x-property-mappings.get('main_image'));
     }
 
     @isTest
@@ -90,22 +90,22 @@ private class OASCatalogsHotelAttributesTest {
         OASCatalogsHotelAttributes catalogsHotelAttributes = new OASCatalogsHotelAttributes();
         System.assertEquals(new List<String>(), catalogsHotelAttributes.neighborhood);
         System.assertEquals(new List<String>(), catalogsHotelAttributes.additionalImageLink);
-        System.assertEquals(null, catalogsHotelAttributes.name);
-        System.assertEquals(null, catalogsHotelAttributes.link);
-        System.assertEquals(null, catalogsHotelAttributes.description);
-        System.assertEquals(null, catalogsHotelAttributes.brand);
-        System.assertEquals(null, catalogsHotelAttributes.latitude);
-        System.assertEquals(null, catalogsHotelAttributes.longitude);
         System.assertEquals(null, catalogsHotelAttributes.address);
+        System.assertEquals(null, catalogsHotelAttributes.basePrice);
+        System.assertEquals(null, catalogsHotelAttributes.brand);
+        System.assertEquals(null, catalogsHotelAttributes.category);
         System.assertEquals(null, catalogsHotelAttributes.customLabel0);
         System.assertEquals(null, catalogsHotelAttributes.customLabel1);
         System.assertEquals(null, catalogsHotelAttributes.customLabel2);
         System.assertEquals(null, catalogsHotelAttributes.customLabel3);
         System.assertEquals(null, catalogsHotelAttributes.customLabel4);
-        System.assertEquals(null, catalogsHotelAttributes.category);
-        System.assertEquals(null, catalogsHotelAttributes.basePrice);
-        System.assertEquals(null, catalogsHotelAttributes.salePrice);
+        System.assertEquals(null, catalogsHotelAttributes.description);
         System.assertEquals(null, catalogsHotelAttributes.guestRatings);
+        System.assertEquals(null, catalogsHotelAttributes.latitude);
+        System.assertEquals(null, catalogsHotelAttributes.link);
+        System.assertEquals(null, catalogsHotelAttributes.longitude);
+        System.assertEquals(null, catalogsHotelAttributes.name);
+        System.assertEquals(null, catalogsHotelAttributes.salePrice);
         System.assertEquals(null, catalogsHotelAttributes.mainImage);
     }
 }

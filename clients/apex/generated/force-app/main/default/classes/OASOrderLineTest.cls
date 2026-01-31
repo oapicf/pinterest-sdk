@@ -74,11 +74,11 @@ private class OASOrderLineTest {
         OASOrderLine orderLine = new OASOrderLine();
         Map<String, String> x-property-mappings = orderLine.getx-property-mappings();
         System.assertEquals('adAccountId', x-property-mappings.get('ad_account_id'));
-        System.assertEquals('purchaseOrderId', x-property-mappings.get('purchase_order_id'));
-        System.assertEquals('startTime', x-property-mappings.get('start_time'));
         System.assertEquals('endTime', x-property-mappings.get('end_time'));
         System.assertEquals('paidBudget', x-property-mappings.get('paid_budget'));
         System.assertEquals('paidType', x-property-mappings.get('paid_type'));
+        System.assertEquals('purchaseOrderId', x-property-mappings.get('purchase_order_id'));
+        System.assertEquals('startTime', x-property-mappings.get('start_time'));
         System.assertEquals('campaignIds', x-property-mappings.get('campaign_ids'));
     }
 
@@ -86,16 +86,16 @@ private class OASOrderLineTest {
     private static void defaultValuesPopulated() {
         OASOrderLine orderLine = new OASOrderLine();
         System.assertEquals(new List<String>(), orderLine.campaignIds);
-        System.assertEquals(null, orderLine.id);
-        System.assertEquals(null, orderLine.type);
         System.assertEquals(null, orderLine.adAccountId);
+        System.assertEquals(null, orderLine.budget);
+        System.assertEquals(null, orderLine.endTime);
+        System.assertEquals(null, orderLine.id);
+        System.assertEquals(null, orderLine.name);
+        System.assertEquals(null, orderLine.paidBudget);
+        System.assertEquals(null, orderLine.paidType);
         System.assertEquals(null, orderLine.purchaseOrderId);
         System.assertEquals(null, orderLine.startTime);
-        System.assertEquals(null, orderLine.endTime);
-        System.assertEquals(null, orderLine.budget);
-        System.assertEquals(null, orderLine.paidBudget);
         System.assertEquals(null, orderLine.status);
-        System.assertEquals(null, orderLine.name);
-        System.assertEquals(null, orderLine.paidType);
+        System.assertEquals(null, orderLine.type);
     }
 }

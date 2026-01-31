@@ -20,11 +20,11 @@ export interface Catalog {
      */
     id: string;
     updated_at: string;
+    catalog_type: CatalogsType;
     /**
      * A human-friendly name associated to a catalog entity.
      */
     name: string | null;
-    catalog_type: CatalogsType;
 }
 export namespace Catalog {
 }

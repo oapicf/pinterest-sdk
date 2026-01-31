@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,9 +20,9 @@ var _ MappedNullable = &ItemUpdateBatchRecord{}
 
 // ItemUpdateBatchRecord Object describing an item batch record to update items
 type ItemUpdateBatchRecord struct {
+	Attributes *UpdatableItemAttributes `json:"attributes,omitempty"`
 	// The catalog item id in the merchant namespace
 	ItemId *string `json:"item_id,omitempty"`
-	Attributes *UpdatableItemAttributes `json:"attributes,omitempty"`
 	// The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
 	UpdateMask []UpdateMaskFieldType `json:"update_mask,omitempty"`
 }
@@ -42,38 +42,6 @@ func NewItemUpdateBatchRecord() *ItemUpdateBatchRecord {
 func NewItemUpdateBatchRecordWithDefaults() *ItemUpdateBatchRecord {
 	this := ItemUpdateBatchRecord{}
 	return &this
-}
-
-// GetItemId returns the ItemId field value if set, zero value otherwise.
-func (o *ItemUpdateBatchRecord) GetItemId() string {
-	if o == nil || IsNil(o.ItemId) {
-		var ret string
-		return ret
-	}
-	return *o.ItemId
-}
-
-// GetItemIdOk returns a tuple with the ItemId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ItemUpdateBatchRecord) GetItemIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ItemId) {
-		return nil, false
-	}
-	return o.ItemId, true
-}
-
-// HasItemId returns a boolean if a field has been set.
-func (o *ItemUpdateBatchRecord) HasItemId() bool {
-	if o != nil && !IsNil(o.ItemId) {
-		return true
-	}
-
-	return false
-}
-
-// SetItemId gets a reference to the given string and assigns it to the ItemId field.
-func (o *ItemUpdateBatchRecord) SetItemId(v string) {
-	o.ItemId = &v
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
@@ -106,6 +74,38 @@ func (o *ItemUpdateBatchRecord) HasAttributes() bool {
 // SetAttributes gets a reference to the given UpdatableItemAttributes and assigns it to the Attributes field.
 func (o *ItemUpdateBatchRecord) SetAttributes(v UpdatableItemAttributes) {
 	o.Attributes = &v
+}
+
+// GetItemId returns the ItemId field value if set, zero value otherwise.
+func (o *ItemUpdateBatchRecord) GetItemId() string {
+	if o == nil || IsNil(o.ItemId) {
+		var ret string
+		return ret
+	}
+	return *o.ItemId
+}
+
+// GetItemIdOk returns a tuple with the ItemId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemUpdateBatchRecord) GetItemIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ItemId) {
+		return nil, false
+	}
+	return o.ItemId, true
+}
+
+// HasItemId returns a boolean if a field has been set.
+func (o *ItemUpdateBatchRecord) HasItemId() bool {
+	if o != nil && !IsNil(o.ItemId) {
+		return true
+	}
+
+	return false
+}
+
+// SetItemId gets a reference to the given string and assigns it to the ItemId field.
+func (o *ItemUpdateBatchRecord) SetItemId(v string) {
+	o.ItemId = &v
 }
 
 // GetUpdateMask returns the UpdateMask field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -151,11 +151,11 @@ func (o ItemUpdateBatchRecord) MarshalJSON() ([]byte, error) {
 
 func (o ItemUpdateBatchRecord) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ItemId) {
-		toSerialize["item_id"] = o.ItemId
-	}
 	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
+	}
+	if !IsNil(o.ItemId) {
+		toSerialize["item_id"] = o.ItemId
 	}
 	if o.UpdateMask != nil {
 		toSerialize["update_mask"] = o.UpdateMask

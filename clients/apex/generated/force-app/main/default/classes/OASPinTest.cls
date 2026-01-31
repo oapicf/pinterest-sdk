@@ -73,18 +73,17 @@ private class OASPinTest {
     private static void maintainRenamedProperties() {
         OASPin pin = new OASPin();
         Map<String, String> x-property-mappings = pin.getx-property-mappings();
-        System.assertEquals('createdAt', x-property-mappings.get('created_at'));
-        System.assertEquals('dominantColor', x-property-mappings.get('dominant_color'));
         System.assertEquals('altText', x-property-mappings.get('alt_text'));
-        System.assertEquals('creativeType', x-property-mappings.get('creative_type'));
         System.assertEquals('boardId', x-property-mappings.get('board_id'));
-        System.assertEquals('boardSectionId', x-property-mappings.get('board_section_id'));
         System.assertEquals('boardOwner', x-property-mappings.get('board_owner'));
-        System.assertEquals('isOwner', x-property-mappings.get('is_owner'));
-        System.assertEquals('mediaSource', x-property-mappings.get('media_source'));
-        System.assertEquals('parentPinId', x-property-mappings.get('parent_pin_id'));
-        System.assertEquals('isStandard', x-property-mappings.get('is_standard'));
+        System.assertEquals('boardSectionId', x-property-mappings.get('board_section_id'));
+        System.assertEquals('createdAt', x-property-mappings.get('created_at'));
+        System.assertEquals('creativeType', x-property-mappings.get('creative_type'));
+        System.assertEquals('dominantColor', x-property-mappings.get('dominant_color'));
         System.assertEquals('hasBeenPromoted', x-property-mappings.get('has_been_promoted'));
+        System.assertEquals('isOwner', x-property-mappings.get('is_owner'));
+        System.assertEquals('isStandard', x-property-mappings.get('is_standard'));
+        System.assertEquals('parentPinId', x-property-mappings.get('parent_pin_id'));
         System.assertEquals('pinMetrics', x-property-mappings.get('pin_metrics'));
     }
 }

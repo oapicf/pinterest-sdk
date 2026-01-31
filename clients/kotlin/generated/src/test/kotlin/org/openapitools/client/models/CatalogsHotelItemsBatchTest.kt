@@ -40,28 +40,28 @@ class CatalogsHotelItemsBatchTest : ShouldSpec() {
             //modelInstance.batchId shouldBe ("TODO")
         }
 
-        // to test the property `createdTime` - Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
-        should("test createdTime") {
-            // uncomment below to test the property
-            //modelInstance.createdTime shouldBe ("TODO")
-        }
-
         // to test the property `completedTime` - Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
         should("test completedTime") {
             // uncomment below to test the property
             //modelInstance.completedTime shouldBe ("TODO")
         }
 
-        // to test the property `status`
-        should("test status") {
+        // to test the property `createdTime` - Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
+        should("test createdTime") {
             // uncomment below to test the property
-            //modelInstance.status shouldBe ("TODO")
+            //modelInstance.createdTime shouldBe ("TODO")
         }
 
         // to test the property `items` - Array with the catalogs items processing records part of the catalogs items batch
         should("test items") {
             // uncomment below to test the property
             //modelInstance.items shouldBe ("TODO")
+        }
+
+        // to test the property `status`
+        should("test status") {
+            // uncomment below to test the property
+            //modelInstance.status shouldBe ("TODO")
         }
 
     }

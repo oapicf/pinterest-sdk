@@ -7,8 +7,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**values** | **Seq&lt;String&gt;** |  | 
 **negated** | **Boolean** |  |  [optional]
+**values** | **Seq&lt;String&gt;** |  | 
 
 
 

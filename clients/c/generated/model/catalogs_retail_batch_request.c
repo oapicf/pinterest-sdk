@@ -23,35 +23,39 @@ pinterest_rest_api_catalogs_retail_batch_request_CATALOGTYPE_e catalogs_retail_b
 }
 
 static catalogs_retail_batch_request_t *catalogs_retail_batch_request_create_internal(
+    char *catalog_id,
     pinterest_rest_api_catalogs_retail_batch_request_CATALOGTYPE_e catalog_type,
     pinterest_rest_api_country__e country,
-    pinterest_rest_api_catalogs_retail_batch_request_LANGUAGE_e language,
-    list_t *items
+    list_t *items,
+    pinterest_rest_api_catalogs_retail_batch_request_LANGUAGE_e language
     ) {
     catalogs_retail_batch_request_t *catalogs_retail_batch_request_local_var = malloc(sizeof(catalogs_retail_batch_request_t));
     if (!catalogs_retail_batch_request_local_var) {
         return NULL;
     }
+    catalogs_retail_batch_request_local_var->catalog_id = catalog_id;
     catalogs_retail_batch_request_local_var->catalog_type = catalog_type;
     catalogs_retail_batch_request_local_var->country = country;
-    catalogs_retail_batch_request_local_var->language = language;
     catalogs_retail_batch_request_local_var->items = items;
+    catalogs_retail_batch_request_local_var->language = language;
 
     catalogs_retail_batch_request_local_var->_library_owned = 1;
     return catalogs_retail_batch_request_local_var;
 }
 
 __attribute__((deprecated)) catalogs_retail_batch_request_t *catalogs_retail_batch_request_create(
+    char *catalog_id,
     pinterest_rest_api_catalogs_retail_batch_request_CATALOGTYPE_e catalog_type,
     pinterest_rest_api_country__e country,
-    pinterest_rest_api_catalogs_retail_batch_request_LANGUAGE_e language,
-    list_t *items
+    list_t *items,
+    pinterest_rest_api_catalogs_retail_batch_request_LANGUAGE_e language
     ) {
     return catalogs_retail_batch_request_create_internal (
+        catalog_id,
         catalog_type,
         country,
-        language,
-        items
+        items,
+        language
         );
 }
 
@@ -64,6 +68,10 @@ void catalogs_retail_batch_request_free(catalogs_retail_batch_request_t *catalog
         return ;
     }
     listEntry_t *listEntry;
+    if (catalogs_retail_batch_request->catalog_id) {
+        free(catalogs_retail_batch_request->catalog_id);
+        catalogs_retail_batch_request->catalog_id = NULL;
+    }
     if (catalogs_retail_batch_request->items) {
         list_ForEach(listEntry, catalogs_retail_batch_request->items) {
             catalogs_retail_batch_request_items_inner_free(listEntry->data);
@@ -76,6 +84,14 @@ void catalogs_retail_batch_request_free(catalogs_retail_batch_request_t *catalog
 
 cJSON *catalogs_retail_batch_request_convertToJSON(catalogs_retail_batch_request_t *catalogs_retail_batch_request) {
     cJSON *item = cJSON_CreateObject();
+
+    // catalogs_retail_batch_request->catalog_id
+    if(catalogs_retail_batch_request->catalog_id) {
+    if(cJSON_AddStringToObject(item, "catalog_id", catalogs_retail_batch_request->catalog_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
 
     // catalogs_retail_batch_request->catalog_type
     if (pinterest_rest_api_catalogs_retail_batch_request_CATALOGTYPE_NULL == catalogs_retail_batch_request->catalog_type) {
@@ -101,16 +117,6 @@ cJSON *catalogs_retail_batch_request_convertToJSON(catalogs_retail_batch_request
     }
 
 
-    // catalogs_retail_batch_request->language
-    if (pinterest_rest_api_catalogs_retail_batch_request_LANGUAGE_NULL == catalogs_retail_batch_request->language) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "language", catalogs_retail_batch_request_language_ToString(catalogs_retail_batch_request->language)) == NULL)
-    {
-    goto fail; //Enum
-    }
-
-
     // catalogs_retail_batch_request->items
     if (!catalogs_retail_batch_request->items) {
         goto fail;
@@ -131,6 +137,16 @@ cJSON *catalogs_retail_batch_request_convertToJSON(catalogs_retail_batch_request
     }
     }
 
+
+    // catalogs_retail_batch_request->language
+    if (pinterest_rest_api_catalogs_retail_batch_request_LANGUAGE_NULL == catalogs_retail_batch_request->language) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "language", catalogs_retail_batch_request_language_ToString(catalogs_retail_batch_request->language)) == NULL)
+    {
+    goto fail; //Enum
+    }
+
     return item;
 fail:
     if (item) {
@@ -148,6 +164,18 @@ catalogs_retail_batch_request_t *catalogs_retail_batch_request_parseFromJSON(cJS
 
     // define the local list for catalogs_retail_batch_request->items
     list_t *itemsList = NULL;
+
+    // catalogs_retail_batch_request->catalog_id
+    cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_retail_batch_requestJSON, "catalog_id");
+    if (cJSON_IsNull(catalog_id)) {
+        catalog_id = NULL;
+    }
+    if (catalog_id) { 
+    if(!cJSON_IsString(catalog_id) && !cJSON_IsNull(catalog_id))
+    {
+    goto end; //String
+    }
+    }
 
     // catalogs_retail_batch_request->catalog_type
     cJSON *catalog_type = cJSON_GetObjectItemCaseSensitive(catalogs_retail_batch_requestJSON, "catalog_type");
@@ -178,23 +206,6 @@ catalogs_retail_batch_request_t *catalogs_retail_batch_request_parseFromJSON(cJS
     
     country_local_nonprim = country_parseFromJSON(country); //custom
 
-    // catalogs_retail_batch_request->language
-    cJSON *language = cJSON_GetObjectItemCaseSensitive(catalogs_retail_batch_requestJSON, "language");
-    if (cJSON_IsNull(language)) {
-        language = NULL;
-    }
-    if (!language) {
-        goto end;
-    }
-
-    pinterest_rest_api_catalogs_retail_batch_request_LANGUAGE_e languageVariable;
-    
-    if(!cJSON_IsString(language))
-    {
-    goto end; //Enum
-    }
-    languageVariable = catalogs_retail_batch_request_language_FromString(language->valuestring);
-
     // catalogs_retail_batch_request->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(catalogs_retail_batch_requestJSON, "items");
     if (cJSON_IsNull(items)) {
@@ -222,12 +233,30 @@ catalogs_retail_batch_request_t *catalogs_retail_batch_request_parseFromJSON(cJS
         list_addElement(itemsList, itemsItem);
     }
 
+    // catalogs_retail_batch_request->language
+    cJSON *language = cJSON_GetObjectItemCaseSensitive(catalogs_retail_batch_requestJSON, "language");
+    if (cJSON_IsNull(language)) {
+        language = NULL;
+    }
+    if (!language) {
+        goto end;
+    }
+
+    pinterest_rest_api_catalogs_retail_batch_request_LANGUAGE_e languageVariable;
+    
+    if(!cJSON_IsString(language))
+    {
+    goto end; //Enum
+    }
+    languageVariable = catalogs_retail_batch_request_language_FromString(language->valuestring);
+
 
     catalogs_retail_batch_request_local_var = catalogs_retail_batch_request_create_internal (
+        catalog_id && !cJSON_IsNull(catalog_id) ? strdup(catalog_id->valuestring) : NULL,
         catalog_typeVariable,
         country_local_nonprim,
-        languageVariable,
-        itemsList
+        itemsList,
+        languageVariable
         );
 
     return catalogs_retail_batch_request_local_var;

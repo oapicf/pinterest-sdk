@@ -8,9 +8,9 @@
 
 (def quiz-pin-question-data
   {
+   (ds/opt :options) (s/coll-of quiz-pin-option-spec)
    (ds/opt :question_id) float?
    (ds/opt :question_text) string?
-   (ds/opt :options) (s/coll-of quiz-pin-option-spec)
    })
 
 (def quiz-pin-question-spec

@@ -32,14 +32,14 @@ public class CatalogsItemsFilters  {
   @Valid
   private CatalogsType catalogType;
 
-  @ApiModelProperty(required = true, value = "")
-  private List<String> itemIds = new ArrayList<>();
-
  /**
   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
   */
   @ApiModelProperty(value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
   private String catalogId;
+
+  @ApiModelProperty(required = true, value = "")
+  private List<String> itemIds = new ArrayList<>();
 
   @ApiModelProperty(required = true, value = "")
   private List<String> hotelIds = new ArrayList<>();
@@ -68,6 +68,30 @@ public class CatalogsItemsFilters  {
    */
   public CatalogsItemsFilters catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
+    return this;
+  }
+
+ /**
+  * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+  * @return catalogId
+  */
+  @JsonProperty("catalog_id")
+ @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+    return catalogId;
+  }
+
+  /**
+   * Sets the <code>catalogId</code> property.
+   */
+ public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
+  /**
+   * Sets the <code>catalogId</code> property.
+   */
+  public CatalogsItemsFilters catalogId(String catalogId) {
+    this.catalogId = catalogId;
     return this;
   }
 
@@ -101,30 +125,6 @@ public class CatalogsItemsFilters  {
    */
   public CatalogsItemsFilters addItemIdsItem(String itemIdsItem) {
     this.itemIds.add(itemIdsItem);
-    return this;
-  }
-
- /**
-  * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-  * @return catalogId
-  */
-  @JsonProperty("catalog_id")
- @Pattern(regexp="^\\d+$")  public String getCatalogId() {
-    return catalogId;
-  }
-
-  /**
-   * Sets the <code>catalogId</code> property.
-   */
- public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
-  /**
-   * Sets the <code>catalogId</code> property.
-   */
-  public CatalogsItemsFilters catalogId(String catalogId) {
-    this.catalogId = catalogId;
     return this;
   }
 
@@ -205,15 +205,15 @@ public class CatalogsItemsFilters  {
     }
     CatalogsItemsFilters catalogsItemsFilters = (CatalogsItemsFilters) o;
     return Objects.equals(this.catalogType, catalogsItemsFilters.catalogType) &&
-        Objects.equals(this.itemIds, catalogsItemsFilters.itemIds) &&
         Objects.equals(this.catalogId, catalogsItemsFilters.catalogId) &&
+        Objects.equals(this.itemIds, catalogsItemsFilters.itemIds) &&
         Objects.equals(this.hotelIds, catalogsItemsFilters.hotelIds) &&
         Objects.equals(this.creativeAssetsIds, catalogsItemsFilters.creativeAssetsIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemIds, catalogId, hotelIds, creativeAssetsIds);
+    return Objects.hash(catalogType, catalogId, itemIds, hotelIds, creativeAssetsIds);
   }
 
   @Override
@@ -222,8 +222,8 @@ public class CatalogsItemsFilters  {
     sb.append("class CatalogsItemsFilters {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    itemIds: ").append(toIndentedString(itemIds)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    itemIds: ").append(toIndentedString(itemIds)).append("\n");
     sb.append("    hotelIds: ").append(toIndentedString(hotelIds)).append("\n");
     sb.append("    creativeAssetsIds: ").append(toIndentedString(creativeAssetsIds)).append("\n");
     sb.append("}");

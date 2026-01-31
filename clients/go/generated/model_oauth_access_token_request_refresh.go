@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,8 +24,6 @@ var _ MappedNullable = &OauthAccessTokenRequestRefresh{}
 type OauthAccessTokenRequestRefresh struct {
 	RefreshToken string `json:"refresh_token"`
 	Scope *string `json:"scope,omitempty"`
-	// Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\".
-	RefreshOn *bool `json:"refresh_on,omitempty"`
 	GrantType string `json:"grant_type"`
 }
 
@@ -106,38 +104,6 @@ func (o *OauthAccessTokenRequestRefresh) SetScope(v string) {
 	o.Scope = &v
 }
 
-// GetRefreshOn returns the RefreshOn field value if set, zero value otherwise.
-func (o *OauthAccessTokenRequestRefresh) GetRefreshOn() bool {
-	if o == nil || IsNil(o.RefreshOn) {
-		var ret bool
-		return ret
-	}
-	return *o.RefreshOn
-}
-
-// GetRefreshOnOk returns a tuple with the RefreshOn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OauthAccessTokenRequestRefresh) GetRefreshOnOk() (*bool, bool) {
-	if o == nil || IsNil(o.RefreshOn) {
-		return nil, false
-	}
-	return o.RefreshOn, true
-}
-
-// HasRefreshOn returns a boolean if a field has been set.
-func (o *OauthAccessTokenRequestRefresh) HasRefreshOn() bool {
-	if o != nil && !IsNil(o.RefreshOn) {
-		return true
-	}
-
-	return false
-}
-
-// SetRefreshOn gets a reference to the given bool and assigns it to the RefreshOn field.
-func (o *OauthAccessTokenRequestRefresh) SetRefreshOn(v bool) {
-	o.RefreshOn = &v
-}
-
 // GetGrantType returns the GrantType field value
 func (o *OauthAccessTokenRequestRefresh) GetGrantType() string {
 	if o == nil {
@@ -175,9 +141,6 @@ func (o OauthAccessTokenRequestRefresh) ToMap() (map[string]interface{}, error) 
 	toSerialize["refresh_token"] = o.RefreshToken
 	if !IsNil(o.Scope) {
 		toSerialize["scope"] = o.Scope
-	}
-	if !IsNil(o.RefreshOn) {
-		toSerialize["refresh_on"] = o.RefreshOn
 	}
 	toSerialize["grant_type"] = o.GrantType
 	return toSerialize, nil

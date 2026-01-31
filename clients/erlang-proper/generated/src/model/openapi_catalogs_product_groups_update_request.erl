@@ -9,10 +9,10 @@
 -export_type([openapi_catalogs_product_groups_update_request/0]).
 
 -type openapi_catalogs_product_groups_update_request() ::
-  [ {'name', binary() }
-  | {'description', binary() }
-  | {'is_featured', boolean() }
+  [ {'description', binary() }
   | {'filters', openapi_catalogs_creative_assets_product_group_filters:openapi_catalogs_creative_assets_product_group_filters() }
+  | {'is_featured', boolean() }
+  | {'name', binary() }
   | {'catalog_type', binary() }
   | {'country', openapi_country:openapi_country() }
   | {'locale', openapi_catalogs_locale:openapi_catalogs_locale() }
@@ -23,10 +23,10 @@ openapi_catalogs_product_groups_update_request() ->
     openapi_catalogs_product_groups_update_request([]).
 
 openapi_catalogs_product_groups_update_request(Fields) ->
-  Default = [ {'name', binary() }
-            , {'description', binary() }
-            , {'is_featured', boolean() }
+  Default = [ {'description', binary() }
             , {'filters', openapi_catalogs_creative_assets_product_group_filters:openapi_catalogs_creative_assets_product_group_filters() }
+            , {'is_featured', boolean() }
+            , {'name', binary() }
             , {'catalog_type', elements([<<"CREATIVE_ASSETS">>]) }
             , {'country', openapi_country:openapi_country() }
             , {'locale', openapi_catalogs_locale:openapi_catalogs_locale() }

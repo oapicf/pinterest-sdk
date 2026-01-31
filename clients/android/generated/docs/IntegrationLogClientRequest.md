@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**method** | [**MethodEnum**](#MethodEnum) |  | 
 **host** | **String** | HTTP request host from host header. | 
+**method** | [**MethodEnum**](#MethodEnum) |  | 
 **path** | **String** | HTTP request path. | 
 **requestHeaders** | **Map&lt;String, String&gt;** | HTTP request headers as key-value pairs. |  [optional]
 **responseHeaders** | **Map&lt;String, String&gt;** | HTTP response headers as key-value pairs. |  [optional]

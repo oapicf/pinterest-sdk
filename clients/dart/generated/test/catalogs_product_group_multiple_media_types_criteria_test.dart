@@ -16,13 +16,13 @@ void main() {
   // final instance = CatalogsProductGroupMultipleMediaTypesCriteria();
 
   group('test CatalogsProductGroupMultipleMediaTypesCriteria', () {
-    // List<MediaType> values (default value: const [])
-    test('to test the property `values`', () async {
+    // bool negated (default value: false)
+    test('to test the property `negated`', () async {
       // TODO
     });
 
-    // bool negated (default value: false)
-    test('to test the property `negated`', () async {
+    // List<MediaType> values (default value: const [])
+    test('to test the property `values`', () async {
       // TODO
     });
 

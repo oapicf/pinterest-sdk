@@ -8,6 +8,10 @@ Method | HTTP request | Description
 [**adsCreditRedeemWithHttpInfo**](BillingApi.md#adsCreditRedeemWithHttpInfo) | **POST** /ad_accounts/{ad_account_id}/ads_credit/redeem | Redeem ad credits
 [**adsCreditsDiscountsGet**](BillingApi.md#adsCreditsDiscountsGet) | **GET** /ad_accounts/{ad_account_id}/ads_credit/discounts | Get ads credit discounts
 [**adsCreditsDiscountsGetWithHttpInfo**](BillingApi.md#adsCreditsDiscountsGetWithHttpInfo) | **GET** /ad_accounts/{ad_account_id}/ads_credit/discounts | Get ads credit discounts
+[**billingInvoiceDownloadGet**](BillingApi.md#billingInvoiceDownloadGet) | **GET** /ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download | Get download url for a billing invoice
+[**billingInvoiceDownloadGetWithHttpInfo**](BillingApi.md#billingInvoiceDownloadGetWithHttpInfo) | **GET** /ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download | Get download url for a billing invoice
+[**billingInvoicesGet**](BillingApi.md#billingInvoicesGet) | **GET** /ad_accounts/{ad_account_id}/billing_invoices | Get billing invoices
+[**billingInvoicesGetWithHttpInfo**](BillingApi.md#billingInvoicesGetWithHttpInfo) | **GET** /ad_accounts/{ad_account_id}/billing_invoices | Get billing invoices
 [**billingProfilesGet**](BillingApi.md#billingProfilesGet) | **GET** /ad_accounts/{ad_account_id}/billing_profiles | Get billing profiles
 [**billingProfilesGetWithHttpInfo**](BillingApi.md#billingProfilesGetWithHttpInfo) | **GET** /ad_accounts/{ad_account_id}/billing_profiles | Get billing profiles
 [**ssioAccountsGet**](BillingApi.md#ssioAccountsGet) | **GET** /ad_accounts/{ad_account_id}/ssio/accounts | Get Salesforce account details including bill-to information.
@@ -31,7 +35,7 @@ Method | HTTP request | Description
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Example
 
@@ -118,7 +122,7 @@ No authorization required
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Example
 
@@ -200,13 +204,207 @@ No authorization required
 | **0** | Unexpected error. |  -  |
 
 
+## billingInvoiceDownloadGet
+
+> billingInvoiceDownloadGet(billingInvoiceDownloadGetRequest): ApiRequest[BillingInvoiceDownloadResponse]
+
+Get download url for a billing invoice
+
+Get download url for a billing invoice.
+
+### Example
+
+```scala
+// Import classes:
+import 
+import 
+import org.openapitools.client.core._
+import org.openapitools.client.core.CollectionFormats._
+import org.openapitools.client.core.ApiKeyLocations._
+
+import akka.actor.ActorSystem
+import scala.concurrent.Future
+import scala.util.{Failure, Success}
+
+object Example extends App {
+    
+    implicit val system: ActorSystem = ActorSystem()
+    import system.dispatcher
+    
+    val apiInvoker = ApiInvoker()
+    val apiInstance = BillingApi("https://api.pinterest.com/v5")
+    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
+
+    val billingInvoiceId: String = billingInvoiceId_example // String | Unique identifier of a billing invoice.
+    
+    val request = apiInstance.billingInvoiceDownloadGet(adAccountId, billingInvoiceId)
+    val response = apiInvoker.execute(request)
+
+    response.onComplete {
+        case Success(ApiResponse(code, content, headers)) =>
+            System.out.println(s"Status code: $code}")
+            System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
+        
+        case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
+            System.err.println("Exception when calling BillingApi#billingInvoiceDownloadGet")
+            System.err.println(s"Status code: $code}")
+            System.err.println(s"Reason: $responseContent")
+            System.err.println(s"Response headers: ${headers.mkString(", ")}")
+            error.printStackTrace();
+
+        case Failure(exception) => 
+            System.err.println("Exception when calling BillingApi#billingInvoiceDownloadGet")
+            exception.printStackTrace();
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adAccountId** | **String**| Unique identifier of an ad account. |
+ **billingInvoiceId** | **String**| Unique identifier of a billing invoice. |
+
+### Return type
+
+ApiRequest[[**BillingInvoiceDownloadResponse**](BillingInvoiceDownloadResponse.md)]
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successfully fetched Billing invoice information for a given ad account |  -  |
+| **400** | Invalid request parameter. |  -  |
+| **0** | Unexpected error |  -  |
+
+
+## billingInvoicesGet
+
+> billingInvoicesGet(billingInvoicesGetRequest): ApiRequest[BillingInvoicesGet200Response]
+
+Get billing invoices
+
+Get billing invoices in the advertiser account.
+
+### Example
+
+```scala
+// Import classes:
+import 
+import 
+import 
+import org.openapitools.client.core._
+import org.openapitools.client.core.CollectionFormats._
+import org.openapitools.client.core.ApiKeyLocations._
+
+import akka.actor.ActorSystem
+import scala.concurrent.Future
+import scala.util.{Failure, Success}
+
+object Example extends App {
+    
+    implicit val system: ActorSystem = ActorSystem()
+    import system.dispatcher
+    
+    val apiInvoker = ApiInvoker()
+    val apiInstance = BillingApi("https://api.pinterest.com/v5")
+    val adAccountId: String = adAccountId_example // String | Unique identifier of an ad account.
+
+    val bookmark: String = bookmark_example // String | Cursor used to fetch the next page of items
+
+    val pageSize: Int = 56 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+
+    val sort: String = DUE_DATE // String | Field of which to sort billing invoices
+
+    val order: String = ASCENDING // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+
+    val status: String = OPEN // String | Status of billing invoices to filter by
+
+    val documentType: String = INVOICE // String | Document type of billing invoices to filter by
+
+    val startDueDate: LocalDate = Sun Jan 01 00:00:00 UTC 2023 // LocalDate | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
+
+    val endDueDate: LocalDate = Mon Jan 01 00:00:00 UTC 2024 // LocalDate | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
+    
+    val request = apiInstance.billingInvoicesGet(adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate)
+    val response = apiInvoker.execute(request)
+
+    response.onComplete {
+        case Success(ApiResponse(code, content, headers)) =>
+            System.out.println(s"Status code: $code}")
+            System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
+        
+        case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
+            System.err.println("Exception when calling BillingApi#billingInvoicesGet")
+            System.err.println(s"Status code: $code}")
+            System.err.println(s"Reason: $responseContent")
+            System.err.println(s"Response headers: ${headers.mkString(", ")}")
+            error.printStackTrace();
+
+        case Failure(exception) => 
+            System.err.println("Exception when calling BillingApi#billingInvoicesGet")
+            exception.printStackTrace();
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adAccountId** | **String**| Unique identifier of an ad account. |
+ **bookmark** | **String**| Cursor used to fetch the next page of items | [optional]
+ **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]
+ **sort** | **String**| Field of which to sort billing invoices | [optional] [enum: DUE_DATE, BILLING_PERIOD, DOCUMENT_TYPE, TOTAL_AMOUNT, INVOICE_NUMBER]
+ **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING]
+ **status** | **String**| Status of billing invoices to filter by | [optional] [enum: OPEN, CLOSED]
+ **documentType** | **String**| Document type of billing invoices to filter by | [optional] [enum: INVOICE, CREDIT_MEMO]
+ **startDueDate** | **LocalDate**| Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional]
+ **endDueDate** | **LocalDate**| Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional]
+
+### Return type
+
+ApiRequest[[**BillingInvoicesGet200Response**](BillingInvoicesGet200Response.md)]
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **400** | Invalid request parameter. |  -  |
+| **0** | Unexpected error |  -  |
+
+
 ## billingProfilesGet
 
 > billingProfilesGet(billingProfilesGetRequest): ApiRequest[BillingProfilesGet200Response]
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Example
 

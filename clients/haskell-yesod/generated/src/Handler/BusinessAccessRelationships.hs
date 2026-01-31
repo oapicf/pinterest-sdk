@@ -5,6 +5,23 @@ module Handler.BusinessAccessRelationships where
 import           Import
 
 
+-- | Create a Brand Account
+--
+-- Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+-- operationId: brandAccounts/create
+postBusinessAccessBusinessHierarchyByTextBrandAccountsR :: Text -- ^ business hierarchy node id
+                                                        -> Handler Value
+postBusinessAccessBusinessHierarchyByTextBrandAccountsR businessHierarchyId = notImplemented
+
+-- | Update a Brand Account
+--
+-- Update an existing Brand Account
+-- operationId: brandAccounts/update
+patchBusinessAccessBusinessHierarchyByTextBrandAccountsByTextR :: Text -- ^ business hierarchy node id
+                                                               -> Text -- ^ Unique identifier of a brand account.
+                                                               -> Handler Value
+patchBusinessAccessBusinessHierarchyByTextBrandAccountsByTextR businessHierarchyId brandAccountId = notImplemented
+
 -- | Terminate business memberships
 --
 -- Terminate memberships between the specified members and your business.
@@ -43,6 +60,15 @@ getBusinessesByTextMembersR businessId = notImplemented
 getBusinessesByTextPartnersR :: Text -- ^ Unique identifier of the requesting business.
                              -> Handler Value
 getBusinessesByTextPartnersR businessId = notImplemented
+
+-- | Update a system user information.
+--
+-- Update a system user information such as name.
+-- operationId: systemUser/update
+patchBusinessesByTextSystemUsersByTextR :: Text -- ^ Unique identifier of the requesting business.
+                                        -> Text -- ^ Unique identifier of a system user.
+                                        -> Handler Value
+patchBusinessesByTextSystemUsersByTextR businessId systemUserId = notImplemented
 
 -- | Update member&#39;s business role
 --

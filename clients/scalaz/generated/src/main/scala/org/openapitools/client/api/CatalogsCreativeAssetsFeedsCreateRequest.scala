@@ -12,19 +12,19 @@ import org.joda.time.DateTime
 import CatalogsCreativeAssetsFeedsCreateRequest._
 
 case class CatalogsCreativeAssetsFeedsCreateRequest (
-  defaultCurrency: Option[NullableCurrency],
-/* A human-friendly name associated to a given feed. */
-  name: String,
-format: CatalogsFormat,
-defaultLocale: CatalogsFeedsCreateRequestDefaultLocale,
-defaultCountry: Country,
+  /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. */
+  catalogId: Option[String],
+catalogType: CatalogsType,
 credentials: Option[CatalogsFeedCredentials],
+defaultCountry: Country,
+defaultCurrency: Option[NullableCurrency],
+defaultLocale: CatalogsFeedsCreateRequestDefaultLocale,
+format: CatalogsFormat,
 /* The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
   location: String,
+/* A human-friendly name associated to a given feed. */
+  name: String,
 preferredProcessingSchedule: Option[CatalogsFeedProcessingSchedule],
-catalogType: CatalogsType,
-/* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. */
-  catalogId: Option[String],
 status: Option[CatalogsStatus])
 
 object CatalogsCreativeAssetsFeedsCreateRequest {

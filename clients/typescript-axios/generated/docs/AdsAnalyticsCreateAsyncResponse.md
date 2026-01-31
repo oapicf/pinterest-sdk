@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**message** | **string** |  | [optional] [default to undefined]
 **report_status** | [**BulkReportingJobStatus**](BulkReportingJobStatus.md) |  | [optional] [default to undefined]
 **token** | **string** |  | [optional] [default to undefined]
-**message** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -15,9 +15,9 @@ Name | Type | Description | Notes
 import { AdsAnalyticsCreateAsyncResponse } from './api';
 
 const instance: AdsAnalyticsCreateAsyncResponse = {
+    message,
     report_status,
     token,
-    message,
 };
 ```
 

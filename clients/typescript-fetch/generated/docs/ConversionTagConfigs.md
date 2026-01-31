@@ -6,13 +6,15 @@
 
 Name | Type
 ------------ | -------------
-`aemEnabled` | boolean
-`mdFrequency` | number
-`aemFnlnEnabled` | boolean
-`aemPhEnabled` | boolean
-`aemGeEnabled` | boolean
 `aemDbEnabled` | boolean
+`aemEnabled` | boolean
+`aemExternalIdEnabled` | boolean
+`aemFnlnEnabled` | boolean
+`aemGeEnabled` | boolean
 `aemLocEnabled` | boolean
+`aemPhEnabled` | boolean
+`mdFrequency` | number
+`noCodeCapiDomains` | Array&lt;string&gt;
 
 ## Example
 
@@ -21,13 +23,15 @@ import type { ConversionTagConfigs } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "aemEnabled": true,
+  "aemDbEnabled": null,
+  "aemEnabled": null,
+  "aemExternalIdEnabled": null,
+  "aemFnlnEnabled": null,
+  "aemGeEnabled": null,
+  "aemLocEnabled": null,
+  "aemPhEnabled": null,
   "mdFrequency": 0.6,
-  "aemFnlnEnabled": true,
-  "aemPhEnabled": true,
-  "aemGeEnabled": true,
-  "aemDbEnabled": true,
-  "aemLocEnabled": true,
+  "noCodeCapiDomains": ["https://sub.exampledomain.com"],
 } satisfies ConversionTagConfigs
 
 console.log(example)

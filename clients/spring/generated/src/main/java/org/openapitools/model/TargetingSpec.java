@@ -9,7 +9,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.TargetingSpecSHOPPINGRETARGETING;
+import org.openapitools.model.TargetingSpecAgeBucket;
+import org.openapitools.model.TargetingSpecAppType;
+import org.openapitools.model.TargetingSpecGender;
+import org.openapitools.model.TargetingSpecShoppingRetargeting;
 import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -23,108 +26,18 @@ import java.util.*;
 import javax.annotation.Generated;
 
 /**
- * Ad group targeting specification defining the ad group target audience. For example, &#x60;{\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;AGE_BUCKET\&quot;:[\&quot;25-34\&quot;]}&#x60;
+ * Ad group targeting specification defining the ad group target audience. For example, &#x60;{\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;MINIMUM_AGE\&quot;:\&quot;18\&quot;, \&quot;MAXIMUM_AGE\&quot;:\&quot;65+\&quot;}&#x60;
  */
 
-@Schema(name = "TargetingSpec", description = "Ad group targeting specification defining the ad group target audience. For example, `{\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"AGE_BUCKET\":[\"25-34\"]}`")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Schema(name = "TargetingSpec", description = "Ad group targeting specification defining the ad group target audience. For example, `{\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"MINIMUM_AGE\":\"18\", \"MAXIMUM_AGE\":\"65+\"}`")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TargetingSpec {
 
-  /**
-   * Gets or Sets AGE_BUCKET
-   */
-  public enum AGEBUCKETEnum {
-    _18_24("18-24"),
-    
-    _21_("21+"),
-    
-    _25_34("25-34"),
-    
-    _35_44("35-44"),
-    
-    _45_49("45-49"),
-    
-    _50_54("50-54"),
-    
-    _55_64("55-64"),
-    
-    _65_("65+");
-
-    private final String value;
-
-    AGEBUCKETEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static AGEBUCKETEnum fromValue(String value) {
-      for (AGEBUCKETEnum b : AGEBUCKETEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
+  @Valid
+  private JsonNullable<List<TargetingSpecAgeBucket>> AGE_BUCKET = JsonNullable.<List<TargetingSpecAgeBucket>>undefined();
 
   @Valid
-  private JsonNullable<List<AGEBUCKETEnum>> AGE_BUCKET = JsonNullable.<List<AGEBUCKETEnum>>undefined();
-
-  /**
-   * Gets or Sets APPTYPE
-   */
-  public enum APPTYPEEnum {
-    ANDROID_MOBILE("android_mobile"),
-    
-    ANDROID_TABLET("android_tablet"),
-    
-    IPAD("ipad"),
-    
-    IPHONE("iphone"),
-    
-    WEB("web"),
-    
-    WEB_MOBILE("web_mobile");
-
-    private final String value;
-
-    APPTYPEEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static APPTYPEEnum fromValue(String value) {
-      for (APPTYPEEnum b : APPTYPEEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  @Valid
-  private JsonNullable<List<APPTYPEEnum>> APPTYPE = JsonNullable.<List<APPTYPEEnum>>undefined();
+  private JsonNullable<List<TargetingSpecAppType>> APPTYPE = JsonNullable.<List<TargetingSpecAppType>>undefined();
 
   @Valid
   private JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> AUDIENCE_EXCLUDE = JsonNullable.<List<@Pattern(regexp = "^\\d+$")String>>undefined();
@@ -132,45 +45,8 @@ public class TargetingSpec {
   @Valid
   private JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> AUDIENCE_INCLUDE = JsonNullable.<List<@Pattern(regexp = "^\\d+$")String>>undefined();
 
-  /**
-   * Gets or Sets GENDER
-   */
-  public enum GENDEREnum {
-    UNKNOWN("unknown"),
-    
-    MALE("male"),
-    
-    FEMALE("female");
-
-    private final String value;
-
-    GENDEREnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static GENDEREnum fromValue(String value) {
-      for (GENDEREnum b : GENDEREnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
   @Valid
-  private JsonNullable<List<GENDEREnum>> GENDER = JsonNullable.<List<GENDEREnum>>undefined();
+  private JsonNullable<List<TargetingSpecGender>> GENDER = JsonNullable.<List<TargetingSpecGender>>undefined();
 
   @Valid
   private JsonNullable<List<String>> GEO = JsonNullable.<List<String>>undefined();
@@ -184,8 +60,12 @@ public class TargetingSpec {
   @Valid
   private JsonNullable<List<String>> LOCATION = JsonNullable.<List<String>>undefined();
 
+  private @Nullable String MAXIMUM_AGE;
+
+  private @Nullable String MINIMUM_AGE;
+
   @Valid
-  private JsonNullable<List<@Valid TargetingSpecSHOPPINGRETARGETING>> SHOPPING_RETARGETING = JsonNullable.<List<@Valid TargetingSpecSHOPPINGRETARGETING>>undefined();
+  private JsonNullable<List<@Valid TargetingSpecShoppingRetargeting>> SHOPPING_RETARGETING = JsonNullable.<List<@Valid TargetingSpecShoppingRetargeting>>undefined();
 
   /**
    * Gets or Sets TARGETING_STRATEGY
@@ -227,12 +107,12 @@ public class TargetingSpec {
   @Valid
   private JsonNullable<List<TARGETINGSTRATEGYEnum>> TARGETING_STRATEGY = JsonNullable.<List<TARGETINGSTRATEGYEnum>>undefined();
 
-  public TargetingSpec AGE_BUCKET(List<AGEBUCKETEnum> AGE_BUCKET) {
+  public TargetingSpec AGE_BUCKET(List<TargetingSpecAgeBucket> AGE_BUCKET) {
     this.AGE_BUCKET = JsonNullable.of(AGE_BUCKET);
     return this;
   }
 
-  public TargetingSpec addAGEBUCKETItem(AGEBUCKETEnum AGE_BUCKETItem) {
+  public TargetingSpec addAGEBUCKETItem(TargetingSpecAgeBucket AGE_BUCKETItem) {
     if (this.AGE_BUCKET == null || !this.AGE_BUCKET.isPresent()) {
       this.AGE_BUCKET = JsonNullable.of(new ArrayList<>());
     }
@@ -241,26 +121,26 @@ public class TargetingSpec {
   }
 
   /**
-   * Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted.
+   * **Legacy field.** Predefined age ranges. We recommend using MINIMUM_AGE and MAXIMUM_AGE instead for more flexible targeting. Cannot be combined with MINIMUM_AGE/MAXIMUM_AGE. If neither AGE_BUCKET nor MINIMUM_AGE/MAXIMUM_AGE are specified, all ages will be targeted.
    * @return AGE_BUCKET
    */
-  
-  @Schema(name = "AGE_BUCKET", example = "[\"35-44\",\"50-54\"]", description = "Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Valid 
+  @Schema(name = "AGE_BUCKET", example = "[\"35-44\",\"50-54\"]", description = "**Legacy field.** Predefined age ranges. We recommend using MINIMUM_AGE and MAXIMUM_AGE instead for more flexible targeting. Cannot be combined with MINIMUM_AGE/MAXIMUM_AGE. If neither AGE_BUCKET nor MINIMUM_AGE/MAXIMUM_AGE are specified, all ages will be targeted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AGE_BUCKET")
-  public JsonNullable<List<AGEBUCKETEnum>> getAGEBUCKET() {
+  public JsonNullable<List<TargetingSpecAgeBucket>> getAGEBUCKET() {
     return AGE_BUCKET;
   }
 
-  public void setAGEBUCKET(JsonNullable<List<AGEBUCKETEnum>> AGE_BUCKET) {
+  public void setAGEBUCKET(JsonNullable<List<TargetingSpecAgeBucket>> AGE_BUCKET) {
     this.AGE_BUCKET = AGE_BUCKET;
   }
 
-  public TargetingSpec APPTYPE(List<APPTYPEEnum> APPTYPE) {
+  public TargetingSpec APPTYPE(List<TargetingSpecAppType> APPTYPE) {
     this.APPTYPE = JsonNullable.of(APPTYPE);
     return this;
   }
 
-  public TargetingSpec addAPPTYPEItem(APPTYPEEnum APPTYPEItem) {
+  public TargetingSpec addAPPTYPEItem(TargetingSpecAppType APPTYPEItem) {
     if (this.APPTYPE == null || !this.APPTYPE.isPresent()) {
       this.APPTYPE = JsonNullable.of(new ArrayList<>());
     }
@@ -272,14 +152,14 @@ public class TargetingSpec {
    * Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted.
    * @return APPTYPE
    */
-  
+  @Valid 
   @Schema(name = "APPTYPE", example = "[\"ipad\",\"iphone\"]", description = "Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("APPTYPE")
-  public JsonNullable<List<APPTYPEEnum>> getAPPTYPE() {
+  public JsonNullable<List<TargetingSpecAppType>> getAPPTYPE() {
     return APPTYPE;
   }
 
-  public void setAPPTYPE(JsonNullable<List<APPTYPEEnum>> APPTYPE) {
+  public void setAPPTYPE(JsonNullable<List<TargetingSpecAppType>> APPTYPE) {
     this.APPTYPE = APPTYPE;
   }
 
@@ -339,12 +219,12 @@ public class TargetingSpec {
     this.AUDIENCE_INCLUDE = AUDIENCE_INCLUDE;
   }
 
-  public TargetingSpec GENDER(List<GENDEREnum> GENDER) {
+  public TargetingSpec GENDER(List<TargetingSpecGender> GENDER) {
     this.GENDER = JsonNullable.of(GENDER);
     return this;
   }
 
-  public TargetingSpec addGENDERItem(GENDEREnum GENDERItem) {
+  public TargetingSpec addGENDERItem(TargetingSpecGender GENDERItem) {
     if (this.GENDER == null || !this.GENDER.isPresent()) {
       this.GENDER = JsonNullable.of(new ArrayList<>());
     }
@@ -356,14 +236,14 @@ public class TargetingSpec {
    * Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.
    * @return GENDER
    */
-  
+  @Valid 
   @Schema(name = "GENDER", description = "Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("GENDER")
-  public JsonNullable<List<GENDEREnum>> getGENDER() {
+  public JsonNullable<List<TargetingSpecGender>> getGENDER() {
     return GENDER;
   }
 
-  public void setGENDER(JsonNullable<List<GENDEREnum>> GENDER) {
+  public void setGENDER(JsonNullable<List<TargetingSpecGender>> GENDER) {
     this.GENDER = GENDER;
   }
 
@@ -437,11 +317,11 @@ public class TargetingSpec {
   }
 
   /**
-   * 24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be targeted, only english non-sublanguage will be targeted**.
+   * 24 ISO 639-1 two-letter language codes. If the LOCALE field is not included in the request, all languages are targeted.
    * @return LOCALE
    */
   
-  @Schema(name = "LOCALE", description = "24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be targeted, only english non-sublanguage will be targeted**.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "LOCALE", description = "24 ISO 639-1 two-letter language codes. If the LOCALE field is not included in the request, all languages are targeted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("LOCALE")
   public JsonNullable<List<String>> getLOCALE() {
     return LOCALE;
@@ -465,11 +345,11 @@ public class TargetingSpec {
   }
 
   /**
-   * 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, click here. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
+   * 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a>. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
    * @return LOCATION
    */
   
-  @Schema(name = "LOCATION", description = "22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, click here. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "LOCATION", description = "22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a>. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("LOCATION")
   public JsonNullable<List<String>> getLOCATION() {
     return LOCATION;
@@ -479,12 +359,52 @@ public class TargetingSpec {
     this.LOCATION = LOCATION;
   }
 
-  public TargetingSpec SHOPPING_RETARGETING(List<@Valid TargetingSpecSHOPPINGRETARGETING> SHOPPING_RETARGETING) {
+  public TargetingSpec MAXIMUM_AGE(@Nullable String MAXIMUM_AGE) {
+    this.MAXIMUM_AGE = MAXIMUM_AGE;
+    return this;
+  }
+
+  /**
+   * Maximum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\", \"65+\". Must be used together with `MINIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
+   * @return MAXIMUM_AGE
+   */
+  @Pattern(regexp = "^\\d+\\+?$") 
+  @Schema(name = "MAXIMUM_AGE", example = "65+", description = "Maximum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\", \"65+\". Must be used together with `MINIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("MAXIMUM_AGE")
+  public @Nullable String getMAXIMUMAGE() {
+    return MAXIMUM_AGE;
+  }
+
+  public void setMAXIMUMAGE(@Nullable String MAXIMUM_AGE) {
+    this.MAXIMUM_AGE = MAXIMUM_AGE;
+  }
+
+  public TargetingSpec MINIMUM_AGE(@Nullable String MINIMUM_AGE) {
+    this.MINIMUM_AGE = MINIMUM_AGE;
+    return this;
+  }
+
+  /**
+   * Minimum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\". Note: 65+ is not allowed for minimum age. Must be used together with `MAXIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
+   * @return MINIMUM_AGE
+   */
+  @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "MINIMUM_AGE", example = "18", description = "Minimum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\". Note: 65+ is not allowed for minimum age. Must be used together with `MAXIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("MINIMUM_AGE")
+  public @Nullable String getMINIMUMAGE() {
+    return MINIMUM_AGE;
+  }
+
+  public void setMINIMUMAGE(@Nullable String MINIMUM_AGE) {
+    this.MINIMUM_AGE = MINIMUM_AGE;
+  }
+
+  public TargetingSpec SHOPPING_RETARGETING(List<@Valid TargetingSpecShoppingRetargeting> SHOPPING_RETARGETING) {
     this.SHOPPING_RETARGETING = JsonNullable.of(SHOPPING_RETARGETING);
     return this;
   }
 
-  public TargetingSpec addSHOPPINGRETARGETINGItem(TargetingSpecSHOPPINGRETARGETING SHOPPING_RETARGETINGItem) {
+  public TargetingSpec addSHOPPINGRETARGETINGItem(TargetingSpecShoppingRetargeting SHOPPING_RETARGETINGItem) {
     if (this.SHOPPING_RETARGETING == null || !this.SHOPPING_RETARGETING.isPresent()) {
       this.SHOPPING_RETARGETING = JsonNullable.of(new ArrayList<>());
     }
@@ -499,11 +419,11 @@ public class TargetingSpec {
   @Valid 
   @Schema(name = "SHOPPING_RETARGETING", description = "Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SHOPPING_RETARGETING")
-  public JsonNullable<List<@Valid TargetingSpecSHOPPINGRETARGETING>> getSHOPPINGRETARGETING() {
+  public JsonNullable<List<@Valid TargetingSpecShoppingRetargeting>> getSHOPPINGRETARGETING() {
     return SHOPPING_RETARGETING;
   }
 
-  public void setSHOPPINGRETARGETING(JsonNullable<List<@Valid TargetingSpecSHOPPINGRETARGETING>> SHOPPING_RETARGETING) {
+  public void setSHOPPINGRETARGETING(JsonNullable<List<@Valid TargetingSpecShoppingRetargeting>> SHOPPING_RETARGETING) {
     this.SHOPPING_RETARGETING = SHOPPING_RETARGETING;
   }
 
@@ -553,6 +473,8 @@ public class TargetingSpec {
         Objects.equals(this.INTEREST, targetingSpec.INTEREST) &&
         equalsNullable(this.LOCALE, targetingSpec.LOCALE) &&
         equalsNullable(this.LOCATION, targetingSpec.LOCATION) &&
+        Objects.equals(this.MAXIMUM_AGE, targetingSpec.MAXIMUM_AGE) &&
+        Objects.equals(this.MINIMUM_AGE, targetingSpec.MINIMUM_AGE) &&
         equalsNullable(this.SHOPPING_RETARGETING, targetingSpec.SHOPPING_RETARGETING) &&
         equalsNullable(this.TARGETING_STRATEGY, targetingSpec.TARGETING_STRATEGY);
   }
@@ -563,7 +485,7 @@ public class TargetingSpec {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(AGE_BUCKET), hashCodeNullable(APPTYPE), hashCodeNullable(AUDIENCE_EXCLUDE), hashCodeNullable(AUDIENCE_INCLUDE), hashCodeNullable(GENDER), hashCodeNullable(GEO), INTEREST, hashCodeNullable(LOCALE), hashCodeNullable(LOCATION), hashCodeNullable(SHOPPING_RETARGETING), hashCodeNullable(TARGETING_STRATEGY));
+    return Objects.hash(hashCodeNullable(AGE_BUCKET), hashCodeNullable(APPTYPE), hashCodeNullable(AUDIENCE_EXCLUDE), hashCodeNullable(AUDIENCE_INCLUDE), hashCodeNullable(GENDER), hashCodeNullable(GEO), INTEREST, hashCodeNullable(LOCALE), hashCodeNullable(LOCATION), MAXIMUM_AGE, MINIMUM_AGE, hashCodeNullable(SHOPPING_RETARGETING), hashCodeNullable(TARGETING_STRATEGY));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -586,6 +508,8 @@ public class TargetingSpec {
     sb.append("    INTEREST: ").append(toIndentedString(INTEREST)).append("\n");
     sb.append("    LOCALE: ").append(toIndentedString(LOCALE)).append("\n");
     sb.append("    LOCATION: ").append(toIndentedString(LOCATION)).append("\n");
+    sb.append("    MAXIMUM_AGE: ").append(toIndentedString(MAXIMUM_AGE)).append("\n");
+    sb.append("    MINIMUM_AGE: ").append(toIndentedString(MINIMUM_AGE)).append("\n");
     sb.append("    SHOPPING_RETARGETING: ").append(toIndentedString(SHOPPING_RETARGETING)).append("\n");
     sb.append("    TARGETING_STRATEGY: ").append(toIndentedString(TARGETING_STRATEGY)).append("\n");
     sb.append("}");

@@ -9,9 +9,9 @@
 -export_type([openapi_template_response_date_range_absolute_date_range/0]).
 
 -type openapi_template_response_date_range_absolute_date_range() ::
-  [ {'type', binary() }
+  [ {'end_date', integer() }
   | {'start_date', integer() }
-  | {'end_date', integer() }
+  | {'type', binary() }
   ].
 
 
@@ -19,9 +19,9 @@ openapi_template_response_date_range_absolute_date_range() ->
     openapi_template_response_date_range_absolute_date_range([]).
 
 openapi_template_response_date_range_absolute_date_range(Fields) ->
-  Default = [ {'type', binary() }
+  Default = [ {'end_date', integer() }
             , {'start_date', integer() }
-            , {'end_date', integer() }
+            , {'type', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

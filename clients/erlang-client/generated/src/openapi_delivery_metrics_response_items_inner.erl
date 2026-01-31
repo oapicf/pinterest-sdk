@@ -5,19 +5,19 @@
 -export_type([openapi_delivery_metrics_response_items_inner/0]).
 
 -type openapi_delivery_metrics_response_items_inner() ::
-    #{ 'name' => binary(),
-       'category' => binary(),
+    #{ 'category' => binary(),
        'definition' => binary(),
-       'display_name' => binary()
+       'display_name' => binary(),
+       'name' => binary()
      }.
 
-encode(#{ 'name' := Name,
-          'category' := Category,
+encode(#{ 'category' := Category,
           'definition' := Definition,
-          'display_name' := DisplayName
+          'display_name' := DisplayName,
+          'name' := Name
         }) ->
-    #{ 'name' => Name,
-       'category' => Category,
+    #{ 'category' => Category,
        'definition' => Definition,
-       'display_name' => DisplayName
+       'display_name' => DisplayName,
+       'name' => Name
      }.

@@ -7,18 +7,21 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { TargetingSpec } from './targetingSpec';
 
 
 export interface TargetingTemplateUpdateRequest { 
-    operation_type: TargetingTemplateUpdateRequest.OperationTypeEnum;
     /**
      * Targeting template ID
      */
     id: string;
+    operation_type: TargetingTemplateUpdateRequest.OperationTypeEnum;
+    targeting_attributes?: TargetingSpec;
 }
 export namespace TargetingTemplateUpdateRequest {
     export const OperationTypeEnum = {
-        Remove: 'REMOVE'
+        Remove: 'REMOVE',
+        Update: 'UPDATE'
     } as const;
     export type OperationTypeEnum = typeof OperationTypeEnum[keyof typeof OperationTypeEnum];
 }

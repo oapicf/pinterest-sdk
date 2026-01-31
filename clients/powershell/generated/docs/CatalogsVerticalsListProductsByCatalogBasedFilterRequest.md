@@ -3,20 +3,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | **String** |  | 
 **CatalogId** | **String** | Catalog id pertaining to the creative assets product group. | 
-**Filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
+**CatalogType** | **String** |  | 
 **Country** | [**Country**](Country.md) |  | 
+**Filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
 **Locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsVerticalsListProductsByCatalogBasedFilterRequest = Initialize-PSOpenAPIToolsCatalogsVerticalsListProductsByCatalogBasedFilterRequest  -CatalogType null `
- -CatalogId 2680059592705 `
- -Filters null `
+$CatalogsVerticalsListProductsByCatalogBasedFilterRequest = Initialize-PSOpenAPIToolsCatalogsVerticalsListProductsByCatalogBasedFilterRequest  -CatalogId 2680059592705 `
+ -CatalogType null `
  -Country null `
+ -Filters null `
  -Locale null
 ```
 

@@ -27,7 +27,7 @@ Create a request to access an existing partner's assets with the specified permi
 import OpenAPIClient
 
 let businessId = "businessId_example" // String | Unique identifier of the requesting business.
-let createAssetAccessRequestBody = CreateAssetAccessRequestBody(assetRequests: [CreateAssetAccessRequestBody_asset_requests_inner(partnerId: "partnerId_example", assetIdToPermissions: "TODO")]) // CreateAssetAccessRequestBody | 
+let createAssetAccessRequestBody = CreateAssetAccessRequestBody(assetRequests: [CreateAssetAccessRequestBody_asset_requests_inner(assetIdToPermissions: "TODO", partnerId: "partnerId_example")]) // CreateAssetAccessRequestBody | 
 
 // Create a request to access an existing partner's assets.
 BusinessAccessInviteAPI.assetAccessRequestsCreate(businessId: businessId, createAssetAccessRequestBody: createAssetAccessRequestBody) { (response, error) in
@@ -78,7 +78,7 @@ Cancel membership/partnership invites and/or requests.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let businessId = "businessId_example" // String | Business id
+let businessId = "businessId_example" // String | Unique identifier of the requesting business.
 let cancelInvitesBody = CancelInvitesBody(inviteIds: ["inviteIds_example"]) // CancelInvitesBody | A list with invite ids
 
 // Cancel invites/requests
@@ -98,7 +98,7 @@ BusinessAccessInviteAPI.cancelInvitesOrRequests(businessId: businessId, cancelIn
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **businessId** | **String** | Business id | 
+ **businessId** | **String** | Unique identifier of the requesting business. | 
  **cancelInvitesBody** | [**CancelInvitesBody**](CancelInvitesBody.md) | A list with invite ids | 
 
 ### Return type
@@ -131,7 +131,7 @@ Assign asset permissions information to an existing invite/request. Can be used 
 import OpenAPIClient
 
 let businessId = "businessId_example" // String | Unique identifier of the requesting business.
-let createAssetInvitesRequest = CreateAssetInvitesRequest(invites: [CreateAssetInvitesRequestItem(inviteId: "inviteId_example", inviteType: InviteType(), assetIdToPermissions: "TODO")]) // CreateAssetInvitesRequest | A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
+let createAssetInvitesRequest = CreateAssetInvitesRequest(invites: [CreateAssetInvitesRequestItem(assetIdToPermissions: "TODO", inviteId: "inviteId_example", inviteType: InviteType())]) // CreateAssetInvitesRequest | A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
 
 // Update invite/request with an asset permission
 BusinessAccessInviteAPI.createAssetInvites(businessId: businessId, createAssetInvitesRequest: createAssetInvitesRequest) { (response, error) in
@@ -182,7 +182,7 @@ Create batch invites or requests. Can create batch invites or requests as descri
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let businessId = "businessId_example" // String | Business id
+let businessId = "businessId_example" // String | Unique identifier of the requesting business.
 let createMembershipOrPartnershipInvitesBody = CreateMembershipOrPartnershipInvitesBody(businessRole: "businessRole_example", inviteType: InviteType(), members: ["members_example"], partners: ["partners_example"]) // CreateMembershipOrPartnershipInvitesBody | An object with the properties: invite_type, partners, members, business_role
 
 // Create invites or requests
@@ -202,7 +202,7 @@ BusinessAccessInviteAPI.createMembershipOrPartnershipInvites(businessId: busines
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **businessId** | **String** | Business id | 
+ **businessId** | **String** | Unique identifier of the requesting business. | 
  **createMembershipOrPartnershipInvitesBody** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md) | An object with the properties: invite_type, partners, members, business_role | 
 
 ### Return type

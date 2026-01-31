@@ -1,30 +1,12 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "Pin media source.",
+  "doc": "Pin media source that can be an image, video, or a mix of both passed in as a request.",
   "name": "PinMediaSource",
   "fields": [
     {
-      "name": "source_type",
-      "type": {
-        "type": "enum",
-        "name": "PinMediaSource_sourceUnderscoretype",
-        "symbols": [
-          "pin_url"
-        ]
-      },
-      "doc": ""
-    },
-    {
       "name": "content_type",
-      "type": {
-        "type": "enum",
-        "name": "PinMediaSource_contentUnderscoretype",
-        "symbols": [
-          "image_jpeg",
-          "image_png"
-        ]
-      },
+      "type": "model.ContentType",
       "doc": ""
     },
     {
@@ -39,26 +21,24 @@
       "default": true
     },
     {
+      "name": "source_type",
+      "type": {
+        "type": "enum",
+        "name": "PinMediaSource_sourceUnderscoretype",
+        "symbols": [
+          "pin_url"
+        ]
+      },
+      "doc": ""
+    },
+    {
       "name": "url",
       "type": "string",
       "doc": ""
     },
     {
-      "name": "cover_image_url",
-      "type": ["null", "string"],
-      "doc": "Cover image url.",
-      "default": null
-    },
-    {
       "name": "cover_image_content_type",
-      "type": ["null", {
-        "type": "enum",
-        "name": "PinMediaSource_coverUnderscoreimageUnderscorecontentUnderscoretype",
-        "symbols": [
-          "image_jpeg",
-          "image_png"
-        ]
-      }],
+      "type": ["null", "model.ContentType"],
       "doc": "Content type for cover image Base64.",
       "default": null
     },
@@ -69,23 +49,35 @@
       "default": null
     },
     {
+      "name": "cover_image_key_frame_time",
+      "type": ["null", "int"],
+      "doc": "Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.",
+      "default": null
+    },
+    {
+      "name": "cover_image_url",
+      "type": ["null", "string"],
+      "doc": "Cover image URL.",
+      "default": null
+    },
+    {
       "name": "media_id",
       "type": "string",
       "doc": ""
-    },
-    {
-      "name": "items",
-      "type": {
-        "type": "array",
-        "items": "model.PinMediaSourceImagesURLItemsInner"
-      },
-      "doc": "Array with image objects."
     },
     {
       "name": "index",
       "type": ["null", "int"],
       "doc": "",
       "default": null
+    },
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": "model.PinMediaSourceImagesURLItem"
+      },
+      "doc": "Array with image objects."
     },
     {
       "name": "is_affiliate_link",

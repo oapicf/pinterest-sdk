@@ -12,8 +12,8 @@ module DeletePartnerAssetAccessBodyAccessesInner =
   //#endregion
 
   type DeletePartnerAssetAccessBody_accesses_inner = {
-    PartnerId : string;
     AssetId : string;
+    PartnerId : string;
     PartnerType : PartnerTypeEnum;
   }
   //#endregion

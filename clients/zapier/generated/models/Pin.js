@@ -2,15 +2,25 @@ const utils = require('../utils/utils');
 const BoardOwner = require('../models/BoardOwner');
 const CreativeType = require('../models/CreativeType');
 const PinMedia = require('../models/PinMedia');
-const PinMediaSource = require('../models/PinMediaSource');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}id`,
-                label: `[${labelPrefix}id]`,
+                key: `${keyPrefix}alt_text`,
+                label: `[${labelPrefix}alt_text]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}board_id`,
+                label: `The board to which this Pin belongs. - [${labelPrefix}board_id]`,
+                type: 'string',
+            },
+            ...BoardOwner.fields(`${keyPrefix}board_owner`, isInput),
+            {
+                key: `${keyPrefix}board_section_id`,
+                label: `The board section to which this Pin belongs. - [${labelPrefix}board_section_id]`,
                 type: 'string',
             },
             {
@@ -19,14 +29,8 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}link`,
-                label: `[${labelPrefix}link]`,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}title`,
-                label: `[${labelPrefix}title]`,
-                type: 'string',
+                key: `${keyPrefix}creative_type`,
+                ...CreativeType.fields(`${keyPrefix}creative_type`, isInput),
             },
             {
                 key: `${keyPrefix}description`,
@@ -35,45 +39,8 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}dominant_color`,
-                label: `Dominant pin color. Hex number, e.g. \\\"#6E7874\\\". - [${labelPrefix}dominant_color]`,
+                label: `Dominant pin color. Hex number, e.g. `#6E7874`. - [${labelPrefix}dominant_color]`,
                 type: 'string',
-            },
-            {
-                key: `${keyPrefix}alt_text`,
-                label: `[${labelPrefix}alt_text]`,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}creative_type`,
-                ...CreativeType.fields(`${keyPrefix}creative_type`, isInput),
-            },
-            {
-                key: `${keyPrefix}board_id`,
-                label: `The board to which this Pin belongs. - [${labelPrefix}board_id]`,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}board_section_id`,
-                label: `The board section to which this Pin belongs. - [${labelPrefix}board_section_id]`,
-                type: 'string',
-            },
-            ...BoardOwner.fields(`${keyPrefix}board_owner`, isInput),
-            {
-                key: `${keyPrefix}is_owner`,
-                label: `Whether the \"operation user_account\" is the Pin owner. - [${labelPrefix}is_owner]`,
-                type: 'boolean',
-            },
-            ...PinMedia.fields(`${keyPrefix}media`, isInput),
-            ...PinMediaSource.fields(`${keyPrefix}media_source`, isInput),
-            {
-                key: `${keyPrefix}parent_pin_id`,
-                label: `The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>. - [${labelPrefix}parent_pin_id]`,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}is_standard`,
-                label: `Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information. - [${labelPrefix}is_standard]`,
-                type: 'boolean',
             },
             {
                 key: `${keyPrefix}has_been_promoted`,
@@ -81,8 +48,30 @@ module.exports = {
                 type: 'boolean',
             },
             {
-                key: `${keyPrefix}note`,
-                label: `Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>. - [${labelPrefix}note]`,
+                key: `${keyPrefix}id`,
+                label: `[${labelPrefix}id]`,
+                required: true,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}is_owner`,
+                label: `Whether the \"operation user_account\" is the Pin owner. - [${labelPrefix}is_owner]`,
+                type: 'boolean',
+            },
+            {
+                key: `${keyPrefix}is_standard`,
+                label: `Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information. - [${labelPrefix}is_standard]`,
+                type: 'boolean',
+            },
+            {
+                key: `${keyPrefix}link`,
+                label: `[${labelPrefix}link]`,
+                type: 'string',
+            },
+            ...PinMedia.fields(`${keyPrefix}media`, isInput),
+            {
+                key: `${keyPrefix}parent_pin_id`,
+                label: `The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest). - [${labelPrefix}parent_pin_id]`,
                 type: 'string',
             },
             {
@@ -90,30 +79,33 @@ module.exports = {
                 label: `Pin metrics with associated time intervals if any. - [${labelPrefix}pin_metrics]`,
                 dict: true,
             },
+            {
+                key: `${keyPrefix}title`,
+                label: `[${labelPrefix}title]`,
+                type: 'string',
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'id': bundle.inputData?.[`${keyPrefix}id`],
+            'alt_text': bundle.inputData?.[`${keyPrefix}alt_text`],
+            'board_id': bundle.inputData?.[`${keyPrefix}board_id`],
+            'board_owner': utils.removeIfEmpty(BoardOwner.mapping(bundle, `${keyPrefix}board_owner`)),
+            'board_section_id': bundle.inputData?.[`${keyPrefix}board_section_id`],
             'created_at': bundle.inputData?.[`${keyPrefix}created_at`],
-            'link': bundle.inputData?.[`${keyPrefix}link`],
-            'title': bundle.inputData?.[`${keyPrefix}title`],
+            'creative_type': bundle.inputData?.[`${keyPrefix}creative_type`],
             'description': bundle.inputData?.[`${keyPrefix}description`],
             'dominant_color': bundle.inputData?.[`${keyPrefix}dominant_color`],
-            'alt_text': bundle.inputData?.[`${keyPrefix}alt_text`],
-            'creative_type': bundle.inputData?.[`${keyPrefix}creative_type`],
-            'board_id': bundle.inputData?.[`${keyPrefix}board_id`],
-            'board_section_id': bundle.inputData?.[`${keyPrefix}board_section_id`],
-            'board_owner': utils.removeIfEmpty(BoardOwner.mapping(bundle, `${keyPrefix}board_owner`)),
-            'is_owner': bundle.inputData?.[`${keyPrefix}is_owner`],
-            'media': utils.removeIfEmpty(PinMedia.mapping(bundle, `${keyPrefix}media`)),
-            'media_source': utils.removeIfEmpty(PinMediaSource.mapping(bundle, `${keyPrefix}media_source`)),
-            'parent_pin_id': bundle.inputData?.[`${keyPrefix}parent_pin_id`],
-            'is_standard': bundle.inputData?.[`${keyPrefix}is_standard`],
             'has_been_promoted': bundle.inputData?.[`${keyPrefix}has_been_promoted`],
-            'note': bundle.inputData?.[`${keyPrefix}note`],
+            'id': bundle.inputData?.[`${keyPrefix}id`],
+            'is_owner': bundle.inputData?.[`${keyPrefix}is_owner`],
+            'is_standard': bundle.inputData?.[`${keyPrefix}is_standard`],
+            'link': bundle.inputData?.[`${keyPrefix}link`],
+            'media': utils.removeIfEmpty(PinMedia.mapping(bundle, `${keyPrefix}media`)),
+            'parent_pin_id': bundle.inputData?.[`${keyPrefix}parent_pin_id`],
             'pin_metrics': bundle.inputData?.[`${keyPrefix}pin_metrics`],
+            'title': bundle.inputData?.[`${keyPrefix}title`],
         }
     },
 }

@@ -14,12 +14,12 @@ import { CatalogsHotelAttributes } from './catalogsHotelAttributes';
  * A hotel item to be upserted.
  */
 export interface CatalogsUpsertHotelItem { 
+    attributes: CatalogsHotelAttributes;
     /**
      * The catalog hotel id in the merchant namespace
      */
     hotel_id: string;
     operation: CatalogsUpsertHotelItem.OperationEnum;
-    attributes: CatalogsHotelAttributes;
 }
 export namespace CatalogsUpsertHotelItem {
     export const OperationEnum = {

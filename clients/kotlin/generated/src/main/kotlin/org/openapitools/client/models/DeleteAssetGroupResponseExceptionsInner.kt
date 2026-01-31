@@ -22,13 +22,17 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
+ * @param assetGroupId Asset group id of the exception.
  * @param code Error code associated with the error deleting asset group.
  * @param message Error message associated with the error deleting asset group.
- * @param assetGroupId Asset group id of the exception.
  */
 
 
 data class DeleteAssetGroupResponseExceptionsInner (
+
+    /* Asset group id of the exception. */
+    @Json(name = "asset_group_id")
+    val assetGroupId: kotlin.String? = null,
 
     /* Error code associated with the error deleting asset group. */
     @Json(name = "code")
@@ -36,11 +40,7 @@ data class DeleteAssetGroupResponseExceptionsInner (
 
     /* Error message associated with the error deleting asset group. */
     @Json(name = "message")
-    val message: kotlin.String? = null,
-
-    /* Asset group id of the exception. */
-    @Json(name = "asset_group_id")
-    val assetGroupId: kotlin.String? = null
+    val message: kotlin.String? = null
 
 ) {
 

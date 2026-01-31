@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,18 +16,18 @@ package openapi
 
 type CreateAssetAccessRequestBodyAssetRequestsInner struct {
 
-	// Unique identifier of a business partner to request asset access to.
-	PartnerId string `json:"partner_id" validate:"regexp=^\\\\d+$"`
-
 	// An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
 	AssetIdToPermissions map[string][]Permissions `json:"asset_id_to_permissions"`
+
+	// Unique identifier of a business partner to request asset access to.
+	PartnerId string `json:"partner_id" validate:"regexp=^\\\\d+$"`
 }
 
 // AssertCreateAssetAccessRequestBodyAssetRequestsInnerRequired checks if the required fields are not zero-ed
 func AssertCreateAssetAccessRequestBodyAssetRequestsInnerRequired(obj CreateAssetAccessRequestBodyAssetRequestsInner) error {
 	elements := map[string]interface{}{
-		"partner_id": obj.PartnerId,
 		"asset_id_to_permissions": obj.AssetIdToPermissions,
+		"partner_id": obj.PartnerId,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

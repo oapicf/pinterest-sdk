@@ -7,8 +7,8 @@ Request object of catalogs items
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | [**Country**](Country.md) |  | [default to undefined]
-**language** | **string** | We recommend using the CatalogsLocale values. | [default to undefined]
 **filters** | [**CatalogsItemsPostFilters**](CatalogsItemsPostFilters.md) |  | [default to undefined]
+**language** | **string** | We recommend using the CatalogsLocale values. | [default to undefined]
 
 ## Example
 
@@ -17,8 +17,8 @@ import { CatalogsItemsRequest } from './api';
 
 const instance: CatalogsItemsRequest = {
     country,
-    language,
     filters,
+    language,
 };
 ```
 

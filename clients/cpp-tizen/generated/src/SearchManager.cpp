@@ -415,14 +415,14 @@ bool SearchManager::searchUserBoardsGetSync(char * accessToken,
 static bool searchUserPinsListProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(Pins_list_200_response, Error, void* )
-	= reinterpret_cast<void(*)(Pins_list_200_response, Error, void* )> (voidHandler);
+	void(* handler)(Search_user_pins_list_200_response, Error, void* )
+	= reinterpret_cast<void(*)(Search_user_pins_list_200_response, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	Pins_list_200_response out;
+	Search_user_pins_list_200_response out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -430,12 +430,12 @@ static bool searchUserPinsListProcessor(MemoryStruct_s p_chunk, long code, char*
 
 
 
-		if (isprimitive("Pins_list_200_response")) {
+		if (isprimitive("Search_user_pins_list_200_response")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Pins_list_200_response", "Pins_list_200_response");
+			jsonToValue(&out, pJson, "Search_user_pins_list_200_response", "Search_user_pins_list_200_response");
 			json_node_free(pJson);
 
-			if ("Pins_list_200_response" == "std::string") {
+			if ("Search_user_pins_list_200_response" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
@@ -479,7 +479,7 @@ static bool searchUserPinsListProcessor(MemoryStruct_s p_chunk, long code, char*
 
 static bool searchUserPinsListHelper(char * accessToken,
 	std::string query, std::string adAccountId, std::string bookmark, 
-	void(* handler)(Pins_list_200_response, Error, void* )
+	void(* handler)(Search_user_pins_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -568,7 +568,7 @@ static bool searchUserPinsListHelper(char * accessToken,
 
 bool SearchManager::searchUserPinsListAsync(char * accessToken,
 	std::string query, std::string adAccountId, std::string bookmark, 
-	void(* handler)(Pins_list_200_response, Error, void* )
+	void(* handler)(Search_user_pins_list_200_response, Error, void* )
 	, void* userData)
 {
 	return searchUserPinsListHelper(accessToken,
@@ -578,7 +578,7 @@ bool SearchManager::searchUserPinsListAsync(char * accessToken,
 
 bool SearchManager::searchUserPinsListSync(char * accessToken,
 	std::string query, std::string adAccountId, std::string bookmark, 
-	void(* handler)(Pins_list_200_response, Error, void* )
+	void(* handler)(Search_user_pins_list_200_response, Error, void* )
 	, void* userData)
 {
 	return searchUserPinsListHelper(accessToken,

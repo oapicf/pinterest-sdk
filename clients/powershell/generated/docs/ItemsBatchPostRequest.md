@@ -3,22 +3,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CatalogId** | **String** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] 
 **CatalogType** | **String** |  | 
 **Country** | [**Country**](Country.md) |  | 
-**Language** | **String** | We recommend using the CatalogsLocale values. | 
 **Items** | [**ItemDeleteBatchRecord[]**](ItemDeleteBatchRecord.md) | Array with catalogs items | 
-**CatalogId** | **String** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] 
+**Language** | **String** | We recommend using the CatalogsLocale values. | 
 **Operation** | [**BatchOperation**](BatchOperation.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$ItemsBatchPostRequest = Initialize-PSOpenAPIToolsItemsBatchPostRequest  -CatalogType null `
+$ItemsBatchPostRequest = Initialize-PSOpenAPIToolsItemsBatchPostRequest  -CatalogId 2680059592705 `
+ -CatalogType null `
  -Country null `
- -Language null `
  -Items null `
- -CatalogId 2680059592705 `
+ -Language null `
  -Operation null
 ```
 

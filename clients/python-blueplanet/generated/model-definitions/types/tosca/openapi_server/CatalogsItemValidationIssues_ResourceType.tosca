@@ -1,0 +1,52 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsItemValidationIssues"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsItemValidationIssues"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsItemValidationErrors = openapi_server.resourceTypes.CatalogsItemValidationErrors
+  CatalogsItemValidationWarnings = openapi_server.resourceTypes.CatalogsItemValidationWarnings
+}
+resourceTypes {
+
+  CatalogsItemValidationIssues {
+    title = CatalogsItemValidationIssues
+    description = CatalogsItemValidationIssues
+    derivedFrom = Root
+    properties {
+        errors {
+          type = CatalogsItemValidationErrors
+          description = ""
+          optional = true
+        }
+        item_id {
+          type =  string
+          description = "The merchant-created unique ID that represents the product."
+          optional = true
+        }
+        item_number {
+          type =  integer
+          description = "Item number based on order of appearance in the Catalogs Feed. For example, &#39;0&#39; refers to first item found in a feed that was downloaded from a &#39;location&#39; specified during feed creation."
+          optional = true
+        }
+        warnings {
+          type = CatalogsItemValidationWarnings
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsItemValidationIssues {
+    title = CatalogsItemValidationIssues
+    description = CatalogsItemValidationIssues
+    implements = openapi_server.resourceTypes.CatalogsItemValidationIssues
+
+  }
+}

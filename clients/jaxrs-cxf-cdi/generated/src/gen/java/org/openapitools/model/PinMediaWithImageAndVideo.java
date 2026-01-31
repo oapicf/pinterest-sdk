@@ -7,7 +7,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.PinMedia;
 import org.openapitools.model.PinMediaMetadata;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
@@ -21,13 +20,46 @@ import java.util.Objects;
 
 
 @ApiModel(description = "Pin with a mix of images and videos.")
-public class PinMediaWithImageAndVideo extends PinMedia  {
+public class PinMediaWithImageAndVideo   {
   
-  private List<@Valid PinMediaMetadata> items = new ArrayList<>();
+  private List<PinMediaMetadata> items = new ArrayList<>();
+
+
+public enum MediaTypeEnum {
+
+    @JsonProperty("multiple_mixed") MULTIPLE_MIXED(String.valueOf("multiple_mixed"));
+
+
+    private String value;
+
+    MediaTypeEnum(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static MediaTypeEnum fromValue(String value) {
+        for (MediaTypeEnum b : MediaTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+  private MediaTypeEnum mediaType;
 
   /**
    **/
-  public PinMediaWithImageAndVideo items(List<@Valid PinMediaMetadata> items) {
+  public PinMediaWithImageAndVideo items(List<PinMediaMetadata> items) {
     this.items = items;
     return this;
   }
@@ -35,10 +67,10 @@ public class PinMediaWithImageAndVideo extends PinMedia  {
   
   @ApiModelProperty(value = "")
   @JsonProperty("items")
-  public List<@Valid PinMediaMetadata> getItems() {
+  public List<PinMediaMetadata> getItems() {
     return items;
   }
-  public void setItems(List<@Valid PinMediaMetadata> items) {
+  public void setItems(List<PinMediaMetadata> items) {
     this.items = items;
   }
 
@@ -48,6 +80,25 @@ public class PinMediaWithImageAndVideo extends PinMedia  {
     }
     this.items.add(itemsItem);
     return this;
+  }
+
+
+  /**
+   **/
+  public PinMediaWithImageAndVideo mediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("media_type")
+  @NotNull
+  public MediaTypeEnum getMediaType() {
+    return mediaType;
+  }
+  public void setMediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
   }
 
 
@@ -61,20 +112,22 @@ public class PinMediaWithImageAndVideo extends PinMedia  {
       return false;
     }
     PinMediaWithImageAndVideo pinMediaWithImageAndVideo = (PinMediaWithImageAndVideo) o;
-    return super.equals(o) && Objects.equals(this.items, pinMediaWithImageAndVideo.items);
+    return Objects.equals(this.items, pinMediaWithImageAndVideo.items) &&
+        Objects.equals(this.mediaType, pinMediaWithImageAndVideo.mediaType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode(), items);
+    return Objects.hash(items, mediaType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaWithImageAndVideo {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -10,12 +10,12 @@ module TemplateResponseDateRangeRelativeDateRange =
 
   [<CLIMutable>]
   type TemplateResponseDateRangeRelativeDateRange = {
-    [<JsonProperty(PropertyName = "type")>]
-    Type : string;
-    [<JsonProperty(PropertyName = "start_days_in_past")>]
-    StartDaysInPast : decimal;
     [<JsonProperty(PropertyName = "end_days_in_past")>]
     EndDaysInPast : decimal;
+    [<JsonProperty(PropertyName = "start_days_in_past")>]
+    StartDaysInPast : decimal;
+    [<JsonProperty(PropertyName = "type")>]
+    Type : string;
   }
 
   //#endregion

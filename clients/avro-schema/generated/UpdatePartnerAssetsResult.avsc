@@ -13,7 +13,7 @@
     {
       "name": "asset_type",
       "type": ["null", "string"],
-      "doc": "Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.",
+      "doc": "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.",
       "default": null
     },
     {

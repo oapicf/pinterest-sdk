@@ -12,11 +12,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsItemValidationIssues  {
   
- /**
-  * Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
-  */
-  @ApiModelProperty(example = "0", required = true, value = "Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.")
-  private Integer itemNumber;
+  @ApiModelProperty(required = true, value = "")
+  @Valid
+  private CatalogsItemValidationErrors errors;
 
  /**
   * The merchant-created unique ID that represents the product.
@@ -24,35 +22,37 @@ public class CatalogsItemValidationIssues  {
   @ApiModelProperty(example = "DS0294-L", required = true, value = "The merchant-created unique ID that represents the product.")
   private String itemId;
 
-  @ApiModelProperty(required = true, value = "")
-  @Valid
-  private CatalogsItemValidationErrors errors;
+ /**
+  * Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
+  */
+  @ApiModelProperty(example = "0", required = true, value = "Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.")
+  private Integer itemNumber;
 
   @ApiModelProperty(required = true, value = "")
   @Valid
   private CatalogsItemValidationWarnings warnings;
  /**
-  * Item number based on order of appearance in the Catalogs Feed. For example, &#39;0&#39; refers to first item found in a feed that was downloaded from a &#39;location&#39; specified during feed creation.
-  * @return itemNumber
+  * Get errors
+  * @return errors
   */
-  @JsonProperty("item_number")
+  @JsonProperty("errors")
   @NotNull
-  public Integer getItemNumber() {
-    return itemNumber;
+  public CatalogsItemValidationErrors getErrors() {
+    return errors;
   }
 
   /**
-   * Sets the <code>itemNumber</code> property.
+   * Sets the <code>errors</code> property.
    */
- public void setItemNumber(Integer itemNumber) {
-    this.itemNumber = itemNumber;
+ public void setErrors(CatalogsItemValidationErrors errors) {
+    this.errors = errors;
   }
 
   /**
-   * Sets the <code>itemNumber</code> property.
+   * Sets the <code>errors</code> property.
    */
-  public CatalogsItemValidationIssues itemNumber(Integer itemNumber) {
-    this.itemNumber = itemNumber;
+  public CatalogsItemValidationIssues errors(CatalogsItemValidationErrors errors) {
+    this.errors = errors;
     return this;
   }
 
@@ -82,27 +82,27 @@ public class CatalogsItemValidationIssues  {
   }
 
  /**
-  * Get errors
-  * @return errors
+  * Item number based on order of appearance in the Catalogs Feed. For example, &#39;0&#39; refers to first item found in a feed that was downloaded from a &#39;location&#39; specified during feed creation.
+  * @return itemNumber
   */
-  @JsonProperty("errors")
+  @JsonProperty("item_number")
   @NotNull
-  public CatalogsItemValidationErrors getErrors() {
-    return errors;
+  public Integer getItemNumber() {
+    return itemNumber;
   }
 
   /**
-   * Sets the <code>errors</code> property.
+   * Sets the <code>itemNumber</code> property.
    */
- public void setErrors(CatalogsItemValidationErrors errors) {
-    this.errors = errors;
+ public void setItemNumber(Integer itemNumber) {
+    this.itemNumber = itemNumber;
   }
 
   /**
-   * Sets the <code>errors</code> property.
+   * Sets the <code>itemNumber</code> property.
    */
-  public CatalogsItemValidationIssues errors(CatalogsItemValidationErrors errors) {
-    this.errors = errors;
+  public CatalogsItemValidationIssues itemNumber(Integer itemNumber) {
+    this.itemNumber = itemNumber;
     return this;
   }
 
@@ -141,15 +141,15 @@ public class CatalogsItemValidationIssues  {
       return false;
     }
     CatalogsItemValidationIssues catalogsItemValidationIssues = (CatalogsItemValidationIssues) o;
-    return Objects.equals(this.itemNumber, catalogsItemValidationIssues.itemNumber) &&
+    return Objects.equals(this.errors, catalogsItemValidationIssues.errors) &&
         Objects.equals(this.itemId, catalogsItemValidationIssues.itemId) &&
-        Objects.equals(this.errors, catalogsItemValidationIssues.errors) &&
+        Objects.equals(this.itemNumber, catalogsItemValidationIssues.itemNumber) &&
         Objects.equals(this.warnings, catalogsItemValidationIssues.warnings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemNumber, itemId, errors, warnings);
+    return Objects.hash(errors, itemId, itemNumber, warnings);
   }
 
   @Override
@@ -157,9 +157,9 @@ public class CatalogsItemValidationIssues  {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsItemValidationIssues {\n");
     
-    sb.append("    itemNumber: ").append(toIndentedString(itemNumber)).append("\n");
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
+    sb.append("    itemNumber: ").append(toIndentedString(itemNumber)).append("\n");
     sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -24,11 +24,11 @@ void
 AudienceInsightsResponse::__init()
 {
 	//new std::list()std::list> categories;
-	//demographics = new AudienceDemographics();
-	//type = new AudienceInsightType();
 	//date = std::string();
+	//demographics = new AudienceDemographics();
 	//size = int(0);
 	//size_is_upper_bound = bool(false);
+	//type = new AudienceInsightType();
 }
 
 void
@@ -39,20 +39,15 @@ AudienceInsightsResponse::__cleanup()
 	//delete categories;
 	//categories = NULL;
 	//}
-	//if(demographics != NULL) {
-	//
-	//delete demographics;
-	//demographics = NULL;
-	//}
-	//if(type != NULL) {
-	//
-	//delete type;
-	//type = NULL;
-	//}
 	//if(date != NULL) {
 	//
 	//delete date;
 	//date = NULL;
+	//}
+	//if(demographics != NULL) {
+	//
+	//delete demographics;
+	//demographics = NULL;
 	//}
 	//if(size != NULL) {
 	//
@@ -63,6 +58,11 @@ AudienceInsightsResponse::__cleanup()
 	//
 	//delete size_is_upper_bound;
 	//size_is_upper_bound = NULL;
+	//}
+	//if(type != NULL) {
+	//
+	//delete type;
+	//type = NULL;
 	//}
 	//
 }
@@ -96,6 +96,17 @@ AudienceInsightsResponse::fromJson(char* jsonStr)
 		}
 		
 	}
+	const gchar *dateKey = "date";
+	node = json_object_get_member(pJsonObject, dateKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&date, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *demographicsKey = "demographics";
 	node = json_object_get_member(pJsonObject, demographicsKey);
 	if (node !=NULL) {
@@ -107,31 +118,6 @@ AudienceInsightsResponse::fromJson(char* jsonStr)
 			
 			AudienceDemographics* obj = static_cast<AudienceDemographics*> (&demographics);
 			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *typeKey = "type";
-	node = json_object_get_member(pJsonObject, typeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("AudienceInsightType")) {
-			jsonToValue(&type, node, "AudienceInsightType", "AudienceInsightType");
-		} else {
-			
-			AudienceInsightType* obj = static_cast<AudienceInsightType*> (&type);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *dateKey = "date";
-	node = json_object_get_member(pJsonObject, dateKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&date, node, "std::string", "");
-		} else {
 			
 		}
 	}
@@ -154,6 +140,20 @@ AudienceInsightsResponse::fromJson(char* jsonStr)
 		if (isprimitive("bool")) {
 			jsonToValue(&size_is_upper_bound, node, "bool", "");
 		} else {
+			
+		}
+	}
+	const gchar *typeKey = "type";
+	node = json_object_get_member(pJsonObject, typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("AudienceInsightType")) {
+			jsonToValue(&type, node, "AudienceInsightType", "AudienceInsightType");
+		} else {
+			
+			AudienceInsightType* obj = static_cast<AudienceInsightType*> (&type);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -194,6 +194,15 @@ AudienceInsightsResponse::toJson()
 	
 	const gchar *categoriesKey = "categories";
 	json_object_set_member(pJsonObject, categoriesKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getDate();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *dateKey = "date";
+	json_object_set_member(pJsonObject, dateKey, node);
 	if (isprimitive("AudienceDemographics")) {
 		AudienceDemographics obj = getDemographics();
 		node = converttoJson(&obj, "AudienceDemographics", "");
@@ -208,29 +217,6 @@ AudienceInsightsResponse::toJson()
 	}
 	const gchar *demographicsKey = "demographics";
 	json_object_set_member(pJsonObject, demographicsKey, node);
-	if (isprimitive("AudienceInsightType")) {
-		AudienceInsightType obj = getType();
-		node = converttoJson(&obj, "AudienceInsightType", "");
-	}
-	else {
-		
-		AudienceInsightType obj = static_cast<AudienceInsightType> (getType());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *typeKey = "type";
-	json_object_set_member(pJsonObject, typeKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getDate();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *dateKey = "date";
-	json_object_set_member(pJsonObject, dateKey, node);
 	if (isprimitive("int")) {
 		int obj = getSize();
 		node = converttoJson(&obj, "int", "");
@@ -249,6 +235,20 @@ AudienceInsightsResponse::toJson()
 	}
 	const gchar *size_is_upper_boundKey = "size_is_upper_bound";
 	json_object_set_member(pJsonObject, size_is_upper_boundKey, node);
+	if (isprimitive("AudienceInsightType")) {
+		AudienceInsightType obj = getType();
+		node = converttoJson(&obj, "AudienceInsightType", "");
+	}
+	else {
+		
+		AudienceInsightType obj = static_cast<AudienceInsightType> (getType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *typeKey = "type";
+	json_object_set_member(pJsonObject, typeKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -269,30 +269,6 @@ AudienceInsightsResponse::setCategories(std::list <AudienceCategory> categories)
 	this->categories = categories;
 }
 
-AudienceDemographics
-AudienceInsightsResponse::getDemographics()
-{
-	return demographics;
-}
-
-void
-AudienceInsightsResponse::setDemographics(AudienceDemographics  demographics)
-{
-	this->demographics = demographics;
-}
-
-AudienceInsightType
-AudienceInsightsResponse::getType()
-{
-	return type;
-}
-
-void
-AudienceInsightsResponse::setType(AudienceInsightType  type)
-{
-	this->type = type;
-}
-
 std::string
 AudienceInsightsResponse::getDate()
 {
@@ -303,6 +279,18 @@ void
 AudienceInsightsResponse::setDate(std::string  date)
 {
 	this->date = date;
+}
+
+AudienceDemographics
+AudienceInsightsResponse::getDemographics()
+{
+	return demographics;
+}
+
+void
+AudienceInsightsResponse::setDemographics(AudienceDemographics  demographics)
+{
+	this->demographics = demographics;
 }
 
 int
@@ -327,6 +315,18 @@ void
 AudienceInsightsResponse::setSizeIsUpperBound(bool  size_is_upper_bound)
 {
 	this->size_is_upper_bound = size_is_upper_bound;
+}
+
+AudienceInsightType
+AudienceInsightsResponse::getType()
+{
+	return type;
+}
+
+void
+AudienceInsightsResponse::setType(AudienceInsightType  type)
+{
+	this->type = type;
 }
 
 

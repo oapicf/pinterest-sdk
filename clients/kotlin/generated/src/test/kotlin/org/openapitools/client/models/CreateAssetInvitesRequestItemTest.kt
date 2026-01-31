@@ -27,6 +27,12 @@ class CreateAssetInvitesRequestItemTest : ShouldSpec() {
         // uncomment below to create an instance of CreateAssetInvitesRequestItem
         //val modelInstance = CreateAssetInvitesRequestItem()
 
+        // to test the property `assetIdToPermissions` - An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
+        should("test assetIdToPermissions") {
+            // uncomment below to test the property
+            //modelInstance.assetIdToPermissions shouldBe ("TODO")
+        }
+
         // to test the property `inviteId` - Unique identifier of an invite.
         should("test inviteId") {
             // uncomment below to test the property
@@ -37,12 +43,6 @@ class CreateAssetInvitesRequestItemTest : ShouldSpec() {
         should("test inviteType") {
             // uncomment below to test the property
             //modelInstance.inviteType shouldBe ("TODO")
-        }
-
-        // to test the property `assetIdToPermissions` - An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
-        should("test assetIdToPermissions") {
-            // uncomment below to test the property
-            //modelInstance.assetIdToPermissions shouldBe ("TODO")
         }
 
     }

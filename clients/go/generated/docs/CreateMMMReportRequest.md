@@ -5,19 +5,19 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Countries** | Pointer to [**[]TargetingAdvertiserCountry**](TargetingAdvertiserCountry.md) | A List of countries for filtering | [optional] 
-**ReportName** | **string** | Name of the Marketing Mix Modeling (MMM) report | 
-**StartDate** | **string** | Metric report start date (UTC). Format: YYYY-MM-DD | 
+**Columns** | [**[]MMMReportingColumn**](MMMReportingColumn.md) | Metric and entity columns | 
 **EndDate** | **string** | Metric report end date (UTC). Format: YYYY-MM-DD | 
 **Granularity** | **string** | DAY - metrics are broken down daily.&lt;br&gt; WEEK - metrics are broken down weekly. | 
 **Level** | **string** | Level of the report | 
+**ReportName** | **string** | Name of the Marketing Mix Modeling (MMM) report | 
+**StartDate** | **string** | Metric report start date (UTC). Format: YYYY-MM-DD | 
 **TargetingTypes** | [**[]MMMReportingTargetingType**](MMMReportingTargetingType.md) | List of targeting types | 
-**Columns** | [**[]MMMReportingColumn**](MMMReportingColumn.md) | Metric and entity columns | 
 
 ## Methods
 
 ### NewCreateMMMReportRequest
 
-`func NewCreateMMMReportRequest(reportName string, startDate string, endDate string, granularity string, level string, targetingTypes []MMMReportingTargetingType, columns []MMMReportingColumn, ) *CreateMMMReportRequest`
+`func NewCreateMMMReportRequest(columns []MMMReportingColumn, endDate string, granularity string, level string, reportName string, startDate string, targetingTypes []MMMReportingTargetingType, ) *CreateMMMReportRequest`
 
 NewCreateMMMReportRequest instantiates a new CreateMMMReportRequest object
 This constructor will assign default values to properties that have it defined,
@@ -57,44 +57,24 @@ SetCountries sets Countries field to given value.
 
 HasCountries returns a boolean if a field has been set.
 
-### GetReportName
+### GetColumns
 
-`func (o *CreateMMMReportRequest) GetReportName() string`
+`func (o *CreateMMMReportRequest) GetColumns() []MMMReportingColumn`
 
-GetReportName returns the ReportName field if non-nil, zero value otherwise.
+GetColumns returns the Columns field if non-nil, zero value otherwise.
 
-### GetReportNameOk
+### GetColumnsOk
 
-`func (o *CreateMMMReportRequest) GetReportNameOk() (*string, bool)`
+`func (o *CreateMMMReportRequest) GetColumnsOk() (*[]MMMReportingColumn, bool)`
 
-GetReportNameOk returns a tuple with the ReportName field if it's non-nil, zero value otherwise
+GetColumnsOk returns a tuple with the Columns field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetReportName
+### SetColumns
 
-`func (o *CreateMMMReportRequest) SetReportName(v string)`
+`func (o *CreateMMMReportRequest) SetColumns(v []MMMReportingColumn)`
 
-SetReportName sets ReportName field to given value.
-
-
-### GetStartDate
-
-`func (o *CreateMMMReportRequest) GetStartDate() string`
-
-GetStartDate returns the StartDate field if non-nil, zero value otherwise.
-
-### GetStartDateOk
-
-`func (o *CreateMMMReportRequest) GetStartDateOk() (*string, bool)`
-
-GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStartDate
-
-`func (o *CreateMMMReportRequest) SetStartDate(v string)`
-
-SetStartDate sets StartDate field to given value.
+SetColumns sets Columns field to given value.
 
 
 ### GetEndDate
@@ -157,6 +137,46 @@ and a boolean to check if the value has been set.
 SetLevel sets Level field to given value.
 
 
+### GetReportName
+
+`func (o *CreateMMMReportRequest) GetReportName() string`
+
+GetReportName returns the ReportName field if non-nil, zero value otherwise.
+
+### GetReportNameOk
+
+`func (o *CreateMMMReportRequest) GetReportNameOk() (*string, bool)`
+
+GetReportNameOk returns a tuple with the ReportName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReportName
+
+`func (o *CreateMMMReportRequest) SetReportName(v string)`
+
+SetReportName sets ReportName field to given value.
+
+
+### GetStartDate
+
+`func (o *CreateMMMReportRequest) GetStartDate() string`
+
+GetStartDate returns the StartDate field if non-nil, zero value otherwise.
+
+### GetStartDateOk
+
+`func (o *CreateMMMReportRequest) GetStartDateOk() (*string, bool)`
+
+GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStartDate
+
+`func (o *CreateMMMReportRequest) SetStartDate(v string)`
+
+SetStartDate sets StartDate field to given value.
+
+
 ### GetTargetingTypes
 
 `func (o *CreateMMMReportRequest) GetTargetingTypes() []MMMReportingTargetingType`
@@ -175,26 +195,6 @@ and a boolean to check if the value has been set.
 `func (o *CreateMMMReportRequest) SetTargetingTypes(v []MMMReportingTargetingType)`
 
 SetTargetingTypes sets TargetingTypes field to given value.
-
-
-### GetColumns
-
-`func (o *CreateMMMReportRequest) GetColumns() []MMMReportingColumn`
-
-GetColumns returns the Columns field if non-nil, zero value otherwise.
-
-### GetColumnsOk
-
-`func (o *CreateMMMReportRequest) GetColumnsOk() (*[]MMMReportingColumn, bool)`
-
-GetColumnsOk returns a tuple with the Columns field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetColumns
-
-`func (o *CreateMMMReportRequest) SetColumns(v []MMMReportingColumn)`
-
-SetColumns sets Columns field to given value.
 
 
 

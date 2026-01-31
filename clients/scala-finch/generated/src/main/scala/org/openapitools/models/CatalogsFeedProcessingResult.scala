@@ -10,6 +10,7 @@ import org.openapitools.models.CatalogsFeedIngestionDetails
 import org.openapitools.models.CatalogsFeedProcessingStatus
 import org.openapitools.models.CatalogsFeedProductCounts
 import org.openapitools.models.CatalogsFeedValidationDetails
+import org.openapitools.models.CatalogsFeedVideoCounts
 
 /**
  * 
@@ -17,17 +18,19 @@ import org.openapitools.models.CatalogsFeedValidationDetails
  * @param id 
  * @param updatedUnderscoreat 
  * @param ingestionUnderscoredetails 
- * @param status 
  * @param productUnderscorecounts 
+ * @param status 
  * @param validationUnderscoredetails 
+ * @param videoUnderscorecounts 
  */
 case class CatalogsFeedProcessingResult(createdUnderscoreat: ZonedDateTime,
                 id: String,
                 updatedUnderscoreat: ZonedDateTime,
                 ingestionUnderscoredetails: CatalogsFeedIngestionDetails,
-                status: CatalogsFeedProcessingStatus,
                 productUnderscorecounts: CatalogsFeedProductCounts,
-                validationUnderscoredetails: CatalogsFeedValidationDetails
+                status: CatalogsFeedProcessingStatus,
+                validationUnderscoredetails: CatalogsFeedValidationDetails,
+                videoUnderscorecounts: Option[CatalogsFeedVideoCounts]
                 )
 
 object CatalogsFeedProcessingResult {

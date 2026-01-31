@@ -23,50 +23,14 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("AnalyticsMetricsResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AnalyticsMetricsResponse   {
-  private @Valid Map<String, BigDecimal> summaryMetrics = new HashMap<>();
   private @Valid List<@Valid AnalyticsDailyMetrics> dailyMetrics = new ArrayList<>();
+  private @Valid Map<String, BigDecimal> summaryMetrics = new HashMap<>();
 
   public AnalyticsMetricsResponse() {
   }
 
-  /**
-   * The metric name and value over the requested period for each requested metric
-   **/
-  public AnalyticsMetricsResponse summaryMetrics(Map<String, BigDecimal> summaryMetrics) {
-    this.summaryMetrics = summaryMetrics;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "{\"CLOSEUP\":1,\"CLOSEUP_RATE\":0,\"ENGAGEMENT\":1,\"ENGAGEMENT_RATE\":0,\"IMPRESSION\":240,\"OUTBOUND_CLICK\":20,\"OUTBOUND_CLICK_RATE\":0.08,\"PIN_CLICK\":37,\"PIN_CLICK_RATE\":0.15,\"PROFILE_VISIT\":0,\"QUARTILE_95_PERCENT_VIEW\":8,\"SAVE\":20,\"SAVE_RATE\":0.18,\"VIDEO_10S_VIEW\":2,\"VIDEO_AVG_WATCH_TIME\":2507.75,\"VIDEO_MRC_VIEW\":20,\"VIDEO_START\":29,\"VIDEO_V50_WATCH_TIME\":10031}", value = "The metric name and value over the requested period for each requested metric")
-  @JsonProperty("summary_metrics")
-  @Valid public Map<String, BigDecimal> getSummaryMetrics() {
-    return summaryMetrics;
-  }
-
-  @JsonProperty("summary_metrics")
-  public void setSummaryMetrics(Map<String, BigDecimal> summaryMetrics) {
-    this.summaryMetrics = summaryMetrics;
-  }
-
-  public AnalyticsMetricsResponse putSummaryMetricsItem(String key, BigDecimal summaryMetricsItem) {
-    if (this.summaryMetrics == null) {
-      this.summaryMetrics = new HashMap<>();
-    }
-
-    this.summaryMetrics.put(key, summaryMetricsItem);
-    return this;
-  }
-
-  public AnalyticsMetricsResponse removeSummaryMetricsItem(String key) {
-    if (this.summaryMetrics != null) {
-      this.summaryMetrics.remove(key);
-    }
-
-    return this;
-  }
   /**
    * Array with the requested daily metric records
    **/
@@ -103,6 +67,42 @@ public class AnalyticsMetricsResponse   {
 
     return this;
   }
+  /**
+   * The metric name and value over the requested period for each requested metric
+   **/
+  public AnalyticsMetricsResponse summaryMetrics(Map<String, BigDecimal> summaryMetrics) {
+    this.summaryMetrics = summaryMetrics;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "{\"CLOSEUP\":1,\"CLOSEUP_RATE\":0,\"ENGAGEMENT\":1,\"ENGAGEMENT_RATE\":0,\"IMPRESSION\":240,\"OUTBOUND_CLICK\":20,\"OUTBOUND_CLICK_RATE\":0.08,\"PIN_CLICK\":37,\"PIN_CLICK_RATE\":0.15,\"PROFILE_VISIT\":0,\"QUARTILE_95_PERCENT_VIEW\":8,\"SAVE\":20,\"SAVE_RATE\":0.18,\"VIDEO_10S_VIEW\":2,\"VIDEO_AVG_WATCH_TIME\":2507.75,\"VIDEO_MRC_VIEW\":20,\"VIDEO_START\":29,\"VIDEO_V50_WATCH_TIME\":10031}", value = "The metric name and value over the requested period for each requested metric")
+  @JsonProperty("summary_metrics")
+  @Valid public Map<String, BigDecimal> getSummaryMetrics() {
+    return summaryMetrics;
+  }
+
+  @JsonProperty("summary_metrics")
+  public void setSummaryMetrics(Map<String, BigDecimal> summaryMetrics) {
+    this.summaryMetrics = summaryMetrics;
+  }
+
+  public AnalyticsMetricsResponse putSummaryMetricsItem(String key, BigDecimal summaryMetricsItem) {
+    if (this.summaryMetrics == null) {
+      this.summaryMetrics = new HashMap<>();
+    }
+
+    this.summaryMetrics.put(key, summaryMetricsItem);
+    return this;
+  }
+
+  public AnalyticsMetricsResponse removeSummaryMetricsItem(String key) {
+    if (this.summaryMetrics != null) {
+      this.summaryMetrics.remove(key);
+    }
+
+    return this;
+  }
 
   @Override
   public boolean equals(Object o) {
@@ -113,13 +113,13 @@ public class AnalyticsMetricsResponse   {
       return false;
     }
     AnalyticsMetricsResponse analyticsMetricsResponse = (AnalyticsMetricsResponse) o;
-    return Objects.equals(this.summaryMetrics, analyticsMetricsResponse.summaryMetrics) &&
-        Objects.equals(this.dailyMetrics, analyticsMetricsResponse.dailyMetrics);
+    return Objects.equals(this.dailyMetrics, analyticsMetricsResponse.dailyMetrics) &&
+        Objects.equals(this.summaryMetrics, analyticsMetricsResponse.summaryMetrics);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(summaryMetrics, dailyMetrics);
+    return Objects.hash(dailyMetrics, summaryMetrics);
   }
 
   @Override
@@ -127,8 +127,8 @@ public class AnalyticsMetricsResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AnalyticsMetricsResponse {\n");
     
-    sb.append("    summaryMetrics: ").append(toIndentedString(summaryMetrics)).append("\n");
     sb.append("    dailyMetrics: ").append(toIndentedString(dailyMetrics)).append("\n");
+    sb.append("    summaryMetrics: ").append(toIndentedString(summaryMetrics)).append("\n");
     sb.append("}");
     return sb.toString();
   }

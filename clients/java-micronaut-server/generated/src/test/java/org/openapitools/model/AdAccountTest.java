@@ -28,6 +28,30 @@ public class AdAccountTest {
     }
 
     /**
+     * Test the property 'country'
+     */
+    @Test
+    public void countryTest() {
+        // TODO: test country
+    }
+
+    /**
+     * Test the property 'createdTime'
+     */
+    @Test
+    public void createdTimeTest() {
+        // TODO: test createdTime
+    }
+
+    /**
+     * Test the property 'currency'
+     */
+    @Test
+    public void currencyTest() {
+        // TODO: test currency
+    }
+
+    /**
      * Test the property 'id'
      */
     @Test
@@ -52,35 +76,11 @@ public class AdAccountTest {
     }
 
     /**
-     * Test the property 'country'
-     */
-    @Test
-    public void countryTest() {
-        // TODO: test country
-    }
-
-    /**
-     * Test the property 'currency'
-     */
-    @Test
-    public void currencyTest() {
-        // TODO: test currency
-    }
-
-    /**
      * Test the property 'permissions'
      */
     @Test
     public void permissionsTest() {
         // TODO: test permissions
-    }
-
-    /**
-     * Test the property 'createdTime'
-     */
-    @Test
-    public void createdTimeTest() {
-        // TODO: test createdTime
     }
 
     /**

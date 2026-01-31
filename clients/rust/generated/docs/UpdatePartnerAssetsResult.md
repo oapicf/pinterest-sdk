@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **asset_id** | Option<**String**> | Unique identifier of a business asset. | [optional]
-**asset_type** | Option<**String**> | Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. | [optional]
+**asset_type** | Option<**String**> | Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. | [optional]
 **partner_id** | Option<**String**> | Unique identifier of a business partner. | [optional]
 **permissions** | Option<**Vec<String>**> | Permission levels member or partner has on an asset. | [optional]
 

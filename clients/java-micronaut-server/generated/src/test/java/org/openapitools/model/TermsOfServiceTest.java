@@ -21,19 +21,11 @@ public class TermsOfServiceTest {
     }
 
     /**
-     * Test the property 'id'
+     * Test the property 'adAccountId'
      */
     @Test
-    public void idTest() {
-        // TODO: test id
-    }
-
-    /**
-     * Test the property 'html'
-     */
-    @Test
-    public void htmlTest() {
-        // TODO: test html
+    public void adAccountIdTest() {
+        // TODO: test adAccountId
     }
 
     /**
@@ -45,11 +37,19 @@ public class TermsOfServiceTest {
     }
 
     /**
-     * Test the property 'adAccountId'
+     * Test the property 'html'
      */
     @Test
-    public void adAccountIdTest() {
-        // TODO: test adAccountId
+    public void htmlTest() {
+        // TODO: test html
+    }
+
+    /**
+     * Test the property 'id'
+     */
+    @Test
+    public void idTest() {
+        // TODO: test id
     }
 
 }

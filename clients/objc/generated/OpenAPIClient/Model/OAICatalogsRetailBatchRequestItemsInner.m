@@ -54,7 +54,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"itemId": @"item_id", @"operation": @"operation", @"attributes": @"attributes", @"updateMask": @"update_mask" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"attributes": @"attributes", @"itemId": @"item_id", @"operation": @"operation", @"updateMask": @"update_mask", @"lastUpdatedTime": @"last_updated_time" }];
 }
 
 /**
@@ -64,7 +64,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"updateMask"];
+  NSArray *optionalProperties = @[@"updateMask", @"lastUpdatedTime"];
   return [optionalProperties containsObject:propertyName];
 }
 

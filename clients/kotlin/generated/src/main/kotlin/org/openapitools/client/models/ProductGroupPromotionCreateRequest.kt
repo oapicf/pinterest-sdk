@@ -15,7 +15,7 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.ProductGroupPromotionCreateRequestElement
+import org.openapitools.client.models.ProductGroupPromotion
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -35,7 +35,7 @@ data class ProductGroupPromotionCreateRequest (
     val adGroupId: kotlin.String,
 
     @Json(name = "product_group_promotion")
-    val productGroupPromotion: kotlin.collections.List<ProductGroupPromotionCreateRequestElement>
+    val productGroupPromotion: kotlin.collections.List<ProductGroupPromotion>
 
 ) {
 

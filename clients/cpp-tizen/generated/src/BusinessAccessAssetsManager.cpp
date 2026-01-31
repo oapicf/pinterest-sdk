@@ -634,7 +634,7 @@ static bool businessAssetMembersGetProcessor(MemoryStruct_s p_chunk, long code, 
 }
 
 static bool businessAssetMembersGetHelper(char * accessToken,
-	std::string businessId, std::string assetId, std::string bookmark, int pageSize, int startIndex, 
+	std::string businessId, std::string assetId, bool fetchSystemUsers, std::string bookmark, int pageSize, int startIndex, 
 	void(* handler)(Business_asset_members_get_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -651,6 +651,13 @@ static bool businessAssetMembersGetHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&fetchSystemUsers, "bool");
+	queryParams.insert(pair<string, string>("fetch_system_users", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("fetch_system_users");
+	}
+
 
 	itemAtq = stringify(&bookmark, "std::string");
 	queryParams.insert(pair<string, string>("bookmark", itemAtq));
@@ -738,22 +745,22 @@ static bool businessAssetMembersGetHelper(char * accessToken,
 
 
 bool BusinessAccessAssetsManager::businessAssetMembersGetAsync(char * accessToken,
-	std::string businessId, std::string assetId, std::string bookmark, int pageSize, int startIndex, 
+	std::string businessId, std::string assetId, bool fetchSystemUsers, std::string bookmark, int pageSize, int startIndex, 
 	void(* handler)(Business_asset_members_get_200_response, Error, void* )
 	, void* userData)
 {
 	return businessAssetMembersGetHelper(accessToken,
-	businessId, assetId, bookmark, pageSize, startIndex, 
+	businessId, assetId, fetchSystemUsers, bookmark, pageSize, startIndex, 
 	handler, userData, true);
 }
 
 bool BusinessAccessAssetsManager::businessAssetMembersGetSync(char * accessToken,
-	std::string businessId, std::string assetId, std::string bookmark, int pageSize, int startIndex, 
+	std::string businessId, std::string assetId, bool fetchSystemUsers, std::string bookmark, int pageSize, int startIndex, 
 	void(* handler)(Business_asset_members_get_200_response, Error, void* )
 	, void* userData)
 {
 	return businessAssetMembersGetHelper(accessToken,
-	businessId, assetId, bookmark, pageSize, startIndex, 
+	businessId, assetId, fetchSystemUsers, bookmark, pageSize, startIndex, 
 	handler, userData, false);
 }
 

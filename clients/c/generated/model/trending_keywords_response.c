@@ -37,7 +37,7 @@ void trending_keywords_response_free(trending_keywords_response_t *trending_keyw
     listEntry_t *listEntry;
     if (trending_keywords_response->trends) {
         list_ForEach(listEntry, trending_keywords_response->trends) {
-            trending_keywords_response_trends_inner_free(listEntry->data);
+            trending_keyword_free(listEntry->data);
         }
         list_freeList(trending_keywords_response->trends);
         trending_keywords_response->trends = NULL;
@@ -58,7 +58,7 @@ cJSON *trending_keywords_response_convertToJSON(trending_keywords_response_t *tr
     listEntry_t *trendsListEntry;
     if (trending_keywords_response->trends) {
     list_ForEach(trendsListEntry, trending_keywords_response->trends) {
-    cJSON *itemLocal = trending_keywords_response_trends_inner_convertToJSON(trendsListEntry->data);
+    cJSON *itemLocal = trending_keyword_convertToJSON(trendsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
@@ -100,7 +100,7 @@ trending_keywords_response_t *trending_keywords_response_parseFromJSON(cJSON *tr
         if(!cJSON_IsObject(trends_local_nonprimitive)){
             goto end;
         }
-        trending_keywords_response_trends_inner_t *trendsItem = trending_keywords_response_trends_inner_parseFromJSON(trends_local_nonprimitive);
+        trending_keyword_t *trendsItem = trending_keyword_parseFromJSON(trends_local_nonprimitive);
 
         list_addElement(trendsList, trendsItem);
     }
@@ -116,7 +116,7 @@ end:
     if (trendsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, trendsList) {
-            trending_keywords_response_trends_inner_free(listEntry->data);
+            trending_keyword_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(trendsList);

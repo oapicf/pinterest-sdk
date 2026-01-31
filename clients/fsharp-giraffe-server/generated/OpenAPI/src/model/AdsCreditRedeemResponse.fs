@@ -11,8 +11,8 @@ module AdsCreditRedeemResponse =
 
 
   type AdsCreditRedeemResponse = {
-    Success : bool;
     ErrorCode : int option;
     ErrorMessage : string option;
+    Success : bool;
   }
   //#endregion

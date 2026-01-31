@@ -12,18 +12,18 @@ test_that("catalog_type", {
   #expect_equal(model.instance$`catalog_type`, "EXPECTED_RESULT")
 })
 
-test_that("item_id", {
-  # tests for the property `item_id` (character)
-  # The catalog item id in the merchant namespace
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`item_id`, "EXPECTED_RESULT")
-})
-
 test_that("errors", {
   # tests for the property `errors` (array[ItemValidationEvent])
   # Array with the errors for the item id requested
 
   # uncomment below to test the property
   #expect_equal(model.instance$`errors`, "EXPECTED_RESULT")
+})
+
+test_that("item_id", {
+  # tests for the property `item_id` (character)
+  # The catalog item id in the merchant namespace
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`item_id`, "EXPECTED_RESULT")
 })

@@ -22,46 +22,46 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param name 
- * @param filters 
  * @param feedId Catalog Feed id pertaining to the catalog product group.
+ * @param filters 
+ * @param name 
  * @param description 
  * @param isFeatured boolean indicator of whether the product group is being featured or not
  */
 data class MultipleProductGroupsInner(
 
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("name", required = true) val name: kotlin.String,
+    @get:Pattern(regexp="^\\d+$")
+    @Schema(example = "2680059592705", required = true, description = "Catalog Feed id pertaining to the catalog product group.")
+    @get:JsonProperty("feed_id", required = true) val feedId: kotlin.String,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("filters", required = true) val filters: CatalogsProductGroupFiltersRequest,
 
-    @get:Pattern(regexp="^\\d+$")
-    @Schema(example = "2680059592705", required = true, description = "Catalog Feed id pertaining to the catalog product group.")
-    @get:JsonProperty("feed_id", required = true) val feedId: kotlin.String,
-
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("catalog_type", required = true) override val catalogType: MultipleProductGroupsInner.CatalogType,
+    @get:JsonProperty("name", required = true) val name: kotlin.String,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "2680059592705", required = true, description = "Catalog id pertaining to the creative assets product group.")
     @get:JsonProperty("catalog_id", required = true) override val catalogId: kotlin.String,
 
-    @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("country", required = true) override val country: Country,
-
-    @field:Valid
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("locale", required = true) override val locale: CatalogsLocale,
+    @get:JsonProperty("catalog_type", required = true) override val catalogType: MultipleProductGroupsInner.CatalogType,
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("description") val description: kotlin.String? = null,
 
     @Schema(example = "null", description = "boolean indicator of whether the product group is being featured or not")
     @Deprecated(message = "")
-    @get:JsonProperty("is_featured") val isFeatured: kotlin.Boolean? = false
+    @get:JsonProperty("is_featured") val isFeatured: kotlin.Boolean? = false,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("country") override val country: Country? = null,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("locale") override val locale: CatalogsLocale? = null
 ) {
 
 }

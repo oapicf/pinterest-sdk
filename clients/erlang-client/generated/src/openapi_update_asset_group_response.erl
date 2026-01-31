@@ -5,13 +5,13 @@
 -export_type([openapi_update_asset_group_response/0]).
 
 -type openapi_update_asset_group_response() ::
-    #{ 'updated_asset_groups' => list(),
-       'exceptions' => list()
+    #{ 'exceptions' => list(),
+       'updated_asset_groups' => list()
      }.
 
-encode(#{ 'updated_asset_groups' := UpdatedAssetGroups,
-          'exceptions' := Exceptions
+encode(#{ 'exceptions' := Exceptions,
+          'updated_asset_groups' := UpdatedAssetGroups
         }) ->
-    #{ 'updated_asset_groups' => UpdatedAssetGroups,
-       'exceptions' => Exceptions
+    #{ 'exceptions' => Exceptions,
+       'updated_asset_groups' => UpdatedAssetGroups
      }.

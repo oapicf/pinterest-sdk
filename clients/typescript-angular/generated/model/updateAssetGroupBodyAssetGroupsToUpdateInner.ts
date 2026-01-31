@@ -16,14 +16,6 @@ export interface UpdateAssetGroupBodyAssetGroupsToUpdateInner {
      */
     asset_group_id: string;
     /**
-     * Asset Group name
-     */
-    name?: string;
-    /**
-     * Asset group description
-     */
-    description?: string;
-    /**
      * Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
      */
     asset_group_types?: Array<AssetGroupType>;
@@ -35,5 +27,13 @@ export interface UpdateAssetGroupBodyAssetGroupsToUpdateInner {
      * A list of asset ids to remove from the asset group.
      */
     assets_to_remove?: Array<string>;
+    /**
+     * Asset group description
+     */
+    description?: string;
+    /**
+     * Asset Group name
+     */
+    name?: string;
 }
 

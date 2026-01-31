@@ -73,16 +73,16 @@ private class OASCatalogsRetailItemsFilterTest {
     private static void maintainRenamedProperties() {
         OASCatalogsRetailItemsFilter catalogsRetailItemsFilter = new OASCatalogsRetailItemsFilter();
         Map<String, String> x-property-mappings = catalogsRetailItemsFilter.getx-property-mappings();
+        System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
         System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
         System.assertEquals('itemIds', x-property-mappings.get('item_ids'));
-        System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASCatalogsRetailItemsFilter catalogsRetailItemsFilter = new OASCatalogsRetailItemsFilter();
         System.assertEquals(new List<String>(), catalogsRetailItemsFilter.itemIds);
-        System.assertEquals(null, catalogsRetailItemsFilter.catalogType);
         System.assertEquals(null, catalogsRetailItemsFilter.catalogId);
+        System.assertEquals(null, catalogsRetailItemsFilter.catalogType);
     }
 }

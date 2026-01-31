@@ -7,27 +7,33 @@
 #' @title SSIOInsertionOrderStatus
 #' @description SSIOInsertionOrderStatus Class
 #' @format An \code{R6Class} generator object
+#' @field creation_time Salesforce insertion order creation time character [optional]
 #' @field pin_order_id Salesforce order id character [optional]
 #' @field status Salesforce insertion order status character [optional]
-#' @field creation_time Salesforce insertion order creation time character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 SSIOInsertionOrderStatus <- R6::R6Class(
   "SSIOInsertionOrderStatus",
   public = list(
+    `creation_time` = NULL,
     `pin_order_id` = NULL,
     `status` = NULL,
-    `creation_time` = NULL,
 
     #' @description
     #' Initialize a new SSIOInsertionOrderStatus class.
     #'
+    #' @param creation_time Salesforce insertion order creation time
     #' @param pin_order_id Salesforce order id
     #' @param status Salesforce insertion order status
-    #' @param creation_time Salesforce insertion order creation time
     #' @param ... Other optional arguments.
-    initialize = function(`pin_order_id` = NULL, `status` = NULL, `creation_time` = NULL, ...) {
+    initialize = function(`creation_time` = NULL, `pin_order_id` = NULL, `status` = NULL, ...) {
+      if (!is.null(`creation_time`)) {
+        if (!(is.character(`creation_time`) && length(`creation_time`) == 1)) {
+          stop(paste("Error! Invalid data for `creation_time`. Must be a string:", `creation_time`))
+        }
+        self$`creation_time` <- `creation_time`
+      }
       if (!is.null(`pin_order_id`)) {
         if (!(is.character(`pin_order_id`) && length(`pin_order_id`) == 1)) {
           stop(paste("Error! Invalid data for `pin_order_id`. Must be a string:", `pin_order_id`))
@@ -39,12 +45,6 @@ SSIOInsertionOrderStatus <- R6::R6Class(
           stop(paste("Error! Invalid data for `status`. Must be a string:", `status`))
         }
         self$`status` <- `status`
-      }
-      if (!is.null(`creation_time`)) {
-        if (!(is.character(`creation_time`) && length(`creation_time`) == 1)) {
-          stop(paste("Error! Invalid data for `creation_time`. Must be a string:", `creation_time`))
-        }
-        self$`creation_time` <- `creation_time`
       }
     },
 
@@ -79,6 +79,10 @@ SSIOInsertionOrderStatus <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       SSIOInsertionOrderStatusObject <- list()
+      if (!is.null(self$`creation_time`)) {
+        SSIOInsertionOrderStatusObject[["creation_time"]] <-
+          self$`creation_time`
+      }
       if (!is.null(self$`pin_order_id`)) {
         SSIOInsertionOrderStatusObject[["pin_order_id"]] <-
           self$`pin_order_id`
@@ -86,10 +90,6 @@ SSIOInsertionOrderStatus <- R6::R6Class(
       if (!is.null(self$`status`)) {
         SSIOInsertionOrderStatusObject[["status"]] <-
           self$`status`
-      }
-      if (!is.null(self$`creation_time`)) {
-        SSIOInsertionOrderStatusObject[["creation_time"]] <-
-          self$`creation_time`
       }
       return(SSIOInsertionOrderStatusObject)
     },
@@ -101,14 +101,14 @@ SSIOInsertionOrderStatus <- R6::R6Class(
     #' @return the instance of SSIOInsertionOrderStatus
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`creation_time`)) {
+        self$`creation_time` <- this_object$`creation_time`
+      }
       if (!is.null(this_object$`pin_order_id`)) {
         self$`pin_order_id` <- this_object$`pin_order_id`
       }
       if (!is.null(this_object$`status`)) {
         self$`status` <- this_object$`status`
-      }
-      if (!is.null(this_object$`creation_time`)) {
-        self$`creation_time` <- this_object$`creation_time`
       }
       self
     },
@@ -131,9 +131,9 @@ SSIOInsertionOrderStatus <- R6::R6Class(
     #' @return the instance of SSIOInsertionOrderStatus
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`creation_time` <- this_object$`creation_time`
       self$`pin_order_id` <- this_object$`pin_order_id`
       self$`status` <- this_object$`status`
-      self$`creation_time` <- this_object$`creation_time`
       self
     },
 

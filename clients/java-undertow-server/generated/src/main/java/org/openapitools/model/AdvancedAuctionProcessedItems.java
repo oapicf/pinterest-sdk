@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -18,7 +18,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.AdvancedAuctionProcessedItem;
+import org.openapitools.model.AdvancedAuctionItemsSubmitRecord;
 
 
 
@@ -27,11 +27,11 @@ import org.openapitools.model.AdvancedAuctionProcessedItem;
  */
 
 @ApiModel(description = "Response object containing the results of an operation on an item bid option")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionProcessedItems   {
   
   private String catalogId;
-  private List<AdvancedAuctionProcessedItem> items = new ArrayList<>();
+  private List<AdvancedAuctionItemsSubmitRecord> items = new ArrayList<>();
 
   /**
    * Catalog id pertaining to all items
@@ -54,7 +54,7 @@ public class AdvancedAuctionProcessedItems   {
   /**
    * Array of advanced auction processed items
    */
-  public AdvancedAuctionProcessedItems items(List<AdvancedAuctionProcessedItem> items) {
+  public AdvancedAuctionProcessedItems items(List<AdvancedAuctionItemsSubmitRecord> items) {
     this.items = items;
     return this;
   }
@@ -62,10 +62,10 @@ public class AdvancedAuctionProcessedItems   {
   
   @ApiModelProperty(value = "Array of advanced auction processed items")
   @JsonProperty("items")
-  public List<AdvancedAuctionProcessedItem> getItems() {
+  public List<AdvancedAuctionItemsSubmitRecord> getItems() {
     return items;
   }
-  public void setItems(List<AdvancedAuctionProcessedItem> items) {
+  public void setItems(List<AdvancedAuctionItemsSubmitRecord> items) {
     this.items = items;
   }
 

@@ -4,19 +4,19 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **external_business_id** | **String** | External business ID for the integration. | [optional] |
-| **connected_merchant_id** | **String** |  | [optional] |
+| **additional_id_1** | **String** |  | [optional] |
 | **connected_advertiser_id** | **String** |  | [optional] |
 | **connected_lba_id** | **String** |  | [optional] |
+| **connected_merchant_id** | **String** |  | [optional] |
 | **connected_tag_id** | **String** |  | [optional] |
+| **external_business_id** | **String** | External business ID for the integration. | [optional] |
 | **partner_access_token** | **String** |  | [optional] |
-| **partner_refresh_token** | **String** |  | [optional] |
-| **partner_primary_email** | **String** |  | [optional] |
 | **partner_access_token_expiry** | **Integer** |  | [optional] |
+| **partner_metadata** | **String** |  | [optional] |
+| **partner_primary_email** | **String** |  | [optional] |
+| **partner_refresh_token** | **String** |  | [optional] |
 | **partner_refresh_token_expiry** | **Integer** |  | [optional] |
 | **scopes** | **String** |  | [optional] |
-| **additional_id_1** | **String** |  | [optional] |
-| **partner_metadata** | **String** |  | [optional] |
 
 ## Example
 
@@ -24,19 +24,19 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::IntegrationRequest.new(
-  external_business_id: null,
-  connected_merchant_id: null,
+  additional_id_1: null,
   connected_advertiser_id: null,
   connected_lba_id: null,
+  connected_merchant_id: null,
   connected_tag_id: null,
+  external_business_id: null,
   partner_access_token: null,
-  partner_refresh_token: null,
-  partner_primary_email: null,
   partner_access_token_expiry: null,
+  partner_metadata: null,
+  partner_primary_email: null,
+  partner_refresh_token: null,
   partner_refresh_token_expiry: null,
-  scopes: null,
-  additional_id_1: null,
-  partner_metadata: null
+  scopes: null
 )
 ```
 

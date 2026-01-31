@@ -16,25 +16,25 @@
 #include "../model/catalogs_items_request.h"
 catalogs_items_request_t* instantiate_catalogs_items_request(int include_optional);
 
+#include "test_catalogs_items_post_filters.c"
 
 // it is enum. Work in Progress
-#include "test_catalogs_items_post_filters.c"
 
 
 catalogs_items_request_t* instantiate_catalogs_items_request(int include_optional) {
   catalogs_items_request_t* catalogs_items_request = NULL;
   if (include_optional) {
     catalogs_items_request = catalogs_items_request_create(
-      pinterest_rest_api_catalogs_items_request__"US",
-      pinterest_rest_api_catalogs_items_request_LANGUAGE_af-ZA,
+      pinterest_rest_api_catalogs_items_request__AD,
        // false, not to have infinite recursion
-      instantiate_catalogs_items_post_filters(0)
+      instantiate_catalogs_items_post_filters(0),
+      pinterest_rest_api_catalogs_items_request_LANGUAGE_af-ZA
     );
   } else {
     catalogs_items_request = catalogs_items_request_create(
-      pinterest_rest_api_catalogs_items_request__"US",
-      pinterest_rest_api_catalogs_items_request_LANGUAGE_af-ZA,
-      NULL
+      pinterest_rest_api_catalogs_items_request__AD,
+      NULL,
+      pinterest_rest_api_catalogs_items_request_LANGUAGE_af-ZA
     );
   }
 

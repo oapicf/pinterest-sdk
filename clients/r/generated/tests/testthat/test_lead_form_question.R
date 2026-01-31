@@ -5,13 +5,6 @@ context("Test LeadFormQuestion")
 
 model_instance <- LeadFormQuestion$new()
 
-test_that("question_type", {
-  # tests for the property `question_type` (LeadFormQuestionType)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`question_type`, "EXPECTED_RESULT")
-})
-
 test_that("custom_question_field_type", {
   # tests for the property `custom_question_field_type` (LeadFormQuestionFieldType)
 
@@ -33,4 +26,11 @@ test_that("custom_question_options", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`custom_question_options`, "EXPECTED_RESULT")
+})
+
+test_that("question_type", {
+  # tests for the property `question_type` (LeadFormQuestionType)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`question_type`, "EXPECTED_RESULT")
 })

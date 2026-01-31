@@ -52,6 +52,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get 
+	 */
+	ItemAttributesRequest getAttributes();
+
+	/*! \brief Set 
+	 */
+	void setAttributes(ItemAttributesRequest  attributes);
 	/*! \brief Get The catalog item id in the merchant namespace
 	 */
 	std::string getItemId();
@@ -66,13 +73,6 @@ public:
 	/*! \brief Set 
 	 */
 	void setOperation(std::string  operation);
-	/*! \brief Get 
-	 */
-	ItemAttributesRequest getAttributes();
-
-	/*! \brief Set 
-	 */
-	void setAttributes(ItemAttributesRequest  attributes);
 	/*! \brief Get The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
 	 */
 	std::list<UpdateMaskFieldType> getUpdateMask();
@@ -80,12 +80,20 @@ public:
 	/*! \brief Set The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
 	 */
 	void setUpdateMask(std::list <UpdateMaskFieldType> update_mask);
+	/*! \brief Get The millisecond timestamp when the item was lastly modified by the merchant.
+	 */
+	long long getLastUpdatedTime();
+
+	/*! \brief Set The millisecond timestamp when the item was lastly modified by the merchant.
+	 */
+	void setLastUpdatedTime(long long  last_updated_time);
 
 private:
+	ItemAttributesRequest attributes;
 	std::string item_id;
 	std::string operation;
-	ItemAttributesRequest attributes;
 	std::list <UpdateMaskFieldType>update_mask;
+	long long last_updated_time;
 	void __init();
 	void __cleanup();
 

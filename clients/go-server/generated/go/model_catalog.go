@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -28,10 +28,10 @@ type Catalog struct {
 
 	UpdatedAt time.Time `json:"updated_at"`
 
+	CatalogType CatalogsType `json:"catalog_type"`
+
 	// A human-friendly name associated to a catalog entity.
 	Name *string `json:"name"`
-
-	CatalogType CatalogsType `json:"catalog_type"`
 }
 
 // AssertCatalogRequired checks if the required fields are not zero-ed
@@ -40,8 +40,8 @@ func AssertCatalogRequired(obj Catalog) error {
 		"created_at": obj.CreatedAt,
 		"id": obj.Id,
 		"updated_at": obj.UpdatedAt,
-		"name": obj.Name,
 		"catalog_type": obj.CatalogType,
+		"name": obj.Name,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

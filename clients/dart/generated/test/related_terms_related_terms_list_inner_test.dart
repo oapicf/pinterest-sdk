@@ -16,13 +16,13 @@ void main() {
   // final instance = RelatedTermsRelatedTermsListInner();
 
   group('test RelatedTermsRelatedTermsListInner', () {
-    // String term
-    test('to test the property `term`', () async {
+    // List<String> relatedTerms (default value: const [])
+    test('to test the property `relatedTerms`', () async {
       // TODO
     });
 
-    // List<String> relatedTerms (default value: const [])
-    test('to test the property `relatedTerms`', () async {
+    // String term
+    test('to test the property `term`', () async {
       // TODO
     });
 

@@ -23,29 +23,29 @@ CatalogsItemValidationIssues::~CatalogsItemValidationIssues()
 void
 CatalogsItemValidationIssues::__init()
 {
-	//item_number = int(0);
-	//item_id = std::string();
 	//errors = new CatalogsItemValidationErrors();
+	//item_id = std::string();
+	//item_number = int(0);
 	//warnings = new CatalogsItemValidationWarnings();
 }
 
 void
 CatalogsItemValidationIssues::__cleanup()
 {
-	//if(item_number != NULL) {
+	//if(errors != NULL) {
 	//
-	//delete item_number;
-	//item_number = NULL;
+	//delete errors;
+	//errors = NULL;
 	//}
 	//if(item_id != NULL) {
 	//
 	//delete item_id;
 	//item_id = NULL;
 	//}
-	//if(errors != NULL) {
+	//if(item_number != NULL) {
 	//
-	//delete errors;
-	//errors = NULL;
+	//delete item_number;
+	//item_number = NULL;
 	//}
 	//if(warnings != NULL) {
 	//
@@ -60,14 +60,17 @@ CatalogsItemValidationIssues::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *item_numberKey = "item_number";
-	node = json_object_get_member(pJsonObject, item_numberKey);
+	const gchar *errorsKey = "errors";
+	node = json_object_get_member(pJsonObject, errorsKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("int")) {
-			jsonToValue(&item_number, node, "int", "");
+		if (isprimitive("CatalogsItemValidationErrors")) {
+			jsonToValue(&errors, node, "CatalogsItemValidationErrors", "CatalogsItemValidationErrors");
 		} else {
+			
+			CatalogsItemValidationErrors* obj = static_cast<CatalogsItemValidationErrors*> (&errors);
+			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -82,17 +85,14 @@ CatalogsItemValidationIssues::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *errorsKey = "errors";
-	node = json_object_get_member(pJsonObject, errorsKey);
+	const gchar *item_numberKey = "item_number";
+	node = json_object_get_member(pJsonObject, item_numberKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsItemValidationErrors")) {
-			jsonToValue(&errors, node, "CatalogsItemValidationErrors", "CatalogsItemValidationErrors");
+		if (isprimitive("int")) {
+			jsonToValue(&item_number, node, "int", "");
 		} else {
-			
-			CatalogsItemValidationErrors* obj = static_cast<CatalogsItemValidationErrors*> (&errors);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -122,24 +122,6 @@ CatalogsItemValidationIssues::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("int")) {
-		int obj = getItemNumber();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *item_numberKey = "item_number";
-	json_object_set_member(pJsonObject, item_numberKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getItemId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *item_idKey = "item_id";
-	json_object_set_member(pJsonObject, item_idKey, node);
 	if (isprimitive("CatalogsItemValidationErrors")) {
 		CatalogsItemValidationErrors obj = getErrors();
 		node = converttoJson(&obj, "CatalogsItemValidationErrors", "");
@@ -154,6 +136,24 @@ CatalogsItemValidationIssues::toJson()
 	}
 	const gchar *errorsKey = "errors";
 	json_object_set_member(pJsonObject, errorsKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getItemId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *item_idKey = "item_id";
+	json_object_set_member(pJsonObject, item_idKey, node);
+	if (isprimitive("int")) {
+		int obj = getItemNumber();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *item_numberKey = "item_number";
+	json_object_set_member(pJsonObject, item_numberKey, node);
 	if (isprimitive("CatalogsItemValidationWarnings")) {
 		CatalogsItemValidationWarnings obj = getWarnings();
 		node = converttoJson(&obj, "CatalogsItemValidationWarnings", "");
@@ -176,16 +176,16 @@ CatalogsItemValidationIssues::toJson()
 	return ret;
 }
 
-int
-CatalogsItemValidationIssues::getItemNumber()
+CatalogsItemValidationErrors
+CatalogsItemValidationIssues::getErrors()
 {
-	return item_number;
+	return errors;
 }
 
 void
-CatalogsItemValidationIssues::setItemNumber(int  item_number)
+CatalogsItemValidationIssues::setErrors(CatalogsItemValidationErrors  errors)
 {
-	this->item_number = item_number;
+	this->errors = errors;
 }
 
 std::string
@@ -200,16 +200,16 @@ CatalogsItemValidationIssues::setItemId(std::string  item_id)
 	this->item_id = item_id;
 }
 
-CatalogsItemValidationErrors
-CatalogsItemValidationIssues::getErrors()
+int
+CatalogsItemValidationIssues::getItemNumber()
 {
-	return errors;
+	return item_number;
 }
 
 void
-CatalogsItemValidationIssues::setErrors(CatalogsItemValidationErrors  errors)
+CatalogsItemValidationIssues::setItemNumber(int  item_number)
 {
-	this->errors = errors;
+	this->item_number = item_number;
 }
 
 CatalogsItemValidationWarnings

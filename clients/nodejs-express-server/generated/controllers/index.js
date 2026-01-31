@@ -12,20 +12,32 @@ const BusinessAccessAssetsController = require('./BusinessAccessAssetsController
 const BusinessAccessInviteController = require('./BusinessAccessInviteController');
 const BusinessAccessRelationshipsController = require('./BusinessAccessRelationshipsController');
 const CampaignsController = require('./CampaignsController');
+const CatalogFeedsController = require('./CatalogFeedsController');
+const CatalogItemsController = require('./CatalogItemsController');
+const CatalogProductGroupsController = require('./CatalogProductGroupsController');
+const CatalogReportsController = require('./CatalogReportsController');
 const CatalogsController = require('./CatalogsController');
+const ConversionEqsController = require('./ConversionEqsController');
 const ConversionEventsController = require('./ConversionEventsController');
 const ConversionTagsController = require('./ConversionTagsController');
+const ConversionsController = require('./ConversionsController');
+const CustomerListUploadsController = require('./CustomerListUploadsController');
 const CustomerListsController = require('./CustomerListsController');
 const IntegrationsController = require('./IntegrationsController');
 const KeywordsController = require('./KeywordsController');
+const LabelsController = require('./LabelsController');
 const LeadAdsController = require('./LeadAdsController');
 const LeadFormsController = require('./LeadFormsController');
 const LeadsExportController = require('./LeadsExportController');
 const MediaController = require('./MediaController');
+const MsotEventsController = require('./MsotEventsController');
+const NotificationController = require('./NotificationController');
 const OauthController = require('./OauthController');
 const OrderLinesController = require('./OrderLinesController');
 const PinsController = require('./PinsController');
+const ProductCategoriesController = require('./ProductCategoriesController');
 const ProductGroupPromotionsController = require('./ProductGroupPromotionsController');
+const PromotionsController = require('./PromotionsController');
 const ResourcesController = require('./ResourcesController');
 const SearchController = require('./SearchController');
 const TargetingTemplateController = require('./TargetingTemplateController');
@@ -48,20 +60,32 @@ module.exports = {
   BusinessAccessInviteController,
   BusinessAccessRelationshipsController,
   CampaignsController,
+  CatalogFeedsController,
+  CatalogItemsController,
+  CatalogProductGroupsController,
+  CatalogReportsController,
   CatalogsController,
+  ConversionEqsController,
   ConversionEventsController,
   ConversionTagsController,
+  ConversionsController,
+  CustomerListUploadsController,
   CustomerListsController,
   IntegrationsController,
   KeywordsController,
+  LabelsController,
   LeadAdsController,
   LeadFormsController,
   LeadsExportController,
   MediaController,
+  MsotEventsController,
+  NotificationController,
   OauthController,
   OrderLinesController,
   PinsController,
+  ProductCategoriesController,
   ProductGroupPromotionsController,
+  PromotionsController,
   ResourcesController,
   SearchController,
   TargetingTemplateController,

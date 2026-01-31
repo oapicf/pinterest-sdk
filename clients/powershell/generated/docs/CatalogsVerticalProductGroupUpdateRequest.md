@@ -4,22 +4,22 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CatalogType** | **String** |  | [optional] 
-**Name** | **String** |  | [optional] 
+**Country** | [**Country**](Country.md) |  | [optional] 
 **Description** | **String** |  | [optional] 
 **Filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | [optional] 
-**Country** | [**Country**](Country.md) |  | [optional] 
 **Locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | [optional] 
+**Name** | **String** |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
 $CatalogsVerticalProductGroupUpdateRequest = Initialize-PSOpenAPIToolsCatalogsVerticalProductGroupUpdateRequest  -CatalogType null `
- -Name null `
+ -Country null `
  -Description null `
  -Filters null `
- -Country null `
- -Locale null
+ -Locale null `
+ -Name null
 ```
 
 - Convert the resource to JSON

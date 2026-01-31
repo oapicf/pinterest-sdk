@@ -1,0 +1,245 @@
+package org.openapitools.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.model.CatalogsCreativeAssetsAttributes;
+import org.openapitools.model.CatalogsCreativeAssetsItemResponse;
+import org.openapitools.model.CatalogsHotelItemResponse;
+import org.openapitools.model.CatalogsRetailItemResponse;
+import org.openapitools.model.CatalogsType;
+import org.openapitools.model.Pin;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+import io.swagger.annotations.*;
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import org.openapitools.jackson.nullable.JsonNullable;
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
+@JsonSubTypes({
+  @JsonSubTypes.Type(value = CatalogsCreativeAssetsItemResponse.class, name = "CREATIVE_ASSETS"),
+  @JsonSubTypes.Type(value = CatalogsHotelItemResponse.class, name = "HOTEL"),
+  @JsonSubTypes.Type(value = CatalogsRetailItemResponse.class, name = "RETAIL"),
+})
+/**
+ * Successful item response
+ **/
+@ApiModel(description = "Successful item response")
+@JsonTypeName("ItemResponse_oneOf")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+public class ItemResponseOneOf   {
+  private CatalogsType catalogType;
+  private CatalogsCreativeAssetsAttributes attributes;
+  private String itemId;
+  private @Valid List<@Valid Pin> pins;
+  private String hotelId;
+  private String creativeAssetsId;
+
+  public ItemResponseOneOf() {
+  }
+
+  @JsonCreator
+  public ItemResponseOneOf(
+    @JsonProperty(required = true, value = "catalog_type") CatalogsType catalogType
+  ) {
+    this.catalogType = catalogType;
+  }
+
+  /**
+   **/
+  public ItemResponseOneOf catalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "catalog_type")
+  @NotNull public CatalogsType getCatalogType() {
+    return catalogType;
+  }
+
+  @JsonProperty(required = true, value = "catalog_type")
+  public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
+  }
+
+  /**
+   **/
+  public ItemResponseOneOf attributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("attributes")
+  @Valid public CatalogsCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
+
+  @JsonProperty("attributes")
+  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+  }
+
+  /**
+   * The catalog retail item id in the merchant namespace
+   **/
+  public ItemResponseOneOf itemId(String itemId) {
+    this.itemId = itemId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog retail item id in the merchant namespace")
+  @JsonProperty("item_id")
+  public String getItemId() {
+    return itemId;
+  }
+
+  @JsonProperty("item_id")
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
+  }
+
+  /**
+   * The pins mapped to the item
+   **/
+  public ItemResponseOneOf pins(List<@Valid Pin> pins) {
+    this.pins = pins;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "The pins mapped to the item")
+  @JsonProperty("pins")
+  @Valid  @Size(max=11)public List<@Valid Pin> getPins() {
+    return pins;
+  }
+
+  @JsonProperty("pins")
+  public void setPins(List<@Valid Pin> pins) {
+    this.pins = pins;
+  }
+
+  public ItemResponseOneOf addPinsItem(Pin pinsItem) {
+    if (this.pins == null) {
+      this.pins = new ArrayList<>();
+    }
+
+    this.pins.add(pinsItem);
+    return this;
+  }
+
+  public ItemResponseOneOf removePinsItem(Pin pinsItem) {
+    if (pinsItem != null && this.pins != null) {
+      this.pins.remove(pinsItem);
+    }
+
+    return this;
+  }
+  /**
+   * The catalog hotel id in the merchant namespace
+   **/
+  public ItemResponseOneOf hotelId(String hotelId) {
+    this.hotelId = hotelId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog hotel id in the merchant namespace")
+  @JsonProperty("hotel_id")
+  public String getHotelId() {
+    return hotelId;
+  }
+
+  @JsonProperty("hotel_id")
+  public void setHotelId(String hotelId) {
+    this.hotelId = hotelId;
+  }
+
+  /**
+   * The catalog creative assets id in the merchant namespace
+   **/
+  public ItemResponseOneOf creativeAssetsId(String creativeAssetsId) {
+    this.creativeAssetsId = creativeAssetsId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog creative assets id in the merchant namespace")
+  @JsonProperty("creative_assets_id")
+  public String getCreativeAssetsId() {
+    return creativeAssetsId;
+  }
+
+  @JsonProperty("creative_assets_id")
+  public void setCreativeAssetsId(String creativeAssetsId) {
+    this.creativeAssetsId = creativeAssetsId;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    ItemResponseOneOf itemResponseOneOf = (ItemResponseOneOf) o;
+    return Objects.equals(this.catalogType, itemResponseOneOf.catalogType) &&
+        Objects.equals(this.attributes, itemResponseOneOf.attributes) &&
+        Objects.equals(this.itemId, itemResponseOneOf.itemId) &&
+        Objects.equals(this.pins, itemResponseOneOf.pins) &&
+        Objects.equals(this.hotelId, itemResponseOneOf.hotelId) &&
+        Objects.equals(this.creativeAssetsId, itemResponseOneOf.creativeAssetsId);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(catalogType, attributes, itemId, pins, hotelId, creativeAssetsId);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class ItemResponseOneOf {\n");
+    
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
+    sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
+    sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
+    sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
+
+}
+

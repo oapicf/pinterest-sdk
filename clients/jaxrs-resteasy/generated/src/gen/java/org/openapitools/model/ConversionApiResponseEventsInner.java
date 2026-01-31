@@ -13,9 +13,10 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionApiResponseEventsInner   {
   
+  private String errorMessage;
 
   /**
    * Whether the event was processed successfully.
@@ -38,8 +39,20 @@ public class ConversionApiResponseEventsInner   {
   }
 
   private StatusEnum status;
-  private String errorMessage;
   private String warningMessage;
+
+  /**
+   * Error message containing more information about why the event failed to be processed.
+   **/
+  
+  @ApiModelProperty(value = "Error message containing more information about why the event failed to be processed.")
+  @JsonProperty("error_message")
+  public String getErrorMessage() {
+    return errorMessage;
+  }
+  public void setErrorMessage(String errorMessage) {
+    this.errorMessage = errorMessage;
+  }
 
   /**
    * Whether the event was processed successfully.
@@ -53,19 +66,6 @@ public class ConversionApiResponseEventsInner   {
   }
   public void setStatus(StatusEnum status) {
     this.status = status;
-  }
-
-  /**
-   * Error message containing more information about why the event failed to be processed.
-   **/
-  
-  @ApiModelProperty(value = "Error message containing more information about why the event failed to be processed.")
-  @JsonProperty("error_message")
-  public String getErrorMessage() {
-    return errorMessage;
-  }
-  public void setErrorMessage(String errorMessage) {
-    this.errorMessage = errorMessage;
   }
 
   /**
@@ -91,14 +91,14 @@ public class ConversionApiResponseEventsInner   {
       return false;
     }
     ConversionApiResponseEventsInner conversionApiResponseEventsInner = (ConversionApiResponseEventsInner) o;
-    return Objects.equals(this.status, conversionApiResponseEventsInner.status) &&
-        Objects.equals(this.errorMessage, conversionApiResponseEventsInner.errorMessage) &&
+    return Objects.equals(this.errorMessage, conversionApiResponseEventsInner.errorMessage) &&
+        Objects.equals(this.status, conversionApiResponseEventsInner.status) &&
         Objects.equals(this.warningMessage, conversionApiResponseEventsInner.warningMessage);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, errorMessage, warningMessage);
+    return Objects.hash(errorMessage, status, warningMessage);
   }
 
   @Override
@@ -106,8 +106,8 @@ public class ConversionApiResponseEventsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionApiResponseEventsInner {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    warningMessage: ").append(toIndentedString(warningMessage)).append("\n");
     sb.append("}");
     return sb.toString();

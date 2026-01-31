@@ -11,8 +11,8 @@ import { LeadsExportStatus } from './leadsExportStatus';
 
 
 export interface LeadsExportResponseData { 
-    export_status?: LeadsExportStatus;
     download_url?: string | null;
+    export_status?: LeadsExportStatus;
 }
 export namespace LeadsExportResponseData {
 }

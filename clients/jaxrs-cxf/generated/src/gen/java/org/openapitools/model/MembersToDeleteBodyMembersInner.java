@@ -14,37 +14,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MembersToDeleteBodyMembersInner  {
   
+  @ApiModelProperty(required = true, value = "")
+
+  @Valid
+
+  private BusinessRoleForMembers businessRole;
+
  /**
   * Unique identifier of the member
   */
   @ApiModelProperty(example = "140943737684417", required = true, value = "Unique identifier of the member")
 
   private String memberId;
-
-  @ApiModelProperty(required = true, value = "")
-
-  @Valid
-
-  private BusinessRoleForMembers businessRole;
- /**
-   * Unique identifier of the member
-   * @return memberId
-  **/
-  @JsonProperty("member_id")
-  @NotNull
- @Pattern(regexp="^\\d+$") @Size(max=25)  public String getMemberId() {
-    return memberId;
-  }
-
-  public void setMemberId(String memberId) {
-    this.memberId = memberId;
-  }
-
-  public MembersToDeleteBodyMembersInner memberId(String memberId) {
-    this.memberId = memberId;
-    return this;
-  }
-
  /**
    * Get businessRole
    * @return businessRole
@@ -64,6 +45,25 @@ public class MembersToDeleteBodyMembersInner  {
     return this;
   }
 
+ /**
+   * Unique identifier of the member
+   * @return memberId
+  **/
+  @JsonProperty("member_id")
+  @NotNull
+ @Pattern(regexp="^\\d+$") @Size(max=25)  public String getMemberId() {
+    return memberId;
+  }
+
+  public void setMemberId(String memberId) {
+    this.memberId = memberId;
+  }
+
+  public MembersToDeleteBodyMembersInner memberId(String memberId) {
+    this.memberId = memberId;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -73,13 +73,13 @@ public class MembersToDeleteBodyMembersInner  {
       return false;
     }
     MembersToDeleteBodyMembersInner membersToDeleteBodyMembersInner = (MembersToDeleteBodyMembersInner) o;
-    return Objects.equals(this.memberId, membersToDeleteBodyMembersInner.memberId) &&
-        Objects.equals(this.businessRole, membersToDeleteBodyMembersInner.businessRole);
+    return Objects.equals(this.businessRole, membersToDeleteBodyMembersInner.businessRole) &&
+        Objects.equals(this.memberId, membersToDeleteBodyMembersInner.memberId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(memberId, businessRole);
+    return Objects.hash(businessRole, memberId);
   }
 
   @Override
@@ -87,8 +87,8 @@ public class MembersToDeleteBodyMembersInner  {
     StringBuilder sb = new StringBuilder();
     sb.append("class MembersToDeleteBodyMembersInner {\n");
     
-    sb.append("    memberId: ").append(toIndentedString(memberId)).append("\n");
     sb.append("    businessRole: ").append(toIndentedString(businessRole)).append("\n");
+    sb.append("    memberId: ").append(toIndentedString(memberId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

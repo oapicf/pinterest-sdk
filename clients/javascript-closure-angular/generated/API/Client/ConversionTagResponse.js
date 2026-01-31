@@ -6,13 +6,6 @@ goog.provide('API.Client.ConversionTagResponse');
 API.Client.ConversionTagResponse = function() {}
 
 /**
- * Ad account ID.
- * @type {!string}
- * @export
- */
-API.Client.ConversionTagResponse.prototype.adAccountId;
-
-/**
  * Tag code snippet.
  * @type {!string}
  * @export
@@ -20,6 +13,13 @@ API.Client.ConversionTagResponse.prototype.adAccountId;
 API.Client.ConversionTagResponse.prototype.codeSnippet;
 
 /**
+ * @type {!API.Client.ConversionTagConfigs}
+ * @export
+ */
+API.Client.ConversionTagResponse.prototype.configs;
+
+/**
+ * The enhanced match status of the tag
  * @type {!API.Client.EnhancedMatchStatusType}
  * @export
  */
@@ -47,12 +47,6 @@ API.Client.ConversionTagResponse.prototype.lastFiredTimeMs;
 API.Client.ConversionTagResponse.prototype.name;
 
 /**
- * @type {!API.Client.EntityStatus}
- * @export
- */
-API.Client.ConversionTagResponse.prototype.status;
-
-/**
  * Version number.
  * @type {!string}
  * @export
@@ -60,8 +54,15 @@ API.Client.ConversionTagResponse.prototype.status;
 API.Client.ConversionTagResponse.prototype.version;
 
 /**
- * @type {!API.Client.ConversionTagConfigs}
+ * Ad account ID.
+ * @type {!string}
  * @export
  */
-API.Client.ConversionTagResponse.prototype.configs;
+API.Client.ConversionTagResponse.prototype.adAccountId;
+
+/**
+ * @type {!API.Client.EntityStatus}
+ * @export
+ */
+API.Client.ConversionTagResponse.prototype.status;
 

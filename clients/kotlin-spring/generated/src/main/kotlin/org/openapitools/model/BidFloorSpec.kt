@@ -23,22 +23,22 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param currency 
  * @param billableEvent 
+ * @param currency 
  * @param countries 
+ * @param creativeType 
  * @param objectiveType 
  * @param optimizationGoalMetadata 
- * @param creativeType 
  */
 data class BidFloorSpec(
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("currency", required = true) val currency: Currency,
+    @get:JsonProperty("billable_event", required = true) val billableEvent: ActionType,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("billable_event", required = true) val billableEvent: ActionType,
+    @get:JsonProperty("currency", required = true) val currency: Currency,
 
     @field:Valid
     @Schema(example = "null", description = "")
@@ -46,15 +46,15 @@ data class BidFloorSpec(
 
     @field:Valid
     @Schema(example = "null", description = "")
+    @get:JsonProperty("creative_type") val creativeType: CreativeType? = null,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
     @get:JsonProperty("objective_type") val objectiveType: ObjectiveType? = null,
 
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("optimization_goal_metadata") val optimizationGoalMetadata: OptimizationGoalMetadata? = null,
-
-    @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("creative_type") val creativeType: CreativeType? = null
+    @get:JsonProperty("optimization_goal_metadata") val optimizationGoalMetadata: OptimizationGoalMetadata? = null
 ) {
 
 }

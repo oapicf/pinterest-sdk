@@ -6,12 +6,12 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.MediaUploadDetails;
+import org.openapitools.model.Media;
 
 @Canonical
 class MediaList200Response {
-    /* Media */
-    List<MediaUploadDetails> items = new ArrayList<>()
     
     String bookmark
+    
+    List<Media> items = new ArrayList<>()
 }

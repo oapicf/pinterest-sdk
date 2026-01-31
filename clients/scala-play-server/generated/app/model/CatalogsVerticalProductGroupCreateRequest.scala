@@ -7,22 +7,22 @@ import play.api.libs.json._
   * @param catalogId Catalog id pertaining to the creative assets product group.
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class CatalogsVerticalProductGroupCreateRequest(
+  catalogId: String,
   catalogType: CatalogsVerticalProductGroupCreateRequest.CatalogType.Value,
-  name: String,
+  country: Option[Country],
   description: Option[String],
   filters: CatalogsCreativeAssetsProductGroupFilters,
-  catalogId: String,
-  country: Country,
-  locale: CatalogsLocale
+  locale: Option[CatalogsLocale],
+  name: String
   additionalProperties: 
 )
 
 object CatalogsVerticalProductGroupCreateRequest {
   implicit lazy val catalogsVerticalProductGroupCreateRequestJsonFormat: Format[CatalogsVerticalProductGroupCreateRequest] = {
     val realJsonFormat = Json.format[CatalogsVerticalProductGroupCreateRequest]
-    val declaredPropNames = Set("catalogType", "name", "description", "filters", "catalogId", "country", "locale")
+    val declaredPropNames = Set("catalogId", "catalogType", "country", "description", "filters", "locale", "name")
     
     Format(
       Reads {

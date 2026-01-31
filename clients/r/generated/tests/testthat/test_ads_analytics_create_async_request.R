@@ -5,28 +5,12 @@ context("Test AdsAnalyticsCreateAsyncRequest")
 
 model_instance <- AdsAnalyticsCreateAsyncRequest$new()
 
-test_that("start_date", {
-  # tests for the property `start_date` (character)
-  # Metric report start date (UTC). Format: YYYY-MM-DD
+test_that("attribution_types", {
+  # tests for the property `attribution_types` (array[ConversionReportAttributionType])
+  # List of types of attribution for the conversion report
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`start_date`, "EXPECTED_RESULT")
-})
-
-test_that("end_date", {
-  # tests for the property `end_date` (character)
-  # Metric report end date (UTC). Format: YYYY-MM-DD
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`end_date`, "EXPECTED_RESULT")
-})
-
-test_that("granularity", {
-  # tests for the property `granularity` (Granularity)
-  # TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`granularity`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`attribution_types`, "EXPECTED_RESULT")
 })
 
 test_that("click_window_days", {
@@ -37,22 +21,6 @@ test_that("click_window_days", {
   #expect_equal(model.instance$`click_window_days`, "EXPECTED_RESULT")
 })
 
-test_that("engagement_window_days", {
-  # tests for the property `engagement_window_days` (ConversionAttributionWindowDays)
-  # Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`engagement_window_days`, "EXPECTED_RESULT")
-})
-
-test_that("view_window_days", {
-  # tests for the property `view_window_days` (ConversionAttributionWindowDays)
-  # Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`view_window_days`, "EXPECTED_RESULT")
-})
-
 test_that("conversion_report_time", {
   # tests for the property `conversion_report_time` (ConversionReportTimeType)
   # The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
@@ -61,12 +29,44 @@ test_that("conversion_report_time", {
   #expect_equal(model.instance$`conversion_report_time`, "EXPECTED_RESULT")
 })
 
-test_that("attribution_types", {
-  # tests for the property `attribution_types` (array[ConversionReportAttributionType])
-  # List of types of attribution for the conversion report
+test_that("end_date", {
+  # tests for the property `end_date` (character)
+  # Metric report end date (UTC). Format: YYYY-MM-DD
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`attribution_types`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`end_date`, "EXPECTED_RESULT")
+})
+
+test_that("engagement_window_days", {
+  # tests for the property `engagement_window_days` (ConversionAttributionWindowDays)
+  # Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`engagement_window_days`, "EXPECTED_RESULT")
+})
+
+test_that("granularity", {
+  # tests for the property `granularity` (Granularity)
+  # TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`granularity`, "EXPECTED_RESULT")
+})
+
+test_that("start_date", {
+  # tests for the property `start_date` (character)
+  # Metric report start date (UTC). Format: YYYY-MM-DD
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`start_date`, "EXPECTED_RESULT")
+})
+
+test_that("view_window_days", {
+  # tests for the property `view_window_days` (ConversionAttributionWindowDays)
+  # Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`view_window_days`, "EXPECTED_RESULT")
 })
 
 test_that("campaign_ids", {
@@ -91,6 +91,14 @@ test_that("campaign_objective_types", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`campaign_objective_types`, "EXPECTED_RESULT")
+})
+
+test_that("campaign_brand_label", {
+  # tests for the property `campaign_brand_label` (character)
+  # Campaign brand label for filtering.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`campaign_brand_label`, "EXPECTED_RESULT")
 })
 
 test_that("ad_group_ids", {
@@ -150,8 +158,8 @@ test_that("product_item_ids", {
 })
 
 test_that("targeting_types", {
-  # tests for the property `targeting_types` (array[AdsAnalyticsTargetingType])
-  # List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
+  # tests for the property `targeting_types` (array[character])
+  # List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. [\&quot;AUDIENCE_MULTIPLIER\&quot;] is only available in CAMPAIGN_TARGETING level. [\&quot;MEDIA_TYPE\&quot;] is only available in PRODUCT_ITEM_TARGETING level. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`targeting_types`, "EXPECTED_RESULT")
@@ -173,20 +181,36 @@ test_that("columns", {
   #expect_equal(model.instance$`columns`, "EXPECTED_RESULT")
 })
 
+test_that("combine_targeting_types", {
+  # tests for the property `combine_targeting_types` (character)
+  # Determines if the targeting types included in the request should be consolidated into a single breakdown. For example, when combine_targeting_types is set to true, if GENDER and COUNTRY are targeting types in the request, the response will have a targeting type of GENDER_AND_COUNTRY and targeting values such as female&amp;US. This feature is currently in BETA and is not available to all users.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`combine_targeting_types`, "EXPECTED_RESULT")
+})
+
+test_that("custom_conversion_event_metrics", {
+  # tests for the property `custom_conversion_event_metrics` (array[AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics])
+  # List of advertiser-defined custom conversion event metrics to include in the report
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`custom_conversion_event_metrics`, "EXPECTED_RESULT")
+})
+
+test_that("end_hour", {
+  # tests for the property `end_hour` (integer)
+  # Which hour of the end date to stop the report (inclusive). For example, with an end_date of &#39;2020-01-01&#39; and end_hour of &#39;15&#39;, the report will contain metrics up to &#39;2020-01-01 14:59:59&#39;. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`end_hour`, "EXPECTED_RESULT")
+})
+
 test_that("level", {
   # tests for the property `level` (MetricsReportingLevel)
   # Level of the report
 
   # uncomment below to test the property
   #expect_equal(model.instance$`level`, "EXPECTED_RESULT")
-})
-
-test_that("report_format", {
-  # tests for the property `report_format` (DataOutputFormat)
-  # Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`report_format`, "EXPECTED_RESULT")
 })
 
 test_that("primary_sort", {
@@ -197,18 +221,26 @@ test_that("primary_sort", {
   #expect_equal(model.instance$`primary_sort`, "EXPECTED_RESULT")
 })
 
+test_that("report_format", {
+  # tests for the property `report_format` (DataOutputFormat)
+  # Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`report_format`, "EXPECTED_RESULT")
+})
+
+test_that("reporting_timezone", {
+  # tests for the property `reporting_timezone` (ReportingTimeZone)
+  # Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`reporting_timezone`, "EXPECTED_RESULT")
+})
+
 test_that("start_hour", {
   # tests for the property `start_hour` (integer)
   # Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`start_hour`, "EXPECTED_RESULT")
-})
-
-test_that("end_hour", {
-  # tests for the property `end_hour` (integer)
-  # Which hour of the end date to stop the report (inclusive). For example, with an end_date of &#39;2020-01-01&#39; and end_hour of &#39;15&#39;, the report will contain metrics up to &#39;2020-01-01 14:59:59&#39;. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`end_hour`, "EXPECTED_RESULT")
 })

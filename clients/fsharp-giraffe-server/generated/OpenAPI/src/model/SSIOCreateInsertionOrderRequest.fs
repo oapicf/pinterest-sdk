@@ -13,27 +13,27 @@ module SSIOCreateInsertionOrderRequest =
   //#endregion
 
   type SSIOCreateInsertionOrderRequest = {
-    StartDate : string;
-    EndDate : string;
-    PoNumber : string;
-    BudgetAmount : decimal;
+    AgencyLink : string;
+    BillingContactEmail : string;
     BillingContactFirstname : string;
     BillingContactLastname : string;
-    BillingContactEmail : string;
+    BudgetAmount : decimal;
+    EndDate : string;
+    MediaContactEmail : string;
     MediaContactFirstname : string;
     MediaContactLastname : string;
-    MediaContactEmail : string;
-    AgencyLink : string;
+    PoNumber : string;
+    StartDate : string;
     UserEmail : string;
-    AcceptedTermsTime : int;
-    PmpId : string;
-    OrderName : string;
-    OrderLineType : OrderLineTypeEnum;
     AcceptedTermsId : string;
-    BilltoCompanyId : string;
-    BilltoBusinessAddressId : string;
+    AcceptedTermsTime : int;
     BilltoBillingAddressId : string;
-    EstimatedMonthlySpend : decimal;
+    BilltoBusinessAddressId : string;
+    BilltoCompanyId : string;
     CurrencyInfo : Currency;
+    EstimatedMonthlySpend : decimal;
+    OrderLineType : OrderLineTypeEnum;
+    OrderName : string;
+    PmpId : string;
   }
   //#endregion

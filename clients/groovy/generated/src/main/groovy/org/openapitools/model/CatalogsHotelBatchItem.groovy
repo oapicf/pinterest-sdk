@@ -11,6 +11,8 @@ import org.openapitools.model.CatalogsUpsertHotelItem;
 
 @Canonical
 class CatalogsHotelBatchItem {
+    
+    CatalogsUpdatableHotelAttributes attributes
     /* The catalog hotel id in the merchant namespace */
     String hotelId
 
@@ -36,6 +38,4 @@ class CatalogsHotelBatchItem {
 
     
     OperationEnum operation
-    
-    CatalogsUpdatableHotelAttributes attributes
 }

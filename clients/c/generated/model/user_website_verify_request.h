@@ -27,15 +27,15 @@ pinterest_rest_api_user_website_verify_request_VERIFICATIONMETHOD_e user_website
 
 
 typedef struct user_website_verify_request_t {
-    char *website; // string
     pinterest_rest_api_user_website_verify_request_VERIFICATIONMETHOD_e verification_method; //enum
+    char *website; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } user_website_verify_request_t;
 
 __attribute__((deprecated)) user_website_verify_request_t *user_website_verify_request_create(
-    char *website,
-    pinterest_rest_api_user_website_verify_request_VERIFICATIONMETHOD_e verification_method
+    pinterest_rest_api_user_website_verify_request_VERIFICATIONMETHOD_e verification_method,
+    char *website
 );
 
 void user_website_verify_request_free(user_website_verify_request_t *user_website_verify_request);

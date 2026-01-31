@@ -16,6 +16,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AudienceCategory  {
   
  /**
+  * Interest ID.
+  */
+  @ApiModelProperty(example = "1234567", value = "Interest ID.")
+
+  private String id;
+
+ /**
+  * Interest affinity index.
+  */
+  @ApiModelProperty(example = "1.2", value = "Interest affinity index.")
+
+  @Valid
+
+  private BigDecimal index;
+
+ /**
   * Interest unique key (same as ID).
   */
   @ApiModelProperty(example = "1234567", value = "Interest unique key (same as ID).")
@@ -39,22 +55,6 @@ public class AudienceCategory  {
   private BigDecimal ratio;
 
  /**
-  * Interest affinity index.
-  */
-  @ApiModelProperty(example = "1.2", value = "Interest affinity index.")
-
-  @Valid
-
-  private BigDecimal index;
-
- /**
-  * Interest ID.
-  */
-  @ApiModelProperty(example = "1234567", value = "Interest ID.")
-
-  private String id;
-
- /**
   * Subcategory interest distribution
   */
   @ApiModelProperty(value = "Subcategory interest distribution")
@@ -62,6 +62,42 @@ public class AudienceCategory  {
   @Valid
 
   private List<@Valid AudienceSubcategory> subcategories = new ArrayList<>();
+ /**
+   * Interest ID.
+   * @return id
+  **/
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public AudienceCategory id(String id) {
+    this.id = id;
+    return this;
+  }
+
+ /**
+   * Interest affinity index.
+   * @return index
+  **/
+  @JsonProperty("index")
+  public BigDecimal getIndex() {
+    return index;
+  }
+
+  public void setIndex(BigDecimal index) {
+    this.index = index;
+  }
+
+  public AudienceCategory index(BigDecimal index) {
+    this.index = index;
+    return this;
+  }
+
  /**
    * Interest unique key (same as ID).
    * @return key
@@ -117,42 +153,6 @@ public class AudienceCategory  {
   }
 
  /**
-   * Interest affinity index.
-   * @return index
-  **/
-  @JsonProperty("index")
-  public BigDecimal getIndex() {
-    return index;
-  }
-
-  public void setIndex(BigDecimal index) {
-    this.index = index;
-  }
-
-  public AudienceCategory index(BigDecimal index) {
-    this.index = index;
-    return this;
-  }
-
- /**
-   * Interest ID.
-   * @return id
-  **/
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public AudienceCategory id(String id) {
-    this.id = id;
-    return this;
-  }
-
- /**
    * Subcategory interest distribution
    * @return subcategories
   **/
@@ -184,17 +184,17 @@ public class AudienceCategory  {
       return false;
     }
     AudienceCategory audienceCategory = (AudienceCategory) o;
-    return Objects.equals(this.key, audienceCategory.key) &&
+    return Objects.equals(this.id, audienceCategory.id) &&
+        Objects.equals(this.index, audienceCategory.index) &&
+        Objects.equals(this.key, audienceCategory.key) &&
         Objects.equals(this.name, audienceCategory.name) &&
         Objects.equals(this.ratio, audienceCategory.ratio) &&
-        Objects.equals(this.index, audienceCategory.index) &&
-        Objects.equals(this.id, audienceCategory.id) &&
         Objects.equals(this.subcategories, audienceCategory.subcategories);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, name, ratio, index, id, subcategories);
+    return Objects.hash(id, index, key, name, ratio, subcategories);
   }
 
   @Override
@@ -202,11 +202,11 @@ public class AudienceCategory  {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceCategory {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    index: ").append(toIndentedString(index)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    ratio: ").append(toIndentedString(ratio)).append("\n");
-    sb.append("    index: ").append(toIndentedString(index)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    subcategories: ").append(toIndentedString(subcategories)).append("\n");
     sb.append("}");
     return sb.toString();

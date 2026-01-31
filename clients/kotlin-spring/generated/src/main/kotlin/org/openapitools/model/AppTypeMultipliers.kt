@@ -4,7 +4,6 @@ import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
-import org.openapitools.model.TargetingSpecAppType
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -22,10 +21,32 @@ import io.swagger.v3.oas.annotations.media.Schema
  */
 data class AppTypeMultipliers(
 
-    @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("APP_TYPE") val APP_TYPE: TargetingSpecAppType? = null
+    @get:JsonProperty("APP_TYPE") val APP_TYPE: AppTypeMultipliers.APPTYPE? = null
 ) : kotlin.collections.HashMap<String, kotlin.Double>() {
+
+    /**
+    * 
+    * Values: android_mobile,android_tablet,ipad,iphone,web,web_mobile
+    */
+    enum class APPTYPE(@get:JsonValue val value: kotlin.String) {
+
+        android_mobile("android_mobile"),
+        android_tablet("android_tablet"),
+        ipad("ipad"),
+        iphone("iphone"),
+        web("web"),
+        web_mobile("web_mobile");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): APPTYPE {
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AppTypeMultipliers'")
+            }
+        }
+    }
 
 }
 

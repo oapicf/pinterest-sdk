@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**custom_label_1** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringCriteria**](.md) |  |
+**custom_label_1** | [**\OpenAPI\Client\Model\CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

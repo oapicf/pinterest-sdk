@@ -14,20 +14,20 @@
  */
 export interface CatalogsHotelGuestRatings { 
     /**
-     * Your hotel\'s rating.
+     * Max value for the hotel rating score.
      */
-    score?: number;
+    max_score?: number | null;
     /**
      * Total number of people who have rated this hotel.
      */
-    number_of_reviewers?: number;
-    /**
-     * Max value for the hotel rating score.
-     */
-    max_score?: number;
+    number_of_reviewers?: number | null;
     /**
      * System you use for guest reviews.
      */
-    rating_system?: string;
+    rating_system?: string | null;
+    /**
+     * Your hotel\'s rating.
+     */
+    score?: number | null;
 }
 

@@ -19,6 +19,8 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.ConversionEventsDataInner
+import org.openapitools.client.models.ConversionEventAppInfo
+import org.openapitools.client.models.ConversionEventDeviceInfo
 import org.openapitools.client.models.ConversionEventsDataInnerCustomData
 import org.openapitools.client.models.ConversionEventsUserData
 
@@ -27,22 +29,10 @@ class ConversionEventsDataInnerTest : ShouldSpec() {
         // uncomment below to create an instance of ConversionEventsDataInner
         //val modelInstance = ConversionEventsDataInner()
 
-        // to test the property `eventName` - <p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p> 
-        should("test eventName") {
-            // uncomment below to test the property
-            //modelInstance.eventName shouldBe ("TODO")
-        }
-
-        // to test the property `actionSource` - <p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p> 
+        // to test the property `actionSource` - <p>The source indicating where the conversion event occurred.</p> - `app_android` - `app_ios` - `web` - `offline`
         should("test actionSource") {
             // uncomment below to test the property
             //modelInstance.actionSource shouldBe ("TODO")
-        }
-
-        // to test the property `eventTime` - The time when the event happened. Unix timestamp in seconds.
-        should("test eventTime") {
-            // uncomment below to test the property
-            //modelInstance.eventTime shouldBe ("TODO")
         }
 
         // to test the property `eventId` - A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.
@@ -51,40 +41,34 @@ class ConversionEventsDataInnerTest : ShouldSpec() {
             //modelInstance.eventId shouldBe ("TODO")
         }
 
+        // to test the property `eventName` - <p>The type of the user event. Please use the right event_name; otherwise the event will not be accepted and show up correctly in reports.</p>  - `add_payment_info` - `add_to_cart` - `add_to_wishlist` - `app_install` - `checkout` - `custom` - `initiate_checkout` - `lead` - `page_visit` - `search` - `signup` - `subscribe` - `view_category` - `view_content` - `watch_video`
+        should("test eventName") {
+            // uncomment below to test the property
+            //modelInstance.eventName shouldBe ("TODO")
+        }
+
+        // to test the property `eventTime` - The time when the event happened. Unix timestamp in seconds.
+        should("test eventTime") {
+            // uncomment below to test the property
+            //modelInstance.eventTime shouldBe ("TODO")
+        }
+
         // to test the property `userData`
         should("test userData") {
             // uncomment below to test the property
             //modelInstance.userData shouldBe ("TODO")
         }
 
-        // to test the property `eventSourceUrl` - URL of the web conversion event.
-        should("test eventSourceUrl") {
-            // uncomment below to test the property
-            //modelInstance.eventSourceUrl shouldBe ("TODO")
-        }
-
-        // to test the property `optOut` - When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.
-        should("test optOut") {
-            // uncomment below to test the property
-            //modelInstance.optOut shouldBe ("TODO")
-        }
-
-        // to test the property `partnerName` - The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’
-        should("test partnerName") {
-            // uncomment below to test the property
-            //modelInstance.partnerName shouldBe ("TODO")
-        }
-
-        // to test the property `customData`
-        should("test customData") {
-            // uncomment below to test the property
-            //modelInstance.customData shouldBe ("TODO")
-        }
-
         // to test the property `appId` - The app store app ID.
         should("test appId") {
             // uncomment below to test the property
             //modelInstance.appId shouldBe ("TODO")
+        }
+
+        // to test the property `appInfo`
+        should("test appInfo") {
+            // uncomment below to test the property
+            //modelInstance.appInfo shouldBe ("TODO")
         }
 
         // to test the property `appName` - Name of the app.
@@ -99,6 +83,12 @@ class ConversionEventsDataInnerTest : ShouldSpec() {
             //modelInstance.appVersion shouldBe ("TODO")
         }
 
+        // to test the property `customData`
+        should("test customData") {
+            // uncomment below to test the property
+            //modelInstance.customData shouldBe ("TODO")
+        }
+
         // to test the property `deviceBrand` - Brand of the user device.
         should("test deviceBrand") {
             // uncomment below to test the property
@@ -109,6 +99,12 @@ class ConversionEventsDataInnerTest : ShouldSpec() {
         should("test deviceCarrier") {
             // uncomment below to test the property
             //modelInstance.deviceCarrier shouldBe ("TODO")
+        }
+
+        // to test the property `deviceInfo`
+        should("test deviceInfo") {
+            // uncomment below to test the property
+            //modelInstance.deviceInfo shouldBe ("TODO")
         }
 
         // to test the property `deviceModel` - Model of the user device.
@@ -123,22 +119,40 @@ class ConversionEventsDataInnerTest : ShouldSpec() {
             //modelInstance.deviceType shouldBe ("TODO")
         }
 
-        // to test the property `osVersion` - Version of the device operating system.
-        should("test osVersion") {
+        // to test the property `eventSourceUrl` - URL of the web conversion event.
+        should("test eventSourceUrl") {
             // uncomment below to test the property
-            //modelInstance.osVersion shouldBe ("TODO")
-        }
-
-        // to test the property `wifi` - Whether the event occurred when the user device was connected to wifi.
-        should("test wifi") {
-            // uncomment below to test the property
-            //modelInstance.wifi shouldBe ("TODO")
+            //modelInstance.eventSourceUrl shouldBe ("TODO")
         }
 
         // to test the property `language` - Two-character ISO-639-1 language code indicating the user's language.
         should("test language") {
             // uncomment below to test the property
             //modelInstance.language shouldBe ("TODO")
+        }
+
+        // to test the property `optOut` - When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.
+        should("test optOut") {
+            // uncomment below to test the property
+            //modelInstance.optOut shouldBe ("TODO")
+        }
+
+        // to test the property `osVersion` - Version of the device operating system.
+        should("test osVersion") {
+            // uncomment below to test the property
+            //modelInstance.osVersion shouldBe ("TODO")
+        }
+
+        // to test the property `partnerName` - The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’
+        should("test partnerName") {
+            // uncomment below to test the property
+            //modelInstance.partnerName shouldBe ("TODO")
+        }
+
+        // to test the property `wifi` - Whether the event occurred when the user device was connected to wifi.
+        should("test wifi") {
+            // uncomment below to test the property
+            //modelInstance.wifi shouldBe ("TODO")
         }
 
     }

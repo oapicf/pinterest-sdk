@@ -29,7 +29,8 @@ optimization_goal_metadata_conversion_tag_v3_goal_metadata_t* instantiate_optimi
       "a",
       "a",
       1,
-      pinterest_rest_api_optimization_goal_metadata_conversion_tag_v3_goal_metadata_LEARNINGMODETYPE_"ACTIVE"
+      pinterest_rest_api_optimization_goal_metadata_conversion_tag_v3_goal_metadata_LEARNINGMODETYPE_"ACTIVE",
+      "INITIATE_CHECKOUT"
     );
   } else {
     optimization_goal_metadata_conversion_tag_v3_goal_metadata = optimization_goal_metadata_conversion_tag_v3_goal_metadata_create(
@@ -38,7 +39,8 @@ optimization_goal_metadata_conversion_tag_v3_goal_metadata_t* instantiate_optimi
       "a",
       "a",
       1,
-      pinterest_rest_api_optimization_goal_metadata_conversion_tag_v3_goal_metadata_LEARNINGMODETYPE_"ACTIVE"
+      pinterest_rest_api_optimization_goal_metadata_conversion_tag_v3_goal_metadata_LEARNINGMODETYPE_"ACTIVE",
+      "INITIATE_CHECKOUT"
     );
   }
 

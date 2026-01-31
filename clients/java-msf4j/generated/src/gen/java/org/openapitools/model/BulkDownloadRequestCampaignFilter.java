@@ -15,10 +15,10 @@ import org.openapitools.model.ObjectiveType;
 /**
  * BulkDownloadRequestCampaignFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BulkDownloadRequestCampaignFilter   {
-  @JsonProperty("start_time")
-  private String startTime;
+  @JsonProperty("campaign_status")
+  private List<CampaignSummaryStatus> campaignStatus = null;
 
   @JsonProperty("end_time")
   private String endTime;
@@ -26,28 +26,36 @@ public class BulkDownloadRequestCampaignFilter   {
   @JsonProperty("name")
   private String name;
 
-  @JsonProperty("campaign_status")
-  private List<CampaignSummaryStatus> campaignStatus = null;
-
   @JsonProperty("objective_type")
   private List<ObjectiveType> objectiveType = null;
 
-  public BulkDownloadRequestCampaignFilter startTime(String startTime) {
-    this.startTime = startTime;
+  @JsonProperty("start_time")
+  private String startTime;
+
+  public BulkDownloadRequestCampaignFilter campaignStatus(List<CampaignSummaryStatus> campaignStatus) {
+    this.campaignStatus = campaignStatus;
+    return this;
+  }
+
+  public BulkDownloadRequestCampaignFilter addCampaignStatusItem(CampaignSummaryStatus campaignStatusItem) {
+    if (this.campaignStatus == null) {
+      this.campaignStatus = new ArrayList<>();
+    }
+    this.campaignStatus.add(campaignStatusItem);
     return this;
   }
 
    /**
-   * Unix UTC timestamp.
-   * @return startTime
+   * Get campaignStatus
+   * @return campaignStatus
   **/
-  @ApiModelProperty(example = "1622848072", value = "Unix UTC timestamp.")
-  public String getStartTime() {
-    return startTime;
+  @ApiModelProperty(value = "")
+  public List<CampaignSummaryStatus> getCampaignStatus() {
+    return campaignStatus;
   }
 
-  public void setStartTime(String startTime) {
-    this.startTime = startTime;
+  public void setCampaignStatus(List<CampaignSummaryStatus> campaignStatus) {
+    this.campaignStatus = campaignStatus;
   }
 
   public BulkDownloadRequestCampaignFilter endTime(String endTime) {
@@ -86,32 +94,6 @@ public class BulkDownloadRequestCampaignFilter   {
     this.name = name;
   }
 
-  public BulkDownloadRequestCampaignFilter campaignStatus(List<CampaignSummaryStatus> campaignStatus) {
-    this.campaignStatus = campaignStatus;
-    return this;
-  }
-
-  public BulkDownloadRequestCampaignFilter addCampaignStatusItem(CampaignSummaryStatus campaignStatusItem) {
-    if (this.campaignStatus == null) {
-      this.campaignStatus = new ArrayList<>();
-    }
-    this.campaignStatus.add(campaignStatusItem);
-    return this;
-  }
-
-   /**
-   * Get campaignStatus
-   * @return campaignStatus
-  **/
-  @ApiModelProperty(value = "")
-  public List<CampaignSummaryStatus> getCampaignStatus() {
-    return campaignStatus;
-  }
-
-  public void setCampaignStatus(List<CampaignSummaryStatus> campaignStatus) {
-    this.campaignStatus = campaignStatus;
-  }
-
   public BulkDownloadRequestCampaignFilter objectiveType(List<ObjectiveType> objectiveType) {
     this.objectiveType = objectiveType;
     return this;
@@ -138,6 +120,24 @@ public class BulkDownloadRequestCampaignFilter   {
     this.objectiveType = objectiveType;
   }
 
+  public BulkDownloadRequestCampaignFilter startTime(String startTime) {
+    this.startTime = startTime;
+    return this;
+  }
+
+   /**
+   * Unix UTC timestamp.
+   * @return startTime
+  **/
+  @ApiModelProperty(example = "1622848072", value = "Unix UTC timestamp.")
+  public String getStartTime() {
+    return startTime;
+  }
+
+  public void setStartTime(String startTime) {
+    this.startTime = startTime;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -148,16 +148,16 @@ public class BulkDownloadRequestCampaignFilter   {
       return false;
     }
     BulkDownloadRequestCampaignFilter bulkDownloadRequestCampaignFilter = (BulkDownloadRequestCampaignFilter) o;
-    return Objects.equals(this.startTime, bulkDownloadRequestCampaignFilter.startTime) &&
+    return Objects.equals(this.campaignStatus, bulkDownloadRequestCampaignFilter.campaignStatus) &&
         Objects.equals(this.endTime, bulkDownloadRequestCampaignFilter.endTime) &&
         Objects.equals(this.name, bulkDownloadRequestCampaignFilter.name) &&
-        Objects.equals(this.campaignStatus, bulkDownloadRequestCampaignFilter.campaignStatus) &&
-        Objects.equals(this.objectiveType, bulkDownloadRequestCampaignFilter.objectiveType);
+        Objects.equals(this.objectiveType, bulkDownloadRequestCampaignFilter.objectiveType) &&
+        Objects.equals(this.startTime, bulkDownloadRequestCampaignFilter.startTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startTime, endTime, name, campaignStatus, objectiveType);
+    return Objects.hash(campaignStatus, endTime, name, objectiveType, startTime);
   }
 
   @Override
@@ -165,11 +165,11 @@ public class BulkDownloadRequestCampaignFilter   {
     StringBuilder sb = new StringBuilder();
     sb.append("class BulkDownloadRequestCampaignFilter {\n");
     
-    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
+    sb.append("    campaignStatus: ").append(toIndentedString(campaignStatus)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    campaignStatus: ").append(toIndentedString(campaignStatus)).append("\n");
     sb.append("    objectiveType: ").append(toIndentedString(objectiveType)).append("\n");
+    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,24 +17,24 @@ package openapi
 // OauthAccessTokenResponse - A successful OAuth access token response.
 type OauthAccessTokenResponse struct {
 
-	ResponseType string `json:"response_type,omitempty"`
-
 	AccessToken string `json:"access_token"`
-
-	TokenType string `json:"token_type"`
 
 	ExpiresIn int32 `json:"expires_in"`
 
+	ResponseType string `json:"response_type,omitempty"`
+
 	Scope string `json:"scope"`
+
+	TokenType string `json:"token_type"`
 }
 
 // AssertOauthAccessTokenResponseRequired checks if the required fields are not zero-ed
 func AssertOauthAccessTokenResponseRequired(obj OauthAccessTokenResponse) error {
 	elements := map[string]interface{}{
 		"access_token": obj.AccessToken,
-		"token_type": obj.TokenType,
 		"expires_in": obj.ExpiresIn,
 		"scope": obj.Scope,
+		"token_type": obj.TokenType,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

@@ -12,18 +12,18 @@ import org.joda.time.DateTime
 import CatalogsHotelFeedsCreateRequest._
 
 case class CatalogsHotelFeedsCreateRequest (
-  defaultCurrency: Option[NullableCurrency],
-/* A human-friendly name associated to a given feed. */
-  name: String,
-format: CatalogsFormat,
-defaultLocale: CatalogsFeedsCreateRequestDefaultLocale,
+  /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. */
+  catalogId: Option[String],
+catalogType: CatalogsType,
 credentials: Option[CatalogsFeedCredentials],
+defaultCurrency: Option[NullableCurrency],
+defaultLocale: CatalogsFeedsCreateRequestDefaultLocale,
+format: CatalogsFormat,
 /* The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
   location: String,
+/* A human-friendly name associated to a given feed. */
+  name: String,
 preferredProcessingSchedule: Option[CatalogsFeedProcessingSchedule],
-catalogType: CatalogsType,
-/* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. */
-  catalogId: Option[String],
 status: Option[CatalogsStatus])
 
 object CatalogsHotelFeedsCreateRequest {

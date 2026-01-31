@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -23,24 +23,28 @@ import org.openapitools.model.Currency;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SSIOCreateInsertionOrderRequest   {
   
-  private String startDate;
-  private String endDate;
-  private String poNumber;
-  private BigDecimal budgetAmount;
+  private String agencyLink;
+  private String billingContactEmail;
   private String billingContactFirstname;
   private String billingContactLastname;
-  private String billingContactEmail;
+  private BigDecimal budgetAmount;
+  private String endDate;
+  private String mediaContactEmail;
   private String mediaContactFirstname;
   private String mediaContactLastname;
-  private String mediaContactEmail;
-  private String agencyLink;
+  private String poNumber;
+  private String startDate;
   private String userEmail;
+  private String acceptedTermsId;
   private Integer acceptedTermsTime;
-  private String pmpId;
-  private String orderName;
+  private String billtoBillingAddressId;
+  private String billtoBusinessAddressId;
+  private String billtoCompanyId;
+  private Currency currencyInfo;
+  private BigDecimal estimatedMonthlySpend;
 
 
   public enum OrderLineTypeEnum {
@@ -61,83 +65,43 @@ public class SSIOCreateInsertionOrderRequest   {
   }
 
   private OrderLineTypeEnum orderLineType;
-  private String acceptedTermsId;
-  private String billtoCompanyId;
-  private String billtoBusinessAddressId;
-  private String billtoBillingAddressId;
-  private BigDecimal estimatedMonthlySpend;
-  private Currency currencyInfo;
+  private String orderName;
+  private String pmpId;
 
   /**
-   * Starting date of time period. Format: YYYY-MM-DD
+   * URL link for agency
    */
-  public SSIOCreateInsertionOrderRequest startDate(String startDate) {
-    this.startDate = startDate;
+  public SSIOCreateInsertionOrderRequest agencyLink(String agencyLink) {
+    this.agencyLink = agencyLink;
     return this;
   }
 
   
-  @ApiModelProperty(example = "2020-12-20", required = true, value = "Starting date of time period. Format: YYYY-MM-DD")
-  @JsonProperty("start_date")
-  public String getStartDate() {
-    return startDate;
+  @ApiModelProperty(value = "URL link for agency")
+  @JsonProperty("agency_link")
+  public String getAgencyLink() {
+    return agencyLink;
   }
-  public void setStartDate(String startDate) {
-    this.startDate = startDate;
+  public void setAgencyLink(String agencyLink) {
+    this.agencyLink = agencyLink;
   }
 
   /**
-   * End date of time period. Format: YYYY-MM-DD
+   * The billing contact email
    */
-  public SSIOCreateInsertionOrderRequest endDate(String endDate) {
-    this.endDate = endDate;
+  public SSIOCreateInsertionOrderRequest billingContactEmail(String billingContactEmail) {
+    this.billingContactEmail = billingContactEmail;
     return this;
   }
 
   
-  @ApiModelProperty(example = "2020-12-20", value = "End date of time period. Format: YYYY-MM-DD")
-  @JsonProperty("end_date")
-  public String getEndDate() {
-    return endDate;
+  @ApiModelProperty(example = "test@example", required = true, value = "The billing contact email")
+  @JsonProperty("billing_contact_email")
+  public String getBillingContactEmail() {
+    return billingContactEmail;
   }
-  public void setEndDate(String endDate) {
-    this.endDate = endDate;
-  }
-
-  /**
-   * The po number
-   */
-  public SSIOCreateInsertionOrderRequest poNumber(String poNumber) {
-    this.poNumber = poNumber;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "The po number")
-  @JsonProperty("po_number")
-  public String getPoNumber() {
-    return poNumber;
-  }
-  public void setPoNumber(String poNumber) {
-    this.poNumber = poNumber;
-  }
-
-  /**
-   * If Budget order line, the budget amount.
-   */
-  public SSIOCreateInsertionOrderRequest budgetAmount(BigDecimal budgetAmount) {
-    this.budgetAmount = budgetAmount;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "5000000", value = "If Budget order line, the budget amount.")
-  @JsonProperty("budget_amount")
-  public BigDecimal getBudgetAmount() {
-    return budgetAmount;
-  }
-  public void setBudgetAmount(BigDecimal budgetAmount) {
-    this.budgetAmount = budgetAmount;
+  public void setBillingContactEmail(String billingContactEmail) {
+    this.billingContactEmail = billingContactEmail;
   }
 
   /**
@@ -177,21 +141,57 @@ public class SSIOCreateInsertionOrderRequest   {
   }
 
   /**
-   * The billing contact email
+   * If Budget order line, the budget amount.
    */
-  public SSIOCreateInsertionOrderRequest billingContactEmail(String billingContactEmail) {
-    this.billingContactEmail = billingContactEmail;
+  public SSIOCreateInsertionOrderRequest budgetAmount(BigDecimal budgetAmount) {
+    this.budgetAmount = budgetAmount;
     return this;
   }
 
   
-  @ApiModelProperty(example = "test@example", required = true, value = "The billing contact email")
-  @JsonProperty("billing_contact_email")
-  public String getBillingContactEmail() {
-    return billingContactEmail;
+  @ApiModelProperty(example = "5000000", value = "If Budget order line, the budget amount.")
+  @JsonProperty("budget_amount")
+  public BigDecimal getBudgetAmount() {
+    return budgetAmount;
   }
-  public void setBillingContactEmail(String billingContactEmail) {
-    this.billingContactEmail = billingContactEmail;
+  public void setBudgetAmount(BigDecimal budgetAmount) {
+    this.budgetAmount = budgetAmount;
+  }
+
+  /**
+   * End date of time period. Format: YYYY-MM-DD
+   */
+  public SSIOCreateInsertionOrderRequest endDate(String endDate) {
+    this.endDate = endDate;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "2020-12-20", value = "End date of time period. Format: YYYY-MM-DD")
+  @JsonProperty("end_date")
+  public String getEndDate() {
+    return endDate;
+  }
+  public void setEndDate(String endDate) {
+    this.endDate = endDate;
+  }
+
+  /**
+   * The media contact email
+   */
+  public SSIOCreateInsertionOrderRequest mediaContactEmail(String mediaContactEmail) {
+    this.mediaContactEmail = mediaContactEmail;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "test@example", required = true, value = "The media contact email")
+  @JsonProperty("media_contact_email")
+  public String getMediaContactEmail() {
+    return mediaContactEmail;
+  }
+  public void setMediaContactEmail(String mediaContactEmail) {
+    this.mediaContactEmail = mediaContactEmail;
   }
 
   /**
@@ -231,39 +231,39 @@ public class SSIOCreateInsertionOrderRequest   {
   }
 
   /**
-   * The media contact email
+   * The po number
    */
-  public SSIOCreateInsertionOrderRequest mediaContactEmail(String mediaContactEmail) {
-    this.mediaContactEmail = mediaContactEmail;
+  public SSIOCreateInsertionOrderRequest poNumber(String poNumber) {
+    this.poNumber = poNumber;
     return this;
   }
 
   
-  @ApiModelProperty(example = "test@example", required = true, value = "The media contact email")
-  @JsonProperty("media_contact_email")
-  public String getMediaContactEmail() {
-    return mediaContactEmail;
+  @ApiModelProperty(required = true, value = "The po number")
+  @JsonProperty("po_number")
+  public String getPoNumber() {
+    return poNumber;
   }
-  public void setMediaContactEmail(String mediaContactEmail) {
-    this.mediaContactEmail = mediaContactEmail;
+  public void setPoNumber(String poNumber) {
+    this.poNumber = poNumber;
   }
 
   /**
-   * URL link for agency
+   * Starting date of time period. Format: YYYY-MM-DD
    */
-  public SSIOCreateInsertionOrderRequest agencyLink(String agencyLink) {
-    this.agencyLink = agencyLink;
+  public SSIOCreateInsertionOrderRequest startDate(String startDate) {
+    this.startDate = startDate;
     return this;
   }
 
   
-  @ApiModelProperty(value = "URL link for agency")
-  @JsonProperty("agency_link")
-  public String getAgencyLink() {
-    return agencyLink;
+  @ApiModelProperty(example = "2020-12-20", required = true, value = "Starting date of time period. Format: YYYY-MM-DD")
+  @JsonProperty("start_date")
+  public String getStartDate() {
+    return startDate;
   }
-  public void setAgencyLink(String agencyLink) {
-    this.agencyLink = agencyLink;
+  public void setStartDate(String startDate) {
+    this.startDate = startDate;
   }
 
   /**
@@ -285,78 +285,6 @@ public class SSIOCreateInsertionOrderRequest   {
   }
 
   /**
-   * The UTC timestamp (to the nearest sec) of when terms were accepted
-   */
-  public SSIOCreateInsertionOrderRequest acceptedTermsTime(Integer acceptedTermsTime) {
-    this.acceptedTermsTime = acceptedTermsTime;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "The UTC timestamp (to the nearest sec) of when terms were accepted")
-  @JsonProperty("accepted_terms_time")
-  public Integer getAcceptedTermsTime() {
-    return acceptedTermsTime;
-  }
-  public void setAcceptedTermsTime(Integer acceptedTermsTime) {
-    this.acceptedTermsTime = acceptedTermsTime;
-  }
-
-  /**
-   * The pmp id
-   */
-  public SSIOCreateInsertionOrderRequest pmpId(String pmpId) {
-    this.pmpId = pmpId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "The pmp id")
-  @JsonProperty("pmp_id")
-  public String getPmpId() {
-    return pmpId;
-  }
-  public void setPmpId(String pmpId) {
-    this.pmpId = pmpId;
-  }
-
-  /**
-   * The order name
-   */
-  public SSIOCreateInsertionOrderRequest orderName(String orderName) {
-    this.orderName = orderName;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "The order name")
-  @JsonProperty("order_name")
-  public String getOrderName() {
-    return orderName;
-  }
-  public void setOrderName(String orderName) {
-    this.orderName = orderName;
-  }
-
-  /**
-   * Type can be Budget or Perpetual
-   */
-  public SSIOCreateInsertionOrderRequest orderLineType(OrderLineTypeEnum orderLineType) {
-    this.orderLineType = orderLineType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "Type can be Budget or Perpetual")
-  @JsonProperty("order_line_type")
-  public OrderLineTypeEnum getOrderLineType() {
-    return orderLineType;
-  }
-  public void setOrderLineType(OrderLineTypeEnum orderLineType) {
-    this.orderLineType = orderLineType;
-  }
-
-  /**
    * The SFDC id for the terms
    */
   public SSIOCreateInsertionOrderRequest acceptedTermsId(String acceptedTermsId) {
@@ -375,39 +303,21 @@ public class SSIOCreateInsertionOrderRequest   {
   }
 
   /**
-   * The bill-to company id
+   * The UTC timestamp (to the nearest sec) of when terms were accepted
    */
-  public SSIOCreateInsertionOrderRequest billtoCompanyId(String billtoCompanyId) {
-    this.billtoCompanyId = billtoCompanyId;
+  public SSIOCreateInsertionOrderRequest acceptedTermsTime(Integer acceptedTermsTime) {
+    this.acceptedTermsTime = acceptedTermsTime;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "The bill-to company id")
-  @JsonProperty("billto_company_id")
-  public String getBilltoCompanyId() {
-    return billtoCompanyId;
+  @ApiModelProperty(value = "The UTC timestamp (to the nearest sec) of when terms were accepted")
+  @JsonProperty("accepted_terms_time")
+  public Integer getAcceptedTermsTime() {
+    return acceptedTermsTime;
   }
-  public void setBilltoCompanyId(String billtoCompanyId) {
-    this.billtoCompanyId = billtoCompanyId;
-  }
-
-  /**
-   * The bill-to business address id
-   */
-  public SSIOCreateInsertionOrderRequest billtoBusinessAddressId(String billtoBusinessAddressId) {
-    this.billtoBusinessAddressId = billtoBusinessAddressId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "The bill-to business address id")
-  @JsonProperty("billto_business_address_id")
-  public String getBilltoBusinessAddressId() {
-    return billtoBusinessAddressId;
-  }
-  public void setBilltoBusinessAddressId(String billtoBusinessAddressId) {
-    this.billtoBusinessAddressId = billtoBusinessAddressId;
+  public void setAcceptedTermsTime(Integer acceptedTermsTime) {
+    this.acceptedTermsTime = acceptedTermsTime;
   }
 
   /**
@@ -429,21 +339,39 @@ public class SSIOCreateInsertionOrderRequest   {
   }
 
   /**
-   * If Ongoing (perpetual) order line, the estimated monthly spend
+   * The bill-to business address id
    */
-  public SSIOCreateInsertionOrderRequest estimatedMonthlySpend(BigDecimal estimatedMonthlySpend) {
-    this.estimatedMonthlySpend = estimatedMonthlySpend;
+  public SSIOCreateInsertionOrderRequest billtoBusinessAddressId(String billtoBusinessAddressId) {
+    this.billtoBusinessAddressId = billtoBusinessAddressId;
     return this;
   }
 
   
-  @ApiModelProperty(value = "If Ongoing (perpetual) order line, the estimated monthly spend")
-  @JsonProperty("estimated_monthly_spend")
-  public BigDecimal getEstimatedMonthlySpend() {
-    return estimatedMonthlySpend;
+  @ApiModelProperty(required = true, value = "The bill-to business address id")
+  @JsonProperty("billto_business_address_id")
+  public String getBilltoBusinessAddressId() {
+    return billtoBusinessAddressId;
   }
-  public void setEstimatedMonthlySpend(BigDecimal estimatedMonthlySpend) {
-    this.estimatedMonthlySpend = estimatedMonthlySpend;
+  public void setBilltoBusinessAddressId(String billtoBusinessAddressId) {
+    this.billtoBusinessAddressId = billtoBusinessAddressId;
+  }
+
+  /**
+   * The bill-to company id
+   */
+  public SSIOCreateInsertionOrderRequest billtoCompanyId(String billtoCompanyId) {
+    this.billtoCompanyId = billtoCompanyId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "The bill-to company id")
+  @JsonProperty("billto_company_id")
+  public String getBilltoCompanyId() {
+    return billtoCompanyId;
+  }
+  public void setBilltoCompanyId(String billtoCompanyId) {
+    this.billtoCompanyId = billtoCompanyId;
   }
 
   /**
@@ -463,6 +391,78 @@ public class SSIOCreateInsertionOrderRequest   {
     this.currencyInfo = currencyInfo;
   }
 
+  /**
+   * If Ongoing (perpetual) order line, the estimated monthly spend
+   */
+  public SSIOCreateInsertionOrderRequest estimatedMonthlySpend(BigDecimal estimatedMonthlySpend) {
+    this.estimatedMonthlySpend = estimatedMonthlySpend;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "If Ongoing (perpetual) order line, the estimated monthly spend")
+  @JsonProperty("estimated_monthly_spend")
+  public BigDecimal getEstimatedMonthlySpend() {
+    return estimatedMonthlySpend;
+  }
+  public void setEstimatedMonthlySpend(BigDecimal estimatedMonthlySpend) {
+    this.estimatedMonthlySpend = estimatedMonthlySpend;
+  }
+
+  /**
+   * Type can be Budget or Perpetual
+   */
+  public SSIOCreateInsertionOrderRequest orderLineType(OrderLineTypeEnum orderLineType) {
+    this.orderLineType = orderLineType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "Type can be Budget or Perpetual")
+  @JsonProperty("order_line_type")
+  public OrderLineTypeEnum getOrderLineType() {
+    return orderLineType;
+  }
+  public void setOrderLineType(OrderLineTypeEnum orderLineType) {
+    this.orderLineType = orderLineType;
+  }
+
+  /**
+   * The order name
+   */
+  public SSIOCreateInsertionOrderRequest orderName(String orderName) {
+    this.orderName = orderName;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "The order name")
+  @JsonProperty("order_name")
+  public String getOrderName() {
+    return orderName;
+  }
+  public void setOrderName(String orderName) {
+    this.orderName = orderName;
+  }
+
+  /**
+   * The pmp id
+   */
+  public SSIOCreateInsertionOrderRequest pmpId(String pmpId) {
+    this.pmpId = pmpId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "The pmp id")
+  @JsonProperty("pmp_id")
+  public String getPmpId() {
+    return pmpId;
+  }
+  public void setPmpId(String pmpId) {
+    this.pmpId = pmpId;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -473,33 +473,33 @@ public class SSIOCreateInsertionOrderRequest   {
       return false;
     }
     SSIOCreateInsertionOrderRequest ssIOCreateInsertionOrderRequest = (SSIOCreateInsertionOrderRequest) o;
-    return Objects.equals(startDate, ssIOCreateInsertionOrderRequest.startDate) &&
-        Objects.equals(endDate, ssIOCreateInsertionOrderRequest.endDate) &&
-        Objects.equals(poNumber, ssIOCreateInsertionOrderRequest.poNumber) &&
-        Objects.equals(budgetAmount, ssIOCreateInsertionOrderRequest.budgetAmount) &&
+    return Objects.equals(agencyLink, ssIOCreateInsertionOrderRequest.agencyLink) &&
+        Objects.equals(billingContactEmail, ssIOCreateInsertionOrderRequest.billingContactEmail) &&
         Objects.equals(billingContactFirstname, ssIOCreateInsertionOrderRequest.billingContactFirstname) &&
         Objects.equals(billingContactLastname, ssIOCreateInsertionOrderRequest.billingContactLastname) &&
-        Objects.equals(billingContactEmail, ssIOCreateInsertionOrderRequest.billingContactEmail) &&
+        Objects.equals(budgetAmount, ssIOCreateInsertionOrderRequest.budgetAmount) &&
+        Objects.equals(endDate, ssIOCreateInsertionOrderRequest.endDate) &&
+        Objects.equals(mediaContactEmail, ssIOCreateInsertionOrderRequest.mediaContactEmail) &&
         Objects.equals(mediaContactFirstname, ssIOCreateInsertionOrderRequest.mediaContactFirstname) &&
         Objects.equals(mediaContactLastname, ssIOCreateInsertionOrderRequest.mediaContactLastname) &&
-        Objects.equals(mediaContactEmail, ssIOCreateInsertionOrderRequest.mediaContactEmail) &&
-        Objects.equals(agencyLink, ssIOCreateInsertionOrderRequest.agencyLink) &&
+        Objects.equals(poNumber, ssIOCreateInsertionOrderRequest.poNumber) &&
+        Objects.equals(startDate, ssIOCreateInsertionOrderRequest.startDate) &&
         Objects.equals(userEmail, ssIOCreateInsertionOrderRequest.userEmail) &&
-        Objects.equals(acceptedTermsTime, ssIOCreateInsertionOrderRequest.acceptedTermsTime) &&
-        Objects.equals(pmpId, ssIOCreateInsertionOrderRequest.pmpId) &&
-        Objects.equals(orderName, ssIOCreateInsertionOrderRequest.orderName) &&
-        Objects.equals(orderLineType, ssIOCreateInsertionOrderRequest.orderLineType) &&
         Objects.equals(acceptedTermsId, ssIOCreateInsertionOrderRequest.acceptedTermsId) &&
-        Objects.equals(billtoCompanyId, ssIOCreateInsertionOrderRequest.billtoCompanyId) &&
-        Objects.equals(billtoBusinessAddressId, ssIOCreateInsertionOrderRequest.billtoBusinessAddressId) &&
+        Objects.equals(acceptedTermsTime, ssIOCreateInsertionOrderRequest.acceptedTermsTime) &&
         Objects.equals(billtoBillingAddressId, ssIOCreateInsertionOrderRequest.billtoBillingAddressId) &&
+        Objects.equals(billtoBusinessAddressId, ssIOCreateInsertionOrderRequest.billtoBusinessAddressId) &&
+        Objects.equals(billtoCompanyId, ssIOCreateInsertionOrderRequest.billtoCompanyId) &&
+        Objects.equals(currencyInfo, ssIOCreateInsertionOrderRequest.currencyInfo) &&
         Objects.equals(estimatedMonthlySpend, ssIOCreateInsertionOrderRequest.estimatedMonthlySpend) &&
-        Objects.equals(currencyInfo, ssIOCreateInsertionOrderRequest.currencyInfo);
+        Objects.equals(orderLineType, ssIOCreateInsertionOrderRequest.orderLineType) &&
+        Objects.equals(orderName, ssIOCreateInsertionOrderRequest.orderName) &&
+        Objects.equals(pmpId, ssIOCreateInsertionOrderRequest.pmpId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, endDate, poNumber, budgetAmount, billingContactFirstname, billingContactLastname, billingContactEmail, mediaContactFirstname, mediaContactLastname, mediaContactEmail, agencyLink, userEmail, acceptedTermsTime, pmpId, orderName, orderLineType, acceptedTermsId, billtoCompanyId, billtoBusinessAddressId, billtoBillingAddressId, estimatedMonthlySpend, currencyInfo);
+    return Objects.hash(agencyLink, billingContactEmail, billingContactFirstname, billingContactLastname, budgetAmount, endDate, mediaContactEmail, mediaContactFirstname, mediaContactLastname, poNumber, startDate, userEmail, acceptedTermsId, acceptedTermsTime, billtoBillingAddressId, billtoBusinessAddressId, billtoCompanyId, currencyInfo, estimatedMonthlySpend, orderLineType, orderName, pmpId);
   }
 
   @Override
@@ -507,28 +507,28 @@ public class SSIOCreateInsertionOrderRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSIOCreateInsertionOrderRequest {\n");
     
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
-    sb.append("    poNumber: ").append(toIndentedString(poNumber)).append("\n");
-    sb.append("    budgetAmount: ").append(toIndentedString(budgetAmount)).append("\n");
+    sb.append("    agencyLink: ").append(toIndentedString(agencyLink)).append("\n");
+    sb.append("    billingContactEmail: ").append(toIndentedString(billingContactEmail)).append("\n");
     sb.append("    billingContactFirstname: ").append(toIndentedString(billingContactFirstname)).append("\n");
     sb.append("    billingContactLastname: ").append(toIndentedString(billingContactLastname)).append("\n");
-    sb.append("    billingContactEmail: ").append(toIndentedString(billingContactEmail)).append("\n");
+    sb.append("    budgetAmount: ").append(toIndentedString(budgetAmount)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    mediaContactEmail: ").append(toIndentedString(mediaContactEmail)).append("\n");
     sb.append("    mediaContactFirstname: ").append(toIndentedString(mediaContactFirstname)).append("\n");
     sb.append("    mediaContactLastname: ").append(toIndentedString(mediaContactLastname)).append("\n");
-    sb.append("    mediaContactEmail: ").append(toIndentedString(mediaContactEmail)).append("\n");
-    sb.append("    agencyLink: ").append(toIndentedString(agencyLink)).append("\n");
+    sb.append("    poNumber: ").append(toIndentedString(poNumber)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    userEmail: ").append(toIndentedString(userEmail)).append("\n");
-    sb.append("    acceptedTermsTime: ").append(toIndentedString(acceptedTermsTime)).append("\n");
-    sb.append("    pmpId: ").append(toIndentedString(pmpId)).append("\n");
-    sb.append("    orderName: ").append(toIndentedString(orderName)).append("\n");
-    sb.append("    orderLineType: ").append(toIndentedString(orderLineType)).append("\n");
     sb.append("    acceptedTermsId: ").append(toIndentedString(acceptedTermsId)).append("\n");
-    sb.append("    billtoCompanyId: ").append(toIndentedString(billtoCompanyId)).append("\n");
-    sb.append("    billtoBusinessAddressId: ").append(toIndentedString(billtoBusinessAddressId)).append("\n");
+    sb.append("    acceptedTermsTime: ").append(toIndentedString(acceptedTermsTime)).append("\n");
     sb.append("    billtoBillingAddressId: ").append(toIndentedString(billtoBillingAddressId)).append("\n");
-    sb.append("    estimatedMonthlySpend: ").append(toIndentedString(estimatedMonthlySpend)).append("\n");
+    sb.append("    billtoBusinessAddressId: ").append(toIndentedString(billtoBusinessAddressId)).append("\n");
+    sb.append("    billtoCompanyId: ").append(toIndentedString(billtoCompanyId)).append("\n");
     sb.append("    currencyInfo: ").append(toIndentedString(currencyInfo)).append("\n");
+    sb.append("    estimatedMonthlySpend: ").append(toIndentedString(estimatedMonthlySpend)).append("\n");
+    sb.append("    orderLineType: ").append(toIndentedString(orderLineType)).append("\n");
+    sb.append("    orderName: ").append(toIndentedString(orderName)).append("\n");
+    sb.append("    pmpId: ").append(toIndentedString(pmpId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

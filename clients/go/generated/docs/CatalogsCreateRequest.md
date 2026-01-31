@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | **string** | Type of the catalog entity. | 
+**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **Name** | **string** | A human-friendly name associated to a given catalog. | 
 
 ## Methods
 
 ### NewCatalogsCreateRequest
 
-`func NewCatalogsCreateRequest(catalogType string, name string, ) *CatalogsCreateRequest`
+`func NewCatalogsCreateRequest(catalogType CatalogsType, name string, ) *CatalogsCreateRequest`
 
 NewCatalogsCreateRequest instantiates a new CatalogsCreateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCatalogType
 
-`func (o *CatalogsCreateRequest) GetCatalogType() string`
+`func (o *CatalogsCreateRequest) GetCatalogType() CatalogsType`
 
 GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
 
 ### GetCatalogTypeOk
 
-`func (o *CatalogsCreateRequest) GetCatalogTypeOk() (*string, bool)`
+`func (o *CatalogsCreateRequest) GetCatalogTypeOk() (*CatalogsType, bool)`
 
 GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCatalogType
 
-`func (o *CatalogsCreateRequest) SetCatalogType(v string)`
+`func (o *CatalogsCreateRequest) SetCatalogType(v CatalogsType)`
 
 SetCatalogType sets CatalogType field to given value.
 

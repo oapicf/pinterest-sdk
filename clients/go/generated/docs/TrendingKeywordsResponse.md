@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Trends** | Pointer to [**[]TrendingKeywordsResponseTrendsInner**](TrendingKeywordsResponseTrendsInner.md) | The top trending keywords for the specified trend type in the requested region.&lt;br /&gt; Results are ordered, with the first element in the array representing the #1 top trend. | [optional] 
+**Trends** | Pointer to [**[]TrendingKeyword**](TrendingKeyword.md) | The top trending keywords for the specified trend type in the requested region.&lt;br /&gt; Results are ordered, with the first element in the array representing the #1 top trend. | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetTrends
 
-`func (o *TrendingKeywordsResponse) GetTrends() []TrendingKeywordsResponseTrendsInner`
+`func (o *TrendingKeywordsResponse) GetTrends() []TrendingKeyword`
 
 GetTrends returns the Trends field if non-nil, zero value otherwise.
 
 ### GetTrendsOk
 
-`func (o *TrendingKeywordsResponse) GetTrendsOk() (*[]TrendingKeywordsResponseTrendsInner, bool)`
+`func (o *TrendingKeywordsResponse) GetTrendsOk() (*[]TrendingKeyword, bool)`
 
 GetTrendsOk returns a tuple with the Trends field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrends
 
-`func (o *TrendingKeywordsResponse) SetTrends(v []TrendingKeywordsResponseTrendsInner)`
+`func (o *TrendingKeywordsResponse) SetTrends(v []TrendingKeyword)`
 
 SetTrends sets Trends field to given value.
 

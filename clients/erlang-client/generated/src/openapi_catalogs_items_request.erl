@@ -6,15 +6,15 @@
 
 -type openapi_catalogs_items_request() ::
     #{ 'country' := openapi_country:openapi_country(),
-       'language' := binary(),
-       'filters' := openapi_catalogs_items_post_filters:openapi_catalogs_items_post_filters()
+       'filters' := openapi_catalogs_items_post_filters:openapi_catalogs_items_post_filters(),
+       'language' := binary()
      }.
 
 encode(#{ 'country' := Country,
-          'language' := Language,
-          'filters' := Filters
+          'filters' := Filters,
+          'language' := Language
         }) ->
     #{ 'country' => Country,
-       'language' => Language,
-       'filters' => Filters
+       'filters' => Filters,
+       'language' => Language
      }.

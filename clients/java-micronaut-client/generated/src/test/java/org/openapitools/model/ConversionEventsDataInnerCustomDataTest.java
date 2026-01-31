@@ -26,19 +26,19 @@ public class ConversionEventsDataInnerCustomDataTest {
     }
 
     /**
-     * Test the property 'currency'
+     * Test the property 'contentBrand'
      */
     @Test
-    public void currencyTest() {
-        // TODO: test currency
+    public void contentBrandTest() {
+        // TODO: test contentBrand
     }
 
     /**
-     * Test the property 'value'
+     * Test the property 'contentCategory'
      */
     @Test
-    public void valueTest() {
-        // TODO: test value
+    public void contentCategoryTest() {
+        // TODO: test contentCategory
     }
 
     /**
@@ -58,27 +58,43 @@ public class ConversionEventsDataInnerCustomDataTest {
     }
 
     /**
-     * Test the property 'contentCategory'
-     */
-    @Test
-    public void contentCategoryTest() {
-        // TODO: test contentCategory
-    }
-
-    /**
-     * Test the property 'contentBrand'
-     */
-    @Test
-    public void contentBrandTest() {
-        // TODO: test contentBrand
-    }
-
-    /**
      * Test the property 'contents'
      */
     @Test
     public void contentsTest() {
         // TODO: test contents
+    }
+
+    /**
+     * Test the property 'currency'
+     */
+    @Test
+    public void currencyTest() {
+        // TODO: test currency
+    }
+
+    /**
+     * Test the property 'externalMeasurementId'
+     */
+    @Test
+    public void externalMeasurementIdTest() {
+        // TODO: test externalMeasurementId
+    }
+
+    /**
+     * Test the property 'externalMeasurementVendorId'
+     */
+    @Test
+    public void externalMeasurementVendorIdTest() {
+        // TODO: test externalMeasurementVendorId
+    }
+
+    /**
+     * Test the property 'np'
+     */
+    @Test
+    public void npTest() {
+        // TODO: test np
     }
 
     /**
@@ -90,11 +106,27 @@ public class ConversionEventsDataInnerCustomDataTest {
     }
 
     /**
+     * Test the property 'optOutType'
+     */
+    @Test
+    public void optOutTypeTest() {
+        // TODO: test optOutType
+    }
+
+    /**
      * Test the property 'orderId'
      */
     @Test
     public void orderIdTest() {
         // TODO: test orderId
+    }
+
+    /**
+     * Test the property 'predictedLtv'
+     */
+    @Test
+    public void predictedLtvTest() {
+        // TODO: test predictedLtv
     }
 
     /**
@@ -106,19 +138,11 @@ public class ConversionEventsDataInnerCustomDataTest {
     }
 
     /**
-     * Test the property 'optOutType'
+     * Test the property 'value'
      */
     @Test
-    public void optOutTypeTest() {
-        // TODO: test optOutType
-    }
-
-    /**
-     * Test the property 'np'
-     */
-    @Test
-    public void npTest() {
-        // TODO: test np
+    public void valueTest() {
+        // TODO: test value
     }
 
 }

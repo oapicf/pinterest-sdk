@@ -11,8 +11,8 @@ module PinAnalyticsMetricsResponse =
 
 
   type PinAnalyticsMetricsResponse = {
-    LifetimeMetrics : IDictionary<string, int>;
     DailyMetrics : PinAnalyticsMetricsResponseDailyMetricsInner[];
+    LifetimeMetrics : IDictionary<string, int>;
     SummaryMetrics : IDictionary<string, decimal>;
   }
   //#endregion

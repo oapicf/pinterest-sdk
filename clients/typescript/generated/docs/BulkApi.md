@@ -12,7 +12,7 @@ Method | HTTP request | Description
 # **bulkDownloadCreate**
 > BulkDownloadResponse bulkDownloadCreate(bulkDownloadRequest)
 
-Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, and/or keywords; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
 
 ### Example
 
@@ -29,23 +29,23 @@ const request: BulkApiBulkDownloadCreateRequest = {
   adAccountId: "4",
     // Parameters to get ad entities in bulk
   bulkDownloadRequest: {
-    entityTypes: ["CAMPAIGN","AD_GROUP"],
-    entityIds: [
-      "4",
-    ],
-    updatedSince: "1622848072",
     campaignFilter: {
-      startTime: "1622848072",
-      endTime: "1622848072",
-      name: "campaign name",
       campaignStatus: [
         "RUNNING",
       ],
+      endTime: "1622848072",
+      name: "campaign name",
       objectiveType: [
         "AWARENESS",
       ],
+      startTime: "1622848072",
     },
+    entityIds: [
+      "4",
+    ],
+    entityTypes: ["CAMPAIGN","AD_GROUP"],
     outputFormat: "outputFormat_example",
+    updatedSince: "1622848072",
   },
 };
 
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](README.md#pinterest_oauth2)
+[pinterest_oauth2](README.md#pinterest_oauth2), [client_credentials](README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 # **bulkUpsertCreate**
 > BulkUpsertResponse bulkUpsertCreate(bulkUpsertRequest)
 
-Either create or update any combination of campaigns, ad groups, product groups, ads, or keywords. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
+Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
 
 ### Example
 
@@ -165,22 +165,17 @@ const request: BulkApiBulkUpsertCreateRequest = {
     // Parameters to get create/update ad entities in bulk
   bulkUpsertRequest: {
     create: {
-      campaigns: [
-        ,
-      ],
       adGroups: [
         ,
       ],
       ads: [
         ,
       ],
-      productGroups: [
-        {
-          adGroupId: "2680059592705",
-          productGroupPromotion: [
-            ,
-          ],
-        },
+      campaigns: [
+        ,
+      ],
+      catalogProductGroups: [
+        null,
       ],
       keywords: [
         {
@@ -194,48 +189,109 @@ const request: BulkApiBulkUpsertCreateRequest = {
           parentId: "383791336903426391",
         },
       ],
-    },
-    update: {
-      campaigns: [
-        ,
-      ],
-      adGroups: [
-        ,
-      ],
-      ads: [
-        ,
+      labels: [
+        {
+          labels: [
+            {
+              labelType: "BRAND",
+              value: "value_example",
+            },
+          ],
+          parentId: "626753052072",
+        },
       ],
       productGroups: [
         {
           adGroupId: "2680059592705",
           productGroupPromotion: [
             {
-              id: "2680059592705",
               adGroupId: "2680059592705",
               bidInMicroCurrency: 14000000,
-              included: true,
-              definition: "*/product_type_0='kitchen'/product_type_1='beverage appliances'",
-              relativeDefinition: "product_type_1='beverage appliances'",
-              parentId: "1231234",
-              slideshowCollectionsTitle: "slideshow title",
-              slideshowCollectionsDescription: "slideshow description",
-              isMdl: true,
-              status: "ACTIVE",
-              trackingUrl: "https://www.pinterest.com",
               catalogProductGroupId: "1231235",
               catalogProductGroupName: "catalogProductGroupName",
-              collectionsHeroPinId: "123123",
+              collectionsHeaderType: "SHOP_THIS_COLLECTION",
               collectionsHeroDestinationUrl: "http://www.pinterest.com",
+              collectionsHeroPinId: "123123",
+              creativeType: "REGULAR",
+              customizableCtaType: "SHOP_NOW",
+              definition: "*/product_type_0='kitchen'/product_type_1='beverage appliances'",
               gridClickType: "CLOSEUP",
+              id: "2680059592705",
+              included: true,
+              isGenerateBackground: true,
+              isMdl: true,
+              parentId: "1231234",
+              preferredMediaType: "VIDEO",
+              relativeDefinition: "product_type_1='beverage appliances'",
+              selectedImageTag: "holiday_sale",
+              selectedVideoTag: "holiday_sale",
+              slideshowCollectionsDescription: "slideshow description",
+              slideshowCollectionsTitle: "slideshow title",
+              status: "ACTIVE",
+              trackingUrl: "https://www.pinterest.com",
             },
           ],
         },
       ],
+    },
+    update: {
+      adGroups: [
+        ,
+      ],
+      ads: [
+        ,
+      ],
+      campaigns: [
+        ,
+      ],
+      catalogProductGroups: [
+        null,
+      ],
       keywords: [
         {
-          id: "2886364308355",
           archived: false,
           bid: 1,
+          id: "2886364308355",
+        },
+      ],
+      labels: [
+        {
+          id: "1106385754497",
+          status: "ARCHIVED",
+          value: "value_example",
+        },
+      ],
+      productGroups: [
+        {
+          adGroupId: "2680059592705",
+          productGroupPromotion: [
+            {
+              adGroupId: "2680059592705",
+              bidInMicroCurrency: 14000000,
+              catalogProductGroupId: "1231235",
+              catalogProductGroupName: "catalogProductGroupName",
+              collectionsHeaderType: "SHOP_THIS_COLLECTION",
+              collectionsHeroDestinationUrl: "http://www.pinterest.com",
+              collectionsHeroPinId: "123123",
+              creativeType: "REGULAR",
+              customizableCtaType: "SHOP_NOW",
+              definition: "*/product_type_0='kitchen'/product_type_1='beverage appliances'",
+              gridClickType: "CLOSEUP",
+              id: "2680059592705",
+              included: true,
+              isGenerateBackground: true,
+              isMdl: true,
+              parentId: "1231234",
+              preferredMediaType: "VIDEO",
+              relativeDefinition: "product_type_1='beverage appliances'",
+              selectedImageTag: "holiday_sale",
+              selectedVideoTag: "holiday_sale",
+              slideshowCollectionsDescription: "slideshow description",
+              slideshowCollectionsTitle: "slideshow title",
+              status: "ACTIVE",
+              trackingUrl: "https://www.pinterest.com",
+            },
+          ],
         },
       ],
     },

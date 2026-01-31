@@ -24,11 +24,11 @@ import com.squareup.moshi.JsonClass
  * 
  *
  * @param assetGroupId Unique identifier of the asset group to update.
- * @param name Asset Group name
- * @param description Asset group description
  * @param assetGroupTypes Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
  * @param assetsToAdd A list of asset ids to add to the asset group.
  * @param assetsToRemove A list of asset ids to remove from the asset group.
+ * @param description Asset group description
+ * @param name Asset Group name
  */
 
 
@@ -37,14 +37,6 @@ data class UpdateAssetGroupBodyAssetGroupsToUpdateInner (
     /* Unique identifier of the asset group to update. */
     @Json(name = "asset_group_id")
     val assetGroupId: kotlin.String,
-
-    /* Asset Group name */
-    @Json(name = "name")
-    val name: kotlin.String? = null,
-
-    /* Asset group description */
-    @Json(name = "description")
-    val description: kotlin.String? = null,
 
     /* Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group. */
     @Json(name = "asset_group_types")
@@ -56,7 +48,15 @@ data class UpdateAssetGroupBodyAssetGroupsToUpdateInner (
 
     /* A list of asset ids to remove from the asset group. */
     @Json(name = "assets_to_remove")
-    val assetsToRemove: kotlin.collections.List<kotlin.String>? = null
+    val assetsToRemove: kotlin.collections.List<kotlin.String>? = null,
+
+    /* Asset group description */
+    @Json(name = "description")
+    val description: kotlin.String? = null,
+
+    /* Asset Group name */
+    @Json(name = "name")
+    val name: kotlin.String? = null
 
 ) {
 

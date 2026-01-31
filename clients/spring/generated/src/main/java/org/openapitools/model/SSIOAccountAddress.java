@@ -19,56 +19,16 @@ import javax.annotation.Generated;
  * SSIOAccountAddress
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SSIOAccountAddress {
-
-  private @Nullable String display;
-
-  private @Nullable String purpose;
 
   private @Nullable String addressId;
 
+  private @Nullable String display;
+
   private @Nullable String orderLegalEntity;
 
-  public SSIOAccountAddress display(@Nullable String display) {
-    this.display = display;
-    return this;
-  }
-
-  /**
-   * Address display
-   * @return display
-   */
-  
-  @Schema(name = "display", example = "475 Brannan Street, San Francisco, CA 94103", description = "Address display", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("display")
-  public @Nullable String getDisplay() {
-    return display;
-  }
-
-  public void setDisplay(@Nullable String display) {
-    this.display = display;
-  }
-
-  public SSIOAccountAddress purpose(@Nullable String purpose) {
-    this.purpose = purpose;
-    return this;
-  }
-
-  /**
-   * Purpose for which the address is used, usually Billing or Businness
-   * @return purpose
-   */
-  
-  @Schema(name = "purpose", example = "Billing", description = "Purpose for which the address is used, usually Billing or Businness", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("purpose")
-  public @Nullable String getPurpose() {
-    return purpose;
-  }
-
-  public void setPurpose(@Nullable String purpose) {
-    this.purpose = purpose;
-  }
+  private @Nullable String purpose;
 
   public SSIOAccountAddress addressId(@Nullable String addressId) {
     this.addressId = addressId;
@@ -88,6 +48,26 @@ public class SSIOAccountAddress {
 
   public void setAddressId(@Nullable String addressId) {
     this.addressId = addressId;
+  }
+
+  public SSIOAccountAddress display(@Nullable String display) {
+    this.display = display;
+    return this;
+  }
+
+  /**
+   * Address display
+   * @return display
+   */
+  
+  @Schema(name = "display", example = "475 Brannan Street, San Francisco, CA 94103", description = "Address display", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("display")
+  public @Nullable String getDisplay() {
+    return display;
+  }
+
+  public void setDisplay(@Nullable String display) {
+    this.display = display;
   }
 
   public SSIOAccountAddress orderLegalEntity(@Nullable String orderLegalEntity) {
@@ -110,6 +90,26 @@ public class SSIOAccountAddress {
     this.orderLegalEntity = orderLegalEntity;
   }
 
+  public SSIOAccountAddress purpose(@Nullable String purpose) {
+    this.purpose = purpose;
+    return this;
+  }
+
+  /**
+   * Purpose for which the address is used, usually Billing or Businness
+   * @return purpose
+   */
+  
+  @Schema(name = "purpose", example = "Billing", description = "Purpose for which the address is used, usually Billing or Businness", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("purpose")
+  public @Nullable String getPurpose() {
+    return purpose;
+  }
+
+  public void setPurpose(@Nullable String purpose) {
+    this.purpose = purpose;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -119,25 +119,25 @@ public class SSIOAccountAddress {
       return false;
     }
     SSIOAccountAddress ssIOAccountAddress = (SSIOAccountAddress) o;
-    return Objects.equals(this.display, ssIOAccountAddress.display) &&
-        Objects.equals(this.purpose, ssIOAccountAddress.purpose) &&
-        Objects.equals(this.addressId, ssIOAccountAddress.addressId) &&
-        Objects.equals(this.orderLegalEntity, ssIOAccountAddress.orderLegalEntity);
+    return Objects.equals(this.addressId, ssIOAccountAddress.addressId) &&
+        Objects.equals(this.display, ssIOAccountAddress.display) &&
+        Objects.equals(this.orderLegalEntity, ssIOAccountAddress.orderLegalEntity) &&
+        Objects.equals(this.purpose, ssIOAccountAddress.purpose);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(display, purpose, addressId, orderLegalEntity);
+    return Objects.hash(addressId, display, orderLegalEntity, purpose);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSIOAccountAddress {\n");
-    sb.append("    display: ").append(toIndentedString(display)).append("\n");
-    sb.append("    purpose: ").append(toIndentedString(purpose)).append("\n");
     sb.append("    addressId: ").append(toIndentedString(addressId)).append("\n");
+    sb.append("    display: ").append(toIndentedString(display)).append("\n");
     sb.append("    orderLegalEntity: ").append(toIndentedString(orderLegalEntity)).append("\n");
+    sb.append("    purpose: ").append(toIndentedString(purpose)).append("\n");
     sb.append("}");
     return sb.toString();
   }

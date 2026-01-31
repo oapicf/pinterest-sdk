@@ -1,0 +1,66 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AmazonConnectRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AmazonConnectRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  AmazonConnectRequest {
+    title = AmazonConnectRequest
+    description = AmazonConnectRequest
+    derivedFrom = Root
+    properties {
+        amazon_storefront_id {
+          type =  string
+          description = "The Amazon storefront id"
+          optional = false
+        }
+        amazon_storefront_name {
+          type =  string
+          description = "The Amazon storefront name"
+          optional = true
+        }
+        amazon_storefront_url {
+          type =  string
+          description = "The Amazon storefront url"
+          optional = true
+        }
+        amazon_user_id {
+          type =  string
+          description = "The Amazon user id"
+          optional = false
+        }
+        is_amazon_account_linked {
+          type =  boolean
+          description = "The Amazon account linking status"
+          optional = true
+        }
+        one_time_passcode {
+          type =  string
+          description = "The one time passcode for Pinterest-initiated linking requests"
+          optional = false
+        }
+        pinterest_user_id {
+          type =  string
+          description = "The Pinterest user id for Amazon-initiated linking requests"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AmazonConnectRequest {
+    title = AmazonConnectRequest
+    description = AmazonConnectRequest
+    implements = openapi_server.resourceTypes.AmazonConnectRequest
+
+  }
+}

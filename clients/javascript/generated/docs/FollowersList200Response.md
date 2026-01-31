@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[UserSummary]**](UserSummary.md) |  | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[UserSummary]**](UserSummary.md) |  | 
 
 

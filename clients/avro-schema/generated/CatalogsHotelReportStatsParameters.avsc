@@ -1,0 +1,25 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Parameters for hotel report",
+  "name": "CatalogsHotelReportStatsParameters",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsHotelReportStatsParameters_catalogUnderscoretype",
+        "symbols": [
+          "HOTEL"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "report",
+      "type": "model.CatalogsHotelReportStatsParametersReport",
+      "doc": ""
+    }
+  ]
+
+}

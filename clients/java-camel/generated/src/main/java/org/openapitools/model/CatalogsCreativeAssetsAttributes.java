@@ -21,20 +21,10 @@ import javax.annotation.Generated;
  * CatalogsCreativeAssetsAttributes
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsAttributes {
 
-  private String title;
-
-  private String description;
-
-  private String link;
-
-  private JsonNullable<String> iosDeepLink = JsonNullable.<String>undefined();
-
   private JsonNullable<String> androidDeepLink = JsonNullable.<String>undefined();
-
-  private JsonNullable<String> googleProductCategory = JsonNullable.<String>undefined();
 
   private JsonNullable<String> customLabel0 = JsonNullable.<String>undefined();
 
@@ -46,91 +36,21 @@ public class CatalogsCreativeAssetsAttributes {
 
   private JsonNullable<String> customLabel4 = JsonNullable.<String>undefined();
 
+  private String description;
+
+  private JsonNullable<String> googleProductCategory = JsonNullable.<String>undefined();
+
+  private JsonNullable<String> iosDeepLink = JsonNullable.<String>undefined();
+
+  private String link;
+
+  private String title;
+
   private JsonNullable<String> visibility = JsonNullable.<String>undefined();
 
   private String imageLink;
 
   private String videoLink;
-
-  public CatalogsCreativeAssetsAttributes title(String title) {
-    this.title = title;
-    return this;
-  }
-
-  /**
-   * The name of the creative assets.
-   * @return title
-   */
-  
-  @Schema(name = "title", description = "The name of the creative assets.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("title")
-  public String getTitle() {
-    return title;
-  }
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-  public CatalogsCreativeAssetsAttributes description(String description) {
-    this.description = description;
-    return this;
-  }
-
-  /**
-   * Brief description of the creative assets.
-   * @return description
-   */
-  
-  @Schema(name = "description", description = "Brief description of the creative assets.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("description")
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public CatalogsCreativeAssetsAttributes link(String link) {
-    this.link = link;
-    return this;
-  }
-
-  /**
-   * Link to the creative assets page.
-   * @return link
-   */
-  
-  @Schema(name = "link", description = "Link to the creative assets page.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("link")
-  public String getLink() {
-    return link;
-  }
-
-  public void setLink(String link) {
-    this.link = link;
-  }
-
-  public CatalogsCreativeAssetsAttributes iosDeepLink(String iosDeepLink) {
-    this.iosDeepLink = JsonNullable.of(iosDeepLink);
-    return this;
-  }
-
-  /**
-   * IOS deep link to the creative assets page.
-   * @return iosDeepLink
-   */
-  
-  @Schema(name = "ios_deep_link", description = "IOS deep link to the creative assets page.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("ios_deep_link")
-  public JsonNullable<String> getIosDeepLink() {
-    return iosDeepLink;
-  }
-
-  public void setIosDeepLink(JsonNullable<String> iosDeepLink) {
-    this.iosDeepLink = iosDeepLink;
-  }
 
   public CatalogsCreativeAssetsAttributes androidDeepLink(String androidDeepLink) {
     this.androidDeepLink = JsonNullable.of(androidDeepLink);
@@ -150,26 +70,6 @@ public class CatalogsCreativeAssetsAttributes {
 
   public void setAndroidDeepLink(JsonNullable<String> androidDeepLink) {
     this.androidDeepLink = androidDeepLink;
-  }
-
-  public CatalogsCreativeAssetsAttributes googleProductCategory(String googleProductCategory) {
-    this.googleProductCategory = JsonNullable.of(googleProductCategory);
-    return this;
-  }
-
-  /**
-   * The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
-   * @return googleProductCategory
-   */
-  
-  @Schema(name = "google_product_category", description = "The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("google_product_category")
-  public JsonNullable<String> getGoogleProductCategory() {
-    return googleProductCategory;
-  }
-
-  public void setGoogleProductCategory(JsonNullable<String> googleProductCategory) {
-    this.googleProductCategory = googleProductCategory;
   }
 
   public CatalogsCreativeAssetsAttributes customLabel0(String customLabel0) {
@@ -272,6 +172,106 @@ public class CatalogsCreativeAssetsAttributes {
     this.customLabel4 = customLabel4;
   }
 
+  public CatalogsCreativeAssetsAttributes description(String description) {
+    this.description = description;
+    return this;
+  }
+
+  /**
+   * Brief description of the creative assets.
+   * @return description
+   */
+  
+  @Schema(name = "description", description = "Brief description of the creative assets.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("description")
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public CatalogsCreativeAssetsAttributes googleProductCategory(String googleProductCategory) {
+    this.googleProductCategory = JsonNullable.of(googleProductCategory);
+    return this;
+  }
+
+  /**
+   * The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
+   * @return googleProductCategory
+   */
+  
+  @Schema(name = "google_product_category", description = "The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("google_product_category")
+  public JsonNullable<String> getGoogleProductCategory() {
+    return googleProductCategory;
+  }
+
+  public void setGoogleProductCategory(JsonNullable<String> googleProductCategory) {
+    this.googleProductCategory = googleProductCategory;
+  }
+
+  public CatalogsCreativeAssetsAttributes iosDeepLink(String iosDeepLink) {
+    this.iosDeepLink = JsonNullable.of(iosDeepLink);
+    return this;
+  }
+
+  /**
+   * IOS deep link to the creative assets page.
+   * @return iosDeepLink
+   */
+  
+  @Schema(name = "ios_deep_link", description = "IOS deep link to the creative assets page.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("ios_deep_link")
+  public JsonNullable<String> getIosDeepLink() {
+    return iosDeepLink;
+  }
+
+  public void setIosDeepLink(JsonNullable<String> iosDeepLink) {
+    this.iosDeepLink = iosDeepLink;
+  }
+
+  public CatalogsCreativeAssetsAttributes link(String link) {
+    this.link = link;
+    return this;
+  }
+
+  /**
+   * Link to the creative assets page.
+   * @return link
+   */
+  
+  @Schema(name = "link", description = "Link to the creative assets page.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("link")
+  public String getLink() {
+    return link;
+  }
+
+  public void setLink(String link) {
+    this.link = link;
+  }
+
+  public CatalogsCreativeAssetsAttributes title(String title) {
+    this.title = title;
+    return this;
+  }
+
+  /**
+   * The name of the creative assets.
+   * @return title
+   */
+  
+  @Schema(name = "title", description = "The name of the creative assets.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("title")
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
   public CatalogsCreativeAssetsAttributes visibility(String visibility) {
     this.visibility = JsonNullable.of(visibility);
     return this;
@@ -341,17 +341,17 @@ public class CatalogsCreativeAssetsAttributes {
       return false;
     }
     CatalogsCreativeAssetsAttributes catalogsCreativeAssetsAttributes = (CatalogsCreativeAssetsAttributes) o;
-    return Objects.equals(this.title, catalogsCreativeAssetsAttributes.title) &&
-        Objects.equals(this.description, catalogsCreativeAssetsAttributes.description) &&
-        Objects.equals(this.link, catalogsCreativeAssetsAttributes.link) &&
-        equalsNullable(this.iosDeepLink, catalogsCreativeAssetsAttributes.iosDeepLink) &&
-        equalsNullable(this.androidDeepLink, catalogsCreativeAssetsAttributes.androidDeepLink) &&
-        equalsNullable(this.googleProductCategory, catalogsCreativeAssetsAttributes.googleProductCategory) &&
+    return equalsNullable(this.androidDeepLink, catalogsCreativeAssetsAttributes.androidDeepLink) &&
         equalsNullable(this.customLabel0, catalogsCreativeAssetsAttributes.customLabel0) &&
         equalsNullable(this.customLabel1, catalogsCreativeAssetsAttributes.customLabel1) &&
         equalsNullable(this.customLabel2, catalogsCreativeAssetsAttributes.customLabel2) &&
         equalsNullable(this.customLabel3, catalogsCreativeAssetsAttributes.customLabel3) &&
         equalsNullable(this.customLabel4, catalogsCreativeAssetsAttributes.customLabel4) &&
+        Objects.equals(this.description, catalogsCreativeAssetsAttributes.description) &&
+        equalsNullable(this.googleProductCategory, catalogsCreativeAssetsAttributes.googleProductCategory) &&
+        equalsNullable(this.iosDeepLink, catalogsCreativeAssetsAttributes.iosDeepLink) &&
+        Objects.equals(this.link, catalogsCreativeAssetsAttributes.link) &&
+        Objects.equals(this.title, catalogsCreativeAssetsAttributes.title) &&
         equalsNullable(this.visibility, catalogsCreativeAssetsAttributes.visibility) &&
         Objects.equals(this.imageLink, catalogsCreativeAssetsAttributes.imageLink) &&
         Objects.equals(this.videoLink, catalogsCreativeAssetsAttributes.videoLink);
@@ -363,7 +363,7 @@ public class CatalogsCreativeAssetsAttributes {
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, description, link, hashCodeNullable(iosDeepLink), hashCodeNullable(androidDeepLink), hashCodeNullable(googleProductCategory), hashCodeNullable(customLabel0), hashCodeNullable(customLabel1), hashCodeNullable(customLabel2), hashCodeNullable(customLabel3), hashCodeNullable(customLabel4), hashCodeNullable(visibility), imageLink, videoLink);
+    return Objects.hash(hashCodeNullable(androidDeepLink), hashCodeNullable(customLabel0), hashCodeNullable(customLabel1), hashCodeNullable(customLabel2), hashCodeNullable(customLabel3), hashCodeNullable(customLabel4), description, hashCodeNullable(googleProductCategory), hashCodeNullable(iosDeepLink), link, title, hashCodeNullable(visibility), imageLink, videoLink);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -377,17 +377,17 @@ public class CatalogsCreativeAssetsAttributes {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsAttributes {\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    link: ").append(toIndentedString(link)).append("\n");
-    sb.append("    iosDeepLink: ").append(toIndentedString(iosDeepLink)).append("\n");
     sb.append("    androidDeepLink: ").append(toIndentedString(androidDeepLink)).append("\n");
-    sb.append("    googleProductCategory: ").append(toIndentedString(googleProductCategory)).append("\n");
     sb.append("    customLabel0: ").append(toIndentedString(customLabel0)).append("\n");
     sb.append("    customLabel1: ").append(toIndentedString(customLabel1)).append("\n");
     sb.append("    customLabel2: ").append(toIndentedString(customLabel2)).append("\n");
     sb.append("    customLabel3: ").append(toIndentedString(customLabel3)).append("\n");
     sb.append("    customLabel4: ").append(toIndentedString(customLabel4)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    googleProductCategory: ").append(toIndentedString(googleProductCategory)).append("\n");
+    sb.append("    iosDeepLink: ").append(toIndentedString(iosDeepLink)).append("\n");
+    sb.append("    link: ").append(toIndentedString(link)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    visibility: ").append(toIndentedString(visibility)).append("\n");
     sb.append("    imageLink: ").append(toIndentedString(imageLink)).append("\n");
     sb.append("    videoLink: ").append(toIndentedString(videoLink)).append("\n");

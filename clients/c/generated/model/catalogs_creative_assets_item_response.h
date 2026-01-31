@@ -22,19 +22,19 @@ typedef struct catalogs_creative_assets_item_response_t catalogs_creative_assets
 
 
 typedef struct catalogs_creative_assets_item_response_t {
+    struct catalogs_creative_assets_attributes_t *attributes; //model
     pinterest_rest_api_catalogs_type__e catalog_type; //referenced enum
     char *creative_assets_id; // string
     list_t *pins; //nonprimitive container
-    struct catalogs_creative_assets_attributes_t *attributes; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_creative_assets_item_response_t;
 
 __attribute__((deprecated)) catalogs_creative_assets_item_response_t *catalogs_creative_assets_item_response_create(
+    catalogs_creative_assets_attributes_t *attributes,
     pinterest_rest_api_catalogs_type__e catalog_type,
     char *creative_assets_id,
-    list_t *pins,
-    catalogs_creative_assets_attributes_t *attributes
+    list_t *pins
 );
 
 void catalogs_creative_assets_item_response_free(catalogs_creative_assets_item_response_t *catalogs_creative_assets_item_response);

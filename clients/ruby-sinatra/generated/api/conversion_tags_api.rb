@@ -5,9 +5,9 @@ MyApp.add_route('POST', '/v5/ad_accounts/{ad_account_id}/conversion_tags', {
   "resourcePath" => "/ConversionTags",
   "summary" => "Create conversion tag",
   "nickname" => "conversion_tags/create",
-  "responseClass" => "ConversionTagResponse",
+  "responseClass" => "ConversionTag",
   "endpoint" => "/ad_accounts/{ad_account_id}/conversion_tags",
-  "notes" => "Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\" target=\"_blank\">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\">Set up the Pinterest tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/\">Pinterest Tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/#enhanced-match\">Enhanced match</a>",
+  "notes" => "Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account's website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -17,7 +17,7 @@ MyApp.add_route('POST', '/v5/ad_accounts/{ad_account_id}/conversion_tags', {
     },
     {
       "name" => "body",
-      "description" => "Conversion Tag to create",
+      "description" => "",
       "dataType" => "ConversionTagCreate",
       "paramType" => "body",
     }
@@ -33,7 +33,7 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/conversion_tags/{convers
   "resourcePath" => "/ConversionTags",
   "summary" => "Get conversion tag",
   "nickname" => "conversion_tags/get",
-  "responseClass" => "ConversionTagResponse",
+  "responseClass" => "ConversionTag",
   "endpoint" => "/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}",
   "notes" => "Get information about an existing conversion tag.",
   "parameters" => [
@@ -59,15 +59,15 @@ end
 
 MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/conversion_tags', {
   "resourcePath" => "/ConversionTags",
-  "summary" => "Get conversion tags",
+  "summary" => "List conversion tags",
   "nickname" => "conversion_tags/list",
-  "responseClass" => "ConversionTagListResponse",
+  "responseClass" => "conversion_tags_list_200_response",
   "endpoint" => "/ad_accounts/{ad_account_id}/conversion_tags",
   "notes" => "List conversion tags associated with an ad account.",
   "parameters" => [
     {
       "name" => "filter_deleted",
-      "description" => "Filter out deleted tags.",
+      "description" => "Filter by deleted status",
       "dataType" => "Boolean",
       "allowableValues" => "",
       "defaultValue" => "false",

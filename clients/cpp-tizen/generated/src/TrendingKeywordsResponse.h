@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "TrendingKeywordsResponse_trends_inner.h"
+#include "TrendingKeyword.h"
 #include <list>
 #include "Object.h"
 
@@ -49,14 +49,14 @@ public:
 
 	/*! \brief Get The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.
 	 */
-	std::list<TrendingKeywordsResponse_trends_inner> getTrends();
+	std::list<TrendingKeyword> getTrends();
 
 	/*! \brief Set The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.
 	 */
-	void setTrends(std::list <TrendingKeywordsResponse_trends_inner> trends);
+	void setTrends(std::list <TrendingKeyword> trends);
 
 private:
-	std::list <TrendingKeywordsResponse_trends_inner>trends;
+	std::list <TrendingKeyword>trends;
 	void __init();
 	void __cleanup();
 

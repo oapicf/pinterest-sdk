@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `AdsCreditRedeemResponse`
 --
-SELECT `success`, `errorCode`, `errorMessage` FROM `AdsCreditRedeemResponse` WHERE 1;
+SELECT `errorCode`, `errorMessage`, `success` FROM `AdsCreditRedeemResponse` WHERE 1;
 
 --
 -- INSERT template for table `AdsCreditRedeemResponse`
 --
-INSERT INTO `AdsCreditRedeemResponse`(`success`, `errorCode`, `errorMessage`) VALUES (?, ?, ?);
+INSERT INTO `AdsCreditRedeemResponse`(`errorCode`, `errorMessage`, `success`) VALUES (?, ?, ?);
 
 --
 -- UPDATE template for table `AdsCreditRedeemResponse`
 --
-UPDATE `AdsCreditRedeemResponse` SET `success` = ?, `errorCode` = ?, `errorMessage` = ? WHERE 1;
+UPDATE `AdsCreditRedeemResponse` SET `errorCode` = ?, `errorMessage` = ?, `success` = ? WHERE 1;
 
 --
 -- DELETE template for table `AdsCreditRedeemResponse`

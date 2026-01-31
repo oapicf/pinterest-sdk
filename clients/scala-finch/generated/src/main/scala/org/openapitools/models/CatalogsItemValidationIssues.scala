@@ -10,14 +10,14 @@ import org.openapitools.models.CatalogsItemValidationWarnings
 
 /**
  * 
- * @param itemUnderscorenumber Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
- * @param itemUnderscoreid The merchant-created unique ID that represents the product.
  * @param errors 
+ * @param itemUnderscoreid The merchant-created unique ID that represents the product.
+ * @param itemUnderscorenumber Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
  * @param warnings 
  */
-case class CatalogsItemValidationIssues(itemUnderscorenumber: Int,
+case class CatalogsItemValidationIssues(errors: CatalogsItemValidationErrors,
                 itemUnderscoreid: String,
-                errors: CatalogsItemValidationErrors,
+                itemUnderscorenumber: Int,
                 warnings: CatalogsItemValidationWarnings
                 )
 

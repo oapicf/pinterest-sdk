@@ -1,7 +1,6 @@
 package org.openapitools.api;
 
 import org.openapitools.model.Audience;
-import org.openapitools.model.AudienceCreateCustomRequest;
 import org.openapitools.model.AudienceCreateRequest;
 import org.openapitools.model.AudienceUpdateRequest;
 import org.openapitools.model.AudiencesList200Response;
@@ -31,7 +30,7 @@ public class AudiencesApiTest {
     /**
      * Create audience
      *
-     * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. &lt;p/&gt; For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt;.
+     * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;.
      */
     @Test
     @Disabled("Not Implemented")
@@ -45,26 +44,6 @@ public class AudiencesApiTest {
 
         // then
         // TODO implement the audiencesCreateTest()
-    }
-
-    
-    /**
-     * Create custom audience
-     *
-     * Create a custom audience and find the audiences you want your ads to reach.
-     */
-    @Test
-    @Disabled("Not Implemented")
-    public void audiencesCreateCustomTest() {
-        // given
-        String adAccountId = "example";
-        AudienceCreateCustomRequest audienceCreateCustomRequest = new AudienceCreateCustomRequest();
-
-        // when
-        Audience body = api.audiencesCreateCustom(adAccountId, audienceCreateCustomRequest).block();
-
-        // then
-        // TODO implement the audiencesCreateCustomTest()
     }
 
     

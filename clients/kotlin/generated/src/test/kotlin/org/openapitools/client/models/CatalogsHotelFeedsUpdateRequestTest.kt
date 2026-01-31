@@ -37,16 +37,16 @@ class CatalogsHotelFeedsUpdateRequestTest : ShouldSpec() {
             //modelInstance.catalogType shouldBe ("TODO")
         }
 
+        // to test the property `credentials`
+        should("test credentials") {
+            // uncomment below to test the property
+            //modelInstance.credentials shouldBe ("TODO")
+        }
+
         // to test the property `defaultCurrency`
         should("test defaultCurrency") {
             // uncomment below to test the property
             //modelInstance.defaultCurrency shouldBe ("TODO")
-        }
-
-        // to test the property `name` - A human-friendly name associated to a given feed.
-        should("test name") {
-            // uncomment below to test the property
-            //modelInstance.name shouldBe ("TODO")
         }
 
         // to test the property `format`
@@ -55,16 +55,16 @@ class CatalogsHotelFeedsUpdateRequestTest : ShouldSpec() {
             //modelInstance.format shouldBe ("TODO")
         }
 
-        // to test the property `credentials`
-        should("test credentials") {
-            // uncomment below to test the property
-            //modelInstance.credentials shouldBe ("TODO")
-        }
-
         // to test the property `location` - The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
         should("test location") {
             // uncomment below to test the property
             //modelInstance.location shouldBe ("TODO")
+        }
+
+        // to test the property `name` - A human-friendly name associated to a given feed.
+        should("test name") {
+            // uncomment below to test the property
+            //modelInstance.name shouldBe ("TODO")
         }
 
         // to test the property `preferredProcessingSchedule`

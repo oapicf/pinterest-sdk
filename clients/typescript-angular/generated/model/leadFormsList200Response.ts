@@ -11,7 +11,7 @@ import { LeadFormResponse } from './leadFormResponse';
 
 
 export interface LeadFormsList200Response { 
-    items: Array<LeadFormResponse>;
     bookmark?: string | null;
+    items: Array<LeadFormResponse>;
 }
 

@@ -75,11 +75,11 @@ private class OASAdAccountGetSubscriptionResponseTest {
         Map<String, String> x-property-mappings = adAccountGetSubscriptionResponse.getx-property-mappings();
         System.assertEquals('leadFormId', x-property-mappings.get('lead_form_id'));
         System.assertEquals('webhookUrl', x-property-mappings.get('webhook_url'));
-        System.assertEquals('userAccountId', x-property-mappings.get('user_account_id'));
         System.assertEquals('adAccountId', x-property-mappings.get('ad_account_id'));
         System.assertEquals('apiVersion', x-property-mappings.get('api_version'));
-        System.assertEquals('cryptographicKey', x-property-mappings.get('cryptographic_key'));
-        System.assertEquals('cryptographicAlgorithm', x-property-mappings.get('cryptographic_algorithm'));
         System.assertEquals('createdTime', x-property-mappings.get('created_time'));
+        System.assertEquals('cryptographicAlgorithm', x-property-mappings.get('cryptographic_algorithm'));
+        System.assertEquals('cryptographicKey', x-property-mappings.get('cryptographic_key'));
+        System.assertEquals('userAccountId', x-property-mappings.get('user_account_id'));
     }
 }

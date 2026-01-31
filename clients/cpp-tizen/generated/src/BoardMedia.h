@@ -1,11 +1,11 @@
 /*
- * Board_media.h
+ * BoardMedia.h
  *
- * Board media.
+ * 
  */
 
-#ifndef _Board_media_H_
-#define _Board_media_H_
+#ifndef _BoardMedia_H_
+#define _BoardMedia_H_
 
 
 #include <string>
@@ -21,22 +21,22 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Board media.
+/*! \brief 
  *
  *  \ingroup Models
  *
  */
 
-class Board_media : public Object {
+class BoardMedia : public Object {
 public:
 	/*! \brief Constructor.
 	 */
-	Board_media();
-	Board_media(char* str);
+	BoardMedia();
+	BoardMedia(char* str);
 
 	/*! \brief Destructor.
 	 */
-	virtual ~Board_media();
+	virtual ~BoardMedia();
 
 	/*! \brief Retrieve a string JSON representation of this class.
 	 */
@@ -46,11 +46,11 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Board cover image.
+	/*! \brief Get Board cover image
 	 */
 	std::string getImageCoverUrl();
 
-	/*! \brief Set Board cover image.
+	/*! \brief Set Board cover image
 	 */
 	void setImageCoverUrl(std::string  image_cover_url);
 	/*! \brief Get Board pin thumbnail urls.
@@ -71,4 +71,4 @@ private:
 }
 }
 
-#endif /* _Board_media_H_ */
+#endif /* _BoardMedia_H_ */

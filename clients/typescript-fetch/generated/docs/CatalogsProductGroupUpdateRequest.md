@@ -7,10 +7,10 @@ Request object for updating a product group.
 
 Name | Type
 ------------ | -------------
-`name` | string
 `description` | string
-`isFeatured` | boolean
 `filters` | [CatalogsProductGroupFiltersRequest](CatalogsProductGroupFiltersRequest.md)
+`isFeatured` | boolean
+`name` | string
 
 ## Example
 
@@ -19,10 +19,10 @@ import type { CatalogsProductGroupUpdateRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "name": null,
   "description": null,
-  "isFeatured": null,
   "filters": null,
+  "isFeatured": null,
+  "name": null,
 } satisfies CatalogsProductGroupUpdateRequest
 
 console.log(example)

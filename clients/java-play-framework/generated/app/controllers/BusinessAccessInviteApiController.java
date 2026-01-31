@@ -36,7 +36,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BusinessAccessInviteApiController extends Controller {
     private final BusinessAccessInviteApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -65,7 +65,7 @@ public class BusinessAccessInviteApiController extends Controller {
     }
 
     @ApiAction
-    public Result cancelInvitesOrRequests(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId) throws Exception {
+    public Result cancelInvitesOrRequests(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1)String businessId) throws Exception {
         JsonNode nodecancelInvitesBody = request.body().asJson();
         CancelInvitesBody cancelInvitesBody;
         if (nodecancelInvitesBody != null) {
@@ -95,7 +95,7 @@ public class BusinessAccessInviteApiController extends Controller {
     }
 
     @ApiAction
-    public Result createMembershipOrPartnershipInvites(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId) throws Exception {
+    public Result createMembershipOrPartnershipInvites(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1)String businessId) throws Exception {
         JsonNode nodecreateMembershipOrPartnershipInvitesBody = request.body().asJson();
         CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody;
         if (nodecreateMembershipOrPartnershipInvitesBody != null) {
@@ -110,7 +110,7 @@ public class BusinessAccessInviteApiController extends Controller {
     }
 
     @ApiAction
-    public Result getInvites(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId) throws Exception {
+    public Result getInvites(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1)String businessId) throws Exception {
         String valueisMember = request.getQueryString("is_member");
         Boolean isMember;
         if (valueisMember != null) {

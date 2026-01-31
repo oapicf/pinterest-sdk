@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Array&lt;Pin&gt;**](Pin.md) | Pins | [default to undefined]
 **bookmark** | **string** |  | [optional] [default to undefined]
+**items** | [**Array&lt;Pin&gt;**](Pin.md) | Pins | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { BoardsListPins200Response } from './api';
 
 const instance: BoardsListPins200Response = {
-    items,
     bookmark,
+    items,
 };
 ```
 

@@ -7,27 +7,31 @@
 #' @title CatalogsUpsertHotelItem
 #' @description CatalogsUpsertHotelItem Class
 #' @format An \code{R6Class} generator object
+#' @field attributes  \link{CatalogsHotelAttributes}
 #' @field hotel_id The catalog hotel id in the merchant namespace character
 #' @field operation  character
-#' @field attributes  \link{CatalogsHotelAttributes}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CatalogsUpsertHotelItem <- R6::R6Class(
   "CatalogsUpsertHotelItem",
   public = list(
+    `attributes` = NULL,
     `hotel_id` = NULL,
     `operation` = NULL,
-    `attributes` = NULL,
 
     #' @description
     #' Initialize a new CatalogsUpsertHotelItem class.
     #'
+    #' @param attributes attributes
     #' @param hotel_id The catalog hotel id in the merchant namespace
     #' @param operation operation
-    #' @param attributes attributes
     #' @param ... Other optional arguments.
-    initialize = function(`hotel_id`, `operation`, `attributes`, ...) {
+    initialize = function(`attributes`, `hotel_id`, `operation`, ...) {
+      if (!missing(`attributes`)) {
+        stopifnot(R6::is.R6(`attributes`))
+        self$`attributes` <- `attributes`
+      }
       if (!missing(`hotel_id`)) {
         if (!(is.character(`hotel_id`) && length(`hotel_id`) == 1)) {
           stop(paste("Error! Invalid data for `hotel_id`. Must be a string:", `hotel_id`))
@@ -42,10 +46,6 @@ CatalogsUpsertHotelItem <- R6::R6Class(
           stop(paste("Error! Invalid data for `operation`. Must be a string:", `operation`))
         }
         self$`operation` <- `operation`
-      }
-      if (!missing(`attributes`)) {
-        stopifnot(R6::is.R6(`attributes`))
-        self$`attributes` <- `attributes`
       }
     },
 
@@ -80,6 +80,10 @@ CatalogsUpsertHotelItem <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CatalogsUpsertHotelItemObject <- list()
+      if (!is.null(self$`attributes`)) {
+        CatalogsUpsertHotelItemObject[["attributes"]] <-
+          self$`attributes`$toSimpleType()
+      }
       if (!is.null(self$`hotel_id`)) {
         CatalogsUpsertHotelItemObject[["hotel_id"]] <-
           self$`hotel_id`
@@ -87,10 +91,6 @@ CatalogsUpsertHotelItem <- R6::R6Class(
       if (!is.null(self$`operation`)) {
         CatalogsUpsertHotelItemObject[["operation"]] <-
           self$`operation`
-      }
-      if (!is.null(self$`attributes`)) {
-        CatalogsUpsertHotelItemObject[["attributes"]] <-
-          self$`attributes`$toSimpleType()
       }
       return(CatalogsUpsertHotelItemObject)
     },
@@ -102,6 +102,11 @@ CatalogsUpsertHotelItem <- R6::R6Class(
     #' @return the instance of CatalogsUpsertHotelItem
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`attributes`)) {
+        `attributes_object` <- CatalogsHotelAttributes$new()
+        `attributes_object`$fromJSON(jsonlite::toJSON(this_object$`attributes`, auto_unbox = TRUE, digits = NA))
+        self$`attributes` <- `attributes_object`
+      }
       if (!is.null(this_object$`hotel_id`)) {
         self$`hotel_id` <- this_object$`hotel_id`
       }
@@ -110,11 +115,6 @@ CatalogsUpsertHotelItem <- R6::R6Class(
           stop(paste("Error! \"", this_object$`operation`, "\" cannot be assigned to `operation`. Must be \"UPSERT\".", sep = ""))
         }
         self$`operation` <- this_object$`operation`
-      }
-      if (!is.null(this_object$`attributes`)) {
-        `attributes_object` <- CatalogsHotelAttributes$new()
-        `attributes_object`$fromJSON(jsonlite::toJSON(this_object$`attributes`, auto_unbox = TRUE, digits = NA))
-        self$`attributes` <- `attributes_object`
       }
       self
     },
@@ -137,12 +137,12 @@ CatalogsUpsertHotelItem <- R6::R6Class(
     #' @return the instance of CatalogsUpsertHotelItem
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`attributes` <- CatalogsHotelAttributes$new()$fromJSON(jsonlite::toJSON(this_object$`attributes`, auto_unbox = TRUE, digits = NA))
       self$`hotel_id` <- this_object$`hotel_id`
       if (!is.null(this_object$`operation`) && !(this_object$`operation` %in% c("UPSERT"))) {
         stop(paste("Error! \"", this_object$`operation`, "\" cannot be assigned to `operation`. Must be \"UPSERT\".", sep = ""))
       }
       self$`operation` <- this_object$`operation`
-      self$`attributes` <- CatalogsHotelAttributes$new()$fromJSON(jsonlite::toJSON(this_object$`attributes`, auto_unbox = TRUE, digits = NA))
       self
     },
 
@@ -152,6 +152,12 @@ CatalogsUpsertHotelItem <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `attributes`
+      if (!is.null(input_json$`attributes`)) {
+        stopifnot(R6::is.R6(input_json$`attributes`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsUpsertHotelItem: the required field `attributes` is missing."))
+      }
       # check the required field `hotel_id`
       if (!is.null(input_json$`hotel_id`)) {
         if (!(is.character(input_json$`hotel_id`) && length(input_json$`hotel_id`) == 1)) {
@@ -168,12 +174,6 @@ CatalogsUpsertHotelItem <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsUpsertHotelItem: the required field `operation` is missing."))
       }
-      # check the required field `attributes`
-      if (!is.null(input_json$`attributes`)) {
-        stopifnot(R6::is.R6(input_json$`attributes`))
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for CatalogsUpsertHotelItem: the required field `attributes` is missing."))
-      }
     },
 
     #' @description
@@ -189,6 +189,11 @@ CatalogsUpsertHotelItem <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      # check if the required `attributes` is null
+      if (is.null(self$`attributes`)) {
+        return(FALSE)
+      }
+
       # check if the required `hotel_id` is null
       if (is.null(self$`hotel_id`)) {
         return(FALSE)
@@ -196,11 +201,6 @@ CatalogsUpsertHotelItem <- R6::R6Class(
 
       # check if the required `operation` is null
       if (is.null(self$`operation`)) {
-        return(FALSE)
-      }
-
-      # check if the required `attributes` is null
-      if (is.null(self$`attributes`)) {
         return(FALSE)
       }
 
@@ -213,6 +213,11 @@ CatalogsUpsertHotelItem <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `attributes` is null
+      if (is.null(self$`attributes`)) {
+        invalid_fields["attributes"] <- "Non-nullable required field `attributes` cannot be null."
+      }
+
       # check if the required `hotel_id` is null
       if (is.null(self$`hotel_id`)) {
         invalid_fields["hotel_id"] <- "Non-nullable required field `hotel_id` cannot be null."
@@ -221,11 +226,6 @@ CatalogsUpsertHotelItem <- R6::R6Class(
       # check if the required `operation` is null
       if (is.null(self$`operation`)) {
         invalid_fields["operation"] <- "Non-nullable required field `operation` cannot be null."
-      }
-
-      # check if the required `attributes` is null
-      if (is.null(self$`attributes`)) {
-        invalid_fields["attributes"] <- "Non-nullable required field `attributes` cannot be null."
       }
 
       invalid_fields

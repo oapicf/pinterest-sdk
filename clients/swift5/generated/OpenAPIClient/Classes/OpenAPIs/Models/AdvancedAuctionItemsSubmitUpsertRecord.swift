@@ -13,27 +13,31 @@ import AnyCodable
 /** Object describing an item bid option upsert operation */
 public struct AdvancedAuctionItemsSubmitUpsertRecord: Codable, JSONEncodable, Hashable {
 
+    public var country: Country
     /** The catalog retail item id in the merchant namespace */
     public var itemId: String
-    public var country: Country
     public var language: Language
     public var bidOptions: AdvancedAuctionBidOptions
+    /** Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied. */
+    public var errors: [AdvancedAuctionOperationError]?
     /** The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`. */
     public var updateMask: [UpdateMaskBidOptionField]?
 
-    public init(itemId: String, country: Country, language: Language, bidOptions: AdvancedAuctionBidOptions, updateMask: [UpdateMaskBidOptionField]?) {
-        self.itemId = itemId
+    public init(country: Country, itemId: String, language: Language, bidOptions: AdvancedAuctionBidOptions, errors: [AdvancedAuctionOperationError]? = nil, updateMask: [UpdateMaskBidOptionField]?) {
         self.country = country
+        self.itemId = itemId
         self.language = language
         self.bidOptions = bidOptions
+        self.errors = errors
         self.updateMask = updateMask
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case itemId = "item_id"
         case country
+        case itemId = "item_id"
         case language
         case bidOptions = "bid_options"
+        case errors
         case updateMask = "update_mask"
     }
 
@@ -41,10 +45,11 @@ public struct AdvancedAuctionItemsSubmitUpsertRecord: Codable, JSONEncodable, Ha
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(itemId, forKey: .itemId)
         try container.encode(country, forKey: .country)
+        try container.encode(itemId, forKey: .itemId)
         try container.encode(language, forKey: .language)
         try container.encode(bidOptions, forKey: .bidOptions)
+        try container.encodeIfPresent(errors, forKey: .errors)
         try container.encode(updateMask, forKey: .updateMask)
     }
 }

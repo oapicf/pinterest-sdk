@@ -22,20 +22,17 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param reportType 
  * @param catalogId ID of the catalog entity.
  * @param code The event code that a diagnostics aggregated number references
  * @param codeLabel A human-friendly label for the event code (e.g, 'AVAILABILITY_INVALID')
  * @param message Title message describing the diagnostic issue
  * @param occurrences Number of occurrences of the issue
+ * @param reportType 
  * @param severity An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
  */
 
 
 data class CatalogsReportFeedIngestionStats (
-
-    @Json(name = "report_type")
-    val reportType: CatalogsReportFeedIngestionStats.ReportType? = null,
 
     /* ID of the catalog entity. */
     @Json(name = "catalog_id")
@@ -56,6 +53,9 @@ data class CatalogsReportFeedIngestionStats (
     /* Number of occurrences of the issue */
     @Json(name = "occurrences")
     val occurrences: kotlin.Int? = null,
+
+    @Json(name = "report_type")
+    val reportType: CatalogsReportFeedIngestionStats.ReportType? = null,
 
     /* An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue */
     @Json(name = "severity")

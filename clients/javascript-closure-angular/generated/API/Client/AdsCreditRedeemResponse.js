@@ -6,13 +6,6 @@ goog.provide('API.Client.AdsCreditRedeemResponse');
 API.Client.AdsCreditRedeemResponse = function() {}
 
 /**
- * Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
- * @type {!boolean}
- * @export
- */
-API.Client.AdsCreditRedeemResponse.prototype.success;
-
-/**
  * Error code type if error occurs
  * @type {!number}
  * @export
@@ -25,4 +18,11 @@ API.Client.AdsCreditRedeemResponse.prototype.errorCode;
  * @export
  */
 API.Client.AdsCreditRedeemResponse.prototype.errorMessage;
+
+/**
+ * Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
+ * @type {!boolean}
+ * @export
+ */
+API.Client.AdsCreditRedeemResponse.prototype.success;
 

@@ -6,27 +6,27 @@
 
 
 static ads_credits_discounts_get_200_response_t *ads_credits_discounts_get_200_response_create_internal(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     ads_credits_discounts_get_200_response_t *ads_credits_discounts_get_200_response_local_var = malloc(sizeof(ads_credits_discounts_get_200_response_t));
     if (!ads_credits_discounts_get_200_response_local_var) {
         return NULL;
     }
-    ads_credits_discounts_get_200_response_local_var->items = items;
     ads_credits_discounts_get_200_response_local_var->bookmark = bookmark;
+    ads_credits_discounts_get_200_response_local_var->items = items;
 
     ads_credits_discounts_get_200_response_local_var->_library_owned = 1;
     return ads_credits_discounts_get_200_response_local_var;
 }
 
 __attribute__((deprecated)) ads_credits_discounts_get_200_response_t *ads_credits_discounts_get_200_response_create(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     return ads_credits_discounts_get_200_response_create_internal (
-        items,
-        bookmark
+        bookmark,
+        items
         );
 }
 
@@ -39,6 +39,10 @@ void ads_credits_discounts_get_200_response_free(ads_credits_discounts_get_200_r
         return ;
     }
     listEntry_t *listEntry;
+    if (ads_credits_discounts_get_200_response->bookmark) {
+        free(ads_credits_discounts_get_200_response->bookmark);
+        ads_credits_discounts_get_200_response->bookmark = NULL;
+    }
     if (ads_credits_discounts_get_200_response->items) {
         list_ForEach(listEntry, ads_credits_discounts_get_200_response->items) {
             ads_credit_discounts_response_free(listEntry->data);
@@ -46,15 +50,19 @@ void ads_credits_discounts_get_200_response_free(ads_credits_discounts_get_200_r
         list_freeList(ads_credits_discounts_get_200_response->items);
         ads_credits_discounts_get_200_response->items = NULL;
     }
-    if (ads_credits_discounts_get_200_response->bookmark) {
-        free(ads_credits_discounts_get_200_response->bookmark);
-        ads_credits_discounts_get_200_response->bookmark = NULL;
-    }
     free(ads_credits_discounts_get_200_response);
 }
 
 cJSON *ads_credits_discounts_get_200_response_convertToJSON(ads_credits_discounts_get_200_response_t *ads_credits_discounts_get_200_response) {
     cJSON *item = cJSON_CreateObject();
+
+    // ads_credits_discounts_get_200_response->bookmark
+    if(ads_credits_discounts_get_200_response->bookmark) {
+    if(cJSON_AddStringToObject(item, "bookmark", ads_credits_discounts_get_200_response->bookmark) == NULL) {
+    goto fail; //String
+    }
+    }
+
 
     // ads_credits_discounts_get_200_response->items
     if (!ads_credits_discounts_get_200_response->items) {
@@ -76,14 +84,6 @@ cJSON *ads_credits_discounts_get_200_response_convertToJSON(ads_credits_discount
     }
     }
 
-
-    // ads_credits_discounts_get_200_response->bookmark
-    if(ads_credits_discounts_get_200_response->bookmark) {
-    if(cJSON_AddStringToObject(item, "bookmark", ads_credits_discounts_get_200_response->bookmark) == NULL) {
-    goto fail; //String
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -98,6 +98,18 @@ ads_credits_discounts_get_200_response_t *ads_credits_discounts_get_200_response
 
     // define the local list for ads_credits_discounts_get_200_response->items
     list_t *itemsList = NULL;
+
+    // ads_credits_discounts_get_200_response->bookmark
+    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(ads_credits_discounts_get_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
+    if (bookmark) { 
+    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
+    {
+    goto end; //String
+    }
+    }
 
     // ads_credits_discounts_get_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(ads_credits_discounts_get_200_responseJSON, "items");
@@ -126,22 +138,10 @@ ads_credits_discounts_get_200_response_t *ads_credits_discounts_get_200_response
         list_addElement(itemsList, itemsItem);
     }
 
-    // ads_credits_discounts_get_200_response->bookmark
-    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(ads_credits_discounts_get_200_responseJSON, "bookmark");
-    if (cJSON_IsNull(bookmark)) {
-        bookmark = NULL;
-    }
-    if (bookmark) { 
-    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
-    {
-    goto end; //String
-    }
-    }
-
 
     ads_credits_discounts_get_200_response_local_var = ads_credits_discounts_get_200_response_create_internal (
-        itemsList,
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
+        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        itemsList
         );
 
     return ads_credits_discounts_get_200_response_local_var;

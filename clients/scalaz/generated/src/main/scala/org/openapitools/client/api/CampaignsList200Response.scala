@@ -12,8 +12,8 @@ import org.joda.time.DateTime
 import CampaignsList200Response._
 
 case class CampaignsList200Response (
-  items: List[CampaignResponse],
-bookmark: Option[String])
+  bookmark: Option[String],
+items: List[CampaignResponse])
 
 object CampaignsList200Response {
   import DateTimeCodecs._

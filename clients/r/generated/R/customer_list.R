@@ -9,6 +9,7 @@
 #' @format An \code{R6Class} generator object
 #' @field ad_account_id Associated ad account ID. character [optional]
 #' @field created_time Creation time. Unix timestamp in seconds. numeric [optional]
+#' @field exceptions Customer list errors object [optional]
 #' @field id Customer list ID. character [optional]
 #' @field name Customer list name. character [optional]
 #' @field num_batches Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists. numeric [optional]
@@ -17,7 +18,6 @@
 #' @field status Customer list status. TOO_SMALL - the list has less than 100 Pinterest users. character [optional]
 #' @field type Always \"customerlist\". character [optional]
 #' @field updated_time Last update time. Unix timestamp in seconds. numeric [optional]
-#' @field exceptions Customer list errors object [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -26,6 +26,7 @@ CustomerList <- R6::R6Class(
   public = list(
     `ad_account_id` = NULL,
     `created_time` = NULL,
+    `exceptions` = NULL,
     `id` = NULL,
     `name` = NULL,
     `num_batches` = NULL,
@@ -34,13 +35,13 @@ CustomerList <- R6::R6Class(
     `status` = NULL,
     `type` = NULL,
     `updated_time` = NULL,
-    `exceptions` = NULL,
 
     #' @description
     #' Initialize a new CustomerList class.
     #'
     #' @param ad_account_id Associated ad account ID.
     #' @param created_time Creation time. Unix timestamp in seconds.
+    #' @param exceptions Customer list errors
     #' @param id Customer list ID.
     #' @param name Customer list name.
     #' @param num_batches Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.
@@ -49,9 +50,8 @@ CustomerList <- R6::R6Class(
     #' @param status Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
     #' @param type Always \"customerlist\".
     #' @param updated_time Last update time. Unix timestamp in seconds.
-    #' @param exceptions Customer list errors
     #' @param ... Other optional arguments.
-    initialize = function(`ad_account_id` = NULL, `created_time` = NULL, `id` = NULL, `name` = NULL, `num_batches` = NULL, `num_removed_user_records` = NULL, `num_uploaded_user_records` = NULL, `status` = NULL, `type` = NULL, `updated_time` = NULL, `exceptions` = NULL, ...) {
+    initialize = function(`ad_account_id` = NULL, `created_time` = NULL, `exceptions` = NULL, `id` = NULL, `name` = NULL, `num_batches` = NULL, `num_removed_user_records` = NULL, `num_uploaded_user_records` = NULL, `status` = NULL, `type` = NULL, `updated_time` = NULL, ...) {
       if (!is.null(`ad_account_id`)) {
         if (!(is.character(`ad_account_id`) && length(`ad_account_id`) == 1)) {
           stop(paste("Error! Invalid data for `ad_account_id`. Must be a string:", `ad_account_id`))
@@ -60,6 +60,9 @@ CustomerList <- R6::R6Class(
       }
       if (!is.null(`created_time`)) {
         self$`created_time` <- `created_time`
+      }
+      if (!is.null(`exceptions`)) {
+        self$`exceptions` <- `exceptions`
       }
       if (!is.null(`id`)) {
         if (!(is.character(`id`) && length(`id`) == 1)) {
@@ -99,9 +102,6 @@ CustomerList <- R6::R6Class(
       }
       if (!is.null(`updated_time`)) {
         self$`updated_time` <- `updated_time`
-      }
-      if (!is.null(`exceptions`)) {
-        self$`exceptions` <- `exceptions`
       }
     },
 
@@ -144,6 +144,10 @@ CustomerList <- R6::R6Class(
         CustomerListObject[["created_time"]] <-
           self$`created_time`
       }
+      if (!is.null(self$`exceptions`)) {
+        CustomerListObject[["exceptions"]] <-
+          self$`exceptions`
+      }
       if (!is.null(self$`id`)) {
         CustomerListObject[["id"]] <-
           self$`id`
@@ -176,10 +180,6 @@ CustomerList <- R6::R6Class(
         CustomerListObject[["updated_time"]] <-
           self$`updated_time`
       }
-      if (!is.null(self$`exceptions`)) {
-        CustomerListObject[["exceptions"]] <-
-          self$`exceptions`
-      }
       return(CustomerListObject)
     },
 
@@ -195,6 +195,9 @@ CustomerList <- R6::R6Class(
       }
       if (!is.null(this_object$`created_time`)) {
         self$`created_time` <- this_object$`created_time`
+      }
+      if (!is.null(this_object$`exceptions`)) {
+        self$`exceptions` <- this_object$`exceptions`
       }
       if (!is.null(this_object$`id`)) {
         self$`id` <- this_object$`id`
@@ -223,9 +226,6 @@ CustomerList <- R6::R6Class(
       if (!is.null(this_object$`updated_time`)) {
         self$`updated_time` <- this_object$`updated_time`
       }
-      if (!is.null(this_object$`exceptions`)) {
-        self$`exceptions` <- this_object$`exceptions`
-      }
       self
     },
 
@@ -249,6 +249,7 @@ CustomerList <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`ad_account_id` <- this_object$`ad_account_id`
       self$`created_time` <- this_object$`created_time`
+      self$`exceptions` <- this_object$`exceptions`
       self$`id` <- this_object$`id`
       self$`name` <- this_object$`name`
       self$`num_batches` <- this_object$`num_batches`
@@ -260,7 +261,6 @@ CustomerList <- R6::R6Class(
       self$`status` <- this_object$`status`
       self$`type` <- this_object$`type`
       self$`updated_time` <- this_object$`updated_time`
-      self$`exceptions` <- this_object$`exceptions`
       self
     },
 

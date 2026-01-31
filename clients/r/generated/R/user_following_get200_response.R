@@ -7,16 +7,16 @@
 #' @title UserFollowingGet200Response
 #' @description UserFollowingGet200Response Class
 #' @format An \code{R6Class} generator object
-#' @field items Users list(\link{UserSummary})
 #' @field bookmark  character [optional]
+#' @field items Users list(\link{UserSummary})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 UserFollowingGet200Response <- R6::R6Class(
   "UserFollowingGet200Response",
   public = list(
-    `items` = NULL,
     `bookmark` = NULL,
+    `items` = NULL,
 
     #' @description
     #' Initialize a new UserFollowingGet200Response class.
@@ -69,13 +69,13 @@ UserFollowingGet200Response <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       UserFollowingGet200ResponseObject <- list()
-      if (!is.null(self$`items`)) {
-        UserFollowingGet200ResponseObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toSimpleType())
-      }
       if (!is.null(self$`bookmark`)) {
         UserFollowingGet200ResponseObject[["bookmark"]] <-
           self$`bookmark`
+      }
+      if (!is.null(self$`items`)) {
+        UserFollowingGet200ResponseObject[["items"]] <-
+          lapply(self$`items`, function(x) x$toSimpleType())
       }
       return(UserFollowingGet200ResponseObject)
     },
@@ -87,11 +87,11 @@ UserFollowingGet200Response <- R6::R6Class(
     #' @return the instance of UserFollowingGet200Response
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`items`)) {
-        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[UserSummary]", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`bookmark`)) {
         self$`bookmark` <- this_object$`bookmark`
+      }
+      if (!is.null(this_object$`items`)) {
+        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[UserSummary]", loadNamespace("openapi"))
       }
       self
     },
@@ -114,8 +114,8 @@ UserFollowingGet200Response <- R6::R6Class(
     #' @return the instance of UserFollowingGet200Response
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[UserSummary]", loadNamespace("openapi"))
       self$`bookmark` <- this_object$`bookmark`
+      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[UserSummary]", loadNamespace("openapi"))
       self
     },
 

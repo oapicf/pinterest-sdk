@@ -16,14 +16,14 @@ void main() {
   // final instance = PinMediaSourcePinURL();
 
   group('test PinMediaSourcePinURL', () {
-    // String sourceType
-    test('to test the property `sourceType`', () async {
-      // TODO
-    });
-
     // This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
     // bool isAffiliateLink (default value: false)
     test('to test the property `isAffiliateLink`', () async {
+      // TODO
+    });
+
+    // String sourceType
+    test('to test the property `sourceType`', () async {
       // TODO
     });
 

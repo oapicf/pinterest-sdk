@@ -75,16 +75,23 @@ private class OASProductGroupPromotionTest {
         Map<String, String> x-property-mappings = productGroupPromotion.getx-property-mappings();
         System.assertEquals('adGroupId', x-property-mappings.get('ad_group_id'));
         System.assertEquals('bidInMicroCurrency', x-property-mappings.get('bid_in_micro_currency'));
-        System.assertEquals('relativeDefinition', x-property-mappings.get('relative_definition'));
-        System.assertEquals('parentId', x-property-mappings.get('parent_id'));
-        System.assertEquals('slideshowCollectionsTitle', x-property-mappings.get('slideshow_collections_title'));
-        System.assertEquals('slideshowCollectionsDescription', x-property-mappings.get('slideshow_collections_description'));
-        System.assertEquals('isMdl', x-property-mappings.get('is_mdl'));
-        System.assertEquals('trackingUrl', x-property-mappings.get('tracking_url'));
         System.assertEquals('catalogProductGroupId', x-property-mappings.get('catalog_product_group_id'));
         System.assertEquals('catalogProductGroupName', x-property-mappings.get('catalog_product_group_name'));
-        System.assertEquals('collectionsHeroPinId', x-property-mappings.get('collections_hero_pin_id'));
+        System.assertEquals('collectionsHeaderType', x-property-mappings.get('collections_header_type'));
         System.assertEquals('collectionsHeroDestinationUrl', x-property-mappings.get('collections_hero_destination_url'));
+        System.assertEquals('collectionsHeroPinId', x-property-mappings.get('collections_hero_pin_id'));
+        System.assertEquals('creativeType', x-property-mappings.get('creative_type'));
+        System.assertEquals('customizableCtaType', x-property-mappings.get('customizable_cta_type'));
         System.assertEquals('gridClickType', x-property-mappings.get('grid_click_type'));
+        System.assertEquals('isGenerateBackground', x-property-mappings.get('is_generate_background'));
+        System.assertEquals('isMdl', x-property-mappings.get('is_mdl'));
+        System.assertEquals('parentId', x-property-mappings.get('parent_id'));
+        System.assertEquals('preferredMediaType', x-property-mappings.get('preferred_media_type'));
+        System.assertEquals('relativeDefinition', x-property-mappings.get('relative_definition'));
+        System.assertEquals('selectedImageTag', x-property-mappings.get('selected_image_tag'));
+        System.assertEquals('selectedVideoTag', x-property-mappings.get('selected_video_tag'));
+        System.assertEquals('slideshowCollectionsDescription', x-property-mappings.get('slideshow_collections_description'));
+        System.assertEquals('slideshowCollectionsTitle', x-property-mappings.get('slideshow_collections_title'));
+        System.assertEquals('trackingUrl', x-property-mappings.get('tracking_url'));
     }
 }

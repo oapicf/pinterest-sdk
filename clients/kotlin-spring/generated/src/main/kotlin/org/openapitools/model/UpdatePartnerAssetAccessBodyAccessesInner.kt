@@ -16,21 +16,21 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param partnerId Unique identifier of a business partner to update asset access to.
  * @param assetId Unique identifier of the business asset.
+ * @param partnerId Unique identifier of a business partner to update asset access to.
  * @param permissions A non-empty array of permissions to assign to the partner.
  */
 data class UpdatePartnerAssetAccessBodyAccessesInner(
 
     @get:Pattern(regexp="^\\d+$")
     @get:Size(max=25)
-    @Schema(example = "1234567890123", required = true, description = "Unique identifier of a business partner to update asset access to.")
-    @get:JsonProperty("partner_id", required = true) val partnerId: kotlin.String,
+    @Schema(example = "549755885175", required = true, description = "Unique identifier of the business asset.")
+    @get:JsonProperty("asset_id", required = true) val assetId: kotlin.String,
 
     @get:Pattern(regexp="^\\d+$")
     @get:Size(max=25)
-    @Schema(example = "549755885175", required = true, description = "Unique identifier of the business asset.")
-    @get:JsonProperty("asset_id", required = true) val assetId: kotlin.String,
+    @Schema(example = "1234567890123", required = true, description = "Unique identifier of a business partner to update asset access to.")
+    @get:JsonProperty("partner_id", required = true) val partnerId: kotlin.String,
 
     @field:Valid
     @get:Size(min=1,max=50) 

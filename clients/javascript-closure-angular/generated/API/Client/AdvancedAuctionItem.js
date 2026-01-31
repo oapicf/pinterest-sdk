@@ -6,17 +6,17 @@ goog.provide('API.Client.AdvancedAuctionItem');
 API.Client.AdvancedAuctionItem = function() {}
 
 /**
+ * @type {!API.Client.Country}
+ * @export
+ */
+API.Client.AdvancedAuctionItem.prototype.country;
+
+/**
  * The catalog retail item id in the merchant namespace
  * @type {!string}
  * @export
  */
 API.Client.AdvancedAuctionItem.prototype.itemId;
-
-/**
- * @type {!API.Client.Country}
- * @export
- */
-API.Client.AdvancedAuctionItem.prototype.country;
 
 /**
  * @type {!API.Client.Language}

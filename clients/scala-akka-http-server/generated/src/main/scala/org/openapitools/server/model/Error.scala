@@ -2,7 +2,9 @@ package org.openapitools.server.model
 
 
 /**
- * = Error =
+ * = Generic Error =
+ *
+ * Default error response
  *
  * @param code  for example: ''null''
  * @param message  for example: ''null''

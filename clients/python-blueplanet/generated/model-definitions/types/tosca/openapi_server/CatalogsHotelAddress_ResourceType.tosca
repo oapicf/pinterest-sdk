@@ -1,0 +1,55 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsHotelAddress"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsHotelAddress"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CatalogsHotelAddress {
+    title = CatalogsHotelAddress
+    description = CatalogsHotelAddress
+    derivedFrom = Root
+    properties {
+        addr1 {
+          type =  string
+          description = "Primary street address of hotel."
+          optional = false
+        }
+        city {
+          type =  string
+          description = "City where the hotel is located."
+          optional = false
+        }
+        country {
+          type =  string
+          description = "Country where the hotel is located."
+          optional = false
+        }
+        postal_code {
+          type =  string
+          description = "Required for countries with a postal code system. Postal or zip code of the hotel."
+          optional = false
+        }
+        region {
+          type =  string
+          description = "State, county, province, where the hotel is located."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsHotelAddress {
+    title = CatalogsHotelAddress
+    description = CatalogsHotelAddress
+    implements = openapi_server.resourceTypes.CatalogsHotelAddress
+
+  }
+}

@@ -25,19 +25,11 @@ public class AssetGroupBindingTest {
     }
 
     /**
-     * Test the property 'id'
+     * Test the property 'adAccountsIds'
      */
     @Test
-    public void idTest() {
-        // TODO: test id
-    }
-
-    /**
-     * Test the property 'assetGroupName'
-     */
-    @Test
-    public void assetGroupNameTest() {
-        // TODO: test assetGroupName
+    public void adAccountsIdsTest() {
+        // TODO: test adAccountsIds
     }
 
     /**
@@ -49,6 +41,14 @@ public class AssetGroupBindingTest {
     }
 
     /**
+     * Test the property 'assetGroupName'
+     */
+    @Test
+    public void assetGroupNameTest() {
+        // TODO: test assetGroupName
+    }
+
+    /**
      * Test the property 'assetGroupTypes'
      */
     @Test
@@ -57,19 +57,19 @@ public class AssetGroupBindingTest {
     }
 
     /**
-     * Test the property 'adAccountsIds'
+     * Test the property 'catalogsIds'
      */
     @Test
-    public void adAccountsIdsTest() {
-        // TODO: test adAccountsIds
+    public void catalogsIdsTest() {
+        // TODO: test catalogsIds
     }
 
     /**
-     * Test the property 'profilesIds'
+     * Test the property 'createdBy'
      */
     @Test
-    public void profilesIdsTest() {
-        // TODO: test profilesIds
+    public void createdByTest() {
+        // TODO: test createdBy
     }
 
     /**
@@ -81,11 +81,11 @@ public class AssetGroupBindingTest {
     }
 
     /**
-     * Test the property 'updatedTime'
+     * Test the property 'id'
      */
     @Test
-    public void updatedTimeTest() {
-        // TODO: test updatedTime
+    public void idTest() {
+        // TODO: test id
     }
 
     /**
@@ -97,11 +97,19 @@ public class AssetGroupBindingTest {
     }
 
     /**
-     * Test the property 'createdBy'
+     * Test the property 'profilesIds'
      */
     @Test
-    public void createdByTest() {
-        // TODO: test createdBy
+    public void profilesIdsTest() {
+        // TODO: test profilesIds
+    }
+
+    /**
+     * Test the property 'updatedTime'
+     */
+    @Test
+    public void updatedTimeTest() {
+        // TODO: test updatedTime
     }
 
 }

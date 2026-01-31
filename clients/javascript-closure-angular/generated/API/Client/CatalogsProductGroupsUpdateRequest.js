@@ -9,13 +9,13 @@ API.Client.CatalogsProductGroupsUpdateRequest = function() {}
  * @type {!string}
  * @export
  */
-API.Client.CatalogsProductGroupsUpdateRequest.prototype.name;
+API.Client.CatalogsProductGroupsUpdateRequest.prototype.description;
 
 /**
- * @type {!string}
+ * @type {!API.Client.CatalogsCreativeAssetsProductGroupFilters}
  * @export
  */
-API.Client.CatalogsProductGroupsUpdateRequest.prototype.description;
+API.Client.CatalogsProductGroupsUpdateRequest.prototype.filters;
 
 /**
  * boolean indicator of whether the product group is being featured or not
@@ -25,10 +25,10 @@ API.Client.CatalogsProductGroupsUpdateRequest.prototype.description;
 API.Client.CatalogsProductGroupsUpdateRequest.prototype.isFeatured;
 
 /**
- * @type {!API.Client.CatalogsCreativeAssetsProductGroupFilters}
+ * @type {!string}
  * @export
  */
-API.Client.CatalogsProductGroupsUpdateRequest.prototype.filters;
+API.Client.CatalogsProductGroupsUpdateRequest.prototype.name;
 
 /**
  * @type {!string}

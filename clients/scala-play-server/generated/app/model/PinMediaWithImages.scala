@@ -4,39 +4,22 @@ import play.api.libs.json._
 
 /**
   * Pin with multiple images.
-  * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class PinMediaWithImages(
-  mediaType: Option[String],
-  items: Option[List[ImageMetadata]]
-  additionalProperties: PinMedia
+  items: Option[List[ImageMetadata]],
+  mediaType: PinMediaWithImages.MediaType.Value
 )
 
 object PinMediaWithImages {
-  implicit lazy val pinMediaWithImagesJsonFormat: Format[PinMediaWithImages] = {
-    val realJsonFormat = Json.format[PinMediaWithImages]
-    val declaredPropNames = Set("mediaType", "items")
-    
-    Format(
-      Reads {
-        case JsObject(xs) =>
-          val declaredProps = xs.filterKeys(declaredPropNames)
-          val additionalProps = JsObject(xs -- declaredPropNames)
-          val restructuredProps = declaredProps + ("additionalProperties" -> additionalProps)
-          val newObj = JsObject(restructuredProps)
-          realJsonFormat.reads(newObj)
-        case _ =>
-          JsError("error.expected.jsobject")
-      },
-      Writes { pinMediaWithImages =>
-        val jsObj = realJsonFormat.writes(pinMediaWithImages)
-        val additionalProps = jsObj.value("additionalProperties").as[JsObject]
-        val declaredProps = jsObj - "additionalProperties"
-        val newObj = declaredProps ++ additionalProps
-        newObj
-      }
-    )
+  implicit lazy val pinMediaWithImagesJsonFormat: Format[PinMediaWithImages] = Json.format[PinMediaWithImages]
+
+  // noinspection TypeAnnotation
+  object MediaType extends Enumeration {
+    val MultipleImages = Value("multiple_images")
+
+    type MediaType = Value
+    implicit lazy val MediaTypeJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])
   }
 }
 

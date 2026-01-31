@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "MediaUploadDetails.h"
+#include "Media.h"
 #include <list>
 #include "Object.h"
 
@@ -47,13 +47,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Media
-	 */
-	std::list<MediaUploadDetails> getItems();
-
-	/*! \brief Set Media
-	 */
-	void setItems(std::list <MediaUploadDetails> items);
 	/*! \brief Get 
 	 */
 	std::string getBookmark();
@@ -61,10 +54,17 @@ public:
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
+	/*! \brief Get 
+	 */
+	std::list<Media> getItems();
+
+	/*! \brief Set 
+	 */
+	void setItems(std::list <Media> items);
 
 private:
-	std::list <MediaUploadDetails>items;
 	std::string bookmark;
+	std::list <Media>items;
 	void __init();
 	void __cleanup();
 

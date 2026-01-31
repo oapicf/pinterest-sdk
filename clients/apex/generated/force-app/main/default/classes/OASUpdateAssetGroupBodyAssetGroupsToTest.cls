@@ -86,7 +86,7 @@ private class OASUpdateAssetGroupBodyAssetGroupsToTest {
         System.assertEquals(new List<String>(), updateAssetGroupBodyAssetGroupsToUpdateInner.assetsToAdd);
         System.assertEquals(new List<String>(), updateAssetGroupBodyAssetGroupsToUpdateInner.assetsToRemove);
         System.assertEquals(null, updateAssetGroupBodyAssetGroupsToUpdateInner.assetGroupId);
-        System.assertEquals(null, updateAssetGroupBodyAssetGroupsToUpdateInner.name);
         System.assertEquals(null, updateAssetGroupBodyAssetGroupsToUpdateInner.description);
+        System.assertEquals(null, updateAssetGroupBodyAssetGroupsToUpdateInner.name);
     }
 }

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,25 +20,25 @@ var _ MappedNullable = &TargetingTemplateGetResponseData{}
 
 // TargetingTemplateGetResponseData struct for TargetingTemplateGetResponseData
 type TargetingTemplateGetResponseData struct {
-	// targeting template name
-	Name *string `json:"name,omitempty"`
 	// Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
 	AutoTargetingEnabled *bool `json:"auto_targeting_enabled,omitempty"`
-	TargetingAttributes *TargetingSpec `json:"targeting_attributes,omitempty"`
-	PlacementGroup *PlacementGroupType `json:"placement_group,omitempty"`
 	Keywords []TargetingTemplateKeyword `json:"keywords,omitempty"`
+	// targeting template name
+	Name *string `json:"name,omitempty"`
+	PlacementGroup *PlacementGroupType `json:"placement_group,omitempty"`
+	TargetingAttributes *TargetingSpec `json:"targeting_attributes,omitempty"`
 	TrackingUrls NullableTrackingUrls `json:"tracking_urls,omitempty"`
-	// Targeting template ID.
-	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
-	// Targeting template created time. Unix timestamp in seconds.
-	CreatedTime *int32 `json:"created_time,omitempty"`
-	// Targeting template updated time.Unix timestamp in seconds.
-	UpdatedTime *int32 `json:"updated_time,omitempty"`
 	// The ID of the advertiser that this targeting template belongs to.
 	AdAccountId *string `json:"ad_account_id,omitempty" validate:"regexp=^\\\\d+$"`
+	// Targeting template created time. Unix timestamp in seconds.
+	CreatedTime *int32 `json:"created_time,omitempty"`
+	// Targeting template ID.
+	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+	Sizing NullableTargetingTemplateAudienceSizing `json:"sizing,omitempty"`
 	// Indicate targeting template is active or Deleted
 	Status *string `json:"status,omitempty"`
-	Sizing NullableTargetingTemplateAudienceSizing `json:"sizing,omitempty"`
+	// Targeting template updated time.Unix timestamp in seconds.
+	UpdatedTime *int32 `json:"updated_time,omitempty"`
 	// Inform if the targeting template is valid (ex. would be false if has revoked audience)
 	Valid NullableBool `json:"valid,omitempty"`
 }
@@ -70,38 +70,6 @@ func NewTargetingTemplateGetResponseDataWithDefaults() *TargetingTemplateGetResp
 	var status string = "ACTIVE"
 	this.Status = &status
 	return &this
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *TargetingTemplateGetResponseData) GetName() string {
-	if o == nil || IsNil(o.Name) {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetingTemplateGetResponseData) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *TargetingTemplateGetResponseData) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *TargetingTemplateGetResponseData) SetName(v string) {
-	o.Name = &v
 }
 
 // GetAutoTargetingEnabled returns the AutoTargetingEnabled field value if set, zero value otherwise.
@@ -136,36 +104,68 @@ func (o *TargetingTemplateGetResponseData) SetAutoTargetingEnabled(v bool) {
 	o.AutoTargetingEnabled = &v
 }
 
-// GetTargetingAttributes returns the TargetingAttributes field value if set, zero value otherwise.
-func (o *TargetingTemplateGetResponseData) GetTargetingAttributes() TargetingSpec {
-	if o == nil || IsNil(o.TargetingAttributes) {
-		var ret TargetingSpec
+// GetKeywords returns the Keywords field value if set, zero value otherwise.
+func (o *TargetingTemplateGetResponseData) GetKeywords() []TargetingTemplateKeyword {
+	if o == nil || IsNil(o.Keywords) {
+		var ret []TargetingTemplateKeyword
 		return ret
 	}
-	return *o.TargetingAttributes
+	return o.Keywords
 }
 
-// GetTargetingAttributesOk returns a tuple with the TargetingAttributes field value if set, nil otherwise
+// GetKeywordsOk returns a tuple with the Keywords field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetingTemplateGetResponseData) GetTargetingAttributesOk() (*TargetingSpec, bool) {
-	if o == nil || IsNil(o.TargetingAttributes) {
+func (o *TargetingTemplateGetResponseData) GetKeywordsOk() ([]TargetingTemplateKeyword, bool) {
+	if o == nil || IsNil(o.Keywords) {
 		return nil, false
 	}
-	return o.TargetingAttributes, true
+	return o.Keywords, true
 }
 
-// HasTargetingAttributes returns a boolean if a field has been set.
-func (o *TargetingTemplateGetResponseData) HasTargetingAttributes() bool {
-	if o != nil && !IsNil(o.TargetingAttributes) {
+// HasKeywords returns a boolean if a field has been set.
+func (o *TargetingTemplateGetResponseData) HasKeywords() bool {
+	if o != nil && !IsNil(o.Keywords) {
 		return true
 	}
 
 	return false
 }
 
-// SetTargetingAttributes gets a reference to the given TargetingSpec and assigns it to the TargetingAttributes field.
-func (o *TargetingTemplateGetResponseData) SetTargetingAttributes(v TargetingSpec) {
-	o.TargetingAttributes = &v
+// SetKeywords gets a reference to the given []TargetingTemplateKeyword and assigns it to the Keywords field.
+func (o *TargetingTemplateGetResponseData) SetKeywords(v []TargetingTemplateKeyword) {
+	o.Keywords = v
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *TargetingTemplateGetResponseData) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetingTemplateGetResponseData) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *TargetingTemplateGetResponseData) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *TargetingTemplateGetResponseData) SetName(v string) {
+	o.Name = &v
 }
 
 // GetPlacementGroup returns the PlacementGroup field value if set, zero value otherwise.
@@ -200,36 +200,36 @@ func (o *TargetingTemplateGetResponseData) SetPlacementGroup(v PlacementGroupTyp
 	o.PlacementGroup = &v
 }
 
-// GetKeywords returns the Keywords field value if set, zero value otherwise.
-func (o *TargetingTemplateGetResponseData) GetKeywords() []TargetingTemplateKeyword {
-	if o == nil || IsNil(o.Keywords) {
-		var ret []TargetingTemplateKeyword
+// GetTargetingAttributes returns the TargetingAttributes field value if set, zero value otherwise.
+func (o *TargetingTemplateGetResponseData) GetTargetingAttributes() TargetingSpec {
+	if o == nil || IsNil(o.TargetingAttributes) {
+		var ret TargetingSpec
 		return ret
 	}
-	return o.Keywords
+	return *o.TargetingAttributes
 }
 
-// GetKeywordsOk returns a tuple with the Keywords field value if set, nil otherwise
+// GetTargetingAttributesOk returns a tuple with the TargetingAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetingTemplateGetResponseData) GetKeywordsOk() ([]TargetingTemplateKeyword, bool) {
-	if o == nil || IsNil(o.Keywords) {
+func (o *TargetingTemplateGetResponseData) GetTargetingAttributesOk() (*TargetingSpec, bool) {
+	if o == nil || IsNil(o.TargetingAttributes) {
 		return nil, false
 	}
-	return o.Keywords, true
+	return o.TargetingAttributes, true
 }
 
-// HasKeywords returns a boolean if a field has been set.
-func (o *TargetingTemplateGetResponseData) HasKeywords() bool {
-	if o != nil && !IsNil(o.Keywords) {
+// HasTargetingAttributes returns a boolean if a field has been set.
+func (o *TargetingTemplateGetResponseData) HasTargetingAttributes() bool {
+	if o != nil && !IsNil(o.TargetingAttributes) {
 		return true
 	}
 
 	return false
 }
 
-// SetKeywords gets a reference to the given []TargetingTemplateKeyword and assigns it to the Keywords field.
-func (o *TargetingTemplateGetResponseData) SetKeywords(v []TargetingTemplateKeyword) {
-	o.Keywords = v
+// SetTargetingAttributes gets a reference to the given TargetingSpec and assigns it to the TargetingAttributes field.
+func (o *TargetingTemplateGetResponseData) SetTargetingAttributes(v TargetingSpec) {
+	o.TargetingAttributes = &v
 }
 
 // GetTrackingUrls returns the TrackingUrls field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -274,36 +274,36 @@ func (o *TargetingTemplateGetResponseData) UnsetTrackingUrls() {
 	o.TrackingUrls.Unset()
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *TargetingTemplateGetResponseData) GetId() string {
-	if o == nil || IsNil(o.Id) {
+// GetAdAccountId returns the AdAccountId field value if set, zero value otherwise.
+func (o *TargetingTemplateGetResponseData) GetAdAccountId() string {
+	if o == nil || IsNil(o.AdAccountId) {
 		var ret string
 		return ret
 	}
-	return *o.Id
+	return *o.AdAccountId
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetAdAccountIdOk returns a tuple with the AdAccountId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetingTemplateGetResponseData) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+func (o *TargetingTemplateGetResponseData) GetAdAccountIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AdAccountId) {
 		return nil, false
 	}
-	return o.Id, true
+	return o.AdAccountId, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *TargetingTemplateGetResponseData) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+// HasAdAccountId returns a boolean if a field has been set.
+func (o *TargetingTemplateGetResponseData) HasAdAccountId() bool {
+	if o != nil && !IsNil(o.AdAccountId) {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *TargetingTemplateGetResponseData) SetId(v string) {
-	o.Id = &v
+// SetAdAccountId gets a reference to the given string and assigns it to the AdAccountId field.
+func (o *TargetingTemplateGetResponseData) SetAdAccountId(v string) {
+	o.AdAccountId = &v
 }
 
 // GetCreatedTime returns the CreatedTime field value if set, zero value otherwise.
@@ -338,100 +338,36 @@ func (o *TargetingTemplateGetResponseData) SetCreatedTime(v int32) {
 	o.CreatedTime = &v
 }
 
-// GetUpdatedTime returns the UpdatedTime field value if set, zero value otherwise.
-func (o *TargetingTemplateGetResponseData) GetUpdatedTime() int32 {
-	if o == nil || IsNil(o.UpdatedTime) {
-		var ret int32
-		return ret
-	}
-	return *o.UpdatedTime
-}
-
-// GetUpdatedTimeOk returns a tuple with the UpdatedTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetingTemplateGetResponseData) GetUpdatedTimeOk() (*int32, bool) {
-	if o == nil || IsNil(o.UpdatedTime) {
-		return nil, false
-	}
-	return o.UpdatedTime, true
-}
-
-// HasUpdatedTime returns a boolean if a field has been set.
-func (o *TargetingTemplateGetResponseData) HasUpdatedTime() bool {
-	if o != nil && !IsNil(o.UpdatedTime) {
-		return true
-	}
-
-	return false
-}
-
-// SetUpdatedTime gets a reference to the given int32 and assigns it to the UpdatedTime field.
-func (o *TargetingTemplateGetResponseData) SetUpdatedTime(v int32) {
-	o.UpdatedTime = &v
-}
-
-// GetAdAccountId returns the AdAccountId field value if set, zero value otherwise.
-func (o *TargetingTemplateGetResponseData) GetAdAccountId() string {
-	if o == nil || IsNil(o.AdAccountId) {
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *TargetingTemplateGetResponseData) GetId() string {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
-	return *o.AdAccountId
+	return *o.Id
 }
 
-// GetAdAccountIdOk returns a tuple with the AdAccountId field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetingTemplateGetResponseData) GetAdAccountIdOk() (*string, bool) {
-	if o == nil || IsNil(o.AdAccountId) {
+func (o *TargetingTemplateGetResponseData) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return o.AdAccountId, true
+	return o.Id, true
 }
 
-// HasAdAccountId returns a boolean if a field has been set.
-func (o *TargetingTemplateGetResponseData) HasAdAccountId() bool {
-	if o != nil && !IsNil(o.AdAccountId) {
+// HasId returns a boolean if a field has been set.
+func (o *TargetingTemplateGetResponseData) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
 	return false
 }
 
-// SetAdAccountId gets a reference to the given string and assigns it to the AdAccountId field.
-func (o *TargetingTemplateGetResponseData) SetAdAccountId(v string) {
-	o.AdAccountId = &v
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *TargetingTemplateGetResponseData) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
-		var ret string
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetingTemplateGetResponseData) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
-		return nil, false
-	}
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *TargetingTemplateGetResponseData) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *TargetingTemplateGetResponseData) SetStatus(v string) {
-	o.Status = &v
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *TargetingTemplateGetResponseData) SetId(v string) {
+	o.Id = &v
 }
 
 // GetSizing returns the Sizing field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -474,6 +410,70 @@ func (o *TargetingTemplateGetResponseData) SetSizingNil() {
 // UnsetSizing ensures that no value is present for Sizing, not even an explicit nil
 func (o *TargetingTemplateGetResponseData) UnsetSizing() {
 	o.Sizing.Unset()
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *TargetingTemplateGetResponseData) GetStatus() string {
+	if o == nil || IsNil(o.Status) {
+		var ret string
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetingTemplateGetResponseData) GetStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *TargetingTemplateGetResponseData) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *TargetingTemplateGetResponseData) SetStatus(v string) {
+	o.Status = &v
+}
+
+// GetUpdatedTime returns the UpdatedTime field value if set, zero value otherwise.
+func (o *TargetingTemplateGetResponseData) GetUpdatedTime() int32 {
+	if o == nil || IsNil(o.UpdatedTime) {
+		var ret int32
+		return ret
+	}
+	return *o.UpdatedTime
+}
+
+// GetUpdatedTimeOk returns a tuple with the UpdatedTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetingTemplateGetResponseData) GetUpdatedTimeOk() (*int32, bool) {
+	if o == nil || IsNil(o.UpdatedTime) {
+		return nil, false
+	}
+	return o.UpdatedTime, true
+}
+
+// HasUpdatedTime returns a boolean if a field has been set.
+func (o *TargetingTemplateGetResponseData) HasUpdatedTime() bool {
+	if o != nil && !IsNil(o.UpdatedTime) {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedTime gets a reference to the given int32 and assigns it to the UpdatedTime field.
+func (o *TargetingTemplateGetResponseData) SetUpdatedTime(v int32) {
+	o.UpdatedTime = &v
 }
 
 // GetValid returns the Valid field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -528,41 +528,41 @@ func (o TargetingTemplateGetResponseData) MarshalJSON() ([]byte, error) {
 
 func (o TargetingTemplateGetResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
 	if !IsNil(o.AutoTargetingEnabled) {
 		toSerialize["auto_targeting_enabled"] = o.AutoTargetingEnabled
-	}
-	if !IsNil(o.TargetingAttributes) {
-		toSerialize["targeting_attributes"] = o.TargetingAttributes
-	}
-	if !IsNil(o.PlacementGroup) {
-		toSerialize["placement_group"] = o.PlacementGroup
 	}
 	if !IsNil(o.Keywords) {
 		toSerialize["keywords"] = o.Keywords
 	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.PlacementGroup) {
+		toSerialize["placement_group"] = o.PlacementGroup
+	}
+	if !IsNil(o.TargetingAttributes) {
+		toSerialize["targeting_attributes"] = o.TargetingAttributes
+	}
 	if o.TrackingUrls.IsSet() {
 		toSerialize["tracking_urls"] = o.TrackingUrls.Get()
-	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.CreatedTime) {
-		toSerialize["created_time"] = o.CreatedTime
-	}
-	if !IsNil(o.UpdatedTime) {
-		toSerialize["updated_time"] = o.UpdatedTime
 	}
 	if !IsNil(o.AdAccountId) {
 		toSerialize["ad_account_id"] = o.AdAccountId
 	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
+	if !IsNil(o.CreatedTime) {
+		toSerialize["created_time"] = o.CreatedTime
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
 	}
 	if o.Sizing.IsSet() {
 		toSerialize["sizing"] = o.Sizing.Get()
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.UpdatedTime) {
+		toSerialize["updated_time"] = o.UpdatedTime
 	}
 	if o.Valid.IsSet() {
 		toSerialize["valid"] = o.Valid.Get()

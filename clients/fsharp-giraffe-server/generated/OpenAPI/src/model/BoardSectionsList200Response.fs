@@ -11,7 +11,7 @@ module BoardSectionsList200Response =
 
 
   type board_sections_list_200_response = {
-    Items : BoardSection[];
     Bookmark : string option;
+    Items : BoardSection[];
   }
   //#endregion

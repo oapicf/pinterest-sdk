@@ -27,16 +27,16 @@ class AdvancedAuctionKeyTest : ShouldSpec() {
         // uncomment below to create an instance of AdvancedAuctionKey
         //val modelInstance = AdvancedAuctionKey()
 
-        // to test the property `itemId` - The catalog retail item id in the merchant namespace
-        should("test itemId") {
-            // uncomment below to test the property
-            //modelInstance.itemId shouldBe ("TODO")
-        }
-
         // to test the property `country`
         should("test country") {
             // uncomment below to test the property
             //modelInstance.country shouldBe ("TODO")
+        }
+
+        // to test the property `itemId` - The catalog retail item id in the merchant namespace
+        should("test itemId") {
+            // uncomment below to test the property
+            //modelInstance.itemId shouldBe ("TODO")
         }
 
         // to test the property `language`

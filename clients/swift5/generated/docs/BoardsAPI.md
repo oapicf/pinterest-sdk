@@ -297,23 +297,23 @@ Name | Type | Description  | Notes
 
 # **boardsCreate**
 ```swift
-    open class func boardsCreate(board: Board, adAccountId: String? = nil, completion: @escaping (_ data: Board?, _ error: Error?) -> Void)
+    open class func boardsCreate(boardCreate: BoardCreate, adAccountId: String? = nil, completion: @escaping (_ data: Board?, _ error: Error?) -> Void)
 ```
 
 Create board
 
-Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let board = Board(id: "id_example", createdAt: Date(), boardPinsModifiedAt: Date(), name: "name_example", description: "description_example", collaboratorCount: 123, pinCount: 123, followerCount: 123, media: Board_media(imageCoverUrl: "imageCoverUrl_example", pinThumbnailUrls: ["pinThumbnailUrls_example"]), owner: BoardOwner(username: "username_example"), privacy: "privacy_example") // Board | Create a board using a single board json object.
+let boardCreate = BoardCreate(description: "description_example", isAdsOnly: true, name: "name_example", privacy: BoardPrivacy()) // BoardCreate | 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Create board
-BoardsAPI.boardsCreate(board: board, adAccountId: adAccountId) { (response, error) in
+BoardsAPI.boardsCreate(boardCreate: boardCreate, adAccountId: adAccountId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -329,7 +329,7 @@ BoardsAPI.boardsCreate(board: board, adAccountId: adAccountId) { (response, erro
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **board** | [**Board**](Board.md) | Create a board using a single board json object. | 
+ **boardCreate** | [**BoardCreate**](BoardCreate.md) |  | 
  **adAccountId** | **String** | Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -354,14 +354,14 @@ Name | Type | Description  | Notes
 
 Delete board
 
-Delete a board owned by the \"operation user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Delete a board owned by the \"operation user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let boardId = "boardId_example" // String | Unique identifier of a board.
+let boardId = "boardId_example" // String | 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Delete board
@@ -381,7 +381,7 @@ BoardsAPI.boardsDelete(boardId: boardId, adAccountId: adAccountId) { (response, 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **boardId** | **String** | Unique identifier of a board. | 
+ **boardId** | **String** |  | 
  **adAccountId** | **String** | Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -406,14 +406,14 @@ Void (empty response body)
 
 Get board
 
-Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let boardId = "boardId_example" // String | Unique identifier of a board.
+let boardId = "boardId_example" // String | 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Get board
@@ -433,7 +433,7 @@ BoardsAPI.boardsGet(boardId: boardId, adAccountId: adAccountId) { (response, err
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **boardId** | **String** | Unique identifier of a board. | 
+ **boardId** | **String** |  | 
  **adAccountId** | **String** | Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -453,12 +453,12 @@ Name | Type | Description  | Notes
 
 # **boardsList**
 ```swift
-    open class func boardsList(adAccountId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, privacy: Privacy_boardsList? = nil, completion: @escaping (_ data: BoardsList200Response?, _ error: Error?) -> Void)
+    open class func boardsList(adAccountId: String? = nil, privacy: BoardPrivacyFilter? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: BoardsList200Response?, _ error: Error?) -> Void)
 ```
 
 List boards
 
-Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
 
 ### Example
 ```swift
@@ -466,12 +466,12 @@ Get a list of the boards owned by the \"operation user_account\" + group boards 
 import OpenAPIClient
 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
+let privacy = BoardPrivacyFilter() // BoardPrivacyFilter | The privacy level of the board (optional)
 let bookmark = "bookmark_example" // String | Cursor used to fetch the next page of items (optional)
-let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-let privacy = "privacy_example" // String | Privacy setting for a board. (optional)
+let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // List boards
-BoardsAPI.boardsList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, privacy: privacy) { (response, error) in
+BoardsAPI.boardsList(adAccountId: adAccountId, privacy: privacy, bookmark: bookmark, pageSize: pageSize) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -488,9 +488,9 @@ BoardsAPI.boardsList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pag
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String** | Unique identifier of an ad account. | [optional] 
+ **privacy** | [**BoardPrivacyFilter**](.md) | The privacy level of the board | [optional] 
  **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] 
- **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **privacy** | **String** | Privacy setting for a board. | [optional] 
+ **pageSize** | **Int** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -509,7 +509,7 @@ Name | Type | Description  | Notes
 
 # **boardsListPins**
 ```swift
-    open class func boardsListPins(boardId: String, bookmark: String? = nil, pageSize: Int? = nil, creativeTypes: [CreativeTypes_boardsListPins]? = nil, adAccountId: String? = nil, pinMetrics: Bool? = nil, completion: @escaping (_ data: BoardsListPins200Response?, _ error: Error?) -> Void)
+    open class func boardsListPins(boardId: String, bookmark: String? = nil, pageSize: Int? = nil, creativeTypes: [CreativeType]? = nil, adAccountId: String? = nil, pinMetrics: Bool? = nil, completion: @escaping (_ data: BoardsListPins200Response?, _ error: Error?) -> Void)
 ```
 
 List Pins on board
@@ -524,9 +524,9 @@ import OpenAPIClient
 let boardId = "boardId_example" // String | Unique identifier of a board.
 let bookmark = "bookmark_example" // String | Cursor used to fetch the next page of items (optional)
 let pageSize = 987 // Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-let creativeTypes = ["creativeTypes_example"] // [String] | Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
+let creativeTypes = [CreativeType()] // [CreativeType] | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
-let pinMetrics = true // Bool | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional) (default to false)
+let pinMetrics = true // Bool | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional) (default to false)
 
 // List Pins on board
 BoardsAPI.boardsListPins(boardId: boardId, bookmark: bookmark, pageSize: pageSize, creativeTypes: creativeTypes, adAccountId: adAccountId, pinMetrics: pinMetrics) { (response, error) in
@@ -548,9 +548,9 @@ Name | Type | Description  | Notes
  **boardId** | **String** | Unique identifier of a board. | 
  **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] 
  **pageSize** | **Int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **creativeTypes** | [**[String]**](String.md) | Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] 
+ **creativeTypes** | [**[CreativeType]**](CreativeType.md) | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] 
  **adAccountId** | **String** | Unique identifier of an ad account. | [optional] 
- **pinMetrics** | **Bool** | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false]
+ **pinMetrics** | **Bool** | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false]
 
 ### Return type
 
@@ -569,24 +569,24 @@ Name | Type | Description  | Notes
 
 # **boardsUpdate**
 ```swift
-    open class func boardsUpdate(boardId: String, boardUpdate: BoardUpdate, adAccountId: String? = nil, completion: @escaping (_ data: Board?, _ error: Error?) -> Void)
+    open class func boardsUpdate(boardId: String, boardWithUpdatePrivacyUpdate: BoardWithUpdatePrivacyUpdate, adAccountId: String? = nil, completion: @escaping (_ data: BoardWithUpdatePrivacy?, _ error: Error?) -> Void)
 ```
 
 Update board
 
-Update a board owned by the \"operating user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Update a board owned by the \"operating user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let boardId = "boardId_example" // String | Unique identifier of a board.
-let boardUpdate = BoardUpdate(name: "name_example", description: "description_example", privacy: "privacy_example") // BoardUpdate | Update a board.
+let boardId = "boardId_example" // String | 
+let boardWithUpdatePrivacyUpdate = BoardWithUpdatePrivacyUpdate(description: "description_example", name: "name_example", privacy: BoardUpdatePrivacy()) // BoardWithUpdatePrivacyUpdate | 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Update board
-BoardsAPI.boardsUpdate(boardId: boardId, boardUpdate: boardUpdate, adAccountId: adAccountId) { (response, error) in
+BoardsAPI.boardsUpdate(boardId: boardId, boardWithUpdatePrivacyUpdate: boardWithUpdatePrivacyUpdate, adAccountId: adAccountId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -602,17 +602,17 @@ BoardsAPI.boardsUpdate(boardId: boardId, boardUpdate: boardUpdate, adAccountId: 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **boardId** | **String** | Unique identifier of a board. | 
- **boardUpdate** | [**BoardUpdate**](BoardUpdate.md) | Update a board. | 
+ **boardId** | **String** |  | 
+ **boardWithUpdatePrivacyUpdate** | [**BoardWithUpdatePrivacyUpdate**](BoardWithUpdatePrivacyUpdate.md) |  | 
  **adAccountId** | **String** | Unique identifier of an ad account. | [optional] 
 
 ### Return type
 
-[**Board**](Board.md)
+[**BoardWithUpdatePrivacy**](BoardWithUpdatePrivacy.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

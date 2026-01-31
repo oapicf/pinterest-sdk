@@ -5,11 +5,33 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
-import org.openapitools.model.PinMedia;
-import org.openapitools.model.VideoMetadata;
+import org.openapitools.model.VideoMetadataWithItemType;
 
 @Canonical
 class PinMediaWithVideos {
     
-    List<VideoMetadata> items = new ArrayList<>()
+    List<VideoMetadataWithItemType> items = new ArrayList<>()
+
+    enum MediaTypeEnum {
+    
+        MULTIPLE_VIDEOS("multiple_videos")
+    
+        private final String value
+    
+        MediaTypeEnum(String value) {
+            this.value = value
+        }
+    
+        String getValue() {
+            value
+        }
+    
+        @Override
+        String toString() {
+            String.valueOf(value)
+        }
+    }
+
+    
+    MediaTypeEnum mediaType
 }

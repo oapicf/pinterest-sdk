@@ -16,11 +16,30 @@ import java.util.Objects;
 
 public class UpdateAssetGroupResponseExceptionsInner   {
   
+  private String assetGroupId;
+
   private Integer code;
 
   private String message;
 
-  private String assetGroupId;
+  /**
+   * Asset group id of the exception.
+   **/
+  public UpdateAssetGroupResponseExceptionsInner assetGroupId(String assetGroupId) {
+    this.assetGroupId = assetGroupId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "666791336903426391", value = "Asset group id of the exception.")
+  @JsonProperty("asset_group_id")
+  public String getAssetGroupId() {
+    return assetGroupId;
+  }
+  public void setAssetGroupId(String assetGroupId) {
+    this.assetGroupId = assetGroupId;
+  }
+
 
   /**
    * Error code associated with the error editing asset group.
@@ -60,25 +79,6 @@ public class UpdateAssetGroupResponseExceptionsInner   {
   }
 
 
-  /**
-   * Asset group id of the exception.
-   **/
-  public UpdateAssetGroupResponseExceptionsInner assetGroupId(String assetGroupId) {
-    this.assetGroupId = assetGroupId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "666791336903426391", value = "Asset group id of the exception.")
-  @JsonProperty("asset_group_id")
-  public String getAssetGroupId() {
-    return assetGroupId;
-  }
-  public void setAssetGroupId(String assetGroupId) {
-    this.assetGroupId = assetGroupId;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -89,14 +89,14 @@ public class UpdateAssetGroupResponseExceptionsInner   {
       return false;
     }
     UpdateAssetGroupResponseExceptionsInner updateAssetGroupResponseExceptionsInner = (UpdateAssetGroupResponseExceptionsInner) o;
-    return Objects.equals(this.code, updateAssetGroupResponseExceptionsInner.code) &&
-        Objects.equals(this.message, updateAssetGroupResponseExceptionsInner.message) &&
-        Objects.equals(this.assetGroupId, updateAssetGroupResponseExceptionsInner.assetGroupId);
+    return Objects.equals(this.assetGroupId, updateAssetGroupResponseExceptionsInner.assetGroupId) &&
+        Objects.equals(this.code, updateAssetGroupResponseExceptionsInner.code) &&
+        Objects.equals(this.message, updateAssetGroupResponseExceptionsInner.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message, assetGroupId);
+    return Objects.hash(assetGroupId, code, message);
   }
 
   @Override
@@ -104,9 +104,9 @@ public class UpdateAssetGroupResponseExceptionsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateAssetGroupResponseExceptionsInner {\n");
     
+    sb.append("    assetGroupId: ").append(toIndentedString(assetGroupId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    assetGroupId: ").append(toIndentedString(assetGroupId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

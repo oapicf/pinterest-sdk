@@ -19,6 +19,7 @@ import org.openapitools.client.models.CatalogsFeedIngestionDetails
 import org.openapitools.client.models.CatalogsFeedProcessingStatus
 import org.openapitools.client.models.CatalogsFeedProductCounts
 import org.openapitools.client.models.CatalogsFeedValidationDetails
+import org.openapitools.client.models.CatalogsFeedVideoCounts
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -30,9 +31,10 @@ import com.squareup.moshi.JsonClass
  * @param id 
  * @param updatedAt 
  * @param ingestionDetails 
- * @param status 
  * @param productCounts 
+ * @param status 
  * @param validationDetails 
+ * @param videoCounts 
  */
 
 
@@ -50,14 +52,17 @@ data class CatalogsFeedProcessingResult (
     @Json(name = "ingestion_details")
     val ingestionDetails: CatalogsFeedIngestionDetails,
 
-    @Json(name = "status")
-    val status: CatalogsFeedProcessingStatus,
-
     @Json(name = "product_counts")
     val productCounts: CatalogsFeedProductCounts?,
 
+    @Json(name = "status")
+    val status: CatalogsFeedProcessingStatus,
+
     @Json(name = "validation_details")
-    val validationDetails: CatalogsFeedValidationDetails
+    val validationDetails: CatalogsFeedValidationDetails,
+
+    @Json(name = "video_counts")
+    val videoCounts: CatalogsFeedVideoCounts? = null
 
 ) {
 

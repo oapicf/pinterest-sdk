@@ -1,0 +1,35 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsHotelProductMetadata"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsHotelProductMetadata"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CatalogsHotelProductMetadata {
+    title = CatalogsHotelProductMetadata
+    description = CatalogsHotelProductMetadata
+    derivedFrom = Root
+    properties {
+        hotel_id {
+          type =  string
+          description = "The user-created unique ID that represents the hotel item."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsHotelProductMetadata {
+    title = CatalogsHotelProductMetadata
+    description = CatalogsHotelProductMetadata
+    implements = openapi_server.resourceTypes.CatalogsHotelProductMetadata
+
+  }
+}

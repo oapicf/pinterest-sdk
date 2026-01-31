@@ -5,7 +5,6 @@ open System.Collections.Generic
 open OpenAPI.Model.BoardOwner
 open OpenAPI.Model.CreativeType
 open OpenAPI.Model.PinMedia
-open OpenAPI.Model.PinMediaSource
 open OpenAPI.Model.string option
 
 module Pin =
@@ -14,24 +13,22 @@ module Pin =
 
 
   type Pin = {
-    Id : string;
+    AltText : string option;
+    BoardId : string;
+    BoardOwner : BoardOwner;
+    BoardSectionId : string option;
     CreatedAt : Nullable<DateTime>;
-    Link : string option;
-    Title : string option;
+    CreativeType : CreativeType;
     Description : string option;
     DominantColor : string option;
-    AltText : string option;
-    CreativeType : CreativeType;
-    BoardId : string;
-    BoardSectionId : string option;
-    BoardOwner : BoardOwner;
-    IsOwner : bool;
-    Media : PinMedia;
-    MediaSource : PinMediaSource;
-    ParentPinId : string option;
-    IsStandard : bool;
     HasBeenPromoted : bool;
-    Note : string option;
+    Id : string;
+    IsOwner : bool;
+    IsStandard : bool;
+    Link : string option;
+    Media : PinMedia;
+    ParentPinId : string option;
     PinMetrics : obj;
+    Title : string option;
   }
   //#endregion

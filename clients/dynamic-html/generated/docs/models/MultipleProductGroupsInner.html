@@ -1,12 +1,17 @@
 
 <h2>MultipleProductGroupsInner</h2>
 <ul class="parameter">
-  <li class="param-required-true">name : String
+  <li class="param-required-false">description : String
     <br/>
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">description : String
+  <li class="param-required-true">feedUnderscoreid : String
+    <br/>Catalog Feed id pertaining to the catalog product group.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">filters : CatalogsCreativeAssetsProductGroupFilters
     <br/>
   </li>
 </ul>
@@ -16,13 +21,13 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-true">filters : CatalogsCreativeAssetsProductGroupFilters
+  <li class="param-required-true">name : String
     <br/>
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-true">feedUnderscoreid : String
-    <br/>Catalog Feed id pertaining to the catalog product group.
+  <li class="param-required-true">catalogUnderscoreid : String
+    <br/>Catalog id pertaining to the creative assets product group.
   </li>
 </ul>
 <ul class="parameter">
@@ -36,17 +41,12 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-true">catalogUnderscoreid : String
-    <br/>Catalog id pertaining to the creative assets product group.
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-true">country : Country
+  <li class="param-required-false">country : Country
     <br/>
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-true">locale : CatalogsLocale
+  <li class="param-required-false">locale : CatalogsLocale
     <br/>
   </li>
 </ul>

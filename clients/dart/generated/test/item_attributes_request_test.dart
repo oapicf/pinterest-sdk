@@ -16,9 +16,285 @@ void main() {
   // final instance = ItemAttributesRequest();
 
   group('test ItemAttributesRequest', () {
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+    // String adImage0Link
+    test('to test the property `adImage0Link`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+    // String adImage0Tag
+    test('to test the property `adImage0Tag`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+    // String adImage10Link
+    test('to test the property `adImage10Link`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+    // String adImage10Tag
+    test('to test the property `adImage10Tag`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+    // String adImage11Link
+    test('to test the property `adImage11Link`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+    // String adImage11Tag
+    test('to test the property `adImage11Tag`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+    // String adImage12Link
+    test('to test the property `adImage12Link`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+    // String adImage12Tag
+    test('to test the property `adImage12Tag`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+    // String adImage13Link
+    test('to test the property `adImage13Link`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+    // String adImage13Tag
+    test('to test the property `adImage13Tag`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+    // String adImage14Link
+    test('to test the property `adImage14Link`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+    // String adImage14Tag
+    test('to test the property `adImage14Tag`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+    // String adImage15Link
+    test('to test the property `adImage15Link`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+    // String adImage15Tag
+    test('to test the property `adImage15Tag`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+    // String adImage16Link
+    test('to test the property `adImage16Link`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+    // String adImage16Tag
+    test('to test the property `adImage16Tag`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+    // String adImage17Link
+    test('to test the property `adImage17Link`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+    // String adImage17Tag
+    test('to test the property `adImage17Tag`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+    // String adImage18Link
+    test('to test the property `adImage18Link`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+    // String adImage18Tag
+    test('to test the property `adImage18Tag`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+    // String adImage19Link
+    test('to test the property `adImage19Link`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+    // String adImage19Tag
+    test('to test the property `adImage19Tag`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+    // String adImage1Link
+    test('to test the property `adImage1Link`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+    // String adImage1Tag
+    test('to test the property `adImage1Tag`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+    // String adImage2Link
+    test('to test the property `adImage2Link`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+    // String adImage2Tag
+    test('to test the property `adImage2Tag`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+    // String adImage3Link
+    test('to test the property `adImage3Link`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+    // String adImage3Tag
+    test('to test the property `adImage3Tag`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+    // String adImage4Link
+    test('to test the property `adImage4Link`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+    // String adImage4Tag
+    test('to test the property `adImage4Tag`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+    // String adImage5Link
+    test('to test the property `adImage5Link`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+    // String adImage5Tag
+    test('to test the property `adImage5Tag`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+    // String adImage6Link
+    test('to test the property `adImage6Link`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+    // String adImage6Tag
+    test('to test the property `adImage6Tag`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+    // String adImage7Link
+    test('to test the property `adImage7Link`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+    // String adImage7Tag
+    test('to test the property `adImage7Tag`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+    // String adImage8Link
+    test('to test the property `adImage8Link`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+    // String adImage8Tag
+    test('to test the property `adImage8Tag`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+    // String adImage9Link
+    test('to test the property `adImage9Link`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+    // String adImage9Tag
+    test('to test the property `adImage9Tag`', () async {
+      // TODO
+    });
+
     // Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.
     // String adLink
     test('to test the property `adLink`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+    // String adVideo0Link
+    test('to test the property `adVideo0Link`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>
+    // String adVideo0Tag
+    test('to test the property `adVideo0Tag`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+    // String adVideo1Link
+    test('to test the property `adVideo1Link`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>
+    // String adVideo1Tag
+    test('to test the property `adVideo1Tag`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+    // String adVideo2Link
+    test('to test the property `adVideo2Link`', () async {
+      // TODO
+    });
+
+    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>
+    // String adVideo2Tag
+    test('to test the property `adVideo2Tag`', () async {
       // TODO
     });
 
@@ -28,13 +304,19 @@ void main() {
       // TODO
     });
 
-    // The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+    // The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
     // String ageGroup
     test('to test the property `ageGroup`', () async {
       // TODO
     });
 
-    // The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
+    // The deep link to the product on the Android app.
+    // String androidDeepLink
+    test('to test the property `androidDeepLink`', () async {
+      // TODO
+    });
+
+    // The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.
     // String availability
     test('to test the property `availability`', () async {
       // TODO
@@ -70,33 +352,63 @@ void main() {
       // TODO
     });
 
-    // <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+    // <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
     // String customLabel0
     test('to test the property `customLabel0`', () async {
       // TODO
     });
 
-    // <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+    // <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
     // String customLabel1
     test('to test the property `customLabel1`', () async {
       // TODO
     });
 
-    // <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+    // <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
     // String customLabel2
     test('to test the property `customLabel2`', () async {
       // TODO
     });
 
-    // <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+    // <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
     // String customLabel3
     test('to test the property `customLabel3`', () async {
       // TODO
     });
 
-    // <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+    // <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
     // String customLabel4
     test('to test the property `customLabel4`', () async {
+      // TODO
+    });
+
+    // an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+    // int customNumber0
+    test('to test the property `customNumber0`', () async {
+      // TODO
+    });
+
+    // an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+    // int customNumber1
+    test('to test the property `customNumber1`', () async {
+      // TODO
+    });
+
+    // an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+    // int customNumber2
+    test('to test the property `customNumber2`', () async {
+      // TODO
+    });
+
+    // an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+    // int customNumber3
+    test('to test the property `customNumber3`', () async {
+      // TODO
+    });
+
+    // an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+    // int customNumber4
+    test('to test the property `customNumber4`', () async {
       // TODO
     });
 
@@ -118,7 +430,7 @@ void main() {
       // TODO
     });
 
-    // The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
+    // The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.
     // String gender
     test('to test the property `gender`', () async {
       // TODO
@@ -130,8 +442,7 @@ void main() {
       // TODO
     });
 
-    // The unique universal product identifier.
-    // int gtin
+    // UpdatableItemAttributesGtin gtin
     test('to test the property `gtin`', () async {
       // TODO
     });
@@ -139,6 +450,18 @@ void main() {
     // <p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p>
     // String id
     test('to test the property `id`', () async {
+      // TODO
+    });
+
+    // Installment price of the product. This data will only be shown to pinners in the enabled countries. Expected format: <payment_count>:<payment_amount> <currency>
+    // String installmentPrice
+    test('to test the property `installmentPrice`', () async {
+      // TODO
+    });
+
+    // The deep link to the product on the iOS app.
+    // String iosDeepLink
+    test('to test the property `iosDeepLink`', () async {
       // TODO
     });
 
@@ -214,9 +537,21 @@ void main() {
       // TODO
     });
 
+    // A unique identifier referencing the promotion associated with this catalog item.
+    // String promotionId
+    test('to test the property `promotionId`', () async {
+      // TODO
+    });
+
     // The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \"14.99 USD\", \"14.99USD\" and \"14.99\". If the currency is not included, we default to US dollars.
     // String salePrice
     test('to test the property `salePrice`', () async {
+      // TODO
+    });
+
+    // Sale price effective date. Expected format: <start_date>/<end_date> (ISO 8601 format)
+    // String salePriceEffectiveDate
+    test('to test the property `salePriceEffectiveDate`', () async {
       // TODO
     });
 
@@ -250,13 +585,13 @@ void main() {
       // TODO
     });
 
-    // Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
+    // Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.
     // String sizeSystem
     test('to test the property `sizeSystem`', () async {
       // TODO
     });
 
-    // Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
+    // Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.
     // String sizeType
     test('to test the property `sizeType`', () async {
       // TODO
@@ -271,6 +606,18 @@ void main() {
     // <p><= 500 characters</p> <p>The name of the product.</p>
     // String title
     test('to test the property `title`', () async {
+      // TODO
+    });
+
+    // Unit pricing base measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <base_measure> <unit_type>
+    // String unitPricingBaseMeasure
+    test('to test the property `unitPricingBaseMeasure`', () async {
+      // TODO
+    });
+
+    // Unit pricing total measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <total_units> <unit_type>
+    // String unitPricingMeasure
+    test('to test the property `unitPricingMeasure`', () async {
       // TODO
     });
 
@@ -294,6 +641,12 @@ void main() {
 
     // ItemAttributesRequestAllOfImageLink imageLink
     test('to test the property `imageLink`', () async {
+      // TODO
+    });
+
+    // By default, product pins created from a catalog are able to be saved by Pinners. If you want to disable the save pin feature, set this attribute to true. This feature is only available for allowlisted merchants. Please contact your account manager to enable this feature.
+    // bool savePinDisabled (default value: false)
+    test('to test the property `savePinDisabled`', () async {
       // TODO
     });
 

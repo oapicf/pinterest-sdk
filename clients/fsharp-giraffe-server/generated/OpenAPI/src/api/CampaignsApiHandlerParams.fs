@@ -1,5 +1,6 @@
 namespace OpenAPI
 
+open OpenAPI.Model.AdPinAnalytics
 open OpenAPI.Model.AdsAnalyticsCampaignTargetingType
 open OpenAPI.Model.CampaignCreateRequest
 open OpenAPI.Model.CampaignCreateResponse
@@ -12,11 +13,75 @@ open OpenAPI.Model.ConversionReportAttributionType
 open OpenAPI.Model.Error
 open OpenAPI.Model.Granularity
 open OpenAPI.Model.MetricsResponse
+open OpenAPI.Model.ReportingTimeZone
 open System.Collections.Generic
 open System
 
 module CampaignsApiHandlerParams =
 
+    //#region Path parameters
+    [<CLIMutable>]
+    type AdPinsAnalyticsPathParams = {
+      adAccountId : string ;
+    }
+    //#endregion
+
+    //#region Query parameters
+    [<CLIMutable>]
+    type AdPinsAnalyticsQueryParams = {
+      campaignId : string ;
+
+
+      pinIds : string[] ;
+
+
+      startDate : DateTime ;
+
+
+      endDate : DateTime ;
+
+
+      columns : string[] ;
+
+
+      granularity : Granularity ;
+
+
+      clickWindowDays : int option;
+
+
+      engagementWindowDays : int option;
+
+
+      viewWindowDays : int option;
+
+
+      conversionReportTime : string option;
+
+    }
+    //#endregion
+
+
+    type AdPinsAnalyticsStatusCode200Response = {
+      content:AdPinAnalytics[];
+      
+    }
+
+    type AdPinsAnalyticsStatusCode400Response = {
+      content:Error;
+      
+    }
+
+    type AdPinsAnalyticsDefaultStatusCodeResponse = {
+      content:Error;
+      
+    }
+    type AdPinsAnalyticsResult = AdPinsAnalyticsStatusCode200 of AdPinsAnalyticsStatusCode200Response|AdPinsAnalyticsStatusCode400 of AdPinsAnalyticsStatusCode400Response|AdPinsAnalyticsDefaultStatusCode of AdPinsAnalyticsDefaultStatusCodeResponse
+
+    type AdPinsAnalyticsArgs = {
+      pathParams:AdPinsAnalyticsPathParams;
+      queryParams:Result<AdPinsAnalyticsQueryParams,string>;
+    }
     //#region Path parameters
     [<CLIMutable>]
     type CampaignTargetingAnalyticsGetPathParams = {
@@ -57,7 +122,10 @@ module CampaignsApiHandlerParams =
       conversionReportTime : string option;
 
 
-      attributionTypes : ConversionReportAttributionType option;
+      attributionTypes : ConversionReportAttributionType[] option;
+
+
+      reportingTimezone : ReportingTimeZone option;
 
     }
     //#endregion
@@ -113,6 +181,12 @@ module CampaignsApiHandlerParams =
 
 
       conversionReportTime : string option;
+
+
+      aggregateReportRows : bool option;
+
+
+      reportingTimezone : ReportingTimeZone option;
 
     }
     //#endregion

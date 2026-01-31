@@ -24,21 +24,21 @@ ads_credit_discounts_response_t* instantiate_ads_credit_discounts_response(int i
     ads_credit_discounts_response = ads_credit_discounts_response_create(
       true,
       "12312451231",
+      "USD",
+      125000000,
       pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_COUPON,
       125000000,
-      "USD",
-      "Ads Credits",
-      125000000
+      "Ads Credits"
     );
   } else {
     ads_credit_discounts_response = ads_credit_discounts_response_create(
       true,
       "12312451231",
+      "USD",
+      125000000,
       pinterest_rest_api_ads_credit_discounts_response_DISCOUNTTYPE_COUPON,
       125000000,
-      "USD",
-      "Ads Credits",
-      125000000
+      "Ads Credits"
     );
   }
 

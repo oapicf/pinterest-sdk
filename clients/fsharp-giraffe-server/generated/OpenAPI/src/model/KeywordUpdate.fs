@@ -10,8 +10,8 @@ module KeywordUpdate =
 
 
   type KeywordUpdate = {
-    Id : string;
     Archived : bool;
     Bid : int option;
+    Id : string;
   }
   //#endregion

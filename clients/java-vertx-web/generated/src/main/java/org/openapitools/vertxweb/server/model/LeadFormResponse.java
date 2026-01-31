@@ -15,63 +15,36 @@ import org.openapitools.vertxweb.server.model.LeadFormStatus;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class LeadFormResponse   {
   
-  private String name;
-  private String privacyPolicyLink;
-  private Boolean hasAcceptedTerms;
   private String completionMessage;
-  private LeadFormStatus status;
   private String disclosureLanguage;
-  private List<LeadFormQuestion> questions = new ArrayList<>();
+  private Boolean hasAcceptedTerms;
+  private String name;
   private List<LeadFormCommonPolicyLinksInner> policyLinks = new ArrayList<>();
-  private String id;
+  private String privacyPolicyLink;
+  private List<LeadFormQuestion> questions = new ArrayList<>();
+  private LeadFormStatus status;
   private String adAccountId;
   private Integer createdTime;
+  private String id;
   private Integer updatedTime;
 
   public LeadFormResponse () {
 
   }
 
-  public LeadFormResponse (String name, String privacyPolicyLink, Boolean hasAcceptedTerms, String completionMessage, LeadFormStatus status, String disclosureLanguage, List<LeadFormQuestion> questions, List<LeadFormCommonPolicyLinksInner> policyLinks, String id, String adAccountId, Integer createdTime, Integer updatedTime) {
-    this.name = name;
-    this.privacyPolicyLink = privacyPolicyLink;
-    this.hasAcceptedTerms = hasAcceptedTerms;
+  public LeadFormResponse (String completionMessage, String disclosureLanguage, Boolean hasAcceptedTerms, String name, List<LeadFormCommonPolicyLinksInner> policyLinks, String privacyPolicyLink, List<LeadFormQuestion> questions, LeadFormStatus status, String adAccountId, Integer createdTime, String id, Integer updatedTime) {
     this.completionMessage = completionMessage;
-    this.status = status;
     this.disclosureLanguage = disclosureLanguage;
-    this.questions = questions;
+    this.hasAcceptedTerms = hasAcceptedTerms;
+    this.name = name;
     this.policyLinks = policyLinks;
-    this.id = id;
+    this.privacyPolicyLink = privacyPolicyLink;
+    this.questions = questions;
+    this.status = status;
     this.adAccountId = adAccountId;
     this.createdTime = createdTime;
+    this.id = id;
     this.updatedTime = updatedTime;
-  }
-
-    
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
-
-    
-  @JsonProperty("privacy_policy_link")
-  public String getPrivacyPolicyLink() {
-    return privacyPolicyLink;
-  }
-  public void setPrivacyPolicyLink(String privacyPolicyLink) {
-    this.privacyPolicyLink = privacyPolicyLink;
-  }
-
-    
-  @JsonProperty("has_accepted_terms")
-  public Boolean getHasAcceptedTerms() {
-    return hasAcceptedTerms;
-  }
-  public void setHasAcceptedTerms(Boolean hasAcceptedTerms) {
-    this.hasAcceptedTerms = hasAcceptedTerms;
   }
 
     
@@ -84,15 +57,6 @@ public class LeadFormResponse   {
   }
 
     
-  @JsonProperty("status")
-  public LeadFormStatus getStatus() {
-    return status;
-  }
-  public void setStatus(LeadFormStatus status) {
-    this.status = status;
-  }
-
-    
   @JsonProperty("disclosure_language")
   public String getDisclosureLanguage() {
     return disclosureLanguage;
@@ -102,12 +66,21 @@ public class LeadFormResponse   {
   }
 
     
-  @JsonProperty("questions")
-  public List<LeadFormQuestion> getQuestions() {
-    return questions;
+  @JsonProperty("has_accepted_terms")
+  public Boolean getHasAcceptedTerms() {
+    return hasAcceptedTerms;
   }
-  public void setQuestions(List<LeadFormQuestion> questions) {
-    this.questions = questions;
+  public void setHasAcceptedTerms(Boolean hasAcceptedTerms) {
+    this.hasAcceptedTerms = hasAcceptedTerms;
+  }
+
+    
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
   }
 
     
@@ -120,12 +93,30 @@ public class LeadFormResponse   {
   }
 
     
-  @JsonProperty("id")
-  public String getId() {
-    return id;
+  @JsonProperty("privacy_policy_link")
+  public String getPrivacyPolicyLink() {
+    return privacyPolicyLink;
   }
-  public void setId(String id) {
-    this.id = id;
+  public void setPrivacyPolicyLink(String privacyPolicyLink) {
+    this.privacyPolicyLink = privacyPolicyLink;
+  }
+
+    
+  @JsonProperty("questions")
+  public List<LeadFormQuestion> getQuestions() {
+    return questions;
+  }
+  public void setQuestions(List<LeadFormQuestion> questions) {
+    this.questions = questions;
+  }
+
+    
+  @JsonProperty("status")
+  public LeadFormStatus getStatus() {
+    return status;
+  }
+  public void setStatus(LeadFormStatus status) {
+    this.status = status;
   }
 
     
@@ -147,6 +138,15 @@ public class LeadFormResponse   {
   }
 
     
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
+  }
+
+    
   @JsonProperty("updated_time")
   public Integer getUpdatedTime() {
     return updatedTime;
@@ -165,23 +165,23 @@ public class LeadFormResponse   {
       return false;
     }
     LeadFormResponse leadFormResponse = (LeadFormResponse) o;
-    return Objects.equals(name, leadFormResponse.name) &&
-        Objects.equals(privacyPolicyLink, leadFormResponse.privacyPolicyLink) &&
-        Objects.equals(hasAcceptedTerms, leadFormResponse.hasAcceptedTerms) &&
-        Objects.equals(completionMessage, leadFormResponse.completionMessage) &&
-        Objects.equals(status, leadFormResponse.status) &&
+    return Objects.equals(completionMessage, leadFormResponse.completionMessage) &&
         Objects.equals(disclosureLanguage, leadFormResponse.disclosureLanguage) &&
-        Objects.equals(questions, leadFormResponse.questions) &&
+        Objects.equals(hasAcceptedTerms, leadFormResponse.hasAcceptedTerms) &&
+        Objects.equals(name, leadFormResponse.name) &&
         Objects.equals(policyLinks, leadFormResponse.policyLinks) &&
-        Objects.equals(id, leadFormResponse.id) &&
+        Objects.equals(privacyPolicyLink, leadFormResponse.privacyPolicyLink) &&
+        Objects.equals(questions, leadFormResponse.questions) &&
+        Objects.equals(status, leadFormResponse.status) &&
         Objects.equals(adAccountId, leadFormResponse.adAccountId) &&
         Objects.equals(createdTime, leadFormResponse.createdTime) &&
+        Objects.equals(id, leadFormResponse.id) &&
         Objects.equals(updatedTime, leadFormResponse.updatedTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, privacyPolicyLink, hasAcceptedTerms, completionMessage, status, disclosureLanguage, questions, policyLinks, id, adAccountId, createdTime, updatedTime);
+    return Objects.hash(completionMessage, disclosureLanguage, hasAcceptedTerms, name, policyLinks, privacyPolicyLink, questions, status, adAccountId, createdTime, id, updatedTime);
   }
 
   @Override
@@ -189,17 +189,17 @@ public class LeadFormResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class LeadFormResponse {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    privacyPolicyLink: ").append(toIndentedString(privacyPolicyLink)).append("\n");
-    sb.append("    hasAcceptedTerms: ").append(toIndentedString(hasAcceptedTerms)).append("\n");
     sb.append("    completionMessage: ").append(toIndentedString(completionMessage)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    disclosureLanguage: ").append(toIndentedString(disclosureLanguage)).append("\n");
-    sb.append("    questions: ").append(toIndentedString(questions)).append("\n");
+    sb.append("    hasAcceptedTerms: ").append(toIndentedString(hasAcceptedTerms)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    policyLinks: ").append(toIndentedString(policyLinks)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    privacyPolicyLink: ").append(toIndentedString(privacyPolicyLink)).append("\n");
+    sb.append("    questions: ").append(toIndentedString(questions)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
     sb.append("}");
     return sb.toString();

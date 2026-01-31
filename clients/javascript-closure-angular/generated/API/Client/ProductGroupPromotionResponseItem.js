@@ -6,7 +6,7 @@ goog.provide('API.Client.ProductGroupPromotionResponseItem');
 API.Client.ProductGroupPromotionResponseItem = function() {}
 
 /**
- * @type {!API.Client.ProductGroupPromotionResponseElement}
+ * @type {!API.Client.ProductGroupPromotion}
  * @export
  */
 API.Client.ProductGroupPromotionResponseItem.prototype.data;

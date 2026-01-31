@@ -10,10 +10,10 @@ module TemplateResponseDateRangeDynamicDateRange =
 
   [<CLIMutable>]
   type TemplateResponseDateRangeDynamicDateRange = {
-    [<JsonProperty(PropertyName = "type")>]
-    Type : string;
     [<JsonProperty(PropertyName = "range")>]
     Range : string;
+    [<JsonProperty(PropertyName = "type")>]
+    Type : string;
   }
 
   //#endregion

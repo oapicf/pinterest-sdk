@@ -7,23 +7,8 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(IntegrationRecord, () {
-    // String id
-    test('to test the property `id`', () async {
-      // TODO
-    });
-
-    // String externalBusinessId
-    test('to test the property `externalBusinessId`', () async {
-      // TODO
-    });
-
-    // String connectedMerchantId
-    test('to test the property `connectedMerchantId`', () async {
-      // TODO
-    });
-
-    // String connectedUserId
-    test('to test the property `connectedUserId`', () async {
+    // String additionalId1
+    test('to test the property `additionalId1`', () async {
       // TODO
     });
 
@@ -37,8 +22,33 @@ void main() {
       // TODO
     });
 
+    // String connectedMerchantId
+    test('to test the property `connectedMerchantId`', () async {
+      // TODO
+    });
+
     // String connectedTagId
     test('to test the property `connectedTagId`', () async {
+      // TODO
+    });
+
+    // String connectedUserId
+    test('to test the property `connectedUserId`', () async {
+      // TODO
+    });
+
+    // int createdTime
+    test('to test the property `createdTime`', () async {
+      // TODO
+    });
+
+    // String externalBusinessId
+    test('to test the property `externalBusinessId`', () async {
+      // TODO
+    });
+
+    // String id
+    test('to test the property `id`', () async {
       // TODO
     });
 
@@ -47,8 +57,13 @@ void main() {
       // TODO
     });
 
-    // String partnerRefreshToken
-    test('to test the property `partnerRefreshToken`', () async {
+    // int partnerAccessTokenExpiry
+    test('to test the property `partnerAccessTokenExpiry`', () async {
+      // TODO
+    });
+
+    // String partnerMetadata
+    test('to test the property `partnerMetadata`', () async {
       // TODO
     });
 
@@ -57,8 +72,8 @@ void main() {
       // TODO
     });
 
-    // int partnerAccessTokenExpiry
-    test('to test the property `partnerAccessTokenExpiry`', () async {
+    // String partnerRefreshToken
+    test('to test the property `partnerRefreshToken`', () async {
       // TODO
     });
 
@@ -69,21 +84,6 @@ void main() {
 
     // String scopes
     test('to test the property `scopes`', () async {
-      // TODO
-    });
-
-    // String partnerMetadata
-    test('to test the property `partnerMetadata`', () async {
-      // TODO
-    });
-
-    // String additionalId1
-    test('to test the property `additionalId1`', () async {
-      // TODO
-    });
-
-    // int createdTime
-    test('to test the property `createdTime`', () async {
       // TODO
     });
 

@@ -9,23 +9,23 @@
 
 (def catalogs-updatable-hotel-attributes-data
   {
-   (ds/opt :name) string?
-   (ds/opt :link) string?
-   (ds/opt :description) string?
-   (ds/opt :brand) string?
-   (ds/opt :latitude) float?
-   (ds/opt :longitude) float?
-   (ds/opt :neighborhood) (s/coll-of string?)
    (ds/opt :address) catalogs-hotel-address-spec
+   (ds/opt :base_price) string?
+   (ds/opt :brand) string?
+   (ds/opt :category) string?
    (ds/opt :custom_label_0) string?
    (ds/opt :custom_label_1) string?
    (ds/opt :custom_label_2) string?
    (ds/opt :custom_label_3) string?
    (ds/opt :custom_label_4) string?
-   (ds/opt :category) string?
-   (ds/opt :base_price) string?
-   (ds/opt :sale_price) string?
+   (ds/opt :description) string?
    (ds/opt :guest_ratings) catalogs-hotel-guest-ratings-spec
+   (ds/opt :latitude) float?
+   (ds/opt :link) string?
+   (ds/opt :longitude) float?
+   (ds/opt :name) string?
+   (ds/opt :neighborhood) (s/coll-of string?)
+   (ds/opt :sale_price) string?
    })
 
 (def catalogs-updatable-hotel-attributes-spec

@@ -5,18 +5,18 @@
   "name": "AdAccountsAudiencesSharedAccountsList200Response",
   "fields": [
     {
+      "name": "bookmark",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
       "name": "items",
       "type": {
         "type": "array",
         "items": "model.SharedAudienceAccount"
       },
       "doc": ""
-    },
-    {
-      "name": "bookmark",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
     }
   ]
 

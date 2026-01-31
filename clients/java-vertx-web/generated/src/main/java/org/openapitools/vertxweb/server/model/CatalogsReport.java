@@ -30,17 +30,17 @@ public class CatalogsReport   {
   }
 
   private ReportStatusEnum reportStatus;
-  private String url;
   private BigDecimal size;
+  private String url;
 
   public CatalogsReport () {
 
   }
 
-  public CatalogsReport (ReportStatusEnum reportStatus, String url, BigDecimal size) {
+  public CatalogsReport (ReportStatusEnum reportStatus, BigDecimal size, String url) {
     this.reportStatus = reportStatus;
-    this.url = url;
     this.size = size;
+    this.url = url;
   }
 
     
@@ -53,21 +53,21 @@ public class CatalogsReport   {
   }
 
     
-  @JsonProperty("url")
-  public String getUrl() {
-    return url;
-  }
-  public void setUrl(String url) {
-    this.url = url;
-  }
-
-    
   @JsonProperty("size")
   public BigDecimal getSize() {
     return size;
   }
   public void setSize(BigDecimal size) {
     this.size = size;
+  }
+
+    
+  @JsonProperty("url")
+  public String getUrl() {
+    return url;
+  }
+  public void setUrl(String url) {
+    this.url = url;
   }
 
 
@@ -81,13 +81,13 @@ public class CatalogsReport   {
     }
     CatalogsReport catalogsReport = (CatalogsReport) o;
     return Objects.equals(reportStatus, catalogsReport.reportStatus) &&
-        Objects.equals(url, catalogsReport.url) &&
-        Objects.equals(size, catalogsReport.size);
+        Objects.equals(size, catalogsReport.size) &&
+        Objects.equals(url, catalogsReport.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportStatus, url, size);
+    return Objects.hash(reportStatus, size, url);
   }
 
   @Override
@@ -96,8 +96,8 @@ public class CatalogsReport   {
     sb.append("class CatalogsReport {\n");
     
     sb.append("    reportStatus: ").append(toIndentedString(reportStatus)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
   }

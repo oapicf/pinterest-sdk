@@ -45,7 +45,7 @@ export class BulkService extends BaseService {
 
     /**
      * Get advertiser entities in bulk
-     * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, and/or keywords; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+     * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
      * @endpoint post /ad_accounts/{ad_account_id}/bulk/download
      * @param adAccountId Unique identifier of an ad account.
      * @param bulkDownloadRequest Parameters to get ad entities in bulk
@@ -152,6 +152,9 @@ export class BulkService extends BaseService {
 
         let localVarHeaders = this.defaultHeaders;
 
+        // authentication (client_credentials) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('client_credentials', 'Authorization', localVarHeaders, 'Bearer ');
+
         // authentication (pinterest_oauth2) required
         localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
 
@@ -196,7 +199,7 @@ export class BulkService extends BaseService {
 
     /**
      * Create/update ad entities in bulk
-     * Either create or update any combination of campaigns, ad groups, product groups, ads, or keywords. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
+     * Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
      * @endpoint post /ad_accounts/{ad_account_id}/bulk/upsert
      * @param adAccountId Unique identifier of an ad account.
      * @param bulkUpsertRequest Parameters to get create/update ad entities in bulk

@@ -22,8 +22,8 @@ public struct CatalogsItemValidationErrors: Codable, JSONEncodable, Hashable {
     public var IMAGE_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails?
     public var IMAGE_LINK_MISSING: CatalogsItemValidationDetails?
     public var INVALID_DOMAIN: CatalogsItemValidationDetails?
-    public var ITEMID_MISSING: CatalogsItemValidationDetails?
     public var ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE: CatalogsItemValidationDetails?
+    public var ITEMID_MISSING: CatalogsItemValidationDetails?
     public var LINK_FORMAT_INVALID: CatalogsItemValidationDetails?
     public var LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails?
     public var LIST_PRICE_INVALID: CatalogsItemValidationDetails?
@@ -36,7 +36,7 @@ public struct CatalogsItemValidationErrors: Codable, JSONEncodable, Hashable {
     public var PRODUCT_PRICE_INVALID: CatalogsItemValidationDetails?
     public var TITLE_MISSING: CatalogsItemValidationDetails?
 
-    public init(ADULT_INVALID: CatalogsItemValidationDetails? = nil, ADWORDS_FORMAT_INVALID: CatalogsItemValidationDetails? = nil, AVAILABILITY_INVALID: CatalogsItemValidationDetails? = nil, BLOCKLISTED_IMAGE_SIGNATURE: CatalogsItemValidationDetails? = nil, DESCRIPTION_MISSING: CatalogsItemValidationDetails? = nil, DUPLICATE_PRODUCTS: CatalogsItemValidationDetails? = nil, IMAGE_LINK_INVALID: CatalogsItemValidationDetails? = nil, IMAGE_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails? = nil, IMAGE_LINK_MISSING: CatalogsItemValidationDetails? = nil, INVALID_DOMAIN: CatalogsItemValidationDetails? = nil, ITEMID_MISSING: CatalogsItemValidationDetails? = nil, ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE: CatalogsItemValidationDetails? = nil, LINK_FORMAT_INVALID: CatalogsItemValidationDetails? = nil, LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails? = nil, LIST_PRICE_INVALID: CatalogsItemValidationDetails? = nil, MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED: CatalogsItemValidationDetails? = nil, PARSE_LINE_ERROR: CatalogsItemValidationDetails? = nil, PINJOIN_CONTENT_UNSAFE: CatalogsItemValidationDetails? = nil, PRICE_CANNOT_BE_DETERMINED: CatalogsItemValidationDetails? = nil, PRICE_MISSING: CatalogsItemValidationDetails? = nil, PRODUCT_LINK_MISSING: CatalogsItemValidationDetails? = nil, PRODUCT_PRICE_INVALID: CatalogsItemValidationDetails? = nil, TITLE_MISSING: CatalogsItemValidationDetails? = nil) {
+    public init(ADULT_INVALID: CatalogsItemValidationDetails? = nil, ADWORDS_FORMAT_INVALID: CatalogsItemValidationDetails? = nil, AVAILABILITY_INVALID: CatalogsItemValidationDetails? = nil, BLOCKLISTED_IMAGE_SIGNATURE: CatalogsItemValidationDetails? = nil, DESCRIPTION_MISSING: CatalogsItemValidationDetails? = nil, DUPLICATE_PRODUCTS: CatalogsItemValidationDetails? = nil, IMAGE_LINK_INVALID: CatalogsItemValidationDetails? = nil, IMAGE_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails? = nil, IMAGE_LINK_MISSING: CatalogsItemValidationDetails? = nil, INVALID_DOMAIN: CatalogsItemValidationDetails? = nil, ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE: CatalogsItemValidationDetails? = nil, ITEMID_MISSING: CatalogsItemValidationDetails? = nil, LINK_FORMAT_INVALID: CatalogsItemValidationDetails? = nil, LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails? = nil, LIST_PRICE_INVALID: CatalogsItemValidationDetails? = nil, MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED: CatalogsItemValidationDetails? = nil, PARSE_LINE_ERROR: CatalogsItemValidationDetails? = nil, PINJOIN_CONTENT_UNSAFE: CatalogsItemValidationDetails? = nil, PRICE_CANNOT_BE_DETERMINED: CatalogsItemValidationDetails? = nil, PRICE_MISSING: CatalogsItemValidationDetails? = nil, PRODUCT_LINK_MISSING: CatalogsItemValidationDetails? = nil, PRODUCT_PRICE_INVALID: CatalogsItemValidationDetails? = nil, TITLE_MISSING: CatalogsItemValidationDetails? = nil) {
         self.ADULT_INVALID = ADULT_INVALID
         self.ADWORDS_FORMAT_INVALID = ADWORDS_FORMAT_INVALID
         self.AVAILABILITY_INVALID = AVAILABILITY_INVALID
@@ -47,8 +47,8 @@ public struct CatalogsItemValidationErrors: Codable, JSONEncodable, Hashable {
         self.IMAGE_LINK_LENGTH_TOO_LONG = IMAGE_LINK_LENGTH_TOO_LONG
         self.IMAGE_LINK_MISSING = IMAGE_LINK_MISSING
         self.INVALID_DOMAIN = INVALID_DOMAIN
-        self.ITEMID_MISSING = ITEMID_MISSING
         self.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE = ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE
+        self.ITEMID_MISSING = ITEMID_MISSING
         self.LINK_FORMAT_INVALID = LINK_FORMAT_INVALID
         self.LINK_LENGTH_TOO_LONG = LINK_LENGTH_TOO_LONG
         self.LIST_PRICE_INVALID = LIST_PRICE_INVALID
@@ -73,8 +73,8 @@ public struct CatalogsItemValidationErrors: Codable, JSONEncodable, Hashable {
         case IMAGE_LINK_LENGTH_TOO_LONG
         case IMAGE_LINK_MISSING
         case INVALID_DOMAIN
-        case ITEMID_MISSING
         case ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE
+        case ITEMID_MISSING
         case LINK_FORMAT_INVALID
         case LINK_LENGTH_TOO_LONG
         case LIST_PRICE_INVALID
@@ -102,8 +102,8 @@ public struct CatalogsItemValidationErrors: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(IMAGE_LINK_LENGTH_TOO_LONG, forKey: .IMAGE_LINK_LENGTH_TOO_LONG)
         try container.encodeIfPresent(IMAGE_LINK_MISSING, forKey: .IMAGE_LINK_MISSING)
         try container.encodeIfPresent(INVALID_DOMAIN, forKey: .INVALID_DOMAIN)
-        try container.encodeIfPresent(ITEMID_MISSING, forKey: .ITEMID_MISSING)
         try container.encodeIfPresent(ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE, forKey: .ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE)
+        try container.encodeIfPresent(ITEMID_MISSING, forKey: .ITEMID_MISSING)
         try container.encodeIfPresent(LINK_FORMAT_INVALID, forKey: .LINK_FORMAT_INVALID)
         try container.encodeIfPresent(LINK_LENGTH_TOO_LONG, forKey: .LINK_LENGTH_TOO_LONG)
         try container.encodeIfPresent(LIST_PRICE_INVALID, forKey: .LIST_PRICE_INVALID)

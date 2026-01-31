@@ -5,7 +5,7 @@
 |------------ | ------------- | ------------- | -------------|
 | **catalog\_type** | [**CatalogsType**](CatalogsType.md) |  | [default to null] |
 | **creative\_assets\_id** | **String** | The catalog creative assets id in the merchant namespace | [optional] [default to null] |
-| **errors** | [**List**](ItemValidationEvent.md) | Array with the errors for the item id requested | [optional] [default to null] |
+| **errors** | [**List**](ItemValidationEvent.md) | Array with the errors for the item id requested | [default to null] |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

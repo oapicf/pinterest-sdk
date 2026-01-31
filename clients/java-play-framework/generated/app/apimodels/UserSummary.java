@@ -9,33 +9,16 @@ import javax.validation.Valid;
 /**
  * UserSummary
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class UserSummary   {
-  @JsonProperty("username")
-  
-  private String username;
-
   @JsonProperty("type")
   
   private String type;
 
-  public UserSummary username(String username) {
-    this.username = username;
-    return this;
-  }
-
-   /**
-   * Username
-   * @return username
-  **/
-  public String getUsername() {
-    return username;
-  }
-
-  public void setUsername(String username) {
-    this.username = username;
-  }
+  @JsonProperty("username")
+  
+  private String username;
 
   public UserSummary type(String type) {
     this.type = type;
@@ -54,6 +37,23 @@ public class UserSummary   {
     this.type = type;
   }
 
+  public UserSummary username(String username) {
+    this.username = username;
+    return this;
+  }
+
+   /**
+   * Username
+   * @return username
+  **/
+  public String getUsername() {
+    return username;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -64,13 +64,13 @@ public class UserSummary   {
       return false;
     }
     UserSummary userSummary = (UserSummary) o;
-    return Objects.equals(username, userSummary.username) &&
-        Objects.equals(type, userSummary.type);
+    return Objects.equals(type, userSummary.type) &&
+        Objects.equals(username, userSummary.username);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(username, type);
+    return Objects.hash(type, username);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -79,8 +79,8 @@ public class UserSummary   {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserSummary {\n");
     
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("}");
     return sb.toString();
   }

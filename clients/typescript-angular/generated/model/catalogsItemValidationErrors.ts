@@ -21,8 +21,8 @@ export interface CatalogsItemValidationErrors {
     IMAGE_LINK_LENGTH_TOO_LONG?: CatalogsItemValidationDetails;
     IMAGE_LINK_MISSING?: CatalogsItemValidationDetails;
     INVALID_DOMAIN?: CatalogsItemValidationDetails;
-    ITEMID_MISSING?: CatalogsItemValidationDetails;
     ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE?: CatalogsItemValidationDetails;
+    ITEMID_MISSING?: CatalogsItemValidationDetails;
     LINK_FORMAT_INVALID?: CatalogsItemValidationDetails;
     LINK_LENGTH_TOO_LONG?: CatalogsItemValidationDetails;
     LIST_PRICE_INVALID?: CatalogsItemValidationDetails;

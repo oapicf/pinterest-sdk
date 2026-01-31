@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **items** | [**Array&lt;MediaUploadDetails&gt;**](MediaUploadDetails.md) | Media |  |
 | **bookmark** | **String** |  | [optional] |
+| **items** | [**Array&lt;Media&gt;**](Media.md) |  |  |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::MediaList200Response.new(
-  items: null,
-  bookmark: null
+  bookmark: null,
+  items: null
 )
 ```
 

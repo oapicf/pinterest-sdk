@@ -11,10 +11,10 @@ import { BulkReportingJobStatus } from './bulkReportingJobStatus';
 
 
 export interface CreateMMMReportResponseData { 
-    report_status?: BulkReportingJobStatus;
-    token?: string;
     message?: string | null;
+    report_status?: BulkReportingJobStatus;
     status?: string;
+    token?: string;
 }
 export namespace CreateMMMReportResponseData {
 }

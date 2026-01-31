@@ -22,7 +22,7 @@ import java.util.Map;
 public interface KeywordsApi  {
     Future<ApiResponse<KeywordsMetricsArrayResponse>> countryKeywordsMetricsGet(String adAccountId, String countryCode, List<String> keywords);
     Future<ApiResponse<KeywordsResponse>> keywordsCreate(String adAccountId, KeywordsRequest keywordsRequest);
-    Future<ApiResponse<KeywordsGet200Response>> keywordsGet(String adAccountId, String campaignId, String adGroupId, List<MatchType> matchTypes, Integer pageSize, String bookmark);
+    Future<ApiResponse<KeywordsGet200Response>> keywordsGet(String adAccountId, String campaignId, String adGroupId, List<String> adGroupIds, List<MatchType> matchTypes, Integer pageSize, String bookmark);
     Future<ApiResponse<KeywordsResponse>> keywordsUpdate(String adAccountId, KeywordUpdateBody keywordUpdateBody);
-    Future<ApiResponse<TrendingKeywordsResponse>> trendingKeywordsList(TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, List<String> includeKeywords, Boolean normalizeAgainstGroup, Integer limit);
+    Future<ApiResponse<TrendingKeywordsResponse>> trendingKeywordsList(TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, List<String> includeKeywords, Boolean normalizeAgainstGroup, Integer limit, Boolean includePrediction, Boolean includeDemographics);
 }

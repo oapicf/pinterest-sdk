@@ -11,8 +11,8 @@ module CatalogsHotelAddress =
   type CatalogsHotelAddress = {
     Addr1 : string;
     City : string;
-    Region : string;
     Country : string;
     PostalCode : string;
+    Region : string;
   }
   //#endregion

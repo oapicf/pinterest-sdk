@@ -9,8 +9,8 @@
 -export_type([openapi_pin_media_with_images/0]).
 
 -type openapi_pin_media_with_images() ::
-  [ {'media_type', binary() }
-  | {'items', list(openapi_image_metadata:openapi_image_metadata()) }
+  [ {'items', list(openapi_image_metadata:openapi_image_metadata()) }
+  | {'media_type', binary() }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_pin_media_with_images() ->
     openapi_pin_media_with_images([]).
 
 openapi_pin_media_with_images(Fields) ->
-  Default = [ {'media_type', binary() }
-            , {'items', list(openapi_image_metadata:openapi_image_metadata()) }
+  Default = [ {'items', list(openapi_image_metadata:openapi_image_metadata()) }
+            , {'media_type', elements([<<"multiple_images">>]) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

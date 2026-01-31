@@ -1,0 +1,25 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "account_flagged" },
+      {"model": "fetch_google_sheet_not_shared" },
+      {"model": "image_file_not_accessible" },
+      {"model": "image_file_not_found" },
+      {"model": "image_invalid_file" },
+      {"model": "image_level_internal_error" },
+      {"model": "image_malformed_url" },
+      {"model": "large_product_count_decrease" },
+      {"model": "line_level_internal_error" },
+    ]
+  }]
+}

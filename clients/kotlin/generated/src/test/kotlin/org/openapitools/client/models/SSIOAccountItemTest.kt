@@ -26,16 +26,16 @@ class SSIOAccountItemTest : ShouldSpec() {
         // uncomment below to create an instance of SSIOAccountItem
         //val modelInstance = SSIOAccountItem()
 
+        // to test the property `addresses` - Address information that is associated with this account.
+        should("test addresses") {
+            // uncomment below to test the property
+            //modelInstance.addresses shouldBe ("TODO")
+        }
+
         // to test the property `id` - Salesforce id for billto_info
         should("test id") {
             // uncomment below to test the property
             //modelInstance.id shouldBe ("TODO")
-        }
-
-        // to test the property `ioTermsId` - Salesforce id for IO Terms and Conditions
-        should("test ioTermsId") {
-            // uncomment below to test the property
-            //modelInstance.ioTermsId shouldBe ("TODO")
         }
 
         // to test the property `ioTerms` - Salesforce text for IO Terms and Conditions
@@ -44,28 +44,10 @@ class SSIOAccountItemTest : ShouldSpec() {
             //modelInstance.ioTerms shouldBe ("TODO")
         }
 
-        // to test the property `usTermsId` - Salesforce id for US Terms and Conditions
-        should("test usTermsId") {
+        // to test the property `ioTermsId` - Salesforce id for IO Terms and Conditions
+        should("test ioTermsId") {
             // uncomment below to test the property
-            //modelInstance.usTermsId shouldBe ("TODO")
-        }
-
-        // to test the property `usTerms` - Salesforce text for US Terms and Conditions
-        should("test usTerms") {
-            // uncomment below to test the property
-            //modelInstance.usTerms shouldBe ("TODO")
-        }
-
-        // to test the property `rowTermsId` - Salesforce id for Rest of the World Terms and Conditions
-        should("test rowTermsId") {
-            // uncomment below to test the property
-            //modelInstance.rowTermsId shouldBe ("TODO")
-        }
-
-        // to test the property `rowTerms` - Salesforce text for Rest of the World Terms and Conditions
-        should("test rowTerms") {
-            // uncomment below to test the property
-            //modelInstance.rowTerms shouldBe ("TODO")
+            //modelInstance.ioTermsId shouldBe ("TODO")
         }
 
         // to test the property `ioType` - Insertion Order Type - Pinterest Paper or Agency Paper
@@ -74,10 +56,28 @@ class SSIOAccountItemTest : ShouldSpec() {
             //modelInstance.ioType shouldBe ("TODO")
         }
 
-        // to test the property `addresses` - Address information that is associated with this account.
-        should("test addresses") {
+        // to test the property `rowTerms` - Salesforce text for Rest of the World Terms and Conditions
+        should("test rowTerms") {
             // uncomment below to test the property
-            //modelInstance.addresses shouldBe ("TODO")
+            //modelInstance.rowTerms shouldBe ("TODO")
+        }
+
+        // to test the property `rowTermsId` - Salesforce id for Rest of the World Terms and Conditions
+        should("test rowTermsId") {
+            // uncomment below to test the property
+            //modelInstance.rowTermsId shouldBe ("TODO")
+        }
+
+        // to test the property `usTerms` - Salesforce text for US Terms and Conditions
+        should("test usTerms") {
+            // uncomment below to test the property
+            //modelInstance.usTerms shouldBe ("TODO")
+        }
+
+        // to test the property `usTermsId` - Salesforce id for US Terms and Conditions
+        should("test usTermsId") {
+            // uncomment below to test the property
+            //modelInstance.usTermsId shouldBe ("TODO")
         }
 
     }

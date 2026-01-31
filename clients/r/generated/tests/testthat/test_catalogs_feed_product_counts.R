@@ -5,18 +5,18 @@ context("Test CatalogsFeedProductCounts")
 
 model_instance <- CatalogsFeedProductCounts$new()
 
-test_that("original", {
-  # tests for the property `original` (integer)
-  # The number of products in the feed file.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`original`, "EXPECTED_RESULT")
-})
-
 test_that("ingested", {
   # tests for the property `ingested` (integer)
   # The number of products successfully ingested from the feed file.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`ingested`, "EXPECTED_RESULT")
+})
+
+test_that("original", {
+  # tests for the property `original` (integer)
+  # The number of products in the feed file.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`original`, "EXPECTED_RESULT")
 })

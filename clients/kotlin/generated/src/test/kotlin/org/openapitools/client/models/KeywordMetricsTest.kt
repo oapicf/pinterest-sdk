@@ -25,12 +25,6 @@ class KeywordMetricsTest : ShouldSpec() {
         // uncomment below to create an instance of KeywordMetrics
         //val modelInstance = KeywordMetrics()
 
-        // to test the property `avgCpcInMicroCurrency` - Average cost per click
-        should("test avgCpcInMicroCurrency") {
-            // uncomment below to test the property
-            //modelInstance.avgCpcInMicroCurrency shouldBe ("TODO")
-        }
-
         // to test the property `keywordQueryVolume` - Keyword's search frequency. This value is based on keyword frequency in pepsi client response
         should("test keywordQueryVolume") {
             // uncomment below to test the property

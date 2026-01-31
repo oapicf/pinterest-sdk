@@ -30,7 +30,7 @@ void main() {
     //
     // Get a product group promotion by id
     //
-    //Future<ProductGroupPromotionResponse> productGroupPromotionsGet(String adAccountId, String productGroupPromotionId) async
+    //Future<ProductGroupPromotion> productGroupPromotionsGet(String adAccountId, String productGroupPromotionId) async
     test('test productGroupPromotionsGet', () async {
       // TODO
     });
@@ -55,9 +55,9 @@ void main() {
 
     // Get product group analytics
     //
-    // Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+    // Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
     //
-    //Future<List<ProductGroupAnalyticsResponseInner>> productGroupsAnalytics(String adAccountId, DateTime startDate, DateTime endDate, List<String> productGroupIds, List<String> columns, Granularity granularity, { int clickWindowDays, int engagementWindowDays, int viewWindowDays, String conversionReportTime }) async
+    //Future<List<ProductGroupAnalyticsResponseInner>> productGroupsAnalytics(String adAccountId, DateTime startDate, DateTime endDate, List<String> productGroupIds, List<String> columns, Granularity granularity, { int clickWindowDays, int engagementWindowDays, int viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone }) async
     test('test productGroupsAnalytics', () async {
       // TODO
     });

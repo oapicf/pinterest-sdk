@@ -13,32 +13,32 @@ import AnyCodable
 /** The absolute date range of the template */
 public struct TemplateResponseDateRangeAbsoluteDateRange: Codable, JSONEncodable, Hashable {
 
-    /** The date range type */
-    public var type: String?
-    /** The start date of the date range */
-    public var startDate: Double?
     /** The end date of the date range */
     public var endDate: Double?
+    /** The start date of the date range */
+    public var startDate: Double?
+    /** The date range type */
+    public var type: String?
 
-    public init(type: String? = nil, startDate: Double? = nil, endDate: Double? = nil) {
-        self.type = type
-        self.startDate = startDate
+    public init(endDate: Double? = nil, startDate: Double? = nil, type: String? = nil) {
         self.endDate = endDate
+        self.startDate = startDate
+        self.type = type
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case type
-        case startDate = "start_date"
         case endDate = "end_date"
+        case startDate = "start_date"
+        case type
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(type, forKey: .type)
-        try container.encodeIfPresent(startDate, forKey: .startDate)
         try container.encodeIfPresent(endDate, forKey: .endDate)
+        try container.encodeIfPresent(startDate, forKey: .startDate)
+        try container.encodeIfPresent(type, forKey: .type)
     }
 }
 

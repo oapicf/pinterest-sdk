@@ -15,12 +15,12 @@ module CatalogsReportFeedIngestionStats =
   //#endregion
 
   type CatalogsReportFeedIngestionStats = {
-    ReportType : ReportTypeEnum;
     CatalogId : string;
     Code : int;
     CodeLabel : string;
     Message : string;
     Occurrences : int;
+    ReportType : ReportTypeEnum;
     Severity : SeverityEnum;
   }
   //#endregion

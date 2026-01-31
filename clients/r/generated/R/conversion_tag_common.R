@@ -7,56 +7,54 @@
 #' @title ConversionTagCommon
 #' @description ConversionTagCommon Class
 #' @format An \code{R6Class} generator object
-#' @field ad_account_id Ad account ID. character [optional]
 #' @field code_snippet Tag code snippet. character [optional]
-#' @field enhanced_match_status  \link{EnhancedMatchStatusType} [optional]
+#' @field configs  \link{ConversionTagConfigs} [optional]
+#' @field enhanced_match_status The enhanced match status of the tag \link{EnhancedMatchStatusType} [optional]
 #' @field id Tag ID. character [optional]
 #' @field last_fired_time_ms Time for the last event fired. numeric [optional]
-#' @field name Conversion tag name. character [optional]
-#' @field status  \link{EntityStatus} [optional]
+#' @field name Conversion tag name. character
 #' @field version Version number. character [optional]
-#' @field configs  \link{ConversionTagConfigs} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 ConversionTagCommon <- R6::R6Class(
   "ConversionTagCommon",
   public = list(
-    `ad_account_id` = NULL,
     `code_snippet` = NULL,
+    `configs` = NULL,
     `enhanced_match_status` = NULL,
     `id` = NULL,
     `last_fired_time_ms` = NULL,
     `name` = NULL,
-    `status` = NULL,
     `version` = NULL,
-    `configs` = NULL,
 
     #' @description
     #' Initialize a new ConversionTagCommon class.
     #'
-    #' @param ad_account_id Ad account ID.
+    #' @param name Conversion tag name.
     #' @param code_snippet Tag code snippet.
-    #' @param enhanced_match_status enhanced_match_status
+    #' @param configs configs
+    #' @param enhanced_match_status The enhanced match status of the tag
     #' @param id Tag ID.
     #' @param last_fired_time_ms Time for the last event fired.
-    #' @param name Conversion tag name.
-    #' @param status status
     #' @param version Version number.
-    #' @param configs configs
     #' @param ... Other optional arguments.
-    initialize = function(`ad_account_id` = NULL, `code_snippet` = NULL, `enhanced_match_status` = NULL, `id` = NULL, `last_fired_time_ms` = NULL, `name` = NULL, `status` = NULL, `version` = NULL, `configs` = NULL, ...) {
-      if (!is.null(`ad_account_id`)) {
-        if (!(is.character(`ad_account_id`) && length(`ad_account_id`) == 1)) {
-          stop(paste("Error! Invalid data for `ad_account_id`. Must be a string:", `ad_account_id`))
+    initialize = function(`name`, `code_snippet` = NULL, `configs` = NULL, `enhanced_match_status` = NULL, `id` = NULL, `last_fired_time_ms` = NULL, `version` = NULL, ...) {
+      if (!missing(`name`)) {
+        if (!(is.character(`name`) && length(`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
         }
-        self$`ad_account_id` <- `ad_account_id`
+        self$`name` <- `name`
       }
       if (!is.null(`code_snippet`)) {
         if (!(is.character(`code_snippet`) && length(`code_snippet`) == 1)) {
           stop(paste("Error! Invalid data for `code_snippet`. Must be a string:", `code_snippet`))
         }
         self$`code_snippet` <- `code_snippet`
+      }
+      if (!is.null(`configs`)) {
+        stopifnot(R6::is.R6(`configs`))
+        self$`configs` <- `configs`
       }
       if (!is.null(`enhanced_match_status`)) {
         if (!(`enhanced_match_status` %in% c())) {
@@ -74,28 +72,11 @@ ConversionTagCommon <- R6::R6Class(
       if (!is.null(`last_fired_time_ms`)) {
         self$`last_fired_time_ms` <- `last_fired_time_ms`
       }
-      if (!is.null(`name`)) {
-        if (!(is.character(`name`) && length(`name`) == 1)) {
-          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
-        }
-        self$`name` <- `name`
-      }
-      if (!is.null(`status`)) {
-        if (!(`status` %in% c())) {
-          stop(paste("Error! \"", `status`, "\" cannot be assigned to `status`. Must be .", sep = ""))
-        }
-        stopifnot(R6::is.R6(`status`))
-        self$`status` <- `status`
-      }
       if (!is.null(`version`)) {
         if (!(is.character(`version`) && length(`version`) == 1)) {
           stop(paste("Error! Invalid data for `version`. Must be a string:", `version`))
         }
         self$`version` <- `version`
-      }
-      if (!is.null(`configs`)) {
-        stopifnot(R6::is.R6(`configs`))
-        self$`configs` <- `configs`
       }
     },
 
@@ -130,13 +111,13 @@ ConversionTagCommon <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       ConversionTagCommonObject <- list()
-      if (!is.null(self$`ad_account_id`)) {
-        ConversionTagCommonObject[["ad_account_id"]] <-
-          self$`ad_account_id`
-      }
       if (!is.null(self$`code_snippet`)) {
         ConversionTagCommonObject[["code_snippet"]] <-
           self$`code_snippet`
+      }
+      if (!is.null(self$`configs`)) {
+        ConversionTagCommonObject[["configs"]] <-
+          self$`configs`$toSimpleType()
       }
       if (!is.null(self$`enhanced_match_status`)) {
         ConversionTagCommonObject[["enhanced_match_status"]] <-
@@ -154,17 +135,9 @@ ConversionTagCommon <- R6::R6Class(
         ConversionTagCommonObject[["name"]] <-
           self$`name`
       }
-      if (!is.null(self$`status`)) {
-        ConversionTagCommonObject[["status"]] <-
-          self$`status`$toSimpleType()
-      }
       if (!is.null(self$`version`)) {
         ConversionTagCommonObject[["version"]] <-
           self$`version`
-      }
-      if (!is.null(self$`configs`)) {
-        ConversionTagCommonObject[["configs"]] <-
-          self$`configs`$toSimpleType()
       }
       return(ConversionTagCommonObject)
     },
@@ -176,11 +149,13 @@ ConversionTagCommon <- R6::R6Class(
     #' @return the instance of ConversionTagCommon
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`ad_account_id`)) {
-        self$`ad_account_id` <- this_object$`ad_account_id`
-      }
       if (!is.null(this_object$`code_snippet`)) {
         self$`code_snippet` <- this_object$`code_snippet`
+      }
+      if (!is.null(this_object$`configs`)) {
+        `configs_object` <- ConversionTagConfigs$new()
+        `configs_object`$fromJSON(jsonlite::toJSON(this_object$`configs`, auto_unbox = TRUE, digits = NA))
+        self$`configs` <- `configs_object`
       }
       if (!is.null(this_object$`enhanced_match_status`)) {
         `enhanced_match_status_object` <- EnhancedMatchStatusType$new()
@@ -196,18 +171,8 @@ ConversionTagCommon <- R6::R6Class(
       if (!is.null(this_object$`name`)) {
         self$`name` <- this_object$`name`
       }
-      if (!is.null(this_object$`status`)) {
-        `status_object` <- EntityStatus$new()
-        `status_object`$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
-        self$`status` <- `status_object`
-      }
       if (!is.null(this_object$`version`)) {
         self$`version` <- this_object$`version`
-      }
-      if (!is.null(this_object$`configs`)) {
-        `configs_object` <- ConversionTagConfigs$new()
-        `configs_object`$fromJSON(jsonlite::toJSON(this_object$`configs`, auto_unbox = TRUE, digits = NA))
-        self$`configs` <- `configs_object`
       }
       self
     },
@@ -230,15 +195,13 @@ ConversionTagCommon <- R6::R6Class(
     #' @return the instance of ConversionTagCommon
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`ad_account_id` <- this_object$`ad_account_id`
       self$`code_snippet` <- this_object$`code_snippet`
+      self$`configs` <- ConversionTagConfigs$new()$fromJSON(jsonlite::toJSON(this_object$`configs`, auto_unbox = TRUE, digits = NA))
       self$`enhanced_match_status` <- EnhancedMatchStatusType$new()$fromJSON(jsonlite::toJSON(this_object$`enhanced_match_status`, auto_unbox = TRUE, digits = NA))
       self$`id` <- this_object$`id`
       self$`last_fired_time_ms` <- this_object$`last_fired_time_ms`
       self$`name` <- this_object$`name`
-      self$`status` <- EntityStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
       self$`version` <- this_object$`version`
-      self$`configs` <- ConversionTagConfigs$new()$fromJSON(jsonlite::toJSON(this_object$`configs`, auto_unbox = TRUE, digits = NA))
       self
     },
 
@@ -248,6 +211,14 @@ ConversionTagCommon <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `name`
+      if (!is.null(input_json$`name`)) {
+        if (!(is.character(input_json$`name`) && length(input_json$`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", input_json$`name`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for ConversionTagCommon: the required field `name` is missing."))
+      }
     },
 
     #' @description
@@ -263,6 +234,11 @@ ConversionTagCommon <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      # check if the required `name` is null
+      if (is.null(self$`name`)) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -272,6 +248,11 @@ ConversionTagCommon <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `name` is null
+      if (is.null(self$`name`)) {
+        invalid_fields["name"] <- "Non-nullable required field `name` cannot be null."
+      }
+
       invalid_fields
     },
 

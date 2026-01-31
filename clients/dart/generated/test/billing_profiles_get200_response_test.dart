@@ -16,13 +16,13 @@ void main() {
   // final instance = BillingProfilesGet200Response();
 
   group('test BillingProfilesGet200Response', () {
-    // List<BillingProfilesResponse> items (default value: const [])
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // List<BillingProfilesResponse> items (default value: const [])
+    test('to test the property `items`', () async {
       // TODO
     });
 

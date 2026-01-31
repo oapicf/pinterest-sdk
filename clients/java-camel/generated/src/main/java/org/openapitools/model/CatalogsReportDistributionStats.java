@@ -22,8 +22,22 @@ import javax.annotation.Generated;
  * CatalogsReportDistributionStats
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsReportDistributionStats implements CatalogsReportStats {
+
+  private String catalogId;
+
+  private Integer code;
+
+  private String codeLabel;
+
+  private Boolean ineligibleForAds;
+
+  private Boolean ineligibleForOrganic;
+
+  private String message;
+
+  private Integer occurrences;
 
   /**
    * Gets or Sets reportType
@@ -59,40 +73,6 @@ public class CatalogsReportDistributionStats implements CatalogsReportStats {
   }
 
   private ReportTypeEnum reportType;
-
-  private String catalogId;
-
-  private Integer code;
-
-  private String codeLabel;
-
-  private String message;
-
-  private Integer occurrences;
-
-  private Boolean ineligibleForAds;
-
-  private Boolean ineligibleForOrganic;
-
-  public CatalogsReportDistributionStats reportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-    return this;
-  }
-
-  /**
-   * Get reportType
-   * @return reportType
-   */
-  
-  @Schema(name = "report_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("report_type")
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-
-  public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
 
   public CatalogsReportDistributionStats catalogId(String catalogId) {
     this.catalogId = catalogId;
@@ -154,46 +134,6 @@ public class CatalogsReportDistributionStats implements CatalogsReportStats {
     this.codeLabel = codeLabel;
   }
 
-  public CatalogsReportDistributionStats message(String message) {
-    this.message = message;
-    return this;
-  }
-
-  /**
-   * Title message describing the diagnostic issue
-   * @return message
-   */
-  
-  @Schema(name = "message", description = "Title message describing the diagnostic issue", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("message")
-  public String getMessage() {
-    return message;
-  }
-
-  public void setMessage(String message) {
-    this.message = message;
-  }
-
-  public CatalogsReportDistributionStats occurrences(Integer occurrences) {
-    this.occurrences = occurrences;
-    return this;
-  }
-
-  /**
-   * Number of occurrences of the issue
-   * @return occurrences
-   */
-  
-  @Schema(name = "occurrences", example = "10", description = "Number of occurrences of the issue", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("occurrences")
-  public Integer getOccurrences() {
-    return occurrences;
-  }
-
-  public void setOccurrences(Integer occurrences) {
-    this.occurrences = occurrences;
-  }
-
   public CatalogsReportDistributionStats ineligibleForAds(Boolean ineligibleForAds) {
     this.ineligibleForAds = ineligibleForAds;
     return this;
@@ -234,6 +174,66 @@ public class CatalogsReportDistributionStats implements CatalogsReportStats {
     this.ineligibleForOrganic = ineligibleForOrganic;
   }
 
+  public CatalogsReportDistributionStats message(String message) {
+    this.message = message;
+    return this;
+  }
+
+  /**
+   * Title message describing the diagnostic issue
+   * @return message
+   */
+  
+  @Schema(name = "message", description = "Title message describing the diagnostic issue", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("message")
+  public String getMessage() {
+    return message;
+  }
+
+  public void setMessage(String message) {
+    this.message = message;
+  }
+
+  public CatalogsReportDistributionStats occurrences(Integer occurrences) {
+    this.occurrences = occurrences;
+    return this;
+  }
+
+  /**
+   * Number of occurrences of the issue
+   * @return occurrences
+   */
+  
+  @Schema(name = "occurrences", example = "10", description = "Number of occurrences of the issue", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("occurrences")
+  public Integer getOccurrences() {
+    return occurrences;
+  }
+
+  public void setOccurrences(Integer occurrences) {
+    this.occurrences = occurrences;
+  }
+
+  public CatalogsReportDistributionStats reportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+    return this;
+  }
+
+  /**
+   * Get reportType
+   * @return reportType
+   */
+  
+  @Schema(name = "report_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("report_type")
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -243,33 +243,33 @@ public class CatalogsReportDistributionStats implements CatalogsReportStats {
       return false;
     }
     CatalogsReportDistributionStats catalogsReportDistributionStats = (CatalogsReportDistributionStats) o;
-    return Objects.equals(this.reportType, catalogsReportDistributionStats.reportType) &&
-        Objects.equals(this.catalogId, catalogsReportDistributionStats.catalogId) &&
+    return Objects.equals(this.catalogId, catalogsReportDistributionStats.catalogId) &&
         Objects.equals(this.code, catalogsReportDistributionStats.code) &&
         Objects.equals(this.codeLabel, catalogsReportDistributionStats.codeLabel) &&
+        Objects.equals(this.ineligibleForAds, catalogsReportDistributionStats.ineligibleForAds) &&
+        Objects.equals(this.ineligibleForOrganic, catalogsReportDistributionStats.ineligibleForOrganic) &&
         Objects.equals(this.message, catalogsReportDistributionStats.message) &&
         Objects.equals(this.occurrences, catalogsReportDistributionStats.occurrences) &&
-        Objects.equals(this.ineligibleForAds, catalogsReportDistributionStats.ineligibleForAds) &&
-        Objects.equals(this.ineligibleForOrganic, catalogsReportDistributionStats.ineligibleForOrganic);
+        Objects.equals(this.reportType, catalogsReportDistributionStats.reportType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, catalogId, code, codeLabel, message, occurrences, ineligibleForAds, ineligibleForOrganic);
+    return Objects.hash(catalogId, code, codeLabel, ineligibleForAds, ineligibleForOrganic, message, occurrences, reportType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportDistributionStats {\n");
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    codeLabel: ").append(toIndentedString(codeLabel)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    occurrences: ").append(toIndentedString(occurrences)).append("\n");
     sb.append("    ineligibleForAds: ").append(toIndentedString(ineligibleForAds)).append("\n");
     sb.append("    ineligibleForOrganic: ").append(toIndentedString(ineligibleForOrganic)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    occurrences: ").append(toIndentedString(occurrences)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

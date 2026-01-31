@@ -16,11 +16,11 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.Media
 import org.openapitools.server.api.model.MediaList200Response
 import org.openapitools.server.api.model.MediaUpload
-import org.openapitools.server.api.model.MediaUploadDetails
-import org.openapitools.server.api.model.MediaUploadRequest
+import org.openapitools.server.api.model.MediaUploadCreate
+import org.openapitools.server.api.model.PinterestLibError
 
 class MediaApiVertxProxyHandler(private val vertx: Vertx, private val service: MediaApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long
@@ -70,13 +70,13 @@ class MediaApiVertxProxyHandler(private val vertx: Vertx, private val service: M
         
                 "mediaCreate" -> {
                     val params = context.params
-                    val mediaUploadRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (mediaUploadRequestParam == null) {
-                        throw IllegalArgumentException("mediaUploadRequest is required")
+                    val mediaUploadCreateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (mediaUploadCreateParam == null) {
+                        throw IllegalArgumentException("mediaUploadCreate is required")
                     }
-                    val mediaUploadRequest = Gson().fromJson(mediaUploadRequestParam.encode(), MediaUploadRequest::class.java)
+                    val mediaUploadCreate = Gson().fromJson(mediaUploadCreateParam.encode(), MediaUploadCreate::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.mediaCreate(mediaUploadRequest,context)
+                        val result = service.mediaCreate(mediaUploadCreate,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

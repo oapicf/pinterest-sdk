@@ -12,31 +12,13 @@ import org.openapitools.model.NonNullableCatalogsCurrency;
  * A currency filter. This filter cannot be negated
  */
 @ApiModel(description = "A currency filter. This filter cannot be negated")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsProductGroupCurrencyCriteria   {
-  @JsonProperty("values")
-  private NonNullableCatalogsCurrency values;
-
   @JsonProperty("negated")
   private Boolean negated = false;
 
-  public CatalogsProductGroupCurrencyCriteria values(NonNullableCatalogsCurrency values) {
-    this.values = values;
-    return this;
-  }
-
-   /**
-   * Get values
-   * @return values
-  **/
-  @ApiModelProperty(required = true, value = "")
-  public NonNullableCatalogsCurrency getValues() {
-    return values;
-  }
-
-  public void setValues(NonNullableCatalogsCurrency values) {
-    this.values = values;
-  }
+  @JsonProperty("values")
+  private NonNullableCatalogsCurrency values;
 
   public CatalogsProductGroupCurrencyCriteria negated(Boolean negated) {
     this.negated = negated;
@@ -56,6 +38,24 @@ public class CatalogsProductGroupCurrencyCriteria   {
     this.negated = negated;
   }
 
+  public CatalogsProductGroupCurrencyCriteria values(NonNullableCatalogsCurrency values) {
+    this.values = values;
+    return this;
+  }
+
+   /**
+   * Get values
+   * @return values
+  **/
+  @ApiModelProperty(required = true, value = "")
+  public NonNullableCatalogsCurrency getValues() {
+    return values;
+  }
+
+  public void setValues(NonNullableCatalogsCurrency values) {
+    this.values = values;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -66,13 +66,13 @@ public class CatalogsProductGroupCurrencyCriteria   {
       return false;
     }
     CatalogsProductGroupCurrencyCriteria catalogsProductGroupCurrencyCriteria = (CatalogsProductGroupCurrencyCriteria) o;
-    return Objects.equals(this.values, catalogsProductGroupCurrencyCriteria.values) &&
-        Objects.equals(this.negated, catalogsProductGroupCurrencyCriteria.negated);
+    return Objects.equals(this.negated, catalogsProductGroupCurrencyCriteria.negated) &&
+        Objects.equals(this.values, catalogsProductGroupCurrencyCriteria.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, negated);
+    return Objects.hash(negated, values);
   }
 
   @Override
@@ -80,8 +80,8 @@ public class CatalogsProductGroupCurrencyCriteria   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupCurrencyCriteria {\n");
     
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

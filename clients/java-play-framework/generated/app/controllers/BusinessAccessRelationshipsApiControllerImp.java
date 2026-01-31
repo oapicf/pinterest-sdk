@@ -1,5 +1,8 @@
 package controllers;
 
+import apimodels.BrandAccountsCreate200Response;
+import apimodels.BrandAccountsCreateRequest;
+import apimodels.BrandAccountsUpdateRequest;
 import apimodels.DeletePartnersRequest;
 import apimodels.DeletePartnersResponse;
 import apimodels.DeletedMembersResponse;
@@ -10,6 +13,7 @@ import apimodels.GetBusinessPartners200Response;
 import apimodels.MemberBusinessRole;
 import apimodels.MembersToDeleteBody;
 import apimodels.PartnerType;
+import apimodels.SystemUserUpdateRequest;
 import apimodels.UpdateMemberBusinessRoleBody;
 import apimodels.UpdateMemberResultsResponseArray;
 
@@ -22,8 +26,20 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BusinessAccessRelationshipsApiControllerImp extends BusinessAccessRelationshipsApiControllerImpInterface {
+    @Override
+    public BrandAccountsCreate200Response brandAccountsCreate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessHierarchyId, BrandAccountsCreateRequest brandAccountsCreateRequest) throws Exception {
+        //Do your magic!!!
+        return new BrandAccountsCreate200Response();
+    }
+
+    @Override
+    public BrandAccountsCreate200Response brandAccountsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessHierarchyId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String brandAccountId, BrandAccountsUpdateRequest brandAccountsUpdateRequest) throws Exception {
+        //Do your magic!!!
+        return new BrandAccountsCreate200Response();
+    }
+
     @Override
     public DeletedMembersResponse deleteBusinessMembership(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, MembersToDeleteBody membersToDeleteBody) throws Exception {
         //Do your magic!!!
@@ -43,7 +59,7 @@ public class BusinessAccessRelationshipsApiControllerImp extends BusinessAccessR
     }
 
     @Override
-    public GetBusinessMembers200Response getBusinessMembers(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, Boolean assetsSummary, List<MemberBusinessRole> businessRoles,  @Size(max=500)String memberIds,  @Min(0)Integer startIndex, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
+    public GetBusinessMembers200Response getBusinessMembers(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, Boolean fetchSystemUsers, Boolean assetsSummary, List<MemberBusinessRole> businessRoles,  @Size(max=500)String memberIds,  @Min(0)Integer startIndex, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         //Do your magic!!!
         return new GetBusinessMembers200Response();
     }
@@ -52,6 +68,11 @@ public class BusinessAccessRelationshipsApiControllerImp extends BusinessAccessR
     public GetBusinessPartners200Response getBusinessPartners(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, Boolean assetsSummary, PartnerType partnerType,  @Size(max=500)String partnerIds,  @Min(0)Integer startIndex,  @Min(1) @Max(250)Integer pageSize, String bookmark) throws Exception {
         //Do your magic!!!
         return new GetBusinessPartners200Response();
+    }
+
+    @Override
+    public void systemUserUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String systemUserId, SystemUserUpdateRequest systemUserUpdateRequest) throws Exception {
+        //Do your magic!!!
     }
 
     @Override

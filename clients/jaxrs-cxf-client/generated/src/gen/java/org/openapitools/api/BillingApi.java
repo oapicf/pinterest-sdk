@@ -3,8 +3,11 @@ package org.openapitools.api;
 import org.openapitools.model.AdsCreditRedeemRequest;
 import org.openapitools.model.AdsCreditRedeemResponse;
 import org.openapitools.model.AdsCreditsDiscountsGet200Response;
+import org.openapitools.model.BillingInvoiceDownloadResponse;
+import org.openapitools.model.BillingInvoicesGet200Response;
 import org.openapitools.model.BillingProfilesGet200Response;
 import org.openapitools.model.Error;
+import org.joda.time.LocalDate;
 import org.openapitools.model.SSIOAccountResponse;
 import org.openapitools.model.SSIOCreateInsertionOrderRequest;
 import org.openapitools.model.SSIOCreateInsertionOrderResponse;
@@ -38,7 +41,7 @@ public interface BillingApi  {
     /**
      * Redeem ad credits
      *
-     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      *
      */
     @POST
@@ -55,7 +58,7 @@ public interface BillingApi  {
     /**
      * Get ads credit discounts
      *
-     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      *
      */
     @GET
@@ -68,9 +71,41 @@ public interface BillingApi  {
     public AdsCreditsDiscountsGet200Response adsCreditsDiscountsGet(@PathParam("ad_account_id") String adAccountId, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @DefaultValue("25")Integer pageSize);
 
     /**
+     * Get download url for a billing invoice
+     *
+     * Get download url for a billing invoice.
+     *
+     */
+    @GET
+    @Path("/billing_invoice/{billing_invoice_id}/download")
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Get download url for a billing invoice", tags={  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "Successfully fetched Billing invoice information for a given ad account", response = BillingInvoiceDownloadResponse.class),
+        @ApiResponse(code = 400, message = "Invalid request parameter.", response = Error.class),
+        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+    public BillingInvoiceDownloadResponse billingInvoiceDownloadGet(@PathParam("ad_account_id") String adAccountId, @PathParam("billing_invoice_id") String billingInvoiceId);
+
+    /**
+     * Get billing invoices
+     *
+     * Get billing invoices in the advertiser account.
+     *
+     */
+    @GET
+    @Path("/billing_invoices")
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Get billing invoices", tags={  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "Success", response = BillingInvoicesGet200Response.class),
+        @ApiResponse(code = 400, message = "Invalid request parameter.", response = Error.class),
+        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+    public BillingInvoicesGet200Response billingInvoicesGet(@PathParam("ad_account_id") String adAccountId, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @DefaultValue("25")Integer pageSize, @QueryParam("sort") @DefaultValue("DUE_DATE")String sort, @QueryParam("order") String order, @QueryParam("status") String status, @QueryParam("document_type") String documentType, @QueryParam("start_due_date") LocalDate startDueDate, @QueryParam("end_due_date") LocalDate endDueDate);
+
+    /**
      * Get billing profiles
      *
-     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      *
      */
     @GET

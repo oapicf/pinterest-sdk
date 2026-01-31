@@ -14,11 +14,11 @@ import { CatalogsHotelProductGroupFilters } from './catalogsHotelProductGroupFil
  * Request object to list products for a given hotel catalog_id and product group filter.
  */
 export interface CatalogsHotelListProductsByCatalogBasedFilterRequest { 
-    catalog_type: CatalogsHotelListProductsByCatalogBasedFilterRequest.CatalogTypeEnum;
     /**
      * Catalog id pertaining to the hotel product group.
      */
     catalog_id: string;
+    catalog_type: CatalogsHotelListProductsByCatalogBasedFilterRequest.CatalogTypeEnum;
     filters: CatalogsHotelProductGroupFilters;
 }
 export namespace CatalogsHotelListProductsByCatalogBasedFilterRequest {

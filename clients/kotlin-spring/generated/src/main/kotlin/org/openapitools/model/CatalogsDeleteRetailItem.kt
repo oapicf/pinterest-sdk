@@ -19,6 +19,7 @@ import io.swagger.v3.oas.annotations.media.Schema
  * An item to be deleted
  * @param itemId The catalog item id in the merchant namespace
  * @param operation 
+ * @param lastUpdatedTime The millisecond timestamp when the item was lastly modified by the merchant.
  */
 data class CatalogsDeleteRetailItem(
 
@@ -26,7 +27,10 @@ data class CatalogsDeleteRetailItem(
     @get:JsonProperty("item_id", required = true) val itemId: kotlin.String,
 
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("operation", required = true) val operation: CatalogsDeleteRetailItem.Operation
+    @get:JsonProperty("operation", required = true) val operation: CatalogsDeleteRetailItem.Operation,
+
+    @Schema(example = "1641483432072", description = "The millisecond timestamp when the item was lastly modified by the merchant.")
+    @get:JsonProperty("last_updated_time") val lastUpdatedTime: kotlin.Long? = null
 ) {
 
     /**

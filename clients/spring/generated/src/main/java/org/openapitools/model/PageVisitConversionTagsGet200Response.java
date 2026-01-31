@@ -27,13 +27,13 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("page_visit_conversion_tags_get_200_response")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PageVisitConversionTagsGet200Response {
+
+  private JsonNullable<String> bookmark = JsonNullable.<String>undefined();
 
   @Valid
   private List<@Valid ConversionEventResponse> items = new ArrayList<>();
-
-  private JsonNullable<String> bookmark = JsonNullable.<String>undefined();
 
   public PageVisitConversionTagsGet200Response() {
     super();
@@ -44,6 +44,26 @@ public class PageVisitConversionTagsGet200Response {
    */
   public PageVisitConversionTagsGet200Response(List<@Valid ConversionEventResponse> items) {
     this.items = items;
+  }
+
+  public PageVisitConversionTagsGet200Response bookmark(String bookmark) {
+    this.bookmark = JsonNullable.of(bookmark);
+    return this;
+  }
+
+  /**
+   * Get bookmark
+   * @return bookmark
+   */
+  
+  @Schema(name = "bookmark", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("bookmark")
+  public JsonNullable<String> getBookmark() {
+    return bookmark;
+  }
+
+  public void setBookmark(JsonNullable<String> bookmark) {
+    this.bookmark = bookmark;
   }
 
   public PageVisitConversionTagsGet200Response items(List<@Valid ConversionEventResponse> items) {
@@ -74,26 +94,6 @@ public class PageVisitConversionTagsGet200Response {
     this.items = items;
   }
 
-  public PageVisitConversionTagsGet200Response bookmark(String bookmark) {
-    this.bookmark = JsonNullable.of(bookmark);
-    return this;
-  }
-
-  /**
-   * Get bookmark
-   * @return bookmark
-   */
-  
-  @Schema(name = "bookmark", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("bookmark")
-  public JsonNullable<String> getBookmark() {
-    return bookmark;
-  }
-
-  public void setBookmark(JsonNullable<String> bookmark) {
-    this.bookmark = bookmark;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -103,8 +103,8 @@ public class PageVisitConversionTagsGet200Response {
       return false;
     }
     PageVisitConversionTagsGet200Response pageVisitConversionTagsGet200Response = (PageVisitConversionTagsGet200Response) o;
-    return Objects.equals(this.items, pageVisitConversionTagsGet200Response.items) &&
-        equalsNullable(this.bookmark, pageVisitConversionTagsGet200Response.bookmark);
+    return equalsNullable(this.bookmark, pageVisitConversionTagsGet200Response.bookmark) &&
+        Objects.equals(this.items, pageVisitConversionTagsGet200Response.items);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -113,7 +113,7 @@ public class PageVisitConversionTagsGet200Response {
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, hashCodeNullable(bookmark));
+    return Objects.hash(hashCodeNullable(bookmark), items);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -127,8 +127,8 @@ public class PageVisitConversionTagsGet200Response {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PageVisitConversionTagsGet200Response {\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

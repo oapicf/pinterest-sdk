@@ -7,13 +7,13 @@ Request object for creating a product group.
 
 Name | Type
 ------------ | -------------
+`catalogId` | string
 `catalogType` | string
-`name` | string
+`country` | [Country](Country.md)
 `description` | string
 `filters` | [CatalogsProductGroupFiltersRequest](CatalogsProductGroupFiltersRequest.md)
-`catalogId` | string
-`country` | [Country](Country.md)
 `locale` | [CatalogsLocale](CatalogsLocale.md)
+`name` | string
 
 ## Example
 
@@ -22,13 +22,13 @@ import type { CatalogsRetailProductGroupCreateRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "catalogId": 2680059592705,
   "catalogType": null,
-  "name": null,
+  "country": null,
   "description": null,
   "filters": null,
-  "catalogId": 2680059592705,
-  "country": null,
   "locale": null,
+  "name": null,
 } satisfies CatalogsRetailProductGroupCreateRequest
 
 console.log(example)

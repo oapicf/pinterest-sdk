@@ -22,19 +22,19 @@ public class ConversionApiResponseEventsInnerTest {
     }
 
     /**
-     * Test the property 'status'
-     */
-    @Test
-    public void statusTest() {
-        // TODO: test status
-    }
-
-    /**
      * Test the property 'errorMessage'
      */
     @Test
     public void errorMessageTest() {
         // TODO: test errorMessage
+    }
+
+    /**
+     * Test the property 'status'
+     */
+    @Test
+    public void statusTest() {
+        // TODO: test status
     }
 
     /**

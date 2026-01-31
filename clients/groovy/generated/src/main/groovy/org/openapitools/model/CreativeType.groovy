@@ -23,7 +23,13 @@ enum CreativeType {
     
     SHOWCASE("SHOWCASE"),
     
-    QUIZ("QUIZ")
+    QUIZ("QUIZ"),
+    
+    COLLAGE("COLLAGE"),
+    
+    MAX_WIDTH_REGULAR_COLLECTION("MAX_WIDTH_REGULAR_COLLECTION"),
+    
+    MAX_WIDTH_VIDEO_COLLECTION("MAX_WIDTH_VIDEO_COLLECTION")
 
     private final String value
 

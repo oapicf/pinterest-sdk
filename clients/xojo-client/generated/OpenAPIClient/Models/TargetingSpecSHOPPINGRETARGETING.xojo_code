@@ -1,5 +1,13 @@
 #tag Class
-Protected Class TargetingSpecSHOPPINGRETARGETING
+Protected Class TargetingSpecShoppingRetargeting
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Number of days ago to stop lookback timeframe for dynamic retargeting
+		#tag EndNote
+		exclusion_window As Xoson.O.OptionalInteger
+	#tag EndProperty
+
 
 	#tag Property, Flags = &h0
 		#tag Note
@@ -14,14 +22,6 @@ Protected Class TargetingSpecSHOPPINGRETARGETING
 			Event types to target for dynamic retargeting
 		#tag EndNote
 		tag_types() As Integer
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Number of days ago to stop lookback timeframe for dynamic retargeting
-		#tag EndNote
-		exclusion_window As Xoson.O.OptionalInteger
 	#tag EndProperty
 
 
@@ -62,6 +62,14 @@ Protected Class TargetingSpecSHOPPINGRETARGETING
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="exclusion_window"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="lookback_window"
 			Visible=false
 			Group="Behavior"
@@ -71,14 +79,6 @@ Protected Class TargetingSpecSHOPPINGRETARGETING
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="tag_types"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Integer"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="exclusion_window"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

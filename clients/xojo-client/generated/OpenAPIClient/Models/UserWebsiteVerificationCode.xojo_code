@@ -3,14 +3,6 @@ Protected Class UserWebsiteVerificationCode
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Code to check against the user claiming the website
-		#tag EndNote
-		verification_code As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
 			DNS TXT record to check against for the website to be claimed
 		#tag EndNote
 		dns_txt_record As Xoson.O.OptionalString
@@ -19,9 +11,9 @@ Protected Class UserWebsiteVerificationCode
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Metatag the verification process searchs for the website to be claimed
+			A full html file to upload to the website in order for it to be claimed
 		#tag EndNote
-		metatag As Xoson.O.OptionalString
+		file_content As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -35,9 +27,17 @@ Protected Class UserWebsiteVerificationCode
 
 	#tag Property, Flags = &h0
 		#tag Note
-			A full html file to upload to the website in order for it to be claimed
+			Metatag the verification process searchs for the website to be claimed
 		#tag EndNote
-		file_content As Xoson.O.OptionalString
+		metatag As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Code to check against the user claiming the website
+		#tag EndNote
+		verification_code As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -78,14 +78,6 @@ Protected Class UserWebsiteVerificationCode
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="verification_code"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="dns_txt_record"
 			Visible=false
 			Group="Behavior"
@@ -94,7 +86,7 @@ Protected Class UserWebsiteVerificationCode
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="metatag"
+			Name="file_content"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -110,7 +102,15 @@ Protected Class UserWebsiteVerificationCode
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="file_content"
+			Name="metatag"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="verification_code"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

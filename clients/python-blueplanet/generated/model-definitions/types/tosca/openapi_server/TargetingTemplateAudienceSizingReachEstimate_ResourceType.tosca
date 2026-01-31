@@ -1,0 +1,45 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TargetingTemplateAudienceSizingReachEstimate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TargetingTemplateAudienceSizingReachEstimate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  TargetingTemplateAudienceSizingReachEstimate {
+    title = TargetingTemplateAudienceSizingReachEstimate
+    description = TargetingTemplateAudienceSizingReachEstimate
+    derivedFrom = Root
+    properties {
+        estimate {
+          type =  integer
+          description = ""
+          optional = false
+        }
+        lower_bound {
+          type =  integer
+          description = ""
+          optional = false
+        }
+        upper_bound {
+          type =  integer
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  TargetingTemplateAudienceSizingReachEstimate {
+    title = TargetingTemplateAudienceSizingReachEstimate
+    description = TargetingTemplateAudienceSizingReachEstimate
+    implements = openapi_server.resourceTypes.TargetingTemplateAudienceSizingReachEstimate
+
+  }
+}

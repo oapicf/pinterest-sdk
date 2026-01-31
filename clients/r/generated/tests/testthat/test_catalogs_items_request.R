@@ -12,17 +12,17 @@ test_that("country", {
   #expect_equal(model.instance$`country`, "EXPECTED_RESULT")
 })
 
+test_that("filters", {
+  # tests for the property `filters` (CatalogsItemsPostFilters)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`filters`, "EXPECTED_RESULT")
+})
+
 test_that("language", {
   # tests for the property `language` (character)
   # We recommend using the CatalogsLocale values.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`language`, "EXPECTED_RESULT")
-})
-
-test_that("filters", {
-  # tests for the property `filters` (CatalogsItemsPostFilters)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`filters`, "EXPECTED_RESULT")
 })

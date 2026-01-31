@@ -5,12 +5,12 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
-import org.openapitools.model.AdvancedAuctionProcessedItem;
+import org.openapitools.model.AdvancedAuctionItemsSubmitRecord;
 
 @Canonical
 class AdvancedAuctionProcessedItems {
     /* Catalog id pertaining to all items */
     String catalogId
     /* Array of advanced auction processed items */
-    List<AdvancedAuctionProcessedItem> items = new ArrayList<>()
+    List<AdvancedAuctionItemsSubmitRecord> items = new ArrayList<>()
 }

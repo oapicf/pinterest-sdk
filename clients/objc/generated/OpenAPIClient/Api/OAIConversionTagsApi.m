@@ -2,11 +2,12 @@
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
 #import "OAIConversionEventResponse.h"
+#import "OAIConversionTag.h"
 #import "OAIConversionTagCreate.h"
-#import "OAIConversionTagListResponse.h"
-#import "OAIConversionTagResponse.h"
+#import "OAIConversionTagsList200Response.h"
 #import "OAIError.h"
 #import "OAIPageVisitConversionTagsGet200Response.h"
+#import "OAIPinterestLibError.h"
 
 
 @interface OAIConversionTagsApi ()
@@ -56,16 +57,16 @@ NSInteger kOAIConversionTagsApiMissingParamErrorCode = 234513;
 
 ///
 /// Create conversion tag
-/// Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\" target=\"_blank\">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\">Set up the Pinterest tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/\">Pinterest Tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/#enhanced-match\">Enhanced match</a>
+/// Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account's website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param conversionTagCreate Conversion Tag to create 
+///  @param conversionTagCreate  
 ///
-///  @returns OAIConversionTagResponse*
+///  @returns OAIConversionTag*
 ///
 -(NSURLSessionTask*) conversionTagsCreateWithAdAccountId: (NSString*) adAccountId
     conversionTagCreate: (OAIConversionTagCreate*) conversionTagCreate
-    completionHandler: (void (^)(OAIConversionTagResponse* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAIConversionTag* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
         NSParameterAssert(adAccountId);
@@ -129,10 +130,10 @@ NSInteger kOAIConversionTagsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIConversionTagResponse*"
+                              responseType: @"OAIConversionTag*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIConversionTagResponse*)data, error);
+                                    handler((OAIConversionTag*)data, error);
                                 }
                             }];
 }
@@ -144,11 +145,11 @@ NSInteger kOAIConversionTagsApiMissingParamErrorCode = 234513;
 ///
 ///  @param conversionTagId Id of the conversion tag. 
 ///
-///  @returns OAIConversionTagResponse*
+///  @returns OAIConversionTag*
 ///
 -(NSURLSessionTask*) conversionTagsGetWithAdAccountId: (NSString*) adAccountId
     conversionTagId: (NSString*) conversionTagId
-    completionHandler: (void (^)(OAIConversionTagResponse* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAIConversionTag* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
         NSParameterAssert(adAccountId);
@@ -197,7 +198,7 @@ NSInteger kOAIConversionTagsApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -214,26 +215,26 @@ NSInteger kOAIConversionTagsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIConversionTagResponse*"
+                              responseType: @"OAIConversionTag*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIConversionTagResponse*)data, error);
+                                    handler((OAIConversionTag*)data, error);
                                 }
                             }];
 }
 
 ///
-/// Get conversion tags
+/// List conversion tags
 /// List conversion tags associated with an ad account.
 ///  @param adAccountId Unique identifier of an ad account. 
 ///
-///  @param filterDeleted Filter out deleted tags. (optional, default to @(NO))
+///  @param filterDeleted Filter by deleted status (optional, default to @(NO))
 ///
-///  @returns OAIConversionTagListResponse*
+///  @returns OAIConversionTagsList200Response*
 ///
 -(NSURLSessionTask*) conversionTagsListWithAdAccountId: (NSString*) adAccountId
     filterDeleted: (NSNumber*) filterDeleted
-    completionHandler: (void (^)(OAIConversionTagListResponse* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAIConversionTagsList200Response* output, NSError* error)) handler {
     // verify the required parameter 'adAccountId' is set
     if (adAccountId == nil) {
         NSParameterAssert(adAccountId);
@@ -271,7 +272,7 @@ NSInteger kOAIConversionTagsApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -288,10 +289,10 @@ NSInteger kOAIConversionTagsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIConversionTagListResponse*"
+                              responseType: @"OAIConversionTagsList200Response*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIConversionTagListResponse*)data, error);
+                                    handler((OAIConversionTagsList200Response*)data, error);
                                 }
                             }];
 }
@@ -339,7 +340,7 @@ NSInteger kOAIConversionTagsApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -425,7 +426,7 @@ NSInteger kOAIConversionTagsApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];

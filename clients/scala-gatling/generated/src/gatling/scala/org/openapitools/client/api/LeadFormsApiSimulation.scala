@@ -122,8 +122,8 @@ class LeadFormsApiSimulation extends Simulation {
         .feed(lead_forms/listPATHFeeder)
         .exec(http("leadFormsList")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/lead_forms")
-        .queryParam("page_size","${page_size}")
         .queryParam("bookmark","${bookmark}")
+        .queryParam("page_size","${page_size}")
         .queryParam("order","${order}")
 )
 

@@ -33,26 +33,25 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param name A human-friendly name associated to a given feed.
+ * @param catalogType 
  * @param format 
  * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
- * @param catalogType 
+ * @param name A human-friendly name associated to a given feed.
+ * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
+ * @param credentials 
+ * @param defaultAvailability 
+ * @param defaultCountry 
  * @param defaultCurrency 
  * @param defaultLocale 
- * @param credentials 
  * @param preferredProcessingSchedule 
- * @param defaultCountry 
- * @param defaultAvailability 
  * @param status 
- * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
  */
 
 
 data class FeedsCreateRequest (
 
-    /* A human-friendly name associated to a given feed. */
-    @Json(name = "name")
-    val name: kotlin.String,
+    @Json(name = "catalog_type")
+    override val catalogType: CatalogsType,
 
     @Json(name = "format")
     val format: CatalogsFormat,
@@ -61,8 +60,22 @@ data class FeedsCreateRequest (
     @Json(name = "location")
     val location: kotlin.String,
 
-    @Json(name = "catalog_type")
-    override val catalogType: CatalogsType,
+    /* A human-friendly name associated to a given feed. */
+    @Json(name = "name")
+    val name: kotlin.String,
+
+    /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. */
+    @Json(name = "catalog_id")
+    override val catalogId: kotlin.String? = null,
+
+    @Json(name = "credentials")
+    val credentials: CatalogsFeedCredentials? = null,
+
+    @Json(name = "default_availability")
+    val defaultAvailability: ProductAvailabilityType? = null,
+
+    @Json(name = "default_country")
+    val defaultCountry: Country? = null,
 
     @Json(name = "default_currency")
     val defaultCurrency: NullableCurrency? = null,
@@ -70,24 +83,11 @@ data class FeedsCreateRequest (
     @Json(name = "default_locale")
     val defaultLocale: CatalogsFeedsCreateRequestDefaultLocale? = null,
 
-    @Json(name = "credentials")
-    val credentials: CatalogsFeedCredentials? = null,
-
     @Json(name = "preferred_processing_schedule")
     val preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = null,
 
-    @Json(name = "default_country")
-    val defaultCountry: Country? = null,
-
-    @Json(name = "default_availability")
-    val defaultAvailability: ProductAvailabilityType? = null,
-
     @Json(name = "status")
-    val status: CatalogsStatus? = "ACTIVE",
-
-    /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. */
-    @Json(name = "catalog_id")
-    override val catalogId: kotlin.String? = null
+    val status: CatalogsStatus? = "ACTIVE"
 
 ) {
 

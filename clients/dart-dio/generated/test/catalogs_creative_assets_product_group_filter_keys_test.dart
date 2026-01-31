@@ -12,27 +12,27 @@ void main() {
       // TODO
     });
 
-    // CatalogsProductGroupMultipleStringCriteria cUSTOMLABEL0
+    // CatalogsProductGroupFilterOperatorTypeCriteria cUSTOMLABEL0
     test('to test the property `cUSTOMLABEL0`', () async {
       // TODO
     });
 
-    // CatalogsProductGroupMultipleStringCriteria cUSTOMLABEL1
+    // CatalogsProductGroupFilterOperatorTypeCriteria cUSTOMLABEL1
     test('to test the property `cUSTOMLABEL1`', () async {
       // TODO
     });
 
-    // CatalogsProductGroupMultipleStringCriteria cUSTOMLABEL2
+    // CatalogsProductGroupFilterOperatorTypeCriteria cUSTOMLABEL2
     test('to test the property `cUSTOMLABEL2`', () async {
       // TODO
     });
 
-    // CatalogsProductGroupMultipleStringCriteria cUSTOMLABEL3
+    // CatalogsProductGroupFilterOperatorTypeCriteria cUSTOMLABEL3
     test('to test the property `cUSTOMLABEL3`', () async {
       // TODO
     });
 
-    // CatalogsProductGroupMultipleStringCriteria cUSTOMLABEL4
+    // CatalogsProductGroupFilterOperatorTypeCriteria cUSTOMLABEL4
     test('to test the property `cUSTOMLABEL4`', () async {
       // TODO
     });
@@ -74,6 +74,11 @@ void main() {
 
     // CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE
     test('to test the property `MEDIA_TYPE`', () async {
+      // TODO
+    });
+
+    // CatalogsProductGroupMultipleStringCriteria TITLE_KEYWORDS
+    test('to test the property `TITLE_KEYWORDS`', () async {
       // TODO
     });
 

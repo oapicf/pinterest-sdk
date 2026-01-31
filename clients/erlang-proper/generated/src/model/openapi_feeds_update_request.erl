@@ -9,15 +9,15 @@
 -export_type([openapi_feeds_update_request/0]).
 
 -type openapi_feeds_update_request() ::
-  [ {'default_currency', openapi_nullable_currency:openapi_nullable_currency() }
-  | {'name', binary() }
-  | {'format', openapi_catalogs_format:openapi_catalogs_format() }
+  [ {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
   | {'credentials', openapi_catalogs_feed_credentials:openapi_catalogs_feed_credentials() }
+  | {'default_availability', openapi_product_availability_type:openapi_product_availability_type() }
+  | {'default_currency', openapi_nullable_currency:openapi_nullable_currency() }
+  | {'format', openapi_catalogs_format:openapi_catalogs_format() }
   | {'location', binary() }
+  | {'name', binary() }
   | {'preferred_processing_schedule', openapi_catalogs_feed_processing_schedule:openapi_catalogs_feed_processing_schedule() }
   | {'status', openapi_catalogs_status:openapi_catalogs_status() }
-  | {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
-  | {'default_availability', openapi_product_availability_type:openapi_product_availability_type() }
   ].
 
 
@@ -25,15 +25,15 @@ openapi_feeds_update_request() ->
     openapi_feeds_update_request([]).
 
 openapi_feeds_update_request(Fields) ->
-  Default = [ {'default_currency', openapi_nullable_currency:openapi_nullable_currency() }
-            , {'name', binary() }
-            , {'format', openapi_catalogs_format:openapi_catalogs_format() }
+  Default = [ {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
             , {'credentials', openapi_catalogs_feed_credentials:openapi_catalogs_feed_credentials() }
+            , {'default_availability', openapi_product_availability_type:openapi_product_availability_type() }
+            , {'default_currency', openapi_nullable_currency:openapi_nullable_currency() }
+            , {'format', openapi_catalogs_format:openapi_catalogs_format() }
             , {'location', binary() }
+            , {'name', binary() }
             , {'preferred_processing_schedule', openapi_catalogs_feed_processing_schedule:openapi_catalogs_feed_processing_schedule() }
             , {'status', openapi_catalogs_status:openapi_catalogs_status() }
-            , {'catalog_type', openapi_catalogs_type:openapi_catalogs_type() }
-            , {'default_availability', openapi_product_availability_type:openapi_product_availability_type() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

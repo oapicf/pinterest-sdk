@@ -11,37 +11,19 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
-  @JsonProperty("log_index")
-  private Integer logIndex;
-
   @JsonProperty("field")
   private String field;
 
-  @JsonProperty("value")
-  private String value;
+  @JsonProperty("log_index")
+  private Integer logIndex;
 
   @JsonProperty("reason")
   private String reason;
 
-  /**
-   * Index of the log in the batch.
-   **/
-  public IntegrationLogsInvalidLogResponseRejectedLogsInner logIndex(Integer logIndex) {
-    this.logIndex = logIndex;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Index of the log in the batch.")
-  @JsonProperty("log_index")
-  public Integer getLogIndex() {
-    return logIndex;
-  }
-  public void setLogIndex(Integer logIndex) {
-    this.logIndex = logIndex;
-  }
+  @JsonProperty("value")
+  private String value;
 
   /**
    * The field name containing an invalid value.
@@ -62,21 +44,21 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
   }
 
   /**
-   * The value that is invalid.
+   * Index of the log in the batch.
    **/
-  public IntegrationLogsInvalidLogResponseRejectedLogsInner value(String value) {
-    this.value = value;
+  public IntegrationLogsInvalidLogResponseRejectedLogsInner logIndex(Integer logIndex) {
+    this.logIndex = logIndex;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "The value that is invalid.")
-  @JsonProperty("value")
-  public String getValue() {
-    return value;
+  @ApiModelProperty(value = "Index of the log in the batch.")
+  @JsonProperty("log_index")
+  public Integer getLogIndex() {
+    return logIndex;
   }
-  public void setValue(String value) {
-    this.value = value;
+  public void setLogIndex(Integer logIndex) {
+    this.logIndex = logIndex;
   }
 
   /**
@@ -97,6 +79,24 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
     this.reason = reason;
   }
 
+  /**
+   * The value that is invalid.
+   **/
+  public IntegrationLogsInvalidLogResponseRejectedLogsInner value(String value) {
+    this.value = value;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "The value that is invalid.")
+  @JsonProperty("value")
+  public String getValue() {
+    return value;
+  }
+  public void setValue(String value) {
+    this.value = value;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -107,15 +107,15 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
       return false;
     }
     IntegrationLogsInvalidLogResponseRejectedLogsInner integrationLogsInvalidLogResponseRejectedLogsInner = (IntegrationLogsInvalidLogResponseRejectedLogsInner) o;
-    return Objects.equals(logIndex, integrationLogsInvalidLogResponseRejectedLogsInner.logIndex) &&
-        Objects.equals(field, integrationLogsInvalidLogResponseRejectedLogsInner.field) &&
-        Objects.equals(value, integrationLogsInvalidLogResponseRejectedLogsInner.value) &&
-        Objects.equals(reason, integrationLogsInvalidLogResponseRejectedLogsInner.reason);
+    return Objects.equals(field, integrationLogsInvalidLogResponseRejectedLogsInner.field) &&
+        Objects.equals(logIndex, integrationLogsInvalidLogResponseRejectedLogsInner.logIndex) &&
+        Objects.equals(reason, integrationLogsInvalidLogResponseRejectedLogsInner.reason) &&
+        Objects.equals(value, integrationLogsInvalidLogResponseRejectedLogsInner.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(logIndex, field, value, reason);
+    return Objects.hash(field, logIndex, reason, value);
   }
 
   @Override
@@ -123,10 +123,10 @@ public class IntegrationLogsInvalidLogResponseRejectedLogsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class IntegrationLogsInvalidLogResponseRejectedLogsInner {\n");
     
-    sb.append("    logIndex: ").append(toIndentedString(logIndex)).append("\n");
     sb.append("    field: ").append(toIndentedString(field)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    logIndex: ").append(toIndentedString(logIndex)).append("\n");
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }

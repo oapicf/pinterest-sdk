@@ -46,8 +46,10 @@ import javax.annotation.Generated;
   @JsonSubTypes.Type(value = CatalogsUpsertRetailItem.class, name = "UPSERT")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailBatchRequestItemsInner {
+
+  private ItemAttributesRequest attributes;
 
   private String itemId;
 
@@ -86,10 +88,10 @@ public class CatalogsRetailBatchRequestItemsInner {
 
   private OperationEnum operation;
 
-  private ItemAttributesRequest attributes;
-
   @Valid
   private JsonNullable<List<UpdateMaskFieldType>> updateMask = JsonNullable.<List<UpdateMaskFieldType>>undefined();
+
+  private Long lastUpdatedTime;
 
   public CatalogsRetailBatchRequestItemsInner() {
     super();
@@ -98,9 +100,29 @@ public class CatalogsRetailBatchRequestItemsInner {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsRetailBatchRequestItemsInner(String itemId, OperationEnum operation, ItemAttributesRequest attributes) {
+  public CatalogsRetailBatchRequestItemsInner(ItemAttributesRequest attributes, String itemId, OperationEnum operation) {
+    this.attributes = attributes;
     this.itemId = itemId;
     this.operation = operation;
+  }
+
+  public CatalogsRetailBatchRequestItemsInner attributes(ItemAttributesRequest attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  /**
+   * Get attributes
+   * @return attributes
+   */
+  @NotNull @Valid 
+  @Schema(name = "attributes", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("attributes")
+  public ItemAttributesRequest getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 
@@ -144,26 +166,6 @@ public class CatalogsRetailBatchRequestItemsInner {
     this.operation = operation;
   }
 
-  public CatalogsRetailBatchRequestItemsInner attributes(ItemAttributesRequest attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  /**
-   * Get attributes
-   * @return attributes
-   */
-  @NotNull @Valid 
-  @Schema(name = "attributes", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("attributes")
-  public ItemAttributesRequest getAttributes() {
-    return attributes;
-  }
-
-  public void setAttributes(ItemAttributesRequest attributes) {
-    this.attributes = attributes;
-  }
-
   public CatalogsRetailBatchRequestItemsInner updateMask(List<UpdateMaskFieldType> updateMask) {
     this.updateMask = JsonNullable.of(updateMask);
     return this;
@@ -182,7 +184,7 @@ public class CatalogsRetailBatchRequestItemsInner {
    * @return updateMask
    */
   @Valid 
-  @Schema(name = "update_mask", example = "[ad_link, adult, age_group, availability, average_review_rating, brand, checkout_enabled, color, condition, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, description, free_shipping_label, free_shipping_limit, gender, google_product_category, gtin, item_group_id, last_updated_time, link, material, min_ad_price, mpn, number_of_ratings, number_of_reviews, pattern, price, product_type, sale_price, shipping, shipping_height, shipping_weight, shipping_width, size, size_system, size_type, tax, title, variant_names, variant_values]", description = "The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "update_mask", example = "[ad_link, adult, age_group, availability, average_review_rating, brand, checkout_enabled, color, condition, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, description, free_shipping_label, free_shipping_limit, gender, google_product_category, gtin, item_group_id, last_updated_time, link, material, min_ad_price, mpn, number_of_ratings, number_of_reviews, pattern, price, product_type, sale_price, shipping, shipping_height, shipping_weight, shipping_width, size, size_system, size_type, tax, title, variant_names, variant_values, promotion_id]", description = "The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("update_mask")
   public JsonNullable<List<UpdateMaskFieldType>> getUpdateMask() {
     return updateMask;
@@ -190,6 +192,26 @@ public class CatalogsRetailBatchRequestItemsInner {
 
   public void setUpdateMask(JsonNullable<List<UpdateMaskFieldType>> updateMask) {
     this.updateMask = updateMask;
+  }
+
+  public CatalogsRetailBatchRequestItemsInner lastUpdatedTime(Long lastUpdatedTime) {
+    this.lastUpdatedTime = lastUpdatedTime;
+    return this;
+  }
+
+  /**
+   * The millisecond timestamp when the item was lastly modified by the merchant.
+   * @return lastUpdatedTime
+   */
+  
+  @Schema(name = "last_updated_time", example = "1641483432072", description = "The millisecond timestamp when the item was lastly modified by the merchant.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("last_updated_time")
+  public Long getLastUpdatedTime() {
+    return lastUpdatedTime;
+  }
+
+  public void setLastUpdatedTime(Long lastUpdatedTime) {
+    this.lastUpdatedTime = lastUpdatedTime;
   }
 
   @Override
@@ -201,10 +223,11 @@ public class CatalogsRetailBatchRequestItemsInner {
       return false;
     }
     CatalogsRetailBatchRequestItemsInner catalogsRetailBatchRequestItemsInner = (CatalogsRetailBatchRequestItemsInner) o;
-    return Objects.equals(this.itemId, catalogsRetailBatchRequestItemsInner.itemId) &&
+    return Objects.equals(this.attributes, catalogsRetailBatchRequestItemsInner.attributes) &&
+        Objects.equals(this.itemId, catalogsRetailBatchRequestItemsInner.itemId) &&
         Objects.equals(this.operation, catalogsRetailBatchRequestItemsInner.operation) &&
-        Objects.equals(this.attributes, catalogsRetailBatchRequestItemsInner.attributes) &&
-        equalsNullable(this.updateMask, catalogsRetailBatchRequestItemsInner.updateMask);
+        equalsNullable(this.updateMask, catalogsRetailBatchRequestItemsInner.updateMask) &&
+        Objects.equals(this.lastUpdatedTime, catalogsRetailBatchRequestItemsInner.lastUpdatedTime);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -213,7 +236,7 @@ public class CatalogsRetailBatchRequestItemsInner {
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, operation, attributes, hashCodeNullable(updateMask));
+    return Objects.hash(attributes, itemId, operation, hashCodeNullable(updateMask), lastUpdatedTime);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -227,10 +250,11 @@ public class CatalogsRetailBatchRequestItemsInner {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailBatchRequestItemsInner {\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    updateMask: ").append(toIndentedString(updateMask)).append("\n");
+    sb.append("    lastUpdatedTime: ").append(toIndentedString(lastUpdatedTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }

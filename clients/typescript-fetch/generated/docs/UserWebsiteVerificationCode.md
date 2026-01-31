@@ -6,11 +6,11 @@
 
 Name | Type
 ------------ | -------------
-`verificationCode` | string
 `dnsTxtRecord` | string
-`metatag` | string
-`filename` | string
 `fileContent` | string
+`filename` | string
+`metatag` | string
+`verificationCode` | string
 
 ## Example
 
@@ -19,11 +19,11 @@ import type { UserWebsiteVerificationCode } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "verificationCode": e1edcc1a43976c646367e9c6c9a9b7b6,
   "dnsTxtRecord": pinterest-site-verification=e1edcc1a43976c646367e9c6c9a9b7b6,
-  "metatag": <meta name="p:domain_verify" content="e1edcc1a43976c646367e9c6c9a9b7b6"/>,
-  "filename": pinterest-e1edc.html,
   "fileContent": null,
+  "filename": pinterest-e1edc.html,
+  "metatag": <meta name="p:domain_verify" content="e1edcc1a43976c646367e9c6c9a9b7b6"/>,
+  "verificationCode": e1edcc1a43976c646367e9c6c9a9b7b6,
 } satisfies UserWebsiteVerificationCode
 
 console.log(example)

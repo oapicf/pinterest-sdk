@@ -5,8 +5,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **feedUnderscoreid** | **string** |  | [default to null]
 **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | [default to null]
-**catalogUnderscoretype** | **string** |  | [default to null]
 **catalogUnderscoreid** | **string** |  | [default to null]
+**catalogUnderscoretype** | **string** |  | [default to null]
 **country** | [**Country**](Country.md) |  | [default to null]
 **locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | [default to null]
 

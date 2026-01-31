@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 **PRICE** | [**CatalogsProductGroupPricingCurrencyCriteria**](CatalogsProductGroupPricingCurrencyCriteria.md) |  | 
 **HOTELID** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
 **BRAND** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**CUSTOMLABEL0** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**CUSTOMLABEL1** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**CUSTOMLABEL2** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**CUSTOMLABEL3** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
-**CUSTOMLABEL4** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
+**CUSTOMLABEL0** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**CUSTOMLABEL1** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**CUSTOMLABEL2** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**CUSTOMLABEL3** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
+**CUSTOMLABEL4** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  | 
 **COUNTRY** | [**CatalogsProductGroupMultipleCountriesCriteria**](.md) |  | 
+**TITLEKEYWORDS** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  | 
 
 ## Examples
 
@@ -25,7 +26,8 @@ $CatalogsHotelProductGroupFilterKeys = Initialize-PSOpenAPIToolsCatalogsHotelPro
  -CUSTOMLABEL2 null `
  -CUSTOMLABEL3 null `
  -CUSTOMLABEL4 null `
- -COUNTRY null
+ -COUNTRY null `
+ -TITLEKEYWORDS null
 ```
 
 - Convert the resource to JSON

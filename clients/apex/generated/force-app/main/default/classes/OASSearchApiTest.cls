@@ -3,7 +3,7 @@ private class OASSearchApiTest {
     /**
      * Search pins by a given search term
      *
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;\n\nGet the top 10 Pins by a given search term.
+     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/using-beta-and-restricted-features/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;\n\nGet the top 10 Pins by a given search term.
      */
     @isTest
     private static void searchPartnerPinsTest() {
@@ -134,34 +134,34 @@ private class OASSearchApiTest {
 
         OASClient client;
         OASSearchApi api;
-        OASPinsList200Response response;
-        OASPinsList200Response expectedResponse;
+        OASSearchUserPinsList200Response response;
+        OASSearchUserPinsList200Response expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASSearchApi(client);
 
-        js = JSON.serialize(OASPinsList200Response.getExample());
+        js = JSON.serialize(OASSearchUserPinsList200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASPinsList200Response.getExample();
-        response = (OASPinsList200Response) api.searchUserPinsList(params);
+        expectedResponse = OASSearchUserPinsList200Response.getExample();
+        response = (OASSearchUserPinsList200Response) api.searchUserPinsList(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASPinsList200Response.getExample());
+        js = JSON.serialize(OASSearchUserPinsList200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASPinsList200Response.getExample();
-        response = (OASPinsList200Response) api.searchUserPinsList(params);
+        expectedResponse = OASSearchUserPinsList200Response.getExample();
+        response = (OASSearchUserPinsList200Response) api.searchUserPinsList(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASPinsList200Response.getExample());
+        js = JSON.serialize(OASSearchUserPinsList200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASPinsList200Response.getExample();
-        response = (OASPinsList200Response) api.searchUserPinsList(params);
+        expectedResponse = OASSearchUserPinsList200Response.getExample();
+        response = (OASSearchUserPinsList200Response) api.searchUserPinsList(params);
         System.assertEquals(expectedResponse, response);
     }
 }

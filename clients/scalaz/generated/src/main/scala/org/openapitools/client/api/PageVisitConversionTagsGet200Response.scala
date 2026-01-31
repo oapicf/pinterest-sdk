@@ -12,8 +12,8 @@ import org.joda.time.DateTime
 import PageVisitConversionTagsGet200Response._
 
 case class PageVisitConversionTagsGet200Response (
-  items: List[ConversionEventResponse],
-bookmark: Option[String])
+  bookmark: Option[String],
+items: List[ConversionEventResponse])
 
 object PageVisitConversionTagsGet200Response {
   import DateTimeCodecs._

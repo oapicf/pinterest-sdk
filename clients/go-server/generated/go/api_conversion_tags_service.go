@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -28,16 +28,31 @@ func NewConversionTagsAPIService() *ConversionTagsAPIService {
 	return &ConversionTagsAPIService{}
 }
 
-// ConversionTagsList - Get conversion tags
+// ConversionTagsList - List conversion tags
 func (s *ConversionTagsAPIService) ConversionTagsList(ctx context.Context, adAccountId string, filterDeleted bool) (ImplResponse, error) {
 	// TODO - update ConversionTagsList with the required logic for this service method.
 	// Add api_conversion_tags_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, ConversionTagListResponse{}) or use other options such as http.Ok ...
-	// return Response(200, ConversionTagListResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, ConversionTagsList200Response{}) or use other options such as http.Ok ...
+	// return Response(200, ConversionTagsList200Response{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("ConversionTagsList method not implemented")
 }
@@ -47,11 +62,29 @@ func (s *ConversionTagsAPIService) ConversionTagsCreate(ctx context.Context, adA
 	// TODO - update ConversionTagsCreate with the required logic for this service method.
 	// Add api_conversion_tags_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, ConversionTagResponse{}) or use other options such as http.Ok ...
-	// return Response(200, ConversionTagResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, ConversionTag{}) or use other options such as http.Ok ...
+	// return Response(200, ConversionTag{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
-	// return Response(0, Error{}), nil
+	// TODO: Uncomment the next line to return response Response(201, ConversionTag{}) or use other options such as http.Ok ...
+	// return Response(201, ConversionTag{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(400, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(401, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(403, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(404, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(429, PinterestLibError{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, PinterestLibError{}) or use other options such as http.Ok ...
+	// return Response(0, PinterestLibError{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("ConversionTagsCreate method not implemented")
 }
@@ -89,8 +122,8 @@ func (s *ConversionTagsAPIService) ConversionTagsGet(ctx context.Context, adAcco
 	// TODO - update ConversionTagsGet with the required logic for this service method.
 	// Add api_conversion_tags_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	// TODO: Uncomment the next line to return response Response(200, ConversionTagResponse{}) or use other options such as http.Ok ...
-	// return Response(200, ConversionTagResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, ConversionTag{}) or use other options such as http.Ok ...
+	// return Response(200, ConversionTag{}), nil
 
 	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
 	// return Response(0, Error{}), nil

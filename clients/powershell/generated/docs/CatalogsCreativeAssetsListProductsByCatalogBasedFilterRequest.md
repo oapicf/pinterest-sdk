@@ -3,16 +3,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | **String** |  | 
 **CatalogId** | **String** | Catalog id pertaining to the creative assets product group. | 
+**CatalogType** | **String** |  | 
 **Filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest = Initialize-PSOpenAPIToolsCatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest  -CatalogType null `
- -CatalogId 2680059592705 `
+$CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest = Initialize-PSOpenAPIToolsCatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest  -CatalogId 2680059592705 `
+ -CatalogType null `
  -Filters null
 ```
 

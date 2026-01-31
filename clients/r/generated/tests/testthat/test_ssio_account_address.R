@@ -5,22 +5,6 @@ context("Test SSIOAccountAddress")
 
 model_instance <- SSIOAccountAddress$new()
 
-test_that("display", {
-  # tests for the property `display` (character)
-  # Address display
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`display`, "EXPECTED_RESULT")
-})
-
-test_that("purpose", {
-  # tests for the property `purpose` (character)
-  # Purpose for which the address is used, usually Billing or Businness
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`purpose`, "EXPECTED_RESULT")
-})
-
 test_that("address_id", {
   # tests for the property `address_id` (character)
   # Salesforce id for address
@@ -29,10 +13,26 @@ test_that("address_id", {
   #expect_equal(model.instance$`address_id`, "EXPECTED_RESULT")
 })
 
+test_that("display", {
+  # tests for the property `display` (character)
+  # Address display
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`display`, "EXPECTED_RESULT")
+})
+
 test_that("order_legal_entity", {
   # tests for the property `order_legal_entity` (character)
   # Legal entity for this insertion order
 
   # uncomment below to test the property
   #expect_equal(model.instance$`order_legal_entity`, "EXPECTED_RESULT")
+})
+
+test_that("purpose", {
+  # tests for the property `purpose` (character)
+  # Purpose for which the address is used, usually Billing or Businness
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`purpose`, "EXPECTED_RESULT")
 })

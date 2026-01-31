@@ -34,30 +34,6 @@ class CatalogsRetailFeedsCreateRequestTest : ShouldSpec() {
         // uncomment below to create an instance of CatalogsRetailFeedsCreateRequest
         //val modelInstance = CatalogsRetailFeedsCreateRequest()
 
-        // to test the property `name` - A human-friendly name associated to a given feed.
-        should("test name") {
-            // uncomment below to test the property
-            //modelInstance.name shouldBe ("TODO")
-        }
-
-        // to test the property `format`
-        should("test format") {
-            // uncomment below to test the property
-            //modelInstance.format shouldBe ("TODO")
-        }
-
-        // to test the property `defaultLocale`
-        should("test defaultLocale") {
-            // uncomment below to test the property
-            //modelInstance.defaultLocale shouldBe ("TODO")
-        }
-
-        // to test the property `location` - The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-        should("test location") {
-            // uncomment below to test the property
-            //modelInstance.location shouldBe ("TODO")
-        }
-
         // to test the property `catalogType`
         should("test catalogType") {
             // uncomment below to test the property
@@ -70,10 +46,34 @@ class CatalogsRetailFeedsCreateRequestTest : ShouldSpec() {
             //modelInstance.defaultCountry shouldBe ("TODO")
         }
 
-        // to test the property `defaultCurrency`
-        should("test defaultCurrency") {
+        // to test the property `defaultLocale`
+        should("test defaultLocale") {
             // uncomment below to test the property
-            //modelInstance.defaultCurrency shouldBe ("TODO")
+            //modelInstance.defaultLocale shouldBe ("TODO")
+        }
+
+        // to test the property `format`
+        should("test format") {
+            // uncomment below to test the property
+            //modelInstance.format shouldBe ("TODO")
+        }
+
+        // to test the property `location` - The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+        should("test location") {
+            // uncomment below to test the property
+            //modelInstance.location shouldBe ("TODO")
+        }
+
+        // to test the property `name` - A human-friendly name associated to a given feed.
+        should("test name") {
+            // uncomment below to test the property
+            //modelInstance.name shouldBe ("TODO")
+        }
+
+        // to test the property `catalogId` - Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. Currently, this field has no effect.
+        should("test catalogId") {
+            // uncomment below to test the property
+            //modelInstance.catalogId shouldBe ("TODO")
         }
 
         // to test the property `credentials`
@@ -82,16 +82,22 @@ class CatalogsRetailFeedsCreateRequestTest : ShouldSpec() {
             //modelInstance.credentials shouldBe ("TODO")
         }
 
-        // to test the property `preferredProcessingSchedule`
-        should("test preferredProcessingSchedule") {
-            // uncomment below to test the property
-            //modelInstance.preferredProcessingSchedule shouldBe ("TODO")
-        }
-
         // to test the property `defaultAvailability`
         should("test defaultAvailability") {
             // uncomment below to test the property
             //modelInstance.defaultAvailability shouldBe ("TODO")
+        }
+
+        // to test the property `defaultCurrency`
+        should("test defaultCurrency") {
+            // uncomment below to test the property
+            //modelInstance.defaultCurrency shouldBe ("TODO")
+        }
+
+        // to test the property `preferredProcessingSchedule`
+        should("test preferredProcessingSchedule") {
+            // uncomment below to test the property
+            //modelInstance.preferredProcessingSchedule shouldBe ("TODO")
         }
 
         // to test the property `status`

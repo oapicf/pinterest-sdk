@@ -16,9 +16,14 @@ import javax.validation.Valid;
 /**
  * Object describing a hotel record
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsCreativeAssetsItemResponse   {
+  @JsonProperty("attributes")
+  @Valid
+
+  private CatalogsCreativeAssetsAttributes attributes;
+
   @JsonProperty("catalog_type")
   @NotNull
 @Valid
@@ -35,10 +40,22 @@ public class CatalogsCreativeAssetsItemResponse   {
 
   private List<@Valid Pin> pins = null;
 
-  @JsonProperty("attributes")
-  @Valid
+  public CatalogsCreativeAssetsItemResponse attributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
 
-  private CatalogsCreativeAssetsAttributes attributes;
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  public CatalogsCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+  }
 
   public CatalogsCreativeAssetsItemResponse catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
@@ -99,23 +116,6 @@ public class CatalogsCreativeAssetsItemResponse   {
     this.pins = pins;
   }
 
-  public CatalogsCreativeAssetsItemResponse attributes(CatalogsCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  public CatalogsCreativeAssetsAttributes getAttributes() {
-    return attributes;
-  }
-
-  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -126,15 +126,15 @@ public class CatalogsCreativeAssetsItemResponse   {
       return false;
     }
     CatalogsCreativeAssetsItemResponse catalogsCreativeAssetsItemResponse = (CatalogsCreativeAssetsItemResponse) o;
-    return Objects.equals(catalogType, catalogsCreativeAssetsItemResponse.catalogType) &&
+    return Objects.equals(attributes, catalogsCreativeAssetsItemResponse.attributes) &&
+        Objects.equals(catalogType, catalogsCreativeAssetsItemResponse.catalogType) &&
         Objects.equals(creativeAssetsId, catalogsCreativeAssetsItemResponse.creativeAssetsId) &&
-        Objects.equals(pins, catalogsCreativeAssetsItemResponse.pins) &&
-        Objects.equals(attributes, catalogsCreativeAssetsItemResponse.attributes);
+        Objects.equals(pins, catalogsCreativeAssetsItemResponse.pins);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, creativeAssetsId, pins, attributes);
+    return Objects.hash(attributes, catalogType, creativeAssetsId, pins);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -143,10 +143,10 @@ public class CatalogsCreativeAssetsItemResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsItemResponse {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

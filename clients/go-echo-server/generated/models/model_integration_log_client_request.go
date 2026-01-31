@@ -3,10 +3,10 @@ package models
 // IntegrationLogClientRequest - HTTP request details included in the log sent by the client.
 type IntegrationLogClientRequest struct {
 
-	Method string `json:"method"`
-
 	// HTTP request host from host header.
 	Host string `json:"host"`
+
+	Method string `json:"method"`
 
 	// HTTP request path.
 	Path string `json:"path"`

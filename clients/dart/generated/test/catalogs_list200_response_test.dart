@@ -16,13 +16,13 @@ void main() {
   // final instance = CatalogsList200Response();
 
   group('test CatalogsList200Response', () {
-    // List<Catalog> items (default value: const [])
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // List<Catalog> items (default value: const [])
+    test('to test the property `items`', () async {
       // TODO
     });
 

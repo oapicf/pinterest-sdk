@@ -9,7 +9,7 @@ void main() {
   group(BillingApi, () {
     // Redeem ad credits
     //
-    // Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+    // Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
     //
     //Future<AdsCreditRedeemResponse> adsCreditRedeem(String adAccountId, AdsCreditRedeemRequest adsCreditRedeemRequest) async
     test('test adsCreditRedeem', () async {
@@ -18,16 +18,34 @@ void main() {
 
     // Get ads credit discounts
     //
-    // Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+    // Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
     //
     //Future<AdsCreditsDiscountsGet200Response> adsCreditsDiscountsGet(String adAccountId, { String bookmark, int pageSize }) async
     test('test adsCreditsDiscountsGet', () async {
       // TODO
     });
 
+    // Get download url for a billing invoice
+    //
+    // Get download url for a billing invoice.
+    //
+    //Future<BillingInvoiceDownloadResponse> billingInvoiceDownloadGet(String adAccountId, String billingInvoiceId) async
+    test('test billingInvoiceDownloadGet', () async {
+      // TODO
+    });
+
+    // Get billing invoices
+    //
+    // Get billing invoices in the advertiser account.
+    //
+    //Future<BillingInvoicesGet200Response> billingInvoicesGet(String adAccountId, { String bookmark, int pageSize, String sort, String order, String status, String documentType, Date startDueDate, Date endDueDate }) async
+    test('test billingInvoicesGet', () async {
+      // TODO
+    });
+
     // Get billing profiles
     //
-    // Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+    // Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
     //
     //Future<BillingProfilesGet200Response> billingProfilesGet(String adAccountId, bool isActive, { String bookmark, int pageSize }) async
     test('test billingProfilesGet', () async {

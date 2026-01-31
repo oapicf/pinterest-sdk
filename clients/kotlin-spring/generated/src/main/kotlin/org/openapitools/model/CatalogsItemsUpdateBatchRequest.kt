@@ -21,9 +21,9 @@ import io.swagger.v3.oas.annotations.media.Schema
 /**
  * Request object to update catalogs items
  * @param country 
+ * @param items Array with catalogs items
  * @param language We recommend using the CatalogsLocale values.
  * @param operation 
- * @param items Array with catalogs items
  */
 data class CatalogsItemsUpdateBatchRequest(
 
@@ -31,17 +31,17 @@ data class CatalogsItemsUpdateBatchRequest(
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("country", required = true) val country: Country,
 
+    @field:Valid
+    @get:Size(min=1,max=1000) 
+    @Schema(example = "null", required = true, description = "Array with catalogs items")
+    @get:JsonProperty("items", required = true) val items: kotlin.collections.List<ItemUpdateBatchRecord>,
+
     @Schema(example = "null", required = true, description = "We recommend using the CatalogsLocale values.")
     @get:JsonProperty("language", required = true) val language: CatalogsItemsUpdateBatchRequest.Language,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("operation", required = true) val operation: BatchOperation,
-
-    @field:Valid
-    @get:Size(min=1,max=1000) 
-    @Schema(example = "null", required = true, description = "Array with catalogs items")
-    @get:JsonProperty("items", required = true) val items: kotlin.collections.List<ItemUpdateBatchRecord>
+    @get:JsonProperty("operation", required = true) val operation: BatchOperation
 ) {
 
     /**

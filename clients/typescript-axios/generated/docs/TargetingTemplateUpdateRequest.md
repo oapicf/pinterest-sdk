@@ -5,8 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**operation_type** | **string** |  | [default to undefined]
 **id** | **string** | Targeting template ID | [default to undefined]
+**operation_type** | **string** |  | [default to undefined]
+**targeting_attributes** | [**TargetingSpec**](TargetingSpec.md) |  | [optional] [default to undefined]
 
 ## Example
 
@@ -14,8 +15,9 @@ Name | Type | Description | Notes
 import { TargetingTemplateUpdateRequest } from './api';
 
 const instance: TargetingTemplateUpdateRequest = {
-    operation_type,
     id,
+    operation_type,
+    targeting_attributes,
 };
 ```
 

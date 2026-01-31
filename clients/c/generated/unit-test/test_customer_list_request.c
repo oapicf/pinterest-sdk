@@ -22,17 +22,15 @@ customer_list_request_t* instantiate_customer_list_request(int include_optional)
   customer_list_request_t* customer_list_request = NULL;
   if (include_optional) {
     customer_list_request = customer_list_request_create(
-      "The Glengarry Glen Ross leads",
-      "email1@pinterest.com,email2@pinterest.com,..<more records>",
       "EMAIL",
-      0
+      "The Glengarry Glen Ross leads",
+      "email1@pinterest.com,email2@pinterest.com,..<more records>"
     );
   } else {
     customer_list_request = customer_list_request_create(
-      "The Glengarry Glen Ross leads",
-      "email1@pinterest.com,email2@pinterest.com,..<more records>",
       "EMAIL",
-      0
+      "The Glengarry Glen Ross leads",
+      "email1@pinterest.com,email2@pinterest.com,..<more records>"
     );
   }
 

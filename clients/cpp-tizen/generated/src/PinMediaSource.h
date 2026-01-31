@@ -1,7 +1,7 @@
 /*
  * PinMediaSource.h
  *
- * Pin media source.
+ * Pin media source that can be an image, video, or a mix of both passed in as a request.
  */
 
 #ifndef _PinMediaSource_H_
@@ -9,11 +9,12 @@
 
 
 #include <string>
+#include "ContentType.h"
 #include "PinMediaSourceImageBase64.h"
 #include "PinMediaSourceImageURL.h"
 #include "PinMediaSourceImagesBase64.h"
 #include "PinMediaSourceImagesURL.h"
-#include "PinMediaSourceImagesURL_items_inner.h"
+#include "PinMediaSourceImagesURLItem.h"
 #include "PinMediaSourcePinURL.h"
 #include "PinMediaSourceVideoID.h"
 #include <list>
@@ -28,7 +29,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Pin media source.
+/*! \brief Pin media source that can be an image, video, or a mix of both passed in as a request.
  *
  *  \ingroup Models
  *
@@ -55,18 +56,11 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::string getSourceType();
+	ContentType getContentType();
 
 	/*! \brief Set 
 	 */
-	void setSourceType(std::string  source_type);
-	/*! \brief Get 
-	 */
-	std::string getContentType();
-
-	/*! \brief Set 
-	 */
-	void setContentType(std::string  content_type);
+	void setContentType(ContentType  content_type);
 	/*! \brief Get 
 	 */
 	std::string getData();
@@ -83,25 +77,25 @@ public:
 	void setIsStandard(bool  is_standard);
 	/*! \brief Get 
 	 */
+	std::string getSourceType();
+
+	/*! \brief Set 
+	 */
+	void setSourceType(std::string  source_type);
+	/*! \brief Get 
+	 */
 	std::string getUrl();
 
 	/*! \brief Set 
 	 */
 	void setUrl(std::string  url);
-	/*! \brief Get Cover image url.
-	 */
-	std::string getCoverImageUrl();
-
-	/*! \brief Set Cover image url.
-	 */
-	void setCoverImageUrl(std::string  cover_image_url);
 	/*! \brief Get Content type for cover image Base64.
 	 */
-	std::string getCoverImageContentType();
+	ContentType getCoverImageContentType();
 
 	/*! \brief Set Content type for cover image Base64.
 	 */
-	void setCoverImageContentType(std::string  cover_image_content_type);
+	void setCoverImageContentType(ContentType  cover_image_content_type);
 	/*! \brief Get Cover image Base64.
 	 */
 	std::string getCoverImageData();
@@ -109,6 +103,20 @@ public:
 	/*! \brief Set Cover image Base64.
 	 */
 	void setCoverImageData(std::string  cover_image_data);
+	/*! \brief Get Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.
+	 */
+	int getCoverImageKeyFrameTime();
+
+	/*! \brief Set Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.
+	 */
+	void setCoverImageKeyFrameTime(int  cover_image_key_frame_time);
+	/*! \brief Get Cover image URL.
+	 */
+	std::string getCoverImageUrl();
+
+	/*! \brief Set Cover image URL.
+	 */
+	void setCoverImageUrl(std::string  cover_image_url);
 	/*! \brief Get 
 	 */
 	std::string getMediaId();
@@ -116,13 +124,6 @@ public:
 	/*! \brief Set 
 	 */
 	void setMediaId(std::string  media_id);
-	/*! \brief Get Array with image objects.
-	 */
-	std::list<PinMediaSourceImagesURL_items_inner> getItems();
-
-	/*! \brief Set Array with image objects.
-	 */
-	void setItems(std::list <PinMediaSourceImagesURL_items_inner> items);
 	/*! \brief Get 
 	 */
 	int getIndex();
@@ -130,6 +131,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setIndex(int  index);
+	/*! \brief Get Array with image objects.
+	 */
+	std::list<PinMediaSourceImagesURLItem> getItems();
+
+	/*! \brief Set Array with image objects.
+	 */
+	void setItems(std::list <PinMediaSourceImagesURLItem> items);
 	/*! \brief Get This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
 	 */
 	bool getIsAffiliateLink();
@@ -139,17 +147,18 @@ public:
 	void setIsAffiliateLink(bool  is_affiliate_link);
 
 private:
-	std::string source_type;
-	std::string content_type;
+	ContentType content_type;
 	std::string data;
 	bool is_standard;
+	std::string source_type;
 	std::string url;
-	std::string cover_image_url;
-	std::string cover_image_content_type;
+	ContentType cover_image_content_type;
 	std::string cover_image_data;
+	int cover_image_key_frame_time;
+	std::string cover_image_url;
 	std::string media_id;
-	std::list <PinMediaSourceImagesURL_items_inner>items;
 	int index;
+	std::list <PinMediaSourceImagesURLItem>items;
 	bool is_affiliate_link;
 	void __init();
 	void __cleanup();

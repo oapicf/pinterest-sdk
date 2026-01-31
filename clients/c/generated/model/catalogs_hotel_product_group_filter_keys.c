@@ -9,12 +9,13 @@ static catalogs_hotel_product_group_filter_keys_t *catalogs_hotel_product_group_
     catalogs_product_group_pricing_currency_criteria_t *price,
     catalogs_product_group_multiple_string_criteria_t *hotel_id,
     catalogs_product_group_multiple_string_criteria_t *brand,
-    catalogs_product_group_multiple_string_criteria_t *custom_label_0,
-    catalogs_product_group_multiple_string_criteria_t *custom_label_1,
-    catalogs_product_group_multiple_string_criteria_t *custom_label_2,
-    catalogs_product_group_multiple_string_criteria_t *custom_label_3,
-    catalogs_product_group_multiple_string_criteria_t *custom_label_4,
-    catalogs_product_group_multiple_countries_criteria_t *country
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_0,
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_1,
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_2,
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_3,
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_4,
+    catalogs_product_group_multiple_countries_criteria_t *country,
+    catalogs_product_group_multiple_string_criteria_t *title_keywords
     ) {
     catalogs_hotel_product_group_filter_keys_t *catalogs_hotel_product_group_filter_keys_local_var = malloc(sizeof(catalogs_hotel_product_group_filter_keys_t));
     if (!catalogs_hotel_product_group_filter_keys_local_var) {
@@ -29,6 +30,7 @@ static catalogs_hotel_product_group_filter_keys_t *catalogs_hotel_product_group_
     catalogs_hotel_product_group_filter_keys_local_var->custom_label_3 = custom_label_3;
     catalogs_hotel_product_group_filter_keys_local_var->custom_label_4 = custom_label_4;
     catalogs_hotel_product_group_filter_keys_local_var->country = country;
+    catalogs_hotel_product_group_filter_keys_local_var->title_keywords = title_keywords;
 
     catalogs_hotel_product_group_filter_keys_local_var->_library_owned = 1;
     return catalogs_hotel_product_group_filter_keys_local_var;
@@ -38,12 +40,13 @@ __attribute__((deprecated)) catalogs_hotel_product_group_filter_keys_t *catalogs
     catalogs_product_group_pricing_currency_criteria_t *price,
     catalogs_product_group_multiple_string_criteria_t *hotel_id,
     catalogs_product_group_multiple_string_criteria_t *brand,
-    catalogs_product_group_multiple_string_criteria_t *custom_label_0,
-    catalogs_product_group_multiple_string_criteria_t *custom_label_1,
-    catalogs_product_group_multiple_string_criteria_t *custom_label_2,
-    catalogs_product_group_multiple_string_criteria_t *custom_label_3,
-    catalogs_product_group_multiple_string_criteria_t *custom_label_4,
-    catalogs_product_group_multiple_countries_criteria_t *country
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_0,
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_1,
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_2,
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_3,
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_4,
+    catalogs_product_group_multiple_countries_criteria_t *country,
+    catalogs_product_group_multiple_string_criteria_t *title_keywords
     ) {
     return catalogs_hotel_product_group_filter_keys_create_internal (
         price,
@@ -54,7 +57,8 @@ __attribute__((deprecated)) catalogs_hotel_product_group_filter_keys_t *catalogs
         custom_label_2,
         custom_label_3,
         custom_label_4,
-        country
+        country,
+        title_keywords
         );
 }
 
@@ -102,6 +106,10 @@ void catalogs_hotel_product_group_filter_keys_free(catalogs_hotel_product_group_
     if (catalogs_hotel_product_group_filter_keys->country) {
         object_free(catalogs_hotel_product_group_filter_keys->country);
         catalogs_hotel_product_group_filter_keys->country = NULL;
+    }
+    if (catalogs_hotel_product_group_filter_keys->title_keywords) {
+        object_free(catalogs_hotel_product_group_filter_keys->title_keywords);
+        catalogs_hotel_product_group_filter_keys->title_keywords = NULL;
     }
     free(catalogs_hotel_product_group_filter_keys);
 }
@@ -230,6 +238,20 @@ cJSON *catalogs_hotel_product_group_filter_keys_convertToJSON(catalogs_hotel_pro
     goto fail; //model
     }
     cJSON_AddItemToObject(item, "COUNTRY", country_object);
+    if(item->child == NULL) {
+    goto fail;
+    }
+
+
+    // catalogs_hotel_product_group_filter_keys->title_keywords
+    if (!catalogs_hotel_product_group_filter_keys->title_keywords) {
+        goto fail;
+    }
+    cJSON *title_keywords_object = object_convertToJSON(catalogs_hotel_product_group_filter_keys->title_keywords);
+    if(title_keywords_object == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "TITLE_KEYWORDS", title_keywords_object);
     if(item->child == NULL) {
     goto fail;
     }
@@ -365,6 +387,19 @@ catalogs_hotel_product_group_filter_keys_t *catalogs_hotel_product_group_filter_
     
     country_local_object = object_parseFromJSON(country); //object
 
+    // catalogs_hotel_product_group_filter_keys->title_keywords
+    cJSON *title_keywords = cJSON_GetObjectItemCaseSensitive(catalogs_hotel_product_group_filter_keysJSON, "TITLE_KEYWORDS");
+    if (cJSON_IsNull(title_keywords)) {
+        title_keywords = NULL;
+    }
+    if (!title_keywords) {
+        goto end;
+    }
+
+    object_t *title_keywords_local_object = NULL;
+    
+    title_keywords_local_object = object_parseFromJSON(title_keywords); //object
+
 
     catalogs_hotel_product_group_filter_keys_local_var = catalogs_hotel_product_group_filter_keys_create_internal (
         price_local_nonprim,
@@ -375,7 +410,8 @@ catalogs_hotel_product_group_filter_keys_t *catalogs_hotel_product_group_filter_
         custom_label_2_local_object,
         custom_label_3_local_object,
         custom_label_4_local_object,
-        country_local_object
+        country_local_object,
+        title_keywords_local_object
         );
 
     return catalogs_hotel_product_group_filter_keys_local_var;

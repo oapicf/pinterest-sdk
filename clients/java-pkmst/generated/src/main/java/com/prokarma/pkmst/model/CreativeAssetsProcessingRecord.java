@@ -21,7 +21,7 @@ import java.util.List;
  */
 @ApiModel(description = "Object describing an item processing record")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreativeAssetsProcessingRecord   {
   @JsonProperty("creative_assets_id")
   private String creativeAssetsId;
@@ -30,12 +30,12 @@ public class CreativeAssetsProcessingRecord   {
   
   private List<ItemValidationEvent> errors = null;
 
+  @JsonProperty("status")
+  private ItemProcessingStatus status;
+
   @JsonProperty("warnings")
   
   private List<ItemValidationEvent> warnings = null;
-
-  @JsonProperty("status")
-  private ItemProcessingStatus status;
 
   public CreativeAssetsProcessingRecord creativeAssetsId(String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
@@ -81,6 +81,24 @@ public class CreativeAssetsProcessingRecord   {
     this.errors = errors;
   }
 
+  public CreativeAssetsProcessingRecord status(ItemProcessingStatus status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Get status
+   * @return status
+   */
+  @ApiModelProperty(value = "")
+  public ItemProcessingStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(ItemProcessingStatus status) {
+    this.status = status;
+  }
+
   public CreativeAssetsProcessingRecord warnings(List<ItemValidationEvent> warnings) {
     this.warnings = warnings;
     return this;
@@ -107,24 +125,6 @@ public class CreativeAssetsProcessingRecord   {
     this.warnings = warnings;
   }
 
-  public CreativeAssetsProcessingRecord status(ItemProcessingStatus status) {
-    this.status = status;
-    return this;
-  }
-
-  /**
-   * Get status
-   * @return status
-   */
-  @ApiModelProperty(value = "")
-  public ItemProcessingStatus getStatus() {
-    return status;
-  }
-
-  public void setStatus(ItemProcessingStatus status) {
-    this.status = status;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -137,13 +137,13 @@ public class CreativeAssetsProcessingRecord   {
     CreativeAssetsProcessingRecord creativeAssetsProcessingRecord = (CreativeAssetsProcessingRecord) o;
     return Objects.equals(this.creativeAssetsId, creativeAssetsProcessingRecord.creativeAssetsId) &&
         Objects.equals(this.errors, creativeAssetsProcessingRecord.errors) &&
-        Objects.equals(this.warnings, creativeAssetsProcessingRecord.warnings) &&
-        Objects.equals(this.status, creativeAssetsProcessingRecord.status);
+        Objects.equals(this.status, creativeAssetsProcessingRecord.status) &&
+        Objects.equals(this.warnings, creativeAssetsProcessingRecord.warnings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(creativeAssetsId, errors, warnings, status);
+    return Objects.hash(creativeAssetsId, errors, status, warnings);
   }
 
   @Override
@@ -153,8 +153,8 @@ public class CreativeAssetsProcessingRecord   {
     
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }

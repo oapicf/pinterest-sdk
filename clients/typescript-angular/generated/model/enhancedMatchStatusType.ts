@@ -9,9 +9,6 @@
  */
 
 
-/**
- * The enhanced match status of the tag
- */
 export const EnhancedMatchStatusType = {
     Unknown: 'UNKNOWN',
     NotValidated: 'NOT_VALIDATED',

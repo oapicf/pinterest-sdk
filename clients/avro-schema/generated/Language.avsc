@@ -1,7 +1,7 @@
 {
   "namespace": "model",
   "type": "enum",
-  "doc": "Language code, which is among the offical ISO 639-1 language list.",
+  "doc": "Language code, which is among the official ISO 639-1 language list.",
   "name": "Language",
   "symbols": [
     "AM",

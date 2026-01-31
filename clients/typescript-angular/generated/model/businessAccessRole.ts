@@ -18,6 +18,8 @@ export const BusinessAccessRole = {
     Analyst: 'ANALYST',
     SosReader: 'SOS_READER',
     FinanceManager: 'FINANCE_MANAGER',
+    FinanceView: 'FINANCE_VIEW',
+    FinanceEdit: 'FINANCE_EDIT',
     AudienceManager: 'AUDIENCE_MANAGER',
     CampaignManager: 'CAMPAIGN_MANAGER',
     CatalogsManager: 'CATALOGS_MANAGER',

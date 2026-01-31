@@ -21,8 +21,8 @@ import io.swagger.v3.oas.annotations.media.Schema
  * Object describing an item processing record
  * @param creativeAssetsId The catalog creative assets id in the merchant namespace
  * @param errors Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
- * @param warnings Array with the validation warnings for the item processing record
  * @param status 
+ * @param warnings Array with the validation warnings for the item processing record
  */
 data class CreativeAssetsProcessingRecord(
 
@@ -34,12 +34,12 @@ data class CreativeAssetsProcessingRecord(
     @get:JsonProperty("errors") val errors: kotlin.collections.List<ItemValidationEvent>? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "Array with the validation warnings for the item processing record")
-    @get:JsonProperty("warnings") val warnings: kotlin.collections.List<ItemValidationEvent>? = null,
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("status") val status: ItemProcessingStatus? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("status") val status: ItemProcessingStatus? = null
+    @Schema(example = "null", description = "Array with the validation warnings for the item processing record")
+    @get:JsonProperty("warnings") val warnings: kotlin.collections.List<ItemValidationEvent>? = null
 ) {
 
 }

@@ -18,13 +18,26 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Object describing a retail item record")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Object describing a retail item record")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailItemResponse   {
   
+  private ItemAttributes attributes;
   private CatalogsType catalogType;
   private String itemId;
   private List<@Valid Pin> pins;
-  private ItemAttributes attributes;
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("attributes")
+  @Valid
+  public ItemAttributes getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(ItemAttributes attributes) {
+    this.attributes = attributes;
+  }
 
   /**
    **/
@@ -67,19 +80,6 @@ public class CatalogsRetailItemResponse   {
     this.pins = pins;
   }
 
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("attributes")
-  @Valid
-  public ItemAttributes getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(ItemAttributes attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -90,15 +90,15 @@ public class CatalogsRetailItemResponse   {
       return false;
     }
     CatalogsRetailItemResponse catalogsRetailItemResponse = (CatalogsRetailItemResponse) o;
-    return Objects.equals(this.catalogType, catalogsRetailItemResponse.catalogType) &&
+    return Objects.equals(this.attributes, catalogsRetailItemResponse.attributes) &&
+        Objects.equals(this.catalogType, catalogsRetailItemResponse.catalogType) &&
         Objects.equals(this.itemId, catalogsRetailItemResponse.itemId) &&
-        Objects.equals(this.pins, catalogsRetailItemResponse.pins) &&
-        Objects.equals(this.attributes, catalogsRetailItemResponse.attributes);
+        Objects.equals(this.pins, catalogsRetailItemResponse.pins);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, pins, attributes);
+    return Objects.hash(attributes, catalogType, itemId, pins);
   }
 
   @Override
@@ -106,10 +106,10 @@ public class CatalogsRetailItemResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailItemResponse {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

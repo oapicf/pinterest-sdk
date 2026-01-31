@@ -13,11 +13,11 @@ import CatalogsVerticalProductGroupUpdateRequest._
 
 case class CatalogsVerticalProductGroupUpdateRequest (
   catalogType: Option[CatalogType],
-name: Option[String],
+country: Option[Country],
 description: Option[String],
 filters: Option[CatalogsCreativeAssetsProductGroupFilters],
-country: Option[Country],
-locale: Option[CatalogsLocale])
+locale: Option[CatalogsLocale],
+name: Option[String])
 
 object CatalogsVerticalProductGroupUpdateRequest {
   import DateTimeCodecs._

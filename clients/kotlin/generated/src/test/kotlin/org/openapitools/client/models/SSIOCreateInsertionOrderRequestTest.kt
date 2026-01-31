@@ -26,16 +26,10 @@ class SSIOCreateInsertionOrderRequestTest : ShouldSpec() {
         // uncomment below to create an instance of SSIOCreateInsertionOrderRequest
         //val modelInstance = SSIOCreateInsertionOrderRequest()
 
-        // to test the property `startDate` - Starting date of time period. Format: YYYY-MM-DD
-        should("test startDate") {
+        // to test the property `billingContactEmail` - The billing contact email
+        should("test billingContactEmail") {
             // uncomment below to test the property
-            //modelInstance.startDate shouldBe ("TODO")
-        }
-
-        // to test the property `poNumber` - The po number
-        should("test poNumber") {
-            // uncomment below to test the property
-            //modelInstance.poNumber shouldBe ("TODO")
+            //modelInstance.billingContactEmail shouldBe ("TODO")
         }
 
         // to test the property `billingContactFirstname` - The billing contact first name
@@ -50,10 +44,10 @@ class SSIOCreateInsertionOrderRequestTest : ShouldSpec() {
             //modelInstance.billingContactLastname shouldBe ("TODO")
         }
 
-        // to test the property `billingContactEmail` - The billing contact email
-        should("test billingContactEmail") {
+        // to test the property `mediaContactEmail` - The media contact email
+        should("test mediaContactEmail") {
             // uncomment below to test the property
-            //modelInstance.billingContactEmail shouldBe ("TODO")
+            //modelInstance.mediaContactEmail shouldBe ("TODO")
         }
 
         // to test the property `mediaContactFirstname` - The media contact first name
@@ -68,28 +62,16 @@ class SSIOCreateInsertionOrderRequestTest : ShouldSpec() {
             //modelInstance.mediaContactLastname shouldBe ("TODO")
         }
 
-        // to test the property `mediaContactEmail` - The media contact email
-        should("test mediaContactEmail") {
+        // to test the property `poNumber` - The po number
+        should("test poNumber") {
             // uncomment below to test the property
-            //modelInstance.mediaContactEmail shouldBe ("TODO")
+            //modelInstance.poNumber shouldBe ("TODO")
         }
 
-        // to test the property `pmpId` - The pmp id
-        should("test pmpId") {
+        // to test the property `startDate` - Starting date of time period. Format: YYYY-MM-DD
+        should("test startDate") {
             // uncomment below to test the property
-            //modelInstance.pmpId shouldBe ("TODO")
-        }
-
-        // to test the property `orderName` - The order name
-        should("test orderName") {
-            // uncomment below to test the property
-            //modelInstance.orderName shouldBe ("TODO")
-        }
-
-        // to test the property `orderLineType` - Type can be Budget or Perpetual
-        should("test orderLineType") {
-            // uncomment below to test the property
-            //modelInstance.orderLineType shouldBe ("TODO")
+            //modelInstance.startDate shouldBe ("TODO")
         }
 
         // to test the property `acceptedTermsId` - The SFDC id for the terms
@@ -98,10 +80,10 @@ class SSIOCreateInsertionOrderRequestTest : ShouldSpec() {
             //modelInstance.acceptedTermsId shouldBe ("TODO")
         }
 
-        // to test the property `billtoCompanyId` - The bill-to company id
-        should("test billtoCompanyId") {
+        // to test the property `billtoBillingAddressId` - The bill-to billing address id
+        should("test billtoBillingAddressId") {
             // uncomment below to test the property
-            //modelInstance.billtoCompanyId shouldBe ("TODO")
+            //modelInstance.billtoBillingAddressId shouldBe ("TODO")
         }
 
         // to test the property `billtoBusinessAddressId` - The bill-to business address id
@@ -110,10 +92,10 @@ class SSIOCreateInsertionOrderRequestTest : ShouldSpec() {
             //modelInstance.billtoBusinessAddressId shouldBe ("TODO")
         }
 
-        // to test the property `billtoBillingAddressId` - The bill-to billing address id
-        should("test billtoBillingAddressId") {
+        // to test the property `billtoCompanyId` - The bill-to company id
+        should("test billtoCompanyId") {
             // uncomment below to test the property
-            //modelInstance.billtoBillingAddressId shouldBe ("TODO")
+            //modelInstance.billtoCompanyId shouldBe ("TODO")
         }
 
         // to test the property `currencyInfo`
@@ -122,10 +104,28 @@ class SSIOCreateInsertionOrderRequestTest : ShouldSpec() {
             //modelInstance.currencyInfo shouldBe ("TODO")
         }
 
-        // to test the property `endDate` - End date of time period. Format: YYYY-MM-DD
-        should("test endDate") {
+        // to test the property `orderLineType` - Type can be Budget or Perpetual
+        should("test orderLineType") {
             // uncomment below to test the property
-            //modelInstance.endDate shouldBe ("TODO")
+            //modelInstance.orderLineType shouldBe ("TODO")
+        }
+
+        // to test the property `orderName` - The order name
+        should("test orderName") {
+            // uncomment below to test the property
+            //modelInstance.orderName shouldBe ("TODO")
+        }
+
+        // to test the property `pmpId` - The pmp id
+        should("test pmpId") {
+            // uncomment below to test the property
+            //modelInstance.pmpId shouldBe ("TODO")
+        }
+
+        // to test the property `agencyLink` - URL link for agency
+        should("test agencyLink") {
+            // uncomment below to test the property
+            //modelInstance.agencyLink shouldBe ("TODO")
         }
 
         // to test the property `budgetAmount` - If Budget order line, the budget amount.
@@ -134,10 +134,10 @@ class SSIOCreateInsertionOrderRequestTest : ShouldSpec() {
             //modelInstance.budgetAmount shouldBe ("TODO")
         }
 
-        // to test the property `agencyLink` - URL link for agency
-        should("test agencyLink") {
+        // to test the property `endDate` - End date of time period. Format: YYYY-MM-DD
+        should("test endDate") {
             // uncomment below to test the property
-            //modelInstance.agencyLink shouldBe ("TODO")
+            //modelInstance.endDate shouldBe ("TODO")
         }
 
         // to test the property `userEmail` - The email of user submitting the insertion order

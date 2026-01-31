@@ -9,8 +9,8 @@ Name | Type
 `adAccountId` | string
 `name` | string
 `rule` | [AudienceRule](AudienceRule.md)
-`description` | string
 `audienceType` | [AudienceType](AudienceType.md)
+`description` | string
 
 ## Example
 
@@ -22,8 +22,8 @@ const example = {
   "adAccountId": 549755885175,
   "name": string,
   "rule": null,
-  "description": string,
   "audienceType": null,
+  "description": string,
 } satisfies AudienceCreateRequest
 
 console.log(example)

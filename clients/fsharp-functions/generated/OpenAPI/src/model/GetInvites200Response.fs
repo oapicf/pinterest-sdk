@@ -12,10 +12,10 @@ module GetInvites200Response =
 
   [<CLIMutable>]
   type GetInvites200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : InviteResponse[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : InviteResponse[];
   }
 
   //#endregion

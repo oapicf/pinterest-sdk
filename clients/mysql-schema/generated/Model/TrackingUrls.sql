@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `TrackingUrls`
 --
-SELECT `impression`, `click`, `engagement`, `buyable_button`, `audience_verification` FROM `TrackingUrls` WHERE 1;
+SELECT `audience_verification`, `buyable_button`, `click`, `engagement`, `impression` FROM `TrackingUrls` WHERE 1;
 
 --
 -- INSERT template for table `TrackingUrls`
 --
-INSERT INTO `TrackingUrls`(`impression`, `click`, `engagement`, `buyable_button`, `audience_verification`) VALUES (?, ?, ?, ?, ?);
+INSERT INTO `TrackingUrls`(`audience_verification`, `buyable_button`, `click`, `engagement`, `impression`) VALUES (?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `TrackingUrls`
 --
-UPDATE `TrackingUrls` SET `impression` = ?, `click` = ?, `engagement` = ?, `buyable_button` = ?, `audience_verification` = ? WHERE 1;
+UPDATE `TrackingUrls` SET `audience_verification` = ?, `buyable_button` = ?, `click` = ?, `engagement` = ?, `impression` = ? WHERE 1;
 
 --
 -- DELETE template for table `TrackingUrls`

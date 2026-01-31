@@ -22,6 +22,8 @@ public class CatalogsItemsRequest   {
   
   private Country country;
 
+  private CatalogsItemsPostFilters filters;
+
 
 public enum LanguageEnum {
 
@@ -55,8 +57,6 @@ public enum LanguageEnum {
 
   private LanguageEnum language;
 
-  private CatalogsItemsPostFilters filters;
-
   /**
    **/
   public CatalogsItemsRequest country(Country country) {
@@ -73,6 +73,25 @@ public enum LanguageEnum {
   }
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+
+  /**
+   **/
+  public CatalogsItemsRequest filters(CatalogsItemsPostFilters filters) {
+    this.filters = filters;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("filters")
+  @NotNull
+  public CatalogsItemsPostFilters getFilters() {
+    return filters;
+  }
+  public void setFilters(CatalogsItemsPostFilters filters) {
+    this.filters = filters;
   }
 
 
@@ -96,25 +115,6 @@ public enum LanguageEnum {
   }
 
 
-  /**
-   **/
-  public CatalogsItemsRequest filters(CatalogsItemsPostFilters filters) {
-    this.filters = filters;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("filters")
-  @NotNull
-  public CatalogsItemsPostFilters getFilters() {
-    return filters;
-  }
-  public void setFilters(CatalogsItemsPostFilters filters) {
-    this.filters = filters;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -126,13 +126,13 @@ public enum LanguageEnum {
     }
     CatalogsItemsRequest catalogsItemsRequest = (CatalogsItemsRequest) o;
     return Objects.equals(this.country, catalogsItemsRequest.country) &&
-        Objects.equals(this.language, catalogsItemsRequest.language) &&
-        Objects.equals(this.filters, catalogsItemsRequest.filters);
+        Objects.equals(this.filters, catalogsItemsRequest.filters) &&
+        Objects.equals(this.language, catalogsItemsRequest.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, language, filters);
+    return Objects.hash(country, filters, language);
   }
 
   @Override
@@ -141,8 +141,8 @@ public enum LanguageEnum {
     sb.append("class CatalogsItemsRequest {\n");
     
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -27,10 +27,10 @@ class CatalogsItemValidationIssuesTest : ShouldSpec() {
         // uncomment below to create an instance of CatalogsItemValidationIssues
         //val modelInstance = CatalogsItemValidationIssues()
 
-        // to test the property `itemNumber` - Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
-        should("test itemNumber") {
+        // to test the property `errors`
+        should("test errors") {
             // uncomment below to test the property
-            //modelInstance.itemNumber shouldBe ("TODO")
+            //modelInstance.errors shouldBe ("TODO")
         }
 
         // to test the property `itemId` - The merchant-created unique ID that represents the product.
@@ -39,10 +39,10 @@ class CatalogsItemValidationIssuesTest : ShouldSpec() {
             //modelInstance.itemId shouldBe ("TODO")
         }
 
-        // to test the property `errors`
-        should("test errors") {
+        // to test the property `itemNumber` - Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
+        should("test itemNumber") {
             // uncomment below to test the property
-            //modelInstance.errors shouldBe ("TODO")
+            //modelInstance.itemNumber shouldBe ("TODO")
         }
 
         // to test the property `warnings`

@@ -1,6 +1,6 @@
-#import "OAITargetingSpecSHOPPINGRETARGETING.h"
+#import "OAITargetingSpecShoppingRetargeting.h"
 
-@implementation OAITargetingSpecSHOPPINGRETARGETING
+@implementation OAITargetingSpecShoppingRetargeting
 
 - (instancetype)init {
   self = [super init];
@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"lookbackWindow": @"lookback_window", @"tagTypes": @"tag_types", @"exclusionWindow": @"exclusion_window" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"exclusionWindow": @"exclusion_window", @"lookbackWindow": @"lookback_window", @"tagTypes": @"tag_types" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"lookbackWindow", @"tagTypes", @"exclusionWindow"];
+  NSArray *optionalProperties = @[@"exclusionWindow", @"lookbackWindow", @"tagTypes"];
   return [optionalProperties containsObject:propertyName];
 }
 

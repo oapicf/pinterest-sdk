@@ -6,8 +6,8 @@ import io.swagger.annotations.ApiModelProperty;
 
 @Canonical
 class AdAccountOwner {
-    /* Public username for the user account */
-    String username
     /* The owning account's user ID. */
     String id
+    /* Public username for the user account */
+    String username
 }

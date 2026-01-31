@@ -7,10 +7,10 @@ Object describing a hotel record
 
 Name | Type
 ------------ | -------------
+`attributes` | [CatalogsHotelAttributes](CatalogsHotelAttributes.md)
 `catalogType` | [CatalogsType](CatalogsType.md)
 `hotelId` | string
 `pins` | [Array&lt;Pin&gt;](Pin.md)
-`attributes` | [CatalogsHotelAttributes](CatalogsHotelAttributes.md)
 
 ## Example
 
@@ -19,10 +19,10 @@ import type { CatalogsHotelItemResponse } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "attributes": null,
   "catalogType": null,
   "hotelId": DS0294-M,
   "pins": null,
-  "attributes": null,
 } satisfies CatalogsHotelItemResponse
 
 console.log(example)

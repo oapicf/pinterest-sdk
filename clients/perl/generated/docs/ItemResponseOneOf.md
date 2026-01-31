@@ -1,0 +1,20 @@
+# WWW::OpenAPIClient::Object::ItemResponseOneOf
+
+## Load the model package
+```perl
+use WWW::OpenAPIClient::Object::ItemResponseOneOf;
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**catalog_type** | [**CatalogsType**](CatalogsType.md) |  | 
+**attributes** | [**CatalogsCreativeAssetsAttributes**](CatalogsCreativeAssetsAttributes.md) |  | [optional] 
+**item_id** | **string** | The catalog retail item id in the merchant namespace | [optional] 
+**pins** | [**ARRAY[Pin]**](Pin.md) | The pins mapped to the item | [optional] 
+**hotel_id** | **string** | The catalog hotel id in the merchant namespace | [optional] 
+**creative_assets_id** | **string** | The catalog creative assets id in the merchant namespace | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

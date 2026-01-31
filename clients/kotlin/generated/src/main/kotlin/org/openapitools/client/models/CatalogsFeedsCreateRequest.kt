@@ -30,24 +30,20 @@ import com.squareup.moshi.JsonClass
 /**
  * Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.
  *
- * @param name A human-friendly name associated to a given feed.
  * @param format 
  * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+ * @param name A human-friendly name associated to a given feed.
+ * @param credentials 
+ * @param defaultAvailability 
+ * @param defaultCountry 
  * @param defaultCurrency 
  * @param defaultLocale 
- * @param credentials 
  * @param preferredProcessingSchedule 
- * @param defaultCountry 
- * @param defaultAvailability 
  * @param status 
  */
 
 
 data class CatalogsFeedsCreateRequest (
-
-    /* A human-friendly name associated to a given feed. */
-    @Json(name = "name")
-    val name: kotlin.String,
 
     @Json(name = "format")
     val format: CatalogsFormat,
@@ -56,23 +52,27 @@ data class CatalogsFeedsCreateRequest (
     @Json(name = "location")
     val location: kotlin.String,
 
+    /* A human-friendly name associated to a given feed. */
+    @Json(name = "name")
+    val name: kotlin.String,
+
+    @Json(name = "credentials")
+    val credentials: CatalogsFeedCredentials? = null,
+
+    @Json(name = "default_availability")
+    val defaultAvailability: ProductAvailabilityType? = null,
+
+    @Json(name = "default_country")
+    val defaultCountry: Country? = null,
+
     @Json(name = "default_currency")
     val defaultCurrency: NullableCurrency? = null,
 
     @Json(name = "default_locale")
     val defaultLocale: CatalogsFeedsCreateRequestDefaultLocale? = null,
 
-    @Json(name = "credentials")
-    val credentials: CatalogsFeedCredentials? = null,
-
     @Json(name = "preferred_processing_schedule")
     val preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = null,
-
-    @Json(name = "default_country")
-    val defaultCountry: Country? = null,
-
-    @Json(name = "default_availability")
-    val defaultAvailability: ProductAvailabilityType? = null,
 
     @Json(name = "status")
     val status: CatalogsStatus? = "ACTIVE"

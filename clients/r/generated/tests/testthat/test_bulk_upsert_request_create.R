@@ -5,13 +5,6 @@ context("Test BulkUpsertRequestCreate")
 
 model_instance <- BulkUpsertRequestCreate$new()
 
-test_that("campaigns", {
-  # tests for the property `campaigns` (array[CampaignCreateRequest])
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`campaigns`, "EXPECTED_RESULT")
-})
-
 test_that("ad_groups", {
   # tests for the property `ad_groups` (array[AdGroupCreateRequest])
 
@@ -26,11 +19,18 @@ test_that("ads", {
   #expect_equal(model.instance$`ads`, "EXPECTED_RESULT")
 })
 
-test_that("product_groups", {
-  # tests for the property `product_groups` (array[ProductGroupPromotionCreateRequest])
+test_that("campaigns", {
+  # tests for the property `campaigns` (array[CampaignCreateRequest])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`product_groups`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`campaigns`, "EXPECTED_RESULT")
+})
+
+test_that("catalog_product_groups", {
+  # tests for the property `catalog_product_groups` (array[MultipleProductGroupsInner])
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`catalog_product_groups`, "EXPECTED_RESULT")
 })
 
 test_that("keywords", {
@@ -38,4 +38,18 @@ test_that("keywords", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`keywords`, "EXPECTED_RESULT")
+})
+
+test_that("labels", {
+  # tests for the property `labels` (array[LabelCreateRequest])
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`labels`, "EXPECTED_RESULT")
+})
+
+test_that("product_groups", {
+  # tests for the property `product_groups` (array[ProductGroupPromotionCreateRequest])
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`product_groups`, "EXPECTED_RESULT")
 })

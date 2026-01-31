@@ -22,13 +22,13 @@ pin_media_with_images_t* instantiate_pin_media_with_images(int include_optional)
   pin_media_with_images_t* pin_media_with_images = NULL;
   if (include_optional) {
     pin_media_with_images = pin_media_with_images_create(
-      "0",
-      list_createList()
+      list_createList(),
+      pinterest_rest_api_pin_media_with_images_MEDIATYPE_multiple_images
     );
   } else {
     pin_media_with_images = pin_media_with_images_create(
-      "0",
-      list_createList()
+      list_createList(),
+      pinterest_rest_api_pin_media_with_images_MEDIATYPE_multiple_images
     );
   }
 

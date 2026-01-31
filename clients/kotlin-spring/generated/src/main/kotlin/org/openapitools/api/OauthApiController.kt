@@ -1,5 +1,6 @@
 package org.openapitools.api
 
+import org.openapitools.model.ConversionAccessTokenResponse
 import org.openapitools.model.Error
 import org.openapitools.model.OauthAccessTokenResponse
 import io.swagger.v3.oas.annotations.*
@@ -36,17 +37,35 @@ import kotlin.collections.Map
 class OauthApiController() {
 
     @Operation(
+        summary = "Generate OAuth access token for conversion API",
+        operationId = "oauthConversionToken",
+        description = """Generate a new and long-lived OAuth access token dedicated for sending conversions using a valid access token.""",
+        responses = [
+            ApiResponse(responseCode = "200", description = "response", content = [Content(schema = Schema(implementation = ConversionAccessTokenResponse::class))]),
+            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+        security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "ads:write" ]) ]
+    )
+    @RequestMapping(
+        method = [RequestMethod.POST],
+        value = [PATH_OAUTH_CONVERSION_TOKEN /* "/oauth/conversion_token" */],
+        produces = ["application/json"]
+    )
+    fun oauthConversionToken(): ResponseEntity<ConversionAccessTokenResponse> {
+        return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
+    }
+
+    @Operation(
         summary = "Generate OAuth access token",
         operationId = "oauthToken",
-        description = """Generate an OAuth access token by using an authorization code or a refresh token.
+        description = """Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.
 
-IMPORTANT: You need to start the OAuth flow via www.pinterest.com/oauth before calling this endpoint (or have an existing refresh token).
+Follow the complete steps for <a href='/docs/getting-started/set-up-authentication-and-authorization/' target='blank'>requesting and refreshing tokens</a>.
 
-See <a href='/docs/getting-started/authentication-and-scopes/'>Authentication</a> for more.
+<strong>Note:</strong> If your app was created <strong>before September 25, 2025</strong>, make sure to set the <code>continuous_refresh</code> parameter to <code>true</code> to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).
 
-<strong>Parameter <i>refresh_on</i> and its corresponding response type <i>everlasting_refresh</i> are now available to all apps! Later this year, continuous refresh will become the default behavior (ie you will no longer need to send this parameter). <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.
 
-<strong>Grant type <i>client_credentials</i> and its corresponding response type are not fully available. You will likely get a default error if you attempt to use this grant_type.</strong>""",
+Use <a href='/docs/developer-tools/token-debugger/' target='blank'>Token Debugger</a> to validate and inspect your access token.""",
         responses = [
             ApiResponse(responseCode = "200", description = "response", content = [Content(schema = Schema(implementation = OauthAccessTokenResponse::class))]),
             ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
@@ -64,9 +83,35 @@ See <a href='/docs/getting-started/authentication-and-scopes/'>Authentication</a
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
+    @Operation(
+        summary = "Revoke a token",
+        operationId = "tokenRevoke",
+        description = """Revokes an access or refresh token. Only tokens issued for system users are currently supported. Revoked tokens become immediately invalid and unusable.""",
+        responses = [
+            ApiResponse(responseCode = "200", description = "Successful token revocation. No content is returned."),
+            ApiResponse(responseCode = "401", description = "Client authentication error.", content = [Content(schema = Schema(implementation = Error::class))]),
+            ApiResponse(responseCode = "403", description = "Client is not allowed to revoke token.", content = [Content(schema = Schema(implementation = Error::class))]),
+            ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
+        security = [ SecurityRequirement(name = "basic") ]
+    )
+    @RequestMapping(
+        method = [RequestMethod.POST],
+        value = [PATH_TOKEN_REVOKE /* "/oauth/token/revoke" */],
+        produces = ["application/json"],
+        consumes = ["application/x-www-form-urlencoded"]
+    )
+    fun tokenRevoke(
+        @Parameter(description = "The token to revoke.", required = true) @Valid @RequestParam(value = "token", required = true) token: kotlin.String,
+        @Parameter(description = "The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information.", schema = Schema(allowableValues = ["access_token", "refresh_token"])) @Valid @RequestParam(value = "token_type_hint", required = false) tokenTypeHint: kotlin.String?
+    ): ResponseEntity<Unit> {
+        return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
+    }
+
     companion object {
         //for your own safety never directly reuse these path definitions in tests
         const val BASE_PATH: String = "/v5"
+        const val PATH_OAUTH_CONVERSION_TOKEN: String = "/oauth/conversion_token"
         const val PATH_OAUTH_TOKEN: String = "/oauth/token"
+        const val PATH_TOKEN_REVOKE: String = "/oauth/token/revoke"
     }
 }

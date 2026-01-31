@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AssetId** | Pointer to **string** | Unique identifier of a business asset. | [optional] 
-**AssetType** | Pointer to **string** | Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. | [optional] 
-**Permissions** | Pointer to **[]string** | Permission levels member or partner has on an asset. | [optional] 
 **AssetGroupInfo** | Pointer to [**AssetGroupBinding**](AssetGroupBinding.md) |  | [optional] 
+**AssetId** | Pointer to **string** | Unique identifier of a business asset. | [optional] 
+**AssetType** | Pointer to **string** | Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. | [optional] 
+**Permissions** | Pointer to **[]string** | Permission levels member or partner has on an asset. | [optional] 
 
 ## Methods
 
@@ -27,6 +27,31 @@ will change when the set of required properties is changed
 NewAssetIdPermissionsWithDefaults instantiates a new AssetIdPermissions object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAssetGroupInfo
+
+`func (o *AssetIdPermissions) GetAssetGroupInfo() AssetGroupBinding`
+
+GetAssetGroupInfo returns the AssetGroupInfo field if non-nil, zero value otherwise.
+
+### GetAssetGroupInfoOk
+
+`func (o *AssetIdPermissions) GetAssetGroupInfoOk() (*AssetGroupBinding, bool)`
+
+GetAssetGroupInfoOk returns a tuple with the AssetGroupInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAssetGroupInfo
+
+`func (o *AssetIdPermissions) SetAssetGroupInfo(v AssetGroupBinding)`
+
+SetAssetGroupInfo sets AssetGroupInfo field to given value.
+
+### HasAssetGroupInfo
+
+`func (o *AssetIdPermissions) HasAssetGroupInfo() bool`
+
+HasAssetGroupInfo returns a boolean if a field has been set.
 
 ### GetAssetId
 
@@ -102,31 +127,6 @@ SetPermissions sets Permissions field to given value.
 `func (o *AssetIdPermissions) HasPermissions() bool`
 
 HasPermissions returns a boolean if a field has been set.
-
-### GetAssetGroupInfo
-
-`func (o *AssetIdPermissions) GetAssetGroupInfo() AssetGroupBinding`
-
-GetAssetGroupInfo returns the AssetGroupInfo field if non-nil, zero value otherwise.
-
-### GetAssetGroupInfoOk
-
-`func (o *AssetIdPermissions) GetAssetGroupInfoOk() (*AssetGroupBinding, bool)`
-
-GetAssetGroupInfoOk returns a tuple with the AssetGroupInfo field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAssetGroupInfo
-
-`func (o *AssetIdPermissions) SetAssetGroupInfo(v AssetGroupBinding)`
-
-SetAssetGroupInfo sets AssetGroupInfo field to given value.
-
-### HasAssetGroupInfo
-
-`func (o *AssetIdPermissions) HasAssetGroupInfo() bool`
-
-HasAssetGroupInfo returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

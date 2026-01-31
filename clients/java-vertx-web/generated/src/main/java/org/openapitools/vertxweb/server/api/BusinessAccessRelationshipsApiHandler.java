@@ -1,5 +1,8 @@
 package org.openapitools.vertxweb.server.api;
 
+import org.openapitools.vertxweb.server.model.BrandAccountsCreate200Response;
+import org.openapitools.vertxweb.server.model.BrandAccountsCreateRequest;
+import org.openapitools.vertxweb.server.model.BrandAccountsUpdateRequest;
 import org.openapitools.vertxweb.server.model.DeletePartnersRequest;
 import org.openapitools.vertxweb.server.model.DeletePartnersResponse;
 import org.openapitools.vertxweb.server.model.DeletedMembersResponse;
@@ -10,6 +13,7 @@ import org.openapitools.vertxweb.server.model.GetBusinessPartners200Response;
 import org.openapitools.vertxweb.server.model.MemberBusinessRole;
 import org.openapitools.vertxweb.server.model.MembersToDeleteBody;
 import org.openapitools.vertxweb.server.model.PartnerType;
+import org.openapitools.vertxweb.server.model.SystemUserUpdateRequest;
 import org.openapitools.vertxweb.server.model.UpdateMemberBusinessRoleBody;
 import org.openapitools.vertxweb.server.model.UpdateMemberResultsResponseArray;
 
@@ -43,12 +47,67 @@ public class BusinessAccessRelationshipsApiHandler {
     }
 
     public void mount(RouterBuilder builder) {
+        builder.operation("brandAccountsCreate").handler(this::brandAccountsCreate);
+        builder.operation("brandAccountsUpdate").handler(this::brandAccountsUpdate);
         builder.operation("deleteBusinessMembership").handler(this::deleteBusinessMembership);
         builder.operation("deleteBusinessPartners").handler(this::deleteBusinessPartners);
         builder.operation("getBusinessEmployers").handler(this::getBusinessEmployers);
         builder.operation("getBusinessMembers").handler(this::getBusinessMembers);
         builder.operation("getBusinessPartners").handler(this::getBusinessPartners);
+        builder.operation("systemUserUpdate").handler(this::systemUserUpdate);
         builder.operation("updateBusinessMemberships").handler(this::updateBusinessMemberships);
+    }
+
+    private void brandAccountsCreate(RoutingContext routingContext) {
+        logger.info("brandAccountsCreate()");
+
+        // Param extraction
+        RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
+
+        String businessHierarchyId = requestParameters.pathParameter("business_hierarchy_id") != null ? requestParameters.pathParameter("business_hierarchy_id").getString() : null;
+        RequestParameter body = requestParameters.body();
+        BrandAccountsCreateRequest brandAccountsCreateRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<BrandAccountsCreateRequest>(){}) : null;
+
+        logger.debug("Parameter businessHierarchyId is {}", businessHierarchyId);
+        logger.debug("Parameter brandAccountsCreateRequest is {}", brandAccountsCreateRequest);
+
+        api.brandAccountsCreate(businessHierarchyId, brandAccountsCreateRequest)
+            .onSuccess(apiResponse -> {
+                routingContext.response().setStatusCode(apiResponse.getStatusCode());
+                if (apiResponse.hasData()) {
+                    routingContext.json(apiResponse.getData());
+                } else {
+                    routingContext.response().end();
+                }
+            })
+            .onFailure(routingContext::fail);
+    }
+
+    private void brandAccountsUpdate(RoutingContext routingContext) {
+        logger.info("brandAccountsUpdate()");
+
+        // Param extraction
+        RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
+
+        String businessHierarchyId = requestParameters.pathParameter("business_hierarchy_id") != null ? requestParameters.pathParameter("business_hierarchy_id").getString() : null;
+        String brandAccountId = requestParameters.pathParameter("brand_account_id") != null ? requestParameters.pathParameter("brand_account_id").getString() : null;
+        RequestParameter body = requestParameters.body();
+        BrandAccountsUpdateRequest brandAccountsUpdateRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<BrandAccountsUpdateRequest>(){}) : null;
+
+        logger.debug("Parameter businessHierarchyId is {}", businessHierarchyId);
+        logger.debug("Parameter brandAccountId is {}", brandAccountId);
+        logger.debug("Parameter brandAccountsUpdateRequest is {}", brandAccountsUpdateRequest);
+
+        api.brandAccountsUpdate(businessHierarchyId, brandAccountId, brandAccountsUpdateRequest)
+            .onSuccess(apiResponse -> {
+                routingContext.response().setStatusCode(apiResponse.getStatusCode());
+                if (apiResponse.hasData()) {
+                    routingContext.json(apiResponse.getData());
+                } else {
+                    routingContext.response().end();
+                }
+            })
+            .onFailure(routingContext::fail);
     }
 
     private void deleteBusinessMembership(RoutingContext routingContext) {
@@ -132,6 +191,7 @@ public class BusinessAccessRelationshipsApiHandler {
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
         String businessId = requestParameters.pathParameter("business_id") != null ? requestParameters.pathParameter("business_id").getString() : null;
+        Boolean fetchSystemUsers = requestParameters.queryParameter("fetch_system_users") != null ? requestParameters.queryParameter("fetch_system_users").getBoolean() : false;
         Boolean assetsSummary = requestParameters.queryParameter("assets_summary") != null ? requestParameters.queryParameter("assets_summary").getBoolean() : false;
         List<MemberBusinessRole> businessRoles = requestParameters.queryParameter("business_roles") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("business_roles").get(), new TypeReference<List<MemberBusinessRole>>(){}) : null;
         String memberIds = requestParameters.queryParameter("member_ids") != null ? requestParameters.queryParameter("member_ids").getString() : null;
@@ -140,6 +200,7 @@ public class BusinessAccessRelationshipsApiHandler {
         Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
 
         logger.debug("Parameter businessId is {}", businessId);
+        logger.debug("Parameter fetchSystemUsers is {}", fetchSystemUsers);
         logger.debug("Parameter assetsSummary is {}", assetsSummary);
         logger.debug("Parameter businessRoles is {}", businessRoles);
         logger.debug("Parameter memberIds is {}", memberIds);
@@ -147,7 +208,7 @@ public class BusinessAccessRelationshipsApiHandler {
         logger.debug("Parameter bookmark is {}", bookmark);
         logger.debug("Parameter pageSize is {}", pageSize);
 
-        api.getBusinessMembers(businessId, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize)
+        api.getBusinessMembers(businessId, fetchSystemUsers, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -182,6 +243,33 @@ public class BusinessAccessRelationshipsApiHandler {
         logger.debug("Parameter bookmark is {}", bookmark);
 
         api.getBusinessPartners(businessId, assetsSummary, partnerType, partnerIds, startIndex, pageSize, bookmark)
+            .onSuccess(apiResponse -> {
+                routingContext.response().setStatusCode(apiResponse.getStatusCode());
+                if (apiResponse.hasData()) {
+                    routingContext.json(apiResponse.getData());
+                } else {
+                    routingContext.response().end();
+                }
+            })
+            .onFailure(routingContext::fail);
+    }
+
+    private void systemUserUpdate(RoutingContext routingContext) {
+        logger.info("systemUserUpdate()");
+
+        // Param extraction
+        RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
+
+        String businessId = requestParameters.pathParameter("business_id") != null ? requestParameters.pathParameter("business_id").getString() : null;
+        String systemUserId = requestParameters.pathParameter("system_user_id") != null ? requestParameters.pathParameter("system_user_id").getString() : null;
+        RequestParameter body = requestParameters.body();
+        SystemUserUpdateRequest systemUserUpdateRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<SystemUserUpdateRequest>(){}) : null;
+
+        logger.debug("Parameter businessId is {}", businessId);
+        logger.debug("Parameter systemUserId is {}", systemUserId);
+        logger.debug("Parameter systemUserUpdateRequest is {}", systemUserUpdateRequest);
+
+        api.systemUserUpdate(businessId, systemUserId, systemUserUpdateRequest)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

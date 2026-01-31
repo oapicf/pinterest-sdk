@@ -13,9 +13,9 @@ import CatalogsItemsFilters._
 
 case class CatalogsItemsFilters (
   catalogType: CatalogsType,
-itemIds: List[String],
 /* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
   catalogId: Option[String],
+itemIds: List[String],
 hotelIds: List[String],
 creativeAssetsIds: List[String])
 

@@ -24,33 +24,49 @@ import com.squareup.moshi.JsonClass
 /**
  * Order Line
  *
- * @param id Order line ID.
- * @param type Always \"orderline\".
  * @param adAccountId Ad account ID.
+ * @param budget Order line budget in micro currency.
+ * @param endTime End time. Unix timestamp.
+ * @param id Order line ID.
+ * @param name Order line name.
+ * @param paidBudget Order line paid budget in micro currency.
+ * @param paidType Order line paid type.
  * @param purchaseOrderId Purchase order ID.
  * @param startTime Start time. Unix timestamp.
- * @param endTime End time. Unix timestamp.
- * @param budget Order line budget in micro currency.
- * @param paidBudget Order line paid budget in micro currency.
  * @param status Order line status.
- * @param name Order line name.
- * @param paidType Order line paid type.
+ * @param type Always \"orderline\".
  */
 
 
 data class OrderLines (
 
+    /* Ad account ID. */
+    @Json(name = "ad_account_id")
+    val adAccountId: kotlin.String? = null,
+
+    /* Order line budget in micro currency. */
+    @Json(name = "budget")
+    val budget: java.math.BigDecimal? = null,
+
+    /* End time. Unix timestamp. */
+    @Json(name = "end_time")
+    val endTime: java.math.BigDecimal? = null,
+
     /* Order line ID. */
     @Json(name = "id")
     val id: kotlin.String? = null,
 
-    /* Always \"orderline\". */
-    @Json(name = "type")
-    val type: kotlin.String? = null,
+    /* Order line name. */
+    @Json(name = "name")
+    val name: kotlin.String? = null,
 
-    /* Ad account ID. */
-    @Json(name = "ad_account_id")
-    val adAccountId: kotlin.String? = null,
+    /* Order line paid budget in micro currency. */
+    @Json(name = "paid_budget")
+    val paidBudget: java.math.BigDecimal? = null,
+
+    /* Order line paid type. */
+    @Json(name = "paid_type")
+    val paidType: OrderLinePaidType? = null,
 
     /* Purchase order ID. */
     @Json(name = "purchase_order_id")
@@ -60,29 +76,13 @@ data class OrderLines (
     @Json(name = "start_time")
     val startTime: java.math.BigDecimal? = null,
 
-    /* End time. Unix timestamp. */
-    @Json(name = "end_time")
-    val endTime: java.math.BigDecimal? = null,
-
-    /* Order line budget in micro currency. */
-    @Json(name = "budget")
-    val budget: java.math.BigDecimal? = null,
-
-    /* Order line paid budget in micro currency. */
-    @Json(name = "paid_budget")
-    val paidBudget: java.math.BigDecimal? = null,
-
     /* Order line status. */
     @Json(name = "status")
     val status: OrderLineStatus? = null,
 
-    /* Order line name. */
-    @Json(name = "name")
-    val name: kotlin.String? = null,
-
-    /* Order line paid type. */
-    @Json(name = "paid_type")
-    val paidType: OrderLinePaidType? = null
+    /* Always \"orderline\". */
+    @Json(name = "type")
+    val type: kotlin.String? = null
 
 ) {
 

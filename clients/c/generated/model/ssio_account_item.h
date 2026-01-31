@@ -20,29 +20,29 @@ typedef struct ssio_account_item_t ssio_account_item_t;
 
 
 typedef struct ssio_account_item_t {
-    char *id; // string
-    char *io_terms_id; // string
-    char *io_terms; // string
-    char *us_terms_id; // string
-    char *us_terms; // string
-    char *row_terms_id; // string
-    char *row_terms; // string
-    char *io_type; // string
     list_t *addresses; //nonprimitive container
+    char *id; // string
+    char *io_terms; // string
+    char *io_terms_id; // string
+    char *io_type; // string
+    char *row_terms; // string
+    char *row_terms_id; // string
+    char *us_terms; // string
+    char *us_terms_id; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } ssio_account_item_t;
 
 __attribute__((deprecated)) ssio_account_item_t *ssio_account_item_create(
+    list_t *addresses,
     char *id,
-    char *io_terms_id,
     char *io_terms,
-    char *us_terms_id,
-    char *us_terms,
-    char *row_terms_id,
-    char *row_terms,
+    char *io_terms_id,
     char *io_type,
-    list_t *addresses
+    char *row_terms,
+    char *row_terms_id,
+    char *us_terms,
+    char *us_terms_id
 );
 
 void ssio_account_item_free(ssio_account_item_t *ssio_account_item);

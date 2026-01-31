@@ -16,16 +16,16 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Queryable audience representation.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceDefinition   {
   @JsonProperty("date")
   private String date;
 
-  @JsonProperty("type")
-  private String type;
-
   @JsonProperty("scope")
   private String scope;
+
+  @JsonProperty("type")
+  private String type;
 
   public AudienceDefinition date(String date) {
     this.date = date;
@@ -45,40 +45,40 @@ public class AudienceDefinition   {
     this.date = date;
   }
 
-  public AudienceDefinition type(String type) {
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * Generated audience type to request.
-   * @return type
-   */
-  @ApiModelProperty(value = "Generated audience type to request.")
-  public String getType() {
-    return type;
-  }
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
   public AudienceDefinition scope(String scope) {
     this.scope = scope;
     return this;
   }
 
   /**
-   * Generated audience scope to request.
+   * Get scope
    * @return scope
    */
-  @ApiModelProperty(value = "Generated audience scope to request.")
+  @ApiModelProperty(example = "PARTNER", value = "")
   public String getScope() {
     return scope;
   }
 
   public void setScope(String scope) {
     this.scope = scope;
+  }
+
+  public AudienceDefinition type(String type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Get type
+   * @return type
+   */
+  @ApiModelProperty(example = "IMPRESSION_PLUS_ENGAGEMENT", value = "")
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
   }
 
 
@@ -92,13 +92,13 @@ public class AudienceDefinition   {
     }
     AudienceDefinition audienceDefinition = (AudienceDefinition) o;
     return Objects.equals(this.date, audienceDefinition.date) &&
-        Objects.equals(this.type, audienceDefinition.type) &&
-        Objects.equals(this.scope, audienceDefinition.scope);
+        Objects.equals(this.scope, audienceDefinition.scope) &&
+        Objects.equals(this.type, audienceDefinition.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, type, scope);
+    return Objects.hash(date, scope, type);
   }
 
   @Override
@@ -107,8 +107,8 @@ public class AudienceDefinition   {
     sb.append("class AudienceDefinition {\n");
     
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

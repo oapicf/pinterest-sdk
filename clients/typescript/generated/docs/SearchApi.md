@@ -12,7 +12,7 @@ Method | HTTP request | Description
 # **searchPartnerPins**
 > SearchPartnerPins200Response searchPartnerPins()
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+<strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
 
 ### Example
 
@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **searchUserPinsList**
-> PinsList200Response searchUserPinsList()
+> SearchUserPinsList200Response searchUserPinsList()
 
 Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href=\'/docs/getting-started/using-business-access/\'>Understanding Business Access</a> for more information.
 
@@ -179,7 +179,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**PinsList200Response**
+**SearchUserPinsList200Response**
 
 ### Authorization
 

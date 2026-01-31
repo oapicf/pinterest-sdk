@@ -1,0 +1,48 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsCreativeAssetsProductGroupFilters = openapi_server.resourceTypes.CatalogsCreativeAssetsProductGroupFilters
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest {
+    title = CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest
+    description = CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest
+    derivedFrom = Root
+    properties {
+        catalog_id {
+          type =  string
+          description = "Catalog id pertaining to the creative assets product group."
+          optional = true
+        }
+        catalog_type {
+          type =  string
+          description = ""
+          enum = ["CREATIVE_ASSETS"]
+          optional = true
+        }
+        filters {
+          type = CatalogsCreativeAssetsProductGroupFilters
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest {
+    title = CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest
+    description = CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest
+    implements = openapi_server.resourceTypes.CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest
+
+  }
+}

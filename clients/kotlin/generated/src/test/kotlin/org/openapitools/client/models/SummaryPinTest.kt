@@ -26,16 +26,22 @@ class SummaryPinTest : ShouldSpec() {
         // uncomment below to create an instance of SummaryPin
         //val modelInstance = SummaryPin()
 
-        // to test the property `media`
-        should("test media") {
-            // uncomment below to test the property
-            //modelInstance.media shouldBe ("TODO")
-        }
-
         // to test the property `altText`
         should("test altText") {
             // uncomment below to test the property
             //modelInstance.altText shouldBe ("TODO")
+        }
+
+        // to test the property `description`
+        should("test description") {
+            // uncomment below to test the property
+            //modelInstance.description shouldBe ("TODO")
+        }
+
+        // to test the property `id`
+        should("test id") {
+            // uncomment below to test the property
+            //modelInstance.id shouldBe ("TODO")
         }
 
         // to test the property `link`
@@ -44,16 +50,16 @@ class SummaryPinTest : ShouldSpec() {
             //modelInstance.link shouldBe ("TODO")
         }
 
+        // to test the property `media`
+        should("test media") {
+            // uncomment below to test the property
+            //modelInstance.media shouldBe ("TODO")
+        }
+
         // to test the property `title`
         should("test title") {
             // uncomment below to test the property
             //modelInstance.title shouldBe ("TODO")
-        }
-
-        // to test the property `description`
-        should("test description") {
-            // uncomment below to test the property
-            //modelInstance.description shouldBe ("TODO")
         }
 
     }

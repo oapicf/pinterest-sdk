@@ -12,8 +12,8 @@ import { BulkReportingJobStatus } from './bulkReportingJobStatus';
 
 export interface AdsAnalyticsGetAsyncResponse { 
     report_status?: BulkReportingJobStatus;
-    url?: string | null;
     size?: number | null;
+    url?: string | null;
 }
 export namespace AdsAnalyticsGetAsyncResponse {
 }

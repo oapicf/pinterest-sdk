@@ -12,9 +12,9 @@ import org.joda.time.DateTime
 import UserFollowingGet200Response._
 
 case class UserFollowingGet200Response (
-  /* Users */
-  items: List[UserSummary],
-bookmark: Option[String])
+  bookmark: Option[String],
+/* Users */
+  items: List[UserSummary])
 
 object UserFollowingGet200Response {
   import DateTimeCodecs._

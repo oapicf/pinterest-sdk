@@ -12,6 +12,8 @@ module CatalogsDeleteRetailItem =
   type CatalogsDeleteRetailItem = {
     [<JsonProperty(PropertyName = "item_id")>]
     ItemId : string;
+    [<JsonProperty(PropertyName = "last_updated_time")>]
+    LastUpdatedTime : int64;
     [<JsonProperty(PropertyName = "operation")>]
     Operation : string;
   }

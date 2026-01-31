@@ -5,20 +5,20 @@ context("Test ConversionEventsDataInnerCustomData")
 
 model_instance <- ConversionEventsDataInnerCustomData$new()
 
-test_that("currency", {
-  # tests for the property `currency` (character)
-  # The ISO-4217 currency code. If not provided, we will default to the advertiser&#39;s currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.
+test_that("content_brand", {
+  # tests for the property `content_brand` (character)
+  # The brand of the content associated with the event.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`currency`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`content_brand`, "EXPECTED_RESULT")
 })
 
-test_that("value", {
-  # tests for the property `value` (character)
-  # Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.
+test_that("content_category", {
+  # tests for the property `content_category` (character)
+  # The category of the content associated with the event.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`value`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`content_category`, "EXPECTED_RESULT")
 })
 
 test_that("content_ids", {
@@ -37,28 +37,44 @@ test_that("content_name", {
   #expect_equal(model.instance$`content_name`, "EXPECTED_RESULT")
 })
 
-test_that("content_category", {
-  # tests for the property `content_category` (character)
-  # The category of the content associated with the event.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`content_category`, "EXPECTED_RESULT")
-})
-
-test_that("content_brand", {
-  # tests for the property `content_brand` (character)
-  # The brand of the content associated with the event.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`content_brand`, "EXPECTED_RESULT")
-})
-
 test_that("contents", {
   # tests for the property `contents` (array[ConversionEventsDataInnerCustomDataContentsInner])
   # A list of objects containing information about products, such as price and quantity. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\&quot; target&#x3D;\&quot;_blank\&quot;&gt;here&lt;/a&gt; (Install the Pinterest tag section).
 
   # uncomment below to test the property
   #expect_equal(model.instance$`contents`, "EXPECTED_RESULT")
+})
+
+test_that("currency", {
+  # tests for the property `currency` (character)
+  # The ISO-4217 currency code. If not provided, we will default to the advertiser&#39;s currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`currency`, "EXPECTED_RESULT")
+})
+
+test_that("external_measurement_id", {
+  # tests for the property `external_measurement_id` (character)
+  # Only use when instructed.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`external_measurement_id`, "EXPECTED_RESULT")
+})
+
+test_that("external_measurement_vendor_id", {
+  # tests for the property `external_measurement_vendor_id` (integer)
+  # Only use when instructed.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`external_measurement_vendor_id`, "EXPECTED_RESULT")
+})
+
+test_that("np", {
+  # tests for the property `np` (character)
+  # Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`np`, "EXPECTED_RESULT")
 })
 
 test_that("num_items", {
@@ -69,12 +85,28 @@ test_that("num_items", {
   #expect_equal(model.instance$`num_items`, "EXPECTED_RESULT")
 })
 
+test_that("opt_out_type", {
+  # tests for the property `opt_out_type` (character)
+  # Flags for different privacy rights laws to opt out users of sharing personal information. Separate values with commas. See the Help Center article about &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/limited-data-processing\&quot; target&#x3D;\&quot;_blank\&quot;&gt;limited data processing&lt;/a&gt; and the developer&#39;s guide for &lt;a href&#x3D;\&quot;/docs/track-conversions/track-conversions-in-the-api/#whether-the-user-has-opted-out-of-web-or-offline-conversion-events\&quot; target&#x3D;\&quot;_blank\&quot;&gt;tracking conversion events&lt;/a&gt; for help with using this parameter.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`opt_out_type`, "EXPECTED_RESULT")
+})
+
 test_that("order_id", {
   # tests for the property `order_id` (character)
   # The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`order_id`, "EXPECTED_RESULT")
+})
+
+test_that("predicted_ltv", {
+  # tests for the property `predicted_ltv` (character)
+  # Predicted lifetime value of user associated with the event. Accepted as a string in the request; it will be parsed into a double.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`predicted_ltv`, "EXPECTED_RESULT")
 })
 
 test_that("search_string", {
@@ -85,18 +117,10 @@ test_that("search_string", {
   #expect_equal(model.instance$`search_string`, "EXPECTED_RESULT")
 })
 
-test_that("opt_out_type", {
-  # tests for the property `opt_out_type` (character)
-  # Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/limited-data-processing\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Help Center&lt;/a&gt; and &lt;a href&#x3D;\&quot;/docs/api-features/conversion-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;dev site&lt;/a&gt; for specific opt_out_type set up.
+test_that("value", {
+  # tests for the property `value` (character)
+  # Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`opt_out_type`, "EXPECTED_RESULT")
-})
-
-test_that("np", {
-  # tests for the property `np` (character)
-  # Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`np`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`value`, "EXPECTED_RESULT")
 })

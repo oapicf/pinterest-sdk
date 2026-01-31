@@ -40,6 +40,23 @@ private class OASAudienceInsightsApiTest {
         expectedResponse = OASAudienceInsightsResponse.getExample();
         response = (OASAudienceInsightsResponse) api.audienceInsightsGet(params);
         System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASAudienceInsightsApi(client);
+
+        js = JSON.serialize(OASAudienceInsightsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudienceInsightsResponse.getExample();
+        response = (OASAudienceInsightsResponse) api.audienceInsightsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudienceInsightsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudienceInsightsResponse.getExample();
+        response = (OASAudienceInsightsResponse) api.audienceInsightsGet(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -64,6 +81,23 @@ private class OASAudienceInsightsApiTest {
         OASAudienceDefinitionResponse expectedResponse;
         String js = '';
 
+        client = new OASClient();
+        api = new OASAudienceInsightsApi(client);
+
+        js = JSON.serialize(OASAudienceDefinitionResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudienceDefinitionResponse.getExample();
+        response = (OASAudienceDefinitionResponse) api.audienceInsightsScopeAndTypeGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudienceDefinitionResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudienceDefinitionResponse.getExample();
+        response = (OASAudienceDefinitionResponse) api.audienceInsightsScopeAndTypeGet(params);
+        System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASAudienceInsightsApi(client);
 

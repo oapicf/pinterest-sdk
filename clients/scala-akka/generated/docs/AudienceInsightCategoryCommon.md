@@ -7,11 +7,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **String** |  |  [optional]
+**index** | **BigDecimal** |  |  [optional]
 **key** | **String** |  |  [optional]
 **name** | **String** |  |  [optional]
 **ratio** | **BigDecimal** |  |  [optional]
-**index** | **BigDecimal** |  |  [optional]
-**id** | **String** |  |  [optional]
 
 
 

@@ -7,11 +7,6 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(LeadFormQuestion, () {
-    // LeadFormQuestionType questionType
-    test('to test the property `questionType`', () async {
-      // TODO
-    });
-
     // LeadFormQuestionFieldType customQuestionFieldType
     test('to test the property `customQuestionFieldType`', () async {
       // TODO
@@ -26,6 +21,11 @@ void main() {
     // Question options for a custom question.
     // BuiltList<String> customQuestionOptions
     test('to test the property `customQuestionOptions`', () async {
+      // TODO
+    });
+
+    // LeadFormQuestionType questionType
+    test('to test the property `questionType`', () async {
       // TODO
     });
 

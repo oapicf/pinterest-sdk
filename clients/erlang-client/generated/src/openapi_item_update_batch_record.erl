@@ -5,16 +5,16 @@
 -export_type([openapi_item_update_batch_record/0]).
 
 -type openapi_item_update_batch_record() ::
-    #{ 'item_id' => binary(),
-       'attributes' => openapi_updatable_item_attributes:openapi_updatable_item_attributes(),
+    #{ 'attributes' => openapi_updatable_item_attributes:openapi_updatable_item_attributes(),
+       'item_id' => binary(),
        'update_mask' => list()
      }.
 
-encode(#{ 'item_id' := ItemId,
-          'attributes' := Attributes,
+encode(#{ 'attributes' := Attributes,
+          'item_id' := ItemId,
           'update_mask' := UpdateMask
         }) ->
-    #{ 'item_id' => ItemId,
-       'attributes' => Attributes,
+    #{ 'attributes' => Attributes,
+       'item_id' => ItemId,
        'update_mask' => UpdateMask
      }.

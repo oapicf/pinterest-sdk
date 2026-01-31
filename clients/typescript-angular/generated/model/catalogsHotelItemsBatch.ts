@@ -20,20 +20,20 @@ export interface CatalogsHotelItemsBatch {
      * Id of the catalogs items batch
      */
     batch_id?: string;
+    catalog_type: CatalogsType;
+    /**
+     * Date and time (UTC) of the batch completion: YYYY-MM-DD\'T\'hh:mm:ss
+     */
+    readonly completed_time?: string | null;
     /**
      * Date and time (UTC) of the batch creation: YYYY-MM-DD\'T\'hh:mm:ss
      */
     readonly created_time?: string;
     /**
-     * Date and time (UTC) of the batch completion: YYYY-MM-DD\'T\'hh:mm:ss
-     */
-    readonly completed_time?: string | null;
-    status?: BatchOperationStatus;
-    catalog_type: CatalogsType;
-    /**
      * Array with the catalogs items processing records part of the catalogs items batch
      */
     items?: Array<HotelProcessingRecord>;
+    status?: BatchOperationStatus;
 }
 export namespace CatalogsHotelItemsBatch {
 }

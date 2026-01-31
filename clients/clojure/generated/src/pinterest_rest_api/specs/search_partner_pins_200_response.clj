@@ -8,8 +8,8 @@
 
 (def search-partner-pins-200-response-data
   {
-   (ds/req :items) (s/coll-of summary-pin-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of summary-pin-spec)
    })
 
 (def search-partner-pins-200-response-spec

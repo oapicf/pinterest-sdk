@@ -5,6 +5,13 @@ context("Test AdvancedAuctionItemsSubmitDeleteRecord")
 
 model_instance <- AdvancedAuctionItemsSubmitDeleteRecord$new()
 
+test_that("country", {
+  # tests for the property `country` (Country)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`country`, "EXPECTED_RESULT")
+})
+
 test_that("item_id", {
   # tests for the property `item_id` (character)
   # The catalog retail item id in the merchant namespace
@@ -13,16 +20,17 @@ test_that("item_id", {
   #expect_equal(model.instance$`item_id`, "EXPECTED_RESULT")
 })
 
-test_that("country", {
-  # tests for the property `country` (Country)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`country`, "EXPECTED_RESULT")
-})
-
 test_that("language", {
   # tests for the property `language` (Language)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`language`, "EXPECTED_RESULT")
+})
+
+test_that("errors", {
+  # tests for the property `errors` (array[AdvancedAuctionOperationError])
+  # Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`errors`, "EXPECTED_RESULT")
 })

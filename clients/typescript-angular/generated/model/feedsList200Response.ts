@@ -11,7 +11,7 @@ import { CatalogsFeed } from './catalogsFeed';
 
 
 export interface FeedsList200Response { 
-    items: Array<CatalogsFeed>;
     bookmark?: string | null;
+    items: Array<CatalogsFeed>;
 }
 

@@ -21,11 +21,11 @@ services:
 ```
 
 ## **mediaCreate**
-> OpenAPI\Server\Model\MediaUpload mediaCreate($mediaUploadRequest)
+> OpenAPI\Server\Model\MediaUpload mediaCreate($mediaUploadCreate)
 
 Register media upload
 
-Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using `curl`, for example) to `upload_url` using the `Content-Type` header value. Send the media file's contents as the request's `file` parameter and also include all of the parameters from `upload_parameters`.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 
 ### Example Implementation
 ```php
@@ -52,7 +52,7 @@ class MediaApi implements MediaApiInterface
     /**
      * Implementation of MediaApiInterface#mediaCreate
      */
-    public function mediaCreate(MediaUploadRequest $mediaUploadRequest, int &$responseCode, array &$responseHeaders): array|object|null
+    public function mediaCreate(MediaUploadCreate $mediaUploadCreate, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -65,7 +65,7 @@ class MediaApi implements MediaApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **mediaUploadRequest** | [**OpenAPI\Server\Model\MediaUploadRequest**](../Model/MediaUploadRequest.md)| Create a media upload request |
+ **mediaUploadCreate** | [**OpenAPI\Server\Model\MediaUploadCreate**](../Model/MediaUploadCreate.md)|  |
 
 ### Return type
 
@@ -83,11 +83,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **mediaGet**
-> OpenAPI\Server\Model\MediaUploadDetails mediaGet($mediaId)
+> OpenAPI\Server\Model\Media mediaGet($mediaId)
 
 Get media upload details
 
-Get details for a registered media upload, including its current status.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 
 ### Example Implementation
 ```php
@@ -127,11 +127,11 @@ class MediaApi implements MediaApiInterface
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **mediaId** | **string**| Media identifier |
+ **mediaId** | **string**| Unique identifier for this media upload. Used to track status and for attaching during Pin creation. |
 
 ### Return type
 
-[**OpenAPI\Server\Model\MediaUploadDetails**](../Model/MediaUploadDetails.md)
+[**OpenAPI\Server\Model\Media**](../Model/Media.md)
 
 ### Authorization
 
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 
 List media uploads
 
-List media uploads filtered by given parameters.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 
 ### Example Implementation
 ```php
@@ -190,7 +190,7 @@ class MediaApi implements MediaApiInterface
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
- **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **pageSize** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

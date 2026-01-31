@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**summary_metrics** | **{ [key: string]: number; }** | The metric name and value over the requested period for each requested metric | [optional] [default to undefined]
 **daily_metrics** | [**Array&lt;AnalyticsDailyMetrics&gt;**](AnalyticsDailyMetrics.md) | Array with the requested daily metric records | [optional] [default to undefined]
+**summary_metrics** | **{ [key: string]: number; }** | The metric name and value over the requested period for each requested metric | [optional] [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { AnalyticsMetricsResponse } from './api';
 
 const instance: AnalyticsMetricsResponse = {
-    summary_metrics,
     daily_metrics,
+    summary_metrics,
 };
 ```
 

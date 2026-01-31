@@ -2,7 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.ConversionTagResponse
+import org.openapitools.model.ConversionTag
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -22,7 +22,7 @@ data class ConversionTagListResponse(
 
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("items") val items: kotlin.collections.List<ConversionTagResponse>? = null
+    @get:JsonProperty("items") val items: kotlin.collections.List<ConversionTag>? = null
 ) {
 
 }

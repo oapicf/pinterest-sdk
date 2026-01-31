@@ -12,10 +12,10 @@ import org.joda.time.DateTime
 import QuizPinResult._
 
 case class QuizPinResult (
-  organicPinId: Option[String],
-androidDeepLink: Option[String],
-iosDeepLink: Option[String],
+  androidDeepLink: Option[String],
 destinationUrl: Option[String],
+iosDeepLink: Option[String],
+organicPinId: Option[String],
 resultId: Option[BigDecimal])
 
 object QuizPinResult {

@@ -9,8 +9,8 @@
 
 (def advanced-auction-bid-options-data
   {
-   (ds/opt :bid_in_micro_currency) int?
    (ds/opt :app_type_multipliers) app-type-multipliers-spec
+   (ds/opt :bid_in_micro_currency) int?
    (ds/opt :placement_multipliers) placement-multipliers-spec
    })
 

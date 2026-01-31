@@ -10,13 +10,20 @@ API.Client.CatalogsProductGroupCreateRequest = function() {}
  * @type {!string}
  * @export
  */
-API.Client.CatalogsProductGroupCreateRequest.prototype.name;
+API.Client.CatalogsProductGroupCreateRequest.prototype.description;
 
 /**
+ * Catalog Feed id pertaining to the catalog product group.
  * @type {!string}
  * @export
  */
-API.Client.CatalogsProductGroupCreateRequest.prototype.description;
+API.Client.CatalogsProductGroupCreateRequest.prototype.feedId;
+
+/**
+ * @type {!API.Client.CatalogsProductGroupFiltersRequest}
+ * @export
+ */
+API.Client.CatalogsProductGroupCreateRequest.prototype.filters;
 
 /**
  * boolean indicator of whether the product group is being featured or not
@@ -26,15 +33,8 @@ API.Client.CatalogsProductGroupCreateRequest.prototype.description;
 API.Client.CatalogsProductGroupCreateRequest.prototype.isFeatured;
 
 /**
- * @type {!API.Client.CatalogsProductGroupFiltersRequest}
- * @export
- */
-API.Client.CatalogsProductGroupCreateRequest.prototype.filters;
-
-/**
- * Catalog Feed id pertaining to the catalog product group.
  * @type {!string}
  * @export
  */
-API.Client.CatalogsProductGroupCreateRequest.prototype.feedId;
+API.Client.CatalogsProductGroupCreateRequest.prototype.name;
 

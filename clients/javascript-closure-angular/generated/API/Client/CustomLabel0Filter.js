@@ -6,7 +6,7 @@ goog.provide('API.Client.CustomLabel0Filter');
 API.Client.CustomLabel0Filter = function() {}
 
 /**
- * @type {!API.Client.CatalogsProductGroupMultipleStringCriteria}
+ * @type {!API.Client.CatalogsProductGroupFilterOperatorTypeCriteria}
  * @export
  */
 API.Client.CustomLabel0Filter.prototype.cUSTOMLABEL0;

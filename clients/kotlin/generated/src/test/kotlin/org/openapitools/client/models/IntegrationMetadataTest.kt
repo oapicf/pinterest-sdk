@@ -25,28 +25,10 @@ class IntegrationMetadataTest : ShouldSpec() {
         // uncomment below to create an instance of IntegrationMetadata
         //val modelInstance = IntegrationMetadata()
 
-        // to test the property `id`
-        should("test id") {
+        // to test the property `additionalId1`
+        should("test additionalId1") {
             // uncomment below to test the property
-            //modelInstance.id shouldBe ("TODO")
-        }
-
-        // to test the property `externalBusinessId`
-        should("test externalBusinessId") {
-            // uncomment below to test the property
-            //modelInstance.externalBusinessId shouldBe ("TODO")
-        }
-
-        // to test the property `connectedMerchantId`
-        should("test connectedMerchantId") {
-            // uncomment below to test the property
-            //modelInstance.connectedMerchantId shouldBe ("TODO")
-        }
-
-        // to test the property `connectedUserId`
-        should("test connectedUserId") {
-            // uncomment below to test the property
-            //modelInstance.connectedUserId shouldBe ("TODO")
+            //modelInstance.additionalId1 shouldBe ("TODO")
         }
 
         // to test the property `connectedAdvertiserId`
@@ -61,16 +43,52 @@ class IntegrationMetadataTest : ShouldSpec() {
             //modelInstance.connectedLbaId shouldBe ("TODO")
         }
 
+        // to test the property `connectedMerchantId`
+        should("test connectedMerchantId") {
+            // uncomment below to test the property
+            //modelInstance.connectedMerchantId shouldBe ("TODO")
+        }
+
         // to test the property `connectedTagId`
         should("test connectedTagId") {
             // uncomment below to test the property
             //modelInstance.connectedTagId shouldBe ("TODO")
         }
 
+        // to test the property `connectedUserId`
+        should("test connectedUserId") {
+            // uncomment below to test the property
+            //modelInstance.connectedUserId shouldBe ("TODO")
+        }
+
+        // to test the property `createdTimestamp`
+        should("test createdTimestamp") {
+            // uncomment below to test the property
+            //modelInstance.createdTimestamp shouldBe ("TODO")
+        }
+
+        // to test the property `externalBusinessId`
+        should("test externalBusinessId") {
+            // uncomment below to test the property
+            //modelInstance.externalBusinessId shouldBe ("TODO")
+        }
+
+        // to test the property `id`
+        should("test id") {
+            // uncomment below to test the property
+            //modelInstance.id shouldBe ("TODO")
+        }
+
         // to test the property `partnerAccessTokenExpiry`
         should("test partnerAccessTokenExpiry") {
             // uncomment below to test the property
             //modelInstance.partnerAccessTokenExpiry shouldBe ("TODO")
+        }
+
+        // to test the property `partnerMetadata`
+        should("test partnerMetadata") {
+            // uncomment below to test the property
+            //modelInstance.partnerMetadata shouldBe ("TODO")
         }
 
         // to test the property `partnerRefreshTokenExpiry`
@@ -85,28 +103,10 @@ class IntegrationMetadataTest : ShouldSpec() {
             //modelInstance.scopes shouldBe ("TODO")
         }
 
-        // to test the property `createdTimestamp`
-        should("test createdTimestamp") {
-            // uncomment below to test the property
-            //modelInstance.createdTimestamp shouldBe ("TODO")
-        }
-
         // to test the property `updatedTimestamp`
         should("test updatedTimestamp") {
             // uncomment below to test the property
             //modelInstance.updatedTimestamp shouldBe ("TODO")
-        }
-
-        // to test the property `additionalId1`
-        should("test additionalId1") {
-            // uncomment below to test the property
-            //modelInstance.additionalId1 shouldBe ("TODO")
-        }
-
-        // to test the property `partnerMetadata`
-        should("test partnerMetadata") {
-            // uncomment below to test the property
-            //modelInstance.partnerMetadata shouldBe ("TODO")
         }
 
     }

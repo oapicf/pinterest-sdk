@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **report_status** | **string** |  | [optional] [default to undefined]
-**url** | **string** |  | [optional] [default to undefined]
 **size** | **number** |  | [optional] [default to undefined]
+**url** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -16,8 +16,8 @@ import { GetMMMReportResponseData } from './api';
 
 const instance: GetMMMReportResponseData = {
     report_status,
-    url,
     size,
+    url,
 };
 ```
 

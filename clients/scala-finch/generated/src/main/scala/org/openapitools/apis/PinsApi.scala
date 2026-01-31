@@ -3,6 +3,7 @@ package org.openapitools.apis
 import java.io._
 import org.openapitools._
 import org.openapitools.models._
+import org.openapitools.models.CreativeType
 import org.openapitools.models.Error
 import java.time.LocalDateTime
 import org.openapitools.models.Pin
@@ -11,6 +12,7 @@ import org.openapitools.models.PinCreate
 import org.openapitools.models.PinUpdate
 import org.openapitools.models.PinsList200Response
 import org.openapitools.models.PinsSaveRequest
+import org.openapitools.models.PinterestLibError
 import scala.collection.immutable.Seq
 import io.finch.circe._
 import io.circe.generic.semiauto._
@@ -123,8 +125,8 @@ object PinsApi {
         * @return An endpoint representing a Pin
         */
         private def pins/get(da: DataAccessor): Endpoint[Pin] =
-        get("pins" :: string :: paramOption("pin_metrics").map(_.map(_.toBoolean)) :: paramOption("ad_account_id")) { (pinId: String, pinMetrics: Option[Boolean], adAccountId: Option[String]) =>
-          da.Pins_pins/get(pinId, pinMetrics, adAccountId) match {
+        get("pins" :: string :: paramOption("ad_account_id") :: paramOption("pin_metrics").map(_.map(_.toBoolean))) { (pinId: String, adAccountId: Option[String], pinMetrics: Option[Boolean]) =>
+          da.Pins_pins/get(pinId, adAccountId, pinMetrics) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }
@@ -137,8 +139,8 @@ object PinsApi {
         * @return An endpoint representing a PinsList200Response
         */
         private def pins/list(da: DataAccessor): Endpoint[PinsList200Response] =
-        get("pins" :: paramOption("bookmark") :: paramOption("page_size").map(_.map(_.toInt)) :: paramOption("pin_filter") :: paramOption("include_protected_pins").map(_.map(_.toBoolean)) :: paramOption("pin_type") :: params("creative_types") :: paramOption("ad_account_id") :: paramOption("pin_metrics").map(_.map(_.toBoolean))) { (bookmark: Option[String], pageSize: Option[Int], pinFilter: Option[String], includeProtectedPins: Option[Boolean], pinType: Option[String], creativeTypes: Seq[String], adAccountId: Option[String], pinMetrics: Option[Boolean]) =>
-          da.Pins_pins/list(bookmark, pageSize, pinFilter, includeProtectedPins, pinType, creativeTypes, adAccountId, pinMetrics) match {
+        get("pins" :: paramOption("pin_filter") :: paramOption("pin_metrics").map(_.map(_.toBoolean)) :: paramOption("include_protected_pins").map(_.map(_.toBoolean)) :: paramOption("pin_type") :: params("creative_types") :: paramOption("ad_account_id") :: paramOption("bookmark") :: paramOption("page_size").map(_.map(_.toInt))) { (pinFilter: Option[String], pinMetrics: Option[Boolean], includeProtectedPins: Option[Boolean], pinType: Option[String], creativeTypes: Seq[CreativeType], adAccountId: Option[String], bookmark: Option[String], pageSize: Option[Int]) =>
+          da.Pins_pins/list(pinFilter, pinMetrics, includeProtectedPins, pinType, creativeTypes, adAccountId, bookmark, pageSize) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }

@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsCreativeAssetsProductGroup`
 --
-SELECT `catalog_type`, `id`, `name`, `description`, `filters`, `created_at`, `updated_at`, `catalog_id` FROM `CatalogsCreativeAssetsProductGroup` WHERE 1;
+SELECT `catalog_id`, `catalog_type`, `created_at`, `description`, `filters`, `id`, `name`, `updated_at` FROM `CatalogsCreativeAssetsProductGroup` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsCreativeAssetsProductGroup`
 --
-INSERT INTO `CatalogsCreativeAssetsProductGroup`(`catalog_type`, `id`, `name`, `description`, `filters`, `created_at`, `updated_at`, `catalog_id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `CatalogsCreativeAssetsProductGroup`(`catalog_id`, `catalog_type`, `created_at`, `description`, `filters`, `id`, `name`, `updated_at`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsCreativeAssetsProductGroup`
 --
-UPDATE `CatalogsCreativeAssetsProductGroup` SET `catalog_type` = ?, `id` = ?, `name` = ?, `description` = ?, `filters` = ?, `created_at` = ?, `updated_at` = ?, `catalog_id` = ? WHERE 1;
+UPDATE `CatalogsCreativeAssetsProductGroup` SET `catalog_id` = ?, `catalog_type` = ?, `created_at` = ?, `description` = ?, `filters` = ?, `id` = ?, `name` = ?, `updated_at` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsCreativeAssetsProductGroup`

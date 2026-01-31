@@ -1,0 +1,40 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server SSIOAccountPMPName"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a SSIOAccountPMPName"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  SSIOAccountPMPName {
+    title = SSIOAccountPMPName
+    description = SSIOAccountPMPName
+    derivedFrom = Root
+    properties {
+        id {
+          type =  string
+          description = "Salesforce id for PMP"
+          optional = false
+        }
+        name {
+          type =  string
+          description = "Display name"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  SSIOAccountPMPName {
+    title = SSIOAccountPMPName
+    description = SSIOAccountPMPName
+    implements = openapi_server.resourceTypes.SSIOAccountPMPName
+
+  }
+}

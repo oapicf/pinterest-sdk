@@ -2,17 +2,19 @@ package models
 
 type OauthAccessTokenResponseCode struct {
 
-	RefreshToken string `json:"refresh_token"`
+	RefreshToken string `json:"refresh_token,omitempty"`
 
-	RefreshTokenExpiresIn int32 `json:"refresh_token_expires_in"`
+	RefreshTokenExpiresAt int32 `json:"refresh_token_expires_at,omitempty"`
 
-	ResponseType string `json:"response_type,omitempty"`
+	RefreshTokenExpiresIn int32 `json:"refresh_token_expires_in,omitempty"`
 
 	AccessToken string `json:"access_token"`
 
-	TokenType string `json:"token_type"`
-
 	ExpiresIn int32 `json:"expires_in"`
 
+	ResponseType string `json:"response_type,omitempty"`
+
 	Scope string `json:"scope"`
+
+	TokenType string `json:"token_type"`
 }

@@ -7,18 +7,18 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(PinMediaMetadata, () {
-    // String itemType
-    test('to test the property `itemType`', () async {
-      // TODO
-    });
-
-    // String title
-    test('to test the property `title`', () async {
-      // TODO
-    });
-
     // String description
     test('to test the property `description`', () async {
+      // TODO
+    });
+
+    // ImageSize images
+    test('to test the property `images`', () async {
+      // TODO
+    });
+
+    // String itemType
+    test('to test the property `itemType`', () async {
       // TODO
     });
 
@@ -27,8 +27,8 @@ void main() {
       // TODO
     });
 
-    // ImageMetadataImages images
-    test('to test the property `images`', () async {
+    // String title
+    test('to test the property `title`', () async {
       // TODO
     });
 
@@ -37,25 +37,25 @@ void main() {
       // TODO
     });
 
-    // Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
-    // String videoUrl
-    test('to test the property `videoUrl`', () async {
-      // TODO
-    });
-
-    // Duration (in milliseconds)
+    // Duration (in miliseconds). Field maybe null after creation due to video processing time.
     // num duration
     test('to test the property `duration`', () async {
       // TODO
     });
 
-    // Height (in pixels)
+    // Height (in pixels). Field maybe null after creation due to video processing time.
     // int height
     test('to test the property `height`', () async {
       // TODO
     });
 
-    // Width (in pixels)
+    // Video url (720p).  **Note:** This field is limited and not available to all apps.
+    // String videoUrl
+    test('to test the property `videoUrl`', () async {
+      // TODO
+    });
+
+    // Width (in pixels). Field maybe null after creation due to video processing time.
     // int width
     test('to test the property `width`', () async {
       // TODO

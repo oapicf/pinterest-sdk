@@ -1,0 +1,24 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Details of an issue with a quality component.",
+  "name": "QualityComponentIssue",
+  "fields": [
+    {
+      "name": "id",
+      "type": "string",
+      "doc": "Unique identifier for the issue check."
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "Human-readable name of the issue."
+    },
+    {
+      "name": "reason",
+      "type": "string",
+      "doc": "Detailed reason for the issue."
+    }
+  ]
+
+}

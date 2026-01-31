@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "CampaignBidOptions.h"
 #include "CampaignSummaryStatus.h"
 #include "EntityStatus.h"
 #include "ObjectiveType.h"
@@ -63,27 +64,6 @@ public:
 	/*! \brief Set Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
 	 */
 	void setAdAccountId(std::string  ad_account_id);
-	/*! \brief Get Campaign name.
-	 */
-	std::string getName();
-
-	/*! \brief Set Campaign name.
-	 */
-	void setName(std::string  name);
-	/*! \brief Get 
-	 */
-	EntityStatus getStatus();
-
-	/*! \brief Set 
-	 */
-	void setStatus(EntityStatus  status);
-	/*! \brief Get Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
-	 */
-	int getLifetimeSpendCap();
-
-	/*! \brief Set Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
-	 */
-	void setLifetimeSpendCap(int  lifetime_spend_cap);
 	/*! \brief Get Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
 	 */
 	int getDailySpendCap();
@@ -91,6 +71,41 @@ public:
 	/*! \brief Set Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
 	 */
 	void setDailySpendCap(int  daily_spend_cap);
+	/*! \brief Get Timestamp in Unix format for scheduling when ads in the campaign stop appearing. Must occur after any end times for child ad groups. If `end_time` is not specified for the campaign, ads run indefinitely unless you update the campaign, changing their status to `paused`. Learn about <a href=\"/docs/api-features/managing-campaigns/#campaign-scheduling\" target=\"blank\">scheduling campaigns</a>. Different end times can be set for the campaign's child ad groups, but they cannot occur after an `end_time` specified for the campaign. - If your campaign has a child ad group with an end time specified, and if you update that campaign with an `end_time` that is earlier than that of the ad group, the campaign `end_time` will supersede the ad group `end_time`, and the request will not return an error. - In this scenario, if you call <a href=\"/docs/api/v5/campaigns-list\" target=\"blank\">List campaigns</a> or <a href=\"/docs/api/v5/ad_groups-list\" target=\"blank\">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.
+	 */
+	int getEndTime();
+
+	/*! \brief Set Timestamp in Unix format for scheduling when ads in the campaign stop appearing. Must occur after any end times for child ad groups. If `end_time` is not specified for the campaign, ads run indefinitely unless you update the campaign, changing their status to `paused`. Learn about <a href=\"/docs/api-features/managing-campaigns/#campaign-scheduling\" target=\"blank\">scheduling campaigns</a>. Different end times can be set for the campaign's child ad groups, but they cannot occur after an `end_time` specified for the campaign. - If your campaign has a child ad group with an end time specified, and if you update that campaign with an `end_time` that is earlier than that of the ad group, the campaign `end_time` will supersede the ad group `end_time`, and the request will not return an error. - In this scenario, if you call <a href=\"/docs/api/v5/campaigns-list\" target=\"blank\">List campaigns</a> or <a href=\"/docs/api/v5/ad_groups-list\" target=\"blank\">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.
+	 */
+	void setEndTime(int  end_time);
+	/*! \brief Get Specifies whether the campaign was created in the automated campaign flow
+	 */
+	bool getIsAutomatedCampaign();
+
+	/*! \brief Set Specifies whether the campaign was created in the automated campaign flow
+	 */
+	void setIsAutomatedCampaign(bool  is_automated_campaign);
+	/*! \brief Get Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\".
+	 */
+	bool getIsFlexibleDailyBudgets();
+
+	/*! \brief Set Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\".
+	 */
+	void setIsFlexibleDailyBudgets(bool  is_flexible_daily_budgets);
+	/*! \brief Get Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
+	 */
+	int getLifetimeSpendCap();
+
+	/*! \brief Set Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
+	 */
+	void setLifetimeSpendCap(int  lifetime_spend_cap);
+	/*! \brief Get Campaign name.
+	 */
+	std::string getName();
+
+	/*! \brief Set Campaign name.
+	 */
+	void setName(std::string  name);
 	/*! \brief Get Order line ID that appears on the invoice.
 	 */
 	std::string getOrderLineId();
@@ -98,6 +113,20 @@ public:
 	/*! \brief Set Order line ID that appears on the invoice.
 	 */
 	void setOrderLineId(std::string  order_line_id);
+	/*! \brief Get Timestamp in Unix format for scheduling when ads in the campaign start to appear. Must precede any start times set for child ad groups. Defaults to current time if no time is specified. Learn about <a href=\"/docs/api-features/managing-campaigns/#campaign-scheduling\" target=\"blank\">scheduling campaigns</a>. Different start times can be set for the campaign's child ad groups, but they cannot occur before a `start_time` specified for the campaign. - If your campaign has a child ad group with a start time specified, and if you update that campaign with a `start_time` that is later than that of the ad group, the campaign `start_time` will supersede the ad group `start_time`, and the request will not return an error. - In this scenario, if you call <a href=\"/docs/api/v5/campaigns-list\" target=\"blank\">List campaigns</a> or <a href=\"/docs/api/v5/ad_groups-list\" target=\"blank\">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.
+	 */
+	int getStartTime();
+
+	/*! \brief Set Timestamp in Unix format for scheduling when ads in the campaign start to appear. Must precede any start times set for child ad groups. Defaults to current time if no time is specified. Learn about <a href=\"/docs/api-features/managing-campaigns/#campaign-scheduling\" target=\"blank\">scheduling campaigns</a>. Different start times can be set for the campaign's child ad groups, but they cannot occur before a `start_time` specified for the campaign. - If your campaign has a child ad group with a start time specified, and if you update that campaign with a `start_time` that is later than that of the ad group, the campaign `start_time` will supersede the ad group `start_time`, and the request will not return an error. - In this scenario, if you call <a href=\"/docs/api/v5/campaigns-list\" target=\"blank\">List campaigns</a> or <a href=\"/docs/api/v5/ad_groups-list\" target=\"blank\">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.
+	 */
+	void setStartTime(int  start_time);
+	/*! \brief Get 
+	 */
+	EntityStatus getStatus();
+
+	/*! \brief Set 
+	 */
+	void setStatus(EntityStatus  status);
 	/*! \brief Get 
 	 */
 	TrackingUrls getTrackingUrls();
@@ -105,34 +134,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setTrackingUrls(TrackingUrls  tracking_urls);
-	/*! \brief Get Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-	 */
-	int getStartTime();
-
-	/*! \brief Set Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-	 */
-	void setStartTime(int  start_time);
-	/*! \brief Get Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-	 */
-	int getEndTime();
-
-	/*! \brief Set Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-	 */
-	void setEndTime(int  end_time);
-	/*! \brief Get Determine if a campaign has flexible daily budgets setup.
-	 */
-	bool getIsFlexibleDailyBudgets();
-
-	/*! \brief Set Determine if a campaign has flexible daily budgets setup.
-	 */
-	void setIsFlexibleDailyBudgets(bool  is_flexible_daily_budgets);
 	/*! \brief Get 
 	 */
-	ObjectiveType getObjectiveType();
+	CampaignBidOptions getBidOptions();
 
 	/*! \brief Set 
 	 */
-	void setObjectiveType(ObjectiveType  objective_type);
+	void setBidOptions(CampaignBidOptions  bid_options);
 	/*! \brief Get Campaign creation time. Unix timestamp in seconds.
 	 */
 	int getCreatedTime();
@@ -140,20 +148,6 @@ public:
 	/*! \brief Set Campaign creation time. Unix timestamp in seconds.
 	 */
 	void setCreatedTime(int  created_time);
-	/*! \brief Get UTC timestamp. Last update time.
-	 */
-	int getUpdatedTime();
-
-	/*! \brief Set UTC timestamp. Last update time.
-	 */
-	void setUpdatedTime(int  updated_time);
-	/*! \brief Get Always \"campaign\".
-	 */
-	std::string getType();
-
-	/*! \brief Set Always \"campaign\".
-	 */
-	void setType(std::string  type);
 	/*! \brief Get Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
 	 */
 	bool getIsCampaignBudgetOptimization();
@@ -161,6 +155,20 @@ public:
 	/*! \brief Set Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
 	 */
 	void setIsCampaignBudgetOptimization(bool  is_campaign_budget_optimization);
+	/*! \brief Get Enable Pinterest Performance+ for your campaign. To learn more, see <a href=\"https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\">Pinterest Performance+ Setup</a>.
+	 */
+	bool getIsPerformancePlus();
+
+	/*! \brief Set Enable Pinterest Performance+ for your campaign. To learn more, see <a href=\"https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\">Pinterest Performance+ Setup</a>.
+	 */
+	void setIsPerformancePlus(bool  is_performance_plus);
+	/*! \brief Get 
+	 */
+	ObjectiveType getObjectiveType();
+
+	/*! \brief Set 
+	 */
+	void setObjectiveType(ObjectiveType  objective_type);
 	/*! \brief Get 
 	 */
 	CampaignSummaryStatus getSummaryStatus();
@@ -168,25 +176,42 @@ public:
 	/*! \brief Set 
 	 */
 	void setSummaryStatus(CampaignSummaryStatus  summary_status);
+	/*! \brief Get Always \"campaign\".
+	 */
+	std::string getType();
+
+	/*! \brief Set Always \"campaign\".
+	 */
+	void setType(std::string  type);
+	/*! \brief Get UTC timestamp. Last update time.
+	 */
+	int getUpdatedTime();
+
+	/*! \brief Set UTC timestamp. Last update time.
+	 */
+	void setUpdatedTime(int  updated_time);
 
 private:
 	std::string id;
 	std::string ad_account_id;
-	std::string name;
-	EntityStatus status;
-	int lifetime_spend_cap;
 	int daily_spend_cap;
-	std::string order_line_id;
-	TrackingUrls tracking_urls;
-	int start_time;
 	int end_time;
+	bool is_automated_campaign;
 	bool is_flexible_daily_budgets;
-	ObjectiveType objective_type;
+	int lifetime_spend_cap;
+	std::string name;
+	std::string order_line_id;
+	int start_time;
+	EntityStatus status;
+	TrackingUrls tracking_urls;
+	CampaignBidOptions bid_options;
 	int created_time;
-	int updated_time;
-	std::string type;
 	bool is_campaign_budget_optimization;
+	bool is_performance_plus;
+	ObjectiveType objective_type;
 	CampaignSummaryStatus summary_status;
+	std::string type;
+	int updated_time;
 	void __init();
 	void __cleanup();
 

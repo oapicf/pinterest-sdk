@@ -19,8 +19,8 @@ import io.swagger.v3.oas.annotations.media.Schema
 /**
  * 
  * @param reportStatus 
- * @param url 
  * @param propertySize 
+ * @param url 
  */
 data class AdsAnalyticsGetAsyncResponse(
 
@@ -29,10 +29,10 @@ data class AdsAnalyticsGetAsyncResponse(
     @get:JsonProperty("report_status") val reportStatus: BulkReportingJobStatus? = null,
 
     @Schema(example = "null", description = "")
-    @get:JsonProperty("url") val url: kotlin.String? = null,
+    @get:JsonProperty("size") val propertySize: java.math.BigDecimal? = null,
 
     @Schema(example = "null", description = "")
-    @get:JsonProperty("size") val propertySize: java.math.BigDecimal? = null
+    @get:JsonProperty("url") val url: kotlin.String? = null
 ) {
 
 }

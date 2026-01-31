@@ -14,9 +14,11 @@ type CatalogsFeedProcessingResult struct {
 
 	IngestionDetails CatalogsFeedIngestionDetails `json:"ingestion_details"`
 
-	Status CatalogsFeedProcessingStatus `json:"status"`
-
 	ProductCounts *CatalogsFeedProductCounts `json:"product_counts"`
 
+	Status CatalogsFeedProcessingStatus `json:"status"`
+
 	ValidationDetails CatalogsFeedValidationDetails `json:"validation_details"`
+
+	VideoCounts CatalogsFeedVideoCounts `json:"video_counts,omitempty"`
 }

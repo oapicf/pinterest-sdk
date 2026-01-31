@@ -28,25 +28,25 @@ import com.squareup.moshi.JsonClass
 /**
  * Request object to list products for a given catalog_id and product group filter.
  *
- * @param catalogType 
  * @param catalogId Catalog id pertaining to the creative assets product group.
- * @param filters 
+ * @param catalogType 
  * @param country 
+ * @param filters 
  * @param locale 
  */
 
 
 interface CatalogsVerticalsListProductsByCatalogBasedFilterRequest {
 
-    @Json(name = "catalog_type")
-    val catalogType: CatalogsVerticalsListProductsByCatalogBasedFilterRequest.CatalogType
     /* Catalog id pertaining to the creative assets product group. */
     @Json(name = "catalog_id")
     val catalogId: kotlin.String
-    @Json(name = "filters")
-    val filters: CatalogsCreativeAssetsProductGroupFilters
+    @Json(name = "catalog_type")
+    val catalogType: CatalogsVerticalsListProductsByCatalogBasedFilterRequest.CatalogType
     @Json(name = "country")
     val country: Country
+    @Json(name = "filters")
+    val filters: CatalogsCreativeAssetsProductGroupFilters
     @Json(name = "locale")
     val locale: CatalogsLocale
     /**

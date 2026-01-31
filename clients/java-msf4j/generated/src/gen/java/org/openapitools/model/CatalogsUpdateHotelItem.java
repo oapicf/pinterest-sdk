@@ -12,8 +12,11 @@ import org.openapitools.model.CatalogsUpdatableHotelAttributes;
  * Object describing an hotel item batch record
  */
 @ApiModel(description = "Object describing an hotel item batch record")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsUpdateHotelItem   {
+  @JsonProperty("attributes")
+  private CatalogsUpdatableHotelAttributes attributes;
+
   @JsonProperty("hotel_id")
   private String hotelId;
 
@@ -49,8 +52,23 @@ public class CatalogsUpdateHotelItem   {
   @JsonProperty("operation")
   private OperationEnum operation;
 
-  @JsonProperty("attributes")
-  private CatalogsUpdatableHotelAttributes attributes;
+  public CatalogsUpdateHotelItem attributes(CatalogsUpdatableHotelAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  @ApiModelProperty(required = true, value = "")
+  public CatalogsUpdatableHotelAttributes getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(CatalogsUpdatableHotelAttributes attributes) {
+    this.attributes = attributes;
+  }
 
   public CatalogsUpdateHotelItem hotelId(String hotelId) {
     this.hotelId = hotelId;
@@ -88,24 +106,6 @@ public class CatalogsUpdateHotelItem   {
     this.operation = operation;
   }
 
-  public CatalogsUpdateHotelItem attributes(CatalogsUpdatableHotelAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  @ApiModelProperty(required = true, value = "")
-  public CatalogsUpdatableHotelAttributes getAttributes() {
-    return attributes;
-  }
-
-  public void setAttributes(CatalogsUpdatableHotelAttributes attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -116,14 +116,14 @@ public class CatalogsUpdateHotelItem   {
       return false;
     }
     CatalogsUpdateHotelItem catalogsUpdateHotelItem = (CatalogsUpdateHotelItem) o;
-    return Objects.equals(this.hotelId, catalogsUpdateHotelItem.hotelId) &&
-        Objects.equals(this.operation, catalogsUpdateHotelItem.operation) &&
-        Objects.equals(this.attributes, catalogsUpdateHotelItem.attributes);
+    return Objects.equals(this.attributes, catalogsUpdateHotelItem.attributes) &&
+        Objects.equals(this.hotelId, catalogsUpdateHotelItem.hotelId) &&
+        Objects.equals(this.operation, catalogsUpdateHotelItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hotelId, operation, attributes);
+    return Objects.hash(attributes, hotelId, operation);
   }
 
   @Override
@@ -131,9 +131,9 @@ public class CatalogsUpdateHotelItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsUpdateHotelItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

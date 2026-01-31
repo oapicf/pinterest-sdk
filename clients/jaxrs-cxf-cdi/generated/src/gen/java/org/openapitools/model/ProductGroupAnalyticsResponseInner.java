@@ -19,9 +19,28 @@ import java.util.Objects;
 
 public class ProductGroupAnalyticsResponseInner extends HashMap<String, Object>  {
   
+  private LocalDate DATE;
+
   private String PRODUCT_GROUP_ID;
 
-  private LocalDate DATE;
+  /**
+   * Current metrics date. Only returned when granularity is a time-based value (&#x60;DAY&#x60;, &#x60;HOUR&#x60;, &#x60;WEEK&#x60;, &#x60;MONTH&#x60;)
+   **/
+  public ProductGroupAnalyticsResponseInner DATE(LocalDate DATE) {
+    this.DATE = DATE;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)")
+  @JsonProperty("DATE")
+  public LocalDate getDATE() {
+    return DATE;
+  }
+  public void setDATE(LocalDate DATE) {
+    this.DATE = DATE;
+  }
+
 
   /**
    * The ID of the product group that this metrics belongs to.
@@ -43,25 +62,6 @@ public class ProductGroupAnalyticsResponseInner extends HashMap<String, Object> 
   }
 
 
-  /**
-   * Current metrics date. Only returned when granularity is a time-based value (&#x60;DAY&#x60;, &#x60;HOUR&#x60;, &#x60;WEEK&#x60;, &#x60;MONTH&#x60;)
-   **/
-  public ProductGroupAnalyticsResponseInner DATE(LocalDate DATE) {
-    this.DATE = DATE;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)")
-  @JsonProperty("DATE")
-  public LocalDate getDATE() {
-    return DATE;
-  }
-  public void setDATE(LocalDate DATE) {
-    this.DATE = DATE;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -72,13 +72,13 @@ public class ProductGroupAnalyticsResponseInner extends HashMap<String, Object> 
       return false;
     }
     ProductGroupAnalyticsResponseInner productGroupAnalyticsResponseInner = (ProductGroupAnalyticsResponseInner) o;
-    return super.equals(o) && Objects.equals(this.PRODUCT_GROUP_ID, productGroupAnalyticsResponseInner.PRODUCT_GROUP_ID) &&
-        Objects.equals(this.DATE, productGroupAnalyticsResponseInner.DATE);
+    return super.equals(o) && Objects.equals(this.DATE, productGroupAnalyticsResponseInner.DATE) &&
+        Objects.equals(this.PRODUCT_GROUP_ID, productGroupAnalyticsResponseInner.PRODUCT_GROUP_ID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode(), PRODUCT_GROUP_ID, super.hashCode(), DATE);
+    return Objects.hash(super.hashCode(), DATE, super.hashCode(), PRODUCT_GROUP_ID);
   }
 
   @Override
@@ -86,8 +86,8 @@ public class ProductGroupAnalyticsResponseInner extends HashMap<String, Object> 
     StringBuilder sb = new StringBuilder();
     sb.append("class ProductGroupAnalyticsResponseInner {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    PRODUCT_GROUP_ID: ").append(toIndentedString(PRODUCT_GROUP_ID)).append("\n");
     sb.append("    DATE: ").append(toIndentedString(DATE)).append("\n");
+    sb.append("    PRODUCT_GROUP_ID: ").append(toIndentedString(PRODUCT_GROUP_ID)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -21,10 +21,10 @@ var _ MappedNullable = &ProductGroupAnalyticsResponseInner{}
 
 // ProductGroupAnalyticsResponseInner struct for ProductGroupAnalyticsResponseInner
 type ProductGroupAnalyticsResponseInner struct {
-	// The ID of the product group that this metrics belongs to.
-	PRODUCT_GROUP_ID string `json:"PRODUCT_GROUP_ID" validate:"regexp=^\\\\d+$"`
 	// Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
 	DATE *string `json:"DATE,omitempty"`
+	// The ID of the product group that this metrics belongs to.
+	PRODUCT_GROUP_ID string `json:"PRODUCT_GROUP_ID" validate:"regexp=^\\\\d+$"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -46,30 +46,6 @@ func NewProductGroupAnalyticsResponseInner(pRODUCTGROUPID string) *ProductGroupA
 func NewProductGroupAnalyticsResponseInnerWithDefaults() *ProductGroupAnalyticsResponseInner {
 	this := ProductGroupAnalyticsResponseInner{}
 	return &this
-}
-
-// GetPRODUCT_GROUP_ID returns the PRODUCT_GROUP_ID field value
-func (o *ProductGroupAnalyticsResponseInner) GetPRODUCT_GROUP_ID() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.PRODUCT_GROUP_ID
-}
-
-// GetPRODUCT_GROUP_IDOk returns a tuple with the PRODUCT_GROUP_ID field value
-// and a boolean to check if the value has been set.
-func (o *ProductGroupAnalyticsResponseInner) GetPRODUCT_GROUP_IDOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.PRODUCT_GROUP_ID, true
-}
-
-// SetPRODUCT_GROUP_ID sets field value
-func (o *ProductGroupAnalyticsResponseInner) SetPRODUCT_GROUP_ID(v string) {
-	o.PRODUCT_GROUP_ID = v
 }
 
 // GetDATE returns the DATE field value if set, zero value otherwise.
@@ -104,6 +80,30 @@ func (o *ProductGroupAnalyticsResponseInner) SetDATE(v string) {
 	o.DATE = &v
 }
 
+// GetPRODUCT_GROUP_ID returns the PRODUCT_GROUP_ID field value
+func (o *ProductGroupAnalyticsResponseInner) GetPRODUCT_GROUP_ID() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.PRODUCT_GROUP_ID
+}
+
+// GetPRODUCT_GROUP_IDOk returns a tuple with the PRODUCT_GROUP_ID field value
+// and a boolean to check if the value has been set.
+func (o *ProductGroupAnalyticsResponseInner) GetPRODUCT_GROUP_IDOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PRODUCT_GROUP_ID, true
+}
+
+// SetPRODUCT_GROUP_ID sets field value
+func (o *ProductGroupAnalyticsResponseInner) SetPRODUCT_GROUP_ID(v string) {
+	o.PRODUCT_GROUP_ID = v
+}
+
 func (o ProductGroupAnalyticsResponseInner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -114,10 +114,10 @@ func (o ProductGroupAnalyticsResponseInner) MarshalJSON() ([]byte, error) {
 
 func (o ProductGroupAnalyticsResponseInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["PRODUCT_GROUP_ID"] = o.PRODUCT_GROUP_ID
 	if !IsNil(o.DATE) {
 		toSerialize["DATE"] = o.DATE
 	}
+	toSerialize["PRODUCT_GROUP_ID"] = o.PRODUCT_GROUP_ID
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -161,8 +161,8 @@ func (o *ProductGroupAnalyticsResponseInner) UnmarshalJSON(data []byte) (err err
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "PRODUCT_GROUP_ID")
 		delete(additionalProperties, "DATE")
+		delete(additionalProperties, "PRODUCT_GROUP_ID")
 		o.AdditionalProperties = additionalProperties
 	}
 

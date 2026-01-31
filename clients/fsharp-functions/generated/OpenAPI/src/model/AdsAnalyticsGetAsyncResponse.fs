@@ -15,10 +15,10 @@ module AdsAnalyticsGetAsyncResponse =
   type AdsAnalyticsGetAsyncResponse = {
     [<JsonProperty(PropertyName = "report_status")>]
     ReportStatus : BulkReportingJobStatus;
-    [<JsonProperty(PropertyName = "url")>]
-    Url : string option;
     [<JsonProperty(PropertyName = "size")>]
     Size : decimal option;
+    [<JsonProperty(PropertyName = "url")>]
+    Url : string option;
   }
 
   //#endregion

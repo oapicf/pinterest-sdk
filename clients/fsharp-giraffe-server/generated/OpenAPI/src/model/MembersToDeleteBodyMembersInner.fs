@@ -10,7 +10,7 @@ module MembersToDeleteBodyMembersInner =
 
 
   type MembersToDeleteBody_members_inner = {
-    MemberId : string;
     BusinessRole : BusinessRoleForMembers;
+    MemberId : string;
   }
   //#endregion

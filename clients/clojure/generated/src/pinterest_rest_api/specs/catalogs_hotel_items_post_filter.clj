@@ -7,9 +7,9 @@
 
 (def catalogs-hotel-items-post-filter-data
   {
+   (ds/opt :catalog_id) string?
    (ds/req :catalog_type) string?
    (ds/req :hotel_ids) (s/coll-of string?)
-   (ds/opt :catalog_id) string?
    })
 
 (def catalogs-hotel-items-post-filter-spec

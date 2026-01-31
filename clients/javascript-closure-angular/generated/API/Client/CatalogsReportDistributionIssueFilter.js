@@ -6,17 +6,17 @@ goog.provide('API.Client.CatalogsReportDistributionIssueFilter');
 API.Client.CatalogsReportDistributionIssueFilter = function() {}
 
 /**
- * @type {!string}
- * @export
- */
-API.Client.CatalogsReportDistributionIssueFilter.prototype.reportType;
-
-/**
  * Unique identifier of a catalog. If not given, oldest catalog will be used
  * @type {!string}
  * @export
  */
 API.Client.CatalogsReportDistributionIssueFilter.prototype.catalogId;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsReportDistributionIssueFilter.prototype.reportType;
 
 /** @enum {string} */
 API.Client.CatalogsReportDistributionIssueFilter.ReportTypeEnum = { 

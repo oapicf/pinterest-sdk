@@ -22,21 +22,21 @@ conversion_events_data_inner_custom_data_contents_inner_t* instantiate_conversio
   conversion_events_data_inner_custom_data_contents_inner_t* conversion_events_data_inner_custom_data_contents_inner = NULL;
   if (include_optional) {
     conversion_events_data_inner_custom_data_contents_inner = conversion_events_data_inner_custom_data_contents_inner_create(
-      "red-pinterest-shirt-logo-1",
-      "1325.12",
-      5,
-      "pinterest-clothing-shirt",
-      "pinterest-entertainment",
-      "pinterest"
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      56
     );
   } else {
     conversion_events_data_inner_custom_data_contents_inner = conversion_events_data_inner_custom_data_contents_inner_create(
-      "red-pinterest-shirt-logo-1",
-      "1325.12",
-      5,
-      "pinterest-clothing-shirt",
-      "pinterest-entertainment",
-      "pinterest"
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      56
     );
   }
 

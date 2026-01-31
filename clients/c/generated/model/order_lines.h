@@ -21,33 +21,33 @@ typedef struct order_lines_t order_lines_t;
 
 
 typedef struct order_lines_t {
-    char *id; // string
-    char *type; // string
     char *ad_account_id; // string
+    double budget; //numeric
+    double end_time; //numeric
+    char *id; // string
+    char *name; // string
+    double paid_budget; //numeric
+    order_line_paid_type_t *paid_type; // custom
     char *purchase_order_id; // string
     double start_time; //numeric
-    double end_time; //numeric
-    double budget; //numeric
-    double paid_budget; //numeric
     order_line_status_t *status; // custom
-    char *name; // string
-    order_line_paid_type_t *paid_type; // custom
+    char *type; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } order_lines_t;
 
 __attribute__((deprecated)) order_lines_t *order_lines_create(
-    char *id,
-    char *type,
     char *ad_account_id,
+    double budget,
+    double end_time,
+    char *id,
+    char *name,
+    double paid_budget,
+    order_line_paid_type_t *paid_type,
     char *purchase_order_id,
     double start_time,
-    double end_time,
-    double budget,
-    double paid_budget,
     order_line_status_t *status,
-    char *name,
-    order_line_paid_type_t *paid_type
+    char *type
 );
 
 void order_lines_free(order_lines_t *order_lines);

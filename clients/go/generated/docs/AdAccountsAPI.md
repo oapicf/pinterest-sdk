@@ -9,9 +9,11 @@ Method | HTTP request | Description
 [**AdAccountsCreate**](AdAccountsAPI.md#AdAccountsCreate) | **Post** /ad_accounts | Create ad account
 [**AdAccountsGet**](AdAccountsAPI.md#AdAccountsGet) | **Get** /ad_accounts/{ad_account_id} | Get ad account
 [**AdAccountsList**](AdAccountsAPI.md#AdAccountsList) | **Get** /ad_accounts | List ad accounts
+[**AnalyticsCreateConversionProductReport**](AdAccountsAPI.md#AnalyticsCreateConversionProductReport) | **Post** /ad_accounts/{ad_account_id}/reports/brand_category_sku | Create a request for a brand, category, SKU report
 [**AnalyticsCreateMmmReport**](AdAccountsAPI.md#AnalyticsCreateMmmReport) | **Post** /ad_accounts/{ad_account_id}/mmm_reports | Create a request for a Marketing Mix Modeling (MMM) report
 [**AnalyticsCreateReport**](AdAccountsAPI.md#AnalyticsCreateReport) | **Post** /ad_accounts/{ad_account_id}/reports | Create async request for an account analytics report
 [**AnalyticsCreateTemplateReport**](AdAccountsAPI.md#AnalyticsCreateTemplateReport) | **Post** /ad_accounts/{ad_account_id}/templates/{template_id}/reports | Create async request for an analytics report using a template
+[**AnalyticsGetConversionProductReport**](AdAccountsAPI.md#AnalyticsGetConversionProductReport) | **Get** /ad_accounts/{ad_account_id}/reports/brand_category_sku | Get advertiser brand, category, SKU report
 [**AnalyticsGetMmmReport**](AdAccountsAPI.md#AnalyticsGetMmmReport) | **Get** /ad_accounts/{ad_account_id}/mmm_reports | Get advertiser Marketing Mix Modeling (MMM) report.
 [**AnalyticsGetReport**](AdAccountsAPI.md#AnalyticsGetReport) | **Get** /ad_accounts/{ad_account_id}/reports | Get the account analytics report created by the async call
 [**SandboxDelete**](AdAccountsAPI.md#SandboxDelete) | **Delete** /ad_accounts/{ad_account_id}/sandbox | Delete ads data for ad account in API Sandbox
@@ -21,7 +23,7 @@ Method | HTTP request | Description
 
 ## AdAccountAnalytics
 
-> []AdAccountAnalyticsResponseInner AdAccountAnalytics(ctx, adAccountId).StartDate(startDate).EndDate(endDate).Columns(columns).Granularity(granularity).ClickWindowDays(clickWindowDays).EngagementWindowDays(engagementWindowDays).ViewWindowDays(viewWindowDays).ConversionReportTime(conversionReportTime).Execute()
+> []AdAccountAnalyticsResponseInner AdAccountAnalytics(ctx, adAccountId).StartDate(startDate).EndDate(endDate).Columns(columns).Granularity(granularity).ClickWindowDays(clickWindowDays).EngagementWindowDays(engagementWindowDays).ViewWindowDays(viewWindowDays).ConversionReportTime(conversionReportTime).ReportingTimezone(reportingTimezone).Execute()
 
 Get ad account analytics
 
@@ -47,13 +49,14 @@ func main() {
 	columns := []string{"TOTAL_CONVERSIONS"} // []string | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
 	granularity := openapiclient.Granularity("TOTAL") // Granularity | TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
 	clickWindowDays := int32(1) // int32 | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to 30)
-	engagementWindowDays := int32(56) // int32 | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to 30)
+	engagementWindowDays := int32(56) // int32 | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (optional) (default to 30)
 	viewWindowDays := int32(56) // int32 | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional) (default to 1)
 	conversionReportTime := "TIME_OF_AD_ACTION" // string | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional) (default to "TIME_OF_AD_ACTION")
+	reportingTimezone := openapiclient.ReportingTimeZone("PINTEREST_TIME_ZONE") // ReportingTimeZone | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdAccountsAPI.AdAccountAnalytics(context.Background(), adAccountId).StartDate(startDate).EndDate(endDate).Columns(columns).Granularity(granularity).ClickWindowDays(clickWindowDays).EngagementWindowDays(engagementWindowDays).ViewWindowDays(viewWindowDays).ConversionReportTime(conversionReportTime).Execute()
+	resp, r, err := apiClient.AdAccountsAPI.AdAccountAnalytics(context.Background(), adAccountId).StartDate(startDate).EndDate(endDate).Columns(columns).Granularity(granularity).ClickWindowDays(clickWindowDays).EngagementWindowDays(engagementWindowDays).ViewWindowDays(viewWindowDays).ConversionReportTime(conversionReportTime).ReportingTimezone(reportingTimezone).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AdAccountsAPI.AdAccountAnalytics``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -84,9 +87,10 @@ Name | Type | Description  | Notes
  **columns** | **[]string** | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned | 
  **granularity** | [**Granularity**](Granularity.md) | TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | 
  **clickWindowDays** | **int32** | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [default to 30]
- **engagementWindowDays** | **int32** | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [default to 30]
+ **engagementWindowDays** | **int32** | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. | [default to 30]
  **viewWindowDays** | **int32** | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [default to 1]
  **conversionReportTime** | **string** | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [default to &quot;TIME_OF_AD_ACTION&quot;]
+ **reportingTimezone** | [**ReportingTimeZone**](ReportingTimeZone.md) | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. | 
 
 ### Return type
 
@@ -94,7 +98,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -108,7 +112,7 @@ Name | Type | Description  | Notes
 
 ## AdAccountTargetingAnalyticsGet
 
-> MetricsResponse AdAccountTargetingAnalyticsGet(ctx, adAccountId).StartDate(startDate).EndDate(endDate).TargetingTypes(targetingTypes).Columns(columns).Granularity(granularity).ClickWindowDays(clickWindowDays).EngagementWindowDays(engagementWindowDays).ViewWindowDays(viewWindowDays).ConversionReportTime(conversionReportTime).AttributionTypes(attributionTypes).Execute()
+> MetricsResponse AdAccountTargetingAnalyticsGet(ctx, adAccountId).StartDate(startDate).EndDate(endDate).TargetingTypes(targetingTypes).Columns(columns).Granularity(granularity).ClickWindowDays(clickWindowDays).EngagementWindowDays(engagementWindowDays).ViewWindowDays(viewWindowDays).ConversionReportTime(conversionReportTime).AttributionTypes(attributionTypes).ReportingTimezone(reportingTimezone).Execute()
 
 Get targeting analytics for an ad account
 
@@ -135,14 +139,15 @@ func main() {
 	columns := []string{"TOTAL_CONVERSIONS"} // []string | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
 	granularity := openapiclient.Granularity("TOTAL") // Granularity | TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
 	clickWindowDays := int32(1) // int32 | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to 30)
-	engagementWindowDays := int32(56) // int32 | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional) (default to 30)
+	engagementWindowDays := int32(56) // int32 | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (optional) (default to 30)
 	viewWindowDays := int32(56) // int32 | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional) (default to 1)
 	conversionReportTime := "TIME_OF_AD_ACTION" // string | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional) (default to "TIME_OF_AD_ACTION")
-	attributionTypes := openapiclient.ConversionReportAttributionType("INDIVIDUAL") // ConversionReportAttributionType | List of types of attribution for the conversion report (optional)
+	attributionTypes := []openapiclient.ConversionReportAttributionType{openapiclient.ConversionReportAttributionType("INDIVIDUAL")} // []ConversionReportAttributionType | List of types of attribution for the conversion report (optional)
+	reportingTimezone := openapiclient.ReportingTimeZone("PINTEREST_TIME_ZONE") // ReportingTimeZone | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdAccountsAPI.AdAccountTargetingAnalyticsGet(context.Background(), adAccountId).StartDate(startDate).EndDate(endDate).TargetingTypes(targetingTypes).Columns(columns).Granularity(granularity).ClickWindowDays(clickWindowDays).EngagementWindowDays(engagementWindowDays).ViewWindowDays(viewWindowDays).ConversionReportTime(conversionReportTime).AttributionTypes(attributionTypes).Execute()
+	resp, r, err := apiClient.AdAccountsAPI.AdAccountTargetingAnalyticsGet(context.Background(), adAccountId).StartDate(startDate).EndDate(endDate).TargetingTypes(targetingTypes).Columns(columns).Granularity(granularity).ClickWindowDays(clickWindowDays).EngagementWindowDays(engagementWindowDays).ViewWindowDays(viewWindowDays).ConversionReportTime(conversionReportTime).AttributionTypes(attributionTypes).ReportingTimezone(reportingTimezone).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AdAccountsAPI.AdAccountTargetingAnalyticsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -174,10 +179,11 @@ Name | Type | Description  | Notes
  **columns** | **[]string** | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned | 
  **granularity** | [**Granularity**](Granularity.md) | TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | 
  **clickWindowDays** | **int32** | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [default to 30]
- **engagementWindowDays** | **int32** | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. | [default to 30]
+ **engagementWindowDays** | **int32** | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. | [default to 30]
  **viewWindowDays** | **int32** | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. | [default to 1]
  **conversionReportTime** | **string** | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. | [default to &quot;TIME_OF_AD_ACTION&quot;]
- **attributionTypes** | [**ConversionReportAttributionType**](ConversionReportAttributionType.md) | List of types of attribution for the conversion report | 
+ **attributionTypes** | [**[]ConversionReportAttributionType**](ConversionReportAttributionType.md) | List of types of attribution for the conversion report | 
+ **reportingTimezone** | [**ReportingTimeZone**](ReportingTimeZone.md) | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. | 
 
 ### Return type
 
@@ -185,7 +191,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -199,7 +205,7 @@ Name | Type | Description  | Notes
 
 ## AdAccountsCreate
 
-> AdAccount AdAccountsCreate(ctx).AdAccountCreateRequest(adAccountCreateRequest).Execute()
+> AdAccount AdAccountsCreate(ctx).AdAccountCreate(adAccountCreate).Execute()
 
 Create ad account
 
@@ -218,11 +224,11 @@ import (
 )
 
 func main() {
-	adAccountCreateRequest := *openapiclient.NewAdAccountCreateRequest() // AdAccountCreateRequest | Ad account to create.
+	adAccountCreate := *openapiclient.NewAdAccountCreate() // AdAccountCreate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdAccountsAPI.AdAccountsCreate(context.Background()).AdAccountCreateRequest(adAccountCreateRequest).Execute()
+	resp, r, err := apiClient.AdAccountsAPI.AdAccountsCreate(context.Background()).AdAccountCreate(adAccountCreate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AdAccountsAPI.AdAccountsCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -243,7 +249,7 @@ Other parameters are passed through a pointer to a apiAdAccountsCreateRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **adAccountCreateRequest** | [**AdAccountCreateRequest**](AdAccountCreateRequest.md) | Ad account to create. | 
+ **adAccountCreate** | [**AdAccountCreate**](AdAccountCreate.md) |  | 
 
 ### Return type
 
@@ -284,7 +290,7 @@ import (
 )
 
 func main() {
-	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
+	adAccountId := "adAccountId_example" // string | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -304,7 +310,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**adAccountId** | **string** | Unique identifier of an ad account. | 
+**adAccountId** | **string** |  | 
 
 ### Other Parameters
 
@@ -321,7 +327,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -335,7 +341,7 @@ Name | Type | Description  | Notes
 
 ## AdAccountsList
 
-> AdAccountsList200Response AdAccountsList(ctx).Bookmark(bookmark).PageSize(pageSize).IncludeSharedAccounts(includeSharedAccounts).Execute()
+> AdAccountsList200Response AdAccountsList(ctx).IncludeSharedAccounts(includeSharedAccounts).Bookmark(bookmark).PageSize(pageSize).Execute()
 
 List ad accounts
 
@@ -354,13 +360,13 @@ import (
 )
 
 func main() {
-	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 	includeSharedAccounts := true // bool | Include shared ad accounts (optional) (default to true)
+	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdAccountsAPI.AdAccountsList(context.Background()).Bookmark(bookmark).PageSize(pageSize).IncludeSharedAccounts(includeSharedAccounts).Execute()
+	resp, r, err := apiClient.AdAccountsAPI.AdAccountsList(context.Background()).IncludeSharedAccounts(includeSharedAccounts).Bookmark(bookmark).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AdAccountsAPI.AdAccountsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -381,9 +387,9 @@ Other parameters are passed through a pointer to a apiAdAccountsListRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
  **includeSharedAccounts** | **bool** | Include shared ad accounts | [default to true]
+ **bookmark** | **string** | Cursor used to fetch the next page of items | 
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
@@ -391,11 +397,83 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AnalyticsCreateConversionProductReport
+
+> AdsAnalyticsCreateAsyncResponse AnalyticsCreateConversionProductReport(ctx, adAccountId).ConversionProductReportRequest(conversionProductReportRequest).Execute()
+
+Create a request for a brand, category, SKU report
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/oapicf/pinterest-sdk"
+)
+
+func main() {
+	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
+	conversionProductReportRequest := *openapiclient.NewConversionProductReportRequest([]openapiclient.ConversionProductReportingColumn{openapiclient.ConversionProductReportingColumn("CAMPAIGN_NAME")}, "2024-04-23", "Granularity_example", "Level_example", "ReportName_example", "2024-03-17") // ConversionProductReportRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AdAccountsAPI.AnalyticsCreateConversionProductReport(context.Background(), adAccountId).ConversionProductReportRequest(conversionProductReportRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdAccountsAPI.AnalyticsCreateConversionProductReport``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AnalyticsCreateConversionProductReport`: AdsAnalyticsCreateAsyncResponse
+	fmt.Fprintf(os.Stdout, "Response from `AdAccountsAPI.AnalyticsCreateConversionProductReport`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**adAccountId** | **string** | Unique identifier of an ad account. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAnalyticsCreateConversionProductReportRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **conversionProductReportRequest** | [**ConversionProductReportRequest**](ConversionProductReportRequest.md) |  | 
+
+### Return type
+
+[**AdsAnalyticsCreateAsyncResponse**](AdsAnalyticsCreateAsyncResponse.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -425,7 +503,7 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	createMMMReportRequest := *openapiclient.NewCreateMMMReportRequest("ReportName_example", "2020-12-20", "2020-12-20", "Granularity_example", "Level_example", []openapiclient.MMMReportingTargetingType{openapiclient.MMMReportingTargetingType("APPTYPE")}, []openapiclient.MMMReportingColumn{openapiclient.MMMReportingColumn("SPEND_IN_DOLLAR")}) // CreateMMMReportRequest | 
+	createMMMReportRequest := *openapiclient.NewCreateMMMReportRequest([]openapiclient.MMMReportingColumn{openapiclient.MMMReportingColumn("SPEND_IN_DOLLAR")}, "2020-12-20", "Granularity_example", "Level_example", "ReportName_example", "2020-12-20", []openapiclient.MMMReportingTargetingType{openapiclient.MMMReportingTargetingType("APPTYPE")}) // CreateMMMReportRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -497,7 +575,7 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	adsAnalyticsCreateAsyncRequest := *openapiclient.NewAdsAnalyticsCreateAsyncRequest("2020-12-20", "2020-12-20", openapiclient.Granularity("TOTAL"), []openapiclient.ReportingColumnAsync{openapiclient.ReportingColumnAsync("SPEND_IN_MICRO_DOLLAR")}, openapiclient.MetricsReportingLevel("ADVERTISER")) // AdsAnalyticsCreateAsyncRequest | 
+	adsAnalyticsCreateAsyncRequest := *openapiclient.NewAdsAnalyticsCreateAsyncRequest("2020-12-20", openapiclient.Granularity("TOTAL"), "2020-12-20", []openapiclient.ReportingColumnAsync{openapiclient.ReportingColumnAsync("SPEND_IN_MICRO_DOLLAR")}, openapiclient.MetricsReportingLevel("ADVERTISER")) // AdsAnalyticsCreateAsyncRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -549,7 +627,7 @@ Name | Type | Description  | Notes
 
 ## AnalyticsCreateTemplateReport
 
-> AdsAnalyticsCreateAsyncResponse AnalyticsCreateTemplateReport(ctx, adAccountId, templateId).StartDate(startDate).EndDate(endDate).Granularity(granularity).Execute()
+> TemplateBasedReport AnalyticsCreateTemplateReport(ctx, adAccountId, templateId).StartDate(startDate).EndDate(endDate).Granularity(granularity).Execute()
 
 Create async request for an analytics report using a template
 
@@ -569,11 +647,11 @@ import (
 )
 
 func main() {
-	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
+	adAccountId := "adAccountId_example" // string | 
 	templateId := "templateId_example" // string | Unique identifier of a template.
 	startDate := time.Now() // string | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years back from today. (optional)
 	endDate := time.Now() // string | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years past start date. (optional)
-	granularity := openapiclient.Granularity("TOTAL") // Granularity | TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly (optional)
+	granularity := openapiclient.Granularity("TOTAL") // Granularity |    TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEKLY - metrics are broken down weekly.    MONTHLY - metrics are broken down monthly (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -582,7 +660,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AdAccountsAPI.AnalyticsCreateTemplateReport``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AnalyticsCreateTemplateReport`: AdsAnalyticsCreateAsyncResponse
+	// response from `AnalyticsCreateTemplateReport`: TemplateBasedReport
 	fmt.Fprintf(os.Stdout, "Response from `AdAccountsAPI.AnalyticsCreateTemplateReport`: %v\n", resp)
 }
 ```
@@ -593,7 +671,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**adAccountId** | **string** | Unique identifier of an ad account. | 
+**adAccountId** | **string** |  | 
 **templateId** | **string** | Unique identifier of a template. | 
 
 ### Other Parameters
@@ -607,11 +685,83 @@ Name | Type | Description  | Notes
 
  **startDate** | **string** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years back from today. | 
  **endDate** | **string** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years past start date. | 
- **granularity** | [**Granularity**](Granularity.md) | TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly | 
+ **granularity** | [**Granularity**](Granularity.md) |    TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEKLY - metrics are broken down weekly.    MONTHLY - metrics are broken down monthly | 
 
 ### Return type
 
-[**AdsAnalyticsCreateAsyncResponse**](AdsAnalyticsCreateAsyncResponse.md)
+[**TemplateBasedReport**](TemplateBasedReport.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AnalyticsGetConversionProductReport
+
+> AdsAnalyticsGetAsyncResponse AnalyticsGetConversionProductReport(ctx, adAccountId).Token(token).Execute()
+
+Get advertiser brand, category, SKU report
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/oapicf/pinterest-sdk"
+)
+
+func main() {
+	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
+	token := "token_example" // string | Token returned from the post request creation call
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AdAccountsAPI.AnalyticsGetConversionProductReport(context.Background(), adAccountId).Token(token).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdAccountsAPI.AnalyticsGetConversionProductReport``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AnalyticsGetConversionProductReport`: AdsAnalyticsGetAsyncResponse
+	fmt.Fprintf(os.Stdout, "Response from `AdAccountsAPI.AnalyticsGetConversionProductReport`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**adAccountId** | **string** | Unique identifier of an ad account. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAnalyticsGetConversionProductReportRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **token** | **string** | Token returned from the post request creation call | 
+
+### Return type
+
+[**AdsAnalyticsGetAsyncResponse**](AdsAnalyticsGetAsyncResponse.md)
 
 ### Authorization
 

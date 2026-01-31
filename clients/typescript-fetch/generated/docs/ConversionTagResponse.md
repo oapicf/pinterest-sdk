@@ -6,15 +6,15 @@
 
 Name | Type
 ------------ | -------------
-`adAccountId` | string
 `codeSnippet` | string
+`configs` | [ConversionTagConfigs](ConversionTagConfigs.md)
 `enhancedMatchStatus` | [EnhancedMatchStatusType](EnhancedMatchStatusType.md)
 `id` | string
 `lastFiredTimeMs` | number
 `name` | string
-`status` | [EntityStatus](EntityStatus.md)
 `version` | string
-`configs` | [ConversionTagConfigs](ConversionTagConfigs.md)
+`adAccountId` | string
+`status` | [EntityStatus](EntityStatus.md)
 
 ## Example
 
@@ -23,15 +23,15 @@ import type { ConversionTagResponse } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "adAccountId": 549755885175,
   "codeSnippet": <script type=text/javascript> [...],
+  "configs": null,
   "enhancedMatchStatus": null,
   "id": 2617998078212,
   "lastFiredTimeMs": 1599030000000,
   "name": ACME Checkout Test Tag,
-  "status": null,
   "version": 3,
-  "configs": null,
+  "adAccountId": 549755885175,
+  "status": null,
 } satisfies ConversionTagResponse
 
 console.log(example)

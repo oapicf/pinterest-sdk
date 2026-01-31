@@ -142,7 +142,7 @@ NSInteger kOAIUserAccountApiMissingParamErrorCode = 234513;
 
 ///
 /// Follow user
-/// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+/// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
 ///  @param username A valid username 
 ///
 ///  @param followUserRequest Follow a user. 

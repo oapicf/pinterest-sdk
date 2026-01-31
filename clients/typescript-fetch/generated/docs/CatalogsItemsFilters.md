@@ -7,8 +7,8 @@
 Name | Type
 ------------ | -------------
 `catalogType` | [CatalogsType](CatalogsType.md)
-`itemIds` | Array&lt;string&gt;
 `catalogId` | string
+`itemIds` | Array&lt;string&gt;
 `hotelIds` | Array&lt;string&gt;
 `creativeAssetsIds` | Array&lt;string&gt;
 
@@ -20,8 +20,8 @@ import type { CatalogsItemsFilters } from ''
 // TODO: Update the object below with actual values
 const example = {
   "catalogType": null,
-  "itemIds": null,
   "catalogId": null,
+  "itemIds": null,
   "hotelIds": null,
   "creativeAssetsIds": null,
 } satisfies CatalogsItemsFilters

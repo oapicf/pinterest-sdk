@@ -7,8 +7,8 @@
 Name | Type
 ------------ | -------------
 `reportStatus` | [BulkReportingJobStatus](BulkReportingJobStatus.md)
-`url` | string
 `size` | number
+`url` | string
 
 ## Example
 
@@ -18,8 +18,8 @@ import type { AdsAnalyticsGetAsyncResponse } from ''
 // TODO: Update the object below with actual values
 const example = {
   "reportStatus": null,
-  "url": null,
   "size": null,
+  "url": null,
 } satisfies AdsAnalyticsGetAsyncResponse
 
 console.log(example)

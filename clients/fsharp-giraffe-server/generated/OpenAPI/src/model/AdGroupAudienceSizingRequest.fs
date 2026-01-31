@@ -16,10 +16,10 @@ module AdGroupAudienceSizingRequest =
 
   type AdGroupAudienceSizingRequest = {
     AutoTargetingEnabled : bool;
-    PlacementGroup : PlacementGroupType;
     CreativeTypes : CreativeTypesEnum[];
-    TargetingSpec : TargetingSpec;
-    ProductGroupIds : string[];
     Keywords : AdGroupAudienceSizingRequestKeywordsInner[];
+    PlacementGroup : PlacementGroupType;
+    ProductGroupIds : string[];
+    TargetingSpec : TargetingSpec;
   }
   //#endregion

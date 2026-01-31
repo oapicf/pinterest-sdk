@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsRetailProductGroupCreateRequest`
 --
-SELECT `catalog_type`, `name`, `description`, `filters`, `catalog_id`, `country`, `locale` FROM `CatalogsRetailProductGroupCreateRequest` WHERE 1;
+SELECT `catalog_id`, `catalog_type`, `country`, `description`, `filters`, `locale`, `name` FROM `CatalogsRetailProductGroupCreateRequest` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsRetailProductGroupCreateRequest`
 --
-INSERT INTO `CatalogsRetailProductGroupCreateRequest`(`catalog_type`, `name`, `description`, `filters`, `catalog_id`, `country`, `locale`) VALUES (?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `CatalogsRetailProductGroupCreateRequest`(`catalog_id`, `catalog_type`, `country`, `description`, `filters`, `locale`, `name`) VALUES (?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsRetailProductGroupCreateRequest`
 --
-UPDATE `CatalogsRetailProductGroupCreateRequest` SET `catalog_type` = ?, `name` = ?, `description` = ?, `filters` = ?, `catalog_id` = ?, `country` = ?, `locale` = ? WHERE 1;
+UPDATE `CatalogsRetailProductGroupCreateRequest` SET `catalog_id` = ?, `catalog_type` = ?, `country` = ?, `description` = ?, `filters` = ?, `locale` = ?, `name` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsRetailProductGroupCreateRequest`

@@ -20,44 +20,25 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Request object for creating a product group.")
 @JsonTypeName("CatalogsProductGroupCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsProductGroupCreateRequest   {
-  private String name;
   private String description;
-  private Boolean isFeatured = false;
-  private CatalogsProductGroupFiltersRequest filters;
   private String feedId;
+  private CatalogsProductGroupFiltersRequest filters;
+  private Boolean isFeatured = false;
+  private String name;
 
   public CatalogsProductGroupCreateRequest() {
   }
 
   @JsonCreator
   public CatalogsProductGroupCreateRequest(
-    @JsonProperty(required = true, value = "name") String name,
+    @JsonProperty(required = true, value = "feed_id") String feedId,
     @JsonProperty(required = true, value = "filters") CatalogsProductGroupFiltersRequest filters,
-    @JsonProperty(required = true, value = "feed_id") String feedId
+    @JsonProperty(required = true, value = "name") String name
   ) {
-    this.name = name;
-    this.filters = filters;
     this.feedId = feedId;
-  }
-
-  /**
-   **/
-  public CatalogsProductGroupCreateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "name")
-  @NotNull public String getName() {
-    return name;
-  }
-
-  @JsonProperty(required = true, value = "name")
-  public void setName(String name) {
+    this.filters = filters;
     this.name = name;
   }
 
@@ -78,6 +59,45 @@ public class CatalogsProductGroupCreateRequest   {
   @JsonProperty("description")
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  /**
+   * Catalog Feed id pertaining to the catalog product group.
+   **/
+  public CatalogsProductGroupCreateRequest feedId(String feedId) {
+    this.feedId = feedId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog Feed id pertaining to the catalog product group.")
+  @JsonProperty(required = true, value = "feed_id")
+  @NotNull  @Pattern(regexp="^\\d+$")public String getFeedId() {
+    return feedId;
+  }
+
+  @JsonProperty(required = true, value = "feed_id")
+  public void setFeedId(String feedId) {
+    this.feedId = feedId;
+  }
+
+  /**
+   **/
+  public CatalogsProductGroupCreateRequest filters(CatalogsProductGroupFiltersRequest filters) {
+    this.filters = filters;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "filters")
+  @NotNull @Valid public CatalogsProductGroupFiltersRequest getFilters() {
+    return filters;
+  }
+
+  @JsonProperty(required = true, value = "filters")
+  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
+    this.filters = filters;
   }
 
   /**
@@ -102,41 +122,21 @@ public class CatalogsProductGroupCreateRequest   {
 
   /**
    **/
-  public CatalogsProductGroupCreateRequest filters(CatalogsProductGroupFiltersRequest filters) {
-    this.filters = filters;
+  public CatalogsProductGroupCreateRequest name(String name) {
+    this.name = name;
     return this;
   }
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "filters")
-  @NotNull @Valid public CatalogsProductGroupFiltersRequest getFilters() {
-    return filters;
+  @JsonProperty(required = true, value = "name")
+  @NotNull public String getName() {
+    return name;
   }
 
-  @JsonProperty(required = true, value = "filters")
-  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
-    this.filters = filters;
-  }
-
-  /**
-   * Catalog Feed id pertaining to the catalog product group.
-   **/
-  public CatalogsProductGroupCreateRequest feedId(String feedId) {
-    this.feedId = feedId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog Feed id pertaining to the catalog product group.")
-  @JsonProperty(required = true, value = "feed_id")
-  @NotNull  @Pattern(regexp="^\\d+$")public String getFeedId() {
-    return feedId;
-  }
-
-  @JsonProperty(required = true, value = "feed_id")
-  public void setFeedId(String feedId) {
-    this.feedId = feedId;
+  @JsonProperty(required = true, value = "name")
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -149,16 +149,16 @@ public class CatalogsProductGroupCreateRequest   {
       return false;
     }
     CatalogsProductGroupCreateRequest catalogsProductGroupCreateRequest = (CatalogsProductGroupCreateRequest) o;
-    return Objects.equals(this.name, catalogsProductGroupCreateRequest.name) &&
-        Objects.equals(this.description, catalogsProductGroupCreateRequest.description) &&
-        Objects.equals(this.isFeatured, catalogsProductGroupCreateRequest.isFeatured) &&
+    return Objects.equals(this.description, catalogsProductGroupCreateRequest.description) &&
+        Objects.equals(this.feedId, catalogsProductGroupCreateRequest.feedId) &&
         Objects.equals(this.filters, catalogsProductGroupCreateRequest.filters) &&
-        Objects.equals(this.feedId, catalogsProductGroupCreateRequest.feedId);
+        Objects.equals(this.isFeatured, catalogsProductGroupCreateRequest.isFeatured) &&
+        Objects.equals(this.name, catalogsProductGroupCreateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, isFeatured, filters, feedId);
+    return Objects.hash(description, feedId, filters, isFeatured, name);
   }
 
   @Override
@@ -166,11 +166,11 @@ public class CatalogsProductGroupCreateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupCreateRequest {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
-    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

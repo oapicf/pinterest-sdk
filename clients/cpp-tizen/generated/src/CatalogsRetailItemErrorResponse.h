@@ -55,13 +55,6 @@ public:
 	/*! \brief Set 
 	 */
 	void setCatalogType(CatalogsType  catalog_type);
-	/*! \brief Get The catalog item id in the merchant namespace
-	 */
-	std::string getItemId();
-
-	/*! \brief Set The catalog item id in the merchant namespace
-	 */
-	void setItemId(std::string  item_id);
 	/*! \brief Get Array with the errors for the item id requested
 	 */
 	std::list<ItemValidationEvent> getErrors();
@@ -69,11 +62,18 @@ public:
 	/*! \brief Set Array with the errors for the item id requested
 	 */
 	void setErrors(std::list <ItemValidationEvent> errors);
+	/*! \brief Get The catalog item id in the merchant namespace
+	 */
+	std::string getItemId();
+
+	/*! \brief Set The catalog item id in the merchant namespace
+	 */
+	void setItemId(std::string  item_id);
 
 private:
 	CatalogsType catalog_type;
-	std::string item_id;
 	std::list <ItemValidationEvent>errors;
+	std::string item_id;
 	void __init();
 	void __cleanup();
 

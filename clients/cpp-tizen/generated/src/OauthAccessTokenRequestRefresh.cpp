@@ -25,7 +25,6 @@ OauthAccessTokenRequestRefresh::__init()
 {
 	//refresh_token = std::string();
 	//scope = std::string();
-	//refresh_on = bool(false);
 	//grant_type = std::string();
 }
 
@@ -41,11 +40,6 @@ OauthAccessTokenRequestRefresh::__cleanup()
 	//
 	//delete scope;
 	//scope = NULL;
-	//}
-	//if(refresh_on != NULL) {
-	//
-	//delete refresh_on;
-	//refresh_on = NULL;
 	//}
 	//if(grant_type != NULL) {
 	//
@@ -78,17 +72,6 @@ OauthAccessTokenRequestRefresh::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&scope, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *refresh_onKey = "refresh_on";
-	node = json_object_get_member(pJsonObject, refresh_onKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("bool")) {
-			jsonToValue(&refresh_on, node, "bool", "");
 		} else {
 			
 		}
@@ -134,15 +117,6 @@ OauthAccessTokenRequestRefresh::toJson()
 	}
 	const gchar *scopeKey = "scope";
 	json_object_set_member(pJsonObject, scopeKey, node);
-	if (isprimitive("bool")) {
-		bool obj = getRefreshOn();
-		node = converttoJson(&obj, "bool", "");
-	}
-	else {
-		
-	}
-	const gchar *refresh_onKey = "refresh_on";
-	json_object_set_member(pJsonObject, refresh_onKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getGrantType();
 		node = converttoJson(&obj, "std::string", "");
@@ -182,18 +156,6 @@ void
 OauthAccessTokenRequestRefresh::setScope(std::string  scope)
 {
 	this->scope = scope;
-}
-
-bool
-OauthAccessTokenRequestRefresh::getRefreshOn()
-{
-	return refresh_on;
-}
-
-void
-OauthAccessTokenRequestRefresh::setRefreshOn(bool  refresh_on)
-{
-	this->refresh_on = refresh_on;
 }
 
 std::string

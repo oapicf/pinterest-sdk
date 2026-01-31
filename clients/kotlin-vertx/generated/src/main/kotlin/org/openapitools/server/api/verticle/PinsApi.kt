@@ -1,5 +1,6 @@
 package org.openapitools.server.api.verticle
 
+import org.openapitools.server.api.model.CreativeType
 import org.openapitools.server.api.model.Error
 import org.openapitools.server.api.model.Pin
 import org.openapitools.server.api.model.PinAnalyticsMetricsResponse
@@ -7,6 +8,7 @@ import org.openapitools.server.api.model.PinCreate
 import org.openapitools.server.api.model.PinUpdate
 import org.openapitools.server.api.model.PinsList200Response
 import org.openapitools.server.api.model.PinsSaveRequest
+import org.openapitools.server.api.model.PinterestLibError
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
@@ -37,10 +39,10 @@ interface PinsApi  {
     suspend fun pinsDelete(pinId:kotlin.String?,adAccountId:kotlin.String?,context:OperationRequest):Response<Void>
     /* pinsGet
      * Get Pin */
-    suspend fun pinsGet(pinId:kotlin.String?,pinMetrics:kotlin.Boolean?,adAccountId:kotlin.String?,context:OperationRequest):Response<Pin>
+    suspend fun pinsGet(pinId:kotlin.String?,adAccountId:kotlin.String?,pinMetrics:kotlin.Boolean?,context:OperationRequest):Response<Pin>
     /* pinsList
      * List Pins */
-    suspend fun pinsList(bookmark:kotlin.String?,pageSize:kotlin.Int?,pinFilter:kotlin.String?,includeProtectedPins:kotlin.Boolean?,pinType:kotlin.String?,creativeTypes:kotlin.Array<kotlin.String>?,adAccountId:kotlin.String?,pinMetrics:kotlin.Boolean?,context:OperationRequest):Response<PinsList200Response>
+    suspend fun pinsList(pinFilter:kotlin.String?,pinMetrics:kotlin.Boolean?,includeProtectedPins:kotlin.Boolean?,pinType:kotlin.String?,creativeTypes:kotlin.Array<CreativeType>?,adAccountId:kotlin.String?,bookmark:kotlin.String?,pageSize:kotlin.Int?,context:OperationRequest):Response<PinsList200Response>
     /* pinsSave
      * Save Pin */
     suspend fun pinsSave(pinId:kotlin.String?,pinsSaveRequest:PinsSaveRequest?,adAccountId:kotlin.String?,context:OperationRequest):Response<Pin>

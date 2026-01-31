@@ -8,12 +8,12 @@ import org.openapitools._
 
 /**
  * 
- * @param partnerUnderscoreid Unique identifier of a business partner to update asset access to.
  * @param assetUnderscoreid Unique identifier of the business asset.
+ * @param partnerUnderscoreid Unique identifier of a business partner to update asset access to.
  * @param partnerUnderscoretype If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset.
  */
-case class DeletePartnerAssetAccessBodyAccessesInner(partnerUnderscoreid: String,
-                assetUnderscoreid: String,
+case class DeletePartnerAssetAccessBodyAccessesInner(assetUnderscoreid: String,
+                partnerUnderscoreid: String,
                 partnerUnderscoretype: Option[String]
                 )
 

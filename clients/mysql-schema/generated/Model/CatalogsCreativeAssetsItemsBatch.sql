@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsCreativeAssetsItemsBatch`
 --
-SELECT `batch_id`, `created_time`, `completed_time`, `status`, `catalog_type`, `items` FROM `CatalogsCreativeAssetsItemsBatch` WHERE 1;
+SELECT `batch_id`, `catalog_type`, `completed_time`, `created_time`, `items`, `status` FROM `CatalogsCreativeAssetsItemsBatch` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsCreativeAssetsItemsBatch`
 --
-INSERT INTO `CatalogsCreativeAssetsItemsBatch`(`batch_id`, `created_time`, `completed_time`, `status`, `catalog_type`, `items`) VALUES (?, ?, ?, ?, ?, ?);
+INSERT INTO `CatalogsCreativeAssetsItemsBatch`(`batch_id`, `catalog_type`, `completed_time`, `created_time`, `items`, `status`) VALUES (?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsCreativeAssetsItemsBatch`
 --
-UPDATE `CatalogsCreativeAssetsItemsBatch` SET `batch_id` = ?, `created_time` = ?, `completed_time` = ?, `status` = ?, `catalog_type` = ?, `items` = ? WHERE 1;
+UPDATE `CatalogsCreativeAssetsItemsBatch` SET `batch_id` = ?, `catalog_type` = ?, `completed_time` = ?, `created_time` = ?, `items` = ?, `status` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsCreativeAssetsItemsBatch`

@@ -11,11 +11,11 @@ The class is defined in **[CatalogsVerticalProductGroupUpdateRequest.java](../..
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  |  [optional property]
-**name** | `String` |  |  [optional property]
+**country** | `Country` |  |  [optional property]
 **description** | `String` |  |  [optional property]
 **filters** | [`CatalogsCreativeAssetsProductGroupFilters`](CatalogsCreativeAssetsProductGroupFilters.md) |  |  [optional property]
-**country** | `Country` |  |  [optional property]
 **locale** | `CatalogsLocale` |  |  [optional property]
+**name** | `String` |  |  [optional property]
 
 ## CatalogTypeEnum
 

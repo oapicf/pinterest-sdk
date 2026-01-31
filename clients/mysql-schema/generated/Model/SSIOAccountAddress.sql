@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `SSIOAccountAddress`
 --
-SELECT `display`, `purpose`, `address_id`, `order_legal_entity` FROM `SSIOAccountAddress` WHERE 1;
+SELECT `address_id`, `display`, `order_legal_entity`, `purpose` FROM `SSIOAccountAddress` WHERE 1;
 
 --
 -- INSERT template for table `SSIOAccountAddress`
 --
-INSERT INTO `SSIOAccountAddress`(`display`, `purpose`, `address_id`, `order_legal_entity`) VALUES (?, ?, ?, ?);
+INSERT INTO `SSIOAccountAddress`(`address_id`, `display`, `order_legal_entity`, `purpose`) VALUES (?, ?, ?, ?);
 
 --
 -- UPDATE template for table `SSIOAccountAddress`
 --
-UPDATE `SSIOAccountAddress` SET `display` = ?, `purpose` = ?, `address_id` = ?, `order_legal_entity` = ? WHERE 1;
+UPDATE `SSIOAccountAddress` SET `address_id` = ?, `display` = ?, `order_legal_entity` = ?, `purpose` = ? WHERE 1;
 
 --
 -- DELETE template for table `SSIOAccountAddress`

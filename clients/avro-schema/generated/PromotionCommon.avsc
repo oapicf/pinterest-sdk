@@ -1,0 +1,82 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "PromotionCommon",
+  "fields": [
+    {
+      "name": "discount_status",
+      "type": ["null", {
+        "type": "enum",
+        "name": "PromotionCommon_discountUnderscorestatus",
+        "symbols": [
+          "OTHER",
+          "ACTIVE",
+          "PAUSED",
+          "SCHEDULED",
+          "EXPIRED"
+        ]
+      }],
+      "doc": "Discount status based on the current time and start and end time of discount",
+      "default": null
+    },
+    {
+      "name": "end_time",
+      "type": ["null", "int"],
+      "doc": "Promotion end time. Unix timestamp in seconds. Independent of campaign end time.",
+      "default": null
+    },
+    {
+      "name": "external_id",
+      "type": ["null", "string"],
+      "doc": "Platform-specific ID for this promotion. Will be null for promotions first created within Pinterest.",
+      "default": null
+    },
+    {
+      "name": "platform_type",
+      "type": ["null", "string"],
+      "doc": "The source integration platform used when creating the promotion. Currently supported values are 'DEFAULT' and 'SHOPIFY'.",
+      "default": null
+    },
+    {
+      "name": "promotion_code",
+      "type": ["null", "string"],
+      "doc": "Code that can be used to redeem a promotion.",
+      "default": null
+    },
+    {
+      "name": "promotion_custom_id",
+      "type": ["null", "string"],
+      "doc": "An optional field for user defined promotion ID for this promotion. Will copy from Pinterest system generated ID if user did not provide one.",
+      "default": null
+    },
+    {
+      "name": "promotion_title",
+      "type": ["null", "string"],
+      "doc": "Internal name for the promotion.",
+      "default": null
+    },
+    {
+      "name": "promotion_type",
+      "type": ["null", "model.PromotionType"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "start_time",
+      "type": ["null", "int"],
+      "doc": "Promotion start time. Unix timestamp in seconds. Independent of campaign start time.",
+      "default": null
+    },
+    {
+      "name": "template_values",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.PromotionTemplateValue"
+      }],
+      "doc": "List of values to be inserted in the promotion type-specific template.",
+      "default": null
+    }
+  ]
+
+}

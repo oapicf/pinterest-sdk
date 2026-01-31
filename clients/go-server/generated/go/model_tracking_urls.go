@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,15 +17,15 @@ package openapi
 // TrackingUrls - Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
 type TrackingUrls struct {
 
-	Impression []string `json:"impression,omitempty"`
+	AudienceVerification []string `json:"audience_verification,omitempty"`
+
+	BuyableButton []string `json:"buyable_button,omitempty"`
 
 	Click []string `json:"click,omitempty"`
 
 	Engagement []string `json:"engagement,omitempty"`
 
-	BuyableButton []string `json:"buyable_button,omitempty"`
-
-	AudienceVerification []string `json:"audience_verification,omitempty"`
+	Impression []string `json:"impression,omitempty"`
 }
 
 // AssertTrackingUrlsRequired checks if the required fields are not zero-ed

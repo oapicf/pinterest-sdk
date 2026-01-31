@@ -1,10 +1,9 @@
 package controllers;
 
-import apimodels.AdAccountCreateSubscriptionRequest;
-import apimodels.AdAccountCreateSubscriptionResponse;
-import apimodels.AdAccountGetSubscriptionResponse;
 import apimodels.AdAccountsSubscriptionsGetList200Response;
-import apimodels.Error;
+import apimodels.LeadSubscription;
+import apimodels.LeadSubscriptionPostParamsCreate;
+import apimodels.PinterestLibError;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -28,7 +27,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LeadAdsApiController extends Controller {
     private final LeadAdsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -53,13 +52,6 @@ public class LeadAdsApiController extends Controller {
 
     @ApiAction
     public Result adAccountsSubscriptionsGetList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        String valuepageSize = request.getQueryString("page_size");
-        Integer pageSize;
-        if (valuepageSize != null) {
-            pageSize = Integer.parseInt(valuepageSize);
-        } else {
-            pageSize = 25;
-        }
         String valuebookmark = request.getQueryString("bookmark");
         String bookmark;
         if (valuebookmark != null) {
@@ -67,22 +59,29 @@ public class LeadAdsApiController extends Controller {
         } else {
             bookmark = null;
         }
-        return imp.adAccountsSubscriptionsGetListHttp(request, adAccountId, pageSize, bookmark);
+        String valuepageSize = request.getQueryString("page_size");
+        Integer pageSize;
+        if (valuepageSize != null) {
+            pageSize = Integer.parseInt(valuepageSize);
+        } else {
+            pageSize = 25;
+        }
+        return imp.adAccountsSubscriptionsGetListHttp(request, adAccountId, bookmark, pageSize);
     }
 
     @ApiAction
     public Result adAccountsSubscriptionsPost(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
-        JsonNode nodeadAccountCreateSubscriptionRequest = request.body().asJson();
-        AdAccountCreateSubscriptionRequest adAccountCreateSubscriptionRequest;
-        if (nodeadAccountCreateSubscriptionRequest != null) {
-            adAccountCreateSubscriptionRequest = mapper.readValue(nodeadAccountCreateSubscriptionRequest.toString(), AdAccountCreateSubscriptionRequest.class);
+        JsonNode nodeleadSubscriptionPostParamsCreate = request.body().asJson();
+        LeadSubscriptionPostParamsCreate leadSubscriptionPostParamsCreate;
+        if (nodeleadSubscriptionPostParamsCreate != null) {
+            leadSubscriptionPostParamsCreate = mapper.readValue(nodeleadSubscriptionPostParamsCreate.toString(), LeadSubscriptionPostParamsCreate.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
-                OpenAPIUtils.validate(adAccountCreateSubscriptionRequest);
+                OpenAPIUtils.validate(leadSubscriptionPostParamsCreate);
             }
         } else {
-            throw new IllegalArgumentException("'AdAccountCreateSubscriptionRequest' parameter is required");
+            throw new IllegalArgumentException("'LeadSubscriptionPostParamsCreate' parameter is required");
         }
-        return imp.adAccountsSubscriptionsPostHttp(request, adAccountId, adAccountCreateSubscriptionRequest);
+        return imp.adAccountsSubscriptionsPostHttp(request, adAccountId, leadSubscriptionPostParamsCreate);
     }
 
 }

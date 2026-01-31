@@ -22,6 +22,35 @@ func Test_openapi_BusinessAccessRelationshipsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test BusinessAccessRelationshipsAPIService BrandAccountsCreate", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var businessHierarchyId string
+
+		resp, httpRes, err := apiClient.BusinessAccessRelationshipsAPI.BrandAccountsCreate(context.Background(), businessHierarchyId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test BusinessAccessRelationshipsAPIService BrandAccountsUpdate", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var businessHierarchyId string
+		var brandAccountId string
+
+		resp, httpRes, err := apiClient.BusinessAccessRelationshipsAPI.BrandAccountsUpdate(context.Background(), businessHierarchyId, brandAccountId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test BusinessAccessRelationshipsAPIService DeleteBusinessMembership", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -86,6 +115,20 @@ func Test_openapi_BusinessAccessRelationshipsAPIService(t *testing.T) {
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test BusinessAccessRelationshipsAPIService SystemUserUpdate", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var businessId string
+		var systemUserId string
+
+		httpRes, err := apiClient.BusinessAccessRelationshipsAPI.SystemUserUpdate(context.Background(), businessId, systemUserId).Execute()
+
+		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

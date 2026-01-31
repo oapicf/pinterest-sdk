@@ -8,10 +8,10 @@
 #' @description AudienceDemographics Class
 #' @format An \code{R6Class} generator object
 #' @field ages Ages distribution. list(\link{AudienceDemographicValue}) [optional]
-#' @field genders Gender distribution. list(\link{AudienceDemographicValue}) [optional]
-#' @field devices Device usage distribution. list(\link{AudienceDemographicValue}) [optional]
-#' @field metros Geographic metro area distribution. list(\link{AudienceDemographicValue}) [optional]
 #' @field countries Country area distribution. list(\link{AudienceDemographicValue}) [optional]
+#' @field devices Device usage distribution. list(\link{AudienceDemographicValue}) [optional]
+#' @field genders Gender distribution. list(\link{AudienceDemographicValue}) [optional]
+#' @field metros Geographic metro area distribution. list(\link{AudienceDemographicValue}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -19,45 +19,45 @@ AudienceDemographics <- R6::R6Class(
   "AudienceDemographics",
   public = list(
     `ages` = NULL,
-    `genders` = NULL,
-    `devices` = NULL,
-    `metros` = NULL,
     `countries` = NULL,
+    `devices` = NULL,
+    `genders` = NULL,
+    `metros` = NULL,
 
     #' @description
     #' Initialize a new AudienceDemographics class.
     #'
     #' @param ages Ages distribution.
-    #' @param genders Gender distribution.
-    #' @param devices Device usage distribution.
-    #' @param metros Geographic metro area distribution.
     #' @param countries Country area distribution.
+    #' @param devices Device usage distribution.
+    #' @param genders Gender distribution.
+    #' @param metros Geographic metro area distribution.
     #' @param ... Other optional arguments.
-    initialize = function(`ages` = NULL, `genders` = NULL, `devices` = NULL, `metros` = NULL, `countries` = NULL, ...) {
+    initialize = function(`ages` = NULL, `countries` = NULL, `devices` = NULL, `genders` = NULL, `metros` = NULL, ...) {
       if (!is.null(`ages`)) {
         stopifnot(is.vector(`ages`), length(`ages`) != 0)
         sapply(`ages`, function(x) stopifnot(R6::is.R6(x)))
         self$`ages` <- `ages`
       }
-      if (!is.null(`genders`)) {
-        stopifnot(is.vector(`genders`), length(`genders`) != 0)
-        sapply(`genders`, function(x) stopifnot(R6::is.R6(x)))
-        self$`genders` <- `genders`
+      if (!is.null(`countries`)) {
+        stopifnot(is.vector(`countries`), length(`countries`) != 0)
+        sapply(`countries`, function(x) stopifnot(R6::is.R6(x)))
+        self$`countries` <- `countries`
       }
       if (!is.null(`devices`)) {
         stopifnot(is.vector(`devices`), length(`devices`) != 0)
         sapply(`devices`, function(x) stopifnot(R6::is.R6(x)))
         self$`devices` <- `devices`
       }
+      if (!is.null(`genders`)) {
+        stopifnot(is.vector(`genders`), length(`genders`) != 0)
+        sapply(`genders`, function(x) stopifnot(R6::is.R6(x)))
+        self$`genders` <- `genders`
+      }
       if (!is.null(`metros`)) {
         stopifnot(is.vector(`metros`), length(`metros`) != 0)
         sapply(`metros`, function(x) stopifnot(R6::is.R6(x)))
         self$`metros` <- `metros`
-      }
-      if (!is.null(`countries`)) {
-        stopifnot(is.vector(`countries`), length(`countries`) != 0)
-        sapply(`countries`, function(x) stopifnot(R6::is.R6(x)))
-        self$`countries` <- `countries`
       }
     },
 
@@ -96,21 +96,21 @@ AudienceDemographics <- R6::R6Class(
         AudienceDemographicsObject[["ages"]] <-
           lapply(self$`ages`, function(x) x$toSimpleType())
       }
-      if (!is.null(self$`genders`)) {
-        AudienceDemographicsObject[["genders"]] <-
-          lapply(self$`genders`, function(x) x$toSimpleType())
+      if (!is.null(self$`countries`)) {
+        AudienceDemographicsObject[["countries"]] <-
+          lapply(self$`countries`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`devices`)) {
         AudienceDemographicsObject[["devices"]] <-
           lapply(self$`devices`, function(x) x$toSimpleType())
       }
+      if (!is.null(self$`genders`)) {
+        AudienceDemographicsObject[["genders"]] <-
+          lapply(self$`genders`, function(x) x$toSimpleType())
+      }
       if (!is.null(self$`metros`)) {
         AudienceDemographicsObject[["metros"]] <-
           lapply(self$`metros`, function(x) x$toSimpleType())
-      }
-      if (!is.null(self$`countries`)) {
-        AudienceDemographicsObject[["countries"]] <-
-          lapply(self$`countries`, function(x) x$toSimpleType())
       }
       return(AudienceDemographicsObject)
     },
@@ -125,17 +125,17 @@ AudienceDemographics <- R6::R6Class(
       if (!is.null(this_object$`ages`)) {
         self$`ages` <- ApiClient$new()$deserializeObj(this_object$`ages`, "array[AudienceDemographicValue]", loadNamespace("openapi"))
       }
-      if (!is.null(this_object$`genders`)) {
-        self$`genders` <- ApiClient$new()$deserializeObj(this_object$`genders`, "array[AudienceDemographicValue]", loadNamespace("openapi"))
+      if (!is.null(this_object$`countries`)) {
+        self$`countries` <- ApiClient$new()$deserializeObj(this_object$`countries`, "array[AudienceDemographicValue]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`devices`)) {
         self$`devices` <- ApiClient$new()$deserializeObj(this_object$`devices`, "array[AudienceDemographicValue]", loadNamespace("openapi"))
       }
+      if (!is.null(this_object$`genders`)) {
+        self$`genders` <- ApiClient$new()$deserializeObj(this_object$`genders`, "array[AudienceDemographicValue]", loadNamespace("openapi"))
+      }
       if (!is.null(this_object$`metros`)) {
         self$`metros` <- ApiClient$new()$deserializeObj(this_object$`metros`, "array[AudienceDemographicValue]", loadNamespace("openapi"))
-      }
-      if (!is.null(this_object$`countries`)) {
-        self$`countries` <- ApiClient$new()$deserializeObj(this_object$`countries`, "array[AudienceDemographicValue]", loadNamespace("openapi"))
       }
       self
     },
@@ -159,10 +159,10 @@ AudienceDemographics <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`ages` <- ApiClient$new()$deserializeObj(this_object$`ages`, "array[AudienceDemographicValue]", loadNamespace("openapi"))
-      self$`genders` <- ApiClient$new()$deserializeObj(this_object$`genders`, "array[AudienceDemographicValue]", loadNamespace("openapi"))
-      self$`devices` <- ApiClient$new()$deserializeObj(this_object$`devices`, "array[AudienceDemographicValue]", loadNamespace("openapi"))
-      self$`metros` <- ApiClient$new()$deserializeObj(this_object$`metros`, "array[AudienceDemographicValue]", loadNamespace("openapi"))
       self$`countries` <- ApiClient$new()$deserializeObj(this_object$`countries`, "array[AudienceDemographicValue]", loadNamespace("openapi"))
+      self$`devices` <- ApiClient$new()$deserializeObj(this_object$`devices`, "array[AudienceDemographicValue]", loadNamespace("openapi"))
+      self$`genders` <- ApiClient$new()$deserializeObj(this_object$`genders`, "array[AudienceDemographicValue]", loadNamespace("openapi"))
+      self$`metros` <- ApiClient$new()$deserializeObj(this_object$`metros`, "array[AudienceDemographicValue]", loadNamespace("openapi"))
       self
     },
 

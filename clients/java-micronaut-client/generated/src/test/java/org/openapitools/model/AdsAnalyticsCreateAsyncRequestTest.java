@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.AdGroupSummaryStatus;
+import org.openapitools.model.AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics;
 import org.openapitools.model.AdsAnalyticsMetricsFilter;
-import org.openapitools.model.AdsAnalyticsTargetingType;
 import org.openapitools.model.CampaignSummaryStatus;
 import org.openapitools.model.ConversionAttributionWindowDays;
 import org.openapitools.model.ConversionReportAttributionType;
@@ -17,6 +17,7 @@ import org.openapitools.model.ObjectiveType;
 import org.openapitools.model.PinPromotionSummaryStatus;
 import org.openapitools.model.ProductGroupSummaryStatus;
 import org.openapitools.model.ReportingColumnAsync;
+import org.openapitools.model.ReportingTimeZone;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -37,27 +38,11 @@ public class AdsAnalyticsCreateAsyncRequestTest {
     }
 
     /**
-     * Test the property 'startDate'
+     * Test the property 'attributionTypes'
      */
     @Test
-    public void startDateTest() {
-        // TODO: test startDate
-    }
-
-    /**
-     * Test the property 'endDate'
-     */
-    @Test
-    public void endDateTest() {
-        // TODO: test endDate
-    }
-
-    /**
-     * Test the property 'granularity'
-     */
-    @Test
-    public void granularityTest() {
-        // TODO: test granularity
+    public void attributionTypesTest() {
+        // TODO: test attributionTypes
     }
 
     /**
@@ -69,22 +54,6 @@ public class AdsAnalyticsCreateAsyncRequestTest {
     }
 
     /**
-     * Test the property 'engagementWindowDays'
-     */
-    @Test
-    public void engagementWindowDaysTest() {
-        // TODO: test engagementWindowDays
-    }
-
-    /**
-     * Test the property 'viewWindowDays'
-     */
-    @Test
-    public void viewWindowDaysTest() {
-        // TODO: test viewWindowDays
-    }
-
-    /**
      * Test the property 'conversionReportTime'
      */
     @Test
@@ -93,11 +62,43 @@ public class AdsAnalyticsCreateAsyncRequestTest {
     }
 
     /**
-     * Test the property 'attributionTypes'
+     * Test the property 'endDate'
      */
     @Test
-    public void attributionTypesTest() {
-        // TODO: test attributionTypes
+    public void endDateTest() {
+        // TODO: test endDate
+    }
+
+    /**
+     * Test the property 'engagementWindowDays'
+     */
+    @Test
+    public void engagementWindowDaysTest() {
+        // TODO: test engagementWindowDays
+    }
+
+    /**
+     * Test the property 'granularity'
+     */
+    @Test
+    public void granularityTest() {
+        // TODO: test granularity
+    }
+
+    /**
+     * Test the property 'startDate'
+     */
+    @Test
+    public void startDateTest() {
+        // TODO: test startDate
+    }
+
+    /**
+     * Test the property 'viewWindowDays'
+     */
+    @Test
+    public void viewWindowDaysTest() {
+        // TODO: test viewWindowDays
     }
 
     /**
@@ -122,6 +123,14 @@ public class AdsAnalyticsCreateAsyncRequestTest {
     @Test
     public void campaignObjectiveTypesTest() {
         // TODO: test campaignObjectiveTypes
+    }
+
+    /**
+     * Test the property 'campaignBrandLabel'
+     */
+    @Test
+    public void campaignBrandLabelTest() {
+        // TODO: test campaignBrandLabel
     }
 
     /**
@@ -205,19 +214,35 @@ public class AdsAnalyticsCreateAsyncRequestTest {
     }
 
     /**
+     * Test the property 'combineTargetingTypes'
+     */
+    @Test
+    public void combineTargetingTypesTest() {
+        // TODO: test combineTargetingTypes
+    }
+
+    /**
+     * Test the property 'customConversionEventMetrics'
+     */
+    @Test
+    public void customConversionEventMetricsTest() {
+        // TODO: test customConversionEventMetrics
+    }
+
+    /**
+     * Test the property 'endHour'
+     */
+    @Test
+    public void endHourTest() {
+        // TODO: test endHour
+    }
+
+    /**
      * Test the property 'level'
      */
     @Test
     public void levelTest() {
         // TODO: test level
-    }
-
-    /**
-     * Test the property 'reportFormat'
-     */
-    @Test
-    public void reportFormatTest() {
-        // TODO: test reportFormat
     }
 
     /**
@@ -229,19 +254,27 @@ public class AdsAnalyticsCreateAsyncRequestTest {
     }
 
     /**
+     * Test the property 'reportFormat'
+     */
+    @Test
+    public void reportFormatTest() {
+        // TODO: test reportFormat
+    }
+
+    /**
+     * Test the property 'reportingTimezone'
+     */
+    @Test
+    public void reportingTimezoneTest() {
+        // TODO: test reportingTimezone
+    }
+
+    /**
      * Test the property 'startHour'
      */
     @Test
     public void startHourTest() {
         // TODO: test startHour
-    }
-
-    /**
-     * Test the property 'endHour'
-     */
-    @Test
-    public void endHourTest() {
-        // TODO: test endHour
     }
 
 }

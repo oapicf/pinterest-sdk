@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server OperationType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a OperationType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  OperationType {
+    title = OperationType
+    description = OperationType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  OperationType {
+    title = OperationType
+    description = OperationType
+    implements = openapi_server.resourceTypes.OperationType
+
+  }
+}

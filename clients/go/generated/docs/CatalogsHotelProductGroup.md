@@ -4,20 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CatalogId** | **string** | Catalog id pertaining to the hotel product group. | 
 **CatalogType** | **string** |  | 
-**Id** | **string** | ID of the hotel product group. | 
-**Name** | Pointer to **string** | Name of hotel product group | [optional] 
+**CreatedAt** | Pointer to **int32** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
 **Description** | Pointer to **NullableString** |  | [optional] 
 **Filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | 
-**CreatedAt** | Pointer to **int32** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
+**Id** | **string** | ID of the hotel product group. | 
+**Name** | Pointer to **string** | Name of hotel product group | [optional] 
+**Type** | [**CatalogsHotelProductGroupType**](CatalogsHotelProductGroupType.md) |  | 
 **UpdatedAt** | Pointer to **int32** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] 
-**CatalogId** | **string** | Catalog id pertaining to the hotel product group. | 
 
 ## Methods
 
 ### NewCatalogsHotelProductGroup
 
-`func NewCatalogsHotelProductGroup(catalogType string, id string, filters CatalogsHotelProductGroupFilters, catalogId string, ) *CatalogsHotelProductGroup`
+`func NewCatalogsHotelProductGroup(catalogId string, catalogType string, filters CatalogsHotelProductGroupFilters, id string, type_ CatalogsHotelProductGroupType, ) *CatalogsHotelProductGroup`
 
 NewCatalogsHotelProductGroup instantiates a new CatalogsHotelProductGroup object
 This constructor will assign default values to properties that have it defined,
@@ -31,6 +32,26 @@ will change when the set of required properties is changed
 NewCatalogsHotelProductGroupWithDefaults instantiates a new CatalogsHotelProductGroup object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCatalogId
+
+`func (o *CatalogsHotelProductGroup) GetCatalogId() string`
+
+GetCatalogId returns the CatalogId field if non-nil, zero value otherwise.
+
+### GetCatalogIdOk
+
+`func (o *CatalogsHotelProductGroup) GetCatalogIdOk() (*string, bool)`
+
+GetCatalogIdOk returns a tuple with the CatalogId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCatalogId
+
+`func (o *CatalogsHotelProductGroup) SetCatalogId(v string)`
+
+SetCatalogId sets CatalogId field to given value.
+
 
 ### GetCatalogType
 
@@ -52,50 +73,30 @@ and a boolean to check if the value has been set.
 SetCatalogType sets CatalogType field to given value.
 
 
-### GetId
+### GetCreatedAt
 
-`func (o *CatalogsHotelProductGroup) GetId() string`
+`func (o *CatalogsHotelProductGroup) GetCreatedAt() int32`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetCreatedAtOk
 
-`func (o *CatalogsHotelProductGroup) GetIdOk() (*string, bool)`
+`func (o *CatalogsHotelProductGroup) GetCreatedAtOk() (*int32, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetCreatedAt
 
-`func (o *CatalogsHotelProductGroup) SetId(v string)`
+`func (o *CatalogsHotelProductGroup) SetCreatedAt(v int32)`
 
-SetId sets Id field to given value.
+SetCreatedAt sets CreatedAt field to given value.
 
+### HasCreatedAt
 
-### GetName
+`func (o *CatalogsHotelProductGroup) HasCreatedAt() bool`
 
-`func (o *CatalogsHotelProductGroup) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *CatalogsHotelProductGroup) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *CatalogsHotelProductGroup) SetName(v string)`
-
-SetName sets Name field to given value.
-
-### HasName
-
-`func (o *CatalogsHotelProductGroup) HasName() bool`
-
-HasName returns a boolean if a field has been set.
+HasCreatedAt returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -152,30 +153,70 @@ and a boolean to check if the value has been set.
 SetFilters sets Filters field to given value.
 
 
-### GetCreatedAt
+### GetId
 
-`func (o *CatalogsHotelProductGroup) GetCreatedAt() int32`
+`func (o *CatalogsHotelProductGroup) GetId() string`
 
-GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+GetId returns the Id field if non-nil, zero value otherwise.
 
-### GetCreatedAtOk
+### GetIdOk
 
-`func (o *CatalogsHotelProductGroup) GetCreatedAtOk() (*int32, bool)`
+`func (o *CatalogsHotelProductGroup) GetIdOk() (*string, bool)`
 
-GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCreatedAt
+### SetId
 
-`func (o *CatalogsHotelProductGroup) SetCreatedAt(v int32)`
+`func (o *CatalogsHotelProductGroup) SetId(v string)`
 
-SetCreatedAt sets CreatedAt field to given value.
+SetId sets Id field to given value.
 
-### HasCreatedAt
 
-`func (o *CatalogsHotelProductGroup) HasCreatedAt() bool`
+### GetName
 
-HasCreatedAt returns a boolean if a field has been set.
+`func (o *CatalogsHotelProductGroup) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *CatalogsHotelProductGroup) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *CatalogsHotelProductGroup) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *CatalogsHotelProductGroup) HasName() bool`
+
+HasName returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *CatalogsHotelProductGroup) GetType() CatalogsHotelProductGroupType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *CatalogsHotelProductGroup) GetTypeOk() (*CatalogsHotelProductGroupType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *CatalogsHotelProductGroup) SetType(v CatalogsHotelProductGroupType)`
+
+SetType sets Type field to given value.
+
 
 ### GetUpdatedAt
 
@@ -201,26 +242,6 @@ SetUpdatedAt sets UpdatedAt field to given value.
 `func (o *CatalogsHotelProductGroup) HasUpdatedAt() bool`
 
 HasUpdatedAt returns a boolean if a field has been set.
-
-### GetCatalogId
-
-`func (o *CatalogsHotelProductGroup) GetCatalogId() string`
-
-GetCatalogId returns the CatalogId field if non-nil, zero value otherwise.
-
-### GetCatalogIdOk
-
-`func (o *CatalogsHotelProductGroup) GetCatalogIdOk() (*string, bool)`
-
-GetCatalogIdOk returns a tuple with the CatalogId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCatalogId
-
-`func (o *CatalogsHotelProductGroup) SetCatalogId(v string)`
-
-SetCatalogId sets CatalogId field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

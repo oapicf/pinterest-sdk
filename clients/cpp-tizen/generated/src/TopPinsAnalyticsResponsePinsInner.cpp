@@ -23,23 +23,23 @@ TopPinsAnalyticsResponse_pins_inner::~TopPinsAnalyticsResponse_pins_inner()
 void
 TopPinsAnalyticsResponse_pins_inner::__init()
 {
-	//new std::map()std::map> metrics;
 	//new std::map()std::map> data_status;
+	//new std::map()std::map> metrics;
 	//pin_id = std::string();
 }
 
 void
 TopPinsAnalyticsResponse_pins_inner::__cleanup()
 {
-	//if(metrics != NULL) {
-	//metrics.RemoveAll(true);
-	//delete metrics;
-	//metrics = NULL;
-	//}
 	//if(data_status != NULL) {
 	//data_status.RemoveAll(true);
 	//delete data_status;
 	//data_status = NULL;
+	//}
+	//if(metrics != NULL) {
+	//metrics.RemoveAll(true);
+	//delete metrics;
+	//metrics = NULL;
 	//}
 	//if(pin_id != NULL) {
 	//
@@ -54,18 +54,6 @@ TopPinsAnalyticsResponse_pins_inner::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *metricsKey = "metrics";
-	node = json_object_get_member(pJsonObject, metricsKey);
-	if (node !=NULL) {
-	
-		{
-			JsonObject* json_obj = json_node_get_object(node);
-			map<string,string> new_map;
-			json_object_foreach_member(json_obj,helper_func,&new_map);
-			metrics = new_map;
-		}
-		
-	}
 	const gchar *data_statusKey = "data_status";
 	node = json_object_get_member(pJsonObject, data_statusKey);
 	if (node !=NULL) {
@@ -75,6 +63,18 @@ TopPinsAnalyticsResponse_pins_inner::fromJson(char* jsonStr)
 			map<string,string> new_map;
 			json_object_foreach_member(json_obj,helper_func,&new_map);
 			data_status = new_map;
+		}
+		
+	}
+	const gchar *metricsKey = "metrics";
+	node = json_object_get_member(pJsonObject, metricsKey);
+	if (node !=NULL) {
+	
+		{
+			JsonObject* json_obj = json_node_get_object(node);
+			map<string,string> new_map;
+			json_object_foreach_member(json_obj,helper_func,&new_map);
+			metrics = new_map;
 		}
 		
 	}
@@ -105,25 +105,6 @@ TopPinsAnalyticsResponse_pins_inner::toJson()
 
 	{
 		JsonObject* json_obj;
-		map<string, string> new_list = static_cast<map <string, string> > (getMetrics());
-		json_obj = json_object_new();
-		for (map<string, string>::iterator it = new_list.begin(); it != new_list.end(); it++) {
-			string obj = (*it).first;
-			string obj2 = (*it).second;
-			JsonNode* tempnode = json_from_string(obj2.c_str(),NULL);
-			json_object_set_member(json_obj, obj.c_str(), tempnode);
-		}
-	node = json_node_alloc();
-	json_node_init_object(node, json_obj);
-	json_object_unref(json_obj);
-	}
-
-	const gchar *metricsKey = "metrics";
-	json_object_set_member(pJsonObject, metricsKey, node);
-
-
-	{
-		JsonObject* json_obj;
 		map<string, string> new_list = static_cast<map <string, string> > (getDataStatus());
 		json_obj = json_object_new();
 		for (map<string, string>::iterator it = new_list.begin(); it != new_list.end(); it++) {
@@ -139,6 +120,25 @@ TopPinsAnalyticsResponse_pins_inner::toJson()
 
 	const gchar *data_statusKey = "data_status";
 	json_object_set_member(pJsonObject, data_statusKey, node);
+
+
+	{
+		JsonObject* json_obj;
+		map<string, string> new_list = static_cast<map <string, string> > (getMetrics());
+		json_obj = json_object_new();
+		for (map<string, string>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			string obj = (*it).first;
+			string obj2 = (*it).second;
+			JsonNode* tempnode = json_from_string(obj2.c_str(),NULL);
+			json_object_set_member(json_obj, obj.c_str(), tempnode);
+		}
+	node = json_node_alloc();
+	json_node_init_object(node, json_obj);
+	json_object_unref(json_obj);
+	}
+
+	const gchar *metricsKey = "metrics";
+	json_object_set_member(pJsonObject, metricsKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getPinId();
 		node = converttoJson(&obj, "std::string", "");
@@ -157,18 +157,6 @@ TopPinsAnalyticsResponse_pins_inner::toJson()
 }
 
 std::map<string, string>
-TopPinsAnalyticsResponse_pins_inner::getMetrics()
-{
-	return metrics;
-}
-
-void
-TopPinsAnalyticsResponse_pins_inner::setMetrics(std::map <string, string> metrics)
-{
-	this->metrics = metrics;
-}
-
-std::map<string, string>
 TopPinsAnalyticsResponse_pins_inner::getDataStatus()
 {
 	return data_status;
@@ -178,6 +166,18 @@ void
 TopPinsAnalyticsResponse_pins_inner::setDataStatus(std::map <string, string> data_status)
 {
 	this->data_status = data_status;
+}
+
+std::map<string, string>
+TopPinsAnalyticsResponse_pins_inner::getMetrics()
+{
+	return metrics;
+}
+
+void
+TopPinsAnalyticsResponse_pins_inner::setMetrics(std::map <string, string> metrics)
+{
+	this->metrics = metrics;
 }
 
 std::string

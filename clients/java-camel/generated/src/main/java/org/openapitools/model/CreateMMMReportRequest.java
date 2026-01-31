@@ -25,15 +25,14 @@ import javax.annotation.Generated;
  * CreateMMMReportRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreateMMMReportRequest {
 
   @Valid
   private List<TargetingAdvertiserCountry> countries = new ArrayList<>();
 
-  private String reportName;
-
-  private String startDate;
+  @Valid
+  private List<MMMReportingColumn> columns = new ArrayList<>();
 
   private String endDate;
 
@@ -111,11 +110,12 @@ public class CreateMMMReportRequest {
 
   private LevelEnum level;
 
-  @Valid
-  private List<MMMReportingTargetingType> targetingTypes = new ArrayList<>();
+  private String reportName;
+
+  private String startDate;
 
   @Valid
-  private List<MMMReportingColumn> columns = new ArrayList<>();
+  private List<MMMReportingTargetingType> targetingTypes = new ArrayList<>();
 
   public CreateMMMReportRequest() {
     super();
@@ -124,14 +124,14 @@ public class CreateMMMReportRequest {
   /**
    * Constructor with only required parameters
    */
-  public CreateMMMReportRequest(String reportName, String startDate, String endDate, GranularityEnum granularity, LevelEnum level, List<MMMReportingTargetingType> targetingTypes, List<MMMReportingColumn> columns) {
-    this.reportName = reportName;
-    this.startDate = startDate;
+  public CreateMMMReportRequest(List<MMMReportingColumn> columns, String endDate, GranularityEnum granularity, LevelEnum level, String reportName, String startDate, List<MMMReportingTargetingType> targetingTypes) {
+    this.columns = columns;
     this.endDate = endDate;
     this.granularity = granularity;
     this.level = level;
+    this.reportName = reportName;
+    this.startDate = startDate;
     this.targetingTypes = targetingTypes;
-    this.columns = columns;
   }
 
   public CreateMMMReportRequest countries(List<TargetingAdvertiserCountry> countries) {
@@ -162,44 +162,32 @@ public class CreateMMMReportRequest {
     this.countries = countries;
   }
 
-  public CreateMMMReportRequest reportName(String reportName) {
-    this.reportName = reportName;
+  public CreateMMMReportRequest columns(List<MMMReportingColumn> columns) {
+    this.columns = columns;
+    return this;
+  }
+
+  public CreateMMMReportRequest addColumnsItem(MMMReportingColumn columnsItem) {
+    if (this.columns == null) {
+      this.columns = new ArrayList<>();
+    }
+    this.columns.add(columnsItem);
     return this;
   }
 
   /**
-   * Name of the Marketing Mix Modeling (MMM) report
-   * @return reportName
+   * Metric and entity columns
+   * @return columns
    */
-  @NotNull 
-  @Schema(name = "report_name", description = "Name of the Marketing Mix Modeling (MMM) report", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("report_name")
-  public String getReportName() {
-    return reportName;
+  @NotNull @Valid 
+  @Schema(name = "columns", description = "Metric and entity columns", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("columns")
+  public List<MMMReportingColumn> getColumns() {
+    return columns;
   }
 
-  public void setReportName(String reportName) {
-    this.reportName = reportName;
-  }
-
-  public CreateMMMReportRequest startDate(String startDate) {
-    this.startDate = startDate;
-    return this;
-  }
-
-  /**
-   * Metric report start date (UTC). Format: YYYY-MM-DD
-   * @return startDate
-   */
-  @NotNull @Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})$") 
-  @Schema(name = "start_date", example = "2020-12-20", description = "Metric report start date (UTC). Format: YYYY-MM-DD", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("start_date")
-  public String getStartDate() {
-    return startDate;
-  }
-
-  public void setStartDate(String startDate) {
-    this.startDate = startDate;
+  public void setColumns(List<MMMReportingColumn> columns) {
+    this.columns = columns;
   }
 
   public CreateMMMReportRequest endDate(String endDate) {
@@ -262,6 +250,46 @@ public class CreateMMMReportRequest {
     this.level = level;
   }
 
+  public CreateMMMReportRequest reportName(String reportName) {
+    this.reportName = reportName;
+    return this;
+  }
+
+  /**
+   * Name of the Marketing Mix Modeling (MMM) report
+   * @return reportName
+   */
+  @NotNull 
+  @Schema(name = "report_name", description = "Name of the Marketing Mix Modeling (MMM) report", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("report_name")
+  public String getReportName() {
+    return reportName;
+  }
+
+  public void setReportName(String reportName) {
+    this.reportName = reportName;
+  }
+
+  public CreateMMMReportRequest startDate(String startDate) {
+    this.startDate = startDate;
+    return this;
+  }
+
+  /**
+   * Metric report start date (UTC). Format: YYYY-MM-DD
+   * @return startDate
+   */
+  @NotNull @Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})$") 
+  @Schema(name = "start_date", example = "2020-12-20", description = "Metric report start date (UTC). Format: YYYY-MM-DD", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("start_date")
+  public String getStartDate() {
+    return startDate;
+  }
+
+  public void setStartDate(String startDate) {
+    this.startDate = startDate;
+  }
+
   public CreateMMMReportRequest targetingTypes(List<MMMReportingTargetingType> targetingTypes) {
     this.targetingTypes = targetingTypes;
     return this;
@@ -290,34 +318,6 @@ public class CreateMMMReportRequest {
     this.targetingTypes = targetingTypes;
   }
 
-  public CreateMMMReportRequest columns(List<MMMReportingColumn> columns) {
-    this.columns = columns;
-    return this;
-  }
-
-  public CreateMMMReportRequest addColumnsItem(MMMReportingColumn columnsItem) {
-    if (this.columns == null) {
-      this.columns = new ArrayList<>();
-    }
-    this.columns.add(columnsItem);
-    return this;
-  }
-
-  /**
-   * Metric and entity columns
-   * @return columns
-   */
-  @NotNull @Valid 
-  @Schema(name = "columns", description = "Metric and entity columns", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("columns")
-  public List<MMMReportingColumn> getColumns() {
-    return columns;
-  }
-
-  public void setColumns(List<MMMReportingColumn> columns) {
-    this.columns = columns;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -328,18 +328,18 @@ public class CreateMMMReportRequest {
     }
     CreateMMMReportRequest createMMMReportRequest = (CreateMMMReportRequest) o;
     return Objects.equals(this.countries, createMMMReportRequest.countries) &&
-        Objects.equals(this.reportName, createMMMReportRequest.reportName) &&
-        Objects.equals(this.startDate, createMMMReportRequest.startDate) &&
+        Objects.equals(this.columns, createMMMReportRequest.columns) &&
         Objects.equals(this.endDate, createMMMReportRequest.endDate) &&
         Objects.equals(this.granularity, createMMMReportRequest.granularity) &&
         Objects.equals(this.level, createMMMReportRequest.level) &&
-        Objects.equals(this.targetingTypes, createMMMReportRequest.targetingTypes) &&
-        Objects.equals(this.columns, createMMMReportRequest.columns);
+        Objects.equals(this.reportName, createMMMReportRequest.reportName) &&
+        Objects.equals(this.startDate, createMMMReportRequest.startDate) &&
+        Objects.equals(this.targetingTypes, createMMMReportRequest.targetingTypes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(countries, reportName, startDate, endDate, granularity, level, targetingTypes, columns);
+    return Objects.hash(countries, columns, endDate, granularity, level, reportName, startDate, targetingTypes);
   }
 
   @Override
@@ -347,13 +347,13 @@ public class CreateMMMReportRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateMMMReportRequest {\n");
     sb.append("    countries: ").append(toIndentedString(countries)).append("\n");
-    sb.append("    reportName: ").append(toIndentedString(reportName)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    columns: ").append(toIndentedString(columns)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    granularity: ").append(toIndentedString(granularity)).append("\n");
     sb.append("    level: ").append(toIndentedString(level)).append("\n");
+    sb.append("    reportName: ").append(toIndentedString(reportName)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    targetingTypes: ").append(toIndentedString(targetingTypes)).append("\n");
-    sb.append("    columns: ").append(toIndentedString(columns)).append("\n");
     sb.append("}");
     return sb.toString();
   }

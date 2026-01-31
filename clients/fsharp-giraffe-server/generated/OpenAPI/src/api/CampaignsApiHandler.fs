@@ -7,6 +7,7 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open CampaignsApiHandlerParams
 open CampaignsApiServiceInterface
 open CampaignsApiServiceImplementation
+open OpenAPI.Model.AdPinAnalytics
 open OpenAPI.Model.AdsAnalyticsCampaignTargetingType
 open OpenAPI.Model.CampaignCreateRequest
 open OpenAPI.Model.CampaignCreateResponse
@@ -19,12 +20,35 @@ open OpenAPI.Model.ConversionReportAttributionType
 open OpenAPI.Model.Error
 open OpenAPI.Model.Granularity
 open OpenAPI.Model.MetricsResponse
+open OpenAPI.Model.ReportingTimeZone
 
 module CampaignsApiHandler =
 
     /// <summary>
     /// 
     /// </summary>
+
+    //#region AdPinsAnalytics
+    /// <summary>
+    /// Get pins analytics
+    /// </summary>
+
+    let AdPinsAnalytics (pathParams:AdPinsAnalyticsPathParams) : HttpHandler =
+      fun (next : HttpFunc) (ctx : HttpContext) ->
+        task {
+          let queryParams = ctx.TryBindQueryString<AdPinsAnalyticsQueryParams>()
+          let serviceArgs = {  queryParams=queryParams;  pathParams=pathParams;  } : AdPinsAnalyticsArgs
+          let result = CampaignsApiService.AdPinsAnalytics ctx serviceArgs
+          return! (match result with
+                      | AdPinsAnalyticsStatusCode200 resolved ->
+                            setStatusCode 200 >=> json resolved.content
+                      | AdPinsAnalyticsStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | AdPinsAnalyticsDefaultStatusCode resolved ->
+                            setStatusCode 0 >=> json resolved.content
+          ) next ctx
+        }
+    //#endregion
 
     //#region CampaignTargetingAnalyticsGet
     /// <summary>

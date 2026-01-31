@@ -23,8 +23,8 @@ pinterest_rest_api_integration_log_client_request_METHOD_e integration_log_clien
 }
 
 static integration_log_client_request_t *integration_log_client_request_create_internal(
-    pinterest_rest_api_integration_log_client_request_METHOD_e method,
     char *host,
+    pinterest_rest_api_integration_log_client_request_METHOD_e method,
     char *path,
     list_t* request_headers,
     list_t* response_headers,
@@ -34,8 +34,8 @@ static integration_log_client_request_t *integration_log_client_request_create_i
     if (!integration_log_client_request_local_var) {
         return NULL;
     }
-    integration_log_client_request_local_var->method = method;
     integration_log_client_request_local_var->host = host;
+    integration_log_client_request_local_var->method = method;
     integration_log_client_request_local_var->path = path;
     integration_log_client_request_local_var->request_headers = request_headers;
     integration_log_client_request_local_var->response_headers = response_headers;
@@ -46,16 +46,16 @@ static integration_log_client_request_t *integration_log_client_request_create_i
 }
 
 __attribute__((deprecated)) integration_log_client_request_t *integration_log_client_request_create(
-    pinterest_rest_api_integration_log_client_request_METHOD_e method,
     char *host,
+    pinterest_rest_api_integration_log_client_request_METHOD_e method,
     char *path,
     list_t* request_headers,
     list_t* response_headers,
     int response_status_code
     ) {
     return integration_log_client_request_create_internal (
-        method,
         host,
+        method,
         path,
         request_headers,
         response_headers,
@@ -106,6 +106,15 @@ void integration_log_client_request_free(integration_log_client_request_t *integ
 cJSON *integration_log_client_request_convertToJSON(integration_log_client_request_t *integration_log_client_request) {
     cJSON *item = cJSON_CreateObject();
 
+    // integration_log_client_request->host
+    if (!integration_log_client_request->host) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "host", integration_log_client_request->host) == NULL) {
+    goto fail; //String
+    }
+
+
     // integration_log_client_request->method
     if (pinterest_rest_api_integration_log_client_request_METHOD_NULL == integration_log_client_request->method) {
         goto fail;
@@ -113,15 +122,6 @@ cJSON *integration_log_client_request_convertToJSON(integration_log_client_reque
     if(cJSON_AddStringToObject(item, "method", integration_log_client_request_method_ToString(integration_log_client_request->method)) == NULL)
     {
     goto fail; //Enum
-    }
-
-
-    // integration_log_client_request->host
-    if (!integration_log_client_request->host) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "host", integration_log_client_request->host) == NULL) {
-    goto fail; //String
     }
 
 
@@ -199,6 +199,21 @@ integration_log_client_request_t *integration_log_client_request_parseFromJSON(c
     // define the local map for integration_log_client_request->response_headers
     list_t *response_headersList = NULL;
 
+    // integration_log_client_request->host
+    cJSON *host = cJSON_GetObjectItemCaseSensitive(integration_log_client_requestJSON, "host");
+    if (cJSON_IsNull(host)) {
+        host = NULL;
+    }
+    if (!host) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(host))
+    {
+    goto end; //String
+    }
+
     // integration_log_client_request->method
     cJSON *method = cJSON_GetObjectItemCaseSensitive(integration_log_client_requestJSON, "method");
     if (cJSON_IsNull(method)) {
@@ -215,21 +230,6 @@ integration_log_client_request_t *integration_log_client_request_parseFromJSON(c
     goto end; //Enum
     }
     methodVariable = integration_log_client_request_method_FromString(method->valuestring);
-
-    // integration_log_client_request->host
-    cJSON *host = cJSON_GetObjectItemCaseSensitive(integration_log_client_requestJSON, "host");
-    if (cJSON_IsNull(host)) {
-        host = NULL;
-    }
-    if (!host) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(host))
-    {
-    goto end; //String
-    }
 
     // integration_log_client_request->path
     cJSON *path = cJSON_GetObjectItemCaseSensitive(integration_log_client_requestJSON, "path");
@@ -316,8 +316,8 @@ integration_log_client_request_t *integration_log_client_request_parseFromJSON(c
 
 
     integration_log_client_request_local_var = integration_log_client_request_create_internal (
-        methodVariable,
         strdup(host->valuestring),
+        methodVariable,
         strdup(path->valuestring),
         request_headers ? request_headersList : NULL,
         response_headers ? response_headersList : NULL,

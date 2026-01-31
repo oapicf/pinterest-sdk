@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -27,6 +27,8 @@ const (
 	ANALYST BusinessAccessRole = "ANALYST"
 	SOS_READER BusinessAccessRole = "SOS_READER"
 	FINANCE_MANAGER BusinessAccessRole = "FINANCE_MANAGER"
+	FINANCE_VIEW BusinessAccessRole = "FINANCE_VIEW"
+	FINANCE_EDIT BusinessAccessRole = "FINANCE_EDIT"
 	AUDIENCE_MANAGER BusinessAccessRole = "AUDIENCE_MANAGER"
 	CAMPAIGN_MANAGER BusinessAccessRole = "CAMPAIGN_MANAGER"
 	CATALOGS_MANAGER BusinessAccessRole = "CATALOGS_MANAGER"
@@ -46,6 +48,8 @@ var AllowedBusinessAccessRoleEnumValues = []BusinessAccessRole{
 	"ANALYST",
 	"SOS_READER",
 	"FINANCE_MANAGER",
+	"FINANCE_VIEW",
+	"FINANCE_EDIT",
 	"AUDIENCE_MANAGER",
 	"CAMPAIGN_MANAGER",
 	"CATALOGS_MANAGER",
@@ -65,6 +69,8 @@ var validBusinessAccessRoleEnumValues = map[BusinessAccessRole]struct{}{
 	"ANALYST": {},
 	"SOS_READER": {},
 	"FINANCE_MANAGER": {},
+	"FINANCE_VIEW": {},
+	"FINANCE_EDIT": {},
 	"AUDIENCE_MANAGER": {},
 	"CAMPAIGN_MANAGER": {},
 	"CATALOGS_MANAGER": {},

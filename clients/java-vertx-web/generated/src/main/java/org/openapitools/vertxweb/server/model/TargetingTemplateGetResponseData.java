@@ -17,16 +17,16 @@ import org.openapitools.vertxweb.server.model.TrackingUrls;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TargetingTemplateGetResponseData   {
   
-  private String name;
   private Boolean autoTargetingEnabled = true;
-  private TargetingSpec targetingAttributes;
-  private PlacementGroupType placementGroup = PlacementGroupType.ALL;
   private List<TargetingTemplateKeyword> keywords = new ArrayList<>();
+  private String name;
+  private PlacementGroupType placementGroup = PlacementGroupType.ALL;
+  private TargetingSpec targetingAttributes;
   private TrackingUrls trackingUrls;
-  private String id;
-  private Integer createdTime;
-  private Integer updatedTime;
   private String adAccountId;
+  private Integer createdTime;
+  private String id;
+  private TargetingTemplateAudienceSizing sizing;
 
 
   public enum StatusEnum {
@@ -47,36 +47,27 @@ public class TargetingTemplateGetResponseData   {
   }
 
   private StatusEnum status = StatusEnum.ACTIVE;
-  private TargetingTemplateAudienceSizing sizing;
+  private Integer updatedTime;
   private Boolean valid;
 
   public TargetingTemplateGetResponseData () {
 
   }
 
-  public TargetingTemplateGetResponseData (String name, Boolean autoTargetingEnabled, TargetingSpec targetingAttributes, PlacementGroupType placementGroup, List<TargetingTemplateKeyword> keywords, TrackingUrls trackingUrls, String id, Integer createdTime, Integer updatedTime, String adAccountId, StatusEnum status, TargetingTemplateAudienceSizing sizing, Boolean valid) {
-    this.name = name;
+  public TargetingTemplateGetResponseData (Boolean autoTargetingEnabled, List<TargetingTemplateKeyword> keywords, String name, PlacementGroupType placementGroup, TargetingSpec targetingAttributes, TrackingUrls trackingUrls, String adAccountId, Integer createdTime, String id, TargetingTemplateAudienceSizing sizing, StatusEnum status, Integer updatedTime, Boolean valid) {
     this.autoTargetingEnabled = autoTargetingEnabled;
-    this.targetingAttributes = targetingAttributes;
-    this.placementGroup = placementGroup;
     this.keywords = keywords;
-    this.trackingUrls = trackingUrls;
-    this.id = id;
-    this.createdTime = createdTime;
-    this.updatedTime = updatedTime;
-    this.adAccountId = adAccountId;
-    this.status = status;
-    this.sizing = sizing;
-    this.valid = valid;
-  }
-
-    
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
     this.name = name;
+    this.placementGroup = placementGroup;
+    this.targetingAttributes = targetingAttributes;
+    this.trackingUrls = trackingUrls;
+    this.adAccountId = adAccountId;
+    this.createdTime = createdTime;
+    this.id = id;
+    this.sizing = sizing;
+    this.status = status;
+    this.updatedTime = updatedTime;
+    this.valid = valid;
   }
 
     
@@ -89,12 +80,21 @@ public class TargetingTemplateGetResponseData   {
   }
 
     
-  @JsonProperty("targeting_attributes")
-  public TargetingSpec getTargetingAttributes() {
-    return targetingAttributes;
+  @JsonProperty("keywords")
+  public List<TargetingTemplateKeyword> getKeywords() {
+    return keywords;
   }
-  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
-    this.targetingAttributes = targetingAttributes;
+  public void setKeywords(List<TargetingTemplateKeyword> keywords) {
+    this.keywords = keywords;
+  }
+
+    
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
   }
 
     
@@ -107,12 +107,12 @@ public class TargetingTemplateGetResponseData   {
   }
 
     
-  @JsonProperty("keywords")
-  public List<TargetingTemplateKeyword> getKeywords() {
-    return keywords;
+  @JsonProperty("targeting_attributes")
+  public TargetingSpec getTargetingAttributes() {
+    return targetingAttributes;
   }
-  public void setKeywords(List<TargetingTemplateKeyword> keywords) {
-    this.keywords = keywords;
+  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
+    this.targetingAttributes = targetingAttributes;
   }
 
     
@@ -125,12 +125,12 @@ public class TargetingTemplateGetResponseData   {
   }
 
     
-  @JsonProperty("id")
-  public String getId() {
-    return id;
+  @JsonProperty("ad_account_id")
+  public String getAdAccountId() {
+    return adAccountId;
   }
-  public void setId(String id) {
-    this.id = id;
+  public void setAdAccountId(String adAccountId) {
+    this.adAccountId = adAccountId;
   }
 
     
@@ -143,21 +143,21 @@ public class TargetingTemplateGetResponseData   {
   }
 
     
-  @JsonProperty("updated_time")
-  public Integer getUpdatedTime() {
-    return updatedTime;
+  @JsonProperty("id")
+  public String getId() {
+    return id;
   }
-  public void setUpdatedTime(Integer updatedTime) {
-    this.updatedTime = updatedTime;
+  public void setId(String id) {
+    this.id = id;
   }
 
     
-  @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
-    return adAccountId;
+  @JsonProperty("sizing")
+  public TargetingTemplateAudienceSizing getSizing() {
+    return sizing;
   }
-  public void setAdAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
+  public void setSizing(TargetingTemplateAudienceSizing sizing) {
+    this.sizing = sizing;
   }
 
     
@@ -170,12 +170,12 @@ public class TargetingTemplateGetResponseData   {
   }
 
     
-  @JsonProperty("sizing")
-  public TargetingTemplateAudienceSizing getSizing() {
-    return sizing;
+  @JsonProperty("updated_time")
+  public Integer getUpdatedTime() {
+    return updatedTime;
   }
-  public void setSizing(TargetingTemplateAudienceSizing sizing) {
-    this.sizing = sizing;
+  public void setUpdatedTime(Integer updatedTime) {
+    this.updatedTime = updatedTime;
   }
 
     
@@ -197,24 +197,24 @@ public class TargetingTemplateGetResponseData   {
       return false;
     }
     TargetingTemplateGetResponseData targetingTemplateGetResponseData = (TargetingTemplateGetResponseData) o;
-    return Objects.equals(name, targetingTemplateGetResponseData.name) &&
-        Objects.equals(autoTargetingEnabled, targetingTemplateGetResponseData.autoTargetingEnabled) &&
-        Objects.equals(targetingAttributes, targetingTemplateGetResponseData.targetingAttributes) &&
-        Objects.equals(placementGroup, targetingTemplateGetResponseData.placementGroup) &&
+    return Objects.equals(autoTargetingEnabled, targetingTemplateGetResponseData.autoTargetingEnabled) &&
         Objects.equals(keywords, targetingTemplateGetResponseData.keywords) &&
+        Objects.equals(name, targetingTemplateGetResponseData.name) &&
+        Objects.equals(placementGroup, targetingTemplateGetResponseData.placementGroup) &&
+        Objects.equals(targetingAttributes, targetingTemplateGetResponseData.targetingAttributes) &&
         Objects.equals(trackingUrls, targetingTemplateGetResponseData.trackingUrls) &&
-        Objects.equals(id, targetingTemplateGetResponseData.id) &&
-        Objects.equals(createdTime, targetingTemplateGetResponseData.createdTime) &&
-        Objects.equals(updatedTime, targetingTemplateGetResponseData.updatedTime) &&
         Objects.equals(adAccountId, targetingTemplateGetResponseData.adAccountId) &&
-        Objects.equals(status, targetingTemplateGetResponseData.status) &&
+        Objects.equals(createdTime, targetingTemplateGetResponseData.createdTime) &&
+        Objects.equals(id, targetingTemplateGetResponseData.id) &&
         Objects.equals(sizing, targetingTemplateGetResponseData.sizing) &&
+        Objects.equals(status, targetingTemplateGetResponseData.status) &&
+        Objects.equals(updatedTime, targetingTemplateGetResponseData.updatedTime) &&
         Objects.equals(valid, targetingTemplateGetResponseData.valid);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, autoTargetingEnabled, targetingAttributes, placementGroup, keywords, trackingUrls, id, createdTime, updatedTime, adAccountId, status, sizing, valid);
+    return Objects.hash(autoTargetingEnabled, keywords, name, placementGroup, targetingAttributes, trackingUrls, adAccountId, createdTime, id, sizing, status, updatedTime, valid);
   }
 
   @Override
@@ -222,18 +222,18 @@ public class TargetingTemplateGetResponseData   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TargetingTemplateGetResponseData {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    autoTargetingEnabled: ").append(toIndentedString(autoTargetingEnabled)).append("\n");
-    sb.append("    targetingAttributes: ").append(toIndentedString(targetingAttributes)).append("\n");
-    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
     sb.append("    keywords: ").append(toIndentedString(keywords)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
+    sb.append("    targetingAttributes: ").append(toIndentedString(targetingAttributes)).append("\n");
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
-    sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    sizing: ").append(toIndentedString(sizing)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
     sb.append("    valid: ").append(toIndentedString(valid)).append("\n");
     sb.append("}");
     return sb.toString();

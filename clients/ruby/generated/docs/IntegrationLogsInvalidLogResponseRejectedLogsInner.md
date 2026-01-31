@@ -4,10 +4,10 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **log_index** | **Integer** | Index of the log in the batch. | [optional] |
 | **field** | **String** | The field name containing an invalid value. |  |
-| **value** | **String** | The value that is invalid. |  |
+| **log_index** | **Integer** | Index of the log in the batch. | [optional] |
 | **reason** | **String** | The reason the value is invalid. |  |
+| **value** | **String** | The value that is invalid. |  |
 
 ## Example
 
@@ -15,10 +15,10 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::IntegrationLogsInvalidLogResponseRejectedLogsInner.new(
-  log_index: null,
   field: null,
-  value: null,
-  reason: null
+  log_index: null,
+  reason: null,
+  value: null
 )
 ```
 

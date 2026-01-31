@@ -5,7 +5,7 @@ package org.openapitools.client.model
 case class UpdatePartnerAssetsResult (
     /* Unique identifier of a business asset. */
     _assetId: Option[String],
-    /* Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. */
+    /* Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. */
     _assetType: Option[String],
     /* Unique identifier of a business partner. */
     _partnerId: Option[String],

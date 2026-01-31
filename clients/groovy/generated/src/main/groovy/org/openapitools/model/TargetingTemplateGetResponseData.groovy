@@ -14,26 +14,26 @@ import org.openapitools.model.TrackingUrls;
 
 @Canonical
 class TargetingTemplateGetResponseData {
-    /* targeting template name */
-    String name
     /* Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. */
     Boolean autoTargetingEnabled = true
     
-    TargetingSpec targetingAttributes
+    List<TargetingTemplateKeyword> keywords = new ArrayList<>()
+    /* targeting template name */
+    String name
     
     PlacementGroupType placementGroup = PlacementGroupType.ALL
     
-    List<TargetingTemplateKeyword> keywords = new ArrayList<>()
+    TargetingSpec targetingAttributes
     
     TrackingUrls trackingUrls
-    /* Targeting template ID. */
-    String id
-    /* Targeting template created time. Unix timestamp in seconds. */
-    Integer createdTime
-    /* Targeting template updated time.Unix timestamp in seconds. */
-    Integer updatedTime
     /* The ID of the advertiser that this targeting template belongs to. */
     String adAccountId
+    /* Targeting template created time. Unix timestamp in seconds. */
+    Integer createdTime
+    /* Targeting template ID. */
+    String id
+    
+    TargetingTemplateAudienceSizing sizing
 
     enum StatusEnum {
     
@@ -59,8 +59,8 @@ class TargetingTemplateGetResponseData {
 
     /* Indicate targeting template is active or Deleted */
     StatusEnum status = StatusEnum.ACTIVE
-    
-    TargetingTemplateAudienceSizing sizing
+    /* Targeting template updated time.Unix timestamp in seconds. */
+    Integer updatedTime
     /* Inform if the targeting template is valid (ex. would be false if has revoked audience) */
     Boolean valid
 }

@@ -1,0 +1,19 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CustomerListUploadCreateResponse",
+  "fields": [
+    {
+      "name": "customer_list_upload",
+      "type": "model.CustomerListUpload",
+      "doc": ""
+    },
+    {
+      "name": "s3_multipart_upload_data",
+      "type": "model.S3MultipartUploadData",
+      "doc": ""
+    }
+  ]
+
+}

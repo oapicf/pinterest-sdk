@@ -3,17 +3,17 @@ Protected Class SSIOAccountItem
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Salesforce id for billto_info
+			Address information that is associated with this account.
 		#tag EndNote
-		id As Xoson.O.OptionalString
+		addresses() As OpenAPIClient.Models.SSIOAccountAddress
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Salesforce id for IO Terms and Conditions
+			Salesforce id for billto_info
 		#tag EndNote
-		io_terms_id As Xoson.O.OptionalString
+		id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -27,33 +27,9 @@ Protected Class SSIOAccountItem
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Salesforce id for US Terms and Conditions
+			Salesforce id for IO Terms and Conditions
 		#tag EndNote
-		us_terms_id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Salesforce text for US Terms and Conditions
-		#tag EndNote
-		us_terms As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Salesforce id for Rest of the World Terms and Conditions
-		#tag EndNote
-		row_terms_id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Salesforce text for Rest of the World Terms and Conditions
-		#tag EndNote
-		row_terms As Xoson.O.OptionalString
+		io_terms_id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -67,9 +43,33 @@ Protected Class SSIOAccountItem
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Address information that is associated with this account.
+			Salesforce text for Rest of the World Terms and Conditions
 		#tag EndNote
-		addresses() As OpenAPIClient.Models.SSIOAccountAddress
+		row_terms As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Salesforce id for Rest of the World Terms and Conditions
+		#tag EndNote
+		row_terms_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Salesforce text for US Terms and Conditions
+		#tag EndNote
+		us_terms As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Salesforce id for US Terms and Conditions
+		#tag EndNote
+		us_terms_id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -110,15 +110,15 @@ Protected Class SSIOAccountItem
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="id"
+			Name="addresses"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="String"
+			Type="SSIOAccountAddress"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="io_terms_id"
+			Name="id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -134,31 +134,7 @@ Protected Class SSIOAccountItem
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="us_terms_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="us_terms"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="row_terms_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="row_terms"
+			Name="io_terms_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -174,11 +150,35 @@ Protected Class SSIOAccountItem
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="addresses"
+			Name="row_terms"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="SSIOAccountAddress"
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="row_terms_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="us_terms"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="us_terms_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

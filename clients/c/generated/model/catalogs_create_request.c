@@ -4,26 +4,9 @@
 #include "catalogs_create_request.h"
 
 
-char* catalogs_create_request_catalog_type_ToString(pinterest_rest_api_catalogs_create_request_CATALOGTYPE_e catalog_type) {
-    char* catalog_typeArray[] =  { "NULL", "HOTEL" };
-    return catalog_typeArray[catalog_type];
-}
-
-pinterest_rest_api_catalogs_create_request_CATALOGTYPE_e catalogs_create_request_catalog_type_FromString(char* catalog_type){
-    int stringToReturn = 0;
-    char *catalog_typeArray[] =  { "NULL", "HOTEL" };
-    size_t sizeofArray = sizeof(catalog_typeArray) / sizeof(catalog_typeArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(catalog_type, catalog_typeArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
 
 static catalogs_create_request_t *catalogs_create_request_create_internal(
-    pinterest_rest_api_catalogs_create_request_CATALOGTYPE_e catalog_type,
+    pinterest_rest_api_catalogs_type__e catalog_type,
     char *name
     ) {
     catalogs_create_request_t *catalogs_create_request_local_var = malloc(sizeof(catalogs_create_request_t));
@@ -38,7 +21,7 @@ static catalogs_create_request_t *catalogs_create_request_create_internal(
 }
 
 __attribute__((deprecated)) catalogs_create_request_t *catalogs_create_request_create(
-    pinterest_rest_api_catalogs_create_request_CATALOGTYPE_e catalog_type,
+    pinterest_rest_api_catalogs_type__e catalog_type,
     char *name
     ) {
     return catalogs_create_request_create_internal (
@@ -67,12 +50,16 @@ cJSON *catalogs_create_request_convertToJSON(catalogs_create_request_t *catalogs
     cJSON *item = cJSON_CreateObject();
 
     // catalogs_create_request->catalog_type
-    if (pinterest_rest_api_catalogs_create_request_CATALOGTYPE_NULL == catalogs_create_request->catalog_type) {
+    if (pinterest_rest_api_catalogs_type__NULL == catalogs_create_request->catalog_type) {
         goto fail;
     }
-    if(cJSON_AddStringToObject(item, "catalog_type", catalogs_create_request_catalog_type_ToString(catalogs_create_request->catalog_type)) == NULL)
-    {
-    goto fail; //Enum
+    cJSON *catalog_type_local_JSON = catalogs_type_convertToJSON(catalogs_create_request->catalog_type);
+    if(catalog_type_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "catalog_type", catalog_type_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
     }
 
 
@@ -96,6 +83,9 @@ catalogs_create_request_t *catalogs_create_request_parseFromJSON(cJSON *catalogs
 
     catalogs_create_request_t *catalogs_create_request_local_var = NULL;
 
+    // define the local variable for catalogs_create_request->catalog_type
+    pinterest_rest_api_catalogs_type__e catalog_type_local_nonprim = 0;
+
     // catalogs_create_request->catalog_type
     cJSON *catalog_type = cJSON_GetObjectItemCaseSensitive(catalogs_create_requestJSON, "catalog_type");
     if (cJSON_IsNull(catalog_type)) {
@@ -105,13 +95,8 @@ catalogs_create_request_t *catalogs_create_request_parseFromJSON(cJSON *catalogs
         goto end;
     }
 
-    pinterest_rest_api_catalogs_create_request_CATALOGTYPE_e catalog_typeVariable;
     
-    if(!cJSON_IsString(catalog_type))
-    {
-    goto end; //Enum
-    }
-    catalog_typeVariable = catalogs_create_request_catalog_type_FromString(catalog_type->valuestring);
+    catalog_type_local_nonprim = catalogs_type_parseFromJSON(catalog_type); //custom
 
     // catalogs_create_request->name
     cJSON *name = cJSON_GetObjectItemCaseSensitive(catalogs_create_requestJSON, "name");
@@ -130,12 +115,15 @@ catalogs_create_request_t *catalogs_create_request_parseFromJSON(cJSON *catalogs
 
 
     catalogs_create_request_local_var = catalogs_create_request_create_internal (
-        catalog_typeVariable,
+        catalog_type_local_nonprim,
         strdup(name->valuestring)
         );
 
     return catalogs_create_request_local_var;
 end:
+    if (catalog_type_local_nonprim) {
+        catalog_type_local_nonprim = 0;
+    }
     return NULL;
 
 }

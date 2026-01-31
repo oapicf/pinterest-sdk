@@ -9,9 +9,9 @@
 
 
 #include <string>
+#include "All_of.h"
+#include "Any_of.h"
 #include "CatalogsProductGroupFilterKeys.h"
-#include "CatalogsProductGroupFiltersRequest_anyOf.h"
-#include "CatalogsProductGroupFiltersRequest_anyOf_1.h"
 #include <list>
 #include "Object.h"
 

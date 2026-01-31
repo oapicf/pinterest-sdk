@@ -25,10 +25,16 @@ class TrackingUrlsTest : ShouldSpec() {
         // uncomment below to create an instance of TrackingUrls
         //val modelInstance = TrackingUrls()
 
-        // to test the property `impression`
-        should("test impression") {
+        // to test the property `audienceVerification`
+        should("test audienceVerification") {
             // uncomment below to test the property
-            //modelInstance.impression shouldBe ("TODO")
+            //modelInstance.audienceVerification shouldBe ("TODO")
+        }
+
+        // to test the property `buyableButton`
+        should("test buyableButton") {
+            // uncomment below to test the property
+            //modelInstance.buyableButton shouldBe ("TODO")
         }
 
         // to test the property `click`
@@ -43,16 +49,10 @@ class TrackingUrlsTest : ShouldSpec() {
             //modelInstance.engagement shouldBe ("TODO")
         }
 
-        // to test the property `buyableButton`
-        should("test buyableButton") {
+        // to test the property `impression`
+        should("test impression") {
             // uncomment below to test the property
-            //modelInstance.buyableButton shouldBe ("TODO")
-        }
-
-        // to test the property `audienceVerification`
-        should("test audienceVerification") {
-            // uncomment below to test the property
-            //modelInstance.audienceVerification shouldBe ("TODO")
+            //modelInstance.impression shouldBe ("TODO")
         }
 
     }

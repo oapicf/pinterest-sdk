@@ -6,15 +6,15 @@
 
 -type openapi_ads_analytics_get_async_response() ::
     #{ 'report_status' => openapi_bulk_reporting_job_status:openapi_bulk_reporting_job_status(),
-       'url' => binary(),
-       'size' => integer()
+       'size' => integer(),
+       'url' => binary()
      }.
 
 encode(#{ 'report_status' := ReportStatus,
-          'url' := Url,
-          'size' := Size
+          'size' := Size,
+          'url' := Url
         }) ->
     #{ 'report_status' => ReportStatus,
-       'url' => Url,
-       'size' => Size
+       'size' => Size,
+       'url' => Url
      }.

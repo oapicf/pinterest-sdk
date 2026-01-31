@@ -2,7 +2,6 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.string option
 
 module IntegrationRequest =
 
@@ -10,18 +9,18 @@ module IntegrationRequest =
 
 
   type IntegrationRequest = {
-    ExternalBusinessId : string option;
-    ConnectedMerchantId : string;
+    AdditionalId1 : string;
     ConnectedAdvertiserId : string;
     ConnectedLbaId : string;
+    ConnectedMerchantId : string;
     ConnectedTagId : string;
+    ExternalBusinessId : string;
     PartnerAccessToken : string;
-    PartnerRefreshToken : string;
-    PartnerPrimaryEmail : string;
     PartnerAccessTokenExpiry : int;
+    PartnerMetadata : string;
+    PartnerPrimaryEmail : string;
+    PartnerRefreshToken : string;
     PartnerRefreshTokenExpiry : int;
     Scopes : string;
-    AdditionalId1 : string;
-    PartnerMetadata : string;
   }
   //#endregion

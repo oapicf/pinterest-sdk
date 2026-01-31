@@ -16,14 +16,14 @@ void main() {
   // final instance = CatalogsHotelListProductsByCatalogBasedFilterRequest();
 
   group('test CatalogsHotelListProductsByCatalogBasedFilterRequest', () {
-    // String catalogType
-    test('to test the property `catalogType`', () async {
-      // TODO
-    });
-
     // Catalog id pertaining to the hotel product group.
     // String catalogId
     test('to test the property `catalogId`', () async {
+      // TODO
+    });
+
+    // String catalogType
+    test('to test the property `catalogType`', () async {
       // TODO
     });
 

@@ -14,61 +14,61 @@ import AnyCodable
 public struct IntegrationRecord: Codable, JSONEncodable, Hashable {
 
     public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public var id: String?
-    public var externalBusinessId: String?
-    public var connectedMerchantId: String?
-    public var connectedUserId: String?
+    public var additionalId1: String?
     public var connectedAdvertiserId: String?
     public var connectedLbaId: String?
+    public var connectedMerchantId: String?
     public var connectedTagId: String?
+    public var connectedUserId: String?
+    public var createdTime: Int?
+    public var externalBusinessId: String?
+    public var id: String?
     public var partnerAccessToken: String?
-    public var partnerRefreshToken: String?
-    public var partnerPrimaryEmail: String?
     public var partnerAccessTokenExpiry: Int?
+    public var partnerMetadata: String?
+    public var partnerPrimaryEmail: String?
+    public var partnerRefreshToken: String?
     public var partnerRefreshTokenExpiry: Int?
     public var scopes: String?
-    public var partnerMetadata: String?
-    public var additionalId1: String?
-    public var createdTime: Int?
     public var updatedTime: Int?
 
-    public init(id: String? = nil, externalBusinessId: String? = nil, connectedMerchantId: String? = nil, connectedUserId: String? = nil, connectedAdvertiserId: String? = nil, connectedLbaId: String? = nil, connectedTagId: String? = nil, partnerAccessToken: String? = nil, partnerRefreshToken: String? = nil, partnerPrimaryEmail: String? = nil, partnerAccessTokenExpiry: Int? = nil, partnerRefreshTokenExpiry: Int? = nil, scopes: String? = nil, partnerMetadata: String? = nil, additionalId1: String? = nil, createdTime: Int? = nil, updatedTime: Int? = nil) {
-        self.id = id
-        self.externalBusinessId = externalBusinessId
-        self.connectedMerchantId = connectedMerchantId
-        self.connectedUserId = connectedUserId
+    public init(additionalId1: String? = nil, connectedAdvertiserId: String? = nil, connectedLbaId: String? = nil, connectedMerchantId: String? = nil, connectedTagId: String? = nil, connectedUserId: String? = nil, createdTime: Int? = nil, externalBusinessId: String? = nil, id: String? = nil, partnerAccessToken: String? = nil, partnerAccessTokenExpiry: Int? = nil, partnerMetadata: String? = nil, partnerPrimaryEmail: String? = nil, partnerRefreshToken: String? = nil, partnerRefreshTokenExpiry: Int? = nil, scopes: String? = nil, updatedTime: Int? = nil) {
+        self.additionalId1 = additionalId1
         self.connectedAdvertiserId = connectedAdvertiserId
         self.connectedLbaId = connectedLbaId
+        self.connectedMerchantId = connectedMerchantId
         self.connectedTagId = connectedTagId
+        self.connectedUserId = connectedUserId
+        self.createdTime = createdTime
+        self.externalBusinessId = externalBusinessId
+        self.id = id
         self.partnerAccessToken = partnerAccessToken
-        self.partnerRefreshToken = partnerRefreshToken
-        self.partnerPrimaryEmail = partnerPrimaryEmail
         self.partnerAccessTokenExpiry = partnerAccessTokenExpiry
+        self.partnerMetadata = partnerMetadata
+        self.partnerPrimaryEmail = partnerPrimaryEmail
+        self.partnerRefreshToken = partnerRefreshToken
         self.partnerRefreshTokenExpiry = partnerRefreshTokenExpiry
         self.scopes = scopes
-        self.partnerMetadata = partnerMetadata
-        self.additionalId1 = additionalId1
-        self.createdTime = createdTime
         self.updatedTime = updatedTime
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case id
-        case externalBusinessId = "external_business_id"
-        case connectedMerchantId = "connected_merchant_id"
-        case connectedUserId = "connected_user_id"
+        case additionalId1 = "additional_id_1"
         case connectedAdvertiserId = "connected_advertiser_id"
         case connectedLbaId = "connected_lba_id"
+        case connectedMerchantId = "connected_merchant_id"
         case connectedTagId = "connected_tag_id"
+        case connectedUserId = "connected_user_id"
+        case createdTime = "created_time"
+        case externalBusinessId = "external_business_id"
+        case id
         case partnerAccessToken = "partner_access_token"
-        case partnerRefreshToken = "partner_refresh_token"
-        case partnerPrimaryEmail = "partner_primary_email"
         case partnerAccessTokenExpiry = "partner_access_token_expiry"
+        case partnerMetadata = "partner_metadata"
+        case partnerPrimaryEmail = "partner_primary_email"
+        case partnerRefreshToken = "partner_refresh_token"
         case partnerRefreshTokenExpiry = "partner_refresh_token_expiry"
         case scopes
-        case partnerMetadata = "partner_metadata"
-        case additionalId1 = "additional_id_1"
-        case createdTime = "created_time"
         case updatedTime = "updated_time"
     }
 
@@ -76,22 +76,22 @@ public struct IntegrationRecord: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(externalBusinessId, forKey: .externalBusinessId)
-        try container.encodeIfPresent(connectedMerchantId, forKey: .connectedMerchantId)
-        try container.encodeIfPresent(connectedUserId, forKey: .connectedUserId)
+        try container.encodeIfPresent(additionalId1, forKey: .additionalId1)
         try container.encodeIfPresent(connectedAdvertiserId, forKey: .connectedAdvertiserId)
         try container.encodeIfPresent(connectedLbaId, forKey: .connectedLbaId)
+        try container.encodeIfPresent(connectedMerchantId, forKey: .connectedMerchantId)
         try container.encodeIfPresent(connectedTagId, forKey: .connectedTagId)
+        try container.encodeIfPresent(connectedUserId, forKey: .connectedUserId)
+        try container.encodeIfPresent(createdTime, forKey: .createdTime)
+        try container.encodeIfPresent(externalBusinessId, forKey: .externalBusinessId)
+        try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(partnerAccessToken, forKey: .partnerAccessToken)
-        try container.encodeIfPresent(partnerRefreshToken, forKey: .partnerRefreshToken)
-        try container.encodeIfPresent(partnerPrimaryEmail, forKey: .partnerPrimaryEmail)
         try container.encodeIfPresent(partnerAccessTokenExpiry, forKey: .partnerAccessTokenExpiry)
+        try container.encodeIfPresent(partnerMetadata, forKey: .partnerMetadata)
+        try container.encodeIfPresent(partnerPrimaryEmail, forKey: .partnerPrimaryEmail)
+        try container.encodeIfPresent(partnerRefreshToken, forKey: .partnerRefreshToken)
         try container.encodeIfPresent(partnerRefreshTokenExpiry, forKey: .partnerRefreshTokenExpiry)
         try container.encodeIfPresent(scopes, forKey: .scopes)
-        try container.encodeIfPresent(partnerMetadata, forKey: .partnerMetadata)
-        try container.encodeIfPresent(additionalId1, forKey: .additionalId1)
-        try container.encodeIfPresent(createdTime, forKey: .createdTime)
         try container.encodeIfPresent(updatedTime, forKey: .updatedTime)
     }
 }

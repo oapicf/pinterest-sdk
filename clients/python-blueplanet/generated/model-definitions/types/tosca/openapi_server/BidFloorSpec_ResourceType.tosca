@@ -1,0 +1,67 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BidFloorSpec"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BidFloorSpec"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ActionType = openapi_server.resourceTypes.ActionType
+  Country = openapi_server.resourceTypes.Country
+  CreativeType = openapi_server.resourceTypes.CreativeType
+  Currency = openapi_server.resourceTypes.Currency
+  ObjectiveType = openapi_server.resourceTypes.ObjectiveType
+  OptimizationGoalMetadata = openapi_server.resourceTypes.OptimizationGoalMetadata
+}
+resourceTypes {
+
+  BidFloorSpec {
+    title = BidFloorSpec
+    description = BidFloorSpec
+    derivedFrom = Root
+    properties {
+        billable_event {
+          type = ActionType
+          description = ""
+          optional = true
+        }
+        countries {
+          type = array
+          items.type = Country
+          description = ""
+          optional = false
+        }
+        creative_type {
+          type = CreativeType
+          description = ""
+          optional = false
+        }
+        currency {
+          type = Currency
+          description = ""
+          optional = true
+        }
+        objective_type {
+          type = ObjectiveType
+          description = ""
+          optional = false
+        }
+        optimization_goal_metadata {
+          type = OptimizationGoalMetadata
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BidFloorSpec {
+    title = BidFloorSpec
+    description = BidFloorSpec
+    implements = openapi_server.resourceTypes.BidFloorSpec
+
+  }
+}

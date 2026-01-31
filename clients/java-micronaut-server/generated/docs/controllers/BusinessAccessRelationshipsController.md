@@ -6,12 +6,68 @@ The controller class is defined in **[BusinessAccessRelationshipsController.java
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**brandAccountsCreate**](#brandAccountsCreate) | **POST** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts | Create a Brand Account
+[**brandAccountsUpdate**](#brandAccountsUpdate) | **PATCH** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id} | Update a Brand Account
 [**deleteBusinessMembership**](#deleteBusinessMembership) | **DELETE** /businesses/{business_id}/members | Terminate business memberships
 [**deleteBusinessPartners**](#deleteBusinessPartners) | **DELETE** /businesses/{business_id}/partners | Terminate business partnerships
 [**getBusinessEmployers**](#getBusinessEmployers) | **GET** /businesses/employers | List business employers for user
 [**getBusinessMembers**](#getBusinessMembers) | **GET** /businesses/{business_id}/members | Get business members
 [**getBusinessPartners**](#getBusinessPartners) | **GET** /businesses/{business_id}/partners | Get business partners
+[**systemUserUpdate**](#systemUserUpdate) | **PATCH** /businesses/{business_id}/system_users/{system_user_id} | Update a system user information.
 [**updateBusinessMemberships**](#updateBusinessMemberships) | **PATCH** /businesses/{business_id}/members | Update member&#39;s business role
+
+<a id="brandAccountsCreate"></a>
+# **brandAccountsCreate**
+```java
+Mono<BrandAccountsCreate200Response> BusinessAccessRelationshipsController.brandAccountsCreate(businessHierarchyIdbrandAccountsCreateRequest)
+```
+
+Create a Brand Account
+
+Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**businessHierarchyId** | `String` | business hierarchy node id |
+**brandAccountsCreateRequest** | [**BrandAccountsCreateRequest**](../../docs/models/BrandAccountsCreateRequest.md) |  |
+
+### Return type
+[**BrandAccountsCreate200Response**](../../docs/models/BrandAccountsCreate200Response.md)
+
+### Authorization
+* **pinterest_oauth2**, scopes: `biz_access:read`, `biz_access:write`
+
+### HTTP request headers
+ - **Accepts Content-Type**: `application/json`
+ - **Produces Content-Type**: `application/json`
+
+<a id="brandAccountsUpdate"></a>
+# **brandAccountsUpdate**
+```java
+Mono<BrandAccountsCreate200Response> BusinessAccessRelationshipsController.brandAccountsUpdate(businessHierarchyIdbrandAccountIdbrandAccountsUpdateRequest)
+```
+
+Update a Brand Account
+
+Update an existing Brand Account
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**businessHierarchyId** | `String` | business hierarchy node id |
+**brandAccountId** | `String` | Unique identifier of a brand account. |
+**brandAccountsUpdateRequest** | [**BrandAccountsUpdateRequest**](../../docs/models/BrandAccountsUpdateRequest.md) |  |
+
+### Return type
+[**BrandAccountsCreate200Response**](../../docs/models/BrandAccountsCreate200Response.md)
+
+### Authorization
+* **pinterest_oauth2**, scopes: `biz_access:read`, `biz_access:write`
+
+### HTTP request headers
+ - **Accepts Content-Type**: `application/json`
+ - **Produces Content-Type**: `application/json`
 
 <a id="deleteBusinessMembership"></a>
 # **deleteBusinessMembership**
@@ -94,7 +150,7 @@ Name | Type | Description  | Notes
 <a id="getBusinessMembers"></a>
 # **getBusinessMembers**
 ```java
-Mono<GetBusinessMembers200Response> BusinessAccessRelationshipsController.getBusinessMembers(businessIdassetsSummarybusinessRolesmemberIdsstartIndexbookmarkpageSize)
+Mono<GetBusinessMembers200Response> BusinessAccessRelationshipsController.getBusinessMembers(businessIdfetchSystemUsersassetsSummarybusinessRolesmemberIdsstartIndexbookmarkpageSize)
 ```
 
 Get business members
@@ -105,6 +161,7 @@ Get all members of the specified business. The return response will include the 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **businessId** | `String` | Unique identifier of the requesting business. |
+**fetchSystemUsers** | `Boolean` | Fetches system users if True. Fetches regular user employees if False. | [optional parameter] [default to `false`]
 **assetsSummary** | `Boolean` | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional parameter] [default to `false`]
 **businessRoles** | [**List&lt;MemberBusinessRole&gt;**](../../docs/models/MemberBusinessRole.md) | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. | [optional parameter]
 **memberIds** | `String` | A list of business members ids separated by comma. | [optional parameter]
@@ -151,6 +208,31 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
  - **Accepts Content-Type**: Not defined
+ - **Produces Content-Type**: `application/json`
+
+<a id="systemUserUpdate"></a>
+# **systemUserUpdate**
+```java
+Mono<Object> BusinessAccessRelationshipsController.systemUserUpdate(businessIdsystemUserIdsystemUserUpdateRequest)
+```
+
+Update a system user information.
+
+Update a system user information such as name.
+
+### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**businessId** | `String` | Unique identifier of the requesting business. |
+**systemUserId** | `String` | Unique identifier of a system user. |
+**systemUserUpdateRequest** | [**SystemUserUpdateRequest**](../../docs/models/SystemUserUpdateRequest.md) |  |
+
+
+### Authorization
+* **pinterest_oauth2**, scopes: `biz_access:read`, `biz_access:write`
+
+### HTTP request headers
+ - **Accepts Content-Type**: `application/json`
  - **Produces Content-Type**: `application/json`
 
 <a id="updateBusinessMemberships"></a>

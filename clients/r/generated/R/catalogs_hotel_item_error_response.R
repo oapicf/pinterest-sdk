@@ -8,8 +8,8 @@
 #' @description CatalogsHotelItemErrorResponse Class
 #' @format An \code{R6Class} generator object
 #' @field catalog_type  \link{CatalogsType}
+#' @field errors Array with the errors for the item id requested list(\link{ItemValidationEvent})
 #' @field hotel_id The catalog hotel id in the merchant namespace character [optional]
-#' @field errors Array with the errors for the item id requested list(\link{ItemValidationEvent}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -17,17 +17,17 @@ CatalogsHotelItemErrorResponse <- R6::R6Class(
   "CatalogsHotelItemErrorResponse",
   public = list(
     `catalog_type` = NULL,
-    `hotel_id` = NULL,
     `errors` = NULL,
+    `hotel_id` = NULL,
 
     #' @description
     #' Initialize a new CatalogsHotelItemErrorResponse class.
     #'
     #' @param catalog_type catalog_type
-    #' @param hotel_id The catalog hotel id in the merchant namespace
     #' @param errors Array with the errors for the item id requested
+    #' @param hotel_id The catalog hotel id in the merchant namespace
     #' @param ... Other optional arguments.
-    initialize = function(`catalog_type`, `hotel_id` = NULL, `errors` = NULL, ...) {
+    initialize = function(`catalog_type`, `errors`, `hotel_id` = NULL, ...) {
       if (!missing(`catalog_type`)) {
         if (!(`catalog_type` %in% c())) {
           stop(paste("Error! \"", `catalog_type`, "\" cannot be assigned to `catalog_type`. Must be .", sep = ""))
@@ -35,16 +35,16 @@ CatalogsHotelItemErrorResponse <- R6::R6Class(
         stopifnot(R6::is.R6(`catalog_type`))
         self$`catalog_type` <- `catalog_type`
       }
+      if (!missing(`errors`)) {
+        stopifnot(is.vector(`errors`), length(`errors`) != 0)
+        sapply(`errors`, function(x) stopifnot(R6::is.R6(x)))
+        self$`errors` <- `errors`
+      }
       if (!is.null(`hotel_id`)) {
         if (!(is.character(`hotel_id`) && length(`hotel_id`) == 1)) {
           stop(paste("Error! Invalid data for `hotel_id`. Must be a string:", `hotel_id`))
         }
         self$`hotel_id` <- `hotel_id`
-      }
-      if (!is.null(`errors`)) {
-        stopifnot(is.vector(`errors`), length(`errors`) != 0)
-        sapply(`errors`, function(x) stopifnot(R6::is.R6(x)))
-        self$`errors` <- `errors`
       }
     },
 
@@ -83,13 +83,13 @@ CatalogsHotelItemErrorResponse <- R6::R6Class(
         CatalogsHotelItemErrorResponseObject[["catalog_type"]] <-
           self$`catalog_type`$toSimpleType()
       }
-      if (!is.null(self$`hotel_id`)) {
-        CatalogsHotelItemErrorResponseObject[["hotel_id"]] <-
-          self$`hotel_id`
-      }
       if (!is.null(self$`errors`)) {
         CatalogsHotelItemErrorResponseObject[["errors"]] <-
           lapply(self$`errors`, function(x) x$toSimpleType())
+      }
+      if (!is.null(self$`hotel_id`)) {
+        CatalogsHotelItemErrorResponseObject[["hotel_id"]] <-
+          self$`hotel_id`
       }
       return(CatalogsHotelItemErrorResponseObject)
     },
@@ -106,11 +106,11 @@ CatalogsHotelItemErrorResponse <- R6::R6Class(
         `catalog_type_object`$fromJSON(jsonlite::toJSON(this_object$`catalog_type`, auto_unbox = TRUE, digits = NA))
         self$`catalog_type` <- `catalog_type_object`
       }
-      if (!is.null(this_object$`hotel_id`)) {
-        self$`hotel_id` <- this_object$`hotel_id`
-      }
       if (!is.null(this_object$`errors`)) {
         self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[ItemValidationEvent]", loadNamespace("openapi"))
+      }
+      if (!is.null(this_object$`hotel_id`)) {
+        self$`hotel_id` <- this_object$`hotel_id`
       }
       self
     },
@@ -134,8 +134,8 @@ CatalogsHotelItemErrorResponse <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`catalog_type` <- CatalogsType$new()$fromJSON(jsonlite::toJSON(this_object$`catalog_type`, auto_unbox = TRUE, digits = NA))
-      self$`hotel_id` <- this_object$`hotel_id`
       self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[ItemValidationEvent]", loadNamespace("openapi"))
+      self$`hotel_id` <- this_object$`hotel_id`
       self
     },
 
@@ -150,6 +150,13 @@ CatalogsHotelItemErrorResponse <- R6::R6Class(
         stopifnot(R6::is.R6(input_json$`catalog_type`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsHotelItemErrorResponse: the required field `catalog_type` is missing."))
+      }
+      # check the required field `errors`
+      if (!is.null(input_json$`errors`)) {
+        stopifnot(is.vector(input_json$`errors`), length(input_json$`errors`) != 0)
+        tmp <- sapply(input_json$`errors`, function(x) stopifnot(R6::is.R6(x)))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsHotelItemErrorResponse: the required field `errors` is missing."))
       }
     },
 
@@ -171,6 +178,11 @@ CatalogsHotelItemErrorResponse <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `errors` is null
+      if (is.null(self$`errors`)) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -183,6 +195,11 @@ CatalogsHotelItemErrorResponse <- R6::R6Class(
       # check if the required `catalog_type` is null
       if (is.null(self$`catalog_type`)) {
         invalid_fields["catalog_type"] <- "Non-nullable required field `catalog_type` cannot be null."
+      }
+
+      # check if the required `errors` is null
+      if (is.null(self$`errors`)) {
+        invalid_fields["errors"] <- "Non-nullable required field `errors` cannot be null."
       }
 
       invalid_fields

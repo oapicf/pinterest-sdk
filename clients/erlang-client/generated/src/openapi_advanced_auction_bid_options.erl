@@ -5,16 +5,16 @@
 -export_type([openapi_advanced_auction_bid_options/0]).
 
 -type openapi_advanced_auction_bid_options() ::
-    #{ 'bid_in_micro_currency' => integer(),
-       'app_type_multipliers' => openapi_app_type_multipliers:openapi_app_type_multipliers(),
+    #{ 'app_type_multipliers' => openapi_app_type_multipliers:openapi_app_type_multipliers(),
+       'bid_in_micro_currency' => integer(),
        'placement_multipliers' => openapi_placement_multipliers:openapi_placement_multipliers()
      }.
 
-encode(#{ 'bid_in_micro_currency' := BidInMicroCurrency,
-          'app_type_multipliers' := AppTypeMultipliers,
+encode(#{ 'app_type_multipliers' := AppTypeMultipliers,
+          'bid_in_micro_currency' := BidInMicroCurrency,
           'placement_multipliers' := PlacementMultipliers
         }) ->
-    #{ 'bid_in_micro_currency' => BidInMicroCurrency,
-       'app_type_multipliers' => AppTypeMultipliers,
+    #{ 'app_type_multipliers' => AppTypeMultipliers,
+       'bid_in_micro_currency' => BidInMicroCurrency,
        'placement_multipliers' => PlacementMultipliers
      }.

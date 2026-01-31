@@ -21,15 +21,15 @@
       "doc": ""
     },
     {
+      "name": "audience_type",
+      "type": "model.AudienceType",
+      "doc": "<a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive."
+    },
+    {
       "name": "description",
       "type": ["null", "string"],
       "doc": "Audience description.",
       "default": null
-    },
-    {
-      "name": "audience_type",
-      "type": "model.AudienceType",
-      "doc": "<a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive."
     }
   ]
 

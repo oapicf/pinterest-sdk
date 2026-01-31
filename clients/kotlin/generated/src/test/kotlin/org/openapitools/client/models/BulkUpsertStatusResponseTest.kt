@@ -26,16 +26,16 @@ class BulkUpsertStatusResponseTest : ShouldSpec() {
         // uncomment below to create an instance of BulkUpsertStatusResponse
         //val modelInstance = BulkUpsertStatusResponse()
 
-        // to test the property `status`
-        should("test status") {
-            // uncomment below to test the property
-            //modelInstance.status shouldBe ("TODO")
-        }
-
         // to test the property `resultUrl`
         should("test resultUrl") {
             // uncomment below to test the property
             //modelInstance.resultUrl shouldBe ("TODO")
+        }
+
+        // to test the property `status`
+        should("test status") {
+            // uncomment below to test the property
+            //modelInstance.status shouldBe ("TODO")
         }
 
     }

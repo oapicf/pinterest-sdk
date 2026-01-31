@@ -8,11 +8,11 @@
 #' @description ConversionEventsDataInnerCustomDataContentsInner Class
 #' @format An \code{R6Class} generator object
 #' @field id The id of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section). character [optional]
+#' @field item_brand The brand of a product. character [optional]
+#' @field item_category The category of a product. character [optional]
+#' @field item_name The name of a product. character [optional]
 #' @field item_price The price of a product. Accepted as a string in the request; it will be parsed into a double. This is the original item value before any discount. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section). character [optional]
 #' @field quantity The amount of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section). integer [optional]
-#' @field item_name The name of a product. character [optional]
-#' @field item_category The category of a product. character [optional]
-#' @field item_brand The brand of a product. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -20,28 +20,46 @@ ConversionEventsDataInnerCustomDataContentsInner <- R6::R6Class(
   "ConversionEventsDataInnerCustomDataContentsInner",
   public = list(
     `id` = NULL,
+    `item_brand` = NULL,
+    `item_category` = NULL,
+    `item_name` = NULL,
     `item_price` = NULL,
     `quantity` = NULL,
-    `item_name` = NULL,
-    `item_category` = NULL,
-    `item_brand` = NULL,
 
     #' @description
     #' Initialize a new ConversionEventsDataInnerCustomDataContentsInner class.
     #'
     #' @param id The id of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
+    #' @param item_brand The brand of a product.
+    #' @param item_category The category of a product.
+    #' @param item_name The name of a product.
     #' @param item_price The price of a product. Accepted as a string in the request; it will be parsed into a double. This is the original item value before any discount. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
     #' @param quantity The amount of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
-    #' @param item_name The name of a product.
-    #' @param item_category The category of a product.
-    #' @param item_brand The brand of a product.
     #' @param ... Other optional arguments.
-    initialize = function(`id` = NULL, `item_price` = NULL, `quantity` = NULL, `item_name` = NULL, `item_category` = NULL, `item_brand` = NULL, ...) {
+    initialize = function(`id` = NULL, `item_brand` = NULL, `item_category` = NULL, `item_name` = NULL, `item_price` = NULL, `quantity` = NULL, ...) {
       if (!is.null(`id`)) {
         if (!(is.character(`id`) && length(`id`) == 1)) {
           stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
         }
         self$`id` <- `id`
+      }
+      if (!is.null(`item_brand`)) {
+        if (!(is.character(`item_brand`) && length(`item_brand`) == 1)) {
+          stop(paste("Error! Invalid data for `item_brand`. Must be a string:", `item_brand`))
+        }
+        self$`item_brand` <- `item_brand`
+      }
+      if (!is.null(`item_category`)) {
+        if (!(is.character(`item_category`) && length(`item_category`) == 1)) {
+          stop(paste("Error! Invalid data for `item_category`. Must be a string:", `item_category`))
+        }
+        self$`item_category` <- `item_category`
+      }
+      if (!is.null(`item_name`)) {
+        if (!(is.character(`item_name`) && length(`item_name`) == 1)) {
+          stop(paste("Error! Invalid data for `item_name`. Must be a string:", `item_name`))
+        }
+        self$`item_name` <- `item_name`
       }
       if (!is.null(`item_price`)) {
         if (!(is.character(`item_price`) && length(`item_price`) == 1)) {
@@ -54,24 +72,6 @@ ConversionEventsDataInnerCustomDataContentsInner <- R6::R6Class(
           stop(paste("Error! Invalid data for `quantity`. Must be an integer:", `quantity`))
         }
         self$`quantity` <- `quantity`
-      }
-      if (!is.null(`item_name`)) {
-        if (!(is.character(`item_name`) && length(`item_name`) == 1)) {
-          stop(paste("Error! Invalid data for `item_name`. Must be a string:", `item_name`))
-        }
-        self$`item_name` <- `item_name`
-      }
-      if (!is.null(`item_category`)) {
-        if (!(is.character(`item_category`) && length(`item_category`) == 1)) {
-          stop(paste("Error! Invalid data for `item_category`. Must be a string:", `item_category`))
-        }
-        self$`item_category` <- `item_category`
-      }
-      if (!is.null(`item_brand`)) {
-        if (!(is.character(`item_brand`) && length(`item_brand`) == 1)) {
-          stop(paste("Error! Invalid data for `item_brand`. Must be a string:", `item_brand`))
-        }
-        self$`item_brand` <- `item_brand`
       }
     },
 
@@ -110,6 +110,18 @@ ConversionEventsDataInnerCustomDataContentsInner <- R6::R6Class(
         ConversionEventsDataInnerCustomDataContentsInnerObject[["id"]] <-
           self$`id`
       }
+      if (!is.null(self$`item_brand`)) {
+        ConversionEventsDataInnerCustomDataContentsInnerObject[["item_brand"]] <-
+          self$`item_brand`
+      }
+      if (!is.null(self$`item_category`)) {
+        ConversionEventsDataInnerCustomDataContentsInnerObject[["item_category"]] <-
+          self$`item_category`
+      }
+      if (!is.null(self$`item_name`)) {
+        ConversionEventsDataInnerCustomDataContentsInnerObject[["item_name"]] <-
+          self$`item_name`
+      }
       if (!is.null(self$`item_price`)) {
         ConversionEventsDataInnerCustomDataContentsInnerObject[["item_price"]] <-
           self$`item_price`
@@ -117,18 +129,6 @@ ConversionEventsDataInnerCustomDataContentsInner <- R6::R6Class(
       if (!is.null(self$`quantity`)) {
         ConversionEventsDataInnerCustomDataContentsInnerObject[["quantity"]] <-
           self$`quantity`
-      }
-      if (!is.null(self$`item_name`)) {
-        ConversionEventsDataInnerCustomDataContentsInnerObject[["item_name"]] <-
-          self$`item_name`
-      }
-      if (!is.null(self$`item_category`)) {
-        ConversionEventsDataInnerCustomDataContentsInnerObject[["item_category"]] <-
-          self$`item_category`
-      }
-      if (!is.null(self$`item_brand`)) {
-        ConversionEventsDataInnerCustomDataContentsInnerObject[["item_brand"]] <-
-          self$`item_brand`
       }
       return(ConversionEventsDataInnerCustomDataContentsInnerObject)
     },
@@ -143,20 +143,20 @@ ConversionEventsDataInnerCustomDataContentsInner <- R6::R6Class(
       if (!is.null(this_object$`id`)) {
         self$`id` <- this_object$`id`
       }
+      if (!is.null(this_object$`item_brand`)) {
+        self$`item_brand` <- this_object$`item_brand`
+      }
+      if (!is.null(this_object$`item_category`)) {
+        self$`item_category` <- this_object$`item_category`
+      }
+      if (!is.null(this_object$`item_name`)) {
+        self$`item_name` <- this_object$`item_name`
+      }
       if (!is.null(this_object$`item_price`)) {
         self$`item_price` <- this_object$`item_price`
       }
       if (!is.null(this_object$`quantity`)) {
         self$`quantity` <- this_object$`quantity`
-      }
-      if (!is.null(this_object$`item_name`)) {
-        self$`item_name` <- this_object$`item_name`
-      }
-      if (!is.null(this_object$`item_category`)) {
-        self$`item_category` <- this_object$`item_category`
-      }
-      if (!is.null(this_object$`item_brand`)) {
-        self$`item_brand` <- this_object$`item_brand`
       }
       self
     },
@@ -180,11 +180,11 @@ ConversionEventsDataInnerCustomDataContentsInner <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`id` <- this_object$`id`
+      self$`item_brand` <- this_object$`item_brand`
+      self$`item_category` <- this_object$`item_category`
+      self$`item_name` <- this_object$`item_name`
       self$`item_price` <- this_object$`item_price`
       self$`quantity` <- this_object$`quantity`
-      self$`item_name` <- this_object$`item_name`
-      self$`item_category` <- this_object$`item_category`
-      self$`item_brand` <- this_object$`item_brand`
       self
     },
 

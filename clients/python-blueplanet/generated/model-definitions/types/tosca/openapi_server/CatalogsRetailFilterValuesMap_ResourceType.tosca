@@ -1,0 +1,178 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsRetailFilterValuesMap"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsRetailFilterValuesMap"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CatalogsRetailFilterValuesMap {
+    title = CatalogsRetailFilterValuesMap
+    description = CatalogsRetailFilterValuesMap
+    derivedFrom = Root
+    properties {
+        ad_image_tags {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        ad_video_tags {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        availability {
+          type = array
+          items.type =  string
+          description = ""
+          enum = ["IN_STOCK", "OUT_OF_STOCK", "PREORDER", "UNAVAILABLE"]
+          optional = false
+        }
+        brand {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        condition {
+          type = array
+          items.type =  string
+          description = ""
+          enum = ["NEW", "USED", "REFURBISHED"]
+          optional = false
+        }
+        custom_label_0 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        custom_label_1 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        custom_label_2 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        custom_label_3 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        custom_label_4 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        gender {
+          type = array
+          items.type =  string
+          description = ""
+          enum = ["FEMALE", "MALE", "UNISEX"]
+          optional = false
+        }
+        google_product_category_0 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        google_product_category_1 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        google_product_category_2 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        google_product_category_3 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        google_product_category_4 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        google_product_category_5 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        google_product_category_6 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        media_type {
+          type = array
+          items.type =  string
+          description = ""
+          enum = ["IMAGE", "VIDEO"]
+          optional = false
+        }
+        product_type_0 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        product_type_1 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        product_type_2 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        product_type_3 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+        product_type_4 {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsRetailFilterValuesMap {
+    title = CatalogsRetailFilterValuesMap
+    description = CatalogsRetailFilterValuesMap
+    implements = openapi_server.resourceTypes.CatalogsRetailFilterValuesMap
+
+  }
+}

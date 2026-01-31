@@ -11,7 +11,7 @@ import javax.validation.Valid;
 /**
  * Request object for updating a hotel product group.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsHotelProductGroupUpdateRequest   {
   /**
@@ -47,10 +47,6 @@ public class CatalogsHotelProductGroupUpdateRequest   {
   
   private CatalogTypeEnum catalogType;
 
-  @JsonProperty("name")
-  
-  private String name;
-
   @JsonProperty("description")
   
   private String description;
@@ -59,6 +55,10 @@ public class CatalogsHotelProductGroupUpdateRequest   {
   @Valid
 
   private CatalogsHotelProductGroupFilters filters;
+
+  @JsonProperty("name")
+  
+  private String name;
 
   public CatalogsHotelProductGroupUpdateRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
@@ -75,23 +75,6 @@ public class CatalogsHotelProductGroupUpdateRequest   {
 
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
-  }
-
-  public CatalogsHotelProductGroupUpdateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Get name
-   * @return name
-  **/
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
   }
 
   public CatalogsHotelProductGroupUpdateRequest description(String description) {
@@ -128,6 +111,23 @@ public class CatalogsHotelProductGroupUpdateRequest   {
     this.filters = filters;
   }
 
+  public CatalogsHotelProductGroupUpdateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -139,14 +139,14 @@ public class CatalogsHotelProductGroupUpdateRequest   {
     }
     CatalogsHotelProductGroupUpdateRequest catalogsHotelProductGroupUpdateRequest = (CatalogsHotelProductGroupUpdateRequest) o;
     return Objects.equals(catalogType, catalogsHotelProductGroupUpdateRequest.catalogType) &&
-        Objects.equals(name, catalogsHotelProductGroupUpdateRequest.name) &&
         Objects.equals(description, catalogsHotelProductGroupUpdateRequest.description) &&
-        Objects.equals(filters, catalogsHotelProductGroupUpdateRequest.filters);
+        Objects.equals(filters, catalogsHotelProductGroupUpdateRequest.filters) &&
+        Objects.equals(name, catalogsHotelProductGroupUpdateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters);
+    return Objects.hash(catalogType, description, filters, name);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -156,9 +156,9 @@ public class CatalogsHotelProductGroupUpdateRequest   {
     sb.append("class CatalogsHotelProductGroupUpdateRequest {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -9,13 +9,13 @@
   {
    (ds/opt :lead_form_id) string?
    (ds/opt :webhook_url) string?
-   (ds/opt :id) string?
-   (ds/opt :user_account_id) string?
    (ds/opt :ad_account_id) string?
    (ds/opt :api_version) string?
-   (ds/opt :cryptographic_key) string?
-   (ds/opt :cryptographic_algorithm) string?
    (ds/opt :created_time) int?
+   (ds/opt :cryptographic_algorithm) string?
+   (ds/opt :cryptographic_key) string?
+   (ds/opt :id) string?
+   (ds/opt :user_account_id) string?
    })
 
 (def ad-account-get-subscription-response-spec

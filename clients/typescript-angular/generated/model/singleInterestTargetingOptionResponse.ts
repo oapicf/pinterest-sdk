@@ -10,9 +10,9 @@
 
 
 export interface SingleInterestTargetingOptionResponse { 
-    id?: string;
-    name?: string;
     child_interests?: Array<string>;
+    id?: string;
     level?: number;
+    name?: string;
 }
 

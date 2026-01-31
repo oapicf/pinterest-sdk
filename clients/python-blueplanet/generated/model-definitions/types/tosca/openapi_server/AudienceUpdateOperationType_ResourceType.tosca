@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AudienceUpdateOperationType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AudienceUpdateOperationType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AudienceUpdateOperationType {
+    title = AudienceUpdateOperationType
+    description = AudienceUpdateOperationType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  AudienceUpdateOperationType {
+    title = AudienceUpdateOperationType
+    description = AudienceUpdateOperationType
+    implements = openapi_server.resourceTypes.AudienceUpdateOperationType
+
+  }
+}

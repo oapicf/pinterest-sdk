@@ -15,18 +15,20 @@ Name | Type | Description | Notes
 **carouselIosDeepLinks** | `List&lt;String&gt;` | Comma-separated deep links for the carousel pin on iOS. |  [optional property]
 **clickTrackingUrl** | `String` | Tracking url for the ad clicks. |  [optional property]
 **creativeType** | `CreativeType` |  |  [optional property]
+**customizableCtaType** | `CustomizableCTAType` |  |  [optional property]
 **destinationUrl** | `String` | Destination URL. |  [optional property]
+**disclosureType** | `DisclosureType` |  |  [optional property]
+**disclosureUrl** | `String` | URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure. |  [optional property]
+**gridClickType** | `GridClickType` |  |  [optional property]
 **iosDeepLink** | `String` | Deep link URL for iOS devices. |  [optional property]
 **isPinDeleted** | `Boolean` | Is original pin deleted? |  [optional property]
 **isRemovable** | `Boolean` | Is pin repinnable? |  [optional property]
+**leadFormId** | `String` | Lead form ID for lead ad generation. |  [optional property]
 **name** | `String` | Name of the ad - 255 chars max. |  [optional property]
+**quizPinData** | [`QuizPinData`](QuizPinData.md) | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. |  [optional property]
 **status** | `EntityStatus` |  |  [optional property]
 **trackingUrls** | [`TrackingUrls`](TrackingUrls.md) |  |  [optional property]
 **viewTrackingUrl** | `String` | Tracking URL for ad impressions. |  [optional property]
-**leadFormId** | `String` | Lead form ID for lead ad generation. |  [optional property]
-**gridClickType** | `GridClickType` |  |  [optional property]
-**customizableCtaType** | [**CustomizableCtaTypeEnum**](#CustomizableCtaTypeEnum) | Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only) |  [optional property]
-**quizPinData** | [`QuizPinData`](QuizPinData.md) | Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. |  [optional property]
 **pinId** | `String` | Pin ID. |  [optional property]
 **adAccountId** | `String` | The ID of the advertiser that this ad belongs to. |  [optional property]
 **campaignId** | `String` | ID of the ad campaign that contains this ad. |  [optional property]
@@ -36,9 +38,9 @@ Name | Type | Description | Notes
 **rejectedReasons** | [**List&lt;RejectedReasonsEnum&gt;**](#List&lt;RejectedReasonsEnum&gt;) | Enum reason why the pin was rejected. Returned if &lt;code&gt;review_status&lt;/code&gt; is \&quot;REJECTED\&quot;. |  [optional property]
 **rejectionLabels** | `List&lt;String&gt;` | Text reason why the pin was rejected. Returned if &lt;code&gt;review_status&lt;/code&gt; is \&quot;REJECTED\&quot;. |  [optional property]
 **reviewStatus** | [**ReviewStatusEnum**](#ReviewStatusEnum) | Ad review status |  [optional property]
+**summaryStatus** | `PinPromotionSummaryStatus` | Ad summary status |  [optional property]
 **type** | `String` | Always \&quot;ad\&quot;. |  [optional property]
 **updatedTime** | `Integer` | Last update time. Unix timestamp in seconds. |  [optional property]
-**summaryStatus** | `PinPromotionSummaryStatus` | Ad summary status |  [optional property]
 
 
 
@@ -57,28 +59,8 @@ Name | Type | Description | Notes
 
 
 
-## CustomizableCtaTypeEnum
 
-Name | Value
----- | -----
-GET_OFFER | `"GET_OFFER"`
-LEARN_MORE | `"LEARN_MORE"`
-ORDER_NOW | `"ORDER_NOW"`
-SHOP_NOW | `"SHOP_NOW"`
-SIGN_UP | `"SIGN_UP"`
-SUBSCRIBE | `"SUBSCRIBE"`
-BUY_NOW | `"BUY_NOW"`
-CONTACT_US | `"CONTACT_US"`
-GET_QUOTE | `"GET_QUOTE"`
-VISIT_SITE | `"VISIT_SITE"`
-APPLY_NOW | `"APPLY_NOW"`
-BOOK_NOW | `"BOOK_NOW"`
-REQUEST_DEMO | `"REQUEST_DEMO"`
-REGISTER_NOW | `"REGISTER_NOW"`
-FIND_A_DEALER | `"FIND_A_DEALER"`
-ADD_TO_CART | `"ADD_TO_CART"`
-WATCH_NOW | `"WATCH_NOW"`
-READ_MORE | `"READ_MORE"`
+
 
 
 

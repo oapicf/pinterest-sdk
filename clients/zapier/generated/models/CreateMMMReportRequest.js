@@ -14,16 +14,10 @@ module.exports = {
                 ...TargetingAdvertiserCountry.fields(`${keyPrefix}countries`, isInput),
             },
             {
-                key: `${keyPrefix}report_name`,
-                label: `Name of the Marketing Mix Modeling (MMM) report - [${labelPrefix}report_name]`,
-                required: true,
+                key: `${keyPrefix}columns`,
+                list: true,
                 type: 'string',
-            },
-            {
-                key: `${keyPrefix}start_date`,
-                label: `Metric report start date (UTC). Format: YYYY-MM-DD - [${labelPrefix}start_date]`,
-                required: true,
-                type: 'string',
+                ...MMMReportingColumn.fields(`${keyPrefix}columns`, isInput),
             },
             {
                 key: `${keyPrefix}end_date`,
@@ -52,16 +46,22 @@ module.exports = {
                 ],
             },
             {
+                key: `${keyPrefix}report_name`,
+                label: `Name of the Marketing Mix Modeling (MMM) report - [${labelPrefix}report_name]`,
+                required: true,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}start_date`,
+                label: `Metric report start date (UTC). Format: YYYY-MM-DD - [${labelPrefix}start_date]`,
+                required: true,
+                type: 'string',
+            },
+            {
                 key: `${keyPrefix}targeting_types`,
                 list: true,
                 type: 'string',
                 ...MMMReportingTargetingType.fields(`${keyPrefix}targeting_types`, isInput),
-            },
-            {
-                key: `${keyPrefix}columns`,
-                list: true,
-                type: 'string',
-                ...MMMReportingColumn.fields(`${keyPrefix}columns`, isInput),
             },
         ]
     },
@@ -69,13 +69,13 @@ module.exports = {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'countries': utils.childMapping(bundle.inputData?.[`${keyPrefix}countries`], `${keyPrefix}countries`, TargetingAdvertiserCountry),
-            'report_name': bundle.inputData?.[`${keyPrefix}report_name`],
-            'start_date': bundle.inputData?.[`${keyPrefix}start_date`],
+            'columns': utils.childMapping(bundle.inputData?.[`${keyPrefix}columns`], `${keyPrefix}columns`, MMMReportingColumn),
             'end_date': bundle.inputData?.[`${keyPrefix}end_date`],
             'granularity': bundle.inputData?.[`${keyPrefix}granularity`],
             'level': bundle.inputData?.[`${keyPrefix}level`],
+            'report_name': bundle.inputData?.[`${keyPrefix}report_name`],
+            'start_date': bundle.inputData?.[`${keyPrefix}start_date`],
             'targeting_types': utils.childMapping(bundle.inputData?.[`${keyPrefix}targeting_types`], `${keyPrefix}targeting_types`, MMMReportingTargetingType),
-            'columns': utils.childMapping(bundle.inputData?.[`${keyPrefix}columns`], `${keyPrefix}columns`, MMMReportingColumn),
         }
     },
 }

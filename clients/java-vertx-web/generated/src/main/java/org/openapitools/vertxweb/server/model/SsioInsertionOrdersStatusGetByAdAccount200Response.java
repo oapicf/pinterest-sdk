@@ -12,24 +12,15 @@ import org.openapitools.vertxweb.server.model.SSIOInsertionOrderStatus;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SsioInsertionOrdersStatusGetByAdAccount200Response   {
   
-  private List<SSIOInsertionOrderStatus> items = new ArrayList<>();
   private String bookmark;
+  private List<SSIOInsertionOrderStatus> items = new ArrayList<>();
 
   public SsioInsertionOrdersStatusGetByAdAccount200Response () {
 
   }
 
-  public SsioInsertionOrdersStatusGetByAdAccount200Response (List<SSIOInsertionOrderStatus> items, String bookmark) {
-    this.items = items;
+  public SsioInsertionOrdersStatusGetByAdAccount200Response (String bookmark, List<SSIOInsertionOrderStatus> items) {
     this.bookmark = bookmark;
-  }
-
-    
-  @JsonProperty("items")
-  public List<SSIOInsertionOrderStatus> getItems() {
-    return items;
-  }
-  public void setItems(List<SSIOInsertionOrderStatus> items) {
     this.items = items;
   }
 
@@ -42,6 +33,15 @@ public class SsioInsertionOrdersStatusGetByAdAccount200Response   {
     this.bookmark = bookmark;
   }
 
+    
+  @JsonProperty("items")
+  public List<SSIOInsertionOrderStatus> getItems() {
+    return items;
+  }
+  public void setItems(List<SSIOInsertionOrderStatus> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -52,13 +52,13 @@ public class SsioInsertionOrdersStatusGetByAdAccount200Response   {
       return false;
     }
     SsioInsertionOrdersStatusGetByAdAccount200Response ssioInsertionOrdersStatusGetByAdAccount200Response = (SsioInsertionOrdersStatusGetByAdAccount200Response) o;
-    return Objects.equals(items, ssioInsertionOrdersStatusGetByAdAccount200Response.items) &&
-        Objects.equals(bookmark, ssioInsertionOrdersStatusGetByAdAccount200Response.bookmark);
+    return Objects.equals(bookmark, ssioInsertionOrdersStatusGetByAdAccount200Response.bookmark) &&
+        Objects.equals(items, ssioInsertionOrdersStatusGetByAdAccount200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -66,8 +66,8 @@ public class SsioInsertionOrdersStatusGetByAdAccount200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SsioInsertionOrdersStatusGetByAdAccount200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

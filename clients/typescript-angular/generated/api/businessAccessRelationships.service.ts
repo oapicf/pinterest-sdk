@@ -17,6 +17,12 @@ import { Observable }                                        from 'rxjs';
 import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
+import { BrandAccountsCreate200Response } from '../model/brandAccountsCreate200Response';
+// @ts-ignore
+import { BrandAccountsCreateRequest } from '../model/brandAccountsCreateRequest';
+// @ts-ignore
+import { BrandAccountsUpdateRequest } from '../model/brandAccountsUpdateRequest';
+// @ts-ignore
 import { DeletePartnersRequest } from '../model/deletePartnersRequest';
 // @ts-ignore
 import { DeletePartnersResponse } from '../model/deletePartnersResponse';
@@ -34,6 +40,8 @@ import { MemberBusinessRole } from '../model/memberBusinessRole';
 import { MembersToDeleteBody } from '../model/membersToDeleteBody';
 // @ts-ignore
 import { PartnerType } from '../model/partnerType';
+// @ts-ignore
+import { SystemUserUpdateRequest } from '../model/systemUserUpdateRequest';
 // @ts-ignore
 import { UpdateMemberBusinessRoleBody } from '../model/updateMemberBusinessRoleBody';
 // @ts-ignore
@@ -53,6 +61,158 @@ export class BusinessAccessRelationshipsService extends BaseService {
 
     constructor(protected httpClient: HttpClient, @Optional() @Inject(BASE_PATH) basePath: string|string[], @Optional() configuration?: Configuration) {
         super(basePath, configuration);
+    }
+
+    /**
+     * Create a Brand Account
+     * Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+     * @endpoint post /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts
+     * @param businessHierarchyId business hierarchy node id
+     * @param brandAccountsCreateRequest 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     * @param options additional options
+     */
+    public brandAccountsCreate(businessHierarchyId: string, brandAccountsCreateRequest: BrandAccountsCreateRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BrandAccountsCreate200Response>;
+    public brandAccountsCreate(businessHierarchyId: string, brandAccountsCreateRequest: BrandAccountsCreateRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BrandAccountsCreate200Response>>;
+    public brandAccountsCreate(businessHierarchyId: string, brandAccountsCreateRequest: BrandAccountsCreateRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BrandAccountsCreate200Response>>;
+    public brandAccountsCreate(businessHierarchyId: string, brandAccountsCreateRequest: BrandAccountsCreateRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (businessHierarchyId === null || businessHierarchyId === undefined) {
+            throw new Error('Required parameter businessHierarchyId was null or undefined when calling brandAccountsCreate.');
+        }
+        if (brandAccountsCreateRequest === null || brandAccountsCreateRequest === undefined) {
+            throw new Error('Required parameter brandAccountsCreateRequest was null or undefined when calling brandAccountsCreate.');
+        }
+
+        let localVarHeaders = this.defaultHeaders;
+
+        // authentication (pinterest_oauth2) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'application/json'
+        ]);
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
+
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
+
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
+        }
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/business_access/business_hierarchy/${this.configuration.encodeParam({name: "businessHierarchyId", value: businessHierarchyId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/brand_accounts`;
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<BrandAccountsCreate200Response>('post', `${basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                body: brandAccountsCreateRequest,
+                responseType: <any>responseType_,
+                ...(withCredentials ? { withCredentials } : {}),
+                headers: localVarHeaders,
+                observe: observe,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Update a Brand Account
+     * Update an existing Brand Account
+     * @endpoint patch /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}
+     * @param businessHierarchyId business hierarchy node id
+     * @param brandAccountId Unique identifier of a brand account.
+     * @param brandAccountsUpdateRequest 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     * @param options additional options
+     */
+    public brandAccountsUpdate(businessHierarchyId: string, brandAccountId: string, brandAccountsUpdateRequest: BrandAccountsUpdateRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BrandAccountsCreate200Response>;
+    public brandAccountsUpdate(businessHierarchyId: string, brandAccountId: string, brandAccountsUpdateRequest: BrandAccountsUpdateRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BrandAccountsCreate200Response>>;
+    public brandAccountsUpdate(businessHierarchyId: string, brandAccountId: string, brandAccountsUpdateRequest: BrandAccountsUpdateRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BrandAccountsCreate200Response>>;
+    public brandAccountsUpdate(businessHierarchyId: string, brandAccountId: string, brandAccountsUpdateRequest: BrandAccountsUpdateRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (businessHierarchyId === null || businessHierarchyId === undefined) {
+            throw new Error('Required parameter businessHierarchyId was null or undefined when calling brandAccountsUpdate.');
+        }
+        if (brandAccountId === null || brandAccountId === undefined) {
+            throw new Error('Required parameter brandAccountId was null or undefined when calling brandAccountsUpdate.');
+        }
+        if (brandAccountsUpdateRequest === null || brandAccountsUpdateRequest === undefined) {
+            throw new Error('Required parameter brandAccountsUpdateRequest was null or undefined when calling brandAccountsUpdate.');
+        }
+
+        let localVarHeaders = this.defaultHeaders;
+
+        // authentication (pinterest_oauth2) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'application/json'
+        ]);
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
+
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
+
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
+        }
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/business_access/business_hierarchy/${this.configuration.encodeParam({name: "businessHierarchyId", value: businessHierarchyId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/brand_accounts/${this.configuration.encodeParam({name: "brandAccountId", value: brandAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<BrandAccountsCreate200Response>('patch', `${basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                body: brandAccountsUpdateRequest,
+                responseType: <any>responseType_,
+                ...(withCredentials ? { withCredentials } : {}),
+                headers: localVarHeaders,
+                observe: observe,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
+                reportProgress: reportProgress
+            }
+        );
     }
 
     /**
@@ -287,6 +447,7 @@ export class BusinessAccessRelationshipsService extends BaseService {
      * Get all members of the specified business. The return response will include the member\&#39;s business_role and assets they have access to if assets_summary&#x3D;TRUE
      * @endpoint get /businesses/{business_id}/members
      * @param businessId Unique identifier of the requesting business.
+     * @param fetchSystemUsers Fetches system users if True. Fetches regular user employees if False.
      * @param assetsSummary Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
      * @param businessRoles A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.
      * @param memberIds A list of business members ids separated by comma.
@@ -297,15 +458,24 @@ export class BusinessAccessRelationshipsService extends BaseService {
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public getBusinessMembers(businessId: string, assetsSummary?: boolean, businessRoles?: Array<MemberBusinessRole>, memberIds?: string, startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<GetBusinessMembers200Response>;
-    public getBusinessMembers(businessId: string, assetsSummary?: boolean, businessRoles?: Array<MemberBusinessRole>, memberIds?: string, startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<GetBusinessMembers200Response>>;
-    public getBusinessMembers(businessId: string, assetsSummary?: boolean, businessRoles?: Array<MemberBusinessRole>, memberIds?: string, startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<GetBusinessMembers200Response>>;
-    public getBusinessMembers(businessId: string, assetsSummary?: boolean, businessRoles?: Array<MemberBusinessRole>, memberIds?: string, startIndex?: number, bookmark?: string, pageSize?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public getBusinessMembers(businessId: string, fetchSystemUsers?: boolean, assetsSummary?: boolean, businessRoles?: Array<MemberBusinessRole>, memberIds?: string, startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<GetBusinessMembers200Response>;
+    public getBusinessMembers(businessId: string, fetchSystemUsers?: boolean, assetsSummary?: boolean, businessRoles?: Array<MemberBusinessRole>, memberIds?: string, startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<GetBusinessMembers200Response>>;
+    public getBusinessMembers(businessId: string, fetchSystemUsers?: boolean, assetsSummary?: boolean, businessRoles?: Array<MemberBusinessRole>, memberIds?: string, startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<GetBusinessMembers200Response>>;
+    public getBusinessMembers(businessId: string, fetchSystemUsers?: boolean, assetsSummary?: boolean, businessRoles?: Array<MemberBusinessRole>, memberIds?: string, startIndex?: number, bookmark?: string, pageSize?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (businessId === null || businessId === undefined) {
             throw new Error('Required parameter businessId was null or undefined when calling getBusinessMembers.');
         }
 
         let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'fetch_system_users',
+            <any>fetchSystemUsers,
+            QueryParamStyle.Form,
+            true,
+        );
+
 
         localVarQueryParameters = this.addToHttpParams(
             localVarQueryParameters,
@@ -518,6 +688,84 @@ export class BusinessAccessRelationshipsService extends BaseService {
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters.toHttpParams(),
+                responseType: <any>responseType_,
+                ...(withCredentials ? { withCredentials } : {}),
+                headers: localVarHeaders,
+                observe: observe,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Update a system user information.
+     * Update a system user information such as name.
+     * @endpoint patch /businesses/{business_id}/system_users/{system_user_id}
+     * @param businessId Unique identifier of the requesting business.
+     * @param systemUserId Unique identifier of a system user.
+     * @param systemUserUpdateRequest 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     * @param options additional options
+     */
+    public systemUserUpdate(businessId: string, systemUserId: string, systemUserUpdateRequest: SystemUserUpdateRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any>;
+    public systemUserUpdate(businessId: string, systemUserId: string, systemUserUpdateRequest: SystemUserUpdateRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
+    public systemUserUpdate(businessId: string, systemUserId: string, systemUserUpdateRequest: SystemUserUpdateRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
+    public systemUserUpdate(businessId: string, systemUserId: string, systemUserUpdateRequest: SystemUserUpdateRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (businessId === null || businessId === undefined) {
+            throw new Error('Required parameter businessId was null or undefined when calling systemUserUpdate.');
+        }
+        if (systemUserId === null || systemUserId === undefined) {
+            throw new Error('Required parameter systemUserId was null or undefined when calling systemUserUpdate.');
+        }
+        if (systemUserUpdateRequest === null || systemUserUpdateRequest === undefined) {
+            throw new Error('Required parameter systemUserUpdateRequest was null or undefined when calling systemUserUpdate.');
+        }
+
+        let localVarHeaders = this.defaultHeaders;
+
+        // authentication (pinterest_oauth2) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'application/json'
+        ]);
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
+
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
+
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
+        }
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/system_users/${this.configuration.encodeParam({name: "systemUserId", value: systemUserId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<any>('patch', `${basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                body: systemUserUpdateRequest,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,

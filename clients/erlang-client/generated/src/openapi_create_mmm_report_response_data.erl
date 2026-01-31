@@ -5,19 +5,19 @@
 -export_type([openapi_create_mmm_report_response_data/0]).
 
 -type openapi_create_mmm_report_response_data() ::
-    #{ 'report_status' => openapi_bulk_reporting_job_status:openapi_bulk_reporting_job_status(),
-       'token' => binary(),
-       'message' => binary(),
-       'status' => binary()
+    #{ 'message' => binary(),
+       'report_status' => openapi_bulk_reporting_job_status:openapi_bulk_reporting_job_status(),
+       'status' => binary(),
+       'token' => binary()
      }.
 
-encode(#{ 'report_status' := ReportStatus,
-          'token' := Token,
-          'message' := Message,
-          'status' := Status
+encode(#{ 'message' := Message,
+          'report_status' := ReportStatus,
+          'status' := Status,
+          'token' := Token
         }) ->
-    #{ 'report_status' => ReportStatus,
-       'token' => Token,
-       'message' => Message,
-       'status' => Status
+    #{ 'message' => Message,
+       'report_status' => ReportStatus,
+       'status' => Status,
+       'token' => Token
      }.

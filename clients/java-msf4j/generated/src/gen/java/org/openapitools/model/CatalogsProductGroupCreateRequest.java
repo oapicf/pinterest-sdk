@@ -12,40 +12,22 @@ import org.openapitools.model.CatalogsProductGroupFiltersRequest;
  * Request object for creating a product group.
  */
 @ApiModel(description = "Request object for creating a product group.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsProductGroupCreateRequest   {
-  @JsonProperty("name")
-  private String name;
-
   @JsonProperty("description")
   private String description;
-
-  @JsonProperty("is_featured")
-  private Boolean isFeatured = false;
-
-  @JsonProperty("filters")
-  private CatalogsProductGroupFiltersRequest filters;
 
   @JsonProperty("feed_id")
   private String feedId;
 
-  public CatalogsProductGroupCreateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
+  @JsonProperty("filters")
+  private CatalogsProductGroupFiltersRequest filters;
 
-   /**
-   * Get name
-   * @return name
-  **/
-  @ApiModelProperty(required = true, value = "")
-  public String getName() {
-    return name;
-  }
+  @JsonProperty("is_featured")
+  private Boolean isFeatured = false;
 
-  public void setName(String name) {
-    this.name = name;
-  }
+  @JsonProperty("name")
+  private String name;
 
   public CatalogsProductGroupCreateRequest description(String description) {
     this.description = description;
@@ -63,42 +45,6 @@ public class CatalogsProductGroupCreateRequest   {
 
   public void setDescription(String description) {
     this.description = description;
-  }
-
-  public CatalogsProductGroupCreateRequest isFeatured(Boolean isFeatured) {
-    this.isFeatured = isFeatured;
-    return this;
-  }
-
-   /**
-   * boolean indicator of whether the product group is being featured or not
-   * @return isFeatured
-  **/
-  @ApiModelProperty(value = "boolean indicator of whether the product group is being featured or not")
-  public Boolean getIsFeatured() {
-    return isFeatured;
-  }
-
-  public void setIsFeatured(Boolean isFeatured) {
-    this.isFeatured = isFeatured;
-  }
-
-  public CatalogsProductGroupCreateRequest filters(CatalogsProductGroupFiltersRequest filters) {
-    this.filters = filters;
-    return this;
-  }
-
-   /**
-   * Get filters
-   * @return filters
-  **/
-  @ApiModelProperty(required = true, value = "")
-  public CatalogsProductGroupFiltersRequest getFilters() {
-    return filters;
-  }
-
-  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
-    this.filters = filters;
   }
 
   public CatalogsProductGroupCreateRequest feedId(String feedId) {
@@ -119,6 +65,60 @@ public class CatalogsProductGroupCreateRequest   {
     this.feedId = feedId;
   }
 
+  public CatalogsProductGroupCreateRequest filters(CatalogsProductGroupFiltersRequest filters) {
+    this.filters = filters;
+    return this;
+  }
+
+   /**
+   * Get filters
+   * @return filters
+  **/
+  @ApiModelProperty(required = true, value = "")
+  public CatalogsProductGroupFiltersRequest getFilters() {
+    return filters;
+  }
+
+  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
+    this.filters = filters;
+  }
+
+  public CatalogsProductGroupCreateRequest isFeatured(Boolean isFeatured) {
+    this.isFeatured = isFeatured;
+    return this;
+  }
+
+   /**
+   * boolean indicator of whether the product group is being featured or not
+   * @return isFeatured
+  **/
+  @ApiModelProperty(value = "boolean indicator of whether the product group is being featured or not")
+  public Boolean getIsFeatured() {
+    return isFeatured;
+  }
+
+  public void setIsFeatured(Boolean isFeatured) {
+    this.isFeatured = isFeatured;
+  }
+
+  public CatalogsProductGroupCreateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  @ApiModelProperty(required = true, value = "")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -129,16 +129,16 @@ public class CatalogsProductGroupCreateRequest   {
       return false;
     }
     CatalogsProductGroupCreateRequest catalogsProductGroupCreateRequest = (CatalogsProductGroupCreateRequest) o;
-    return Objects.equals(this.name, catalogsProductGroupCreateRequest.name) &&
-        Objects.equals(this.description, catalogsProductGroupCreateRequest.description) &&
-        Objects.equals(this.isFeatured, catalogsProductGroupCreateRequest.isFeatured) &&
+    return Objects.equals(this.description, catalogsProductGroupCreateRequest.description) &&
+        Objects.equals(this.feedId, catalogsProductGroupCreateRequest.feedId) &&
         Objects.equals(this.filters, catalogsProductGroupCreateRequest.filters) &&
-        Objects.equals(this.feedId, catalogsProductGroupCreateRequest.feedId);
+        Objects.equals(this.isFeatured, catalogsProductGroupCreateRequest.isFeatured) &&
+        Objects.equals(this.name, catalogsProductGroupCreateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, isFeatured, filters, feedId);
+    return Objects.hash(description, feedId, filters, isFeatured, name);
   }
 
   @Override
@@ -146,11 +146,11 @@ public class CatalogsProductGroupCreateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupCreateRequest {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
-    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

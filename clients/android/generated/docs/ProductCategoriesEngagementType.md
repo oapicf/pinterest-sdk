@@ -1,0 +1,10 @@
+
+
+# ProductCategoriesEngagementType
+
+## Enum
+
+
+
+
+

@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ItemId** | **string** | The catalog retail item id in the merchant namespace | 
 **Country** | [**Country**](Country.md) |  | 
+**ItemId** | **string** | The catalog retail item id in the merchant namespace | 
 **Language** | [**Language**](Language.md) |  | 
 
 ## Methods
 
 ### NewAdvancedAuctionItemsGetRecord
 
-`func NewAdvancedAuctionItemsGetRecord(itemId string, country Country, language Language, ) *AdvancedAuctionItemsGetRecord`
+`func NewAdvancedAuctionItemsGetRecord(country Country, itemId string, language Language, ) *AdvancedAuctionItemsGetRecord`
 
 NewAdvancedAuctionItemsGetRecord instantiates a new AdvancedAuctionItemsGetRecord object
 This constructor will assign default values to properties that have it defined,
@@ -26,26 +26,6 @@ will change when the set of required properties is changed
 NewAdvancedAuctionItemsGetRecordWithDefaults instantiates a new AdvancedAuctionItemsGetRecord object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetItemId
-
-`func (o *AdvancedAuctionItemsGetRecord) GetItemId() string`
-
-GetItemId returns the ItemId field if non-nil, zero value otherwise.
-
-### GetItemIdOk
-
-`func (o *AdvancedAuctionItemsGetRecord) GetItemIdOk() (*string, bool)`
-
-GetItemIdOk returns a tuple with the ItemId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetItemId
-
-`func (o *AdvancedAuctionItemsGetRecord) SetItemId(v string)`
-
-SetItemId sets ItemId field to given value.
-
 
 ### GetCountry
 
@@ -65,6 +45,26 @@ and a boolean to check if the value has been set.
 `func (o *AdvancedAuctionItemsGetRecord) SetCountry(v Country)`
 
 SetCountry sets Country field to given value.
+
+
+### GetItemId
+
+`func (o *AdvancedAuctionItemsGetRecord) GetItemId() string`
+
+GetItemId returns the ItemId field if non-nil, zero value otherwise.
+
+### GetItemIdOk
+
+`func (o *AdvancedAuctionItemsGetRecord) GetItemIdOk() (*string, bool)`
+
+GetItemIdOk returns a tuple with the ItemId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemId
+
+`func (o *AdvancedAuctionItemsGetRecord) SetItemId(v string)`
+
+SetItemId sets ItemId field to given value.
 
 
 ### GetLanguage

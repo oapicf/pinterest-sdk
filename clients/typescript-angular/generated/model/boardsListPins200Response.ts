@@ -11,10 +11,10 @@ import { Pin } from './pin';
 
 
 export interface BoardsListPins200Response { 
+    bookmark?: string | null;
     /**
      * Pins
      */
     items: Array<Pin>;
-    bookmark?: string | null;
 }
 

@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **CreativeAssetsId** | Pointer to **string** | The catalog creative assets id in the merchant namespace | [optional] 
-**Errors** | Pointer to [**[]ItemValidationEvent**](ItemValidationEvent.md) | Array with the errors for the item id requested | [optional] 
+**Errors** | [**[]ItemValidationEvent**](ItemValidationEvent.md) | Array with the errors for the item id requested | 
 
 ## Methods
 
 ### NewCatalogsCreativeAssetsItemErrorResponse
 
-`func NewCatalogsCreativeAssetsItemErrorResponse(catalogType CatalogsType, ) *CatalogsCreativeAssetsItemErrorResponse`
+`func NewCatalogsCreativeAssetsItemErrorResponse(catalogType CatalogsType, errors []ItemValidationEvent, ) *CatalogsCreativeAssetsItemErrorResponse`
 
 NewCatalogsCreativeAssetsItemErrorResponse instantiates a new CatalogsCreativeAssetsItemErrorResponse object
 This constructor will assign default values to properties that have it defined,
@@ -91,11 +91,6 @@ and a boolean to check if the value has been set.
 
 SetErrors sets Errors field to given value.
 
-### HasErrors
-
-`func (o *CatalogsCreativeAssetsItemErrorResponse) HasErrors() bool`
-
-HasErrors returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

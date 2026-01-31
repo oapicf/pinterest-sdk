@@ -6,27 +6,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.vertxweb.server.model.TrendingKeywordsResponseTrendsInner;
+import org.openapitools.vertxweb.server.model.TrendingKeyword;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TrendingKeywordsResponse   {
   
-  private List<TrendingKeywordsResponseTrendsInner> trends = new ArrayList<>();
+  private List<TrendingKeyword> trends = new ArrayList<>();
 
   public TrendingKeywordsResponse () {
 
   }
 
-  public TrendingKeywordsResponse (List<TrendingKeywordsResponseTrendsInner> trends) {
+  public TrendingKeywordsResponse (List<TrendingKeyword> trends) {
     this.trends = trends;
   }
 
     
   @JsonProperty("trends")
-  public List<TrendingKeywordsResponseTrendsInner> getTrends() {
+  public List<TrendingKeyword> getTrends() {
     return trends;
   }
-  public void setTrends(List<TrendingKeywordsResponseTrendsInner> trends) {
+  public void setTrends(List<TrendingKeyword> trends) {
     this.trends = trends;
   }
 

@@ -3,30 +3,30 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ItemType** | **String** |  | [optional] 
-**Title** | **String** |  | [optional] 
 **Description** | **String** |  | [optional] 
+**Images** | [**ImageSize**](ImageSize.md) |  | [optional] 
+**ItemType** | **String** |  | [optional] 
 **Link** | **String** |  | [optional] 
-**Images** | [**ImageMetadataImages**](ImageMetadataImages.md) |  | [optional] 
+**Title** | **String** |  | [optional] 
 **CoverImageUrl** | **String** |  | [optional] 
-**VideoUrl** | **String** | Video url (720p). &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field is limited and not available to all apps. | [optional] 
-**Duration** | **Decimal** | Duration (in milliseconds) | [optional] 
-**Height** | **Int32** | Height (in pixels) | [optional] 
-**Width** | **Int32** | Width (in pixels) | [optional] 
+**Duration** | **Decimal** | Duration (in miliseconds). Field maybe null after creation due to video processing time. | [optional] 
+**Height** | **Int32** | Height (in pixels). Field maybe null after creation due to video processing time. | [optional] 
+**VideoUrl** | **String** | Video url (720p).  **Note:** This field is limited and not available to all apps. | [optional] 
+**Width** | **Int32** | Width (in pixels). Field maybe null after creation due to video processing time. | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$PinMediaMetadata = Initialize-PSOpenAPIToolsPinMediaMetadata  -ItemType null `
- -Title null `
- -Description null `
- -Link null `
+$PinMediaMetadata = Initialize-PSOpenAPIToolsPinMediaMetadata  -Description null `
  -Images null `
+ -ItemType null `
+ -Link null `
+ -Title null `
  -CoverImageUrl null `
- -VideoUrl null `
  -Duration null `
  -Height null `
+ -VideoUrl null `
  -Width null
 ```
 

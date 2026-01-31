@@ -10,7 +10,7 @@
 
 
 export interface CatalogsProductGroupMultipleStringCriteria { 
-    values: Array<string>;
     negated?: boolean;
+    values: Array<string>;
 }
 

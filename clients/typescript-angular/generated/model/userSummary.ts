@@ -11,12 +11,12 @@
 
 export interface UserSummary { 
     /**
-     * Username
-     */
-    username?: string;
-    /**
      * Always \"user\"
      */
     type?: string;
+    /**
+     * Username
+     */
+    username?: string;
 }
 

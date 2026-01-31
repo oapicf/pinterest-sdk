@@ -8,8 +8,8 @@
 
 (def analytics-metrics-response-data
   {
-   (ds/opt :summary_metrics) (s/map-of string? float?)
    (ds/opt :daily_metrics) (s/coll-of analytics-daily-metrics-spec)
+   (ds/opt :summary_metrics) (s/map-of string? float?)
    })
 
 (def analytics-metrics-response-spec

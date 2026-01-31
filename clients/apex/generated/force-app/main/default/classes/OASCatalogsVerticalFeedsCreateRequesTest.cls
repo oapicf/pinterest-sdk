@@ -73,29 +73,29 @@ private class OASCatalogsVerticalFeedsCreateRequesTest {
     private static void maintainRenamedProperties() {
         OASCatalogsVerticalFeedsCreateReques catalogsVerticalFeedsCreateRequest = new OASCatalogsVerticalFeedsCreateReques();
         Map<String, String> x-property-mappings = catalogsVerticalFeedsCreateRequest.getx-property-mappings();
+        System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
+        System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
+        System.assertEquals('defaultAvailability', x-property-mappings.get('default_availability'));
+        System.assertEquals('defaultCountry', x-property-mappings.get('default_country'));
         System.assertEquals('defaultCurrency', x-property-mappings.get('default_currency'));
         System.assertEquals('defaultLocale', x-property-mappings.get('default_locale'));
         System.assertEquals('preferredProcessingSchedule', x-property-mappings.get('preferred_processing_schedule'));
-        System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
-        System.assertEquals('defaultCountry', x-property-mappings.get('default_country'));
-        System.assertEquals('defaultAvailability', x-property-mappings.get('default_availability'));
-        System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASCatalogsVerticalFeedsCreateReques catalogsVerticalFeedsCreateRequest = new OASCatalogsVerticalFeedsCreateReques();
         System.assertEquals('ACTIVE', catalogsVerticalFeedsCreateRequest.status);
-        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.defaultCurrency);
-        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.name);
-        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.format);
-        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.defaultLocale);
-        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.credentials);
-        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.location);
-        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.preferredProcessingSchedule);
-        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.catalogType);
-        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.defaultCountry);
-        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.defaultAvailability);
         System.assertEquals(null, catalogsVerticalFeedsCreateRequest.catalogId);
+        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.catalogType);
+        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.credentials);
+        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.defaultAvailability);
+        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.defaultCountry);
+        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.defaultCurrency);
+        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.defaultLocale);
+        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.format);
+        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.location);
+        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.name);
+        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.preferredProcessingSchedule);
     }
 }

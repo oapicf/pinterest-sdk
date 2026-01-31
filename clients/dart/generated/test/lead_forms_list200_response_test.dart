@@ -16,13 +16,13 @@ void main() {
   // final instance = LeadFormsList200Response();
 
   group('test LeadFormsList200Response', () {
-    // List<LeadFormResponse> items (default value: const [])
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // List<LeadFormResponse> items (default value: const [])
+    test('to test the property `items`', () async {
       // TODO
     });
 

@@ -15,10 +15,10 @@ module CatalogsRetailListProductsByCatalogBasedFilterRequest =
   //#endregion
 
   type CatalogsRetailListProductsByCatalogBasedFilterRequest = {
-    CatalogType : CatalogTypeEnum;
     CatalogId : string;
-    Filters : CatalogsProductGroupFilters;
+    CatalogType : CatalogTypeEnum;
     Country : Country;
+    Filters : CatalogsProductGroupFilters;
     Locale : CatalogsLocale;
   }
   //#endregion

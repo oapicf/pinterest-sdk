@@ -17,13 +17,13 @@ import { Observable }                                        from 'rxjs';
 import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
-import { AdAccountCreateSubscriptionRequest } from '../model/adAccountCreateSubscriptionRequest';
-// @ts-ignore
-import { AdAccountCreateSubscriptionResponse } from '../model/adAccountCreateSubscriptionResponse';
-// @ts-ignore
-import { AdAccountGetSubscriptionResponse } from '../model/adAccountGetSubscriptionResponse';
-// @ts-ignore
 import { AdAccountsSubscriptionsGetList200Response } from '../model/adAccountsSubscriptionsGetList200Response';
+// @ts-ignore
+import { LeadSubscription } from '../model/leadSubscription';
+// @ts-ignore
+import { LeadSubscriptionPostParamsCreate } from '../model/leadSubscriptionPostParamsCreate';
+// @ts-ignore
+import { PinterestLibError } from '../model/pinterestLibError';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -43,7 +43,7 @@ export class LeadAdsService extends BaseService {
 
     /**
      * Delete lead ads subscription
-     * Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.\&#39;
      * @endpoint delete /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}
      * @param adAccountId Unique identifier of an ad account.
      * @param subscriptionId Unique identifier of a subscription.
@@ -106,8 +106,8 @@ export class LeadAdsService extends BaseService {
     }
 
     /**
-     * Get lead ads subscription
-     * Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get lead ads subscription by ID
+     * Get an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.\&#39;
      * @endpoint get /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}
      * @param adAccountId Unique identifier of an ad account.
      * @param subscriptionId Unique identifier of a subscription.
@@ -115,9 +115,9 @@ export class LeadAdsService extends BaseService {
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public adAccountsSubscriptionsGetById(adAccountId: string, subscriptionId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<AdAccountGetSubscriptionResponse>;
-    public adAccountsSubscriptionsGetById(adAccountId: string, subscriptionId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AdAccountGetSubscriptionResponse>>;
-    public adAccountsSubscriptionsGetById(adAccountId: string, subscriptionId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<AdAccountGetSubscriptionResponse>>;
+    public adAccountsSubscriptionsGetById(adAccountId: string, subscriptionId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<LeadSubscription>;
+    public adAccountsSubscriptionsGetById(adAccountId: string, subscriptionId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<LeadSubscription>>;
+    public adAccountsSubscriptionsGetById(adAccountId: string, subscriptionId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<LeadSubscription>>;
     public adAccountsSubscriptionsGetById(adAccountId: string, subscriptionId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling adAccountsSubscriptionsGetById.');
@@ -127,6 +127,9 @@ export class LeadAdsService extends BaseService {
         }
 
         let localVarHeaders = this.defaultHeaders;
+
+        // authentication (client_credentials) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('client_credentials', 'Authorization', localVarHeaders, 'Bearer ');
 
         // authentication (pinterest_oauth2) required
         localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
@@ -156,7 +159,7 @@ export class LeadAdsService extends BaseService {
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/leads/subscriptions/${this.configuration.encodeParam({name: "subscriptionId", value: subscriptionId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<AdAccountGetSubscriptionResponse>('get', `${basePath}${localVarPath}`,
+        return this.httpClient.request<LeadSubscription>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -171,19 +174,19 @@ export class LeadAdsService extends BaseService {
 
     /**
      * Get lead ads subscriptions
-     * Get the advertiser\&#39;s list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get the advertiser\&#39;s list of lead ads subscriptions. Only requests for the OWNER or ADMIN of the ad_account will be allowed.
      * @endpoint get /ad_accounts/{ad_account_id}/leads/subscriptions
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param bookmark Cursor used to fetch the next page of items
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public adAccountsSubscriptionsGetList(adAccountId: string, pageSize?: number, bookmark?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<AdAccountsSubscriptionsGetList200Response>;
-    public adAccountsSubscriptionsGetList(adAccountId: string, pageSize?: number, bookmark?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AdAccountsSubscriptionsGetList200Response>>;
-    public adAccountsSubscriptionsGetList(adAccountId: string, pageSize?: number, bookmark?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<AdAccountsSubscriptionsGetList200Response>>;
-    public adAccountsSubscriptionsGetList(adAccountId: string, pageSize?: number, bookmark?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public adAccountsSubscriptionsGetList(adAccountId: string, bookmark?: string, pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<AdAccountsSubscriptionsGetList200Response>;
+    public adAccountsSubscriptionsGetList(adAccountId: string, bookmark?: string, pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AdAccountsSubscriptionsGetList200Response>>;
+    public adAccountsSubscriptionsGetList(adAccountId: string, bookmark?: string, pageSize?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<AdAccountsSubscriptionsGetList200Response>>;
+    public adAccountsSubscriptionsGetList(adAccountId: string, bookmark?: string, pageSize?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling adAccountsSubscriptionsGetList.');
         }
@@ -192,8 +195,8 @@ export class LeadAdsService extends BaseService {
 
         localVarQueryParameters = this.addToHttpParams(
             localVarQueryParameters,
-            'page_size',
-            <any>pageSize,
+            'bookmark',
+            <any>bookmark,
             QueryParamStyle.Form,
             true,
         );
@@ -201,8 +204,8 @@ export class LeadAdsService extends BaseService {
 
         localVarQueryParameters = this.addToHttpParams(
             localVarQueryParameters,
-            'bookmark',
-            <any>bookmark,
+            'page_size',
+            <any>pageSize,
             QueryParamStyle.Form,
             true,
         );
@@ -254,23 +257,23 @@ export class LeadAdsService extends BaseService {
 
     /**
      * Create lead ads subscription
-     * Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.   - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.   - For data security, egress lead data is encrypted with AES-256-GCM.
      * @endpoint post /ad_accounts/{ad_account_id}/leads/subscriptions
      * @param adAccountId Unique identifier of an ad account.
-     * @param adAccountCreateSubscriptionRequest Subscription to create.
+     * @param leadSubscriptionPostParamsCreate 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public adAccountsSubscriptionsPost(adAccountId: string, adAccountCreateSubscriptionRequest: AdAccountCreateSubscriptionRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<AdAccountCreateSubscriptionResponse>;
-    public adAccountsSubscriptionsPost(adAccountId: string, adAccountCreateSubscriptionRequest: AdAccountCreateSubscriptionRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AdAccountCreateSubscriptionResponse>>;
-    public adAccountsSubscriptionsPost(adAccountId: string, adAccountCreateSubscriptionRequest: AdAccountCreateSubscriptionRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<AdAccountCreateSubscriptionResponse>>;
-    public adAccountsSubscriptionsPost(adAccountId: string, adAccountCreateSubscriptionRequest: AdAccountCreateSubscriptionRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public adAccountsSubscriptionsPost(adAccountId: string, leadSubscriptionPostParamsCreate: LeadSubscriptionPostParamsCreate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<LeadSubscription>;
+    public adAccountsSubscriptionsPost(adAccountId: string, leadSubscriptionPostParamsCreate: LeadSubscriptionPostParamsCreate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<LeadSubscription>>;
+    public adAccountsSubscriptionsPost(adAccountId: string, leadSubscriptionPostParamsCreate: LeadSubscriptionPostParamsCreate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<LeadSubscription>>;
+    public adAccountsSubscriptionsPost(adAccountId: string, leadSubscriptionPostParamsCreate: LeadSubscriptionPostParamsCreate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling adAccountsSubscriptionsPost.');
         }
-        if (adAccountCreateSubscriptionRequest === null || adAccountCreateSubscriptionRequest === undefined) {
-            throw new Error('Required parameter adAccountCreateSubscriptionRequest was null or undefined when calling adAccountsSubscriptionsPost.');
+        if (leadSubscriptionPostParamsCreate === null || leadSubscriptionPostParamsCreate === undefined) {
+            throw new Error('Required parameter leadSubscriptionPostParamsCreate was null or undefined when calling adAccountsSubscriptionsPost.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -312,10 +315,10 @@ export class LeadAdsService extends BaseService {
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/leads/subscriptions`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<AdAccountCreateSubscriptionResponse>('post', `${basePath}${localVarPath}`,
+        return this.httpClient.request<LeadSubscription>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: adAccountCreateSubscriptionRequest,
+                body: leadSubscriptionPostParamsCreate,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,

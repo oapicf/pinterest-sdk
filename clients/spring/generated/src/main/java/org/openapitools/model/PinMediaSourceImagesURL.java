@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.PinMediaSourceImagesURLItemsInner;
+import org.openapitools.model.PinMediaSourceImagesURLItem;
 import org.springframework.lang.Nullable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -24,15 +24,20 @@ import java.util.*;
 import javax.annotation.Generated;
 
 /**
- * Multiple images urls-based media source
+ * Multiple URL-based images media source
  */
 
-@Schema(name = "PinMediaSourceImagesURL", description = "Multiple images urls-based media source")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Schema(name = "PinMediaSourceImagesURL", description = "Multiple URL-based images media source")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinMediaSourceImagesURL implements PinMediaSource {
 
+  private @Nullable Integer index;
+
+  @Valid
+  private List<@Valid PinMediaSourceImagesURLItem> items = new ArrayList<>();
+
   /**
-   * Gets or Sets sourceType
+   * The source type of the media.
    */
   public enum SourceTypeEnum {
     MULTIPLE_IMAGE_URLS("multiple_image_urls");
@@ -64,12 +69,7 @@ public class PinMediaSourceImagesURL implements PinMediaSource {
     }
   }
 
-  private @Nullable SourceTypeEnum sourceType;
-
-  @Valid
-  private List<@Valid PinMediaSourceImagesURLItemsInner> items = new ArrayList<>();
-
-  private @Nullable Integer index;
+  private SourceTypeEnum sourceType;
 
   public PinMediaSourceImagesURL() {
     super();
@@ -78,56 +78,9 @@ public class PinMediaSourceImagesURL implements PinMediaSource {
   /**
    * Constructor with only required parameters
    */
-  public PinMediaSourceImagesURL(List<@Valid PinMediaSourceImagesURLItemsInner> items) {
+  public PinMediaSourceImagesURL(List<@Valid PinMediaSourceImagesURLItem> items, SourceTypeEnum sourceType) {
     this.items = items;
-  }
-
-  public PinMediaSourceImagesURL sourceType(@Nullable SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
-    return this;
-  }
-
-  /**
-   * Get sourceType
-   * @return sourceType
-   */
-  
-  @Schema(name = "source_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("source_type")
-  public @Nullable SourceTypeEnum getSourceType() {
-    return sourceType;
-  }
-
-  public void setSourceType(@Nullable SourceTypeEnum sourceType) {
-    this.sourceType = sourceType;
-  }
-
-  public PinMediaSourceImagesURL items(List<@Valid PinMediaSourceImagesURLItemsInner> items) {
-    this.items = items;
-    return this;
-  }
-
-  public PinMediaSourceImagesURL addItemsItem(PinMediaSourceImagesURLItemsInner itemsItem) {
-    if (this.items == null) {
-      this.items = new ArrayList<>();
-    }
-    this.items.add(itemsItem);
-    return this;
-  }
-
-  /**
-   * Array with image objects.
-   * @return items
-   */
-  @NotNull @Valid @Size(min = 2, max = 5) 
-  @Schema(name = "items", description = "Array with image objects.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("items")
-  public List<@Valid PinMediaSourceImagesURLItemsInner> getItems() {
-    return items;
-  }
-
-  public void setItems(List<@Valid PinMediaSourceImagesURLItemsInner> items) {
-    this.items = items;
   }
 
   public PinMediaSourceImagesURL index(@Nullable Integer index) {
@@ -151,6 +104,54 @@ public class PinMediaSourceImagesURL implements PinMediaSource {
     this.index = index;
   }
 
+  public PinMediaSourceImagesURL items(List<@Valid PinMediaSourceImagesURLItem> items) {
+    this.items = items;
+    return this;
+  }
+
+  public PinMediaSourceImagesURL addItemsItem(PinMediaSourceImagesURLItem itemsItem) {
+    if (this.items == null) {
+      this.items = new ArrayList<>();
+    }
+    this.items.add(itemsItem);
+    return this;
+  }
+
+  /**
+   * Array with image objects.
+   * @return items
+   */
+  @NotNull @Valid @Size(min = 2, max = 5) 
+  @Schema(name = "items", description = "Array with image objects.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("items")
+  public List<@Valid PinMediaSourceImagesURLItem> getItems() {
+    return items;
+  }
+
+  public void setItems(List<@Valid PinMediaSourceImagesURLItem> items) {
+    this.items = items;
+  }
+
+  public PinMediaSourceImagesURL sourceType(SourceTypeEnum sourceType) {
+    this.sourceType = sourceType;
+    return this;
+  }
+
+  /**
+   * The source type of the media.
+   * @return sourceType
+   */
+  @NotNull 
+  @Schema(name = "source_type", description = "The source type of the media.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("source_type")
+  public SourceTypeEnum getSourceType() {
+    return sourceType;
+  }
+
+  public void setSourceType(SourceTypeEnum sourceType) {
+    this.sourceType = sourceType;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -160,23 +161,23 @@ public class PinMediaSourceImagesURL implements PinMediaSource {
       return false;
     }
     PinMediaSourceImagesURL pinMediaSourceImagesURL = (PinMediaSourceImagesURL) o;
-    return Objects.equals(this.sourceType, pinMediaSourceImagesURL.sourceType) &&
+    return Objects.equals(this.index, pinMediaSourceImagesURL.index) &&
         Objects.equals(this.items, pinMediaSourceImagesURL.items) &&
-        Objects.equals(this.index, pinMediaSourceImagesURL.index);
+        Objects.equals(this.sourceType, pinMediaSourceImagesURL.sourceType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceType, items, index);
+    return Objects.hash(index, items, sourceType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaSourceImagesURL {\n");
-    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    index: ").append(toIndentedString(index)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

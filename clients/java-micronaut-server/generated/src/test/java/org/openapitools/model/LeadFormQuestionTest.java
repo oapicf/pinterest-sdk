@@ -26,14 +26,6 @@ public class LeadFormQuestionTest {
     }
 
     /**
-     * Test the property 'questionType'
-     */
-    @Test
-    public void questionTypeTest() {
-        // TODO: test questionType
-    }
-
-    /**
      * Test the property 'customQuestionFieldType'
      */
     @Test
@@ -55,6 +47,14 @@ public class LeadFormQuestionTest {
     @Test
     public void customQuestionOptionsTest() {
         // TODO: test customQuestionOptions
+    }
+
+    /**
+     * Test the property 'questionType'
+     */
+    @Test
+    public void questionTypeTest() {
+        // TODO: test questionType
     }
 
 }

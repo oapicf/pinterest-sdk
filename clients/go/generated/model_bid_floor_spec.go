@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,12 +22,12 @@ var _ MappedNullable = &BidFloorSpec{}
 
 // BidFloorSpec struct for BidFloorSpec
 type BidFloorSpec struct {
+	BillableEvent ActionType `json:"billable_event"`
 	Countries []Country `json:"countries,omitempty"`
+	CreativeType *CreativeType `json:"creative_type,omitempty"`
 	Currency Currency `json:"currency"`
 	ObjectiveType *ObjectiveType `json:"objective_type,omitempty"`
-	BillableEvent ActionType `json:"billable_event"`
 	OptimizationGoalMetadata *OptimizationGoalMetadata `json:"optimization_goal_metadata,omitempty"`
-	CreativeType *CreativeType `json:"creative_type,omitempty"`
 }
 
 type _BidFloorSpec BidFloorSpec
@@ -36,10 +36,10 @@ type _BidFloorSpec BidFloorSpec
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBidFloorSpec(currency Currency, billableEvent ActionType) *BidFloorSpec {
+func NewBidFloorSpec(billableEvent ActionType, currency Currency) *BidFloorSpec {
 	this := BidFloorSpec{}
-	this.Currency = currency
 	this.BillableEvent = billableEvent
+	this.Currency = currency
 	return &this
 }
 
@@ -49,6 +49,30 @@ func NewBidFloorSpec(currency Currency, billableEvent ActionType) *BidFloorSpec 
 func NewBidFloorSpecWithDefaults() *BidFloorSpec {
 	this := BidFloorSpec{}
 	return &this
+}
+
+// GetBillableEvent returns the BillableEvent field value
+func (o *BidFloorSpec) GetBillableEvent() ActionType {
+	if o == nil {
+		var ret ActionType
+		return ret
+	}
+
+	return o.BillableEvent
+}
+
+// GetBillableEventOk returns a tuple with the BillableEvent field value
+// and a boolean to check if the value has been set.
+func (o *BidFloorSpec) GetBillableEventOk() (*ActionType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BillableEvent, true
+}
+
+// SetBillableEvent sets field value
+func (o *BidFloorSpec) SetBillableEvent(v ActionType) {
+	o.BillableEvent = v
 }
 
 // GetCountries returns the Countries field value if set, zero value otherwise.
@@ -81,6 +105,38 @@ func (o *BidFloorSpec) HasCountries() bool {
 // SetCountries gets a reference to the given []Country and assigns it to the Countries field.
 func (o *BidFloorSpec) SetCountries(v []Country) {
 	o.Countries = v
+}
+
+// GetCreativeType returns the CreativeType field value if set, zero value otherwise.
+func (o *BidFloorSpec) GetCreativeType() CreativeType {
+	if o == nil || IsNil(o.CreativeType) {
+		var ret CreativeType
+		return ret
+	}
+	return *o.CreativeType
+}
+
+// GetCreativeTypeOk returns a tuple with the CreativeType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BidFloorSpec) GetCreativeTypeOk() (*CreativeType, bool) {
+	if o == nil || IsNil(o.CreativeType) {
+		return nil, false
+	}
+	return o.CreativeType, true
+}
+
+// HasCreativeType returns a boolean if a field has been set.
+func (o *BidFloorSpec) HasCreativeType() bool {
+	if o != nil && !IsNil(o.CreativeType) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreativeType gets a reference to the given CreativeType and assigns it to the CreativeType field.
+func (o *BidFloorSpec) SetCreativeType(v CreativeType) {
+	o.CreativeType = &v
 }
 
 // GetCurrency returns the Currency field value
@@ -139,30 +195,6 @@ func (o *BidFloorSpec) SetObjectiveType(v ObjectiveType) {
 	o.ObjectiveType = &v
 }
 
-// GetBillableEvent returns the BillableEvent field value
-func (o *BidFloorSpec) GetBillableEvent() ActionType {
-	if o == nil {
-		var ret ActionType
-		return ret
-	}
-
-	return o.BillableEvent
-}
-
-// GetBillableEventOk returns a tuple with the BillableEvent field value
-// and a boolean to check if the value has been set.
-func (o *BidFloorSpec) GetBillableEventOk() (*ActionType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.BillableEvent, true
-}
-
-// SetBillableEvent sets field value
-func (o *BidFloorSpec) SetBillableEvent(v ActionType) {
-	o.BillableEvent = v
-}
-
 // GetOptimizationGoalMetadata returns the OptimizationGoalMetadata field value if set, zero value otherwise.
 func (o *BidFloorSpec) GetOptimizationGoalMetadata() OptimizationGoalMetadata {
 	if o == nil || IsNil(o.OptimizationGoalMetadata) {
@@ -195,38 +227,6 @@ func (o *BidFloorSpec) SetOptimizationGoalMetadata(v OptimizationGoalMetadata) {
 	o.OptimizationGoalMetadata = &v
 }
 
-// GetCreativeType returns the CreativeType field value if set, zero value otherwise.
-func (o *BidFloorSpec) GetCreativeType() CreativeType {
-	if o == nil || IsNil(o.CreativeType) {
-		var ret CreativeType
-		return ret
-	}
-	return *o.CreativeType
-}
-
-// GetCreativeTypeOk returns a tuple with the CreativeType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BidFloorSpec) GetCreativeTypeOk() (*CreativeType, bool) {
-	if o == nil || IsNil(o.CreativeType) {
-		return nil, false
-	}
-	return o.CreativeType, true
-}
-
-// HasCreativeType returns a boolean if a field has been set.
-func (o *BidFloorSpec) HasCreativeType() bool {
-	if o != nil && !IsNil(o.CreativeType) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreativeType gets a reference to the given CreativeType and assigns it to the CreativeType field.
-func (o *BidFloorSpec) SetCreativeType(v CreativeType) {
-	o.CreativeType = &v
-}
-
 func (o BidFloorSpec) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -237,19 +237,19 @@ func (o BidFloorSpec) MarshalJSON() ([]byte, error) {
 
 func (o BidFloorSpec) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["billable_event"] = o.BillableEvent
 	if !IsNil(o.Countries) {
 		toSerialize["countries"] = o.Countries
+	}
+	if !IsNil(o.CreativeType) {
+		toSerialize["creative_type"] = o.CreativeType
 	}
 	toSerialize["currency"] = o.Currency
 	if !IsNil(o.ObjectiveType) {
 		toSerialize["objective_type"] = o.ObjectiveType
 	}
-	toSerialize["billable_event"] = o.BillableEvent
 	if !IsNil(o.OptimizationGoalMetadata) {
 		toSerialize["optimization_goal_metadata"] = o.OptimizationGoalMetadata
-	}
-	if !IsNil(o.CreativeType) {
-		toSerialize["creative_type"] = o.CreativeType
 	}
 	return toSerialize, nil
 }
@@ -259,8 +259,8 @@ func (o *BidFloorSpec) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"currency",
 		"billable_event",
+		"currency",
 	}
 
 	allProperties := make(map[string]interface{})

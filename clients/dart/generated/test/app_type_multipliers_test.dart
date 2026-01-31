@@ -16,7 +16,7 @@ void main() {
   // final instance = AppTypeMultipliers();
 
   group('test AppTypeMultipliers', () {
-    // TargetingSpecAppType APP_TYPE
+    // String APP_TYPE
     test('to test the property `APP_TYPE`', () async {
       // TODO
     });

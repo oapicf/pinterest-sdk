@@ -6,13 +6,6 @@ goog.provide('API.Client.UserWebsiteSummary');
 API.Client.UserWebsiteSummary = function() {}
 
 /**
- * Website with path or domain only
- * @type {!string}
- * @export
- */
-API.Client.UserWebsiteSummary.prototype.website;
-
-/**
  * Status of the verification process
  * @type {!string}
  * @export
@@ -25,4 +18,11 @@ API.Client.UserWebsiteSummary.prototype.status;
  * @export
  */
 API.Client.UserWebsiteSummary.prototype.verifiedAt;
+
+/**
+ * Website with path or domain only
+ * @type {!string}
+ * @export
+ */
+API.Client.UserWebsiteSummary.prototype.website;
 

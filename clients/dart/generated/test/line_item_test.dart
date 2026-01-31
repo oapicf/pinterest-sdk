@@ -16,13 +16,13 @@ void main() {
   // final instance = LineItem();
 
   group('test LineItem', () {
-    // Product brand. For example, \"Parker\".
+    // Product brand. For example, 'Parker'.
     // String productBrand
     test('to test the property `productBrand`', () async {
       // TODO
     });
 
-    // Product category. For example, \"Shoes\".
+    // Product category. For example, 'Shoes'.
     // String productCategory
     test('to test the property `productCategory`', () async {
       // TODO
@@ -34,13 +34,13 @@ void main() {
       // TODO
     });
 
-    // Product name. For example, \"Parker Boots\".
+    // Product name. For example, 'Parker Boots'.
     // String productName
     test('to test the property `productName`', () async {
       // TODO
     });
 
-    // Product price. For example, \"99.99\".
+    // Product price. For example, '99.99'.
     // String productPrice
     test('to test the property `productPrice`', () async {
       // TODO
@@ -52,13 +52,13 @@ void main() {
       // TODO
     });
 
-    // Product variant. For example, \"Red\".
+    // Product variant. For example, 'Red'.
     // String productVariant
     test('to test the property `productVariant`', () async {
       // TODO
     });
 
-    // Product variant ID. For example, \"1414-34832\".
+    // Product variant ID. For example, '1414-34832'.
     // String productVariantId
     test('to test the property `productVariantId`', () async {
       // TODO

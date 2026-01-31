@@ -10,5 +10,5 @@
   binary().
 
 openapi_get_business_asset_type_response() ->
-  elements([<<"AD_ACCOUNT">>, <<"PROFILE">>, <<"ASSET_GROUP">>, <<"CONVERSION_TAG">>]).
+  elements([<<"AD_ACCOUNT">>, <<"PROFILE">>, <<"ASSET_GROUP">>, <<"CONVERSION_TAG">>, <<"CATALOG">>]).
 

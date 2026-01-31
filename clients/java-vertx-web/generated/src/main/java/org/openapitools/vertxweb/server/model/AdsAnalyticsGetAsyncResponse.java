@@ -12,17 +12,17 @@ import org.openapitools.vertxweb.server.model.BulkReportingJobStatus;
 public class AdsAnalyticsGetAsyncResponse   {
   
   private BulkReportingJobStatus reportStatus;
-  private String url;
   private BigDecimal size;
+  private String url;
 
   public AdsAnalyticsGetAsyncResponse () {
 
   }
 
-  public AdsAnalyticsGetAsyncResponse (BulkReportingJobStatus reportStatus, String url, BigDecimal size) {
+  public AdsAnalyticsGetAsyncResponse (BulkReportingJobStatus reportStatus, BigDecimal size, String url) {
     this.reportStatus = reportStatus;
-    this.url = url;
     this.size = size;
+    this.url = url;
   }
 
     
@@ -35,21 +35,21 @@ public class AdsAnalyticsGetAsyncResponse   {
   }
 
     
-  @JsonProperty("url")
-  public String getUrl() {
-    return url;
-  }
-  public void setUrl(String url) {
-    this.url = url;
-  }
-
-    
   @JsonProperty("size")
   public BigDecimal getSize() {
     return size;
   }
   public void setSize(BigDecimal size) {
     this.size = size;
+  }
+
+    
+  @JsonProperty("url")
+  public String getUrl() {
+    return url;
+  }
+  public void setUrl(String url) {
+    this.url = url;
   }
 
 
@@ -63,13 +63,13 @@ public class AdsAnalyticsGetAsyncResponse   {
     }
     AdsAnalyticsGetAsyncResponse adsAnalyticsGetAsyncResponse = (AdsAnalyticsGetAsyncResponse) o;
     return Objects.equals(reportStatus, adsAnalyticsGetAsyncResponse.reportStatus) &&
-        Objects.equals(url, adsAnalyticsGetAsyncResponse.url) &&
-        Objects.equals(size, adsAnalyticsGetAsyncResponse.size);
+        Objects.equals(size, adsAnalyticsGetAsyncResponse.size) &&
+        Objects.equals(url, adsAnalyticsGetAsyncResponse.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportStatus, url, size);
+    return Objects.hash(reportStatus, size, url);
   }
 
   @Override
@@ -78,8 +78,8 @@ public class AdsAnalyticsGetAsyncResponse   {
     sb.append("class AdsAnalyticsGetAsyncResponse {\n");
     
     sb.append("    reportStatus: ").append(toIndentedString(reportStatus)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
   }

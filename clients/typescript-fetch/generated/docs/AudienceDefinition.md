@@ -8,8 +8,8 @@ Queryable audience representation.
 Name | Type
 ------------ | -------------
 `date` | string
-`type` | string
 `scope` | string
+`type` | string
 
 ## Example
 
@@ -19,8 +19,8 @@ import type { AudienceDefinition } from ''
 // TODO: Update the object below with actual values
 const example = {
   "date": 2022-10-09,
-  "type": null,
-  "scope": null,
+  "scope": PARTNER,
+  "type": IMPRESSION_PLUS_ENGAGEMENT,
 } satisfies AudienceDefinition
 
 console.log(example)

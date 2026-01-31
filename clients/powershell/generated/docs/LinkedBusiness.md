@@ -3,21 +3,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Username** | **String** | Username | [optional] 
-**ImageSmallUrl** | **String** | image_small_url | [optional] 
-**ImageMediumUrl** | **String** | image_medium_url | [optional] 
 **ImageLargeUrl** | **String** | image_large_url | [optional] 
+**ImageMediumUrl** | **String** | image_medium_url | [optional] 
+**ImageSmallUrl** | **String** | image_small_url | [optional] 
 **ImageXlargeUrl** | **String** | image_xlarge_url | [optional] 
+**Username** | **String** | Username | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$LinkedBusiness = Initialize-PSOpenAPIToolsLinkedBusiness  -Username username `
- -ImageSmallUrl https://www.example.com/dj23454f53dfk2324.jpg `
+$LinkedBusiness = Initialize-PSOpenAPIToolsLinkedBusiness  -ImageLargeUrl https://www.example.com/dj23454f53dfk2324.jpg `
  -ImageMediumUrl https://www.example.com/dj23454f53dfk2324.jpg `
- -ImageLargeUrl https://www.example.com/dj23454f53dfk2324.jpg `
- -ImageXlargeUrl https://www.example.com/dj23454f53dfk2324.jpg
+ -ImageSmallUrl https://www.example.com/dj23454f53dfk2324.jpg `
+ -ImageXlargeUrl https://www.example.com/dj23454f53dfk2324.jpg `
+ -Username username
 ```
 
 - Convert the resource to JSON

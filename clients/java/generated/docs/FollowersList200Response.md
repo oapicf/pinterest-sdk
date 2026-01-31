@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**items** | [**List&lt;UserSummary&gt;**](UserSummary.md) |  |  |
 |**bookmark** | **String** |  |  [optional] |
+|**items** | [**List&lt;UserSummary&gt;**](UserSummary.md) |  |  |
 
 
 

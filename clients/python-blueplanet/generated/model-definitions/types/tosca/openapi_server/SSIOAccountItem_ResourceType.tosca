@@ -1,0 +1,77 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server SSIOAccountItem"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a SSIOAccountItem"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  SSIOAccountAddress = openapi_server.resourceTypes.SSIOAccountAddress
+}
+resourceTypes {
+
+  SSIOAccountItem {
+    title = SSIOAccountItem
+    description = SSIOAccountItem
+    derivedFrom = Root
+    properties {
+        addresses {
+          type = array
+          items.type = SSIOAccountAddress
+          description = "Address information that is associated with this account."
+          optional = false
+        }
+        id {
+          type =  string
+          description = "Salesforce id for billto_info"
+          optional = false
+        }
+        io_terms {
+          type =  string
+          description = "Salesforce text for IO Terms and Conditions"
+          optional = false
+        }
+        io_terms_id {
+          type =  string
+          description = "Salesforce id for IO Terms and Conditions"
+          optional = false
+        }
+        io_type {
+          type =  string
+          description = "Insertion Order Type - Pinterest Paper or Agency Paper"
+          optional = false
+        }
+        row_terms {
+          type =  string
+          description = "Salesforce text for Rest of the World Terms and Conditions"
+          optional = false
+        }
+        row_terms_id {
+          type =  string
+          description = "Salesforce id for Rest of the World Terms and Conditions"
+          optional = false
+        }
+        us_terms {
+          type =  string
+          description = "Salesforce text for US Terms and Conditions"
+          optional = false
+        }
+        us_terms_id {
+          type =  string
+          description = "Salesforce id for US Terms and Conditions"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  SSIOAccountItem {
+    title = SSIOAccountItem
+    description = SSIOAccountItem
+    implements = openapi_server.resourceTypes.SSIOAccountItem
+
+  }
+}

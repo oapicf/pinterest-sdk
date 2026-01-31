@@ -2,10 +2,12 @@
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
             [pinterest-rest-api.specs.creative-type :refer :all]
-            [pinterest-rest-api.specs.entity-status :refer :all]
-            [pinterest-rest-api.specs.tracking-urls :refer :all]
+            [pinterest-rest-api.specs.customizable-cta-type :refer :all]
+            [pinterest-rest-api.specs.disclosure-type :refer :all]
             [pinterest-rest-api.specs.grid-click-type :refer :all]
             [pinterest-rest-api.specs.quiz-pin-data :refer :all]
+            [pinterest-rest-api.specs.entity-status :refer :all]
+            [pinterest-rest-api.specs.tracking-urls :refer :all]
             [pinterest-rest-api.specs.pin-promotion-summary-status :refer :all]
             )
   (:import (java.io File)))
@@ -20,18 +22,20 @@
    (ds/opt :carousel_ios_deep_links) (s/coll-of string?)
    (ds/opt :click_tracking_url) string?
    (ds/opt :creative_type) creative-type-spec
+   (ds/opt :customizable_cta_type) customizable-cta-type-spec
    (ds/opt :destination_url) string?
+   (ds/opt :disclosure_type) disclosure-type-spec
+   (ds/opt :disclosure_url) string?
+   (ds/opt :grid_click_type) grid-click-type-spec
    (ds/opt :ios_deep_link) string?
    (ds/opt :is_pin_deleted) boolean?
    (ds/opt :is_removable) boolean?
+   (ds/opt :lead_form_id) string?
    (ds/opt :name) string?
+   (ds/opt :quiz_pin_data) quiz-pin-data-spec
    (ds/opt :status) entity-status-spec
    (ds/opt :tracking_urls) tracking-urls-spec
    (ds/opt :view_tracking_url) string?
-   (ds/opt :lead_form_id) string?
-   (ds/opt :grid_click_type) grid-click-type-spec
-   (ds/opt :customizable_cta_type) string?
-   (ds/opt :quiz_pin_data) quiz-pin-data-spec
    (ds/opt :pin_id) string?
    (ds/opt :ad_account_id) string?
    (ds/opt :campaign_id) string?
@@ -41,9 +45,9 @@
    (ds/opt :rejected_reasons) (s/coll-of string?)
    (ds/opt :rejection_labels) (s/coll-of string?)
    (ds/opt :review_status) string?
+   (ds/opt :summary_status) pin-promotion-summary-status-spec
    (ds/opt :type) string?
    (ds/opt :updated_time) int?
-   (ds/opt :summary_status) pin-promotion-summary-status-spec
    })
 
 (def ad-response-spec

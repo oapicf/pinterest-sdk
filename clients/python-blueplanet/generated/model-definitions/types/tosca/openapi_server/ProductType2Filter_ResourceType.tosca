@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ProductType2Filter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ProductType2Filter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsProductGroupMultipleStringListCriteria = openapi_server.resourceTypes.CatalogsProductGroupMultipleStringListCriteria
+}
+resourceTypes {
+
+  ProductType2Filter {
+    title = ProductType2Filter
+    description = ProductType2Filter
+    derivedFrom = Root
+    properties {
+        product_type_2 {
+          type = CatalogsProductGroupMultipleStringListCriteria
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ProductType2Filter {
+    title = ProductType2Filter
+    description = ProductType2Filter
+    implements = openapi_server.resourceTypes.ProductType2Filter
+
+  }
+}

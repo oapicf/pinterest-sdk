@@ -1,5 +1,6 @@
 const utils = require('../utils/utils');
 const BrandFilter = require('../models/BrandFilter');
+const CatalogsProductGroupFilterOperatorTypeCriteria = require('../models/CatalogsProductGroupFilterOperatorTypeCriteria');
 const CatalogsProductGroupMultipleCountriesCriteria = require('../models/CatalogsProductGroupMultipleCountriesCriteria');
 const CatalogsProductGroupMultipleStringCriteria = require('../models/CatalogsProductGroupMultipleStringCriteria');
 const CountryFilter = require('../models/CountryFilter');
@@ -10,6 +11,7 @@ const CustomLabel3Filter = require('../models/CustomLabel3Filter');
 const CustomLabel4Filter = require('../models/CustomLabel4Filter');
 const HotelIdFilter = require('../models/HotelIdFilter');
 const PriceFilter = require('../models/PriceFilter');
+const TitleKeywordsFilter = require('../models/TitleKeywordsFilter');
 const catalogs_product_group_pricing_currency_criteria = require('../models/catalogs_product_group_pricing_currency_criteria');
 
 module.exports = {
@@ -31,6 +33,7 @@ module.exports = {
             'CUSTOM_LABEL_3': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}CUSTOM_LABEL_3`)),
             'CUSTOM_LABEL_4': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}CUSTOM_LABEL_4`)),
             'COUNTRY': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}COUNTRY`)),
+            'TITLE_KEYWORDS': utils.removeIfEmpty(.mapping(bundle, `${keyPrefix}TITLE_KEYWORDS`)),
         }
     },
 }

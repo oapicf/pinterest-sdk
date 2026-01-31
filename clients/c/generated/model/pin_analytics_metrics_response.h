@@ -20,16 +20,16 @@ typedef struct pin_analytics_metrics_response_t pin_analytics_metrics_response_t
 
 
 typedef struct pin_analytics_metrics_response_t {
-    list_t* lifetime_metrics; //map
     list_t *daily_metrics; //nonprimitive container
+    list_t* lifetime_metrics; //map
     list_t* summary_metrics; //map
 
     int _library_owned; // Is the library responsible for freeing this object?
 } pin_analytics_metrics_response_t;
 
 __attribute__((deprecated)) pin_analytics_metrics_response_t *pin_analytics_metrics_response_create(
-    list_t* lifetime_metrics,
     list_t *daily_metrics,
+    list_t* lifetime_metrics,
     list_t* summary_metrics
 );
 

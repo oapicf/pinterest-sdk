@@ -7,8 +7,8 @@ Object describing an item batch record to create items
 
 Name | Type
 ------------ | -------------
-`itemId` | string
 `attributes` | [ItemAttributesRequest](ItemAttributesRequest.md)
+`itemId` | string
 
 ## Example
 
@@ -17,8 +17,8 @@ import type { ItemCreateBatchRecord } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "itemId": DS0294-M,
   "attributes": null,
+  "itemId": DS0294-M,
 } satisfies ItemCreateBatchRecord
 
 console.log(example)

@@ -9,20 +9,27 @@ import org.openapitools.vertxweb.server.model.UserListType;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CustomerListRequest   {
   
+  private UserListType listType = "EMAIL";
   private String name;
   private String records;
-  private UserListType listType = "EMAIL";
-  private Object exceptions;
 
   public CustomerListRequest () {
 
   }
 
-  public CustomerListRequest (String name, String records, UserListType listType, Object exceptions) {
+  public CustomerListRequest (UserListType listType, String name, String records) {
+    this.listType = listType;
     this.name = name;
     this.records = records;
+  }
+
+    
+  @JsonProperty("list_type")
+  public UserListType getListType() {
+    return listType;
+  }
+  public void setListType(UserListType listType) {
     this.listType = listType;
-    this.exceptions = exceptions;
   }
 
     
@@ -43,24 +50,6 @@ public class CustomerListRequest   {
     this.records = records;
   }
 
-    
-  @JsonProperty("list_type")
-  public UserListType getListType() {
-    return listType;
-  }
-  public void setListType(UserListType listType) {
-    this.listType = listType;
-  }
-
-    
-  @JsonProperty("exceptions")
-  public Object getExceptions() {
-    return exceptions;
-  }
-  public void setExceptions(Object exceptions) {
-    this.exceptions = exceptions;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -71,15 +60,14 @@ public class CustomerListRequest   {
       return false;
     }
     CustomerListRequest customerListRequest = (CustomerListRequest) o;
-    return Objects.equals(name, customerListRequest.name) &&
-        Objects.equals(records, customerListRequest.records) &&
-        Objects.equals(listType, customerListRequest.listType) &&
-        Objects.equals(exceptions, customerListRequest.exceptions);
+    return Objects.equals(listType, customerListRequest.listType) &&
+        Objects.equals(name, customerListRequest.name) &&
+        Objects.equals(records, customerListRequest.records);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, records, listType, exceptions);
+    return Objects.hash(listType, name, records);
   }
 
   @Override
@@ -87,10 +75,9 @@ public class CustomerListRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CustomerListRequest {\n");
     
+    sb.append("    listType: ").append(toIndentedString(listType)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    records: ").append(toIndentedString(records)).append("\n");
-    sb.append("    listType: ").append(toIndentedString(listType)).append("\n");
-    sb.append("    exceptions: ").append(toIndentedString(exceptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

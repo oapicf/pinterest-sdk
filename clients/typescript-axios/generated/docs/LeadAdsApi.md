@@ -5,14 +5,14 @@ All URIs are relative to *https://api.pinterest.com/v5*
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
 |[**adAccountsSubscriptionsDelById**](#adaccountssubscriptionsdelbyid) | **DELETE** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Delete lead ads subscription|
-|[**adAccountsSubscriptionsGetById**](#adaccountssubscriptionsgetbyid) | **GET** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Get lead ads subscription|
+|[**adAccountsSubscriptionsGetById**](#adaccountssubscriptionsgetbyid) | **GET** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Get lead ads subscription by ID|
 |[**adAccountsSubscriptionsGetList**](#adaccountssubscriptionsgetlist) | **GET** /ad_accounts/{ad_account_id}/leads/subscriptions | Get lead ads subscriptions|
 |[**adAccountsSubscriptionsPost**](#adaccountssubscriptionspost) | **POST** /ad_accounts/{ad_account_id}/leads/subscriptions | Create lead ads subscription|
 
 # **adAccountsSubscriptionsDelById**
 > adAccountsSubscriptionsDelById()
 
-Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.\'
 
 ### Example
 
@@ -59,18 +59,20 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | Subscription deleted successfully |  -  |
-|**400** | Invalid input parameters. |  -  |
-|**403** | You are not authorized to delete this subscription. |  -  |
-|**404** | Subscription not found. |  -  |
-|**0** | Unexpected error. |  -  |
+|**204** | Resource deleted successfully. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **adAccountsSubscriptionsGetById**
-> AdAccountGetSubscriptionResponse adAccountsSubscriptionsGetById()
+> LeadSubscription adAccountsSubscriptionsGetById()
 
-Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+Get an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.\'
 
 ### Example
 
@@ -102,11 +104,11 @@ const { status, data } = await apiInstance.adAccountsSubscriptionsGetById(
 
 ### Return type
 
-**AdAccountGetSubscriptionResponse**
+**LeadSubscription**
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -117,18 +119,20 @@ const { status, data } = await apiInstance.adAccountsSubscriptionsGetById(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**400** | Invalid input parameters. |  -  |
-|**403** | Can\&#39;t access this subscription. |  -  |
-|**404** | Subscription not found. |  -  |
-|**0** | Unexpected error. |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **adAccountsSubscriptionsGetList**
 > AdAccountsSubscriptionsGetList200Response adAccountsSubscriptionsGetList()
 
-Get the advertiser\'s list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+Get the advertiser\'s list of lead ads subscriptions. Only requests for the OWNER or ADMIN of the ad_account will be allowed.
 
 ### Example
 
@@ -142,13 +146,13 @@ const configuration = new Configuration();
 const apiInstance = new LeadAdsApi(configuration);
 
 let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
-let pageSize: number; //Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional) (default to 25)
 let bookmark: string; //Cursor used to fetch the next page of items (optional) (default to undefined)
+let pageSize: number; //Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 const { status, data } = await apiInstance.adAccountsSubscriptionsGetList(
     adAccountId,
-    pageSize,
-    bookmark
+    bookmark,
+    pageSize
 );
 ```
 
@@ -157,8 +161,8 @@ const { status, data } = await apiInstance.adAccountsSubscriptionsGetList(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
-| **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25|
 | **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined|
+| **pageSize** | [**number**] | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | (optional) defaults to 25|
 
 
 ### Return type
@@ -178,16 +182,20 @@ const { status, data } = await apiInstance.adAccountsSubscriptionsGetList(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**403** | Can\&#39;t access this subscription. |  -  |
-|**0** | Unexpected error. |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**401** | Authentication is required and has either failed or not been provided. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**404** | The requested resource could not be found on this server. |  -  |
+|**429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **adAccountsSubscriptionsPost**
-> AdAccountCreateSubscriptionResponse adAccountsSubscriptionsPost(adAccountCreateSubscriptionRequest)
+> LeadSubscription adAccountsSubscriptionsPost(leadSubscriptionPostParamsCreate)
 
-Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.   - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.   - For data security, egress lead data is encrypted with AES-256-GCM.
 
 ### Example
 
@@ -195,18 +203,18 @@ Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver
 import {
     LeadAdsApi,
     Configuration,
-    AdAccountCreateSubscriptionRequest
+    LeadSubscriptionPostParamsCreate
 } from './api';
 
 const configuration = new Configuration();
 const apiInstance = new LeadAdsApi(configuration);
 
 let adAccountId: string; //Unique identifier of an ad account. (default to undefined)
-let adAccountCreateSubscriptionRequest: AdAccountCreateSubscriptionRequest; //Subscription to create.
+let leadSubscriptionPostParamsCreate: LeadSubscriptionPostParamsCreate; //
 
 const { status, data } = await apiInstance.adAccountsSubscriptionsPost(
     adAccountId,
-    adAccountCreateSubscriptionRequest
+    leadSubscriptionPostParamsCreate
 );
 ```
 
@@ -214,13 +222,13 @@ const { status, data } = await apiInstance.adAccountsSubscriptionsPost(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **adAccountCreateSubscriptionRequest** | **AdAccountCreateSubscriptionRequest**| Subscription to create. | |
+| **leadSubscriptionPostParamsCreate** | **LeadSubscriptionPostParamsCreate**|  | |
 | **adAccountId** | [**string**] | Unique identifier of an ad account. | defaults to undefined|
 
 
 ### Return type
 
-**AdAccountCreateSubscriptionResponse**
+**LeadSubscription**
 
 ### Authorization
 
@@ -235,10 +243,10 @@ const { status, data } = await apiInstance.adAccountsSubscriptionsPost(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**400** | Invalid input parameters. |  -  |
-|**403** | Can\&#39;t access this subscription. |  -  |
-|**0** | Unexpected error. |  -  |
+|**200** | The request has succeeded. |  -  |
+|**400** | The request could not be understood by the server due to unexpected data. |  -  |
+|**403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+|**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

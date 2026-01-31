@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Title** | Pointer to **string** | The name of the creative assets. | [optional] 
-**Description** | Pointer to **string** | Brief description of the creative assets. | [optional] 
-**Link** | Pointer to **string** | Link to the creative assets page. | [optional] 
-**IosDeepLink** | Pointer to **NullableString** | IOS deep link to the creative assets page. | [optional] 
 **AndroidDeepLink** | Pointer to **NullableString** | Link to the creative assets page. | [optional] 
-**GoogleProductCategory** | Pointer to **NullableString** | The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted. | [optional] 
 **CustomLabel0** | Pointer to **NullableString** | Custom grouping of creative assets. | [optional] 
 **CustomLabel1** | Pointer to **NullableString** | Custom grouping of creative assets. | [optional] 
 **CustomLabel2** | Pointer to **NullableString** | Custom grouping of creative assets. | [optional] 
 **CustomLabel3** | Pointer to **NullableString** | Custom grouping of creative assets. | [optional] 
 **CustomLabel4** | Pointer to **NullableString** | Custom grouping of creative assets. | [optional] 
+**Description** | Pointer to **string** | Brief description of the creative assets. | [optional] 
+**GoogleProductCategory** | Pointer to **NullableString** | The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted. | [optional] 
+**IosDeepLink** | Pointer to **NullableString** | IOS deep link to the creative assets page. | [optional] 
+**Link** | Pointer to **string** | Link to the creative assets page. | [optional] 
+**Title** | Pointer to **string** | The name of the creative assets. | [optional] 
 **Visibility** | Pointer to **NullableString** | Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’. | [optional] 
 
 ## Methods
@@ -36,116 +36,6 @@ NewCatalogsUpdatableCreativeAssetsAttributesWithDefaults instantiates a new Cata
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetTitle
-
-`func (o *CatalogsUpdatableCreativeAssetsAttributes) GetTitle() string`
-
-GetTitle returns the Title field if non-nil, zero value otherwise.
-
-### GetTitleOk
-
-`func (o *CatalogsUpdatableCreativeAssetsAttributes) GetTitleOk() (*string, bool)`
-
-GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTitle
-
-`func (o *CatalogsUpdatableCreativeAssetsAttributes) SetTitle(v string)`
-
-SetTitle sets Title field to given value.
-
-### HasTitle
-
-`func (o *CatalogsUpdatableCreativeAssetsAttributes) HasTitle() bool`
-
-HasTitle returns a boolean if a field has been set.
-
-### GetDescription
-
-`func (o *CatalogsUpdatableCreativeAssetsAttributes) GetDescription() string`
-
-GetDescription returns the Description field if non-nil, zero value otherwise.
-
-### GetDescriptionOk
-
-`func (o *CatalogsUpdatableCreativeAssetsAttributes) GetDescriptionOk() (*string, bool)`
-
-GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDescription
-
-`func (o *CatalogsUpdatableCreativeAssetsAttributes) SetDescription(v string)`
-
-SetDescription sets Description field to given value.
-
-### HasDescription
-
-`func (o *CatalogsUpdatableCreativeAssetsAttributes) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
-
-### GetLink
-
-`func (o *CatalogsUpdatableCreativeAssetsAttributes) GetLink() string`
-
-GetLink returns the Link field if non-nil, zero value otherwise.
-
-### GetLinkOk
-
-`func (o *CatalogsUpdatableCreativeAssetsAttributes) GetLinkOk() (*string, bool)`
-
-GetLinkOk returns a tuple with the Link field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLink
-
-`func (o *CatalogsUpdatableCreativeAssetsAttributes) SetLink(v string)`
-
-SetLink sets Link field to given value.
-
-### HasLink
-
-`func (o *CatalogsUpdatableCreativeAssetsAttributes) HasLink() bool`
-
-HasLink returns a boolean if a field has been set.
-
-### GetIosDeepLink
-
-`func (o *CatalogsUpdatableCreativeAssetsAttributes) GetIosDeepLink() string`
-
-GetIosDeepLink returns the IosDeepLink field if non-nil, zero value otherwise.
-
-### GetIosDeepLinkOk
-
-`func (o *CatalogsUpdatableCreativeAssetsAttributes) GetIosDeepLinkOk() (*string, bool)`
-
-GetIosDeepLinkOk returns a tuple with the IosDeepLink field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIosDeepLink
-
-`func (o *CatalogsUpdatableCreativeAssetsAttributes) SetIosDeepLink(v string)`
-
-SetIosDeepLink sets IosDeepLink field to given value.
-
-### HasIosDeepLink
-
-`func (o *CatalogsUpdatableCreativeAssetsAttributes) HasIosDeepLink() bool`
-
-HasIosDeepLink returns a boolean if a field has been set.
-
-### SetIosDeepLinkNil
-
-`func (o *CatalogsUpdatableCreativeAssetsAttributes) SetIosDeepLinkNil(b bool)`
-
- SetIosDeepLinkNil sets the value for IosDeepLink to be an explicit nil
-
-### UnsetIosDeepLink
-`func (o *CatalogsUpdatableCreativeAssetsAttributes) UnsetIosDeepLink()`
-
-UnsetIosDeepLink ensures that no value is present for IosDeepLink, not even an explicit nil
 ### GetAndroidDeepLink
 
 `func (o *CatalogsUpdatableCreativeAssetsAttributes) GetAndroidDeepLink() string`
@@ -181,41 +71,6 @@ HasAndroidDeepLink returns a boolean if a field has been set.
 `func (o *CatalogsUpdatableCreativeAssetsAttributes) UnsetAndroidDeepLink()`
 
 UnsetAndroidDeepLink ensures that no value is present for AndroidDeepLink, not even an explicit nil
-### GetGoogleProductCategory
-
-`func (o *CatalogsUpdatableCreativeAssetsAttributes) GetGoogleProductCategory() string`
-
-GetGoogleProductCategory returns the GoogleProductCategory field if non-nil, zero value otherwise.
-
-### GetGoogleProductCategoryOk
-
-`func (o *CatalogsUpdatableCreativeAssetsAttributes) GetGoogleProductCategoryOk() (*string, bool)`
-
-GetGoogleProductCategoryOk returns a tuple with the GoogleProductCategory field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGoogleProductCategory
-
-`func (o *CatalogsUpdatableCreativeAssetsAttributes) SetGoogleProductCategory(v string)`
-
-SetGoogleProductCategory sets GoogleProductCategory field to given value.
-
-### HasGoogleProductCategory
-
-`func (o *CatalogsUpdatableCreativeAssetsAttributes) HasGoogleProductCategory() bool`
-
-HasGoogleProductCategory returns a boolean if a field has been set.
-
-### SetGoogleProductCategoryNil
-
-`func (o *CatalogsUpdatableCreativeAssetsAttributes) SetGoogleProductCategoryNil(b bool)`
-
- SetGoogleProductCategoryNil sets the value for GoogleProductCategory to be an explicit nil
-
-### UnsetGoogleProductCategory
-`func (o *CatalogsUpdatableCreativeAssetsAttributes) UnsetGoogleProductCategory()`
-
-UnsetGoogleProductCategory ensures that no value is present for GoogleProductCategory, not even an explicit nil
 ### GetCustomLabel0
 
 `func (o *CatalogsUpdatableCreativeAssetsAttributes) GetCustomLabel0() string`
@@ -391,6 +246,151 @@ HasCustomLabel4 returns a boolean if a field has been set.
 `func (o *CatalogsUpdatableCreativeAssetsAttributes) UnsetCustomLabel4()`
 
 UnsetCustomLabel4 ensures that no value is present for CustomLabel4, not even an explicit nil
+### GetDescription
+
+`func (o *CatalogsUpdatableCreativeAssetsAttributes) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *CatalogsUpdatableCreativeAssetsAttributes) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *CatalogsUpdatableCreativeAssetsAttributes) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *CatalogsUpdatableCreativeAssetsAttributes) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
+
+### GetGoogleProductCategory
+
+`func (o *CatalogsUpdatableCreativeAssetsAttributes) GetGoogleProductCategory() string`
+
+GetGoogleProductCategory returns the GoogleProductCategory field if non-nil, zero value otherwise.
+
+### GetGoogleProductCategoryOk
+
+`func (o *CatalogsUpdatableCreativeAssetsAttributes) GetGoogleProductCategoryOk() (*string, bool)`
+
+GetGoogleProductCategoryOk returns a tuple with the GoogleProductCategory field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGoogleProductCategory
+
+`func (o *CatalogsUpdatableCreativeAssetsAttributes) SetGoogleProductCategory(v string)`
+
+SetGoogleProductCategory sets GoogleProductCategory field to given value.
+
+### HasGoogleProductCategory
+
+`func (o *CatalogsUpdatableCreativeAssetsAttributes) HasGoogleProductCategory() bool`
+
+HasGoogleProductCategory returns a boolean if a field has been set.
+
+### SetGoogleProductCategoryNil
+
+`func (o *CatalogsUpdatableCreativeAssetsAttributes) SetGoogleProductCategoryNil(b bool)`
+
+ SetGoogleProductCategoryNil sets the value for GoogleProductCategory to be an explicit nil
+
+### UnsetGoogleProductCategory
+`func (o *CatalogsUpdatableCreativeAssetsAttributes) UnsetGoogleProductCategory()`
+
+UnsetGoogleProductCategory ensures that no value is present for GoogleProductCategory, not even an explicit nil
+### GetIosDeepLink
+
+`func (o *CatalogsUpdatableCreativeAssetsAttributes) GetIosDeepLink() string`
+
+GetIosDeepLink returns the IosDeepLink field if non-nil, zero value otherwise.
+
+### GetIosDeepLinkOk
+
+`func (o *CatalogsUpdatableCreativeAssetsAttributes) GetIosDeepLinkOk() (*string, bool)`
+
+GetIosDeepLinkOk returns a tuple with the IosDeepLink field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIosDeepLink
+
+`func (o *CatalogsUpdatableCreativeAssetsAttributes) SetIosDeepLink(v string)`
+
+SetIosDeepLink sets IosDeepLink field to given value.
+
+### HasIosDeepLink
+
+`func (o *CatalogsUpdatableCreativeAssetsAttributes) HasIosDeepLink() bool`
+
+HasIosDeepLink returns a boolean if a field has been set.
+
+### SetIosDeepLinkNil
+
+`func (o *CatalogsUpdatableCreativeAssetsAttributes) SetIosDeepLinkNil(b bool)`
+
+ SetIosDeepLinkNil sets the value for IosDeepLink to be an explicit nil
+
+### UnsetIosDeepLink
+`func (o *CatalogsUpdatableCreativeAssetsAttributes) UnsetIosDeepLink()`
+
+UnsetIosDeepLink ensures that no value is present for IosDeepLink, not even an explicit nil
+### GetLink
+
+`func (o *CatalogsUpdatableCreativeAssetsAttributes) GetLink() string`
+
+GetLink returns the Link field if non-nil, zero value otherwise.
+
+### GetLinkOk
+
+`func (o *CatalogsUpdatableCreativeAssetsAttributes) GetLinkOk() (*string, bool)`
+
+GetLinkOk returns a tuple with the Link field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLink
+
+`func (o *CatalogsUpdatableCreativeAssetsAttributes) SetLink(v string)`
+
+SetLink sets Link field to given value.
+
+### HasLink
+
+`func (o *CatalogsUpdatableCreativeAssetsAttributes) HasLink() bool`
+
+HasLink returns a boolean if a field has been set.
+
+### GetTitle
+
+`func (o *CatalogsUpdatableCreativeAssetsAttributes) GetTitle() string`
+
+GetTitle returns the Title field if non-nil, zero value otherwise.
+
+### GetTitleOk
+
+`func (o *CatalogsUpdatableCreativeAssetsAttributes) GetTitleOk() (*string, bool)`
+
+GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTitle
+
+`func (o *CatalogsUpdatableCreativeAssetsAttributes) SetTitle(v string)`
+
+SetTitle sets Title field to given value.
+
+### HasTitle
+
+`func (o *CatalogsUpdatableCreativeAssetsAttributes) HasTitle() bool`
+
+HasTitle returns a boolean if a field has been set.
+
 ### GetVisibility
 
 `func (o *CatalogsUpdatableCreativeAssetsAttributes) GetVisibility() string`

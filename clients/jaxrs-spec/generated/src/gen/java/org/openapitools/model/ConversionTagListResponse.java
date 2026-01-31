@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.ConversionTagResponse;
+import org.openapitools.model.ConversionTag;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -20,16 +20,16 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("ConversionTagListResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionTagListResponse   {
-  private @Valid List<@Valid ConversionTagResponse> items = new ArrayList<>();
+  private @Valid List<@Valid ConversionTag> items = new ArrayList<>();
 
   public ConversionTagListResponse() {
   }
 
   /**
    **/
-  public ConversionTagListResponse items(List<@Valid ConversionTagResponse> items) {
+  public ConversionTagListResponse items(List<@Valid ConversionTag> items) {
     this.items = items;
     return this;
   }
@@ -37,16 +37,16 @@ public class ConversionTagListResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("items")
-  @Valid public List<@Valid ConversionTagResponse> getItems() {
+  @Valid public List<@Valid ConversionTag> getItems() {
     return items;
   }
 
   @JsonProperty("items")
-  public void setItems(List<@Valid ConversionTagResponse> items) {
+  public void setItems(List<@Valid ConversionTag> items) {
     this.items = items;
   }
 
-  public ConversionTagListResponse addItemsItem(ConversionTagResponse itemsItem) {
+  public ConversionTagListResponse addItemsItem(ConversionTag itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -55,7 +55,7 @@ public class ConversionTagListResponse   {
     return this;
   }
 
-  public ConversionTagListResponse removeItemsItem(ConversionTagResponse itemsItem) {
+  public ConversionTagListResponse removeItemsItem(ConversionTag itemsItem) {
     if (itemsItem != null && this.items != null) {
       this.items.remove(itemsItem);
     }

@@ -5,60 +5,49 @@
 #include "Helpers.h"
 
 
-#include "Ad_account_owner.h"
+#include "AdAccountOwner.h"
 
 using namespace std;
 using namespace Tizen::ArtikCloud;
 
-Ad_account_owner::Ad_account_owner()
+AdAccountOwner::AdAccountOwner()
 {
 	//__init();
 }
 
-Ad_account_owner::~Ad_account_owner()
+AdAccountOwner::~AdAccountOwner()
 {
 	//__cleanup();
 }
 
 void
-Ad_account_owner::__init()
+AdAccountOwner::__init()
 {
-	//username = std::string();
 	//id = std::string();
+	//username = std::string();
 }
 
 void
-Ad_account_owner::__cleanup()
+AdAccountOwner::__cleanup()
 {
-	//if(username != NULL) {
-	//
-	//delete username;
-	//username = NULL;
-	//}
 	//if(id != NULL) {
 	//
 	//delete id;
 	//id = NULL;
 	//}
+	//if(username != NULL) {
+	//
+	//delete username;
+	//username = NULL;
+	//}
 	//
 }
 
 void
-Ad_account_owner::fromJson(char* jsonStr)
+AdAccountOwner::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *usernameKey = "username";
-	node = json_object_get_member(pJsonObject, usernameKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&username, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *idKey = "id";
 	node = json_object_get_member(pJsonObject, idKey);
 	if (node !=NULL) {
@@ -70,27 +59,29 @@ Ad_account_owner::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *usernameKey = "username";
+	node = json_object_get_member(pJsonObject, usernameKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&username, node, "std::string", "");
+		} else {
+			
+		}
+	}
 }
 
-Ad_account_owner::Ad_account_owner(char* json)
+AdAccountOwner::AdAccountOwner(char* json)
 {
 	this->fromJson(json);
 }
 
 char*
-Ad_account_owner::toJson()
+AdAccountOwner::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getUsername();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *usernameKey = "username";
-	json_object_set_member(pJsonObject, usernameKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getId();
 		node = converttoJson(&obj, "std::string", "");
@@ -100,6 +91,15 @@ Ad_account_owner::toJson()
 	}
 	const gchar *idKey = "id";
 	json_object_set_member(pJsonObject, idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getUsername();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *usernameKey = "username";
+	json_object_set_member(pJsonObject, usernameKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -109,27 +109,27 @@ Ad_account_owner::toJson()
 }
 
 std::string
-Ad_account_owner::getUsername()
-{
-	return username;
-}
-
-void
-Ad_account_owner::setUsername(std::string  username)
-{
-	this->username = username;
-}
-
-std::string
-Ad_account_owner::getId()
+AdAccountOwner::getId()
 {
 	return id;
 }
 
 void
-Ad_account_owner::setId(std::string  id)
+AdAccountOwner::setId(std::string  id)
 {
 	this->id = id;
+}
+
+std::string
+AdAccountOwner::getUsername()
+{
+	return username;
+}
+
+void
+AdAccountOwner::setUsername(std::string  username)
+{
+	this->username = username;
 }
 
 

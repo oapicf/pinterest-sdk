@@ -22,25 +22,25 @@ lead_form_common_t* instantiate_lead_form_common(int include_optional) {
   lead_form_common_t* lead_form_common = NULL;
   if (include_optional) {
     lead_form_common = lead_form_common_create(
-      "Lead Form 3/14/2023",
-      "https://www.advertisername.com/privacy-policy",
-      false,
       "Thank you for submitting. We will contact you soon.",
-      pinterest_rest_api_lead_form_common__"DRAFT",
       "By entering your personal information, you agree that your data will be collected and used.",
+      false,
+      "Lead Form 3/14/2023",
+      [{"label":"Copyright","link":"https://policy.pinterest.com/en/copyright"}],
+      "https://www.advertisername.com/privacy-policy",
       [{"question_type":"CUSTOM","custom_question_field_type":"CHECKBOX","custom_question_label":"What is your favorite animal?","custom_question_options":["Dog","Cat","Bird","Turtle"]}],
-      [{"label":"Copyright","link":"https://policy.pinterest.com/en/copyright"}]
+      pinterest_rest_api_lead_form_common__"DRAFT"
     );
   } else {
     lead_form_common = lead_form_common_create(
-      "Lead Form 3/14/2023",
-      "https://www.advertisername.com/privacy-policy",
-      false,
       "Thank you for submitting. We will contact you soon.",
-      pinterest_rest_api_lead_form_common__"DRAFT",
       "By entering your personal information, you agree that your data will be collected and used.",
+      false,
+      "Lead Form 3/14/2023",
+      [{"label":"Copyright","link":"https://policy.pinterest.com/en/copyright"}],
+      "https://www.advertisername.com/privacy-policy",
       [{"question_type":"CUSTOM","custom_question_field_type":"CHECKBOX","custom_question_label":"What is your favorite animal?","custom_question_options":["Dog","Cat","Bird","Turtle"]}],
-      [{"label":"Copyright","link":"https://policy.pinterest.com/en/copyright"}]
+      pinterest_rest_api_lead_form_common__"DRAFT"
     );
   }
 

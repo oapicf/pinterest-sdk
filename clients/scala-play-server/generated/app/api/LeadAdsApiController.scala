@@ -4,13 +4,12 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.AdAccountCreateSubscriptionRequest
-import model.AdAccountCreateSubscriptionResponse
-import model.AdAccountGetSubscriptionResponse
 import model.AdAccountsSubscriptionsGetList200Response
 import model.Error
+import model.LeadSubscription
+import model.LeadSubscriptionPostParamsCreate
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Singleton
 class LeadAdsApiController @Inject()(cc: ControllerComponents, api: LeadAdsApi) extends AbstractController(cc) {
   /**
@@ -33,7 +32,7 @@ class LeadAdsApiController @Inject()(cc: ControllerComponents, api: LeadAdsApi) 
     * @param subscriptionId Unique identifier of a subscription.
     */
   def adAccountsSubscriptionsGetById(adAccountId: String, subscriptionId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): AdAccountGetSubscriptionResponse = {
+    def executeApi(): LeadSubscription = {
       api.adAccountsSubscriptionsGetById(adAccountId, subscriptionId)
     }
 
@@ -43,17 +42,17 @@ class LeadAdsApiController @Inject()(cc: ControllerComponents, api: LeadAdsApi) 
   }
 
   /**
-    * GET /v5/ad_accounts/:adAccountId/leads/subscriptions?pageSize=[value]&bookmark=[value]
+    * GET /v5/ad_accounts/:adAccountId/leads/subscriptions?bookmark=[value]&pageSize=[value]
     * @param adAccountId Unique identifier of an ad account.
     */
   def adAccountsSubscriptionsGetList(adAccountId: String): Action[AnyContent] = Action { request =>
     def executeApi(): AdAccountsSubscriptionsGetList200Response = {
+      val bookmark = request.getQueryString("bookmark")
+        
       val pageSize = request.getQueryString("page_size")
         .map(value => value.toInt)
         
-      val bookmark = request.getQueryString("bookmark")
-        
-      api.adAccountsSubscriptionsGetList(adAccountId, pageSize, bookmark)
+      api.adAccountsSubscriptionsGetList(adAccountId, bookmark, pageSize)
     }
 
     val result = executeApi()
@@ -66,11 +65,11 @@ class LeadAdsApiController @Inject()(cc: ControllerComponents, api: LeadAdsApi) 
     * @param adAccountId Unique identifier of an ad account.
     */
   def adAccountsSubscriptionsPost(adAccountId: String): Action[AnyContent] = Action { request =>
-    def executeApi(): AdAccountCreateSubscriptionResponse = {
-      val adAccountCreateSubscriptionRequest = request.body.asJson.map(_.as[AdAccountCreateSubscriptionRequest]).getOrElse {
-        throw new OpenApiExceptions.MissingRequiredParameterException("body", "adAccountCreateSubscriptionRequest")
+    def executeApi(): LeadSubscription = {
+      val leadSubscriptionPostParamsCreate = request.body.asJson.map(_.as[LeadSubscriptionPostParamsCreate]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "leadSubscriptionPostParamsCreate")
       }
-      api.adAccountsSubscriptionsPost(adAccountId, adAccountCreateSubscriptionRequest)
+      api.adAccountsSubscriptionsPost(adAccountId, leadSubscriptionPostParamsCreate)
     }
 
     val result = executeApi()

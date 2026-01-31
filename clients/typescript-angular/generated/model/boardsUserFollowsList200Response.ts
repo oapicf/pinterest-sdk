@@ -11,7 +11,7 @@ import { Board } from './board';
 
 
 export interface BoardsUserFollowsList200Response { 
-    items: Array<Board>;
     bookmark?: string | null;
+    items: Array<Board>;
 }
 

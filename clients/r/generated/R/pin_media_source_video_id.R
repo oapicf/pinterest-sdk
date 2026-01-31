@@ -1,42 +1,51 @@
 #' Create a new PinMediaSourceVideoID
 #'
 #' @description
-#' Video ID-based media source
+#' Video ID-based media source.
 #'
 #' @docType class
 #' @title PinMediaSourceVideoID
 #' @description PinMediaSourceVideoID Class
 #' @format An \code{R6Class} generator object
-#' @field source_type  character
-#' @field cover_image_url Cover image url. character [optional]
-#' @field cover_image_content_type Content type for cover image Base64. character [optional]
+#' @field cover_image_content_type Content type for cover image Base64. \link{ContentType} [optional]
 #' @field cover_image_data Cover image Base64. character [optional]
-#' @field media_id  character
+#' @field cover_image_key_frame_time Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used. integer [optional]
+#' @field cover_image_url Cover image URL. character [optional]
 #' @field is_standard Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users. character [optional]
+#' @field media_id  character
+#' @field source_type  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 PinMediaSourceVideoID <- R6::R6Class(
   "PinMediaSourceVideoID",
   public = list(
-    `source_type` = NULL,
-    `cover_image_url` = NULL,
     `cover_image_content_type` = NULL,
     `cover_image_data` = NULL,
-    `media_id` = NULL,
+    `cover_image_key_frame_time` = NULL,
+    `cover_image_url` = NULL,
     `is_standard` = NULL,
+    `media_id` = NULL,
+    `source_type` = NULL,
 
     #' @description
     #' Initialize a new PinMediaSourceVideoID class.
     #'
-    #' @param source_type source_type
     #' @param media_id media_id
-    #' @param cover_image_url Cover image url.
+    #' @param source_type source_type
     #' @param cover_image_content_type Content type for cover image Base64.
     #' @param cover_image_data Cover image Base64.
+    #' @param cover_image_key_frame_time Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.
+    #' @param cover_image_url Cover image URL.
     #' @param is_standard Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.. Default to TRUE.
     #' @param ... Other optional arguments.
-    initialize = function(`source_type`, `media_id`, `cover_image_url` = NULL, `cover_image_content_type` = NULL, `cover_image_data` = NULL, `is_standard` = TRUE, ...) {
+    initialize = function(`media_id`, `source_type`, `cover_image_content_type` = NULL, `cover_image_data` = NULL, `cover_image_key_frame_time` = NULL, `cover_image_url` = NULL, `is_standard` = TRUE, ...) {
+      if (!missing(`media_id`)) {
+        if (!(is.character(`media_id`) && length(`media_id`) == 1)) {
+          stop(paste("Error! Invalid data for `media_id`. Must be a string:", `media_id`))
+        }
+        self$`media_id` <- `media_id`
+      }
       if (!missing(`source_type`)) {
         if (!(`source_type` %in% c("video_id"))) {
           stop(paste("Error! \"", `source_type`, "\" cannot be assigned to `source_type`. Must be \"video_id\".", sep = ""))
@@ -46,25 +55,11 @@ PinMediaSourceVideoID <- R6::R6Class(
         }
         self$`source_type` <- `source_type`
       }
-      if (!missing(`media_id`)) {
-        if (!(is.character(`media_id`) && length(`media_id`) == 1)) {
-          stop(paste("Error! Invalid data for `media_id`. Must be a string:", `media_id`))
-        }
-        self$`media_id` <- `media_id`
-      }
-      if (!is.null(`cover_image_url`)) {
-        if (!(is.character(`cover_image_url`) && length(`cover_image_url`) == 1)) {
-          stop(paste("Error! Invalid data for `cover_image_url`. Must be a string:", `cover_image_url`))
-        }
-        self$`cover_image_url` <- `cover_image_url`
-      }
       if (!is.null(`cover_image_content_type`)) {
-        if (!(`cover_image_content_type` %in% c("image/jpeg", "image/png"))) {
-          stop(paste("Error! \"", `cover_image_content_type`, "\" cannot be assigned to `cover_image_content_type`. Must be \"image/jpeg\", \"image/png\".", sep = ""))
+        if (!(`cover_image_content_type` %in% c())) {
+          stop(paste("Error! \"", `cover_image_content_type`, "\" cannot be assigned to `cover_image_content_type`. Must be .", sep = ""))
         }
-        if (!(is.character(`cover_image_content_type`) && length(`cover_image_content_type`) == 1)) {
-          stop(paste("Error! Invalid data for `cover_image_content_type`. Must be a string:", `cover_image_content_type`))
-        }
+        stopifnot(R6::is.R6(`cover_image_content_type`))
         self$`cover_image_content_type` <- `cover_image_content_type`
       }
       if (!is.null(`cover_image_data`)) {
@@ -72,6 +67,18 @@ PinMediaSourceVideoID <- R6::R6Class(
           stop(paste("Error! Invalid data for `cover_image_data`. Must be a string:", `cover_image_data`))
         }
         self$`cover_image_data` <- `cover_image_data`
+      }
+      if (!is.null(`cover_image_key_frame_time`)) {
+        if (!(is.numeric(`cover_image_key_frame_time`) && length(`cover_image_key_frame_time`) == 1)) {
+          stop(paste("Error! Invalid data for `cover_image_key_frame_time`. Must be an integer:", `cover_image_key_frame_time`))
+        }
+        self$`cover_image_key_frame_time` <- `cover_image_key_frame_time`
+      }
+      if (!is.null(`cover_image_url`)) {
+        if (!(is.character(`cover_image_url`) && length(`cover_image_url`) == 1)) {
+          stop(paste("Error! Invalid data for `cover_image_url`. Must be a string:", `cover_image_url`))
+        }
+        self$`cover_image_url` <- `cover_image_url`
       }
       if (!is.null(`is_standard`)) {
         if (!(is.logical(`is_standard`) && length(`is_standard`) == 1)) {
@@ -112,29 +119,33 @@ PinMediaSourceVideoID <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       PinMediaSourceVideoIDObject <- list()
-      if (!is.null(self$`source_type`)) {
-        PinMediaSourceVideoIDObject[["source_type"]] <-
-          self$`source_type`
-      }
-      if (!is.null(self$`cover_image_url`)) {
-        PinMediaSourceVideoIDObject[["cover_image_url"]] <-
-          self$`cover_image_url`
-      }
       if (!is.null(self$`cover_image_content_type`)) {
         PinMediaSourceVideoIDObject[["cover_image_content_type"]] <-
-          self$`cover_image_content_type`
+          self$`cover_image_content_type`$toSimpleType()
       }
       if (!is.null(self$`cover_image_data`)) {
         PinMediaSourceVideoIDObject[["cover_image_data"]] <-
           self$`cover_image_data`
       }
-      if (!is.null(self$`media_id`)) {
-        PinMediaSourceVideoIDObject[["media_id"]] <-
-          self$`media_id`
+      if (!is.null(self$`cover_image_key_frame_time`)) {
+        PinMediaSourceVideoIDObject[["cover_image_key_frame_time"]] <-
+          self$`cover_image_key_frame_time`
+      }
+      if (!is.null(self$`cover_image_url`)) {
+        PinMediaSourceVideoIDObject[["cover_image_url"]] <-
+          self$`cover_image_url`
       }
       if (!is.null(self$`is_standard`)) {
         PinMediaSourceVideoIDObject[["is_standard"]] <-
           self$`is_standard`
+      }
+      if (!is.null(self$`media_id`)) {
+        PinMediaSourceVideoIDObject[["media_id"]] <-
+          self$`media_id`
+      }
+      if (!is.null(self$`source_type`)) {
+        PinMediaSourceVideoIDObject[["source_type"]] <-
+          self$`source_type`
       }
       return(PinMediaSourceVideoIDObject)
     },
@@ -146,29 +157,31 @@ PinMediaSourceVideoID <- R6::R6Class(
     #' @return the instance of PinMediaSourceVideoID
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`cover_image_content_type`)) {
+        `cover_image_content_type_object` <- ContentType$new()
+        `cover_image_content_type_object`$fromJSON(jsonlite::toJSON(this_object$`cover_image_content_type`, auto_unbox = TRUE, digits = NA))
+        self$`cover_image_content_type` <- `cover_image_content_type_object`
+      }
+      if (!is.null(this_object$`cover_image_data`)) {
+        self$`cover_image_data` <- this_object$`cover_image_data`
+      }
+      if (!is.null(this_object$`cover_image_key_frame_time`)) {
+        self$`cover_image_key_frame_time` <- this_object$`cover_image_key_frame_time`
+      }
+      if (!is.null(this_object$`cover_image_url`)) {
+        self$`cover_image_url` <- this_object$`cover_image_url`
+      }
+      if (!is.null(this_object$`is_standard`)) {
+        self$`is_standard` <- this_object$`is_standard`
+      }
+      if (!is.null(this_object$`media_id`)) {
+        self$`media_id` <- this_object$`media_id`
+      }
       if (!is.null(this_object$`source_type`)) {
         if (!is.null(this_object$`source_type`) && !(this_object$`source_type` %in% c("video_id"))) {
           stop(paste("Error! \"", this_object$`source_type`, "\" cannot be assigned to `source_type`. Must be \"video_id\".", sep = ""))
         }
         self$`source_type` <- this_object$`source_type`
-      }
-      if (!is.null(this_object$`cover_image_url`)) {
-        self$`cover_image_url` <- this_object$`cover_image_url`
-      }
-      if (!is.null(this_object$`cover_image_content_type`)) {
-        if (!is.null(this_object$`cover_image_content_type`) && !(this_object$`cover_image_content_type` %in% c("image/jpeg", "image/png"))) {
-          stop(paste("Error! \"", this_object$`cover_image_content_type`, "\" cannot be assigned to `cover_image_content_type`. Must be \"image/jpeg\", \"image/png\".", sep = ""))
-        }
-        self$`cover_image_content_type` <- this_object$`cover_image_content_type`
-      }
-      if (!is.null(this_object$`cover_image_data`)) {
-        self$`cover_image_data` <- this_object$`cover_image_data`
-      }
-      if (!is.null(this_object$`media_id`)) {
-        self$`media_id` <- this_object$`media_id`
-      }
-      if (!is.null(this_object$`is_standard`)) {
-        self$`is_standard` <- this_object$`is_standard`
       }
       self
     },
@@ -191,18 +204,16 @@ PinMediaSourceVideoID <- R6::R6Class(
     #' @return the instance of PinMediaSourceVideoID
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`cover_image_content_type` <- ContentType$new()$fromJSON(jsonlite::toJSON(this_object$`cover_image_content_type`, auto_unbox = TRUE, digits = NA))
+      self$`cover_image_data` <- this_object$`cover_image_data`
+      self$`cover_image_key_frame_time` <- this_object$`cover_image_key_frame_time`
+      self$`cover_image_url` <- this_object$`cover_image_url`
+      self$`is_standard` <- this_object$`is_standard`
+      self$`media_id` <- this_object$`media_id`
       if (!is.null(this_object$`source_type`) && !(this_object$`source_type` %in% c("video_id"))) {
         stop(paste("Error! \"", this_object$`source_type`, "\" cannot be assigned to `source_type`. Must be \"video_id\".", sep = ""))
       }
       self$`source_type` <- this_object$`source_type`
-      self$`cover_image_url` <- this_object$`cover_image_url`
-      if (!is.null(this_object$`cover_image_content_type`) && !(this_object$`cover_image_content_type` %in% c("image/jpeg", "image/png"))) {
-        stop(paste("Error! \"", this_object$`cover_image_content_type`, "\" cannot be assigned to `cover_image_content_type`. Must be \"image/jpeg\", \"image/png\".", sep = ""))
-      }
-      self$`cover_image_content_type` <- this_object$`cover_image_content_type`
-      self$`cover_image_data` <- this_object$`cover_image_data`
-      self$`media_id` <- this_object$`media_id`
-      self$`is_standard` <- this_object$`is_standard`
       self
     },
 
@@ -212,14 +223,6 @@ PinMediaSourceVideoID <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
-      # check the required field `source_type`
-      if (!is.null(input_json$`source_type`)) {
-        if (!(is.character(input_json$`source_type`) && length(input_json$`source_type`) == 1)) {
-          stop(paste("Error! Invalid data for `source_type`. Must be a string:", input_json$`source_type`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for PinMediaSourceVideoID: the required field `source_type` is missing."))
-      }
       # check the required field `media_id`
       if (!is.null(input_json$`media_id`)) {
         if (!(is.character(input_json$`media_id`) && length(input_json$`media_id`) == 1)) {
@@ -227,6 +230,14 @@ PinMediaSourceVideoID <- R6::R6Class(
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for PinMediaSourceVideoID: the required field `media_id` is missing."))
+      }
+      # check the required field `source_type`
+      if (!is.null(input_json$`source_type`)) {
+        if (!(is.character(input_json$`source_type`) && length(input_json$`source_type`) == 1)) {
+          stop(paste("Error! Invalid data for `source_type`. Must be a string:", input_json$`source_type`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for PinMediaSourceVideoID: the required field `source_type` is missing."))
       }
     },
 
@@ -243,8 +254,7 @@ PinMediaSourceVideoID <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      # check if the required `source_type` is null
-      if (is.null(self$`source_type`)) {
+      if (self$`cover_image_key_frame_time` < 0) {
         return(FALSE)
       }
 
@@ -254,6 +264,11 @@ PinMediaSourceVideoID <- R6::R6Class(
       }
 
       if (!str_detect(self$`media_id`, "^\\d+$")) {
+        return(FALSE)
+      }
+
+      # check if the required `source_type` is null
+      if (is.null(self$`source_type`)) {
         return(FALSE)
       }
 
@@ -266,9 +281,8 @@ PinMediaSourceVideoID <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      # check if the required `source_type` is null
-      if (is.null(self$`source_type`)) {
-        invalid_fields["source_type"] <- "Non-nullable required field `source_type` cannot be null."
+      if (self$`cover_image_key_frame_time` < 0) {
+        invalid_fields["cover_image_key_frame_time"] <- "Invalid value for `cover_image_key_frame_time`, must be bigger than or equal to 0."
       }
 
       # check if the required `media_id` is null
@@ -278,6 +292,11 @@ PinMediaSourceVideoID <- R6::R6Class(
 
       if (!str_detect(self$`media_id`, "^\\d+$")) {
         invalid_fields["media_id"] <- "Invalid value for `media_id`, must conform to the pattern ^\\d+$."
+      }
+
+      # check if the required `source_type` is null
+      if (is.null(self$`source_type`)) {
+        invalid_fields["source_type"] <- "Non-nullable required field `source_type` cannot be null."
       }
 
       invalid_fields

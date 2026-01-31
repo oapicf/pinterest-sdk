@@ -3,8 +3,11 @@ package org.openapitools.vertxweb.server.api;
 import org.openapitools.vertxweb.server.model.AdsCreditRedeemRequest;
 import org.openapitools.vertxweb.server.model.AdsCreditRedeemResponse;
 import org.openapitools.vertxweb.server.model.AdsCreditsDiscountsGet200Response;
+import org.openapitools.vertxweb.server.model.BillingInvoiceDownloadResponse;
+import org.openapitools.vertxweb.server.model.BillingInvoicesGet200Response;
 import org.openapitools.vertxweb.server.model.BillingProfilesGet200Response;
 import org.openapitools.vertxweb.server.model.Error;
+import java.time.LocalDate;
 import org.openapitools.vertxweb.server.model.SSIOAccountResponse;
 import org.openapitools.vertxweb.server.model.SSIOCreateInsertionOrderRequest;
 import org.openapitools.vertxweb.server.model.SSIOCreateInsertionOrderResponse;
@@ -31,6 +34,14 @@ public class BillingApiImpl implements BillingApi {
     }
 
     public Future<ApiResponse<AdsCreditsDiscountsGet200Response>> adsCreditsDiscountsGet(String adAccountId, String bookmark, Integer pageSize) {
+        return Future.failedFuture(new HttpException(501));
+    }
+
+    public Future<ApiResponse<BillingInvoiceDownloadResponse>> billingInvoiceDownloadGet(String adAccountId, String billingInvoiceId) {
+        return Future.failedFuture(new HttpException(501));
+    }
+
+    public Future<ApiResponse<BillingInvoicesGet200Response>> billingInvoicesGet(String adAccountId, String bookmark, Integer pageSize, String sort, String order, String status, String documentType, LocalDate startDueDate, LocalDate endDueDate) {
         return Future.failedFuture(new HttpException(501));
     }
 

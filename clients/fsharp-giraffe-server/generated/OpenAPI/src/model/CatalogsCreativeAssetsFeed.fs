@@ -20,16 +20,16 @@ module CatalogsCreativeAssetsFeed =
     CreatedAt : DateTime;
     Id : string;
     UpdatedAt : DateTime;
-    Name : string option;
-    Format : CatalogsFormat;
+    CatalogId : string;
     CatalogType : CatalogsType;
     Credentials : CatalogsFeedCredentials;
-    Location : string;
-    PreferredProcessingSchedule : CatalogsFeedProcessingSchedule;
-    Status : CatalogsStatus;
+    DefaultCountry : Country;
     DefaultCurrency : NullableCurrency;
     DefaultLocale : string;
-    DefaultCountry : Country;
-    CatalogId : string option;
+    Format : CatalogsFormat;
+    Location : string;
+    Name : string option;
+    PreferredProcessingSchedule : CatalogsFeedProcessingSchedule;
+    Status : CatalogsStatus;
   }
   //#endregion

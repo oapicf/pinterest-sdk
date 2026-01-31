@@ -9,35 +9,35 @@ import org.openapitools.models.BigDecimal
 
 /**
  * Integration metadata
- * @param id 
- * @param externalUnderscorebusinessUnderscoreid 
- * @param connectedUnderscoremerchantUnderscoreid 
- * @param connectedUnderscoreuserUnderscoreid 
+ * @param additionalUnderscoreidUnderscore1 
  * @param connectedUnderscoreadvertiserUnderscoreid 
  * @param connectedUnderscorelbaUnderscoreid 
+ * @param connectedUnderscoremerchantUnderscoreid 
  * @param connectedUnderscoretagUnderscoreid 
+ * @param connectedUnderscoreuserUnderscoreid 
+ * @param createdUnderscoretimestamp 
+ * @param externalUnderscorebusinessUnderscoreid 
+ * @param id 
  * @param partnerUnderscoreaccessUnderscoretokenUnderscoreexpiry 
+ * @param partnerUnderscoremetadata 
  * @param partnerUnderscorerefreshUnderscoretokenUnderscoreexpiry 
  * @param scopes 
- * @param createdUnderscoretimestamp 
  * @param updatedUnderscoretimestamp 
- * @param additionalUnderscoreidUnderscore1 
- * @param partnerUnderscoremetadata 
  */
-case class IntegrationMetadata(id: Option[String],
-                externalUnderscorebusinessUnderscoreid: Option[String],
-                connectedUnderscoremerchantUnderscoreid: Option[String],
-                connectedUnderscoreuserUnderscoreid: Option[String],
+case class IntegrationMetadata(additionalUnderscoreidUnderscore1: Option[String],
                 connectedUnderscoreadvertiserUnderscoreid: Option[String],
                 connectedUnderscorelbaUnderscoreid: Option[String],
+                connectedUnderscoremerchantUnderscoreid: Option[String],
                 connectedUnderscoretagUnderscoreid: Option[String],
+                connectedUnderscoreuserUnderscoreid: Option[String],
+                createdUnderscoretimestamp: Option[BigDecimal],
+                externalUnderscorebusinessUnderscoreid: Option[String],
+                id: Option[String],
                 partnerUnderscoreaccessUnderscoretokenUnderscoreexpiry: Option[BigDecimal],
+                partnerUnderscoremetadata: Option[String],
                 partnerUnderscorerefreshUnderscoretokenUnderscoreexpiry: Option[BigDecimal],
                 scopes: Option[String],
-                createdUnderscoretimestamp: Option[BigDecimal],
-                updatedUnderscoretimestamp: Option[BigDecimal],
-                additionalUnderscoreidUnderscore1: Option[String],
-                partnerUnderscoremetadata: Option[String]
+                updatedUnderscoretimestamp: Option[BigDecimal]
                 )
 
 object IntegrationMetadata {

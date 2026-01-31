@@ -19,13 +19,14 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CatalogsCreateRequest
+import org.openapitools.client.models.CatalogsType
 
 class CatalogsCreateRequestTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of CatalogsCreateRequest
         //val modelInstance = CatalogsCreateRequest()
 
-        // to test the property `catalogType` - Type of the catalog entity.
+        // to test the property `catalogType`
         should("test catalogType") {
             // uncomment below to test the property
             //modelInstance.catalogType shouldBe ("TODO")

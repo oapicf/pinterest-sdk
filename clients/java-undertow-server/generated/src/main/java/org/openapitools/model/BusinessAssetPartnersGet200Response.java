@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -25,11 +25,28 @@ import org.openapitools.model.UserSingleAssetBinding;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BusinessAssetPartnersGet200Response   {
   
-  private List<UserSingleAssetBinding> items = new ArrayList<>();
   private String bookmark;
+  private List<UserSingleAssetBinding> items = new ArrayList<>();
+
+  /**
+   */
+  public BusinessAssetPartnersGet200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("bookmark")
+  public String getBookmark() {
+    return bookmark;
+  }
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
 
   /**
    * List of partners with permissions to the asset.
@@ -49,23 +66,6 @@ public class BusinessAssetPartnersGet200Response   {
     this.items = items;
   }
 
-  /**
-   */
-  public BusinessAssetPartnersGet200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("bookmark")
-  public String getBookmark() {
-    return bookmark;
-  }
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -76,13 +76,13 @@ public class BusinessAssetPartnersGet200Response   {
       return false;
     }
     BusinessAssetPartnersGet200Response businessAssetPartnersGet200Response = (BusinessAssetPartnersGet200Response) o;
-    return Objects.equals(items, businessAssetPartnersGet200Response.items) &&
-        Objects.equals(bookmark, businessAssetPartnersGet200Response.bookmark);
+    return Objects.equals(bookmark, businessAssetPartnersGet200Response.bookmark) &&
+        Objects.equals(items, businessAssetPartnersGet200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -90,8 +90,8 @@ public class BusinessAssetPartnersGet200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class BusinessAssetPartnersGet200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

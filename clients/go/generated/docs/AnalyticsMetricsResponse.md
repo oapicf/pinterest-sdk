@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SummaryMetrics** | Pointer to **map[string]float32** | The metric name and value over the requested period for each requested metric | [optional] 
 **DailyMetrics** | Pointer to [**[]AnalyticsDailyMetrics**](AnalyticsDailyMetrics.md) | Array with the requested daily metric records | [optional] 
+**SummaryMetrics** | Pointer to **map[string]float32** | The metric name and value over the requested period for each requested metric | [optional] 
 
 ## Methods
 
@@ -25,31 +25,6 @@ will change when the set of required properties is changed
 NewAnalyticsMetricsResponseWithDefaults instantiates a new AnalyticsMetricsResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetSummaryMetrics
-
-`func (o *AnalyticsMetricsResponse) GetSummaryMetrics() map[string]float32`
-
-GetSummaryMetrics returns the SummaryMetrics field if non-nil, zero value otherwise.
-
-### GetSummaryMetricsOk
-
-`func (o *AnalyticsMetricsResponse) GetSummaryMetricsOk() (*map[string]float32, bool)`
-
-GetSummaryMetricsOk returns a tuple with the SummaryMetrics field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSummaryMetrics
-
-`func (o *AnalyticsMetricsResponse) SetSummaryMetrics(v map[string]float32)`
-
-SetSummaryMetrics sets SummaryMetrics field to given value.
-
-### HasSummaryMetrics
-
-`func (o *AnalyticsMetricsResponse) HasSummaryMetrics() bool`
-
-HasSummaryMetrics returns a boolean if a field has been set.
 
 ### GetDailyMetrics
 
@@ -75,6 +50,31 @@ SetDailyMetrics sets DailyMetrics field to given value.
 `func (o *AnalyticsMetricsResponse) HasDailyMetrics() bool`
 
 HasDailyMetrics returns a boolean if a field has been set.
+
+### GetSummaryMetrics
+
+`func (o *AnalyticsMetricsResponse) GetSummaryMetrics() map[string]float32`
+
+GetSummaryMetrics returns the SummaryMetrics field if non-nil, zero value otherwise.
+
+### GetSummaryMetricsOk
+
+`func (o *AnalyticsMetricsResponse) GetSummaryMetricsOk() (*map[string]float32, bool)`
+
+GetSummaryMetricsOk returns a tuple with the SummaryMetrics field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSummaryMetrics
+
+`func (o *AnalyticsMetricsResponse) SetSummaryMetrics(v map[string]float32)`
+
+SetSummaryMetrics sets SummaryMetrics field to given value.
+
+### HasSummaryMetrics
+
+`func (o *AnalyticsMetricsResponse) HasSummaryMetrics() bool`
+
+HasSummaryMetrics returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

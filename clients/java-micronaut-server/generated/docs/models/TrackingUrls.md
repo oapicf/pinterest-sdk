@@ -10,11 +10,11 @@ The class is defined in **[TrackingUrls.java](../../src/main/java/org/openapitoo
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**impression** | `List&lt;String&gt;` |  |  [optional property]
+**audienceVerification** | `List&lt;String&gt;` |  |  [optional property]
+**buyableButton** | `List&lt;String&gt;` |  |  [optional property]
 **click** | `List&lt;String&gt;` |  |  [optional property]
 **engagement** | `List&lt;String&gt;` |  |  [optional property]
-**buyableButton** | `List&lt;String&gt;` |  |  [optional property]
-**audienceVerification** | `List&lt;String&gt;` |  |  [optional property]
+**impression** | `List&lt;String&gt;` |  |  [optional property]
 
 
 

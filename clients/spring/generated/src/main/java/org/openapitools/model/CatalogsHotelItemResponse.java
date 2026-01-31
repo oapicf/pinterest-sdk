@@ -33,8 +33,10 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsHotelItemResponse", description = "Object describing a hotel record")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class CatalogsHotelItemResponse implements ItemResponseAnyOf {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+public class CatalogsHotelItemResponse implements ItemResponseOneOf {
+
+  private @Nullable CatalogsHotelAttributes attributes;
 
   private CatalogsType catalogType;
 
@@ -42,8 +44,6 @@ public class CatalogsHotelItemResponse implements ItemResponseAnyOf {
 
   @Valid
   private JsonNullable<List<@Valid Pin>> pins = JsonNullable.<List<@Valid Pin>>undefined();
-
-  private @Nullable CatalogsHotelAttributes attributes;
 
   public CatalogsHotelItemResponse() {
     super();
@@ -54,6 +54,26 @@ public class CatalogsHotelItemResponse implements ItemResponseAnyOf {
    */
   public CatalogsHotelItemResponse(CatalogsType catalogType) {
     this.catalogType = catalogType;
+  }
+
+  public CatalogsHotelItemResponse attributes(@Nullable CatalogsHotelAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  /**
+   * Get attributes
+   * @return attributes
+   */
+  @Valid 
+  @Schema(name = "attributes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("attributes")
+  public @Nullable CatalogsHotelAttributes getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(@Nullable CatalogsHotelAttributes attributes) {
+    this.attributes = attributes;
   }
 
   public CatalogsHotelItemResponse catalogType(CatalogsType catalogType) {
@@ -124,26 +144,6 @@ public class CatalogsHotelItemResponse implements ItemResponseAnyOf {
     this.pins = pins;
   }
 
-  public CatalogsHotelItemResponse attributes(@Nullable CatalogsHotelAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  /**
-   * Get attributes
-   * @return attributes
-   */
-  @Valid 
-  @Schema(name = "attributes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("attributes")
-  public @Nullable CatalogsHotelAttributes getAttributes() {
-    return attributes;
-  }
-
-  public void setAttributes(@Nullable CatalogsHotelAttributes attributes) {
-    this.attributes = attributes;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -153,10 +153,10 @@ public class CatalogsHotelItemResponse implements ItemResponseAnyOf {
       return false;
     }
     CatalogsHotelItemResponse catalogsHotelItemResponse = (CatalogsHotelItemResponse) o;
-    return Objects.equals(this.catalogType, catalogsHotelItemResponse.catalogType) &&
+    return Objects.equals(this.attributes, catalogsHotelItemResponse.attributes) &&
+        Objects.equals(this.catalogType, catalogsHotelItemResponse.catalogType) &&
         Objects.equals(this.hotelId, catalogsHotelItemResponse.hotelId) &&
-        equalsNullable(this.pins, catalogsHotelItemResponse.pins) &&
-        Objects.equals(this.attributes, catalogsHotelItemResponse.attributes);
+        equalsNullable(this.pins, catalogsHotelItemResponse.pins);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -165,7 +165,7 @@ public class CatalogsHotelItemResponse implements ItemResponseAnyOf {
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, hotelId, hashCodeNullable(pins), attributes);
+    return Objects.hash(attributes, catalogType, hotelId, hashCodeNullable(pins));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -179,10 +179,10 @@ public class CatalogsHotelItemResponse implements ItemResponseAnyOf {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelItemResponse {\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

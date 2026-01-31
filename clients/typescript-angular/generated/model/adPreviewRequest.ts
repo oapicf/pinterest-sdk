@@ -7,13 +7,15 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { AdPreviewShopping } from './adPreviewShopping';
 import { AdPreviewCreateFromPin } from './adPreviewCreateFromPin';
 import { AdPreviewCreateFromImage } from './adPreviewCreateFromImage';
+import { CustomizableCTAType } from './customizableCTAType';
 
 
 /**
  * @type AdPreviewRequest
  * @export
  */
-export type AdPreviewRequest = AdPreviewCreateFromImage | AdPreviewCreateFromPin;
+export type AdPreviewRequest = AdPreviewCreateFromImage | AdPreviewCreateFromPin | AdPreviewShopping;
 

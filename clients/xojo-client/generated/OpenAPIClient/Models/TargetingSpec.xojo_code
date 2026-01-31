@@ -3,9 +3,9 @@ Protected Class TargetingSpec
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted.
+			**Legacy field.** Predefined age ranges. We recommend using MINIMUM_AGE and MAXIMUM_AGE instead for more flexible targeting. Cannot be combined with MINIMUM_AGE/MAXIMUM_AGE. If neither AGE_BUCKET nor MINIMUM_AGE/MAXIMUM_AGE are specified, all ages will be targeted.
 		#tag EndNote
-		AGE_BUCKET() As String
+		AGE_BUCKET() As TargetingSpecAgeBucket
 	#tag EndProperty
 
 
@@ -13,7 +13,7 @@ Protected Class TargetingSpec
 		#tag Note
 			Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted.
 		#tag EndNote
-		APPTYPE() As String
+		APPTYPE() As TargetingSpecAppType
 	#tag EndProperty
 
 
@@ -37,7 +37,7 @@ Protected Class TargetingSpec
 		#tag Note
 			Targeted genders. Values: ["unknown","male","female"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.
 		#tag EndNote
-		GENDER() As String
+		GENDER() As TargetingSpecGender
 	#tag EndProperty
 
 
@@ -59,7 +59,7 @@ Protected Class TargetingSpec
 
 	#tag Property, Flags = &h0
 		#tag Note
-			24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be targeted, only english non-sublanguage will be targeted**.
+			24 ISO 639-1 two-letter language codes. If the LOCALE field is not included in the request, all languages are targeted.
 		#tag EndNote
 		LOCALE() As String
 	#tag EndProperty
@@ -67,7 +67,7 @@ Protected Class TargetingSpec
 
 	#tag Property, Flags = &h0
 		#tag Note
-			22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., ["US", "807"]). For complete list, click here. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
+			22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., ["US", "807"]). For complete list, <a href="https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx" target="_blank">click here</a>. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
 		#tag EndNote
 		LOCATION() As String
 	#tag EndProperty
@@ -75,9 +75,25 @@ Protected Class TargetingSpec
 
 	#tag Property, Flags = &h0
 		#tag Note
+			Maximum age to target (inclusive). Values: "18", "19", ..., "65", "65+". Must be used together with `MINIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
+		#tag EndNote
+		MAXIMUM_AGE As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Minimum age to target (inclusive). Values: "18", "19", ..., "65". Note: 65+ is not allowed for minimum age. Must be used together with `MAXIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
+		#tag EndNote
+		MINIMUM_AGE As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting
 		#tag EndNote
-		SHOPPING_RETARGETING() As OpenAPIClient.Models.TargetingSpecSHOPPINGRETARGETING
+		SHOPPING_RETARGETING() As OpenAPIClient.Models.TargetingSpecShoppingRetargeting
 	#tag EndProperty
 
 
@@ -89,38 +105,6 @@ Protected Class TargetingSpec
 	#tag EndProperty
 
 
-    #tag Enum, Name = AGE_BUCKETEnum, Type = Integer, Flags = &h0
-        
-        Escaped1824
-        Escaped21Plus
-        Escaped2534
-        Escaped3544
-        Escaped4549
-        Escaped5054
-        Escaped5564
-        Escaped65Plus
-        
-    #tag EndEnum
-
-    #tag Enum, Name = APPTYPEEnum, Type = Integer, Flags = &h0
-        
-        AndroidMobile
-        AndroidTablet
-        Ipad
-        Iphone
-        Web
-        WebMobile
-        
-    #tag EndEnum
-
-    #tag Enum, Name = GENDEREnum, Type = Integer, Flags = &h0
-        
-        Unknown
-        Male
-        Female
-        
-    #tag EndEnum
-
     #tag Enum, Name = TARGETING_STRATEGYEnum, Type = Integer, Flags = &h0
         
         ChooseYourOwn
@@ -130,67 +114,6 @@ Protected Class TargetingSpec
     #tag EndEnum
 
 
-	#tag Method, Flags = &h0
-		Shared Function AGE_BUCKETEnumToString(value As AGE_BUCKETEnum) As String
-		  Select Case value
-		    
-		    Case AGE_BUCKETEnum.Escaped1824
-		      Return "18-24"
-		    Case AGE_BUCKETEnum.Escaped21Plus
-		      Return "21+"
-		    Case AGE_BUCKETEnum.Escaped2534
-		      Return "25-34"
-		    Case AGE_BUCKETEnum.Escaped3544
-		      Return "35-44"
-		    Case AGE_BUCKETEnum.Escaped4549
-		      Return "45-49"
-		    Case AGE_BUCKETEnum.Escaped5054
-		      Return "50-54"
-		    Case AGE_BUCKETEnum.Escaped5564
-		      Return "55-64"
-		    Case AGE_BUCKETEnum.Escaped65Plus
-		      Return "65+"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-	#tag Method, Flags = &h0
-		Shared Function APPTYPEEnumToString(value As APPTYPEEnum) As String
-		  Select Case value
-		    
-		    Case APPTYPEEnum.AndroidMobile
-		      Return "android_mobile"
-		    Case APPTYPEEnum.AndroidTablet
-		      Return "android_tablet"
-		    Case APPTYPEEnum.Ipad
-		      Return "ipad"
-		    Case APPTYPEEnum.Iphone
-		      Return "iphone"
-		    Case APPTYPEEnum.Web
-		      Return "web"
-		    Case APPTYPEEnum.WebMobile
-		      Return "web_mobile"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-	#tag Method, Flags = &h0
-		Shared Function GENDEREnumToString(value As GENDEREnum) As String
-		  Select Case value
-		    
-		    Case GENDEREnum.Unknown
-		      Return "unknown"
-		    Case GENDEREnum.Male
-		      Return "male"
-		    Case GENDEREnum.Female
-		      Return "female"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 	#tag Method, Flags = &h0
 		Shared Function TARGETING_STRATEGYEnumToString(value As TARGETING_STRATEGYEnum) As String
 		  Select Case value
@@ -242,6 +165,22 @@ Protected Class TargetingSpec
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="AGE_BUCKET"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="TargetingSpecAgeBucket"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="APPTYPE"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="TargetingSpecAppType"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="AUDIENCE_EXCLUDE"
 			Visible=false
 			Group="Behavior"
@@ -255,6 +194,14 @@ Protected Class TargetingSpec
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="GENDER"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="TargetingSpecGender"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -290,11 +237,27 @@ Protected Class TargetingSpec
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="MAXIMUM_AGE"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="MINIMUM_AGE"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="SHOPPING_RETARGETING"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="TargetingSpecSHOPPINGRETARGETING"
+			Type="TargetingSpecShoppingRetargeting"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

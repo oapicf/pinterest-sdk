@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -43,8 +43,25 @@ func (s *BusinessAccessRelationshipsAPIService) GetBusinessEmployers(ctx context
 	return Response(http.StatusNotImplemented, nil), errors.New("GetBusinessEmployers method not implemented")
 }
 
+// SystemUserUpdate - Update a system user information.
+func (s *BusinessAccessRelationshipsAPIService) SystemUserUpdate(ctx context.Context, businessId string, systemUserId string, systemUserUpdateRequest SystemUserUpdateRequest) (ImplResponse, error) {
+	// TODO - update SystemUserUpdate with the required logic for this service method.
+	// Add api_business_access_relationships_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, {}) or use other options such as http.Ok ...
+	// return Response(200, nil),nil
+
+	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
+	// return Response(400, Error{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
+	// return Response(0, Error{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("SystemUserUpdate method not implemented")
+}
+
 // GetBusinessMembers - Get business members
-func (s *BusinessAccessRelationshipsAPIService) GetBusinessMembers(ctx context.Context, businessId string, assetsSummary bool, businessRoles []MemberBusinessRole, memberIds string, startIndex int32, bookmark string, pageSize int32) (ImplResponse, error) {
+func (s *BusinessAccessRelationshipsAPIService) GetBusinessMembers(ctx context.Context, businessId string, fetchSystemUsers bool, assetsSummary bool, businessRoles []MemberBusinessRole, memberIds string, startIndex int32, bookmark string, pageSize int32) (ImplResponse, error) {
 	// TODO - update GetBusinessMembers with the required logic for this service method.
 	// Add api_business_access_relationships_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -114,4 +131,53 @@ func (s *BusinessAccessRelationshipsAPIService) DeleteBusinessPartners(ctx conte
 	// return Response(0, Error{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("DeleteBusinessPartners method not implemented")
+}
+
+// BrandAccountsCreate - Create a Brand Account
+func (s *BusinessAccessRelationshipsAPIService) BrandAccountsCreate(ctx context.Context, businessHierarchyId string, brandAccountsCreateRequest BrandAccountsCreateRequest) (ImplResponse, error) {
+	// TODO - update BrandAccountsCreate with the required logic for this service method.
+	// Add api_business_access_relationships_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, BrandAccountsCreate200Response{}) or use other options such as http.Ok ...
+	// return Response(200, BrandAccountsCreate200Response{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
+	// return Response(400, Error{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
+	// return Response(0, Error{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("BrandAccountsCreate method not implemented")
+}
+
+// BrandAccountsUpdate - Update a Brand Account
+func (s *BusinessAccessRelationshipsAPIService) BrandAccountsUpdate(ctx context.Context, businessHierarchyId string, brandAccountId string, brandAccountsUpdateRequest BrandAccountsUpdateRequest) (ImplResponse, error) {
+	// TODO - update BrandAccountsUpdate with the required logic for this service method.
+	// Add api_business_access_relationships_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+
+	// TODO: Uncomment the next line to return response Response(200, BrandAccountsCreate200Response{}) or use other options such as http.Ok ...
+	// return Response(200, BrandAccountsCreate200Response{}), nil
+
+	// TODO: Uncomment the next line to return response Response(400, Error{}) or use other options such as http.Ok ...
+	// return Response(400, Error{}), nil
+
+	// TODO: Uncomment the next line to return response Response(401, Error{}) or use other options such as http.Ok ...
+	// return Response(401, Error{}), nil
+
+	// TODO: Uncomment the next line to return response Response(403, Error{}) or use other options such as http.Ok ...
+	// return Response(403, Error{}), nil
+
+	// TODO: Uncomment the next line to return response Response(404, Error{}) or use other options such as http.Ok ...
+	// return Response(404, Error{}), nil
+
+	// TODO: Uncomment the next line to return response Response(409, Error{}) or use other options such as http.Ok ...
+	// return Response(409, Error{}), nil
+
+	// TODO: Uncomment the next line to return response Response(429, Error{}) or use other options such as http.Ok ...
+	// return Response(429, Error{}), nil
+
+	// TODO: Uncomment the next line to return response Response(0, Error{}) or use other options such as http.Ok ...
+	// return Response(0, Error{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("BrandAccountsUpdate method not implemented")
 }

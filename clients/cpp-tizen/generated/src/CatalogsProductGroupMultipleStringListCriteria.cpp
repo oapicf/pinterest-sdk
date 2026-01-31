@@ -23,22 +23,22 @@ CatalogsProductGroupMultipleStringListCriteria::~CatalogsProductGroupMultipleStr
 void
 CatalogsProductGroupMultipleStringListCriteria::__init()
 {
-	//new std::list()std::list> values;
 	//negated = bool(false);
+	//new std::list()std::list> values;
 }
 
 void
 CatalogsProductGroupMultipleStringListCriteria::__cleanup()
 {
-	//if(values != NULL) {
-	//values.RemoveAll(true);
-	//delete values;
-	//values = NULL;
-	//}
 	//if(negated != NULL) {
 	//
 	//delete negated;
 	//negated = NULL;
+	//}
+	//if(values != NULL) {
+	//values.RemoveAll(true);
+	//delete values;
+	//values = NULL;
 	//}
 	//
 }
@@ -48,6 +48,17 @@ CatalogsProductGroupMultipleStringListCriteria::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *negatedKey = "negated";
+	node = json_object_get_member(pJsonObject, negatedKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&negated, node, "bool", "");
+		} else {
+			
+		}
+	}
 	const gchar *valuesKey = "values";
 	node = json_object_get_member(pJsonObject, valuesKey);
 	if (node !=NULL) {
@@ -72,17 +83,6 @@ CatalogsProductGroupMultipleStringListCriteria::fromJson(char* jsonStr)
 		}
 		
 	}
-	const gchar *negatedKey = "negated";
-	node = json_object_get_member(pJsonObject, negatedKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("bool")) {
-			jsonToValue(&negated, node, "bool", "");
-		} else {
-			
-		}
-	}
 }
 
 CatalogsProductGroupMultipleStringListCriteria::CatalogsProductGroupMultipleStringListCriteria(char* json)
@@ -95,6 +95,15 @@ CatalogsProductGroupMultipleStringListCriteria::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("bool")) {
+		bool obj = getNegated();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *negatedKey = "negated";
+	json_object_set_member(pJsonObject, negatedKey, node);
 	if (isprimitive("std::list")) {
 		list<std::list> new_list = static_cast<list <std::list> > (getValues());
 		node = converttoJson(&new_list, "std::list", "array");
@@ -120,33 +129,12 @@ CatalogsProductGroupMultipleStringListCriteria::toJson()
 	
 	const gchar *valuesKey = "values";
 	json_object_set_member(pJsonObject, valuesKey, node);
-	if (isprimitive("bool")) {
-		bool obj = getNegated();
-		node = converttoJson(&obj, "bool", "");
-	}
-	else {
-		
-	}
-	const gchar *negatedKey = "negated";
-	json_object_set_member(pJsonObject, negatedKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
-}
-
-std::list<std::list>
-CatalogsProductGroupMultipleStringListCriteria::getValues()
-{
-	return values;
-}
-
-void
-CatalogsProductGroupMultipleStringListCriteria::setValues(std::list <std::list> values)
-{
-	this->values = values;
 }
 
 bool
@@ -159,6 +147,18 @@ void
 CatalogsProductGroupMultipleStringListCriteria::setNegated(bool  negated)
 {
 	this->negated = negated;
+}
+
+std::list<std::list>
+CatalogsProductGroupMultipleStringListCriteria::getValues()
+{
+	return values;
+}
+
+void
+CatalogsProductGroupMultipleStringListCriteria::setValues(std::list <std::list> values)
+{
+	this->values = values;
 }
 
 

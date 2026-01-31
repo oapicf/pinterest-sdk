@@ -22,17 +22,22 @@ Protected Class CatalogsFeedProcessingResult
 
 
 	#tag Property, Flags = &h0
-		status As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		product_counts As OpenAPIClient.Models.CatalogsFeedProductCounts
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
+		status As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		validation_details As OpenAPIClient.Models.CatalogsFeedValidationDetails
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		video_counts As OpenAPIClient.Models.CatalogsFeedVideoCounts
 	#tag EndProperty
 
 
@@ -105,14 +110,6 @@ Protected Class CatalogsFeedProcessingResult
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="status"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="CatalogsFeedProcessingStatus"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="product_counts"
 			Visible=false
 			Group="Behavior"
@@ -121,11 +118,27 @@ Protected Class CatalogsFeedProcessingResult
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="status"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsFeedProcessingStatus"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="validation_details"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="CatalogsFeedValidationDetails"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="video_counts"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsFeedVideoCounts"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

@@ -26,8 +26,8 @@ import com.squareup.moshi.JsonClass
  *
  * @param catalogType 
  * @param country 
- * @param language We recommend using the CatalogsLocale values.
  * @param items Array with creative assets item operations
+ * @param language We recommend using the CatalogsLocale values.
  * @param catalogId Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
  */
 
@@ -40,13 +40,13 @@ data class CatalogsCreativeAssetsBatchRequest (
     @Json(name = "country")
     val country: Country,
 
-    /* We recommend using the CatalogsLocale values. */
-    @Json(name = "language")
-    val language: CatalogsCreativeAssetsBatchRequest.Language,
-
     /* Array with creative assets item operations */
     @Json(name = "items")
     val items: kotlin.collections.List<CatalogsCreativeAssetsBatchItem>,
+
+    /* We recommend using the CatalogsLocale values. */
+    @Json(name = "language")
+    val language: CatalogsCreativeAssetsBatchRequest.Language,
 
     /* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
     @Json(name = "catalog_id")

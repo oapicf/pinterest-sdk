@@ -73,12 +73,13 @@ private class OASPinMediaSourceTest {
     private static void maintainRenamedProperties() {
         OASPinMediaSource pinMediaSource = new OASPinMediaSource();
         Map<String, String> x-property-mappings = pinMediaSource.getx-property-mappings();
-        System.assertEquals('sourceType', x-property-mappings.get('source_type'));
         System.assertEquals('contentType', x-property-mappings.get('content_type'));
         System.assertEquals('isStandard', x-property-mappings.get('is_standard'));
-        System.assertEquals('coverImageUrl', x-property-mappings.get('cover_image_url'));
+        System.assertEquals('sourceType', x-property-mappings.get('source_type'));
         System.assertEquals('coverImageContentType', x-property-mappings.get('cover_image_content_type'));
         System.assertEquals('coverImageData', x-property-mappings.get('cover_image_data'));
+        System.assertEquals('coverImageKeyFrameTime', x-property-mappings.get('cover_image_key_frame_time'));
+        System.assertEquals('coverImageUrl', x-property-mappings.get('cover_image_url'));
         System.assertEquals('mediaId', x-property-mappings.get('media_id'));
         System.assertEquals('isAffiliateLink', x-property-mappings.get('is_affiliate_link'));
     }
@@ -87,15 +88,16 @@ private class OASPinMediaSourceTest {
     private static void defaultValuesPopulated() {
         OASPinMediaSource pinMediaSource = new OASPinMediaSource();
         System.assertEquals(true, pinMediaSource.isStandard);
-        System.assertEquals(new List<OASPinMediaSourceImagesURLItemsInner>(), pinMediaSource.items);
+        System.assertEquals(new List<OASPinMediaSourceImagesURLItem>(), pinMediaSource.items);
         System.assertEquals(false, pinMediaSource.isAffiliateLink);
-        System.assertEquals(null, pinMediaSource.sourceType);
         System.assertEquals(null, pinMediaSource.contentType);
         System.assertEquals(null, pinMediaSource.data);
+        System.assertEquals(null, pinMediaSource.sourceType);
         System.assertEquals(null, pinMediaSource.url);
-        System.assertEquals(null, pinMediaSource.coverImageUrl);
         System.assertEquals(null, pinMediaSource.coverImageContentType);
         System.assertEquals(null, pinMediaSource.coverImageData);
+        System.assertEquals(null, pinMediaSource.coverImageKeyFrameTime);
+        System.assertEquals(null, pinMediaSource.coverImageUrl);
         System.assertEquals(null, pinMediaSource.mediaId);
         System.assertEquals(null, pinMediaSource.index);
     }

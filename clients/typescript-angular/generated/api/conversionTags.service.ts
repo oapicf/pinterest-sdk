@@ -19,13 +19,15 @@ import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 // @ts-ignore
 import { ConversionEventResponse } from '../model/conversionEventResponse';
 // @ts-ignore
+import { ConversionTag } from '../model/conversionTag';
+// @ts-ignore
 import { ConversionTagCreate } from '../model/conversionTagCreate';
 // @ts-ignore
-import { ConversionTagListResponse } from '../model/conversionTagListResponse';
-// @ts-ignore
-import { ConversionTagResponse } from '../model/conversionTagResponse';
+import { ConversionTagsList200Response } from '../model/conversionTagsList200Response';
 // @ts-ignore
 import { PageVisitConversionTagsGet200Response } from '../model/pageVisitConversionTagsGet200Response';
+// @ts-ignore
+import { PinterestLibError } from '../model/pinterestLibError';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -45,17 +47,17 @@ export class ConversionTagsService extends BaseService {
 
     /**
      * Create conversion tag
-     * Create a conversion tag, also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Pinterest tag&lt;/a&gt;, with the option to enable enhanced match.&lt;p/&gt; The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account\&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.&lt;p/&gt; For more information, see:&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot;&gt;Set up the Pinterest tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/\&quot;&gt;Pinterest Tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/#enhanced-match\&quot;&gt;Enhanced match&lt;/a&gt;
+     * Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account\&#39;s website after they view the ad account\&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
      * @endpoint post /ad_accounts/{ad_account_id}/conversion_tags
      * @param adAccountId Unique identifier of an ad account.
-     * @param conversionTagCreate Conversion Tag to create
+     * @param conversionTagCreate 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public conversionTagsCreate(adAccountId: string, conversionTagCreate: ConversionTagCreate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<ConversionTagResponse>;
-    public conversionTagsCreate(adAccountId: string, conversionTagCreate: ConversionTagCreate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<ConversionTagResponse>>;
-    public conversionTagsCreate(adAccountId: string, conversionTagCreate: ConversionTagCreate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<ConversionTagResponse>>;
+    public conversionTagsCreate(adAccountId: string, conversionTagCreate: ConversionTagCreate, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<ConversionTag>;
+    public conversionTagsCreate(adAccountId: string, conversionTagCreate: ConversionTagCreate, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<ConversionTag>>;
+    public conversionTagsCreate(adAccountId: string, conversionTagCreate: ConversionTagCreate, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<ConversionTag>>;
     public conversionTagsCreate(adAccountId: string, conversionTagCreate: ConversionTagCreate, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling conversionTagsCreate.');
@@ -103,7 +105,7 @@ export class ConversionTagsService extends BaseService {
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/conversion_tags`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<ConversionTagResponse>('post', `${basePath}${localVarPath}`,
+        return this.httpClient.request<ConversionTag>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: conversionTagCreate,
@@ -127,9 +129,9 @@ export class ConversionTagsService extends BaseService {
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public conversionTagsGet(adAccountId: string, conversionTagId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<ConversionTagResponse>;
-    public conversionTagsGet(adAccountId: string, conversionTagId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<ConversionTagResponse>>;
-    public conversionTagsGet(adAccountId: string, conversionTagId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<ConversionTagResponse>>;
+    public conversionTagsGet(adAccountId: string, conversionTagId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<ConversionTag>;
+    public conversionTagsGet(adAccountId: string, conversionTagId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<ConversionTag>>;
+    public conversionTagsGet(adAccountId: string, conversionTagId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<ConversionTag>>;
     public conversionTagsGet(adAccountId: string, conversionTagId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling conversionTagsGet.');
@@ -139,6 +141,9 @@ export class ConversionTagsService extends BaseService {
         }
 
         let localVarHeaders = this.defaultHeaders;
+
+        // authentication (client_credentials) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('client_credentials', 'Authorization', localVarHeaders, 'Bearer ');
 
         // authentication (pinterest_oauth2) required
         localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
@@ -168,7 +173,7 @@ export class ConversionTagsService extends BaseService {
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/conversion_tags/${this.configuration.encodeParam({name: "conversionTagId", value: conversionTagId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<ConversionTagResponse>('get', `${basePath}${localVarPath}`,
+        return this.httpClient.request<ConversionTag>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -182,18 +187,18 @@ export class ConversionTagsService extends BaseService {
     }
 
     /**
-     * Get conversion tags
+     * List conversion tags
      * List conversion tags associated with an ad account.
      * @endpoint get /ad_accounts/{ad_account_id}/conversion_tags
      * @param adAccountId Unique identifier of an ad account.
-     * @param filterDeleted Filter out deleted tags.
+     * @param filterDeleted Filter by deleted status
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public conversionTagsList(adAccountId: string, filterDeleted?: boolean, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<ConversionTagListResponse>;
-    public conversionTagsList(adAccountId: string, filterDeleted?: boolean, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<ConversionTagListResponse>>;
-    public conversionTagsList(adAccountId: string, filterDeleted?: boolean, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<ConversionTagListResponse>>;
+    public conversionTagsList(adAccountId: string, filterDeleted?: boolean, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<ConversionTagsList200Response>;
+    public conversionTagsList(adAccountId: string, filterDeleted?: boolean, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<ConversionTagsList200Response>>;
+    public conversionTagsList(adAccountId: string, filterDeleted?: boolean, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<ConversionTagsList200Response>>;
     public conversionTagsList(adAccountId: string, filterDeleted?: boolean, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (adAccountId === null || adAccountId === undefined) {
             throw new Error('Required parameter adAccountId was null or undefined when calling conversionTagsList.');
@@ -211,6 +216,9 @@ export class ConversionTagsService extends BaseService {
 
 
         let localVarHeaders = this.defaultHeaders;
+
+        // authentication (client_credentials) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('client_credentials', 'Authorization', localVarHeaders, 'Bearer ');
 
         // authentication (pinterest_oauth2) required
         localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
@@ -240,7 +248,7 @@ export class ConversionTagsService extends BaseService {
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/conversion_tags`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<ConversionTagListResponse>('get', `${basePath}${localVarPath}`,
+        return this.httpClient.request<ConversionTagsList200Response>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters.toHttpParams(),
@@ -272,6 +280,9 @@ export class ConversionTagsService extends BaseService {
         }
 
         let localVarHeaders = this.defaultHeaders;
+
+        // authentication (client_credentials) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('client_credentials', 'Authorization', localVarHeaders, 'Bearer ');
 
         // authentication (pinterest_oauth2) required
         localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
@@ -364,6 +375,9 @@ export class ConversionTagsService extends BaseService {
 
 
         let localVarHeaders = this.defaultHeaders;
+
+        // authentication (client_credentials) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('client_credentials', 'Authorization', localVarHeaders, 'Bearer ');
 
         // authentication (pinterest_oauth2) required
         localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');

@@ -11,7 +11,7 @@ module TemplatesList200Response =
 
 
   type templates_list_200_response = {
-    Items : TemplateResponse[];
     Bookmark : string option;
+    Items : TemplateResponse[];
   }
   //#endregion

@@ -7,8 +7,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Seq&lt;CatalogsItemValidationIssues&gt;**](CatalogsItemValidationIssues.md) |  | 
 **bookmark** | **String** |  |  [optional]
+**items** | [**Seq&lt;CatalogsItemValidationIssues&gt;**](CatalogsItemValidationIssues.md) |  | 
 
 
 

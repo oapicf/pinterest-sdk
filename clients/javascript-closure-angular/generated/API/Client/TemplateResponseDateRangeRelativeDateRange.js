@@ -7,11 +7,11 @@ goog.provide('API.Client.TemplateResponse_date_range_relative_date_range');
 API.Client.TemplateResponseDateRangeRelativeDateRange = function() {}
 
 /**
- * The date range type
- * @type {!string}
+ * The end date of the date range
+ * @type {!number}
  * @export
  */
-API.Client.TemplateResponseDateRangeRelativeDateRange.prototype.type;
+API.Client.TemplateResponseDateRangeRelativeDateRange.prototype.endDaysInPast;
 
 /**
  * The start date of the date range
@@ -21,9 +21,9 @@ API.Client.TemplateResponseDateRangeRelativeDateRange.prototype.type;
 API.Client.TemplateResponseDateRangeRelativeDateRange.prototype.startDaysInPast;
 
 /**
- * The end date of the date range
- * @type {!number}
+ * The date range type
+ * @type {!string}
  * @export
  */
-API.Client.TemplateResponseDateRangeRelativeDateRange.prototype.endDaysInPast;
+API.Client.TemplateResponseDateRangeRelativeDateRange.prototype.type;
 

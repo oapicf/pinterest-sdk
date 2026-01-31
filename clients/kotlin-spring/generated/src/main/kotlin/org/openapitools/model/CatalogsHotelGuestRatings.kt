@@ -15,24 +15,24 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * If specified, you must provide all properties
- * @param score Your hotel's rating.
- * @param numberOfReviewers Total number of people who have rated this hotel.
  * @param maxScore Max value for the hotel rating score.
+ * @param numberOfReviewers Total number of people who have rated this hotel.
  * @param ratingSystem System you use for guest reviews.
+ * @param score Your hotel's rating.
  */
 data class CatalogsHotelGuestRatings(
-
-    @Schema(example = "null", description = "Your hotel's rating.")
-    @get:JsonProperty("score") val score: java.math.BigDecimal? = null,
-
-    @Schema(example = "null", description = "Total number of people who have rated this hotel.")
-    @get:JsonProperty("number_of_reviewers") val numberOfReviewers: kotlin.Int? = null,
 
     @Schema(example = "null", description = "Max value for the hotel rating score.")
     @get:JsonProperty("max_score") val maxScore: java.math.BigDecimal? = null,
 
+    @Schema(example = "null", description = "Total number of people who have rated this hotel.")
+    @get:JsonProperty("number_of_reviewers") val numberOfReviewers: kotlin.Int? = null,
+
     @Schema(example = "null", description = "System you use for guest reviews.")
-    @get:JsonProperty("rating_system") val ratingSystem: kotlin.String? = null
+    @get:JsonProperty("rating_system") val ratingSystem: kotlin.String? = null,
+
+    @Schema(example = "null", description = "Your hotel's rating.")
+    @get:JsonProperty("score") val score: java.math.BigDecimal? = null
 ) {
 
 }

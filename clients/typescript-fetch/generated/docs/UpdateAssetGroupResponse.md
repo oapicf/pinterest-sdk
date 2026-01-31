@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`updatedAssetGroups` | [Array&lt;AssetGroupBinding&gt;](AssetGroupBinding.md)
 `exceptions` | [Array&lt;UpdateAssetGroupResponseExceptionsInner&gt;](UpdateAssetGroupResponseExceptionsInner.md)
+`updatedAssetGroups` | [Array&lt;AssetGroupBinding&gt;](AssetGroupBinding.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { UpdateAssetGroupResponse } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "updatedAssetGroups": null,
   "exceptions": null,
+  "updatedAssetGroups": null,
 } satisfies UpdateAssetGroupResponse
 
 console.log(example)

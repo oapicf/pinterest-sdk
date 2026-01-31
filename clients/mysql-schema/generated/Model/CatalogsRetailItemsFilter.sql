@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsRetailItemsFilter`
 --
-SELECT `catalog_type`, `item_ids`, `catalog_id` FROM `CatalogsRetailItemsFilter` WHERE 1;
+SELECT `catalog_id`, `catalog_type`, `item_ids` FROM `CatalogsRetailItemsFilter` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsRetailItemsFilter`
 --
-INSERT INTO `CatalogsRetailItemsFilter`(`catalog_type`, `item_ids`, `catalog_id`) VALUES (?, ?, ?);
+INSERT INTO `CatalogsRetailItemsFilter`(`catalog_id`, `catalog_type`, `item_ids`) VALUES (?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsRetailItemsFilter`
 --
-UPDATE `CatalogsRetailItemsFilter` SET `catalog_type` = ?, `item_ids` = ?, `catalog_id` = ? WHERE 1;
+UPDATE `CatalogsRetailItemsFilter` SET `catalog_id` = ?, `catalog_type` = ?, `item_ids` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsRetailItemsFilter`

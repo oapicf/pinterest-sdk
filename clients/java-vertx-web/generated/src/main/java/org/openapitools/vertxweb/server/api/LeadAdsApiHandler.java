@@ -1,10 +1,9 @@
 package org.openapitools.vertxweb.server.api;
 
-import org.openapitools.vertxweb.server.model.AdAccountCreateSubscriptionRequest;
-import org.openapitools.vertxweb.server.model.AdAccountCreateSubscriptionResponse;
-import org.openapitools.vertxweb.server.model.AdAccountGetSubscriptionResponse;
 import org.openapitools.vertxweb.server.model.AdAccountsSubscriptionsGetList200Response;
-import org.openapitools.vertxweb.server.model.Error;
+import org.openapitools.vertxweb.server.model.LeadSubscription;
+import org.openapitools.vertxweb.server.model.LeadSubscriptionPostParamsCreate;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;
@@ -97,14 +96,14 @@ public class LeadAdsApiHandler {
         RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
 
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
-        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
         String bookmark = requestParameters.queryParameter("bookmark") != null ? requestParameters.queryParameter("bookmark").getString() : null;
+        Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter pageSize is {}", pageSize);
         logger.debug("Parameter bookmark is {}", bookmark);
+        logger.debug("Parameter pageSize is {}", pageSize);
 
-        api.adAccountsSubscriptionsGetList(adAccountId, pageSize, bookmark)
+        api.adAccountsSubscriptionsGetList(adAccountId, bookmark, pageSize)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {
@@ -124,12 +123,12 @@ public class LeadAdsApiHandler {
 
         String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
         RequestParameter body = requestParameters.body();
-        AdAccountCreateSubscriptionRequest adAccountCreateSubscriptionRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AdAccountCreateSubscriptionRequest>(){}) : null;
+        LeadSubscriptionPostParamsCreate leadSubscriptionPostParamsCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<LeadSubscriptionPostParamsCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter adAccountCreateSubscriptionRequest is {}", adAccountCreateSubscriptionRequest);
+        logger.debug("Parameter leadSubscriptionPostParamsCreate is {}", leadSubscriptionPostParamsCreate);
 
-        api.adAccountsSubscriptionsPost(adAccountId, adAccountCreateSubscriptionRequest)
+        api.adAccountsSubscriptionsPost(adAccountId, leadSubscriptionPostParamsCreate)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsReportDistributionIssueFilter`
 --
-SELECT `report_type`, `catalog_id` FROM `CatalogsReportDistributionIssueFilter` WHERE 1;
+SELECT `catalog_id`, `report_type` FROM `CatalogsReportDistributionIssueFilter` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsReportDistributionIssueFilter`
 --
-INSERT INTO `CatalogsReportDistributionIssueFilter`(`report_type`, `catalog_id`) VALUES (?, ?);
+INSERT INTO `CatalogsReportDistributionIssueFilter`(`catalog_id`, `report_type`) VALUES (?, ?);
 
 --
 -- UPDATE template for table `CatalogsReportDistributionIssueFilter`
 --
-UPDATE `CatalogsReportDistributionIssueFilter` SET `report_type` = ?, `catalog_id` = ? WHERE 1;
+UPDATE `CatalogsReportDistributionIssueFilter` SET `catalog_id` = ?, `report_type` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsReportDistributionIssueFilter`

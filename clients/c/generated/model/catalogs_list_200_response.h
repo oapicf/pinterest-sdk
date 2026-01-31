@@ -20,15 +20,15 @@ typedef struct catalogs_list_200_response_t catalogs_list_200_response_t;
 
 
 typedef struct catalogs_list_200_response_t {
-    list_t *items; //nonprimitive container
     char *bookmark; // string
+    list_t *items; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_list_200_response_t;
 
 __attribute__((deprecated)) catalogs_list_200_response_t *catalogs_list_200_response_create(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
 );
 
 void catalogs_list_200_response_free(catalogs_list_200_response_t *catalogs_list_200_response);

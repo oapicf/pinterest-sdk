@@ -12,14 +12,14 @@ import org.joda.time.DateTime
 import SSIOAccountAddress._
 
 case class SSIOAccountAddress (
-  /* Address display */
-  display: Option[String],
-/* Purpose for which the address is used, usually Billing or Businness */
-  purpose: Option[String],
-/* Salesforce id for address */
+  /* Salesforce id for address */
   addressId: Option[String],
+/* Address display */
+  display: Option[String],
 /* Legal entity for this insertion order */
-  orderLegalEntity: Option[String])
+  orderLegalEntity: Option[String],
+/* Purpose for which the address is used, usually Billing or Businness */
+  purpose: Option[String])
 
 object SSIOAccountAddress {
   import DateTimeCodecs._

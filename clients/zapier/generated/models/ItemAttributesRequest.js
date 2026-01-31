@@ -1,13 +1,244 @@
 const utils = require('../utils/utils');
 const ItemAttributesRequest_allOf_image_link = require('../models/ItemAttributesRequest_allOf_image_link');
+const UpdatableItemAttributes_gtin = require('../models/UpdatableItemAttributes_gtin');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
+                key: `${keyPrefix}ad_image_0_link`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> - [${labelPrefix}ad_image_0_link]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_0_tag`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> - [${labelPrefix}ad_image_0_tag]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_10_link`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> - [${labelPrefix}ad_image_10_link]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_10_tag`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> - [${labelPrefix}ad_image_10_tag]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_11_link`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> - [${labelPrefix}ad_image_11_link]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_11_tag`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> - [${labelPrefix}ad_image_11_tag]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_12_link`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> - [${labelPrefix}ad_image_12_link]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_12_tag`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> - [${labelPrefix}ad_image_12_tag]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_13_link`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> - [${labelPrefix}ad_image_13_link]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_13_tag`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> - [${labelPrefix}ad_image_13_tag]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_14_link`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> - [${labelPrefix}ad_image_14_link]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_14_tag`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> - [${labelPrefix}ad_image_14_tag]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_15_link`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> - [${labelPrefix}ad_image_15_link]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_15_tag`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> - [${labelPrefix}ad_image_15_tag]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_16_link`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> - [${labelPrefix}ad_image_16_link]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_16_tag`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> - [${labelPrefix}ad_image_16_tag]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_17_link`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> - [${labelPrefix}ad_image_17_link]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_17_tag`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> - [${labelPrefix}ad_image_17_tag]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_18_link`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> - [${labelPrefix}ad_image_18_link]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_18_tag`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> - [${labelPrefix}ad_image_18_tag]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_19_link`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> - [${labelPrefix}ad_image_19_link]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_19_tag`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> - [${labelPrefix}ad_image_19_tag]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_1_link`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> - [${labelPrefix}ad_image_1_link]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_1_tag`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> - [${labelPrefix}ad_image_1_tag]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_2_link`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> - [${labelPrefix}ad_image_2_link]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_2_tag`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> - [${labelPrefix}ad_image_2_tag]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_3_link`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> - [${labelPrefix}ad_image_3_link]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_3_tag`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> - [${labelPrefix}ad_image_3_tag]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_4_link`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> - [${labelPrefix}ad_image_4_link]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_4_tag`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> - [${labelPrefix}ad_image_4_tag]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_5_link`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> - [${labelPrefix}ad_image_5_link]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_5_tag`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> - [${labelPrefix}ad_image_5_tag]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_6_link`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> - [${labelPrefix}ad_image_6_link]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_6_tag`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> - [${labelPrefix}ad_image_6_tag]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_7_link`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> - [${labelPrefix}ad_image_7_link]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_7_tag`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> - [${labelPrefix}ad_image_7_tag]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_8_link`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> - [${labelPrefix}ad_image_8_link]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_8_tag`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> - [${labelPrefix}ad_image_8_tag]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_9_link`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> - [${labelPrefix}ad_image_9_link]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_image_9_tag`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p> - [${labelPrefix}ad_image_9_tag]`,
+                type: 'string',
+            },
+            {
                 key: `${keyPrefix}ad_link`,
                 label: `Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://. - [${labelPrefix}ad_link]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_video_0_link`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> - [${labelPrefix}ad_video_0_link]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_video_0_tag`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p> - [${labelPrefix}ad_video_0_tag]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_video_1_link`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> - [${labelPrefix}ad_video_1_link]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_video_1_tag`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p> - [${labelPrefix}ad_video_1_tag]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_video_2_link`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul> - [${labelPrefix}ad_video_2_link]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_video_2_tag`,
+                label: `<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p> - [${labelPrefix}ad_video_2_tag]`,
                 type: 'string',
             },
             {
@@ -17,12 +248,17 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}age_group`,
-                label: `The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’. - [${labelPrefix}age_group]`,
+                label: `The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’. - [${labelPrefix}age_group]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}android_deep_link`,
+                label: `The deep link to the product on the Android app. - [${labelPrefix}android_deep_link]`,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}availability`,
-                label: `The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’. - [${labelPrefix}availability]`,
+                label: `The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’. - [${labelPrefix}availability]`,
                 type: 'string',
             },
             {
@@ -52,28 +288,53 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}custom_label_0`,
-                label: `<p><= 1000 characters</p> <p>Custom grouping of products.</p> - [${labelPrefix}custom_label_0]`,
+                label: `<p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p> - [${labelPrefix}custom_label_0]`,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}custom_label_1`,
-                label: `<p><= 1000 characters</p> <p>Custom grouping of products.</p> - [${labelPrefix}custom_label_1]`,
+                label: `<p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p> - [${labelPrefix}custom_label_1]`,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}custom_label_2`,
-                label: `<p><= 1000 characters</p> <p>Custom grouping of products.</p> - [${labelPrefix}custom_label_2]`,
+                label: `<p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p> - [${labelPrefix}custom_label_2]`,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}custom_label_3`,
-                label: `<p><= 1000 characters</p> <p>Custom grouping of products.</p> - [${labelPrefix}custom_label_3]`,
+                label: `<p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p> - [${labelPrefix}custom_label_3]`,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}custom_label_4`,
-                label: `<p><= 1000 characters</p> <p>Custom grouping of products.</p> - [${labelPrefix}custom_label_4]`,
+                label: `<p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p> - [${labelPrefix}custom_label_4]`,
                 type: 'string',
+            },
+            {
+                key: `${keyPrefix}custom_number_0`,
+                label: `an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items. - [${labelPrefix}custom_number_0]`,
+                type: 'integer',
+            },
+            {
+                key: `${keyPrefix}custom_number_1`,
+                label: `an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items. - [${labelPrefix}custom_number_1]`,
+                type: 'integer',
+            },
+            {
+                key: `${keyPrefix}custom_number_2`,
+                label: `an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items. - [${labelPrefix}custom_number_2]`,
+                type: 'integer',
+            },
+            {
+                key: `${keyPrefix}custom_number_3`,
+                label: `an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items. - [${labelPrefix}custom_number_3]`,
+                type: 'integer',
+            },
+            {
+                key: `${keyPrefix}custom_number_4`,
+                label: `an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items. - [${labelPrefix}custom_number_4]`,
+                type: 'integer',
             },
             {
                 key: `${keyPrefix}description`,
@@ -92,7 +353,7 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}gender`,
-                label: `The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’. - [${labelPrefix}gender]`,
+                label: `The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’. - [${labelPrefix}gender]`,
                 type: 'string',
             },
             {
@@ -100,14 +361,20 @@ module.exports = {
                 label: `The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted. - [${labelPrefix}google_product_category]`,
                 type: 'string',
             },
-            {
-                key: `${keyPrefix}gtin`,
-                label: `The unique universal product identifier. - [${labelPrefix}gtin]`,
-                type: 'integer',
-            },
+            ...UpdatableItemAttributes_gtin.fields(`${keyPrefix}gtin`, isInput),
             {
                 key: `${keyPrefix}id`,
                 label: `<p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p> - [${labelPrefix}id]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}installment_price`,
+                label: `Installment price of the product. This data will only be shown to pinners in the enabled countries. Expected format: <payment_count>:<payment_amount> <currency> - [${labelPrefix}installment_price]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ios_deep_link`,
+                label: `The deep link to the product on the iOS app. - [${labelPrefix}ios_deep_link]`,
                 type: 'string',
             },
             {
@@ -171,8 +438,18 @@ module.exports = {
                 type: 'string',
             },
             {
+                key: `${keyPrefix}promotion_id`,
+                label: `A unique identifier referencing the promotion associated with this catalog item. - [${labelPrefix}promotion_id]`,
+                type: 'string',
+            },
+            {
                 key: `${keyPrefix}sale_price`,
                 label: `The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \"14.99 USD\", \"14.99USD\" and \"14.99\". If the currency is not included, we default to US dollars. - [${labelPrefix}sale_price]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}sale_price_effective_date`,
+                label: `Sale price effective date. Expected format: <start_date>/<end_date> (ISO 8601 format) - [${labelPrefix}sale_price_effective_date]`,
                 type: 'string',
             },
             {
@@ -202,12 +479,12 @@ module.exports = {
             },
             {
                 key: `${keyPrefix}size_system`,
-                label: `Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’. - [${labelPrefix}size_system]`,
+                label: `Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’. - [${labelPrefix}size_system]`,
                 type: 'string',
             },
             {
                 key: `${keyPrefix}size_type`,
-                label: `Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’. - [${labelPrefix}size_type]`,
+                label: `Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’. - [${labelPrefix}size_type]`,
                 type: 'string',
             },
             {
@@ -218,6 +495,16 @@ module.exports = {
             {
                 key: `${keyPrefix}title`,
                 label: `<p><= 500 characters</p> <p>The name of the product.</p> - [${labelPrefix}title]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}unit_pricing_base_measure`,
+                label: `Unit pricing base measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <base_measure> <unit_type> - [${labelPrefix}unit_pricing_base_measure]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}unit_pricing_measure`,
+                label: `Unit pricing total measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <total_units> <unit_type> - [${labelPrefix}unit_pricing_measure]`,
                 type: 'string',
             },
             {
@@ -240,6 +527,11 @@ module.exports = {
             },
             ...ItemAttributesRequest_allOf_image_link.fields(`${keyPrefix}image_link`, isInput),
             {
+                key: `${keyPrefix}save_pin_disabled`,
+                label: `By default, product pins created from a catalog are able to be saved by Pinners. If you want to disable the save pin feature, set this attribute to true. This feature is only available for allowlisted merchants. Please contact your account manager to enable this feature. - [${labelPrefix}save_pin_disabled]`,
+                type: 'boolean',
+            },
+            {
                 key: `${keyPrefix}video_link`,
                 label: `<p><= 2,000 characters</p> <p>Hosted link to the product video.</p> <p>File types for linked videos must be .mp4, .mov or .m4v.</p> <p>File size cannot exceed 2GB.</p> - [${labelPrefix}video_link]`,
                 type: 'string',
@@ -249,9 +541,56 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
+            'ad_image_0_link': bundle.inputData?.[`${keyPrefix}ad_image_0_link`],
+            'ad_image_0_tag': bundle.inputData?.[`${keyPrefix}ad_image_0_tag`],
+            'ad_image_10_link': bundle.inputData?.[`${keyPrefix}ad_image_10_link`],
+            'ad_image_10_tag': bundle.inputData?.[`${keyPrefix}ad_image_10_tag`],
+            'ad_image_11_link': bundle.inputData?.[`${keyPrefix}ad_image_11_link`],
+            'ad_image_11_tag': bundle.inputData?.[`${keyPrefix}ad_image_11_tag`],
+            'ad_image_12_link': bundle.inputData?.[`${keyPrefix}ad_image_12_link`],
+            'ad_image_12_tag': bundle.inputData?.[`${keyPrefix}ad_image_12_tag`],
+            'ad_image_13_link': bundle.inputData?.[`${keyPrefix}ad_image_13_link`],
+            'ad_image_13_tag': bundle.inputData?.[`${keyPrefix}ad_image_13_tag`],
+            'ad_image_14_link': bundle.inputData?.[`${keyPrefix}ad_image_14_link`],
+            'ad_image_14_tag': bundle.inputData?.[`${keyPrefix}ad_image_14_tag`],
+            'ad_image_15_link': bundle.inputData?.[`${keyPrefix}ad_image_15_link`],
+            'ad_image_15_tag': bundle.inputData?.[`${keyPrefix}ad_image_15_tag`],
+            'ad_image_16_link': bundle.inputData?.[`${keyPrefix}ad_image_16_link`],
+            'ad_image_16_tag': bundle.inputData?.[`${keyPrefix}ad_image_16_tag`],
+            'ad_image_17_link': bundle.inputData?.[`${keyPrefix}ad_image_17_link`],
+            'ad_image_17_tag': bundle.inputData?.[`${keyPrefix}ad_image_17_tag`],
+            'ad_image_18_link': bundle.inputData?.[`${keyPrefix}ad_image_18_link`],
+            'ad_image_18_tag': bundle.inputData?.[`${keyPrefix}ad_image_18_tag`],
+            'ad_image_19_link': bundle.inputData?.[`${keyPrefix}ad_image_19_link`],
+            'ad_image_19_tag': bundle.inputData?.[`${keyPrefix}ad_image_19_tag`],
+            'ad_image_1_link': bundle.inputData?.[`${keyPrefix}ad_image_1_link`],
+            'ad_image_1_tag': bundle.inputData?.[`${keyPrefix}ad_image_1_tag`],
+            'ad_image_2_link': bundle.inputData?.[`${keyPrefix}ad_image_2_link`],
+            'ad_image_2_tag': bundle.inputData?.[`${keyPrefix}ad_image_2_tag`],
+            'ad_image_3_link': bundle.inputData?.[`${keyPrefix}ad_image_3_link`],
+            'ad_image_3_tag': bundle.inputData?.[`${keyPrefix}ad_image_3_tag`],
+            'ad_image_4_link': bundle.inputData?.[`${keyPrefix}ad_image_4_link`],
+            'ad_image_4_tag': bundle.inputData?.[`${keyPrefix}ad_image_4_tag`],
+            'ad_image_5_link': bundle.inputData?.[`${keyPrefix}ad_image_5_link`],
+            'ad_image_5_tag': bundle.inputData?.[`${keyPrefix}ad_image_5_tag`],
+            'ad_image_6_link': bundle.inputData?.[`${keyPrefix}ad_image_6_link`],
+            'ad_image_6_tag': bundle.inputData?.[`${keyPrefix}ad_image_6_tag`],
+            'ad_image_7_link': bundle.inputData?.[`${keyPrefix}ad_image_7_link`],
+            'ad_image_7_tag': bundle.inputData?.[`${keyPrefix}ad_image_7_tag`],
+            'ad_image_8_link': bundle.inputData?.[`${keyPrefix}ad_image_8_link`],
+            'ad_image_8_tag': bundle.inputData?.[`${keyPrefix}ad_image_8_tag`],
+            'ad_image_9_link': bundle.inputData?.[`${keyPrefix}ad_image_9_link`],
+            'ad_image_9_tag': bundle.inputData?.[`${keyPrefix}ad_image_9_tag`],
             'ad_link': bundle.inputData?.[`${keyPrefix}ad_link`],
+            'ad_video_0_link': bundle.inputData?.[`${keyPrefix}ad_video_0_link`],
+            'ad_video_0_tag': bundle.inputData?.[`${keyPrefix}ad_video_0_tag`],
+            'ad_video_1_link': bundle.inputData?.[`${keyPrefix}ad_video_1_link`],
+            'ad_video_1_tag': bundle.inputData?.[`${keyPrefix}ad_video_1_tag`],
+            'ad_video_2_link': bundle.inputData?.[`${keyPrefix}ad_video_2_link`],
+            'ad_video_2_tag': bundle.inputData?.[`${keyPrefix}ad_video_2_tag`],
             'adult': bundle.inputData?.[`${keyPrefix}adult`],
             'age_group': bundle.inputData?.[`${keyPrefix}age_group`],
+            'android_deep_link': bundle.inputData?.[`${keyPrefix}android_deep_link`],
             'availability': bundle.inputData?.[`${keyPrefix}availability`],
             'average_review_rating': bundle.inputData?.[`${keyPrefix}average_review_rating`],
             'brand': bundle.inputData?.[`${keyPrefix}brand`],
@@ -263,13 +602,20 @@ module.exports = {
             'custom_label_2': bundle.inputData?.[`${keyPrefix}custom_label_2`],
             'custom_label_3': bundle.inputData?.[`${keyPrefix}custom_label_3`],
             'custom_label_4': bundle.inputData?.[`${keyPrefix}custom_label_4`],
+            'custom_number_0': bundle.inputData?.[`${keyPrefix}custom_number_0`],
+            'custom_number_1': bundle.inputData?.[`${keyPrefix}custom_number_1`],
+            'custom_number_2': bundle.inputData?.[`${keyPrefix}custom_number_2`],
+            'custom_number_3': bundle.inputData?.[`${keyPrefix}custom_number_3`],
+            'custom_number_4': bundle.inputData?.[`${keyPrefix}custom_number_4`],
             'description': bundle.inputData?.[`${keyPrefix}description`],
             'free_shipping_label': bundle.inputData?.[`${keyPrefix}free_shipping_label`],
             'free_shipping_limit': bundle.inputData?.[`${keyPrefix}free_shipping_limit`],
             'gender': bundle.inputData?.[`${keyPrefix}gender`],
             'google_product_category': bundle.inputData?.[`${keyPrefix}google_product_category`],
-            'gtin': bundle.inputData?.[`${keyPrefix}gtin`],
+            'gtin': utils.removeIfEmpty(UpdatableItemAttributes_gtin.mapping(bundle, `${keyPrefix}gtin`)),
             'id': bundle.inputData?.[`${keyPrefix}id`],
+            'installment_price': bundle.inputData?.[`${keyPrefix}installment_price`],
+            'ios_deep_link': bundle.inputData?.[`${keyPrefix}ios_deep_link`],
             'item_group_id': bundle.inputData?.[`${keyPrefix}item_group_id`],
             'last_updated_time': bundle.inputData?.[`${keyPrefix}last_updated_time`],
             'link': bundle.inputData?.[`${keyPrefix}link`],
@@ -282,7 +628,9 @@ module.exports = {
             'pattern': bundle.inputData?.[`${keyPrefix}pattern`],
             'price': bundle.inputData?.[`${keyPrefix}price`],
             'product_type': bundle.inputData?.[`${keyPrefix}product_type`],
+            'promotion_id': bundle.inputData?.[`${keyPrefix}promotion_id`],
             'sale_price': bundle.inputData?.[`${keyPrefix}sale_price`],
+            'sale_price_effective_date': bundle.inputData?.[`${keyPrefix}sale_price_effective_date`],
             'shipping': bundle.inputData?.[`${keyPrefix}shipping`],
             'shipping_height': bundle.inputData?.[`${keyPrefix}shipping_height`],
             'shipping_weight': bundle.inputData?.[`${keyPrefix}shipping_weight`],
@@ -292,10 +640,13 @@ module.exports = {
             'size_type': bundle.inputData?.[`${keyPrefix}size_type`],
             'tax': bundle.inputData?.[`${keyPrefix}tax`],
             'title': bundle.inputData?.[`${keyPrefix}title`],
+            'unit_pricing_base_measure': bundle.inputData?.[`${keyPrefix}unit_pricing_base_measure`],
+            'unit_pricing_measure': bundle.inputData?.[`${keyPrefix}unit_pricing_measure`],
             'variant_names': bundle.inputData?.[`${keyPrefix}variant_names`],
             'variant_values': bundle.inputData?.[`${keyPrefix}variant_values`],
             'additional_image_link': bundle.inputData?.[`${keyPrefix}additional_image_link`],
             'image_link': utils.removeIfEmpty(ItemAttributesRequest_allOf_image_link.mapping(bundle, `${keyPrefix}image_link`)),
+            'save_pin_disabled': bundle.inputData?.[`${keyPrefix}save_pin_disabled`],
             'video_link': bundle.inputData?.[`${keyPrefix}video_link`],
         }
     },

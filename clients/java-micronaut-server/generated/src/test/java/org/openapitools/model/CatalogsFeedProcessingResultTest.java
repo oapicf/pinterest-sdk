@@ -5,6 +5,7 @@ import org.openapitools.model.CatalogsFeedIngestionDetails;
 import org.openapitools.model.CatalogsFeedProcessingStatus;
 import org.openapitools.model.CatalogsFeedProductCounts;
 import org.openapitools.model.CatalogsFeedValidationDetails;
+import org.openapitools.model.CatalogsFeedVideoCounts;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -57,14 +58,6 @@ public class CatalogsFeedProcessingResultTest {
     }
 
     /**
-     * Test the property 'status'
-     */
-    @Test
-    public void statusTest() {
-        // TODO: test status
-    }
-
-    /**
      * Test the property 'productCounts'
      */
     @Test
@@ -73,11 +66,27 @@ public class CatalogsFeedProcessingResultTest {
     }
 
     /**
+     * Test the property 'status'
+     */
+    @Test
+    public void statusTest() {
+        // TODO: test status
+    }
+
+    /**
      * Test the property 'validationDetails'
      */
     @Test
     public void validationDetailsTest() {
         // TODO: test validationDetails
+    }
+
+    /**
+     * Test the property 'videoCounts'
+     */
+    @Test
+    public void videoCountsTest() {
+        // TODO: test videoCounts
     }
 
 }

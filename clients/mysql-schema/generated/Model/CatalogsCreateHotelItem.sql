@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsCreateHotelItem`
 --
-SELECT `hotel_id`, `operation`, `attributes` FROM `CatalogsCreateHotelItem` WHERE 1;
+SELECT `attributes`, `hotel_id`, `operation` FROM `CatalogsCreateHotelItem` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsCreateHotelItem`
 --
-INSERT INTO `CatalogsCreateHotelItem`(`hotel_id`, `operation`, `attributes`) VALUES (?, ?, ?);
+INSERT INTO `CatalogsCreateHotelItem`(`attributes`, `hotel_id`, `operation`) VALUES (?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsCreateHotelItem`
 --
-UPDATE `CatalogsCreateHotelItem` SET `hotel_id` = ?, `operation` = ?, `attributes` = ? WHERE 1;
+UPDATE `CatalogsCreateHotelItem` SET `attributes` = ?, `hotel_id` = ?, `operation` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsCreateHotelItem`

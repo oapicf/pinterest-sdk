@@ -6,11 +6,13 @@ Request for creation of entities in bulk.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**campaigns** | [**Array&lt;CampaignUpdateRequest&gt;**](CampaignUpdateRequest.md) |  | [optional] [default to undefined]
 **ad_groups** | [**Array&lt;AdGroupUpdateRequest&gt;**](AdGroupUpdateRequest.md) |  | [optional] [default to undefined]
 **ads** | [**Array&lt;AdUpdateRequest&gt;**](AdUpdateRequest.md) |  | [optional] [default to undefined]
-**product_groups** | [**Array&lt;ProductGroupPromotionUpdateRequest&gt;**](ProductGroupPromotionUpdateRequest.md) |  | [optional] [default to undefined]
+**campaigns** | [**Array&lt;CampaignUpdateRequest&gt;**](CampaignUpdateRequest.md) |  | [optional] [default to undefined]
+**catalog_product_groups** | [**Array&lt;CatalogsProductGroupsUpdateRequest&gt;**](CatalogsProductGroupsUpdateRequest.md) |  | [optional] [default to undefined]
 **keywords** | [**Array&lt;KeywordUpdate&gt;**](KeywordUpdate.md) |  | [optional] [default to undefined]
+**labels** | [**Array&lt;LabelBulkUpdateRequest&gt;**](LabelBulkUpdateRequest.md) |  | [optional] [default to undefined]
+**product_groups** | [**Array&lt;ProductGroupPromotionUpdateRequest&gt;**](ProductGroupPromotionUpdateRequest.md) |  | [optional] [default to undefined]
 
 ## Example
 
@@ -18,11 +20,13 @@ Name | Type | Description | Notes
 import { BulkUpsertRequestUpdate } from './api';
 
 const instance: BulkUpsertRequestUpdate = {
-    campaigns,
     ad_groups,
     ads,
-    product_groups,
+    campaigns,
+    catalog_product_groups,
     keywords,
+    labels,
+    product_groups,
 };
 ```
 

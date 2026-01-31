@@ -54,7 +54,7 @@ public class BusinessAccessAssetsApiTest {
     public void assetGroupCreateTest() {
         // given
         String businessId = "729090764583391194";
-        CreateAssetGroupBody createAssetGroupBody = new CreateAssetGroupBody("Canada Ad Accounts", "Asset groups that has ad accounts shared in Canada", Arrays.asList());
+        CreateAssetGroupBody createAssetGroupBody = new CreateAssetGroupBody("Asset groups that has ad accounts shared in Canada", "Canada Ad Accounts", Arrays.asList());
 
         // when
         CreateAssetGroupResponse body = api.assetGroupCreate(businessId, createAssetGroupBody).block();
@@ -115,12 +115,13 @@ public class BusinessAccessAssetsApiTest {
         // given
         String businessId = "729090764583391194";
         String assetId = "729090764583391194";
+        Boolean fetchSystemUsers = false;
         String bookmark = "example";
         Integer pageSize = 25;
         Integer startIndex = 0;
 
         // when
-        BusinessAssetMembersGet200Response body = api.businessAssetMembersGet(businessId, assetId, bookmark, pageSize, startIndex).block();
+        BusinessAssetMembersGet200Response body = api.businessAssetMembersGet(businessId, assetId, fetchSystemUsers, bookmark, pageSize, startIndex).block();
 
         // then
         // TODO implement the businessAssetMembersGetTest()

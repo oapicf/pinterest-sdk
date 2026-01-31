@@ -34,6 +34,12 @@ class CatalogsItemsUpsertBatchRequestTest : ShouldSpec() {
             //modelInstance.country shouldBe ("TODO")
         }
 
+        // to test the property `items` - Array with catalogs items
+        should("test items") {
+            // uncomment below to test the property
+            //modelInstance.items shouldBe ("TODO")
+        }
+
         // to test the property `language` - We recommend using the CatalogsLocale values.
         should("test language") {
             // uncomment below to test the property
@@ -44,12 +50,6 @@ class CatalogsItemsUpsertBatchRequestTest : ShouldSpec() {
         should("test operation") {
             // uncomment below to test the property
             //modelInstance.operation shouldBe ("TODO")
-        }
-
-        // to test the property `items` - Array with catalogs items
-        should("test items") {
-            // uncomment below to test the property
-            //modelInstance.items shouldBe ("TODO")
         }
 
     }

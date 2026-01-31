@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BatchId** | Pointer to **string** | Id of the catalogs items batch | [optional] 
-**CreatedTime** | Pointer to **time.Time** | Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] [readonly] 
-**CompletedTime** | Pointer to **NullableTime** | Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] [readonly] 
-**Status** | Pointer to [**BatchOperationStatus**](BatchOperationStatus.md) |  | [optional] 
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**CompletedTime** | Pointer to **NullableTime** | Date and time (UTC) of the batch completion: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] [readonly] 
+**CreatedTime** | Pointer to **time.Time** | Date and time (UTC) of the batch creation: YYYY-MM-DD&#39;T&#39;hh:mm:ss | [optional] [readonly] 
 **Items** | Pointer to [**[]CreativeAssetsProcessingRecord**](CreativeAssetsProcessingRecord.md) | Array with the catalogs items processing records part of the catalogs items batch | [optional] 
+**Status** | Pointer to [**BatchOperationStatus**](BatchOperationStatus.md) |  | [optional] 
 
 ## Methods
 
@@ -55,30 +55,25 @@ SetBatchId sets BatchId field to given value.
 
 HasBatchId returns a boolean if a field has been set.
 
-### GetCreatedTime
+### GetCatalogType
 
-`func (o *CatalogsCreativeAssetsItemsBatch) GetCreatedTime() time.Time`
+`func (o *CatalogsCreativeAssetsItemsBatch) GetCatalogType() CatalogsType`
 
-GetCreatedTime returns the CreatedTime field if non-nil, zero value otherwise.
+GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
 
-### GetCreatedTimeOk
+### GetCatalogTypeOk
 
-`func (o *CatalogsCreativeAssetsItemsBatch) GetCreatedTimeOk() (*time.Time, bool)`
+`func (o *CatalogsCreativeAssetsItemsBatch) GetCatalogTypeOk() (*CatalogsType, bool)`
 
-GetCreatedTimeOk returns a tuple with the CreatedTime field if it's non-nil, zero value otherwise
+GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCreatedTime
+### SetCatalogType
 
-`func (o *CatalogsCreativeAssetsItemsBatch) SetCreatedTime(v time.Time)`
+`func (o *CatalogsCreativeAssetsItemsBatch) SetCatalogType(v CatalogsType)`
 
-SetCreatedTime sets CreatedTime field to given value.
+SetCatalogType sets CatalogType field to given value.
 
-### HasCreatedTime
-
-`func (o *CatalogsCreativeAssetsItemsBatch) HasCreatedTime() bool`
-
-HasCreatedTime returns a boolean if a field has been set.
 
 ### GetCompletedTime
 
@@ -115,50 +110,30 @@ HasCompletedTime returns a boolean if a field has been set.
 `func (o *CatalogsCreativeAssetsItemsBatch) UnsetCompletedTime()`
 
 UnsetCompletedTime ensures that no value is present for CompletedTime, not even an explicit nil
-### GetStatus
+### GetCreatedTime
 
-`func (o *CatalogsCreativeAssetsItemsBatch) GetStatus() BatchOperationStatus`
+`func (o *CatalogsCreativeAssetsItemsBatch) GetCreatedTime() time.Time`
 
-GetStatus returns the Status field if non-nil, zero value otherwise.
+GetCreatedTime returns the CreatedTime field if non-nil, zero value otherwise.
 
-### GetStatusOk
+### GetCreatedTimeOk
 
-`func (o *CatalogsCreativeAssetsItemsBatch) GetStatusOk() (*BatchOperationStatus, bool)`
+`func (o *CatalogsCreativeAssetsItemsBatch) GetCreatedTimeOk() (*time.Time, bool)`
 
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+GetCreatedTimeOk returns a tuple with the CreatedTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetStatus
+### SetCreatedTime
 
-`func (o *CatalogsCreativeAssetsItemsBatch) SetStatus(v BatchOperationStatus)`
+`func (o *CatalogsCreativeAssetsItemsBatch) SetCreatedTime(v time.Time)`
 
-SetStatus sets Status field to given value.
+SetCreatedTime sets CreatedTime field to given value.
 
-### HasStatus
+### HasCreatedTime
 
-`func (o *CatalogsCreativeAssetsItemsBatch) HasStatus() bool`
+`func (o *CatalogsCreativeAssetsItemsBatch) HasCreatedTime() bool`
 
-HasStatus returns a boolean if a field has been set.
-
-### GetCatalogType
-
-`func (o *CatalogsCreativeAssetsItemsBatch) GetCatalogType() CatalogsType`
-
-GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
-
-### GetCatalogTypeOk
-
-`func (o *CatalogsCreativeAssetsItemsBatch) GetCatalogTypeOk() (*CatalogsType, bool)`
-
-GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCatalogType
-
-`func (o *CatalogsCreativeAssetsItemsBatch) SetCatalogType(v CatalogsType)`
-
-SetCatalogType sets CatalogType field to given value.
-
+HasCreatedTime returns a boolean if a field has been set.
 
 ### GetItems
 
@@ -184,6 +159,31 @@ SetItems sets Items field to given value.
 `func (o *CatalogsCreativeAssetsItemsBatch) HasItems() bool`
 
 HasItems returns a boolean if a field has been set.
+
+### GetStatus
+
+`func (o *CatalogsCreativeAssetsItemsBatch) GetStatus() BatchOperationStatus`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *CatalogsCreativeAssetsItemsBatch) GetStatusOk() (*BatchOperationStatus, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *CatalogsCreativeAssetsItemsBatch) SetStatus(v BatchOperationStatus)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *CatalogsCreativeAssetsItemsBatch) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

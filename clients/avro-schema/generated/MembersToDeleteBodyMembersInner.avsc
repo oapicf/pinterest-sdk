@@ -5,14 +5,14 @@
   "name": "MembersToDeleteBodyMembersInner",
   "fields": [
     {
-      "name": "member_id",
-      "type": "string",
-      "doc": "Unique identifier of the member"
-    },
-    {
       "name": "business_role",
       "type": "model.BusinessRoleForMembers",
       "doc": ""
+    },
+    {
+      "name": "member_id",
+      "type": "string",
+      "doc": "Unique identifier of the member"
     }
   ]
 

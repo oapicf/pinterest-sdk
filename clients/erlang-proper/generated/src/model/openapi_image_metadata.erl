@@ -9,11 +9,11 @@
 -export_type([openapi_image_metadata/0]).
 
 -type openapi_image_metadata() ::
-  [ {'item_type', binary() }
-  | {'title', binary() }
-  | {'description', binary() }
+  [ {'description', binary() }
+  | {'images', openapi_image_size:openapi_image_size() }
+  | {'item_type', binary() }
   | {'link', binary() }
-  | {'images', openapi_image_metadata_images:openapi_image_metadata_images() }
+  | {'title', binary() }
   ].
 
 
@@ -21,11 +21,11 @@ openapi_image_metadata() ->
     openapi_image_metadata([]).
 
 openapi_image_metadata(Fields) ->
-  Default = [ {'item_type', binary() }
-            , {'title', binary() }
-            , {'description', binary() }
+  Default = [ {'description', binary() }
+            , {'images', openapi_image_size:openapi_image_size() }
+            , {'item_type', binary() }
             , {'link', binary() }
-            , {'images', openapi_image_metadata_images:openapi_image_metadata_images() }
+            , {'title', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

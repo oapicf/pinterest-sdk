@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`name` | string
 `id` | string
+`name` | string
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { SSIOAccountPMPName } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "name": Bidalgo,
   "id": 0011N00001LW2aSQAT,
+  "name": Bidalgo,
 } satisfies SSIOAccountPMPName
 
 console.log(example)

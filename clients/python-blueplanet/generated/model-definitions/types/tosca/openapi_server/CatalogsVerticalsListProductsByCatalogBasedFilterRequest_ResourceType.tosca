@@ -1,0 +1,63 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsVerticalsListProductsByCatalogBasedFilterRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsVerticalsListProductsByCatalogBasedFilterRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest = openapi_server.resourceTypes.CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest
+  CatalogsCreativeAssetsProductGroupFilters = openapi_server.resourceTypes.CatalogsCreativeAssetsProductGroupFilters
+  CatalogsHotelListProductsByCatalogBasedFilterRequest = openapi_server.resourceTypes.CatalogsHotelListProductsByCatalogBasedFilterRequest
+  CatalogsLocale = openapi_server.resourceTypes.CatalogsLocale
+  CatalogsRetailListProductsByCatalogBasedFilterRequest = openapi_server.resourceTypes.CatalogsRetailListProductsByCatalogBasedFilterRequest
+  Country = openapi_server.resourceTypes.Country
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CatalogsVerticalsListProductsByCatalogBasedFilterRequest {
+    title = CatalogsVerticalsListProductsByCatalogBasedFilterRequest
+    description = CatalogsVerticalsListProductsByCatalogBasedFilterRequest
+    derivedFrom = Root
+    properties {
+        catalog_id {
+          type =  string
+          description = "Catalog id pertaining to the creative assets product group."
+          optional = true
+        }
+        catalog_type {
+          type =  string
+          description = ""
+          enum = ["CREATIVE_ASSETS"]
+          optional = true
+        }
+        country {
+          type = Country
+          description = ""
+          optional = true
+        }
+        filters {
+          type = CatalogsCreativeAssetsProductGroupFilters
+          description = ""
+          optional = true
+        }
+        locale {
+          type = CatalogsLocale
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsVerticalsListProductsByCatalogBasedFilterRequest {
+    title = CatalogsVerticalsListProductsByCatalogBasedFilterRequest
+    description = CatalogsVerticalsListProductsByCatalogBasedFilterRequest
+    implements = openapi_server.resourceTypes.CatalogsVerticalsListProductsByCatalogBasedFilterRequest
+
+  }
+}

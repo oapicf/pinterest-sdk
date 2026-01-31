@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AutoTargetingEnabled** | Pointer to **bool** | Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;. | [optional] [default to true]
-**PlacementGroup** | Pointer to [**PlacementGroupType**](PlacementGroupType.md) | &lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;. | [optional] [default to ALL]
+**AutoTargetingEnabled** | Pointer to **bool** | Enable auto-targeting for ad group. Default value is True. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/performance-plus-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;Pinterest Performance+ targeting\&quot;&lt;/a&gt;. | [optional] [default to true]
 **CreativeTypes** | Pointer to **[]string** | Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] 
-**TargetingSpec** | Pointer to [**TargetingSpec**](TargetingSpec.md) |  | [optional] 
-**ProductGroupIds** | Pointer to **[]string** | Targeted product group IDs. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This can only be combined with shopping/catalog sales campaigns. For more information, &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/shopping-ads#section-14571\&quot; target&#x3D;\&quot;_blank\&quot;&gt;click here&lt;/a&gt;. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored. | [optional] 
 **Keywords** | Pointer to [**[]AdGroupAudienceSizingRequestKeywordsInner**](AdGroupAudienceSizingRequestKeywordsInner.md) | Array of keyword objects. If the keywords field is missing, all keywords will be targeted. | [optional] 
+**PlacementGroup** | Pointer to [**PlacementGroupType**](PlacementGroupType.md) | &lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;. | [optional] [default to ALL]
+**ProductGroupIds** | Pointer to **[]string** | Targeted product group IDs. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This can only be combined with shopping/catalog sales campaigns. For more information, &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/shopping-ads#section-14571\&quot; target&#x3D;\&quot;_blank\&quot;&gt;click here&lt;/a&gt;. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored. | [optional] 
+**TargetingSpec** | Pointer to [**TargetingSpec**](TargetingSpec.md) |  | [optional] 
 
 ## Methods
 
@@ -55,31 +55,6 @@ SetAutoTargetingEnabled sets AutoTargetingEnabled field to given value.
 
 HasAutoTargetingEnabled returns a boolean if a field has been set.
 
-### GetPlacementGroup
-
-`func (o *AdGroupAudienceSizingRequest) GetPlacementGroup() PlacementGroupType`
-
-GetPlacementGroup returns the PlacementGroup field if non-nil, zero value otherwise.
-
-### GetPlacementGroupOk
-
-`func (o *AdGroupAudienceSizingRequest) GetPlacementGroupOk() (*PlacementGroupType, bool)`
-
-GetPlacementGroupOk returns a tuple with the PlacementGroup field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPlacementGroup
-
-`func (o *AdGroupAudienceSizingRequest) SetPlacementGroup(v PlacementGroupType)`
-
-SetPlacementGroup sets PlacementGroup field to given value.
-
-### HasPlacementGroup
-
-`func (o *AdGroupAudienceSizingRequest) HasPlacementGroup() bool`
-
-HasPlacementGroup returns a boolean if a field has been set.
-
 ### GetCreativeTypes
 
 `func (o *AdGroupAudienceSizingRequest) GetCreativeTypes() []string`
@@ -115,30 +90,65 @@ HasCreativeTypes returns a boolean if a field has been set.
 `func (o *AdGroupAudienceSizingRequest) UnsetCreativeTypes()`
 
 UnsetCreativeTypes ensures that no value is present for CreativeTypes, not even an explicit nil
-### GetTargetingSpec
+### GetKeywords
 
-`func (o *AdGroupAudienceSizingRequest) GetTargetingSpec() TargetingSpec`
+`func (o *AdGroupAudienceSizingRequest) GetKeywords() []AdGroupAudienceSizingRequestKeywordsInner`
 
-GetTargetingSpec returns the TargetingSpec field if non-nil, zero value otherwise.
+GetKeywords returns the Keywords field if non-nil, zero value otherwise.
 
-### GetTargetingSpecOk
+### GetKeywordsOk
 
-`func (o *AdGroupAudienceSizingRequest) GetTargetingSpecOk() (*TargetingSpec, bool)`
+`func (o *AdGroupAudienceSizingRequest) GetKeywordsOk() (*[]AdGroupAudienceSizingRequestKeywordsInner, bool)`
 
-GetTargetingSpecOk returns a tuple with the TargetingSpec field if it's non-nil, zero value otherwise
+GetKeywordsOk returns a tuple with the Keywords field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTargetingSpec
+### SetKeywords
 
-`func (o *AdGroupAudienceSizingRequest) SetTargetingSpec(v TargetingSpec)`
+`func (o *AdGroupAudienceSizingRequest) SetKeywords(v []AdGroupAudienceSizingRequestKeywordsInner)`
 
-SetTargetingSpec sets TargetingSpec field to given value.
+SetKeywords sets Keywords field to given value.
 
-### HasTargetingSpec
+### HasKeywords
 
-`func (o *AdGroupAudienceSizingRequest) HasTargetingSpec() bool`
+`func (o *AdGroupAudienceSizingRequest) HasKeywords() bool`
 
-HasTargetingSpec returns a boolean if a field has been set.
+HasKeywords returns a boolean if a field has been set.
+
+### SetKeywordsNil
+
+`func (o *AdGroupAudienceSizingRequest) SetKeywordsNil(b bool)`
+
+ SetKeywordsNil sets the value for Keywords to be an explicit nil
+
+### UnsetKeywords
+`func (o *AdGroupAudienceSizingRequest) UnsetKeywords()`
+
+UnsetKeywords ensures that no value is present for Keywords, not even an explicit nil
+### GetPlacementGroup
+
+`func (o *AdGroupAudienceSizingRequest) GetPlacementGroup() PlacementGroupType`
+
+GetPlacementGroup returns the PlacementGroup field if non-nil, zero value otherwise.
+
+### GetPlacementGroupOk
+
+`func (o *AdGroupAudienceSizingRequest) GetPlacementGroupOk() (*PlacementGroupType, bool)`
+
+GetPlacementGroupOk returns a tuple with the PlacementGroup field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPlacementGroup
+
+`func (o *AdGroupAudienceSizingRequest) SetPlacementGroup(v PlacementGroupType)`
+
+SetPlacementGroup sets PlacementGroup field to given value.
+
+### HasPlacementGroup
+
+`func (o *AdGroupAudienceSizingRequest) HasPlacementGroup() bool`
+
+HasPlacementGroup returns a boolean if a field has been set.
 
 ### GetProductGroupIds
 
@@ -175,41 +185,31 @@ HasProductGroupIds returns a boolean if a field has been set.
 `func (o *AdGroupAudienceSizingRequest) UnsetProductGroupIds()`
 
 UnsetProductGroupIds ensures that no value is present for ProductGroupIds, not even an explicit nil
-### GetKeywords
+### GetTargetingSpec
 
-`func (o *AdGroupAudienceSizingRequest) GetKeywords() []AdGroupAudienceSizingRequestKeywordsInner`
+`func (o *AdGroupAudienceSizingRequest) GetTargetingSpec() TargetingSpec`
 
-GetKeywords returns the Keywords field if non-nil, zero value otherwise.
+GetTargetingSpec returns the TargetingSpec field if non-nil, zero value otherwise.
 
-### GetKeywordsOk
+### GetTargetingSpecOk
 
-`func (o *AdGroupAudienceSizingRequest) GetKeywordsOk() (*[]AdGroupAudienceSizingRequestKeywordsInner, bool)`
+`func (o *AdGroupAudienceSizingRequest) GetTargetingSpecOk() (*TargetingSpec, bool)`
 
-GetKeywordsOk returns a tuple with the Keywords field if it's non-nil, zero value otherwise
+GetTargetingSpecOk returns a tuple with the TargetingSpec field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetKeywords
+### SetTargetingSpec
 
-`func (o *AdGroupAudienceSizingRequest) SetKeywords(v []AdGroupAudienceSizingRequestKeywordsInner)`
+`func (o *AdGroupAudienceSizingRequest) SetTargetingSpec(v TargetingSpec)`
 
-SetKeywords sets Keywords field to given value.
+SetTargetingSpec sets TargetingSpec field to given value.
 
-### HasKeywords
+### HasTargetingSpec
 
-`func (o *AdGroupAudienceSizingRequest) HasKeywords() bool`
+`func (o *AdGroupAudienceSizingRequest) HasTargetingSpec() bool`
 
-HasKeywords returns a boolean if a field has been set.
+HasTargetingSpec returns a boolean if a field has been set.
 
-### SetKeywordsNil
-
-`func (o *AdGroupAudienceSizingRequest) SetKeywordsNil(b bool)`
-
- SetKeywordsNil sets the value for Keywords to be an explicit nil
-
-### UnsetKeywords
-`func (o *AdGroupAudienceSizingRequest) UnsetKeywords()`
-
-UnsetKeywords ensures that no value is present for Keywords, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

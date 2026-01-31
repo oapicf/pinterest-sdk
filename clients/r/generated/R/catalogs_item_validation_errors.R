@@ -17,8 +17,8 @@
 #' @field IMAGE_LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
 #' @field IMAGE_LINK_MISSING  \link{CatalogsItemValidationDetails} [optional]
 #' @field INVALID_DOMAIN  \link{CatalogsItemValidationDetails} [optional]
-#' @field ITEMID_MISSING  \link{CatalogsItemValidationDetails} [optional]
 #' @field ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE  \link{CatalogsItemValidationDetails} [optional]
+#' @field ITEMID_MISSING  \link{CatalogsItemValidationDetails} [optional]
 #' @field LINK_FORMAT_INVALID  \link{CatalogsItemValidationDetails} [optional]
 #' @field LINK_LENGTH_TOO_LONG  \link{CatalogsItemValidationDetails} [optional]
 #' @field LIST_PRICE_INVALID  \link{CatalogsItemValidationDetails} [optional]
@@ -46,8 +46,8 @@ CatalogsItemValidationErrors <- R6::R6Class(
     `IMAGE_LINK_LENGTH_TOO_LONG` = NULL,
     `IMAGE_LINK_MISSING` = NULL,
     `INVALID_DOMAIN` = NULL,
-    `ITEMID_MISSING` = NULL,
     `ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE` = NULL,
+    `ITEMID_MISSING` = NULL,
     `LINK_FORMAT_INVALID` = NULL,
     `LINK_LENGTH_TOO_LONG` = NULL,
     `LIST_PRICE_INVALID` = NULL,
@@ -73,8 +73,8 @@ CatalogsItemValidationErrors <- R6::R6Class(
     #' @param IMAGE_LINK_LENGTH_TOO_LONG IMAGE_LINK_LENGTH_TOO_LONG
     #' @param IMAGE_LINK_MISSING IMAGE_LINK_MISSING
     #' @param INVALID_DOMAIN INVALID_DOMAIN
-    #' @param ITEMID_MISSING ITEMID_MISSING
     #' @param ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE
+    #' @param ITEMID_MISSING ITEMID_MISSING
     #' @param LINK_FORMAT_INVALID LINK_FORMAT_INVALID
     #' @param LINK_LENGTH_TOO_LONG LINK_LENGTH_TOO_LONG
     #' @param LIST_PRICE_INVALID LIST_PRICE_INVALID
@@ -87,7 +87,7 @@ CatalogsItemValidationErrors <- R6::R6Class(
     #' @param PRODUCT_PRICE_INVALID PRODUCT_PRICE_INVALID
     #' @param TITLE_MISSING TITLE_MISSING
     #' @param ... Other optional arguments.
-    initialize = function(`ADULT_INVALID` = NULL, `ADWORDS_FORMAT_INVALID` = NULL, `AVAILABILITY_INVALID` = NULL, `BLOCKLISTED_IMAGE_SIGNATURE` = NULL, `DESCRIPTION_MISSING` = NULL, `DUPLICATE_PRODUCTS` = NULL, `IMAGE_LINK_INVALID` = NULL, `IMAGE_LINK_LENGTH_TOO_LONG` = NULL, `IMAGE_LINK_MISSING` = NULL, `INVALID_DOMAIN` = NULL, `ITEMID_MISSING` = NULL, `ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE` = NULL, `LINK_FORMAT_INVALID` = NULL, `LINK_LENGTH_TOO_LONG` = NULL, `LIST_PRICE_INVALID` = NULL, `MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED` = NULL, `PARSE_LINE_ERROR` = NULL, `PINJOIN_CONTENT_UNSAFE` = NULL, `PRICE_CANNOT_BE_DETERMINED` = NULL, `PRICE_MISSING` = NULL, `PRODUCT_LINK_MISSING` = NULL, `PRODUCT_PRICE_INVALID` = NULL, `TITLE_MISSING` = NULL, ...) {
+    initialize = function(`ADULT_INVALID` = NULL, `ADWORDS_FORMAT_INVALID` = NULL, `AVAILABILITY_INVALID` = NULL, `BLOCKLISTED_IMAGE_SIGNATURE` = NULL, `DESCRIPTION_MISSING` = NULL, `DUPLICATE_PRODUCTS` = NULL, `IMAGE_LINK_INVALID` = NULL, `IMAGE_LINK_LENGTH_TOO_LONG` = NULL, `IMAGE_LINK_MISSING` = NULL, `INVALID_DOMAIN` = NULL, `ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE` = NULL, `ITEMID_MISSING` = NULL, `LINK_FORMAT_INVALID` = NULL, `LINK_LENGTH_TOO_LONG` = NULL, `LIST_PRICE_INVALID` = NULL, `MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED` = NULL, `PARSE_LINE_ERROR` = NULL, `PINJOIN_CONTENT_UNSAFE` = NULL, `PRICE_CANNOT_BE_DETERMINED` = NULL, `PRICE_MISSING` = NULL, `PRODUCT_LINK_MISSING` = NULL, `PRODUCT_PRICE_INVALID` = NULL, `TITLE_MISSING` = NULL, ...) {
       if (!is.null(`ADULT_INVALID`)) {
         stopifnot(R6::is.R6(`ADULT_INVALID`))
         self$`ADULT_INVALID` <- `ADULT_INVALID`
@@ -128,13 +128,13 @@ CatalogsItemValidationErrors <- R6::R6Class(
         stopifnot(R6::is.R6(`INVALID_DOMAIN`))
         self$`INVALID_DOMAIN` <- `INVALID_DOMAIN`
       }
-      if (!is.null(`ITEMID_MISSING`)) {
-        stopifnot(R6::is.R6(`ITEMID_MISSING`))
-        self$`ITEMID_MISSING` <- `ITEMID_MISSING`
-      }
       if (!is.null(`ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE`)) {
         stopifnot(R6::is.R6(`ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE`))
         self$`ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE` <- `ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE`
+      }
+      if (!is.null(`ITEMID_MISSING`)) {
+        stopifnot(R6::is.R6(`ITEMID_MISSING`))
+        self$`ITEMID_MISSING` <- `ITEMID_MISSING`
       }
       if (!is.null(`LINK_FORMAT_INVALID`)) {
         stopifnot(R6::is.R6(`LINK_FORMAT_INVALID`))
@@ -253,13 +253,13 @@ CatalogsItemValidationErrors <- R6::R6Class(
         CatalogsItemValidationErrorsObject[["INVALID_DOMAIN"]] <-
           self$`INVALID_DOMAIN`$toSimpleType()
       }
-      if (!is.null(self$`ITEMID_MISSING`)) {
-        CatalogsItemValidationErrorsObject[["ITEMID_MISSING"]] <-
-          self$`ITEMID_MISSING`$toSimpleType()
-      }
       if (!is.null(self$`ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE`)) {
         CatalogsItemValidationErrorsObject[["ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE"]] <-
           self$`ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE`$toSimpleType()
+      }
+      if (!is.null(self$`ITEMID_MISSING`)) {
+        CatalogsItemValidationErrorsObject[["ITEMID_MISSING"]] <-
+          self$`ITEMID_MISSING`$toSimpleType()
       }
       if (!is.null(self$`LINK_FORMAT_INVALID`)) {
         CatalogsItemValidationErrorsObject[["LINK_FORMAT_INVALID"]] <-
@@ -365,15 +365,15 @@ CatalogsItemValidationErrors <- R6::R6Class(
         `invalid_domain_object`$fromJSON(jsonlite::toJSON(this_object$`INVALID_DOMAIN`, auto_unbox = TRUE, digits = NA))
         self$`INVALID_DOMAIN` <- `invalid_domain_object`
       }
-      if (!is.null(this_object$`ITEMID_MISSING`)) {
-        `itemid_missing_object` <- CatalogsItemValidationDetails$new()
-        `itemid_missing_object`$fromJSON(jsonlite::toJSON(this_object$`ITEMID_MISSING`, auto_unbox = TRUE, digits = NA))
-        self$`ITEMID_MISSING` <- `itemid_missing_object`
-      }
       if (!is.null(this_object$`ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE`)) {
         `item_main_image_download_failure_object` <- CatalogsItemValidationDetails$new()
         `item_main_image_download_failure_object`$fromJSON(jsonlite::toJSON(this_object$`ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE`, auto_unbox = TRUE, digits = NA))
         self$`ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE` <- `item_main_image_download_failure_object`
+      }
+      if (!is.null(this_object$`ITEMID_MISSING`)) {
+        `itemid_missing_object` <- CatalogsItemValidationDetails$new()
+        `itemid_missing_object`$fromJSON(jsonlite::toJSON(this_object$`ITEMID_MISSING`, auto_unbox = TRUE, digits = NA))
+        self$`ITEMID_MISSING` <- `itemid_missing_object`
       }
       if (!is.null(this_object$`LINK_FORMAT_INVALID`)) {
         `link_format_invalid_object` <- CatalogsItemValidationDetails$new()
@@ -461,8 +461,8 @@ CatalogsItemValidationErrors <- R6::R6Class(
       self$`IMAGE_LINK_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`IMAGE_LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
       self$`IMAGE_LINK_MISSING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`IMAGE_LINK_MISSING`, auto_unbox = TRUE, digits = NA))
       self$`INVALID_DOMAIN` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`INVALID_DOMAIN`, auto_unbox = TRUE, digits = NA))
-      self$`ITEMID_MISSING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`ITEMID_MISSING`, auto_unbox = TRUE, digits = NA))
       self$`ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE`, auto_unbox = TRUE, digits = NA))
+      self$`ITEMID_MISSING` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`ITEMID_MISSING`, auto_unbox = TRUE, digits = NA))
       self$`LINK_FORMAT_INVALID` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`LINK_FORMAT_INVALID`, auto_unbox = TRUE, digits = NA))
       self$`LINK_LENGTH_TOO_LONG` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`LINK_LENGTH_TOO_LONG`, auto_unbox = TRUE, digits = NA))
       self$`LIST_PRICE_INVALID` <- CatalogsItemValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`LIST_PRICE_INVALID`, auto_unbox = TRUE, digits = NA))

@@ -3,74 +3,40 @@ package model
 import play.api.libs.json._
 
 /**
-  * Ad group targeting specification defining the ad group target audience. For example, `{\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"AGE_BUCKET\":[\"25-34\"]}`
-  * @param AGE_BUCKET Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted.
+  * Ad group targeting specification defining the ad group target audience. For example, `{\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"MINIMUM_AGE\":\"18\", \"MAXIMUM_AGE\":\"65+\"}`
+  * @param AGE_BUCKET **Legacy field.** Predefined age ranges. We recommend using MINIMUM_AGE and MAXIMUM_AGE instead for more flexible targeting. Cannot be combined with MINIMUM_AGE/MAXIMUM_AGE. If neither AGE_BUCKET nor MINIMUM_AGE/MAXIMUM_AGE are specified, all ages will be targeted.
   * @param APPTYPE Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted.
   * @param AUDIENCE_EXCLUDE Excluded customer list IDs. Used to drive new customer acquisition goals. For example: [\"2542620905475\"]. Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_EXCLUDE field is missing, the default behavior in terms of ad delivery is that **No users will be excluded**.
   * @param AUDIENCE_INCLUDE Targeted customer list IDs. For example: [\"2542620905473\"]. Audience lists need to have at least 100 people with Pinterest accounts in them Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_INCLUDE field is missing, the default behavior in terms of ad delivery is that **All users will be included**.
   * @param GENDER Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.
   * @param GEO Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a> or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both. At least one of LOCATION or GEO must be specified. If the GEO field is missing, then only LOCATION values will be targeted (see LOCATION field below).
   * @param INTEREST Array of interest object IDs. If the INTEREST field is missing, the default behavior in terms of ad delivery is that **All interests will be targeted**.
-  * @param LOCALE 24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be targeted, only english non-sublanguage will be targeted**.
-  * @param LOCATION 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, click here. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
+  * @param LOCALE 24 ISO 639-1 two-letter language codes. If the LOCALE field is not included in the request, all languages are targeted.
+  * @param LOCATION 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a>. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
+  * @param MAXIMUM_AGE Maximum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\", \"65+\". Must be used together with `MINIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
+  * @param MINIMUM_AGE Minimum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\". Note: 65+ is not allowed for minimum age. Must be used together with `MAXIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
   * @param SHOPPING_RETARGETING Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting
   * @param TARGETING_STRATEGY 
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class TargetingSpec(
-  AGE_BUCKET: Option[TargetingSpec.AGEBUCKET.Value],
-  APPTYPE: Option[TargetingSpec.APPTYPE.Value],
+  AGE_BUCKET: Option[List[TargetingSpecAgeBucket]],
+  APPTYPE: Option[List[TargetingSpecAppType]],
   AUDIENCE_EXCLUDE: Option[List[String]],
   AUDIENCE_INCLUDE: Option[List[String]],
-  GENDER: Option[TargetingSpec.GENDER.Value],
+  GENDER: Option[List[TargetingSpecGender]],
   GEO: Option[List[String]],
   INTEREST: Option[List[String]],
   LOCALE: Option[List[String]],
   LOCATION: Option[List[String]],
-  SHOPPING_RETARGETING: Option[List[TargetingSpecSHOPPINGRETARGETING]],
+  MAXIMUM_AGE: Option[String],
+  MINIMUM_AGE: Option[String],
+  SHOPPING_RETARGETING: Option[List[TargetingSpecShoppingRetargeting]],
   TARGETING_STRATEGY: Option[TargetingSpec.TARGETINGSTRATEGY.Value]
 )
 
 object TargetingSpec {
   implicit lazy val targetingSpecJsonFormat: Format[TargetingSpec] = Json.format[TargetingSpec]
-
-  // noinspection TypeAnnotation
-  object AGEBUCKET extends Enumeration {
-    val _1824 = Value("18-24")
-    val _21 = Value("21+")
-    val _2534 = Value("25-34")
-    val _3544 = Value("35-44")
-    val _4549 = Value("45-49")
-    val _5054 = Value("50-54")
-    val _5564 = Value("55-64")
-    val _65 = Value("65+")
-
-    type AGEBUCKET = Value
-    implicit lazy val AGEBUCKETJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])
-  }
-
-  // noinspection TypeAnnotation
-  object APPTYPE extends Enumeration {
-    val AndroidMobile = Value("android_mobile")
-    val AndroidTablet = Value("android_tablet")
-    val Ipad = Value("ipad")
-    val Iphone = Value("iphone")
-    val Web = Value("web")
-    val WebMobile = Value("web_mobile")
-
-    type APPTYPE = Value
-    implicit lazy val APPTYPEJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])
-  }
-
-  // noinspection TypeAnnotation
-  object GENDER extends Enumeration {
-    val Unknown = Value("unknown")
-    val Male = Value("male")
-    val Female = Value("female")
-
-    type GENDER = Value
-    implicit lazy val GENDERJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])
-  }
 
   // noinspection TypeAnnotation
   object TARGETINGSTRATEGY extends Enumeration {

@@ -73,17 +73,17 @@ private class OASCatalogsCreativeAssetsBatchRequesTest {
     private static void maintainRenamedProperties() {
         OASCatalogsCreativeAssetsBatchReques catalogsCreativeAssetsBatchRequest = new OASCatalogsCreativeAssetsBatchReques();
         Map<String, String> x-property-mappings = catalogsCreativeAssetsBatchRequest.getx-property-mappings();
-        System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
         System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
+        System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASCatalogsCreativeAssetsBatchReques catalogsCreativeAssetsBatchRequest = new OASCatalogsCreativeAssetsBatchReques();
         System.assertEquals(new List<OASCatalogsCreativeAssetsBatchItem>(), catalogsCreativeAssetsBatchRequest.items);
+        System.assertEquals(null, catalogsCreativeAssetsBatchRequest.catalogId);
         System.assertEquals(null, catalogsCreativeAssetsBatchRequest.catalogType);
         System.assertEquals(null, catalogsCreativeAssetsBatchRequest.country);
         System.assertEquals(null, catalogsCreativeAssetsBatchRequest.language);
-        System.assertEquals(null, catalogsCreativeAssetsBatchRequest.catalogId);
     }
 }

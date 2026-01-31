@@ -7,21 +7,24 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { TargetingSpecSHOPPINGRETARGETING } from './targetingSpecSHOPPINGRETARGETING';
+import { TargetingSpecGender } from './targetingSpecGender';
+import { TargetingSpecAgeBucket } from './targetingSpecAgeBucket';
+import { TargetingSpecShoppingRetargeting } from './targetingSpecShoppingRetargeting';
+import { TargetingSpecAppType } from './targetingSpecAppType';
 
 
 /**
- * Ad group targeting specification defining the ad group target audience. For example, `{\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"AGE_BUCKET\":[\"25-34\"]}`
+ * Ad group targeting specification defining the ad group target audience. For example, `{\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"MINIMUM_AGE\":\"18\", \"MAXIMUM_AGE\":\"65+\"}`
  */
 export interface TargetingSpec { 
     /**
-     * Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted.
+     * **Legacy field.** Predefined age ranges. We recommend using MINIMUM_AGE and MAXIMUM_AGE instead for more flexible targeting. Cannot be combined with MINIMUM_AGE/MAXIMUM_AGE. If neither AGE_BUCKET nor MINIMUM_AGE/MAXIMUM_AGE are specified, all ages will be targeted.
      */
-    AGE_BUCKET?: Array<TargetingSpec.AGEBUCKETEnum> | null;
+    AGE_BUCKET?: Array<TargetingSpecAgeBucket> | null;
     /**
      * Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted.
      */
-    APPTYPE?: Array<TargetingSpec.APPTYPEEnum> | null;
+    APPTYPE?: Array<TargetingSpecAppType> | null;
     /**
      * Excluded customer list IDs. Used to drive new customer acquisition goals. For example: [\"2542620905475\"]. Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_EXCLUDE field is missing, the default behavior in terms of ad delivery is that **No users will be excluded**.
      */
@@ -33,7 +36,7 @@ export interface TargetingSpec {
     /**
      * Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.
      */
-    GENDER?: Array<TargetingSpec.GENDEREnum> | null;
+    GENDER?: Array<TargetingSpecGender> | null;
     /**
      * Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a> or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both. At least one of LOCATION or GEO must be specified. If the GEO field is missing, then only LOCATION values will be targeted (see LOCATION field below).
      */
@@ -43,49 +46,31 @@ export interface TargetingSpec {
      */
     INTEREST?: Array<string>;
     /**
-     * 24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be targeted, only english non-sublanguage will be targeted**.
+     * 24 ISO 639-1 two-letter language codes. If the LOCALE field is not included in the request, all languages are targeted.
      */
     LOCALE?: Array<string> | null;
     /**
-     * 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, click here. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
+     * 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a>. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
      */
     LOCATION?: Array<string> | null;
     /**
+     * Maximum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\", \"65+\". Must be used together with `MINIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
+     */
+    MAXIMUM_AGE?: string;
+    /**
+     * Minimum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\". Note: 65+ is not allowed for minimum age. Must be used together with `MAXIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
+     */
+    MINIMUM_AGE?: string;
+    /**
      * Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting
      */
-    SHOPPING_RETARGETING?: Array<TargetingSpecSHOPPINGRETARGETING> | null;
+    SHOPPING_RETARGETING?: Array<TargetingSpecShoppingRetargeting> | null;
     /**
      * 
      */
     TARGETING_STRATEGY?: Array<TargetingSpec.TARGETINGSTRATEGYEnum> | null;
 }
 export namespace TargetingSpec {
-    export const AGEBUCKETEnum = {
-        _1824: '18-24',
-        _21: '21+',
-        _2534: '25-34',
-        _3544: '35-44',
-        _4549: '45-49',
-        _5054: '50-54',
-        _5564: '55-64',
-        _65: '65+'
-    } as const;
-    export type AGEBUCKETEnum = typeof AGEBUCKETEnum[keyof typeof AGEBUCKETEnum];
-    export const APPTYPEEnum = {
-        AndroidMobile: 'android_mobile',
-        AndroidTablet: 'android_tablet',
-        Ipad: 'ipad',
-        Iphone: 'iphone',
-        Web: 'web',
-        WebMobile: 'web_mobile'
-    } as const;
-    export type APPTYPEEnum = typeof APPTYPEEnum[keyof typeof APPTYPEEnum];
-    export const GENDEREnum = {
-        Unknown: 'unknown',
-        Male: 'male',
-        Female: 'female'
-    } as const;
-    export type GENDEREnum = typeof GENDEREnum[keyof typeof GENDEREnum];
     export const TARGETINGSTRATEGYEnum = {
         ChooseYourOwn: 'CHOOSE_YOUR_OWN',
         FindNewCustomers: 'FIND_NEW_CUSTOMERS',

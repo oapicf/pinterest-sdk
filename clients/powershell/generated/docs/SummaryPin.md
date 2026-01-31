@@ -3,21 +3,23 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Media** | [**PinMedia**](PinMedia.md) |  | [optional] [readonly] 
 **AltText** | **String** |  | [optional] 
-**Link** | **String** |  | [optional] 
-**Title** | **String** |  | [optional] 
 **Description** | **String** |  | [optional] 
+**Id** | **String** |  | [optional] 
+**Link** | **String** |  | [optional] 
+**Media** | [**PinMedia**](PinMedia.md) |  | [optional] [readonly] 
+**Title** | **String** |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$SummaryPin = Initialize-PSOpenAPIToolsSummaryPin  -Media null `
- -AltText null `
+$SummaryPin = Initialize-PSOpenAPIToolsSummaryPin  -AltText null `
+ -Description null `
+ -Id null `
  -Link https://www.pinterest.com/ `
- -Title null `
- -Description null
+ -Media null `
+ -Title null
 ```
 
 - Convert the resource to JSON

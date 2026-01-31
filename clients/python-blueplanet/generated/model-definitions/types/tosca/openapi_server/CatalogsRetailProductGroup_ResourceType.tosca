@@ -1,0 +1,105 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsRetailProductGroup"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsRetailProductGroup"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsProductGroupFilters = openapi_server.resourceTypes.CatalogsProductGroupFilters
+  CatalogsProductGroupStatus = openapi_server.resourceTypes.CatalogsProductGroupStatus
+  CatalogsProductGroupType = openapi_server.resourceTypes.CatalogsProductGroupType
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CatalogsRetailProductGroup {
+    title = CatalogsRetailProductGroup
+    description = CatalogsRetailProductGroup
+    derivedFrom = Root
+    properties {
+        catalog_id {
+          type =  string
+          description = "Catalog id pertaining to the retail product group."
+          optional = true
+        }
+        catalog_type {
+          type =  string
+          description = ""
+          enum = ["RETAIL"]
+          optional = true
+        }
+        country {
+          type =  string
+          description = ""
+          optional = false
+        }
+        created_at {
+          type =  integer
+          description = "Unix timestamp in seconds of when catalog product group was created."
+          optional = false
+        }
+        description {
+          type =  string
+          description = ""
+          optional = false
+        }
+        feed_id {
+          type =  string
+          description = "id of the catalogs feed belonging to this catalog product group"
+          optional = true
+        }
+        filters {
+          type = CatalogsProductGroupFilters
+          description = ""
+          optional = true
+        }
+        id {
+          type =  string
+          description = "ID of the catalog product group."
+          optional = true
+        }
+        is_featured {
+          type =  boolean
+          description = "boolean indicator of whether the product group is being featured or not"
+          optional = false
+        }
+        locale {
+          type =  string
+          description = ""
+          optional = false
+        }
+        name {
+          type =  string
+          description = "Name of catalog product group"
+          optional = false
+        }
+        status {
+          type = CatalogsProductGroupStatus
+          description = ""
+          optional = false
+        }
+        type {
+          type = CatalogsProductGroupType
+          description = ""
+          optional = true
+        }
+        updated_at {
+          type =  integer
+          description = "Unix timestamp in seconds of last time catalog product group was updated."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsRetailProductGroup {
+    title = CatalogsRetailProductGroup
+    description = CatalogsRetailProductGroup
+    implements = openapi_server.resourceTypes.CatalogsRetailProductGroup
+
+  }
+}

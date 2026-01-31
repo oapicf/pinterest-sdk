@@ -13,26 +13,26 @@ import AnyCodable
 /** Object describing an item batch record to create items */
 public struct ItemCreateBatchRecord: Codable, JSONEncodable, Hashable {
 
+    public var attributes: ItemAttributesRequest?
     /** The catalog item id in the merchant namespace */
     public var itemId: String?
-    public var attributes: ItemAttributesRequest?
 
-    public init(itemId: String? = nil, attributes: ItemAttributesRequest? = nil) {
-        self.itemId = itemId
+    public init(attributes: ItemAttributesRequest? = nil, itemId: String? = nil) {
         self.attributes = attributes
+        self.itemId = itemId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case itemId = "item_id"
         case attributes
+        case itemId = "item_id"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(itemId, forKey: .itemId)
         try container.encodeIfPresent(attributes, forKey: .attributes)
+        try container.encodeIfPresent(itemId, forKey: .itemId)
     }
 }
 

@@ -29,12 +29,6 @@ class TemplateResponseTest : ShouldSpec() {
         // uncomment below to create an instance of TemplateResponse
         //val modelInstance = TemplateResponse()
 
-        // to test the property `id` - Template ID
-        should("test id") {
-            // uncomment below to test the property
-            //modelInstance.id shouldBe ("TODO")
-        }
-
         // to test the property `adAccountId` - ID of the Ad Account that owns the template
         should("test adAccountId") {
             // uncomment below to test the property
@@ -47,46 +41,10 @@ class TemplateResponseTest : ShouldSpec() {
             //modelInstance.adAccountIds shouldBe ("TODO")
         }
 
-        // to test the property `userId` - ID of the user who created the template
-        should("test userId") {
+        // to test the property `clickWindowDays` - The length of the sliding window over which click conversions will be attributed
+        should("test clickWindowDays") {
             // uncomment below to test the property
-            //modelInstance.userId shouldBe ("TODO")
-        }
-
-        // to test the property `name` - Template Name
-        should("test name") {
-            // uncomment below to test the property
-            //modelInstance.name shouldBe ("TODO")
-        }
-
-        // to test the property `reportStartRelativeDaysInPast` - The number of days prior to the day the report will be delivered at which the report will start
-        should("test reportStartRelativeDaysInPast") {
-            // uncomment below to test the property
-            //modelInstance.reportStartRelativeDaysInPast shouldBe ("TODO")
-        }
-
-        // to test the property `reportEndRelativeDaysInPast` - The number of days prior to the day the report will be delivered at which the report will end
-        should("test reportEndRelativeDaysInPast") {
-            // uncomment below to test the property
-            //modelInstance.reportEndRelativeDaysInPast shouldBe ("TODO")
-        }
-
-        // to test the property `dateRange`
-        should("test dateRange") {
-            // uncomment below to test the property
-            //modelInstance.dateRange shouldBe ("TODO")
-        }
-
-        // to test the property `reportLevel`
-        should("test reportLevel") {
-            // uncomment below to test the property
-            //modelInstance.reportLevel shouldBe ("TODO")
-        }
-
-        // to test the property `reportFormat`
-        should("test reportFormat") {
-            // uncomment below to test the property
-            //modelInstance.reportFormat shouldBe ("TODO")
+            //modelInstance.clickWindowDays shouldBe ("TODO")
         }
 
         // to test the property `columns` - A list of columns to be included in the report
@@ -95,22 +53,28 @@ class TemplateResponseTest : ShouldSpec() {
             //modelInstance.columns shouldBe ("TODO")
         }
 
-        // to test the property `granularity`
-        should("test granularity") {
+        // to test the property `conversionReportTimeType` - Conversion report time type
+        should("test conversionReportTimeType") {
             // uncomment below to test the property
-            //modelInstance.granularity shouldBe ("TODO")
+            //modelInstance.conversionReportTimeType shouldBe ("TODO")
         }
 
-        // to test the property `viewWindowDays` - The length of the sliding window over which view conversions will be attributed
-        should("test viewWindowDays") {
+        // to test the property `creationSource` - The surface used to create this template
+        should("test creationSource") {
             // uncomment below to test the property
-            //modelInstance.viewWindowDays shouldBe ("TODO")
+            //modelInstance.creationSource shouldBe ("TODO")
         }
 
-        // to test the property `clickWindowDays` - The length of the sliding window over which click conversions will be attributed
-        should("test clickWindowDays") {
+        // to test the property `customColumnIds` - A list of custom column IDs
+        should("test customColumnIds") {
             // uncomment below to test the property
-            //modelInstance.clickWindowDays shouldBe ("TODO")
+            //modelInstance.customColumnIds shouldBe ("TODO")
+        }
+
+        // to test the property `dateRange`
+        should("test dateRange") {
+            // uncomment below to test the property
+            //modelInstance.dateRange shouldBe ("TODO")
         }
 
         // to test the property `engagementWindowDays` - The length of the sliding window over which engagement conversions will be attributed
@@ -119,16 +83,34 @@ class TemplateResponseTest : ShouldSpec() {
             //modelInstance.engagementWindowDays shouldBe ("TODO")
         }
 
-        // to test the property `conversionReportTimeType` - Conversion report time type
-        should("test conversionReportTimeType") {
-            // uncomment below to test the property
-            //modelInstance.conversionReportTimeType shouldBe ("TODO")
-        }
-
         // to test the property `filtersJson` - A JSON representation of any filters to be applied before returning report data. Each filter object should contain all of the following fields:<br> \"field\": The column name<br> \"operator\": The operator. Allowed operators: [\"=\", \"!=\", \"in\", \"not_in\", \"~\", \">\", \"<\", \"contains_substring\"]<br> \"value\": A single value or a list of values
         should("test filtersJson") {
             // uncomment below to test the property
             //modelInstance.filtersJson shouldBe ("TODO")
+        }
+
+        // to test the property `granularity`
+        should("test granularity") {
+            // uncomment below to test the property
+            //modelInstance.granularity shouldBe ("TODO")
+        }
+
+        // to test the property `id` - Template ID
+        should("test id") {
+            // uncomment below to test the property
+            //modelInstance.id shouldBe ("TODO")
+        }
+
+        // to test the property `ingestionSources` - The filter on the conversion ingestion source method for conversion metrics
+        should("test ingestionSources") {
+            // uncomment below to test the property
+            //modelInstance.ingestionSources shouldBe ("TODO")
+        }
+
+        // to test the property `isDeleted` - A boolean that indicates if the template has been deleted
+        should("test isDeleted") {
+            // uncomment below to test the property
+            //modelInstance.isDeleted shouldBe ("TODO")
         }
 
         // to test the property `isOwnedByUser` - A boolean value that indicates if the user owns the template
@@ -143,28 +125,34 @@ class TemplateResponseTest : ShouldSpec() {
             //modelInstance.isScheduled shouldBe ("TODO")
         }
 
-        // to test the property `creationSource` - The surface used to create this template
-        should("test creationSource") {
+        // to test the property `name` - Template Name
+        should("test name") {
             // uncomment below to test the property
-            //modelInstance.creationSource shouldBe ("TODO")
+            //modelInstance.name shouldBe ("TODO")
         }
 
-        // to test the property `isDeleted` - A boolean that indicates if the template has been deleted
-        should("test isDeleted") {
+        // to test the property `reportEndRelativeDaysInPast` - The number of days prior to the day the report will be delivered at which the report will end
+        should("test reportEndRelativeDaysInPast") {
             // uncomment below to test the property
-            //modelInstance.isDeleted shouldBe ("TODO")
+            //modelInstance.reportEndRelativeDaysInPast shouldBe ("TODO")
         }
 
-        // to test the property `updatedTime` - Time of last update in seconds since Unix epoch
-        should("test updatedTime") {
+        // to test the property `reportFormat`
+        should("test reportFormat") {
             // uncomment below to test the property
-            //modelInstance.updatedTime shouldBe ("TODO")
+            //modelInstance.reportFormat shouldBe ("TODO")
         }
 
-        // to test the property `customColumnIds` - A list of custom column IDs
-        should("test customColumnIds") {
+        // to test the property `reportLevel`
+        should("test reportLevel") {
             // uncomment below to test the property
-            //modelInstance.customColumnIds shouldBe ("TODO")
+            //modelInstance.reportLevel shouldBe ("TODO")
+        }
+
+        // to test the property `reportStartRelativeDaysInPast` - The number of days prior to the day the report will be delivered at which the report will start
+        should("test reportStartRelativeDaysInPast") {
+            // uncomment below to test the property
+            //modelInstance.reportStartRelativeDaysInPast shouldBe ("TODO")
         }
 
         // to test the property `type` - Reporting template type
@@ -173,10 +161,22 @@ class TemplateResponseTest : ShouldSpec() {
             //modelInstance.type shouldBe ("TODO")
         }
 
-        // to test the property `ingestionSources` - The filter on the conversion ingestion source method for conversion metrics
-        should("test ingestionSources") {
+        // to test the property `updatedTime` - Time of last update in seconds since Unix epoch
+        should("test updatedTime") {
             // uncomment below to test the property
-            //modelInstance.ingestionSources shouldBe ("TODO")
+            //modelInstance.updatedTime shouldBe ("TODO")
+        }
+
+        // to test the property `userId` - ID of the user who created the template
+        should("test userId") {
+            // uncomment below to test the property
+            //modelInstance.userId shouldBe ("TODO")
+        }
+
+        // to test the property `viewWindowDays` - The length of the sliding window over which view conversions will be attributed
+        should("test viewWindowDays") {
+            // uncomment below to test the property
+            //modelInstance.viewWindowDays shouldBe ("TODO")
         }
 
     }

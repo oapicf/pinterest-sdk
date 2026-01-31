@@ -7,7 +7,7 @@
 #' @title ConversionTagListResponse
 #' @description ConversionTagListResponse Class
 #' @format An \code{R6Class} generator object
-#' @field items  list(\link{ConversionTagResponse}) [optional]
+#' @field items  list(\link{ConversionTag}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -75,7 +75,7 @@ ConversionTagListResponse <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`items`)) {
-        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[ConversionTagResponse]", loadNamespace("openapi"))
+        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[ConversionTag]", loadNamespace("openapi"))
       }
       self
     },
@@ -98,7 +98,7 @@ ConversionTagListResponse <- R6::R6Class(
     #' @return the instance of ConversionTagListResponse
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[ConversionTagResponse]", loadNamespace("openapi"))
+      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[ConversionTag]", loadNamespace("openapi"))
       self
     },
 

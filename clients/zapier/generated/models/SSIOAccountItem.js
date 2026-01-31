@@ -6,13 +6,13 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}id`,
-                label: `Salesforce id for billto_info - [${labelPrefix}id]`,
-                type: 'string',
+                key: `${keyPrefix}addresses`,
+                label: `[${labelPrefix}addresses]`,
+                children: SSIOAccountAddress.fields(`${keyPrefix}addresses${!isInput ? '[]' : ''}`, isInput, true), 
             },
             {
-                key: `${keyPrefix}io_terms_id`,
-                label: `Salesforce id for IO Terms and Conditions - [${labelPrefix}io_terms_id]`,
+                key: `${keyPrefix}id`,
+                label: `Salesforce id for billto_info - [${labelPrefix}id]`,
                 type: 'string',
             },
             {
@@ -21,23 +21,8 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}us_terms_id`,
-                label: `Salesforce id for US Terms and Conditions - [${labelPrefix}us_terms_id]`,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}us_terms`,
-                label: `Salesforce text for US Terms and Conditions - [${labelPrefix}us_terms]`,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}row_terms_id`,
-                label: `Salesforce id for Rest of the World Terms and Conditions - [${labelPrefix}row_terms_id]`,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}row_terms`,
-                label: `Salesforce text for Rest of the World Terms and Conditions - [${labelPrefix}row_terms]`,
+                key: `${keyPrefix}io_terms_id`,
+                label: `Salesforce id for IO Terms and Conditions - [${labelPrefix}io_terms_id]`,
                 type: 'string',
             },
             {
@@ -46,24 +31,39 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}addresses`,
-                label: `[${labelPrefix}addresses]`,
-                children: SSIOAccountAddress.fields(`${keyPrefix}addresses${!isInput ? '[]' : ''}`, isInput, true), 
+                key: `${keyPrefix}row_terms`,
+                label: `Salesforce text for Rest of the World Terms and Conditions - [${labelPrefix}row_terms]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}row_terms_id`,
+                label: `Salesforce id for Rest of the World Terms and Conditions - [${labelPrefix}row_terms_id]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}us_terms`,
+                label: `Salesforce text for US Terms and Conditions - [${labelPrefix}us_terms]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}us_terms_id`,
+                label: `Salesforce id for US Terms and Conditions - [${labelPrefix}us_terms_id]`,
+                type: 'string',
             },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'id': bundle.inputData?.[`${keyPrefix}id`],
-            'io_terms_id': bundle.inputData?.[`${keyPrefix}io_terms_id`],
-            'io_terms': bundle.inputData?.[`${keyPrefix}io_terms`],
-            'us_terms_id': bundle.inputData?.[`${keyPrefix}us_terms_id`],
-            'us_terms': bundle.inputData?.[`${keyPrefix}us_terms`],
-            'row_terms_id': bundle.inputData?.[`${keyPrefix}row_terms_id`],
-            'row_terms': bundle.inputData?.[`${keyPrefix}row_terms`],
-            'io_type': bundle.inputData?.[`${keyPrefix}io_type`],
             'addresses': utils.childMapping(bundle.inputData?.[`${keyPrefix}addresses`], `${keyPrefix}addresses`, SSIOAccountAddress),
+            'id': bundle.inputData?.[`${keyPrefix}id`],
+            'io_terms': bundle.inputData?.[`${keyPrefix}io_terms`],
+            'io_terms_id': bundle.inputData?.[`${keyPrefix}io_terms_id`],
+            'io_type': bundle.inputData?.[`${keyPrefix}io_type`],
+            'row_terms': bundle.inputData?.[`${keyPrefix}row_terms`],
+            'row_terms_id': bundle.inputData?.[`${keyPrefix}row_terms_id`],
+            'us_terms': bundle.inputData?.[`${keyPrefix}us_terms`],
+            'us_terms_id': bundle.inputData?.[`${keyPrefix}us_terms_id`],
         }
     },
 }

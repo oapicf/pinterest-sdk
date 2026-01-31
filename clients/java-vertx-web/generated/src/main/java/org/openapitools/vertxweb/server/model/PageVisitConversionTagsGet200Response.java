@@ -12,24 +12,15 @@ import org.openapitools.vertxweb.server.model.ConversionEventResponse;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PageVisitConversionTagsGet200Response   {
   
-  private List<ConversionEventResponse> items = new ArrayList<>();
   private String bookmark;
+  private List<ConversionEventResponse> items = new ArrayList<>();
 
   public PageVisitConversionTagsGet200Response () {
 
   }
 
-  public PageVisitConversionTagsGet200Response (List<ConversionEventResponse> items, String bookmark) {
-    this.items = items;
+  public PageVisitConversionTagsGet200Response (String bookmark, List<ConversionEventResponse> items) {
     this.bookmark = bookmark;
-  }
-
-    
-  @JsonProperty("items")
-  public List<ConversionEventResponse> getItems() {
-    return items;
-  }
-  public void setItems(List<ConversionEventResponse> items) {
     this.items = items;
   }
 
@@ -42,6 +33,15 @@ public class PageVisitConversionTagsGet200Response   {
     this.bookmark = bookmark;
   }
 
+    
+  @JsonProperty("items")
+  public List<ConversionEventResponse> getItems() {
+    return items;
+  }
+  public void setItems(List<ConversionEventResponse> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -52,13 +52,13 @@ public class PageVisitConversionTagsGet200Response   {
       return false;
     }
     PageVisitConversionTagsGet200Response pageVisitConversionTagsGet200Response = (PageVisitConversionTagsGet200Response) o;
-    return Objects.equals(items, pageVisitConversionTagsGet200Response.items) &&
-        Objects.equals(bookmark, pageVisitConversionTagsGet200Response.bookmark);
+    return Objects.equals(bookmark, pageVisitConversionTagsGet200Response.bookmark) &&
+        Objects.equals(items, pageVisitConversionTagsGet200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -66,8 +66,8 @@ public class PageVisitConversionTagsGet200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PageVisitConversionTagsGet200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -27,27 +27,27 @@ pinterest_rest_api_catalogs_report_distribution_stats_REPORTTYPE_e catalogs_repo
 
 
 typedef struct catalogs_report_distribution_stats_t {
-    pinterest_rest_api_catalogs_report_distribution_stats_REPORTTYPE_e report_type; //enum
     char *catalog_id; // string
     int code; //numeric
     char *code_label; // string
-    char *message; // string
-    int occurrences; //numeric
     int ineligible_for_ads; //boolean
     int ineligible_for_organic; //boolean
+    char *message; // string
+    int occurrences; //numeric
+    pinterest_rest_api_catalogs_report_distribution_stats_REPORTTYPE_e report_type; //enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_report_distribution_stats_t;
 
 __attribute__((deprecated)) catalogs_report_distribution_stats_t *catalogs_report_distribution_stats_create(
-    pinterest_rest_api_catalogs_report_distribution_stats_REPORTTYPE_e report_type,
     char *catalog_id,
     int code,
     char *code_label,
+    int ineligible_for_ads,
+    int ineligible_for_organic,
     char *message,
     int occurrences,
-    int ineligible_for_ads,
-    int ineligible_for_organic
+    pinterest_rest_api_catalogs_report_distribution_stats_REPORTTYPE_e report_type
 );
 
 void catalogs_report_distribution_stats_free(catalogs_report_distribution_stats_t *catalogs_report_distribution_stats);

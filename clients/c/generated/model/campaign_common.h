@@ -22,30 +22,32 @@ typedef struct campaign_common_t campaign_common_t;
 
 typedef struct campaign_common_t {
     char *ad_account_id; // string
-    char *name; // string
-    entity_status_t *status; // custom
-    int lifetime_spend_cap; //numeric
     int daily_spend_cap; //numeric
-    char *order_line_id; // string
-    struct tracking_urls_t *tracking_urls; //model
-    int start_time; //numeric
     int end_time; //numeric
+    int is_automated_campaign; //boolean
     int is_flexible_daily_budgets; //boolean
+    int lifetime_spend_cap; //numeric
+    char *name; // string
+    char *order_line_id; // string
+    int start_time; //numeric
+    entity_status_t *status; // custom
+    struct tracking_urls_t *tracking_urls; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } campaign_common_t;
 
 __attribute__((deprecated)) campaign_common_t *campaign_common_create(
     char *ad_account_id,
-    char *name,
-    entity_status_t *status,
-    int lifetime_spend_cap,
     int daily_spend_cap,
-    char *order_line_id,
-    tracking_urls_t *tracking_urls,
-    int start_time,
     int end_time,
-    int is_flexible_daily_budgets
+    int is_automated_campaign,
+    int is_flexible_daily_budgets,
+    int lifetime_spend_cap,
+    char *name,
+    char *order_line_id,
+    int start_time,
+    entity_status_t *status,
+    tracking_urls_t *tracking_urls
 );
 
 void campaign_common_free(campaign_common_t *campaign_common);

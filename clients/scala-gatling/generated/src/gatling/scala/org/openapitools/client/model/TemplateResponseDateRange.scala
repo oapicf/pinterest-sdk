@@ -3,15 +3,15 @@ package org.openapitools.client.model
 
 
 case class TemplateResponseDateRange (
+    _absoluteDateRange: Option[TemplateResponseDateRangeAbsoluteDateRange],
     _dynamicDateRange: Option[TemplateResponseDateRangeDynamicDateRange],
-    _relativeDateRange: Option[TemplateResponseDateRangeRelativeDateRange],
-    _absoluteDateRange: Option[TemplateResponseDateRangeAbsoluteDateRange]
+    _relativeDateRange: Option[TemplateResponseDateRangeRelativeDateRange]
 )
 object TemplateResponseDateRange {
-    def toStringBody(var_dynamicDateRange: Object, var_relativeDateRange: Object, var_absoluteDateRange: Object) =
+    def toStringBody(var_absoluteDateRange: Object, var_dynamicDateRange: Object, var_relativeDateRange: Object) =
         s"""
         | {
-        | "dynamicDateRange":$var_dynamicDateRange,"relativeDateRange":$var_relativeDateRange,"absoluteDateRange":$var_absoluteDateRange
+        | "absoluteDateRange":$var_absoluteDateRange,"dynamicDateRange":$var_dynamicDateRange,"relativeDateRange":$var_relativeDateRange
         | }
         """.stripMargin
 }

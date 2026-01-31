@@ -16,13 +16,30 @@ import org.openapitools.model.CatalogsProduct;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsProductGroupPinsList200Response   {
+  @JsonProperty("bookmark")
+  private String bookmark;
+
   @JsonProperty("items")
   private List<CatalogsProduct> items = new ArrayList<>();
 
+  /**
+   **/
+  public CatalogsProductGroupPinsList200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
   @JsonProperty("bookmark")
-  private String bookmark;
+  public String getBookmark() {
+    return bookmark;
+  }
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
 
   /**
    * Pins
@@ -42,23 +59,6 @@ public class CatalogsProductGroupPinsList200Response   {
     this.items = items;
   }
 
-  /**
-   **/
-  public CatalogsProductGroupPinsList200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("bookmark")
-  public String getBookmark() {
-    return bookmark;
-  }
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -69,13 +69,13 @@ public class CatalogsProductGroupPinsList200Response   {
       return false;
     }
     CatalogsProductGroupPinsList200Response catalogsProductGroupPinsList200Response = (CatalogsProductGroupPinsList200Response) o;
-    return Objects.equals(items, catalogsProductGroupPinsList200Response.items) &&
-        Objects.equals(bookmark, catalogsProductGroupPinsList200Response.bookmark);
+    return Objects.equals(bookmark, catalogsProductGroupPinsList200Response.bookmark) &&
+        Objects.equals(items, catalogsProductGroupPinsList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -83,8 +83,8 @@ public class CatalogsProductGroupPinsList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupPinsList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

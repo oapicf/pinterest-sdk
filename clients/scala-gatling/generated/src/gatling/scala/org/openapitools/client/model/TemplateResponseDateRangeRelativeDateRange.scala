@@ -3,18 +3,18 @@ package org.openapitools.client.model
 
 
 case class TemplateResponseDateRangeRelativeDateRange (
-    /* The date range type */
-    _type: Option[String],
+    /* The end date of the date range */
+    _endDaysInPast: Option[Number],
     /* The start date of the date range */
     _startDaysInPast: Option[Number],
-    /* The end date of the date range */
-    _endDaysInPast: Option[Number]
+    /* The date range type */
+    _type: Option[String]
 )
 object TemplateResponseDateRangeRelativeDateRange {
-    def toStringBody(var_type: Object, var_startDaysInPast: Object, var_endDaysInPast: Object) =
+    def toStringBody(var_endDaysInPast: Object, var_startDaysInPast: Object, var_type: Object) =
         s"""
         | {
-        | "type":$var_type,"startDaysInPast":$var_startDaysInPast,"endDaysInPast":$var_endDaysInPast
+        | "endDaysInPast":$var_endDaysInPast,"startDaysInPast":$var_startDaysInPast,"type":$var_type
         | }
         """.stripMargin
 }

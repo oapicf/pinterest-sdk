@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OptimizationGoalMetadataFrequencyGoalMetadata   {
   
   private Integer frequency;
@@ -48,11 +48,14 @@ public class OptimizationGoalMetadataFrequencyGoalMetadata   {
   private TimerangeEnum timerange;
 
   /**
+   * Frequency target can only be between 2 and 20
+   * minimum: 2
+   * maximum: 20
    **/
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Frequency target can only be between 2 and 20")
   @JsonProperty("frequency")
-  public Integer getFrequency() {
+ @Min(2) @Max(20)  public Integer getFrequency() {
     return frequency;
   }
   public void setFrequency(Integer frequency) {

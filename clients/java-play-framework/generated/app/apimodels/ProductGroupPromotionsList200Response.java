@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.ProductGroupPromotionResponseItem;
+import apimodels.ProductGroupPromotion;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,43 +15,18 @@ import javax.validation.Valid;
 /**
  * ProductGroupPromotionsList200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class ProductGroupPromotionsList200Response   {
-  @JsonProperty("items")
-  @NotNull
-@Valid
-
-  private List<@Valid ProductGroupPromotionResponseItem> items = new ArrayList<>();
-
   @JsonProperty("bookmark")
   
   private String bookmark;
 
-  public ProductGroupPromotionsList200Response items(List<@Valid ProductGroupPromotionResponseItem> items) {
-    this.items = items;
-    return this;
-  }
+  @JsonProperty("items")
+  @NotNull
+@Valid
 
-  public ProductGroupPromotionsList200Response addItemsItem(ProductGroupPromotionResponseItem itemsItem) {
-    if (this.items == null) {
-      this.items = new ArrayList<>();
-    }
-    this.items.add(itemsItem);
-    return this;
-  }
-
-   /**
-   * Get items
-   * @return items
-  **/
-  public List<@Valid ProductGroupPromotionResponseItem> getItems() {
-    return items;
-  }
-
-  public void setItems(List<@Valid ProductGroupPromotionResponseItem> items) {
-    this.items = items;
-  }
+  private List<@Valid ProductGroupPromotion> items = new ArrayList<>();
 
   public ProductGroupPromotionsList200Response bookmark(String bookmark) {
     this.bookmark = bookmark;
@@ -70,6 +45,31 @@ public class ProductGroupPromotionsList200Response   {
     this.bookmark = bookmark;
   }
 
+  public ProductGroupPromotionsList200Response items(List<@Valid ProductGroupPromotion> items) {
+    this.items = items;
+    return this;
+  }
+
+  public ProductGroupPromotionsList200Response addItemsItem(ProductGroupPromotion itemsItem) {
+    if (this.items == null) {
+      this.items = new ArrayList<>();
+    }
+    this.items.add(itemsItem);
+    return this;
+  }
+
+   /**
+   * Get items
+   * @return items
+  **/
+  public List<@Valid ProductGroupPromotion> getItems() {
+    return items;
+  }
+
+  public void setItems(List<@Valid ProductGroupPromotion> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -80,13 +80,13 @@ public class ProductGroupPromotionsList200Response   {
       return false;
     }
     ProductGroupPromotionsList200Response productGroupPromotionsList200Response = (ProductGroupPromotionsList200Response) o;
-    return Objects.equals(items, productGroupPromotionsList200Response.items) &&
-        Objects.equals(bookmark, productGroupPromotionsList200Response.bookmark);
+    return Objects.equals(bookmark, productGroupPromotionsList200Response.bookmark) &&
+        Objects.equals(items, productGroupPromotionsList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -95,8 +95,8 @@ public class ProductGroupPromotionsList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ProductGroupPromotionsList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

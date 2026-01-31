@@ -16,11 +16,11 @@ import { Country } from './country';
  */
 export interface CatalogsItemsRequest { 
     country: Country;
+    filters: CatalogsItemsPostFilters;
     /**
      * We recommend using the CatalogsLocale values.
      */
     language: CatalogsItemsRequest.LanguageEnum;
-    filters: CatalogsItemsPostFilters;
 }
 export namespace CatalogsItemsRequest {
     export const LanguageEnum = {

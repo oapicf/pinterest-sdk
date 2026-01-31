@@ -15,41 +15,15 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SSIOAccountResponse   {
   
-  private Boolean eligible;
-  private Boolean canEdit;
   private List<@Valid SSIOAccountItem> billtoInfos = new ArrayList<>();
+  private Boolean canEdit;
   private String currency;
-  private List<@Valid SSIOAccountPMPName> pmpNames = new ArrayList<>();
+  private Boolean eligible;
   private String error;
-
-  /**
-   * Advertiser eligible to create order lines
-   **/
-  
-  @ApiModelProperty(example = "true", value = "Advertiser eligible to create order lines")
-  @JsonProperty("eligible")
-  public Boolean getEligible() {
-    return eligible;
-  }
-  public void setEligible(Boolean eligible) {
-    this.eligible = eligible;
-  }
-
-  /**
-   * Advertiser eligible to update order lines
-   **/
-  
-  @ApiModelProperty(example = "true", value = "Advertiser eligible to update order lines")
-  @JsonProperty("can_edit")
-  public Boolean getCanEdit() {
-    return canEdit;
-  }
-  public void setCanEdit(Boolean canEdit) {
-    this.canEdit = canEdit;
-  }
+  private List<@Valid SSIOAccountPMPName> pmpNames = new ArrayList<>();
 
   /**
    * An array of Salesforce account information that includes address, io terms, etc.
@@ -66,6 +40,19 @@ public class SSIOAccountResponse   {
   }
 
   /**
+   * Advertiser eligible to update order lines
+   **/
+  
+  @ApiModelProperty(example = "true", value = "Advertiser eligible to update order lines")
+  @JsonProperty("can_edit")
+  public Boolean getCanEdit() {
+    return canEdit;
+  }
+  public void setCanEdit(Boolean canEdit) {
+    this.canEdit = canEdit;
+  }
+
+  /**
    **/
   
   @ApiModelProperty(example = "USD", value = "")
@@ -78,16 +65,16 @@ public class SSIOAccountResponse   {
   }
 
   /**
+   * Advertiser eligible to create order lines
    **/
   
-  @ApiModelProperty(value = "")
-  @JsonProperty("pmp_names")
-  @Valid
-  public List<@Valid SSIOAccountPMPName> getPmpNames() {
-    return pmpNames;
+  @ApiModelProperty(example = "true", value = "Advertiser eligible to create order lines")
+  @JsonProperty("eligible")
+  public Boolean getEligible() {
+    return eligible;
   }
-  public void setPmpNames(List<@Valid SSIOAccountPMPName> pmpNames) {
-    this.pmpNames = pmpNames;
+  public void setEligible(Boolean eligible) {
+    this.eligible = eligible;
   }
 
   /**
@@ -103,6 +90,19 @@ public class SSIOAccountResponse   {
     this.error = error;
   }
 
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("pmp_names")
+  @Valid
+  public List<@Valid SSIOAccountPMPName> getPmpNames() {
+    return pmpNames;
+  }
+  public void setPmpNames(List<@Valid SSIOAccountPMPName> pmpNames) {
+    this.pmpNames = pmpNames;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -113,17 +113,17 @@ public class SSIOAccountResponse   {
       return false;
     }
     SSIOAccountResponse ssIOAccountResponse = (SSIOAccountResponse) o;
-    return Objects.equals(this.eligible, ssIOAccountResponse.eligible) &&
+    return Objects.equals(this.billtoInfos, ssIOAccountResponse.billtoInfos) &&
         Objects.equals(this.canEdit, ssIOAccountResponse.canEdit) &&
-        Objects.equals(this.billtoInfos, ssIOAccountResponse.billtoInfos) &&
         Objects.equals(this.currency, ssIOAccountResponse.currency) &&
-        Objects.equals(this.pmpNames, ssIOAccountResponse.pmpNames) &&
-        Objects.equals(this.error, ssIOAccountResponse.error);
+        Objects.equals(this.eligible, ssIOAccountResponse.eligible) &&
+        Objects.equals(this.error, ssIOAccountResponse.error) &&
+        Objects.equals(this.pmpNames, ssIOAccountResponse.pmpNames);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(eligible, canEdit, billtoInfos, currency, pmpNames, error);
+    return Objects.hash(billtoInfos, canEdit, currency, eligible, error, pmpNames);
   }
 
   @Override
@@ -131,12 +131,12 @@ public class SSIOAccountResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSIOAccountResponse {\n");
     
-    sb.append("    eligible: ").append(toIndentedString(eligible)).append("\n");
-    sb.append("    canEdit: ").append(toIndentedString(canEdit)).append("\n");
     sb.append("    billtoInfos: ").append(toIndentedString(billtoInfos)).append("\n");
+    sb.append("    canEdit: ").append(toIndentedString(canEdit)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
-    sb.append("    pmpNames: ").append(toIndentedString(pmpNames)).append("\n");
+    sb.append("    eligible: ").append(toIndentedString(eligible)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("    pmpNames: ").append(toIndentedString(pmpNames)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -6,56 +6,38 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.vertxweb.server.model.ImageMetadata;
-import org.openapitools.vertxweb.server.model.ImageMetadataImages;
-import org.openapitools.vertxweb.server.model.VideoMetadata;
+import org.openapitools.vertxweb.server.model.ImageSize;
+import org.openapitools.vertxweb.server.model.VideoMetadataWithItemType;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PinMediaMetadata   {
   
-  private String itemType;
-  private String title;
   private String description;
+  private ImageSize images;
+  private String itemType;
   private String link;
-  private ImageMetadataImages images;
+  private String title;
   private String coverImageUrl;
-  private String videoUrl;
   private BigDecimal duration;
   private Integer height;
+  private String videoUrl;
   private Integer width;
 
   public PinMediaMetadata () {
 
   }
 
-  public PinMediaMetadata (String itemType, String title, String description, String link, ImageMetadataImages images, String coverImageUrl, String videoUrl, BigDecimal duration, Integer height, Integer width) {
-    this.itemType = itemType;
-    this.title = title;
+  public PinMediaMetadata (String description, ImageSize images, String itemType, String link, String title, String coverImageUrl, BigDecimal duration, Integer height, String videoUrl, Integer width) {
     this.description = description;
-    this.link = link;
     this.images = images;
+    this.itemType = itemType;
+    this.link = link;
+    this.title = title;
     this.coverImageUrl = coverImageUrl;
-    this.videoUrl = videoUrl;
     this.duration = duration;
     this.height = height;
+    this.videoUrl = videoUrl;
     this.width = width;
-  }
-
-    
-  @JsonProperty("item_type")
-  public String getItemType() {
-    return itemType;
-  }
-  public void setItemType(String itemType) {
-    this.itemType = itemType;
-  }
-
-    
-  @JsonProperty("title")
-  public String getTitle() {
-    return title;
-  }
-  public void setTitle(String title) {
-    this.title = title;
   }
 
     
@@ -68,6 +50,24 @@ public class PinMediaMetadata   {
   }
 
     
+  @JsonProperty("images")
+  public ImageSize getImages() {
+    return images;
+  }
+  public void setImages(ImageSize images) {
+    this.images = images;
+  }
+
+    
+  @JsonProperty("item_type")
+  public String getItemType() {
+    return itemType;
+  }
+  public void setItemType(String itemType) {
+    this.itemType = itemType;
+  }
+
+    
   @JsonProperty("link")
   public String getLink() {
     return link;
@@ -77,12 +77,12 @@ public class PinMediaMetadata   {
   }
 
     
-  @JsonProperty("images")
-  public ImageMetadataImages getImages() {
-    return images;
+  @JsonProperty("title")
+  public String getTitle() {
+    return title;
   }
-  public void setImages(ImageMetadataImages images) {
-    this.images = images;
+  public void setTitle(String title) {
+    this.title = title;
   }
 
     
@@ -92,15 +92,6 @@ public class PinMediaMetadata   {
   }
   public void setCoverImageUrl(String coverImageUrl) {
     this.coverImageUrl = coverImageUrl;
-  }
-
-    
-  @JsonProperty("video_url")
-  public String getVideoUrl() {
-    return videoUrl;
-  }
-  public void setVideoUrl(String videoUrl) {
-    this.videoUrl = videoUrl;
   }
 
     
@@ -122,6 +113,15 @@ public class PinMediaMetadata   {
   }
 
     
+  @JsonProperty("video_url")
+  public String getVideoUrl() {
+    return videoUrl;
+  }
+  public void setVideoUrl(String videoUrl) {
+    this.videoUrl = videoUrl;
+  }
+
+    
   @JsonProperty("width")
   public Integer getWidth() {
     return width;
@@ -140,21 +140,21 @@ public class PinMediaMetadata   {
       return false;
     }
     PinMediaMetadata pinMediaMetadata = (PinMediaMetadata) o;
-    return Objects.equals(itemType, pinMediaMetadata.itemType) &&
-        Objects.equals(title, pinMediaMetadata.title) &&
-        Objects.equals(description, pinMediaMetadata.description) &&
-        Objects.equals(link, pinMediaMetadata.link) &&
+    return Objects.equals(description, pinMediaMetadata.description) &&
         Objects.equals(images, pinMediaMetadata.images) &&
+        Objects.equals(itemType, pinMediaMetadata.itemType) &&
+        Objects.equals(link, pinMediaMetadata.link) &&
+        Objects.equals(title, pinMediaMetadata.title) &&
         Objects.equals(coverImageUrl, pinMediaMetadata.coverImageUrl) &&
-        Objects.equals(videoUrl, pinMediaMetadata.videoUrl) &&
         Objects.equals(duration, pinMediaMetadata.duration) &&
         Objects.equals(height, pinMediaMetadata.height) &&
+        Objects.equals(videoUrl, pinMediaMetadata.videoUrl) &&
         Objects.equals(width, pinMediaMetadata.width);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemType, title, description, link, images, coverImageUrl, videoUrl, duration, height, width);
+    return Objects.hash(description, images, itemType, link, title, coverImageUrl, duration, height, videoUrl, width);
   }
 
   @Override
@@ -162,15 +162,15 @@ public class PinMediaMetadata   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaMetadata {\n");
     
-    sb.append("    itemType: ").append(toIndentedString(itemType)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("    images: ").append(toIndentedString(images)).append("\n");
+    sb.append("    itemType: ").append(toIndentedString(itemType)).append("\n");
+    sb.append("    link: ").append(toIndentedString(link)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    coverImageUrl: ").append(toIndentedString(coverImageUrl)).append("\n");
-    sb.append("    videoUrl: ").append(toIndentedString(videoUrl)).append("\n");
     sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
+    sb.append("    videoUrl: ").append(toIndentedString(videoUrl)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("}");
     return sb.toString();

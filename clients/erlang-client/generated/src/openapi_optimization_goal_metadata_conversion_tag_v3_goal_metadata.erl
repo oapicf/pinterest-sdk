@@ -10,7 +10,8 @@
        'conversion_tag_id' => binary(),
        'cpa_goal_value_in_micro_currency' => binary(),
        'is_roas_optimized' => boolean(),
-       'learning_mode_type' => binary()
+       'learning_mode_type' => binary(),
+       'reporting_event' => binary()
      }.
 
 encode(#{ 'attribution_windows' := AttributionWindows,
@@ -18,12 +19,14 @@ encode(#{ 'attribution_windows' := AttributionWindows,
           'conversion_tag_id' := ConversionTagId,
           'cpa_goal_value_in_micro_currency' := CpaGoalValueInMicroCurrency,
           'is_roas_optimized' := IsRoasOptimized,
-          'learning_mode_type' := LearningModeType
+          'learning_mode_type' := LearningModeType,
+          'reporting_event' := ReportingEvent
         }) ->
     #{ 'attribution_windows' => AttributionWindows,
        'conversion_event' => ConversionEvent,
        'conversion_tag_id' => ConversionTagId,
        'cpa_goal_value_in_micro_currency' => CpaGoalValueInMicroCurrency,
        'is_roas_optimized' => IsRoasOptimized,
-       'learning_mode_type' => LearningModeType
+       'learning_mode_type' => LearningModeType,
+       'reporting_event' => ReportingEvent
      }.

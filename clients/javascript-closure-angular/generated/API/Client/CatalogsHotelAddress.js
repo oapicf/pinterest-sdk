@@ -20,13 +20,6 @@ API.Client.CatalogsHotelAddress.prototype.addr1;
 API.Client.CatalogsHotelAddress.prototype.city;
 
 /**
- * State, county, province, where the hotel is located.
- * @type {!string}
- * @export
- */
-API.Client.CatalogsHotelAddress.prototype.region;
-
-/**
  * Country where the hotel is located.
  * @type {!string}
  * @export
@@ -39,4 +32,11 @@ API.Client.CatalogsHotelAddress.prototype.country;
  * @export
  */
 API.Client.CatalogsHotelAddress.prototype.postalCode;
+
+/**
+ * State, county, province, where the hotel is located.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsHotelAddress.prototype.region;
 

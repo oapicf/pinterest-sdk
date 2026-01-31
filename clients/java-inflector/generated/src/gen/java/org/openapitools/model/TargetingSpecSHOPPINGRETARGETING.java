@@ -3,7 +3,6 @@ package org.openapitools.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -14,21 +13,39 @@ import java.util.List;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class TargetingSpecSHOPPINGRETARGETING   {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+public class TargetingSpecShoppingRetargeting   {
+  @JsonProperty("exclusion_window")
+  private Integer exclusionWindow;
+
   @JsonProperty("lookback_window")
   private Integer lookbackWindow;
 
   @JsonProperty("tag_types")
   private List<Integer> tagTypes = null;
 
+  /**
+   * Number of days ago to stop lookback timeframe for dynamic retargeting
+   **/
+  public TargetingSpecShoppingRetargeting exclusionWindow(Integer exclusionWindow) {
+    this.exclusionWindow = exclusionWindow;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "14", value = "Number of days ago to stop lookback timeframe for dynamic retargeting")
   @JsonProperty("exclusion_window")
-  private Integer exclusionWindow;
+  public Integer getExclusionWindow() {
+    return exclusionWindow;
+  }
+  public void setExclusionWindow(Integer exclusionWindow) {
+    this.exclusionWindow = exclusionWindow;
+  }
 
   /**
    * Number of days ago to start lookback timeframe for dynamic retargeting
    **/
-  public TargetingSpecSHOPPINGRETARGETING lookbackWindow(Integer lookbackWindow) {
+  public TargetingSpecShoppingRetargeting lookbackWindow(Integer lookbackWindow) {
     this.lookbackWindow = lookbackWindow;
     return this;
   }
@@ -46,7 +63,7 @@ public class TargetingSpecSHOPPINGRETARGETING   {
   /**
    * Event types to target for dynamic retargeting
    **/
-  public TargetingSpecSHOPPINGRETARGETING tagTypes(List<Integer> tagTypes) {
+  public TargetingSpecShoppingRetargeting tagTypes(List<Integer> tagTypes) {
     this.tagTypes = tagTypes;
     return this;
   }
@@ -61,24 +78,6 @@ public class TargetingSpecSHOPPINGRETARGETING   {
     this.tagTypes = tagTypes;
   }
 
-  /**
-   * Number of days ago to stop lookback timeframe for dynamic retargeting
-   **/
-  public TargetingSpecSHOPPINGRETARGETING exclusionWindow(Integer exclusionWindow) {
-    this.exclusionWindow = exclusionWindow;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "14", value = "Number of days ago to stop lookback timeframe for dynamic retargeting")
-  @JsonProperty("exclusion_window")
-  public Integer getExclusionWindow() {
-    return exclusionWindow;
-  }
-  public void setExclusionWindow(Integer exclusionWindow) {
-    this.exclusionWindow = exclusionWindow;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -88,25 +87,25 @@ public class TargetingSpecSHOPPINGRETARGETING   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TargetingSpecSHOPPINGRETARGETING targetingSpecSHOPPINGRETARGETING = (TargetingSpecSHOPPINGRETARGETING) o;
-    return Objects.equals(lookbackWindow, targetingSpecSHOPPINGRETARGETING.lookbackWindow) &&
-        Objects.equals(tagTypes, targetingSpecSHOPPINGRETARGETING.tagTypes) &&
-        Objects.equals(exclusionWindow, targetingSpecSHOPPINGRETARGETING.exclusionWindow);
+    TargetingSpecShoppingRetargeting targetingSpecShoppingRetargeting = (TargetingSpecShoppingRetargeting) o;
+    return Objects.equals(exclusionWindow, targetingSpecShoppingRetargeting.exclusionWindow) &&
+        Objects.equals(lookbackWindow, targetingSpecShoppingRetargeting.lookbackWindow) &&
+        Objects.equals(tagTypes, targetingSpecShoppingRetargeting.tagTypes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(lookbackWindow, tagTypes, exclusionWindow);
+    return Objects.hash(exclusionWindow, lookbackWindow, tagTypes);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TargetingSpecSHOPPINGRETARGETING {\n");
+    sb.append("class TargetingSpecShoppingRetargeting {\n");
     
+    sb.append("    exclusionWindow: ").append(toIndentedString(exclusionWindow)).append("\n");
     sb.append("    lookbackWindow: ").append(toIndentedString(lookbackWindow)).append("\n");
     sb.append("    tagTypes: ").append(toIndentedString(tagTypes)).append("\n");
-    sb.append("    exclusionWindow: ").append(toIndentedString(exclusionWindow)).append("\n");
     sb.append("}");
     return sb.toString();
   }

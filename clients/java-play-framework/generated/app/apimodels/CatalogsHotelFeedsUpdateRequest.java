@@ -16,32 +16,38 @@ import javax.validation.Valid;
 /**
  * Request object for updating a feed.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsHotelFeedsUpdateRequest   {
-  @JsonProperty("default_currency")
-  @Valid
+  @JsonProperty("catalog_type")
+  @NotNull
+@Valid
 
-  private NullableCurrency defaultCurrency;
-
-  @JsonProperty("name")
-  
-  private String name;
-
-  @JsonProperty("format")
-  @Valid
-
-  private CatalogsFormat format;
+  private CatalogsType catalogType;
 
   @JsonProperty("credentials")
   @Valid
 
   private CatalogsFeedCredentials credentials;
 
+  @JsonProperty("default_currency")
+  @Valid
+
+  private NullableCurrency defaultCurrency;
+
+  @JsonProperty("format")
+  @Valid
+
+  private CatalogsFormat format;
+
   @JsonProperty("location")
   @Pattern(regexp="^(http|https|ftp|sftp)://")
 
   private String location;
+
+  @JsonProperty("name")
+  
+  private String name;
 
   @JsonProperty("preferred_processing_schedule")
   @Valid
@@ -53,61 +59,21 @@ public class CatalogsHotelFeedsUpdateRequest   {
 
   private CatalogsStatus status;
 
-  @JsonProperty("catalog_type")
-  @NotNull
-@Valid
-
-  private CatalogsType catalogType;
-
-  public CatalogsHotelFeedsUpdateRequest defaultCurrency(NullableCurrency defaultCurrency) {
-    this.defaultCurrency = defaultCurrency;
+  public CatalogsHotelFeedsUpdateRequest catalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
     return this;
   }
 
    /**
-   * Get defaultCurrency
-   * @return defaultCurrency
+   * Get catalogType
+   * @return catalogType
   **/
-  public NullableCurrency getDefaultCurrency() {
-    return defaultCurrency;
+  public CatalogsType getCatalogType() {
+    return catalogType;
   }
 
-  public void setDefaultCurrency(NullableCurrency defaultCurrency) {
-    this.defaultCurrency = defaultCurrency;
-  }
-
-  public CatalogsHotelFeedsUpdateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * A human-friendly name associated to a given feed.
-   * @return name
-  **/
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public CatalogsHotelFeedsUpdateRequest format(CatalogsFormat format) {
-    this.format = format;
-    return this;
-  }
-
-   /**
-   * Get format
-   * @return format
-  **/
-  public CatalogsFormat getFormat() {
-    return format;
-  }
-
-  public void setFormat(CatalogsFormat format) {
-    this.format = format;
+  public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
   }
 
   public CatalogsHotelFeedsUpdateRequest credentials(CatalogsFeedCredentials credentials) {
@@ -127,6 +93,40 @@ public class CatalogsHotelFeedsUpdateRequest   {
     this.credentials = credentials;
   }
 
+  public CatalogsHotelFeedsUpdateRequest defaultCurrency(NullableCurrency defaultCurrency) {
+    this.defaultCurrency = defaultCurrency;
+    return this;
+  }
+
+   /**
+   * Get defaultCurrency
+   * @return defaultCurrency
+  **/
+  public NullableCurrency getDefaultCurrency() {
+    return defaultCurrency;
+  }
+
+  public void setDefaultCurrency(NullableCurrency defaultCurrency) {
+    this.defaultCurrency = defaultCurrency;
+  }
+
+  public CatalogsHotelFeedsUpdateRequest format(CatalogsFormat format) {
+    this.format = format;
+    return this;
+  }
+
+   /**
+   * Get format
+   * @return format
+  **/
+  public CatalogsFormat getFormat() {
+    return format;
+  }
+
+  public void setFormat(CatalogsFormat format) {
+    this.format = format;
+  }
+
   public CatalogsHotelFeedsUpdateRequest location(String location) {
     this.location = location;
     return this;
@@ -142,6 +142,23 @@ public class CatalogsHotelFeedsUpdateRequest   {
 
   public void setLocation(String location) {
     this.location = location;
+  }
+
+  public CatalogsHotelFeedsUpdateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * A human-friendly name associated to a given feed.
+   * @return name
+  **/
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   public CatalogsHotelFeedsUpdateRequest preferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
@@ -178,23 +195,6 @@ public class CatalogsHotelFeedsUpdateRequest   {
     this.status = status;
   }
 
-  public CatalogsHotelFeedsUpdateRequest catalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
-   /**
-   * Get catalogType
-   * @return catalogType
-  **/
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-
-  public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -205,19 +205,19 @@ public class CatalogsHotelFeedsUpdateRequest   {
       return false;
     }
     CatalogsHotelFeedsUpdateRequest catalogsHotelFeedsUpdateRequest = (CatalogsHotelFeedsUpdateRequest) o;
-    return Objects.equals(defaultCurrency, catalogsHotelFeedsUpdateRequest.defaultCurrency) &&
-        Objects.equals(name, catalogsHotelFeedsUpdateRequest.name) &&
-        Objects.equals(format, catalogsHotelFeedsUpdateRequest.format) &&
+    return Objects.equals(catalogType, catalogsHotelFeedsUpdateRequest.catalogType) &&
         Objects.equals(credentials, catalogsHotelFeedsUpdateRequest.credentials) &&
+        Objects.equals(defaultCurrency, catalogsHotelFeedsUpdateRequest.defaultCurrency) &&
+        Objects.equals(format, catalogsHotelFeedsUpdateRequest.format) &&
         Objects.equals(location, catalogsHotelFeedsUpdateRequest.location) &&
+        Objects.equals(name, catalogsHotelFeedsUpdateRequest.name) &&
         Objects.equals(preferredProcessingSchedule, catalogsHotelFeedsUpdateRequest.preferredProcessingSchedule) &&
-        Objects.equals(status, catalogsHotelFeedsUpdateRequest.status) &&
-        Objects.equals(catalogType, catalogsHotelFeedsUpdateRequest.catalogType);
+        Objects.equals(status, catalogsHotelFeedsUpdateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, credentials, location, preferredProcessingSchedule, status, catalogType);
+    return Objects.hash(catalogType, credentials, defaultCurrency, format, location, name, preferredProcessingSchedule, status);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -226,14 +226,14 @@ public class CatalogsHotelFeedsUpdateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelFeedsUpdateRequest {\n");
     
-    sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
+    sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

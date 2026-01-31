@@ -3,9 +3,9 @@ Protected Class CampaignsAnalyticsResponseInner
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The ID of the campaing that this metrics belongs to.
+			The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
 		#tag EndNote
-		CAMPAIGN_ID As String
+		CAMPAIGN_ID As Xoson.O.OptionalString
 	#tag EndProperty
 
 

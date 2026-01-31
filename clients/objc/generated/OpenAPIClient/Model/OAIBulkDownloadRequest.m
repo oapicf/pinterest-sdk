@@ -18,7 +18,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"entityTypes": @"entity_types", @"entityIds": @"entity_ids", @"updatedSince": @"updated_since", @"campaignFilter": @"campaign_filter", @"outputFormat": @"output_format" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"campaignFilter": @"campaign_filter", @"entityIds": @"entity_ids", @"entityTypes": @"entity_types", @"outputFormat": @"output_format", @"updatedSince": @"updated_since" }];
 }
 
 /**
@@ -28,7 +28,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"entityTypes", @"entityIds", @"updatedSince", @"campaignFilter", @"outputFormat"];
+  NSArray *optionalProperties = @[@"campaignFilter", @"entityIds", @"entityTypes", @"outputFormat", @"updatedSince"];
   return [optionalProperties containsObject:propertyName];
 }
 

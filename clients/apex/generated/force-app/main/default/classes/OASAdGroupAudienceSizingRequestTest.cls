@@ -74,20 +74,20 @@ private class OASAdGroupAudienceSizingRequestTest {
         OASAdGroupAudienceSizingRequest adGroupAudienceSizingRequest = new OASAdGroupAudienceSizingRequest();
         Map<String, String> x-property-mappings = adGroupAudienceSizingRequest.getx-property-mappings();
         System.assertEquals('autoTargetingEnabled', x-property-mappings.get('auto_targeting_enabled'));
-        System.assertEquals('placementGroup', x-property-mappings.get('placement_group'));
         System.assertEquals('creativeTypes', x-property-mappings.get('creative_types'));
-        System.assertEquals('targetingSpec', x-property-mappings.get('targeting_spec'));
+        System.assertEquals('placementGroup', x-property-mappings.get('placement_group'));
         System.assertEquals('productGroupIds', x-property-mappings.get('product_group_ids'));
+        System.assertEquals('targetingSpec', x-property-mappings.get('targeting_spec'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASAdGroupAudienceSizingRequest adGroupAudienceSizingRequest = new OASAdGroupAudienceSizingRequest();
         System.assertEquals(true, adGroupAudienceSizingRequest.autoTargetingEnabled);
-        System.assertEquals('ALL', adGroupAudienceSizingRequest.placementGroup);
         System.assertEquals(new List<String>(), adGroupAudienceSizingRequest.creativeTypes);
-        System.assertEquals(new List<String>(), adGroupAudienceSizingRequest.productGroupIds);
         System.assertEquals(new List<OASAdGroupAudienceSizingRequestKeywo>(), adGroupAudienceSizingRequest.keywords);
+        System.assertEquals('ALL', adGroupAudienceSizingRequest.placementGroup);
+        System.assertEquals(new List<String>(), adGroupAudienceSizingRequest.productGroupIds);
         System.assertEquals(null, adGroupAudienceSizingRequest.targetingSpec);
     }
 }

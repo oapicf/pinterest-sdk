@@ -7,45 +7,40 @@
 #' @title HotelProcessingRecord
 #' @description HotelProcessingRecord Class
 #' @format An \code{R6Class} generator object
-#' @field hotel_id The catalog hotel id in the merchant namespace character [optional]
 #' @field errors Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail. list(\link{ItemValidationEvent}) [optional]
-#' @field warnings Array with the validation warnings for the item processing record list(\link{ItemValidationEvent}) [optional]
+#' @field hotel_id The catalog hotel id in the merchant namespace character [optional]
 #' @field status  \link{ItemProcessingStatus} [optional]
+#' @field warnings Array with the validation warnings for the item processing record list(\link{ItemValidationEvent}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 HotelProcessingRecord <- R6::R6Class(
   "HotelProcessingRecord",
   public = list(
-    `hotel_id` = NULL,
     `errors` = NULL,
-    `warnings` = NULL,
+    `hotel_id` = NULL,
     `status` = NULL,
+    `warnings` = NULL,
 
     #' @description
     #' Initialize a new HotelProcessingRecord class.
     #'
-    #' @param hotel_id The catalog hotel id in the merchant namespace
     #' @param errors Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
-    #' @param warnings Array with the validation warnings for the item processing record
+    #' @param hotel_id The catalog hotel id in the merchant namespace
     #' @param status status
+    #' @param warnings Array with the validation warnings for the item processing record
     #' @param ... Other optional arguments.
-    initialize = function(`hotel_id` = NULL, `errors` = NULL, `warnings` = NULL, `status` = NULL, ...) {
-      if (!is.null(`hotel_id`)) {
-        if (!(is.character(`hotel_id`) && length(`hotel_id`) == 1)) {
-          stop(paste("Error! Invalid data for `hotel_id`. Must be a string:", `hotel_id`))
-        }
-        self$`hotel_id` <- `hotel_id`
-      }
+    initialize = function(`errors` = NULL, `hotel_id` = NULL, `status` = NULL, `warnings` = NULL, ...) {
       if (!is.null(`errors`)) {
         stopifnot(is.vector(`errors`), length(`errors`) != 0)
         sapply(`errors`, function(x) stopifnot(R6::is.R6(x)))
         self$`errors` <- `errors`
       }
-      if (!is.null(`warnings`)) {
-        stopifnot(is.vector(`warnings`), length(`warnings`) != 0)
-        sapply(`warnings`, function(x) stopifnot(R6::is.R6(x)))
-        self$`warnings` <- `warnings`
+      if (!is.null(`hotel_id`)) {
+        if (!(is.character(`hotel_id`) && length(`hotel_id`) == 1)) {
+          stop(paste("Error! Invalid data for `hotel_id`. Must be a string:", `hotel_id`))
+        }
+        self$`hotel_id` <- `hotel_id`
       }
       if (!is.null(`status`)) {
         if (!(`status` %in% c())) {
@@ -53,6 +48,11 @@ HotelProcessingRecord <- R6::R6Class(
         }
         stopifnot(R6::is.R6(`status`))
         self$`status` <- `status`
+      }
+      if (!is.null(`warnings`)) {
+        stopifnot(is.vector(`warnings`), length(`warnings`) != 0)
+        sapply(`warnings`, function(x) stopifnot(R6::is.R6(x)))
+        self$`warnings` <- `warnings`
       }
     },
 
@@ -87,21 +87,21 @@ HotelProcessingRecord <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       HotelProcessingRecordObject <- list()
-      if (!is.null(self$`hotel_id`)) {
-        HotelProcessingRecordObject[["hotel_id"]] <-
-          self$`hotel_id`
-      }
       if (!is.null(self$`errors`)) {
         HotelProcessingRecordObject[["errors"]] <-
           lapply(self$`errors`, function(x) x$toSimpleType())
       }
-      if (!is.null(self$`warnings`)) {
-        HotelProcessingRecordObject[["warnings"]] <-
-          lapply(self$`warnings`, function(x) x$toSimpleType())
+      if (!is.null(self$`hotel_id`)) {
+        HotelProcessingRecordObject[["hotel_id"]] <-
+          self$`hotel_id`
       }
       if (!is.null(self$`status`)) {
         HotelProcessingRecordObject[["status"]] <-
           self$`status`$toSimpleType()
+      }
+      if (!is.null(self$`warnings`)) {
+        HotelProcessingRecordObject[["warnings"]] <-
+          lapply(self$`warnings`, function(x) x$toSimpleType())
       }
       return(HotelProcessingRecordObject)
     },
@@ -113,19 +113,19 @@ HotelProcessingRecord <- R6::R6Class(
     #' @return the instance of HotelProcessingRecord
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`hotel_id`)) {
-        self$`hotel_id` <- this_object$`hotel_id`
-      }
       if (!is.null(this_object$`errors`)) {
         self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[ItemValidationEvent]", loadNamespace("openapi"))
       }
-      if (!is.null(this_object$`warnings`)) {
-        self$`warnings` <- ApiClient$new()$deserializeObj(this_object$`warnings`, "array[ItemValidationEvent]", loadNamespace("openapi"))
+      if (!is.null(this_object$`hotel_id`)) {
+        self$`hotel_id` <- this_object$`hotel_id`
       }
       if (!is.null(this_object$`status`)) {
         `status_object` <- ItemProcessingStatus$new()
         `status_object`$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
         self$`status` <- `status_object`
+      }
+      if (!is.null(this_object$`warnings`)) {
+        self$`warnings` <- ApiClient$new()$deserializeObj(this_object$`warnings`, "array[ItemValidationEvent]", loadNamespace("openapi"))
       }
       self
     },
@@ -148,10 +148,10 @@ HotelProcessingRecord <- R6::R6Class(
     #' @return the instance of HotelProcessingRecord
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`hotel_id` <- this_object$`hotel_id`
       self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[ItemValidationEvent]", loadNamespace("openapi"))
-      self$`warnings` <- ApiClient$new()$deserializeObj(this_object$`warnings`, "array[ItemValidationEvent]", loadNamespace("openapi"))
+      self$`hotel_id` <- this_object$`hotel_id`
       self$`status` <- ItemProcessingStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
+      self$`warnings` <- ApiClient$new()$deserializeObj(this_object$`warnings`, "array[ItemValidationEvent]", loadNamespace("openapi"))
       self
     },
 

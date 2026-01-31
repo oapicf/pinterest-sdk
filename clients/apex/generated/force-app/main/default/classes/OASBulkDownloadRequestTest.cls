@@ -73,20 +73,20 @@ private class OASBulkDownloadRequestTest {
     private static void maintainRenamedProperties() {
         OASBulkDownloadRequest bulkDownloadRequest = new OASBulkDownloadRequest();
         Map<String, String> x-property-mappings = bulkDownloadRequest.getx-property-mappings();
-        System.assertEquals('entityTypes', x-property-mappings.get('entity_types'));
-        System.assertEquals('entityIds', x-property-mappings.get('entity_ids'));
-        System.assertEquals('updatedSince', x-property-mappings.get('updated_since'));
         System.assertEquals('campaignFilter', x-property-mappings.get('campaign_filter'));
+        System.assertEquals('entityIds', x-property-mappings.get('entity_ids'));
+        System.assertEquals('entityTypes', x-property-mappings.get('entity_types'));
         System.assertEquals('outputFormat', x-property-mappings.get('output_format'));
+        System.assertEquals('updatedSince', x-property-mappings.get('updated_since'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASBulkDownloadRequest bulkDownloadRequest = new OASBulkDownloadRequest();
-        System.assertEquals(new List<OASBulkEntityType>(), bulkDownloadRequest.entityTypes);
         System.assertEquals(new List<String>(), bulkDownloadRequest.entityIds);
+        System.assertEquals(new List<OASBulkEntityType>(), bulkDownloadRequest.entityTypes);
         System.assertEquals('JSON', bulkDownloadRequest.outputFormat);
-        System.assertEquals(null, bulkDownloadRequest.updatedSince);
         System.assertEquals(null, bulkDownloadRequest.campaignFilter);
+        System.assertEquals(null, bulkDownloadRequest.updatedSince);
     }
 }

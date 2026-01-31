@@ -3,11 +3,13 @@ package org.openapitools.model;
 import org.openapitools.model.AvailabilityFilter;
 import org.openapitools.model.BrandFilter;
 import org.openapitools.model.CatalogsProductGroupCurrencyCriteria;
+import org.openapitools.model.CatalogsProductGroupFilterOperatorTypeCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleGenderCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleMediaTypesCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleStringCriteria;
 import org.openapitools.model.CatalogsProductGroupMultipleStringListCriteria;
 import org.openapitools.model.CatalogsProductGroupPricingCriteria;
+import org.openapitools.model.CatalogsProductGroupUint32Criteria;
 import org.openapitools.model.ConditionFilter;
 import org.openapitools.model.CurrencyFilter;
 import org.openapitools.model.CustomLabel0Filter;
@@ -15,6 +17,11 @@ import org.openapitools.model.CustomLabel1Filter;
 import org.openapitools.model.CustomLabel2Filter;
 import org.openapitools.model.CustomLabel3Filter;
 import org.openapitools.model.CustomLabel4Filter;
+import org.openapitools.model.CustomNumber0Filter;
+import org.openapitools.model.CustomNumber1Filter;
+import org.openapitools.model.CustomNumber2Filter;
+import org.openapitools.model.CustomNumber3Filter;
+import org.openapitools.model.CustomNumber4Filter;
 import org.openapitools.model.GenderFilter;
 import org.openapitools.model.GoogleProductCategory0Filter;
 import org.openapitools.model.GoogleProductCategory1Filter;
@@ -34,6 +41,7 @@ import org.openapitools.model.ProductType1Filter;
 import org.openapitools.model.ProductType2Filter;
 import org.openapitools.model.ProductType3Filter;
 import org.openapitools.model.ProductType4Filter;
+import org.openapitools.model.TitleKeywordsFilter;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -275,6 +283,54 @@ public class CatalogsProductGroupFilterKeysTest {
     @Test
     public void PRODUCT_GROUPTest() {
         // TODO: test PRODUCT_GROUP
+    }
+
+    /**
+     * Test the property 'CUSTOM_NUMBER_0'
+     */
+    @Test
+    public void CUSTOM_NUMBER_0Test() {
+        // TODO: test CUSTOM_NUMBER_0
+    }
+
+    /**
+     * Test the property 'CUSTOM_NUMBER_1'
+     */
+    @Test
+    public void CUSTOM_NUMBER_1Test() {
+        // TODO: test CUSTOM_NUMBER_1
+    }
+
+    /**
+     * Test the property 'CUSTOM_NUMBER_2'
+     */
+    @Test
+    public void CUSTOM_NUMBER_2Test() {
+        // TODO: test CUSTOM_NUMBER_2
+    }
+
+    /**
+     * Test the property 'CUSTOM_NUMBER_3'
+     */
+    @Test
+    public void CUSTOM_NUMBER_3Test() {
+        // TODO: test CUSTOM_NUMBER_3
+    }
+
+    /**
+     * Test the property 'CUSTOM_NUMBER_4'
+     */
+    @Test
+    public void CUSTOM_NUMBER_4Test() {
+        // TODO: test CUSTOM_NUMBER_4
+    }
+
+    /**
+     * Test the property 'TITLE_KEYWORDS'
+     */
+    @Test
+    public void TITLE_KEYWORDSTest() {
+        // TODO: test TITLE_KEYWORDS
     }
 
 }

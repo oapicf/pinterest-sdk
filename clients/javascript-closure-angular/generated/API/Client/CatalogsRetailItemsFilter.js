@@ -6,6 +6,13 @@ goog.provide('API.Client.CatalogsRetailItemsFilter');
 API.Client.CatalogsRetailItemsFilter = function() {}
 
 /**
+ * Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsRetailItemsFilter.prototype.catalogId;
+
+/**
  * @type {!string}
  * @export
  */
@@ -16,13 +23,6 @@ API.Client.CatalogsRetailItemsFilter.prototype.catalogType;
  * @export
  */
 API.Client.CatalogsRetailItemsFilter.prototype.itemIds;
-
-/**
- * Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
- * @type {!string}
- * @export
- */
-API.Client.CatalogsRetailItemsFilter.prototype.catalogId;
 
 /** @enum {string} */
 API.Client.CatalogsRetailItemsFilter.CatalogTypeEnum = { 

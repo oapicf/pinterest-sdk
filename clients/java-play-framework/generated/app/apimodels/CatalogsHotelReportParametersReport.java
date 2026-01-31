@@ -1,5 +1,6 @@
 package apimodels;
 
+import apimodels.CatalogsReportAllItemsFilter;
 import apimodels.CatalogsReportDistributionIssueFilter;
 import apimodels.CatalogsReportFeedIngestionFilter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -15,7 +16,7 @@ import javax.validation.Valid;
 /**
  * CatalogsHotelReportParametersReport
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsHotelReportParametersReport   {
   /**
@@ -24,7 +25,9 @@ public class CatalogsHotelReportParametersReport   {
   public enum ReportTypeEnum {
     FEED_INGESTION_ISSUES("FEED_INGESTION_ISSUES"),
     
-    DISTRIBUTION_ISSUES("DISTRIBUTION_ISSUES");
+    DISTRIBUTION_ISSUES("DISTRIBUTION_ISSUES"),
+    
+    ALL_ITEMS("ALL_ITEMS");
 
     private final String value;
 

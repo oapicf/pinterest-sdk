@@ -8,6 +8,11 @@ import           TestImport
 spec :: Spec
 spec = withApp $ do
 
+    describe "getAdAccountsByTextPinsAnalyticsR" $
+        it "returns 501 Not Implemented" $ do
+            get $ AdAccountsByTextPinsAnalyticsR "adAccountId_example"
+            statusIs 501
+
     describe "getAdAccountsByTextCampaignsTargetingAnalyticsR" $
         it "returns 501 Not Implemented" $ do
             get $ AdAccountsByTextCampaignsTargetingAnalyticsR "adAccountId_example"

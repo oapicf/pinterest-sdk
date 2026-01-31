@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **method** | **String** |  |  |
 | **host** | **String** | HTTP request host from host header. |  |
+| **method** | **String** |  |  |
 | **path** | **String** | HTTP request path. |  |
 | **request_headers** | **Hash&lt;String, String&gt;** | HTTP request headers as key-value pairs. | [optional] |
 | **response_headers** | **Hash&lt;String, String&gt;** | HTTP response headers as key-value pairs. | [optional] |
@@ -17,8 +17,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::IntegrationLogClientRequest.new(
-  method: null,
   host: null,
+  method: null,
   path: null,
   request_headers: null,
   response_headers: null,

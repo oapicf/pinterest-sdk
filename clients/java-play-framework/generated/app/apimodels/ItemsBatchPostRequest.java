@@ -18,9 +18,14 @@ import javax.validation.Valid;
 /**
  * ItemsBatchPostRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class ItemsBatchPostRequest   {
+  @JsonProperty("catalog_id")
+  @Pattern(regexp="^\\d+$")
+
+  private String catalogId;
+
   /**
    * Gets or Sets catalogType
    */
@@ -60,6 +65,12 @@ public class ItemsBatchPostRequest   {
 @Valid
 
   private Country country;
+
+  @JsonProperty("items")
+  @NotNull
+@Valid
+
+  private List<@Valid ItemDeleteBatchRecord> items = new ArrayList<>();
 
   /**
    * We recommend using the CatalogsLocale values.
@@ -307,22 +318,28 @@ public class ItemsBatchPostRequest   {
 
   private LanguageEnum language;
 
-  @JsonProperty("items")
-  @NotNull
-@Valid
-
-  private List<@Valid ItemDeleteBatchRecord> items = new ArrayList<>();
-
-  @JsonProperty("catalog_id")
-  @Pattern(regexp="^\\d+$")
-
-  private String catalogId;
-
   @JsonProperty("operation")
   @NotNull
 @Valid
 
   private BatchOperation operation;
+
+  public ItemsBatchPostRequest catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+   /**
+   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+   * @return catalogId
+  **/
+  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
 
   public ItemsBatchPostRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
@@ -358,23 +375,6 @@ public class ItemsBatchPostRequest   {
     this.country = country;
   }
 
-  public ItemsBatchPostRequest language(LanguageEnum language) {
-    this.language = language;
-    return this;
-  }
-
-   /**
-   * We recommend using the CatalogsLocale values.
-   * @return language
-  **/
-  public LanguageEnum getLanguage() {
-    return language;
-  }
-
-  public void setLanguage(LanguageEnum language) {
-    this.language = language;
-  }
-
   public ItemsBatchPostRequest items(List<@Valid ItemDeleteBatchRecord> items) {
     this.items = items;
     return this;
@@ -400,21 +400,21 @@ public class ItemsBatchPostRequest   {
     this.items = items;
   }
 
-  public ItemsBatchPostRequest catalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public ItemsBatchPostRequest language(LanguageEnum language) {
+    this.language = language;
     return this;
   }
 
    /**
-   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-   * @return catalogId
+   * We recommend using the CatalogsLocale values.
+   * @return language
   **/
-  public String getCatalogId() {
-    return catalogId;
+  public LanguageEnum getLanguage() {
+    return language;
   }
 
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public void setLanguage(LanguageEnum language) {
+    this.language = language;
   }
 
   public ItemsBatchPostRequest operation(BatchOperation operation) {
@@ -444,17 +444,17 @@ public class ItemsBatchPostRequest   {
       return false;
     }
     ItemsBatchPostRequest itemsBatchPostRequest = (ItemsBatchPostRequest) o;
-    return Objects.equals(catalogType, itemsBatchPostRequest.catalogType) &&
+    return Objects.equals(catalogId, itemsBatchPostRequest.catalogId) &&
+        Objects.equals(catalogType, itemsBatchPostRequest.catalogType) &&
         Objects.equals(country, itemsBatchPostRequest.country) &&
-        Objects.equals(language, itemsBatchPostRequest.language) &&
         Objects.equals(items, itemsBatchPostRequest.items) &&
-        Objects.equals(catalogId, itemsBatchPostRequest.catalogId) &&
+        Objects.equals(language, itemsBatchPostRequest.language) &&
         Objects.equals(operation, itemsBatchPostRequest.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, country, language, items, catalogId, operation);
+    return Objects.hash(catalogId, catalogType, country, items, language, operation);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -463,11 +463,11 @@ public class ItemsBatchPostRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ItemsBatchPostRequest {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
     sb.append("}");
     return sb.toString();

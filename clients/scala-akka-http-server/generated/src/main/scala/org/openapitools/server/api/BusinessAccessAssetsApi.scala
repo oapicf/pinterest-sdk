@@ -68,8 +68,8 @@ import BusinessAccessAssetsApiPatterns.memberIdPattern
     } ~
     path("businesses" / businessIdPattern / "assets" / assetIdPattern / "members") { (businessId, assetId) => 
       get { 
-        parameters("bookmark".as[String].?, "page_size".as[Int].?(25), "start_index".as[Int].?(0)) { (bookmark, pageSize, startIndex) => 
-            businessAccessAssetsService.businessAssetMembersGet(businessId = businessId, assetId = assetId, bookmark = bookmark, pageSize = pageSize, startIndex = startIndex)
+        parameters("fetch_system_users".as[Boolean].?(false), "bookmark".as[String].?, "page_size".as[Int].?(25), "start_index".as[Int].?(0)) { (fetchSystemUsers, bookmark, pageSize, startIndex) => 
+            businessAccessAssetsService.businessAssetMembersGet(businessId = businessId, assetId = assetId, fetchSystemUsers = fetchSystemUsers, bookmark = bookmark, pageSize = pageSize, startIndex = startIndex)
         }
       }
     } ~
@@ -191,7 +191,7 @@ trait BusinessAccessAssetsApiService {
    * Code: 200, Message: Sucess, DataType: BusinessAssetMembersGet200Response
    * Code: 0, Message: Unexpected error, DataType: Error
    */
-  def businessAssetMembersGet(businessId: String, assetId: String, bookmark: Option[String], pageSize: Int, startIndex: Int)
+  def businessAssetMembersGet(businessId: String, assetId: String, fetchSystemUsers: Boolean, bookmark: Option[String], pageSize: Int, startIndex: Int)
       (implicit toEntityMarshallerError: ToEntityMarshaller[Error], toEntityMarshallerBusinessAssetMembersGet200Response: ToEntityMarshaller[BusinessAssetMembersGet200Response]): Route
 
   def businessAssetPartnersGet200(responseBusinessAssetPartnersGet200Response: BusinessAssetPartnersGet200Response)(implicit toEntityMarshallerBusinessAssetPartnersGet200Response: ToEntityMarshaller[BusinessAssetPartnersGet200Response]): Route =

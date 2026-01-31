@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,8 +23,8 @@ var _ MappedNullable = &CatalogsProductGroupPricingCriteria{}
 // CatalogsProductGroupPricingCriteria struct for CatalogsProductGroupPricingCriteria
 type CatalogsProductGroupPricingCriteria struct {
 	Inclusion *bool `json:"inclusion,omitempty"`
-	Values float32 `json:"values"`
 	Negated *bool `json:"negated,omitempty"`
+	Values float32 `json:"values"`
 }
 
 type _CatalogsProductGroupPricingCriteria CatalogsProductGroupPricingCriteria
@@ -37,9 +37,9 @@ func NewCatalogsProductGroupPricingCriteria(values float32) *CatalogsProductGrou
 	this := CatalogsProductGroupPricingCriteria{}
 	var inclusion bool = true
 	this.Inclusion = &inclusion
-	this.Values = values
 	var negated bool = false
 	this.Negated = &negated
+	this.Values = values
 	return &this
 }
 
@@ -87,30 +87,6 @@ func (o *CatalogsProductGroupPricingCriteria) SetInclusion(v bool) {
 	o.Inclusion = &v
 }
 
-// GetValues returns the Values field value
-func (o *CatalogsProductGroupPricingCriteria) GetValues() float32 {
-	if o == nil {
-		var ret float32
-		return ret
-	}
-
-	return o.Values
-}
-
-// GetValuesOk returns a tuple with the Values field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsProductGroupPricingCriteria) GetValuesOk() (*float32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Values, true
-}
-
-// SetValues sets field value
-func (o *CatalogsProductGroupPricingCriteria) SetValues(v float32) {
-	o.Values = v
-}
-
 // GetNegated returns the Negated field value if set, zero value otherwise.
 func (o *CatalogsProductGroupPricingCriteria) GetNegated() bool {
 	if o == nil || IsNil(o.Negated) {
@@ -143,6 +119,30 @@ func (o *CatalogsProductGroupPricingCriteria) SetNegated(v bool) {
 	o.Negated = &v
 }
 
+// GetValues returns the Values field value
+func (o *CatalogsProductGroupPricingCriteria) GetValues() float32 {
+	if o == nil {
+		var ret float32
+		return ret
+	}
+
+	return o.Values
+}
+
+// GetValuesOk returns a tuple with the Values field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsProductGroupPricingCriteria) GetValuesOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Values, true
+}
+
+// SetValues sets field value
+func (o *CatalogsProductGroupPricingCriteria) SetValues(v float32) {
+	o.Values = v
+}
+
 func (o CatalogsProductGroupPricingCriteria) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -156,10 +156,10 @@ func (o CatalogsProductGroupPricingCriteria) ToMap() (map[string]interface{}, er
 	if !IsNil(o.Inclusion) {
 		toSerialize["inclusion"] = o.Inclusion
 	}
-	toSerialize["values"] = o.Values
 	if !IsNil(o.Negated) {
 		toSerialize["negated"] = o.Negated
 	}
+	toSerialize["values"] = o.Values
 	return toSerialize, nil
 }
 

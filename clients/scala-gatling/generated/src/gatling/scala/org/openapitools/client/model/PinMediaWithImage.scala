@@ -3,14 +3,14 @@ package org.openapitools.client.model
 
 
 case class PinMediaWithImage (
-    _mediaType: Option[String],
-    _images: Option[PinMediaWithImageAllOfImages]
+    _images: Option[ImageSize],
+    _mediaType: String
 )
 object PinMediaWithImage {
-    def toStringBody(var_mediaType: Object, var_images: Object) =
+    def toStringBody(var_images: Object, var_mediaType: Object) =
         s"""
         | {
-        | "mediaType":$var_mediaType,"images":$var_images
+        | "images":$var_images,"mediaType":$var_mediaType
         | }
         """.stripMargin
 }

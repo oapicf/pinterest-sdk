@@ -10,18 +10,6 @@
       "doc": "Unique identifier of the asset group to update."
     },
     {
-      "name": "name",
-      "type": ["null", "string"],
-      "doc": "Asset Group name",
-      "default": null
-    },
-    {
-      "name": "description",
-      "type": ["null", "string"],
-      "doc": "Asset group description",
-      "default": null
-    },
-    {
       "name": "asset_group_types",
       "type": ["null", {
         "type": "array",
@@ -46,6 +34,18 @@
         "items": "string"
       }],
       "doc": "A list of asset ids to remove from the asset group.",
+      "default": null
+    },
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "Asset group description",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Asset Group name",
       "default": null
     }
   ]

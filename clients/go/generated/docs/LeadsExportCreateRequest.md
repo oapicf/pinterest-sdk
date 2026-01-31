@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**StartDate** | **string** | Export leads collected on and after start date (UTC). Format: YYYY-MM-DD | 
-**EndDate** | **string** | Export leads collected on and before end date (UTC). Format: YYYY-MM-DD | 
 **AdId** | **string** | ID for the ad collecting leads | 
+**EndDate** | **string** | Export leads collected on and before end date (UTC). Format: YYYY-MM-DD | 
+**StartDate** | **string** | Export leads collected on and after start date (UTC). Format: YYYY-MM-DD | 
 
 ## Methods
 
 ### NewLeadsExportCreateRequest
 
-`func NewLeadsExportCreateRequest(startDate string, endDate string, adId string, ) *LeadsExportCreateRequest`
+`func NewLeadsExportCreateRequest(adId string, endDate string, startDate string, ) *LeadsExportCreateRequest`
 
 NewLeadsExportCreateRequest instantiates a new LeadsExportCreateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -27,24 +27,24 @@ NewLeadsExportCreateRequestWithDefaults instantiates a new LeadsExportCreateRequ
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetStartDate
+### GetAdId
 
-`func (o *LeadsExportCreateRequest) GetStartDate() string`
+`func (o *LeadsExportCreateRequest) GetAdId() string`
 
-GetStartDate returns the StartDate field if non-nil, zero value otherwise.
+GetAdId returns the AdId field if non-nil, zero value otherwise.
 
-### GetStartDateOk
+### GetAdIdOk
 
-`func (o *LeadsExportCreateRequest) GetStartDateOk() (*string, bool)`
+`func (o *LeadsExportCreateRequest) GetAdIdOk() (*string, bool)`
 
-GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
+GetAdIdOk returns a tuple with the AdId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetStartDate
+### SetAdId
 
-`func (o *LeadsExportCreateRequest) SetStartDate(v string)`
+`func (o *LeadsExportCreateRequest) SetAdId(v string)`
 
-SetStartDate sets StartDate field to given value.
+SetAdId sets AdId field to given value.
 
 
 ### GetEndDate
@@ -67,24 +67,24 @@ and a boolean to check if the value has been set.
 SetEndDate sets EndDate field to given value.
 
 
-### GetAdId
+### GetStartDate
 
-`func (o *LeadsExportCreateRequest) GetAdId() string`
+`func (o *LeadsExportCreateRequest) GetStartDate() string`
 
-GetAdId returns the AdId field if non-nil, zero value otherwise.
+GetStartDate returns the StartDate field if non-nil, zero value otherwise.
 
-### GetAdIdOk
+### GetStartDateOk
 
-`func (o *LeadsExportCreateRequest) GetAdIdOk() (*string, bool)`
+`func (o *LeadsExportCreateRequest) GetStartDateOk() (*string, bool)`
 
-GetAdIdOk returns a tuple with the AdId field if it's non-nil, zero value otherwise
+GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAdId
+### SetStartDate
 
-`func (o *LeadsExportCreateRequest) SetAdId(v string)`
+`func (o *LeadsExportCreateRequest) SetStartDate(v string)`
 
-SetAdId sets AdId field to given value.
+SetStartDate sets StartDate field to given value.
 
 
 

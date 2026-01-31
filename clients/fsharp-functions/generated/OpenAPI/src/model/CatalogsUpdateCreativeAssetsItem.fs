@@ -11,12 +11,12 @@ module CatalogsUpdateCreativeAssetsItem =
 
   [<CLIMutable>]
   type CatalogsUpdateCreativeAssetsItem = {
+    [<JsonProperty(PropertyName = "attributes")>]
+    Attributes : CatalogsUpdatableCreativeAssetsAttributes;
     [<JsonProperty(PropertyName = "creative_assets_id")>]
     CreativeAssetsId : string;
     [<JsonProperty(PropertyName = "operation")>]
     Operation : string;
-    [<JsonProperty(PropertyName = "attributes")>]
-    Attributes : CatalogsUpdatableCreativeAssetsAttributes;
   }
 
   //#endregion

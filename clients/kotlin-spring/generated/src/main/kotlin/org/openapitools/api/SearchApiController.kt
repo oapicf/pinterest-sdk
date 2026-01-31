@@ -1,9 +1,9 @@
 package org.openapitools.api
 
 import org.openapitools.model.Error
-import org.openapitools.model.PinsList200Response
 import org.openapitools.model.SearchPartnerPins200Response
 import org.openapitools.model.SearchUserBoardsGet200Response
+import org.openapitools.model.SearchUserPinsList200Response
 import io.swagger.v3.oas.annotations.*
 import io.swagger.v3.oas.annotations.enums.*
 import io.swagger.v3.oas.annotations.media.*
@@ -40,7 +40,7 @@ class SearchApiController() {
     @Operation(
         summary = "Search pins by a given search term",
         operationId = "searchPartnerPins",
-        description = """<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+        description = """<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
 Get the top 10 Pins by a given search term.""",
         responses = [
@@ -98,7 +98,7 @@ If using Business Access: Specify an ad_account_id to use the owner of that ad_a
 
 If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the "operation user_account". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.""",
         responses = [
-            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = PinsList200Response::class))]),
+            ApiResponse(responseCode = "200", description = "Success", content = [Content(schema = Schema(implementation = SearchUserPinsList200Response::class))]),
             ApiResponse(responseCode = "404", description = "User not found", content = [Content(schema = Schema(implementation = Error::class))]),
             ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "boards:read", "boards:read_secret", "pins:read", "pins:read_secret" ]) ]
@@ -112,7 +112,7 @@ If using Business Access: Specify an ad_account_id to use the owner of that ad_a
         @NotNull @Parameter(description = "Search query. Can contain pin description keywords or comma-separated pin IDs.", required = true) @Valid @RequestParam(value = "query", required = true) query: kotlin.String,
         @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,
         @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?
-    ): ResponseEntity<PinsList200Response> {
+    ): ResponseEntity<SearchUserPinsList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 

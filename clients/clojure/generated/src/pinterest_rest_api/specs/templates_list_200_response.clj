@@ -8,8 +8,8 @@
 
 (def templates-list-200-response-data
   {
-   (ds/req :items) (s/coll-of template-response-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of template-response-spec)
    })
 
 (def templates-list-200-response-spec

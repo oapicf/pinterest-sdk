@@ -9,9 +9,9 @@
 -export_type([openapi_keyword_update/0]).
 
 -type openapi_keyword_update() ::
-  [ {'id', binary() }
-  | {'archived', boolean() }
+  [ {'archived', boolean() }
   | {'bid', integer() }
+  | {'id', binary() }
   ].
 
 
@@ -19,9 +19,9 @@ openapi_keyword_update() ->
     openapi_keyword_update([]).
 
 openapi_keyword_update(Fields) ->
-  Default = [ {'id', binary() }
-            , {'archived', boolean() }
+  Default = [ {'archived', boolean() }
             , {'bid', integer() }
+            , {'id', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

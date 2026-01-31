@@ -11,11 +11,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 ## media_create
 
-> <MediaUpload> media_create(media_upload_request)
+> <MediaUpload> media_create(media_upload_create)
 
 Register media upload
 
-Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using `curl`, for example) to `upload_url` using the `Content-Type` header value. Send the media file's contents as the request's `file` parameter and also include all of the parameters from `upload_parameters`.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 
 ### Examples
 
@@ -29,11 +29,11 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::MediaApi.new
-media_upload_request = PinterestSdkClient::MediaUploadRequest.new({media_type: PinterestSdkClient::MediaUploadType::VIDEO}) # MediaUploadRequest | Create a media upload request
+media_upload_create = PinterestSdkClient::MediaUploadCreate.new({media_type: PinterestSdkClient::MediaUploadType::VIDEO}) # MediaUploadCreate | 
 
 begin
   # Register media upload
-  result = api_instance.media_create(media_upload_request)
+  result = api_instance.media_create(media_upload_create)
   p result
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling MediaApi->media_create: #{e}"
@@ -44,12 +44,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<MediaUpload>, Integer, Hash)> media_create_with_http_info(media_upload_request)
+> <Array(<MediaUpload>, Integer, Hash)> media_create_with_http_info(media_upload_create)
 
 ```ruby
 begin
   # Register media upload
-  data, status_code, headers = api_instance.media_create_with_http_info(media_upload_request)
+  data, status_code, headers = api_instance.media_create_with_http_info(media_upload_create)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <MediaUpload>
@@ -62,7 +62,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **media_upload_request** | [**MediaUploadRequest**](MediaUploadRequest.md) | Create a media upload request |  |
+| **media_upload_create** | [**MediaUploadCreate**](MediaUploadCreate.md) |  |  |
 
 ### Return type
 
@@ -80,11 +80,11 @@ end
 
 ## media_get
 
-> <MediaUploadDetails> media_get(media_id)
+> <Media> media_get(media_id)
 
 Get media upload details
 
-Get details for a registered media upload, including its current status.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 
 ### Examples
 
@@ -98,7 +98,7 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::MediaApi.new
-media_id = 'media_id_example' # String | Media identifier
+media_id = 'media_id_example' # String | Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
 
 begin
   # Get media upload details
@@ -113,7 +113,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<MediaUploadDetails>, Integer, Hash)> media_get_with_http_info(media_id)
+> <Array(<Media>, Integer, Hash)> media_get_with_http_info(media_id)
 
 ```ruby
 begin
@@ -121,7 +121,7 @@ begin
   data, status_code, headers = api_instance.media_get_with_http_info(media_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <MediaUploadDetails>
+  p data # => <Media>
 rescue PinterestSdkClient::ApiError => e
   puts "Error when calling MediaApi->media_get_with_http_info: #{e}"
 end
@@ -131,11 +131,11 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **media_id** | **String** | Media identifier |  |
+| **media_id** | **String** | Unique identifier for this media upload. Used to track status and for attaching during Pin creation. |  |
 
 ### Return type
 
-[**MediaUploadDetails**](MediaUploadDetails.md)
+[**Media**](Media.md)
 
 ### Authorization
 
@@ -153,7 +153,7 @@ end
 
 List media uploads
 
-List media uploads filtered by given parameters.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 
 ### Examples
 
@@ -169,7 +169,7 @@ end
 api_instance = PinterestSdkClient::MediaApi.new
 opts = {
   bookmark: 'bookmark_example', # String | Cursor used to fetch the next page of items
-  page_size: 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+  page_size: 56 # Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 }
 
 begin
@@ -204,7 +204,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **bookmark** | **String** | Cursor used to fetch the next page of items | [optional] |
-| **page_size** | **Integer** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional][default to 25] |
+| **page_size** | **Integer** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional][default to 25] |
 
 ### Return type
 

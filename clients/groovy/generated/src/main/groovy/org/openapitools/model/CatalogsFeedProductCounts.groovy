@@ -6,8 +6,8 @@ import io.swagger.annotations.ApiModelProperty;
 
 @Canonical
 class CatalogsFeedProductCounts {
-    /* The number of products in the feed file. */
-    Integer original
     /* The number of products successfully ingested from the feed file. */
     Integer ingested
+    /* The number of products in the feed file. */
+    Integer original
 }

@@ -22,18 +22,14 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param name Metric's name.
  * @param category Category name
  * @param definition How the metric is defined.
  * @param displayName Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.
+ * @param name Metric's name.
  */
 
 
 data class DeliveryMetricsResponseItemsInner (
-
-    /* Metric's name. */
-    @Json(name = "name")
-    val name: kotlin.String? = null,
 
     /* Category name */
     @Json(name = "category")
@@ -45,7 +41,11 @@ data class DeliveryMetricsResponseItemsInner (
 
     /* Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager. */
     @Json(name = "display_name")
-    val displayName: kotlin.String? = null
+    val displayName: kotlin.String? = null,
+
+    /* Metric's name. */
+    @Json(name = "name")
+    val name: kotlin.String? = null
 
 ) {
 

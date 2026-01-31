@@ -13,9 +13,9 @@ void main() {
       // TODO
     });
 
-    // Gender distribution.
-    // BuiltList<AudienceDemographicValue> genders
-    test('to test the property `genders`', () async {
+    // Country area distribution.
+    // BuiltList<AudienceDemographicValue> countries
+    test('to test the property `countries`', () async {
       // TODO
     });
 
@@ -25,15 +25,15 @@ void main() {
       // TODO
     });
 
-    // Geographic metro area distribution.
-    // BuiltList<AudienceDemographicValue> metros
-    test('to test the property `metros`', () async {
+    // Gender distribution.
+    // BuiltList<AudienceDemographicValue> genders
+    test('to test the property `genders`', () async {
       // TODO
     });
 
-    // Country area distribution.
-    // BuiltList<AudienceDemographicValue> countries
-    test('to test the property `countries`', () async {
+    // Geographic metro area distribution.
+    // BuiltList<AudienceDemographicValue> metros
+    test('to test the property `metros`', () async {
       // TODO
     });
 

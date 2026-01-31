@@ -7,7 +7,7 @@
 #' @title CustomLabel2Filter
 #' @description CustomLabel2Filter Class
 #' @format An \code{R6Class} generator object
-#' @field CUSTOM_LABEL_2  \link{CatalogsProductGroupMultipleStringCriteria}
+#' @field CUSTOM_LABEL_2  \link{CatalogsProductGroupFilterOperatorTypeCriteria}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -74,7 +74,7 @@ CustomLabel2Filter <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`CUSTOM_LABEL_2`)) {
-        `custom_label_2_object` <- CatalogsProductGroupMultipleStringCriteria$new()
+        `custom_label_2_object` <- CatalogsProductGroupFilterOperatorTypeCriteria$new()
         `custom_label_2_object`$fromJSON(jsonlite::toJSON(this_object$`CUSTOM_LABEL_2`, auto_unbox = TRUE, digits = NA))
         self$`CUSTOM_LABEL_2` <- `custom_label_2_object`
       }
@@ -99,7 +99,7 @@ CustomLabel2Filter <- R6::R6Class(
     #' @return the instance of CustomLabel2Filter
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`CUSTOM_LABEL_2` <- CatalogsProductGroupMultipleStringCriteria$new()$fromJSON(jsonlite::toJSON(this_object$`CUSTOM_LABEL_2`, auto_unbox = TRUE, digits = NA))
+      self$`CUSTOM_LABEL_2` <- CatalogsProductGroupFilterOperatorTypeCriteria$new()$fromJSON(jsonlite::toJSON(this_object$`CUSTOM_LABEL_2`, auto_unbox = TRUE, digits = NA))
       self
     },
 

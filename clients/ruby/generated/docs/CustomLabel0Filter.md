@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **custom_label_0** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  |
+| **custom_label_0** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  |
 
 ## Example
 

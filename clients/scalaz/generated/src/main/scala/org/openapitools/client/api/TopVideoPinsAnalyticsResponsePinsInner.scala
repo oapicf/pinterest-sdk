@@ -12,9 +12,9 @@ import org.joda.time.DateTime
 import TopVideoPinsAnalyticsResponsePinsInner._
 
 case class TopVideoPinsAnalyticsResponsePinsInner (
-  /* The metric name and daily value for each requested metric */
+  dataStatus: Option[Map[String, DataStatus]],
+/* The metric name and daily value for each requested metric */
   metrics: Option[Map[String, BigDecimal]],
-dataStatus: Option[Map[String, DataStatus]],
 /* The pin id */
   pinId: Option[String])
 

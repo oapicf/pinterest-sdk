@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,49 +20,49 @@ var _ MappedNullable = &SSIOOrderLine{}
 
 // SSIOOrderLine struct for SSIOOrderLine
 type SSIOOrderLine struct {
-	// OrderLineId in SFDC
-	SalesforceOrderLineId NullableString `json:"salesforce_order_line_id,omitempty"`
+	// The SFDC id for the terms
+	AcceptedTermsId NullableString `json:"accepted_terms_id,omitempty"`
+	// The UTC timestamp (to the nearest sec) of when terms were accepted
+	AcceptedTermsTime NullableString `json:"accepted_terms_time,omitempty" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})T(\\\\d{2}):(\\\\d{2}):(\\\\d{2}).(\\\\d{3})Z$"`
 	// Ads manager OrderLineId
 	AdsManagerOrderLineId NullableString `json:"ads_manager_order_line_id,omitempty"`
-	// The pin order id associated with the order line in SFDC
-	PinOrderId NullableString `json:"pin_order_id,omitempty"`
-	// Last modified date.
-	LastModifiedDateTime NullableString `json:"last_modified_date_time,omitempty" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})T(\\\\d{2}):(\\\\d{2}):(\\\\d{2}).(\\\\d{3})Z$"`
-	// Start date of the order line.
-	StartDate NullableString `json:"start_date,omitempty"`
-	// End date of the order line.
-	EndDate NullableString `json:"end_date,omitempty"`
+	// Agency link
+	AgencyLink NullableString `json:"agency_link,omitempty"`
 	// Bill To Company name
 	BillToCompanyName NullableString `json:"bill_to_company_name,omitempty"`
+	// Billing contact email
+	BillingContactEmail NullableString `json:"billing_contact_email,omitempty"`
 	// Billing contact first name
 	BillingContactFirstname NullableString `json:"billing_contact_firstname,omitempty"`
 	// Billing contact last name
 	BillingContactLastname NullableString `json:"billing_contact_lastname,omitempty"`
-	// Billing contact email
-	BillingContactEmail NullableString `json:"billing_contact_email,omitempty"`
+	// If Budget order line, the budget amount.
+	BudgetAmount NullableFloat32 `json:"budget_amount,omitempty"`
+	CurrencyInfo *Currency `json:"currency_info,omitempty"`
+	// End date of the order line.
+	EndDate NullableString `json:"end_date,omitempty"`
+	// If Ongoing (perpetual) order line, the estimated monthly spend
+	EstimatedMonthlySpend NullableFloat32 `json:"estimated_monthly_spend,omitempty"`
+	// Last modified date.
+	LastModifiedDateTime NullableString `json:"last_modified_date_time,omitempty" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})T(\\\\d{2}):(\\\\d{2}):(\\\\d{2}).(\\\\d{3})Z$"`
 	// Billing media email
 	MediaContactEmail NullableString `json:"media_contact_email,omitempty"`
 	// Billing contact first name
 	MediaContactFirstname NullableString `json:"media_contact_firstname,omitempty"`
 	// Billing contact first name
 	MediaContactLastname NullableString `json:"media_contact_lastname,omitempty"`
-	CurrencyInfo *Currency `json:"currency_info,omitempty"`
-	// Agency link
-	AgencyLink NullableString `json:"agency_link,omitempty"`
-	// The po number
-	PoNumber NullableString `json:"po_number,omitempty"`
 	// The order name
 	OrderName NullableString `json:"order_name,omitempty"`
+	// The pin order id associated with the order line in SFDC
+	PinOrderId NullableString `json:"pin_order_id,omitempty"`
 	// The Pinterest marketing partner name
 	PmpName NullableString `json:"pmp_name,omitempty"`
-	// The SFDC id for the terms
-	AcceptedTermsId NullableString `json:"accepted_terms_id,omitempty"`
-	// The UTC timestamp (to the nearest sec) of when terms were accepted
-	AcceptedTermsTime NullableString `json:"accepted_terms_time,omitempty" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})T(\\\\d{2}):(\\\\d{2}):(\\\\d{2}).(\\\\d{3})Z$"`
-	// If Budget order line, the budget amount.
-	BudgetAmount NullableFloat32 `json:"budget_amount,omitempty"`
-	// If Ongoing (perpetual) order line, the estimated monthly spend
-	EstimatedMonthlySpend NullableFloat32 `json:"estimated_monthly_spend,omitempty"`
+	// The po number
+	PoNumber NullableString `json:"po_number,omitempty"`
+	// OrderLineId in SFDC
+	SalesforceOrderLineId NullableString `json:"salesforce_order_line_id,omitempty"`
+	// Start date of the order line.
+	StartDate NullableString `json:"start_date,omitempty"`
 }
 
 // NewSSIOOrderLine instantiates a new SSIOOrderLine object
@@ -82,46 +82,88 @@ func NewSSIOOrderLineWithDefaults() *SSIOOrderLine {
 	return &this
 }
 
-// GetSalesforceOrderLineId returns the SalesforceOrderLineId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SSIOOrderLine) GetSalesforceOrderLineId() string {
-	if o == nil || IsNil(o.SalesforceOrderLineId.Get()) {
+// GetAcceptedTermsId returns the AcceptedTermsId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SSIOOrderLine) GetAcceptedTermsId() string {
+	if o == nil || IsNil(o.AcceptedTermsId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.SalesforceOrderLineId.Get()
+	return *o.AcceptedTermsId.Get()
 }
 
-// GetSalesforceOrderLineIdOk returns a tuple with the SalesforceOrderLineId field value if set, nil otherwise
+// GetAcceptedTermsIdOk returns a tuple with the AcceptedTermsId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SSIOOrderLine) GetSalesforceOrderLineIdOk() (*string, bool) {
+func (o *SSIOOrderLine) GetAcceptedTermsIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.SalesforceOrderLineId.Get(), o.SalesforceOrderLineId.IsSet()
+	return o.AcceptedTermsId.Get(), o.AcceptedTermsId.IsSet()
 }
 
-// HasSalesforceOrderLineId returns a boolean if a field has been set.
-func (o *SSIOOrderLine) HasSalesforceOrderLineId() bool {
-	if o != nil && o.SalesforceOrderLineId.IsSet() {
+// HasAcceptedTermsId returns a boolean if a field has been set.
+func (o *SSIOOrderLine) HasAcceptedTermsId() bool {
+	if o != nil && o.AcceptedTermsId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSalesforceOrderLineId gets a reference to the given NullableString and assigns it to the SalesforceOrderLineId field.
-func (o *SSIOOrderLine) SetSalesforceOrderLineId(v string) {
-	o.SalesforceOrderLineId.Set(&v)
+// SetAcceptedTermsId gets a reference to the given NullableString and assigns it to the AcceptedTermsId field.
+func (o *SSIOOrderLine) SetAcceptedTermsId(v string) {
+	o.AcceptedTermsId.Set(&v)
 }
-// SetSalesforceOrderLineIdNil sets the value for SalesforceOrderLineId to be an explicit nil
-func (o *SSIOOrderLine) SetSalesforceOrderLineIdNil() {
-	o.SalesforceOrderLineId.Set(nil)
+// SetAcceptedTermsIdNil sets the value for AcceptedTermsId to be an explicit nil
+func (o *SSIOOrderLine) SetAcceptedTermsIdNil() {
+	o.AcceptedTermsId.Set(nil)
 }
 
-// UnsetSalesforceOrderLineId ensures that no value is present for SalesforceOrderLineId, not even an explicit nil
-func (o *SSIOOrderLine) UnsetSalesforceOrderLineId() {
-	o.SalesforceOrderLineId.Unset()
+// UnsetAcceptedTermsId ensures that no value is present for AcceptedTermsId, not even an explicit nil
+func (o *SSIOOrderLine) UnsetAcceptedTermsId() {
+	o.AcceptedTermsId.Unset()
+}
+
+// GetAcceptedTermsTime returns the AcceptedTermsTime field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SSIOOrderLine) GetAcceptedTermsTime() string {
+	if o == nil || IsNil(o.AcceptedTermsTime.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AcceptedTermsTime.Get()
+}
+
+// GetAcceptedTermsTimeOk returns a tuple with the AcceptedTermsTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SSIOOrderLine) GetAcceptedTermsTimeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AcceptedTermsTime.Get(), o.AcceptedTermsTime.IsSet()
+}
+
+// HasAcceptedTermsTime returns a boolean if a field has been set.
+func (o *SSIOOrderLine) HasAcceptedTermsTime() bool {
+	if o != nil && o.AcceptedTermsTime.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAcceptedTermsTime gets a reference to the given NullableString and assigns it to the AcceptedTermsTime field.
+func (o *SSIOOrderLine) SetAcceptedTermsTime(v string) {
+	o.AcceptedTermsTime.Set(&v)
+}
+// SetAcceptedTermsTimeNil sets the value for AcceptedTermsTime to be an explicit nil
+func (o *SSIOOrderLine) SetAcceptedTermsTimeNil() {
+	o.AcceptedTermsTime.Set(nil)
+}
+
+// UnsetAcceptedTermsTime ensures that no value is present for AcceptedTermsTime, not even an explicit nil
+func (o *SSIOOrderLine) UnsetAcceptedTermsTime() {
+	o.AcceptedTermsTime.Unset()
 }
 
 // GetAdsManagerOrderLineId returns the AdsManagerOrderLineId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -166,172 +208,46 @@ func (o *SSIOOrderLine) UnsetAdsManagerOrderLineId() {
 	o.AdsManagerOrderLineId.Unset()
 }
 
-// GetPinOrderId returns the PinOrderId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SSIOOrderLine) GetPinOrderId() string {
-	if o == nil || IsNil(o.PinOrderId.Get()) {
+// GetAgencyLink returns the AgencyLink field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SSIOOrderLine) GetAgencyLink() string {
+	if o == nil || IsNil(o.AgencyLink.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.PinOrderId.Get()
+	return *o.AgencyLink.Get()
 }
 
-// GetPinOrderIdOk returns a tuple with the PinOrderId field value if set, nil otherwise
+// GetAgencyLinkOk returns a tuple with the AgencyLink field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SSIOOrderLine) GetPinOrderIdOk() (*string, bool) {
+func (o *SSIOOrderLine) GetAgencyLinkOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.PinOrderId.Get(), o.PinOrderId.IsSet()
+	return o.AgencyLink.Get(), o.AgencyLink.IsSet()
 }
 
-// HasPinOrderId returns a boolean if a field has been set.
-func (o *SSIOOrderLine) HasPinOrderId() bool {
-	if o != nil && o.PinOrderId.IsSet() {
+// HasAgencyLink returns a boolean if a field has been set.
+func (o *SSIOOrderLine) HasAgencyLink() bool {
+	if o != nil && o.AgencyLink.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPinOrderId gets a reference to the given NullableString and assigns it to the PinOrderId field.
-func (o *SSIOOrderLine) SetPinOrderId(v string) {
-	o.PinOrderId.Set(&v)
+// SetAgencyLink gets a reference to the given NullableString and assigns it to the AgencyLink field.
+func (o *SSIOOrderLine) SetAgencyLink(v string) {
+	o.AgencyLink.Set(&v)
 }
-// SetPinOrderIdNil sets the value for PinOrderId to be an explicit nil
-func (o *SSIOOrderLine) SetPinOrderIdNil() {
-	o.PinOrderId.Set(nil)
-}
-
-// UnsetPinOrderId ensures that no value is present for PinOrderId, not even an explicit nil
-func (o *SSIOOrderLine) UnsetPinOrderId() {
-	o.PinOrderId.Unset()
+// SetAgencyLinkNil sets the value for AgencyLink to be an explicit nil
+func (o *SSIOOrderLine) SetAgencyLinkNil() {
+	o.AgencyLink.Set(nil)
 }
 
-// GetLastModifiedDateTime returns the LastModifiedDateTime field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SSIOOrderLine) GetLastModifiedDateTime() string {
-	if o == nil || IsNil(o.LastModifiedDateTime.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.LastModifiedDateTime.Get()
-}
-
-// GetLastModifiedDateTimeOk returns a tuple with the LastModifiedDateTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SSIOOrderLine) GetLastModifiedDateTimeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.LastModifiedDateTime.Get(), o.LastModifiedDateTime.IsSet()
-}
-
-// HasLastModifiedDateTime returns a boolean if a field has been set.
-func (o *SSIOOrderLine) HasLastModifiedDateTime() bool {
-	if o != nil && o.LastModifiedDateTime.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLastModifiedDateTime gets a reference to the given NullableString and assigns it to the LastModifiedDateTime field.
-func (o *SSIOOrderLine) SetLastModifiedDateTime(v string) {
-	o.LastModifiedDateTime.Set(&v)
-}
-// SetLastModifiedDateTimeNil sets the value for LastModifiedDateTime to be an explicit nil
-func (o *SSIOOrderLine) SetLastModifiedDateTimeNil() {
-	o.LastModifiedDateTime.Set(nil)
-}
-
-// UnsetLastModifiedDateTime ensures that no value is present for LastModifiedDateTime, not even an explicit nil
-func (o *SSIOOrderLine) UnsetLastModifiedDateTime() {
-	o.LastModifiedDateTime.Unset()
-}
-
-// GetStartDate returns the StartDate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SSIOOrderLine) GetStartDate() string {
-	if o == nil || IsNil(o.StartDate.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.StartDate.Get()
-}
-
-// GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SSIOOrderLine) GetStartDateOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.StartDate.Get(), o.StartDate.IsSet()
-}
-
-// HasStartDate returns a boolean if a field has been set.
-func (o *SSIOOrderLine) HasStartDate() bool {
-	if o != nil && o.StartDate.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetStartDate gets a reference to the given NullableString and assigns it to the StartDate field.
-func (o *SSIOOrderLine) SetStartDate(v string) {
-	o.StartDate.Set(&v)
-}
-// SetStartDateNil sets the value for StartDate to be an explicit nil
-func (o *SSIOOrderLine) SetStartDateNil() {
-	o.StartDate.Set(nil)
-}
-
-// UnsetStartDate ensures that no value is present for StartDate, not even an explicit nil
-func (o *SSIOOrderLine) UnsetStartDate() {
-	o.StartDate.Unset()
-}
-
-// GetEndDate returns the EndDate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SSIOOrderLine) GetEndDate() string {
-	if o == nil || IsNil(o.EndDate.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.EndDate.Get()
-}
-
-// GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SSIOOrderLine) GetEndDateOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.EndDate.Get(), o.EndDate.IsSet()
-}
-
-// HasEndDate returns a boolean if a field has been set.
-func (o *SSIOOrderLine) HasEndDate() bool {
-	if o != nil && o.EndDate.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetEndDate gets a reference to the given NullableString and assigns it to the EndDate field.
-func (o *SSIOOrderLine) SetEndDate(v string) {
-	o.EndDate.Set(&v)
-}
-// SetEndDateNil sets the value for EndDate to be an explicit nil
-func (o *SSIOOrderLine) SetEndDateNil() {
-	o.EndDate.Set(nil)
-}
-
-// UnsetEndDate ensures that no value is present for EndDate, not even an explicit nil
-func (o *SSIOOrderLine) UnsetEndDate() {
-	o.EndDate.Unset()
+// UnsetAgencyLink ensures that no value is present for AgencyLink, not even an explicit nil
+func (o *SSIOOrderLine) UnsetAgencyLink() {
+	o.AgencyLink.Unset()
 }
 
 // GetBillToCompanyName returns the BillToCompanyName field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -374,6 +290,48 @@ func (o *SSIOOrderLine) SetBillToCompanyNameNil() {
 // UnsetBillToCompanyName ensures that no value is present for BillToCompanyName, not even an explicit nil
 func (o *SSIOOrderLine) UnsetBillToCompanyName() {
 	o.BillToCompanyName.Unset()
+}
+
+// GetBillingContactEmail returns the BillingContactEmail field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SSIOOrderLine) GetBillingContactEmail() string {
+	if o == nil || IsNil(o.BillingContactEmail.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.BillingContactEmail.Get()
+}
+
+// GetBillingContactEmailOk returns a tuple with the BillingContactEmail field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SSIOOrderLine) GetBillingContactEmailOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.BillingContactEmail.Get(), o.BillingContactEmail.IsSet()
+}
+
+// HasBillingContactEmail returns a boolean if a field has been set.
+func (o *SSIOOrderLine) HasBillingContactEmail() bool {
+	if o != nil && o.BillingContactEmail.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetBillingContactEmail gets a reference to the given NullableString and assigns it to the BillingContactEmail field.
+func (o *SSIOOrderLine) SetBillingContactEmail(v string) {
+	o.BillingContactEmail.Set(&v)
+}
+// SetBillingContactEmailNil sets the value for BillingContactEmail to be an explicit nil
+func (o *SSIOOrderLine) SetBillingContactEmailNil() {
+	o.BillingContactEmail.Set(nil)
+}
+
+// UnsetBillingContactEmail ensures that no value is present for BillingContactEmail, not even an explicit nil
+func (o *SSIOOrderLine) UnsetBillingContactEmail() {
+	o.BillingContactEmail.Unset()
 }
 
 // GetBillingContactFirstname returns the BillingContactFirstname field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -460,46 +418,204 @@ func (o *SSIOOrderLine) UnsetBillingContactLastname() {
 	o.BillingContactLastname.Unset()
 }
 
-// GetBillingContactEmail returns the BillingContactEmail field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SSIOOrderLine) GetBillingContactEmail() string {
-	if o == nil || IsNil(o.BillingContactEmail.Get()) {
-		var ret string
+// GetBudgetAmount returns the BudgetAmount field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SSIOOrderLine) GetBudgetAmount() float32 {
+	if o == nil || IsNil(o.BudgetAmount.Get()) {
+		var ret float32
 		return ret
 	}
-	return *o.BillingContactEmail.Get()
+	return *o.BudgetAmount.Get()
 }
 
-// GetBillingContactEmailOk returns a tuple with the BillingContactEmail field value if set, nil otherwise
+// GetBudgetAmountOk returns a tuple with the BudgetAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SSIOOrderLine) GetBillingContactEmailOk() (*string, bool) {
+func (o *SSIOOrderLine) GetBudgetAmountOk() (*float32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.BillingContactEmail.Get(), o.BillingContactEmail.IsSet()
+	return o.BudgetAmount.Get(), o.BudgetAmount.IsSet()
 }
 
-// HasBillingContactEmail returns a boolean if a field has been set.
-func (o *SSIOOrderLine) HasBillingContactEmail() bool {
-	if o != nil && o.BillingContactEmail.IsSet() {
+// HasBudgetAmount returns a boolean if a field has been set.
+func (o *SSIOOrderLine) HasBudgetAmount() bool {
+	if o != nil && o.BudgetAmount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetBillingContactEmail gets a reference to the given NullableString and assigns it to the BillingContactEmail field.
-func (o *SSIOOrderLine) SetBillingContactEmail(v string) {
-	o.BillingContactEmail.Set(&v)
+// SetBudgetAmount gets a reference to the given NullableFloat32 and assigns it to the BudgetAmount field.
+func (o *SSIOOrderLine) SetBudgetAmount(v float32) {
+	o.BudgetAmount.Set(&v)
 }
-// SetBillingContactEmailNil sets the value for BillingContactEmail to be an explicit nil
-func (o *SSIOOrderLine) SetBillingContactEmailNil() {
-	o.BillingContactEmail.Set(nil)
+// SetBudgetAmountNil sets the value for BudgetAmount to be an explicit nil
+func (o *SSIOOrderLine) SetBudgetAmountNil() {
+	o.BudgetAmount.Set(nil)
 }
 
-// UnsetBillingContactEmail ensures that no value is present for BillingContactEmail, not even an explicit nil
-func (o *SSIOOrderLine) UnsetBillingContactEmail() {
-	o.BillingContactEmail.Unset()
+// UnsetBudgetAmount ensures that no value is present for BudgetAmount, not even an explicit nil
+func (o *SSIOOrderLine) UnsetBudgetAmount() {
+	o.BudgetAmount.Unset()
+}
+
+// GetCurrencyInfo returns the CurrencyInfo field value if set, zero value otherwise.
+func (o *SSIOOrderLine) GetCurrencyInfo() Currency {
+	if o == nil || IsNil(o.CurrencyInfo) {
+		var ret Currency
+		return ret
+	}
+	return *o.CurrencyInfo
+}
+
+// GetCurrencyInfoOk returns a tuple with the CurrencyInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SSIOOrderLine) GetCurrencyInfoOk() (*Currency, bool) {
+	if o == nil || IsNil(o.CurrencyInfo) {
+		return nil, false
+	}
+	return o.CurrencyInfo, true
+}
+
+// HasCurrencyInfo returns a boolean if a field has been set.
+func (o *SSIOOrderLine) HasCurrencyInfo() bool {
+	if o != nil && !IsNil(o.CurrencyInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrencyInfo gets a reference to the given Currency and assigns it to the CurrencyInfo field.
+func (o *SSIOOrderLine) SetCurrencyInfo(v Currency) {
+	o.CurrencyInfo = &v
+}
+
+// GetEndDate returns the EndDate field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SSIOOrderLine) GetEndDate() string {
+	if o == nil || IsNil(o.EndDate.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.EndDate.Get()
+}
+
+// GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SSIOOrderLine) GetEndDateOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.EndDate.Get(), o.EndDate.IsSet()
+}
+
+// HasEndDate returns a boolean if a field has been set.
+func (o *SSIOOrderLine) HasEndDate() bool {
+	if o != nil && o.EndDate.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetEndDate gets a reference to the given NullableString and assigns it to the EndDate field.
+func (o *SSIOOrderLine) SetEndDate(v string) {
+	o.EndDate.Set(&v)
+}
+// SetEndDateNil sets the value for EndDate to be an explicit nil
+func (o *SSIOOrderLine) SetEndDateNil() {
+	o.EndDate.Set(nil)
+}
+
+// UnsetEndDate ensures that no value is present for EndDate, not even an explicit nil
+func (o *SSIOOrderLine) UnsetEndDate() {
+	o.EndDate.Unset()
+}
+
+// GetEstimatedMonthlySpend returns the EstimatedMonthlySpend field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SSIOOrderLine) GetEstimatedMonthlySpend() float32 {
+	if o == nil || IsNil(o.EstimatedMonthlySpend.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.EstimatedMonthlySpend.Get()
+}
+
+// GetEstimatedMonthlySpendOk returns a tuple with the EstimatedMonthlySpend field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SSIOOrderLine) GetEstimatedMonthlySpendOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.EstimatedMonthlySpend.Get(), o.EstimatedMonthlySpend.IsSet()
+}
+
+// HasEstimatedMonthlySpend returns a boolean if a field has been set.
+func (o *SSIOOrderLine) HasEstimatedMonthlySpend() bool {
+	if o != nil && o.EstimatedMonthlySpend.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetEstimatedMonthlySpend gets a reference to the given NullableFloat32 and assigns it to the EstimatedMonthlySpend field.
+func (o *SSIOOrderLine) SetEstimatedMonthlySpend(v float32) {
+	o.EstimatedMonthlySpend.Set(&v)
+}
+// SetEstimatedMonthlySpendNil sets the value for EstimatedMonthlySpend to be an explicit nil
+func (o *SSIOOrderLine) SetEstimatedMonthlySpendNil() {
+	o.EstimatedMonthlySpend.Set(nil)
+}
+
+// UnsetEstimatedMonthlySpend ensures that no value is present for EstimatedMonthlySpend, not even an explicit nil
+func (o *SSIOOrderLine) UnsetEstimatedMonthlySpend() {
+	o.EstimatedMonthlySpend.Unset()
+}
+
+// GetLastModifiedDateTime returns the LastModifiedDateTime field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SSIOOrderLine) GetLastModifiedDateTime() string {
+	if o == nil || IsNil(o.LastModifiedDateTime.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.LastModifiedDateTime.Get()
+}
+
+// GetLastModifiedDateTimeOk returns a tuple with the LastModifiedDateTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SSIOOrderLine) GetLastModifiedDateTimeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LastModifiedDateTime.Get(), o.LastModifiedDateTime.IsSet()
+}
+
+// HasLastModifiedDateTime returns a boolean if a field has been set.
+func (o *SSIOOrderLine) HasLastModifiedDateTime() bool {
+	if o != nil && o.LastModifiedDateTime.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastModifiedDateTime gets a reference to the given NullableString and assigns it to the LastModifiedDateTime field.
+func (o *SSIOOrderLine) SetLastModifiedDateTime(v string) {
+	o.LastModifiedDateTime.Set(&v)
+}
+// SetLastModifiedDateTimeNil sets the value for LastModifiedDateTime to be an explicit nil
+func (o *SSIOOrderLine) SetLastModifiedDateTimeNil() {
+	o.LastModifiedDateTime.Set(nil)
+}
+
+// UnsetLastModifiedDateTime ensures that no value is present for LastModifiedDateTime, not even an explicit nil
+func (o *SSIOOrderLine) UnsetLastModifiedDateTime() {
+	o.LastModifiedDateTime.Unset()
 }
 
 // GetMediaContactEmail returns the MediaContactEmail field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -628,122 +744,6 @@ func (o *SSIOOrderLine) UnsetMediaContactLastname() {
 	o.MediaContactLastname.Unset()
 }
 
-// GetCurrencyInfo returns the CurrencyInfo field value if set, zero value otherwise.
-func (o *SSIOOrderLine) GetCurrencyInfo() Currency {
-	if o == nil || IsNil(o.CurrencyInfo) {
-		var ret Currency
-		return ret
-	}
-	return *o.CurrencyInfo
-}
-
-// GetCurrencyInfoOk returns a tuple with the CurrencyInfo field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SSIOOrderLine) GetCurrencyInfoOk() (*Currency, bool) {
-	if o == nil || IsNil(o.CurrencyInfo) {
-		return nil, false
-	}
-	return o.CurrencyInfo, true
-}
-
-// HasCurrencyInfo returns a boolean if a field has been set.
-func (o *SSIOOrderLine) HasCurrencyInfo() bool {
-	if o != nil && !IsNil(o.CurrencyInfo) {
-		return true
-	}
-
-	return false
-}
-
-// SetCurrencyInfo gets a reference to the given Currency and assigns it to the CurrencyInfo field.
-func (o *SSIOOrderLine) SetCurrencyInfo(v Currency) {
-	o.CurrencyInfo = &v
-}
-
-// GetAgencyLink returns the AgencyLink field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SSIOOrderLine) GetAgencyLink() string {
-	if o == nil || IsNil(o.AgencyLink.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.AgencyLink.Get()
-}
-
-// GetAgencyLinkOk returns a tuple with the AgencyLink field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SSIOOrderLine) GetAgencyLinkOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.AgencyLink.Get(), o.AgencyLink.IsSet()
-}
-
-// HasAgencyLink returns a boolean if a field has been set.
-func (o *SSIOOrderLine) HasAgencyLink() bool {
-	if o != nil && o.AgencyLink.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAgencyLink gets a reference to the given NullableString and assigns it to the AgencyLink field.
-func (o *SSIOOrderLine) SetAgencyLink(v string) {
-	o.AgencyLink.Set(&v)
-}
-// SetAgencyLinkNil sets the value for AgencyLink to be an explicit nil
-func (o *SSIOOrderLine) SetAgencyLinkNil() {
-	o.AgencyLink.Set(nil)
-}
-
-// UnsetAgencyLink ensures that no value is present for AgencyLink, not even an explicit nil
-func (o *SSIOOrderLine) UnsetAgencyLink() {
-	o.AgencyLink.Unset()
-}
-
-// GetPoNumber returns the PoNumber field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SSIOOrderLine) GetPoNumber() string {
-	if o == nil || IsNil(o.PoNumber.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.PoNumber.Get()
-}
-
-// GetPoNumberOk returns a tuple with the PoNumber field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SSIOOrderLine) GetPoNumberOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.PoNumber.Get(), o.PoNumber.IsSet()
-}
-
-// HasPoNumber returns a boolean if a field has been set.
-func (o *SSIOOrderLine) HasPoNumber() bool {
-	if o != nil && o.PoNumber.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetPoNumber gets a reference to the given NullableString and assigns it to the PoNumber field.
-func (o *SSIOOrderLine) SetPoNumber(v string) {
-	o.PoNumber.Set(&v)
-}
-// SetPoNumberNil sets the value for PoNumber to be an explicit nil
-func (o *SSIOOrderLine) SetPoNumberNil() {
-	o.PoNumber.Set(nil)
-}
-
-// UnsetPoNumber ensures that no value is present for PoNumber, not even an explicit nil
-func (o *SSIOOrderLine) UnsetPoNumber() {
-	o.PoNumber.Unset()
-}
-
 // GetOrderName returns the OrderName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SSIOOrderLine) GetOrderName() string {
 	if o == nil || IsNil(o.OrderName.Get()) {
@@ -784,6 +784,48 @@ func (o *SSIOOrderLine) SetOrderNameNil() {
 // UnsetOrderName ensures that no value is present for OrderName, not even an explicit nil
 func (o *SSIOOrderLine) UnsetOrderName() {
 	o.OrderName.Unset()
+}
+
+// GetPinOrderId returns the PinOrderId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SSIOOrderLine) GetPinOrderId() string {
+	if o == nil || IsNil(o.PinOrderId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.PinOrderId.Get()
+}
+
+// GetPinOrderIdOk returns a tuple with the PinOrderId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SSIOOrderLine) GetPinOrderIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PinOrderId.Get(), o.PinOrderId.IsSet()
+}
+
+// HasPinOrderId returns a boolean if a field has been set.
+func (o *SSIOOrderLine) HasPinOrderId() bool {
+	if o != nil && o.PinOrderId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPinOrderId gets a reference to the given NullableString and assigns it to the PinOrderId field.
+func (o *SSIOOrderLine) SetPinOrderId(v string) {
+	o.PinOrderId.Set(&v)
+}
+// SetPinOrderIdNil sets the value for PinOrderId to be an explicit nil
+func (o *SSIOOrderLine) SetPinOrderIdNil() {
+	o.PinOrderId.Set(nil)
+}
+
+// UnsetPinOrderId ensures that no value is present for PinOrderId, not even an explicit nil
+func (o *SSIOOrderLine) UnsetPinOrderId() {
+	o.PinOrderId.Unset()
 }
 
 // GetPmpName returns the PmpName field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -828,172 +870,130 @@ func (o *SSIOOrderLine) UnsetPmpName() {
 	o.PmpName.Unset()
 }
 
-// GetAcceptedTermsId returns the AcceptedTermsId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SSIOOrderLine) GetAcceptedTermsId() string {
-	if o == nil || IsNil(o.AcceptedTermsId.Get()) {
+// GetPoNumber returns the PoNumber field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SSIOOrderLine) GetPoNumber() string {
+	if o == nil || IsNil(o.PoNumber.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.AcceptedTermsId.Get()
+	return *o.PoNumber.Get()
 }
 
-// GetAcceptedTermsIdOk returns a tuple with the AcceptedTermsId field value if set, nil otherwise
+// GetPoNumberOk returns a tuple with the PoNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SSIOOrderLine) GetAcceptedTermsIdOk() (*string, bool) {
+func (o *SSIOOrderLine) GetPoNumberOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.AcceptedTermsId.Get(), o.AcceptedTermsId.IsSet()
+	return o.PoNumber.Get(), o.PoNumber.IsSet()
 }
 
-// HasAcceptedTermsId returns a boolean if a field has been set.
-func (o *SSIOOrderLine) HasAcceptedTermsId() bool {
-	if o != nil && o.AcceptedTermsId.IsSet() {
+// HasPoNumber returns a boolean if a field has been set.
+func (o *SSIOOrderLine) HasPoNumber() bool {
+	if o != nil && o.PoNumber.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAcceptedTermsId gets a reference to the given NullableString and assigns it to the AcceptedTermsId field.
-func (o *SSIOOrderLine) SetAcceptedTermsId(v string) {
-	o.AcceptedTermsId.Set(&v)
+// SetPoNumber gets a reference to the given NullableString and assigns it to the PoNumber field.
+func (o *SSIOOrderLine) SetPoNumber(v string) {
+	o.PoNumber.Set(&v)
 }
-// SetAcceptedTermsIdNil sets the value for AcceptedTermsId to be an explicit nil
-func (o *SSIOOrderLine) SetAcceptedTermsIdNil() {
-	o.AcceptedTermsId.Set(nil)
-}
-
-// UnsetAcceptedTermsId ensures that no value is present for AcceptedTermsId, not even an explicit nil
-func (o *SSIOOrderLine) UnsetAcceptedTermsId() {
-	o.AcceptedTermsId.Unset()
+// SetPoNumberNil sets the value for PoNumber to be an explicit nil
+func (o *SSIOOrderLine) SetPoNumberNil() {
+	o.PoNumber.Set(nil)
 }
 
-// GetAcceptedTermsTime returns the AcceptedTermsTime field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SSIOOrderLine) GetAcceptedTermsTime() string {
-	if o == nil || IsNil(o.AcceptedTermsTime.Get()) {
+// UnsetPoNumber ensures that no value is present for PoNumber, not even an explicit nil
+func (o *SSIOOrderLine) UnsetPoNumber() {
+	o.PoNumber.Unset()
+}
+
+// GetSalesforceOrderLineId returns the SalesforceOrderLineId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SSIOOrderLine) GetSalesforceOrderLineId() string {
+	if o == nil || IsNil(o.SalesforceOrderLineId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.AcceptedTermsTime.Get()
+	return *o.SalesforceOrderLineId.Get()
 }
 
-// GetAcceptedTermsTimeOk returns a tuple with the AcceptedTermsTime field value if set, nil otherwise
+// GetSalesforceOrderLineIdOk returns a tuple with the SalesforceOrderLineId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SSIOOrderLine) GetAcceptedTermsTimeOk() (*string, bool) {
+func (o *SSIOOrderLine) GetSalesforceOrderLineIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.AcceptedTermsTime.Get(), o.AcceptedTermsTime.IsSet()
+	return o.SalesforceOrderLineId.Get(), o.SalesforceOrderLineId.IsSet()
 }
 
-// HasAcceptedTermsTime returns a boolean if a field has been set.
-func (o *SSIOOrderLine) HasAcceptedTermsTime() bool {
-	if o != nil && o.AcceptedTermsTime.IsSet() {
+// HasSalesforceOrderLineId returns a boolean if a field has been set.
+func (o *SSIOOrderLine) HasSalesforceOrderLineId() bool {
+	if o != nil && o.SalesforceOrderLineId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAcceptedTermsTime gets a reference to the given NullableString and assigns it to the AcceptedTermsTime field.
-func (o *SSIOOrderLine) SetAcceptedTermsTime(v string) {
-	o.AcceptedTermsTime.Set(&v)
+// SetSalesforceOrderLineId gets a reference to the given NullableString and assigns it to the SalesforceOrderLineId field.
+func (o *SSIOOrderLine) SetSalesforceOrderLineId(v string) {
+	o.SalesforceOrderLineId.Set(&v)
 }
-// SetAcceptedTermsTimeNil sets the value for AcceptedTermsTime to be an explicit nil
-func (o *SSIOOrderLine) SetAcceptedTermsTimeNil() {
-	o.AcceptedTermsTime.Set(nil)
-}
-
-// UnsetAcceptedTermsTime ensures that no value is present for AcceptedTermsTime, not even an explicit nil
-func (o *SSIOOrderLine) UnsetAcceptedTermsTime() {
-	o.AcceptedTermsTime.Unset()
+// SetSalesforceOrderLineIdNil sets the value for SalesforceOrderLineId to be an explicit nil
+func (o *SSIOOrderLine) SetSalesforceOrderLineIdNil() {
+	o.SalesforceOrderLineId.Set(nil)
 }
 
-// GetBudgetAmount returns the BudgetAmount field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SSIOOrderLine) GetBudgetAmount() float32 {
-	if o == nil || IsNil(o.BudgetAmount.Get()) {
-		var ret float32
+// UnsetSalesforceOrderLineId ensures that no value is present for SalesforceOrderLineId, not even an explicit nil
+func (o *SSIOOrderLine) UnsetSalesforceOrderLineId() {
+	o.SalesforceOrderLineId.Unset()
+}
+
+// GetStartDate returns the StartDate field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SSIOOrderLine) GetStartDate() string {
+	if o == nil || IsNil(o.StartDate.Get()) {
+		var ret string
 		return ret
 	}
-	return *o.BudgetAmount.Get()
+	return *o.StartDate.Get()
 }
 
-// GetBudgetAmountOk returns a tuple with the BudgetAmount field value if set, nil otherwise
+// GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SSIOOrderLine) GetBudgetAmountOk() (*float32, bool) {
+func (o *SSIOOrderLine) GetStartDateOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.BudgetAmount.Get(), o.BudgetAmount.IsSet()
+	return o.StartDate.Get(), o.StartDate.IsSet()
 }
 
-// HasBudgetAmount returns a boolean if a field has been set.
-func (o *SSIOOrderLine) HasBudgetAmount() bool {
-	if o != nil && o.BudgetAmount.IsSet() {
+// HasStartDate returns a boolean if a field has been set.
+func (o *SSIOOrderLine) HasStartDate() bool {
+	if o != nil && o.StartDate.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetBudgetAmount gets a reference to the given NullableFloat32 and assigns it to the BudgetAmount field.
-func (o *SSIOOrderLine) SetBudgetAmount(v float32) {
-	o.BudgetAmount.Set(&v)
+// SetStartDate gets a reference to the given NullableString and assigns it to the StartDate field.
+func (o *SSIOOrderLine) SetStartDate(v string) {
+	o.StartDate.Set(&v)
 }
-// SetBudgetAmountNil sets the value for BudgetAmount to be an explicit nil
-func (o *SSIOOrderLine) SetBudgetAmountNil() {
-	o.BudgetAmount.Set(nil)
-}
-
-// UnsetBudgetAmount ensures that no value is present for BudgetAmount, not even an explicit nil
-func (o *SSIOOrderLine) UnsetBudgetAmount() {
-	o.BudgetAmount.Unset()
+// SetStartDateNil sets the value for StartDate to be an explicit nil
+func (o *SSIOOrderLine) SetStartDateNil() {
+	o.StartDate.Set(nil)
 }
 
-// GetEstimatedMonthlySpend returns the EstimatedMonthlySpend field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SSIOOrderLine) GetEstimatedMonthlySpend() float32 {
-	if o == nil || IsNil(o.EstimatedMonthlySpend.Get()) {
-		var ret float32
-		return ret
-	}
-	return *o.EstimatedMonthlySpend.Get()
-}
-
-// GetEstimatedMonthlySpendOk returns a tuple with the EstimatedMonthlySpend field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SSIOOrderLine) GetEstimatedMonthlySpendOk() (*float32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.EstimatedMonthlySpend.Get(), o.EstimatedMonthlySpend.IsSet()
-}
-
-// HasEstimatedMonthlySpend returns a boolean if a field has been set.
-func (o *SSIOOrderLine) HasEstimatedMonthlySpend() bool {
-	if o != nil && o.EstimatedMonthlySpend.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetEstimatedMonthlySpend gets a reference to the given NullableFloat32 and assigns it to the EstimatedMonthlySpend field.
-func (o *SSIOOrderLine) SetEstimatedMonthlySpend(v float32) {
-	o.EstimatedMonthlySpend.Set(&v)
-}
-// SetEstimatedMonthlySpendNil sets the value for EstimatedMonthlySpend to be an explicit nil
-func (o *SSIOOrderLine) SetEstimatedMonthlySpendNil() {
-	o.EstimatedMonthlySpend.Set(nil)
-}
-
-// UnsetEstimatedMonthlySpend ensures that no value is present for EstimatedMonthlySpend, not even an explicit nil
-func (o *SSIOOrderLine) UnsetEstimatedMonthlySpend() {
-	o.EstimatedMonthlySpend.Unset()
+// UnsetStartDate ensures that no value is present for StartDate, not even an explicit nil
+func (o *SSIOOrderLine) UnsetStartDate() {
+	o.StartDate.Unset()
 }
 
 func (o SSIOOrderLine) MarshalJSON() ([]byte, error) {
@@ -1006,26 +1006,23 @@ func (o SSIOOrderLine) MarshalJSON() ([]byte, error) {
 
 func (o SSIOOrderLine) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.SalesforceOrderLineId.IsSet() {
-		toSerialize["salesforce_order_line_id"] = o.SalesforceOrderLineId.Get()
+	if o.AcceptedTermsId.IsSet() {
+		toSerialize["accepted_terms_id"] = o.AcceptedTermsId.Get()
+	}
+	if o.AcceptedTermsTime.IsSet() {
+		toSerialize["accepted_terms_time"] = o.AcceptedTermsTime.Get()
 	}
 	if o.AdsManagerOrderLineId.IsSet() {
 		toSerialize["ads_manager_order_line_id"] = o.AdsManagerOrderLineId.Get()
 	}
-	if o.PinOrderId.IsSet() {
-		toSerialize["pin_order_id"] = o.PinOrderId.Get()
-	}
-	if o.LastModifiedDateTime.IsSet() {
-		toSerialize["last_modified_date_time"] = o.LastModifiedDateTime.Get()
-	}
-	if o.StartDate.IsSet() {
-		toSerialize["start_date"] = o.StartDate.Get()
-	}
-	if o.EndDate.IsSet() {
-		toSerialize["end_date"] = o.EndDate.Get()
+	if o.AgencyLink.IsSet() {
+		toSerialize["agency_link"] = o.AgencyLink.Get()
 	}
 	if o.BillToCompanyName.IsSet() {
 		toSerialize["bill_to_company_name"] = o.BillToCompanyName.Get()
+	}
+	if o.BillingContactEmail.IsSet() {
+		toSerialize["billing_contact_email"] = o.BillingContactEmail.Get()
 	}
 	if o.BillingContactFirstname.IsSet() {
 		toSerialize["billing_contact_firstname"] = o.BillingContactFirstname.Get()
@@ -1033,8 +1030,20 @@ func (o SSIOOrderLine) ToMap() (map[string]interface{}, error) {
 	if o.BillingContactLastname.IsSet() {
 		toSerialize["billing_contact_lastname"] = o.BillingContactLastname.Get()
 	}
-	if o.BillingContactEmail.IsSet() {
-		toSerialize["billing_contact_email"] = o.BillingContactEmail.Get()
+	if o.BudgetAmount.IsSet() {
+		toSerialize["budget_amount"] = o.BudgetAmount.Get()
+	}
+	if !IsNil(o.CurrencyInfo) {
+		toSerialize["currency_info"] = o.CurrencyInfo
+	}
+	if o.EndDate.IsSet() {
+		toSerialize["end_date"] = o.EndDate.Get()
+	}
+	if o.EstimatedMonthlySpend.IsSet() {
+		toSerialize["estimated_monthly_spend"] = o.EstimatedMonthlySpend.Get()
+	}
+	if o.LastModifiedDateTime.IsSet() {
+		toSerialize["last_modified_date_time"] = o.LastModifiedDateTime.Get()
 	}
 	if o.MediaContactEmail.IsSet() {
 		toSerialize["media_contact_email"] = o.MediaContactEmail.Get()
@@ -1045,32 +1054,23 @@ func (o SSIOOrderLine) ToMap() (map[string]interface{}, error) {
 	if o.MediaContactLastname.IsSet() {
 		toSerialize["media_contact_lastname"] = o.MediaContactLastname.Get()
 	}
-	if !IsNil(o.CurrencyInfo) {
-		toSerialize["currency_info"] = o.CurrencyInfo
-	}
-	if o.AgencyLink.IsSet() {
-		toSerialize["agency_link"] = o.AgencyLink.Get()
-	}
-	if o.PoNumber.IsSet() {
-		toSerialize["po_number"] = o.PoNumber.Get()
-	}
 	if o.OrderName.IsSet() {
 		toSerialize["order_name"] = o.OrderName.Get()
+	}
+	if o.PinOrderId.IsSet() {
+		toSerialize["pin_order_id"] = o.PinOrderId.Get()
 	}
 	if o.PmpName.IsSet() {
 		toSerialize["pmp_name"] = o.PmpName.Get()
 	}
-	if o.AcceptedTermsId.IsSet() {
-		toSerialize["accepted_terms_id"] = o.AcceptedTermsId.Get()
+	if o.PoNumber.IsSet() {
+		toSerialize["po_number"] = o.PoNumber.Get()
 	}
-	if o.AcceptedTermsTime.IsSet() {
-		toSerialize["accepted_terms_time"] = o.AcceptedTermsTime.Get()
+	if o.SalesforceOrderLineId.IsSet() {
+		toSerialize["salesforce_order_line_id"] = o.SalesforceOrderLineId.Get()
 	}
-	if o.BudgetAmount.IsSet() {
-		toSerialize["budget_amount"] = o.BudgetAmount.Get()
-	}
-	if o.EstimatedMonthlySpend.IsSet() {
-		toSerialize["estimated_monthly_spend"] = o.EstimatedMonthlySpend.Get()
+	if o.StartDate.IsSet() {
+		toSerialize["start_date"] = o.StartDate.Get()
 	}
 	return toSerialize, nil
 }

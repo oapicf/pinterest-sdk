@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -51,7 +51,9 @@ public enum AdsAnalyticsCampaignTargetingType {
         
         CREATIVE_TYPE("CREATIVE_TYPE"),
         
-        AGE_BUCKET_AND_GENDER("AGE_BUCKET_AND_GENDER");
+        AGE_BUCKET_AND_GENDER("AGE_BUCKET_AND_GENDER"),
+        
+        AUDIENCE_MULTIPLIER("AUDIENCE_MULTIPLIER");
 
 private String value;
 

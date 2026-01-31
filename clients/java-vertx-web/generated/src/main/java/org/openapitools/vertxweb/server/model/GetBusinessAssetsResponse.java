@@ -3,7 +3,9 @@ package org.openapitools.vertxweb.server.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.vertxweb.server.model.AssetGroupBinding;
+import org.openapitools.vertxweb.server.model.GetBusinessAssetsResponseCatalogInfo;
 
 /**
  * An object containing the permissions a business has on the asset.
@@ -11,17 +13,28 @@ import org.openapitools.vertxweb.server.model.AssetGroupBinding;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GetBusinessAssetsResponse   {
   
+  private AssetGroupBinding assetGroupInfo;
   private String assetId;
   private String assetType;
-  private AssetGroupBinding assetGroupInfo;
+  private GetBusinessAssetsResponseCatalogInfo catalogInfo;
 
   public GetBusinessAssetsResponse () {
 
   }
 
-  public GetBusinessAssetsResponse (String assetId, String assetType, AssetGroupBinding assetGroupInfo) {
+  public GetBusinessAssetsResponse (AssetGroupBinding assetGroupInfo, String assetId, String assetType, GetBusinessAssetsResponseCatalogInfo catalogInfo) {
+    this.assetGroupInfo = assetGroupInfo;
     this.assetId = assetId;
     this.assetType = assetType;
+    this.catalogInfo = catalogInfo;
+  }
+
+    
+  @JsonProperty("asset_group_info")
+  public AssetGroupBinding getAssetGroupInfo() {
+    return assetGroupInfo;
+  }
+  public void setAssetGroupInfo(AssetGroupBinding assetGroupInfo) {
     this.assetGroupInfo = assetGroupInfo;
   }
 
@@ -44,12 +57,12 @@ public class GetBusinessAssetsResponse   {
   }
 
     
-  @JsonProperty("asset_group_info")
-  public AssetGroupBinding getAssetGroupInfo() {
-    return assetGroupInfo;
+  @JsonProperty("catalog_info")
+  public GetBusinessAssetsResponseCatalogInfo getCatalogInfo() {
+    return catalogInfo;
   }
-  public void setAssetGroupInfo(AssetGroupBinding assetGroupInfo) {
-    this.assetGroupInfo = assetGroupInfo;
+  public void setCatalogInfo(GetBusinessAssetsResponseCatalogInfo catalogInfo) {
+    this.catalogInfo = catalogInfo;
   }
 
 
@@ -62,14 +75,15 @@ public class GetBusinessAssetsResponse   {
       return false;
     }
     GetBusinessAssetsResponse getBusinessAssetsResponse = (GetBusinessAssetsResponse) o;
-    return Objects.equals(assetId, getBusinessAssetsResponse.assetId) &&
+    return Objects.equals(assetGroupInfo, getBusinessAssetsResponse.assetGroupInfo) &&
+        Objects.equals(assetId, getBusinessAssetsResponse.assetId) &&
         Objects.equals(assetType, getBusinessAssetsResponse.assetType) &&
-        Objects.equals(assetGroupInfo, getBusinessAssetsResponse.assetGroupInfo);
+        Objects.equals(catalogInfo, getBusinessAssetsResponse.catalogInfo);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetId, assetType, assetGroupInfo);
+    return Objects.hash(assetGroupInfo, assetId, assetType, catalogInfo);
   }
 
   @Override
@@ -77,9 +91,10 @@ public class GetBusinessAssetsResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetBusinessAssetsResponse {\n");
     
+    sb.append("    assetGroupInfo: ").append(toIndentedString(assetGroupInfo)).append("\n");
     sb.append("    assetId: ").append(toIndentedString(assetId)).append("\n");
     sb.append("    assetType: ").append(toIndentedString(assetType)).append("\n");
-    sb.append("    assetGroupInfo: ").append(toIndentedString(assetGroupInfo)).append("\n");
+    sb.append("    catalogInfo: ").append(toIndentedString(catalogInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }

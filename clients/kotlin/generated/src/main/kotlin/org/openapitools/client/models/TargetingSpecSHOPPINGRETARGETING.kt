@@ -22,13 +22,17 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
+ * @param exclusionWindow Number of days ago to stop lookback timeframe for dynamic retargeting
  * @param lookbackWindow Number of days ago to start lookback timeframe for dynamic retargeting
  * @param tagTypes Event types to target for dynamic retargeting
- * @param exclusionWindow Number of days ago to stop lookback timeframe for dynamic retargeting
  */
 
 
-data class TargetingSpecSHOPPINGRETARGETING (
+data class TargetingSpecShoppingRetargeting (
+
+    /* Number of days ago to stop lookback timeframe for dynamic retargeting */
+    @Json(name = "exclusion_window")
+    val exclusionWindow: kotlin.Int? = null,
 
     /* Number of days ago to start lookback timeframe for dynamic retargeting */
     @Json(name = "lookback_window")
@@ -36,11 +40,7 @@ data class TargetingSpecSHOPPINGRETARGETING (
 
     /* Event types to target for dynamic retargeting */
     @Json(name = "tag_types")
-    val tagTypes: kotlin.collections.List<kotlin.Int>? = null,
-
-    /* Number of days ago to stop lookback timeframe for dynamic retargeting */
-    @Json(name = "exclusion_window")
-    val exclusionWindow: kotlin.Int? = null
+    val tagTypes: kotlin.collections.List<kotlin.Int>? = null
 
 ) {
 

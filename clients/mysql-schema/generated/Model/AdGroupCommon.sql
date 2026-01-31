@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `AdGroupCommon`
 --
-SELECT `name`, `status`, `budget_in_micro_currency`, `bid_in_micro_currency`, `optimization_goal_metadata`, `budget_type`, `start_time`, `end_time`, `targeting_spec`, `lifetime_frequency_cap`, `tracking_urls`, `auto_targeting_enabled`, `placement_group`, `pacing_delivery_type`, `campaign_id`, `billable_event`, `bid_strategy_type`, `targeting_template_ids` FROM `AdGroupCommon` WHERE 1;
+SELECT `auto_targeting_enabled`, `bid_in_micro_currency`, `bid_strategy_type`, `billable_event`, `budget_in_micro_currency`, `budget_type`, `campaign_id`, `end_time`, `is_creative_optimization`, `lifetime_frequency_cap`, `name`, `optimization_goal_metadata`, `pacing_delivery_type`, `placement_group`, `promotion_application_level`, `promotion_id`, `start_time`, `status`, `targeting_spec`, `targeting_template_ids`, `tracking_urls` FROM `AdGroupCommon` WHERE 1;
 
 --
 -- INSERT template for table `AdGroupCommon`
 --
-INSERT INTO `AdGroupCommon`(`name`, `status`, `budget_in_micro_currency`, `bid_in_micro_currency`, `optimization_goal_metadata`, `budget_type`, `start_time`, `end_time`, `targeting_spec`, `lifetime_frequency_cap`, `tracking_urls`, `auto_targeting_enabled`, `placement_group`, `pacing_delivery_type`, `campaign_id`, `billable_event`, `bid_strategy_type`, `targeting_template_ids`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `AdGroupCommon`(`auto_targeting_enabled`, `bid_in_micro_currency`, `bid_strategy_type`, `billable_event`, `budget_in_micro_currency`, `budget_type`, `campaign_id`, `end_time`, `is_creative_optimization`, `lifetime_frequency_cap`, `name`, `optimization_goal_metadata`, `pacing_delivery_type`, `placement_group`, `promotion_application_level`, `promotion_id`, `start_time`, `status`, `targeting_spec`, `targeting_template_ids`, `tracking_urls`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `AdGroupCommon`
 --
-UPDATE `AdGroupCommon` SET `name` = ?, `status` = ?, `budget_in_micro_currency` = ?, `bid_in_micro_currency` = ?, `optimization_goal_metadata` = ?, `budget_type` = ?, `start_time` = ?, `end_time` = ?, `targeting_spec` = ?, `lifetime_frequency_cap` = ?, `tracking_urls` = ?, `auto_targeting_enabled` = ?, `placement_group` = ?, `pacing_delivery_type` = ?, `campaign_id` = ?, `billable_event` = ?, `bid_strategy_type` = ?, `targeting_template_ids` = ? WHERE 1;
+UPDATE `AdGroupCommon` SET `auto_targeting_enabled` = ?, `bid_in_micro_currency` = ?, `bid_strategy_type` = ?, `billable_event` = ?, `budget_in_micro_currency` = ?, `budget_type` = ?, `campaign_id` = ?, `end_time` = ?, `is_creative_optimization` = ?, `lifetime_frequency_cap` = ?, `name` = ?, `optimization_goal_metadata` = ?, `pacing_delivery_type` = ?, `placement_group` = ?, `promotion_application_level` = ?, `promotion_id` = ?, `start_time` = ?, `status` = ?, `targeting_spec` = ?, `targeting_template_ids` = ?, `tracking_urls` = ? WHERE 1;
 
 --
 -- DELETE template for table `AdGroupCommon`

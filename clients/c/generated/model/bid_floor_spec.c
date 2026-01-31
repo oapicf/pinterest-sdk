@@ -23,43 +23,43 @@ pinterest_rest_api_bid_floor_spec__e bid_floor_spec_countries_FromString(char* c
 }
 
 static bid_floor_spec_t *bid_floor_spec_create_internal(
+    pinterest_rest_api_action_type__e billable_event,
     list_t *countries,
+    pinterest_rest_api_creative_type__e creative_type,
     pinterest_rest_api_currency__e currency,
     pinterest_rest_api_objective_type__e objective_type,
-    pinterest_rest_api_action_type__e billable_event,
-    optimization_goal_metadata_t *optimization_goal_metadata,
-    pinterest_rest_api_creative_type__e creative_type
+    optimization_goal_metadata_t *optimization_goal_metadata
     ) {
     bid_floor_spec_t *bid_floor_spec_local_var = malloc(sizeof(bid_floor_spec_t));
     if (!bid_floor_spec_local_var) {
         return NULL;
     }
+    bid_floor_spec_local_var->billable_event = billable_event;
     bid_floor_spec_local_var->countries = countries;
+    bid_floor_spec_local_var->creative_type = creative_type;
     bid_floor_spec_local_var->currency = currency;
     bid_floor_spec_local_var->objective_type = objective_type;
-    bid_floor_spec_local_var->billable_event = billable_event;
     bid_floor_spec_local_var->optimization_goal_metadata = optimization_goal_metadata;
-    bid_floor_spec_local_var->creative_type = creative_type;
 
     bid_floor_spec_local_var->_library_owned = 1;
     return bid_floor_spec_local_var;
 }
 
 __attribute__((deprecated)) bid_floor_spec_t *bid_floor_spec_create(
+    pinterest_rest_api_action_type__e billable_event,
     list_t *countries,
+    pinterest_rest_api_creative_type__e creative_type,
     pinterest_rest_api_currency__e currency,
     pinterest_rest_api_objective_type__e objective_type,
-    pinterest_rest_api_action_type__e billable_event,
-    optimization_goal_metadata_t *optimization_goal_metadata,
-    pinterest_rest_api_creative_type__e creative_type
+    optimization_goal_metadata_t *optimization_goal_metadata
     ) {
     return bid_floor_spec_create_internal (
+        billable_event,
         countries,
+        creative_type,
         currency,
         objective_type,
-        billable_event,
-        optimization_goal_metadata,
-        creative_type
+        optimization_goal_metadata
         );
 }
 
@@ -89,6 +89,20 @@ void bid_floor_spec_free(bid_floor_spec_t *bid_floor_spec) {
 cJSON *bid_floor_spec_convertToJSON(bid_floor_spec_t *bid_floor_spec) {
     cJSON *item = cJSON_CreateObject();
 
+    // bid_floor_spec->billable_event
+    if (pinterest_rest_api_action_type__NULL == bid_floor_spec->billable_event) {
+        goto fail;
+    }
+    cJSON *billable_event_local_JSON = action_type_convertToJSON(bid_floor_spec->billable_event);
+    if(billable_event_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "billable_event", billable_event_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
+    }
+
+
     // bid_floor_spec->countries
     if(bid_floor_spec->countries != pinterest_rest_api_list_COUNTRIES_NULL) {
     cJSON *countries = cJSON_AddArrayToObject(item, "countries");
@@ -105,6 +119,19 @@ cJSON *bid_floor_spec_convertToJSON(bid_floor_spec_t *bid_floor_spec) {
     }
     cJSON_AddItemToArray(countries, itemLocal);
     }
+    }
+    }
+
+
+    // bid_floor_spec->creative_type
+    if(bid_floor_spec->creative_type != pinterest_rest_api_creative_type__NULL) {
+    cJSON *creative_type_local_JSON = creative_type_convertToJSON(bid_floor_spec->creative_type);
+    if(creative_type_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "creative_type", creative_type_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
     }
     }
 
@@ -136,20 +163,6 @@ cJSON *bid_floor_spec_convertToJSON(bid_floor_spec_t *bid_floor_spec) {
     }
 
 
-    // bid_floor_spec->billable_event
-    if (pinterest_rest_api_action_type__NULL == bid_floor_spec->billable_event) {
-        goto fail;
-    }
-    cJSON *billable_event_local_JSON = action_type_convertToJSON(bid_floor_spec->billable_event);
-    if(billable_event_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "billable_event", billable_event_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
-    }
-
-
     // bid_floor_spec->optimization_goal_metadata
     if(bid_floor_spec->optimization_goal_metadata) {
     cJSON *optimization_goal_metadata_local_JSON = optimization_goal_metadata_convertToJSON(bid_floor_spec->optimization_goal_metadata);
@@ -159,19 +172,6 @@ cJSON *bid_floor_spec_convertToJSON(bid_floor_spec_t *bid_floor_spec) {
     cJSON_AddItemToObject(item, "optimization_goal_metadata", optimization_goal_metadata_local_JSON);
     if(item->child == NULL) {
     goto fail;
-    }
-    }
-
-
-    // bid_floor_spec->creative_type
-    if(bid_floor_spec->creative_type != pinterest_rest_api_creative_type__NULL) {
-    cJSON *creative_type_local_JSON = creative_type_convertToJSON(bid_floor_spec->creative_type);
-    if(creative_type_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "creative_type", creative_type_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
     }
     }
 
@@ -187,8 +187,14 @@ bid_floor_spec_t *bid_floor_spec_parseFromJSON(cJSON *bid_floor_specJSON){
 
     bid_floor_spec_t *bid_floor_spec_local_var = NULL;
 
+    // define the local variable for bid_floor_spec->billable_event
+    pinterest_rest_api_action_type__e billable_event_local_nonprim = 0;
+
     // define the local list for bid_floor_spec->countries
     list_t *countriesList = NULL;
+
+    // define the local variable for bid_floor_spec->creative_type
+    pinterest_rest_api_creative_type__e creative_type_local_nonprim = 0;
 
     // define the local variable for bid_floor_spec->currency
     pinterest_rest_api_currency__e currency_local_nonprim = 0;
@@ -196,14 +202,20 @@ bid_floor_spec_t *bid_floor_spec_parseFromJSON(cJSON *bid_floor_specJSON){
     // define the local variable for bid_floor_spec->objective_type
     pinterest_rest_api_objective_type__e objective_type_local_nonprim = 0;
 
-    // define the local variable for bid_floor_spec->billable_event
-    pinterest_rest_api_action_type__e billable_event_local_nonprim = 0;
-
     // define the local variable for bid_floor_spec->optimization_goal_metadata
     optimization_goal_metadata_t *optimization_goal_metadata_local_nonprim = NULL;
 
-    // define the local variable for bid_floor_spec->creative_type
-    pinterest_rest_api_creative_type__e creative_type_local_nonprim = 0;
+    // bid_floor_spec->billable_event
+    cJSON *billable_event = cJSON_GetObjectItemCaseSensitive(bid_floor_specJSON, "billable_event");
+    if (cJSON_IsNull(billable_event)) {
+        billable_event = NULL;
+    }
+    if (!billable_event) {
+        goto end;
+    }
+
+    
+    billable_event_local_nonprim = action_type_parseFromJSON(billable_event); //custom
 
     // bid_floor_spec->countries
     cJSON *countries = cJSON_GetObjectItemCaseSensitive(bid_floor_specJSON, "countries");
@@ -229,6 +241,15 @@ bid_floor_spec_t *bid_floor_spec_parseFromJSON(cJSON *bid_floor_specJSON){
     }
     }
 
+    // bid_floor_spec->creative_type
+    cJSON *creative_type = cJSON_GetObjectItemCaseSensitive(bid_floor_specJSON, "creative_type");
+    if (cJSON_IsNull(creative_type)) {
+        creative_type = NULL;
+    }
+    if (creative_type) { 
+    creative_type_local_nonprim = creative_type_parseFromJSON(creative_type); //custom
+    }
+
     // bid_floor_spec->currency
     cJSON *currency = cJSON_GetObjectItemCaseSensitive(bid_floor_specJSON, "currency");
     if (cJSON_IsNull(currency)) {
@@ -250,18 +271,6 @@ bid_floor_spec_t *bid_floor_spec_parseFromJSON(cJSON *bid_floor_specJSON){
     objective_type_local_nonprim = objective_type_parseFromJSON(objective_type); //custom
     }
 
-    // bid_floor_spec->billable_event
-    cJSON *billable_event = cJSON_GetObjectItemCaseSensitive(bid_floor_specJSON, "billable_event");
-    if (cJSON_IsNull(billable_event)) {
-        billable_event = NULL;
-    }
-    if (!billable_event) {
-        goto end;
-    }
-
-    
-    billable_event_local_nonprim = action_type_parseFromJSON(billable_event); //custom
-
     // bid_floor_spec->optimization_goal_metadata
     cJSON *optimization_goal_metadata = cJSON_GetObjectItemCaseSensitive(bid_floor_specJSON, "optimization_goal_metadata");
     if (cJSON_IsNull(optimization_goal_metadata)) {
@@ -271,27 +280,21 @@ bid_floor_spec_t *bid_floor_spec_parseFromJSON(cJSON *bid_floor_specJSON){
     optimization_goal_metadata_local_nonprim = optimization_goal_metadata_parseFromJSON(optimization_goal_metadata); //nonprimitive
     }
 
-    // bid_floor_spec->creative_type
-    cJSON *creative_type = cJSON_GetObjectItemCaseSensitive(bid_floor_specJSON, "creative_type");
-    if (cJSON_IsNull(creative_type)) {
-        creative_type = NULL;
-    }
-    if (creative_type) { 
-    creative_type_local_nonprim = creative_type_parseFromJSON(creative_type); //custom
-    }
-
 
     bid_floor_spec_local_var = bid_floor_spec_create_internal (
+        billable_event_local_nonprim,
         countries ? countriesList : NULL,
+        creative_type ? creative_type_local_nonprim : 0,
         currency_local_nonprim,
         objective_type ? objective_type_local_nonprim : 0,
-        billable_event_local_nonprim,
-        optimization_goal_metadata ? optimization_goal_metadata_local_nonprim : NULL,
-        creative_type ? creative_type_local_nonprim : 0
+        optimization_goal_metadata ? optimization_goal_metadata_local_nonprim : NULL
         );
 
     return bid_floor_spec_local_var;
 end:
+    if (billable_event_local_nonprim) {
+        billable_event_local_nonprim = 0;
+    }
     if (countriesList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, countriesList) {
@@ -301,21 +304,18 @@ end:
         list_freeList(countriesList);
         countriesList = NULL;
     }
+    if (creative_type_local_nonprim) {
+        creative_type_local_nonprim = 0;
+    }
     if (currency_local_nonprim) {
         currency_local_nonprim = 0;
     }
     if (objective_type_local_nonprim) {
         objective_type_local_nonprim = 0;
     }
-    if (billable_event_local_nonprim) {
-        billable_event_local_nonprim = 0;
-    }
     if (optimization_goal_metadata_local_nonprim) {
         optimization_goal_metadata_free(optimization_goal_metadata_local_nonprim);
         optimization_goal_metadata_local_nonprim = NULL;
-    }
-    if (creative_type_local_nonprim) {
-        creative_type_local_nonprim = 0;
     }
     return NULL;
 

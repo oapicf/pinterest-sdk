@@ -15,7 +15,7 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.MediaUploadAllOfUploadParameters
+import org.openapitools.client.models.MediaUploadParameters
 import org.openapitools.client.models.MediaUploadType
 
 import com.squareup.moshi.Json
@@ -26,8 +26,8 @@ import com.squareup.moshi.JsonClass
  *
  * @param mediaId Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
  * @param mediaType 
+ * @param uploadParameters The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
  * @param uploadUrl The URL where you will POST your media file.
- * @param uploadParameters 
  */
 
 
@@ -35,17 +35,18 @@ data class MediaUpload (
 
     /* Unique identifier for this media upload. Used to track status and for attaching during Pin creation. */
     @Json(name = "media_id")
-    val mediaId: kotlin.String? = null,
+    val mediaId: kotlin.String,
 
     @Json(name = "media_type")
-    val mediaType: MediaUploadType? = null,
+    val mediaType: MediaUploadType,
+
+    /* The list of parameter key/value pairs you will need to send with your POST request to upload your media file. */
+    @Json(name = "upload_parameters")
+    val uploadParameters: MediaUploadParameters? = null,
 
     /* The URL where you will POST your media file. */
     @Json(name = "upload_url")
-    val uploadUrl: kotlin.String? = null,
-
-    @Json(name = "upload_parameters")
-    val uploadParameters: MediaUploadAllOfUploadParameters? = null
+    val uploadUrl: kotlin.String? = null
 
 ) {
 

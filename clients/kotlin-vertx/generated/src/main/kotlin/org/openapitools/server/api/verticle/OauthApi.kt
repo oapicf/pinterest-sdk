@@ -1,5 +1,6 @@
 package org.openapitools.server.api.verticle
 
+import org.openapitools.server.api.model.ConversionAccessTokenResponse
 import org.openapitools.server.api.model.Error
 import org.openapitools.server.api.model.OauthAccessTokenResponse
 import io.vertx.core.Vertx
@@ -18,9 +19,15 @@ import java.util.Map
 
 interface OauthApi  {
     fun init(vertx:Vertx,config:JsonObject)
+    /* oauthConversionToken
+     * Generate OAuth access token for conversion API */
+    suspend fun oauthConversionToken(context:OperationRequest):Response<ConversionAccessTokenResponse>
     /* oauthToken
      * Generate OAuth access token */
     suspend fun oauthToken(grantType:kotlin.String?,context:OperationRequest):Response<OauthAccessTokenResponse>
+    /* tokenRevoke
+     * Revoke a token */
+    suspend fun tokenRevoke(token:kotlin.String?,tokenTypeHint:kotlin.String?,context:OperationRequest):Response<Void>
     companion object {
         const val address = "OauthApi-service"
         suspend fun createRouterFactory(vertx: Vertx,path:String): io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory {

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,28 +16,16 @@ package openapi
 
 type Account struct {
 
-	// Type of account
-	AccountType string `json:"account_type,omitempty"`
-
-	// User account ID.
-	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
-
-	ProfileImage string `json:"profile_image,omitempty"`
-
-	WebsiteUrl string `json:"website_url,omitempty"`
-
-	Username string `json:"username,omitempty"`
-
 	// Profile about description.
 	About string `json:"about,omitempty"`
 
-	BusinessName *string `json:"business_name,omitempty"`
+	// Type of account
+	AccountType string `json:"account_type,omitempty"`
 
 	// User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
 	BoardCount *int32 `json:"board_count,omitempty"`
 
-	// User account pin count. This includes both created and saved pins.
-	PinCount *int32 `json:"pin_count,omitempty"`
+	BusinessName *string `json:"business_name,omitempty"`
 
 	// User account follower count.
 	FollowerCount *int32 `json:"follower_count,omitempty"`
@@ -45,8 +33,20 @@ type Account struct {
 	// User account following count.
 	FollowingCount *int32 `json:"following_count,omitempty"`
 
+	// User account ID.
+	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
+
 	// User account monthly views.
 	MonthlyViews *int32 `json:"monthly_views,omitempty"`
+
+	// User account pin count. This includes both created and saved pins.
+	PinCount *int32 `json:"pin_count,omitempty"`
+
+	ProfileImage string `json:"profile_image,omitempty"`
+
+	Username string `json:"username,omitempty"`
+
+	WebsiteUrl string `json:"website_url,omitempty"`
 }
 
 // AssertAccountRequired checks if the required fields are not zero-ed

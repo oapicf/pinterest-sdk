@@ -8,8 +8,8 @@
 
 (def reports-stats-200-response-data
   {
-   (ds/req :items) (s/coll-of catalogs-report-stats-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of catalogs-report-stats-spec)
    })
 
 (def reports-stats-200-response-spec

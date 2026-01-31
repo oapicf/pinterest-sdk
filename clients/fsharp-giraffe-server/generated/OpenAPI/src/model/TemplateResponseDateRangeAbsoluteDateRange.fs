@@ -9,8 +9,8 @@ module TemplateResponseDateRangeAbsoluteDateRange =
 
 
   type TemplateResponse_date_range_absolute_date_range = {
-    Type : string;
-    StartDate : decimal;
     EndDate : decimal;
+    StartDate : decimal;
+    Type : string;
   }
   //#endregion

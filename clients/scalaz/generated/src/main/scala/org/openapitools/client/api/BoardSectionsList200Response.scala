@@ -12,9 +12,9 @@ import org.joda.time.DateTime
 import BoardSectionsList200Response._
 
 case class BoardSectionsList200Response (
-  /* Board sections */
-  items: List[BoardSection],
-bookmark: Option[String])
+  bookmark: Option[String],
+/* Board sections */
+  items: List[BoardSection])
 
 object BoardSectionsList200Response {
   import DateTimeCodecs._

@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -25,9 +25,10 @@ import org.openapitools.model.ItemAttributesRequest;
  */
 
 @ApiModel(description = "An item to be upserted")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsUpsertRetailItem   {
   
+  private ItemAttributesRequest attributes;
   private String itemId;
 
 
@@ -48,7 +49,23 @@ public class CatalogsUpsertRetailItem   {
   }
 
   private OperationEnum operation;
-  private ItemAttributesRequest attributes;
+
+  /**
+   */
+  public CatalogsUpsertRetailItem attributes(ItemAttributesRequest attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("attributes")
+  public ItemAttributesRequest getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(ItemAttributesRequest attributes) {
+    this.attributes = attributes;
+  }
 
   /**
    * The catalog item id in the merchant namespace
@@ -85,23 +102,6 @@ public class CatalogsUpsertRetailItem   {
     this.operation = operation;
   }
 
-  /**
-   */
-  public CatalogsUpsertRetailItem attributes(ItemAttributesRequest attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("attributes")
-  public ItemAttributesRequest getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(ItemAttributesRequest attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -112,14 +112,14 @@ public class CatalogsUpsertRetailItem   {
       return false;
     }
     CatalogsUpsertRetailItem catalogsUpsertRetailItem = (CatalogsUpsertRetailItem) o;
-    return Objects.equals(itemId, catalogsUpsertRetailItem.itemId) &&
-        Objects.equals(operation, catalogsUpsertRetailItem.operation) &&
-        Objects.equals(attributes, catalogsUpsertRetailItem.attributes);
+    return Objects.equals(attributes, catalogsUpsertRetailItem.attributes) &&
+        Objects.equals(itemId, catalogsUpsertRetailItem.itemId) &&
+        Objects.equals(operation, catalogsUpsertRetailItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, operation, attributes);
+    return Objects.hash(attributes, itemId, operation);
   }
 
   @Override
@@ -127,9 +127,9 @@ public class CatalogsUpsertRetailItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsUpsertRetailItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

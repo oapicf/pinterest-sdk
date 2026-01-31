@@ -7,7 +7,9 @@ private class OASBulkEntityTypeTest {
             OASBulkEntityType.AD_GROUP,
             OASBulkEntityType.PRODUCT_GROUP,
             OASBulkEntityType.AD,
-            OASBulkEntityType.KEYWORD
+            OASBulkEntityType.KEYWORD,
+            OASBulkEntityType.LABEL,
+            OASBulkEntityType.SCHEDULE
         };
         Set<OASBulkEntityType> actual  = new Set<OASBulkEntityType>(OASBulkEntityType.values());
         System.assertEquals(expected, actual);

@@ -2,10 +2,12 @@ namespace OpenAPI
 open OpenAPI.Model.Error
 open OpenAPI.Model.Granularity
 open OpenAPI.Model.ProductGroupAnalyticsResponseInner
+open OpenAPI.Model.ProductGroupPromotion
 open OpenAPI.Model.ProductGroupPromotionCreateRequest
 open OpenAPI.Model.ProductGroupPromotionResponse
 open OpenAPI.Model.ProductGroupPromotionUpdateRequest
 open OpenAPI.Model.ProductGroupPromotionsList200Response
+open OpenAPI.Model.ReportingTimeZone
 open ProductGroupPromotionsApiHandlerParams
 open ProductGroupPromotionsApiServiceInterface
 open System.Collections.Generic
@@ -27,7 +29,7 @@ module ProductGroupPromotionsApiServiceImplementation =
 
         member this.ProductGroupPromotionsGet () =
           if true then
-            let content = "Success" :> obj :?> ProductGroupPromotionResponse // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "Success" :> obj :?> ProductGroupPromotion // this cast is obviously wrong, and is only intended to allow generated project to compile   
             ProductGroupPromotionsGetStatusCode200 { content = content }
           else
             let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   

@@ -12,16 +12,18 @@ import org.joda.time.DateTime
 import PinMediaSourceVideoID._
 
 case class PinMediaSourceVideoID (
-  sourceType: SourceType,
-/* Cover image url. */
-  coverImageUrl: Option[String],
-/* Content type for cover image Base64. */
-  coverImageContentType: Option[CoverImageContentType],
+  /* Content type for cover image Base64. */
+  coverImageContentType: Option[ModelContentType],
 /* Cover image Base64. */
   coverImageData: Option[String],
-mediaId: String,
+/* Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used. */
+  coverImageKeyFrameTime: Option[Integer],
+/* Cover image URL. */
+  coverImageUrl: Option[String],
 /* Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users. */
-  isStandard: Option[Boolean])
+  isStandard: Option[Boolean],
+mediaId: String,
+sourceType: SourceType)
 
 object PinMediaSourceVideoID {
   import DateTimeCodecs._
@@ -44,28 +46,6 @@ object PinMediaSourceVideoID {
 
   implicit val SourceTypeEnumDecoder: DecodeJson[SourceType] =
     DecodeJson.optionDecoder[SourceType](n => n.string.flatMap(jStr => SourceType.toSourceType(jStr)), "SourceType failed to de-serialize")
-  sealed trait CoverImageContentType
-  case object ImageJpeg extends CoverImageContentType
-  case object ImagePng extends CoverImageContentType
-
-  object CoverImageContentType {
-    def toCoverImageContentType(s: String): Option[CoverImageContentType] = s match {
-      case "ImageJpeg" => Some(ImageJpeg)
-      case "ImagePng" => Some(ImagePng)
-      case _ => None
-    }
-
-    def fromCoverImageContentType(x: CoverImageContentType): String = x match {
-      case ImageJpeg => "ImageJpeg"
-      case ImagePng => "ImagePng"
-    }
-  }
-
-  implicit val CoverImageContentTypeEnumEncoder: EncodeJson[CoverImageContentType] =
-    EncodeJson[CoverImageContentType](is => StringEncodeJson(CoverImageContentType.fromCoverImageContentType(is)))
-
-  implicit val CoverImageContentTypeEnumDecoder: DecodeJson[CoverImageContentType] =
-    DecodeJson.optionDecoder[CoverImageContentType](n => n.string.flatMap(jStr => CoverImageContentType.toCoverImageContentType(jStr)), "CoverImageContentType failed to de-serialize")
 
   implicit val PinMediaSourceVideoIDCodecJson: CodecJson[PinMediaSourceVideoID] = CodecJson.derive[PinMediaSourceVideoID]
   implicit val PinMediaSourceVideoIDDecoder: EntityDecoder[PinMediaSourceVideoID] = jsonOf[PinMediaSourceVideoID]

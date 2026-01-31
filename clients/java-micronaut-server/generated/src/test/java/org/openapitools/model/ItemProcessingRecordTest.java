@@ -25,14 +25,6 @@ public class ItemProcessingRecordTest {
     }
 
     /**
-     * Test the property 'itemId'
-     */
-    @Test
-    public void itemIdTest() {
-        // TODO: test itemId
-    }
-
-    /**
      * Test the property 'errors'
      */
     @Test
@@ -41,11 +33,11 @@ public class ItemProcessingRecordTest {
     }
 
     /**
-     * Test the property 'warnings'
+     * Test the property 'itemId'
      */
     @Test
-    public void warningsTest() {
-        // TODO: test warnings
+    public void itemIdTest() {
+        // TODO: test itemId
     }
 
     /**
@@ -54,6 +46,14 @@ public class ItemProcessingRecordTest {
     @Test
     public void statusTest() {
         // TODO: test status
+    }
+
+    /**
+     * Test the property 'warnings'
+     */
+    @Test
+    public void warningsTest() {
+        // TODO: test warnings
     }
 
 }

@@ -8,15 +8,16 @@ Campaign Data
 Name | Type
 ------------ | -------------
 `adAccountId` | string
-`name` | string
-`status` | [EntityStatus](EntityStatus.md)
-`lifetimeSpendCap` | number
 `dailySpendCap` | number
-`orderLineId` | string
-`trackingUrls` | [TrackingUrls](TrackingUrls.md)
-`startTime` | number
 `endTime` | number
+`isAutomatedCampaign` | boolean
 `isFlexibleDailyBudgets` | boolean
+`lifetimeSpendCap` | number
+`name` | string
+`orderLineId` | string
+`startTime` | number
+`status` | [EntityStatus](EntityStatus.md)
+`trackingUrls` | [TrackingUrls](TrackingUrls.md)
 
 ## Example
 
@@ -26,15 +27,16 @@ import type { CampaignCommon } from ''
 // TODO: Update the object below with actual values
 const example = {
   "adAccountId": 549755885175,
-  "name": ACME Tools,
-  "status": null,
-  "lifetimeSpendCap": 1432744744,
   "dailySpendCap": 1432744744,
-  "orderLineId": 549755885175,
-  "trackingUrls": null,
-  "startTime": 1580865126,
   "endTime": 1644023526,
+  "isAutomatedCampaign": true,
   "isFlexibleDailyBudgets": true,
+  "lifetimeSpendCap": 1432744744,
+  "name": ACME Tools,
+  "orderLineId": 549755885175,
+  "startTime": 1580865126,
+  "status": null,
+  "trackingUrls": null,
 } satisfies CampaignCommon
 
 console.log(example)

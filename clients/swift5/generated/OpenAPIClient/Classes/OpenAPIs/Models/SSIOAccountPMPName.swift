@@ -12,27 +12,27 @@ import AnyCodable
 
 public struct SSIOAccountPMPName: Codable, JSONEncodable, Hashable {
 
-    /** Display name */
-    public var name: String?
     /** Salesforce id for PMP */
     public var id: String?
+    /** Display name */
+    public var name: String?
 
-    public init(name: String? = nil, id: String? = nil) {
-        self.name = name
+    public init(id: String? = nil, name: String? = nil) {
         self.id = id
+        self.name = name
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case name
         case id
+        case name
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(name, forKey: .name)
     }
 }
 

@@ -9,16 +9,16 @@ import org.openapitools.models.BigDecimal
 
 /**
  * The result, and link out, based on the user’s choice.
- * @param organicUnderscorepinUnderscoreid 
  * @param androidUnderscoredeepUnderscorelink 
- * @param iosUnderscoredeepUnderscorelink 
  * @param destinationUnderscoreurl 
+ * @param iosUnderscoredeepUnderscorelink 
+ * @param organicUnderscorepinUnderscoreid 
  * @param resultUnderscoreid 
  */
-case class QuizPinResult(organicUnderscorepinUnderscoreid: Option[String],
-                androidUnderscoredeepUnderscorelink: Option[String],
-                iosUnderscoredeepUnderscorelink: Option[String],
+case class QuizPinResult(androidUnderscoredeepUnderscorelink: Option[String],
                 destinationUnderscoreurl: Option[String],
+                iosUnderscoredeepUnderscorelink: Option[String],
+                organicUnderscorepinUnderscoreid: Option[String],
                 resultUnderscoreid: Option[BigDecimal]
                 )
 

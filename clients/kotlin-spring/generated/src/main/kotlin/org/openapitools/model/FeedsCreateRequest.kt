@@ -28,21 +28,18 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param name A human-friendly name associated to a given feed.
  * @param format 
  * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+ * @param name A human-friendly name associated to a given feed.
+ * @param credentials 
+ * @param defaultAvailability 
+ * @param defaultCountry 
  * @param defaultCurrency 
  * @param defaultLocale 
- * @param credentials 
  * @param preferredProcessingSchedule 
- * @param defaultCountry 
- * @param defaultAvailability 
  * @param status 
  */
 data class FeedsCreateRequest(
-
-    @Schema(example = "null", required = true, description = "A human-friendly name associated to a given feed.")
-    @get:JsonProperty("name", required = true) val name: kotlin.String,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
@@ -52,9 +49,24 @@ data class FeedsCreateRequest(
     @Schema(example = "null", required = true, description = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
     @get:JsonProperty("location", required = true) val location: kotlin.String,
 
+    @Schema(example = "null", required = true, description = "A human-friendly name associated to a given feed.")
+    @get:JsonProperty("name", required = true) val name: kotlin.String,
+
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("catalog_type", required = true) override val catalogType: CatalogsType,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("credentials") val credentials: CatalogsFeedCredentials? = null,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("default_availability") val defaultAvailability: ProductAvailabilityType? = null,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("default_country") val defaultCountry: Country? = null,
 
     @field:Valid
     @Schema(example = "null", description = "")
@@ -66,19 +78,7 @@ data class FeedsCreateRequest(
 
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("credentials") val credentials: CatalogsFeedCredentials? = null,
-
-    @field:Valid
-    @Schema(example = "null", description = "")
     @get:JsonProperty("preferred_processing_schedule") val preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = null,
-
-    @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("default_country") val defaultCountry: Country? = null,
-
-    @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("default_availability") val defaultAvailability: ProductAvailabilityType? = null,
 
     @field:Valid
     @Schema(example = "null", description = "")

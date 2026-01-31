@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**array[CatalogsItemValidationIssues]**](CatalogsItemValidationIssues.md) |  | 
 **bookmark** | **character** |  | [optional] 
+**items** | [**array[CatalogsItemValidationIssues]**](CatalogsItemValidationIssues.md) |  | 
 
 

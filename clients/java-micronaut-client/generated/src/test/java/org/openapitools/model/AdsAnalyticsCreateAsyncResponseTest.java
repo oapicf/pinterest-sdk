@@ -22,6 +22,14 @@ public class AdsAnalyticsCreateAsyncResponseTest {
     }
 
     /**
+     * Test the property 'message'
+     */
+    @Test
+    public void messageTest() {
+        // TODO: test message
+    }
+
+    /**
      * Test the property 'reportStatus'
      */
     @Test
@@ -35,14 +43,6 @@ public class AdsAnalyticsCreateAsyncResponseTest {
     @Test
     public void tokenTest() {
         // TODO: test token
-    }
-
-    /**
-     * Test the property 'message'
-     */
-    @Test
-    public void messageTest() {
-        // TODO: test message
     }
 
 }

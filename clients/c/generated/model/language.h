@@ -1,7 +1,7 @@
 /*
  * language.h
  *
- * Language code, which is among the offical ISO 639-1 language list.
+ * Language code, which is among the official ISO 639-1 language list.
  */
 
 #ifndef _language_H_

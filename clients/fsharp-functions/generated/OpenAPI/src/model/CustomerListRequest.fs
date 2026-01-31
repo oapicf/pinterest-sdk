@@ -11,14 +11,12 @@ module CustomerListRequest =
 
   [<CLIMutable>]
   type CustomerListRequest = {
+    [<JsonProperty(PropertyName = "list_type")>]
+    ListType : UserListType;
     [<JsonProperty(PropertyName = "name")>]
     Name : string;
     [<JsonProperty(PropertyName = "records")>]
     Records : string;
-    [<JsonProperty(PropertyName = "list_type")>]
-    ListType : UserListType;
-    [<JsonProperty(PropertyName = "exceptions")>]
-    Exceptions : obj;
   }
 
   //#endregion

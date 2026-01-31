@@ -407,155 +407,11 @@ public class Example {
 
 <a id="boardsCreate"></a>
 # **boardsCreate**
-> Board boardsCreate(board, adAccountId)
+> Board boardsCreate(boardCreate, adAccountId)
 
 Create board
 
-Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
-
-### Example
-```java
-// Import classes:
-import com.github.oapicf.pinterestsdk.ApiClient;
-import com.github.oapicf.pinterestsdk.ApiException;
-import com.github.oapicf.pinterestsdk.Configuration;
-import com.github.oapicf.pinterestsdk.auth.*;
-import com.github.oapicf.pinterestsdk.models.*;
-import com.github.oapicf.pinterestsdk.api.BoardsApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.pinterest.com/v5");
-    
-    // Configure OAuth2 access token for authorization: pinterest_oauth2
-    OAuth pinterest_oauth2 = (OAuth) defaultClient.getAuthentication("pinterest_oauth2");
-    pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-    BoardsApi apiInstance = new BoardsApi(defaultClient);
-    Board board = new Board(); // Board | Create a board using a single board json object.
-    String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-    try {
-      Board result = apiInstance.boardsCreate(board, adAccountId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling BoardsApi#boardsCreate");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **board** | [**Board**](Board.md)| Create a board using a single board json object. | |
-| **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
-
-### Return type
-
-[**Board**](Board.md)
-
-### Authorization
-
-[pinterest_oauth2](../README.md#pinterest_oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | response |  -  |
-| **400** | The board name is invalid or duplicated. |  -  |
-| **0** | Unexpected error |  -  |
-
-<a id="boardsDelete"></a>
-# **boardsDelete**
-> boardsDelete(boardId, adAccountId)
-
-Delete board
-
-Delete a board owned by the \&quot;operation user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
-
-### Example
-```java
-// Import classes:
-import com.github.oapicf.pinterestsdk.ApiClient;
-import com.github.oapicf.pinterestsdk.ApiException;
-import com.github.oapicf.pinterestsdk.Configuration;
-import com.github.oapicf.pinterestsdk.auth.*;
-import com.github.oapicf.pinterestsdk.models.*;
-import com.github.oapicf.pinterestsdk.api.BoardsApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.pinterest.com/v5");
-    
-    // Configure OAuth2 access token for authorization: pinterest_oauth2
-    OAuth pinterest_oauth2 = (OAuth) defaultClient.getAuthentication("pinterest_oauth2");
-    pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-    BoardsApi apiInstance = new BoardsApi(defaultClient);
-    String boardId = "boardId_example"; // String | Unique identifier of a board.
-    String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-    try {
-      apiInstance.boardsDelete(boardId, adAccountId);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling BoardsApi#boardsDelete");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **boardId** | **String**| Unique identifier of a board. | |
-| **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[pinterest_oauth2](../README.md#pinterest_oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | Board deleted successfully |  -  |
-| **403** | Not authorized to delete the board. |  -  |
-| **404** | Board not found. |  -  |
-| **409** | Could not get exclusive access to delete the board. |  -  |
-| **429** | This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window. |  -  |
-| **0** | Unexpected error |  -  |
-
-<a id="boardsGet"></a>
-# **boardsGet**
-> Board boardsGet(boardId, adAccountId)
-
-Get board
-
-Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
 
 ### Example
 ```java
@@ -581,7 +437,161 @@ public class Example {
     client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     BoardsApi apiInstance = new BoardsApi(defaultClient);
-    String boardId = "boardId_example"; // String | Unique identifier of a board.
+    BoardCreate boardCreate = new BoardCreate(); // BoardCreate | 
+    String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
+    try {
+      Board result = apiInstance.boardsCreate(boardCreate, adAccountId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BoardsApi#boardsCreate");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **boardCreate** | [**BoardCreate**](BoardCreate.md)|  | |
+| **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
+
+### Return type
+
+[**Board**](Board.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The request has succeeded. |  -  |
+| **201** | Resource create operation completed successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
+
+<a id="boardsDelete"></a>
+# **boardsDelete**
+> boardsDelete(boardId, adAccountId)
+
+Delete board
+
+Delete a board owned by the \&quot;operation user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
+
+### Example
+```java
+// Import classes:
+import com.github.oapicf.pinterestsdk.ApiClient;
+import com.github.oapicf.pinterestsdk.ApiException;
+import com.github.oapicf.pinterestsdk.Configuration;
+import com.github.oapicf.pinterestsdk.auth.*;
+import com.github.oapicf.pinterestsdk.models.*;
+import com.github.oapicf.pinterestsdk.api.BoardsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.pinterest.com/v5");
+    
+    // Configure OAuth2 access token for authorization: pinterest_oauth2
+    OAuth pinterest_oauth2 = (OAuth) defaultClient.getAuthentication("pinterest_oauth2");
+    pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    BoardsApi apiInstance = new BoardsApi(defaultClient);
+    String boardId = "boardId_example"; // String | 
+    String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
+    try {
+      apiInstance.boardsDelete(boardId, adAccountId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BoardsApi#boardsDelete");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **boardId** | **String**|  | |
+| **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Resource deleted successfully. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
+
+<a id="boardsGet"></a>
+# **boardsGet**
+> Board boardsGet(boardId, adAccountId)
+
+Get board
+
+Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
+
+### Example
+```java
+// Import classes:
+import com.github.oapicf.pinterestsdk.ApiClient;
+import com.github.oapicf.pinterestsdk.ApiException;
+import com.github.oapicf.pinterestsdk.Configuration;
+import com.github.oapicf.pinterestsdk.auth.*;
+import com.github.oapicf.pinterestsdk.models.*;
+import com.github.oapicf.pinterestsdk.api.BoardsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.pinterest.com/v5");
+    
+    // Configure OAuth2 access token for authorization: pinterest_oauth2
+    OAuth pinterest_oauth2 = (OAuth) defaultClient.getAuthentication("pinterest_oauth2");
+    pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    // Configure OAuth2 access token for authorization: client_credentials
+    OAuth client_credentials = (OAuth) defaultClient.getAuthentication("client_credentials");
+    client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
+    BoardsApi apiInstance = new BoardsApi(defaultClient);
+    String boardId = "boardId_example"; // String | 
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     try {
       Board result = apiInstance.boardsGet(boardId, adAccountId);
@@ -601,7 +611,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **boardId** | **String**| Unique identifier of a board. | |
+| **boardId** | **String**|  | |
 | **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -620,17 +630,21 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **404** | Board not found. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="boardsList"></a>
 # **boardsList**
-> BoardsList200Response boardsList(adAccountId, bookmark, pageSize, privacy)
+> BoardsList200Response boardsList(adAccountId, privacy, bookmark, pageSize)
 
 List boards
 
-Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
 
 ### Example
 ```java
@@ -657,11 +671,11 @@ public class Example {
 
     BoardsApi apiInstance = new BoardsApi(defaultClient);
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
+    BoardPrivacyFilter privacy = BoardPrivacyFilter.fromValue("ALL"); // BoardPrivacyFilter | The privacy level of the board
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
-    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    String privacy = "ALL"; // String | Privacy setting for a board.
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
     try {
-      BoardsList200Response result = apiInstance.boardsList(adAccountId, bookmark, pageSize, privacy);
+      BoardsList200Response result = apiInstance.boardsList(adAccountId, privacy, bookmark, pageSize);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BoardsApi#boardsList");
@@ -679,9 +693,9 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
+| **privacy** | [**BoardPrivacyFilter**](.md)| The privacy level of the board | [optional] [enum: ALL, PUBLIC, PROTECTED, SECRET, PUBLIC_AND_SECRET] |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
-| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **privacy** | **String**| Privacy setting for a board. | [optional] [enum: ALL, PROTECTED, PUBLIC, SECRET, PUBLIC_AND_SECRET] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
 
@@ -699,8 +713,13 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 
 <a id="boardsListPins"></a>
 # **boardsListPins**
@@ -737,9 +756,9 @@ public class Example {
     String boardId = "boardId_example"; // String | Unique identifier of a board.
     String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
     Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    List<String> creativeTypes = Arrays.asList(); // List<String> | Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
+    List<CreativeType> creativeTypes = Arrays.asList(); // List<CreativeType> | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
-    Boolean pinMetrics = false; // Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+    Boolean pinMetrics = false; // Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
     try {
       BoardsListPins200Response result = apiInstance.boardsListPins(boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics);
       System.out.println(result);
@@ -761,9 +780,9 @@ public class Example {
 | **boardId** | **String**| Unique identifier of a board. | |
 | **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
 | **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **creativeTypes** | [**List&lt;String&gt;**](String.md)| Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] [enum: REGULAR, VIDEO, SHOPPING, CAROUSEL, MAX_VIDEO, SHOP_THE_PIN, COLLECTION, IDEA] |
+| **creativeTypes** | [**List&lt;CreativeType&gt;**](CreativeType.md)| Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] |
 | **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
-| **pinMetrics** | **Boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false] |
+| **pinMetrics** | **Boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false] |
 
 ### Return type
 
@@ -787,11 +806,11 @@ public class Example {
 
 <a id="boardsUpdate"></a>
 # **boardsUpdate**
-> Board boardsUpdate(boardId, boardUpdate, adAccountId)
+> BoardWithUpdatePrivacy boardsUpdate(boardId, boardWithUpdatePrivacyUpdate, adAccountId)
 
 Update board
 
-Update a board owned by the \&quot;operating user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+Update a board owned by the \&quot;operating user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
 
 ### Example
 ```java
@@ -812,12 +831,16 @@ public class Example {
     OAuth pinterest_oauth2 = (OAuth) defaultClient.getAuthentication("pinterest_oauth2");
     pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
+    // Configure OAuth2 access token for authorization: client_credentials
+    OAuth client_credentials = (OAuth) defaultClient.getAuthentication("client_credentials");
+    client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
     BoardsApi apiInstance = new BoardsApi(defaultClient);
-    String boardId = "boardId_example"; // String | Unique identifier of a board.
-    BoardUpdate boardUpdate = new BoardUpdate(); // BoardUpdate | Update a board.
+    String boardId = "boardId_example"; // String | 
+    BoardWithUpdatePrivacyUpdate boardWithUpdatePrivacyUpdate = new BoardWithUpdatePrivacyUpdate(); // BoardWithUpdatePrivacyUpdate | 
     String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
     try {
-      Board result = apiInstance.boardsUpdate(boardId, boardUpdate, adAccountId);
+      BoardWithUpdatePrivacy result = apiInstance.boardsUpdate(boardId, boardWithUpdatePrivacyUpdate, adAccountId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BoardsApi#boardsUpdate");
@@ -834,17 +857,17 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **boardId** | **String**| Unique identifier of a board. | |
-| **boardUpdate** | [**BoardUpdate**](BoardUpdate.md)| Update a board. | |
+| **boardId** | **String**|  | |
+| **boardWithUpdatePrivacyUpdate** | [**BoardWithUpdatePrivacyUpdate**](BoardWithUpdatePrivacyUpdate.md)|  | |
 | **adAccountId** | **String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
 
-[**Board**](Board.md)
+[**BoardWithUpdatePrivacy**](BoardWithUpdatePrivacy.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -854,9 +877,11 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | response |  -  |
-| **400** | Invalid board parameters. |  -  |
-| **403** | Not authorized to update the board. |  -  |
-| **429** | This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window. |  -  |
-| **0** | Unexpected error |  -  |
+| **200** | The request has succeeded. |  -  |
+| **400** | The request could not be understood by the server due to unexpected data. |  -  |
+| **401** | Authentication is required and has either failed or not been provided. |  -  |
+| **403** | The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource. |  -  |
+| **404** | The requested resource could not be found on this server. |  -  |
+| **429** | The user has sent too many requests in a given amount of time and is being rate limited. |  -  |
+| **0** | An unexpected error response. |  -  |
 

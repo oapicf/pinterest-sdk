@@ -1,11 +1,11 @@
 package org.openapitools.api.impl;
 
 import org.openapitools.api.*;
-import org.openapitools.model.Error;
+import org.openapitools.model.Media;
 import org.openapitools.model.MediaList200Response;
 import org.openapitools.model.MediaUpload;
-import org.openapitools.model.MediaUploadDetails;
-import org.openapitools.model.MediaUploadRequest;
+import org.openapitools.model.MediaUploadCreate;
+import org.openapitools.model.PinterestLibError;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -29,10 +29,10 @@ public class MediaApiServiceImpl implements MediaApi {
     /**
      * Register media upload
      *
-     * Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using &lt;tt&gt;curl&lt;/tt&gt;, for example) to &lt;tt&gt;upload_url&lt;/tt&gt; using the &lt;tt&gt;Content-Type&lt;/tt&gt; header value. Send the media file&#39;s contents as the request&#39;s &lt;tt&gt;file&lt;/tt&gt; parameter and also include all of the parameters from &lt;tt&gt;upload_parameters&lt;/tt&gt;.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
+     * Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using &#x60;curl&#x60;, for example) to &#x60;upload_url&#x60; using the &#x60;Content-Type&#x60; header value. Send the media file&#39;s contents as the request&#39;s &#x60;file&#x60; parameter and also include all of the parameters from &#x60;upload_parameters&#x60;.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
      *
      */
-    public MediaUpload mediaCreate(MediaUploadRequest mediaUploadRequest) {
+    public MediaUpload mediaCreate(MediaUploadCreate mediaUploadCreate) {
         // TODO: Implement...
 
         return null;
@@ -41,10 +41,10 @@ public class MediaApiServiceImpl implements MediaApi {
     /**
      * Get media upload details
      *
-     * Get details for a registered media upload, including its current status.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
+     * Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
      *
      */
-    public MediaUploadDetails mediaGet(String mediaId) {
+    public Media mediaGet(String mediaId) {
         // TODO: Implement...
 
         return null;
@@ -53,7 +53,7 @@ public class MediaApiServiceImpl implements MediaApi {
     /**
      * List media uploads
      *
-     * List media uploads filtered by given parameters.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
+     * List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
      *
      */
     public MediaList200Response mediaList(String bookmark, Integer pageSize) {

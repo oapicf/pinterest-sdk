@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
  */
 
 @JsonTypeName("AdGroupsAnalyticsResponse_inner")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdGroupsAnalyticsResponseInner {
 
   private String AD_GROUP_ID;
@@ -34,28 +34,17 @@ public class AdGroupsAnalyticsResponseInner {
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
   private Date DATE;
 
-  public AdGroupsAnalyticsResponseInner() {
-    super();
-  }
-
-  /**
-   * Constructor with only required parameters
-   */
-  public AdGroupsAnalyticsResponseInner(String AD_GROUP_ID) {
-    this.AD_GROUP_ID = AD_GROUP_ID;
-  }
-
   public AdGroupsAnalyticsResponseInner AD_GROUP_ID(String AD_GROUP_ID) {
     this.AD_GROUP_ID = AD_GROUP_ID;
     return this;
   }
 
   /**
-   * The ID of the ad group that this metrics belongs to.
+   * The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
    * @return AD_GROUP_ID
    */
-  @NotNull @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "AD_GROUP_ID", description = "The ID of the ad group that this metrics belongs to.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "AD_GROUP_ID", description = "The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_GROUP_ID")
   public String getADGROUPID() {
     return AD_GROUP_ID;

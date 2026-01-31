@@ -10,7 +10,14 @@ The class is defined in **[PinMediaWithImage.java](../../src/main/java/org/opena
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**images** | [`PinMediaWithImageAllOfImages`](PinMediaWithImageAllOfImages.md) |  |  [optional property]
+**images** | [`ImageSize`](ImageSize.md) |  |  [optional property]
+**mediaType** | [**MediaTypeEnum**](#MediaTypeEnum) |  | 
 
+
+## MediaTypeEnum
+
+Name | Value
+---- | -----
+IMAGE | `"image"`
 
 

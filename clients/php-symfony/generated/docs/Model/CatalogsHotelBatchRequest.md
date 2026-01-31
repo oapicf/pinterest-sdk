@@ -3,11 +3,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**catalogId** | **string** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog | [optional] 
 **catalogType** | **string** |  | 
 **country** | [**OpenAPI\Server\Model\Country**](Country.md) |  | 
-**language** | **string** | We recommend using the CatalogsLocale values. | 
 **items** | [**OpenAPI\Server\Model\CatalogsHotelBatchItem**](CatalogsHotelBatchItem.md) | Array with catalogs item operations | 
-**catalogId** | **string** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog | [optional] 
+**language** | **string** | We recommend using the CatalogsLocale values. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

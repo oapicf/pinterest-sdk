@@ -15,16 +15,16 @@ module CatalogsHotelItemsBatch =
   type CatalogsHotelItemsBatch = {
     [<JsonProperty(PropertyName = "batch_id")>]
     BatchId : string;
-    [<JsonProperty(PropertyName = "created_time")>]
-    CreatedTime : Nullable<DateTime>;
-    [<JsonProperty(PropertyName = "completed_time")>]
-    CompletedTime : Nullable<DateTime>;
-    [<JsonProperty(PropertyName = "status")>]
-    Status : BatchOperationStatus;
     [<JsonProperty(PropertyName = "catalog_type")>]
     CatalogType : CatalogsType;
+    [<JsonProperty(PropertyName = "completed_time")>]
+    CompletedTime : Nullable<DateTime>;
+    [<JsonProperty(PropertyName = "created_time")>]
+    CreatedTime : Nullable<DateTime>;
     [<JsonProperty(PropertyName = "items")>]
     Items : HotelProcessingRecord[];
+    [<JsonProperty(PropertyName = "status")>]
+    Status : BatchOperationStatus;
   }
 
   //#endregion

@@ -82,6 +82,5 @@ private class OASCustomerListRequestTest {
         System.assertEquals('EMAIL', customerListRequest.listType);
         System.assertEquals(null, customerListRequest.name);
         System.assertEquals(null, customerListRequest.records);
-        System.assertEquals(null, customerListRequest.exceptions);
     }
 }

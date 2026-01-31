@@ -1,0 +1,56 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ImageMetadata"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ImageMetadata"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ImageSize = openapi_server.resourceTypes.ImageSize
+}
+resourceTypes {
+
+  ImageMetadata {
+    title = ImageMetadata
+    description = ImageMetadata
+    derivedFrom = Root
+    properties {
+        description {
+          type =  string
+          description = ""
+          optional = false
+        }
+        images {
+          type = ImageSize
+          description = ""
+          optional = false
+        }
+        item_type {
+          type =  string
+          description = ""
+          optional = false
+        }
+        link {
+          type =  string
+          description = ""
+          optional = false
+        }
+        title {
+          type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ImageMetadata {
+    title = ImageMetadata
+    description = ImageMetadata
+    implements = openapi_server.resourceTypes.ImageMetadata
+
+  }
+}

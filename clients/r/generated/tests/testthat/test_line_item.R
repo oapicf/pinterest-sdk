@@ -7,7 +7,7 @@ model_instance <- LineItem$new()
 
 test_that("product_brand", {
   # tests for the property `product_brand` (character)
-  # Product brand. For example, \&quot;Parker\&quot;.
+  # Product brand. For example, &#39;Parker&#39;.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`product_brand`, "EXPECTED_RESULT")
@@ -15,7 +15,7 @@ test_that("product_brand", {
 
 test_that("product_category", {
   # tests for the property `product_category` (character)
-  # Product category. For example, \&quot;Shoes\&quot;.
+  # Product category. For example, &#39;Shoes&#39;.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`product_category`, "EXPECTED_RESULT")
@@ -31,7 +31,7 @@ test_that("product_id", {
 
 test_that("product_name", {
   # tests for the property `product_name` (character)
-  # Product name. For example, \&quot;Parker Boots\&quot;.
+  # Product name. For example, &#39;Parker Boots&#39;.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`product_name`, "EXPECTED_RESULT")
@@ -39,7 +39,7 @@ test_that("product_name", {
 
 test_that("product_price", {
   # tests for the property `product_price` (character)
-  # Product price. For example, \&quot;99.99\&quot;.
+  # Product price. For example, &#39;99.99&#39;.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`product_price`, "EXPECTED_RESULT")
@@ -55,7 +55,7 @@ test_that("product_quantity", {
 
 test_that("product_variant", {
   # tests for the property `product_variant` (character)
-  # Product variant. For example, \&quot;Red\&quot;.
+  # Product variant. For example, &#39;Red&#39;.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`product_variant`, "EXPECTED_RESULT")
@@ -63,7 +63,7 @@ test_that("product_variant", {
 
 test_that("product_variant_id", {
   # tests for the property `product_variant_id` (character)
-  # Product variant ID. For example, \&quot;1414-34832\&quot;.
+  # Product variant ID. For example, &#39;1414-34832&#39;.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`product_variant_id`, "EXPECTED_RESULT")

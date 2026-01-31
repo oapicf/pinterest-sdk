@@ -19,13 +19,18 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.PinMediaWithImageAndVideo
-import org.openapitools.client.models.PinMedia
 import org.openapitools.client.models.PinMediaMetadata
 
 class PinMediaWithImageAndVideoTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of PinMediaWithImageAndVideo
         //val modelInstance = PinMediaWithImageAndVideo()
+
+        // to test the property `mediaType`
+        should("test mediaType") {
+            // uncomment below to test the property
+            //modelInstance.mediaType shouldBe ("TODO")
+        }
 
         // to test the property `items`
         should("test items") {

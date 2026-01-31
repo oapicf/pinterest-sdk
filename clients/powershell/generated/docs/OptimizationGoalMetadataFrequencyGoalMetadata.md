@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Frequency** | **Int32** |  | [optional] 
+**Frequency** | **Int32** | Frequency target can only be between 2 and 20 | [optional] 
 **Timerange** | **String** | User entity counts time range | [optional] 
 
 ## Examples

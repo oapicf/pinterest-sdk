@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CatalogId** | Pointer to **string** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] 
 **CatalogType** | **string** |  | 
 **Country** | [**Country**](Country.md) |  | 
-**Language** | **string** | We recommend using the CatalogsLocale values. | 
 **Items** | [**[]CatalogsCreativeAssetsBatchItem**](CatalogsCreativeAssetsBatchItem.md) | Array with creative assets item operations | 
-**CatalogId** | Pointer to **string** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] 
+**Language** | **string** | We recommend using the CatalogsLocale values. | 
 
 ## Methods
 
 ### NewCatalogsVerticalBatchRequest
 
-`func NewCatalogsVerticalBatchRequest(catalogType string, country Country, language string, items []CatalogsCreativeAssetsBatchItem, ) *CatalogsVerticalBatchRequest`
+`func NewCatalogsVerticalBatchRequest(catalogType string, country Country, items []CatalogsCreativeAssetsBatchItem, language string, ) *CatalogsVerticalBatchRequest`
 
 NewCatalogsVerticalBatchRequest instantiates a new CatalogsVerticalBatchRequest object
 This constructor will assign default values to properties that have it defined,
@@ -28,6 +28,31 @@ will change when the set of required properties is changed
 NewCatalogsVerticalBatchRequestWithDefaults instantiates a new CatalogsVerticalBatchRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCatalogId
+
+`func (o *CatalogsVerticalBatchRequest) GetCatalogId() string`
+
+GetCatalogId returns the CatalogId field if non-nil, zero value otherwise.
+
+### GetCatalogIdOk
+
+`func (o *CatalogsVerticalBatchRequest) GetCatalogIdOk() (*string, bool)`
+
+GetCatalogIdOk returns a tuple with the CatalogId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCatalogId
+
+`func (o *CatalogsVerticalBatchRequest) SetCatalogId(v string)`
+
+SetCatalogId sets CatalogId field to given value.
+
+### HasCatalogId
+
+`func (o *CatalogsVerticalBatchRequest) HasCatalogId() bool`
+
+HasCatalogId returns a boolean if a field has been set.
 
 ### GetCatalogType
 
@@ -69,26 +94,6 @@ and a boolean to check if the value has been set.
 SetCountry sets Country field to given value.
 
 
-### GetLanguage
-
-`func (o *CatalogsVerticalBatchRequest) GetLanguage() string`
-
-GetLanguage returns the Language field if non-nil, zero value otherwise.
-
-### GetLanguageOk
-
-`func (o *CatalogsVerticalBatchRequest) GetLanguageOk() (*string, bool)`
-
-GetLanguageOk returns a tuple with the Language field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLanguage
-
-`func (o *CatalogsVerticalBatchRequest) SetLanguage(v string)`
-
-SetLanguage sets Language field to given value.
-
-
 ### GetItems
 
 `func (o *CatalogsVerticalBatchRequest) GetItems() []CatalogsCreativeAssetsBatchItem`
@@ -109,30 +114,25 @@ and a boolean to check if the value has been set.
 SetItems sets Items field to given value.
 
 
-### GetCatalogId
+### GetLanguage
 
-`func (o *CatalogsVerticalBatchRequest) GetCatalogId() string`
+`func (o *CatalogsVerticalBatchRequest) GetLanguage() string`
 
-GetCatalogId returns the CatalogId field if non-nil, zero value otherwise.
+GetLanguage returns the Language field if non-nil, zero value otherwise.
 
-### GetCatalogIdOk
+### GetLanguageOk
 
-`func (o *CatalogsVerticalBatchRequest) GetCatalogIdOk() (*string, bool)`
+`func (o *CatalogsVerticalBatchRequest) GetLanguageOk() (*string, bool)`
 
-GetCatalogIdOk returns a tuple with the CatalogId field if it's non-nil, zero value otherwise
+GetLanguageOk returns a tuple with the Language field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCatalogId
+### SetLanguage
 
-`func (o *CatalogsVerticalBatchRequest) SetCatalogId(v string)`
+`func (o *CatalogsVerticalBatchRequest) SetLanguage(v string)`
 
-SetCatalogId sets CatalogId field to given value.
+SetLanguage sets Language field to given value.
 
-### HasCatalogId
-
-`func (o *CatalogsVerticalBatchRequest) HasCatalogId() bool`
-
-HasCatalogId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -13,45 +13,45 @@ import AnyCodable
 /** Retail product metadata entity */
 public struct CatalogsRetailProductMetadata: Codable, JSONEncodable, Hashable {
 
-    /** The user-created unique ID that represents the product. */
-    public var itemId: String
+    public var availability: NonNullableProductAvailabilityType
+    public var currency: NonNullableCatalogsCurrency
     /** The parent ID of the product. */
     public var itemGroupId: String?
-    public var availability: NonNullableProductAvailabilityType
+    /** The user-created unique ID that represents the product. */
+    public var itemId: String
     /** The price of the product. */
     public var price: Double
     /** The discounted price of the product. */
     public var salePrice: Double?
-    public var currency: NonNullableCatalogsCurrency
 
-    public init(itemId: String, itemGroupId: String?, availability: NonNullableProductAvailabilityType, price: Double, salePrice: Double?, currency: NonNullableCatalogsCurrency) {
-        self.itemId = itemId
-        self.itemGroupId = itemGroupId
+    public init(availability: NonNullableProductAvailabilityType, currency: NonNullableCatalogsCurrency, itemGroupId: String?, itemId: String, price: Double, salePrice: Double?) {
         self.availability = availability
+        self.currency = currency
+        self.itemGroupId = itemGroupId
+        self.itemId = itemId
         self.price = price
         self.salePrice = salePrice
-        self.currency = currency
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case itemId = "item_id"
-        case itemGroupId = "item_group_id"
         case availability
+        case currency
+        case itemGroupId = "item_group_id"
+        case itemId = "item_id"
         case price
         case salePrice = "sale_price"
-        case currency
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(itemId, forKey: .itemId)
-        try container.encode(itemGroupId, forKey: .itemGroupId)
         try container.encode(availability, forKey: .availability)
+        try container.encode(currency, forKey: .currency)
+        try container.encode(itemGroupId, forKey: .itemGroupId)
+        try container.encode(itemId, forKey: .itemId)
         try container.encode(price, forKey: .price)
         try container.encode(salePrice, forKey: .salePrice)
-        try container.encode(currency, forKey: .currency)
     }
 }
 

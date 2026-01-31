@@ -17,10 +17,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Refers ads entity type
+ * Refers ads entity type. Schedule enum is only applicable to beta users
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public enum BulkEntityType {
   
   CAMPAIGN("CAMPAIGN"),
@@ -31,7 +31,11 @@ public enum BulkEntityType {
   
   AD("AD"),
   
-  KEYWORD("KEYWORD");
+  KEYWORD("KEYWORD"),
+  
+  LABEL("LABEL"),
+  
+  SCHEDULE("SCHEDULE");
 
   private final String value;
 

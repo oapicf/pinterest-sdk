@@ -8,8 +8,8 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**reportStatus** | **BulkReportingJobStatus** |  |  [optional] |
-|**url** | **String** |  |  [optional] |
 |**size** | **BigDecimal** |  |  [optional] |
+|**url** | **String** |  |  [optional] |
 
 
 

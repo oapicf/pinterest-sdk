@@ -10,15 +10,9 @@ import javax.validation.Valid;
 /**
  * KeywordUpdate
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class KeywordUpdate   {
-  @JsonProperty("id")
-  @NotNull
-@Pattern(regexp="^\\d+$")
-
-  private String id;
-
   @JsonProperty("archived")
   
   private Boolean archived;
@@ -27,22 +21,11 @@ public class KeywordUpdate   {
   
   private Integer bid;
 
-  public KeywordUpdate id(String id) {
-    this.id = id;
-    return this;
-  }
+  @JsonProperty("id")
+  @NotNull
+@Pattern(regexp="^\\d+$")
 
-   /**
-   * Keyword ID.
-   * @return id
-  **/
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
+  private String id;
 
   public KeywordUpdate archived(Boolean archived) {
     this.archived = archived;
@@ -78,6 +61,23 @@ public class KeywordUpdate   {
     this.bid = bid;
   }
 
+  public KeywordUpdate id(String id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Keyword ID.
+   * @return id
+  **/
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -88,14 +88,14 @@ public class KeywordUpdate   {
       return false;
     }
     KeywordUpdate keywordUpdate = (KeywordUpdate) o;
-    return Objects.equals(id, keywordUpdate.id) &&
-        Objects.equals(archived, keywordUpdate.archived) &&
-        Objects.equals(bid, keywordUpdate.bid);
+    return Objects.equals(archived, keywordUpdate.archived) &&
+        Objects.equals(bid, keywordUpdate.bid) &&
+        Objects.equals(id, keywordUpdate.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, archived, bid);
+    return Objects.hash(archived, bid, id);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -104,9 +104,9 @@ public class KeywordUpdate   {
     StringBuilder sb = new StringBuilder();
     sb.append("class KeywordUpdate {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    archived: ").append(toIndentedString(archived)).append("\n");
     sb.append("    bid: ").append(toIndentedString(bid)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

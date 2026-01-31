@@ -22,8 +22,10 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "IntegrationLogClientRequest", description = "HTTP request details included in the log sent by the client.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class IntegrationLogClientRequest {
+
+  private String host;
 
   /**
    * Gets or Sets method
@@ -76,8 +78,6 @@ public class IntegrationLogClientRequest {
 
   private MethodEnum method;
 
-  private String host;
-
   private String path;
 
   @Valid
@@ -95,30 +95,10 @@ public class IntegrationLogClientRequest {
   /**
    * Constructor with only required parameters
    */
-  public IntegrationLogClientRequest(MethodEnum method, String host, String path) {
-    this.method = method;
+  public IntegrationLogClientRequest(String host, MethodEnum method, String path) {
     this.host = host;
+    this.method = method;
     this.path = path;
-  }
-
-  public IntegrationLogClientRequest method(MethodEnum method) {
-    this.method = method;
-    return this;
-  }
-
-  /**
-   * Get method
-   * @return method
-   */
-  @NotNull 
-  @Schema(name = "method", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("method")
-  public MethodEnum getMethod() {
-    return method;
-  }
-
-  public void setMethod(MethodEnum method) {
-    this.method = method;
   }
 
   public IntegrationLogClientRequest host(String host) {
@@ -139,6 +119,26 @@ public class IntegrationLogClientRequest {
 
   public void setHost(String host) {
     this.host = host;
+  }
+
+  public IntegrationLogClientRequest method(MethodEnum method) {
+    this.method = method;
+    return this;
+  }
+
+  /**
+   * Get method
+   * @return method
+   */
+  @NotNull 
+  @Schema(name = "method", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("method")
+  public MethodEnum getMethod() {
+    return method;
+  }
+
+  public void setMethod(MethodEnum method) {
+    this.method = method;
   }
 
   public IntegrationLogClientRequest path(String path) {
@@ -246,8 +246,8 @@ public class IntegrationLogClientRequest {
       return false;
     }
     IntegrationLogClientRequest integrationLogClientRequest = (IntegrationLogClientRequest) o;
-    return Objects.equals(this.method, integrationLogClientRequest.method) &&
-        Objects.equals(this.host, integrationLogClientRequest.host) &&
+    return Objects.equals(this.host, integrationLogClientRequest.host) &&
+        Objects.equals(this.method, integrationLogClientRequest.method) &&
         Objects.equals(this.path, integrationLogClientRequest.path) &&
         Objects.equals(this.requestHeaders, integrationLogClientRequest.requestHeaders) &&
         Objects.equals(this.responseHeaders, integrationLogClientRequest.responseHeaders) &&
@@ -256,15 +256,15 @@ public class IntegrationLogClientRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(method, host, path, requestHeaders, responseHeaders, responseStatusCode);
+    return Objects.hash(host, method, path, requestHeaders, responseHeaders, responseStatusCode);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class IntegrationLogClientRequest {\n");
-    sb.append("    method: ").append(toIndentedString(method)).append("\n");
     sb.append("    host: ").append(toIndentedString(host)).append("\n");
+    sb.append("    method: ").append(toIndentedString(method)).append("\n");
     sb.append("    path: ").append(toIndentedString(path)).append("\n");
     sb.append("    requestHeaders: ").append(toIndentedString(requestHeaders)).append("\n");
     sb.append("    responseHeaders: ").append(toIndentedString(responseHeaders)).append("\n");

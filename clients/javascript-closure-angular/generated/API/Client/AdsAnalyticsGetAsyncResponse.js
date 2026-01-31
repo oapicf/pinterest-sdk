@@ -12,14 +12,14 @@ API.Client.AdsAnalyticsGetAsyncResponse = function() {}
 API.Client.AdsAnalyticsGetAsyncResponse.prototype.reportStatus;
 
 /**
- * @type {!string}
- * @export
- */
-API.Client.AdsAnalyticsGetAsyncResponse.prototype.url;
-
-/**
  * @type {!number}
  * @export
  */
 API.Client.AdsAnalyticsGetAsyncResponse.prototype.size;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.AdsAnalyticsGetAsyncResponse.prototype.url;
 

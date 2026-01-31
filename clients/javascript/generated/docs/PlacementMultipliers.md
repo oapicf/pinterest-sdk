@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 
 * `BROWSE` (value: `"BROWSE"`)
 
+* `RELATED_PINS` (value: `"RELATED_PINS"`)
+
 
 
 

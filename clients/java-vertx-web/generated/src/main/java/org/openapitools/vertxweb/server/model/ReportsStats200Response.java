@@ -12,24 +12,15 @@ import org.openapitools.vertxweb.server.model.CatalogsReportStats;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ReportsStats200Response   {
   
-  private List<CatalogsReportStats> items = new ArrayList<>();
   private String bookmark;
+  private List<CatalogsReportStats> items = new ArrayList<>();
 
   public ReportsStats200Response () {
 
   }
 
-  public ReportsStats200Response (List<CatalogsReportStats> items, String bookmark) {
-    this.items = items;
+  public ReportsStats200Response (String bookmark, List<CatalogsReportStats> items) {
     this.bookmark = bookmark;
-  }
-
-    
-  @JsonProperty("items")
-  public List<CatalogsReportStats> getItems() {
-    return items;
-  }
-  public void setItems(List<CatalogsReportStats> items) {
     this.items = items;
   }
 
@@ -42,6 +33,15 @@ public class ReportsStats200Response   {
     this.bookmark = bookmark;
   }
 
+    
+  @JsonProperty("items")
+  public List<CatalogsReportStats> getItems() {
+    return items;
+  }
+  public void setItems(List<CatalogsReportStats> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -52,13 +52,13 @@ public class ReportsStats200Response   {
       return false;
     }
     ReportsStats200Response reportsStats200Response = (ReportsStats200Response) o;
-    return Objects.equals(items, reportsStats200Response.items) &&
-        Objects.equals(bookmark, reportsStats200Response.bookmark);
+    return Objects.equals(bookmark, reportsStats200Response.bookmark) &&
+        Objects.equals(items, reportsStats200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -66,8 +66,8 @@ public class ReportsStats200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ReportsStats200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

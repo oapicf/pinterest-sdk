@@ -6,7 +6,7 @@
   "fields": [
     {
       "name": "CUSTOM_LABEL_1",
-      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "type": "model.CatalogsProductGroupFilterOperatorTypeCriteria",
       "doc": ""
     }
   ]

@@ -23,21 +23,31 @@ BidFloorSpec::~BidFloorSpec()
 void
 BidFloorSpec::__init()
 {
+	//billable_event = new ActionType();
 	//new std::list()std::list> countries;
+	//creative_type = new CreativeType();
 	//currency = new Currency();
 	//objective_type = new ObjectiveType();
-	//billable_event = new ActionType();
 	//optimization_goal_metadata = new OptimizationGoalMetadata();
-	//creative_type = new CreativeType();
 }
 
 void
 BidFloorSpec::__cleanup()
 {
+	//if(billable_event != NULL) {
+	//
+	//delete billable_event;
+	//billable_event = NULL;
+	//}
 	//if(countries != NULL) {
 	//countries.RemoveAll(true);
 	//delete countries;
 	//countries = NULL;
+	//}
+	//if(creative_type != NULL) {
+	//
+	//delete creative_type;
+	//creative_type = NULL;
 	//}
 	//if(currency != NULL) {
 	//
@@ -49,20 +59,10 @@ BidFloorSpec::__cleanup()
 	//delete objective_type;
 	//objective_type = NULL;
 	//}
-	//if(billable_event != NULL) {
-	//
-	//delete billable_event;
-	//billable_event = NULL;
-	//}
 	//if(optimization_goal_metadata != NULL) {
 	//
 	//delete optimization_goal_metadata;
 	//optimization_goal_metadata = NULL;
-	//}
-	//if(creative_type != NULL) {
-	//
-	//delete creative_type;
-	//creative_type = NULL;
 	//}
 	//
 }
@@ -72,6 +72,20 @@ BidFloorSpec::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *billable_eventKey = "billable_event";
+	node = json_object_get_member(pJsonObject, billable_eventKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("ActionType")) {
+			jsonToValue(&billable_event, node, "ActionType", "ActionType");
+		} else {
+			
+			ActionType* obj = static_cast<ActionType*> (&billable_event);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 	const gchar *countriesKey = "countries";
 	node = json_object_get_member(pJsonObject, countriesKey);
 	if (node !=NULL) {
@@ -95,6 +109,20 @@ BidFloorSpec::fromJson(char* jsonStr)
 			countries = new_list;
 		}
 		
+	}
+	const gchar *creative_typeKey = "creative_type";
+	node = json_object_get_member(pJsonObject, creative_typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CreativeType")) {
+			jsonToValue(&creative_type, node, "CreativeType", "CreativeType");
+		} else {
+			
+			CreativeType* obj = static_cast<CreativeType*> (&creative_type);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
 	}
 	const gchar *currencyKey = "currency";
 	node = json_object_get_member(pJsonObject, currencyKey);
@@ -124,20 +152,6 @@ BidFloorSpec::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *billable_eventKey = "billable_event";
-	node = json_object_get_member(pJsonObject, billable_eventKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("ActionType")) {
-			jsonToValue(&billable_event, node, "ActionType", "ActionType");
-		} else {
-			
-			ActionType* obj = static_cast<ActionType*> (&billable_event);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
 	const gchar *optimization_goal_metadataKey = "optimization_goal_metadata";
 	node = json_object_get_member(pJsonObject, optimization_goal_metadataKey);
 	if (node !=NULL) {
@@ -148,20 +162,6 @@ BidFloorSpec::fromJson(char* jsonStr)
 		} else {
 			
 			OptimizationGoalMetadata* obj = static_cast<OptimizationGoalMetadata*> (&optimization_goal_metadata);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *creative_typeKey = "creative_type";
-	node = json_object_get_member(pJsonObject, creative_typeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("CreativeType")) {
-			jsonToValue(&creative_type, node, "CreativeType", "CreativeType");
-		} else {
-			
-			CreativeType* obj = static_cast<CreativeType*> (&creative_type);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -178,6 +178,20 @@ BidFloorSpec::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("ActionType")) {
+		ActionType obj = getBillableEvent();
+		node = converttoJson(&obj, "ActionType", "");
+	}
+	else {
+		
+		ActionType obj = static_cast<ActionType> (getBillableEvent());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *billable_eventKey = "billable_event";
+	json_object_set_member(pJsonObject, billable_eventKey, node);
 	if (isprimitive("Country")) {
 		list<Country> new_list = static_cast<list <Country> > (getCountries());
 		node = converttoJson(&new_list, "Country", "array");
@@ -203,6 +217,20 @@ BidFloorSpec::toJson()
 	
 	const gchar *countriesKey = "countries";
 	json_object_set_member(pJsonObject, countriesKey, node);
+	if (isprimitive("CreativeType")) {
+		CreativeType obj = getCreativeType();
+		node = converttoJson(&obj, "CreativeType", "");
+	}
+	else {
+		
+		CreativeType obj = static_cast<CreativeType> (getCreativeType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *creative_typeKey = "creative_type";
+	json_object_set_member(pJsonObject, creative_typeKey, node);
 	if (isprimitive("Currency")) {
 		Currency obj = getCurrency();
 		node = converttoJson(&obj, "Currency", "");
@@ -231,20 +259,6 @@ BidFloorSpec::toJson()
 	}
 	const gchar *objective_typeKey = "objective_type";
 	json_object_set_member(pJsonObject, objective_typeKey, node);
-	if (isprimitive("ActionType")) {
-		ActionType obj = getBillableEvent();
-		node = converttoJson(&obj, "ActionType", "");
-	}
-	else {
-		
-		ActionType obj = static_cast<ActionType> (getBillableEvent());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *billable_eventKey = "billable_event";
-	json_object_set_member(pJsonObject, billable_eventKey, node);
 	if (isprimitive("OptimizationGoalMetadata")) {
 		OptimizationGoalMetadata obj = getOptimizationGoalMetadata();
 		node = converttoJson(&obj, "OptimizationGoalMetadata", "");
@@ -259,26 +273,24 @@ BidFloorSpec::toJson()
 	}
 	const gchar *optimization_goal_metadataKey = "optimization_goal_metadata";
 	json_object_set_member(pJsonObject, optimization_goal_metadataKey, node);
-	if (isprimitive("CreativeType")) {
-		CreativeType obj = getCreativeType();
-		node = converttoJson(&obj, "CreativeType", "");
-	}
-	else {
-		
-		CreativeType obj = static_cast<CreativeType> (getCreativeType());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *creative_typeKey = "creative_type";
-	json_object_set_member(pJsonObject, creative_typeKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+ActionType
+BidFloorSpec::getBillableEvent()
+{
+	return billable_event;
+}
+
+void
+BidFloorSpec::setBillableEvent(ActionType  billable_event)
+{
+	this->billable_event = billable_event;
 }
 
 std::list<Country>
@@ -291,6 +303,18 @@ void
 BidFloorSpec::setCountries(std::list <Country> countries)
 {
 	this->countries = countries;
+}
+
+CreativeType
+BidFloorSpec::getCreativeType()
+{
+	return creative_type;
+}
+
+void
+BidFloorSpec::setCreativeType(CreativeType  creative_type)
+{
+	this->creative_type = creative_type;
 }
 
 Currency
@@ -317,18 +341,6 @@ BidFloorSpec::setObjectiveType(ObjectiveType  objective_type)
 	this->objective_type = objective_type;
 }
 
-ActionType
-BidFloorSpec::getBillableEvent()
-{
-	return billable_event;
-}
-
-void
-BidFloorSpec::setBillableEvent(ActionType  billable_event)
-{
-	this->billable_event = billable_event;
-}
-
 OptimizationGoalMetadata
 BidFloorSpec::getOptimizationGoalMetadata()
 {
@@ -339,18 +351,6 @@ void
 BidFloorSpec::setOptimizationGoalMetadata(OptimizationGoalMetadata  optimization_goal_metadata)
 {
 	this->optimization_goal_metadata = optimization_goal_metadata;
-}
-
-CreativeType
-BidFloorSpec::getCreativeType()
-{
-	return creative_type;
-}
-
-void
-BidFloorSpec::setCreativeType(CreativeType  creative_type)
-{
-	this->creative_type = creative_type;
 }
 
 

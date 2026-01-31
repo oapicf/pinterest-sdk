@@ -20,13 +20,6 @@ API.Client.CatalogsItemsBatch.prototype.catalogType;
 API.Client.CatalogsItemsBatch.prototype.batchId;
 
 /**
- * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
- * @type {!Date}
- * @export
- */
-API.Client.CatalogsItemsBatch.prototype.createdTime;
-
-/**
  * Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
  * @type {!Date}
  * @export
@@ -34,10 +27,11 @@ API.Client.CatalogsItemsBatch.prototype.createdTime;
 API.Client.CatalogsItemsBatch.prototype.completedTime;
 
 /**
- * @type {!API.Client.BatchOperationStatus}
+ * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
+ * @type {!Date}
  * @export
  */
-API.Client.CatalogsItemsBatch.prototype.status;
+API.Client.CatalogsItemsBatch.prototype.createdTime;
 
 /**
  * Array with the catalogs items processing records part of the catalogs items batch
@@ -45,4 +39,10 @@ API.Client.CatalogsItemsBatch.prototype.status;
  * @export
  */
 API.Client.CatalogsItemsBatch.prototype.items;
+
+/**
+ * @type {!API.Client.BatchOperationStatus}
+ * @export
+ */
+API.Client.CatalogsItemsBatch.prototype.status;
 

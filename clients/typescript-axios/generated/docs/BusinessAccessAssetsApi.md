@@ -206,6 +206,7 @@ const apiInstance = new BusinessAccessAssetsApi(configuration);
 
 let businessId: string; //Unique identifier of the requesting business. (default to undefined)
 let assetId: string; //Unique identifier of a business asset. (default to undefined)
+let fetchSystemUsers: boolean; //Fetches system users if True. Fetches regular user employees if False. (optional) (default to false)
 let bookmark: string; //Cursor used to fetch the next page of items (optional) (default to undefined)
 let pageSize: number; //Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional) (default to 25)
 let startIndex: number; //An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
@@ -213,6 +214,7 @@ let startIndex: number; //An index to start fetching the results from. Only the 
 const { status, data } = await apiInstance.businessAssetMembersGet(
     businessId,
     assetId,
+    fetchSystemUsers,
     bookmark,
     pageSize,
     startIndex
@@ -225,6 +227,7 @@ const { status, data } = await apiInstance.businessAssetMembersGet(
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | [**string**] | Unique identifier of the requesting business. | defaults to undefined|
 | **assetId** | [**string**] | Unique identifier of a business asset. | defaults to undefined|
+| **fetchSystemUsers** | [**boolean**] | Fetches system users if True. Fetches regular user employees if False. | (optional) defaults to false|
 | **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined|
 | **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25|
 | **startIndex** | [**number**] | An index to start fetching the results from. Only the results starting from this index will be returned. | (optional) defaults to 0|
@@ -336,7 +339,7 @@ let businessId: string; //Unique identifier of the requesting business. (default
 let permissions: Array<PermissionsWithOwner>; //A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned. (optional) (default to undefined)
 let childAssetId: string; //A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child. (optional) (default to undefined)
 let assetGroupId: string; //An asset group unique identifier. Used to fetch assets contained within the specified asset group. (optional) (default to undefined)
-let assetType: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP'; //A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to 'AD_ACCOUNT')
+let assetType: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER'; //A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to 'AD_ACCOUNT')
 let startIndex: number; //An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
 let bookmark: string; //Cursor used to fetch the next page of items (optional) (default to undefined)
 let pageSize: number; //Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional) (default to 25)
@@ -361,7 +364,7 @@ const { status, data } = await apiInstance.businessAssetsGet(
 | **permissions** | **Array&lt;PermissionsWithOwner&gt;** | A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned. | (optional) defaults to undefined|
 | **childAssetId** | [**string**] | A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child. | (optional) defaults to undefined|
 | **assetGroupId** | [**string**] | An asset group unique identifier. Used to fetch assets contained within the specified asset group. | (optional) defaults to undefined|
-| **assetType** | [**&#39;AD_ACCOUNT&#39; | &#39;PROFILE&#39; | &#39;ASSET_GROUP&#39;**]**Array<&#39;AD_ACCOUNT&#39; &#124; &#39;PROFILE&#39; &#124; &#39;ASSET_GROUP&#39;>** | A resource type to filter the assets by. Only assets of the specified type will be returned. | (optional) defaults to 'AD_ACCOUNT'|
+| **assetType** | [**&#39;AD_ACCOUNT&#39; | &#39;PROFILE&#39; | &#39;ASSET_GROUP&#39; | &#39;CATALOG&#39; | &#39;CONSUMER&#39;**]**Array<&#39;AD_ACCOUNT&#39; &#124; &#39;PROFILE&#39; &#124; &#39;ASSET_GROUP&#39; &#124; &#39;CATALOG&#39; &#124; &#39;CONSUMER&#39;>** | A resource type to filter the assets by. Only assets of the specified type will be returned. | (optional) defaults to 'AD_ACCOUNT'|
 | **startIndex** | [**number**] | An index to start fetching the results from. Only the results starting from this index will be returned. | (optional) defaults to 0|
 | **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined|
 | **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25|
@@ -407,7 +410,7 @@ const apiInstance = new BusinessAccessAssetsApi(configuration);
 
 let businessId: string; //Unique identifier of the requesting business. (default to undefined)
 let memberId: string; //The member id to fetch assets for. (default to undefined)
-let assetType: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP'; //A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to 'AD_ACCOUNT')
+let assetType: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER'; //A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to 'AD_ACCOUNT')
 let startIndex: number; //An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
 let bookmark: string; //Cursor used to fetch the next page of items (optional) (default to undefined)
 let pageSize: number; //Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional) (default to 25)
@@ -428,7 +431,7 @@ const { status, data } = await apiInstance.businessMemberAssetsGet(
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | [**string**] | Unique identifier of the requesting business. | defaults to undefined|
 | **memberId** | [**string**] | The member id to fetch assets for. | defaults to undefined|
-| **assetType** | [**&#39;AD_ACCOUNT&#39; | &#39;PROFILE&#39; | &#39;ASSET_GROUP&#39;**]**Array<&#39;AD_ACCOUNT&#39; &#124; &#39;PROFILE&#39; &#124; &#39;ASSET_GROUP&#39;>** | A resource type to filter the assets by. Only assets of the specified type will be returned. | (optional) defaults to 'AD_ACCOUNT'|
+| **assetType** | [**&#39;AD_ACCOUNT&#39; | &#39;PROFILE&#39; | &#39;ASSET_GROUP&#39; | &#39;CATALOG&#39; | &#39;CONSUMER&#39;**]**Array<&#39;AD_ACCOUNT&#39; &#124; &#39;PROFILE&#39; &#124; &#39;ASSET_GROUP&#39; &#124; &#39;CATALOG&#39; &#124; &#39;CONSUMER&#39;>** | A resource type to filter the assets by. Only assets of the specified type will be returned. | (optional) defaults to 'AD_ACCOUNT'|
 | **startIndex** | [**number**] | An index to start fetching the results from. Only the results starting from this index will be returned. | (optional) defaults to 0|
 | **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined|
 | **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25|
@@ -587,7 +590,7 @@ const apiInstance = new BusinessAccessAssetsApi(configuration);
 let businessId: string; //Unique identifier of the requesting business. (default to undefined)
 let partnerId: string; //The partner id to be bound to the Business (default to undefined)
 let partnerType: PartnerType; //Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner\'s business asset. (optional) (default to undefined)
-let assetType: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP'; //A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to 'AD_ACCOUNT')
+let assetType: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER'; //A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to 'AD_ACCOUNT')
 let startIndex: number; //An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
 let pageSize: number; //Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional) (default to 25)
 let bookmark: string; //Cursor used to fetch the next page of items (optional) (default to undefined)
@@ -610,7 +613,7 @@ const { status, data } = await apiInstance.businessPartnerAssetAccessGet(
 | **businessId** | [**string**] | Unique identifier of the requesting business. | defaults to undefined|
 | **partnerId** | [**string**] | The partner id to be bound to the Business | defaults to undefined|
 | **partnerType** | **PartnerType** | Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner\&#39;s business asset. | (optional) defaults to undefined|
-| **assetType** | [**&#39;AD_ACCOUNT&#39; | &#39;PROFILE&#39; | &#39;ASSET_GROUP&#39;**]**Array<&#39;AD_ACCOUNT&#39; &#124; &#39;PROFILE&#39; &#124; &#39;ASSET_GROUP&#39;>** | A resource type to filter the assets by. Only assets of the specified type will be returned. | (optional) defaults to 'AD_ACCOUNT'|
+| **assetType** | [**&#39;AD_ACCOUNT&#39; | &#39;PROFILE&#39; | &#39;ASSET_GROUP&#39; | &#39;CATALOG&#39; | &#39;CONSUMER&#39;**]**Array<&#39;AD_ACCOUNT&#39; &#124; &#39;PROFILE&#39; &#124; &#39;ASSET_GROUP&#39; &#124; &#39;CATALOG&#39; &#124; &#39;CONSUMER&#39;>** | A resource type to filter the assets by. Only assets of the specified type will be returned. | (optional) defaults to 'AD_ACCOUNT'|
 | **startIndex** | [**number**] | An index to start fetching the results from. Only the results starting from this index will be returned. | (optional) defaults to 0|
 | **pageSize** | [**number**] | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | (optional) defaults to 25|
 | **bookmark** | [**string**] | Cursor used to fetch the next page of items | (optional) defaults to undefined|

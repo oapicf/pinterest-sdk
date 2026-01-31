@@ -16,8 +16,8 @@ void main() {
   // final instance = CatalogsFeedIngestion();
 
   group('test CatalogsFeedIngestion', () {
-    // String id
-    test('to test the property `id`', () async {
+    // DateTime createdAt
+    test('to test the property `createdAt`', () async {
       // TODO
     });
 
@@ -26,8 +26,8 @@ void main() {
       // TODO
     });
 
-    // DateTime createdAt
-    test('to test the property `createdAt`', () async {
+    // String id
+    test('to test the property `id`', () async {
       // TODO
     });
 

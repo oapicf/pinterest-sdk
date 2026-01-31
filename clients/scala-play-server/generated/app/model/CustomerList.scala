@@ -6,6 +6,7 @@ import play.api.libs.json._
   * Represents the Swagger definition for CustomerList.
   * @param adAccountId Associated ad account ID.
   * @param createdTime Creation time. Unix timestamp in seconds.
+  * @param exceptions Customer list errors
   * @param id Customer list ID.
   * @param name Customer list name.
   * @param numBatches Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.
@@ -14,12 +15,12 @@ import play.api.libs.json._
   * @param status Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
   * @param `type` Always \"customerlist\".
   * @param updatedTime Last update time. Unix timestamp in seconds.
-  * @param exceptions Customer list errors
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class CustomerList(
   adAccountId: Option[String],
   createdTime: Option[BigDecimal],
+  exceptions: Option[JsObject],
   id: Option[String],
   name: Option[String],
   numBatches: Option[BigDecimal],
@@ -27,8 +28,7 @@ case class CustomerList(
   numUploadedUserRecords: Option[BigDecimal],
   status: Option[CustomerList.Status.Value],
   `type`: Option[String],
-  updatedTime: Option[BigDecimal],
-  exceptions: Option[JsObject]
+  updatedTime: Option[BigDecimal]
 )
 
 object CustomerList {

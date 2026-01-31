@@ -12,11 +12,11 @@ Method | HTTP request | Description
 <a id="Invoke-MediaCreate"></a>
 # **Invoke-MediaCreate**
 > MediaUpload Invoke-MediaCreate<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-MediaUploadRequest] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-MediaUploadCreate] <PSCustomObject><br>
 
 Register media upload
 
-Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using `curl`, for example) to `upload_url` using the `Content-Type` header value. Send the media file's contents as the request's `file` parameter and also include all of the parameters from `upload_parameters`.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 
 ### Example
 ```powershell
@@ -25,11 +25,11 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$MediaUploadRequest = Initialize-MediaUploadRequest -MediaType "video" # MediaUploadRequest | Create a media upload request
+$MediaUploadCreate = Initialize-MediaUploadCreate -MediaType "video" # MediaUploadCreate | 
 
 # Register media upload
 try {
-    $Result = Invoke-MediaCreate -MediaUploadRequest $MediaUploadRequest
+    $Result = Invoke-MediaCreate -MediaUploadCreate $MediaUploadCreate
 } catch {
     Write-Host ("Exception occurred when calling Invoke-MediaCreate: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -40,7 +40,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **MediaUploadRequest** | [**MediaUploadRequest**](MediaUploadRequest.md)| Create a media upload request | 
+ **MediaUploadCreate** | [**MediaUploadCreate**](MediaUploadCreate.md)|  | 
 
 ### Return type
 
@@ -59,12 +59,12 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-MediaGet"></a>
 # **Invoke-MediaGet**
-> MediaUploadDetails Invoke-MediaGet<br>
+> Media Invoke-MediaGet<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-MediaId] <String><br>
 
 Get media upload details
 
-Get details for a registered media upload, including its current status.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 
 ### Example
 ```powershell
@@ -73,7 +73,7 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$MediaId = "MyMediaId" # String | Media identifier
+$MediaId = "MyMediaId" # String | Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
 
 # Get media upload details
 try {
@@ -88,11 +88,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **MediaId** | **String**| Media identifier | 
+ **MediaId** | **String**| Unique identifier for this media upload. Used to track status and for attaching during Pin creation. | 
 
 ### Return type
 
-[**MediaUploadDetails**](MediaUploadDetails.md) (PSCustomObject)
+[**Media**](Media.md) (PSCustomObject)
 
 ### Authorization
 
@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
 
 List media uploads
 
-List media uploads filtered by given parameters.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 
 ### Example
 ```powershell
@@ -123,7 +123,7 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # List media uploads
 try {
@@ -139,7 +139,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

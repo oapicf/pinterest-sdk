@@ -16,14 +16,14 @@ void main() {
   // final instance = BusinessAssetsGet200Response();
 
   group('test BusinessAssetsGet200Response', () {
-    // List of assets the requesting business has access to.
-    // List<GetBusinessAssetsResponse> items (default value: const [])
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // List of assets the requesting business has access to.
+    // List<GetBusinessAssetsResponse> items (default value: const [])
+    test('to test the property `items`', () async {
       // TODO
     });
 

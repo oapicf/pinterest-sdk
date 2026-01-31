@@ -4,13 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**refreshToken** | **String** |  | 
-**refreshTokenExpiresIn** | **Number** |  | 
-**responseType** | **String** |  | [optional] 
+**refreshToken** | **String** |  | [optional] 
+**refreshTokenExpiresAt** | **Number** |  | [optional] 
+**refreshTokenExpiresIn** | **Number** |  | [optional] 
 **accessToken** | **String** |  | 
-**tokenType** | **String** |  | [default to &#39;bearer&#39;]
 **expiresIn** | **Number** |  | 
+**responseType** | **String** |  | [optional] 
 **scope** | **String** |  | 
+**tokenType** | **String** |  | [default to &#39;bearer&#39;]
 
 
 

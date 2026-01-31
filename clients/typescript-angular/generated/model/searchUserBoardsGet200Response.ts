@@ -11,10 +11,10 @@ import { Board } from './board';
 
 
 export interface SearchUserBoardsGet200Response { 
+    bookmark?: string | null;
     /**
      * items
      */
     items: Array<Board>;
-    bookmark?: string | null;
 }
 

@@ -7,6 +7,13 @@ goog.provide('API.Client.CatalogsCreativeAssetsBatchRequest');
 API.Client.CatalogsCreativeAssetsBatchRequest = function() {}
 
 /**
+ * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsBatchRequest.prototype.catalogId;
+
+/**
  * @type {!string}
  * @export
  */
@@ -19,13 +26,6 @@ API.Client.CatalogsCreativeAssetsBatchRequest.prototype.catalogType;
 API.Client.CatalogsCreativeAssetsBatchRequest.prototype.country;
 
 /**
- * We recommend using the CatalogsLocale values.
- * @type {!string}
- * @export
- */
-API.Client.CatalogsCreativeAssetsBatchRequest.prototype.language;
-
-/**
  * Array with creative assets item operations
  * @type {!Array<!API.Client.CatalogsCreativeAssetsBatchItem>}
  * @export
@@ -33,11 +33,11 @@ API.Client.CatalogsCreativeAssetsBatchRequest.prototype.language;
 API.Client.CatalogsCreativeAssetsBatchRequest.prototype.items;
 
 /**
- * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+ * We recommend using the CatalogsLocale values.
  * @type {!string}
  * @export
  */
-API.Client.CatalogsCreativeAssetsBatchRequest.prototype.catalogId;
+API.Client.CatalogsCreativeAssetsBatchRequest.prototype.language;
 
 /** @enum {string} */
 API.Client.CatalogsCreativeAssetsBatchRequest.CatalogTypeEnum = { 

@@ -12,10 +12,10 @@ module PinAnalyticsMetricsResponse =
 
   [<CLIMutable>]
   type PinAnalyticsMetricsResponse = {
-    [<JsonProperty(PropertyName = "lifetime_metrics")>]
-    LifetimeMetrics : IDictionary<string, int>;
     [<JsonProperty(PropertyName = "daily_metrics")>]
     DailyMetrics : PinAnalyticsMetricsResponseDailyMetricsInner[];
+    [<JsonProperty(PropertyName = "lifetime_metrics")>]
+    LifetimeMetrics : IDictionary<string, int>;
     [<JsonProperty(PropertyName = "summary_metrics")>]
     SummaryMetrics : IDictionary<string, decimal>;
   }

@@ -20,14 +20,34 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("DeleteAssetGroupResponse_exceptions_inner")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class DeleteAssetGroupResponseExceptionsInner {
+
+  private String assetGroupId;
 
   private Integer code;
 
   private String message;
 
-  private String assetGroupId;
+  public DeleteAssetGroupResponseExceptionsInner assetGroupId(String assetGroupId) {
+    this.assetGroupId = assetGroupId;
+    return this;
+  }
+
+  /**
+   * Asset group id of the exception.
+   * @return assetGroupId
+   */
+  
+  @Schema(name = "asset_group_id", example = "666791336903426391", description = "Asset group id of the exception.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("asset_group_id")
+  public String getAssetGroupId() {
+    return assetGroupId;
+  }
+
+  public void setAssetGroupId(String assetGroupId) {
+    this.assetGroupId = assetGroupId;
+  }
 
   public DeleteAssetGroupResponseExceptionsInner code(Integer code) {
     this.code = code;
@@ -69,26 +89,6 @@ public class DeleteAssetGroupResponseExceptionsInner {
     this.message = message;
   }
 
-  public DeleteAssetGroupResponseExceptionsInner assetGroupId(String assetGroupId) {
-    this.assetGroupId = assetGroupId;
-    return this;
-  }
-
-  /**
-   * Asset group id of the exception.
-   * @return assetGroupId
-   */
-  
-  @Schema(name = "asset_group_id", example = "666791336903426391", description = "Asset group id of the exception.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("asset_group_id")
-  public String getAssetGroupId() {
-    return assetGroupId;
-  }
-
-  public void setAssetGroupId(String assetGroupId) {
-    this.assetGroupId = assetGroupId;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -98,23 +98,23 @@ public class DeleteAssetGroupResponseExceptionsInner {
       return false;
     }
     DeleteAssetGroupResponseExceptionsInner deleteAssetGroupResponseExceptionsInner = (DeleteAssetGroupResponseExceptionsInner) o;
-    return Objects.equals(this.code, deleteAssetGroupResponseExceptionsInner.code) &&
-        Objects.equals(this.message, deleteAssetGroupResponseExceptionsInner.message) &&
-        Objects.equals(this.assetGroupId, deleteAssetGroupResponseExceptionsInner.assetGroupId);
+    return Objects.equals(this.assetGroupId, deleteAssetGroupResponseExceptionsInner.assetGroupId) &&
+        Objects.equals(this.code, deleteAssetGroupResponseExceptionsInner.code) &&
+        Objects.equals(this.message, deleteAssetGroupResponseExceptionsInner.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message, assetGroupId);
+    return Objects.hash(assetGroupId, code, message);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DeleteAssetGroupResponseExceptionsInner {\n");
+    sb.append("    assetGroupId: ").append(toIndentedString(assetGroupId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    assetGroupId: ").append(toIndentedString(assetGroupId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -17,6 +17,24 @@ void main() {
   // final instance = BusinessAccessRelationshipsApi();
 
   group('tests for BusinessAccessRelationshipsApi', () {
+    // Create a Brand Account
+    //
+    // Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+    //
+    //Future<BrandAccountsCreate200Response> brandAccountsCreate(String businessHierarchyId, BrandAccountsCreateRequest brandAccountsCreateRequest) async
+    test('test brandAccountsCreate', () async {
+      // TODO
+    });
+
+    // Update a Brand Account
+    //
+    // Update an existing Brand Account
+    //
+    //Future<BrandAccountsCreate200Response> brandAccountsUpdate(String businessHierarchyId, String brandAccountId, BrandAccountsUpdateRequest brandAccountsUpdateRequest) async
+    test('test brandAccountsUpdate', () async {
+      // TODO
+    });
+
     // Terminate business memberships
     //
     // Terminate memberships between the specified members and your business.
@@ -48,7 +66,7 @@ void main() {
     //
     // Get all members of the specified business. The return response will include the member's business_role and assets they have access to if assets_summary=TRUE
     //
-    //Future<GetBusinessMembers200Response> getBusinessMembers(String businessId, { bool assetsSummary, List<MemberBusinessRole> businessRoles, String memberIds, int startIndex, String bookmark, int pageSize }) async
+    //Future<GetBusinessMembers200Response> getBusinessMembers(String businessId, { bool fetchSystemUsers, bool assetsSummary, List<MemberBusinessRole> businessRoles, String memberIds, int startIndex, String bookmark, int pageSize }) async
     test('test getBusinessMembers', () async {
       // TODO
     });
@@ -59,6 +77,15 @@ void main() {
     //
     //Future<GetBusinessPartners200Response> getBusinessPartners(String businessId, { bool assetsSummary, PartnerType partnerType, String partnerIds, int startIndex, int pageSize, String bookmark }) async
     test('test getBusinessPartners', () async {
+      // TODO
+    });
+
+    // Update a system user information.
+    //
+    // Update a system user information such as name.
+    //
+    //Future systemUserUpdate(String businessId, String systemUserId, SystemUserUpdateRequest systemUserUpdateRequest) async
+    test('test systemUserUpdate', () async {
       // TODO
     });
 

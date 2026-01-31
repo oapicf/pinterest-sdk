@@ -5,7 +5,6 @@
  */
 package org.openapitools.api;
 
-import org.openapitools.model.DetailedError;
 import org.openapitools.model.Error;
 import org.openapitools.model.IntegrationLogsRequest;
 import org.openapitools.model.IntegrationLogsSuccessResponse;
@@ -14,6 +13,7 @@ import org.openapitools.model.IntegrationRecord;
 import org.openapitools.model.IntegrationRequest;
 import org.openapitools.model.IntegrationRequestPatch;
 import org.openapitools.model.IntegrationsGetList200Response;
+import org.openapitools.model.IntegrationsLogsPost400Response;
 import org.springframework.lang.Nullable;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
@@ -42,7 +42,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Validated
 @Tag(name = "integrations", description = "View, create, or update commerce integrations.")
 public interface IntegrationsApi {
@@ -186,7 +186,7 @@ public interface IntegrationsApi {
      * Update commerce integration metadata for the given external business ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      *
      * @param externalBusinessId External business ID for the integration. (required)
-     * @param integrationRequestPatch Parameters to get create/update the Integration Metadata (optional)
+     * @param integrationRequestPatch Parameters to get create/update the Integration Metadata (required)
      * @return Success (status code 200)
      *         or Integration not found. (status code 404)
      *         or Can&#39;t access this integration metadata. (status code 409)
@@ -235,7 +235,7 @@ public interface IntegrationsApi {
     )
     default ResponseEntity<IntegrationMetadata> integrationsCommercePatch(
         @NotNull @Parameter(name = "external_business_id", description = "External business ID for the integration.", required = true, in = ParameterIn.PATH) @PathVariable("external_business_id") String externalBusinessId,
-        @Parameter(name = "IntegrationRequestPatch", description = "Parameters to get create/update the Integration Metadata") @Valid @RequestBody(required = false) @Nullable IntegrationRequestPatch integrationRequestPatch
+        @Parameter(name = "IntegrationRequestPatch", description = "Parameters to get create/update the Integration Metadata", required = true) @Valid @RequestBody IntegrationRequestPatch integrationRequestPatch
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -271,7 +271,7 @@ public interface IntegrationsApi {
      * POST /integrations/commerce : Create commerce integration
      * Create commerce integration metadata to link an external business ID with a Pinterest merchant &amp; ad account. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      *
-     * @param integrationRequest Parameters to get create/update the Integration Metadata (optional)
+     * @param integrationRequest Parameters to get create/update the Integration Metadata (required)
      * @return Success (status code 200)
      *         or Integration not found. (status code 404)
      *         or Can&#39;t access this integration metadata. (status code 409)
@@ -319,7 +319,7 @@ public interface IntegrationsApi {
         consumes = { "application/json" }
     )
     default ResponseEntity<IntegrationMetadata> integrationsCommercePost(
-        @Parameter(name = "IntegrationRequest", description = "Parameters to get create/update the Integration Metadata") @Valid @RequestBody(required = false) @Nullable IntegrationRequest integrationRequest
+        @Parameter(name = "IntegrationRequest", description = "Parameters to get create/update the Integration Metadata", required = true) @Valid @RequestBody IntegrationRequest integrationRequest
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -493,7 +493,7 @@ public interface IntegrationsApi {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = IntegrationLogsSuccessResponse.class))
             }),
             @ApiResponse(responseCode = "400", description = "Bad request.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = DetailedError.class))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = IntegrationsLogsPost400Response.class))
             }),
             @ApiResponse(responseCode = "default", description = "Unexpected error", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
@@ -520,7 +520,7 @@ public interface IntegrationsApi {
                     break;
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : 1, \"details\" : \"{}\", \"message\" : \"message\" }";
+                    String exampleString = "{ \"code\" : 0, \"message\" : \"message\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

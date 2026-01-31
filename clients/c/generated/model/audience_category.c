@@ -6,22 +6,22 @@
 
 
 static audience_category_t *audience_category_create_internal(
+    char *id,
+    double index,
     char *key,
     char *name,
     double ratio,
-    double index,
-    char *id,
     list_t *subcategories
     ) {
     audience_category_t *audience_category_local_var = malloc(sizeof(audience_category_t));
     if (!audience_category_local_var) {
         return NULL;
     }
+    audience_category_local_var->id = id;
+    audience_category_local_var->index = index;
     audience_category_local_var->key = key;
     audience_category_local_var->name = name;
     audience_category_local_var->ratio = ratio;
-    audience_category_local_var->index = index;
-    audience_category_local_var->id = id;
     audience_category_local_var->subcategories = subcategories;
 
     audience_category_local_var->_library_owned = 1;
@@ -29,19 +29,19 @@ static audience_category_t *audience_category_create_internal(
 }
 
 __attribute__((deprecated)) audience_category_t *audience_category_create(
+    char *id,
+    double index,
     char *key,
     char *name,
     double ratio,
-    double index,
-    char *id,
     list_t *subcategories
     ) {
     return audience_category_create_internal (
+        id,
+        index,
         key,
         name,
         ratio,
-        index,
-        id,
         subcategories
         );
 }
@@ -55,6 +55,10 @@ void audience_category_free(audience_category_t *audience_category) {
         return ;
     }
     listEntry_t *listEntry;
+    if (audience_category->id) {
+        free(audience_category->id);
+        audience_category->id = NULL;
+    }
     if (audience_category->key) {
         free(audience_category->key);
         audience_category->key = NULL;
@@ -62,10 +66,6 @@ void audience_category_free(audience_category_t *audience_category) {
     if (audience_category->name) {
         free(audience_category->name);
         audience_category->name = NULL;
-    }
-    if (audience_category->id) {
-        free(audience_category->id);
-        audience_category->id = NULL;
     }
     if (audience_category->subcategories) {
         list_ForEach(listEntry, audience_category->subcategories) {
@@ -79,6 +79,22 @@ void audience_category_free(audience_category_t *audience_category) {
 
 cJSON *audience_category_convertToJSON(audience_category_t *audience_category) {
     cJSON *item = cJSON_CreateObject();
+
+    // audience_category->id
+    if(audience_category->id) {
+    if(cJSON_AddStringToObject(item, "id", audience_category->id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // audience_category->index
+    if(audience_category->index) {
+    if(cJSON_AddNumberToObject(item, "index", audience_category->index) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
 
     // audience_category->key
     if(audience_category->key) {
@@ -100,22 +116,6 @@ cJSON *audience_category_convertToJSON(audience_category_t *audience_category) {
     if(audience_category->ratio) {
     if(cJSON_AddNumberToObject(item, "ratio", audience_category->ratio) == NULL) {
     goto fail; //Numeric
-    }
-    }
-
-
-    // audience_category->index
-    if(audience_category->index) {
-    if(cJSON_AddNumberToObject(item, "index", audience_category->index) == NULL) {
-    goto fail; //Numeric
-    }
-    }
-
-
-    // audience_category->id
-    if(audience_category->id) {
-    if(cJSON_AddStringToObject(item, "id", audience_category->id) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -154,6 +154,30 @@ audience_category_t *audience_category_parseFromJSON(cJSON *audience_categoryJSO
     // define the local list for audience_category->subcategories
     list_t *subcategoriesList = NULL;
 
+    // audience_category->id
+    cJSON *id = cJSON_GetObjectItemCaseSensitive(audience_categoryJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
+    if (id) { 
+    if(!cJSON_IsString(id) && !cJSON_IsNull(id))
+    {
+    goto end; //String
+    }
+    }
+
+    // audience_category->index
+    cJSON *index = cJSON_GetObjectItemCaseSensitive(audience_categoryJSON, "index");
+    if (cJSON_IsNull(index)) {
+        index = NULL;
+    }
+    if (index) { 
+    if(!cJSON_IsNumber(index))
+    {
+    goto end; //Numeric
+    }
+    }
+
     // audience_category->key
     cJSON *key = cJSON_GetObjectItemCaseSensitive(audience_categoryJSON, "key");
     if (cJSON_IsNull(key)) {
@@ -190,30 +214,6 @@ audience_category_t *audience_category_parseFromJSON(cJSON *audience_categoryJSO
     }
     }
 
-    // audience_category->index
-    cJSON *index = cJSON_GetObjectItemCaseSensitive(audience_categoryJSON, "index");
-    if (cJSON_IsNull(index)) {
-        index = NULL;
-    }
-    if (index) { 
-    if(!cJSON_IsNumber(index))
-    {
-    goto end; //Numeric
-    }
-    }
-
-    // audience_category->id
-    cJSON *id = cJSON_GetObjectItemCaseSensitive(audience_categoryJSON, "id");
-    if (cJSON_IsNull(id)) {
-        id = NULL;
-    }
-    if (id) { 
-    if(!cJSON_IsString(id) && !cJSON_IsNull(id))
-    {
-    goto end; //String
-    }
-    }
-
     // audience_category->subcategories
     cJSON *subcategories = cJSON_GetObjectItemCaseSensitive(audience_categoryJSON, "subcategories");
     if (cJSON_IsNull(subcategories)) {
@@ -240,11 +240,11 @@ audience_category_t *audience_category_parseFromJSON(cJSON *audience_categoryJSO
 
 
     audience_category_local_var = audience_category_create_internal (
+        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
+        index ? index->valuedouble : 0,
         key && !cJSON_IsNull(key) ? strdup(key->valuestring) : NULL,
         name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         ratio ? ratio->valuedouble : 0,
-        index ? index->valuedouble : 0,
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
         subcategories ? subcategoriesList : NULL
         );
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[AdAccount]**](AdAccount.md) | Ad accounts | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[AdAccount]**](AdAccount.md) |  | 
 
 

@@ -16,8 +16,8 @@ static catalogs_item_validation_errors_t *catalogs_item_validation_errors_create
     catalogs_item_validation_details_t *image_link_length_too_long,
     catalogs_item_validation_details_t *image_link_missing,
     catalogs_item_validation_details_t *invalid_domain,
-    catalogs_item_validation_details_t *itemid_missing,
     catalogs_item_validation_details_t *item_main_image_download_failure,
+    catalogs_item_validation_details_t *itemid_missing,
     catalogs_item_validation_details_t *link_format_invalid,
     catalogs_item_validation_details_t *link_length_too_long,
     catalogs_item_validation_details_t *list_price_invalid,
@@ -44,8 +44,8 @@ static catalogs_item_validation_errors_t *catalogs_item_validation_errors_create
     catalogs_item_validation_errors_local_var->image_link_length_too_long = image_link_length_too_long;
     catalogs_item_validation_errors_local_var->image_link_missing = image_link_missing;
     catalogs_item_validation_errors_local_var->invalid_domain = invalid_domain;
-    catalogs_item_validation_errors_local_var->itemid_missing = itemid_missing;
     catalogs_item_validation_errors_local_var->item_main_image_download_failure = item_main_image_download_failure;
+    catalogs_item_validation_errors_local_var->itemid_missing = itemid_missing;
     catalogs_item_validation_errors_local_var->link_format_invalid = link_format_invalid;
     catalogs_item_validation_errors_local_var->link_length_too_long = link_length_too_long;
     catalogs_item_validation_errors_local_var->list_price_invalid = list_price_invalid;
@@ -73,8 +73,8 @@ __attribute__((deprecated)) catalogs_item_validation_errors_t *catalogs_item_val
     catalogs_item_validation_details_t *image_link_length_too_long,
     catalogs_item_validation_details_t *image_link_missing,
     catalogs_item_validation_details_t *invalid_domain,
-    catalogs_item_validation_details_t *itemid_missing,
     catalogs_item_validation_details_t *item_main_image_download_failure,
+    catalogs_item_validation_details_t *itemid_missing,
     catalogs_item_validation_details_t *link_format_invalid,
     catalogs_item_validation_details_t *link_length_too_long,
     catalogs_item_validation_details_t *list_price_invalid,
@@ -98,8 +98,8 @@ __attribute__((deprecated)) catalogs_item_validation_errors_t *catalogs_item_val
         image_link_length_too_long,
         image_link_missing,
         invalid_domain,
-        itemid_missing,
         item_main_image_download_failure,
+        itemid_missing,
         link_format_invalid,
         link_length_too_long,
         list_price_invalid,
@@ -163,13 +163,13 @@ void catalogs_item_validation_errors_free(catalogs_item_validation_errors_t *cat
         catalogs_item_validation_details_free(catalogs_item_validation_errors->invalid_domain);
         catalogs_item_validation_errors->invalid_domain = NULL;
     }
-    if (catalogs_item_validation_errors->itemid_missing) {
-        catalogs_item_validation_details_free(catalogs_item_validation_errors->itemid_missing);
-        catalogs_item_validation_errors->itemid_missing = NULL;
-    }
     if (catalogs_item_validation_errors->item_main_image_download_failure) {
         catalogs_item_validation_details_free(catalogs_item_validation_errors->item_main_image_download_failure);
         catalogs_item_validation_errors->item_main_image_download_failure = NULL;
+    }
+    if (catalogs_item_validation_errors->itemid_missing) {
+        catalogs_item_validation_details_free(catalogs_item_validation_errors->itemid_missing);
+        catalogs_item_validation_errors->itemid_missing = NULL;
     }
     if (catalogs_item_validation_errors->link_format_invalid) {
         catalogs_item_validation_details_free(catalogs_item_validation_errors->link_format_invalid);
@@ -351,19 +351,6 @@ cJSON *catalogs_item_validation_errors_convertToJSON(catalogs_item_validation_er
     }
 
 
-    // catalogs_item_validation_errors->itemid_missing
-    if(catalogs_item_validation_errors->itemid_missing) {
-    cJSON *itemid_missing_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_errors->itemid_missing);
-    if(itemid_missing_local_JSON == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "ITEMID_MISSING", itemid_missing_local_JSON);
-    if(item->child == NULL) {
-    goto fail;
-    }
-    }
-
-
     // catalogs_item_validation_errors->item_main_image_download_failure
     if(catalogs_item_validation_errors->item_main_image_download_failure) {
     cJSON *item_main_image_download_failure_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_errors->item_main_image_download_failure);
@@ -371,6 +358,19 @@ cJSON *catalogs_item_validation_errors_convertToJSON(catalogs_item_validation_er
     goto fail; //model
     }
     cJSON_AddItemToObject(item, "ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE", item_main_image_download_failure_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // catalogs_item_validation_errors->itemid_missing
+    if(catalogs_item_validation_errors->itemid_missing) {
+    cJSON *itemid_missing_local_JSON = catalogs_item_validation_details_convertToJSON(catalogs_item_validation_errors->itemid_missing);
+    if(itemid_missing_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "ITEMID_MISSING", itemid_missing_local_JSON);
     if(item->child == NULL) {
     goto fail;
     }
@@ -561,11 +561,11 @@ catalogs_item_validation_errors_t *catalogs_item_validation_errors_parseFromJSON
     // define the local variable for catalogs_item_validation_errors->invalid_domain
     catalogs_item_validation_details_t *invalid_domain_local_nonprim = NULL;
 
-    // define the local variable for catalogs_item_validation_errors->itemid_missing
-    catalogs_item_validation_details_t *itemid_missing_local_nonprim = NULL;
-
     // define the local variable for catalogs_item_validation_errors->item_main_image_download_failure
     catalogs_item_validation_details_t *item_main_image_download_failure_local_nonprim = NULL;
+
+    // define the local variable for catalogs_item_validation_errors->itemid_missing
+    catalogs_item_validation_details_t *itemid_missing_local_nonprim = NULL;
 
     // define the local variable for catalogs_item_validation_errors->link_format_invalid
     catalogs_item_validation_details_t *link_format_invalid_local_nonprim = NULL;
@@ -690,15 +690,6 @@ catalogs_item_validation_errors_t *catalogs_item_validation_errors_parseFromJSON
     invalid_domain_local_nonprim = catalogs_item_validation_details_parseFromJSON(invalid_domain); //nonprimitive
     }
 
-    // catalogs_item_validation_errors->itemid_missing
-    cJSON *itemid_missing = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_errorsJSON, "ITEMID_MISSING");
-    if (cJSON_IsNull(itemid_missing)) {
-        itemid_missing = NULL;
-    }
-    if (itemid_missing) { 
-    itemid_missing_local_nonprim = catalogs_item_validation_details_parseFromJSON(itemid_missing); //nonprimitive
-    }
-
     // catalogs_item_validation_errors->item_main_image_download_failure
     cJSON *item_main_image_download_failure = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_errorsJSON, "ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE");
     if (cJSON_IsNull(item_main_image_download_failure)) {
@@ -706,6 +697,15 @@ catalogs_item_validation_errors_t *catalogs_item_validation_errors_parseFromJSON
     }
     if (item_main_image_download_failure) { 
     item_main_image_download_failure_local_nonprim = catalogs_item_validation_details_parseFromJSON(item_main_image_download_failure); //nonprimitive
+    }
+
+    // catalogs_item_validation_errors->itemid_missing
+    cJSON *itemid_missing = cJSON_GetObjectItemCaseSensitive(catalogs_item_validation_errorsJSON, "ITEMID_MISSING");
+    if (cJSON_IsNull(itemid_missing)) {
+        itemid_missing = NULL;
+    }
+    if (itemid_missing) { 
+    itemid_missing_local_nonprim = catalogs_item_validation_details_parseFromJSON(itemid_missing); //nonprimitive
     }
 
     // catalogs_item_validation_errors->link_format_invalid
@@ -819,8 +819,8 @@ catalogs_item_validation_errors_t *catalogs_item_validation_errors_parseFromJSON
         image_link_length_too_long ? image_link_length_too_long_local_nonprim : NULL,
         image_link_missing ? image_link_missing_local_nonprim : NULL,
         invalid_domain ? invalid_domain_local_nonprim : NULL,
-        itemid_missing ? itemid_missing_local_nonprim : NULL,
         item_main_image_download_failure ? item_main_image_download_failure_local_nonprim : NULL,
+        itemid_missing ? itemid_missing_local_nonprim : NULL,
         link_format_invalid ? link_format_invalid_local_nonprim : NULL,
         link_length_too_long ? link_length_too_long_local_nonprim : NULL,
         list_price_invalid ? list_price_invalid_local_nonprim : NULL,
@@ -876,13 +876,13 @@ end:
         catalogs_item_validation_details_free(invalid_domain_local_nonprim);
         invalid_domain_local_nonprim = NULL;
     }
-    if (itemid_missing_local_nonprim) {
-        catalogs_item_validation_details_free(itemid_missing_local_nonprim);
-        itemid_missing_local_nonprim = NULL;
-    }
     if (item_main_image_download_failure_local_nonprim) {
         catalogs_item_validation_details_free(item_main_image_download_failure_local_nonprim);
         item_main_image_download_failure_local_nonprim = NULL;
+    }
+    if (itemid_missing_local_nonprim) {
+        catalogs_item_validation_details_free(itemid_missing_local_nonprim);
+        itemid_missing_local_nonprim = NULL;
     }
     if (link_format_invalid_local_nonprim) {
         catalogs_item_validation_details_free(link_format_invalid_local_nonprim);

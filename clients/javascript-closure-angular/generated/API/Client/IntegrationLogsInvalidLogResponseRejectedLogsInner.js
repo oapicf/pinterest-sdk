@@ -6,13 +6,6 @@ goog.provide('API.Client.IntegrationLogsInvalidLogResponse_rejected_logs_inner')
 API.Client.IntegrationLogsInvalidLogResponseRejectedLogsInner = function() {}
 
 /**
- * Index of the log in the batch.
- * @type {!number}
- * @export
- */
-API.Client.IntegrationLogsInvalidLogResponseRejectedLogsInner.prototype.logIndex;
-
-/**
  * The field name containing an invalid value.
  * @type {!string}
  * @export
@@ -20,11 +13,11 @@ API.Client.IntegrationLogsInvalidLogResponseRejectedLogsInner.prototype.logIndex
 API.Client.IntegrationLogsInvalidLogResponseRejectedLogsInner.prototype.field;
 
 /**
- * The value that is invalid.
- * @type {!string}
+ * Index of the log in the batch.
+ * @type {!number}
  * @export
  */
-API.Client.IntegrationLogsInvalidLogResponseRejectedLogsInner.prototype.value;
+API.Client.IntegrationLogsInvalidLogResponseRejectedLogsInner.prototype.logIndex;
 
 /**
  * The reason the value is invalid.
@@ -32,4 +25,11 @@ API.Client.IntegrationLogsInvalidLogResponseRejectedLogsInner.prototype.value;
  * @export
  */
 API.Client.IntegrationLogsInvalidLogResponseRejectedLogsInner.prototype.reason;
+
+/**
+ * The value that is invalid.
+ * @type {!string}
+ * @export
+ */
+API.Client.IntegrationLogsInvalidLogResponseRejectedLogsInner.prototype.value;
 

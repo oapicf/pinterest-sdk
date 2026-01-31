@@ -4,11 +4,11 @@ import org.openapitools.api.*;
 import org.openapitools.model.*;
 
 
-import org.openapitools.model.Error;
+import org.openapitools.model.Media;
 import org.openapitools.model.MediaList200Response;
 import org.openapitools.model.MediaUpload;
-import org.openapitools.model.MediaUploadDetails;
-import org.openapitools.model.MediaUploadRequest;
+import org.openapitools.model.MediaUploadCreate;
+import org.openapitools.model.PinterestLibError;
 
 import java.util.List;
 
@@ -19,9 +19,9 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class MediaApiServiceImpl implements MediaApi {
-      public Response mediaCreate(MediaUploadRequest mediaUploadRequest,SecurityContext securityContext) {
+      public Response mediaCreate(MediaUploadCreate mediaUploadCreate,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

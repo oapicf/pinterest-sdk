@@ -6,6 +6,7 @@ import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
 import org.openapitools.models.BrandFilter
+import org.openapitools.models.CatalogsProductGroupFilterOperatorTypeCriteria
 import org.openapitools.models.CatalogsProductGroupMultipleCountriesCriteria
 import org.openapitools.models.CatalogsProductGroupMultipleStringCriteria
 import org.openapitools.models.CatalogsProductGroupPricingCurrencyCriteria
@@ -17,6 +18,7 @@ import org.openapitools.models.CustomLabel3Filter
 import org.openapitools.models.CustomLabel4Filter
 import org.openapitools.models.HotelIdFilter
 import org.openapitools.models.PriceFilter
+import org.openapitools.models.TitleKeywordsFilter
 
 /**
  * 
@@ -29,16 +31,18 @@ import org.openapitools.models.PriceFilter
  * @param CUSTOMUnderscoreLABELUnderscore3 
  * @param CUSTOMUnderscoreLABELUnderscore4 
  * @param COUNTRY 
+ * @param TITLEUnderscoreKEYWORDS 
  */
 case class CatalogsHotelProductGroupFilterKeys(PRICE: CatalogsProductGroupPricingCurrencyCriteria,
                 HOTELUnderscoreID: CatalogsProductGroupMultipleStringCriteria,
                 BRAND: CatalogsProductGroupMultipleStringCriteria,
-                CUSTOMUnderscoreLABELUnderscore0: CatalogsProductGroupMultipleStringCriteria,
-                CUSTOMUnderscoreLABELUnderscore1: CatalogsProductGroupMultipleStringCriteria,
-                CUSTOMUnderscoreLABELUnderscore2: CatalogsProductGroupMultipleStringCriteria,
-                CUSTOMUnderscoreLABELUnderscore3: CatalogsProductGroupMultipleStringCriteria,
-                CUSTOMUnderscoreLABELUnderscore4: CatalogsProductGroupMultipleStringCriteria,
-                COUNTRY: CatalogsProductGroupMultipleCountriesCriteria
+                CUSTOMUnderscoreLABELUnderscore0: CatalogsProductGroupFilterOperatorTypeCriteria,
+                CUSTOMUnderscoreLABELUnderscore1: CatalogsProductGroupFilterOperatorTypeCriteria,
+                CUSTOMUnderscoreLABELUnderscore2: CatalogsProductGroupFilterOperatorTypeCriteria,
+                CUSTOMUnderscoreLABELUnderscore3: CatalogsProductGroupFilterOperatorTypeCriteria,
+                CUSTOMUnderscoreLABELUnderscore4: CatalogsProductGroupFilterOperatorTypeCriteria,
+                COUNTRY: CatalogsProductGroupMultipleCountriesCriteria,
+                TITLEUnderscoreKEYWORDS: CatalogsProductGroupMultipleStringCriteria
                 )
 
 object CatalogsHotelProductGroupFilterKeys {

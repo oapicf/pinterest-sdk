@@ -11,10 +11,332 @@ module CatalogsItemValidationWarnings =
 
   [<CLIMutable>]
   type CatalogsItemValidationWarnings = {
+    [<JsonProperty(PropertyName = "AD_IMAGE_0_LINK_DUPLICATED")>]
+    ADIMAGE0LINKDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_0_LINK_LENGTH_TOO_LONG")>]
+    ADIMAGE0LINKLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_0_LINK_REQUIRED")>]
+    ADIMAGE0LINKREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_0_LINK_WARNING")>]
+    ADIMAGE0LINKWARNING : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_0_TAG_DUPLICATED")>]
+    ADIMAGE0TAGDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_0_TAG_LENGTH_TOO_LONG")>]
+    ADIMAGE0TAGLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_0_TAG_REQUIRED")>]
+    ADIMAGE0TAGREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_10_LINK_DUPLICATED")>]
+    ADIMAGE10LINKDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_10_LINK_LENGTH_TOO_LONG")>]
+    ADIMAGE10LINKLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_10_LINK_REQUIRED")>]
+    ADIMAGE10LINKREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_10_LINK_WARNING")>]
+    ADIMAGE10LINKWARNING : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_10_TAG_DUPLICATED")>]
+    ADIMAGE10TAGDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_10_TAG_LENGTH_TOO_LONG")>]
+    ADIMAGE10TAGLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_10_TAG_REQUIRED")>]
+    ADIMAGE10TAGREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_11_LINK_DUPLICATED")>]
+    ADIMAGE11LINKDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_11_LINK_LENGTH_TOO_LONG")>]
+    ADIMAGE11LINKLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_11_LINK_REQUIRED")>]
+    ADIMAGE11LINKREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_11_LINK_WARNING")>]
+    ADIMAGE11LINKWARNING : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_11_TAG_DUPLICATED")>]
+    ADIMAGE11TAGDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_11_TAG_LENGTH_TOO_LONG")>]
+    ADIMAGE11TAGLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_11_TAG_REQUIRED")>]
+    ADIMAGE11TAGREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_12_LINK_DUPLICATED")>]
+    ADIMAGE12LINKDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_12_LINK_LENGTH_TOO_LONG")>]
+    ADIMAGE12LINKLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_12_LINK_REQUIRED")>]
+    ADIMAGE12LINKREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_12_LINK_WARNING")>]
+    ADIMAGE12LINKWARNING : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_12_TAG_DUPLICATED")>]
+    ADIMAGE12TAGDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_12_TAG_LENGTH_TOO_LONG")>]
+    ADIMAGE12TAGLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_12_TAG_REQUIRED")>]
+    ADIMAGE12TAGREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_13_LINK_DUPLICATED")>]
+    ADIMAGE13LINKDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_13_LINK_LENGTH_TOO_LONG")>]
+    ADIMAGE13LINKLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_13_LINK_REQUIRED")>]
+    ADIMAGE13LINKREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_13_LINK_WARNING")>]
+    ADIMAGE13LINKWARNING : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_13_TAG_DUPLICATED")>]
+    ADIMAGE13TAGDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_13_TAG_LENGTH_TOO_LONG")>]
+    ADIMAGE13TAGLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_13_TAG_REQUIRED")>]
+    ADIMAGE13TAGREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_14_LINK_DUPLICATED")>]
+    ADIMAGE14LINKDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_14_LINK_LENGTH_TOO_LONG")>]
+    ADIMAGE14LINKLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_14_LINK_REQUIRED")>]
+    ADIMAGE14LINKREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_14_LINK_WARNING")>]
+    ADIMAGE14LINKWARNING : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_14_TAG_DUPLICATED")>]
+    ADIMAGE14TAGDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_14_TAG_LENGTH_TOO_LONG")>]
+    ADIMAGE14TAGLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_14_TAG_REQUIRED")>]
+    ADIMAGE14TAGREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_15_LINK_DUPLICATED")>]
+    ADIMAGE15LINKDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_15_LINK_LENGTH_TOO_LONG")>]
+    ADIMAGE15LINKLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_15_LINK_REQUIRED")>]
+    ADIMAGE15LINKREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_15_LINK_WARNING")>]
+    ADIMAGE15LINKWARNING : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_15_TAG_DUPLICATED")>]
+    ADIMAGE15TAGDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_15_TAG_LENGTH_TOO_LONG")>]
+    ADIMAGE15TAGLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_15_TAG_REQUIRED")>]
+    ADIMAGE15TAGREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_16_LINK_DUPLICATED")>]
+    ADIMAGE16LINKDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_16_LINK_LENGTH_TOO_LONG")>]
+    ADIMAGE16LINKLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_16_LINK_REQUIRED")>]
+    ADIMAGE16LINKREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_16_LINK_WARNING")>]
+    ADIMAGE16LINKWARNING : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_16_TAG_DUPLICATED")>]
+    ADIMAGE16TAGDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_16_TAG_LENGTH_TOO_LONG")>]
+    ADIMAGE16TAGLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_16_TAG_REQUIRED")>]
+    ADIMAGE16TAGREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_17_LINK_DUPLICATED")>]
+    ADIMAGE17LINKDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_17_LINK_LENGTH_TOO_LONG")>]
+    ADIMAGE17LINKLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_17_LINK_REQUIRED")>]
+    ADIMAGE17LINKREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_17_LINK_WARNING")>]
+    ADIMAGE17LINKWARNING : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_17_TAG_DUPLICATED")>]
+    ADIMAGE17TAGDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_17_TAG_LENGTH_TOO_LONG")>]
+    ADIMAGE17TAGLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_17_TAG_REQUIRED")>]
+    ADIMAGE17TAGREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_18_LINK_DUPLICATED")>]
+    ADIMAGE18LINKDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_18_LINK_LENGTH_TOO_LONG")>]
+    ADIMAGE18LINKLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_18_LINK_REQUIRED")>]
+    ADIMAGE18LINKREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_18_LINK_WARNING")>]
+    ADIMAGE18LINKWARNING : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_18_TAG_DUPLICATED")>]
+    ADIMAGE18TAGDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_18_TAG_LENGTH_TOO_LONG")>]
+    ADIMAGE18TAGLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_18_TAG_REQUIRED")>]
+    ADIMAGE18TAGREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_19_LINK_DUPLICATED")>]
+    ADIMAGE19LINKDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_19_LINK_LENGTH_TOO_LONG")>]
+    ADIMAGE19LINKLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_19_LINK_REQUIRED")>]
+    ADIMAGE19LINKREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_19_LINK_WARNING")>]
+    ADIMAGE19LINKWARNING : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_19_TAG_DUPLICATED")>]
+    ADIMAGE19TAGDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_19_TAG_LENGTH_TOO_LONG")>]
+    ADIMAGE19TAGLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_19_TAG_REQUIRED")>]
+    ADIMAGE19TAGREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_1_LINK_DUPLICATED")>]
+    ADIMAGE1LINKDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_1_LINK_LENGTH_TOO_LONG")>]
+    ADIMAGE1LINKLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_1_LINK_REQUIRED")>]
+    ADIMAGE1LINKREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_1_LINK_WARNING")>]
+    ADIMAGE1LINKWARNING : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_1_TAG_DUPLICATED")>]
+    ADIMAGE1TAGDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_1_TAG_LENGTH_TOO_LONG")>]
+    ADIMAGE1TAGLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_1_TAG_REQUIRED")>]
+    ADIMAGE1TAGREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_2_LINK_DUPLICATED")>]
+    ADIMAGE2LINKDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_2_LINK_LENGTH_TOO_LONG")>]
+    ADIMAGE2LINKLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_2_LINK_REQUIRED")>]
+    ADIMAGE2LINKREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_2_LINK_WARNING")>]
+    ADIMAGE2LINKWARNING : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_2_TAG_DUPLICATED")>]
+    ADIMAGE2TAGDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_2_TAG_LENGTH_TOO_LONG")>]
+    ADIMAGE2TAGLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_2_TAG_REQUIRED")>]
+    ADIMAGE2TAGREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_3_LINK_DUPLICATED")>]
+    ADIMAGE3LINKDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_3_LINK_LENGTH_TOO_LONG")>]
+    ADIMAGE3LINKLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_3_LINK_REQUIRED")>]
+    ADIMAGE3LINKREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_3_LINK_WARNING")>]
+    ADIMAGE3LINKWARNING : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_3_TAG_DUPLICATED")>]
+    ADIMAGE3TAGDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_3_TAG_LENGTH_TOO_LONG")>]
+    ADIMAGE3TAGLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_3_TAG_REQUIRED")>]
+    ADIMAGE3TAGREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_4_LINK_DUPLICATED")>]
+    ADIMAGE4LINKDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_4_LINK_LENGTH_TOO_LONG")>]
+    ADIMAGE4LINKLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_4_LINK_REQUIRED")>]
+    ADIMAGE4LINKREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_4_LINK_WARNING")>]
+    ADIMAGE4LINKWARNING : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_4_TAG_DUPLICATED")>]
+    ADIMAGE4TAGDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_4_TAG_LENGTH_TOO_LONG")>]
+    ADIMAGE4TAGLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_4_TAG_REQUIRED")>]
+    ADIMAGE4TAGREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_5_LINK_DUPLICATED")>]
+    ADIMAGE5LINKDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_5_LINK_LENGTH_TOO_LONG")>]
+    ADIMAGE5LINKLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_5_LINK_REQUIRED")>]
+    ADIMAGE5LINKREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_5_LINK_WARNING")>]
+    ADIMAGE5LINKWARNING : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_5_TAG_DUPLICATED")>]
+    ADIMAGE5TAGDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_5_TAG_LENGTH_TOO_LONG")>]
+    ADIMAGE5TAGLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_5_TAG_REQUIRED")>]
+    ADIMAGE5TAGREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_6_LINK_DUPLICATED")>]
+    ADIMAGE6LINKDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_6_LINK_LENGTH_TOO_LONG")>]
+    ADIMAGE6LINKLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_6_LINK_REQUIRED")>]
+    ADIMAGE6LINKREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_6_LINK_WARNING")>]
+    ADIMAGE6LINKWARNING : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_6_TAG_DUPLICATED")>]
+    ADIMAGE6TAGDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_6_TAG_LENGTH_TOO_LONG")>]
+    ADIMAGE6TAGLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_6_TAG_REQUIRED")>]
+    ADIMAGE6TAGREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_7_LINK_DUPLICATED")>]
+    ADIMAGE7LINKDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_7_LINK_LENGTH_TOO_LONG")>]
+    ADIMAGE7LINKLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_7_LINK_REQUIRED")>]
+    ADIMAGE7LINKREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_7_LINK_WARNING")>]
+    ADIMAGE7LINKWARNING : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_7_TAG_DUPLICATED")>]
+    ADIMAGE7TAGDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_7_TAG_LENGTH_TOO_LONG")>]
+    ADIMAGE7TAGLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_7_TAG_REQUIRED")>]
+    ADIMAGE7TAGREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_8_LINK_DUPLICATED")>]
+    ADIMAGE8LINKDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_8_LINK_LENGTH_TOO_LONG")>]
+    ADIMAGE8LINKLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_8_LINK_REQUIRED")>]
+    ADIMAGE8LINKREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_8_LINK_WARNING")>]
+    ADIMAGE8LINKWARNING : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_8_TAG_DUPLICATED")>]
+    ADIMAGE8TAGDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_8_TAG_LENGTH_TOO_LONG")>]
+    ADIMAGE8TAGLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_8_TAG_REQUIRED")>]
+    ADIMAGE8TAGREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_9_LINK_DUPLICATED")>]
+    ADIMAGE9LINKDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_9_LINK_LENGTH_TOO_LONG")>]
+    ADIMAGE9LINKLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_9_LINK_REQUIRED")>]
+    ADIMAGE9LINKREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_9_LINK_WARNING")>]
+    ADIMAGE9LINKWARNING : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_9_TAG_DUPLICATED")>]
+    ADIMAGE9TAGDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_9_TAG_LENGTH_TOO_LONG")>]
+    ADIMAGE9TAGLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_IMAGE_9_TAG_REQUIRED")>]
+    ADIMAGE9TAGREQUIRED : CatalogsItemValidationDetails;
     [<JsonProperty(PropertyName = "AD_LINK_FORMAT_WARNING")>]
     AD_LINK_FORMAT_WARNING : CatalogsItemValidationDetails;
     [<JsonProperty(PropertyName = "AD_LINK_SAME_AS_LINK")>]
     AD_LINK_SAME_AS_LINK : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_VIDEO_0_LINK_DUPLICATED")>]
+    ADVIDEO0LINKDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_VIDEO_0_LINK_LENGTH_TOO_LONG")>]
+    ADVIDEO0LINKLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_VIDEO_0_LINK_REQUIRED")>]
+    ADVIDEO0LINKREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_VIDEO_0_LINK_WARNING")>]
+    ADVIDEO0LINKWARNING : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_VIDEO_0_TAG_DUPLICATED")>]
+    ADVIDEO0TAGDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_VIDEO_0_TAG_LENGTH_TOO_LONG")>]
+    ADVIDEO0TAGLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_VIDEO_0_TAG_REQUIRED")>]
+    ADVIDEO0TAGREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_VIDEO_1_LINK_DUPLICATED")>]
+    ADVIDEO1LINKDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_VIDEO_1_LINK_LENGTH_TOO_LONG")>]
+    ADVIDEO1LINKLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_VIDEO_1_LINK_REQUIRED")>]
+    ADVIDEO1LINKREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_VIDEO_1_LINK_WARNING")>]
+    ADVIDEO1LINKWARNING : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_VIDEO_1_TAG_DUPLICATED")>]
+    ADVIDEO1TAGDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_VIDEO_1_TAG_LENGTH_TOO_LONG")>]
+    ADVIDEO1TAGLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_VIDEO_1_TAG_REQUIRED")>]
+    ADVIDEO1TAGREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_VIDEO_2_LINK_DUPLICATED")>]
+    ADVIDEO2LINKDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_VIDEO_2_LINK_LENGTH_TOO_LONG")>]
+    ADVIDEO2LINKLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_VIDEO_2_LINK_REQUIRED")>]
+    ADVIDEO2LINKREQUIRED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_VIDEO_2_LINK_WARNING")>]
+    ADVIDEO2LINKWARNING : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_VIDEO_2_TAG_DUPLICATED")>]
+    ADVIDEO2TAGDUPLICATED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_VIDEO_2_TAG_LENGTH_TOO_LONG")>]
+    ADVIDEO2TAGLENGTHTOOLONG : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "AD_VIDEO_2_TAG_REQUIRED")>]
+    ADVIDEO2TAGREQUIRED : CatalogsItemValidationDetails;
     [<JsonProperty(PropertyName = "ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG")>]
     ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG : CatalogsItemValidationDetails;
     [<JsonProperty(PropertyName = "ADDITIONAL_IMAGE_LINK_WARNING")>]
@@ -25,8 +347,6 @@ module CatalogsItemValidationWarnings =
     ADWORDS_SAME_AS_LINK : CatalogsItemValidationDetails;
     [<JsonProperty(PropertyName = "AGE_GROUP_INVALID")>]
     AGE_GROUP_INVALID : CatalogsItemValidationDetails;
-    [<JsonProperty(PropertyName = "SIZE_SYSTEM_INVALID")>]
-    SIZE_SYSTEM_INVALID : CatalogsItemValidationDetails;
     [<JsonProperty(PropertyName = "ANDROID_DEEP_LINK_INVALID")>]
     ANDROID_DEEP_LINK_INVALID : CatalogsItemValidationDetails;
     [<JsonProperty(PropertyName = "AVAILABILITY_DATE_INVALID")>]
@@ -71,22 +391,24 @@ module CatalogsItemValidationWarnings =
     PRODUCT_CATEGORY_DEPTH_WARNING : CatalogsItemValidationDetails;
     [<JsonProperty(PropertyName = "PRODUCT_TYPE_LENGTH_TOO_LONG")>]
     PRODUCT_TYPE_LENGTH_TOO_LONG : CatalogsItemValidationDetails;
-    [<JsonProperty(PropertyName = "SALES_PRICE_INVALID")>]
-    SALES_PRICE_INVALID : CatalogsItemValidationDetails;
-    [<JsonProperty(PropertyName = "SALES_PRICE_TOO_LOW")>]
-    SALES_PRICE_TOO_LOW : CatalogsItemValidationDetails;
-    [<JsonProperty(PropertyName = "SALES_PRICE_TOO_HIGH")>]
-    SALES_PRICE_TOO_HIGH : CatalogsItemValidationDetails;
     [<JsonProperty(PropertyName = "SALE_DATE_INVALID")>]
     SALE_DATE_INVALID : CatalogsItemValidationDetails;
-    [<JsonProperty(PropertyName = "SHIPPING_INVALID")>]
-    SHIPPING_INVALID : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "SALES_PRICE_INVALID")>]
+    SALES_PRICE_INVALID : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "SALES_PRICE_TOO_HIGH")>]
+    SALES_PRICE_TOO_HIGH : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "SALES_PRICE_TOO_LOW")>]
+    SALES_PRICE_TOO_LOW : CatalogsItemValidationDetails;
     [<JsonProperty(PropertyName = "SHIPPING_HEIGHT_INVALID")>]
     SHIPPING_HEIGHT_INVALID : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "SHIPPING_INVALID")>]
+    SHIPPING_INVALID : CatalogsItemValidationDetails;
     [<JsonProperty(PropertyName = "SHIPPING_WEIGHT_INVALID")>]
     SHIPPING_WEIGHT_INVALID : CatalogsItemValidationDetails;
     [<JsonProperty(PropertyName = "SHIPPING_WIDTH_INVALID")>]
     SHIPPING_WIDTH_INVALID : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "SIZE_SYSTEM_INVALID")>]
+    SIZE_SYSTEM_INVALID : CatalogsItemValidationDetails;
     [<JsonProperty(PropertyName = "SIZE_TYPE_INVALID")>]
     SIZE_TYPE_INVALID : CatalogsItemValidationDetails;
     [<JsonProperty(PropertyName = "TAX_INVALID")>]
@@ -97,6 +419,8 @@ module CatalogsItemValidationWarnings =
     TOO_MANY_ADDITIONAL_IMAGE_LINKS : CatalogsItemValidationDetails;
     [<JsonProperty(PropertyName = "UTM_SOURCE_AUTO_CORRECTED")>]
     UTM_SOURCE_AUTO_CORRECTED : CatalogsItemValidationDetails;
+    [<JsonProperty(PropertyName = "VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED")>]
+    VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED : CatalogsItemValidationDetails;
     [<JsonProperty(PropertyName = "WEIGHT_UNIT_INVALID")>]
     WEIGHT_UNIT_INVALID : CatalogsItemValidationDetails;
   }

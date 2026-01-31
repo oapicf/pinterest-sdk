@@ -9,11 +9,11 @@
   {
    (ds/opt :active) boolean?
    (ds/opt :advertiser_id) string?
-   (ds/opt :discountType) string?
-   (ds/opt :discountInMicroCurrency) float?
    (ds/opt :discountCurrency) string?
-   (ds/opt :title) string?
+   (ds/opt :discountInMicroCurrency) float?
+   (ds/opt :discountType) string?
    (ds/opt :remainingDiscountInMicroCurrency) float?
+   (ds/opt :title) string?
    })
 
 (def ads-credit-discounts-response-spec

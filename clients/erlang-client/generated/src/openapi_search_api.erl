@@ -7,7 +7,7 @@
 -define(BASE_URL, <<"/v5">>).
 
 %% @doc Search pins by a given search term
-%% <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+%% <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
 -spec search_partner_pins(ctx:ctx(), binary(), binary()) -> {ok, openapi_search_partner_pins_200_response:openapi_search_partner_pins_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 search_partner_pins(Ctx, Term, CountryCode) ->
     search_partner_pins(Ctx, Term, CountryCode, #{}).
@@ -50,11 +50,11 @@ search_user_boards/get(Ctx, Optional) ->
 
 %% @doc Search user's Pins
 %% Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
--spec search_user_pins/list(ctx:ctx(), binary()) -> {ok, openapi_pins_list_200_response:openapi_pins_list_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec search_user_pins/list(ctx:ctx(), binary()) -> {ok, openapi_search_user_pins_list_200_response:openapi_search_user_pins_list_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 search_user_pins/list(Ctx, Query) ->
     search_user_pins/list(Ctx, Query, #{}).
 
--spec search_user_pins/list(ctx:ctx(), binary(), maps:map()) -> {ok, openapi_pins_list_200_response:openapi_pins_list_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec search_user_pins/list(ctx:ctx(), binary(), maps:map()) -> {ok, openapi_search_user_pins_list_200_response:openapi_search_user_pins_list_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 search_user_pins/list(Ctx, Query, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),

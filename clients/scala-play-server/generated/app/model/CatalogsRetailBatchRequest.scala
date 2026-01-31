@@ -4,15 +4,17 @@ import play.api.libs.json._
 
 /**
   * A request object that can have multiple operations on a single retail batch
-  * @param language We recommend using the CatalogsLocale values.
+  * @param catalogId Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
   * @param items Array with catalogs item operations
+  * @param language We recommend using the CatalogsLocale values.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class CatalogsRetailBatchRequest(
+  catalogId: Option[String],
   catalogType: CatalogsRetailBatchRequest.CatalogType.Value,
   country: Country,
-  language: CatalogsRetailBatchRequest.Language.Value,
-  items: List[CatalogsRetailBatchRequestItemsInner]
+  items: List[CatalogsRetailBatchRequestItemsInner],
+  language: CatalogsRetailBatchRequest.Language.Value
 )
 
 object CatalogsRetailBatchRequest {

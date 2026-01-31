@@ -118,18 +118,18 @@ public:
 	void setINVALIDDOMAIN(CatalogsItemValidationDetails  iNVALID_DOMAIN);
 	/*! \brief Get 
 	 */
-	CatalogsItemValidationDetails getITEMIDMISSING();
-
-	/*! \brief Set 
-	 */
-	void setITEMIDMISSING(CatalogsItemValidationDetails  iTEMID_MISSING);
-	/*! \brief Get 
-	 */
 	CatalogsItemValidationDetails getITEMMAINIMAGEDOWNLOADFAILURE();
 
 	/*! \brief Set 
 	 */
 	void setITEMMAINIMAGEDOWNLOADFAILURE(CatalogsItemValidationDetails  iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE);
+	/*! \brief Get 
+	 */
+	CatalogsItemValidationDetails getITEMIDMISSING();
+
+	/*! \brief Set 
+	 */
+	void setITEMIDMISSING(CatalogsItemValidationDetails  iTEMID_MISSING);
 	/*! \brief Get 
 	 */
 	CatalogsItemValidationDetails getLINKFORMATINVALID();
@@ -219,8 +219,8 @@ private:
 	CatalogsItemValidationDetails iMAGE_LINK_LENGTH_TOO_LONG;
 	CatalogsItemValidationDetails iMAGE_LINK_MISSING;
 	CatalogsItemValidationDetails iNVALID_DOMAIN;
-	CatalogsItemValidationDetails iTEMID_MISSING;
 	CatalogsItemValidationDetails iTEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
+	CatalogsItemValidationDetails iTEMID_MISSING;
 	CatalogsItemValidationDetails lINK_FORMAT_INVALID;
 	CatalogsItemValidationDetails lINK_LENGTH_TOO_LONG;
 	CatalogsItemValidationDetails lIST_PRICE_INVALID;

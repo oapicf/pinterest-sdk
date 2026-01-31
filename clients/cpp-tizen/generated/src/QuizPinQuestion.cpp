@@ -23,14 +23,19 @@ QuizPinQuestion::~QuizPinQuestion()
 void
 QuizPinQuestion::__init()
 {
+	//new std::list()std::list> options;
 	//question_id = double(0);
 	//question_text = std::string();
-	//new std::list()std::list> options;
 }
 
 void
 QuizPinQuestion::__cleanup()
 {
+	//if(options != NULL) {
+	//options.RemoveAll(true);
+	//delete options;
+	//options = NULL;
+	//}
 	//if(question_id != NULL) {
 	//
 	//delete question_id;
@@ -41,11 +46,6 @@ QuizPinQuestion::__cleanup()
 	//delete question_text;
 	//question_text = NULL;
 	//}
-	//if(options != NULL) {
-	//options.RemoveAll(true);
-	//delete options;
-	//options = NULL;
-	//}
 	//
 }
 
@@ -54,6 +54,30 @@ QuizPinQuestion::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *optionsKey = "options";
+	node = json_object_get_member(pJsonObject, optionsKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<QuizPinOption> new_list;
+			QuizPinOption inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("QuizPinOption")) {
+					jsonToValue(&inst, temp_json, "QuizPinOption", "");
+				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
+					
+				}
+				new_list.push_back(inst);
+			}
+			options = new_list;
+		}
+		
+	}
 	const gchar *question_idKey = "question_id";
 	node = json_object_get_member(pJsonObject, question_idKey);
 	if (node !=NULL) {
@@ -79,30 +103,6 @@ QuizPinQuestion::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *optionsKey = "options";
-	node = json_object_get_member(pJsonObject, optionsKey);
-	if (node !=NULL) {
-	
-		{
-			JsonArray* arr = json_node_get_array(node);
-			JsonNode*  temp_json;
-			list<QuizPinOption> new_list;
-			QuizPinOption inst;
-			for (guint i=0;i<json_array_get_length(arr);i++) {
-				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("QuizPinOption")) {
-					jsonToValue(&inst, temp_json, "QuizPinOption", "");
-				} else {
-					
-					inst.fromJson(json_to_string(temp_json, false));
-					
-				}
-				new_list.push_back(inst);
-			}
-			options = new_list;
-		}
-		
-	}
 }
 
 QuizPinQuestion::QuizPinQuestion(char* json)
@@ -115,29 +115,6 @@ QuizPinQuestion::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("long long")) {
-		long long obj = getQuestionId();
-		node = converttoJson(&obj, "long long", "");
-	}
-	else {
-		
-		long long obj = static_cast<long long> (getQuestionId());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *question_idKey = "question_id";
-	json_object_set_member(pJsonObject, question_idKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getQuestionText();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *question_textKey = "question_text";
-	json_object_set_member(pJsonObject, question_textKey, node);
 	if (isprimitive("QuizPinOption")) {
 		list<QuizPinOption> new_list = static_cast<list <QuizPinOption> > (getOptions());
 		node = converttoJson(&new_list, "QuizPinOption", "array");
@@ -163,12 +140,47 @@ QuizPinQuestion::toJson()
 	
 	const gchar *optionsKey = "options";
 	json_object_set_member(pJsonObject, optionsKey, node);
+	if (isprimitive("long long")) {
+		long long obj = getQuestionId();
+		node = converttoJson(&obj, "long long", "");
+	}
+	else {
+		
+		long long obj = static_cast<long long> (getQuestionId());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *question_idKey = "question_id";
+	json_object_set_member(pJsonObject, question_idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getQuestionText();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *question_textKey = "question_text";
+	json_object_set_member(pJsonObject, question_textKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+std::list<QuizPinOption>
+QuizPinQuestion::getOptions()
+{
+	return options;
+}
+
+void
+QuizPinQuestion::setOptions(std::list <QuizPinOption> options)
+{
+	this->options = options;
 }
 
 long long
@@ -193,18 +205,6 @@ void
 QuizPinQuestion::setQuestionText(std::string  question_text)
 {
 	this->question_text = question_text;
-}
-
-std::list<QuizPinOption>
-QuizPinQuestion::getOptions()
-{
-	return options;
-}
-
-void
-QuizPinQuestion::setOptions(std::list <QuizPinOption> options)
-{
-	this->options = options;
 }
 
 

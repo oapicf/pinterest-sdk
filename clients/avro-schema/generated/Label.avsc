@@ -1,0 +1,51 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "Label",
+  "fields": [
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Label ID.",
+      "default": null
+    },
+    {
+      "name": "label_type",
+      "type": ["null", "model.LabelType"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "parent_id",
+      "type": ["null", "string"],
+      "doc": "Label parent entity ID.",
+      "default": null
+    },
+    {
+      "name": "parent_type",
+      "type": ["null", {
+        "type": "enum",
+        "name": "Label_parentUnderscoretype",
+        "symbols": [
+          "CAMPAIGN"
+        ]
+      }],
+      "doc": "Label parent entity type.",
+      "default": null
+    },
+    {
+      "name": "status",
+      "type": ["null", "model.LabelStatus"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "value",
+      "type": ["null", "string"],
+      "doc": "Label name.",
+      "default": null
+    }
+  ]
+
+}

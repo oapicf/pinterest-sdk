@@ -11,9 +11,13 @@ import javax.validation.Valid;
 /**
  * ConversionApiResponseEventsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class ConversionApiResponseEventsInner   {
+  @JsonProperty("error_message")
+  
+  private String errorMessage;
+
   /**
    * Whether the event was processed successfully.
    */
@@ -50,30 +54,9 @@ public class ConversionApiResponseEventsInner   {
 
   private StatusEnum status;
 
-  @JsonProperty("error_message")
-  
-  private String errorMessage;
-
   @JsonProperty("warning_message")
   
   private String warningMessage;
-
-  public ConversionApiResponseEventsInner status(StatusEnum status) {
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Whether the event was processed successfully.
-   * @return status
-  **/
-  public StatusEnum getStatus() {
-    return status;
-  }
-
-  public void setStatus(StatusEnum status) {
-    this.status = status;
-  }
 
   public ConversionApiResponseEventsInner errorMessage(String errorMessage) {
     this.errorMessage = errorMessage;
@@ -90,6 +73,23 @@ public class ConversionApiResponseEventsInner   {
 
   public void setErrorMessage(String errorMessage) {
     this.errorMessage = errorMessage;
+  }
+
+  public ConversionApiResponseEventsInner status(StatusEnum status) {
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Whether the event was processed successfully.
+   * @return status
+  **/
+  public StatusEnum getStatus() {
+    return status;
+  }
+
+  public void setStatus(StatusEnum status) {
+    this.status = status;
   }
 
   public ConversionApiResponseEventsInner warningMessage(String warningMessage) {
@@ -119,14 +119,14 @@ public class ConversionApiResponseEventsInner   {
       return false;
     }
     ConversionApiResponseEventsInner conversionApiResponseEventsInner = (ConversionApiResponseEventsInner) o;
-    return Objects.equals(status, conversionApiResponseEventsInner.status) &&
-        Objects.equals(errorMessage, conversionApiResponseEventsInner.errorMessage) &&
+    return Objects.equals(errorMessage, conversionApiResponseEventsInner.errorMessage) &&
+        Objects.equals(status, conversionApiResponseEventsInner.status) &&
         Objects.equals(warningMessage, conversionApiResponseEventsInner.warningMessage);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, errorMessage, warningMessage);
+    return Objects.hash(errorMessage, status, warningMessage);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -135,8 +135,8 @@ public class ConversionApiResponseEventsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionApiResponseEventsInner {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    warningMessage: ").append(toIndentedString(warningMessage)).append("\n");
     sb.append("}");
     return sb.toString();

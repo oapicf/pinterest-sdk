@@ -15,7 +15,7 @@ open class CampaignsAPI {
     /**
      * enum for parameter columns
      */
-    public enum Columns_campaignTargetingAnalyticsGet: String, CaseIterable {
+    public enum Columns_adPinsAnalytics: String, CaseIterable {
         case spendInMicroDollar = "SPEND_IN_MICRO_DOLLAR"
         case paidImpression = "PAID_IMPRESSION"
         case spendInDollar = "SPEND_IN_DOLLAR"
@@ -24,7 +24,9 @@ open class CampaignsAPI {
         case ecpcInDollar = "ECPC_IN_DOLLAR"
         case ctr = "CTR"
         case ectr = "ECTR"
+        case outboundCtr1 = "OUTBOUND_CTR_1"
         case campaignName = "CAMPAIGN_NAME"
+        case campaignBrandLabel = "CAMPAIGN_BRAND_LABEL"
         case pinId = "PIN_ID"
         case totalEngagement = "TOTAL_ENGAGEMENT"
         case engagement1 = "ENGAGEMENT_1"
@@ -45,7 +47,13 @@ open class CampaignsAPI {
         case campaignObjectiveType = "CAMPAIGN_OBJECTIVE_TYPE"
         case cpmInMicroDollar = "CPM_IN_MICRO_DOLLAR"
         case cpmInDollar = "CPM_IN_DOLLAR"
+        case adGroupName = "AD_GROUP_NAME"
+        case adGroupBudgetType = "AD_GROUP_BUDGET_TYPE"
+        case adGroupBudgetInLocalCurrency = "AD_GROUP_BUDGET_IN_LOCAL_CURRENCY"
         case adGroupEntityStatus = "AD_GROUP_ENTITY_STATUS"
+        case adGroupBidMultiplier = "AD_GROUP_BID_MULTIPLIER"
+        case promoId = "PROMO_ID"
+        case promoName = "PROMO_NAME"
         case orderLineId = "ORDER_LINE_ID"
         case orderLineName = "ORDER_LINE_NAME"
         case clickthrough1 = "CLICKTHROUGH_1"
@@ -63,6 +71,7 @@ open class CampaignsAPI {
         case totalImpressionUser = "TOTAL_IMPRESSION_USER"
         case totalImpressionFrequency = "TOTAL_IMPRESSION_FREQUENCY"
         case costPerOutboundClickInDollar = "COST_PER_OUTBOUND_CLICK_IN_DOLLAR"
+        case costPerOutboundClickInDollar1 = "COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1"
         case totalEngagementSignup = "TOTAL_ENGAGEMENT_SIGNUP"
         case totalEngagementCheckout = "TOTAL_ENGAGEMENT_CHECKOUT"
         case totalEngagementLead = "TOTAL_ENGAGEMENT_LEAD"
@@ -84,13 +93,19 @@ open class CampaignsAPI {
         case totalWebSessions = "TOTAL_WEB_SESSIONS"
         case webSessions1 = "WEB_SESSIONS_1"
         case webSessions2 = "WEB_SESSIONS_2"
+        case adName = "AD_NAME"
         case campaignLifetimeSpendCap = "CAMPAIGN_LIFETIME_SPEND_CAP"
+        case adGroupOptimization = "AD_GROUP_OPTIMIZATION"
         case campaignDailySpendCap = "CAMPAIGN_DAILY_SPEND_CAP"
+        case campaignBudgetOptimization = "CAMPAIGN_BUDGET_OPTIMIZATION"
+        case isPremiereCampaign = "IS_PREMIERE_CAMPAIGN"
         case totalPageVisit = "TOTAL_PAGE_VISIT"
         case totalSignup = "TOTAL_SIGNUP"
         case totalCheckout = "TOTAL_CHECKOUT"
         case totalCustom = "TOTAL_CUSTOM"
         case totalLead = "TOTAL_LEAD"
+        case totalAddToWishlist = "TOTAL_ADD_TO_WISHLIST"
+        case totalSubscribe = "TOTAL_SUBSCRIBE"
         case totalSignupValueInMicroDollar = "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR"
         case totalCheckoutValueInMicroDollar = "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
         case totalCustomValueInMicroDollar = "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR"
@@ -98,8 +113,13 @@ open class CampaignsAPI {
         case pageVisitRoas = "PAGE_VISIT_ROAS"
         case checkoutRoas = "CHECKOUT_ROAS"
         case customRoas = "CUSTOM_ROAS"
+        case productGroupAdImageTag = "PRODUCT_GROUP_AD_IMAGE_TAG"
+        case productGroupAdVideoTag = "PRODUCT_GROUP_AD_VIDEO_TAG"
+        case video3secViews1 = "VIDEO_3SEC_VIEWS_1"
+        case video15secUniqueViews1 = "VIDEO_15SEC_UNIQUE_VIEWS_1"
         case videoMrcViews1 = "VIDEO_MRC_VIEWS_1"
         case video3secViews2 = "VIDEO_3SEC_VIEWS_2"
+        case video15secUniqueViews2 = "VIDEO_15SEC_UNIQUE_VIEWS_2"
         case videoP100Complete2 = "VIDEO_P100_COMPLETE_2"
         case videoP0Combined2 = "VIDEO_P0_COMBINED_2"
         case videoP25Combined2 = "VIDEO_P25_COMBINED_2"
@@ -109,10 +129,12 @@ open class CampaignsAPI {
         case videoMrcViews2 = "VIDEO_MRC_VIEWS_2"
         case paidVideoViewableRate = "PAID_VIDEO_VIEWABLE_RATE"
         case videoLength = "VIDEO_LENGTH"
+        case videoSpendInDollar = "VIDEO_SPEND_IN_DOLLAR"
         case ecpvInDollar = "ECPV_IN_DOLLAR"
         case ecpcvInDollar = "ECPCV_IN_DOLLAR"
         case ecpcvP95InDollar = "ECPCV_P95_IN_DOLLAR"
         case totalVideo3secViews = "TOTAL_VIDEO_3SEC_VIEWS"
+        case totalVideo15secUniqueViews = "TOTAL_VIDEO_15SEC_UNIQUE_VIEWS"
         case totalVideoP100Complete = "TOTAL_VIDEO_P100_COMPLETE"
         case totalVideoP0Combined = "TOTAL_VIDEO_P0_COMBINED"
         case totalVideoP25Combined = "TOTAL_VIDEO_P25_COMBINED"
@@ -134,6 +156,318 @@ open class CampaignsAPI {
         case totalWebViewCheckoutValueInMicroDollar = "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
         case inappCheckoutCostPerAction = "INAPP_CHECKOUT_COST_PER_ACTION"
         case totalOfflineCheckout = "TOTAL_OFFLINE_CHECKOUT"
+        case totalAppInstallConversionRate = "TOTAL_APP_INSTALL_CONVERSION_RATE"
+        case totalInappAppInstallConversionRate = "TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE"
+        case ideaPinProductTagVisit1 = "IDEA_PIN_PRODUCT_TAG_VISIT_1"
+        case ideaPinProductTagVisit2 = "IDEA_PIN_PRODUCT_TAG_VISIT_2"
+        case totalIdeaPinProductTagVisit = "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT"
+        case leads = "LEADS"
+        case costPerLead = "COST_PER_LEAD"
+        case quizCompleted = "QUIZ_COMPLETED"
+        case quizPinResultOpen = "QUIZ_PIN_RESULT_OPEN"
+        case quizCompletionRate = "QUIZ_COMPLETION_RATE"
+        case showcasePinClickthrough = "SHOWCASE_PIN_CLICKTHROUGH"
+        case showcaseSubpageClickthrough = "SHOWCASE_SUBPAGE_CLICKTHROUGH"
+        case showcaseSubpinClickthrough = "SHOWCASE_SUBPIN_CLICKTHROUGH"
+        case showcaseSubpageImpression = "SHOWCASE_SUBPAGE_IMPRESSION"
+        case showcaseSubpinImpression = "SHOWCASE_SUBPIN_IMPRESSION"
+        case showcaseSubpageSwipeLeft = "SHOWCASE_SUBPAGE_SWIPE_LEFT"
+        case showcaseSubpageSwipeRight = "SHOWCASE_SUBPAGE_SWIPE_RIGHT"
+        case showcaseSubpinSwipeLeft = "SHOWCASE_SUBPIN_SWIPE_LEFT"
+        case showcaseSubpinSwipeRight = "SHOWCASE_SUBPIN_SWIPE_RIGHT"
+        case showcaseSubpageRepin = "SHOWCASE_SUBPAGE_REPIN"
+        case showcaseSubpinRepin = "SHOWCASE_SUBPIN_REPIN"
+        case showcaseSubpageCloseup = "SHOWCASE_SUBPAGE_CLOSEUP"
+        case showcaseCardThumbnailSwipeForward = "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD"
+        case showcaseCardThumbnailSwipeBackward = "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD"
+        case showcaseAverageSubpageCloseupPerSession = "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION"
+        case totalCheckoutConversionRate = "TOTAL_CHECKOUT_CONVERSION_RATE"
+        case totalViewCategoryConversionRate = "TOTAL_VIEW_CATEGORY_CONVERSION_RATE"
+        case totalAddToCartConversionRate = "TOTAL_ADD_TO_CART_CONVERSION_RATE"
+        case totalSignupConversionRate = "TOTAL_SIGNUP_CONVERSION_RATE"
+        case totalPageVisitConversionRate = "TOTAL_PAGE_VISIT_CONVERSION_RATE"
+        case totalLeadConversionRate = "TOTAL_LEAD_CONVERSION_RATE"
+        case totalSearchConversionRate = "TOTAL_SEARCH_CONVERSION_RATE"
+        case totalWatchVideoConversionRate = "TOTAL_WATCH_VIDEO_CONVERSION_RATE"
+        case totalUnknownConversionRate = "TOTAL_UNKNOWN_CONVERSION_RATE"
+        case totalCustomConversionRate = "TOTAL_CUSTOM_CONVERSION_RATE"
+    }
+
+    /**
+     * enum for parameter clickWindowDays
+     */
+    public enum ClickWindowDays_adPinsAnalytics: Int, CaseIterable {
+        case _0 = 0
+        case _1 = 1
+        case _7 = 7
+        case _14 = 14
+        case _30 = 30
+        case _60 = 60
+    }
+
+    /**
+     * enum for parameter engagementWindowDays
+     */
+    public enum EngagementWindowDays_adPinsAnalytics: Int, CaseIterable {
+        case _0 = 0
+        case _1 = 1
+        case _7 = 7
+        case _14 = 14
+        case _30 = 30
+        case _60 = 60
+    }
+
+    /**
+     * enum for parameter viewWindowDays
+     */
+    public enum ViewWindowDays_adPinsAnalytics: Int, CaseIterable {
+        case _0 = 0
+        case _1 = 1
+        case _7 = 7
+        case _14 = 14
+        case _30 = 30
+        case _60 = 60
+    }
+
+    /**
+     * enum for parameter conversionReportTime
+     */
+    public enum ConversionReportTime_adPinsAnalytics: String, CaseIterable {
+        case timeOfAdAction = "TIME_OF_AD_ACTION"
+        case timeOfConversion = "TIME_OF_CONVERSION"
+    }
+
+    /**
+     Get pins analytics
+     
+     - parameter adAccountId: (path) Unique identifier of an ad account. 
+     - parameter campaignId: (query) Campaign Id to use to filter the results. 
+     - parameter pinIds: (query) List of Pin IDs. 
+     - parameter startDate: (query) Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. 
+     - parameter endDate: (query) Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. 
+     - parameter columns: (query) Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned 
+     - parameter granularity: (query) TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly 
+     - parameter clickWindowDays: (query) Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ._30)
+     - parameter engagementWindowDays: (query) Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to ._30)
+     - parameter viewWindowDays: (query) Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to ._1)
+     - parameter conversionReportTime: (query) The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to .timeOfAdAction)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func adPinsAnalytics(adAccountId: String, campaignId: String, pinIds: [String], startDate: Date, endDate: Date, columns: [Columns_adPinsAnalytics], granularity: Granularity, clickWindowDays: ClickWindowDays_adPinsAnalytics? = nil, engagementWindowDays: EngagementWindowDays_adPinsAnalytics? = nil, viewWindowDays: ViewWindowDays_adPinsAnalytics? = nil, conversionReportTime: ConversionReportTime_adPinsAnalytics? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [AdPinAnalytics]?, _ error: Error?) -> Void)) -> RequestTask {
+        return adPinsAnalyticsWithRequestBuilder(adAccountId: adAccountId, campaignId: campaignId, pinIds: pinIds, startDate: startDate, endDate: endDate, columns: columns, granularity: granularity, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get pins analytics
+     - GET /ad_accounts/{ad_account_id}/pins/analytics
+     - Get analytics for the pins given a campaign and pins in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. Data will not be provided for conversion metrics but will be available for non-conversion metrics.
+     - OAuth:
+       - type: oauth2
+       - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
+     - parameter adAccountId: (path) Unique identifier of an ad account. 
+     - parameter campaignId: (query) Campaign Id to use to filter the results. 
+     - parameter pinIds: (query) List of Pin IDs. 
+     - parameter startDate: (query) Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. 
+     - parameter endDate: (query) Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. 
+     - parameter columns: (query) Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned 
+     - parameter granularity: (query) TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly 
+     - parameter clickWindowDays: (query) Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ._30)
+     - parameter engagementWindowDays: (query) Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to ._30)
+     - parameter viewWindowDays: (query) Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to ._1)
+     - parameter conversionReportTime: (query) The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to .timeOfAdAction)
+     - returns: RequestBuilder<[AdPinAnalytics]> 
+     */
+    open class func adPinsAnalyticsWithRequestBuilder(adAccountId: String, campaignId: String, pinIds: [String], startDate: Date, endDate: Date, columns: [Columns_adPinsAnalytics], granularity: Granularity, clickWindowDays: ClickWindowDays_adPinsAnalytics? = nil, engagementWindowDays: EngagementWindowDays_adPinsAnalytics? = nil, viewWindowDays: ViewWindowDays_adPinsAnalytics? = nil, conversionReportTime: ConversionReportTime_adPinsAnalytics? = nil) -> RequestBuilder<[AdPinAnalytics]> {
+        var localVariablePath = "/ad_accounts/{ad_account_id}/pins/analytics"
+        let adAccountIdPreEscape = "\(APIHelper.mapValueToPathItem(adAccountId))"
+        let adAccountIdPostEscape = adAccountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{ad_account_id}", with: adAccountIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "campaign_id": (wrappedValue: campaignId.encodeToJSON(), isExplode: true),
+            "pin_ids": (wrappedValue: pinIds.encodeToJSON(), isExplode: true),
+            "start_date": (wrappedValue: startDate.encodeToJSON(), isExplode: true),
+            "end_date": (wrappedValue: endDate.encodeToJSON(), isExplode: true),
+            "columns": (wrappedValue: columns.encodeToJSON(), isExplode: false),
+            "granularity": (wrappedValue: granularity.encodeToJSON(), isExplode: true),
+            "click_window_days": (wrappedValue: clickWindowDays?.encodeToJSON(), isExplode: true),
+            "engagement_window_days": (wrappedValue: engagementWindowDays?.encodeToJSON(), isExplode: true),
+            "view_window_days": (wrappedValue: viewWindowDays?.encodeToJSON(), isExplode: true),
+            "conversion_report_time": (wrappedValue: conversionReportTime?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<[AdPinAnalytics]>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+     * enum for parameter columns
+     */
+    public enum Columns_campaignTargetingAnalyticsGet: String, CaseIterable {
+        case spendInMicroDollar = "SPEND_IN_MICRO_DOLLAR"
+        case paidImpression = "PAID_IMPRESSION"
+        case spendInDollar = "SPEND_IN_DOLLAR"
+        case cpcInMicroDollar = "CPC_IN_MICRO_DOLLAR"
+        case ecpcInMicroDollar = "ECPC_IN_MICRO_DOLLAR"
+        case ecpcInDollar = "ECPC_IN_DOLLAR"
+        case ctr = "CTR"
+        case ectr = "ECTR"
+        case outboundCtr1 = "OUTBOUND_CTR_1"
+        case campaignName = "CAMPAIGN_NAME"
+        case campaignBrandLabel = "CAMPAIGN_BRAND_LABEL"
+        case pinId = "PIN_ID"
+        case totalEngagement = "TOTAL_ENGAGEMENT"
+        case engagement1 = "ENGAGEMENT_1"
+        case engagement2 = "ENGAGEMENT_2"
+        case ecpeInDollar = "ECPE_IN_DOLLAR"
+        case engagementRate = "ENGAGEMENT_RATE"
+        case eengagementRate = "EENGAGEMENT_RATE"
+        case ecpmInMicroDollar = "ECPM_IN_MICRO_DOLLAR"
+        case repinRate = "REPIN_RATE"
+        case ctr2 = "CTR_2"
+        case campaignId = "CAMPAIGN_ID"
+        case advertiserId = "ADVERTISER_ID"
+        case adAccountId = "AD_ACCOUNT_ID"
+        case pinPromotionId = "PIN_PROMOTION_ID"
+        case adId = "AD_ID"
+        case adGroupId = "AD_GROUP_ID"
+        case campaignEntityStatus = "CAMPAIGN_ENTITY_STATUS"
+        case campaignObjectiveType = "CAMPAIGN_OBJECTIVE_TYPE"
+        case cpmInMicroDollar = "CPM_IN_MICRO_DOLLAR"
+        case cpmInDollar = "CPM_IN_DOLLAR"
+        case adGroupName = "AD_GROUP_NAME"
+        case adGroupBudgetType = "AD_GROUP_BUDGET_TYPE"
+        case adGroupBudgetInLocalCurrency = "AD_GROUP_BUDGET_IN_LOCAL_CURRENCY"
+        case adGroupEntityStatus = "AD_GROUP_ENTITY_STATUS"
+        case adGroupBidMultiplier = "AD_GROUP_BID_MULTIPLIER"
+        case promoId = "PROMO_ID"
+        case promoName = "PROMO_NAME"
+        case orderLineId = "ORDER_LINE_ID"
+        case orderLineName = "ORDER_LINE_NAME"
+        case clickthrough1 = "CLICKTHROUGH_1"
+        case repin1 = "REPIN_1"
+        case impression1 = "IMPRESSION_1"
+        case impression1Gross = "IMPRESSION_1_GROSS"
+        case clickthrough1Gross = "CLICKTHROUGH_1_GROSS"
+        case outboundClick1 = "OUTBOUND_CLICK_1"
+        case clickthrough2 = "CLICKTHROUGH_2"
+        case repin2 = "REPIN_2"
+        case impression2 = "IMPRESSION_2"
+        case outboundClick2 = "OUTBOUND_CLICK_2"
+        case totalClickthrough = "TOTAL_CLICKTHROUGH"
+        case totalImpression = "TOTAL_IMPRESSION"
+        case totalImpressionUser = "TOTAL_IMPRESSION_USER"
+        case totalImpressionFrequency = "TOTAL_IMPRESSION_FREQUENCY"
+        case costPerOutboundClickInDollar = "COST_PER_OUTBOUND_CLICK_IN_DOLLAR"
+        case costPerOutboundClickInDollar1 = "COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1"
+        case totalEngagementSignup = "TOTAL_ENGAGEMENT_SIGNUP"
+        case totalEngagementCheckout = "TOTAL_ENGAGEMENT_CHECKOUT"
+        case totalEngagementLead = "TOTAL_ENGAGEMENT_LEAD"
+        case totalClickSignup = "TOTAL_CLICK_SIGNUP"
+        case totalClickCheckout = "TOTAL_CLICK_CHECKOUT"
+        case totalClickAddToCart = "TOTAL_CLICK_ADD_TO_CART"
+        case totalClickLead = "TOTAL_CLICK_LEAD"
+        case totalViewSignup = "TOTAL_VIEW_SIGNUP"
+        case totalViewCheckout = "TOTAL_VIEW_CHECKOUT"
+        case totalViewAddToCart = "TOTAL_VIEW_ADD_TO_CART"
+        case totalViewLead = "TOTAL_VIEW_LEAD"
+        case totalConversions = "TOTAL_CONVERSIONS"
+        case totalEngagementSignupValueInMicroDollar = "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR"
+        case totalEngagementCheckoutValueInMicroDollar = "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
+        case totalClickSignupValueInMicroDollar = "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR"
+        case totalClickCheckoutValueInMicroDollar = "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
+        case totalViewSignupValueInMicroDollar = "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR"
+        case totalViewCheckoutValueInMicroDollar = "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
+        case totalWebSessions = "TOTAL_WEB_SESSIONS"
+        case webSessions1 = "WEB_SESSIONS_1"
+        case webSessions2 = "WEB_SESSIONS_2"
+        case adName = "AD_NAME"
+        case campaignLifetimeSpendCap = "CAMPAIGN_LIFETIME_SPEND_CAP"
+        case adGroupOptimization = "AD_GROUP_OPTIMIZATION"
+        case campaignDailySpendCap = "CAMPAIGN_DAILY_SPEND_CAP"
+        case campaignBudgetOptimization = "CAMPAIGN_BUDGET_OPTIMIZATION"
+        case isPremiereCampaign = "IS_PREMIERE_CAMPAIGN"
+        case totalPageVisit = "TOTAL_PAGE_VISIT"
+        case totalSignup = "TOTAL_SIGNUP"
+        case totalCheckout = "TOTAL_CHECKOUT"
+        case totalCustom = "TOTAL_CUSTOM"
+        case totalLead = "TOTAL_LEAD"
+        case totalAddToWishlist = "TOTAL_ADD_TO_WISHLIST"
+        case totalSubscribe = "TOTAL_SUBSCRIBE"
+        case totalSignupValueInMicroDollar = "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR"
+        case totalCheckoutValueInMicroDollar = "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
+        case totalCustomValueInMicroDollar = "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR"
+        case pageVisitCostPerAction = "PAGE_VISIT_COST_PER_ACTION"
+        case pageVisitRoas = "PAGE_VISIT_ROAS"
+        case checkoutRoas = "CHECKOUT_ROAS"
+        case customRoas = "CUSTOM_ROAS"
+        case productGroupAdImageTag = "PRODUCT_GROUP_AD_IMAGE_TAG"
+        case productGroupAdVideoTag = "PRODUCT_GROUP_AD_VIDEO_TAG"
+        case video3secViews1 = "VIDEO_3SEC_VIEWS_1"
+        case video15secUniqueViews1 = "VIDEO_15SEC_UNIQUE_VIEWS_1"
+        case videoMrcViews1 = "VIDEO_MRC_VIEWS_1"
+        case video3secViews2 = "VIDEO_3SEC_VIEWS_2"
+        case video15secUniqueViews2 = "VIDEO_15SEC_UNIQUE_VIEWS_2"
+        case videoP100Complete2 = "VIDEO_P100_COMPLETE_2"
+        case videoP0Combined2 = "VIDEO_P0_COMBINED_2"
+        case videoP25Combined2 = "VIDEO_P25_COMBINED_2"
+        case videoP50Combined2 = "VIDEO_P50_COMBINED_2"
+        case videoP75Combined2 = "VIDEO_P75_COMBINED_2"
+        case videoP95Combined2 = "VIDEO_P95_COMBINED_2"
+        case videoMrcViews2 = "VIDEO_MRC_VIEWS_2"
+        case paidVideoViewableRate = "PAID_VIDEO_VIEWABLE_RATE"
+        case videoLength = "VIDEO_LENGTH"
+        case videoSpendInDollar = "VIDEO_SPEND_IN_DOLLAR"
+        case ecpvInDollar = "ECPV_IN_DOLLAR"
+        case ecpcvInDollar = "ECPCV_IN_DOLLAR"
+        case ecpcvP95InDollar = "ECPCV_P95_IN_DOLLAR"
+        case totalVideo3secViews = "TOTAL_VIDEO_3SEC_VIEWS"
+        case totalVideo15secUniqueViews = "TOTAL_VIDEO_15SEC_UNIQUE_VIEWS"
+        case totalVideoP100Complete = "TOTAL_VIDEO_P100_COMPLETE"
+        case totalVideoP0Combined = "TOTAL_VIDEO_P0_COMBINED"
+        case totalVideoP25Combined = "TOTAL_VIDEO_P25_COMBINED"
+        case totalVideoP50Combined = "TOTAL_VIDEO_P50_COMBINED"
+        case totalVideoP75Combined = "TOTAL_VIDEO_P75_COMBINED"
+        case totalVideoP95Combined = "TOTAL_VIDEO_P95_COMBINED"
+        case totalVideoMrcViews = "TOTAL_VIDEO_MRC_VIEWS"
+        case totalVideoAvgWatchtimeInSecond = "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND"
+        case totalRepinRate = "TOTAL_REPIN_RATE"
+        case webCheckoutCostPerAction = "WEB_CHECKOUT_COST_PER_ACTION"
+        case webCheckoutRoas = "WEB_CHECKOUT_ROAS"
+        case totalWebCheckout = "TOTAL_WEB_CHECKOUT"
+        case totalWebCheckoutValueInMicroDollar = "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
+        case totalWebClickCheckout = "TOTAL_WEB_CLICK_CHECKOUT"
+        case totalWebClickCheckoutValueInMicroDollar = "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
+        case totalWebEngagementCheckout = "TOTAL_WEB_ENGAGEMENT_CHECKOUT"
+        case totalWebEngagementCheckoutValueInMicroDollar = "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
+        case totalWebViewCheckout = "TOTAL_WEB_VIEW_CHECKOUT"
+        case totalWebViewCheckoutValueInMicroDollar = "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
+        case inappCheckoutCostPerAction = "INAPP_CHECKOUT_COST_PER_ACTION"
+        case totalOfflineCheckout = "TOTAL_OFFLINE_CHECKOUT"
+        case totalAppInstallConversionRate = "TOTAL_APP_INSTALL_CONVERSION_RATE"
+        case totalInappAppInstallConversionRate = "TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE"
         case ideaPinProductTagVisit1 = "IDEA_PIN_PRODUCT_TAG_VISIT_1"
         case ideaPinProductTagVisit2 = "IDEA_PIN_PRODUCT_TAG_VISIT_2"
         case totalIdeaPinProductTagVisit = "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT"
@@ -224,16 +558,17 @@ open class CampaignsAPI {
      - parameter columns: (query) Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned 
      - parameter granularity: (query) TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly 
      - parameter clickWindowDays: (query) Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ._30)
-     - parameter engagementWindowDays: (query) Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ._30)
+     - parameter engagementWindowDays: (query) Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to ._30)
      - parameter viewWindowDays: (query) Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to ._1)
      - parameter conversionReportTime: (query) The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to .timeOfAdAction)
      - parameter attributionTypes: (query) List of types of attribution for the conversion report (optional)
+     - parameter reportingTimezone: (query) Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func campaignTargetingAnalyticsGet(adAccountId: String, campaignIds: [String], startDate: Date, endDate: Date, targetingTypes: [AdsAnalyticsCampaignTargetingType], columns: [Columns_campaignTargetingAnalyticsGet], granularity: Granularity, clickWindowDays: ClickWindowDays_campaignTargetingAnalyticsGet? = nil, engagementWindowDays: EngagementWindowDays_campaignTargetingAnalyticsGet? = nil, viewWindowDays: ViewWindowDays_campaignTargetingAnalyticsGet? = nil, conversionReportTime: ConversionReportTime_campaignTargetingAnalyticsGet? = nil, attributionTypes: ConversionReportAttributionType? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MetricsResponse?, _ error: Error?) -> Void)) -> RequestTask {
-        return campaignTargetingAnalyticsGetWithRequestBuilder(adAccountId: adAccountId, campaignIds: campaignIds, startDate: startDate, endDate: endDate, targetingTypes: targetingTypes, columns: columns, granularity: granularity, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, attributionTypes: attributionTypes).execute(apiResponseQueue) { result in
+    open class func campaignTargetingAnalyticsGet(adAccountId: String, campaignIds: [String], startDate: Date, endDate: Date, targetingTypes: [AdsAnalyticsCampaignTargetingType], columns: [Columns_campaignTargetingAnalyticsGet], granularity: Granularity, clickWindowDays: ClickWindowDays_campaignTargetingAnalyticsGet? = nil, engagementWindowDays: EngagementWindowDays_campaignTargetingAnalyticsGet? = nil, viewWindowDays: ViewWindowDays_campaignTargetingAnalyticsGet? = nil, conversionReportTime: ConversionReportTime_campaignTargetingAnalyticsGet? = nil, attributionTypes: [ConversionReportAttributionType]? = nil, reportingTimezone: ReportingTimeZone? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MetricsResponse?, _ error: Error?) -> Void)) -> RequestTask {
+        return campaignTargetingAnalyticsGetWithRequestBuilder(adAccountId: adAccountId, campaignIds: campaignIds, startDate: startDate, endDate: endDate, targetingTypes: targetingTypes, columns: columns, granularity: granularity, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, attributionTypes: attributionTypes, reportingTimezone: reportingTimezone).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -246,10 +581,13 @@ open class CampaignsAPI {
     /**
      Get targeting analytics for campaigns
      - GET /ad_accounts/{ad_account_id}/campaigns/targeting_analytics
-     - Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     - Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter adAccountId: (path) Unique identifier of an ad account. 
      - parameter campaignIds: (query) List of Campaign Ids to use to filter the results. 
      - parameter startDate: (query) Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. 
@@ -258,13 +596,14 @@ open class CampaignsAPI {
      - parameter columns: (query) Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned 
      - parameter granularity: (query) TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly 
      - parameter clickWindowDays: (query) Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ._30)
-     - parameter engagementWindowDays: (query) Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ._30)
+     - parameter engagementWindowDays: (query) Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to ._30)
      - parameter viewWindowDays: (query) Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to ._1)
      - parameter conversionReportTime: (query) The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to .timeOfAdAction)
      - parameter attributionTypes: (query) List of types of attribution for the conversion report (optional)
+     - parameter reportingTimezone: (query) Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
      - returns: RequestBuilder<MetricsResponse> 
      */
-    open class func campaignTargetingAnalyticsGetWithRequestBuilder(adAccountId: String, campaignIds: [String], startDate: Date, endDate: Date, targetingTypes: [AdsAnalyticsCampaignTargetingType], columns: [Columns_campaignTargetingAnalyticsGet], granularity: Granularity, clickWindowDays: ClickWindowDays_campaignTargetingAnalyticsGet? = nil, engagementWindowDays: EngagementWindowDays_campaignTargetingAnalyticsGet? = nil, viewWindowDays: ViewWindowDays_campaignTargetingAnalyticsGet? = nil, conversionReportTime: ConversionReportTime_campaignTargetingAnalyticsGet? = nil, attributionTypes: ConversionReportAttributionType? = nil) -> RequestBuilder<MetricsResponse> {
+    open class func campaignTargetingAnalyticsGetWithRequestBuilder(adAccountId: String, campaignIds: [String], startDate: Date, endDate: Date, targetingTypes: [AdsAnalyticsCampaignTargetingType], columns: [Columns_campaignTargetingAnalyticsGet], granularity: Granularity, clickWindowDays: ClickWindowDays_campaignTargetingAnalyticsGet? = nil, engagementWindowDays: EngagementWindowDays_campaignTargetingAnalyticsGet? = nil, viewWindowDays: ViewWindowDays_campaignTargetingAnalyticsGet? = nil, conversionReportTime: ConversionReportTime_campaignTargetingAnalyticsGet? = nil, attributionTypes: [ConversionReportAttributionType]? = nil, reportingTimezone: ReportingTimeZone? = nil) -> RequestBuilder<MetricsResponse> {
         var localVariablePath = "/ad_accounts/{ad_account_id}/campaigns/targeting_analytics"
         let adAccountIdPreEscape = "\(APIHelper.mapValueToPathItem(adAccountId))"
         let adAccountIdPostEscape = adAccountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -285,6 +624,7 @@ open class CampaignsAPI {
             "view_window_days": (wrappedValue: viewWindowDays?.encodeToJSON(), isExplode: true),
             "conversion_report_time": (wrappedValue: conversionReportTime?.encodeToJSON(), isExplode: true),
             "attribution_types": (wrappedValue: attributionTypes?.encodeToJSON(), isExplode: false),
+            "reporting_timezone": (wrappedValue: reportingTimezone?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -310,7 +650,9 @@ open class CampaignsAPI {
         case ecpcInDollar = "ECPC_IN_DOLLAR"
         case ctr = "CTR"
         case ectr = "ECTR"
+        case outboundCtr1 = "OUTBOUND_CTR_1"
         case campaignName = "CAMPAIGN_NAME"
+        case campaignBrandLabel = "CAMPAIGN_BRAND_LABEL"
         case pinId = "PIN_ID"
         case totalEngagement = "TOTAL_ENGAGEMENT"
         case engagement1 = "ENGAGEMENT_1"
@@ -331,7 +673,13 @@ open class CampaignsAPI {
         case campaignObjectiveType = "CAMPAIGN_OBJECTIVE_TYPE"
         case cpmInMicroDollar = "CPM_IN_MICRO_DOLLAR"
         case cpmInDollar = "CPM_IN_DOLLAR"
+        case adGroupName = "AD_GROUP_NAME"
+        case adGroupBudgetType = "AD_GROUP_BUDGET_TYPE"
+        case adGroupBudgetInLocalCurrency = "AD_GROUP_BUDGET_IN_LOCAL_CURRENCY"
         case adGroupEntityStatus = "AD_GROUP_ENTITY_STATUS"
+        case adGroupBidMultiplier = "AD_GROUP_BID_MULTIPLIER"
+        case promoId = "PROMO_ID"
+        case promoName = "PROMO_NAME"
         case orderLineId = "ORDER_LINE_ID"
         case orderLineName = "ORDER_LINE_NAME"
         case clickthrough1 = "CLICKTHROUGH_1"
@@ -349,6 +697,7 @@ open class CampaignsAPI {
         case totalImpressionUser = "TOTAL_IMPRESSION_USER"
         case totalImpressionFrequency = "TOTAL_IMPRESSION_FREQUENCY"
         case costPerOutboundClickInDollar = "COST_PER_OUTBOUND_CLICK_IN_DOLLAR"
+        case costPerOutboundClickInDollar1 = "COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1"
         case totalEngagementSignup = "TOTAL_ENGAGEMENT_SIGNUP"
         case totalEngagementCheckout = "TOTAL_ENGAGEMENT_CHECKOUT"
         case totalEngagementLead = "TOTAL_ENGAGEMENT_LEAD"
@@ -370,13 +719,19 @@ open class CampaignsAPI {
         case totalWebSessions = "TOTAL_WEB_SESSIONS"
         case webSessions1 = "WEB_SESSIONS_1"
         case webSessions2 = "WEB_SESSIONS_2"
+        case adName = "AD_NAME"
         case campaignLifetimeSpendCap = "CAMPAIGN_LIFETIME_SPEND_CAP"
+        case adGroupOptimization = "AD_GROUP_OPTIMIZATION"
         case campaignDailySpendCap = "CAMPAIGN_DAILY_SPEND_CAP"
+        case campaignBudgetOptimization = "CAMPAIGN_BUDGET_OPTIMIZATION"
+        case isPremiereCampaign = "IS_PREMIERE_CAMPAIGN"
         case totalPageVisit = "TOTAL_PAGE_VISIT"
         case totalSignup = "TOTAL_SIGNUP"
         case totalCheckout = "TOTAL_CHECKOUT"
         case totalCustom = "TOTAL_CUSTOM"
         case totalLead = "TOTAL_LEAD"
+        case totalAddToWishlist = "TOTAL_ADD_TO_WISHLIST"
+        case totalSubscribe = "TOTAL_SUBSCRIBE"
         case totalSignupValueInMicroDollar = "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR"
         case totalCheckoutValueInMicroDollar = "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
         case totalCustomValueInMicroDollar = "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR"
@@ -384,8 +739,13 @@ open class CampaignsAPI {
         case pageVisitRoas = "PAGE_VISIT_ROAS"
         case checkoutRoas = "CHECKOUT_ROAS"
         case customRoas = "CUSTOM_ROAS"
+        case productGroupAdImageTag = "PRODUCT_GROUP_AD_IMAGE_TAG"
+        case productGroupAdVideoTag = "PRODUCT_GROUP_AD_VIDEO_TAG"
+        case video3secViews1 = "VIDEO_3SEC_VIEWS_1"
+        case video15secUniqueViews1 = "VIDEO_15SEC_UNIQUE_VIEWS_1"
         case videoMrcViews1 = "VIDEO_MRC_VIEWS_1"
         case video3secViews2 = "VIDEO_3SEC_VIEWS_2"
+        case video15secUniqueViews2 = "VIDEO_15SEC_UNIQUE_VIEWS_2"
         case videoP100Complete2 = "VIDEO_P100_COMPLETE_2"
         case videoP0Combined2 = "VIDEO_P0_COMBINED_2"
         case videoP25Combined2 = "VIDEO_P25_COMBINED_2"
@@ -395,10 +755,12 @@ open class CampaignsAPI {
         case videoMrcViews2 = "VIDEO_MRC_VIEWS_2"
         case paidVideoViewableRate = "PAID_VIDEO_VIEWABLE_RATE"
         case videoLength = "VIDEO_LENGTH"
+        case videoSpendInDollar = "VIDEO_SPEND_IN_DOLLAR"
         case ecpvInDollar = "ECPV_IN_DOLLAR"
         case ecpcvInDollar = "ECPCV_IN_DOLLAR"
         case ecpcvP95InDollar = "ECPCV_P95_IN_DOLLAR"
         case totalVideo3secViews = "TOTAL_VIDEO_3SEC_VIEWS"
+        case totalVideo15secUniqueViews = "TOTAL_VIDEO_15SEC_UNIQUE_VIEWS"
         case totalVideoP100Complete = "TOTAL_VIDEO_P100_COMPLETE"
         case totalVideoP0Combined = "TOTAL_VIDEO_P0_COMBINED"
         case totalVideoP25Combined = "TOTAL_VIDEO_P25_COMBINED"
@@ -420,6 +782,8 @@ open class CampaignsAPI {
         case totalWebViewCheckoutValueInMicroDollar = "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
         case inappCheckoutCostPerAction = "INAPP_CHECKOUT_COST_PER_ACTION"
         case totalOfflineCheckout = "TOTAL_OFFLINE_CHECKOUT"
+        case totalAppInstallConversionRate = "TOTAL_APP_INSTALL_CONVERSION_RATE"
+        case totalInappAppInstallConversionRate = "TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE"
         case ideaPinProductTagVisit1 = "IDEA_PIN_PRODUCT_TAG_VISIT_1"
         case ideaPinProductTagVisit2 = "IDEA_PIN_PRODUCT_TAG_VISIT_2"
         case totalIdeaPinProductTagVisit = "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT"
@@ -509,15 +873,17 @@ open class CampaignsAPI {
      - parameter columns: (query) Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned 
      - parameter granularity: (query) TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly 
      - parameter clickWindowDays: (query) Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ._30)
-     - parameter engagementWindowDays: (query) Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ._30)
+     - parameter engagementWindowDays: (query) Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to ._30)
      - parameter viewWindowDays: (query) Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to ._1)
      - parameter conversionReportTime: (query) The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to .timeOfAdAction)
+     - parameter aggregateReportRows: (query) Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users. (optional, default to false)
+     - parameter reportingTimezone: (query) Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func campaignsAnalytics(adAccountId: String, startDate: Date, endDate: Date, campaignIds: [String], columns: [Columns_campaignsAnalytics], granularity: Granularity, clickWindowDays: ClickWindowDays_campaignsAnalytics? = nil, engagementWindowDays: EngagementWindowDays_campaignsAnalytics? = nil, viewWindowDays: ViewWindowDays_campaignsAnalytics? = nil, conversionReportTime: ConversionReportTime_campaignsAnalytics? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CampaignsAnalyticsResponseInner]?, _ error: Error?) -> Void)) -> RequestTask {
-        return campaignsAnalyticsWithRequestBuilder(adAccountId: adAccountId, startDate: startDate, endDate: endDate, campaignIds: campaignIds, columns: columns, granularity: granularity, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime).execute(apiResponseQueue) { result in
+    open class func campaignsAnalytics(adAccountId: String, startDate: Date, endDate: Date, campaignIds: [String], columns: [Columns_campaignsAnalytics], granularity: Granularity, clickWindowDays: ClickWindowDays_campaignsAnalytics? = nil, engagementWindowDays: EngagementWindowDays_campaignsAnalytics? = nil, viewWindowDays: ViewWindowDays_campaignsAnalytics? = nil, conversionReportTime: ConversionReportTime_campaignsAnalytics? = nil, aggregateReportRows: Bool? = nil, reportingTimezone: ReportingTimeZone? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CampaignsAnalyticsResponseInner]?, _ error: Error?) -> Void)) -> RequestTask {
+        return campaignsAnalyticsWithRequestBuilder(adAccountId: adAccountId, startDate: startDate, endDate: endDate, campaignIds: campaignIds, columns: columns, granularity: granularity, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, aggregateReportRows: aggregateReportRows, reportingTimezone: reportingTimezone).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -530,10 +896,13 @@ open class CampaignsAPI {
     /**
      Get campaign analytics
      - GET /ad_accounts/{ad_account_id}/campaigns/analytics
-     - Get analytics for the specified campaigns in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     - Get analytics for the specified campaigns in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter adAccountId: (path) Unique identifier of an ad account. 
      - parameter startDate: (query) Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. 
      - parameter endDate: (query) Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. 
@@ -541,12 +910,14 @@ open class CampaignsAPI {
      - parameter columns: (query) Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned 
      - parameter granularity: (query) TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly 
      - parameter clickWindowDays: (query) Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ._30)
-     - parameter engagementWindowDays: (query) Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to ._30)
+     - parameter engagementWindowDays: (query) Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to ._30)
      - parameter viewWindowDays: (query) Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to ._1)
      - parameter conversionReportTime: (query) The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to .timeOfAdAction)
+     - parameter aggregateReportRows: (query) Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users. (optional, default to false)
+     - parameter reportingTimezone: (query) Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
      - returns: RequestBuilder<[CampaignsAnalyticsResponseInner]> 
      */
-    open class func campaignsAnalyticsWithRequestBuilder(adAccountId: String, startDate: Date, endDate: Date, campaignIds: [String], columns: [Columns_campaignsAnalytics], granularity: Granularity, clickWindowDays: ClickWindowDays_campaignsAnalytics? = nil, engagementWindowDays: EngagementWindowDays_campaignsAnalytics? = nil, viewWindowDays: ViewWindowDays_campaignsAnalytics? = nil, conversionReportTime: ConversionReportTime_campaignsAnalytics? = nil) -> RequestBuilder<[CampaignsAnalyticsResponseInner]> {
+    open class func campaignsAnalyticsWithRequestBuilder(adAccountId: String, startDate: Date, endDate: Date, campaignIds: [String], columns: [Columns_campaignsAnalytics], granularity: Granularity, clickWindowDays: ClickWindowDays_campaignsAnalytics? = nil, engagementWindowDays: EngagementWindowDays_campaignsAnalytics? = nil, viewWindowDays: ViewWindowDays_campaignsAnalytics? = nil, conversionReportTime: ConversionReportTime_campaignsAnalytics? = nil, aggregateReportRows: Bool? = nil, reportingTimezone: ReportingTimeZone? = nil) -> RequestBuilder<[CampaignsAnalyticsResponseInner]> {
         var localVariablePath = "/ad_accounts/{ad_account_id}/campaigns/analytics"
         let adAccountIdPreEscape = "\(APIHelper.mapValueToPathItem(adAccountId))"
         let adAccountIdPostEscape = adAccountIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -565,6 +936,8 @@ open class CampaignsAPI {
             "engagement_window_days": (wrappedValue: engagementWindowDays?.encodeToJSON(), isExplode: true),
             "view_window_days": (wrappedValue: viewWindowDays?.encodeToJSON(), isExplode: true),
             "conversion_report_time": (wrappedValue: conversionReportTime?.encodeToJSON(), isExplode: true),
+            "aggregate_report_rows": (wrappedValue: aggregateReportRows?.encodeToJSON(), isExplode: true),
+            "reporting_timezone": (wrappedValue: reportingTimezone?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -601,7 +974,7 @@ open class CampaignsAPI {
     /**
      Create campaigns
      - POST /ad_accounts/{ad_account_id}/campaigns
-     - Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see <a href=\"https://help.pinterest.com/en/business/article/set-up-your-campaign/\">Set up your campaign</a>. <p/> <strong>Note:</strong> - The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>  <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>
+     - Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see <a href=\"https://help.pinterest.com/en/business/article/set-up-your-campaign/\">Set up your campaign</a>. <p/> <strong>Note:</strong> - The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
@@ -657,6 +1030,9 @@ open class CampaignsAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter adAccountId: (path) Unique identifier of an ad account. 
      - parameter campaignId: (path) Campaign ID, must be associated with the ad account ID provided in the path. 
      - returns: RequestBuilder<CampaignResponse> 
@@ -735,6 +1111,9 @@ open class CampaignsAPI {
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
+     - OAuth:
+       - type: oauth2
+       - name: client_credentials
      - parameter adAccountId: (path) Unique identifier of an ad account. 
      - parameter campaignIds: (query) List of Campaign Ids to use to filter the results. (optional)
      - parameter entityStatuses: (query) Entity status (optional)
@@ -794,7 +1173,7 @@ open class CampaignsAPI {
     /**
      Update campaigns
      - PATCH /ad_accounts/{ad_account_id}/campaigns
-     - Update multiple ad campaigns based on campaign_ids. <p/> <strong>Note:</strong><p/>  - <p>The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>
+     - <p>Update multiple ad campaigns based on campaign_ids. </p> <p><strong>Note:</strong></p> - <p>The values for `lifetime_spend_cap` and `daily_spend_cap` are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser's profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser's profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2

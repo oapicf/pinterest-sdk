@@ -1,0 +1,33 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "alt_text" },
+      {"model": "board_id" },
+      {"model": "board_owner" },
+      {"model": "board_section_id" },
+      {"model": "created_at" },
+      {"model": "creative_type" },
+      {"model": "description" },
+      {"model": "dominant_color" },
+      {"model": "has_been_promoted" },
+      {"model": "id" },
+      {"model": "is_owner" },
+      {"model": "is_standard" },
+      {"model": "link" },
+      {"model": "media" },
+      {"model": "parent_pin_id" },
+      {"model": "pin_metrics" },
+      {"model": "title" },
+    ]
+  }]
+}

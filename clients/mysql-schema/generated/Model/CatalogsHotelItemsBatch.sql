@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsHotelItemsBatch`
 --
-SELECT `batch_id`, `created_time`, `completed_time`, `status`, `catalog_type`, `items` FROM `CatalogsHotelItemsBatch` WHERE 1;
+SELECT `batch_id`, `catalog_type`, `completed_time`, `created_time`, `items`, `status` FROM `CatalogsHotelItemsBatch` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsHotelItemsBatch`
 --
-INSERT INTO `CatalogsHotelItemsBatch`(`batch_id`, `created_time`, `completed_time`, `status`, `catalog_type`, `items`) VALUES (?, ?, ?, ?, ?, ?);
+INSERT INTO `CatalogsHotelItemsBatch`(`batch_id`, `catalog_type`, `completed_time`, `created_time`, `items`, `status`) VALUES (?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsHotelItemsBatch`
 --
-UPDATE `CatalogsHotelItemsBatch` SET `batch_id` = ?, `created_time` = ?, `completed_time` = ?, `status` = ?, `catalog_type` = ?, `items` = ? WHERE 1;
+UPDATE `CatalogsHotelItemsBatch` SET `batch_id` = ?, `catalog_type` = ?, `completed_time` = ?, `created_time` = ?, `items` = ?, `status` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsHotelItemsBatch`

@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ConnectedMerchantId** | Pointer to **string** |  | [optional] 
+**AdditionalId1** | Pointer to **string** |  | [optional] 
 **ConnectedAdvertiserId** | Pointer to **string** |  | [optional] 
 **ConnectedLbaId** | Pointer to **string** |  | [optional] 
+**ConnectedMerchantId** | Pointer to **string** |  | [optional] 
 **ConnectedTagId** | Pointer to **string** |  | [optional] 
 **PartnerAccessToken** | Pointer to **string** |  | [optional] 
-**PartnerRefreshToken** | Pointer to **string** |  | [optional] 
-**PartnerPrimaryEmail** | Pointer to **string** |  | [optional] 
 **PartnerAccessTokenExpiry** | Pointer to **float32** |  | [optional] 
+**PartnerMetadata** | Pointer to **string** |  | [optional] 
+**PartnerPrimaryEmail** | Pointer to **string** |  | [optional] 
+**PartnerRefreshToken** | Pointer to **string** |  | [optional] 
 **PartnerRefreshTokenExpiry** | Pointer to **float32** |  | [optional] 
 **Scopes** | Pointer to **string** |  | [optional] 
-**AdditionalId1** | Pointer to **string** |  | [optional] 
-**PartnerMetadata** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -36,30 +36,30 @@ NewIntegrationRequestPatchWithDefaults instantiates a new IntegrationRequestPatc
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetConnectedMerchantId
+### GetAdditionalId1
 
-`func (o *IntegrationRequestPatch) GetConnectedMerchantId() string`
+`func (o *IntegrationRequestPatch) GetAdditionalId1() string`
 
-GetConnectedMerchantId returns the ConnectedMerchantId field if non-nil, zero value otherwise.
+GetAdditionalId1 returns the AdditionalId1 field if non-nil, zero value otherwise.
 
-### GetConnectedMerchantIdOk
+### GetAdditionalId1Ok
 
-`func (o *IntegrationRequestPatch) GetConnectedMerchantIdOk() (*string, bool)`
+`func (o *IntegrationRequestPatch) GetAdditionalId1Ok() (*string, bool)`
 
-GetConnectedMerchantIdOk returns a tuple with the ConnectedMerchantId field if it's non-nil, zero value otherwise
+GetAdditionalId1Ok returns a tuple with the AdditionalId1 field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetConnectedMerchantId
+### SetAdditionalId1
 
-`func (o *IntegrationRequestPatch) SetConnectedMerchantId(v string)`
+`func (o *IntegrationRequestPatch) SetAdditionalId1(v string)`
 
-SetConnectedMerchantId sets ConnectedMerchantId field to given value.
+SetAdditionalId1 sets AdditionalId1 field to given value.
 
-### HasConnectedMerchantId
+### HasAdditionalId1
 
-`func (o *IntegrationRequestPatch) HasConnectedMerchantId() bool`
+`func (o *IntegrationRequestPatch) HasAdditionalId1() bool`
 
-HasConnectedMerchantId returns a boolean if a field has been set.
+HasAdditionalId1 returns a boolean if a field has been set.
 
 ### GetConnectedAdvertiserId
 
@@ -111,6 +111,31 @@ SetConnectedLbaId sets ConnectedLbaId field to given value.
 
 HasConnectedLbaId returns a boolean if a field has been set.
 
+### GetConnectedMerchantId
+
+`func (o *IntegrationRequestPatch) GetConnectedMerchantId() string`
+
+GetConnectedMerchantId returns the ConnectedMerchantId field if non-nil, zero value otherwise.
+
+### GetConnectedMerchantIdOk
+
+`func (o *IntegrationRequestPatch) GetConnectedMerchantIdOk() (*string, bool)`
+
+GetConnectedMerchantIdOk returns a tuple with the ConnectedMerchantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConnectedMerchantId
+
+`func (o *IntegrationRequestPatch) SetConnectedMerchantId(v string)`
+
+SetConnectedMerchantId sets ConnectedMerchantId field to given value.
+
+### HasConnectedMerchantId
+
+`func (o *IntegrationRequestPatch) HasConnectedMerchantId() bool`
+
+HasConnectedMerchantId returns a boolean if a field has been set.
+
 ### GetConnectedTagId
 
 `func (o *IntegrationRequestPatch) GetConnectedTagId() string`
@@ -161,30 +186,55 @@ SetPartnerAccessToken sets PartnerAccessToken field to given value.
 
 HasPartnerAccessToken returns a boolean if a field has been set.
 
-### GetPartnerRefreshToken
+### GetPartnerAccessTokenExpiry
 
-`func (o *IntegrationRequestPatch) GetPartnerRefreshToken() string`
+`func (o *IntegrationRequestPatch) GetPartnerAccessTokenExpiry() float32`
 
-GetPartnerRefreshToken returns the PartnerRefreshToken field if non-nil, zero value otherwise.
+GetPartnerAccessTokenExpiry returns the PartnerAccessTokenExpiry field if non-nil, zero value otherwise.
 
-### GetPartnerRefreshTokenOk
+### GetPartnerAccessTokenExpiryOk
 
-`func (o *IntegrationRequestPatch) GetPartnerRefreshTokenOk() (*string, bool)`
+`func (o *IntegrationRequestPatch) GetPartnerAccessTokenExpiryOk() (*float32, bool)`
 
-GetPartnerRefreshTokenOk returns a tuple with the PartnerRefreshToken field if it's non-nil, zero value otherwise
+GetPartnerAccessTokenExpiryOk returns a tuple with the PartnerAccessTokenExpiry field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPartnerRefreshToken
+### SetPartnerAccessTokenExpiry
 
-`func (o *IntegrationRequestPatch) SetPartnerRefreshToken(v string)`
+`func (o *IntegrationRequestPatch) SetPartnerAccessTokenExpiry(v float32)`
 
-SetPartnerRefreshToken sets PartnerRefreshToken field to given value.
+SetPartnerAccessTokenExpiry sets PartnerAccessTokenExpiry field to given value.
 
-### HasPartnerRefreshToken
+### HasPartnerAccessTokenExpiry
 
-`func (o *IntegrationRequestPatch) HasPartnerRefreshToken() bool`
+`func (o *IntegrationRequestPatch) HasPartnerAccessTokenExpiry() bool`
 
-HasPartnerRefreshToken returns a boolean if a field has been set.
+HasPartnerAccessTokenExpiry returns a boolean if a field has been set.
+
+### GetPartnerMetadata
+
+`func (o *IntegrationRequestPatch) GetPartnerMetadata() string`
+
+GetPartnerMetadata returns the PartnerMetadata field if non-nil, zero value otherwise.
+
+### GetPartnerMetadataOk
+
+`func (o *IntegrationRequestPatch) GetPartnerMetadataOk() (*string, bool)`
+
+GetPartnerMetadataOk returns a tuple with the PartnerMetadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPartnerMetadata
+
+`func (o *IntegrationRequestPatch) SetPartnerMetadata(v string)`
+
+SetPartnerMetadata sets PartnerMetadata field to given value.
+
+### HasPartnerMetadata
+
+`func (o *IntegrationRequestPatch) HasPartnerMetadata() bool`
+
+HasPartnerMetadata returns a boolean if a field has been set.
 
 ### GetPartnerPrimaryEmail
 
@@ -211,30 +261,30 @@ SetPartnerPrimaryEmail sets PartnerPrimaryEmail field to given value.
 
 HasPartnerPrimaryEmail returns a boolean if a field has been set.
 
-### GetPartnerAccessTokenExpiry
+### GetPartnerRefreshToken
 
-`func (o *IntegrationRequestPatch) GetPartnerAccessTokenExpiry() float32`
+`func (o *IntegrationRequestPatch) GetPartnerRefreshToken() string`
 
-GetPartnerAccessTokenExpiry returns the PartnerAccessTokenExpiry field if non-nil, zero value otherwise.
+GetPartnerRefreshToken returns the PartnerRefreshToken field if non-nil, zero value otherwise.
 
-### GetPartnerAccessTokenExpiryOk
+### GetPartnerRefreshTokenOk
 
-`func (o *IntegrationRequestPatch) GetPartnerAccessTokenExpiryOk() (*float32, bool)`
+`func (o *IntegrationRequestPatch) GetPartnerRefreshTokenOk() (*string, bool)`
 
-GetPartnerAccessTokenExpiryOk returns a tuple with the PartnerAccessTokenExpiry field if it's non-nil, zero value otherwise
+GetPartnerRefreshTokenOk returns a tuple with the PartnerRefreshToken field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPartnerAccessTokenExpiry
+### SetPartnerRefreshToken
 
-`func (o *IntegrationRequestPatch) SetPartnerAccessTokenExpiry(v float32)`
+`func (o *IntegrationRequestPatch) SetPartnerRefreshToken(v string)`
 
-SetPartnerAccessTokenExpiry sets PartnerAccessTokenExpiry field to given value.
+SetPartnerRefreshToken sets PartnerRefreshToken field to given value.
 
-### HasPartnerAccessTokenExpiry
+### HasPartnerRefreshToken
 
-`func (o *IntegrationRequestPatch) HasPartnerAccessTokenExpiry() bool`
+`func (o *IntegrationRequestPatch) HasPartnerRefreshToken() bool`
 
-HasPartnerAccessTokenExpiry returns a boolean if a field has been set.
+HasPartnerRefreshToken returns a boolean if a field has been set.
 
 ### GetPartnerRefreshTokenExpiry
 
@@ -285,56 +335,6 @@ SetScopes sets Scopes field to given value.
 `func (o *IntegrationRequestPatch) HasScopes() bool`
 
 HasScopes returns a boolean if a field has been set.
-
-### GetAdditionalId1
-
-`func (o *IntegrationRequestPatch) GetAdditionalId1() string`
-
-GetAdditionalId1 returns the AdditionalId1 field if non-nil, zero value otherwise.
-
-### GetAdditionalId1Ok
-
-`func (o *IntegrationRequestPatch) GetAdditionalId1Ok() (*string, bool)`
-
-GetAdditionalId1Ok returns a tuple with the AdditionalId1 field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdditionalId1
-
-`func (o *IntegrationRequestPatch) SetAdditionalId1(v string)`
-
-SetAdditionalId1 sets AdditionalId1 field to given value.
-
-### HasAdditionalId1
-
-`func (o *IntegrationRequestPatch) HasAdditionalId1() bool`
-
-HasAdditionalId1 returns a boolean if a field has been set.
-
-### GetPartnerMetadata
-
-`func (o *IntegrationRequestPatch) GetPartnerMetadata() string`
-
-GetPartnerMetadata returns the PartnerMetadata field if non-nil, zero value otherwise.
-
-### GetPartnerMetadataOk
-
-`func (o *IntegrationRequestPatch) GetPartnerMetadataOk() (*string, bool)`
-
-GetPartnerMetadataOk returns a tuple with the PartnerMetadata field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPartnerMetadata
-
-`func (o *IntegrationRequestPatch) SetPartnerMetadata(v string)`
-
-SetPartnerMetadata sets PartnerMetadata field to given value.
-
-### HasPartnerMetadata
-
-`func (o *IntegrationRequestPatch) HasPartnerMetadata() bool`
-
-HasPartnerMetadata returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

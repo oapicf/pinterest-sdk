@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsHotelProductGroupFilters;
+import org.openapitools.model.CatalogsHotelProductGroupType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -14,6 +15,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsHotelProductGroup  {
   
+ /**
+  * Catalog id pertaining to the hotel product group.
+  */
+  @ApiModelProperty(required = true, value = "Catalog id pertaining to the hotel product group.")
+
+  private String catalogId;
+
 public enum CatalogTypeEnum {
 
 HOTEL(String.valueOf("HOTEL"));
@@ -51,6 +59,23 @@ HOTEL(String.valueOf("HOTEL"));
   private CatalogTypeEnum catalogType;
 
  /**
+  * Unix timestamp in seconds of when catalog product group was created.
+  */
+  @ApiModelProperty(example = "1621350033000", value = "Unix timestamp in seconds of when catalog product group was created.")
+
+  private Integer createdAt;
+
+  @ApiModelProperty(value = "")
+
+  private String description;
+
+  @ApiModelProperty(required = true, value = "")
+
+  @Valid
+
+  private CatalogsHotelProductGroupFilters filters;
+
+ /**
   * ID of the hotel product group.
   */
   @ApiModelProperty(example = "443727193917", required = true, value = "ID of the hotel product group.")
@@ -64,22 +89,11 @@ HOTEL(String.valueOf("HOTEL"));
 
   private String name;
 
-  @ApiModelProperty(value = "")
-
-  private String description;
-
   @ApiModelProperty(required = true, value = "")
 
   @Valid
 
-  private CatalogsHotelProductGroupFilters filters;
-
- /**
-  * Unix timestamp in seconds of when catalog product group was created.
-  */
-  @ApiModelProperty(example = "1621350033000", value = "Unix timestamp in seconds of when catalog product group was created.")
-
-  private Integer createdAt;
+  private CatalogsHotelProductGroupType type;
 
  /**
   * Unix timestamp in seconds of last time catalog product group was updated.
@@ -87,13 +101,25 @@ HOTEL(String.valueOf("HOTEL"));
   @ApiModelProperty(example = "1622742155000", value = "Unix timestamp in seconds of last time catalog product group was updated.")
 
   private Integer updatedAt;
-
  /**
-  * Catalog id pertaining to the hotel product group.
-  */
-  @ApiModelProperty(required = true, value = "Catalog id pertaining to the hotel product group.")
+   * Catalog id pertaining to the hotel product group.
+   * @return catalogId
+  **/
+  @JsonProperty("catalog_id")
+  @NotNull
+ @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+    return catalogId;
+  }
 
-  private String catalogId;
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
+  public CatalogsHotelProductGroup catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
  /**
    * Get catalogType
    * @return catalogType
@@ -117,39 +143,20 @@ HOTEL(String.valueOf("HOTEL"));
   }
 
  /**
-   * ID of the hotel product group.
-   * @return id
+   * Unix timestamp in seconds of when catalog product group was created.
+   * @return createdAt
   **/
-  @JsonProperty("id")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getId() {
-    return id;
+  @JsonProperty("created_at")
+  public Integer getCreatedAt() {
+    return createdAt;
   }
 
-  public void setId(String id) {
-    this.id = id;
+  public void setCreatedAt(Integer createdAt) {
+    this.createdAt = createdAt;
   }
 
-  public CatalogsHotelProductGroup id(String id) {
-    this.id = id;
-    return this;
-  }
-
- /**
-   * Name of hotel product group
-   * @return name
-  **/
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public CatalogsHotelProductGroup name(String name) {
-    this.name = name;
+  public CatalogsHotelProductGroup createdAt(Integer createdAt) {
+    this.createdAt = createdAt;
     return this;
   }
 
@@ -191,20 +198,58 @@ HOTEL(String.valueOf("HOTEL"));
   }
 
  /**
-   * Unix timestamp in seconds of when catalog product group was created.
-   * @return createdAt
+   * ID of the hotel product group.
+   * @return id
   **/
-  @JsonProperty("created_at")
-  public Integer getCreatedAt() {
-    return createdAt;
+  @JsonProperty("id")
+  @NotNull
+ @Pattern(regexp="^\\d+$")  public String getId() {
+    return id;
   }
 
-  public void setCreatedAt(Integer createdAt) {
-    this.createdAt = createdAt;
+  public void setId(String id) {
+    this.id = id;
   }
 
-  public CatalogsHotelProductGroup createdAt(Integer createdAt) {
-    this.createdAt = createdAt;
+  public CatalogsHotelProductGroup id(String id) {
+    this.id = id;
+    return this;
+  }
+
+ /**
+   * Name of hotel product group
+   * @return name
+  **/
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public CatalogsHotelProductGroup name(String name) {
+    this.name = name;
+    return this;
+  }
+
+ /**
+   * Get type
+   * @return type
+  **/
+  @JsonProperty("type")
+  @NotNull
+  public CatalogsHotelProductGroupType getType() {
+    return type;
+  }
+
+  public void setType(CatalogsHotelProductGroupType type) {
+    this.type = type;
+  }
+
+  public CatalogsHotelProductGroup type(CatalogsHotelProductGroupType type) {
+    this.type = type;
     return this;
   }
 
@@ -226,25 +271,6 @@ HOTEL(String.valueOf("HOTEL"));
     return this;
   }
 
- /**
-   * Catalog id pertaining to the hotel product group.
-   * @return catalogId
-  **/
-  @JsonProperty("catalog_id")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getCatalogId() {
-    return catalogId;
-  }
-
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
-  public CatalogsHotelProductGroup catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -254,19 +280,20 @@ HOTEL(String.valueOf("HOTEL"));
       return false;
     }
     CatalogsHotelProductGroup catalogsHotelProductGroup = (CatalogsHotelProductGroup) o;
-    return Objects.equals(this.catalogType, catalogsHotelProductGroup.catalogType) &&
-        Objects.equals(this.id, catalogsHotelProductGroup.id) &&
-        Objects.equals(this.name, catalogsHotelProductGroup.name) &&
+    return Objects.equals(this.catalogId, catalogsHotelProductGroup.catalogId) &&
+        Objects.equals(this.catalogType, catalogsHotelProductGroup.catalogType) &&
+        Objects.equals(this.createdAt, catalogsHotelProductGroup.createdAt) &&
         Objects.equals(this.description, catalogsHotelProductGroup.description) &&
         Objects.equals(this.filters, catalogsHotelProductGroup.filters) &&
-        Objects.equals(this.createdAt, catalogsHotelProductGroup.createdAt) &&
-        Objects.equals(this.updatedAt, catalogsHotelProductGroup.updatedAt) &&
-        Objects.equals(this.catalogId, catalogsHotelProductGroup.catalogId);
+        Objects.equals(this.id, catalogsHotelProductGroup.id) &&
+        Objects.equals(this.name, catalogsHotelProductGroup.name) &&
+        Objects.equals(this.type, catalogsHotelProductGroup.type) &&
+        Objects.equals(this.updatedAt, catalogsHotelProductGroup.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, id, name, description, filters, createdAt, updatedAt, catalogId);
+    return Objects.hash(catalogId, catalogType, createdAt, description, filters, id, name, type, updatedAt);
   }
 
   @Override
@@ -274,14 +301,15 @@ HOTEL(String.valueOf("HOTEL"));
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelProductGroup {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -5,19 +5,19 @@ context("Test AdvancedAuctionItemsGetRecord")
 
 model_instance <- AdvancedAuctionItemsGetRecord$new()
 
+test_that("country", {
+  # tests for the property `country` (Country)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`country`, "EXPECTED_RESULT")
+})
+
 test_that("item_id", {
   # tests for the property `item_id` (character)
   # The catalog retail item id in the merchant namespace
 
   # uncomment below to test the property
   #expect_equal(model.instance$`item_id`, "EXPECTED_RESULT")
-})
-
-test_that("country", {
-  # tests for the property `country` (Country)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`country`, "EXPECTED_RESULT")
 })
 
 test_that("language", {

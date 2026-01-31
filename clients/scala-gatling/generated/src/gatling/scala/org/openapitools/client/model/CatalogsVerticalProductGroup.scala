@@ -3,33 +3,33 @@ package org.openapitools.client.model
 
 
 case class CatalogsVerticalProductGroup (
-    _catalogType: String,
-    /* ID of the creative assets product group. */
-    _id: String,
-    /* Name of creative assets product group */
-    _name: Option[String],
-    _description: Option[String],
-    _filters: CatalogsCreativeAssetsProductGroupFilters,
-    /* boolean indicator of whether the product group is being featured or not */
-    _isFeatured: Option[Boolean],
-    _type: Option[CatalogsProductGroupType],
-    _status: Option[CatalogsProductGroupStatus],
-    /* Unix timestamp in seconds of when catalog product group was created. */
-    _createdAt: Option[Integer],
-    /* Unix timestamp in seconds of last time catalog product group was updated. */
-    _updatedAt: Option[Integer],
     /* Catalog id pertaining to the creative assets product group. */
     _catalogId: String,
+    _catalogType: String,
+    _country: Option[String],
+    /* Unix timestamp in seconds of when catalog product group was created. */
+    _createdAt: Option[Integer],
+    _description: Option[String],
     /* id of the catalogs feed belonging to this catalog product group */
     _feedId: String,
-    _country: Option[String],
-    _locale: Option[String]
+    _filters: CatalogsCreativeAssetsProductGroupFilters,
+    /* ID of the creative assets product group. */
+    _id: String,
+    /* boolean indicator of whether the product group is being featured or not */
+    _isFeatured: Option[Boolean],
+    _locale: Option[String],
+    /* Name of creative assets product group */
+    _name: Option[String],
+    _status: Option[CatalogsProductGroupStatus],
+    _type: CatalogsHotelProductGroupType,
+    /* Unix timestamp in seconds of last time catalog product group was updated. */
+    _updatedAt: Option[Integer]
 )
 object CatalogsVerticalProductGroup {
-    def toStringBody(var_catalogType: Object, var_id: Object, var_name: Object, var_description: Object, var_filters: Object, var_isFeatured: Object, var_type: Object, var_status: Object, var_createdAt: Object, var_updatedAt: Object, var_catalogId: Object, var_feedId: Object, var_country: Object, var_locale: Object) =
+    def toStringBody(var_catalogId: Object, var_catalogType: Object, var_country: Object, var_createdAt: Object, var_description: Object, var_feedId: Object, var_filters: Object, var_id: Object, var_isFeatured: Object, var_locale: Object, var_name: Object, var_status: Object, var_type: Object, var_updatedAt: Object) =
         s"""
         | {
-        | "catalogType":$var_catalogType,"id":$var_id,"name":$var_name,"description":$var_description,"filters":$var_filters,"isFeatured":$var_isFeatured,"type":$var_type,"status":$var_status,"createdAt":$var_createdAt,"updatedAt":$var_updatedAt,"catalogId":$var_catalogId,"feedId":$var_feedId,"country":$var_country,"locale":$var_locale
+        | "catalogId":$var_catalogId,"catalogType":$var_catalogType,"country":$var_country,"createdAt":$var_createdAt,"description":$var_description,"feedId":$var_feedId,"filters":$var_filters,"id":$var_id,"isFeatured":$var_isFeatured,"locale":$var_locale,"name":$var_name,"status":$var_status,"type":$var_type,"updatedAt":$var_updatedAt
         | }
         """.stripMargin
 }

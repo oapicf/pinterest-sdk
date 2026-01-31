@@ -4,11 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Campaigns** | Pointer to [**[]CampaignUpdateRequest**](CampaignUpdateRequest.md) |  | [optional] 
 **AdGroups** | Pointer to [**[]AdGroupUpdateRequest**](AdGroupUpdateRequest.md) |  | [optional] 
 **Ads** | Pointer to [**[]AdUpdateRequest**](AdUpdateRequest.md) |  | [optional] 
-**ProductGroups** | Pointer to [**[]ProductGroupPromotionUpdateRequest**](ProductGroupPromotionUpdateRequest.md) |  | [optional] 
+**Campaigns** | Pointer to [**[]CampaignUpdateRequest**](CampaignUpdateRequest.md) |  | [optional] 
+**CatalogProductGroups** | Pointer to [**[]CatalogsProductGroupsUpdateRequest**](CatalogsProductGroupsUpdateRequest.md) |  | [optional] 
 **Keywords** | Pointer to [**[]KeywordUpdate**](KeywordUpdate.md) |  | [optional] 
+**Labels** | Pointer to [**[]LabelBulkUpdateRequest**](LabelBulkUpdateRequest.md) |  | [optional] 
+**ProductGroups** | Pointer to [**[]ProductGroupPromotionUpdateRequest**](ProductGroupPromotionUpdateRequest.md) |  | [optional] 
 
 ## Methods
 
@@ -28,31 +30,6 @@ will change when the set of required properties is changed
 NewBulkUpsertRequestUpdateWithDefaults instantiates a new BulkUpsertRequestUpdate object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetCampaigns
-
-`func (o *BulkUpsertRequestUpdate) GetCampaigns() []CampaignUpdateRequest`
-
-GetCampaigns returns the Campaigns field if non-nil, zero value otherwise.
-
-### GetCampaignsOk
-
-`func (o *BulkUpsertRequestUpdate) GetCampaignsOk() (*[]CampaignUpdateRequest, bool)`
-
-GetCampaignsOk returns a tuple with the Campaigns field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCampaigns
-
-`func (o *BulkUpsertRequestUpdate) SetCampaigns(v []CampaignUpdateRequest)`
-
-SetCampaigns sets Campaigns field to given value.
-
-### HasCampaigns
-
-`func (o *BulkUpsertRequestUpdate) HasCampaigns() bool`
-
-HasCampaigns returns a boolean if a field has been set.
 
 ### GetAdGroups
 
@@ -104,30 +81,55 @@ SetAds sets Ads field to given value.
 
 HasAds returns a boolean if a field has been set.
 
-### GetProductGroups
+### GetCampaigns
 
-`func (o *BulkUpsertRequestUpdate) GetProductGroups() []ProductGroupPromotionUpdateRequest`
+`func (o *BulkUpsertRequestUpdate) GetCampaigns() []CampaignUpdateRequest`
 
-GetProductGroups returns the ProductGroups field if non-nil, zero value otherwise.
+GetCampaigns returns the Campaigns field if non-nil, zero value otherwise.
 
-### GetProductGroupsOk
+### GetCampaignsOk
 
-`func (o *BulkUpsertRequestUpdate) GetProductGroupsOk() (*[]ProductGroupPromotionUpdateRequest, bool)`
+`func (o *BulkUpsertRequestUpdate) GetCampaignsOk() (*[]CampaignUpdateRequest, bool)`
 
-GetProductGroupsOk returns a tuple with the ProductGroups field if it's non-nil, zero value otherwise
+GetCampaignsOk returns a tuple with the Campaigns field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetProductGroups
+### SetCampaigns
 
-`func (o *BulkUpsertRequestUpdate) SetProductGroups(v []ProductGroupPromotionUpdateRequest)`
+`func (o *BulkUpsertRequestUpdate) SetCampaigns(v []CampaignUpdateRequest)`
 
-SetProductGroups sets ProductGroups field to given value.
+SetCampaigns sets Campaigns field to given value.
 
-### HasProductGroups
+### HasCampaigns
 
-`func (o *BulkUpsertRequestUpdate) HasProductGroups() bool`
+`func (o *BulkUpsertRequestUpdate) HasCampaigns() bool`
 
-HasProductGroups returns a boolean if a field has been set.
+HasCampaigns returns a boolean if a field has been set.
+
+### GetCatalogProductGroups
+
+`func (o *BulkUpsertRequestUpdate) GetCatalogProductGroups() []CatalogsProductGroupsUpdateRequest`
+
+GetCatalogProductGroups returns the CatalogProductGroups field if non-nil, zero value otherwise.
+
+### GetCatalogProductGroupsOk
+
+`func (o *BulkUpsertRequestUpdate) GetCatalogProductGroupsOk() (*[]CatalogsProductGroupsUpdateRequest, bool)`
+
+GetCatalogProductGroupsOk returns a tuple with the CatalogProductGroups field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCatalogProductGroups
+
+`func (o *BulkUpsertRequestUpdate) SetCatalogProductGroups(v []CatalogsProductGroupsUpdateRequest)`
+
+SetCatalogProductGroups sets CatalogProductGroups field to given value.
+
+### HasCatalogProductGroups
+
+`func (o *BulkUpsertRequestUpdate) HasCatalogProductGroups() bool`
+
+HasCatalogProductGroups returns a boolean if a field has been set.
 
 ### GetKeywords
 
@@ -153,6 +155,56 @@ SetKeywords sets Keywords field to given value.
 `func (o *BulkUpsertRequestUpdate) HasKeywords() bool`
 
 HasKeywords returns a boolean if a field has been set.
+
+### GetLabels
+
+`func (o *BulkUpsertRequestUpdate) GetLabels() []LabelBulkUpdateRequest`
+
+GetLabels returns the Labels field if non-nil, zero value otherwise.
+
+### GetLabelsOk
+
+`func (o *BulkUpsertRequestUpdate) GetLabelsOk() (*[]LabelBulkUpdateRequest, bool)`
+
+GetLabelsOk returns a tuple with the Labels field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLabels
+
+`func (o *BulkUpsertRequestUpdate) SetLabels(v []LabelBulkUpdateRequest)`
+
+SetLabels sets Labels field to given value.
+
+### HasLabels
+
+`func (o *BulkUpsertRequestUpdate) HasLabels() bool`
+
+HasLabels returns a boolean if a field has been set.
+
+### GetProductGroups
+
+`func (o *BulkUpsertRequestUpdate) GetProductGroups() []ProductGroupPromotionUpdateRequest`
+
+GetProductGroups returns the ProductGroups field if non-nil, zero value otherwise.
+
+### GetProductGroupsOk
+
+`func (o *BulkUpsertRequestUpdate) GetProductGroupsOk() (*[]ProductGroupPromotionUpdateRequest, bool)`
+
+GetProductGroupsOk returns a tuple with the ProductGroups field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProductGroups
+
+`func (o *BulkUpsertRequestUpdate) SetProductGroups(v []ProductGroupPromotionUpdateRequest)`
+
+SetProductGroups sets ProductGroups field to given value.
+
+### HasProductGroups
+
+`func (o *BulkUpsertRequestUpdate) HasProductGroups() bool`
+
+HasProductGroups returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

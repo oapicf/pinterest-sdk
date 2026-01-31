@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"adAccountId": @"ad_account_id", @"_id": @"id", @"name": @"name", @"audienceType": @"audience_type", @"_description": @"description", @"rule": @"rule", @"size": @"size", @"status": @"status", @"type": @"type", @"createdTimestamp": @"created_timestamp", @"updatedTimestamp": @"updated_timestamp" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"adAccountId": @"ad_account_id", @"audienceType": @"audience_type", @"createdByCompanyName": @"created_by_company_name", @"createdTimestamp": @"created_timestamp", @"_description": @"description", @"_id": @"id", @"name": @"name", @"rule": @"rule", @"size": @"size", @"status": @"status", @"type": @"type", @"updatedTimestamp": @"updated_timestamp" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"adAccountId", @"_id", @"name", @"audienceType", @"_description", @"rule", @"size", @"status", @"type", @"createdTimestamp", @"updatedTimestamp"];
+  NSArray *optionalProperties = @[@"adAccountId", @"audienceType", @"createdByCompanyName", @"createdTimestamp", @"_description", @"_id", @"name", @"rule", @"size", @"status", @"type", @"updatedTimestamp"];
   return [optionalProperties containsObject:propertyName];
 }
 

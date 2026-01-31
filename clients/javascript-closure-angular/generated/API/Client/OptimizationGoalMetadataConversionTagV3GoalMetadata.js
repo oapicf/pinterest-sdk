@@ -30,7 +30,7 @@ API.Client.OptimizationGoalMetadataConversionTagV3GoalMetadata.prototype.convers
 API.Client.OptimizationGoalMetadataConversionTagV3GoalMetadata.prototype.cpaGoalValueInMicroCurrency;
 
 /**
- * ROAS optimization is not supported
+ * Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when `conversion_event` is set to `\"CHECKOUT\"` and `bid_strategy_type` is set to `\"AUTOMATIC_BID\"`. <br>This parameter is not enabled for all advertisers. <a href=\"https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/\">Learn more</a>.
  * @type {!boolean}
  * @export
  */
@@ -42,6 +42,13 @@ API.Client.OptimizationGoalMetadataConversionTagV3GoalMetadata.prototype.isRoasO
  * @export
  */
 API.Client.OptimizationGoalMetadataConversionTagV3GoalMetadata.prototype.learningModeType;
+
+/**
+ * Event name for custom or standard events mapped to an oCPM model
+ * @type {!string}
+ * @export
+ */
+API.Client.OptimizationGoalMetadataConversionTagV3GoalMetadata.prototype.reportingEvent;
 
 /** @enum {string} */
 API.Client.OptimizationGoalMetadataConversionTagV3GoalMetadata.ConversionEventEnum = { 

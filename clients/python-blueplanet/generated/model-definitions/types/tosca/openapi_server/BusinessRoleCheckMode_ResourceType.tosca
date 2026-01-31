@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BusinessRoleCheckMode"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BusinessRoleCheckMode"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  BusinessRoleCheckMode {
+    title = BusinessRoleCheckMode
+    description = BusinessRoleCheckMode
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  BusinessRoleCheckMode {
+    title = BusinessRoleCheckMode
+    description = BusinessRoleCheckMode
+    implements = openapi_server.resourceTypes.BusinessRoleCheckMode
+
+  }
+}

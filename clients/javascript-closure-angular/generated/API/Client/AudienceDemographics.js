@@ -14,11 +14,11 @@ API.Client.AudienceDemographics = function() {}
 API.Client.AudienceDemographics.prototype.ages;
 
 /**
- * Gender distribution.
+ * Country area distribution.
  * @type {!Array<!API.Client.AudienceDemographicValue>}
  * @export
  */
-API.Client.AudienceDemographics.prototype.genders;
+API.Client.AudienceDemographics.prototype.countries;
 
 /**
  * Device usage distribution.
@@ -28,16 +28,16 @@ API.Client.AudienceDemographics.prototype.genders;
 API.Client.AudienceDemographics.prototype.devices;
 
 /**
+ * Gender distribution.
+ * @type {!Array<!API.Client.AudienceDemographicValue>}
+ * @export
+ */
+API.Client.AudienceDemographics.prototype.genders;
+
+/**
  * Geographic metro area distribution.
  * @type {!Array<!API.Client.AudienceDemographicValue>}
  * @export
  */
 API.Client.AudienceDemographics.prototype.metros;
-
-/**
- * Country area distribution.
- * @type {!Array<!API.Client.AudienceDemographicValue>}
- * @export
- */
-API.Client.AudienceDemographics.prototype.countries;
 

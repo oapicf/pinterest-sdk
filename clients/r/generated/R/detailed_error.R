@@ -8,8 +8,8 @@
 #' @description DetailedError Class
 #' @format An \code{R6Class} generator object
 #' @field code  integer
-#' @field message  character
 #' @field details  object
+#' @field message  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -17,31 +17,31 @@ DetailedError <- R6::R6Class(
   "DetailedError",
   public = list(
     `code` = NULL,
-    `message` = NULL,
     `details` = NULL,
+    `message` = NULL,
 
     #' @description
     #' Initialize a new DetailedError class.
     #'
     #' @param code code
-    #' @param message message
     #' @param details details
+    #' @param message message
     #' @param ... Other optional arguments.
-    initialize = function(`code`, `message`, `details`, ...) {
+    initialize = function(`code`, `details`, `message`, ...) {
       if (!missing(`code`)) {
         if (!(is.numeric(`code`) && length(`code`) == 1)) {
           stop(paste("Error! Invalid data for `code`. Must be an integer:", `code`))
         }
         self$`code` <- `code`
       }
+      if (!missing(`details`)) {
+        self$`details` <- `details`
+      }
       if (!missing(`message`)) {
         if (!(is.character(`message`) && length(`message`) == 1)) {
           stop(paste("Error! Invalid data for `message`. Must be a string:", `message`))
         }
         self$`message` <- `message`
-      }
-      if (!missing(`details`)) {
-        self$`details` <- `details`
       }
     },
 
@@ -80,13 +80,13 @@ DetailedError <- R6::R6Class(
         DetailedErrorObject[["code"]] <-
           self$`code`
       }
-      if (!is.null(self$`message`)) {
-        DetailedErrorObject[["message"]] <-
-          self$`message`
-      }
       if (!is.null(self$`details`)) {
         DetailedErrorObject[["details"]] <-
           self$`details`
+      }
+      if (!is.null(self$`message`)) {
+        DetailedErrorObject[["message"]] <-
+          self$`message`
       }
       return(DetailedErrorObject)
     },
@@ -101,11 +101,11 @@ DetailedError <- R6::R6Class(
       if (!is.null(this_object$`code`)) {
         self$`code` <- this_object$`code`
       }
-      if (!is.null(this_object$`message`)) {
-        self$`message` <- this_object$`message`
-      }
       if (!is.null(this_object$`details`)) {
         self$`details` <- this_object$`details`
+      }
+      if (!is.null(this_object$`message`)) {
+        self$`message` <- this_object$`message`
       }
       self
     },
@@ -129,8 +129,8 @@ DetailedError <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`code` <- this_object$`code`
-      self$`message` <- this_object$`message`
       self$`details` <- this_object$`details`
+      self$`message` <- this_object$`message`
       self
     },
 
@@ -148,6 +148,11 @@ DetailedError <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for DetailedError: the required field `code` is missing."))
       }
+      # check the required field `details`
+      if (!is.null(input_json$`details`)) {
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for DetailedError: the required field `details` is missing."))
+      }
       # check the required field `message`
       if (!is.null(input_json$`message`)) {
         if (!(is.character(input_json$`message`) && length(input_json$`message`) == 1)) {
@@ -155,11 +160,6 @@ DetailedError <- R6::R6Class(
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for DetailedError: the required field `message` is missing."))
-      }
-      # check the required field `details`
-      if (!is.null(input_json$`details`)) {
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for DetailedError: the required field `details` is missing."))
       }
     },
 
@@ -181,13 +181,13 @@ DetailedError <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `message` is null
-      if (is.null(self$`message`)) {
+      # check if the required `details` is null
+      if (is.null(self$`details`)) {
         return(FALSE)
       }
 
-      # check if the required `details` is null
-      if (is.null(self$`details`)) {
+      # check if the required `message` is null
+      if (is.null(self$`message`)) {
         return(FALSE)
       }
 
@@ -205,14 +205,14 @@ DetailedError <- R6::R6Class(
         invalid_fields["code"] <- "Non-nullable required field `code` cannot be null."
       }
 
-      # check if the required `message` is null
-      if (is.null(self$`message`)) {
-        invalid_fields["message"] <- "Non-nullable required field `message` cannot be null."
-      }
-
       # check if the required `details` is null
       if (is.null(self$`details`)) {
         invalid_fields["details"] <- "Non-nullable required field `details` cannot be null."
+      }
+
+      # check if the required `message` is null
+      if (is.null(self$`message`)) {
+        invalid_fields["message"] <- "Non-nullable required field `message` cannot be null."
       }
 
       invalid_fields

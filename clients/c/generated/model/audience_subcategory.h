@@ -19,21 +19,21 @@ typedef struct audience_subcategory_t audience_subcategory_t;
 
 
 typedef struct audience_subcategory_t {
+    char *id; // string
+    double index; //numeric
     char *key; // string
     char *name; // string
     double ratio; //numeric
-    double index; //numeric
-    char *id; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } audience_subcategory_t;
 
 __attribute__((deprecated)) audience_subcategory_t *audience_subcategory_create(
+    char *id,
+    double index,
     char *key,
     char *name,
-    double ratio,
-    double index,
-    char *id
+    double ratio
 );
 
 void audience_subcategory_free(audience_subcategory_t *audience_subcategory);

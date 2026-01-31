@@ -1,0 +1,44 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server UpdateAssetGroupResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a UpdateAssetGroupResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AssetGroupBinding = openapi_server.resourceTypes.AssetGroupBinding
+  UpdateAssetGroupResponseExceptionsInner = openapi_server.resourceTypes.UpdateAssetGroupResponseExceptionsInner
+}
+resourceTypes {
+
+  UpdateAssetGroupResponse {
+    title = UpdateAssetGroupResponse
+    description = UpdateAssetGroupResponse
+    derivedFrom = Root
+    properties {
+        exceptions {
+          type = array
+          items.type = UpdateAssetGroupResponseExceptionsInner
+          description = "A list of errors associated with the asset groups. Will be returned if there is an error."
+          optional = false
+        }
+        updated_asset_groups {
+          type = array
+          items.type = AssetGroupBinding
+          description = "A list of successfully edited asset groups."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  UpdateAssetGroupResponse {
+    title = UpdateAssetGroupResponse
+    description = UpdateAssetGroupResponse
+    implements = openapi_server.resourceTypes.UpdateAssetGroupResponse
+
+  }
+}

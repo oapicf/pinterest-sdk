@@ -16,9 +16,8 @@ module.exports = {
                 ],
             },
             {
-                key: `${keyPrefix}name`,
-                label: `[${labelPrefix}name]`,
-                type: 'string',
+                key: `${keyPrefix}country`,
+                ...Country.fields(`${keyPrefix}country`, isInput),
             },
             {
                 key: `${keyPrefix}description`,
@@ -27,12 +26,13 @@ module.exports = {
             },
             ...CatalogsProductGroupFiltersRequest.fields(`${keyPrefix}filters`, isInput),
             {
-                key: `${keyPrefix}country`,
-                ...Country.fields(`${keyPrefix}country`, isInput),
-            },
-            {
                 key: `${keyPrefix}locale`,
                 ...CatalogsLocale.fields(`${keyPrefix}locale`, isInput),
+            },
+            {
+                key: `${keyPrefix}name`,
+                label: `[${labelPrefix}name]`,
+                type: 'string',
             },
         ]
     },
@@ -40,11 +40,11 @@ module.exports = {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
-            'name': bundle.inputData?.[`${keyPrefix}name`],
+            'country': bundle.inputData?.[`${keyPrefix}country`],
             'description': bundle.inputData?.[`${keyPrefix}description`],
             'filters': utils.removeIfEmpty(CatalogsProductGroupFiltersRequest.mapping(bundle, `${keyPrefix}filters`)),
-            'country': bundle.inputData?.[`${keyPrefix}country`],
             'locale': bundle.inputData?.[`${keyPrefix}locale`],
+            'name': bundle.inputData?.[`${keyPrefix}name`],
         }
     },
 }

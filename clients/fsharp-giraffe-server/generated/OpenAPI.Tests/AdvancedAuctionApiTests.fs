@@ -183,6 +183,28 @@ module AdvancedAuctionApiHandlerTests =
       }
 
   [<Fact>]
+  let ``AdvancedAuctionItemsSubmitPost - Operate on item level bid options returns 206 where Response containing the results of the item bid options operations (where some/all operation results have errors)`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/advanced_auction/items/submit" + "?adAccountId=ADDME"
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getAdvancedAuctionItemsSubmitPostExample "application/json")
+      // or pass a body of type AdvancedAuctionItemsSubmitRequest
+      let body = obj() :?> AdvancedAuctionItemsSubmitRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPost client path
+        |> isStatus (enum<HttpStatusCode>(206))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
   let ``AdvancedAuctionItemsSubmitPost - Operate on item level bid options returns 400 where Invalid request parameters.`` () =
     task {
       use server = new TestServer(createHost())

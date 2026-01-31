@@ -13,10 +13,10 @@
  * Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
  */
 export interface TrackingUrls { 
-    impression?: Array<string>;
+    audience_verification?: Array<string>;
+    buyable_button?: Array<string>;
     click?: Array<string>;
     engagement?: Array<string>;
-    buyable_button?: Array<string>;
-    audience_verification?: Array<string>;
+    impression?: Array<string>;
 }
 

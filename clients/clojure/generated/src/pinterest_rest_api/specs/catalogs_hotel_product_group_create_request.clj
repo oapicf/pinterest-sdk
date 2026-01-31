@@ -8,11 +8,11 @@
 
 (def catalogs-hotel-product-group-create-request-data
   {
+   (ds/req :catalog_id) string?
    (ds/req :catalog_type) string?
-   (ds/req :name) string?
    (ds/opt :description) string?
    (ds/req :filters) catalogs-hotel-product-group-filters-spec
-   (ds/req :catalog_id) string?
+   (ds/req :name) string?
    })
 
 (def catalogs-hotel-product-group-create-request-spec

@@ -26,16 +26,16 @@ class CatalogsHotelListProductsByCatalogBasedFilterRequestTest : ShouldSpec() {
         // uncomment below to create an instance of CatalogsHotelListProductsByCatalogBasedFilterRequest
         //val modelInstance = CatalogsHotelListProductsByCatalogBasedFilterRequest()
 
-        // to test the property `catalogType`
-        should("test catalogType") {
-            // uncomment below to test the property
-            //modelInstance.catalogType shouldBe ("TODO")
-        }
-
         // to test the property `catalogId` - Catalog id pertaining to the hotel product group.
         should("test catalogId") {
             // uncomment below to test the property
             //modelInstance.catalogId shouldBe ("TODO")
+        }
+
+        // to test the property `catalogType`
+        should("test catalogType") {
+            // uncomment below to test the property
+            //modelInstance.catalogType shouldBe ("TODO")
         }
 
         // to test the property `filters`

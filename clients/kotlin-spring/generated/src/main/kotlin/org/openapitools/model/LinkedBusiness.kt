@@ -15,28 +15,28 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param username Username
- * @param imageSmallUrl image_small_url
- * @param imageMediumUrl image_medium_url
  * @param imageLargeUrl image_large_url
+ * @param imageMediumUrl image_medium_url
+ * @param imageSmallUrl image_small_url
  * @param imageXlargeUrl image_xlarge_url
+ * @param username Username
  */
 data class LinkedBusiness(
-
-    @Schema(example = "username", description = "Username")
-    @get:JsonProperty("username") val username: kotlin.String? = null,
-
-    @Schema(example = "https://www.example.com/dj23454f53dfk2324.jpg", description = "image_small_url")
-    @get:JsonProperty("image_small_url") val imageSmallUrl: kotlin.String? = null,
-
-    @Schema(example = "https://www.example.com/dj23454f53dfk2324.jpg", description = "image_medium_url")
-    @get:JsonProperty("image_medium_url") val imageMediumUrl: kotlin.String? = null,
 
     @Schema(example = "https://www.example.com/dj23454f53dfk2324.jpg", description = "image_large_url")
     @get:JsonProperty("image_large_url") val imageLargeUrl: kotlin.String? = null,
 
+    @Schema(example = "https://www.example.com/dj23454f53dfk2324.jpg", description = "image_medium_url")
+    @get:JsonProperty("image_medium_url") val imageMediumUrl: kotlin.String? = null,
+
+    @Schema(example = "https://www.example.com/dj23454f53dfk2324.jpg", description = "image_small_url")
+    @get:JsonProperty("image_small_url") val imageSmallUrl: kotlin.String? = null,
+
     @Schema(example = "https://www.example.com/dj23454f53dfk2324.jpg", description = "image_xlarge_url")
-    @get:JsonProperty("image_xlarge_url") val imageXlargeUrl: kotlin.String? = null
+    @get:JsonProperty("image_xlarge_url") val imageXlargeUrl: kotlin.String? = null,
+
+    @Schema(example = "username", description = "Username")
+    @get:JsonProperty("username") val username: kotlin.String? = null
 ) {
 
 }

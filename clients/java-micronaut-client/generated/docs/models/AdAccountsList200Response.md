@@ -8,8 +8,8 @@ The class is defined in **[AdAccountsList200Response.java](../../src/main/java/o
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;AdAccount&gt;`](AdAccount.md) | Ad accounts | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;AdAccount&gt;`](AdAccount.md) |  | 
 
 
 

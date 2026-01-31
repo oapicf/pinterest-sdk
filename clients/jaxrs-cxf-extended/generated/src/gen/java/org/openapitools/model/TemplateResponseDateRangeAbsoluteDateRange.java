@@ -18,10 +18,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class TemplateResponseDateRangeAbsoluteDateRange  {
   
  /**
-  * The date range type
+  * The end date of the date range
   */
-  @ApiModelProperty(example = "absolute", value = "The date range type")
-  private String type;
+  @ApiModelProperty(example = "6.027456183070403", value = "The end date of the date range")
+  @Valid
+  private BigDecimal endDate;
 
  /**
   * The start date of the date range
@@ -31,32 +32,31 @@ public class TemplateResponseDateRangeAbsoluteDateRange  {
   private BigDecimal startDate;
 
  /**
-  * The end date of the date range
-  */
-  @ApiModelProperty(example = "6.027456183070403", value = "The end date of the date range")
-  @Valid
-  private BigDecimal endDate;
- /**
   * The date range type
-  * @return type
   */
-  @JsonProperty("type")
-  public String getType() {
-    return type;
+  @ApiModelProperty(example = "absolute", value = "The date range type")
+  private String type;
+ /**
+  * The end date of the date range
+  * @return endDate
+  */
+  @JsonProperty("end_date")
+  public BigDecimal getEndDate() {
+    return endDate;
   }
 
   /**
-   * Sets the <code>type</code> property.
+   * Sets the <code>endDate</code> property.
    */
- public void setType(String type) {
-    this.type = type;
+ public void setEndDate(BigDecimal endDate) {
+    this.endDate = endDate;
   }
 
   /**
-   * Sets the <code>type</code> property.
+   * Sets the <code>endDate</code> property.
    */
-  public TemplateResponseDateRangeAbsoluteDateRange type(String type) {
-    this.type = type;
+  public TemplateResponseDateRangeAbsoluteDateRange endDate(BigDecimal endDate) {
+    this.endDate = endDate;
     return this;
   }
 
@@ -85,26 +85,26 @@ public class TemplateResponseDateRangeAbsoluteDateRange  {
   }
 
  /**
-  * The end date of the date range
-  * @return endDate
+  * The date range type
+  * @return type
   */
-  @JsonProperty("end_date")
-  public BigDecimal getEndDate() {
-    return endDate;
+  @JsonProperty("type")
+  public String getType() {
+    return type;
   }
 
   /**
-   * Sets the <code>endDate</code> property.
+   * Sets the <code>type</code> property.
    */
- public void setEndDate(BigDecimal endDate) {
-    this.endDate = endDate;
+ public void setType(String type) {
+    this.type = type;
   }
 
   /**
-   * Sets the <code>endDate</code> property.
+   * Sets the <code>type</code> property.
    */
-  public TemplateResponseDateRangeAbsoluteDateRange endDate(BigDecimal endDate) {
-    this.endDate = endDate;
+  public TemplateResponseDateRangeAbsoluteDateRange type(String type) {
+    this.type = type;
     return this;
   }
 
@@ -118,14 +118,14 @@ public class TemplateResponseDateRangeAbsoluteDateRange  {
       return false;
     }
     TemplateResponseDateRangeAbsoluteDateRange templateResponseDateRangeAbsoluteDateRange = (TemplateResponseDateRangeAbsoluteDateRange) o;
-    return Objects.equals(this.type, templateResponseDateRangeAbsoluteDateRange.type) &&
+    return Objects.equals(this.endDate, templateResponseDateRangeAbsoluteDateRange.endDate) &&
         Objects.equals(this.startDate, templateResponseDateRangeAbsoluteDateRange.startDate) &&
-        Objects.equals(this.endDate, templateResponseDateRangeAbsoluteDateRange.endDate);
+        Objects.equals(this.type, templateResponseDateRangeAbsoluteDateRange.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, startDate, endDate);
+    return Objects.hash(endDate, startDate, type);
   }
 
   @Override
@@ -133,9 +133,9 @@ public class TemplateResponseDateRangeAbsoluteDateRange  {
     StringBuilder sb = new StringBuilder();
     sb.append("class TemplateResponseDateRangeAbsoluteDateRange {\n");
     
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

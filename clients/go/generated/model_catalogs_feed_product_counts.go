@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,10 +20,10 @@ var _ MappedNullable = &CatalogsFeedProductCounts{}
 
 // CatalogsFeedProductCounts The counts can be null early in the process.
 type CatalogsFeedProductCounts struct {
-	// The number of products in the feed file.
-	Original *int32 `json:"original,omitempty"`
 	// The number of products successfully ingested from the feed file.
 	Ingested *int32 `json:"ingested,omitempty"`
+	// The number of products in the feed file.
+	Original *int32 `json:"original,omitempty"`
 }
 
 // NewCatalogsFeedProductCounts instantiates a new CatalogsFeedProductCounts object
@@ -41,38 +41,6 @@ func NewCatalogsFeedProductCounts() *CatalogsFeedProductCounts {
 func NewCatalogsFeedProductCountsWithDefaults() *CatalogsFeedProductCounts {
 	this := CatalogsFeedProductCounts{}
 	return &this
-}
-
-// GetOriginal returns the Original field value if set, zero value otherwise.
-func (o *CatalogsFeedProductCounts) GetOriginal() int32 {
-	if o == nil || IsNil(o.Original) {
-		var ret int32
-		return ret
-	}
-	return *o.Original
-}
-
-// GetOriginalOk returns a tuple with the Original field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsFeedProductCounts) GetOriginalOk() (*int32, bool) {
-	if o == nil || IsNil(o.Original) {
-		return nil, false
-	}
-	return o.Original, true
-}
-
-// HasOriginal returns a boolean if a field has been set.
-func (o *CatalogsFeedProductCounts) HasOriginal() bool {
-	if o != nil && !IsNil(o.Original) {
-		return true
-	}
-
-	return false
-}
-
-// SetOriginal gets a reference to the given int32 and assigns it to the Original field.
-func (o *CatalogsFeedProductCounts) SetOriginal(v int32) {
-	o.Original = &v
 }
 
 // GetIngested returns the Ingested field value if set, zero value otherwise.
@@ -107,6 +75,38 @@ func (o *CatalogsFeedProductCounts) SetIngested(v int32) {
 	o.Ingested = &v
 }
 
+// GetOriginal returns the Original field value if set, zero value otherwise.
+func (o *CatalogsFeedProductCounts) GetOriginal() int32 {
+	if o == nil || IsNil(o.Original) {
+		var ret int32
+		return ret
+	}
+	return *o.Original
+}
+
+// GetOriginalOk returns a tuple with the Original field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedProductCounts) GetOriginalOk() (*int32, bool) {
+	if o == nil || IsNil(o.Original) {
+		return nil, false
+	}
+	return o.Original, true
+}
+
+// HasOriginal returns a boolean if a field has been set.
+func (o *CatalogsFeedProductCounts) HasOriginal() bool {
+	if o != nil && !IsNil(o.Original) {
+		return true
+	}
+
+	return false
+}
+
+// SetOriginal gets a reference to the given int32 and assigns it to the Original field.
+func (o *CatalogsFeedProductCounts) SetOriginal(v int32) {
+	o.Original = &v
+}
+
 func (o CatalogsFeedProductCounts) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -117,11 +117,11 @@ func (o CatalogsFeedProductCounts) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsFeedProductCounts) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Original) {
-		toSerialize["original"] = o.Original
-	}
 	if !IsNil(o.Ingested) {
 		toSerialize["ingested"] = o.Ingested
+	}
+	if !IsNil(o.Original) {
+		toSerialize["original"] = o.Original
 	}
 	return toSerialize, nil
 }

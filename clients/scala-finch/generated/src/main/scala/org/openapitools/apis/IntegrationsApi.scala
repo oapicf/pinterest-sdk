@@ -3,7 +3,6 @@ package org.openapitools.apis
 import java.io._
 import org.openapitools._
 import org.openapitools.models._
-import org.openapitools.models.DetailedError
 import org.openapitools.models.Error
 import org.openapitools.models.IntegrationLogsRequest
 import org.openapitools.models.IntegrationLogsSuccessResponse
@@ -12,6 +11,7 @@ import org.openapitools.models.IntegrationRecord
 import org.openapitools.models.IntegrationRequest
 import org.openapitools.models.IntegrationRequestPatch
 import org.openapitools.models.IntegrationsGetList200Response
+import org.openapitools.models.IntegrationsLogsPost400Response
 import io.finch.circe._
 import io.circe.generic.semiauto._
 import com.twitter.concurrent.AsyncStream

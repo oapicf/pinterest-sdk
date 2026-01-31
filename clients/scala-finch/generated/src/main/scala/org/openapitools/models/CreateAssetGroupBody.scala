@@ -10,12 +10,12 @@ import scala.collection.immutable.Seq
 
 /**
  * 
- * @param assetUnderscoregroupUnderscorename Asset Group name
  * @param assetUnderscoregroupUnderscoredescription Asset group description
+ * @param assetUnderscoregroupUnderscorename Asset Group name
  * @param assetUnderscoregroupUnderscoretypes Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
  */
-case class CreateAssetGroupBody(assetUnderscoregroupUnderscorename: String,
-                assetUnderscoregroupUnderscoredescription: String,
+case class CreateAssetGroupBody(assetUnderscoregroupUnderscoredescription: String,
+                assetUnderscoregroupUnderscorename: String,
                 assetUnderscoregroupUnderscoretypes: Seq[AssetGroupType]
                 )
 

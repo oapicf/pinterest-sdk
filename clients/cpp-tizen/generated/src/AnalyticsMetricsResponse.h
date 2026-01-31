@@ -48,13 +48,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get The metric name and value over the requested period for each requested metric
-	 */
-	std::map<std::string, std::string> getSummaryMetrics();
-
-	/*! \brief Set The metric name and value over the requested period for each requested metric
-	 */
-	void setSummaryMetrics(std::map <std::string, std::string> summary_metrics);
 	/*! \brief Get Array with the requested daily metric records
 	 */
 	std::list<AnalyticsDailyMetrics> getDailyMetrics();
@@ -62,10 +55,17 @@ public:
 	/*! \brief Set Array with the requested daily metric records
 	 */
 	void setDailyMetrics(std::list <AnalyticsDailyMetrics> daily_metrics);
+	/*! \brief Get The metric name and value over the requested period for each requested metric
+	 */
+	std::map<std::string, std::string> getSummaryMetrics();
+
+	/*! \brief Set The metric name and value over the requested period for each requested metric
+	 */
+	void setSummaryMetrics(std::map <std::string, std::string> summary_metrics);
 
 private:
-	std::map <std::string, std::string>summary_metrics;
 	std::list <AnalyticsDailyMetrics>daily_metrics;
+	std::map <std::string, std::string>summary_metrics;
 	void __init();
 	void __cleanup();
 

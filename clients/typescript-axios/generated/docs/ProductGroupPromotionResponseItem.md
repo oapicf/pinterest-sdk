@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**ProductGroupPromotionResponseElement**](ProductGroupPromotionResponseElement.md) |  | [optional] [default to undefined]
+**data** | [**ProductGroupPromotion**](ProductGroupPromotion.md) |  | [optional] [default to undefined]
 **exceptions** | [**Array&lt;Exception&gt;**](Exception.md) |  | [optional] [default to undefined]
 
 ## Example

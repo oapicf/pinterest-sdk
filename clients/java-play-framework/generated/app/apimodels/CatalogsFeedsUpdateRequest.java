@@ -16,9 +16,14 @@ import javax.validation.Valid;
 /**
  * Request object for updating a feed.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsFeedsUpdateRequest   {
+  @JsonProperty("credentials")
+  @Valid
+
+  private CatalogsFeedCredentials credentials;
+
   @JsonProperty("default_availability")
   @Valid
 
@@ -29,24 +34,19 @@ public class CatalogsFeedsUpdateRequest   {
 
   private NullableCurrency defaultCurrency;
 
-  @JsonProperty("name")
-  
-  private String name;
-
   @JsonProperty("format")
   @Valid
 
   private CatalogsFormat format;
 
-  @JsonProperty("credentials")
-  @Valid
-
-  private CatalogsFeedCredentials credentials;
-
   @JsonProperty("location")
   @Pattern(regexp="^(http|https|ftp|sftp)://")
 
   private String location;
+
+  @JsonProperty("name")
+  
+  private String name;
 
   @JsonProperty("preferred_processing_schedule")
   @Valid
@@ -57,6 +57,23 @@ public class CatalogsFeedsUpdateRequest   {
   @Valid
 
   private CatalogsStatus status;
+
+  public CatalogsFeedsUpdateRequest credentials(CatalogsFeedCredentials credentials) {
+    this.credentials = credentials;
+    return this;
+  }
+
+   /**
+   * Get credentials
+   * @return credentials
+  **/
+  public CatalogsFeedCredentials getCredentials() {
+    return credentials;
+  }
+
+  public void setCredentials(CatalogsFeedCredentials credentials) {
+    this.credentials = credentials;
+  }
 
   public CatalogsFeedsUpdateRequest defaultAvailability(ProductAvailabilityType defaultAvailability) {
     this.defaultAvailability = defaultAvailability;
@@ -92,23 +109,6 @@ public class CatalogsFeedsUpdateRequest   {
     this.defaultCurrency = defaultCurrency;
   }
 
-  public CatalogsFeedsUpdateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * A human-friendly name associated to a given feed.
-   * @return name
-  **/
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
   public CatalogsFeedsUpdateRequest format(CatalogsFormat format) {
     this.format = format;
     return this;
@@ -126,23 +126,6 @@ public class CatalogsFeedsUpdateRequest   {
     this.format = format;
   }
 
-  public CatalogsFeedsUpdateRequest credentials(CatalogsFeedCredentials credentials) {
-    this.credentials = credentials;
-    return this;
-  }
-
-   /**
-   * Get credentials
-   * @return credentials
-  **/
-  public CatalogsFeedCredentials getCredentials() {
-    return credentials;
-  }
-
-  public void setCredentials(CatalogsFeedCredentials credentials) {
-    this.credentials = credentials;
-  }
-
   public CatalogsFeedsUpdateRequest location(String location) {
     this.location = location;
     return this;
@@ -158,6 +141,23 @@ public class CatalogsFeedsUpdateRequest   {
 
   public void setLocation(String location) {
     this.location = location;
+  }
+
+  public CatalogsFeedsUpdateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * A human-friendly name associated to a given feed.
+   * @return name
+  **/
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   public CatalogsFeedsUpdateRequest preferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
@@ -204,19 +204,19 @@ public class CatalogsFeedsUpdateRequest   {
       return false;
     }
     CatalogsFeedsUpdateRequest catalogsFeedsUpdateRequest = (CatalogsFeedsUpdateRequest) o;
-    return Objects.equals(defaultAvailability, catalogsFeedsUpdateRequest.defaultAvailability) &&
+    return Objects.equals(credentials, catalogsFeedsUpdateRequest.credentials) &&
+        Objects.equals(defaultAvailability, catalogsFeedsUpdateRequest.defaultAvailability) &&
         Objects.equals(defaultCurrency, catalogsFeedsUpdateRequest.defaultCurrency) &&
-        Objects.equals(name, catalogsFeedsUpdateRequest.name) &&
         Objects.equals(format, catalogsFeedsUpdateRequest.format) &&
-        Objects.equals(credentials, catalogsFeedsUpdateRequest.credentials) &&
         Objects.equals(location, catalogsFeedsUpdateRequest.location) &&
+        Objects.equals(name, catalogsFeedsUpdateRequest.name) &&
         Objects.equals(preferredProcessingSchedule, catalogsFeedsUpdateRequest.preferredProcessingSchedule) &&
         Objects.equals(status, catalogsFeedsUpdateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultAvailability, defaultCurrency, name, format, credentials, location, preferredProcessingSchedule, status);
+    return Objects.hash(credentials, defaultAvailability, defaultCurrency, format, location, name, preferredProcessingSchedule, status);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -225,12 +225,12 @@ public class CatalogsFeedsUpdateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsFeedsUpdateRequest {\n");
     
+    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
     sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
-    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");

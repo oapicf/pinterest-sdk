@@ -184,17 +184,17 @@ Name | Type | Description  | Required | Notes
 
 ## boards_slash_create
 
-> models::Board boards_slash_create(board, ad_account_id)
+> models::Board boards_slash_create(board_create, ad_account_id)
 Create board
 
-Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Parameters
 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**board** | [**Board**](Board.md) | Create a board using a single board json object. | [required] |
+**board_create** | [**BoardCreate**](BoardCreate.md) |  | [required] |
 **ad_account_id** | Option<**String**> | Unique identifier of an ad account. |  |
 
 ### Return type
@@ -203,7 +203,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -218,14 +218,14 @@ Name | Type | Description  | Required | Notes
 > boards_slash_delete(board_id, ad_account_id)
 Delete board
 
-Delete a board owned by the \"operation user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Delete a board owned by the \"operation user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Parameters
 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**board_id** | **String** | Unique identifier of a board. | [required] |
+**board_id** | **String** |  | [required] |
 **ad_account_id** | Option<**String**> | Unique identifier of an ad account. |  |
 
 ### Return type
@@ -249,14 +249,14 @@ Name | Type | Description  | Required | Notes
 > models::Board boards_slash_get(board_id, ad_account_id)
 Get board
 
-Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Parameters
 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**board_id** | **String** | Unique identifier of a board. | [required] |
+**board_id** | **String** |  | [required] |
 **ad_account_id** | Option<**String**> | Unique identifier of an ad account. |  |
 
 ### Return type
@@ -277,10 +277,10 @@ Name | Type | Description  | Required | Notes
 
 ## boards_slash_list
 
-> models::BoardsList200Response boards_slash_list(ad_account_id, bookmark, page_size, privacy)
+> models::BoardsList200Response boards_slash_list(ad_account_id, privacy, bookmark, page_size)
 List boards
 
-Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
 
 ### Parameters
 
@@ -288,9 +288,9 @@ Get a list of the boards owned by the \"operation user_account\" + group boards 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **ad_account_id** | Option<**String**> | Unique identifier of an ad account. |  |
+**privacy** | Option<[**BoardPrivacyFilter**](.md)> | The privacy level of the board |  |
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
-**page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
-**privacy** | Option<**String**> | Privacy setting for a board. |  |
+**page_size** | Option<**i32**> | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. |  |[default to 25]
 
 ### Return type
 
@@ -323,9 +323,9 @@ Name | Type | Description  | Required | Notes
 **board_id** | **String** | Unique identifier of a board. | [required] |
 **bookmark** | Option<**String**> | Cursor used to fetch the next page of items |  |
 **page_size** | Option<**i32**> | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. |  |[default to 25]
-**creative_types** | Option<[**Vec<String>**](String.md)> | Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. |  |
+**creative_types** | Option<[**Vec<models::CreativeType>**](models::CreativeType.md)> | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. |  |
 **ad_account_id** | Option<**String**> | Unique identifier of an ad account. |  |
-**pin_metrics** | Option<**bool**> | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. |  |[default to false]
+**pin_metrics** | Option<**bool**> | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. |  |[default to false]
 
 ### Return type
 
@@ -345,27 +345,27 @@ Name | Type | Description  | Required | Notes
 
 ## boards_slash_update
 
-> models::Board boards_slash_update(board_id, board_update, ad_account_id)
+> models::BoardWithUpdatePrivacy boards_slash_update(board_id, board_with_update_privacy_update, ad_account_id)
 Update board
 
-Update a board owned by the \"operating user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Update a board owned by the \"operating user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Parameters
 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**board_id** | **String** | Unique identifier of a board. | [required] |
-**board_update** | [**BoardUpdate**](BoardUpdate.md) | Update a board. | [required] |
+**board_id** | **String** |  | [required] |
+**board_with_update_privacy_update** | [**BoardWithUpdatePrivacyUpdate**](BoardWithUpdatePrivacyUpdate.md) |  | [required] |
 **ad_account_id** | Option<**String**> | Unique identifier of an ad account. |  |
 
 ### Return type
 
-[**models::Board**](Board.md)
+[**models::BoardWithUpdatePrivacy**](BoardWithUpdatePrivacy.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

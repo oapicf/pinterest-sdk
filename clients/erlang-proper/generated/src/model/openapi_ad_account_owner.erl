@@ -9,8 +9,8 @@
 -export_type([openapi_ad_account_owner/0]).
 
 -type openapi_ad_account_owner() ::
-  [ {'username', binary() }
-  | {'id', binary() }
+  [ {'id', binary() }
+  | {'username', binary() }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_ad_account_owner() ->
     openapi_ad_account_owner([]).
 
 openapi_ad_account_owner(Fields) ->
-  Default = [ {'username', binary() }
-            , {'id', binary() }
+  Default = [ {'id', binary() }
+            , {'username', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

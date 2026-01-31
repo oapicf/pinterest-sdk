@@ -7,19 +7,22 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { PinMediaSourceImagesURLItemsInner } from './pinMediaSourceImagesURLItemsInner';
+import { PinMediaSourceImagesURLItem } from './pinMediaSourceImagesURLItem';
 
 
 /**
- * Multiple images urls-based media source
+ * Multiple URL-based images media source
  */
 export interface PinMediaSourceImagesURL { 
-    source_type?: PinMediaSourceImagesURL.SourceTypeEnum;
+    index?: number;
     /**
      * Array with image objects.
      */
-    items: Array<PinMediaSourceImagesURLItemsInner>;
-    index?: number;
+    items: Array<PinMediaSourceImagesURLItem>;
+    /**
+     * The source type of the media.
+     */
+    source_type: PinMediaSourceImagesURL.SourceTypeEnum;
 }
 export namespace PinMediaSourceImagesURL {
     export const SourceTypeEnum = {

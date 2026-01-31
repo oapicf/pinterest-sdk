@@ -23,28 +23,28 @@ import com.squareup.moshi.JsonClass
 /**
  * Request object for creating a creative assets product group.
  *
- * @param catalogType 
- * @param name 
- * @param filters 
  * @param catalogId Catalog id pertaining to the creative assets product group.
+ * @param catalogType 
+ * @param filters 
+ * @param name 
  * @param description 
  */
 
 
 data class CatalogsCreativeAssetsProductGroupCreateRequest (
 
+    /* Catalog id pertaining to the creative assets product group. */
+    @Json(name = "catalog_id")
+    val catalogId: kotlin.String,
+
     @Json(name = "catalog_type")
     val catalogType: CatalogsCreativeAssetsProductGroupCreateRequest.CatalogType,
-
-    @Json(name = "name")
-    val name: kotlin.String,
 
     @Json(name = "filters")
     val filters: CatalogsCreativeAssetsProductGroupFilters,
 
-    /* Catalog id pertaining to the creative assets product group. */
-    @Json(name = "catalog_id")
-    val catalogId: kotlin.String,
+    @Json(name = "name")
+    val name: kotlin.String,
 
     @Json(name = "description")
     val description: kotlin.String? = null

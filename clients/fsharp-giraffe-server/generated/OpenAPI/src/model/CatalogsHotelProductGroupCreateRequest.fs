@@ -14,10 +14,10 @@ module CatalogsHotelProductGroupCreateRequest =
   //#endregion
 
   type CatalogsHotelProductGroupCreateRequest = {
+    CatalogId : string;
     CatalogType : CatalogTypeEnum;
-    Name : string;
     Description : string option;
     Filters : CatalogsHotelProductGroupFilters;
-    CatalogId : string;
+    Name : string;
   }
   //#endregion

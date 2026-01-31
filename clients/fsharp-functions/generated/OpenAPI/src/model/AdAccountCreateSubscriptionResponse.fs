@@ -11,14 +11,24 @@ module AdAccountCreateSubscriptionResponse =
 
   [<CLIMutable>]
   type AdAccountCreateSubscriptionResponse = {
-    [<JsonProperty(PropertyName = "id")>]
-    Id : string;
-    [<JsonProperty(PropertyName = "cryptographic_key")>]
-    CryptographicKey : string option;
-    [<JsonProperty(PropertyName = "cryptographic_algorithm")>]
-    CryptographicAlgorithm : string option;
+    [<JsonProperty(PropertyName = "ad_account_id")>]
+    AdAccountId : string;
+    [<JsonProperty(PropertyName = "api_version")>]
+    ApiVersion : string;
     [<JsonProperty(PropertyName = "created_time")>]
     CreatedTime : int;
+    [<JsonProperty(PropertyName = "cryptographic_algorithm")>]
+    CryptographicAlgorithm : string option;
+    [<JsonProperty(PropertyName = "cryptographic_key")>]
+    CryptographicKey : string option;
+    [<JsonProperty(PropertyName = "id")>]
+    Id : string;
+    [<JsonProperty(PropertyName = "lead_form_id")>]
+    LeadFormId : string option;
+    [<JsonProperty(PropertyName = "user_account_id")>]
+    UserAccountId : string;
+    [<JsonProperty(PropertyName = "webhook_url")>]
+    WebhookUrl : string;
   }
 
   //#endregion

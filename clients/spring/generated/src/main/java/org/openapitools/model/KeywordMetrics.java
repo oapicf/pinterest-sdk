@@ -4,7 +4,6 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.math.BigDecimal;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -21,32 +20,10 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "KeywordMetrics", description = "Keyword metrics JSON")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class KeywordMetrics {
 
-  private @Nullable BigDecimal avgCpcInMicroCurrency;
-
   private @Nullable String keywordQueryVolume;
-
-  public KeywordMetrics avgCpcInMicroCurrency(@Nullable BigDecimal avgCpcInMicroCurrency) {
-    this.avgCpcInMicroCurrency = avgCpcInMicroCurrency;
-    return this;
-  }
-
-  /**
-   * Average cost per click
-   * @return avgCpcInMicroCurrency
-   */
-  @Valid 
-  @Schema(name = "avg_cpc_in_micro_currency", example = "100000", description = "Average cost per click", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("avg_cpc_in_micro_currency")
-  public @Nullable BigDecimal getAvgCpcInMicroCurrency() {
-    return avgCpcInMicroCurrency;
-  }
-
-  public void setAvgCpcInMicroCurrency(@Nullable BigDecimal avgCpcInMicroCurrency) {
-    this.avgCpcInMicroCurrency = avgCpcInMicroCurrency;
-  }
 
   public KeywordMetrics keywordQueryVolume(@Nullable String keywordQueryVolume) {
     this.keywordQueryVolume = keywordQueryVolume;
@@ -77,20 +54,18 @@ public class KeywordMetrics {
       return false;
     }
     KeywordMetrics keywordMetrics = (KeywordMetrics) o;
-    return Objects.equals(this.avgCpcInMicroCurrency, keywordMetrics.avgCpcInMicroCurrency) &&
-        Objects.equals(this.keywordQueryVolume, keywordMetrics.keywordQueryVolume);
+    return Objects.equals(this.keywordQueryVolume, keywordMetrics.keywordQueryVolume);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(avgCpcInMicroCurrency, keywordQueryVolume);
+    return Objects.hash(keywordQueryVolume);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class KeywordMetrics {\n");
-    sb.append("    avgCpcInMicroCurrency: ").append(toIndentedString(avgCpcInMicroCurrency)).append("\n");
     sb.append("    keywordQueryVolume: ").append(toIndentedString(keywordQueryVolume)).append("\n");
     sb.append("}");
     return sb.toString();

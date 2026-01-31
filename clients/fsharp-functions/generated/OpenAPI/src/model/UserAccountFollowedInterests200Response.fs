@@ -12,10 +12,10 @@ module UserAccountFollowedInterests200Response =
 
   [<CLIMutable>]
   type UserAccountFollowedInterests200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : Interest[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : Interest[];
   }
 
   //#endregion

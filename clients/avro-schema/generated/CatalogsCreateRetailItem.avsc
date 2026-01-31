@@ -5,6 +5,11 @@
   "name": "CatalogsCreateRetailItem",
   "fields": [
     {
+      "name": "attributes",
+      "type": "model.ItemAttributesRequest",
+      "doc": ""
+    },
+    {
       "name": "item_id",
       "type": "string",
       "doc": "The catalog item id in the merchant namespace"
@@ -18,11 +23,6 @@
           "CREATE"
         ]
       },
-      "doc": ""
-    },
-    {
-      "name": "attributes",
-      "type": "model.ItemAttributesRequest",
       "doc": ""
     }
   ]

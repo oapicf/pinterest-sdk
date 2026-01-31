@@ -5,16 +5,16 @@
 -export_type([openapi_catalogs_creative_assets_items_post_filter/0]).
 
 -type openapi_catalogs_creative_assets_items_post_filter() ::
-    #{ 'catalog_type' := binary(),
-       'creative_assets_ids' := list(),
-       'catalog_id' => binary()
+    #{ 'catalog_id' => binary(),
+       'catalog_type' := binary(),
+       'creative_assets_ids' := list()
      }.
 
-encode(#{ 'catalog_type' := CatalogType,
-          'creative_assets_ids' := CreativeAssetsIds,
-          'catalog_id' := CatalogId
+encode(#{ 'catalog_id' := CatalogId,
+          'catalog_type' := CatalogType,
+          'creative_assets_ids' := CreativeAssetsIds
         }) ->
-    #{ 'catalog_type' => CatalogType,
-       'creative_assets_ids' => CreativeAssetsIds,
-       'catalog_id' => CatalogId
+    #{ 'catalog_id' => CatalogId,
+       'catalog_type' => CatalogType,
+       'creative_assets_ids' => CreativeAssetsIds
      }.

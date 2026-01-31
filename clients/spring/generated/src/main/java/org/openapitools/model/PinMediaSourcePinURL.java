@@ -27,8 +27,10 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "PinMediaSourcePinURL", description = "Pin URL-based media source for product pin creation. Currently the field is only available to a list of beta users.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinMediaSourcePinURL implements PinMediaSource {
+
+  private Boolean isAffiliateLink = false;
 
   /**
    * Gets or Sets sourceType
@@ -65,8 +67,6 @@ public class PinMediaSourcePinURL implements PinMediaSource {
 
   private SourceTypeEnum sourceType;
 
-  private Boolean isAffiliateLink = false;
-
   public PinMediaSourcePinURL() {
     super();
   }
@@ -75,26 +75,6 @@ public class PinMediaSourcePinURL implements PinMediaSource {
    * Constructor with only required parameters
    */
   public PinMediaSourcePinURL(SourceTypeEnum sourceType) {
-    this.sourceType = sourceType;
-  }
-
-  public PinMediaSourcePinURL sourceType(SourceTypeEnum sourceType) {
-    this.sourceType = sourceType;
-    return this;
-  }
-
-  /**
-   * Get sourceType
-   * @return sourceType
-   */
-  @NotNull 
-  @Schema(name = "source_type", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("source_type")
-  public SourceTypeEnum getSourceType() {
-    return sourceType;
-  }
-
-  public void setSourceType(SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
   }
 
@@ -118,6 +98,26 @@ public class PinMediaSourcePinURL implements PinMediaSource {
     this.isAffiliateLink = isAffiliateLink;
   }
 
+  public PinMediaSourcePinURL sourceType(SourceTypeEnum sourceType) {
+    this.sourceType = sourceType;
+    return this;
+  }
+
+  /**
+   * Get sourceType
+   * @return sourceType
+   */
+  @NotNull 
+  @Schema(name = "source_type", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("source_type")
+  public SourceTypeEnum getSourceType() {
+    return sourceType;
+  }
+
+  public void setSourceType(SourceTypeEnum sourceType) {
+    this.sourceType = sourceType;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -127,21 +127,21 @@ public class PinMediaSourcePinURL implements PinMediaSource {
       return false;
     }
     PinMediaSourcePinURL pinMediaSourcePinURL = (PinMediaSourcePinURL) o;
-    return Objects.equals(this.sourceType, pinMediaSourcePinURL.sourceType) &&
-        Objects.equals(this.isAffiliateLink, pinMediaSourcePinURL.isAffiliateLink);
+    return Objects.equals(this.isAffiliateLink, pinMediaSourcePinURL.isAffiliateLink) &&
+        Objects.equals(this.sourceType, pinMediaSourcePinURL.sourceType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceType, isAffiliateLink);
+    return Objects.hash(isAffiliateLink, sourceType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaSourcePinURL {\n");
-    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("    isAffiliateLink: ").append(toIndentedString(isAffiliateLink)).append("\n");
+    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

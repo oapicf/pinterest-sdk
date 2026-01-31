@@ -7,6 +7,6 @@ package org.openapitools.server.model
  * @param APP_TYPE  for example: ''null''
 */
 final case class AppTypeMultipliers (
-  APP_TYPE: Option[TargetingSpecAppType] = None
+  APP_TYPE: Option[String] = None
 )
 

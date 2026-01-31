@@ -9,13 +9,13 @@ import org.openapitools.models.BulkReportingJobStatus
 
 /**
  * 
+ * @param message 
  * @param reportUnderscorestatus 
  * @param token 
- * @param message 
  */
-case class AdsAnalyticsCreateAsyncResponse(reportUnderscorestatus: Option[BulkReportingJobStatus],
-                token: Option[String],
-                message: Option[String]
+case class AdsAnalyticsCreateAsyncResponse(message: Option[String],
+                reportUnderscorestatus: Option[BulkReportingJobStatus],
+                token: Option[String]
                 )
 
 object AdsAnalyticsCreateAsyncResponse {

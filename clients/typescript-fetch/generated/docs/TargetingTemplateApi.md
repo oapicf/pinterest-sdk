@@ -108,6 +108,8 @@ async function example() {
   const config = new Configuration({ 
     // To configure OAuth2 access token for authorization: pinterest_oauth2 accessCode
     accessToken: "YOUR ACCESS TOKEN",
+    // To configure OAuth2 access token for authorization: client_credentials application
+    accessToken: "YOUR ACCESS TOKEN",
   });
   const api = new TargetingTemplateApi(config);
 
@@ -156,7 +158,7 @@ example().catch(console.error);
 
 ### Authorization
 
-[pinterest_oauth2 accessCode](../README.md#pinterest_oauth2-accessCode)
+[pinterest_oauth2 accessCode](../README.md#pinterest_oauth2-accessCode), [client_credentials application](../README.md#client_credentials-application)
 
 ### HTTP request headers
 

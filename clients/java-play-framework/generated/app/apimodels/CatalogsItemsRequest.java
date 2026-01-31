@@ -11,7 +11,7 @@ import javax.validation.Valid;
 /**
  * Request object of catalogs items
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsItemsRequest   {
   @JsonProperty("country")
@@ -19,6 +19,12 @@ public class CatalogsItemsRequest   {
 @Valid
 
   private Country country;
+
+  @JsonProperty("filters")
+  @NotNull
+@Valid
+
+  private CatalogsItemsPostFilters filters;
 
   /**
    * We recommend using the CatalogsLocale values.
@@ -266,12 +272,6 @@ public class CatalogsItemsRequest   {
 
   private LanguageEnum language;
 
-  @JsonProperty("filters")
-  @NotNull
-@Valid
-
-  private CatalogsItemsPostFilters filters;
-
   public CatalogsItemsRequest country(Country country) {
     this.country = country;
     return this;
@@ -287,23 +287,6 @@ public class CatalogsItemsRequest   {
 
   public void setCountry(Country country) {
     this.country = country;
-  }
-
-  public CatalogsItemsRequest language(LanguageEnum language) {
-    this.language = language;
-    return this;
-  }
-
-   /**
-   * We recommend using the CatalogsLocale values.
-   * @return language
-  **/
-  public LanguageEnum getLanguage() {
-    return language;
-  }
-
-  public void setLanguage(LanguageEnum language) {
-    this.language = language;
   }
 
   public CatalogsItemsRequest filters(CatalogsItemsPostFilters filters) {
@@ -323,6 +306,23 @@ public class CatalogsItemsRequest   {
     this.filters = filters;
   }
 
+  public CatalogsItemsRequest language(LanguageEnum language) {
+    this.language = language;
+    return this;
+  }
+
+   /**
+   * We recommend using the CatalogsLocale values.
+   * @return language
+  **/
+  public LanguageEnum getLanguage() {
+    return language;
+  }
+
+  public void setLanguage(LanguageEnum language) {
+    this.language = language;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -334,13 +334,13 @@ public class CatalogsItemsRequest   {
     }
     CatalogsItemsRequest catalogsItemsRequest = (CatalogsItemsRequest) o;
     return Objects.equals(country, catalogsItemsRequest.country) &&
-        Objects.equals(language, catalogsItemsRequest.language) &&
-        Objects.equals(filters, catalogsItemsRequest.filters);
+        Objects.equals(filters, catalogsItemsRequest.filters) &&
+        Objects.equals(language, catalogsItemsRequest.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, language, filters);
+    return Objects.hash(country, filters, language);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -350,8 +350,8 @@ public class CatalogsItemsRequest   {
     sb.append("class CatalogsItemsRequest {\n");
     
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();
   }

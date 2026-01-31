@@ -6,27 +6,27 @@
 
 
 static related_terms_related_terms_list_inner_t *related_terms_related_terms_list_inner_create_internal(
-    char *term,
-    list_t *related_terms
+    list_t *related_terms,
+    char *term
     ) {
     related_terms_related_terms_list_inner_t *related_terms_related_terms_list_inner_local_var = malloc(sizeof(related_terms_related_terms_list_inner_t));
     if (!related_terms_related_terms_list_inner_local_var) {
         return NULL;
     }
-    related_terms_related_terms_list_inner_local_var->term = term;
     related_terms_related_terms_list_inner_local_var->related_terms = related_terms;
+    related_terms_related_terms_list_inner_local_var->term = term;
 
     related_terms_related_terms_list_inner_local_var->_library_owned = 1;
     return related_terms_related_terms_list_inner_local_var;
 }
 
 __attribute__((deprecated)) related_terms_related_terms_list_inner_t *related_terms_related_terms_list_inner_create(
-    char *term,
-    list_t *related_terms
+    list_t *related_terms,
+    char *term
     ) {
     return related_terms_related_terms_list_inner_create_internal (
-        term,
-        related_terms
+        related_terms,
+        term
         );
 }
 
@@ -39,10 +39,6 @@ void related_terms_related_terms_list_inner_free(related_terms_related_terms_lis
         return ;
     }
     listEntry_t *listEntry;
-    if (related_terms_related_terms_list_inner->term) {
-        free(related_terms_related_terms_list_inner->term);
-        related_terms_related_terms_list_inner->term = NULL;
-    }
     if (related_terms_related_terms_list_inner->related_terms) {
         list_ForEach(listEntry, related_terms_related_terms_list_inner->related_terms) {
             free(listEntry->data);
@@ -50,19 +46,15 @@ void related_terms_related_terms_list_inner_free(related_terms_related_terms_lis
         list_freeList(related_terms_related_terms_list_inner->related_terms);
         related_terms_related_terms_list_inner->related_terms = NULL;
     }
+    if (related_terms_related_terms_list_inner->term) {
+        free(related_terms_related_terms_list_inner->term);
+        related_terms_related_terms_list_inner->term = NULL;
+    }
     free(related_terms_related_terms_list_inner);
 }
 
 cJSON *related_terms_related_terms_list_inner_convertToJSON(related_terms_related_terms_list_inner_t *related_terms_related_terms_list_inner) {
     cJSON *item = cJSON_CreateObject();
-
-    // related_terms_related_terms_list_inner->term
-    if(related_terms_related_terms_list_inner->term) {
-    if(cJSON_AddStringToObject(item, "term", related_terms_related_terms_list_inner->term) == NULL) {
-    goto fail; //String
-    }
-    }
-
 
     // related_terms_related_terms_list_inner->related_terms
     if(related_terms_related_terms_list_inner->related_terms) {
@@ -80,6 +72,14 @@ cJSON *related_terms_related_terms_list_inner_convertToJSON(related_terms_relate
     }
     }
 
+
+    // related_terms_related_terms_list_inner->term
+    if(related_terms_related_terms_list_inner->term) {
+    if(cJSON_AddStringToObject(item, "term", related_terms_related_terms_list_inner->term) == NULL) {
+    goto fail; //String
+    }
+    }
+
     return item;
 fail:
     if (item) {
@@ -94,18 +94,6 @@ related_terms_related_terms_list_inner_t *related_terms_related_terms_list_inner
 
     // define the local list for related_terms_related_terms_list_inner->related_terms
     list_t *related_termsList = NULL;
-
-    // related_terms_related_terms_list_inner->term
-    cJSON *term = cJSON_GetObjectItemCaseSensitive(related_terms_related_terms_list_innerJSON, "term");
-    if (cJSON_IsNull(term)) {
-        term = NULL;
-    }
-    if (term) { 
-    if(!cJSON_IsString(term) && !cJSON_IsNull(term))
-    {
-    goto end; //String
-    }
-    }
 
     // related_terms_related_terms_list_inner->related_terms
     cJSON *related_terms = cJSON_GetObjectItemCaseSensitive(related_terms_related_terms_list_innerJSON, "related_terms");
@@ -129,10 +117,22 @@ related_terms_related_terms_list_inner_t *related_terms_related_terms_list_inner
     }
     }
 
+    // related_terms_related_terms_list_inner->term
+    cJSON *term = cJSON_GetObjectItemCaseSensitive(related_terms_related_terms_list_innerJSON, "term");
+    if (cJSON_IsNull(term)) {
+        term = NULL;
+    }
+    if (term) { 
+    if(!cJSON_IsString(term) && !cJSON_IsNull(term))
+    {
+    goto end; //String
+    }
+    }
+
 
     related_terms_related_terms_list_inner_local_var = related_terms_related_terms_list_inner_create_internal (
-        term && !cJSON_IsNull(term) ? strdup(term->valuestring) : NULL,
-        related_terms ? related_termsList : NULL
+        related_terms ? related_termsList : NULL,
+        term && !cJSON_IsNull(term) ? strdup(term->valuestring) : NULL
         );
 
     return related_terms_related_terms_list_inner_local_var;

@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `Paginated`
 --
-SELECT `items`, `bookmark` FROM `Paginated` WHERE 1;
+SELECT `bookmark`, `items` FROM `Paginated` WHERE 1;
 
 --
 -- INSERT template for table `Paginated`
 --
-INSERT INTO `Paginated`(`items`, `bookmark`) VALUES (?, ?);
+INSERT INTO `Paginated`(`bookmark`, `items`) VALUES (?, ?);
 
 --
 -- UPDATE template for table `Paginated`
 --
-UPDATE `Paginated` SET `items` = ?, `bookmark` = ? WHERE 1;
+UPDATE `Paginated` SET `bookmark` = ?, `items` = ? WHERE 1;
 
 --
 -- DELETE template for table `Paginated`

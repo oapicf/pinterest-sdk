@@ -19,10 +19,6 @@ export interface CatalogsHotelAddress {
      */
     city?: string;
     /**
-     * State, county, province, where the hotel is located.
-     */
-    region?: string;
-    /**
      * Country where the hotel is located.
      */
     country?: string;
@@ -30,5 +26,9 @@ export interface CatalogsHotelAddress {
      * Required for countries with a postal code system. Postal or zip code of the hotel.
      */
     postal_code?: string;
+    /**
+     * State, county, province, where the hotel is located.
+     */
+    region?: string;
 }
 

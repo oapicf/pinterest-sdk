@@ -11,13 +11,9 @@ The class is defined in **[ObjectiveType.java](../../src/main/java/org/openapito
 
 * `CONSIDERATION` (value: `"CONSIDERATION"`)
 
-* `VIDEO_VIEW` (value: `"VIDEO_VIEW"`)
-
 * `WEB_CONVERSION` (value: `"WEB_CONVERSION"`)
 
 * `CATALOG_SALES` (value: `"CATALOG_SALES"`)
-
-* `WEB_SESSIONS` (value: `"WEB_SESSIONS"`)
 
 * `VIDEO_COMPLETION` (value: `"VIDEO_COMPLETION"`)
 

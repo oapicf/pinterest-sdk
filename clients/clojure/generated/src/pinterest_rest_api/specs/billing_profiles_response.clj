@@ -7,11 +7,12 @@
 
 (def billing-profiles-response-data
   {
-   (ds/opt :id) string?
-   (ds/opt :card_type) string?
-   (ds/opt :status) string?
    (ds/opt :advertiser_id) string?
+   (ds/opt :billing_type) string?
+   (ds/opt :card_type) string?
+   (ds/opt :id) string?
    (ds/opt :payment_method_brand) string?
+   (ds/opt :status) string?
    })
 
 (def billing-profiles-response-spec

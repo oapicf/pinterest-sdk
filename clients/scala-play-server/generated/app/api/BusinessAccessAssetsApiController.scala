@@ -27,7 +27,7 @@ import model.UpdateMemberAssetsResultsResponseArray
 import model.UpdatePartnerAssetAccessBody
 import model.UpdatePartnerAssetsResultsResponseArray
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Singleton
 class BusinessAccessAssetsApiController @Inject()(cc: ControllerComponents, api: BusinessAccessAssetsApi) extends AbstractController(cc) {
   /**
@@ -82,12 +82,15 @@ class BusinessAccessAssetsApiController @Inject()(cc: ControllerComponents, api:
   }
 
   /**
-    * GET /v5/businesses/:businessId/assets/:assetId/members?bookmark=[value]&pageSize=[value]&startIndex=[value]
+    * GET /v5/businesses/:businessId/assets/:assetId/members?fetchSystemUsers=[value]&bookmark=[value]&pageSize=[value]&startIndex=[value]
     * @param businessId Unique identifier of the requesting business.
     * @param assetId Unique identifier of a business asset.
     */
   def businessAssetMembersGet(businessId: String, assetId: String): Action[AnyContent] = Action { request =>
     def executeApi(): BusinessAssetMembersGet200Response = {
+      val fetchSystemUsers = request.getQueryString("fetch_system_users")
+        .map(value => value.toBoolean)
+        
       val bookmark = request.getQueryString("bookmark")
         
       val pageSize = request.getQueryString("page_size")
@@ -96,7 +99,7 @@ class BusinessAccessAssetsApiController @Inject()(cc: ControllerComponents, api:
       val startIndex = request.getQueryString("start_index")
         .map(value => value.toInt)
         
-      api.businessAssetMembersGet(businessId, assetId, bookmark, pageSize, startIndex)
+      api.businessAssetMembersGet(businessId, assetId, fetchSystemUsers, bookmark, pageSize, startIndex)
     }
 
     val result = executeApi()

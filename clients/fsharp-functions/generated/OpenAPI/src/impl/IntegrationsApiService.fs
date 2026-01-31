@@ -1,5 +1,4 @@
 namespace OpenAPI
-open OpenAPI.Model.DetailedError
 open OpenAPI.Model.Error
 open OpenAPI.Model.IntegrationLogsRequest
 open OpenAPI.Model.IntegrationLogsSuccessResponse
@@ -8,6 +7,7 @@ open OpenAPI.Model.IntegrationRecord
 open OpenAPI.Model.IntegrationRequest
 open OpenAPI.Model.IntegrationRequestPatch
 open OpenAPI.Model.IntegrationsGetList200Response
+open OpenAPI.Model.IntegrationsLogsPost400Response
 open IntegrationsApiHandlerParams
 open IntegrationsApiServiceInterface
 open System.Collections.Generic
@@ -93,7 +93,7 @@ module IntegrationsApiServiceImplementation =
             let content = "Success." :> obj :?> IntegrationLogsSuccessResponse // this cast is obviously wrong, and is only intended to allow generated project to compile   
             IntegrationsLogsPostStatusCode200 { content = content }
           else if true then
-            let content = "Bad request." :> obj :?> DetailedError // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "Bad request." :> obj :?> IntegrationsLogsPost400Response // this cast is obviously wrong, and is only intended to allow generated project to compile   
             IntegrationsLogsPostStatusCode400 { content = content }
           else
             let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   

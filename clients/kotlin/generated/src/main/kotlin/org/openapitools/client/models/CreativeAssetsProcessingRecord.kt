@@ -26,8 +26,8 @@ import com.squareup.moshi.JsonClass
  *
  * @param creativeAssetsId The catalog creative assets id in the merchant namespace
  * @param errors Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
- * @param warnings Array with the validation warnings for the item processing record
  * @param status 
+ * @param warnings Array with the validation warnings for the item processing record
  */
 
 
@@ -41,12 +41,12 @@ data class CreativeAssetsProcessingRecord (
     @Json(name = "errors")
     val errors: kotlin.collections.List<ItemValidationEvent>? = null,
 
+    @Json(name = "status")
+    val status: ItemProcessingStatus? = null,
+
     /* Array with the validation warnings for the item processing record */
     @Json(name = "warnings")
-    val warnings: kotlin.collections.List<ItemValidationEvent>? = null,
-
-    @Json(name = "status")
-    val status: ItemProcessingStatus? = null
+    val warnings: kotlin.collections.List<ItemValidationEvent>? = null
 
 ) {
 

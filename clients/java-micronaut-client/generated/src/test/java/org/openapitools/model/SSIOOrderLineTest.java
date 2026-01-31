@@ -24,11 +24,19 @@ public class SSIOOrderLineTest {
     }
 
     /**
-     * Test the property 'salesforceOrderLineId'
+     * Test the property 'acceptedTermsId'
      */
     @Test
-    public void salesforceOrderLineIdTest() {
-        // TODO: test salesforceOrderLineId
+    public void acceptedTermsIdTest() {
+        // TODO: test acceptedTermsId
+    }
+
+    /**
+     * Test the property 'acceptedTermsTime'
+     */
+    @Test
+    public void acceptedTermsTimeTest() {
+        // TODO: test acceptedTermsTime
     }
 
     /**
@@ -40,35 +48,11 @@ public class SSIOOrderLineTest {
     }
 
     /**
-     * Test the property 'pinOrderId'
+     * Test the property 'agencyLink'
      */
     @Test
-    public void pinOrderIdTest() {
-        // TODO: test pinOrderId
-    }
-
-    /**
-     * Test the property 'lastModifiedDateTime'
-     */
-    @Test
-    public void lastModifiedDateTimeTest() {
-        // TODO: test lastModifiedDateTime
-    }
-
-    /**
-     * Test the property 'startDate'
-     */
-    @Test
-    public void startDateTest() {
-        // TODO: test startDate
-    }
-
-    /**
-     * Test the property 'endDate'
-     */
-    @Test
-    public void endDateTest() {
-        // TODO: test endDate
+    public void agencyLinkTest() {
+        // TODO: test agencyLink
     }
 
     /**
@@ -77,6 +61,14 @@ public class SSIOOrderLineTest {
     @Test
     public void billToCompanyNameTest() {
         // TODO: test billToCompanyName
+    }
+
+    /**
+     * Test the property 'billingContactEmail'
+     */
+    @Test
+    public void billingContactEmailTest() {
+        // TODO: test billingContactEmail
     }
 
     /**
@@ -96,11 +88,43 @@ public class SSIOOrderLineTest {
     }
 
     /**
-     * Test the property 'billingContactEmail'
+     * Test the property 'budgetAmount'
      */
     @Test
-    public void billingContactEmailTest() {
-        // TODO: test billingContactEmail
+    public void budgetAmountTest() {
+        // TODO: test budgetAmount
+    }
+
+    /**
+     * Test the property 'currencyInfo'
+     */
+    @Test
+    public void currencyInfoTest() {
+        // TODO: test currencyInfo
+    }
+
+    /**
+     * Test the property 'endDate'
+     */
+    @Test
+    public void endDateTest() {
+        // TODO: test endDate
+    }
+
+    /**
+     * Test the property 'estimatedMonthlySpend'
+     */
+    @Test
+    public void estimatedMonthlySpendTest() {
+        // TODO: test estimatedMonthlySpend
+    }
+
+    /**
+     * Test the property 'lastModifiedDateTime'
+     */
+    @Test
+    public void lastModifiedDateTimeTest() {
+        // TODO: test lastModifiedDateTime
     }
 
     /**
@@ -128,35 +152,19 @@ public class SSIOOrderLineTest {
     }
 
     /**
-     * Test the property 'currencyInfo'
-     */
-    @Test
-    public void currencyInfoTest() {
-        // TODO: test currencyInfo
-    }
-
-    /**
-     * Test the property 'agencyLink'
-     */
-    @Test
-    public void agencyLinkTest() {
-        // TODO: test agencyLink
-    }
-
-    /**
-     * Test the property 'poNumber'
-     */
-    @Test
-    public void poNumberTest() {
-        // TODO: test poNumber
-    }
-
-    /**
      * Test the property 'orderName'
      */
     @Test
     public void orderNameTest() {
         // TODO: test orderName
+    }
+
+    /**
+     * Test the property 'pinOrderId'
+     */
+    @Test
+    public void pinOrderIdTest() {
+        // TODO: test pinOrderId
     }
 
     /**
@@ -168,35 +176,27 @@ public class SSIOOrderLineTest {
     }
 
     /**
-     * Test the property 'acceptedTermsId'
+     * Test the property 'poNumber'
      */
     @Test
-    public void acceptedTermsIdTest() {
-        // TODO: test acceptedTermsId
+    public void poNumberTest() {
+        // TODO: test poNumber
     }
 
     /**
-     * Test the property 'acceptedTermsTime'
+     * Test the property 'salesforceOrderLineId'
      */
     @Test
-    public void acceptedTermsTimeTest() {
-        // TODO: test acceptedTermsTime
+    public void salesforceOrderLineIdTest() {
+        // TODO: test salesforceOrderLineId
     }
 
     /**
-     * Test the property 'budgetAmount'
+     * Test the property 'startDate'
      */
     @Test
-    public void budgetAmountTest() {
-        // TODO: test budgetAmount
-    }
-
-    /**
-     * Test the property 'estimatedMonthlySpend'
-     */
-    @Test
-    public void estimatedMonthlySpendTest() {
-        // TODO: test estimatedMonthlySpend
+    public void startDateTest() {
+        // TODO: test startDate
     }
 
 }

@@ -16,36 +16,36 @@
 typedef struct pin_media_metadata_t pin_media_metadata_t;
 
 #include "image_metadata.h"
-#include "image_metadata_images.h"
-#include "video_metadata.h"
+#include "image_size.h"
+#include "video_metadata_with_item_type.h"
 
 
 
 typedef struct pin_media_metadata_t {
-    char *item_type; // string
-    char *title; // string
     char *description; // string
+    struct image_size_t *images; //model
+    char *item_type; // string
     char *link; // string
-    struct image_metadata_images_t *images; //model
+    char *title; // string
     char *cover_image_url; // string
-    char *video_url; // string
     double duration; //numeric
     int height; //numeric
+    char *video_url; // string
     int width; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } pin_media_metadata_t;
 
 __attribute__((deprecated)) pin_media_metadata_t *pin_media_metadata_create(
-    char *item_type,
-    char *title,
     char *description,
+    image_size_t *images,
+    char *item_type,
     char *link,
-    image_metadata_images_t *images,
+    char *title,
     char *cover_image_url,
-    char *video_url,
     double duration,
     int height,
+    char *video_url,
     int width
 );
 

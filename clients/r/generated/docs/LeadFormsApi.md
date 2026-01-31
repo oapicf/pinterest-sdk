@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 Create lead form test data
 
-Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.
 
 ### Example
 ```R
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 Create lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’ s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
+<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
 
 ### Example
 ```R
@@ -136,7 +136,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_lead_form_create_request <- c(LeadFormCreateRequest$new("name_example", "privacy_policy_link_example", "has_accepted_terms_example", "completion_message_example", LeadFormStatus$new(), "disclosure_language_example", c(LeadFormQuestion$new(LeadFormQuestionType$new(), LeadFormQuestionFieldType$new(), "custom_question_label_example", c("custom_question_options_example"))), c(LeadFormCommon_policy_links_inner$new("label_example", "link_example")))) # array[LeadFormCreateRequest] | List of lead forms to create, size limit [1, 30].
+var_lead_form_create_request <- c(LeadFormCreateRequest$new("completion_message_example", "disclosure_language_example", "has_accepted_terms_example", "name_example", c(LeadFormCommon_policy_links_inner$new("label_example", "link_example")), "privacy_policy_link_example", c(LeadFormQuestion$new(LeadFormQuestionFieldType$new(), "custom_question_label_example", c("custom_question_options_example"), LeadFormQuestionType$new())), LeadFormStatus$new())) # array[LeadFormCreateRequest] | List of lead forms to create, size limit [1, 30].
 
 api_instance <- LeadFormsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2
@@ -246,7 +246,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_lead_form_update_request <- c(LeadFormUpdateRequest$new("id_example", "name_example", "privacy_policy_link_example", "has_accepted_terms_example", "completion_message_example", LeadFormStatus$new(), "disclosure_language_example", c(LeadFormQuestion$new(LeadFormQuestionType$new(), LeadFormQuestionFieldType$new(), "custom_question_label_example", c("custom_question_options_example"))), c(LeadFormCommon_policy_links_inner$new("label_example", "link_example")))) # array[LeadFormUpdateRequest] | List of lead forms to update, size limit [1, 30].
+var_lead_form_update_request <- c(LeadFormUpdateRequest$new("id_example", "completion_message_example", "disclosure_language_example", "has_accepted_terms_example", "name_example", c(LeadFormCommon_policy_links_inner$new("label_example", "link_example")), "privacy_policy_link_example", c(LeadFormQuestion$new(LeadFormQuestionFieldType$new(), "custom_question_label_example", c("custom_question_options_example"), LeadFormQuestionType$new())), LeadFormStatus$new())) # array[LeadFormUpdateRequest] | List of lead forms to update, size limit [1, 30].
 
 api_instance <- LeadFormsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2

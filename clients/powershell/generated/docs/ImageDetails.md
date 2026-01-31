@@ -3,17 +3,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Width** | **Int32** |  | 
 **Height** | **Int32** |  | 
 **Url** | **String** |  | 
+**Width** | **Int32** |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$ImageDetails = Initialize-PSOpenAPIToolsImageDetails  -Width null `
- -Height null `
- -Url null
+$ImageDetails = Initialize-PSOpenAPIToolsImageDetails  -Height null `
+ -Url null `
+ -Width null
 ```
 
 - Convert the resource to JSON

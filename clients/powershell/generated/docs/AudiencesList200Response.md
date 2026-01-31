@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**Audience[]**](Audience.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**Audience[]**](Audience.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$AudiencesList200Response = Initialize-PSOpenAPIToolsAudiencesList200Response  -Items null `
- -Bookmark null
+$AudiencesList200Response = Initialize-PSOpenAPIToolsAudiencesList200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

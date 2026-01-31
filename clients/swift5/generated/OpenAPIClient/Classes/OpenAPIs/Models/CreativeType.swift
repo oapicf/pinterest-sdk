@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Ad creative type enum. For update, only draft ads may update creative type. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. */
+/** Ad creative type enum. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. */
 public enum CreativeType: String, Codable, CaseIterable {
     case regular = "REGULAR"
     case video = "VIDEO"
@@ -22,4 +22,7 @@ public enum CreativeType: String, Codable, CaseIterable {
     case idea = "IDEA"
     case showcase = "SHOWCASE"
     case quiz = "QUIZ"
+    case collage = "COLLAGE"
+    case maxWidthRegularCollection = "MAX_WIDTH_REGULAR_COLLECTION"
+    case maxWidthVideoCollection = "MAX_WIDTH_VIDEO_COLLECTION"
 }

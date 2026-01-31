@@ -1,0 +1,20 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "The resource was successfully deleted.",
+  "name": "PinterestLibStatus204",
+  "fields": [
+    {
+      "name": "statusCode",
+      "type": {
+        "type": "enum",
+        "name": "PinterestLibStatus204_statusCode",
+        "symbols": [
+          "_204"
+        ]
+      },
+      "doc": ""
+    }
+  ]
+
+}

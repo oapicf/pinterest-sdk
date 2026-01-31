@@ -19,6 +19,7 @@ import io.swagger.v3.oas.annotations.media.Schema
  * 
  * @param adAccountId Associated ad account ID.
  * @param createdTime Creation time. Unix timestamp in seconds.
+ * @param exceptions Customer list errors
  * @param id Customer list ID.
  * @param name Customer list name.
  * @param numBatches Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.
@@ -27,7 +28,6 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param status Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
  * @param type Always \"customerlist\".
  * @param updatedTime Last update time. Unix timestamp in seconds.
- * @param exceptions Customer list errors
  */
 data class CustomerList(
 
@@ -36,6 +36,10 @@ data class CustomerList(
 
     @Schema(example = "1452208622", description = "Creation time. Unix timestamp in seconds.")
     @get:JsonProperty("created_time") val createdTime: java.math.BigDecimal? = null,
+
+    @field:Valid
+    @Schema(example = "null", description = "Customer list errors")
+    @get:JsonProperty("exceptions") val exceptions: kotlin.Any? = null,
 
     @Schema(example = "643", description = "Customer list ID.")
     @get:JsonProperty("id") val id: kotlin.String? = null,
@@ -59,11 +63,7 @@ data class CustomerList(
     @get:JsonProperty("type") val type: kotlin.String? = null,
 
     @Schema(example = "1461269616", description = "Last update time. Unix timestamp in seconds.")
-    @get:JsonProperty("updated_time") val updatedTime: java.math.BigDecimal? = null,
-
-    @field:Valid
-    @Schema(example = "null", description = "Customer list errors")
-    @get:JsonProperty("exceptions") val exceptions: kotlin.Any? = null
+    @get:JsonProperty("updated_time") val updatedTime: java.math.BigDecimal? = null
 ) {
 
     /**

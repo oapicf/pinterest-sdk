@@ -8,6 +8,8 @@ import java.util.Arrays;
 
 @Canonical
 class CatalogsCreativeAssetsItemsPostFilter {
+    /* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
+    String catalogId
 
     enum CatalogTypeEnum {
     
@@ -33,6 +35,4 @@ class CatalogsCreativeAssetsItemsPostFilter {
     CatalogTypeEnum catalogType
     
     List<String> creativeAssetsIds = new ArrayList<>()
-    /* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
-    String catalogId
 }

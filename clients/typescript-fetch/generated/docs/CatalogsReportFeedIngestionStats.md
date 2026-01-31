@@ -6,12 +6,12 @@
 
 Name | Type
 ------------ | -------------
-`reportType` | string
 `catalogId` | string
 `code` | number
 `codeLabel` | string
 `message` | string
 `occurrences` | number
+`reportType` | string
 `severity` | string
 
 ## Example
@@ -21,12 +21,12 @@ import type { CatalogsReportFeedIngestionStats } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "reportType": null,
   "catalogId": null,
   "code": 112,
   "codeLabel": AVAILABILITY_INVALID,
   "message": null,
   "occurrences": 10,
+  "reportType": null,
   "severity": null,
 } satisfies CatalogsReportFeedIngestionStats
 

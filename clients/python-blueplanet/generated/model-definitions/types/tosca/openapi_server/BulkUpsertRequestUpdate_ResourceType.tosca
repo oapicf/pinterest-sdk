@@ -1,0 +1,79 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BulkUpsertRequestUpdate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BulkUpsertRequestUpdate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AdGroupUpdateRequest = openapi_server.resourceTypes.AdGroupUpdateRequest
+  AdUpdateRequest = openapi_server.resourceTypes.AdUpdateRequest
+  CampaignUpdateRequest = openapi_server.resourceTypes.CampaignUpdateRequest
+  CatalogsProductGroupsUpdateRequest = openapi_server.resourceTypes.CatalogsProductGroupsUpdateRequest
+  KeywordUpdate = openapi_server.resourceTypes.KeywordUpdate
+  LabelBulkUpdateRequest = openapi_server.resourceTypes.LabelBulkUpdateRequest
+  ProductGroupPromotionUpdateRequest = openapi_server.resourceTypes.ProductGroupPromotionUpdateRequest
+}
+resourceTypes {
+
+  BulkUpsertRequestUpdate {
+    title = BulkUpsertRequestUpdate
+    description = BulkUpsertRequestUpdate
+    derivedFrom = Root
+    properties {
+        ad_groups {
+          type = array
+          items.type = AdGroupUpdateRequest
+          description = ""
+          optional = false
+        }
+        ads {
+          type = array
+          items.type = AdUpdateRequest
+          description = ""
+          optional = false
+        }
+        campaigns {
+          type = array
+          items.type = CampaignUpdateRequest
+          description = ""
+          optional = false
+        }
+        catalog_product_groups {
+          type = array
+          items.type = CatalogsProductGroupsUpdateRequest
+          description = ""
+          optional = false
+        }
+        keywords {
+          type = array
+          items.type = KeywordUpdate
+          description = ""
+          optional = false
+        }
+        labels {
+          type = array
+          items.type = LabelBulkUpdateRequest
+          description = ""
+          optional = false
+        }
+        product_groups {
+          type = array
+          items.type = ProductGroupPromotionUpdateRequest
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BulkUpsertRequestUpdate {
+    title = BulkUpsertRequestUpdate
+    description = BulkUpsertRequestUpdate
+    implements = openapi_server.resourceTypes.BulkUpsertRequestUpdate
+
+  }
+}

@@ -7,12 +7,27 @@ module.exports = {
             {
                 key: `${keyPrefix}refresh_token`,
                 label: `[${labelPrefix}refresh_token]`,
-                required: true,
                 type: 'string',
+            },
+            {
+                key: `${keyPrefix}refresh_token_expires_at`,
+                label: `[${labelPrefix}refresh_token_expires_at]`,
+                type: 'integer',
             },
             {
                 key: `${keyPrefix}refresh_token_expires_in`,
                 label: `[${labelPrefix}refresh_token_expires_in]`,
+                type: 'integer',
+            },
+            {
+                key: `${keyPrefix}access_token`,
+                label: `[${labelPrefix}access_token]`,
+                required: true,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}expires_in`,
+                label: `[${labelPrefix}expires_in]`,
                 required: true,
                 type: 'integer',
             },
@@ -27,8 +42,8 @@ module.exports = {
                 ],
             },
             {
-                key: `${keyPrefix}access_token`,
-                label: `[${labelPrefix}access_token]`,
+                key: `${keyPrefix}scope`,
+                label: `[${labelPrefix}scope]`,
                 required: true,
                 type: 'string',
             },
@@ -38,30 +53,19 @@ module.exports = {
                 required: true,
                 type: 'string',
             },
-            {
-                key: `${keyPrefix}expires_in`,
-                label: `[${labelPrefix}expires_in]`,
-                required: true,
-                type: 'integer',
-            },
-            {
-                key: `${keyPrefix}scope`,
-                label: `[${labelPrefix}scope]`,
-                required: true,
-                type: 'string',
-            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'refresh_token': bundle.inputData?.[`${keyPrefix}refresh_token`],
+            'refresh_token_expires_at': bundle.inputData?.[`${keyPrefix}refresh_token_expires_at`],
             'refresh_token_expires_in': bundle.inputData?.[`${keyPrefix}refresh_token_expires_in`],
-            'response_type': bundle.inputData?.[`${keyPrefix}response_type`],
             'access_token': bundle.inputData?.[`${keyPrefix}access_token`],
-            'token_type': bundle.inputData?.[`${keyPrefix}token_type`],
             'expires_in': bundle.inputData?.[`${keyPrefix}expires_in`],
+            'response_type': bundle.inputData?.[`${keyPrefix}response_type`],
             'scope': bundle.inputData?.[`${keyPrefix}scope`],
+            'token_type': bundle.inputData?.[`${keyPrefix}token_type`],
         }
     },
 }

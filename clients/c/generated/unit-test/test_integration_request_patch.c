@@ -28,11 +28,11 @@ integration_request_patch_t* instantiate_integration_request_patch(int include_o
       "0",
       "0",
       "0",
-      "0",
-      1.337,
       1.337,
       "0",
       "0",
+      "0",
+      1.337,
       "0"
     );
   } else {
@@ -43,11 +43,11 @@ integration_request_patch_t* instantiate_integration_request_patch(int include_o
       "0",
       "0",
       "0",
-      "0",
-      1.337,
       1.337,
       "0",
       "0",
+      "0",
+      1.337,
       "0"
     );
   }

@@ -12,9 +12,9 @@ import org.joda.time.DateTime
 import ItemUpdateBatchRecord._
 
 case class ItemUpdateBatchRecord (
-  /* The catalog item id in the merchant namespace */
+  attributes: Option[UpdatableItemAttributes],
+/* The catalog item id in the merchant namespace */
   itemId: Option[String],
-attributes: Option[UpdatableItemAttributes],
 /* The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item. */
   updateMask: Option[List[UpdateMaskFieldType]])
 

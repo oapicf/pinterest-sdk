@@ -11,12 +11,12 @@ import org.openapitools.models.BulkReportingJobStatus
 /**
  * 
  * @param reportUnderscorestatus 
- * @param url 
  * @param size 
+ * @param url 
  */
 case class AdsAnalyticsGetAsyncResponse(reportUnderscorestatus: Option[BulkReportingJobStatus],
-                url: Option[String],
-                size: Option[BigDecimal]
+                size: Option[BigDecimal],
+                url: Option[String]
                 )
 
 object AdsAnalyticsGetAsyncResponse {

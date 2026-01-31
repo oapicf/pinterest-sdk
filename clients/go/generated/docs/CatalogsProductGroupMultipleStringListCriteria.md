@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Values** | **[][]string** |  | 
 **Negated** | Pointer to **bool** |  | [optional] [default to false]
+**Values** | **[][]string** |  | 
 
 ## Methods
 
@@ -25,26 +25,6 @@ will change when the set of required properties is changed
 NewCatalogsProductGroupMultipleStringListCriteriaWithDefaults instantiates a new CatalogsProductGroupMultipleStringListCriteria object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetValues
-
-`func (o *CatalogsProductGroupMultipleStringListCriteria) GetValues() [][]string`
-
-GetValues returns the Values field if non-nil, zero value otherwise.
-
-### GetValuesOk
-
-`func (o *CatalogsProductGroupMultipleStringListCriteria) GetValuesOk() (*[][]string, bool)`
-
-GetValuesOk returns a tuple with the Values field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetValues
-
-`func (o *CatalogsProductGroupMultipleStringListCriteria) SetValues(v [][]string)`
-
-SetValues sets Values field to given value.
-
 
 ### GetNegated
 
@@ -70,6 +50,26 @@ SetNegated sets Negated field to given value.
 `func (o *CatalogsProductGroupMultipleStringListCriteria) HasNegated() bool`
 
 HasNegated returns a boolean if a field has been set.
+
+### GetValues
+
+`func (o *CatalogsProductGroupMultipleStringListCriteria) GetValues() [][]string`
+
+GetValues returns the Values field if non-nil, zero value otherwise.
+
+### GetValuesOk
+
+`func (o *CatalogsProductGroupMultipleStringListCriteria) GetValuesOk() (*[][]string, bool)`
+
+GetValuesOk returns a tuple with the Values field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetValues
+
+`func (o *CatalogsProductGroupMultipleStringListCriteria) SetValues(v [][]string)`
+
+SetValues sets Values field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

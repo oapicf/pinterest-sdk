@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | **Array&lt;object&gt;** |  | [default to undefined]
 **bookmark** | **string** |  | [optional] [default to undefined]
+**items** | **Array&lt;object&gt;** |  | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { Paginated } from './api';
 
 const instance: Paginated = {
-    items,
     bookmark,
+    items,
 };
 ```
 

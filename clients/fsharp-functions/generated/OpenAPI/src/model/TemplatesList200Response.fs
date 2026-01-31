@@ -12,10 +12,10 @@ module TemplatesList200Response =
 
   [<CLIMutable>]
   type TemplatesList200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : TemplateResponse[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : TemplateResponse[];
   }
 
   //#endregion

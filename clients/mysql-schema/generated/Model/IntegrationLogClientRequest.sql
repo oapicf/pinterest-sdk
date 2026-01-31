@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `IntegrationLogClientRequest`
 --
-SELECT `method`, `host`, `path`, `request_headers`, `response_headers`, `response_status_code` FROM `IntegrationLogClientRequest` WHERE 1;
+SELECT `host`, `method`, `path`, `request_headers`, `response_headers`, `response_status_code` FROM `IntegrationLogClientRequest` WHERE 1;
 
 --
 -- INSERT template for table `IntegrationLogClientRequest`
 --
-INSERT INTO `IntegrationLogClientRequest`(`method`, `host`, `path`, `request_headers`, `response_headers`, `response_status_code`) VALUES (?, ?, ?, ?, ?, ?);
+INSERT INTO `IntegrationLogClientRequest`(`host`, `method`, `path`, `request_headers`, `response_headers`, `response_status_code`) VALUES (?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `IntegrationLogClientRequest`
 --
-UPDATE `IntegrationLogClientRequest` SET `method` = ?, `host` = ?, `path` = ?, `request_headers` = ?, `response_headers` = ?, `response_status_code` = ? WHERE 1;
+UPDATE `IntegrationLogClientRequest` SET `host` = ?, `method` = ?, `path` = ?, `request_headers` = ?, `response_headers` = ?, `response_status_code` = ? WHERE 1;
 
 --
 -- DELETE template for table `IntegrationLogClientRequest`

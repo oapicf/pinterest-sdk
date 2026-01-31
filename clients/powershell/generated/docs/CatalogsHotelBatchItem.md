@@ -3,17 +3,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Attributes** | [**CatalogsUpdatableHotelAttributes**](CatalogsUpdatableHotelAttributes.md) |  | 
 **HotelId** | **String** | The catalog hotel id in the merchant namespace | 
 **Operation** | **String** |  | 
-**Attributes** | [**CatalogsUpdatableHotelAttributes**](CatalogsUpdatableHotelAttributes.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsHotelBatchItem = Initialize-PSOpenAPIToolsCatalogsHotelBatchItem  -HotelId DS0294-M `
- -Operation null `
- -Attributes null
+$CatalogsHotelBatchItem = Initialize-PSOpenAPIToolsCatalogsHotelBatchItem  -Attributes null `
+ -HotelId DS0294-M `
+ -Operation null
 ```
 
 - Convert the resource to JSON

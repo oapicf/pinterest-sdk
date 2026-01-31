@@ -13,8 +13,8 @@ module CatalogsCreateHotelItem =
   //#endregion
 
   type CatalogsCreateHotelItem = {
+    Attributes : CatalogsHotelAttributes;
     HotelId : string;
     Operation : OperationEnum;
-    Attributes : CatalogsHotelAttributes;
   }
   //#endregion

@@ -56,20 +56,13 @@ public:
 	/*! \brief Set A List of countries for filtering
 	 */
 	void setCountries(std::list <TargetingAdvertiserCountry> countries);
-	/*! \brief Get Name of the Marketing Mix Modeling (MMM) report
+	/*! \brief Get Metric and entity columns
 	 */
-	std::string getReportName();
+	std::list<MMMReportingColumn> getColumns();
 
-	/*! \brief Set Name of the Marketing Mix Modeling (MMM) report
+	/*! \brief Set Metric and entity columns
 	 */
-	void setReportName(std::string  report_name);
-	/*! \brief Get Metric report start date (UTC). Format: YYYY-MM-DD
-	 */
-	std::string getStartDate();
-
-	/*! \brief Set Metric report start date (UTC). Format: YYYY-MM-DD
-	 */
-	void setStartDate(std::string  start_date);
+	void setColumns(std::list <MMMReportingColumn> columns);
 	/*! \brief Get Metric report end date (UTC). Format: YYYY-MM-DD
 	 */
 	std::string getEndDate();
@@ -91,6 +84,20 @@ public:
 	/*! \brief Set Level of the report
 	 */
 	void setLevel(std::string  level);
+	/*! \brief Get Name of the Marketing Mix Modeling (MMM) report
+	 */
+	std::string getReportName();
+
+	/*! \brief Set Name of the Marketing Mix Modeling (MMM) report
+	 */
+	void setReportName(std::string  report_name);
+	/*! \brief Get Metric report start date (UTC). Format: YYYY-MM-DD
+	 */
+	std::string getStartDate();
+
+	/*! \brief Set Metric report start date (UTC). Format: YYYY-MM-DD
+	 */
+	void setStartDate(std::string  start_date);
 	/*! \brief Get List of targeting types
 	 */
 	std::list<MMMReportingTargetingType> getTargetingTypes();
@@ -98,23 +105,16 @@ public:
 	/*! \brief Set List of targeting types
 	 */
 	void setTargetingTypes(std::list <MMMReportingTargetingType> targeting_types);
-	/*! \brief Get Metric and entity columns
-	 */
-	std::list<MMMReportingColumn> getColumns();
-
-	/*! \brief Set Metric and entity columns
-	 */
-	void setColumns(std::list <MMMReportingColumn> columns);
 
 private:
 	std::list <TargetingAdvertiserCountry>countries;
-	std::string report_name;
-	std::string start_date;
+	std::list <MMMReportingColumn>columns;
 	std::string end_date;
 	std::string granularity;
 	std::string level;
+	std::string report_name;
+	std::string start_date;
 	std::list <MMMReportingTargetingType>targeting_types;
-	std::list <MMMReportingColumn>columns;
 	void __init();
 	void __cleanup();
 

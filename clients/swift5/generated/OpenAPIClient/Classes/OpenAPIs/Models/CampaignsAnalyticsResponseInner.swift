@@ -13,12 +13,12 @@ import AnyCodable
 public struct CampaignsAnalyticsResponseInner: Codable, JSONEncodable, Hashable {
 
     public static let CAMPAIGN_IDRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    /** The ID of the campaing that this metrics belongs to. */
-    public var CAMPAIGN_ID: String
+    /** The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true. */
+    public var CAMPAIGN_ID: String?
     /** Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`) */
     public var DATE: Date?
 
-    public init(CAMPAIGN_ID: String, DATE: Date? = nil) {
+    public init(CAMPAIGN_ID: String? = nil, DATE: Date? = nil) {
         self.CAMPAIGN_ID = CAMPAIGN_ID
         self.DATE = DATE
     }
@@ -47,7 +47,7 @@ public struct CampaignsAnalyticsResponseInner: Codable, JSONEncodable, Hashable 
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(CAMPAIGN_ID, forKey: .CAMPAIGN_ID)
+        try container.encodeIfPresent(CAMPAIGN_ID, forKey: .CAMPAIGN_ID)
         try container.encodeIfPresent(DATE, forKey: .DATE)
         var additionalPropertiesContainer = encoder.container(keyedBy: String.self)
         try additionalPropertiesContainer.encodeMap(additionalProperties)
@@ -58,7 +58,7 @@ public struct CampaignsAnalyticsResponseInner: Codable, JSONEncodable, Hashable 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        CAMPAIGN_ID = try container.decode(String.self, forKey: .CAMPAIGN_ID)
+        CAMPAIGN_ID = try container.decodeIfPresent(String.self, forKey: .CAMPAIGN_ID)
         DATE = try container.decodeIfPresent(Date.self, forKey: .DATE)
         var nonAdditionalPropertyKeys = Set<String>()
         nonAdditionalPropertyKeys.insert("CAMPAIGN_ID")

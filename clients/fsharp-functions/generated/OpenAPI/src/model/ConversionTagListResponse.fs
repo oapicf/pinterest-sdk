@@ -3,7 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.ConversionTagResponse
+open OpenAPI.Model.ConversionTag
 
 module ConversionTagListResponse =
 
@@ -12,7 +12,7 @@ module ConversionTagListResponse =
   [<CLIMutable>]
   type ConversionTagListResponse = {
     [<JsonProperty(PropertyName = "items")>]
-    Items : ConversionTagResponse[];
+    Items : ConversionTag[];
   }
 
   //#endregion

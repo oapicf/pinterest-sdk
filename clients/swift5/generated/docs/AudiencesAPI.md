@@ -5,7 +5,6 @@ All URIs are relative to *https://api.pinterest.com/v5*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**audiencesCreate**](AudiencesAPI.md#audiencescreate) | **POST** /ad_accounts/{ad_account_id}/audiences | Create audience
-[**audiencesCreateCustom**](AudiencesAPI.md#audiencescreatecustom) | **POST** /ad_accounts/{ad_account_id}/audiences/custom | Create custom audience
 [**audiencesGet**](AudiencesAPI.md#audiencesget) | **GET** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Get audience
 [**audiencesList**](AudiencesAPI.md#audienceslist) | **GET** /ad_accounts/{ad_account_id}/audiences | List audiences
 [**audiencesUpdate**](AudiencesAPI.md#audiencesupdate) | **PATCH** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Update audience
@@ -18,7 +17,7 @@ Method | HTTP request | Description
 
 Create audience
 
-Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.
+Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
 
 ### Example
 ```swift
@@ -26,7 +25,7 @@ Create an audience you can use in targeting for specific ad groups. Targeting co
 import OpenAPIClient
 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
-let audienceCreateRequest = AudienceCreateRequest(adAccountId: "adAccountId_example", name: "name_example", rule: AudienceRule(country: "country_example", customerListId: "customerListId_example", engagementDomain: ["engagementDomain_example"], engagementType: "engagementType_example", event: "event_example", eventData: PinterestTagEventData(currency: Currency(), leadType: "leadType_example", lineItems: LineItem(productBrand: "productBrand_example", productCategory: "productCategory_example", productId: 123, productName: "productName_example", productPrice: "productPrice_example", productQuantity: 123, productVariant: "productVariant_example", productVariantId: "productVariantId_example"), orderId: "orderId_example", orderQuantity: 123, pageName: "pageName_example", promoCode: "promoCode_example", property: "property_example", searchQuery: "searchQuery_example", value: "value_example", videoTitle: "videoTitle_example"), percentage: 123, pinId: ["pinId_example"], prefill: true, retentionDays: 123, seedId: ["seedId_example"], url: ["url_example"], visitorSourceId: "visitorSourceId_example", eventSource: 123, ingestionSource: 123, engagerType: 123, campaignId: ["campaignId_example"], adId: ["adId_example"], objectiveType: [ObjectiveType()], adAccountId: "adAccountId_example"), description: "description_example", audienceType: AudienceType()) // AudienceCreateRequest | List of ads to create, size limit [1, 30]
+let audienceCreateRequest = AudienceCreateRequest(adAccountId: "adAccountId_example", name: "name_example", rule: AudienceRule(adAccountId: "adAccountId_example", adId: ["adId_example"], campaignId: ["campaignId_example"], country: "country_example", customerListId: "customerListId_example", engagementDomain: ["engagementDomain_example"], engagementType: "engagementType_example", engagerType: 123, event: "event_example", eventData: EventData(currency: Currency(), leadType: "leadType_example", lineItems: LineItem(productBrand: "productBrand_example", productCategory: "productCategory_example", productId: 123, productName: "productName_example", productPrice: "productPrice_example", productQuantity: 123, productVariant: "productVariant_example", productVariantId: "productVariantId_example"), orderId: "orderId_example", orderQuantity: 123, pageName: "pageName_example", promoCode: "promoCode_example", property: "property_example", searchQuery: "searchQuery_example", value: "value_example", videoTitle: "videoTitle_example"), eventSource: 123, ingestionSource: 123, objectiveType: [ObjectiveType()], percentage: 123, pinId: ["pinId_example"], prefill: true, retentionDays: 123, seedId: ["seedId_example"], url: ["url_example"], visitorSourceId: "visitorSourceId_example"), audienceType: AudienceType(), description: "description_example") // AudienceCreateRequest | List of ads to create, size limit [1, 30]
 
 // Create audience
 AudiencesAPI.audiencesCreate(adAccountId: adAccountId, audienceCreateRequest: audienceCreateRequest) { (response, error) in
@@ -47,58 +46,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String** | Unique identifier of an ad account. | 
  **audienceCreateRequest** | [**AudienceCreateRequest**](AudienceCreateRequest.md) | List of ads to create, size limit [1, 30] | 
-
-### Return type
-
-[**Audience**](Audience.md)
-
-### Authorization
-
-[pinterest_oauth2](../README.md#pinterest_oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **audiencesCreateCustom**
-```swift
-    open class func audiencesCreateCustom(adAccountId: String, audienceCreateCustomRequest: AudienceCreateCustomRequest, completion: @escaping (_ data: Audience?, _ error: Error?) -> Void)
-```
-
-Create custom audience
-
-Create a custom audience and find the audiences you want your ads to reach.
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
-let audienceCreateCustomRequest = AudienceCreateCustomRequest(adAccountId: "adAccountId_example", name: "name_example", rule: AudienceRule(country: "country_example", customerListId: "customerListId_example", engagementDomain: ["engagementDomain_example"], engagementType: "engagementType_example", event: "event_example", eventData: PinterestTagEventData(currency: Currency(), leadType: "leadType_example", lineItems: LineItem(productBrand: "productBrand_example", productCategory: "productCategory_example", productId: 123, productName: "productName_example", productPrice: "productPrice_example", productQuantity: 123, productVariant: "productVariant_example", productVariantId: "productVariantId_example"), orderId: "orderId_example", orderQuantity: 123, pageName: "pageName_example", promoCode: "promoCode_example", property: "property_example", searchQuery: "searchQuery_example", value: "value_example", videoTitle: "videoTitle_example"), percentage: 123, pinId: ["pinId_example"], prefill: true, retentionDays: 123, seedId: ["seedId_example"], url: ["url_example"], visitorSourceId: "visitorSourceId_example", eventSource: 123, ingestionSource: 123, engagerType: 123, campaignId: ["campaignId_example"], adId: ["adId_example"], objectiveType: [ObjectiveType()], adAccountId: "adAccountId_example"), sharingType: AudienceSharingType(), dataParty: AudienceDataParty(), category: "category_example") // AudienceCreateCustomRequest | Custom audience to create.
-
-// Create custom audience
-AudiencesAPI.audiencesCreateCustom(adAccountId: adAccountId, audienceCreateCustomRequest: audienceCreateCustomRequest) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **adAccountId** | **String** | Unique identifier of an ad account. | 
- **audienceCreateCustomRequest** | [**AudienceCreateCustomRequest**](AudienceCreateCustomRequest.md) | Custom audience to create. | 
 
 ### Return type
 
@@ -158,7 +105,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -216,7 +163,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -227,7 +174,7 @@ Name | Type | Description  | Notes
 
 # **audiencesUpdate**
 ```swift
-    open class func audiencesUpdate(adAccountId: String, audienceId: String, audienceUpdateRequest: AudienceUpdateRequest? = nil, completion: @escaping (_ data: Audience?, _ error: Error?) -> Void)
+    open class func audiencesUpdate(adAccountId: String, audienceId: String, audienceUpdateRequest: AudienceUpdateRequest, completion: @escaping (_ data: Audience?, _ error: Error?) -> Void)
 ```
 
 Update audience
@@ -241,7 +188,7 @@ import OpenAPIClient
 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
 let audienceId = "audienceId_example" // String | Unique identifier of an audience
-let audienceUpdateRequest = AudienceUpdateRequest(adAccountId: "adAccountId_example", name: "name_example", rule: AudienceRule(country: "country_example", customerListId: "customerListId_example", engagementDomain: ["engagementDomain_example"], engagementType: "engagementType_example", event: "event_example", eventData: PinterestTagEventData(currency: Currency(), leadType: "leadType_example", lineItems: LineItem(productBrand: "productBrand_example", productCategory: "productCategory_example", productId: 123, productName: "productName_example", productPrice: "productPrice_example", productQuantity: 123, productVariant: "productVariant_example", productVariantId: "productVariantId_example"), orderId: "orderId_example", orderQuantity: 123, pageName: "pageName_example", promoCode: "promoCode_example", property: "property_example", searchQuery: "searchQuery_example", value: "value_example", videoTitle: "videoTitle_example"), percentage: 123, pinId: ["pinId_example"], prefill: true, retentionDays: 123, seedId: ["seedId_example"], url: ["url_example"], visitorSourceId: "visitorSourceId_example", eventSource: 123, ingestionSource: 123, engagerType: 123, campaignId: ["campaignId_example"], adId: ["adId_example"], objectiveType: [ObjectiveType()], adAccountId: "adAccountId_example"), description: "description_example", operationType: AudienceUpdateOperationType()) // AudienceUpdateRequest | The audience to be updated. (optional)
+let audienceUpdateRequest = AudienceUpdateRequest(adAccountId: "adAccountId_example", name: "name_example", rule: AudienceRule(adAccountId: "adAccountId_example", adId: ["adId_example"], campaignId: ["campaignId_example"], country: "country_example", customerListId: "customerListId_example", engagementDomain: ["engagementDomain_example"], engagementType: "engagementType_example", engagerType: 123, event: "event_example", eventData: EventData(currency: Currency(), leadType: "leadType_example", lineItems: LineItem(productBrand: "productBrand_example", productCategory: "productCategory_example", productId: 123, productName: "productName_example", productPrice: "productPrice_example", productQuantity: 123, productVariant: "productVariant_example", productVariantId: "productVariantId_example"), orderId: "orderId_example", orderQuantity: 123, pageName: "pageName_example", promoCode: "promoCode_example", property: "property_example", searchQuery: "searchQuery_example", value: "value_example", videoTitle: "videoTitle_example"), eventSource: 123, ingestionSource: 123, objectiveType: [ObjectiveType()], percentage: 123, pinId: ["pinId_example"], prefill: true, retentionDays: 123, seedId: ["seedId_example"], url: ["url_example"], visitorSourceId: "visitorSourceId_example"), description: "description_example", operationType: AudienceUpdateOperationType()) // AudienceUpdateRequest | The audience to be updated.
 
 // Update audience
 AudiencesAPI.audiencesUpdate(adAccountId: adAccountId, audienceId: audienceId, audienceUpdateRequest: audienceUpdateRequest) { (response, error) in
@@ -262,7 +209,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String** | Unique identifier of an ad account. | 
  **audienceId** | **String** | Unique identifier of an audience | 
- **audienceUpdateRequest** | [**AudienceUpdateRequest**](AudienceUpdateRequest.md) | The audience to be updated. | [optional] 
+ **audienceUpdateRequest** | [**AudienceUpdateRequest**](AudienceUpdateRequest.md) | The audience to be updated. | 
 
 ### Return type
 

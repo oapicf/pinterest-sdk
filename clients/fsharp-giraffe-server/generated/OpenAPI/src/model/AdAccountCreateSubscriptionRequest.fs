@@ -10,10 +10,10 @@ module AdAccountCreateSubscriptionRequest =
 
 
   type AdAccountCreateSubscriptionRequest = {
-    WebhookUrl : string;
     LeadFormId : string;
     PartnerAccessToken : string;
-    PartnerRefreshToken : string;
     PartnerMetadata : AdAccountCreateSubscriptionRequestPartnerMetadata;
+    PartnerRefreshToken : string;
+    WebhookUrl : string;
   }
   //#endregion

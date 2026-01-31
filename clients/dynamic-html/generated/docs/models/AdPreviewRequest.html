@@ -15,3 +15,67 @@
     <br/>Pin ID.
   </li>
 </ul>
+<ul class="parameter">
+  <li class="param-required-true">catalogUnderscoreproductUnderscoregroupUnderscoreid : String
+    <br/>Catalog Product Group Id.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">creativeUnderscoretype : String
+    <br/>Ad format of the shopping ad preview.
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>SHOPPING</dd>
+            <dd>CAROUSEL</dd>
+            <dd>COLLECTION</dd>
+            <dd>REGULAR</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">customizableUnderscorectaUnderscoretype : CustomizableCTAType
+    <br/>Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are &#x60;SHOP_NOW&#x60;, &#x60;BOOK_NOW&#x60;, &#x60;ON_SALE&#x60;, &#x60;GET_DEAL&#x60;, &#x60;BUY_ONLINE_PICKUP_IN_STORE&#x60;
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">heroUnderscoreimageUnderscoretitle : String
+    <br/>Title displayed below ad.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">heroUnderscoreimageUnderscoreurl : String
+    <br/>Hero image URL.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">heroUnderscorepinUnderscoreid : String
+    <br/>Pin id for the hero image. When creative type is COLLECTION, either hero_pin_id or (hero_image_url, hero_image_title) is required.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">imageUnderscoretag : String
+    <br/>Multi image template tag.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">itemUnderscoreid : String
+    <br/>Item id for product to preview standard shopping ads, optional and only applicable when creative type is SHOPPING.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">preferredUnderscoremediaUnderscoretype : String
+    <br/>Preferred media type.
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>VIDEO</dd>
+            <dd>IMAGE</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">videoUnderscoretag : String
+    <br/>Multi video template tag, image_tag and video_tag are mutual exclusive.
+  </li>
+</ul>

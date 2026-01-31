@@ -10,6 +10,7 @@ import org.openapitools.model.CatalogsFeedIngestionDetails;
 import org.openapitools.model.CatalogsFeedProcessingStatus;
 import org.openapitools.model.CatalogsFeedProductCounts;
 import org.openapitools.model.CatalogsFeedValidationDetails;
+import org.openapitools.model.CatalogsFeedVideoCounts;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -25,7 +26,7 @@ import javax.annotation.Generated;
  * CatalogsFeedProcessingResult
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsFeedProcessingResult {
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
@@ -38,11 +39,13 @@ public class CatalogsFeedProcessingResult {
 
   private CatalogsFeedIngestionDetails ingestionDetails;
 
-  private CatalogsFeedProcessingStatus status;
-
   private JsonNullable<CatalogsFeedProductCounts> productCounts = JsonNullable.<CatalogsFeedProductCounts>undefined();
 
+  private CatalogsFeedProcessingStatus status;
+
   private CatalogsFeedValidationDetails validationDetails;
+
+  private CatalogsFeedVideoCounts videoCounts;
 
   public CatalogsFeedProcessingResult() {
     super();
@@ -51,13 +54,13 @@ public class CatalogsFeedProcessingResult {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsFeedProcessingResult(Date createdAt, String id, Date updatedAt, CatalogsFeedIngestionDetails ingestionDetails, CatalogsFeedProcessingStatus status, CatalogsFeedProductCounts productCounts, CatalogsFeedValidationDetails validationDetails) {
+  public CatalogsFeedProcessingResult(Date createdAt, String id, Date updatedAt, CatalogsFeedIngestionDetails ingestionDetails, CatalogsFeedProductCounts productCounts, CatalogsFeedProcessingStatus status, CatalogsFeedValidationDetails validationDetails) {
     this.createdAt = createdAt;
     this.id = id;
     this.updatedAt = updatedAt;
     this.ingestionDetails = ingestionDetails;
-    this.status = status;
     this.productCounts = JsonNullable.of(productCounts);
+    this.status = status;
     this.validationDetails = validationDetails;
   }
 
@@ -141,26 +144,6 @@ public class CatalogsFeedProcessingResult {
     this.ingestionDetails = ingestionDetails;
   }
 
-  public CatalogsFeedProcessingResult status(CatalogsFeedProcessingStatus status) {
-    this.status = status;
-    return this;
-  }
-
-  /**
-   * Get status
-   * @return status
-   */
-  @NotNull @Valid 
-  @Schema(name = "status", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("status")
-  public CatalogsFeedProcessingStatus getStatus() {
-    return status;
-  }
-
-  public void setStatus(CatalogsFeedProcessingStatus status) {
-    this.status = status;
-  }
-
   public CatalogsFeedProcessingResult productCounts(CatalogsFeedProductCounts productCounts) {
     this.productCounts = JsonNullable.of(productCounts);
     return this;
@@ -179,6 +162,26 @@ public class CatalogsFeedProcessingResult {
 
   public void setProductCounts(JsonNullable<CatalogsFeedProductCounts> productCounts) {
     this.productCounts = productCounts;
+  }
+
+  public CatalogsFeedProcessingResult status(CatalogsFeedProcessingStatus status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Get status
+   * @return status
+   */
+  @NotNull @Valid 
+  @Schema(name = "status", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("status")
+  public CatalogsFeedProcessingStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(CatalogsFeedProcessingStatus status) {
+    this.status = status;
   }
 
   public CatalogsFeedProcessingResult validationDetails(CatalogsFeedValidationDetails validationDetails) {
@@ -201,6 +204,26 @@ public class CatalogsFeedProcessingResult {
     this.validationDetails = validationDetails;
   }
 
+  public CatalogsFeedProcessingResult videoCounts(CatalogsFeedVideoCounts videoCounts) {
+    this.videoCounts = videoCounts;
+    return this;
+  }
+
+  /**
+   * Get videoCounts
+   * @return videoCounts
+   */
+  @Valid 
+  @Schema(name = "video_counts", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("video_counts")
+  public CatalogsFeedVideoCounts getVideoCounts() {
+    return videoCounts;
+  }
+
+  public void setVideoCounts(CatalogsFeedVideoCounts videoCounts) {
+    this.videoCounts = videoCounts;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -214,14 +237,15 @@ public class CatalogsFeedProcessingResult {
         Objects.equals(this.id, catalogsFeedProcessingResult.id) &&
         Objects.equals(this.updatedAt, catalogsFeedProcessingResult.updatedAt) &&
         Objects.equals(this.ingestionDetails, catalogsFeedProcessingResult.ingestionDetails) &&
-        Objects.equals(this.status, catalogsFeedProcessingResult.status) &&
         Objects.equals(this.productCounts, catalogsFeedProcessingResult.productCounts) &&
-        Objects.equals(this.validationDetails, catalogsFeedProcessingResult.validationDetails);
+        Objects.equals(this.status, catalogsFeedProcessingResult.status) &&
+        Objects.equals(this.validationDetails, catalogsFeedProcessingResult.validationDetails) &&
+        Objects.equals(this.videoCounts, catalogsFeedProcessingResult.videoCounts);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, id, updatedAt, ingestionDetails, status, productCounts, validationDetails);
+    return Objects.hash(createdAt, id, updatedAt, ingestionDetails, productCounts, status, validationDetails, videoCounts);
   }
 
   @Override
@@ -232,9 +256,10 @@ public class CatalogsFeedProcessingResult {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    ingestionDetails: ").append(toIndentedString(ingestionDetails)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    productCounts: ").append(toIndentedString(productCounts)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    validationDetails: ").append(toIndentedString(validationDetails)).append("\n");
+    sb.append("    videoCounts: ").append(toIndentedString(videoCounts)).append("\n");
     sb.append("}");
     return sb.toString();
   }

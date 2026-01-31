@@ -12,9 +12,9 @@ import org.joda.time.DateTime
 import GetBusinessMembers200Response._
 
 case class GetBusinessMembers200Response (
-  /* List of business members. */
-  items: List[UserBusinessRoleBinding],
-bookmark: Option[String])
+  bookmark: Option[String],
+/* List of business members. */
+  items: List[UserBusinessRoleBinding])
 
 object GetBusinessMembers200Response {
   import DateTimeCodecs._

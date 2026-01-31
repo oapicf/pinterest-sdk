@@ -4,21 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AdAccountId** | Pointer to **string** | Ad account ID. | [optional] 
-**CodeSnippet** | Pointer to **string** | Tag code snippet. | [optional] 
-**EnhancedMatchStatus** | Pointer to [**NullableEnhancedMatchStatusType**](EnhancedMatchStatusType.md) |  | [optional] 
-**Id** | Pointer to **string** | Tag ID. | [optional] 
-**LastFiredTimeMs** | Pointer to **NullableFloat32** | Time for the last event fired. | [optional] 
-**Name** | Pointer to **string** | Conversion tag name. | [optional] 
-**Status** | Pointer to [**EntityStatus**](EntityStatus.md) |  | [optional] 
-**Version** | Pointer to **string** | Version number. | [optional] 
-**Configs** | Pointer to [**ConversionTagConfigs**](ConversionTagConfigs.md) |  | [optional] 
+**CodeSnippet** | Pointer to **string** | Tag code snippet. | [optional] [readonly] 
+**Configs** | Pointer to [**ConversionTagConfigs**](ConversionTagConfigs.md) |  | [optional] [readonly] 
+**EnhancedMatchStatus** | Pointer to [**NullableEnhancedMatchStatusType**](EnhancedMatchStatusType.md) | The enhanced match status of the tag | [optional] [readonly] 
+**Id** | Pointer to **string** | Tag ID. | [optional] [readonly] 
+**LastFiredTimeMs** | Pointer to **NullableFloat32** | Time for the last event fired. | [optional] [readonly] 
+**Name** | **string** | Conversion tag name. | 
+**Version** | Pointer to **string** | Version number. | [optional] [readonly] 
+**AdAccountId** | **string** | Ad account ID. | [readonly] 
+**Status** | Pointer to [**EntityStatus**](EntityStatus.md) |  | [optional] [readonly] 
 
 ## Methods
 
 ### NewConversionTagResponse
 
-`func NewConversionTagResponse() *ConversionTagResponse`
+`func NewConversionTagResponse(name string, adAccountId string, ) *ConversionTagResponse`
 
 NewConversionTagResponse instantiates a new ConversionTagResponse object
 This constructor will assign default values to properties that have it defined,
@@ -32,31 +32,6 @@ will change when the set of required properties is changed
 NewConversionTagResponseWithDefaults instantiates a new ConversionTagResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetAdAccountId
-
-`func (o *ConversionTagResponse) GetAdAccountId() string`
-
-GetAdAccountId returns the AdAccountId field if non-nil, zero value otherwise.
-
-### GetAdAccountIdOk
-
-`func (o *ConversionTagResponse) GetAdAccountIdOk() (*string, bool)`
-
-GetAdAccountIdOk returns a tuple with the AdAccountId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdAccountId
-
-`func (o *ConversionTagResponse) SetAdAccountId(v string)`
-
-SetAdAccountId sets AdAccountId field to given value.
-
-### HasAdAccountId
-
-`func (o *ConversionTagResponse) HasAdAccountId() bool`
-
-HasAdAccountId returns a boolean if a field has been set.
 
 ### GetCodeSnippet
 
@@ -82,6 +57,31 @@ SetCodeSnippet sets CodeSnippet field to given value.
 `func (o *ConversionTagResponse) HasCodeSnippet() bool`
 
 HasCodeSnippet returns a boolean if a field has been set.
+
+### GetConfigs
+
+`func (o *ConversionTagResponse) GetConfigs() ConversionTagConfigs`
+
+GetConfigs returns the Configs field if non-nil, zero value otherwise.
+
+### GetConfigsOk
+
+`func (o *ConversionTagResponse) GetConfigsOk() (*ConversionTagConfigs, bool)`
+
+GetConfigsOk returns a tuple with the Configs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfigs
+
+`func (o *ConversionTagResponse) SetConfigs(v ConversionTagConfigs)`
+
+SetConfigs sets Configs field to given value.
+
+### HasConfigs
+
+`func (o *ConversionTagResponse) HasConfigs() bool`
+
+HasConfigs returns a boolean if a field has been set.
 
 ### GetEnhancedMatchStatus
 
@@ -197,36 +197,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *ConversionTagResponse) HasName() bool`
-
-HasName returns a boolean if a field has been set.
-
-### GetStatus
-
-`func (o *ConversionTagResponse) GetStatus() EntityStatus`
-
-GetStatus returns the Status field if non-nil, zero value otherwise.
-
-### GetStatusOk
-
-`func (o *ConversionTagResponse) GetStatusOk() (*EntityStatus, bool)`
-
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatus
-
-`func (o *ConversionTagResponse) SetStatus(v EntityStatus)`
-
-SetStatus sets Status field to given value.
-
-### HasStatus
-
-`func (o *ConversionTagResponse) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
 
 ### GetVersion
 
@@ -253,30 +223,50 @@ SetVersion sets Version field to given value.
 
 HasVersion returns a boolean if a field has been set.
 
-### GetConfigs
+### GetAdAccountId
 
-`func (o *ConversionTagResponse) GetConfigs() ConversionTagConfigs`
+`func (o *ConversionTagResponse) GetAdAccountId() string`
 
-GetConfigs returns the Configs field if non-nil, zero value otherwise.
+GetAdAccountId returns the AdAccountId field if non-nil, zero value otherwise.
 
-### GetConfigsOk
+### GetAdAccountIdOk
 
-`func (o *ConversionTagResponse) GetConfigsOk() (*ConversionTagConfigs, bool)`
+`func (o *ConversionTagResponse) GetAdAccountIdOk() (*string, bool)`
 
-GetConfigsOk returns a tuple with the Configs field if it's non-nil, zero value otherwise
+GetAdAccountIdOk returns a tuple with the AdAccountId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetConfigs
+### SetAdAccountId
 
-`func (o *ConversionTagResponse) SetConfigs(v ConversionTagConfigs)`
+`func (o *ConversionTagResponse) SetAdAccountId(v string)`
 
-SetConfigs sets Configs field to given value.
+SetAdAccountId sets AdAccountId field to given value.
 
-### HasConfigs
 
-`func (o *ConversionTagResponse) HasConfigs() bool`
+### GetStatus
 
-HasConfigs returns a boolean if a field has been set.
+`func (o *ConversionTagResponse) GetStatus() EntityStatus`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *ConversionTagResponse) GetStatusOk() (*EntityStatus, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *ConversionTagResponse) SetStatus(v EntityStatus)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *ConversionTagResponse) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

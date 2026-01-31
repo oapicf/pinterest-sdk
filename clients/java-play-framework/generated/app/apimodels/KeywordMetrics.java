@@ -1,6 +1,5 @@
 package apimodels;
 
-import java.math.BigDecimal;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
 import javax.validation.*;
@@ -10,34 +9,12 @@ import javax.validation.Valid;
 /**
  * Keyword metrics JSON
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class KeywordMetrics   {
-  @JsonProperty("avg_cpc_in_micro_currency")
-  @Valid
-
-  private BigDecimal avgCpcInMicroCurrency;
-
   @JsonProperty("keyword_query_volume")
   
   private String keywordQueryVolume;
-
-  public KeywordMetrics avgCpcInMicroCurrency(BigDecimal avgCpcInMicroCurrency) {
-    this.avgCpcInMicroCurrency = avgCpcInMicroCurrency;
-    return this;
-  }
-
-   /**
-   * Average cost per click
-   * @return avgCpcInMicroCurrency
-  **/
-  public BigDecimal getAvgCpcInMicroCurrency() {
-    return avgCpcInMicroCurrency;
-  }
-
-  public void setAvgCpcInMicroCurrency(BigDecimal avgCpcInMicroCurrency) {
-    this.avgCpcInMicroCurrency = avgCpcInMicroCurrency;
-  }
 
   public KeywordMetrics keywordQueryVolume(String keywordQueryVolume) {
     this.keywordQueryVolume = keywordQueryVolume;
@@ -66,13 +43,12 @@ public class KeywordMetrics   {
       return false;
     }
     KeywordMetrics keywordMetrics = (KeywordMetrics) o;
-    return Objects.equals(avgCpcInMicroCurrency, keywordMetrics.avgCpcInMicroCurrency) &&
-        Objects.equals(keywordQueryVolume, keywordMetrics.keywordQueryVolume);
+    return Objects.equals(keywordQueryVolume, keywordMetrics.keywordQueryVolume);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(avgCpcInMicroCurrency, keywordQueryVolume);
+    return Objects.hash(keywordQueryVolume);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -81,7 +57,6 @@ public class KeywordMetrics   {
     StringBuilder sb = new StringBuilder();
     sb.append("class KeywordMetrics {\n");
     
-    sb.append("    avgCpcInMicroCurrency: ").append(toIndentedString(avgCpcInMicroCurrency)).append("\n");
     sb.append("    keywordQueryVolume: ").append(toIndentedString(keywordQueryVolume)).append("\n");
     sb.append("}");
     return sb.toString();

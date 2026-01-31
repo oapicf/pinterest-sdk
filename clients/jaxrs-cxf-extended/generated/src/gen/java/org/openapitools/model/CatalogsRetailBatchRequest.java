@@ -22,6 +22,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsRetailBatchRequest  {
   
+ /**
+  * Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
+  */
+  @ApiModelProperty(example = "2680059592705", value = "Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog")
+  private String catalogId;
+
 public enum CatalogTypeEnum {
 
     @JsonProperty("RETAIL") RETAIL(String.valueOf("RETAIL"));
@@ -57,6 +63,13 @@ public enum CatalogTypeEnum {
   @ApiModelProperty(required = true, value = "")
   @Valid
   private Country country;
+
+ /**
+  * Array with catalogs item operations
+  */
+  @ApiModelProperty(required = true, value = "Array with catalogs item operations")
+  @Valid
+  private List<CatalogsRetailBatchRequestItemsInner> items = new ArrayList<>();
 
 public enum LanguageEnum {
 
@@ -198,13 +211,30 @@ public enum LanguageEnum {
   */
   @ApiModelProperty(required = true, value = "We recommend using the CatalogsLocale values.")
   private LanguageEnum language;
-
  /**
-  * Array with catalogs item operations
+  * Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
+  * @return catalogId
   */
-  @ApiModelProperty(required = true, value = "Array with catalogs item operations")
-  @Valid
-  private List<CatalogsRetailBatchRequestItemsInner> items = new ArrayList<>();
+  @JsonProperty("catalog_id")
+ @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+    return catalogId;
+  }
+
+  /**
+   * Sets the <code>catalogId</code> property.
+   */
+ public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
+  /**
+   * Sets the <code>catalogId</code> property.
+   */
+  public CatalogsRetailBatchRequest catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
  /**
   * Get catalogType
   * @return catalogType
@@ -256,31 +286,6 @@ public enum LanguageEnum {
   }
 
  /**
-  * We recommend using the CatalogsLocale values.
-  * @return language
-  */
-  @JsonProperty("language")
-  @NotNull
-  public String getLanguage() {
-    return language == null ? null : language.value();
-  }
-
-  /**
-   * Sets the <code>language</code> property.
-   */
- public void setLanguage(LanguageEnum language) {
-    this.language = language;
-  }
-
-  /**
-   * Sets the <code>language</code> property.
-   */
-  public CatalogsRetailBatchRequest language(LanguageEnum language) {
-    this.language = language;
-    return this;
-  }
-
- /**
   * Array with catalogs item operations
   * @return items
   */
@@ -313,6 +318,31 @@ public enum LanguageEnum {
     return this;
   }
 
+ /**
+  * We recommend using the CatalogsLocale values.
+  * @return language
+  */
+  @JsonProperty("language")
+  @NotNull
+  public String getLanguage() {
+    return language == null ? null : language.value();
+  }
+
+  /**
+   * Sets the <code>language</code> property.
+   */
+ public void setLanguage(LanguageEnum language) {
+    this.language = language;
+  }
+
+  /**
+   * Sets the <code>language</code> property.
+   */
+  public CatalogsRetailBatchRequest language(LanguageEnum language) {
+    this.language = language;
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -323,15 +353,16 @@ public enum LanguageEnum {
       return false;
     }
     CatalogsRetailBatchRequest catalogsRetailBatchRequest = (CatalogsRetailBatchRequest) o;
-    return Objects.equals(this.catalogType, catalogsRetailBatchRequest.catalogType) &&
+    return Objects.equals(this.catalogId, catalogsRetailBatchRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsRetailBatchRequest.catalogType) &&
         Objects.equals(this.country, catalogsRetailBatchRequest.country) &&
-        Objects.equals(this.language, catalogsRetailBatchRequest.language) &&
-        Objects.equals(this.items, catalogsRetailBatchRequest.items);
+        Objects.equals(this.items, catalogsRetailBatchRequest.items) &&
+        Objects.equals(this.language, catalogsRetailBatchRequest.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, country, language, items);
+    return Objects.hash(catalogId, catalogType, country, items, language);
   }
 
   @Override
@@ -339,10 +370,11 @@ public enum LanguageEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailBatchRequest {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();
   }

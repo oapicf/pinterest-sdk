@@ -7,11 +7,11 @@ goog.provide('API.Client.TemplateResponse_date_range_absolute_date_range');
 API.Client.TemplateResponseDateRangeAbsoluteDateRange = function() {}
 
 /**
- * The date range type
- * @type {!string}
+ * The end date of the date range
+ * @type {!number}
  * @export
  */
-API.Client.TemplateResponseDateRangeAbsoluteDateRange.prototype.type;
+API.Client.TemplateResponseDateRangeAbsoluteDateRange.prototype.endDate;
 
 /**
  * The start date of the date range
@@ -21,9 +21,9 @@ API.Client.TemplateResponseDateRangeAbsoluteDateRange.prototype.type;
 API.Client.TemplateResponseDateRangeAbsoluteDateRange.prototype.startDate;
 
 /**
- * The end date of the date range
- * @type {!number}
+ * The date range type
+ * @type {!string}
  * @export
  */
-API.Client.TemplateResponseDateRangeAbsoluteDateRange.prototype.endDate;
+API.Client.TemplateResponseDateRangeAbsoluteDateRange.prototype.type;
 

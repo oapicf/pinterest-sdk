@@ -18,7 +18,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"website": @"website", @"verificationMethod": @"verification_method" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"verificationMethod": @"verification_method", @"website": @"website" }];
 }
 
 /**
@@ -28,7 +28,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"website", @"verificationMethod"];
+  NSArray *optionalProperties = @[@"verificationMethod", @"website"];
   return [optionalProperties containsObject:propertyName];
 }
 

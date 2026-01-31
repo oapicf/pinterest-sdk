@@ -1,19 +1,13 @@
 goog.provide('API.Client.PinMediaSource');
 
 /**
- * Pin media source.
+ * Pin media source that can be an image, video, or a mix of both passed in as a request.
  * @record
  */
 API.Client.PinMediaSource = function() {}
 
 /**
- * @type {!string}
- * @export
- */
-API.Client.PinMediaSource.prototype.sourceType;
-
-/**
- * @type {!string}
+ * @type {!API.Client.ContentType}
  * @export
  */
 API.Client.PinMediaSource.prototype.contentType;
@@ -35,18 +29,17 @@ API.Client.PinMediaSource.prototype.isStandard;
  * @type {!string}
  * @export
  */
-API.Client.PinMediaSource.prototype.url;
+API.Client.PinMediaSource.prototype.sourceType;
 
 /**
- * Cover image url.
  * @type {!string}
  * @export
  */
-API.Client.PinMediaSource.prototype.coverImageUrl;
+API.Client.PinMediaSource.prototype.url;
 
 /**
  * Content type for cover image Base64.
- * @type {!string}
+ * @type {!API.Client.ContentType}
  * @export
  */
 API.Client.PinMediaSource.prototype.coverImageContentType;
@@ -59,23 +52,37 @@ API.Client.PinMediaSource.prototype.coverImageContentType;
 API.Client.PinMediaSource.prototype.coverImageData;
 
 /**
+ * Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.
+ * @type {!number}
+ * @export
+ */
+API.Client.PinMediaSource.prototype.coverImageKeyFrameTime;
+
+/**
+ * Cover image URL.
+ * @type {!string}
+ * @export
+ */
+API.Client.PinMediaSource.prototype.coverImageUrl;
+
+/**
  * @type {!string}
  * @export
  */
 API.Client.PinMediaSource.prototype.mediaId;
 
 /**
- * Array with image objects.
- * @type {!Array<!API.Client.PinMediaSourceImagesURL_items_inner>}
- * @export
- */
-API.Client.PinMediaSource.prototype.items;
-
-/**
  * @type {!number}
  * @export
  */
 API.Client.PinMediaSource.prototype.index;
+
+/**
+ * Array with image objects.
+ * @type {!Array<!API.Client.PinMediaSourceImagesURLItem>}
+ * @export
+ */
+API.Client.PinMediaSource.prototype.items;
 
 /**
  * This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
@@ -87,14 +94,4 @@ API.Client.PinMediaSource.prototype.isAffiliateLink;
 /** @enum {string} */
 API.Client.PinMediaSource.SourceTypeEnum = { 
   pin_url: 'pin_url',
-}
-/** @enum {string} */
-API.Client.PinMediaSource.ContentTypeEnum = { 
-  image/jpeg: 'image/jpeg',
-  image/png: 'image/png',
-}
-/** @enum {string} */
-API.Client.PinMediaSource.CoverImageContentTypeEnum = { 
-  image/jpeg: 'image/jpeg',
-  image/png: 'image/png',
 }

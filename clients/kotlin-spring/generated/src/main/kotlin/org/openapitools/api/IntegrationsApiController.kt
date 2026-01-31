@@ -1,6 +1,5 @@
 package org.openapitools.api
 
-import org.openapitools.model.DetailedError
 import org.openapitools.model.Error
 import org.openapitools.model.IntegrationLogsRequest
 import org.openapitools.model.IntegrationLogsSuccessResponse
@@ -9,6 +8,7 @@ import org.openapitools.model.IntegrationRecord
 import org.openapitools.model.IntegrationRequest
 import org.openapitools.model.IntegrationRequestPatch
 import org.openapitools.model.IntegrationsGetList200Response
+import org.openapitools.model.IntegrationsLogsPost400Response
 import io.swagger.v3.oas.annotations.*
 import io.swagger.v3.oas.annotations.enums.*
 import io.swagger.v3.oas.annotations.media.*
@@ -106,7 +106,7 @@ Note: If you're interested in joining the beta, please reach out to your Pintere
     )
     fun integrationsCommercePatch(
         @Parameter(description = "External business ID for the integration.", required = true) @PathVariable("external_business_id") externalBusinessId: kotlin.String,
-        @Parameter(description = "Parameters to get create/update the Integration Metadata") @Valid @RequestBody(required = false) integrationRequestPatch: IntegrationRequestPatch?
+        @Parameter(description = "Parameters to get create/update the Integration Metadata", required = true) @Valid @RequestBody integrationRequestPatch: IntegrationRequestPatch
     ): ResponseEntity<IntegrationMetadata> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
@@ -130,7 +130,7 @@ Note: If you're interested in joining the beta, please reach out to your Pintere
         consumes = ["application/json"]
     )
     fun integrationsCommercePost(
-        @Parameter(description = "Parameters to get create/update the Integration Metadata") @Valid @RequestBody(required = false) integrationRequest: IntegrationRequest?
+        @Parameter(description = "Parameters to get create/update the Integration Metadata", required = true) @Valid @RequestBody integrationRequest: IntegrationRequest
     ): ResponseEntity<IntegrationMetadata> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
@@ -186,7 +186,7 @@ Note: If you're interested in joining the beta, please reach out to your Pintere
 Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.""",
         responses = [
             ApiResponse(responseCode = "200", description = "Success.", content = [Content(schema = Schema(implementation = IntegrationLogsSuccessResponse::class))]),
-            ApiResponse(responseCode = "400", description = "Bad request.", content = [Content(schema = Schema(implementation = DetailedError::class))]),
+            ApiResponse(responseCode = "400", description = "Bad request.", content = [Content(schema = Schema(implementation = IntegrationsLogsPost400Response::class))]),
             ApiResponse(responseCode = "200", description = "Unexpected error", content = [Content(schema = Schema(implementation = Error::class))]) ],
         security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "ads:write" ]) ]
     )

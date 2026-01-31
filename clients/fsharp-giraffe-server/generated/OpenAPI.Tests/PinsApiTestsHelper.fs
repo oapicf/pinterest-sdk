@@ -26,20 +26,21 @@ module PinsApiHandlerTestsHelper =
   let mutable PinsCreateBody = ""
 
   PinsCreateBody <- WebUtility.HtmlDecode "{
-  &quot;note&quot; : &quot;note&quot;,
-  &quot;board_owner&quot; : &quot;{}&quot;,
-  &quot;media_source&quot; : &quot;{}&quot;,
-  &quot;link&quot; : &quot;https://www.pinterest.com/&quot;,
-  &quot;created_at&quot; : &quot;2020-01-01T20:10:40Z&quot;,
-  &quot;description&quot; : &quot;description&quot;,
-  &quot;media&quot; : &quot;{}&quot;,
-  &quot;title&quot; : &quot;title&quot;,
-  &quot;board_section_id&quot; : &quot;board_section_id&quot;,
-  &quot;dominant_color&quot; : &quot;#6E7874&quot;,
+  &quot;dominant_color&quot; : &quot;dominant_color&quot;,
+  &quot;media_source&quot; : {
+    &quot;content_type&quot; : &quot;image/jpeg&quot;,
+    &quot;data&quot; : &quot;data&quot;,
+    &quot;source_type&quot; : &quot;image_base64&quot;,
+    &quot;is_standard&quot; : true
+  },
   &quot;alt_text&quot; : &quot;alt_text&quot;,
   &quot;board_id&quot; : &quot;board_id&quot;,
   &quot;parent_pin_id&quot; : &quot;parent_pin_id&quot;,
-  &quot;id&quot; : &quot;813744226420795884&quot;
+  &quot;link&quot; : &quot;link&quot;,
+  &quot;description&quot; : &quot;description&quot;,
+  &quot;title&quot; : &quot;title&quot;,
+  &quot;sponsor_id&quot; : &quot;sponsor_id&quot;,
+  &quot;board_section_id&quot; : &quot;board_section_id&quot;
 }"
   PinsCreateExamples <- PinsCreateExamples.Add("application/json", PinsCreateBody)
 
@@ -67,10 +68,9 @@ module PinsApiHandlerTestsHelper =
   let mutable PinsUpdateBody = ""
 
   PinsUpdateBody <- WebUtility.HtmlDecode "{
-  &quot;note&quot; : &quot;note&quot;,
   &quot;alt_text&quot; : &quot;alt_text&quot;,
   &quot;board_id&quot; : &quot;board_id&quot;,
-  &quot;link&quot; : &quot;https://www.pinterest.com/&quot;,
+  &quot;link&quot; : &quot;link&quot;,
   &quot;description&quot; : &quot;description&quot;,
   &quot;title&quot; : &quot;title&quot;,
   &quot;board_section_id&quot; : &quot;board_section_id&quot;,

@@ -16,29 +16,20 @@ import org.openapitools.vertxweb.server.model.ItemValidationEvent;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class HotelProcessingRecord   {
   
-  private String hotelId;
   private List<ItemValidationEvent> errors = new ArrayList<>();
-  private List<ItemValidationEvent> warnings = new ArrayList<>();
+  private String hotelId;
   private ItemProcessingStatus status;
+  private List<ItemValidationEvent> warnings = new ArrayList<>();
 
   public HotelProcessingRecord () {
 
   }
 
-  public HotelProcessingRecord (String hotelId, List<ItemValidationEvent> errors, List<ItemValidationEvent> warnings, ItemProcessingStatus status) {
-    this.hotelId = hotelId;
+  public HotelProcessingRecord (List<ItemValidationEvent> errors, String hotelId, ItemProcessingStatus status, List<ItemValidationEvent> warnings) {
     this.errors = errors;
-    this.warnings = warnings;
-    this.status = status;
-  }
-
-    
-  @JsonProperty("hotel_id")
-  public String getHotelId() {
-    return hotelId;
-  }
-  public void setHotelId(String hotelId) {
     this.hotelId = hotelId;
+    this.status = status;
+    this.warnings = warnings;
   }
 
     
@@ -51,12 +42,12 @@ public class HotelProcessingRecord   {
   }
 
     
-  @JsonProperty("warnings")
-  public List<ItemValidationEvent> getWarnings() {
-    return warnings;
+  @JsonProperty("hotel_id")
+  public String getHotelId() {
+    return hotelId;
   }
-  public void setWarnings(List<ItemValidationEvent> warnings) {
-    this.warnings = warnings;
+  public void setHotelId(String hotelId) {
+    this.hotelId = hotelId;
   }
 
     
@@ -66,6 +57,15 @@ public class HotelProcessingRecord   {
   }
   public void setStatus(ItemProcessingStatus status) {
     this.status = status;
+  }
+
+    
+  @JsonProperty("warnings")
+  public List<ItemValidationEvent> getWarnings() {
+    return warnings;
+  }
+  public void setWarnings(List<ItemValidationEvent> warnings) {
+    this.warnings = warnings;
   }
 
 
@@ -78,15 +78,15 @@ public class HotelProcessingRecord   {
       return false;
     }
     HotelProcessingRecord hotelProcessingRecord = (HotelProcessingRecord) o;
-    return Objects.equals(hotelId, hotelProcessingRecord.hotelId) &&
-        Objects.equals(errors, hotelProcessingRecord.errors) &&
-        Objects.equals(warnings, hotelProcessingRecord.warnings) &&
-        Objects.equals(status, hotelProcessingRecord.status);
+    return Objects.equals(errors, hotelProcessingRecord.errors) &&
+        Objects.equals(hotelId, hotelProcessingRecord.hotelId) &&
+        Objects.equals(status, hotelProcessingRecord.status) &&
+        Objects.equals(warnings, hotelProcessingRecord.warnings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hotelId, errors, warnings, status);
+    return Objects.hash(errors, hotelId, status, warnings);
   }
 
   @Override
@@ -94,10 +94,10 @@ public class HotelProcessingRecord   {
     StringBuilder sb = new StringBuilder();
     sb.append("class HotelProcessingRecord {\n");
     
-    sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
+    sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }

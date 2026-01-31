@@ -34,19 +34,11 @@ public class CreateMMMReportRequestTest {
     }
 
     /**
-     * Test the property 'reportName'
+     * Test the property 'columns'
      */
     @Test
-    public void reportNameTest() {
-        // TODO: test reportName
-    }
-
-    /**
-     * Test the property 'startDate'
-     */
-    @Test
-    public void startDateTest() {
-        // TODO: test startDate
+    public void columnsTest() {
+        // TODO: test columns
     }
 
     /**
@@ -74,19 +66,27 @@ public class CreateMMMReportRequestTest {
     }
 
     /**
+     * Test the property 'reportName'
+     */
+    @Test
+    public void reportNameTest() {
+        // TODO: test reportName
+    }
+
+    /**
+     * Test the property 'startDate'
+     */
+    @Test
+    public void startDateTest() {
+        // TODO: test startDate
+    }
+
+    /**
      * Test the property 'targetingTypes'
      */
     @Test
     public void targetingTypesTest() {
         // TODO: test targetingTypes
-    }
-
-    /**
-     * Test the property 'columns'
-     */
-    @Test
-    public void columnsTest() {
-        // TODO: test columns
     }
 
 }

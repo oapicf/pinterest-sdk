@@ -5,21 +5,21 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.ImageMetadataImages
+import org.openapitools.models.ImageSize
 
 /**
  * 
- * @param itemUnderscoretype 
- * @param title 
  * @param description 
- * @param link 
  * @param images 
+ * @param itemUnderscoretype 
+ * @param link 
+ * @param title 
  */
-case class ImageMetadata(itemUnderscoretype: Option[String],
-                title: Option[String],
-                description: Option[String],
+case class ImageMetadata(description: Option[String],
+                images: Option[ImageSize],
+                itemUnderscoretype: Option[String],
                 link: Option[String],
-                images: Option[ImageMetadataImages]
+                title: Option[String]
                 )
 
 object ImageMetadata {

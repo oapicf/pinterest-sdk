@@ -3,10 +3,11 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **attributes** | [**ItemAttributesRequest**](ItemAttributesRequest.md) |  | [default to null] |
 | **item\_id** | **String** | The catalog item id in the merchant namespace | [default to null] |
 | **operation** | **String** |  | [default to null] |
-| **attributes** | [**ItemAttributesRequest**](ItemAttributesRequest.md) |  | [default to null] |
 | **update\_mask** | [**List**](UpdateMaskFieldType.md) | The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item. | [optional] [default to null] |
+| **last\_updated\_time** | **Long** | The millisecond timestamp when the item was lastly modified by the merchant. | [optional] [default to null] |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -5,19 +5,19 @@
 -export_type([openapi_single_interest_targeting_option_response/0]).
 
 -type openapi_single_interest_targeting_option_response() ::
-    #{ 'id' => binary(),
-       'name' => binary(),
-       'child_interests' => list(),
-       'level' => integer()
+    #{ 'child_interests' => list(),
+       'id' => binary(),
+       'level' => integer(),
+       'name' => binary()
      }.
 
-encode(#{ 'id' := Id,
-          'name' := Name,
-          'child_interests' := ChildInterests,
-          'level' := Level
+encode(#{ 'child_interests' := ChildInterests,
+          'id' := Id,
+          'level' := Level,
+          'name' := Name
         }) ->
-    #{ 'id' => Id,
-       'name' => Name,
-       'child_interests' => ChildInterests,
-       'level' => Level
+    #{ 'child_interests' => ChildInterests,
+       'id' => Id,
+       'level' => Level,
+       'name' => Name
      }.

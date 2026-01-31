@@ -23,6 +23,10 @@ import { AdsCreditRedeemResponse } from '../model/adsCreditRedeemResponse';
 // @ts-ignore
 import { AdsCreditsDiscountsGet200Response } from '../model/adsCreditsDiscountsGet200Response';
 // @ts-ignore
+import { BillingInvoiceDownloadResponse } from '../model/billingInvoiceDownloadResponse';
+// @ts-ignore
+import { BillingInvoicesGet200Response } from '../model/billingInvoicesGet200Response';
+// @ts-ignore
 import { BillingProfilesGet200Response } from '../model/billingProfilesGet200Response';
 // @ts-ignore
 import { SSIOAccountResponse } from '../model/sSIOAccountResponse';
@@ -59,7 +63,7 @@ export class BillingService extends BaseService {
 
     /**
      * Redeem ad credits
-     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/using-beta-and-restricted-features/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      * @endpoint post /ad_accounts/{ad_account_id}/ads_credit/redeem
      * @param adAccountId Unique identifier of an ad account.
      * @param adsCreditRedeemRequest Redeem ad credits request.
@@ -133,7 +137,7 @@ export class BillingService extends BaseService {
 
     /**
      * Get ads credit discounts
-     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/using-beta-and-restricted-features/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      * @endpoint get /ad_accounts/{ad_account_id}/ads_credit/discounts
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items
@@ -215,8 +219,215 @@ export class BillingService extends BaseService {
     }
 
     /**
+     * Get download url for a billing invoice
+     * Get download url for a billing invoice.
+     * @endpoint get /ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download
+     * @param adAccountId Unique identifier of an ad account.
+     * @param billingInvoiceId Unique identifier of a billing invoice.
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     * @param options additional options
+     */
+    public billingInvoiceDownloadGet(adAccountId: string, billingInvoiceId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BillingInvoiceDownloadResponse>;
+    public billingInvoiceDownloadGet(adAccountId: string, billingInvoiceId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BillingInvoiceDownloadResponse>>;
+    public billingInvoiceDownloadGet(adAccountId: string, billingInvoiceId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BillingInvoiceDownloadResponse>>;
+    public billingInvoiceDownloadGet(adAccountId: string, billingInvoiceId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (adAccountId === null || adAccountId === undefined) {
+            throw new Error('Required parameter adAccountId was null or undefined when calling billingInvoiceDownloadGet.');
+        }
+        if (billingInvoiceId === null || billingInvoiceId === undefined) {
+            throw new Error('Required parameter billingInvoiceId was null or undefined when calling billingInvoiceDownloadGet.');
+        }
+
+        let localVarHeaders = this.defaultHeaders;
+
+        // authentication (pinterest_oauth2) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'application/json'
+        ]);
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
+
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
+
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/billing_invoice/${this.configuration.encodeParam({name: "billingInvoiceId", value: billingInvoiceId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/download`;
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<BillingInvoiceDownloadResponse>('get', `${basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                responseType: <any>responseType_,
+                ...(withCredentials ? { withCredentials } : {}),
+                headers: localVarHeaders,
+                observe: observe,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Get billing invoices
+     * Get billing invoices in the advertiser account.
+     * @endpoint get /ad_accounts/{ad_account_id}/billing_invoices
+     * @param adAccountId Unique identifier of an ad account.
+     * @param bookmark Cursor used to fetch the next page of items
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param sort Field of which to sort billing invoices
+     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+     * @param status Status of billing invoices to filter by
+     * @param documentType Document type of billing invoices to filter by
+     * @param startDueDate Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
+     * @param endDueDate Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     * @param options additional options
+     */
+    public billingInvoicesGet(adAccountId: string, bookmark?: string, pageSize?: number, sort?: 'DUE_DATE' | 'BILLING_PERIOD' | 'DOCUMENT_TYPE' | 'TOTAL_AMOUNT' | 'INVOICE_NUMBER', order?: 'ASCENDING' | 'DESCENDING', status?: 'OPEN' | 'CLOSED', documentType?: 'INVOICE' | 'CREDIT_MEMO', startDueDate?: string, endDueDate?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BillingInvoicesGet200Response>;
+    public billingInvoicesGet(adAccountId: string, bookmark?: string, pageSize?: number, sort?: 'DUE_DATE' | 'BILLING_PERIOD' | 'DOCUMENT_TYPE' | 'TOTAL_AMOUNT' | 'INVOICE_NUMBER', order?: 'ASCENDING' | 'DESCENDING', status?: 'OPEN' | 'CLOSED', documentType?: 'INVOICE' | 'CREDIT_MEMO', startDueDate?: string, endDueDate?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BillingInvoicesGet200Response>>;
+    public billingInvoicesGet(adAccountId: string, bookmark?: string, pageSize?: number, sort?: 'DUE_DATE' | 'BILLING_PERIOD' | 'DOCUMENT_TYPE' | 'TOTAL_AMOUNT' | 'INVOICE_NUMBER', order?: 'ASCENDING' | 'DESCENDING', status?: 'OPEN' | 'CLOSED', documentType?: 'INVOICE' | 'CREDIT_MEMO', startDueDate?: string, endDueDate?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BillingInvoicesGet200Response>>;
+    public billingInvoicesGet(adAccountId: string, bookmark?: string, pageSize?: number, sort?: 'DUE_DATE' | 'BILLING_PERIOD' | 'DOCUMENT_TYPE' | 'TOTAL_AMOUNT' | 'INVOICE_NUMBER', order?: 'ASCENDING' | 'DESCENDING', status?: 'OPEN' | 'CLOSED', documentType?: 'INVOICE' | 'CREDIT_MEMO', startDueDate?: string, endDueDate?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (adAccountId === null || adAccountId === undefined) {
+            throw new Error('Required parameter adAccountId was null or undefined when calling billingInvoicesGet.');
+        }
+
+        let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'bookmark',
+            <any>bookmark,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'page_size',
+            <any>pageSize,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'sort',
+            <any>sort,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'order',
+            <any>order,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'status',
+            <any>status,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'document_type',
+            <any>documentType,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'start_due_date',
+            <any>startDueDate,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'end_due_date',
+            <any>endDueDate,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        let localVarHeaders = this.defaultHeaders;
+
+        // authentication (pinterest_oauth2) required
+        localVarHeaders = this.configuration.addCredentialToHeaders('pinterest_oauth2', 'Authorization', localVarHeaders, 'Bearer ');
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'application/json'
+        ]);
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
+
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
+
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/billing_invoices`;
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<BillingInvoicesGet200Response>('get', `${basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                params: localVarQueryParameters.toHttpParams(),
+                responseType: <any>responseType_,
+                ...(withCredentials ? { withCredentials } : {}),
+                headers: localVarHeaders,
+                observe: observe,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
      * Get billing profiles
-     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/using-beta-and-restricted-features/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      * @endpoint get /ad_accounts/{ad_account_id}/billing_profiles
      * @param adAccountId Unique identifier of an ad account.
      * @param isActive Return active billing profiles, if false return all billing profiles.

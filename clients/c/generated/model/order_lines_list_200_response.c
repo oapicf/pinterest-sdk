@@ -6,27 +6,27 @@
 
 
 static order_lines_list_200_response_t *order_lines_list_200_response_create_internal(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     order_lines_list_200_response_t *order_lines_list_200_response_local_var = malloc(sizeof(order_lines_list_200_response_t));
     if (!order_lines_list_200_response_local_var) {
         return NULL;
     }
-    order_lines_list_200_response_local_var->items = items;
     order_lines_list_200_response_local_var->bookmark = bookmark;
+    order_lines_list_200_response_local_var->items = items;
 
     order_lines_list_200_response_local_var->_library_owned = 1;
     return order_lines_list_200_response_local_var;
 }
 
 __attribute__((deprecated)) order_lines_list_200_response_t *order_lines_list_200_response_create(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     return order_lines_list_200_response_create_internal (
-        items,
-        bookmark
+        bookmark,
+        items
         );
 }
 
@@ -39,6 +39,10 @@ void order_lines_list_200_response_free(order_lines_list_200_response_t *order_l
         return ;
     }
     listEntry_t *listEntry;
+    if (order_lines_list_200_response->bookmark) {
+        free(order_lines_list_200_response->bookmark);
+        order_lines_list_200_response->bookmark = NULL;
+    }
     if (order_lines_list_200_response->items) {
         list_ForEach(listEntry, order_lines_list_200_response->items) {
             order_line_free(listEntry->data);
@@ -46,15 +50,19 @@ void order_lines_list_200_response_free(order_lines_list_200_response_t *order_l
         list_freeList(order_lines_list_200_response->items);
         order_lines_list_200_response->items = NULL;
     }
-    if (order_lines_list_200_response->bookmark) {
-        free(order_lines_list_200_response->bookmark);
-        order_lines_list_200_response->bookmark = NULL;
-    }
     free(order_lines_list_200_response);
 }
 
 cJSON *order_lines_list_200_response_convertToJSON(order_lines_list_200_response_t *order_lines_list_200_response) {
     cJSON *item = cJSON_CreateObject();
+
+    // order_lines_list_200_response->bookmark
+    if(order_lines_list_200_response->bookmark) {
+    if(cJSON_AddStringToObject(item, "bookmark", order_lines_list_200_response->bookmark) == NULL) {
+    goto fail; //String
+    }
+    }
+
 
     // order_lines_list_200_response->items
     if (!order_lines_list_200_response->items) {
@@ -76,14 +84,6 @@ cJSON *order_lines_list_200_response_convertToJSON(order_lines_list_200_response
     }
     }
 
-
-    // order_lines_list_200_response->bookmark
-    if(order_lines_list_200_response->bookmark) {
-    if(cJSON_AddStringToObject(item, "bookmark", order_lines_list_200_response->bookmark) == NULL) {
-    goto fail; //String
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -98,6 +98,18 @@ order_lines_list_200_response_t *order_lines_list_200_response_parseFromJSON(cJS
 
     // define the local list for order_lines_list_200_response->items
     list_t *itemsList = NULL;
+
+    // order_lines_list_200_response->bookmark
+    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(order_lines_list_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
+    if (bookmark) { 
+    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
+    {
+    goto end; //String
+    }
+    }
 
     // order_lines_list_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(order_lines_list_200_responseJSON, "items");
@@ -126,22 +138,10 @@ order_lines_list_200_response_t *order_lines_list_200_response_parseFromJSON(cJS
         list_addElement(itemsList, itemsItem);
     }
 
-    // order_lines_list_200_response->bookmark
-    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(order_lines_list_200_responseJSON, "bookmark");
-    if (cJSON_IsNull(bookmark)) {
-        bookmark = NULL;
-    }
-    if (bookmark) { 
-    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
-    {
-    goto end; //String
-    }
-    }
-
 
     order_lines_list_200_response_local_var = order_lines_list_200_response_create_internal (
-        itemsList,
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
+        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        itemsList
         );
 
     return order_lines_list_200_response_local_var;

@@ -22,6 +22,8 @@ import org.openapitools.client.apis.BillingApi
 import org.openapitools.client.models.AdsCreditRedeemRequest
 import org.openapitools.client.models.AdsCreditRedeemResponse
 import org.openapitools.client.models.AdsCreditsDiscountsGet200Response
+import org.openapitools.client.models.BillingInvoiceDownloadResponse
+import org.openapitools.client.models.BillingInvoicesGet200Response
 import org.openapitools.client.models.BillingProfilesGet200Response
 import org.openapitools.client.models.Error
 import org.openapitools.client.models.SSIOAccountResponse
@@ -54,6 +56,31 @@ class BillingApiTest : ShouldSpec() {
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
             //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val result : AdsCreditsDiscountsGet200Response = apiInstance.adsCreditsDiscountsGet(adAccountId, bookmark, pageSize)
+            //result shouldBe ("TODO")
+        }
+
+        // to test billingInvoiceDownloadGet
+        should("test billingInvoiceDownloadGet") {
+            // uncomment below to test billingInvoiceDownloadGet
+            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
+            //val billingInvoiceId : kotlin.String = billingInvoiceId_example // kotlin.String | Unique identifier of a billing invoice.
+            //val result : BillingInvoiceDownloadResponse = apiInstance.billingInvoiceDownloadGet(adAccountId, billingInvoiceId)
+            //result shouldBe ("TODO")
+        }
+
+        // to test billingInvoicesGet
+        should("test billingInvoicesGet") {
+            // uncomment below to test billingInvoicesGet
+            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
+            //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+            //val sort : kotlin.String = DUE_DATE // kotlin.String | Field of which to sort billing invoices
+            //val order : kotlin.String = ASCENDING // kotlin.String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+            //val status : kotlin.String = OPEN // kotlin.String | Status of billing invoices to filter by
+            //val documentType : kotlin.String = INVOICE // kotlin.String | Document type of billing invoices to filter by
+            //val startDueDate : java.time.LocalDate = Sun Jan 01 00:00:00 UTC 2023 // java.time.LocalDate | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
+            //val endDueDate : java.time.LocalDate = Mon Jan 01 00:00:00 UTC 2024 // java.time.LocalDate | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
+            //val result : BillingInvoicesGet200Response = apiInstance.billingInvoicesGet(adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate)
             //result shouldBe ("TODO")
         }
 

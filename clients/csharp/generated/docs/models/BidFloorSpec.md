@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Currency** | **Currency** |  | 
 **BillableEvent** | **ActionType** |  | 
+**Currency** | **Currency** |  | 
 **Countries** | [**List&lt;Country&gt;**](Country.md) |  | [optional] 
+**CreativeType** | **CreativeType** |  | [optional] 
 **ObjectiveType** | **ObjectiveType** |  | [optional] 
 **OptimizationGoalMetadata** | [**OptimizationGoalMetadata**](OptimizationGoalMetadata.md) |  | [optional] 
-**CreativeType** | **CreativeType** |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

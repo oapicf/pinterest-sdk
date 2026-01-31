@@ -7,8 +7,9 @@ Name | Type | Description | Notes
 **ConversionEvent** | **String** |  | [optional] 
 **ConversionTagId** | **String** |  | [optional] 
 **CpaGoalValueInMicroCurrency** | **String** |  | [optional] 
-**IsRoasOptimized** | **Boolean** | ROAS optimization is not supported | [optional] 
+**IsRoasOptimized** | **Boolean** | Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when &#x60;conversion_event&#x60; is set to &#x60;&quot;&quot;CHECKOUT&quot;&quot;&#x60; and &#x60;bid_strategy_type&#x60; is set to &#x60;&quot;&quot;AUTOMATIC_BID&quot;&quot;&#x60;. &lt;br&gt;This parameter is not enabled for all advertisers. &lt;a href&#x3D;&quot;&quot;https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/&quot;&quot;&gt;Learn more&lt;/a&gt;. | [optional] 
 **LearningModeType** | **String** | Conversion learning model type | [optional] 
+**ReportingEvent** | **String** | Event name for custom or standard events mapped to an oCPM model | [optional] 
 
 ## Examples
 
@@ -19,7 +20,8 @@ $OptimizationGoalMetadataConversionTagV3GoalMetadata = Initialize-PSOpenAPITools
  -ConversionTagId null `
  -CpaGoalValueInMicroCurrency null `
  -IsRoasOptimized null `
- -LearningModeType ACTIVE
+ -LearningModeType ACTIVE `
+ -ReportingEvent INITIATE_CHECKOUT
 ```
 
 - Convert the resource to JSON

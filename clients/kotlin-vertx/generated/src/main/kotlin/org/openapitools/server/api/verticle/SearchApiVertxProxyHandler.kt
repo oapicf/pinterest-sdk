@@ -17,9 +17,9 @@ import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
 import org.openapitools.server.api.model.Error
-import org.openapitools.server.api.model.PinsList200Response
 import org.openapitools.server.api.model.SearchPartnerPins200Response
 import org.openapitools.server.api.model.SearchUserBoardsGet200Response
+import org.openapitools.server.api.model.SearchUserPinsList200Response
 
 class SearchApiVertxProxyHandler(private val vertx: Vertx, private val service: SearchApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long

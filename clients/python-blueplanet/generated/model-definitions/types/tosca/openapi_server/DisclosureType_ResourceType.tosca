@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server DisclosureType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a DisclosureType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  DisclosureType {
+    title = DisclosureType
+    description = DisclosureType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  DisclosureType {
+    title = DisclosureType
+    description = DisclosureType
+    implements = openapi_server.resourceTypes.DisclosureType
+
+  }
+}

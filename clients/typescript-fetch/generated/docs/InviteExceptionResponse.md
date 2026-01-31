@@ -7,8 +7,8 @@ An exception object if there is an error performing the action. Will only be pro
 
 Name | Type
 ------------ | -------------
-`inviteOrRequestId` | string
 `code` | number
+`inviteOrRequestId` | string
 `message` | string
 `usersOrPartnerIds` | Array&lt;string&gt;
 
@@ -19,8 +19,8 @@ import type { InviteExceptionResponse } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "inviteOrRequestId": 383791336903426391,
   "code": 403,
+  "inviteOrRequestId": 383791336903426391,
   "message": You hit the maximum number of pending invites allowed.,
   "usersOrPartnerIds": ["businessMember0101","business+member@business.com"],
 } satisfies InviteExceptionResponse

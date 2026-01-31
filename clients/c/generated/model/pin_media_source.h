@@ -1,7 +1,7 @@
 /*
  * pin_media_source.h
  *
- * Pin media source.
+ * Pin media source that can be an image, video, or a mix of both passed in as a request.
  */
 
 #ifndef _pin_media_source_H_
@@ -15,11 +15,12 @@
 
 typedef struct pin_media_source_t pin_media_source_t;
 
+#include "content_type.h"
 #include "pin_media_source_image_base64.h"
 #include "pin_media_source_image_url.h"
 #include "pin_media_source_images_base64.h"
 #include "pin_media_source_images_url.h"
-#include "pin_media_source_images_url_items_inner.h"
+#include "pin_media_source_images_url_item.h"
 #include "pin_media_source_pin_url.h"
 #include "pin_media_source_video_id.h"
 
@@ -31,53 +32,39 @@ char* pin_media_source_source_type_ToString(pinterest_rest_api_pin_media_source_
 
 pinterest_rest_api_pin_media_source_SOURCETYPE_e pin_media_source_source_type_FromString(char* source_type);
 
-// Enum CONTENTTYPE for pin_media_source
-
-typedef enum  { pinterest_rest_api_pin_media_source_CONTENTTYPE_NULL = 0, pinterest_rest_api_pin_media_source_CONTENTTYPE_image/jpeg, pinterest_rest_api_pin_media_source_CONTENTTYPE_image/png } pinterest_rest_api_pin_media_source_CONTENTTYPE_e;
-
-char* pin_media_source_content_type_ToString(pinterest_rest_api_pin_media_source_CONTENTTYPE_e content_type);
-
-pinterest_rest_api_pin_media_source_CONTENTTYPE_e pin_media_source_content_type_FromString(char* content_type);
-
-// Enum COVERIMAGECONTENTTYPE for pin_media_source
-
-typedef enum  { pinterest_rest_api_pin_media_source_COVERIMAGECONTENTTYPE_NULL = 0, pinterest_rest_api_pin_media_source_COVERIMAGECONTENTTYPE_image/jpeg, pinterest_rest_api_pin_media_source_COVERIMAGECONTENTTYPE_image/png } pinterest_rest_api_pin_media_source_COVERIMAGECONTENTTYPE_e;
-
-char* pin_media_source_cover_image_content_type_ToString(pinterest_rest_api_pin_media_source_COVERIMAGECONTENTTYPE_e cover_image_content_type);
-
-pinterest_rest_api_pin_media_source_COVERIMAGECONTENTTYPE_e pin_media_source_cover_image_content_type_FromString(char* cover_image_content_type);
-
 
 
 typedef struct pin_media_source_t {
-    pinterest_rest_api_pin_media_source_SOURCETYPE_e source_type; //enum
-    pinterest_rest_api_pin_media_source_CONTENTTYPE_e content_type; //enum
+    pinterest_rest_api_content_type__e content_type; //referenced enum
     char *data; // string
     int is_standard; //boolean
+    pinterest_rest_api_pin_media_source_SOURCETYPE_e source_type; //enum
     char *url; // string
-    char *cover_image_url; // string
-    pinterest_rest_api_pin_media_source_COVERIMAGECONTENTTYPE_e cover_image_content_type; //enum
+    content_type_t *cover_image_content_type; // custom
     char *cover_image_data; // string
+    int cover_image_key_frame_time; //numeric
+    char *cover_image_url; // string
     char *media_id; // string
-    list_t *items; //nonprimitive container
     int index; //numeric
+    list_t *items; //nonprimitive container
     int is_affiliate_link; //boolean
 
     int _library_owned; // Is the library responsible for freeing this object?
 } pin_media_source_t;
 
 __attribute__((deprecated)) pin_media_source_t *pin_media_source_create(
-    pinterest_rest_api_pin_media_source_SOURCETYPE_e source_type,
-    pinterest_rest_api_pin_media_source_CONTENTTYPE_e content_type,
+    pinterest_rest_api_content_type__e content_type,
     char *data,
     int is_standard,
+    pinterest_rest_api_pin_media_source_SOURCETYPE_e source_type,
     char *url,
-    char *cover_image_url,
-    pinterest_rest_api_pin_media_source_COVERIMAGECONTENTTYPE_e cover_image_content_type,
+    content_type_t *cover_image_content_type,
     char *cover_image_data,
+    int cover_image_key_frame_time,
+    char *cover_image_url,
     char *media_id,
-    list_t *items,
     int index,
+    list_t *items,
     int is_affiliate_link
 );
 

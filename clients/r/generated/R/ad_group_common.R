@@ -7,166 +7,92 @@
 #' @title AdGroupCommon
 #' @description AdGroupCommon Class
 #' @format An \code{R6Class} generator object
-#' @field name Ad group name. character [optional]
-#' @field status Ad group/entity status. \link{EntityStatus} [optional]
-#' @field budget_in_micro_currency Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups. integer [optional]
-#' @field bid_in_micro_currency Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC. integer [optional]
-#' @field optimization_goal_metadata Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`. \link{OptimizationGoalMetadata} [optional]
-#' @field budget_type  \link{BudgetType} [optional]
-#' @field start_time Ad group start time. Unix timestamp in seconds. Defaults to current time. integer [optional]
-#' @field end_time Ad group end time. Unix timestamp in seconds. integer [optional]
-#' @field targeting_spec  \link{TargetingSpec} [optional]
-#' @field lifetime_frequency_cap Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field. integer [optional]
-#' @field tracking_urls Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>. \link{TrackingUrls} [optional]
-#' @field auto_targeting_enabled Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. character [optional]
-#' @field placement_group <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>. \link{PlacementGroupType} [optional]
-#' @field pacing_delivery_type  \link{PacingDeliveryType} [optional]
-#' @field campaign_id Campaign ID of the ad group. character [optional]
+#' @field auto_targeting_enabled Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>. character [optional]
+#' @field bid_in_micro_currency Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH. integer [optional]
+#' @field bid_strategy_type Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\". character [optional]
 #' @field billable_event  \link{ActionType} [optional]
-#' @field bid_strategy_type Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID. character [optional]
+#' @field budget_in_micro_currency Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups. integer [optional]
+#' @field budget_type  \link{BudgetType} [optional]
+#' @field campaign_id Campaign ID of the ad group. character [optional]
+#' @field end_time Timestamp in Unix format for scheduling when ads in the ad group stop appearing. If not specified, ads run indefinitely unless you update the ad group by changing their status to `paused`. Cannot occur after `end_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO. integer [optional]
+#' @field is_creative_optimization Enable creative optimization for the ad group, default value is FALSE. When enabled, you allow Pinterest to automatically turn your product Pins into ads in different formats (collections and shopping) and deliver those ads to users at scale. character [optional]
+#' @field lifetime_frequency_cap Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field. integer [optional]
+#' @field name Ad group name. character [optional]
+#' @field optimization_goal_metadata Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`. \link{OptimizationGoalMetadata} [optional]
+#' @field pacing_delivery_type  \link{PacingDeliveryType} [optional]
+#' @field placement_group <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>. \link{PlacementGroupType} [optional]
+#' @field promotion_application_level Specify if the promotion is applied at ad group or item level character [optional]
+#' @field promotion_id Promotion ID. To clear this field, set to null. character [optional]
+#' @field start_time Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign's `start_time`. Cannot precede `start_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO. integer [optional]
+#' @field status Ad group/entity status. \link{EntityStatus} [optional]
+#' @field targeting_spec  \link{TargetingSpec} [optional]
 #' @field targeting_template_ids Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0']. list(character) [optional]
+#' @field tracking_urls Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>. \link{TrackingUrls} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 AdGroupCommon <- R6::R6Class(
   "AdGroupCommon",
   public = list(
-    `name` = NULL,
-    `status` = NULL,
-    `budget_in_micro_currency` = NULL,
-    `bid_in_micro_currency` = NULL,
-    `optimization_goal_metadata` = NULL,
-    `budget_type` = NULL,
-    `start_time` = NULL,
-    `end_time` = NULL,
-    `targeting_spec` = NULL,
-    `lifetime_frequency_cap` = NULL,
-    `tracking_urls` = NULL,
     `auto_targeting_enabled` = NULL,
-    `placement_group` = NULL,
-    `pacing_delivery_type` = NULL,
-    `campaign_id` = NULL,
-    `billable_event` = NULL,
+    `bid_in_micro_currency` = NULL,
     `bid_strategy_type` = NULL,
+    `billable_event` = NULL,
+    `budget_in_micro_currency` = NULL,
+    `budget_type` = NULL,
+    `campaign_id` = NULL,
+    `end_time` = NULL,
+    `is_creative_optimization` = NULL,
+    `lifetime_frequency_cap` = NULL,
+    `name` = NULL,
+    `optimization_goal_metadata` = NULL,
+    `pacing_delivery_type` = NULL,
+    `placement_group` = NULL,
+    `promotion_application_level` = NULL,
+    `promotion_id` = NULL,
+    `start_time` = NULL,
+    `status` = NULL,
+    `targeting_spec` = NULL,
     `targeting_template_ids` = NULL,
+    `tracking_urls` = NULL,
 
     #' @description
     #' Initialize a new AdGroupCommon class.
     #'
-    #' @param name Ad group name.
-    #' @param status Ad group/entity status.
-    #' @param budget_in_micro_currency Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.
-    #' @param bid_in_micro_currency Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.
-    #' @param optimization_goal_metadata Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
-    #' @param budget_type budget_type
-    #' @param start_time Ad group start time. Unix timestamp in seconds. Defaults to current time.
-    #' @param end_time Ad group end time. Unix timestamp in seconds.
-    #' @param targeting_spec targeting_spec
-    #' @param lifetime_frequency_cap Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
-    #' @param tracking_urls Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
-    #' @param auto_targeting_enabled Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
-    #' @param placement_group <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
-    #' @param pacing_delivery_type pacing_delivery_type
-    #' @param campaign_id Campaign ID of the ad group.
+    #' @param auto_targeting_enabled Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.
+    #' @param bid_in_micro_currency Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH.
+    #' @param bid_strategy_type Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".
     #' @param billable_event billable_event
-    #' @param bid_strategy_type Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
+    #' @param budget_in_micro_currency Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.
+    #' @param budget_type budget_type
+    #' @param campaign_id Campaign ID of the ad group.
+    #' @param end_time Timestamp in Unix format for scheduling when ads in the ad group stop appearing. If not specified, ads run indefinitely unless you update the ad group by changing their status to `paused`. Cannot occur after `end_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.
+    #' @param is_creative_optimization Enable creative optimization for the ad group, default value is FALSE. When enabled, you allow Pinterest to automatically turn your product Pins into ads in different formats (collections and shopping) and deliver those ads to users at scale.
+    #' @param lifetime_frequency_cap Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
+    #' @param name Ad group name.
+    #' @param optimization_goal_metadata Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
+    #' @param pacing_delivery_type pacing_delivery_type
+    #' @param placement_group <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
+    #' @param promotion_application_level Specify if the promotion is applied at ad group or item level
+    #' @param promotion_id Promotion ID. To clear this field, set to null.. Default to "0".
+    #' @param start_time Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign's `start_time`. Cannot precede `start_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.
+    #' @param status Ad group/entity status.
+    #' @param targeting_spec targeting_spec
     #' @param targeting_template_ids Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].
+    #' @param tracking_urls Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
     #' @param ... Other optional arguments.
-    initialize = function(`name` = NULL, `status` = NULL, `budget_in_micro_currency` = NULL, `bid_in_micro_currency` = NULL, `optimization_goal_metadata` = NULL, `budget_type` = NULL, `start_time` = NULL, `end_time` = NULL, `targeting_spec` = NULL, `lifetime_frequency_cap` = NULL, `tracking_urls` = NULL, `auto_targeting_enabled` = NULL, `placement_group` = NULL, `pacing_delivery_type` = NULL, `campaign_id` = NULL, `billable_event` = NULL, `bid_strategy_type` = NULL, `targeting_template_ids` = NULL, ...) {
-      if (!is.null(`name`)) {
-        if (!(is.character(`name`) && length(`name`) == 1)) {
-          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
-        }
-        self$`name` <- `name`
-      }
-      if (!is.null(`status`)) {
-        if (!(`status` %in% c())) {
-          stop(paste("Error! \"", `status`, "\" cannot be assigned to `status`. Must be .", sep = ""))
-        }
-        stopifnot(R6::is.R6(`status`))
-        self$`status` <- `status`
-      }
-      if (!is.null(`budget_in_micro_currency`)) {
-        if (!(is.numeric(`budget_in_micro_currency`) && length(`budget_in_micro_currency`) == 1)) {
-          stop(paste("Error! Invalid data for `budget_in_micro_currency`. Must be an integer:", `budget_in_micro_currency`))
-        }
-        self$`budget_in_micro_currency` <- `budget_in_micro_currency`
-      }
-      if (!is.null(`bid_in_micro_currency`)) {
-        if (!(is.numeric(`bid_in_micro_currency`) && length(`bid_in_micro_currency`) == 1)) {
-          stop(paste("Error! Invalid data for `bid_in_micro_currency`. Must be an integer:", `bid_in_micro_currency`))
-        }
-        self$`bid_in_micro_currency` <- `bid_in_micro_currency`
-      }
-      if (!is.null(`optimization_goal_metadata`)) {
-        stopifnot(R6::is.R6(`optimization_goal_metadata`))
-        self$`optimization_goal_metadata` <- `optimization_goal_metadata`
-      }
-      if (!is.null(`budget_type`)) {
-        if (!(`budget_type` %in% c())) {
-          stop(paste("Error! \"", `budget_type`, "\" cannot be assigned to `budget_type`. Must be .", sep = ""))
-        }
-        stopifnot(R6::is.R6(`budget_type`))
-        self$`budget_type` <- `budget_type`
-      }
-      if (!is.null(`start_time`)) {
-        if (!(is.numeric(`start_time`) && length(`start_time`) == 1)) {
-          stop(paste("Error! Invalid data for `start_time`. Must be an integer:", `start_time`))
-        }
-        self$`start_time` <- `start_time`
-      }
-      if (!is.null(`end_time`)) {
-        if (!(is.numeric(`end_time`) && length(`end_time`) == 1)) {
-          stop(paste("Error! Invalid data for `end_time`. Must be an integer:", `end_time`))
-        }
-        self$`end_time` <- `end_time`
-      }
-      if (!is.null(`targeting_spec`)) {
-        stopifnot(R6::is.R6(`targeting_spec`))
-        self$`targeting_spec` <- `targeting_spec`
-      }
-      if (!is.null(`lifetime_frequency_cap`)) {
-        if (!(is.numeric(`lifetime_frequency_cap`) && length(`lifetime_frequency_cap`) == 1)) {
-          stop(paste("Error! Invalid data for `lifetime_frequency_cap`. Must be an integer:", `lifetime_frequency_cap`))
-        }
-        self$`lifetime_frequency_cap` <- `lifetime_frequency_cap`
-      }
-      if (!is.null(`tracking_urls`)) {
-        stopifnot(R6::is.R6(`tracking_urls`))
-        self$`tracking_urls` <- `tracking_urls`
-      }
+    initialize = function(`auto_targeting_enabled` = NULL, `bid_in_micro_currency` = NULL, `bid_strategy_type` = NULL, `billable_event` = NULL, `budget_in_micro_currency` = NULL, `budget_type` = NULL, `campaign_id` = NULL, `end_time` = NULL, `is_creative_optimization` = NULL, `lifetime_frequency_cap` = NULL, `name` = NULL, `optimization_goal_metadata` = NULL, `pacing_delivery_type` = NULL, `placement_group` = NULL, `promotion_application_level` = NULL, `promotion_id` = "0", `start_time` = NULL, `status` = NULL, `targeting_spec` = NULL, `targeting_template_ids` = NULL, `tracking_urls` = NULL, ...) {
       if (!is.null(`auto_targeting_enabled`)) {
         if (!(is.logical(`auto_targeting_enabled`) && length(`auto_targeting_enabled`) == 1)) {
           stop(paste("Error! Invalid data for `auto_targeting_enabled`. Must be a boolean:", `auto_targeting_enabled`))
         }
         self$`auto_targeting_enabled` <- `auto_targeting_enabled`
       }
-      if (!is.null(`placement_group`)) {
-        if (!(`placement_group` %in% c())) {
-          stop(paste("Error! \"", `placement_group`, "\" cannot be assigned to `placement_group`. Must be .", sep = ""))
+      if (!is.null(`bid_in_micro_currency`)) {
+        if (!(is.numeric(`bid_in_micro_currency`) && length(`bid_in_micro_currency`) == 1)) {
+          stop(paste("Error! Invalid data for `bid_in_micro_currency`. Must be an integer:", `bid_in_micro_currency`))
         }
-        stopifnot(R6::is.R6(`placement_group`))
-        self$`placement_group` <- `placement_group`
-      }
-      if (!is.null(`pacing_delivery_type`)) {
-        if (!(`pacing_delivery_type` %in% c())) {
-          stop(paste("Error! \"", `pacing_delivery_type`, "\" cannot be assigned to `pacing_delivery_type`. Must be .", sep = ""))
-        }
-        stopifnot(R6::is.R6(`pacing_delivery_type`))
-        self$`pacing_delivery_type` <- `pacing_delivery_type`
-      }
-      if (!is.null(`campaign_id`)) {
-        if (!(is.character(`campaign_id`) && length(`campaign_id`) == 1)) {
-          stop(paste("Error! Invalid data for `campaign_id`. Must be a string:", `campaign_id`))
-        }
-        self$`campaign_id` <- `campaign_id`
-      }
-      if (!is.null(`billable_event`)) {
-        if (!(`billable_event` %in% c())) {
-          stop(paste("Error! \"", `billable_event`, "\" cannot be assigned to `billable_event`. Must be .", sep = ""))
-        }
-        stopifnot(R6::is.R6(`billable_event`))
-        self$`billable_event` <- `billable_event`
+        self$`bid_in_micro_currency` <- `bid_in_micro_currency`
       }
       if (!is.null(`bid_strategy_type`)) {
         if (!(`bid_strategy_type` %in% c("AUTOMATIC_BID", "MAX_BID", "TARGET_AVG"))) {
@@ -177,10 +103,114 @@ AdGroupCommon <- R6::R6Class(
         }
         self$`bid_strategy_type` <- `bid_strategy_type`
       }
+      if (!is.null(`billable_event`)) {
+        if (!(`billable_event` %in% c())) {
+          stop(paste("Error! \"", `billable_event`, "\" cannot be assigned to `billable_event`. Must be .", sep = ""))
+        }
+        stopifnot(R6::is.R6(`billable_event`))
+        self$`billable_event` <- `billable_event`
+      }
+      if (!is.null(`budget_in_micro_currency`)) {
+        if (!(is.numeric(`budget_in_micro_currency`) && length(`budget_in_micro_currency`) == 1)) {
+          stop(paste("Error! Invalid data for `budget_in_micro_currency`. Must be an integer:", `budget_in_micro_currency`))
+        }
+        self$`budget_in_micro_currency` <- `budget_in_micro_currency`
+      }
+      if (!is.null(`budget_type`)) {
+        if (!(`budget_type` %in% c())) {
+          stop(paste("Error! \"", `budget_type`, "\" cannot be assigned to `budget_type`. Must be .", sep = ""))
+        }
+        stopifnot(R6::is.R6(`budget_type`))
+        self$`budget_type` <- `budget_type`
+      }
+      if (!is.null(`campaign_id`)) {
+        if (!(is.character(`campaign_id`) && length(`campaign_id`) == 1)) {
+          stop(paste("Error! Invalid data for `campaign_id`. Must be a string:", `campaign_id`))
+        }
+        self$`campaign_id` <- `campaign_id`
+      }
+      if (!is.null(`end_time`)) {
+        if (!(is.numeric(`end_time`) && length(`end_time`) == 1)) {
+          stop(paste("Error! Invalid data for `end_time`. Must be an integer:", `end_time`))
+        }
+        self$`end_time` <- `end_time`
+      }
+      if (!is.null(`is_creative_optimization`)) {
+        if (!(is.logical(`is_creative_optimization`) && length(`is_creative_optimization`) == 1)) {
+          stop(paste("Error! Invalid data for `is_creative_optimization`. Must be a boolean:", `is_creative_optimization`))
+        }
+        self$`is_creative_optimization` <- `is_creative_optimization`
+      }
+      if (!is.null(`lifetime_frequency_cap`)) {
+        if (!(is.numeric(`lifetime_frequency_cap`) && length(`lifetime_frequency_cap`) == 1)) {
+          stop(paste("Error! Invalid data for `lifetime_frequency_cap`. Must be an integer:", `lifetime_frequency_cap`))
+        }
+        self$`lifetime_frequency_cap` <- `lifetime_frequency_cap`
+      }
+      if (!is.null(`name`)) {
+        if (!(is.character(`name`) && length(`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
+        }
+        self$`name` <- `name`
+      }
+      if (!is.null(`optimization_goal_metadata`)) {
+        stopifnot(R6::is.R6(`optimization_goal_metadata`))
+        self$`optimization_goal_metadata` <- `optimization_goal_metadata`
+      }
+      if (!is.null(`pacing_delivery_type`)) {
+        if (!(`pacing_delivery_type` %in% c())) {
+          stop(paste("Error! \"", `pacing_delivery_type`, "\" cannot be assigned to `pacing_delivery_type`. Must be .", sep = ""))
+        }
+        stopifnot(R6::is.R6(`pacing_delivery_type`))
+        self$`pacing_delivery_type` <- `pacing_delivery_type`
+      }
+      if (!is.null(`placement_group`)) {
+        if (!(`placement_group` %in% c())) {
+          stop(paste("Error! \"", `placement_group`, "\" cannot be assigned to `placement_group`. Must be .", sep = ""))
+        }
+        stopifnot(R6::is.R6(`placement_group`))
+        self$`placement_group` <- `placement_group`
+      }
+      if (!is.null(`promotion_application_level`)) {
+        if (!(`promotion_application_level` %in% c("NONE", "ITEM", "AD_GROUP"))) {
+          stop(paste("Error! \"", `promotion_application_level`, "\" cannot be assigned to `promotion_application_level`. Must be \"NONE\", \"ITEM\", \"AD_GROUP\".", sep = ""))
+        }
+        if (!(is.character(`promotion_application_level`) && length(`promotion_application_level`) == 1)) {
+          stop(paste("Error! Invalid data for `promotion_application_level`. Must be a string:", `promotion_application_level`))
+        }
+        self$`promotion_application_level` <- `promotion_application_level`
+      }
+      if (!is.null(`promotion_id`)) {
+        if (!(is.character(`promotion_id`) && length(`promotion_id`) == 1)) {
+          stop(paste("Error! Invalid data for `promotion_id`. Must be a string:", `promotion_id`))
+        }
+        self$`promotion_id` <- `promotion_id`
+      }
+      if (!is.null(`start_time`)) {
+        if (!(is.numeric(`start_time`) && length(`start_time`) == 1)) {
+          stop(paste("Error! Invalid data for `start_time`. Must be an integer:", `start_time`))
+        }
+        self$`start_time` <- `start_time`
+      }
+      if (!is.null(`status`)) {
+        if (!(`status` %in% c())) {
+          stop(paste("Error! \"", `status`, "\" cannot be assigned to `status`. Must be .", sep = ""))
+        }
+        stopifnot(R6::is.R6(`status`))
+        self$`status` <- `status`
+      }
+      if (!is.null(`targeting_spec`)) {
+        stopifnot(R6::is.R6(`targeting_spec`))
+        self$`targeting_spec` <- `targeting_spec`
+      }
       if (!is.null(`targeting_template_ids`)) {
         stopifnot(is.vector(`targeting_template_ids`), length(`targeting_template_ids`) != 0)
         sapply(`targeting_template_ids`, function(x) stopifnot(is.character(x)))
         self$`targeting_template_ids` <- `targeting_template_ids`
+      }
+      if (!is.null(`tracking_urls`)) {
+        stopifnot(R6::is.R6(`tracking_urls`))
+        self$`tracking_urls` <- `tracking_urls`
       }
     },
 
@@ -215,77 +245,89 @@ AdGroupCommon <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       AdGroupCommonObject <- list()
-      if (!is.null(self$`name`)) {
-        AdGroupCommonObject[["name"]] <-
-          self$`name`
-      }
-      if (!is.null(self$`status`)) {
-        AdGroupCommonObject[["status"]] <-
-          self$`status`$toSimpleType()
-      }
-      if (!is.null(self$`budget_in_micro_currency`)) {
-        AdGroupCommonObject[["budget_in_micro_currency"]] <-
-          self$`budget_in_micro_currency`
+      if (!is.null(self$`auto_targeting_enabled`)) {
+        AdGroupCommonObject[["auto_targeting_enabled"]] <-
+          self$`auto_targeting_enabled`
       }
       if (!is.null(self$`bid_in_micro_currency`)) {
         AdGroupCommonObject[["bid_in_micro_currency"]] <-
           self$`bid_in_micro_currency`
       }
-      if (!is.null(self$`optimization_goal_metadata`)) {
-        AdGroupCommonObject[["optimization_goal_metadata"]] <-
-          self$`optimization_goal_metadata`$toSimpleType()
-      }
-      if (!is.null(self$`budget_type`)) {
-        AdGroupCommonObject[["budget_type"]] <-
-          self$`budget_type`$toSimpleType()
-      }
-      if (!is.null(self$`start_time`)) {
-        AdGroupCommonObject[["start_time"]] <-
-          self$`start_time`
-      }
-      if (!is.null(self$`end_time`)) {
-        AdGroupCommonObject[["end_time"]] <-
-          self$`end_time`
-      }
-      if (!is.null(self$`targeting_spec`)) {
-        AdGroupCommonObject[["targeting_spec"]] <-
-          self$`targeting_spec`$toSimpleType()
-      }
-      if (!is.null(self$`lifetime_frequency_cap`)) {
-        AdGroupCommonObject[["lifetime_frequency_cap"]] <-
-          self$`lifetime_frequency_cap`
-      }
-      if (!is.null(self$`tracking_urls`)) {
-        AdGroupCommonObject[["tracking_urls"]] <-
-          self$`tracking_urls`$toSimpleType()
-      }
-      if (!is.null(self$`auto_targeting_enabled`)) {
-        AdGroupCommonObject[["auto_targeting_enabled"]] <-
-          self$`auto_targeting_enabled`
-      }
-      if (!is.null(self$`placement_group`)) {
-        AdGroupCommonObject[["placement_group"]] <-
-          self$`placement_group`$toSimpleType()
-      }
-      if (!is.null(self$`pacing_delivery_type`)) {
-        AdGroupCommonObject[["pacing_delivery_type"]] <-
-          self$`pacing_delivery_type`$toSimpleType()
-      }
-      if (!is.null(self$`campaign_id`)) {
-        AdGroupCommonObject[["campaign_id"]] <-
-          self$`campaign_id`
+      if (!is.null(self$`bid_strategy_type`)) {
+        AdGroupCommonObject[["bid_strategy_type"]] <-
+          self$`bid_strategy_type`
       }
       if (!is.null(self$`billable_event`)) {
         AdGroupCommonObject[["billable_event"]] <-
           self$`billable_event`$toSimpleType()
       }
-      if (!is.null(self$`bid_strategy_type`)) {
-        AdGroupCommonObject[["bid_strategy_type"]] <-
-          self$`bid_strategy_type`
+      if (!is.null(self$`budget_in_micro_currency`)) {
+        AdGroupCommonObject[["budget_in_micro_currency"]] <-
+          self$`budget_in_micro_currency`
+      }
+      if (!is.null(self$`budget_type`)) {
+        AdGroupCommonObject[["budget_type"]] <-
+          self$`budget_type`$toSimpleType()
+      }
+      if (!is.null(self$`campaign_id`)) {
+        AdGroupCommonObject[["campaign_id"]] <-
+          self$`campaign_id`
+      }
+      if (!is.null(self$`end_time`)) {
+        AdGroupCommonObject[["end_time"]] <-
+          self$`end_time`
+      }
+      if (!is.null(self$`is_creative_optimization`)) {
+        AdGroupCommonObject[["is_creative_optimization"]] <-
+          self$`is_creative_optimization`
+      }
+      if (!is.null(self$`lifetime_frequency_cap`)) {
+        AdGroupCommonObject[["lifetime_frequency_cap"]] <-
+          self$`lifetime_frequency_cap`
+      }
+      if (!is.null(self$`name`)) {
+        AdGroupCommonObject[["name"]] <-
+          self$`name`
+      }
+      if (!is.null(self$`optimization_goal_metadata`)) {
+        AdGroupCommonObject[["optimization_goal_metadata"]] <-
+          self$`optimization_goal_metadata`$toSimpleType()
+      }
+      if (!is.null(self$`pacing_delivery_type`)) {
+        AdGroupCommonObject[["pacing_delivery_type"]] <-
+          self$`pacing_delivery_type`$toSimpleType()
+      }
+      if (!is.null(self$`placement_group`)) {
+        AdGroupCommonObject[["placement_group"]] <-
+          self$`placement_group`$toSimpleType()
+      }
+      if (!is.null(self$`promotion_application_level`)) {
+        AdGroupCommonObject[["promotion_application_level"]] <-
+          self$`promotion_application_level`
+      }
+      if (!is.null(self$`promotion_id`)) {
+        AdGroupCommonObject[["promotion_id"]] <-
+          self$`promotion_id`
+      }
+      if (!is.null(self$`start_time`)) {
+        AdGroupCommonObject[["start_time"]] <-
+          self$`start_time`
+      }
+      if (!is.null(self$`status`)) {
+        AdGroupCommonObject[["status"]] <-
+          self$`status`$toSimpleType()
+      }
+      if (!is.null(self$`targeting_spec`)) {
+        AdGroupCommonObject[["targeting_spec"]] <-
+          self$`targeting_spec`$toSimpleType()
       }
       if (!is.null(self$`targeting_template_ids`)) {
         AdGroupCommonObject[["targeting_template_ids"]] <-
           self$`targeting_template_ids`
+      }
+      if (!is.null(self$`tracking_urls`)) {
+        AdGroupCommonObject[["tracking_urls"]] <-
+          self$`tracking_urls`$toSimpleType()
       }
       return(AdGroupCommonObject)
     },
@@ -297,69 +339,11 @@ AdGroupCommon <- R6::R6Class(
     #' @return the instance of AdGroupCommon
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`name`)) {
-        self$`name` <- this_object$`name`
-      }
-      if (!is.null(this_object$`status`)) {
-        `status_object` <- EntityStatus$new()
-        `status_object`$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
-        self$`status` <- `status_object`
-      }
-      if (!is.null(this_object$`budget_in_micro_currency`)) {
-        self$`budget_in_micro_currency` <- this_object$`budget_in_micro_currency`
-      }
-      if (!is.null(this_object$`bid_in_micro_currency`)) {
-        self$`bid_in_micro_currency` <- this_object$`bid_in_micro_currency`
-      }
-      if (!is.null(this_object$`optimization_goal_metadata`)) {
-        `optimization_goal_metadata_object` <- OptimizationGoalMetadata$new()
-        `optimization_goal_metadata_object`$fromJSON(jsonlite::toJSON(this_object$`optimization_goal_metadata`, auto_unbox = TRUE, digits = NA))
-        self$`optimization_goal_metadata` <- `optimization_goal_metadata_object`
-      }
-      if (!is.null(this_object$`budget_type`)) {
-        `budget_type_object` <- BudgetType$new()
-        `budget_type_object`$fromJSON(jsonlite::toJSON(this_object$`budget_type`, auto_unbox = TRUE, digits = NA))
-        self$`budget_type` <- `budget_type_object`
-      }
-      if (!is.null(this_object$`start_time`)) {
-        self$`start_time` <- this_object$`start_time`
-      }
-      if (!is.null(this_object$`end_time`)) {
-        self$`end_time` <- this_object$`end_time`
-      }
-      if (!is.null(this_object$`targeting_spec`)) {
-        `targeting_spec_object` <- TargetingSpec$new()
-        `targeting_spec_object`$fromJSON(jsonlite::toJSON(this_object$`targeting_spec`, auto_unbox = TRUE, digits = NA))
-        self$`targeting_spec` <- `targeting_spec_object`
-      }
-      if (!is.null(this_object$`lifetime_frequency_cap`)) {
-        self$`lifetime_frequency_cap` <- this_object$`lifetime_frequency_cap`
-      }
-      if (!is.null(this_object$`tracking_urls`)) {
-        `tracking_urls_object` <- TrackingUrls$new()
-        `tracking_urls_object`$fromJSON(jsonlite::toJSON(this_object$`tracking_urls`, auto_unbox = TRUE, digits = NA))
-        self$`tracking_urls` <- `tracking_urls_object`
-      }
       if (!is.null(this_object$`auto_targeting_enabled`)) {
         self$`auto_targeting_enabled` <- this_object$`auto_targeting_enabled`
       }
-      if (!is.null(this_object$`placement_group`)) {
-        `placement_group_object` <- PlacementGroupType$new()
-        `placement_group_object`$fromJSON(jsonlite::toJSON(this_object$`placement_group`, auto_unbox = TRUE, digits = NA))
-        self$`placement_group` <- `placement_group_object`
-      }
-      if (!is.null(this_object$`pacing_delivery_type`)) {
-        `pacing_delivery_type_object` <- PacingDeliveryType$new()
-        `pacing_delivery_type_object`$fromJSON(jsonlite::toJSON(this_object$`pacing_delivery_type`, auto_unbox = TRUE, digits = NA))
-        self$`pacing_delivery_type` <- `pacing_delivery_type_object`
-      }
-      if (!is.null(this_object$`campaign_id`)) {
-        self$`campaign_id` <- this_object$`campaign_id`
-      }
-      if (!is.null(this_object$`billable_event`)) {
-        `billable_event_object` <- ActionType$new()
-        `billable_event_object`$fromJSON(jsonlite::toJSON(this_object$`billable_event`, auto_unbox = TRUE, digits = NA))
-        self$`billable_event` <- `billable_event_object`
+      if (!is.null(this_object$`bid_in_micro_currency`)) {
+        self$`bid_in_micro_currency` <- this_object$`bid_in_micro_currency`
       }
       if (!is.null(this_object$`bid_strategy_type`)) {
         if (!is.null(this_object$`bid_strategy_type`) && !(this_object$`bid_strategy_type` %in% c("AUTOMATIC_BID", "MAX_BID", "TARGET_AVG"))) {
@@ -367,8 +351,78 @@ AdGroupCommon <- R6::R6Class(
         }
         self$`bid_strategy_type` <- this_object$`bid_strategy_type`
       }
+      if (!is.null(this_object$`billable_event`)) {
+        `billable_event_object` <- ActionType$new()
+        `billable_event_object`$fromJSON(jsonlite::toJSON(this_object$`billable_event`, auto_unbox = TRUE, digits = NA))
+        self$`billable_event` <- `billable_event_object`
+      }
+      if (!is.null(this_object$`budget_in_micro_currency`)) {
+        self$`budget_in_micro_currency` <- this_object$`budget_in_micro_currency`
+      }
+      if (!is.null(this_object$`budget_type`)) {
+        `budget_type_object` <- BudgetType$new()
+        `budget_type_object`$fromJSON(jsonlite::toJSON(this_object$`budget_type`, auto_unbox = TRUE, digits = NA))
+        self$`budget_type` <- `budget_type_object`
+      }
+      if (!is.null(this_object$`campaign_id`)) {
+        self$`campaign_id` <- this_object$`campaign_id`
+      }
+      if (!is.null(this_object$`end_time`)) {
+        self$`end_time` <- this_object$`end_time`
+      }
+      if (!is.null(this_object$`is_creative_optimization`)) {
+        self$`is_creative_optimization` <- this_object$`is_creative_optimization`
+      }
+      if (!is.null(this_object$`lifetime_frequency_cap`)) {
+        self$`lifetime_frequency_cap` <- this_object$`lifetime_frequency_cap`
+      }
+      if (!is.null(this_object$`name`)) {
+        self$`name` <- this_object$`name`
+      }
+      if (!is.null(this_object$`optimization_goal_metadata`)) {
+        `optimization_goal_metadata_object` <- OptimizationGoalMetadata$new()
+        `optimization_goal_metadata_object`$fromJSON(jsonlite::toJSON(this_object$`optimization_goal_metadata`, auto_unbox = TRUE, digits = NA))
+        self$`optimization_goal_metadata` <- `optimization_goal_metadata_object`
+      }
+      if (!is.null(this_object$`pacing_delivery_type`)) {
+        `pacing_delivery_type_object` <- PacingDeliveryType$new()
+        `pacing_delivery_type_object`$fromJSON(jsonlite::toJSON(this_object$`pacing_delivery_type`, auto_unbox = TRUE, digits = NA))
+        self$`pacing_delivery_type` <- `pacing_delivery_type_object`
+      }
+      if (!is.null(this_object$`placement_group`)) {
+        `placement_group_object` <- PlacementGroupType$new()
+        `placement_group_object`$fromJSON(jsonlite::toJSON(this_object$`placement_group`, auto_unbox = TRUE, digits = NA))
+        self$`placement_group` <- `placement_group_object`
+      }
+      if (!is.null(this_object$`promotion_application_level`)) {
+        if (!is.null(this_object$`promotion_application_level`) && !(this_object$`promotion_application_level` %in% c("NONE", "ITEM", "AD_GROUP"))) {
+          stop(paste("Error! \"", this_object$`promotion_application_level`, "\" cannot be assigned to `promotion_application_level`. Must be \"NONE\", \"ITEM\", \"AD_GROUP\".", sep = ""))
+        }
+        self$`promotion_application_level` <- this_object$`promotion_application_level`
+      }
+      if (!is.null(this_object$`promotion_id`)) {
+        self$`promotion_id` <- this_object$`promotion_id`
+      }
+      if (!is.null(this_object$`start_time`)) {
+        self$`start_time` <- this_object$`start_time`
+      }
+      if (!is.null(this_object$`status`)) {
+        `status_object` <- EntityStatus$new()
+        `status_object`$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
+        self$`status` <- `status_object`
+      }
+      if (!is.null(this_object$`targeting_spec`)) {
+        `targeting_spec_object` <- TargetingSpec$new()
+        `targeting_spec_object`$fromJSON(jsonlite::toJSON(this_object$`targeting_spec`, auto_unbox = TRUE, digits = NA))
+        self$`targeting_spec` <- `targeting_spec_object`
+      }
       if (!is.null(this_object$`targeting_template_ids`)) {
         self$`targeting_template_ids` <- ApiClient$new()$deserializeObj(this_object$`targeting_template_ids`, "array[character]", loadNamespace("openapi"))
+      }
+      if (!is.null(this_object$`tracking_urls`)) {
+        `tracking_urls_object` <- TrackingUrls$new()
+        `tracking_urls_object`$fromJSON(jsonlite::toJSON(this_object$`tracking_urls`, auto_unbox = TRUE, digits = NA))
+        self$`tracking_urls` <- `tracking_urls_object`
       }
       self
     },
@@ -391,27 +445,33 @@ AdGroupCommon <- R6::R6Class(
     #' @return the instance of AdGroupCommon
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`name` <- this_object$`name`
-      self$`status` <- EntityStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
-      self$`budget_in_micro_currency` <- this_object$`budget_in_micro_currency`
-      self$`bid_in_micro_currency` <- this_object$`bid_in_micro_currency`
-      self$`optimization_goal_metadata` <- OptimizationGoalMetadata$new()$fromJSON(jsonlite::toJSON(this_object$`optimization_goal_metadata`, auto_unbox = TRUE, digits = NA))
-      self$`budget_type` <- BudgetType$new()$fromJSON(jsonlite::toJSON(this_object$`budget_type`, auto_unbox = TRUE, digits = NA))
-      self$`start_time` <- this_object$`start_time`
-      self$`end_time` <- this_object$`end_time`
-      self$`targeting_spec` <- TargetingSpec$new()$fromJSON(jsonlite::toJSON(this_object$`targeting_spec`, auto_unbox = TRUE, digits = NA))
-      self$`lifetime_frequency_cap` <- this_object$`lifetime_frequency_cap`
-      self$`tracking_urls` <- TrackingUrls$new()$fromJSON(jsonlite::toJSON(this_object$`tracking_urls`, auto_unbox = TRUE, digits = NA))
       self$`auto_targeting_enabled` <- this_object$`auto_targeting_enabled`
-      self$`placement_group` <- PlacementGroupType$new()$fromJSON(jsonlite::toJSON(this_object$`placement_group`, auto_unbox = TRUE, digits = NA))
-      self$`pacing_delivery_type` <- PacingDeliveryType$new()$fromJSON(jsonlite::toJSON(this_object$`pacing_delivery_type`, auto_unbox = TRUE, digits = NA))
-      self$`campaign_id` <- this_object$`campaign_id`
-      self$`billable_event` <- ActionType$new()$fromJSON(jsonlite::toJSON(this_object$`billable_event`, auto_unbox = TRUE, digits = NA))
+      self$`bid_in_micro_currency` <- this_object$`bid_in_micro_currency`
       if (!is.null(this_object$`bid_strategy_type`) && !(this_object$`bid_strategy_type` %in% c("AUTOMATIC_BID", "MAX_BID", "TARGET_AVG"))) {
         stop(paste("Error! \"", this_object$`bid_strategy_type`, "\" cannot be assigned to `bid_strategy_type`. Must be \"AUTOMATIC_BID\", \"MAX_BID\", \"TARGET_AVG\".", sep = ""))
       }
       self$`bid_strategy_type` <- this_object$`bid_strategy_type`
+      self$`billable_event` <- ActionType$new()$fromJSON(jsonlite::toJSON(this_object$`billable_event`, auto_unbox = TRUE, digits = NA))
+      self$`budget_in_micro_currency` <- this_object$`budget_in_micro_currency`
+      self$`budget_type` <- BudgetType$new()$fromJSON(jsonlite::toJSON(this_object$`budget_type`, auto_unbox = TRUE, digits = NA))
+      self$`campaign_id` <- this_object$`campaign_id`
+      self$`end_time` <- this_object$`end_time`
+      self$`is_creative_optimization` <- this_object$`is_creative_optimization`
+      self$`lifetime_frequency_cap` <- this_object$`lifetime_frequency_cap`
+      self$`name` <- this_object$`name`
+      self$`optimization_goal_metadata` <- OptimizationGoalMetadata$new()$fromJSON(jsonlite::toJSON(this_object$`optimization_goal_metadata`, auto_unbox = TRUE, digits = NA))
+      self$`pacing_delivery_type` <- PacingDeliveryType$new()$fromJSON(jsonlite::toJSON(this_object$`pacing_delivery_type`, auto_unbox = TRUE, digits = NA))
+      self$`placement_group` <- PlacementGroupType$new()$fromJSON(jsonlite::toJSON(this_object$`placement_group`, auto_unbox = TRUE, digits = NA))
+      if (!is.null(this_object$`promotion_application_level`) && !(this_object$`promotion_application_level` %in% c("NONE", "ITEM", "AD_GROUP"))) {
+        stop(paste("Error! \"", this_object$`promotion_application_level`, "\" cannot be assigned to `promotion_application_level`. Must be \"NONE\", \"ITEM\", \"AD_GROUP\".", sep = ""))
+      }
+      self$`promotion_application_level` <- this_object$`promotion_application_level`
+      self$`promotion_id` <- this_object$`promotion_id`
+      self$`start_time` <- this_object$`start_time`
+      self$`status` <- EntityStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
+      self$`targeting_spec` <- TargetingSpec$new()$fromJSON(jsonlite::toJSON(this_object$`targeting_spec`, auto_unbox = TRUE, digits = NA))
       self$`targeting_template_ids` <- ApiClient$new()$deserializeObj(this_object$`targeting_template_ids`, "array[character]", loadNamespace("openapi"))
+      self$`tracking_urls` <- TrackingUrls$new()$fromJSON(jsonlite::toJSON(this_object$`tracking_urls`, auto_unbox = TRUE, digits = NA))
       self
     },
 
@@ -440,6 +500,10 @@ AdGroupCommon <- R6::R6Class(
         return(FALSE)
       }
 
+      if (!str_detect(self$`promotion_id`, "^\\d+$")) {
+        return(FALSE)
+      }
+
       if (length(self$`targeting_template_ids`) > 1) {
         return(FALSE)
       }
@@ -455,6 +519,10 @@ AdGroupCommon <- R6::R6Class(
       invalid_fields <- list()
       if (!str_detect(self$`campaign_id`, "^[C]?\\d+$")) {
         invalid_fields["campaign_id"] <- "Invalid value for `campaign_id`, must conform to the pattern ^[C]?\\d+$."
+      }
+
+      if (!str_detect(self$`promotion_id`, "^\\d+$")) {
+        invalid_fields["promotion_id"] <- "Invalid value for `promotion_id`, must conform to the pattern ^\\d+$."
       }
 
       if (length(self$`targeting_template_ids`) > 1) {

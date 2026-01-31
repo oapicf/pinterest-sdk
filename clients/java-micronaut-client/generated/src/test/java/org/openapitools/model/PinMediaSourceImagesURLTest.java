@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.PinMediaSourceImagesURLItemsInner;
+import org.openapitools.model.PinMediaSourceImagesURLItem;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -24,11 +24,11 @@ public class PinMediaSourceImagesURLTest {
     }
 
     /**
-     * Test the property 'sourceType'
+     * Test the property 'index'
      */
     @Test
-    public void sourceTypeTest() {
-        // TODO: test sourceType
+    public void indexTest() {
+        // TODO: test index
     }
 
     /**
@@ -40,11 +40,11 @@ public class PinMediaSourceImagesURLTest {
     }
 
     /**
-     * Test the property 'index'
+     * Test the property 'sourceType'
      */
     @Test
-    public void indexTest() {
-        // TODO: test index
+    public void sourceTypeTest() {
+        // TODO: test sourceType
     }
 
 }

@@ -2,6 +2,8 @@
 
 -export([ads_credit/redeem/3, ads_credit/redeem/4,
          ads_credits_discounts/get/2, ads_credits_discounts/get/3,
+         billing_invoice_download/get/3, billing_invoice_download/get/4,
+         billing_invoices/get/2, billing_invoices/get/3,
          billing_profiles/get/3, billing_profiles/get/4,
          ssio_accounts/get/2, ssio_accounts/get/3,
          ssio_insertion_order/create/3, ssio_insertion_order/create/4,
@@ -13,7 +15,7 @@
 -define(BASE_URL, <<"/v5">>).
 
 %% @doc Redeem ad credits
-%% Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+%% Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 -spec ads_credit/redeem(ctx:ctx(), binary(), openapi_ads_credit_redeem_request:openapi_ads_credit_redeem_request()) -> {ok, openapi_ads_credit_redeem_response:openapi_ads_credit_redeem_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 ads_credit/redeem(Ctx, AdAccountId, OpenapiAdsCreditRedeemRequest) ->
     ads_credit/redeem(Ctx, AdAccountId, OpenapiAdsCreditRedeemRequest, #{}).
@@ -34,7 +36,7 @@ ads_credit/redeem(Ctx, AdAccountId, OpenapiAdsCreditRedeemRequest, Optional) ->
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Get ads credit discounts
-%% Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+%% Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 -spec ads_credits_discounts/get(ctx:ctx(), binary()) -> {ok, openapi_ads_credits_discounts_get_200_response:openapi_ads_credits_discounts_get_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 ads_credits_discounts/get(Ctx, AdAccountId) ->
     ads_credits_discounts/get(Ctx, AdAccountId, #{}).
@@ -54,8 +56,50 @@ ads_credits_discounts/get(Ctx, AdAccountId, Optional) ->
 
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
+%% @doc Get download url for a billing invoice
+%% Get download url for a billing invoice.
+-spec billing_invoice_download/get(ctx:ctx(), binary(), binary()) -> {ok, openapi_billing_invoice_download_response:openapi_billing_invoice_download_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+billing_invoice_download/get(Ctx, AdAccountId, BillingInvoiceId) ->
+    billing_invoice_download/get(Ctx, AdAccountId, BillingInvoiceId, #{}).
+
+-spec billing_invoice_download/get(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, openapi_billing_invoice_download_response:openapi_billing_invoice_download_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+billing_invoice_download/get(Ctx, AdAccountId, BillingInvoiceId, Optional) ->
+    _OptionalParams = maps:get(params, Optional, #{}),
+    Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
+
+    Method = get,
+    Path = [?BASE_URL, "/ad_accounts/", AdAccountId, "/billing_invoice/", BillingInvoiceId, "/download"],
+    QS = [],
+    Headers = [],
+    Body1 = [],
+    ContentTypeHeader = openapi_utils:select_header_content_type([]),
+    Opts = maps:get(hackney_opts, Optional, []),
+
+    openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
+
+%% @doc Get billing invoices
+%% Get billing invoices in the advertiser account.
+-spec billing_invoices/get(ctx:ctx(), binary()) -> {ok, openapi_billing_invoices_get_200_response:openapi_billing_invoices_get_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+billing_invoices/get(Ctx, AdAccountId) ->
+    billing_invoices/get(Ctx, AdAccountId, #{}).
+
+-spec billing_invoices/get(ctx:ctx(), binary(), maps:map()) -> {ok, openapi_billing_invoices_get_200_response:openapi_billing_invoices_get_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+billing_invoices/get(Ctx, AdAccountId, Optional) ->
+    _OptionalParams = maps:get(params, Optional, #{}),
+    Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
+
+    Method = get,
+    Path = [?BASE_URL, "/ad_accounts/", AdAccountId, "/billing_invoices"],
+    QS = lists:flatten([])++openapi_utils:optional_params(['bookmark', 'page_size', 'sort', 'order', 'status', 'document_type', 'start_due_date', 'end_due_date'], _OptionalParams),
+    Headers = [],
+    Body1 = [],
+    ContentTypeHeader = openapi_utils:select_header_content_type([]),
+    Opts = maps:get(hackney_opts, Optional, []),
+
+    openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
+
 %% @doc Get billing profiles
-%% Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+%% Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 -spec billing_profiles/get(ctx:ctx(), binary(), boolean()) -> {ok, openapi_billing_profiles_get_200_response:openapi_billing_profiles_get_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 billing_profiles/get(Ctx, AdAccountId, IsActive) ->
     billing_profiles/get(Ctx, AdAccountId, IsActive, #{}).

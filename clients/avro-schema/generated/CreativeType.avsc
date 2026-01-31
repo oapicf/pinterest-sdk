@@ -1,7 +1,7 @@
 {
   "namespace": "model",
   "type": "enum",
-  "doc": "Ad creative type enum. For update, only draft ads may update creative type. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.",
+  "doc": "Ad creative type enum. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.",
   "name": "CreativeType",
   "symbols": [
     "REGULAR",
@@ -13,6 +13,9 @@
     "COLLECTION",
     "IDEA",
     "SHOWCASE",
-    "QUIZ"
+    "QUIZ",
+    "COLLAGE",
+    "MAX_WIDTH_REGULAR_COLLECTION",
+    "MAX_WIDTH_VIDEO_COLLECTION"
   ]
 }

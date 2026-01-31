@@ -28,34 +28,10 @@ class LeadFormResponseTest : ShouldSpec() {
         // uncomment below to create an instance of LeadFormResponse
         //val modelInstance = LeadFormResponse()
 
-        // to test the property `name` - Internal name of the lead form.
-        should("test name") {
-            // uncomment below to test the property
-            //modelInstance.name shouldBe ("TODO")
-        }
-
-        // to test the property `privacyPolicyLink` - A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
-        should("test privacyPolicyLink") {
-            // uncomment below to test the property
-            //modelInstance.privacyPolicyLink shouldBe ("TODO")
-        }
-
-        // to test the property `hasAcceptedTerms` - Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
-        should("test hasAcceptedTerms") {
-            // uncomment below to test the property
-            //modelInstance.hasAcceptedTerms shouldBe ("TODO")
-        }
-
         // to test the property `completionMessage` - A message for people who complete the form to let them know what happens next.
         should("test completionMessage") {
             // uncomment below to test the property
             //modelInstance.completionMessage shouldBe ("TODO")
-        }
-
-        // to test the property `status`
-        should("test status") {
-            // uncomment below to test the property
-            //modelInstance.status shouldBe ("TODO")
         }
 
         // to test the property `disclosureLanguage` - Additional disclosure language to be included in the lead form.
@@ -64,10 +40,16 @@ class LeadFormResponseTest : ShouldSpec() {
             //modelInstance.disclosureLanguage shouldBe ("TODO")
         }
 
-        // to test the property `questions` - List of questions to be displayed on the lead form.
-        should("test questions") {
+        // to test the property `hasAcceptedTerms` - Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
+        should("test hasAcceptedTerms") {
             // uncomment below to test the property
-            //modelInstance.questions shouldBe ("TODO")
+            //modelInstance.hasAcceptedTerms shouldBe ("TODO")
+        }
+
+        // to test the property `name` - Internal name of the lead form.
+        should("test name") {
+            // uncomment below to test the property
+            //modelInstance.name shouldBe ("TODO")
         }
 
         // to test the property `policyLinks` - List of additional policy links to be displayed on the lead form.
@@ -76,10 +58,22 @@ class LeadFormResponseTest : ShouldSpec() {
             //modelInstance.policyLinks shouldBe ("TODO")
         }
 
-        // to test the property `id` - The ID of this lead form
-        should("test id") {
+        // to test the property `privacyPolicyLink` - A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
+        should("test privacyPolicyLink") {
             // uncomment below to test the property
-            //modelInstance.id shouldBe ("TODO")
+            //modelInstance.privacyPolicyLink shouldBe ("TODO")
+        }
+
+        // to test the property `questions` - List of questions to be displayed on the lead form.
+        should("test questions") {
+            // uncomment below to test the property
+            //modelInstance.questions shouldBe ("TODO")
+        }
+
+        // to test the property `status`
+        should("test status") {
+            // uncomment below to test the property
+            //modelInstance.status shouldBe ("TODO")
         }
 
         // to test the property `adAccountId` - The Ad Account ID that this lead form belongs to.
@@ -92,6 +86,12 @@ class LeadFormResponseTest : ShouldSpec() {
         should("test createdTime") {
             // uncomment below to test the property
             //modelInstance.createdTime shouldBe ("TODO")
+        }
+
+        // to test the property `id` - The ID of this lead form
+        should("test id") {
+            // uncomment below to test the property
+            //modelInstance.id shouldBe ("TODO")
         }
 
         // to test the property `updatedTime` - Last update time. Unix timestamp in seconds.

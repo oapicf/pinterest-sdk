@@ -8,7 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.AdvancedAuctionProcessedItem;
+import org.openapitools.model.AdvancedAuctionItemsSubmitRecord;
 
 
 
@@ -17,13 +17,13 @@ import org.openapitools.model.AdvancedAuctionProcessedItem;
  **/
 
 @ApiModel(description = "Response object containing the results of an operation on an item bid option")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionProcessedItems   {
   @JsonProperty("catalog_id")
   private String catalogId;
 
   @JsonProperty("items")
-  private List<AdvancedAuctionProcessedItem> items = null;
+  private List<AdvancedAuctionItemsSubmitRecord> items = null;
 
   /**
    * Catalog id pertaining to all items
@@ -46,7 +46,7 @@ public class AdvancedAuctionProcessedItems   {
   /**
    * Array of advanced auction processed items
    **/
-  public AdvancedAuctionProcessedItems items(List<AdvancedAuctionProcessedItem> items) {
+  public AdvancedAuctionProcessedItems items(List<AdvancedAuctionItemsSubmitRecord> items) {
     this.items = items;
     return this;
   }
@@ -54,10 +54,10 @@ public class AdvancedAuctionProcessedItems   {
   
   @ApiModelProperty(value = "Array of advanced auction processed items")
   @JsonProperty("items")
-  public List<AdvancedAuctionProcessedItem> getItems() {
+  public List<AdvancedAuctionItemsSubmitRecord> getItems() {
     return items;
   }
-  public void setItems(List<AdvancedAuctionProcessedItem> items) {
+  public void setItems(List<AdvancedAuctionItemsSubmitRecord> items) {
     this.items = items;
   }
 

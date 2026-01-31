@@ -10,10 +10,10 @@ The class is defined in **[QuizPinResult.java](../../src/main/java/org/openapito
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**organicPinId** | `String` |  |  [optional property]
 **androidDeepLink** | `String` |  |  [optional property]
-**iosDeepLink** | `String` |  |  [optional property]
 **destinationUrl** | `String` |  |  [optional property]
+**iosDeepLink** | `String` |  |  [optional property]
+**organicPinId** | `String` |  |  [optional property]
 **resultId** | `BigDecimal` |  |  [optional property]
 
 

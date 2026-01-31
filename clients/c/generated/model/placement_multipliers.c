@@ -5,13 +5,13 @@
 
 
 char* placement_multipliers_placement_ToString(pinterest_rest_api_placement_multipliers_PLACEMENT_e placement) {
-    char* placementArray[] =  { "NULL", "SEARCH", "BROWSE" };
+    char* placementArray[] =  { "NULL", "SEARCH", "BROWSE", "RELATED_PINS" };
     return placementArray[placement];
 }
 
 pinterest_rest_api_placement_multipliers_PLACEMENT_e placement_multipliers_placement_FromString(char* placement){
     int stringToReturn = 0;
-    char *placementArray[] =  { "NULL", "SEARCH", "BROWSE" };
+    char *placementArray[] =  { "NULL", "SEARCH", "BROWSE", "RELATED_PINS" };
     size_t sizeofArray = sizeof(placementArray) / sizeof(placementArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(placement, placementArray[stringToReturn]) == 0) {

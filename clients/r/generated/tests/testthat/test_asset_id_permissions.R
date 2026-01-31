@@ -5,6 +5,13 @@ context("Test AssetIdPermissions")
 
 model_instance <- AssetIdPermissions$new()
 
+test_that("asset_group_info", {
+  # tests for the property `asset_group_info` (AssetGroupBinding)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`asset_group_info`, "EXPECTED_RESULT")
+})
+
 test_that("asset_id", {
   # tests for the property `asset_id` (character)
   # Unique identifier of a business asset.
@@ -15,7 +22,7 @@ test_that("asset_id", {
 
 test_that("asset_type", {
   # tests for the property `asset_type` (character)
-  # Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+  # Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`asset_type`, "EXPECTED_RESULT")
@@ -27,11 +34,4 @@ test_that("permissions", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`permissions`, "EXPECTED_RESULT")
-})
-
-test_that("asset_group_info", {
-  # tests for the property `asset_group_info` (AssetGroupBinding)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`asset_group_info`, "EXPECTED_RESULT")
 })

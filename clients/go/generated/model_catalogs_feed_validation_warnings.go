@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,104 +20,428 @@ var _ MappedNullable = &CatalogsFeedValidationWarnings{}
 
 // CatalogsFeedValidationWarnings struct for CatalogsFeedValidationWarnings
 type CatalogsFeedValidationWarnings struct {
+	// ad_image_0_link is duplicated with another ad image link.
+	ADIMAGE0LINKDUPLICATED *int32 `json:"AD_IMAGE_0_LINK_DUPLICATED,omitempty"`
+	// Ad image link 0 length is too long. The maximum length is 2047 characters.
+	ADIMAGE0LINKLENGTHTOOLONG *int32 `json:"AD_IMAGE_0_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 0 is required because an image tag was provided.
+	ADIMAGE0LINKREQUIRED *int32 `json:"AD_IMAGE_0_LINK_REQUIRED,omitempty"`
+	// Ad image link 0 format is unsupported.
+	ADIMAGE0LINKWARNING *int32 `json:"AD_IMAGE_0_LINK_WARNING,omitempty"`
+	// ad_image_0_tag is duplicated with another ad image tag.
+	ADIMAGE0TAGDUPLICATED *int32 `json:"AD_IMAGE_0_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 0 length is too long. The maximum length is 511 characters.
+	ADIMAGE0TAGLENGTHTOOLONG *int32 `json:"AD_IMAGE_0_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 0 is required because an image link was provided.
+	ADIMAGE0TAGREQUIRED *int32 `json:"AD_IMAGE_0_TAG_REQUIRED,omitempty"`
+	// ad_image_10_link is duplicated with another ad image link.
+	ADIMAGE10LINKDUPLICATED *int32 `json:"AD_IMAGE_10_LINK_DUPLICATED,omitempty"`
+	// Ad image link 10 length is too long. The maximum length is 2047 characters.
+	ADIMAGE10LINKLENGTHTOOLONG *int32 `json:"AD_IMAGE_10_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 10 is required because an image tag was provided.
+	ADIMAGE10LINKREQUIRED *int32 `json:"AD_IMAGE_10_LINK_REQUIRED,omitempty"`
+	// Ad image link 10 format is unsupported.
+	ADIMAGE10LINKWARNING *int32 `json:"AD_IMAGE_10_LINK_WARNING,omitempty"`
+	// ad_image_10_tag is duplicated with another ad image tag.
+	ADIMAGE10TAGDUPLICATED *int32 `json:"AD_IMAGE_10_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 10 length is too long. The maximum length is 511 characters.
+	ADIMAGE10TAGLENGTHTOOLONG *int32 `json:"AD_IMAGE_10_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 10 is required because an image link was provided.
+	ADIMAGE10TAGREQUIRED *int32 `json:"AD_IMAGE_10_TAG_REQUIRED,omitempty"`
+	// ad_image_11_link is duplicated with another ad image link.
+	ADIMAGE11LINKDUPLICATED *int32 `json:"AD_IMAGE_11_LINK_DUPLICATED,omitempty"`
+	// Ad image link 11 length is too long. The maximum length is 2047 characters.
+	ADIMAGE11LINKLENGTHTOOLONG *int32 `json:"AD_IMAGE_11_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 11 is required because an image tag was provided.
+	ADIMAGE11LINKREQUIRED *int32 `json:"AD_IMAGE_11_LINK_REQUIRED,omitempty"`
+	// Ad image link 11 format is unsupported.
+	ADIMAGE11LINKWARNING *int32 `json:"AD_IMAGE_11_LINK_WARNING,omitempty"`
+	// ad_image_11_tag is duplicated with another ad image tag.
+	ADIMAGE11TAGDUPLICATED *int32 `json:"AD_IMAGE_11_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 11 length is too long. The maximum length is 511 characters.
+	ADIMAGE11TAGLENGTHTOOLONG *int32 `json:"AD_IMAGE_11_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 11 is required because an image link was provided.
+	ADIMAGE11TAGREQUIRED *int32 `json:"AD_IMAGE_11_TAG_REQUIRED,omitempty"`
+	// ad_image_12_link is duplicated with another ad image link.
+	ADIMAGE12LINKDUPLICATED *int32 `json:"AD_IMAGE_12_LINK_DUPLICATED,omitempty"`
+	// Ad image link 12 length is too long. The maximum length is 2047 characters.
+	ADIMAGE12LINKLENGTHTOOLONG *int32 `json:"AD_IMAGE_12_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 12 is required because an image tag was provided.
+	ADIMAGE12LINKREQUIRED *int32 `json:"AD_IMAGE_12_LINK_REQUIRED,omitempty"`
+	// Ad image link 12 format is unsupported.
+	ADIMAGE12LINKWARNING *int32 `json:"AD_IMAGE_12_LINK_WARNING,omitempty"`
+	// ad_image_12_tag is duplicated with another ad image tag.
+	ADIMAGE12TAGDUPLICATED *int32 `json:"AD_IMAGE_12_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 12 length is too long. The maximum length is 511 characters.
+	ADIMAGE12TAGLENGTHTOOLONG *int32 `json:"AD_IMAGE_12_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 12 is required because an image link was provided.
+	ADIMAGE12TAGREQUIRED *int32 `json:"AD_IMAGE_12_TAG_REQUIRED,omitempty"`
+	// ad_image_13_link is duplicated with another ad image link.
+	ADIMAGE13LINKDUPLICATED *int32 `json:"AD_IMAGE_13_LINK_DUPLICATED,omitempty"`
+	// Ad image link 13 length is too long. The maximum length is 2047 characters.
+	ADIMAGE13LINKLENGTHTOOLONG *int32 `json:"AD_IMAGE_13_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 13 is required because an image tag was provided.
+	ADIMAGE13LINKREQUIRED *int32 `json:"AD_IMAGE_13_LINK_REQUIRED,omitempty"`
+	// Ad image link 13 format is unsupported.
+	ADIMAGE13LINKWARNING *int32 `json:"AD_IMAGE_13_LINK_WARNING,omitempty"`
+	// ad_image_13_tag is duplicated with another ad image tag.
+	ADIMAGE13TAGDUPLICATED *int32 `json:"AD_IMAGE_13_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 13 length is too long. The maximum length is 511 characters.
+	ADIMAGE13TAGLENGTHTOOLONG *int32 `json:"AD_IMAGE_13_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 13 is required because an image link was provided.
+	ADIMAGE13TAGREQUIRED *int32 `json:"AD_IMAGE_13_TAG_REQUIRED,omitempty"`
+	// ad_image_14_link is duplicated with another ad image link.
+	ADIMAGE14LINKDUPLICATED *int32 `json:"AD_IMAGE_14_LINK_DUPLICATED,omitempty"`
+	// Ad image link 14 length is too long. The maximum length is 2047 characters.
+	ADIMAGE14LINKLENGTHTOOLONG *int32 `json:"AD_IMAGE_14_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 14 is required because an image tag was provided.
+	ADIMAGE14LINKREQUIRED *int32 `json:"AD_IMAGE_14_LINK_REQUIRED,omitempty"`
+	// Ad image link 14 format is unsupported.
+	ADIMAGE14LINKWARNING *int32 `json:"AD_IMAGE_14_LINK_WARNING,omitempty"`
+	// ad_image_14_tag is duplicated with another ad image tag.
+	ADIMAGE14TAGDUPLICATED *int32 `json:"AD_IMAGE_14_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 14 length is too long. The maximum length is 511 characters.
+	ADIMAGE14TAGLENGTHTOOLONG *int32 `json:"AD_IMAGE_14_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 14 is required because an image link was provided.
+	ADIMAGE14TAGREQUIRED *int32 `json:"AD_IMAGE_14_TAG_REQUIRED,omitempty"`
+	// ad_image_15_link is duplicated with another ad image link.
+	ADIMAGE15LINKDUPLICATED *int32 `json:"AD_IMAGE_15_LINK_DUPLICATED,omitempty"`
+	// Ad image link 15 length is too long. The maximum length is 2047 characters.
+	ADIMAGE15LINKLENGTHTOOLONG *int32 `json:"AD_IMAGE_15_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 15 is required because an image tag was provided.
+	ADIMAGE15LINKREQUIRED *int32 `json:"AD_IMAGE_15_LINK_REQUIRED,omitempty"`
+	// Ad image link 15 format is unsupported.
+	ADIMAGE15LINKWARNING *int32 `json:"AD_IMAGE_15_LINK_WARNING,omitempty"`
+	// ad_image_15_tag is duplicated with another ad image tag.
+	ADIMAGE15TAGDUPLICATED *int32 `json:"AD_IMAGE_15_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 15 length is too long. The maximum length is 511 characters.
+	ADIMAGE15TAGLENGTHTOOLONG *int32 `json:"AD_IMAGE_15_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 15 is required because an image link was provided.
+	ADIMAGE15TAGREQUIRED *int32 `json:"AD_IMAGE_15_TAG_REQUIRED,omitempty"`
+	// ad_image_16_link is duplicated with another ad image link.
+	ADIMAGE16LINKDUPLICATED *int32 `json:"AD_IMAGE_16_LINK_DUPLICATED,omitempty"`
+	// Ad image link 16 length is too long. The maximum length is 2047 characters.
+	ADIMAGE16LINKLENGTHTOOLONG *int32 `json:"AD_IMAGE_16_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 16 is required because an image tag was provided.
+	ADIMAGE16LINKREQUIRED *int32 `json:"AD_IMAGE_16_LINK_REQUIRED,omitempty"`
+	// Ad image link 16 format is unsupported.
+	ADIMAGE16LINKWARNING *int32 `json:"AD_IMAGE_16_LINK_WARNING,omitempty"`
+	// ad_image_16_tag is duplicated with another ad image tag.
+	ADIMAGE16TAGDUPLICATED *int32 `json:"AD_IMAGE_16_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 16 length is too long. The maximum length is 511 characters.
+	ADIMAGE16TAGLENGTHTOOLONG *int32 `json:"AD_IMAGE_16_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 16 is required because an image link was provided.
+	ADIMAGE16TAGREQUIRED *int32 `json:"AD_IMAGE_16_TAG_REQUIRED,omitempty"`
+	// ad_image_17_link is duplicated with another ad image link.
+	ADIMAGE17LINKDUPLICATED *int32 `json:"AD_IMAGE_17_LINK_DUPLICATED,omitempty"`
+	// Ad image link 17 length is too long. The maximum length is 2047 characters.
+	ADIMAGE17LINKLENGTHTOOLONG *int32 `json:"AD_IMAGE_17_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 17 is required because an image tag was provided.
+	ADIMAGE17LINKREQUIRED *int32 `json:"AD_IMAGE_17_LINK_REQUIRED,omitempty"`
+	// Ad image link 17 format is unsupported.
+	ADIMAGE17LINKWARNING *int32 `json:"AD_IMAGE_17_LINK_WARNING,omitempty"`
+	// ad_image_17_tag is duplicated with another ad image tag.
+	ADIMAGE17TAGDUPLICATED *int32 `json:"AD_IMAGE_17_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 17 length is too long. The maximum length is 511 characters.
+	ADIMAGE17TAGLENGTHTOOLONG *int32 `json:"AD_IMAGE_17_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 17 is required because an image link was provided.
+	ADIMAGE17TAGREQUIRED *int32 `json:"AD_IMAGE_17_TAG_REQUIRED,omitempty"`
+	// ad_image_18_link is duplicated with another ad image link.
+	ADIMAGE18LINKDUPLICATED *int32 `json:"AD_IMAGE_18_LINK_DUPLICATED,omitempty"`
+	// Ad image link 18 length is too long. The maximum length is 2047 characters.
+	ADIMAGE18LINKLENGTHTOOLONG *int32 `json:"AD_IMAGE_18_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 18 is required because an image tag was provided.
+	ADIMAGE18LINKREQUIRED *int32 `json:"AD_IMAGE_18_LINK_REQUIRED,omitempty"`
+	// Ad image link 18 format is unsupported.
+	ADIMAGE18LINKWARNING *int32 `json:"AD_IMAGE_18_LINK_WARNING,omitempty"`
+	// ad_image_18_tag is duplicated with another ad image tag.
+	ADIMAGE18TAGDUPLICATED *int32 `json:"AD_IMAGE_18_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 18 length is too long. The maximum length is 511 characters.
+	ADIMAGE18TAGLENGTHTOOLONG *int32 `json:"AD_IMAGE_18_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 18 is required because an image link was provided.
+	ADIMAGE18TAGREQUIRED *int32 `json:"AD_IMAGE_18_TAG_REQUIRED,omitempty"`
+	// ad_image_19_link is duplicated with another ad image link.
+	ADIMAGE19LINKDUPLICATED *int32 `json:"AD_IMAGE_19_LINK_DUPLICATED,omitempty"`
+	// Ad image link 19 length is too long. The maximum length is 2047 characters.
+	ADIMAGE19LINKLENGTHTOOLONG *int32 `json:"AD_IMAGE_19_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 19 is required because an image tag was provided.
+	ADIMAGE19LINKREQUIRED *int32 `json:"AD_IMAGE_19_LINK_REQUIRED,omitempty"`
+	// Ad image link 19 format is unsupported.
+	ADIMAGE19LINKWARNING *int32 `json:"AD_IMAGE_19_LINK_WARNING,omitempty"`
+	// ad_image_19_tag is duplicated with another ad image tag.
+	ADIMAGE19TAGDUPLICATED *int32 `json:"AD_IMAGE_19_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 19 length is too long. The maximum length is 511 characters.
+	ADIMAGE19TAGLENGTHTOOLONG *int32 `json:"AD_IMAGE_19_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 19 is required because an image link was provided.
+	ADIMAGE19TAGREQUIRED *int32 `json:"AD_IMAGE_19_TAG_REQUIRED,omitempty"`
+	// ad_image_1_link is duplicated with another ad image link.
+	ADIMAGE1LINKDUPLICATED *int32 `json:"AD_IMAGE_1_LINK_DUPLICATED,omitempty"`
+	// Ad image link 1 length is too long. The maximum length is 2047 characters.
+	ADIMAGE1LINKLENGTHTOOLONG *int32 `json:"AD_IMAGE_1_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 1 is required because an image tag was provided.
+	ADIMAGE1LINKREQUIRED *int32 `json:"AD_IMAGE_1_LINK_REQUIRED,omitempty"`
+	// Ad image link 1 format is unsupported.
+	ADIMAGE1LINKWARNING *int32 `json:"AD_IMAGE_1_LINK_WARNING,omitempty"`
+	// ad_image_1_tag is duplicated with another ad image tag.
+	ADIMAGE1TAGDUPLICATED *int32 `json:"AD_IMAGE_1_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 1 length is too long. The maximum length is 511 characters.
+	ADIMAGE1TAGLENGTHTOOLONG *int32 `json:"AD_IMAGE_1_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 1 is required because an image link was provided.
+	ADIMAGE1TAGREQUIRED *int32 `json:"AD_IMAGE_1_TAG_REQUIRED,omitempty"`
+	// ad_image_2_link is duplicated with another ad image link.
+	ADIMAGE2LINKDUPLICATED *int32 `json:"AD_IMAGE_2_LINK_DUPLICATED,omitempty"`
+	// Ad image link 2 length is too long. The maximum length is 2047 characters.
+	ADIMAGE2LINKLENGTHTOOLONG *int32 `json:"AD_IMAGE_2_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 2 is required because an image tag was provided.
+	ADIMAGE2LINKREQUIRED *int32 `json:"AD_IMAGE_2_LINK_REQUIRED,omitempty"`
+	// Ad image link 2 format is unsupported.
+	ADIMAGE2LINKWARNING *int32 `json:"AD_IMAGE_2_LINK_WARNING,omitempty"`
+	// ad_image_2_tag is duplicated with another ad image tag.
+	ADIMAGE2TAGDUPLICATED *int32 `json:"AD_IMAGE_2_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 2 length is too long. The maximum length is 511 characters.
+	ADIMAGE2TAGLENGTHTOOLONG *int32 `json:"AD_IMAGE_2_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 2 is required because an image link was provided.
+	ADIMAGE2TAGREQUIRED *int32 `json:"AD_IMAGE_2_TAG_REQUIRED,omitempty"`
+	// ad_image_3_link is duplicated with another ad image link.
+	ADIMAGE3LINKDUPLICATED *int32 `json:"AD_IMAGE_3_LINK_DUPLICATED,omitempty"`
+	// Ad image link 3 length is too long. The maximum length is 2047 characters.
+	ADIMAGE3LINKLENGTHTOOLONG *int32 `json:"AD_IMAGE_3_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 3 is required because an image tag was provided.
+	ADIMAGE3LINKREQUIRED *int32 `json:"AD_IMAGE_3_LINK_REQUIRED,omitempty"`
+	// Ad image link 3 format is unsupported.
+	ADIMAGE3LINKWARNING *int32 `json:"AD_IMAGE_3_LINK_WARNING,omitempty"`
+	// ad_image_3_tag is duplicated with another ad image tag.
+	ADIMAGE3TAGDUPLICATED *int32 `json:"AD_IMAGE_3_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 3 length is too long. The maximum length is 511 characters.
+	ADIMAGE3TAGLENGTHTOOLONG *int32 `json:"AD_IMAGE_3_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 3 is required because an image link was provided.
+	ADIMAGE3TAGREQUIRED *int32 `json:"AD_IMAGE_3_TAG_REQUIRED,omitempty"`
+	// ad_image_4_link is duplicated with another ad image link.
+	ADIMAGE4LINKDUPLICATED *int32 `json:"AD_IMAGE_4_LINK_DUPLICATED,omitempty"`
+	// Ad image link 4 length is too long. The maximum length is 2047 characters.
+	ADIMAGE4LINKLENGTHTOOLONG *int32 `json:"AD_IMAGE_4_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 4 is required because an image tag was provided.
+	ADIMAGE4LINKREQUIRED *int32 `json:"AD_IMAGE_4_LINK_REQUIRED,omitempty"`
+	// Ad image link 4 format is unsupported.
+	ADIMAGE4LINKWARNING *int32 `json:"AD_IMAGE_4_LINK_WARNING,omitempty"`
+	// ad_image_4_tag is duplicated with another ad image tag.
+	ADIMAGE4TAGDUPLICATED *int32 `json:"AD_IMAGE_4_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 4 length is too long. The maximum length is 511 characters.
+	ADIMAGE4TAGLENGTHTOOLONG *int32 `json:"AD_IMAGE_4_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 4 is required because an image link was provided.
+	ADIMAGE4TAGREQUIRED *int32 `json:"AD_IMAGE_4_TAG_REQUIRED,omitempty"`
+	// ad_image_5_link is duplicated with another ad image link.
+	ADIMAGE5LINKDUPLICATED *int32 `json:"AD_IMAGE_5_LINK_DUPLICATED,omitempty"`
+	// Ad image link 5 length is too long. The maximum length is 2047 characters.
+	ADIMAGE5LINKLENGTHTOOLONG *int32 `json:"AD_IMAGE_5_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 5 is required because an image tag was provided.
+	ADIMAGE5LINKREQUIRED *int32 `json:"AD_IMAGE_5_LINK_REQUIRED,omitempty"`
+	// Ad image link 5 format is unsupported.
+	ADIMAGE5LINKWARNING *int32 `json:"AD_IMAGE_5_LINK_WARNING,omitempty"`
+	// ad_image_5_tag is duplicated with another ad image tag.
+	ADIMAGE5TAGDUPLICATED *int32 `json:"AD_IMAGE_5_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 5 length is too long. The maximum length is 511 characters.
+	ADIMAGE5TAGLENGTHTOOLONG *int32 `json:"AD_IMAGE_5_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 5 is required because an image link was provided.
+	ADIMAGE5TAGREQUIRED *int32 `json:"AD_IMAGE_5_TAG_REQUIRED,omitempty"`
+	// ad_image_6_link is duplicated with another ad image link.
+	ADIMAGE6LINKDUPLICATED *int32 `json:"AD_IMAGE_6_LINK_DUPLICATED,omitempty"`
+	// Ad image link 6 length is too long. The maximum length is 2047 characters.
+	ADIMAGE6LINKLENGTHTOOLONG *int32 `json:"AD_IMAGE_6_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 6 is required because an image tag was provided.
+	ADIMAGE6LINKREQUIRED *int32 `json:"AD_IMAGE_6_LINK_REQUIRED,omitempty"`
+	// Ad image link 6 format is unsupported.
+	ADIMAGE6LINKWARNING *int32 `json:"AD_IMAGE_6_LINK_WARNING,omitempty"`
+	// ad_image_6_tag is duplicated with another ad image tag.
+	ADIMAGE6TAGDUPLICATED *int32 `json:"AD_IMAGE_6_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 6 length is too long. The maximum length is 511 characters.
+	ADIMAGE6TAGLENGTHTOOLONG *int32 `json:"AD_IMAGE_6_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 6 is required because an image link was provided.
+	ADIMAGE6TAGREQUIRED *int32 `json:"AD_IMAGE_6_TAG_REQUIRED,omitempty"`
+	// ad_image_7_link is duplicated with another ad image link.
+	ADIMAGE7LINKDUPLICATED *int32 `json:"AD_IMAGE_7_LINK_DUPLICATED,omitempty"`
+	// Ad image link 7 length is too long. The maximum length is 2047 characters.
+	ADIMAGE7LINKLENGTHTOOLONG *int32 `json:"AD_IMAGE_7_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 7 is required because an image tag was provided.
+	ADIMAGE7LINKREQUIRED *int32 `json:"AD_IMAGE_7_LINK_REQUIRED,omitempty"`
+	// Ad image link 7 format is unsupported.
+	ADIMAGE7LINKWARNING *int32 `json:"AD_IMAGE_7_LINK_WARNING,omitempty"`
+	// ad_image_7_tag is duplicated with another ad image tag.
+	ADIMAGE7TAGDUPLICATED *int32 `json:"AD_IMAGE_7_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 7 length is too long. The maximum length is 511 characters.
+	ADIMAGE7TAGLENGTHTOOLONG *int32 `json:"AD_IMAGE_7_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 7 is required because an image link was provided.
+	ADIMAGE7TAGREQUIRED *int32 `json:"AD_IMAGE_7_TAG_REQUIRED,omitempty"`
+	// ad_image_8_link is duplicated with another ad image link.
+	ADIMAGE8LINKDUPLICATED *int32 `json:"AD_IMAGE_8_LINK_DUPLICATED,omitempty"`
+	// Ad image link 8 length is too long. The maximum length is 2047 characters.
+	ADIMAGE8LINKLENGTHTOOLONG *int32 `json:"AD_IMAGE_8_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 8 is required because an image tag was provided.
+	ADIMAGE8LINKREQUIRED *int32 `json:"AD_IMAGE_8_LINK_REQUIRED,omitempty"`
+	// Ad image link 8 format is unsupported.
+	ADIMAGE8LINKWARNING *int32 `json:"AD_IMAGE_8_LINK_WARNING,omitempty"`
+	// ad_image_8_tag is duplicated with another ad image tag.
+	ADIMAGE8TAGDUPLICATED *int32 `json:"AD_IMAGE_8_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 8 length is too long. The maximum length is 511 characters.
+	ADIMAGE8TAGLENGTHTOOLONG *int32 `json:"AD_IMAGE_8_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 8 is required because an image link was provided.
+	ADIMAGE8TAGREQUIRED *int32 `json:"AD_IMAGE_8_TAG_REQUIRED,omitempty"`
+	// ad_image_9_link is duplicated with another ad image link.
+	ADIMAGE9LINKDUPLICATED *int32 `json:"AD_IMAGE_9_LINK_DUPLICATED,omitempty"`
+	// Ad image link 9 length is too long. The maximum length is 2047 characters.
+	ADIMAGE9LINKLENGTHTOOLONG *int32 `json:"AD_IMAGE_9_LINK_LENGTH_TOO_LONG,omitempty"`
+	// Ad image link 9 is required because an image tag was provided.
+	ADIMAGE9LINKREQUIRED *int32 `json:"AD_IMAGE_9_LINK_REQUIRED,omitempty"`
+	// Ad image link 9 format is unsupported.
+	ADIMAGE9LINKWARNING *int32 `json:"AD_IMAGE_9_LINK_WARNING,omitempty"`
+	// ad_image_9_tag is duplicated with another ad image tag.
+	ADIMAGE9TAGDUPLICATED *int32 `json:"AD_IMAGE_9_TAG_DUPLICATED,omitempty"`
+	// Ad image tag 9 length is too long. The maximum length is 511 characters.
+	ADIMAGE9TAGLENGTHTOOLONG *int32 `json:"AD_IMAGE_9_TAG_LENGTH_TOO_LONG,omitempty"`
+	// Ad image tag 9 is required because an image link was provided.
+	ADIMAGE9TAGREQUIRED *int32 `json:"AD_IMAGE_9_TAG_REQUIRED,omitempty"`
 	// Some items have ad links that are formatted incorrectly.
 	AD_LINK_FORMAT_WARNING *int32 `json:"AD_LINK_FORMAT_WARNING,omitempty"`
 	// Some items have ad link URLs that are duplicates of the link URLs for those items.
 	AD_LINK_SAME_AS_LINK *int32 `json:"AD_LINK_SAME_AS_LINK,omitempty"`
-	// The title for some items were truncated because they contain too many characters.
-	TITLE_LENGTH_TOO_LONG *int32 `json:"TITLE_LENGTH_TOO_LONG,omitempty"`
-	// The description for some items were truncated because they contain too many characters.
-	DESCRIPTION_LENGTH_TOO_LONG *int32 `json:"DESCRIPTION_LENGTH_TOO_LONG,omitempty"`
-	// Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
-	GENDER_INVALID *int32 `json:"GENDER_INVALID,omitempty"`
-	// Some items have age group values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
-	AGE_GROUP_INVALID *int32 `json:"AGE_GROUP_INVALID,omitempty"`
-	// Some items have size type values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
-	SIZE_TYPE_INVALID *int32 `json:"SIZE_TYPE_INVALID,omitempty"`
-	// Some items have size system values which are not one of the supported size systems.
-	SIZE_SYSTEM_INVALID *int32 `json:"SIZE_SYSTEM_INVALID,omitempty"`
-	// Some items have an invalid product link which contains invalid UTM tracking paramaters.
-	LINK_FORMAT_WARNING *int32 `json:"LINK_FORMAT_WARNING,omitempty"`
-	// Some items have sale price values that are higher than the original price of the item.
-	SALES_PRICE_INVALID *int32 `json:"SALES_PRICE_INVALID,omitempty"`
-	// Some items only have 1 or 2 levels of google_product_category values, which may limit visibility in recommendations, search results and shopping experiences.
-	PRODUCT_CATEGORY_DEPTH_WARNING *int32 `json:"PRODUCT_CATEGORY_DEPTH_WARNING,omitempty"`
-	// Some items have adwords_redirect links that are formatted incorrectly.
-	ADWORDS_FORMAT_WARNING *int32 `json:"ADWORDS_FORMAT_WARNING,omitempty"`
-	// Some items have adwords_redirect URLs that are duplicates of the link URLs for those items.
-	ADWORDS_SAME_AS_LINK *int32 `json:"ADWORDS_SAME_AS_LINK,omitempty"`
-	// Your feed contains duplicate headers.
-	DUPLICATE_HEADERS *int32 `json:"DUPLICATE_HEADERS,omitempty"`
-	// Ingestion completed early because there are no changes to your feed since the last successful update.
-	FETCH_SAME_SIGNATURE *int32 `json:"FETCH_SAME_SIGNATURE,omitempty"`
+	// ad_video_0_link is duplicated with another ad video link.
+	ADVIDEO0LINKDUPLICATED *int32 `json:"AD_VIDEO_0_LINK_DUPLICATED,omitempty"`
+	// ad_video_0_link length is too long. The maximum length is 511 characters.
+	ADVIDEO0LINKLENGTHTOOLONG *int32 `json:"AD_VIDEO_0_LINK_LENGTH_TOO_LONG,omitempty"`
+	// ad_video_0_link is required for this item because ad_video_0_tag was provided.
+	ADVIDEO0LINKREQUIRED *int32 `json:"AD_VIDEO_0_LINK_REQUIRED,omitempty"`
+	// ad_video_0_link is formatted incorrectly and will not be published with your items.
+	ADVIDEO0LINKWARNING *int32 `json:"AD_VIDEO_0_LINK_WARNING,omitempty"`
+	// ad_video_0_tag is duplicated with another ad video tag.
+	ADVIDEO0TAGDUPLICATED *int32 `json:"AD_VIDEO_0_TAG_DUPLICATED,omitempty"`
+	// ad_video_0_tag length is too long. The maximum length is 511 characters.
+	ADVIDEO0TAGLENGTHTOOLONG *int32 `json:"AD_VIDEO_0_TAG_LENGTH_TOO_LONG,omitempty"`
+	// ad_video_0_tag is required because ad_video_0_link was provided.
+	ADVIDEO0TAGREQUIRED *int32 `json:"AD_VIDEO_0_TAG_REQUIRED,omitempty"`
+	// ad_video_1_link is duplicated with another ad video link.
+	ADVIDEO1LINKDUPLICATED *int32 `json:"AD_VIDEO_1_LINK_DUPLICATED,omitempty"`
+	// ad_video_1_link length is too long. The maximum length is 511 characters.
+	ADVIDEO1LINKLENGTHTOOLONG *int32 `json:"AD_VIDEO_1_LINK_LENGTH_TOO_LONG,omitempty"`
+	// ad_video_1_link is required for this item because ad_video_1_tag was provided.
+	ADVIDEO1LINKREQUIRED *int32 `json:"AD_VIDEO_1_LINK_REQUIRED,omitempty"`
+	// ad_video_1_link is formatted incorrectly and will not be published with your items.
+	ADVIDEO1LINKWARNING *int32 `json:"AD_VIDEO_1_LINK_WARNING,omitempty"`
+	// ad_video_1_tag is duplicated with another ad video tag.
+	ADVIDEO1TAGDUPLICATED *int32 `json:"AD_VIDEO_1_TAG_DUPLICATED,omitempty"`
+	// ad_video_1_tag length is too long. The maximum length is 511 characters.
+	ADVIDEO1TAGLENGTHTOOLONG *int32 `json:"AD_VIDEO_1_TAG_LENGTH_TOO_LONG,omitempty"`
+	// ad_video_1_tag is required because ad_video_1_link was provided.
+	ADVIDEO1TAGREQUIRED *int32 `json:"AD_VIDEO_1_TAG_REQUIRED,omitempty"`
+	// ad_video_2_link is duplicated with another ad video link.
+	ADVIDEO2LINKDUPLICATED *int32 `json:"AD_VIDEO_2_LINK_DUPLICATED,omitempty"`
+	// ad_video_2_link length is too long. The maximum length is 511 characters.
+	ADVIDEO2LINKLENGTHTOOLONG *int32 `json:"AD_VIDEO_2_LINK_LENGTH_TOO_LONG,omitempty"`
+	// ad_video_2_link is required for this item because ad_video_2_tag was provided.
+	ADVIDEO2LINKREQUIRED *int32 `json:"AD_VIDEO_2_LINK_REQUIRED,omitempty"`
+	// ad_video_2_link is formatted incorrectly and will not be published with your items.
+	ADVIDEO2LINKWARNING *int32 `json:"AD_VIDEO_2_LINK_WARNING,omitempty"`
+	// ad_video_2_tag is duplicated with another ad video tag.
+	ADVIDEO2TAGDUPLICATED *int32 `json:"AD_VIDEO_2_TAG_DUPLICATED,omitempty"`
+	// ad_video_2_tag length is too long. The maximum length is 511 characters.
+	ADVIDEO2TAGLENGTHTOOLONG *int32 `json:"AD_VIDEO_2_TAG_LENGTH_TOO_LONG,omitempty"`
+	// ad_video_2_tag is required because ad_video_2_link was provided.
+	ADVIDEO2TAGREQUIRED *int32 `json:"AD_VIDEO_2_TAG_REQUIRED,omitempty"`
 	// Some items have additional_image_link URLs that contain too many characters, so those items will not be published.
 	ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG *int32 `json:"ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG,omitempty"`
 	// Some items have additional_image_link URLs that are formatted incorrectly and will not be published with your items.
 	ADDITIONAL_IMAGE_LINK_WARNING *int32 `json:"ADDITIONAL_IMAGE_LINK_WARNING,omitempty"`
-	// Some items have image_link URLs that are formatted incorrectly and will not be published with those items.
-	IMAGE_LINK_WARNING *int32 `json:"IMAGE_LINK_WARNING,omitempty"`
-	// Some items have shipping values that are formatted incorrectly.
-	SHIPPING_INVALID *int32 `json:"SHIPPING_INVALID,omitempty"`
-	// Some items have tax values that are formatted incorrectly.
-	TAX_INVALID *int32 `json:"TAX_INVALID,omitempty"`
-	// Some items have invalid shipping_weight values.
-	SHIPPING_WEIGHT_INVALID *int32 `json:"SHIPPING_WEIGHT_INVALID,omitempty"`
-	// Some items have expiration_date values that are formatted incorrectly, those items will be published without an expiration date.
-	EXPIRATION_DATE_INVALID *int32 `json:"EXPIRATION_DATE_INVALID,omitempty"`
-	// Some items have availability_date values that are formatted incorrectly, those items will be published without an availability date.
-	AVAILABILITY_DATE_INVALID *int32 `json:"AVAILABILITY_DATE_INVALID,omitempty"`
-	// Some items have sale_price_effective_date values that are formatted incorrectly, those items will be published without a sale date.
-	SALE_DATE_INVALID *int32 `json:"SALE_DATE_INVALID,omitempty"`
-	// Some items have weight_unit values that are formatted incorrectly, those items will be published without a weight unit.
-	WEIGHT_UNIT_INVALID *int32 `json:"WEIGHT_UNIT_INVALID,omitempty"`
-	// Some items have is_bundle values that are formatted incorrectly, those items will be published without being bundled with other products.
-	IS_BUNDLE_INVALID *int32 `json:"IS_BUNDLE_INVALID,omitempty"`
-	// Some items have updated_time values thate are formatted incorrectly, those items will be published without an updated time.
-	UPDATED_TIME_INVALID *int32 `json:"UPDATED_TIME_INVALID,omitempty"`
-	// Some items have custom_label values that are too long, those items will be published without that custom label.
-	CUSTOM_LABEL_LENGTH_TOO_LONG *int32 `json:"CUSTOM_LABEL_LENGTH_TOO_LONG,omitempty"`
-	// Some items have product_type values that are too long, those items will be published without that product type.
-	PRODUCT_TYPE_LENGTH_TOO_LONG *int32 `json:"PRODUCT_TYPE_LENGTH_TOO_LONG,omitempty"`
-	// Some items have additional_image_link values that exceed the limit for additional images, those items will be published without some of your images.
-	TOO_MANY_ADDITIONAL_IMAGE_LINKS *int32 `json:"TOO_MANY_ADDITIONAL_IMAGE_LINKS,omitempty"`
-	// Some items have invalid multipack values.
-	MULTIPACK_INVALID *int32 `json:"MULTIPACK_INVALID,omitempty"`
-	// The product count has increased or decreased significantly compared to the last successful ingestion.
-	INDEXED_PRODUCT_COUNT_LARGE_DELTA *int32 `json:"INDEXED_PRODUCT_COUNT_LARGE_DELTA,omitempty"`
-	// Some items include additional_image_links that can't be found.
-	ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE *int32 `json:"ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE,omitempty"`
-	// Some items are missing a google_product_category.
-	OPTIONAL_PRODUCT_CATEGORY_MISSING *int32 `json:"OPTIONAL_PRODUCT_CATEGORY_MISSING,omitempty"`
-	// Some items include google_product_category values that are not formatted correctly according to the GPC taxonomy.
-	OPTIONAL_PRODUCT_CATEGORY_INVALID *int32 `json:"OPTIONAL_PRODUCT_CATEGORY_INVALID,omitempty"`
-	// Some items are missing a condition value, which may limit visibility in recommendations, search results and shopping experiences.
-	OPTIONAL_CONDITION_MISSING *int32 `json:"OPTIONAL_CONDITION_MISSING,omitempty"`
-	// Some items include condition values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
-	OPTIONAL_CONDITION_INVALID *int32 `json:"OPTIONAL_CONDITION_INVALID,omitempty"`
-	// Some items include invalid ios_deep_link values.
-	IOS_DEEP_LINK_INVALID *int32 `json:"IOS_DEEP_LINK_INVALID,omitempty"`
+	// Some items have adwords_redirect links that are formatted incorrectly.
+	ADWORDS_FORMAT_WARNING *int32 `json:"ADWORDS_FORMAT_WARNING,omitempty"`
+	// Some items have adwords_redirect URLs that are duplicates of the link URLs for those items.
+	ADWORDS_SAME_AS_LINK *int32 `json:"ADWORDS_SAME_AS_LINK,omitempty"`
+	// Some items have age group values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
+	AGE_GROUP_INVALID *int32 `json:"AGE_GROUP_INVALID,omitempty"`
 	// Some items include invalid android_deep_link.
 	ANDROID_DEEP_LINK_INVALID *int32 `json:"ANDROID_DEEP_LINK_INVALID,omitempty"`
-	// Some items include utm_source values that are formatted incorrectly and have been automatically corrected.
-	UTM_SOURCE_AUTO_CORRECTED *int32 `json:"UTM_SOURCE_AUTO_CORRECTED,omitempty"`
+	// Some items have availability_date values that are formatted incorrectly, those items will be published without an availability date.
+	AVAILABILITY_DATE_INVALID *int32 `json:"AVAILABILITY_DATE_INVALID,omitempty"`
 	// Some items include a currency that doesn't match the usual currency for the location where that product is sold or shipped.
 	COUNTRY_DOES_NOT_MAP_TO_CURRENCY *int32 `json:"COUNTRY_DOES_NOT_MAP_TO_CURRENCY,omitempty"`
-	// Some items include min_ad_price values that are formatted incorrectly.
-	MIN_AD_PRICE_INVALID *int32 `json:"MIN_AD_PRICE_INVALID,omitempty"`
+	// Some items have custom_label values that are too long, those items will be published without that custom label.
+	CUSTOM_LABEL_LENGTH_TOO_LONG *int32 `json:"CUSTOM_LABEL_LENGTH_TOO_LONG,omitempty"`
+	// The description for some items were truncated because they contain too many characters.
+	DESCRIPTION_LENGTH_TOO_LONG *int32 `json:"DESCRIPTION_LENGTH_TOO_LONG,omitempty"`
+	// Your feed contains duplicate headers.
+	DUPLICATE_HEADERS *int32 `json:"DUPLICATE_HEADERS,omitempty"`
+	// Some items have expiration_date values that are formatted incorrectly, those items will be published without an expiration date.
+	EXPIRATION_DATE_INVALID *int32 `json:"EXPIRATION_DATE_INVALID,omitempty"`
+	// Ingestion completed early because there are no changes to your feed since the last successful update.
+	FETCH_SAME_SIGNATURE *int32 `json:"FETCH_SAME_SIGNATURE,omitempty"`
+	// Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
+	GENDER_INVALID *int32 `json:"GENDER_INVALID,omitempty"`
 	// Some items include incorrectly formatted GTINs.
 	GTIN_INVALID *int32 `json:"GTIN_INVALID,omitempty"`
+	// Some items have image_link URLs that are formatted incorrectly and will not be published with those items.
+	IMAGE_LINK_WARNING *int32 `json:"IMAGE_LINK_WARNING,omitempty"`
 	// Some items include inconsistent currencies in price fields.
 	INCONSISTENT_CURRENCY_VALUES *int32 `json:"INCONSISTENT_CURRENCY_VALUES,omitempty"`
-	// Some items include sales price that is much lower than the list price.
-	SALES_PRICE_TOO_LOW *int32 `json:"SALES_PRICE_TOO_LOW,omitempty"`
-	// Some items include incorrectly formatted shipping_width.
-	SHIPPING_WIDTH_INVALID *int32 `json:"SHIPPING_WIDTH_INVALID,omitempty"`
-	// Some items include incorrectly formatted shipping_height.
-	SHIPPING_HEIGHT_INVALID *int32 `json:"SHIPPING_HEIGHT_INVALID,omitempty"`
-	// Some items include a sales price that is higher than the list price. The sales price has been defaulted to the list price.
-	SALES_PRICE_TOO_HIGH *int32 `json:"SALES_PRICE_TOO_HIGH,omitempty"`
+	// The product count has increased or decreased significantly compared to the last successful ingestion.
+	INDEXED_PRODUCT_COUNT_LARGE_DELTA *int32 `json:"INDEXED_PRODUCT_COUNT_LARGE_DELTA,omitempty"`
+	// Some items include invalid ios_deep_link values.
+	IOS_DEEP_LINK_INVALID *int32 `json:"IOS_DEEP_LINK_INVALID,omitempty"`
+	// Some items have is_bundle values that are formatted incorrectly, those items will be published without being bundled with other products.
+	IS_BUNDLE_INVALID *int32 `json:"IS_BUNDLE_INVALID,omitempty"`
+	// Some items include additional_image_links that can't be found.
+	ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE *int32 `json:"ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE,omitempty"`
+	// Some items have an invalid product link which contains invalid UTM tracking paramaters.
+	LINK_FORMAT_WARNING *int32 `json:"LINK_FORMAT_WARNING,omitempty"`
+	// Some items include min_ad_price values that are formatted incorrectly.
+	MIN_AD_PRICE_INVALID *int32 `json:"MIN_AD_PRICE_INVALID,omitempty"`
 	// Some items include incorrectly formatted MPNs.
 	MPN_INVALID *int32 `json:"MPN_INVALID,omitempty"`
+	// Some items have invalid multipack values.
+	MULTIPACK_INVALID *int32 `json:"MULTIPACK_INVALID,omitempty"`
+	// Some items include condition values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
+	OPTIONAL_CONDITION_INVALID *int32 `json:"OPTIONAL_CONDITION_INVALID,omitempty"`
+	// Some items are missing a condition value, which may limit visibility in recommendations, search results and shopping experiences.
+	OPTIONAL_CONDITION_MISSING *int32 `json:"OPTIONAL_CONDITION_MISSING,omitempty"`
+	// Some items include google_product_category values that are not formatted correctly according to the GPC taxonomy.
+	OPTIONAL_PRODUCT_CATEGORY_INVALID *int32 `json:"OPTIONAL_PRODUCT_CATEGORY_INVALID,omitempty"`
+	// Some items are missing a google_product_category.
+	OPTIONAL_PRODUCT_CATEGORY_MISSING *int32 `json:"OPTIONAL_PRODUCT_CATEGORY_MISSING,omitempty"`
+	// Some items only have 1 or 2 levels of google_product_category values, which may limit visibility in recommendations, search results and shopping experiences.
+	PRODUCT_CATEGORY_DEPTH_WARNING *int32 `json:"PRODUCT_CATEGORY_DEPTH_WARNING,omitempty"`
+	// Some items have product_type values that are too long, those items will be published without that product type.
+	PRODUCT_TYPE_LENGTH_TOO_LONG *int32 `json:"PRODUCT_TYPE_LENGTH_TOO_LONG,omitempty"`
+	// Some items have sale_price_effective_date values that are formatted incorrectly, those items will be published without a sale date.
+	SALE_DATE_INVALID *int32 `json:"SALE_DATE_INVALID,omitempty"`
+	// Some items have sale price values that are higher than the original price of the item.
+	SALES_PRICE_INVALID *int32 `json:"SALES_PRICE_INVALID,omitempty"`
+	// Some items include a sales price that is higher than the list price. The sales price has been defaulted to the list price.
+	SALES_PRICE_TOO_HIGH *int32 `json:"SALES_PRICE_TOO_HIGH,omitempty"`
+	// Some items include sales price that is much lower than the list price.
+	SALES_PRICE_TOO_LOW *int32 `json:"SALES_PRICE_TOO_LOW,omitempty"`
+	// Some items include incorrectly formatted shipping_height.
+	SHIPPING_HEIGHT_INVALID *int32 `json:"SHIPPING_HEIGHT_INVALID,omitempty"`
+	// Some items have shipping values that are formatted incorrectly.
+	SHIPPING_INVALID *int32 `json:"SHIPPING_INVALID,omitempty"`
+	// Some items have invalid shipping_weight values.
+	SHIPPING_WEIGHT_INVALID *int32 `json:"SHIPPING_WEIGHT_INVALID,omitempty"`
+	// Some items include incorrectly formatted shipping_width.
+	SHIPPING_WIDTH_INVALID *int32 `json:"SHIPPING_WIDTH_INVALID,omitempty"`
+	// Some items have size system values which are not one of the supported size systems.
+	SIZE_SYSTEM_INVALID *int32 `json:"SIZE_SYSTEM_INVALID,omitempty"`
+	// Some items have size type values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
+	SIZE_TYPE_INVALID *int32 `json:"SIZE_TYPE_INVALID,omitempty"`
+	// Some items have tax values that are formatted incorrectly.
+	TAX_INVALID *int32 `json:"TAX_INVALID,omitempty"`
+	// The title for some items were truncated because they contain too many characters.
+	TITLE_LENGTH_TOO_LONG *int32 `json:"TITLE_LENGTH_TOO_LONG,omitempty"`
+	// Some items have additional_image_link values that exceed the limit for additional images, those items will be published without some of your images.
+	TOO_MANY_ADDITIONAL_IMAGE_LINKS *int32 `json:"TOO_MANY_ADDITIONAL_IMAGE_LINKS,omitempty"`
+	// Some items have updated_time values thate are formatted incorrectly, those items will be published without an updated time.
+	UPDATED_TIME_INVALID *int32 `json:"UPDATED_TIME_INVALID,omitempty"`
+	// Some items include utm_source values that are formatted incorrectly and have been automatically corrected.
+	UTM_SOURCE_AUTO_CORRECTED *int32 `json:"UTM_SOURCE_AUTO_CORRECTED,omitempty"`
+	// A video is required in the item when ad_video fields are provided.
+	VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED *int32 `json:"VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED,omitempty"`
+	// Some items have weight_unit values that are formatted incorrectly, those items will be published without a weight unit.
+	WEIGHT_UNIT_INVALID *int32 `json:"WEIGHT_UNIT_INVALID,omitempty"`
 }
 
 // NewCatalogsFeedValidationWarnings instantiates a new CatalogsFeedValidationWarnings object
@@ -135,6 +459,4486 @@ func NewCatalogsFeedValidationWarnings() *CatalogsFeedValidationWarnings {
 func NewCatalogsFeedValidationWarningsWithDefaults() *CatalogsFeedValidationWarnings {
 	this := CatalogsFeedValidationWarnings{}
 	return &this
+}
+
+// GetADIMAGE0LINKDUPLICATED returns the ADIMAGE0LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE0LINKDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE0LINKDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE0LINKDUPLICATED
+}
+
+// GetADIMAGE0LINKDUPLICATEDOk returns a tuple with the ADIMAGE0LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE0LINKDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE0LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE0LINKDUPLICATED, true
+}
+
+// HasADIMAGE0LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE0LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE0LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE0LINKDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE0LINKDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE0LINKDUPLICATED(v int32) {
+	o.ADIMAGE0LINKDUPLICATED = &v
+}
+
+// GetADIMAGE0LINKLENGTHTOOLONG returns the ADIMAGE0LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE0LINKLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE0LINKLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE0LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE0LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE0LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE0LINKLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE0LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE0LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE0LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE0LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE0LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE0LINKLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE0LINKLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE0LINKLENGTHTOOLONG(v int32) {
+	o.ADIMAGE0LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE0LINKREQUIRED returns the ADIMAGE0LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE0LINKREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE0LINKREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE0LINKREQUIRED
+}
+
+// GetADIMAGE0LINKREQUIREDOk returns a tuple with the ADIMAGE0LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE0LINKREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE0LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE0LINKREQUIRED, true
+}
+
+// HasADIMAGE0LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE0LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE0LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE0LINKREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE0LINKREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE0LINKREQUIRED(v int32) {
+	o.ADIMAGE0LINKREQUIRED = &v
+}
+
+// GetADIMAGE0LINKWARNING returns the ADIMAGE0LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE0LINKWARNING() int32 {
+	if o == nil || IsNil(o.ADIMAGE0LINKWARNING) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE0LINKWARNING
+}
+
+// GetADIMAGE0LINKWARNINGOk returns a tuple with the ADIMAGE0LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE0LINKWARNINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE0LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE0LINKWARNING, true
+}
+
+// HasADIMAGE0LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE0LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE0LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE0LINKWARNING gets a reference to the given int32 and assigns it to the ADIMAGE0LINKWARNING field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE0LINKWARNING(v int32) {
+	o.ADIMAGE0LINKWARNING = &v
+}
+
+// GetADIMAGE0TAGDUPLICATED returns the ADIMAGE0TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE0TAGDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE0TAGDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE0TAGDUPLICATED
+}
+
+// GetADIMAGE0TAGDUPLICATEDOk returns a tuple with the ADIMAGE0TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE0TAGDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE0TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE0TAGDUPLICATED, true
+}
+
+// HasADIMAGE0TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE0TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE0TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE0TAGDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE0TAGDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE0TAGDUPLICATED(v int32) {
+	o.ADIMAGE0TAGDUPLICATED = &v
+}
+
+// GetADIMAGE0TAGLENGTHTOOLONG returns the ADIMAGE0TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE0TAGLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE0TAGLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE0TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE0TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE0TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE0TAGLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE0TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE0TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE0TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE0TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE0TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE0TAGLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE0TAGLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE0TAGLENGTHTOOLONG(v int32) {
+	o.ADIMAGE0TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE0TAGREQUIRED returns the ADIMAGE0TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE0TAGREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE0TAGREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE0TAGREQUIRED
+}
+
+// GetADIMAGE0TAGREQUIREDOk returns a tuple with the ADIMAGE0TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE0TAGREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE0TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE0TAGREQUIRED, true
+}
+
+// HasADIMAGE0TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE0TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE0TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE0TAGREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE0TAGREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE0TAGREQUIRED(v int32) {
+	o.ADIMAGE0TAGREQUIRED = &v
+}
+
+// GetADIMAGE10LINKDUPLICATED returns the ADIMAGE10LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE10LINKDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE10LINKDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE10LINKDUPLICATED
+}
+
+// GetADIMAGE10LINKDUPLICATEDOk returns a tuple with the ADIMAGE10LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE10LINKDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE10LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE10LINKDUPLICATED, true
+}
+
+// HasADIMAGE10LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE10LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE10LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE10LINKDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE10LINKDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE10LINKDUPLICATED(v int32) {
+	o.ADIMAGE10LINKDUPLICATED = &v
+}
+
+// GetADIMAGE10LINKLENGTHTOOLONG returns the ADIMAGE10LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE10LINKLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE10LINKLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE10LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE10LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE10LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE10LINKLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE10LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE10LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE10LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE10LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE10LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE10LINKLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE10LINKLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE10LINKLENGTHTOOLONG(v int32) {
+	o.ADIMAGE10LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE10LINKREQUIRED returns the ADIMAGE10LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE10LINKREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE10LINKREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE10LINKREQUIRED
+}
+
+// GetADIMAGE10LINKREQUIREDOk returns a tuple with the ADIMAGE10LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE10LINKREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE10LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE10LINKREQUIRED, true
+}
+
+// HasADIMAGE10LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE10LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE10LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE10LINKREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE10LINKREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE10LINKREQUIRED(v int32) {
+	o.ADIMAGE10LINKREQUIRED = &v
+}
+
+// GetADIMAGE10LINKWARNING returns the ADIMAGE10LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE10LINKWARNING() int32 {
+	if o == nil || IsNil(o.ADIMAGE10LINKWARNING) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE10LINKWARNING
+}
+
+// GetADIMAGE10LINKWARNINGOk returns a tuple with the ADIMAGE10LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE10LINKWARNINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE10LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE10LINKWARNING, true
+}
+
+// HasADIMAGE10LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE10LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE10LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE10LINKWARNING gets a reference to the given int32 and assigns it to the ADIMAGE10LINKWARNING field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE10LINKWARNING(v int32) {
+	o.ADIMAGE10LINKWARNING = &v
+}
+
+// GetADIMAGE10TAGDUPLICATED returns the ADIMAGE10TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE10TAGDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE10TAGDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE10TAGDUPLICATED
+}
+
+// GetADIMAGE10TAGDUPLICATEDOk returns a tuple with the ADIMAGE10TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE10TAGDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE10TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE10TAGDUPLICATED, true
+}
+
+// HasADIMAGE10TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE10TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE10TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE10TAGDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE10TAGDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE10TAGDUPLICATED(v int32) {
+	o.ADIMAGE10TAGDUPLICATED = &v
+}
+
+// GetADIMAGE10TAGLENGTHTOOLONG returns the ADIMAGE10TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE10TAGLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE10TAGLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE10TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE10TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE10TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE10TAGLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE10TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE10TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE10TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE10TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE10TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE10TAGLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE10TAGLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE10TAGLENGTHTOOLONG(v int32) {
+	o.ADIMAGE10TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE10TAGREQUIRED returns the ADIMAGE10TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE10TAGREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE10TAGREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE10TAGREQUIRED
+}
+
+// GetADIMAGE10TAGREQUIREDOk returns a tuple with the ADIMAGE10TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE10TAGREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE10TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE10TAGREQUIRED, true
+}
+
+// HasADIMAGE10TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE10TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE10TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE10TAGREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE10TAGREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE10TAGREQUIRED(v int32) {
+	o.ADIMAGE10TAGREQUIRED = &v
+}
+
+// GetADIMAGE11LINKDUPLICATED returns the ADIMAGE11LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE11LINKDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE11LINKDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE11LINKDUPLICATED
+}
+
+// GetADIMAGE11LINKDUPLICATEDOk returns a tuple with the ADIMAGE11LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE11LINKDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE11LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE11LINKDUPLICATED, true
+}
+
+// HasADIMAGE11LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE11LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE11LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE11LINKDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE11LINKDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE11LINKDUPLICATED(v int32) {
+	o.ADIMAGE11LINKDUPLICATED = &v
+}
+
+// GetADIMAGE11LINKLENGTHTOOLONG returns the ADIMAGE11LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE11LINKLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE11LINKLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE11LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE11LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE11LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE11LINKLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE11LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE11LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE11LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE11LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE11LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE11LINKLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE11LINKLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE11LINKLENGTHTOOLONG(v int32) {
+	o.ADIMAGE11LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE11LINKREQUIRED returns the ADIMAGE11LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE11LINKREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE11LINKREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE11LINKREQUIRED
+}
+
+// GetADIMAGE11LINKREQUIREDOk returns a tuple with the ADIMAGE11LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE11LINKREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE11LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE11LINKREQUIRED, true
+}
+
+// HasADIMAGE11LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE11LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE11LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE11LINKREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE11LINKREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE11LINKREQUIRED(v int32) {
+	o.ADIMAGE11LINKREQUIRED = &v
+}
+
+// GetADIMAGE11LINKWARNING returns the ADIMAGE11LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE11LINKWARNING() int32 {
+	if o == nil || IsNil(o.ADIMAGE11LINKWARNING) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE11LINKWARNING
+}
+
+// GetADIMAGE11LINKWARNINGOk returns a tuple with the ADIMAGE11LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE11LINKWARNINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE11LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE11LINKWARNING, true
+}
+
+// HasADIMAGE11LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE11LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE11LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE11LINKWARNING gets a reference to the given int32 and assigns it to the ADIMAGE11LINKWARNING field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE11LINKWARNING(v int32) {
+	o.ADIMAGE11LINKWARNING = &v
+}
+
+// GetADIMAGE11TAGDUPLICATED returns the ADIMAGE11TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE11TAGDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE11TAGDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE11TAGDUPLICATED
+}
+
+// GetADIMAGE11TAGDUPLICATEDOk returns a tuple with the ADIMAGE11TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE11TAGDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE11TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE11TAGDUPLICATED, true
+}
+
+// HasADIMAGE11TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE11TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE11TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE11TAGDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE11TAGDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE11TAGDUPLICATED(v int32) {
+	o.ADIMAGE11TAGDUPLICATED = &v
+}
+
+// GetADIMAGE11TAGLENGTHTOOLONG returns the ADIMAGE11TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE11TAGLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE11TAGLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE11TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE11TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE11TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE11TAGLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE11TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE11TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE11TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE11TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE11TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE11TAGLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE11TAGLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE11TAGLENGTHTOOLONG(v int32) {
+	o.ADIMAGE11TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE11TAGREQUIRED returns the ADIMAGE11TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE11TAGREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE11TAGREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE11TAGREQUIRED
+}
+
+// GetADIMAGE11TAGREQUIREDOk returns a tuple with the ADIMAGE11TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE11TAGREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE11TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE11TAGREQUIRED, true
+}
+
+// HasADIMAGE11TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE11TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE11TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE11TAGREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE11TAGREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE11TAGREQUIRED(v int32) {
+	o.ADIMAGE11TAGREQUIRED = &v
+}
+
+// GetADIMAGE12LINKDUPLICATED returns the ADIMAGE12LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE12LINKDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE12LINKDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE12LINKDUPLICATED
+}
+
+// GetADIMAGE12LINKDUPLICATEDOk returns a tuple with the ADIMAGE12LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE12LINKDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE12LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE12LINKDUPLICATED, true
+}
+
+// HasADIMAGE12LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE12LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE12LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE12LINKDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE12LINKDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE12LINKDUPLICATED(v int32) {
+	o.ADIMAGE12LINKDUPLICATED = &v
+}
+
+// GetADIMAGE12LINKLENGTHTOOLONG returns the ADIMAGE12LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE12LINKLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE12LINKLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE12LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE12LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE12LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE12LINKLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE12LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE12LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE12LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE12LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE12LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE12LINKLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE12LINKLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE12LINKLENGTHTOOLONG(v int32) {
+	o.ADIMAGE12LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE12LINKREQUIRED returns the ADIMAGE12LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE12LINKREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE12LINKREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE12LINKREQUIRED
+}
+
+// GetADIMAGE12LINKREQUIREDOk returns a tuple with the ADIMAGE12LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE12LINKREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE12LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE12LINKREQUIRED, true
+}
+
+// HasADIMAGE12LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE12LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE12LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE12LINKREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE12LINKREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE12LINKREQUIRED(v int32) {
+	o.ADIMAGE12LINKREQUIRED = &v
+}
+
+// GetADIMAGE12LINKWARNING returns the ADIMAGE12LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE12LINKWARNING() int32 {
+	if o == nil || IsNil(o.ADIMAGE12LINKWARNING) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE12LINKWARNING
+}
+
+// GetADIMAGE12LINKWARNINGOk returns a tuple with the ADIMAGE12LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE12LINKWARNINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE12LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE12LINKWARNING, true
+}
+
+// HasADIMAGE12LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE12LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE12LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE12LINKWARNING gets a reference to the given int32 and assigns it to the ADIMAGE12LINKWARNING field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE12LINKWARNING(v int32) {
+	o.ADIMAGE12LINKWARNING = &v
+}
+
+// GetADIMAGE12TAGDUPLICATED returns the ADIMAGE12TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE12TAGDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE12TAGDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE12TAGDUPLICATED
+}
+
+// GetADIMAGE12TAGDUPLICATEDOk returns a tuple with the ADIMAGE12TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE12TAGDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE12TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE12TAGDUPLICATED, true
+}
+
+// HasADIMAGE12TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE12TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE12TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE12TAGDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE12TAGDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE12TAGDUPLICATED(v int32) {
+	o.ADIMAGE12TAGDUPLICATED = &v
+}
+
+// GetADIMAGE12TAGLENGTHTOOLONG returns the ADIMAGE12TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE12TAGLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE12TAGLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE12TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE12TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE12TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE12TAGLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE12TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE12TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE12TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE12TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE12TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE12TAGLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE12TAGLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE12TAGLENGTHTOOLONG(v int32) {
+	o.ADIMAGE12TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE12TAGREQUIRED returns the ADIMAGE12TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE12TAGREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE12TAGREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE12TAGREQUIRED
+}
+
+// GetADIMAGE12TAGREQUIREDOk returns a tuple with the ADIMAGE12TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE12TAGREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE12TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE12TAGREQUIRED, true
+}
+
+// HasADIMAGE12TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE12TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE12TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE12TAGREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE12TAGREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE12TAGREQUIRED(v int32) {
+	o.ADIMAGE12TAGREQUIRED = &v
+}
+
+// GetADIMAGE13LINKDUPLICATED returns the ADIMAGE13LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE13LINKDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE13LINKDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE13LINKDUPLICATED
+}
+
+// GetADIMAGE13LINKDUPLICATEDOk returns a tuple with the ADIMAGE13LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE13LINKDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE13LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE13LINKDUPLICATED, true
+}
+
+// HasADIMAGE13LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE13LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE13LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE13LINKDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE13LINKDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE13LINKDUPLICATED(v int32) {
+	o.ADIMAGE13LINKDUPLICATED = &v
+}
+
+// GetADIMAGE13LINKLENGTHTOOLONG returns the ADIMAGE13LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE13LINKLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE13LINKLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE13LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE13LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE13LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE13LINKLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE13LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE13LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE13LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE13LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE13LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE13LINKLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE13LINKLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE13LINKLENGTHTOOLONG(v int32) {
+	o.ADIMAGE13LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE13LINKREQUIRED returns the ADIMAGE13LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE13LINKREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE13LINKREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE13LINKREQUIRED
+}
+
+// GetADIMAGE13LINKREQUIREDOk returns a tuple with the ADIMAGE13LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE13LINKREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE13LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE13LINKREQUIRED, true
+}
+
+// HasADIMAGE13LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE13LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE13LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE13LINKREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE13LINKREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE13LINKREQUIRED(v int32) {
+	o.ADIMAGE13LINKREQUIRED = &v
+}
+
+// GetADIMAGE13LINKWARNING returns the ADIMAGE13LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE13LINKWARNING() int32 {
+	if o == nil || IsNil(o.ADIMAGE13LINKWARNING) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE13LINKWARNING
+}
+
+// GetADIMAGE13LINKWARNINGOk returns a tuple with the ADIMAGE13LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE13LINKWARNINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE13LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE13LINKWARNING, true
+}
+
+// HasADIMAGE13LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE13LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE13LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE13LINKWARNING gets a reference to the given int32 and assigns it to the ADIMAGE13LINKWARNING field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE13LINKWARNING(v int32) {
+	o.ADIMAGE13LINKWARNING = &v
+}
+
+// GetADIMAGE13TAGDUPLICATED returns the ADIMAGE13TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE13TAGDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE13TAGDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE13TAGDUPLICATED
+}
+
+// GetADIMAGE13TAGDUPLICATEDOk returns a tuple with the ADIMAGE13TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE13TAGDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE13TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE13TAGDUPLICATED, true
+}
+
+// HasADIMAGE13TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE13TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE13TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE13TAGDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE13TAGDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE13TAGDUPLICATED(v int32) {
+	o.ADIMAGE13TAGDUPLICATED = &v
+}
+
+// GetADIMAGE13TAGLENGTHTOOLONG returns the ADIMAGE13TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE13TAGLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE13TAGLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE13TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE13TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE13TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE13TAGLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE13TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE13TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE13TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE13TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE13TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE13TAGLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE13TAGLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE13TAGLENGTHTOOLONG(v int32) {
+	o.ADIMAGE13TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE13TAGREQUIRED returns the ADIMAGE13TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE13TAGREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE13TAGREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE13TAGREQUIRED
+}
+
+// GetADIMAGE13TAGREQUIREDOk returns a tuple with the ADIMAGE13TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE13TAGREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE13TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE13TAGREQUIRED, true
+}
+
+// HasADIMAGE13TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE13TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE13TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE13TAGREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE13TAGREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE13TAGREQUIRED(v int32) {
+	o.ADIMAGE13TAGREQUIRED = &v
+}
+
+// GetADIMAGE14LINKDUPLICATED returns the ADIMAGE14LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE14LINKDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE14LINKDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE14LINKDUPLICATED
+}
+
+// GetADIMAGE14LINKDUPLICATEDOk returns a tuple with the ADIMAGE14LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE14LINKDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE14LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE14LINKDUPLICATED, true
+}
+
+// HasADIMAGE14LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE14LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE14LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE14LINKDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE14LINKDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE14LINKDUPLICATED(v int32) {
+	o.ADIMAGE14LINKDUPLICATED = &v
+}
+
+// GetADIMAGE14LINKLENGTHTOOLONG returns the ADIMAGE14LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE14LINKLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE14LINKLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE14LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE14LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE14LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE14LINKLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE14LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE14LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE14LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE14LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE14LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE14LINKLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE14LINKLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE14LINKLENGTHTOOLONG(v int32) {
+	o.ADIMAGE14LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE14LINKREQUIRED returns the ADIMAGE14LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE14LINKREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE14LINKREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE14LINKREQUIRED
+}
+
+// GetADIMAGE14LINKREQUIREDOk returns a tuple with the ADIMAGE14LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE14LINKREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE14LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE14LINKREQUIRED, true
+}
+
+// HasADIMAGE14LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE14LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE14LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE14LINKREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE14LINKREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE14LINKREQUIRED(v int32) {
+	o.ADIMAGE14LINKREQUIRED = &v
+}
+
+// GetADIMAGE14LINKWARNING returns the ADIMAGE14LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE14LINKWARNING() int32 {
+	if o == nil || IsNil(o.ADIMAGE14LINKWARNING) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE14LINKWARNING
+}
+
+// GetADIMAGE14LINKWARNINGOk returns a tuple with the ADIMAGE14LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE14LINKWARNINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE14LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE14LINKWARNING, true
+}
+
+// HasADIMAGE14LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE14LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE14LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE14LINKWARNING gets a reference to the given int32 and assigns it to the ADIMAGE14LINKWARNING field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE14LINKWARNING(v int32) {
+	o.ADIMAGE14LINKWARNING = &v
+}
+
+// GetADIMAGE14TAGDUPLICATED returns the ADIMAGE14TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE14TAGDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE14TAGDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE14TAGDUPLICATED
+}
+
+// GetADIMAGE14TAGDUPLICATEDOk returns a tuple with the ADIMAGE14TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE14TAGDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE14TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE14TAGDUPLICATED, true
+}
+
+// HasADIMAGE14TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE14TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE14TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE14TAGDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE14TAGDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE14TAGDUPLICATED(v int32) {
+	o.ADIMAGE14TAGDUPLICATED = &v
+}
+
+// GetADIMAGE14TAGLENGTHTOOLONG returns the ADIMAGE14TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE14TAGLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE14TAGLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE14TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE14TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE14TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE14TAGLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE14TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE14TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE14TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE14TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE14TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE14TAGLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE14TAGLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE14TAGLENGTHTOOLONG(v int32) {
+	o.ADIMAGE14TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE14TAGREQUIRED returns the ADIMAGE14TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE14TAGREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE14TAGREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE14TAGREQUIRED
+}
+
+// GetADIMAGE14TAGREQUIREDOk returns a tuple with the ADIMAGE14TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE14TAGREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE14TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE14TAGREQUIRED, true
+}
+
+// HasADIMAGE14TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE14TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE14TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE14TAGREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE14TAGREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE14TAGREQUIRED(v int32) {
+	o.ADIMAGE14TAGREQUIRED = &v
+}
+
+// GetADIMAGE15LINKDUPLICATED returns the ADIMAGE15LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE15LINKDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE15LINKDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE15LINKDUPLICATED
+}
+
+// GetADIMAGE15LINKDUPLICATEDOk returns a tuple with the ADIMAGE15LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE15LINKDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE15LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE15LINKDUPLICATED, true
+}
+
+// HasADIMAGE15LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE15LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE15LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE15LINKDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE15LINKDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE15LINKDUPLICATED(v int32) {
+	o.ADIMAGE15LINKDUPLICATED = &v
+}
+
+// GetADIMAGE15LINKLENGTHTOOLONG returns the ADIMAGE15LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE15LINKLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE15LINKLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE15LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE15LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE15LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE15LINKLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE15LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE15LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE15LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE15LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE15LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE15LINKLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE15LINKLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE15LINKLENGTHTOOLONG(v int32) {
+	o.ADIMAGE15LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE15LINKREQUIRED returns the ADIMAGE15LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE15LINKREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE15LINKREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE15LINKREQUIRED
+}
+
+// GetADIMAGE15LINKREQUIREDOk returns a tuple with the ADIMAGE15LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE15LINKREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE15LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE15LINKREQUIRED, true
+}
+
+// HasADIMAGE15LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE15LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE15LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE15LINKREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE15LINKREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE15LINKREQUIRED(v int32) {
+	o.ADIMAGE15LINKREQUIRED = &v
+}
+
+// GetADIMAGE15LINKWARNING returns the ADIMAGE15LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE15LINKWARNING() int32 {
+	if o == nil || IsNil(o.ADIMAGE15LINKWARNING) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE15LINKWARNING
+}
+
+// GetADIMAGE15LINKWARNINGOk returns a tuple with the ADIMAGE15LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE15LINKWARNINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE15LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE15LINKWARNING, true
+}
+
+// HasADIMAGE15LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE15LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE15LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE15LINKWARNING gets a reference to the given int32 and assigns it to the ADIMAGE15LINKWARNING field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE15LINKWARNING(v int32) {
+	o.ADIMAGE15LINKWARNING = &v
+}
+
+// GetADIMAGE15TAGDUPLICATED returns the ADIMAGE15TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE15TAGDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE15TAGDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE15TAGDUPLICATED
+}
+
+// GetADIMAGE15TAGDUPLICATEDOk returns a tuple with the ADIMAGE15TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE15TAGDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE15TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE15TAGDUPLICATED, true
+}
+
+// HasADIMAGE15TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE15TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE15TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE15TAGDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE15TAGDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE15TAGDUPLICATED(v int32) {
+	o.ADIMAGE15TAGDUPLICATED = &v
+}
+
+// GetADIMAGE15TAGLENGTHTOOLONG returns the ADIMAGE15TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE15TAGLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE15TAGLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE15TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE15TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE15TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE15TAGLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE15TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE15TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE15TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE15TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE15TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE15TAGLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE15TAGLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE15TAGLENGTHTOOLONG(v int32) {
+	o.ADIMAGE15TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE15TAGREQUIRED returns the ADIMAGE15TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE15TAGREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE15TAGREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE15TAGREQUIRED
+}
+
+// GetADIMAGE15TAGREQUIREDOk returns a tuple with the ADIMAGE15TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE15TAGREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE15TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE15TAGREQUIRED, true
+}
+
+// HasADIMAGE15TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE15TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE15TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE15TAGREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE15TAGREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE15TAGREQUIRED(v int32) {
+	o.ADIMAGE15TAGREQUIRED = &v
+}
+
+// GetADIMAGE16LINKDUPLICATED returns the ADIMAGE16LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE16LINKDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE16LINKDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE16LINKDUPLICATED
+}
+
+// GetADIMAGE16LINKDUPLICATEDOk returns a tuple with the ADIMAGE16LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE16LINKDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE16LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE16LINKDUPLICATED, true
+}
+
+// HasADIMAGE16LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE16LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE16LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE16LINKDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE16LINKDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE16LINKDUPLICATED(v int32) {
+	o.ADIMAGE16LINKDUPLICATED = &v
+}
+
+// GetADIMAGE16LINKLENGTHTOOLONG returns the ADIMAGE16LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE16LINKLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE16LINKLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE16LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE16LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE16LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE16LINKLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE16LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE16LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE16LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE16LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE16LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE16LINKLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE16LINKLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE16LINKLENGTHTOOLONG(v int32) {
+	o.ADIMAGE16LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE16LINKREQUIRED returns the ADIMAGE16LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE16LINKREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE16LINKREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE16LINKREQUIRED
+}
+
+// GetADIMAGE16LINKREQUIREDOk returns a tuple with the ADIMAGE16LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE16LINKREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE16LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE16LINKREQUIRED, true
+}
+
+// HasADIMAGE16LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE16LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE16LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE16LINKREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE16LINKREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE16LINKREQUIRED(v int32) {
+	o.ADIMAGE16LINKREQUIRED = &v
+}
+
+// GetADIMAGE16LINKWARNING returns the ADIMAGE16LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE16LINKWARNING() int32 {
+	if o == nil || IsNil(o.ADIMAGE16LINKWARNING) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE16LINKWARNING
+}
+
+// GetADIMAGE16LINKWARNINGOk returns a tuple with the ADIMAGE16LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE16LINKWARNINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE16LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE16LINKWARNING, true
+}
+
+// HasADIMAGE16LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE16LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE16LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE16LINKWARNING gets a reference to the given int32 and assigns it to the ADIMAGE16LINKWARNING field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE16LINKWARNING(v int32) {
+	o.ADIMAGE16LINKWARNING = &v
+}
+
+// GetADIMAGE16TAGDUPLICATED returns the ADIMAGE16TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE16TAGDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE16TAGDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE16TAGDUPLICATED
+}
+
+// GetADIMAGE16TAGDUPLICATEDOk returns a tuple with the ADIMAGE16TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE16TAGDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE16TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE16TAGDUPLICATED, true
+}
+
+// HasADIMAGE16TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE16TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE16TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE16TAGDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE16TAGDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE16TAGDUPLICATED(v int32) {
+	o.ADIMAGE16TAGDUPLICATED = &v
+}
+
+// GetADIMAGE16TAGLENGTHTOOLONG returns the ADIMAGE16TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE16TAGLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE16TAGLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE16TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE16TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE16TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE16TAGLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE16TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE16TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE16TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE16TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE16TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE16TAGLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE16TAGLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE16TAGLENGTHTOOLONG(v int32) {
+	o.ADIMAGE16TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE16TAGREQUIRED returns the ADIMAGE16TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE16TAGREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE16TAGREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE16TAGREQUIRED
+}
+
+// GetADIMAGE16TAGREQUIREDOk returns a tuple with the ADIMAGE16TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE16TAGREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE16TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE16TAGREQUIRED, true
+}
+
+// HasADIMAGE16TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE16TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE16TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE16TAGREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE16TAGREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE16TAGREQUIRED(v int32) {
+	o.ADIMAGE16TAGREQUIRED = &v
+}
+
+// GetADIMAGE17LINKDUPLICATED returns the ADIMAGE17LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE17LINKDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE17LINKDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE17LINKDUPLICATED
+}
+
+// GetADIMAGE17LINKDUPLICATEDOk returns a tuple with the ADIMAGE17LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE17LINKDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE17LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE17LINKDUPLICATED, true
+}
+
+// HasADIMAGE17LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE17LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE17LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE17LINKDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE17LINKDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE17LINKDUPLICATED(v int32) {
+	o.ADIMAGE17LINKDUPLICATED = &v
+}
+
+// GetADIMAGE17LINKLENGTHTOOLONG returns the ADIMAGE17LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE17LINKLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE17LINKLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE17LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE17LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE17LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE17LINKLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE17LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE17LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE17LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE17LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE17LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE17LINKLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE17LINKLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE17LINKLENGTHTOOLONG(v int32) {
+	o.ADIMAGE17LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE17LINKREQUIRED returns the ADIMAGE17LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE17LINKREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE17LINKREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE17LINKREQUIRED
+}
+
+// GetADIMAGE17LINKREQUIREDOk returns a tuple with the ADIMAGE17LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE17LINKREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE17LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE17LINKREQUIRED, true
+}
+
+// HasADIMAGE17LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE17LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE17LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE17LINKREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE17LINKREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE17LINKREQUIRED(v int32) {
+	o.ADIMAGE17LINKREQUIRED = &v
+}
+
+// GetADIMAGE17LINKWARNING returns the ADIMAGE17LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE17LINKWARNING() int32 {
+	if o == nil || IsNil(o.ADIMAGE17LINKWARNING) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE17LINKWARNING
+}
+
+// GetADIMAGE17LINKWARNINGOk returns a tuple with the ADIMAGE17LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE17LINKWARNINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE17LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE17LINKWARNING, true
+}
+
+// HasADIMAGE17LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE17LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE17LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE17LINKWARNING gets a reference to the given int32 and assigns it to the ADIMAGE17LINKWARNING field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE17LINKWARNING(v int32) {
+	o.ADIMAGE17LINKWARNING = &v
+}
+
+// GetADIMAGE17TAGDUPLICATED returns the ADIMAGE17TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE17TAGDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE17TAGDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE17TAGDUPLICATED
+}
+
+// GetADIMAGE17TAGDUPLICATEDOk returns a tuple with the ADIMAGE17TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE17TAGDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE17TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE17TAGDUPLICATED, true
+}
+
+// HasADIMAGE17TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE17TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE17TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE17TAGDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE17TAGDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE17TAGDUPLICATED(v int32) {
+	o.ADIMAGE17TAGDUPLICATED = &v
+}
+
+// GetADIMAGE17TAGLENGTHTOOLONG returns the ADIMAGE17TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE17TAGLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE17TAGLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE17TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE17TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE17TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE17TAGLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE17TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE17TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE17TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE17TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE17TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE17TAGLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE17TAGLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE17TAGLENGTHTOOLONG(v int32) {
+	o.ADIMAGE17TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE17TAGREQUIRED returns the ADIMAGE17TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE17TAGREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE17TAGREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE17TAGREQUIRED
+}
+
+// GetADIMAGE17TAGREQUIREDOk returns a tuple with the ADIMAGE17TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE17TAGREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE17TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE17TAGREQUIRED, true
+}
+
+// HasADIMAGE17TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE17TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE17TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE17TAGREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE17TAGREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE17TAGREQUIRED(v int32) {
+	o.ADIMAGE17TAGREQUIRED = &v
+}
+
+// GetADIMAGE18LINKDUPLICATED returns the ADIMAGE18LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE18LINKDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE18LINKDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE18LINKDUPLICATED
+}
+
+// GetADIMAGE18LINKDUPLICATEDOk returns a tuple with the ADIMAGE18LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE18LINKDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE18LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE18LINKDUPLICATED, true
+}
+
+// HasADIMAGE18LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE18LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE18LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE18LINKDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE18LINKDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE18LINKDUPLICATED(v int32) {
+	o.ADIMAGE18LINKDUPLICATED = &v
+}
+
+// GetADIMAGE18LINKLENGTHTOOLONG returns the ADIMAGE18LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE18LINKLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE18LINKLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE18LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE18LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE18LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE18LINKLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE18LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE18LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE18LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE18LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE18LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE18LINKLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE18LINKLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE18LINKLENGTHTOOLONG(v int32) {
+	o.ADIMAGE18LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE18LINKREQUIRED returns the ADIMAGE18LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE18LINKREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE18LINKREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE18LINKREQUIRED
+}
+
+// GetADIMAGE18LINKREQUIREDOk returns a tuple with the ADIMAGE18LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE18LINKREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE18LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE18LINKREQUIRED, true
+}
+
+// HasADIMAGE18LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE18LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE18LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE18LINKREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE18LINKREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE18LINKREQUIRED(v int32) {
+	o.ADIMAGE18LINKREQUIRED = &v
+}
+
+// GetADIMAGE18LINKWARNING returns the ADIMAGE18LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE18LINKWARNING() int32 {
+	if o == nil || IsNil(o.ADIMAGE18LINKWARNING) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE18LINKWARNING
+}
+
+// GetADIMAGE18LINKWARNINGOk returns a tuple with the ADIMAGE18LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE18LINKWARNINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE18LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE18LINKWARNING, true
+}
+
+// HasADIMAGE18LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE18LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE18LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE18LINKWARNING gets a reference to the given int32 and assigns it to the ADIMAGE18LINKWARNING field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE18LINKWARNING(v int32) {
+	o.ADIMAGE18LINKWARNING = &v
+}
+
+// GetADIMAGE18TAGDUPLICATED returns the ADIMAGE18TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE18TAGDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE18TAGDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE18TAGDUPLICATED
+}
+
+// GetADIMAGE18TAGDUPLICATEDOk returns a tuple with the ADIMAGE18TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE18TAGDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE18TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE18TAGDUPLICATED, true
+}
+
+// HasADIMAGE18TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE18TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE18TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE18TAGDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE18TAGDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE18TAGDUPLICATED(v int32) {
+	o.ADIMAGE18TAGDUPLICATED = &v
+}
+
+// GetADIMAGE18TAGLENGTHTOOLONG returns the ADIMAGE18TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE18TAGLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE18TAGLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE18TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE18TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE18TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE18TAGLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE18TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE18TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE18TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE18TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE18TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE18TAGLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE18TAGLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE18TAGLENGTHTOOLONG(v int32) {
+	o.ADIMAGE18TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE18TAGREQUIRED returns the ADIMAGE18TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE18TAGREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE18TAGREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE18TAGREQUIRED
+}
+
+// GetADIMAGE18TAGREQUIREDOk returns a tuple with the ADIMAGE18TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE18TAGREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE18TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE18TAGREQUIRED, true
+}
+
+// HasADIMAGE18TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE18TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE18TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE18TAGREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE18TAGREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE18TAGREQUIRED(v int32) {
+	o.ADIMAGE18TAGREQUIRED = &v
+}
+
+// GetADIMAGE19LINKDUPLICATED returns the ADIMAGE19LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE19LINKDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE19LINKDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE19LINKDUPLICATED
+}
+
+// GetADIMAGE19LINKDUPLICATEDOk returns a tuple with the ADIMAGE19LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE19LINKDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE19LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE19LINKDUPLICATED, true
+}
+
+// HasADIMAGE19LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE19LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE19LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE19LINKDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE19LINKDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE19LINKDUPLICATED(v int32) {
+	o.ADIMAGE19LINKDUPLICATED = &v
+}
+
+// GetADIMAGE19LINKLENGTHTOOLONG returns the ADIMAGE19LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE19LINKLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE19LINKLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE19LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE19LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE19LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE19LINKLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE19LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE19LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE19LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE19LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE19LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE19LINKLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE19LINKLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE19LINKLENGTHTOOLONG(v int32) {
+	o.ADIMAGE19LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE19LINKREQUIRED returns the ADIMAGE19LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE19LINKREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE19LINKREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE19LINKREQUIRED
+}
+
+// GetADIMAGE19LINKREQUIREDOk returns a tuple with the ADIMAGE19LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE19LINKREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE19LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE19LINKREQUIRED, true
+}
+
+// HasADIMAGE19LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE19LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE19LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE19LINKREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE19LINKREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE19LINKREQUIRED(v int32) {
+	o.ADIMAGE19LINKREQUIRED = &v
+}
+
+// GetADIMAGE19LINKWARNING returns the ADIMAGE19LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE19LINKWARNING() int32 {
+	if o == nil || IsNil(o.ADIMAGE19LINKWARNING) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE19LINKWARNING
+}
+
+// GetADIMAGE19LINKWARNINGOk returns a tuple with the ADIMAGE19LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE19LINKWARNINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE19LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE19LINKWARNING, true
+}
+
+// HasADIMAGE19LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE19LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE19LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE19LINKWARNING gets a reference to the given int32 and assigns it to the ADIMAGE19LINKWARNING field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE19LINKWARNING(v int32) {
+	o.ADIMAGE19LINKWARNING = &v
+}
+
+// GetADIMAGE19TAGDUPLICATED returns the ADIMAGE19TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE19TAGDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE19TAGDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE19TAGDUPLICATED
+}
+
+// GetADIMAGE19TAGDUPLICATEDOk returns a tuple with the ADIMAGE19TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE19TAGDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE19TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE19TAGDUPLICATED, true
+}
+
+// HasADIMAGE19TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE19TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE19TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE19TAGDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE19TAGDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE19TAGDUPLICATED(v int32) {
+	o.ADIMAGE19TAGDUPLICATED = &v
+}
+
+// GetADIMAGE19TAGLENGTHTOOLONG returns the ADIMAGE19TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE19TAGLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE19TAGLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE19TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE19TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE19TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE19TAGLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE19TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE19TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE19TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE19TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE19TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE19TAGLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE19TAGLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE19TAGLENGTHTOOLONG(v int32) {
+	o.ADIMAGE19TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE19TAGREQUIRED returns the ADIMAGE19TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE19TAGREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE19TAGREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE19TAGREQUIRED
+}
+
+// GetADIMAGE19TAGREQUIREDOk returns a tuple with the ADIMAGE19TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE19TAGREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE19TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE19TAGREQUIRED, true
+}
+
+// HasADIMAGE19TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE19TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE19TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE19TAGREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE19TAGREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE19TAGREQUIRED(v int32) {
+	o.ADIMAGE19TAGREQUIRED = &v
+}
+
+// GetADIMAGE1LINKDUPLICATED returns the ADIMAGE1LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE1LINKDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE1LINKDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE1LINKDUPLICATED
+}
+
+// GetADIMAGE1LINKDUPLICATEDOk returns a tuple with the ADIMAGE1LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE1LINKDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE1LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE1LINKDUPLICATED, true
+}
+
+// HasADIMAGE1LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE1LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE1LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE1LINKDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE1LINKDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE1LINKDUPLICATED(v int32) {
+	o.ADIMAGE1LINKDUPLICATED = &v
+}
+
+// GetADIMAGE1LINKLENGTHTOOLONG returns the ADIMAGE1LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE1LINKLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE1LINKLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE1LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE1LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE1LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE1LINKLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE1LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE1LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE1LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE1LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE1LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE1LINKLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE1LINKLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE1LINKLENGTHTOOLONG(v int32) {
+	o.ADIMAGE1LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE1LINKREQUIRED returns the ADIMAGE1LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE1LINKREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE1LINKREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE1LINKREQUIRED
+}
+
+// GetADIMAGE1LINKREQUIREDOk returns a tuple with the ADIMAGE1LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE1LINKREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE1LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE1LINKREQUIRED, true
+}
+
+// HasADIMAGE1LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE1LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE1LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE1LINKREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE1LINKREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE1LINKREQUIRED(v int32) {
+	o.ADIMAGE1LINKREQUIRED = &v
+}
+
+// GetADIMAGE1LINKWARNING returns the ADIMAGE1LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE1LINKWARNING() int32 {
+	if o == nil || IsNil(o.ADIMAGE1LINKWARNING) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE1LINKWARNING
+}
+
+// GetADIMAGE1LINKWARNINGOk returns a tuple with the ADIMAGE1LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE1LINKWARNINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE1LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE1LINKWARNING, true
+}
+
+// HasADIMAGE1LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE1LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE1LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE1LINKWARNING gets a reference to the given int32 and assigns it to the ADIMAGE1LINKWARNING field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE1LINKWARNING(v int32) {
+	o.ADIMAGE1LINKWARNING = &v
+}
+
+// GetADIMAGE1TAGDUPLICATED returns the ADIMAGE1TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE1TAGDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE1TAGDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE1TAGDUPLICATED
+}
+
+// GetADIMAGE1TAGDUPLICATEDOk returns a tuple with the ADIMAGE1TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE1TAGDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE1TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE1TAGDUPLICATED, true
+}
+
+// HasADIMAGE1TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE1TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE1TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE1TAGDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE1TAGDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE1TAGDUPLICATED(v int32) {
+	o.ADIMAGE1TAGDUPLICATED = &v
+}
+
+// GetADIMAGE1TAGLENGTHTOOLONG returns the ADIMAGE1TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE1TAGLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE1TAGLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE1TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE1TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE1TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE1TAGLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE1TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE1TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE1TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE1TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE1TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE1TAGLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE1TAGLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE1TAGLENGTHTOOLONG(v int32) {
+	o.ADIMAGE1TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE1TAGREQUIRED returns the ADIMAGE1TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE1TAGREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE1TAGREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE1TAGREQUIRED
+}
+
+// GetADIMAGE1TAGREQUIREDOk returns a tuple with the ADIMAGE1TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE1TAGREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE1TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE1TAGREQUIRED, true
+}
+
+// HasADIMAGE1TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE1TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE1TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE1TAGREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE1TAGREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE1TAGREQUIRED(v int32) {
+	o.ADIMAGE1TAGREQUIRED = &v
+}
+
+// GetADIMAGE2LINKDUPLICATED returns the ADIMAGE2LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE2LINKDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE2LINKDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE2LINKDUPLICATED
+}
+
+// GetADIMAGE2LINKDUPLICATEDOk returns a tuple with the ADIMAGE2LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE2LINKDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE2LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE2LINKDUPLICATED, true
+}
+
+// HasADIMAGE2LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE2LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE2LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE2LINKDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE2LINKDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE2LINKDUPLICATED(v int32) {
+	o.ADIMAGE2LINKDUPLICATED = &v
+}
+
+// GetADIMAGE2LINKLENGTHTOOLONG returns the ADIMAGE2LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE2LINKLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE2LINKLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE2LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE2LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE2LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE2LINKLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE2LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE2LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE2LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE2LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE2LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE2LINKLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE2LINKLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE2LINKLENGTHTOOLONG(v int32) {
+	o.ADIMAGE2LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE2LINKREQUIRED returns the ADIMAGE2LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE2LINKREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE2LINKREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE2LINKREQUIRED
+}
+
+// GetADIMAGE2LINKREQUIREDOk returns a tuple with the ADIMAGE2LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE2LINKREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE2LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE2LINKREQUIRED, true
+}
+
+// HasADIMAGE2LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE2LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE2LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE2LINKREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE2LINKREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE2LINKREQUIRED(v int32) {
+	o.ADIMAGE2LINKREQUIRED = &v
+}
+
+// GetADIMAGE2LINKWARNING returns the ADIMAGE2LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE2LINKWARNING() int32 {
+	if o == nil || IsNil(o.ADIMAGE2LINKWARNING) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE2LINKWARNING
+}
+
+// GetADIMAGE2LINKWARNINGOk returns a tuple with the ADIMAGE2LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE2LINKWARNINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE2LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE2LINKWARNING, true
+}
+
+// HasADIMAGE2LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE2LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE2LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE2LINKWARNING gets a reference to the given int32 and assigns it to the ADIMAGE2LINKWARNING field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE2LINKWARNING(v int32) {
+	o.ADIMAGE2LINKWARNING = &v
+}
+
+// GetADIMAGE2TAGDUPLICATED returns the ADIMAGE2TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE2TAGDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE2TAGDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE2TAGDUPLICATED
+}
+
+// GetADIMAGE2TAGDUPLICATEDOk returns a tuple with the ADIMAGE2TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE2TAGDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE2TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE2TAGDUPLICATED, true
+}
+
+// HasADIMAGE2TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE2TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE2TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE2TAGDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE2TAGDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE2TAGDUPLICATED(v int32) {
+	o.ADIMAGE2TAGDUPLICATED = &v
+}
+
+// GetADIMAGE2TAGLENGTHTOOLONG returns the ADIMAGE2TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE2TAGLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE2TAGLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE2TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE2TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE2TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE2TAGLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE2TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE2TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE2TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE2TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE2TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE2TAGLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE2TAGLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE2TAGLENGTHTOOLONG(v int32) {
+	o.ADIMAGE2TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE2TAGREQUIRED returns the ADIMAGE2TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE2TAGREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE2TAGREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE2TAGREQUIRED
+}
+
+// GetADIMAGE2TAGREQUIREDOk returns a tuple with the ADIMAGE2TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE2TAGREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE2TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE2TAGREQUIRED, true
+}
+
+// HasADIMAGE2TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE2TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE2TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE2TAGREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE2TAGREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE2TAGREQUIRED(v int32) {
+	o.ADIMAGE2TAGREQUIRED = &v
+}
+
+// GetADIMAGE3LINKDUPLICATED returns the ADIMAGE3LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE3LINKDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE3LINKDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE3LINKDUPLICATED
+}
+
+// GetADIMAGE3LINKDUPLICATEDOk returns a tuple with the ADIMAGE3LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE3LINKDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE3LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE3LINKDUPLICATED, true
+}
+
+// HasADIMAGE3LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE3LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE3LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE3LINKDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE3LINKDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE3LINKDUPLICATED(v int32) {
+	o.ADIMAGE3LINKDUPLICATED = &v
+}
+
+// GetADIMAGE3LINKLENGTHTOOLONG returns the ADIMAGE3LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE3LINKLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE3LINKLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE3LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE3LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE3LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE3LINKLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE3LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE3LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE3LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE3LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE3LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE3LINKLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE3LINKLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE3LINKLENGTHTOOLONG(v int32) {
+	o.ADIMAGE3LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE3LINKREQUIRED returns the ADIMAGE3LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE3LINKREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE3LINKREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE3LINKREQUIRED
+}
+
+// GetADIMAGE3LINKREQUIREDOk returns a tuple with the ADIMAGE3LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE3LINKREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE3LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE3LINKREQUIRED, true
+}
+
+// HasADIMAGE3LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE3LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE3LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE3LINKREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE3LINKREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE3LINKREQUIRED(v int32) {
+	o.ADIMAGE3LINKREQUIRED = &v
+}
+
+// GetADIMAGE3LINKWARNING returns the ADIMAGE3LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE3LINKWARNING() int32 {
+	if o == nil || IsNil(o.ADIMAGE3LINKWARNING) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE3LINKWARNING
+}
+
+// GetADIMAGE3LINKWARNINGOk returns a tuple with the ADIMAGE3LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE3LINKWARNINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE3LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE3LINKWARNING, true
+}
+
+// HasADIMAGE3LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE3LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE3LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE3LINKWARNING gets a reference to the given int32 and assigns it to the ADIMAGE3LINKWARNING field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE3LINKWARNING(v int32) {
+	o.ADIMAGE3LINKWARNING = &v
+}
+
+// GetADIMAGE3TAGDUPLICATED returns the ADIMAGE3TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE3TAGDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE3TAGDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE3TAGDUPLICATED
+}
+
+// GetADIMAGE3TAGDUPLICATEDOk returns a tuple with the ADIMAGE3TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE3TAGDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE3TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE3TAGDUPLICATED, true
+}
+
+// HasADIMAGE3TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE3TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE3TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE3TAGDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE3TAGDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE3TAGDUPLICATED(v int32) {
+	o.ADIMAGE3TAGDUPLICATED = &v
+}
+
+// GetADIMAGE3TAGLENGTHTOOLONG returns the ADIMAGE3TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE3TAGLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE3TAGLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE3TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE3TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE3TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE3TAGLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE3TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE3TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE3TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE3TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE3TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE3TAGLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE3TAGLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE3TAGLENGTHTOOLONG(v int32) {
+	o.ADIMAGE3TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE3TAGREQUIRED returns the ADIMAGE3TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE3TAGREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE3TAGREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE3TAGREQUIRED
+}
+
+// GetADIMAGE3TAGREQUIREDOk returns a tuple with the ADIMAGE3TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE3TAGREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE3TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE3TAGREQUIRED, true
+}
+
+// HasADIMAGE3TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE3TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE3TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE3TAGREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE3TAGREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE3TAGREQUIRED(v int32) {
+	o.ADIMAGE3TAGREQUIRED = &v
+}
+
+// GetADIMAGE4LINKDUPLICATED returns the ADIMAGE4LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE4LINKDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE4LINKDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE4LINKDUPLICATED
+}
+
+// GetADIMAGE4LINKDUPLICATEDOk returns a tuple with the ADIMAGE4LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE4LINKDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE4LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE4LINKDUPLICATED, true
+}
+
+// HasADIMAGE4LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE4LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE4LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE4LINKDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE4LINKDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE4LINKDUPLICATED(v int32) {
+	o.ADIMAGE4LINKDUPLICATED = &v
+}
+
+// GetADIMAGE4LINKLENGTHTOOLONG returns the ADIMAGE4LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE4LINKLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE4LINKLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE4LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE4LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE4LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE4LINKLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE4LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE4LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE4LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE4LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE4LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE4LINKLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE4LINKLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE4LINKLENGTHTOOLONG(v int32) {
+	o.ADIMAGE4LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE4LINKREQUIRED returns the ADIMAGE4LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE4LINKREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE4LINKREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE4LINKREQUIRED
+}
+
+// GetADIMAGE4LINKREQUIREDOk returns a tuple with the ADIMAGE4LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE4LINKREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE4LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE4LINKREQUIRED, true
+}
+
+// HasADIMAGE4LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE4LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE4LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE4LINKREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE4LINKREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE4LINKREQUIRED(v int32) {
+	o.ADIMAGE4LINKREQUIRED = &v
+}
+
+// GetADIMAGE4LINKWARNING returns the ADIMAGE4LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE4LINKWARNING() int32 {
+	if o == nil || IsNil(o.ADIMAGE4LINKWARNING) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE4LINKWARNING
+}
+
+// GetADIMAGE4LINKWARNINGOk returns a tuple with the ADIMAGE4LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE4LINKWARNINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE4LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE4LINKWARNING, true
+}
+
+// HasADIMAGE4LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE4LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE4LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE4LINKWARNING gets a reference to the given int32 and assigns it to the ADIMAGE4LINKWARNING field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE4LINKWARNING(v int32) {
+	o.ADIMAGE4LINKWARNING = &v
+}
+
+// GetADIMAGE4TAGDUPLICATED returns the ADIMAGE4TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE4TAGDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE4TAGDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE4TAGDUPLICATED
+}
+
+// GetADIMAGE4TAGDUPLICATEDOk returns a tuple with the ADIMAGE4TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE4TAGDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE4TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE4TAGDUPLICATED, true
+}
+
+// HasADIMAGE4TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE4TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE4TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE4TAGDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE4TAGDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE4TAGDUPLICATED(v int32) {
+	o.ADIMAGE4TAGDUPLICATED = &v
+}
+
+// GetADIMAGE4TAGLENGTHTOOLONG returns the ADIMAGE4TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE4TAGLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE4TAGLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE4TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE4TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE4TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE4TAGLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE4TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE4TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE4TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE4TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE4TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE4TAGLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE4TAGLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE4TAGLENGTHTOOLONG(v int32) {
+	o.ADIMAGE4TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE4TAGREQUIRED returns the ADIMAGE4TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE4TAGREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE4TAGREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE4TAGREQUIRED
+}
+
+// GetADIMAGE4TAGREQUIREDOk returns a tuple with the ADIMAGE4TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE4TAGREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE4TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE4TAGREQUIRED, true
+}
+
+// HasADIMAGE4TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE4TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE4TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE4TAGREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE4TAGREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE4TAGREQUIRED(v int32) {
+	o.ADIMAGE4TAGREQUIRED = &v
+}
+
+// GetADIMAGE5LINKDUPLICATED returns the ADIMAGE5LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE5LINKDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE5LINKDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE5LINKDUPLICATED
+}
+
+// GetADIMAGE5LINKDUPLICATEDOk returns a tuple with the ADIMAGE5LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE5LINKDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE5LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE5LINKDUPLICATED, true
+}
+
+// HasADIMAGE5LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE5LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE5LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE5LINKDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE5LINKDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE5LINKDUPLICATED(v int32) {
+	o.ADIMAGE5LINKDUPLICATED = &v
+}
+
+// GetADIMAGE5LINKLENGTHTOOLONG returns the ADIMAGE5LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE5LINKLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE5LINKLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE5LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE5LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE5LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE5LINKLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE5LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE5LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE5LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE5LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE5LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE5LINKLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE5LINKLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE5LINKLENGTHTOOLONG(v int32) {
+	o.ADIMAGE5LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE5LINKREQUIRED returns the ADIMAGE5LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE5LINKREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE5LINKREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE5LINKREQUIRED
+}
+
+// GetADIMAGE5LINKREQUIREDOk returns a tuple with the ADIMAGE5LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE5LINKREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE5LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE5LINKREQUIRED, true
+}
+
+// HasADIMAGE5LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE5LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE5LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE5LINKREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE5LINKREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE5LINKREQUIRED(v int32) {
+	o.ADIMAGE5LINKREQUIRED = &v
+}
+
+// GetADIMAGE5LINKWARNING returns the ADIMAGE5LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE5LINKWARNING() int32 {
+	if o == nil || IsNil(o.ADIMAGE5LINKWARNING) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE5LINKWARNING
+}
+
+// GetADIMAGE5LINKWARNINGOk returns a tuple with the ADIMAGE5LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE5LINKWARNINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE5LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE5LINKWARNING, true
+}
+
+// HasADIMAGE5LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE5LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE5LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE5LINKWARNING gets a reference to the given int32 and assigns it to the ADIMAGE5LINKWARNING field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE5LINKWARNING(v int32) {
+	o.ADIMAGE5LINKWARNING = &v
+}
+
+// GetADIMAGE5TAGDUPLICATED returns the ADIMAGE5TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE5TAGDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE5TAGDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE5TAGDUPLICATED
+}
+
+// GetADIMAGE5TAGDUPLICATEDOk returns a tuple with the ADIMAGE5TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE5TAGDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE5TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE5TAGDUPLICATED, true
+}
+
+// HasADIMAGE5TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE5TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE5TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE5TAGDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE5TAGDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE5TAGDUPLICATED(v int32) {
+	o.ADIMAGE5TAGDUPLICATED = &v
+}
+
+// GetADIMAGE5TAGLENGTHTOOLONG returns the ADIMAGE5TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE5TAGLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE5TAGLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE5TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE5TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE5TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE5TAGLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE5TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE5TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE5TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE5TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE5TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE5TAGLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE5TAGLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE5TAGLENGTHTOOLONG(v int32) {
+	o.ADIMAGE5TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE5TAGREQUIRED returns the ADIMAGE5TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE5TAGREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE5TAGREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE5TAGREQUIRED
+}
+
+// GetADIMAGE5TAGREQUIREDOk returns a tuple with the ADIMAGE5TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE5TAGREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE5TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE5TAGREQUIRED, true
+}
+
+// HasADIMAGE5TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE5TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE5TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE5TAGREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE5TAGREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE5TAGREQUIRED(v int32) {
+	o.ADIMAGE5TAGREQUIRED = &v
+}
+
+// GetADIMAGE6LINKDUPLICATED returns the ADIMAGE6LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE6LINKDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE6LINKDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE6LINKDUPLICATED
+}
+
+// GetADIMAGE6LINKDUPLICATEDOk returns a tuple with the ADIMAGE6LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE6LINKDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE6LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE6LINKDUPLICATED, true
+}
+
+// HasADIMAGE6LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE6LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE6LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE6LINKDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE6LINKDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE6LINKDUPLICATED(v int32) {
+	o.ADIMAGE6LINKDUPLICATED = &v
+}
+
+// GetADIMAGE6LINKLENGTHTOOLONG returns the ADIMAGE6LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE6LINKLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE6LINKLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE6LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE6LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE6LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE6LINKLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE6LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE6LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE6LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE6LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE6LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE6LINKLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE6LINKLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE6LINKLENGTHTOOLONG(v int32) {
+	o.ADIMAGE6LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE6LINKREQUIRED returns the ADIMAGE6LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE6LINKREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE6LINKREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE6LINKREQUIRED
+}
+
+// GetADIMAGE6LINKREQUIREDOk returns a tuple with the ADIMAGE6LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE6LINKREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE6LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE6LINKREQUIRED, true
+}
+
+// HasADIMAGE6LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE6LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE6LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE6LINKREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE6LINKREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE6LINKREQUIRED(v int32) {
+	o.ADIMAGE6LINKREQUIRED = &v
+}
+
+// GetADIMAGE6LINKWARNING returns the ADIMAGE6LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE6LINKWARNING() int32 {
+	if o == nil || IsNil(o.ADIMAGE6LINKWARNING) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE6LINKWARNING
+}
+
+// GetADIMAGE6LINKWARNINGOk returns a tuple with the ADIMAGE6LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE6LINKWARNINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE6LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE6LINKWARNING, true
+}
+
+// HasADIMAGE6LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE6LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE6LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE6LINKWARNING gets a reference to the given int32 and assigns it to the ADIMAGE6LINKWARNING field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE6LINKWARNING(v int32) {
+	o.ADIMAGE6LINKWARNING = &v
+}
+
+// GetADIMAGE6TAGDUPLICATED returns the ADIMAGE6TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE6TAGDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE6TAGDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE6TAGDUPLICATED
+}
+
+// GetADIMAGE6TAGDUPLICATEDOk returns a tuple with the ADIMAGE6TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE6TAGDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE6TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE6TAGDUPLICATED, true
+}
+
+// HasADIMAGE6TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE6TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE6TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE6TAGDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE6TAGDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE6TAGDUPLICATED(v int32) {
+	o.ADIMAGE6TAGDUPLICATED = &v
+}
+
+// GetADIMAGE6TAGLENGTHTOOLONG returns the ADIMAGE6TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE6TAGLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE6TAGLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE6TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE6TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE6TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE6TAGLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE6TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE6TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE6TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE6TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE6TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE6TAGLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE6TAGLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE6TAGLENGTHTOOLONG(v int32) {
+	o.ADIMAGE6TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE6TAGREQUIRED returns the ADIMAGE6TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE6TAGREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE6TAGREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE6TAGREQUIRED
+}
+
+// GetADIMAGE6TAGREQUIREDOk returns a tuple with the ADIMAGE6TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE6TAGREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE6TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE6TAGREQUIRED, true
+}
+
+// HasADIMAGE6TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE6TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE6TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE6TAGREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE6TAGREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE6TAGREQUIRED(v int32) {
+	o.ADIMAGE6TAGREQUIRED = &v
+}
+
+// GetADIMAGE7LINKDUPLICATED returns the ADIMAGE7LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE7LINKDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE7LINKDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE7LINKDUPLICATED
+}
+
+// GetADIMAGE7LINKDUPLICATEDOk returns a tuple with the ADIMAGE7LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE7LINKDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE7LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE7LINKDUPLICATED, true
+}
+
+// HasADIMAGE7LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE7LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE7LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE7LINKDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE7LINKDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE7LINKDUPLICATED(v int32) {
+	o.ADIMAGE7LINKDUPLICATED = &v
+}
+
+// GetADIMAGE7LINKLENGTHTOOLONG returns the ADIMAGE7LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE7LINKLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE7LINKLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE7LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE7LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE7LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE7LINKLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE7LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE7LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE7LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE7LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE7LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE7LINKLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE7LINKLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE7LINKLENGTHTOOLONG(v int32) {
+	o.ADIMAGE7LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE7LINKREQUIRED returns the ADIMAGE7LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE7LINKREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE7LINKREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE7LINKREQUIRED
+}
+
+// GetADIMAGE7LINKREQUIREDOk returns a tuple with the ADIMAGE7LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE7LINKREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE7LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE7LINKREQUIRED, true
+}
+
+// HasADIMAGE7LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE7LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE7LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE7LINKREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE7LINKREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE7LINKREQUIRED(v int32) {
+	o.ADIMAGE7LINKREQUIRED = &v
+}
+
+// GetADIMAGE7LINKWARNING returns the ADIMAGE7LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE7LINKWARNING() int32 {
+	if o == nil || IsNil(o.ADIMAGE7LINKWARNING) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE7LINKWARNING
+}
+
+// GetADIMAGE7LINKWARNINGOk returns a tuple with the ADIMAGE7LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE7LINKWARNINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE7LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE7LINKWARNING, true
+}
+
+// HasADIMAGE7LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE7LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE7LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE7LINKWARNING gets a reference to the given int32 and assigns it to the ADIMAGE7LINKWARNING field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE7LINKWARNING(v int32) {
+	o.ADIMAGE7LINKWARNING = &v
+}
+
+// GetADIMAGE7TAGDUPLICATED returns the ADIMAGE7TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE7TAGDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE7TAGDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE7TAGDUPLICATED
+}
+
+// GetADIMAGE7TAGDUPLICATEDOk returns a tuple with the ADIMAGE7TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE7TAGDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE7TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE7TAGDUPLICATED, true
+}
+
+// HasADIMAGE7TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE7TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE7TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE7TAGDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE7TAGDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE7TAGDUPLICATED(v int32) {
+	o.ADIMAGE7TAGDUPLICATED = &v
+}
+
+// GetADIMAGE7TAGLENGTHTOOLONG returns the ADIMAGE7TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE7TAGLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE7TAGLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE7TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE7TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE7TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE7TAGLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE7TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE7TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE7TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE7TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE7TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE7TAGLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE7TAGLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE7TAGLENGTHTOOLONG(v int32) {
+	o.ADIMAGE7TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE7TAGREQUIRED returns the ADIMAGE7TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE7TAGREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE7TAGREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE7TAGREQUIRED
+}
+
+// GetADIMAGE7TAGREQUIREDOk returns a tuple with the ADIMAGE7TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE7TAGREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE7TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE7TAGREQUIRED, true
+}
+
+// HasADIMAGE7TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE7TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE7TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE7TAGREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE7TAGREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE7TAGREQUIRED(v int32) {
+	o.ADIMAGE7TAGREQUIRED = &v
+}
+
+// GetADIMAGE8LINKDUPLICATED returns the ADIMAGE8LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE8LINKDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE8LINKDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE8LINKDUPLICATED
+}
+
+// GetADIMAGE8LINKDUPLICATEDOk returns a tuple with the ADIMAGE8LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE8LINKDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE8LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE8LINKDUPLICATED, true
+}
+
+// HasADIMAGE8LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE8LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE8LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE8LINKDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE8LINKDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE8LINKDUPLICATED(v int32) {
+	o.ADIMAGE8LINKDUPLICATED = &v
+}
+
+// GetADIMAGE8LINKLENGTHTOOLONG returns the ADIMAGE8LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE8LINKLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE8LINKLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE8LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE8LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE8LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE8LINKLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE8LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE8LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE8LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE8LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE8LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE8LINKLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE8LINKLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE8LINKLENGTHTOOLONG(v int32) {
+	o.ADIMAGE8LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE8LINKREQUIRED returns the ADIMAGE8LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE8LINKREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE8LINKREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE8LINKREQUIRED
+}
+
+// GetADIMAGE8LINKREQUIREDOk returns a tuple with the ADIMAGE8LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE8LINKREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE8LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE8LINKREQUIRED, true
+}
+
+// HasADIMAGE8LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE8LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE8LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE8LINKREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE8LINKREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE8LINKREQUIRED(v int32) {
+	o.ADIMAGE8LINKREQUIRED = &v
+}
+
+// GetADIMAGE8LINKWARNING returns the ADIMAGE8LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE8LINKWARNING() int32 {
+	if o == nil || IsNil(o.ADIMAGE8LINKWARNING) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE8LINKWARNING
+}
+
+// GetADIMAGE8LINKWARNINGOk returns a tuple with the ADIMAGE8LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE8LINKWARNINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE8LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE8LINKWARNING, true
+}
+
+// HasADIMAGE8LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE8LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE8LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE8LINKWARNING gets a reference to the given int32 and assigns it to the ADIMAGE8LINKWARNING field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE8LINKWARNING(v int32) {
+	o.ADIMAGE8LINKWARNING = &v
+}
+
+// GetADIMAGE8TAGDUPLICATED returns the ADIMAGE8TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE8TAGDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE8TAGDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE8TAGDUPLICATED
+}
+
+// GetADIMAGE8TAGDUPLICATEDOk returns a tuple with the ADIMAGE8TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE8TAGDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE8TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE8TAGDUPLICATED, true
+}
+
+// HasADIMAGE8TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE8TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE8TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE8TAGDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE8TAGDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE8TAGDUPLICATED(v int32) {
+	o.ADIMAGE8TAGDUPLICATED = &v
+}
+
+// GetADIMAGE8TAGLENGTHTOOLONG returns the ADIMAGE8TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE8TAGLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE8TAGLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE8TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE8TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE8TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE8TAGLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE8TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE8TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE8TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE8TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE8TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE8TAGLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE8TAGLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE8TAGLENGTHTOOLONG(v int32) {
+	o.ADIMAGE8TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE8TAGREQUIRED returns the ADIMAGE8TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE8TAGREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE8TAGREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE8TAGREQUIRED
+}
+
+// GetADIMAGE8TAGREQUIREDOk returns a tuple with the ADIMAGE8TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE8TAGREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE8TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE8TAGREQUIRED, true
+}
+
+// HasADIMAGE8TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE8TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE8TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE8TAGREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE8TAGREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE8TAGREQUIRED(v int32) {
+	o.ADIMAGE8TAGREQUIRED = &v
+}
+
+// GetADIMAGE9LINKDUPLICATED returns the ADIMAGE9LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE9LINKDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE9LINKDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE9LINKDUPLICATED
+}
+
+// GetADIMAGE9LINKDUPLICATEDOk returns a tuple with the ADIMAGE9LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE9LINKDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE9LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE9LINKDUPLICATED, true
+}
+
+// HasADIMAGE9LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE9LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE9LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE9LINKDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE9LINKDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE9LINKDUPLICATED(v int32) {
+	o.ADIMAGE9LINKDUPLICATED = &v
+}
+
+// GetADIMAGE9LINKLENGTHTOOLONG returns the ADIMAGE9LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE9LINKLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE9LINKLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE9LINKLENGTHTOOLONG
+}
+
+// GetADIMAGE9LINKLENGTHTOOLONGOk returns a tuple with the ADIMAGE9LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE9LINKLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE9LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE9LINKLENGTHTOOLONG, true
+}
+
+// HasADIMAGE9LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE9LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE9LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE9LINKLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE9LINKLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE9LINKLENGTHTOOLONG(v int32) {
+	o.ADIMAGE9LINKLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE9LINKREQUIRED returns the ADIMAGE9LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE9LINKREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE9LINKREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE9LINKREQUIRED
+}
+
+// GetADIMAGE9LINKREQUIREDOk returns a tuple with the ADIMAGE9LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE9LINKREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE9LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE9LINKREQUIRED, true
+}
+
+// HasADIMAGE9LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE9LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE9LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE9LINKREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE9LINKREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE9LINKREQUIRED(v int32) {
+	o.ADIMAGE9LINKREQUIRED = &v
+}
+
+// GetADIMAGE9LINKWARNING returns the ADIMAGE9LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE9LINKWARNING() int32 {
+	if o == nil || IsNil(o.ADIMAGE9LINKWARNING) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE9LINKWARNING
+}
+
+// GetADIMAGE9LINKWARNINGOk returns a tuple with the ADIMAGE9LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE9LINKWARNINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE9LINKWARNING) {
+		return nil, false
+	}
+	return o.ADIMAGE9LINKWARNING, true
+}
+
+// HasADIMAGE9LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE9LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADIMAGE9LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE9LINKWARNING gets a reference to the given int32 and assigns it to the ADIMAGE9LINKWARNING field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE9LINKWARNING(v int32) {
+	o.ADIMAGE9LINKWARNING = &v
+}
+
+// GetADIMAGE9TAGDUPLICATED returns the ADIMAGE9TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE9TAGDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADIMAGE9TAGDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE9TAGDUPLICATED
+}
+
+// GetADIMAGE9TAGDUPLICATEDOk returns a tuple with the ADIMAGE9TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE9TAGDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE9TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADIMAGE9TAGDUPLICATED, true
+}
+
+// HasADIMAGE9TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE9TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADIMAGE9TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE9TAGDUPLICATED gets a reference to the given int32 and assigns it to the ADIMAGE9TAGDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE9TAGDUPLICATED(v int32) {
+	o.ADIMAGE9TAGDUPLICATED = &v
+}
+
+// GetADIMAGE9TAGLENGTHTOOLONG returns the ADIMAGE9TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE9TAGLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADIMAGE9TAGLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE9TAGLENGTHTOOLONG
+}
+
+// GetADIMAGE9TAGLENGTHTOOLONGOk returns a tuple with the ADIMAGE9TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE9TAGLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE9TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADIMAGE9TAGLENGTHTOOLONG, true
+}
+
+// HasADIMAGE9TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE9TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADIMAGE9TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE9TAGLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADIMAGE9TAGLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE9TAGLENGTHTOOLONG(v int32) {
+	o.ADIMAGE9TAGLENGTHTOOLONG = &v
+}
+
+// GetADIMAGE9TAGREQUIRED returns the ADIMAGE9TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE9TAGREQUIRED() int32 {
+	if o == nil || IsNil(o.ADIMAGE9TAGREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADIMAGE9TAGREQUIRED
+}
+
+// GetADIMAGE9TAGREQUIREDOk returns a tuple with the ADIMAGE9TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADIMAGE9TAGREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADIMAGE9TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADIMAGE9TAGREQUIRED, true
+}
+
+// HasADIMAGE9TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADIMAGE9TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADIMAGE9TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADIMAGE9TAGREQUIRED gets a reference to the given int32 and assigns it to the ADIMAGE9TAGREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADIMAGE9TAGREQUIRED(v int32) {
+	o.ADIMAGE9TAGREQUIRED = &v
 }
 
 // GetAD_LINK_FORMAT_WARNING returns the AD_LINK_FORMAT_WARNING field value if set, zero value otherwise.
@@ -201,420 +5005,676 @@ func (o *CatalogsFeedValidationWarnings) SetAD_LINK_SAME_AS_LINK(v int32) {
 	o.AD_LINK_SAME_AS_LINK = &v
 }
 
-// GetTITLE_LENGTH_TOO_LONG returns the TITLE_LENGTH_TOO_LONG field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetTITLE_LENGTH_TOO_LONG() int32 {
-	if o == nil || IsNil(o.TITLE_LENGTH_TOO_LONG) {
+// GetADVIDEO0LINKDUPLICATED returns the ADVIDEO0LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO0LINKDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADVIDEO0LINKDUPLICATED) {
 		var ret int32
 		return ret
 	}
-	return *o.TITLE_LENGTH_TOO_LONG
+	return *o.ADVIDEO0LINKDUPLICATED
 }
 
-// GetTITLE_LENGTH_TOO_LONGOk returns a tuple with the TITLE_LENGTH_TOO_LONG field value if set, nil otherwise
+// GetADVIDEO0LINKDUPLICATEDOk returns a tuple with the ADVIDEO0LINKDUPLICATED field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetTITLE_LENGTH_TOO_LONGOk() (*int32, bool) {
-	if o == nil || IsNil(o.TITLE_LENGTH_TOO_LONG) {
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO0LINKDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEO0LINKDUPLICATED) {
 		return nil, false
 	}
-	return o.TITLE_LENGTH_TOO_LONG, true
+	return o.ADVIDEO0LINKDUPLICATED, true
 }
 
-// HasTITLE_LENGTH_TOO_LONG returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasTITLE_LENGTH_TOO_LONG() bool {
-	if o != nil && !IsNil(o.TITLE_LENGTH_TOO_LONG) {
+// HasADVIDEO0LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADVIDEO0LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADVIDEO0LINKDUPLICATED) {
 		return true
 	}
 
 	return false
 }
 
-// SetTITLE_LENGTH_TOO_LONG gets a reference to the given int32 and assigns it to the TITLE_LENGTH_TOO_LONG field.
-func (o *CatalogsFeedValidationWarnings) SetTITLE_LENGTH_TOO_LONG(v int32) {
-	o.TITLE_LENGTH_TOO_LONG = &v
+// SetADVIDEO0LINKDUPLICATED gets a reference to the given int32 and assigns it to the ADVIDEO0LINKDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADVIDEO0LINKDUPLICATED(v int32) {
+	o.ADVIDEO0LINKDUPLICATED = &v
 }
 
-// GetDESCRIPTION_LENGTH_TOO_LONG returns the DESCRIPTION_LENGTH_TOO_LONG field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetDESCRIPTION_LENGTH_TOO_LONG() int32 {
-	if o == nil || IsNil(o.DESCRIPTION_LENGTH_TOO_LONG) {
+// GetADVIDEO0LINKLENGTHTOOLONG returns the ADVIDEO0LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO0LINKLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADVIDEO0LINKLENGTHTOOLONG) {
 		var ret int32
 		return ret
 	}
-	return *o.DESCRIPTION_LENGTH_TOO_LONG
+	return *o.ADVIDEO0LINKLENGTHTOOLONG
 }
 
-// GetDESCRIPTION_LENGTH_TOO_LONGOk returns a tuple with the DESCRIPTION_LENGTH_TOO_LONG field value if set, nil otherwise
+// GetADVIDEO0LINKLENGTHTOOLONGOk returns a tuple with the ADVIDEO0LINKLENGTHTOOLONG field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetDESCRIPTION_LENGTH_TOO_LONGOk() (*int32, bool) {
-	if o == nil || IsNil(o.DESCRIPTION_LENGTH_TOO_LONG) {
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO0LINKLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEO0LINKLENGTHTOOLONG) {
 		return nil, false
 	}
-	return o.DESCRIPTION_LENGTH_TOO_LONG, true
+	return o.ADVIDEO0LINKLENGTHTOOLONG, true
 }
 
-// HasDESCRIPTION_LENGTH_TOO_LONG returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasDESCRIPTION_LENGTH_TOO_LONG() bool {
-	if o != nil && !IsNil(o.DESCRIPTION_LENGTH_TOO_LONG) {
+// HasADVIDEO0LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADVIDEO0LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADVIDEO0LINKLENGTHTOOLONG) {
 		return true
 	}
 
 	return false
 }
 
-// SetDESCRIPTION_LENGTH_TOO_LONG gets a reference to the given int32 and assigns it to the DESCRIPTION_LENGTH_TOO_LONG field.
-func (o *CatalogsFeedValidationWarnings) SetDESCRIPTION_LENGTH_TOO_LONG(v int32) {
-	o.DESCRIPTION_LENGTH_TOO_LONG = &v
+// SetADVIDEO0LINKLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADVIDEO0LINKLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADVIDEO0LINKLENGTHTOOLONG(v int32) {
+	o.ADVIDEO0LINKLENGTHTOOLONG = &v
 }
 
-// GetGENDER_INVALID returns the GENDER_INVALID field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetGENDER_INVALID() int32 {
-	if o == nil || IsNil(o.GENDER_INVALID) {
+// GetADVIDEO0LINKREQUIRED returns the ADVIDEO0LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO0LINKREQUIRED() int32 {
+	if o == nil || IsNil(o.ADVIDEO0LINKREQUIRED) {
 		var ret int32
 		return ret
 	}
-	return *o.GENDER_INVALID
+	return *o.ADVIDEO0LINKREQUIRED
 }
 
-// GetGENDER_INVALIDOk returns a tuple with the GENDER_INVALID field value if set, nil otherwise
+// GetADVIDEO0LINKREQUIREDOk returns a tuple with the ADVIDEO0LINKREQUIRED field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetGENDER_INVALIDOk() (*int32, bool) {
-	if o == nil || IsNil(o.GENDER_INVALID) {
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO0LINKREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEO0LINKREQUIRED) {
 		return nil, false
 	}
-	return o.GENDER_INVALID, true
+	return o.ADVIDEO0LINKREQUIRED, true
 }
 
-// HasGENDER_INVALID returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasGENDER_INVALID() bool {
-	if o != nil && !IsNil(o.GENDER_INVALID) {
+// HasADVIDEO0LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADVIDEO0LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADVIDEO0LINKREQUIRED) {
 		return true
 	}
 
 	return false
 }
 
-// SetGENDER_INVALID gets a reference to the given int32 and assigns it to the GENDER_INVALID field.
-func (o *CatalogsFeedValidationWarnings) SetGENDER_INVALID(v int32) {
-	o.GENDER_INVALID = &v
+// SetADVIDEO0LINKREQUIRED gets a reference to the given int32 and assigns it to the ADVIDEO0LINKREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADVIDEO0LINKREQUIRED(v int32) {
+	o.ADVIDEO0LINKREQUIRED = &v
 }
 
-// GetAGE_GROUP_INVALID returns the AGE_GROUP_INVALID field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetAGE_GROUP_INVALID() int32 {
-	if o == nil || IsNil(o.AGE_GROUP_INVALID) {
+// GetADVIDEO0LINKWARNING returns the ADVIDEO0LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO0LINKWARNING() int32 {
+	if o == nil || IsNil(o.ADVIDEO0LINKWARNING) {
 		var ret int32
 		return ret
 	}
-	return *o.AGE_GROUP_INVALID
+	return *o.ADVIDEO0LINKWARNING
 }
 
-// GetAGE_GROUP_INVALIDOk returns a tuple with the AGE_GROUP_INVALID field value if set, nil otherwise
+// GetADVIDEO0LINKWARNINGOk returns a tuple with the ADVIDEO0LINKWARNING field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetAGE_GROUP_INVALIDOk() (*int32, bool) {
-	if o == nil || IsNil(o.AGE_GROUP_INVALID) {
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO0LINKWARNINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEO0LINKWARNING) {
 		return nil, false
 	}
-	return o.AGE_GROUP_INVALID, true
+	return o.ADVIDEO0LINKWARNING, true
 }
 
-// HasAGE_GROUP_INVALID returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasAGE_GROUP_INVALID() bool {
-	if o != nil && !IsNil(o.AGE_GROUP_INVALID) {
+// HasADVIDEO0LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADVIDEO0LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADVIDEO0LINKWARNING) {
 		return true
 	}
 
 	return false
 }
 
-// SetAGE_GROUP_INVALID gets a reference to the given int32 and assigns it to the AGE_GROUP_INVALID field.
-func (o *CatalogsFeedValidationWarnings) SetAGE_GROUP_INVALID(v int32) {
-	o.AGE_GROUP_INVALID = &v
+// SetADVIDEO0LINKWARNING gets a reference to the given int32 and assigns it to the ADVIDEO0LINKWARNING field.
+func (o *CatalogsFeedValidationWarnings) SetADVIDEO0LINKWARNING(v int32) {
+	o.ADVIDEO0LINKWARNING = &v
 }
 
-// GetSIZE_TYPE_INVALID returns the SIZE_TYPE_INVALID field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetSIZE_TYPE_INVALID() int32 {
-	if o == nil || IsNil(o.SIZE_TYPE_INVALID) {
+// GetADVIDEO0TAGDUPLICATED returns the ADVIDEO0TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO0TAGDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADVIDEO0TAGDUPLICATED) {
 		var ret int32
 		return ret
 	}
-	return *o.SIZE_TYPE_INVALID
+	return *o.ADVIDEO0TAGDUPLICATED
 }
 
-// GetSIZE_TYPE_INVALIDOk returns a tuple with the SIZE_TYPE_INVALID field value if set, nil otherwise
+// GetADVIDEO0TAGDUPLICATEDOk returns a tuple with the ADVIDEO0TAGDUPLICATED field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetSIZE_TYPE_INVALIDOk() (*int32, bool) {
-	if o == nil || IsNil(o.SIZE_TYPE_INVALID) {
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO0TAGDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEO0TAGDUPLICATED) {
 		return nil, false
 	}
-	return o.SIZE_TYPE_INVALID, true
+	return o.ADVIDEO0TAGDUPLICATED, true
 }
 
-// HasSIZE_TYPE_INVALID returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasSIZE_TYPE_INVALID() bool {
-	if o != nil && !IsNil(o.SIZE_TYPE_INVALID) {
+// HasADVIDEO0TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADVIDEO0TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADVIDEO0TAGDUPLICATED) {
 		return true
 	}
 
 	return false
 }
 
-// SetSIZE_TYPE_INVALID gets a reference to the given int32 and assigns it to the SIZE_TYPE_INVALID field.
-func (o *CatalogsFeedValidationWarnings) SetSIZE_TYPE_INVALID(v int32) {
-	o.SIZE_TYPE_INVALID = &v
+// SetADVIDEO0TAGDUPLICATED gets a reference to the given int32 and assigns it to the ADVIDEO0TAGDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADVIDEO0TAGDUPLICATED(v int32) {
+	o.ADVIDEO0TAGDUPLICATED = &v
 }
 
-// GetSIZE_SYSTEM_INVALID returns the SIZE_SYSTEM_INVALID field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetSIZE_SYSTEM_INVALID() int32 {
-	if o == nil || IsNil(o.SIZE_SYSTEM_INVALID) {
+// GetADVIDEO0TAGLENGTHTOOLONG returns the ADVIDEO0TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO0TAGLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADVIDEO0TAGLENGTHTOOLONG) {
 		var ret int32
 		return ret
 	}
-	return *o.SIZE_SYSTEM_INVALID
+	return *o.ADVIDEO0TAGLENGTHTOOLONG
 }
 
-// GetSIZE_SYSTEM_INVALIDOk returns a tuple with the SIZE_SYSTEM_INVALID field value if set, nil otherwise
+// GetADVIDEO0TAGLENGTHTOOLONGOk returns a tuple with the ADVIDEO0TAGLENGTHTOOLONG field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetSIZE_SYSTEM_INVALIDOk() (*int32, bool) {
-	if o == nil || IsNil(o.SIZE_SYSTEM_INVALID) {
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO0TAGLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEO0TAGLENGTHTOOLONG) {
 		return nil, false
 	}
-	return o.SIZE_SYSTEM_INVALID, true
+	return o.ADVIDEO0TAGLENGTHTOOLONG, true
 }
 
-// HasSIZE_SYSTEM_INVALID returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasSIZE_SYSTEM_INVALID() bool {
-	if o != nil && !IsNil(o.SIZE_SYSTEM_INVALID) {
+// HasADVIDEO0TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADVIDEO0TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADVIDEO0TAGLENGTHTOOLONG) {
 		return true
 	}
 
 	return false
 }
 
-// SetSIZE_SYSTEM_INVALID gets a reference to the given int32 and assigns it to the SIZE_SYSTEM_INVALID field.
-func (o *CatalogsFeedValidationWarnings) SetSIZE_SYSTEM_INVALID(v int32) {
-	o.SIZE_SYSTEM_INVALID = &v
+// SetADVIDEO0TAGLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADVIDEO0TAGLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADVIDEO0TAGLENGTHTOOLONG(v int32) {
+	o.ADVIDEO0TAGLENGTHTOOLONG = &v
 }
 
-// GetLINK_FORMAT_WARNING returns the LINK_FORMAT_WARNING field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetLINK_FORMAT_WARNING() int32 {
-	if o == nil || IsNil(o.LINK_FORMAT_WARNING) {
+// GetADVIDEO0TAGREQUIRED returns the ADVIDEO0TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO0TAGREQUIRED() int32 {
+	if o == nil || IsNil(o.ADVIDEO0TAGREQUIRED) {
 		var ret int32
 		return ret
 	}
-	return *o.LINK_FORMAT_WARNING
+	return *o.ADVIDEO0TAGREQUIRED
 }
 
-// GetLINK_FORMAT_WARNINGOk returns a tuple with the LINK_FORMAT_WARNING field value if set, nil otherwise
+// GetADVIDEO0TAGREQUIREDOk returns a tuple with the ADVIDEO0TAGREQUIRED field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetLINK_FORMAT_WARNINGOk() (*int32, bool) {
-	if o == nil || IsNil(o.LINK_FORMAT_WARNING) {
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO0TAGREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEO0TAGREQUIRED) {
 		return nil, false
 	}
-	return o.LINK_FORMAT_WARNING, true
+	return o.ADVIDEO0TAGREQUIRED, true
 }
 
-// HasLINK_FORMAT_WARNING returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasLINK_FORMAT_WARNING() bool {
-	if o != nil && !IsNil(o.LINK_FORMAT_WARNING) {
+// HasADVIDEO0TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADVIDEO0TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADVIDEO0TAGREQUIRED) {
 		return true
 	}
 
 	return false
 }
 
-// SetLINK_FORMAT_WARNING gets a reference to the given int32 and assigns it to the LINK_FORMAT_WARNING field.
-func (o *CatalogsFeedValidationWarnings) SetLINK_FORMAT_WARNING(v int32) {
-	o.LINK_FORMAT_WARNING = &v
+// SetADVIDEO0TAGREQUIRED gets a reference to the given int32 and assigns it to the ADVIDEO0TAGREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADVIDEO0TAGREQUIRED(v int32) {
+	o.ADVIDEO0TAGREQUIRED = &v
 }
 
-// GetSALES_PRICE_INVALID returns the SALES_PRICE_INVALID field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetSALES_PRICE_INVALID() int32 {
-	if o == nil || IsNil(o.SALES_PRICE_INVALID) {
+// GetADVIDEO1LINKDUPLICATED returns the ADVIDEO1LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO1LINKDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADVIDEO1LINKDUPLICATED) {
 		var ret int32
 		return ret
 	}
-	return *o.SALES_PRICE_INVALID
+	return *o.ADVIDEO1LINKDUPLICATED
 }
 
-// GetSALES_PRICE_INVALIDOk returns a tuple with the SALES_PRICE_INVALID field value if set, nil otherwise
+// GetADVIDEO1LINKDUPLICATEDOk returns a tuple with the ADVIDEO1LINKDUPLICATED field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetSALES_PRICE_INVALIDOk() (*int32, bool) {
-	if o == nil || IsNil(o.SALES_PRICE_INVALID) {
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO1LINKDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEO1LINKDUPLICATED) {
 		return nil, false
 	}
-	return o.SALES_PRICE_INVALID, true
+	return o.ADVIDEO1LINKDUPLICATED, true
 }
 
-// HasSALES_PRICE_INVALID returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasSALES_PRICE_INVALID() bool {
-	if o != nil && !IsNil(o.SALES_PRICE_INVALID) {
+// HasADVIDEO1LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADVIDEO1LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADVIDEO1LINKDUPLICATED) {
 		return true
 	}
 
 	return false
 }
 
-// SetSALES_PRICE_INVALID gets a reference to the given int32 and assigns it to the SALES_PRICE_INVALID field.
-func (o *CatalogsFeedValidationWarnings) SetSALES_PRICE_INVALID(v int32) {
-	o.SALES_PRICE_INVALID = &v
+// SetADVIDEO1LINKDUPLICATED gets a reference to the given int32 and assigns it to the ADVIDEO1LINKDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADVIDEO1LINKDUPLICATED(v int32) {
+	o.ADVIDEO1LINKDUPLICATED = &v
 }
 
-// GetPRODUCT_CATEGORY_DEPTH_WARNING returns the PRODUCT_CATEGORY_DEPTH_WARNING field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetPRODUCT_CATEGORY_DEPTH_WARNING() int32 {
-	if o == nil || IsNil(o.PRODUCT_CATEGORY_DEPTH_WARNING) {
+// GetADVIDEO1LINKLENGTHTOOLONG returns the ADVIDEO1LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO1LINKLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADVIDEO1LINKLENGTHTOOLONG) {
 		var ret int32
 		return ret
 	}
-	return *o.PRODUCT_CATEGORY_DEPTH_WARNING
+	return *o.ADVIDEO1LINKLENGTHTOOLONG
 }
 
-// GetPRODUCT_CATEGORY_DEPTH_WARNINGOk returns a tuple with the PRODUCT_CATEGORY_DEPTH_WARNING field value if set, nil otherwise
+// GetADVIDEO1LINKLENGTHTOOLONGOk returns a tuple with the ADVIDEO1LINKLENGTHTOOLONG field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetPRODUCT_CATEGORY_DEPTH_WARNINGOk() (*int32, bool) {
-	if o == nil || IsNil(o.PRODUCT_CATEGORY_DEPTH_WARNING) {
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO1LINKLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEO1LINKLENGTHTOOLONG) {
 		return nil, false
 	}
-	return o.PRODUCT_CATEGORY_DEPTH_WARNING, true
+	return o.ADVIDEO1LINKLENGTHTOOLONG, true
 }
 
-// HasPRODUCT_CATEGORY_DEPTH_WARNING returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasPRODUCT_CATEGORY_DEPTH_WARNING() bool {
-	if o != nil && !IsNil(o.PRODUCT_CATEGORY_DEPTH_WARNING) {
+// HasADVIDEO1LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADVIDEO1LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADVIDEO1LINKLENGTHTOOLONG) {
 		return true
 	}
 
 	return false
 }
 
-// SetPRODUCT_CATEGORY_DEPTH_WARNING gets a reference to the given int32 and assigns it to the PRODUCT_CATEGORY_DEPTH_WARNING field.
-func (o *CatalogsFeedValidationWarnings) SetPRODUCT_CATEGORY_DEPTH_WARNING(v int32) {
-	o.PRODUCT_CATEGORY_DEPTH_WARNING = &v
+// SetADVIDEO1LINKLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADVIDEO1LINKLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADVIDEO1LINKLENGTHTOOLONG(v int32) {
+	o.ADVIDEO1LINKLENGTHTOOLONG = &v
 }
 
-// GetADWORDS_FORMAT_WARNING returns the ADWORDS_FORMAT_WARNING field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetADWORDS_FORMAT_WARNING() int32 {
-	if o == nil || IsNil(o.ADWORDS_FORMAT_WARNING) {
+// GetADVIDEO1LINKREQUIRED returns the ADVIDEO1LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO1LINKREQUIRED() int32 {
+	if o == nil || IsNil(o.ADVIDEO1LINKREQUIRED) {
 		var ret int32
 		return ret
 	}
-	return *o.ADWORDS_FORMAT_WARNING
+	return *o.ADVIDEO1LINKREQUIRED
 }
 
-// GetADWORDS_FORMAT_WARNINGOk returns a tuple with the ADWORDS_FORMAT_WARNING field value if set, nil otherwise
+// GetADVIDEO1LINKREQUIREDOk returns a tuple with the ADVIDEO1LINKREQUIRED field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetADWORDS_FORMAT_WARNINGOk() (*int32, bool) {
-	if o == nil || IsNil(o.ADWORDS_FORMAT_WARNING) {
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO1LINKREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEO1LINKREQUIRED) {
 		return nil, false
 	}
-	return o.ADWORDS_FORMAT_WARNING, true
+	return o.ADVIDEO1LINKREQUIRED, true
 }
 
-// HasADWORDS_FORMAT_WARNING returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasADWORDS_FORMAT_WARNING() bool {
-	if o != nil && !IsNil(o.ADWORDS_FORMAT_WARNING) {
+// HasADVIDEO1LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADVIDEO1LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADVIDEO1LINKREQUIRED) {
 		return true
 	}
 
 	return false
 }
 
-// SetADWORDS_FORMAT_WARNING gets a reference to the given int32 and assigns it to the ADWORDS_FORMAT_WARNING field.
-func (o *CatalogsFeedValidationWarnings) SetADWORDS_FORMAT_WARNING(v int32) {
-	o.ADWORDS_FORMAT_WARNING = &v
+// SetADVIDEO1LINKREQUIRED gets a reference to the given int32 and assigns it to the ADVIDEO1LINKREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADVIDEO1LINKREQUIRED(v int32) {
+	o.ADVIDEO1LINKREQUIRED = &v
 }
 
-// GetADWORDS_SAME_AS_LINK returns the ADWORDS_SAME_AS_LINK field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetADWORDS_SAME_AS_LINK() int32 {
-	if o == nil || IsNil(o.ADWORDS_SAME_AS_LINK) {
+// GetADVIDEO1LINKWARNING returns the ADVIDEO1LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO1LINKWARNING() int32 {
+	if o == nil || IsNil(o.ADVIDEO1LINKWARNING) {
 		var ret int32
 		return ret
 	}
-	return *o.ADWORDS_SAME_AS_LINK
+	return *o.ADVIDEO1LINKWARNING
 }
 
-// GetADWORDS_SAME_AS_LINKOk returns a tuple with the ADWORDS_SAME_AS_LINK field value if set, nil otherwise
+// GetADVIDEO1LINKWARNINGOk returns a tuple with the ADVIDEO1LINKWARNING field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetADWORDS_SAME_AS_LINKOk() (*int32, bool) {
-	if o == nil || IsNil(o.ADWORDS_SAME_AS_LINK) {
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO1LINKWARNINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEO1LINKWARNING) {
 		return nil, false
 	}
-	return o.ADWORDS_SAME_AS_LINK, true
+	return o.ADVIDEO1LINKWARNING, true
 }
 
-// HasADWORDS_SAME_AS_LINK returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasADWORDS_SAME_AS_LINK() bool {
-	if o != nil && !IsNil(o.ADWORDS_SAME_AS_LINK) {
+// HasADVIDEO1LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADVIDEO1LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADVIDEO1LINKWARNING) {
 		return true
 	}
 
 	return false
 }
 
-// SetADWORDS_SAME_AS_LINK gets a reference to the given int32 and assigns it to the ADWORDS_SAME_AS_LINK field.
-func (o *CatalogsFeedValidationWarnings) SetADWORDS_SAME_AS_LINK(v int32) {
-	o.ADWORDS_SAME_AS_LINK = &v
+// SetADVIDEO1LINKWARNING gets a reference to the given int32 and assigns it to the ADVIDEO1LINKWARNING field.
+func (o *CatalogsFeedValidationWarnings) SetADVIDEO1LINKWARNING(v int32) {
+	o.ADVIDEO1LINKWARNING = &v
 }
 
-// GetDUPLICATE_HEADERS returns the DUPLICATE_HEADERS field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetDUPLICATE_HEADERS() int32 {
-	if o == nil || IsNil(o.DUPLICATE_HEADERS) {
+// GetADVIDEO1TAGDUPLICATED returns the ADVIDEO1TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO1TAGDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADVIDEO1TAGDUPLICATED) {
 		var ret int32
 		return ret
 	}
-	return *o.DUPLICATE_HEADERS
+	return *o.ADVIDEO1TAGDUPLICATED
 }
 
-// GetDUPLICATE_HEADERSOk returns a tuple with the DUPLICATE_HEADERS field value if set, nil otherwise
+// GetADVIDEO1TAGDUPLICATEDOk returns a tuple with the ADVIDEO1TAGDUPLICATED field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetDUPLICATE_HEADERSOk() (*int32, bool) {
-	if o == nil || IsNil(o.DUPLICATE_HEADERS) {
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO1TAGDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEO1TAGDUPLICATED) {
 		return nil, false
 	}
-	return o.DUPLICATE_HEADERS, true
+	return o.ADVIDEO1TAGDUPLICATED, true
 }
 
-// HasDUPLICATE_HEADERS returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasDUPLICATE_HEADERS() bool {
-	if o != nil && !IsNil(o.DUPLICATE_HEADERS) {
+// HasADVIDEO1TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADVIDEO1TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADVIDEO1TAGDUPLICATED) {
 		return true
 	}
 
 	return false
 }
 
-// SetDUPLICATE_HEADERS gets a reference to the given int32 and assigns it to the DUPLICATE_HEADERS field.
-func (o *CatalogsFeedValidationWarnings) SetDUPLICATE_HEADERS(v int32) {
-	o.DUPLICATE_HEADERS = &v
+// SetADVIDEO1TAGDUPLICATED gets a reference to the given int32 and assigns it to the ADVIDEO1TAGDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADVIDEO1TAGDUPLICATED(v int32) {
+	o.ADVIDEO1TAGDUPLICATED = &v
 }
 
-// GetFETCH_SAME_SIGNATURE returns the FETCH_SAME_SIGNATURE field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetFETCH_SAME_SIGNATURE() int32 {
-	if o == nil || IsNil(o.FETCH_SAME_SIGNATURE) {
+// GetADVIDEO1TAGLENGTHTOOLONG returns the ADVIDEO1TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO1TAGLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADVIDEO1TAGLENGTHTOOLONG) {
 		var ret int32
 		return ret
 	}
-	return *o.FETCH_SAME_SIGNATURE
+	return *o.ADVIDEO1TAGLENGTHTOOLONG
 }
 
-// GetFETCH_SAME_SIGNATUREOk returns a tuple with the FETCH_SAME_SIGNATURE field value if set, nil otherwise
+// GetADVIDEO1TAGLENGTHTOOLONGOk returns a tuple with the ADVIDEO1TAGLENGTHTOOLONG field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetFETCH_SAME_SIGNATUREOk() (*int32, bool) {
-	if o == nil || IsNil(o.FETCH_SAME_SIGNATURE) {
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO1TAGLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEO1TAGLENGTHTOOLONG) {
 		return nil, false
 	}
-	return o.FETCH_SAME_SIGNATURE, true
+	return o.ADVIDEO1TAGLENGTHTOOLONG, true
 }
 
-// HasFETCH_SAME_SIGNATURE returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasFETCH_SAME_SIGNATURE() bool {
-	if o != nil && !IsNil(o.FETCH_SAME_SIGNATURE) {
+// HasADVIDEO1TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADVIDEO1TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADVIDEO1TAGLENGTHTOOLONG) {
 		return true
 	}
 
 	return false
 }
 
-// SetFETCH_SAME_SIGNATURE gets a reference to the given int32 and assigns it to the FETCH_SAME_SIGNATURE field.
-func (o *CatalogsFeedValidationWarnings) SetFETCH_SAME_SIGNATURE(v int32) {
-	o.FETCH_SAME_SIGNATURE = &v
+// SetADVIDEO1TAGLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADVIDEO1TAGLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADVIDEO1TAGLENGTHTOOLONG(v int32) {
+	o.ADVIDEO1TAGLENGTHTOOLONG = &v
+}
+
+// GetADVIDEO1TAGREQUIRED returns the ADVIDEO1TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO1TAGREQUIRED() int32 {
+	if o == nil || IsNil(o.ADVIDEO1TAGREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADVIDEO1TAGREQUIRED
+}
+
+// GetADVIDEO1TAGREQUIREDOk returns a tuple with the ADVIDEO1TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO1TAGREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEO1TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADVIDEO1TAGREQUIRED, true
+}
+
+// HasADVIDEO1TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADVIDEO1TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADVIDEO1TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO1TAGREQUIRED gets a reference to the given int32 and assigns it to the ADVIDEO1TAGREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADVIDEO1TAGREQUIRED(v int32) {
+	o.ADVIDEO1TAGREQUIRED = &v
+}
+
+// GetADVIDEO2LINKDUPLICATED returns the ADVIDEO2LINKDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO2LINKDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADVIDEO2LINKDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADVIDEO2LINKDUPLICATED
+}
+
+// GetADVIDEO2LINKDUPLICATEDOk returns a tuple with the ADVIDEO2LINKDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO2LINKDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEO2LINKDUPLICATED) {
+		return nil, false
+	}
+	return o.ADVIDEO2LINKDUPLICATED, true
+}
+
+// HasADVIDEO2LINKDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADVIDEO2LINKDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADVIDEO2LINKDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO2LINKDUPLICATED gets a reference to the given int32 and assigns it to the ADVIDEO2LINKDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADVIDEO2LINKDUPLICATED(v int32) {
+	o.ADVIDEO2LINKDUPLICATED = &v
+}
+
+// GetADVIDEO2LINKLENGTHTOOLONG returns the ADVIDEO2LINKLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO2LINKLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADVIDEO2LINKLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADVIDEO2LINKLENGTHTOOLONG
+}
+
+// GetADVIDEO2LINKLENGTHTOOLONGOk returns a tuple with the ADVIDEO2LINKLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO2LINKLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEO2LINKLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADVIDEO2LINKLENGTHTOOLONG, true
+}
+
+// HasADVIDEO2LINKLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADVIDEO2LINKLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADVIDEO2LINKLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO2LINKLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADVIDEO2LINKLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADVIDEO2LINKLENGTHTOOLONG(v int32) {
+	o.ADVIDEO2LINKLENGTHTOOLONG = &v
+}
+
+// GetADVIDEO2LINKREQUIRED returns the ADVIDEO2LINKREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO2LINKREQUIRED() int32 {
+	if o == nil || IsNil(o.ADVIDEO2LINKREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADVIDEO2LINKREQUIRED
+}
+
+// GetADVIDEO2LINKREQUIREDOk returns a tuple with the ADVIDEO2LINKREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO2LINKREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEO2LINKREQUIRED) {
+		return nil, false
+	}
+	return o.ADVIDEO2LINKREQUIRED, true
+}
+
+// HasADVIDEO2LINKREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADVIDEO2LINKREQUIRED() bool {
+	if o != nil && !IsNil(o.ADVIDEO2LINKREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO2LINKREQUIRED gets a reference to the given int32 and assigns it to the ADVIDEO2LINKREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADVIDEO2LINKREQUIRED(v int32) {
+	o.ADVIDEO2LINKREQUIRED = &v
+}
+
+// GetADVIDEO2LINKWARNING returns the ADVIDEO2LINKWARNING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO2LINKWARNING() int32 {
+	if o == nil || IsNil(o.ADVIDEO2LINKWARNING) {
+		var ret int32
+		return ret
+	}
+	return *o.ADVIDEO2LINKWARNING
+}
+
+// GetADVIDEO2LINKWARNINGOk returns a tuple with the ADVIDEO2LINKWARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO2LINKWARNINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEO2LINKWARNING) {
+		return nil, false
+	}
+	return o.ADVIDEO2LINKWARNING, true
+}
+
+// HasADVIDEO2LINKWARNING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADVIDEO2LINKWARNING() bool {
+	if o != nil && !IsNil(o.ADVIDEO2LINKWARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO2LINKWARNING gets a reference to the given int32 and assigns it to the ADVIDEO2LINKWARNING field.
+func (o *CatalogsFeedValidationWarnings) SetADVIDEO2LINKWARNING(v int32) {
+	o.ADVIDEO2LINKWARNING = &v
+}
+
+// GetADVIDEO2TAGDUPLICATED returns the ADVIDEO2TAGDUPLICATED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO2TAGDUPLICATED() int32 {
+	if o == nil || IsNil(o.ADVIDEO2TAGDUPLICATED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADVIDEO2TAGDUPLICATED
+}
+
+// GetADVIDEO2TAGDUPLICATEDOk returns a tuple with the ADVIDEO2TAGDUPLICATED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO2TAGDUPLICATEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEO2TAGDUPLICATED) {
+		return nil, false
+	}
+	return o.ADVIDEO2TAGDUPLICATED, true
+}
+
+// HasADVIDEO2TAGDUPLICATED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADVIDEO2TAGDUPLICATED() bool {
+	if o != nil && !IsNil(o.ADVIDEO2TAGDUPLICATED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO2TAGDUPLICATED gets a reference to the given int32 and assigns it to the ADVIDEO2TAGDUPLICATED field.
+func (o *CatalogsFeedValidationWarnings) SetADVIDEO2TAGDUPLICATED(v int32) {
+	o.ADVIDEO2TAGDUPLICATED = &v
+}
+
+// GetADVIDEO2TAGLENGTHTOOLONG returns the ADVIDEO2TAGLENGTHTOOLONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO2TAGLENGTHTOOLONG() int32 {
+	if o == nil || IsNil(o.ADVIDEO2TAGLENGTHTOOLONG) {
+		var ret int32
+		return ret
+	}
+	return *o.ADVIDEO2TAGLENGTHTOOLONG
+}
+
+// GetADVIDEO2TAGLENGTHTOOLONGOk returns a tuple with the ADVIDEO2TAGLENGTHTOOLONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO2TAGLENGTHTOOLONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEO2TAGLENGTHTOOLONG) {
+		return nil, false
+	}
+	return o.ADVIDEO2TAGLENGTHTOOLONG, true
+}
+
+// HasADVIDEO2TAGLENGTHTOOLONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADVIDEO2TAGLENGTHTOOLONG() bool {
+	if o != nil && !IsNil(o.ADVIDEO2TAGLENGTHTOOLONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO2TAGLENGTHTOOLONG gets a reference to the given int32 and assigns it to the ADVIDEO2TAGLENGTHTOOLONG field.
+func (o *CatalogsFeedValidationWarnings) SetADVIDEO2TAGLENGTHTOOLONG(v int32) {
+	o.ADVIDEO2TAGLENGTHTOOLONG = &v
+}
+
+// GetADVIDEO2TAGREQUIRED returns the ADVIDEO2TAGREQUIRED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO2TAGREQUIRED() int32 {
+	if o == nil || IsNil(o.ADVIDEO2TAGREQUIRED) {
+		var ret int32
+		return ret
+	}
+	return *o.ADVIDEO2TAGREQUIRED
+}
+
+// GetADVIDEO2TAGREQUIREDOk returns a tuple with the ADVIDEO2TAGREQUIRED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetADVIDEO2TAGREQUIREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADVIDEO2TAGREQUIRED) {
+		return nil, false
+	}
+	return o.ADVIDEO2TAGREQUIRED, true
+}
+
+// HasADVIDEO2TAGREQUIRED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADVIDEO2TAGREQUIRED() bool {
+	if o != nil && !IsNil(o.ADVIDEO2TAGREQUIRED) {
+		return true
+	}
+
+	return false
+}
+
+// SetADVIDEO2TAGREQUIRED gets a reference to the given int32 and assigns it to the ADVIDEO2TAGREQUIRED field.
+func (o *CatalogsFeedValidationWarnings) SetADVIDEO2TAGREQUIRED(v int32) {
+	o.ADVIDEO2TAGREQUIRED = &v
 }
 
 // GetADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG returns the ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG field value if set, zero value otherwise.
@@ -681,676 +5741,100 @@ func (o *CatalogsFeedValidationWarnings) SetADDITIONAL_IMAGE_LINK_WARNING(v int3
 	o.ADDITIONAL_IMAGE_LINK_WARNING = &v
 }
 
-// GetIMAGE_LINK_WARNING returns the IMAGE_LINK_WARNING field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetIMAGE_LINK_WARNING() int32 {
-	if o == nil || IsNil(o.IMAGE_LINK_WARNING) {
+// GetADWORDS_FORMAT_WARNING returns the ADWORDS_FORMAT_WARNING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADWORDS_FORMAT_WARNING() int32 {
+	if o == nil || IsNil(o.ADWORDS_FORMAT_WARNING) {
 		var ret int32
 		return ret
 	}
-	return *o.IMAGE_LINK_WARNING
+	return *o.ADWORDS_FORMAT_WARNING
 }
 
-// GetIMAGE_LINK_WARNINGOk returns a tuple with the IMAGE_LINK_WARNING field value if set, nil otherwise
+// GetADWORDS_FORMAT_WARNINGOk returns a tuple with the ADWORDS_FORMAT_WARNING field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetIMAGE_LINK_WARNINGOk() (*int32, bool) {
-	if o == nil || IsNil(o.IMAGE_LINK_WARNING) {
+func (o *CatalogsFeedValidationWarnings) GetADWORDS_FORMAT_WARNINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADWORDS_FORMAT_WARNING) {
 		return nil, false
 	}
-	return o.IMAGE_LINK_WARNING, true
+	return o.ADWORDS_FORMAT_WARNING, true
 }
 
-// HasIMAGE_LINK_WARNING returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasIMAGE_LINK_WARNING() bool {
-	if o != nil && !IsNil(o.IMAGE_LINK_WARNING) {
+// HasADWORDS_FORMAT_WARNING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADWORDS_FORMAT_WARNING() bool {
+	if o != nil && !IsNil(o.ADWORDS_FORMAT_WARNING) {
 		return true
 	}
 
 	return false
 }
 
-// SetIMAGE_LINK_WARNING gets a reference to the given int32 and assigns it to the IMAGE_LINK_WARNING field.
-func (o *CatalogsFeedValidationWarnings) SetIMAGE_LINK_WARNING(v int32) {
-	o.IMAGE_LINK_WARNING = &v
+// SetADWORDS_FORMAT_WARNING gets a reference to the given int32 and assigns it to the ADWORDS_FORMAT_WARNING field.
+func (o *CatalogsFeedValidationWarnings) SetADWORDS_FORMAT_WARNING(v int32) {
+	o.ADWORDS_FORMAT_WARNING = &v
 }
 
-// GetSHIPPING_INVALID returns the SHIPPING_INVALID field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetSHIPPING_INVALID() int32 {
-	if o == nil || IsNil(o.SHIPPING_INVALID) {
+// GetADWORDS_SAME_AS_LINK returns the ADWORDS_SAME_AS_LINK field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetADWORDS_SAME_AS_LINK() int32 {
+	if o == nil || IsNil(o.ADWORDS_SAME_AS_LINK) {
 		var ret int32
 		return ret
 	}
-	return *o.SHIPPING_INVALID
+	return *o.ADWORDS_SAME_AS_LINK
 }
 
-// GetSHIPPING_INVALIDOk returns a tuple with the SHIPPING_INVALID field value if set, nil otherwise
+// GetADWORDS_SAME_AS_LINKOk returns a tuple with the ADWORDS_SAME_AS_LINK field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetSHIPPING_INVALIDOk() (*int32, bool) {
-	if o == nil || IsNil(o.SHIPPING_INVALID) {
+func (o *CatalogsFeedValidationWarnings) GetADWORDS_SAME_AS_LINKOk() (*int32, bool) {
+	if o == nil || IsNil(o.ADWORDS_SAME_AS_LINK) {
 		return nil, false
 	}
-	return o.SHIPPING_INVALID, true
+	return o.ADWORDS_SAME_AS_LINK, true
 }
 
-// HasSHIPPING_INVALID returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasSHIPPING_INVALID() bool {
-	if o != nil && !IsNil(o.SHIPPING_INVALID) {
+// HasADWORDS_SAME_AS_LINK returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasADWORDS_SAME_AS_LINK() bool {
+	if o != nil && !IsNil(o.ADWORDS_SAME_AS_LINK) {
 		return true
 	}
 
 	return false
 }
 
-// SetSHIPPING_INVALID gets a reference to the given int32 and assigns it to the SHIPPING_INVALID field.
-func (o *CatalogsFeedValidationWarnings) SetSHIPPING_INVALID(v int32) {
-	o.SHIPPING_INVALID = &v
+// SetADWORDS_SAME_AS_LINK gets a reference to the given int32 and assigns it to the ADWORDS_SAME_AS_LINK field.
+func (o *CatalogsFeedValidationWarnings) SetADWORDS_SAME_AS_LINK(v int32) {
+	o.ADWORDS_SAME_AS_LINK = &v
 }
 
-// GetTAX_INVALID returns the TAX_INVALID field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetTAX_INVALID() int32 {
-	if o == nil || IsNil(o.TAX_INVALID) {
+// GetAGE_GROUP_INVALID returns the AGE_GROUP_INVALID field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetAGE_GROUP_INVALID() int32 {
+	if o == nil || IsNil(o.AGE_GROUP_INVALID) {
 		var ret int32
 		return ret
 	}
-	return *o.TAX_INVALID
+	return *o.AGE_GROUP_INVALID
 }
 
-// GetTAX_INVALIDOk returns a tuple with the TAX_INVALID field value if set, nil otherwise
+// GetAGE_GROUP_INVALIDOk returns a tuple with the AGE_GROUP_INVALID field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetTAX_INVALIDOk() (*int32, bool) {
-	if o == nil || IsNil(o.TAX_INVALID) {
+func (o *CatalogsFeedValidationWarnings) GetAGE_GROUP_INVALIDOk() (*int32, bool) {
+	if o == nil || IsNil(o.AGE_GROUP_INVALID) {
 		return nil, false
 	}
-	return o.TAX_INVALID, true
+	return o.AGE_GROUP_INVALID, true
 }
 
-// HasTAX_INVALID returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasTAX_INVALID() bool {
-	if o != nil && !IsNil(o.TAX_INVALID) {
+// HasAGE_GROUP_INVALID returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasAGE_GROUP_INVALID() bool {
+	if o != nil && !IsNil(o.AGE_GROUP_INVALID) {
 		return true
 	}
 
 	return false
 }
 
-// SetTAX_INVALID gets a reference to the given int32 and assigns it to the TAX_INVALID field.
-func (o *CatalogsFeedValidationWarnings) SetTAX_INVALID(v int32) {
-	o.TAX_INVALID = &v
-}
-
-// GetSHIPPING_WEIGHT_INVALID returns the SHIPPING_WEIGHT_INVALID field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetSHIPPING_WEIGHT_INVALID() int32 {
-	if o == nil || IsNil(o.SHIPPING_WEIGHT_INVALID) {
-		var ret int32
-		return ret
-	}
-	return *o.SHIPPING_WEIGHT_INVALID
-}
-
-// GetSHIPPING_WEIGHT_INVALIDOk returns a tuple with the SHIPPING_WEIGHT_INVALID field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetSHIPPING_WEIGHT_INVALIDOk() (*int32, bool) {
-	if o == nil || IsNil(o.SHIPPING_WEIGHT_INVALID) {
-		return nil, false
-	}
-	return o.SHIPPING_WEIGHT_INVALID, true
-}
-
-// HasSHIPPING_WEIGHT_INVALID returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasSHIPPING_WEIGHT_INVALID() bool {
-	if o != nil && !IsNil(o.SHIPPING_WEIGHT_INVALID) {
-		return true
-	}
-
-	return false
-}
-
-// SetSHIPPING_WEIGHT_INVALID gets a reference to the given int32 and assigns it to the SHIPPING_WEIGHT_INVALID field.
-func (o *CatalogsFeedValidationWarnings) SetSHIPPING_WEIGHT_INVALID(v int32) {
-	o.SHIPPING_WEIGHT_INVALID = &v
-}
-
-// GetEXPIRATION_DATE_INVALID returns the EXPIRATION_DATE_INVALID field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetEXPIRATION_DATE_INVALID() int32 {
-	if o == nil || IsNil(o.EXPIRATION_DATE_INVALID) {
-		var ret int32
-		return ret
-	}
-	return *o.EXPIRATION_DATE_INVALID
-}
-
-// GetEXPIRATION_DATE_INVALIDOk returns a tuple with the EXPIRATION_DATE_INVALID field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetEXPIRATION_DATE_INVALIDOk() (*int32, bool) {
-	if o == nil || IsNil(o.EXPIRATION_DATE_INVALID) {
-		return nil, false
-	}
-	return o.EXPIRATION_DATE_INVALID, true
-}
-
-// HasEXPIRATION_DATE_INVALID returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasEXPIRATION_DATE_INVALID() bool {
-	if o != nil && !IsNil(o.EXPIRATION_DATE_INVALID) {
-		return true
-	}
-
-	return false
-}
-
-// SetEXPIRATION_DATE_INVALID gets a reference to the given int32 and assigns it to the EXPIRATION_DATE_INVALID field.
-func (o *CatalogsFeedValidationWarnings) SetEXPIRATION_DATE_INVALID(v int32) {
-	o.EXPIRATION_DATE_INVALID = &v
-}
-
-// GetAVAILABILITY_DATE_INVALID returns the AVAILABILITY_DATE_INVALID field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetAVAILABILITY_DATE_INVALID() int32 {
-	if o == nil || IsNil(o.AVAILABILITY_DATE_INVALID) {
-		var ret int32
-		return ret
-	}
-	return *o.AVAILABILITY_DATE_INVALID
-}
-
-// GetAVAILABILITY_DATE_INVALIDOk returns a tuple with the AVAILABILITY_DATE_INVALID field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetAVAILABILITY_DATE_INVALIDOk() (*int32, bool) {
-	if o == nil || IsNil(o.AVAILABILITY_DATE_INVALID) {
-		return nil, false
-	}
-	return o.AVAILABILITY_DATE_INVALID, true
-}
-
-// HasAVAILABILITY_DATE_INVALID returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasAVAILABILITY_DATE_INVALID() bool {
-	if o != nil && !IsNil(o.AVAILABILITY_DATE_INVALID) {
-		return true
-	}
-
-	return false
-}
-
-// SetAVAILABILITY_DATE_INVALID gets a reference to the given int32 and assigns it to the AVAILABILITY_DATE_INVALID field.
-func (o *CatalogsFeedValidationWarnings) SetAVAILABILITY_DATE_INVALID(v int32) {
-	o.AVAILABILITY_DATE_INVALID = &v
-}
-
-// GetSALE_DATE_INVALID returns the SALE_DATE_INVALID field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetSALE_DATE_INVALID() int32 {
-	if o == nil || IsNil(o.SALE_DATE_INVALID) {
-		var ret int32
-		return ret
-	}
-	return *o.SALE_DATE_INVALID
-}
-
-// GetSALE_DATE_INVALIDOk returns a tuple with the SALE_DATE_INVALID field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetSALE_DATE_INVALIDOk() (*int32, bool) {
-	if o == nil || IsNil(o.SALE_DATE_INVALID) {
-		return nil, false
-	}
-	return o.SALE_DATE_INVALID, true
-}
-
-// HasSALE_DATE_INVALID returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasSALE_DATE_INVALID() bool {
-	if o != nil && !IsNil(o.SALE_DATE_INVALID) {
-		return true
-	}
-
-	return false
-}
-
-// SetSALE_DATE_INVALID gets a reference to the given int32 and assigns it to the SALE_DATE_INVALID field.
-func (o *CatalogsFeedValidationWarnings) SetSALE_DATE_INVALID(v int32) {
-	o.SALE_DATE_INVALID = &v
-}
-
-// GetWEIGHT_UNIT_INVALID returns the WEIGHT_UNIT_INVALID field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetWEIGHT_UNIT_INVALID() int32 {
-	if o == nil || IsNil(o.WEIGHT_UNIT_INVALID) {
-		var ret int32
-		return ret
-	}
-	return *o.WEIGHT_UNIT_INVALID
-}
-
-// GetWEIGHT_UNIT_INVALIDOk returns a tuple with the WEIGHT_UNIT_INVALID field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetWEIGHT_UNIT_INVALIDOk() (*int32, bool) {
-	if o == nil || IsNil(o.WEIGHT_UNIT_INVALID) {
-		return nil, false
-	}
-	return o.WEIGHT_UNIT_INVALID, true
-}
-
-// HasWEIGHT_UNIT_INVALID returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasWEIGHT_UNIT_INVALID() bool {
-	if o != nil && !IsNil(o.WEIGHT_UNIT_INVALID) {
-		return true
-	}
-
-	return false
-}
-
-// SetWEIGHT_UNIT_INVALID gets a reference to the given int32 and assigns it to the WEIGHT_UNIT_INVALID field.
-func (o *CatalogsFeedValidationWarnings) SetWEIGHT_UNIT_INVALID(v int32) {
-	o.WEIGHT_UNIT_INVALID = &v
-}
-
-// GetIS_BUNDLE_INVALID returns the IS_BUNDLE_INVALID field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetIS_BUNDLE_INVALID() int32 {
-	if o == nil || IsNil(o.IS_BUNDLE_INVALID) {
-		var ret int32
-		return ret
-	}
-	return *o.IS_BUNDLE_INVALID
-}
-
-// GetIS_BUNDLE_INVALIDOk returns a tuple with the IS_BUNDLE_INVALID field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetIS_BUNDLE_INVALIDOk() (*int32, bool) {
-	if o == nil || IsNil(o.IS_BUNDLE_INVALID) {
-		return nil, false
-	}
-	return o.IS_BUNDLE_INVALID, true
-}
-
-// HasIS_BUNDLE_INVALID returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasIS_BUNDLE_INVALID() bool {
-	if o != nil && !IsNil(o.IS_BUNDLE_INVALID) {
-		return true
-	}
-
-	return false
-}
-
-// SetIS_BUNDLE_INVALID gets a reference to the given int32 and assigns it to the IS_BUNDLE_INVALID field.
-func (o *CatalogsFeedValidationWarnings) SetIS_BUNDLE_INVALID(v int32) {
-	o.IS_BUNDLE_INVALID = &v
-}
-
-// GetUPDATED_TIME_INVALID returns the UPDATED_TIME_INVALID field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetUPDATED_TIME_INVALID() int32 {
-	if o == nil || IsNil(o.UPDATED_TIME_INVALID) {
-		var ret int32
-		return ret
-	}
-	return *o.UPDATED_TIME_INVALID
-}
-
-// GetUPDATED_TIME_INVALIDOk returns a tuple with the UPDATED_TIME_INVALID field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetUPDATED_TIME_INVALIDOk() (*int32, bool) {
-	if o == nil || IsNil(o.UPDATED_TIME_INVALID) {
-		return nil, false
-	}
-	return o.UPDATED_TIME_INVALID, true
-}
-
-// HasUPDATED_TIME_INVALID returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasUPDATED_TIME_INVALID() bool {
-	if o != nil && !IsNil(o.UPDATED_TIME_INVALID) {
-		return true
-	}
-
-	return false
-}
-
-// SetUPDATED_TIME_INVALID gets a reference to the given int32 and assigns it to the UPDATED_TIME_INVALID field.
-func (o *CatalogsFeedValidationWarnings) SetUPDATED_TIME_INVALID(v int32) {
-	o.UPDATED_TIME_INVALID = &v
-}
-
-// GetCUSTOM_LABEL_LENGTH_TOO_LONG returns the CUSTOM_LABEL_LENGTH_TOO_LONG field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetCUSTOM_LABEL_LENGTH_TOO_LONG() int32 {
-	if o == nil || IsNil(o.CUSTOM_LABEL_LENGTH_TOO_LONG) {
-		var ret int32
-		return ret
-	}
-	return *o.CUSTOM_LABEL_LENGTH_TOO_LONG
-}
-
-// GetCUSTOM_LABEL_LENGTH_TOO_LONGOk returns a tuple with the CUSTOM_LABEL_LENGTH_TOO_LONG field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetCUSTOM_LABEL_LENGTH_TOO_LONGOk() (*int32, bool) {
-	if o == nil || IsNil(o.CUSTOM_LABEL_LENGTH_TOO_LONG) {
-		return nil, false
-	}
-	return o.CUSTOM_LABEL_LENGTH_TOO_LONG, true
-}
-
-// HasCUSTOM_LABEL_LENGTH_TOO_LONG returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasCUSTOM_LABEL_LENGTH_TOO_LONG() bool {
-	if o != nil && !IsNil(o.CUSTOM_LABEL_LENGTH_TOO_LONG) {
-		return true
-	}
-
-	return false
-}
-
-// SetCUSTOM_LABEL_LENGTH_TOO_LONG gets a reference to the given int32 and assigns it to the CUSTOM_LABEL_LENGTH_TOO_LONG field.
-func (o *CatalogsFeedValidationWarnings) SetCUSTOM_LABEL_LENGTH_TOO_LONG(v int32) {
-	o.CUSTOM_LABEL_LENGTH_TOO_LONG = &v
-}
-
-// GetPRODUCT_TYPE_LENGTH_TOO_LONG returns the PRODUCT_TYPE_LENGTH_TOO_LONG field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetPRODUCT_TYPE_LENGTH_TOO_LONG() int32 {
-	if o == nil || IsNil(o.PRODUCT_TYPE_LENGTH_TOO_LONG) {
-		var ret int32
-		return ret
-	}
-	return *o.PRODUCT_TYPE_LENGTH_TOO_LONG
-}
-
-// GetPRODUCT_TYPE_LENGTH_TOO_LONGOk returns a tuple with the PRODUCT_TYPE_LENGTH_TOO_LONG field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetPRODUCT_TYPE_LENGTH_TOO_LONGOk() (*int32, bool) {
-	if o == nil || IsNil(o.PRODUCT_TYPE_LENGTH_TOO_LONG) {
-		return nil, false
-	}
-	return o.PRODUCT_TYPE_LENGTH_TOO_LONG, true
-}
-
-// HasPRODUCT_TYPE_LENGTH_TOO_LONG returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasPRODUCT_TYPE_LENGTH_TOO_LONG() bool {
-	if o != nil && !IsNil(o.PRODUCT_TYPE_LENGTH_TOO_LONG) {
-		return true
-	}
-
-	return false
-}
-
-// SetPRODUCT_TYPE_LENGTH_TOO_LONG gets a reference to the given int32 and assigns it to the PRODUCT_TYPE_LENGTH_TOO_LONG field.
-func (o *CatalogsFeedValidationWarnings) SetPRODUCT_TYPE_LENGTH_TOO_LONG(v int32) {
-	o.PRODUCT_TYPE_LENGTH_TOO_LONG = &v
-}
-
-// GetTOO_MANY_ADDITIONAL_IMAGE_LINKS returns the TOO_MANY_ADDITIONAL_IMAGE_LINKS field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetTOO_MANY_ADDITIONAL_IMAGE_LINKS() int32 {
-	if o == nil || IsNil(o.TOO_MANY_ADDITIONAL_IMAGE_LINKS) {
-		var ret int32
-		return ret
-	}
-	return *o.TOO_MANY_ADDITIONAL_IMAGE_LINKS
-}
-
-// GetTOO_MANY_ADDITIONAL_IMAGE_LINKSOk returns a tuple with the TOO_MANY_ADDITIONAL_IMAGE_LINKS field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetTOO_MANY_ADDITIONAL_IMAGE_LINKSOk() (*int32, bool) {
-	if o == nil || IsNil(o.TOO_MANY_ADDITIONAL_IMAGE_LINKS) {
-		return nil, false
-	}
-	return o.TOO_MANY_ADDITIONAL_IMAGE_LINKS, true
-}
-
-// HasTOO_MANY_ADDITIONAL_IMAGE_LINKS returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasTOO_MANY_ADDITIONAL_IMAGE_LINKS() bool {
-	if o != nil && !IsNil(o.TOO_MANY_ADDITIONAL_IMAGE_LINKS) {
-		return true
-	}
-
-	return false
-}
-
-// SetTOO_MANY_ADDITIONAL_IMAGE_LINKS gets a reference to the given int32 and assigns it to the TOO_MANY_ADDITIONAL_IMAGE_LINKS field.
-func (o *CatalogsFeedValidationWarnings) SetTOO_MANY_ADDITIONAL_IMAGE_LINKS(v int32) {
-	o.TOO_MANY_ADDITIONAL_IMAGE_LINKS = &v
-}
-
-// GetMULTIPACK_INVALID returns the MULTIPACK_INVALID field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetMULTIPACK_INVALID() int32 {
-	if o == nil || IsNil(o.MULTIPACK_INVALID) {
-		var ret int32
-		return ret
-	}
-	return *o.MULTIPACK_INVALID
-}
-
-// GetMULTIPACK_INVALIDOk returns a tuple with the MULTIPACK_INVALID field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetMULTIPACK_INVALIDOk() (*int32, bool) {
-	if o == nil || IsNil(o.MULTIPACK_INVALID) {
-		return nil, false
-	}
-	return o.MULTIPACK_INVALID, true
-}
-
-// HasMULTIPACK_INVALID returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasMULTIPACK_INVALID() bool {
-	if o != nil && !IsNil(o.MULTIPACK_INVALID) {
-		return true
-	}
-
-	return false
-}
-
-// SetMULTIPACK_INVALID gets a reference to the given int32 and assigns it to the MULTIPACK_INVALID field.
-func (o *CatalogsFeedValidationWarnings) SetMULTIPACK_INVALID(v int32) {
-	o.MULTIPACK_INVALID = &v
-}
-
-// GetINDEXED_PRODUCT_COUNT_LARGE_DELTA returns the INDEXED_PRODUCT_COUNT_LARGE_DELTA field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetINDEXED_PRODUCT_COUNT_LARGE_DELTA() int32 {
-	if o == nil || IsNil(o.INDEXED_PRODUCT_COUNT_LARGE_DELTA) {
-		var ret int32
-		return ret
-	}
-	return *o.INDEXED_PRODUCT_COUNT_LARGE_DELTA
-}
-
-// GetINDEXED_PRODUCT_COUNT_LARGE_DELTAOk returns a tuple with the INDEXED_PRODUCT_COUNT_LARGE_DELTA field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetINDEXED_PRODUCT_COUNT_LARGE_DELTAOk() (*int32, bool) {
-	if o == nil || IsNil(o.INDEXED_PRODUCT_COUNT_LARGE_DELTA) {
-		return nil, false
-	}
-	return o.INDEXED_PRODUCT_COUNT_LARGE_DELTA, true
-}
-
-// HasINDEXED_PRODUCT_COUNT_LARGE_DELTA returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasINDEXED_PRODUCT_COUNT_LARGE_DELTA() bool {
-	if o != nil && !IsNil(o.INDEXED_PRODUCT_COUNT_LARGE_DELTA) {
-		return true
-	}
-
-	return false
-}
-
-// SetINDEXED_PRODUCT_COUNT_LARGE_DELTA gets a reference to the given int32 and assigns it to the INDEXED_PRODUCT_COUNT_LARGE_DELTA field.
-func (o *CatalogsFeedValidationWarnings) SetINDEXED_PRODUCT_COUNT_LARGE_DELTA(v int32) {
-	o.INDEXED_PRODUCT_COUNT_LARGE_DELTA = &v
-}
-
-// GetITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE returns the ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE() int32 {
-	if o == nil || IsNil(o.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE) {
-		var ret int32
-		return ret
-	}
-	return *o.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE
-}
-
-// GetITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILUREOk returns a tuple with the ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILUREOk() (*int32, bool) {
-	if o == nil || IsNil(o.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE) {
-		return nil, false
-	}
-	return o.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE, true
-}
-
-// HasITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE() bool {
-	if o != nil && !IsNil(o.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE) {
-		return true
-	}
-
-	return false
-}
-
-// SetITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE gets a reference to the given int32 and assigns it to the ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE field.
-func (o *CatalogsFeedValidationWarnings) SetITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE(v int32) {
-	o.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE = &v
-}
-
-// GetOPTIONAL_PRODUCT_CATEGORY_MISSING returns the OPTIONAL_PRODUCT_CATEGORY_MISSING field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetOPTIONAL_PRODUCT_CATEGORY_MISSING() int32 {
-	if o == nil || IsNil(o.OPTIONAL_PRODUCT_CATEGORY_MISSING) {
-		var ret int32
-		return ret
-	}
-	return *o.OPTIONAL_PRODUCT_CATEGORY_MISSING
-}
-
-// GetOPTIONAL_PRODUCT_CATEGORY_MISSINGOk returns a tuple with the OPTIONAL_PRODUCT_CATEGORY_MISSING field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetOPTIONAL_PRODUCT_CATEGORY_MISSINGOk() (*int32, bool) {
-	if o == nil || IsNil(o.OPTIONAL_PRODUCT_CATEGORY_MISSING) {
-		return nil, false
-	}
-	return o.OPTIONAL_PRODUCT_CATEGORY_MISSING, true
-}
-
-// HasOPTIONAL_PRODUCT_CATEGORY_MISSING returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasOPTIONAL_PRODUCT_CATEGORY_MISSING() bool {
-	if o != nil && !IsNil(o.OPTIONAL_PRODUCT_CATEGORY_MISSING) {
-		return true
-	}
-
-	return false
-}
-
-// SetOPTIONAL_PRODUCT_CATEGORY_MISSING gets a reference to the given int32 and assigns it to the OPTIONAL_PRODUCT_CATEGORY_MISSING field.
-func (o *CatalogsFeedValidationWarnings) SetOPTIONAL_PRODUCT_CATEGORY_MISSING(v int32) {
-	o.OPTIONAL_PRODUCT_CATEGORY_MISSING = &v
-}
-
-// GetOPTIONAL_PRODUCT_CATEGORY_INVALID returns the OPTIONAL_PRODUCT_CATEGORY_INVALID field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetOPTIONAL_PRODUCT_CATEGORY_INVALID() int32 {
-	if o == nil || IsNil(o.OPTIONAL_PRODUCT_CATEGORY_INVALID) {
-		var ret int32
-		return ret
-	}
-	return *o.OPTIONAL_PRODUCT_CATEGORY_INVALID
-}
-
-// GetOPTIONAL_PRODUCT_CATEGORY_INVALIDOk returns a tuple with the OPTIONAL_PRODUCT_CATEGORY_INVALID field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetOPTIONAL_PRODUCT_CATEGORY_INVALIDOk() (*int32, bool) {
-	if o == nil || IsNil(o.OPTIONAL_PRODUCT_CATEGORY_INVALID) {
-		return nil, false
-	}
-	return o.OPTIONAL_PRODUCT_CATEGORY_INVALID, true
-}
-
-// HasOPTIONAL_PRODUCT_CATEGORY_INVALID returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasOPTIONAL_PRODUCT_CATEGORY_INVALID() bool {
-	if o != nil && !IsNil(o.OPTIONAL_PRODUCT_CATEGORY_INVALID) {
-		return true
-	}
-
-	return false
-}
-
-// SetOPTIONAL_PRODUCT_CATEGORY_INVALID gets a reference to the given int32 and assigns it to the OPTIONAL_PRODUCT_CATEGORY_INVALID field.
-func (o *CatalogsFeedValidationWarnings) SetOPTIONAL_PRODUCT_CATEGORY_INVALID(v int32) {
-	o.OPTIONAL_PRODUCT_CATEGORY_INVALID = &v
-}
-
-// GetOPTIONAL_CONDITION_MISSING returns the OPTIONAL_CONDITION_MISSING field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetOPTIONAL_CONDITION_MISSING() int32 {
-	if o == nil || IsNil(o.OPTIONAL_CONDITION_MISSING) {
-		var ret int32
-		return ret
-	}
-	return *o.OPTIONAL_CONDITION_MISSING
-}
-
-// GetOPTIONAL_CONDITION_MISSINGOk returns a tuple with the OPTIONAL_CONDITION_MISSING field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetOPTIONAL_CONDITION_MISSINGOk() (*int32, bool) {
-	if o == nil || IsNil(o.OPTIONAL_CONDITION_MISSING) {
-		return nil, false
-	}
-	return o.OPTIONAL_CONDITION_MISSING, true
-}
-
-// HasOPTIONAL_CONDITION_MISSING returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasOPTIONAL_CONDITION_MISSING() bool {
-	if o != nil && !IsNil(o.OPTIONAL_CONDITION_MISSING) {
-		return true
-	}
-
-	return false
-}
-
-// SetOPTIONAL_CONDITION_MISSING gets a reference to the given int32 and assigns it to the OPTIONAL_CONDITION_MISSING field.
-func (o *CatalogsFeedValidationWarnings) SetOPTIONAL_CONDITION_MISSING(v int32) {
-	o.OPTIONAL_CONDITION_MISSING = &v
-}
-
-// GetOPTIONAL_CONDITION_INVALID returns the OPTIONAL_CONDITION_INVALID field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetOPTIONAL_CONDITION_INVALID() int32 {
-	if o == nil || IsNil(o.OPTIONAL_CONDITION_INVALID) {
-		var ret int32
-		return ret
-	}
-	return *o.OPTIONAL_CONDITION_INVALID
-}
-
-// GetOPTIONAL_CONDITION_INVALIDOk returns a tuple with the OPTIONAL_CONDITION_INVALID field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetOPTIONAL_CONDITION_INVALIDOk() (*int32, bool) {
-	if o == nil || IsNil(o.OPTIONAL_CONDITION_INVALID) {
-		return nil, false
-	}
-	return o.OPTIONAL_CONDITION_INVALID, true
-}
-
-// HasOPTIONAL_CONDITION_INVALID returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasOPTIONAL_CONDITION_INVALID() bool {
-	if o != nil && !IsNil(o.OPTIONAL_CONDITION_INVALID) {
-		return true
-	}
-
-	return false
-}
-
-// SetOPTIONAL_CONDITION_INVALID gets a reference to the given int32 and assigns it to the OPTIONAL_CONDITION_INVALID field.
-func (o *CatalogsFeedValidationWarnings) SetOPTIONAL_CONDITION_INVALID(v int32) {
-	o.OPTIONAL_CONDITION_INVALID = &v
-}
-
-// GetIOS_DEEP_LINK_INVALID returns the IOS_DEEP_LINK_INVALID field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetIOS_DEEP_LINK_INVALID() int32 {
-	if o == nil || IsNil(o.IOS_DEEP_LINK_INVALID) {
-		var ret int32
-		return ret
-	}
-	return *o.IOS_DEEP_LINK_INVALID
-}
-
-// GetIOS_DEEP_LINK_INVALIDOk returns a tuple with the IOS_DEEP_LINK_INVALID field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetIOS_DEEP_LINK_INVALIDOk() (*int32, bool) {
-	if o == nil || IsNil(o.IOS_DEEP_LINK_INVALID) {
-		return nil, false
-	}
-	return o.IOS_DEEP_LINK_INVALID, true
-}
-
-// HasIOS_DEEP_LINK_INVALID returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasIOS_DEEP_LINK_INVALID() bool {
-	if o != nil && !IsNil(o.IOS_DEEP_LINK_INVALID) {
-		return true
-	}
-
-	return false
-}
-
-// SetIOS_DEEP_LINK_INVALID gets a reference to the given int32 and assigns it to the IOS_DEEP_LINK_INVALID field.
-func (o *CatalogsFeedValidationWarnings) SetIOS_DEEP_LINK_INVALID(v int32) {
-	o.IOS_DEEP_LINK_INVALID = &v
+// SetAGE_GROUP_INVALID gets a reference to the given int32 and assigns it to the AGE_GROUP_INVALID field.
+func (o *CatalogsFeedValidationWarnings) SetAGE_GROUP_INVALID(v int32) {
+	o.AGE_GROUP_INVALID = &v
 }
 
 // GetANDROID_DEEP_LINK_INVALID returns the ANDROID_DEEP_LINK_INVALID field value if set, zero value otherwise.
@@ -1385,36 +5869,36 @@ func (o *CatalogsFeedValidationWarnings) SetANDROID_DEEP_LINK_INVALID(v int32) {
 	o.ANDROID_DEEP_LINK_INVALID = &v
 }
 
-// GetUTM_SOURCE_AUTO_CORRECTED returns the UTM_SOURCE_AUTO_CORRECTED field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetUTM_SOURCE_AUTO_CORRECTED() int32 {
-	if o == nil || IsNil(o.UTM_SOURCE_AUTO_CORRECTED) {
+// GetAVAILABILITY_DATE_INVALID returns the AVAILABILITY_DATE_INVALID field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetAVAILABILITY_DATE_INVALID() int32 {
+	if o == nil || IsNil(o.AVAILABILITY_DATE_INVALID) {
 		var ret int32
 		return ret
 	}
-	return *o.UTM_SOURCE_AUTO_CORRECTED
+	return *o.AVAILABILITY_DATE_INVALID
 }
 
-// GetUTM_SOURCE_AUTO_CORRECTEDOk returns a tuple with the UTM_SOURCE_AUTO_CORRECTED field value if set, nil otherwise
+// GetAVAILABILITY_DATE_INVALIDOk returns a tuple with the AVAILABILITY_DATE_INVALID field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetUTM_SOURCE_AUTO_CORRECTEDOk() (*int32, bool) {
-	if o == nil || IsNil(o.UTM_SOURCE_AUTO_CORRECTED) {
+func (o *CatalogsFeedValidationWarnings) GetAVAILABILITY_DATE_INVALIDOk() (*int32, bool) {
+	if o == nil || IsNil(o.AVAILABILITY_DATE_INVALID) {
 		return nil, false
 	}
-	return o.UTM_SOURCE_AUTO_CORRECTED, true
+	return o.AVAILABILITY_DATE_INVALID, true
 }
 
-// HasUTM_SOURCE_AUTO_CORRECTED returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasUTM_SOURCE_AUTO_CORRECTED() bool {
-	if o != nil && !IsNil(o.UTM_SOURCE_AUTO_CORRECTED) {
+// HasAVAILABILITY_DATE_INVALID returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasAVAILABILITY_DATE_INVALID() bool {
+	if o != nil && !IsNil(o.AVAILABILITY_DATE_INVALID) {
 		return true
 	}
 
 	return false
 }
 
-// SetUTM_SOURCE_AUTO_CORRECTED gets a reference to the given int32 and assigns it to the UTM_SOURCE_AUTO_CORRECTED field.
-func (o *CatalogsFeedValidationWarnings) SetUTM_SOURCE_AUTO_CORRECTED(v int32) {
-	o.UTM_SOURCE_AUTO_CORRECTED = &v
+// SetAVAILABILITY_DATE_INVALID gets a reference to the given int32 and assigns it to the AVAILABILITY_DATE_INVALID field.
+func (o *CatalogsFeedValidationWarnings) SetAVAILABILITY_DATE_INVALID(v int32) {
+	o.AVAILABILITY_DATE_INVALID = &v
 }
 
 // GetCOUNTRY_DOES_NOT_MAP_TO_CURRENCY returns the COUNTRY_DOES_NOT_MAP_TO_CURRENCY field value if set, zero value otherwise.
@@ -1449,36 +5933,196 @@ func (o *CatalogsFeedValidationWarnings) SetCOUNTRY_DOES_NOT_MAP_TO_CURRENCY(v i
 	o.COUNTRY_DOES_NOT_MAP_TO_CURRENCY = &v
 }
 
-// GetMIN_AD_PRICE_INVALID returns the MIN_AD_PRICE_INVALID field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetMIN_AD_PRICE_INVALID() int32 {
-	if o == nil || IsNil(o.MIN_AD_PRICE_INVALID) {
+// GetCUSTOM_LABEL_LENGTH_TOO_LONG returns the CUSTOM_LABEL_LENGTH_TOO_LONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetCUSTOM_LABEL_LENGTH_TOO_LONG() int32 {
+	if o == nil || IsNil(o.CUSTOM_LABEL_LENGTH_TOO_LONG) {
 		var ret int32
 		return ret
 	}
-	return *o.MIN_AD_PRICE_INVALID
+	return *o.CUSTOM_LABEL_LENGTH_TOO_LONG
 }
 
-// GetMIN_AD_PRICE_INVALIDOk returns a tuple with the MIN_AD_PRICE_INVALID field value if set, nil otherwise
+// GetCUSTOM_LABEL_LENGTH_TOO_LONGOk returns a tuple with the CUSTOM_LABEL_LENGTH_TOO_LONG field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetMIN_AD_PRICE_INVALIDOk() (*int32, bool) {
-	if o == nil || IsNil(o.MIN_AD_PRICE_INVALID) {
+func (o *CatalogsFeedValidationWarnings) GetCUSTOM_LABEL_LENGTH_TOO_LONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.CUSTOM_LABEL_LENGTH_TOO_LONG) {
 		return nil, false
 	}
-	return o.MIN_AD_PRICE_INVALID, true
+	return o.CUSTOM_LABEL_LENGTH_TOO_LONG, true
 }
 
-// HasMIN_AD_PRICE_INVALID returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasMIN_AD_PRICE_INVALID() bool {
-	if o != nil && !IsNil(o.MIN_AD_PRICE_INVALID) {
+// HasCUSTOM_LABEL_LENGTH_TOO_LONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasCUSTOM_LABEL_LENGTH_TOO_LONG() bool {
+	if o != nil && !IsNil(o.CUSTOM_LABEL_LENGTH_TOO_LONG) {
 		return true
 	}
 
 	return false
 }
 
-// SetMIN_AD_PRICE_INVALID gets a reference to the given int32 and assigns it to the MIN_AD_PRICE_INVALID field.
-func (o *CatalogsFeedValidationWarnings) SetMIN_AD_PRICE_INVALID(v int32) {
-	o.MIN_AD_PRICE_INVALID = &v
+// SetCUSTOM_LABEL_LENGTH_TOO_LONG gets a reference to the given int32 and assigns it to the CUSTOM_LABEL_LENGTH_TOO_LONG field.
+func (o *CatalogsFeedValidationWarnings) SetCUSTOM_LABEL_LENGTH_TOO_LONG(v int32) {
+	o.CUSTOM_LABEL_LENGTH_TOO_LONG = &v
+}
+
+// GetDESCRIPTION_LENGTH_TOO_LONG returns the DESCRIPTION_LENGTH_TOO_LONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetDESCRIPTION_LENGTH_TOO_LONG() int32 {
+	if o == nil || IsNil(o.DESCRIPTION_LENGTH_TOO_LONG) {
+		var ret int32
+		return ret
+	}
+	return *o.DESCRIPTION_LENGTH_TOO_LONG
+}
+
+// GetDESCRIPTION_LENGTH_TOO_LONGOk returns a tuple with the DESCRIPTION_LENGTH_TOO_LONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetDESCRIPTION_LENGTH_TOO_LONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.DESCRIPTION_LENGTH_TOO_LONG) {
+		return nil, false
+	}
+	return o.DESCRIPTION_LENGTH_TOO_LONG, true
+}
+
+// HasDESCRIPTION_LENGTH_TOO_LONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasDESCRIPTION_LENGTH_TOO_LONG() bool {
+	if o != nil && !IsNil(o.DESCRIPTION_LENGTH_TOO_LONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetDESCRIPTION_LENGTH_TOO_LONG gets a reference to the given int32 and assigns it to the DESCRIPTION_LENGTH_TOO_LONG field.
+func (o *CatalogsFeedValidationWarnings) SetDESCRIPTION_LENGTH_TOO_LONG(v int32) {
+	o.DESCRIPTION_LENGTH_TOO_LONG = &v
+}
+
+// GetDUPLICATE_HEADERS returns the DUPLICATE_HEADERS field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetDUPLICATE_HEADERS() int32 {
+	if o == nil || IsNil(o.DUPLICATE_HEADERS) {
+		var ret int32
+		return ret
+	}
+	return *o.DUPLICATE_HEADERS
+}
+
+// GetDUPLICATE_HEADERSOk returns a tuple with the DUPLICATE_HEADERS field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetDUPLICATE_HEADERSOk() (*int32, bool) {
+	if o == nil || IsNil(o.DUPLICATE_HEADERS) {
+		return nil, false
+	}
+	return o.DUPLICATE_HEADERS, true
+}
+
+// HasDUPLICATE_HEADERS returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasDUPLICATE_HEADERS() bool {
+	if o != nil && !IsNil(o.DUPLICATE_HEADERS) {
+		return true
+	}
+
+	return false
+}
+
+// SetDUPLICATE_HEADERS gets a reference to the given int32 and assigns it to the DUPLICATE_HEADERS field.
+func (o *CatalogsFeedValidationWarnings) SetDUPLICATE_HEADERS(v int32) {
+	o.DUPLICATE_HEADERS = &v
+}
+
+// GetEXPIRATION_DATE_INVALID returns the EXPIRATION_DATE_INVALID field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetEXPIRATION_DATE_INVALID() int32 {
+	if o == nil || IsNil(o.EXPIRATION_DATE_INVALID) {
+		var ret int32
+		return ret
+	}
+	return *o.EXPIRATION_DATE_INVALID
+}
+
+// GetEXPIRATION_DATE_INVALIDOk returns a tuple with the EXPIRATION_DATE_INVALID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetEXPIRATION_DATE_INVALIDOk() (*int32, bool) {
+	if o == nil || IsNil(o.EXPIRATION_DATE_INVALID) {
+		return nil, false
+	}
+	return o.EXPIRATION_DATE_INVALID, true
+}
+
+// HasEXPIRATION_DATE_INVALID returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasEXPIRATION_DATE_INVALID() bool {
+	if o != nil && !IsNil(o.EXPIRATION_DATE_INVALID) {
+		return true
+	}
+
+	return false
+}
+
+// SetEXPIRATION_DATE_INVALID gets a reference to the given int32 and assigns it to the EXPIRATION_DATE_INVALID field.
+func (o *CatalogsFeedValidationWarnings) SetEXPIRATION_DATE_INVALID(v int32) {
+	o.EXPIRATION_DATE_INVALID = &v
+}
+
+// GetFETCH_SAME_SIGNATURE returns the FETCH_SAME_SIGNATURE field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetFETCH_SAME_SIGNATURE() int32 {
+	if o == nil || IsNil(o.FETCH_SAME_SIGNATURE) {
+		var ret int32
+		return ret
+	}
+	return *o.FETCH_SAME_SIGNATURE
+}
+
+// GetFETCH_SAME_SIGNATUREOk returns a tuple with the FETCH_SAME_SIGNATURE field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetFETCH_SAME_SIGNATUREOk() (*int32, bool) {
+	if o == nil || IsNil(o.FETCH_SAME_SIGNATURE) {
+		return nil, false
+	}
+	return o.FETCH_SAME_SIGNATURE, true
+}
+
+// HasFETCH_SAME_SIGNATURE returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasFETCH_SAME_SIGNATURE() bool {
+	if o != nil && !IsNil(o.FETCH_SAME_SIGNATURE) {
+		return true
+	}
+
+	return false
+}
+
+// SetFETCH_SAME_SIGNATURE gets a reference to the given int32 and assigns it to the FETCH_SAME_SIGNATURE field.
+func (o *CatalogsFeedValidationWarnings) SetFETCH_SAME_SIGNATURE(v int32) {
+	o.FETCH_SAME_SIGNATURE = &v
+}
+
+// GetGENDER_INVALID returns the GENDER_INVALID field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetGENDER_INVALID() int32 {
+	if o == nil || IsNil(o.GENDER_INVALID) {
+		var ret int32
+		return ret
+	}
+	return *o.GENDER_INVALID
+}
+
+// GetGENDER_INVALIDOk returns a tuple with the GENDER_INVALID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetGENDER_INVALIDOk() (*int32, bool) {
+	if o == nil || IsNil(o.GENDER_INVALID) {
+		return nil, false
+	}
+	return o.GENDER_INVALID, true
+}
+
+// HasGENDER_INVALID returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasGENDER_INVALID() bool {
+	if o != nil && !IsNil(o.GENDER_INVALID) {
+		return true
+	}
+
+	return false
+}
+
+// SetGENDER_INVALID gets a reference to the given int32 and assigns it to the GENDER_INVALID field.
+func (o *CatalogsFeedValidationWarnings) SetGENDER_INVALID(v int32) {
+	o.GENDER_INVALID = &v
 }
 
 // GetGTIN_INVALID returns the GTIN_INVALID field value if set, zero value otherwise.
@@ -1513,6 +6157,38 @@ func (o *CatalogsFeedValidationWarnings) SetGTIN_INVALID(v int32) {
 	o.GTIN_INVALID = &v
 }
 
+// GetIMAGE_LINK_WARNING returns the IMAGE_LINK_WARNING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetIMAGE_LINK_WARNING() int32 {
+	if o == nil || IsNil(o.IMAGE_LINK_WARNING) {
+		var ret int32
+		return ret
+	}
+	return *o.IMAGE_LINK_WARNING
+}
+
+// GetIMAGE_LINK_WARNINGOk returns a tuple with the IMAGE_LINK_WARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetIMAGE_LINK_WARNINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.IMAGE_LINK_WARNING) {
+		return nil, false
+	}
+	return o.IMAGE_LINK_WARNING, true
+}
+
+// HasIMAGE_LINK_WARNING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasIMAGE_LINK_WARNING() bool {
+	if o != nil && !IsNil(o.IMAGE_LINK_WARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetIMAGE_LINK_WARNING gets a reference to the given int32 and assigns it to the IMAGE_LINK_WARNING field.
+func (o *CatalogsFeedValidationWarnings) SetIMAGE_LINK_WARNING(v int32) {
+	o.IMAGE_LINK_WARNING = &v
+}
+
 // GetINCONSISTENT_CURRENCY_VALUES returns the INCONSISTENT_CURRENCY_VALUES field value if set, zero value otherwise.
 func (o *CatalogsFeedValidationWarnings) GetINCONSISTENT_CURRENCY_VALUES() int32 {
 	if o == nil || IsNil(o.INCONSISTENT_CURRENCY_VALUES) {
@@ -1545,132 +6221,196 @@ func (o *CatalogsFeedValidationWarnings) SetINCONSISTENT_CURRENCY_VALUES(v int32
 	o.INCONSISTENT_CURRENCY_VALUES = &v
 }
 
-// GetSALES_PRICE_TOO_LOW returns the SALES_PRICE_TOO_LOW field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetSALES_PRICE_TOO_LOW() int32 {
-	if o == nil || IsNil(o.SALES_PRICE_TOO_LOW) {
+// GetINDEXED_PRODUCT_COUNT_LARGE_DELTA returns the INDEXED_PRODUCT_COUNT_LARGE_DELTA field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetINDEXED_PRODUCT_COUNT_LARGE_DELTA() int32 {
+	if o == nil || IsNil(o.INDEXED_PRODUCT_COUNT_LARGE_DELTA) {
 		var ret int32
 		return ret
 	}
-	return *o.SALES_PRICE_TOO_LOW
+	return *o.INDEXED_PRODUCT_COUNT_LARGE_DELTA
 }
 
-// GetSALES_PRICE_TOO_LOWOk returns a tuple with the SALES_PRICE_TOO_LOW field value if set, nil otherwise
+// GetINDEXED_PRODUCT_COUNT_LARGE_DELTAOk returns a tuple with the INDEXED_PRODUCT_COUNT_LARGE_DELTA field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetSALES_PRICE_TOO_LOWOk() (*int32, bool) {
-	if o == nil || IsNil(o.SALES_PRICE_TOO_LOW) {
+func (o *CatalogsFeedValidationWarnings) GetINDEXED_PRODUCT_COUNT_LARGE_DELTAOk() (*int32, bool) {
+	if o == nil || IsNil(o.INDEXED_PRODUCT_COUNT_LARGE_DELTA) {
 		return nil, false
 	}
-	return o.SALES_PRICE_TOO_LOW, true
+	return o.INDEXED_PRODUCT_COUNT_LARGE_DELTA, true
 }
 
-// HasSALES_PRICE_TOO_LOW returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasSALES_PRICE_TOO_LOW() bool {
-	if o != nil && !IsNil(o.SALES_PRICE_TOO_LOW) {
+// HasINDEXED_PRODUCT_COUNT_LARGE_DELTA returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasINDEXED_PRODUCT_COUNT_LARGE_DELTA() bool {
+	if o != nil && !IsNil(o.INDEXED_PRODUCT_COUNT_LARGE_DELTA) {
 		return true
 	}
 
 	return false
 }
 
-// SetSALES_PRICE_TOO_LOW gets a reference to the given int32 and assigns it to the SALES_PRICE_TOO_LOW field.
-func (o *CatalogsFeedValidationWarnings) SetSALES_PRICE_TOO_LOW(v int32) {
-	o.SALES_PRICE_TOO_LOW = &v
+// SetINDEXED_PRODUCT_COUNT_LARGE_DELTA gets a reference to the given int32 and assigns it to the INDEXED_PRODUCT_COUNT_LARGE_DELTA field.
+func (o *CatalogsFeedValidationWarnings) SetINDEXED_PRODUCT_COUNT_LARGE_DELTA(v int32) {
+	o.INDEXED_PRODUCT_COUNT_LARGE_DELTA = &v
 }
 
-// GetSHIPPING_WIDTH_INVALID returns the SHIPPING_WIDTH_INVALID field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetSHIPPING_WIDTH_INVALID() int32 {
-	if o == nil || IsNil(o.SHIPPING_WIDTH_INVALID) {
+// GetIOS_DEEP_LINK_INVALID returns the IOS_DEEP_LINK_INVALID field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetIOS_DEEP_LINK_INVALID() int32 {
+	if o == nil || IsNil(o.IOS_DEEP_LINK_INVALID) {
 		var ret int32
 		return ret
 	}
-	return *o.SHIPPING_WIDTH_INVALID
+	return *o.IOS_DEEP_LINK_INVALID
 }
 
-// GetSHIPPING_WIDTH_INVALIDOk returns a tuple with the SHIPPING_WIDTH_INVALID field value if set, nil otherwise
+// GetIOS_DEEP_LINK_INVALIDOk returns a tuple with the IOS_DEEP_LINK_INVALID field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetSHIPPING_WIDTH_INVALIDOk() (*int32, bool) {
-	if o == nil || IsNil(o.SHIPPING_WIDTH_INVALID) {
+func (o *CatalogsFeedValidationWarnings) GetIOS_DEEP_LINK_INVALIDOk() (*int32, bool) {
+	if o == nil || IsNil(o.IOS_DEEP_LINK_INVALID) {
 		return nil, false
 	}
-	return o.SHIPPING_WIDTH_INVALID, true
+	return o.IOS_DEEP_LINK_INVALID, true
 }
 
-// HasSHIPPING_WIDTH_INVALID returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasSHIPPING_WIDTH_INVALID() bool {
-	if o != nil && !IsNil(o.SHIPPING_WIDTH_INVALID) {
+// HasIOS_DEEP_LINK_INVALID returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasIOS_DEEP_LINK_INVALID() bool {
+	if o != nil && !IsNil(o.IOS_DEEP_LINK_INVALID) {
 		return true
 	}
 
 	return false
 }
 
-// SetSHIPPING_WIDTH_INVALID gets a reference to the given int32 and assigns it to the SHIPPING_WIDTH_INVALID field.
-func (o *CatalogsFeedValidationWarnings) SetSHIPPING_WIDTH_INVALID(v int32) {
-	o.SHIPPING_WIDTH_INVALID = &v
+// SetIOS_DEEP_LINK_INVALID gets a reference to the given int32 and assigns it to the IOS_DEEP_LINK_INVALID field.
+func (o *CatalogsFeedValidationWarnings) SetIOS_DEEP_LINK_INVALID(v int32) {
+	o.IOS_DEEP_LINK_INVALID = &v
 }
 
-// GetSHIPPING_HEIGHT_INVALID returns the SHIPPING_HEIGHT_INVALID field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetSHIPPING_HEIGHT_INVALID() int32 {
-	if o == nil || IsNil(o.SHIPPING_HEIGHT_INVALID) {
+// GetIS_BUNDLE_INVALID returns the IS_BUNDLE_INVALID field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetIS_BUNDLE_INVALID() int32 {
+	if o == nil || IsNil(o.IS_BUNDLE_INVALID) {
 		var ret int32
 		return ret
 	}
-	return *o.SHIPPING_HEIGHT_INVALID
+	return *o.IS_BUNDLE_INVALID
 }
 
-// GetSHIPPING_HEIGHT_INVALIDOk returns a tuple with the SHIPPING_HEIGHT_INVALID field value if set, nil otherwise
+// GetIS_BUNDLE_INVALIDOk returns a tuple with the IS_BUNDLE_INVALID field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetSHIPPING_HEIGHT_INVALIDOk() (*int32, bool) {
-	if o == nil || IsNil(o.SHIPPING_HEIGHT_INVALID) {
+func (o *CatalogsFeedValidationWarnings) GetIS_BUNDLE_INVALIDOk() (*int32, bool) {
+	if o == nil || IsNil(o.IS_BUNDLE_INVALID) {
 		return nil, false
 	}
-	return o.SHIPPING_HEIGHT_INVALID, true
+	return o.IS_BUNDLE_INVALID, true
 }
 
-// HasSHIPPING_HEIGHT_INVALID returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasSHIPPING_HEIGHT_INVALID() bool {
-	if o != nil && !IsNil(o.SHIPPING_HEIGHT_INVALID) {
+// HasIS_BUNDLE_INVALID returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasIS_BUNDLE_INVALID() bool {
+	if o != nil && !IsNil(o.IS_BUNDLE_INVALID) {
 		return true
 	}
 
 	return false
 }
 
-// SetSHIPPING_HEIGHT_INVALID gets a reference to the given int32 and assigns it to the SHIPPING_HEIGHT_INVALID field.
-func (o *CatalogsFeedValidationWarnings) SetSHIPPING_HEIGHT_INVALID(v int32) {
-	o.SHIPPING_HEIGHT_INVALID = &v
+// SetIS_BUNDLE_INVALID gets a reference to the given int32 and assigns it to the IS_BUNDLE_INVALID field.
+func (o *CatalogsFeedValidationWarnings) SetIS_BUNDLE_INVALID(v int32) {
+	o.IS_BUNDLE_INVALID = &v
 }
 
-// GetSALES_PRICE_TOO_HIGH returns the SALES_PRICE_TOO_HIGH field value if set, zero value otherwise.
-func (o *CatalogsFeedValidationWarnings) GetSALES_PRICE_TOO_HIGH() int32 {
-	if o == nil || IsNil(o.SALES_PRICE_TOO_HIGH) {
+// GetITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE returns the ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE() int32 {
+	if o == nil || IsNil(o.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE) {
 		var ret int32
 		return ret
 	}
-	return *o.SALES_PRICE_TOO_HIGH
+	return *o.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE
 }
 
-// GetSALES_PRICE_TOO_HIGHOk returns a tuple with the SALES_PRICE_TOO_HIGH field value if set, nil otherwise
+// GetITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILUREOk returns a tuple with the ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsFeedValidationWarnings) GetSALES_PRICE_TOO_HIGHOk() (*int32, bool) {
-	if o == nil || IsNil(o.SALES_PRICE_TOO_HIGH) {
+func (o *CatalogsFeedValidationWarnings) GetITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILUREOk() (*int32, bool) {
+	if o == nil || IsNil(o.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE) {
 		return nil, false
 	}
-	return o.SALES_PRICE_TOO_HIGH, true
+	return o.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE, true
 }
 
-// HasSALES_PRICE_TOO_HIGH returns a boolean if a field has been set.
-func (o *CatalogsFeedValidationWarnings) HasSALES_PRICE_TOO_HIGH() bool {
-	if o != nil && !IsNil(o.SALES_PRICE_TOO_HIGH) {
+// HasITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE() bool {
+	if o != nil && !IsNil(o.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE) {
 		return true
 	}
 
 	return false
 }
 
-// SetSALES_PRICE_TOO_HIGH gets a reference to the given int32 and assigns it to the SALES_PRICE_TOO_HIGH field.
-func (o *CatalogsFeedValidationWarnings) SetSALES_PRICE_TOO_HIGH(v int32) {
-	o.SALES_PRICE_TOO_HIGH = &v
+// SetITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE gets a reference to the given int32 and assigns it to the ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE field.
+func (o *CatalogsFeedValidationWarnings) SetITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE(v int32) {
+	o.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE = &v
+}
+
+// GetLINK_FORMAT_WARNING returns the LINK_FORMAT_WARNING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetLINK_FORMAT_WARNING() int32 {
+	if o == nil || IsNil(o.LINK_FORMAT_WARNING) {
+		var ret int32
+		return ret
+	}
+	return *o.LINK_FORMAT_WARNING
+}
+
+// GetLINK_FORMAT_WARNINGOk returns a tuple with the LINK_FORMAT_WARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetLINK_FORMAT_WARNINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.LINK_FORMAT_WARNING) {
+		return nil, false
+	}
+	return o.LINK_FORMAT_WARNING, true
+}
+
+// HasLINK_FORMAT_WARNING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasLINK_FORMAT_WARNING() bool {
+	if o != nil && !IsNil(o.LINK_FORMAT_WARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetLINK_FORMAT_WARNING gets a reference to the given int32 and assigns it to the LINK_FORMAT_WARNING field.
+func (o *CatalogsFeedValidationWarnings) SetLINK_FORMAT_WARNING(v int32) {
+	o.LINK_FORMAT_WARNING = &v
+}
+
+// GetMIN_AD_PRICE_INVALID returns the MIN_AD_PRICE_INVALID field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetMIN_AD_PRICE_INVALID() int32 {
+	if o == nil || IsNil(o.MIN_AD_PRICE_INVALID) {
+		var ret int32
+		return ret
+	}
+	return *o.MIN_AD_PRICE_INVALID
+}
+
+// GetMIN_AD_PRICE_INVALIDOk returns a tuple with the MIN_AD_PRICE_INVALID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetMIN_AD_PRICE_INVALIDOk() (*int32, bool) {
+	if o == nil || IsNil(o.MIN_AD_PRICE_INVALID) {
+		return nil, false
+	}
+	return o.MIN_AD_PRICE_INVALID, true
+}
+
+// HasMIN_AD_PRICE_INVALID returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasMIN_AD_PRICE_INVALID() bool {
+	if o != nil && !IsNil(o.MIN_AD_PRICE_INVALID) {
+		return true
+	}
+
+	return false
+}
+
+// SetMIN_AD_PRICE_INVALID gets a reference to the given int32 and assigns it to the MIN_AD_PRICE_INVALID field.
+func (o *CatalogsFeedValidationWarnings) SetMIN_AD_PRICE_INVALID(v int32) {
+	o.MIN_AD_PRICE_INVALID = &v
 }
 
 // GetMPN_INVALID returns the MPN_INVALID field value if set, zero value otherwise.
@@ -1705,6 +6445,774 @@ func (o *CatalogsFeedValidationWarnings) SetMPN_INVALID(v int32) {
 	o.MPN_INVALID = &v
 }
 
+// GetMULTIPACK_INVALID returns the MULTIPACK_INVALID field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetMULTIPACK_INVALID() int32 {
+	if o == nil || IsNil(o.MULTIPACK_INVALID) {
+		var ret int32
+		return ret
+	}
+	return *o.MULTIPACK_INVALID
+}
+
+// GetMULTIPACK_INVALIDOk returns a tuple with the MULTIPACK_INVALID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetMULTIPACK_INVALIDOk() (*int32, bool) {
+	if o == nil || IsNil(o.MULTIPACK_INVALID) {
+		return nil, false
+	}
+	return o.MULTIPACK_INVALID, true
+}
+
+// HasMULTIPACK_INVALID returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasMULTIPACK_INVALID() bool {
+	if o != nil && !IsNil(o.MULTIPACK_INVALID) {
+		return true
+	}
+
+	return false
+}
+
+// SetMULTIPACK_INVALID gets a reference to the given int32 and assigns it to the MULTIPACK_INVALID field.
+func (o *CatalogsFeedValidationWarnings) SetMULTIPACK_INVALID(v int32) {
+	o.MULTIPACK_INVALID = &v
+}
+
+// GetOPTIONAL_CONDITION_INVALID returns the OPTIONAL_CONDITION_INVALID field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetOPTIONAL_CONDITION_INVALID() int32 {
+	if o == nil || IsNil(o.OPTIONAL_CONDITION_INVALID) {
+		var ret int32
+		return ret
+	}
+	return *o.OPTIONAL_CONDITION_INVALID
+}
+
+// GetOPTIONAL_CONDITION_INVALIDOk returns a tuple with the OPTIONAL_CONDITION_INVALID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetOPTIONAL_CONDITION_INVALIDOk() (*int32, bool) {
+	if o == nil || IsNil(o.OPTIONAL_CONDITION_INVALID) {
+		return nil, false
+	}
+	return o.OPTIONAL_CONDITION_INVALID, true
+}
+
+// HasOPTIONAL_CONDITION_INVALID returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasOPTIONAL_CONDITION_INVALID() bool {
+	if o != nil && !IsNil(o.OPTIONAL_CONDITION_INVALID) {
+		return true
+	}
+
+	return false
+}
+
+// SetOPTIONAL_CONDITION_INVALID gets a reference to the given int32 and assigns it to the OPTIONAL_CONDITION_INVALID field.
+func (o *CatalogsFeedValidationWarnings) SetOPTIONAL_CONDITION_INVALID(v int32) {
+	o.OPTIONAL_CONDITION_INVALID = &v
+}
+
+// GetOPTIONAL_CONDITION_MISSING returns the OPTIONAL_CONDITION_MISSING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetOPTIONAL_CONDITION_MISSING() int32 {
+	if o == nil || IsNil(o.OPTIONAL_CONDITION_MISSING) {
+		var ret int32
+		return ret
+	}
+	return *o.OPTIONAL_CONDITION_MISSING
+}
+
+// GetOPTIONAL_CONDITION_MISSINGOk returns a tuple with the OPTIONAL_CONDITION_MISSING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetOPTIONAL_CONDITION_MISSINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.OPTIONAL_CONDITION_MISSING) {
+		return nil, false
+	}
+	return o.OPTIONAL_CONDITION_MISSING, true
+}
+
+// HasOPTIONAL_CONDITION_MISSING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasOPTIONAL_CONDITION_MISSING() bool {
+	if o != nil && !IsNil(o.OPTIONAL_CONDITION_MISSING) {
+		return true
+	}
+
+	return false
+}
+
+// SetOPTIONAL_CONDITION_MISSING gets a reference to the given int32 and assigns it to the OPTIONAL_CONDITION_MISSING field.
+func (o *CatalogsFeedValidationWarnings) SetOPTIONAL_CONDITION_MISSING(v int32) {
+	o.OPTIONAL_CONDITION_MISSING = &v
+}
+
+// GetOPTIONAL_PRODUCT_CATEGORY_INVALID returns the OPTIONAL_PRODUCT_CATEGORY_INVALID field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetOPTIONAL_PRODUCT_CATEGORY_INVALID() int32 {
+	if o == nil || IsNil(o.OPTIONAL_PRODUCT_CATEGORY_INVALID) {
+		var ret int32
+		return ret
+	}
+	return *o.OPTIONAL_PRODUCT_CATEGORY_INVALID
+}
+
+// GetOPTIONAL_PRODUCT_CATEGORY_INVALIDOk returns a tuple with the OPTIONAL_PRODUCT_CATEGORY_INVALID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetOPTIONAL_PRODUCT_CATEGORY_INVALIDOk() (*int32, bool) {
+	if o == nil || IsNil(o.OPTIONAL_PRODUCT_CATEGORY_INVALID) {
+		return nil, false
+	}
+	return o.OPTIONAL_PRODUCT_CATEGORY_INVALID, true
+}
+
+// HasOPTIONAL_PRODUCT_CATEGORY_INVALID returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasOPTIONAL_PRODUCT_CATEGORY_INVALID() bool {
+	if o != nil && !IsNil(o.OPTIONAL_PRODUCT_CATEGORY_INVALID) {
+		return true
+	}
+
+	return false
+}
+
+// SetOPTIONAL_PRODUCT_CATEGORY_INVALID gets a reference to the given int32 and assigns it to the OPTIONAL_PRODUCT_CATEGORY_INVALID field.
+func (o *CatalogsFeedValidationWarnings) SetOPTIONAL_PRODUCT_CATEGORY_INVALID(v int32) {
+	o.OPTIONAL_PRODUCT_CATEGORY_INVALID = &v
+}
+
+// GetOPTIONAL_PRODUCT_CATEGORY_MISSING returns the OPTIONAL_PRODUCT_CATEGORY_MISSING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetOPTIONAL_PRODUCT_CATEGORY_MISSING() int32 {
+	if o == nil || IsNil(o.OPTIONAL_PRODUCT_CATEGORY_MISSING) {
+		var ret int32
+		return ret
+	}
+	return *o.OPTIONAL_PRODUCT_CATEGORY_MISSING
+}
+
+// GetOPTIONAL_PRODUCT_CATEGORY_MISSINGOk returns a tuple with the OPTIONAL_PRODUCT_CATEGORY_MISSING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetOPTIONAL_PRODUCT_CATEGORY_MISSINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.OPTIONAL_PRODUCT_CATEGORY_MISSING) {
+		return nil, false
+	}
+	return o.OPTIONAL_PRODUCT_CATEGORY_MISSING, true
+}
+
+// HasOPTIONAL_PRODUCT_CATEGORY_MISSING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasOPTIONAL_PRODUCT_CATEGORY_MISSING() bool {
+	if o != nil && !IsNil(o.OPTIONAL_PRODUCT_CATEGORY_MISSING) {
+		return true
+	}
+
+	return false
+}
+
+// SetOPTIONAL_PRODUCT_CATEGORY_MISSING gets a reference to the given int32 and assigns it to the OPTIONAL_PRODUCT_CATEGORY_MISSING field.
+func (o *CatalogsFeedValidationWarnings) SetOPTIONAL_PRODUCT_CATEGORY_MISSING(v int32) {
+	o.OPTIONAL_PRODUCT_CATEGORY_MISSING = &v
+}
+
+// GetPRODUCT_CATEGORY_DEPTH_WARNING returns the PRODUCT_CATEGORY_DEPTH_WARNING field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetPRODUCT_CATEGORY_DEPTH_WARNING() int32 {
+	if o == nil || IsNil(o.PRODUCT_CATEGORY_DEPTH_WARNING) {
+		var ret int32
+		return ret
+	}
+	return *o.PRODUCT_CATEGORY_DEPTH_WARNING
+}
+
+// GetPRODUCT_CATEGORY_DEPTH_WARNINGOk returns a tuple with the PRODUCT_CATEGORY_DEPTH_WARNING field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetPRODUCT_CATEGORY_DEPTH_WARNINGOk() (*int32, bool) {
+	if o == nil || IsNil(o.PRODUCT_CATEGORY_DEPTH_WARNING) {
+		return nil, false
+	}
+	return o.PRODUCT_CATEGORY_DEPTH_WARNING, true
+}
+
+// HasPRODUCT_CATEGORY_DEPTH_WARNING returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasPRODUCT_CATEGORY_DEPTH_WARNING() bool {
+	if o != nil && !IsNil(o.PRODUCT_CATEGORY_DEPTH_WARNING) {
+		return true
+	}
+
+	return false
+}
+
+// SetPRODUCT_CATEGORY_DEPTH_WARNING gets a reference to the given int32 and assigns it to the PRODUCT_CATEGORY_DEPTH_WARNING field.
+func (o *CatalogsFeedValidationWarnings) SetPRODUCT_CATEGORY_DEPTH_WARNING(v int32) {
+	o.PRODUCT_CATEGORY_DEPTH_WARNING = &v
+}
+
+// GetPRODUCT_TYPE_LENGTH_TOO_LONG returns the PRODUCT_TYPE_LENGTH_TOO_LONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetPRODUCT_TYPE_LENGTH_TOO_LONG() int32 {
+	if o == nil || IsNil(o.PRODUCT_TYPE_LENGTH_TOO_LONG) {
+		var ret int32
+		return ret
+	}
+	return *o.PRODUCT_TYPE_LENGTH_TOO_LONG
+}
+
+// GetPRODUCT_TYPE_LENGTH_TOO_LONGOk returns a tuple with the PRODUCT_TYPE_LENGTH_TOO_LONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetPRODUCT_TYPE_LENGTH_TOO_LONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.PRODUCT_TYPE_LENGTH_TOO_LONG) {
+		return nil, false
+	}
+	return o.PRODUCT_TYPE_LENGTH_TOO_LONG, true
+}
+
+// HasPRODUCT_TYPE_LENGTH_TOO_LONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasPRODUCT_TYPE_LENGTH_TOO_LONG() bool {
+	if o != nil && !IsNil(o.PRODUCT_TYPE_LENGTH_TOO_LONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetPRODUCT_TYPE_LENGTH_TOO_LONG gets a reference to the given int32 and assigns it to the PRODUCT_TYPE_LENGTH_TOO_LONG field.
+func (o *CatalogsFeedValidationWarnings) SetPRODUCT_TYPE_LENGTH_TOO_LONG(v int32) {
+	o.PRODUCT_TYPE_LENGTH_TOO_LONG = &v
+}
+
+// GetSALE_DATE_INVALID returns the SALE_DATE_INVALID field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetSALE_DATE_INVALID() int32 {
+	if o == nil || IsNil(o.SALE_DATE_INVALID) {
+		var ret int32
+		return ret
+	}
+	return *o.SALE_DATE_INVALID
+}
+
+// GetSALE_DATE_INVALIDOk returns a tuple with the SALE_DATE_INVALID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetSALE_DATE_INVALIDOk() (*int32, bool) {
+	if o == nil || IsNil(o.SALE_DATE_INVALID) {
+		return nil, false
+	}
+	return o.SALE_DATE_INVALID, true
+}
+
+// HasSALE_DATE_INVALID returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasSALE_DATE_INVALID() bool {
+	if o != nil && !IsNil(o.SALE_DATE_INVALID) {
+		return true
+	}
+
+	return false
+}
+
+// SetSALE_DATE_INVALID gets a reference to the given int32 and assigns it to the SALE_DATE_INVALID field.
+func (o *CatalogsFeedValidationWarnings) SetSALE_DATE_INVALID(v int32) {
+	o.SALE_DATE_INVALID = &v
+}
+
+// GetSALES_PRICE_INVALID returns the SALES_PRICE_INVALID field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetSALES_PRICE_INVALID() int32 {
+	if o == nil || IsNil(o.SALES_PRICE_INVALID) {
+		var ret int32
+		return ret
+	}
+	return *o.SALES_PRICE_INVALID
+}
+
+// GetSALES_PRICE_INVALIDOk returns a tuple with the SALES_PRICE_INVALID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetSALES_PRICE_INVALIDOk() (*int32, bool) {
+	if o == nil || IsNil(o.SALES_PRICE_INVALID) {
+		return nil, false
+	}
+	return o.SALES_PRICE_INVALID, true
+}
+
+// HasSALES_PRICE_INVALID returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasSALES_PRICE_INVALID() bool {
+	if o != nil && !IsNil(o.SALES_PRICE_INVALID) {
+		return true
+	}
+
+	return false
+}
+
+// SetSALES_PRICE_INVALID gets a reference to the given int32 and assigns it to the SALES_PRICE_INVALID field.
+func (o *CatalogsFeedValidationWarnings) SetSALES_PRICE_INVALID(v int32) {
+	o.SALES_PRICE_INVALID = &v
+}
+
+// GetSALES_PRICE_TOO_HIGH returns the SALES_PRICE_TOO_HIGH field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetSALES_PRICE_TOO_HIGH() int32 {
+	if o == nil || IsNil(o.SALES_PRICE_TOO_HIGH) {
+		var ret int32
+		return ret
+	}
+	return *o.SALES_PRICE_TOO_HIGH
+}
+
+// GetSALES_PRICE_TOO_HIGHOk returns a tuple with the SALES_PRICE_TOO_HIGH field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetSALES_PRICE_TOO_HIGHOk() (*int32, bool) {
+	if o == nil || IsNil(o.SALES_PRICE_TOO_HIGH) {
+		return nil, false
+	}
+	return o.SALES_PRICE_TOO_HIGH, true
+}
+
+// HasSALES_PRICE_TOO_HIGH returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasSALES_PRICE_TOO_HIGH() bool {
+	if o != nil && !IsNil(o.SALES_PRICE_TOO_HIGH) {
+		return true
+	}
+
+	return false
+}
+
+// SetSALES_PRICE_TOO_HIGH gets a reference to the given int32 and assigns it to the SALES_PRICE_TOO_HIGH field.
+func (o *CatalogsFeedValidationWarnings) SetSALES_PRICE_TOO_HIGH(v int32) {
+	o.SALES_PRICE_TOO_HIGH = &v
+}
+
+// GetSALES_PRICE_TOO_LOW returns the SALES_PRICE_TOO_LOW field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetSALES_PRICE_TOO_LOW() int32 {
+	if o == nil || IsNil(o.SALES_PRICE_TOO_LOW) {
+		var ret int32
+		return ret
+	}
+	return *o.SALES_PRICE_TOO_LOW
+}
+
+// GetSALES_PRICE_TOO_LOWOk returns a tuple with the SALES_PRICE_TOO_LOW field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetSALES_PRICE_TOO_LOWOk() (*int32, bool) {
+	if o == nil || IsNil(o.SALES_PRICE_TOO_LOW) {
+		return nil, false
+	}
+	return o.SALES_PRICE_TOO_LOW, true
+}
+
+// HasSALES_PRICE_TOO_LOW returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasSALES_PRICE_TOO_LOW() bool {
+	if o != nil && !IsNil(o.SALES_PRICE_TOO_LOW) {
+		return true
+	}
+
+	return false
+}
+
+// SetSALES_PRICE_TOO_LOW gets a reference to the given int32 and assigns it to the SALES_PRICE_TOO_LOW field.
+func (o *CatalogsFeedValidationWarnings) SetSALES_PRICE_TOO_LOW(v int32) {
+	o.SALES_PRICE_TOO_LOW = &v
+}
+
+// GetSHIPPING_HEIGHT_INVALID returns the SHIPPING_HEIGHT_INVALID field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetSHIPPING_HEIGHT_INVALID() int32 {
+	if o == nil || IsNil(o.SHIPPING_HEIGHT_INVALID) {
+		var ret int32
+		return ret
+	}
+	return *o.SHIPPING_HEIGHT_INVALID
+}
+
+// GetSHIPPING_HEIGHT_INVALIDOk returns a tuple with the SHIPPING_HEIGHT_INVALID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetSHIPPING_HEIGHT_INVALIDOk() (*int32, bool) {
+	if o == nil || IsNil(o.SHIPPING_HEIGHT_INVALID) {
+		return nil, false
+	}
+	return o.SHIPPING_HEIGHT_INVALID, true
+}
+
+// HasSHIPPING_HEIGHT_INVALID returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasSHIPPING_HEIGHT_INVALID() bool {
+	if o != nil && !IsNil(o.SHIPPING_HEIGHT_INVALID) {
+		return true
+	}
+
+	return false
+}
+
+// SetSHIPPING_HEIGHT_INVALID gets a reference to the given int32 and assigns it to the SHIPPING_HEIGHT_INVALID field.
+func (o *CatalogsFeedValidationWarnings) SetSHIPPING_HEIGHT_INVALID(v int32) {
+	o.SHIPPING_HEIGHT_INVALID = &v
+}
+
+// GetSHIPPING_INVALID returns the SHIPPING_INVALID field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetSHIPPING_INVALID() int32 {
+	if o == nil || IsNil(o.SHIPPING_INVALID) {
+		var ret int32
+		return ret
+	}
+	return *o.SHIPPING_INVALID
+}
+
+// GetSHIPPING_INVALIDOk returns a tuple with the SHIPPING_INVALID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetSHIPPING_INVALIDOk() (*int32, bool) {
+	if o == nil || IsNil(o.SHIPPING_INVALID) {
+		return nil, false
+	}
+	return o.SHIPPING_INVALID, true
+}
+
+// HasSHIPPING_INVALID returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasSHIPPING_INVALID() bool {
+	if o != nil && !IsNil(o.SHIPPING_INVALID) {
+		return true
+	}
+
+	return false
+}
+
+// SetSHIPPING_INVALID gets a reference to the given int32 and assigns it to the SHIPPING_INVALID field.
+func (o *CatalogsFeedValidationWarnings) SetSHIPPING_INVALID(v int32) {
+	o.SHIPPING_INVALID = &v
+}
+
+// GetSHIPPING_WEIGHT_INVALID returns the SHIPPING_WEIGHT_INVALID field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetSHIPPING_WEIGHT_INVALID() int32 {
+	if o == nil || IsNil(o.SHIPPING_WEIGHT_INVALID) {
+		var ret int32
+		return ret
+	}
+	return *o.SHIPPING_WEIGHT_INVALID
+}
+
+// GetSHIPPING_WEIGHT_INVALIDOk returns a tuple with the SHIPPING_WEIGHT_INVALID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetSHIPPING_WEIGHT_INVALIDOk() (*int32, bool) {
+	if o == nil || IsNil(o.SHIPPING_WEIGHT_INVALID) {
+		return nil, false
+	}
+	return o.SHIPPING_WEIGHT_INVALID, true
+}
+
+// HasSHIPPING_WEIGHT_INVALID returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasSHIPPING_WEIGHT_INVALID() bool {
+	if o != nil && !IsNil(o.SHIPPING_WEIGHT_INVALID) {
+		return true
+	}
+
+	return false
+}
+
+// SetSHIPPING_WEIGHT_INVALID gets a reference to the given int32 and assigns it to the SHIPPING_WEIGHT_INVALID field.
+func (o *CatalogsFeedValidationWarnings) SetSHIPPING_WEIGHT_INVALID(v int32) {
+	o.SHIPPING_WEIGHT_INVALID = &v
+}
+
+// GetSHIPPING_WIDTH_INVALID returns the SHIPPING_WIDTH_INVALID field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetSHIPPING_WIDTH_INVALID() int32 {
+	if o == nil || IsNil(o.SHIPPING_WIDTH_INVALID) {
+		var ret int32
+		return ret
+	}
+	return *o.SHIPPING_WIDTH_INVALID
+}
+
+// GetSHIPPING_WIDTH_INVALIDOk returns a tuple with the SHIPPING_WIDTH_INVALID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetSHIPPING_WIDTH_INVALIDOk() (*int32, bool) {
+	if o == nil || IsNil(o.SHIPPING_WIDTH_INVALID) {
+		return nil, false
+	}
+	return o.SHIPPING_WIDTH_INVALID, true
+}
+
+// HasSHIPPING_WIDTH_INVALID returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasSHIPPING_WIDTH_INVALID() bool {
+	if o != nil && !IsNil(o.SHIPPING_WIDTH_INVALID) {
+		return true
+	}
+
+	return false
+}
+
+// SetSHIPPING_WIDTH_INVALID gets a reference to the given int32 and assigns it to the SHIPPING_WIDTH_INVALID field.
+func (o *CatalogsFeedValidationWarnings) SetSHIPPING_WIDTH_INVALID(v int32) {
+	o.SHIPPING_WIDTH_INVALID = &v
+}
+
+// GetSIZE_SYSTEM_INVALID returns the SIZE_SYSTEM_INVALID field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetSIZE_SYSTEM_INVALID() int32 {
+	if o == nil || IsNil(o.SIZE_SYSTEM_INVALID) {
+		var ret int32
+		return ret
+	}
+	return *o.SIZE_SYSTEM_INVALID
+}
+
+// GetSIZE_SYSTEM_INVALIDOk returns a tuple with the SIZE_SYSTEM_INVALID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetSIZE_SYSTEM_INVALIDOk() (*int32, bool) {
+	if o == nil || IsNil(o.SIZE_SYSTEM_INVALID) {
+		return nil, false
+	}
+	return o.SIZE_SYSTEM_INVALID, true
+}
+
+// HasSIZE_SYSTEM_INVALID returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasSIZE_SYSTEM_INVALID() bool {
+	if o != nil && !IsNil(o.SIZE_SYSTEM_INVALID) {
+		return true
+	}
+
+	return false
+}
+
+// SetSIZE_SYSTEM_INVALID gets a reference to the given int32 and assigns it to the SIZE_SYSTEM_INVALID field.
+func (o *CatalogsFeedValidationWarnings) SetSIZE_SYSTEM_INVALID(v int32) {
+	o.SIZE_SYSTEM_INVALID = &v
+}
+
+// GetSIZE_TYPE_INVALID returns the SIZE_TYPE_INVALID field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetSIZE_TYPE_INVALID() int32 {
+	if o == nil || IsNil(o.SIZE_TYPE_INVALID) {
+		var ret int32
+		return ret
+	}
+	return *o.SIZE_TYPE_INVALID
+}
+
+// GetSIZE_TYPE_INVALIDOk returns a tuple with the SIZE_TYPE_INVALID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetSIZE_TYPE_INVALIDOk() (*int32, bool) {
+	if o == nil || IsNil(o.SIZE_TYPE_INVALID) {
+		return nil, false
+	}
+	return o.SIZE_TYPE_INVALID, true
+}
+
+// HasSIZE_TYPE_INVALID returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasSIZE_TYPE_INVALID() bool {
+	if o != nil && !IsNil(o.SIZE_TYPE_INVALID) {
+		return true
+	}
+
+	return false
+}
+
+// SetSIZE_TYPE_INVALID gets a reference to the given int32 and assigns it to the SIZE_TYPE_INVALID field.
+func (o *CatalogsFeedValidationWarnings) SetSIZE_TYPE_INVALID(v int32) {
+	o.SIZE_TYPE_INVALID = &v
+}
+
+// GetTAX_INVALID returns the TAX_INVALID field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetTAX_INVALID() int32 {
+	if o == nil || IsNil(o.TAX_INVALID) {
+		var ret int32
+		return ret
+	}
+	return *o.TAX_INVALID
+}
+
+// GetTAX_INVALIDOk returns a tuple with the TAX_INVALID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetTAX_INVALIDOk() (*int32, bool) {
+	if o == nil || IsNil(o.TAX_INVALID) {
+		return nil, false
+	}
+	return o.TAX_INVALID, true
+}
+
+// HasTAX_INVALID returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasTAX_INVALID() bool {
+	if o != nil && !IsNil(o.TAX_INVALID) {
+		return true
+	}
+
+	return false
+}
+
+// SetTAX_INVALID gets a reference to the given int32 and assigns it to the TAX_INVALID field.
+func (o *CatalogsFeedValidationWarnings) SetTAX_INVALID(v int32) {
+	o.TAX_INVALID = &v
+}
+
+// GetTITLE_LENGTH_TOO_LONG returns the TITLE_LENGTH_TOO_LONG field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetTITLE_LENGTH_TOO_LONG() int32 {
+	if o == nil || IsNil(o.TITLE_LENGTH_TOO_LONG) {
+		var ret int32
+		return ret
+	}
+	return *o.TITLE_LENGTH_TOO_LONG
+}
+
+// GetTITLE_LENGTH_TOO_LONGOk returns a tuple with the TITLE_LENGTH_TOO_LONG field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetTITLE_LENGTH_TOO_LONGOk() (*int32, bool) {
+	if o == nil || IsNil(o.TITLE_LENGTH_TOO_LONG) {
+		return nil, false
+	}
+	return o.TITLE_LENGTH_TOO_LONG, true
+}
+
+// HasTITLE_LENGTH_TOO_LONG returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasTITLE_LENGTH_TOO_LONG() bool {
+	if o != nil && !IsNil(o.TITLE_LENGTH_TOO_LONG) {
+		return true
+	}
+
+	return false
+}
+
+// SetTITLE_LENGTH_TOO_LONG gets a reference to the given int32 and assigns it to the TITLE_LENGTH_TOO_LONG field.
+func (o *CatalogsFeedValidationWarnings) SetTITLE_LENGTH_TOO_LONG(v int32) {
+	o.TITLE_LENGTH_TOO_LONG = &v
+}
+
+// GetTOO_MANY_ADDITIONAL_IMAGE_LINKS returns the TOO_MANY_ADDITIONAL_IMAGE_LINKS field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetTOO_MANY_ADDITIONAL_IMAGE_LINKS() int32 {
+	if o == nil || IsNil(o.TOO_MANY_ADDITIONAL_IMAGE_LINKS) {
+		var ret int32
+		return ret
+	}
+	return *o.TOO_MANY_ADDITIONAL_IMAGE_LINKS
+}
+
+// GetTOO_MANY_ADDITIONAL_IMAGE_LINKSOk returns a tuple with the TOO_MANY_ADDITIONAL_IMAGE_LINKS field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetTOO_MANY_ADDITIONAL_IMAGE_LINKSOk() (*int32, bool) {
+	if o == nil || IsNil(o.TOO_MANY_ADDITIONAL_IMAGE_LINKS) {
+		return nil, false
+	}
+	return o.TOO_MANY_ADDITIONAL_IMAGE_LINKS, true
+}
+
+// HasTOO_MANY_ADDITIONAL_IMAGE_LINKS returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasTOO_MANY_ADDITIONAL_IMAGE_LINKS() bool {
+	if o != nil && !IsNil(o.TOO_MANY_ADDITIONAL_IMAGE_LINKS) {
+		return true
+	}
+
+	return false
+}
+
+// SetTOO_MANY_ADDITIONAL_IMAGE_LINKS gets a reference to the given int32 and assigns it to the TOO_MANY_ADDITIONAL_IMAGE_LINKS field.
+func (o *CatalogsFeedValidationWarnings) SetTOO_MANY_ADDITIONAL_IMAGE_LINKS(v int32) {
+	o.TOO_MANY_ADDITIONAL_IMAGE_LINKS = &v
+}
+
+// GetUPDATED_TIME_INVALID returns the UPDATED_TIME_INVALID field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetUPDATED_TIME_INVALID() int32 {
+	if o == nil || IsNil(o.UPDATED_TIME_INVALID) {
+		var ret int32
+		return ret
+	}
+	return *o.UPDATED_TIME_INVALID
+}
+
+// GetUPDATED_TIME_INVALIDOk returns a tuple with the UPDATED_TIME_INVALID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetUPDATED_TIME_INVALIDOk() (*int32, bool) {
+	if o == nil || IsNil(o.UPDATED_TIME_INVALID) {
+		return nil, false
+	}
+	return o.UPDATED_TIME_INVALID, true
+}
+
+// HasUPDATED_TIME_INVALID returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasUPDATED_TIME_INVALID() bool {
+	if o != nil && !IsNil(o.UPDATED_TIME_INVALID) {
+		return true
+	}
+
+	return false
+}
+
+// SetUPDATED_TIME_INVALID gets a reference to the given int32 and assigns it to the UPDATED_TIME_INVALID field.
+func (o *CatalogsFeedValidationWarnings) SetUPDATED_TIME_INVALID(v int32) {
+	o.UPDATED_TIME_INVALID = &v
+}
+
+// GetUTM_SOURCE_AUTO_CORRECTED returns the UTM_SOURCE_AUTO_CORRECTED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetUTM_SOURCE_AUTO_CORRECTED() int32 {
+	if o == nil || IsNil(o.UTM_SOURCE_AUTO_CORRECTED) {
+		var ret int32
+		return ret
+	}
+	return *o.UTM_SOURCE_AUTO_CORRECTED
+}
+
+// GetUTM_SOURCE_AUTO_CORRECTEDOk returns a tuple with the UTM_SOURCE_AUTO_CORRECTED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetUTM_SOURCE_AUTO_CORRECTEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.UTM_SOURCE_AUTO_CORRECTED) {
+		return nil, false
+	}
+	return o.UTM_SOURCE_AUTO_CORRECTED, true
+}
+
+// HasUTM_SOURCE_AUTO_CORRECTED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasUTM_SOURCE_AUTO_CORRECTED() bool {
+	if o != nil && !IsNil(o.UTM_SOURCE_AUTO_CORRECTED) {
+		return true
+	}
+
+	return false
+}
+
+// SetUTM_SOURCE_AUTO_CORRECTED gets a reference to the given int32 and assigns it to the UTM_SOURCE_AUTO_CORRECTED field.
+func (o *CatalogsFeedValidationWarnings) SetUTM_SOURCE_AUTO_CORRECTED(v int32) {
+	o.UTM_SOURCE_AUTO_CORRECTED = &v
+}
+
+// GetVIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED returns the VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetVIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED() int32 {
+	if o == nil || IsNil(o.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED) {
+		var ret int32
+		return ret
+	}
+	return *o.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED
+}
+
+// GetVIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDEDOk returns a tuple with the VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetVIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDEDOk() (*int32, bool) {
+	if o == nil || IsNil(o.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED) {
+		return nil, false
+	}
+	return o.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED, true
+}
+
+// HasVIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasVIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED() bool {
+	if o != nil && !IsNil(o.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED) {
+		return true
+	}
+
+	return false
+}
+
+// SetVIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED gets a reference to the given int32 and assigns it to the VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED field.
+func (o *CatalogsFeedValidationWarnings) SetVIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED(v int32) {
+	o.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED = &v
+}
+
+// GetWEIGHT_UNIT_INVALID returns the WEIGHT_UNIT_INVALID field value if set, zero value otherwise.
+func (o *CatalogsFeedValidationWarnings) GetWEIGHT_UNIT_INVALID() int32 {
+	if o == nil || IsNil(o.WEIGHT_UNIT_INVALID) {
+		var ret int32
+		return ret
+	}
+	return *o.WEIGHT_UNIT_INVALID
+}
+
+// GetWEIGHT_UNIT_INVALIDOk returns a tuple with the WEIGHT_UNIT_INVALID field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedValidationWarnings) GetWEIGHT_UNIT_INVALIDOk() (*int32, bool) {
+	if o == nil || IsNil(o.WEIGHT_UNIT_INVALID) {
+		return nil, false
+	}
+	return o.WEIGHT_UNIT_INVALID, true
+}
+
+// HasWEIGHT_UNIT_INVALID returns a boolean if a field has been set.
+func (o *CatalogsFeedValidationWarnings) HasWEIGHT_UNIT_INVALID() bool {
+	if o != nil && !IsNil(o.WEIGHT_UNIT_INVALID) {
+		return true
+	}
+
+	return false
+}
+
+// SetWEIGHT_UNIT_INVALID gets a reference to the given int32 and assigns it to the WEIGHT_UNIT_INVALID field.
+func (o *CatalogsFeedValidationWarnings) SetWEIGHT_UNIT_INVALID(v int32) {
+	o.WEIGHT_UNIT_INVALID = &v
+}
+
 func (o CatalogsFeedValidationWarnings) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1715,50 +7223,494 @@ func (o CatalogsFeedValidationWarnings) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsFeedValidationWarnings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ADIMAGE0LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_0_LINK_DUPLICATED"] = o.ADIMAGE0LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE0LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_0_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE0LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE0LINKREQUIRED) {
+		toSerialize["AD_IMAGE_0_LINK_REQUIRED"] = o.ADIMAGE0LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE0LINKWARNING) {
+		toSerialize["AD_IMAGE_0_LINK_WARNING"] = o.ADIMAGE0LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE0TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_0_TAG_DUPLICATED"] = o.ADIMAGE0TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE0TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_0_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE0TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE0TAGREQUIRED) {
+		toSerialize["AD_IMAGE_0_TAG_REQUIRED"] = o.ADIMAGE0TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE10LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_10_LINK_DUPLICATED"] = o.ADIMAGE10LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE10LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_10_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE10LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE10LINKREQUIRED) {
+		toSerialize["AD_IMAGE_10_LINK_REQUIRED"] = o.ADIMAGE10LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE10LINKWARNING) {
+		toSerialize["AD_IMAGE_10_LINK_WARNING"] = o.ADIMAGE10LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE10TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_10_TAG_DUPLICATED"] = o.ADIMAGE10TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE10TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_10_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE10TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE10TAGREQUIRED) {
+		toSerialize["AD_IMAGE_10_TAG_REQUIRED"] = o.ADIMAGE10TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE11LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_11_LINK_DUPLICATED"] = o.ADIMAGE11LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE11LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_11_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE11LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE11LINKREQUIRED) {
+		toSerialize["AD_IMAGE_11_LINK_REQUIRED"] = o.ADIMAGE11LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE11LINKWARNING) {
+		toSerialize["AD_IMAGE_11_LINK_WARNING"] = o.ADIMAGE11LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE11TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_11_TAG_DUPLICATED"] = o.ADIMAGE11TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE11TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_11_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE11TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE11TAGREQUIRED) {
+		toSerialize["AD_IMAGE_11_TAG_REQUIRED"] = o.ADIMAGE11TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE12LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_12_LINK_DUPLICATED"] = o.ADIMAGE12LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE12LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_12_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE12LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE12LINKREQUIRED) {
+		toSerialize["AD_IMAGE_12_LINK_REQUIRED"] = o.ADIMAGE12LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE12LINKWARNING) {
+		toSerialize["AD_IMAGE_12_LINK_WARNING"] = o.ADIMAGE12LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE12TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_12_TAG_DUPLICATED"] = o.ADIMAGE12TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE12TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_12_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE12TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE12TAGREQUIRED) {
+		toSerialize["AD_IMAGE_12_TAG_REQUIRED"] = o.ADIMAGE12TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE13LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_13_LINK_DUPLICATED"] = o.ADIMAGE13LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE13LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_13_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE13LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE13LINKREQUIRED) {
+		toSerialize["AD_IMAGE_13_LINK_REQUIRED"] = o.ADIMAGE13LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE13LINKWARNING) {
+		toSerialize["AD_IMAGE_13_LINK_WARNING"] = o.ADIMAGE13LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE13TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_13_TAG_DUPLICATED"] = o.ADIMAGE13TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE13TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_13_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE13TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE13TAGREQUIRED) {
+		toSerialize["AD_IMAGE_13_TAG_REQUIRED"] = o.ADIMAGE13TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE14LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_14_LINK_DUPLICATED"] = o.ADIMAGE14LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE14LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_14_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE14LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE14LINKREQUIRED) {
+		toSerialize["AD_IMAGE_14_LINK_REQUIRED"] = o.ADIMAGE14LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE14LINKWARNING) {
+		toSerialize["AD_IMAGE_14_LINK_WARNING"] = o.ADIMAGE14LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE14TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_14_TAG_DUPLICATED"] = o.ADIMAGE14TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE14TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_14_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE14TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE14TAGREQUIRED) {
+		toSerialize["AD_IMAGE_14_TAG_REQUIRED"] = o.ADIMAGE14TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE15LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_15_LINK_DUPLICATED"] = o.ADIMAGE15LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE15LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_15_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE15LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE15LINKREQUIRED) {
+		toSerialize["AD_IMAGE_15_LINK_REQUIRED"] = o.ADIMAGE15LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE15LINKWARNING) {
+		toSerialize["AD_IMAGE_15_LINK_WARNING"] = o.ADIMAGE15LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE15TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_15_TAG_DUPLICATED"] = o.ADIMAGE15TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE15TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_15_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE15TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE15TAGREQUIRED) {
+		toSerialize["AD_IMAGE_15_TAG_REQUIRED"] = o.ADIMAGE15TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE16LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_16_LINK_DUPLICATED"] = o.ADIMAGE16LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE16LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_16_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE16LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE16LINKREQUIRED) {
+		toSerialize["AD_IMAGE_16_LINK_REQUIRED"] = o.ADIMAGE16LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE16LINKWARNING) {
+		toSerialize["AD_IMAGE_16_LINK_WARNING"] = o.ADIMAGE16LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE16TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_16_TAG_DUPLICATED"] = o.ADIMAGE16TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE16TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_16_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE16TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE16TAGREQUIRED) {
+		toSerialize["AD_IMAGE_16_TAG_REQUIRED"] = o.ADIMAGE16TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE17LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_17_LINK_DUPLICATED"] = o.ADIMAGE17LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE17LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_17_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE17LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE17LINKREQUIRED) {
+		toSerialize["AD_IMAGE_17_LINK_REQUIRED"] = o.ADIMAGE17LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE17LINKWARNING) {
+		toSerialize["AD_IMAGE_17_LINK_WARNING"] = o.ADIMAGE17LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE17TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_17_TAG_DUPLICATED"] = o.ADIMAGE17TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE17TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_17_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE17TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE17TAGREQUIRED) {
+		toSerialize["AD_IMAGE_17_TAG_REQUIRED"] = o.ADIMAGE17TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE18LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_18_LINK_DUPLICATED"] = o.ADIMAGE18LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE18LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_18_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE18LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE18LINKREQUIRED) {
+		toSerialize["AD_IMAGE_18_LINK_REQUIRED"] = o.ADIMAGE18LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE18LINKWARNING) {
+		toSerialize["AD_IMAGE_18_LINK_WARNING"] = o.ADIMAGE18LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE18TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_18_TAG_DUPLICATED"] = o.ADIMAGE18TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE18TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_18_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE18TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE18TAGREQUIRED) {
+		toSerialize["AD_IMAGE_18_TAG_REQUIRED"] = o.ADIMAGE18TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE19LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_19_LINK_DUPLICATED"] = o.ADIMAGE19LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE19LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_19_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE19LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE19LINKREQUIRED) {
+		toSerialize["AD_IMAGE_19_LINK_REQUIRED"] = o.ADIMAGE19LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE19LINKWARNING) {
+		toSerialize["AD_IMAGE_19_LINK_WARNING"] = o.ADIMAGE19LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE19TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_19_TAG_DUPLICATED"] = o.ADIMAGE19TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE19TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_19_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE19TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE19TAGREQUIRED) {
+		toSerialize["AD_IMAGE_19_TAG_REQUIRED"] = o.ADIMAGE19TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE1LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_1_LINK_DUPLICATED"] = o.ADIMAGE1LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE1LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_1_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE1LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE1LINKREQUIRED) {
+		toSerialize["AD_IMAGE_1_LINK_REQUIRED"] = o.ADIMAGE1LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE1LINKWARNING) {
+		toSerialize["AD_IMAGE_1_LINK_WARNING"] = o.ADIMAGE1LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE1TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_1_TAG_DUPLICATED"] = o.ADIMAGE1TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE1TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_1_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE1TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE1TAGREQUIRED) {
+		toSerialize["AD_IMAGE_1_TAG_REQUIRED"] = o.ADIMAGE1TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE2LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_2_LINK_DUPLICATED"] = o.ADIMAGE2LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE2LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_2_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE2LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE2LINKREQUIRED) {
+		toSerialize["AD_IMAGE_2_LINK_REQUIRED"] = o.ADIMAGE2LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE2LINKWARNING) {
+		toSerialize["AD_IMAGE_2_LINK_WARNING"] = o.ADIMAGE2LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE2TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_2_TAG_DUPLICATED"] = o.ADIMAGE2TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE2TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_2_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE2TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE2TAGREQUIRED) {
+		toSerialize["AD_IMAGE_2_TAG_REQUIRED"] = o.ADIMAGE2TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE3LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_3_LINK_DUPLICATED"] = o.ADIMAGE3LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE3LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_3_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE3LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE3LINKREQUIRED) {
+		toSerialize["AD_IMAGE_3_LINK_REQUIRED"] = o.ADIMAGE3LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE3LINKWARNING) {
+		toSerialize["AD_IMAGE_3_LINK_WARNING"] = o.ADIMAGE3LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE3TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_3_TAG_DUPLICATED"] = o.ADIMAGE3TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE3TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_3_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE3TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE3TAGREQUIRED) {
+		toSerialize["AD_IMAGE_3_TAG_REQUIRED"] = o.ADIMAGE3TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE4LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_4_LINK_DUPLICATED"] = o.ADIMAGE4LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE4LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_4_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE4LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE4LINKREQUIRED) {
+		toSerialize["AD_IMAGE_4_LINK_REQUIRED"] = o.ADIMAGE4LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE4LINKWARNING) {
+		toSerialize["AD_IMAGE_4_LINK_WARNING"] = o.ADIMAGE4LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE4TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_4_TAG_DUPLICATED"] = o.ADIMAGE4TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE4TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_4_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE4TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE4TAGREQUIRED) {
+		toSerialize["AD_IMAGE_4_TAG_REQUIRED"] = o.ADIMAGE4TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE5LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_5_LINK_DUPLICATED"] = o.ADIMAGE5LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE5LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_5_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE5LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE5LINKREQUIRED) {
+		toSerialize["AD_IMAGE_5_LINK_REQUIRED"] = o.ADIMAGE5LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE5LINKWARNING) {
+		toSerialize["AD_IMAGE_5_LINK_WARNING"] = o.ADIMAGE5LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE5TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_5_TAG_DUPLICATED"] = o.ADIMAGE5TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE5TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_5_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE5TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE5TAGREQUIRED) {
+		toSerialize["AD_IMAGE_5_TAG_REQUIRED"] = o.ADIMAGE5TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE6LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_6_LINK_DUPLICATED"] = o.ADIMAGE6LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE6LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_6_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE6LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE6LINKREQUIRED) {
+		toSerialize["AD_IMAGE_6_LINK_REQUIRED"] = o.ADIMAGE6LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE6LINKWARNING) {
+		toSerialize["AD_IMAGE_6_LINK_WARNING"] = o.ADIMAGE6LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE6TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_6_TAG_DUPLICATED"] = o.ADIMAGE6TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE6TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_6_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE6TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE6TAGREQUIRED) {
+		toSerialize["AD_IMAGE_6_TAG_REQUIRED"] = o.ADIMAGE6TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE7LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_7_LINK_DUPLICATED"] = o.ADIMAGE7LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE7LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_7_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE7LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE7LINKREQUIRED) {
+		toSerialize["AD_IMAGE_7_LINK_REQUIRED"] = o.ADIMAGE7LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE7LINKWARNING) {
+		toSerialize["AD_IMAGE_7_LINK_WARNING"] = o.ADIMAGE7LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE7TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_7_TAG_DUPLICATED"] = o.ADIMAGE7TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE7TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_7_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE7TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE7TAGREQUIRED) {
+		toSerialize["AD_IMAGE_7_TAG_REQUIRED"] = o.ADIMAGE7TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE8LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_8_LINK_DUPLICATED"] = o.ADIMAGE8LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE8LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_8_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE8LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE8LINKREQUIRED) {
+		toSerialize["AD_IMAGE_8_LINK_REQUIRED"] = o.ADIMAGE8LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE8LINKWARNING) {
+		toSerialize["AD_IMAGE_8_LINK_WARNING"] = o.ADIMAGE8LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE8TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_8_TAG_DUPLICATED"] = o.ADIMAGE8TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE8TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_8_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE8TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE8TAGREQUIRED) {
+		toSerialize["AD_IMAGE_8_TAG_REQUIRED"] = o.ADIMAGE8TAGREQUIRED
+	}
+	if !IsNil(o.ADIMAGE9LINKDUPLICATED) {
+		toSerialize["AD_IMAGE_9_LINK_DUPLICATED"] = o.ADIMAGE9LINKDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE9LINKLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_9_LINK_LENGTH_TOO_LONG"] = o.ADIMAGE9LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE9LINKREQUIRED) {
+		toSerialize["AD_IMAGE_9_LINK_REQUIRED"] = o.ADIMAGE9LINKREQUIRED
+	}
+	if !IsNil(o.ADIMAGE9LINKWARNING) {
+		toSerialize["AD_IMAGE_9_LINK_WARNING"] = o.ADIMAGE9LINKWARNING
+	}
+	if !IsNil(o.ADIMAGE9TAGDUPLICATED) {
+		toSerialize["AD_IMAGE_9_TAG_DUPLICATED"] = o.ADIMAGE9TAGDUPLICATED
+	}
+	if !IsNil(o.ADIMAGE9TAGLENGTHTOOLONG) {
+		toSerialize["AD_IMAGE_9_TAG_LENGTH_TOO_LONG"] = o.ADIMAGE9TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADIMAGE9TAGREQUIRED) {
+		toSerialize["AD_IMAGE_9_TAG_REQUIRED"] = o.ADIMAGE9TAGREQUIRED
+	}
 	if !IsNil(o.AD_LINK_FORMAT_WARNING) {
 		toSerialize["AD_LINK_FORMAT_WARNING"] = o.AD_LINK_FORMAT_WARNING
 	}
 	if !IsNil(o.AD_LINK_SAME_AS_LINK) {
 		toSerialize["AD_LINK_SAME_AS_LINK"] = o.AD_LINK_SAME_AS_LINK
 	}
-	if !IsNil(o.TITLE_LENGTH_TOO_LONG) {
-		toSerialize["TITLE_LENGTH_TOO_LONG"] = o.TITLE_LENGTH_TOO_LONG
+	if !IsNil(o.ADVIDEO0LINKDUPLICATED) {
+		toSerialize["AD_VIDEO_0_LINK_DUPLICATED"] = o.ADVIDEO0LINKDUPLICATED
 	}
-	if !IsNil(o.DESCRIPTION_LENGTH_TOO_LONG) {
-		toSerialize["DESCRIPTION_LENGTH_TOO_LONG"] = o.DESCRIPTION_LENGTH_TOO_LONG
+	if !IsNil(o.ADVIDEO0LINKLENGTHTOOLONG) {
+		toSerialize["AD_VIDEO_0_LINK_LENGTH_TOO_LONG"] = o.ADVIDEO0LINKLENGTHTOOLONG
 	}
-	if !IsNil(o.GENDER_INVALID) {
-		toSerialize["GENDER_INVALID"] = o.GENDER_INVALID
+	if !IsNil(o.ADVIDEO0LINKREQUIRED) {
+		toSerialize["AD_VIDEO_0_LINK_REQUIRED"] = o.ADVIDEO0LINKREQUIRED
 	}
-	if !IsNil(o.AGE_GROUP_INVALID) {
-		toSerialize["AGE_GROUP_INVALID"] = o.AGE_GROUP_INVALID
+	if !IsNil(o.ADVIDEO0LINKWARNING) {
+		toSerialize["AD_VIDEO_0_LINK_WARNING"] = o.ADVIDEO0LINKWARNING
 	}
-	if !IsNil(o.SIZE_TYPE_INVALID) {
-		toSerialize["SIZE_TYPE_INVALID"] = o.SIZE_TYPE_INVALID
+	if !IsNil(o.ADVIDEO0TAGDUPLICATED) {
+		toSerialize["AD_VIDEO_0_TAG_DUPLICATED"] = o.ADVIDEO0TAGDUPLICATED
 	}
-	if !IsNil(o.SIZE_SYSTEM_INVALID) {
-		toSerialize["SIZE_SYSTEM_INVALID"] = o.SIZE_SYSTEM_INVALID
+	if !IsNil(o.ADVIDEO0TAGLENGTHTOOLONG) {
+		toSerialize["AD_VIDEO_0_TAG_LENGTH_TOO_LONG"] = o.ADVIDEO0TAGLENGTHTOOLONG
 	}
-	if !IsNil(o.LINK_FORMAT_WARNING) {
-		toSerialize["LINK_FORMAT_WARNING"] = o.LINK_FORMAT_WARNING
+	if !IsNil(o.ADVIDEO0TAGREQUIRED) {
+		toSerialize["AD_VIDEO_0_TAG_REQUIRED"] = o.ADVIDEO0TAGREQUIRED
 	}
-	if !IsNil(o.SALES_PRICE_INVALID) {
-		toSerialize["SALES_PRICE_INVALID"] = o.SALES_PRICE_INVALID
+	if !IsNil(o.ADVIDEO1LINKDUPLICATED) {
+		toSerialize["AD_VIDEO_1_LINK_DUPLICATED"] = o.ADVIDEO1LINKDUPLICATED
 	}
-	if !IsNil(o.PRODUCT_CATEGORY_DEPTH_WARNING) {
-		toSerialize["PRODUCT_CATEGORY_DEPTH_WARNING"] = o.PRODUCT_CATEGORY_DEPTH_WARNING
+	if !IsNil(o.ADVIDEO1LINKLENGTHTOOLONG) {
+		toSerialize["AD_VIDEO_1_LINK_LENGTH_TOO_LONG"] = o.ADVIDEO1LINKLENGTHTOOLONG
 	}
-	if !IsNil(o.ADWORDS_FORMAT_WARNING) {
-		toSerialize["ADWORDS_FORMAT_WARNING"] = o.ADWORDS_FORMAT_WARNING
+	if !IsNil(o.ADVIDEO1LINKREQUIRED) {
+		toSerialize["AD_VIDEO_1_LINK_REQUIRED"] = o.ADVIDEO1LINKREQUIRED
 	}
-	if !IsNil(o.ADWORDS_SAME_AS_LINK) {
-		toSerialize["ADWORDS_SAME_AS_LINK"] = o.ADWORDS_SAME_AS_LINK
+	if !IsNil(o.ADVIDEO1LINKWARNING) {
+		toSerialize["AD_VIDEO_1_LINK_WARNING"] = o.ADVIDEO1LINKWARNING
 	}
-	if !IsNil(o.DUPLICATE_HEADERS) {
-		toSerialize["DUPLICATE_HEADERS"] = o.DUPLICATE_HEADERS
+	if !IsNil(o.ADVIDEO1TAGDUPLICATED) {
+		toSerialize["AD_VIDEO_1_TAG_DUPLICATED"] = o.ADVIDEO1TAGDUPLICATED
 	}
-	if !IsNil(o.FETCH_SAME_SIGNATURE) {
-		toSerialize["FETCH_SAME_SIGNATURE"] = o.FETCH_SAME_SIGNATURE
+	if !IsNil(o.ADVIDEO1TAGLENGTHTOOLONG) {
+		toSerialize["AD_VIDEO_1_TAG_LENGTH_TOO_LONG"] = o.ADVIDEO1TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADVIDEO1TAGREQUIRED) {
+		toSerialize["AD_VIDEO_1_TAG_REQUIRED"] = o.ADVIDEO1TAGREQUIRED
+	}
+	if !IsNil(o.ADVIDEO2LINKDUPLICATED) {
+		toSerialize["AD_VIDEO_2_LINK_DUPLICATED"] = o.ADVIDEO2LINKDUPLICATED
+	}
+	if !IsNil(o.ADVIDEO2LINKLENGTHTOOLONG) {
+		toSerialize["AD_VIDEO_2_LINK_LENGTH_TOO_LONG"] = o.ADVIDEO2LINKLENGTHTOOLONG
+	}
+	if !IsNil(o.ADVIDEO2LINKREQUIRED) {
+		toSerialize["AD_VIDEO_2_LINK_REQUIRED"] = o.ADVIDEO2LINKREQUIRED
+	}
+	if !IsNil(o.ADVIDEO2LINKWARNING) {
+		toSerialize["AD_VIDEO_2_LINK_WARNING"] = o.ADVIDEO2LINKWARNING
+	}
+	if !IsNil(o.ADVIDEO2TAGDUPLICATED) {
+		toSerialize["AD_VIDEO_2_TAG_DUPLICATED"] = o.ADVIDEO2TAGDUPLICATED
+	}
+	if !IsNil(o.ADVIDEO2TAGLENGTHTOOLONG) {
+		toSerialize["AD_VIDEO_2_TAG_LENGTH_TOO_LONG"] = o.ADVIDEO2TAGLENGTHTOOLONG
+	}
+	if !IsNil(o.ADVIDEO2TAGREQUIRED) {
+		toSerialize["AD_VIDEO_2_TAG_REQUIRED"] = o.ADVIDEO2TAGREQUIRED
 	}
 	if !IsNil(o.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG) {
 		toSerialize["ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG"] = o.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG
@@ -1766,101 +7718,143 @@ func (o CatalogsFeedValidationWarnings) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.ADDITIONAL_IMAGE_LINK_WARNING) {
 		toSerialize["ADDITIONAL_IMAGE_LINK_WARNING"] = o.ADDITIONAL_IMAGE_LINK_WARNING
 	}
-	if !IsNil(o.IMAGE_LINK_WARNING) {
-		toSerialize["IMAGE_LINK_WARNING"] = o.IMAGE_LINK_WARNING
+	if !IsNil(o.ADWORDS_FORMAT_WARNING) {
+		toSerialize["ADWORDS_FORMAT_WARNING"] = o.ADWORDS_FORMAT_WARNING
 	}
-	if !IsNil(o.SHIPPING_INVALID) {
-		toSerialize["SHIPPING_INVALID"] = o.SHIPPING_INVALID
+	if !IsNil(o.ADWORDS_SAME_AS_LINK) {
+		toSerialize["ADWORDS_SAME_AS_LINK"] = o.ADWORDS_SAME_AS_LINK
 	}
-	if !IsNil(o.TAX_INVALID) {
-		toSerialize["TAX_INVALID"] = o.TAX_INVALID
-	}
-	if !IsNil(o.SHIPPING_WEIGHT_INVALID) {
-		toSerialize["SHIPPING_WEIGHT_INVALID"] = o.SHIPPING_WEIGHT_INVALID
-	}
-	if !IsNil(o.EXPIRATION_DATE_INVALID) {
-		toSerialize["EXPIRATION_DATE_INVALID"] = o.EXPIRATION_DATE_INVALID
-	}
-	if !IsNil(o.AVAILABILITY_DATE_INVALID) {
-		toSerialize["AVAILABILITY_DATE_INVALID"] = o.AVAILABILITY_DATE_INVALID
-	}
-	if !IsNil(o.SALE_DATE_INVALID) {
-		toSerialize["SALE_DATE_INVALID"] = o.SALE_DATE_INVALID
-	}
-	if !IsNil(o.WEIGHT_UNIT_INVALID) {
-		toSerialize["WEIGHT_UNIT_INVALID"] = o.WEIGHT_UNIT_INVALID
-	}
-	if !IsNil(o.IS_BUNDLE_INVALID) {
-		toSerialize["IS_BUNDLE_INVALID"] = o.IS_BUNDLE_INVALID
-	}
-	if !IsNil(o.UPDATED_TIME_INVALID) {
-		toSerialize["UPDATED_TIME_INVALID"] = o.UPDATED_TIME_INVALID
-	}
-	if !IsNil(o.CUSTOM_LABEL_LENGTH_TOO_LONG) {
-		toSerialize["CUSTOM_LABEL_LENGTH_TOO_LONG"] = o.CUSTOM_LABEL_LENGTH_TOO_LONG
-	}
-	if !IsNil(o.PRODUCT_TYPE_LENGTH_TOO_LONG) {
-		toSerialize["PRODUCT_TYPE_LENGTH_TOO_LONG"] = o.PRODUCT_TYPE_LENGTH_TOO_LONG
-	}
-	if !IsNil(o.TOO_MANY_ADDITIONAL_IMAGE_LINKS) {
-		toSerialize["TOO_MANY_ADDITIONAL_IMAGE_LINKS"] = o.TOO_MANY_ADDITIONAL_IMAGE_LINKS
-	}
-	if !IsNil(o.MULTIPACK_INVALID) {
-		toSerialize["MULTIPACK_INVALID"] = o.MULTIPACK_INVALID
-	}
-	if !IsNil(o.INDEXED_PRODUCT_COUNT_LARGE_DELTA) {
-		toSerialize["INDEXED_PRODUCT_COUNT_LARGE_DELTA"] = o.INDEXED_PRODUCT_COUNT_LARGE_DELTA
-	}
-	if !IsNil(o.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE) {
-		toSerialize["ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE"] = o.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE
-	}
-	if !IsNil(o.OPTIONAL_PRODUCT_CATEGORY_MISSING) {
-		toSerialize["OPTIONAL_PRODUCT_CATEGORY_MISSING"] = o.OPTIONAL_PRODUCT_CATEGORY_MISSING
-	}
-	if !IsNil(o.OPTIONAL_PRODUCT_CATEGORY_INVALID) {
-		toSerialize["OPTIONAL_PRODUCT_CATEGORY_INVALID"] = o.OPTIONAL_PRODUCT_CATEGORY_INVALID
-	}
-	if !IsNil(o.OPTIONAL_CONDITION_MISSING) {
-		toSerialize["OPTIONAL_CONDITION_MISSING"] = o.OPTIONAL_CONDITION_MISSING
-	}
-	if !IsNil(o.OPTIONAL_CONDITION_INVALID) {
-		toSerialize["OPTIONAL_CONDITION_INVALID"] = o.OPTIONAL_CONDITION_INVALID
-	}
-	if !IsNil(o.IOS_DEEP_LINK_INVALID) {
-		toSerialize["IOS_DEEP_LINK_INVALID"] = o.IOS_DEEP_LINK_INVALID
+	if !IsNil(o.AGE_GROUP_INVALID) {
+		toSerialize["AGE_GROUP_INVALID"] = o.AGE_GROUP_INVALID
 	}
 	if !IsNil(o.ANDROID_DEEP_LINK_INVALID) {
 		toSerialize["ANDROID_DEEP_LINK_INVALID"] = o.ANDROID_DEEP_LINK_INVALID
 	}
-	if !IsNil(o.UTM_SOURCE_AUTO_CORRECTED) {
-		toSerialize["UTM_SOURCE_AUTO_CORRECTED"] = o.UTM_SOURCE_AUTO_CORRECTED
+	if !IsNil(o.AVAILABILITY_DATE_INVALID) {
+		toSerialize["AVAILABILITY_DATE_INVALID"] = o.AVAILABILITY_DATE_INVALID
 	}
 	if !IsNil(o.COUNTRY_DOES_NOT_MAP_TO_CURRENCY) {
 		toSerialize["COUNTRY_DOES_NOT_MAP_TO_CURRENCY"] = o.COUNTRY_DOES_NOT_MAP_TO_CURRENCY
 	}
-	if !IsNil(o.MIN_AD_PRICE_INVALID) {
-		toSerialize["MIN_AD_PRICE_INVALID"] = o.MIN_AD_PRICE_INVALID
+	if !IsNil(o.CUSTOM_LABEL_LENGTH_TOO_LONG) {
+		toSerialize["CUSTOM_LABEL_LENGTH_TOO_LONG"] = o.CUSTOM_LABEL_LENGTH_TOO_LONG
+	}
+	if !IsNil(o.DESCRIPTION_LENGTH_TOO_LONG) {
+		toSerialize["DESCRIPTION_LENGTH_TOO_LONG"] = o.DESCRIPTION_LENGTH_TOO_LONG
+	}
+	if !IsNil(o.DUPLICATE_HEADERS) {
+		toSerialize["DUPLICATE_HEADERS"] = o.DUPLICATE_HEADERS
+	}
+	if !IsNil(o.EXPIRATION_DATE_INVALID) {
+		toSerialize["EXPIRATION_DATE_INVALID"] = o.EXPIRATION_DATE_INVALID
+	}
+	if !IsNil(o.FETCH_SAME_SIGNATURE) {
+		toSerialize["FETCH_SAME_SIGNATURE"] = o.FETCH_SAME_SIGNATURE
+	}
+	if !IsNil(o.GENDER_INVALID) {
+		toSerialize["GENDER_INVALID"] = o.GENDER_INVALID
 	}
 	if !IsNil(o.GTIN_INVALID) {
 		toSerialize["GTIN_INVALID"] = o.GTIN_INVALID
 	}
+	if !IsNil(o.IMAGE_LINK_WARNING) {
+		toSerialize["IMAGE_LINK_WARNING"] = o.IMAGE_LINK_WARNING
+	}
 	if !IsNil(o.INCONSISTENT_CURRENCY_VALUES) {
 		toSerialize["INCONSISTENT_CURRENCY_VALUES"] = o.INCONSISTENT_CURRENCY_VALUES
 	}
-	if !IsNil(o.SALES_PRICE_TOO_LOW) {
-		toSerialize["SALES_PRICE_TOO_LOW"] = o.SALES_PRICE_TOO_LOW
+	if !IsNil(o.INDEXED_PRODUCT_COUNT_LARGE_DELTA) {
+		toSerialize["INDEXED_PRODUCT_COUNT_LARGE_DELTA"] = o.INDEXED_PRODUCT_COUNT_LARGE_DELTA
 	}
-	if !IsNil(o.SHIPPING_WIDTH_INVALID) {
-		toSerialize["SHIPPING_WIDTH_INVALID"] = o.SHIPPING_WIDTH_INVALID
+	if !IsNil(o.IOS_DEEP_LINK_INVALID) {
+		toSerialize["IOS_DEEP_LINK_INVALID"] = o.IOS_DEEP_LINK_INVALID
 	}
-	if !IsNil(o.SHIPPING_HEIGHT_INVALID) {
-		toSerialize["SHIPPING_HEIGHT_INVALID"] = o.SHIPPING_HEIGHT_INVALID
+	if !IsNil(o.IS_BUNDLE_INVALID) {
+		toSerialize["IS_BUNDLE_INVALID"] = o.IS_BUNDLE_INVALID
+	}
+	if !IsNil(o.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE) {
+		toSerialize["ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE"] = o.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE
+	}
+	if !IsNil(o.LINK_FORMAT_WARNING) {
+		toSerialize["LINK_FORMAT_WARNING"] = o.LINK_FORMAT_WARNING
+	}
+	if !IsNil(o.MIN_AD_PRICE_INVALID) {
+		toSerialize["MIN_AD_PRICE_INVALID"] = o.MIN_AD_PRICE_INVALID
+	}
+	if !IsNil(o.MPN_INVALID) {
+		toSerialize["MPN_INVALID"] = o.MPN_INVALID
+	}
+	if !IsNil(o.MULTIPACK_INVALID) {
+		toSerialize["MULTIPACK_INVALID"] = o.MULTIPACK_INVALID
+	}
+	if !IsNil(o.OPTIONAL_CONDITION_INVALID) {
+		toSerialize["OPTIONAL_CONDITION_INVALID"] = o.OPTIONAL_CONDITION_INVALID
+	}
+	if !IsNil(o.OPTIONAL_CONDITION_MISSING) {
+		toSerialize["OPTIONAL_CONDITION_MISSING"] = o.OPTIONAL_CONDITION_MISSING
+	}
+	if !IsNil(o.OPTIONAL_PRODUCT_CATEGORY_INVALID) {
+		toSerialize["OPTIONAL_PRODUCT_CATEGORY_INVALID"] = o.OPTIONAL_PRODUCT_CATEGORY_INVALID
+	}
+	if !IsNil(o.OPTIONAL_PRODUCT_CATEGORY_MISSING) {
+		toSerialize["OPTIONAL_PRODUCT_CATEGORY_MISSING"] = o.OPTIONAL_PRODUCT_CATEGORY_MISSING
+	}
+	if !IsNil(o.PRODUCT_CATEGORY_DEPTH_WARNING) {
+		toSerialize["PRODUCT_CATEGORY_DEPTH_WARNING"] = o.PRODUCT_CATEGORY_DEPTH_WARNING
+	}
+	if !IsNil(o.PRODUCT_TYPE_LENGTH_TOO_LONG) {
+		toSerialize["PRODUCT_TYPE_LENGTH_TOO_LONG"] = o.PRODUCT_TYPE_LENGTH_TOO_LONG
+	}
+	if !IsNil(o.SALE_DATE_INVALID) {
+		toSerialize["SALE_DATE_INVALID"] = o.SALE_DATE_INVALID
+	}
+	if !IsNil(o.SALES_PRICE_INVALID) {
+		toSerialize["SALES_PRICE_INVALID"] = o.SALES_PRICE_INVALID
 	}
 	if !IsNil(o.SALES_PRICE_TOO_HIGH) {
 		toSerialize["SALES_PRICE_TOO_HIGH"] = o.SALES_PRICE_TOO_HIGH
 	}
-	if !IsNil(o.MPN_INVALID) {
-		toSerialize["MPN_INVALID"] = o.MPN_INVALID
+	if !IsNil(o.SALES_PRICE_TOO_LOW) {
+		toSerialize["SALES_PRICE_TOO_LOW"] = o.SALES_PRICE_TOO_LOW
+	}
+	if !IsNil(o.SHIPPING_HEIGHT_INVALID) {
+		toSerialize["SHIPPING_HEIGHT_INVALID"] = o.SHIPPING_HEIGHT_INVALID
+	}
+	if !IsNil(o.SHIPPING_INVALID) {
+		toSerialize["SHIPPING_INVALID"] = o.SHIPPING_INVALID
+	}
+	if !IsNil(o.SHIPPING_WEIGHT_INVALID) {
+		toSerialize["SHIPPING_WEIGHT_INVALID"] = o.SHIPPING_WEIGHT_INVALID
+	}
+	if !IsNil(o.SHIPPING_WIDTH_INVALID) {
+		toSerialize["SHIPPING_WIDTH_INVALID"] = o.SHIPPING_WIDTH_INVALID
+	}
+	if !IsNil(o.SIZE_SYSTEM_INVALID) {
+		toSerialize["SIZE_SYSTEM_INVALID"] = o.SIZE_SYSTEM_INVALID
+	}
+	if !IsNil(o.SIZE_TYPE_INVALID) {
+		toSerialize["SIZE_TYPE_INVALID"] = o.SIZE_TYPE_INVALID
+	}
+	if !IsNil(o.TAX_INVALID) {
+		toSerialize["TAX_INVALID"] = o.TAX_INVALID
+	}
+	if !IsNil(o.TITLE_LENGTH_TOO_LONG) {
+		toSerialize["TITLE_LENGTH_TOO_LONG"] = o.TITLE_LENGTH_TOO_LONG
+	}
+	if !IsNil(o.TOO_MANY_ADDITIONAL_IMAGE_LINKS) {
+		toSerialize["TOO_MANY_ADDITIONAL_IMAGE_LINKS"] = o.TOO_MANY_ADDITIONAL_IMAGE_LINKS
+	}
+	if !IsNil(o.UPDATED_TIME_INVALID) {
+		toSerialize["UPDATED_TIME_INVALID"] = o.UPDATED_TIME_INVALID
+	}
+	if !IsNil(o.UTM_SOURCE_AUTO_CORRECTED) {
+		toSerialize["UTM_SOURCE_AUTO_CORRECTED"] = o.UTM_SOURCE_AUTO_CORRECTED
+	}
+	if !IsNil(o.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED) {
+		toSerialize["VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED"] = o.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED
+	}
+	if !IsNil(o.WEIGHT_UNIT_INVALID) {
+		toSerialize["WEIGHT_UNIT_INVALID"] = o.WEIGHT_UNIT_INVALID
 	}
 	return toSerialize, nil
 }

@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**List&lt;Keyword&gt;**](Keyword.md) |  | 
 **bookmark** | **String** |  |  [optional]
+**items** | [**List&lt;Keyword&gt;**](Keyword.md) |  | 
 
 
 

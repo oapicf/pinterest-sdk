@@ -1,7 +1,7 @@
 /*
  * media_upload_status.h
  *
- * Media upload status
+ * 
  */
 
 #ifndef _media_upload_status_H_

@@ -7,17 +7,17 @@ goog.provide('API.Client.AdvancedAuctionBidOptions');
 API.Client.AdvancedAuctionBidOptions = function() {}
 
 /**
+ * @type {!API.Client.AppTypeMultipliers}
+ * @export
+ */
+API.Client.AdvancedAuctionBidOptions.prototype.appTypeMultipliers;
+
+/**
  * Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.
  * @type {!number}
  * @export
  */
 API.Client.AdvancedAuctionBidOptions.prototype.bidInMicroCurrency;
-
-/**
- * @type {!API.Client.AppTypeMultipliers}
- * @export
- */
-API.Client.AdvancedAuctionBidOptions.prototype.appTypeMultipliers;
 
 /**
  * @type {!API.Client.PlacementMultipliers}

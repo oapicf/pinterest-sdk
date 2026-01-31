@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,9 +17,9 @@ package openapi
 // CatalogsProductGroupCurrencyCriteria - A currency filter. This filter cannot be negated
 type CatalogsProductGroupCurrencyCriteria struct {
 
-	Values NonNullableCatalogsCurrency `json:"values"`
-
 	Negated bool `json:"negated,omitempty"`
+
+	Values NonNullableCatalogsCurrency `json:"values"`
 }
 
 // AssertCatalogsProductGroupCurrencyCriteriaRequired checks if the required fields are not zero-ed

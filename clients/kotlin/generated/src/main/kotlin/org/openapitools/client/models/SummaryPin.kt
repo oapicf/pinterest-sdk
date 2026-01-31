@@ -23,30 +23,34 @@ import com.squareup.moshi.JsonClass
 /**
  * Summarized pin information
  *
- * @param media 
  * @param altText 
- * @param link 
- * @param title 
  * @param description 
+ * @param id 
+ * @param link 
+ * @param media 
+ * @param title 
  */
 
 
 data class SummaryPin (
 
-    @Json(name = "media")
-    val media: PinMedia? = null,
-
     @Json(name = "alt_text")
     val altText: kotlin.String? = null,
+
+    @Json(name = "description")
+    val description: kotlin.String? = null,
+
+    @Json(name = "id")
+    val id: kotlin.String? = null,
 
     @Json(name = "link")
     val link: kotlin.String? = null,
 
-    @Json(name = "title")
-    val title: kotlin.String? = null,
+    @Json(name = "media")
+    val media: PinMedia? = null,
 
-    @Json(name = "description")
-    val description: kotlin.String? = null
+    @Json(name = "title")
+    val title: kotlin.String? = null
 
 ) {
 

@@ -2,6 +2,14 @@
 Protected Class ConversionEventResponse
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Id of the ad account.
+		#tag EndNote
+		ad_account_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		conversion_event As Xoson.O.OptionalString
 	#tag EndProperty
 
@@ -11,14 +19,6 @@ Protected Class ConversionEventResponse
 			Id of the tag.
 		#tag EndNote
 		conversion_tag_id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Id of the ad account.
-		#tag EndNote
-		ad_account_id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -67,6 +67,14 @@ Protected Class ConversionEventResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="ad_account_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="conversion_event"
 			Visible=false
 			Group="Behavior"
@@ -76,14 +84,6 @@ Protected Class ConversionEventResponse
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="conversion_tag_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="ad_account_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

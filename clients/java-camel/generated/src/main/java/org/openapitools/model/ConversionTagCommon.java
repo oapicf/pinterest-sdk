@@ -10,7 +10,6 @@ import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ConversionTagConfigs;
 import org.openapitools.model.EnhancedMatchStatusType;
-import org.openapitools.model.EntityStatus;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -26,12 +25,12 @@ import javax.annotation.Generated;
  * ConversionTagCommon
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionTagCommon {
 
-  private String adAccountId;
-
   private String codeSnippet;
+
+  private ConversionTagConfigs configs;
 
   private JsonNullable<EnhancedMatchStatusType> enhancedMatchStatus = JsonNullable.<EnhancedMatchStatusType>undefined();
 
@@ -41,30 +40,17 @@ public class ConversionTagCommon {
 
   private String name;
 
-  private EntityStatus status;
-
   private String version;
 
-  private ConversionTagConfigs configs;
-
-  public ConversionTagCommon adAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
-    return this;
+  public ConversionTagCommon() {
+    super();
   }
 
   /**
-   * Ad account ID.
-   * @return adAccountId
+   * Constructor with only required parameters
    */
-  
-  @Schema(name = "ad_account_id", example = "549755885175", description = "Ad account ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
-    return adAccountId;
-  }
-
-  public void setAdAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
+  public ConversionTagCommon(String name) {
+    this.name = name;
   }
 
   public ConversionTagCommon codeSnippet(String codeSnippet) {
@@ -77,7 +63,7 @@ public class ConversionTagCommon {
    * @return codeSnippet
    */
   
-  @Schema(name = "code_snippet", example = "<script type=text/javascript> [...]", description = "Tag code snippet.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "code_snippet", accessMode = Schema.AccessMode.READ_ONLY, example = "<script type=text/javascript> [...]", description = "Tag code snippet.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code_snippet")
   public String getCodeSnippet() {
     return codeSnippet;
@@ -87,17 +73,37 @@ public class ConversionTagCommon {
     this.codeSnippet = codeSnippet;
   }
 
+  public ConversionTagCommon configs(ConversionTagConfigs configs) {
+    this.configs = configs;
+    return this;
+  }
+
+  /**
+   * Get configs
+   * @return configs
+   */
+  @Valid 
+  @Schema(name = "configs", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("configs")
+  public ConversionTagConfigs getConfigs() {
+    return configs;
+  }
+
+  public void setConfigs(ConversionTagConfigs configs) {
+    this.configs = configs;
+  }
+
   public ConversionTagCommon enhancedMatchStatus(EnhancedMatchStatusType enhancedMatchStatus) {
     this.enhancedMatchStatus = JsonNullable.of(enhancedMatchStatus);
     return this;
   }
 
   /**
-   * Get enhancedMatchStatus
+   * The enhanced match status of the tag
    * @return enhancedMatchStatus
    */
   @Valid 
-  @Schema(name = "enhanced_match_status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "enhanced_match_status", accessMode = Schema.AccessMode.READ_ONLY, description = "The enhanced match status of the tag", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("enhanced_match_status")
   public JsonNullable<EnhancedMatchStatusType> getEnhancedMatchStatus() {
     return enhancedMatchStatus;
@@ -117,7 +123,7 @@ public class ConversionTagCommon {
    * @return id
    */
   
-  @Schema(name = "id", example = "2617998078212", description = "Tag ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "id", accessMode = Schema.AccessMode.READ_ONLY, example = "2617998078212", description = "Tag ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
   public String getId() {
     return id;
@@ -137,7 +143,7 @@ public class ConversionTagCommon {
    * @return lastFiredTimeMs
    */
   @Valid 
-  @Schema(name = "last_fired_time_ms", example = "1599030000000", description = "Time for the last event fired.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "last_fired_time_ms", accessMode = Schema.AccessMode.READ_ONLY, example = "1599030000000", description = "Time for the last event fired.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("last_fired_time_ms")
   public JsonNullable<BigDecimal> getLastFiredTimeMs() {
     return lastFiredTimeMs;
@@ -156,8 +162,8 @@ public class ConversionTagCommon {
    * Conversion tag name.
    * @return name
    */
-  
-  @Schema(name = "name", example = "ACME Checkout Test Tag", description = "Conversion tag name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull 
+  @Schema(name = "name", example = "ACME Checkout Test Tag", description = "Conversion tag name.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -165,26 +171,6 @@ public class ConversionTagCommon {
 
   public void setName(String name) {
     this.name = name;
-  }
-
-  public ConversionTagCommon status(EntityStatus status) {
-    this.status = status;
-    return this;
-  }
-
-  /**
-   * Get status
-   * @return status
-   */
-  @Valid 
-  @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("status")
-  public EntityStatus getStatus() {
-    return status;
-  }
-
-  public void setStatus(EntityStatus status) {
-    this.status = status;
   }
 
   public ConversionTagCommon version(String version) {
@@ -197,7 +183,7 @@ public class ConversionTagCommon {
    * @return version
    */
   
-  @Schema(name = "version", example = "3", description = "Version number.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "version", accessMode = Schema.AccessMode.READ_ONLY, example = "3", description = "Version number.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("version")
   public String getVersion() {
     return version;
@@ -205,26 +191,6 @@ public class ConversionTagCommon {
 
   public void setVersion(String version) {
     this.version = version;
-  }
-
-  public ConversionTagCommon configs(ConversionTagConfigs configs) {
-    this.configs = configs;
-    return this;
-  }
-
-  /**
-   * Get configs
-   * @return configs
-   */
-  @Valid 
-  @Schema(name = "configs", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("configs")
-  public ConversionTagConfigs getConfigs() {
-    return configs;
-  }
-
-  public void setConfigs(ConversionTagConfigs configs) {
-    this.configs = configs;
   }
 
   @Override
@@ -236,15 +202,13 @@ public class ConversionTagCommon {
       return false;
     }
     ConversionTagCommon conversionTagCommon = (ConversionTagCommon) o;
-    return Objects.equals(this.adAccountId, conversionTagCommon.adAccountId) &&
-        Objects.equals(this.codeSnippet, conversionTagCommon.codeSnippet) &&
+    return Objects.equals(this.codeSnippet, conversionTagCommon.codeSnippet) &&
+        Objects.equals(this.configs, conversionTagCommon.configs) &&
         equalsNullable(this.enhancedMatchStatus, conversionTagCommon.enhancedMatchStatus) &&
         Objects.equals(this.id, conversionTagCommon.id) &&
         equalsNullable(this.lastFiredTimeMs, conversionTagCommon.lastFiredTimeMs) &&
         Objects.equals(this.name, conversionTagCommon.name) &&
-        Objects.equals(this.status, conversionTagCommon.status) &&
-        Objects.equals(this.version, conversionTagCommon.version) &&
-        Objects.equals(this.configs, conversionTagCommon.configs);
+        Objects.equals(this.version, conversionTagCommon.version);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -253,7 +217,7 @@ public class ConversionTagCommon {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, codeSnippet, hashCodeNullable(enhancedMatchStatus), id, hashCodeNullable(lastFiredTimeMs), name, status, version, configs);
+    return Objects.hash(codeSnippet, configs, hashCodeNullable(enhancedMatchStatus), id, hashCodeNullable(lastFiredTimeMs), name, version);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -267,15 +231,13 @@ public class ConversionTagCommon {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionTagCommon {\n");
-    sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    codeSnippet: ").append(toIndentedString(codeSnippet)).append("\n");
+    sb.append("    configs: ").append(toIndentedString(configs)).append("\n");
     sb.append("    enhancedMatchStatus: ").append(toIndentedString(enhancedMatchStatus)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    lastFiredTimeMs: ").append(toIndentedString(lastFiredTimeMs)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    configs: ").append(toIndentedString(configs)).append("\n");
     sb.append("}");
     return sb.toString();
   }

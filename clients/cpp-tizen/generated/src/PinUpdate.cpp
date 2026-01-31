@@ -26,11 +26,10 @@ PinUpdate::__init()
 	//alt_text = std::string();
 	//board_id = std::string();
 	//board_section_id = std::string();
+	//new std::list()std::list> carousel_slots;
 	//description = std::string();
 	//link = std::string();
 	//title = std::string();
-	//new std::list()std::list> carousel_slots;
-	//note = std::string();
 }
 
 void
@@ -51,6 +50,11 @@ PinUpdate::__cleanup()
 	//delete board_section_id;
 	//board_section_id = NULL;
 	//}
+	//if(carousel_slots != NULL) {
+	//carousel_slots.RemoveAll(true);
+	//delete carousel_slots;
+	//carousel_slots = NULL;
+	//}
 	//if(description != NULL) {
 	//
 	//delete description;
@@ -65,16 +69,6 @@ PinUpdate::__cleanup()
 	//
 	//delete title;
 	//title = NULL;
-	//}
-	//if(carousel_slots != NULL) {
-	//carousel_slots.RemoveAll(true);
-	//delete carousel_slots;
-	//carousel_slots = NULL;
-	//}
-	//if(note != NULL) {
-	//
-	//delete note;
-	//note = NULL;
 	//}
 	//
 }
@@ -117,6 +111,30 @@ PinUpdate::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *carousel_slotsKey = "carousel_slots";
+	node = json_object_get_member(pJsonObject, carousel_slotsKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<CarouselSlot> new_list;
+			CarouselSlot inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("CarouselSlot")) {
+					jsonToValue(&inst, temp_json, "CarouselSlot", "");
+				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
+					
+				}
+				new_list.push_back(inst);
+			}
+			carousel_slots = new_list;
+		}
+		
+	}
 	const gchar *descriptionKey = "description";
 	node = json_object_get_member(pJsonObject, descriptionKey);
 	if (node !=NULL) {
@@ -146,41 +164,6 @@ PinUpdate::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&title, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *carousel_slotsKey = "carousel_slots";
-	node = json_object_get_member(pJsonObject, carousel_slotsKey);
-	if (node !=NULL) {
-	
-		{
-			JsonArray* arr = json_node_get_array(node);
-			JsonNode*  temp_json;
-			list<PinUpdate_carousel_slots_inner> new_list;
-			PinUpdate_carousel_slots_inner inst;
-			for (guint i=0;i<json_array_get_length(arr);i++) {
-				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("PinUpdate_carousel_slots_inner")) {
-					jsonToValue(&inst, temp_json, "PinUpdate_carousel_slots_inner", "");
-				} else {
-					
-					inst.fromJson(json_to_string(temp_json, false));
-					
-				}
-				new_list.push_back(inst);
-			}
-			carousel_slots = new_list;
-		}
-		
-	}
-	const gchar *noteKey = "note";
-	node = json_object_get_member(pJsonObject, noteKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&note, node, "std::string", "");
 		} else {
 			
 		}
@@ -224,6 +207,31 @@ PinUpdate::toJson()
 	}
 	const gchar *board_section_idKey = "board_section_id";
 	json_object_set_member(pJsonObject, board_section_idKey, node);
+	if (isprimitive("CarouselSlot")) {
+		list<CarouselSlot> new_list = static_cast<list <CarouselSlot> > (getCarouselSlots());
+		node = converttoJson(&new_list, "CarouselSlot", "array");
+	} else {
+		node = json_node_alloc();
+		list<CarouselSlot> new_list = static_cast<list <CarouselSlot> > (getCarouselSlots());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+		for (list<CarouselSlot>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			mygerror = NULL;
+			CarouselSlot obj = *it;
+			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
+			json_array_add_element(json_array, node_temp);
+			g_clear_error(&mygerror);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
+		
+	}
+
+
+	
+	const gchar *carousel_slotsKey = "carousel_slots";
+	json_object_set_member(pJsonObject, carousel_slotsKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getDescription();
 		node = converttoJson(&obj, "std::string", "");
@@ -251,40 +259,6 @@ PinUpdate::toJson()
 	}
 	const gchar *titleKey = "title";
 	json_object_set_member(pJsonObject, titleKey, node);
-	if (isprimitive("PinUpdate_carousel_slots_inner")) {
-		list<PinUpdate_carousel_slots_inner> new_list = static_cast<list <PinUpdate_carousel_slots_inner> > (getCarouselSlots());
-		node = converttoJson(&new_list, "PinUpdate_carousel_slots_inner", "array");
-	} else {
-		node = json_node_alloc();
-		list<PinUpdate_carousel_slots_inner> new_list = static_cast<list <PinUpdate_carousel_slots_inner> > (getCarouselSlots());
-		JsonArray* json_array = json_array_new();
-		GError *mygerror;
-		
-		for (list<PinUpdate_carousel_slots_inner>::iterator it = new_list.begin(); it != new_list.end(); it++) {
-			mygerror = NULL;
-			PinUpdate_carousel_slots_inner obj = *it;
-			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
-			json_array_add_element(json_array, node_temp);
-			g_clear_error(&mygerror);
-		}
-		json_node_init_array(node, json_array);
-		json_array_unref(json_array);
-		
-	}
-
-
-	
-	const gchar *carousel_slotsKey = "carousel_slots";
-	json_object_set_member(pJsonObject, carousel_slotsKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getNote();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *noteKey = "note";
-	json_object_set_member(pJsonObject, noteKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -329,6 +303,18 @@ PinUpdate::setBoardSectionId(std::string  board_section_id)
 	this->board_section_id = board_section_id;
 }
 
+std::list<CarouselSlot>
+PinUpdate::getCarouselSlots()
+{
+	return carousel_slots;
+}
+
+void
+PinUpdate::setCarouselSlots(std::list <CarouselSlot> carousel_slots)
+{
+	this->carousel_slots = carousel_slots;
+}
+
 std::string
 PinUpdate::getDescription()
 {
@@ -363,30 +349,6 @@ void
 PinUpdate::setTitle(std::string  title)
 {
 	this->title = title;
-}
-
-std::list<PinUpdate_carousel_slots_inner>
-PinUpdate::getCarouselSlots()
-{
-	return carousel_slots;
-}
-
-void
-PinUpdate::setCarouselSlots(std::list <PinUpdate_carousel_slots_inner> carousel_slots)
-{
-	this->carousel_slots = carousel_slots;
-}
-
-std::string
-PinUpdate::getNote()
-{
-	return note;
-}
-
-void
-PinUpdate::setNote(std::string  note)
-{
-	this->note = note;
 }
 
 

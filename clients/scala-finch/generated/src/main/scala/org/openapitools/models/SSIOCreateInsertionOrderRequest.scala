@@ -10,51 +10,51 @@ import org.openapitools.models.Currency
 
 /**
  * 
- * @param startUnderscoredate Starting date of time period. Format: YYYY-MM-DD
- * @param endUnderscoredate End date of time period. Format: YYYY-MM-DD
- * @param poUnderscorenumber The po number
- * @param budgetUnderscoreamount If Budget order line, the budget amount.
+ * @param agencyUnderscorelink URL link for agency
+ * @param billingUnderscorecontactUnderscoreemail The billing contact email
  * @param billingUnderscorecontactUnderscorefirstname The billing contact first name
  * @param billingUnderscorecontactUnderscorelastname The billing contact last name
- * @param billingUnderscorecontactUnderscoreemail The billing contact email
+ * @param budgetUnderscoreamount If Budget order line, the budget amount.
+ * @param endUnderscoredate End date of time period. Format: YYYY-MM-DD
+ * @param mediaUnderscorecontactUnderscoreemail The media contact email
  * @param mediaUnderscorecontactUnderscorefirstname The media contact first name
  * @param mediaUnderscorecontactUnderscorelastname The media contact last name
- * @param mediaUnderscorecontactUnderscoreemail The media contact email
- * @param agencyUnderscorelink URL link for agency
+ * @param poUnderscorenumber The po number
+ * @param startUnderscoredate Starting date of time period. Format: YYYY-MM-DD
  * @param userUnderscoreemail The email of user submitting the insertion order
- * @param acceptedUnderscoretermsUnderscoretime The UTC timestamp (to the nearest sec) of when terms were accepted
- * @param pmpUnderscoreid The pmp id
- * @param orderUnderscorename The order name
- * @param orderUnderscorelineUnderscoretype Type can be Budget or Perpetual
  * @param acceptedUnderscoretermsUnderscoreid The SFDC id for the terms
- * @param billtoUnderscorecompanyUnderscoreid The bill-to company id
- * @param billtoUnderscorebusinessUnderscoreaddressUnderscoreid The bill-to business address id
+ * @param acceptedUnderscoretermsUnderscoretime The UTC timestamp (to the nearest sec) of when terms were accepted
  * @param billtoUnderscorebillingUnderscoreaddressUnderscoreid The bill-to billing address id
- * @param estimatedUnderscoremonthlyUnderscorespend If Ongoing (perpetual) order line, the estimated monthly spend
+ * @param billtoUnderscorebusinessUnderscoreaddressUnderscoreid The bill-to business address id
+ * @param billtoUnderscorecompanyUnderscoreid The bill-to company id
  * @param currencyUnderscoreinfo 
+ * @param estimatedUnderscoremonthlyUnderscorespend If Ongoing (perpetual) order line, the estimated monthly spend
+ * @param orderUnderscorelineUnderscoretype Type can be Budget or Perpetual
+ * @param orderUnderscorename The order name
+ * @param pmpUnderscoreid The pmp id
  */
-case class SSIOCreateInsertionOrderRequest(startUnderscoredate: String,
-                endUnderscoredate: Option[String],
-                poUnderscorenumber: String,
-                budgetUnderscoreamount: Option[BigDecimal],
+case class SSIOCreateInsertionOrderRequest(agencyUnderscorelink: Option[String],
+                billingUnderscorecontactUnderscoreemail: String,
                 billingUnderscorecontactUnderscorefirstname: String,
                 billingUnderscorecontactUnderscorelastname: String,
-                billingUnderscorecontactUnderscoreemail: String,
+                budgetUnderscoreamount: Option[BigDecimal],
+                endUnderscoredate: Option[String],
+                mediaUnderscorecontactUnderscoreemail: String,
                 mediaUnderscorecontactUnderscorefirstname: String,
                 mediaUnderscorecontactUnderscorelastname: String,
-                mediaUnderscorecontactUnderscoreemail: String,
-                agencyUnderscorelink: Option[String],
+                poUnderscorenumber: String,
+                startUnderscoredate: String,
                 userUnderscoreemail: Option[String],
-                acceptedUnderscoretermsUnderscoretime: Option[Int],
-                pmpUnderscoreid: String,
-                orderUnderscorename: String,
-                orderUnderscorelineUnderscoretype: String,
                 acceptedUnderscoretermsUnderscoreid: String,
-                billtoUnderscorecompanyUnderscoreid: String,
-                billtoUnderscorebusinessUnderscoreaddressUnderscoreid: String,
+                acceptedUnderscoretermsUnderscoretime: Option[Int],
                 billtoUnderscorebillingUnderscoreaddressUnderscoreid: String,
+                billtoUnderscorebusinessUnderscoreaddressUnderscoreid: String,
+                billtoUnderscorecompanyUnderscoreid: String,
+                currencyUnderscoreinfo: Currency,
                 estimatedUnderscoremonthlyUnderscorespend: Option[BigDecimal],
-                currencyUnderscoreinfo: Currency
+                orderUnderscorelineUnderscoretype: String,
+                orderUnderscorename: String,
+                pmpUnderscoreid: String
                 )
 
 object SSIOCreateInsertionOrderRequest {

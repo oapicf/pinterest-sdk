@@ -33,6 +33,11 @@ spec = withApp $ do
             get AdAccountsR
             statusIs 501
 
+    describe "postAdAccountsByTextReportsBrandCategorySkuR" $
+        it "returns 501 Not Implemented" $ do
+            post $ AdAccountsByTextReportsBrandCategorySkuR "adAccountId_example"
+            statusIs 501
+
     describe "postAdAccountsByTextMmmReportsR" $
         it "returns 501 Not Implemented" $ do
             post $ AdAccountsByTextMmmReportsR "adAccountId_example"
@@ -46,6 +51,11 @@ spec = withApp $ do
     describe "postAdAccountsByTextTemplatesByTextReportsR" $
         it "returns 501 Not Implemented" $ do
             post $ AdAccountsByTextTemplatesByTextReportsR "adAccountId_example" "templateId_example"
+            statusIs 501
+
+    describe "getAdAccountsByTextReportsBrandCategorySkuR" $
+        it "returns 501 Not Implemented" $ do
+            get $ AdAccountsByTextReportsBrandCategorySkuR "adAccountId_example"
             statusIs 501
 
     describe "getAdAccountsByTextMmmReportsR" $

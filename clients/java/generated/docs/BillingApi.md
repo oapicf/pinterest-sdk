@@ -6,6 +6,8 @@ All URIs are relative to *https://api.pinterest.com/v5*
 |------------- | ------------- | -------------|
 | [**adsCreditRedeem**](BillingApi.md#adsCreditRedeem) | **POST** /ad_accounts/{ad_account_id}/ads_credit/redeem | Redeem ad credits |
 | [**adsCreditsDiscountsGet**](BillingApi.md#adsCreditsDiscountsGet) | **GET** /ad_accounts/{ad_account_id}/ads_credit/discounts | Get ads credit discounts |
+| [**billingInvoiceDownloadGet**](BillingApi.md#billingInvoiceDownloadGet) | **GET** /ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download | Get download url for a billing invoice |
+| [**billingInvoicesGet**](BillingApi.md#billingInvoicesGet) | **GET** /ad_accounts/{ad_account_id}/billing_invoices | Get billing invoices |
 | [**billingProfilesGet**](BillingApi.md#billingProfilesGet) | **GET** /ad_accounts/{ad_account_id}/billing_profiles | Get billing profiles |
 | [**ssioAccountsGet**](BillingApi.md#ssioAccountsGet) | **GET** /ad_accounts/{ad_account_id}/ssio/accounts | Get Salesforce account details including bill-to information. |
 | [**ssioInsertionOrderCreate**](BillingApi.md#ssioInsertionOrderCreate) | **POST** /ad_accounts/{ad_account_id}/ssio/insertion_orders | Create insertion order through SSIO. |
@@ -21,7 +23,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Redeem ad credits
 
-Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Example
 ```java
@@ -92,7 +94,7 @@ public class Example {
 
 Get ads credit discounts
 
-Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Example
 ```java
@@ -158,13 +160,169 @@ public class Example {
 | **200** | Success |  -  |
 | **0** | Unexpected error. |  -  |
 
+<a id="billingInvoiceDownloadGet"></a>
+# **billingInvoiceDownloadGet**
+> BillingInvoiceDownloadResponse billingInvoiceDownloadGet(adAccountId, billingInvoiceId)
+
+Get download url for a billing invoice
+
+Get download url for a billing invoice.
+
+### Example
+```java
+// Import classes:
+import com.github.oapicf.pinterestsdk.ApiClient;
+import com.github.oapicf.pinterestsdk.ApiException;
+import com.github.oapicf.pinterestsdk.Configuration;
+import com.github.oapicf.pinterestsdk.auth.*;
+import com.github.oapicf.pinterestsdk.models.*;
+import com.github.oapicf.pinterestsdk.api.BillingApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.pinterest.com/v5");
+    
+    // Configure OAuth2 access token for authorization: pinterest_oauth2
+    OAuth pinterest_oauth2 = (OAuth) defaultClient.getAuthentication("pinterest_oauth2");
+    pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    BillingApi apiInstance = new BillingApi(defaultClient);
+    String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
+    String billingInvoiceId = "billingInvoiceId_example"; // String | Unique identifier of a billing invoice.
+    try {
+      BillingInvoiceDownloadResponse result = apiInstance.billingInvoiceDownloadGet(adAccountId, billingInvoiceId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BillingApi#billingInvoiceDownloadGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **adAccountId** | **String**| Unique identifier of an ad account. | |
+| **billingInvoiceId** | **String**| Unique identifier of a billing invoice. | |
+
+### Return type
+
+[**BillingInvoiceDownloadResponse**](BillingInvoiceDownloadResponse.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successfully fetched Billing invoice information for a given ad account |  -  |
+| **400** | Invalid request parameter. |  -  |
+| **0** | Unexpected error |  -  |
+
+<a id="billingInvoicesGet"></a>
+# **billingInvoicesGet**
+> BillingInvoicesGet200Response billingInvoicesGet(adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate)
+
+Get billing invoices
+
+Get billing invoices in the advertiser account.
+
+### Example
+```java
+// Import classes:
+import com.github.oapicf.pinterestsdk.ApiClient;
+import com.github.oapicf.pinterestsdk.ApiException;
+import com.github.oapicf.pinterestsdk.Configuration;
+import com.github.oapicf.pinterestsdk.auth.*;
+import com.github.oapicf.pinterestsdk.models.*;
+import com.github.oapicf.pinterestsdk.api.BillingApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.pinterest.com/v5");
+    
+    // Configure OAuth2 access token for authorization: pinterest_oauth2
+    OAuth pinterest_oauth2 = (OAuth) defaultClient.getAuthentication("pinterest_oauth2");
+    pinterest_oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    BillingApi apiInstance = new BillingApi(defaultClient);
+    String adAccountId = "adAccountId_example"; // String | Unique identifier of an ad account.
+    String bookmark = "bookmark_example"; // String | Cursor used to fetch the next page of items
+    Integer pageSize = 25; // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+    String sort = "DUE_DATE"; // String | Field of which to sort billing invoices
+    String order = "ASCENDING"; // String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+    String status = "OPEN"; // String | Status of billing invoices to filter by
+    String documentType = "INVOICE"; // String | Document type of billing invoices to filter by
+    LocalDate startDueDate = LocalDate.parse("Sun Jan 01 00:00:00 UTC 2023"); // LocalDate | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
+    LocalDate endDueDate = LocalDate.parse("Mon Jan 01 00:00:00 UTC 2024"); // LocalDate | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
+    try {
+      BillingInvoicesGet200Response result = apiInstance.billingInvoicesGet(adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling BillingApi#billingInvoicesGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **adAccountId** | **String**| Unique identifier of an ad account. | |
+| **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] |
+| **pageSize** | **Integer**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **sort** | **String**| Field of which to sort billing invoices | [optional] [default to DUE_DATE] [enum: DUE_DATE, BILLING_PERIOD, DOCUMENT_TYPE, TOTAL_AMOUNT, INVOICE_NUMBER] |
+| **order** | **String**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING] |
+| **status** | **String**| Status of billing invoices to filter by | [optional] [enum: OPEN, CLOSED] |
+| **documentType** | **String**| Document type of billing invoices to filter by | [optional] [enum: INVOICE, CREDIT_MEMO] |
+| **startDueDate** | **LocalDate**| Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] |
+| **endDueDate** | **LocalDate**| Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | [optional] |
+
+### Return type
+
+[**BillingInvoicesGet200Response**](BillingInvoicesGet200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **400** | Invalid request parameter. |  -  |
+| **0** | Unexpected error |  -  |
+
 <a id="billingProfilesGet"></a>
 # **billingProfilesGet**
 > BillingProfilesGet200Response billingProfilesGet(adAccountId, isActive, bookmark, pageSize)
 
 Get billing profiles
 
-Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Example
 ```java

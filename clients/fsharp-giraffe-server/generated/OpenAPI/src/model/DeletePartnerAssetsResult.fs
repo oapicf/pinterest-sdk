@@ -11,8 +11,8 @@ module DeletePartnerAssetsResult =
   type DeletePartnerAssetsResult = {
     AssetId : string;
     AssetType : string;
-    Permissions : string[];
     IsSharedPartner : bool;
     PartnerId : string;
+    Permissions : string[];
   }
   //#endregion

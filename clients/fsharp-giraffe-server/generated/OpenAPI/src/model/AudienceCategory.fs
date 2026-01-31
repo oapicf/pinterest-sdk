@@ -10,11 +10,11 @@ module AudienceCategory =
 
 
   type AudienceCategory = {
+    Id : string;
+    Index : decimal;
     Key : string;
     Name : string;
     Ratio : decimal;
-    Index : decimal;
-    Id : string;
     Subcategories : AudienceSubcategory[];
   }
   //#endregion

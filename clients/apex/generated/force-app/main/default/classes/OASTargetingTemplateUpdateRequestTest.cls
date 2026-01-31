@@ -74,5 +74,6 @@ private class OASTargetingTemplateUpdateRequestTest {
         OASTargetingTemplateUpdateRequest targetingTemplateUpdateRequest = new OASTargetingTemplateUpdateRequest();
         Map<String, String> x-property-mappings = targetingTemplateUpdateRequest.getx-property-mappings();
         System.assertEquals('operationType', x-property-mappings.get('operation_type'));
+        System.assertEquals('targetingAttributes', x-property-mappings.get('targeting_attributes'));
     }
 }

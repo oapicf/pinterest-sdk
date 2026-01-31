@@ -6,11 +6,11 @@
 
 Name | Type
 ------------ | -------------
-`itemType` | string
-`title` | string
 `description` | string
+`images` | [ImageSize](ImageSize.md)
+`itemType` | string
 `link` | string
-`images` | [ImageMetadataImages](ImageMetadataImages.md)
+`title` | string
 
 ## Example
 
@@ -19,11 +19,11 @@ import type { ImageMetadata } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "itemType": null,
-  "title": null,
   "description": null,
-  "link": null,
   "images": null,
+  "itemType": null,
+  "link": null,
+  "title": null,
 } satisfies ImageMetadata
 
 console.log(example)

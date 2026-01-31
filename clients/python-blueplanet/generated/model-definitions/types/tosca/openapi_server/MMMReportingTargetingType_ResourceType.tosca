@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server MMMReportingTargetingType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a MMMReportingTargetingType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  MMMReportingTargetingType {
+    title = MMMReportingTargetingType
+    description = MMMReportingTargetingType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  MMMReportingTargetingType {
+    title = MMMReportingTargetingType
+    description = MMMReportingTargetingType
+    implements = openapi_server.resourceTypes.MMMReportingTargetingType
+
+  }
+}

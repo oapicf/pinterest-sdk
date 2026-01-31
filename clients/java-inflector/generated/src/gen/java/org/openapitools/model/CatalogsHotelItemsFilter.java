@@ -14,8 +14,11 @@ import java.util.List;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelItemsFilter   {
+  @JsonProperty("catalog_id")
+  private String catalogId;
+
   /**
    * Gets or Sets catalogType
    */
@@ -51,8 +54,23 @@ public class CatalogsHotelItemsFilter   {
   @JsonProperty("hotel_ids")
   private List<String> hotelIds = new ArrayList<>();
 
+  /**
+   * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+   **/
+  public CatalogsHotelItemsFilter catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog")
   @JsonProperty("catalog_id")
-  private String catalogId;
+  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
 
   /**
    **/
@@ -88,24 +106,6 @@ public class CatalogsHotelItemsFilter   {
     this.hotelIds = hotelIds;
   }
 
-  /**
-   * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
-   **/
-  public CatalogsHotelItemsFilter catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog")
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
-  }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -116,14 +116,14 @@ public class CatalogsHotelItemsFilter   {
       return false;
     }
     CatalogsHotelItemsFilter catalogsHotelItemsFilter = (CatalogsHotelItemsFilter) o;
-    return Objects.equals(catalogType, catalogsHotelItemsFilter.catalogType) &&
-        Objects.equals(hotelIds, catalogsHotelItemsFilter.hotelIds) &&
-        Objects.equals(catalogId, catalogsHotelItemsFilter.catalogId);
+    return Objects.equals(catalogId, catalogsHotelItemsFilter.catalogId) &&
+        Objects.equals(catalogType, catalogsHotelItemsFilter.catalogType) &&
+        Objects.equals(hotelIds, catalogsHotelItemsFilter.hotelIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, hotelIds, catalogId);
+    return Objects.hash(catalogId, catalogType, hotelIds);
   }
 
   @Override
@@ -131,9 +131,9 @@ public class CatalogsHotelItemsFilter   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelItemsFilter {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    hotelIds: ").append(toIndentedString(hotelIds)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

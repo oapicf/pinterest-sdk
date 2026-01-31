@@ -22,28 +22,28 @@ typedef struct lead_form_update_request_t lead_form_update_request_t;
 
 
 typedef struct lead_form_update_request_t {
-    char *name; // string
-    char *privacy_policy_link; // string
-    int has_accepted_terms; //boolean
     char *completion_message; // string
-    pinterest_rest_api_lead_form_status__e status; //referenced enum
     char *disclosure_language; // string
-    list_t *questions; //nonprimitive container
+    int has_accepted_terms; //boolean
+    char *name; // string
     list_t *policy_links; //nonprimitive container
+    char *privacy_policy_link; // string
+    list_t *questions; //nonprimitive container
+    pinterest_rest_api_lead_form_status__e status; //referenced enum
     char *id; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } lead_form_update_request_t;
 
 __attribute__((deprecated)) lead_form_update_request_t *lead_form_update_request_create(
-    char *name,
-    char *privacy_policy_link,
-    int has_accepted_terms,
     char *completion_message,
-    pinterest_rest_api_lead_form_status__e status,
     char *disclosure_language,
-    list_t *questions,
+    int has_accepted_terms,
+    char *name,
     list_t *policy_links,
+    char *privacy_policy_link,
+    list_t *questions,
+    pinterest_rest_api_lead_form_status__e status,
     char *id
 );
 

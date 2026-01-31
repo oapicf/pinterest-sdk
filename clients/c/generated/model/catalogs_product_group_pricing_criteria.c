@@ -7,16 +7,16 @@
 
 static catalogs_product_group_pricing_criteria_t *catalogs_product_group_pricing_criteria_create_internal(
     int inclusion,
-    double values,
-    int negated
+    int negated,
+    double values
     ) {
     catalogs_product_group_pricing_criteria_t *catalogs_product_group_pricing_criteria_local_var = malloc(sizeof(catalogs_product_group_pricing_criteria_t));
     if (!catalogs_product_group_pricing_criteria_local_var) {
         return NULL;
     }
     catalogs_product_group_pricing_criteria_local_var->inclusion = inclusion;
-    catalogs_product_group_pricing_criteria_local_var->values = values;
     catalogs_product_group_pricing_criteria_local_var->negated = negated;
+    catalogs_product_group_pricing_criteria_local_var->values = values;
 
     catalogs_product_group_pricing_criteria_local_var->_library_owned = 1;
     return catalogs_product_group_pricing_criteria_local_var;
@@ -24,13 +24,13 @@ static catalogs_product_group_pricing_criteria_t *catalogs_product_group_pricing
 
 __attribute__((deprecated)) catalogs_product_group_pricing_criteria_t *catalogs_product_group_pricing_criteria_create(
     int inclusion,
-    double values,
-    int negated
+    int negated,
+    double values
     ) {
     return catalogs_product_group_pricing_criteria_create_internal (
         inclusion,
-        values,
-        negated
+        negated,
+        values
         );
 }
 
@@ -57,20 +57,20 @@ cJSON *catalogs_product_group_pricing_criteria_convertToJSON(catalogs_product_gr
     }
 
 
+    // catalogs_product_group_pricing_criteria->negated
+    if(catalogs_product_group_pricing_criteria->negated) {
+    if(cJSON_AddBoolToObject(item, "negated", catalogs_product_group_pricing_criteria->negated) == NULL) {
+    goto fail; //Bool
+    }
+    }
+
+
     // catalogs_product_group_pricing_criteria->values
     if (!catalogs_product_group_pricing_criteria->values) {
         goto fail;
     }
     if(cJSON_AddNumberToObject(item, "values", catalogs_product_group_pricing_criteria->values) == NULL) {
     goto fail; //Numeric
-    }
-
-
-    // catalogs_product_group_pricing_criteria->negated
-    if(catalogs_product_group_pricing_criteria->negated) {
-    if(cJSON_AddBoolToObject(item, "negated", catalogs_product_group_pricing_criteria->negated) == NULL) {
-    goto fail; //Bool
-    }
     }
 
     return item;
@@ -97,6 +97,18 @@ catalogs_product_group_pricing_criteria_t *catalogs_product_group_pricing_criter
     }
     }
 
+    // catalogs_product_group_pricing_criteria->negated
+    cJSON *negated = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_pricing_criteriaJSON, "negated");
+    if (cJSON_IsNull(negated)) {
+        negated = NULL;
+    }
+    if (negated) { 
+    if(!cJSON_IsBool(negated))
+    {
+    goto end; //Bool
+    }
+    }
+
     // catalogs_product_group_pricing_criteria->values
     cJSON *values = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_pricing_criteriaJSON, "values");
     if (cJSON_IsNull(values)) {
@@ -112,23 +124,11 @@ catalogs_product_group_pricing_criteria_t *catalogs_product_group_pricing_criter
     goto end; //Numeric
     }
 
-    // catalogs_product_group_pricing_criteria->negated
-    cJSON *negated = cJSON_GetObjectItemCaseSensitive(catalogs_product_group_pricing_criteriaJSON, "negated");
-    if (cJSON_IsNull(negated)) {
-        negated = NULL;
-    }
-    if (negated) { 
-    if(!cJSON_IsBool(negated))
-    {
-    goto end; //Bool
-    }
-    }
-
 
     catalogs_product_group_pricing_criteria_local_var = catalogs_product_group_pricing_criteria_create_internal (
         inclusion ? inclusion->valueint : 0,
-        values->valuedouble,
-        negated ? negated->valueint : 0
+        negated ? negated->valueint : 0,
+        values->valuedouble
         );
 
     return catalogs_product_group_pricing_criteria_local_var;

@@ -11,7 +11,7 @@ import { Pin } from './pin';
 
 
 export interface PinsList200Response { 
-    items: Array<Pin>;
     bookmark?: string | null;
+    items: Array<Pin>;
 }
 

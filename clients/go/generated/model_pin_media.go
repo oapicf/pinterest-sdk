@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,79 +13,238 @@ package openapi
 
 import (
 	"encoding/json"
+	"fmt"
+	"gopkg.in/validator.v2"
 )
 
-// checks if the PinMedia type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PinMedia{}
-
-// PinMedia Pin media objects.
+// PinMedia - Pin media that can be an image, video, or a mix of both.
 type PinMedia struct {
-	MediaType *string `json:"media_type,omitempty"`
+	PinMediaWithImage *PinMediaWithImage
+	PinMediaWithImageAndVideo *PinMediaWithImageAndVideo
+	PinMediaWithImages *PinMediaWithImages
+	PinMediaWithVideo *PinMediaWithVideo
+	PinMediaWithVideos *PinMediaWithVideos
 }
 
-// NewPinMedia instantiates a new PinMedia object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewPinMedia() *PinMedia {
-	this := PinMedia{}
-	return &this
-}
-
-// NewPinMediaWithDefaults instantiates a new PinMedia object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewPinMediaWithDefaults() *PinMedia {
-	this := PinMedia{}
-	return &this
-}
-
-// GetMediaType returns the MediaType field value if set, zero value otherwise.
-func (o *PinMedia) GetMediaType() string {
-	if o == nil || IsNil(o.MediaType) {
-		var ret string
-		return ret
+// PinMediaWithImageAsPinMedia is a convenience function that returns PinMediaWithImage wrapped in PinMedia
+func PinMediaWithImageAsPinMedia(v *PinMediaWithImage) PinMedia {
+	return PinMedia{
+		PinMediaWithImage: v,
 	}
-	return *o.MediaType
 }
 
-// GetMediaTypeOk returns a tuple with the MediaType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PinMedia) GetMediaTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.MediaType) {
-		return nil, false
+// PinMediaWithImageAndVideoAsPinMedia is a convenience function that returns PinMediaWithImageAndVideo wrapped in PinMedia
+func PinMediaWithImageAndVideoAsPinMedia(v *PinMediaWithImageAndVideo) PinMedia {
+	return PinMedia{
+		PinMediaWithImageAndVideo: v,
 	}
-	return o.MediaType, true
 }
 
-// HasMediaType returns a boolean if a field has been set.
-func (o *PinMedia) HasMediaType() bool {
-	if o != nil && !IsNil(o.MediaType) {
-		return true
+// PinMediaWithImagesAsPinMedia is a convenience function that returns PinMediaWithImages wrapped in PinMedia
+func PinMediaWithImagesAsPinMedia(v *PinMediaWithImages) PinMedia {
+	return PinMedia{
+		PinMediaWithImages: v,
+	}
+}
+
+// PinMediaWithVideoAsPinMedia is a convenience function that returns PinMediaWithVideo wrapped in PinMedia
+func PinMediaWithVideoAsPinMedia(v *PinMediaWithVideo) PinMedia {
+	return PinMedia{
+		PinMediaWithVideo: v,
+	}
+}
+
+// PinMediaWithVideosAsPinMedia is a convenience function that returns PinMediaWithVideos wrapped in PinMedia
+func PinMediaWithVideosAsPinMedia(v *PinMediaWithVideos) PinMedia {
+	return PinMedia{
+		PinMediaWithVideos: v,
+	}
+}
+
+
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *PinMedia) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into PinMediaWithImage
+	err = newStrictDecoder(data).Decode(&dst.PinMediaWithImage)
+	if err == nil {
+		jsonPinMediaWithImage, _ := json.Marshal(dst.PinMediaWithImage)
+		if string(jsonPinMediaWithImage) == "{}" { // empty struct
+			dst.PinMediaWithImage = nil
+		} else {
+			if err = validator.Validate(dst.PinMediaWithImage); err != nil {
+				dst.PinMediaWithImage = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.PinMediaWithImage = nil
 	}
 
-	return false
-}
-
-// SetMediaType gets a reference to the given string and assigns it to the MediaType field.
-func (o *PinMedia) SetMediaType(v string) {
-	o.MediaType = &v
-}
-
-func (o PinMedia) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	// try to unmarshal data into PinMediaWithImageAndVideo
+	err = newStrictDecoder(data).Decode(&dst.PinMediaWithImageAndVideo)
+	if err == nil {
+		jsonPinMediaWithImageAndVideo, _ := json.Marshal(dst.PinMediaWithImageAndVideo)
+		if string(jsonPinMediaWithImageAndVideo) == "{}" { // empty struct
+			dst.PinMediaWithImageAndVideo = nil
+		} else {
+			if err = validator.Validate(dst.PinMediaWithImageAndVideo); err != nil {
+				dst.PinMediaWithImageAndVideo = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.PinMediaWithImageAndVideo = nil
 	}
-	return json.Marshal(toSerialize)
+
+	// try to unmarshal data into PinMediaWithImages
+	err = newStrictDecoder(data).Decode(&dst.PinMediaWithImages)
+	if err == nil {
+		jsonPinMediaWithImages, _ := json.Marshal(dst.PinMediaWithImages)
+		if string(jsonPinMediaWithImages) == "{}" { // empty struct
+			dst.PinMediaWithImages = nil
+		} else {
+			if err = validator.Validate(dst.PinMediaWithImages); err != nil {
+				dst.PinMediaWithImages = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.PinMediaWithImages = nil
+	}
+
+	// try to unmarshal data into PinMediaWithVideo
+	err = newStrictDecoder(data).Decode(&dst.PinMediaWithVideo)
+	if err == nil {
+		jsonPinMediaWithVideo, _ := json.Marshal(dst.PinMediaWithVideo)
+		if string(jsonPinMediaWithVideo) == "{}" { // empty struct
+			dst.PinMediaWithVideo = nil
+		} else {
+			if err = validator.Validate(dst.PinMediaWithVideo); err != nil {
+				dst.PinMediaWithVideo = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.PinMediaWithVideo = nil
+	}
+
+	// try to unmarshal data into PinMediaWithVideos
+	err = newStrictDecoder(data).Decode(&dst.PinMediaWithVideos)
+	if err == nil {
+		jsonPinMediaWithVideos, _ := json.Marshal(dst.PinMediaWithVideos)
+		if string(jsonPinMediaWithVideos) == "{}" { // empty struct
+			dst.PinMediaWithVideos = nil
+		} else {
+			if err = validator.Validate(dst.PinMediaWithVideos); err != nil {
+				dst.PinMediaWithVideos = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.PinMediaWithVideos = nil
+	}
+
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.PinMediaWithImage = nil
+		dst.PinMediaWithImageAndVideo = nil
+		dst.PinMediaWithImages = nil
+		dst.PinMediaWithVideo = nil
+		dst.PinMediaWithVideos = nil
+
+		return fmt.Errorf("data matches more than one schema in oneOf(PinMedia)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(PinMedia)")
+	}
 }
 
-func (o PinMedia) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.MediaType) {
-		toSerialize["media_type"] = o.MediaType
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src PinMedia) MarshalJSON() ([]byte, error) {
+	if src.PinMediaWithImage != nil {
+		return json.Marshal(&src.PinMediaWithImage)
 	}
-	return toSerialize, nil
+
+	if src.PinMediaWithImageAndVideo != nil {
+		return json.Marshal(&src.PinMediaWithImageAndVideo)
+	}
+
+	if src.PinMediaWithImages != nil {
+		return json.Marshal(&src.PinMediaWithImages)
+	}
+
+	if src.PinMediaWithVideo != nil {
+		return json.Marshal(&src.PinMediaWithVideo)
+	}
+
+	if src.PinMediaWithVideos != nil {
+		return json.Marshal(&src.PinMediaWithVideos)
+	}
+
+	return nil, nil // no data in oneOf schemas
+}
+
+// Get the actual instance
+func (obj *PinMedia) GetActualInstance() (interface{}) {
+	if obj == nil {
+		return nil
+	}
+	if obj.PinMediaWithImage != nil {
+		return obj.PinMediaWithImage
+	}
+
+	if obj.PinMediaWithImageAndVideo != nil {
+		return obj.PinMediaWithImageAndVideo
+	}
+
+	if obj.PinMediaWithImages != nil {
+		return obj.PinMediaWithImages
+	}
+
+	if obj.PinMediaWithVideo != nil {
+		return obj.PinMediaWithVideo
+	}
+
+	if obj.PinMediaWithVideos != nil {
+		return obj.PinMediaWithVideos
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj PinMedia) GetActualInstanceValue() (interface{}) {
+	if obj.PinMediaWithImage != nil {
+		return *obj.PinMediaWithImage
+	}
+
+	if obj.PinMediaWithImageAndVideo != nil {
+		return *obj.PinMediaWithImageAndVideo
+	}
+
+	if obj.PinMediaWithImages != nil {
+		return *obj.PinMediaWithImages
+	}
+
+	if obj.PinMediaWithVideo != nil {
+		return *obj.PinMediaWithVideo
+	}
+
+	if obj.PinMediaWithVideos != nil {
+		return *obj.PinMediaWithVideos
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullablePinMedia struct {

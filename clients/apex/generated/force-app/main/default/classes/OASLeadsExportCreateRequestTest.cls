@@ -73,8 +73,8 @@ private class OASLeadsExportCreateRequestTest {
     private static void maintainRenamedProperties() {
         OASLeadsExportCreateRequest leadsExportCreateRequest = new OASLeadsExportCreateRequest();
         Map<String, String> x-property-mappings = leadsExportCreateRequest.getx-property-mappings();
-        System.assertEquals('startDate', x-property-mappings.get('start_date'));
-        System.assertEquals('endDate', x-property-mappings.get('end_date'));
         System.assertEquals('adId', x-property-mappings.get('ad_id'));
+        System.assertEquals('endDate', x-property-mappings.get('end_date'));
+        System.assertEquals('startDate', x-property-mappings.get('start_date'));
     }
 }

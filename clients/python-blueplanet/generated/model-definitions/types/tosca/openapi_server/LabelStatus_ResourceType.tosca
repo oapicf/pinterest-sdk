@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LabelStatus"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LabelStatus"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  LabelStatus {
+    title = LabelStatus
+    description = LabelStatus
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  LabelStatus {
+    title = LabelStatus
+    description = LabelStatus
+    implements = openapi_server.resourceTypes.LabelStatus
+
+  }
+}

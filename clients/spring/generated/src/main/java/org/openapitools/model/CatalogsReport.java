@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  * CatalogsReport
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsReport {
 
   /**
@@ -64,9 +64,9 @@ public class CatalogsReport {
 
   private @Nullable ReportStatusEnum reportStatus;
 
-  private JsonNullable<String> url = JsonNullable.<String>undefined();
-
   private JsonNullable<BigDecimal> size = JsonNullable.<BigDecimal>undefined();
+
+  private JsonNullable<String> url = JsonNullable.<String>undefined();
 
   public CatalogsReport reportStatus(@Nullable ReportStatusEnum reportStatus) {
     this.reportStatus = reportStatus;
@@ -86,26 +86,6 @@ public class CatalogsReport {
 
   public void setReportStatus(@Nullable ReportStatusEnum reportStatus) {
     this.reportStatus = reportStatus;
-  }
-
-  public CatalogsReport url(String url) {
-    this.url = JsonNullable.of(url);
-    return this;
-  }
-
-  /**
-   * URL to download the report
-   * @return url
-   */
-  
-  @Schema(name = "url", description = "URL to download the report", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("url")
-  public JsonNullable<String> getUrl() {
-    return url;
-  }
-
-  public void setUrl(JsonNullable<String> url) {
-    this.url = url;
   }
 
   public CatalogsReport size(BigDecimal size) {
@@ -128,6 +108,26 @@ public class CatalogsReport {
     this.size = size;
   }
 
+  public CatalogsReport url(String url) {
+    this.url = JsonNullable.of(url);
+    return this;
+  }
+
+  /**
+   * URL to download the report
+   * @return url
+   */
+  
+  @Schema(name = "url", description = "URL to download the report", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("url")
+  public JsonNullable<String> getUrl() {
+    return url;
+  }
+
+  public void setUrl(JsonNullable<String> url) {
+    this.url = url;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -138,8 +138,8 @@ public class CatalogsReport {
     }
     CatalogsReport catalogsReport = (CatalogsReport) o;
     return Objects.equals(this.reportStatus, catalogsReport.reportStatus) &&
-        equalsNullable(this.url, catalogsReport.url) &&
-        equalsNullable(this.size, catalogsReport.size);
+        equalsNullable(this.size, catalogsReport.size) &&
+        equalsNullable(this.url, catalogsReport.url);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -148,7 +148,7 @@ public class CatalogsReport {
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportStatus, hashCodeNullable(url), hashCodeNullable(size));
+    return Objects.hash(reportStatus, hashCodeNullable(size), hashCodeNullable(url));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -163,8 +163,8 @@ public class CatalogsReport {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReport {\n");
     sb.append("    reportStatus: ").append(toIndentedString(reportStatus)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `IntegrationLog`
 --
-SELECT `client_timestamp`, `event_type`, `log_level`, `external_business_id`, `advertiser_id`, `merchant_id`, `tag_id`, `feed_profile_id`, `message`, `app_version_number`, `platform_version_number`, `error`, `request` FROM `IntegrationLog` WHERE 1;
+SELECT `advertiser_id`, `app_version_number`, `client_timestamp`, `error`, `event_type`, `external_business_id`, `feed_profile_id`, `log_level`, `merchant_id`, `message`, `platform_version_number`, `request`, `tag_id` FROM `IntegrationLog` WHERE 1;
 
 --
 -- INSERT template for table `IntegrationLog`
 --
-INSERT INTO `IntegrationLog`(`client_timestamp`, `event_type`, `log_level`, `external_business_id`, `advertiser_id`, `merchant_id`, `tag_id`, `feed_profile_id`, `message`, `app_version_number`, `platform_version_number`, `error`, `request`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `IntegrationLog`(`advertiser_id`, `app_version_number`, `client_timestamp`, `error`, `event_type`, `external_business_id`, `feed_profile_id`, `log_level`, `merchant_id`, `message`, `platform_version_number`, `request`, `tag_id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `IntegrationLog`
 --
-UPDATE `IntegrationLog` SET `client_timestamp` = ?, `event_type` = ?, `log_level` = ?, `external_business_id` = ?, `advertiser_id` = ?, `merchant_id` = ?, `tag_id` = ?, `feed_profile_id` = ?, `message` = ?, `app_version_number` = ?, `platform_version_number` = ?, `error` = ?, `request` = ? WHERE 1;
+UPDATE `IntegrationLog` SET `advertiser_id` = ?, `app_version_number` = ?, `client_timestamp` = ?, `error` = ?, `event_type` = ?, `external_business_id` = ?, `feed_profile_id` = ?, `log_level` = ?, `merchant_id` = ?, `message` = ?, `platform_version_number` = ?, `request` = ?, `tag_id` = ? WHERE 1;
 
 --
 -- DELETE template for table `IntegrationLog`

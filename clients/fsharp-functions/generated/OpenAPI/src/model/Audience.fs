@@ -15,14 +15,18 @@ module Audience =
   type Audience = {
     [<JsonProperty(PropertyName = "ad_account_id")>]
     AdAccountId : string;
+    [<JsonProperty(PropertyName = "audience_type")>]
+    AudienceType : string;
+    [<JsonProperty(PropertyName = "created_by_company_name")>]
+    CreatedByCompanyName : string option;
+    [<JsonProperty(PropertyName = "created_timestamp")>]
+    CreatedTimestamp : int option;
+    [<JsonProperty(PropertyName = "description")>]
+    Description : string option;
     [<JsonProperty(PropertyName = "id")>]
     Id : string;
     [<JsonProperty(PropertyName = "name")>]
     Name : string;
-    [<JsonProperty(PropertyName = "audience_type")>]
-    AudienceType : string;
-    [<JsonProperty(PropertyName = "description")>]
-    Description : string option;
     [<JsonProperty(PropertyName = "rule")>]
     Rule : AudienceRule;
     [<JsonProperty(PropertyName = "size")>]
@@ -31,8 +35,6 @@ module Audience =
     Status : string;
     [<JsonProperty(PropertyName = "type")>]
     Type : string;
-    [<JsonProperty(PropertyName = "created_timestamp")>]
-    CreatedTimestamp : int option;
     [<JsonProperty(PropertyName = "updated_timestamp")>]
     UpdatedTimestamp : int option;
   }

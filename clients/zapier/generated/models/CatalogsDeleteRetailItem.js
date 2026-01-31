@@ -11,6 +11,11 @@ module.exports = {
                 type: 'string',
             },
             {
+                key: `${keyPrefix}last_updated_time`,
+                label: `The millisecond timestamp when the item was lastly modified by the merchant. - [${labelPrefix}last_updated_time]`,
+                type: 'number',
+            },
+            {
                 key: `${keyPrefix}operation`,
                 label: `[${labelPrefix}operation]`,
                 required: true,
@@ -25,6 +30,7 @@ module.exports = {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
             'item_id': bundle.inputData?.[`${keyPrefix}item_id`],
+            'last_updated_time': bundle.inputData?.[`${keyPrefix}last_updated_time`],
             'operation': bundle.inputData?.[`${keyPrefix}operation`],
         }
     },

@@ -7,8 +7,8 @@
 #' @title InviteExceptionResponse
 #' @description InviteExceptionResponse Class
 #' @format An \code{R6Class} generator object
-#' @field invite_or_request_id Unique identifier of the invite/request. character [optional]
 #' @field code Error code associated with the error in performing the action on the invite/request. integer [optional]
+#' @field invite_or_request_id Unique identifier of the invite/request. character [optional]
 #' @field message Error message associated with the error in performing the action on the invite/request. character [optional]
 #' @field users_or_partner_ids A list of users' usernames or emails OR a list of partner ids that caused the error. list(character) [optional]
 #' @importFrom R6 R6Class
@@ -17,31 +17,31 @@
 InviteExceptionResponse <- R6::R6Class(
   "InviteExceptionResponse",
   public = list(
-    `invite_or_request_id` = NULL,
     `code` = NULL,
+    `invite_or_request_id` = NULL,
     `message` = NULL,
     `users_or_partner_ids` = NULL,
 
     #' @description
     #' Initialize a new InviteExceptionResponse class.
     #'
-    #' @param invite_or_request_id Unique identifier of the invite/request.
     #' @param code Error code associated with the error in performing the action on the invite/request.
+    #' @param invite_or_request_id Unique identifier of the invite/request.
     #' @param message Error message associated with the error in performing the action on the invite/request.
     #' @param users_or_partner_ids A list of users' usernames or emails OR a list of partner ids that caused the error.
     #' @param ... Other optional arguments.
-    initialize = function(`invite_or_request_id` = NULL, `code` = NULL, `message` = NULL, `users_or_partner_ids` = NULL, ...) {
-      if (!is.null(`invite_or_request_id`)) {
-        if (!(is.character(`invite_or_request_id`) && length(`invite_or_request_id`) == 1)) {
-          stop(paste("Error! Invalid data for `invite_or_request_id`. Must be a string:", `invite_or_request_id`))
-        }
-        self$`invite_or_request_id` <- `invite_or_request_id`
-      }
+    initialize = function(`code` = NULL, `invite_or_request_id` = NULL, `message` = NULL, `users_or_partner_ids` = NULL, ...) {
       if (!is.null(`code`)) {
         if (!(is.numeric(`code`) && length(`code`) == 1)) {
           stop(paste("Error! Invalid data for `code`. Must be an integer:", `code`))
         }
         self$`code` <- `code`
+      }
+      if (!is.null(`invite_or_request_id`)) {
+        if (!(is.character(`invite_or_request_id`) && length(`invite_or_request_id`) == 1)) {
+          stop(paste("Error! Invalid data for `invite_or_request_id`. Must be a string:", `invite_or_request_id`))
+        }
+        self$`invite_or_request_id` <- `invite_or_request_id`
       }
       if (!is.null(`message`)) {
         if (!(is.character(`message`) && length(`message`) == 1)) {
@@ -87,13 +87,13 @@ InviteExceptionResponse <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       InviteExceptionResponseObject <- list()
-      if (!is.null(self$`invite_or_request_id`)) {
-        InviteExceptionResponseObject[["invite_or_request_id"]] <-
-          self$`invite_or_request_id`
-      }
       if (!is.null(self$`code`)) {
         InviteExceptionResponseObject[["code"]] <-
           self$`code`
+      }
+      if (!is.null(self$`invite_or_request_id`)) {
+        InviteExceptionResponseObject[["invite_or_request_id"]] <-
+          self$`invite_or_request_id`
       }
       if (!is.null(self$`message`)) {
         InviteExceptionResponseObject[["message"]] <-
@@ -113,11 +113,11 @@ InviteExceptionResponse <- R6::R6Class(
     #' @return the instance of InviteExceptionResponse
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`invite_or_request_id`)) {
-        self$`invite_or_request_id` <- this_object$`invite_or_request_id`
-      }
       if (!is.null(this_object$`code`)) {
         self$`code` <- this_object$`code`
+      }
+      if (!is.null(this_object$`invite_or_request_id`)) {
+        self$`invite_or_request_id` <- this_object$`invite_or_request_id`
       }
       if (!is.null(this_object$`message`)) {
         self$`message` <- this_object$`message`
@@ -146,8 +146,8 @@ InviteExceptionResponse <- R6::R6Class(
     #' @return the instance of InviteExceptionResponse
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`invite_or_request_id` <- this_object$`invite_or_request_id`
       self$`code` <- this_object$`code`
+      self$`invite_or_request_id` <- this_object$`invite_or_request_id`
       self$`message` <- this_object$`message`
       self$`users_or_partner_ids` <- ApiClient$new()$deserializeObj(this_object$`users_or_partner_ids`, "array[character]", loadNamespace("openapi"))
       self

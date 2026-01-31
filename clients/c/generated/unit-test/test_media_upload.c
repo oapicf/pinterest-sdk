@@ -16,25 +16,25 @@
 #include "../model/media_upload.h"
 media_upload_t* instantiate_media_upload(int include_optional);
 
-#include "test_media_upload_all_of_upload_parameters.c"
+#include "test_media_upload_parameters.c"
 
 
 media_upload_t* instantiate_media_upload(int include_optional) {
   media_upload_t* media_upload = NULL;
   if (include_optional) {
     media_upload = media_upload_create(
-      "0",
+      "12345",
       video,
-      "https://pinterest-media-upload.s3-accelerate.amazonaws.com/",
        // false, not to have infinite recursion
-      instantiate_media_upload_all_of_upload_parameters(0)
+      instantiate_media_upload_parameters(0),
+      "https://pinterest-media-upload.s3-accelerate.amazonaws.com/"
     );
   } else {
     media_upload = media_upload_create(
-      "0",
+      "12345",
       video,
-      "https://pinterest-media-upload.s3-accelerate.amazonaws.com/",
-      NULL
+      NULL,
+      "https://pinterest-media-upload.s3-accelerate.amazonaws.com/"
     );
   }
 

@@ -22,13 +22,13 @@ members_to_delete_body_members_inner_t* instantiate_members_to_delete_body_membe
   members_to_delete_body_members_inner_t* members_to_delete_body_members_inner = NULL;
   if (include_optional) {
     members_to_delete_body_members_inner = members_to_delete_body_members_inner_create(
-      "140943737684417",
-      pinterest_rest_api_members_to_delete_body_members_inner__"BIZ_ADMIN"
+      pinterest_rest_api_members_to_delete_body_members_inner__"BIZ_ADMIN",
+      "140943737684417"
     );
   } else {
     members_to_delete_body_members_inner = members_to_delete_body_members_inner_create(
-      "140943737684417",
-      pinterest_rest_api_members_to_delete_body_members_inner__"BIZ_ADMIN"
+      pinterest_rest_api_members_to_delete_body_members_inner__"BIZ_ADMIN",
+      "140943737684417"
     );
   }
 

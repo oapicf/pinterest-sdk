@@ -25,9 +25,9 @@ CatalogsHotelAddress::__init()
 {
 	//addr1 = std::string();
 	//city = std::string();
-	//region = std::string();
 	//country = std::string();
 	//postal_code = std::string();
+	//region = std::string();
 }
 
 void
@@ -43,11 +43,6 @@ CatalogsHotelAddress::__cleanup()
 	//delete city;
 	//city = NULL;
 	//}
-	//if(region != NULL) {
-	//
-	//delete region;
-	//region = NULL;
-	//}
 	//if(country != NULL) {
 	//
 	//delete country;
@@ -57,6 +52,11 @@ CatalogsHotelAddress::__cleanup()
 	//
 	//delete postal_code;
 	//postal_code = NULL;
+	//}
+	//if(region != NULL) {
+	//
+	//delete region;
+	//region = NULL;
 	//}
 	//
 }
@@ -88,17 +88,6 @@ CatalogsHotelAddress::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *regionKey = "region";
-	node = json_object_get_member(pJsonObject, regionKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&region, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *countryKey = "country";
 	node = json_object_get_member(pJsonObject, countryKey);
 	if (node !=NULL) {
@@ -117,6 +106,17 @@ CatalogsHotelAddress::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&postal_code, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *regionKey = "region";
+	node = json_object_get_member(pJsonObject, regionKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&region, node, "std::string", "");
 		} else {
 			
 		}
@@ -152,15 +152,6 @@ CatalogsHotelAddress::toJson()
 	const gchar *cityKey = "city";
 	json_object_set_member(pJsonObject, cityKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getRegion();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *regionKey = "region";
-	json_object_set_member(pJsonObject, regionKey, node);
-	if (isprimitive("std::string")) {
 		std::string obj = getCountry();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -178,6 +169,15 @@ CatalogsHotelAddress::toJson()
 	}
 	const gchar *postal_codeKey = "postal_code";
 	json_object_set_member(pJsonObject, postal_codeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getRegion();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *regionKey = "region";
+	json_object_set_member(pJsonObject, regionKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -211,18 +211,6 @@ CatalogsHotelAddress::setCity(std::string  city)
 }
 
 std::string
-CatalogsHotelAddress::getRegion()
-{
-	return region;
-}
-
-void
-CatalogsHotelAddress::setRegion(std::string  region)
-{
-	this->region = region;
-}
-
-std::string
 CatalogsHotelAddress::getCountry()
 {
 	return country;
@@ -244,6 +232,18 @@ void
 CatalogsHotelAddress::setPostalCode(std::string  postal_code)
 {
 	this->postal_code = postal_code;
+}
+
+std::string
+CatalogsHotelAddress::getRegion()
+{
+	return region;
+}
+
+void
+CatalogsHotelAddress::setRegion(std::string  region)
+{
+	this->region = region;
 }
 
 

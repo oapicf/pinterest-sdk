@@ -2,7 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.MediaUploadDetails
+import org.openapitools.model.Media
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -16,14 +16,14 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param items Media
+ * @param items 
  * @param bookmark 
  */
 data class MediaList200Response(
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "Media")
-    @get:JsonProperty("items", required = true) val items: kotlin.collections.List<MediaUploadDetails>,
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("items", required = true) val items: kotlin.collections.List<Media>,
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("bookmark") val bookmark: kotlin.String? = null

@@ -2,39 +2,39 @@ package models
 
 type CatalogsRetailProductGroup struct {
 
+	// Catalog id pertaining to the retail product group.
+	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
+
 	CatalogType string `json:"catalog_type"`
 
-	// ID of the catalog product group.
-	Id string `json:"id" validate:"regexp=^\\\\d+$"`
+	Country *string `json:"country,omitempty"`
 
-	// Name of catalog product group
-	Name string `json:"name,omitempty"`
+	// Unix timestamp in seconds of when catalog product group was created.
+	CreatedAt int32 `json:"created_at,omitempty"`
 
 	Description *string `json:"description,omitempty"`
 
+	// id of the catalogs feed belonging to this catalog product group
+	FeedId *string `json:"feed_id" validate:"regexp=^\\\\d+$"`
+
 	Filters CatalogsProductGroupFilters `json:"filters"`
+
+	// ID of the catalog product group.
+	Id string `json:"id" validate:"regexp=^\\\\d+$"`
 
 	// boolean indicator of whether the product group is being featured or not
 	// Deprecated
 	IsFeatured bool `json:"is_featured,omitempty"`
 
-	Type CatalogsProductGroupType `json:"type,omitempty"`
+	Locale *string `json:"locale,omitempty"`
+
+	// Name of catalog product group
+	Name string `json:"name,omitempty"`
 
 	Status CatalogsProductGroupStatus `json:"status,omitempty"`
 
-	// Unix timestamp in seconds of when catalog product group was created.
-	CreatedAt int32 `json:"created_at,omitempty"`
+	Type CatalogsProductGroupType `json:"type"`
 
 	// Unix timestamp in seconds of last time catalog product group was updated.
 	UpdatedAt int32 `json:"updated_at,omitempty"`
-
-	// Catalog id pertaining to the retail product group.
-	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
-
-	// id of the catalogs feed belonging to this catalog product group
-	FeedId *string `json:"feed_id" validate:"regexp=^\\\\d+$"`
-
-	Country *string `json:"country,omitempty"`
-
-	Locale *string `json:"locale,omitempty"`
 }

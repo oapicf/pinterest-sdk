@@ -32,6 +32,16 @@
 
     * `custom_label_4` (value: `"custom_label_4"`)
 
+    * `custom_number_0` (value: `"custom_number_0"`)
+
+    * `custom_number_1` (value: `"custom_number_1"`)
+
+    * `custom_number_2` (value: `"custom_number_2"`)
+
+    * `custom_number_3` (value: `"custom_number_3"`)
+
+    * `custom_number_4` (value: `"custom_number_4"`)
+
     * `description` (value: `"description"`)
 
     * `free_shipping_label` (value: `"free_shipping_label"`)
@@ -89,6 +99,8 @@
     * `variant_names` (value: `"variant_names"`)
 
     * `variant_values` (value: `"variant_values"`)
+
+    * `promotion_id` (value: `"promotion_id"`)
 
 
 

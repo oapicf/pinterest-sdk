@@ -20,35 +20,41 @@ typedef struct conversion_events_data_inner_custom_data_t conversion_events_data
 
 
 typedef struct conversion_events_data_inner_custom_data_t {
-    char *currency; // string
-    char *value; // string
+    char *content_brand; // string
+    char *content_category; // string
     list_t *content_ids; //primitive container
     char *content_name; // string
-    char *content_category; // string
-    char *content_brand; // string
     list_t *contents; //nonprimitive container
-    long num_items; //numeric
-    char *order_id; // string
-    char *search_string; // string
-    char *opt_out_type; // string
+    char *currency; // string
+    char *external_measurement_id; // string
+    int external_measurement_vendor_id; //numeric
     char *np; // string
+    long num_items; //numeric
+    char *opt_out_type; // string
+    char *order_id; // string
+    char *predicted_ltv; // string
+    char *search_string; // string
+    char *value; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } conversion_events_data_inner_custom_data_t;
 
 __attribute__((deprecated)) conversion_events_data_inner_custom_data_t *conversion_events_data_inner_custom_data_create(
-    char *currency,
-    char *value,
+    char *content_brand,
+    char *content_category,
     list_t *content_ids,
     char *content_name,
-    char *content_category,
-    char *content_brand,
     list_t *contents,
+    char *currency,
+    char *external_measurement_id,
+    int external_measurement_vendor_id,
+    char *np,
     long num_items,
-    char *order_id,
-    char *search_string,
     char *opt_out_type,
-    char *np
+    char *order_id,
+    char *predicted_ltv,
+    char *search_string,
+    char *value
 );
 
 void conversion_events_data_inner_custom_data_free(conversion_events_data_inner_custom_data_t *conversion_events_data_inner_custom_data);

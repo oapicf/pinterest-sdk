@@ -3,16 +3,16 @@ package org.openapitools.client.model
 
 
 case class CatalogsFeedProductCounts (
-    /* The number of products in the feed file. */
-    _original: Option[Integer],
     /* The number of products successfully ingested from the feed file. */
-    _ingested: Option[Integer]
+    _ingested: Option[Integer],
+    /* The number of products in the feed file. */
+    _original: Option[Integer]
 )
 object CatalogsFeedProductCounts {
-    def toStringBody(var_original: Object, var_ingested: Object) =
+    def toStringBody(var_ingested: Object, var_original: Object) =
         s"""
         | {
-        | "original":$var_original,"ingested":$var_ingested
+        | "ingested":$var_ingested,"original":$var_original
         | }
         """.stripMargin
 }

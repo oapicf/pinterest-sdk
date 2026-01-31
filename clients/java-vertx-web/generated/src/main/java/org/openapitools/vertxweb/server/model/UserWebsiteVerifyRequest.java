@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserWebsiteVerifyRequest   {
   
-  private String website;
 
 
   public enum VerificationMethodEnum {
@@ -33,22 +32,14 @@ public class UserWebsiteVerifyRequest   {
   }
 
   private VerificationMethodEnum verificationMethod = VerificationMethodEnum.METATAG;
+  private String website;
 
   public UserWebsiteVerifyRequest () {
 
   }
 
-  public UserWebsiteVerifyRequest (String website, VerificationMethodEnum verificationMethod) {
-    this.website = website;
+  public UserWebsiteVerifyRequest (VerificationMethodEnum verificationMethod, String website) {
     this.verificationMethod = verificationMethod;
-  }
-
-    
-  @JsonProperty("website")
-  public String getWebsite() {
-    return website;
-  }
-  public void setWebsite(String website) {
     this.website = website;
   }
 
@@ -61,6 +52,15 @@ public class UserWebsiteVerifyRequest   {
     this.verificationMethod = verificationMethod;
   }
 
+    
+  @JsonProperty("website")
+  public String getWebsite() {
+    return website;
+  }
+  public void setWebsite(String website) {
+    this.website = website;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -71,13 +71,13 @@ public class UserWebsiteVerifyRequest   {
       return false;
     }
     UserWebsiteVerifyRequest userWebsiteVerifyRequest = (UserWebsiteVerifyRequest) o;
-    return Objects.equals(website, userWebsiteVerifyRequest.website) &&
-        Objects.equals(verificationMethod, userWebsiteVerifyRequest.verificationMethod);
+    return Objects.equals(verificationMethod, userWebsiteVerifyRequest.verificationMethod) &&
+        Objects.equals(website, userWebsiteVerifyRequest.website);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(website, verificationMethod);
+    return Objects.hash(verificationMethod, website);
   }
 
   @Override
@@ -85,8 +85,8 @@ public class UserWebsiteVerifyRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserWebsiteVerifyRequest {\n");
     
-    sb.append("    website: ").append(toIndentedString(website)).append("\n");
     sb.append("    verificationMethod: ").append(toIndentedString(verificationMethod)).append("\n");
+    sb.append("    website: ").append(toIndentedString(website)).append("\n");
     sb.append("}");
     return sb.toString();
   }

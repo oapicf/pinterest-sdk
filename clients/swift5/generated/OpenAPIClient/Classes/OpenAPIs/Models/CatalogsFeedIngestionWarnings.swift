@@ -12,47 +12,447 @@ import AnyCodable
 
 public struct CatalogsFeedIngestionWarnings: Codable, JSONEncodable, Hashable {
 
+    /** Ad image files are unreadable. Please check your link and upload new files to continue. */
+    public var AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR: Int?
+    /** Ad image files are unreadable. Please check your link and upload new files to continue. */
+    public var AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR: Int?
+    /** Ad image files are unreadable. Please check your link and upload new files to continue. */
+    public var AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE: Int?
+    /** Ad image files are unreadable. Please check your link and upload new files to continue. */
+    public var AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND: Int?
+    /** Ad image files are unreadable. Please check your link and upload new files to continue. */
+    public var aDIMAGEDOWNLOADHTTPSTATUS400: Int?
+    /** Ad image files are unreadable. Please check your link and upload new files to continue. */
+    public var aDIMAGEDOWNLOADHTTPSTATUS403: Int?
+    /** Ad image files are unreadable. Please check your link and upload new files to continue. */
+    public var aDIMAGEDOWNLOADHTTPSTATUS404: Int?
+    /** Ad image files are unreadable. Please check your link and upload new files to continue. */
+    public var aDIMAGEDOWNLOADHTTPSTATUS405: Int?
+    /** Ad image files are unreadable. Please check your link and upload new files to continue. */
+    public var aDIMAGEDOWNLOADHTTPSTATUS410: Int?
+    /** Ad image files are unreadable. Please check your link and upload new files to continue. */
+    public var aDIMAGEDOWNLOADHTTPSTATUS429: Int?
+    /** Ad image files are unreadable. Please check your link and upload new files to continue. */
+    public var aDIMAGEDOWNLOADHTTPSTATUS500: Int?
+    /** Ad image files are unreadable. Please check your link and upload new files to continue. */
+    public var aDIMAGEDOWNLOADHTTPSTATUS502: Int?
+    /** Ad image files are unreadable. Please check your link and upload new files to continue. */
+    public var aDIMAGEDOWNLOADHTTPSTATUS503: Int?
+    /** Ad image files are unreadable. Please check your link and upload new files to continue. */
+    public var aDIMAGEDOWNLOADHTTPSTATUS504: Int?
+    /** Ad image files are unreadable. Please check your link and upload new files to continue. */
+    public var aDIMAGEDOWNLOADHTTPSTATUS507: Int?
+    /** Ad image files are unreadable. Please check your link and upload new files to continue. */
+    public var aDIMAGEDOWNLOADHTTPSTATUS508: Int?
+    /** Ad image files are unreadable. Please check your link and upload new files to continue. */
+    public var aDIMAGEDOWNLOADHTTPSTATUS520: Int?
+    /** Ad image files are unreadable. Please check your link and upload new files to continue. */
+    public var aDIMAGEDOWNLOADHTTPSTATUS521: Int?
+    /** Ad image files are unreadable. Please check your link and upload new files to continue. */
+    public var aDIMAGEDOWNLOADHTTPSTATUS522: Int?
+    /** Ad image files are unreadable. Please check your link and upload new files to continue. */
+    public var aDIMAGEDOWNLOADHTTPSTATUS525: Int?
     /** We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours. */
-    public var ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR: Int?
+    public var AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR: Int?
+    /** We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours. */
+    public var AD_IMAGE_DOWNLOAD_INTERNAL_ERROR: Int?
+    /** We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours. */
+    public var AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD: Int?
+    /** Ad image files are unreadable. Please check your link and upload new files to continue. */
+    public var AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL: Int?
+    /** We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours. */
+    public var AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED: Int?
+    /** We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours. */
+    public var AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED: Int?
+    /** Ad image files are unreadable. Please check your link and upload new files to continue. */
+    public var AD_IMAGE_DOWNLOAD_INVALID_FILE: Int?
+    /** Ad image files are unreadable. Please check your link and upload new files to continue. */
+    public var AD_IMAGE_DOWNLOAD_SITE_ERROR: Int?
+    /** Ad image files are unreadable. Please check your link and upload new files to continue. */
+    public var AD_IMAGE_DOWNLOAD_SITE_TIMEOUT: Int?
+    /** Ad image files are unreadable. Please check your link and upload new files to continue. */
+    public var AD_IMAGE_DOWNLOAD_SSL_ERROR: Int?
+    /** Ad image files are unreadable. Please check your link and upload new files to continue. */
+    public var AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR: Int?
+    /** Ad image files are unreadable. Please check your link and upload new files to continue. */
+    public var AD_IMAGE_PROCESSING_EMPTY_FILE: Int?
+    /** Ad images must have a height larger than 75 pixels */
+    public var AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL: Int?
+    /** Ad images must have a maximum area (width x height) of less than 89478485 pixels */
+    public var AD_IMAGE_PROCESSING_TOO_MANY_PIXELS: Int?
+    /** Some ad images could not be processed due to a file type mismatch. */
+    public var AD_IMAGE_PROCESSING_TYPE_MISMATCH: Int?
+    /** Ad images must have a width larger than 75 pixels */
+    public var AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL: Int?
+    /** Ad video files are unreadable. Please check your link and upload new files to continue. */
+    public var AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR: Int?
+    /** Ad video files are unreadable. Please check your link and upload new files to continue. */
+    public var AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR: Int?
+    /** Ad video files are unreadable. Please check your link and upload new files to continue. */
+    public var AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE: Int?
+    /** Ad video files are unreadable. Please check your link and upload new files to continue. */
+    public var AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND: Int?
+    /** Ad video files are unreadable. Please check your link and upload new files to continue. */
+    public var aDVIDEODOWNLOADHTTPSTATUS400: Int?
+    /** Ad video files are unreadable. Please check your link and upload new files to continue. */
+    public var aDVIDEODOWNLOADHTTPSTATUS403: Int?
+    /** Ad video files are unreadable. Please check your link and upload new files to continue. */
+    public var aDVIDEODOWNLOADHTTPSTATUS404: Int?
+    /** Ad video files are unreadable. Please check your link and upload new files to continue. */
+    public var aDVIDEODOWNLOADHTTPSTATUS405: Int?
+    /** Ad video files are unreadable. Please check your link and upload new files to continue. */
+    public var aDVIDEODOWNLOADHTTPSTATUS410: Int?
+    /** Ad video files are unreadable. Please check your link and upload new files to continue. */
+    public var aDVIDEODOWNLOADHTTPSTATUS429: Int?
+    /** Ad video files are unreadable. Please check your link and upload new files to continue. */
+    public var aDVIDEODOWNLOADHTTPSTATUS500: Int?
+    /** Ad video files are unreadable. Please check your link and upload new files to continue. */
+    public var aDVIDEODOWNLOADHTTPSTATUS502: Int?
+    /** Ad video files are unreadable. Please check your link and upload new files to continue. */
+    public var aDVIDEODOWNLOADHTTPSTATUS503: Int?
+    /** Ad video files are unreadable. Please check your link and upload new files to continue. */
+    public var aDVIDEODOWNLOADHTTPSTATUS504: Int?
+    /** Ad video files are unreadable. Please check your link and upload new files to continue. */
+    public var aDVIDEODOWNLOADHTTPSTATUS507: Int?
+    /** Ad video files are unreadable. Please check your link and upload new files to continue. */
+    public var aDVIDEODOWNLOADHTTPSTATUS508: Int?
+    /** Ad video files are unreadable. Please check your link and upload new files to continue. */
+    public var aDVIDEODOWNLOADHTTPSTATUS520: Int?
+    /** Ad video files are unreadable. Please check your link and upload new files to continue. */
+    public var aDVIDEODOWNLOADHTTPSTATUS521: Int?
+    /** Ad video files are unreadable. Please check your link and upload new files to continue. */
+    public var aDVIDEODOWNLOADHTTPSTATUS522: Int?
+    /** Ad video files are unreadable. Please check your link and upload new files to continue. */
+    public var aDVIDEODOWNLOADHTTPSTATUS525: Int?
+    /** We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours. */
+    public var AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR: Int?
+    /** We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours. */
+    public var AD_VIDEO_DOWNLOAD_INTERNAL_ERROR: Int?
+    /** We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours. */
+    public var AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD: Int?
+    /** Ad video files are unreadable. Please check your link and upload new files to continue. */
+    public var AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL: Int?
+    /** We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours. */
+    public var AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED: Int?
+    /** We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours. */
+    public var AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED: Int?
+    /** Ad video files are unreadable. Please check your link and upload new files to continue. */
+    public var AD_VIDEO_DOWNLOAD_INVALID_FILE: Int?
+    /** Ad video files are unreadable. Please check your link and upload new files to continue. */
+    public var AD_VIDEO_DOWNLOAD_SITE_ERROR: Int?
+    /** Ad video files are unreadable. Please check your link and upload new files to continue. */
+    public var AD_VIDEO_DOWNLOAD_SITE_TIMEOUT: Int?
+    /** Ad video files are unreadable. Please check your link and upload new files to continue. */
+    public var AD_VIDEO_DOWNLOAD_SSL_ERROR: Int?
+    /** Ad video files are unreadable. Please check your link and upload new files to continue. */
+    public var AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR: Int?
+    /** Ad videos length is too short. Please ensure that all ad videos are at least 4 seconds long. */
+    public var AD_VIDEO_LENGTH_TOO_SHORT: Int?
+    /** Ad video files are unreadable. Please check your link and upload new files to continue. */
+    public var AD_VIDEO_PROCESSING_EMPTY_FILE: Int?
+    /** Ad videos must have a height larger than 75 pixels */
+    public var AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL: Int?
+    /** Ad videos must have a maximum area (width x height) of less than 89478485 pixels */
+    public var AD_VIDEO_PROCESSING_TOO_MANY_PIXELS: Int?
+    /** Some ad videos could not be processed due to a file type mismatch. */
+    public var AD_VIDEO_PROCESSING_TYPE_MISMATCH: Int?
+    /** Ad videos must have a width larger than 75 pixels */
+    public var AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL: Int?
     /** Additional image files are unreadable. Please upload new files to continue. */
     public var ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE: Int?
-    /** Additional image files are unreadable. Please check your link and upload new files to continue. */
-    public var ADDITIONAL_IMAGE_MALFORMED_URL: Int?
     /** Additional image files are unreadable. Please upload new files to continue. */
     public var ADDITIONAL_IMAGE_FILE_NOT_FOUND: Int?
     /** Additional image files are unreadable. Please upload new files to continue. */
     public var ADDITIONAL_IMAGE_INVALID_FILE: Int?
-    /** price is not a supported column. Use base_price and sale_price instead. */
+    /** We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours. */
+    public var ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR: Int?
+    /** Additional image files are unreadable. Please check your link and upload new files to continue. */
+    public var ADDITIONAL_IMAGE_MALFORMED_URL: Int?
+    /** Update your Google Sheets sharing settings from 'Editor' to 'Viewer'. */
+    public var FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT: Int?
+    /** Price is not a supported column. Use base_price and sale_price instead. */
     public var HOTEL_PRICE_HEADER_IS_PRESENT: Int?
+    /** Video length is too short. Please ensure that the main video is at least 4 seconds long. */
+    public var VIDEO_DOWNLOAD_VIDEO_TOO_SHORT: Int?
+    /** Video files are unreadable. Please upload new files to continue. */
+    public var VIDEO_FILE_NOT_ACCESSIBLE: Int?
+    /** Video files are unreadable. Please upload new files to continue. */
+    public var VIDEO_FILE_NOT_FOUND: Int?
+    /** Video files are unreadable. Please upload new files to continue. */
+    public var VIDEO_INVALID_FILE: Int?
+    /** We experienced a technical difficulty and were unable to download some additional videos. The next download attempt will happen in 24 hours. */
+    public var VIDEO_LEVEL_INTERNAL_ERROR: Int?
+    /** Video files are unreadable. Please check your link and upload new files to continue. */
+    public var VIDEO_MALFORMED_URL: Int?
 
-    public init(ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR: Int? = nil, ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE: Int? = nil, ADDITIONAL_IMAGE_MALFORMED_URL: Int? = nil, ADDITIONAL_IMAGE_FILE_NOT_FOUND: Int? = nil, ADDITIONAL_IMAGE_INVALID_FILE: Int? = nil, HOTEL_PRICE_HEADER_IS_PRESENT: Int? = nil) {
-        self.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR = ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR
+    public init(AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR: Int? = nil, AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR: Int? = nil, AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE: Int? = nil, AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND: Int? = nil, aDIMAGEDOWNLOADHTTPSTATUS400: Int? = nil, aDIMAGEDOWNLOADHTTPSTATUS403: Int? = nil, aDIMAGEDOWNLOADHTTPSTATUS404: Int? = nil, aDIMAGEDOWNLOADHTTPSTATUS405: Int? = nil, aDIMAGEDOWNLOADHTTPSTATUS410: Int? = nil, aDIMAGEDOWNLOADHTTPSTATUS429: Int? = nil, aDIMAGEDOWNLOADHTTPSTATUS500: Int? = nil, aDIMAGEDOWNLOADHTTPSTATUS502: Int? = nil, aDIMAGEDOWNLOADHTTPSTATUS503: Int? = nil, aDIMAGEDOWNLOADHTTPSTATUS504: Int? = nil, aDIMAGEDOWNLOADHTTPSTATUS507: Int? = nil, aDIMAGEDOWNLOADHTTPSTATUS508: Int? = nil, aDIMAGEDOWNLOADHTTPSTATUS520: Int? = nil, aDIMAGEDOWNLOADHTTPSTATUS521: Int? = nil, aDIMAGEDOWNLOADHTTPSTATUS522: Int? = nil, aDIMAGEDOWNLOADHTTPSTATUS525: Int? = nil, AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR: Int? = nil, AD_IMAGE_DOWNLOAD_INTERNAL_ERROR: Int? = nil, AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD: Int? = nil, AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL: Int? = nil, AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED: Int? = nil, AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED: Int? = nil, AD_IMAGE_DOWNLOAD_INVALID_FILE: Int? = nil, AD_IMAGE_DOWNLOAD_SITE_ERROR: Int? = nil, AD_IMAGE_DOWNLOAD_SITE_TIMEOUT: Int? = nil, AD_IMAGE_DOWNLOAD_SSL_ERROR: Int? = nil, AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR: Int? = nil, AD_IMAGE_PROCESSING_EMPTY_FILE: Int? = nil, AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL: Int? = nil, AD_IMAGE_PROCESSING_TOO_MANY_PIXELS: Int? = nil, AD_IMAGE_PROCESSING_TYPE_MISMATCH: Int? = nil, AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL: Int? = nil, AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR: Int? = nil, AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR: Int? = nil, AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE: Int? = nil, AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND: Int? = nil, aDVIDEODOWNLOADHTTPSTATUS400: Int? = nil, aDVIDEODOWNLOADHTTPSTATUS403: Int? = nil, aDVIDEODOWNLOADHTTPSTATUS404: Int? = nil, aDVIDEODOWNLOADHTTPSTATUS405: Int? = nil, aDVIDEODOWNLOADHTTPSTATUS410: Int? = nil, aDVIDEODOWNLOADHTTPSTATUS429: Int? = nil, aDVIDEODOWNLOADHTTPSTATUS500: Int? = nil, aDVIDEODOWNLOADHTTPSTATUS502: Int? = nil, aDVIDEODOWNLOADHTTPSTATUS503: Int? = nil, aDVIDEODOWNLOADHTTPSTATUS504: Int? = nil, aDVIDEODOWNLOADHTTPSTATUS507: Int? = nil, aDVIDEODOWNLOADHTTPSTATUS508: Int? = nil, aDVIDEODOWNLOADHTTPSTATUS520: Int? = nil, aDVIDEODOWNLOADHTTPSTATUS521: Int? = nil, aDVIDEODOWNLOADHTTPSTATUS522: Int? = nil, aDVIDEODOWNLOADHTTPSTATUS525: Int? = nil, AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR: Int? = nil, AD_VIDEO_DOWNLOAD_INTERNAL_ERROR: Int? = nil, AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD: Int? = nil, AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL: Int? = nil, AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED: Int? = nil, AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED: Int? = nil, AD_VIDEO_DOWNLOAD_INVALID_FILE: Int? = nil, AD_VIDEO_DOWNLOAD_SITE_ERROR: Int? = nil, AD_VIDEO_DOWNLOAD_SITE_TIMEOUT: Int? = nil, AD_VIDEO_DOWNLOAD_SSL_ERROR: Int? = nil, AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR: Int? = nil, AD_VIDEO_LENGTH_TOO_SHORT: Int? = nil, AD_VIDEO_PROCESSING_EMPTY_FILE: Int? = nil, AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL: Int? = nil, AD_VIDEO_PROCESSING_TOO_MANY_PIXELS: Int? = nil, AD_VIDEO_PROCESSING_TYPE_MISMATCH: Int? = nil, AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL: Int? = nil, ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE: Int? = nil, ADDITIONAL_IMAGE_FILE_NOT_FOUND: Int? = nil, ADDITIONAL_IMAGE_INVALID_FILE: Int? = nil, ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR: Int? = nil, ADDITIONAL_IMAGE_MALFORMED_URL: Int? = nil, FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT: Int? = nil, HOTEL_PRICE_HEADER_IS_PRESENT: Int? = nil, VIDEO_DOWNLOAD_VIDEO_TOO_SHORT: Int? = nil, VIDEO_FILE_NOT_ACCESSIBLE: Int? = nil, VIDEO_FILE_NOT_FOUND: Int? = nil, VIDEO_INVALID_FILE: Int? = nil, VIDEO_LEVEL_INTERNAL_ERROR: Int? = nil, VIDEO_MALFORMED_URL: Int? = nil) {
+        self.AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR = AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR
+        self.AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR = AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR
+        self.AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE = AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE
+        self.AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND = AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND
+        self.aDIMAGEDOWNLOADHTTPSTATUS400 = aDIMAGEDOWNLOADHTTPSTATUS400
+        self.aDIMAGEDOWNLOADHTTPSTATUS403 = aDIMAGEDOWNLOADHTTPSTATUS403
+        self.aDIMAGEDOWNLOADHTTPSTATUS404 = aDIMAGEDOWNLOADHTTPSTATUS404
+        self.aDIMAGEDOWNLOADHTTPSTATUS405 = aDIMAGEDOWNLOADHTTPSTATUS405
+        self.aDIMAGEDOWNLOADHTTPSTATUS410 = aDIMAGEDOWNLOADHTTPSTATUS410
+        self.aDIMAGEDOWNLOADHTTPSTATUS429 = aDIMAGEDOWNLOADHTTPSTATUS429
+        self.aDIMAGEDOWNLOADHTTPSTATUS500 = aDIMAGEDOWNLOADHTTPSTATUS500
+        self.aDIMAGEDOWNLOADHTTPSTATUS502 = aDIMAGEDOWNLOADHTTPSTATUS502
+        self.aDIMAGEDOWNLOADHTTPSTATUS503 = aDIMAGEDOWNLOADHTTPSTATUS503
+        self.aDIMAGEDOWNLOADHTTPSTATUS504 = aDIMAGEDOWNLOADHTTPSTATUS504
+        self.aDIMAGEDOWNLOADHTTPSTATUS507 = aDIMAGEDOWNLOADHTTPSTATUS507
+        self.aDIMAGEDOWNLOADHTTPSTATUS508 = aDIMAGEDOWNLOADHTTPSTATUS508
+        self.aDIMAGEDOWNLOADHTTPSTATUS520 = aDIMAGEDOWNLOADHTTPSTATUS520
+        self.aDIMAGEDOWNLOADHTTPSTATUS521 = aDIMAGEDOWNLOADHTTPSTATUS521
+        self.aDIMAGEDOWNLOADHTTPSTATUS522 = aDIMAGEDOWNLOADHTTPSTATUS522
+        self.aDIMAGEDOWNLOADHTTPSTATUS525 = aDIMAGEDOWNLOADHTTPSTATUS525
+        self.AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR = AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR
+        self.AD_IMAGE_DOWNLOAD_INTERNAL_ERROR = AD_IMAGE_DOWNLOAD_INTERNAL_ERROR
+        self.AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD = AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD
+        self.AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL = AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL
+        self.AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED = AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED
+        self.AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED = AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED
+        self.AD_IMAGE_DOWNLOAD_INVALID_FILE = AD_IMAGE_DOWNLOAD_INVALID_FILE
+        self.AD_IMAGE_DOWNLOAD_SITE_ERROR = AD_IMAGE_DOWNLOAD_SITE_ERROR
+        self.AD_IMAGE_DOWNLOAD_SITE_TIMEOUT = AD_IMAGE_DOWNLOAD_SITE_TIMEOUT
+        self.AD_IMAGE_DOWNLOAD_SSL_ERROR = AD_IMAGE_DOWNLOAD_SSL_ERROR
+        self.AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR = AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR
+        self.AD_IMAGE_PROCESSING_EMPTY_FILE = AD_IMAGE_PROCESSING_EMPTY_FILE
+        self.AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL = AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL
+        self.AD_IMAGE_PROCESSING_TOO_MANY_PIXELS = AD_IMAGE_PROCESSING_TOO_MANY_PIXELS
+        self.AD_IMAGE_PROCESSING_TYPE_MISMATCH = AD_IMAGE_PROCESSING_TYPE_MISMATCH
+        self.AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL = AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL
+        self.AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR = AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR
+        self.AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR = AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR
+        self.AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE = AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE
+        self.AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND = AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND
+        self.aDVIDEODOWNLOADHTTPSTATUS400 = aDVIDEODOWNLOADHTTPSTATUS400
+        self.aDVIDEODOWNLOADHTTPSTATUS403 = aDVIDEODOWNLOADHTTPSTATUS403
+        self.aDVIDEODOWNLOADHTTPSTATUS404 = aDVIDEODOWNLOADHTTPSTATUS404
+        self.aDVIDEODOWNLOADHTTPSTATUS405 = aDVIDEODOWNLOADHTTPSTATUS405
+        self.aDVIDEODOWNLOADHTTPSTATUS410 = aDVIDEODOWNLOADHTTPSTATUS410
+        self.aDVIDEODOWNLOADHTTPSTATUS429 = aDVIDEODOWNLOADHTTPSTATUS429
+        self.aDVIDEODOWNLOADHTTPSTATUS500 = aDVIDEODOWNLOADHTTPSTATUS500
+        self.aDVIDEODOWNLOADHTTPSTATUS502 = aDVIDEODOWNLOADHTTPSTATUS502
+        self.aDVIDEODOWNLOADHTTPSTATUS503 = aDVIDEODOWNLOADHTTPSTATUS503
+        self.aDVIDEODOWNLOADHTTPSTATUS504 = aDVIDEODOWNLOADHTTPSTATUS504
+        self.aDVIDEODOWNLOADHTTPSTATUS507 = aDVIDEODOWNLOADHTTPSTATUS507
+        self.aDVIDEODOWNLOADHTTPSTATUS508 = aDVIDEODOWNLOADHTTPSTATUS508
+        self.aDVIDEODOWNLOADHTTPSTATUS520 = aDVIDEODOWNLOADHTTPSTATUS520
+        self.aDVIDEODOWNLOADHTTPSTATUS521 = aDVIDEODOWNLOADHTTPSTATUS521
+        self.aDVIDEODOWNLOADHTTPSTATUS522 = aDVIDEODOWNLOADHTTPSTATUS522
+        self.aDVIDEODOWNLOADHTTPSTATUS525 = aDVIDEODOWNLOADHTTPSTATUS525
+        self.AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR = AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR
+        self.AD_VIDEO_DOWNLOAD_INTERNAL_ERROR = AD_VIDEO_DOWNLOAD_INTERNAL_ERROR
+        self.AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD = AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD
+        self.AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL = AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL
+        self.AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED = AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED
+        self.AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED = AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED
+        self.AD_VIDEO_DOWNLOAD_INVALID_FILE = AD_VIDEO_DOWNLOAD_INVALID_FILE
+        self.AD_VIDEO_DOWNLOAD_SITE_ERROR = AD_VIDEO_DOWNLOAD_SITE_ERROR
+        self.AD_VIDEO_DOWNLOAD_SITE_TIMEOUT = AD_VIDEO_DOWNLOAD_SITE_TIMEOUT
+        self.AD_VIDEO_DOWNLOAD_SSL_ERROR = AD_VIDEO_DOWNLOAD_SSL_ERROR
+        self.AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR = AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR
+        self.AD_VIDEO_LENGTH_TOO_SHORT = AD_VIDEO_LENGTH_TOO_SHORT
+        self.AD_VIDEO_PROCESSING_EMPTY_FILE = AD_VIDEO_PROCESSING_EMPTY_FILE
+        self.AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL = AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL
+        self.AD_VIDEO_PROCESSING_TOO_MANY_PIXELS = AD_VIDEO_PROCESSING_TOO_MANY_PIXELS
+        self.AD_VIDEO_PROCESSING_TYPE_MISMATCH = AD_VIDEO_PROCESSING_TYPE_MISMATCH
+        self.AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL = AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL
         self.ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE = ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE
-        self.ADDITIONAL_IMAGE_MALFORMED_URL = ADDITIONAL_IMAGE_MALFORMED_URL
         self.ADDITIONAL_IMAGE_FILE_NOT_FOUND = ADDITIONAL_IMAGE_FILE_NOT_FOUND
         self.ADDITIONAL_IMAGE_INVALID_FILE = ADDITIONAL_IMAGE_INVALID_FILE
+        self.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR = ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR
+        self.ADDITIONAL_IMAGE_MALFORMED_URL = ADDITIONAL_IMAGE_MALFORMED_URL
+        self.FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT = FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT
         self.HOTEL_PRICE_HEADER_IS_PRESENT = HOTEL_PRICE_HEADER_IS_PRESENT
+        self.VIDEO_DOWNLOAD_VIDEO_TOO_SHORT = VIDEO_DOWNLOAD_VIDEO_TOO_SHORT
+        self.VIDEO_FILE_NOT_ACCESSIBLE = VIDEO_FILE_NOT_ACCESSIBLE
+        self.VIDEO_FILE_NOT_FOUND = VIDEO_FILE_NOT_FOUND
+        self.VIDEO_INVALID_FILE = VIDEO_INVALID_FILE
+        self.VIDEO_LEVEL_INTERNAL_ERROR = VIDEO_LEVEL_INTERNAL_ERROR
+        self.VIDEO_MALFORMED_URL = VIDEO_MALFORMED_URL
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR
+        case AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR
+        case AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR
+        case AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE
+        case AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND
+        case aDIMAGEDOWNLOADHTTPSTATUS400 = "AD_IMAGE_DOWNLOAD_HTTP_STATUS_400"
+        case aDIMAGEDOWNLOADHTTPSTATUS403 = "AD_IMAGE_DOWNLOAD_HTTP_STATUS_403"
+        case aDIMAGEDOWNLOADHTTPSTATUS404 = "AD_IMAGE_DOWNLOAD_HTTP_STATUS_404"
+        case aDIMAGEDOWNLOADHTTPSTATUS405 = "AD_IMAGE_DOWNLOAD_HTTP_STATUS_405"
+        case aDIMAGEDOWNLOADHTTPSTATUS410 = "AD_IMAGE_DOWNLOAD_HTTP_STATUS_410"
+        case aDIMAGEDOWNLOADHTTPSTATUS429 = "AD_IMAGE_DOWNLOAD_HTTP_STATUS_429"
+        case aDIMAGEDOWNLOADHTTPSTATUS500 = "AD_IMAGE_DOWNLOAD_HTTP_STATUS_500"
+        case aDIMAGEDOWNLOADHTTPSTATUS502 = "AD_IMAGE_DOWNLOAD_HTTP_STATUS_502"
+        case aDIMAGEDOWNLOADHTTPSTATUS503 = "AD_IMAGE_DOWNLOAD_HTTP_STATUS_503"
+        case aDIMAGEDOWNLOADHTTPSTATUS504 = "AD_IMAGE_DOWNLOAD_HTTP_STATUS_504"
+        case aDIMAGEDOWNLOADHTTPSTATUS507 = "AD_IMAGE_DOWNLOAD_HTTP_STATUS_507"
+        case aDIMAGEDOWNLOADHTTPSTATUS508 = "AD_IMAGE_DOWNLOAD_HTTP_STATUS_508"
+        case aDIMAGEDOWNLOADHTTPSTATUS520 = "AD_IMAGE_DOWNLOAD_HTTP_STATUS_520"
+        case aDIMAGEDOWNLOADHTTPSTATUS521 = "AD_IMAGE_DOWNLOAD_HTTP_STATUS_521"
+        case aDIMAGEDOWNLOADHTTPSTATUS522 = "AD_IMAGE_DOWNLOAD_HTTP_STATUS_522"
+        case aDIMAGEDOWNLOADHTTPSTATUS525 = "AD_IMAGE_DOWNLOAD_HTTP_STATUS_525"
+        case AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR
+        case AD_IMAGE_DOWNLOAD_INTERNAL_ERROR
+        case AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD
+        case AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL
+        case AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED
+        case AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED
+        case AD_IMAGE_DOWNLOAD_INVALID_FILE
+        case AD_IMAGE_DOWNLOAD_SITE_ERROR
+        case AD_IMAGE_DOWNLOAD_SITE_TIMEOUT
+        case AD_IMAGE_DOWNLOAD_SSL_ERROR
+        case AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR
+        case AD_IMAGE_PROCESSING_EMPTY_FILE
+        case AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL
+        case AD_IMAGE_PROCESSING_TOO_MANY_PIXELS
+        case AD_IMAGE_PROCESSING_TYPE_MISMATCH
+        case AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL
+        case AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR
+        case AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR
+        case AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE
+        case AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND
+        case aDVIDEODOWNLOADHTTPSTATUS400 = "AD_VIDEO_DOWNLOAD_HTTP_STATUS_400"
+        case aDVIDEODOWNLOADHTTPSTATUS403 = "AD_VIDEO_DOWNLOAD_HTTP_STATUS_403"
+        case aDVIDEODOWNLOADHTTPSTATUS404 = "AD_VIDEO_DOWNLOAD_HTTP_STATUS_404"
+        case aDVIDEODOWNLOADHTTPSTATUS405 = "AD_VIDEO_DOWNLOAD_HTTP_STATUS_405"
+        case aDVIDEODOWNLOADHTTPSTATUS410 = "AD_VIDEO_DOWNLOAD_HTTP_STATUS_410"
+        case aDVIDEODOWNLOADHTTPSTATUS429 = "AD_VIDEO_DOWNLOAD_HTTP_STATUS_429"
+        case aDVIDEODOWNLOADHTTPSTATUS500 = "AD_VIDEO_DOWNLOAD_HTTP_STATUS_500"
+        case aDVIDEODOWNLOADHTTPSTATUS502 = "AD_VIDEO_DOWNLOAD_HTTP_STATUS_502"
+        case aDVIDEODOWNLOADHTTPSTATUS503 = "AD_VIDEO_DOWNLOAD_HTTP_STATUS_503"
+        case aDVIDEODOWNLOADHTTPSTATUS504 = "AD_VIDEO_DOWNLOAD_HTTP_STATUS_504"
+        case aDVIDEODOWNLOADHTTPSTATUS507 = "AD_VIDEO_DOWNLOAD_HTTP_STATUS_507"
+        case aDVIDEODOWNLOADHTTPSTATUS508 = "AD_VIDEO_DOWNLOAD_HTTP_STATUS_508"
+        case aDVIDEODOWNLOADHTTPSTATUS520 = "AD_VIDEO_DOWNLOAD_HTTP_STATUS_520"
+        case aDVIDEODOWNLOADHTTPSTATUS521 = "AD_VIDEO_DOWNLOAD_HTTP_STATUS_521"
+        case aDVIDEODOWNLOADHTTPSTATUS522 = "AD_VIDEO_DOWNLOAD_HTTP_STATUS_522"
+        case aDVIDEODOWNLOADHTTPSTATUS525 = "AD_VIDEO_DOWNLOAD_HTTP_STATUS_525"
+        case AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR
+        case AD_VIDEO_DOWNLOAD_INTERNAL_ERROR
+        case AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD
+        case AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL
+        case AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED
+        case AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED
+        case AD_VIDEO_DOWNLOAD_INVALID_FILE
+        case AD_VIDEO_DOWNLOAD_SITE_ERROR
+        case AD_VIDEO_DOWNLOAD_SITE_TIMEOUT
+        case AD_VIDEO_DOWNLOAD_SSL_ERROR
+        case AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR
+        case AD_VIDEO_LENGTH_TOO_SHORT
+        case AD_VIDEO_PROCESSING_EMPTY_FILE
+        case AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL
+        case AD_VIDEO_PROCESSING_TOO_MANY_PIXELS
+        case AD_VIDEO_PROCESSING_TYPE_MISMATCH
+        case AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL
         case ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE
-        case ADDITIONAL_IMAGE_MALFORMED_URL
         case ADDITIONAL_IMAGE_FILE_NOT_FOUND
         case ADDITIONAL_IMAGE_INVALID_FILE
+        case ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR
+        case ADDITIONAL_IMAGE_MALFORMED_URL
+        case FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT
         case HOTEL_PRICE_HEADER_IS_PRESENT
+        case VIDEO_DOWNLOAD_VIDEO_TOO_SHORT
+        case VIDEO_FILE_NOT_ACCESSIBLE
+        case VIDEO_FILE_NOT_FOUND
+        case VIDEO_INVALID_FILE
+        case VIDEO_LEVEL_INTERNAL_ERROR
+        case VIDEO_MALFORMED_URL
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR, forKey: .ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR)
+        try container.encodeIfPresent(AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR, forKey: .AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR)
+        try container.encodeIfPresent(AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR, forKey: .AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR)
+        try container.encodeIfPresent(AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE, forKey: .AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE)
+        try container.encodeIfPresent(AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND, forKey: .AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND)
+        try container.encodeIfPresent(aDIMAGEDOWNLOADHTTPSTATUS400, forKey: .aDIMAGEDOWNLOADHTTPSTATUS400)
+        try container.encodeIfPresent(aDIMAGEDOWNLOADHTTPSTATUS403, forKey: .aDIMAGEDOWNLOADHTTPSTATUS403)
+        try container.encodeIfPresent(aDIMAGEDOWNLOADHTTPSTATUS404, forKey: .aDIMAGEDOWNLOADHTTPSTATUS404)
+        try container.encodeIfPresent(aDIMAGEDOWNLOADHTTPSTATUS405, forKey: .aDIMAGEDOWNLOADHTTPSTATUS405)
+        try container.encodeIfPresent(aDIMAGEDOWNLOADHTTPSTATUS410, forKey: .aDIMAGEDOWNLOADHTTPSTATUS410)
+        try container.encodeIfPresent(aDIMAGEDOWNLOADHTTPSTATUS429, forKey: .aDIMAGEDOWNLOADHTTPSTATUS429)
+        try container.encodeIfPresent(aDIMAGEDOWNLOADHTTPSTATUS500, forKey: .aDIMAGEDOWNLOADHTTPSTATUS500)
+        try container.encodeIfPresent(aDIMAGEDOWNLOADHTTPSTATUS502, forKey: .aDIMAGEDOWNLOADHTTPSTATUS502)
+        try container.encodeIfPresent(aDIMAGEDOWNLOADHTTPSTATUS503, forKey: .aDIMAGEDOWNLOADHTTPSTATUS503)
+        try container.encodeIfPresent(aDIMAGEDOWNLOADHTTPSTATUS504, forKey: .aDIMAGEDOWNLOADHTTPSTATUS504)
+        try container.encodeIfPresent(aDIMAGEDOWNLOADHTTPSTATUS507, forKey: .aDIMAGEDOWNLOADHTTPSTATUS507)
+        try container.encodeIfPresent(aDIMAGEDOWNLOADHTTPSTATUS508, forKey: .aDIMAGEDOWNLOADHTTPSTATUS508)
+        try container.encodeIfPresent(aDIMAGEDOWNLOADHTTPSTATUS520, forKey: .aDIMAGEDOWNLOADHTTPSTATUS520)
+        try container.encodeIfPresent(aDIMAGEDOWNLOADHTTPSTATUS521, forKey: .aDIMAGEDOWNLOADHTTPSTATUS521)
+        try container.encodeIfPresent(aDIMAGEDOWNLOADHTTPSTATUS522, forKey: .aDIMAGEDOWNLOADHTTPSTATUS522)
+        try container.encodeIfPresent(aDIMAGEDOWNLOADHTTPSTATUS525, forKey: .aDIMAGEDOWNLOADHTTPSTATUS525)
+        try container.encodeIfPresent(AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR, forKey: .AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR)
+        try container.encodeIfPresent(AD_IMAGE_DOWNLOAD_INTERNAL_ERROR, forKey: .AD_IMAGE_DOWNLOAD_INTERNAL_ERROR)
+        try container.encodeIfPresent(AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD, forKey: .AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD)
+        try container.encodeIfPresent(AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL, forKey: .AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL)
+        try container.encodeIfPresent(AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED, forKey: .AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED)
+        try container.encodeIfPresent(AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED, forKey: .AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED)
+        try container.encodeIfPresent(AD_IMAGE_DOWNLOAD_INVALID_FILE, forKey: .AD_IMAGE_DOWNLOAD_INVALID_FILE)
+        try container.encodeIfPresent(AD_IMAGE_DOWNLOAD_SITE_ERROR, forKey: .AD_IMAGE_DOWNLOAD_SITE_ERROR)
+        try container.encodeIfPresent(AD_IMAGE_DOWNLOAD_SITE_TIMEOUT, forKey: .AD_IMAGE_DOWNLOAD_SITE_TIMEOUT)
+        try container.encodeIfPresent(AD_IMAGE_DOWNLOAD_SSL_ERROR, forKey: .AD_IMAGE_DOWNLOAD_SSL_ERROR)
+        try container.encodeIfPresent(AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR, forKey: .AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR)
+        try container.encodeIfPresent(AD_IMAGE_PROCESSING_EMPTY_FILE, forKey: .AD_IMAGE_PROCESSING_EMPTY_FILE)
+        try container.encodeIfPresent(AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL, forKey: .AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL)
+        try container.encodeIfPresent(AD_IMAGE_PROCESSING_TOO_MANY_PIXELS, forKey: .AD_IMAGE_PROCESSING_TOO_MANY_PIXELS)
+        try container.encodeIfPresent(AD_IMAGE_PROCESSING_TYPE_MISMATCH, forKey: .AD_IMAGE_PROCESSING_TYPE_MISMATCH)
+        try container.encodeIfPresent(AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL, forKey: .AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL)
+        try container.encodeIfPresent(AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR, forKey: .AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR)
+        try container.encodeIfPresent(AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR, forKey: .AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR)
+        try container.encodeIfPresent(AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE, forKey: .AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE)
+        try container.encodeIfPresent(AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND, forKey: .AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND)
+        try container.encodeIfPresent(aDVIDEODOWNLOADHTTPSTATUS400, forKey: .aDVIDEODOWNLOADHTTPSTATUS400)
+        try container.encodeIfPresent(aDVIDEODOWNLOADHTTPSTATUS403, forKey: .aDVIDEODOWNLOADHTTPSTATUS403)
+        try container.encodeIfPresent(aDVIDEODOWNLOADHTTPSTATUS404, forKey: .aDVIDEODOWNLOADHTTPSTATUS404)
+        try container.encodeIfPresent(aDVIDEODOWNLOADHTTPSTATUS405, forKey: .aDVIDEODOWNLOADHTTPSTATUS405)
+        try container.encodeIfPresent(aDVIDEODOWNLOADHTTPSTATUS410, forKey: .aDVIDEODOWNLOADHTTPSTATUS410)
+        try container.encodeIfPresent(aDVIDEODOWNLOADHTTPSTATUS429, forKey: .aDVIDEODOWNLOADHTTPSTATUS429)
+        try container.encodeIfPresent(aDVIDEODOWNLOADHTTPSTATUS500, forKey: .aDVIDEODOWNLOADHTTPSTATUS500)
+        try container.encodeIfPresent(aDVIDEODOWNLOADHTTPSTATUS502, forKey: .aDVIDEODOWNLOADHTTPSTATUS502)
+        try container.encodeIfPresent(aDVIDEODOWNLOADHTTPSTATUS503, forKey: .aDVIDEODOWNLOADHTTPSTATUS503)
+        try container.encodeIfPresent(aDVIDEODOWNLOADHTTPSTATUS504, forKey: .aDVIDEODOWNLOADHTTPSTATUS504)
+        try container.encodeIfPresent(aDVIDEODOWNLOADHTTPSTATUS507, forKey: .aDVIDEODOWNLOADHTTPSTATUS507)
+        try container.encodeIfPresent(aDVIDEODOWNLOADHTTPSTATUS508, forKey: .aDVIDEODOWNLOADHTTPSTATUS508)
+        try container.encodeIfPresent(aDVIDEODOWNLOADHTTPSTATUS520, forKey: .aDVIDEODOWNLOADHTTPSTATUS520)
+        try container.encodeIfPresent(aDVIDEODOWNLOADHTTPSTATUS521, forKey: .aDVIDEODOWNLOADHTTPSTATUS521)
+        try container.encodeIfPresent(aDVIDEODOWNLOADHTTPSTATUS522, forKey: .aDVIDEODOWNLOADHTTPSTATUS522)
+        try container.encodeIfPresent(aDVIDEODOWNLOADHTTPSTATUS525, forKey: .aDVIDEODOWNLOADHTTPSTATUS525)
+        try container.encodeIfPresent(AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR, forKey: .AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR)
+        try container.encodeIfPresent(AD_VIDEO_DOWNLOAD_INTERNAL_ERROR, forKey: .AD_VIDEO_DOWNLOAD_INTERNAL_ERROR)
+        try container.encodeIfPresent(AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD, forKey: .AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD)
+        try container.encodeIfPresent(AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL, forKey: .AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL)
+        try container.encodeIfPresent(AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED, forKey: .AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED)
+        try container.encodeIfPresent(AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED, forKey: .AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED)
+        try container.encodeIfPresent(AD_VIDEO_DOWNLOAD_INVALID_FILE, forKey: .AD_VIDEO_DOWNLOAD_INVALID_FILE)
+        try container.encodeIfPresent(AD_VIDEO_DOWNLOAD_SITE_ERROR, forKey: .AD_VIDEO_DOWNLOAD_SITE_ERROR)
+        try container.encodeIfPresent(AD_VIDEO_DOWNLOAD_SITE_TIMEOUT, forKey: .AD_VIDEO_DOWNLOAD_SITE_TIMEOUT)
+        try container.encodeIfPresent(AD_VIDEO_DOWNLOAD_SSL_ERROR, forKey: .AD_VIDEO_DOWNLOAD_SSL_ERROR)
+        try container.encodeIfPresent(AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR, forKey: .AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR)
+        try container.encodeIfPresent(AD_VIDEO_LENGTH_TOO_SHORT, forKey: .AD_VIDEO_LENGTH_TOO_SHORT)
+        try container.encodeIfPresent(AD_VIDEO_PROCESSING_EMPTY_FILE, forKey: .AD_VIDEO_PROCESSING_EMPTY_FILE)
+        try container.encodeIfPresent(AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL, forKey: .AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL)
+        try container.encodeIfPresent(AD_VIDEO_PROCESSING_TOO_MANY_PIXELS, forKey: .AD_VIDEO_PROCESSING_TOO_MANY_PIXELS)
+        try container.encodeIfPresent(AD_VIDEO_PROCESSING_TYPE_MISMATCH, forKey: .AD_VIDEO_PROCESSING_TYPE_MISMATCH)
+        try container.encodeIfPresent(AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL, forKey: .AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL)
         try container.encodeIfPresent(ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE, forKey: .ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE)
-        try container.encodeIfPresent(ADDITIONAL_IMAGE_MALFORMED_URL, forKey: .ADDITIONAL_IMAGE_MALFORMED_URL)
         try container.encodeIfPresent(ADDITIONAL_IMAGE_FILE_NOT_FOUND, forKey: .ADDITIONAL_IMAGE_FILE_NOT_FOUND)
         try container.encodeIfPresent(ADDITIONAL_IMAGE_INVALID_FILE, forKey: .ADDITIONAL_IMAGE_INVALID_FILE)
+        try container.encodeIfPresent(ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR, forKey: .ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR)
+        try container.encodeIfPresent(ADDITIONAL_IMAGE_MALFORMED_URL, forKey: .ADDITIONAL_IMAGE_MALFORMED_URL)
+        try container.encodeIfPresent(FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT, forKey: .FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT)
         try container.encodeIfPresent(HOTEL_PRICE_HEADER_IS_PRESENT, forKey: .HOTEL_PRICE_HEADER_IS_PRESENT)
+        try container.encodeIfPresent(VIDEO_DOWNLOAD_VIDEO_TOO_SHORT, forKey: .VIDEO_DOWNLOAD_VIDEO_TOO_SHORT)
+        try container.encodeIfPresent(VIDEO_FILE_NOT_ACCESSIBLE, forKey: .VIDEO_FILE_NOT_ACCESSIBLE)
+        try container.encodeIfPresent(VIDEO_FILE_NOT_FOUND, forKey: .VIDEO_FILE_NOT_FOUND)
+        try container.encodeIfPresent(VIDEO_INVALID_FILE, forKey: .VIDEO_INVALID_FILE)
+        try container.encodeIfPresent(VIDEO_LEVEL_INTERNAL_ERROR, forKey: .VIDEO_LEVEL_INTERNAL_ERROR)
+        try container.encodeIfPresent(VIDEO_MALFORMED_URL, forKey: .VIDEO_MALFORMED_URL)
     }
 }
 

@@ -20,17 +20,55 @@ import java.util.Objects;
 
 public class AudienceCategory   {
   
+  private String id;
+
+  private BigDecimal index;
+
   private String key;
 
   private String name;
 
   private BigDecimal ratio;
 
-  private BigDecimal index;
-
-  private String id;
-
   private List<@Valid AudienceSubcategory> subcategories = new ArrayList<>();
+
+  /**
+   * Interest ID.
+   **/
+  public AudienceCategory id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "1234567", value = "Interest ID.")
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
+  /**
+   * Interest affinity index.
+   **/
+  public AudienceCategory index(BigDecimal index) {
+    this.index = index;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "1.2", value = "Interest affinity index.")
+  @JsonProperty("index")
+  public BigDecimal getIndex() {
+    return index;
+  }
+  public void setIndex(BigDecimal index) {
+    this.index = index;
+  }
+
 
   /**
    * Interest unique key (same as ID).
@@ -90,44 +128,6 @@ public class AudienceCategory   {
 
 
   /**
-   * Interest affinity index.
-   **/
-  public AudienceCategory index(BigDecimal index) {
-    this.index = index;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "1.2", value = "Interest affinity index.")
-  @JsonProperty("index")
-  public BigDecimal getIndex() {
-    return index;
-  }
-  public void setIndex(BigDecimal index) {
-    this.index = index;
-  }
-
-
-  /**
-   * Interest ID.
-   **/
-  public AudienceCategory id(String id) {
-    this.id = id;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "1234567", value = "Interest ID.")
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-  public void setId(String id) {
-    this.id = id;
-  }
-
-
-  /**
    * Subcategory interest distribution
    **/
   public AudienceCategory subcategories(List<@Valid AudienceSubcategory> subcategories) {
@@ -164,17 +164,17 @@ public class AudienceCategory   {
       return false;
     }
     AudienceCategory audienceCategory = (AudienceCategory) o;
-    return Objects.equals(this.key, audienceCategory.key) &&
+    return Objects.equals(this.id, audienceCategory.id) &&
+        Objects.equals(this.index, audienceCategory.index) &&
+        Objects.equals(this.key, audienceCategory.key) &&
         Objects.equals(this.name, audienceCategory.name) &&
         Objects.equals(this.ratio, audienceCategory.ratio) &&
-        Objects.equals(this.index, audienceCategory.index) &&
-        Objects.equals(this.id, audienceCategory.id) &&
         Objects.equals(this.subcategories, audienceCategory.subcategories);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, name, ratio, index, id, subcategories);
+    return Objects.hash(id, index, key, name, ratio, subcategories);
   }
 
   @Override
@@ -182,11 +182,11 @@ public class AudienceCategory   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceCategory {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    index: ").append(toIndentedString(index)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    ratio: ").append(toIndentedString(ratio)).append("\n");
-    sb.append("    index: ").append(toIndentedString(index)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    subcategories: ").append(toIndentedString(subcategories)).append("\n");
     sb.append("}");
     return sb.toString();

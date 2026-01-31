@@ -22,11 +22,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CreateMMMReportRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreateMMMReportRequest   {
   private @Valid List<TargetingAdvertiserCountry> countries = new ArrayList<>();
-  private String reportName;
-  private String startDate;
+  private @Valid List<MMMReportingColumn> columns = new ArrayList<>();
   private String endDate;
   public enum GranularityEnum {
 
@@ -124,29 +123,30 @@ public class CreateMMMReportRequest   {
 }
 
   private LevelEnum level;
+  private String reportName;
+  private String startDate;
   private @Valid List<MMMReportingTargetingType> targetingTypes = new ArrayList<>();
-  private @Valid List<MMMReportingColumn> columns = new ArrayList<>();
 
   public CreateMMMReportRequest() {
   }
 
   @JsonCreator
   public CreateMMMReportRequest(
-    @JsonProperty(required = true, value = "report_name") String reportName,
-    @JsonProperty(required = true, value = "start_date") String startDate,
+    @JsonProperty(required = true, value = "columns") List<MMMReportingColumn> columns,
     @JsonProperty(required = true, value = "end_date") String endDate,
     @JsonProperty(required = true, value = "granularity") GranularityEnum granularity,
     @JsonProperty(required = true, value = "level") LevelEnum level,
-    @JsonProperty(required = true, value = "targeting_types") List<MMMReportingTargetingType> targetingTypes,
-    @JsonProperty(required = true, value = "columns") List<MMMReportingColumn> columns
+    @JsonProperty(required = true, value = "report_name") String reportName,
+    @JsonProperty(required = true, value = "start_date") String startDate,
+    @JsonProperty(required = true, value = "targeting_types") List<MMMReportingTargetingType> targetingTypes
   ) {
-    this.reportName = reportName;
-    this.startDate = startDate;
+    this.columns = columns;
     this.endDate = endDate;
     this.granularity = granularity;
     this.level = level;
+    this.reportName = reportName;
+    this.startDate = startDate;
     this.targetingTypes = targetingTypes;
-    this.columns = columns;
   }
 
   /**
@@ -186,45 +186,41 @@ public class CreateMMMReportRequest   {
     return this;
   }
   /**
-   * Name of the Marketing Mix Modeling (MMM) report
+   * Metric and entity columns
    **/
-  public CreateMMMReportRequest reportName(String reportName) {
-    this.reportName = reportName;
+  public CreateMMMReportRequest columns(List<MMMReportingColumn> columns) {
+    this.columns = columns;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "Name of the Marketing Mix Modeling (MMM) report")
-  @JsonProperty(required = true, value = "report_name")
-  @NotNull public String getReportName() {
-    return reportName;
+  @ApiModelProperty(required = true, value = "Metric and entity columns")
+  @JsonProperty(required = true, value = "columns")
+  @NotNull public List<MMMReportingColumn> getColumns() {
+    return columns;
   }
 
-  @JsonProperty(required = true, value = "report_name")
-  public void setReportName(String reportName) {
-    this.reportName = reportName;
+  @JsonProperty(required = true, value = "columns")
+  public void setColumns(List<MMMReportingColumn> columns) {
+    this.columns = columns;
   }
 
-  /**
-   * Metric report start date (UTC). Format: YYYY-MM-DD
-   **/
-  public CreateMMMReportRequest startDate(String startDate) {
-    this.startDate = startDate;
+  public CreateMMMReportRequest addColumnsItem(MMMReportingColumn columnsItem) {
+    if (this.columns == null) {
+      this.columns = new ArrayList<>();
+    }
+
+    this.columns.add(columnsItem);
     return this;
   }
 
-  
-  @ApiModelProperty(example = "2020-12-20", required = true, value = "Metric report start date (UTC). Format: YYYY-MM-DD")
-  @JsonProperty(required = true, value = "start_date")
-  @NotNull  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")public String getStartDate() {
-    return startDate;
-  }
+  public CreateMMMReportRequest removeColumnsItem(MMMReportingColumn columnsItem) {
+    if (columnsItem != null && this.columns != null) {
+      this.columns.remove(columnsItem);
+    }
 
-  @JsonProperty(required = true, value = "start_date")
-  public void setStartDate(String startDate) {
-    this.startDate = startDate;
+    return this;
   }
-
   /**
    * Metric report end date (UTC). Format: YYYY-MM-DD
    **/
@@ -286,6 +282,46 @@ public class CreateMMMReportRequest   {
   }
 
   /**
+   * Name of the Marketing Mix Modeling (MMM) report
+   **/
+  public CreateMMMReportRequest reportName(String reportName) {
+    this.reportName = reportName;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "Name of the Marketing Mix Modeling (MMM) report")
+  @JsonProperty(required = true, value = "report_name")
+  @NotNull public String getReportName() {
+    return reportName;
+  }
+
+  @JsonProperty(required = true, value = "report_name")
+  public void setReportName(String reportName) {
+    this.reportName = reportName;
+  }
+
+  /**
+   * Metric report start date (UTC). Format: YYYY-MM-DD
+   **/
+  public CreateMMMReportRequest startDate(String startDate) {
+    this.startDate = startDate;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "2020-12-20", required = true, value = "Metric report start date (UTC). Format: YYYY-MM-DD")
+  @JsonProperty(required = true, value = "start_date")
+  @NotNull  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")public String getStartDate() {
+    return startDate;
+  }
+
+  @JsonProperty(required = true, value = "start_date")
+  public void setStartDate(String startDate) {
+    this.startDate = startDate;
+  }
+
+  /**
    * List of targeting types
    **/
   public CreateMMMReportRequest targetingTypes(List<MMMReportingTargetingType> targetingTypes) {
@@ -321,42 +357,6 @@ public class CreateMMMReportRequest   {
 
     return this;
   }
-  /**
-   * Metric and entity columns
-   **/
-  public CreateMMMReportRequest columns(List<MMMReportingColumn> columns) {
-    this.columns = columns;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "Metric and entity columns")
-  @JsonProperty(required = true, value = "columns")
-  @NotNull public List<MMMReportingColumn> getColumns() {
-    return columns;
-  }
-
-  @JsonProperty(required = true, value = "columns")
-  public void setColumns(List<MMMReportingColumn> columns) {
-    this.columns = columns;
-  }
-
-  public CreateMMMReportRequest addColumnsItem(MMMReportingColumn columnsItem) {
-    if (this.columns == null) {
-      this.columns = new ArrayList<>();
-    }
-
-    this.columns.add(columnsItem);
-    return this;
-  }
-
-  public CreateMMMReportRequest removeColumnsItem(MMMReportingColumn columnsItem) {
-    if (columnsItem != null && this.columns != null) {
-      this.columns.remove(columnsItem);
-    }
-
-    return this;
-  }
 
   @Override
   public boolean equals(Object o) {
@@ -368,18 +368,18 @@ public class CreateMMMReportRequest   {
     }
     CreateMMMReportRequest createMMMReportRequest = (CreateMMMReportRequest) o;
     return Objects.equals(this.countries, createMMMReportRequest.countries) &&
-        Objects.equals(this.reportName, createMMMReportRequest.reportName) &&
-        Objects.equals(this.startDate, createMMMReportRequest.startDate) &&
+        Objects.equals(this.columns, createMMMReportRequest.columns) &&
         Objects.equals(this.endDate, createMMMReportRequest.endDate) &&
         Objects.equals(this.granularity, createMMMReportRequest.granularity) &&
         Objects.equals(this.level, createMMMReportRequest.level) &&
-        Objects.equals(this.targetingTypes, createMMMReportRequest.targetingTypes) &&
-        Objects.equals(this.columns, createMMMReportRequest.columns);
+        Objects.equals(this.reportName, createMMMReportRequest.reportName) &&
+        Objects.equals(this.startDate, createMMMReportRequest.startDate) &&
+        Objects.equals(this.targetingTypes, createMMMReportRequest.targetingTypes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(countries, reportName, startDate, endDate, granularity, level, targetingTypes, columns);
+    return Objects.hash(countries, columns, endDate, granularity, level, reportName, startDate, targetingTypes);
   }
 
   @Override
@@ -388,13 +388,13 @@ public class CreateMMMReportRequest   {
     sb.append("class CreateMMMReportRequest {\n");
     
     sb.append("    countries: ").append(toIndentedString(countries)).append("\n");
-    sb.append("    reportName: ").append(toIndentedString(reportName)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    columns: ").append(toIndentedString(columns)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    granularity: ").append(toIndentedString(granularity)).append("\n");
     sb.append("    level: ").append(toIndentedString(level)).append("\n");
+    sb.append("    reportName: ").append(toIndentedString(reportName)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    targetingTypes: ").append(toIndentedString(targetingTypes)).append("\n");
-    sb.append("    columns: ").append(toIndentedString(columns)).append("\n");
     sb.append("}");
     return sb.toString();
   }

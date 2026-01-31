@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Frequency** | Pointer to **int32** |  | [optional] 
+**Frequency** | Pointer to **int32** | Frequency target can only be between 2 and 20 | [optional] 
 **Timerange** | Pointer to **string** | User entity counts time range | [optional] 
 
 ## Methods

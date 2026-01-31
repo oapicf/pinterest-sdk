@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"title": @"title", @"_description": @"description", @"link": @"link", @"iosDeepLink": @"ios_deep_link", @"androidDeepLink": @"android_deep_link", @"googleProductCategory": @"google_product_category", @"customLabel0": @"custom_label_0", @"customLabel1": @"custom_label_1", @"customLabel2": @"custom_label_2", @"customLabel3": @"custom_label_3", @"customLabel4": @"custom_label_4", @"visibility": @"visibility" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"androidDeepLink": @"android_deep_link", @"customLabel0": @"custom_label_0", @"customLabel1": @"custom_label_1", @"customLabel2": @"custom_label_2", @"customLabel3": @"custom_label_3", @"customLabel4": @"custom_label_4", @"_description": @"description", @"googleProductCategory": @"google_product_category", @"iosDeepLink": @"ios_deep_link", @"link": @"link", @"title": @"title", @"visibility": @"visibility" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"title", @"_description", @"link", @"iosDeepLink", @"androidDeepLink", @"googleProductCategory", @"customLabel0", @"customLabel1", @"customLabel2", @"customLabel3", @"customLabel4", @"visibility"];
+  NSArray *optionalProperties = @[@"androidDeepLink", @"customLabel0", @"customLabel1", @"customLabel2", @"customLabel3", @"customLabel4", @"_description", @"googleProductCategory", @"iosDeepLink", @"link", @"title", @"visibility"];
   return [optionalProperties containsObject:propertyName];
 }
 

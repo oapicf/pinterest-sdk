@@ -39,14 +39,6 @@ public class DeletePartnerAssetsResultTest {
     }
 
     /**
-     * Test the property 'permissions'
-     */
-    @Test
-    public void permissionsTest() {
-        // TODO: test permissions
-    }
-
-    /**
      * Test the property 'isSharedPartner'
      */
     @Test
@@ -60,6 +52,14 @@ public class DeletePartnerAssetsResultTest {
     @Test
     public void partnerIdTest() {
         // TODO: test partnerId
+    }
+
+    /**
+     * Test the property 'permissions'
+     */
+    @Test
+    public void permissionsTest() {
+        // TODO: test permissions
     }
 
 }

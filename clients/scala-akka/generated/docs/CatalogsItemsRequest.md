@@ -9,8 +9,8 @@ Request object of catalogs items
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | **Country** |  | 
-**language** | [**Language**](#Language) | We recommend using the CatalogsLocale values. | 
 **filters** | [**CatalogsItemsPostFilters**](CatalogsItemsPostFilters.md) |  | 
+**language** | [**Language**](#Language) | We recommend using the CatalogsLocale values. | 
 
 
 ## Enum: Language

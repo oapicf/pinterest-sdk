@@ -12,10 +12,10 @@ module AdsList200Response =
 
   [<CLIMutable>]
   type AdsList200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : AdResponse[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : AdResponse[];
   }
 
   //#endregion

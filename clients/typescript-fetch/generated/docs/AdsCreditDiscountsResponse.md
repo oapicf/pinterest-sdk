@@ -8,11 +8,11 @@ Name | Type
 ------------ | -------------
 `active` | boolean
 `advertiserId` | string
-`discountType` | string
-`discountInMicroCurrency` | number
 `discountCurrency` | string
-`title` | string
+`discountInMicroCurrency` | number
+`discountType` | string
 `remainingDiscountInMicroCurrency` | number
+`title` | string
 
 ## Example
 
@@ -23,11 +23,11 @@ import type { AdsCreditDiscountsResponse } from ''
 const example = {
   "active": true,
   "advertiserId": 12312451231,
-  "discountType": null,
-  "discountInMicroCurrency": 125000000,
   "discountCurrency": USD,
-  "title": Ads Credits,
+  "discountInMicroCurrency": 125000000,
+  "discountType": null,
   "remainingDiscountInMicroCurrency": 125000000,
+  "title": Ads Credits,
 } satisfies AdsCreditDiscountsResponse
 
 console.log(example)

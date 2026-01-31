@@ -20,19 +20,19 @@ typedef struct get_partner_assets_response_t get_partner_assets_response_t;
 
 
 typedef struct get_partner_assets_response_t {
+    struct asset_group_binding_t *asset_group_info; //model
     char *asset_id; // string
     char *asset_type; // string
     list_t *permissions; //primitive container
-    struct asset_group_binding_t *asset_group_info; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } get_partner_assets_response_t;
 
 __attribute__((deprecated)) get_partner_assets_response_t *get_partner_assets_response_create(
+    asset_group_binding_t *asset_group_info,
     char *asset_id,
     char *asset_type,
-    list_t *permissions,
-    asset_group_binding_t *asset_group_info
+    list_t *permissions
 );
 
 void get_partner_assets_response_free(get_partner_assets_response_t *get_partner_assets_response);

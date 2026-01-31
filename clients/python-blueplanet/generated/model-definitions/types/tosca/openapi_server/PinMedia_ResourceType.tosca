@@ -1,0 +1,79 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server PinMedia"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a PinMedia"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ImageSize = openapi_server.resourceTypes.ImageSize
+  PinMediaMetadata = openapi_server.resourceTypes.PinMediaMetadata
+  PinMediaWithImage = openapi_server.resourceTypes.PinMediaWithImage
+  PinMediaWithImageAndVideo = openapi_server.resourceTypes.PinMediaWithImageAndVideo
+  PinMediaWithImages = openapi_server.resourceTypes.PinMediaWithImages
+  PinMediaWithVideo = openapi_server.resourceTypes.PinMediaWithVideo
+  PinMediaWithVideos = openapi_server.resourceTypes.PinMediaWithVideos
+}
+resourceTypes {
+
+  PinMedia {
+    title = PinMedia
+    description = PinMedia
+    derivedFrom = Root
+    properties {
+        images {
+          type = ImageSize
+          description = ""
+          optional = false
+        }
+        media_type {
+          type =  string
+          description = ""
+          enum = ["multiple_mixed"]
+          optional = true
+        }
+        cover_image_url {
+          type =  string
+          description = ""
+          optional = false
+        }
+        duration {
+          type =  
+          description = "Duration (in miliseconds). Field maybe null after creation due to video processing time."
+          optional = false
+        }
+        height {
+          type =  integer
+          description = "Height (in pixels). Field maybe null after creation due to video processing time."
+          optional = false
+        }
+        video_url {
+          type =  string
+          description = "Video url (720p).  **Note:** This field is limited and not available to all apps."
+          optional = false
+        }
+        width {
+          type =  integer
+          description = "Width (in pixels). Field maybe null after creation due to video processing time."
+          optional = false
+        }
+        items {
+          type = array
+          items.type = PinMediaMetadata
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  PinMedia {
+    title = PinMedia
+    description = PinMedia
+    implements = openapi_server.resourceTypes.PinMedia
+
+  }
+}

@@ -22,17 +22,11 @@ public class AudienceDefinition  {
   @ApiModelProperty(example = "2022-10-09", value = "Generation date")
   private String date;
 
- /**
-  * Generated audience type to request.
-  */
-  @ApiModelProperty(value = "Generated audience type to request.")
-  private String type;
-
- /**
-  * Generated audience scope to request.
-  */
-  @ApiModelProperty(value = "Generated audience scope to request.")
+  @ApiModelProperty(example = "PARTNER", value = "")
   private String scope;
+
+  @ApiModelProperty(example = "IMPRESSION_PLUS_ENGAGEMENT", value = "")
+  private String type;
  /**
   * Generation date
   * @return date
@@ -58,31 +52,7 @@ public class AudienceDefinition  {
   }
 
  /**
-  * Generated audience type to request.
-  * @return type
-  */
-  @JsonProperty("type")
-  public String getType() {
-    return type;
-  }
-
-  /**
-   * Sets the <code>type</code> property.
-   */
- public void setType(String type) {
-    this.type = type;
-  }
-
-  /**
-   * Sets the <code>type</code> property.
-   */
-  public AudienceDefinition type(String type) {
-    this.type = type;
-    return this;
-  }
-
- /**
-  * Generated audience scope to request.
+  * Get scope
   * @return scope
   */
   @JsonProperty("scope")
@@ -105,6 +75,30 @@ public class AudienceDefinition  {
     return this;
   }
 
+ /**
+  * Get type
+  * @return type
+  */
+  @JsonProperty("type")
+  public String getType() {
+    return type;
+  }
+
+  /**
+   * Sets the <code>type</code> property.
+   */
+ public void setType(String type) {
+    this.type = type;
+  }
+
+  /**
+   * Sets the <code>type</code> property.
+   */
+  public AudienceDefinition type(String type) {
+    this.type = type;
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -116,13 +110,13 @@ public class AudienceDefinition  {
     }
     AudienceDefinition audienceDefinition = (AudienceDefinition) o;
     return Objects.equals(this.date, audienceDefinition.date) &&
-        Objects.equals(this.type, audienceDefinition.type) &&
-        Objects.equals(this.scope, audienceDefinition.scope);
+        Objects.equals(this.scope, audienceDefinition.scope) &&
+        Objects.equals(this.type, audienceDefinition.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, type, scope);
+    return Objects.hash(date, scope, type);
   }
 
   @Override
@@ -131,8 +125,8 @@ public class AudienceDefinition  {
     sb.append("class AudienceDefinition {\n");
     
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -10,12 +10,12 @@ module PinMediaSourceImageURL =
 
   [<CLIMutable>]
   type PinMediaSourceImageURL = {
+    [<JsonProperty(PropertyName = "is_standard")>]
+    IsStandard : bool;
     [<JsonProperty(PropertyName = "source_type")>]
     SourceType : string;
     [<JsonProperty(PropertyName = "url")>]
     Url : string;
-    [<JsonProperty(PropertyName = "is_standard")>]
-    IsStandard : bool;
   }
 
   //#endregion

@@ -1,6 +1,7 @@
 package apimodels;
 
 import java.math.BigDecimal;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
 import javax.validation.*;
@@ -10,42 +11,42 @@ import javax.validation.Valid;
 /**
  * If specified, you must provide all properties
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsHotelGuestRatings   {
-  @JsonProperty("score")
-  @Valid
-
-  private BigDecimal score;
-
-  @JsonProperty("number_of_reviewers")
-  
-  private Integer numberOfReviewers;
-
   @JsonProperty("max_score")
   @Valid
 
   private BigDecimal maxScore;
 
+  @JsonProperty("number_of_reviewers")
+  
+  private Integer numberOfReviewers;
+
   @JsonProperty("rating_system")
   
   private String ratingSystem;
 
-  public CatalogsHotelGuestRatings score(BigDecimal score) {
-    this.score = score;
+  @JsonProperty("score")
+  @Valid
+
+  private BigDecimal score;
+
+  public CatalogsHotelGuestRatings maxScore(BigDecimal maxScore) {
+    this.maxScore = maxScore;
     return this;
   }
 
    /**
-   * Your hotel's rating.
-   * @return score
+   * Max value for the hotel rating score.
+   * @return maxScore
   **/
-  public BigDecimal getScore() {
-    return score;
+  public BigDecimal getMaxScore() {
+    return maxScore;
   }
 
-  public void setScore(BigDecimal score) {
-    this.score = score;
+  public void setMaxScore(BigDecimal maxScore) {
+    this.maxScore = maxScore;
   }
 
   public CatalogsHotelGuestRatings numberOfReviewers(Integer numberOfReviewers) {
@@ -65,23 +66,6 @@ public class CatalogsHotelGuestRatings   {
     this.numberOfReviewers = numberOfReviewers;
   }
 
-  public CatalogsHotelGuestRatings maxScore(BigDecimal maxScore) {
-    this.maxScore = maxScore;
-    return this;
-  }
-
-   /**
-   * Max value for the hotel rating score.
-   * @return maxScore
-  **/
-  public BigDecimal getMaxScore() {
-    return maxScore;
-  }
-
-  public void setMaxScore(BigDecimal maxScore) {
-    this.maxScore = maxScore;
-  }
-
   public CatalogsHotelGuestRatings ratingSystem(String ratingSystem) {
     this.ratingSystem = ratingSystem;
     return this;
@@ -99,6 +83,23 @@ public class CatalogsHotelGuestRatings   {
     this.ratingSystem = ratingSystem;
   }
 
+  public CatalogsHotelGuestRatings score(BigDecimal score) {
+    this.score = score;
+    return this;
+  }
+
+   /**
+   * Your hotel's rating.
+   * @return score
+  **/
+  public BigDecimal getScore() {
+    return score;
+  }
+
+  public void setScore(BigDecimal score) {
+    this.score = score;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -109,15 +110,15 @@ public class CatalogsHotelGuestRatings   {
       return false;
     }
     CatalogsHotelGuestRatings catalogsHotelGuestRatings = (CatalogsHotelGuestRatings) o;
-    return Objects.equals(score, catalogsHotelGuestRatings.score) &&
+    return Objects.equals(maxScore, catalogsHotelGuestRatings.maxScore) &&
         Objects.equals(numberOfReviewers, catalogsHotelGuestRatings.numberOfReviewers) &&
-        Objects.equals(maxScore, catalogsHotelGuestRatings.maxScore) &&
-        Objects.equals(ratingSystem, catalogsHotelGuestRatings.ratingSystem);
+        Objects.equals(ratingSystem, catalogsHotelGuestRatings.ratingSystem) &&
+        Objects.equals(score, catalogsHotelGuestRatings.score);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(score, numberOfReviewers, maxScore, ratingSystem);
+    return Objects.hash(maxScore, numberOfReviewers, ratingSystem, score);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -126,10 +127,10 @@ public class CatalogsHotelGuestRatings   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelGuestRatings {\n");
     
-    sb.append("    score: ").append(toIndentedString(score)).append("\n");
-    sb.append("    numberOfReviewers: ").append(toIndentedString(numberOfReviewers)).append("\n");
     sb.append("    maxScore: ").append(toIndentedString(maxScore)).append("\n");
+    sb.append("    numberOfReviewers: ").append(toIndentedString(numberOfReviewers)).append("\n");
     sb.append("    ratingSystem: ").append(toIndentedString(ratingSystem)).append("\n");
+    sb.append("    score: ").append(toIndentedString(score)).append("\n");
     sb.append("}");
     return sb.toString();
   }

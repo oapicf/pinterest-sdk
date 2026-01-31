@@ -20,20 +20,6 @@ API.Client.AdAccountGetSubscriptionResponse.prototype.leadFormId;
 API.Client.AdAccountGetSubscriptionResponse.prototype.webhookUrl;
 
 /**
- * Subscription ID.
- * @type {!string}
- * @export
- */
-API.Client.AdAccountGetSubscriptionResponse.prototype.id;
-
-/**
- * User account used to subscribe lead data.
- * @type {!string}
- * @export
- */
-API.Client.AdAccountGetSubscriptionResponse.prototype.userAccountId;
-
-/**
  * The Ad Account ID that this lead form belongs to.
  * @type {!string}
  * @export
@@ -48,11 +34,11 @@ API.Client.AdAccountGetSubscriptionResponse.prototype.adAccountId;
 API.Client.AdAccountGetSubscriptionResponse.prototype.apiVersion;
 
 /**
- * Base64 encoded key for client to decrypt lead data.
- * @type {!string}
+ * Lead subscription creation time. Unix timestamp in milliseconds.
+ * @type {!number}
  * @export
  */
-API.Client.AdAccountGetSubscriptionResponse.prototype.cryptographicKey;
+API.Client.AdAccountGetSubscriptionResponse.prototype.createdTime;
 
 /**
  * Lead data encryption algorithm.
@@ -62,9 +48,23 @@ API.Client.AdAccountGetSubscriptionResponse.prototype.cryptographicKey;
 API.Client.AdAccountGetSubscriptionResponse.prototype.cryptographicAlgorithm;
 
 /**
- * Lead form creation time. Unix timestamp in milliseconds.
- * @type {!number}
+ * Base64 encoded key for client to decrypt lead data.
+ * @type {!string}
  * @export
  */
-API.Client.AdAccountGetSubscriptionResponse.prototype.createdTime;
+API.Client.AdAccountGetSubscriptionResponse.prototype.cryptographicKey;
+
+/**
+ * Subscription ID.
+ * @type {!string}
+ * @export
+ */
+API.Client.AdAccountGetSubscriptionResponse.prototype.id;
+
+/**
+ * User account used to subscribe lead data.
+ * @type {!string}
+ * @export
+ */
+API.Client.AdAccountGetSubscriptionResponse.prototype.userAccountId;
 

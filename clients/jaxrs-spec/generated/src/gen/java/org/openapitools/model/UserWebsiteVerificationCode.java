@@ -16,35 +16,15 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("UserWebsiteVerificationCode")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UserWebsiteVerificationCode   {
-  private String verificationCode;
   private String dnsTxtRecord;
-  private String metatag;
-  private String filename;
   private String fileContent;
+  private String filename;
+  private String metatag;
+  private String verificationCode;
 
   public UserWebsiteVerificationCode() {
-  }
-
-  /**
-   * Code to check against the user claiming the website
-   **/
-  public UserWebsiteVerificationCode verificationCode(String verificationCode) {
-    this.verificationCode = verificationCode;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "e1edcc1a43976c646367e9c6c9a9b7b6", value = "Code to check against the user claiming the website")
-  @JsonProperty("verification_code")
-  public String getVerificationCode() {
-    return verificationCode;
-  }
-
-  @JsonProperty("verification_code")
-  public void setVerificationCode(String verificationCode) {
-    this.verificationCode = verificationCode;
   }
 
   /**
@@ -68,23 +48,23 @@ public class UserWebsiteVerificationCode   {
   }
 
   /**
-   * Metatag the verification process searchs for the website to be claimed
+   * A full html file to upload to the website in order for it to be claimed
    **/
-  public UserWebsiteVerificationCode metatag(String metatag) {
-    this.metatag = metatag;
+  public UserWebsiteVerificationCode fileContent(String fileContent) {
+    this.fileContent = fileContent;
     return this;
   }
 
   
-  @ApiModelProperty(example = "<meta name=\"p:domain_verify\" content=\"e1edcc1a43976c646367e9c6c9a9b7b6\"/>", value = "Metatag the verification process searchs for the website to be claimed")
-  @JsonProperty("metatag")
-  public String getMetatag() {
-    return metatag;
+  @ApiModelProperty(value = "A full html file to upload to the website in order for it to be claimed")
+  @JsonProperty("file_content")
+  public String getFileContent() {
+    return fileContent;
   }
 
-  @JsonProperty("metatag")
-  public void setMetatag(String metatag) {
-    this.metatag = metatag;
+  @JsonProperty("file_content")
+  public void setFileContent(String fileContent) {
+    this.fileContent = fileContent;
   }
 
   /**
@@ -108,23 +88,43 @@ public class UserWebsiteVerificationCode   {
   }
 
   /**
-   * A full html file to upload to the website in order for it to be claimed
+   * Metatag the verification process searchs for the website to be claimed
    **/
-  public UserWebsiteVerificationCode fileContent(String fileContent) {
-    this.fileContent = fileContent;
+  public UserWebsiteVerificationCode metatag(String metatag) {
+    this.metatag = metatag;
     return this;
   }
 
   
-  @ApiModelProperty(value = "A full html file to upload to the website in order for it to be claimed")
-  @JsonProperty("file_content")
-  public String getFileContent() {
-    return fileContent;
+  @ApiModelProperty(example = "<meta name=\"p:domain_verify\" content=\"e1edcc1a43976c646367e9c6c9a9b7b6\"/>", value = "Metatag the verification process searchs for the website to be claimed")
+  @JsonProperty("metatag")
+  public String getMetatag() {
+    return metatag;
   }
 
-  @JsonProperty("file_content")
-  public void setFileContent(String fileContent) {
-    this.fileContent = fileContent;
+  @JsonProperty("metatag")
+  public void setMetatag(String metatag) {
+    this.metatag = metatag;
+  }
+
+  /**
+   * Code to check against the user claiming the website
+   **/
+  public UserWebsiteVerificationCode verificationCode(String verificationCode) {
+    this.verificationCode = verificationCode;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "e1edcc1a43976c646367e9c6c9a9b7b6", value = "Code to check against the user claiming the website")
+  @JsonProperty("verification_code")
+  public String getVerificationCode() {
+    return verificationCode;
+  }
+
+  @JsonProperty("verification_code")
+  public void setVerificationCode(String verificationCode) {
+    this.verificationCode = verificationCode;
   }
 
 
@@ -137,16 +137,16 @@ public class UserWebsiteVerificationCode   {
       return false;
     }
     UserWebsiteVerificationCode userWebsiteVerificationCode = (UserWebsiteVerificationCode) o;
-    return Objects.equals(this.verificationCode, userWebsiteVerificationCode.verificationCode) &&
-        Objects.equals(this.dnsTxtRecord, userWebsiteVerificationCode.dnsTxtRecord) &&
-        Objects.equals(this.metatag, userWebsiteVerificationCode.metatag) &&
+    return Objects.equals(this.dnsTxtRecord, userWebsiteVerificationCode.dnsTxtRecord) &&
+        Objects.equals(this.fileContent, userWebsiteVerificationCode.fileContent) &&
         Objects.equals(this.filename, userWebsiteVerificationCode.filename) &&
-        Objects.equals(this.fileContent, userWebsiteVerificationCode.fileContent);
+        Objects.equals(this.metatag, userWebsiteVerificationCode.metatag) &&
+        Objects.equals(this.verificationCode, userWebsiteVerificationCode.verificationCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(verificationCode, dnsTxtRecord, metatag, filename, fileContent);
+    return Objects.hash(dnsTxtRecord, fileContent, filename, metatag, verificationCode);
   }
 
   @Override
@@ -154,11 +154,11 @@ public class UserWebsiteVerificationCode   {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserWebsiteVerificationCode {\n");
     
-    sb.append("    verificationCode: ").append(toIndentedString(verificationCode)).append("\n");
     sb.append("    dnsTxtRecord: ").append(toIndentedString(dnsTxtRecord)).append("\n");
-    sb.append("    metatag: ").append(toIndentedString(metatag)).append("\n");
-    sb.append("    filename: ").append(toIndentedString(filename)).append("\n");
     sb.append("    fileContent: ").append(toIndentedString(fileContent)).append("\n");
+    sb.append("    filename: ").append(toIndentedString(filename)).append("\n");
+    sb.append("    metatag: ").append(toIndentedString(metatag)).append("\n");
+    sb.append("    verificationCode: ").append(toIndentedString(verificationCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }

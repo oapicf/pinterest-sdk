@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
+`catalogId` | string
 `catalogType` | string
 `hotelIds` | Array&lt;string&gt;
-`catalogId` | string
 
 ## Example
 
@@ -17,9 +17,9 @@ import type { CatalogsHotelItemsFilter } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "catalogId": null,
   "catalogType": null,
   "hotelIds": null,
-  "catalogId": null,
 } satisfies CatalogsHotelItemsFilter
 
 console.log(example)

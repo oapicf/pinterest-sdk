@@ -1,5 +1,8 @@
 package com.prokarma.pkmst.controller;
 
+import com.prokarma.pkmst.model.BrandAccountsCreate200Response;
+import com.prokarma.pkmst.model.BrandAccountsCreateRequest;
+import com.prokarma.pkmst.model.BrandAccountsUpdateRequest;
 import com.prokarma.pkmst.model.DeletePartnersRequest;
 import com.prokarma.pkmst.model.DeletePartnersResponse;
 import com.prokarma.pkmst.model.DeletedMembersResponse;
@@ -11,6 +14,7 @@ import java.util.List;
 import com.prokarma.pkmst.model.MemberBusinessRole;
 import com.prokarma.pkmst.model.MembersToDeleteBody;
 import com.prokarma.pkmst.model.PartnerType;
+import com.prokarma.pkmst.model.SystemUserUpdateRequest;
 import com.prokarma.pkmst.model.UpdateMemberBusinessRoleBody;
 import com.prokarma.pkmst.model.UpdateMemberResultsResponseArray;
 
@@ -35,13 +39,83 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Controller
 public class BusinessAccessRelationshipsApiController implements BusinessAccessRelationshipsApi {
     private final ObjectMapper objectMapper;
 @Autowired
     public BusinessAccessRelationshipsApiController(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
+    }
+
+    public ResponseEntity<BrandAccountsCreate200Response> brandAccountsCreate(@ApiParam(value = "business hierarchy node id",required=true ) @PathVariable("business_hierarchy_id") String businessHierarchyId,
+        @ApiParam(value = "" ,required=true )   @RequestBody BrandAccountsCreateRequest brandAccountsCreateRequest,
+        @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
+        // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BrandAccountsCreate200Response>(objectMapper.readValue("", BrandAccountsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BrandAccountsCreate200Response>(objectMapper.readValue("", BrandAccountsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BrandAccountsCreate200Response>(objectMapper.readValue("", BrandAccountsCreate200Response.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<BrandAccountsCreate200Response>(HttpStatus.OK);
+    }
+
+    public ResponseEntity<BrandAccountsCreate200Response> brandAccountsUpdate(@ApiParam(value = "business hierarchy node id",required=true ) @PathVariable("business_hierarchy_id") String businessHierarchyId,
+        @ApiParam(value = "Unique identifier of a brand account.",required=true ) @PathVariable("brand_account_id") String brandAccountId,
+        @ApiParam(value = "" ,required=true )   @RequestBody BrandAccountsUpdateRequest brandAccountsUpdateRequest,
+        @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
+        // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BrandAccountsCreate200Response>(objectMapper.readValue("", BrandAccountsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BrandAccountsCreate200Response>(objectMapper.readValue("", BrandAccountsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BrandAccountsCreate200Response>(objectMapper.readValue("", BrandAccountsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BrandAccountsCreate200Response>(objectMapper.readValue("", BrandAccountsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BrandAccountsCreate200Response>(objectMapper.readValue("", BrandAccountsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BrandAccountsCreate200Response>(objectMapper.readValue("", BrandAccountsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BrandAccountsCreate200Response>(objectMapper.readValue("", BrandAccountsCreate200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<BrandAccountsCreate200Response>(objectMapper.readValue("", BrandAccountsCreate200Response.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<BrandAccountsCreate200Response>(HttpStatus.OK);
     }
 
     public ResponseEntity<DeletedMembersResponse> deleteBusinessMembership(@ApiParam(value = "Business id",required=true ) @PathVariable("business_id") String businessId,
@@ -101,6 +175,7 @@ public class BusinessAccessRelationshipsApiController implements BusinessAccessR
     }
 
     public ResponseEntity<GetBusinessMembers200Response> getBusinessMembers(@ApiParam(value = "Unique identifier of the requesting business.",required=true ) @PathVariable("business_id") String businessId,
+        @ApiParam(value = "Fetches system users if True. Fetches regular user employees if False.", defaultValue = "false")  @RequestParam(value = "fetch_system_users", required = false, defaultValue="false") Boolean fetchSystemUsers,
         @ApiParam(value = "Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are", defaultValue = "false")  @RequestParam(value = "assets_summary", required = false, defaultValue="false") Boolean assetsSummary,
         @ApiParam(value = "A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.")  @RequestParam(value = "business_roles", required = false) List<MemberBusinessRole> businessRoles,
         @ApiParam(value = "A list of business members ids separated by comma.")  @RequestParam(value = "member_ids", required = false) String memberIds,
@@ -142,6 +217,24 @@ public class BusinessAccessRelationshipsApiController implements BusinessAccessR
         }
 
         return new ResponseEntity<GetBusinessPartners200Response>(HttpStatus.OK);
+    }
+
+    public ResponseEntity<Void> systemUserUpdate(@ApiParam(value = "Unique identifier of the requesting business.",required=true ) @PathVariable("business_id") String businessId,
+        @ApiParam(value = "Unique identifier of a system user.",required=true ) @PathVariable("system_user_id") String systemUserId,
+        @ApiParam(value = "" ,required=true )   @RequestBody SystemUserUpdateRequest systemUserUpdateRequest,
+        @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
+        // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<Void>(objectMapper.readValue("", Void.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<Void>(objectMapper.readValue("", Void.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
     public ResponseEntity<UpdateMemberResultsResponseArray> updateBusinessMemberships(@ApiParam(value = "Business id",required=true ) @PathVariable("business_id") String businessId,

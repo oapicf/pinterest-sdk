@@ -66,12 +66,12 @@ AdvancedAuctionProcessedItems::fromJson(char* jsonStr)
 		{
 			JsonArray* arr = json_node_get_array(node);
 			JsonNode*  temp_json;
-			list<AdvancedAuctionProcessedItem> new_list;
-			AdvancedAuctionProcessedItem inst;
+			list<AdvancedAuctionItemsSubmitRecord> new_list;
+			AdvancedAuctionItemsSubmitRecord inst;
 			for (guint i=0;i<json_array_get_length(arr);i++) {
 				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("AdvancedAuctionProcessedItem")) {
-					jsonToValue(&inst, temp_json, "AdvancedAuctionProcessedItem", "");
+				if (isprimitive("AdvancedAuctionItemsSubmitRecord")) {
+					jsonToValue(&inst, temp_json, "AdvancedAuctionItemsSubmitRecord", "");
 				} else {
 					
 					inst.fromJson(json_to_string(temp_json, false));
@@ -104,18 +104,18 @@ AdvancedAuctionProcessedItems::toJson()
 	}
 	const gchar *catalog_idKey = "catalog_id";
 	json_object_set_member(pJsonObject, catalog_idKey, node);
-	if (isprimitive("AdvancedAuctionProcessedItem")) {
-		list<AdvancedAuctionProcessedItem> new_list = static_cast<list <AdvancedAuctionProcessedItem> > (getItems());
-		node = converttoJson(&new_list, "AdvancedAuctionProcessedItem", "array");
+	if (isprimitive("AdvancedAuctionItemsSubmitRecord")) {
+		list<AdvancedAuctionItemsSubmitRecord> new_list = static_cast<list <AdvancedAuctionItemsSubmitRecord> > (getItems());
+		node = converttoJson(&new_list, "AdvancedAuctionItemsSubmitRecord", "array");
 	} else {
 		node = json_node_alloc();
-		list<AdvancedAuctionProcessedItem> new_list = static_cast<list <AdvancedAuctionProcessedItem> > (getItems());
+		list<AdvancedAuctionItemsSubmitRecord> new_list = static_cast<list <AdvancedAuctionItemsSubmitRecord> > (getItems());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<AdvancedAuctionProcessedItem>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<AdvancedAuctionItemsSubmitRecord>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			AdvancedAuctionProcessedItem obj = *it;
+			AdvancedAuctionItemsSubmitRecord obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -149,14 +149,14 @@ AdvancedAuctionProcessedItems::setCatalogId(std::string  catalog_id)
 	this->catalog_id = catalog_id;
 }
 
-std::list<AdvancedAuctionProcessedItem>
+std::list<AdvancedAuctionItemsSubmitRecord>
 AdvancedAuctionProcessedItems::getItems()
 {
 	return items;
 }
 
 void
-AdvancedAuctionProcessedItems::setItems(std::list <AdvancedAuctionProcessedItem> items)
+AdvancedAuctionProcessedItems::setItems(std::list <AdvancedAuctionItemsSubmitRecord> items)
 {
 	this->items = items;
 }

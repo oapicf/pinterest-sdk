@@ -5,12 +5,12 @@ context("Test SSIOAccountResponse")
 
 model_instance <- SSIOAccountResponse$new()
 
-test_that("eligible", {
-  # tests for the property `eligible` (character)
-  # Advertiser eligible to create order lines
+test_that("billto_infos", {
+  # tests for the property `billto_infos` (array[SSIOAccountItem])
+  # An array of Salesforce account information that includes address, io terms, etc.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`eligible`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`billto_infos`, "EXPECTED_RESULT")
 })
 
 test_that("can_edit", {
@@ -21,14 +21,6 @@ test_that("can_edit", {
   #expect_equal(model.instance$`can_edit`, "EXPECTED_RESULT")
 })
 
-test_that("billto_infos", {
-  # tests for the property `billto_infos` (array[SSIOAccountItem])
-  # An array of Salesforce account information that includes address, io terms, etc.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`billto_infos`, "EXPECTED_RESULT")
-})
-
 test_that("currency", {
   # tests for the property `currency` (character)
 
@@ -36,11 +28,12 @@ test_that("currency", {
   #expect_equal(model.instance$`currency`, "EXPECTED_RESULT")
 })
 
-test_that("pmp_names", {
-  # tests for the property `pmp_names` (array[SSIOAccountPMPName])
+test_that("eligible", {
+  # tests for the property `eligible` (character)
+  # Advertiser eligible to create order lines
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`pmp_names`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`eligible`, "EXPECTED_RESULT")
 })
 
 test_that("error", {
@@ -49,4 +42,11 @@ test_that("error", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`error`, "EXPECTED_RESULT")
+})
+
+test_that("pmp_names", {
+  # tests for the property `pmp_names` (array[SSIOAccountPMPName])
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`pmp_names`, "EXPECTED_RESULT")
 })

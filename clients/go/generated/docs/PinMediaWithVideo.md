@@ -4,18 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Images** | Pointer to [**PinMediaWithImageAllOfImages**](PinMediaWithImageAllOfImages.md) |  | [optional] 
 **CoverImageUrl** | Pointer to **string** |  | [optional] 
-**VideoUrl** | Pointer to **NullableString** | Video url (720p). &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field is limited and not available to all apps. | [optional] 
-**Duration** | Pointer to **float32** | Duration (in milliseconds) | [optional] 
-**Height** | Pointer to **int32** | Height (in pixels) | [optional] 
-**Width** | Pointer to **int32** | Width (in pixels) | [optional] 
+**Duration** | Pointer to **NullableFloat32** | Duration (in miliseconds). Field maybe null after creation due to video processing time. | [optional] 
+**Height** | Pointer to **NullableInt32** | Height (in pixels). Field maybe null after creation due to video processing time. | [optional] 
+**Images** | Pointer to [**ImageSize**](ImageSize.md) |  | [optional] 
+**MediaType** | **string** |  | 
+**VideoUrl** | Pointer to **NullableString** | Video url (720p).  **Note:** This field is limited and not available to all apps. | [optional] 
+**Width** | Pointer to **NullableInt32** | Width (in pixels). Field maybe null after creation due to video processing time. | [optional] 
 
 ## Methods
 
 ### NewPinMediaWithVideo
 
-`func NewPinMediaWithVideo() *PinMediaWithVideo`
+`func NewPinMediaWithVideo(mediaType string, ) *PinMediaWithVideo`
 
 NewPinMediaWithVideo instantiates a new PinMediaWithVideo object
 This constructor will assign default values to properties that have it defined,
@@ -29,31 +30,6 @@ will change when the set of required properties is changed
 NewPinMediaWithVideoWithDefaults instantiates a new PinMediaWithVideo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetImages
-
-`func (o *PinMediaWithVideo) GetImages() PinMediaWithImageAllOfImages`
-
-GetImages returns the Images field if non-nil, zero value otherwise.
-
-### GetImagesOk
-
-`func (o *PinMediaWithVideo) GetImagesOk() (*PinMediaWithImageAllOfImages, bool)`
-
-GetImagesOk returns a tuple with the Images field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetImages
-
-`func (o *PinMediaWithVideo) SetImages(v PinMediaWithImageAllOfImages)`
-
-SetImages sets Images field to given value.
-
-### HasImages
-
-`func (o *PinMediaWithVideo) HasImages() bool`
-
-HasImages returns a boolean if a field has been set.
 
 ### GetCoverImageUrl
 
@@ -79,6 +55,121 @@ SetCoverImageUrl sets CoverImageUrl field to given value.
 `func (o *PinMediaWithVideo) HasCoverImageUrl() bool`
 
 HasCoverImageUrl returns a boolean if a field has been set.
+
+### GetDuration
+
+`func (o *PinMediaWithVideo) GetDuration() float32`
+
+GetDuration returns the Duration field if non-nil, zero value otherwise.
+
+### GetDurationOk
+
+`func (o *PinMediaWithVideo) GetDurationOk() (*float32, bool)`
+
+GetDurationOk returns a tuple with the Duration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDuration
+
+`func (o *PinMediaWithVideo) SetDuration(v float32)`
+
+SetDuration sets Duration field to given value.
+
+### HasDuration
+
+`func (o *PinMediaWithVideo) HasDuration() bool`
+
+HasDuration returns a boolean if a field has been set.
+
+### SetDurationNil
+
+`func (o *PinMediaWithVideo) SetDurationNil(b bool)`
+
+ SetDurationNil sets the value for Duration to be an explicit nil
+
+### UnsetDuration
+`func (o *PinMediaWithVideo) UnsetDuration()`
+
+UnsetDuration ensures that no value is present for Duration, not even an explicit nil
+### GetHeight
+
+`func (o *PinMediaWithVideo) GetHeight() int32`
+
+GetHeight returns the Height field if non-nil, zero value otherwise.
+
+### GetHeightOk
+
+`func (o *PinMediaWithVideo) GetHeightOk() (*int32, bool)`
+
+GetHeightOk returns a tuple with the Height field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHeight
+
+`func (o *PinMediaWithVideo) SetHeight(v int32)`
+
+SetHeight sets Height field to given value.
+
+### HasHeight
+
+`func (o *PinMediaWithVideo) HasHeight() bool`
+
+HasHeight returns a boolean if a field has been set.
+
+### SetHeightNil
+
+`func (o *PinMediaWithVideo) SetHeightNil(b bool)`
+
+ SetHeightNil sets the value for Height to be an explicit nil
+
+### UnsetHeight
+`func (o *PinMediaWithVideo) UnsetHeight()`
+
+UnsetHeight ensures that no value is present for Height, not even an explicit nil
+### GetImages
+
+`func (o *PinMediaWithVideo) GetImages() ImageSize`
+
+GetImages returns the Images field if non-nil, zero value otherwise.
+
+### GetImagesOk
+
+`func (o *PinMediaWithVideo) GetImagesOk() (*ImageSize, bool)`
+
+GetImagesOk returns a tuple with the Images field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImages
+
+`func (o *PinMediaWithVideo) SetImages(v ImageSize)`
+
+SetImages sets Images field to given value.
+
+### HasImages
+
+`func (o *PinMediaWithVideo) HasImages() bool`
+
+HasImages returns a boolean if a field has been set.
+
+### GetMediaType
+
+`func (o *PinMediaWithVideo) GetMediaType() string`
+
+GetMediaType returns the MediaType field if non-nil, zero value otherwise.
+
+### GetMediaTypeOk
+
+`func (o *PinMediaWithVideo) GetMediaTypeOk() (*string, bool)`
+
+GetMediaTypeOk returns a tuple with the MediaType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMediaType
+
+`func (o *PinMediaWithVideo) SetMediaType(v string)`
+
+SetMediaType sets MediaType field to given value.
+
 
 ### GetVideoUrl
 
@@ -115,56 +206,6 @@ HasVideoUrl returns a boolean if a field has been set.
 `func (o *PinMediaWithVideo) UnsetVideoUrl()`
 
 UnsetVideoUrl ensures that no value is present for VideoUrl, not even an explicit nil
-### GetDuration
-
-`func (o *PinMediaWithVideo) GetDuration() float32`
-
-GetDuration returns the Duration field if non-nil, zero value otherwise.
-
-### GetDurationOk
-
-`func (o *PinMediaWithVideo) GetDurationOk() (*float32, bool)`
-
-GetDurationOk returns a tuple with the Duration field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDuration
-
-`func (o *PinMediaWithVideo) SetDuration(v float32)`
-
-SetDuration sets Duration field to given value.
-
-### HasDuration
-
-`func (o *PinMediaWithVideo) HasDuration() bool`
-
-HasDuration returns a boolean if a field has been set.
-
-### GetHeight
-
-`func (o *PinMediaWithVideo) GetHeight() int32`
-
-GetHeight returns the Height field if non-nil, zero value otherwise.
-
-### GetHeightOk
-
-`func (o *PinMediaWithVideo) GetHeightOk() (*int32, bool)`
-
-GetHeightOk returns a tuple with the Height field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHeight
-
-`func (o *PinMediaWithVideo) SetHeight(v int32)`
-
-SetHeight sets Height field to given value.
-
-### HasHeight
-
-`func (o *PinMediaWithVideo) HasHeight() bool`
-
-HasHeight returns a boolean if a field has been set.
-
 ### GetWidth
 
 `func (o *PinMediaWithVideo) GetWidth() int32`
@@ -190,6 +231,16 @@ SetWidth sets Width field to given value.
 
 HasWidth returns a boolean if a field has been set.
 
+### SetWidthNil
+
+`func (o *PinMediaWithVideo) SetWidthNil(b bool)`
+
+ SetWidthNil sets the value for Width to be an explicit nil
+
+### UnsetWidth
+`func (o *PinMediaWithVideo) UnsetWidth()`
+
+UnsetWidth ensures that no value is present for Width, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

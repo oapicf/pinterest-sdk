@@ -23,14 +23,14 @@ detailed_error_t* instantiate_detailed_error(int include_optional) {
   if (include_optional) {
     detailed_error = detailed_error_create(
       56,
-      "0",
-      0
+      0,
+      "0"
     );
   } else {
     detailed_error = detailed_error_create(
       56,
-      "0",
-      0
+      0,
+      "0"
     );
   }
 

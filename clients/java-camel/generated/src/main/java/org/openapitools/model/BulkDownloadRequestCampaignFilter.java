@@ -25,39 +25,47 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("BulkDownloadRequest_campaign_filter")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BulkDownloadRequestCampaignFilter {
 
-  private String startTime;
+  @Valid
+  private List<CampaignSummaryStatus> campaignStatus = new ArrayList<>();
 
   private String endTime;
 
   private String name;
 
   @Valid
-  private List<CampaignSummaryStatus> campaignStatus = new ArrayList<>();
-
-  @Valid
   private List<ObjectiveType> objectiveType = new ArrayList<>();
 
-  public BulkDownloadRequestCampaignFilter startTime(String startTime) {
-    this.startTime = startTime;
+  private String startTime;
+
+  public BulkDownloadRequestCampaignFilter campaignStatus(List<CampaignSummaryStatus> campaignStatus) {
+    this.campaignStatus = campaignStatus;
+    return this;
+  }
+
+  public BulkDownloadRequestCampaignFilter addCampaignStatusItem(CampaignSummaryStatus campaignStatusItem) {
+    if (this.campaignStatus == null) {
+      this.campaignStatus = new ArrayList<>();
+    }
+    this.campaignStatus.add(campaignStatusItem);
     return this;
   }
 
   /**
-   * Unix UTC timestamp.
-   * @return startTime
+   * Get campaignStatus
+   * @return campaignStatus
    */
-  @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "start_time", example = "1622848072", description = "Unix UTC timestamp.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("start_time")
-  public String getStartTime() {
-    return startTime;
+  @Valid 
+  @Schema(name = "campaign_status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("campaign_status")
+  public List<CampaignSummaryStatus> getCampaignStatus() {
+    return campaignStatus;
   }
 
-  public void setStartTime(String startTime) {
-    this.startTime = startTime;
+  public void setCampaignStatus(List<CampaignSummaryStatus> campaignStatus) {
+    this.campaignStatus = campaignStatus;
   }
 
   public BulkDownloadRequestCampaignFilter endTime(String endTime) {
@@ -100,34 +108,6 @@ public class BulkDownloadRequestCampaignFilter {
     this.name = name;
   }
 
-  public BulkDownloadRequestCampaignFilter campaignStatus(List<CampaignSummaryStatus> campaignStatus) {
-    this.campaignStatus = campaignStatus;
-    return this;
-  }
-
-  public BulkDownloadRequestCampaignFilter addCampaignStatusItem(CampaignSummaryStatus campaignStatusItem) {
-    if (this.campaignStatus == null) {
-      this.campaignStatus = new ArrayList<>();
-    }
-    this.campaignStatus.add(campaignStatusItem);
-    return this;
-  }
-
-  /**
-   * Get campaignStatus
-   * @return campaignStatus
-   */
-  @Valid 
-  @Schema(name = "campaign_status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("campaign_status")
-  public List<CampaignSummaryStatus> getCampaignStatus() {
-    return campaignStatus;
-  }
-
-  public void setCampaignStatus(List<CampaignSummaryStatus> campaignStatus) {
-    this.campaignStatus = campaignStatus;
-  }
-
   public BulkDownloadRequestCampaignFilter objectiveType(List<ObjectiveType> objectiveType) {
     this.objectiveType = objectiveType;
     return this;
@@ -156,6 +136,26 @@ public class BulkDownloadRequestCampaignFilter {
     this.objectiveType = objectiveType;
   }
 
+  public BulkDownloadRequestCampaignFilter startTime(String startTime) {
+    this.startTime = startTime;
+    return this;
+  }
+
+  /**
+   * Unix UTC timestamp.
+   * @return startTime
+   */
+  @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "start_time", example = "1622848072", description = "Unix UTC timestamp.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("start_time")
+  public String getStartTime() {
+    return startTime;
+  }
+
+  public void setStartTime(String startTime) {
+    this.startTime = startTime;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -165,27 +165,27 @@ public class BulkDownloadRequestCampaignFilter {
       return false;
     }
     BulkDownloadRequestCampaignFilter bulkDownloadRequestCampaignFilter = (BulkDownloadRequestCampaignFilter) o;
-    return Objects.equals(this.startTime, bulkDownloadRequestCampaignFilter.startTime) &&
+    return Objects.equals(this.campaignStatus, bulkDownloadRequestCampaignFilter.campaignStatus) &&
         Objects.equals(this.endTime, bulkDownloadRequestCampaignFilter.endTime) &&
         Objects.equals(this.name, bulkDownloadRequestCampaignFilter.name) &&
-        Objects.equals(this.campaignStatus, bulkDownloadRequestCampaignFilter.campaignStatus) &&
-        Objects.equals(this.objectiveType, bulkDownloadRequestCampaignFilter.objectiveType);
+        Objects.equals(this.objectiveType, bulkDownloadRequestCampaignFilter.objectiveType) &&
+        Objects.equals(this.startTime, bulkDownloadRequestCampaignFilter.startTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startTime, endTime, name, campaignStatus, objectiveType);
+    return Objects.hash(campaignStatus, endTime, name, objectiveType, startTime);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BulkDownloadRequestCampaignFilter {\n");
-    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
+    sb.append("    campaignStatus: ").append(toIndentedString(campaignStatus)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    campaignStatus: ").append(toIndentedString(campaignStatus)).append("\n");
     sb.append("    objectiveType: ").append(toIndentedString(objectiveType)).append("\n");
+    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }

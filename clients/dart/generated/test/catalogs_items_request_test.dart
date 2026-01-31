@@ -21,14 +21,14 @@ void main() {
       // TODO
     });
 
-    // We recommend using the CatalogsLocale values.
-    // String language
-    test('to test the property `language`', () async {
+    // CatalogsItemsPostFilters filters
+    test('to test the property `filters`', () async {
       // TODO
     });
 
-    // CatalogsItemsPostFilters filters
-    test('to test the property `filters`', () async {
+    // We recommend using the CatalogsLocale values.
+    // String language
+    test('to test the property `language`', () async {
       // TODO
     });
 

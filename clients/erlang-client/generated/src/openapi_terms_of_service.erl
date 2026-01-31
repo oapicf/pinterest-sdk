@@ -5,19 +5,19 @@
 -export_type([openapi_terms_of_service/0]).
 
 -type openapi_terms_of_service() ::
-    #{ 'id' => binary(),
-       'html' => binary(),
+    #{ 'ad_account_id' => binary(),
        'has_accepted' => boolean(),
-       'ad_account_id' => binary()
+       'html' => binary(),
+       'id' => binary()
      }.
 
-encode(#{ 'id' := Id,
-          'html' := Html,
+encode(#{ 'ad_account_id' := AdAccountId,
           'has_accepted' := HasAccepted,
-          'ad_account_id' := AdAccountId
+          'html' := Html,
+          'id' := Id
         }) ->
-    #{ 'id' => Id,
-       'html' => Html,
+    #{ 'ad_account_id' => AdAccountId,
        'has_accepted' => HasAccepted,
-       'ad_account_id' => AdAccountId
+       'html' => Html,
+       'id' => Id
      }.

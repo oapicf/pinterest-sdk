@@ -8,8 +8,8 @@
 #' @description CatalogsRetailItemErrorResponse Class
 #' @format An \code{R6Class} generator object
 #' @field catalog_type  \link{CatalogsType}
+#' @field errors Array with the errors for the item id requested list(\link{ItemValidationEvent})
 #' @field item_id The catalog item id in the merchant namespace character [optional]
-#' @field errors Array with the errors for the item id requested list(\link{ItemValidationEvent}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -17,17 +17,17 @@ CatalogsRetailItemErrorResponse <- R6::R6Class(
   "CatalogsRetailItemErrorResponse",
   public = list(
     `catalog_type` = NULL,
-    `item_id` = NULL,
     `errors` = NULL,
+    `item_id` = NULL,
 
     #' @description
     #' Initialize a new CatalogsRetailItemErrorResponse class.
     #'
     #' @param catalog_type catalog_type
-    #' @param item_id The catalog item id in the merchant namespace
     #' @param errors Array with the errors for the item id requested
+    #' @param item_id The catalog item id in the merchant namespace
     #' @param ... Other optional arguments.
-    initialize = function(`catalog_type`, `item_id` = NULL, `errors` = NULL, ...) {
+    initialize = function(`catalog_type`, `errors`, `item_id` = NULL, ...) {
       if (!missing(`catalog_type`)) {
         if (!(`catalog_type` %in% c())) {
           stop(paste("Error! \"", `catalog_type`, "\" cannot be assigned to `catalog_type`. Must be .", sep = ""))
@@ -35,16 +35,16 @@ CatalogsRetailItemErrorResponse <- R6::R6Class(
         stopifnot(R6::is.R6(`catalog_type`))
         self$`catalog_type` <- `catalog_type`
       }
+      if (!missing(`errors`)) {
+        stopifnot(is.vector(`errors`), length(`errors`) != 0)
+        sapply(`errors`, function(x) stopifnot(R6::is.R6(x)))
+        self$`errors` <- `errors`
+      }
       if (!is.null(`item_id`)) {
         if (!(is.character(`item_id`) && length(`item_id`) == 1)) {
           stop(paste("Error! Invalid data for `item_id`. Must be a string:", `item_id`))
         }
         self$`item_id` <- `item_id`
-      }
-      if (!is.null(`errors`)) {
-        stopifnot(is.vector(`errors`), length(`errors`) != 0)
-        sapply(`errors`, function(x) stopifnot(R6::is.R6(x)))
-        self$`errors` <- `errors`
       }
     },
 
@@ -83,13 +83,13 @@ CatalogsRetailItemErrorResponse <- R6::R6Class(
         CatalogsRetailItemErrorResponseObject[["catalog_type"]] <-
           self$`catalog_type`$toSimpleType()
       }
-      if (!is.null(self$`item_id`)) {
-        CatalogsRetailItemErrorResponseObject[["item_id"]] <-
-          self$`item_id`
-      }
       if (!is.null(self$`errors`)) {
         CatalogsRetailItemErrorResponseObject[["errors"]] <-
           lapply(self$`errors`, function(x) x$toSimpleType())
+      }
+      if (!is.null(self$`item_id`)) {
+        CatalogsRetailItemErrorResponseObject[["item_id"]] <-
+          self$`item_id`
       }
       return(CatalogsRetailItemErrorResponseObject)
     },
@@ -106,11 +106,11 @@ CatalogsRetailItemErrorResponse <- R6::R6Class(
         `catalog_type_object`$fromJSON(jsonlite::toJSON(this_object$`catalog_type`, auto_unbox = TRUE, digits = NA))
         self$`catalog_type` <- `catalog_type_object`
       }
-      if (!is.null(this_object$`item_id`)) {
-        self$`item_id` <- this_object$`item_id`
-      }
       if (!is.null(this_object$`errors`)) {
         self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[ItemValidationEvent]", loadNamespace("openapi"))
+      }
+      if (!is.null(this_object$`item_id`)) {
+        self$`item_id` <- this_object$`item_id`
       }
       self
     },
@@ -134,8 +134,8 @@ CatalogsRetailItemErrorResponse <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`catalog_type` <- CatalogsType$new()$fromJSON(jsonlite::toJSON(this_object$`catalog_type`, auto_unbox = TRUE, digits = NA))
-      self$`item_id` <- this_object$`item_id`
       self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[ItemValidationEvent]", loadNamespace("openapi"))
+      self$`item_id` <- this_object$`item_id`
       self
     },
 
@@ -150,6 +150,13 @@ CatalogsRetailItemErrorResponse <- R6::R6Class(
         stopifnot(R6::is.R6(input_json$`catalog_type`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsRetailItemErrorResponse: the required field `catalog_type` is missing."))
+      }
+      # check the required field `errors`
+      if (!is.null(input_json$`errors`)) {
+        stopifnot(is.vector(input_json$`errors`), length(input_json$`errors`) != 0)
+        tmp <- sapply(input_json$`errors`, function(x) stopifnot(R6::is.R6(x)))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsRetailItemErrorResponse: the required field `errors` is missing."))
       }
     },
 
@@ -171,6 +178,11 @@ CatalogsRetailItemErrorResponse <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `errors` is null
+      if (is.null(self$`errors`)) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -183,6 +195,11 @@ CatalogsRetailItemErrorResponse <- R6::R6Class(
       # check if the required `catalog_type` is null
       if (is.null(self$`catalog_type`)) {
         invalid_fields["catalog_type"] <- "Non-nullable required field `catalog_type` cannot be null."
+      }
+
+      # check if the required `errors` is null
+      if (is.null(self$`errors`)) {
+        invalid_fields["errors"] <- "Non-nullable required field `errors` cannot be null."
       }
 
       invalid_fields

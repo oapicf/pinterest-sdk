@@ -11,13 +11,13 @@
 // Functions for enum PERMISSIONS for BusinessAccessAssetsAPI_businessAssetsGet
 
 static char* businessAssetsGet_PERMISSIONS_ToString(pinterest_rest_api_businessAssetsGet_permissions_e PERMISSIONS){
-    char *PERMISSIONSArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "CATALOGS_VIEWER", "PROFILE_PUBLISHER", "OWNER" };
+    char *PERMISSIONSArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "FINANCE_EDIT", "FINANCE_VIEW", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "CATALOGS_VIEWER", "PROFILE_PUBLISHER", "OWNER" };
     return PERMISSIONSArray[PERMISSIONS];
 }
 
 static pinterest_rest_api_businessAssetsGet_permissions_e businessAssetsGet_PERMISSIONS_FromString(char* PERMISSIONS){
     int stringToReturn = 0;
-    char *PERMISSIONSArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "CATALOGS_VIEWER", "PROFILE_PUBLISHER", "OWNER" };
+    char *PERMISSIONSArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "FINANCE_EDIT", "FINANCE_VIEW", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "CATALOGS_VIEWER", "PROFILE_PUBLISHER", "OWNER" };
     size_t sizeofArray = sizeof(PERMISSIONSArray) / sizeof(PERMISSIONSArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(PERMISSIONS, PERMISSIONSArray[stringToReturn]) == 0) {
@@ -54,13 +54,13 @@ end:
 // Functions for enum ASSETTYPE for BusinessAccessAssetsAPI_businessAssetsGet
 
 static char* businessAssetsGet_ASSETTYPE_ToString(pinterest_rest_api_businessAssetsGet_asset_type_e ASSETTYPE){
-    char *ASSETTYPEArray[] =  { "NULL", "AD_ACCOUNT", "PROFILE", "ASSET_GROUP" };
+    char *ASSETTYPEArray[] =  { "NULL", "AD_ACCOUNT", "PROFILE", "ASSET_GROUP", "CATALOG", "CONSUMER" };
     return ASSETTYPEArray[ASSETTYPE];
 }
 
 static pinterest_rest_api_businessAssetsGet_asset_type_e businessAssetsGet_ASSETTYPE_FromString(char* ASSETTYPE){
     int stringToReturn = 0;
-    char *ASSETTYPEArray[] =  { "NULL", "AD_ACCOUNT", "PROFILE", "ASSET_GROUP" };
+    char *ASSETTYPEArray[] =  { "NULL", "AD_ACCOUNT", "PROFILE", "ASSET_GROUP", "CATALOG", "CONSUMER" };
     size_t sizeofArray = sizeof(ASSETTYPEArray) / sizeof(ASSETTYPEArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(ASSETTYPE, ASSETTYPEArray[stringToReturn]) == 0) {
@@ -106,13 +106,13 @@ end:
 // Functions for enum ASSETTYPE for BusinessAccessAssetsAPI_businessMemberAssetsGet
 
 static char* businessMemberAssetsGet_ASSETTYPE_ToString(pinterest_rest_api_businessMemberAssetsGet_asset_type_e ASSETTYPE){
-    char *ASSETTYPEArray[] =  { "NULL", "AD_ACCOUNT", "PROFILE", "ASSET_GROUP" };
+    char *ASSETTYPEArray[] =  { "NULL", "AD_ACCOUNT", "PROFILE", "ASSET_GROUP", "CATALOG", "CONSUMER" };
     return ASSETTYPEArray[ASSETTYPE];
 }
 
 static pinterest_rest_api_businessMemberAssetsGet_asset_type_e businessMemberAssetsGet_ASSETTYPE_FromString(char* ASSETTYPE){
     int stringToReturn = 0;
-    char *ASSETTYPEArray[] =  { "NULL", "AD_ACCOUNT", "PROFILE", "ASSET_GROUP" };
+    char *ASSETTYPEArray[] =  { "NULL", "AD_ACCOUNT", "PROFILE", "ASSET_GROUP", "CATALOG", "CONSUMER" };
     size_t sizeofArray = sizeof(ASSETTYPEArray) / sizeof(ASSETTYPEArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(ASSETTYPE, ASSETTYPEArray[stringToReturn]) == 0) {
@@ -158,13 +158,13 @@ end:
 // Functions for enum ASSETTYPE for BusinessAccessAssetsAPI_businessPartnerAssetAccessGet
 
 static char* businessPartnerAssetAccessGet_ASSETTYPE_ToString(pinterest_rest_api_businessPartnerAssetAccessGet_asset_type_e ASSETTYPE){
-    char *ASSETTYPEArray[] =  { "NULL", "AD_ACCOUNT", "PROFILE", "ASSET_GROUP" };
+    char *ASSETTYPEArray[] =  { "NULL", "AD_ACCOUNT", "PROFILE", "ASSET_GROUP", "CATALOG", "CONSUMER" };
     return ASSETTYPEArray[ASSETTYPE];
 }
 
 static pinterest_rest_api_businessPartnerAssetAccessGet_asset_type_e businessPartnerAssetAccessGet_ASSETTYPE_FromString(char* ASSETTYPE){
     int stringToReturn = 0;
-    char *ASSETTYPEArray[] =  { "NULL", "AD_ACCOUNT", "PROFILE", "ASSET_GROUP" };
+    char *ASSETTYPEArray[] =  { "NULL", "AD_ACCOUNT", "PROFILE", "ASSET_GROUP", "CATALOG", "CONSUMER" };
     size_t sizeofArray = sizeof(ASSETTYPEArray) / sizeof(ASSETTYPEArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(ASSETTYPE, ASSETTYPEArray[stringToReturn]) == 0) {
@@ -534,7 +534,7 @@ end:
 // Get all the members the requesting business has granted access to on the given asset.
 //
 business_asset_members_get_200_response_t*
-BusinessAccessAssetsAPI_businessAssetMembersGet(apiClient_t *apiClient, char *business_id, char *asset_id, char *bookmark, int *page_size, int *start_index)
+BusinessAccessAssetsAPI_businessAssetMembersGet(apiClient_t *apiClient, char *business_id, char *asset_id, int *fetch_system_users, char *bookmark, int *page_size, int *start_index)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -577,6 +577,19 @@ BusinessAccessAssetsAPI_businessAssetMembersGet(apiClient_t *apiClient, char *bu
     localVarPath = strReplace(localVarPath, localVarToReplace_asset_id, asset_id);
 
 
+
+    // query parameters
+    char *keyQuery_fetch_system_users = NULL;
+    char * valueQuery_fetch_system_users = NULL;
+    keyValuePair_t *keyPairQuery_fetch_system_users = 0;
+    if (fetch_system_users)
+    {
+        keyQuery_fetch_system_users = strdup("fetch_system_users");
+        valueQuery_fetch_system_users = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueQuery_fetch_system_users, MAX_NUMBER_LENGTH, "%d", *fetch_system_users);
+        keyPairQuery_fetch_system_users = keyValuePair_create(keyQuery_fetch_system_users, valueQuery_fetch_system_users);
+        list_addElement(localVarQueryParameters,keyPairQuery_fetch_system_users);
+    }
 
     // query parameters
     char *keyQuery_bookmark = NULL;
@@ -660,6 +673,18 @@ BusinessAccessAssetsAPI_businessAssetMembersGet(apiClient_t *apiClient, char *bu
     free(localVarPath);
     free(localVarToReplace_business_id);
     free(localVarToReplace_asset_id);
+    if(keyQuery_fetch_system_users){
+        free(keyQuery_fetch_system_users);
+        keyQuery_fetch_system_users = NULL;
+    }
+    if(valueQuery_fetch_system_users){
+        free(valueQuery_fetch_system_users);
+        valueQuery_fetch_system_users = NULL;
+    }
+    if(keyPairQuery_fetch_system_users){
+        keyValuePair_free(keyPairQuery_fetch_system_users);
+        keyPairQuery_fetch_system_users = NULL;
+    }
     if(keyQuery_bookmark){
         free(keyQuery_bookmark);
         keyQuery_bookmark = NULL;

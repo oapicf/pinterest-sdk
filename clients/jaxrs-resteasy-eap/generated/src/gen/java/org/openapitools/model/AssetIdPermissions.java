@@ -14,13 +14,25 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="An object containing the permissions a business member has on the asset.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="An object containing the permissions a business member has on the asset.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AssetIdPermissions   {
   
+  private AssetGroupBinding assetGroupInfo;
   private String assetId;
   private String assetType;
   private List<String> permissions = new ArrayList<>();
-  private AssetGroupBinding assetGroupInfo;
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("asset_group_info")
+  public AssetGroupBinding getAssetGroupInfo() {
+    return assetGroupInfo;
+  }
+  public void setAssetGroupInfo(AssetGroupBinding assetGroupInfo) {
+    this.assetGroupInfo = assetGroupInfo;
+  }
 
   /**
    * Unique identifier of a business asset.
@@ -36,10 +48,10 @@ public class AssetIdPermissions   {
   }
 
   /**
-   * Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+   * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
    **/
   
-  @ApiModelProperty(example = "AD_ACCOUNT", value = "Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.")
+  @ApiModelProperty(example = "AD_ACCOUNT", value = "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.")
   @JsonProperty("asset_type")
   public String getAssetType() {
     return assetType;
@@ -61,18 +73,6 @@ public class AssetIdPermissions   {
     this.permissions = permissions;
   }
 
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("asset_group_info")
-  public AssetGroupBinding getAssetGroupInfo() {
-    return assetGroupInfo;
-  }
-  public void setAssetGroupInfo(AssetGroupBinding assetGroupInfo) {
-    this.assetGroupInfo = assetGroupInfo;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -83,15 +83,15 @@ public class AssetIdPermissions   {
       return false;
     }
     AssetIdPermissions assetIdPermissions = (AssetIdPermissions) o;
-    return Objects.equals(this.assetId, assetIdPermissions.assetId) &&
+    return Objects.equals(this.assetGroupInfo, assetIdPermissions.assetGroupInfo) &&
+        Objects.equals(this.assetId, assetIdPermissions.assetId) &&
         Objects.equals(this.assetType, assetIdPermissions.assetType) &&
-        Objects.equals(this.permissions, assetIdPermissions.permissions) &&
-        Objects.equals(this.assetGroupInfo, assetIdPermissions.assetGroupInfo);
+        Objects.equals(this.permissions, assetIdPermissions.permissions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetId, assetType, permissions, assetGroupInfo);
+    return Objects.hash(assetGroupInfo, assetId, assetType, permissions);
   }
 
   @Override
@@ -99,10 +99,10 @@ public class AssetIdPermissions   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AssetIdPermissions {\n");
     
+    sb.append("    assetGroupInfo: ").append(toIndentedString(assetGroupInfo)).append("\n");
     sb.append("    assetId: ").append(toIndentedString(assetId)).append("\n");
     sb.append("    assetType: ").append(toIndentedString(assetType)).append("\n");
     sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
-    sb.append("    assetGroupInfo: ").append(toIndentedString(assetGroupInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -20,31 +20,12 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("RelatedTerms_related_terms_list_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class RelatedTermsRelatedTermsListInner   {
-  private String term;
   private @Valid List<String> relatedTerms = new ArrayList<>();
+  private String term;
 
   public RelatedTermsRelatedTermsListInner() {
-  }
-
-  /**
-   **/
-  public RelatedTermsRelatedTermsListInner term(String term) {
-    this.term = term;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "clothes", value = "")
-  @JsonProperty("term")
-  public String getTerm() {
-    return term;
-  }
-
-  @JsonProperty("term")
-  public void setTerm(String term) {
-    this.term = term;
   }
 
   /**
@@ -82,6 +63,25 @@ public class RelatedTermsRelatedTermsListInner   {
 
     return this;
   }
+  /**
+   **/
+  public RelatedTermsRelatedTermsListInner term(String term) {
+    this.term = term;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "clothes", value = "")
+  @JsonProperty("term")
+  public String getTerm() {
+    return term;
+  }
+
+  @JsonProperty("term")
+  public void setTerm(String term) {
+    this.term = term;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -92,13 +92,13 @@ public class RelatedTermsRelatedTermsListInner   {
       return false;
     }
     RelatedTermsRelatedTermsListInner relatedTermsRelatedTermsListInner = (RelatedTermsRelatedTermsListInner) o;
-    return Objects.equals(this.term, relatedTermsRelatedTermsListInner.term) &&
-        Objects.equals(this.relatedTerms, relatedTermsRelatedTermsListInner.relatedTerms);
+    return Objects.equals(this.relatedTerms, relatedTermsRelatedTermsListInner.relatedTerms) &&
+        Objects.equals(this.term, relatedTermsRelatedTermsListInner.term);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(term, relatedTerms);
+    return Objects.hash(relatedTerms, term);
   }
 
   @Override
@@ -106,8 +106,8 @@ public class RelatedTermsRelatedTermsListInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class RelatedTermsRelatedTermsListInner {\n");
     
-    sb.append("    term: ").append(toIndentedString(term)).append("\n");
     sb.append("    relatedTerms: ").append(toIndentedString(relatedTerms)).append("\n");
+    sb.append("    term: ").append(toIndentedString(term)).append("\n");
     sb.append("}");
     return sb.toString();
   }

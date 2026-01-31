@@ -22,18 +22,18 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param latestAvailableTimestamp 
  * @param isRealtime 
+ * @param latestAvailableTimestamp 
  */
 
 
 data class TopPinsAnalyticsResponseDateAvailability (
 
-    @Json(name = "latest_available_timestamp")
-    val latestAvailableTimestamp: java.math.BigDecimal? = null,
-
     @Json(name = "is_realtime")
-    val isRealtime: kotlin.Boolean? = null
+    val isRealtime: kotlin.Boolean? = null,
+
+    @Json(name = "latest_available_timestamp")
+    val latestAvailableTimestamp: java.math.BigDecimal? = null
 
 ) {
 

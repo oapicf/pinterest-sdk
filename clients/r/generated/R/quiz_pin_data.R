@@ -9,8 +9,8 @@
 #' @format An \code{R6Class} generator object
 #' @field questions  list(\link{QuizPinQuestion}) [optional]
 #' @field results  list(\link{QuizPinResult}) [optional]
-#' @field tie_breaker_type Quiz ad tie breaker type, default is RANDOM character [optional]
 #' @field tie_breaker_custom_result  \link{QuizPinResult} [optional]
+#' @field tie_breaker_type Quiz ad tie breaker type, default is RANDOM character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -19,18 +19,18 @@ QuizPinData <- R6::R6Class(
   public = list(
     `questions` = NULL,
     `results` = NULL,
-    `tie_breaker_type` = NULL,
     `tie_breaker_custom_result` = NULL,
+    `tie_breaker_type` = NULL,
 
     #' @description
     #' Initialize a new QuizPinData class.
     #'
     #' @param questions questions
     #' @param results results
-    #' @param tie_breaker_type Quiz ad tie breaker type, default is RANDOM
     #' @param tie_breaker_custom_result tie_breaker_custom_result
+    #' @param tie_breaker_type Quiz ad tie breaker type, default is RANDOM
     #' @param ... Other optional arguments.
-    initialize = function(`questions` = NULL, `results` = NULL, `tie_breaker_type` = NULL, `tie_breaker_custom_result` = NULL, ...) {
+    initialize = function(`questions` = NULL, `results` = NULL, `tie_breaker_custom_result` = NULL, `tie_breaker_type` = NULL, ...) {
       if (!is.null(`questions`)) {
         stopifnot(is.vector(`questions`), length(`questions`) != 0)
         sapply(`questions`, function(x) stopifnot(R6::is.R6(x)))
@@ -41,6 +41,10 @@ QuizPinData <- R6::R6Class(
         sapply(`results`, function(x) stopifnot(R6::is.R6(x)))
         self$`results` <- `results`
       }
+      if (!is.null(`tie_breaker_custom_result`)) {
+        stopifnot(R6::is.R6(`tie_breaker_custom_result`))
+        self$`tie_breaker_custom_result` <- `tie_breaker_custom_result`
+      }
       if (!is.null(`tie_breaker_type`)) {
         if (!(`tie_breaker_type` %in% c("RANDOM", "CUSTOM"))) {
           stop(paste("Error! \"", `tie_breaker_type`, "\" cannot be assigned to `tie_breaker_type`. Must be \"RANDOM\", \"CUSTOM\".", sep = ""))
@@ -49,10 +53,6 @@ QuizPinData <- R6::R6Class(
           stop(paste("Error! Invalid data for `tie_breaker_type`. Must be a string:", `tie_breaker_type`))
         }
         self$`tie_breaker_type` <- `tie_breaker_type`
-      }
-      if (!is.null(`tie_breaker_custom_result`)) {
-        stopifnot(R6::is.R6(`tie_breaker_custom_result`))
-        self$`tie_breaker_custom_result` <- `tie_breaker_custom_result`
       }
     },
 
@@ -95,13 +95,13 @@ QuizPinData <- R6::R6Class(
         QuizPinDataObject[["results"]] <-
           lapply(self$`results`, function(x) x$toSimpleType())
       }
-      if (!is.null(self$`tie_breaker_type`)) {
-        QuizPinDataObject[["tie_breaker_type"]] <-
-          self$`tie_breaker_type`
-      }
       if (!is.null(self$`tie_breaker_custom_result`)) {
         QuizPinDataObject[["tie_breaker_custom_result"]] <-
           self$`tie_breaker_custom_result`$toSimpleType()
+      }
+      if (!is.null(self$`tie_breaker_type`)) {
+        QuizPinDataObject[["tie_breaker_type"]] <-
+          self$`tie_breaker_type`
       }
       return(QuizPinDataObject)
     },
@@ -119,16 +119,16 @@ QuizPinData <- R6::R6Class(
       if (!is.null(this_object$`results`)) {
         self$`results` <- ApiClient$new()$deserializeObj(this_object$`results`, "array[QuizPinResult]", loadNamespace("openapi"))
       }
+      if (!is.null(this_object$`tie_breaker_custom_result`)) {
+        `tie_breaker_custom_result_object` <- QuizPinResult$new()
+        `tie_breaker_custom_result_object`$fromJSON(jsonlite::toJSON(this_object$`tie_breaker_custom_result`, auto_unbox = TRUE, digits = NA))
+        self$`tie_breaker_custom_result` <- `tie_breaker_custom_result_object`
+      }
       if (!is.null(this_object$`tie_breaker_type`)) {
         if (!is.null(this_object$`tie_breaker_type`) && !(this_object$`tie_breaker_type` %in% c("RANDOM", "CUSTOM"))) {
           stop(paste("Error! \"", this_object$`tie_breaker_type`, "\" cannot be assigned to `tie_breaker_type`. Must be \"RANDOM\", \"CUSTOM\".", sep = ""))
         }
         self$`tie_breaker_type` <- this_object$`tie_breaker_type`
-      }
-      if (!is.null(this_object$`tie_breaker_custom_result`)) {
-        `tie_breaker_custom_result_object` <- QuizPinResult$new()
-        `tie_breaker_custom_result_object`$fromJSON(jsonlite::toJSON(this_object$`tie_breaker_custom_result`, auto_unbox = TRUE, digits = NA))
-        self$`tie_breaker_custom_result` <- `tie_breaker_custom_result_object`
       }
       self
     },
@@ -153,11 +153,11 @@ QuizPinData <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`questions` <- ApiClient$new()$deserializeObj(this_object$`questions`, "array[QuizPinQuestion]", loadNamespace("openapi"))
       self$`results` <- ApiClient$new()$deserializeObj(this_object$`results`, "array[QuizPinResult]", loadNamespace("openapi"))
+      self$`tie_breaker_custom_result` <- QuizPinResult$new()$fromJSON(jsonlite::toJSON(this_object$`tie_breaker_custom_result`, auto_unbox = TRUE, digits = NA))
       if (!is.null(this_object$`tie_breaker_type`) && !(this_object$`tie_breaker_type` %in% c("RANDOM", "CUSTOM"))) {
         stop(paste("Error! \"", this_object$`tie_breaker_type`, "\" cannot be assigned to `tie_breaker_type`. Must be \"RANDOM\", \"CUSTOM\".", sep = ""))
       }
       self$`tie_breaker_type` <- this_object$`tie_breaker_type`
-      self$`tie_breaker_custom_result` <- QuizPinResult$new()$fromJSON(jsonlite::toJSON(this_object$`tie_breaker_custom_result`, auto_unbox = TRUE, digits = NA))
       self
     },
 

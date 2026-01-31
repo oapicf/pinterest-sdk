@@ -23,82 +23,22 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("LeadFormResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LeadFormResponse   {
-  private String name;
-  private String privacyPolicyLink;
-  private Boolean hasAcceptedTerms;
   private String completionMessage;
-  private LeadFormStatus status;
   private String disclosureLanguage;
-  private @Valid List<@Valid LeadFormQuestion> questions = new ArrayList<>();
+  private Boolean hasAcceptedTerms;
+  private String name;
   private @Valid List<@Valid LeadFormCommonPolicyLinksInner> policyLinks = new ArrayList<>();
-  private String id;
+  private String privacyPolicyLink;
+  private @Valid List<@Valid LeadFormQuestion> questions = new ArrayList<>();
+  private LeadFormStatus status;
   private String adAccountId;
   private Integer createdTime;
+  private String id;
   private Integer updatedTime;
 
   public LeadFormResponse() {
-  }
-
-  /**
-   * Internal name of the lead form.
-   **/
-  public LeadFormResponse name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "Lead Form 3/14/2023", value = "Internal name of the lead form.")
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-
-  @JsonProperty("name")
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  /**
-   * A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language.
-   **/
-  public LeadFormResponse privacyPolicyLink(String privacyPolicyLink) {
-    this.privacyPolicyLink = privacyPolicyLink;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "https://www.advertisername.com/privacy-policy", value = "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.")
-  @JsonProperty("privacy_policy_link")
-  public String getPrivacyPolicyLink() {
-    return privacyPolicyLink;
-  }
-
-  @JsonProperty("privacy_policy_link")
-  public void setPrivacyPolicyLink(String privacyPolicyLink) {
-    this.privacyPolicyLink = privacyPolicyLink;
-  }
-
-  /**
-   * Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO
-   **/
-  public LeadFormResponse hasAcceptedTerms(Boolean hasAcceptedTerms) {
-    this.hasAcceptedTerms = hasAcceptedTerms;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "false", value = "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO")
-  @JsonProperty("has_accepted_terms")
-  public Boolean getHasAcceptedTerms() {
-    return hasAcceptedTerms;
-  }
-
-  @JsonProperty("has_accepted_terms")
-  public void setHasAcceptedTerms(Boolean hasAcceptedTerms) {
-    this.hasAcceptedTerms = hasAcceptedTerms;
   }
 
   /**
@@ -122,25 +62,6 @@ public class LeadFormResponse   {
   }
 
   /**
-   **/
-  public LeadFormResponse status(LeadFormStatus status) {
-    this.status = status;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("status")
-  public LeadFormStatus getStatus() {
-    return status;
-  }
-
-  @JsonProperty("status")
-  public void setStatus(LeadFormStatus status) {
-    this.status = status;
-  }
-
-  /**
    * Additional disclosure language to be included in the lead form.
    **/
   public LeadFormResponse disclosureLanguage(String disclosureLanguage) {
@@ -158,6 +79,102 @@ public class LeadFormResponse   {
   @JsonProperty("disclosure_language")
   public void setDisclosureLanguage(String disclosureLanguage) {
     this.disclosureLanguage = disclosureLanguage;
+  }
+
+  /**
+   * Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO
+   **/
+  public LeadFormResponse hasAcceptedTerms(Boolean hasAcceptedTerms) {
+    this.hasAcceptedTerms = hasAcceptedTerms;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "false", value = "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO")
+  @JsonProperty("has_accepted_terms")
+  public Boolean getHasAcceptedTerms() {
+    return hasAcceptedTerms;
+  }
+
+  @JsonProperty("has_accepted_terms")
+  public void setHasAcceptedTerms(Boolean hasAcceptedTerms) {
+    this.hasAcceptedTerms = hasAcceptedTerms;
+  }
+
+  /**
+   * Internal name of the lead form.
+   **/
+  public LeadFormResponse name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "Lead Form 3/14/2023", value = "Internal name of the lead form.")
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  @JsonProperty("name")
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  /**
+   * List of additional policy links to be displayed on the lead form.
+   **/
+  public LeadFormResponse policyLinks(List<@Valid LeadFormCommonPolicyLinksInner> policyLinks) {
+    this.policyLinks = policyLinks;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "[{label=Copyright, link=https://policy.pinterest.com/en/copyright}]", value = "List of additional policy links to be displayed on the lead form.")
+  @JsonProperty("policy_links")
+  @Valid  @Size(min=0,max=3)public List<@Valid LeadFormCommonPolicyLinksInner> getPolicyLinks() {
+    return policyLinks;
+  }
+
+  @JsonProperty("policy_links")
+  public void setPolicyLinks(List<@Valid LeadFormCommonPolicyLinksInner> policyLinks) {
+    this.policyLinks = policyLinks;
+  }
+
+  public LeadFormResponse addPolicyLinksItem(LeadFormCommonPolicyLinksInner policyLinksItem) {
+    if (this.policyLinks == null) {
+      this.policyLinks = new ArrayList<>();
+    }
+
+    this.policyLinks.add(policyLinksItem);
+    return this;
+  }
+
+  public LeadFormResponse removePolicyLinksItem(LeadFormCommonPolicyLinksInner policyLinksItem) {
+    if (policyLinksItem != null && this.policyLinks != null) {
+      this.policyLinks.remove(policyLinksItem);
+    }
+
+    return this;
+  }
+  /**
+   * A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language.
+   **/
+  public LeadFormResponse privacyPolicyLink(String privacyPolicyLink) {
+    this.privacyPolicyLink = privacyPolicyLink;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "https://www.advertisername.com/privacy-policy", value = "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.")
+  @JsonProperty("privacy_policy_link")
+  public String getPrivacyPolicyLink() {
+    return privacyPolicyLink;
+  }
+
+  @JsonProperty("privacy_policy_link")
+  public void setPrivacyPolicyLink(String privacyPolicyLink) {
+    this.privacyPolicyLink = privacyPolicyLink;
   }
 
   /**
@@ -197,59 +214,22 @@ public class LeadFormResponse   {
     return this;
   }
   /**
-   * List of additional policy links to be displayed on the lead form.
    **/
-  public LeadFormResponse policyLinks(List<@Valid LeadFormCommonPolicyLinksInner> policyLinks) {
-    this.policyLinks = policyLinks;
+  public LeadFormResponse status(LeadFormStatus status) {
+    this.status = status;
     return this;
   }
 
   
-  @ApiModelProperty(example = "[{label=Copyright, link=https://policy.pinterest.com/en/copyright}]", value = "List of additional policy links to be displayed on the lead form.")
-  @JsonProperty("policy_links")
-  @Valid  @Size(min=0,max=3)public List<@Valid LeadFormCommonPolicyLinksInner> getPolicyLinks() {
-    return policyLinks;
+  @ApiModelProperty(value = "")
+  @JsonProperty("status")
+  public LeadFormStatus getStatus() {
+    return status;
   }
 
-  @JsonProperty("policy_links")
-  public void setPolicyLinks(List<@Valid LeadFormCommonPolicyLinksInner> policyLinks) {
-    this.policyLinks = policyLinks;
-  }
-
-  public LeadFormResponse addPolicyLinksItem(LeadFormCommonPolicyLinksInner policyLinksItem) {
-    if (this.policyLinks == null) {
-      this.policyLinks = new ArrayList<>();
-    }
-
-    this.policyLinks.add(policyLinksItem);
-    return this;
-  }
-
-  public LeadFormResponse removePolicyLinksItem(LeadFormCommonPolicyLinksInner policyLinksItem) {
-    if (policyLinksItem != null && this.policyLinks != null) {
-      this.policyLinks.remove(policyLinksItem);
-    }
-
-    return this;
-  }
-  /**
-   * The ID of this lead form
-   **/
-  public LeadFormResponse id(String id) {
-    this.id = id;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "7765300871171", value = "The ID of this lead form")
-  @JsonProperty("id")
-   @Pattern(regexp="^\\d+$")public String getId() {
-    return id;
-  }
-
-  @JsonProperty("id")
-  public void setId(String id) {
-    this.id = id;
+  @JsonProperty("status")
+  public void setStatus(LeadFormStatus status) {
+    this.status = status;
   }
 
   /**
@@ -293,6 +273,26 @@ public class LeadFormResponse   {
   }
 
   /**
+   * The ID of this lead form
+   **/
+  public LeadFormResponse id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "7765300871171", value = "The ID of this lead form")
+  @JsonProperty("id")
+   @Pattern(regexp="^\\d+$")public String getId() {
+    return id;
+  }
+
+  @JsonProperty("id")
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  /**
    * Last update time. Unix timestamp in seconds.
    **/
   public LeadFormResponse updatedTime(Integer updatedTime) {
@@ -322,23 +322,23 @@ public class LeadFormResponse   {
       return false;
     }
     LeadFormResponse leadFormResponse = (LeadFormResponse) o;
-    return Objects.equals(this.name, leadFormResponse.name) &&
-        Objects.equals(this.privacyPolicyLink, leadFormResponse.privacyPolicyLink) &&
-        Objects.equals(this.hasAcceptedTerms, leadFormResponse.hasAcceptedTerms) &&
-        Objects.equals(this.completionMessage, leadFormResponse.completionMessage) &&
-        Objects.equals(this.status, leadFormResponse.status) &&
+    return Objects.equals(this.completionMessage, leadFormResponse.completionMessage) &&
         Objects.equals(this.disclosureLanguage, leadFormResponse.disclosureLanguage) &&
-        Objects.equals(this.questions, leadFormResponse.questions) &&
+        Objects.equals(this.hasAcceptedTerms, leadFormResponse.hasAcceptedTerms) &&
+        Objects.equals(this.name, leadFormResponse.name) &&
         Objects.equals(this.policyLinks, leadFormResponse.policyLinks) &&
-        Objects.equals(this.id, leadFormResponse.id) &&
+        Objects.equals(this.privacyPolicyLink, leadFormResponse.privacyPolicyLink) &&
+        Objects.equals(this.questions, leadFormResponse.questions) &&
+        Objects.equals(this.status, leadFormResponse.status) &&
         Objects.equals(this.adAccountId, leadFormResponse.adAccountId) &&
         Objects.equals(this.createdTime, leadFormResponse.createdTime) &&
+        Objects.equals(this.id, leadFormResponse.id) &&
         Objects.equals(this.updatedTime, leadFormResponse.updatedTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, privacyPolicyLink, hasAcceptedTerms, completionMessage, status, disclosureLanguage, questions, policyLinks, id, adAccountId, createdTime, updatedTime);
+    return Objects.hash(completionMessage, disclosureLanguage, hasAcceptedTerms, name, policyLinks, privacyPolicyLink, questions, status, adAccountId, createdTime, id, updatedTime);
   }
 
   @Override
@@ -346,17 +346,17 @@ public class LeadFormResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class LeadFormResponse {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    privacyPolicyLink: ").append(toIndentedString(privacyPolicyLink)).append("\n");
-    sb.append("    hasAcceptedTerms: ").append(toIndentedString(hasAcceptedTerms)).append("\n");
     sb.append("    completionMessage: ").append(toIndentedString(completionMessage)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    disclosureLanguage: ").append(toIndentedString(disclosureLanguage)).append("\n");
-    sb.append("    questions: ").append(toIndentedString(questions)).append("\n");
+    sb.append("    hasAcceptedTerms: ").append(toIndentedString(hasAcceptedTerms)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    policyLinks: ").append(toIndentedString(policyLinks)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    privacyPolicyLink: ").append(toIndentedString(privacyPolicyLink)).append("\n");
+    sb.append("    questions: ").append(toIndentedString(questions)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
     sb.append("}");
     return sb.toString();

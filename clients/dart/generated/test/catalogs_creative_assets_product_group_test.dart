@@ -16,8 +16,30 @@ void main() {
   // final instance = CatalogsCreativeAssetsProductGroup();
 
   group('test CatalogsCreativeAssetsProductGroup', () {
+    // Catalog id pertaining to the creative assets product group.
+    // String catalogId
+    test('to test the property `catalogId`', () async {
+      // TODO
+    });
+
     // String catalogType
     test('to test the property `catalogType`', () async {
+      // TODO
+    });
+
+    // Unix timestamp in seconds of when catalog product group was created.
+    // int createdAt
+    test('to test the property `createdAt`', () async {
+      // TODO
+    });
+
+    // String description
+    test('to test the property `description`', () async {
+      // TODO
+    });
+
+    // CatalogsCreativeAssetsProductGroupFilters filters
+    test('to test the property `filters`', () async {
       // TODO
     });
 
@@ -33,31 +55,9 @@ void main() {
       // TODO
     });
 
-    // String description
-    test('to test the property `description`', () async {
-      // TODO
-    });
-
-    // CatalogsCreativeAssetsProductGroupFilters filters
-    test('to test the property `filters`', () async {
-      // TODO
-    });
-
-    // Unix timestamp in seconds of when catalog product group was created.
-    // int createdAt
-    test('to test the property `createdAt`', () async {
-      // TODO
-    });
-
     // Unix timestamp in seconds of last time catalog product group was updated.
     // int updatedAt
     test('to test the property `updatedAt`', () async {
-      // TODO
-    });
-
-    // Catalog id pertaining to the creative assets product group.
-    // String catalogId
-    test('to test the property `catalogId`', () async {
       // TODO
     });
 

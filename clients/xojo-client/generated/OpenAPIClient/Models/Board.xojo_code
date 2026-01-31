@@ -2,33 +2,10 @@
 Protected Class Board
 
 	#tag Property, Flags = &h0
-		id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Date and time of board creation.
-		#tag EndNote
-		created_at As Date
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		#tag Note
 			Date and time of last board pins modified.
 		#tag EndNote
 		board_pins_modified_at As Date
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		name As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		description As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -42,9 +19,14 @@ Protected Class Board
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Count of pins on the board.
+			Date and time of board creation.
 		#tag EndNote
-		pin_count As Xoson.O.OptionalInteger
+		created_at As Date
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		description As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -57,7 +39,31 @@ Protected Class Board
 
 
 	#tag Property, Flags = &h0
+		id As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			If set to `true`, the board will be ad-only and can store ad-only Pins.
+		#tag EndNote
+		is_ads_only As Xoson.O.OptionalBoolean
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Board media.
+		#tag EndNote
 		media As OpenAPIClient.Models.BoardMedia
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			     Name of the board.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the board name automatically becomes "Ad-only Pins".
+		#tag EndNote
+		name As String
 	#tag EndProperty
 
 
@@ -68,36 +74,21 @@ Protected Class Board
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Privacy setting for a board. Learn more about <a href="https://help.pinterest.com/en/article/secret-boards">secret boards</a> and <a href="https://help.pinterest.com/en/business/article/protected-boards">protected boards</a>
+			Count of Pins on the board.
+		#tag EndNote
+		pin_count As Xoson.O.OptionalInteger
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			    Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the `privacy` settng automatically becomes `PROTECTED`. 
 		#tag EndNote
 		privacy As Xoson.O.OptionalString
 	#tag EndProperty
 
 
-    #tag Enum, Name = PrivacyEnum, Type = Integer, Flags = &h0
-        
-        Escapedpublic
-        Escapedprotected
-        Secret
-        
-    #tag EndEnum
 
-
-	#tag Method, Flags = &h0
-		Shared Function PrivacyEnumToString(value As PrivacyEnum) As String
-		  Select Case value
-		    
-		    Case PrivacyEnum.Escapedpublic
-		      Return "PUBLIC"
-		    Case PrivacyEnum.Escapedprotected
-		      Return "PROTECTED"
-		    Case PrivacyEnum.Secret
-		      Return "SECRET"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
 
 
 	#tag ViewBehavior
@@ -134,43 +125,11 @@ Protected Class Board
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="created_at"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Date"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="board_pins_modified_at"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="Date"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="name"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="description"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -182,11 +141,19 @@ Protected Class Board
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="pin_count"
+			Name="created_at"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Integer"
+			Type="Date"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="description"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -198,6 +165,22 @@ Protected Class Board
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="is_ads_only"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="media"
 			Visible=false
 			Group="Behavior"
@@ -206,11 +189,35 @@ Protected Class Board
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="name"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="owner"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="BoardOwner"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="pin_count"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="privacy"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="BoardPrivacy"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

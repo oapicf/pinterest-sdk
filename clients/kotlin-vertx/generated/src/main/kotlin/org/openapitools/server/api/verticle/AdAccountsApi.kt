@@ -2,12 +2,13 @@ package org.openapitools.server.api.verticle
 
 import org.openapitools.server.api.model.AdAccount
 import org.openapitools.server.api.model.AdAccountAnalyticsResponseInner
-import org.openapitools.server.api.model.AdAccountCreateRequest
+import org.openapitools.server.api.model.AdAccountCreate
 import org.openapitools.server.api.model.AdAccountsList200Response
 import org.openapitools.server.api.model.AdsAnalyticsCreateAsyncRequest
 import org.openapitools.server.api.model.AdsAnalyticsCreateAsyncResponse
 import org.openapitools.server.api.model.AdsAnalyticsGetAsyncResponse
 import org.openapitools.server.api.model.AdsAnalyticsTargetingType
+import org.openapitools.server.api.model.ConversionProductReportRequest
 import org.openapitools.server.api.model.ConversionReportAttributionType
 import org.openapitools.server.api.model.CreateMMMReportRequest
 import org.openapitools.server.api.model.CreateMMMReportResponse
@@ -15,6 +16,9 @@ import org.openapitools.server.api.model.Error
 import org.openapitools.server.api.model.GetMMMReportResponse
 import org.openapitools.server.api.model.Granularity
 import org.openapitools.server.api.model.MetricsResponse
+import org.openapitools.server.api.model.PinterestLibError
+import org.openapitools.server.api.model.ReportingTimeZone
+import org.openapitools.server.api.model.TemplateBasedReport
 import org.openapitools.server.api.model.TemplatesList200Response
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
@@ -34,19 +38,22 @@ interface AdAccountsApi  {
     fun init(vertx:Vertx,config:JsonObject)
     /* adAccountAnalytics
      * Get ad account analytics */
-    suspend fun adAccountAnalytics(adAccountId:kotlin.String?,startDate:java.time.LocalDate?,endDate:java.time.LocalDate?,columns:kotlin.Array<kotlin.String>?,granularity:Granularity?,clickWindowDays:kotlin.Int?,engagementWindowDays:kotlin.Int?,viewWindowDays:kotlin.Int?,conversionReportTime:kotlin.String?,context:OperationRequest):Response<kotlin.Array<AdAccountAnalyticsResponseInner>>
+    suspend fun adAccountAnalytics(adAccountId:kotlin.String?,startDate:java.time.LocalDate?,endDate:java.time.LocalDate?,columns:kotlin.Array<kotlin.String>?,granularity:Granularity?,clickWindowDays:kotlin.Int?,engagementWindowDays:kotlin.Int?,viewWindowDays:kotlin.Int?,conversionReportTime:kotlin.String?,reportingTimezone:ReportingTimeZone?,context:OperationRequest):Response<kotlin.Array<AdAccountAnalyticsResponseInner>>
     /* adAccountTargetingAnalyticsGet
      * Get targeting analytics for an ad account */
-    suspend fun adAccountTargetingAnalyticsGet(adAccountId:kotlin.String?,startDate:java.time.LocalDate?,endDate:java.time.LocalDate?,targetingTypes:kotlin.Array<AdsAnalyticsTargetingType>?,columns:kotlin.Array<kotlin.String>?,granularity:Granularity?,clickWindowDays:kotlin.Int?,engagementWindowDays:kotlin.Int?,viewWindowDays:kotlin.Int?,conversionReportTime:kotlin.String?,attributionTypes:ConversionReportAttributionType?,context:OperationRequest):Response<MetricsResponse>
+    suspend fun adAccountTargetingAnalyticsGet(adAccountId:kotlin.String?,startDate:java.time.LocalDate?,endDate:java.time.LocalDate?,targetingTypes:kotlin.Array<AdsAnalyticsTargetingType>?,columns:kotlin.Array<kotlin.String>?,granularity:Granularity?,clickWindowDays:kotlin.Int?,engagementWindowDays:kotlin.Int?,viewWindowDays:kotlin.Int?,conversionReportTime:kotlin.String?,attributionTypes:kotlin.Array<ConversionReportAttributionType>?,reportingTimezone:ReportingTimeZone?,context:OperationRequest):Response<MetricsResponse>
     /* adAccountsCreate
      * Create ad account */
-    suspend fun adAccountsCreate(adAccountCreateRequest:AdAccountCreateRequest?,context:OperationRequest):Response<AdAccount>
+    suspend fun adAccountsCreate(adAccountCreate:AdAccountCreate?,context:OperationRequest):Response<AdAccount>
     /* adAccountsGet
      * Get ad account */
     suspend fun adAccountsGet(adAccountId:kotlin.String?,context:OperationRequest):Response<AdAccount>
     /* adAccountsList
      * List ad accounts */
-    suspend fun adAccountsList(bookmark:kotlin.String?,pageSize:kotlin.Int?,includeSharedAccounts:kotlin.Boolean?,context:OperationRequest):Response<AdAccountsList200Response>
+    suspend fun adAccountsList(includeSharedAccounts:kotlin.Boolean?,bookmark:kotlin.String?,pageSize:kotlin.Int?,context:OperationRequest):Response<AdAccountsList200Response>
+    /* analyticsCreateConversionProductReport
+     * Create a request for a brand, category, SKU report */
+    suspend fun analyticsCreateConversionProductReport(adAccountId:kotlin.String?,conversionProductReportRequest:ConversionProductReportRequest?,context:OperationRequest):Response<AdsAnalyticsCreateAsyncResponse>
     /* analyticsCreateMmmReport
      * Create a request for a Marketing Mix Modeling (MMM) report */
     suspend fun analyticsCreateMmmReport(adAccountId:kotlin.String?,createMMMReportRequest:CreateMMMReportRequest?,context:OperationRequest):Response<CreateMMMReportResponse>
@@ -55,7 +62,10 @@ interface AdAccountsApi  {
     suspend fun analyticsCreateReport(adAccountId:kotlin.String?,adsAnalyticsCreateAsyncRequest:AdsAnalyticsCreateAsyncRequest?,context:OperationRequest):Response<AdsAnalyticsCreateAsyncResponse>
     /* analyticsCreateTemplateReport
      * Create async request for an analytics report using a template */
-    suspend fun analyticsCreateTemplateReport(adAccountId:kotlin.String?,templateId:kotlin.String?,startDate:java.time.LocalDate?,endDate:java.time.LocalDate?,granularity:Granularity?,context:OperationRequest):Response<AdsAnalyticsCreateAsyncResponse>
+    suspend fun analyticsCreateTemplateReport(adAccountId:kotlin.String?,templateId:kotlin.String?,startDate:java.time.LocalDate?,endDate:java.time.LocalDate?,granularity:Granularity?,context:OperationRequest):Response<TemplateBasedReport>
+    /* analyticsGetConversionProductReport
+     * Get advertiser brand, category, SKU report */
+    suspend fun analyticsGetConversionProductReport(adAccountId:kotlin.String?,token:kotlin.String?,context:OperationRequest):Response<AdsAnalyticsGetAsyncResponse>
     /* analyticsGetMmmReport
      * Get advertiser Marketing Mix Modeling (MMM) report. */
     suspend fun analyticsGetMmmReport(adAccountId:kotlin.String?,token:kotlin.String?,context:OperationRequest):Response<GetMMMReportResponse>

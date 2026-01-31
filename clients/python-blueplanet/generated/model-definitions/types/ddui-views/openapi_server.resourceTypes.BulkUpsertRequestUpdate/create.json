@@ -1,0 +1,23 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "ad_groups" },
+      {"model": "ads" },
+      {"model": "campaigns" },
+      {"model": "catalog_product_groups" },
+      {"model": "keywords" },
+      {"model": "labels" },
+      {"model": "product_groups" },
+    ]
+  }]
+}

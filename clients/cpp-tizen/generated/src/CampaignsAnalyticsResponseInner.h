@@ -48,11 +48,11 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get The ID of the campaing that this metrics belongs to.
+	/*! \brief Get The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
 	 */
 	std::string getCAMPAIGNID();
 
-	/*! \brief Set The ID of the campaing that this metrics belongs to.
+	/*! \brief Set The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
 	 */
 	void setCAMPAIGNID(std::string  cAMPAIGN_ID);
 	/*! \brief Get Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)

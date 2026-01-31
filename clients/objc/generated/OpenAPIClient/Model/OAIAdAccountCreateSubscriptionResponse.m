@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"_id": @"id", @"cryptographicKey": @"cryptographic_key", @"cryptographicAlgorithm": @"cryptographic_algorithm", @"createdTime": @"created_time" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"adAccountId": @"ad_account_id", @"apiVersion": @"api_version", @"createdTime": @"created_time", @"cryptographicAlgorithm": @"cryptographic_algorithm", @"cryptographicKey": @"cryptographic_key", @"_id": @"id", @"leadFormId": @"lead_form_id", @"userAccountId": @"user_account_id", @"webhookUrl": @"webhook_url" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"_id", @"cryptographicKey", @"cryptographicAlgorithm", @"createdTime"];
+  NSArray *optionalProperties = @[@"adAccountId", @"apiVersion", @"createdTime", @"cryptographicAlgorithm", @"cryptographicKey", @"_id", @"leadFormId", @"userAccountId", @"webhookUrl"];
   return [optionalProperties containsObject:propertyName];
 }
 

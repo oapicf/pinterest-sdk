@@ -7,23 +7,10 @@ goog.provide('API.Client.CatalogsVerticalFeedsUpdateRequest');
 API.Client.CatalogsVerticalFeedsUpdateRequest = function() {}
 
 /**
- * @type {!API.Client.NullableCurrency}
+ * @type {!API.Client.CatalogsType}
  * @export
  */
-API.Client.CatalogsVerticalFeedsUpdateRequest.prototype.defaultCurrency;
-
-/**
- * A human-friendly name associated to a given feed.
- * @type {!string}
- * @export
- */
-API.Client.CatalogsVerticalFeedsUpdateRequest.prototype.name;
-
-/**
- * @type {!API.Client.CatalogsFormat}
- * @export
- */
-API.Client.CatalogsVerticalFeedsUpdateRequest.prototype.format;
+API.Client.CatalogsVerticalFeedsUpdateRequest.prototype.catalogType;
 
 /**
  * @type {!API.Client.CatalogsFeedCredentials}
@@ -32,11 +19,36 @@ API.Client.CatalogsVerticalFeedsUpdateRequest.prototype.format;
 API.Client.CatalogsVerticalFeedsUpdateRequest.prototype.credentials;
 
 /**
+ * @type {!API.Client.ProductAvailabilityType}
+ * @export
+ */
+API.Client.CatalogsVerticalFeedsUpdateRequest.prototype.defaultAvailability;
+
+/**
+ * @type {!API.Client.NullableCurrency}
+ * @export
+ */
+API.Client.CatalogsVerticalFeedsUpdateRequest.prototype.defaultCurrency;
+
+/**
+ * @type {!API.Client.CatalogsFormat}
+ * @export
+ */
+API.Client.CatalogsVerticalFeedsUpdateRequest.prototype.format;
+
+/**
  * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
  * @type {!string}
  * @export
  */
 API.Client.CatalogsVerticalFeedsUpdateRequest.prototype.location;
+
+/**
+ * A human-friendly name associated to a given feed.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsVerticalFeedsUpdateRequest.prototype.name;
 
 /**
  * @type {!API.Client.CatalogsFeedProcessingSchedule}
@@ -49,16 +61,4 @@ API.Client.CatalogsVerticalFeedsUpdateRequest.prototype.preferredProcessingSched
  * @export
  */
 API.Client.CatalogsVerticalFeedsUpdateRequest.prototype.status;
-
-/**
- * @type {!API.Client.CatalogsType}
- * @export
- */
-API.Client.CatalogsVerticalFeedsUpdateRequest.prototype.catalogType;
-
-/**
- * @type {!API.Client.ProductAvailabilityType}
- * @export
- */
-API.Client.CatalogsVerticalFeedsUpdateRequest.prototype.defaultAvailability;
 

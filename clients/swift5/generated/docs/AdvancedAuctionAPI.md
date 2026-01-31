@@ -22,7 +22,7 @@ Get the bid options for a batch of retail catalog items.  The catalog must be ow
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let advancedAuctionItemsGetRequest = AdvancedAuctionItemsGetRequest(catalogId: "catalogId_example", items: [AdvancedAuctionItemsGetRecord(itemId: "itemId_example", country: Country(), language: Language())]) // AdvancedAuctionItemsGetRequest | Request object used to get bid options values for a batch of retail catalog items
+let advancedAuctionItemsGetRequest = AdvancedAuctionItemsGetRequest(catalogId: "catalogId_example", items: [AdvancedAuctionItemsGetRecord(country: Country(), itemId: "itemId_example", language: Language())]) // AdvancedAuctionItemsGetRequest | Request object used to get bid options values for a batch of retail catalog items
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Get item bid options (POST)
@@ -74,7 +74,7 @@ This endpoint supports multiple operations on a set of one or more bid options (
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let advancedAuctionItemsSubmitRequest = AdvancedAuctionItemsSubmitRequest(catalogId: "catalogId_example", items: [AdvancedAuctionItemsSubmitRecord(operation: AdvancedAuctionOperation(), itemId: "itemId_example", country: Country(), language: Language(), bidOptions: AdvancedAuctionBidOptions(bidInMicroCurrency: 123, appTypeMultipliers: AppTypeMultipliers(APP_TYPE: TargetingSpecAppType()), placementMultipliers: PlacementMultipliers(PLACEMENT: "PLACEMENT_example")), updateMask: [UpdateMaskBidOptionField()])]) // AdvancedAuctionItemsSubmitRequest | Request object used to upsert or delete bid options for a batch of retail catalog items
+let advancedAuctionItemsSubmitRequest = AdvancedAuctionItemsSubmitRequest(catalogId: "catalogId_example", items: [AdvancedAuctionItemsSubmitRecord(operation: AdvancedAuctionOperation(), country: Country(), itemId: "itemId_example", language: Language(), bidOptions: AdvancedAuctionBidOptions(appTypeMultipliers: AppTypeMultipliers(APP_TYPE: "APP_TYPE_example"), bidInMicroCurrency: 123, placementMultipliers: PlacementMultipliers(PLACEMENT: "PLACEMENT_example")), errors: [AdvancedAuctionOperationError(code: 123, message: "message_example")], updateMask: [UpdateMaskBidOptionField()])]) // AdvancedAuctionItemsSubmitRequest | Request object used to upsert or delete bid options for a batch of retail catalog items
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Operate on item level bid options

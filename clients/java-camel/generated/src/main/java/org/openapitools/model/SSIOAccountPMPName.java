@@ -18,32 +18,12 @@ import javax.annotation.Generated;
  * SSIOAccountPMPName
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SSIOAccountPMPName {
-
-  private String name;
 
   private String id;
 
-  public SSIOAccountPMPName name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Display name
-   * @return name
-   */
-  
-  @Schema(name = "name", example = "Bidalgo", description = "Display name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
+  private String name;
 
   public SSIOAccountPMPName id(String id) {
     this.id = id;
@@ -65,6 +45,26 @@ public class SSIOAccountPMPName {
     this.id = id;
   }
 
+  public SSIOAccountPMPName name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Display name
+   * @return name
+   */
+  
+  @Schema(name = "name", example = "Bidalgo", description = "Display name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -74,21 +74,21 @@ public class SSIOAccountPMPName {
       return false;
     }
     SSIOAccountPMPName ssIOAccountPMPName = (SSIOAccountPMPName) o;
-    return Objects.equals(this.name, ssIOAccountPMPName.name) &&
-        Objects.equals(this.id, ssIOAccountPMPName.id);
+    return Objects.equals(this.id, ssIOAccountPMPName.id) &&
+        Objects.equals(this.name, ssIOAccountPMPName.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, id);
+    return Objects.hash(id, name);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSIOAccountPMPName {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

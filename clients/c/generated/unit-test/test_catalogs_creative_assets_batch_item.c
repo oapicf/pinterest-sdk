@@ -23,16 +23,16 @@ catalogs_creative_assets_batch_item_t* instantiate_catalogs_creative_assets_batc
   catalogs_creative_assets_batch_item_t* catalogs_creative_assets_batch_item = NULL;
   if (include_optional) {
     catalogs_creative_assets_batch_item = catalogs_creative_assets_batch_item_create(
-      "DS0294-M",
-      pinterest_rest_api_catalogs_creative_assets_batch_item_OPERATION_DELETE,
        // false, not to have infinite recursion
-      instantiate_catalogs_updatable_creative_assets_attributes(0)
+      instantiate_catalogs_updatable_creative_assets_attributes(0),
+      "DS0294-M",
+      pinterest_rest_api_catalogs_creative_assets_batch_item_OPERATION_DELETE
     );
   } else {
     catalogs_creative_assets_batch_item = catalogs_creative_assets_batch_item_create(
+      NULL,
       "DS0294-M",
-      pinterest_rest_api_catalogs_creative_assets_batch_item_OPERATION_DELETE,
-      NULL
+      pinterest_rest_api_catalogs_creative_assets_batch_item_OPERATION_DELETE
     );
   }
 

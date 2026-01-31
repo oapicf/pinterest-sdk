@@ -28,18 +28,6 @@ void main() {
       // TODO
     });
 
-    // Subscription ID.
-    // String id
-    test('to test the property `id`', () async {
-      // TODO
-    });
-
-    // User account used to subscribe lead data.
-    // String userAccountId
-    test('to test the property `userAccountId`', () async {
-      // TODO
-    });
-
     // The Ad Account ID that this lead form belongs to.
     // String adAccountId
     test('to test the property `adAccountId`', () async {
@@ -52,9 +40,9 @@ void main() {
       // TODO
     });
 
-    // Base64 encoded key for client to decrypt lead data.
-    // String cryptographicKey
-    test('to test the property `cryptographicKey`', () async {
+    // Lead subscription creation time. Unix timestamp in milliseconds.
+    // int createdTime
+    test('to test the property `createdTime`', () async {
       // TODO
     });
 
@@ -64,9 +52,21 @@ void main() {
       // TODO
     });
 
-    // Lead form creation time. Unix timestamp in milliseconds.
-    // int createdTime
-    test('to test the property `createdTime`', () async {
+    // Base64 encoded key for client to decrypt lead data.
+    // String cryptographicKey
+    test('to test the property `cryptographicKey`', () async {
+      // TODO
+    });
+
+    // Subscription ID.
+    // String id
+    test('to test the property `id`', () async {
+      // TODO
+    });
+
+    // User account used to subscribe lead data.
+    // String userAccountId
+    test('to test the property `userAccountId`', () async {
       // TODO
     });
 

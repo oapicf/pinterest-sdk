@@ -25,7 +25,7 @@ class PinMediaSourceImageURLTest : ShouldSpec() {
         // uncomment below to create an instance of PinMediaSourceImageURL
         //val modelInstance = PinMediaSourceImageURL()
 
-        // to test the property `sourceType`
+        // to test the property `sourceType` - The source type of the media.
         should("test sourceType") {
             // uncomment below to test the property
             //modelInstance.sourceType shouldBe ("TODO")

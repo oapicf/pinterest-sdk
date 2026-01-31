@@ -6,10 +6,9 @@
 
 Name | Type
 ------------ | -------------
+`listType` | [UserListType](UserListType.md)
 `name` | string
 `records` | string
-`listType` | [UserListType](UserListType.md)
-`exceptions` | object
 
 ## Example
 
@@ -18,10 +17,9 @@ import type { CustomerListRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "listType": null,
   "name": The Glengarry Glen Ross leads,
   "records": email1@pinterest.com,email2@pinterest.com,..<more records>,
-  "listType": null,
-  "exceptions": null,
 } satisfies CustomerListRequest
 
 console.log(example)

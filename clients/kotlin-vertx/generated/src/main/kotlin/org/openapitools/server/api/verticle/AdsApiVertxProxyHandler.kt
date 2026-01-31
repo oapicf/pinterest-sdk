@@ -29,6 +29,7 @@ import org.openapitools.server.api.model.ConversionReportAttributionType
 import org.openapitools.server.api.model.Error
 import org.openapitools.server.api.model.Granularity
 import org.openapitools.server.api.model.MetricsResponse
+import org.openapitools.server.api.model.ReportingTimeZone
 
 class AdsApiVertxProxyHandler(private val vertx: Vertx, private val service: AdsApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long
@@ -138,10 +139,14 @@ class AdsApiVertxProxyHandler(private val vertx: Vertx, private val service: Ads
                     val engagementWindowDays = ApiHandlerUtils.searchIntegerInJson(params,"engagement_window_days")
                     val viewWindowDays = ApiHandlerUtils.searchIntegerInJson(params,"view_window_days")
                     val conversionReportTime = ApiHandlerUtils.searchStringInJson(params,"conversion_report_time")
-                    val attributionTypesParam = ApiHandlerUtils.searchJsonObjectInJson(params,"attribution_types")
-                    val attributionTypes = if(attributionTypesParam ==null) null else Gson().fromJson(attributionTypesParam.encode(), ConversionReportAttributionType::class.java)
+                    val attributionTypesParam = ApiHandlerUtils.searchJsonArrayInJson(params,"attribution_types")
+                    val attributionTypes:kotlin.Array<ConversionReportAttributionType>? = if(attributionTypesParam == null) null
+                            else Gson().fromJson(attributionTypesParam.encode(),
+                            , object : TypeToken<kotlin.collections.List<ConversionReportAttributionType>>(){}.type)
+                    val reportingTimezoneParam = ApiHandlerUtils.searchJsonObjectInJson(params,"reporting_timezone")
+                    val reportingTimezone = if(reportingTimezoneParam ==null) null else Gson().fromJson(reportingTimezoneParam.encode(), ReportingTimeZone::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.adTargetingAnalyticsGet(adAccountId,adIds,startDate,endDate,targetingTypes,columns,granularity,clickWindowDays,engagementWindowDays,viewWindowDays,conversionReportTime,attributionTypes,context)
+                        val result = service.adTargetingAnalyticsGet(adAccountId,adIds,startDate,endDate,targetingTypes,columns,granularity,clickWindowDays,engagementWindowDays,viewWindowDays,conversionReportTime,attributionTypes,reportingTimezone,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -191,8 +196,10 @@ class AdsApiVertxProxyHandler(private val vertx: Vertx, private val service: Ads
                     val campaignIds:kotlin.Array<kotlin.String>? = if(campaignIdsParam == null) null
                             else Gson().fromJson(campaignIdsParam.encode(),
                             , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
+                    val reportingTimezoneParam = ApiHandlerUtils.searchJsonObjectInJson(params,"reporting_timezone")
+                    val reportingTimezone = if(reportingTimezoneParam ==null) null else Gson().fromJson(reportingTimezoneParam.encode(), ReportingTimeZone::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.adsAnalytics(adAccountId,startDate,endDate,columns,granularity,adIds,clickWindowDays,engagementWindowDays,viewWindowDays,conversionReportTime,pinIds,campaignIds,context)
+                        val result = service.adsAnalytics(adAccountId,startDate,endDate,columns,granularity,adIds,clickWindowDays,engagementWindowDays,viewWindowDays,conversionReportTime,pinIds,campaignIds,reportingTimezone,context)
                         val payload = JsonArray(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

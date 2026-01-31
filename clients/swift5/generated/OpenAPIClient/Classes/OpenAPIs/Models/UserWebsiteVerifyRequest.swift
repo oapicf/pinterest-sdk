@@ -18,25 +18,25 @@ public struct UserWebsiteVerifyRequest: Codable, JSONEncodable, Hashable {
         case metatag = "METATAG"
         case dnstxt = "DNSTXT"
     }
-    public var website: String?
     public var verificationMethod: VerificationMethod? = .metatag
+    public var website: String?
 
-    public init(website: String? = nil, verificationMethod: VerificationMethod? = .metatag) {
-        self.website = website
+    public init(verificationMethod: VerificationMethod? = .metatag, website: String? = nil) {
         self.verificationMethod = verificationMethod
+        self.website = website
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case website
         case verificationMethod = "verification_method"
+        case website
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(website, forKey: .website)
         try container.encodeIfPresent(verificationMethod, forKey: .verificationMethod)
+        try container.encodeIfPresent(website, forKey: .website)
     }
 }
 

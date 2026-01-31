@@ -1,16 +1,16 @@
 #tag Class
 Protected Class MediaApi
 	#tag Method, Flags = &h0
-		Sub MediaCreate(, mediaUploadRequest As OpenAPIClient.Models.MediaUploadRequest)
+		Sub MediaCreate(, mediaUploadCreate As OpenAPIClient.Models.MediaUploadCreate)
 		  // Operation media/create
 		  // Register media upload
 		  // - 
-		  // - parameter mediaUploadRequest: (body) Create a media upload request 
+		  // - parameter mediaUploadCreate: (body)  
 		  //
 		  // Invokes MediaApiCallbackHandler.MediaCreateCallback(MediaUpload) on completion. 
 		  //
 		  // - POST /media
-		  // - Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+		  // - Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using `curl`, for example) to `upload_url` using the `Content-Type` header value. Send the media file's contents as the request's `file` parameter and also include all of the parameters from `upload_parameters`.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -20,7 +20,7 @@ Protected Class MediaApi
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
 		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
-		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(mediaUploadRequest), "application/json")
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(mediaUploadCreate), "application/json")
 		  
 		  
 		  
@@ -134,12 +134,12 @@ Protected Class MediaApi
 		  // Operation media/get
 		  // Get media upload details
 		  // - 
-		  // - parameter mediaId: (path) Media identifier 
+		  // - parameter mediaId: (path) Unique identifier for this media upload. Used to track status and for attaching during Pin creation. 
 		  //
-		  // Invokes MediaApiCallbackHandler.MediaGetCallback(MediaUploadDetails) on completion. 
+		  // Invokes MediaApiCallbackHandler.MediaGetCallback(Media) on completion. 
 		  //
 		  // - GET /media/{media_id}
-		  // - Get details for a registered media upload, including its current status.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+		  // - Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
@@ -176,7 +176,7 @@ Protected Class MediaApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function MediaGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.MediaUploadDetails) As Boolean
+		Private Function MediaGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.Media) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -184,7 +184,7 @@ Protected Class MediaApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.MediaUploadDetails
+			  outData = New OpenAPIClient.Models.Media
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -237,7 +237,7 @@ Protected Class MediaApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.MediaUploadDetails
+		  Dim data As OpenAPIClient.Models.Media
 		  CallbackHandler.MediaGetCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -251,7 +251,7 @@ Protected Class MediaApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.MediaUploadDetails
+		  Dim data As OpenAPIClient.Models.Media
 		  Call MediaGetPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.MediaGetCallback(error, data)
@@ -267,12 +267,12 @@ Protected Class MediaApi
 		  // List media uploads
 		  // - 
 		  // - parameter bookmark: (query) Cursor used to fetch the next page of items (optional, default to Sample)
-		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+		  // - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
 		  //
 		  // Invokes MediaApiCallbackHandler.MediaListCallback(MediaList200Response) on completion. 
 		  //
 		  // - GET /media
-		  // - List media uploads filtered by given parameters.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+		  // - List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:

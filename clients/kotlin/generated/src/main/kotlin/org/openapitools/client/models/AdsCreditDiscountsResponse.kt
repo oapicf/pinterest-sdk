@@ -24,11 +24,11 @@ import com.squareup.moshi.JsonClass
  *
  * @param active True if the offer code is currently active.
  * @param advertiserId Advertiser ID the offer was applied to.
- * @param discountType The type of discount of this credit
- * @param discountInMicroCurrency The discount applied in the offer’s currency value.
  * @param discountCurrency Currency value for the discount.
- * @param title Human readable title of the offer code.
+ * @param discountInMicroCurrency The discount applied in the offer’s currency value.
+ * @param discountType The type of discount of this credit
  * @param remainingDiscountInMicroCurrency The credits left to spend.
+ * @param title Human readable title of the offer code.
  */
 
 
@@ -42,25 +42,25 @@ data class AdsCreditDiscountsResponse (
     @Json(name = "advertiser_id")
     val advertiserId: kotlin.String? = null,
 
-    /* The type of discount of this credit */
-    @Json(name = "discountType")
-    val discountType: AdsCreditDiscountsResponse.DiscountType? = null,
+    /* Currency value for the discount. */
+    @Json(name = "discountCurrency")
+    val discountCurrency: kotlin.String? = null,
 
     /* The discount applied in the offer’s currency value. */
     @Json(name = "discountInMicroCurrency")
     val discountInMicroCurrency: java.math.BigDecimal? = null,
 
-    /* Currency value for the discount. */
-    @Json(name = "discountCurrency")
-    val discountCurrency: kotlin.String? = null,
-
-    /* Human readable title of the offer code. */
-    @Json(name = "title")
-    val title: kotlin.String? = null,
+    /* The type of discount of this credit */
+    @Json(name = "discountType")
+    val discountType: AdsCreditDiscountsResponse.DiscountType? = null,
 
     /* The credits left to spend. */
     @Json(name = "remainingDiscountInMicroCurrency")
-    val remainingDiscountInMicroCurrency: java.math.BigDecimal? = null
+    val remainingDiscountInMicroCurrency: java.math.BigDecimal? = null,
+
+    /* Human readable title of the offer code. */
+    @Json(name = "title")
+    val title: kotlin.String? = null
 
 ) {
 

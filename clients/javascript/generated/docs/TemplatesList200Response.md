@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[TemplateResponse]**](TemplateResponse.md) |  | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[TemplateResponse]**](TemplateResponse.md) |  | 
 
 

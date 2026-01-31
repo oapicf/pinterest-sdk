@@ -13,8 +13,8 @@ module CatalogsHotelListProductsByCatalogBasedFilterRequest =
   //#endregion
 
   type CatalogsHotelListProductsByCatalogBasedFilterRequest = {
-    CatalogType : CatalogTypeEnum;
     CatalogId : string;
+    CatalogType : CatalogTypeEnum;
     Filters : CatalogsHotelProductGroupFilters;
   }
   //#endregion

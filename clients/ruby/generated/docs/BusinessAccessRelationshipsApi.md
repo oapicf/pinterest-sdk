@@ -4,12 +4,159 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**brand_accounts_create**](BusinessAccessRelationshipsApi.md#brand_accounts_create) | **POST** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts | Create a Brand Account |
+| [**brand_accounts_update**](BusinessAccessRelationshipsApi.md#brand_accounts_update) | **PATCH** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id} | Update a Brand Account |
 | [**delete_business_membership**](BusinessAccessRelationshipsApi.md#delete_business_membership) | **DELETE** /businesses/{business_id}/members | Terminate business memberships |
 | [**delete_business_partners**](BusinessAccessRelationshipsApi.md#delete_business_partners) | **DELETE** /businesses/{business_id}/partners | Terminate business partnerships |
 | [**get_business_employers**](BusinessAccessRelationshipsApi.md#get_business_employers) | **GET** /businesses/employers | List business employers for user |
 | [**get_business_members**](BusinessAccessRelationshipsApi.md#get_business_members) | **GET** /businesses/{business_id}/members | Get business members |
 | [**get_business_partners**](BusinessAccessRelationshipsApi.md#get_business_partners) | **GET** /businesses/{business_id}/partners | Get business partners |
+| [**system_user_update**](BusinessAccessRelationshipsApi.md#system_user_update) | **PATCH** /businesses/{business_id}/system_users/{system_user_id} | Update a system user information. |
 | [**update_business_memberships**](BusinessAccessRelationshipsApi.md#update_business_memberships) | **PATCH** /businesses/{business_id}/members | Update member&#39;s business role |
+
+
+## brand_accounts_create
+
+> <BrandAccountsCreate200Response> brand_accounts_create(business_hierarchy_id, brand_accounts_create_request)
+
+Create a Brand Account
+
+Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+
+### Examples
+
+```ruby
+require 'time'
+require 'pinterest_sdk'
+# setup authorization
+PinterestSdkClient.configure do |config|
+  # Configure OAuth2 access token for authorization: pinterest_oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = PinterestSdkClient::BusinessAccessRelationshipsApi.new
+business_hierarchy_id = '7009386637860' # String | business hierarchy node id
+brand_accounts_create_request = PinterestSdkClient::BrandAccountsCreateRequest.new({name: 'Canada Stores', username: 'canada_stores', country: PinterestSdkClient::Country::AD}) # BrandAccountsCreateRequest | 
+
+begin
+  # Create a Brand Account
+  result = api_instance.brand_accounts_create(business_hierarchy_id, brand_accounts_create_request)
+  p result
+rescue PinterestSdkClient::ApiError => e
+  puts "Error when calling BusinessAccessRelationshipsApi->brand_accounts_create: #{e}"
+end
+```
+
+#### Using the brand_accounts_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<BrandAccountsCreate200Response>, Integer, Hash)> brand_accounts_create_with_http_info(business_hierarchy_id, brand_accounts_create_request)
+
+```ruby
+begin
+  # Create a Brand Account
+  data, status_code, headers = api_instance.brand_accounts_create_with_http_info(business_hierarchy_id, brand_accounts_create_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <BrandAccountsCreate200Response>
+rescue PinterestSdkClient::ApiError => e
+  puts "Error when calling BusinessAccessRelationshipsApi->brand_accounts_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **business_hierarchy_id** | **String** | business hierarchy node id |  |
+| **brand_accounts_create_request** | [**BrandAccountsCreateRequest**](BrandAccountsCreateRequest.md) |  |  |
+
+### Return type
+
+[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## brand_accounts_update
+
+> <BrandAccountsCreate200Response> brand_accounts_update(business_hierarchy_id, brand_account_id, brand_accounts_update_request)
+
+Update a Brand Account
+
+Update an existing Brand Account
+
+### Examples
+
+```ruby
+require 'time'
+require 'pinterest_sdk'
+# setup authorization
+PinterestSdkClient.configure do |config|
+  # Configure OAuth2 access token for authorization: pinterest_oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = PinterestSdkClient::BusinessAccessRelationshipsApi.new
+business_hierarchy_id = '7009386637860' # String | business hierarchy node id
+brand_account_id = '729090764583391194' # String | Unique identifier of a brand account.
+brand_accounts_update_request = PinterestSdkClient::BrandAccountsUpdateRequest.new # BrandAccountsUpdateRequest | 
+
+begin
+  # Update a Brand Account
+  result = api_instance.brand_accounts_update(business_hierarchy_id, brand_account_id, brand_accounts_update_request)
+  p result
+rescue PinterestSdkClient::ApiError => e
+  puts "Error when calling BusinessAccessRelationshipsApi->brand_accounts_update: #{e}"
+end
+```
+
+#### Using the brand_accounts_update_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<BrandAccountsCreate200Response>, Integer, Hash)> brand_accounts_update_with_http_info(business_hierarchy_id, brand_account_id, brand_accounts_update_request)
+
+```ruby
+begin
+  # Update a Brand Account
+  data, status_code, headers = api_instance.brand_accounts_update_with_http_info(business_hierarchy_id, brand_account_id, brand_accounts_update_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <BrandAccountsCreate200Response>
+rescue PinterestSdkClient::ApiError => e
+  puts "Error when calling BusinessAccessRelationshipsApi->brand_accounts_update_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **business_hierarchy_id** | **String** | business hierarchy node id |  |
+| **brand_account_id** | **String** | Unique identifier of a brand account. |  |
+| **brand_accounts_update_request** | [**BrandAccountsUpdateRequest**](BrandAccountsUpdateRequest.md) |  |  |
+
+### Return type
+
+[**BrandAccountsCreate200Response**](BrandAccountsCreate200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ## delete_business_membership
@@ -33,7 +180,7 @@ end
 
 api_instance = PinterestSdkClient::BusinessAccessRelationshipsApi.new
 business_id = '729090764583391194' # String | Business id
-members_to_delete_body = PinterestSdkClient::MembersToDeleteBody.new({members: [PinterestSdkClient::MembersToDeleteBodyMembersInner.new({member_id: '140943737684417', business_role: PinterestSdkClient::BusinessRoleForMembers::EMPLOYEE})]}) # MembersToDeleteBody | List of members with role to delete.
+members_to_delete_body = PinterestSdkClient::MembersToDeleteBody.new({members: [PinterestSdkClient::MembersToDeleteBodyMembersInner.new({business_role: PinterestSdkClient::BusinessRoleForMembers::EMPLOYEE, member_id: '140943737684417'})]}) # MembersToDeleteBody | List of members with role to delete.
 
 begin
   # Terminate business memberships
@@ -249,6 +396,7 @@ end
 api_instance = PinterestSdkClient::BusinessAccessRelationshipsApi.new
 business_id = '729090764583391194' # String | Unique identifier of the requesting business.
 opts = {
+  fetch_system_users: true, # Boolean | Fetches system users if True. Fetches regular user employees if False.
   assets_summary: true, # Boolean | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
   business_roles: [PinterestSdkClient::MemberBusinessRole::EMPLOYEE], # Array<MemberBusinessRole> | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.
   member_ids: '00101010101,2222220101', # String | A list of business members ids separated by comma.
@@ -289,6 +437,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **business_id** | **String** | Unique identifier of the requesting business. |  |
+| **fetch_system_users** | **Boolean** | Fetches system users if True. Fetches regular user employees if False. | [optional][default to false] |
 | **assets_summary** | **Boolean** | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional][default to false] |
 | **business_roles** | [**Array&lt;MemberBusinessRole&gt;**](MemberBusinessRole.md) | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. | [optional] |
 | **member_ids** | **String** | A list of business members ids separated by comma. | [optional] |
@@ -390,6 +539,78 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## system_user_update
+
+> system_user_update(business_id, system_user_id, system_user_update_request)
+
+Update a system user information.
+
+Update a system user information such as name.
+
+### Examples
+
+```ruby
+require 'time'
+require 'pinterest_sdk'
+# setup authorization
+PinterestSdkClient.configure do |config|
+  # Configure OAuth2 access token for authorization: pinterest_oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = PinterestSdkClient::BusinessAccessRelationshipsApi.new
+business_id = '729090764583391194' # String | Unique identifier of the requesting business.
+system_user_id = '729090764583391194' # String | Unique identifier of a system user.
+system_user_update_request = PinterestSdkClient::SystemUserUpdateRequest.new({name: 'Billing API'}) # SystemUserUpdateRequest | 
+
+begin
+  # Update a system user information.
+  api_instance.system_user_update(business_id, system_user_id, system_user_update_request)
+rescue PinterestSdkClient::ApiError => e
+  puts "Error when calling BusinessAccessRelationshipsApi->system_user_update: #{e}"
+end
+```
+
+#### Using the system_user_update_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> system_user_update_with_http_info(business_id, system_user_id, system_user_update_request)
+
+```ruby
+begin
+  # Update a system user information.
+  data, status_code, headers = api_instance.system_user_update_with_http_info(business_id, system_user_id, system_user_update_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue PinterestSdkClient::ApiError => e
+  puts "Error when calling BusinessAccessRelationshipsApi->system_user_update_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **business_id** | **String** | Unique identifier of the requesting business. |  |
+| **system_user_id** | **String** | Unique identifier of a system user. |  |
+| **system_user_update_request** | [**SystemUserUpdateRequest**](SystemUserUpdateRequest.md) |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

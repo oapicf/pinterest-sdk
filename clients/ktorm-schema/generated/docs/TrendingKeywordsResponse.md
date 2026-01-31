@@ -5,17 +5,17 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**trends** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;TrendingKeywordsResponseTrendsInner&gt;**](TrendingKeywordsResponseTrendsInner.md) | The top trending keywords for the specified trend type in the requested region.&lt;br /&gt; Results are ordered, with the first element in the array representing the #1 top trend. |  [optional]
+**trends** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;TrendingKeyword&gt;**](TrendingKeyword.md) | The top trending keywords for the specified trend type in the requested region.&lt;br /&gt; Results are ordered, with the first element in the array representing the #1 top trend. |  [optional]
 
 
-# **Table `TrendingKeywordsResponseTrendingKeywordsResponseTrendsInner`**
-(mapped from: TrendingKeywordsResponseTrendingKeywordsResponseTrendsInner)
+# **Table `TrendingKeywordsResponseTrendingKeyword`**
+(mapped from: TrendingKeywordsResponseTrendingKeyword)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 trendingKeywordsResponse | trendingKeywordsResponse | long | | kotlin.Long | Primary Key | *one*
-trendingKeywordsResponseTrendsInner | trendingKeywordsResponseTrendsInner | long | | kotlin.Long | Foreign Key | *many*
+trendingKeyword | trendingKeyword | long | | kotlin.Long | Foreign Key | *many*
 
 
 

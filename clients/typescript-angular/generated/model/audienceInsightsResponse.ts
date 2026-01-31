@@ -20,12 +20,11 @@ export interface AudienceInsightsResponse {
      * Category interest distribution
      */
     categories?: Array<AudienceCategory>;
-    demographics?: AudienceDemographics;
-    type?: AudienceInsightType;
     /**
      * Generation date
      */
     date?: string | null;
+    demographics?: AudienceDemographics;
     /**
      * Population count.
      */
@@ -34,6 +33,7 @@ export interface AudienceInsightsResponse {
      * Indicates whether the audience size has been rounded up to the next highest upper boundary.
      */
     size_is_upper_bound?: boolean;
+    type?: AudienceInsightType;
 }
 export namespace AudienceInsightsResponse {
 }

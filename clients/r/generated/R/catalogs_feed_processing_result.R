@@ -11,9 +11,10 @@
 #' @field id  character
 #' @field updated_at  character
 #' @field ingestion_details  \link{CatalogsFeedIngestionDetails}
-#' @field status  \link{CatalogsFeedProcessingStatus}
 #' @field product_counts  \link{CatalogsFeedProductCounts}
+#' @field status  \link{CatalogsFeedProcessingStatus}
 #' @field validation_details  \link{CatalogsFeedValidationDetails}
+#' @field video_counts  \link{CatalogsFeedVideoCounts} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -24,9 +25,10 @@ CatalogsFeedProcessingResult <- R6::R6Class(
     `id` = NULL,
     `updated_at` = NULL,
     `ingestion_details` = NULL,
-    `status` = NULL,
     `product_counts` = NULL,
+    `status` = NULL,
     `validation_details` = NULL,
+    `video_counts` = NULL,
 
     #' @description
     #' Initialize a new CatalogsFeedProcessingResult class.
@@ -35,11 +37,12 @@ CatalogsFeedProcessingResult <- R6::R6Class(
     #' @param id id
     #' @param updated_at updated_at
     #' @param ingestion_details ingestion_details
-    #' @param status status
     #' @param product_counts product_counts
+    #' @param status status
     #' @param validation_details validation_details
+    #' @param video_counts video_counts
     #' @param ... Other optional arguments.
-    initialize = function(`created_at`, `id`, `updated_at`, `ingestion_details`, `status`, `product_counts`, `validation_details`, ...) {
+    initialize = function(`created_at`, `id`, `updated_at`, `ingestion_details`, `product_counts`, `status`, `validation_details`, `video_counts` = NULL, ...) {
       if (!missing(`created_at`)) {
         if (!(is.character(`created_at`) && length(`created_at`) == 1)) {
           stop(paste("Error! Invalid data for `created_at`. Must be a string:", `created_at`))
@@ -62,6 +65,10 @@ CatalogsFeedProcessingResult <- R6::R6Class(
         stopifnot(R6::is.R6(`ingestion_details`))
         self$`ingestion_details` <- `ingestion_details`
       }
+      if (!missing(`product_counts`)) {
+        stopifnot(R6::is.R6(`product_counts`))
+        self$`product_counts` <- `product_counts`
+      }
       if (!missing(`status`)) {
         if (!(`status` %in% c())) {
           stop(paste("Error! \"", `status`, "\" cannot be assigned to `status`. Must be .", sep = ""))
@@ -69,13 +76,13 @@ CatalogsFeedProcessingResult <- R6::R6Class(
         stopifnot(R6::is.R6(`status`))
         self$`status` <- `status`
       }
-      if (!missing(`product_counts`)) {
-        stopifnot(R6::is.R6(`product_counts`))
-        self$`product_counts` <- `product_counts`
-      }
       if (!missing(`validation_details`)) {
         stopifnot(R6::is.R6(`validation_details`))
         self$`validation_details` <- `validation_details`
+      }
+      if (!is.null(`video_counts`)) {
+        stopifnot(R6::is.R6(`video_counts`))
+        self$`video_counts` <- `video_counts`
       }
     },
 
@@ -126,17 +133,21 @@ CatalogsFeedProcessingResult <- R6::R6Class(
         CatalogsFeedProcessingResultObject[["ingestion_details"]] <-
           self$`ingestion_details`$toSimpleType()
       }
-      if (!is.null(self$`status`)) {
-        CatalogsFeedProcessingResultObject[["status"]] <-
-          self$`status`$toSimpleType()
-      }
       if (!is.null(self$`product_counts`)) {
         CatalogsFeedProcessingResultObject[["product_counts"]] <-
           self$`product_counts`$toSimpleType()
       }
+      if (!is.null(self$`status`)) {
+        CatalogsFeedProcessingResultObject[["status"]] <-
+          self$`status`$toSimpleType()
+      }
       if (!is.null(self$`validation_details`)) {
         CatalogsFeedProcessingResultObject[["validation_details"]] <-
           self$`validation_details`$toSimpleType()
+      }
+      if (!is.null(self$`video_counts`)) {
+        CatalogsFeedProcessingResultObject[["video_counts"]] <-
+          self$`video_counts`$toSimpleType()
       }
       return(CatalogsFeedProcessingResultObject)
     },
@@ -162,20 +173,25 @@ CatalogsFeedProcessingResult <- R6::R6Class(
         `ingestion_details_object`$fromJSON(jsonlite::toJSON(this_object$`ingestion_details`, auto_unbox = TRUE, digits = NA))
         self$`ingestion_details` <- `ingestion_details_object`
       }
-      if (!is.null(this_object$`status`)) {
-        `status_object` <- CatalogsFeedProcessingStatus$new()
-        `status_object`$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
-        self$`status` <- `status_object`
-      }
       if (!is.null(this_object$`product_counts`)) {
         `product_counts_object` <- CatalogsFeedProductCounts$new()
         `product_counts_object`$fromJSON(jsonlite::toJSON(this_object$`product_counts`, auto_unbox = TRUE, digits = NA))
         self$`product_counts` <- `product_counts_object`
       }
+      if (!is.null(this_object$`status`)) {
+        `status_object` <- CatalogsFeedProcessingStatus$new()
+        `status_object`$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
+        self$`status` <- `status_object`
+      }
       if (!is.null(this_object$`validation_details`)) {
         `validation_details_object` <- CatalogsFeedValidationDetails$new()
         `validation_details_object`$fromJSON(jsonlite::toJSON(this_object$`validation_details`, auto_unbox = TRUE, digits = NA))
         self$`validation_details` <- `validation_details_object`
+      }
+      if (!is.null(this_object$`video_counts`)) {
+        `video_counts_object` <- CatalogsFeedVideoCounts$new()
+        `video_counts_object`$fromJSON(jsonlite::toJSON(this_object$`video_counts`, auto_unbox = TRUE, digits = NA))
+        self$`video_counts` <- `video_counts_object`
       }
       self
     },
@@ -202,9 +218,10 @@ CatalogsFeedProcessingResult <- R6::R6Class(
       self$`id` <- this_object$`id`
       self$`updated_at` <- this_object$`updated_at`
       self$`ingestion_details` <- CatalogsFeedIngestionDetails$new()$fromJSON(jsonlite::toJSON(this_object$`ingestion_details`, auto_unbox = TRUE, digits = NA))
-      self$`status` <- CatalogsFeedProcessingStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
       self$`product_counts` <- CatalogsFeedProductCounts$new()$fromJSON(jsonlite::toJSON(this_object$`product_counts`, auto_unbox = TRUE, digits = NA))
+      self$`status` <- CatalogsFeedProcessingStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
       self$`validation_details` <- CatalogsFeedValidationDetails$new()$fromJSON(jsonlite::toJSON(this_object$`validation_details`, auto_unbox = TRUE, digits = NA))
+      self$`video_counts` <- CatalogsFeedVideoCounts$new()$fromJSON(jsonlite::toJSON(this_object$`video_counts`, auto_unbox = TRUE, digits = NA))
       self
     },
 
@@ -244,17 +261,17 @@ CatalogsFeedProcessingResult <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsFeedProcessingResult: the required field `ingestion_details` is missing."))
       }
-      # check the required field `status`
-      if (!is.null(input_json$`status`)) {
-        stopifnot(R6::is.R6(input_json$`status`))
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for CatalogsFeedProcessingResult: the required field `status` is missing."))
-      }
       # check the required field `product_counts`
       if (!is.null(input_json$`product_counts`)) {
         stopifnot(R6::is.R6(input_json$`product_counts`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsFeedProcessingResult: the required field `product_counts` is missing."))
+      }
+      # check the required field `status`
+      if (!is.null(input_json$`status`)) {
+        stopifnot(R6::is.R6(input_json$`status`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsFeedProcessingResult: the required field `status` is missing."))
       }
       # check the required field `validation_details`
       if (!is.null(input_json$`validation_details`)) {

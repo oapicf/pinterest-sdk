@@ -9,7 +9,7 @@
 #' @format An \code{R6Class} generator object
 #' @field catalog_type  \link{CatalogsType}
 #' @field creative_assets_id The catalog creative assets id in the merchant namespace character [optional]
-#' @field errors Array with the errors for the item id requested list(\link{ItemValidationEvent}) [optional]
+#' @field errors Array with the errors for the item id requested list(\link{ItemValidationEvent})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -24,10 +24,10 @@ CatalogsCreativeAssetsItemErrorResponse <- R6::R6Class(
     #' Initialize a new CatalogsCreativeAssetsItemErrorResponse class.
     #'
     #' @param catalog_type catalog_type
-    #' @param creative_assets_id The catalog creative assets id in the merchant namespace
     #' @param errors Array with the errors for the item id requested
+    #' @param creative_assets_id The catalog creative assets id in the merchant namespace
     #' @param ... Other optional arguments.
-    initialize = function(`catalog_type`, `creative_assets_id` = NULL, `errors` = NULL, ...) {
+    initialize = function(`catalog_type`, `errors`, `creative_assets_id` = NULL, ...) {
       if (!missing(`catalog_type`)) {
         if (!(`catalog_type` %in% c())) {
           stop(paste("Error! \"", `catalog_type`, "\" cannot be assigned to `catalog_type`. Must be .", sep = ""))
@@ -35,16 +35,16 @@ CatalogsCreativeAssetsItemErrorResponse <- R6::R6Class(
         stopifnot(R6::is.R6(`catalog_type`))
         self$`catalog_type` <- `catalog_type`
       }
+      if (!missing(`errors`)) {
+        stopifnot(is.vector(`errors`), length(`errors`) != 0)
+        sapply(`errors`, function(x) stopifnot(R6::is.R6(x)))
+        self$`errors` <- `errors`
+      }
       if (!is.null(`creative_assets_id`)) {
         if (!(is.character(`creative_assets_id`) && length(`creative_assets_id`) == 1)) {
           stop(paste("Error! Invalid data for `creative_assets_id`. Must be a string:", `creative_assets_id`))
         }
         self$`creative_assets_id` <- `creative_assets_id`
-      }
-      if (!is.null(`errors`)) {
-        stopifnot(is.vector(`errors`), length(`errors`) != 0)
-        sapply(`errors`, function(x) stopifnot(R6::is.R6(x)))
-        self$`errors` <- `errors`
       }
     },
 
@@ -151,6 +151,13 @@ CatalogsCreativeAssetsItemErrorResponse <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsCreativeAssetsItemErrorResponse: the required field `catalog_type` is missing."))
       }
+      # check the required field `errors`
+      if (!is.null(input_json$`errors`)) {
+        stopifnot(is.vector(input_json$`errors`), length(input_json$`errors`) != 0)
+        tmp <- sapply(input_json$`errors`, function(x) stopifnot(R6::is.R6(x)))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsCreativeAssetsItemErrorResponse: the required field `errors` is missing."))
+      }
     },
 
     #' @description
@@ -171,6 +178,11 @@ CatalogsCreativeAssetsItemErrorResponse <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `errors` is null
+      if (is.null(self$`errors`)) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -183,6 +195,11 @@ CatalogsCreativeAssetsItemErrorResponse <- R6::R6Class(
       # check if the required `catalog_type` is null
       if (is.null(self$`catalog_type`)) {
         invalid_fields["catalog_type"] <- "Non-nullable required field `catalog_type` cannot be null."
+      }
+
+      # check if the required `errors` is null
+      if (is.null(self$`errors`)) {
+        invalid_fields["errors"] <- "Non-nullable required field `errors` cannot be null."
       }
 
       invalid_fields

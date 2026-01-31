@@ -3,6 +3,8 @@ package models
 // CatalogsRetailItemResponse - Object describing a retail item record
 type CatalogsRetailItemResponse struct {
 
+	Attributes ItemAttributes `json:"attributes,omitempty"`
+
 	CatalogType CatalogsType `json:"catalog_type"`
 
 	// The catalog retail item id in the merchant namespace
@@ -10,6 +12,4 @@ type CatalogsRetailItemResponse struct {
 
 	// The pins mapped to the item
 	Pins *[]Pin `json:"pins,omitempty"`
-
-	Attributes ItemAttributes `json:"attributes,omitempty"`
 }

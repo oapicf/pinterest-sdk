@@ -1,1 +1,1 @@
-end_date,click_window_days,conversion_report_time,start_date,granularity,columns,engagement_window_days,targeting_types,attribution_types,view_window_days
+targeting_types,view_window_days,reporting_timezone,granularity,attribution_types,engagement_window_days,conversion_report_time,start_date,end_date,columns,click_window_days

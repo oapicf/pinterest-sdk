@@ -6,7 +6,7 @@
 
 
 static product_group_promotion_response_item_t *product_group_promotion_response_item_create_internal(
-    product_group_promotion_response_element_t *data,
+    product_group_promotion_t *data,
     list_t *exceptions
     ) {
     product_group_promotion_response_item_t *product_group_promotion_response_item_local_var = malloc(sizeof(product_group_promotion_response_item_t));
@@ -21,7 +21,7 @@ static product_group_promotion_response_item_t *product_group_promotion_response
 }
 
 __attribute__((deprecated)) product_group_promotion_response_item_t *product_group_promotion_response_item_create(
-    product_group_promotion_response_element_t *data,
+    product_group_promotion_t *data,
     list_t *exceptions
     ) {
     return product_group_promotion_response_item_create_internal (
@@ -40,7 +40,7 @@ void product_group_promotion_response_item_free(product_group_promotion_response
     }
     listEntry_t *listEntry;
     if (product_group_promotion_response_item->data) {
-        product_group_promotion_response_element_free(product_group_promotion_response_item->data);
+        product_group_promotion_free(product_group_promotion_response_item->data);
         product_group_promotion_response_item->data = NULL;
     }
     if (product_group_promotion_response_item->exceptions) {
@@ -58,7 +58,7 @@ cJSON *product_group_promotion_response_item_convertToJSON(product_group_promoti
 
     // product_group_promotion_response_item->data
     if(product_group_promotion_response_item->data) {
-    cJSON *data_local_JSON = product_group_promotion_response_element_convertToJSON(product_group_promotion_response_item->data);
+    cJSON *data_local_JSON = product_group_promotion_convertToJSON(product_group_promotion_response_item->data);
     if(data_local_JSON == NULL) {
     goto fail; //model
     }
@@ -101,7 +101,7 @@ product_group_promotion_response_item_t *product_group_promotion_response_item_p
     product_group_promotion_response_item_t *product_group_promotion_response_item_local_var = NULL;
 
     // define the local variable for product_group_promotion_response_item->data
-    product_group_promotion_response_element_t *data_local_nonprim = NULL;
+    product_group_promotion_t *data_local_nonprim = NULL;
 
     // define the local list for product_group_promotion_response_item->exceptions
     list_t *exceptionsList = NULL;
@@ -112,7 +112,7 @@ product_group_promotion_response_item_t *product_group_promotion_response_item_p
         data = NULL;
     }
     if (data) { 
-    data_local_nonprim = product_group_promotion_response_element_parseFromJSON(data); //nonprimitive
+    data_local_nonprim = product_group_promotion_parseFromJSON(data); //nonprimitive
     }
 
     // product_group_promotion_response_item->exceptions
@@ -148,7 +148,7 @@ product_group_promotion_response_item_t *product_group_promotion_response_item_p
     return product_group_promotion_response_item_local_var;
 end:
     if (data_local_nonprim) {
-        product_group_promotion_response_element_free(data_local_nonprim);
+        product_group_promotion_free(data_local_nonprim);
         data_local_nonprim = NULL;
     }
     if (exceptionsList) {

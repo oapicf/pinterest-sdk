@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -18,10 +18,21 @@ package openapi
 type PinMediaWithImageAndVideo struct {
 
 	Items []PinMediaMetadata `json:"items,omitempty"`
+
+	MediaType string `json:"media_type"`
 }
 
 // AssertPinMediaWithImageAndVideoRequired checks if the required fields are not zero-ed
 func AssertPinMediaWithImageAndVideoRequired(obj PinMediaWithImageAndVideo) error {
+	elements := map[string]interface{}{
+		"media_type": obj.MediaType,
+	}
+	for name, el := range elements {
+		if isZero := IsZeroValue(el); isZero {
+			return &RequiredError{Field: name}
+		}
+	}
+
 	for _, el := range obj.Items {
 		if err := AssertPinMediaMetadataRequired(el); err != nil {
 			return err

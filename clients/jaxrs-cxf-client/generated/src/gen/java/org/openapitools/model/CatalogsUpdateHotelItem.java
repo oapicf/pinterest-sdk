@@ -14,6 +14,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsUpdateHotelItem  {
   
+  @ApiModelProperty(required = true, value = "")
+
+  private CatalogsUpdatableHotelAttributes attributes;
+
  /**
   * The catalog hotel item id in the merchant namespace
   */
@@ -54,10 +58,24 @@ UPDATE(String.valueOf("UPDATE"));
   @ApiModelProperty(required = true, value = "")
 
   private OperationEnum operation;
+ /**
+   * Get attributes
+   * @return attributes
+  **/
+  @JsonProperty("attributes")
+  public CatalogsUpdatableHotelAttributes getAttributes() {
+    return attributes;
+  }
 
-  @ApiModelProperty(required = true, value = "")
+  public void setAttributes(CatalogsUpdatableHotelAttributes attributes) {
+    this.attributes = attributes;
+  }
 
-  private CatalogsUpdatableHotelAttributes attributes;
+  public CatalogsUpdateHotelItem attributes(CatalogsUpdatableHotelAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
  /**
    * The catalog hotel item id in the merchant namespace
    * @return hotelId
@@ -97,24 +115,6 @@ UPDATE(String.valueOf("UPDATE"));
     return this;
   }
 
- /**
-   * Get attributes
-   * @return attributes
-  **/
-  @JsonProperty("attributes")
-  public CatalogsUpdatableHotelAttributes getAttributes() {
-    return attributes;
-  }
-
-  public void setAttributes(CatalogsUpdatableHotelAttributes attributes) {
-    this.attributes = attributes;
-  }
-
-  public CatalogsUpdateHotelItem attributes(CatalogsUpdatableHotelAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -124,14 +124,14 @@ UPDATE(String.valueOf("UPDATE"));
       return false;
     }
     CatalogsUpdateHotelItem catalogsUpdateHotelItem = (CatalogsUpdateHotelItem) o;
-    return Objects.equals(this.hotelId, catalogsUpdateHotelItem.hotelId) &&
-        Objects.equals(this.operation, catalogsUpdateHotelItem.operation) &&
-        Objects.equals(this.attributes, catalogsUpdateHotelItem.attributes);
+    return Objects.equals(this.attributes, catalogsUpdateHotelItem.attributes) &&
+        Objects.equals(this.hotelId, catalogsUpdateHotelItem.hotelId) &&
+        Objects.equals(this.operation, catalogsUpdateHotelItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hotelId, operation, attributes);
+    return Objects.hash(attributes, hotelId, operation);
   }
 
   @Override
@@ -139,9 +139,9 @@ UPDATE(String.valueOf("UPDATE"));
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsUpdateHotelItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

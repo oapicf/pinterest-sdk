@@ -27,19 +27,19 @@ pinterest_rest_api_delivery_metrics_response_items_inner_CATEGORY_e delivery_met
 
 
 typedef struct delivery_metrics_response_items_inner_t {
-    char *name; // string
     pinterest_rest_api_delivery_metrics_response_items_inner_CATEGORY_e category; //enum
     char *definition; // string
     char *display_name; // string
+    char *name; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } delivery_metrics_response_items_inner_t;
 
 __attribute__((deprecated)) delivery_metrics_response_items_inner_t *delivery_metrics_response_items_inner_create(
-    char *name,
     pinterest_rest_api_delivery_metrics_response_items_inner_CATEGORY_e category,
     char *definition,
-    char *display_name
+    char *display_name,
+    char *name
 );
 
 void delivery_metrics_response_items_inner_free(delivery_metrics_response_items_inner_t *delivery_metrics_response_items_inner);

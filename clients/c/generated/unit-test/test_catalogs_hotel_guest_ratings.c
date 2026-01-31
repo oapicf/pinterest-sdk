@@ -24,15 +24,15 @@ catalogs_hotel_guest_ratings_t* instantiate_catalogs_hotel_guest_ratings(int inc
     catalogs_hotel_guest_ratings = catalogs_hotel_guest_ratings_create(
       1.337,
       56,
-      1.337,
-      "0"
+      "0",
+      1.337
     );
   } else {
     catalogs_hotel_guest_ratings = catalogs_hotel_guest_ratings_create(
       1.337,
       56,
-      1.337,
-      "0"
+      "0",
+      1.337
     );
   }
 

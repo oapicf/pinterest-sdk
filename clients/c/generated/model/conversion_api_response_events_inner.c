@@ -23,16 +23,16 @@ pinterest_rest_api_conversion_api_response_events_inner_STATUS_e conversion_api_
 }
 
 static conversion_api_response_events_inner_t *conversion_api_response_events_inner_create_internal(
-    pinterest_rest_api_conversion_api_response_events_inner_STATUS_e status,
     char *error_message,
+    pinterest_rest_api_conversion_api_response_events_inner_STATUS_e status,
     char *warning_message
     ) {
     conversion_api_response_events_inner_t *conversion_api_response_events_inner_local_var = malloc(sizeof(conversion_api_response_events_inner_t));
     if (!conversion_api_response_events_inner_local_var) {
         return NULL;
     }
-    conversion_api_response_events_inner_local_var->status = status;
     conversion_api_response_events_inner_local_var->error_message = error_message;
+    conversion_api_response_events_inner_local_var->status = status;
     conversion_api_response_events_inner_local_var->warning_message = warning_message;
 
     conversion_api_response_events_inner_local_var->_library_owned = 1;
@@ -40,13 +40,13 @@ static conversion_api_response_events_inner_t *conversion_api_response_events_in
 }
 
 __attribute__((deprecated)) conversion_api_response_events_inner_t *conversion_api_response_events_inner_create(
-    pinterest_rest_api_conversion_api_response_events_inner_STATUS_e status,
     char *error_message,
+    pinterest_rest_api_conversion_api_response_events_inner_STATUS_e status,
     char *warning_message
     ) {
     return conversion_api_response_events_inner_create_internal (
-        status,
         error_message,
+        status,
         warning_message
         );
 }
@@ -74,6 +74,14 @@ void conversion_api_response_events_inner_free(conversion_api_response_events_in
 cJSON *conversion_api_response_events_inner_convertToJSON(conversion_api_response_events_inner_t *conversion_api_response_events_inner) {
     cJSON *item = cJSON_CreateObject();
 
+    // conversion_api_response_events_inner->error_message
+    if(conversion_api_response_events_inner->error_message) {
+    if(cJSON_AddStringToObject(item, "error_message", conversion_api_response_events_inner->error_message) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
     // conversion_api_response_events_inner->status
     if (pinterest_rest_api_conversion_api_response_events_inner_STATUS_NULL == conversion_api_response_events_inner->status) {
         goto fail;
@@ -81,14 +89,6 @@ cJSON *conversion_api_response_events_inner_convertToJSON(conversion_api_respons
     if(cJSON_AddStringToObject(item, "status", conversion_api_response_events_inner_status_ToString(conversion_api_response_events_inner->status)) == NULL)
     {
     goto fail; //Enum
-    }
-
-
-    // conversion_api_response_events_inner->error_message
-    if(conversion_api_response_events_inner->error_message) {
-    if(cJSON_AddStringToObject(item, "error_message", conversion_api_response_events_inner->error_message) == NULL) {
-    goto fail; //String
-    }
     }
 
 
@@ -111,6 +111,18 @@ conversion_api_response_events_inner_t *conversion_api_response_events_inner_par
 
     conversion_api_response_events_inner_t *conversion_api_response_events_inner_local_var = NULL;
 
+    // conversion_api_response_events_inner->error_message
+    cJSON *error_message = cJSON_GetObjectItemCaseSensitive(conversion_api_response_events_innerJSON, "error_message");
+    if (cJSON_IsNull(error_message)) {
+        error_message = NULL;
+    }
+    if (error_message) { 
+    if(!cJSON_IsString(error_message) && !cJSON_IsNull(error_message))
+    {
+    goto end; //String
+    }
+    }
+
     // conversion_api_response_events_inner->status
     cJSON *status = cJSON_GetObjectItemCaseSensitive(conversion_api_response_events_innerJSON, "status");
     if (cJSON_IsNull(status)) {
@@ -128,18 +140,6 @@ conversion_api_response_events_inner_t *conversion_api_response_events_inner_par
     }
     statusVariable = conversion_api_response_events_inner_status_FromString(status->valuestring);
 
-    // conversion_api_response_events_inner->error_message
-    cJSON *error_message = cJSON_GetObjectItemCaseSensitive(conversion_api_response_events_innerJSON, "error_message");
-    if (cJSON_IsNull(error_message)) {
-        error_message = NULL;
-    }
-    if (error_message) { 
-    if(!cJSON_IsString(error_message) && !cJSON_IsNull(error_message))
-    {
-    goto end; //String
-    }
-    }
-
     // conversion_api_response_events_inner->warning_message
     cJSON *warning_message = cJSON_GetObjectItemCaseSensitive(conversion_api_response_events_innerJSON, "warning_message");
     if (cJSON_IsNull(warning_message)) {
@@ -154,8 +154,8 @@ conversion_api_response_events_inner_t *conversion_api_response_events_inner_par
 
 
     conversion_api_response_events_inner_local_var = conversion_api_response_events_inner_create_internal (
-        statusVariable,
         error_message && !cJSON_IsNull(error_message) ? strdup(error_message->valuestring) : NULL,
+        statusVariable,
         warning_message && !cJSON_IsNull(warning_message) ? strdup(warning_message->valuestring) : NULL
         );
 

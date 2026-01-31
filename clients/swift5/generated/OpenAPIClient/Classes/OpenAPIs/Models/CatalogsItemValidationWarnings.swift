@@ -12,14 +12,174 @@ import AnyCodable
 
 public struct CatalogsItemValidationWarnings: Codable, JSONEncodable, Hashable {
 
+    public var aDIMAGE0LINKDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE0LINKLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE0LINKREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE0LINKWARNING: CatalogsItemValidationDetails?
+    public var aDIMAGE0TAGDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE0TAGLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE0TAGREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE10LINKDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE10LINKLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE10LINKREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE10LINKWARNING: CatalogsItemValidationDetails?
+    public var aDIMAGE10TAGDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE10TAGLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE10TAGREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE11LINKDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE11LINKLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE11LINKREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE11LINKWARNING: CatalogsItemValidationDetails?
+    public var aDIMAGE11TAGDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE11TAGLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE11TAGREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE12LINKDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE12LINKLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE12LINKREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE12LINKWARNING: CatalogsItemValidationDetails?
+    public var aDIMAGE12TAGDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE12TAGLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE12TAGREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE13LINKDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE13LINKLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE13LINKREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE13LINKWARNING: CatalogsItemValidationDetails?
+    public var aDIMAGE13TAGDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE13TAGLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE13TAGREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE14LINKDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE14LINKLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE14LINKREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE14LINKWARNING: CatalogsItemValidationDetails?
+    public var aDIMAGE14TAGDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE14TAGLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE14TAGREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE15LINKDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE15LINKLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE15LINKREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE15LINKWARNING: CatalogsItemValidationDetails?
+    public var aDIMAGE15TAGDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE15TAGLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE15TAGREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE16LINKDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE16LINKLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE16LINKREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE16LINKWARNING: CatalogsItemValidationDetails?
+    public var aDIMAGE16TAGDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE16TAGLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE16TAGREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE17LINKDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE17LINKLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE17LINKREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE17LINKWARNING: CatalogsItemValidationDetails?
+    public var aDIMAGE17TAGDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE17TAGLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE17TAGREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE18LINKDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE18LINKLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE18LINKREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE18LINKWARNING: CatalogsItemValidationDetails?
+    public var aDIMAGE18TAGDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE18TAGLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE18TAGREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE19LINKDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE19LINKLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE19LINKREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE19LINKWARNING: CatalogsItemValidationDetails?
+    public var aDIMAGE19TAGDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE19TAGLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE19TAGREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE1LINKDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE1LINKLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE1LINKREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE1LINKWARNING: CatalogsItemValidationDetails?
+    public var aDIMAGE1TAGDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE1TAGLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE1TAGREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE2LINKDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE2LINKLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE2LINKREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE2LINKWARNING: CatalogsItemValidationDetails?
+    public var aDIMAGE2TAGDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE2TAGLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE2TAGREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE3LINKDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE3LINKLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE3LINKREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE3LINKWARNING: CatalogsItemValidationDetails?
+    public var aDIMAGE3TAGDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE3TAGLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE3TAGREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE4LINKDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE4LINKLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE4LINKREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE4LINKWARNING: CatalogsItemValidationDetails?
+    public var aDIMAGE4TAGDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE4TAGLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE4TAGREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE5LINKDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE5LINKLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE5LINKREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE5LINKWARNING: CatalogsItemValidationDetails?
+    public var aDIMAGE5TAGDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE5TAGLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE5TAGREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE6LINKDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE6LINKLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE6LINKREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE6LINKWARNING: CatalogsItemValidationDetails?
+    public var aDIMAGE6TAGDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE6TAGLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE6TAGREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE7LINKDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE7LINKLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE7LINKREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE7LINKWARNING: CatalogsItemValidationDetails?
+    public var aDIMAGE7TAGDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE7TAGLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE7TAGREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE8LINKDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE8LINKLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE8LINKREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE8LINKWARNING: CatalogsItemValidationDetails?
+    public var aDIMAGE8TAGDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE8TAGLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE8TAGREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE9LINKDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE9LINKLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE9LINKREQUIRED: CatalogsItemValidationDetails?
+    public var aDIMAGE9LINKWARNING: CatalogsItemValidationDetails?
+    public var aDIMAGE9TAGDUPLICATED: CatalogsItemValidationDetails?
+    public var aDIMAGE9TAGLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDIMAGE9TAGREQUIRED: CatalogsItemValidationDetails?
     public var AD_LINK_FORMAT_WARNING: CatalogsItemValidationDetails?
     public var AD_LINK_SAME_AS_LINK: CatalogsItemValidationDetails?
+    public var aDVIDEO0LINKDUPLICATED: CatalogsItemValidationDetails?
+    public var aDVIDEO0LINKLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDVIDEO0LINKREQUIRED: CatalogsItemValidationDetails?
+    public var aDVIDEO0LINKWARNING: CatalogsItemValidationDetails?
+    public var aDVIDEO0TAGDUPLICATED: CatalogsItemValidationDetails?
+    public var aDVIDEO0TAGLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDVIDEO0TAGREQUIRED: CatalogsItemValidationDetails?
+    public var aDVIDEO1LINKDUPLICATED: CatalogsItemValidationDetails?
+    public var aDVIDEO1LINKLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDVIDEO1LINKREQUIRED: CatalogsItemValidationDetails?
+    public var aDVIDEO1LINKWARNING: CatalogsItemValidationDetails?
+    public var aDVIDEO1TAGDUPLICATED: CatalogsItemValidationDetails?
+    public var aDVIDEO1TAGLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDVIDEO1TAGREQUIRED: CatalogsItemValidationDetails?
+    public var aDVIDEO2LINKDUPLICATED: CatalogsItemValidationDetails?
+    public var aDVIDEO2LINKLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDVIDEO2LINKREQUIRED: CatalogsItemValidationDetails?
+    public var aDVIDEO2LINKWARNING: CatalogsItemValidationDetails?
+    public var aDVIDEO2TAGDUPLICATED: CatalogsItemValidationDetails?
+    public var aDVIDEO2TAGLENGTHTOOLONG: CatalogsItemValidationDetails?
+    public var aDVIDEO2TAGREQUIRED: CatalogsItemValidationDetails?
     public var ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails?
     public var ADDITIONAL_IMAGE_LINK_WARNING: CatalogsItemValidationDetails?
     public var ADWORDS_FORMAT_WARNING: CatalogsItemValidationDetails?
     public var ADWORDS_SAME_AS_LINK: CatalogsItemValidationDetails?
     public var AGE_GROUP_INVALID: CatalogsItemValidationDetails?
-    public var SIZE_SYSTEM_INVALID: CatalogsItemValidationDetails?
     public var ANDROID_DEEP_LINK_INVALID: CatalogsItemValidationDetails?
     public var AVAILABILITY_DATE_INVALID: CatalogsItemValidationDetails?
     public var COUNTRY_DOES_NOT_MAP_TO_CURRENCY: CatalogsItemValidationDetails?
@@ -42,30 +202,192 @@ public struct CatalogsItemValidationWarnings: Codable, JSONEncodable, Hashable {
     public var OPTIONAL_PRODUCT_CATEGORY_MISSING: CatalogsItemValidationDetails?
     public var PRODUCT_CATEGORY_DEPTH_WARNING: CatalogsItemValidationDetails?
     public var PRODUCT_TYPE_LENGTH_TOO_LONG: CatalogsItemValidationDetails?
-    public var SALES_PRICE_INVALID: CatalogsItemValidationDetails?
-    public var SALES_PRICE_TOO_LOW: CatalogsItemValidationDetails?
-    public var SALES_PRICE_TOO_HIGH: CatalogsItemValidationDetails?
     public var SALE_DATE_INVALID: CatalogsItemValidationDetails?
-    public var SHIPPING_INVALID: CatalogsItemValidationDetails?
+    public var SALES_PRICE_INVALID: CatalogsItemValidationDetails?
+    public var SALES_PRICE_TOO_HIGH: CatalogsItemValidationDetails?
+    public var SALES_PRICE_TOO_LOW: CatalogsItemValidationDetails?
     public var SHIPPING_HEIGHT_INVALID: CatalogsItemValidationDetails?
+    public var SHIPPING_INVALID: CatalogsItemValidationDetails?
     public var SHIPPING_WEIGHT_INVALID: CatalogsItemValidationDetails?
     public var SHIPPING_WIDTH_INVALID: CatalogsItemValidationDetails?
+    public var SIZE_SYSTEM_INVALID: CatalogsItemValidationDetails?
     public var SIZE_TYPE_INVALID: CatalogsItemValidationDetails?
     public var TAX_INVALID: CatalogsItemValidationDetails?
     public var TITLE_LENGTH_TOO_LONG: CatalogsItemValidationDetails?
     public var TOO_MANY_ADDITIONAL_IMAGE_LINKS: CatalogsItemValidationDetails?
     public var UTM_SOURCE_AUTO_CORRECTED: CatalogsItemValidationDetails?
+    public var VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED: CatalogsItemValidationDetails?
     public var WEIGHT_UNIT_INVALID: CatalogsItemValidationDetails?
 
-    public init(AD_LINK_FORMAT_WARNING: CatalogsItemValidationDetails? = nil, AD_LINK_SAME_AS_LINK: CatalogsItemValidationDetails? = nil, ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails? = nil, ADDITIONAL_IMAGE_LINK_WARNING: CatalogsItemValidationDetails? = nil, ADWORDS_FORMAT_WARNING: CatalogsItemValidationDetails? = nil, ADWORDS_SAME_AS_LINK: CatalogsItemValidationDetails? = nil, AGE_GROUP_INVALID: CatalogsItemValidationDetails? = nil, SIZE_SYSTEM_INVALID: CatalogsItemValidationDetails? = nil, ANDROID_DEEP_LINK_INVALID: CatalogsItemValidationDetails? = nil, AVAILABILITY_DATE_INVALID: CatalogsItemValidationDetails? = nil, COUNTRY_DOES_NOT_MAP_TO_CURRENCY: CatalogsItemValidationDetails? = nil, CUSTOM_LABEL_LENGTH_TOO_LONG: CatalogsItemValidationDetails? = nil, DESCRIPTION_LENGTH_TOO_LONG: CatalogsItemValidationDetails? = nil, EXPIRATION_DATE_INVALID: CatalogsItemValidationDetails? = nil, GENDER_INVALID: CatalogsItemValidationDetails? = nil, GTIN_INVALID: CatalogsItemValidationDetails? = nil, IMAGE_LINK_WARNING: CatalogsItemValidationDetails? = nil, IOS_DEEP_LINK_INVALID: CatalogsItemValidationDetails? = nil, IS_BUNDLE_INVALID: CatalogsItemValidationDetails? = nil, ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE: CatalogsItemValidationDetails? = nil, LINK_FORMAT_WARNING: CatalogsItemValidationDetails? = nil, MIN_AD_PRICE_INVALID: CatalogsItemValidationDetails? = nil, MPN_INVALID: CatalogsItemValidationDetails? = nil, MULTIPACK_INVALID: CatalogsItemValidationDetails? = nil, OPTIONAL_CONDITION_INVALID: CatalogsItemValidationDetails? = nil, OPTIONAL_CONDITION_MISSING: CatalogsItemValidationDetails? = nil, OPTIONAL_PRODUCT_CATEGORY_INVALID: CatalogsItemValidationDetails? = nil, OPTIONAL_PRODUCT_CATEGORY_MISSING: CatalogsItemValidationDetails? = nil, PRODUCT_CATEGORY_DEPTH_WARNING: CatalogsItemValidationDetails? = nil, PRODUCT_TYPE_LENGTH_TOO_LONG: CatalogsItemValidationDetails? = nil, SALES_PRICE_INVALID: CatalogsItemValidationDetails? = nil, SALES_PRICE_TOO_LOW: CatalogsItemValidationDetails? = nil, SALES_PRICE_TOO_HIGH: CatalogsItemValidationDetails? = nil, SALE_DATE_INVALID: CatalogsItemValidationDetails? = nil, SHIPPING_INVALID: CatalogsItemValidationDetails? = nil, SHIPPING_HEIGHT_INVALID: CatalogsItemValidationDetails? = nil, SHIPPING_WEIGHT_INVALID: CatalogsItemValidationDetails? = nil, SHIPPING_WIDTH_INVALID: CatalogsItemValidationDetails? = nil, SIZE_TYPE_INVALID: CatalogsItemValidationDetails? = nil, TAX_INVALID: CatalogsItemValidationDetails? = nil, TITLE_LENGTH_TOO_LONG: CatalogsItemValidationDetails? = nil, TOO_MANY_ADDITIONAL_IMAGE_LINKS: CatalogsItemValidationDetails? = nil, UTM_SOURCE_AUTO_CORRECTED: CatalogsItemValidationDetails? = nil, WEIGHT_UNIT_INVALID: CatalogsItemValidationDetails? = nil) {
+    public init(aDIMAGE0LINKDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE0LINKLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE0LINKREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE0LINKWARNING: CatalogsItemValidationDetails? = nil, aDIMAGE0TAGDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE0TAGLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE0TAGREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE10LINKDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE10LINKLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE10LINKREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE10LINKWARNING: CatalogsItemValidationDetails? = nil, aDIMAGE10TAGDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE10TAGLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE10TAGREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE11LINKDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE11LINKLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE11LINKREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE11LINKWARNING: CatalogsItemValidationDetails? = nil, aDIMAGE11TAGDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE11TAGLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE11TAGREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE12LINKDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE12LINKLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE12LINKREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE12LINKWARNING: CatalogsItemValidationDetails? = nil, aDIMAGE12TAGDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE12TAGLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE12TAGREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE13LINKDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE13LINKLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE13LINKREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE13LINKWARNING: CatalogsItemValidationDetails? = nil, aDIMAGE13TAGDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE13TAGLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE13TAGREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE14LINKDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE14LINKLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE14LINKREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE14LINKWARNING: CatalogsItemValidationDetails? = nil, aDIMAGE14TAGDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE14TAGLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE14TAGREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE15LINKDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE15LINKLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE15LINKREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE15LINKWARNING: CatalogsItemValidationDetails? = nil, aDIMAGE15TAGDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE15TAGLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE15TAGREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE16LINKDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE16LINKLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE16LINKREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE16LINKWARNING: CatalogsItemValidationDetails? = nil, aDIMAGE16TAGDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE16TAGLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE16TAGREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE17LINKDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE17LINKLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE17LINKREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE17LINKWARNING: CatalogsItemValidationDetails? = nil, aDIMAGE17TAGDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE17TAGLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE17TAGREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE18LINKDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE18LINKLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE18LINKREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE18LINKWARNING: CatalogsItemValidationDetails? = nil, aDIMAGE18TAGDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE18TAGLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE18TAGREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE19LINKDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE19LINKLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE19LINKREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE19LINKWARNING: CatalogsItemValidationDetails? = nil, aDIMAGE19TAGDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE19TAGLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE19TAGREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE1LINKDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE1LINKLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE1LINKREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE1LINKWARNING: CatalogsItemValidationDetails? = nil, aDIMAGE1TAGDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE1TAGLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE1TAGREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE2LINKDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE2LINKLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE2LINKREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE2LINKWARNING: CatalogsItemValidationDetails? = nil, aDIMAGE2TAGDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE2TAGLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE2TAGREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE3LINKDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE3LINKLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE3LINKREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE3LINKWARNING: CatalogsItemValidationDetails? = nil, aDIMAGE3TAGDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE3TAGLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE3TAGREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE4LINKDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE4LINKLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE4LINKREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE4LINKWARNING: CatalogsItemValidationDetails? = nil, aDIMAGE4TAGDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE4TAGLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE4TAGREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE5LINKDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE5LINKLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE5LINKREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE5LINKWARNING: CatalogsItemValidationDetails? = nil, aDIMAGE5TAGDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE5TAGLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE5TAGREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE6LINKDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE6LINKLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE6LINKREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE6LINKWARNING: CatalogsItemValidationDetails? = nil, aDIMAGE6TAGDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE6TAGLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE6TAGREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE7LINKDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE7LINKLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE7LINKREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE7LINKWARNING: CatalogsItemValidationDetails? = nil, aDIMAGE7TAGDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE7TAGLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE7TAGREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE8LINKDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE8LINKLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE8LINKREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE8LINKWARNING: CatalogsItemValidationDetails? = nil, aDIMAGE8TAGDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE8TAGLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE8TAGREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE9LINKDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE9LINKLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE9LINKREQUIRED: CatalogsItemValidationDetails? = nil, aDIMAGE9LINKWARNING: CatalogsItemValidationDetails? = nil, aDIMAGE9TAGDUPLICATED: CatalogsItemValidationDetails? = nil, aDIMAGE9TAGLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDIMAGE9TAGREQUIRED: CatalogsItemValidationDetails? = nil, AD_LINK_FORMAT_WARNING: CatalogsItemValidationDetails? = nil, AD_LINK_SAME_AS_LINK: CatalogsItemValidationDetails? = nil, aDVIDEO0LINKDUPLICATED: CatalogsItemValidationDetails? = nil, aDVIDEO0LINKLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDVIDEO0LINKREQUIRED: CatalogsItemValidationDetails? = nil, aDVIDEO0LINKWARNING: CatalogsItemValidationDetails? = nil, aDVIDEO0TAGDUPLICATED: CatalogsItemValidationDetails? = nil, aDVIDEO0TAGLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDVIDEO0TAGREQUIRED: CatalogsItemValidationDetails? = nil, aDVIDEO1LINKDUPLICATED: CatalogsItemValidationDetails? = nil, aDVIDEO1LINKLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDVIDEO1LINKREQUIRED: CatalogsItemValidationDetails? = nil, aDVIDEO1LINKWARNING: CatalogsItemValidationDetails? = nil, aDVIDEO1TAGDUPLICATED: CatalogsItemValidationDetails? = nil, aDVIDEO1TAGLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDVIDEO1TAGREQUIRED: CatalogsItemValidationDetails? = nil, aDVIDEO2LINKDUPLICATED: CatalogsItemValidationDetails? = nil, aDVIDEO2LINKLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDVIDEO2LINKREQUIRED: CatalogsItemValidationDetails? = nil, aDVIDEO2LINKWARNING: CatalogsItemValidationDetails? = nil, aDVIDEO2TAGDUPLICATED: CatalogsItemValidationDetails? = nil, aDVIDEO2TAGLENGTHTOOLONG: CatalogsItemValidationDetails? = nil, aDVIDEO2TAGREQUIRED: CatalogsItemValidationDetails? = nil, ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG: CatalogsItemValidationDetails? = nil, ADDITIONAL_IMAGE_LINK_WARNING: CatalogsItemValidationDetails? = nil, ADWORDS_FORMAT_WARNING: CatalogsItemValidationDetails? = nil, ADWORDS_SAME_AS_LINK: CatalogsItemValidationDetails? = nil, AGE_GROUP_INVALID: CatalogsItemValidationDetails? = nil, ANDROID_DEEP_LINK_INVALID: CatalogsItemValidationDetails? = nil, AVAILABILITY_DATE_INVALID: CatalogsItemValidationDetails? = nil, COUNTRY_DOES_NOT_MAP_TO_CURRENCY: CatalogsItemValidationDetails? = nil, CUSTOM_LABEL_LENGTH_TOO_LONG: CatalogsItemValidationDetails? = nil, DESCRIPTION_LENGTH_TOO_LONG: CatalogsItemValidationDetails? = nil, EXPIRATION_DATE_INVALID: CatalogsItemValidationDetails? = nil, GENDER_INVALID: CatalogsItemValidationDetails? = nil, GTIN_INVALID: CatalogsItemValidationDetails? = nil, IMAGE_LINK_WARNING: CatalogsItemValidationDetails? = nil, IOS_DEEP_LINK_INVALID: CatalogsItemValidationDetails? = nil, IS_BUNDLE_INVALID: CatalogsItemValidationDetails? = nil, ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE: CatalogsItemValidationDetails? = nil, LINK_FORMAT_WARNING: CatalogsItemValidationDetails? = nil, MIN_AD_PRICE_INVALID: CatalogsItemValidationDetails? = nil, MPN_INVALID: CatalogsItemValidationDetails? = nil, MULTIPACK_INVALID: CatalogsItemValidationDetails? = nil, OPTIONAL_CONDITION_INVALID: CatalogsItemValidationDetails? = nil, OPTIONAL_CONDITION_MISSING: CatalogsItemValidationDetails? = nil, OPTIONAL_PRODUCT_CATEGORY_INVALID: CatalogsItemValidationDetails? = nil, OPTIONAL_PRODUCT_CATEGORY_MISSING: CatalogsItemValidationDetails? = nil, PRODUCT_CATEGORY_DEPTH_WARNING: CatalogsItemValidationDetails? = nil, PRODUCT_TYPE_LENGTH_TOO_LONG: CatalogsItemValidationDetails? = nil, SALE_DATE_INVALID: CatalogsItemValidationDetails? = nil, SALES_PRICE_INVALID: CatalogsItemValidationDetails? = nil, SALES_PRICE_TOO_HIGH: CatalogsItemValidationDetails? = nil, SALES_PRICE_TOO_LOW: CatalogsItemValidationDetails? = nil, SHIPPING_HEIGHT_INVALID: CatalogsItemValidationDetails? = nil, SHIPPING_INVALID: CatalogsItemValidationDetails? = nil, SHIPPING_WEIGHT_INVALID: CatalogsItemValidationDetails? = nil, SHIPPING_WIDTH_INVALID: CatalogsItemValidationDetails? = nil, SIZE_SYSTEM_INVALID: CatalogsItemValidationDetails? = nil, SIZE_TYPE_INVALID: CatalogsItemValidationDetails? = nil, TAX_INVALID: CatalogsItemValidationDetails? = nil, TITLE_LENGTH_TOO_LONG: CatalogsItemValidationDetails? = nil, TOO_MANY_ADDITIONAL_IMAGE_LINKS: CatalogsItemValidationDetails? = nil, UTM_SOURCE_AUTO_CORRECTED: CatalogsItemValidationDetails? = nil, VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED: CatalogsItemValidationDetails? = nil, WEIGHT_UNIT_INVALID: CatalogsItemValidationDetails? = nil) {
+        self.aDIMAGE0LINKDUPLICATED = aDIMAGE0LINKDUPLICATED
+        self.aDIMAGE0LINKLENGTHTOOLONG = aDIMAGE0LINKLENGTHTOOLONG
+        self.aDIMAGE0LINKREQUIRED = aDIMAGE0LINKREQUIRED
+        self.aDIMAGE0LINKWARNING = aDIMAGE0LINKWARNING
+        self.aDIMAGE0TAGDUPLICATED = aDIMAGE0TAGDUPLICATED
+        self.aDIMAGE0TAGLENGTHTOOLONG = aDIMAGE0TAGLENGTHTOOLONG
+        self.aDIMAGE0TAGREQUIRED = aDIMAGE0TAGREQUIRED
+        self.aDIMAGE10LINKDUPLICATED = aDIMAGE10LINKDUPLICATED
+        self.aDIMAGE10LINKLENGTHTOOLONG = aDIMAGE10LINKLENGTHTOOLONG
+        self.aDIMAGE10LINKREQUIRED = aDIMAGE10LINKREQUIRED
+        self.aDIMAGE10LINKWARNING = aDIMAGE10LINKWARNING
+        self.aDIMAGE10TAGDUPLICATED = aDIMAGE10TAGDUPLICATED
+        self.aDIMAGE10TAGLENGTHTOOLONG = aDIMAGE10TAGLENGTHTOOLONG
+        self.aDIMAGE10TAGREQUIRED = aDIMAGE10TAGREQUIRED
+        self.aDIMAGE11LINKDUPLICATED = aDIMAGE11LINKDUPLICATED
+        self.aDIMAGE11LINKLENGTHTOOLONG = aDIMAGE11LINKLENGTHTOOLONG
+        self.aDIMAGE11LINKREQUIRED = aDIMAGE11LINKREQUIRED
+        self.aDIMAGE11LINKWARNING = aDIMAGE11LINKWARNING
+        self.aDIMAGE11TAGDUPLICATED = aDIMAGE11TAGDUPLICATED
+        self.aDIMAGE11TAGLENGTHTOOLONG = aDIMAGE11TAGLENGTHTOOLONG
+        self.aDIMAGE11TAGREQUIRED = aDIMAGE11TAGREQUIRED
+        self.aDIMAGE12LINKDUPLICATED = aDIMAGE12LINKDUPLICATED
+        self.aDIMAGE12LINKLENGTHTOOLONG = aDIMAGE12LINKLENGTHTOOLONG
+        self.aDIMAGE12LINKREQUIRED = aDIMAGE12LINKREQUIRED
+        self.aDIMAGE12LINKWARNING = aDIMAGE12LINKWARNING
+        self.aDIMAGE12TAGDUPLICATED = aDIMAGE12TAGDUPLICATED
+        self.aDIMAGE12TAGLENGTHTOOLONG = aDIMAGE12TAGLENGTHTOOLONG
+        self.aDIMAGE12TAGREQUIRED = aDIMAGE12TAGREQUIRED
+        self.aDIMAGE13LINKDUPLICATED = aDIMAGE13LINKDUPLICATED
+        self.aDIMAGE13LINKLENGTHTOOLONG = aDIMAGE13LINKLENGTHTOOLONG
+        self.aDIMAGE13LINKREQUIRED = aDIMAGE13LINKREQUIRED
+        self.aDIMAGE13LINKWARNING = aDIMAGE13LINKWARNING
+        self.aDIMAGE13TAGDUPLICATED = aDIMAGE13TAGDUPLICATED
+        self.aDIMAGE13TAGLENGTHTOOLONG = aDIMAGE13TAGLENGTHTOOLONG
+        self.aDIMAGE13TAGREQUIRED = aDIMAGE13TAGREQUIRED
+        self.aDIMAGE14LINKDUPLICATED = aDIMAGE14LINKDUPLICATED
+        self.aDIMAGE14LINKLENGTHTOOLONG = aDIMAGE14LINKLENGTHTOOLONG
+        self.aDIMAGE14LINKREQUIRED = aDIMAGE14LINKREQUIRED
+        self.aDIMAGE14LINKWARNING = aDIMAGE14LINKWARNING
+        self.aDIMAGE14TAGDUPLICATED = aDIMAGE14TAGDUPLICATED
+        self.aDIMAGE14TAGLENGTHTOOLONG = aDIMAGE14TAGLENGTHTOOLONG
+        self.aDIMAGE14TAGREQUIRED = aDIMAGE14TAGREQUIRED
+        self.aDIMAGE15LINKDUPLICATED = aDIMAGE15LINKDUPLICATED
+        self.aDIMAGE15LINKLENGTHTOOLONG = aDIMAGE15LINKLENGTHTOOLONG
+        self.aDIMAGE15LINKREQUIRED = aDIMAGE15LINKREQUIRED
+        self.aDIMAGE15LINKWARNING = aDIMAGE15LINKWARNING
+        self.aDIMAGE15TAGDUPLICATED = aDIMAGE15TAGDUPLICATED
+        self.aDIMAGE15TAGLENGTHTOOLONG = aDIMAGE15TAGLENGTHTOOLONG
+        self.aDIMAGE15TAGREQUIRED = aDIMAGE15TAGREQUIRED
+        self.aDIMAGE16LINKDUPLICATED = aDIMAGE16LINKDUPLICATED
+        self.aDIMAGE16LINKLENGTHTOOLONG = aDIMAGE16LINKLENGTHTOOLONG
+        self.aDIMAGE16LINKREQUIRED = aDIMAGE16LINKREQUIRED
+        self.aDIMAGE16LINKWARNING = aDIMAGE16LINKWARNING
+        self.aDIMAGE16TAGDUPLICATED = aDIMAGE16TAGDUPLICATED
+        self.aDIMAGE16TAGLENGTHTOOLONG = aDIMAGE16TAGLENGTHTOOLONG
+        self.aDIMAGE16TAGREQUIRED = aDIMAGE16TAGREQUIRED
+        self.aDIMAGE17LINKDUPLICATED = aDIMAGE17LINKDUPLICATED
+        self.aDIMAGE17LINKLENGTHTOOLONG = aDIMAGE17LINKLENGTHTOOLONG
+        self.aDIMAGE17LINKREQUIRED = aDIMAGE17LINKREQUIRED
+        self.aDIMAGE17LINKWARNING = aDIMAGE17LINKWARNING
+        self.aDIMAGE17TAGDUPLICATED = aDIMAGE17TAGDUPLICATED
+        self.aDIMAGE17TAGLENGTHTOOLONG = aDIMAGE17TAGLENGTHTOOLONG
+        self.aDIMAGE17TAGREQUIRED = aDIMAGE17TAGREQUIRED
+        self.aDIMAGE18LINKDUPLICATED = aDIMAGE18LINKDUPLICATED
+        self.aDIMAGE18LINKLENGTHTOOLONG = aDIMAGE18LINKLENGTHTOOLONG
+        self.aDIMAGE18LINKREQUIRED = aDIMAGE18LINKREQUIRED
+        self.aDIMAGE18LINKWARNING = aDIMAGE18LINKWARNING
+        self.aDIMAGE18TAGDUPLICATED = aDIMAGE18TAGDUPLICATED
+        self.aDIMAGE18TAGLENGTHTOOLONG = aDIMAGE18TAGLENGTHTOOLONG
+        self.aDIMAGE18TAGREQUIRED = aDIMAGE18TAGREQUIRED
+        self.aDIMAGE19LINKDUPLICATED = aDIMAGE19LINKDUPLICATED
+        self.aDIMAGE19LINKLENGTHTOOLONG = aDIMAGE19LINKLENGTHTOOLONG
+        self.aDIMAGE19LINKREQUIRED = aDIMAGE19LINKREQUIRED
+        self.aDIMAGE19LINKWARNING = aDIMAGE19LINKWARNING
+        self.aDIMAGE19TAGDUPLICATED = aDIMAGE19TAGDUPLICATED
+        self.aDIMAGE19TAGLENGTHTOOLONG = aDIMAGE19TAGLENGTHTOOLONG
+        self.aDIMAGE19TAGREQUIRED = aDIMAGE19TAGREQUIRED
+        self.aDIMAGE1LINKDUPLICATED = aDIMAGE1LINKDUPLICATED
+        self.aDIMAGE1LINKLENGTHTOOLONG = aDIMAGE1LINKLENGTHTOOLONG
+        self.aDIMAGE1LINKREQUIRED = aDIMAGE1LINKREQUIRED
+        self.aDIMAGE1LINKWARNING = aDIMAGE1LINKWARNING
+        self.aDIMAGE1TAGDUPLICATED = aDIMAGE1TAGDUPLICATED
+        self.aDIMAGE1TAGLENGTHTOOLONG = aDIMAGE1TAGLENGTHTOOLONG
+        self.aDIMAGE1TAGREQUIRED = aDIMAGE1TAGREQUIRED
+        self.aDIMAGE2LINKDUPLICATED = aDIMAGE2LINKDUPLICATED
+        self.aDIMAGE2LINKLENGTHTOOLONG = aDIMAGE2LINKLENGTHTOOLONG
+        self.aDIMAGE2LINKREQUIRED = aDIMAGE2LINKREQUIRED
+        self.aDIMAGE2LINKWARNING = aDIMAGE2LINKWARNING
+        self.aDIMAGE2TAGDUPLICATED = aDIMAGE2TAGDUPLICATED
+        self.aDIMAGE2TAGLENGTHTOOLONG = aDIMAGE2TAGLENGTHTOOLONG
+        self.aDIMAGE2TAGREQUIRED = aDIMAGE2TAGREQUIRED
+        self.aDIMAGE3LINKDUPLICATED = aDIMAGE3LINKDUPLICATED
+        self.aDIMAGE3LINKLENGTHTOOLONG = aDIMAGE3LINKLENGTHTOOLONG
+        self.aDIMAGE3LINKREQUIRED = aDIMAGE3LINKREQUIRED
+        self.aDIMAGE3LINKWARNING = aDIMAGE3LINKWARNING
+        self.aDIMAGE3TAGDUPLICATED = aDIMAGE3TAGDUPLICATED
+        self.aDIMAGE3TAGLENGTHTOOLONG = aDIMAGE3TAGLENGTHTOOLONG
+        self.aDIMAGE3TAGREQUIRED = aDIMAGE3TAGREQUIRED
+        self.aDIMAGE4LINKDUPLICATED = aDIMAGE4LINKDUPLICATED
+        self.aDIMAGE4LINKLENGTHTOOLONG = aDIMAGE4LINKLENGTHTOOLONG
+        self.aDIMAGE4LINKREQUIRED = aDIMAGE4LINKREQUIRED
+        self.aDIMAGE4LINKWARNING = aDIMAGE4LINKWARNING
+        self.aDIMAGE4TAGDUPLICATED = aDIMAGE4TAGDUPLICATED
+        self.aDIMAGE4TAGLENGTHTOOLONG = aDIMAGE4TAGLENGTHTOOLONG
+        self.aDIMAGE4TAGREQUIRED = aDIMAGE4TAGREQUIRED
+        self.aDIMAGE5LINKDUPLICATED = aDIMAGE5LINKDUPLICATED
+        self.aDIMAGE5LINKLENGTHTOOLONG = aDIMAGE5LINKLENGTHTOOLONG
+        self.aDIMAGE5LINKREQUIRED = aDIMAGE5LINKREQUIRED
+        self.aDIMAGE5LINKWARNING = aDIMAGE5LINKWARNING
+        self.aDIMAGE5TAGDUPLICATED = aDIMAGE5TAGDUPLICATED
+        self.aDIMAGE5TAGLENGTHTOOLONG = aDIMAGE5TAGLENGTHTOOLONG
+        self.aDIMAGE5TAGREQUIRED = aDIMAGE5TAGREQUIRED
+        self.aDIMAGE6LINKDUPLICATED = aDIMAGE6LINKDUPLICATED
+        self.aDIMAGE6LINKLENGTHTOOLONG = aDIMAGE6LINKLENGTHTOOLONG
+        self.aDIMAGE6LINKREQUIRED = aDIMAGE6LINKREQUIRED
+        self.aDIMAGE6LINKWARNING = aDIMAGE6LINKWARNING
+        self.aDIMAGE6TAGDUPLICATED = aDIMAGE6TAGDUPLICATED
+        self.aDIMAGE6TAGLENGTHTOOLONG = aDIMAGE6TAGLENGTHTOOLONG
+        self.aDIMAGE6TAGREQUIRED = aDIMAGE6TAGREQUIRED
+        self.aDIMAGE7LINKDUPLICATED = aDIMAGE7LINKDUPLICATED
+        self.aDIMAGE7LINKLENGTHTOOLONG = aDIMAGE7LINKLENGTHTOOLONG
+        self.aDIMAGE7LINKREQUIRED = aDIMAGE7LINKREQUIRED
+        self.aDIMAGE7LINKWARNING = aDIMAGE7LINKWARNING
+        self.aDIMAGE7TAGDUPLICATED = aDIMAGE7TAGDUPLICATED
+        self.aDIMAGE7TAGLENGTHTOOLONG = aDIMAGE7TAGLENGTHTOOLONG
+        self.aDIMAGE7TAGREQUIRED = aDIMAGE7TAGREQUIRED
+        self.aDIMAGE8LINKDUPLICATED = aDIMAGE8LINKDUPLICATED
+        self.aDIMAGE8LINKLENGTHTOOLONG = aDIMAGE8LINKLENGTHTOOLONG
+        self.aDIMAGE8LINKREQUIRED = aDIMAGE8LINKREQUIRED
+        self.aDIMAGE8LINKWARNING = aDIMAGE8LINKWARNING
+        self.aDIMAGE8TAGDUPLICATED = aDIMAGE8TAGDUPLICATED
+        self.aDIMAGE8TAGLENGTHTOOLONG = aDIMAGE8TAGLENGTHTOOLONG
+        self.aDIMAGE8TAGREQUIRED = aDIMAGE8TAGREQUIRED
+        self.aDIMAGE9LINKDUPLICATED = aDIMAGE9LINKDUPLICATED
+        self.aDIMAGE9LINKLENGTHTOOLONG = aDIMAGE9LINKLENGTHTOOLONG
+        self.aDIMAGE9LINKREQUIRED = aDIMAGE9LINKREQUIRED
+        self.aDIMAGE9LINKWARNING = aDIMAGE9LINKWARNING
+        self.aDIMAGE9TAGDUPLICATED = aDIMAGE9TAGDUPLICATED
+        self.aDIMAGE9TAGLENGTHTOOLONG = aDIMAGE9TAGLENGTHTOOLONG
+        self.aDIMAGE9TAGREQUIRED = aDIMAGE9TAGREQUIRED
         self.AD_LINK_FORMAT_WARNING = AD_LINK_FORMAT_WARNING
         self.AD_LINK_SAME_AS_LINK = AD_LINK_SAME_AS_LINK
+        self.aDVIDEO0LINKDUPLICATED = aDVIDEO0LINKDUPLICATED
+        self.aDVIDEO0LINKLENGTHTOOLONG = aDVIDEO0LINKLENGTHTOOLONG
+        self.aDVIDEO0LINKREQUIRED = aDVIDEO0LINKREQUIRED
+        self.aDVIDEO0LINKWARNING = aDVIDEO0LINKWARNING
+        self.aDVIDEO0TAGDUPLICATED = aDVIDEO0TAGDUPLICATED
+        self.aDVIDEO0TAGLENGTHTOOLONG = aDVIDEO0TAGLENGTHTOOLONG
+        self.aDVIDEO0TAGREQUIRED = aDVIDEO0TAGREQUIRED
+        self.aDVIDEO1LINKDUPLICATED = aDVIDEO1LINKDUPLICATED
+        self.aDVIDEO1LINKLENGTHTOOLONG = aDVIDEO1LINKLENGTHTOOLONG
+        self.aDVIDEO1LINKREQUIRED = aDVIDEO1LINKREQUIRED
+        self.aDVIDEO1LINKWARNING = aDVIDEO1LINKWARNING
+        self.aDVIDEO1TAGDUPLICATED = aDVIDEO1TAGDUPLICATED
+        self.aDVIDEO1TAGLENGTHTOOLONG = aDVIDEO1TAGLENGTHTOOLONG
+        self.aDVIDEO1TAGREQUIRED = aDVIDEO1TAGREQUIRED
+        self.aDVIDEO2LINKDUPLICATED = aDVIDEO2LINKDUPLICATED
+        self.aDVIDEO2LINKLENGTHTOOLONG = aDVIDEO2LINKLENGTHTOOLONG
+        self.aDVIDEO2LINKREQUIRED = aDVIDEO2LINKREQUIRED
+        self.aDVIDEO2LINKWARNING = aDVIDEO2LINKWARNING
+        self.aDVIDEO2TAGDUPLICATED = aDVIDEO2TAGDUPLICATED
+        self.aDVIDEO2TAGLENGTHTOOLONG = aDVIDEO2TAGLENGTHTOOLONG
+        self.aDVIDEO2TAGREQUIRED = aDVIDEO2TAGREQUIRED
         self.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG = ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG
         self.ADDITIONAL_IMAGE_LINK_WARNING = ADDITIONAL_IMAGE_LINK_WARNING
         self.ADWORDS_FORMAT_WARNING = ADWORDS_FORMAT_WARNING
         self.ADWORDS_SAME_AS_LINK = ADWORDS_SAME_AS_LINK
         self.AGE_GROUP_INVALID = AGE_GROUP_INVALID
-        self.SIZE_SYSTEM_INVALID = SIZE_SYSTEM_INVALID
         self.ANDROID_DEEP_LINK_INVALID = ANDROID_DEEP_LINK_INVALID
         self.AVAILABILITY_DATE_INVALID = AVAILABILITY_DATE_INVALID
         self.COUNTRY_DOES_NOT_MAP_TO_CURRENCY = COUNTRY_DOES_NOT_MAP_TO_CURRENCY
@@ -88,31 +410,193 @@ public struct CatalogsItemValidationWarnings: Codable, JSONEncodable, Hashable {
         self.OPTIONAL_PRODUCT_CATEGORY_MISSING = OPTIONAL_PRODUCT_CATEGORY_MISSING
         self.PRODUCT_CATEGORY_DEPTH_WARNING = PRODUCT_CATEGORY_DEPTH_WARNING
         self.PRODUCT_TYPE_LENGTH_TOO_LONG = PRODUCT_TYPE_LENGTH_TOO_LONG
-        self.SALES_PRICE_INVALID = SALES_PRICE_INVALID
-        self.SALES_PRICE_TOO_LOW = SALES_PRICE_TOO_LOW
-        self.SALES_PRICE_TOO_HIGH = SALES_PRICE_TOO_HIGH
         self.SALE_DATE_INVALID = SALE_DATE_INVALID
-        self.SHIPPING_INVALID = SHIPPING_INVALID
+        self.SALES_PRICE_INVALID = SALES_PRICE_INVALID
+        self.SALES_PRICE_TOO_HIGH = SALES_PRICE_TOO_HIGH
+        self.SALES_PRICE_TOO_LOW = SALES_PRICE_TOO_LOW
         self.SHIPPING_HEIGHT_INVALID = SHIPPING_HEIGHT_INVALID
+        self.SHIPPING_INVALID = SHIPPING_INVALID
         self.SHIPPING_WEIGHT_INVALID = SHIPPING_WEIGHT_INVALID
         self.SHIPPING_WIDTH_INVALID = SHIPPING_WIDTH_INVALID
+        self.SIZE_SYSTEM_INVALID = SIZE_SYSTEM_INVALID
         self.SIZE_TYPE_INVALID = SIZE_TYPE_INVALID
         self.TAX_INVALID = TAX_INVALID
         self.TITLE_LENGTH_TOO_LONG = TITLE_LENGTH_TOO_LONG
         self.TOO_MANY_ADDITIONAL_IMAGE_LINKS = TOO_MANY_ADDITIONAL_IMAGE_LINKS
         self.UTM_SOURCE_AUTO_CORRECTED = UTM_SOURCE_AUTO_CORRECTED
+        self.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED = VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED
         self.WEIGHT_UNIT_INVALID = WEIGHT_UNIT_INVALID
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case aDIMAGE0LINKDUPLICATED = "AD_IMAGE_0_LINK_DUPLICATED"
+        case aDIMAGE0LINKLENGTHTOOLONG = "AD_IMAGE_0_LINK_LENGTH_TOO_LONG"
+        case aDIMAGE0LINKREQUIRED = "AD_IMAGE_0_LINK_REQUIRED"
+        case aDIMAGE0LINKWARNING = "AD_IMAGE_0_LINK_WARNING"
+        case aDIMAGE0TAGDUPLICATED = "AD_IMAGE_0_TAG_DUPLICATED"
+        case aDIMAGE0TAGLENGTHTOOLONG = "AD_IMAGE_0_TAG_LENGTH_TOO_LONG"
+        case aDIMAGE0TAGREQUIRED = "AD_IMAGE_0_TAG_REQUIRED"
+        case aDIMAGE10LINKDUPLICATED = "AD_IMAGE_10_LINK_DUPLICATED"
+        case aDIMAGE10LINKLENGTHTOOLONG = "AD_IMAGE_10_LINK_LENGTH_TOO_LONG"
+        case aDIMAGE10LINKREQUIRED = "AD_IMAGE_10_LINK_REQUIRED"
+        case aDIMAGE10LINKWARNING = "AD_IMAGE_10_LINK_WARNING"
+        case aDIMAGE10TAGDUPLICATED = "AD_IMAGE_10_TAG_DUPLICATED"
+        case aDIMAGE10TAGLENGTHTOOLONG = "AD_IMAGE_10_TAG_LENGTH_TOO_LONG"
+        case aDIMAGE10TAGREQUIRED = "AD_IMAGE_10_TAG_REQUIRED"
+        case aDIMAGE11LINKDUPLICATED = "AD_IMAGE_11_LINK_DUPLICATED"
+        case aDIMAGE11LINKLENGTHTOOLONG = "AD_IMAGE_11_LINK_LENGTH_TOO_LONG"
+        case aDIMAGE11LINKREQUIRED = "AD_IMAGE_11_LINK_REQUIRED"
+        case aDIMAGE11LINKWARNING = "AD_IMAGE_11_LINK_WARNING"
+        case aDIMAGE11TAGDUPLICATED = "AD_IMAGE_11_TAG_DUPLICATED"
+        case aDIMAGE11TAGLENGTHTOOLONG = "AD_IMAGE_11_TAG_LENGTH_TOO_LONG"
+        case aDIMAGE11TAGREQUIRED = "AD_IMAGE_11_TAG_REQUIRED"
+        case aDIMAGE12LINKDUPLICATED = "AD_IMAGE_12_LINK_DUPLICATED"
+        case aDIMAGE12LINKLENGTHTOOLONG = "AD_IMAGE_12_LINK_LENGTH_TOO_LONG"
+        case aDIMAGE12LINKREQUIRED = "AD_IMAGE_12_LINK_REQUIRED"
+        case aDIMAGE12LINKWARNING = "AD_IMAGE_12_LINK_WARNING"
+        case aDIMAGE12TAGDUPLICATED = "AD_IMAGE_12_TAG_DUPLICATED"
+        case aDIMAGE12TAGLENGTHTOOLONG = "AD_IMAGE_12_TAG_LENGTH_TOO_LONG"
+        case aDIMAGE12TAGREQUIRED = "AD_IMAGE_12_TAG_REQUIRED"
+        case aDIMAGE13LINKDUPLICATED = "AD_IMAGE_13_LINK_DUPLICATED"
+        case aDIMAGE13LINKLENGTHTOOLONG = "AD_IMAGE_13_LINK_LENGTH_TOO_LONG"
+        case aDIMAGE13LINKREQUIRED = "AD_IMAGE_13_LINK_REQUIRED"
+        case aDIMAGE13LINKWARNING = "AD_IMAGE_13_LINK_WARNING"
+        case aDIMAGE13TAGDUPLICATED = "AD_IMAGE_13_TAG_DUPLICATED"
+        case aDIMAGE13TAGLENGTHTOOLONG = "AD_IMAGE_13_TAG_LENGTH_TOO_LONG"
+        case aDIMAGE13TAGREQUIRED = "AD_IMAGE_13_TAG_REQUIRED"
+        case aDIMAGE14LINKDUPLICATED = "AD_IMAGE_14_LINK_DUPLICATED"
+        case aDIMAGE14LINKLENGTHTOOLONG = "AD_IMAGE_14_LINK_LENGTH_TOO_LONG"
+        case aDIMAGE14LINKREQUIRED = "AD_IMAGE_14_LINK_REQUIRED"
+        case aDIMAGE14LINKWARNING = "AD_IMAGE_14_LINK_WARNING"
+        case aDIMAGE14TAGDUPLICATED = "AD_IMAGE_14_TAG_DUPLICATED"
+        case aDIMAGE14TAGLENGTHTOOLONG = "AD_IMAGE_14_TAG_LENGTH_TOO_LONG"
+        case aDIMAGE14TAGREQUIRED = "AD_IMAGE_14_TAG_REQUIRED"
+        case aDIMAGE15LINKDUPLICATED = "AD_IMAGE_15_LINK_DUPLICATED"
+        case aDIMAGE15LINKLENGTHTOOLONG = "AD_IMAGE_15_LINK_LENGTH_TOO_LONG"
+        case aDIMAGE15LINKREQUIRED = "AD_IMAGE_15_LINK_REQUIRED"
+        case aDIMAGE15LINKWARNING = "AD_IMAGE_15_LINK_WARNING"
+        case aDIMAGE15TAGDUPLICATED = "AD_IMAGE_15_TAG_DUPLICATED"
+        case aDIMAGE15TAGLENGTHTOOLONG = "AD_IMAGE_15_TAG_LENGTH_TOO_LONG"
+        case aDIMAGE15TAGREQUIRED = "AD_IMAGE_15_TAG_REQUIRED"
+        case aDIMAGE16LINKDUPLICATED = "AD_IMAGE_16_LINK_DUPLICATED"
+        case aDIMAGE16LINKLENGTHTOOLONG = "AD_IMAGE_16_LINK_LENGTH_TOO_LONG"
+        case aDIMAGE16LINKREQUIRED = "AD_IMAGE_16_LINK_REQUIRED"
+        case aDIMAGE16LINKWARNING = "AD_IMAGE_16_LINK_WARNING"
+        case aDIMAGE16TAGDUPLICATED = "AD_IMAGE_16_TAG_DUPLICATED"
+        case aDIMAGE16TAGLENGTHTOOLONG = "AD_IMAGE_16_TAG_LENGTH_TOO_LONG"
+        case aDIMAGE16TAGREQUIRED = "AD_IMAGE_16_TAG_REQUIRED"
+        case aDIMAGE17LINKDUPLICATED = "AD_IMAGE_17_LINK_DUPLICATED"
+        case aDIMAGE17LINKLENGTHTOOLONG = "AD_IMAGE_17_LINK_LENGTH_TOO_LONG"
+        case aDIMAGE17LINKREQUIRED = "AD_IMAGE_17_LINK_REQUIRED"
+        case aDIMAGE17LINKWARNING = "AD_IMAGE_17_LINK_WARNING"
+        case aDIMAGE17TAGDUPLICATED = "AD_IMAGE_17_TAG_DUPLICATED"
+        case aDIMAGE17TAGLENGTHTOOLONG = "AD_IMAGE_17_TAG_LENGTH_TOO_LONG"
+        case aDIMAGE17TAGREQUIRED = "AD_IMAGE_17_TAG_REQUIRED"
+        case aDIMAGE18LINKDUPLICATED = "AD_IMAGE_18_LINK_DUPLICATED"
+        case aDIMAGE18LINKLENGTHTOOLONG = "AD_IMAGE_18_LINK_LENGTH_TOO_LONG"
+        case aDIMAGE18LINKREQUIRED = "AD_IMAGE_18_LINK_REQUIRED"
+        case aDIMAGE18LINKWARNING = "AD_IMAGE_18_LINK_WARNING"
+        case aDIMAGE18TAGDUPLICATED = "AD_IMAGE_18_TAG_DUPLICATED"
+        case aDIMAGE18TAGLENGTHTOOLONG = "AD_IMAGE_18_TAG_LENGTH_TOO_LONG"
+        case aDIMAGE18TAGREQUIRED = "AD_IMAGE_18_TAG_REQUIRED"
+        case aDIMAGE19LINKDUPLICATED = "AD_IMAGE_19_LINK_DUPLICATED"
+        case aDIMAGE19LINKLENGTHTOOLONG = "AD_IMAGE_19_LINK_LENGTH_TOO_LONG"
+        case aDIMAGE19LINKREQUIRED = "AD_IMAGE_19_LINK_REQUIRED"
+        case aDIMAGE19LINKWARNING = "AD_IMAGE_19_LINK_WARNING"
+        case aDIMAGE19TAGDUPLICATED = "AD_IMAGE_19_TAG_DUPLICATED"
+        case aDIMAGE19TAGLENGTHTOOLONG = "AD_IMAGE_19_TAG_LENGTH_TOO_LONG"
+        case aDIMAGE19TAGREQUIRED = "AD_IMAGE_19_TAG_REQUIRED"
+        case aDIMAGE1LINKDUPLICATED = "AD_IMAGE_1_LINK_DUPLICATED"
+        case aDIMAGE1LINKLENGTHTOOLONG = "AD_IMAGE_1_LINK_LENGTH_TOO_LONG"
+        case aDIMAGE1LINKREQUIRED = "AD_IMAGE_1_LINK_REQUIRED"
+        case aDIMAGE1LINKWARNING = "AD_IMAGE_1_LINK_WARNING"
+        case aDIMAGE1TAGDUPLICATED = "AD_IMAGE_1_TAG_DUPLICATED"
+        case aDIMAGE1TAGLENGTHTOOLONG = "AD_IMAGE_1_TAG_LENGTH_TOO_LONG"
+        case aDIMAGE1TAGREQUIRED = "AD_IMAGE_1_TAG_REQUIRED"
+        case aDIMAGE2LINKDUPLICATED = "AD_IMAGE_2_LINK_DUPLICATED"
+        case aDIMAGE2LINKLENGTHTOOLONG = "AD_IMAGE_2_LINK_LENGTH_TOO_LONG"
+        case aDIMAGE2LINKREQUIRED = "AD_IMAGE_2_LINK_REQUIRED"
+        case aDIMAGE2LINKWARNING = "AD_IMAGE_2_LINK_WARNING"
+        case aDIMAGE2TAGDUPLICATED = "AD_IMAGE_2_TAG_DUPLICATED"
+        case aDIMAGE2TAGLENGTHTOOLONG = "AD_IMAGE_2_TAG_LENGTH_TOO_LONG"
+        case aDIMAGE2TAGREQUIRED = "AD_IMAGE_2_TAG_REQUIRED"
+        case aDIMAGE3LINKDUPLICATED = "AD_IMAGE_3_LINK_DUPLICATED"
+        case aDIMAGE3LINKLENGTHTOOLONG = "AD_IMAGE_3_LINK_LENGTH_TOO_LONG"
+        case aDIMAGE3LINKREQUIRED = "AD_IMAGE_3_LINK_REQUIRED"
+        case aDIMAGE3LINKWARNING = "AD_IMAGE_3_LINK_WARNING"
+        case aDIMAGE3TAGDUPLICATED = "AD_IMAGE_3_TAG_DUPLICATED"
+        case aDIMAGE3TAGLENGTHTOOLONG = "AD_IMAGE_3_TAG_LENGTH_TOO_LONG"
+        case aDIMAGE3TAGREQUIRED = "AD_IMAGE_3_TAG_REQUIRED"
+        case aDIMAGE4LINKDUPLICATED = "AD_IMAGE_4_LINK_DUPLICATED"
+        case aDIMAGE4LINKLENGTHTOOLONG = "AD_IMAGE_4_LINK_LENGTH_TOO_LONG"
+        case aDIMAGE4LINKREQUIRED = "AD_IMAGE_4_LINK_REQUIRED"
+        case aDIMAGE4LINKWARNING = "AD_IMAGE_4_LINK_WARNING"
+        case aDIMAGE4TAGDUPLICATED = "AD_IMAGE_4_TAG_DUPLICATED"
+        case aDIMAGE4TAGLENGTHTOOLONG = "AD_IMAGE_4_TAG_LENGTH_TOO_LONG"
+        case aDIMAGE4TAGREQUIRED = "AD_IMAGE_4_TAG_REQUIRED"
+        case aDIMAGE5LINKDUPLICATED = "AD_IMAGE_5_LINK_DUPLICATED"
+        case aDIMAGE5LINKLENGTHTOOLONG = "AD_IMAGE_5_LINK_LENGTH_TOO_LONG"
+        case aDIMAGE5LINKREQUIRED = "AD_IMAGE_5_LINK_REQUIRED"
+        case aDIMAGE5LINKWARNING = "AD_IMAGE_5_LINK_WARNING"
+        case aDIMAGE5TAGDUPLICATED = "AD_IMAGE_5_TAG_DUPLICATED"
+        case aDIMAGE5TAGLENGTHTOOLONG = "AD_IMAGE_5_TAG_LENGTH_TOO_LONG"
+        case aDIMAGE5TAGREQUIRED = "AD_IMAGE_5_TAG_REQUIRED"
+        case aDIMAGE6LINKDUPLICATED = "AD_IMAGE_6_LINK_DUPLICATED"
+        case aDIMAGE6LINKLENGTHTOOLONG = "AD_IMAGE_6_LINK_LENGTH_TOO_LONG"
+        case aDIMAGE6LINKREQUIRED = "AD_IMAGE_6_LINK_REQUIRED"
+        case aDIMAGE6LINKWARNING = "AD_IMAGE_6_LINK_WARNING"
+        case aDIMAGE6TAGDUPLICATED = "AD_IMAGE_6_TAG_DUPLICATED"
+        case aDIMAGE6TAGLENGTHTOOLONG = "AD_IMAGE_6_TAG_LENGTH_TOO_LONG"
+        case aDIMAGE6TAGREQUIRED = "AD_IMAGE_6_TAG_REQUIRED"
+        case aDIMAGE7LINKDUPLICATED = "AD_IMAGE_7_LINK_DUPLICATED"
+        case aDIMAGE7LINKLENGTHTOOLONG = "AD_IMAGE_7_LINK_LENGTH_TOO_LONG"
+        case aDIMAGE7LINKREQUIRED = "AD_IMAGE_7_LINK_REQUIRED"
+        case aDIMAGE7LINKWARNING = "AD_IMAGE_7_LINK_WARNING"
+        case aDIMAGE7TAGDUPLICATED = "AD_IMAGE_7_TAG_DUPLICATED"
+        case aDIMAGE7TAGLENGTHTOOLONG = "AD_IMAGE_7_TAG_LENGTH_TOO_LONG"
+        case aDIMAGE7TAGREQUIRED = "AD_IMAGE_7_TAG_REQUIRED"
+        case aDIMAGE8LINKDUPLICATED = "AD_IMAGE_8_LINK_DUPLICATED"
+        case aDIMAGE8LINKLENGTHTOOLONG = "AD_IMAGE_8_LINK_LENGTH_TOO_LONG"
+        case aDIMAGE8LINKREQUIRED = "AD_IMAGE_8_LINK_REQUIRED"
+        case aDIMAGE8LINKWARNING = "AD_IMAGE_8_LINK_WARNING"
+        case aDIMAGE8TAGDUPLICATED = "AD_IMAGE_8_TAG_DUPLICATED"
+        case aDIMAGE8TAGLENGTHTOOLONG = "AD_IMAGE_8_TAG_LENGTH_TOO_LONG"
+        case aDIMAGE8TAGREQUIRED = "AD_IMAGE_8_TAG_REQUIRED"
+        case aDIMAGE9LINKDUPLICATED = "AD_IMAGE_9_LINK_DUPLICATED"
+        case aDIMAGE9LINKLENGTHTOOLONG = "AD_IMAGE_9_LINK_LENGTH_TOO_LONG"
+        case aDIMAGE9LINKREQUIRED = "AD_IMAGE_9_LINK_REQUIRED"
+        case aDIMAGE9LINKWARNING = "AD_IMAGE_9_LINK_WARNING"
+        case aDIMAGE9TAGDUPLICATED = "AD_IMAGE_9_TAG_DUPLICATED"
+        case aDIMAGE9TAGLENGTHTOOLONG = "AD_IMAGE_9_TAG_LENGTH_TOO_LONG"
+        case aDIMAGE9TAGREQUIRED = "AD_IMAGE_9_TAG_REQUIRED"
         case AD_LINK_FORMAT_WARNING
         case AD_LINK_SAME_AS_LINK
+        case aDVIDEO0LINKDUPLICATED = "AD_VIDEO_0_LINK_DUPLICATED"
+        case aDVIDEO0LINKLENGTHTOOLONG = "AD_VIDEO_0_LINK_LENGTH_TOO_LONG"
+        case aDVIDEO0LINKREQUIRED = "AD_VIDEO_0_LINK_REQUIRED"
+        case aDVIDEO0LINKWARNING = "AD_VIDEO_0_LINK_WARNING"
+        case aDVIDEO0TAGDUPLICATED = "AD_VIDEO_0_TAG_DUPLICATED"
+        case aDVIDEO0TAGLENGTHTOOLONG = "AD_VIDEO_0_TAG_LENGTH_TOO_LONG"
+        case aDVIDEO0TAGREQUIRED = "AD_VIDEO_0_TAG_REQUIRED"
+        case aDVIDEO1LINKDUPLICATED = "AD_VIDEO_1_LINK_DUPLICATED"
+        case aDVIDEO1LINKLENGTHTOOLONG = "AD_VIDEO_1_LINK_LENGTH_TOO_LONG"
+        case aDVIDEO1LINKREQUIRED = "AD_VIDEO_1_LINK_REQUIRED"
+        case aDVIDEO1LINKWARNING = "AD_VIDEO_1_LINK_WARNING"
+        case aDVIDEO1TAGDUPLICATED = "AD_VIDEO_1_TAG_DUPLICATED"
+        case aDVIDEO1TAGLENGTHTOOLONG = "AD_VIDEO_1_TAG_LENGTH_TOO_LONG"
+        case aDVIDEO1TAGREQUIRED = "AD_VIDEO_1_TAG_REQUIRED"
+        case aDVIDEO2LINKDUPLICATED = "AD_VIDEO_2_LINK_DUPLICATED"
+        case aDVIDEO2LINKLENGTHTOOLONG = "AD_VIDEO_2_LINK_LENGTH_TOO_LONG"
+        case aDVIDEO2LINKREQUIRED = "AD_VIDEO_2_LINK_REQUIRED"
+        case aDVIDEO2LINKWARNING = "AD_VIDEO_2_LINK_WARNING"
+        case aDVIDEO2TAGDUPLICATED = "AD_VIDEO_2_TAG_DUPLICATED"
+        case aDVIDEO2TAGLENGTHTOOLONG = "AD_VIDEO_2_TAG_LENGTH_TOO_LONG"
+        case aDVIDEO2TAGREQUIRED = "AD_VIDEO_2_TAG_REQUIRED"
         case ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG
         case ADDITIONAL_IMAGE_LINK_WARNING
         case ADWORDS_FORMAT_WARNING
         case ADWORDS_SAME_AS_LINK
         case AGE_GROUP_INVALID
-        case SIZE_SYSTEM_INVALID
         case ANDROID_DEEP_LINK_INVALID
         case AVAILABILITY_DATE_INVALID
         case COUNTRY_DOES_NOT_MAP_TO_CURRENCY
@@ -135,19 +619,21 @@ public struct CatalogsItemValidationWarnings: Codable, JSONEncodable, Hashable {
         case OPTIONAL_PRODUCT_CATEGORY_MISSING
         case PRODUCT_CATEGORY_DEPTH_WARNING
         case PRODUCT_TYPE_LENGTH_TOO_LONG
-        case SALES_PRICE_INVALID
-        case SALES_PRICE_TOO_LOW
-        case SALES_PRICE_TOO_HIGH
         case SALE_DATE_INVALID
-        case SHIPPING_INVALID
+        case SALES_PRICE_INVALID
+        case SALES_PRICE_TOO_HIGH
+        case SALES_PRICE_TOO_LOW
         case SHIPPING_HEIGHT_INVALID
+        case SHIPPING_INVALID
         case SHIPPING_WEIGHT_INVALID
         case SHIPPING_WIDTH_INVALID
+        case SIZE_SYSTEM_INVALID
         case SIZE_TYPE_INVALID
         case TAX_INVALID
         case TITLE_LENGTH_TOO_LONG
         case TOO_MANY_ADDITIONAL_IMAGE_LINKS
         case UTM_SOURCE_AUTO_CORRECTED
+        case VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED
         case WEIGHT_UNIT_INVALID
     }
 
@@ -155,14 +641,174 @@ public struct CatalogsItemValidationWarnings: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(aDIMAGE0LINKDUPLICATED, forKey: .aDIMAGE0LINKDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE0LINKLENGTHTOOLONG, forKey: .aDIMAGE0LINKLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE0LINKREQUIRED, forKey: .aDIMAGE0LINKREQUIRED)
+        try container.encodeIfPresent(aDIMAGE0LINKWARNING, forKey: .aDIMAGE0LINKWARNING)
+        try container.encodeIfPresent(aDIMAGE0TAGDUPLICATED, forKey: .aDIMAGE0TAGDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE0TAGLENGTHTOOLONG, forKey: .aDIMAGE0TAGLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE0TAGREQUIRED, forKey: .aDIMAGE0TAGREQUIRED)
+        try container.encodeIfPresent(aDIMAGE10LINKDUPLICATED, forKey: .aDIMAGE10LINKDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE10LINKLENGTHTOOLONG, forKey: .aDIMAGE10LINKLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE10LINKREQUIRED, forKey: .aDIMAGE10LINKREQUIRED)
+        try container.encodeIfPresent(aDIMAGE10LINKWARNING, forKey: .aDIMAGE10LINKWARNING)
+        try container.encodeIfPresent(aDIMAGE10TAGDUPLICATED, forKey: .aDIMAGE10TAGDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE10TAGLENGTHTOOLONG, forKey: .aDIMAGE10TAGLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE10TAGREQUIRED, forKey: .aDIMAGE10TAGREQUIRED)
+        try container.encodeIfPresent(aDIMAGE11LINKDUPLICATED, forKey: .aDIMAGE11LINKDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE11LINKLENGTHTOOLONG, forKey: .aDIMAGE11LINKLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE11LINKREQUIRED, forKey: .aDIMAGE11LINKREQUIRED)
+        try container.encodeIfPresent(aDIMAGE11LINKWARNING, forKey: .aDIMAGE11LINKWARNING)
+        try container.encodeIfPresent(aDIMAGE11TAGDUPLICATED, forKey: .aDIMAGE11TAGDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE11TAGLENGTHTOOLONG, forKey: .aDIMAGE11TAGLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE11TAGREQUIRED, forKey: .aDIMAGE11TAGREQUIRED)
+        try container.encodeIfPresent(aDIMAGE12LINKDUPLICATED, forKey: .aDIMAGE12LINKDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE12LINKLENGTHTOOLONG, forKey: .aDIMAGE12LINKLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE12LINKREQUIRED, forKey: .aDIMAGE12LINKREQUIRED)
+        try container.encodeIfPresent(aDIMAGE12LINKWARNING, forKey: .aDIMAGE12LINKWARNING)
+        try container.encodeIfPresent(aDIMAGE12TAGDUPLICATED, forKey: .aDIMAGE12TAGDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE12TAGLENGTHTOOLONG, forKey: .aDIMAGE12TAGLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE12TAGREQUIRED, forKey: .aDIMAGE12TAGREQUIRED)
+        try container.encodeIfPresent(aDIMAGE13LINKDUPLICATED, forKey: .aDIMAGE13LINKDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE13LINKLENGTHTOOLONG, forKey: .aDIMAGE13LINKLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE13LINKREQUIRED, forKey: .aDIMAGE13LINKREQUIRED)
+        try container.encodeIfPresent(aDIMAGE13LINKWARNING, forKey: .aDIMAGE13LINKWARNING)
+        try container.encodeIfPresent(aDIMAGE13TAGDUPLICATED, forKey: .aDIMAGE13TAGDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE13TAGLENGTHTOOLONG, forKey: .aDIMAGE13TAGLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE13TAGREQUIRED, forKey: .aDIMAGE13TAGREQUIRED)
+        try container.encodeIfPresent(aDIMAGE14LINKDUPLICATED, forKey: .aDIMAGE14LINKDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE14LINKLENGTHTOOLONG, forKey: .aDIMAGE14LINKLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE14LINKREQUIRED, forKey: .aDIMAGE14LINKREQUIRED)
+        try container.encodeIfPresent(aDIMAGE14LINKWARNING, forKey: .aDIMAGE14LINKWARNING)
+        try container.encodeIfPresent(aDIMAGE14TAGDUPLICATED, forKey: .aDIMAGE14TAGDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE14TAGLENGTHTOOLONG, forKey: .aDIMAGE14TAGLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE14TAGREQUIRED, forKey: .aDIMAGE14TAGREQUIRED)
+        try container.encodeIfPresent(aDIMAGE15LINKDUPLICATED, forKey: .aDIMAGE15LINKDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE15LINKLENGTHTOOLONG, forKey: .aDIMAGE15LINKLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE15LINKREQUIRED, forKey: .aDIMAGE15LINKREQUIRED)
+        try container.encodeIfPresent(aDIMAGE15LINKWARNING, forKey: .aDIMAGE15LINKWARNING)
+        try container.encodeIfPresent(aDIMAGE15TAGDUPLICATED, forKey: .aDIMAGE15TAGDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE15TAGLENGTHTOOLONG, forKey: .aDIMAGE15TAGLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE15TAGREQUIRED, forKey: .aDIMAGE15TAGREQUIRED)
+        try container.encodeIfPresent(aDIMAGE16LINKDUPLICATED, forKey: .aDIMAGE16LINKDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE16LINKLENGTHTOOLONG, forKey: .aDIMAGE16LINKLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE16LINKREQUIRED, forKey: .aDIMAGE16LINKREQUIRED)
+        try container.encodeIfPresent(aDIMAGE16LINKWARNING, forKey: .aDIMAGE16LINKWARNING)
+        try container.encodeIfPresent(aDIMAGE16TAGDUPLICATED, forKey: .aDIMAGE16TAGDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE16TAGLENGTHTOOLONG, forKey: .aDIMAGE16TAGLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE16TAGREQUIRED, forKey: .aDIMAGE16TAGREQUIRED)
+        try container.encodeIfPresent(aDIMAGE17LINKDUPLICATED, forKey: .aDIMAGE17LINKDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE17LINKLENGTHTOOLONG, forKey: .aDIMAGE17LINKLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE17LINKREQUIRED, forKey: .aDIMAGE17LINKREQUIRED)
+        try container.encodeIfPresent(aDIMAGE17LINKWARNING, forKey: .aDIMAGE17LINKWARNING)
+        try container.encodeIfPresent(aDIMAGE17TAGDUPLICATED, forKey: .aDIMAGE17TAGDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE17TAGLENGTHTOOLONG, forKey: .aDIMAGE17TAGLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE17TAGREQUIRED, forKey: .aDIMAGE17TAGREQUIRED)
+        try container.encodeIfPresent(aDIMAGE18LINKDUPLICATED, forKey: .aDIMAGE18LINKDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE18LINKLENGTHTOOLONG, forKey: .aDIMAGE18LINKLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE18LINKREQUIRED, forKey: .aDIMAGE18LINKREQUIRED)
+        try container.encodeIfPresent(aDIMAGE18LINKWARNING, forKey: .aDIMAGE18LINKWARNING)
+        try container.encodeIfPresent(aDIMAGE18TAGDUPLICATED, forKey: .aDIMAGE18TAGDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE18TAGLENGTHTOOLONG, forKey: .aDIMAGE18TAGLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE18TAGREQUIRED, forKey: .aDIMAGE18TAGREQUIRED)
+        try container.encodeIfPresent(aDIMAGE19LINKDUPLICATED, forKey: .aDIMAGE19LINKDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE19LINKLENGTHTOOLONG, forKey: .aDIMAGE19LINKLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE19LINKREQUIRED, forKey: .aDIMAGE19LINKREQUIRED)
+        try container.encodeIfPresent(aDIMAGE19LINKWARNING, forKey: .aDIMAGE19LINKWARNING)
+        try container.encodeIfPresent(aDIMAGE19TAGDUPLICATED, forKey: .aDIMAGE19TAGDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE19TAGLENGTHTOOLONG, forKey: .aDIMAGE19TAGLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE19TAGREQUIRED, forKey: .aDIMAGE19TAGREQUIRED)
+        try container.encodeIfPresent(aDIMAGE1LINKDUPLICATED, forKey: .aDIMAGE1LINKDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE1LINKLENGTHTOOLONG, forKey: .aDIMAGE1LINKLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE1LINKREQUIRED, forKey: .aDIMAGE1LINKREQUIRED)
+        try container.encodeIfPresent(aDIMAGE1LINKWARNING, forKey: .aDIMAGE1LINKWARNING)
+        try container.encodeIfPresent(aDIMAGE1TAGDUPLICATED, forKey: .aDIMAGE1TAGDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE1TAGLENGTHTOOLONG, forKey: .aDIMAGE1TAGLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE1TAGREQUIRED, forKey: .aDIMAGE1TAGREQUIRED)
+        try container.encodeIfPresent(aDIMAGE2LINKDUPLICATED, forKey: .aDIMAGE2LINKDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE2LINKLENGTHTOOLONG, forKey: .aDIMAGE2LINKLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE2LINKREQUIRED, forKey: .aDIMAGE2LINKREQUIRED)
+        try container.encodeIfPresent(aDIMAGE2LINKWARNING, forKey: .aDIMAGE2LINKWARNING)
+        try container.encodeIfPresent(aDIMAGE2TAGDUPLICATED, forKey: .aDIMAGE2TAGDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE2TAGLENGTHTOOLONG, forKey: .aDIMAGE2TAGLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE2TAGREQUIRED, forKey: .aDIMAGE2TAGREQUIRED)
+        try container.encodeIfPresent(aDIMAGE3LINKDUPLICATED, forKey: .aDIMAGE3LINKDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE3LINKLENGTHTOOLONG, forKey: .aDIMAGE3LINKLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE3LINKREQUIRED, forKey: .aDIMAGE3LINKREQUIRED)
+        try container.encodeIfPresent(aDIMAGE3LINKWARNING, forKey: .aDIMAGE3LINKWARNING)
+        try container.encodeIfPresent(aDIMAGE3TAGDUPLICATED, forKey: .aDIMAGE3TAGDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE3TAGLENGTHTOOLONG, forKey: .aDIMAGE3TAGLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE3TAGREQUIRED, forKey: .aDIMAGE3TAGREQUIRED)
+        try container.encodeIfPresent(aDIMAGE4LINKDUPLICATED, forKey: .aDIMAGE4LINKDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE4LINKLENGTHTOOLONG, forKey: .aDIMAGE4LINKLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE4LINKREQUIRED, forKey: .aDIMAGE4LINKREQUIRED)
+        try container.encodeIfPresent(aDIMAGE4LINKWARNING, forKey: .aDIMAGE4LINKWARNING)
+        try container.encodeIfPresent(aDIMAGE4TAGDUPLICATED, forKey: .aDIMAGE4TAGDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE4TAGLENGTHTOOLONG, forKey: .aDIMAGE4TAGLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE4TAGREQUIRED, forKey: .aDIMAGE4TAGREQUIRED)
+        try container.encodeIfPresent(aDIMAGE5LINKDUPLICATED, forKey: .aDIMAGE5LINKDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE5LINKLENGTHTOOLONG, forKey: .aDIMAGE5LINKLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE5LINKREQUIRED, forKey: .aDIMAGE5LINKREQUIRED)
+        try container.encodeIfPresent(aDIMAGE5LINKWARNING, forKey: .aDIMAGE5LINKWARNING)
+        try container.encodeIfPresent(aDIMAGE5TAGDUPLICATED, forKey: .aDIMAGE5TAGDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE5TAGLENGTHTOOLONG, forKey: .aDIMAGE5TAGLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE5TAGREQUIRED, forKey: .aDIMAGE5TAGREQUIRED)
+        try container.encodeIfPresent(aDIMAGE6LINKDUPLICATED, forKey: .aDIMAGE6LINKDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE6LINKLENGTHTOOLONG, forKey: .aDIMAGE6LINKLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE6LINKREQUIRED, forKey: .aDIMAGE6LINKREQUIRED)
+        try container.encodeIfPresent(aDIMAGE6LINKWARNING, forKey: .aDIMAGE6LINKWARNING)
+        try container.encodeIfPresent(aDIMAGE6TAGDUPLICATED, forKey: .aDIMAGE6TAGDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE6TAGLENGTHTOOLONG, forKey: .aDIMAGE6TAGLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE6TAGREQUIRED, forKey: .aDIMAGE6TAGREQUIRED)
+        try container.encodeIfPresent(aDIMAGE7LINKDUPLICATED, forKey: .aDIMAGE7LINKDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE7LINKLENGTHTOOLONG, forKey: .aDIMAGE7LINKLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE7LINKREQUIRED, forKey: .aDIMAGE7LINKREQUIRED)
+        try container.encodeIfPresent(aDIMAGE7LINKWARNING, forKey: .aDIMAGE7LINKWARNING)
+        try container.encodeIfPresent(aDIMAGE7TAGDUPLICATED, forKey: .aDIMAGE7TAGDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE7TAGLENGTHTOOLONG, forKey: .aDIMAGE7TAGLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE7TAGREQUIRED, forKey: .aDIMAGE7TAGREQUIRED)
+        try container.encodeIfPresent(aDIMAGE8LINKDUPLICATED, forKey: .aDIMAGE8LINKDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE8LINKLENGTHTOOLONG, forKey: .aDIMAGE8LINKLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE8LINKREQUIRED, forKey: .aDIMAGE8LINKREQUIRED)
+        try container.encodeIfPresent(aDIMAGE8LINKWARNING, forKey: .aDIMAGE8LINKWARNING)
+        try container.encodeIfPresent(aDIMAGE8TAGDUPLICATED, forKey: .aDIMAGE8TAGDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE8TAGLENGTHTOOLONG, forKey: .aDIMAGE8TAGLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE8TAGREQUIRED, forKey: .aDIMAGE8TAGREQUIRED)
+        try container.encodeIfPresent(aDIMAGE9LINKDUPLICATED, forKey: .aDIMAGE9LINKDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE9LINKLENGTHTOOLONG, forKey: .aDIMAGE9LINKLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE9LINKREQUIRED, forKey: .aDIMAGE9LINKREQUIRED)
+        try container.encodeIfPresent(aDIMAGE9LINKWARNING, forKey: .aDIMAGE9LINKWARNING)
+        try container.encodeIfPresent(aDIMAGE9TAGDUPLICATED, forKey: .aDIMAGE9TAGDUPLICATED)
+        try container.encodeIfPresent(aDIMAGE9TAGLENGTHTOOLONG, forKey: .aDIMAGE9TAGLENGTHTOOLONG)
+        try container.encodeIfPresent(aDIMAGE9TAGREQUIRED, forKey: .aDIMAGE9TAGREQUIRED)
         try container.encodeIfPresent(AD_LINK_FORMAT_WARNING, forKey: .AD_LINK_FORMAT_WARNING)
         try container.encodeIfPresent(AD_LINK_SAME_AS_LINK, forKey: .AD_LINK_SAME_AS_LINK)
+        try container.encodeIfPresent(aDVIDEO0LINKDUPLICATED, forKey: .aDVIDEO0LINKDUPLICATED)
+        try container.encodeIfPresent(aDVIDEO0LINKLENGTHTOOLONG, forKey: .aDVIDEO0LINKLENGTHTOOLONG)
+        try container.encodeIfPresent(aDVIDEO0LINKREQUIRED, forKey: .aDVIDEO0LINKREQUIRED)
+        try container.encodeIfPresent(aDVIDEO0LINKWARNING, forKey: .aDVIDEO0LINKWARNING)
+        try container.encodeIfPresent(aDVIDEO0TAGDUPLICATED, forKey: .aDVIDEO0TAGDUPLICATED)
+        try container.encodeIfPresent(aDVIDEO0TAGLENGTHTOOLONG, forKey: .aDVIDEO0TAGLENGTHTOOLONG)
+        try container.encodeIfPresent(aDVIDEO0TAGREQUIRED, forKey: .aDVIDEO0TAGREQUIRED)
+        try container.encodeIfPresent(aDVIDEO1LINKDUPLICATED, forKey: .aDVIDEO1LINKDUPLICATED)
+        try container.encodeIfPresent(aDVIDEO1LINKLENGTHTOOLONG, forKey: .aDVIDEO1LINKLENGTHTOOLONG)
+        try container.encodeIfPresent(aDVIDEO1LINKREQUIRED, forKey: .aDVIDEO1LINKREQUIRED)
+        try container.encodeIfPresent(aDVIDEO1LINKWARNING, forKey: .aDVIDEO1LINKWARNING)
+        try container.encodeIfPresent(aDVIDEO1TAGDUPLICATED, forKey: .aDVIDEO1TAGDUPLICATED)
+        try container.encodeIfPresent(aDVIDEO1TAGLENGTHTOOLONG, forKey: .aDVIDEO1TAGLENGTHTOOLONG)
+        try container.encodeIfPresent(aDVIDEO1TAGREQUIRED, forKey: .aDVIDEO1TAGREQUIRED)
+        try container.encodeIfPresent(aDVIDEO2LINKDUPLICATED, forKey: .aDVIDEO2LINKDUPLICATED)
+        try container.encodeIfPresent(aDVIDEO2LINKLENGTHTOOLONG, forKey: .aDVIDEO2LINKLENGTHTOOLONG)
+        try container.encodeIfPresent(aDVIDEO2LINKREQUIRED, forKey: .aDVIDEO2LINKREQUIRED)
+        try container.encodeIfPresent(aDVIDEO2LINKWARNING, forKey: .aDVIDEO2LINKWARNING)
+        try container.encodeIfPresent(aDVIDEO2TAGDUPLICATED, forKey: .aDVIDEO2TAGDUPLICATED)
+        try container.encodeIfPresent(aDVIDEO2TAGLENGTHTOOLONG, forKey: .aDVIDEO2TAGLENGTHTOOLONG)
+        try container.encodeIfPresent(aDVIDEO2TAGREQUIRED, forKey: .aDVIDEO2TAGREQUIRED)
         try container.encodeIfPresent(ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG, forKey: .ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG)
         try container.encodeIfPresent(ADDITIONAL_IMAGE_LINK_WARNING, forKey: .ADDITIONAL_IMAGE_LINK_WARNING)
         try container.encodeIfPresent(ADWORDS_FORMAT_WARNING, forKey: .ADWORDS_FORMAT_WARNING)
         try container.encodeIfPresent(ADWORDS_SAME_AS_LINK, forKey: .ADWORDS_SAME_AS_LINK)
         try container.encodeIfPresent(AGE_GROUP_INVALID, forKey: .AGE_GROUP_INVALID)
-        try container.encodeIfPresent(SIZE_SYSTEM_INVALID, forKey: .SIZE_SYSTEM_INVALID)
         try container.encodeIfPresent(ANDROID_DEEP_LINK_INVALID, forKey: .ANDROID_DEEP_LINK_INVALID)
         try container.encodeIfPresent(AVAILABILITY_DATE_INVALID, forKey: .AVAILABILITY_DATE_INVALID)
         try container.encodeIfPresent(COUNTRY_DOES_NOT_MAP_TO_CURRENCY, forKey: .COUNTRY_DOES_NOT_MAP_TO_CURRENCY)
@@ -185,19 +831,21 @@ public struct CatalogsItemValidationWarnings: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(OPTIONAL_PRODUCT_CATEGORY_MISSING, forKey: .OPTIONAL_PRODUCT_CATEGORY_MISSING)
         try container.encodeIfPresent(PRODUCT_CATEGORY_DEPTH_WARNING, forKey: .PRODUCT_CATEGORY_DEPTH_WARNING)
         try container.encodeIfPresent(PRODUCT_TYPE_LENGTH_TOO_LONG, forKey: .PRODUCT_TYPE_LENGTH_TOO_LONG)
-        try container.encodeIfPresent(SALES_PRICE_INVALID, forKey: .SALES_PRICE_INVALID)
-        try container.encodeIfPresent(SALES_PRICE_TOO_LOW, forKey: .SALES_PRICE_TOO_LOW)
-        try container.encodeIfPresent(SALES_PRICE_TOO_HIGH, forKey: .SALES_PRICE_TOO_HIGH)
         try container.encodeIfPresent(SALE_DATE_INVALID, forKey: .SALE_DATE_INVALID)
-        try container.encodeIfPresent(SHIPPING_INVALID, forKey: .SHIPPING_INVALID)
+        try container.encodeIfPresent(SALES_PRICE_INVALID, forKey: .SALES_PRICE_INVALID)
+        try container.encodeIfPresent(SALES_PRICE_TOO_HIGH, forKey: .SALES_PRICE_TOO_HIGH)
+        try container.encodeIfPresent(SALES_PRICE_TOO_LOW, forKey: .SALES_PRICE_TOO_LOW)
         try container.encodeIfPresent(SHIPPING_HEIGHT_INVALID, forKey: .SHIPPING_HEIGHT_INVALID)
+        try container.encodeIfPresent(SHIPPING_INVALID, forKey: .SHIPPING_INVALID)
         try container.encodeIfPresent(SHIPPING_WEIGHT_INVALID, forKey: .SHIPPING_WEIGHT_INVALID)
         try container.encodeIfPresent(SHIPPING_WIDTH_INVALID, forKey: .SHIPPING_WIDTH_INVALID)
+        try container.encodeIfPresent(SIZE_SYSTEM_INVALID, forKey: .SIZE_SYSTEM_INVALID)
         try container.encodeIfPresent(SIZE_TYPE_INVALID, forKey: .SIZE_TYPE_INVALID)
         try container.encodeIfPresent(TAX_INVALID, forKey: .TAX_INVALID)
         try container.encodeIfPresent(TITLE_LENGTH_TOO_LONG, forKey: .TITLE_LENGTH_TOO_LONG)
         try container.encodeIfPresent(TOO_MANY_ADDITIONAL_IMAGE_LINKS, forKey: .TOO_MANY_ADDITIONAL_IMAGE_LINKS)
         try container.encodeIfPresent(UTM_SOURCE_AUTO_CORRECTED, forKey: .UTM_SOURCE_AUTO_CORRECTED)
+        try container.encodeIfPresent(VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED, forKey: .VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED)
         try container.encodeIfPresent(WEIGHT_UNIT_INVALID, forKey: .WEIGHT_UNIT_INVALID)
     }
 }

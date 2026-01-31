@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**list_t**](ad_account_get_subscription_response.md) \* |  | 
 **bookmark** | **char \*** |  | [optional] 
+**items** | [**list_t**](lead_subscription.md) \* |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

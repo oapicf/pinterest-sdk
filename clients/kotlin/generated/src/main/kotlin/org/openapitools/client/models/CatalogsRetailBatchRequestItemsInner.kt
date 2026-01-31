@@ -28,25 +28,29 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
+ * @param attributes 
  * @param itemId The catalog item id in the merchant namespace
  * @param operation 
- * @param attributes 
  * @param updateMask The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
+ * @param lastUpdatedTime The millisecond timestamp when the item was lastly modified by the merchant.
  */
 
 
 interface CatalogsRetailBatchRequestItemsInner {
 
+    @Json(name = "attributes")
+    val attributes: ItemAttributesRequest
     /* The catalog item id in the merchant namespace */
     @Json(name = "item_id")
     val itemId: kotlin.String
     @Json(name = "operation")
     val operation: CatalogsRetailBatchRequestItemsInner.Operation
-    @Json(name = "attributes")
-    val attributes: ItemAttributesRequest
     /* The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item. */
     @Json(name = "update_mask")
     val updateMask: kotlin.collections.List<UpdateMaskFieldType>?
+    /* The millisecond timestamp when the item was lastly modified by the merchant. */
+    @Json(name = "last_updated_time")
+    val lastUpdatedTime: kotlin.Long?
     /**
      * 
      *

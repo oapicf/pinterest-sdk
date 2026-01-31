@@ -11,8 +11,8 @@ The class is defined in **[CatalogsRetailItemErrorResponse.java](../../src/main/
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalogType** | `CatalogsType` |  | 
+**errors** | [`List&lt;ItemValidationEvent&gt;`](ItemValidationEvent.md) | Array with the errors for the item id requested | 
 **itemId** | `String` | The catalog item id in the merchant namespace |  [optional property]
-**errors** | [`List&lt;ItemValidationEvent&gt;`](ItemValidationEvent.md) | Array with the errors for the item id requested |  [optional property]
 
 
 

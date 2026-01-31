@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
+`adAccountId` | string
 `conversionEvent` | [ConversionTagType](ConversionTagType.md)
 `conversionTagId` | string
-`adAccountId` | string
 `createdTime` | number
 
 ## Example
@@ -18,9 +18,9 @@ import type { ConversionEventResponse } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "adAccountId": 549757463328,
   "conversionEvent": null,
   "conversionTagId": 2614324385652,
-  "adAccountId": 549757463328,
   "createdTime": 1564768710,
 } satisfies ConversionEventResponse
 

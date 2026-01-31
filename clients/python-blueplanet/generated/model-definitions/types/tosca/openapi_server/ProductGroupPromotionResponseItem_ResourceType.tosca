@@ -1,0 +1,43 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ProductGroupPromotionResponseItem"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ProductGroupPromotionResponseItem"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  Exception = openapi_server.resourceTypes.Exception
+  ProductGroupPromotion = openapi_server.resourceTypes.ProductGroupPromotion
+}
+resourceTypes {
+
+  ProductGroupPromotionResponseItem {
+    title = ProductGroupPromotionResponseItem
+    description = ProductGroupPromotionResponseItem
+    derivedFrom = Root
+    properties {
+        data {
+          type = ProductGroupPromotion
+          description = ""
+          optional = false
+        }
+        exceptions {
+          type = array
+          items.type = Exception
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ProductGroupPromotionResponseItem {
+    title = ProductGroupPromotionResponseItem
+    description = ProductGroupPromotionResponseItem
+    implements = openapi_server.resourceTypes.ProductGroupPromotionResponseItem
+
+  }
+}

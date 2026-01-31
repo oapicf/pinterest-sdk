@@ -1,0 +1,43 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdvancedAuctionItemsSubmitRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdvancedAuctionItemsSubmitRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AdvancedAuctionItemsSubmitRecord = openapi_server.resourceTypes.AdvancedAuctionItemsSubmitRecord
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  AdvancedAuctionItemsSubmitRequest {
+    title = AdvancedAuctionItemsSubmitRequest
+    description = AdvancedAuctionItemsSubmitRequest
+    derivedFrom = Root
+    properties {
+        catalog_id {
+          type =  string
+          description = "Catalog id pertaining to all items"
+          optional = true
+        }
+        items {
+          type = array
+          items.type = AdvancedAuctionItemsSubmitRecord
+          description = "Array of item bid option operations"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdvancedAuctionItemsSubmitRequest {
+    title = AdvancedAuctionItemsSubmitRequest
+    description = AdvancedAuctionItemsSubmitRequest
+    implements = openapi_server.resourceTypes.AdvancedAuctionItemsSubmitRequest
+
+  }
+}

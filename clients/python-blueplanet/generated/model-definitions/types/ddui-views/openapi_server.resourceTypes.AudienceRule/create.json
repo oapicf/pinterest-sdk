@@ -1,0 +1,36 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "ad_account_id" },
+      {"model": "ad_id" },
+      {"model": "campaign_id" },
+      {"model": "country" },
+      {"model": "customer_list_id" },
+      {"model": "engagement_domain" },
+      {"model": "engagement_type" },
+      {"model": "engager_type" },
+      {"model": "event" },
+      {"model": "event_data" },
+      {"model": "event_source" },
+      {"model": "ingestion_source" },
+      {"model": "objective_type" },
+      {"model": "percentage" },
+      {"model": "pin_id" },
+      {"model": "prefill" },
+      {"model": "retention_days" },
+      {"model": "seed_id" },
+      {"model": "url" },
+      {"model": "visitor_source_id" },
+    ]
+  }]
+}

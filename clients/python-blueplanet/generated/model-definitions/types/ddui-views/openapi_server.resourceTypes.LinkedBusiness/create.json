@@ -1,0 +1,21 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "image_large_url" },
+      {"model": "image_medium_url" },
+      {"model": "image_small_url" },
+      {"model": "image_xlarge_url" },
+      {"model": "username" },
+    ]
+  }]
+}

@@ -11,7 +11,9 @@ The class is defined in **[CatalogsDeleteRetailItem.java](../../src/main/java/or
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **itemId** | `String` | The catalog item id in the merchant namespace | 
+**lastUpdatedTime** | `Long` | The millisecond timestamp when the item was lastly modified by the merchant. |  [optional property]
 **operation** | [**OperationEnum**](#OperationEnum) |  | 
+
 
 
 ## OperationEnum

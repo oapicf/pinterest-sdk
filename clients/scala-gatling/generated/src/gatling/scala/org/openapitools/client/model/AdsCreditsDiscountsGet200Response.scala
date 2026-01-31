@@ -3,14 +3,14 @@ package org.openapitools.client.model
 
 
 case class AdsCreditsDiscountsGet200Response (
-    _items: List[AdsCreditDiscountsResponse],
-    _bookmark: Option[String]
+    _bookmark: Option[String],
+    _items: List[AdsCreditDiscountsResponse]
 )
 object AdsCreditsDiscountsGet200Response {
-    def toStringBody(var_items: Object, var_bookmark: Object) =
+    def toStringBody(var_bookmark: Object, var_items: Object) =
         s"""
         | {
-        | "items":$var_items,"bookmark":$var_bookmark
+        | "bookmark":$var_bookmark,"items":$var_items
         | }
         """.stripMargin
 }

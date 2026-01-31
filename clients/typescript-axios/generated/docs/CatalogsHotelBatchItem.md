@@ -6,9 +6,9 @@ Hotel batch item
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**attributes** | [**CatalogsUpdatableHotelAttributes**](CatalogsUpdatableHotelAttributes.md) |  | [default to undefined]
 **hotel_id** | **string** | The catalog hotel id in the merchant namespace | [default to undefined]
 **operation** | **string** |  | [default to undefined]
-**attributes** | [**CatalogsUpdatableHotelAttributes**](CatalogsUpdatableHotelAttributes.md) |  | [default to undefined]
 
 ## Example
 
@@ -16,9 +16,9 @@ Name | Type | Description | Notes
 import { CatalogsHotelBatchItem } from './api';
 
 const instance: CatalogsHotelBatchItem = {
+    attributes,
     hotel_id,
     operation,
-    attributes,
 };
 ```
 

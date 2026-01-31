@@ -5,12 +5,11 @@ context("Test BulkDownloadRequestCampaignFilter")
 
 model_instance <- BulkDownloadRequestCampaignFilter$new()
 
-test_that("start_time", {
-  # tests for the property `start_time` (character)
-  # Unix UTC timestamp.
+test_that("campaign_status", {
+  # tests for the property `campaign_status` (array[CampaignSummaryStatus])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`start_time`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`campaign_status`, "EXPECTED_RESULT")
 })
 
 test_that("end_time", {
@@ -29,16 +28,17 @@ test_that("name", {
   #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
 })
 
-test_that("campaign_status", {
-  # tests for the property `campaign_status` (array[CampaignSummaryStatus])
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`campaign_status`, "EXPECTED_RESULT")
-})
-
 test_that("objective_type", {
   # tests for the property `objective_type` (array[ObjectiveType])
 
   # uncomment below to test the property
   #expect_equal(model.instance$`objective_type`, "EXPECTED_RESULT")
+})
+
+test_that("start_time", {
+  # tests for the property `start_time` (character)
+  # Unix UTC timestamp.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`start_time`, "EXPECTED_RESULT")
 })

@@ -25,13 +25,31 @@ import java.util.Objects;
 @ApiModel(description = "Object describing a retail item record")
 public class CatalogsRetailItemResponse   {
   
+  private ItemAttributes attributes;
+
   private CatalogsType catalogType;
 
   private String itemId;
 
   private List<@Valid Pin> pins;
 
-  private ItemAttributes attributes;
+  /**
+   **/
+  public CatalogsRetailItemResponse attributes(ItemAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("attributes")
+  public ItemAttributes getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(ItemAttributes attributes) {
+    this.attributes = attributes;
+  }
+
 
   /**
    **/
@@ -98,24 +116,6 @@ public class CatalogsRetailItemResponse   {
   }
 
 
-  /**
-   **/
-  public CatalogsRetailItemResponse attributes(ItemAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("attributes")
-  public ItemAttributes getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(ItemAttributes attributes) {
-    this.attributes = attributes;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -126,15 +126,15 @@ public class CatalogsRetailItemResponse   {
       return false;
     }
     CatalogsRetailItemResponse catalogsRetailItemResponse = (CatalogsRetailItemResponse) o;
-    return Objects.equals(this.catalogType, catalogsRetailItemResponse.catalogType) &&
+    return Objects.equals(this.attributes, catalogsRetailItemResponse.attributes) &&
+        Objects.equals(this.catalogType, catalogsRetailItemResponse.catalogType) &&
         Objects.equals(this.itemId, catalogsRetailItemResponse.itemId) &&
-        Objects.equals(this.pins, catalogsRetailItemResponse.pins) &&
-        Objects.equals(this.attributes, catalogsRetailItemResponse.attributes);
+        Objects.equals(this.pins, catalogsRetailItemResponse.pins);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, pins, attributes);
+    return Objects.hash(attributes, catalogType, itemId, pins);
   }
 
   @Override
@@ -142,10 +142,10 @@ public class CatalogsRetailItemResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailItemResponse {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

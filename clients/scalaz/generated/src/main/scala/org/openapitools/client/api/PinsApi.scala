@@ -21,6 +21,7 @@ import scalaz.concurrent.Task
 
 import HelperCodecs._
 
+import org.openapitools.client.api.CreativeType
 import org.openapitools.client.api.Error
 import java.time.LocalDate
 import org.openapitools.client.api.Pin
@@ -118,7 +119,7 @@ object PinsApi {
     } yield resp
   }
 
-  def pinsGet(host: String, pinId: String, pinMetrics: Boolean = false, adAccountId: String)(implicit pinMetricsQuery: QueryParam[Boolean], adAccountIdQuery: QueryParam[String]): Task[Pin] = {
+  def pinsGet(host: String, pinId: String, adAccountId: String, pinMetrics: Boolean = false)(implicit adAccountIdQuery: QueryParam[String], pinMetricsQuery: QueryParam[Boolean]): Task[Pin] = {
     implicit val returnTypeDecoder: EntityDecoder[Pin] = jsonOf[Pin]
 
     val path = "/pins/{pin_id}".replaceAll("\\{" + "pin_id" + "\\}",escape(pinId.toString))
@@ -128,7 +129,7 @@ object PinsApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("pinMetrics", Some(pin_metricsQuery.toParamString(pin_metrics))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))))
+      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("pinMetrics", Some(pin_metricsQuery.toParamString(pin_metrics))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -139,7 +140,7 @@ object PinsApi {
     } yield resp
   }
 
-  def pinsList(host: String, bookmark: String, pageSize: Integer = 25, pinFilter: String, includeProtectedPins: Boolean = false, pinType: String, creativeTypes: List[String] = List.empty[String] , adAccountId: String, pinMetrics: Boolean = false)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], pinFilterQuery: QueryParam[String], includeProtectedPinsQuery: QueryParam[Boolean], pinTypeQuery: QueryParam[String], creativeTypesQuery: QueryParam[List[String]], adAccountIdQuery: QueryParam[String], pinMetricsQuery: QueryParam[Boolean]): Task[PinsList200Response] = {
+  def pinsList(host: String, pinFilter: String, pinMetrics: Boolean = false, includeProtectedPins: Boolean = false, pinType: String, creativeTypes: List[CreativeType] = List.empty[CreativeType] , adAccountId: String, bookmark: String, pageSize: Integer = 25)(implicit pinFilterQuery: QueryParam[String], pinMetricsQuery: QueryParam[Boolean], includeProtectedPinsQuery: QueryParam[Boolean], pinTypeQuery: QueryParam[String], creativeTypesQuery: QueryParam[List[CreativeType]], adAccountIdQuery: QueryParam[String], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[PinsList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[PinsList200Response] = jsonOf[PinsList200Response]
 
     val path = "/pins"
@@ -149,7 +150,7 @@ object PinsApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("pinFilter", Some(pin_filterQuery.toParamString(pin_filter))), ("includeProtectedPins", Some(include_protected_pinsQuery.toParamString(include_protected_pins))), ("pinType", Some(pin_typeQuery.toParamString(pin_type))), ("creativeTypes", Some(creative_typesQuery.toParamString(creative_types))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("pinMetrics", Some(pin_metricsQuery.toParamString(pin_metrics))))
+      ("pinFilter", Some(pin_filterQuery.toParamString(pin_filter))), ("pinMetrics", Some(pin_metricsQuery.toParamString(pin_metrics))), ("includeProtectedPins", Some(include_protected_pinsQuery.toParamString(include_protected_pins))), ("pinType", Some(pin_typeQuery.toParamString(pin_type))), ("creativeTypes", Some(creative_typesQuery.toParamString(creative_types))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -291,7 +292,7 @@ class HttpServicePinsApi(service: HttpService) {
     } yield resp
   }
 
-  def pinsGet(pinId: String, pinMetrics: Boolean = false, adAccountId: String)(implicit pinMetricsQuery: QueryParam[Boolean], adAccountIdQuery: QueryParam[String]): Task[Pin] = {
+  def pinsGet(pinId: String, adAccountId: String, pinMetrics: Boolean = false)(implicit adAccountIdQuery: QueryParam[String], pinMetricsQuery: QueryParam[Boolean]): Task[Pin] = {
     implicit val returnTypeDecoder: EntityDecoder[Pin] = jsonOf[Pin]
 
     val path = "/pins/{pin_id}".replaceAll("\\{" + "pin_id" + "\\}",escape(pinId.toString))
@@ -301,7 +302,7 @@ class HttpServicePinsApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("pinMetrics", Some(pin_metricsQuery.toParamString(pin_metrics))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))))
+      ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("pinMetrics", Some(pin_metricsQuery.toParamString(pin_metrics))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
@@ -312,7 +313,7 @@ class HttpServicePinsApi(service: HttpService) {
     } yield resp
   }
 
-  def pinsList(bookmark: String, pageSize: Integer = 25, pinFilter: String, includeProtectedPins: Boolean = false, pinType: String, creativeTypes: List[String] = List.empty[String] , adAccountId: String, pinMetrics: Boolean = false)(implicit bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer], pinFilterQuery: QueryParam[String], includeProtectedPinsQuery: QueryParam[Boolean], pinTypeQuery: QueryParam[String], creativeTypesQuery: QueryParam[List[String]], adAccountIdQuery: QueryParam[String], pinMetricsQuery: QueryParam[Boolean]): Task[PinsList200Response] = {
+  def pinsList(pinFilter: String, pinMetrics: Boolean = false, includeProtectedPins: Boolean = false, pinType: String, creativeTypes: List[CreativeType] = List.empty[CreativeType] , adAccountId: String, bookmark: String, pageSize: Integer = 25)(implicit pinFilterQuery: QueryParam[String], pinMetricsQuery: QueryParam[Boolean], includeProtectedPinsQuery: QueryParam[Boolean], pinTypeQuery: QueryParam[String], creativeTypesQuery: QueryParam[List[CreativeType]], adAccountIdQuery: QueryParam[String], bookmarkQuery: QueryParam[String], pageSizeQuery: QueryParam[Integer]): Task[PinsList200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[PinsList200Response] = jsonOf[PinsList200Response]
 
     val path = "/pins"
@@ -322,7 +323,7 @@ class HttpServicePinsApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))), ("pinFilter", Some(pin_filterQuery.toParamString(pin_filter))), ("includeProtectedPins", Some(include_protected_pinsQuery.toParamString(include_protected_pins))), ("pinType", Some(pin_typeQuery.toParamString(pin_type))), ("creativeTypes", Some(creative_typesQuery.toParamString(creative_types))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("pinMetrics", Some(pin_metricsQuery.toParamString(pin_metrics))))
+      ("pinFilter", Some(pin_filterQuery.toParamString(pin_filter))), ("pinMetrics", Some(pin_metricsQuery.toParamString(pin_metrics))), ("includeProtectedPins", Some(include_protected_pinsQuery.toParamString(include_protected_pins))), ("pinType", Some(pin_typeQuery.toParamString(pin_type))), ("creativeTypes", Some(creative_typesQuery.toParamString(creative_types))), ("adAccountId", Some(ad_account_idQuery.toParamString(ad_account_id))), ("bookmark", Some(bookmarkQuery.toParamString(bookmark))), ("pageSize", Some(page_sizeQuery.toParamString(page_size))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))

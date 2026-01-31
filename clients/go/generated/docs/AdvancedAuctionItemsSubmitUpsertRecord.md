@@ -4,17 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ItemId** | **string** | The catalog retail item id in the merchant namespace | 
 **Country** | [**Country**](Country.md) |  | 
+**ItemId** | **string** | The catalog retail item id in the merchant namespace | 
 **Language** | [**Language**](Language.md) |  | 
 **BidOptions** | [**AdvancedAuctionBidOptions**](AdvancedAuctionBidOptions.md) |  | 
+**Errors** | Pointer to [**[]AdvancedAuctionOperationError**](AdvancedAuctionOperationError.md) | Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied. | [optional] 
 **UpdateMask** | [**[]UpdateMaskBidOptionField**](UpdateMaskBidOptionField.md) | The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the &#x60;bid_options&#x60; object in the body will be set to &#x60;null&#x60;. If an item bid option record is being created, fields not specified in the update mask will be initialized to &#x60;null&#x60;. | 
 
 ## Methods
 
 ### NewAdvancedAuctionItemsSubmitUpsertRecord
 
-`func NewAdvancedAuctionItemsSubmitUpsertRecord(itemId string, country Country, language Language, bidOptions AdvancedAuctionBidOptions, updateMask []UpdateMaskBidOptionField, ) *AdvancedAuctionItemsSubmitUpsertRecord`
+`func NewAdvancedAuctionItemsSubmitUpsertRecord(country Country, itemId string, language Language, bidOptions AdvancedAuctionBidOptions, updateMask []UpdateMaskBidOptionField, ) *AdvancedAuctionItemsSubmitUpsertRecord`
 
 NewAdvancedAuctionItemsSubmitUpsertRecord instantiates a new AdvancedAuctionItemsSubmitUpsertRecord object
 This constructor will assign default values to properties that have it defined,
@@ -28,26 +29,6 @@ will change when the set of required properties is changed
 NewAdvancedAuctionItemsSubmitUpsertRecordWithDefaults instantiates a new AdvancedAuctionItemsSubmitUpsertRecord object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetItemId
-
-`func (o *AdvancedAuctionItemsSubmitUpsertRecord) GetItemId() string`
-
-GetItemId returns the ItemId field if non-nil, zero value otherwise.
-
-### GetItemIdOk
-
-`func (o *AdvancedAuctionItemsSubmitUpsertRecord) GetItemIdOk() (*string, bool)`
-
-GetItemIdOk returns a tuple with the ItemId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetItemId
-
-`func (o *AdvancedAuctionItemsSubmitUpsertRecord) SetItemId(v string)`
-
-SetItemId sets ItemId field to given value.
-
 
 ### GetCountry
 
@@ -67,6 +48,26 @@ and a boolean to check if the value has been set.
 `func (o *AdvancedAuctionItemsSubmitUpsertRecord) SetCountry(v Country)`
 
 SetCountry sets Country field to given value.
+
+
+### GetItemId
+
+`func (o *AdvancedAuctionItemsSubmitUpsertRecord) GetItemId() string`
+
+GetItemId returns the ItemId field if non-nil, zero value otherwise.
+
+### GetItemIdOk
+
+`func (o *AdvancedAuctionItemsSubmitUpsertRecord) GetItemIdOk() (*string, bool)`
+
+GetItemIdOk returns a tuple with the ItemId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemId
+
+`func (o *AdvancedAuctionItemsSubmitUpsertRecord) SetItemId(v string)`
+
+SetItemId sets ItemId field to given value.
 
 
 ### GetLanguage
@@ -108,6 +109,31 @@ and a boolean to check if the value has been set.
 
 SetBidOptions sets BidOptions field to given value.
 
+
+### GetErrors
+
+`func (o *AdvancedAuctionItemsSubmitUpsertRecord) GetErrors() []AdvancedAuctionOperationError`
+
+GetErrors returns the Errors field if non-nil, zero value otherwise.
+
+### GetErrorsOk
+
+`func (o *AdvancedAuctionItemsSubmitUpsertRecord) GetErrorsOk() (*[]AdvancedAuctionOperationError, bool)`
+
+GetErrorsOk returns a tuple with the Errors field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetErrors
+
+`func (o *AdvancedAuctionItemsSubmitUpsertRecord) SetErrors(v []AdvancedAuctionOperationError)`
+
+SetErrors sets Errors field to given value.
+
+### HasErrors
+
+`func (o *AdvancedAuctionItemsSubmitUpsertRecord) HasErrors() bool`
+
+HasErrors returns a boolean if a field has been set.
 
 ### GetUpdateMask
 

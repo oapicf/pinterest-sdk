@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server PartnerType"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a PartnerType"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  PartnerType {
+    title = PartnerType
+    description = PartnerType
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  PartnerType {
+    title = PartnerType
+    description = PartnerType
+    implements = openapi_server.resourceTypes.PartnerType
+
+  }
+}

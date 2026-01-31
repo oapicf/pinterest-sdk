@@ -41,27 +41,27 @@
     },
     {
       "name": "CUSTOM_LABEL_0",
-      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "type": "model.CatalogsProductGroupFilterOperatorTypeCriteria",
       "doc": ""
     },
     {
       "name": "CUSTOM_LABEL_1",
-      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "type": "model.CatalogsProductGroupFilterOperatorTypeCriteria",
       "doc": ""
     },
     {
       "name": "CUSTOM_LABEL_2",
-      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "type": "model.CatalogsProductGroupFilterOperatorTypeCriteria",
       "doc": ""
     },
     {
       "name": "CUSTOM_LABEL_3",
-      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "type": "model.CatalogsProductGroupFilterOperatorTypeCriteria",
       "doc": ""
     },
     {
       "name": "CUSTOM_LABEL_4",
-      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "type": "model.CatalogsProductGroupFilterOperatorTypeCriteria",
       "doc": ""
     },
     {
@@ -141,6 +141,36 @@
     },
     {
       "name": "PRODUCT_GROUP",
+      "type": "model.CatalogsProductGroupMultipleStringCriteria",
+      "doc": ""
+    },
+    {
+      "name": "CUSTOM_NUMBER_0",
+      "type": "model.CatalogsProductGroupUint32Criteria",
+      "doc": ""
+    },
+    {
+      "name": "CUSTOM_NUMBER_1",
+      "type": "model.CatalogsProductGroupUint32Criteria",
+      "doc": ""
+    },
+    {
+      "name": "CUSTOM_NUMBER_2",
+      "type": "model.CatalogsProductGroupUint32Criteria",
+      "doc": ""
+    },
+    {
+      "name": "CUSTOM_NUMBER_3",
+      "type": "model.CatalogsProductGroupUint32Criteria",
+      "doc": ""
+    },
+    {
+      "name": "CUSTOM_NUMBER_4",
+      "type": "model.CatalogsProductGroupUint32Criteria",
+      "doc": ""
+    },
+    {
+      "name": "TITLE_KEYWORDS",
       "type": "model.CatalogsProductGroupMultipleStringCriteria",
       "doc": ""
     }

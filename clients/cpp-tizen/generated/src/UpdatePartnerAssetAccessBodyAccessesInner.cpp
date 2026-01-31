@@ -23,23 +23,23 @@ UpdatePartnerAssetAccessBody_accesses_inner::~UpdatePartnerAssetAccessBody_acces
 void
 UpdatePartnerAssetAccessBody_accesses_inner::__init()
 {
-	//partner_id = std::string();
 	//asset_id = std::string();
+	//partner_id = std::string();
 	//new std::list()std::list> permissions;
 }
 
 void
 UpdatePartnerAssetAccessBody_accesses_inner::__cleanup()
 {
-	//if(partner_id != NULL) {
-	//
-	//delete partner_id;
-	//partner_id = NULL;
-	//}
 	//if(asset_id != NULL) {
 	//
 	//delete asset_id;
 	//asset_id = NULL;
+	//}
+	//if(partner_id != NULL) {
+	//
+	//delete partner_id;
+	//partner_id = NULL;
 	//}
 	//if(permissions != NULL) {
 	//permissions.RemoveAll(true);
@@ -54,17 +54,6 @@ UpdatePartnerAssetAccessBody_accesses_inner::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *partner_idKey = "partner_id";
-	node = json_object_get_member(pJsonObject, partner_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&partner_id, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *asset_idKey = "asset_id";
 	node = json_object_get_member(pJsonObject, asset_idKey);
 	if (node !=NULL) {
@@ -72,6 +61,17 @@ UpdatePartnerAssetAccessBody_accesses_inner::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&asset_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *partner_idKey = "partner_id";
+	node = json_object_get_member(pJsonObject, partner_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&partner_id, node, "std::string", "");
 		} else {
 			
 		}
@@ -113,15 +113,6 @@ UpdatePartnerAssetAccessBody_accesses_inner::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
-		std::string obj = getPartnerId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *partner_idKey = "partner_id";
-	json_object_set_member(pJsonObject, partner_idKey, node);
-	if (isprimitive("std::string")) {
 		std::string obj = getAssetId();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -130,6 +121,15 @@ UpdatePartnerAssetAccessBody_accesses_inner::toJson()
 	}
 	const gchar *asset_idKey = "asset_id";
 	json_object_set_member(pJsonObject, asset_idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getPartnerId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *partner_idKey = "partner_id";
+	json_object_set_member(pJsonObject, partner_idKey, node);
 	if (isprimitive("Permissions")) {
 		list<Permissions> new_list = static_cast<list <Permissions> > (getPermissions());
 		node = converttoJson(&new_list, "Permissions", "array");
@@ -164,18 +164,6 @@ UpdatePartnerAssetAccessBody_accesses_inner::toJson()
 }
 
 std::string
-UpdatePartnerAssetAccessBody_accesses_inner::getPartnerId()
-{
-	return partner_id;
-}
-
-void
-UpdatePartnerAssetAccessBody_accesses_inner::setPartnerId(std::string  partner_id)
-{
-	this->partner_id = partner_id;
-}
-
-std::string
 UpdatePartnerAssetAccessBody_accesses_inner::getAssetId()
 {
 	return asset_id;
@@ -185,6 +173,18 @@ void
 UpdatePartnerAssetAccessBody_accesses_inner::setAssetId(std::string  asset_id)
 {
 	this->asset_id = asset_id;
+}
+
+std::string
+UpdatePartnerAssetAccessBody_accesses_inner::getPartnerId()
+{
+	return partner_id;
+}
+
+void
+UpdatePartnerAssetAccessBody_accesses_inner::setPartnerId(std::string  partner_id)
+{
+	this->partner_id = partner_id;
 }
 
 std::list<Permissions>

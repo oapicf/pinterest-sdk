@@ -5,20 +5,20 @@ context("Test ConversionApiResponseEventsInner")
 
 model_instance <- ConversionApiResponseEventsInner$new()
 
-test_that("status", {
-  # tests for the property `status` (character)
-  # Whether the event was processed successfully.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
-})
-
 test_that("error_message", {
   # tests for the property `error_message` (character)
   # Error message containing more information about why the event failed to be processed.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`error_message`, "EXPECTED_RESULT")
+})
+
+test_that("status", {
+  # tests for the property `status` (character)
+  # Whether the event was processed successfully.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
 })
 
 test_that("warning_message", {

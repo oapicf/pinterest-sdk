@@ -20,14 +20,6 @@ public class ImageDetailsTest {
     }
 
     /**
-     * Test the property 'width'
-     */
-    @Test
-    public void widthTest() {
-        // TODO: test width
-    }
-
-    /**
      * Test the property 'height'
      */
     @Test
@@ -41,6 +33,14 @@ public class ImageDetailsTest {
     @Test
     public void urlTest() {
         // TODO: test url
+    }
+
+    /**
+     * Test the property 'width'
+     */
+    @Test
+    public void widthTest() {
+        // TODO: test width
     }
 
 }

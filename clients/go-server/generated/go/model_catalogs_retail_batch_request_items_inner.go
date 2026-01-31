@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,23 +16,26 @@ package openapi
 
 type CatalogsRetailBatchRequestItemsInner struct {
 
+	Attributes ItemAttributesRequest `json:"attributes"`
+
 	// The catalog item id in the merchant namespace
 	ItemId string `json:"item_id"`
 
 	Operation string `json:"operation"`
 
-	Attributes ItemAttributesRequest `json:"attributes"`
-
 	// The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
 	UpdateMask *[]UpdateMaskFieldType `json:"update_mask,omitempty"`
+
+	// The millisecond timestamp when the item was lastly modified by the merchant.
+	LastUpdatedTime int64 `json:"last_updated_time,omitempty"`
 }
 
 // AssertCatalogsRetailBatchRequestItemsInnerRequired checks if the required fields are not zero-ed
 func AssertCatalogsRetailBatchRequestItemsInnerRequired(obj CatalogsRetailBatchRequestItemsInner) error {
 	elements := map[string]interface{}{
+		"attributes": obj.Attributes,
 		"item_id": obj.ItemId,
 		"operation": obj.Operation,
-		"attributes": obj.Attributes,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

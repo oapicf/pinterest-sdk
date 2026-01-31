@@ -13,36 +13,36 @@ import AnyCodable
 /** Object describing an item processing record */
 public struct HotelProcessingRecord: Codable, JSONEncodable, Hashable {
 
-    /** The catalog hotel id in the merchant namespace */
-    public var hotelId: String?
     /** Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail. */
     public var errors: [ItemValidationEvent]?
+    /** The catalog hotel id in the merchant namespace */
+    public var hotelId: String?
+    public var status: ItemProcessingStatus?
     /** Array with the validation warnings for the item processing record */
     public var warnings: [ItemValidationEvent]?
-    public var status: ItemProcessingStatus?
 
-    public init(hotelId: String? = nil, errors: [ItemValidationEvent]? = nil, warnings: [ItemValidationEvent]? = nil, status: ItemProcessingStatus? = nil) {
-        self.hotelId = hotelId
+    public init(errors: [ItemValidationEvent]? = nil, hotelId: String? = nil, status: ItemProcessingStatus? = nil, warnings: [ItemValidationEvent]? = nil) {
         self.errors = errors
-        self.warnings = warnings
+        self.hotelId = hotelId
         self.status = status
+        self.warnings = warnings
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case hotelId = "hotel_id"
         case errors
-        case warnings
+        case hotelId = "hotel_id"
         case status
+        case warnings
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(hotelId, forKey: .hotelId)
         try container.encodeIfPresent(errors, forKey: .errors)
-        try container.encodeIfPresent(warnings, forKey: .warnings)
+        try container.encodeIfPresent(hotelId, forKey: .hotelId)
         try container.encodeIfPresent(status, forKey: .status)
+        try container.encodeIfPresent(warnings, forKey: .warnings)
     }
 }
 

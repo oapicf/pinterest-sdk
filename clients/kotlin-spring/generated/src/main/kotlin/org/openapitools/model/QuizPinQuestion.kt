@@ -16,21 +16,21 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * A specific quiz inquiry.
+ * @param options 
  * @param questionId 
  * @param questionText 
- * @param options 
  */
 data class QuizPinQuestion(
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("options") val options: kotlin.collections.List<QuizPinOption>? = null,
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("question_id") val questionId: java.math.BigDecimal? = null,
 
     @Schema(example = "null", description = "")
-    @get:JsonProperty("question_text") val questionText: kotlin.String? = null,
-
-    @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("options") val options: kotlin.collections.List<QuizPinOption>? = null
+    @get:JsonProperty("question_text") val questionText: kotlin.String? = null
 ) {
 
 }

@@ -73,9 +73,9 @@ private class OASConversionTagResponseTest {
     private static void maintainRenamedProperties() {
         OASConversionTagResponse conversionTagResponse = new OASConversionTagResponse();
         Map<String, String> x-property-mappings = conversionTagResponse.getx-property-mappings();
-        System.assertEquals('adAccountId', x-property-mappings.get('ad_account_id'));
         System.assertEquals('codeSnippet', x-property-mappings.get('code_snippet'));
         System.assertEquals('enhancedMatchStatus', x-property-mappings.get('enhanced_match_status'));
         System.assertEquals('lastFiredTimeMs', x-property-mappings.get('last_fired_time_ms'));
+        System.assertEquals('adAccountId', x-property-mappings.get('ad_account_id'));
     }
 }

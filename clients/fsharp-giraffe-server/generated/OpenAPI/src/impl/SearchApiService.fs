@@ -1,8 +1,8 @@
 namespace OpenAPI
 open OpenAPI.Model.Error
-open OpenAPI.Model.PinsList200Response
 open OpenAPI.Model.SearchPartnerPins200Response
 open OpenAPI.Model.SearchUserBoardsGet200Response
+open OpenAPI.Model.SearchUserPinsList200Response
 open SearchApiHandlerParams
 open SearchApiServiceInterface
 open System.Collections.Generic
@@ -36,7 +36,7 @@ module SearchApiServiceImplementation =
 
         member this.SearchUserPinsList ctx args =
           if true then
-            let content = "Success" :> obj :?> PinsList200Response // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            let content = "Success" :> obj :?> SearchUserPinsList200Response // this cast is obviously wrong, and is only intended to allow generated project to compile   
             SearchUserPinsListStatusCode200 { content = content }
           else if true then
             let content = "User not found" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   

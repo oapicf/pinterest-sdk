@@ -165,6 +165,7 @@ private class OASBusinessAccessAssetsApiTest {
         Map<String, Object> params = new Map<String, Object>{
             'businessId' => 729090764583391194,
             'assetId' => 729090764583391194,
+            'fetchSystemUsers' => '',
             'bookmark' => 'null',
             'pageSize' => '',
             'startIndex' => 0

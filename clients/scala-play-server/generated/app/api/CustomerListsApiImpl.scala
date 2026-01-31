@@ -9,7 +9,7 @@ import model.Error
 /**
   * Provides a default implementation for [[CustomerListsApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 class CustomerListsApiImpl extends CustomerListsApi {
   /**
     * @inheritdoc
@@ -35,7 +35,7 @@ class CustomerListsApiImpl extends CustomerListsApi {
   override def customerListsList(adAccountId: String, pageSize: Option[Int], order: Option[String], bookmark: Option[String]): CustomerListsList200Response = {
     // TODO: Implement better logic
 
-    CustomerListsList200Response(List.empty[CustomerList], None)
+    CustomerListsList200Response(None, List.empty[CustomerList])
   }
 
   /**

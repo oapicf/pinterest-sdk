@@ -15,15 +15,17 @@ import scala.collection.immutable.Seq
 
 /**
  * 
+ * @param attributes 
  * @param itemUnderscoreid The catalog item id in the merchant namespace
  * @param operation 
- * @param attributes 
  * @param updateUnderscoremask The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
+ * @param lastUnderscoreupdatedUnderscoretime The millisecond timestamp when the item was lastly modified by the merchant.
  */
-case class CatalogsRetailBatchRequestItemsInner(itemUnderscoreid: String,
+case class CatalogsRetailBatchRequestItemsInner(attributes: ItemAttributesRequest,
+                itemUnderscoreid: String,
                 operation: String,
-                attributes: ItemAttributesRequest,
-                updateUnderscoremask: Option[Seq[UpdateMaskFieldType]]
+                updateUnderscoremask: Option[Seq[UpdateMaskFieldType]],
+                lastUnderscoreupdatedUnderscoretime: Option[Long]
                 )
 
 object CatalogsRetailBatchRequestItemsInner {

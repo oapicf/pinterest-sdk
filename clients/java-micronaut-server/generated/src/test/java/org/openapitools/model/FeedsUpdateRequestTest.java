@@ -31,27 +31,11 @@ public class FeedsUpdateRequestTest {
     }
 
     /**
-     * Test the property 'defaultCurrency'
+     * Test the property 'catalogType'
      */
     @Test
-    public void defaultCurrencyTest() {
-        // TODO: test defaultCurrency
-    }
-
-    /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
-     * Test the property '_format'
-     */
-    @Test
-    public void _formatTest() {
-        // TODO: test _format
+    public void catalogTypeTest() {
+        // TODO: test catalogType
     }
 
     /**
@@ -63,11 +47,43 @@ public class FeedsUpdateRequestTest {
     }
 
     /**
+     * Test the property 'defaultAvailability'
+     */
+    @Test
+    public void defaultAvailabilityTest() {
+        // TODO: test defaultAvailability
+    }
+
+    /**
+     * Test the property 'defaultCurrency'
+     */
+    @Test
+    public void defaultCurrencyTest() {
+        // TODO: test defaultCurrency
+    }
+
+    /**
+     * Test the property '_format'
+     */
+    @Test
+    public void _formatTest() {
+        // TODO: test _format
+    }
+
+    /**
      * Test the property 'location'
      */
     @Test
     public void locationTest() {
         // TODO: test location
+    }
+
+    /**
+     * Test the property 'name'
+     */
+    @Test
+    public void nameTest() {
+        // TODO: test name
     }
 
     /**
@@ -84,22 +100,6 @@ public class FeedsUpdateRequestTest {
     @Test
     public void statusTest() {
         // TODO: test status
-    }
-
-    /**
-     * Test the property 'catalogType'
-     */
-    @Test
-    public void catalogTypeTest() {
-        // TODO: test catalogType
-    }
-
-    /**
-     * Test the property 'defaultAvailability'
-     */
-    @Test
-    public void defaultAvailabilityTest() {
-        // TODO: test defaultAvailability
     }
 
 }

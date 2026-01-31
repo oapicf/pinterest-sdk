@@ -12,15 +12,15 @@ Protected Class QuizPinData
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Quiz ad tie breaker type, default is RANDOM
-		#tag EndNote
-		tie_breaker_type As Xoson.O.OptionalString
+		tie_breaker_custom_result As OpenAPIClient.Models.QuizPinResult
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		tie_breaker_custom_result As OpenAPIClient.Models.QuizPinResult
+		#tag Note
+			Quiz ad tie breaker type, default is RANDOM
+		#tag EndNote
+		tie_breaker_type As Xoson.O.OptionalString
 	#tag EndProperty
 
 

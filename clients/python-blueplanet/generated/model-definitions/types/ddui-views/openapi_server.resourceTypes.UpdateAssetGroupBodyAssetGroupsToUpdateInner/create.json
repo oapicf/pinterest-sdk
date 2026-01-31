@@ -1,0 +1,22 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "asset_group_id" },
+      {"model": "asset_group_types" },
+      {"model": "assets_to_add" },
+      {"model": "assets_to_remove" },
+      {"model": "description" },
+      {"model": "name" },
+    ]
+  }]
+}

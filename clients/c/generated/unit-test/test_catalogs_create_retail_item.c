@@ -23,16 +23,16 @@ catalogs_create_retail_item_t* instantiate_catalogs_create_retail_item(int inclu
   catalogs_create_retail_item_t* catalogs_create_retail_item = NULL;
   if (include_optional) {
     catalogs_create_retail_item = catalogs_create_retail_item_create(
-      "DS0294-M",
-      pinterest_rest_api_catalogs_create_retail_item_OPERATION_CREATE,
        // false, not to have infinite recursion
-      instantiate_item_attributes_request(0)
+      instantiate_item_attributes_request(0),
+      "DS0294-M",
+      pinterest_rest_api_catalogs_create_retail_item_OPERATION_CREATE
     );
   } else {
     catalogs_create_retail_item = catalogs_create_retail_item_create(
+      NULL,
       "DS0294-M",
-      pinterest_rest_api_catalogs_create_retail_item_OPERATION_CREATE,
-      NULL
+      pinterest_rest_api_catalogs_create_retail_item_OPERATION_CREATE
     );
   }
 

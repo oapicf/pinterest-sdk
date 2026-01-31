@@ -8,8 +8,8 @@
 #' @description CatalogsReport Class
 #' @format An \code{R6Class} generator object
 #' @field report_status  character [optional]
-#' @field url URL to download the report character [optional]
 #' @field size Size of the report in bytes numeric [optional]
+#' @field url URL to download the report character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -17,17 +17,17 @@ CatalogsReport <- R6::R6Class(
   "CatalogsReport",
   public = list(
     `report_status` = NULL,
-    `url` = NULL,
     `size` = NULL,
+    `url` = NULL,
 
     #' @description
     #' Initialize a new CatalogsReport class.
     #'
     #' @param report_status report_status
-    #' @param url URL to download the report
     #' @param size Size of the report in bytes
+    #' @param url URL to download the report
     #' @param ... Other optional arguments.
-    initialize = function(`report_status` = NULL, `url` = NULL, `size` = NULL, ...) {
+    initialize = function(`report_status` = NULL, `size` = NULL, `url` = NULL, ...) {
       if (!is.null(`report_status`)) {
         if (!(`report_status` %in% c("FINISHED", "IN_PROGRESS"))) {
           stop(paste("Error! \"", `report_status`, "\" cannot be assigned to `report_status`. Must be \"FINISHED\", \"IN_PROGRESS\".", sep = ""))
@@ -37,14 +37,14 @@ CatalogsReport <- R6::R6Class(
         }
         self$`report_status` <- `report_status`
       }
+      if (!is.null(`size`)) {
+        self$`size` <- `size`
+      }
       if (!is.null(`url`)) {
         if (!(is.character(`url`) && length(`url`) == 1)) {
           stop(paste("Error! Invalid data for `url`. Must be a string:", `url`))
         }
         self$`url` <- `url`
-      }
-      if (!is.null(`size`)) {
-        self$`size` <- `size`
       }
     },
 
@@ -83,13 +83,13 @@ CatalogsReport <- R6::R6Class(
         CatalogsReportObject[["report_status"]] <-
           self$`report_status`
       }
-      if (!is.null(self$`url`)) {
-        CatalogsReportObject[["url"]] <-
-          self$`url`
-      }
       if (!is.null(self$`size`)) {
         CatalogsReportObject[["size"]] <-
           self$`size`
+      }
+      if (!is.null(self$`url`)) {
+        CatalogsReportObject[["url"]] <-
+          self$`url`
       }
       return(CatalogsReportObject)
     },
@@ -107,11 +107,11 @@ CatalogsReport <- R6::R6Class(
         }
         self$`report_status` <- this_object$`report_status`
       }
-      if (!is.null(this_object$`url`)) {
-        self$`url` <- this_object$`url`
-      }
       if (!is.null(this_object$`size`)) {
         self$`size` <- this_object$`size`
+      }
+      if (!is.null(this_object$`url`)) {
+        self$`url` <- this_object$`url`
       }
       self
     },
@@ -138,8 +138,8 @@ CatalogsReport <- R6::R6Class(
         stop(paste("Error! \"", this_object$`report_status`, "\" cannot be assigned to `report_status`. Must be \"FINISHED\", \"IN_PROGRESS\".", sep = ""))
       }
       self$`report_status` <- this_object$`report_status`
-      self$`url` <- this_object$`url`
       self$`size` <- this_object$`size`
+      self$`url` <- this_object$`url`
       self
     },
 

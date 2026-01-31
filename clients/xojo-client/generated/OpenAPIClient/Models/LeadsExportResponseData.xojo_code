@@ -2,12 +2,12 @@
 Protected Class LeadsExportResponseData
 
 	#tag Property, Flags = &h0
-		export_status As Xoson.O.OptionalString
+		download_url As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		download_url As Xoson.O.OptionalString
+		export_status As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -48,19 +48,19 @@ Protected Class LeadsExportResponseData
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="export_status"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="LeadsExportStatus"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="download_url"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="export_status"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="LeadsExportStatus"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

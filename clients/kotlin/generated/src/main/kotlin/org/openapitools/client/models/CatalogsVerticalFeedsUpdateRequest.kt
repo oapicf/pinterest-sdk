@@ -33,14 +33,14 @@ import com.squareup.moshi.JsonClass
  * Request object for updating a feed.
  *
  * @param catalogType 
- * @param defaultCurrency 
- * @param name A human-friendly name associated to a given feed.
- * @param format 
  * @param credentials 
+ * @param defaultAvailability 
+ * @param defaultCurrency 
+ * @param format 
  * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+ * @param name A human-friendly name associated to a given feed.
  * @param preferredProcessingSchedule 
  * @param status 
- * @param defaultAvailability 
  */
 
 
@@ -48,24 +48,24 @@ interface CatalogsVerticalFeedsUpdateRequest {
 
     @Json(name = "catalog_type")
     val catalogType: CatalogsType
-    @Json(name = "default_currency")
-    val defaultCurrency: NullableCurrency?
-    /* A human-friendly name associated to a given feed. */
-    @Json(name = "name")
-    val name: kotlin.String?
-    @Json(name = "format")
-    val format: CatalogsFormat?
     @Json(name = "credentials")
     val credentials: CatalogsFeedCredentials?
+    @Json(name = "default_availability")
+    val defaultAvailability: ProductAvailabilityType?
+    @Json(name = "default_currency")
+    val defaultCurrency: NullableCurrency?
+    @Json(name = "format")
+    val format: CatalogsFormat?
     /* The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
     @Json(name = "location")
     val location: kotlin.String?
+    /* A human-friendly name associated to a given feed. */
+    @Json(name = "name")
+    val name: kotlin.String?
     @Json(name = "preferred_processing_schedule")
     val preferredProcessingSchedule: CatalogsFeedProcessingSchedule?
     @Json(name = "status")
     val status: CatalogsStatus?
-    @Json(name = "default_availability")
-    val defaultAvailability: ProductAvailabilityType?
 
 }
 

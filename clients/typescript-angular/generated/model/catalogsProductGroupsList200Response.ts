@@ -11,7 +11,7 @@ import { CatalogsVerticalProductGroup } from './catalogsVerticalProductGroup';
 
 
 export interface CatalogsProductGroupsList200Response { 
-    items: Array<CatalogsVerticalProductGroup>;
     bookmark?: string | null;
+    items: Array<CatalogsVerticalProductGroup>;
 }
 

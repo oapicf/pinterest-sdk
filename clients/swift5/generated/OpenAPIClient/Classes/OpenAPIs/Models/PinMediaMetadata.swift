@@ -12,44 +12,44 @@ import AnyCodable
 
 public struct PinMediaMetadata: Codable, JSONEncodable, Hashable {
 
-    public var itemType: String?
-    public var title: String?
     public var description: String?
+    public var images: ImageSize?
+    public var itemType: String?
     public var link: String?
-    public var images: ImageMetadataImages?
+    public var title: String?
     public var coverImageUrl: String?
-    /** Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps. */
-    public var videoUrl: String?
-    /** Duration (in milliseconds) */
+    /** Duration (in miliseconds). Field maybe null after creation due to video processing time. */
     public var duration: Double?
-    /** Height (in pixels) */
+    /** Height (in pixels). Field maybe null after creation due to video processing time. */
     public var height: Int?
-    /** Width (in pixels) */
+    /** Video url (720p).  **Note:** This field is limited and not available to all apps. */
+    public var videoUrl: String?
+    /** Width (in pixels). Field maybe null after creation due to video processing time. */
     public var width: Int?
 
-    public init(itemType: String? = nil, title: String? = nil, description: String? = nil, link: String? = nil, images: ImageMetadataImages? = nil, coverImageUrl: String? = nil, videoUrl: String? = nil, duration: Double? = nil, height: Int? = nil, width: Int? = nil) {
-        self.itemType = itemType
-        self.title = title
+    public init(description: String? = nil, images: ImageSize? = nil, itemType: String? = nil, link: String? = nil, title: String? = nil, coverImageUrl: String? = nil, duration: Double? = nil, height: Int? = nil, videoUrl: String? = nil, width: Int? = nil) {
         self.description = description
-        self.link = link
         self.images = images
+        self.itemType = itemType
+        self.link = link
+        self.title = title
         self.coverImageUrl = coverImageUrl
-        self.videoUrl = videoUrl
         self.duration = duration
         self.height = height
+        self.videoUrl = videoUrl
         self.width = width
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case itemType = "item_type"
-        case title
         case description
-        case link
         case images
+        case itemType = "item_type"
+        case link
+        case title
         case coverImageUrl = "cover_image_url"
-        case videoUrl = "video_url"
         case duration
         case height
+        case videoUrl = "video_url"
         case width
     }
 
@@ -57,15 +57,15 @@ public struct PinMediaMetadata: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(itemType, forKey: .itemType)
-        try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(link, forKey: .link)
         try container.encodeIfPresent(images, forKey: .images)
+        try container.encodeIfPresent(itemType, forKey: .itemType)
+        try container.encodeIfPresent(link, forKey: .link)
+        try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(coverImageUrl, forKey: .coverImageUrl)
-        try container.encodeIfPresent(videoUrl, forKey: .videoUrl)
         try container.encodeIfPresent(duration, forKey: .duration)
         try container.encodeIfPresent(height, forKey: .height)
+        try container.encodeIfPresent(videoUrl, forKey: .videoUrl)
         try container.encodeIfPresent(width, forKey: .width)
     }
 }

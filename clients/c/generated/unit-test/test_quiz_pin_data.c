@@ -25,15 +25,15 @@ quiz_pin_data_t* instantiate_quiz_pin_data(int include_optional) {
     quiz_pin_data = quiz_pin_data_create(
       list_createList(),
       list_createList(),
-      pinterest_rest_api_quiz_pin_data_TIEBREAKERTYPE_RANDOM,
-      {"organic_pin_id":"pinId","android_deep_link":"https://www.pinterest.com/","ios_deep_link":"https://www.pinterest.com/","destination_url":"https://www.pinterest.com/"}
+      {"organic_pin_id":"pinId","android_deep_link":"https://www.pinterest.com/","ios_deep_link":"https://www.pinterest.com/","destination_url":"https://www.pinterest.com/"},
+      pinterest_rest_api_quiz_pin_data_TIEBREAKERTYPE_RANDOM
     );
   } else {
     quiz_pin_data = quiz_pin_data_create(
       list_createList(),
       list_createList(),
-      pinterest_rest_api_quiz_pin_data_TIEBREAKERTYPE_RANDOM,
-      {"organic_pin_id":"pinId","android_deep_link":"https://www.pinterest.com/","ios_deep_link":"https://www.pinterest.com/","destination_url":"https://www.pinterest.com/"}
+      {"organic_pin_id":"pinId","android_deep_link":"https://www.pinterest.com/","ios_deep_link":"https://www.pinterest.com/","destination_url":"https://www.pinterest.com/"},
+      pinterest_rest_api_quiz_pin_data_TIEBREAKERTYPE_RANDOM
     );
   }
 

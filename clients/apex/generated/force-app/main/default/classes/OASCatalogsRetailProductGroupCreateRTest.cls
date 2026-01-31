@@ -73,7 +73,7 @@ private class OASCatalogsRetailProductGroupCreateRTest {
     private static void maintainRenamedProperties() {
         OASCatalogsRetailProductGroupCreateR catalogsRetailProductGroupCreateRequest = new OASCatalogsRetailProductGroupCreateR();
         Map<String, String> x-property-mappings = catalogsRetailProductGroupCreateRequest.getx-property-mappings();
-        System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
         System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
+        System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
     }
 }

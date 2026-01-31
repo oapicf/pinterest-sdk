@@ -15,17 +15,26 @@ import org.openapitools.vertxweb.server.model.QuizPinOption;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class QuizPinQuestion   {
   
+  private List<QuizPinOption> options = new ArrayList<>();
   private BigDecimal questionId;
   private String questionText;
-  private List<QuizPinOption> options = new ArrayList<>();
 
   public QuizPinQuestion () {
 
   }
 
-  public QuizPinQuestion (BigDecimal questionId, String questionText, List<QuizPinOption> options) {
+  public QuizPinQuestion (List<QuizPinOption> options, BigDecimal questionId, String questionText) {
+    this.options = options;
     this.questionId = questionId;
     this.questionText = questionText;
+  }
+
+    
+  @JsonProperty("options")
+  public List<QuizPinOption> getOptions() {
+    return options;
+  }
+  public void setOptions(List<QuizPinOption> options) {
     this.options = options;
   }
 
@@ -47,15 +56,6 @@ public class QuizPinQuestion   {
     this.questionText = questionText;
   }
 
-    
-  @JsonProperty("options")
-  public List<QuizPinOption> getOptions() {
-    return options;
-  }
-  public void setOptions(List<QuizPinOption> options) {
-    this.options = options;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -66,14 +66,14 @@ public class QuizPinQuestion   {
       return false;
     }
     QuizPinQuestion quizPinQuestion = (QuizPinQuestion) o;
-    return Objects.equals(questionId, quizPinQuestion.questionId) &&
-        Objects.equals(questionText, quizPinQuestion.questionText) &&
-        Objects.equals(options, quizPinQuestion.options);
+    return Objects.equals(options, quizPinQuestion.options) &&
+        Objects.equals(questionId, quizPinQuestion.questionId) &&
+        Objects.equals(questionText, quizPinQuestion.questionText);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(questionId, questionText, options);
+    return Objects.hash(options, questionId, questionText);
   }
 
   @Override
@@ -81,9 +81,9 @@ public class QuizPinQuestion   {
     StringBuilder sb = new StringBuilder();
     sb.append("class QuizPinQuestion {\n");
     
+    sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("    questionId: ").append(toIndentedString(questionId)).append("\n");
     sb.append("    questionText: ").append(toIndentedString(questionText)).append("\n");
-    sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("}");
     return sb.toString();
   }

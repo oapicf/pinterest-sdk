@@ -7,32 +7,16 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.Exception;
 import org.openapitools.model.UserListOperationType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CustomerListUpdateRequest   {
   
-  private String records;
   private UserListOperationType operationType;
-  private Exception exceptions;
-
-  /**
-   * Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
-   **/
-  
-  @ApiModelProperty(example = "email2@pinterest.com,email6@pinterest.com,", required = true, value = "Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.")
-  @JsonProperty("records")
-  @NotNull
-  public String getRecords() {
-    return records;
-  }
-  public void setRecords(String records) {
-    this.records = records;
-  }
+  private String records;
 
   /**
    **/
@@ -49,16 +33,17 @@ public class CustomerListUpdateRequest   {
   }
 
   /**
+   * Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
    **/
   
-  @ApiModelProperty(value = "")
-  @JsonProperty("exceptions")
-  @Valid
-  public Exception getExceptions() {
-    return exceptions;
+  @ApiModelProperty(example = "email2@pinterest.com,email6@pinterest.com,", required = true, value = "Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.")
+  @JsonProperty("records")
+  @NotNull
+  public String getRecords() {
+    return records;
   }
-  public void setExceptions(Exception exceptions) {
-    this.exceptions = exceptions;
+  public void setRecords(String records) {
+    this.records = records;
   }
 
 
@@ -71,14 +56,13 @@ public class CustomerListUpdateRequest   {
       return false;
     }
     CustomerListUpdateRequest customerListUpdateRequest = (CustomerListUpdateRequest) o;
-    return Objects.equals(this.records, customerListUpdateRequest.records) &&
-        Objects.equals(this.operationType, customerListUpdateRequest.operationType) &&
-        Objects.equals(this.exceptions, customerListUpdateRequest.exceptions);
+    return Objects.equals(this.operationType, customerListUpdateRequest.operationType) &&
+        Objects.equals(this.records, customerListUpdateRequest.records);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(records, operationType, exceptions);
+    return Objects.hash(operationType, records);
   }
 
   @Override
@@ -86,9 +70,8 @@ public class CustomerListUpdateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CustomerListUpdateRequest {\n");
     
-    sb.append("    records: ").append(toIndentedString(records)).append("\n");
     sb.append("    operationType: ").append(toIndentedString(operationType)).append("\n");
-    sb.append("    exceptions: ").append(toIndentedString(exceptions)).append("\n");
+    sb.append("    records: ").append(toIndentedString(records)).append("\n");
     sb.append("}");
     return sb.toString();
   }

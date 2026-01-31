@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,9 +22,9 @@ var _ MappedNullable = &PinMediaSourcePinURL{}
 
 // PinMediaSourcePinURL Pin URL-based media source for product pin creation. Currently the field is only available to a list of beta users.
 type PinMediaSourcePinURL struct {
-	SourceType string `json:"source_type"`
 	// This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
 	IsAffiliateLink *bool `json:"is_affiliate_link,omitempty"`
+	SourceType string `json:"source_type"`
 }
 
 type _PinMediaSourcePinURL PinMediaSourcePinURL
@@ -35,9 +35,9 @@ type _PinMediaSourcePinURL PinMediaSourcePinURL
 // will change when the set of required properties is changed
 func NewPinMediaSourcePinURL(sourceType string) *PinMediaSourcePinURL {
 	this := PinMediaSourcePinURL{}
-	this.SourceType = sourceType
 	var isAffiliateLink bool = false
 	this.IsAffiliateLink = &isAffiliateLink
+	this.SourceType = sourceType
 	return &this
 }
 
@@ -49,30 +49,6 @@ func NewPinMediaSourcePinURLWithDefaults() *PinMediaSourcePinURL {
 	var isAffiliateLink bool = false
 	this.IsAffiliateLink = &isAffiliateLink
 	return &this
-}
-
-// GetSourceType returns the SourceType field value
-func (o *PinMediaSourcePinURL) GetSourceType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.SourceType
-}
-
-// GetSourceTypeOk returns a tuple with the SourceType field value
-// and a boolean to check if the value has been set.
-func (o *PinMediaSourcePinURL) GetSourceTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.SourceType, true
-}
-
-// SetSourceType sets field value
-func (o *PinMediaSourcePinURL) SetSourceType(v string) {
-	o.SourceType = v
 }
 
 // GetIsAffiliateLink returns the IsAffiliateLink field value if set, zero value otherwise.
@@ -107,6 +83,30 @@ func (o *PinMediaSourcePinURL) SetIsAffiliateLink(v bool) {
 	o.IsAffiliateLink = &v
 }
 
+// GetSourceType returns the SourceType field value
+func (o *PinMediaSourcePinURL) GetSourceType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.SourceType
+}
+
+// GetSourceTypeOk returns a tuple with the SourceType field value
+// and a boolean to check if the value has been set.
+func (o *PinMediaSourcePinURL) GetSourceTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SourceType, true
+}
+
+// SetSourceType sets field value
+func (o *PinMediaSourcePinURL) SetSourceType(v string) {
+	o.SourceType = v
+}
+
 func (o PinMediaSourcePinURL) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -117,10 +117,10 @@ func (o PinMediaSourcePinURL) MarshalJSON() ([]byte, error) {
 
 func (o PinMediaSourcePinURL) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["source_type"] = o.SourceType
 	if !IsNil(o.IsAffiliateLink) {
 		toSerialize["is_affiliate_link"] = o.IsAffiliateLink
 	}
+	toSerialize["source_type"] = o.SourceType
 	return toSerialize, nil
 }
 

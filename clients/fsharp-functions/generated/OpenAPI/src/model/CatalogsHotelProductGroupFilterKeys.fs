@@ -4,6 +4,7 @@ open System
 open System.Collections.Generic
 open Newtonsoft.Json
 open OpenAPI.Model.BrandFilter
+open OpenAPI.Model.CatalogsProductGroupFilterOperatorTypeCriteria
 open OpenAPI.Model.CatalogsProductGroupMultipleCountriesCriteria
 open OpenAPI.Model.CatalogsProductGroupMultipleStringCriteria
 open OpenAPI.Model.CatalogsProductGroupPricingCurrencyCriteria
@@ -15,6 +16,7 @@ open OpenAPI.Model.CustomLabel3Filter
 open OpenAPI.Model.CustomLabel4Filter
 open OpenAPI.Model.HotelIdFilter
 open OpenAPI.Model.PriceFilter
+open OpenAPI.Model.TitleKeywordsFilter
 
 module CatalogsHotelProductGroupFilterKeys =
 
@@ -29,17 +31,19 @@ module CatalogsHotelProductGroupFilterKeys =
     [<JsonProperty(PropertyName = "BRAND")>]
     BRAND : CatalogsProductGroupMultipleStringCriteria;
     [<JsonProperty(PropertyName = "CUSTOM_LABEL_0")>]
-    CUSTOMLABEL0 : CatalogsProductGroupMultipleStringCriteria;
+    CUSTOMLABEL0 : CatalogsProductGroupFilterOperatorTypeCriteria;
     [<JsonProperty(PropertyName = "CUSTOM_LABEL_1")>]
-    CUSTOMLABEL1 : CatalogsProductGroupMultipleStringCriteria;
+    CUSTOMLABEL1 : CatalogsProductGroupFilterOperatorTypeCriteria;
     [<JsonProperty(PropertyName = "CUSTOM_LABEL_2")>]
-    CUSTOMLABEL2 : CatalogsProductGroupMultipleStringCriteria;
+    CUSTOMLABEL2 : CatalogsProductGroupFilterOperatorTypeCriteria;
     [<JsonProperty(PropertyName = "CUSTOM_LABEL_3")>]
-    CUSTOMLABEL3 : CatalogsProductGroupMultipleStringCriteria;
+    CUSTOMLABEL3 : CatalogsProductGroupFilterOperatorTypeCriteria;
     [<JsonProperty(PropertyName = "CUSTOM_LABEL_4")>]
-    CUSTOMLABEL4 : CatalogsProductGroupMultipleStringCriteria;
+    CUSTOMLABEL4 : CatalogsProductGroupFilterOperatorTypeCriteria;
     [<JsonProperty(PropertyName = "COUNTRY")>]
     COUNTRY : CatalogsProductGroupMultipleCountriesCriteria;
+    [<JsonProperty(PropertyName = "TITLE_KEYWORDS")>]
+    TITLE_KEYWORDS : CatalogsProductGroupMultipleStringCriteria;
   }
 
   //#endregion

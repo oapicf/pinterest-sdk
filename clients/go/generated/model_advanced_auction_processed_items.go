@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,7 +23,7 @@ type AdvancedAuctionProcessedItems struct {
 	// Catalog id pertaining to all items
 	CatalogId *string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
 	// Array of advanced auction processed items
-	Items []AdvancedAuctionProcessedItem `json:"items,omitempty"`
+	Items []AdvancedAuctionItemsSubmitRecord `json:"items,omitempty"`
 }
 
 // NewAdvancedAuctionProcessedItems instantiates a new AdvancedAuctionProcessedItems object
@@ -76,9 +76,9 @@ func (o *AdvancedAuctionProcessedItems) SetCatalogId(v string) {
 }
 
 // GetItems returns the Items field value if set, zero value otherwise.
-func (o *AdvancedAuctionProcessedItems) GetItems() []AdvancedAuctionProcessedItem {
+func (o *AdvancedAuctionProcessedItems) GetItems() []AdvancedAuctionItemsSubmitRecord {
 	if o == nil || IsNil(o.Items) {
-		var ret []AdvancedAuctionProcessedItem
+		var ret []AdvancedAuctionItemsSubmitRecord
 		return ret
 	}
 	return o.Items
@@ -86,7 +86,7 @@ func (o *AdvancedAuctionProcessedItems) GetItems() []AdvancedAuctionProcessedIte
 
 // GetItemsOk returns a tuple with the Items field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AdvancedAuctionProcessedItems) GetItemsOk() ([]AdvancedAuctionProcessedItem, bool) {
+func (o *AdvancedAuctionProcessedItems) GetItemsOk() ([]AdvancedAuctionItemsSubmitRecord, bool) {
 	if o == nil || IsNil(o.Items) {
 		return nil, false
 	}
@@ -102,8 +102,8 @@ func (o *AdvancedAuctionProcessedItems) HasItems() bool {
 	return false
 }
 
-// SetItems gets a reference to the given []AdvancedAuctionProcessedItem and assigns it to the Items field.
-func (o *AdvancedAuctionProcessedItems) SetItems(v []AdvancedAuctionProcessedItem) {
+// SetItems gets a reference to the given []AdvancedAuctionItemsSubmitRecord and assigns it to the Items field.
+func (o *AdvancedAuctionProcessedItems) SetItems(v []AdvancedAuctionItemsSubmitRecord) {
 	o.Items = v
 }
 

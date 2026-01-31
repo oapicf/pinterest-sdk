@@ -38,7 +38,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Validated
 @Tag(name = "advanced_auction", description = "View, create, or update advanced auction item bid options.")
 public interface AdvancedAuctionApi {
@@ -115,7 +115,7 @@ public interface AdvancedAuctionApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"catalog_id\" : \"2680059592705\", \"items\" : [ { \"country\" : \"US\", \"bid_options\" : { \"bid_in_micro_currency\" : 5000000, \"placement_multipliers\" : { \"browse\" : 0.9, \"search\" : 1.2 }, \"app_type_multipliers\" : { \"android_mobile\" : 1.1, \"android_tablet\" : 1.1, \"ipad\" : 1.2, \"iphone\" : 1.2, \"web\" : 0.9, \"web_mobile\" : 0.8 } }, \"item_id\" : \"DS0294-M\", \"language\" : \"EN\" }, { \"country\" : \"US\", \"bid_options\" : { \"bid_in_micro_currency\" : 5000000, \"placement_multipliers\" : { \"browse\" : 0.9, \"search\" : 1.2 }, \"app_type_multipliers\" : { \"android_mobile\" : 1.1, \"android_tablet\" : 1.1, \"ipad\" : 1.2, \"iphone\" : 1.2, \"web\" : 0.9, \"web_mobile\" : 0.8 } }, \"item_id\" : \"DS0294-M\", \"language\" : \"EN\" } ] }";
+                    String exampleString = "{ \"catalog_id\" : \"2680059592705\", \"items\" : [ { \"country\" : \"AD\", \"bid_options\" : { \"bid_in_micro_currency\" : 5000000, \"placement_multipliers\" : { \"browse\" : 0.9, \"search\" : 1.2, \"related_pins\" : 1.1 }, \"app_type_multipliers\" : { \"android_mobile\" : 1.1, \"android_tablet\" : 1.1, \"ipad\" : 1.2, \"iphone\" : 1.2, \"web\" : 0.9, \"web_mobile\" : 0.8 } }, \"item_id\" : \"DS0294-M\", \"language\" : \"EN\" }, { \"country\" : \"AD\", \"bid_options\" : { \"bid_in_micro_currency\" : 5000000, \"placement_multipliers\" : { \"browse\" : 0.9, \"search\" : 1.2, \"related_pins\" : 1.1 }, \"app_type_multipliers\" : { \"android_mobile\" : 1.1, \"android_tablet\" : 1.1, \"ipad\" : 1.2, \"iphone\" : 1.2, \"web\" : 0.9, \"web_mobile\" : 0.8 } }, \"item_id\" : \"DS0294-M\", \"language\" : \"EN\" } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -159,6 +159,7 @@ public interface AdvancedAuctionApi {
      * @param advancedAuctionItemsSubmitRequest Request object used to upsert or delete bid options for a batch of retail catalog items (required)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return Response containing the results of the item bid options operations (status code 200)
+     *         or Response containing the results of the item bid options operations (where some/all operation results have errors) (status code 206)
      *         or Invalid request parameters. (status code 400)
      *         or Not authenticated to post item bid options (status code 401)
      *         or Not authorized to post item bid options (status code 403)
@@ -172,6 +173,9 @@ public interface AdvancedAuctionApi {
         tags = { "advanced_auction" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Response containing the results of the item bid options operations", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = AdvancedAuctionProcessedItems.class))
+            }),
+            @ApiResponse(responseCode = "206", description = "Response containing the results of the item bid options operations (where some/all operation results have errors)", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = AdvancedAuctionProcessedItems.class))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request parameters.", content = {
@@ -219,7 +223,12 @@ public interface AdvancedAuctionApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"catalog_id\" : \"2680059592705\", \"items\" : [ { \"operation\" : \"UPSERT\", \"errors\" : [ { \"code\" : 6, \"message\" : \"Bid in micro currency should be non-negative\" }, { \"code\" : 6, \"message\" : \"Bid in micro currency should be non-negative\" } ] }, { \"operation\" : \"UPSERT\", \"errors\" : [ { \"code\" : 6, \"message\" : \"Bid in micro currency should be non-negative\" }, { \"code\" : 6, \"message\" : \"Bid in micro currency should be non-negative\" } ] } ] }";
+                    String exampleString = "{ \"catalog_id\" : \"2680059592705\", \"items\" : [ { \"operation\" : \"UPSERT\" }, { \"operation\" : \"UPSERT\" } ] }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"catalog_id\" : \"2680059592705\", \"items\" : [ { \"operation\" : \"UPSERT\" }, { \"operation\" : \"UPSERT\" } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

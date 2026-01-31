@@ -12,7 +12,7 @@ import org.joda.time.DateTime
 import BoardMedia._
 
 case class BoardMedia (
-  /* Board cover image. */
+  /* Board cover image */
   imageCoverUrl: Option[String],
 /* Board pin thumbnail urls. */
   pinThumbnailUrls: Option[List[String]])

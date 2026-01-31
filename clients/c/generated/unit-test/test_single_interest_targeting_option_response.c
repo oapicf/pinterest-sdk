@@ -22,17 +22,17 @@ single_interest_targeting_option_response_t* instantiate_single_interest_targeti
   single_interest_targeting_option_response_t* single_interest_targeting_option_response = NULL;
   if (include_optional) {
     single_interest_targeting_option_response = single_interest_targeting_option_response_create(
-      "945391946569",
-      "Dress",
       list_createList(),
-      2
+      "945391946569",
+      2,
+      "Dress"
     );
   } else {
     single_interest_targeting_option_response = single_interest_targeting_option_response_create(
-      "945391946569",
-      "Dress",
       list_createList(),
-      2
+      "945391946569",
+      2,
+      "Dress"
     );
   }
 

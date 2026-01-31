@@ -31,16 +31,10 @@ class DeletePartnerAssetsResultTest : ShouldSpec() {
             //modelInstance.assetId shouldBe ("TODO")
         }
 
-        // to test the property `assetType` - Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+        // to test the property `assetType` - Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
         should("test assetType") {
             // uncomment below to test the property
             //modelInstance.assetType shouldBe ("TODO")
-        }
-
-        // to test the property `permissions` - Permission levels member or partner has on an asset.
-        should("test permissions") {
-            // uncomment below to test the property
-            //modelInstance.permissions shouldBe ("TODO")
         }
 
         // to test the property `isSharedPartner` - If is_shared_partner=FALSE, you terminated a partner's asset access to your business asset.<br> If is_shared_partner=TRUE, you terminated your asset access to your partner's business asset.
@@ -53,6 +47,12 @@ class DeletePartnerAssetsResultTest : ShouldSpec() {
         should("test partnerId") {
             // uncomment below to test the property
             //modelInstance.partnerId shouldBe ("TODO")
+        }
+
+        // to test the property `permissions` - Permission levels member or partner has on an asset.
+        should("test permissions") {
+            // uncomment below to test the property
+            //modelInstance.permissions shouldBe ("TODO")
         }
 
     }

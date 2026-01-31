@@ -54,9 +54,11 @@ Class | Method | HTTP request | Description
 *AdAccountsApi* | [**adAccountsCreate**](docs/AdAccountsApi.md#adaccountscreate) | **POST** /ad_accounts | Create ad account
 *AdAccountsApi* | [**adAccountsGet**](docs/AdAccountsApi.md#adaccountsget) | **GET** /ad_accounts/{ad_account_id} | Get ad account
 *AdAccountsApi* | [**adAccountsList**](docs/AdAccountsApi.md#adaccountslist) | **GET** /ad_accounts | List ad accounts
+*AdAccountsApi* | [**analyticsCreateConversionProductReport**](docs/AdAccountsApi.md#analyticscreateconversionproductreport) | **POST** /ad_accounts/{ad_account_id}/reports/brand_category_sku | Create a request for a brand, category, SKU report
 *AdAccountsApi* | [**analyticsCreateMmmReport**](docs/AdAccountsApi.md#analyticscreatemmmreport) | **POST** /ad_accounts/{ad_account_id}/mmm_reports | Create a request for a Marketing Mix Modeling (MMM) report
 *AdAccountsApi* | [**analyticsCreateReport**](docs/AdAccountsApi.md#analyticscreatereport) | **POST** /ad_accounts/{ad_account_id}/reports | Create async request for an account analytics report
 *AdAccountsApi* | [**analyticsCreateTemplateReport**](docs/AdAccountsApi.md#analyticscreatetemplatereport) | **POST** /ad_accounts/{ad_account_id}/templates/{template_id}/reports | Create async request for an analytics report using a template
+*AdAccountsApi* | [**analyticsGetConversionProductReport**](docs/AdAccountsApi.md#analyticsgetconversionproductreport) | **GET** /ad_accounts/{ad_account_id}/reports/brand_category_sku | Get advertiser brand, category, SKU report
 *AdAccountsApi* | [**analyticsGetMmmReport**](docs/AdAccountsApi.md#analyticsgetmmmreport) | **GET** /ad_accounts/{ad_account_id}/mmm_reports | Get advertiser Marketing Mix Modeling (MMM) report.
 *AdAccountsApi* | [**analyticsGetReport**](docs/AdAccountsApi.md#analyticsgetreport) | **GET** /ad_accounts/{ad_account_id}/reports | Get the account analytics report created by the async call
 *AdAccountsApi* | [**sandboxDelete**](docs/AdAccountsApi.md#sandboxdelete) | **DELETE** /ad_accounts/{ad_account_id}/sandbox | Delete ads data for ad account in API Sandbox
@@ -88,12 +90,13 @@ Class | Method | HTTP request | Description
 *AudienceSharingApi* | [**updateBusinessToAdAccountSharedAudience**](docs/AudienceSharingApi.md#updatebusinesstoadaccountsharedaudience) | **PATCH** /businesses/{business_id}/audiences/ad_accounts/shared | Update audience sharing from a business to ad accounts
 *AudienceSharingApi* | [**updateBusinessToBusinessSharedAudience**](docs/AudienceSharingApi.md#updatebusinesstobusinesssharedaudience) | **PATCH** /businesses/{business_id}/audiences/businesses/shared | Update audience sharing between businesses
 *AudiencesApi* | [**audiencesCreate**](docs/AudiencesApi.md#audiencescreate) | **POST** /ad_accounts/{ad_account_id}/audiences | Create audience
-*AudiencesApi* | [**audiencesCreateCustom**](docs/AudiencesApi.md#audiencescreatecustom) | **POST** /ad_accounts/{ad_account_id}/audiences/custom | Create custom audience
 *AudiencesApi* | [**audiencesGet**](docs/AudiencesApi.md#audiencesget) | **GET** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Get audience
 *AudiencesApi* | [**audiencesList**](docs/AudiencesApi.md#audienceslist) | **GET** /ad_accounts/{ad_account_id}/audiences | List audiences
 *AudiencesApi* | [**audiencesUpdate**](docs/AudiencesApi.md#audiencesupdate) | **PATCH** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Update audience
 *BillingApi* | [**adsCreditRedeem**](docs/BillingApi.md#adscreditredeem) | **POST** /ad_accounts/{ad_account_id}/ads_credit/redeem | Redeem ad credits
 *BillingApi* | [**adsCreditsDiscountsGet**](docs/BillingApi.md#adscreditsdiscountsget) | **GET** /ad_accounts/{ad_account_id}/ads_credit/discounts | Get ads credit discounts
+*BillingApi* | [**billingInvoiceDownloadGet**](docs/BillingApi.md#billinginvoicedownloadget) | **GET** /ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download | Get download url for a billing invoice
+*BillingApi* | [**billingInvoicesGet**](docs/BillingApi.md#billinginvoicesget) | **GET** /ad_accounts/{ad_account_id}/billing_invoices | Get billing invoices
 *BillingApi* | [**billingProfilesGet**](docs/BillingApi.md#billingprofilesget) | **GET** /ad_accounts/{ad_account_id}/billing_profiles | Get billing profiles
 *BillingApi* | [**ssioAccountsGet**](docs/BillingApi.md#ssioaccountsget) | **GET** /ad_accounts/{ad_account_id}/ssio/accounts | Get Salesforce account details including bill-to information.
 *BillingApi* | [**ssioInsertionOrderCreate**](docs/BillingApi.md#ssioinsertionordercreate) | **POST** /ad_accounts/{ad_account_id}/ssio/insertion_orders | Create insertion order through SSIO.
@@ -133,51 +136,60 @@ Class | Method | HTTP request | Description
 *BusinessAccessInviteApi* | [**createMembershipOrPartnershipInvites**](docs/BusinessAccessInviteApi.md#createmembershiporpartnershipinvites) | **POST** /businesses/{business_id}/invites | Create invites or requests
 *BusinessAccessInviteApi* | [**getInvites**](docs/BusinessAccessInviteApi.md#getinvites) | **GET** /businesses/{business_id}/invites | Get invites/requests
 *BusinessAccessInviteApi* | [**respondBusinessAccessInvites**](docs/BusinessAccessInviteApi.md#respondbusinessaccessinvites) | **PATCH** /businesses/invites | Accept or decline an invite/request
+*BusinessAccessRelationshipsApi* | [**brandAccountsCreate**](docs/BusinessAccessRelationshipsApi.md#brandaccountscreate) | **POST** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts | Create a Brand Account
+*BusinessAccessRelationshipsApi* | [**brandAccountsUpdate**](docs/BusinessAccessRelationshipsApi.md#brandaccountsupdate) | **PATCH** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id} | Update a Brand Account
 *BusinessAccessRelationshipsApi* | [**deleteBusinessMembership**](docs/BusinessAccessRelationshipsApi.md#deletebusinessmembership) | **DELETE** /businesses/{business_id}/members | Terminate business memberships
 *BusinessAccessRelationshipsApi* | [**deleteBusinessPartners**](docs/BusinessAccessRelationshipsApi.md#deletebusinesspartners) | **DELETE** /businesses/{business_id}/partners | Terminate business partnerships
 *BusinessAccessRelationshipsApi* | [**getBusinessEmployers**](docs/BusinessAccessRelationshipsApi.md#getbusinessemployers) | **GET** /businesses/employers | List business employers for user
 *BusinessAccessRelationshipsApi* | [**getBusinessMembers**](docs/BusinessAccessRelationshipsApi.md#getbusinessmembers) | **GET** /businesses/{business_id}/members | Get business members
 *BusinessAccessRelationshipsApi* | [**getBusinessPartners**](docs/BusinessAccessRelationshipsApi.md#getbusinesspartners) | **GET** /businesses/{business_id}/partners | Get business partners
+*BusinessAccessRelationshipsApi* | [**systemUserUpdate**](docs/BusinessAccessRelationshipsApi.md#systemuserupdate) | **PATCH** /businesses/{business_id}/system_users/{system_user_id} | Update a system user information.
 *BusinessAccessRelationshipsApi* | [**updateBusinessMemberships**](docs/BusinessAccessRelationshipsApi.md#updatebusinessmemberships) | **PATCH** /businesses/{business_id}/members | Update member's business role
+*CampaignsApi* | [**adPinsAnalytics**](docs/CampaignsApi.md#adpinsanalytics) | **GET** /ad_accounts/{ad_account_id}/pins/analytics | Get pins analytics
 *CampaignsApi* | [**campaignTargetingAnalyticsGet**](docs/CampaignsApi.md#campaigntargetinganalyticsget) | **GET** /ad_accounts/{ad_account_id}/campaigns/targeting_analytics | Get targeting analytics for campaigns
 *CampaignsApi* | [**campaignsAnalytics**](docs/CampaignsApi.md#campaignsanalytics) | **GET** /ad_accounts/{ad_account_id}/campaigns/analytics | Get campaign analytics
 *CampaignsApi* | [**campaignsCreate**](docs/CampaignsApi.md#campaignscreate) | **POST** /ad_accounts/{ad_account_id}/campaigns | Create campaigns
 *CampaignsApi* | [**campaignsGet**](docs/CampaignsApi.md#campaignsget) | **GET** /ad_accounts/{ad_account_id}/campaigns/{campaign_id} | Get campaign
 *CampaignsApi* | [**campaignsList**](docs/CampaignsApi.md#campaignslist) | **GET** /ad_accounts/{ad_account_id}/campaigns | List campaigns
 *CampaignsApi* | [**campaignsUpdate**](docs/CampaignsApi.md#campaignsupdate) | **PATCH** /ad_accounts/{ad_account_id}/campaigns | Update campaigns
+*CatalogFeedsApi* | [**feedProcessingResultsList**](docs/CatalogFeedsApi.md#feedprocessingresultslist) | **GET** /catalogs/feeds/{feed_id}/processing_results | List feed processing results
+*CatalogFeedsApi* | [**feedsCreate**](docs/CatalogFeedsApi.md#feedscreate) | **POST** /catalogs/feeds | Create feed
+*CatalogFeedsApi* | [**feedsDelete**](docs/CatalogFeedsApi.md#feedsdelete) | **DELETE** /catalogs/feeds/{feed_id} | Delete feed
+*CatalogFeedsApi* | [**feedsGet**](docs/CatalogFeedsApi.md#feedsget) | **GET** /catalogs/feeds/{feed_id} | Get feed
+*CatalogFeedsApi* | [**feedsIngest**](docs/CatalogFeedsApi.md#feedsingest) | **POST** /catalogs/feeds/{feed_id}/ingest | Ingest feed items
+*CatalogFeedsApi* | [**feedsList**](docs/CatalogFeedsApi.md#feedslist) | **GET** /catalogs/feeds | List feeds
+*CatalogFeedsApi* | [**feedsUpdate**](docs/CatalogFeedsApi.md#feedsupdate) | **PATCH** /catalogs/feeds/{feed_id} | Update feed
+*CatalogFeedsApi* | [**itemsIssuesList**](docs/CatalogFeedsApi.md#itemsissueslist) | **GET** /catalogs/processing_results/{processing_result_id}/item_issues | List item issues
+*CatalogItemsApi* | [**itemsBatchGet**](docs/CatalogItemsApi.md#itemsbatchget) | **GET** /catalogs/items/batch/{batch_id} | Get item batch status
+*CatalogItemsApi* | [**itemsBatchPost**](docs/CatalogItemsApi.md#itemsbatchpost) | **POST** /catalogs/items/batch | Operate on item batch
+*CatalogItemsApi* | [**itemsPost**](docs/CatalogItemsApi.md#itemspost) | **POST** /catalogs/items | Get catalogs items (POST)
+*CatalogProductGroupsApi* | [**catalogsProductGroupPinsList**](docs/CatalogProductGroupsApi.md#catalogsproductgrouppinslist) | **GET** /catalogs/product_groups/{product_group_id}/products | List products by product group
+*CatalogProductGroupsApi* | [**catalogsProductGroupsCreate**](docs/CatalogProductGroupsApi.md#catalogsproductgroupscreate) | **POST** /catalogs/product_groups | Create product group
+*CatalogProductGroupsApi* | [**catalogsProductGroupsCreateMany**](docs/CatalogProductGroupsApi.md#catalogsproductgroupscreatemany) | **POST** /catalogs/product_groups/multiple | Create product groups
+*CatalogProductGroupsApi* | [**catalogsProductGroupsDelete**](docs/CatalogProductGroupsApi.md#catalogsproductgroupsdelete) | **DELETE** /catalogs/product_groups/{product_group_id} | Delete product group
+*CatalogProductGroupsApi* | [**catalogsProductGroupsDeleteMany**](docs/CatalogProductGroupsApi.md#catalogsproductgroupsdeletemany) | **DELETE** /catalogs/product_groups/multiple | Delete product groups
+*CatalogProductGroupsApi* | [**catalogsProductGroupsGet**](docs/CatalogProductGroupsApi.md#catalogsproductgroupsget) | **GET** /catalogs/product_groups/{product_group_id} | Get product group
+*CatalogProductGroupsApi* | [**catalogsProductGroupsList**](docs/CatalogProductGroupsApi.md#catalogsproductgroupslist) | **GET** /catalogs/product_groups | List product groups
+*CatalogProductGroupsApi* | [**catalogsProductGroupsProductCountsGet**](docs/CatalogProductGroupsApi.md#catalogsproductgroupsproductcountsget) | **GET** /catalogs/product_groups/{product_group_id}/product_counts | Get product counts
+*CatalogProductGroupsApi* | [**catalogsProductGroupsUpdate**](docs/CatalogProductGroupsApi.md#catalogsproductgroupsupdate) | **PATCH** /catalogs/product_groups/{product_group_id} | Update single product group
+*CatalogProductGroupsApi* | [**productsByProductGroupFilterList**](docs/CatalogProductGroupsApi.md#productsbyproductgroupfilterlist) | **POST** /catalogs/products/get_by_product_group_filters | List products by filter
+*CatalogReportsApi* | [**reportsCreate**](docs/CatalogReportsApi.md#reportscreate) | **POST** /catalogs/reports | Build catalogs report
+*CatalogReportsApi* | [**reportsGet**](docs/CatalogReportsApi.md#reportsget) | **GET** /catalogs/reports | Get catalogs report
+*CatalogReportsApi* | [**reportsStats**](docs/CatalogReportsApi.md#reportsstats) | **GET** /catalogs/reports/stats | List report stats
+*CatalogsApi* | [**catalogsAvailableFilterValues**](docs/CatalogsApi.md#catalogsavailablefiltervalues) | **GET** /catalogs/available_filter_values | List available filter values
 *CatalogsApi* | [**catalogsCreate**](docs/CatalogsApi.md#catalogscreate) | **POST** /catalogs | Create catalog
 *CatalogsApi* | [**catalogsList**](docs/CatalogsApi.md#catalogslist) | **GET** /catalogs | List catalogs
-*CatalogsApi* | [**catalogsProductGroupPinsList**](docs/CatalogsApi.md#catalogsproductgrouppinslist) | **GET** /catalogs/product_groups/{product_group_id}/products | List products by product group
-*CatalogsApi* | [**catalogsProductGroupsCreate**](docs/CatalogsApi.md#catalogsproductgroupscreate) | **POST** /catalogs/product_groups | Create product group
-*CatalogsApi* | [**catalogsProductGroupsCreateMany**](docs/CatalogsApi.md#catalogsproductgroupscreatemany) | **POST** /catalogs/product_groups/multiple | Create product groups
-*CatalogsApi* | [**catalogsProductGroupsDelete**](docs/CatalogsApi.md#catalogsproductgroupsdelete) | **DELETE** /catalogs/product_groups/{product_group_id} | Delete product group
-*CatalogsApi* | [**catalogsProductGroupsDeleteMany**](docs/CatalogsApi.md#catalogsproductgroupsdeletemany) | **DELETE** /catalogs/product_groups/multiple | Delete product groups
-*CatalogsApi* | [**catalogsProductGroupsGet**](docs/CatalogsApi.md#catalogsproductgroupsget) | **GET** /catalogs/product_groups/{product_group_id} | Get product group
-*CatalogsApi* | [**catalogsProductGroupsList**](docs/CatalogsApi.md#catalogsproductgroupslist) | **GET** /catalogs/product_groups | List product groups
-*CatalogsApi* | [**catalogsProductGroupsProductCountsGet**](docs/CatalogsApi.md#catalogsproductgroupsproductcountsget) | **GET** /catalogs/product_groups/{product_group_id}/product_counts | Get product counts
-*CatalogsApi* | [**catalogsProductGroupsUpdate**](docs/CatalogsApi.md#catalogsproductgroupsupdate) | **PATCH** /catalogs/product_groups/{product_group_id} | Update single product group
-*CatalogsApi* | [**feedProcessingResultsList**](docs/CatalogsApi.md#feedprocessingresultslist) | **GET** /catalogs/feeds/{feed_id}/processing_results | List feed processing results
-*CatalogsApi* | [**feedsCreate**](docs/CatalogsApi.md#feedscreate) | **POST** /catalogs/feeds | Create feed
-*CatalogsApi* | [**feedsDelete**](docs/CatalogsApi.md#feedsdelete) | **DELETE** /catalogs/feeds/{feed_id} | Delete feed
-*CatalogsApi* | [**feedsGet**](docs/CatalogsApi.md#feedsget) | **GET** /catalogs/feeds/{feed_id} | Get feed
-*CatalogsApi* | [**feedsIngest**](docs/CatalogsApi.md#feedsingest) | **POST** /catalogs/feeds/{feed_id}/ingest | Ingest feed items
-*CatalogsApi* | [**feedsList**](docs/CatalogsApi.md#feedslist) | **GET** /catalogs/feeds | List feeds
-*CatalogsApi* | [**feedsUpdate**](docs/CatalogsApi.md#feedsupdate) | **PATCH** /catalogs/feeds/{feed_id} | Update feed
-*CatalogsApi* | [**itemsBatchGet**](docs/CatalogsApi.md#itemsbatchget) | **GET** /catalogs/items/batch/{batch_id} | Get item batch status
-*CatalogsApi* | [**itemsBatchPost**](docs/CatalogsApi.md#itemsbatchpost) | **POST** /catalogs/items/batch | Operate on item batch
-*CatalogsApi* | [**itemsGet**](docs/CatalogsApi.md#itemsget) | **GET** /catalogs/items | Get catalogs items
-*CatalogsApi* | [**itemsIssuesList**](docs/CatalogsApi.md#itemsissueslist) | **GET** /catalogs/processing_results/{processing_result_id}/item_issues | List item issues
-*CatalogsApi* | [**itemsPost**](docs/CatalogsApi.md#itemspost) | **POST** /catalogs/items | Get catalogs items (POST)
-*CatalogsApi* | [**productsByProductGroupFilterList**](docs/CatalogsApi.md#productsbyproductgroupfilterlist) | **POST** /catalogs/products/get_by_product_group_filters | List products by filter
-*CatalogsApi* | [**reportsCreate**](docs/CatalogsApi.md#reportscreate) | **POST** /catalogs/reports | Build catalogs report
-*CatalogsApi* | [**reportsGet**](docs/CatalogsApi.md#reportsget) | **GET** /catalogs/reports | Get catalogs report
-*CatalogsApi* | [**reportsStats**](docs/CatalogsApi.md#reportsstats) | **GET** /catalogs/reports/stats | List report stats
+*ConversionEqsApi* | [**conversionEqsList**](docs/ConversionEqsApi.md#conversioneqslist) | **GET** /ad_accounts/{ad_account_id}/conversion_eqs | Get event quality score (EQS)
 *ConversionEventsApi* | [**eventsCreate**](docs/ConversionEventsApi.md#eventscreate) | **POST** /ad_accounts/{ad_account_id}/events | Send conversions
 *ConversionTagsApi* | [**conversionTagsCreate**](docs/ConversionTagsApi.md#conversiontagscreate) | **POST** /ad_accounts/{ad_account_id}/conversion_tags | Create conversion tag
 *ConversionTagsApi* | [**conversionTagsGet**](docs/ConversionTagsApi.md#conversiontagsget) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id} | Get conversion tag
-*ConversionTagsApi* | [**conversionTagsList**](docs/ConversionTagsApi.md#conversiontagslist) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | Get conversion tags
+*ConversionTagsApi* | [**conversionTagsList**](docs/ConversionTagsApi.md#conversiontagslist) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | List conversion tags
 *ConversionTagsApi* | [**ocpmEligibleConversionTagsGet**](docs/ConversionTagsApi.md#ocpmeligibleconversiontagsget) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible | Get Ocpm eligible conversion tags
 *ConversionTagsApi* | [**pageVisitConversionTagsGet**](docs/ConversionTagsApi.md#pagevisitconversiontagsget) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/page_visit | Get page visit conversion tags
+*ConversionsApi* | [**advertiserDefinedEventsGet**](docs/ConversionsApi.md#advertiserdefinedeventsget) | **GET** /ad_accounts/{ad_account_id}/advertiser_defined_events | Get advertiser defined events
+*CustomerListUploadsApi* | [**customerListUploadsCreate**](docs/CustomerListUploadsApi.md#customerlistuploadscreate) | **POST** /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads | Create customer list upload
+*CustomerListUploadsApi* | [**customerListUploadsGet**](docs/CustomerListUploadsApi.md#customerlistuploadsget) | **GET** /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id} | Get customer list upload
+*CustomerListUploadsApi* | [**customerListUploadsRun**](docs/CustomerListUploadsApi.md#customerlistuploadsrun) | **POST** /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id}/run | Run customer list upload
 *CustomerListsApi* | [**customerListsCreate**](docs/CustomerListsApi.md#customerlistscreate) | **POST** /ad_accounts/{ad_account_id}/customer_lists | Create customer lists
 *CustomerListsApi* | [**customerListsGet**](docs/CustomerListsApi.md#customerlistsget) | **GET** /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id} | Get customer list
 *CustomerListsApi* | [**customerListsList**](docs/CustomerListsApi.md#customerlistslist) | **GET** /ad_accounts/{ad_account_id}/customer_lists | Get customer lists
@@ -194,8 +206,11 @@ Class | Method | HTTP request | Description
 *KeywordsApi* | [**keywordsGet**](docs/KeywordsApi.md#keywordsget) | **GET** /ad_accounts/{ad_account_id}/keywords | Get keywords
 *KeywordsApi* | [**keywordsUpdate**](docs/KeywordsApi.md#keywordsupdate) | **PATCH** /ad_accounts/{ad_account_id}/keywords | Update keywords
 *KeywordsApi* | [**trendingKeywordsList**](docs/KeywordsApi.md#trendingkeywordslist) | **GET** /trends/keywords/{region}/top/{trend_type} | List trending keywords
+*LabelsApi* | [**labelsCreate**](docs/LabelsApi.md#labelscreate) | **POST** /ad_accounts/{ad_account_id}/labels | Create labels
+*LabelsApi* | [**labelsList**](docs/LabelsApi.md#labelslist) | **GET** /ad_accounts/{ad_account_id}/labels | List labels
+*LabelsApi* | [**labelsUpdate**](docs/LabelsApi.md#labelsupdate) | **PATCH** /ad_accounts/{ad_account_id}/labels | Update labels
 *LeadAdsApi* | [**adAccountsSubscriptionsDelById**](docs/LeadAdsApi.md#adaccountssubscriptionsdelbyid) | **DELETE** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Delete lead ads subscription
-*LeadAdsApi* | [**adAccountsSubscriptionsGetById**](docs/LeadAdsApi.md#adaccountssubscriptionsgetbyid) | **GET** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Get lead ads subscription
+*LeadAdsApi* | [**adAccountsSubscriptionsGetById**](docs/LeadAdsApi.md#adaccountssubscriptionsgetbyid) | **GET** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Get lead ads subscription by ID
 *LeadAdsApi* | [**adAccountsSubscriptionsGetList**](docs/LeadAdsApi.md#adaccountssubscriptionsgetlist) | **GET** /ad_accounts/{ad_account_id}/leads/subscriptions | Get lead ads subscriptions
 *LeadAdsApi* | [**adAccountsSubscriptionsPost**](docs/LeadAdsApi.md#adaccountssubscriptionspost) | **POST** /ad_accounts/{ad_account_id}/leads/subscriptions | Create lead ads subscription
 *LeadFormsApi* | [**leadFormGet**](docs/LeadFormsApi.md#leadformget) | **GET** /ad_accounts/{ad_account_id}/lead_forms/{lead_form_id} | Get lead form by id
@@ -208,7 +223,11 @@ Class | Method | HTTP request | Description
 *MediaApi* | [**mediaCreate**](docs/MediaApi.md#mediacreate) | **POST** /media | Register media upload
 *MediaApi* | [**mediaGet**](docs/MediaApi.md#mediaget) | **GET** /media/{media_id} | Get media upload details
 *MediaApi* | [**mediaList**](docs/MediaApi.md#medialist) | **GET** /media | List media uploads
+*MsotEventsApi* | [**msotEventsCreate**](docs/MsotEventsApi.md#msoteventscreate) | **POST** /ad_accounts/{ad_account_id}/msot/events | Send Measurement Source Of Truth (MSOT) attributed conversion events
+*NotificationApi* | [**notificationPost**](docs/NotificationApi.md#notificationpost) | **POST** /notifications | Receive notifications from external partners.
+*OauthApi* | [**oauthConversionToken**](docs/OauthApi.md#oauthconversiontoken) | **POST** /oauth/conversion_token | Generate OAuth access token for conversion API
 *OauthApi* | [**oauthToken**](docs/OauthApi.md#oauthtoken) | **POST** /oauth/token | Generate OAuth access token
+*OauthApi* | [**tokenRevoke**](docs/OauthApi.md#tokenrevoke) | **POST** /oauth/token/revoke | Revoke a token
 *OrderLinesApi* | [**orderLinesGet**](docs/OrderLinesApi.md#orderlinesget) | **GET** /ad_accounts/{ad_account_id}/order_lines/{order_line_id} | Get order line
 *OrderLinesApi* | [**orderLinesList**](docs/OrderLinesApi.md#orderlineslist) | **GET** /ad_accounts/{ad_account_id}/order_lines | Get order lines
 *PinsApi* | [**multiPinsAnalytics**](docs/PinsApi.md#multipinsanalytics) | **GET** /pins/analytics | Get multiple Pin analytics
@@ -219,11 +238,19 @@ Class | Method | HTTP request | Description
 *PinsApi* | [**pinsList**](docs/PinsApi.md#pinslist) | **GET** /pins | List Pins
 *PinsApi* | [**pinsSave**](docs/PinsApi.md#pinssave) | **POST** /pins/{pin_id}/save | Save Pin
 *PinsApi* | [**pinsUpdate**](docs/PinsApi.md#pinsupdate) | **PATCH** /pins/{pin_id} | Update Pin
+*ProductCategoriesApi* | [**trendsFeaturedTopicsList**](docs/ProductCategoriesApi.md#trendsfeaturedtopicslist) | **GET** /trends/topics/featured | Get featured topics
+*ProductCategoriesApi* | [**trendsProductCategoriesDetailsList**](docs/ProductCategoriesApi.md#trendsproductcategoriesdetailslist) | **GET** /trends/product_categories/details | Get product category details
+*ProductCategoriesApi* | [**trendsProductCategoriesTrendingList**](docs/ProductCategoriesApi.md#trendsproductcategoriestrendinglist) | **GET** /trends/product_categories/trending | Get a list of growing Shopping Product Categories
 *ProductGroupPromotionsApi* | [**productGroupPromotionsCreate**](docs/ProductGroupPromotionsApi.md#productgrouppromotionscreate) | **POST** /ad_accounts/{ad_account_id}/product_group_promotions | Create product group promotions
 *ProductGroupPromotionsApi* | [**productGroupPromotionsGet**](docs/ProductGroupPromotionsApi.md#productgrouppromotionsget) | **GET** /ad_accounts/{ad_account_id}/product_group_promotions/{product_group_promotion_id} | Get a product group promotion by id
 *ProductGroupPromotionsApi* | [**productGroupPromotionsList**](docs/ProductGroupPromotionsApi.md#productgrouppromotionslist) | **GET** /ad_accounts/{ad_account_id}/product_group_promotions | Get product group promotions
 *ProductGroupPromotionsApi* | [**productGroupPromotionsUpdate**](docs/ProductGroupPromotionsApi.md#productgrouppromotionsupdate) | **PATCH** /ad_accounts/{ad_account_id}/product_group_promotions | Update product group promotions
 *ProductGroupPromotionsApi* | [**productGroupsAnalytics**](docs/ProductGroupPromotionsApi.md#productgroupsanalytics) | **GET** /ad_accounts/{ad_account_id}/product_groups/analytics | Get product group analytics
+*PromotionsApi* | [**promotionsCreate**](docs/PromotionsApi.md#promotionscreate) | **POST** /ad_accounts/{ad_account_id}/promotions | Create promotions
+*PromotionsApi* | [**promotionsDelete**](docs/PromotionsApi.md#promotionsdelete) | **DELETE** /ad_accounts/{ad_account_id}/promotions/{promotion_id} | Delete promotion by id
+*PromotionsApi* | [**promotionsGet**](docs/PromotionsApi.md#promotionsget) | **GET** /ad_accounts/{ad_account_id}/promotions/{promotion_id} | Get promotion by id
+*PromotionsApi* | [**promotionsList**](docs/PromotionsApi.md#promotionslist) | **GET** /ad_accounts/{ad_account_id}/promotions | Get promotions
+*PromotionsApi* | [**promotionsUpdate**](docs/PromotionsApi.md#promotionsupdate) | **PATCH** /ad_accounts/{ad_account_id}/promotions | Update promotions
 *ResourcesApi* | [**adAccountCountriesGet**](docs/ResourcesApi.md#adaccountcountriesget) | **GET** /resources/ad_account_countries | Get ad accounts countries
 *ResourcesApi* | [**deliveryMetricsGet**](docs/ResourcesApi.md#deliverymetricsget) | **GET** /resources/delivery_metrics | Get available metrics' definitions
 *ResourcesApi* | [**interestTargetingOptionsGet**](docs/ResourcesApi.md#interesttargetingoptionsget) | **GET** /resources/targeting/interests/{interest_id} | Get interest details
@@ -262,7 +289,7 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.ActionType](docs/ActionType.md)
  - [org.openapitools.server.models.AdAccount](docs/AdAccount.md)
  - [org.openapitools.server.models.AdAccountAnalyticsResponseInner](docs/AdAccountAnalyticsResponseInner.md)
- - [org.openapitools.server.models.AdAccountCreateRequest](docs/AdAccountCreateRequest.md)
+ - [org.openapitools.server.models.AdAccountCreate](docs/AdAccountCreate.md)
  - [org.openapitools.server.models.AdAccountCreateSubscriptionRequest](docs/AdAccountCreateSubscriptionRequest.md)
  - [org.openapitools.server.models.AdAccountCreateSubscriptionRequestPartnerMetadata](docs/AdAccountCreateSubscriptionRequestPartnerMetadata.md)
  - [org.openapitools.server.models.AdAccountCreateSubscriptionResponse](docs/AdAccountCreateSubscriptionResponse.md)
@@ -285,21 +312,26 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.AdGroupAudienceSizingResponse](docs/AdGroupAudienceSizingResponse.md)
  - [org.openapitools.server.models.AdGroupCommon](docs/AdGroupCommon.md)
  - [org.openapitools.server.models.AdGroupCreateRequest](docs/AdGroupCreateRequest.md)
+ - [org.openapitools.server.models.AdGroupIdFilter](docs/AdGroupIdFilter.md)
  - [org.openapitools.server.models.AdGroupResponse](docs/AdGroupResponse.md)
  - [org.openapitools.server.models.AdGroupSummaryStatus](docs/AdGroupSummaryStatus.md)
  - [org.openapitools.server.models.AdGroupUpdateRequest](docs/AdGroupUpdateRequest.md)
  - [org.openapitools.server.models.AdGroupsAnalyticsResponseInner](docs/AdGroupsAnalyticsResponseInner.md)
  - [org.openapitools.server.models.AdGroupsList200Response](docs/AdGroupsList200Response.md)
+ - [org.openapitools.server.models.AdPinAnalytics](docs/AdPinAnalytics.md)
  - [org.openapitools.server.models.AdPinId](docs/AdPinId.md)
  - [org.openapitools.server.models.AdPreviewCreateFromImage](docs/AdPreviewCreateFromImage.md)
  - [org.openapitools.server.models.AdPreviewCreateFromPin](docs/AdPreviewCreateFromPin.md)
  - [org.openapitools.server.models.AdPreviewRequest](docs/AdPreviewRequest.md)
+ - [org.openapitools.server.models.AdPreviewShopping](docs/AdPreviewShopping.md)
  - [org.openapitools.server.models.AdPreviewURLResponse](docs/AdPreviewURLResponse.md)
  - [org.openapitools.server.models.AdResponse](docs/AdResponse.md)
  - [org.openapitools.server.models.AdUpdateRequest](docs/AdUpdateRequest.md)
+ - [org.openapitools.server.models.AdsAnalyticsAdGroupTargetingType](docs/AdsAnalyticsAdGroupTargetingType.md)
  - [org.openapitools.server.models.AdsAnalyticsAdTargetingType](docs/AdsAnalyticsAdTargetingType.md)
  - [org.openapitools.server.models.AdsAnalyticsCampaignTargetingType](docs/AdsAnalyticsCampaignTargetingType.md)
  - [org.openapitools.server.models.AdsAnalyticsCreateAsyncRequest](docs/AdsAnalyticsCreateAsyncRequest.md)
+ - [org.openapitools.server.models.AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics](docs/AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics.md)
  - [org.openapitools.server.models.AdsAnalyticsCreateAsyncResponse](docs/AdsAnalyticsCreateAsyncResponse.md)
  - [org.openapitools.server.models.AdsAnalyticsFilterColumn](docs/AdsAnalyticsFilterColumn.md)
  - [org.openapitools.server.models.AdsAnalyticsFilterOperator](docs/AdsAnalyticsFilterOperator.md)
@@ -324,10 +356,15 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.AdvancedAuctionKey](docs/AdvancedAuctionKey.md)
  - [org.openapitools.server.models.AdvancedAuctionOperation](docs/AdvancedAuctionOperation.md)
  - [org.openapitools.server.models.AdvancedAuctionOperationError](docs/AdvancedAuctionOperationError.md)
- - [org.openapitools.server.models.AdvancedAuctionProcessedItem](docs/AdvancedAuctionProcessedItem.md)
  - [org.openapitools.server.models.AdvancedAuctionProcessedItems](docs/AdvancedAuctionProcessedItems.md)
+ - [org.openapitools.server.models.AdvertiserDefinedEvent](docs/AdvertiserDefinedEvent.md)
+ - [org.openapitools.server.models.AdvertiserDefinedEventsResponse](docs/AdvertiserDefinedEventsResponse.md)
+ - [org.openapitools.server.models.AgeTrendsBucket](docs/AgeTrendsBucket.md)
+ - [org.openapitools.server.models.AllOf](docs/AllOf.md)
+ - [org.openapitools.server.models.AmazonConnectRequest](docs/AmazonConnectRequest.md)
  - [org.openapitools.server.models.AnalyticsDailyMetrics](docs/AnalyticsDailyMetrics.md)
  - [org.openapitools.server.models.AnalyticsMetricsResponse](docs/AnalyticsMetricsResponse.md)
+ - [org.openapitools.server.models.AnyOf](docs/AnyOf.md)
  - [org.openapitools.server.models.AppTypeMultipliers](docs/AppTypeMultipliers.md)
  - [org.openapitools.server.models.AssetGroupBinding](docs/AssetGroupBinding.md)
  - [org.openapitools.server.models.AssetGroupType](docs/AssetGroupType.md)
@@ -336,11 +373,11 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.AudienceAccountType](docs/AudienceAccountType.md)
  - [org.openapitools.server.models.AudienceCategory](docs/AudienceCategory.md)
  - [org.openapitools.server.models.AudienceCommon](docs/AudienceCommon.md)
- - [org.openapitools.server.models.AudienceCreateCustomRequest](docs/AudienceCreateCustomRequest.md)
  - [org.openapitools.server.models.AudienceCreateRequest](docs/AudienceCreateRequest.md)
- - [org.openapitools.server.models.AudienceDataParty](docs/AudienceDataParty.md)
  - [org.openapitools.server.models.AudienceDefinition](docs/AudienceDefinition.md)
  - [org.openapitools.server.models.AudienceDefinitionResponse](docs/AudienceDefinitionResponse.md)
+ - [org.openapitools.server.models.AudienceDefinitionScope](docs/AudienceDefinitionScope.md)
+ - [org.openapitools.server.models.AudienceDefinitionType](docs/AudienceDefinitionType.md)
  - [org.openapitools.server.models.AudienceDemographicValue](docs/AudienceDemographicValue.md)
  - [org.openapitools.server.models.AudienceDemographics](docs/AudienceDemographics.md)
  - [org.openapitools.server.models.AudienceInsightCategoryArrayResponse](docs/AudienceInsightCategoryArrayResponse.md)
@@ -349,7 +386,6 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.AudienceInsightsResponse](docs/AudienceInsightsResponse.md)
  - [org.openapitools.server.models.AudienceRule](docs/AudienceRule.md)
  - [org.openapitools.server.models.AudienceShareType](docs/AudienceShareType.md)
- - [org.openapitools.server.models.AudienceSharingType](docs/AudienceSharingType.md)
  - [org.openapitools.server.models.AudienceSubcategory](docs/AudienceSubcategory.md)
  - [org.openapitools.server.models.AudienceType](docs/AudienceType.md)
  - [org.openapitools.server.models.AudienceUpdateOperationType](docs/AudienceUpdateOperationType.md)
@@ -366,18 +402,30 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.BidFloor](docs/BidFloor.md)
  - [org.openapitools.server.models.BidFloorRequest](docs/BidFloorRequest.md)
  - [org.openapitools.server.models.BidFloorSpec](docs/BidFloorSpec.md)
+ - [org.openapitools.server.models.BillingInvoiceDownloadResponse](docs/BillingInvoiceDownloadResponse.md)
+ - [org.openapitools.server.models.BillingInvoiceResponse](docs/BillingInvoiceResponse.md)
+ - [org.openapitools.server.models.BillingInvoicesGet200Response](docs/BillingInvoicesGet200Response.md)
  - [org.openapitools.server.models.BillingProfilesGet200Response](docs/BillingProfilesGet200Response.md)
  - [org.openapitools.server.models.BillingProfilesResponse](docs/BillingProfilesResponse.md)
  - [org.openapitools.server.models.Board](docs/Board.md)
+ - [org.openapitools.server.models.BoardBase](docs/BoardBase.md)
+ - [org.openapitools.server.models.BoardCreate](docs/BoardCreate.md)
  - [org.openapitools.server.models.BoardMedia](docs/BoardMedia.md)
  - [org.openapitools.server.models.BoardOwner](docs/BoardOwner.md)
+ - [org.openapitools.server.models.BoardPrivacy](docs/BoardPrivacy.md)
+ - [org.openapitools.server.models.BoardPrivacyFilter](docs/BoardPrivacyFilter.md)
  - [org.openapitools.server.models.BoardSection](docs/BoardSection.md)
  - [org.openapitools.server.models.BoardSectionsList200Response](docs/BoardSectionsList200Response.md)
- - [org.openapitools.server.models.BoardUpdate](docs/BoardUpdate.md)
+ - [org.openapitools.server.models.BoardUpdatePrivacy](docs/BoardUpdatePrivacy.md)
+ - [org.openapitools.server.models.BoardWithUpdatePrivacy](docs/BoardWithUpdatePrivacy.md)
+ - [org.openapitools.server.models.BoardWithUpdatePrivacyUpdate](docs/BoardWithUpdatePrivacyUpdate.md)
  - [org.openapitools.server.models.BoardsList200Response](docs/BoardsList200Response.md)
  - [org.openapitools.server.models.BoardsListPins200Response](docs/BoardsListPins200Response.md)
  - [org.openapitools.server.models.BoardsUserFollowsList200Response](docs/BoardsUserFollowsList200Response.md)
  - [org.openapitools.server.models.BookClosedResponse](docs/BookClosedResponse.md)
+ - [org.openapitools.server.models.BrandAccountsCreate200Response](docs/BrandAccountsCreate200Response.md)
+ - [org.openapitools.server.models.BrandAccountsCreateRequest](docs/BrandAccountsCreateRequest.md)
+ - [org.openapitools.server.models.BrandAccountsUpdateRequest](docs/BrandAccountsUpdateRequest.md)
  - [org.openapitools.server.models.BrandFilter](docs/BrandFilter.md)
  - [org.openapitools.server.models.BudgetType](docs/BudgetType.md)
  - [org.openapitools.server.models.BulkDownloadRequest](docs/BulkDownloadRequest.md)
@@ -410,6 +458,10 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.BusinessRoleForMembers](docs/BusinessRoleForMembers.md)
  - [org.openapitools.server.models.BusinessSharedAudience](docs/BusinessSharedAudience.md)
  - [org.openapitools.server.models.BusinessSharedAudienceResponse](docs/BusinessSharedAudienceResponse.md)
+ - [org.openapitools.server.models.CampaignAudienceMultipliers](docs/CampaignAudienceMultipliers.md)
+ - [org.openapitools.server.models.CampaignBidOptions](docs/CampaignBidOptions.md)
+ - [org.openapitools.server.models.CampaignBidOptionsCreate](docs/CampaignBidOptionsCreate.md)
+ - [org.openapitools.server.models.CampaignBidOptionsUpdate](docs/CampaignBidOptionsUpdate.md)
  - [org.openapitools.server.models.CampaignCommon](docs/CampaignCommon.md)
  - [org.openapitools.server.models.CampaignCreateCommon](docs/CampaignCreateCommon.md)
  - [org.openapitools.server.models.CampaignCreateRequest](docs/CampaignCreateRequest.md)
@@ -417,6 +469,8 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.CampaignCreateResponseData](docs/CampaignCreateResponseData.md)
  - [org.openapitools.server.models.CampaignCreateResponseItem](docs/CampaignCreateResponseItem.md)
  - [org.openapitools.server.models.CampaignId](docs/CampaignId.md)
+ - [org.openapitools.server.models.CampaignIdFilter](docs/CampaignIdFilter.md)
+ - [org.openapitools.server.models.CampaignObjectivesFilter](docs/CampaignObjectivesFilter.md)
  - [org.openapitools.server.models.CampaignResponse](docs/CampaignResponse.md)
  - [org.openapitools.server.models.CampaignSummaryStatus](docs/CampaignSummaryStatus.md)
  - [org.openapitools.server.models.CampaignUpdateRequest](docs/CampaignUpdateRequest.md)
@@ -424,18 +478,22 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.CampaignsAnalyticsResponseInner](docs/CampaignsAnalyticsResponseInner.md)
  - [org.openapitools.server.models.CampaignsList200Response](docs/CampaignsList200Response.md)
  - [org.openapitools.server.models.CancelInvitesBody](docs/CancelInvitesBody.md)
+ - [org.openapitools.server.models.CarouselSlot](docs/CarouselSlot.md)
  - [org.openapitools.server.models.Catalog](docs/Catalog.md)
+ - [org.openapitools.server.models.CatalogsAvailableFilterValues](docs/CatalogsAvailableFilterValues.md)
  - [org.openapitools.server.models.CatalogsCreateCreativeAssetsItem](docs/CatalogsCreateCreativeAssetsItem.md)
  - [org.openapitools.server.models.CatalogsCreateHotelItem](docs/CatalogsCreateHotelItem.md)
  - [org.openapitools.server.models.CatalogsCreateReportResponse](docs/CatalogsCreateReportResponse.md)
  - [org.openapitools.server.models.CatalogsCreateRequest](docs/CatalogsCreateRequest.md)
  - [org.openapitools.server.models.CatalogsCreateRetailItem](docs/CatalogsCreateRetailItem.md)
  - [org.openapitools.server.models.CatalogsCreativeAssetsAttributes](docs/CatalogsCreativeAssetsAttributes.md)
+ - [org.openapitools.server.models.CatalogsCreativeAssetsAvailableFilterValues](docs/CatalogsCreativeAssetsAvailableFilterValues.md)
  - [org.openapitools.server.models.CatalogsCreativeAssetsBatchItem](docs/CatalogsCreativeAssetsBatchItem.md)
  - [org.openapitools.server.models.CatalogsCreativeAssetsBatchRequest](docs/CatalogsCreativeAssetsBatchRequest.md)
  - [org.openapitools.server.models.CatalogsCreativeAssetsFeed](docs/CatalogsCreativeAssetsFeed.md)
  - [org.openapitools.server.models.CatalogsCreativeAssetsFeedsCreateRequest](docs/CatalogsCreativeAssetsFeedsCreateRequest.md)
  - [org.openapitools.server.models.CatalogsCreativeAssetsFeedsUpdateRequest](docs/CatalogsCreativeAssetsFeedsUpdateRequest.md)
+ - [org.openapitools.server.models.CatalogsCreativeAssetsFilterValuesMap](docs/CatalogsCreativeAssetsFilterValuesMap.md)
  - [org.openapitools.server.models.CatalogsCreativeAssetsItemErrorResponse](docs/CatalogsCreativeAssetsItemErrorResponse.md)
  - [org.openapitools.server.models.CatalogsCreativeAssetsItemResponse](docs/CatalogsCreativeAssetsItemResponse.md)
  - [org.openapitools.server.models.CatalogsCreativeAssetsItemsBatch](docs/CatalogsCreativeAssetsItemsBatch.md)
@@ -470,6 +528,7 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.CatalogsFeedValidationDetails](docs/CatalogsFeedValidationDetails.md)
  - [org.openapitools.server.models.CatalogsFeedValidationErrors](docs/CatalogsFeedValidationErrors.md)
  - [org.openapitools.server.models.CatalogsFeedValidationWarnings](docs/CatalogsFeedValidationWarnings.md)
+ - [org.openapitools.server.models.CatalogsFeedVideoCounts](docs/CatalogsFeedVideoCounts.md)
  - [org.openapitools.server.models.CatalogsFeedsCreateRequest](docs/CatalogsFeedsCreateRequest.md)
  - [org.openapitools.server.models.CatalogsFeedsCreateRequestDefaultLocale](docs/CatalogsFeedsCreateRequestDefaultLocale.md)
  - [org.openapitools.server.models.CatalogsFeedsUpdateRequest](docs/CatalogsFeedsUpdateRequest.md)
@@ -477,11 +536,13 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.CatalogsHotelAddress](docs/CatalogsHotelAddress.md)
  - [org.openapitools.server.models.CatalogsHotelAttributes](docs/CatalogsHotelAttributes.md)
  - [org.openapitools.server.models.CatalogsHotelAttributesAllOfMainImage](docs/CatalogsHotelAttributesAllOfMainImage.md)
+ - [org.openapitools.server.models.CatalogsHotelAvailableFilterValues](docs/CatalogsHotelAvailableFilterValues.md)
  - [org.openapitools.server.models.CatalogsHotelBatchItem](docs/CatalogsHotelBatchItem.md)
  - [org.openapitools.server.models.CatalogsHotelBatchRequest](docs/CatalogsHotelBatchRequest.md)
  - [org.openapitools.server.models.CatalogsHotelFeed](docs/CatalogsHotelFeed.md)
  - [org.openapitools.server.models.CatalogsHotelFeedsCreateRequest](docs/CatalogsHotelFeedsCreateRequest.md)
  - [org.openapitools.server.models.CatalogsHotelFeedsUpdateRequest](docs/CatalogsHotelFeedsUpdateRequest.md)
+ - [org.openapitools.server.models.CatalogsHotelFilterValuesMap](docs/CatalogsHotelFilterValuesMap.md)
  - [org.openapitools.server.models.CatalogsHotelGuestRatings](docs/CatalogsHotelGuestRatings.md)
  - [org.openapitools.server.models.CatalogsHotelItemErrorResponse](docs/CatalogsHotelItemErrorResponse.md)
  - [org.openapitools.server.models.CatalogsHotelItemResponse](docs/CatalogsHotelItemResponse.md)
@@ -497,10 +558,13 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.CatalogsHotelProductGroupFiltersAllOf](docs/CatalogsHotelProductGroupFiltersAllOf.md)
  - [org.openapitools.server.models.CatalogsHotelProductGroupFiltersAnyOf](docs/CatalogsHotelProductGroupFiltersAnyOf.md)
  - [org.openapitools.server.models.CatalogsHotelProductGroupProductCounts](docs/CatalogsHotelProductGroupProductCounts.md)
+ - [org.openapitools.server.models.CatalogsHotelProductGroupType](docs/CatalogsHotelProductGroupType.md)
  - [org.openapitools.server.models.CatalogsHotelProductGroupUpdateRequest](docs/CatalogsHotelProductGroupUpdateRequest.md)
  - [org.openapitools.server.models.CatalogsHotelProductMetadata](docs/CatalogsHotelProductMetadata.md)
  - [org.openapitools.server.models.CatalogsHotelReportParameters](docs/CatalogsHotelReportParameters.md)
  - [org.openapitools.server.models.CatalogsHotelReportParametersReport](docs/CatalogsHotelReportParametersReport.md)
+ - [org.openapitools.server.models.CatalogsHotelReportStatsParameters](docs/CatalogsHotelReportStatsParameters.md)
+ - [org.openapitools.server.models.CatalogsHotelReportStatsParametersReport](docs/CatalogsHotelReportStatsParametersReport.md)
  - [org.openapitools.server.models.CatalogsItemValidationDetails](docs/CatalogsItemValidationDetails.md)
  - [org.openapitools.server.models.CatalogsItemValidationErrors](docs/CatalogsItemValidationErrors.md)
  - [org.openapitools.server.models.CatalogsItemValidationIssue](docs/CatalogsItemValidationIssue.md)
@@ -525,12 +589,11 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.CatalogsProductGroupCreateRequest](docs/CatalogsProductGroupCreateRequest.md)
  - [org.openapitools.server.models.CatalogsProductGroupCurrencyCriteria](docs/CatalogsProductGroupCurrencyCriteria.md)
  - [org.openapitools.server.models.CatalogsProductGroupFilterKeys](docs/CatalogsProductGroupFilterKeys.md)
+ - [org.openapitools.server.models.CatalogsProductGroupFilterOperatorTypeCriteria](docs/CatalogsProductGroupFilterOperatorTypeCriteria.md)
  - [org.openapitools.server.models.CatalogsProductGroupFilters](docs/CatalogsProductGroupFilters.md)
  - [org.openapitools.server.models.CatalogsProductGroupFiltersAllOf](docs/CatalogsProductGroupFiltersAllOf.md)
  - [org.openapitools.server.models.CatalogsProductGroupFiltersAnyOf](docs/CatalogsProductGroupFiltersAnyOf.md)
  - [org.openapitools.server.models.CatalogsProductGroupFiltersRequest](docs/CatalogsProductGroupFiltersRequest.md)
- - [org.openapitools.server.models.CatalogsProductGroupFiltersRequestAnyOf](docs/CatalogsProductGroupFiltersRequestAnyOf.md)
- - [org.openapitools.server.models.CatalogsProductGroupFiltersRequestAnyOf1](docs/CatalogsProductGroupFiltersRequestAnyOf1.md)
  - [org.openapitools.server.models.CatalogsProductGroupMultipleCountriesCriteria](docs/CatalogsProductGroupMultipleCountriesCriteria.md)
  - [org.openapitools.server.models.CatalogsProductGroupMultipleGenderCriteria](docs/CatalogsProductGroupMultipleGenderCriteria.md)
  - [org.openapitools.server.models.CatalogsProductGroupMultipleMediaTypesCriteria](docs/CatalogsProductGroupMultipleMediaTypesCriteria.md)
@@ -542,21 +605,25 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.CatalogsProductGroupProductCountsVertical](docs/CatalogsProductGroupProductCountsVertical.md)
  - [org.openapitools.server.models.CatalogsProductGroupStatus](docs/CatalogsProductGroupStatus.md)
  - [org.openapitools.server.models.CatalogsProductGroupType](docs/CatalogsProductGroupType.md)
+ - [org.openapitools.server.models.CatalogsProductGroupUint32Criteria](docs/CatalogsProductGroupUint32Criteria.md)
  - [org.openapitools.server.models.CatalogsProductGroupUpdateRequest](docs/CatalogsProductGroupUpdateRequest.md)
  - [org.openapitools.server.models.CatalogsProductGroupsList200Response](docs/CatalogsProductGroupsList200Response.md)
  - [org.openapitools.server.models.CatalogsProductGroupsUpdateRequest](docs/CatalogsProductGroupsUpdateRequest.md)
  - [org.openapitools.server.models.CatalogsReport](docs/CatalogsReport.md)
+ - [org.openapitools.server.models.CatalogsReportAllItemsFilter](docs/CatalogsReportAllItemsFilter.md)
  - [org.openapitools.server.models.CatalogsReportDistributionIssueFilter](docs/CatalogsReportDistributionIssueFilter.md)
  - [org.openapitools.server.models.CatalogsReportDistributionStats](docs/CatalogsReportDistributionStats.md)
  - [org.openapitools.server.models.CatalogsReportFeedIngestionFilter](docs/CatalogsReportFeedIngestionFilter.md)
  - [org.openapitools.server.models.CatalogsReportFeedIngestionStats](docs/CatalogsReportFeedIngestionStats.md)
  - [org.openapitools.server.models.CatalogsReportParameters](docs/CatalogsReportParameters.md)
  - [org.openapitools.server.models.CatalogsReportStats](docs/CatalogsReportStats.md)
+ - [org.openapitools.server.models.CatalogsRetailAvailableFilterValues](docs/CatalogsRetailAvailableFilterValues.md)
  - [org.openapitools.server.models.CatalogsRetailBatchRequest](docs/CatalogsRetailBatchRequest.md)
  - [org.openapitools.server.models.CatalogsRetailBatchRequestItemsInner](docs/CatalogsRetailBatchRequestItemsInner.md)
  - [org.openapitools.server.models.CatalogsRetailFeed](docs/CatalogsRetailFeed.md)
  - [org.openapitools.server.models.CatalogsRetailFeedsCreateRequest](docs/CatalogsRetailFeedsCreateRequest.md)
  - [org.openapitools.server.models.CatalogsRetailFeedsUpdateRequest](docs/CatalogsRetailFeedsUpdateRequest.md)
+ - [org.openapitools.server.models.CatalogsRetailFilterValuesMap](docs/CatalogsRetailFilterValuesMap.md)
  - [org.openapitools.server.models.CatalogsRetailItemErrorResponse](docs/CatalogsRetailItemErrorResponse.md)
  - [org.openapitools.server.models.CatalogsRetailItemResponse](docs/CatalogsRetailItemResponse.md)
  - [org.openapitools.server.models.CatalogsRetailItemsBatch](docs/CatalogsRetailItemsBatch.md)
@@ -570,6 +637,7 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.CatalogsRetailProductGroupUpdateRequest](docs/CatalogsRetailProductGroupUpdateRequest.md)
  - [org.openapitools.server.models.CatalogsRetailProductMetadata](docs/CatalogsRetailProductMetadata.md)
  - [org.openapitools.server.models.CatalogsRetailReportParameters](docs/CatalogsRetailReportParameters.md)
+ - [org.openapitools.server.models.CatalogsRetailReportStatsParameters](docs/CatalogsRetailReportStatsParameters.md)
  - [org.openapitools.server.models.CatalogsStatus](docs/CatalogsStatus.md)
  - [org.openapitools.server.models.CatalogsType](docs/CatalogsType.md)
  - [org.openapitools.server.models.CatalogsUpdatableCreativeAssetsAttributes](docs/CatalogsUpdatableCreativeAssetsAttributes.md)
@@ -588,26 +656,34 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.CatalogsVerticalProductGroupUpdateRequest](docs/CatalogsVerticalProductGroupUpdateRequest.md)
  - [org.openapitools.server.models.CatalogsVerticalsListProductsByCatalogBasedFilterRequest](docs/CatalogsVerticalsListProductsByCatalogBasedFilterRequest.md)
  - [org.openapitools.server.models.ConditionFilter](docs/ConditionFilter.md)
+ - [org.openapitools.server.models.ContentType](docs/ContentType.md)
+ - [org.openapitools.server.models.ConversionAccessTokenResponse](docs/ConversionAccessTokenResponse.md)
  - [org.openapitools.server.models.ConversionApiResponse](docs/ConversionApiResponse.md)
  - [org.openapitools.server.models.ConversionApiResponseEventsInner](docs/ConversionApiResponseEventsInner.md)
  - [org.openapitools.server.models.ConversionAttributionWindowDays](docs/ConversionAttributionWindowDays.md)
+ - [org.openapitools.server.models.ConversionEventAppInfo](docs/ConversionEventAppInfo.md)
+ - [org.openapitools.server.models.ConversionEventDeviceInfo](docs/ConversionEventDeviceInfo.md)
  - [org.openapitools.server.models.ConversionEventResponse](docs/ConversionEventResponse.md)
  - [org.openapitools.server.models.ConversionEvents](docs/ConversionEvents.md)
  - [org.openapitools.server.models.ConversionEventsDataInner](docs/ConversionEventsDataInner.md)
  - [org.openapitools.server.models.ConversionEventsDataInnerCustomData](docs/ConversionEventsDataInnerCustomData.md)
  - [org.openapitools.server.models.ConversionEventsDataInnerCustomDataContentsInner](docs/ConversionEventsDataInnerCustomDataContentsInner.md)
  - [org.openapitools.server.models.ConversionEventsUserData](docs/ConversionEventsUserData.md)
- - [org.openapitools.server.models.ConversionEventsUserDataAnyOf](docs/ConversionEventsUserDataAnyOf.md)
- - [org.openapitools.server.models.ConversionEventsUserDataAnyOf1](docs/ConversionEventsUserDataAnyOf1.md)
- - [org.openapitools.server.models.ConversionEventsUserDataAnyOf2](docs/ConversionEventsUserDataAnyOf2.md)
+ - [org.openapitools.server.models.ConversionEventsUserDataProperties](docs/ConversionEventsUserDataProperties.md)
+ - [org.openapitools.server.models.ConversionHealthSelectionItem](docs/ConversionHealthSelectionItem.md)
+ - [org.openapitools.server.models.ConversionMSOTEvents](docs/ConversionMSOTEvents.md)
+ - [org.openapitools.server.models.ConversionProductReportRequest](docs/ConversionProductReportRequest.md)
+ - [org.openapitools.server.models.ConversionProductReportingColumn](docs/ConversionProductReportingColumn.md)
  - [org.openapitools.server.models.ConversionReportAttributionType](docs/ConversionReportAttributionType.md)
  - [org.openapitools.server.models.ConversionReportTimeType](docs/ConversionReportTimeType.md)
+ - [org.openapitools.server.models.ConversionTag](docs/ConversionTag.md)
  - [org.openapitools.server.models.ConversionTagCommon](docs/ConversionTagCommon.md)
  - [org.openapitools.server.models.ConversionTagConfigs](docs/ConversionTagConfigs.md)
  - [org.openapitools.server.models.ConversionTagCreate](docs/ConversionTagCreate.md)
  - [org.openapitools.server.models.ConversionTagListResponse](docs/ConversionTagListResponse.md)
  - [org.openapitools.server.models.ConversionTagResponse](docs/ConversionTagResponse.md)
  - [org.openapitools.server.models.ConversionTagType](docs/ConversionTagType.md)
+ - [org.openapitools.server.models.ConversionTagsList200Response](docs/ConversionTagsList200Response.md)
  - [org.openapitools.server.models.Country](docs/Country.md)
  - [org.openapitools.server.models.CountryFilter](docs/CountryFilter.md)
  - [org.openapitools.server.models.CreateAssetAccessRequestBody](docs/CreateAssetAccessRequestBody.md)
@@ -636,10 +712,20 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.CustomLabel2Filter](docs/CustomLabel2Filter.md)
  - [org.openapitools.server.models.CustomLabel3Filter](docs/CustomLabel3Filter.md)
  - [org.openapitools.server.models.CustomLabel4Filter](docs/CustomLabel4Filter.md)
+ - [org.openapitools.server.models.CustomNumber0Filter](docs/CustomNumber0Filter.md)
+ - [org.openapitools.server.models.CustomNumber1Filter](docs/CustomNumber1Filter.md)
+ - [org.openapitools.server.models.CustomNumber2Filter](docs/CustomNumber2Filter.md)
+ - [org.openapitools.server.models.CustomNumber3Filter](docs/CustomNumber3Filter.md)
+ - [org.openapitools.server.models.CustomNumber4Filter](docs/CustomNumber4Filter.md)
  - [org.openapitools.server.models.CustomerList](docs/CustomerList.md)
  - [org.openapitools.server.models.CustomerListRequest](docs/CustomerListRequest.md)
  - [org.openapitools.server.models.CustomerListUpdateRequest](docs/CustomerListUpdateRequest.md)
+ - [org.openapitools.server.models.CustomerListUpload](docs/CustomerListUpload.md)
+ - [org.openapitools.server.models.CustomerListUploadCreateRequest](docs/CustomerListUploadCreateRequest.md)
+ - [org.openapitools.server.models.CustomerListUploadCreateResponse](docs/CustomerListUploadCreateResponse.md)
+ - [org.openapitools.server.models.CustomerListUploadResponse](docs/CustomerListUploadResponse.md)
  - [org.openapitools.server.models.CustomerListsList200Response](docs/CustomerListsList200Response.md)
+ - [org.openapitools.server.models.CustomizableCTAType](docs/CustomizableCTAType.md)
  - [org.openapitools.server.models.DataOutputFormat](docs/DataOutputFormat.md)
  - [org.openapitools.server.models.DataStatus](docs/DataStatus.md)
  - [org.openapitools.server.models.DeleteAssetGroupBody](docs/DeleteAssetGroupBody.md)
@@ -660,10 +746,15 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.DeliveryMetricsResponse](docs/DeliveryMetricsResponse.md)
  - [org.openapitools.server.models.DeliveryMetricsResponseItemsInner](docs/DeliveryMetricsResponseItemsInner.md)
  - [org.openapitools.server.models.DetailedError](docs/DetailedError.md)
+ - [org.openapitools.server.models.DisclosureType](docs/DisclosureType.md)
  - [org.openapitools.server.models.EnhancedMatchStatusType](docs/EnhancedMatchStatusType.md)
  - [org.openapitools.server.models.EntityStatus](docs/EntityStatus.md)
  - [org.openapitools.server.models.Error](docs/Error.md)
+ - [org.openapitools.server.models.ErrorDetail](docs/ErrorDetail.md)
+ - [org.openapitools.server.models.EventData](docs/EventData.md)
+ - [org.openapitools.server.models.EventQualityScore](docs/EventQualityScore.md)
  - [org.openapitools.server.models.Exception](docs/Exception.md)
+ - [org.openapitools.server.models.FeaturedTrend](docs/FeaturedTrend.md)
  - [org.openapitools.server.models.FeedProcessingResultsList200Response](docs/FeedProcessingResultsList200Response.md)
  - [org.openapitools.server.models.FeedsCreateRequest](docs/FeedsCreateRequest.md)
  - [org.openapitools.server.models.FeedsList200Response](docs/FeedsList200Response.md)
@@ -671,10 +762,13 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.FollowUserRequest](docs/FollowUserRequest.md)
  - [org.openapitools.server.models.FollowersList200Response](docs/FollowersList200Response.md)
  - [org.openapitools.server.models.Gender](docs/Gender.md)
+ - [org.openapitools.server.models.GenderBucket](docs/GenderBucket.md)
+ - [org.openapitools.server.models.GenderDemographics](docs/GenderDemographics.md)
  - [org.openapitools.server.models.GenderFilter](docs/GenderFilter.md)
  - [org.openapitools.server.models.GetAudiencesOrderBy](docs/GetAudiencesOrderBy.md)
  - [org.openapitools.server.models.GetBusinessAssetTypeResponse](docs/GetBusinessAssetTypeResponse.md)
  - [org.openapitools.server.models.GetBusinessAssetsResponse](docs/GetBusinessAssetsResponse.md)
+ - [org.openapitools.server.models.GetBusinessAssetsResponseCatalogInfo](docs/GetBusinessAssetsResponseCatalogInfo.md)
  - [org.openapitools.server.models.GetBusinessEmployers200Response](docs/GetBusinessEmployers200Response.md)
  - [org.openapitools.server.models.GetBusinessMembers200Response](docs/GetBusinessMembers200Response.md)
  - [org.openapitools.server.models.GetBusinessPartners200Response](docs/GetBusinessPartners200Response.md)
@@ -693,9 +787,12 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.GridClickType](docs/GridClickType.md)
  - [org.openapitools.server.models.HotelIdFilter](docs/HotelIdFilter.md)
  - [org.openapitools.server.models.HotelProcessingRecord](docs/HotelProcessingRecord.md)
+ - [org.openapitools.server.models.ImageBase64](docs/ImageBase64.md)
  - [org.openapitools.server.models.ImageDetails](docs/ImageDetails.md)
  - [org.openapitools.server.models.ImageMetadata](docs/ImageMetadata.md)
- - [org.openapitools.server.models.ImageMetadataImages](docs/ImageMetadataImages.md)
+ - [org.openapitools.server.models.ImageSize](docs/ImageSize.md)
+ - [org.openapitools.server.models.IngestionSourceOptions](docs/IngestionSourceOptions.md)
+ - [org.openapitools.server.models.InnerProductCategoriesMetricsHighlights](docs/InnerProductCategoriesMetricsHighlights.md)
  - [org.openapitools.server.models.IntegrationLog](docs/IntegrationLog.md)
  - [org.openapitools.server.models.IntegrationLogClientError](docs/IntegrationLogClientError.md)
  - [org.openapitools.server.models.IntegrationLogClientRequest](docs/IntegrationLogClientRequest.md)
@@ -708,7 +805,9 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.IntegrationRequest](docs/IntegrationRequest.md)
  - [org.openapitools.server.models.IntegrationRequestPatch](docs/IntegrationRequestPatch.md)
  - [org.openapitools.server.models.IntegrationsGetList200Response](docs/IntegrationsGetList200Response.md)
+ - [org.openapitools.server.models.IntegrationsLogsPost400Response](docs/IntegrationsLogsPost400Response.md)
  - [org.openapitools.server.models.Interest](docs/Interest.md)
+ - [org.openapitools.server.models.InterestsEnum](docs/InterestsEnum.md)
  - [org.openapitools.server.models.InviteAssetsSummary](docs/InviteAssetsSummary.md)
  - [org.openapitools.server.models.InviteAssetsSummaryAdAccountsInner](docs/InviteAssetsSummaryAdAccountsInner.md)
  - [org.openapitools.server.models.InviteAssetsSummaryProfilesInner](docs/InviteAssetsSummaryProfilesInner.md)
@@ -729,8 +828,8 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.ItemProcessingRecord](docs/ItemProcessingRecord.md)
  - [org.openapitools.server.models.ItemProcessingStatus](docs/ItemProcessingStatus.md)
  - [org.openapitools.server.models.ItemResponse](docs/ItemResponse.md)
- - [org.openapitools.server.models.ItemResponseAnyOf](docs/ItemResponseAnyOf.md)
- - [org.openapitools.server.models.ItemResponseAnyOf1](docs/ItemResponseAnyOf1.md)
+ - [org.openapitools.server.models.ItemResponseOneOf](docs/ItemResponseOneOf.md)
+ - [org.openapitools.server.models.ItemResponseOneOf1](docs/ItemResponseOneOf1.md)
  - [org.openapitools.server.models.ItemUpdateBatchRecord](docs/ItemUpdateBatchRecord.md)
  - [org.openapitools.server.models.ItemUpsertBatchRecord](docs/ItemUpsertBatchRecord.md)
  - [org.openapitools.server.models.ItemValidationEvent](docs/ItemValidationEvent.md)
@@ -747,6 +846,18 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.KeywordsMetricsArrayResponse](docs/KeywordsMetricsArrayResponse.md)
  - [org.openapitools.server.models.KeywordsRequest](docs/KeywordsRequest.md)
  - [org.openapitools.server.models.KeywordsResponse](docs/KeywordsResponse.md)
+ - [org.openapitools.server.models.Label](docs/Label.md)
+ - [org.openapitools.server.models.LabelBulkUpdateRequest](docs/LabelBulkUpdateRequest.md)
+ - [org.openapitools.server.models.LabelCreateRequest](docs/LabelCreateRequest.md)
+ - [org.openapitools.server.models.LabelCreateRequestLabelsInner](docs/LabelCreateRequestLabelsInner.md)
+ - [org.openapitools.server.models.LabelError](docs/LabelError.md)
+ - [org.openapitools.server.models.LabelParentType](docs/LabelParentType.md)
+ - [org.openapitools.server.models.LabelStatus](docs/LabelStatus.md)
+ - [org.openapitools.server.models.LabelType](docs/LabelType.md)
+ - [org.openapitools.server.models.LabelUpdateRequest](docs/LabelUpdateRequest.md)
+ - [org.openapitools.server.models.LabelUpdateRequestLabelsInner](docs/LabelUpdateRequestLabelsInner.md)
+ - [org.openapitools.server.models.LabelsList200Response](docs/LabelsList200Response.md)
+ - [org.openapitools.server.models.LabelsResponse](docs/LabelsResponse.md)
  - [org.openapitools.server.models.Language](docs/Language.md)
  - [org.openapitools.server.models.LeadFormArrayResponse](docs/LeadFormArrayResponse.md)
  - [org.openapitools.server.models.LeadFormArrayResponseItemsInner](docs/LeadFormArrayResponseItemsInner.md)
@@ -762,24 +873,29 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.LeadFormTestResponse](docs/LeadFormTestResponse.md)
  - [org.openapitools.server.models.LeadFormUpdateRequest](docs/LeadFormUpdateRequest.md)
  - [org.openapitools.server.models.LeadFormsList200Response](docs/LeadFormsList200Response.md)
+ - [org.openapitools.server.models.LeadSubscription](docs/LeadSubscription.md)
+ - [org.openapitools.server.models.LeadSubscriptionPostParamsCreate](docs/LeadSubscriptionPostParamsCreate.md)
+ - [org.openapitools.server.models.LeadSubscriptionPostParamsCreateAllOfPartnerMetadata](docs/LeadSubscriptionPostParamsCreateAllOfPartnerMetadata.md)
  - [org.openapitools.server.models.LeadsExportCreateRequest](docs/LeadsExportCreateRequest.md)
  - [org.openapitools.server.models.LeadsExportCreateResponse](docs/LeadsExportCreateResponse.md)
  - [org.openapitools.server.models.LeadsExportResponseData](docs/LeadsExportResponseData.md)
  - [org.openapitools.server.models.LeadsExportStatus](docs/LeadsExportStatus.md)
  - [org.openapitools.server.models.LineItem](docs/LineItem.md)
  - [org.openapitools.server.models.LinkedBusiness](docs/LinkedBusiness.md)
+ - [org.openapitools.server.models.LocalStoreUpdate](docs/LocalStoreUpdate.md)
+ - [org.openapitools.server.models.LookbackPeriodOptions](docs/LookbackPeriodOptions.md)
  - [org.openapitools.server.models.MMMReportingColumn](docs/MMMReportingColumn.md)
  - [org.openapitools.server.models.MMMReportingTargetingType](docs/MMMReportingTargetingType.md)
  - [org.openapitools.server.models.MatchType](docs/MatchType.md)
  - [org.openapitools.server.models.MatchTypeResponse](docs/MatchTypeResponse.md)
  - [org.openapitools.server.models.MaxPriceFilter](docs/MaxPriceFilter.md)
+ - [org.openapitools.server.models.Media](docs/Media.md)
  - [org.openapitools.server.models.MediaList200Response](docs/MediaList200Response.md)
  - [org.openapitools.server.models.MediaType](docs/MediaType.md)
  - [org.openapitools.server.models.MediaTypeFilter](docs/MediaTypeFilter.md)
  - [org.openapitools.server.models.MediaUpload](docs/MediaUpload.md)
- - [org.openapitools.server.models.MediaUploadAllOfUploadParameters](docs/MediaUploadAllOfUploadParameters.md)
- - [org.openapitools.server.models.MediaUploadDetails](docs/MediaUploadDetails.md)
- - [org.openapitools.server.models.MediaUploadRequest](docs/MediaUploadRequest.md)
+ - [org.openapitools.server.models.MediaUploadCreate](docs/MediaUploadCreate.md)
+ - [org.openapitools.server.models.MediaUploadParameters](docs/MediaUploadParameters.md)
  - [org.openapitools.server.models.MediaUploadStatus](docs/MediaUploadStatus.md)
  - [org.openapitools.server.models.MediaUploadType](docs/MediaUploadType.md)
  - [org.openapitools.server.models.MemberBusinessRole](docs/MemberBusinessRole.md)
@@ -789,8 +905,11 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.MetricsResponse](docs/MetricsResponse.md)
  - [org.openapitools.server.models.MinPriceFilter](docs/MinPriceFilter.md)
  - [org.openapitools.server.models.MultipleProductGroupsInner](docs/MultipleProductGroupsInner.md)
+ - [org.openapitools.server.models.NonDraftEntityStatus](docs/NonDraftEntityStatus.md)
  - [org.openapitools.server.models.NonNullableCatalogsCurrency](docs/NonNullableCatalogsCurrency.md)
  - [org.openapitools.server.models.NonNullableProductAvailabilityType](docs/NonNullableProductAvailabilityType.md)
+ - [org.openapitools.server.models.NotificationPostRequest](docs/NotificationPostRequest.md)
+ - [org.openapitools.server.models.NotificationResponse](docs/NotificationResponse.md)
  - [org.openapitools.server.models.NullableCatalogsItemFieldType](docs/NullableCatalogsItemFieldType.md)
  - [org.openapitools.server.models.NullableCurrency](docs/NullableCurrency.md)
  - [org.openapitools.server.models.OauthAccessTokenRequestClientCredentials](docs/OauthAccessTokenRequestClientCredentials.md)
@@ -799,7 +918,6 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.OauthAccessTokenResponse](docs/OauthAccessTokenResponse.md)
  - [org.openapitools.server.models.OauthAccessTokenResponseClientCredentials](docs/OauthAccessTokenResponseClientCredentials.md)
  - [org.openapitools.server.models.OauthAccessTokenResponseCode](docs/OauthAccessTokenResponseCode.md)
- - [org.openapitools.server.models.OauthAccessTokenResponseEverlastingRefresh](docs/OauthAccessTokenResponseEverlastingRefresh.md)
  - [org.openapitools.server.models.OauthAccessTokenResponseIntegrationRefresh](docs/OauthAccessTokenResponseIntegrationRefresh.md)
  - [org.openapitools.server.models.OauthAccessTokenResponseRefresh](docs/OauthAccessTokenResponseRefresh.md)
  - [org.openapitools.server.models.ObjectiveType](docs/ObjectiveType.md)
@@ -818,6 +936,7 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.OrderLines](docs/OrderLines.md)
  - [org.openapitools.server.models.OrderLinesArrayResponse](docs/OrderLinesArrayResponse.md)
  - [org.openapitools.server.models.OrderLinesList200Response](docs/OrderLinesList200Response.md)
+ - [org.openapitools.server.models.OverallStatusOptions](docs/OverallStatusOptions.md)
  - [org.openapitools.server.models.PacingDeliveryType](docs/PacingDeliveryType.md)
  - [org.openapitools.server.models.PageVisitConversionTagsGet200Response](docs/PageVisitConversionTagsGet200Response.md)
  - [org.openapitools.server.models.Paginated](docs/Paginated.md)
@@ -834,33 +953,39 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.PinMediaSourceImageBase64](docs/PinMediaSourceImageBase64.md)
  - [org.openapitools.server.models.PinMediaSourceImageURL](docs/PinMediaSourceImageURL.md)
  - [org.openapitools.server.models.PinMediaSourceImagesBase64](docs/PinMediaSourceImagesBase64.md)
- - [org.openapitools.server.models.PinMediaSourceImagesBase64ItemsInner](docs/PinMediaSourceImagesBase64ItemsInner.md)
+ - [org.openapitools.server.models.PinMediaSourceImagesBase64Item](docs/PinMediaSourceImagesBase64Item.md)
  - [org.openapitools.server.models.PinMediaSourceImagesURL](docs/PinMediaSourceImagesURL.md)
- - [org.openapitools.server.models.PinMediaSourceImagesURLItemsInner](docs/PinMediaSourceImagesURLItemsInner.md)
+ - [org.openapitools.server.models.PinMediaSourceImagesURLItem](docs/PinMediaSourceImagesURLItem.md)
  - [org.openapitools.server.models.PinMediaSourcePinURL](docs/PinMediaSourcePinURL.md)
  - [org.openapitools.server.models.PinMediaSourceVideoID](docs/PinMediaSourceVideoID.md)
  - [org.openapitools.server.models.PinMediaWithImage](docs/PinMediaWithImage.md)
- - [org.openapitools.server.models.PinMediaWithImageAllOfImages](docs/PinMediaWithImageAllOfImages.md)
  - [org.openapitools.server.models.PinMediaWithImageAndVideo](docs/PinMediaWithImageAndVideo.md)
  - [org.openapitools.server.models.PinMediaWithImages](docs/PinMediaWithImages.md)
  - [org.openapitools.server.models.PinMediaWithVideo](docs/PinMediaWithVideo.md)
  - [org.openapitools.server.models.PinMediaWithVideos](docs/PinMediaWithVideos.md)
  - [org.openapitools.server.models.PinPromotionSummaryStatus](docs/PinPromotionSummaryStatus.md)
  - [org.openapitools.server.models.PinUpdate](docs/PinUpdate.md)
- - [org.openapitools.server.models.PinUpdateCarouselSlotsInner](docs/PinUpdateCarouselSlotsInner.md)
  - [org.openapitools.server.models.PinsList200Response](docs/PinsList200Response.md)
  - [org.openapitools.server.models.PinsSaveRequest](docs/PinsSaveRequest.md)
- - [org.openapitools.server.models.PinterestTagEventData](docs/PinterestTagEventData.md)
+ - [org.openapitools.server.models.PinterestLibError](docs/PinterestLibError.md)
+ - [org.openapitools.server.models.PinterestLibPaginationOrder](docs/PinterestLibPaginationOrder.md)
+ - [org.openapitools.server.models.PinterestLibStatus204](docs/PinterestLibStatus204.md)
  - [org.openapitools.server.models.PlacementGroupType](docs/PlacementGroupType.md)
  - [org.openapitools.server.models.PlacementMultipliers](docs/PlacementMultipliers.md)
+ - [org.openapitools.server.models.PredictedTimeSeries](docs/PredictedTimeSeries.md)
  - [org.openapitools.server.models.PriceFilter](docs/PriceFilter.md)
  - [org.openapitools.server.models.ProductAvailabilityType](docs/ProductAvailabilityType.md)
+ - [org.openapitools.server.models.ProductCategoriesDemographic](docs/ProductCategoriesDemographic.md)
+ - [org.openapitools.server.models.ProductCategoriesEngagementType](docs/ProductCategoriesEngagementType.md)
+ - [org.openapitools.server.models.ProductCategoriesMetricsHighlights](docs/ProductCategoriesMetricsHighlights.md)
+ - [org.openapitools.server.models.ProductCategoryDetailLookbackWindow](docs/ProductCategoryDetailLookbackWindow.md)
+ - [org.openapitools.server.models.ProductCategoryDetails](docs/ProductCategoryDetails.md)
+ - [org.openapitools.server.models.ProductCategoryEnum](docs/ProductCategoryEnum.md)
+ - [org.openapitools.server.models.ProductCategoryRegion](docs/ProductCategoryRegion.md)
  - [org.openapitools.server.models.ProductGroupAnalyticsResponseInner](docs/ProductGroupAnalyticsResponseInner.md)
  - [org.openapitools.server.models.ProductGroupPromotion](docs/ProductGroupPromotion.md)
  - [org.openapitools.server.models.ProductGroupPromotionCreateRequest](docs/ProductGroupPromotionCreateRequest.md)
- - [org.openapitools.server.models.ProductGroupPromotionCreateRequestElement](docs/ProductGroupPromotionCreateRequestElement.md)
  - [org.openapitools.server.models.ProductGroupPromotionResponse](docs/ProductGroupPromotionResponse.md)
- - [org.openapitools.server.models.ProductGroupPromotionResponseElement](docs/ProductGroupPromotionResponseElement.md)
  - [org.openapitools.server.models.ProductGroupPromotionResponseItem](docs/ProductGroupPromotionResponseItem.md)
  - [org.openapitools.server.models.ProductGroupPromotionUpdateRequest](docs/ProductGroupPromotionUpdateRequest.md)
  - [org.openapitools.server.models.ProductGroupPromotionsList200Response](docs/ProductGroupPromotionsList200Response.md)
@@ -871,17 +996,34 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.ProductType2Filter](docs/ProductType2Filter.md)
  - [org.openapitools.server.models.ProductType3Filter](docs/ProductType3Filter.md)
  - [org.openapitools.server.models.ProductType4Filter](docs/ProductType4Filter.md)
+ - [org.openapitools.server.models.PromotionArrayElement](docs/PromotionArrayElement.md)
+ - [org.openapitools.server.models.PromotionCommon](docs/PromotionCommon.md)
+ - [org.openapitools.server.models.PromotionCreateRequest](docs/PromotionCreateRequest.md)
+ - [org.openapitools.server.models.PromotionResponse](docs/PromotionResponse.md)
+ - [org.openapitools.server.models.PromotionTemplateValue](docs/PromotionTemplateValue.md)
+ - [org.openapitools.server.models.PromotionType](docs/PromotionType.md)
+ - [org.openapitools.server.models.PromotionUpdateRequest](docs/PromotionUpdateRequest.md)
+ - [org.openapitools.server.models.PromotionsList200Response](docs/PromotionsList200Response.md)
+ - [org.openapitools.server.models.PromotionsResponse](docs/PromotionsResponse.md)
+ - [org.openapitools.server.models.QualityComponentDetails](docs/QualityComponentDetails.md)
+ - [org.openapitools.server.models.QualityComponentIssue](docs/QualityComponentIssue.md)
+ - [org.openapitools.server.models.QualityComponents](docs/QualityComponents.md)
  - [org.openapitools.server.models.QuizPinData](docs/QuizPinData.md)
  - [org.openapitools.server.models.QuizPinOption](docs/QuizPinOption.md)
  - [org.openapitools.server.models.QuizPinQuestion](docs/QuizPinQuestion.md)
  - [org.openapitools.server.models.QuizPinResult](docs/QuizPinResult.md)
+ - [org.openapitools.server.models.RecordCounts](docs/RecordCounts.md)
  - [org.openapitools.server.models.RelatedTerms](docs/RelatedTerms.md)
  - [org.openapitools.server.models.RelatedTermsRelatedTermsListInner](docs/RelatedTermsRelatedTermsListInner.md)
  - [org.openapitools.server.models.ReportingColumnAsync](docs/ReportingColumnAsync.md)
+ - [org.openapitools.server.models.ReportingTimeZone](docs/ReportingTimeZone.md)
  - [org.openapitools.server.models.ReportsStats200Response](docs/ReportsStats200Response.md)
+ - [org.openapitools.server.models.ReportsStatsParametersParameter](docs/ReportsStatsParametersParameter.md)
  - [org.openapitools.server.models.RespondToInvitesResponseArray](docs/RespondToInvitesResponseArray.md)
  - [org.openapitools.server.models.RespondToInvitesResponseArrayItemsInner](docs/RespondToInvitesResponseArrayItemsInner.md)
  - [org.openapitools.server.models.Role](docs/Role.md)
+ - [org.openapitools.server.models.S3FilePart](docs/S3FilePart.md)
+ - [org.openapitools.server.models.S3MultipartUploadData](docs/S3MultipartUploadData.md)
  - [org.openapitools.server.models.SSIOAccountAddress](docs/SSIOAccountAddress.md)
  - [org.openapitools.server.models.SSIOAccountItem](docs/SSIOAccountItem.md)
  - [org.openapitools.server.models.SSIOAccountPMPName](docs/SSIOAccountPMPName.md)
@@ -896,19 +1038,31 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.SSIOOrderLine](docs/SSIOOrderLine.md)
  - [org.openapitools.server.models.SearchPartnerPins200Response](docs/SearchPartnerPins200Response.md)
  - [org.openapitools.server.models.SearchUserBoardsGet200Response](docs/SearchUserBoardsGet200Response.md)
+ - [org.openapitools.server.models.SearchUserPinsList200Response](docs/SearchUserPinsList200Response.md)
  - [org.openapitools.server.models.SharedAudience](docs/SharedAudience.md)
  - [org.openapitools.server.models.SharedAudienceAccount](docs/SharedAudienceAccount.md)
  - [org.openapitools.server.models.SharedAudienceCommon](docs/SharedAudienceCommon.md)
  - [org.openapitools.server.models.SharedAudienceResponse](docs/SharedAudienceResponse.md)
  - [org.openapitools.server.models.SharedAudienceResponseCommon](docs/SharedAudienceResponseCommon.md)
  - [org.openapitools.server.models.SingleInterestTargetingOptionResponse](docs/SingleInterestTargetingOptionResponse.md)
+ - [org.openapitools.server.models.SourcePlatformOptions](docs/SourcePlatformOptions.md)
  - [org.openapitools.server.models.SsioInsertionOrdersStatusGetByAdAccount200Response](docs/SsioInsertionOrdersStatusGetByAdAccount200Response.md)
  - [org.openapitools.server.models.SsioOrderLinesGetByAdAccount200Response](docs/SsioOrderLinesGetByAdAccount200Response.md)
  - [org.openapitools.server.models.SummaryPin](docs/SummaryPin.md)
+ - [org.openapitools.server.models.SystemUserUpdateRequest](docs/SystemUserUpdateRequest.md)
  - [org.openapitools.server.models.TargetingAdvertiserCountry](docs/TargetingAdvertiserCountry.md)
  - [org.openapitools.server.models.TargetingSpec](docs/TargetingSpec.md)
+ - [org.openapitools.server.models.TargetingSpecAgeBucket](docs/TargetingSpecAgeBucket.md)
  - [org.openapitools.server.models.TargetingSpecAppType](docs/TargetingSpecAppType.md)
- - [org.openapitools.server.models.TargetingSpecSHOPPINGRETARGETING](docs/TargetingSpecSHOPPINGRETARGETING.md)
+ - [org.openapitools.server.models.TargetingSpecGender](docs/TargetingSpecGender.md)
+ - [org.openapitools.server.models.TargetingSpecOperationAgeBucket](docs/TargetingSpecOperationAgeBucket.md)
+ - [org.openapitools.server.models.TargetingSpecOperationAppType](docs/TargetingSpecOperationAppType.md)
+ - [org.openapitools.server.models.TargetingSpecOperationGender](docs/TargetingSpecOperationGender.md)
+ - [org.openapitools.server.models.TargetingSpecOperationList](docs/TargetingSpecOperationList.md)
+ - [org.openapitools.server.models.TargetingSpecOperationMinMaxAge](docs/TargetingSpecOperationMinMaxAge.md)
+ - [org.openapitools.server.models.TargetingSpecOperationShoppingRetargeting](docs/TargetingSpecOperationShoppingRetargeting.md)
+ - [org.openapitools.server.models.TargetingSpecOperationString](docs/TargetingSpecOperationString.md)
+ - [org.openapitools.server.models.TargetingSpecShoppingRetargeting](docs/TargetingSpecShoppingRetargeting.md)
  - [org.openapitools.server.models.TargetingTemplateAudienceSizing](docs/TargetingTemplateAudienceSizing.md)
  - [org.openapitools.server.models.TargetingTemplateAudienceSizingReachEstimate](docs/TargetingTemplateAudienceSizingReachEstimate.md)
  - [org.openapitools.server.models.TargetingTemplateCommon](docs/TargetingTemplateCommon.md)
@@ -919,6 +1073,7 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.TargetingTemplateResponseData](docs/TargetingTemplateResponseData.md)
  - [org.openapitools.server.models.TargetingTemplateUpdateRequest](docs/TargetingTemplateUpdateRequest.md)
  - [org.openapitools.server.models.TargetingTypeFilter](docs/TargetingTypeFilter.md)
+ - [org.openapitools.server.models.TemplateBasedReport](docs/TemplateBasedReport.md)
  - [org.openapitools.server.models.TemplateResponse](docs/TemplateResponse.md)
  - [org.openapitools.server.models.TemplateResponseDateRange](docs/TemplateResponseDateRange.md)
  - [org.openapitools.server.models.TemplateResponseDateRangeAbsoluteDateRange](docs/TemplateResponseDateRangeAbsoluteDateRange.md)
@@ -926,6 +1081,8 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.TemplateResponseDateRangeRelativeDateRange](docs/TemplateResponseDateRangeRelativeDateRange.md)
  - [org.openapitools.server.models.TemplatesList200Response](docs/TemplatesList200Response.md)
  - [org.openapitools.server.models.TermsOfService](docs/TermsOfService.md)
+ - [org.openapitools.server.models.TimeSeries](docs/TimeSeries.md)
+ - [org.openapitools.server.models.TitleKeywordsFilter](docs/TitleKeywordsFilter.md)
  - [org.openapitools.server.models.TopPinsAnalyticsResponse](docs/TopPinsAnalyticsResponse.md)
  - [org.openapitools.server.models.TopPinsAnalyticsResponseDateAvailability](docs/TopPinsAnalyticsResponseDateAvailability.md)
  - [org.openapitools.server.models.TopPinsAnalyticsResponsePinsInner](docs/TopPinsAnalyticsResponsePinsInner.md)
@@ -933,11 +1090,17 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.TopVideoPinsAnalyticsResponsePinsInner](docs/TopVideoPinsAnalyticsResponsePinsInner.md)
  - [org.openapitools.server.models.TrackingUrls](docs/TrackingUrls.md)
  - [org.openapitools.server.models.TrendType](docs/TrendType.md)
+ - [org.openapitools.server.models.TrendingKeyword](docs/TrendingKeyword.md)
+ - [org.openapitools.server.models.TrendingKeywordDemographics](docs/TrendingKeywordDemographics.md)
+ - [org.openapitools.server.models.TrendingKeywordDemographicsAgeDistribution](docs/TrendingKeywordDemographicsAgeDistribution.md)
+ - [org.openapitools.server.models.TrendingKeywordDemographicsGenderDistribution](docs/TrendingKeywordDemographicsGenderDistribution.md)
  - [org.openapitools.server.models.TrendingKeywordsResponse](docs/TrendingKeywordsResponse.md)
- - [org.openapitools.server.models.TrendingKeywordsResponseTrendsInner](docs/TrendingKeywordsResponseTrendsInner.md)
- - [org.openapitools.server.models.TrendingKeywordsResponseTrendsInnerTimeSeries](docs/TrendingKeywordsResponseTrendsInnerTimeSeries.md)
+ - [org.openapitools.server.models.TrendingPin](docs/TrendingPin.md)
+ - [org.openapitools.server.models.TrendingProductCategory](docs/TrendingProductCategory.md)
+ - [org.openapitools.server.models.TrendingTopic](docs/TrendingTopic.md)
  - [org.openapitools.server.models.TrendsSupportedRegion](docs/TrendsSupportedRegion.md)
  - [org.openapitools.server.models.UpdatableItemAttributes](docs/UpdatableItemAttributes.md)
+ - [org.openapitools.server.models.UpdatableItemAttributesGtin](docs/UpdatableItemAttributesGtin.md)
  - [org.openapitools.server.models.UpdateAssetGroupBody](docs/UpdateAssetGroupBody.md)
  - [org.openapitools.server.models.UpdateAssetGroupBodyAssetGroupsToUpdateInner](docs/UpdateAssetGroupBodyAssetGroupsToUpdateInner.md)
  - [org.openapitools.server.models.UpdateAssetGroupResponse](docs/UpdateAssetGroupResponse.md)
@@ -972,7 +1135,8 @@ Class | Method | HTTP request | Description
  - [org.openapitools.server.models.UserWebsiteVerifyRequest](docs/UserWebsiteVerifyRequest.md)
  - [org.openapitools.server.models.UserWebsitesGet200Response](docs/UserWebsitesGet200Response.md)
  - [org.openapitools.server.models.UsersForIndividualAssetResponse](docs/UsersForIndividualAssetResponse.md)
- - [org.openapitools.server.models.VideoMetadata](docs/VideoMetadata.md)
+ - [org.openapitools.server.models.VerticalProductCategory](docs/VerticalProductCategory.md)
+ - [org.openapitools.server.models.VideoMetadataWithItemType](docs/VideoMetadataWithItemType.md)
 
 
 <a id="documentation-for-authorization"></a>
@@ -999,6 +1163,7 @@ Authentication schemes defined for the API:
   - boards:write_secret: Create, update, or delete your secret boards
   - catalogs:read: See all of your catalogs data
   - catalogs:write: Create, update, or delete your catalogs data
+  - msot:write: Create measurement source of truth events
   - pins:read: See your public Pins
   - pins:read_secret: See your secret Pins
   - pins:write: Create, update, or delete your public Pins
@@ -1035,6 +1200,7 @@ Authentication schemes defined for the API:
   - boards:write_secret: Create, update, or delete your secret boards
   - catalogs:read: See all of your catalogs data
   - catalogs:write: Create, update, or delete your catalogs data
+  - msot:write: Create measurement source of truth events
   - pins:read: See your public Pins
   - pins:read_secret: See your secret Pins
   - pins:write: Create, update, or delete your public Pins

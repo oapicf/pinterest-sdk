@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ItemId** | Pointer to **string** | The catalog item id in the merchant namespace | [optional] 
 **Attributes** | Pointer to [**UpdatableItemAttributes**](UpdatableItemAttributes.md) |  | [optional] 
+**ItemId** | Pointer to **string** | The catalog item id in the merchant namespace | [optional] 
 **UpdateMask** | Pointer to [**[]UpdateMaskFieldType**](UpdateMaskFieldType.md) | The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item. | [optional] 
 
 ## Methods
@@ -26,31 +26,6 @@ will change when the set of required properties is changed
 NewItemUpdateBatchRecordWithDefaults instantiates a new ItemUpdateBatchRecord object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetItemId
-
-`func (o *ItemUpdateBatchRecord) GetItemId() string`
-
-GetItemId returns the ItemId field if non-nil, zero value otherwise.
-
-### GetItemIdOk
-
-`func (o *ItemUpdateBatchRecord) GetItemIdOk() (*string, bool)`
-
-GetItemIdOk returns a tuple with the ItemId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetItemId
-
-`func (o *ItemUpdateBatchRecord) SetItemId(v string)`
-
-SetItemId sets ItemId field to given value.
-
-### HasItemId
-
-`func (o *ItemUpdateBatchRecord) HasItemId() bool`
-
-HasItemId returns a boolean if a field has been set.
 
 ### GetAttributes
 
@@ -76,6 +51,31 @@ SetAttributes sets Attributes field to given value.
 `func (o *ItemUpdateBatchRecord) HasAttributes() bool`
 
 HasAttributes returns a boolean if a field has been set.
+
+### GetItemId
+
+`func (o *ItemUpdateBatchRecord) GetItemId() string`
+
+GetItemId returns the ItemId field if non-nil, zero value otherwise.
+
+### GetItemIdOk
+
+`func (o *ItemUpdateBatchRecord) GetItemIdOk() (*string, bool)`
+
+GetItemIdOk returns a tuple with the ItemId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemId
+
+`func (o *ItemUpdateBatchRecord) SetItemId(v string)`
+
+SetItemId sets ItemId field to given value.
+
+### HasItemId
+
+`func (o *ItemUpdateBatchRecord) HasItemId() bool`
+
+HasItemId returns a boolean if a field has been set.
 
 ### GetUpdateMask
 

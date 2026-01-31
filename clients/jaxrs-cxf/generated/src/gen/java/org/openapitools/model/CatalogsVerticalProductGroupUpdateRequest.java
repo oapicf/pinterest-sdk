@@ -71,7 +71,9 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 
   @ApiModelProperty(value = "")
 
-  private String name;
+  @Valid
+
+  private Country country;
 
   @ApiModelProperty(value = "")
 
@@ -87,13 +89,11 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 
   @Valid
 
-  private Country country;
+  private CatalogsLocale locale;
 
   @ApiModelProperty(value = "")
 
-  @Valid
-
-  private CatalogsLocale locale;
+  private String name;
  /**
    * Get catalogType
    * @return catalogType
@@ -116,20 +116,20 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
   }
 
  /**
-   * Get name
-   * @return name
+   * Get country
+   * @return country
   **/
-  @JsonProperty("name")
-  public String getName() {
-    return name;
+  @JsonProperty("country")
+  public Country getCountry() {
+    return country;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setCountry(Country country) {
+    this.country = country;
   }
 
-  public CatalogsVerticalProductGroupUpdateRequest name(String name) {
-    this.name = name;
+  public CatalogsVerticalProductGroupUpdateRequest country(Country country) {
+    this.country = country;
     return this;
   }
 
@@ -170,24 +170,6 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
   }
 
  /**
-   * Get country
-   * @return country
-  **/
-  @JsonProperty("country")
-  public Country getCountry() {
-    return country;
-  }
-
-  public void setCountry(Country country) {
-    this.country = country;
-  }
-
-  public CatalogsVerticalProductGroupUpdateRequest country(Country country) {
-    this.country = country;
-    return this;
-  }
-
- /**
    * Get locale
    * @return locale
   **/
@@ -205,6 +187,24 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
     return this;
   }
 
+ /**
+   * Get name
+   * @return name
+  **/
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public CatalogsVerticalProductGroupUpdateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -215,16 +215,16 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
     }
     CatalogsVerticalProductGroupUpdateRequest catalogsVerticalProductGroupUpdateRequest = (CatalogsVerticalProductGroupUpdateRequest) o;
     return Objects.equals(this.catalogType, catalogsVerticalProductGroupUpdateRequest.catalogType) &&
-        Objects.equals(this.name, catalogsVerticalProductGroupUpdateRequest.name) &&
+        Objects.equals(this.country, catalogsVerticalProductGroupUpdateRequest.country) &&
         Objects.equals(this.description, catalogsVerticalProductGroupUpdateRequest.description) &&
         Objects.equals(this.filters, catalogsVerticalProductGroupUpdateRequest.filters) &&
-        Objects.equals(this.country, catalogsVerticalProductGroupUpdateRequest.country) &&
-        Objects.equals(this.locale, catalogsVerticalProductGroupUpdateRequest.locale);
+        Objects.equals(this.locale, catalogsVerticalProductGroupUpdateRequest.locale) &&
+        Objects.equals(this.name, catalogsVerticalProductGroupUpdateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters, country, locale);
+    return Objects.hash(catalogType, country, description, filters, locale, name);
   }
 
   @Override
@@ -233,11 +233,11 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
     sb.append("class CatalogsVerticalProductGroupUpdateRequest {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

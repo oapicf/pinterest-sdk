@@ -3,14 +3,14 @@ package org.openapitools.client.model
 
 
 case class SearchPartnerPins200Response (
-    _items: List[SummaryPin],
-    _bookmark: Option[String]
+    _bookmark: Option[String],
+    _items: List[SummaryPin]
 )
 object SearchPartnerPins200Response {
-    def toStringBody(var_items: Object, var_bookmark: Object) =
+    def toStringBody(var_bookmark: Object, var_items: Object) =
         s"""
         | {
-        | "items":$var_items,"bookmark":$var_bookmark
+        | "bookmark":$var_bookmark,"items":$var_items
         | }
         """.stripMargin
 }

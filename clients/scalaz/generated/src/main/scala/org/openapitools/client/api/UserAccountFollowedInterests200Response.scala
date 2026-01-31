@@ -12,8 +12,8 @@ import org.joda.time.DateTime
 import UserAccountFollowedInterests200Response._
 
 case class UserAccountFollowedInterests200Response (
-  items: List[Interest],
-bookmark: Option[String])
+  bookmark: Option[String],
+items: List[Interest])
 
 object UserAccountFollowedInterests200Response {
   import DateTimeCodecs._

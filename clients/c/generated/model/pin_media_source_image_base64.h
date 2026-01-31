@@ -1,7 +1,7 @@
 /*
  * pin_media_source_image_base64.h
  *
- * Base64-encoded image media source
+ * Image Base64-based media source.
  */
 
 #ifndef _pin_media_source_image_base64_H_
@@ -15,6 +15,7 @@
 
 typedef struct pin_media_source_image_base64_t pin_media_source_image_base64_t;
 
+#include "content_type.h"
 
 // Enum SOURCETYPE for pin_media_source_image_base64
 
@@ -24,30 +25,22 @@ char* pin_media_source_image_base64_source_type_ToString(pinterest_rest_api_pin_
 
 pinterest_rest_api_pin_media_source_image_base64_SOURCETYPE_e pin_media_source_image_base64_source_type_FromString(char* source_type);
 
-// Enum CONTENTTYPE for pin_media_source_image_base64
-
-typedef enum  { pinterest_rest_api_pin_media_source_image_base64_CONTENTTYPE_NULL = 0, pinterest_rest_api_pin_media_source_image_base64_CONTENTTYPE_image/jpeg, pinterest_rest_api_pin_media_source_image_base64_CONTENTTYPE_image/png } pinterest_rest_api_pin_media_source_image_base64_CONTENTTYPE_e;
-
-char* pin_media_source_image_base64_content_type_ToString(pinterest_rest_api_pin_media_source_image_base64_CONTENTTYPE_e content_type);
-
-pinterest_rest_api_pin_media_source_image_base64_CONTENTTYPE_e pin_media_source_image_base64_content_type_FromString(char* content_type);
-
 
 
 typedef struct pin_media_source_image_base64_t {
-    pinterest_rest_api_pin_media_source_image_base64_SOURCETYPE_e source_type; //enum
-    pinterest_rest_api_pin_media_source_image_base64_CONTENTTYPE_e content_type; //enum
+    pinterest_rest_api_content_type__e content_type; //referenced enum
     char *data; // string
     int is_standard; //boolean
+    pinterest_rest_api_pin_media_source_image_base64_SOURCETYPE_e source_type; //enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } pin_media_source_image_base64_t;
 
 __attribute__((deprecated)) pin_media_source_image_base64_t *pin_media_source_image_base64_create(
-    pinterest_rest_api_pin_media_source_image_base64_SOURCETYPE_e source_type,
-    pinterest_rest_api_pin_media_source_image_base64_CONTENTTYPE_e content_type,
+    pinterest_rest_api_content_type__e content_type,
     char *data,
-    int is_standard
+    int is_standard,
+    pinterest_rest_api_pin_media_source_image_base64_SOURCETYPE_e source_type
 );
 
 void pin_media_source_image_base64_free(pin_media_source_image_base64_t *pin_media_source_image_base64);

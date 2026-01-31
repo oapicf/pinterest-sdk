@@ -7,9 +7,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { AnyOf } from './anyOf';
 import { CatalogsProductGroupFilterKeys } from './catalogsProductGroupFilterKeys';
-import { CatalogsProductGroupFiltersRequestAnyOf } from './catalogsProductGroupFiltersRequestAnyOf';
-import { CatalogsProductGroupFiltersRequestAnyOf1 } from './catalogsProductGroupFiltersRequestAnyOf1';
+import { AllOf } from './allOf';
 
 
 /**

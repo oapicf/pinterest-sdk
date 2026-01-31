@@ -4,13 +4,160 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**brandAccountsCreate**](BusinessAccessRelationshipsApi.md#brandAccountsCreate) | **POST** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts | Create a Brand Account
+[**brandAccountsUpdate**](BusinessAccessRelationshipsApi.md#brandAccountsUpdate) | **PATCH** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id} | Update a Brand Account
 [**deleteBusinessMembership**](BusinessAccessRelationshipsApi.md#deleteBusinessMembership) | **DELETE** /businesses/{business_id}/members | Terminate business memberships
 [**deleteBusinessPartners**](BusinessAccessRelationshipsApi.md#deleteBusinessPartners) | **DELETE** /businesses/{business_id}/partners | Terminate business partnerships
 [**getBusinessEmployers**](BusinessAccessRelationshipsApi.md#getBusinessEmployers) | **GET** /businesses/employers | List business employers for user
 [**getBusinessMembers**](BusinessAccessRelationshipsApi.md#getBusinessMembers) | **GET** /businesses/{business_id}/members | Get business members
 [**getBusinessPartners**](BusinessAccessRelationshipsApi.md#getBusinessPartners) | **GET** /businesses/{business_id}/partners | Get business partners
+[**systemUserUpdate**](BusinessAccessRelationshipsApi.md#systemUserUpdate) | **PATCH** /businesses/{business_id}/system_users/{system_user_id} | Update a system user information.
 [**updateBusinessMemberships**](BusinessAccessRelationshipsApi.md#updateBusinessMemberships) | **PATCH** /businesses/{business_id}/members | Update member\&#39;s business role
 
+
+# **brandAccountsCreate**
+> BrandAccountsCreate200Response brandAccountsCreate(brandAccountsCreateRequest)
+
+Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+
+### Example
+
+
+```typescript
+import { createConfiguration, BusinessAccessRelationshipsApi } from '';
+import type { BusinessAccessRelationshipsApiBrandAccountsCreateRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new BusinessAccessRelationshipsApi(configuration);
+
+const request: BusinessAccessRelationshipsApiBrandAccountsCreateRequest = {
+    // business hierarchy node id
+  businessHierarchyId: "7009386637860",
+  
+  brandAccountsCreateRequest: {
+    name: "Canada Stores",
+    username: "canada_stores",
+    country: "AD",
+    about: "Stores in Canada",
+    website: "https://www.example.com",
+    profileImage: {
+      contentType: "image/jpeg",
+      data: "2",
+    },
+  },
+};
+
+const data = await apiInstance.brandAccountsCreate(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **brandAccountsCreateRequest** | **BrandAccountsCreateRequest**|  |
+ **businessHierarchyId** | [**string**] | business hierarchy node id | defaults to undefined
+
+
+### Return type
+
+**BrandAccountsCreate200Response**
+
+### Authorization
+
+[pinterest_oauth2](README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | Invalid parameters. |  -  |
+**0** | Unexpected error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **brandAccountsUpdate**
+> BrandAccountsCreate200Response brandAccountsUpdate(brandAccountsUpdateRequest)
+
+Update an existing Brand Account
+
+### Example
+
+
+```typescript
+import { createConfiguration, BusinessAccessRelationshipsApi } from '';
+import type { BusinessAccessRelationshipsApiBrandAccountsUpdateRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new BusinessAccessRelationshipsApi(configuration);
+
+const request: BusinessAccessRelationshipsApiBrandAccountsUpdateRequest = {
+    // business hierarchy node id
+  businessHierarchyId: "7009386637860",
+    // Unique identifier of a brand account.
+  brandAccountId: "729090764583391194",
+  
+  brandAccountsUpdateRequest: {
+    name: "Canada Stores",
+    username: "canada_stores",
+    country: "AD",
+    about: "Stores in Canada",
+    website: "https://www.example.com",
+    profileImage: {
+      contentType: "image/jpeg",
+      data: "2",
+    },
+  },
+};
+
+const data = await apiInstance.brandAccountsUpdate(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **brandAccountsUpdateRequest** | **BrandAccountsUpdateRequest**|  |
+ **businessHierarchyId** | [**string**] | business hierarchy node id | defaults to undefined
+ **brandAccountId** | [**string**] | Unique identifier of a brand account. | defaults to undefined
+
+
+### Return type
+
+**BrandAccountsCreate200Response**
+
+### Authorization
+
+[pinterest_oauth2](README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | Invalid parameters. |  -  |
+**401** | Not authenticated to update Brand Account |  -  |
+**403** | Not authorized to update Brand Account |  -  |
+**404** | Brand account not found |  -  |
+**409** | This account is not a brand account. |  -  |
+**429** | This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window. |  -  |
+**0** | Unexpected error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **deleteBusinessMembership**
 > DeletedMembersResponse deleteBusinessMembership(membersToDeleteBody)
@@ -34,8 +181,8 @@ const request: BusinessAccessRelationshipsApiDeleteBusinessMembershipRequest = {
   membersToDeleteBody: {
     members: [
       {
-        memberId: "140943737684417",
         businessRole: "BIZ_ADMIN",
+        memberId: "140943737684417",
       },
     ],
   },
@@ -214,6 +361,8 @@ const apiInstance = new BusinessAccessRelationshipsApi(configuration);
 const request: BusinessAccessRelationshipsApiGetBusinessMembersRequest = {
     // Unique identifier of the requesting business.
   businessId: "729090764583391194",
+    // Fetches system users if True. Fetches regular user employees if False. (optional)
+  fetchSystemUsers: false,
     // Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional)
   assetsSummary: false,
     // A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. (optional)
@@ -240,6 +389,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | [**string**] | Unique identifier of the requesting business. | defaults to undefined
+ **fetchSystemUsers** | [**boolean**] | Fetches system users if True. Fetches regular user employees if False. | (optional) defaults to false
  **assetsSummary** | [**boolean**] | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | (optional) defaults to false
  **businessRoles** | **Array&lt;MemberBusinessRole&gt;** | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. | (optional) defaults to undefined
  **memberIds** | [**string**] | A list of business members ids separated by comma. | (optional) defaults to undefined
@@ -338,6 +488,69 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Success |  -  |
+**0** | Unexpected error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **systemUserUpdate**
+> void systemUserUpdate(systemUserUpdateRequest)
+
+Update a system user information such as name.
+
+### Example
+
+
+```typescript
+import { createConfiguration, BusinessAccessRelationshipsApi } from '';
+import type { BusinessAccessRelationshipsApiSystemUserUpdateRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new BusinessAccessRelationshipsApi(configuration);
+
+const request: BusinessAccessRelationshipsApiSystemUserUpdateRequest = {
+    // Unique identifier of the requesting business.
+  businessId: "729090764583391194",
+    // Unique identifier of a system user.
+  systemUserId: "729090764583391194",
+  
+  systemUserUpdateRequest: {
+    name: "Billing API",
+  },
+};
+
+const data = await apiInstance.systemUserUpdate(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **systemUserUpdateRequest** | **SystemUserUpdateRequest**|  |
+ **businessId** | [**string**] | Unique identifier of the requesting business. | defaults to undefined
+ **systemUserId** | [**string**] | Unique identifier of a system user. | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[pinterest_oauth2](README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | System user updated successfully. |  -  |
+**400** | Invalid parameters. |  -  |
 **0** | Unexpected error |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)

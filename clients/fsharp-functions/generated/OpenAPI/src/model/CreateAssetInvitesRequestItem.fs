@@ -13,12 +13,12 @@ module CreateAssetInvitesRequestItem =
 
   [<CLIMutable>]
   type CreateAssetInvitesRequestItem = {
+    [<JsonProperty(PropertyName = "asset_id_to_permissions")>]
+    AssetIdToPermissions : IDictionary<string, Permissions[]>;
     [<JsonProperty(PropertyName = "invite_id")>]
     InviteId : string;
     [<JsonProperty(PropertyName = "invite_type")>]
     InviteType : InviteType;
-    [<JsonProperty(PropertyName = "asset_id_to_permissions")>]
-    AssetIdToPermissions : IDictionary<string, Permissions[]>;
   }
 
   //#endregion

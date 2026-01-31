@@ -19,12 +19,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "The dynamic date range of the template")
 @JsonTypeName("TemplateResponse_date_range_dynamic_date_range")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TemplateResponseDateRangeDynamicDateRange   {
-  private String type;
   public enum RangeEnum {
 
-    YEAR_TO_DATE(String.valueOf("YEAR_TO_DATE")), QUARTER_TO_DATE(String.valueOf("QUARTER_TO_DATE")), MONTH_TO_DATE(String.valueOf("MONTH_TO_DATE")), LAST_MONTH(String.valueOf("LAST_MONTH"));
+    YEAR_TO_DATE(String.valueOf("YEAR_TO_DATE")), QUARTER_TO_DATE(String.valueOf("QUARTER_TO_DATE")), MONTH_TO_DATE(String.valueOf("MONTH_TO_DATE")), LAST_MONTH(String.valueOf("LAST_MONTH")), LAST_QUARTER(String.valueOf("LAST_QUARTER"));
 
 
     private String value;
@@ -70,28 +69,9 @@ public class TemplateResponseDateRangeDynamicDateRange   {
 }
 
   private RangeEnum range;
+  private String type;
 
   public TemplateResponseDateRangeDynamicDateRange() {
-  }
-
-  /**
-   * The date range type
-   **/
-  public TemplateResponseDateRangeDynamicDateRange type(String type) {
-    this.type = type;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "dynamic", value = "The date range type")
-  @JsonProperty("type")
-  public String getType() {
-    return type;
-  }
-
-  @JsonProperty("type")
-  public void setType(String type) {
-    this.type = type;
   }
 
   /**
@@ -114,6 +94,26 @@ public class TemplateResponseDateRangeDynamicDateRange   {
     this.range = range;
   }
 
+  /**
+   * The date range type
+   **/
+  public TemplateResponseDateRangeDynamicDateRange type(String type) {
+    this.type = type;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "dynamic", value = "The date range type")
+  @JsonProperty("type")
+  public String getType() {
+    return type;
+  }
+
+  @JsonProperty("type")
+  public void setType(String type) {
+    this.type = type;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -124,13 +124,13 @@ public class TemplateResponseDateRangeDynamicDateRange   {
       return false;
     }
     TemplateResponseDateRangeDynamicDateRange templateResponseDateRangeDynamicDateRange = (TemplateResponseDateRangeDynamicDateRange) o;
-    return Objects.equals(this.type, templateResponseDateRangeDynamicDateRange.type) &&
-        Objects.equals(this.range, templateResponseDateRangeDynamicDateRange.range);
+    return Objects.equals(this.range, templateResponseDateRangeDynamicDateRange.range) &&
+        Objects.equals(this.type, templateResponseDateRangeDynamicDateRange.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, range);
+    return Objects.hash(range, type);
   }
 
   @Override
@@ -138,8 +138,8 @@ public class TemplateResponseDateRangeDynamicDateRange   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TemplateResponseDateRangeDynamicDateRange {\n");
     
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    range: ").append(toIndentedString(range)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

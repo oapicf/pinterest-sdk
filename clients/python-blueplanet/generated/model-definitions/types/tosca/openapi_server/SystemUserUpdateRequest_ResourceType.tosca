@@ -1,0 +1,35 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server SystemUserUpdateRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a SystemUserUpdateRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  SystemUserUpdateRequest {
+    title = SystemUserUpdateRequest
+    description = SystemUserUpdateRequest
+    derivedFrom = Root
+    properties {
+        name {
+          type =  string
+          description = "New system user name"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  SystemUserUpdateRequest {
+    title = SystemUserUpdateRequest
+    description = SystemUserUpdateRequest
+    implements = openapi_server.resourceTypes.SystemUserUpdateRequest
+
+  }
+}

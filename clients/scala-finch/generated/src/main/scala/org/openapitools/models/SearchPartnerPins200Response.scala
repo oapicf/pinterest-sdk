@@ -10,11 +10,11 @@ import scala.collection.immutable.Seq
 
 /**
  * 
- * @param items 
  * @param bookmark 
+ * @param items 
  */
-case class SearchPartnerPins200Response(items: Seq[SummaryPin],
-                bookmark: Option[String]
+case class SearchPartnerPins200Response(bookmark: Option[String],
+                items: Seq[SummaryPin]
                 )
 
 object SearchPartnerPins200Response {

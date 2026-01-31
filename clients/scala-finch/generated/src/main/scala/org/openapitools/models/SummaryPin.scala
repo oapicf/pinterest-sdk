@@ -9,17 +9,19 @@ import org.openapitools.models.PinMedia
 
 /**
  * Summarized pin information
- * @param media 
  * @param altUnderscoretext 
- * @param link 
- * @param title 
  * @param description 
+ * @param id 
+ * @param link 
+ * @param media 
+ * @param title 
  */
-case class SummaryPin(media: Option[PinMedia],
-                altUnderscoretext: Option[String],
+case class SummaryPin(altUnderscoretext: Option[String],
+                description: Option[String],
+                id: Option[String],
                 link: Option[String],
-                title: Option[String],
-                description: Option[String]
+                media: Option[PinMedia],
+                title: Option[String]
                 )
 
 object SummaryPin {

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -19,22 +19,22 @@ type CatalogsItemsUpdateBatchRequest struct {
 
 	Country Country `json:"country"`
 
+	// Array with catalogs items
+	Items []ItemUpdateBatchRecord `json:"items"`
+
 	// We recommend using the CatalogsLocale values.
 	Language string `json:"language"`
 
 	Operation BatchOperation `json:"operation"`
-
-	// Array with catalogs items
-	Items []ItemUpdateBatchRecord `json:"items"`
 }
 
 // AssertCatalogsItemsUpdateBatchRequestRequired checks if the required fields are not zero-ed
 func AssertCatalogsItemsUpdateBatchRequestRequired(obj CatalogsItemsUpdateBatchRequest) error {
 	elements := map[string]interface{}{
 		"country": obj.Country,
+		"items": obj.Items,
 		"language": obj.Language,
 		"operation": obj.Operation,
-		"items": obj.Items,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {
@@ -42,26 +42,26 @@ func AssertCatalogsItemsUpdateBatchRequestRequired(obj CatalogsItemsUpdateBatchR
 		}
 	}
 
-	if err := AssertstringRequired(obj.Language); err != nil {
-		return err
-	}
 	for _, el := range obj.Items {
 		if err := AssertItemUpdateBatchRecordRequired(el); err != nil {
 			return err
 		}
+	}
+	if err := AssertstringRequired(obj.Language); err != nil {
+		return err
 	}
 	return nil
 }
 
 // AssertCatalogsItemsUpdateBatchRequestConstraints checks if the values respects the defined constraints
 func AssertCatalogsItemsUpdateBatchRequestConstraints(obj CatalogsItemsUpdateBatchRequest) error {
-	if err := AssertstringConstraints(obj.Language); err != nil {
-		return err
-	}
 	for _, el := range obj.Items {
 		if err := AssertItemUpdateBatchRecordConstraints(el); err != nil {
 			return err
 		}
+	}
+	if err := AssertstringConstraints(obj.Language); err != nil {
+		return err
 	}
 	return nil
 }

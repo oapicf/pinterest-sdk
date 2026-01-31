@@ -16,8 +16,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CatalogsReportDistributionIssueFilter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsReportDistributionIssueFilter   {
+  private String catalogId;
   public enum ReportTypeEnum {
 
     DISTRIBUTION_ISSUES(String.valueOf("DISTRIBUTION_ISSUES"));
@@ -66,7 +67,6 @@ public class CatalogsReportDistributionIssueFilter   {
 }
 
   private ReportTypeEnum reportType;
-  private String catalogId;
 
   public CatalogsReportDistributionIssueFilter() {
   }
@@ -75,25 +75,6 @@ public class CatalogsReportDistributionIssueFilter   {
   public CatalogsReportDistributionIssueFilter(
     @JsonProperty(required = true, value = "report_type") ReportTypeEnum reportType
   ) {
-    this.reportType = reportType;
-  }
-
-  /**
-   **/
-  public CatalogsReportDistributionIssueFilter reportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "report_type")
-  @NotNull public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-
-  @JsonProperty(required = true, value = "report_type")
-  public void setReportType(ReportTypeEnum reportType) {
     this.reportType = reportType;
   }
 
@@ -117,6 +98,25 @@ public class CatalogsReportDistributionIssueFilter   {
     this.catalogId = catalogId;
   }
 
+  /**
+   **/
+  public CatalogsReportDistributionIssueFilter reportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "report_type")
+  @NotNull public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+
+  @JsonProperty(required = true, value = "report_type")
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -127,13 +127,13 @@ public class CatalogsReportDistributionIssueFilter   {
       return false;
     }
     CatalogsReportDistributionIssueFilter catalogsReportDistributionIssueFilter = (CatalogsReportDistributionIssueFilter) o;
-    return Objects.equals(this.reportType, catalogsReportDistributionIssueFilter.reportType) &&
-        Objects.equals(this.catalogId, catalogsReportDistributionIssueFilter.catalogId);
+    return Objects.equals(this.catalogId, catalogsReportDistributionIssueFilter.catalogId) &&
+        Objects.equals(this.reportType, catalogsReportDistributionIssueFilter.reportType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, catalogId);
+    return Objects.hash(catalogId, reportType);
   }
 
   @Override
@@ -141,8 +141,8 @@ public class CatalogsReportDistributionIssueFilter   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportDistributionIssueFilter {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

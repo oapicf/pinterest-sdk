@@ -1,0 +1,88 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server OrderLines"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a OrderLines"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  OrderLinePaidType = openapi_server.resourceTypes.OrderLinePaidType
+  OrderLineStatus = openapi_server.resourceTypes.OrderLineStatus
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  OrderLines {
+    title = OrderLines
+    description = OrderLines
+    derivedFrom = Root
+    properties {
+        ad_account_id {
+          type =  string
+          description = "Ad account ID."
+          optional = false
+        }
+        budget {
+          type =  
+          description = "Order line budget in micro currency."
+          optional = false
+        }
+        end_time {
+          type =  
+          description = "End time. Unix timestamp."
+          optional = false
+        }
+        id {
+          type =  string
+          description = "Order line ID."
+          optional = false
+        }
+        name {
+          type =  string
+          description = "Order line name."
+          optional = false
+        }
+        paid_budget {
+          type =  
+          description = "Order line paid budget in micro currency."
+          optional = false
+        }
+        paid_type {
+          type = OrderLinePaidType
+          description = "Order line paid type."
+          optional = false
+        }
+        purchase_order_id {
+          type =  string
+          description = "Purchase order ID."
+          optional = false
+        }
+        start_time {
+          type =  
+          description = "Start time. Unix timestamp."
+          optional = false
+        }
+        status {
+          type = OrderLineStatus
+          description = "Order line status."
+          optional = false
+        }
+        type {
+          type =  string
+          description = "Always \&quot;orderline\&quot;."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  OrderLines {
+    title = OrderLines
+    description = OrderLines
+    implements = openapi_server.resourceTypes.OrderLines
+
+  }
+}

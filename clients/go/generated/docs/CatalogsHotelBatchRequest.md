@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CatalogId** | Pointer to **string** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog | [optional] 
 **CatalogType** | **string** |  | 
 **Country** | [**Country**](Country.md) |  | 
-**Language** | **string** | We recommend using the CatalogsLocale values. | 
 **Items** | [**[]CatalogsHotelBatchItem**](CatalogsHotelBatchItem.md) | Array with catalogs item operations | 
-**CatalogId** | Pointer to **string** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog | [optional] 
+**Language** | **string** | We recommend using the CatalogsLocale values. | 
 
 ## Methods
 
 ### NewCatalogsHotelBatchRequest
 
-`func NewCatalogsHotelBatchRequest(catalogType string, country Country, language string, items []CatalogsHotelBatchItem, ) *CatalogsHotelBatchRequest`
+`func NewCatalogsHotelBatchRequest(catalogType string, country Country, items []CatalogsHotelBatchItem, language string, ) *CatalogsHotelBatchRequest`
 
 NewCatalogsHotelBatchRequest instantiates a new CatalogsHotelBatchRequest object
 This constructor will assign default values to properties that have it defined,
@@ -28,6 +28,31 @@ will change when the set of required properties is changed
 NewCatalogsHotelBatchRequestWithDefaults instantiates a new CatalogsHotelBatchRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCatalogId
+
+`func (o *CatalogsHotelBatchRequest) GetCatalogId() string`
+
+GetCatalogId returns the CatalogId field if non-nil, zero value otherwise.
+
+### GetCatalogIdOk
+
+`func (o *CatalogsHotelBatchRequest) GetCatalogIdOk() (*string, bool)`
+
+GetCatalogIdOk returns a tuple with the CatalogId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCatalogId
+
+`func (o *CatalogsHotelBatchRequest) SetCatalogId(v string)`
+
+SetCatalogId sets CatalogId field to given value.
+
+### HasCatalogId
+
+`func (o *CatalogsHotelBatchRequest) HasCatalogId() bool`
+
+HasCatalogId returns a boolean if a field has been set.
 
 ### GetCatalogType
 
@@ -69,26 +94,6 @@ and a boolean to check if the value has been set.
 SetCountry sets Country field to given value.
 
 
-### GetLanguage
-
-`func (o *CatalogsHotelBatchRequest) GetLanguage() string`
-
-GetLanguage returns the Language field if non-nil, zero value otherwise.
-
-### GetLanguageOk
-
-`func (o *CatalogsHotelBatchRequest) GetLanguageOk() (*string, bool)`
-
-GetLanguageOk returns a tuple with the Language field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLanguage
-
-`func (o *CatalogsHotelBatchRequest) SetLanguage(v string)`
-
-SetLanguage sets Language field to given value.
-
-
 ### GetItems
 
 `func (o *CatalogsHotelBatchRequest) GetItems() []CatalogsHotelBatchItem`
@@ -109,30 +114,25 @@ and a boolean to check if the value has been set.
 SetItems sets Items field to given value.
 
 
-### GetCatalogId
+### GetLanguage
 
-`func (o *CatalogsHotelBatchRequest) GetCatalogId() string`
+`func (o *CatalogsHotelBatchRequest) GetLanguage() string`
 
-GetCatalogId returns the CatalogId field if non-nil, zero value otherwise.
+GetLanguage returns the Language field if non-nil, zero value otherwise.
 
-### GetCatalogIdOk
+### GetLanguageOk
 
-`func (o *CatalogsHotelBatchRequest) GetCatalogIdOk() (*string, bool)`
+`func (o *CatalogsHotelBatchRequest) GetLanguageOk() (*string, bool)`
 
-GetCatalogIdOk returns a tuple with the CatalogId field if it's non-nil, zero value otherwise
+GetLanguageOk returns a tuple with the Language field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCatalogId
+### SetLanguage
 
-`func (o *CatalogsHotelBatchRequest) SetCatalogId(v string)`
+`func (o *CatalogsHotelBatchRequest) SetLanguage(v string)`
 
-SetCatalogId sets CatalogId field to given value.
+SetLanguage sets Language field to given value.
 
-### HasCatalogId
-
-`func (o *CatalogsHotelBatchRequest) HasCatalogId() bool`
-
-HasCatalogId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

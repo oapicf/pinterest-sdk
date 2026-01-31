@@ -12,29 +12,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SSIOEditInsertionOrderRequest  {
   
  /**
-  * Starting date of time period. Format: YYYY-MM-DD
+  * URL link for agency
   */
-  @ApiModelProperty(example = "2020-12-20", value = "Starting date of time period. Format: YYYY-MM-DD")
-  private String startDate;
+  @ApiModelProperty(value = "URL link for agency")
+  private String agencyLink;
 
  /**
-  * End date of time period. Format: YYYY-MM-DD
+  * The billing contact email
   */
-  @ApiModelProperty(example = "2020-12-20", value = "End date of time period. Format: YYYY-MM-DD")
-  private String endDate;
-
- /**
-  * The po number
-  */
-  @ApiModelProperty(value = "The po number")
-  private String poNumber;
-
- /**
-  * If Budget order line, the budget amount.
-  */
-  @ApiModelProperty(example = "5000000", value = "If Budget order line, the budget amount.")
-  @Valid
-  private BigDecimal budgetAmount;
+  @ApiModelProperty(example = "test@example", value = "The billing contact email")
+  private String billingContactEmail;
 
  /**
   * The billing contact first name
@@ -49,10 +36,23 @@ public class SSIOEditInsertionOrderRequest  {
   private String billingContactLastname;
 
  /**
-  * The billing contact email
+  * If Budget order line, the budget amount.
   */
-  @ApiModelProperty(example = "test@example", value = "The billing contact email")
-  private String billingContactEmail;
+  @ApiModelProperty(example = "5000000", value = "If Budget order line, the budget amount.")
+  @Valid
+  private BigDecimal budgetAmount;
+
+ /**
+  * End date of time period. Format: YYYY-MM-DD
+  */
+  @ApiModelProperty(example = "2020-12-20", value = "End date of time period. Format: YYYY-MM-DD")
+  private String endDate;
+
+ /**
+  * The media contact email
+  */
+  @ApiModelProperty(example = "test@example", value = "The media contact email")
+  private String mediaContactEmail;
 
  /**
   * The media contact first name
@@ -67,22 +67,28 @@ public class SSIOEditInsertionOrderRequest  {
   private String mediaContactLastname;
 
  /**
-  * The media contact email
+  * The po number
   */
-  @ApiModelProperty(example = "test@example", value = "The media contact email")
-  private String mediaContactEmail;
+  @ApiModelProperty(value = "The po number")
+  private String poNumber;
 
  /**
-  * URL link for agency
+  * Starting date of time period. Format: YYYY-MM-DD
   */
-  @ApiModelProperty(value = "URL link for agency")
-  private String agencyLink;
+  @ApiModelProperty(example = "2020-12-20", value = "Starting date of time period. Format: YYYY-MM-DD")
+  private String startDate;
 
  /**
   * The email of user submitting the insertion order
   */
   @ApiModelProperty(example = "test@example", value = "The email of user submitting the insertion order")
   private String userEmail;
+
+ /**
+  * Ads manager OrderLineId
+  */
+  @ApiModelProperty(value = "Ads manager OrderLineId")
+  private String adsManagerOrderLineId;
 
  /**
   * LineId in the Oracle DB
@@ -101,105 +107,51 @@ public class SSIOEditInsertionOrderRequest  {
   */
   @ApiModelProperty(value = "OrderLineId in SFDC")
   private String salesforceOrderLineId;
-
  /**
-  * Ads manager OrderLineId
+  * URL link for agency
+  * @return agencyLink
   */
-  @ApiModelProperty(value = "Ads manager OrderLineId")
-  private String adsManagerOrderLineId;
- /**
-  * Starting date of time period. Format: YYYY-MM-DD
-  * @return startDate
-  */
-  @JsonProperty("start_date")
- @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")  public String getStartDate() {
-    return startDate;
+  @JsonProperty("agency_link")
+  public String getAgencyLink() {
+    return agencyLink;
   }
 
   /**
-   * Sets the <code>startDate</code> property.
+   * Sets the <code>agencyLink</code> property.
    */
- public void setStartDate(String startDate) {
-    this.startDate = startDate;
+ public void setAgencyLink(String agencyLink) {
+    this.agencyLink = agencyLink;
   }
 
   /**
-   * Sets the <code>startDate</code> property.
+   * Sets the <code>agencyLink</code> property.
    */
-  public SSIOEditInsertionOrderRequest startDate(String startDate) {
-    this.startDate = startDate;
+  public SSIOEditInsertionOrderRequest agencyLink(String agencyLink) {
+    this.agencyLink = agencyLink;
     return this;
   }
 
  /**
-  * End date of time period. Format: YYYY-MM-DD
-  * @return endDate
+  * The billing contact email
+  * @return billingContactEmail
   */
-  @JsonProperty("end_date")
- @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")  public String getEndDate() {
-    return endDate;
+  @JsonProperty("billing_contact_email")
+  public String getBillingContactEmail() {
+    return billingContactEmail;
   }
 
   /**
-   * Sets the <code>endDate</code> property.
+   * Sets the <code>billingContactEmail</code> property.
    */
- public void setEndDate(String endDate) {
-    this.endDate = endDate;
+ public void setBillingContactEmail(String billingContactEmail) {
+    this.billingContactEmail = billingContactEmail;
   }
 
   /**
-   * Sets the <code>endDate</code> property.
+   * Sets the <code>billingContactEmail</code> property.
    */
-  public SSIOEditInsertionOrderRequest endDate(String endDate) {
-    this.endDate = endDate;
-    return this;
-  }
-
- /**
-  * The po number
-  * @return poNumber
-  */
-  @JsonProperty("po_number")
-  public String getPoNumber() {
-    return poNumber;
-  }
-
-  /**
-   * Sets the <code>poNumber</code> property.
-   */
- public void setPoNumber(String poNumber) {
-    this.poNumber = poNumber;
-  }
-
-  /**
-   * Sets the <code>poNumber</code> property.
-   */
-  public SSIOEditInsertionOrderRequest poNumber(String poNumber) {
-    this.poNumber = poNumber;
-    return this;
-  }
-
- /**
-  * If Budget order line, the budget amount.
-  * @return budgetAmount
-  */
-  @JsonProperty("budget_amount")
-  public BigDecimal getBudgetAmount() {
-    return budgetAmount;
-  }
-
-  /**
-   * Sets the <code>budgetAmount</code> property.
-   */
- public void setBudgetAmount(BigDecimal budgetAmount) {
-    this.budgetAmount = budgetAmount;
-  }
-
-  /**
-   * Sets the <code>budgetAmount</code> property.
-   */
-  public SSIOEditInsertionOrderRequest budgetAmount(BigDecimal budgetAmount) {
-    this.budgetAmount = budgetAmount;
+  public SSIOEditInsertionOrderRequest billingContactEmail(String billingContactEmail) {
+    this.billingContactEmail = billingContactEmail;
     return this;
   }
 
@@ -252,26 +204,74 @@ public class SSIOEditInsertionOrderRequest  {
   }
 
  /**
-  * The billing contact email
-  * @return billingContactEmail
+  * If Budget order line, the budget amount.
+  * @return budgetAmount
   */
-  @JsonProperty("billing_contact_email")
-  public String getBillingContactEmail() {
-    return billingContactEmail;
+  @JsonProperty("budget_amount")
+  public BigDecimal getBudgetAmount() {
+    return budgetAmount;
   }
 
   /**
-   * Sets the <code>billingContactEmail</code> property.
+   * Sets the <code>budgetAmount</code> property.
    */
- public void setBillingContactEmail(String billingContactEmail) {
-    this.billingContactEmail = billingContactEmail;
+ public void setBudgetAmount(BigDecimal budgetAmount) {
+    this.budgetAmount = budgetAmount;
   }
 
   /**
-   * Sets the <code>billingContactEmail</code> property.
+   * Sets the <code>budgetAmount</code> property.
    */
-  public SSIOEditInsertionOrderRequest billingContactEmail(String billingContactEmail) {
-    this.billingContactEmail = billingContactEmail;
+  public SSIOEditInsertionOrderRequest budgetAmount(BigDecimal budgetAmount) {
+    this.budgetAmount = budgetAmount;
+    return this;
+  }
+
+ /**
+  * End date of time period. Format: YYYY-MM-DD
+  * @return endDate
+  */
+  @JsonProperty("end_date")
+ @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")  public String getEndDate() {
+    return endDate;
+  }
+
+  /**
+   * Sets the <code>endDate</code> property.
+   */
+ public void setEndDate(String endDate) {
+    this.endDate = endDate;
+  }
+
+  /**
+   * Sets the <code>endDate</code> property.
+   */
+  public SSIOEditInsertionOrderRequest endDate(String endDate) {
+    this.endDate = endDate;
+    return this;
+  }
+
+ /**
+  * The media contact email
+  * @return mediaContactEmail
+  */
+  @JsonProperty("media_contact_email")
+  public String getMediaContactEmail() {
+    return mediaContactEmail;
+  }
+
+  /**
+   * Sets the <code>mediaContactEmail</code> property.
+   */
+ public void setMediaContactEmail(String mediaContactEmail) {
+    this.mediaContactEmail = mediaContactEmail;
+  }
+
+  /**
+   * Sets the <code>mediaContactEmail</code> property.
+   */
+  public SSIOEditInsertionOrderRequest mediaContactEmail(String mediaContactEmail) {
+    this.mediaContactEmail = mediaContactEmail;
     return this;
   }
 
@@ -324,50 +324,50 @@ public class SSIOEditInsertionOrderRequest  {
   }
 
  /**
-  * The media contact email
-  * @return mediaContactEmail
+  * The po number
+  * @return poNumber
   */
-  @JsonProperty("media_contact_email")
-  public String getMediaContactEmail() {
-    return mediaContactEmail;
+  @JsonProperty("po_number")
+  public String getPoNumber() {
+    return poNumber;
   }
 
   /**
-   * Sets the <code>mediaContactEmail</code> property.
+   * Sets the <code>poNumber</code> property.
    */
- public void setMediaContactEmail(String mediaContactEmail) {
-    this.mediaContactEmail = mediaContactEmail;
+ public void setPoNumber(String poNumber) {
+    this.poNumber = poNumber;
   }
 
   /**
-   * Sets the <code>mediaContactEmail</code> property.
+   * Sets the <code>poNumber</code> property.
    */
-  public SSIOEditInsertionOrderRequest mediaContactEmail(String mediaContactEmail) {
-    this.mediaContactEmail = mediaContactEmail;
+  public SSIOEditInsertionOrderRequest poNumber(String poNumber) {
+    this.poNumber = poNumber;
     return this;
   }
 
  /**
-  * URL link for agency
-  * @return agencyLink
+  * Starting date of time period. Format: YYYY-MM-DD
+  * @return startDate
   */
-  @JsonProperty("agency_link")
-  public String getAgencyLink() {
-    return agencyLink;
+  @JsonProperty("start_date")
+ @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")  public String getStartDate() {
+    return startDate;
   }
 
   /**
-   * Sets the <code>agencyLink</code> property.
+   * Sets the <code>startDate</code> property.
    */
- public void setAgencyLink(String agencyLink) {
-    this.agencyLink = agencyLink;
+ public void setStartDate(String startDate) {
+    this.startDate = startDate;
   }
 
   /**
-   * Sets the <code>agencyLink</code> property.
+   * Sets the <code>startDate</code> property.
    */
-  public SSIOEditInsertionOrderRequest agencyLink(String agencyLink) {
-    this.agencyLink = agencyLink;
+  public SSIOEditInsertionOrderRequest startDate(String startDate) {
+    this.startDate = startDate;
     return this;
   }
 
@@ -392,6 +392,30 @@ public class SSIOEditInsertionOrderRequest  {
    */
   public SSIOEditInsertionOrderRequest userEmail(String userEmail) {
     this.userEmail = userEmail;
+    return this;
+  }
+
+ /**
+  * Ads manager OrderLineId
+  * @return adsManagerOrderLineId
+  */
+  @JsonProperty("ads_manager_order_line_id")
+  public String getAdsManagerOrderLineId() {
+    return adsManagerOrderLineId;
+  }
+
+  /**
+   * Sets the <code>adsManagerOrderLineId</code> property.
+   */
+ public void setAdsManagerOrderLineId(String adsManagerOrderLineId) {
+    this.adsManagerOrderLineId = adsManagerOrderLineId;
+  }
+
+  /**
+   * Sets the <code>adsManagerOrderLineId</code> property.
+   */
+  public SSIOEditInsertionOrderRequest adsManagerOrderLineId(String adsManagerOrderLineId) {
+    this.adsManagerOrderLineId = adsManagerOrderLineId;
     return this;
   }
 
@@ -467,30 +491,6 @@ public class SSIOEditInsertionOrderRequest  {
     return this;
   }
 
- /**
-  * Ads manager OrderLineId
-  * @return adsManagerOrderLineId
-  */
-  @JsonProperty("ads_manager_order_line_id")
-  public String getAdsManagerOrderLineId() {
-    return adsManagerOrderLineId;
-  }
-
-  /**
-   * Sets the <code>adsManagerOrderLineId</code> property.
-   */
- public void setAdsManagerOrderLineId(String adsManagerOrderLineId) {
-    this.adsManagerOrderLineId = adsManagerOrderLineId;
-  }
-
-  /**
-   * Sets the <code>adsManagerOrderLineId</code> property.
-   */
-  public SSIOEditInsertionOrderRequest adsManagerOrderLineId(String adsManagerOrderLineId) {
-    this.adsManagerOrderLineId = adsManagerOrderLineId;
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -501,27 +501,27 @@ public class SSIOEditInsertionOrderRequest  {
       return false;
     }
     SSIOEditInsertionOrderRequest ssIOEditInsertionOrderRequest = (SSIOEditInsertionOrderRequest) o;
-    return Objects.equals(this.startDate, ssIOEditInsertionOrderRequest.startDate) &&
-        Objects.equals(this.endDate, ssIOEditInsertionOrderRequest.endDate) &&
-        Objects.equals(this.poNumber, ssIOEditInsertionOrderRequest.poNumber) &&
-        Objects.equals(this.budgetAmount, ssIOEditInsertionOrderRequest.budgetAmount) &&
+    return Objects.equals(this.agencyLink, ssIOEditInsertionOrderRequest.agencyLink) &&
+        Objects.equals(this.billingContactEmail, ssIOEditInsertionOrderRequest.billingContactEmail) &&
         Objects.equals(this.billingContactFirstname, ssIOEditInsertionOrderRequest.billingContactFirstname) &&
         Objects.equals(this.billingContactLastname, ssIOEditInsertionOrderRequest.billingContactLastname) &&
-        Objects.equals(this.billingContactEmail, ssIOEditInsertionOrderRequest.billingContactEmail) &&
+        Objects.equals(this.budgetAmount, ssIOEditInsertionOrderRequest.budgetAmount) &&
+        Objects.equals(this.endDate, ssIOEditInsertionOrderRequest.endDate) &&
+        Objects.equals(this.mediaContactEmail, ssIOEditInsertionOrderRequest.mediaContactEmail) &&
         Objects.equals(this.mediaContactFirstname, ssIOEditInsertionOrderRequest.mediaContactFirstname) &&
         Objects.equals(this.mediaContactLastname, ssIOEditInsertionOrderRequest.mediaContactLastname) &&
-        Objects.equals(this.mediaContactEmail, ssIOEditInsertionOrderRequest.mediaContactEmail) &&
-        Objects.equals(this.agencyLink, ssIOEditInsertionOrderRequest.agencyLink) &&
+        Objects.equals(this.poNumber, ssIOEditInsertionOrderRequest.poNumber) &&
+        Objects.equals(this.startDate, ssIOEditInsertionOrderRequest.startDate) &&
         Objects.equals(this.userEmail, ssIOEditInsertionOrderRequest.userEmail) &&
+        Objects.equals(this.adsManagerOrderLineId, ssIOEditInsertionOrderRequest.adsManagerOrderLineId) &&
         Objects.equals(this.oracleLineId, ssIOEditInsertionOrderRequest.oracleLineId) &&
         Objects.equals(this.salesforceOrderId, ssIOEditInsertionOrderRequest.salesforceOrderId) &&
-        Objects.equals(this.salesforceOrderLineId, ssIOEditInsertionOrderRequest.salesforceOrderLineId) &&
-        Objects.equals(this.adsManagerOrderLineId, ssIOEditInsertionOrderRequest.adsManagerOrderLineId);
+        Objects.equals(this.salesforceOrderLineId, ssIOEditInsertionOrderRequest.salesforceOrderLineId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, endDate, poNumber, budgetAmount, billingContactFirstname, billingContactLastname, billingContactEmail, mediaContactFirstname, mediaContactLastname, mediaContactEmail, agencyLink, userEmail, oracleLineId, salesforceOrderId, salesforceOrderLineId, adsManagerOrderLineId);
+    return Objects.hash(agencyLink, billingContactEmail, billingContactFirstname, billingContactLastname, budgetAmount, endDate, mediaContactEmail, mediaContactFirstname, mediaContactLastname, poNumber, startDate, userEmail, adsManagerOrderLineId, oracleLineId, salesforceOrderId, salesforceOrderLineId);
   }
 
   @Override
@@ -529,22 +529,22 @@ public class SSIOEditInsertionOrderRequest  {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSIOEditInsertionOrderRequest {\n");
     
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
-    sb.append("    poNumber: ").append(toIndentedString(poNumber)).append("\n");
-    sb.append("    budgetAmount: ").append(toIndentedString(budgetAmount)).append("\n");
+    sb.append("    agencyLink: ").append(toIndentedString(agencyLink)).append("\n");
+    sb.append("    billingContactEmail: ").append(toIndentedString(billingContactEmail)).append("\n");
     sb.append("    billingContactFirstname: ").append(toIndentedString(billingContactFirstname)).append("\n");
     sb.append("    billingContactLastname: ").append(toIndentedString(billingContactLastname)).append("\n");
-    sb.append("    billingContactEmail: ").append(toIndentedString(billingContactEmail)).append("\n");
+    sb.append("    budgetAmount: ").append(toIndentedString(budgetAmount)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    mediaContactEmail: ").append(toIndentedString(mediaContactEmail)).append("\n");
     sb.append("    mediaContactFirstname: ").append(toIndentedString(mediaContactFirstname)).append("\n");
     sb.append("    mediaContactLastname: ").append(toIndentedString(mediaContactLastname)).append("\n");
-    sb.append("    mediaContactEmail: ").append(toIndentedString(mediaContactEmail)).append("\n");
-    sb.append("    agencyLink: ").append(toIndentedString(agencyLink)).append("\n");
+    sb.append("    poNumber: ").append(toIndentedString(poNumber)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    userEmail: ").append(toIndentedString(userEmail)).append("\n");
+    sb.append("    adsManagerOrderLineId: ").append(toIndentedString(adsManagerOrderLineId)).append("\n");
     sb.append("    oracleLineId: ").append(toIndentedString(oracleLineId)).append("\n");
     sb.append("    salesforceOrderId: ").append(toIndentedString(salesforceOrderId)).append("\n");
     sb.append("    salesforceOrderLineId: ").append(toIndentedString(salesforceOrderLineId)).append("\n");
-    sb.append("    adsManagerOrderLineId: ").append(toIndentedString(adsManagerOrderLineId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

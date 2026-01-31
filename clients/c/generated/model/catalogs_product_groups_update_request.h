@@ -32,10 +32,10 @@ pinterest_rest_api_catalogs_product_groups_update_request_CATALOGTYPE_e catalogs
 
 
 typedef struct catalogs_product_groups_update_request_t {
-    char *name; // string
     char *description; // string
-    int is_featured; //boolean
     struct catalogs_creative_assets_product_group_filters_t *filters; //model
+    int is_featured; //boolean
+    char *name; // string
     pinterest_rest_api_catalogs_product_groups_update_request_CATALOGTYPE_e catalog_type; //enum
     pinterest_rest_api_country__e country; //referenced enum
     pinterest_rest_api_catalogs_locale__e locale; //referenced enum
@@ -44,10 +44,10 @@ typedef struct catalogs_product_groups_update_request_t {
 } catalogs_product_groups_update_request_t;
 
 __attribute__((deprecated)) catalogs_product_groups_update_request_t *catalogs_product_groups_update_request_create(
-    char *name,
     char *description,
-    int is_featured,
     catalogs_creative_assets_product_group_filters_t *filters,
+    int is_featured,
+    char *name,
     pinterest_rest_api_catalogs_product_groups_update_request_CATALOGTYPE_e catalog_type,
     pinterest_rest_api_country__e country,
     pinterest_rest_api_catalogs_locale__e locale

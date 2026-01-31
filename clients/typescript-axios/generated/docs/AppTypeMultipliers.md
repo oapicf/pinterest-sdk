@@ -6,7 +6,7 @@ This represents a mapping from app type targeting criteria to a bid price adjust
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**APP_TYPE** | [**TargetingSpecAppType**](TargetingSpecAppType.md) |  | [optional] [default to undefined]
+**APP_TYPE** | **string** |  | [optional] [default to undefined]
 
 ## Example
 

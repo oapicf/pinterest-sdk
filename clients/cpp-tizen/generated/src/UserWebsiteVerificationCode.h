@@ -45,13 +45,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Code to check against the user claiming the website
-	 */
-	std::string getVerificationCode();
-
-	/*! \brief Set Code to check against the user claiming the website
-	 */
-	void setVerificationCode(std::string  verification_code);
 	/*! \brief Get DNS TXT record to check against for the website to be claimed
 	 */
 	std::string getDnsTxtRecord();
@@ -59,20 +52,6 @@ public:
 	/*! \brief Set DNS TXT record to check against for the website to be claimed
 	 */
 	void setDnsTxtRecord(std::string  dns_txt_record);
-	/*! \brief Get Metatag the verification process searchs for the website to be claimed
-	 */
-	std::string getMetatag();
-
-	/*! \brief Set Metatag the verification process searchs for the website to be claimed
-	 */
-	void setMetatag(std::string  metatag);
-	/*! \brief Get File expected to find on the website being claimed
-	 */
-	std::string getFilename();
-
-	/*! \brief Set File expected to find on the website being claimed
-	 */
-	void setFilename(std::string  filename);
 	/*! \brief Get A full html file to upload to the website in order for it to be claimed
 	 */
 	std::string getFileContent();
@@ -80,13 +59,34 @@ public:
 	/*! \brief Set A full html file to upload to the website in order for it to be claimed
 	 */
 	void setFileContent(std::string  file_content);
+	/*! \brief Get File expected to find on the website being claimed
+	 */
+	std::string getFilename();
+
+	/*! \brief Set File expected to find on the website being claimed
+	 */
+	void setFilename(std::string  filename);
+	/*! \brief Get Metatag the verification process searchs for the website to be claimed
+	 */
+	std::string getMetatag();
+
+	/*! \brief Set Metatag the verification process searchs for the website to be claimed
+	 */
+	void setMetatag(std::string  metatag);
+	/*! \brief Get Code to check against the user claiming the website
+	 */
+	std::string getVerificationCode();
+
+	/*! \brief Set Code to check against the user claiming the website
+	 */
+	void setVerificationCode(std::string  verification_code);
 
 private:
-	std::string verification_code;
 	std::string dns_txt_record;
-	std::string metatag;
-	std::string filename;
 	std::string file_content;
+	std::string filename;
+	std::string metatag;
+	std::string verification_code;
 	void __init();
 	void __cleanup();
 

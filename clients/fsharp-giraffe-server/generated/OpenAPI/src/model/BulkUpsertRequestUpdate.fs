@@ -5,7 +5,9 @@ open System.Collections.Generic
 open OpenAPI.Model.AdGroupUpdateRequest
 open OpenAPI.Model.AdUpdateRequest
 open OpenAPI.Model.CampaignUpdateRequest
+open OpenAPI.Model.CatalogsProductGroupsUpdateRequest
 open OpenAPI.Model.KeywordUpdate
+open OpenAPI.Model.LabelBulkUpdateRequest
 open OpenAPI.Model.ProductGroupPromotionUpdateRequest
 
 module BulkUpsertRequestUpdate =
@@ -14,10 +16,12 @@ module BulkUpsertRequestUpdate =
 
 
   type BulkUpsertRequestUpdate = {
-    Campaigns : CampaignUpdateRequest[];
     AdGroups : AdGroupUpdateRequest[];
     Ads : AdUpdateRequest[];
-    ProductGroups : ProductGroupPromotionUpdateRequest[];
+    Campaigns : CampaignUpdateRequest[];
+    CatalogProductGroups : CatalogsProductGroupsUpdateRequest[];
     Keywords : KeywordUpdate[];
+    Labels : LabelBulkUpdateRequest[];
+    ProductGroups : ProductGroupPromotionUpdateRequest[];
   }
   //#endregion

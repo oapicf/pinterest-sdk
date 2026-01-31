@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**[]TargetingTemplateResponseData**](TargetingTemplateResponseData.md) |  | 
 **Bookmark** | Pointer to **NullableString** |  | [optional] 
+**Items** | [**[]TargetingTemplateGetResponseData**](TargetingTemplateGetResponseData.md) |  | 
 
 ## Methods
 
 ### NewTargetingTemplateList200Response
 
-`func NewTargetingTemplateList200Response(items []TargetingTemplateResponseData, ) *TargetingTemplateList200Response`
+`func NewTargetingTemplateList200Response(items []TargetingTemplateGetResponseData, ) *TargetingTemplateList200Response`
 
 NewTargetingTemplateList200Response instantiates a new TargetingTemplateList200Response object
 This constructor will assign default values to properties that have it defined,
@@ -25,26 +25,6 @@ will change when the set of required properties is changed
 NewTargetingTemplateList200ResponseWithDefaults instantiates a new TargetingTemplateList200Response object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetItems
-
-`func (o *TargetingTemplateList200Response) GetItems() []TargetingTemplateResponseData`
-
-GetItems returns the Items field if non-nil, zero value otherwise.
-
-### GetItemsOk
-
-`func (o *TargetingTemplateList200Response) GetItemsOk() (*[]TargetingTemplateResponseData, bool)`
-
-GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetItems
-
-`func (o *TargetingTemplateList200Response) SetItems(v []TargetingTemplateResponseData)`
-
-SetItems sets Items field to given value.
-
 
 ### GetBookmark
 
@@ -81,6 +61,26 @@ HasBookmark returns a boolean if a field has been set.
 `func (o *TargetingTemplateList200Response) UnsetBookmark()`
 
 UnsetBookmark ensures that no value is present for Bookmark, not even an explicit nil
+### GetItems
+
+`func (o *TargetingTemplateList200Response) GetItems() []TargetingTemplateGetResponseData`
+
+GetItems returns the Items field if non-nil, zero value otherwise.
+
+### GetItemsOk
+
+`func (o *TargetingTemplateList200Response) GetItemsOk() (*[]TargetingTemplateGetResponseData, bool)`
+
+GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItems
+
+`func (o *TargetingTemplateList200Response) SetItems(v []TargetingTemplateGetResponseData)`
+
+SetItems sets Items field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

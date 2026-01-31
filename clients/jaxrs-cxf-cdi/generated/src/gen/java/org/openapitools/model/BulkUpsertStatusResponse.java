@@ -19,27 +19,9 @@ import java.util.Objects;
 @ApiModel(description = "ID of the bulk request.")
 public class BulkUpsertStatusResponse   {
   
-  private BulkUpsertStatus status;
-
   private String resultUrl;
 
-  /**
-   **/
-  public BulkUpsertStatusResponse status(BulkUpsertStatus status) {
-    this.status = status;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("status")
-  public BulkUpsertStatus getStatus() {
-    return status;
-  }
-  public void setStatus(BulkUpsertStatus status) {
-    this.status = status;
-  }
-
+  private BulkUpsertStatus status;
 
   /**
    **/
@@ -59,6 +41,24 @@ public class BulkUpsertStatusResponse   {
   }
 
 
+  /**
+   **/
+  public BulkUpsertStatusResponse status(BulkUpsertStatus status) {
+    this.status = status;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("status")
+  public BulkUpsertStatus getStatus() {
+    return status;
+  }
+  public void setStatus(BulkUpsertStatus status) {
+    this.status = status;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -69,13 +69,13 @@ public class BulkUpsertStatusResponse   {
       return false;
     }
     BulkUpsertStatusResponse bulkUpsertStatusResponse = (BulkUpsertStatusResponse) o;
-    return Objects.equals(this.status, bulkUpsertStatusResponse.status) &&
-        Objects.equals(this.resultUrl, bulkUpsertStatusResponse.resultUrl);
+    return Objects.equals(this.resultUrl, bulkUpsertStatusResponse.resultUrl) &&
+        Objects.equals(this.status, bulkUpsertStatusResponse.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, resultUrl);
+    return Objects.hash(resultUrl, status);
   }
 
   @Override
@@ -83,8 +83,8 @@ public class BulkUpsertStatusResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class BulkUpsertStatusResponse {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    resultUrl: ").append(toIndentedString(resultUrl)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -3,17 +3,17 @@ Protected Class CatalogsFeedProductCounts
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The number of products in the feed file.
+			The number of products successfully ingested from the feed file.
 		#tag EndNote
-		original As Xoson.O.OptionalInteger
+		ingested As Xoson.O.OptionalInteger
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The number of products successfully ingested from the feed file.
+			The number of products in the feed file.
 		#tag EndNote
-		ingested As Xoson.O.OptionalInteger
+		original As Xoson.O.OptionalInteger
 	#tag EndProperty
 
 
@@ -54,7 +54,7 @@ Protected Class CatalogsFeedProductCounts
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="original"
+			Name="ingested"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -62,7 +62,7 @@ Protected Class CatalogsFeedProductCounts
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="ingested"
+			Name="original"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

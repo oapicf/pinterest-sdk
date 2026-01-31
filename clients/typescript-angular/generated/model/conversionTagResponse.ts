@@ -14,32 +14,35 @@ import { EnhancedMatchStatusType } from './enhancedMatchStatusType';
 
 export interface ConversionTagResponse { 
     /**
-     * Ad account ID.
-     */
-    ad_account_id?: string;
-    /**
      * Tag code snippet.
      */
-    code_snippet?: string;
-    enhanced_match_status?: EnhancedMatchStatusType | null;
+    readonly code_snippet?: string;
+    readonly configs?: ConversionTagConfigs;
+    /**
+     * The enhanced match status of the tag
+     */
+    readonly enhanced_match_status?: EnhancedMatchStatusType | null;
     /**
      * Tag ID.
      */
-    id?: string;
+    readonly id?: string;
     /**
      * Time for the last event fired.
      */
-    last_fired_time_ms?: number | null;
+    readonly last_fired_time_ms?: number | null;
     /**
      * Conversion tag name.
      */
-    name?: string;
-    status?: EntityStatus;
+    name: string;
     /**
      * Version number.
      */
-    version?: string;
-    configs?: ConversionTagConfigs;
+    readonly version?: string;
+    /**
+     * Ad account ID.
+     */
+    readonly ad_account_id: string;
+    readonly status?: EntityStatus;
 }
 export namespace ConversionTagResponse {
 }

@@ -14,6 +14,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsCreateRetailItem  {
   
+  @ApiModelProperty(required = true, value = "")
+
+  private ItemAttributesRequest attributes;
+
  /**
   * The catalog item id in the merchant namespace
   */
@@ -54,10 +58,24 @@ CREATE(String.valueOf("CREATE"));
   @ApiModelProperty(required = true, value = "")
 
   private OperationEnum operation;
+ /**
+   * Get attributes
+   * @return attributes
+  **/
+  @JsonProperty("attributes")
+  public ItemAttributesRequest getAttributes() {
+    return attributes;
+  }
 
-  @ApiModelProperty(required = true, value = "")
+  public void setAttributes(ItemAttributesRequest attributes) {
+    this.attributes = attributes;
+  }
 
-  private ItemAttributesRequest attributes;
+  public CatalogsCreateRetailItem attributes(ItemAttributesRequest attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
  /**
    * The catalog item id in the merchant namespace
    * @return itemId
@@ -97,24 +115,6 @@ CREATE(String.valueOf("CREATE"));
     return this;
   }
 
- /**
-   * Get attributes
-   * @return attributes
-  **/
-  @JsonProperty("attributes")
-  public ItemAttributesRequest getAttributes() {
-    return attributes;
-  }
-
-  public void setAttributes(ItemAttributesRequest attributes) {
-    this.attributes = attributes;
-  }
-
-  public CatalogsCreateRetailItem attributes(ItemAttributesRequest attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -124,14 +124,14 @@ CREATE(String.valueOf("CREATE"));
       return false;
     }
     CatalogsCreateRetailItem catalogsCreateRetailItem = (CatalogsCreateRetailItem) o;
-    return Objects.equals(this.itemId, catalogsCreateRetailItem.itemId) &&
-        Objects.equals(this.operation, catalogsCreateRetailItem.operation) &&
-        Objects.equals(this.attributes, catalogsCreateRetailItem.attributes);
+    return Objects.equals(this.attributes, catalogsCreateRetailItem.attributes) &&
+        Objects.equals(this.itemId, catalogsCreateRetailItem.itemId) &&
+        Objects.equals(this.operation, catalogsCreateRetailItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, operation, attributes);
+    return Objects.hash(attributes, itemId, operation);
   }
 
   @Override
@@ -139,9 +139,9 @@ CREATE(String.valueOf("CREATE"));
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreateRetailItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

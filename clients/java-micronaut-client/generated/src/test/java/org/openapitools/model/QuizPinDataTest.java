@@ -42,19 +42,19 @@ public class QuizPinDataTest {
     }
 
     /**
-     * Test the property 'tieBreakerType'
-     */
-    @Test
-    public void tieBreakerTypeTest() {
-        // TODO: test tieBreakerType
-    }
-
-    /**
      * Test the property 'tieBreakerCustomResult'
      */
     @Test
     public void tieBreakerCustomResultTest() {
         // TODO: test tieBreakerCustomResult
+    }
+
+    /**
+     * Test the property 'tieBreakerType'
+     */
+    @Test
+    public void tieBreakerTypeTest() {
+        // TODO: test tieBreakerType
     }
 
 }

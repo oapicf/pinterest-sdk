@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;UserSingleAssetBinding&gt;](UserSingleAssetBinding.md)
 `bookmark` | string
+`items` | [Array&lt;UserSingleAssetBinding&gt;](UserSingleAssetBinding.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { BusinessAssetPartnersGet200Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "items": null,
   "bookmark": null,
+  "items": null,
 } satisfies BusinessAssetPartnersGet200Response
 
 console.log(example)

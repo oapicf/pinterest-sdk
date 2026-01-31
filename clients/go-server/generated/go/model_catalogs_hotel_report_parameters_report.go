@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -31,8 +31,8 @@ type CatalogsHotelReportParametersReport struct {
 // AssertCatalogsHotelReportParametersReportRequired checks if the required fields are not zero-ed
 func AssertCatalogsHotelReportParametersReportRequired(obj CatalogsHotelReportParametersReport) error {
 	elements := map[string]interface{}{
-		"report_type": obj.ReportType,
 		"feed_id": obj.FeedId,
+		"report_type": obj.ReportType,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

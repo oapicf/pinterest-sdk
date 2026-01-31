@@ -12,9 +12,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 *AdAccountsApi* | [**adAccounts/create**](Apis/AdAccountsApi.md#adAccounts/create) | **POST** /ad_accounts | Create ad account |
 *AdAccountsApi* | [**adAccounts/get**](Apis/AdAccountsApi.md#adAccounts/get) | **GET** /ad_accounts/{ad_account_id} | Get ad account |
 *AdAccountsApi* | [**adAccounts/list**](Apis/AdAccountsApi.md#adAccounts/list) | **GET** /ad_accounts | List ad accounts |
+*AdAccountsApi* | [**analytics/createConversionProductReport**](Apis/AdAccountsApi.md#analytics/createConversionProductReport) | **POST** /ad_accounts/{ad_account_id}/reports/brand_category_sku | Create a request for a brand, category, SKU report |
 *AdAccountsApi* | [**analytics/createMmmReport**](Apis/AdAccountsApi.md#analytics/createMmmReport) | **POST** /ad_accounts/{ad_account_id}/mmm_reports | Create a request for a Marketing Mix Modeling (MMM) report |
 *AdAccountsApi* | [**analytics/createReport**](Apis/AdAccountsApi.md#analytics/createReport) | **POST** /ad_accounts/{ad_account_id}/reports | Create async request for an account analytics report |
 *AdAccountsApi* | [**analytics/createTemplateReport**](Apis/AdAccountsApi.md#analytics/createTemplateReport) | **POST** /ad_accounts/{ad_account_id}/templates/{template_id}/reports | Create async request for an analytics report using a template |
+*AdAccountsApi* | [**analytics/getConversionProductReport**](Apis/AdAccountsApi.md#analytics/getConversionProductReport) | **GET** /ad_accounts/{ad_account_id}/reports/brand_category_sku | Get advertiser brand, category, SKU report |
 *AdAccountsApi* | [**analytics/getMmmReport**](Apis/AdAccountsApi.md#analytics/getMmmReport) | **GET** /ad_accounts/{ad_account_id}/mmm_reports | Get advertiser Marketing Mix Modeling (MMM) report. |
 *AdAccountsApi* | [**analytics/getReport**](Apis/AdAccountsApi.md#analytics/getReport) | **GET** /ad_accounts/{ad_account_id}/reports | Get the account analytics report created by the async call |
 *AdAccountsApi* | [**sandbox/delete**](Apis/AdAccountsApi.md#sandbox/delete) | **DELETE** /ad_accounts/{ad_account_id}/sandbox | Delete ads data for ad account in API Sandbox |
@@ -46,12 +48,13 @@ All URIs are relative to *https://api.pinterest.com/v5*
 *AudienceSharingApi* | [**updateBusinessToAdAccountSharedAudience**](Apis/AudienceSharingApi.md#updateBusinessToAdAccountSharedAudience) | **PATCH** /businesses/{business_id}/audiences/ad_accounts/shared | Update audience sharing from a business to ad accounts |
 *AudienceSharingApi* | [**updateBusinessToBusinessSharedAudience**](Apis/AudienceSharingApi.md#updateBusinessToBusinessSharedAudience) | **PATCH** /businesses/{business_id}/audiences/businesses/shared | Update audience sharing between businesses |
 | *AudiencesApi* | [**audiences/create**](Apis/AudiencesApi.md#audiences/create) | **POST** /ad_accounts/{ad_account_id}/audiences | Create audience |
-*AudiencesApi* | [**audiences/createCustom**](Apis/AudiencesApi.md#audiences/createCustom) | **POST** /ad_accounts/{ad_account_id}/audiences/custom | Create custom audience |
 *AudiencesApi* | [**audiences/get**](Apis/AudiencesApi.md#audiences/get) | **GET** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Get audience |
 *AudiencesApi* | [**audiences/list**](Apis/AudiencesApi.md#audiences/list) | **GET** /ad_accounts/{ad_account_id}/audiences | List audiences |
 *AudiencesApi* | [**audiences/update**](Apis/AudiencesApi.md#audiences/update) | **PATCH** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Update audience |
 | *BillingApi* | [**adsCredit/redeem**](Apis/BillingApi.md#adsCredit/redeem) | **POST** /ad_accounts/{ad_account_id}/ads_credit/redeem | Redeem ad credits |
 *BillingApi* | [**adsCreditsDiscounts/get**](Apis/BillingApi.md#adsCreditsDiscounts/get) | **GET** /ad_accounts/{ad_account_id}/ads_credit/discounts | Get ads credit discounts |
+*BillingApi* | [**billingInvoiceDownload/get**](Apis/BillingApi.md#billingInvoiceDownload/get) | **GET** /ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download | Get download url for a billing invoice |
+*BillingApi* | [**billingInvoices/get**](Apis/BillingApi.md#billingInvoices/get) | **GET** /ad_accounts/{ad_account_id}/billing_invoices | Get billing invoices |
 *BillingApi* | [**billingProfiles/get**](Apis/BillingApi.md#billingProfiles/get) | **GET** /ad_accounts/{ad_account_id}/billing_profiles | Get billing profiles |
 *BillingApi* | [**ssioAccounts/get**](Apis/BillingApi.md#ssioAccounts/get) | **GET** /ad_accounts/{ad_account_id}/ssio/accounts | Get Salesforce account details including bill-to information. |
 *BillingApi* | [**ssioInsertionOrder/create**](Apis/BillingApi.md#ssioInsertionOrder/create) | **POST** /ad_accounts/{ad_account_id}/ssio/insertion_orders | Create insertion order through SSIO. |
@@ -91,51 +94,60 @@ All URIs are relative to *https://api.pinterest.com/v5*
 *BusinessAccessInviteApi* | [**createMembershipOrPartnershipInvites**](Apis/BusinessAccessInviteApi.md#createMembershipOrPartnershipInvites) | **POST** /businesses/{business_id}/invites | Create invites or requests |
 *BusinessAccessInviteApi* | [**get/invites**](Apis/BusinessAccessInviteApi.md#get/invites) | **GET** /businesses/{business_id}/invites | Get invites/requests |
 *BusinessAccessInviteApi* | [**respondBusinessAccessInvites**](Apis/BusinessAccessInviteApi.md#respondBusinessAccessInvites) | **PATCH** /businesses/invites | Accept or decline an invite/request |
-| *BusinessAccessRelationshipsApi* | [**deleteBusinessMembership**](Apis/BusinessAccessRelationshipsApi.md#deleteBusinessMembership) | **DELETE** /businesses/{business_id}/members | Terminate business memberships |
+| *BusinessAccessRelationshipsApi* | [**brandAccounts/create**](Apis/BusinessAccessRelationshipsApi.md#brandAccounts/create) | **POST** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts | Create a Brand Account |
+*BusinessAccessRelationshipsApi* | [**brandAccounts/update**](Apis/BusinessAccessRelationshipsApi.md#brandAccounts/update) | **PATCH** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id} | Update a Brand Account |
+*BusinessAccessRelationshipsApi* | [**deleteBusinessMembership**](Apis/BusinessAccessRelationshipsApi.md#deleteBusinessMembership) | **DELETE** /businesses/{business_id}/members | Terminate business memberships |
 *BusinessAccessRelationshipsApi* | [**deleteBusinessPartners**](Apis/BusinessAccessRelationshipsApi.md#deleteBusinessPartners) | **DELETE** /businesses/{business_id}/partners | Terminate business partnerships |
 *BusinessAccessRelationshipsApi* | [**get/businessEmployers**](Apis/BusinessAccessRelationshipsApi.md#get/businessEmployers) | **GET** /businesses/employers | List business employers for user |
 *BusinessAccessRelationshipsApi* | [**get/businessMembers**](Apis/BusinessAccessRelationshipsApi.md#get/businessMembers) | **GET** /businesses/{business_id}/members | Get business members |
 *BusinessAccessRelationshipsApi* | [**get/businessPartners**](Apis/BusinessAccessRelationshipsApi.md#get/businessPartners) | **GET** /businesses/{business_id}/partners | Get business partners |
+*BusinessAccessRelationshipsApi* | [**systemUser/update**](Apis/BusinessAccessRelationshipsApi.md#systemUser/update) | **PATCH** /businesses/{business_id}/system_users/{system_user_id} | Update a system user information. |
 *BusinessAccessRelationshipsApi* | [**update/businessMemberships**](Apis/BusinessAccessRelationshipsApi.md#update/businessMemberships) | **PATCH** /businesses/{business_id}/members | Update member's business role |
-| *CampaignsApi* | [**campaignTargetingAnalytics/get**](Apis/CampaignsApi.md#campaignTargetingAnalytics/get) | **GET** /ad_accounts/{ad_account_id}/campaigns/targeting_analytics | Get targeting analytics for campaigns |
+| *CampaignsApi* | [**adPins/analytics**](Apis/CampaignsApi.md#adPins/analytics) | **GET** /ad_accounts/{ad_account_id}/pins/analytics | Get pins analytics |
+*CampaignsApi* | [**campaignTargetingAnalytics/get**](Apis/CampaignsApi.md#campaignTargetingAnalytics/get) | **GET** /ad_accounts/{ad_account_id}/campaigns/targeting_analytics | Get targeting analytics for campaigns |
 *CampaignsApi* | [**campaigns/analytics**](Apis/CampaignsApi.md#campaigns/analytics) | **GET** /ad_accounts/{ad_account_id}/campaigns/analytics | Get campaign analytics |
 *CampaignsApi* | [**campaigns/create**](Apis/CampaignsApi.md#campaigns/create) | **POST** /ad_accounts/{ad_account_id}/campaigns | Create campaigns |
 *CampaignsApi* | [**campaigns/get**](Apis/CampaignsApi.md#campaigns/get) | **GET** /ad_accounts/{ad_account_id}/campaigns/{campaign_id} | Get campaign |
 *CampaignsApi* | [**campaigns/list**](Apis/CampaignsApi.md#campaigns/list) | **GET** /ad_accounts/{ad_account_id}/campaigns | List campaigns |
 *CampaignsApi* | [**campaigns/update**](Apis/CampaignsApi.md#campaigns/update) | **PATCH** /ad_accounts/{ad_account_id}/campaigns | Update campaigns |
-| *CatalogsApi* | [**catalogs/create**](Apis/CatalogsApi.md#catalogs/create) | **POST** /catalogs | Create catalog |
+| *CatalogFeedsApi* | [**feedProcessingResults/list**](Apis/CatalogFeedsApi.md#feedProcessingResults/list) | **GET** /catalogs/feeds/{feed_id}/processing_results | List feed processing results |
+*CatalogFeedsApi* | [**feeds/create**](Apis/CatalogFeedsApi.md#feeds/create) | **POST** /catalogs/feeds | Create feed |
+*CatalogFeedsApi* | [**feeds/delete**](Apis/CatalogFeedsApi.md#feeds/delete) | **DELETE** /catalogs/feeds/{feed_id} | Delete feed |
+*CatalogFeedsApi* | [**feeds/get**](Apis/CatalogFeedsApi.md#feeds/get) | **GET** /catalogs/feeds/{feed_id} | Get feed |
+*CatalogFeedsApi* | [**feeds/ingest**](Apis/CatalogFeedsApi.md#feeds/ingest) | **POST** /catalogs/feeds/{feed_id}/ingest | Ingest feed items |
+*CatalogFeedsApi* | [**feeds/list**](Apis/CatalogFeedsApi.md#feeds/list) | **GET** /catalogs/feeds | List feeds |
+*CatalogFeedsApi* | [**feeds/update**](Apis/CatalogFeedsApi.md#feeds/update) | **PATCH** /catalogs/feeds/{feed_id} | Update feed |
+*CatalogFeedsApi* | [**itemsIssues/list**](Apis/CatalogFeedsApi.md#itemsIssues/list) | **GET** /catalogs/processing_results/{processing_result_id}/item_issues | List item issues |
+| *CatalogItemsApi* | [**items/post**](Apis/CatalogItemsApi.md#items/post) | **POST** /catalogs/items | Get catalogs items (POST) |
+*CatalogItemsApi* | [**itemsBatch/get**](Apis/CatalogItemsApi.md#itemsBatch/get) | **GET** /catalogs/items/batch/{batch_id} | Get item batch status |
+*CatalogItemsApi* | [**itemsBatch/post**](Apis/CatalogItemsApi.md#itemsBatch/post) | **POST** /catalogs/items/batch | Operate on item batch |
+| *CatalogProductGroupsApi* | [**catalogsProductGroupPins/list**](Apis/CatalogProductGroupsApi.md#catalogsProductGroupPins/list) | **GET** /catalogs/product_groups/{product_group_id}/products | List products by product group |
+*CatalogProductGroupsApi* | [**catalogsProductGroups/create**](Apis/CatalogProductGroupsApi.md#catalogsProductGroups/create) | **POST** /catalogs/product_groups | Create product group |
+*CatalogProductGroupsApi* | [**catalogsProductGroups/createMany**](Apis/CatalogProductGroupsApi.md#catalogsProductGroups/createMany) | **POST** /catalogs/product_groups/multiple | Create product groups |
+*CatalogProductGroupsApi* | [**catalogsProductGroups/delete**](Apis/CatalogProductGroupsApi.md#catalogsProductGroups/delete) | **DELETE** /catalogs/product_groups/{product_group_id} | Delete product group |
+*CatalogProductGroupsApi* | [**catalogsProductGroups/deleteMany**](Apis/CatalogProductGroupsApi.md#catalogsProductGroups/deleteMany) | **DELETE** /catalogs/product_groups/multiple | Delete product groups |
+*CatalogProductGroupsApi* | [**catalogsProductGroups/get**](Apis/CatalogProductGroupsApi.md#catalogsProductGroups/get) | **GET** /catalogs/product_groups/{product_group_id} | Get product group |
+*CatalogProductGroupsApi* | [**catalogsProductGroups/list**](Apis/CatalogProductGroupsApi.md#catalogsProductGroups/list) | **GET** /catalogs/product_groups | List product groups |
+*CatalogProductGroupsApi* | [**catalogsProductGroups/productCountsGet**](Apis/CatalogProductGroupsApi.md#catalogsProductGroups/productCountsGet) | **GET** /catalogs/product_groups/{product_group_id}/product_counts | Get product counts |
+*CatalogProductGroupsApi* | [**catalogsProductGroups/update**](Apis/CatalogProductGroupsApi.md#catalogsProductGroups/update) | **PATCH** /catalogs/product_groups/{product_group_id} | Update single product group |
+*CatalogProductGroupsApi* | [**productsByProductGroupFilter/list**](Apis/CatalogProductGroupsApi.md#productsByProductGroupFilter/list) | **POST** /catalogs/products/get_by_product_group_filters | List products by filter |
+| *CatalogReportsApi* | [**reports/create**](Apis/CatalogReportsApi.md#reports/create) | **POST** /catalogs/reports | Build catalogs report |
+*CatalogReportsApi* | [**reports/get**](Apis/CatalogReportsApi.md#reports/get) | **GET** /catalogs/reports | Get catalogs report |
+*CatalogReportsApi* | [**reports/stats**](Apis/CatalogReportsApi.md#reports/stats) | **GET** /catalogs/reports/stats | List report stats |
+| *CatalogsApi* | [**catalogs/availableFilterValues**](Apis/CatalogsApi.md#catalogs/availableFilterValues) | **GET** /catalogs/available_filter_values | List available filter values |
+*CatalogsApi* | [**catalogs/create**](Apis/CatalogsApi.md#catalogs/create) | **POST** /catalogs | Create catalog |
 *CatalogsApi* | [**catalogs/list**](Apis/CatalogsApi.md#catalogs/list) | **GET** /catalogs | List catalogs |
-*CatalogsApi* | [**catalogsProductGroupPins/list**](Apis/CatalogsApi.md#catalogsProductGroupPins/list) | **GET** /catalogs/product_groups/{product_group_id}/products | List products by product group |
-*CatalogsApi* | [**catalogsProductGroups/create**](Apis/CatalogsApi.md#catalogsProductGroups/create) | **POST** /catalogs/product_groups | Create product group |
-*CatalogsApi* | [**catalogsProductGroups/createMany**](Apis/CatalogsApi.md#catalogsProductGroups/createMany) | **POST** /catalogs/product_groups/multiple | Create product groups |
-*CatalogsApi* | [**catalogsProductGroups/delete**](Apis/CatalogsApi.md#catalogsProductGroups/delete) | **DELETE** /catalogs/product_groups/{product_group_id} | Delete product group |
-*CatalogsApi* | [**catalogsProductGroups/deleteMany**](Apis/CatalogsApi.md#catalogsProductGroups/deleteMany) | **DELETE** /catalogs/product_groups/multiple | Delete product groups |
-*CatalogsApi* | [**catalogsProductGroups/get**](Apis/CatalogsApi.md#catalogsProductGroups/get) | **GET** /catalogs/product_groups/{product_group_id} | Get product group |
-*CatalogsApi* | [**catalogsProductGroups/list**](Apis/CatalogsApi.md#catalogsProductGroups/list) | **GET** /catalogs/product_groups | List product groups |
-*CatalogsApi* | [**catalogsProductGroups/productCountsGet**](Apis/CatalogsApi.md#catalogsProductGroups/productCountsGet) | **GET** /catalogs/product_groups/{product_group_id}/product_counts | Get product counts |
-*CatalogsApi* | [**catalogsProductGroups/update**](Apis/CatalogsApi.md#catalogsProductGroups/update) | **PATCH** /catalogs/product_groups/{product_group_id} | Update single product group |
-*CatalogsApi* | [**feedProcessingResults/list**](Apis/CatalogsApi.md#feedProcessingResults/list) | **GET** /catalogs/feeds/{feed_id}/processing_results | List feed processing results |
-*CatalogsApi* | [**feeds/create**](Apis/CatalogsApi.md#feeds/create) | **POST** /catalogs/feeds | Create feed |
-*CatalogsApi* | [**feeds/delete**](Apis/CatalogsApi.md#feeds/delete) | **DELETE** /catalogs/feeds/{feed_id} | Delete feed |
-*CatalogsApi* | [**feeds/get**](Apis/CatalogsApi.md#feeds/get) | **GET** /catalogs/feeds/{feed_id} | Get feed |
-*CatalogsApi* | [**feeds/ingest**](Apis/CatalogsApi.md#feeds/ingest) | **POST** /catalogs/feeds/{feed_id}/ingest | Ingest feed items |
-*CatalogsApi* | [**feeds/list**](Apis/CatalogsApi.md#feeds/list) | **GET** /catalogs/feeds | List feeds |
-*CatalogsApi* | [**feeds/update**](Apis/CatalogsApi.md#feeds/update) | **PATCH** /catalogs/feeds/{feed_id} | Update feed |
-*CatalogsApi* | [**items/get**](Apis/CatalogsApi.md#items/get) | **GET** /catalogs/items | Get catalogs items |
-*CatalogsApi* | [**items/post**](Apis/CatalogsApi.md#items/post) | **POST** /catalogs/items | Get catalogs items (POST) |
-*CatalogsApi* | [**itemsBatch/get**](Apis/CatalogsApi.md#itemsBatch/get) | **GET** /catalogs/items/batch/{batch_id} | Get item batch status |
-*CatalogsApi* | [**itemsBatch/post**](Apis/CatalogsApi.md#itemsBatch/post) | **POST** /catalogs/items/batch | Operate on item batch |
-*CatalogsApi* | [**itemsIssues/list**](Apis/CatalogsApi.md#itemsIssues/list) | **GET** /catalogs/processing_results/{processing_result_id}/item_issues | List item issues |
-*CatalogsApi* | [**productsByProductGroupFilter/list**](Apis/CatalogsApi.md#productsByProductGroupFilter/list) | **POST** /catalogs/products/get_by_product_group_filters | List products by filter |
-*CatalogsApi* | [**reports/create**](Apis/CatalogsApi.md#reports/create) | **POST** /catalogs/reports | Build catalogs report |
-*CatalogsApi* | [**reports/get**](Apis/CatalogsApi.md#reports/get) | **GET** /catalogs/reports | Get catalogs report |
-*CatalogsApi* | [**reports/stats**](Apis/CatalogsApi.md#reports/stats) | **GET** /catalogs/reports/stats | List report stats |
+| *ConversionEqsApi* | [**conversionEqs/list**](Apis/ConversionEqsApi.md#conversionEqs/list) | **GET** /ad_accounts/{ad_account_id}/conversion_eqs | Get event quality score (EQS) |
 | *ConversionEventsApi* | [**events/create**](Apis/ConversionEventsApi.md#events/create) | **POST** /ad_accounts/{ad_account_id}/events | Send conversions |
 | *ConversionTagsApi* | [**conversionTags/create**](Apis/ConversionTagsApi.md#conversionTags/create) | **POST** /ad_accounts/{ad_account_id}/conversion_tags | Create conversion tag |
 *ConversionTagsApi* | [**conversionTags/get**](Apis/ConversionTagsApi.md#conversionTags/get) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id} | Get conversion tag |
-*ConversionTagsApi* | [**conversionTags/list**](Apis/ConversionTagsApi.md#conversionTags/list) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | Get conversion tags |
+*ConversionTagsApi* | [**conversionTags/list**](Apis/ConversionTagsApi.md#conversionTags/list) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | List conversion tags |
 *ConversionTagsApi* | [**ocpmEligibleConversionTags/get**](Apis/ConversionTagsApi.md#ocpmEligibleConversionTags/get) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible | Get Ocpm eligible conversion tags |
 *ConversionTagsApi* | [**pageVisitConversionTags/get**](Apis/ConversionTagsApi.md#pageVisitConversionTags/get) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/page_visit | Get page visit conversion tags |
+| *ConversionsApi* | [**advertiserDefinedEvents/get**](Apis/ConversionsApi.md#advertiserDefinedEvents/get) | **GET** /ad_accounts/{ad_account_id}/advertiser_defined_events | Get advertiser defined events |
+| *CustomerListUploadsApi* | [**customerListUploads/create**](Apis/CustomerListUploadsApi.md#customerListUploads/create) | **POST** /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads | Create customer list upload |
+*CustomerListUploadsApi* | [**customerListUploads/get**](Apis/CustomerListUploadsApi.md#customerListUploads/get) | **GET** /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id} | Get customer list upload |
+*CustomerListUploadsApi* | [**customerListUploads/run**](Apis/CustomerListUploadsApi.md#customerListUploads/run) | **POST** /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads/{customer_list_upload_id}/run | Run customer list upload |
 | *CustomerListsApi* | [**customerLists/create**](Apis/CustomerListsApi.md#customerLists/create) | **POST** /ad_accounts/{ad_account_id}/customer_lists | Create customer lists |
 *CustomerListsApi* | [**customerLists/get**](Apis/CustomerListsApi.md#customerLists/get) | **GET** /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id} | Get customer list |
 *CustomerListsApi* | [**customerLists/list**](Apis/CustomerListsApi.md#customerLists/list) | **GET** /ad_accounts/{ad_account_id}/customer_lists | Get customer lists |
@@ -152,8 +164,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 *KeywordsApi* | [**keywords/get**](Apis/KeywordsApi.md#keywords/get) | **GET** /ad_accounts/{ad_account_id}/keywords | Get keywords |
 *KeywordsApi* | [**keywords/update**](Apis/KeywordsApi.md#keywords/update) | **PATCH** /ad_accounts/{ad_account_id}/keywords | Update keywords |
 *KeywordsApi* | [**trendingKeywords/list**](Apis/KeywordsApi.md#trendingKeywords/list) | **GET** /trends/keywords/{region}/top/{trend_type} | List trending keywords |
+| *LabelsApi* | [**labels/create**](Apis/LabelsApi.md#labels/create) | **POST** /ad_accounts/{ad_account_id}/labels | Create labels |
+*LabelsApi* | [**labels/list**](Apis/LabelsApi.md#labels/list) | **GET** /ad_accounts/{ad_account_id}/labels | List labels |
+*LabelsApi* | [**labels/update**](Apis/LabelsApi.md#labels/update) | **PATCH** /ad_accounts/{ad_account_id}/labels | Update labels |
 | *LeadAdsApi* | [**adAccountsSubscriptions/delById**](Apis/LeadAdsApi.md#adAccountsSubscriptions/delById) | **DELETE** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Delete lead ads subscription |
-*LeadAdsApi* | [**adAccountsSubscriptions/getById**](Apis/LeadAdsApi.md#adAccountsSubscriptions/getById) | **GET** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Get lead ads subscription |
+*LeadAdsApi* | [**adAccountsSubscriptions/getById**](Apis/LeadAdsApi.md#adAccountsSubscriptions/getById) | **GET** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Get lead ads subscription by ID |
 *LeadAdsApi* | [**adAccountsSubscriptions/getList**](Apis/LeadAdsApi.md#adAccountsSubscriptions/getList) | **GET** /ad_accounts/{ad_account_id}/leads/subscriptions | Get lead ads subscriptions |
 *LeadAdsApi* | [**adAccountsSubscriptions/post**](Apis/LeadAdsApi.md#adAccountsSubscriptions/post) | **POST** /ad_accounts/{ad_account_id}/leads/subscriptions | Create lead ads subscription |
 | *LeadFormsApi* | [**leadForm/get**](Apis/LeadFormsApi.md#leadForm/get) | **GET** /ad_accounts/{ad_account_id}/lead_forms/{lead_form_id} | Get lead form by id |
@@ -166,7 +181,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
 | *MediaApi* | [**media/create**](Apis/MediaApi.md#media/create) | **POST** /media | Register media upload |
 *MediaApi* | [**media/get**](Apis/MediaApi.md#media/get) | **GET** /media/{media_id} | Get media upload details |
 *MediaApi* | [**media/list**](Apis/MediaApi.md#media/list) | **GET** /media | List media uploads |
-| *OauthApi* | [**oauth/token**](Apis/OauthApi.md#oauth/token) | **POST** /oauth/token | Generate OAuth access token |
+| *MsotEventsApi* | [**msotEvents/create**](Apis/MsotEventsApi.md#msotEvents/create) | **POST** /ad_accounts/{ad_account_id}/msot/events | Send Measurement Source Of Truth (MSOT) attributed conversion events |
+| *NotificationApi* | [**notification/post**](Apis/NotificationApi.md#notification/post) | **POST** /notifications | Receive notifications from external partners. |
+| *OauthApi* | [**oauth/conversionToken**](Apis/OauthApi.md#oauth/conversionToken) | **POST** /oauth/conversion_token | Generate OAuth access token for conversion API |
+*OauthApi* | [**oauth/token**](Apis/OauthApi.md#oauth/token) | **POST** /oauth/token | Generate OAuth access token |
+*OauthApi* | [**token/revoke**](Apis/OauthApi.md#token/revoke) | **POST** /oauth/token/revoke | Revoke a token |
 | *OrderLinesApi* | [**orderLines/get**](Apis/OrderLinesApi.md#orderLines/get) | **GET** /ad_accounts/{ad_account_id}/order_lines/{order_line_id} | Get order line |
 *OrderLinesApi* | [**orderLines/list**](Apis/OrderLinesApi.md#orderLines/list) | **GET** /ad_accounts/{ad_account_id}/order_lines | Get order lines |
 | *PinsApi* | [**multiPins/analytics**](Apis/PinsApi.md#multiPins/analytics) | **GET** /pins/analytics | Get multiple Pin analytics |
@@ -177,11 +196,19 @@ All URIs are relative to *https://api.pinterest.com/v5*
 *PinsApi* | [**pins/list**](Apis/PinsApi.md#pins/list) | **GET** /pins | List Pins |
 *PinsApi* | [**pins/save**](Apis/PinsApi.md#pins/save) | **POST** /pins/{pin_id}/save | Save Pin |
 *PinsApi* | [**pins/update**](Apis/PinsApi.md#pins/update) | **PATCH** /pins/{pin_id} | Update Pin |
+| *ProductCategoriesApi* | [**trendsFeaturedTopics/list**](Apis/ProductCategoriesApi.md#trendsFeaturedTopics/list) | **GET** /trends/topics/featured | Get featured topics |
+*ProductCategoriesApi* | [**trendsProductCategoriesDetails/list**](Apis/ProductCategoriesApi.md#trendsProductCategoriesDetails/list) | **GET** /trends/product_categories/details | Get product category details |
+*ProductCategoriesApi* | [**trendsProductCategoriesTrending/list**](Apis/ProductCategoriesApi.md#trendsProductCategoriesTrending/list) | **GET** /trends/product_categories/trending | Get a list of growing Shopping Product Categories |
 | *ProductGroupPromotionsApi* | [**productGroupPromotions/create**](Apis/ProductGroupPromotionsApi.md#productGroupPromotions/create) | **POST** /ad_accounts/{ad_account_id}/product_group_promotions | Create product group promotions |
 *ProductGroupPromotionsApi* | [**productGroupPromotions/get**](Apis/ProductGroupPromotionsApi.md#productGroupPromotions/get) | **GET** /ad_accounts/{ad_account_id}/product_group_promotions/{product_group_promotion_id} | Get a product group promotion by id |
 *ProductGroupPromotionsApi* | [**productGroupPromotions/list**](Apis/ProductGroupPromotionsApi.md#productGroupPromotions/list) | **GET** /ad_accounts/{ad_account_id}/product_group_promotions | Get product group promotions |
 *ProductGroupPromotionsApi* | [**productGroupPromotions/update**](Apis/ProductGroupPromotionsApi.md#productGroupPromotions/update) | **PATCH** /ad_accounts/{ad_account_id}/product_group_promotions | Update product group promotions |
 *ProductGroupPromotionsApi* | [**productGroups/analytics**](Apis/ProductGroupPromotionsApi.md#productGroups/analytics) | **GET** /ad_accounts/{ad_account_id}/product_groups/analytics | Get product group analytics |
+| *PromotionsApi* | [**promotions/create**](Apis/PromotionsApi.md#promotions/create) | **POST** /ad_accounts/{ad_account_id}/promotions | Create promotions |
+*PromotionsApi* | [**promotions/delete**](Apis/PromotionsApi.md#promotions/delete) | **DELETE** /ad_accounts/{ad_account_id}/promotions/{promotion_id} | Delete promotion by id |
+*PromotionsApi* | [**promotions/get**](Apis/PromotionsApi.md#promotions/get) | **GET** /ad_accounts/{ad_account_id}/promotions/{promotion_id} | Get promotion by id |
+*PromotionsApi* | [**promotions/list**](Apis/PromotionsApi.md#promotions/list) | **GET** /ad_accounts/{ad_account_id}/promotions | Get promotions |
+*PromotionsApi* | [**promotions/update**](Apis/PromotionsApi.md#promotions/update) | **PATCH** /ad_accounts/{ad_account_id}/promotions | Update promotions |
 | *ResourcesApi* | [**adAccountCountries/get**](Apis/ResourcesApi.md#adAccountCountries/get) | **GET** /resources/ad_account_countries | Get ad accounts countries |
 *ResourcesApi* | [**deliveryMetrics/get**](Apis/ResourcesApi.md#deliveryMetrics/get) | **GET** /resources/delivery_metrics | Get available metrics' definitions |
 *ResourcesApi* | [**interestTargetingOptions/get**](Apis/ResourcesApi.md#interestTargetingOptions/get) | **GET** /resources/targeting/interests/{interest_id} | Get interest details |
@@ -220,11 +247,12 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [ActionType](./Models/ActionType.md)
  - [AdAccount](./Models/AdAccount.md)
  - [AdAccountAnalyticsResponse_inner](./Models/AdAccountAnalyticsResponse_inner.md)
- - [AdAccountCreateRequest](./Models/AdAccountCreateRequest.md)
+ - [AdAccountCreate](./Models/AdAccountCreate.md)
  - [AdAccountCreateSubscriptionRequest](./Models/AdAccountCreateSubscriptionRequest.md)
  - [AdAccountCreateSubscriptionRequest_partner_metadata](./Models/AdAccountCreateSubscriptionRequest_partner_metadata.md)
  - [AdAccountCreateSubscriptionResponse](./Models/AdAccountCreateSubscriptionResponse.md)
  - [AdAccountGetSubscriptionResponse](./Models/AdAccountGetSubscriptionResponse.md)
+ - [AdAccountOwner](./Models/AdAccountOwner.md)
  - [AdAccountsCountryResponse](./Models/AdAccountsCountryResponse.md)
  - [AdAccountsCountryResponseData](./Models/AdAccountsCountryResponseData.md)
  - [AdArrayResponse](./Models/AdArrayResponse.md)
@@ -239,21 +267,25 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [AdGroupAudienceSizingResponse](./Models/AdGroupAudienceSizingResponse.md)
  - [AdGroupCommon](./Models/AdGroupCommon.md)
  - [AdGroupCreateRequest](./Models/AdGroupCreateRequest.md)
+ - [AdGroupIdFilter](./Models/AdGroupIdFilter.md)
  - [AdGroupResponse](./Models/AdGroupResponse.md)
  - [AdGroupSummaryStatus](./Models/AdGroupSummaryStatus.md)
  - [AdGroupUpdateRequest](./Models/AdGroupUpdateRequest.md)
  - [AdGroupsAnalyticsResponse_inner](./Models/AdGroupsAnalyticsResponse_inner.md)
+ - [AdPinAnalytics](./Models/AdPinAnalytics.md)
  - [AdPinId](./Models/AdPinId.md)
  - [AdPreviewCreateFromImage](./Models/AdPreviewCreateFromImage.md)
  - [AdPreviewCreateFromPin](./Models/AdPreviewCreateFromPin.md)
  - [AdPreviewRequest](./Models/AdPreviewRequest.md)
+ - [AdPreviewShopping](./Models/AdPreviewShopping.md)
  - [AdPreviewURLResponse](./Models/AdPreviewURLResponse.md)
  - [AdResponse](./Models/AdResponse.md)
  - [AdUpdateRequest](./Models/AdUpdateRequest.md)
- - [Ad_account_owner](./Models/Ad_account_owner.md)
+ - [AdsAnalyticsAdGroupTargetingType](./Models/AdsAnalyticsAdGroupTargetingType.md)
  - [AdsAnalyticsAdTargetingType](./Models/AdsAnalyticsAdTargetingType.md)
  - [AdsAnalyticsCampaignTargetingType](./Models/AdsAnalyticsCampaignTargetingType.md)
  - [AdsAnalyticsCreateAsyncRequest](./Models/AdsAnalyticsCreateAsyncRequest.md)
+ - [AdsAnalyticsCreateAsyncRequest_allOf_custom_conversion_event_metrics](./Models/AdsAnalyticsCreateAsyncRequest_allOf_custom_conversion_event_metrics.md)
  - [AdsAnalyticsCreateAsyncResponse](./Models/AdsAnalyticsCreateAsyncResponse.md)
  - [AdsAnalyticsFilterColumn](./Models/AdsAnalyticsFilterColumn.md)
  - [AdsAnalyticsFilterOperator](./Models/AdsAnalyticsFilterOperator.md)
@@ -276,8 +308,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [AdvancedAuctionKey](./Models/AdvancedAuctionKey.md)
  - [AdvancedAuctionOperation](./Models/AdvancedAuctionOperation.md)
  - [AdvancedAuctionOperationError](./Models/AdvancedAuctionOperationError.md)
- - [AdvancedAuctionProcessedItem](./Models/AdvancedAuctionProcessedItem.md)
  - [AdvancedAuctionProcessedItems](./Models/AdvancedAuctionProcessedItems.md)
+ - [AdvertiserDefinedEvent](./Models/AdvertiserDefinedEvent.md)
+ - [AdvertiserDefinedEventsResponse](./Models/AdvertiserDefinedEventsResponse.md)
+ - [AgeTrendsBucket](./Models/AgeTrendsBucket.md)
+ - [AmazonConnectRequest](./Models/AmazonConnectRequest.md)
  - [AnalyticsDailyMetrics](./Models/AnalyticsDailyMetrics.md)
  - [AnalyticsMetricsResponse](./Models/AnalyticsMetricsResponse.md)
  - [AppTypeMultipliers](./Models/AppTypeMultipliers.md)
@@ -288,11 +323,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [AudienceAccountType](./Models/AudienceAccountType.md)
  - [AudienceCategory](./Models/AudienceCategory.md)
  - [AudienceCommon](./Models/AudienceCommon.md)
- - [AudienceCreateCustomRequest](./Models/AudienceCreateCustomRequest.md)
  - [AudienceCreateRequest](./Models/AudienceCreateRequest.md)
- - [AudienceDataParty](./Models/AudienceDataParty.md)
  - [AudienceDefinition](./Models/AudienceDefinition.md)
  - [AudienceDefinitionResponse](./Models/AudienceDefinitionResponse.md)
+ - [AudienceDefinitionScope](./Models/AudienceDefinitionScope.md)
+ - [AudienceDefinitionType](./Models/AudienceDefinitionType.md)
  - [AudienceDemographicValue](./Models/AudienceDemographicValue.md)
  - [AudienceDemographics](./Models/AudienceDemographics.md)
  - [AudienceInsightCategoryArrayResponse](./Models/AudienceInsightCategoryArrayResponse.md)
@@ -301,7 +336,6 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [AudienceInsightsResponse](./Models/AudienceInsightsResponse.md)
  - [AudienceRule](./Models/AudienceRule.md)
  - [AudienceShareType](./Models/AudienceShareType.md)
- - [AudienceSharingType](./Models/AudienceSharingType.md)
  - [AudienceSubcategory](./Models/AudienceSubcategory.md)
  - [AudienceType](./Models/AudienceType.md)
  - [AudienceUpdateOperationType](./Models/AudienceUpdateOperationType.md)
@@ -317,12 +351,20 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [BidFloor](./Models/BidFloor.md)
  - [BidFloorRequest](./Models/BidFloorRequest.md)
  - [BidFloorSpec](./Models/BidFloorSpec.md)
+ - [BillingInvoiceDownloadResponse](./Models/BillingInvoiceDownloadResponse.md)
+ - [BillingInvoiceResponse](./Models/BillingInvoiceResponse.md)
  - [BillingProfilesResponse](./Models/BillingProfilesResponse.md)
  - [Board](./Models/Board.md)
+ - [BoardBase](./Models/BoardBase.md)
+ - [BoardCreate](./Models/BoardCreate.md)
+ - [BoardMedia](./Models/BoardMedia.md)
  - [BoardOwner](./Models/BoardOwner.md)
+ - [BoardPrivacy](./Models/BoardPrivacy.md)
+ - [BoardPrivacyFilter](./Models/BoardPrivacyFilter.md)
  - [BoardSection](./Models/BoardSection.md)
- - [BoardUpdate](./Models/BoardUpdate.md)
- - [Board_media](./Models/Board_media.md)
+ - [BoardUpdatePrivacy](./Models/BoardUpdatePrivacy.md)
+ - [BoardWithUpdatePrivacy](./Models/BoardWithUpdatePrivacy.md)
+ - [BoardWithUpdatePrivacyUpdate](./Models/BoardWithUpdatePrivacyUpdate.md)
  - [BookClosedResponse](./Models/BookClosedResponse.md)
  - [BrandFilter](./Models/BrandFilter.md)
  - [BudgetType](./Models/BudgetType.md)
@@ -349,6 +391,10 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [BusinessRoleForMembers](./Models/BusinessRoleForMembers.md)
  - [BusinessSharedAudience](./Models/BusinessSharedAudience.md)
  - [BusinessSharedAudienceResponse](./Models/BusinessSharedAudienceResponse.md)
+ - [CampaignAudienceMultipliers](./Models/CampaignAudienceMultipliers.md)
+ - [CampaignBidOptions](./Models/CampaignBidOptions.md)
+ - [CampaignBidOptionsCreate](./Models/CampaignBidOptionsCreate.md)
+ - [CampaignBidOptionsUpdate](./Models/CampaignBidOptionsUpdate.md)
  - [CampaignCommon](./Models/CampaignCommon.md)
  - [CampaignCreateCommon](./Models/CampaignCreateCommon.md)
  - [CampaignCreateRequest](./Models/CampaignCreateRequest.md)
@@ -356,19 +402,24 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [CampaignCreateResponseData](./Models/CampaignCreateResponseData.md)
  - [CampaignCreateResponseItem](./Models/CampaignCreateResponseItem.md)
  - [CampaignId](./Models/CampaignId.md)
+ - [CampaignIdFilter](./Models/CampaignIdFilter.md)
+ - [CampaignObjectivesFilter](./Models/CampaignObjectivesFilter.md)
  - [CampaignResponse](./Models/CampaignResponse.md)
  - [CampaignSummaryStatus](./Models/CampaignSummaryStatus.md)
  - [CampaignUpdateRequest](./Models/CampaignUpdateRequest.md)
  - [CampaignUpdateResponse](./Models/CampaignUpdateResponse.md)
  - [CampaignsAnalyticsResponse_inner](./Models/CampaignsAnalyticsResponse_inner.md)
  - [CancelInvitesBody](./Models/CancelInvitesBody.md)
+ - [CarouselSlot](./Models/CarouselSlot.md)
  - [Catalog](./Models/Catalog.md)
+ - [CatalogsAvailableFilterValues](./Models/CatalogsAvailableFilterValues.md)
  - [CatalogsCreateCreativeAssetsItem](./Models/CatalogsCreateCreativeAssetsItem.md)
  - [CatalogsCreateHotelItem](./Models/CatalogsCreateHotelItem.md)
  - [CatalogsCreateReportResponse](./Models/CatalogsCreateReportResponse.md)
  - [CatalogsCreateRequest](./Models/CatalogsCreateRequest.md)
  - [CatalogsCreateRetailItem](./Models/CatalogsCreateRetailItem.md)
  - [CatalogsCreativeAssetsAttributes](./Models/CatalogsCreativeAssetsAttributes.md)
+ - [CatalogsCreativeAssetsAvailableFilterValues](./Models/CatalogsCreativeAssetsAvailableFilterValues.md)
  - [CatalogsCreativeAssetsBatchItem](./Models/CatalogsCreativeAssetsBatchItem.md)
  - [CatalogsCreativeAssetsBatchRequest](./Models/CatalogsCreativeAssetsBatchRequest.md)
  - [CatalogsCreativeAssetsFeed](./Models/CatalogsCreativeAssetsFeed.md)
@@ -408,6 +459,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [CatalogsFeedValidationDetails](./Models/CatalogsFeedValidationDetails.md)
  - [CatalogsFeedValidationErrors](./Models/CatalogsFeedValidationErrors.md)
  - [CatalogsFeedValidationWarnings](./Models/CatalogsFeedValidationWarnings.md)
+ - [CatalogsFeedVideoCounts](./Models/CatalogsFeedVideoCounts.md)
  - [CatalogsFeedsCreateRequest](./Models/CatalogsFeedsCreateRequest.md)
  - [CatalogsFeedsCreateRequest_default_locale](./Models/CatalogsFeedsCreateRequest_default_locale.md)
  - [CatalogsFeedsUpdateRequest](./Models/CatalogsFeedsUpdateRequest.md)
@@ -415,6 +467,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [CatalogsHotelAddress](./Models/CatalogsHotelAddress.md)
  - [CatalogsHotelAttributes](./Models/CatalogsHotelAttributes.md)
  - [CatalogsHotelAttributes_allOf_main_image](./Models/CatalogsHotelAttributes_allOf_main_image.md)
+ - [CatalogsHotelAvailableFilterValues](./Models/CatalogsHotelAvailableFilterValues.md)
  - [CatalogsHotelBatchItem](./Models/CatalogsHotelBatchItem.md)
  - [CatalogsHotelBatchRequest](./Models/CatalogsHotelBatchRequest.md)
  - [CatalogsHotelFeed](./Models/CatalogsHotelFeed.md)
@@ -435,10 +488,13 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [CatalogsHotelProductGroupFiltersAllOf](./Models/CatalogsHotelProductGroupFiltersAllOf.md)
  - [CatalogsHotelProductGroupFiltersAnyOf](./Models/CatalogsHotelProductGroupFiltersAnyOf.md)
  - [CatalogsHotelProductGroupProductCounts](./Models/CatalogsHotelProductGroupProductCounts.md)
+ - [CatalogsHotelProductGroupType](./Models/CatalogsHotelProductGroupType.md)
  - [CatalogsHotelProductGroupUpdateRequest](./Models/CatalogsHotelProductGroupUpdateRequest.md)
  - [CatalogsHotelProductMetadata](./Models/CatalogsHotelProductMetadata.md)
  - [CatalogsHotelReportParameters](./Models/CatalogsHotelReportParameters.md)
  - [CatalogsHotelReportParameters_report](./Models/CatalogsHotelReportParameters_report.md)
+ - [CatalogsHotelReportStatsParameters](./Models/CatalogsHotelReportStatsParameters.md)
+ - [CatalogsHotelReportStatsParameters_report](./Models/CatalogsHotelReportStatsParameters_report.md)
  - [CatalogsItemValidationDetails](./Models/CatalogsItemValidationDetails.md)
  - [CatalogsItemValidationErrors](./Models/CatalogsItemValidationErrors.md)
  - [CatalogsItemValidationIssue](./Models/CatalogsItemValidationIssue.md)
@@ -462,12 +518,11 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [CatalogsProductGroupCreateRequest](./Models/CatalogsProductGroupCreateRequest.md)
  - [CatalogsProductGroupCurrencyCriteria](./Models/CatalogsProductGroupCurrencyCriteria.md)
  - [CatalogsProductGroupFilterKeys](./Models/CatalogsProductGroupFilterKeys.md)
+ - [CatalogsProductGroupFilterOperatorTypeCriteria](./Models/CatalogsProductGroupFilterOperatorTypeCriteria.md)
  - [CatalogsProductGroupFilters](./Models/CatalogsProductGroupFilters.md)
  - [CatalogsProductGroupFiltersAllOf](./Models/CatalogsProductGroupFiltersAllOf.md)
  - [CatalogsProductGroupFiltersAnyOf](./Models/CatalogsProductGroupFiltersAnyOf.md)
  - [CatalogsProductGroupFiltersRequest](./Models/CatalogsProductGroupFiltersRequest.md)
- - [CatalogsProductGroupFiltersRequest_anyOf](./Models/CatalogsProductGroupFiltersRequest_anyOf.md)
- - [CatalogsProductGroupFiltersRequest_anyOf_1](./Models/CatalogsProductGroupFiltersRequest_anyOf_1.md)
  - [CatalogsProductGroupMultipleCountriesCriteria](./Models/CatalogsProductGroupMultipleCountriesCriteria.md)
  - [CatalogsProductGroupMultipleGenderCriteria](./Models/CatalogsProductGroupMultipleGenderCriteria.md)
  - [CatalogsProductGroupMultipleMediaTypesCriteria](./Models/CatalogsProductGroupMultipleMediaTypesCriteria.md)
@@ -477,14 +532,17 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [CatalogsProductGroupProductCountsVertical](./Models/CatalogsProductGroupProductCountsVertical.md)
  - [CatalogsProductGroupStatus](./Models/CatalogsProductGroupStatus.md)
  - [CatalogsProductGroupType](./Models/CatalogsProductGroupType.md)
+ - [CatalogsProductGroupUint32Criteria](./Models/CatalogsProductGroupUint32Criteria.md)
  - [CatalogsProductGroupUpdateRequest](./Models/CatalogsProductGroupUpdateRequest.md)
  - [CatalogsReport](./Models/CatalogsReport.md)
+ - [CatalogsReportAllItemsFilter](./Models/CatalogsReportAllItemsFilter.md)
  - [CatalogsReportDistributionIssueFilter](./Models/CatalogsReportDistributionIssueFilter.md)
  - [CatalogsReportDistributionStats](./Models/CatalogsReportDistributionStats.md)
  - [CatalogsReportFeedIngestionFilter](./Models/CatalogsReportFeedIngestionFilter.md)
  - [CatalogsReportFeedIngestionStats](./Models/CatalogsReportFeedIngestionStats.md)
  - [CatalogsReportParameters](./Models/CatalogsReportParameters.md)
  - [CatalogsReportStats](./Models/CatalogsReportStats.md)
+ - [CatalogsRetailAvailableFilterValues](./Models/CatalogsRetailAvailableFilterValues.md)
  - [CatalogsRetailBatchRequest](./Models/CatalogsRetailBatchRequest.md)
  - [CatalogsRetailBatchRequest_items_inner](./Models/CatalogsRetailBatchRequest_items_inner.md)
  - [CatalogsRetailFeed](./Models/CatalogsRetailFeed.md)
@@ -503,6 +561,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [CatalogsRetailProductGroupUpdateRequest](./Models/CatalogsRetailProductGroupUpdateRequest.md)
  - [CatalogsRetailProductMetadata](./Models/CatalogsRetailProductMetadata.md)
  - [CatalogsRetailReportParameters](./Models/CatalogsRetailReportParameters.md)
+ - [CatalogsRetailReportStatsParameters](./Models/CatalogsRetailReportStatsParameters.md)
  - [CatalogsStatus](./Models/CatalogsStatus.md)
  - [CatalogsType](./Models/CatalogsType.md)
  - [CatalogsUpdatableCreativeAssetsAttributes](./Models/CatalogsUpdatableCreativeAssetsAttributes.md)
@@ -521,20 +580,27 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [CatalogsVerticalProductGroupUpdateRequest](./Models/CatalogsVerticalProductGroupUpdateRequest.md)
  - [CatalogsVerticalsListProductsByCatalogBasedFilterRequest](./Models/CatalogsVerticalsListProductsByCatalogBasedFilterRequest.md)
  - [ConditionFilter](./Models/ConditionFilter.md)
+ - [ContentType](./Models/ContentType.md)
+ - [ConversionAccessTokenResponse](./Models/ConversionAccessTokenResponse.md)
  - [ConversionApiResponse](./Models/ConversionApiResponse.md)
  - [ConversionApiResponse_events_inner](./Models/ConversionApiResponse_events_inner.md)
  - [ConversionAttributionWindowDays](./Models/ConversionAttributionWindowDays.md)
+ - [ConversionEventAppInfo](./Models/ConversionEventAppInfo.md)
+ - [ConversionEventDeviceInfo](./Models/ConversionEventDeviceInfo.md)
  - [ConversionEventResponse](./Models/ConversionEventResponse.md)
  - [ConversionEvents](./Models/ConversionEvents.md)
  - [ConversionEventsUserData](./Models/ConversionEventsUserData.md)
- - [ConversionEventsUserData_anyOf](./Models/ConversionEventsUserData_anyOf.md)
- - [ConversionEventsUserData_anyOf_1](./Models/ConversionEventsUserData_anyOf_1.md)
- - [ConversionEventsUserData_anyOf_2](./Models/ConversionEventsUserData_anyOf_2.md)
+ - [ConversionEventsUserDataProperties](./Models/ConversionEventsUserDataProperties.md)
  - [ConversionEvents_data_inner](./Models/ConversionEvents_data_inner.md)
  - [ConversionEvents_data_inner_custom_data](./Models/ConversionEvents_data_inner_custom_data.md)
  - [ConversionEvents_data_inner_custom_data_contents_inner](./Models/ConversionEvents_data_inner_custom_data_contents_inner.md)
+ - [ConversionHealthSelectionItem](./Models/ConversionHealthSelectionItem.md)
+ - [ConversionMSOTEvents](./Models/ConversionMSOTEvents.md)
+ - [ConversionProductReportRequest](./Models/ConversionProductReportRequest.md)
+ - [ConversionProductReportingColumn](./Models/ConversionProductReportingColumn.md)
  - [ConversionReportAttributionType](./Models/ConversionReportAttributionType.md)
  - [ConversionReportTimeType](./Models/ConversionReportTimeType.md)
+ - [ConversionTag](./Models/ConversionTag.md)
  - [ConversionTagCommon](./Models/ConversionTagCommon.md)
  - [ConversionTagConfigs](./Models/ConversionTagConfigs.md)
  - [ConversionTagCreate](./Models/ConversionTagCreate.md)
@@ -569,9 +635,19 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [CustomLabel2Filter](./Models/CustomLabel2Filter.md)
  - [CustomLabel3Filter](./Models/CustomLabel3Filter.md)
  - [CustomLabel4Filter](./Models/CustomLabel4Filter.md)
+ - [CustomNumber0Filter](./Models/CustomNumber0Filter.md)
+ - [CustomNumber1Filter](./Models/CustomNumber1Filter.md)
+ - [CustomNumber2Filter](./Models/CustomNumber2Filter.md)
+ - [CustomNumber3Filter](./Models/CustomNumber3Filter.md)
+ - [CustomNumber4Filter](./Models/CustomNumber4Filter.md)
  - [CustomerList](./Models/CustomerList.md)
  - [CustomerListRequest](./Models/CustomerListRequest.md)
  - [CustomerListUpdateRequest](./Models/CustomerListUpdateRequest.md)
+ - [CustomerListUpload](./Models/CustomerListUpload.md)
+ - [CustomerListUploadCreateRequest](./Models/CustomerListUploadCreateRequest.md)
+ - [CustomerListUploadCreateResponse](./Models/CustomerListUploadCreateResponse.md)
+ - [CustomerListUploadResponse](./Models/CustomerListUploadResponse.md)
+ - [CustomizableCTAType](./Models/CustomizableCTAType.md)
  - [DataOutputFormat](./Models/DataOutputFormat.md)
  - [DataStatus](./Models/DataStatus.md)
  - [DeleteAssetGroupBody](./Models/DeleteAssetGroupBody.md)
@@ -592,16 +668,24 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [DeliveryMetricsResponse](./Models/DeliveryMetricsResponse.md)
  - [DeliveryMetricsResponse_items_inner](./Models/DeliveryMetricsResponse_items_inner.md)
  - [DetailedError](./Models/DetailedError.md)
+ - [DisclosureType](./Models/DisclosureType.md)
  - [EnhancedMatchStatusType](./Models/EnhancedMatchStatusType.md)
  - [EntityStatus](./Models/EntityStatus.md)
  - [Error](./Models/Error.md)
+ - [ErrorDetail](./Models/ErrorDetail.md)
+ - [EventData](./Models/EventData.md)
+ - [EventQualityScore](./Models/EventQualityScore.md)
  - [Exception](./Models/Exception.md)
+ - [FeaturedTrend](./Models/FeaturedTrend.md)
  - [FollowUserRequest](./Models/FollowUserRequest.md)
  - [Gender](./Models/Gender.md)
+ - [GenderBucket](./Models/GenderBucket.md)
+ - [GenderDemographics](./Models/GenderDemographics.md)
  - [GenderFilter](./Models/GenderFilter.md)
  - [GetAudiencesOrderBy](./Models/GetAudiencesOrderBy.md)
  - [GetBusinessAssetTypeResponse](./Models/GetBusinessAssetTypeResponse.md)
  - [GetBusinessAssetsResponse](./Models/GetBusinessAssetsResponse.md)
+ - [GetBusinessAssetsResponse_catalog_info](./Models/GetBusinessAssetsResponse_catalog_info.md)
  - [GetMMMReportResponse](./Models/GetMMMReportResponse.md)
  - [GetMMMReportResponseData](./Models/GetMMMReportResponseData.md)
  - [GetPartnerAssetsResponse](./Models/GetPartnerAssetsResponse.md)
@@ -618,7 +702,10 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [HotelProcessingRecord](./Models/HotelProcessingRecord.md)
  - [ImageDetails](./Models/ImageDetails.md)
  - [ImageMetadata](./Models/ImageMetadata.md)
- - [ImageMetadata_images](./Models/ImageMetadata_images.md)
+ - [ImageSize](./Models/ImageSize.md)
+ - [Image_Base64](./Models/Image_Base64.md)
+ - [IngestionSourceOptions](./Models/IngestionSourceOptions.md)
+ - [InnerProductCategoriesMetricsHighlights](./Models/InnerProductCategoriesMetricsHighlights.md)
  - [IntegrationLog](./Models/IntegrationLog.md)
  - [IntegrationLogClientError](./Models/IntegrationLogClientError.md)
  - [IntegrationLogClientRequest](./Models/IntegrationLogClientRequest.md)
@@ -631,6 +718,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [IntegrationRequest](./Models/IntegrationRequest.md)
  - [IntegrationRequestPatch](./Models/IntegrationRequestPatch.md)
  - [Interest](./Models/Interest.md)
+ - [InterestsEnum](./Models/InterestsEnum.md)
  - [InviteAssetsSummary](./Models/InviteAssetsSummary.md)
  - [InviteAssetsSummary_ad_accounts_inner](./Models/InviteAssetsSummary_ad_accounts_inner.md)
  - [InviteAssetsSummary_profiles_inner](./Models/InviteAssetsSummary_profiles_inner.md)
@@ -651,8 +739,8 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [ItemProcessingRecord](./Models/ItemProcessingRecord.md)
  - [ItemProcessingStatus](./Models/ItemProcessingStatus.md)
  - [ItemResponse](./Models/ItemResponse.md)
- - [ItemResponse_anyOf](./Models/ItemResponse_anyOf.md)
- - [ItemResponse_anyOf_1](./Models/ItemResponse_anyOf_1.md)
+ - [ItemResponse_oneOf](./Models/ItemResponse_oneOf.md)
+ - [ItemResponse_oneOf_1](./Models/ItemResponse_oneOf_1.md)
  - [ItemUpdateBatchRecord](./Models/ItemUpdateBatchRecord.md)
  - [ItemUpsertBatchRecord](./Models/ItemUpsertBatchRecord.md)
  - [ItemValidationEvent](./Models/ItemValidationEvent.md)
@@ -666,6 +754,17 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [KeywordsMetricsArrayResponse](./Models/KeywordsMetricsArrayResponse.md)
  - [KeywordsRequest](./Models/KeywordsRequest.md)
  - [KeywordsResponse](./Models/KeywordsResponse.md)
+ - [Label](./Models/Label.md)
+ - [LabelBulkUpdateRequest](./Models/LabelBulkUpdateRequest.md)
+ - [LabelCreateRequest](./Models/LabelCreateRequest.md)
+ - [LabelCreateRequest_labels_inner](./Models/LabelCreateRequest_labels_inner.md)
+ - [LabelError](./Models/LabelError.md)
+ - [LabelParentType](./Models/LabelParentType.md)
+ - [LabelStatus](./Models/LabelStatus.md)
+ - [LabelType](./Models/LabelType.md)
+ - [LabelUpdateRequest](./Models/LabelUpdateRequest.md)
+ - [LabelUpdateRequest_labels_inner](./Models/LabelUpdateRequest_labels_inner.md)
+ - [LabelsResponse](./Models/LabelsResponse.md)
  - [Language](./Models/Language.md)
  - [LeadFormArrayResponse](./Models/LeadFormArrayResponse.md)
  - [LeadFormArrayResponse_items_inner](./Models/LeadFormArrayResponse_items_inner.md)
@@ -680,33 +779,40 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [LeadFormTestRequest](./Models/LeadFormTestRequest.md)
  - [LeadFormTestResponse](./Models/LeadFormTestResponse.md)
  - [LeadFormUpdateRequest](./Models/LeadFormUpdateRequest.md)
+ - [LeadSubscription](./Models/LeadSubscription.md)
+ - [LeadSubscriptionPostParamsCreate](./Models/LeadSubscriptionPostParamsCreate.md)
+ - [LeadSubscriptionPostParamsCreate_allOf_partner_metadata](./Models/LeadSubscriptionPostParamsCreate_allOf_partner_metadata.md)
  - [LeadsExportCreateRequest](./Models/LeadsExportCreateRequest.md)
  - [LeadsExportCreateResponse](./Models/LeadsExportCreateResponse.md)
  - [LeadsExportResponseData](./Models/LeadsExportResponseData.md)
  - [LeadsExportStatus](./Models/LeadsExportStatus.md)
  - [LineItem](./Models/LineItem.md)
  - [LinkedBusiness](./Models/LinkedBusiness.md)
+ - [LocalStoreUpdate](./Models/LocalStoreUpdate.md)
+ - [LookbackPeriodOptions](./Models/LookbackPeriodOptions.md)
  - [MMMReportingColumn](./Models/MMMReportingColumn.md)
  - [MMMReportingTargetingType](./Models/MMMReportingTargetingType.md)
  - [MatchType](./Models/MatchType.md)
  - [MatchTypeResponse](./Models/MatchTypeResponse.md)
  - [MaxPriceFilter](./Models/MaxPriceFilter.md)
+ - [Media](./Models/Media.md)
  - [MediaType](./Models/MediaType.md)
  - [MediaTypeFilter](./Models/MediaTypeFilter.md)
  - [MediaUpload](./Models/MediaUpload.md)
- - [MediaUploadDetails](./Models/MediaUploadDetails.md)
- - [MediaUploadRequest](./Models/MediaUploadRequest.md)
+ - [MediaUploadCreate](./Models/MediaUploadCreate.md)
+ - [MediaUploadParameters](./Models/MediaUploadParameters.md)
  - [MediaUploadStatus](./Models/MediaUploadStatus.md)
  - [MediaUploadType](./Models/MediaUploadType.md)
- - [MediaUpload_allOf_upload_parameters](./Models/MediaUpload_allOf_upload_parameters.md)
  - [MemberBusinessRole](./Models/MemberBusinessRole.md)
  - [MembersToDeleteBody](./Models/MembersToDeleteBody.md)
  - [MembersToDeleteBody_members_inner](./Models/MembersToDeleteBody_members_inner.md)
  - [MetricsReportingLevel](./Models/MetricsReportingLevel.md)
  - [MetricsResponse](./Models/MetricsResponse.md)
  - [MinPriceFilter](./Models/MinPriceFilter.md)
+ - [NonDraftEntityStatus](./Models/NonDraftEntityStatus.md)
  - [NonNullableCatalogsCurrency](./Models/NonNullableCatalogsCurrency.md)
  - [NonNullableProductAvailabilityType](./Models/NonNullableProductAvailabilityType.md)
+ - [NotificationResponse](./Models/NotificationResponse.md)
  - [NullableCatalogsItemFieldType](./Models/NullableCatalogsItemFieldType.md)
  - [NullableCurrency](./Models/NullableCurrency.md)
  - [OauthAccessTokenRequestClientCredentials](./Models/OauthAccessTokenRequestClientCredentials.md)
@@ -715,7 +821,6 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [OauthAccessTokenResponse](./Models/OauthAccessTokenResponse.md)
  - [OauthAccessTokenResponseClientCredentials](./Models/OauthAccessTokenResponseClientCredentials.md)
  - [OauthAccessTokenResponseCode](./Models/OauthAccessTokenResponseCode.md)
- - [OauthAccessTokenResponseEverlastingRefresh](./Models/OauthAccessTokenResponseEverlastingRefresh.md)
  - [OauthAccessTokenResponseIntegrationRefresh](./Models/OauthAccessTokenResponseIntegrationRefresh.md)
  - [OauthAccessTokenResponseRefresh](./Models/OauthAccessTokenResponseRefresh.md)
  - [ObjectiveType](./Models/ObjectiveType.md)
@@ -733,6 +838,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [OrderLineStatus](./Models/OrderLineStatus.md)
  - [OrderLines](./Models/OrderLines.md)
  - [OrderLinesArrayResponse](./Models/OrderLinesArrayResponse.md)
+ - [OverallStatusOptions](./Models/OverallStatusOptions.md)
  - [PacingDeliveryType](./Models/PacingDeliveryType.md)
  - [Paginated](./Models/Paginated.md)
  - [PartnerType](./Models/PartnerType.md)
@@ -748,31 +854,37 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [PinMediaSourceImageBase64](./Models/PinMediaSourceImageBase64.md)
  - [PinMediaSourceImageURL](./Models/PinMediaSourceImageURL.md)
  - [PinMediaSourceImagesBase64](./Models/PinMediaSourceImagesBase64.md)
- - [PinMediaSourceImagesBase64_items_inner](./Models/PinMediaSourceImagesBase64_items_inner.md)
+ - [PinMediaSourceImagesBase64Item](./Models/PinMediaSourceImagesBase64Item.md)
  - [PinMediaSourceImagesURL](./Models/PinMediaSourceImagesURL.md)
- - [PinMediaSourceImagesURL_items_inner](./Models/PinMediaSourceImagesURL_items_inner.md)
+ - [PinMediaSourceImagesURLItem](./Models/PinMediaSourceImagesURLItem.md)
  - [PinMediaSourcePinURL](./Models/PinMediaSourcePinURL.md)
  - [PinMediaSourceVideoID](./Models/PinMediaSourceVideoID.md)
  - [PinMediaWithImage](./Models/PinMediaWithImage.md)
  - [PinMediaWithImageAndVideo](./Models/PinMediaWithImageAndVideo.md)
- - [PinMediaWithImage_allOf_images](./Models/PinMediaWithImage_allOf_images.md)
  - [PinMediaWithImages](./Models/PinMediaWithImages.md)
  - [PinMediaWithVideo](./Models/PinMediaWithVideo.md)
  - [PinMediaWithVideos](./Models/PinMediaWithVideos.md)
  - [PinPromotionSummaryStatus](./Models/PinPromotionSummaryStatus.md)
  - [PinUpdate](./Models/PinUpdate.md)
- - [PinUpdate_carousel_slots_inner](./Models/PinUpdate_carousel_slots_inner.md)
- - [PinterestTagEventData](./Models/PinterestTagEventData.md)
+ - [Pinterest.Lib.Error](./Models/Pinterest.Lib.Error.md)
+ - [Pinterest.Lib.PaginationOrder](./Models/Pinterest.Lib.PaginationOrder.md)
+ - [Pinterest.Lib.Status204](./Models/Pinterest.Lib.Status204.md)
  - [PlacementGroupType](./Models/PlacementGroupType.md)
  - [PlacementMultipliers](./Models/PlacementMultipliers.md)
+ - [PredictedTimeSeries](./Models/PredictedTimeSeries.md)
  - [PriceFilter](./Models/PriceFilter.md)
  - [ProductAvailabilityType](./Models/ProductAvailabilityType.md)
+ - [ProductCategoriesDemographic](./Models/ProductCategoriesDemographic.md)
+ - [ProductCategoriesEngagementType](./Models/ProductCategoriesEngagementType.md)
+ - [ProductCategoriesMetricsHighlights](./Models/ProductCategoriesMetricsHighlights.md)
+ - [ProductCategoryDetailLookbackWindow](./Models/ProductCategoryDetailLookbackWindow.md)
+ - [ProductCategoryDetails](./Models/ProductCategoryDetails.md)
+ - [ProductCategoryEnum](./Models/ProductCategoryEnum.md)
+ - [ProductCategoryRegion](./Models/ProductCategoryRegion.md)
  - [ProductGroupAnalyticsResponse_inner](./Models/ProductGroupAnalyticsResponse_inner.md)
  - [ProductGroupPromotion](./Models/ProductGroupPromotion.md)
  - [ProductGroupPromotionCreateRequest](./Models/ProductGroupPromotionCreateRequest.md)
- - [ProductGroupPromotionCreateRequestElement](./Models/ProductGroupPromotionCreateRequestElement.md)
  - [ProductGroupPromotionResponse](./Models/ProductGroupPromotionResponse.md)
- - [ProductGroupPromotionResponseElement](./Models/ProductGroupPromotionResponseElement.md)
  - [ProductGroupPromotionResponseItem](./Models/ProductGroupPromotionResponseItem.md)
  - [ProductGroupPromotionUpdateRequest](./Models/ProductGroupPromotionUpdateRequest.md)
  - [ProductGroupReferenceFilter](./Models/ProductGroupReferenceFilter.md)
@@ -782,16 +894,31 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [ProductType2Filter](./Models/ProductType2Filter.md)
  - [ProductType3Filter](./Models/ProductType3Filter.md)
  - [ProductType4Filter](./Models/ProductType4Filter.md)
+ - [PromotionArrayElement](./Models/PromotionArrayElement.md)
+ - [PromotionCommon](./Models/PromotionCommon.md)
+ - [PromotionCreateRequest](./Models/PromotionCreateRequest.md)
+ - [PromotionResponse](./Models/PromotionResponse.md)
+ - [PromotionTemplateValue](./Models/PromotionTemplateValue.md)
+ - [PromotionType](./Models/PromotionType.md)
+ - [PromotionUpdateRequest](./Models/PromotionUpdateRequest.md)
+ - [PromotionsResponse](./Models/PromotionsResponse.md)
+ - [QualityComponentDetails](./Models/QualityComponentDetails.md)
+ - [QualityComponentIssue](./Models/QualityComponentIssue.md)
+ - [QualityComponents](./Models/QualityComponents.md)
  - [QuizPinData](./Models/QuizPinData.md)
  - [QuizPinOption](./Models/QuizPinOption.md)
  - [QuizPinQuestion](./Models/QuizPinQuestion.md)
  - [QuizPinResult](./Models/QuizPinResult.md)
+ - [RecordCounts](./Models/RecordCounts.md)
  - [RelatedTerms](./Models/RelatedTerms.md)
  - [RelatedTerms_related_terms_list_inner](./Models/RelatedTerms_related_terms_list_inner.md)
  - [ReportingColumnAsync](./Models/ReportingColumnAsync.md)
+ - [ReportingTimeZone](./Models/ReportingTimeZone.md)
  - [RespondToInvitesResponseArray](./Models/RespondToInvitesResponseArray.md)
  - [RespondToInvitesResponseArray_items_inner](./Models/RespondToInvitesResponseArray_items_inner.md)
  - [Role](./Models/Role.md)
+ - [S3FilePart](./Models/S3FilePart.md)
+ - [S3MultipartUploadData](./Models/S3MultipartUploadData.md)
  - [SSIOAccountAddress](./Models/SSIOAccountAddress.md)
  - [SSIOAccountItem](./Models/SSIOAccountItem.md)
  - [SSIOAccountPMPName](./Models/SSIOAccountPMPName.md)
@@ -810,11 +937,21 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [SharedAudienceResponse](./Models/SharedAudienceResponse.md)
  - [SharedAudienceResponseCommon](./Models/SharedAudienceResponseCommon.md)
  - [SingleInterestTargetingOptionResponse](./Models/SingleInterestTargetingOptionResponse.md)
+ - [SourcePlatformOptions](./Models/SourcePlatformOptions.md)
  - [SummaryPin](./Models/SummaryPin.md)
  - [TargetingAdvertiserCountry](./Models/TargetingAdvertiserCountry.md)
  - [TargetingSpec](./Models/TargetingSpec.md)
+ - [TargetingSpecAgeBucket](./Models/TargetingSpecAgeBucket.md)
  - [TargetingSpecAppType](./Models/TargetingSpecAppType.md)
- - [TargetingSpec_SHOPPING_RETARGETING](./Models/TargetingSpec_SHOPPING_RETARGETING.md)
+ - [TargetingSpecGender](./Models/TargetingSpecGender.md)
+ - [TargetingSpecOperationAgeBucket](./Models/TargetingSpecOperationAgeBucket.md)
+ - [TargetingSpecOperationAppType](./Models/TargetingSpecOperationAppType.md)
+ - [TargetingSpecOperationGender](./Models/TargetingSpecOperationGender.md)
+ - [TargetingSpecOperationList](./Models/TargetingSpecOperationList.md)
+ - [TargetingSpecOperationMinMaxAge](./Models/TargetingSpecOperationMinMaxAge.md)
+ - [TargetingSpecOperationShoppingRetargeting](./Models/TargetingSpecOperationShoppingRetargeting.md)
+ - [TargetingSpecOperationString](./Models/TargetingSpecOperationString.md)
+ - [TargetingSpecShoppingRetargeting](./Models/TargetingSpecShoppingRetargeting.md)
  - [TargetingTemplateAudienceSizing](./Models/TargetingTemplateAudienceSizing.md)
  - [TargetingTemplateAudienceSizing_reach_estimate](./Models/TargetingTemplateAudienceSizing_reach_estimate.md)
  - [TargetingTemplateCommon](./Models/TargetingTemplateCommon.md)
@@ -824,12 +961,15 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [TargetingTemplateResponseData](./Models/TargetingTemplateResponseData.md)
  - [TargetingTemplateUpdateRequest](./Models/TargetingTemplateUpdateRequest.md)
  - [TargetingTypeFilter](./Models/TargetingTypeFilter.md)
+ - [TemplateBasedReport](./Models/TemplateBasedReport.md)
  - [TemplateResponse](./Models/TemplateResponse.md)
  - [TemplateResponse_date_range](./Models/TemplateResponse_date_range.md)
  - [TemplateResponse_date_range_absolute_date_range](./Models/TemplateResponse_date_range_absolute_date_range.md)
  - [TemplateResponse_date_range_dynamic_date_range](./Models/TemplateResponse_date_range_dynamic_date_range.md)
  - [TemplateResponse_date_range_relative_date_range](./Models/TemplateResponse_date_range_relative_date_range.md)
  - [TermsOfService](./Models/TermsOfService.md)
+ - [TimeSeries](./Models/TimeSeries.md)
+ - [TitleKeywordsFilter](./Models/TitleKeywordsFilter.md)
  - [TopPinsAnalyticsResponse](./Models/TopPinsAnalyticsResponse.md)
  - [TopPinsAnalyticsResponse_date_availability](./Models/TopPinsAnalyticsResponse_date_availability.md)
  - [TopPinsAnalyticsResponse_pins_inner](./Models/TopPinsAnalyticsResponse_pins_inner.md)
@@ -837,11 +977,17 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [TopVideoPinsAnalyticsResponse_pins_inner](./Models/TopVideoPinsAnalyticsResponse_pins_inner.md)
  - [TrackingUrls](./Models/TrackingUrls.md)
  - [TrendType](./Models/TrendType.md)
+ - [TrendingKeyword](./Models/TrendingKeyword.md)
+ - [TrendingKeyword_demographics](./Models/TrendingKeyword_demographics.md)
+ - [TrendingKeyword_demographics_age_distribution](./Models/TrendingKeyword_demographics_age_distribution.md)
+ - [TrendingKeyword_demographics_gender_distribution](./Models/TrendingKeyword_demographics_gender_distribution.md)
  - [TrendingKeywordsResponse](./Models/TrendingKeywordsResponse.md)
- - [TrendingKeywordsResponse_trends_inner](./Models/TrendingKeywordsResponse_trends_inner.md)
- - [TrendingKeywordsResponse_trends_inner_time_series](./Models/TrendingKeywordsResponse_trends_inner_time_series.md)
+ - [TrendingPin](./Models/TrendingPin.md)
+ - [TrendingProductCategory](./Models/TrendingProductCategory.md)
+ - [TrendingTopic](./Models/TrendingTopic.md)
  - [TrendsSupportedRegion](./Models/TrendsSupportedRegion.md)
  - [UpdatableItemAttributes](./Models/UpdatableItemAttributes.md)
+ - [UpdatableItemAttributes_gtin](./Models/UpdatableItemAttributes_gtin.md)
  - [UpdateAssetGroupBody](./Models/UpdateAssetGroupBody.md)
  - [UpdateAssetGroupBody_asset_groups_to_update_inner](./Models/UpdateAssetGroupBody_asset_groups_to_update_inner.md)
  - [UpdateAssetGroupResponse](./Models/UpdateAssetGroupResponse.md)
@@ -873,19 +1019,26 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [UserWebsiteVerificationCode](./Models/UserWebsiteVerificationCode.md)
  - [UserWebsiteVerifyRequest](./Models/UserWebsiteVerifyRequest.md)
  - [UsersForIndividualAssetResponse](./Models/UsersForIndividualAssetResponse.md)
- - [VideoMetadata](./Models/VideoMetadata.md)
+ - [VerticalProductCategory](./Models/VerticalProductCategory.md)
+ - [VideoMetadataWithItemType](./Models/VideoMetadataWithItemType.md)
  - [ad_accounts_audiences_shared_accounts_list_200_response](./Models/ad_accounts_audiences_shared_accounts_list_200_response.md)
  - [ad_accounts_list_200_response](./Models/ad_accounts_list_200_response.md)
  - [ad_accounts_subscriptions_get_list_200_response](./Models/ad_accounts_subscriptions_get_list_200_response.md)
  - [ad_groups_list_200_response](./Models/ad_groups_list_200_response.md)
  - [ads_credits_discounts_get_200_response](./Models/ads_credits_discounts_get_200_response.md)
  - [ads_list_200_response](./Models/ads_list_200_response.md)
+ - [all_of](./Models/all_of.md)
+ - [any_of](./Models/any_of.md)
  - [audiences_list_200_response](./Models/audiences_list_200_response.md)
+ - [billing_invoices_get_200_response](./Models/billing_invoices_get_200_response.md)
  - [billing_profiles_get_200_response](./Models/billing_profiles_get_200_response.md)
  - [board_sections_list_200_response](./Models/board_sections_list_200_response.md)
  - [boards_list_200_response](./Models/boards_list_200_response.md)
  - [boards_list_pins_200_response](./Models/boards_list_pins_200_response.md)
  - [boards_user_follows_list_200_response](./Models/boards_user_follows_list_200_response.md)
+ - [brand_accounts_create_200_response](./Models/brand_accounts_create_200_response.md)
+ - [brand_accounts_create_request](./Models/brand_accounts_create_request.md)
+ - [brand_accounts_update_request](./Models/brand_accounts_update_request.md)
  - [business_asset_members_get_200_response](./Models/business_asset_members_get_200_response.md)
  - [business_asset_partners_get_200_response](./Models/business_asset_partners_get_200_response.md)
  - [business_assets_get_200_response](./Models/business_assets_get_200_response.md)
@@ -894,11 +1047,15 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [business_members_asset_access_delete_request_accesses_inner](./Models/business_members_asset_access_delete_request_accesses_inner.md)
  - [business_partner_asset_access_get_200_response](./Models/business_partner_asset_access_get_200_response.md)
  - [campaigns_list_200_response](./Models/campaigns_list_200_response.md)
+ - [catalogs_creative_assets_filter_values_map](./Models/catalogs_creative_assets_filter_values_map.md)
+ - [catalogs_hotel_filter_values_map](./Models/catalogs_hotel_filter_values_map.md)
  - [catalogs_list_200_response](./Models/catalogs_list_200_response.md)
  - [catalogs_product_group_pins_list_200_response](./Models/catalogs_product_group_pins_list_200_response.md)
  - [catalogs_product_group_pricing_currency_criteria](./Models/catalogs_product_group_pricing_currency_criteria.md)
  - [catalogs_product_groups_list_200_response](./Models/catalogs_product_groups_list_200_response.md)
  - [catalogs_product_groups_update_request](./Models/catalogs_product_groups_update_request.md)
+ - [catalogs_retail_filter_values_map](./Models/catalogs_retail_filter_values_map.md)
+ - [conversion_tags_list_200_response](./Models/conversion_tags_list_200_response.md)
  - [customer_lists_list_200_response](./Models/customer_lists_list_200_response.md)
  - [feed_processing_results_list_200_response](./Models/feed_processing_results_list_200_response.md)
  - [feeds_create_request](./Models/feeds_create_request.md)
@@ -910,22 +1067,29 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [get_business_partners_200_response](./Models/get_business_partners_200_response.md)
  - [get_invites_200_response](./Models/get_invites_200_response.md)
  - [integrations_get_list_200_response](./Models/integrations_get_list_200_response.md)
+ - [integrations_logs_post_400_response](./Models/integrations_logs_post_400_response.md)
  - [items_batch_post_request](./Models/items_batch_post_request.md)
  - [items_issues_list_200_response](./Models/items_issues_list_200_response.md)
  - [keywords_get_200_response](./Models/keywords_get_200_response.md)
+ - [labels_list_200_response](./Models/labels_list_200_response.md)
  - [lead_forms_list_200_response](./Models/lead_forms_list_200_response.md)
  - [media_list_200_response](./Models/media_list_200_response.md)
  - [multiple_product_groups_inner](./Models/multiple_product_groups_inner.md)
+ - [notification_post_request](./Models/notification_post_request.md)
  - [order_lines_list_200_response](./Models/order_lines_list_200_response.md)
  - [page_visit_conversion_tags_get_200_response](./Models/page_visit_conversion_tags_get_200_response.md)
  - [pins_list_200_response](./Models/pins_list_200_response.md)
  - [pins_save_request](./Models/pins_save_request.md)
  - [product_group_promotions_list_200_response](./Models/product_group_promotions_list_200_response.md)
+ - [promotions_list_200_response](./Models/promotions_list_200_response.md)
  - [reports_stats_200_response](./Models/reports_stats_200_response.md)
+ - [reports_stats_parameters_parameter](./Models/reports_stats_parameters_parameter.md)
  - [search_partner_pins_200_response](./Models/search_partner_pins_200_response.md)
  - [search_user_boards_get_200_response](./Models/search_user_boards_get_200_response.md)
+ - [search_user_pins_list_200_response](./Models/search_user_pins_list_200_response.md)
  - [ssio_insertion_orders_status_get_by_ad_account_200_response](./Models/ssio_insertion_orders_status_get_by_ad_account_200_response.md)
  - [ssio_order_lines_get_by_ad_account_200_response](./Models/ssio_order_lines_get_by_ad_account_200_response.md)
+ - [system_user_update_request](./Models/system_user_update_request.md)
  - [targeting_template_list_200_response](./Models/targeting_template_list_200_response.md)
  - [templates_list_200_response](./Models/templates_list_200_response.md)
  - [user_account_followed_interests_200_response](./Models/user_account_followed_interests_200_response.md)
@@ -955,6 +1119,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
   - boards:write_secret: Create, update, or delete your secret boards
   - catalogs:read: See all of your catalogs data
   - catalogs:write: Create, update, or delete your catalogs data
+  - msot:write: Create measurement source of truth events
   - pins:read: See your public Pins
   - pins:read_secret: See your secret Pins
   - pins:write: Create, update, or delete your public Pins
@@ -991,6 +1156,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
   - boards:write_secret: Create, update, or delete your secret boards
   - catalogs:read: See all of your catalogs data
   - catalogs:write: Create, update, or delete your catalogs data
+  - msot:write: Create measurement source of truth events
   - pins:read: See your public Pins
   - pins:read_secret: See your secret Pins
   - pins:write: Create, update, or delete your public Pins

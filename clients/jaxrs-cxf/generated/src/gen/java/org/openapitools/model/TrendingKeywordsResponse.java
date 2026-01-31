@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.TrendingKeywordsResponseTrendsInner;
+import org.openapitools.model.TrendingKeyword;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -21,26 +21,26 @@ public class TrendingKeywordsResponse  {
 
   @Valid
 
-  private List<@Valid TrendingKeywordsResponseTrendsInner> trends = new ArrayList<>();
+  private List<@Valid TrendingKeyword> trends = new ArrayList<>();
  /**
    * The top trending keywords for the specified trend type in the requested region.&lt;br /&gt; Results are ordered, with the first element in the array representing the #1 top trend.
    * @return trends
   **/
   @JsonProperty("trends")
-  public List<@Valid TrendingKeywordsResponseTrendsInner> getTrends() {
+  public List<@Valid TrendingKeyword> getTrends() {
     return trends;
   }
 
-  public void setTrends(List<@Valid TrendingKeywordsResponseTrendsInner> trends) {
+  public void setTrends(List<@Valid TrendingKeyword> trends) {
     this.trends = trends;
   }
 
-  public TrendingKeywordsResponse trends(List<@Valid TrendingKeywordsResponseTrendsInner> trends) {
+  public TrendingKeywordsResponse trends(List<@Valid TrendingKeyword> trends) {
     this.trends = trends;
     return this;
   }
 
-  public TrendingKeywordsResponse addTrendsItem(TrendingKeywordsResponseTrendsInner trendsItem) {
+  public TrendingKeywordsResponse addTrendsItem(TrendingKeyword trendsItem) {
     this.trends.add(trendsItem);
     return this;
   }

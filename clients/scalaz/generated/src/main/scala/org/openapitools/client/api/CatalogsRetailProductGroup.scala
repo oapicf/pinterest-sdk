@@ -12,27 +12,27 @@ import org.joda.time.DateTime
 import CatalogsRetailProductGroup._
 
 case class CatalogsRetailProductGroup (
-  catalogType: CatalogType,
-/* ID of the catalog product group. */
-  id: String,
-/* Name of catalog product group */
-  name: Option[String],
-description: Option[String],
-filters: CatalogsProductGroupFilters,
-/* boolean indicator of whether the product group is being featured or not */
-  isFeatured: Option[Boolean],
-`type`: Option[CatalogsProductGroupType],
-status: Option[CatalogsProductGroupStatus],
+  /* Catalog id pertaining to the retail product group. */
+  catalogId: String,
+catalogType: CatalogType,
+country: Option[String],
 /* Unix timestamp in seconds of when catalog product group was created. */
   createdAt: Option[Integer],
-/* Unix timestamp in seconds of last time catalog product group was updated. */
-  updatedAt: Option[Integer],
-/* Catalog id pertaining to the retail product group. */
-  catalogId: String,
+description: Option[String],
 /* id of the catalogs feed belonging to this catalog product group */
   feedId: String,
-country: Option[String],
-locale: Option[String])
+filters: CatalogsProductGroupFilters,
+/* ID of the catalog product group. */
+  id: String,
+/* boolean indicator of whether the product group is being featured or not */
+  isFeatured: Option[Boolean],
+locale: Option[String],
+/* Name of catalog product group */
+  name: Option[String],
+status: Option[CatalogsProductGroupStatus],
+`type`: CatalogsProductGroupType,
+/* Unix timestamp in seconds of last time catalog product group was updated. */
+  updatedAt: Option[Integer])
 
 object CatalogsRetailProductGroup {
   import DateTimeCodecs._

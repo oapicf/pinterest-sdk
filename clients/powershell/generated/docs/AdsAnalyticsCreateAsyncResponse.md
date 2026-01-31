@@ -3,17 +3,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Message** | **String** |  | [optional] 
 **ReportStatus** | [**BulkReportingJobStatus**](BulkReportingJobStatus.md) |  | [optional] 
 **Token** | **String** |  | [optional] 
-**Message** | **String** |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$AdsAnalyticsCreateAsyncResponse = Initialize-PSOpenAPIToolsAdsAnalyticsCreateAsyncResponse  -ReportStatus null `
- -Token null `
- -Message null
+$AdsAnalyticsCreateAsyncResponse = Initialize-PSOpenAPIToolsAdsAnalyticsCreateAsyncResponse  -Message null `
+ -ReportStatus null `
+ -Token null
 ```
 
 - Convert the resource to JSON

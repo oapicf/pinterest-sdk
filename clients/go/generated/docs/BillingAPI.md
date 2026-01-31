@@ -6,6 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AdsCreditRedeem**](BillingAPI.md#AdsCreditRedeem) | **Post** /ad_accounts/{ad_account_id}/ads_credit/redeem | Redeem ad credits
 [**AdsCreditsDiscountsGet**](BillingAPI.md#AdsCreditsDiscountsGet) | **Get** /ad_accounts/{ad_account_id}/ads_credit/discounts | Get ads credit discounts
+[**BillingInvoiceDownloadGet**](BillingAPI.md#BillingInvoiceDownloadGet) | **Get** /ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download | Get download url for a billing invoice
+[**BillingInvoicesGet**](BillingAPI.md#BillingInvoicesGet) | **Get** /ad_accounts/{ad_account_id}/billing_invoices | Get billing invoices
 [**BillingProfilesGet**](BillingAPI.md#BillingProfilesGet) | **Get** /ad_accounts/{ad_account_id}/billing_profiles | Get billing profiles
 [**SsioAccountsGet**](BillingAPI.md#SsioAccountsGet) | **Get** /ad_accounts/{ad_account_id}/ssio/accounts | Get Salesforce account details including bill-to information.
 [**SsioInsertionOrderCreate**](BillingAPI.md#SsioInsertionOrderCreate) | **Post** /ad_accounts/{ad_account_id}/ssio/insertion_orders | Create insertion order through SSIO.
@@ -147,6 +149,166 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AdsCreditsDiscountsGet200Response**](AdsCreditsDiscountsGet200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## BillingInvoiceDownloadGet
+
+> BillingInvoiceDownloadResponse BillingInvoiceDownloadGet(ctx, adAccountId, billingInvoiceId).Execute()
+
+Get download url for a billing invoice
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/oapicf/pinterest-sdk"
+)
+
+func main() {
+	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
+	billingInvoiceId := "billingInvoiceId_example" // string | Unique identifier of a billing invoice.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BillingAPI.BillingInvoiceDownloadGet(context.Background(), adAccountId, billingInvoiceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.BillingInvoiceDownloadGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `BillingInvoiceDownloadGet`: BillingInvoiceDownloadResponse
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.BillingInvoiceDownloadGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**adAccountId** | **string** | Unique identifier of an ad account. | 
+**billingInvoiceId** | **string** | Unique identifier of a billing invoice. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBillingInvoiceDownloadGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**BillingInvoiceDownloadResponse**](BillingInvoiceDownloadResponse.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## BillingInvoicesGet
+
+> BillingInvoicesGet200Response BillingInvoicesGet(ctx, adAccountId).Bookmark(bookmark).PageSize(pageSize).Sort(sort).Order(order).Status(status).DocumentType(documentType).StartDueDate(startDueDate).EndDueDate(endDueDate).Execute()
+
+Get billing invoices
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+    "time"
+	openapiclient "github.com/oapicf/pinterest-sdk"
+)
+
+func main() {
+	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
+	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+	sort := "DUE_DATE" // string | Field of which to sort billing invoices (optional) (default to "DUE_DATE")
+	order := "ASCENDING" // string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+	status := "OPEN" // string | Status of billing invoices to filter by (optional)
+	documentType := "INVOICE" // string | Document type of billing invoices to filter by (optional)
+	startDueDate := time.Now() // string | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
+	endDueDate := time.Now() // string | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BillingAPI.BillingInvoicesGet(context.Background(), adAccountId).Bookmark(bookmark).PageSize(pageSize).Sort(sort).Order(order).Status(status).DocumentType(documentType).StartDueDate(startDueDate).EndDueDate(endDueDate).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.BillingInvoicesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `BillingInvoicesGet`: BillingInvoicesGet200Response
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.BillingInvoicesGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**adAccountId** | **string** | Unique identifier of an ad account. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBillingInvoicesGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **bookmark** | **string** | Cursor used to fetch the next page of items | 
+ **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
+ **sort** | **string** | Field of which to sort billing invoices | [default to &quot;DUE_DATE&quot;]
+ **order** | **string** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | 
+ **status** | **string** | Status of billing invoices to filter by | 
+ **documentType** | **string** | Document type of billing invoices to filter by | 
+ **startDueDate** | **string** | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD | 
+ **endDueDate** | **string** | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD | 
+
+### Return type
+
+[**BillingInvoicesGet200Response**](BillingInvoicesGet200Response.md)
 
 ### Authorization
 
@@ -330,7 +492,7 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	sSIOCreateInsertionOrderRequest := *openapiclient.NewSSIOCreateInsertionOrderRequest("2020-12-20", "PoNumber_example", "BillingContactFirstname_example", "BillingContactLastname_example", "test@example", "MediaContactFirstname_example", "MediaContactLastname_example", "test@example", "PmpId_example", "OrderName_example", "OrderLineType_example", "AcceptedTermsId_example", "BilltoCompanyId_example", "BilltoBusinessAddressId_example", "BilltoBillingAddressId_example", openapiclient.Currency("UNK")) // SSIOCreateInsertionOrderRequest | Order line to create.
+	sSIOCreateInsertionOrderRequest := *openapiclient.NewSSIOCreateInsertionOrderRequest("test@example", "BillingContactFirstname_example", "BillingContactLastname_example", "test@example", "MediaContactFirstname_example", "MediaContactLastname_example", "PoNumber_example", "2020-12-20", "AcceptedTermsId_example", "BilltoBillingAddressId_example", "BilltoBusinessAddressId_example", "BilltoCompanyId_example", openapiclient.Currency("UNK"), "OrderLineType_example", "OrderName_example", "PmpId_example") // SSIOCreateInsertionOrderRequest | Order line to create.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

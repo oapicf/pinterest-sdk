@@ -13,12 +13,12 @@ test_that("ages", {
   #expect_equal(model.instance$`ages`, "EXPECTED_RESULT")
 })
 
-test_that("genders", {
-  # tests for the property `genders` (array[AudienceDemographicValue])
-  # Gender distribution.
+test_that("countries", {
+  # tests for the property `countries` (array[AudienceDemographicValue])
+  # Country area distribution.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`genders`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`countries`, "EXPECTED_RESULT")
 })
 
 test_that("devices", {
@@ -29,18 +29,18 @@ test_that("devices", {
   #expect_equal(model.instance$`devices`, "EXPECTED_RESULT")
 })
 
+test_that("genders", {
+  # tests for the property `genders` (array[AudienceDemographicValue])
+  # Gender distribution.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`genders`, "EXPECTED_RESULT")
+})
+
 test_that("metros", {
   # tests for the property `metros` (array[AudienceDemographicValue])
   # Geographic metro area distribution.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`metros`, "EXPECTED_RESULT")
-})
-
-test_that("countries", {
-  # tests for the property `countries` (array[AudienceDemographicValue])
-  # Country area distribution.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`countries`, "EXPECTED_RESULT")
 })

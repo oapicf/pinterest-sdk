@@ -1,13 +1,14 @@
 (ns pinterest-rest-api.specs.catalogs-create-request
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
+            [pinterest-rest-api.specs.catalogs-type :refer :all]
             )
   (:import (java.io File)))
 
 
 (def catalogs-create-request-data
   {
-   (ds/req :catalog_type) string?
+   (ds/req :catalog_type) catalogs-type-spec
    (ds/req :name) string?
    })
 

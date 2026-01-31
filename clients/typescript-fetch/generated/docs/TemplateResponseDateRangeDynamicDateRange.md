@@ -7,8 +7,8 @@ The dynamic date range of the template
 
 Name | Type
 ------------ | -------------
-`type` | string
 `range` | string
+`type` | string
 
 ## Example
 
@@ -17,8 +17,8 @@ import type { TemplateResponseDateRangeDynamicDateRange } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "type": dynamic,
   "range": YEAR_TO_DATE,
+  "type": dynamic,
 } satisfies TemplateResponseDateRangeDynamicDateRange
 
 console.log(example)

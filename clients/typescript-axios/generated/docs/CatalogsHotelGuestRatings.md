@@ -6,10 +6,10 @@ If specified, you must provide all properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**score** | **number** | Your hotel\&#39;s rating. | [optional] [default to undefined]
-**number_of_reviewers** | **number** | Total number of people who have rated this hotel. | [optional] [default to undefined]
 **max_score** | **number** | Max value for the hotel rating score. | [optional] [default to undefined]
+**number_of_reviewers** | **number** | Total number of people who have rated this hotel. | [optional] [default to undefined]
 **rating_system** | **string** | System you use for guest reviews. | [optional] [default to undefined]
+**score** | **number** | Your hotel\&#39;s rating. | [optional] [default to undefined]
 
 ## Example
 
@@ -17,10 +17,10 @@ Name | Type | Description | Notes
 import { CatalogsHotelGuestRatings } from './api';
 
 const instance: CatalogsHotelGuestRatings = {
-    score,
-    number_of_reviewers,
     max_score,
+    number_of_reviewers,
     rating_system,
+    score,
 };
 ```
 

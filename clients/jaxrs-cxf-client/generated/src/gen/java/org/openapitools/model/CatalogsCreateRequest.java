@@ -1,5 +1,6 @@
 package org.openapitools.model;
 
+import org.openapitools.model.CatalogsType;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -13,42 +14,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsCreateRequest  {
   
-public enum CatalogTypeEnum {
+  @ApiModelProperty(required = true, value = "")
 
-HOTEL(String.valueOf("HOTEL"));
-
-
-    private String value;
-
-    CatalogTypeEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static CatalogTypeEnum fromValue(String value) {
-        for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
- /**
-  * Type of the catalog entity.
-  */
-  @ApiModelProperty(required = true, value = "Type of the catalog entity.")
-
-  private CatalogTypeEnum catalogType;
+  private CatalogsType catalogType;
 
  /**
   * A human-friendly name associated to a given catalog.
@@ -57,22 +25,19 @@ HOTEL(String.valueOf("HOTEL"));
 
   private String name;
  /**
-   * Type of the catalog entity.
+   * Get catalogType
    * @return catalogType
   **/
   @JsonProperty("catalog_type")
-  public String getCatalogType() {
-    if (catalogType == null) {
-      return null;
-    }
-    return catalogType.value();
+  public CatalogsType getCatalogType() {
+    return catalogType;
   }
 
-  public void setCatalogType(CatalogTypeEnum catalogType) {
+  public void setCatalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
   }
 
-  public CatalogsCreateRequest catalogType(CatalogTypeEnum catalogType) {
+  public CatalogsCreateRequest catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
     return this;
   }

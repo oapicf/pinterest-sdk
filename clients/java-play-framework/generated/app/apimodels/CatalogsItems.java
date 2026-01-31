@@ -13,15 +13,15 @@ import javax.validation.Valid;
 /**
  * Response object of catalogs items
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsItems   {
   @JsonProperty("items")
   @Valid
 
-  private List<@Valid ItemResponse> items = null;
+  private List<ItemResponse> items = null;
 
-  public CatalogsItems items(List<@Valid ItemResponse> items) {
+  public CatalogsItems items(List<ItemResponse> items) {
     this.items = items;
     return this;
   }
@@ -38,11 +38,11 @@ public class CatalogsItems   {
    * Array with catalogs items
    * @return items
   **/
-  public List<@Valid ItemResponse> getItems() {
+  public List<ItemResponse> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid ItemResponse> items) {
+  public void setItems(List<ItemResponse> items) {
     this.items = items;
   }
 

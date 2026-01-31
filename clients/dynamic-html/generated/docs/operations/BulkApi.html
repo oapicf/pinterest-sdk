@@ -5,7 +5,7 @@
   <h2><a name="bulkDownload/create"></a>bulkDownload/create</h2>
   <hr>
   <p></p>
-  <p>Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, and/or keywords; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.</p>
+  <p>Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.</p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/bulk/download</code>
   <h3 class="section">HTTP Method</h3>
@@ -86,7 +86,7 @@
   <h2><a name="bulkUpsert/create"></a>bulkUpsert/create</h2>
   <hr>
   <p></p>
-  <p>Either create or update any combination of campaigns, ad groups, product groups, ads, or keywords. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.</p>
+  <p>Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.</p>
   <h3 class="section">URL</h3>
   <code>https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/bulk/upsert</code>
   <h3 class="section">HTTP Method</h3>

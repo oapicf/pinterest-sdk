@@ -22,13 +22,13 @@ pinterest_rest_api_catalogs_update_retail_item_OPERATION_e catalogs_update_retai
     return 0;
 }
 char* catalogs_update_retail_item_update_mask_ToString(pinterest_rest_api_catalogs_update_retail_item__e update_mask) {
-    char *update_maskArray[] =  { "NULL", "ad_link", "adult", "age_group", "availability", "average_review_rating", "brand", "checkout_enabled", "color", "condition", "custom_label_0", "custom_label_1", "custom_label_2", "custom_label_3", "custom_label_4", "description", "free_shipping_label", "free_shipping_limit", "gender", "google_product_category", "gtin", "item_group_id", "last_updated_time", "link", "material", "min_ad_price", "mpn", "number_of_ratings", "number_of_reviews", "pattern", "price", "product_type", "sale_price", "shipping", "shipping_height", "shipping_weight", "shipping_width", "size", "size_system", "size_type", "tax", "title", "variant_names", "variant_values" };
+    char *update_maskArray[] =  { "NULL", "ad_link", "adult", "age_group", "availability", "average_review_rating", "brand", "checkout_enabled", "color", "condition", "custom_label_0", "custom_label_1", "custom_label_2", "custom_label_3", "custom_label_4", "custom_number_0", "custom_number_1", "custom_number_2", "custom_number_3", "custom_number_4", "description", "free_shipping_label", "free_shipping_limit", "gender", "google_product_category", "gtin", "item_group_id", "last_updated_time", "link", "material", "min_ad_price", "mpn", "number_of_ratings", "number_of_reviews", "pattern", "price", "product_type", "sale_price", "shipping", "shipping_height", "shipping_weight", "shipping_width", "size", "size_system", "size_type", "tax", "title", "variant_names", "variant_values", "promotion_id" };
     return update_maskArray[update_mask - 1];
 }
 
 pinterest_rest_api_catalogs_update_retail_item__e catalogs_update_retail_item_update_mask_FromString(char* update_mask) {
     int stringToReturn = 0;
-    char *update_maskArray[] =  { "NULL", "ad_link", "adult", "age_group", "availability", "average_review_rating", "brand", "checkout_enabled", "color", "condition", "custom_label_0", "custom_label_1", "custom_label_2", "custom_label_3", "custom_label_4", "description", "free_shipping_label", "free_shipping_limit", "gender", "google_product_category", "gtin", "item_group_id", "last_updated_time", "link", "material", "min_ad_price", "mpn", "number_of_ratings", "number_of_reviews", "pattern", "price", "product_type", "sale_price", "shipping", "shipping_height", "shipping_weight", "shipping_width", "size", "size_system", "size_type", "tax", "title", "variant_names", "variant_values" };
+    char *update_maskArray[] =  { "NULL", "ad_link", "adult", "age_group", "availability", "average_review_rating", "brand", "checkout_enabled", "color", "condition", "custom_label_0", "custom_label_1", "custom_label_2", "custom_label_3", "custom_label_4", "custom_number_0", "custom_number_1", "custom_number_2", "custom_number_3", "custom_number_4", "description", "free_shipping_label", "free_shipping_limit", "gender", "google_product_category", "gtin", "item_group_id", "last_updated_time", "link", "material", "min_ad_price", "mpn", "number_of_ratings", "number_of_reviews", "pattern", "price", "product_type", "sale_price", "shipping", "shipping_height", "shipping_weight", "shipping_width", "size", "size_system", "size_type", "tax", "title", "variant_names", "variant_values", "promotion_id" };
     size_t sizeofArray = sizeof(update_maskArray) / sizeof(update_maskArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(update_mask, update_maskArray[stringToReturn]) == 0) {
@@ -40,18 +40,18 @@ pinterest_rest_api_catalogs_update_retail_item__e catalogs_update_retail_item_up
 }
 
 static catalogs_update_retail_item_t *catalogs_update_retail_item_create_internal(
+    updatable_item_attributes_t *attributes,
     char *item_id,
     pinterest_rest_api_catalogs_update_retail_item_OPERATION_e operation,
-    updatable_item_attributes_t *attributes,
     list_t *update_mask
     ) {
     catalogs_update_retail_item_t *catalogs_update_retail_item_local_var = malloc(sizeof(catalogs_update_retail_item_t));
     if (!catalogs_update_retail_item_local_var) {
         return NULL;
     }
+    catalogs_update_retail_item_local_var->attributes = attributes;
     catalogs_update_retail_item_local_var->item_id = item_id;
     catalogs_update_retail_item_local_var->operation = operation;
-    catalogs_update_retail_item_local_var->attributes = attributes;
     catalogs_update_retail_item_local_var->update_mask = update_mask;
 
     catalogs_update_retail_item_local_var->_library_owned = 1;
@@ -59,15 +59,15 @@ static catalogs_update_retail_item_t *catalogs_update_retail_item_create_interna
 }
 
 __attribute__((deprecated)) catalogs_update_retail_item_t *catalogs_update_retail_item_create(
+    updatable_item_attributes_t *attributes,
     char *item_id,
     pinterest_rest_api_catalogs_update_retail_item_OPERATION_e operation,
-    updatable_item_attributes_t *attributes,
     list_t *update_mask
     ) {
     return catalogs_update_retail_item_create_internal (
+        attributes,
         item_id,
         operation,
-        attributes,
         update_mask
         );
 }
@@ -81,13 +81,13 @@ void catalogs_update_retail_item_free(catalogs_update_retail_item_t *catalogs_up
         return ;
     }
     listEntry_t *listEntry;
-    if (catalogs_update_retail_item->item_id) {
-        free(catalogs_update_retail_item->item_id);
-        catalogs_update_retail_item->item_id = NULL;
-    }
     if (catalogs_update_retail_item->attributes) {
         updatable_item_attributes_free(catalogs_update_retail_item->attributes);
         catalogs_update_retail_item->attributes = NULL;
+    }
+    if (catalogs_update_retail_item->item_id) {
+        free(catalogs_update_retail_item->item_id);
+        catalogs_update_retail_item->item_id = NULL;
     }
     if (catalogs_update_retail_item->update_mask) {
         list_ForEach(listEntry, catalogs_update_retail_item->update_mask) {
@@ -101,6 +101,20 @@ void catalogs_update_retail_item_free(catalogs_update_retail_item_t *catalogs_up
 
 cJSON *catalogs_update_retail_item_convertToJSON(catalogs_update_retail_item_t *catalogs_update_retail_item) {
     cJSON *item = cJSON_CreateObject();
+
+    // catalogs_update_retail_item->attributes
+    if (!catalogs_update_retail_item->attributes) {
+        goto fail;
+    }
+    cJSON *attributes_local_JSON = updatable_item_attributes_convertToJSON(catalogs_update_retail_item->attributes);
+    if(attributes_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "attributes", attributes_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+
 
     // catalogs_update_retail_item->item_id
     if (!catalogs_update_retail_item->item_id) {
@@ -118,20 +132,6 @@ cJSON *catalogs_update_retail_item_convertToJSON(catalogs_update_retail_item_t *
     if(cJSON_AddStringToObject(item, "operation", catalogs_update_retail_item_operation_ToString(catalogs_update_retail_item->operation)) == NULL)
     {
     goto fail; //Enum
-    }
-
-
-    // catalogs_update_retail_item->attributes
-    if (!catalogs_update_retail_item->attributes) {
-        goto fail;
-    }
-    cJSON *attributes_local_JSON = updatable_item_attributes_convertToJSON(catalogs_update_retail_item->attributes);
-    if(attributes_local_JSON == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "attributes", attributes_local_JSON);
-    if(item->child == NULL) {
-    goto fail;
     }
 
 
@@ -172,6 +172,18 @@ catalogs_update_retail_item_t *catalogs_update_retail_item_parseFromJSON(cJSON *
     // define the local list for catalogs_update_retail_item->update_mask
     list_t *update_maskList = NULL;
 
+    // catalogs_update_retail_item->attributes
+    cJSON *attributes = cJSON_GetObjectItemCaseSensitive(catalogs_update_retail_itemJSON, "attributes");
+    if (cJSON_IsNull(attributes)) {
+        attributes = NULL;
+    }
+    if (!attributes) {
+        goto end;
+    }
+
+    
+    attributes_local_nonprim = updatable_item_attributes_parseFromJSON(attributes); //nonprimitive
+
     // catalogs_update_retail_item->item_id
     cJSON *item_id = cJSON_GetObjectItemCaseSensitive(catalogs_update_retail_itemJSON, "item_id");
     if (cJSON_IsNull(item_id)) {
@@ -204,18 +216,6 @@ catalogs_update_retail_item_t *catalogs_update_retail_item_parseFromJSON(cJSON *
     }
     operationVariable = catalogs_update_retail_item_operation_FromString(operation->valuestring);
 
-    // catalogs_update_retail_item->attributes
-    cJSON *attributes = cJSON_GetObjectItemCaseSensitive(catalogs_update_retail_itemJSON, "attributes");
-    if (cJSON_IsNull(attributes)) {
-        attributes = NULL;
-    }
-    if (!attributes) {
-        goto end;
-    }
-
-    
-    attributes_local_nonprim = updatable_item_attributes_parseFromJSON(attributes); //nonprimitive
-
     // catalogs_update_retail_item->update_mask
     cJSON *update_mask = cJSON_GetObjectItemCaseSensitive(catalogs_update_retail_itemJSON, "update_mask");
     if (cJSON_IsNull(update_mask)) {
@@ -242,9 +242,9 @@ catalogs_update_retail_item_t *catalogs_update_retail_item_parseFromJSON(cJSON *
 
 
     catalogs_update_retail_item_local_var = catalogs_update_retail_item_create_internal (
+        attributes_local_nonprim,
         strdup(item_id->valuestring),
         operationVariable,
-        attributes_local_nonprim,
         update_mask ? update_maskList : NULL
         );
 

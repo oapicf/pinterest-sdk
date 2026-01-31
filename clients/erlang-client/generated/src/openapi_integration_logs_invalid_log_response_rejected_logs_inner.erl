@@ -5,19 +5,19 @@
 -export_type([openapi_integration_logs_invalid_log_response_rejected_logs_inner/0]).
 
 -type openapi_integration_logs_invalid_log_response_rejected_logs_inner() ::
-    #{ 'log_index' => integer(),
-       'field' := binary(),
-       'value' := binary(),
-       'reason' := binary()
+    #{ 'field' := binary(),
+       'log_index' => integer(),
+       'reason' := binary(),
+       'value' := binary()
      }.
 
-encode(#{ 'log_index' := LogIndex,
-          'field' := Field,
-          'value' := Value,
-          'reason' := Reason
+encode(#{ 'field' := Field,
+          'log_index' := LogIndex,
+          'reason' := Reason,
+          'value' := Value
         }) ->
-    #{ 'log_index' => LogIndex,
-       'field' => Field,
-       'value' => Value,
-       'reason' => Reason
+    #{ 'field' => Field,
+       'log_index' => LogIndex,
+       'reason' => Reason,
+       'value' => Value
      }.

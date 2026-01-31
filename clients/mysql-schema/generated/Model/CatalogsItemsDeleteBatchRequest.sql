@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsItemsDeleteBatchRequest`
 --
-SELECT `country`, `language`, `operation`, `items` FROM `CatalogsItemsDeleteBatchRequest` WHERE 1;
+SELECT `country`, `items`, `language`, `operation` FROM `CatalogsItemsDeleteBatchRequest` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsItemsDeleteBatchRequest`
 --
-INSERT INTO `CatalogsItemsDeleteBatchRequest`(`country`, `language`, `operation`, `items`) VALUES (?, ?, ?, ?);
+INSERT INTO `CatalogsItemsDeleteBatchRequest`(`country`, `items`, `language`, `operation`) VALUES (?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsItemsDeleteBatchRequest`
 --
-UPDATE `CatalogsItemsDeleteBatchRequest` SET `country` = ?, `language` = ?, `operation` = ?, `items` = ? WHERE 1;
+UPDATE `CatalogsItemsDeleteBatchRequest` SET `country` = ?, `items` = ?, `language` = ?, `operation` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsItemsDeleteBatchRequest`

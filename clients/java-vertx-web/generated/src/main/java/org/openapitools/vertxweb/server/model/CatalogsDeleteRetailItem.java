@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public class CatalogsDeleteRetailItem   {
   
   private String itemId;
+  private Long lastUpdatedTime;
 
 
   public enum OperationEnum {
@@ -36,8 +37,9 @@ public class CatalogsDeleteRetailItem   {
 
   }
 
-  public CatalogsDeleteRetailItem (String itemId, OperationEnum operation) {
+  public CatalogsDeleteRetailItem (String itemId, Long lastUpdatedTime, OperationEnum operation) {
     this.itemId = itemId;
+    this.lastUpdatedTime = lastUpdatedTime;
     this.operation = operation;
   }
 
@@ -48,6 +50,15 @@ public class CatalogsDeleteRetailItem   {
   }
   public void setItemId(String itemId) {
     this.itemId = itemId;
+  }
+
+    
+  @JsonProperty("last_updated_time")
+  public Long getLastUpdatedTime() {
+    return lastUpdatedTime;
+  }
+  public void setLastUpdatedTime(Long lastUpdatedTime) {
+    this.lastUpdatedTime = lastUpdatedTime;
   }
 
     
@@ -70,12 +81,13 @@ public class CatalogsDeleteRetailItem   {
     }
     CatalogsDeleteRetailItem catalogsDeleteRetailItem = (CatalogsDeleteRetailItem) o;
     return Objects.equals(itemId, catalogsDeleteRetailItem.itemId) &&
+        Objects.equals(lastUpdatedTime, catalogsDeleteRetailItem.lastUpdatedTime) &&
         Objects.equals(operation, catalogsDeleteRetailItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, operation);
+    return Objects.hash(itemId, lastUpdatedTime, operation);
   }
 
   @Override
@@ -84,6 +96,7 @@ public class CatalogsDeleteRetailItem   {
     sb.append("class CatalogsDeleteRetailItem {\n");
     
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
+    sb.append("    lastUpdatedTime: ").append(toIndentedString(lastUpdatedTime)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
     sb.append("}");
     return sb.toString();

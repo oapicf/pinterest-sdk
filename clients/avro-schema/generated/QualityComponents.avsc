@@ -1,0 +1,108 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Set of quality components, with each component containing a event coverage and details.",
+  "name": "QualityComponents",
+  "fields": [
+    {
+      "name": "advertiser_external_id",
+      "type": ["null", {
+        "type": "map",
+        "items": "model.QualityComponentDetails"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "click_id_epik",
+      "type": ["null", {
+        "type": "map",
+        "items": "model.QualityComponentDetails"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "external_event_id",
+      "type": ["null", {
+        "type": "map",
+        "items": "model.QualityComponentDetails"
+      }],
+      "doc": "Dedup components.",
+      "default": null
+    },
+    {
+      "name": "hashed_email",
+      "type": ["null", {
+        "type": "map",
+        "items": "model.QualityComponentDetails"
+      }],
+      "doc": "User matching identifiers.",
+      "default": null
+    },
+    {
+      "name": "hashed_maid",
+      "type": ["null", {
+        "type": "map",
+        "items": "model.QualityComponentDetails"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "ip_address",
+      "type": ["null", {
+        "type": "map",
+        "items": "model.QualityComponentDetails"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "order_id",
+      "type": ["null", {
+        "type": "map",
+        "items": "model.QualityComponentDetails"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "order_value",
+      "type": ["null", {
+        "type": "map",
+        "items": "model.QualityComponentDetails"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "product_id",
+      "type": ["null", {
+        "type": "map",
+        "items": "model.QualityComponentDetails"
+      }],
+      "doc": "Product/event metadata.",
+      "default": null
+    },
+    {
+      "name": "source_url",
+      "type": ["null", {
+        "type": "map",
+        "items": "model.QualityComponentDetails"
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "user_agent",
+      "type": ["null", {
+        "type": "map",
+        "items": "model.QualityComponentDetails"
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

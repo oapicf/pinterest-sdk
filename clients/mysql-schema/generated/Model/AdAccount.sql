@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `AdAccount`
 --
-SELECT `id`, `name`, `owner`, `country`, `currency`, `permissions`, `created_time`, `updated_time` FROM `AdAccount` WHERE 1;
+SELECT `country`, `created_time`, `currency`, `id`, `name`, `owner`, `permissions`, `updated_time` FROM `AdAccount` WHERE 1;
 
 --
 -- INSERT template for table `AdAccount`
 --
-INSERT INTO `AdAccount`(`id`, `name`, `owner`, `country`, `currency`, `permissions`, `created_time`, `updated_time`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `AdAccount`(`country`, `created_time`, `currency`, `id`, `name`, `owner`, `permissions`, `updated_time`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `AdAccount`
 --
-UPDATE `AdAccount` SET `id` = ?, `name` = ?, `owner` = ?, `country` = ?, `currency` = ?, `permissions` = ?, `created_time` = ?, `updated_time` = ? WHERE 1;
+UPDATE `AdAccount` SET `country` = ?, `created_time` = ?, `currency` = ?, `id` = ?, `name` = ?, `owner` = ?, `permissions` = ?, `updated_time` = ? WHERE 1;
 
 --
 -- DELETE template for table `AdAccount`

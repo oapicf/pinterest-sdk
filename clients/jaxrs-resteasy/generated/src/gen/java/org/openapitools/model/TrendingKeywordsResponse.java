@@ -9,15 +9,15 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.TrendingKeywordsResponseTrendsInner;
+import org.openapitools.model.TrendingKeyword;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TrendingKeywordsResponse   {
   
-  private List<@Valid TrendingKeywordsResponseTrendsInner> trends = new ArrayList<>();
+  private List<@Valid TrendingKeyword> trends = new ArrayList<>();
 
   /**
    * The top trending keywords for the specified trend type in the requested region.&lt;br /&gt; Results are ordered, with the first element in the array representing the #1 top trend.
@@ -26,10 +26,10 @@ public class TrendingKeywordsResponse   {
   @ApiModelProperty(value = "The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.")
   @JsonProperty("trends")
   @Valid
-  public List<@Valid TrendingKeywordsResponseTrendsInner> getTrends() {
+  public List<@Valid TrendingKeyword> getTrends() {
     return trends;
   }
-  public void setTrends(List<@Valid TrendingKeywordsResponseTrendsInner> trends) {
+  public void setTrends(List<@Valid TrendingKeyword> trends) {
     this.trends = trends;
   }
 

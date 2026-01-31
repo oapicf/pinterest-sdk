@@ -12,29 +12,29 @@ import AnyCodable
 
 public struct TemplateResponseDateRange: Codable, JSONEncodable, Hashable {
 
+    public var absoluteDateRange: TemplateResponseDateRangeAbsoluteDateRange?
     public var dynamicDateRange: TemplateResponseDateRangeDynamicDateRange?
     public var relativeDateRange: TemplateResponseDateRangeRelativeDateRange?
-    public var absoluteDateRange: TemplateResponseDateRangeAbsoluteDateRange?
 
-    public init(dynamicDateRange: TemplateResponseDateRangeDynamicDateRange? = nil, relativeDateRange: TemplateResponseDateRangeRelativeDateRange? = nil, absoluteDateRange: TemplateResponseDateRangeAbsoluteDateRange? = nil) {
+    public init(absoluteDateRange: TemplateResponseDateRangeAbsoluteDateRange? = nil, dynamicDateRange: TemplateResponseDateRangeDynamicDateRange? = nil, relativeDateRange: TemplateResponseDateRangeRelativeDateRange? = nil) {
+        self.absoluteDateRange = absoluteDateRange
         self.dynamicDateRange = dynamicDateRange
         self.relativeDateRange = relativeDateRange
-        self.absoluteDateRange = absoluteDateRange
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case absoluteDateRange = "absolute_date_range"
         case dynamicDateRange = "dynamic_date_range"
         case relativeDateRange = "relative_date_range"
-        case absoluteDateRange = "absolute_date_range"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(absoluteDateRange, forKey: .absoluteDateRange)
         try container.encodeIfPresent(dynamicDateRange, forKey: .dynamicDateRange)
         try container.encodeIfPresent(relativeDateRange, forKey: .relativeDateRange)
-        try container.encodeIfPresent(absoluteDateRange, forKey: .absoluteDateRange)
     }
 }
 

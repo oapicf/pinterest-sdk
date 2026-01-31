@@ -9,7 +9,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 @Canonical
 class BoardMedia {
-    /* Board cover image. */
+    /* Board cover image */
     String imageCoverUrl
     /* Board pin thumbnail urls. */
     List<String> pinThumbnailUrls = new ArrayList<>()

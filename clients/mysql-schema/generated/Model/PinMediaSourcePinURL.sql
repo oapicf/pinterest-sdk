@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `PinMediaSourcePinURL`
 --
-SELECT `source_type`, `is_affiliate_link` FROM `PinMediaSourcePinURL` WHERE 1;
+SELECT `is_affiliate_link`, `source_type` FROM `PinMediaSourcePinURL` WHERE 1;
 
 --
 -- INSERT template for table `PinMediaSourcePinURL`
 --
-INSERT INTO `PinMediaSourcePinURL`(`source_type`, `is_affiliate_link`) VALUES (?, ?);
+INSERT INTO `PinMediaSourcePinURL`(`is_affiliate_link`, `source_type`) VALUES (?, ?);
 
 --
 -- UPDATE template for table `PinMediaSourcePinURL`
 --
-UPDATE `PinMediaSourcePinURL` SET `source_type` = ?, `is_affiliate_link` = ? WHERE 1;
+UPDATE `PinMediaSourcePinURL` SET `is_affiliate_link` = ?, `source_type` = ? WHERE 1;
 
 --
 -- DELETE template for table `PinMediaSourcePinURL`

@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum PermissionsWithOwner {
 
-    @JsonProperty("ADMIN") ADMIN(String.valueOf("ADMIN")), @JsonProperty("ANALYST") ANALYST(String.valueOf("ANALYST")), @JsonProperty("FINANCE_MANAGER") FINANCE_MANAGER(String.valueOf("FINANCE_MANAGER")), @JsonProperty("AUDIENCE_MANAGER") AUDIENCE_MANAGER(String.valueOf("AUDIENCE_MANAGER")), @JsonProperty("CAMPAIGN_MANAGER") CAMPAIGN_MANAGER(String.valueOf("CAMPAIGN_MANAGER")), @JsonProperty("CATALOGS_MANAGER") CATALOGS_MANAGER(String.valueOf("CATALOGS_MANAGER")), @JsonProperty("CATALOGS_VIEWER") CATALOGS_VIEWER(String.valueOf("CATALOGS_VIEWER")), @JsonProperty("PROFILE_PUBLISHER") PROFILE_PUBLISHER(String.valueOf("PROFILE_PUBLISHER")), @JsonProperty("OWNER") OWNER(String.valueOf("OWNER"));
+    @JsonProperty("ADMIN") ADMIN(String.valueOf("ADMIN")), @JsonProperty("ANALYST") ANALYST(String.valueOf("ANALYST")), @JsonProperty("FINANCE_MANAGER") FINANCE_MANAGER(String.valueOf("FINANCE_MANAGER")), @JsonProperty("FINANCE_EDIT") FINANCE_EDIT(String.valueOf("FINANCE_EDIT")), @JsonProperty("FINANCE_VIEW") FINANCE_VIEW(String.valueOf("FINANCE_VIEW")), @JsonProperty("AUDIENCE_MANAGER") AUDIENCE_MANAGER(String.valueOf("AUDIENCE_MANAGER")), @JsonProperty("CAMPAIGN_MANAGER") CAMPAIGN_MANAGER(String.valueOf("CAMPAIGN_MANAGER")), @JsonProperty("CATALOGS_MANAGER") CATALOGS_MANAGER(String.valueOf("CATALOGS_MANAGER")), @JsonProperty("CATALOGS_VIEWER") CATALOGS_VIEWER(String.valueOf("CATALOGS_VIEWER")), @JsonProperty("PROFILE_PUBLISHER") PROFILE_PUBLISHER(String.valueOf("PROFILE_PUBLISHER")), @JsonProperty("OWNER") OWNER(String.valueOf("OWNER"));
 
 
     private String value;

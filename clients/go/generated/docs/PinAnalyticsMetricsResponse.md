@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**LifetimeMetrics** | Pointer to **map[string]int32** | The lifetime metric name and value. | [optional] 
 **DailyMetrics** | Pointer to [**[]PinAnalyticsMetricsResponseDailyMetricsInner**](PinAnalyticsMetricsResponseDailyMetricsInner.md) | Array with the requested daily metric records | [optional] 
+**LifetimeMetrics** | Pointer to **map[string]int32** | The lifetime metric name and value. | [optional] 
 **SummaryMetrics** | Pointer to **map[string]float32** | The metric name and value over the requested period for each requested metric | [optional] 
 
 ## Methods
@@ -26,31 +26,6 @@ will change when the set of required properties is changed
 NewPinAnalyticsMetricsResponseWithDefaults instantiates a new PinAnalyticsMetricsResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetLifetimeMetrics
-
-`func (o *PinAnalyticsMetricsResponse) GetLifetimeMetrics() map[string]int32`
-
-GetLifetimeMetrics returns the LifetimeMetrics field if non-nil, zero value otherwise.
-
-### GetLifetimeMetricsOk
-
-`func (o *PinAnalyticsMetricsResponse) GetLifetimeMetricsOk() (*map[string]int32, bool)`
-
-GetLifetimeMetricsOk returns a tuple with the LifetimeMetrics field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLifetimeMetrics
-
-`func (o *PinAnalyticsMetricsResponse) SetLifetimeMetrics(v map[string]int32)`
-
-SetLifetimeMetrics sets LifetimeMetrics field to given value.
-
-### HasLifetimeMetrics
-
-`func (o *PinAnalyticsMetricsResponse) HasLifetimeMetrics() bool`
-
-HasLifetimeMetrics returns a boolean if a field has been set.
 
 ### GetDailyMetrics
 
@@ -76,6 +51,31 @@ SetDailyMetrics sets DailyMetrics field to given value.
 `func (o *PinAnalyticsMetricsResponse) HasDailyMetrics() bool`
 
 HasDailyMetrics returns a boolean if a field has been set.
+
+### GetLifetimeMetrics
+
+`func (o *PinAnalyticsMetricsResponse) GetLifetimeMetrics() map[string]int32`
+
+GetLifetimeMetrics returns the LifetimeMetrics field if non-nil, zero value otherwise.
+
+### GetLifetimeMetricsOk
+
+`func (o *PinAnalyticsMetricsResponse) GetLifetimeMetricsOk() (*map[string]int32, bool)`
+
+GetLifetimeMetricsOk returns a tuple with the LifetimeMetrics field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLifetimeMetrics
+
+`func (o *PinAnalyticsMetricsResponse) SetLifetimeMetrics(v map[string]int32)`
+
+SetLifetimeMetrics sets LifetimeMetrics field to given value.
+
+### HasLifetimeMetrics
+
+`func (o *PinAnalyticsMetricsResponse) HasLifetimeMetrics() bool`
+
+HasLifetimeMetrics returns a boolean if a field has been set.
 
 ### GetSummaryMetrics
 

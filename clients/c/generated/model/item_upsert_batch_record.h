@@ -20,15 +20,15 @@ typedef struct item_upsert_batch_record_t item_upsert_batch_record_t;
 
 
 typedef struct item_upsert_batch_record_t {
-    char *item_id; // string
     struct item_attributes_request_t *attributes; //model
+    char *item_id; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } item_upsert_batch_record_t;
 
 __attribute__((deprecated)) item_upsert_batch_record_t *item_upsert_batch_record_create(
-    char *item_id,
-    item_attributes_request_t *attributes
+    item_attributes_request_t *attributes,
+    char *item_id
 );
 
 void item_upsert_batch_record_free(item_upsert_batch_record_t *item_upsert_batch_record);

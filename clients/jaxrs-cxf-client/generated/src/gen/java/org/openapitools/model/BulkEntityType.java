@@ -3,7 +3,7 @@ package org.openapitools.model;
 
 
 /**
- * Refers ads entity type
+ * Refers ads entity type. Schedule enum is only applicable to beta users
  */
 public enum BulkEntityType {
   
@@ -15,7 +15,11 @@ public enum BulkEntityType {
   
   AD("AD"),
   
-  KEYWORD("KEYWORD");
+  KEYWORD("KEYWORD"),
+  
+  LABEL("LABEL"),
+  
+  SCHEDULE("SCHEDULE");
 
   private String value;
 

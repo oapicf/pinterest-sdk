@@ -16,15 +16,39 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SsioOrderLinesGetByAdAccount200Response  {
   
+  @ApiModelProperty(value = "")
+  private String bookmark;
+
  /**
   * SSIO order lines by ad acount id
   */
   @ApiModelProperty(required = true, value = "SSIO order lines by ad acount id")
   @Valid
   private List<@Valid SSIOOrderLine> items = new ArrayList<>();
+ /**
+  * Get bookmark
+  * @return bookmark
+  */
+  @JsonProperty("bookmark")
+  public String getBookmark() {
+    return bookmark;
+  }
 
-  @ApiModelProperty(value = "")
-  private String bookmark;
+  /**
+   * Sets the <code>bookmark</code> property.
+   */
+ public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
+
+  /**
+   * Sets the <code>bookmark</code> property.
+   */
+  public SsioOrderLinesGetByAdAccount200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
  /**
   * SSIO order lines by ad acount id
   * @return items
@@ -58,30 +82,6 @@ public class SsioOrderLinesGetByAdAccount200Response  {
     return this;
   }
 
- /**
-  * Get bookmark
-  * @return bookmark
-  */
-  @JsonProperty("bookmark")
-  public String getBookmark() {
-    return bookmark;
-  }
-
-  /**
-   * Sets the <code>bookmark</code> property.
-   */
- public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
-  /**
-   * Sets the <code>bookmark</code> property.
-   */
-  public SsioOrderLinesGetByAdAccount200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -92,13 +92,13 @@ public class SsioOrderLinesGetByAdAccount200Response  {
       return false;
     }
     SsioOrderLinesGetByAdAccount200Response ssioOrderLinesGetByAdAccount200Response = (SsioOrderLinesGetByAdAccount200Response) o;
-    return Objects.equals(this.items, ssioOrderLinesGetByAdAccount200Response.items) &&
-        Objects.equals(this.bookmark, ssioOrderLinesGetByAdAccount200Response.bookmark);
+    return Objects.equals(this.bookmark, ssioOrderLinesGetByAdAccount200Response.bookmark) &&
+        Objects.equals(this.items, ssioOrderLinesGetByAdAccount200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -106,8 +106,8 @@ public class SsioOrderLinesGetByAdAccount200Response  {
     StringBuilder sb = new StringBuilder();
     sb.append("class SsioOrderLinesGetByAdAccount200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

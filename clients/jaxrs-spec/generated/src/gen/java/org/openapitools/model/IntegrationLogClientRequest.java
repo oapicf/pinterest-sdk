@@ -20,8 +20,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "HTTP request details included in the log sent by the client.")
 @JsonTypeName("IntegrationLogClientRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class IntegrationLogClientRequest   {
+  private String host;
   public enum MethodEnum {
 
     GET(String.valueOf("GET")), HEAD(String.valueOf("HEAD")), POST(String.valueOf("POST")), PUT(String.valueOf("PUT")), DELETE(String.valueOf("DELETE")), CONNECT(String.valueOf("CONNECT")), OPTIONS(String.valueOf("OPTIONS")), TRACE(String.valueOf("TRACE")), PATCH(String.valueOf("PATCH"));
@@ -70,7 +71,6 @@ public class IntegrationLogClientRequest   {
 }
 
   private MethodEnum method;
-  private String host;
   private String path;
   private @Valid Map<String, String> requestHeaders = new HashMap<>();
   private @Valid Map<String, String> responseHeaders = new HashMap<>();
@@ -81,32 +81,13 @@ public class IntegrationLogClientRequest   {
 
   @JsonCreator
   public IntegrationLogClientRequest(
-    @JsonProperty(required = true, value = "method") MethodEnum method,
     @JsonProperty(required = true, value = "host") String host,
+    @JsonProperty(required = true, value = "method") MethodEnum method,
     @JsonProperty(required = true, value = "path") String path
   ) {
-    this.method = method;
     this.host = host;
+    this.method = method;
     this.path = path;
-  }
-
-  /**
-   **/
-  public IntegrationLogClientRequest method(MethodEnum method) {
-    this.method = method;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "method")
-  @NotNull public MethodEnum getMethod() {
-    return method;
-  }
-
-  @JsonProperty(required = true, value = "method")
-  public void setMethod(MethodEnum method) {
-    this.method = method;
   }
 
   /**
@@ -127,6 +108,25 @@ public class IntegrationLogClientRequest   {
   @JsonProperty(required = true, value = "host")
   public void setHost(String host) {
     this.host = host;
+  }
+
+  /**
+   **/
+  public IntegrationLogClientRequest method(MethodEnum method) {
+    this.method = method;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "method")
+  @NotNull public MethodEnum getMethod() {
+    return method;
+  }
+
+  @JsonProperty(required = true, value = "method")
+  public void setMethod(MethodEnum method) {
+    this.method = method;
   }
 
   /**
@@ -250,8 +250,8 @@ public class IntegrationLogClientRequest   {
       return false;
     }
     IntegrationLogClientRequest integrationLogClientRequest = (IntegrationLogClientRequest) o;
-    return Objects.equals(this.method, integrationLogClientRequest.method) &&
-        Objects.equals(this.host, integrationLogClientRequest.host) &&
+    return Objects.equals(this.host, integrationLogClientRequest.host) &&
+        Objects.equals(this.method, integrationLogClientRequest.method) &&
         Objects.equals(this.path, integrationLogClientRequest.path) &&
         Objects.equals(this.requestHeaders, integrationLogClientRequest.requestHeaders) &&
         Objects.equals(this.responseHeaders, integrationLogClientRequest.responseHeaders) &&
@@ -260,7 +260,7 @@ public class IntegrationLogClientRequest   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(method, host, path, requestHeaders, responseHeaders, responseStatusCode);
+    return Objects.hash(host, method, path, requestHeaders, responseHeaders, responseStatusCode);
   }
 
   @Override
@@ -268,8 +268,8 @@ public class IntegrationLogClientRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class IntegrationLogClientRequest {\n");
     
-    sb.append("    method: ").append(toIndentedString(method)).append("\n");
     sb.append("    host: ").append(toIndentedString(host)).append("\n");
+    sb.append("    method: ").append(toIndentedString(method)).append("\n");
     sb.append("    path: ").append(toIndentedString(path)).append("\n");
     sb.append("    requestHeaders: ").append(toIndentedString(requestHeaders)).append("\n");
     sb.append("    responseHeaders: ").append(toIndentedString(responseHeaders)).append("\n");

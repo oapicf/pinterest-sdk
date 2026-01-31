@@ -24,19 +24,19 @@ catalogs_creative_assets_batch_request_t* instantiate_catalogs_creative_assets_b
   catalogs_creative_assets_batch_request_t* catalogs_creative_assets_batch_request = NULL;
   if (include_optional) {
     catalogs_creative_assets_batch_request = catalogs_creative_assets_batch_request_create(
+      "2680059592705",
       pinterest_rest_api_catalogs_creative_assets_batch_request_CATALOGTYPE_CREATIVE_ASSETS,
-      pinterest_rest_api_catalogs_creative_assets_batch_request__"US",
-      pinterest_rest_api_catalogs_creative_assets_batch_request_LANGUAGE_af-ZA,
+      pinterest_rest_api_catalogs_creative_assets_batch_request__AD,
       list_createList(),
-      "2680059592705"
+      pinterest_rest_api_catalogs_creative_assets_batch_request_LANGUAGE_af-ZA
     );
   } else {
     catalogs_creative_assets_batch_request = catalogs_creative_assets_batch_request_create(
+      "2680059592705",
       pinterest_rest_api_catalogs_creative_assets_batch_request_CATALOGTYPE_CREATIVE_ASSETS,
-      pinterest_rest_api_catalogs_creative_assets_batch_request__"US",
-      pinterest_rest_api_catalogs_creative_assets_batch_request_LANGUAGE_af-ZA,
+      pinterest_rest_api_catalogs_creative_assets_batch_request__AD,
       list_createList(),
-      "2680059592705"
+      pinterest_rest_api_catalogs_creative_assets_batch_request_LANGUAGE_af-ZA
     );
   }
 

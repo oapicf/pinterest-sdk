@@ -8,8 +8,8 @@
 
 (def catalogs-product-group-currency-criteria-data
   {
-   (ds/req :values) non-nullable-catalogs-currency-spec
    (ds/opt :negated) boolean?
+   (ds/req :values) non-nullable-catalogs-currency-spec
    })
 
 (def catalogs-product-group-currency-criteria-spec

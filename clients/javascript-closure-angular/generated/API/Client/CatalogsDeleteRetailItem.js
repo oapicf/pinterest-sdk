@@ -14,6 +14,13 @@ API.Client.CatalogsDeleteRetailItem = function() {}
 API.Client.CatalogsDeleteRetailItem.prototype.itemId;
 
 /**
+ * The millisecond timestamp when the item was lastly modified by the merchant.
+ * @type {!number}
+ * @export
+ */
+API.Client.CatalogsDeleteRetailItem.prototype.lastUpdatedTime;
+
+/**
  * @type {!string}
  * @export
  */

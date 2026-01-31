@@ -1,32 +1,32 @@
 package api
 
 import model.Error
+import model.Media
 import model.MediaList200Response
 import model.MediaUpload
-import model.MediaUploadDetails
-import model.MediaUploadRequest
+import model.MediaUploadCreate
 
 /**
   * Provides a default implementation for [[MediaApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 class MediaApiImpl extends MediaApi {
   /**
     * @inheritdoc
     */
-  override def mediaCreate(mediaUploadRequest: MediaUploadRequest): MediaUpload = {
+  override def mediaCreate(mediaUploadCreate: MediaUploadCreate): MediaUpload = {
     // TODO: Implement better logic
 
-    MediaUpload(None, None, None, None, Map.empty)
+    MediaUpload("", MediaUploadType(), None, None)
   }
 
   /**
     * @inheritdoc
     */
-  override def mediaGet(mediaId: String): MediaUploadDetails = {
+  override def mediaGet(mediaId: String): Media = {
     // TODO: Implement better logic
 
-    MediaUploadDetails(None, None, None)
+    Media("", MediaUploadType(), None)
   }
 
   /**
@@ -35,6 +35,6 @@ class MediaApiImpl extends MediaApi {
   override def mediaList(bookmark: Option[String], pageSize: Option[Int]): MediaList200Response = {
     // TODO: Implement better logic
 
-    MediaList200Response(List.empty[MediaUploadDetails], None)
+    MediaList200Response(None, List.empty[Media])
   }
 }

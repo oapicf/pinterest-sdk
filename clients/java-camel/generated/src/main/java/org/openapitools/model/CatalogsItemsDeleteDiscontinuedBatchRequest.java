@@ -29,10 +29,13 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsItemsDeleteDiscontinuedBatchRequest", description = "Request object to discontinue catalogs items")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItemsDeleteDiscontinuedBatchRequest implements CatalogsItemsBatchRequest {
 
   private Country country;
+
+  @Valid
+  private List<@Valid ItemDeleteDiscontinuedBatchRecord> items = new ArrayList<>();
 
   /**
    * We recommend using the CatalogsLocale values.
@@ -283,9 +286,6 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest implements CatalogsItem
 
   private BatchOperation operation;
 
-  @Valid
-  private List<@Valid ItemDeleteDiscontinuedBatchRecord> items = new ArrayList<>();
-
   public CatalogsItemsDeleteDiscontinuedBatchRequest() {
     super();
   }
@@ -293,11 +293,11 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest implements CatalogsItem
   /**
    * Constructor with only required parameters
    */
-  public CatalogsItemsDeleteDiscontinuedBatchRequest(Country country, LanguageEnum language, BatchOperation operation, List<@Valid ItemDeleteDiscontinuedBatchRecord> items) {
+  public CatalogsItemsDeleteDiscontinuedBatchRequest(Country country, List<@Valid ItemDeleteDiscontinuedBatchRecord> items, LanguageEnum language, BatchOperation operation) {
     this.country = country;
+    this.items = items;
     this.language = language;
     this.operation = operation;
-    this.items = items;
   }
 
   public CatalogsItemsDeleteDiscontinuedBatchRequest country(Country country) {
@@ -318,6 +318,34 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest implements CatalogsItem
 
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+  public CatalogsItemsDeleteDiscontinuedBatchRequest items(List<@Valid ItemDeleteDiscontinuedBatchRecord> items) {
+    this.items = items;
+    return this;
+  }
+
+  public CatalogsItemsDeleteDiscontinuedBatchRequest addItemsItem(ItemDeleteDiscontinuedBatchRecord itemsItem) {
+    if (this.items == null) {
+      this.items = new ArrayList<>();
+    }
+    this.items.add(itemsItem);
+    return this;
+  }
+
+  /**
+   * Array with catalogs items
+   * @return items
+   */
+  @NotNull @Valid 
+  @Schema(name = "items", description = "Array with catalogs items", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("items")
+  public List<@Valid ItemDeleteDiscontinuedBatchRecord> getItems() {
+    return items;
+  }
+
+  public void setItems(List<@Valid ItemDeleteDiscontinuedBatchRecord> items) {
+    this.items = items;
   }
 
   public CatalogsItemsDeleteDiscontinuedBatchRequest language(LanguageEnum language) {
@@ -360,34 +388,6 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest implements CatalogsItem
     this.operation = operation;
   }
 
-  public CatalogsItemsDeleteDiscontinuedBatchRequest items(List<@Valid ItemDeleteDiscontinuedBatchRecord> items) {
-    this.items = items;
-    return this;
-  }
-
-  public CatalogsItemsDeleteDiscontinuedBatchRequest addItemsItem(ItemDeleteDiscontinuedBatchRecord itemsItem) {
-    if (this.items == null) {
-      this.items = new ArrayList<>();
-    }
-    this.items.add(itemsItem);
-    return this;
-  }
-
-  /**
-   * Array with catalogs items
-   * @return items
-   */
-  @NotNull @Valid 
-  @Schema(name = "items", description = "Array with catalogs items", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("items")
-  public List<@Valid ItemDeleteDiscontinuedBatchRecord> getItems() {
-    return items;
-  }
-
-  public void setItems(List<@Valid ItemDeleteDiscontinuedBatchRecord> items) {
-    this.items = items;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -398,14 +398,14 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest implements CatalogsItem
     }
     CatalogsItemsDeleteDiscontinuedBatchRequest catalogsItemsDeleteDiscontinuedBatchRequest = (CatalogsItemsDeleteDiscontinuedBatchRequest) o;
     return Objects.equals(this.country, catalogsItemsDeleteDiscontinuedBatchRequest.country) &&
+        Objects.equals(this.items, catalogsItemsDeleteDiscontinuedBatchRequest.items) &&
         Objects.equals(this.language, catalogsItemsDeleteDiscontinuedBatchRequest.language) &&
-        Objects.equals(this.operation, catalogsItemsDeleteDiscontinuedBatchRequest.operation) &&
-        Objects.equals(this.items, catalogsItemsDeleteDiscontinuedBatchRequest.items);
+        Objects.equals(this.operation, catalogsItemsDeleteDiscontinuedBatchRequest.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, language, operation, items);
+    return Objects.hash(country, items, language, operation);
   }
 
   @Override
@@ -413,9 +413,9 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest implements CatalogsItem
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsItemsDeleteDiscontinuedBatchRequest {\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

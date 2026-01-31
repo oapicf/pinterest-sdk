@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**Interest[]**](Interest.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**Interest[]**](Interest.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$UserAccountFollowedInterests200Response = Initialize-PSOpenAPIToolsUserAccountFollowedInterests200Response  -Items null `
- -Bookmark null
+$UserAccountFollowedInterests200Response = Initialize-PSOpenAPIToolsUserAccountFollowedInterests200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

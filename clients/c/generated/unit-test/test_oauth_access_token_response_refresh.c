@@ -22,19 +22,25 @@ oauth_access_token_response_refresh_t* instantiate_oauth_access_token_response_r
   oauth_access_token_response_refresh_t* oauth_access_token_response_refresh = NULL;
   if (include_optional) {
     oauth_access_token_response_refresh = oauth_access_token_response_refresh_create(
+      "0",
+      56,
       pinterest_rest_api_oauth_access_token_response_refresh_RESPONSETYPE_authorization_code,
       "0",
       "bearer",
+      "0",
       56,
-      "0"
+      56
     );
   } else {
     oauth_access_token_response_refresh = oauth_access_token_response_refresh_create(
+      "0",
+      56,
       pinterest_rest_api_oauth_access_token_response_refresh_RESPONSETYPE_authorization_code,
       "0",
       "bearer",
+      "0",
       56,
-      "0"
+      56
     );
   }
 

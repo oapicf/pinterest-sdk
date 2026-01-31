@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Order line ID. | [optional] 
-**Type** | Pointer to **string** | Always \&quot;orderline\&quot;. | [optional] 
 **AdAccountId** | Pointer to **string** | Ad account ID. | [optional] 
+**Budget** | Pointer to **NullableFloat32** | Order line budget in micro currency. | [optional] 
+**EndTime** | Pointer to **NullableFloat32** | End time. Unix timestamp. | [optional] 
+**Id** | Pointer to **string** | Order line ID. | [optional] 
+**Name** | Pointer to **NullableString** | Order line name. | [optional] 
+**PaidBudget** | Pointer to **NullableFloat32** | Order line paid budget in micro currency. | [optional] 
+**PaidType** | Pointer to [**NullableOrderLinePaidType**](OrderLinePaidType.md) | Order line paid type. | [optional] 
 **PurchaseOrderId** | Pointer to **NullableString** | Purchase order ID. | [optional] 
 **StartTime** | Pointer to **float32** | Start time. Unix timestamp. | [optional] 
-**EndTime** | Pointer to **NullableFloat32** | End time. Unix timestamp. | [optional] 
-**Budget** | Pointer to **NullableFloat32** | Order line budget in micro currency. | [optional] 
-**PaidBudget** | Pointer to **NullableFloat32** | Order line paid budget in micro currency. | [optional] 
 **Status** | Pointer to [**OrderLineStatus**](OrderLineStatus.md) | Order line status. | [optional] 
-**Name** | Pointer to **NullableString** | Order line name. | [optional] 
-**PaidType** | Pointer to [**NullableOrderLinePaidType**](OrderLinePaidType.md) | Order line paid type. | [optional] 
+**Type** | Pointer to **string** | Always \&quot;orderline\&quot;. | [optional] 
 
 ## Methods
 
@@ -34,56 +34,6 @@ will change when the set of required properties is changed
 NewOrderLinesWithDefaults instantiates a new OrderLines object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *OrderLines) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *OrderLines) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *OrderLines) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *OrderLines) HasId() bool`
-
-HasId returns a boolean if a field has been set.
-
-### GetType
-
-`func (o *OrderLines) GetType() string`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *OrderLines) GetTypeOk() (*string, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *OrderLines) SetType(v string)`
-
-SetType sets Type field to given value.
-
-### HasType
-
-`func (o *OrderLines) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 ### GetAdAccountId
 
@@ -110,6 +60,206 @@ SetAdAccountId sets AdAccountId field to given value.
 
 HasAdAccountId returns a boolean if a field has been set.
 
+### GetBudget
+
+`func (o *OrderLines) GetBudget() float32`
+
+GetBudget returns the Budget field if non-nil, zero value otherwise.
+
+### GetBudgetOk
+
+`func (o *OrderLines) GetBudgetOk() (*float32, bool)`
+
+GetBudgetOk returns a tuple with the Budget field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBudget
+
+`func (o *OrderLines) SetBudget(v float32)`
+
+SetBudget sets Budget field to given value.
+
+### HasBudget
+
+`func (o *OrderLines) HasBudget() bool`
+
+HasBudget returns a boolean if a field has been set.
+
+### SetBudgetNil
+
+`func (o *OrderLines) SetBudgetNil(b bool)`
+
+ SetBudgetNil sets the value for Budget to be an explicit nil
+
+### UnsetBudget
+`func (o *OrderLines) UnsetBudget()`
+
+UnsetBudget ensures that no value is present for Budget, not even an explicit nil
+### GetEndTime
+
+`func (o *OrderLines) GetEndTime() float32`
+
+GetEndTime returns the EndTime field if non-nil, zero value otherwise.
+
+### GetEndTimeOk
+
+`func (o *OrderLines) GetEndTimeOk() (*float32, bool)`
+
+GetEndTimeOk returns a tuple with the EndTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEndTime
+
+`func (o *OrderLines) SetEndTime(v float32)`
+
+SetEndTime sets EndTime field to given value.
+
+### HasEndTime
+
+`func (o *OrderLines) HasEndTime() bool`
+
+HasEndTime returns a boolean if a field has been set.
+
+### SetEndTimeNil
+
+`func (o *OrderLines) SetEndTimeNil(b bool)`
+
+ SetEndTimeNil sets the value for EndTime to be an explicit nil
+
+### UnsetEndTime
+`func (o *OrderLines) UnsetEndTime()`
+
+UnsetEndTime ensures that no value is present for EndTime, not even an explicit nil
+### GetId
+
+`func (o *OrderLines) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *OrderLines) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *OrderLines) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *OrderLines) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *OrderLines) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *OrderLines) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *OrderLines) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *OrderLines) HasName() bool`
+
+HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *OrderLines) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *OrderLines) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
+### GetPaidBudget
+
+`func (o *OrderLines) GetPaidBudget() float32`
+
+GetPaidBudget returns the PaidBudget field if non-nil, zero value otherwise.
+
+### GetPaidBudgetOk
+
+`func (o *OrderLines) GetPaidBudgetOk() (*float32, bool)`
+
+GetPaidBudgetOk returns a tuple with the PaidBudget field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPaidBudget
+
+`func (o *OrderLines) SetPaidBudget(v float32)`
+
+SetPaidBudget sets PaidBudget field to given value.
+
+### HasPaidBudget
+
+`func (o *OrderLines) HasPaidBudget() bool`
+
+HasPaidBudget returns a boolean if a field has been set.
+
+### SetPaidBudgetNil
+
+`func (o *OrderLines) SetPaidBudgetNil(b bool)`
+
+ SetPaidBudgetNil sets the value for PaidBudget to be an explicit nil
+
+### UnsetPaidBudget
+`func (o *OrderLines) UnsetPaidBudget()`
+
+UnsetPaidBudget ensures that no value is present for PaidBudget, not even an explicit nil
+### GetPaidType
+
+`func (o *OrderLines) GetPaidType() OrderLinePaidType`
+
+GetPaidType returns the PaidType field if non-nil, zero value otherwise.
+
+### GetPaidTypeOk
+
+`func (o *OrderLines) GetPaidTypeOk() (*OrderLinePaidType, bool)`
+
+GetPaidTypeOk returns a tuple with the PaidType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPaidType
+
+`func (o *OrderLines) SetPaidType(v OrderLinePaidType)`
+
+SetPaidType sets PaidType field to given value.
+
+### HasPaidType
+
+`func (o *OrderLines) HasPaidType() bool`
+
+HasPaidType returns a boolean if a field has been set.
+
+### SetPaidTypeNil
+
+`func (o *OrderLines) SetPaidTypeNil(b bool)`
+
+ SetPaidTypeNil sets the value for PaidType to be an explicit nil
+
+### UnsetPaidType
+`func (o *OrderLines) UnsetPaidType()`
+
+UnsetPaidType ensures that no value is present for PaidType, not even an explicit nil
 ### GetPurchaseOrderId
 
 `func (o *OrderLines) GetPurchaseOrderId() string`
@@ -170,111 +320,6 @@ SetStartTime sets StartTime field to given value.
 
 HasStartTime returns a boolean if a field has been set.
 
-### GetEndTime
-
-`func (o *OrderLines) GetEndTime() float32`
-
-GetEndTime returns the EndTime field if non-nil, zero value otherwise.
-
-### GetEndTimeOk
-
-`func (o *OrderLines) GetEndTimeOk() (*float32, bool)`
-
-GetEndTimeOk returns a tuple with the EndTime field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEndTime
-
-`func (o *OrderLines) SetEndTime(v float32)`
-
-SetEndTime sets EndTime field to given value.
-
-### HasEndTime
-
-`func (o *OrderLines) HasEndTime() bool`
-
-HasEndTime returns a boolean if a field has been set.
-
-### SetEndTimeNil
-
-`func (o *OrderLines) SetEndTimeNil(b bool)`
-
- SetEndTimeNil sets the value for EndTime to be an explicit nil
-
-### UnsetEndTime
-`func (o *OrderLines) UnsetEndTime()`
-
-UnsetEndTime ensures that no value is present for EndTime, not even an explicit nil
-### GetBudget
-
-`func (o *OrderLines) GetBudget() float32`
-
-GetBudget returns the Budget field if non-nil, zero value otherwise.
-
-### GetBudgetOk
-
-`func (o *OrderLines) GetBudgetOk() (*float32, bool)`
-
-GetBudgetOk returns a tuple with the Budget field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBudget
-
-`func (o *OrderLines) SetBudget(v float32)`
-
-SetBudget sets Budget field to given value.
-
-### HasBudget
-
-`func (o *OrderLines) HasBudget() bool`
-
-HasBudget returns a boolean if a field has been set.
-
-### SetBudgetNil
-
-`func (o *OrderLines) SetBudgetNil(b bool)`
-
- SetBudgetNil sets the value for Budget to be an explicit nil
-
-### UnsetBudget
-`func (o *OrderLines) UnsetBudget()`
-
-UnsetBudget ensures that no value is present for Budget, not even an explicit nil
-### GetPaidBudget
-
-`func (o *OrderLines) GetPaidBudget() float32`
-
-GetPaidBudget returns the PaidBudget field if non-nil, zero value otherwise.
-
-### GetPaidBudgetOk
-
-`func (o *OrderLines) GetPaidBudgetOk() (*float32, bool)`
-
-GetPaidBudgetOk returns a tuple with the PaidBudget field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPaidBudget
-
-`func (o *OrderLines) SetPaidBudget(v float32)`
-
-SetPaidBudget sets PaidBudget field to given value.
-
-### HasPaidBudget
-
-`func (o *OrderLines) HasPaidBudget() bool`
-
-HasPaidBudget returns a boolean if a field has been set.
-
-### SetPaidBudgetNil
-
-`func (o *OrderLines) SetPaidBudgetNil(b bool)`
-
- SetPaidBudgetNil sets the value for PaidBudget to be an explicit nil
-
-### UnsetPaidBudget
-`func (o *OrderLines) UnsetPaidBudget()`
-
-UnsetPaidBudget ensures that no value is present for PaidBudget, not even an explicit nil
 ### GetStatus
 
 `func (o *OrderLines) GetStatus() OrderLineStatus`
@@ -300,76 +345,31 @@ SetStatus sets Status field to given value.
 
 HasStatus returns a boolean if a field has been set.
 
-### GetName
+### GetType
 
-`func (o *OrderLines) GetName() string`
+`func (o *OrderLines) GetType() string`
 
-GetName returns the Name field if non-nil, zero value otherwise.
+GetType returns the Type field if non-nil, zero value otherwise.
 
-### GetNameOk
+### GetTypeOk
 
-`func (o *OrderLines) GetNameOk() (*string, bool)`
+`func (o *OrderLines) GetTypeOk() (*string, bool)`
 
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetName
+### SetType
 
-`func (o *OrderLines) SetName(v string)`
+`func (o *OrderLines) SetType(v string)`
 
-SetName sets Name field to given value.
+SetType sets Type field to given value.
 
-### HasName
+### HasType
 
-`func (o *OrderLines) HasName() bool`
+`func (o *OrderLines) HasType() bool`
 
-HasName returns a boolean if a field has been set.
+HasType returns a boolean if a field has been set.
 
-### SetNameNil
-
-`func (o *OrderLines) SetNameNil(b bool)`
-
- SetNameNil sets the value for Name to be an explicit nil
-
-### UnsetName
-`func (o *OrderLines) UnsetName()`
-
-UnsetName ensures that no value is present for Name, not even an explicit nil
-### GetPaidType
-
-`func (o *OrderLines) GetPaidType() OrderLinePaidType`
-
-GetPaidType returns the PaidType field if non-nil, zero value otherwise.
-
-### GetPaidTypeOk
-
-`func (o *OrderLines) GetPaidTypeOk() (*OrderLinePaidType, bool)`
-
-GetPaidTypeOk returns a tuple with the PaidType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPaidType
-
-`func (o *OrderLines) SetPaidType(v OrderLinePaidType)`
-
-SetPaidType sets PaidType field to given value.
-
-### HasPaidType
-
-`func (o *OrderLines) HasPaidType() bool`
-
-HasPaidType returns a boolean if a field has been set.
-
-### SetPaidTypeNil
-
-`func (o *OrderLines) SetPaidTypeNil(b bool)`
-
- SetPaidTypeNil sets the value for PaidType to be an explicit nil
-
-### UnsetPaidType
-`func (o *OrderLines) UnsetPaidType()`
-
-UnsetPaidType ensures that no value is present for PaidType, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

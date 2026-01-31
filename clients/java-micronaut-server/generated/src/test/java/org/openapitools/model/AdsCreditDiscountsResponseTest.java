@@ -38,11 +38,11 @@ public class AdsCreditDiscountsResponseTest {
     }
 
     /**
-     * Test the property 'discountType'
+     * Test the property 'discountCurrency'
      */
     @Test
-    public void discountTypeTest() {
-        // TODO: test discountType
+    public void discountCurrencyTest() {
+        // TODO: test discountCurrency
     }
 
     /**
@@ -54,19 +54,11 @@ public class AdsCreditDiscountsResponseTest {
     }
 
     /**
-     * Test the property 'discountCurrency'
+     * Test the property 'discountType'
      */
     @Test
-    public void discountCurrencyTest() {
-        // TODO: test discountCurrency
-    }
-
-    /**
-     * Test the property 'title'
-     */
-    @Test
-    public void titleTest() {
-        // TODO: test title
+    public void discountTypeTest() {
+        // TODO: test discountType
     }
 
     /**
@@ -75,6 +67,14 @@ public class AdsCreditDiscountsResponseTest {
     @Test
     public void remainingDiscountInMicroCurrencyTest() {
         // TODO: test remainingDiscountInMicroCurrency
+    }
+
+    /**
+     * Test the property 'title'
+     */
+    @Test
+    public void titleTest() {
+        // TODO: test title
     }
 
 }

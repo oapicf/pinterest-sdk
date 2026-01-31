@@ -14,7 +14,6 @@ module OauthAccessTokenRequestRefresh =
   type OauthAccessTokenRequestRefresh = {
     RefreshToken : string;
     Scope : string;
-    RefreshOn : bool;
     GrantType : GrantTypeEnum;
   }
   //#endregion

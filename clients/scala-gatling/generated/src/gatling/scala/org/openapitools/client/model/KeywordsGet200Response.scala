@@ -3,14 +3,14 @@ package org.openapitools.client.model
 
 
 case class KeywordsGet200Response (
-    _items: List[Keyword],
-    _bookmark: Option[String]
+    _bookmark: Option[String],
+    _items: List[Keyword]
 )
 object KeywordsGet200Response {
-    def toStringBody(var_items: Object, var_bookmark: Object) =
+    def toStringBody(var_bookmark: Object, var_items: Object) =
         s"""
         | {
-        | "items":$var_items,"bookmark":$var_bookmark
+        | "bookmark":$var_bookmark,"items":$var_items
         | }
         """.stripMargin
 }

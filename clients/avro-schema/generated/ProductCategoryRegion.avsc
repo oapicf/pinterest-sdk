@@ -1,0 +1,11 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "",
+  "name": "ProductCategoryRegion",
+  "symbols": [
+    "US",
+    "GB_IE",
+    "CA"
+  ]
+}

@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **items** | [**Array&lt;UserWebsiteSummary&gt;**](UserWebsiteSummary.md) |  |  |
 | **bookmark** | **String** |  | [optional] |
+| **items** | [**Array&lt;UserWebsiteSummary&gt;**](UserWebsiteSummary.md) |  |  |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::UserWebsitesGet200Response.new(
-  items: null,
-  bookmark: null
+  bookmark: null,
+  items: null
 )
 ```
 

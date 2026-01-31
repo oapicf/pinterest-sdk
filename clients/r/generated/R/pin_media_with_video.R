@@ -7,61 +7,53 @@
 #' @title PinMediaWithVideo
 #' @description PinMediaWithVideo Class
 #' @format An \code{R6Class} generator object
-#' @field media_type  character [optional]
-#' @field images  \link{PinMediaWithImageAllOfImages} [optional]
 #' @field cover_image_url  character [optional]
-#' @field video_url Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps. character [optional]
-#' @field duration Duration (in milliseconds) numeric [optional]
-#' @field height Height (in pixels) integer [optional]
-#' @field width Width (in pixels) integer [optional]
+#' @field duration Duration (in miliseconds). Field maybe null after creation due to video processing time. numeric [optional]
+#' @field height Height (in pixels). Field maybe null after creation due to video processing time. integer [optional]
+#' @field images  \link{ImageSize} [optional]
+#' @field media_type  character
+#' @field video_url Video url (720p).  **Note:** This field is limited and not available to all apps. character [optional]
+#' @field width Width (in pixels). Field maybe null after creation due to video processing time. integer [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 PinMediaWithVideo <- R6::R6Class(
   "PinMediaWithVideo",
-  inherit = PinMedia,
   public = list(
-    `media_type` = NULL,
-    `images` = NULL,
     `cover_image_url` = NULL,
-    `video_url` = NULL,
     `duration` = NULL,
     `height` = NULL,
+    `images` = NULL,
+    `media_type` = NULL,
+    `video_url` = NULL,
     `width` = NULL,
 
     #' @description
     #' Initialize a new PinMediaWithVideo class.
     #'
     #' @param media_type media_type
-    #' @param images images
     #' @param cover_image_url cover_image_url
-    #' @param video_url Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
-    #' @param duration Duration (in milliseconds)
-    #' @param height Height (in pixels)
-    #' @param width Width (in pixels)
+    #' @param duration Duration (in miliseconds). Field maybe null after creation due to video processing time.
+    #' @param height Height (in pixels). Field maybe null after creation due to video processing time.
+    #' @param images images
+    #' @param video_url Video url (720p).  **Note:** This field is limited and not available to all apps.
+    #' @param width Width (in pixels). Field maybe null after creation due to video processing time.
     #' @param ... Other optional arguments.
-    initialize = function(`media_type` = NULL, `images` = NULL, `cover_image_url` = NULL, `video_url` = NULL, `duration` = NULL, `height` = NULL, `width` = NULL, ...) {
-      if (!is.null(`media_type`)) {
+    initialize = function(`media_type`, `cover_image_url` = NULL, `duration` = NULL, `height` = NULL, `images` = NULL, `video_url` = NULL, `width` = NULL, ...) {
+      if (!missing(`media_type`)) {
+        if (!(`media_type` %in% c("video"))) {
+          stop(paste("Error! \"", `media_type`, "\" cannot be assigned to `media_type`. Must be \"video\".", sep = ""))
+        }
         if (!(is.character(`media_type`) && length(`media_type`) == 1)) {
           stop(paste("Error! Invalid data for `media_type`. Must be a string:", `media_type`))
         }
         self$`media_type` <- `media_type`
-      }
-      if (!is.null(`images`)) {
-        stopifnot(R6::is.R6(`images`))
-        self$`images` <- `images`
       }
       if (!is.null(`cover_image_url`)) {
         if (!(is.character(`cover_image_url`) && length(`cover_image_url`) == 1)) {
           stop(paste("Error! Invalid data for `cover_image_url`. Must be a string:", `cover_image_url`))
         }
         self$`cover_image_url` <- `cover_image_url`
-      }
-      if (!is.null(`video_url`)) {
-        if (!(is.character(`video_url`) && length(`video_url`) == 1)) {
-          stop(paste("Error! Invalid data for `video_url`. Must be a string:", `video_url`))
-        }
-        self$`video_url` <- `video_url`
       }
       if (!is.null(`duration`)) {
         self$`duration` <- `duration`
@@ -71,6 +63,16 @@ PinMediaWithVideo <- R6::R6Class(
           stop(paste("Error! Invalid data for `height`. Must be an integer:", `height`))
         }
         self$`height` <- `height`
+      }
+      if (!is.null(`images`)) {
+        stopifnot(R6::is.R6(`images`))
+        self$`images` <- `images`
+      }
+      if (!is.null(`video_url`)) {
+        if (!(is.character(`video_url`) && length(`video_url`) == 1)) {
+          stop(paste("Error! Invalid data for `video_url`. Must be a string:", `video_url`))
+        }
+        self$`video_url` <- `video_url`
       }
       if (!is.null(`width`)) {
         if (!(is.numeric(`width`) && length(`width`) == 1)) {
@@ -111,21 +113,9 @@ PinMediaWithVideo <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       PinMediaWithVideoObject <- list()
-      if (!is.null(self$`media_type`)) {
-        PinMediaWithVideoObject[["media_type"]] <-
-          self$`media_type`
-      }
-      if (!is.null(self$`images`)) {
-        PinMediaWithVideoObject[["images"]] <-
-          self$`images`$toSimpleType()
-      }
       if (!is.null(self$`cover_image_url`)) {
         PinMediaWithVideoObject[["cover_image_url"]] <-
           self$`cover_image_url`
-      }
-      if (!is.null(self$`video_url`)) {
-        PinMediaWithVideoObject[["video_url"]] <-
-          self$`video_url`
       }
       if (!is.null(self$`duration`)) {
         PinMediaWithVideoObject[["duration"]] <-
@@ -134,6 +124,18 @@ PinMediaWithVideo <- R6::R6Class(
       if (!is.null(self$`height`)) {
         PinMediaWithVideoObject[["height"]] <-
           self$`height`
+      }
+      if (!is.null(self$`images`)) {
+        PinMediaWithVideoObject[["images"]] <-
+          self$`images`$toSimpleType()
+      }
+      if (!is.null(self$`media_type`)) {
+        PinMediaWithVideoObject[["media_type"]] <-
+          self$`media_type`
+      }
+      if (!is.null(self$`video_url`)) {
+        PinMediaWithVideoObject[["video_url"]] <-
+          self$`video_url`
       }
       if (!is.null(self$`width`)) {
         PinMediaWithVideoObject[["width"]] <-
@@ -149,25 +151,28 @@ PinMediaWithVideo <- R6::R6Class(
     #' @return the instance of PinMediaWithVideo
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`media_type`)) {
-        self$`media_type` <- this_object$`media_type`
-      }
-      if (!is.null(this_object$`images`)) {
-        `images_object` <- PinMediaWithImageAllOfImages$new()
-        `images_object`$fromJSON(jsonlite::toJSON(this_object$`images`, auto_unbox = TRUE, digits = NA))
-        self$`images` <- `images_object`
-      }
       if (!is.null(this_object$`cover_image_url`)) {
         self$`cover_image_url` <- this_object$`cover_image_url`
-      }
-      if (!is.null(this_object$`video_url`)) {
-        self$`video_url` <- this_object$`video_url`
       }
       if (!is.null(this_object$`duration`)) {
         self$`duration` <- this_object$`duration`
       }
       if (!is.null(this_object$`height`)) {
         self$`height` <- this_object$`height`
+      }
+      if (!is.null(this_object$`images`)) {
+        `images_object` <- ImageSize$new()
+        `images_object`$fromJSON(jsonlite::toJSON(this_object$`images`, auto_unbox = TRUE, digits = NA))
+        self$`images` <- `images_object`
+      }
+      if (!is.null(this_object$`media_type`)) {
+        if (!is.null(this_object$`media_type`) && !(this_object$`media_type` %in% c("video"))) {
+          stop(paste("Error! \"", this_object$`media_type`, "\" cannot be assigned to `media_type`. Must be \"video\".", sep = ""))
+        }
+        self$`media_type` <- this_object$`media_type`
+      }
+      if (!is.null(this_object$`video_url`)) {
+        self$`video_url` <- this_object$`video_url`
       }
       if (!is.null(this_object$`width`)) {
         self$`width` <- this_object$`width`
@@ -193,12 +198,15 @@ PinMediaWithVideo <- R6::R6Class(
     #' @return the instance of PinMediaWithVideo
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`media_type` <- this_object$`media_type`
-      self$`images` <- PinMediaWithImageAllOfImages$new()$fromJSON(jsonlite::toJSON(this_object$`images`, auto_unbox = TRUE, digits = NA))
       self$`cover_image_url` <- this_object$`cover_image_url`
-      self$`video_url` <- this_object$`video_url`
       self$`duration` <- this_object$`duration`
       self$`height` <- this_object$`height`
+      self$`images` <- ImageSize$new()$fromJSON(jsonlite::toJSON(this_object$`images`, auto_unbox = TRUE, digits = NA))
+      if (!is.null(this_object$`media_type`) && !(this_object$`media_type` %in% c("video"))) {
+        stop(paste("Error! \"", this_object$`media_type`, "\" cannot be assigned to `media_type`. Must be \"video\".", sep = ""))
+      }
+      self$`media_type` <- this_object$`media_type`
+      self$`video_url` <- this_object$`video_url`
       self$`width` <- this_object$`width`
       self
     },
@@ -209,6 +217,14 @@ PinMediaWithVideo <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `media_type`
+      if (!is.null(input_json$`media_type`)) {
+        if (!(is.character(input_json$`media_type`) && length(input_json$`media_type`) == 1)) {
+          stop(paste("Error! Invalid data for `media_type`. Must be a string:", input_json$`media_type`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for PinMediaWithVideo: the required field `media_type` is missing."))
+      }
     },
 
     #' @description
@@ -224,6 +240,11 @@ PinMediaWithVideo <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      # check if the required `media_type` is null
+      if (is.null(self$`media_type`)) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -233,6 +254,11 @@ PinMediaWithVideo <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `media_type` is null
+      if (is.null(self$`media_type`)) {
+        invalid_fields["media_type"] <- "Non-nullable required field `media_type` cannot be null."
+      }
+
       invalid_fields
     },
 

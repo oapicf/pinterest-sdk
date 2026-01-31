@@ -22,15 +22,15 @@ ads_credit_redeem_response_t* instantiate_ads_credit_redeem_response(int include
   ads_credit_redeem_response_t* ads_credit_redeem_response = NULL;
   if (include_optional) {
     ads_credit_redeem_response = ads_credit_redeem_response_create(
-      false,
       2708,
-      "The offer has already been redeemed by this advertiser"
+      "The offer has already been redeemed by this advertiser",
+      false
     );
   } else {
     ads_credit_redeem_response = ads_credit_redeem_response_create(
-      false,
       2708,
-      "The offer has already been redeemed by this advertiser"
+      "The offer has already been redeemed by this advertiser",
+      false
     );
   }
 

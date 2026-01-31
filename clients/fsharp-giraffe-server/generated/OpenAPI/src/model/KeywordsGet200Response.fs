@@ -11,7 +11,7 @@ module KeywordsGet200Response =
 
 
   type keywords_get_200_response = {
-    Items : Keyword[];
     Bookmark : string option;
+    Items : Keyword[];
   }
   //#endregion

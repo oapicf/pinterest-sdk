@@ -8,8 +8,8 @@
 
 (def ad-accounts-audiences-shared-accounts-list-200-response-data
   {
-   (ds/req :items) (s/coll-of shared-audience-account-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of shared-audience-account-spec)
    })
 
 (def ad-accounts-audiences-shared-accounts-list-200-response-spec

@@ -7,14 +7,14 @@ import io.circe.java8.time._
 import org.openapitools._
 
 /**
- * Image URL-based media source
- * @param sourceUnderscoretype 
- * @param url 
+ * Image URL-based media source.
  * @param isUnderscorestandard Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
+ * @param sourceUnderscoretype The source type of the media.
+ * @param url 
  */
-case class PinMediaSourceImageURL(sourceUnderscoretype: String,
-                url: String,
-                isUnderscorestandard: Option[Boolean]
+case class PinMediaSourceImageURL(isUnderscorestandard: Option[Boolean],
+                sourceUnderscoretype: String,
+                url: String
                 )
 
 object PinMediaSourceImageURL {

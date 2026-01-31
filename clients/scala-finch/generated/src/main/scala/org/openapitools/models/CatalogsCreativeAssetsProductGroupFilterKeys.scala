@@ -5,6 +5,7 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
+import org.openapitools.models.CatalogsProductGroupFilterOperatorTypeCriteria
 import org.openapitools.models.CatalogsProductGroupMultipleMediaTypesCriteria
 import org.openapitools.models.CatalogsProductGroupMultipleStringCriteria
 import org.openapitools.models.CatalogsProductGroupMultipleStringListCriteria
@@ -22,6 +23,7 @@ import org.openapitools.models.GoogleProductCategory4Filter
 import org.openapitools.models.GoogleProductCategory5Filter
 import org.openapitools.models.GoogleProductCategory6Filter
 import org.openapitools.models.MediaTypeFilter
+import org.openapitools.models.TitleKeywordsFilter
 
 /**
  * 
@@ -39,13 +41,14 @@ import org.openapitools.models.MediaTypeFilter
  * @param GOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore1 
  * @param GOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore0 
  * @param MEDIAUnderscoreTYPE 
+ * @param TITLEUnderscoreKEYWORDS 
  */
 case class CatalogsCreativeAssetsProductGroupFilterKeys(CREATIVEUnderscoreASSETSUnderscoreID: CatalogsProductGroupMultipleStringCriteria,
-                CUSTOMUnderscoreLABELUnderscore0: CatalogsProductGroupMultipleStringCriteria,
-                CUSTOMUnderscoreLABELUnderscore1: CatalogsProductGroupMultipleStringCriteria,
-                CUSTOMUnderscoreLABELUnderscore2: CatalogsProductGroupMultipleStringCriteria,
-                CUSTOMUnderscoreLABELUnderscore3: CatalogsProductGroupMultipleStringCriteria,
-                CUSTOMUnderscoreLABELUnderscore4: CatalogsProductGroupMultipleStringCriteria,
+                CUSTOMUnderscoreLABELUnderscore0: CatalogsProductGroupFilterOperatorTypeCriteria,
+                CUSTOMUnderscoreLABELUnderscore1: CatalogsProductGroupFilterOperatorTypeCriteria,
+                CUSTOMUnderscoreLABELUnderscore2: CatalogsProductGroupFilterOperatorTypeCriteria,
+                CUSTOMUnderscoreLABELUnderscore3: CatalogsProductGroupFilterOperatorTypeCriteria,
+                CUSTOMUnderscoreLABELUnderscore4: CatalogsProductGroupFilterOperatorTypeCriteria,
                 GOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore6: CatalogsProductGroupMultipleStringListCriteria,
                 GOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore5: CatalogsProductGroupMultipleStringListCriteria,
                 GOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore4: CatalogsProductGroupMultipleStringListCriteria,
@@ -53,7 +56,8 @@ case class CatalogsCreativeAssetsProductGroupFilterKeys(CREATIVEUnderscoreASSETS
                 GOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore2: CatalogsProductGroupMultipleStringListCriteria,
                 GOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore1: CatalogsProductGroupMultipleStringListCriteria,
                 GOOGLEUnderscorePRODUCTUnderscoreCATEGORYUnderscore0: CatalogsProductGroupMultipleStringListCriteria,
-                MEDIAUnderscoreTYPE: CatalogsProductGroupMultipleMediaTypesCriteria
+                MEDIAUnderscoreTYPE: CatalogsProductGroupMultipleMediaTypesCriteria,
+                TITLEUnderscoreKEYWORDS: CatalogsProductGroupMultipleStringCriteria
                 )
 
 object CatalogsCreativeAssetsProductGroupFilterKeys {

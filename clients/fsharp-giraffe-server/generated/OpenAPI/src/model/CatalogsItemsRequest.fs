@@ -15,7 +15,7 @@ module CatalogsItemsRequest =
 
   type CatalogsItemsRequest = {
     Country : Country;
-    Language : LanguageEnum;
     Filters : CatalogsItemsPostFilters;
+    Language : LanguageEnum;
   }
   //#endregion

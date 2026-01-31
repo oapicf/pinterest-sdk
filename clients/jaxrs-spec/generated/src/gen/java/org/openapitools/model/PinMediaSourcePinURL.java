@@ -18,8 +18,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Pin URL-based media source for product pin creation. Currently the field is only available to a list of beta users.")
 @JsonTypeName("PinMediaSourcePinURL")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinMediaSourcePinURL   {
+  private Boolean isAffiliateLink = false;
   public enum SourceTypeEnum {
 
     PIN_URL(String.valueOf("pin_url"));
@@ -68,7 +69,6 @@ public class PinMediaSourcePinURL   {
 }
 
   private SourceTypeEnum sourceType;
-  private Boolean isAffiliateLink = false;
 
   public PinMediaSourcePinURL() {
   }
@@ -77,25 +77,6 @@ public class PinMediaSourcePinURL   {
   public PinMediaSourcePinURL(
     @JsonProperty(required = true, value = "source_type") SourceTypeEnum sourceType
   ) {
-    this.sourceType = sourceType;
-  }
-
-  /**
-   **/
-  public PinMediaSourcePinURL sourceType(SourceTypeEnum sourceType) {
-    this.sourceType = sourceType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "source_type")
-  @NotNull public SourceTypeEnum getSourceType() {
-    return sourceType;
-  }
-
-  @JsonProperty(required = true, value = "source_type")
-  public void setSourceType(SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
   }
 
@@ -119,6 +100,25 @@ public class PinMediaSourcePinURL   {
     this.isAffiliateLink = isAffiliateLink;
   }
 
+  /**
+   **/
+  public PinMediaSourcePinURL sourceType(SourceTypeEnum sourceType) {
+    this.sourceType = sourceType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "source_type")
+  @NotNull public SourceTypeEnum getSourceType() {
+    return sourceType;
+  }
+
+  @JsonProperty(required = true, value = "source_type")
+  public void setSourceType(SourceTypeEnum sourceType) {
+    this.sourceType = sourceType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -129,13 +129,13 @@ public class PinMediaSourcePinURL   {
       return false;
     }
     PinMediaSourcePinURL pinMediaSourcePinURL = (PinMediaSourcePinURL) o;
-    return Objects.equals(this.sourceType, pinMediaSourcePinURL.sourceType) &&
-        Objects.equals(this.isAffiliateLink, pinMediaSourcePinURL.isAffiliateLink);
+    return Objects.equals(this.isAffiliateLink, pinMediaSourcePinURL.isAffiliateLink) &&
+        Objects.equals(this.sourceType, pinMediaSourcePinURL.sourceType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceType, isAffiliateLink);
+    return Objects.hash(isAffiliateLink, sourceType);
   }
 
   @Override
@@ -143,8 +143,8 @@ public class PinMediaSourcePinURL   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaSourcePinURL {\n");
     
-    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("    isAffiliateLink: ").append(toIndentedString(isAffiliateLink)).append("\n");
+    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

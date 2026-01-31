@@ -73,7 +73,6 @@ private class OASKeywordMetricsTest {
     private static void maintainRenamedProperties() {
         OASKeywordMetrics keywordMetrics = new OASKeywordMetrics();
         Map<String, String> x-property-mappings = keywordMetrics.getx-property-mappings();
-        System.assertEquals('avgCpcInMicroCurrency', x-property-mappings.get('avg_cpc_in_micro_currency'));
         System.assertEquals('keywordQueryVolume', x-property-mappings.get('keyword_query_volume'));
     }
 }

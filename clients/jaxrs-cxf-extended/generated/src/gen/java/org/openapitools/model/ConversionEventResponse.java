@@ -13,6 +13,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ConversionEventResponse  {
   
+ /**
+  * Id of the ad account.
+  */
+  @ApiModelProperty(example = "549757463328", value = "Id of the ad account.")
+  private String adAccountId;
+
   @ApiModelProperty(value = "")
   private ConversionTagType conversionEvent;
 
@@ -23,16 +29,34 @@ public class ConversionEventResponse  {
   private String conversionTagId;
 
  /**
-  * Id of the ad account.
-  */
-  @ApiModelProperty(example = "549757463328", value = "Id of the ad account.")
-  private String adAccountId;
-
- /**
   * Creation date in epoch format.
   */
   @ApiModelProperty(example = "1564768710", value = "Creation date in epoch format.")
   private Integer createdTime;
+ /**
+  * Id of the ad account.
+  * @return adAccountId
+  */
+  @JsonProperty("ad_account_id")
+ @Pattern(regexp="^\\d+$")  public String getAdAccountId() {
+    return adAccountId;
+  }
+
+  /**
+   * Sets the <code>adAccountId</code> property.
+   */
+ public void setAdAccountId(String adAccountId) {
+    this.adAccountId = adAccountId;
+  }
+
+  /**
+   * Sets the <code>adAccountId</code> property.
+   */
+  public ConversionEventResponse adAccountId(String adAccountId) {
+    this.adAccountId = adAccountId;
+    return this;
+  }
+
  /**
   * Get conversionEvent
   * @return conversionEvent
@@ -82,30 +106,6 @@ public class ConversionEventResponse  {
   }
 
  /**
-  * Id of the ad account.
-  * @return adAccountId
-  */
-  @JsonProperty("ad_account_id")
- @Pattern(regexp="^\\d+$")  public String getAdAccountId() {
-    return adAccountId;
-  }
-
-  /**
-   * Sets the <code>adAccountId</code> property.
-   */
- public void setAdAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
-  }
-
-  /**
-   * Sets the <code>adAccountId</code> property.
-   */
-  public ConversionEventResponse adAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
-    return this;
-  }
-
- /**
   * Creation date in epoch format.
   * @return createdTime
   */
@@ -139,15 +139,15 @@ public class ConversionEventResponse  {
       return false;
     }
     ConversionEventResponse conversionEventResponse = (ConversionEventResponse) o;
-    return Objects.equals(this.conversionEvent, conversionEventResponse.conversionEvent) &&
+    return Objects.equals(this.adAccountId, conversionEventResponse.adAccountId) &&
+        Objects.equals(this.conversionEvent, conversionEventResponse.conversionEvent) &&
         Objects.equals(this.conversionTagId, conversionEventResponse.conversionTagId) &&
-        Objects.equals(this.adAccountId, conversionEventResponse.adAccountId) &&
         Objects.equals(this.createdTime, conversionEventResponse.createdTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(conversionEvent, conversionTagId, adAccountId, createdTime);
+    return Objects.hash(adAccountId, conversionEvent, conversionTagId, createdTime);
   }
 
   @Override
@@ -155,9 +155,9 @@ public class ConversionEventResponse  {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionEventResponse {\n");
     
+    sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    conversionEvent: ").append(toIndentedString(conversionEvent)).append("\n");
     sb.append("    conversionTagId: ").append(toIndentedString(conversionTagId)).append("\n");
-    sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("}");
     return sb.toString();

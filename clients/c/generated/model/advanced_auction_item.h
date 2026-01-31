@@ -22,8 +22,8 @@ typedef struct advanced_auction_item_t advanced_auction_item_t;
 
 
 typedef struct advanced_auction_item_t {
-    char *item_id; // string
     pinterest_rest_api_country__e country; //referenced enum
+    char *item_id; // string
     pinterest_rest_api_language__e language; //referenced enum
     struct advanced_auction_bid_options_t *bid_options; //model
 
@@ -31,8 +31,8 @@ typedef struct advanced_auction_item_t {
 } advanced_auction_item_t;
 
 __attribute__((deprecated)) advanced_auction_item_t *advanced_auction_item_create(
-    char *item_id,
     pinterest_rest_api_country__e country,
+    char *item_id,
     pinterest_rest_api_language__e language,
     advanced_auction_bid_options_t *bid_options
 );

@@ -15,29 +15,29 @@ public struct AudienceDemographics: Codable, JSONEncodable, Hashable {
 
     /** Ages distribution. */
     public var ages: [AudienceDemographicValue]?
-    /** Gender distribution. */
-    public var genders: [AudienceDemographicValue]?
-    /** Device usage distribution. */
-    public var devices: [AudienceDemographicValue]?
-    /** Geographic metro area distribution. */
-    public var metros: [AudienceDemographicValue]?
     /** Country area distribution. */
     public var countries: [AudienceDemographicValue]?
+    /** Device usage distribution. */
+    public var devices: [AudienceDemographicValue]?
+    /** Gender distribution. */
+    public var genders: [AudienceDemographicValue]?
+    /** Geographic metro area distribution. */
+    public var metros: [AudienceDemographicValue]?
 
-    public init(ages: [AudienceDemographicValue]? = nil, genders: [AudienceDemographicValue]? = nil, devices: [AudienceDemographicValue]? = nil, metros: [AudienceDemographicValue]? = nil, countries: [AudienceDemographicValue]? = nil) {
+    public init(ages: [AudienceDemographicValue]? = nil, countries: [AudienceDemographicValue]? = nil, devices: [AudienceDemographicValue]? = nil, genders: [AudienceDemographicValue]? = nil, metros: [AudienceDemographicValue]? = nil) {
         self.ages = ages
-        self.genders = genders
-        self.devices = devices
-        self.metros = metros
         self.countries = countries
+        self.devices = devices
+        self.genders = genders
+        self.metros = metros
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case ages
-        case genders
-        case devices
-        case metros
         case countries
+        case devices
+        case genders
+        case metros
     }
 
     // Encodable protocol methods
@@ -45,10 +45,10 @@ public struct AudienceDemographics: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(ages, forKey: .ages)
-        try container.encodeIfPresent(genders, forKey: .genders)
-        try container.encodeIfPresent(devices, forKey: .devices)
-        try container.encodeIfPresent(metros, forKey: .metros)
         try container.encodeIfPresent(countries, forKey: .countries)
+        try container.encodeIfPresent(devices, forKey: .devices)
+        try container.encodeIfPresent(genders, forKey: .genders)
+        try container.encodeIfPresent(metros, forKey: .metros)
     }
 }
 

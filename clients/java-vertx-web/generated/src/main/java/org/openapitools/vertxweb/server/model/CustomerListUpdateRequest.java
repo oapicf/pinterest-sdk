@@ -4,32 +4,20 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
-import org.openapitools.vertxweb.server.model.Exception;
 import org.openapitools.vertxweb.server.model.UserListOperationType;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CustomerListUpdateRequest   {
   
-  private String records;
   private UserListOperationType operationType;
-  private Exception exceptions;
+  private String records;
 
   public CustomerListUpdateRequest () {
 
   }
 
-  public CustomerListUpdateRequest (String records, UserListOperationType operationType, Exception exceptions) {
-    this.records = records;
+  public CustomerListUpdateRequest (UserListOperationType operationType, String records) {
     this.operationType = operationType;
-    this.exceptions = exceptions;
-  }
-
-    
-  @JsonProperty("records")
-  public String getRecords() {
-    return records;
-  }
-  public void setRecords(String records) {
     this.records = records;
   }
 
@@ -43,12 +31,12 @@ public class CustomerListUpdateRequest   {
   }
 
     
-  @JsonProperty("exceptions")
-  public Exception getExceptions() {
-    return exceptions;
+  @JsonProperty("records")
+  public String getRecords() {
+    return records;
   }
-  public void setExceptions(Exception exceptions) {
-    this.exceptions = exceptions;
+  public void setRecords(String records) {
+    this.records = records;
   }
 
 
@@ -61,14 +49,13 @@ public class CustomerListUpdateRequest   {
       return false;
     }
     CustomerListUpdateRequest customerListUpdateRequest = (CustomerListUpdateRequest) o;
-    return Objects.equals(records, customerListUpdateRequest.records) &&
-        Objects.equals(operationType, customerListUpdateRequest.operationType) &&
-        Objects.equals(exceptions, customerListUpdateRequest.exceptions);
+    return Objects.equals(operationType, customerListUpdateRequest.operationType) &&
+        Objects.equals(records, customerListUpdateRequest.records);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(records, operationType, exceptions);
+    return Objects.hash(operationType, records);
   }
 
   @Override
@@ -76,9 +63,8 @@ public class CustomerListUpdateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CustomerListUpdateRequest {\n");
     
-    sb.append("    records: ").append(toIndentedString(records)).append("\n");
     sb.append("    operationType: ").append(toIndentedString(operationType)).append("\n");
-    sb.append("    exceptions: ").append(toIndentedString(exceptions)).append("\n");
+    sb.append("    records: ").append(toIndentedString(records)).append("\n");
     sb.append("}");
     return sb.toString();
   }

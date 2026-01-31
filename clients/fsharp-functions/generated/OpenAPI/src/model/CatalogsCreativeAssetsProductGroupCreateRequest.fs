@@ -12,16 +12,16 @@ module CatalogsCreativeAssetsProductGroupCreateRequest =
 
   [<CLIMutable>]
   type CatalogsCreativeAssetsProductGroupCreateRequest = {
+    [<JsonProperty(PropertyName = "catalog_id")>]
+    CatalogId : string;
     [<JsonProperty(PropertyName = "catalog_type")>]
     CatalogType : string;
-    [<JsonProperty(PropertyName = "name")>]
-    Name : string;
     [<JsonProperty(PropertyName = "description")>]
     Description : string option;
     [<JsonProperty(PropertyName = "filters")>]
     Filters : CatalogsCreativeAssetsProductGroupFilters;
-    [<JsonProperty(PropertyName = "catalog_id")>]
-    CatalogId : string;
+    [<JsonProperty(PropertyName = "name")>]
+    Name : string;
   }
 
   //#endregion

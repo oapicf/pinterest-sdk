@@ -1,0 +1,60 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ConversionEventsDataInnerCustomDataContentsInner"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ConversionEventsDataInnerCustomDataContentsInner"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  ConversionEventsDataInnerCustomDataContentsInner {
+    title = ConversionEventsDataInnerCustomDataContentsInner
+    description = ConversionEventsDataInnerCustomDataContentsInner
+    derivedFrom = Root
+    properties {
+        id {
+          type =  string
+          description = "The id of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\&quot; target&#x3D;\&quot;_blank\&quot;&gt;here&lt;/a&gt; (Install the Pinterest tag section)."
+          optional = false
+        }
+        item_brand {
+          type =  string
+          description = "The brand of a product."
+          optional = false
+        }
+        item_category {
+          type =  string
+          description = "The category of a product."
+          optional = false
+        }
+        item_name {
+          type =  string
+          description = "The name of a product."
+          optional = false
+        }
+        item_price {
+          type =  string
+          description = "The price of a product. Accepted as a string in the request; it will be parsed into a double. This is the original item value before any discount. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\&quot; target&#x3D;\&quot;_blank\&quot;&gt;here&lt;/a&gt; (Install the Pinterest tag section)."
+          optional = false
+        }
+        quantity {
+          type =  integer
+          description = "The amount of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\&quot; target&#x3D;\&quot;_blank\&quot;&gt;here&lt;/a&gt; (Install the Pinterest tag section)."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ConversionEventsDataInnerCustomDataContentsInner {
+    title = ConversionEventsDataInnerCustomDataContentsInner
+    description = ConversionEventsDataInnerCustomDataContentsInner
+    implements = openapi_server.resourceTypes.ConversionEventsDataInnerCustomDataContentsInner
+
+  }
+}

@@ -73,8 +73,9 @@ private class OASGetBusinessAssetsResponseTest {
     private static void maintainRenamedProperties() {
         OASGetBusinessAssetsResponse getBusinessAssetsResponse = new OASGetBusinessAssetsResponse();
         Map<String, String> x-property-mappings = getBusinessAssetsResponse.getx-property-mappings();
+        System.assertEquals('assetGroupInfo', x-property-mappings.get('asset_group_info'));
         System.assertEquals('assetId', x-property-mappings.get('asset_id'));
         System.assertEquals('assetType', x-property-mappings.get('asset_type'));
-        System.assertEquals('assetGroupInfo', x-property-mappings.get('asset_group_info'));
+        System.assertEquals('catalogInfo', x-property-mappings.get('catalog_info'));
     }
 }

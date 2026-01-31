@@ -8,6 +8,14 @@ Protected Class CatalogsItemsCreateBatchRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
+			Array with catalogs items
+		#tag EndNote
+		items() As OpenAPIClient.Models.ItemCreateBatchRecord
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			We recommend using the CatalogsLocale values.
 		#tag EndNote
 		language As OpenAPIClient.Models.String
@@ -16,14 +24,6 @@ Protected Class CatalogsItemsCreateBatchRequest
 
 	#tag Property, Flags = &h0
 		operation As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Array with catalogs items
-		#tag EndNote
-		items() As OpenAPIClient.Models.ItemCreateBatchRecord
 	#tag EndProperty
 
 
@@ -407,19 +407,19 @@ Protected Class CatalogsItemsCreateBatchRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="operation"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="BatchOperation"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="items"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="ItemCreateBatchRecord"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="operation"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="BatchOperation"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

@@ -14,8 +14,8 @@ class AudienceCreateRequest {
     String name
     
     AudienceRule rule
-    /* Audience description. */
-    String description
     /* <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive. */
     AudienceType audienceType
+    /* Audience description. */
+    String description
 }

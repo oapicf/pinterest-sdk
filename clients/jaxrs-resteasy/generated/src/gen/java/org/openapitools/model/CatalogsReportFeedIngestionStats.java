@@ -11,9 +11,14 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsReportFeedIngestionStats   {
   
+  private String catalogId;
+  private Integer code;
+  private String codeLabel;
+  private String message;
+  private Integer occurrences;
 
   /**
    * Gets or Sets reportType
@@ -34,11 +39,6 @@ public class CatalogsReportFeedIngestionStats   {
   }
 
   private ReportTypeEnum reportType;
-  private String catalogId;
-  private Integer code;
-  private String codeLabel;
-  private String message;
-  private Integer occurrences;
 
   /**
    * An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
@@ -61,18 +61,6 @@ public class CatalogsReportFeedIngestionStats   {
   }
 
   private SeverityEnum severity;
-
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("report_type")
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-  public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
 
   /**
    * ID of the catalog entity.
@@ -140,6 +128,18 @@ public class CatalogsReportFeedIngestionStats   {
   }
 
   /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("report_type")
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
+  /**
    * An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
    **/
   
@@ -162,18 +162,18 @@ public class CatalogsReportFeedIngestionStats   {
       return false;
     }
     CatalogsReportFeedIngestionStats catalogsReportFeedIngestionStats = (CatalogsReportFeedIngestionStats) o;
-    return Objects.equals(this.reportType, catalogsReportFeedIngestionStats.reportType) &&
-        Objects.equals(this.catalogId, catalogsReportFeedIngestionStats.catalogId) &&
+    return Objects.equals(this.catalogId, catalogsReportFeedIngestionStats.catalogId) &&
         Objects.equals(this.code, catalogsReportFeedIngestionStats.code) &&
         Objects.equals(this.codeLabel, catalogsReportFeedIngestionStats.codeLabel) &&
         Objects.equals(this.message, catalogsReportFeedIngestionStats.message) &&
         Objects.equals(this.occurrences, catalogsReportFeedIngestionStats.occurrences) &&
+        Objects.equals(this.reportType, catalogsReportFeedIngestionStats.reportType) &&
         Objects.equals(this.severity, catalogsReportFeedIngestionStats.severity);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, catalogId, code, codeLabel, message, occurrences, severity);
+    return Objects.hash(catalogId, code, codeLabel, message, occurrences, reportType, severity);
   }
 
   @Override
@@ -181,12 +181,12 @@ public class CatalogsReportFeedIngestionStats   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportFeedIngestionStats {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    codeLabel: ").append(toIndentedString(codeLabel)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    occurrences: ").append(toIndentedString(occurrences)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    severity: ").append(toIndentedString(severity)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -1,0 +1,32 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "User selection of conversion health criteria for a single feature",
+  "name": "ConversionHealthSelectionItem",
+  "fields": [
+    {
+      "name": "conversionType",
+      "type": ["null", "model.object"],
+      "doc": "Status for conversion types",
+      "default": null
+    },
+    {
+      "name": "criteria",
+      "type": ["null", "model.object"],
+      "doc": "Status for criteria",
+      "default": null
+    },
+    {
+      "name": "ingestionSource",
+      "type": ["null", "model.object"],
+      "doc": "Status for ingestion sources",
+      "default": null
+    },
+    {
+      "name": "status",
+      "type": "model.AnyType",
+      "doc": "Overall status for this selection item"
+    }
+  ]
+
+}

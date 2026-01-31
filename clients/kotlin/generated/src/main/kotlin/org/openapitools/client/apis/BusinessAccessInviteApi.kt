@@ -138,7 +138,7 @@ open class BusinessAccessInviteApi(basePath: kotlin.String = defaultBasePath, cl
      * DELETE /businesses/{business_id}/invites
      * Cancel invites/requests
      * Cancel membership/partnership invites and/or requests.
-     * @param businessId Business id
+     * @param businessId Unique identifier of the requesting business.
      * @param cancelInvitesBody A list with invite ids
      * @return DeleteInvitesResultsResponseArray
      * @throws IllegalStateException If the request is not correctly configured
@@ -171,7 +171,7 @@ open class BusinessAccessInviteApi(basePath: kotlin.String = defaultBasePath, cl
      * DELETE /businesses/{business_id}/invites
      * Cancel invites/requests
      * Cancel membership/partnership invites and/or requests.
-     * @param businessId Business id
+     * @param businessId Unique identifier of the requesting business.
      * @param cancelInvitesBody A list with invite ids
      * @return ApiResponse<DeleteInvitesResultsResponseArray?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -190,7 +190,7 @@ open class BusinessAccessInviteApi(basePath: kotlin.String = defaultBasePath, cl
     /**
      * To obtain the request config of the operation cancelInvitesOrRequests
      *
-     * @param businessId Business id
+     * @param businessId Unique identifier of the requesting business.
      * @param cancelInvitesBody A list with invite ids
      * @return RequestConfig
      */
@@ -292,7 +292,7 @@ open class BusinessAccessInviteApi(basePath: kotlin.String = defaultBasePath, cl
      * POST /businesses/{business_id}/invites
      * Create invites or requests
      * Create batch invites or requests. Can create batch invites or requests as described below. - Invite members to join the business. This would required specifying the following:     - invite_type&#x3D;\&quot;MEMBER_INVITE\&quot;     - business_role&#x3D;\&quot;EMPLOYEE\&quot; OR business_role&#x3D;\&quot;BIZ_ADMIN\&quot; (To learn more about business roles, visit     https://help.pinterest.com/en/business/article/profile-permissions-in-business-access.)     - members - Invite partners to access your business assets. This would require specifying the following:     - invite_type&#x3D;\&quot;PARTNER_INVITE\&quot;     - business_role&#x3D;\&quot;PARTNER\&quot;     - partners - Request to be a partner so you can access their assets. This would require specifying the following:     - invite_type&#x3D;\&quot;PARTNER_REQUEST\&quot;     - business_role&#x3D;\&quot;PARTNER\&quot;     - partners
-     * @param businessId Business id
+     * @param businessId Unique identifier of the requesting business.
      * @param createMembershipOrPartnershipInvitesBody An object with the properties: invite_type, partners, members, business_role
      * @return CreateInvitesResultsResponseArray
      * @throws IllegalStateException If the request is not correctly configured
@@ -325,7 +325,7 @@ open class BusinessAccessInviteApi(basePath: kotlin.String = defaultBasePath, cl
      * POST /businesses/{business_id}/invites
      * Create invites or requests
      * Create batch invites or requests. Can create batch invites or requests as described below. - Invite members to join the business. This would required specifying the following:     - invite_type&#x3D;\&quot;MEMBER_INVITE\&quot;     - business_role&#x3D;\&quot;EMPLOYEE\&quot; OR business_role&#x3D;\&quot;BIZ_ADMIN\&quot; (To learn more about business roles, visit     https://help.pinterest.com/en/business/article/profile-permissions-in-business-access.)     - members - Invite partners to access your business assets. This would require specifying the following:     - invite_type&#x3D;\&quot;PARTNER_INVITE\&quot;     - business_role&#x3D;\&quot;PARTNER\&quot;     - partners - Request to be a partner so you can access their assets. This would require specifying the following:     - invite_type&#x3D;\&quot;PARTNER_REQUEST\&quot;     - business_role&#x3D;\&quot;PARTNER\&quot;     - partners
-     * @param businessId Business id
+     * @param businessId Unique identifier of the requesting business.
      * @param createMembershipOrPartnershipInvitesBody An object with the properties: invite_type, partners, members, business_role
      * @return ApiResponse<CreateInvitesResultsResponseArray?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -344,7 +344,7 @@ open class BusinessAccessInviteApi(basePath: kotlin.String = defaultBasePath, cl
     /**
      * To obtain the request config of the operation createMembershipOrPartnershipInvites
      *
-     * @param businessId Business id
+     * @param businessId Unique identifier of the requesting business.
      * @param createMembershipOrPartnershipInvitesBody An object with the properties: invite_type, partners, members, business_role
      * @return RequestConfig
      */

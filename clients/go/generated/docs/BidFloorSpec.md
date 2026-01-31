@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**BillableEvent** | [**ActionType**](ActionType.md) |  | 
 **Countries** | Pointer to [**[]Country**](Country.md) |  | [optional] 
+**CreativeType** | Pointer to [**CreativeType**](CreativeType.md) |  | [optional] 
 **Currency** | [**Currency**](Currency.md) |  | 
 **ObjectiveType** | Pointer to [**ObjectiveType**](ObjectiveType.md) |  | [optional] 
-**BillableEvent** | [**ActionType**](ActionType.md) |  | 
 **OptimizationGoalMetadata** | Pointer to [**OptimizationGoalMetadata**](OptimizationGoalMetadata.md) |  | [optional] 
-**CreativeType** | Pointer to [**CreativeType**](CreativeType.md) |  | [optional] 
 
 ## Methods
 
 ### NewBidFloorSpec
 
-`func NewBidFloorSpec(currency Currency, billableEvent ActionType, ) *BidFloorSpec`
+`func NewBidFloorSpec(billableEvent ActionType, currency Currency, ) *BidFloorSpec`
 
 NewBidFloorSpec instantiates a new BidFloorSpec object
 This constructor will assign default values to properties that have it defined,
@@ -29,6 +29,26 @@ will change when the set of required properties is changed
 NewBidFloorSpecWithDefaults instantiates a new BidFloorSpec object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetBillableEvent
+
+`func (o *BidFloorSpec) GetBillableEvent() ActionType`
+
+GetBillableEvent returns the BillableEvent field if non-nil, zero value otherwise.
+
+### GetBillableEventOk
+
+`func (o *BidFloorSpec) GetBillableEventOk() (*ActionType, bool)`
+
+GetBillableEventOk returns a tuple with the BillableEvent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBillableEvent
+
+`func (o *BidFloorSpec) SetBillableEvent(v ActionType)`
+
+SetBillableEvent sets BillableEvent field to given value.
+
 
 ### GetCountries
 
@@ -54,6 +74,31 @@ SetCountries sets Countries field to given value.
 `func (o *BidFloorSpec) HasCountries() bool`
 
 HasCountries returns a boolean if a field has been set.
+
+### GetCreativeType
+
+`func (o *BidFloorSpec) GetCreativeType() CreativeType`
+
+GetCreativeType returns the CreativeType field if non-nil, zero value otherwise.
+
+### GetCreativeTypeOk
+
+`func (o *BidFloorSpec) GetCreativeTypeOk() (*CreativeType, bool)`
+
+GetCreativeTypeOk returns a tuple with the CreativeType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreativeType
+
+`func (o *BidFloorSpec) SetCreativeType(v CreativeType)`
+
+SetCreativeType sets CreativeType field to given value.
+
+### HasCreativeType
+
+`func (o *BidFloorSpec) HasCreativeType() bool`
+
+HasCreativeType returns a boolean if a field has been set.
 
 ### GetCurrency
 
@@ -100,26 +145,6 @@ SetObjectiveType sets ObjectiveType field to given value.
 
 HasObjectiveType returns a boolean if a field has been set.
 
-### GetBillableEvent
-
-`func (o *BidFloorSpec) GetBillableEvent() ActionType`
-
-GetBillableEvent returns the BillableEvent field if non-nil, zero value otherwise.
-
-### GetBillableEventOk
-
-`func (o *BidFloorSpec) GetBillableEventOk() (*ActionType, bool)`
-
-GetBillableEventOk returns a tuple with the BillableEvent field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBillableEvent
-
-`func (o *BidFloorSpec) SetBillableEvent(v ActionType)`
-
-SetBillableEvent sets BillableEvent field to given value.
-
-
 ### GetOptimizationGoalMetadata
 
 `func (o *BidFloorSpec) GetOptimizationGoalMetadata() OptimizationGoalMetadata`
@@ -144,31 +169,6 @@ SetOptimizationGoalMetadata sets OptimizationGoalMetadata field to given value.
 `func (o *BidFloorSpec) HasOptimizationGoalMetadata() bool`
 
 HasOptimizationGoalMetadata returns a boolean if a field has been set.
-
-### GetCreativeType
-
-`func (o *BidFloorSpec) GetCreativeType() CreativeType`
-
-GetCreativeType returns the CreativeType field if non-nil, zero value otherwise.
-
-### GetCreativeTypeOk
-
-`func (o *BidFloorSpec) GetCreativeTypeOk() (*CreativeType, bool)`
-
-GetCreativeTypeOk returns a tuple with the CreativeType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreativeType
-
-`func (o *BidFloorSpec) SetCreativeType(v CreativeType)`
-
-SetCreativeType sets CreativeType field to given value.
-
-### HasCreativeType
-
-`func (o *BidFloorSpec) HasCreativeType() bool`
-
-HasCreativeType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

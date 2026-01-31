@@ -1,0 +1,53 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server GetPartnerAssetsResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a GetPartnerAssetsResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AssetGroupBinding = openapi_server.resourceTypes.AssetGroupBinding
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  GetPartnerAssetsResponse {
+    title = GetPartnerAssetsResponse
+    description = GetPartnerAssetsResponse
+    derivedFrom = Root
+    properties {
+        asset_group_info {
+          type = AssetGroupBinding
+          description = ""
+          optional = false
+        }
+        asset_id {
+          type =  string
+          description = "Unique identifier of a business asset."
+          optional = false
+        }
+        asset_type {
+          type =  string
+          description = "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG."
+          optional = false
+        }
+        permissions {
+          type = array
+          items.type =  string
+          description = "The permissions you or your partner has on the asset. If partner_type&#x3D;INTERNAL, the permission levels are for the access the partner has to your business asset.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the permission levels are for the access you have to the partner&#39;s business asset."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  GetPartnerAssetsResponse {
+    title = GetPartnerAssetsResponse
+    description = GetPartnerAssetsResponse
+    implements = openapi_server.resourceTypes.GetPartnerAssetsResponse
+
+  }
+}

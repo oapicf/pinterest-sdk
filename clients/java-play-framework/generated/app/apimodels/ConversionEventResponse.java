@@ -10,9 +10,14 @@ import javax.validation.Valid;
 /**
  * ConversionEventResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class ConversionEventResponse   {
+  @JsonProperty("ad_account_id")
+  @Pattern(regexp="^\\d+$")
+
+  private String adAccountId;
+
   @JsonProperty("conversion_event")
   @Valid
 
@@ -23,14 +28,26 @@ public class ConversionEventResponse   {
 
   private String conversionTagId;
 
-  @JsonProperty("ad_account_id")
-  @Pattern(regexp="^\\d+$")
-
-  private String adAccountId;
-
   @JsonProperty("created_time")
   
   private Integer createdTime;
+
+  public ConversionEventResponse adAccountId(String adAccountId) {
+    this.adAccountId = adAccountId;
+    return this;
+  }
+
+   /**
+   * Id of the ad account.
+   * @return adAccountId
+  **/
+  public String getAdAccountId() {
+    return adAccountId;
+  }
+
+  public void setAdAccountId(String adAccountId) {
+    this.adAccountId = adAccountId;
+  }
 
   public ConversionEventResponse conversionEvent(ConversionTagType conversionEvent) {
     this.conversionEvent = conversionEvent;
@@ -66,23 +83,6 @@ public class ConversionEventResponse   {
     this.conversionTagId = conversionTagId;
   }
 
-  public ConversionEventResponse adAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
-    return this;
-  }
-
-   /**
-   * Id of the ad account.
-   * @return adAccountId
-  **/
-  public String getAdAccountId() {
-    return adAccountId;
-  }
-
-  public void setAdAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
-  }
-
   public ConversionEventResponse createdTime(Integer createdTime) {
     this.createdTime = createdTime;
     return this;
@@ -110,15 +110,15 @@ public class ConversionEventResponse   {
       return false;
     }
     ConversionEventResponse conversionEventResponse = (ConversionEventResponse) o;
-    return Objects.equals(conversionEvent, conversionEventResponse.conversionEvent) &&
+    return Objects.equals(adAccountId, conversionEventResponse.adAccountId) &&
+        Objects.equals(conversionEvent, conversionEventResponse.conversionEvent) &&
         Objects.equals(conversionTagId, conversionEventResponse.conversionTagId) &&
-        Objects.equals(adAccountId, conversionEventResponse.adAccountId) &&
         Objects.equals(createdTime, conversionEventResponse.createdTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(conversionEvent, conversionTagId, adAccountId, createdTime);
+    return Objects.hash(adAccountId, conversionEvent, conversionTagId, createdTime);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -127,9 +127,9 @@ public class ConversionEventResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionEventResponse {\n");
     
+    sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    conversionEvent: ").append(toIndentedString(conversionEvent)).append("\n");
     sb.append("    conversionTagId: ").append(toIndentedString(conversionTagId)).append("\n");
-    sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("}");
     return sb.toString();

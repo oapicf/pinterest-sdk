@@ -1,0 +1,27 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "address_primary" },
+      {"model": "address_secondary" },
+      {"model": "city" },
+      {"model": "country" },
+      {"model": "id" },
+      {"model": "latitude" },
+      {"model": "longitude" },
+      {"model": "name" },
+      {"model": "postal_code" },
+      {"model": "region" },
+      {"model": "store_code" },
+    ]
+  }]
+}

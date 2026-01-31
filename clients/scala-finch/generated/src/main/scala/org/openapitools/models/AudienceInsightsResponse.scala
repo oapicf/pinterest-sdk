@@ -13,18 +13,18 @@ import scala.collection.immutable.Seq
 /**
  * Audience interests and demographics.
  * @param categories Category interest distribution
- * @param demographics 
- * @param _type 
  * @param date Generation date
+ * @param demographics 
  * @param size Population count.
  * @param sizeUnderscoreisUnderscoreupperUnderscorebound Indicates whether the audience size has been rounded up to the next highest upper boundary.
+ * @param _type 
  */
 case class AudienceInsightsResponse(categories: Option[Seq[AudienceCategory]],
-                demographics: Option[AudienceDemographics],
-                _type: Option[AudienceInsightType],
                 date: Option[String],
+                demographics: Option[AudienceDemographics],
                 size: Option[Int],
-                sizeUnderscoreisUnderscoreupperUnderscorebound: Option[Boolean]
+                sizeUnderscoreisUnderscoreupperUnderscorebound: Option[Boolean],
+                _type: Option[AudienceInsightType]
                 )
 
 object AudienceInsightsResponse {

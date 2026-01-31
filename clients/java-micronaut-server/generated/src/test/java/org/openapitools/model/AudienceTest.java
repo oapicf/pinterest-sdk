@@ -30,6 +30,38 @@ public class AudienceTest {
     }
 
     /**
+     * Test the property 'audienceType'
+     */
+    @Test
+    public void audienceTypeTest() {
+        // TODO: test audienceType
+    }
+
+    /**
+     * Test the property 'createdByCompanyName'
+     */
+    @Test
+    public void createdByCompanyNameTest() {
+        // TODO: test createdByCompanyName
+    }
+
+    /**
+     * Test the property 'createdTimestamp'
+     */
+    @Test
+    public void createdTimestampTest() {
+        // TODO: test createdTimestamp
+    }
+
+    /**
+     * Test the property 'description'
+     */
+    @Test
+    public void descriptionTest() {
+        // TODO: test description
+    }
+
+    /**
      * Test the property 'id'
      */
     @Test
@@ -43,22 +75,6 @@ public class AudienceTest {
     @Test
     public void nameTest() {
         // TODO: test name
-    }
-
-    /**
-     * Test the property 'audienceType'
-     */
-    @Test
-    public void audienceTypeTest() {
-        // TODO: test audienceType
-    }
-
-    /**
-     * Test the property 'description'
-     */
-    @Test
-    public void descriptionTest() {
-        // TODO: test description
     }
 
     /**
@@ -91,14 +107,6 @@ public class AudienceTest {
     @Test
     public void typeTest() {
         // TODO: test type
-    }
-
-    /**
-     * Test the property 'createdTimestamp'
-     */
-    @Test
-    public void createdTimestampTest() {
-        // TODO: test createdTimestamp
     }
 
     /**

@@ -17,6 +17,18 @@
       "default": null
     },
     {
+      "name": "discountCurrency",
+      "type": ["null", "string"],
+      "doc": "Currency value for the discount.",
+      "default": null
+    },
+    {
+      "name": "discountInMicroCurrency",
+      "type": ["null", "double"],
+      "doc": "The discount applied in the offer’s currency value.",
+      "default": null
+    },
+    {
       "name": "discountType",
       "type": ["null", {
         "type": "enum",
@@ -48,27 +60,15 @@
       "default": null
     },
     {
-      "name": "discountInMicroCurrency",
+      "name": "remainingDiscountInMicroCurrency",
       "type": ["null", "double"],
-      "doc": "The discount applied in the offer’s currency value.",
-      "default": null
-    },
-    {
-      "name": "discountCurrency",
-      "type": ["null", "string"],
-      "doc": "Currency value for the discount.",
+      "doc": "The credits left to spend.",
       "default": null
     },
     {
       "name": "title",
       "type": ["null", "string"],
       "doc": "Human readable title of the offer code.",
-      "default": null
-    },
-    {
-      "name": "remainingDiscountInMicroCurrency",
-      "type": ["null", "double"],
-      "doc": "The credits left to spend.",
       "default": null
     }
   ]

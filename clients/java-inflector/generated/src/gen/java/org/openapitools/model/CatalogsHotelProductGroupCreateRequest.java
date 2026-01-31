@@ -16,8 +16,11 @@ import org.openapitools.model.CatalogsHotelProductGroupFilters;
  **/
 
 @ApiModel(description = "Request object for creating a hotel product group.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelProductGroupCreateRequest   {
+  @JsonProperty("catalog_id")
+  private String catalogId;
+
   /**
    * Gets or Sets catalogType
    */
@@ -50,17 +53,32 @@ public class CatalogsHotelProductGroupCreateRequest   {
   @JsonProperty("catalog_type")
   private CatalogTypeEnum catalogType;
 
-  @JsonProperty("name")
-  private String name;
-
   @JsonProperty("description")
   private String description;
 
   @JsonProperty("filters")
   private CatalogsHotelProductGroupFilters filters;
 
+  @JsonProperty("name")
+  private String name;
+
+  /**
+   * Catalog id pertaining to the hotel product group.
+   **/
+  public CatalogsHotelProductGroupCreateRequest catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the hotel product group.")
   @JsonProperty("catalog_id")
-  private String catalogId;
+  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
 
   /**
    **/
@@ -77,23 +95,6 @@ public class CatalogsHotelProductGroupCreateRequest   {
   }
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
-  }
-
-  /**
-   **/
-  public CatalogsHotelProductGroupCreateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
   }
 
   /**
@@ -131,21 +132,20 @@ public class CatalogsHotelProductGroupCreateRequest   {
   }
 
   /**
-   * Catalog id pertaining to the hotel product group.
    **/
-  public CatalogsHotelProductGroupCreateRequest catalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public CatalogsHotelProductGroupCreateRequest name(String name) {
+    this.name = name;
     return this;
   }
 
   
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the hotel product group.")
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("name")
+  public String getName() {
+    return name;
   }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -158,16 +158,16 @@ public class CatalogsHotelProductGroupCreateRequest   {
       return false;
     }
     CatalogsHotelProductGroupCreateRequest catalogsHotelProductGroupCreateRequest = (CatalogsHotelProductGroupCreateRequest) o;
-    return Objects.equals(catalogType, catalogsHotelProductGroupCreateRequest.catalogType) &&
-        Objects.equals(name, catalogsHotelProductGroupCreateRequest.name) &&
+    return Objects.equals(catalogId, catalogsHotelProductGroupCreateRequest.catalogId) &&
+        Objects.equals(catalogType, catalogsHotelProductGroupCreateRequest.catalogType) &&
         Objects.equals(description, catalogsHotelProductGroupCreateRequest.description) &&
         Objects.equals(filters, catalogsHotelProductGroupCreateRequest.filters) &&
-        Objects.equals(catalogId, catalogsHotelProductGroupCreateRequest.catalogId);
+        Objects.equals(name, catalogsHotelProductGroupCreateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters, catalogId);
+    return Objects.hash(catalogId, catalogType, description, filters, name);
   }
 
   @Override
@@ -175,11 +175,11 @@ public class CatalogsHotelProductGroupCreateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelProductGroupCreateRequest {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

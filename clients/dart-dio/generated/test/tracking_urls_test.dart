@@ -7,8 +7,13 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(TrackingUrls, () {
-    // BuiltList<String> impression
-    test('to test the property `impression`', () async {
+    // BuiltList<String> audienceVerification
+    test('to test the property `audienceVerification`', () async {
+      // TODO
+    });
+
+    // BuiltList<String> buyableButton
+    test('to test the property `buyableButton`', () async {
       // TODO
     });
 
@@ -22,13 +27,8 @@ void main() {
       // TODO
     });
 
-    // BuiltList<String> buyableButton
-    test('to test the property `buyableButton`', () async {
-      // TODO
-    });
-
-    // BuiltList<String> audienceVerification
-    test('to test the property `audienceVerification`', () async {
+    // BuiltList<String> impression
+    test('to test the property `impression`', () async {
       // TODO
     });
 

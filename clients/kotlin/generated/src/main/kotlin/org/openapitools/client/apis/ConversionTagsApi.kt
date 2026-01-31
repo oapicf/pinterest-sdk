@@ -20,11 +20,12 @@ import okhttp3.Call
 import okhttp3.HttpUrl
 
 import org.openapitools.client.models.ConversionEventResponse
+import org.openapitools.client.models.ConversionTag
 import org.openapitools.client.models.ConversionTagCreate
-import org.openapitools.client.models.ConversionTagListResponse
-import org.openapitools.client.models.ConversionTagResponse
+import org.openapitools.client.models.ConversionTagsList200Response
 import org.openapitools.client.models.Error
 import org.openapitools.client.models.PageVisitConversionTagsGet200Response
+import org.openapitools.client.models.PinterestLibError
 
 import com.squareup.moshi.Json
 
@@ -53,10 +54,10 @@ open class ConversionTagsApi(basePath: kotlin.String = defaultBasePath, client: 
     /**
      * POST /ad_accounts/{ad_account_id}/conversion_tags
      * Create conversion tag
-     * Create a conversion tag, also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Pinterest tag&lt;/a&gt;, with the option to enable enhanced match.&lt;p/&gt; The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.&lt;p/&gt; For more information, see:&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot;&gt;Set up the Pinterest tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/\&quot;&gt;Pinterest Tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/#enhanced-match\&quot;&gt;Enhanced match&lt;/a&gt;
+     * Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account&#39;s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
      * @param adAccountId Unique identifier of an ad account.
-     * @param conversionTagCreate Conversion Tag to create
-     * @return ConversionTagResponse
+     * @param conversionTagCreate 
+     * @return ConversionTag
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -65,11 +66,11 @@ open class ConversionTagsApi(basePath: kotlin.String = defaultBasePath, client: 
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun conversionTagsCreate(adAccountId: kotlin.String, conversionTagCreate: ConversionTagCreate) : ConversionTagResponse {
+    fun conversionTagsCreate(adAccountId: kotlin.String, conversionTagCreate: ConversionTagCreate) : ConversionTag {
         val localVarResponse = conversionTagsCreateWithHttpInfo(adAccountId = adAccountId, conversionTagCreate = conversionTagCreate)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as ConversionTagResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as ConversionTag
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -86,19 +87,19 @@ open class ConversionTagsApi(basePath: kotlin.String = defaultBasePath, client: 
     /**
      * POST /ad_accounts/{ad_account_id}/conversion_tags
      * Create conversion tag
-     * Create a conversion tag, also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Pinterest tag&lt;/a&gt;, with the option to enable enhanced match.&lt;p/&gt; The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.&lt;p/&gt; For more information, see:&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot;&gt;Set up the Pinterest tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/\&quot;&gt;Pinterest Tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/#enhanced-match\&quot;&gt;Enhanced match&lt;/a&gt;
+     * Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account&#39;s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
      * @param adAccountId Unique identifier of an ad account.
-     * @param conversionTagCreate Conversion Tag to create
-     * @return ApiResponse<ConversionTagResponse?>
+     * @param conversionTagCreate 
+     * @return ApiResponse<ConversionTag?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun conversionTagsCreateWithHttpInfo(adAccountId: kotlin.String, conversionTagCreate: ConversionTagCreate) : ApiResponse<ConversionTagResponse?> {
+    fun conversionTagsCreateWithHttpInfo(adAccountId: kotlin.String, conversionTagCreate: ConversionTagCreate) : ApiResponse<ConversionTag?> {
         val localVariableConfig = conversionTagsCreateRequestConfig(adAccountId = adAccountId, conversionTagCreate = conversionTagCreate)
 
-        return request<ConversionTagCreate, ConversionTagResponse>(
+        return request<ConversionTagCreate, ConversionTag>(
             localVariableConfig
         )
     }
@@ -107,7 +108,7 @@ open class ConversionTagsApi(basePath: kotlin.String = defaultBasePath, client: 
      * To obtain the request config of the operation conversionTagsCreate
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param conversionTagCreate Conversion Tag to create
+     * @param conversionTagCreate 
      * @return RequestConfig
      */
     fun conversionTagsCreateRequestConfig(adAccountId: kotlin.String, conversionTagCreate: ConversionTagCreate) : RequestConfig<ConversionTagCreate> {
@@ -133,7 +134,7 @@ open class ConversionTagsApi(basePath: kotlin.String = defaultBasePath, client: 
      * Get information about an existing conversion tag.
      * @param adAccountId Unique identifier of an ad account.
      * @param conversionTagId Id of the conversion tag.
-     * @return ConversionTagResponse
+     * @return ConversionTag
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -142,11 +143,11 @@ open class ConversionTagsApi(basePath: kotlin.String = defaultBasePath, client: 
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun conversionTagsGet(adAccountId: kotlin.String, conversionTagId: kotlin.String) : ConversionTagResponse {
+    fun conversionTagsGet(adAccountId: kotlin.String, conversionTagId: kotlin.String) : ConversionTag {
         val localVarResponse = conversionTagsGetWithHttpInfo(adAccountId = adAccountId, conversionTagId = conversionTagId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as ConversionTagResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as ConversionTag
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -166,16 +167,16 @@ open class ConversionTagsApi(basePath: kotlin.String = defaultBasePath, client: 
      * Get information about an existing conversion tag.
      * @param adAccountId Unique identifier of an ad account.
      * @param conversionTagId Id of the conversion tag.
-     * @return ApiResponse<ConversionTagResponse?>
+     * @return ApiResponse<ConversionTag?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun conversionTagsGetWithHttpInfo(adAccountId: kotlin.String, conversionTagId: kotlin.String) : ApiResponse<ConversionTagResponse?> {
+    fun conversionTagsGetWithHttpInfo(adAccountId: kotlin.String, conversionTagId: kotlin.String) : ApiResponse<ConversionTag?> {
         val localVariableConfig = conversionTagsGetRequestConfig(adAccountId = adAccountId, conversionTagId = conversionTagId)
 
-        return request<Unit, ConversionTagResponse>(
+        return request<Unit, ConversionTag>(
             localVariableConfig
         )
     }
@@ -205,11 +206,11 @@ open class ConversionTagsApi(basePath: kotlin.String = defaultBasePath, client: 
 
     /**
      * GET /ad_accounts/{ad_account_id}/conversion_tags
-     * Get conversion tags
+     * List conversion tags
      * List conversion tags associated with an ad account.
      * @param adAccountId Unique identifier of an ad account.
-     * @param filterDeleted Filter out deleted tags. (optional, default to false)
-     * @return ConversionTagListResponse
+     * @param filterDeleted Filter by deleted status (optional, default to false)
+     * @return ConversionTagsList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -218,11 +219,11 @@ open class ConversionTagsApi(basePath: kotlin.String = defaultBasePath, client: 
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun conversionTagsList(adAccountId: kotlin.String, filterDeleted: kotlin.Boolean? = false) : ConversionTagListResponse {
+    fun conversionTagsList(adAccountId: kotlin.String, filterDeleted: kotlin.Boolean? = false) : ConversionTagsList200Response {
         val localVarResponse = conversionTagsListWithHttpInfo(adAccountId = adAccountId, filterDeleted = filterDeleted)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as ConversionTagListResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as ConversionTagsList200Response
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -238,20 +239,20 @@ open class ConversionTagsApi(basePath: kotlin.String = defaultBasePath, client: 
 
     /**
      * GET /ad_accounts/{ad_account_id}/conversion_tags
-     * Get conversion tags
+     * List conversion tags
      * List conversion tags associated with an ad account.
      * @param adAccountId Unique identifier of an ad account.
-     * @param filterDeleted Filter out deleted tags. (optional, default to false)
-     * @return ApiResponse<ConversionTagListResponse?>
+     * @param filterDeleted Filter by deleted status (optional, default to false)
+     * @return ApiResponse<ConversionTagsList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun conversionTagsListWithHttpInfo(adAccountId: kotlin.String, filterDeleted: kotlin.Boolean?) : ApiResponse<ConversionTagListResponse?> {
+    fun conversionTagsListWithHttpInfo(adAccountId: kotlin.String, filterDeleted: kotlin.Boolean?) : ApiResponse<ConversionTagsList200Response?> {
         val localVariableConfig = conversionTagsListRequestConfig(adAccountId = adAccountId, filterDeleted = filterDeleted)
 
-        return request<Unit, ConversionTagListResponse>(
+        return request<Unit, ConversionTagsList200Response>(
             localVariableConfig
         )
     }
@@ -260,7 +261,7 @@ open class ConversionTagsApi(basePath: kotlin.String = defaultBasePath, client: 
      * To obtain the request config of the operation conversionTagsList
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param filterDeleted Filter out deleted tags. (optional, default to false)
+     * @param filterDeleted Filter by deleted status (optional, default to false)
      * @return RequestConfig
      */
     fun conversionTagsListRequestConfig(adAccountId: kotlin.String, filterDeleted: kotlin.Boolean?) : RequestConfig<Unit> {

@@ -16,6 +16,7 @@ import { CatalogsCreativeAssetsAttributes } from './catalogsCreativeAssetsAttrib
  * Object describing a hotel record
  */
 export interface CatalogsCreativeAssetsItemResponse { 
+    attributes?: CatalogsCreativeAssetsAttributes;
     catalog_type: CatalogsType;
     /**
      * The catalog creative assets id in the merchant namespace
@@ -25,7 +26,6 @@ export interface CatalogsCreativeAssetsItemResponse {
      * The pins mapped to the item
      */
     pins?: Array<Pin> | null;
-    attributes?: CatalogsCreativeAssetsAttributes;
 }
 export namespace CatalogsCreativeAssetsItemResponse {
 }

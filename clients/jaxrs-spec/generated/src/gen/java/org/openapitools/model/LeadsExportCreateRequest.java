@@ -16,44 +16,44 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("LeadsExportCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LeadsExportCreateRequest   {
-  private String startDate;
-  private String endDate;
   private String adId;
+  private String endDate;
+  private String startDate;
 
   public LeadsExportCreateRequest() {
   }
 
   @JsonCreator
   public LeadsExportCreateRequest(
-    @JsonProperty(required = true, value = "start_date") String startDate,
+    @JsonProperty(required = true, value = "ad_id") String adId,
     @JsonProperty(required = true, value = "end_date") String endDate,
-    @JsonProperty(required = true, value = "ad_id") String adId
+    @JsonProperty(required = true, value = "start_date") String startDate
   ) {
-    this.startDate = startDate;
-    this.endDate = endDate;
     this.adId = adId;
+    this.endDate = endDate;
+    this.startDate = startDate;
   }
 
   /**
-   * Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
+   * ID for the ad collecting leads
    **/
-  public LeadsExportCreateRequest startDate(String startDate) {
-    this.startDate = startDate;
+  public LeadsExportCreateRequest adId(String adId) {
+    this.adId = adId;
     return this;
   }
 
   
-  @ApiModelProperty(example = "2020-12-20", required = true, value = "Export leads collected on and after start date (UTC). Format: YYYY-MM-DD")
-  @JsonProperty(required = true, value = "start_date")
-  @NotNull  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")public String getStartDate() {
-    return startDate;
+  @ApiModelProperty(example = "687201361754", required = true, value = "ID for the ad collecting leads")
+  @JsonProperty(required = true, value = "ad_id")
+  @NotNull  @Pattern(regexp="^\\d+$")public String getAdId() {
+    return adId;
   }
 
-  @JsonProperty(required = true, value = "start_date")
-  public void setStartDate(String startDate) {
-    this.startDate = startDate;
+  @JsonProperty(required = true, value = "ad_id")
+  public void setAdId(String adId) {
+    this.adId = adId;
   }
 
   /**
@@ -77,23 +77,23 @@ public class LeadsExportCreateRequest   {
   }
 
   /**
-   * ID for the ad collecting leads
+   * Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
    **/
-  public LeadsExportCreateRequest adId(String adId) {
-    this.adId = adId;
+  public LeadsExportCreateRequest startDate(String startDate) {
+    this.startDate = startDate;
     return this;
   }
 
   
-  @ApiModelProperty(example = "687201361754", required = true, value = "ID for the ad collecting leads")
-  @JsonProperty(required = true, value = "ad_id")
-  @NotNull  @Pattern(regexp="^\\d+$")public String getAdId() {
-    return adId;
+  @ApiModelProperty(example = "2020-12-20", required = true, value = "Export leads collected on and after start date (UTC). Format: YYYY-MM-DD")
+  @JsonProperty(required = true, value = "start_date")
+  @NotNull  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")public String getStartDate() {
+    return startDate;
   }
 
-  @JsonProperty(required = true, value = "ad_id")
-  public void setAdId(String adId) {
-    this.adId = adId;
+  @JsonProperty(required = true, value = "start_date")
+  public void setStartDate(String startDate) {
+    this.startDate = startDate;
   }
 
 
@@ -106,14 +106,14 @@ public class LeadsExportCreateRequest   {
       return false;
     }
     LeadsExportCreateRequest leadsExportCreateRequest = (LeadsExportCreateRequest) o;
-    return Objects.equals(this.startDate, leadsExportCreateRequest.startDate) &&
+    return Objects.equals(this.adId, leadsExportCreateRequest.adId) &&
         Objects.equals(this.endDate, leadsExportCreateRequest.endDate) &&
-        Objects.equals(this.adId, leadsExportCreateRequest.adId);
+        Objects.equals(this.startDate, leadsExportCreateRequest.startDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, endDate, adId);
+    return Objects.hash(adId, endDate, startDate);
   }
 
   @Override
@@ -121,9 +121,9 @@ public class LeadsExportCreateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class LeadsExportCreateRequest {\n");
     
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    adId: ").append(toIndentedString(adId)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }

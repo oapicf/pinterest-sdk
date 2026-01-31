@@ -9,9 +9,20 @@ import javax.validation.Valid;
 /**
  * CatalogsReportFeedIngestionFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsReportFeedIngestionFilter   {
+  @JsonProperty("feed_id")
+  @NotNull
+@Pattern(regexp="^\\d+$")
+
+  private String feedId;
+
+  @JsonProperty("processing_result_id")
+  @Pattern(regexp="^\\d+$")
+
+  private String processingResultId;
+
   /**
    * Gets or Sets reportType
    */
@@ -45,34 +56,6 @@ public class CatalogsReportFeedIngestionFilter   {
   @NotNull
 
   private ReportTypeEnum reportType;
-
-  @JsonProperty("feed_id")
-  @NotNull
-@Pattern(regexp="^\\d+$")
-
-  private String feedId;
-
-  @JsonProperty("processing_result_id")
-  @Pattern(regexp="^\\d+$")
-
-  private String processingResultId;
-
-  public CatalogsReportFeedIngestionFilter reportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-    return this;
-  }
-
-   /**
-   * Get reportType
-   * @return reportType
-  **/
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-
-  public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
 
   public CatalogsReportFeedIngestionFilter feedId(String feedId) {
     this.feedId = feedId;
@@ -108,6 +91,23 @@ public class CatalogsReportFeedIngestionFilter   {
     this.processingResultId = processingResultId;
   }
 
+  public CatalogsReportFeedIngestionFilter reportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+    return this;
+  }
+
+   /**
+   * Get reportType
+   * @return reportType
+  **/
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -118,14 +118,14 @@ public class CatalogsReportFeedIngestionFilter   {
       return false;
     }
     CatalogsReportFeedIngestionFilter catalogsReportFeedIngestionFilter = (CatalogsReportFeedIngestionFilter) o;
-    return Objects.equals(reportType, catalogsReportFeedIngestionFilter.reportType) &&
-        Objects.equals(feedId, catalogsReportFeedIngestionFilter.feedId) &&
-        Objects.equals(processingResultId, catalogsReportFeedIngestionFilter.processingResultId);
+    return Objects.equals(feedId, catalogsReportFeedIngestionFilter.feedId) &&
+        Objects.equals(processingResultId, catalogsReportFeedIngestionFilter.processingResultId) &&
+        Objects.equals(reportType, catalogsReportFeedIngestionFilter.reportType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, feedId, processingResultId);
+    return Objects.hash(feedId, processingResultId, reportType);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -134,9 +134,9 @@ public class CatalogsReportFeedIngestionFilter   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportFeedIngestionFilter {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
     sb.append("    processingResultId: ").append(toIndentedString(processingResultId)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

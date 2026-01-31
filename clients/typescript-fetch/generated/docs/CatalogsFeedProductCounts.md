@@ -7,8 +7,8 @@ The counts can be null early in the process.
 
 Name | Type
 ------------ | -------------
-`original` | number
 `ingested` | number
+`original` | number
 
 ## Example
 
@@ -17,8 +17,8 @@ import type { CatalogsFeedProductCounts } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "original": null,
   "ingested": null,
+  "original": null,
 } satisfies CatalogsFeedProductCounts
 
 console.log(example)

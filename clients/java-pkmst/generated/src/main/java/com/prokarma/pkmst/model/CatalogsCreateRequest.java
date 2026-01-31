@@ -4,6 +4,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.prokarma.pkmst.model.CatalogsType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 /**
@@ -16,58 +17,29 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "Request object for creating a catalog.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreateRequest   {
-  /**
-   * Type of the catalog entity.
-   */
-  public enum CatalogTypeEnum {
-    HOTEL("HOTEL");
-
-    private String value;
-
-    CatalogTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static CatalogTypeEnum fromValue(String text) {
-      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + text + "'");
-    }
-  }
-
   @JsonProperty("catalog_type")
-  private CatalogTypeEnum catalogType;
+  private CatalogsType catalogType;
 
   @JsonProperty("name")
   private String name;
 
-  public CatalogsCreateRequest catalogType(CatalogTypeEnum catalogType) {
+  public CatalogsCreateRequest catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
     return this;
   }
 
   /**
-   * Type of the catalog entity.
+   * Get catalogType
    * @return catalogType
    */
-  @ApiModelProperty(required = true, value = "Type of the catalog entity.")
-  public CatalogTypeEnum getCatalogType() {
+  @ApiModelProperty(required = true, value = "")
+  public CatalogsType getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogTypeEnum catalogType) {
+  public void setCatalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
   }
 

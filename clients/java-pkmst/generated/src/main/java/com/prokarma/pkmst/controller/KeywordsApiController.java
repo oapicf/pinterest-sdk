@@ -33,7 +33,7 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Controller
 public class KeywordsApiController implements KeywordsApi {
     private final ObjectMapper objectMapper;
@@ -80,8 +80,9 @@ public class KeywordsApiController implements KeywordsApi {
     public ResponseEntity<KeywordsGet200Response> keywordsGet(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
         @ApiParam(value = "Campaign Id to use to filter the results.")  @RequestParam(value = "campaign_id", required = false) String campaignId,
         @ApiParam(value = "Ad group Id.")  @RequestParam(value = "ad_group_id", required = false) String adGroupId,
+        @ApiParam(value = "List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.")  @RequestParam(value = "ad_group_ids", required = false) List<String> adGroupIds,
         @ApiParam(value = "Keyword <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type</a>")  @RequestParam(value = "match_types", required = false) List<MatchType> matchTypes,
-        @ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,
+        @ApiParam(value = "Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,
         @ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
@@ -123,6 +124,8 @@ public class KeywordsApiController implements KeywordsApi {
         @ApiParam(value = "If set, filters the results to top trends which include at least one of the specified keywords.<br /> If unset, no keyword filtering logic is applied.")  @RequestParam(value = "include_keywords", required = false) List<String> includeKeywords,
         @ApiParam(value = "Governs how the resulting time series data will be normalized to a [0-100] scale.<br /> By default (`false`), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword's time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.<br /> If set to `true`, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords.", defaultValue = "false")  @RequestParam(value = "normalize_against_group", required = false, defaultValue="false") Boolean normalizeAgainstGroup,
         @ApiParam(value = "The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a `limit` of 50 will return the top 50 trends.", defaultValue = "50")  @RequestParam(value = "limit", required = false, defaultValue="50") Integer limit,
+        @ApiParam(value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including predicted weekly search volume data for the next 90 days. By default (`false`), the response will not include predicted data.", defaultValue = "false")  @RequestParam(value = "include_prediction", required = false, defaultValue="false") Boolean includePrediction,
+        @ApiParam(value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including the age and gender distribution for each keyword. By default (`false`), the response will not include demographics data.", defaultValue = "false")  @RequestParam(value = "include_demographics", required = false, defaultValue="false") Boolean includeDemographics,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 

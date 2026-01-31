@@ -22,7 +22,7 @@ void main() {
       // TODO
     });
 
-    // List<ProductGroupPromotionCreateRequestElement> productGroupPromotion (default value: const [])
+    // List<ProductGroupPromotion> productGroupPromotion (default value: const [])
     test('to test the property `productGroupPromotion`', () async {
       // TODO
     });

@@ -5,20 +5,20 @@ context("Test CreateAssetGroupBody")
 
 model_instance <- CreateAssetGroupBody$new()
 
-test_that("asset_group_name", {
-  # tests for the property `asset_group_name` (character)
-  # Asset Group name
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`asset_group_name`, "EXPECTED_RESULT")
-})
-
 test_that("asset_group_description", {
   # tests for the property `asset_group_description` (character)
   # Asset group description
 
   # uncomment below to test the property
   #expect_equal(model.instance$`asset_group_description`, "EXPECTED_RESULT")
+})
+
+test_that("asset_group_name", {
+  # tests for the property `asset_group_name` (character)
+  # Asset Group name
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`asset_group_name`, "EXPECTED_RESULT")
 })
 
 test_that("asset_group_types", {

@@ -13,11 +13,11 @@ import AnyCodable
 public struct CatalogsCreativeAssetsProductGroupFilterKeys: Codable, JSONEncodable, Hashable {
 
     public var CREATIVE_ASSETS_ID: CatalogsProductGroupMultipleStringCriteria
-    public var cUSTOMLABEL0: CatalogsProductGroupMultipleStringCriteria
-    public var cUSTOMLABEL1: CatalogsProductGroupMultipleStringCriteria
-    public var cUSTOMLABEL2: CatalogsProductGroupMultipleStringCriteria
-    public var cUSTOMLABEL3: CatalogsProductGroupMultipleStringCriteria
-    public var cUSTOMLABEL4: CatalogsProductGroupMultipleStringCriteria
+    public var cUSTOMLABEL0: CatalogsProductGroupFilterOperatorTypeCriteria
+    public var cUSTOMLABEL1: CatalogsProductGroupFilterOperatorTypeCriteria
+    public var cUSTOMLABEL2: CatalogsProductGroupFilterOperatorTypeCriteria
+    public var cUSTOMLABEL3: CatalogsProductGroupFilterOperatorTypeCriteria
+    public var cUSTOMLABEL4: CatalogsProductGroupFilterOperatorTypeCriteria
     public var gOOGLEPRODUCTCATEGORY6: CatalogsProductGroupMultipleStringListCriteria
     public var gOOGLEPRODUCTCATEGORY5: CatalogsProductGroupMultipleStringListCriteria
     public var gOOGLEPRODUCTCATEGORY4: CatalogsProductGroupMultipleStringListCriteria
@@ -26,8 +26,9 @@ public struct CatalogsCreativeAssetsProductGroupFilterKeys: Codable, JSONEncodab
     public var gOOGLEPRODUCTCATEGORY1: CatalogsProductGroupMultipleStringListCriteria
     public var gOOGLEPRODUCTCATEGORY0: CatalogsProductGroupMultipleStringListCriteria
     public var MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria
+    public var TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria
 
-    public init(CREATIVE_ASSETS_ID: CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL0: CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL1: CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL2: CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL3: CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL4: CatalogsProductGroupMultipleStringCriteria, gOOGLEPRODUCTCATEGORY6: CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY5: CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY4: CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY3: CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY2: CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY1: CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY0: CatalogsProductGroupMultipleStringListCriteria, MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria) {
+    public init(CREATIVE_ASSETS_ID: CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL0: CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL1: CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL2: CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL3: CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL4: CatalogsProductGroupFilterOperatorTypeCriteria, gOOGLEPRODUCTCATEGORY6: CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY5: CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY4: CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY3: CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY2: CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY1: CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY0: CatalogsProductGroupMultipleStringListCriteria, MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria, TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria) {
         self.CREATIVE_ASSETS_ID = CREATIVE_ASSETS_ID
         self.cUSTOMLABEL0 = cUSTOMLABEL0
         self.cUSTOMLABEL1 = cUSTOMLABEL1
@@ -42,6 +43,7 @@ public struct CatalogsCreativeAssetsProductGroupFilterKeys: Codable, JSONEncodab
         self.gOOGLEPRODUCTCATEGORY1 = gOOGLEPRODUCTCATEGORY1
         self.gOOGLEPRODUCTCATEGORY0 = gOOGLEPRODUCTCATEGORY0
         self.MEDIA_TYPE = MEDIA_TYPE
+        self.TITLE_KEYWORDS = TITLE_KEYWORDS
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -59,6 +61,7 @@ public struct CatalogsCreativeAssetsProductGroupFilterKeys: Codable, JSONEncodab
         case gOOGLEPRODUCTCATEGORY1 = "GOOGLE_PRODUCT_CATEGORY_1"
         case gOOGLEPRODUCTCATEGORY0 = "GOOGLE_PRODUCT_CATEGORY_0"
         case MEDIA_TYPE
+        case TITLE_KEYWORDS
     }
 
     // Encodable protocol methods
@@ -79,6 +82,7 @@ public struct CatalogsCreativeAssetsProductGroupFilterKeys: Codable, JSONEncodab
         try container.encode(gOOGLEPRODUCTCATEGORY1, forKey: .gOOGLEPRODUCTCATEGORY1)
         try container.encode(gOOGLEPRODUCTCATEGORY0, forKey: .gOOGLEPRODUCTCATEGORY0)
         try container.encode(MEDIA_TYPE, forKey: .MEDIA_TYPE)
+        try container.encode(TITLE_KEYWORDS, forKey: .TITLE_KEYWORDS)
     }
 }
 

@@ -17,10 +17,19 @@ open OpenAPI.OauthApiHandlerParams
 
 module OauthApiHandlerTestsHelper =
 
+  ()
+
 
   let mutable OauthTokenExamples = Map.empty
   let mutable OauthTokenBody = ""
 
   let getOauthTokenExample mediaType =
     OauthTokenExamples.[mediaType]
+      |> getConverter mediaType
+
+  let mutable TokenRevokeExamples = Map.empty
+  let mutable TokenRevokeBody = ""
+
+  let getTokenRevokeExample mediaType =
+    TokenRevokeExamples.[mediaType]
       |> getConverter mediaType

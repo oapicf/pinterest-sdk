@@ -47,13 +47,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Pins
-	 */
-	std::list<CatalogsProduct> getItems();
-
-	/*! \brief Set Pins
-	 */
-	void setItems(std::list <CatalogsProduct> items);
 	/*! \brief Get 
 	 */
 	std::string getBookmark();
@@ -61,10 +54,17 @@ public:
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
+	/*! \brief Get Pins
+	 */
+	std::list<CatalogsProduct> getItems();
+
+	/*! \brief Set Pins
+	 */
+	void setItems(std::list <CatalogsProduct> items);
 
 private:
-	std::list <CatalogsProduct>items;
 	std::string bookmark;
+	std::list <CatalogsProduct>items;
 	void __init();
 	void __cleanup();
 

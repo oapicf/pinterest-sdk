@@ -7,12 +7,12 @@ Protected Class CatalogsProductGroupPricingCriteria
 
 
 	#tag Property, Flags = &h0
-		values As Double
+		negated As Xoson.O.OptionalBoolean
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		negated As Xoson.O.OptionalBoolean
+		values As Double
 	#tag EndProperty
 
 
@@ -61,19 +61,19 @@ Protected Class CatalogsProductGroupPricingCriteria
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="values"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Double"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="negated"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="values"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Double"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

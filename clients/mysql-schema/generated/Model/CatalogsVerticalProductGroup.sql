@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsVerticalProductGroup`
 --
-SELECT `catalog_type`, `id`, `name`, `description`, `filters`, `is_featured`, `type`, `status`, `created_at`, `updated_at`, `catalog_id`, `feed_id`, `country`, `locale` FROM `CatalogsVerticalProductGroup` WHERE 1;
+SELECT `catalog_id`, `catalog_type`, `country`, `created_at`, `description`, `feed_id`, `filters`, `id`, `is_featured`, `locale`, `name`, `status`, `type`, `updated_at` FROM `CatalogsVerticalProductGroup` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsVerticalProductGroup`
 --
-INSERT INTO `CatalogsVerticalProductGroup`(`catalog_type`, `id`, `name`, `description`, `filters`, `is_featured`, `type`, `status`, `created_at`, `updated_at`, `catalog_id`, `feed_id`, `country`, `locale`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `CatalogsVerticalProductGroup`(`catalog_id`, `catalog_type`, `country`, `created_at`, `description`, `feed_id`, `filters`, `id`, `is_featured`, `locale`, `name`, `status`, `type`, `updated_at`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsVerticalProductGroup`
 --
-UPDATE `CatalogsVerticalProductGroup` SET `catalog_type` = ?, `id` = ?, `name` = ?, `description` = ?, `filters` = ?, `is_featured` = ?, `type` = ?, `status` = ?, `created_at` = ?, `updated_at` = ?, `catalog_id` = ?, `feed_id` = ?, `country` = ?, `locale` = ? WHERE 1;
+UPDATE `CatalogsVerticalProductGroup` SET `catalog_id` = ?, `catalog_type` = ?, `country` = ?, `created_at` = ?, `description` = ?, `feed_id` = ?, `filters` = ?, `id` = ?, `is_featured` = ?, `locale` = ?, `name` = ?, `status` = ?, `type` = ?, `updated_at` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsVerticalProductGroup`

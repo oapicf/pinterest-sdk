@@ -22,19 +22,19 @@ bulk_download_request_campaign_filter_t* instantiate_bulk_download_request_campa
   bulk_download_request_campaign_filter_t* bulk_download_request_campaign_filter = NULL;
   if (include_optional) {
     bulk_download_request_campaign_filter = bulk_download_request_campaign_filter_create(
-      "1622848072",
+      list_createList(),
       "1622848072",
       "campaign name",
       list_createList(),
-      list_createList()
+      "1622848072"
     );
   } else {
     bulk_download_request_campaign_filter = bulk_download_request_campaign_filter_create(
-      "1622848072",
+      list_createList(),
       "1622848072",
       "campaign name",
       list_createList(),
-      list_createList()
+      "1622848072"
     );
   }
 

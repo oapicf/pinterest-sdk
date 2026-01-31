@@ -15,10 +15,10 @@ module MultipleProductGroupsInner =
 
 
   type multiple_product_groups_inner = {
-    Name : string;
     Description : string option;
-    IsFeatured : bool;
-    Filters : CatalogsProductGroupFiltersRequest;
     FeedId : string;
+    Filters : CatalogsProductGroupFiltersRequest;
+    IsFeatured : bool;
+    Name : string;
   }
   //#endregion

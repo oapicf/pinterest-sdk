@@ -1,11 +1,11 @@
 # Org.OpenAPITools.Model.PinMediaSourceImageURL
-Image URL-based media source
+Image URL-based media source.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SourceType** | **string** |  | 
+**SourceType** | **string** | The source type of the media. | 
 **Url** | **string** |  | 
 **IsStandard** | **bool** | Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users. | [optional] [default to true]
 

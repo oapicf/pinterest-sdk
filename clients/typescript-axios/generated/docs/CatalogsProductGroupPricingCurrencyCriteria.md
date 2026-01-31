@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**operator** | **string** |  | [default to undefined]
-**value** | **number** |  | [default to undefined]
 **currency** | [**NonNullableCatalogsCurrency**](NonNullableCatalogsCurrency.md) |  | [default to undefined]
 **negated** | **boolean** |  | [optional] [default to false]
+**operator** | **string** |  | [default to undefined]
+**value** | **number** |  | [default to undefined]
 
 ## Example
 
@@ -16,10 +16,10 @@ Name | Type | Description | Notes
 import { CatalogsProductGroupPricingCurrencyCriteria } from './api';
 
 const instance: CatalogsProductGroupPricingCurrencyCriteria = {
-    operator,
-    value,
     currency,
     negated,
+    operator,
+    value,
 };
 ```
 

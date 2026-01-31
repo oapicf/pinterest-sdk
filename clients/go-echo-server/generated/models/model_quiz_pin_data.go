@@ -7,8 +7,8 @@ type QuizPinData struct {
 
 	Results []QuizPinResult `json:"results,omitempty"`
 
+	TieBreakerCustomResult *QuizPinResult `json:"tie_breaker_custom_result,omitempty"`
+
 	// Quiz ad tie breaker type, default is RANDOM
 	TieBreakerType string `json:"tie_breaker_type,omitempty"`
-
-	TieBreakerCustomResult *QuizPinResult `json:"tie_breaker_custom_result,omitempty"`
 }

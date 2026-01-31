@@ -3,44 +3,55 @@ package org.openapitools.vertxweb.server.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.vertxweb.server.model.PinMedia;
-import org.openapitools.vertxweb.server.model.PinMediaWithImageAllOfImages;
+import org.openapitools.vertxweb.server.model.ImageSize;
 
 /**
  * Pin with video.
  **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class PinMediaWithVideo extends PinMedia  {
+public class PinMediaWithVideo   {
   
-  private PinMediaWithImageAllOfImages images;
   private String coverImageUrl;
-  private String videoUrl;
   private BigDecimal duration;
   private Integer height;
+  private ImageSize images;
+
+
+  public enum MediaTypeEnum {
+    VIDEO("video");
+
+    private String value;
+
+    MediaTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private MediaTypeEnum mediaType;
+  private String videoUrl;
   private Integer width;
 
   public PinMediaWithVideo () {
 
   }
 
-  public PinMediaWithVideo (PinMediaWithImageAllOfImages images, String coverImageUrl, String videoUrl, BigDecimal duration, Integer height, Integer width) {
-    this.images = images;
+  public PinMediaWithVideo (String coverImageUrl, BigDecimal duration, Integer height, ImageSize images, MediaTypeEnum mediaType, String videoUrl, Integer width) {
     this.coverImageUrl = coverImageUrl;
-    this.videoUrl = videoUrl;
     this.duration = duration;
     this.height = height;
-    this.width = width;
-  }
-
-    
-  @JsonProperty("images")
-  public PinMediaWithImageAllOfImages getImages() {
-    return images;
-  }
-  public void setImages(PinMediaWithImageAllOfImages images) {
     this.images = images;
+    this.mediaType = mediaType;
+    this.videoUrl = videoUrl;
+    this.width = width;
   }
 
     
@@ -50,15 +61,6 @@ public class PinMediaWithVideo extends PinMedia  {
   }
   public void setCoverImageUrl(String coverImageUrl) {
     this.coverImageUrl = coverImageUrl;
-  }
-
-    
-  @JsonProperty("video_url")
-  public String getVideoUrl() {
-    return videoUrl;
-  }
-  public void setVideoUrl(String videoUrl) {
-    this.videoUrl = videoUrl;
   }
 
     
@@ -80,6 +82,33 @@ public class PinMediaWithVideo extends PinMedia  {
   }
 
     
+  @JsonProperty("images")
+  public ImageSize getImages() {
+    return images;
+  }
+  public void setImages(ImageSize images) {
+    this.images = images;
+  }
+
+    
+  @JsonProperty("media_type")
+  public MediaTypeEnum getMediaType() {
+    return mediaType;
+  }
+  public void setMediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
+  }
+
+    
+  @JsonProperty("video_url")
+  public String getVideoUrl() {
+    return videoUrl;
+  }
+  public void setVideoUrl(String videoUrl) {
+    this.videoUrl = videoUrl;
+  }
+
+    
   @JsonProperty("width")
   public Integer getWidth() {
     return width;
@@ -98,29 +127,31 @@ public class PinMediaWithVideo extends PinMedia  {
       return false;
     }
     PinMediaWithVideo pinMediaWithVideo = (PinMediaWithVideo) o;
-    return super.equals(o) && Objects.equals(images, pinMediaWithVideo.images) &&
-        Objects.equals(coverImageUrl, pinMediaWithVideo.coverImageUrl) &&
-        Objects.equals(videoUrl, pinMediaWithVideo.videoUrl) &&
+    return Objects.equals(coverImageUrl, pinMediaWithVideo.coverImageUrl) &&
         Objects.equals(duration, pinMediaWithVideo.duration) &&
         Objects.equals(height, pinMediaWithVideo.height) &&
+        Objects.equals(images, pinMediaWithVideo.images) &&
+        Objects.equals(mediaType, pinMediaWithVideo.mediaType) &&
+        Objects.equals(videoUrl, pinMediaWithVideo.videoUrl) &&
         Objects.equals(width, pinMediaWithVideo.width);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode(), images, super.hashCode(), coverImageUrl, super.hashCode(), videoUrl, super.hashCode(), duration, super.hashCode(), height, super.hashCode(), width);
+    return Objects.hash(coverImageUrl, duration, height, images, mediaType, videoUrl, width);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaWithVideo {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    images: ").append(toIndentedString(images)).append("\n");
+    
     sb.append("    coverImageUrl: ").append(toIndentedString(coverImageUrl)).append("\n");
-    sb.append("    videoUrl: ").append(toIndentedString(videoUrl)).append("\n");
     sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
+    sb.append("    images: ").append(toIndentedString(images)).append("\n");
+    sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
+    sb.append("    videoUrl: ").append(toIndentedString(videoUrl)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("}");
     return sb.toString();

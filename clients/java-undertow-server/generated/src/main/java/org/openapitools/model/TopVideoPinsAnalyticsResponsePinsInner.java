@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -27,12 +27,29 @@ import org.openapitools.model.DataStatus;
  */
 
 @ApiModel(description = "Array with metrics, status, and pin id for the requested metric")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TopVideoPinsAnalyticsResponsePinsInner   {
   
-  private Map<String, BigDecimal> metrics = new HashMap<>();
   private Map<String, DataStatus> dataStatus = new HashMap<>();
+  private Map<String, BigDecimal> metrics = new HashMap<>();
   private String pinId;
+
+  /**
+   */
+  public TopVideoPinsAnalyticsResponsePinsInner dataStatus(Map<String, DataStatus> dataStatus) {
+    this.dataStatus = dataStatus;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("data_status")
+  public Map<String, DataStatus> getDataStatus() {
+    return dataStatus;
+  }
+  public void setDataStatus(Map<String, DataStatus> dataStatus) {
+    this.dataStatus = dataStatus;
+  }
 
   /**
    * The metric name and daily value for each requested metric
@@ -50,23 +67,6 @@ public class TopVideoPinsAnalyticsResponsePinsInner   {
   }
   public void setMetrics(Map<String, BigDecimal> metrics) {
     this.metrics = metrics;
-  }
-
-  /**
-   */
-  public TopVideoPinsAnalyticsResponsePinsInner dataStatus(Map<String, DataStatus> dataStatus) {
-    this.dataStatus = dataStatus;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("data_status")
-  public Map<String, DataStatus> getDataStatus() {
-    return dataStatus;
-  }
-  public void setDataStatus(Map<String, DataStatus> dataStatus) {
-    this.dataStatus = dataStatus;
   }
 
   /**
@@ -97,14 +97,14 @@ public class TopVideoPinsAnalyticsResponsePinsInner   {
       return false;
     }
     TopVideoPinsAnalyticsResponsePinsInner topVideoPinsAnalyticsResponsePinsInner = (TopVideoPinsAnalyticsResponsePinsInner) o;
-    return Objects.equals(metrics, topVideoPinsAnalyticsResponsePinsInner.metrics) &&
-        Objects.equals(dataStatus, topVideoPinsAnalyticsResponsePinsInner.dataStatus) &&
+    return Objects.equals(dataStatus, topVideoPinsAnalyticsResponsePinsInner.dataStatus) &&
+        Objects.equals(metrics, topVideoPinsAnalyticsResponsePinsInner.metrics) &&
         Objects.equals(pinId, topVideoPinsAnalyticsResponsePinsInner.pinId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(metrics, dataStatus, pinId);
+    return Objects.hash(dataStatus, metrics, pinId);
   }
 
   @Override
@@ -112,8 +112,8 @@ public class TopVideoPinsAnalyticsResponsePinsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TopVideoPinsAnalyticsResponsePinsInner {\n");
     
-    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    dataStatus: ").append(toIndentedString(dataStatus)).append("\n");
+    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
     sb.append("}");
     return sb.toString();

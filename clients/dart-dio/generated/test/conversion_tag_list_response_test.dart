@@ -7,7 +7,7 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(ConversionTagListResponse, () {
-    // BuiltList<ConversionTagResponse> items
+    // BuiltList<ConversionTag> items
     test('to test the property `items`', () async {
       // TODO
     });

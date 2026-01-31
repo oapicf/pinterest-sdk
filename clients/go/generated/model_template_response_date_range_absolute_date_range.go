@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,12 +20,12 @@ var _ MappedNullable = &TemplateResponseDateRangeAbsoluteDateRange{}
 
 // TemplateResponseDateRangeAbsoluteDateRange The absolute date range of the template
 type TemplateResponseDateRangeAbsoluteDateRange struct {
-	// The date range type
-	Type *string `json:"type,omitempty"`
-	// The start date of the date range
-	StartDate *float32 `json:"start_date,omitempty"`
 	// The end date of the date range
 	EndDate *float32 `json:"end_date,omitempty"`
+	// The start date of the date range
+	StartDate *float32 `json:"start_date,omitempty"`
+	// The date range type
+	Type *string `json:"type,omitempty"`
 }
 
 // NewTemplateResponseDateRangeAbsoluteDateRange instantiates a new TemplateResponseDateRangeAbsoluteDateRange object
@@ -43,70 +43,6 @@ func NewTemplateResponseDateRangeAbsoluteDateRange() *TemplateResponseDateRangeA
 func NewTemplateResponseDateRangeAbsoluteDateRangeWithDefaults() *TemplateResponseDateRangeAbsoluteDateRange {
 	this := TemplateResponseDateRangeAbsoluteDateRange{}
 	return &this
-}
-
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *TemplateResponseDateRangeAbsoluteDateRange) GetType() string {
-	if o == nil || IsNil(o.Type) {
-		var ret string
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TemplateResponseDateRangeAbsoluteDateRange) GetTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.Type) {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *TemplateResponseDateRangeAbsoluteDateRange) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *TemplateResponseDateRangeAbsoluteDateRange) SetType(v string) {
-	o.Type = &v
-}
-
-// GetStartDate returns the StartDate field value if set, zero value otherwise.
-func (o *TemplateResponseDateRangeAbsoluteDateRange) GetStartDate() float32 {
-	if o == nil || IsNil(o.StartDate) {
-		var ret float32
-		return ret
-	}
-	return *o.StartDate
-}
-
-// GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TemplateResponseDateRangeAbsoluteDateRange) GetStartDateOk() (*float32, bool) {
-	if o == nil || IsNil(o.StartDate) {
-		return nil, false
-	}
-	return o.StartDate, true
-}
-
-// HasStartDate returns a boolean if a field has been set.
-func (o *TemplateResponseDateRangeAbsoluteDateRange) HasStartDate() bool {
-	if o != nil && !IsNil(o.StartDate) {
-		return true
-	}
-
-	return false
-}
-
-// SetStartDate gets a reference to the given float32 and assigns it to the StartDate field.
-func (o *TemplateResponseDateRangeAbsoluteDateRange) SetStartDate(v float32) {
-	o.StartDate = &v
 }
 
 // GetEndDate returns the EndDate field value if set, zero value otherwise.
@@ -141,6 +77,70 @@ func (o *TemplateResponseDateRangeAbsoluteDateRange) SetEndDate(v float32) {
 	o.EndDate = &v
 }
 
+// GetStartDate returns the StartDate field value if set, zero value otherwise.
+func (o *TemplateResponseDateRangeAbsoluteDateRange) GetStartDate() float32 {
+	if o == nil || IsNil(o.StartDate) {
+		var ret float32
+		return ret
+	}
+	return *o.StartDate
+}
+
+// GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TemplateResponseDateRangeAbsoluteDateRange) GetStartDateOk() (*float32, bool) {
+	if o == nil || IsNil(o.StartDate) {
+		return nil, false
+	}
+	return o.StartDate, true
+}
+
+// HasStartDate returns a boolean if a field has been set.
+func (o *TemplateResponseDateRangeAbsoluteDateRange) HasStartDate() bool {
+	if o != nil && !IsNil(o.StartDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetStartDate gets a reference to the given float32 and assigns it to the StartDate field.
+func (o *TemplateResponseDateRangeAbsoluteDateRange) SetStartDate(v float32) {
+	o.StartDate = &v
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *TemplateResponseDateRangeAbsoluteDateRange) GetType() string {
+	if o == nil || IsNil(o.Type) {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TemplateResponseDateRangeAbsoluteDateRange) GetTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *TemplateResponseDateRangeAbsoluteDateRange) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *TemplateResponseDateRangeAbsoluteDateRange) SetType(v string) {
+	o.Type = &v
+}
+
 func (o TemplateResponseDateRangeAbsoluteDateRange) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -151,14 +151,14 @@ func (o TemplateResponseDateRangeAbsoluteDateRange) MarshalJSON() ([]byte, error
 
 func (o TemplateResponseDateRangeAbsoluteDateRange) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
+	if !IsNil(o.EndDate) {
+		toSerialize["end_date"] = o.EndDate
 	}
 	if !IsNil(o.StartDate) {
 		toSerialize["start_date"] = o.StartDate
 	}
-	if !IsNil(o.EndDate) {
-		toSerialize["end_date"] = o.EndDate
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
 	return toSerialize, nil
 }

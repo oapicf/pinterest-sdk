@@ -5,6 +5,11 @@
   "name": "CatalogsCreativeAssetsProductGroupCreateRequest",
   "fields": [
     {
+      "name": "catalog_id",
+      "type": "string",
+      "doc": "Catalog id pertaining to the creative assets product group."
+    },
+    {
       "name": "catalog_type",
       "type": {
         "type": "enum",
@@ -13,11 +18,6 @@
           "CREATIVE_ASSETS"
         ]
       },
-      "doc": ""
-    },
-    {
-      "name": "name",
-      "type": "string",
       "doc": ""
     },
     {
@@ -32,9 +32,9 @@
       "doc": ""
     },
     {
-      "name": "catalog_id",
+      "name": "name",
       "type": "string",
-      "doc": "Catalog id pertaining to the creative assets product group."
+      "doc": ""
     }
   ]
 

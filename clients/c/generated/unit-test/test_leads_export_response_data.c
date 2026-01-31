@@ -22,13 +22,13 @@ leads_export_response_data_t* instantiate_leads_export_response_data(int include
   leads_export_response_data_t* leads_export_response_data = NULL;
   if (include_optional) {
     leads_export_response_data = leads_export_response_data_create(
-      pinterest_rest_api_leads_export_response_data__"IN_PROGRESS",
-      "0"
+      "0",
+      pinterest_rest_api_leads_export_response_data__"IN_PROGRESS"
     );
   } else {
     leads_export_response_data = leads_export_response_data_create(
-      pinterest_rest_api_leads_export_response_data__"IN_PROGRESS",
-      "0"
+      "0",
+      pinterest_rest_api_leads_export_response_data__"IN_PROGRESS"
     );
   }
 

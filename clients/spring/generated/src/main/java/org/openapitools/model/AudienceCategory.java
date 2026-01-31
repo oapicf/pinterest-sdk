@@ -24,8 +24,12 @@ import javax.annotation.Generated;
  * AudienceCategory
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceCategory {
+
+  private @Nullable String id;
+
+  private @Nullable BigDecimal index;
 
   private @Nullable String key;
 
@@ -33,12 +37,48 @@ public class AudienceCategory {
 
   private @Nullable BigDecimal ratio;
 
-  private @Nullable BigDecimal index;
-
-  private @Nullable String id;
-
   @Valid
   private List<@Valid AudienceSubcategory> subcategories = new ArrayList<>();
+
+  public AudienceCategory id(@Nullable String id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * Interest ID.
+   * @return id
+   */
+  
+  @Schema(name = "id", example = "1234567", description = "Interest ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("id")
+  public @Nullable String getId() {
+    return id;
+  }
+
+  public void setId(@Nullable String id) {
+    this.id = id;
+  }
+
+  public AudienceCategory index(@Nullable BigDecimal index) {
+    this.index = index;
+    return this;
+  }
+
+  /**
+   * Interest affinity index.
+   * @return index
+   */
+  @Valid 
+  @Schema(name = "index", example = "1.2", description = "Interest affinity index.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("index")
+  public @Nullable BigDecimal getIndex() {
+    return index;
+  }
+
+  public void setIndex(@Nullable BigDecimal index) {
+    this.index = index;
+  }
 
   public AudienceCategory key(@Nullable String key) {
     this.key = key;
@@ -100,46 +140,6 @@ public class AudienceCategory {
     this.ratio = ratio;
   }
 
-  public AudienceCategory index(@Nullable BigDecimal index) {
-    this.index = index;
-    return this;
-  }
-
-  /**
-   * Interest affinity index.
-   * @return index
-   */
-  @Valid 
-  @Schema(name = "index", example = "1.2", description = "Interest affinity index.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("index")
-  public @Nullable BigDecimal getIndex() {
-    return index;
-  }
-
-  public void setIndex(@Nullable BigDecimal index) {
-    this.index = index;
-  }
-
-  public AudienceCategory id(@Nullable String id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Interest ID.
-   * @return id
-   */
-  
-  @Schema(name = "id", example = "1234567", description = "Interest ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("id")
-  public @Nullable String getId() {
-    return id;
-  }
-
-  public void setId(@Nullable String id) {
-    this.id = id;
-  }
-
   public AudienceCategory subcategories(List<@Valid AudienceSubcategory> subcategories) {
     this.subcategories = subcategories;
     return this;
@@ -177,28 +177,28 @@ public class AudienceCategory {
       return false;
     }
     AudienceCategory audienceCategory = (AudienceCategory) o;
-    return Objects.equals(this.key, audienceCategory.key) &&
+    return Objects.equals(this.id, audienceCategory.id) &&
+        Objects.equals(this.index, audienceCategory.index) &&
+        Objects.equals(this.key, audienceCategory.key) &&
         Objects.equals(this.name, audienceCategory.name) &&
         Objects.equals(this.ratio, audienceCategory.ratio) &&
-        Objects.equals(this.index, audienceCategory.index) &&
-        Objects.equals(this.id, audienceCategory.id) &&
         Objects.equals(this.subcategories, audienceCategory.subcategories);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, name, ratio, index, id, subcategories);
+    return Objects.hash(id, index, key, name, ratio, subcategories);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceCategory {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    index: ").append(toIndentedString(index)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    ratio: ").append(toIndentedString(ratio)).append("\n");
-    sb.append("    index: ").append(toIndentedString(index)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    subcategories: ").append(toIndentedString(subcategories)).append("\n");
     sb.append("}");
     return sb.toString();

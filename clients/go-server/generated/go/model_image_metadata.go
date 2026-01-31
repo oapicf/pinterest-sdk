@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,20 +16,20 @@ package openapi
 
 type ImageMetadata struct {
 
-	ItemType string `json:"item_type,omitempty"`
-
-	Title *string `json:"title,omitempty"`
-
 	Description *string `json:"description,omitempty"`
+
+	Images ImageSize `json:"images,omitempty"`
+
+	ItemType string `json:"item_type,omitempty"`
 
 	Link *string `json:"link,omitempty"`
 
-	Images ImageMetadataImages `json:"images,omitempty"`
+	Title *string `json:"title,omitempty"`
 }
 
 // AssertImageMetadataRequired checks if the required fields are not zero-ed
 func AssertImageMetadataRequired(obj ImageMetadata) error {
-	if err := AssertImageMetadataImagesRequired(obj.Images); err != nil {
+	if err := AssertImageSizeRequired(obj.Images); err != nil {
 		return err
 	}
 	return nil
@@ -37,7 +37,7 @@ func AssertImageMetadataRequired(obj ImageMetadata) error {
 
 // AssertImageMetadataConstraints checks if the values respects the defined constraints
 func AssertImageMetadataConstraints(obj ImageMetadata) error {
-	if err := AssertImageMetadataImagesConstraints(obj.Images); err != nil {
+	if err := AssertImageSizeConstraints(obj.Images); err != nil {
 		return err
 	}
 	return nil

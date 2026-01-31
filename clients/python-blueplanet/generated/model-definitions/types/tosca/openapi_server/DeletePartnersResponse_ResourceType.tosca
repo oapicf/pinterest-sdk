@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server DeletePartnersResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a DeletePartnersResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  DeletePartnersResponse {
+    title = DeletePartnersResponse
+    description = DeletePartnersResponse
+    derivedFrom = Root
+    properties {
+        deleted_partners {
+          type = array
+          items.type =  string
+          description = "List of partners whose business partnership have been terminated."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  DeletePartnersResponse {
+    title = DeletePartnersResponse
+    description = DeletePartnersResponse
+    implements = openapi_server.resourceTypes.DeletePartnersResponse
+
+  }
+}

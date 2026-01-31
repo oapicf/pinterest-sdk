@@ -27,8 +27,8 @@ pinterest_rest_api_integration_log_client_request_METHOD_e integration_log_clien
 
 
 typedef struct integration_log_client_request_t {
-    pinterest_rest_api_integration_log_client_request_METHOD_e method; //enum
     char *host; // string
+    pinterest_rest_api_integration_log_client_request_METHOD_e method; //enum
     char *path; // string
     list_t* request_headers; //map
     list_t* response_headers; //map
@@ -38,8 +38,8 @@ typedef struct integration_log_client_request_t {
 } integration_log_client_request_t;
 
 __attribute__((deprecated)) integration_log_client_request_t *integration_log_client_request_create(
-    pinterest_rest_api_integration_log_client_request_METHOD_e method,
     char *host,
+    pinterest_rest_api_integration_log_client_request_METHOD_e method,
     char *path,
     list_t* request_headers,
     list_t* response_headers,

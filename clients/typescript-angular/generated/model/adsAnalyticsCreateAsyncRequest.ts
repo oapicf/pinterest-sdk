@@ -7,8 +7,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { AdsAnalyticsTargetingType } from './adsAnalyticsTargetingType';
 import { CampaignSummaryStatus } from './campaignSummaryStatus';
+import { ReportingTimeZone } from './reportingTimeZone';
 import { ConversionReportTimeType } from './conversionReportTimeType';
 import { AdGroupSummaryStatus } from './adGroupSummaryStatus';
 import { ProductGroupSummaryStatus } from './productGroupSummaryStatus';
@@ -19,43 +19,44 @@ import { ConversionAttributionWindowDays } from './conversionAttributionWindowDa
 import { ReportingColumnAsync } from './reportingColumnAsync';
 import { MetricsReportingLevel } from './metricsReportingLevel';
 import { DataOutputFormat } from './dataOutputFormat';
+import { AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics } from './adsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics';
 import { PinPromotionSummaryStatus } from './pinPromotionSummaryStatus';
 import { AdsAnalyticsMetricsFilter } from './adsAnalyticsMetricsFilter';
 
 
 export interface AdsAnalyticsCreateAsyncRequest { 
     /**
-     * Metric report start date (UTC). Format: YYYY-MM-DD
+     * List of types of attribution for the conversion report
      */
-    start_date: string;
-    /**
-     * Metric report end date (UTC). Format: YYYY-MM-DD
-     */
-    end_date: string;
-    /**
-     * TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
-     */
-    granularity: Granularity;
+    attribution_types?: Array<ConversionReportAttributionType>;
     /**
      * Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
      */
     click_window_days?: ConversionAttributionWindowDays;
     /**
-     * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-     */
-    engagement_window_days?: ConversionAttributionWindowDays;
-    /**
-     * Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
-     */
-    view_window_days?: ConversionAttributionWindowDays;
-    /**
      * The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
      */
     conversion_report_time?: ConversionReportTimeType;
     /**
-     * List of types of attribution for the conversion report
+     * Metric report end date (UTC). Format: YYYY-MM-DD
      */
-    attribution_types?: Array<ConversionReportAttributionType>;
+    end_date: string;
+    /**
+     * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
+     */
+    engagement_window_days?: ConversionAttributionWindowDays;
+    /**
+     * TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
+     */
+    granularity: Granularity;
+    /**
+     * Metric report start date (UTC). Format: YYYY-MM-DD
+     */
+    start_date: string;
+    /**
+     * Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
+     */
+    view_window_days?: ConversionAttributionWindowDays;
     /**
      * List of campaign ids
      */
@@ -68,6 +69,10 @@ export interface AdsAnalyticsCreateAsyncRequest {
      * List of values for filtering. [\"WEB_SESSIONS\"] in BETA.
      */
     campaign_objective_types?: Array<ObjectiveType>;
+    /**
+     * Campaign brand label for filtering.
+     */
+    campaign_brand_label?: string;
     /**
      * List of ad group ids
      */
@@ -97,9 +102,9 @@ export interface AdsAnalyticsCreateAsyncRequest {
      */
     product_item_ids?: Array<string>;
     /**
-     * List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
+     * List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AUDIENCE_MULTIPLIER\"] is only available in CAMPAIGN_TARGETING level. [\"MEDIA_TYPE\"] is only available in PRODUCT_ITEM_TARGETING level. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
      */
-    targeting_types?: Array<AdsAnalyticsTargetingType>;
+    targeting_types?: Array<AdsAnalyticsCreateAsyncRequest.TargetingTypesEnum>;
     /**
      * List of metrics filters
      */
@@ -109,27 +114,59 @@ export interface AdsAnalyticsCreateAsyncRequest {
      */
     columns: Array<ReportingColumnAsync>;
     /**
+     * Determines if the targeting types included in the request should be consolidated into a single breakdown. For example, when combine_targeting_types is set to true, if GENDER and COUNTRY are targeting types in the request, the response will have a targeting type of GENDER_AND_COUNTRY and targeting values such as female&US. This feature is currently in BETA and is not available to all users.
+     */
+    combine_targeting_types?: boolean;
+    /**
+     * List of advertiser-defined custom conversion event metrics to include in the report
+     */
+    custom_conversion_event_metrics?: Array<AdsAnalyticsCreateAsyncRequestAllOfCustomConversionEventMetrics>;
+    /**
+     * Which hour of the end date to stop the report (inclusive). For example, with an end_date of \'2020-01-01\' and end_hour of \'15\', the report will contain metrics up to \'2020-01-01 14:59:59\'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
+     */
+    end_hour?: number;
+    /**
      * Level of the report
      */
     level: MetricsReportingLevel;
-    /**
-     * Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
-     */
-    report_format?: DataOutputFormat;
     /**
      * Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
      */
     primary_sort?: AdsAnalyticsCreateAsyncRequest.PrimarySortEnum;
     /**
+     * Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
+     */
+    report_format?: DataOutputFormat;
+    /**
+     * Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+     */
+    reporting_timezone?: ReportingTimeZone;
+    /**
      * Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
      */
     start_hour?: number;
-    /**
-     * Which hour of the end date to stop the report (inclusive). For example, with an end_date of \'2020-01-01\' and end_hour of \'15\', the report will contain metrics up to \'2020-01-01 14:59:59\'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
-     */
-    end_hour?: number;
 }
 export namespace AdsAnalyticsCreateAsyncRequest {
+    export const TargetingTypesEnum = {
+        Keyword: 'KEYWORD',
+        Apptype: 'APPTYPE',
+        Gender: 'GENDER',
+        Location: 'LOCATION',
+        Placement: 'PLACEMENT',
+        Country: 'COUNTRY',
+        TargetedInterest: 'TARGETED_INTEREST',
+        PinnerInterest: 'PINNER_INTEREST',
+        AudienceInclude: 'AUDIENCE_INCLUDE',
+        Geo: 'GEO',
+        AgeBucket: 'AGE_BUCKET',
+        Region: 'REGION',
+        MediaType: 'MEDIA_TYPE',
+        AgeBucketAndGender: 'AGE_BUCKET_AND_GENDER',
+        AudienceMultiplier: 'AUDIENCE_MULTIPLIER',
+        CreativeEnhancements: 'CREATIVE_ENHANCEMENTS',
+        LocalAdsStoreCode: 'LOCAL_ADS_STORE_CODE'
+    } as const;
+    export type TargetingTypesEnum = typeof TargetingTypesEnum[keyof typeof TargetingTypesEnum];
     export const PrimarySortEnum = {
         ById: 'BY_ID',
         ByDate: 'BY_DATE'

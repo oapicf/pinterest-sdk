@@ -23,10 +23,8 @@ import javax.annotation.Generated;
 
 @Schema(name = "TemplateResponse_date_range_dynamic_date_range", description = "The dynamic date range of the template")
 @JsonTypeName("TemplateResponse_date_range_dynamic_date_range")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TemplateResponseDateRangeDynamicDateRange {
-
-  private @Nullable String type;
 
   /**
    * The dynamic range type
@@ -38,7 +36,9 @@ public class TemplateResponseDateRangeDynamicDateRange {
     
     MONTH_TO_DATE("MONTH_TO_DATE"),
     
-    LAST_MONTH("LAST_MONTH");
+    LAST_MONTH("LAST_MONTH"),
+    
+    LAST_QUARTER("LAST_QUARTER");
 
     private final String value;
 
@@ -69,25 +69,7 @@ public class TemplateResponseDateRangeDynamicDateRange {
 
   private @Nullable RangeEnum range;
 
-  public TemplateResponseDateRangeDynamicDateRange type(@Nullable String type) {
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * The date range type
-   * @return type
-   */
-  
-  @Schema(name = "type", example = "dynamic", description = "The date range type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("type")
-  public @Nullable String getType() {
-    return type;
-  }
-
-  public void setType(@Nullable String type) {
-    this.type = type;
-  }
+  private @Nullable String type;
 
   public TemplateResponseDateRangeDynamicDateRange range(@Nullable RangeEnum range) {
     this.range = range;
@@ -109,6 +91,26 @@ public class TemplateResponseDateRangeDynamicDateRange {
     this.range = range;
   }
 
+  public TemplateResponseDateRangeDynamicDateRange type(@Nullable String type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * The date range type
+   * @return type
+   */
+  
+  @Schema(name = "type", example = "dynamic", description = "The date range type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("type")
+  public @Nullable String getType() {
+    return type;
+  }
+
+  public void setType(@Nullable String type) {
+    this.type = type;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -118,21 +120,21 @@ public class TemplateResponseDateRangeDynamicDateRange {
       return false;
     }
     TemplateResponseDateRangeDynamicDateRange templateResponseDateRangeDynamicDateRange = (TemplateResponseDateRangeDynamicDateRange) o;
-    return Objects.equals(this.type, templateResponseDateRangeDynamicDateRange.type) &&
-        Objects.equals(this.range, templateResponseDateRangeDynamicDateRange.range);
+    return Objects.equals(this.range, templateResponseDateRangeDynamicDateRange.range) &&
+        Objects.equals(this.type, templateResponseDateRangeDynamicDateRange.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, range);
+    return Objects.hash(range, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TemplateResponseDateRangeDynamicDateRange {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    range: ").append(toIndentedString(range)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

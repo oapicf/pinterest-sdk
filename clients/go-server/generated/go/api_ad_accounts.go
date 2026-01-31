@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -100,6 +100,18 @@ func (c *AdAccountsAPIController) Routes() Routes {
 			"/v5/ad_accounts/{ad_account_id}/reports",
 			c.AnalyticsCreateReport,
 		},
+		"AnalyticsGetConversionProductReport": Route{
+			"AnalyticsGetConversionProductReport",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/reports/brand_category_sku",
+			c.AnalyticsGetConversionProductReport,
+		},
+		"AnalyticsCreateConversionProductReport": Route{
+			"AnalyticsCreateConversionProductReport",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/reports/brand_category_sku",
+			c.AnalyticsCreateConversionProductReport,
+		},
 		"SandboxDelete": Route{
 			"SandboxDelete",
 			strings.ToUpper("Delete"),
@@ -179,6 +191,18 @@ func (c *AdAccountsAPIController) OrderedRoutes() []Route {
 			c.AnalyticsCreateReport,
 		},
 		Route{
+			"AnalyticsGetConversionProductReport",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/reports/brand_category_sku",
+			c.AnalyticsGetConversionProductReport,
+		},
+		Route{
+			"AnalyticsCreateConversionProductReport",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/reports/brand_category_sku",
+			c.AnalyticsCreateConversionProductReport,
+		},
+		Route{
 			"SandboxDelete",
 			strings.ToUpper("Delete"),
 			"/v5/ad_accounts/{ad_account_id}/sandbox",
@@ -214,6 +238,22 @@ func (c *AdAccountsAPIController) AdAccountsList(w http.ResponseWriter, r *http.
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
+	var includeSharedAccountsParam bool
+	if query.Has("include_shared_accounts") {
+		param, err := parseBoolParameter(
+			query.Get("include_shared_accounts"),
+			WithParse[bool](parseBool),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "include_shared_accounts", Err: err}, nil)
+			return
+		}
+
+		includeSharedAccountsParam = param
+	} else {
+		var param bool = true
+		includeSharedAccountsParam = param
+	}
 	var bookmarkParam string
 	if query.Has("bookmark") {
 		param := query.Get("bookmark")
@@ -239,23 +279,7 @@ func (c *AdAccountsAPIController) AdAccountsList(w http.ResponseWriter, r *http.
 		var param int32 = 25
 		pageSizeParam = param
 	}
-	var includeSharedAccountsParam bool
-	if query.Has("include_shared_accounts") {
-		param, err := parseBoolParameter(
-			query.Get("include_shared_accounts"),
-			WithParse[bool](parseBool),
-		)
-		if err != nil {
-			c.errorHandler(w, r, &ParsingError{Param: "include_shared_accounts", Err: err}, nil)
-			return
-		}
-
-		includeSharedAccountsParam = param
-	} else {
-		var param bool = true
-		includeSharedAccountsParam = param
-	}
-	result, err := c.service.AdAccountsList(r.Context(), bookmarkParam, pageSizeParam, includeSharedAccountsParam)
+	result, err := c.service.AdAccountsList(r.Context(), includeSharedAccountsParam, bookmarkParam, pageSizeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -267,22 +291,22 @@ func (c *AdAccountsAPIController) AdAccountsList(w http.ResponseWriter, r *http.
 
 // AdAccountsCreate - Create ad account
 func (c *AdAccountsAPIController) AdAccountsCreate(w http.ResponseWriter, r *http.Request) {
-	var adAccountCreateRequestParam AdAccountCreateRequest
+	var adAccountCreateParam AdAccountCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&adAccountCreateRequestParam); err != nil {
+	if err := d.Decode(&adAccountCreateParam); err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertAdAccountCreateRequestRequired(adAccountCreateRequestParam); err != nil {
+	if err := AssertAdAccountCreateRequired(adAccountCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertAdAccountCreateRequestConstraints(adAccountCreateRequestParam); err != nil {
+	if err := AssertAdAccountCreateConstraints(adAccountCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.AdAccountsCreate(r.Context(), adAccountCreateRequestParam)
+	result, err := c.service.AdAccountsCreate(r.Context(), adAccountCreateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -411,7 +435,14 @@ func (c *AdAccountsAPIController) AdAccountAnalytics(w http.ResponseWriter, r *h
 		param := "TIME_OF_AD_ACTION"
 		conversionReportTimeParam = param
 	}
-	result, err := c.service.AdAccountAnalytics(r.Context(), adAccountIdParam, startDateParam, endDateParam, columnsParam, granularityParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam)
+	var reportingTimezoneParam ReportingTimeZone
+	if query.Has("reporting_timezone") {
+		param := ReportingTimeZone(query.Get("reporting_timezone"))
+
+		reportingTimezoneParam = param
+	} else {
+	}
+	result, err := c.service.AdAccountAnalytics(r.Context(), adAccountIdParam, startDateParam, endDateParam, columnsParam, granularityParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam, reportingTimezoneParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -542,6 +573,71 @@ func (c *AdAccountsAPIController) AnalyticsCreateReport(w http.ResponseWriter, r
 		return
 	}
 	result, err := c.service.AnalyticsCreateReport(r.Context(), adAccountIdParam, adsAnalyticsCreateAsyncRequestParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// AnalyticsGetConversionProductReport - Get advertiser brand, category, SKU report
+func (c *AdAccountsAPIController) AnalyticsGetConversionProductReport(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	query, err := parseQuery(r.URL.RawQuery)
+	if err != nil {
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	var tokenParam string
+	if query.Has("token") {
+		param := query.Get("token")
+
+		tokenParam = param
+	} else {
+		c.errorHandler(w, r, &RequiredError{Field: "token"}, nil)
+		return
+	}
+	result, err := c.service.AnalyticsGetConversionProductReport(r.Context(), adAccountIdParam, tokenParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// AnalyticsCreateConversionProductReport - Create a request for a brand, category, SKU report
+func (c *AdAccountsAPIController) AnalyticsCreateConversionProductReport(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	var conversionProductReportRequestParam ConversionProductReportRequest
+	d := json.NewDecoder(r.Body)
+	d.DisallowUnknownFields()
+	if err := d.Decode(&conversionProductReportRequestParam); err != nil {
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	if err := AssertConversionProductReportRequestRequired(conversionProductReportRequestParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	if err := AssertConversionProductReportRequestConstraints(conversionProductReportRequestParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
+	result, err := c.service.AnalyticsCreateConversionProductReport(r.Context(), adAccountIdParam, conversionProductReportRequestParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -683,14 +779,27 @@ func (c *AdAccountsAPIController) AdAccountTargetingAnalyticsGet(w http.Response
 		param := "TIME_OF_AD_ACTION"
 		conversionReportTimeParam = param
 	}
-	var attributionTypesParam ConversionReportAttributionType
+	var attributionTypesParam []ConversionReportAttributionType
 	if query.Has("attribution_types") {
-		param := ConversionReportAttributionType(query.Get("attribution_types"))
+		paramSplits := strings.Split(query.Get("attribution_types"), ",")
+		attributionTypesParam = make([]ConversionReportAttributionType, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewConversionReportAttributionTypeFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "attribution_types", Err: err}, nil)
+				return
+			}
+			attributionTypesParam = append(attributionTypesParam, paramEnum)
+		}
+	}
+	var reportingTimezoneParam ReportingTimeZone
+	if query.Has("reporting_timezone") {
+		param := ReportingTimeZone(query.Get("reporting_timezone"))
 
-		attributionTypesParam = param
+		reportingTimezoneParam = param
 	} else {
 	}
-	result, err := c.service.AdAccountTargetingAnalyticsGet(r.Context(), adAccountIdParam, startDateParam, endDateParam, targetingTypesParam, columnsParam, granularityParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam, attributionTypesParam)
+	result, err := c.service.AdAccountTargetingAnalyticsGet(r.Context(), adAccountIdParam, startDateParam, endDateParam, targetingTypesParam, columnsParam, granularityParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam, attributionTypesParam, reportingTimezoneParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

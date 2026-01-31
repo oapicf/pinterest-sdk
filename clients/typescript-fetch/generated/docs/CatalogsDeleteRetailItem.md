@@ -8,6 +8,7 @@ An item to be deleted
 Name | Type
 ------------ | -------------
 `itemId` | string
+`lastUpdatedTime` | number
 `operation` | string
 
 ## Example
@@ -18,6 +19,7 @@ import type { CatalogsDeleteRetailItem } from ''
 // TODO: Update the object below with actual values
 const example = {
   "itemId": DS0294-M,
+  "lastUpdatedTime": 1641483432072,
   "operation": null,
 } satisfies CatalogsDeleteRetailItem
 

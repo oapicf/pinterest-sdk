@@ -7,41 +7,39 @@
 #' @title CatalogsProductGroupUpdateRequest
 #' @description CatalogsProductGroupUpdateRequest Class
 #' @format An \code{R6Class} generator object
-#' @field name  character [optional]
 #' @field description  character [optional]
-#' @field is_featured boolean indicator of whether the product group is being featured or not character [optional]
 #' @field filters  \link{CatalogsProductGroupFiltersRequest} [optional]
+#' @field is_featured boolean indicator of whether the product group is being featured or not character [optional]
+#' @field name  character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CatalogsProductGroupUpdateRequest <- R6::R6Class(
   "CatalogsProductGroupUpdateRequest",
   public = list(
-    `name` = NULL,
     `description` = NULL,
-    `is_featured` = NULL,
     `filters` = NULL,
+    `is_featured` = NULL,
+    `name` = NULL,
 
     #' @description
     #' Initialize a new CatalogsProductGroupUpdateRequest class.
     #'
-    #' @param name name
     #' @param description description
-    #' @param is_featured boolean indicator of whether the product group is being featured or not
     #' @param filters filters
+    #' @param is_featured boolean indicator of whether the product group is being featured or not
+    #' @param name name
     #' @param ... Other optional arguments.
-    initialize = function(`name` = NULL, `description` = NULL, `is_featured` = NULL, `filters` = NULL, ...) {
-      if (!is.null(`name`)) {
-        if (!(is.character(`name`) && length(`name`) == 1)) {
-          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
-        }
-        self$`name` <- `name`
-      }
+    initialize = function(`description` = NULL, `filters` = NULL, `is_featured` = NULL, `name` = NULL, ...) {
       if (!is.null(`description`)) {
         if (!(is.character(`description`) && length(`description`) == 1)) {
           stop(paste("Error! Invalid data for `description`. Must be a string:", `description`))
         }
         self$`description` <- `description`
+      }
+      if (!is.null(`filters`)) {
+        stopifnot(R6::is.R6(`filters`))
+        self$`filters` <- `filters`
       }
       if (!is.null(`is_featured`)) {
         if (!(is.logical(`is_featured`) && length(`is_featured`) == 1)) {
@@ -49,9 +47,11 @@ CatalogsProductGroupUpdateRequest <- R6::R6Class(
         }
         self$`is_featured` <- `is_featured`
       }
-      if (!is.null(`filters`)) {
-        stopifnot(R6::is.R6(`filters`))
-        self$`filters` <- `filters`
+      if (!is.null(`name`)) {
+        if (!(is.character(`name`) && length(`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
+        }
+        self$`name` <- `name`
       }
     },
 
@@ -86,21 +86,21 @@ CatalogsProductGroupUpdateRequest <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CatalogsProductGroupUpdateRequestObject <- list()
-      if (!is.null(self$`name`)) {
-        CatalogsProductGroupUpdateRequestObject[["name"]] <-
-          self$`name`
-      }
       if (!is.null(self$`description`)) {
         CatalogsProductGroupUpdateRequestObject[["description"]] <-
           self$`description`
+      }
+      if (!is.null(self$`filters`)) {
+        CatalogsProductGroupUpdateRequestObject[["filters"]] <-
+          self$`filters`$toSimpleType()
       }
       if (!is.null(self$`is_featured`)) {
         CatalogsProductGroupUpdateRequestObject[["is_featured"]] <-
           self$`is_featured`
       }
-      if (!is.null(self$`filters`)) {
-        CatalogsProductGroupUpdateRequestObject[["filters"]] <-
-          self$`filters`$toSimpleType()
+      if (!is.null(self$`name`)) {
+        CatalogsProductGroupUpdateRequestObject[["name"]] <-
+          self$`name`
       }
       return(CatalogsProductGroupUpdateRequestObject)
     },
@@ -112,19 +112,19 @@ CatalogsProductGroupUpdateRequest <- R6::R6Class(
     #' @return the instance of CatalogsProductGroupUpdateRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`name`)) {
-        self$`name` <- this_object$`name`
-      }
       if (!is.null(this_object$`description`)) {
         self$`description` <- this_object$`description`
-      }
-      if (!is.null(this_object$`is_featured`)) {
-        self$`is_featured` <- this_object$`is_featured`
       }
       if (!is.null(this_object$`filters`)) {
         `filters_object` <- CatalogsProductGroupFiltersRequest$new()
         `filters_object`$fromJSON(jsonlite::toJSON(this_object$`filters`, auto_unbox = TRUE, digits = NA))
         self$`filters` <- `filters_object`
+      }
+      if (!is.null(this_object$`is_featured`)) {
+        self$`is_featured` <- this_object$`is_featured`
+      }
+      if (!is.null(this_object$`name`)) {
+        self$`name` <- this_object$`name`
       }
       self
     },
@@ -147,10 +147,10 @@ CatalogsProductGroupUpdateRequest <- R6::R6Class(
     #' @return the instance of CatalogsProductGroupUpdateRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`name` <- this_object$`name`
       self$`description` <- this_object$`description`
-      self$`is_featured` <- this_object$`is_featured`
       self$`filters` <- CatalogsProductGroupFiltersRequest$new()$fromJSON(jsonlite::toJSON(this_object$`filters`, auto_unbox = TRUE, digits = NA))
+      self$`is_featured` <- this_object$`is_featured`
+      self$`name` <- this_object$`name`
       self
     },
 

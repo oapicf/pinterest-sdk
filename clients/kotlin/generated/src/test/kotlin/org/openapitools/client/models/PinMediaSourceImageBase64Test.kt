@@ -19,17 +19,12 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.PinMediaSourceImageBase64
+import org.openapitools.client.models.ContentType
 
 class PinMediaSourceImageBase64Test : ShouldSpec() {
     init {
         // uncomment below to create an instance of PinMediaSourceImageBase64
         //val modelInstance = PinMediaSourceImageBase64()
-
-        // to test the property `sourceType`
-        should("test sourceType") {
-            // uncomment below to test the property
-            //modelInstance.sourceType shouldBe ("TODO")
-        }
 
         // to test the property `contentType`
         should("test contentType") {
@@ -41,6 +36,12 @@ class PinMediaSourceImageBase64Test : ShouldSpec() {
         should("test `data`") {
             // uncomment below to test the property
             //modelInstance.`data` shouldBe ("TODO")
+        }
+
+        // to test the property `sourceType` - The source type of the media.
+        should("test sourceType") {
+            // uncomment below to test the property
+            //modelInstance.sourceType shouldBe ("TODO")
         }
 
         // to test the property `isStandard` - Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.

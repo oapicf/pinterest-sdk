@@ -5,58 +5,20 @@
   "name": "ConversionEventsDataInner",
   "fields": [
     {
-      "name": "event_name",
-      "type": "string",
-      "doc": "<p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p> "
-    },
-    {
       "name": "action_source",
       "type": "string",
-      "doc": "<p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p> "
-    },
-    {
-      "name": "event_time",
-      "type": "long",
-      "doc": "The time when the event happened. Unix timestamp in seconds."
-    },
-    {
-      "name": "event_id",
-      "type": "string",
-      "doc": "A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API."
-    },
-    {
-      "name": "event_source_url",
-      "type": ["null", "string"],
-      "doc": "URL of the web conversion event.",
-      "default": null
-    },
-    {
-      "name": "opt_out",
-      "type": ["null", "boolean"],
-      "doc": "When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.",
-      "default": null
-    },
-    {
-      "name": "partner_name",
-      "type": ["null", "string"],
-      "doc": "The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’",
-      "default": null
-    },
-    {
-      "name": "user_data",
-      "type": "model.ConversionEventsUserData",
-      "doc": ""
-    },
-    {
-      "name": "custom_data",
-      "type": ["null", "model.ConversionEventsDataInnerCustomData"],
-      "doc": "",
-      "default": null
+      "doc": "<p>The source indicating where the conversion event occurred.</p> - `app_android` - `app_ios` - `web` - `offline`"
     },
     {
       "name": "app_id",
       "type": ["null", "string"],
       "doc": "The app store app ID.",
+      "default": null
+    },
+    {
+      "name": "app_info",
+      "type": ["null", "model.ConversionEventAppInfo"],
+      "doc": "",
       "default": null
     },
     {
@@ -72,6 +34,12 @@
       "default": null
     },
     {
+      "name": "custom_data",
+      "type": ["null", "model.ConversionEventsDataInnerCustomData"],
+      "doc": "",
+      "default": null
+    },
+    {
       "name": "device_brand",
       "type": ["null", "string"],
       "doc": "Brand of the user device.",
@@ -81,6 +49,12 @@
       "name": "device_carrier",
       "type": ["null", "string"],
       "doc": "User device's mobile carrier.",
+      "default": null
+    },
+    {
+      "name": "device_info",
+      "type": ["null", "model.ConversionEventDeviceInfo"],
+      "doc": "",
       "default": null
     },
     {
@@ -96,21 +70,59 @@
       "default": null
     },
     {
+      "name": "event_id",
+      "type": "string",
+      "doc": "A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API."
+    },
+    {
+      "name": "event_name",
+      "type": "string",
+      "doc": "<p>The type of the user event. Please use the right event_name; otherwise the event will not be accepted and show up correctly in reports.</p>  - `add_payment_info` - `add_to_cart` - `add_to_wishlist` - `app_install` - `checkout` - `custom` - `initiate_checkout` - `lead` - `page_visit` - `search` - `signup` - `subscribe` - `view_category` - `view_content` - `watch_video`"
+    },
+    {
+      "name": "event_source_url",
+      "type": ["null", "string"],
+      "doc": "URL of the web conversion event.",
+      "default": null
+    },
+    {
+      "name": "event_time",
+      "type": "long",
+      "doc": "The time when the event happened. Unix timestamp in seconds."
+    },
+    {
+      "name": "language",
+      "type": ["null", "string"],
+      "doc": "Two-character ISO-639-1 language code indicating the user's language.",
+      "default": null
+    },
+    {
+      "name": "opt_out",
+      "type": ["null", "boolean"],
+      "doc": "When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.",
+      "default": null
+    },
+    {
       "name": "os_version",
       "type": ["null", "string"],
       "doc": "Version of the device operating system.",
       "default": null
     },
     {
-      "name": "wifi",
-      "type": ["null", "boolean"],
-      "doc": "Whether the event occurred when the user device was connected to wifi.",
+      "name": "partner_name",
+      "type": ["null", "string"],
+      "doc": "The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’",
       "default": null
     },
     {
-      "name": "language",
-      "type": ["null", "string"],
-      "doc": "Two-character ISO-639-1 language code indicating the user's language.",
+      "name": "user_data",
+      "type": "model.ConversionEventsUserData",
+      "doc": ""
+    },
+    {
+      "name": "wifi",
+      "type": ["null", "boolean"],
+      "doc": "Whether the event occurred when the user device was connected to wifi.",
       "default": null
     }
   ]

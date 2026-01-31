@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -38,6 +38,8 @@ type ApiAdGroupsAnalyticsRequest struct {
 	engagementWindowDays *int32
 	viewWindowDays *int32
 	conversionReportTime *string
+	aggregateReportRows *bool
+	reportingTimezone *ReportingTimeZone
 }
 
 // Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
@@ -76,7 +78,7 @@ func (r ApiAdGroupsAnalyticsRequest) ClickWindowDays(clickWindowDays int32) ApiA
 	return r
 }
 
-// Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
+// Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.
 func (r ApiAdGroupsAnalyticsRequest) EngagementWindowDays(engagementWindowDays int32) ApiAdGroupsAnalyticsRequest {
 	r.engagementWindowDays = &engagementWindowDays
 	return r
@@ -94,6 +96,18 @@ func (r ApiAdGroupsAnalyticsRequest) ConversionReportTime(conversionReportTime s
 	return r
 }
 
+// Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users.
+func (r ApiAdGroupsAnalyticsRequest) AggregateReportRows(aggregateReportRows bool) ApiAdGroupsAnalyticsRequest {
+	r.aggregateReportRows = &aggregateReportRows
+	return r
+}
+
+// Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+func (r ApiAdGroupsAnalyticsRequest) ReportingTimezone(reportingTimezone ReportingTimeZone) ApiAdGroupsAnalyticsRequest {
+	r.reportingTimezone = &reportingTimezone
+	return r
+}
+
 func (r ApiAdGroupsAnalyticsRequest) Execute() ([]AdGroupsAnalyticsResponseInner, *http.Response, error) {
 	return r.ApiService.AdGroupsAnalyticsExecute(r)
 }
@@ -103,8 +117,8 @@ AdGroupsAnalytics Get ad group analytics
 
 Get analytics for the specified ad groups in the specified <code>ad_account_id</code>, filtered by the specified options.
 - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager.
-- If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days.
-- If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+- If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.
+- If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -154,8 +168,8 @@ func (a *AdGroupsAPIService) AdGroupsAnalyticsExecute(r ApiAdGroupsAnalyticsRequ
 	if len(*r.adGroupIds) < 1 {
 		return localVarReturnValue, nil, reportError("adGroupIds must have at least 1 elements")
 	}
-	if len(*r.adGroupIds) > 100 {
-		return localVarReturnValue, nil, reportError("adGroupIds must have less than 100 elements")
+	if len(*r.adGroupIds) > 250 {
+		return localVarReturnValue, nil, reportError("adGroupIds must have less than 250 elements")
 	}
 	if r.columns == nil {
 		return localVarReturnValue, nil, reportError("columns is required and must be specified")
@@ -206,6 +220,16 @@ func (a *AdGroupsAPIService) AdGroupsAnalyticsExecute(r ApiAdGroupsAnalyticsRequ
         var defaultValue string = "TIME_OF_AD_ACTION"
         parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", defaultValue, "form", "")
         r.conversionReportTime = &defaultValue
+	}
+	if r.aggregateReportRows != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "aggregate_report_rows", r.aggregateReportRows, "form", "")
+	} else {
+        var defaultValue bool = false
+        parameterAddToHeaderOrQuery(localVarQueryParams, "aggregate_report_rows", defaultValue, "form", "")
+        r.aggregateReportRows = &defaultValue
+	}
+	if r.reportingTimezone != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "reporting_timezone", r.reportingTimezone, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -340,6 +364,9 @@ func (a *AdGroupsAPIService) AdGroupsAudienceSizingExecute(r ApiAdGroupsAudience
 	if strlen(r.adAccountId) > 18 {
 		return localVarReturnValue, nil, reportError("adAccountId must have less than 18 elements")
 	}
+	if r.adGroupAudienceSizingRequest == nil {
+		return localVarReturnValue, nil, reportError("adGroupAudienceSizingRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -449,7 +476,7 @@ AdGroupsBidFloorGet Get bid floors
 
 List bid floors for your campaign configuration. Bid floors are given in microcurrency values based on the currency in the bid floor specification. <p/>
 <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p>
-<p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’ s profile.</p>
+<p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>
 <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
 <ul>
   <li>$1 = 1,000,000 microdollars</li>
@@ -459,7 +486,7 @@ List bid floors for your campaign configuration. Bid floors are given in microcu
 <ul>
   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>
   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li>
- </ul>
+</ul>
 For more on bid floors see <a class="reference external" href="https://help.pinterest.com/en/business/article/set-your-bid"> Set your bid</a>.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -586,12 +613,12 @@ func (r ApiAdGroupsCreateRequest) Execute() (*AdGroupArrayResponse, *http.Respon
 /*
 AdGroupsCreate Create ad groups
 
-Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, <a href="https://help.pinterest.com/en/business/article/campaign-structure" target="_blank"> click here</a>.</p>
-<strong>Note:</strong>
-- 'bid_in_micro_currency' and 'budget_in_micro_currency' should be expressed in microcurrency amounts based on the currency field set in the advertiser's profile.<p/>
+Create multiple new ad groups. All ads in a given ad group will have the same budget, bid, run dates, targeting, and placement (search, browse, other). For more information, <a href="https://help.pinterest.com/en/business/article/campaign-structure" target="_blank"> click here</a>.
+<strong>Notes:</strong>
+- `bid_in_micro_currency` and `budget_in_micro_currency` should be expressed in microcurrency amounts based on the currency field set in the advertiser's profile.<p/>
 <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p>
 <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p>
- <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
+<p><strong>Equivalency equations</strong>, using dollars as an example currency:</p>
 <ul>
   <li>$1 = 1,000,000 microdollars</li>
   <li>1 microdollar = $0.000001 </li>
@@ -602,7 +629,8 @@ Create multiple new ad groups. All ads in a given ad group will have the same bu
   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li>
 </ul>
 - Ad groups belong to ad campaigns. Some types of campaigns (e.g. budget optimization) have limits on the number of ad groups they can hold. If you exceed those limits, you will get an error message.
-- Start and end time cannot be set for ad groups that belong to CBO campaigns. Currently, campaigns with the following objective types: TRAFFIC, AWARENESS, WEB_CONVERSIONS, and CATALOG_SALES will default to CBO.
+- Certain organizations with <a href="/docs/getting-started/using-beta-and-restricted-features/" target="blank" target="blank">closed beta</a> access can set `start_time` and `end_time` at the ad group level for campaigns with Campaign Budget Optimization (CBO) objectives: `TRAFFIC`, `AWARENESS`, `WEB_CONVERSIONS`, and `CATALOG_SALES`. All other organizations can set these scheduling parameters for non-CBO campaigns only.
+- If the parent ad campaign has start and end times set, ad group start and end times must occur within the parent campaign schedule. 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -728,9 +756,7 @@ func (r ApiAdGroupsGetRequest) Execute() (*AdGroupResponse, *http.Response, erro
 /*
 AdGroupsGet Get ad group
 
-Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will
-contain additional information from the Ad Review process.
-For more information about our policies and rejection reasons see the <a href="https://www.pinterest.com/_/_/policy/advertising-guidelines/" target="_blank">Pinterest advertising standards</a>.
+Get a specific ad group given the ad group ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -1077,14 +1103,15 @@ type ApiAdGroupsTargetingAnalyticsGetRequest struct {
 	adGroupIds *[]string
 	startDate *string
 	endDate *string
-	targetingTypes *[]AdsAnalyticsTargetingType
+	targetingTypes *[]AdsAnalyticsAdGroupTargetingType
 	columns *[]string
 	granularity *Granularity
 	clickWindowDays *int32
 	engagementWindowDays *int32
 	viewWindowDays *int32
 	conversionReportTime *string
-	attributionTypes *ConversionReportAttributionType
+	attributionTypes *[]ConversionReportAttributionType
+	reportingTimezone *ReportingTimeZone
 }
 
 // List of Ad group Ids to use to filter the results.
@@ -1105,8 +1132,8 @@ func (r ApiAdGroupsTargetingAnalyticsGetRequest) EndDate(endDate string) ApiAdGr
 	return r
 }
 
-// Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
-func (r ApiAdGroupsTargetingAnalyticsGetRequest) TargetingTypes(targetingTypes []AdsAnalyticsTargetingType) ApiAdGroupsTargetingAnalyticsGetRequest {
+// Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;, \&quot;CREATIVE_ENHANCEMENTS\&quot;] are in BETA and not yet available to all users.
+func (r ApiAdGroupsTargetingAnalyticsGetRequest) TargetingTypes(targetingTypes []AdsAnalyticsAdGroupTargetingType) ApiAdGroupsTargetingAnalyticsGetRequest {
 	r.targetingTypes = &targetingTypes
 	return r
 }
@@ -1129,7 +1156,7 @@ func (r ApiAdGroupsTargetingAnalyticsGetRequest) ClickWindowDays(clickWindowDays
 	return r
 }
 
-// Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.
+// Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.
 func (r ApiAdGroupsTargetingAnalyticsGetRequest) EngagementWindowDays(engagementWindowDays int32) ApiAdGroupsTargetingAnalyticsGetRequest {
 	r.engagementWindowDays = &engagementWindowDays
 	return r
@@ -1148,8 +1175,14 @@ func (r ApiAdGroupsTargetingAnalyticsGetRequest) ConversionReportTime(conversion
 }
 
 // List of types of attribution for the conversion report
-func (r ApiAdGroupsTargetingAnalyticsGetRequest) AttributionTypes(attributionTypes ConversionReportAttributionType) ApiAdGroupsTargetingAnalyticsGetRequest {
+func (r ApiAdGroupsTargetingAnalyticsGetRequest) AttributionTypes(attributionTypes []ConversionReportAttributionType) ApiAdGroupsTargetingAnalyticsGetRequest {
 	r.attributionTypes = &attributionTypes
+	return r
+}
+
+// Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+func (r ApiAdGroupsTargetingAnalyticsGetRequest) ReportingTimezone(reportingTimezone ReportingTimeZone) ApiAdGroupsTargetingAnalyticsGetRequest {
+	r.reportingTimezone = &reportingTimezone
 	return r
 }
 
@@ -1166,8 +1199,8 @@ For the requested ad group(s) and metrics, the response will include the request
 - The token's user_account must either be the Owner of the specified ad account, or have one
 of the necessary roles granted to them via
 <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager.
-- If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days.
-- If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+- If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.
+- If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param adAccountId Unique identifier of an ad account.
@@ -1211,8 +1244,8 @@ func (a *AdGroupsAPIService) AdGroupsTargetingAnalyticsGetExecute(r ApiAdGroupsT
 	if len(*r.adGroupIds) < 1 {
 		return localVarReturnValue, nil, reportError("adGroupIds must have at least 1 elements")
 	}
-	if len(*r.adGroupIds) > 100 {
-		return localVarReturnValue, nil, reportError("adGroupIds must have less than 100 elements")
+	if len(*r.adGroupIds) > 250 {
+		return localVarReturnValue, nil, reportError("adGroupIds must have less than 250 elements")
 	}
 	if r.startDate == nil {
 		return localVarReturnValue, nil, reportError("startDate is required and must be specified")
@@ -1226,8 +1259,8 @@ func (a *AdGroupsAPIService) AdGroupsTargetingAnalyticsGetExecute(r ApiAdGroupsT
 	if len(*r.targetingTypes) < 1 {
 		return localVarReturnValue, nil, reportError("targetingTypes must have at least 1 elements")
 	}
-	if len(*r.targetingTypes) > 15 {
-		return localVarReturnValue, nil, reportError("targetingTypes must have less than 15 elements")
+	if len(*r.targetingTypes) > 14 {
+		return localVarReturnValue, nil, reportError("targetingTypes must have less than 14 elements")
 	}
 	if r.columns == nil {
 		return localVarReturnValue, nil, reportError("columns is required and must be specified")
@@ -1281,7 +1314,10 @@ func (a *AdGroupsAPIService) AdGroupsTargetingAnalyticsGetExecute(r ApiAdGroupsT
         r.conversionReportTime = &defaultValue
 	}
 	if r.attributionTypes != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "attribution_types", r.attributionTypes, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "attribution_types", r.attributionTypes, "form", "csv")
+	}
+	if r.reportingTimezone != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "reporting_timezone", r.reportingTimezone, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

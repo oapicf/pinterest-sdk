@@ -13,8 +13,8 @@ module CatalogsCreateRetailItem =
   //#endregion
 
   type CatalogsCreateRetailItem = {
+    Attributes : ItemAttributesRequest;
     ItemId : string;
     Operation : OperationEnum;
-    Attributes : ItemAttributesRequest;
   }
   //#endregion

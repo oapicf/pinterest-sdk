@@ -20,10 +20,10 @@ module CatalogsVerticalProductGroupUpdateRequest =
 
   type CatalogsVerticalProductGroupUpdateRequest = {
     CatalogType : CatalogTypeEnum;
-    Name : string;
+    Country : Country;
     Description : string option;
     Filters : CatalogsCreativeAssetsProductGroupFilters;
-    Country : Country;
     Locale : CatalogsLocale;
+    Name : string;
   }
   //#endregion

@@ -11,10 +11,10 @@
 
 // Register media upload
 //
-// Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+// Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using `curl`, for example) to `upload_url` using the `Content-Type` header value. Send the media file's contents as the request's `file` parameter and also include all of the parameters from `upload_parameters`.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 //
 media_upload_t*
-MediaAPI_mediaCreate(apiClient_t *apiClient, media_upload_request_t *media_upload_request)
+MediaAPI_mediaCreate(apiClient_t *apiClient, media_upload_create_t *media_upload_create)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -35,12 +35,12 @@ MediaAPI_mediaCreate(apiClient_t *apiClient, media_upload_request_t *media_uploa
 
 
     // Body Param
-    cJSON *localVarSingleItemJSON_media_upload_request = NULL;
-    if (media_upload_request != NULL)
+    cJSON *localVarSingleItemJSON_media_upload_create = NULL;
+    if (media_upload_create != NULL)
     {
         //not string, not binary
-        localVarSingleItemJSON_media_upload_request = media_upload_request_convertToJSON(media_upload_request);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_media_upload_request);
+        localVarSingleItemJSON_media_upload_create = media_upload_create_convertToJSON(media_upload_create);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_media_upload_create);
         localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -57,12 +57,36 @@ MediaAPI_mediaCreate(apiClient_t *apiClient, media_upload_request_t *media_uploa
                     "POST");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 201) {
-    //    printf("%s\n","response");
+    //    printf("%s\n","Resource create operation completed successfully.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     media_upload_t *elementToReturn = NULL;
@@ -87,9 +111,9 @@ MediaAPI_mediaCreate(apiClient_t *apiClient, media_upload_request_t *media_uploa
     list_freeList(localVarHeaderType);
     list_freeList(localVarContentType);
     free(localVarPath);
-    if (localVarSingleItemJSON_media_upload_request) {
-        cJSON_Delete(localVarSingleItemJSON_media_upload_request);
-        localVarSingleItemJSON_media_upload_request = NULL;
+    if (localVarSingleItemJSON_media_upload_create) {
+        cJSON_Delete(localVarSingleItemJSON_media_upload_create);
+        localVarSingleItemJSON_media_upload_create = NULL;
     }
     free(localVarBodyParameters);
     return elementToReturn;
@@ -101,9 +125,9 @@ end:
 
 // Get media upload details
 //
-// Get details for a registered media upload, including its current status.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+// Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 //
-media_upload_details_t*
+media_t*
 MediaAPI_mediaGet(apiClient_t *apiClient, char *media_id)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -149,21 +173,37 @@ MediaAPI_mediaGet(apiClient_t *apiClient, char *media_id)
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","response");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Media upload not found");
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
-    media_upload_details_t *elementToReturn = NULL;
+    media_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *MediaAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = media_upload_details_parseFromJSON(MediaAPIlocalVarJSON);
+        elementToReturn = media_parseFromJSON(MediaAPIlocalVarJSON);
         cJSON_Delete(MediaAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -192,7 +232,7 @@ end:
 
 // List media uploads
 //
-// List media uploads filtered by given parameters.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+// List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 //
 media_list_200_response_t*
 MediaAPI_mediaList(apiClient_t *apiClient, char *bookmark, int *page_size)
@@ -253,11 +293,31 @@ MediaAPI_mediaList(apiClient_t *apiClient, char *bookmark, int *page_size)
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","response");
+    //    printf("%s\n","The request has succeeded.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","The request could not be understood by the server due to unexpected data.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Authentication is required and has either failed or not been provided.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","The requested resource could not be found on this server.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","The user has sent too many requests in a given amount of time and is being rate limited.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     media_list_200_response_t *elementToReturn = NULL;

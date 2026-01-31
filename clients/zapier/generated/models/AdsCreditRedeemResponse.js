@@ -5,11 +5,6 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}success`,
-                label: `Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true). - [${labelPrefix}success]`,
-                type: 'boolean',
-            },
-            {
                 key: `${keyPrefix}errorCode`,
                 label: `Error code type if error occurs - [${labelPrefix}errorCode]`,
                 type: 'integer',
@@ -19,14 +14,19 @@ module.exports = {
                 label: `Reason for failure - [${labelPrefix}errorMessage]`,
                 type: 'string',
             },
+            {
+                key: `${keyPrefix}success`,
+                label: `Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true). - [${labelPrefix}success]`,
+                type: 'boolean',
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'success': bundle.inputData?.[`${keyPrefix}success`],
             'errorCode': bundle.inputData?.[`${keyPrefix}errorCode`],
             'errorMessage': bundle.inputData?.[`${keyPrefix}errorMessage`],
+            'success': bundle.inputData?.[`${keyPrefix}success`],
         }
     },
 }

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,17 +20,17 @@ var _ MappedNullable = &AdGroupAudienceSizingRequest{}
 
 // AdGroupAudienceSizingRequest struct for AdGroupAudienceSizingRequest
 type AdGroupAudienceSizingRequest struct {
-	// Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+	// Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.
 	AutoTargetingEnabled *bool `json:"auto_targeting_enabled,omitempty"`
-	// <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
-	PlacementGroup *PlacementGroupType `json:"placement_group,omitempty"`
 	// Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
 	CreativeTypes []string `json:"creative_types,omitempty"`
-	TargetingSpec *TargetingSpec `json:"targeting_spec,omitempty"`
-	// Targeted product group IDs. </p><strong>Note:</strong> This can only be combined with shopping/catalog sales campaigns. For more information, <a href=\"https://help.pinterest.com/en/business/article/shopping-ads#section-14571\" target=\"_blank\">click here</a>. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored.
-	ProductGroupIds []string `json:"product_group_ids,omitempty"`
 	// Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
 	Keywords []AdGroupAudienceSizingRequestKeywordsInner `json:"keywords,omitempty"`
+	// <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
+	PlacementGroup *PlacementGroupType `json:"placement_group,omitempty"`
+	// Targeted product group IDs. </p><strong>Note:</strong> This can only be combined with shopping/catalog sales campaigns. For more information, <a href=\"https://help.pinterest.com/en/business/article/shopping-ads#section-14571\" target=\"_blank\">click here</a>. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored.
+	ProductGroupIds []string `json:"product_group_ids,omitempty"`
+	TargetingSpec *TargetingSpec `json:"targeting_spec,omitempty"`
 }
 
 // NewAdGroupAudienceSizingRequest instantiates a new AdGroupAudienceSizingRequest object
@@ -90,38 +90,6 @@ func (o *AdGroupAudienceSizingRequest) SetAutoTargetingEnabled(v bool) {
 	o.AutoTargetingEnabled = &v
 }
 
-// GetPlacementGroup returns the PlacementGroup field value if set, zero value otherwise.
-func (o *AdGroupAudienceSizingRequest) GetPlacementGroup() PlacementGroupType {
-	if o == nil || IsNil(o.PlacementGroup) {
-		var ret PlacementGroupType
-		return ret
-	}
-	return *o.PlacementGroup
-}
-
-// GetPlacementGroupOk returns a tuple with the PlacementGroup field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdGroupAudienceSizingRequest) GetPlacementGroupOk() (*PlacementGroupType, bool) {
-	if o == nil || IsNil(o.PlacementGroup) {
-		return nil, false
-	}
-	return o.PlacementGroup, true
-}
-
-// HasPlacementGroup returns a boolean if a field has been set.
-func (o *AdGroupAudienceSizingRequest) HasPlacementGroup() bool {
-	if o != nil && !IsNil(o.PlacementGroup) {
-		return true
-	}
-
-	return false
-}
-
-// SetPlacementGroup gets a reference to the given PlacementGroupType and assigns it to the PlacementGroup field.
-func (o *AdGroupAudienceSizingRequest) SetPlacementGroup(v PlacementGroupType) {
-	o.PlacementGroup = &v
-}
-
 // GetCreativeTypes returns the CreativeTypes field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AdGroupAudienceSizingRequest) GetCreativeTypes() []string {
 	if o == nil {
@@ -153,71 +121,6 @@ func (o *AdGroupAudienceSizingRequest) HasCreativeTypes() bool {
 // SetCreativeTypes gets a reference to the given []string and assigns it to the CreativeTypes field.
 func (o *AdGroupAudienceSizingRequest) SetCreativeTypes(v []string) {
 	o.CreativeTypes = v
-}
-
-// GetTargetingSpec returns the TargetingSpec field value if set, zero value otherwise.
-func (o *AdGroupAudienceSizingRequest) GetTargetingSpec() TargetingSpec {
-	if o == nil || IsNil(o.TargetingSpec) {
-		var ret TargetingSpec
-		return ret
-	}
-	return *o.TargetingSpec
-}
-
-// GetTargetingSpecOk returns a tuple with the TargetingSpec field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdGroupAudienceSizingRequest) GetTargetingSpecOk() (*TargetingSpec, bool) {
-	if o == nil || IsNil(o.TargetingSpec) {
-		return nil, false
-	}
-	return o.TargetingSpec, true
-}
-
-// HasTargetingSpec returns a boolean if a field has been set.
-func (o *AdGroupAudienceSizingRequest) HasTargetingSpec() bool {
-	if o != nil && !IsNil(o.TargetingSpec) {
-		return true
-	}
-
-	return false
-}
-
-// SetTargetingSpec gets a reference to the given TargetingSpec and assigns it to the TargetingSpec field.
-func (o *AdGroupAudienceSizingRequest) SetTargetingSpec(v TargetingSpec) {
-	o.TargetingSpec = &v
-}
-
-// GetProductGroupIds returns the ProductGroupIds field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdGroupAudienceSizingRequest) GetProductGroupIds() []string {
-	if o == nil {
-		var ret []string
-		return ret
-	}
-	return o.ProductGroupIds
-}
-
-// GetProductGroupIdsOk returns a tuple with the ProductGroupIds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdGroupAudienceSizingRequest) GetProductGroupIdsOk() ([]string, bool) {
-	if o == nil || IsNil(o.ProductGroupIds) {
-		return nil, false
-	}
-	return o.ProductGroupIds, true
-}
-
-// HasProductGroupIds returns a boolean if a field has been set.
-func (o *AdGroupAudienceSizingRequest) HasProductGroupIds() bool {
-	if o != nil && !IsNil(o.ProductGroupIds) {
-		return true
-	}
-
-	return false
-}
-
-// SetProductGroupIds gets a reference to the given []string and assigns it to the ProductGroupIds field.
-func (o *AdGroupAudienceSizingRequest) SetProductGroupIds(v []string) {
-	o.ProductGroupIds = v
 }
 
 // GetKeywords returns the Keywords field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -253,6 +156,103 @@ func (o *AdGroupAudienceSizingRequest) SetKeywords(v []AdGroupAudienceSizingRequ
 	o.Keywords = v
 }
 
+// GetPlacementGroup returns the PlacementGroup field value if set, zero value otherwise.
+func (o *AdGroupAudienceSizingRequest) GetPlacementGroup() PlacementGroupType {
+	if o == nil || IsNil(o.PlacementGroup) {
+		var ret PlacementGroupType
+		return ret
+	}
+	return *o.PlacementGroup
+}
+
+// GetPlacementGroupOk returns a tuple with the PlacementGroup field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdGroupAudienceSizingRequest) GetPlacementGroupOk() (*PlacementGroupType, bool) {
+	if o == nil || IsNil(o.PlacementGroup) {
+		return nil, false
+	}
+	return o.PlacementGroup, true
+}
+
+// HasPlacementGroup returns a boolean if a field has been set.
+func (o *AdGroupAudienceSizingRequest) HasPlacementGroup() bool {
+	if o != nil && !IsNil(o.PlacementGroup) {
+		return true
+	}
+
+	return false
+}
+
+// SetPlacementGroup gets a reference to the given PlacementGroupType and assigns it to the PlacementGroup field.
+func (o *AdGroupAudienceSizingRequest) SetPlacementGroup(v PlacementGroupType) {
+	o.PlacementGroup = &v
+}
+
+// GetProductGroupIds returns the ProductGroupIds field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AdGroupAudienceSizingRequest) GetProductGroupIds() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.ProductGroupIds
+}
+
+// GetProductGroupIdsOk returns a tuple with the ProductGroupIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AdGroupAudienceSizingRequest) GetProductGroupIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.ProductGroupIds) {
+		return nil, false
+	}
+	return o.ProductGroupIds, true
+}
+
+// HasProductGroupIds returns a boolean if a field has been set.
+func (o *AdGroupAudienceSizingRequest) HasProductGroupIds() bool {
+	if o != nil && !IsNil(o.ProductGroupIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetProductGroupIds gets a reference to the given []string and assigns it to the ProductGroupIds field.
+func (o *AdGroupAudienceSizingRequest) SetProductGroupIds(v []string) {
+	o.ProductGroupIds = v
+}
+
+// GetTargetingSpec returns the TargetingSpec field value if set, zero value otherwise.
+func (o *AdGroupAudienceSizingRequest) GetTargetingSpec() TargetingSpec {
+	if o == nil || IsNil(o.TargetingSpec) {
+		var ret TargetingSpec
+		return ret
+	}
+	return *o.TargetingSpec
+}
+
+// GetTargetingSpecOk returns a tuple with the TargetingSpec field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdGroupAudienceSizingRequest) GetTargetingSpecOk() (*TargetingSpec, bool) {
+	if o == nil || IsNil(o.TargetingSpec) {
+		return nil, false
+	}
+	return o.TargetingSpec, true
+}
+
+// HasTargetingSpec returns a boolean if a field has been set.
+func (o *AdGroupAudienceSizingRequest) HasTargetingSpec() bool {
+	if o != nil && !IsNil(o.TargetingSpec) {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetingSpec gets a reference to the given TargetingSpec and assigns it to the TargetingSpec field.
+func (o *AdGroupAudienceSizingRequest) SetTargetingSpec(v TargetingSpec) {
+	o.TargetingSpec = &v
+}
+
 func (o AdGroupAudienceSizingRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -266,20 +266,20 @@ func (o AdGroupAudienceSizingRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AutoTargetingEnabled) {
 		toSerialize["auto_targeting_enabled"] = o.AutoTargetingEnabled
 	}
-	if !IsNil(o.PlacementGroup) {
-		toSerialize["placement_group"] = o.PlacementGroup
-	}
 	if o.CreativeTypes != nil {
 		toSerialize["creative_types"] = o.CreativeTypes
 	}
-	if !IsNil(o.TargetingSpec) {
-		toSerialize["targeting_spec"] = o.TargetingSpec
+	if o.Keywords != nil {
+		toSerialize["keywords"] = o.Keywords
+	}
+	if !IsNil(o.PlacementGroup) {
+		toSerialize["placement_group"] = o.PlacementGroup
 	}
 	if o.ProductGroupIds != nil {
 		toSerialize["product_group_ids"] = o.ProductGroupIds
 	}
-	if o.Keywords != nil {
-		toSerialize["keywords"] = o.Keywords
+	if !IsNil(o.TargetingSpec) {
+		toSerialize["targeting_spec"] = o.TargetingSpec
 	}
 	return toSerialize, nil
 }

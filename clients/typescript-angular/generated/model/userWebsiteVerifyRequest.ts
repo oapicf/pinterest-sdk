@@ -13,8 +13,8 @@
  * User website verification request
  */
 export interface UserWebsiteVerifyRequest { 
-    website?: string;
     verification_method?: UserWebsiteVerifyRequest.VerificationMethodEnum;
+    website?: string;
 }
 export namespace UserWebsiteVerifyRequest {
     export const VerificationMethodEnum = {

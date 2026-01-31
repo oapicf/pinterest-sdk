@@ -22,16 +22,11 @@ import com.squareup.moshi.JsonClass
 /**
  * Keyword metrics JSON
  *
- * @param avgCpcInMicroCurrency Average cost per click
  * @param keywordQueryVolume Keyword's search frequency. This value is based on keyword frequency in pepsi client response
  */
 
 
 data class KeywordMetrics (
-
-    /* Average cost per click */
-    @Json(name = "avg_cpc_in_micro_currency")
-    val avgCpcInMicroCurrency: java.math.BigDecimal? = null,
 
     /* Keyword's search frequency. This value is based on keyword frequency in pepsi client response */
     @Json(name = "keyword_query_volume")

@@ -15,7 +15,7 @@ import javax.validation.Valid;
 /**
  * Request object to discontinue catalogs items
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
   @JsonProperty("country")
@@ -23,6 +23,12 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
 @Valid
 
   private Country country;
+
+  @JsonProperty("items")
+  @NotNull
+@Valid
+
+  private List<@Valid ItemDeleteDiscontinuedBatchRecord> items = new ArrayList<>();
 
   /**
    * We recommend using the CatalogsLocale values.
@@ -276,12 +282,6 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
 
   private BatchOperation operation;
 
-  @JsonProperty("items")
-  @NotNull
-@Valid
-
-  private List<@Valid ItemDeleteDiscontinuedBatchRecord> items = new ArrayList<>();
-
   public CatalogsItemsDeleteDiscontinuedBatchRequest country(Country country) {
     this.country = country;
     return this;
@@ -297,6 +297,31 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
 
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+  public CatalogsItemsDeleteDiscontinuedBatchRequest items(List<@Valid ItemDeleteDiscontinuedBatchRecord> items) {
+    this.items = items;
+    return this;
+  }
+
+  public CatalogsItemsDeleteDiscontinuedBatchRequest addItemsItem(ItemDeleteDiscontinuedBatchRecord itemsItem) {
+    if (this.items == null) {
+      this.items = new ArrayList<>();
+    }
+    this.items.add(itemsItem);
+    return this;
+  }
+
+   /**
+   * Array with catalogs items
+   * @return items
+  **/
+  public List<@Valid ItemDeleteDiscontinuedBatchRecord> getItems() {
+    return items;
+  }
+
+  public void setItems(List<@Valid ItemDeleteDiscontinuedBatchRecord> items) {
+    this.items = items;
   }
 
   public CatalogsItemsDeleteDiscontinuedBatchRequest language(LanguageEnum language) {
@@ -333,31 +358,6 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
     this.operation = operation;
   }
 
-  public CatalogsItemsDeleteDiscontinuedBatchRequest items(List<@Valid ItemDeleteDiscontinuedBatchRecord> items) {
-    this.items = items;
-    return this;
-  }
-
-  public CatalogsItemsDeleteDiscontinuedBatchRequest addItemsItem(ItemDeleteDiscontinuedBatchRecord itemsItem) {
-    if (this.items == null) {
-      this.items = new ArrayList<>();
-    }
-    this.items.add(itemsItem);
-    return this;
-  }
-
-   /**
-   * Array with catalogs items
-   * @return items
-  **/
-  public List<@Valid ItemDeleteDiscontinuedBatchRecord> getItems() {
-    return items;
-  }
-
-  public void setItems(List<@Valid ItemDeleteDiscontinuedBatchRecord> items) {
-    this.items = items;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -369,14 +369,14 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
     }
     CatalogsItemsDeleteDiscontinuedBatchRequest catalogsItemsDeleteDiscontinuedBatchRequest = (CatalogsItemsDeleteDiscontinuedBatchRequest) o;
     return Objects.equals(country, catalogsItemsDeleteDiscontinuedBatchRequest.country) &&
+        Objects.equals(items, catalogsItemsDeleteDiscontinuedBatchRequest.items) &&
         Objects.equals(language, catalogsItemsDeleteDiscontinuedBatchRequest.language) &&
-        Objects.equals(operation, catalogsItemsDeleteDiscontinuedBatchRequest.operation) &&
-        Objects.equals(items, catalogsItemsDeleteDiscontinuedBatchRequest.items);
+        Objects.equals(operation, catalogsItemsDeleteDiscontinuedBatchRequest.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, language, operation, items);
+    return Objects.hash(country, items, language, operation);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -386,9 +386,9 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest   {
     sb.append("class CatalogsItemsDeleteDiscontinuedBatchRequest {\n");
     
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

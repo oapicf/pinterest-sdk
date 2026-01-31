@@ -8,6 +8,7 @@ import com.prokarma.pkmst.model.CatalogsFeedIngestionDetails;
 import com.prokarma.pkmst.model.CatalogsFeedProcessingStatus;
 import com.prokarma.pkmst.model.CatalogsFeedProductCounts;
 import com.prokarma.pkmst.model.CatalogsFeedValidationDetails;
+import com.prokarma.pkmst.model.CatalogsFeedVideoCounts;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.OffsetDateTime;
@@ -20,7 +21,7 @@ import java.time.OffsetDateTime;
  * CatalogsFeedProcessingResult
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsFeedProcessingResult   {
   @JsonProperty("created_at")
   private OffsetDateTime createdAt;
@@ -34,14 +35,17 @@ public class CatalogsFeedProcessingResult   {
   @JsonProperty("ingestion_details")
   private CatalogsFeedIngestionDetails ingestionDetails;
 
-  @JsonProperty("status")
-  private CatalogsFeedProcessingStatus status;
-
   @JsonProperty("product_counts")
   private CatalogsFeedProductCounts productCounts;
 
+  @JsonProperty("status")
+  private CatalogsFeedProcessingStatus status;
+
   @JsonProperty("validation_details")
   private CatalogsFeedValidationDetails validationDetails;
+
+  @JsonProperty("video_counts")
+  private CatalogsFeedVideoCounts videoCounts;
 
   public CatalogsFeedProcessingResult createdAt(OffsetDateTime createdAt) {
     this.createdAt = createdAt;
@@ -115,24 +119,6 @@ public class CatalogsFeedProcessingResult   {
     this.ingestionDetails = ingestionDetails;
   }
 
-  public CatalogsFeedProcessingResult status(CatalogsFeedProcessingStatus status) {
-    this.status = status;
-    return this;
-  }
-
-  /**
-   * Get status
-   * @return status
-   */
-  @ApiModelProperty(required = true, value = "")
-  public CatalogsFeedProcessingStatus getStatus() {
-    return status;
-  }
-
-  public void setStatus(CatalogsFeedProcessingStatus status) {
-    this.status = status;
-  }
-
   public CatalogsFeedProcessingResult productCounts(CatalogsFeedProductCounts productCounts) {
     this.productCounts = productCounts;
     return this;
@@ -149,6 +135,24 @@ public class CatalogsFeedProcessingResult   {
 
   public void setProductCounts(CatalogsFeedProductCounts productCounts) {
     this.productCounts = productCounts;
+  }
+
+  public CatalogsFeedProcessingResult status(CatalogsFeedProcessingStatus status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Get status
+   * @return status
+   */
+  @ApiModelProperty(required = true, value = "")
+  public CatalogsFeedProcessingStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(CatalogsFeedProcessingStatus status) {
+    this.status = status;
   }
 
   public CatalogsFeedProcessingResult validationDetails(CatalogsFeedValidationDetails validationDetails) {
@@ -169,6 +173,24 @@ public class CatalogsFeedProcessingResult   {
     this.validationDetails = validationDetails;
   }
 
+  public CatalogsFeedProcessingResult videoCounts(CatalogsFeedVideoCounts videoCounts) {
+    this.videoCounts = videoCounts;
+    return this;
+  }
+
+  /**
+   * Get videoCounts
+   * @return videoCounts
+   */
+  @ApiModelProperty(value = "")
+  public CatalogsFeedVideoCounts getVideoCounts() {
+    return videoCounts;
+  }
+
+  public void setVideoCounts(CatalogsFeedVideoCounts videoCounts) {
+    this.videoCounts = videoCounts;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -183,14 +205,15 @@ public class CatalogsFeedProcessingResult   {
         Objects.equals(this.id, catalogsFeedProcessingResult.id) &&
         Objects.equals(this.updatedAt, catalogsFeedProcessingResult.updatedAt) &&
         Objects.equals(this.ingestionDetails, catalogsFeedProcessingResult.ingestionDetails) &&
-        Objects.equals(this.status, catalogsFeedProcessingResult.status) &&
         Objects.equals(this.productCounts, catalogsFeedProcessingResult.productCounts) &&
-        Objects.equals(this.validationDetails, catalogsFeedProcessingResult.validationDetails);
+        Objects.equals(this.status, catalogsFeedProcessingResult.status) &&
+        Objects.equals(this.validationDetails, catalogsFeedProcessingResult.validationDetails) &&
+        Objects.equals(this.videoCounts, catalogsFeedProcessingResult.videoCounts);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, id, updatedAt, ingestionDetails, status, productCounts, validationDetails);
+    return Objects.hash(createdAt, id, updatedAt, ingestionDetails, productCounts, status, validationDetails, videoCounts);
   }
 
   @Override
@@ -202,9 +225,10 @@ public class CatalogsFeedProcessingResult   {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    ingestionDetails: ").append(toIndentedString(ingestionDetails)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    productCounts: ").append(toIndentedString(productCounts)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    validationDetails: ").append(toIndentedString(validationDetails)).append("\n");
+    sb.append("    videoCounts: ").append(toIndentedString(videoCounts)).append("\n");
     sb.append("}");
     return sb.toString();
   }

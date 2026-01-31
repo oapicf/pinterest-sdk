@@ -3,34 +3,36 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SourceType** | **String** |  | 
-**ContentType** | **String** |  | 
+**ContentType** | [**ContentType**](ContentType.md) |  | 
 **VarData** | **String** |  | 
 **IsStandard** | **Boolean** | Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users. | [optional] [default to $true]
+**SourceType** | **String** |  | 
 **Url** | **String** |  | 
-**CoverImageUrl** | **String** | Cover image url. | [optional] 
-**CoverImageContentType** | **String** | Content type for cover image Base64. | [optional] 
+**CoverImageContentType** | [**ContentType**](ContentType.md) | Content type for cover image Base64. | [optional] 
 **CoverImageData** | **String** | Cover image Base64. | [optional] 
+**CoverImageKeyFrameTime** | **Int32** | Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used. | [optional] 
+**CoverImageUrl** | **String** | Cover image URL. | [optional] 
 **MediaId** | **String** |  | 
-**Items** | [**PinMediaSourceImagesURLItemsInner[]**](PinMediaSourceImagesURLItemsInner.md) | Array with image objects. | 
 **Index** | **Int32** |  | [optional] 
+**Items** | [**PinMediaSourceImagesURLItem[]**](PinMediaSourceImagesURLItem.md) | Array with image objects. | 
 **IsAffiliateLink** | **Boolean** | This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products. | [optional] [default to $false]
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$PinMediaSource = Initialize-PSOpenAPIToolsPinMediaSource  -SourceType null `
- -ContentType null `
+$PinMediaSource = Initialize-PSOpenAPIToolsPinMediaSource  -ContentType null `
  -VarData null `
  -IsStandard null `
+ -SourceType null `
  -Url null `
- -CoverImageUrl null `
  -CoverImageContentType null `
  -CoverImageData null `
+ -CoverImageKeyFrameTime null `
+ -CoverImageUrl null `
  -MediaId null `
- -Items null `
  -Index null `
+ -Items null `
  -IsAffiliateLink null
 ```
 

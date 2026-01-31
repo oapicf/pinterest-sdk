@@ -8,9 +8,9 @@ The class is defined in **[ImageDetails.java](../../src/main/java/org/openapitoo
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**width** | `Integer` |  | 
 **height** | `Integer` |  | 
 **url** | `String` |  | 
+**width** | `Integer` |  | 
 
 
 

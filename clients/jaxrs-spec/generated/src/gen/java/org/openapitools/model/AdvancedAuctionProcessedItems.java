@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.AdvancedAuctionProcessedItem;
+import org.openapitools.model.AdvancedAuctionItemsSubmitRecord;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -22,10 +22,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Response object containing the results of an operation on an item bid option")
 @JsonTypeName("AdvancedAuctionProcessedItems")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionProcessedItems   {
   private String catalogId;
-  private @Valid List<@Valid AdvancedAuctionProcessedItem> items = new ArrayList<>();
+  private @Valid List<@Valid AdvancedAuctionItemsSubmitRecord> items = new ArrayList<>();
 
   public AdvancedAuctionProcessedItems() {
   }
@@ -53,7 +53,7 @@ public class AdvancedAuctionProcessedItems   {
   /**
    * Array of advanced auction processed items
    **/
-  public AdvancedAuctionProcessedItems items(List<@Valid AdvancedAuctionProcessedItem> items) {
+  public AdvancedAuctionProcessedItems items(List<@Valid AdvancedAuctionItemsSubmitRecord> items) {
     this.items = items;
     return this;
   }
@@ -61,16 +61,16 @@ public class AdvancedAuctionProcessedItems   {
   
   @ApiModelProperty(value = "Array of advanced auction processed items")
   @JsonProperty("items")
-  @Valid public List<@Valid AdvancedAuctionProcessedItem> getItems() {
+  @Valid public List<@Valid AdvancedAuctionItemsSubmitRecord> getItems() {
     return items;
   }
 
   @JsonProperty("items")
-  public void setItems(List<@Valid AdvancedAuctionProcessedItem> items) {
+  public void setItems(List<@Valid AdvancedAuctionItemsSubmitRecord> items) {
     this.items = items;
   }
 
-  public AdvancedAuctionProcessedItems addItemsItem(AdvancedAuctionProcessedItem itemsItem) {
+  public AdvancedAuctionProcessedItems addItemsItem(AdvancedAuctionItemsSubmitRecord itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -79,7 +79,7 @@ public class AdvancedAuctionProcessedItems   {
     return this;
   }
 
-  public AdvancedAuctionProcessedItems removeItemsItem(AdvancedAuctionProcessedItem itemsItem) {
+  public AdvancedAuctionProcessedItems removeItemsItem(AdvancedAuctionItemsSubmitRecord itemsItem) {
     if (itemsItem != null && this.items != null) {
       this.items.remove(itemsItem);
     }

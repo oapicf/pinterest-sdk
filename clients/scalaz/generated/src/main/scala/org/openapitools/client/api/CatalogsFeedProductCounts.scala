@@ -12,10 +12,10 @@ import org.joda.time.DateTime
 import CatalogsFeedProductCounts._
 
 case class CatalogsFeedProductCounts (
-  /* The number of products in the feed file. */
-  original: Option[Integer],
-/* The number of products successfully ingested from the feed file. */
-  ingested: Option[Integer])
+  /* The number of products successfully ingested from the feed file. */
+  ingested: Option[Integer],
+/* The number of products in the feed file. */
+  original: Option[Integer])
 
 object CatalogsFeedProductCounts {
   import DateTimeCodecs._

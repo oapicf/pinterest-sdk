@@ -7,9 +7,9 @@ Request object to upsert catalogs items
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | [**Country**](Country.md) |  | [default to undefined]
+**items** | [**Array&lt;ItemUpsertBatchRecord&gt;**](ItemUpsertBatchRecord.md) | Array with catalogs items | [default to undefined]
 **language** | **string** | We recommend using the CatalogsLocale values. | [default to undefined]
 **operation** | [**BatchOperation**](BatchOperation.md) |  | [default to undefined]
-**items** | [**Array&lt;ItemUpsertBatchRecord&gt;**](ItemUpsertBatchRecord.md) | Array with catalogs items | [default to undefined]
 
 ## Example
 
@@ -18,9 +18,9 @@ import { CatalogsItemsUpsertBatchRequest } from './api';
 
 const instance: CatalogsItemsUpsertBatchRequest = {
     country,
+    items,
     language,
     operation,
-    items,
 };
 ```
 

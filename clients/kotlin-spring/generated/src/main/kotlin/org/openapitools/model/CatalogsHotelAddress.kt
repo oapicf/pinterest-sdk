@@ -17,9 +17,9 @@ import io.swagger.v3.oas.annotations.media.Schema
  * 
  * @param addr1 Primary street address of hotel.
  * @param city City where the hotel is located.
- * @param region State, county, province, where the hotel is located.
  * @param country Country where the hotel is located.
  * @param postalCode Required for countries with a postal code system. Postal or zip code of the hotel.
+ * @param region State, county, province, where the hotel is located.
  */
 data class CatalogsHotelAddress(
 
@@ -29,14 +29,14 @@ data class CatalogsHotelAddress(
     @Schema(example = "null", description = "City where the hotel is located.")
     @get:JsonProperty("city") val city: kotlin.String? = null,
 
-    @Schema(example = "null", description = "State, county, province, where the hotel is located.")
-    @get:JsonProperty("region") val region: kotlin.String? = null,
-
     @Schema(example = "null", description = "Country where the hotel is located.")
     @get:JsonProperty("country") val country: kotlin.String? = null,
 
     @Schema(example = "null", description = "Required for countries with a postal code system. Postal or zip code of the hotel.")
-    @get:JsonProperty("postal_code") val postalCode: kotlin.String? = null
+    @get:JsonProperty("postal_code") val postalCode: kotlin.String? = null,
+
+    @Schema(example = "null", description = "State, county, province, where the hotel is located.")
+    @get:JsonProperty("region") val region: kotlin.String? = null
 ) {
 
 }

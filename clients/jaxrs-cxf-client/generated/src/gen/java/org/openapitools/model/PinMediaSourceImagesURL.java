@@ -3,7 +3,7 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.PinMediaSourceImagesURLItemsInner;
+import org.openapitools.model.PinMediaSourceImagesURLItem;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -11,12 +11,23 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Multiple images urls-based media source
+ * Multiple URL-based images media source
  */
-@ApiModel(description="Multiple images urls-based media source")
+@ApiModel(description="Multiple URL-based images media source")
 
 public class PinMediaSourceImagesURL  {
   
+  @ApiModelProperty(value = "")
+
+  private Integer index;
+
+ /**
+  * Array with image objects.
+  */
+  @ApiModelProperty(required = true, value = "Array with image objects.")
+
+  private List<PinMediaSourceImagesURLItem> items = new ArrayList<>();
+
 public enum SourceTypeEnum {
 
 MULTIPLE_IMAGE_URLS(String.valueOf("multiple_image_urls"));
@@ -47,64 +58,12 @@ MULTIPLE_IMAGE_URLS(String.valueOf("multiple_image_urls"));
     }
 }
 
-  @ApiModelProperty(value = "")
+ /**
+  * The source type of the media.
+  */
+  @ApiModelProperty(required = true, value = "The source type of the media.")
 
   private SourceTypeEnum sourceType;
-
- /**
-  * Array with image objects.
-  */
-  @ApiModelProperty(required = true, value = "Array with image objects.")
-
-  private List<PinMediaSourceImagesURLItemsInner> items = new ArrayList<>();
-
-  @ApiModelProperty(value = "")
-
-  private Integer index;
- /**
-   * Get sourceType
-   * @return sourceType
-  **/
-  @JsonProperty("source_type")
-  public String getSourceType() {
-    if (sourceType == null) {
-      return null;
-    }
-    return sourceType.value();
-  }
-
-  public void setSourceType(SourceTypeEnum sourceType) {
-    this.sourceType = sourceType;
-  }
-
-  public PinMediaSourceImagesURL sourceType(SourceTypeEnum sourceType) {
-    this.sourceType = sourceType;
-    return this;
-  }
-
- /**
-   * Array with image objects.
-   * @return items
-  **/
-  @JsonProperty("items")
-  public List<PinMediaSourceImagesURLItemsInner> getItems() {
-    return items;
-  }
-
-  public void setItems(List<PinMediaSourceImagesURLItemsInner> items) {
-    this.items = items;
-  }
-
-  public PinMediaSourceImagesURL items(List<PinMediaSourceImagesURLItemsInner> items) {
-    this.items = items;
-    return this;
-  }
-
-  public PinMediaSourceImagesURL addItemsItem(PinMediaSourceImagesURLItemsInner itemsItem) {
-    this.items.add(itemsItem);
-    return this;
-  }
-
  /**
    * Get index
    * minimum: 0
@@ -124,6 +83,50 @@ MULTIPLE_IMAGE_URLS(String.valueOf("multiple_image_urls"));
     return this;
   }
 
+ /**
+   * Array with image objects.
+   * @return items
+  **/
+  @JsonProperty("items")
+  public List<PinMediaSourceImagesURLItem> getItems() {
+    return items;
+  }
+
+  public void setItems(List<PinMediaSourceImagesURLItem> items) {
+    this.items = items;
+  }
+
+  public PinMediaSourceImagesURL items(List<PinMediaSourceImagesURLItem> items) {
+    this.items = items;
+    return this;
+  }
+
+  public PinMediaSourceImagesURL addItemsItem(PinMediaSourceImagesURLItem itemsItem) {
+    this.items.add(itemsItem);
+    return this;
+  }
+
+ /**
+   * The source type of the media.
+   * @return sourceType
+  **/
+  @JsonProperty("source_type")
+  public String getSourceType() {
+    if (sourceType == null) {
+      return null;
+    }
+    return sourceType.value();
+  }
+
+  public void setSourceType(SourceTypeEnum sourceType) {
+    this.sourceType = sourceType;
+  }
+
+  public PinMediaSourceImagesURL sourceType(SourceTypeEnum sourceType) {
+    this.sourceType = sourceType;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -133,14 +136,14 @@ MULTIPLE_IMAGE_URLS(String.valueOf("multiple_image_urls"));
       return false;
     }
     PinMediaSourceImagesURL pinMediaSourceImagesURL = (PinMediaSourceImagesURL) o;
-    return Objects.equals(this.sourceType, pinMediaSourceImagesURL.sourceType) &&
+    return Objects.equals(this.index, pinMediaSourceImagesURL.index) &&
         Objects.equals(this.items, pinMediaSourceImagesURL.items) &&
-        Objects.equals(this.index, pinMediaSourceImagesURL.index);
+        Objects.equals(this.sourceType, pinMediaSourceImagesURL.sourceType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceType, items, index);
+    return Objects.hash(index, items, sourceType);
   }
 
   @Override
@@ -148,9 +151,9 @@ MULTIPLE_IMAGE_URLS(String.valueOf("multiple_image_urls"));
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaSourceImagesURL {\n");
     
-    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    index: ").append(toIndentedString(index)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

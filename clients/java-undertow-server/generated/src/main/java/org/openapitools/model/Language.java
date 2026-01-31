@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -17,11 +17,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 
 /**
- * Language code, which is among the offical ISO 639-1 language list.
+ * Language code, which is among the official ISO 639-1 language list.
  */
 
 /**
- * Language code, which is among the offical ISO 639-1 language list.
+ * Language code, which is among the official ISO 639-1 language list.
  */
 public enum Language {
     

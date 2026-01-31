@@ -1,5 +1,4 @@
 # Org.OpenAPITools.Model.MediaUploadStatus
-Media upload status
 
 ## Properties
 

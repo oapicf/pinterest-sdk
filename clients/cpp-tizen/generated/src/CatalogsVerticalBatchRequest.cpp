@@ -23,16 +23,21 @@ CatalogsVerticalBatchRequest::~CatalogsVerticalBatchRequest()
 void
 CatalogsVerticalBatchRequest::__init()
 {
+	//catalog_id = std::string();
 	//catalog_type = std::string();
 	//country = new Country();
-	//language = std::string();
 	//new std::list()std::list> items;
-	//catalog_id = std::string();
+	//language = std::string();
 }
 
 void
 CatalogsVerticalBatchRequest::__cleanup()
 {
+	//if(catalog_id != NULL) {
+	//
+	//delete catalog_id;
+	//catalog_id = NULL;
+	//}
 	//if(catalog_type != NULL) {
 	//
 	//delete catalog_type;
@@ -43,20 +48,15 @@ CatalogsVerticalBatchRequest::__cleanup()
 	//delete country;
 	//country = NULL;
 	//}
-	//if(language != NULL) {
-	//
-	//delete language;
-	//language = NULL;
-	//}
 	//if(items != NULL) {
 	//items.RemoveAll(true);
 	//delete items;
 	//items = NULL;
 	//}
-	//if(catalog_id != NULL) {
+	//if(language != NULL) {
 	//
-	//delete catalog_id;
-	//catalog_id = NULL;
+	//delete language;
+	//language = NULL;
 	//}
 	//
 }
@@ -66,6 +66,17 @@ CatalogsVerticalBatchRequest::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *catalog_idKey = "catalog_id";
+	node = json_object_get_member(pJsonObject, catalog_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&catalog_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *catalog_typeKey = "catalog_type";
 	node = json_object_get_member(pJsonObject, catalog_typeKey);
 	if (node !=NULL) {
@@ -88,17 +99,6 @@ CatalogsVerticalBatchRequest::fromJson(char* jsonStr)
 			
 			Country* obj = static_cast<Country*> (&country);
 			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *languageKey = "language";
-	node = json_object_get_member(pJsonObject, languageKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&language, node, "std::string", "");
-		} else {
 			
 		}
 	}
@@ -126,13 +126,13 @@ CatalogsVerticalBatchRequest::fromJson(char* jsonStr)
 		}
 		
 	}
-	const gchar *catalog_idKey = "catalog_id";
-	node = json_object_get_member(pJsonObject, catalog_idKey);
+	const gchar *languageKey = "language";
+	node = json_object_get_member(pJsonObject, languageKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&catalog_id, node, "std::string", "");
+			jsonToValue(&language, node, "std::string", "");
 		} else {
 			
 		}
@@ -149,6 +149,15 @@ CatalogsVerticalBatchRequest::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("std::string")) {
+		std::string obj = getCatalogId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *catalog_idKey = "catalog_id";
+	json_object_set_member(pJsonObject, catalog_idKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getCatalogType();
 		node = converttoJson(&obj, "std::string", "");
@@ -172,15 +181,6 @@ CatalogsVerticalBatchRequest::toJson()
 	}
 	const gchar *countryKey = "country";
 	json_object_set_member(pJsonObject, countryKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getLanguage();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *languageKey = "language";
-	json_object_set_member(pJsonObject, languageKey, node);
 	if (isprimitive("CatalogsCreativeAssetsBatchItem")) {
 		list<CatalogsCreativeAssetsBatchItem> new_list = static_cast<list <CatalogsCreativeAssetsBatchItem> > (getItems());
 		node = converttoJson(&new_list, "CatalogsCreativeAssetsBatchItem", "array");
@@ -207,20 +207,32 @@ CatalogsVerticalBatchRequest::toJson()
 	const gchar *itemsKey = "items";
 	json_object_set_member(pJsonObject, itemsKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getCatalogId();
+		std::string obj = getLanguage();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *catalog_idKey = "catalog_id";
-	json_object_set_member(pJsonObject, catalog_idKey, node);
+	const gchar *languageKey = "language";
+	json_object_set_member(pJsonObject, languageKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+std::string
+CatalogsVerticalBatchRequest::getCatalogId()
+{
+	return catalog_id;
+}
+
+void
+CatalogsVerticalBatchRequest::setCatalogId(std::string  catalog_id)
+{
+	this->catalog_id = catalog_id;
 }
 
 std::string
@@ -247,18 +259,6 @@ CatalogsVerticalBatchRequest::setCountry(Country  country)
 	this->country = country;
 }
 
-std::string
-CatalogsVerticalBatchRequest::getLanguage()
-{
-	return language;
-}
-
-void
-CatalogsVerticalBatchRequest::setLanguage(std::string  language)
-{
-	this->language = language;
-}
-
 std::list<CatalogsCreativeAssetsBatchItem>
 CatalogsVerticalBatchRequest::getItems()
 {
@@ -272,15 +272,15 @@ CatalogsVerticalBatchRequest::setItems(std::list <CatalogsCreativeAssetsBatchIte
 }
 
 std::string
-CatalogsVerticalBatchRequest::getCatalogId()
+CatalogsVerticalBatchRequest::getLanguage()
 {
-	return catalog_id;
+	return language;
 }
 
 void
-CatalogsVerticalBatchRequest::setCatalogId(std::string  catalog_id)
+CatalogsVerticalBatchRequest::setLanguage(std::string  language)
 {
-	this->catalog_id = catalog_id;
+	this->language = language;
 }
 
 

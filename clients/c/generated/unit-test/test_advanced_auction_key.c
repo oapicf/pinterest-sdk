@@ -22,14 +22,14 @@ advanced_auction_key_t* instantiate_advanced_auction_key(int include_optional) {
   advanced_auction_key_t* advanced_auction_key = NULL;
   if (include_optional) {
     advanced_auction_key = advanced_auction_key_create(
+      pinterest_rest_api_advanced_auction_key__AD,
       "DS0294-M",
-      pinterest_rest_api_advanced_auction_key__"US",
       pinterest_rest_api_advanced_auction_key__"EN"
     );
   } else {
     advanced_auction_key = advanced_auction_key_create(
+      pinterest_rest_api_advanced_auction_key__AD,
       "DS0294-M",
-      pinterest_rest_api_advanced_auction_key__"US",
       pinterest_rest_api_advanced_auction_key__"EN"
     );
   }

@@ -8,7 +8,7 @@ import org.openapitools.vertxweb.server.model.AdGroupResponse;
 import org.openapitools.vertxweb.server.model.AdGroupUpdateRequest;
 import org.openapitools.vertxweb.server.model.AdGroupsAnalyticsResponseInner;
 import org.openapitools.vertxweb.server.model.AdGroupsList200Response;
-import org.openapitools.vertxweb.server.model.AdsAnalyticsTargetingType;
+import org.openapitools.vertxweb.server.model.AdsAnalyticsAdGroupTargetingType;
 import org.openapitools.vertxweb.server.model.BidFloor;
 import org.openapitools.vertxweb.server.model.BidFloorRequest;
 import org.openapitools.vertxweb.server.model.ConversionReportAttributionType;
@@ -16,6 +16,7 @@ import org.openapitools.vertxweb.server.model.Error;
 import org.openapitools.vertxweb.server.model.Granularity;
 import java.time.LocalDate;
 import org.openapitools.vertxweb.server.model.MetricsResponse;
+import org.openapitools.vertxweb.server.model.ReportingTimeZone;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -29,7 +30,7 @@ import java.util.Map;
 // Implement this class
 
 public class AdGroupsApiImpl implements AdGroupsApi {
-    public Future<ApiResponse<List<AdGroupsAnalyticsResponseInner>>> adGroupsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> adGroupIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime) {
+    public Future<ApiResponse<List<AdGroupsAnalyticsResponseInner>>> adGroupsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> adGroupIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, Boolean aggregateReportRows, ReportingTimeZone reportingTimezone) {
         return Future.failedFuture(new HttpException(501));
     }
 
@@ -53,7 +54,7 @@ public class AdGroupsApiImpl implements AdGroupsApi {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<MetricsResponse>> adGroupsTargetingAnalyticsGet(String adAccountId, List<String> adGroupIds, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes) {
+    public Future<ApiResponse<MetricsResponse>> adGroupsTargetingAnalyticsGet(String adAccountId, List<String> adGroupIds, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsAdGroupTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, List<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone) {
         return Future.failedFuture(new HttpException(501));
     }
 

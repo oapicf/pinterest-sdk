@@ -10,6 +10,8 @@ import org.openapitools.model.Country;
 
 @Canonical
 class CatalogsHotelBatchRequest {
+    /* Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog */
+    String catalogId
 
     enum CatalogTypeEnum {
     
@@ -35,6 +37,8 @@ class CatalogsHotelBatchRequest {
     CatalogTypeEnum catalogType
     
     Country country
+    /* Array with catalogs item operations */
+    List<CatalogsHotelBatchItem> items = new ArrayList<>()
 
     enum LanguageEnum {
     
@@ -270,8 +274,4 @@ class CatalogsHotelBatchRequest {
 
     /* We recommend using the CatalogsLocale values. */
     LanguageEnum language
-    /* Array with catalogs item operations */
-    List<CatalogsHotelBatchItem> items = new ArrayList<>()
-    /* Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog */
-    String catalogId
 }

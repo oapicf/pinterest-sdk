@@ -5,17 +5,17 @@ context("Test SearchUserBoardsGet200Response")
 
 model_instance <- SearchUserBoardsGet200Response$new()
 
+test_that("bookmark", {
+  # tests for the property `bookmark` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`bookmark`, "EXPECTED_RESULT")
+})
+
 test_that("items", {
   # tests for the property `items` (array[Board])
   # items
 
   # uncomment below to test the property
   #expect_equal(model.instance$`items`, "EXPECTED_RESULT")
-})
-
-test_that("bookmark", {
-  # tests for the property `bookmark` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`bookmark`, "EXPECTED_RESULT")
 })

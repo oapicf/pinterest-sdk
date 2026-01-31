@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.*;
@@ -16,28 +15,9 @@ import java.util.Objects;
 
 public class AdAccountOwner   {
   
-  private String username;
-
   private String id;
 
-  /**
-   * Public username for the user account
-   **/
-  public AdAccountOwner username(String username) {
-    this.username = username;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Public username for the user account")
-  @JsonProperty("username")
-  public String getUsername() {
-    return username;
-  }
-  public void setUsername(String username) {
-    this.username = username;
-  }
-
+  private String username;
 
   /**
    * The owning account&#39;s user ID.
@@ -58,6 +38,25 @@ public class AdAccountOwner   {
   }
 
 
+  /**
+   * Public username for the user account
+   **/
+  public AdAccountOwner username(String username) {
+    this.username = username;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Public username for the user account")
+  @JsonProperty("username")
+  public String getUsername() {
+    return username;
+  }
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -68,13 +67,13 @@ public class AdAccountOwner   {
       return false;
     }
     AdAccountOwner adAccountOwner = (AdAccountOwner) o;
-    return Objects.equals(this.username, adAccountOwner.username) &&
-        Objects.equals(this.id, adAccountOwner.id);
+    return Objects.equals(this.id, adAccountOwner.id) &&
+        Objects.equals(this.username, adAccountOwner.username);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(username, id);
+    return Objects.hash(id, username);
   }
 
   @Override
@@ -82,8 +81,8 @@ public class AdAccountOwner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdAccountOwner {\n");
     
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("}");
     return sb.toString();
   }

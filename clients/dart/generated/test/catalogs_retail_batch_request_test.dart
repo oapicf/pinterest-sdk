@@ -16,6 +16,12 @@ void main() {
   // final instance = CatalogsRetailBatchRequest();
 
   group('test CatalogsRetailBatchRequest', () {
+    // Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
+    // String catalogId
+    test('to test the property `catalogId`', () async {
+      // TODO
+    });
+
     // String catalogType
     test('to test the property `catalogType`', () async {
       // TODO
@@ -26,15 +32,15 @@ void main() {
       // TODO
     });
 
-    // We recommend using the CatalogsLocale values.
-    // String language
-    test('to test the property `language`', () async {
-      // TODO
-    });
-
     // Array with catalogs item operations
     // List<CatalogsRetailBatchRequestItemsInner> items (default value: const [])
     test('to test the property `items`', () async {
+      // TODO
+    });
+
+    // We recommend using the CatalogsLocale values.
+    // String language
+    test('to test the property `language`', () async {
       // TODO
     });
 

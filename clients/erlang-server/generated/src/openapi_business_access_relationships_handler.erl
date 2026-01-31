@@ -2,6 +2,14 @@
 -moduledoc """
 Exposes the following operation IDs:
 
+- `POST` to `/business_access/business_hierarchy/:business_hierarchy_id/brand_accounts`, OperationId: `brand_accounts/create`:
+Create a Brand Account.
+Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+
+- `PATCH` to `/business_access/business_hierarchy/:business_hierarchy_id/brand_accounts/:brand_account_id`, OperationId: `brand_accounts/update`:
+Update a Brand Account.
+Update an existing Brand Account
+
 - `DELETE` to `/businesses/:business_id/members`, OperationId: `delete_business_membership`:
 Terminate business memberships.
 Terminate memberships between the specified members and your business.
@@ -21,6 +29,10 @@ Get all members of the specified business. The return response will include the 
 - `GET` to `/businesses/:business_id/partners`, OperationId: `get/business_partners`:
 Get business partners.
 Get all partners of the specified business.  If the assets_summary&#x3D;TRUE and: - partner_type&#x3D;INTERNAL, the business assets returned are your business assets the partner has access to. - partner_type&#x3D;EXTERNAL, the business assets returned are your partner&#39;s business assets the partner has granted you   access to.
+
+- `PATCH` to `/businesses/:business_id/system_users/:system_user_id`, OperationId: `system_user/update`:
+Update a system user information..
+Update a system user information such as name.
 
 - `PATCH` to `/businesses/:business_id/members`, OperationId: `update/business_memberships`:
 Update member&#39;s business role.
@@ -49,11 +61,14 @@ Update a member&#39;s business role within the business.
 -type class() :: 'businessAccessRelationships'.
 
 -type operation_id() ::
-    'delete_business_membership' %% Terminate business memberships
+    'brand_accounts/create' %% Create a Brand Account
+    | 'brand_accounts/update' %% Update a Brand Account
+    | 'delete_business_membership' %% Terminate business memberships
     | 'delete_business_partners' %% Terminate business partnerships
     | 'get/business_employers' %% List business employers for user
     | 'get/business_members' %% Get business members
     | 'get/business_partners' %% Get business partners
+    | 'system_user/update' %% Update a system user information.
     | 'update/business_memberships'. %% Update member&#39;s business role
 
 
@@ -82,6 +97,10 @@ init(Req, {Operations, Module}) ->
 
 -spec allowed_methods(cowboy_req:req(), state()) ->
     {[binary()], cowboy_req:req(), state()}.
+allowed_methods(Req, #state{operation_id = 'brand_accounts/create'} = State) ->
+    {[<<"POST">>], Req, State};
+allowed_methods(Req, #state{operation_id = 'brand_accounts/update'} = State) ->
+    {[<<"PATCH">>], Req, State};
 allowed_methods(Req, #state{operation_id = 'delete_business_membership'} = State) ->
     {[<<"DELETE">>], Req, State};
 allowed_methods(Req, #state{operation_id = 'delete_business_partners'} = State) ->
@@ -92,6 +111,8 @@ allowed_methods(Req, #state{operation_id = 'get/business_members'} = State) ->
     {[<<"GET">>], Req, State};
 allowed_methods(Req, #state{operation_id = 'get/business_partners'} = State) ->
     {[<<"GET">>], Req, State};
+allowed_methods(Req, #state{operation_id = 'system_user/update'} = State) ->
+    {[<<"PATCH">>], Req, State};
 allowed_methods(Req, #state{operation_id = 'update/business_memberships'} = State) ->
     {[<<"PATCH">>], Req, State};
 allowed_methods(Req, State) ->
@@ -99,6 +120,24 @@ allowed_methods(Req, State) ->
 
 -spec is_authorized(cowboy_req:req(), state()) ->
     {true | {false, iodata()}, cowboy_req:req(), state()}.
+is_authorized(Req0,
+              #state{operation_id = 'brand_accounts/create' = OperationID,
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
+    end;
+is_authorized(Req0,
+              #state{operation_id = 'brand_accounts/update' = OperationID,
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
+    end;
 is_authorized(Req0,
               #state{operation_id = 'delete_business_membership' = OperationID,
                      api_key_callback = Handler} = State) ->
@@ -145,6 +184,15 @@ is_authorized(Req0,
             {{false, AuthHeader}, Req, State}
     end;
 is_authorized(Req0,
+              #state{operation_id = 'system_user/update' = OperationID,
+                     api_key_callback = Handler} = State) ->
+    case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
+        {true, Context, Req} ->
+            {true, Req, State#state{context = Context}};
+        {false, AuthHeader, Req} ->
+            {{false, AuthHeader}, Req, State}
+    end;
+is_authorized(Req0,
               #state{operation_id = 'update/business_memberships' = OperationID,
                      api_key_callback = Handler} = State) ->
     case openapi_auth:authorize_api_key(Handler, OperationID, header, <<"authorization">>, Req0) of
@@ -158,6 +206,14 @@ is_authorized(Req, State) ->
 
 -spec content_types_accepted(cowboy_req:req(), state()) ->
     {[{binary(), atom()}], cowboy_req:req(), state()}.
+content_types_accepted(Req, #state{operation_id = 'brand_accounts/create'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_accepted}
+     ], Req, State};
+content_types_accepted(Req, #state{operation_id = 'brand_accounts/update'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_accepted}
+     ], Req, State};
 content_types_accepted(Req, #state{operation_id = 'delete_business_membership'} = State) ->
     {[
       {<<"application/json">>, handle_type_accepted}
@@ -172,6 +228,10 @@ content_types_accepted(Req, #state{operation_id = 'get/business_members'} = Stat
     {[], Req, State};
 content_types_accepted(Req, #state{operation_id = 'get/business_partners'} = State) ->
     {[], Req, State};
+content_types_accepted(Req, #state{operation_id = 'system_user/update'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_accepted}
+     ], Req, State};
 content_types_accepted(Req, #state{operation_id = 'update/business_memberships'} = State) ->
     {[
       {<<"application/json">>, handle_type_accepted}
@@ -181,6 +241,10 @@ content_types_accepted(Req, State) ->
 
 -spec valid_content_headers(cowboy_req:req(), state()) ->
     {boolean(), cowboy_req:req(), state()}.
+valid_content_headers(Req, #state{operation_id = 'brand_accounts/create'} = State) ->
+    {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'brand_accounts/update'} = State) ->
+    {true, Req, State};
 valid_content_headers(Req, #state{operation_id = 'delete_business_membership'} = State) ->
     {true, Req, State};
 valid_content_headers(Req, #state{operation_id = 'delete_business_partners'} = State) ->
@@ -191,6 +255,8 @@ valid_content_headers(Req, #state{operation_id = 'get/business_members'} = State
     {true, Req, State};
 valid_content_headers(Req, #state{operation_id = 'get/business_partners'} = State) ->
     {true, Req, State};
+valid_content_headers(Req, #state{operation_id = 'system_user/update'} = State) ->
+    {true, Req, State};
 valid_content_headers(Req, #state{operation_id = 'update/business_memberships'} = State) ->
     {true, Req, State};
 valid_content_headers(Req, State) ->
@@ -198,6 +264,14 @@ valid_content_headers(Req, State) ->
 
 -spec content_types_provided(cowboy_req:req(), state()) ->
     {[{binary(), atom()}], cowboy_req:req(), state()}.
+content_types_provided(Req, #state{operation_id = 'brand_accounts/create'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'brand_accounts/update'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
 content_types_provided(Req, #state{operation_id = 'delete_business_membership'} = State) ->
     {[
       {<<"application/json">>, handle_type_provided}
@@ -215,6 +289,10 @@ content_types_provided(Req, #state{operation_id = 'get/business_members'} = Stat
       {<<"application/json">>, handle_type_provided}
      ], Req, State};
 content_types_provided(Req, #state{operation_id = 'get/business_partners'} = State) ->
+    {[
+      {<<"application/json">>, handle_type_provided}
+     ], Req, State};
+content_types_provided(Req, #state{operation_id = 'system_user/update'} = State) ->
     {[
       {<<"application/json">>, handle_type_provided}
      ], Req, State};

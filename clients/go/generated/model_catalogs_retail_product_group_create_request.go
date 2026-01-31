@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,15 +22,15 @@ var _ MappedNullable = &CatalogsRetailProductGroupCreateRequest{}
 
 // CatalogsRetailProductGroupCreateRequest Request object for creating a product group.
 type CatalogsRetailProductGroupCreateRequest struct {
-	// Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
-	CatalogType string `json:"catalog_type"`
-	Name string `json:"name"`
-	Description NullableString `json:"description,omitempty"`
-	Filters CatalogsProductGroupFiltersRequest `json:"filters"`
 	// Catalog id pertaining to the retail product group.
 	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
-	Country Country `json:"country"`
-	Locale CatalogsLocale `json:"locale"`
+	// Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
+	CatalogType string `json:"catalog_type"`
+	Country *Country `json:"country,omitempty"`
+	Description NullableString `json:"description,omitempty"`
+	Filters CatalogsProductGroupFiltersRequest `json:"filters"`
+	Locale *CatalogsLocale `json:"locale,omitempty"`
+	Name string `json:"name"`
 }
 
 type _CatalogsRetailProductGroupCreateRequest CatalogsRetailProductGroupCreateRequest
@@ -39,14 +39,12 @@ type _CatalogsRetailProductGroupCreateRequest CatalogsRetailProductGroupCreateRe
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsRetailProductGroupCreateRequest(catalogType string, name string, filters CatalogsProductGroupFiltersRequest, catalogId string, country Country, locale CatalogsLocale) *CatalogsRetailProductGroupCreateRequest {
+func NewCatalogsRetailProductGroupCreateRequest(catalogId string, catalogType string, filters CatalogsProductGroupFiltersRequest, name string) *CatalogsRetailProductGroupCreateRequest {
 	this := CatalogsRetailProductGroupCreateRequest{}
-	this.CatalogType = catalogType
-	this.Name = name
-	this.Filters = filters
 	this.CatalogId = catalogId
-	this.Country = country
-	this.Locale = locale
+	this.CatalogType = catalogType
+	this.Filters = filters
+	this.Name = name
 	return &this
 }
 
@@ -56,6 +54,30 @@ func NewCatalogsRetailProductGroupCreateRequest(catalogType string, name string,
 func NewCatalogsRetailProductGroupCreateRequestWithDefaults() *CatalogsRetailProductGroupCreateRequest {
 	this := CatalogsRetailProductGroupCreateRequest{}
 	return &this
+}
+
+// GetCatalogId returns the CatalogId field value
+func (o *CatalogsRetailProductGroupCreateRequest) GetCatalogId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CatalogId
+}
+
+// GetCatalogIdOk returns a tuple with the CatalogId field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsRetailProductGroupCreateRequest) GetCatalogIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CatalogId, true
+}
+
+// SetCatalogId sets field value
+func (o *CatalogsRetailProductGroupCreateRequest) SetCatalogId(v string) {
+	o.CatalogId = v
 }
 
 // GetCatalogType returns the CatalogType field value
@@ -82,28 +104,36 @@ func (o *CatalogsRetailProductGroupCreateRequest) SetCatalogType(v string) {
 	o.CatalogType = v
 }
 
-// GetName returns the Name field value
-func (o *CatalogsRetailProductGroupCreateRequest) GetName() string {
-	if o == nil {
-		var ret string
+// GetCountry returns the Country field value if set, zero value otherwise.
+func (o *CatalogsRetailProductGroupCreateRequest) GetCountry() Country {
+	if o == nil || IsNil(o.Country) {
+		var ret Country
 		return ret
 	}
-
-	return o.Name
+	return *o.Country
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetCountryOk returns a tuple with the Country field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsRetailProductGroupCreateRequest) GetNameOk() (*string, bool) {
-	if o == nil {
+func (o *CatalogsRetailProductGroupCreateRequest) GetCountryOk() (*Country, bool) {
+	if o == nil || IsNil(o.Country) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Country, true
 }
 
-// SetName sets field value
-func (o *CatalogsRetailProductGroupCreateRequest) SetName(v string) {
-	o.Name = v
+// HasCountry returns a boolean if a field has been set.
+func (o *CatalogsRetailProductGroupCreateRequest) HasCountry() bool {
+	if o != nil && !IsNil(o.Country) {
+		return true
+	}
+
+	return false
+}
+
+// SetCountry gets a reference to the given Country and assigns it to the Country field.
+func (o *CatalogsRetailProductGroupCreateRequest) SetCountry(v Country) {
+	o.Country = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -172,76 +202,60 @@ func (o *CatalogsRetailProductGroupCreateRequest) SetFilters(v CatalogsProductGr
 	o.Filters = v
 }
 
-// GetCatalogId returns the CatalogId field value
-func (o *CatalogsRetailProductGroupCreateRequest) GetCatalogId() string {
+// GetLocale returns the Locale field value if set, zero value otherwise.
+func (o *CatalogsRetailProductGroupCreateRequest) GetLocale() CatalogsLocale {
+	if o == nil || IsNil(o.Locale) {
+		var ret CatalogsLocale
+		return ret
+	}
+	return *o.Locale
+}
+
+// GetLocaleOk returns a tuple with the Locale field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsRetailProductGroupCreateRequest) GetLocaleOk() (*CatalogsLocale, bool) {
+	if o == nil || IsNil(o.Locale) {
+		return nil, false
+	}
+	return o.Locale, true
+}
+
+// HasLocale returns a boolean if a field has been set.
+func (o *CatalogsRetailProductGroupCreateRequest) HasLocale() bool {
+	if o != nil && !IsNil(o.Locale) {
+		return true
+	}
+
+	return false
+}
+
+// SetLocale gets a reference to the given CatalogsLocale and assigns it to the Locale field.
+func (o *CatalogsRetailProductGroupCreateRequest) SetLocale(v CatalogsLocale) {
+	o.Locale = &v
+}
+
+// GetName returns the Name field value
+func (o *CatalogsRetailProductGroupCreateRequest) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.CatalogId
+	return o.Name
 }
 
-// GetCatalogIdOk returns a tuple with the CatalogId field value
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsRetailProductGroupCreateRequest) GetCatalogIdOk() (*string, bool) {
+func (o *CatalogsRetailProductGroupCreateRequest) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.CatalogId, true
+	return &o.Name, true
 }
 
-// SetCatalogId sets field value
-func (o *CatalogsRetailProductGroupCreateRequest) SetCatalogId(v string) {
-	o.CatalogId = v
-}
-
-// GetCountry returns the Country field value
-func (o *CatalogsRetailProductGroupCreateRequest) GetCountry() Country {
-	if o == nil {
-		var ret Country
-		return ret
-	}
-
-	return o.Country
-}
-
-// GetCountryOk returns a tuple with the Country field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsRetailProductGroupCreateRequest) GetCountryOk() (*Country, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Country, true
-}
-
-// SetCountry sets field value
-func (o *CatalogsRetailProductGroupCreateRequest) SetCountry(v Country) {
-	o.Country = v
-}
-
-// GetLocale returns the Locale field value
-func (o *CatalogsRetailProductGroupCreateRequest) GetLocale() CatalogsLocale {
-	if o == nil {
-		var ret CatalogsLocale
-		return ret
-	}
-
-	return o.Locale
-}
-
-// GetLocaleOk returns a tuple with the Locale field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsRetailProductGroupCreateRequest) GetLocaleOk() (*CatalogsLocale, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Locale, true
-}
-
-// SetLocale sets field value
-func (o *CatalogsRetailProductGroupCreateRequest) SetLocale(v CatalogsLocale) {
-	o.Locale = v
+// SetName sets field value
+func (o *CatalogsRetailProductGroupCreateRequest) SetName(v string) {
+	o.Name = v
 }
 
 func (o CatalogsRetailProductGroupCreateRequest) MarshalJSON() ([]byte, error) {
@@ -254,15 +268,19 @@ func (o CatalogsRetailProductGroupCreateRequest) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsRetailProductGroupCreateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["catalog_id"] = o.CatalogId
 	toSerialize["catalog_type"] = o.CatalogType
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Country) {
+		toSerialize["country"] = o.Country
+	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
 	toSerialize["filters"] = o.Filters
-	toSerialize["catalog_id"] = o.CatalogId
-	toSerialize["country"] = o.Country
-	toSerialize["locale"] = o.Locale
+	if !IsNil(o.Locale) {
+		toSerialize["locale"] = o.Locale
+	}
+	toSerialize["name"] = o.Name
 	return toSerialize, nil
 }
 
@@ -271,12 +289,10 @@ func (o *CatalogsRetailProductGroupCreateRequest) UnmarshalJSON(data []byte) (er
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"catalog_type",
-		"name",
-		"filters",
 		"catalog_id",
-		"country",
-		"locale",
+		"catalog_type",
+		"filters",
+		"name",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -1,0 +1,42 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Object describing an update to the campaign level bid multipliers.",
+  "name": "CampaignBidOptionsUpdate",
+  "fields": [
+    {
+      "name": "app_type_multipliers",
+      "type": ["null", "model.AppTypeMultipliers"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "audience_multipliers",
+      "type": ["null", "model.CampaignAudienceMultipliers"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "placement_multipliers",
+      "type": ["null", "model.PlacementMultipliers"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "update_mask",
+      "type": {
+        "type": "enum",
+        "name": "CampaignBidOptionsUpdate_updateUnderscoremask",
+        "symbols": [
+          "AUDIENCE",
+          "APP_TYPE",
+          "PLACEMENT",
+          "GENDER",
+          "AGE_BUCKET"
+        ]
+      },
+      "doc": "List of fields to update, only the fields in the list will be updated."
+    }
+  ]
+
+}

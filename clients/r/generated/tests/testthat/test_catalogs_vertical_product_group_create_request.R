@@ -5,6 +5,14 @@ context("Test CatalogsVerticalProductGroupCreateRequest")
 
 model_instance <- CatalogsVerticalProductGroupCreateRequest$new()
 
+test_that("catalog_id", {
+  # tests for the property `catalog_id` (character)
+  # Catalog id pertaining to the creative assets product group.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`catalog_id`, "EXPECTED_RESULT")
+})
+
 test_that("catalog_type", {
   # tests for the property `catalog_type` (character)
 
@@ -12,11 +20,11 @@ test_that("catalog_type", {
   #expect_equal(model.instance$`catalog_type`, "EXPECTED_RESULT")
 })
 
-test_that("name", {
-  # tests for the property `name` (character)
+test_that("country", {
+  # tests for the property `country` (Country)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`country`, "EXPECTED_RESULT")
 })
 
 test_that("description", {
@@ -33,24 +41,16 @@ test_that("filters", {
   #expect_equal(model.instance$`filters`, "EXPECTED_RESULT")
 })
 
-test_that("catalog_id", {
-  # tests for the property `catalog_id` (character)
-  # Catalog id pertaining to the creative assets product group.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`catalog_id`, "EXPECTED_RESULT")
-})
-
-test_that("country", {
-  # tests for the property `country` (Country)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`country`, "EXPECTED_RESULT")
-})
-
 test_that("locale", {
   # tests for the property `locale` (CatalogsLocale)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`locale`, "EXPECTED_RESULT")
+})
+
+test_that("name", {
+  # tests for the property `name` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
 })

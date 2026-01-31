@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,19 +17,22 @@ package openapi
 // AdvancedAuctionItemsSubmitDeleteRecord - Object describing an item bid option deletion operation
 type AdvancedAuctionItemsSubmitDeleteRecord struct {
 
+	Country Country `json:"country"`
+
 	// The catalog retail item id in the merchant namespace
 	ItemId string `json:"item_id"`
 
-	Country Country `json:"country"`
-
 	Language Language `json:"language"`
+
+	// Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+	Errors []AdvancedAuctionOperationError `json:"errors,omitempty"`
 }
 
 // AssertAdvancedAuctionItemsSubmitDeleteRecordRequired checks if the required fields are not zero-ed
 func AssertAdvancedAuctionItemsSubmitDeleteRecordRequired(obj AdvancedAuctionItemsSubmitDeleteRecord) error {
 	elements := map[string]interface{}{
-		"item_id": obj.ItemId,
 		"country": obj.Country,
+		"item_id": obj.ItemId,
 		"language": obj.Language,
 	}
 	for name, el := range elements {
@@ -38,10 +41,20 @@ func AssertAdvancedAuctionItemsSubmitDeleteRecordRequired(obj AdvancedAuctionIte
 		}
 	}
 
+	for _, el := range obj.Errors {
+		if err := AssertAdvancedAuctionOperationErrorRequired(el); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 // AssertAdvancedAuctionItemsSubmitDeleteRecordConstraints checks if the values respects the defined constraints
 func AssertAdvancedAuctionItemsSubmitDeleteRecordConstraints(obj AdvancedAuctionItemsSubmitDeleteRecord) error {
+	for _, el := range obj.Errors {
+		if err := AssertAdvancedAuctionOperationErrorConstraints(el); err != nil {
+			return err
+		}
+	}
 	return nil
 }

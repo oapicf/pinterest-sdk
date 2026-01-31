@@ -5,21 +5,43 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.PinMedia;
-import org.openapitools.model.PinMediaWithImageAllOfImages;
+import org.openapitools.model.ImageSize;
 
 @Canonical
 class PinMediaWithVideo {
     
-    PinMediaWithImageAllOfImages images
-    
     String coverImageUrl
-    /* Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps. */
-    String videoUrl
-    /* Duration (in milliseconds) */
+    /* Duration (in miliseconds). Field maybe null after creation due to video processing time. */
     BigDecimal duration
-    /* Height (in pixels) */
+    /* Height (in pixels). Field maybe null after creation due to video processing time. */
     Integer height
-    /* Width (in pixels) */
+    
+    ImageSize images
+
+    enum MediaTypeEnum {
+    
+        VIDEO("video")
+    
+        private final String value
+    
+        MediaTypeEnum(String value) {
+            this.value = value
+        }
+    
+        String getValue() {
+            value
+        }
+    
+        @Override
+        String toString() {
+            String.valueOf(value)
+        }
+    }
+
+    
+    MediaTypeEnum mediaType
+    /* Video url (720p).  **Note:** This field is limited and not available to all apps. */
+    String videoUrl
+    /* Width (in pixels). Field maybe null after creation due to video processing time. */
     Integer width
 }

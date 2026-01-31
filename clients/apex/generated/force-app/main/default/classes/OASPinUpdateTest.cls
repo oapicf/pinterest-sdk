@@ -82,13 +82,12 @@ private class OASPinUpdateTest {
     @isTest
     private static void defaultValuesPopulated() {
         OASPinUpdate pinUpdate = new OASPinUpdate();
-        System.assertEquals(new List<OASPinUpdateCarouselSlotsInner>(), pinUpdate.carouselSlots);
+        System.assertEquals(new List<OASCarouselSlot>(), pinUpdate.carouselSlots);
         System.assertEquals(null, pinUpdate.altText);
         System.assertEquals(null, pinUpdate.boardId);
         System.assertEquals(null, pinUpdate.boardSectionId);
         System.assertEquals(null, pinUpdate.description);
         System.assertEquals(null, pinUpdate.link);
         System.assertEquals(null, pinUpdate.title);
-        System.assertEquals(null, pinUpdate.note);
     }
 }

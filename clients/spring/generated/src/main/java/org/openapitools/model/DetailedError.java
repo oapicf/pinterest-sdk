@@ -20,14 +20,14 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "DetailedError", description = "Used for including extra details to a base error")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class DetailedError {
 
   private Integer code;
 
-  private String message;
-
   private Object details;
+
+  private String message;
 
   public DetailedError() {
     super();
@@ -36,10 +36,10 @@ public class DetailedError {
   /**
    * Constructor with only required parameters
    */
-  public DetailedError(Integer code, String message, Object details) {
+  public DetailedError(Integer code, Object details, String message) {
     this.code = code;
-    this.message = message;
     this.details = details;
+    this.message = message;
   }
 
   public DetailedError code(Integer code) {
@@ -62,26 +62,6 @@ public class DetailedError {
     this.code = code;
   }
 
-  public DetailedError message(String message) {
-    this.message = message;
-    return this;
-  }
-
-  /**
-   * Get message
-   * @return message
-   */
-  @NotNull 
-  @Schema(name = "message", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("message")
-  public String getMessage() {
-    return message;
-  }
-
-  public void setMessage(String message) {
-    this.message = message;
-  }
-
   public DetailedError details(Object details) {
     this.details = details;
     return this;
@@ -102,6 +82,26 @@ public class DetailedError {
     this.details = details;
   }
 
+  public DetailedError message(String message) {
+    this.message = message;
+    return this;
+  }
+
+  /**
+   * Get message
+   * @return message
+   */
+  @NotNull 
+  @Schema(name = "message", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("message")
+  public String getMessage() {
+    return message;
+  }
+
+  public void setMessage(String message) {
+    this.message = message;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -112,13 +112,13 @@ public class DetailedError {
     }
     DetailedError detailedError = (DetailedError) o;
     return Objects.equals(this.code, detailedError.code) &&
-        Objects.equals(this.message, detailedError.message) &&
-        Objects.equals(this.details, detailedError.details);
+        Objects.equals(this.details, detailedError.details) &&
+        Objects.equals(this.message, detailedError.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message, details);
+    return Objects.hash(code, details, message);
   }
 
   @Override
@@ -126,8 +126,8 @@ public class DetailedError {
     StringBuilder sb = new StringBuilder();
     sb.append("class DetailedError {\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");
     return sb.toString();
   }

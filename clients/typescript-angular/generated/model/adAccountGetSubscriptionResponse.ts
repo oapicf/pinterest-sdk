@@ -19,14 +19,6 @@ export interface AdAccountGetSubscriptionResponse {
      */
     webhook_url?: string;
     /**
-     * Subscription ID.
-     */
-    id?: string;
-    /**
-     * User account used to subscribe lead data.
-     */
-    user_account_id?: string;
-    /**
      * The Ad Account ID that this lead form belongs to.
      */
     ad_account_id?: string;
@@ -35,16 +27,24 @@ export interface AdAccountGetSubscriptionResponse {
      */
     api_version?: string;
     /**
-     * Base64 encoded key for client to decrypt lead data.
+     * Lead subscription creation time. Unix timestamp in milliseconds.
      */
-    cryptographic_key?: string | null;
+    created_time?: number;
     /**
      * Lead data encryption algorithm.
      */
     cryptographic_algorithm?: string | null;
     /**
-     * Lead form creation time. Unix timestamp in milliseconds.
+     * Base64 encoded key for client to decrypt lead data.
      */
-    created_time?: number;
+    cryptographic_key?: string | null;
+    /**
+     * Subscription ID.
+     */
+    id?: string;
+    /**
+     * User account used to subscribe lead data.
+     */
+    user_account_id?: string;
 }
 

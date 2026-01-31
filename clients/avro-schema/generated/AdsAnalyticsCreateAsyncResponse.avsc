@@ -5,6 +5,12 @@
   "name": "AdsAnalyticsCreateAsyncResponse",
   "fields": [
     {
+      "name": "message",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
       "name": "report_status",
       "type": ["null", "model.BulkReportingJobStatus"],
       "doc": "",
@@ -12,12 +18,6 @@
     },
     {
       "name": "token",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "message",
       "type": ["null", "string"],
       "doc": "",
       "default": null

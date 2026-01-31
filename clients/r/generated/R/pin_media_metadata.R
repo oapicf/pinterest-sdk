@@ -16,23 +16,23 @@ PinMediaMetadata <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field any_of  a list of object types defined in the anyOf schema.
-    any_of = list("ImageMetadata", "VideoMetadata"),
+    any_of = list("ImageMetadata", "VideoMetadataWithItemType"),
 
     #' @description
     #' Initialize a new PinMediaMetadata.
     #'
-    #' @param instance an instance of the object defined in the anyOf schemas: "ImageMetadata", "VideoMetadata"
+    #' @param instance an instance of the object defined in the anyOf schemas: "ImageMetadata", "VideoMetadataWithItemType"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ImageMetadata") {
         self$actual_instance <- instance
         self$actual_type <- "ImageMetadata"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "VideoMetadata") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "VideoMetadataWithItemType") {
         self$actual_instance <- instance
-        self$actual_type <- "VideoMetadata"
+        self$actual_type <- "VideoMetadataWithItemType"
       } else {
-        stop(paste("Failed to initialize PinMediaMetadata with anyOf schemas ImageMetadata, VideoMetadata. Provided class name: ",
+        stop(paste("Failed to initialize PinMediaMetadata with anyOf schemas ImageMetadata, VideoMetadataWithItemType. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -71,22 +71,22 @@ PinMediaMetadata <- R6::R6Class(
         error_messages <- append(error_messages, `ImageMetadata_result`["message"])
       }
 
-      `VideoMetadata_result` <- tryCatch({
-          `VideoMetadata`$public_methods$validateJSON(input)
-          `VideoMetadata_instance` <- `VideoMetadata`$new()
-          self$actual_instance <- `VideoMetadata_instance`$fromJSON(input)
-          self$actual_type <- "VideoMetadata"
+      `VideoMetadataWithItemType_result` <- tryCatch({
+          `VideoMetadataWithItemType`$public_methods$validateJSON(input)
+          `VideoMetadataWithItemType_instance` <- `VideoMetadataWithItemType`$new()
+          self$actual_instance <- `VideoMetadataWithItemType_instance`$fromJSON(input)
+          self$actual_type <- "VideoMetadataWithItemType"
           return(self)
         },
         error = function(err) err
       )
 
-      if (!is.null(`VideoMetadata_result`["error"])) {
-        error_messages <- append(error_messages, `VideoMetadata_result`["message"])
+      if (!is.null(`VideoMetadataWithItemType_result`["error"])) {
+        error_messages <- append(error_messages, `VideoMetadataWithItemType_result`["message"])
       }
 
       # no match
-      stop(paste("No match found when deserializing the input into PinMediaMetadata with anyOf schemas ImageMetadata, VideoMetadata. Details: >>",
+      stop(paste("No match found when deserializing the input into PinMediaMetadata with anyOf schemas ImageMetadata, VideoMetadataWithItemType. Details: >>",
                  paste(error_messages, collapse = " >> ")))
     },
 

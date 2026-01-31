@@ -11,7 +11,7 @@ import org.openapitools.model.UserSummary;
 @Canonical
 class FollowersList200Response {
     
-    List<UserSummary> items = new ArrayList<>()
-    
     String bookmark
+    
+    List<UserSummary> items = new ArrayList<>()
 }

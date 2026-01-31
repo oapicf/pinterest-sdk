@@ -22,6 +22,8 @@ public struct CustomerList: Codable, JSONEncodable, Hashable {
     public var adAccountId: String?
     /** Creation time. Unix timestamp in seconds. */
     public var createdTime: Double?
+    /** Customer list errors */
+    public var exceptions: AnyCodable?
     /** Customer list ID. */
     public var id: String?
     /** Customer list name. */
@@ -38,12 +40,11 @@ public struct CustomerList: Codable, JSONEncodable, Hashable {
     public var type: String?
     /** Last update time. Unix timestamp in seconds. */
     public var updatedTime: Double?
-    /** Customer list errors */
-    public var exceptions: AnyCodable?
 
-    public init(adAccountId: String? = nil, createdTime: Double? = nil, id: String? = nil, name: String? = nil, numBatches: Double? = nil, numRemovedUserRecords: Double? = nil, numUploadedUserRecords: Double? = nil, status: Status? = nil, type: String? = nil, updatedTime: Double? = nil, exceptions: AnyCodable? = nil) {
+    public init(adAccountId: String? = nil, createdTime: Double? = nil, exceptions: AnyCodable? = nil, id: String? = nil, name: String? = nil, numBatches: Double? = nil, numRemovedUserRecords: Double? = nil, numUploadedUserRecords: Double? = nil, status: Status? = nil, type: String? = nil, updatedTime: Double? = nil) {
         self.adAccountId = adAccountId
         self.createdTime = createdTime
+        self.exceptions = exceptions
         self.id = id
         self.name = name
         self.numBatches = numBatches
@@ -52,12 +53,12 @@ public struct CustomerList: Codable, JSONEncodable, Hashable {
         self.status = status
         self.type = type
         self.updatedTime = updatedTime
-        self.exceptions = exceptions
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case adAccountId = "ad_account_id"
         case createdTime = "created_time"
+        case exceptions
         case id
         case name
         case numBatches = "num_batches"
@@ -66,7 +67,6 @@ public struct CustomerList: Codable, JSONEncodable, Hashable {
         case status
         case type
         case updatedTime = "updated_time"
-        case exceptions
     }
 
     // Encodable protocol methods
@@ -75,6 +75,7 @@ public struct CustomerList: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(adAccountId, forKey: .adAccountId)
         try container.encodeIfPresent(createdTime, forKey: .createdTime)
+        try container.encodeIfPresent(exceptions, forKey: .exceptions)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(numBatches, forKey: .numBatches)
@@ -83,7 +84,6 @@ public struct CustomerList: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(status, forKey: .status)
         try container.encodeIfPresent(type, forKey: .type)
         try container.encodeIfPresent(updatedTime, forKey: .updatedTime)
-        try container.encodeIfPresent(exceptions, forKey: .exceptions)
     }
 }
 

@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server DataStatus"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a DataStatus"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  DataStatus {
+    title = DataStatus
+    description = DataStatus
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  DataStatus {
+    title = DataStatus
+    description = DataStatus
+    implements = openapi_server.resourceTypes.DataStatus
+
+  }
+}

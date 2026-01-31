@@ -29,14 +29,6 @@ public class CatalogsVerticalsListProductsByCatalogBasedFilterRequestTest {
     }
 
     /**
-     * Test the property 'catalogType'
-     */
-    @Test
-    public void catalogTypeTest() {
-        // TODO: test catalogType
-    }
-
-    /**
      * Test the property 'catalogId'
      */
     @Test
@@ -45,11 +37,11 @@ public class CatalogsVerticalsListProductsByCatalogBasedFilterRequestTest {
     }
 
     /**
-     * Test the property 'filters'
+     * Test the property 'catalogType'
      */
     @Test
-    public void filtersTest() {
-        // TODO: test filters
+    public void catalogTypeTest() {
+        // TODO: test catalogType
     }
 
     /**
@@ -58,6 +50,14 @@ public class CatalogsVerticalsListProductsByCatalogBasedFilterRequestTest {
     @Test
     public void countryTest() {
         // TODO: test country
+    }
+
+    /**
+     * Test the property 'filters'
+     */
+    @Test
+    public void filtersTest() {
+        // TODO: test filters
     }
 
     /**

@@ -1,0 +1,13 @@
+# PinterestSdk.ItemResponseOneOf1
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**catalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**errors** | [**[ItemValidationEvent]**](ItemValidationEvent.md) |  | 
+**itemId** | **String** | The catalog item id in the merchant namespace | [optional] 
+**hotelId** | **String** | The catalog hotel id in the merchant namespace | [optional] 
+**creativeAssetsId** | **String** | The catalog creative assets id in the merchant namespace | [optional] 
+
+

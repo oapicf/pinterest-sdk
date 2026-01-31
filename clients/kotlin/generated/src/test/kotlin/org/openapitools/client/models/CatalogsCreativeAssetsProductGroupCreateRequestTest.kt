@@ -26,16 +26,16 @@ class CatalogsCreativeAssetsProductGroupCreateRequestTest : ShouldSpec() {
         // uncomment below to create an instance of CatalogsCreativeAssetsProductGroupCreateRequest
         //val modelInstance = CatalogsCreativeAssetsProductGroupCreateRequest()
 
+        // to test the property `catalogId` - Catalog id pertaining to the creative assets product group.
+        should("test catalogId") {
+            // uncomment below to test the property
+            //modelInstance.catalogId shouldBe ("TODO")
+        }
+
         // to test the property `catalogType`
         should("test catalogType") {
             // uncomment below to test the property
             //modelInstance.catalogType shouldBe ("TODO")
-        }
-
-        // to test the property `name`
-        should("test name") {
-            // uncomment below to test the property
-            //modelInstance.name shouldBe ("TODO")
         }
 
         // to test the property `filters`
@@ -44,10 +44,10 @@ class CatalogsCreativeAssetsProductGroupCreateRequestTest : ShouldSpec() {
             //modelInstance.filters shouldBe ("TODO")
         }
 
-        // to test the property `catalogId` - Catalog id pertaining to the creative assets product group.
-        should("test catalogId") {
+        // to test the property `name`
+        should("test name") {
             // uncomment below to test the property
-            //modelInstance.catalogId shouldBe ("TODO")
+            //modelInstance.name shouldBe ("TODO")
         }
 
         // to test the property `description`

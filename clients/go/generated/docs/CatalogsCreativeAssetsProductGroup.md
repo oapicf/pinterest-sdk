@@ -4,20 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CatalogId** | **string** | Catalog id pertaining to the creative assets product group. | 
 **CatalogType** | **string** |  | 
-**Id** | **string** | ID of the creative assets product group. | 
-**Name** | Pointer to **string** | Name of creative assets product group | [optional] 
+**CreatedAt** | Pointer to **int32** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
 **Description** | Pointer to **NullableString** |  | [optional] 
 **Filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
-**CreatedAt** | Pointer to **int32** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
+**Id** | **string** | ID of the creative assets product group. | 
+**Name** | Pointer to **string** | Name of creative assets product group | [optional] 
 **UpdatedAt** | Pointer to **int32** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] 
-**CatalogId** | **string** | Catalog id pertaining to the creative assets product group. | 
 
 ## Methods
 
 ### NewCatalogsCreativeAssetsProductGroup
 
-`func NewCatalogsCreativeAssetsProductGroup(catalogType string, id string, filters CatalogsCreativeAssetsProductGroupFilters, catalogId string, ) *CatalogsCreativeAssetsProductGroup`
+`func NewCatalogsCreativeAssetsProductGroup(catalogId string, catalogType string, filters CatalogsCreativeAssetsProductGroupFilters, id string, ) *CatalogsCreativeAssetsProductGroup`
 
 NewCatalogsCreativeAssetsProductGroup instantiates a new CatalogsCreativeAssetsProductGroup object
 This constructor will assign default values to properties that have it defined,
@@ -31,6 +31,26 @@ will change when the set of required properties is changed
 NewCatalogsCreativeAssetsProductGroupWithDefaults instantiates a new CatalogsCreativeAssetsProductGroup object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCatalogId
+
+`func (o *CatalogsCreativeAssetsProductGroup) GetCatalogId() string`
+
+GetCatalogId returns the CatalogId field if non-nil, zero value otherwise.
+
+### GetCatalogIdOk
+
+`func (o *CatalogsCreativeAssetsProductGroup) GetCatalogIdOk() (*string, bool)`
+
+GetCatalogIdOk returns a tuple with the CatalogId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCatalogId
+
+`func (o *CatalogsCreativeAssetsProductGroup) SetCatalogId(v string)`
+
+SetCatalogId sets CatalogId field to given value.
+
 
 ### GetCatalogType
 
@@ -52,50 +72,30 @@ and a boolean to check if the value has been set.
 SetCatalogType sets CatalogType field to given value.
 
 
-### GetId
+### GetCreatedAt
 
-`func (o *CatalogsCreativeAssetsProductGroup) GetId() string`
+`func (o *CatalogsCreativeAssetsProductGroup) GetCreatedAt() int32`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetCreatedAtOk
 
-`func (o *CatalogsCreativeAssetsProductGroup) GetIdOk() (*string, bool)`
+`func (o *CatalogsCreativeAssetsProductGroup) GetCreatedAtOk() (*int32, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetCreatedAt
 
-`func (o *CatalogsCreativeAssetsProductGroup) SetId(v string)`
+`func (o *CatalogsCreativeAssetsProductGroup) SetCreatedAt(v int32)`
 
-SetId sets Id field to given value.
+SetCreatedAt sets CreatedAt field to given value.
 
+### HasCreatedAt
 
-### GetName
+`func (o *CatalogsCreativeAssetsProductGroup) HasCreatedAt() bool`
 
-`func (o *CatalogsCreativeAssetsProductGroup) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *CatalogsCreativeAssetsProductGroup) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *CatalogsCreativeAssetsProductGroup) SetName(v string)`
-
-SetName sets Name field to given value.
-
-### HasName
-
-`func (o *CatalogsCreativeAssetsProductGroup) HasName() bool`
-
-HasName returns a boolean if a field has been set.
+HasCreatedAt returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -152,30 +152,50 @@ and a boolean to check if the value has been set.
 SetFilters sets Filters field to given value.
 
 
-### GetCreatedAt
+### GetId
 
-`func (o *CatalogsCreativeAssetsProductGroup) GetCreatedAt() int32`
+`func (o *CatalogsCreativeAssetsProductGroup) GetId() string`
 
-GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+GetId returns the Id field if non-nil, zero value otherwise.
 
-### GetCreatedAtOk
+### GetIdOk
 
-`func (o *CatalogsCreativeAssetsProductGroup) GetCreatedAtOk() (*int32, bool)`
+`func (o *CatalogsCreativeAssetsProductGroup) GetIdOk() (*string, bool)`
 
-GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCreatedAt
+### SetId
 
-`func (o *CatalogsCreativeAssetsProductGroup) SetCreatedAt(v int32)`
+`func (o *CatalogsCreativeAssetsProductGroup) SetId(v string)`
 
-SetCreatedAt sets CreatedAt field to given value.
+SetId sets Id field to given value.
 
-### HasCreatedAt
 
-`func (o *CatalogsCreativeAssetsProductGroup) HasCreatedAt() bool`
+### GetName
 
-HasCreatedAt returns a boolean if a field has been set.
+`func (o *CatalogsCreativeAssetsProductGroup) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *CatalogsCreativeAssetsProductGroup) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *CatalogsCreativeAssetsProductGroup) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *CatalogsCreativeAssetsProductGroup) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 
@@ -201,26 +221,6 @@ SetUpdatedAt sets UpdatedAt field to given value.
 `func (o *CatalogsCreativeAssetsProductGroup) HasUpdatedAt() bool`
 
 HasUpdatedAt returns a boolean if a field has been set.
-
-### GetCatalogId
-
-`func (o *CatalogsCreativeAssetsProductGroup) GetCatalogId() string`
-
-GetCatalogId returns the CatalogId field if non-nil, zero value otherwise.
-
-### GetCatalogIdOk
-
-`func (o *CatalogsCreativeAssetsProductGroup) GetCatalogIdOk() (*string, bool)`
-
-GetCatalogIdOk returns a tuple with the CatalogId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCatalogId
-
-`func (o *CatalogsCreativeAssetsProductGroup) SetCatalogId(v string)`
-
-SetCatalogId sets CatalogId field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

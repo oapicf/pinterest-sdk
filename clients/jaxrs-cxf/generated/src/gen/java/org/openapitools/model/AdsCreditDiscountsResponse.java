@@ -28,6 +28,22 @@ public class AdsCreditDiscountsResponse  {
 
   private String advertiserId;
 
+ /**
+  * Currency value for the discount.
+  */
+  @ApiModelProperty(example = "USD", value = "Currency value for the discount.")
+
+  private String discountCurrency;
+
+ /**
+  * The discount applied in the offer’s currency value.
+  */
+  @ApiModelProperty(example = "125000000", value = "The discount applied in the offer’s currency value.")
+
+  @Valid
+
+  private BigDecimal discountInMicroCurrency;
+
 public enum DiscountTypeEnum {
 
 COUPON(String.valueOf("COUPON")), CREDIT(String.valueOf("CREDIT")), COUPON_APPLIED(String.valueOf("COUPON_APPLIED")), CREDIT_APPLIED(String.valueOf("CREDIT_APPLIED")), MARKETING_OFFER_CREDIT(String.valueOf("MARKETING_OFFER_CREDIT")), MARKETING_OFFER_CREDIT_APPLIED(String.valueOf("MARKETING_OFFER_CREDIT_APPLIED")), GOODWILL_CREDIT(String.valueOf("GOODWILL_CREDIT")), GOODWILL_CREDIT_APPLIED(String.valueOf("GOODWILL_CREDIT_APPLIED")), INTERNAL_CREDIT(String.valueOf("INTERNAL_CREDIT")), INTERNAL_CREDIT_APPLIED(String.valueOf("INTERNAL_CREDIT_APPLIED")), PREPAID_CREDIT(String.valueOf("PREPAID_CREDIT")), PREPAID_CREDIT_APPLIED(String.valueOf("PREPAID_CREDIT_APPLIED")), SALES_INCENTIVE_CREDIT(String.valueOf("SALES_INCENTIVE_CREDIT")), SALES_INCENTIVE_CREDIT_APPLIED(String.valueOf("SALES_INCENTIVE_CREDIT_APPLIED")), CREDIT_EXPIRED(String.valueOf("CREDIT_EXPIRED")), FUTURE_CREDIT(String.valueOf("FUTURE_CREDIT")), REFERRAL_CREDIT(String.valueOf("REFERRAL_CREDIT")), INVOICE_SALES_INCENTIVE_CREDIT(String.valueOf("INVOICE_SALES_INCENTIVE_CREDIT")), INVOICE_SALES_INCENTIVE_CREDIT_APPLIED(String.valueOf("INVOICE_SALES_INCENTIVE_CREDIT_APPLIED")), PREPAID_CREDIT_REFUND(String.valueOf("PREPAID_CREDIT_REFUND"));
@@ -68,29 +84,6 @@ COUPON(String.valueOf("COUPON")), CREDIT(String.valueOf("CREDIT")), COUPON_APPLI
   private DiscountTypeEnum discountType;
 
  /**
-  * The discount applied in the offer’s currency value.
-  */
-  @ApiModelProperty(example = "125000000", value = "The discount applied in the offer’s currency value.")
-
-  @Valid
-
-  private BigDecimal discountInMicroCurrency;
-
- /**
-  * Currency value for the discount.
-  */
-  @ApiModelProperty(example = "USD", value = "Currency value for the discount.")
-
-  private String discountCurrency;
-
- /**
-  * Human readable title of the offer code.
-  */
-  @ApiModelProperty(example = "Ads Credits", value = "Human readable title of the offer code.")
-
-  private String title;
-
- /**
   * The credits left to spend.
   */
   @ApiModelProperty(example = "125000000", value = "The credits left to spend.")
@@ -98,6 +91,13 @@ COUPON(String.valueOf("COUPON")), CREDIT(String.valueOf("CREDIT")), COUPON_APPLI
   @Valid
 
   private BigDecimal remainingDiscountInMicroCurrency;
+
+ /**
+  * Human readable title of the offer code.
+  */
+  @ApiModelProperty(example = "Ads Credits", value = "Human readable title of the offer code.")
+
+  private String title;
  /**
    * True if the offer code is currently active.
    * @return active
@@ -135,23 +135,20 @@ COUPON(String.valueOf("COUPON")), CREDIT(String.valueOf("CREDIT")), COUPON_APPLI
   }
 
  /**
-   * The type of discount of this credit
-   * @return discountType
+   * Currency value for the discount.
+   * @return discountCurrency
   **/
-  @JsonProperty("discountType")
-  public String getDiscountType() {
-    if (discountType == null) {
-      return null;
-    }
-    return discountType.value();
+  @JsonProperty("discountCurrency")
+  public String getDiscountCurrency() {
+    return discountCurrency;
   }
 
-  public void setDiscountType(DiscountTypeEnum discountType) {
-    this.discountType = discountType;
+  public void setDiscountCurrency(String discountCurrency) {
+    this.discountCurrency = discountCurrency;
   }
 
-  public AdsCreditDiscountsResponse discountType(DiscountTypeEnum discountType) {
-    this.discountType = discountType;
+  public AdsCreditDiscountsResponse discountCurrency(String discountCurrency) {
+    this.discountCurrency = discountCurrency;
     return this;
   }
 
@@ -174,38 +171,23 @@ COUPON(String.valueOf("COUPON")), CREDIT(String.valueOf("CREDIT")), COUPON_APPLI
   }
 
  /**
-   * Currency value for the discount.
-   * @return discountCurrency
+   * The type of discount of this credit
+   * @return discountType
   **/
-  @JsonProperty("discountCurrency")
-  public String getDiscountCurrency() {
-    return discountCurrency;
+  @JsonProperty("discountType")
+  public String getDiscountType() {
+    if (discountType == null) {
+      return null;
+    }
+    return discountType.value();
   }
 
-  public void setDiscountCurrency(String discountCurrency) {
-    this.discountCurrency = discountCurrency;
+  public void setDiscountType(DiscountTypeEnum discountType) {
+    this.discountType = discountType;
   }
 
-  public AdsCreditDiscountsResponse discountCurrency(String discountCurrency) {
-    this.discountCurrency = discountCurrency;
-    return this;
-  }
-
- /**
-   * Human readable title of the offer code.
-   * @return title
-  **/
-  @JsonProperty("title")
-  public String getTitle() {
-    return title;
-  }
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-  public AdsCreditDiscountsResponse title(String title) {
-    this.title = title;
+  public AdsCreditDiscountsResponse discountType(DiscountTypeEnum discountType) {
+    this.discountType = discountType;
     return this;
   }
 
@@ -227,6 +209,24 @@ COUPON(String.valueOf("COUPON")), CREDIT(String.valueOf("CREDIT")), COUPON_APPLI
     return this;
   }
 
+ /**
+   * Human readable title of the offer code.
+   * @return title
+  **/
+  @JsonProperty("title")
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public AdsCreditDiscountsResponse title(String title) {
+    this.title = title;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -238,16 +238,16 @@ COUPON(String.valueOf("COUPON")), CREDIT(String.valueOf("CREDIT")), COUPON_APPLI
     AdsCreditDiscountsResponse adsCreditDiscountsResponse = (AdsCreditDiscountsResponse) o;
     return Objects.equals(this.active, adsCreditDiscountsResponse.active) &&
         Objects.equals(this.advertiserId, adsCreditDiscountsResponse.advertiserId) &&
-        Objects.equals(this.discountType, adsCreditDiscountsResponse.discountType) &&
-        Objects.equals(this.discountInMicroCurrency, adsCreditDiscountsResponse.discountInMicroCurrency) &&
         Objects.equals(this.discountCurrency, adsCreditDiscountsResponse.discountCurrency) &&
-        Objects.equals(this.title, adsCreditDiscountsResponse.title) &&
-        Objects.equals(this.remainingDiscountInMicroCurrency, adsCreditDiscountsResponse.remainingDiscountInMicroCurrency);
+        Objects.equals(this.discountInMicroCurrency, adsCreditDiscountsResponse.discountInMicroCurrency) &&
+        Objects.equals(this.discountType, adsCreditDiscountsResponse.discountType) &&
+        Objects.equals(this.remainingDiscountInMicroCurrency, adsCreditDiscountsResponse.remainingDiscountInMicroCurrency) &&
+        Objects.equals(this.title, adsCreditDiscountsResponse.title);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(active, advertiserId, discountType, discountInMicroCurrency, discountCurrency, title, remainingDiscountInMicroCurrency);
+    return Objects.hash(active, advertiserId, discountCurrency, discountInMicroCurrency, discountType, remainingDiscountInMicroCurrency, title);
   }
 
   @Override
@@ -257,11 +257,11 @@ COUPON(String.valueOf("COUPON")), CREDIT(String.valueOf("CREDIT")), COUPON_APPLI
     
     sb.append("    active: ").append(toIndentedString(active)).append("\n");
     sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
-    sb.append("    discountType: ").append(toIndentedString(discountType)).append("\n");
-    sb.append("    discountInMicroCurrency: ").append(toIndentedString(discountInMicroCurrency)).append("\n");
     sb.append("    discountCurrency: ").append(toIndentedString(discountCurrency)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    discountInMicroCurrency: ").append(toIndentedString(discountInMicroCurrency)).append("\n");
+    sb.append("    discountType: ").append(toIndentedString(discountType)).append("\n");
     sb.append("    remainingDiscountInMicroCurrency: ").append(toIndentedString(remainingDiscountInMicroCurrency)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("}");
     return sb.toString();
   }

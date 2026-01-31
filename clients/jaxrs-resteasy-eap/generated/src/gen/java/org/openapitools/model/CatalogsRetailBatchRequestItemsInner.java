@@ -25,7 +25,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "operation", visible = true)
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "operation", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsCreateRetailItem.class, name = "CREATE"),
   @JsonSubTypes.Type(value = CatalogsDeleteRetailItem.class, name = "DELETE"),
@@ -35,6 +35,7 @@ import io.swagger.annotations.*;
 
 public class CatalogsRetailBatchRequestItemsInner   {
   
+  private ItemAttributesRequest attributes;
   private String itemId;
 
   /**
@@ -56,8 +57,21 @@ public class CatalogsRetailBatchRequestItemsInner   {
   }
 
   private OperationEnum operation;
-  private ItemAttributesRequest attributes;
   private List<UpdateMaskFieldType> updateMask;
+  private Long lastUpdatedTime;
+
+  /**
+   **/
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("attributes")
+  @NotNull
+  public ItemAttributesRequest getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(ItemAttributesRequest attributes) {
+    this.attributes = attributes;
+  }
 
   /**
    * The catalog item id in the merchant namespace
@@ -87,29 +101,29 @@ public class CatalogsRetailBatchRequestItemsInner   {
   }
 
   /**
-   **/
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("attributes")
-  @NotNull
-  public ItemAttributesRequest getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(ItemAttributesRequest attributes) {
-    this.attributes = attributes;
-  }
-
-  /**
    * The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
    **/
   
-  @ApiModelProperty(example = "[ad_link, adult, age_group, availability, average_review_rating, brand, checkout_enabled, color, condition, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, description, free_shipping_label, free_shipping_limit, gender, google_product_category, gtin, item_group_id, last_updated_time, link, material, min_ad_price, mpn, number_of_ratings, number_of_reviews, pattern, price, product_type, sale_price, shipping, shipping_height, shipping_weight, shipping_width, size, size_system, size_type, tax, title, variant_names, variant_values]", value = "The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.")
+  @ApiModelProperty(example = "[ad_link, adult, age_group, availability, average_review_rating, brand, checkout_enabled, color, condition, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, description, free_shipping_label, free_shipping_limit, gender, google_product_category, gtin, item_group_id, last_updated_time, link, material, min_ad_price, mpn, number_of_ratings, number_of_reviews, pattern, price, product_type, sale_price, shipping, shipping_height, shipping_weight, shipping_width, size, size_system, size_type, tax, title, variant_names, variant_values, promotion_id]", value = "The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.")
   @JsonProperty("update_mask")
   public List<UpdateMaskFieldType> getUpdateMask() {
     return updateMask;
   }
   public void setUpdateMask(List<UpdateMaskFieldType> updateMask) {
     this.updateMask = updateMask;
+  }
+
+  /**
+   * The millisecond timestamp when the item was lastly modified by the merchant.
+   **/
+  
+  @ApiModelProperty(example = "1641483432072", value = "The millisecond timestamp when the item was lastly modified by the merchant.")
+  @JsonProperty("last_updated_time")
+  public Long getLastUpdatedTime() {
+    return lastUpdatedTime;
+  }
+  public void setLastUpdatedTime(Long lastUpdatedTime) {
+    this.lastUpdatedTime = lastUpdatedTime;
   }
 
 
@@ -122,15 +136,16 @@ public class CatalogsRetailBatchRequestItemsInner   {
       return false;
     }
     CatalogsRetailBatchRequestItemsInner catalogsRetailBatchRequestItemsInner = (CatalogsRetailBatchRequestItemsInner) o;
-    return Objects.equals(this.itemId, catalogsRetailBatchRequestItemsInner.itemId) &&
+    return Objects.equals(this.attributes, catalogsRetailBatchRequestItemsInner.attributes) &&
+        Objects.equals(this.itemId, catalogsRetailBatchRequestItemsInner.itemId) &&
         Objects.equals(this.operation, catalogsRetailBatchRequestItemsInner.operation) &&
-        Objects.equals(this.attributes, catalogsRetailBatchRequestItemsInner.attributes) &&
-        Objects.equals(this.updateMask, catalogsRetailBatchRequestItemsInner.updateMask);
+        Objects.equals(this.updateMask, catalogsRetailBatchRequestItemsInner.updateMask) &&
+        Objects.equals(this.lastUpdatedTime, catalogsRetailBatchRequestItemsInner.lastUpdatedTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, operation, attributes, updateMask);
+    return Objects.hash(attributes, itemId, operation, updateMask, lastUpdatedTime);
   }
 
   @Override
@@ -138,10 +153,11 @@ public class CatalogsRetailBatchRequestItemsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailBatchRequestItemsInner {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    updateMask: ").append(toIndentedString(updateMask)).append("\n");
+    sb.append("    lastUpdatedTime: ").append(toIndentedString(lastUpdatedTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }

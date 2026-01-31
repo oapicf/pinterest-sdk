@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -13,13 +13,13 @@ package org.openapitools.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.PinMedia;
-import org.openapitools.model.VideoMetadata;
+import org.openapitools.model.VideoMetadataWithItemType;
 
 
 
@@ -28,14 +28,33 @@ import org.openapitools.model.VideoMetadata;
  */
 
 @ApiModel(description = "Pin with multiple videos.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class PinMediaWithVideos extends PinMedia  {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+public class PinMediaWithVideos   {
   
-  private List<VideoMetadata> items = new ArrayList<>();
+  private List<VideoMetadataWithItemType> items = new ArrayList<>();
+
+
+  public enum MediaTypeEnum {
+    MULTIPLE_VIDEOS("multiple_videos");
+
+    private String value;
+
+    MediaTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return value;
+    }
+  }
+
+  private MediaTypeEnum mediaType;
 
   /**
    */
-  public PinMediaWithVideos items(List<VideoMetadata> items) {
+  public PinMediaWithVideos items(List<VideoMetadataWithItemType> items) {
     this.items = items;
     return this;
   }
@@ -43,11 +62,28 @@ public class PinMediaWithVideos extends PinMedia  {
   
   @ApiModelProperty(value = "")
   @JsonProperty("items")
-  public List<VideoMetadata> getItems() {
+  public List<VideoMetadataWithItemType> getItems() {
     return items;
   }
-  public void setItems(List<VideoMetadata> items) {
+  public void setItems(List<VideoMetadataWithItemType> items) {
     this.items = items;
+  }
+
+  /**
+   */
+  public PinMediaWithVideos mediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("media_type")
+  public MediaTypeEnum getMediaType() {
+    return mediaType;
+  }
+  public void setMediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
   }
 
 
@@ -60,20 +96,22 @@ public class PinMediaWithVideos extends PinMedia  {
       return false;
     }
     PinMediaWithVideos pinMediaWithVideos = (PinMediaWithVideos) o;
-    return Objects.equals(items, pinMediaWithVideos.items);
+    return Objects.equals(items, pinMediaWithVideos.items) &&
+        Objects.equals(mediaType, pinMediaWithVideos.mediaType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items);
+    return Objects.hash(items, mediaType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaWithVideos {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

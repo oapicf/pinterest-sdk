@@ -6,8 +6,8 @@ Request object to list products for a given creative assets catalog_id and produ
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**catalog_type** | **string** |  | [default to undefined]
 **catalog_id** | **string** | Catalog id pertaining to the creative assets product group. | [default to undefined]
+**catalog_type** | **string** |  | [default to undefined]
 **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | [default to undefined]
 
 ## Example
@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 import { CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest } from './api';
 
 const instance: CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest = {
-    catalog_type,
     catalog_id,
+    catalog_type,
     filters,
 };
 ```

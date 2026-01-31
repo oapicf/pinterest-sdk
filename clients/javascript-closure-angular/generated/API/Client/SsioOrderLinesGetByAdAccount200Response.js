@@ -6,15 +6,15 @@ goog.provide('API.Client.ssio_order_lines_get_by_ad_account_200_response');
 API.Client.SsioOrderLinesGetByAdAccount200Response = function() {}
 
 /**
+ * @type {!string}
+ * @export
+ */
+API.Client.SsioOrderLinesGetByAdAccount200Response.prototype.bookmark;
+
+/**
  * SSIO order lines by ad acount id
  * @type {!Array<!API.Client.SSIOOrderLine>}
  * @export
  */
 API.Client.SsioOrderLinesGetByAdAccount200Response.prototype.items;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.SsioOrderLinesGetByAdAccount200Response.prototype.bookmark;
 

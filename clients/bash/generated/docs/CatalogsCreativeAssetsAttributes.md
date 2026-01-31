@@ -3,17 +3,17 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**title** | **string** |  | [optional] [default to null]
-**description** | **string** |  | [optional] [default to null]
-**link** | **string** |  | [optional] [default to null]
-**iosUnderscoredeepUnderscorelink** | **string** |  | [optional] [default to null]
 **androidUnderscoredeepUnderscorelink** | **string** |  | [optional] [default to null]
-**googleUnderscoreproductUnderscorecategory** | **string** |  | [optional] [default to null]
 **customUnderscorelabelUnderscore0** | **string** |  | [optional] [default to null]
 **customUnderscorelabelUnderscore1** | **string** |  | [optional] [default to null]
 **customUnderscorelabelUnderscore2** | **string** |  | [optional] [default to null]
 **customUnderscorelabelUnderscore3** | **string** |  | [optional] [default to null]
 **customUnderscorelabelUnderscore4** | **string** |  | [optional] [default to null]
+**description** | **string** |  | [optional] [default to null]
+**googleUnderscoreproductUnderscorecategory** | **string** |  | [optional] [default to null]
+**iosUnderscoredeepUnderscorelink** | **string** |  | [optional] [default to null]
+**link** | **string** |  | [optional] [default to null]
+**title** | **string** |  | [optional] [default to null]
 **visibility** | **string** |  | [optional] [default to null]
 **imageUnderscorelink** | **string** |  | [optional] [default to null]
 **videoUnderscorelink** | **string** |  | [optional] [default to null]

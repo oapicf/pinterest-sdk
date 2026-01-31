@@ -7,38 +7,37 @@
 #' @title BulkDownloadRequestCampaignFilter
 #' @description BulkDownloadRequestCampaignFilter Class
 #' @format An \code{R6Class} generator object
-#' @field start_time Unix UTC timestamp. character [optional]
+#' @field campaign_status  list(\link{CampaignSummaryStatus}) [optional]
 #' @field end_time Unix UTC timestamp. character [optional]
 #' @field name Campaign name character [optional]
-#' @field campaign_status  list(\link{CampaignSummaryStatus}) [optional]
 #' @field objective_type  list(\link{ObjectiveType}) [optional]
+#' @field start_time Unix UTC timestamp. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 BulkDownloadRequestCampaignFilter <- R6::R6Class(
   "BulkDownloadRequestCampaignFilter",
   public = list(
-    `start_time` = NULL,
+    `campaign_status` = NULL,
     `end_time` = NULL,
     `name` = NULL,
-    `campaign_status` = NULL,
     `objective_type` = NULL,
+    `start_time` = NULL,
 
     #' @description
     #' Initialize a new BulkDownloadRequestCampaignFilter class.
     #'
-    #' @param start_time Unix UTC timestamp.
+    #' @param campaign_status campaign_status
     #' @param end_time Unix UTC timestamp.
     #' @param name Campaign name
-    #' @param campaign_status campaign_status
     #' @param objective_type objective_type
+    #' @param start_time Unix UTC timestamp.
     #' @param ... Other optional arguments.
-    initialize = function(`start_time` = NULL, `end_time` = NULL, `name` = NULL, `campaign_status` = NULL, `objective_type` = NULL, ...) {
-      if (!is.null(`start_time`)) {
-        if (!(is.character(`start_time`) && length(`start_time`) == 1)) {
-          stop(paste("Error! Invalid data for `start_time`. Must be a string:", `start_time`))
-        }
-        self$`start_time` <- `start_time`
+    initialize = function(`campaign_status` = NULL, `end_time` = NULL, `name` = NULL, `objective_type` = NULL, `start_time` = NULL, ...) {
+      if (!is.null(`campaign_status`)) {
+        stopifnot(is.vector(`campaign_status`), length(`campaign_status`) != 0)
+        sapply(`campaign_status`, function(x) stopifnot(R6::is.R6(x)))
+        self$`campaign_status` <- `campaign_status`
       }
       if (!is.null(`end_time`)) {
         if (!(is.character(`end_time`) && length(`end_time`) == 1)) {
@@ -52,15 +51,16 @@ BulkDownloadRequestCampaignFilter <- R6::R6Class(
         }
         self$`name` <- `name`
       }
-      if (!is.null(`campaign_status`)) {
-        stopifnot(is.vector(`campaign_status`), length(`campaign_status`) != 0)
-        sapply(`campaign_status`, function(x) stopifnot(R6::is.R6(x)))
-        self$`campaign_status` <- `campaign_status`
-      }
       if (!is.null(`objective_type`)) {
         stopifnot(is.vector(`objective_type`), length(`objective_type`) != 0)
         sapply(`objective_type`, function(x) stopifnot(R6::is.R6(x)))
         self$`objective_type` <- `objective_type`
+      }
+      if (!is.null(`start_time`)) {
+        if (!(is.character(`start_time`) && length(`start_time`) == 1)) {
+          stop(paste("Error! Invalid data for `start_time`. Must be a string:", `start_time`))
+        }
+        self$`start_time` <- `start_time`
       }
     },
 
@@ -95,9 +95,9 @@ BulkDownloadRequestCampaignFilter <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       BulkDownloadRequestCampaignFilterObject <- list()
-      if (!is.null(self$`start_time`)) {
-        BulkDownloadRequestCampaignFilterObject[["start_time"]] <-
-          self$`start_time`
+      if (!is.null(self$`campaign_status`)) {
+        BulkDownloadRequestCampaignFilterObject[["campaign_status"]] <-
+          lapply(self$`campaign_status`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`end_time`)) {
         BulkDownloadRequestCampaignFilterObject[["end_time"]] <-
@@ -107,13 +107,13 @@ BulkDownloadRequestCampaignFilter <- R6::R6Class(
         BulkDownloadRequestCampaignFilterObject[["name"]] <-
           self$`name`
       }
-      if (!is.null(self$`campaign_status`)) {
-        BulkDownloadRequestCampaignFilterObject[["campaign_status"]] <-
-          lapply(self$`campaign_status`, function(x) x$toSimpleType())
-      }
       if (!is.null(self$`objective_type`)) {
         BulkDownloadRequestCampaignFilterObject[["objective_type"]] <-
           lapply(self$`objective_type`, function(x) x$toSimpleType())
+      }
+      if (!is.null(self$`start_time`)) {
+        BulkDownloadRequestCampaignFilterObject[["start_time"]] <-
+          self$`start_time`
       }
       return(BulkDownloadRequestCampaignFilterObject)
     },
@@ -125,8 +125,8 @@ BulkDownloadRequestCampaignFilter <- R6::R6Class(
     #' @return the instance of BulkDownloadRequestCampaignFilter
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`start_time`)) {
-        self$`start_time` <- this_object$`start_time`
+      if (!is.null(this_object$`campaign_status`)) {
+        self$`campaign_status` <- ApiClient$new()$deserializeObj(this_object$`campaign_status`, "array[CampaignSummaryStatus]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`end_time`)) {
         self$`end_time` <- this_object$`end_time`
@@ -134,11 +134,11 @@ BulkDownloadRequestCampaignFilter <- R6::R6Class(
       if (!is.null(this_object$`name`)) {
         self$`name` <- this_object$`name`
       }
-      if (!is.null(this_object$`campaign_status`)) {
-        self$`campaign_status` <- ApiClient$new()$deserializeObj(this_object$`campaign_status`, "array[CampaignSummaryStatus]", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`objective_type`)) {
         self$`objective_type` <- ApiClient$new()$deserializeObj(this_object$`objective_type`, "array[ObjectiveType]", loadNamespace("openapi"))
+      }
+      if (!is.null(this_object$`start_time`)) {
+        self$`start_time` <- this_object$`start_time`
       }
       self
     },
@@ -161,11 +161,11 @@ BulkDownloadRequestCampaignFilter <- R6::R6Class(
     #' @return the instance of BulkDownloadRequestCampaignFilter
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`start_time` <- this_object$`start_time`
+      self$`campaign_status` <- ApiClient$new()$deserializeObj(this_object$`campaign_status`, "array[CampaignSummaryStatus]", loadNamespace("openapi"))
       self$`end_time` <- this_object$`end_time`
       self$`name` <- this_object$`name`
-      self$`campaign_status` <- ApiClient$new()$deserializeObj(this_object$`campaign_status`, "array[CampaignSummaryStatus]", loadNamespace("openapi"))
       self$`objective_type` <- ApiClient$new()$deserializeObj(this_object$`objective_type`, "array[ObjectiveType]", loadNamespace("openapi"))
+      self$`start_time` <- this_object$`start_time`
       self
     },
 
@@ -190,11 +190,11 @@ BulkDownloadRequestCampaignFilter <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      if (!str_detect(self$`start_time`, "^\\d+$")) {
+      if (!str_detect(self$`end_time`, "^\\d+$")) {
         return(FALSE)
       }
 
-      if (!str_detect(self$`end_time`, "^\\d+$")) {
+      if (!str_detect(self$`start_time`, "^\\d+$")) {
         return(FALSE)
       }
 
@@ -207,12 +207,12 @@ BulkDownloadRequestCampaignFilter <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      if (!str_detect(self$`start_time`, "^\\d+$")) {
-        invalid_fields["start_time"] <- "Invalid value for `start_time`, must conform to the pattern ^\\d+$."
-      }
-
       if (!str_detect(self$`end_time`, "^\\d+$")) {
         invalid_fields["end_time"] <- "Invalid value for `end_time`, must conform to the pattern ^\\d+$."
+      }
+
+      if (!str_detect(self$`start_time`, "^\\d+$")) {
+        invalid_fields["start_time"] <- "Invalid value for `start_time`, must conform to the pattern ^\\d+$."
       }
 
       invalid_fields

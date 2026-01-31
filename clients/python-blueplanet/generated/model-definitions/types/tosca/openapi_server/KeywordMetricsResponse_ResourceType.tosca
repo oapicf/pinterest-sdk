@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server KeywordMetricsResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a KeywordMetricsResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  KeywordMetrics = openapi_server.resourceTypes.KeywordMetrics
+}
+resourceTypes {
+
+  KeywordMetricsResponse {
+    title = KeywordMetricsResponse
+    description = KeywordMetricsResponse
+    derivedFrom = Root
+    properties {
+        keyword {
+          type =  string
+          description = "Keyword name, e.g., \&quot;keyword\&quot;:\&quot;fashion outfits\&quot;"
+          optional = false
+        }
+        metrics {
+          type = KeywordMetrics
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  KeywordMetricsResponse {
+    title = KeywordMetricsResponse
+    description = KeywordMetricsResponse
+    implements = openapi_server.resourceTypes.KeywordMetricsResponse
+
+  }
+}

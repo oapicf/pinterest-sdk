@@ -8,8 +8,8 @@
 
 (def catalogs-product-group-pins-list-200-response-data
   {
-   (ds/req :items) (s/coll-of catalogs-product-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of catalogs-product-spec)
    })
 
 (def catalogs-product-group-pins-list-200-response-spec

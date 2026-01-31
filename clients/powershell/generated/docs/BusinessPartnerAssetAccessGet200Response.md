@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**GetPartnerAssetsResponse[]**](GetPartnerAssetsResponse.md) | List assets on which you granted access to your partner or assets on which your partner has granted you access. | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**GetPartnerAssetsResponse[]**](GetPartnerAssetsResponse.md) | List assets on which you granted access to your partner or assets on which your partner has granted you access. | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$BusinessPartnerAssetAccessGet200Response = Initialize-PSOpenAPIToolsBusinessPartnerAssetAccessGet200Response  -Items null `
- -Bookmark null
+$BusinessPartnerAssetAccessGet200Response = Initialize-PSOpenAPIToolsBusinessPartnerAssetAccessGet200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

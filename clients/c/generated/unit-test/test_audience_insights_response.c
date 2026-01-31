@@ -24,21 +24,21 @@ audience_insights_response_t* instantiate_audience_insights_response(int include
   if (include_optional) {
     audience_insights_response = audience_insights_response_create(
       list_createList(),
+      "2022-10-09",
        // false, not to have infinite recursion
       instantiate_audience_demographics(0),
-      pinterest_rest_api_audience_insights_response__"YOUR_TOTAL_AUDIENCE",
-      "2022-10-09",
       10000,
-      true
+      true,
+      pinterest_rest_api_audience_insights_response__"YOUR_TOTAL_AUDIENCE"
     );
   } else {
     audience_insights_response = audience_insights_response_create(
       list_createList(),
-      NULL,
-      pinterest_rest_api_audience_insights_response__"YOUR_TOTAL_AUDIENCE",
       "2022-10-09",
+      NULL,
       10000,
-      true
+      true,
+      pinterest_rest_api_audience_insights_response__"YOUR_TOTAL_AUDIENCE"
     );
   }
 

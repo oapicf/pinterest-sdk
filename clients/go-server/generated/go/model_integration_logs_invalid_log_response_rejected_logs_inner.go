@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,25 +16,25 @@ package openapi
 
 type IntegrationLogsInvalidLogResponseRejectedLogsInner struct {
 
-	// Index of the log in the batch.
-	LogIndex int32 `json:"log_index,omitempty"`
-
 	// The field name containing an invalid value.
 	Field string `json:"field"`
 
-	// The value that is invalid.
-	Value string `json:"value"`
+	// Index of the log in the batch.
+	LogIndex int32 `json:"log_index,omitempty"`
 
 	// The reason the value is invalid.
 	Reason string `json:"reason"`
+
+	// The value that is invalid.
+	Value string `json:"value"`
 }
 
 // AssertIntegrationLogsInvalidLogResponseRejectedLogsInnerRequired checks if the required fields are not zero-ed
 func AssertIntegrationLogsInvalidLogResponseRejectedLogsInnerRequired(obj IntegrationLogsInvalidLogResponseRejectedLogsInner) error {
 	elements := map[string]interface{}{
 		"field": obj.Field,
-		"value": obj.Value,
 		"reason": obj.Reason,
+		"value": obj.Value,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

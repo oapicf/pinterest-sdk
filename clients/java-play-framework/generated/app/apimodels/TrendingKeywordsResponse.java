@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.TrendingKeywordsResponseTrendsInner;
+import apimodels.TrendingKeyword;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,20 +13,20 @@ import javax.validation.Valid;
 /**
  * TrendingKeywordsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class TrendingKeywordsResponse   {
   @JsonProperty("trends")
   @Valid
 
-  private List<@Valid TrendingKeywordsResponseTrendsInner> trends = null;
+  private List<@Valid TrendingKeyword> trends = null;
 
-  public TrendingKeywordsResponse trends(List<@Valid TrendingKeywordsResponseTrendsInner> trends) {
+  public TrendingKeywordsResponse trends(List<@Valid TrendingKeyword> trends) {
     this.trends = trends;
     return this;
   }
 
-  public TrendingKeywordsResponse addTrendsItem(TrendingKeywordsResponseTrendsInner trendsItem) {
+  public TrendingKeywordsResponse addTrendsItem(TrendingKeyword trendsItem) {
     if (this.trends == null) {
       this.trends = new ArrayList<>();
     }
@@ -38,11 +38,11 @@ public class TrendingKeywordsResponse   {
    * The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.
    * @return trends
   **/
-  public List<@Valid TrendingKeywordsResponseTrendsInner> getTrends() {
+  public List<@Valid TrendingKeyword> getTrends() {
     return trends;
   }
 
-  public void setTrends(List<@Valid TrendingKeywordsResponseTrendsInner> trends) {
+  public void setTrends(List<@Valid TrendingKeyword> trends) {
     this.trends = trends;
   }
 

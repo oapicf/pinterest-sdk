@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -20,7 +20,7 @@ type CatalogsCreativeAssetsProduct struct {
 
 	Metadata CatalogsCreativeAssetsProductMetadata `json:"metadata"`
 
-	Pin *Pin `json:"pin"`
+	Pin Pin `json:"pin"`
 }
 
 // AssertCatalogsCreativeAssetsProductRequired checks if the required fields are not zero-ed
@@ -39,10 +39,8 @@ func AssertCatalogsCreativeAssetsProductRequired(obj CatalogsCreativeAssetsProdu
 	if err := AssertCatalogsCreativeAssetsProductMetadataRequired(obj.Metadata); err != nil {
 		return err
 	}
-	if obj.Pin != nil {
-		if err := AssertPinRequired(*obj.Pin); err != nil {
-			return err
-		}
+	if err := AssertPinRequired(obj.Pin); err != nil {
+		return err
 	}
 	return nil
 }
@@ -52,10 +50,8 @@ func AssertCatalogsCreativeAssetsProductConstraints(obj CatalogsCreativeAssetsPr
 	if err := AssertCatalogsCreativeAssetsProductMetadataConstraints(obj.Metadata); err != nil {
 		return err
 	}
-    if obj.Pin != nil {
-     	if err := AssertPinConstraints(*obj.Pin); err != nil {
-     		return err
-     	}
-    }
+	if err := AssertPinConstraints(obj.Pin); err != nil {
+		return err
+	}
 	return nil
 }

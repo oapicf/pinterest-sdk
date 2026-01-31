@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;AdsCreditDiscountsResponse&gt;](AdsCreditDiscountsResponse.md)
 `bookmark` | string
+`items` | [Array&lt;AdsCreditDiscountsResponse&gt;](AdsCreditDiscountsResponse.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { AdsCreditsDiscountsGet200Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "items": null,
   "bookmark": null,
+  "items": null,
 } satisfies AdsCreditsDiscountsGet200Response
 
 console.log(example)

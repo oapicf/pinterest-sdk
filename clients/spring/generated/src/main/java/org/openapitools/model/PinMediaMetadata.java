@@ -8,8 +8,8 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.ImageMetadata;
-import org.openapitools.model.ImageMetadataImages;
-import org.openapitools.model.VideoMetadata;
+import org.openapitools.model.ImageSize;
+import org.openapitools.model.VideoMetadataWithItemType;
 import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -26,68 +26,28 @@ import javax.annotation.Generated;
  * PinMediaMetadata
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinMediaMetadata {
-
-  private @Nullable String itemType;
-
-  private JsonNullable<String> title = JsonNullable.<String>undefined();
 
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
+  private @Nullable ImageSize images;
+
+  private @Nullable String itemType;
+
   private JsonNullable<String> link = JsonNullable.<String>undefined();
 
-  private @Nullable ImageMetadataImages images;
+  private JsonNullable<String> title = JsonNullable.<String>undefined();
 
   private @Nullable String coverImageUrl;
 
+  private JsonNullable<BigDecimal> duration = JsonNullable.<BigDecimal>undefined();
+
+  private JsonNullable<Integer> height = JsonNullable.<Integer>undefined();
+
   private JsonNullable<String> videoUrl = JsonNullable.<String>undefined();
 
-  private @Nullable BigDecimal duration;
-
-  private @Nullable Integer height;
-
-  private @Nullable Integer width;
-
-  public PinMediaMetadata itemType(@Nullable String itemType) {
-    this.itemType = itemType;
-    return this;
-  }
-
-  /**
-   * Get itemType
-   * @return itemType
-   */
-  
-  @Schema(name = "item_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("item_type")
-  public @Nullable String getItemType() {
-    return itemType;
-  }
-
-  public void setItemType(@Nullable String itemType) {
-    this.itemType = itemType;
-  }
-
-  public PinMediaMetadata title(String title) {
-    this.title = JsonNullable.of(title);
-    return this;
-  }
-
-  /**
-   * Get title
-   * @return title
-   */
-  
-  @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("title")
-  public JsonNullable<String> getTitle() {
-    return title;
-  }
-
-  public void setTitle(JsonNullable<String> title) {
-    this.title = title;
-  }
+  private JsonNullable<Integer> width = JsonNullable.<Integer>undefined();
 
   public PinMediaMetadata description(String description) {
     this.description = JsonNullable.of(description);
@@ -107,6 +67,46 @@ public class PinMediaMetadata {
 
   public void setDescription(JsonNullable<String> description) {
     this.description = description;
+  }
+
+  public PinMediaMetadata images(@Nullable ImageSize images) {
+    this.images = images;
+    return this;
+  }
+
+  /**
+   * Get images
+   * @return images
+   */
+  @Valid 
+  @Schema(name = "images", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("images")
+  public @Nullable ImageSize getImages() {
+    return images;
+  }
+
+  public void setImages(@Nullable ImageSize images) {
+    this.images = images;
+  }
+
+  public PinMediaMetadata itemType(@Nullable String itemType) {
+    this.itemType = itemType;
+    return this;
+  }
+
+  /**
+   * Get itemType
+   * @return itemType
+   */
+  
+  @Schema(name = "item_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("item_type")
+  public @Nullable String getItemType() {
+    return itemType;
+  }
+
+  public void setItemType(@Nullable String itemType) {
+    this.itemType = itemType;
   }
 
   public PinMediaMetadata link(String link) {
@@ -129,24 +129,24 @@ public class PinMediaMetadata {
     this.link = link;
   }
 
-  public PinMediaMetadata images(@Nullable ImageMetadataImages images) {
-    this.images = images;
+  public PinMediaMetadata title(String title) {
+    this.title = JsonNullable.of(title);
     return this;
   }
 
   /**
-   * Get images
-   * @return images
+   * Get title
+   * @return title
    */
-  @Valid 
-  @Schema(name = "images", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("images")
-  public @Nullable ImageMetadataImages getImages() {
-    return images;
+  
+  @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("title")
+  public JsonNullable<String> getTitle() {
+    return title;
   }
 
-  public void setImages(@Nullable ImageMetadataImages images) {
-    this.images = images;
+  public void setTitle(JsonNullable<String> title) {
+    this.title = title;
   }
 
   public PinMediaMetadata coverImageUrl(@Nullable String coverImageUrl) {
@@ -169,17 +169,57 @@ public class PinMediaMetadata {
     this.coverImageUrl = coverImageUrl;
   }
 
+  public PinMediaMetadata duration(BigDecimal duration) {
+    this.duration = JsonNullable.of(duration);
+    return this;
+  }
+
+  /**
+   * Duration (in miliseconds). Field maybe null after creation due to video processing time.
+   * @return duration
+   */
+  @Valid 
+  @Schema(name = "duration", description = "Duration (in miliseconds). Field maybe null after creation due to video processing time.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("duration")
+  public JsonNullable<BigDecimal> getDuration() {
+    return duration;
+  }
+
+  public void setDuration(JsonNullable<BigDecimal> duration) {
+    this.duration = duration;
+  }
+
+  public PinMediaMetadata height(Integer height) {
+    this.height = JsonNullable.of(height);
+    return this;
+  }
+
+  /**
+   * Height (in pixels). Field maybe null after creation due to video processing time.
+   * @return height
+   */
+  
+  @Schema(name = "height", description = "Height (in pixels). Field maybe null after creation due to video processing time.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("height")
+  public JsonNullable<Integer> getHeight() {
+    return height;
+  }
+
+  public void setHeight(JsonNullable<Integer> height) {
+    this.height = height;
+  }
+
   public PinMediaMetadata videoUrl(String videoUrl) {
     this.videoUrl = JsonNullable.of(videoUrl);
     return this;
   }
 
   /**
-   * Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
+   * Video url (720p).  **Note:** This field is limited and not available to all apps.
    * @return videoUrl
    */
   
-  @Schema(name = "video_url", description = "Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "video_url", description = "Video url (720p).  **Note:** This field is limited and not available to all apps.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("video_url")
   public JsonNullable<String> getVideoUrl() {
     return videoUrl;
@@ -189,63 +229,23 @@ public class PinMediaMetadata {
     this.videoUrl = videoUrl;
   }
 
-  public PinMediaMetadata duration(@Nullable BigDecimal duration) {
-    this.duration = duration;
+  public PinMediaMetadata width(Integer width) {
+    this.width = JsonNullable.of(width);
     return this;
   }
 
   /**
-   * Duration (in milliseconds)
-   * @return duration
-   */
-  @Valid 
-  @Schema(name = "duration", description = "Duration (in milliseconds)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("duration")
-  public @Nullable BigDecimal getDuration() {
-    return duration;
-  }
-
-  public void setDuration(@Nullable BigDecimal duration) {
-    this.duration = duration;
-  }
-
-  public PinMediaMetadata height(@Nullable Integer height) {
-    this.height = height;
-    return this;
-  }
-
-  /**
-   * Height (in pixels)
-   * @return height
-   */
-  
-  @Schema(name = "height", description = "Height (in pixels)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("height")
-  public @Nullable Integer getHeight() {
-    return height;
-  }
-
-  public void setHeight(@Nullable Integer height) {
-    this.height = height;
-  }
-
-  public PinMediaMetadata width(@Nullable Integer width) {
-    this.width = width;
-    return this;
-  }
-
-  /**
-   * Width (in pixels)
+   * Width (in pixels). Field maybe null after creation due to video processing time.
    * @return width
    */
   
-  @Schema(name = "width", description = "Width (in pixels)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "width", description = "Width (in pixels). Field maybe null after creation due to video processing time.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("width")
-  public @Nullable Integer getWidth() {
+  public JsonNullable<Integer> getWidth() {
     return width;
   }
 
-  public void setWidth(@Nullable Integer width) {
+  public void setWidth(JsonNullable<Integer> width) {
     this.width = width;
   }
 
@@ -258,16 +258,16 @@ public class PinMediaMetadata {
       return false;
     }
     PinMediaMetadata pinMediaMetadata = (PinMediaMetadata) o;
-    return Objects.equals(this.itemType, pinMediaMetadata.itemType) &&
-        equalsNullable(this.title, pinMediaMetadata.title) &&
-        equalsNullable(this.description, pinMediaMetadata.description) &&
-        equalsNullable(this.link, pinMediaMetadata.link) &&
+    return equalsNullable(this.description, pinMediaMetadata.description) &&
         Objects.equals(this.images, pinMediaMetadata.images) &&
+        Objects.equals(this.itemType, pinMediaMetadata.itemType) &&
+        equalsNullable(this.link, pinMediaMetadata.link) &&
+        equalsNullable(this.title, pinMediaMetadata.title) &&
         Objects.equals(this.coverImageUrl, pinMediaMetadata.coverImageUrl) &&
+        equalsNullable(this.duration, pinMediaMetadata.duration) &&
+        equalsNullable(this.height, pinMediaMetadata.height) &&
         equalsNullable(this.videoUrl, pinMediaMetadata.videoUrl) &&
-        Objects.equals(this.duration, pinMediaMetadata.duration) &&
-        Objects.equals(this.height, pinMediaMetadata.height) &&
-        Objects.equals(this.width, pinMediaMetadata.width);
+        equalsNullable(this.width, pinMediaMetadata.width);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -276,7 +276,7 @@ public class PinMediaMetadata {
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemType, hashCodeNullable(title), hashCodeNullable(description), hashCodeNullable(link), images, coverImageUrl, hashCodeNullable(videoUrl), duration, height, width);
+    return Objects.hash(hashCodeNullable(description), images, itemType, hashCodeNullable(link), hashCodeNullable(title), coverImageUrl, hashCodeNullable(duration), hashCodeNullable(height), hashCodeNullable(videoUrl), hashCodeNullable(width));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -290,15 +290,15 @@ public class PinMediaMetadata {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaMetadata {\n");
-    sb.append("    itemType: ").append(toIndentedString(itemType)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("    images: ").append(toIndentedString(images)).append("\n");
+    sb.append("    itemType: ").append(toIndentedString(itemType)).append("\n");
+    sb.append("    link: ").append(toIndentedString(link)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    coverImageUrl: ").append(toIndentedString(coverImageUrl)).append("\n");
-    sb.append("    videoUrl: ").append(toIndentedString(videoUrl)).append("\n");
     sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
+    sb.append("    videoUrl: ").append(toIndentedString(videoUrl)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("}");
     return sb.toString();

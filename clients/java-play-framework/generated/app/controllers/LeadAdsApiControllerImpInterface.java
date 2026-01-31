@@ -1,10 +1,9 @@
 package controllers;
 
-import apimodels.AdAccountCreateSubscriptionRequest;
-import apimodels.AdAccountCreateSubscriptionResponse;
-import apimodels.AdAccountGetSubscriptionResponse;
 import apimodels.AdAccountsSubscriptionsGetList200Response;
-import apimodels.Error;
+import apimodels.LeadSubscription;
+import apimodels.LeadSubscriptionPostParamsCreate;
+import apimodels.PinterestLibError;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -48,7 +47,7 @@ public abstract class LeadAdsApiControllerImpInterface {
             return unauthorized();
         }
 
-        AdAccountGetSubscriptionResponse obj = adAccountsSubscriptionsGetById(request, adAccountId, subscriptionId);
+        LeadSubscription obj = adAccountsSubscriptionsGetById(request, adAccountId, subscriptionId);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -60,14 +59,14 @@ public abstract class LeadAdsApiControllerImpInterface {
 
     }
 
-    public abstract AdAccountGetSubscriptionResponse adAccountsSubscriptionsGetById(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$")String subscriptionId) throws Exception;
+    public abstract LeadSubscription adAccountsSubscriptionsGetById(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$")String subscriptionId) throws Exception;
 
-    public Result adAccountsSubscriptionsGetListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Min(1) @Max(250)Integer pageSize, String bookmark) throws Exception {
+    public Result adAccountsSubscriptionsGetListHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        AdAccountsSubscriptionsGetList200Response obj = adAccountsSubscriptionsGetList(request, adAccountId, pageSize, bookmark);
+        AdAccountsSubscriptionsGetList200Response obj = adAccountsSubscriptionsGetList(request, adAccountId, bookmark, pageSize);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -79,14 +78,14 @@ public abstract class LeadAdsApiControllerImpInterface {
 
     }
 
-    public abstract AdAccountsSubscriptionsGetList200Response adAccountsSubscriptionsGetList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Min(1) @Max(250)Integer pageSize, String bookmark) throws Exception;
+    public abstract AdAccountsSubscriptionsGetList200Response adAccountsSubscriptionsGetList(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
 
-    public Result adAccountsSubscriptionsPostHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AdAccountCreateSubscriptionRequest adAccountCreateSubscriptionRequest) throws Exception {
+    public Result adAccountsSubscriptionsPostHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, LeadSubscriptionPostParamsCreate leadSubscriptionPostParamsCreate) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        AdAccountCreateSubscriptionResponse obj = adAccountsSubscriptionsPost(request, adAccountId, adAccountCreateSubscriptionRequest);
+        LeadSubscription obj = adAccountsSubscriptionsPost(request, adAccountId, leadSubscriptionPostParamsCreate);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -98,6 +97,6 @@ public abstract class LeadAdsApiControllerImpInterface {
 
     }
 
-    public abstract AdAccountCreateSubscriptionResponse adAccountsSubscriptionsPost(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, AdAccountCreateSubscriptionRequest adAccountCreateSubscriptionRequest) throws Exception;
+    public abstract LeadSubscription adAccountsSubscriptionsPost(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, LeadSubscriptionPostParamsCreate leadSubscriptionPostParamsCreate) throws Exception;
 
 }

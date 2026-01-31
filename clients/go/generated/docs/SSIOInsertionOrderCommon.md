@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**StartDate** | Pointer to **string** | Starting date of time period. Format: YYYY-MM-DD | [optional] 
-**EndDate** | Pointer to **string** | End date of time period. Format: YYYY-MM-DD | [optional] 
-**PoNumber** | Pointer to **string** | The po number | [optional] 
-**BudgetAmount** | Pointer to **float32** | If Budget order line, the budget amount. | [optional] 
+**AgencyLink** | Pointer to **string** | URL link for agency | [optional] 
+**BillingContactEmail** | Pointer to **string** | The billing contact email | [optional] 
 **BillingContactFirstname** | Pointer to **string** | The billing contact first name | [optional] 
 **BillingContactLastname** | Pointer to **string** | The billing contact last name | [optional] 
-**BillingContactEmail** | Pointer to **string** | The billing contact email | [optional] 
+**BudgetAmount** | Pointer to **float32** | If Budget order line, the budget amount. | [optional] 
+**EndDate** | Pointer to **string** | End date of time period. Format: YYYY-MM-DD | [optional] 
+**MediaContactEmail** | Pointer to **string** | The media contact email | [optional] 
 **MediaContactFirstname** | Pointer to **string** | The media contact first name | [optional] 
 **MediaContactLastname** | Pointer to **string** | The media contact last name | [optional] 
-**MediaContactEmail** | Pointer to **string** | The media contact email | [optional] 
-**AgencyLink** | Pointer to **string** | URL link for agency | [optional] 
+**PoNumber** | Pointer to **string** | The po number | [optional] 
+**StartDate** | Pointer to **string** | Starting date of time period. Format: YYYY-MM-DD | [optional] 
 **UserEmail** | Pointer to **string** | The email of user submitting the insertion order | [optional] 
 
 ## Methods
@@ -36,105 +36,55 @@ NewSSIOInsertionOrderCommonWithDefaults instantiates a new SSIOInsertionOrderCom
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetStartDate
+### GetAgencyLink
 
-`func (o *SSIOInsertionOrderCommon) GetStartDate() string`
+`func (o *SSIOInsertionOrderCommon) GetAgencyLink() string`
 
-GetStartDate returns the StartDate field if non-nil, zero value otherwise.
+GetAgencyLink returns the AgencyLink field if non-nil, zero value otherwise.
 
-### GetStartDateOk
+### GetAgencyLinkOk
 
-`func (o *SSIOInsertionOrderCommon) GetStartDateOk() (*string, bool)`
+`func (o *SSIOInsertionOrderCommon) GetAgencyLinkOk() (*string, bool)`
 
-GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
+GetAgencyLinkOk returns a tuple with the AgencyLink field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetStartDate
+### SetAgencyLink
 
-`func (o *SSIOInsertionOrderCommon) SetStartDate(v string)`
+`func (o *SSIOInsertionOrderCommon) SetAgencyLink(v string)`
 
-SetStartDate sets StartDate field to given value.
+SetAgencyLink sets AgencyLink field to given value.
 
-### HasStartDate
+### HasAgencyLink
 
-`func (o *SSIOInsertionOrderCommon) HasStartDate() bool`
+`func (o *SSIOInsertionOrderCommon) HasAgencyLink() bool`
 
-HasStartDate returns a boolean if a field has been set.
+HasAgencyLink returns a boolean if a field has been set.
 
-### GetEndDate
+### GetBillingContactEmail
 
-`func (o *SSIOInsertionOrderCommon) GetEndDate() string`
+`func (o *SSIOInsertionOrderCommon) GetBillingContactEmail() string`
 
-GetEndDate returns the EndDate field if non-nil, zero value otherwise.
+GetBillingContactEmail returns the BillingContactEmail field if non-nil, zero value otherwise.
 
-### GetEndDateOk
+### GetBillingContactEmailOk
 
-`func (o *SSIOInsertionOrderCommon) GetEndDateOk() (*string, bool)`
+`func (o *SSIOInsertionOrderCommon) GetBillingContactEmailOk() (*string, bool)`
 
-GetEndDateOk returns a tuple with the EndDate field if it's non-nil, zero value otherwise
+GetBillingContactEmailOk returns a tuple with the BillingContactEmail field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEndDate
+### SetBillingContactEmail
 
-`func (o *SSIOInsertionOrderCommon) SetEndDate(v string)`
+`func (o *SSIOInsertionOrderCommon) SetBillingContactEmail(v string)`
 
-SetEndDate sets EndDate field to given value.
+SetBillingContactEmail sets BillingContactEmail field to given value.
 
-### HasEndDate
+### HasBillingContactEmail
 
-`func (o *SSIOInsertionOrderCommon) HasEndDate() bool`
+`func (o *SSIOInsertionOrderCommon) HasBillingContactEmail() bool`
 
-HasEndDate returns a boolean if a field has been set.
-
-### GetPoNumber
-
-`func (o *SSIOInsertionOrderCommon) GetPoNumber() string`
-
-GetPoNumber returns the PoNumber field if non-nil, zero value otherwise.
-
-### GetPoNumberOk
-
-`func (o *SSIOInsertionOrderCommon) GetPoNumberOk() (*string, bool)`
-
-GetPoNumberOk returns a tuple with the PoNumber field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPoNumber
-
-`func (o *SSIOInsertionOrderCommon) SetPoNumber(v string)`
-
-SetPoNumber sets PoNumber field to given value.
-
-### HasPoNumber
-
-`func (o *SSIOInsertionOrderCommon) HasPoNumber() bool`
-
-HasPoNumber returns a boolean if a field has been set.
-
-### GetBudgetAmount
-
-`func (o *SSIOInsertionOrderCommon) GetBudgetAmount() float32`
-
-GetBudgetAmount returns the BudgetAmount field if non-nil, zero value otherwise.
-
-### GetBudgetAmountOk
-
-`func (o *SSIOInsertionOrderCommon) GetBudgetAmountOk() (*float32, bool)`
-
-GetBudgetAmountOk returns a tuple with the BudgetAmount field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBudgetAmount
-
-`func (o *SSIOInsertionOrderCommon) SetBudgetAmount(v float32)`
-
-SetBudgetAmount sets BudgetAmount field to given value.
-
-### HasBudgetAmount
-
-`func (o *SSIOInsertionOrderCommon) HasBudgetAmount() bool`
-
-HasBudgetAmount returns a boolean if a field has been set.
+HasBillingContactEmail returns a boolean if a field has been set.
 
 ### GetBillingContactFirstname
 
@@ -186,30 +136,80 @@ SetBillingContactLastname sets BillingContactLastname field to given value.
 
 HasBillingContactLastname returns a boolean if a field has been set.
 
-### GetBillingContactEmail
+### GetBudgetAmount
 
-`func (o *SSIOInsertionOrderCommon) GetBillingContactEmail() string`
+`func (o *SSIOInsertionOrderCommon) GetBudgetAmount() float32`
 
-GetBillingContactEmail returns the BillingContactEmail field if non-nil, zero value otherwise.
+GetBudgetAmount returns the BudgetAmount field if non-nil, zero value otherwise.
 
-### GetBillingContactEmailOk
+### GetBudgetAmountOk
 
-`func (o *SSIOInsertionOrderCommon) GetBillingContactEmailOk() (*string, bool)`
+`func (o *SSIOInsertionOrderCommon) GetBudgetAmountOk() (*float32, bool)`
 
-GetBillingContactEmailOk returns a tuple with the BillingContactEmail field if it's non-nil, zero value otherwise
+GetBudgetAmountOk returns a tuple with the BudgetAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBillingContactEmail
+### SetBudgetAmount
 
-`func (o *SSIOInsertionOrderCommon) SetBillingContactEmail(v string)`
+`func (o *SSIOInsertionOrderCommon) SetBudgetAmount(v float32)`
 
-SetBillingContactEmail sets BillingContactEmail field to given value.
+SetBudgetAmount sets BudgetAmount field to given value.
 
-### HasBillingContactEmail
+### HasBudgetAmount
 
-`func (o *SSIOInsertionOrderCommon) HasBillingContactEmail() bool`
+`func (o *SSIOInsertionOrderCommon) HasBudgetAmount() bool`
 
-HasBillingContactEmail returns a boolean if a field has been set.
+HasBudgetAmount returns a boolean if a field has been set.
+
+### GetEndDate
+
+`func (o *SSIOInsertionOrderCommon) GetEndDate() string`
+
+GetEndDate returns the EndDate field if non-nil, zero value otherwise.
+
+### GetEndDateOk
+
+`func (o *SSIOInsertionOrderCommon) GetEndDateOk() (*string, bool)`
+
+GetEndDateOk returns a tuple with the EndDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEndDate
+
+`func (o *SSIOInsertionOrderCommon) SetEndDate(v string)`
+
+SetEndDate sets EndDate field to given value.
+
+### HasEndDate
+
+`func (o *SSIOInsertionOrderCommon) HasEndDate() bool`
+
+HasEndDate returns a boolean if a field has been set.
+
+### GetMediaContactEmail
+
+`func (o *SSIOInsertionOrderCommon) GetMediaContactEmail() string`
+
+GetMediaContactEmail returns the MediaContactEmail field if non-nil, zero value otherwise.
+
+### GetMediaContactEmailOk
+
+`func (o *SSIOInsertionOrderCommon) GetMediaContactEmailOk() (*string, bool)`
+
+GetMediaContactEmailOk returns a tuple with the MediaContactEmail field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMediaContactEmail
+
+`func (o *SSIOInsertionOrderCommon) SetMediaContactEmail(v string)`
+
+SetMediaContactEmail sets MediaContactEmail field to given value.
+
+### HasMediaContactEmail
+
+`func (o *SSIOInsertionOrderCommon) HasMediaContactEmail() bool`
+
+HasMediaContactEmail returns a boolean if a field has been set.
 
 ### GetMediaContactFirstname
 
@@ -261,55 +261,55 @@ SetMediaContactLastname sets MediaContactLastname field to given value.
 
 HasMediaContactLastname returns a boolean if a field has been set.
 
-### GetMediaContactEmail
+### GetPoNumber
 
-`func (o *SSIOInsertionOrderCommon) GetMediaContactEmail() string`
+`func (o *SSIOInsertionOrderCommon) GetPoNumber() string`
 
-GetMediaContactEmail returns the MediaContactEmail field if non-nil, zero value otherwise.
+GetPoNumber returns the PoNumber field if non-nil, zero value otherwise.
 
-### GetMediaContactEmailOk
+### GetPoNumberOk
 
-`func (o *SSIOInsertionOrderCommon) GetMediaContactEmailOk() (*string, bool)`
+`func (o *SSIOInsertionOrderCommon) GetPoNumberOk() (*string, bool)`
 
-GetMediaContactEmailOk returns a tuple with the MediaContactEmail field if it's non-nil, zero value otherwise
+GetPoNumberOk returns a tuple with the PoNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMediaContactEmail
+### SetPoNumber
 
-`func (o *SSIOInsertionOrderCommon) SetMediaContactEmail(v string)`
+`func (o *SSIOInsertionOrderCommon) SetPoNumber(v string)`
 
-SetMediaContactEmail sets MediaContactEmail field to given value.
+SetPoNumber sets PoNumber field to given value.
 
-### HasMediaContactEmail
+### HasPoNumber
 
-`func (o *SSIOInsertionOrderCommon) HasMediaContactEmail() bool`
+`func (o *SSIOInsertionOrderCommon) HasPoNumber() bool`
 
-HasMediaContactEmail returns a boolean if a field has been set.
+HasPoNumber returns a boolean if a field has been set.
 
-### GetAgencyLink
+### GetStartDate
 
-`func (o *SSIOInsertionOrderCommon) GetAgencyLink() string`
+`func (o *SSIOInsertionOrderCommon) GetStartDate() string`
 
-GetAgencyLink returns the AgencyLink field if non-nil, zero value otherwise.
+GetStartDate returns the StartDate field if non-nil, zero value otherwise.
 
-### GetAgencyLinkOk
+### GetStartDateOk
 
-`func (o *SSIOInsertionOrderCommon) GetAgencyLinkOk() (*string, bool)`
+`func (o *SSIOInsertionOrderCommon) GetStartDateOk() (*string, bool)`
 
-GetAgencyLinkOk returns a tuple with the AgencyLink field if it's non-nil, zero value otherwise
+GetStartDateOk returns a tuple with the StartDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAgencyLink
+### SetStartDate
 
-`func (o *SSIOInsertionOrderCommon) SetAgencyLink(v string)`
+`func (o *SSIOInsertionOrderCommon) SetStartDate(v string)`
 
-SetAgencyLink sets AgencyLink field to given value.
+SetStartDate sets StartDate field to given value.
 
-### HasAgencyLink
+### HasStartDate
 
-`func (o *SSIOInsertionOrderCommon) HasAgencyLink() bool`
+`func (o *SSIOInsertionOrderCommon) HasStartDate() bool`
 
-HasAgencyLink returns a boolean if a field has been set.
+HasStartDate returns a boolean if a field has been set.
 
 ### GetUserEmail
 

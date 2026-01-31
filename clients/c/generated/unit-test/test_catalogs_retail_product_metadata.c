@@ -22,21 +22,21 @@ catalogs_retail_product_metadata_t* instantiate_catalogs_retail_product_metadata
   catalogs_retail_product_metadata_t* catalogs_retail_product_metadata = NULL;
   if (include_optional) {
     catalogs_retail_product_metadata = catalogs_retail_product_metadata_create(
-      "DS0294-L",
-      "DS0294",
       pinterest_rest_api_catalogs_retail_product_metadata__IN_STOCK,
+      pinterest_rest_api_catalogs_retail_product_metadata__"USD",
+      "DS0294",
+      "DS0294-L",
       24.99,
-      14.99,
-      pinterest_rest_api_catalogs_retail_product_metadata__"USD"
+      14.99
     );
   } else {
     catalogs_retail_product_metadata = catalogs_retail_product_metadata_create(
-      "DS0294-L",
-      "DS0294",
       pinterest_rest_api_catalogs_retail_product_metadata__IN_STOCK,
+      pinterest_rest_api_catalogs_retail_product_metadata__"USD",
+      "DS0294",
+      "DS0294-L",
       24.99,
-      14.99,
-      pinterest_rest_api_catalogs_retail_product_metadata__"USD"
+      14.99
     );
   }
 

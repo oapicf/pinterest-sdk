@@ -9,13 +9,13 @@ import scala.collection.immutable.Seq
 
 /**
  * 
+ * @param catalogUnderscoreid Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
  * @param catalogUnderscoretype 
  * @param creativeUnderscoreassetsUnderscoreids 
- * @param catalogUnderscoreid Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
  */
-case class CatalogsCreativeAssetsItemsPostFilter(catalogUnderscoretype: String,
-                creativeUnderscoreassetsUnderscoreids: Seq[String],
-                catalogUnderscoreid: Option[String]
+case class CatalogsCreativeAssetsItemsPostFilter(catalogUnderscoreid: Option[String],
+                catalogUnderscoretype: String,
+                creativeUnderscoreassetsUnderscoreids: Seq[String]
                 )
 
 object CatalogsCreativeAssetsItemsPostFilter {

@@ -10,14 +10,18 @@ import org.openapitools.model.AudienceRule;
 class Audience {
     /* Ad account ID. */
     String adAccountId
+    /* <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR */
+    String audienceType
+    /* The company that created this audience. */
+    String createdByCompanyName
+    /* Creation time. Unix timestamp in seconds. */
+    Integer createdTimestamp
+    /* Audience description. */
+    String description
     /* Audience ID. */
     String id
     /* Audience name. */
     String name
-    /* <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR */
-    String audienceType
-    /* Audience description. */
-    String description
     
     AudienceRule rule
     /* Audience size. */
@@ -26,8 +30,6 @@ class Audience {
     String status
     /* Always \"audience\". */
     String type
-    /* Creation time. Unix timestamp in seconds. */
-    Integer createdTimestamp
     /* Last update time. Unix timestamp in seconds. */
     Integer updatedTimestamp
 }

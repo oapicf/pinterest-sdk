@@ -1,0 +1,54 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsCreativeAssetsItemResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsCreativeAssetsItemResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsCreativeAssetsAttributes = openapi_server.resourceTypes.CatalogsCreativeAssetsAttributes
+  CatalogsType = openapi_server.resourceTypes.CatalogsType
+  Pin = openapi_server.resourceTypes.Pin
+}
+resourceTypes {
+
+  CatalogsCreativeAssetsItemResponse {
+    title = CatalogsCreativeAssetsItemResponse
+    description = CatalogsCreativeAssetsItemResponse
+    derivedFrom = Root
+    properties {
+        attributes {
+          type = CatalogsCreativeAssetsAttributes
+          description = ""
+          optional = false
+        }
+        catalog_type {
+          type = CatalogsType
+          description = ""
+          optional = true
+        }
+        creative_assets_id {
+          type =  string
+          description = "The catalog creative assets id in the merchant namespace"
+          optional = false
+        }
+        pins {
+          type = array
+          items.type = Pin
+          description = "The pins mapped to the item"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsCreativeAssetsItemResponse {
+    title = CatalogsCreativeAssetsItemResponse
+    description = CatalogsCreativeAssetsItemResponse
+    implements = openapi_server.resourceTypes.CatalogsCreativeAssetsItemResponse
+
+  }
+}

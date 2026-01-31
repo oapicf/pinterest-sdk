@@ -46,6 +46,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get Id of the ad account.
+	 */
+	std::string getAdAccountId();
+
+	/*! \brief Set Id of the ad account.
+	 */
+	void setAdAccountId(std::string  ad_account_id);
 	/*! \brief Get 
 	 */
 	ConversionTagType getConversionEvent();
@@ -60,13 +67,6 @@ public:
 	/*! \brief Set Id of the tag.
 	 */
 	void setConversionTagId(std::string  conversion_tag_id);
-	/*! \brief Get Id of the ad account.
-	 */
-	std::string getAdAccountId();
-
-	/*! \brief Set Id of the ad account.
-	 */
-	void setAdAccountId(std::string  ad_account_id);
 	/*! \brief Get Creation date in epoch format.
 	 */
 	int getCreatedTime();
@@ -76,9 +76,9 @@ public:
 	void setCreatedTime(int  created_time);
 
 private:
+	std::string ad_account_id;
 	ConversionTagType conversion_event;
 	std::string conversion_tag_id;
-	std::string ad_account_id;
 	int created_time;
 	void __init();
 	void __cleanup();

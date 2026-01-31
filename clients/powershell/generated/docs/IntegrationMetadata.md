@@ -3,39 +3,39 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **String** |  | [optional] 
-**ExternalBusinessId** | **String** |  | [optional] 
-**ConnectedMerchantId** | **String** |  | [optional] 
-**ConnectedUserId** | **String** |  | [optional] [readonly] 
+**AdditionalId1** | **String** |  | [optional] 
 **ConnectedAdvertiserId** | **String** |  | [optional] [readonly] 
 **ConnectedLbaId** | **String** |  | [optional] 
+**ConnectedMerchantId** | **String** |  | [optional] 
 **ConnectedTagId** | **String** |  | [optional] 
+**ConnectedUserId** | **String** |  | [optional] [readonly] 
+**CreatedTimestamp** | **Decimal** |  | [optional] 
+**ExternalBusinessId** | **String** |  | [optional] 
+**Id** | **String** |  | [optional] 
 **PartnerAccessTokenExpiry** | **Decimal** |  | [optional] 
+**PartnerMetadata** | **String** |  | [optional] 
 **PartnerRefreshTokenExpiry** | **Decimal** |  | [optional] 
 **Scopes** | **String** |  | [optional] 
-**CreatedTimestamp** | **Decimal** |  | [optional] 
 **UpdatedTimestamp** | **Decimal** |  | [optional] 
-**AdditionalId1** | **String** |  | [optional] 
-**PartnerMetadata** | **String** |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$IntegrationMetadata = Initialize-PSOpenAPIToolsIntegrationMetadata  -Id null `
- -ExternalBusinessId null `
- -ConnectedMerchantId null `
- -ConnectedUserId null `
+$IntegrationMetadata = Initialize-PSOpenAPIToolsIntegrationMetadata  -AdditionalId1 null `
  -ConnectedAdvertiserId null `
  -ConnectedLbaId null `
+ -ConnectedMerchantId null `
  -ConnectedTagId null `
+ -ConnectedUserId null `
+ -CreatedTimestamp null `
+ -ExternalBusinessId null `
+ -Id null `
  -PartnerAccessTokenExpiry null `
+ -PartnerMetadata null `
  -PartnerRefreshTokenExpiry null `
  -Scopes null `
- -CreatedTimestamp null `
- -UpdatedTimestamp null `
- -AdditionalId1 null `
- -PartnerMetadata null
+ -UpdatedTimestamp null
 ```
 
 - Convert the resource to JSON

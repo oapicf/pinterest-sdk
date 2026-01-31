@@ -33,16 +33,28 @@ class CampaignCommonTest : ShouldSpec() {
             //modelInstance.adAccountId shouldBe ("TODO")
         }
 
-        // to test the property `name` - Campaign name.
-        should("test name") {
+        // to test the property `dailySpendCap` - Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
+        should("test dailySpendCap") {
             // uncomment below to test the property
-            //modelInstance.name shouldBe ("TODO")
+            //modelInstance.dailySpendCap shouldBe ("TODO")
         }
 
-        // to test the property `status`
-        should("test status") {
+        // to test the property `endTime` - Timestamp in Unix format for scheduling when ads in the campaign stop appearing. Must occur after any end times for child ad groups. If `end_time` is not specified for the campaign, ads run indefinitely unless you update the campaign, changing their status to `paused`. Learn about <a href=\"/docs/api-features/managing-campaigns/#campaign-scheduling\" target=\"blank\">scheduling campaigns</a>. Different end times can be set for the campaign's child ad groups, but they cannot occur after an `end_time` specified for the campaign. - If your campaign has a child ad group with an end time specified, and if you update that campaign with an `end_time` that is earlier than that of the ad group, the campaign `end_time` will supersede the ad group `end_time`, and the request will not return an error. - In this scenario, if you call <a href=\"/docs/api/v5/campaigns-list\" target=\"blank\">List campaigns</a> or <a href=\"/docs/api/v5/ad_groups-list\" target=\"blank\">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.
+        should("test endTime") {
             // uncomment below to test the property
-            //modelInstance.status shouldBe ("TODO")
+            //modelInstance.endTime shouldBe ("TODO")
+        }
+
+        // to test the property `isAutomatedCampaign` - Specifies whether the campaign was created in the automated campaign flow
+        should("test isAutomatedCampaign") {
+            // uncomment below to test the property
+            //modelInstance.isAutomatedCampaign shouldBe ("TODO")
+        }
+
+        // to test the property `isFlexibleDailyBudgets` - Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\".
+        should("test isFlexibleDailyBudgets") {
+            // uncomment below to test the property
+            //modelInstance.isFlexibleDailyBudgets shouldBe ("TODO")
         }
 
         // to test the property `lifetimeSpendCap` - Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
@@ -51,10 +63,10 @@ class CampaignCommonTest : ShouldSpec() {
             //modelInstance.lifetimeSpendCap shouldBe ("TODO")
         }
 
-        // to test the property `dailySpendCap` - Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
-        should("test dailySpendCap") {
+        // to test the property `name` - Campaign name.
+        should("test name") {
             // uncomment below to test the property
-            //modelInstance.dailySpendCap shouldBe ("TODO")
+            //modelInstance.name shouldBe ("TODO")
         }
 
         // to test the property `orderLineId` - Order line ID that appears on the invoice.
@@ -63,28 +75,22 @@ class CampaignCommonTest : ShouldSpec() {
             //modelInstance.orderLineId shouldBe ("TODO")
         }
 
-        // to test the property `trackingUrls`
-        should("test trackingUrls") {
-            // uncomment below to test the property
-            //modelInstance.trackingUrls shouldBe ("TODO")
-        }
-
-        // to test the property `startTime` - Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
+        // to test the property `startTime` - Timestamp in Unix format for scheduling when ads in the campaign start to appear. Must precede any start times set for child ad groups. Defaults to current time if no time is specified. Learn about <a href=\"/docs/api-features/managing-campaigns/#campaign-scheduling\" target=\"blank\">scheduling campaigns</a>. Different start times can be set for the campaign's child ad groups, but they cannot occur before a `start_time` specified for the campaign. - If your campaign has a child ad group with a start time specified, and if you update that campaign with a `start_time` that is later than that of the ad group, the campaign `start_time` will supersede the ad group `start_time`, and the request will not return an error. - In this scenario, if you call <a href=\"/docs/api/v5/campaigns-list\" target=\"blank\">List campaigns</a> or <a href=\"/docs/api/v5/ad_groups-list\" target=\"blank\">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.
         should("test startTime") {
             // uncomment below to test the property
             //modelInstance.startTime shouldBe ("TODO")
         }
 
-        // to test the property `endTime` - Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-        should("test endTime") {
+        // to test the property `status`
+        should("test status") {
             // uncomment below to test the property
-            //modelInstance.endTime shouldBe ("TODO")
+            //modelInstance.status shouldBe ("TODO")
         }
 
-        // to test the property `isFlexibleDailyBudgets` - Determine if a campaign has flexible daily budgets setup.
-        should("test isFlexibleDailyBudgets") {
+        // to test the property `trackingUrls`
+        should("test trackingUrls") {
             // uncomment below to test the property
-            //modelInstance.isFlexibleDailyBudgets shouldBe ("TODO")
+            //modelInstance.trackingUrls shouldBe ("TODO")
         }
 
     }

@@ -1,7 +1,7 @@
 /*
  * enhanced_match_status_type.h
  *
- * The enhanced match status of the tag
+ * 
  */
 
 #ifndef _enhanced_match_status_type_H_

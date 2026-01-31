@@ -31,7 +31,7 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the advanced_auction API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionApi  {
 
     @Inject AdvancedAuctionApiService service;
@@ -74,6 +74,8 @@ public class AdvancedAuctionApi  {
     }, tags={ "advanced_auction", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "Response containing the results of the item bid options operations", response = AdvancedAuctionProcessedItems.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 206, message = "Response containing the results of the item bid options operations (where some/all operation results have errors)", response = AdvancedAuctionProcessedItems.class),
         
         @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid request parameters.", response = Error.class),
         

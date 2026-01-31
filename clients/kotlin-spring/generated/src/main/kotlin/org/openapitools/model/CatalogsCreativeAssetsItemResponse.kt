@@ -21,9 +21,9 @@ import io.swagger.v3.oas.annotations.media.Schema
 /**
  * Object describing a hotel record
  * @param catalogType 
+ * @param attributes 
  * @param creativeAssetsId The catalog creative assets id in the merchant namespace
  * @param pins The pins mapped to the item
- * @param attributes 
  */
 data class CatalogsCreativeAssetsItemResponse(
 
@@ -31,17 +31,17 @@ data class CatalogsCreativeAssetsItemResponse(
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsType,
 
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("attributes") val attributes: CatalogsCreativeAssetsAttributes? = null,
+
     @Schema(example = "DS0294-M", description = "The catalog creative assets id in the merchant namespace")
     @get:JsonProperty("creative_assets_id") val creativeAssetsId: kotlin.String? = null,
 
     @field:Valid
     @get:Size(max=11)
     @Schema(example = "null", description = "The pins mapped to the item")
-    @get:JsonProperty("pins") val pins: kotlin.collections.List<Pin>? = null,
-
-    @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("attributes") val attributes: CatalogsCreativeAssetsAttributes? = null
+    @get:JsonProperty("pins") val pins: kotlin.collections.List<Pin>? = null
 ) {
 
 }

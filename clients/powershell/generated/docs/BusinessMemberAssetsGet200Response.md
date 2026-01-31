@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**AssetIdPermissions[]**](AssetIdPermissions.md) | List asset permissions the given member was granted. | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**AssetIdPermissions[]**](AssetIdPermissions.md) | List asset permissions the given member was granted. | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$BusinessMemberAssetsGet200Response = Initialize-PSOpenAPIToolsBusinessMemberAssetsGet200Response  -Items null `
- -Bookmark null
+$BusinessMemberAssetsGet200Response = Initialize-PSOpenAPIToolsBusinessMemberAssetsGet200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

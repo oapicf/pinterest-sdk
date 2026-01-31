@@ -73,10 +73,10 @@ private class OASQuizPinResultTest {
     private static void maintainRenamedProperties() {
         OASQuizPinResult quizPinResult = new OASQuizPinResult();
         Map<String, String> x-property-mappings = quizPinResult.getx-property-mappings();
-        System.assertEquals('organicPinId', x-property-mappings.get('organic_pin_id'));
         System.assertEquals('androidDeepLink', x-property-mappings.get('android_deep_link'));
-        System.assertEquals('iosDeepLink', x-property-mappings.get('ios_deep_link'));
         System.assertEquals('destinationUrl', x-property-mappings.get('destination_url'));
+        System.assertEquals('iosDeepLink', x-property-mappings.get('ios_deep_link'));
+        System.assertEquals('organicPinId', x-property-mappings.get('organic_pin_id'));
         System.assertEquals('resultId', x-property-mappings.get('result_id'));
     }
 }

@@ -10,7 +10,7 @@ import org.openapitools.model.MediaType;
 @Canonical
 class CatalogsProductGroupMultipleMediaTypesCriteria {
     
-    List<MediaType> values = new ArrayList<>()
-    
     Boolean negated = false
+    
+    List<MediaType> values = new ArrayList<>()
 }

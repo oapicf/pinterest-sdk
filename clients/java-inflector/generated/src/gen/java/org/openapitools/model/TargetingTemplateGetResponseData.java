@@ -20,37 +20,37 @@ import org.openapitools.model.TrackingUrls;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TargetingTemplateGetResponseData   {
-  @JsonProperty("name")
-  private String name;
-
   @JsonProperty("auto_targeting_enabled")
   private Boolean autoTargetingEnabled = true;
-
-  @JsonProperty("targeting_attributes")
-  private TargetingSpec targetingAttributes;
-
-  @JsonProperty("placement_group")
-  private PlacementGroupType placementGroup = PlacementGroupType.ALL;
 
   @JsonProperty("keywords")
   private List<TargetingTemplateKeyword> keywords = null;
 
+  @JsonProperty("name")
+  private String name;
+
+  @JsonProperty("placement_group")
+  private PlacementGroupType placementGroup = PlacementGroupType.ALL;
+
+  @JsonProperty("targeting_attributes")
+  private TargetingSpec targetingAttributes;
+
   @JsonProperty("tracking_urls")
   private TrackingUrls trackingUrls;
 
-  @JsonProperty("id")
-  private String id;
+  @JsonProperty("ad_account_id")
+  private String adAccountId;
 
   @JsonProperty("created_time")
   private Integer createdTime;
 
-  @JsonProperty("updated_time")
-  private Integer updatedTime;
+  @JsonProperty("id")
+  private String id;
 
-  @JsonProperty("ad_account_id")
-  private String adAccountId;
+  @JsonProperty("sizing")
+  private TargetingTemplateAudienceSizing sizing;
 
   /**
    * Indicate targeting template is active or Deleted
@@ -86,29 +86,11 @@ public class TargetingTemplateGetResponseData   {
   @JsonProperty("status")
   private StatusEnum status = StatusEnum.ACTIVE;
 
-  @JsonProperty("sizing")
-  private TargetingTemplateAudienceSizing sizing;
+  @JsonProperty("updated_time")
+  private Integer updatedTime;
 
   @JsonProperty("valid")
   private Boolean valid;
-
-  /**
-   * targeting template name
-   **/
-  public TargetingTemplateGetResponseData name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "Gaming", value = "targeting template name")
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
 
   /**
    * Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
@@ -130,19 +112,37 @@ public class TargetingTemplateGetResponseData   {
 
   /**
    **/
-  public TargetingTemplateGetResponseData targetingAttributes(TargetingSpec targetingAttributes) {
-    this.targetingAttributes = targetingAttributes;
+  public TargetingTemplateGetResponseData keywords(List<TargetingTemplateKeyword> keywords) {
+    this.keywords = keywords;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
-  @JsonProperty("targeting_attributes")
-  public TargetingSpec getTargetingAttributes() {
-    return targetingAttributes;
+  @ApiModelProperty(example = "[{value=cats, match_type=EXACT_NEGATIVE}]", value = "")
+  @JsonProperty("keywords")
+  public List<TargetingTemplateKeyword> getKeywords() {
+    return keywords;
   }
-  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
-    this.targetingAttributes = targetingAttributes;
+  public void setKeywords(List<TargetingTemplateKeyword> keywords) {
+    this.keywords = keywords;
+  }
+
+  /**
+   * targeting template name
+   **/
+  public TargetingTemplateGetResponseData name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "Gaming", value = "targeting template name")
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
   }
 
   /**
@@ -164,19 +164,19 @@ public class TargetingTemplateGetResponseData   {
 
   /**
    **/
-  public TargetingTemplateGetResponseData keywords(List<TargetingTemplateKeyword> keywords) {
-    this.keywords = keywords;
+  public TargetingTemplateGetResponseData targetingAttributes(TargetingSpec targetingAttributes) {
+    this.targetingAttributes = targetingAttributes;
     return this;
   }
 
   
-  @ApiModelProperty(example = "[{value=cats, match_type=EXACT_NEGATIVE}]", value = "")
-  @JsonProperty("keywords")
-  public List<TargetingTemplateKeyword> getKeywords() {
-    return keywords;
+  @ApiModelProperty(value = "")
+  @JsonProperty("targeting_attributes")
+  public TargetingSpec getTargetingAttributes() {
+    return targetingAttributes;
   }
-  public void setKeywords(List<TargetingTemplateKeyword> keywords) {
-    this.keywords = keywords;
+  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
+    this.targetingAttributes = targetingAttributes;
   }
 
   /**
@@ -194,60 +194,6 @@ public class TargetingTemplateGetResponseData   {
   }
   public void setTrackingUrls(TrackingUrls trackingUrls) {
     this.trackingUrls = trackingUrls;
-  }
-
-  /**
-   * Targeting template ID.
-   **/
-  public TargetingTemplateGetResponseData id(String id) {
-    this.id = id;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "643", value = "Targeting template ID.")
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  /**
-   * Targeting template created time. Unix timestamp in seconds.
-   **/
-  public TargetingTemplateGetResponseData createdTime(Integer createdTime) {
-    this.createdTime = createdTime;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "1432744744", value = "Targeting template created time. Unix timestamp in seconds.")
-  @JsonProperty("created_time")
-  public Integer getCreatedTime() {
-    return createdTime;
-  }
-  public void setCreatedTime(Integer createdTime) {
-    this.createdTime = createdTime;
-  }
-
-  /**
-   * Targeting template updated time.Unix timestamp in seconds.
-   **/
-  public TargetingTemplateGetResponseData updatedTime(Integer updatedTime) {
-    this.updatedTime = updatedTime;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "1432744744", value = "Targeting template updated time.Unix timestamp in seconds.")
-  @JsonProperty("updated_time")
-  public Integer getUpdatedTime() {
-    return updatedTime;
-  }
-  public void setUpdatedTime(Integer updatedTime) {
-    this.updatedTime = updatedTime;
   }
 
   /**
@@ -269,6 +215,59 @@ public class TargetingTemplateGetResponseData   {
   }
 
   /**
+   * Targeting template created time. Unix timestamp in seconds.
+   **/
+  public TargetingTemplateGetResponseData createdTime(Integer createdTime) {
+    this.createdTime = createdTime;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "1432744744", value = "Targeting template created time. Unix timestamp in seconds.")
+  @JsonProperty("created_time")
+  public Integer getCreatedTime() {
+    return createdTime;
+  }
+  public void setCreatedTime(Integer createdTime) {
+    this.createdTime = createdTime;
+  }
+
+  /**
+   * Targeting template ID.
+   **/
+  public TargetingTemplateGetResponseData id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "643", value = "Targeting template ID.")
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  /**
+   **/
+  public TargetingTemplateGetResponseData sizing(TargetingTemplateAudienceSizing sizing) {
+    this.sizing = sizing;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("sizing")
+  public TargetingTemplateAudienceSizing getSizing() {
+    return sizing;
+  }
+  public void setSizing(TargetingTemplateAudienceSizing sizing) {
+    this.sizing = sizing;
+  }
+
+  /**
    * Indicate targeting template is active or Deleted
    **/
   public TargetingTemplateGetResponseData status(StatusEnum status) {
@@ -287,20 +286,21 @@ public class TargetingTemplateGetResponseData   {
   }
 
   /**
+   * Targeting template updated time.Unix timestamp in seconds.
    **/
-  public TargetingTemplateGetResponseData sizing(TargetingTemplateAudienceSizing sizing) {
-    this.sizing = sizing;
+  public TargetingTemplateGetResponseData updatedTime(Integer updatedTime) {
+    this.updatedTime = updatedTime;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
-  @JsonProperty("sizing")
-  public TargetingTemplateAudienceSizing getSizing() {
-    return sizing;
+  @ApiModelProperty(example = "1432744744", value = "Targeting template updated time.Unix timestamp in seconds.")
+  @JsonProperty("updated_time")
+  public Integer getUpdatedTime() {
+    return updatedTime;
   }
-  public void setSizing(TargetingTemplateAudienceSizing sizing) {
-    this.sizing = sizing;
+  public void setUpdatedTime(Integer updatedTime) {
+    this.updatedTime = updatedTime;
   }
 
   /**
@@ -331,24 +331,24 @@ public class TargetingTemplateGetResponseData   {
       return false;
     }
     TargetingTemplateGetResponseData targetingTemplateGetResponseData = (TargetingTemplateGetResponseData) o;
-    return Objects.equals(name, targetingTemplateGetResponseData.name) &&
-        Objects.equals(autoTargetingEnabled, targetingTemplateGetResponseData.autoTargetingEnabled) &&
-        Objects.equals(targetingAttributes, targetingTemplateGetResponseData.targetingAttributes) &&
-        Objects.equals(placementGroup, targetingTemplateGetResponseData.placementGroup) &&
+    return Objects.equals(autoTargetingEnabled, targetingTemplateGetResponseData.autoTargetingEnabled) &&
         Objects.equals(keywords, targetingTemplateGetResponseData.keywords) &&
+        Objects.equals(name, targetingTemplateGetResponseData.name) &&
+        Objects.equals(placementGroup, targetingTemplateGetResponseData.placementGroup) &&
+        Objects.equals(targetingAttributes, targetingTemplateGetResponseData.targetingAttributes) &&
         Objects.equals(trackingUrls, targetingTemplateGetResponseData.trackingUrls) &&
-        Objects.equals(id, targetingTemplateGetResponseData.id) &&
-        Objects.equals(createdTime, targetingTemplateGetResponseData.createdTime) &&
-        Objects.equals(updatedTime, targetingTemplateGetResponseData.updatedTime) &&
         Objects.equals(adAccountId, targetingTemplateGetResponseData.adAccountId) &&
-        Objects.equals(status, targetingTemplateGetResponseData.status) &&
+        Objects.equals(createdTime, targetingTemplateGetResponseData.createdTime) &&
+        Objects.equals(id, targetingTemplateGetResponseData.id) &&
         Objects.equals(sizing, targetingTemplateGetResponseData.sizing) &&
+        Objects.equals(status, targetingTemplateGetResponseData.status) &&
+        Objects.equals(updatedTime, targetingTemplateGetResponseData.updatedTime) &&
         Objects.equals(valid, targetingTemplateGetResponseData.valid);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, autoTargetingEnabled, targetingAttributes, placementGroup, keywords, trackingUrls, id, createdTime, updatedTime, adAccountId, status, sizing, valid);
+    return Objects.hash(autoTargetingEnabled, keywords, name, placementGroup, targetingAttributes, trackingUrls, adAccountId, createdTime, id, sizing, status, updatedTime, valid);
   }
 
   @Override
@@ -356,18 +356,18 @@ public class TargetingTemplateGetResponseData   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TargetingTemplateGetResponseData {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    autoTargetingEnabled: ").append(toIndentedString(autoTargetingEnabled)).append("\n");
-    sb.append("    targetingAttributes: ").append(toIndentedString(targetingAttributes)).append("\n");
-    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
     sb.append("    keywords: ").append(toIndentedString(keywords)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
+    sb.append("    targetingAttributes: ").append(toIndentedString(targetingAttributes)).append("\n");
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
-    sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    sizing: ").append(toIndentedString(sizing)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    updatedTime: ").append(toIndentedString(updatedTime)).append("\n");
     sb.append("    valid: ").append(toIndentedString(valid)).append("\n");
     sb.append("}");
     return sb.toString();

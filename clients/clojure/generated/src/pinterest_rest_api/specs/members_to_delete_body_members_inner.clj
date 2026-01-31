@@ -8,8 +8,8 @@
 
 (def members-to-delete-body-members-inner-data
   {
-   (ds/req :member_id) string?
    (ds/req :business_role) business-role-for-members-spec
+   (ds/req :member_id) string?
    })
 
 (def members-to-delete-body-members-inner-spec

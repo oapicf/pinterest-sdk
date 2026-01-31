@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -24,12 +24,12 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 
 @ApiModel(description = "Queryable audience representation.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceDefinition   {
   
   private String date;
-  private String type;
   private String scope;
+  private String type;
 
   /**
    * Generation date
@@ -50,25 +50,6 @@ public class AudienceDefinition   {
   }
 
   /**
-   * Generated audience type to request.
-   */
-  public AudienceDefinition type(String type) {
-    this.type = type;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Generated audience type to request.")
-  @JsonProperty("type")
-  public String getType() {
-    return type;
-  }
-  public void setType(String type) {
-    this.type = type;
-  }
-
-  /**
-   * Generated audience scope to request.
    */
   public AudienceDefinition scope(String scope) {
     this.scope = scope;
@@ -76,13 +57,30 @@ public class AudienceDefinition   {
   }
 
   
-  @ApiModelProperty(value = "Generated audience scope to request.")
+  @ApiModelProperty(example = "PARTNER", value = "")
   @JsonProperty("scope")
   public String getScope() {
     return scope;
   }
   public void setScope(String scope) {
     this.scope = scope;
+  }
+
+  /**
+   */
+  public AudienceDefinition type(String type) {
+    this.type = type;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "IMPRESSION_PLUS_ENGAGEMENT", value = "")
+  @JsonProperty("type")
+  public String getType() {
+    return type;
+  }
+  public void setType(String type) {
+    this.type = type;
   }
 
 
@@ -96,13 +94,13 @@ public class AudienceDefinition   {
     }
     AudienceDefinition audienceDefinition = (AudienceDefinition) o;
     return Objects.equals(date, audienceDefinition.date) &&
-        Objects.equals(type, audienceDefinition.type) &&
-        Objects.equals(scope, audienceDefinition.scope);
+        Objects.equals(scope, audienceDefinition.scope) &&
+        Objects.equals(type, audienceDefinition.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, type, scope);
+    return Objects.hash(date, scope, type);
   }
 
   @Override
@@ -111,8 +109,8 @@ public class AudienceDefinition   {
     sb.append("class AudienceDefinition {\n");
     
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

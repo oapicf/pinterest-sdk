@@ -10,8 +10,29 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * CatalogsReportDistributionStats
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsReportDistributionStats   {
+  @JsonProperty("catalog_id")
+  private String catalogId;
+
+  @JsonProperty("code")
+  private Integer code;
+
+  @JsonProperty("code_label")
+  private String codeLabel;
+
+  @JsonProperty("ineligible_for_ads")
+  private Boolean ineligibleForAds;
+
+  @JsonProperty("ineligible_for_organic")
+  private Boolean ineligibleForOrganic;
+
+  @JsonProperty("message")
+  private String message;
+
+  @JsonProperty("occurrences")
+  private Integer occurrences;
+
   /**
    * Gets or Sets reportType
    */
@@ -43,45 +64,6 @@ public class CatalogsReportDistributionStats   {
 
   @JsonProperty("report_type")
   private ReportTypeEnum reportType;
-
-  @JsonProperty("catalog_id")
-  private String catalogId;
-
-  @JsonProperty("code")
-  private Integer code;
-
-  @JsonProperty("code_label")
-  private String codeLabel;
-
-  @JsonProperty("message")
-  private String message;
-
-  @JsonProperty("occurrences")
-  private Integer occurrences;
-
-  @JsonProperty("ineligible_for_ads")
-  private Boolean ineligibleForAds;
-
-  @JsonProperty("ineligible_for_organic")
-  private Boolean ineligibleForOrganic;
-
-  public CatalogsReportDistributionStats reportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-    return this;
-  }
-
-   /**
-   * Get reportType
-   * @return reportType
-  **/
-  @ApiModelProperty(value = "")
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-
-  public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
 
   public CatalogsReportDistributionStats catalogId(String catalogId) {
     this.catalogId = catalogId;
@@ -137,42 +119,6 @@ public class CatalogsReportDistributionStats   {
     this.codeLabel = codeLabel;
   }
 
-  public CatalogsReportDistributionStats message(String message) {
-    this.message = message;
-    return this;
-  }
-
-   /**
-   * Title message describing the diagnostic issue
-   * @return message
-  **/
-  @ApiModelProperty(value = "Title message describing the diagnostic issue")
-  public String getMessage() {
-    return message;
-  }
-
-  public void setMessage(String message) {
-    this.message = message;
-  }
-
-  public CatalogsReportDistributionStats occurrences(Integer occurrences) {
-    this.occurrences = occurrences;
-    return this;
-  }
-
-   /**
-   * Number of occurrences of the issue
-   * @return occurrences
-  **/
-  @ApiModelProperty(example = "10", value = "Number of occurrences of the issue")
-  public Integer getOccurrences() {
-    return occurrences;
-  }
-
-  public void setOccurrences(Integer occurrences) {
-    this.occurrences = occurrences;
-  }
-
   public CatalogsReportDistributionStats ineligibleForAds(Boolean ineligibleForAds) {
     this.ineligibleForAds = ineligibleForAds;
     return this;
@@ -209,6 +155,60 @@ public class CatalogsReportDistributionStats   {
     this.ineligibleForOrganic = ineligibleForOrganic;
   }
 
+  public CatalogsReportDistributionStats message(String message) {
+    this.message = message;
+    return this;
+  }
+
+   /**
+   * Title message describing the diagnostic issue
+   * @return message
+  **/
+  @ApiModelProperty(value = "Title message describing the diagnostic issue")
+  public String getMessage() {
+    return message;
+  }
+
+  public void setMessage(String message) {
+    this.message = message;
+  }
+
+  public CatalogsReportDistributionStats occurrences(Integer occurrences) {
+    this.occurrences = occurrences;
+    return this;
+  }
+
+   /**
+   * Number of occurrences of the issue
+   * @return occurrences
+  **/
+  @ApiModelProperty(example = "10", value = "Number of occurrences of the issue")
+  public Integer getOccurrences() {
+    return occurrences;
+  }
+
+  public void setOccurrences(Integer occurrences) {
+    this.occurrences = occurrences;
+  }
+
+  public CatalogsReportDistributionStats reportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+    return this;
+  }
+
+   /**
+   * Get reportType
+   * @return reportType
+  **/
+  @ApiModelProperty(value = "")
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -219,19 +219,19 @@ public class CatalogsReportDistributionStats   {
       return false;
     }
     CatalogsReportDistributionStats catalogsReportDistributionStats = (CatalogsReportDistributionStats) o;
-    return Objects.equals(this.reportType, catalogsReportDistributionStats.reportType) &&
-        Objects.equals(this.catalogId, catalogsReportDistributionStats.catalogId) &&
+    return Objects.equals(this.catalogId, catalogsReportDistributionStats.catalogId) &&
         Objects.equals(this.code, catalogsReportDistributionStats.code) &&
         Objects.equals(this.codeLabel, catalogsReportDistributionStats.codeLabel) &&
+        Objects.equals(this.ineligibleForAds, catalogsReportDistributionStats.ineligibleForAds) &&
+        Objects.equals(this.ineligibleForOrganic, catalogsReportDistributionStats.ineligibleForOrganic) &&
         Objects.equals(this.message, catalogsReportDistributionStats.message) &&
         Objects.equals(this.occurrences, catalogsReportDistributionStats.occurrences) &&
-        Objects.equals(this.ineligibleForAds, catalogsReportDistributionStats.ineligibleForAds) &&
-        Objects.equals(this.ineligibleForOrganic, catalogsReportDistributionStats.ineligibleForOrganic);
+        Objects.equals(this.reportType, catalogsReportDistributionStats.reportType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, catalogId, code, codeLabel, message, occurrences, ineligibleForAds, ineligibleForOrganic);
+    return Objects.hash(catalogId, code, codeLabel, ineligibleForAds, ineligibleForOrganic, message, occurrences, reportType);
   }
 
   @Override
@@ -239,14 +239,14 @@ public class CatalogsReportDistributionStats   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportDistributionStats {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    codeLabel: ").append(toIndentedString(codeLabel)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    occurrences: ").append(toIndentedString(occurrences)).append("\n");
     sb.append("    ineligibleForAds: ").append(toIndentedString(ineligibleForAds)).append("\n");
     sb.append("    ineligibleForOrganic: ").append(toIndentedString(ineligibleForOrganic)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    occurrences: ").append(toIndentedString(occurrences)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

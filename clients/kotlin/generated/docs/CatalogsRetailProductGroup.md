@@ -4,20 +4,20 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **catalogType** | [**inline**](#CatalogType) |  |  |
-| **id** | **kotlin.String** | ID of the catalog product group. |  |
-| **filters** | [**CatalogsProductGroupFilters**](CatalogsProductGroupFilters.md) |  |  |
 | **catalogId** | **kotlin.String** | Catalog id pertaining to the retail product group. |  |
+| **catalogType** | [**inline**](#CatalogType) |  |  |
 | **feedId** | **kotlin.String** | id of the catalogs feed belonging to this catalog product group |  |
-| **name** | **kotlin.String** | Name of catalog product group |  [optional] |
+| **filters** | [**CatalogsProductGroupFilters**](CatalogsProductGroupFilters.md) |  |  |
+| **id** | **kotlin.String** | ID of the catalog product group. |  |
+| **type** | [**CatalogsProductGroupType**](CatalogsProductGroupType.md) |  |  |
+| **country** | **kotlin.String** |  |  [optional] |
+| **createdAt** | **kotlin.Int** | Unix timestamp in seconds of when catalog product group was created. |  [optional] |
 | **description** | **kotlin.String** |  |  [optional] |
 | **isFeatured** | **kotlin.Boolean** | boolean indicator of whether the product group is being featured or not |  [optional] |
-| **type** | [**CatalogsProductGroupType**](CatalogsProductGroupType.md) |  |  [optional] |
-| **status** | [**CatalogsProductGroupStatus**](CatalogsProductGroupStatus.md) |  |  [optional] |
-| **createdAt** | **kotlin.Int** | Unix timestamp in seconds of when catalog product group was created. |  [optional] |
-| **updatedAt** | **kotlin.Int** | Unix timestamp in seconds of last time catalog product group was updated. |  [optional] |
-| **country** | **kotlin.String** |  |  [optional] |
 | **locale** | **kotlin.String** |  |  [optional] |
+| **name** | **kotlin.String** | Name of catalog product group |  [optional] |
+| **status** | [**CatalogsProductGroupStatus**](CatalogsProductGroupStatus.md) |  |  [optional] |
+| **updatedAt** | **kotlin.Int** | Unix timestamp in seconds of last time catalog product group was updated. |  [optional] |
 
 
 <a id="CatalogType"></a>

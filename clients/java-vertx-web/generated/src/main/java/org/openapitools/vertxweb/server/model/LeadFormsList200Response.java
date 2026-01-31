@@ -12,24 +12,15 @@ import org.openapitools.vertxweb.server.model.LeadFormResponse;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class LeadFormsList200Response   {
   
-  private List<LeadFormResponse> items = new ArrayList<>();
   private String bookmark;
+  private List<LeadFormResponse> items = new ArrayList<>();
 
   public LeadFormsList200Response () {
 
   }
 
-  public LeadFormsList200Response (List<LeadFormResponse> items, String bookmark) {
-    this.items = items;
+  public LeadFormsList200Response (String bookmark, List<LeadFormResponse> items) {
     this.bookmark = bookmark;
-  }
-
-    
-  @JsonProperty("items")
-  public List<LeadFormResponse> getItems() {
-    return items;
-  }
-  public void setItems(List<LeadFormResponse> items) {
     this.items = items;
   }
 
@@ -42,6 +33,15 @@ public class LeadFormsList200Response   {
     this.bookmark = bookmark;
   }
 
+    
+  @JsonProperty("items")
+  public List<LeadFormResponse> getItems() {
+    return items;
+  }
+  public void setItems(List<LeadFormResponse> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -52,13 +52,13 @@ public class LeadFormsList200Response   {
       return false;
     }
     LeadFormsList200Response leadFormsList200Response = (LeadFormsList200Response) o;
-    return Objects.equals(items, leadFormsList200Response.items) &&
-        Objects.equals(bookmark, leadFormsList200Response.bookmark);
+    return Objects.equals(bookmark, leadFormsList200Response.bookmark) &&
+        Objects.equals(items, leadFormsList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -66,8 +66,8 @@ public class LeadFormsList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class LeadFormsList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

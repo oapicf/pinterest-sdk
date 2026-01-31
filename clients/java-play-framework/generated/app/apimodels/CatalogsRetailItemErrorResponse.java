@@ -14,7 +14,7 @@ import javax.validation.Valid;
 /**
  * Object describing a retail item error
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsRetailItemErrorResponse   {
   @JsonProperty("catalog_type")
@@ -23,14 +23,15 @@ public class CatalogsRetailItemErrorResponse   {
 
   private CatalogsType catalogType;
 
+  @JsonProperty("errors")
+  @NotNull
+@Valid
+
+  private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
+
   @JsonProperty("item_id")
   
   private String itemId;
-
-  @JsonProperty("errors")
-  @Valid
-
-  private List<@Valid ItemValidationEvent> errors = null;
 
   public CatalogsRetailItemErrorResponse catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
@@ -47,23 +48,6 @@ public class CatalogsRetailItemErrorResponse   {
 
   public void setCatalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
-  }
-
-  public CatalogsRetailItemErrorResponse itemId(String itemId) {
-    this.itemId = itemId;
-    return this;
-  }
-
-   /**
-   * The catalog item id in the merchant namespace
-   * @return itemId
-  **/
-  public String getItemId() {
-    return itemId;
-  }
-
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
   }
 
   public CatalogsRetailItemErrorResponse errors(List<@Valid ItemValidationEvent> errors) {
@@ -91,6 +75,23 @@ public class CatalogsRetailItemErrorResponse   {
     this.errors = errors;
   }
 
+  public CatalogsRetailItemErrorResponse itemId(String itemId) {
+    this.itemId = itemId;
+    return this;
+  }
+
+   /**
+   * The catalog item id in the merchant namespace
+   * @return itemId
+  **/
+  public String getItemId() {
+    return itemId;
+  }
+
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -102,13 +103,13 @@ public class CatalogsRetailItemErrorResponse   {
     }
     CatalogsRetailItemErrorResponse catalogsRetailItemErrorResponse = (CatalogsRetailItemErrorResponse) o;
     return Objects.equals(catalogType, catalogsRetailItemErrorResponse.catalogType) &&
-        Objects.equals(itemId, catalogsRetailItemErrorResponse.itemId) &&
-        Objects.equals(errors, catalogsRetailItemErrorResponse.errors);
+        Objects.equals(errors, catalogsRetailItemErrorResponse.errors) &&
+        Objects.equals(itemId, catalogsRetailItemErrorResponse.itemId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, errors);
+    return Objects.hash(catalogType, errors, itemId);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -118,8 +119,8 @@ public class CatalogsRetailItemErrorResponse   {
     sb.append("class CatalogsRetailItemErrorResponse {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

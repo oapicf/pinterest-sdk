@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `AdAccountCreateSubscriptionResponse`
 --
-SELECT `id`, `cryptographic_key`, `cryptographic_algorithm`, `created_time` FROM `AdAccountCreateSubscriptionResponse` WHERE 1;
+SELECT `ad_account_id`, `api_version`, `created_time`, `cryptographic_algorithm`, `cryptographic_key`, `id`, `lead_form_id`, `user_account_id`, `webhook_url` FROM `AdAccountCreateSubscriptionResponse` WHERE 1;
 
 --
 -- INSERT template for table `AdAccountCreateSubscriptionResponse`
 --
-INSERT INTO `AdAccountCreateSubscriptionResponse`(`id`, `cryptographic_key`, `cryptographic_algorithm`, `created_time`) VALUES (?, ?, ?, ?);
+INSERT INTO `AdAccountCreateSubscriptionResponse`(`ad_account_id`, `api_version`, `created_time`, `cryptographic_algorithm`, `cryptographic_key`, `id`, `lead_form_id`, `user_account_id`, `webhook_url`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `AdAccountCreateSubscriptionResponse`
 --
-UPDATE `AdAccountCreateSubscriptionResponse` SET `id` = ?, `cryptographic_key` = ?, `cryptographic_algorithm` = ?, `created_time` = ? WHERE 1;
+UPDATE `AdAccountCreateSubscriptionResponse` SET `ad_account_id` = ?, `api_version` = ?, `created_time` = ?, `cryptographic_algorithm` = ?, `cryptographic_key` = ?, `id` = ?, `lead_form_id` = ?, `user_account_id` = ?, `webhook_url` = ? WHERE 1;
 
 --
 -- DELETE template for table `AdAccountCreateSubscriptionResponse`

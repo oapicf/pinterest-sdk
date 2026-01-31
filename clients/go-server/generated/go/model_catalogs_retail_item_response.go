@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,6 +17,8 @@ package openapi
 // CatalogsRetailItemResponse - Object describing a retail item record
 type CatalogsRetailItemResponse struct {
 
+	Attributes ItemAttributes `json:"attributes,omitempty"`
+
 	CatalogType CatalogsType `json:"catalog_type"`
 
 	// The catalog retail item id in the merchant namespace
@@ -24,8 +26,6 @@ type CatalogsRetailItemResponse struct {
 
 	// The pins mapped to the item
 	Pins *[]Pin `json:"pins,omitempty"`
-
-	Attributes ItemAttributes `json:"attributes,omitempty"`
 }
 
 // AssertCatalogsRetailItemResponseRequired checks if the required fields are not zero-ed
@@ -39,6 +39,9 @@ func AssertCatalogsRetailItemResponseRequired(obj CatalogsRetailItemResponse) er
 		}
 	}
 
+	if err := AssertItemAttributesRequired(obj.Attributes); err != nil {
+		return err
+	}
 	if obj.Pins != nil {
 		for _, el := range *obj.Pins {
 			if err := AssertPinRequired(el); err != nil {
@@ -46,14 +49,14 @@ func AssertCatalogsRetailItemResponseRequired(obj CatalogsRetailItemResponse) er
 			}
 		}
 	}
-	if err := AssertItemAttributesRequired(obj.Attributes); err != nil {
-		return err
-	}
 	return nil
 }
 
 // AssertCatalogsRetailItemResponseConstraints checks if the values respects the defined constraints
 func AssertCatalogsRetailItemResponseConstraints(obj CatalogsRetailItemResponse) error {
+	if err := AssertItemAttributesConstraints(obj.Attributes); err != nil {
+		return err
+	}
     if obj.Pins != nil {
      	for _, el := range *obj.Pins {
      		if err := AssertPinConstraints(el); err != nil {
@@ -61,8 +64,5 @@ func AssertCatalogsRetailItemResponseConstraints(obj CatalogsRetailItemResponse)
      		}
      	}
     }
-	if err := AssertItemAttributesConstraints(obj.Attributes); err != nil {
-		return err
-	}
 	return nil
 }

@@ -5,24 +5,14 @@
   "name": "CatalogsRetailFeedsCreateRequest",
   "fields": [
     {
-      "name": "default_currency",
-      "type": ["null", "model.NullableCurrency"],
-      "doc": "",
+      "name": "catalog_id",
+      "type": ["null", "string"],
+      "doc": "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. Currently, this field has no effect.",
       "default": null
     },
     {
-      "name": "name",
-      "type": "string",
-      "doc": "A human-friendly name associated to a given feed."
-    },
-    {
-      "name": "format",
-      "type": "model.CatalogsFormat",
-      "doc": ""
-    },
-    {
-      "name": "default_locale",
-      "type": "model.CatalogsFeedsCreateRequestDefaultLocale",
+      "name": "catalog_type",
+      "type": "model.CatalogsType",
       "doc": ""
     },
     {
@@ -32,20 +22,10 @@
       "default": null
     },
     {
-      "name": "location",
-      "type": "string",
-      "doc": "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing."
-    },
-    {
-      "name": "preferred_processing_schedule",
-      "type": ["null", "model.CatalogsFeedProcessingSchedule"],
+      "name": "default_availability",
+      "type": ["null", "model.ProductAvailabilityType"],
       "doc": "",
       "default": null
-    },
-    {
-      "name": "catalog_type",
-      "type": "model.CatalogsType",
-      "doc": ""
     },
     {
       "name": "default_country",
@@ -53,8 +33,34 @@
       "doc": ""
     },
     {
-      "name": "default_availability",
-      "type": ["null", "model.ProductAvailabilityType"],
+      "name": "default_currency",
+      "type": ["null", "model.NullableCurrency"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "default_locale",
+      "type": "model.CatalogsFeedsCreateRequestDefaultLocale",
+      "doc": ""
+    },
+    {
+      "name": "format",
+      "type": "model.CatalogsFormat",
+      "doc": ""
+    },
+    {
+      "name": "location",
+      "type": "string",
+      "doc": "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing."
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "A human-friendly name associated to a given feed."
+    },
+    {
+      "name": "preferred_processing_schedule",
+      "type": ["null", "model.CatalogsFeedProcessingSchedule"],
       "doc": "",
       "default": null
     },

@@ -13,12 +13,12 @@ import { AssetGroupBinding } from './assetGroupBinding';
 
 export interface UpdateAssetGroupResponse { 
     /**
-     * A list of successfully edited asset groups.
-     */
-    updated_asset_groups?: Array<AssetGroupBinding>;
-    /**
      * A list of errors associated with the asset groups. Will be returned if there is an error.
      */
     exceptions?: Array<UpdateAssetGroupResponseExceptionsInner> | null;
+    /**
+     * A list of successfully edited asset groups.
+     */
+    updated_asset_groups?: Array<AssetGroupBinding>;
 }
 

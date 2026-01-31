@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**TemplateResponse[]**](TemplateResponse.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**TemplateResponse[]**](TemplateResponse.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$TemplatesList200Response = Initialize-PSOpenAPIToolsTemplatesList200Response  -Items null `
- -Bookmark null
+$TemplatesList200Response = Initialize-PSOpenAPIToolsTemplatesList200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

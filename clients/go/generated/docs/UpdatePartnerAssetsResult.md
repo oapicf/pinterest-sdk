@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssetId** | Pointer to **string** | Unique identifier of a business asset. | [optional] 
-**AssetType** | Pointer to **string** | Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. | [optional] 
+**AssetType** | Pointer to **string** | Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. | [optional] 
 **PartnerId** | Pointer to **string** | Unique identifier of a business partner. | [optional] 
 **Permissions** | Pointer to **[]string** | Permission levels member or partner has on an asset. | [optional] 
 

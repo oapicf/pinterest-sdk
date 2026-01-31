@@ -10,7 +10,14 @@ The class is defined in **[PinMediaWithVideos.java](../../src/main/java/org/open
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;VideoMetadata&gt;`](VideoMetadata.md) |  |  [optional property]
+**items** | [`List&lt;VideoMetadataWithItemType&gt;`](VideoMetadataWithItemType.md) |  |  [optional property]
+**mediaType** | [**MediaTypeEnum**](#MediaTypeEnum) |  | 
 
+
+## MediaTypeEnum
+
+Name | Value
+---- | -----
+MULTIPLE_VIDEOS | `"multiple_videos"`
 
 

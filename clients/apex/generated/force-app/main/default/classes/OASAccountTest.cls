@@ -74,13 +74,13 @@ private class OASAccountTest {
         OASAccount account = new OASAccount();
         Map<String, String> x-property-mappings = account.getx-property-mappings();
         System.assertEquals('accountType', x-property-mappings.get('account_type'));
-        System.assertEquals('profileImage', x-property-mappings.get('profile_image'));
-        System.assertEquals('websiteUrl', x-property-mappings.get('website_url'));
-        System.assertEquals('businessName', x-property-mappings.get('business_name'));
         System.assertEquals('boardCount', x-property-mappings.get('board_count'));
-        System.assertEquals('pinCount', x-property-mappings.get('pin_count'));
+        System.assertEquals('businessName', x-property-mappings.get('business_name'));
         System.assertEquals('followerCount', x-property-mappings.get('follower_count'));
         System.assertEquals('followingCount', x-property-mappings.get('following_count'));
         System.assertEquals('monthlyViews', x-property-mappings.get('monthly_views'));
+        System.assertEquals('pinCount', x-property-mappings.get('pin_count'));
+        System.assertEquals('profileImage', x-property-mappings.get('profile_image'));
+        System.assertEquals('websiteUrl', x-property-mappings.get('website_url'));
     }
 }

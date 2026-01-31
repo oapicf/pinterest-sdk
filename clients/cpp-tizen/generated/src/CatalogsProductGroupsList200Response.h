@@ -49,22 +49,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<CatalogsVerticalProductGroup> getItems();
-
-	/*! \brief Set 
-	 */
-	void setItems(std::list <CatalogsVerticalProductGroup> items);
-	/*! \brief Get 
-	 */
 	std::string getBookmark();
 
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
+	/*! \brief Get 
+	 */
+	std::list<CatalogsVerticalProductGroup> getItems();
+
+	/*! \brief Set 
+	 */
+	void setItems(std::list <CatalogsVerticalProductGroup> items);
 
 private:
-	std::list <CatalogsVerticalProductGroup>items;
 	std::string bookmark;
+	std::list <CatalogsVerticalProductGroup>items;
 	void __init();
 	void __cleanup();
 

@@ -13,6 +13,8 @@ import org.openapitools.model.ItemDeleteBatchRecord;
 class CatalogsItemsDeleteBatchRequest {
     
     Country country
+    /* Array with catalogs items */
+    List<ItemDeleteBatchRecord> items = new ArrayList<>()
 
     enum LanguageEnum {
     
@@ -250,6 +252,4 @@ class CatalogsItemsDeleteBatchRequest {
     LanguageEnum language
     
     BatchOperation operation
-    /* Array with catalogs items */
-    List<ItemDeleteBatchRecord> items = new ArrayList<>()
 }

@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
 
 # **integrationsCommercePatch**
 ```swift
-    open class func integrationsCommercePatch(externalBusinessId: String, integrationRequestPatch: IntegrationRequestPatch? = nil, completion: @escaping (_ data: IntegrationMetadata?, _ error: Error?) -> Void)
+    open class func integrationsCommercePatch(externalBusinessId: String, integrationRequestPatch: IntegrationRequestPatch, completion: @escaping (_ data: IntegrationMetadata?, _ error: Error?) -> Void)
 ```
 
 Update commerce integration
@@ -128,7 +128,7 @@ Update commerce integration metadata for the given external business ID. Note: I
 import OpenAPIClient
 
 let externalBusinessId = "externalBusinessId_example" // String | External business ID for the integration.
-let integrationRequestPatch = IntegrationRequestPatch(connectedMerchantId: "connectedMerchantId_example", connectedAdvertiserId: "connectedAdvertiserId_example", connectedLbaId: "connectedLbaId_example", connectedTagId: "connectedTagId_example", partnerAccessToken: "partnerAccessToken_example", partnerRefreshToken: "partnerRefreshToken_example", partnerPrimaryEmail: "partnerPrimaryEmail_example", partnerAccessTokenExpiry: 123, partnerRefreshTokenExpiry: 123, scopes: "scopes_example", additionalId1: "additionalId1_example", partnerMetadata: "partnerMetadata_example") // IntegrationRequestPatch | Parameters to get create/update the Integration Metadata (optional)
+let integrationRequestPatch = IntegrationRequestPatch(additionalId1: "additionalId1_example", connectedAdvertiserId: "connectedAdvertiserId_example", connectedLbaId: "connectedLbaId_example", connectedMerchantId: "connectedMerchantId_example", connectedTagId: "connectedTagId_example", partnerAccessToken: "partnerAccessToken_example", partnerAccessTokenExpiry: 123, partnerMetadata: "partnerMetadata_example", partnerPrimaryEmail: "partnerPrimaryEmail_example", partnerRefreshToken: "partnerRefreshToken_example", partnerRefreshTokenExpiry: 123, scopes: "scopes_example") // IntegrationRequestPatch | Parameters to get create/update the Integration Metadata
 
 // Update commerce integration
 IntegrationsAPI.integrationsCommercePatch(externalBusinessId: externalBusinessId, integrationRequestPatch: integrationRequestPatch) { (response, error) in
@@ -148,7 +148,7 @@ IntegrationsAPI.integrationsCommercePatch(externalBusinessId: externalBusinessId
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **externalBusinessId** | **String** | External business ID for the integration. | 
- **integrationRequestPatch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md) | Parameters to get create/update the Integration Metadata | [optional] 
+ **integrationRequestPatch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md) | Parameters to get create/update the Integration Metadata | 
 
 ### Return type
 
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 
 # **integrationsCommercePost**
 ```swift
-    open class func integrationsCommercePost(integrationRequest: IntegrationRequest? = nil, completion: @escaping (_ data: IntegrationMetadata?, _ error: Error?) -> Void)
+    open class func integrationsCommercePost(integrationRequest: IntegrationRequest, completion: @escaping (_ data: IntegrationMetadata?, _ error: Error?) -> Void)
 ```
 
 Create commerce integration
@@ -179,7 +179,7 @@ Create commerce integration metadata to link an external business ID with a Pint
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let integrationRequest = IntegrationRequest(externalBusinessId: "externalBusinessId_example", connectedMerchantId: "connectedMerchantId_example", connectedAdvertiserId: "connectedAdvertiserId_example", connectedLbaId: "connectedLbaId_example", connectedTagId: "connectedTagId_example", partnerAccessToken: "partnerAccessToken_example", partnerRefreshToken: "partnerRefreshToken_example", partnerPrimaryEmail: "partnerPrimaryEmail_example", partnerAccessTokenExpiry: 123, partnerRefreshTokenExpiry: 123, scopes: "scopes_example", additionalId1: "additionalId1_example", partnerMetadata: "partnerMetadata_example") // IntegrationRequest | Parameters to get create/update the Integration Metadata (optional)
+let integrationRequest = IntegrationRequest(additionalId1: "additionalId1_example", connectedAdvertiserId: "connectedAdvertiserId_example", connectedLbaId: "connectedLbaId_example", connectedMerchantId: "connectedMerchantId_example", connectedTagId: "connectedTagId_example", externalBusinessId: "externalBusinessId_example", partnerAccessToken: "partnerAccessToken_example", partnerAccessTokenExpiry: 123, partnerMetadata: "partnerMetadata_example", partnerPrimaryEmail: "partnerPrimaryEmail_example", partnerRefreshToken: "partnerRefreshToken_example", partnerRefreshTokenExpiry: 123, scopes: "scopes_example") // IntegrationRequest | Parameters to get create/update the Integration Metadata
 
 // Create commerce integration
 IntegrationsAPI.integrationsCommercePost(integrationRequest: integrationRequest) { (response, error) in
@@ -198,7 +198,7 @@ IntegrationsAPI.integrationsCommercePost(integrationRequest: integrationRequest)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integrationRequest** | [**IntegrationRequest**](IntegrationRequest.md) | Parameters to get create/update the Integration Metadata | [optional] 
+ **integrationRequest** | [**IntegrationRequest**](IntegrationRequest.md) | Parameters to get create/update the Integration Metadata | 
 
 ### Return type
 
@@ -331,7 +331,7 @@ This endpoint receives batched logs from integration applications on partner pla
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let integrationLogsRequest = IntegrationLogsRequest(logs: [IntegrationLog(clientTimestamp: 123, eventType: "eventType_example", logLevel: "logLevel_example", externalBusinessId: "externalBusinessId_example", advertiserId: "advertiserId_example", merchantId: "merchantId_example", tagId: "tagId_example", feedProfileId: "feedProfileId_example", message: "message_example", appVersionNumber: "appVersionNumber_example", platformVersionNumber: "platformVersionNumber_example", error: IntegrationLogClientError(cause: "cause_example", columnNumber: 123, fileName: "fileName_example", lineNumber: 123, message: "message_example", messageDetail: "messageDetail_example", name: "name_example", number: 123, stackTrace: "stackTrace_example"), request: IntegrationLogClientRequest(method: "method_example", host: "host_example", path: "path_example", requestHeaders: "TODO", responseHeaders: "TODO", responseStatusCode: 123))]) // IntegrationLogsRequest | Ingest log information from external integration application.
+let integrationLogsRequest = IntegrationLogsRequest(logs: [IntegrationLog(advertiserId: "advertiserId_example", appVersionNumber: "appVersionNumber_example", clientTimestamp: 123, error: IntegrationLogClientError(cause: "cause_example", columnNumber: 123, fileName: "fileName_example", lineNumber: 123, message: "message_example", messageDetail: "messageDetail_example", name: "name_example", number: 123, stackTrace: "stackTrace_example"), eventType: "eventType_example", externalBusinessId: "externalBusinessId_example", feedProfileId: "feedProfileId_example", logLevel: "logLevel_example", merchantId: "merchantId_example", message: "message_example", platformVersionNumber: "platformVersionNumber_example", request: IntegrationLogClientRequest(host: "host_example", method: "method_example", path: "path_example", requestHeaders: "TODO", responseHeaders: "TODO", responseStatusCode: 123), tagId: "tagId_example")]) // IntegrationLogsRequest | Ingest log information from external integration application.
 
 // Receives batched logs from integration applications.
 IntegrationsAPI.integrationsLogsPost(integrationLogsRequest: integrationLogsRequest) { (response, error) in

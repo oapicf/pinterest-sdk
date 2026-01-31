@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,16 +20,16 @@ var _ MappedNullable = &UserWebsiteVerificationCode{}
 
 // UserWebsiteVerificationCode struct for UserWebsiteVerificationCode
 type UserWebsiteVerificationCode struct {
-	// Code to check against the user claiming the website
-	VerificationCode *string `json:"verification_code,omitempty"`
 	// DNS TXT record to check against for the website to be claimed
 	DnsTxtRecord *string `json:"dns_txt_record,omitempty"`
-	// Metatag the verification process searchs for the website to be claimed
-	Metatag *string `json:"metatag,omitempty"`
-	// File expected to find on the website being claimed
-	Filename *string `json:"filename,omitempty"`
 	// A full html file to upload to the website in order for it to be claimed
 	FileContent *string `json:"file_content,omitempty"`
+	// File expected to find on the website being claimed
+	Filename *string `json:"filename,omitempty"`
+	// Metatag the verification process searchs for the website to be claimed
+	Metatag *string `json:"metatag,omitempty"`
+	// Code to check against the user claiming the website
+	VerificationCode *string `json:"verification_code,omitempty"`
 }
 
 // NewUserWebsiteVerificationCode instantiates a new UserWebsiteVerificationCode object
@@ -47,38 +47,6 @@ func NewUserWebsiteVerificationCode() *UserWebsiteVerificationCode {
 func NewUserWebsiteVerificationCodeWithDefaults() *UserWebsiteVerificationCode {
 	this := UserWebsiteVerificationCode{}
 	return &this
-}
-
-// GetVerificationCode returns the VerificationCode field value if set, zero value otherwise.
-func (o *UserWebsiteVerificationCode) GetVerificationCode() string {
-	if o == nil || IsNil(o.VerificationCode) {
-		var ret string
-		return ret
-	}
-	return *o.VerificationCode
-}
-
-// GetVerificationCodeOk returns a tuple with the VerificationCode field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UserWebsiteVerificationCode) GetVerificationCodeOk() (*string, bool) {
-	if o == nil || IsNil(o.VerificationCode) {
-		return nil, false
-	}
-	return o.VerificationCode, true
-}
-
-// HasVerificationCode returns a boolean if a field has been set.
-func (o *UserWebsiteVerificationCode) HasVerificationCode() bool {
-	if o != nil && !IsNil(o.VerificationCode) {
-		return true
-	}
-
-	return false
-}
-
-// SetVerificationCode gets a reference to the given string and assigns it to the VerificationCode field.
-func (o *UserWebsiteVerificationCode) SetVerificationCode(v string) {
-	o.VerificationCode = &v
 }
 
 // GetDnsTxtRecord returns the DnsTxtRecord field value if set, zero value otherwise.
@@ -113,36 +81,36 @@ func (o *UserWebsiteVerificationCode) SetDnsTxtRecord(v string) {
 	o.DnsTxtRecord = &v
 }
 
-// GetMetatag returns the Metatag field value if set, zero value otherwise.
-func (o *UserWebsiteVerificationCode) GetMetatag() string {
-	if o == nil || IsNil(o.Metatag) {
+// GetFileContent returns the FileContent field value if set, zero value otherwise.
+func (o *UserWebsiteVerificationCode) GetFileContent() string {
+	if o == nil || IsNil(o.FileContent) {
 		var ret string
 		return ret
 	}
-	return *o.Metatag
+	return *o.FileContent
 }
 
-// GetMetatagOk returns a tuple with the Metatag field value if set, nil otherwise
+// GetFileContentOk returns a tuple with the FileContent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserWebsiteVerificationCode) GetMetatagOk() (*string, bool) {
-	if o == nil || IsNil(o.Metatag) {
+func (o *UserWebsiteVerificationCode) GetFileContentOk() (*string, bool) {
+	if o == nil || IsNil(o.FileContent) {
 		return nil, false
 	}
-	return o.Metatag, true
+	return o.FileContent, true
 }
 
-// HasMetatag returns a boolean if a field has been set.
-func (o *UserWebsiteVerificationCode) HasMetatag() bool {
-	if o != nil && !IsNil(o.Metatag) {
+// HasFileContent returns a boolean if a field has been set.
+func (o *UserWebsiteVerificationCode) HasFileContent() bool {
+	if o != nil && !IsNil(o.FileContent) {
 		return true
 	}
 
 	return false
 }
 
-// SetMetatag gets a reference to the given string and assigns it to the Metatag field.
-func (o *UserWebsiteVerificationCode) SetMetatag(v string) {
-	o.Metatag = &v
+// SetFileContent gets a reference to the given string and assigns it to the FileContent field.
+func (o *UserWebsiteVerificationCode) SetFileContent(v string) {
+	o.FileContent = &v
 }
 
 // GetFilename returns the Filename field value if set, zero value otherwise.
@@ -177,36 +145,68 @@ func (o *UserWebsiteVerificationCode) SetFilename(v string) {
 	o.Filename = &v
 }
 
-// GetFileContent returns the FileContent field value if set, zero value otherwise.
-func (o *UserWebsiteVerificationCode) GetFileContent() string {
-	if o == nil || IsNil(o.FileContent) {
+// GetMetatag returns the Metatag field value if set, zero value otherwise.
+func (o *UserWebsiteVerificationCode) GetMetatag() string {
+	if o == nil || IsNil(o.Metatag) {
 		var ret string
 		return ret
 	}
-	return *o.FileContent
+	return *o.Metatag
 }
 
-// GetFileContentOk returns a tuple with the FileContent field value if set, nil otherwise
+// GetMetatagOk returns a tuple with the Metatag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserWebsiteVerificationCode) GetFileContentOk() (*string, bool) {
-	if o == nil || IsNil(o.FileContent) {
+func (o *UserWebsiteVerificationCode) GetMetatagOk() (*string, bool) {
+	if o == nil || IsNil(o.Metatag) {
 		return nil, false
 	}
-	return o.FileContent, true
+	return o.Metatag, true
 }
 
-// HasFileContent returns a boolean if a field has been set.
-func (o *UserWebsiteVerificationCode) HasFileContent() bool {
-	if o != nil && !IsNil(o.FileContent) {
+// HasMetatag returns a boolean if a field has been set.
+func (o *UserWebsiteVerificationCode) HasMetatag() bool {
+	if o != nil && !IsNil(o.Metatag) {
 		return true
 	}
 
 	return false
 }
 
-// SetFileContent gets a reference to the given string and assigns it to the FileContent field.
-func (o *UserWebsiteVerificationCode) SetFileContent(v string) {
-	o.FileContent = &v
+// SetMetatag gets a reference to the given string and assigns it to the Metatag field.
+func (o *UserWebsiteVerificationCode) SetMetatag(v string) {
+	o.Metatag = &v
+}
+
+// GetVerificationCode returns the VerificationCode field value if set, zero value otherwise.
+func (o *UserWebsiteVerificationCode) GetVerificationCode() string {
+	if o == nil || IsNil(o.VerificationCode) {
+		var ret string
+		return ret
+	}
+	return *o.VerificationCode
+}
+
+// GetVerificationCodeOk returns a tuple with the VerificationCode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserWebsiteVerificationCode) GetVerificationCodeOk() (*string, bool) {
+	if o == nil || IsNil(o.VerificationCode) {
+		return nil, false
+	}
+	return o.VerificationCode, true
+}
+
+// HasVerificationCode returns a boolean if a field has been set.
+func (o *UserWebsiteVerificationCode) HasVerificationCode() bool {
+	if o != nil && !IsNil(o.VerificationCode) {
+		return true
+	}
+
+	return false
+}
+
+// SetVerificationCode gets a reference to the given string and assigns it to the VerificationCode field.
+func (o *UserWebsiteVerificationCode) SetVerificationCode(v string) {
+	o.VerificationCode = &v
 }
 
 func (o UserWebsiteVerificationCode) MarshalJSON() ([]byte, error) {
@@ -219,20 +219,20 @@ func (o UserWebsiteVerificationCode) MarshalJSON() ([]byte, error) {
 
 func (o UserWebsiteVerificationCode) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.VerificationCode) {
-		toSerialize["verification_code"] = o.VerificationCode
-	}
 	if !IsNil(o.DnsTxtRecord) {
 		toSerialize["dns_txt_record"] = o.DnsTxtRecord
 	}
-	if !IsNil(o.Metatag) {
-		toSerialize["metatag"] = o.Metatag
+	if !IsNil(o.FileContent) {
+		toSerialize["file_content"] = o.FileContent
 	}
 	if !IsNil(o.Filename) {
 		toSerialize["filename"] = o.Filename
 	}
-	if !IsNil(o.FileContent) {
-		toSerialize["file_content"] = o.FileContent
+	if !IsNil(o.Metatag) {
+		toSerialize["metatag"] = o.Metatag
+	}
+	if !IsNil(o.VerificationCode) {
+		toSerialize["verification_code"] = o.VerificationCode
 	}
 	return toSerialize, nil
 }

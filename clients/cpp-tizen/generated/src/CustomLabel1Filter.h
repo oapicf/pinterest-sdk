@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "CatalogsProductGroupMultipleStringCriteria.h"
+#include "CatalogsProductGroupFilterOperatorTypeCriteria.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -48,14 +48,14 @@ public:
 
 	/*! \brief Get 
 	 */
-	CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL1();
+	CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL1();
 
 	/*! \brief Set 
 	 */
-	void setCUSTOMLABEL1(CatalogsProductGroupMultipleStringCriteria  cUSTOM_LABEL_1);
+	void setCUSTOMLABEL1(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_1);
 
 private:
-	CatalogsProductGroupMultipleStringCriteria cUSTOM_LABEL_1;
+	CatalogsProductGroupFilterOperatorTypeCriteria cUSTOM_LABEL_1;
 	void __init();
 	void __cleanup();
 

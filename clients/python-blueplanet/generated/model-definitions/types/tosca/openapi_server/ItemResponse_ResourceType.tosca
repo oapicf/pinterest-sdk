@@ -1,0 +1,73 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ItemResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ItemResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsCreativeAssetsAttributes = openapi_server.resourceTypes.CatalogsCreativeAssetsAttributes
+  CatalogsType = openapi_server.resourceTypes.CatalogsType
+  ItemResponseOneOf = openapi_server.resourceTypes.ItemResponseOneOf
+  ItemResponseOneOf1 = openapi_server.resourceTypes.ItemResponseOneOf1
+  ItemValidationEvent = openapi_server.resourceTypes.ItemValidationEvent
+  Pin = openapi_server.resourceTypes.Pin
+}
+resourceTypes {
+
+  ItemResponse {
+    title = ItemResponse
+    description = ItemResponse
+    derivedFrom = Root
+    properties {
+        catalog_type {
+          type = CatalogsType
+          description = ""
+          optional = true
+        }
+        attributes {
+          type = CatalogsCreativeAssetsAttributes
+          description = ""
+          optional = false
+        }
+        item_id {
+          type =  string
+          description = "The catalog item id in the merchant namespace"
+          optional = false
+        }
+        pins {
+          type = array
+          items.type = Pin
+          description = "The pins mapped to the item"
+          optional = false
+        }
+        hotel_id {
+          type =  string
+          description = "The catalog hotel id in the merchant namespace"
+          optional = false
+        }
+        creative_assets_id {
+          type =  string
+          description = "The catalog creative assets id in the merchant namespace"
+          optional = false
+        }
+        errors {
+          type = array
+          items.type = ItemValidationEvent
+          description = "Array with the errors for the item id requested"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ItemResponse {
+    title = ItemResponse
+    description = ItemResponse
+    implements = openapi_server.resourceTypes.ItemResponse
+
+  }
+}

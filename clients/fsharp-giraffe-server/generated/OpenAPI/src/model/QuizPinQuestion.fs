@@ -10,8 +10,8 @@ module QuizPinQuestion =
 
 
   type QuizPinQuestion = {
+    Options : QuizPinOption[];
     QuestionId : decimal;
     QuestionText : string;
-    Options : QuizPinOption[];
   }
   //#endregion

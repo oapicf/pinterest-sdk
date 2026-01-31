@@ -12,12 +12,12 @@ import org.joda.time.DateTime
 import LeadsExportCreateRequest._
 
 case class LeadsExportCreateRequest (
-  /* Export leads collected on and after start date (UTC). Format: YYYY-MM-DD */
-  startDate: String,
+  /* ID for the ad collecting leads */
+  adId: String,
 /* Export leads collected on and before end date (UTC). Format: YYYY-MM-DD */
   endDate: String,
-/* ID for the ad collecting leads */
-  adId: String)
+/* Export leads collected on and after start date (UTC). Format: YYYY-MM-DD */
+  startDate: String)
 
 object LeadsExportCreateRequest {
   import DateTimeCodecs._

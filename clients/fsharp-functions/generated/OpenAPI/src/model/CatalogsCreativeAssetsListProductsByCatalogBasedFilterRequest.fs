@@ -11,10 +11,10 @@ module CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest =
 
   [<CLIMutable>]
   type CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest = {
-    [<JsonProperty(PropertyName = "catalog_type")>]
-    CatalogType : string;
     [<JsonProperty(PropertyName = "catalog_id")>]
     CatalogId : string;
+    [<JsonProperty(PropertyName = "catalog_type")>]
+    CatalogType : string;
     [<JsonProperty(PropertyName = "filters")>]
     Filters : CatalogsCreativeAssetsProductGroupFilters;
   }

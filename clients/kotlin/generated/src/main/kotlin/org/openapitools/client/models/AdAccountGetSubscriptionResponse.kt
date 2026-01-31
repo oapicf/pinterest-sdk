@@ -24,13 +24,13 @@ import com.squareup.moshi.JsonClass
  *
  * @param leadFormId Lead form ID.
  * @param webhookUrl Standard HTTPS webhook URL.
- * @param id Subscription ID.
- * @param userAccountId User account used to subscribe lead data.
  * @param adAccountId The Ad Account ID that this lead form belongs to.
  * @param apiVersion API version.
- * @param cryptographicKey Base64 encoded key for client to decrypt lead data.
+ * @param createdTime Lead subscription creation time. Unix timestamp in milliseconds.
  * @param cryptographicAlgorithm Lead data encryption algorithm.
- * @param createdTime Lead form creation time. Unix timestamp in milliseconds.
+ * @param cryptographicKey Base64 encoded key for client to decrypt lead data.
+ * @param id Subscription ID.
+ * @param userAccountId User account used to subscribe lead data.
  */
 
 
@@ -44,14 +44,6 @@ data class AdAccountGetSubscriptionResponse (
     @Json(name = "webhook_url")
     val webhookUrl: kotlin.String? = null,
 
-    /* Subscription ID. */
-    @Json(name = "id")
-    val id: kotlin.String? = null,
-
-    /* User account used to subscribe lead data. */
-    @Json(name = "user_account_id")
-    val userAccountId: kotlin.String? = null,
-
     /* The Ad Account ID that this lead form belongs to. */
     @Json(name = "ad_account_id")
     val adAccountId: kotlin.String? = null,
@@ -60,17 +52,25 @@ data class AdAccountGetSubscriptionResponse (
     @Json(name = "api_version")
     val apiVersion: kotlin.String? = null,
 
-    /* Base64 encoded key for client to decrypt lead data. */
-    @Json(name = "cryptographic_key")
-    val cryptographicKey: kotlin.String? = null,
+    /* Lead subscription creation time. Unix timestamp in milliseconds. */
+    @Json(name = "created_time")
+    val createdTime: kotlin.Int? = null,
 
     /* Lead data encryption algorithm. */
     @Json(name = "cryptographic_algorithm")
     val cryptographicAlgorithm: kotlin.String? = null,
 
-    /* Lead form creation time. Unix timestamp in milliseconds. */
-    @Json(name = "created_time")
-    val createdTime: kotlin.Int? = null
+    /* Base64 encoded key for client to decrypt lead data. */
+    @Json(name = "cryptographic_key")
+    val cryptographicKey: kotlin.String? = null,
+
+    /* Subscription ID. */
+    @Json(name = "id")
+    val id: kotlin.String? = null,
+
+    /* User account used to subscribe lead data. */
+    @Json(name = "user_account_id")
+    val userAccountId: kotlin.String? = null
 
 ) {
 

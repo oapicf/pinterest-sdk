@@ -10,9 +10,9 @@
 
 -type openapi_catalogs_creative_assets_product_group_update_request() ::
   [ {'catalog_type', binary() }
-  | {'name', binary() }
   | {'description', binary() }
   | {'filters', openapi_catalogs_creative_assets_product_group_filters:openapi_catalogs_creative_assets_product_group_filters() }
+  | {'name', binary() }
   ].
 
 
@@ -21,9 +21,9 @@ openapi_catalogs_creative_assets_product_group_update_request() ->
 
 openapi_catalogs_creative_assets_product_group_update_request(Fields) ->
   Default = [ {'catalog_type', elements([<<"CREATIVE_ASSETS">>]) }
-            , {'name', binary() }
             , {'description', binary() }
             , {'filters', openapi_catalogs_creative_assets_product_group_filters:openapi_catalogs_creative_assets_product_group_filters() }
+            , {'name', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

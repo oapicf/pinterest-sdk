@@ -49,22 +49,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<Gender> getValues();
-
-	/*! \brief Set 
-	 */
-	void setValues(std::list <Gender> values);
-	/*! \brief Get 
-	 */
 	bool getNegated();
 
 	/*! \brief Set 
 	 */
 	void setNegated(bool  negated);
+	/*! \brief Get 
+	 */
+	std::list<Gender> getValues();
+
+	/*! \brief Set 
+	 */
+	void setValues(std::list <Gender> values);
 
 private:
-	std::list <Gender>values;
 	bool negated;
+	std::list <Gender>values;
 	void __init();
 	void __cleanup();
 

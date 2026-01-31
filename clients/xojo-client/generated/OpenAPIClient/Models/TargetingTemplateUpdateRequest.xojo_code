@@ -2,11 +2,6 @@
 Protected Class TargetingTemplateUpdateRequest
 
 	#tag Property, Flags = &h0
-		operation_type As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		#tag Note
 			Targeting template ID
 		#tag EndNote
@@ -14,9 +9,20 @@ Protected Class TargetingTemplateUpdateRequest
 	#tag EndProperty
 
 
+	#tag Property, Flags = &h0
+		operation_type As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		targeting_attributes As OpenAPIClient.Models.TargetingSpec
+	#tag EndProperty
+
+
     #tag Enum, Name = Operation_typeEnum, Type = Integer, Flags = &h0
         
         Remove
+        Update
         
     #tag EndEnum
 
@@ -27,6 +33,8 @@ Protected Class TargetingTemplateUpdateRequest
 		    
 		    Case Operation_typeEnum.Remove
 		      Return "REMOVE"
+		    Case Operation_typeEnum.Update
+		      Return "UPDATE"
 		    
 		  End Select
 		  Return ""
@@ -73,6 +81,14 @@ Protected Class TargetingTemplateUpdateRequest
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="targeting_attributes"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="TargetingSpec"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

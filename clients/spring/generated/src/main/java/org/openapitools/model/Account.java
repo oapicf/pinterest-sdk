@@ -23,8 +23,10 @@ import javax.annotation.Generated;
  * Account
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class Account {
+
+  private @Nullable String about;
 
   /**
    * Type of account
@@ -63,127 +65,25 @@ public class Account {
 
   private @Nullable AccountTypeEnum accountType;
 
-  private @Nullable String id;
-
-  private @Nullable String profileImage;
-
-  private @Nullable String websiteUrl;
-
-  private @Nullable String username;
-
-  private @Nullable String about;
-
-  private JsonNullable<String> businessName = JsonNullable.<String>undefined();
-
   private JsonNullable<Integer> boardCount = JsonNullable.<Integer>undefined();
 
-  private JsonNullable<Integer> pinCount = JsonNullable.<Integer>undefined();
+  private JsonNullable<String> businessName = JsonNullable.<String>undefined();
 
   private JsonNullable<Integer> followerCount = JsonNullable.<Integer>undefined();
 
   private JsonNullable<Integer> followingCount = JsonNullable.<Integer>undefined();
 
+  private @Nullable String id;
+
   private JsonNullable<Integer> monthlyViews = JsonNullable.<Integer>undefined();
 
-  public Account accountType(@Nullable AccountTypeEnum accountType) {
-    this.accountType = accountType;
-    return this;
-  }
+  private JsonNullable<Integer> pinCount = JsonNullable.<Integer>undefined();
 
-  /**
-   * Type of account
-   * @return accountType
-   */
-  
-  @Schema(name = "account_type", description = "Type of account", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("account_type")
-  public @Nullable AccountTypeEnum getAccountType() {
-    return accountType;
-  }
+  private @Nullable String profileImage;
 
-  public void setAccountType(@Nullable AccountTypeEnum accountType) {
-    this.accountType = accountType;
-  }
+  private @Nullable String username;
 
-  public Account id(@Nullable String id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * User account ID.
-   * @return id
-   */
-  @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "id", example = "2783136121146311751", description = "User account ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("id")
-  public @Nullable String getId() {
-    return id;
-  }
-
-  public void setId(@Nullable String id) {
-    this.id = id;
-  }
-
-  public Account profileImage(@Nullable String profileImage) {
-    this.profileImage = profileImage;
-    return this;
-  }
-
-  /**
-   * Get profileImage
-   * @return profileImage
-   */
-  
-  @Schema(name = "profile_image", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("profile_image")
-  public @Nullable String getProfileImage() {
-    return profileImage;
-  }
-
-  public void setProfileImage(@Nullable String profileImage) {
-    this.profileImage = profileImage;
-  }
-
-  public Account websiteUrl(@Nullable String websiteUrl) {
-    this.websiteUrl = websiteUrl;
-    return this;
-  }
-
-  /**
-   * Get websiteUrl
-   * @return websiteUrl
-   */
-  
-  @Schema(name = "website_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("website_url")
-  public @Nullable String getWebsiteUrl() {
-    return websiteUrl;
-  }
-
-  public void setWebsiteUrl(@Nullable String websiteUrl) {
-    this.websiteUrl = websiteUrl;
-  }
-
-  public Account username(@Nullable String username) {
-    this.username = username;
-    return this;
-  }
-
-  /**
-   * Get username
-   * @return username
-   */
-  
-  @Schema(name = "username", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("username")
-  public @Nullable String getUsername() {
-    return username;
-  }
-
-  public void setUsername(@Nullable String username) {
-    this.username = username;
-  }
+  private @Nullable String websiteUrl;
 
   public Account about(@Nullable String about) {
     this.about = about;
@@ -205,24 +105,24 @@ public class Account {
     this.about = about;
   }
 
-  public Account businessName(String businessName) {
-    this.businessName = JsonNullable.of(businessName);
+  public Account accountType(@Nullable AccountTypeEnum accountType) {
+    this.accountType = accountType;
     return this;
   }
 
   /**
-   * Get businessName
-   * @return businessName
+   * Type of account
+   * @return accountType
    */
   
-  @Schema(name = "business_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("business_name")
-  public JsonNullable<String> getBusinessName() {
-    return businessName;
+  @Schema(name = "account_type", description = "Type of account", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("account_type")
+  public @Nullable AccountTypeEnum getAccountType() {
+    return accountType;
   }
 
-  public void setBusinessName(JsonNullable<String> businessName) {
-    this.businessName = businessName;
+  public void setAccountType(@Nullable AccountTypeEnum accountType) {
+    this.accountType = accountType;
   }
 
   public Account boardCount(Integer boardCount) {
@@ -245,24 +145,24 @@ public class Account {
     this.boardCount = boardCount;
   }
 
-  public Account pinCount(Integer pinCount) {
-    this.pinCount = JsonNullable.of(pinCount);
+  public Account businessName(String businessName) {
+    this.businessName = JsonNullable.of(businessName);
     return this;
   }
 
   /**
-   * User account pin count. This includes both created and saved pins.
-   * @return pinCount
+   * Get businessName
+   * @return businessName
    */
   
-  @Schema(name = "pin_count", accessMode = Schema.AccessMode.READ_ONLY, example = "339", description = "User account pin count. This includes both created and saved pins.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("pin_count")
-  public JsonNullable<Integer> getPinCount() {
-    return pinCount;
+  @Schema(name = "business_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("business_name")
+  public JsonNullable<String> getBusinessName() {
+    return businessName;
   }
 
-  public void setPinCount(JsonNullable<Integer> pinCount) {
-    this.pinCount = pinCount;
+  public void setBusinessName(JsonNullable<String> businessName) {
+    this.businessName = businessName;
   }
 
   public Account followerCount(Integer followerCount) {
@@ -305,6 +205,26 @@ public class Account {
     this.followingCount = followingCount;
   }
 
+  public Account id(@Nullable String id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * User account ID.
+   * @return id
+   */
+  @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "id", example = "2783136121146311751", description = "User account ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("id")
+  public @Nullable String getId() {
+    return id;
+  }
+
+  public void setId(@Nullable String id) {
+    this.id = id;
+  }
+
   public Account monthlyViews(Integer monthlyViews) {
     this.monthlyViews = JsonNullable.of(monthlyViews);
     return this;
@@ -325,6 +245,86 @@ public class Account {
     this.monthlyViews = monthlyViews;
   }
 
+  public Account pinCount(Integer pinCount) {
+    this.pinCount = JsonNullable.of(pinCount);
+    return this;
+  }
+
+  /**
+   * User account pin count. This includes both created and saved pins.
+   * @return pinCount
+   */
+  
+  @Schema(name = "pin_count", accessMode = Schema.AccessMode.READ_ONLY, example = "339", description = "User account pin count. This includes both created and saved pins.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("pin_count")
+  public JsonNullable<Integer> getPinCount() {
+    return pinCount;
+  }
+
+  public void setPinCount(JsonNullable<Integer> pinCount) {
+    this.pinCount = pinCount;
+  }
+
+  public Account profileImage(@Nullable String profileImage) {
+    this.profileImage = profileImage;
+    return this;
+  }
+
+  /**
+   * Get profileImage
+   * @return profileImage
+   */
+  
+  @Schema(name = "profile_image", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("profile_image")
+  public @Nullable String getProfileImage() {
+    return profileImage;
+  }
+
+  public void setProfileImage(@Nullable String profileImage) {
+    this.profileImage = profileImage;
+  }
+
+  public Account username(@Nullable String username) {
+    this.username = username;
+    return this;
+  }
+
+  /**
+   * Get username
+   * @return username
+   */
+  
+  @Schema(name = "username", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("username")
+  public @Nullable String getUsername() {
+    return username;
+  }
+
+  public void setUsername(@Nullable String username) {
+    this.username = username;
+  }
+
+  public Account websiteUrl(@Nullable String websiteUrl) {
+    this.websiteUrl = websiteUrl;
+    return this;
+  }
+
+  /**
+   * Get websiteUrl
+   * @return websiteUrl
+   */
+  
+  @Schema(name = "website_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("website_url")
+  public @Nullable String getWebsiteUrl() {
+    return websiteUrl;
+  }
+
+  public void setWebsiteUrl(@Nullable String websiteUrl) {
+    this.websiteUrl = websiteUrl;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -334,18 +334,18 @@ public class Account {
       return false;
     }
     Account account = (Account) o;
-    return Objects.equals(this.accountType, account.accountType) &&
-        Objects.equals(this.id, account.id) &&
-        Objects.equals(this.profileImage, account.profileImage) &&
-        Objects.equals(this.websiteUrl, account.websiteUrl) &&
-        Objects.equals(this.username, account.username) &&
-        Objects.equals(this.about, account.about) &&
-        equalsNullable(this.businessName, account.businessName) &&
+    return Objects.equals(this.about, account.about) &&
+        Objects.equals(this.accountType, account.accountType) &&
         equalsNullable(this.boardCount, account.boardCount) &&
-        equalsNullable(this.pinCount, account.pinCount) &&
+        equalsNullable(this.businessName, account.businessName) &&
         equalsNullable(this.followerCount, account.followerCount) &&
         equalsNullable(this.followingCount, account.followingCount) &&
-        equalsNullable(this.monthlyViews, account.monthlyViews);
+        Objects.equals(this.id, account.id) &&
+        equalsNullable(this.monthlyViews, account.monthlyViews) &&
+        equalsNullable(this.pinCount, account.pinCount) &&
+        Objects.equals(this.profileImage, account.profileImage) &&
+        Objects.equals(this.username, account.username) &&
+        Objects.equals(this.websiteUrl, account.websiteUrl);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -354,7 +354,7 @@ public class Account {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountType, id, profileImage, websiteUrl, username, about, hashCodeNullable(businessName), hashCodeNullable(boardCount), hashCodeNullable(pinCount), hashCodeNullable(followerCount), hashCodeNullable(followingCount), hashCodeNullable(monthlyViews));
+    return Objects.hash(about, accountType, hashCodeNullable(boardCount), hashCodeNullable(businessName), hashCodeNullable(followerCount), hashCodeNullable(followingCount), id, hashCodeNullable(monthlyViews), hashCodeNullable(pinCount), profileImage, username, websiteUrl);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -368,18 +368,18 @@ public class Account {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Account {\n");
-    sb.append("    accountType: ").append(toIndentedString(accountType)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    profileImage: ").append(toIndentedString(profileImage)).append("\n");
-    sb.append("    websiteUrl: ").append(toIndentedString(websiteUrl)).append("\n");
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    about: ").append(toIndentedString(about)).append("\n");
-    sb.append("    businessName: ").append(toIndentedString(businessName)).append("\n");
+    sb.append("    accountType: ").append(toIndentedString(accountType)).append("\n");
     sb.append("    boardCount: ").append(toIndentedString(boardCount)).append("\n");
-    sb.append("    pinCount: ").append(toIndentedString(pinCount)).append("\n");
+    sb.append("    businessName: ").append(toIndentedString(businessName)).append("\n");
     sb.append("    followerCount: ").append(toIndentedString(followerCount)).append("\n");
     sb.append("    followingCount: ").append(toIndentedString(followingCount)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    monthlyViews: ").append(toIndentedString(monthlyViews)).append("\n");
+    sb.append("    pinCount: ").append(toIndentedString(pinCount)).append("\n");
+    sb.append("    profileImage: ").append(toIndentedString(profileImage)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
+    sb.append("    websiteUrl: ").append(toIndentedString(websiteUrl)).append("\n");
     sb.append("}");
     return sb.toString();
   }

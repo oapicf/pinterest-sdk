@@ -23,11 +23,37 @@ import java.util.Objects;
 @ApiModel(description = "Array with metrics, status, and pin id for the requested metric")
 public class TopPinsAnalyticsResponsePinsInner   {
   
-  private Map<String, BigDecimal> metrics = new HashMap<>();
-
   private Map<String, DataStatus> dataStatus = new HashMap<>();
 
+  private Map<String, BigDecimal> metrics = new HashMap<>();
+
   private String pinId;
+
+  /**
+   **/
+  public TopPinsAnalyticsResponsePinsInner dataStatus(Map<String, DataStatus> dataStatus) {
+    this.dataStatus = dataStatus;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("data_status")
+  public Map<String, DataStatus> getDataStatus() {
+    return dataStatus;
+  }
+  public void setDataStatus(Map<String, DataStatus> dataStatus) {
+    this.dataStatus = dataStatus;
+  }
+
+
+  public TopPinsAnalyticsResponsePinsInner putDataStatusItem(String key, DataStatus dataStatusItem) {
+    if (this.dataStatus == null) {
+      this.dataStatus = new HashMap<>();
+    }
+    this.dataStatus.put(key, dataStatusItem);
+    return this;
+  }
 
   /**
    * The metric name and daily value for each requested metric
@@ -53,32 +79,6 @@ public class TopPinsAnalyticsResponsePinsInner   {
       this.metrics = new HashMap<>();
     }
     this.metrics.put(key, metricsItem);
-    return this;
-  }
-
-  /**
-   **/
-  public TopPinsAnalyticsResponsePinsInner dataStatus(Map<String, DataStatus> dataStatus) {
-    this.dataStatus = dataStatus;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("data_status")
-  public Map<String, DataStatus> getDataStatus() {
-    return dataStatus;
-  }
-  public void setDataStatus(Map<String, DataStatus> dataStatus) {
-    this.dataStatus = dataStatus;
-  }
-
-
-  public TopPinsAnalyticsResponsePinsInner putDataStatusItem(String key, DataStatus dataStatusItem) {
-    if (this.dataStatus == null) {
-      this.dataStatus = new HashMap<>();
-    }
-    this.dataStatus.put(key, dataStatusItem);
     return this;
   }
 
@@ -111,14 +111,14 @@ public class TopPinsAnalyticsResponsePinsInner   {
       return false;
     }
     TopPinsAnalyticsResponsePinsInner topPinsAnalyticsResponsePinsInner = (TopPinsAnalyticsResponsePinsInner) o;
-    return Objects.equals(this.metrics, topPinsAnalyticsResponsePinsInner.metrics) &&
-        Objects.equals(this.dataStatus, topPinsAnalyticsResponsePinsInner.dataStatus) &&
+    return Objects.equals(this.dataStatus, topPinsAnalyticsResponsePinsInner.dataStatus) &&
+        Objects.equals(this.metrics, topPinsAnalyticsResponsePinsInner.metrics) &&
         Objects.equals(this.pinId, topPinsAnalyticsResponsePinsInner.pinId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(metrics, dataStatus, pinId);
+    return Objects.hash(dataStatus, metrics, pinId);
   }
 
   @Override
@@ -126,8 +126,8 @@ public class TopPinsAnalyticsResponsePinsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TopPinsAnalyticsResponsePinsInner {\n");
     
-    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    dataStatus: ").append(toIndentedString(dataStatus)).append("\n");
+    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
     sb.append("}");
     return sb.toString();

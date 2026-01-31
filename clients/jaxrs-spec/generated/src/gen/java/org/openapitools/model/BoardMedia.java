@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -18,12 +17,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-/**
- * Board media.
- **/
-@ApiModel(description = "Board media.")
-@JsonTypeName("Board_media")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+
+
+@JsonTypeName("BoardMedia")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BoardMedia   {
   private String imageCoverUrl;
   private @Valid List<String> pinThumbnailUrls = new ArrayList<>();
@@ -32,7 +29,7 @@ public class BoardMedia   {
   }
 
   /**
-   * Board cover image.
+   * Board cover image
    **/
   public BoardMedia imageCoverUrl(String imageCoverUrl) {
     this.imageCoverUrl = imageCoverUrl;
@@ -40,7 +37,7 @@ public class BoardMedia   {
   }
 
   
-  @ApiModelProperty(example = "https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg", value = "Board cover image.")
+  @ApiModelProperty(example = "https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg", value = "Board cover image")
   @JsonProperty("image_cover_url")
   public String getImageCoverUrl() {
     return imageCoverUrl;

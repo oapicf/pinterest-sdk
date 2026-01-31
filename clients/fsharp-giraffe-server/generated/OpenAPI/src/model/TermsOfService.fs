@@ -10,9 +10,9 @@ module TermsOfService =
 
 
   type TermsOfService = {
-    Id : string;
-    Html : string option;
-    HasAccepted : bool;
     AdAccountId : string;
+    HasAccepted : bool;
+    Html : string option;
+    Id : string;
   }
   //#endregion

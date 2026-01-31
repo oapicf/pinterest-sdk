@@ -7,10 +7,9 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 **catalogType** | catalog_type | text NOT NULL |  | [**catalog_type**](#CatalogType) |  | 
 **country** | country | long NOT NULL |  | [**Country**](Country.md) |  |  [foreignkey]
-**language** | language | text NOT NULL |  | [**language**](#Language) | We recommend using the CatalogsLocale values. | 
 **items** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;CatalogsHotelBatchItem&gt;**](CatalogsHotelBatchItem.md) | Array with catalogs item operations | 
+**language** | language | text NOT NULL |  | [**language**](#Language) | We recommend using the CatalogsLocale values. | 
 **catalogId** | catalog_id | text |  | **kotlin.String** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog |  [optional]
-
 
 
 
@@ -23,6 +22,7 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 catalogsHotelBatchRequest | catalogsHotelBatchRequest | long | | kotlin.Long | Primary Key | *one*
 catalogsHotelBatchItem | catalogsHotelBatchItem | long | | kotlin.Long | Foreign Key | *many*
+
 
 
 

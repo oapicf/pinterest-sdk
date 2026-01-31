@@ -11,7 +11,7 @@ module GetBusinessPartners200Response =
 
 
   type get_business_partners_200_response = {
-    Items : UserBusinessRoleBinding[];
     Bookmark : string option;
+    Items : UserBusinessRoleBinding[];
   }
   //#endregion

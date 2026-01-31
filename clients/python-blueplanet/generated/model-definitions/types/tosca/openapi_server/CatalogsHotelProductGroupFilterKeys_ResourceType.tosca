@@ -1,0 +1,94 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsHotelProductGroupFilterKeys"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsHotelProductGroupFilterKeys"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BrandFilter = openapi_server.resourceTypes.BrandFilter
+  CatalogsProductGroupFilterOperatorTypeCriteria = openapi_server.resourceTypes.CatalogsProductGroupFilterOperatorTypeCriteria
+  CatalogsProductGroupMultipleCountriesCriteria = openapi_server.resourceTypes.CatalogsProductGroupMultipleCountriesCriteria
+  CatalogsProductGroupMultipleStringCriteria = openapi_server.resourceTypes.CatalogsProductGroupMultipleStringCriteria
+  CatalogsProductGroupPricingCurrencyCriteria = openapi_server.resourceTypes.CatalogsProductGroupPricingCurrencyCriteria
+  CountryFilter = openapi_server.resourceTypes.CountryFilter
+  CustomLabel0Filter = openapi_server.resourceTypes.CustomLabel0Filter
+  CustomLabel1Filter = openapi_server.resourceTypes.CustomLabel1Filter
+  CustomLabel2Filter = openapi_server.resourceTypes.CustomLabel2Filter
+  CustomLabel3Filter = openapi_server.resourceTypes.CustomLabel3Filter
+  CustomLabel4Filter = openapi_server.resourceTypes.CustomLabel4Filter
+  HotelIdFilter = openapi_server.resourceTypes.HotelIdFilter
+  PriceFilter = openapi_server.resourceTypes.PriceFilter
+  TitleKeywordsFilter = openapi_server.resourceTypes.TitleKeywordsFilter
+}
+resourceTypes {
+
+  CatalogsHotelProductGroupFilterKeys {
+    title = CatalogsHotelProductGroupFilterKeys
+    description = CatalogsHotelProductGroupFilterKeys
+    derivedFrom = Root
+    properties {
+        price {
+          type = CatalogsProductGroupPricingCurrencyCriteria
+          description = ""
+          optional = true
+        }
+        hotel_id {
+          type = CatalogsProductGroupMultipleStringCriteria
+          description = ""
+          optional = true
+        }
+        brand {
+          type = CatalogsProductGroupMultipleStringCriteria
+          description = ""
+          optional = true
+        }
+        custom_label_0 {
+          type = CatalogsProductGroupFilterOperatorTypeCriteria
+          description = ""
+          optional = true
+        }
+        custom_label_1 {
+          type = CatalogsProductGroupFilterOperatorTypeCriteria
+          description = ""
+          optional = true
+        }
+        custom_label_2 {
+          type = CatalogsProductGroupFilterOperatorTypeCriteria
+          description = ""
+          optional = true
+        }
+        custom_label_3 {
+          type = CatalogsProductGroupFilterOperatorTypeCriteria
+          description = ""
+          optional = true
+        }
+        custom_label_4 {
+          type = CatalogsProductGroupFilterOperatorTypeCriteria
+          description = ""
+          optional = true
+        }
+        country {
+          type = CatalogsProductGroupMultipleCountriesCriteria
+          description = ""
+          optional = true
+        }
+        title_keywords {
+          type = CatalogsProductGroupMultipleStringCriteria
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsHotelProductGroupFilterKeys {
+    title = CatalogsHotelProductGroupFilterKeys
+    description = CatalogsHotelProductGroupFilterKeys
+    implements = openapi_server.resourceTypes.CatalogsHotelProductGroupFilterKeys
+
+  }
+}

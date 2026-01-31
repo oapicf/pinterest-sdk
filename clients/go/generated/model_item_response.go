@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -14,159 +14,123 @@ package openapi
 import (
 	"encoding/json"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
-// checks if the ItemResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ItemResponse{}
-
-// ItemResponse Object describing an item record
+// ItemResponse - Object describing an item record or error
 type ItemResponse struct {
-	ItemResponseAnyOf *ItemResponseAnyOf
-	ItemResponseAnyOf1 *ItemResponseAnyOf1
+	ItemResponseOneOf *ItemResponseOneOf
+	ItemResponseOneOf1 *ItemResponseOneOf1
 }
 
-// Unmarshal JSON data into any of the pointers in the struct
+// ItemResponseOneOfAsItemResponse is a convenience function that returns ItemResponseOneOf wrapped in ItemResponse
+func ItemResponseOneOfAsItemResponse(v *ItemResponseOneOf) ItemResponse {
+	return ItemResponse{
+		ItemResponseOneOf: v,
+	}
+}
+
+// ItemResponseOneOf1AsItemResponse is a convenience function that returns ItemResponseOneOf1 wrapped in ItemResponse
+func ItemResponseOneOf1AsItemResponse(v *ItemResponseOneOf1) ItemResponse {
+	return ItemResponse{
+		ItemResponseOneOf1: v,
+	}
+}
+
+
+// Unmarshal JSON data into one of the pointers in the struct
 func (dst *ItemResponse) UnmarshalJSON(data []byte) error {
 	var err error
-	// use discriminator value to speed up the lookup
-	var jsonDict map[string]interface{}
-	err = json.Unmarshal(data, &jsonDict)
-	if err != nil {
-		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
-	}
-
-	// check if the discriminator value is 'CREATIVE_ASSETS'
-	if jsonDict["catalog_type"] == "CREATIVE_ASSETS" {
-		// try to unmarshal JSON data into CatalogsCreativeAssetsItemErrorResponse
-		err = json.Unmarshal(data, &dst.CatalogsCreativeAssetsItemErrorResponse);
-		if err == nil {
-			jsonCatalogsCreativeAssetsItemErrorResponse, _ := json.Marshal(dst.CatalogsCreativeAssetsItemErrorResponse)
-			if string(jsonCatalogsCreativeAssetsItemErrorResponse) == "{}" { // empty struct
-				dst.CatalogsCreativeAssetsItemErrorResponse = nil
-			} else {
-				return nil // data stored in dst.CatalogsCreativeAssetsItemErrorResponse, return on the first match
-			}
-		} else {
-			dst.CatalogsCreativeAssetsItemErrorResponse = nil
-		}
-	}
-
-	// check if the discriminator value is 'HOTEL'
-	if jsonDict["catalog_type"] == "HOTEL" {
-		// try to unmarshal JSON data into CatalogsHotelItemErrorResponse
-		err = json.Unmarshal(data, &dst.CatalogsHotelItemErrorResponse);
-		if err == nil {
-			jsonCatalogsHotelItemErrorResponse, _ := json.Marshal(dst.CatalogsHotelItemErrorResponse)
-			if string(jsonCatalogsHotelItemErrorResponse) == "{}" { // empty struct
-				dst.CatalogsHotelItemErrorResponse = nil
-			} else {
-				return nil // data stored in dst.CatalogsHotelItemErrorResponse, return on the first match
-			}
-		} else {
-			dst.CatalogsHotelItemErrorResponse = nil
-		}
-	}
-
-	// check if the discriminator value is 'RETAIL'
-	if jsonDict["catalog_type"] == "RETAIL" {
-		// try to unmarshal JSON data into CatalogsRetailItemErrorResponse
-		err = json.Unmarshal(data, &dst.CatalogsRetailItemErrorResponse);
-		if err == nil {
-			jsonCatalogsRetailItemErrorResponse, _ := json.Marshal(dst.CatalogsRetailItemErrorResponse)
-			if string(jsonCatalogsRetailItemErrorResponse) == "{}" { // empty struct
-				dst.CatalogsRetailItemErrorResponse = nil
-			} else {
-				return nil // data stored in dst.CatalogsRetailItemErrorResponse, return on the first match
-			}
-		} else {
-			dst.CatalogsRetailItemErrorResponse = nil
-		}
-	}
-
-	// check if the discriminator value is 'ItemResponse_anyOf'
-	if jsonDict["catalog_type"] == "ItemResponse_anyOf" {
-		// try to unmarshal JSON data into ItemResponseAnyOf
-		err = json.Unmarshal(data, &dst.ItemResponseAnyOf);
-		if err == nil {
-			jsonItemResponseAnyOf, _ := json.Marshal(dst.ItemResponseAnyOf)
-			if string(jsonItemResponseAnyOf) == "{}" { // empty struct
-				dst.ItemResponseAnyOf = nil
-			} else {
-				return nil // data stored in dst.ItemResponseAnyOf, return on the first match
-			}
-		} else {
-			dst.ItemResponseAnyOf = nil
-		}
-	}
-
-	// check if the discriminator value is 'ItemResponse_anyOf_1'
-	if jsonDict["catalog_type"] == "ItemResponse_anyOf_1" {
-		// try to unmarshal JSON data into ItemResponseAnyOf1
-		err = json.Unmarshal(data, &dst.ItemResponseAnyOf1);
-		if err == nil {
-			jsonItemResponseAnyOf1, _ := json.Marshal(dst.ItemResponseAnyOf1)
-			if string(jsonItemResponseAnyOf1) == "{}" { // empty struct
-				dst.ItemResponseAnyOf1 = nil
-			} else {
-				return nil // data stored in dst.ItemResponseAnyOf1, return on the first match
-			}
-		} else {
-			dst.ItemResponseAnyOf1 = nil
-		}
-	}
-
-	// try to unmarshal JSON data into ItemResponseAnyOf
-	err = json.Unmarshal(data, &dst.ItemResponseAnyOf);
+	match := 0
+	// try to unmarshal data into ItemResponseOneOf
+	err = newStrictDecoder(data).Decode(&dst.ItemResponseOneOf)
 	if err == nil {
-		jsonItemResponseAnyOf, _ := json.Marshal(dst.ItemResponseAnyOf)
-		if string(jsonItemResponseAnyOf) == "{}" { // empty struct
-			dst.ItemResponseAnyOf = nil
+		jsonItemResponseOneOf, _ := json.Marshal(dst.ItemResponseOneOf)
+		if string(jsonItemResponseOneOf) == "{}" { // empty struct
+			dst.ItemResponseOneOf = nil
 		} else {
-			return nil // data stored in dst.ItemResponseAnyOf, return on the first match
+			if err = validator.Validate(dst.ItemResponseOneOf); err != nil {
+				dst.ItemResponseOneOf = nil
+			} else {
+				match++
+			}
 		}
 	} else {
-		dst.ItemResponseAnyOf = nil
+		dst.ItemResponseOneOf = nil
 	}
 
-	// try to unmarshal JSON data into ItemResponseAnyOf1
-	err = json.Unmarshal(data, &dst.ItemResponseAnyOf1);
+	// try to unmarshal data into ItemResponseOneOf1
+	err = newStrictDecoder(data).Decode(&dst.ItemResponseOneOf1)
 	if err == nil {
-		jsonItemResponseAnyOf1, _ := json.Marshal(dst.ItemResponseAnyOf1)
-		if string(jsonItemResponseAnyOf1) == "{}" { // empty struct
-			dst.ItemResponseAnyOf1 = nil
+		jsonItemResponseOneOf1, _ := json.Marshal(dst.ItemResponseOneOf1)
+		if string(jsonItemResponseOneOf1) == "{}" { // empty struct
+			dst.ItemResponseOneOf1 = nil
 		} else {
-			return nil // data stored in dst.ItemResponseAnyOf1, return on the first match
+			if err = validator.Validate(dst.ItemResponseOneOf1); err != nil {
+				dst.ItemResponseOneOf1 = nil
+			} else {
+				match++
+			}
 		}
 	} else {
-		dst.ItemResponseAnyOf1 = nil
+		dst.ItemResponseOneOf1 = nil
 	}
 
-	return fmt.Errorf("data failed to match schemas in anyOf(ItemResponse)")
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.ItemResponseOneOf = nil
+		dst.ItemResponseOneOf1 = nil
+
+		return fmt.Errorf("data matches more than one schema in oneOf(ItemResponse)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(ItemResponse)")
+	}
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src ItemResponse) MarshalJSON() ([]byte, error) {
-	if src.ItemResponseAnyOf != nil {
-		return json.Marshal(&src.ItemResponseAnyOf)
+	if src.ItemResponseOneOf != nil {
+		return json.Marshal(&src.ItemResponseOneOf)
 	}
 
-	if src.ItemResponseAnyOf1 != nil {
-		return json.Marshal(&src.ItemResponseAnyOf1)
+	if src.ItemResponseOneOf1 != nil {
+		return json.Marshal(&src.ItemResponseOneOf1)
 	}
 
-	return nil, nil // no data in anyOf schemas
+	return nil, nil // no data in oneOf schemas
 }
 
-func (src ItemResponse) ToMap() (map[string]interface{}, error) {
-	if src.ItemResponseAnyOf != nil {
-		return src.ItemResponseAnyOf.ToMap()
+// Get the actual instance
+func (obj *ItemResponse) GetActualInstance() (interface{}) {
+	if obj == nil {
+		return nil
+	}
+	if obj.ItemResponseOneOf != nil {
+		return obj.ItemResponseOneOf
 	}
 
-	if src.ItemResponseAnyOf1 != nil {
-		return src.ItemResponseAnyOf1.ToMap()
+	if obj.ItemResponseOneOf1 != nil {
+		return obj.ItemResponseOneOf1
 	}
 
-    return nil, nil // no data in anyOf schemas
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj ItemResponse) GetActualInstanceValue() (interface{}) {
+	if obj.ItemResponseOneOf != nil {
+		return *obj.ItemResponseOneOf
+	}
+
+	if obj.ItemResponseOneOf1 != nil {
+		return *obj.ItemResponseOneOf1
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableItemResponse struct {

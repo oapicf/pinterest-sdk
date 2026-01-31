@@ -4,6 +4,7 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
+import model.CreativeType
 import model.Error
 import java.time.LocalDate
 import model.Pin
@@ -13,7 +14,7 @@ import model.PinUpdate
 import model.PinsList200Response
 import model.PinsSaveRequest
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Singleton
 class PinsApiController @Inject()(cc: ControllerComponents, api: PinsApi) extends AbstractController(cc) {
   /**
@@ -115,7 +116,6 @@ class PinsApiController @Inject()(cc: ControllerComponents, api: PinsApi) extend
 
   /**
     * DELETE /v5/pins/:pinId?adAccountId=[value]
-    * @param pinId Unique identifier of a Pin.
     */
   def pinsDelete(pinId: String): Action[AnyContent] = Action { request =>
     def executeApi(): Unit = {
@@ -129,17 +129,16 @@ class PinsApiController @Inject()(cc: ControllerComponents, api: PinsApi) extend
   }
 
   /**
-    * GET /v5/pins/:pinId?pinMetrics=[value]&adAccountId=[value]
-    * @param pinId Unique identifier of a Pin.
+    * GET /v5/pins/:pinId?adAccountId=[value]&pinMetrics=[value]
     */
   def pinsGet(pinId: String): Action[AnyContent] = Action { request =>
     def executeApi(): Pin = {
+      val adAccountId = request.getQueryString("ad_account_id")
+        
       val pinMetrics = request.getQueryString("pin_metrics")
         .map(value => value.toBoolean)
         
-      val adAccountId = request.getQueryString("ad_account_id")
-        
-      api.pinsGet(pinId, pinMetrics, adAccountId)
+      api.pinsGet(pinId, adAccountId, pinMetrics)
     }
 
     val result = executeApi()
@@ -148,16 +147,14 @@ class PinsApiController @Inject()(cc: ControllerComponents, api: PinsApi) extend
   }
 
   /**
-    * GET /v5/pins?bookmark=[value]&pageSize=[value]&pinFilter=[value]&includeProtectedPins=[value]&pinType=[value]&creativeTypes=[value]&adAccountId=[value]&pinMetrics=[value]
+    * GET /v5/pins?pinFilter=[value]&pinMetrics=[value]&includeProtectedPins=[value]&pinType=[value]&creativeTypes=[value]&adAccountId=[value]&bookmark=[value]&pageSize=[value]
     */
   def pinsList(): Action[AnyContent] = Action { request =>
     def executeApi(): PinsList200Response = {
-      val bookmark = request.getQueryString("bookmark")
-        
-      val pageSize = request.getQueryString("page_size")
-        .map(value => value.toInt)
-        
       val pinFilter = request.getQueryString("pin_filter")
+        
+      val pinMetrics = request.getQueryString("pin_metrics")
+        .map(value => value.toBoolean)
         
       val includeProtectedPins = request.getQueryString("include_protected_pins")
         .map(value => value.toBoolean)
@@ -166,13 +163,16 @@ class PinsApiController @Inject()(cc: ControllerComponents, api: PinsApi) extend
         
       val creativeTypes = request.queryString.get("creative_types")
         .map(_.toList)
+        .map(_.map(value => )
         
       val adAccountId = request.getQueryString("ad_account_id")
         
-      val pinMetrics = request.getQueryString("pin_metrics")
-        .map(value => value.toBoolean)
+      val bookmark = request.getQueryString("bookmark")
         
-      api.pinsList(bookmark, pageSize, pinFilter, includeProtectedPins, pinType, creativeTypes, adAccountId, pinMetrics)
+      val pageSize = request.getQueryString("page_size")
+        .map(value => value.toInt)
+        
+      api.pinsList(pinFilter, pinMetrics, includeProtectedPins, pinType, creativeTypes, adAccountId, bookmark, pageSize)
     }
 
     val result = executeApi()
@@ -201,7 +201,6 @@ class PinsApiController @Inject()(cc: ControllerComponents, api: PinsApi) extend
 
   /**
     * PATCH /v5/pins/:pinId?adAccountId=[value]
-    * @param pinId Unique identifier of a Pin.
     */
   def pinsUpdate(pinId: String): Action[AnyContent] = Action { request =>
     def executeApi(): Pin = {

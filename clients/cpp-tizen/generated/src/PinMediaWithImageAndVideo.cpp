@@ -23,22 +23,22 @@ PinMediaWithImageAndVideo::~PinMediaWithImageAndVideo()
 void
 PinMediaWithImageAndVideo::__init()
 {
-	//media_type = std::string();
 	//new std::list()std::list> items;
+	//media_type = std::string();
 }
 
 void
 PinMediaWithImageAndVideo::__cleanup()
 {
-	//if(media_type != NULL) {
-	//
-	//delete media_type;
-	//media_type = NULL;
-	//}
 	//if(items != NULL) {
 	//items.RemoveAll(true);
 	//delete items;
 	//items = NULL;
+	//}
+	//if(media_type != NULL) {
+	//
+	//delete media_type;
+	//media_type = NULL;
 	//}
 	//
 }
@@ -48,17 +48,6 @@ PinMediaWithImageAndVideo::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *media_typeKey = "media_type";
-	node = json_object_get_member(pJsonObject, media_typeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&media_type, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *itemsKey = "items";
 	node = json_object_get_member(pJsonObject, itemsKey);
 	if (node !=NULL) {
@@ -83,6 +72,17 @@ PinMediaWithImageAndVideo::fromJson(char* jsonStr)
 		}
 		
 	}
+	const gchar *media_typeKey = "media_type";
+	node = json_object_get_member(pJsonObject, media_typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&media_type, node, "std::string", "");
+		} else {
+			
+		}
+	}
 }
 
 PinMediaWithImageAndVideo::PinMediaWithImageAndVideo(char* json)
@@ -95,15 +95,6 @@ PinMediaWithImageAndVideo::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getMediaType();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *media_typeKey = "media_type";
-	json_object_set_member(pJsonObject, media_typeKey, node);
 	if (isprimitive("PinMediaMetadata")) {
 		list<PinMediaMetadata> new_list = static_cast<list <PinMediaMetadata> > (getItems());
 		node = converttoJson(&new_list, "PinMediaMetadata", "array");
@@ -129,24 +120,21 @@ PinMediaWithImageAndVideo::toJson()
 	
 	const gchar *itemsKey = "items";
 	json_object_set_member(pJsonObject, itemsKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getMediaType();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *media_typeKey = "media_type";
+	json_object_set_member(pJsonObject, media_typeKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
-}
-
-std::string
-PinMediaWithImageAndVideo::getMediaType()
-{
-	return media_type;
-}
-
-void
-PinMediaWithImageAndVideo::setMediaType(std::string  media_type)
-{
-	this->media_type = media_type;
 }
 
 std::list<PinMediaMetadata>
@@ -159,6 +147,18 @@ void
 PinMediaWithImageAndVideo::setItems(std::list <PinMediaMetadata> items)
 {
 	this->items = items;
+}
+
+std::string
+PinMediaWithImageAndVideo::getMediaType()
+{
+	return media_type;
+}
+
+void
+PinMediaWithImageAndVideo::setMediaType(std::string  media_type)
+{
+	this->media_type = media_type;
 }
 
 

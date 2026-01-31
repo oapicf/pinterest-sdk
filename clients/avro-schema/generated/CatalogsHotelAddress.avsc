@@ -17,12 +17,6 @@
       "default": null
     },
     {
-      "name": "region",
-      "type": ["null", "string"],
-      "doc": "State, county, province, where the hotel is located.",
-      "default": null
-    },
-    {
       "name": "country",
       "type": ["null", "string"],
       "doc": "Country where the hotel is located.",
@@ -32,6 +26,12 @@
       "name": "postal_code",
       "type": ["null", "string"],
       "doc": "Required for countries with a postal code system. Postal or zip code of the hotel.",
+      "default": null
+    },
+    {
+      "name": "region",
+      "type": ["null", "string"],
+      "doc": "State, county, province, where the hotel is located.",
       "default": null
     }
   ]

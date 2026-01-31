@@ -21,22 +21,25 @@ import org.openapitools.model.NullableCurrency;
  **/
 
 @ApiModel(description = "Request object for updating a feed.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsFeedsUpdateRequest   {
-  @JsonProperty("default_currency")
-  private NullableCurrency defaultCurrency;
-
-  @JsonProperty("name")
-  private String name;
-
-  @JsonProperty("format")
-  private CatalogsFormat format;
+  @JsonProperty("catalog_type")
+  private CatalogsType catalogType;
 
   @JsonProperty("credentials")
   private CatalogsFeedCredentials credentials;
 
+  @JsonProperty("default_currency")
+  private NullableCurrency defaultCurrency;
+
+  @JsonProperty("format")
+  private CatalogsFormat format;
+
   @JsonProperty("location")
   private String location;
+
+  @JsonProperty("name")
+  private String name;
 
   @JsonProperty("preferred_processing_schedule")
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
@@ -44,59 +47,21 @@ public class CatalogsCreativeAssetsFeedsUpdateRequest   {
   @JsonProperty("status")
   private CatalogsStatus status;
 
+  /**
+   **/
+  public CatalogsCreativeAssetsFeedsUpdateRequest catalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("catalog_type")
-  private CatalogsType catalogType;
-
-  /**
-   **/
-  public CatalogsCreativeAssetsFeedsUpdateRequest defaultCurrency(NullableCurrency defaultCurrency) {
-    this.defaultCurrency = defaultCurrency;
-    return this;
+  public CatalogsType getCatalogType() {
+    return catalogType;
   }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("default_currency")
-  public NullableCurrency getDefaultCurrency() {
-    return defaultCurrency;
-  }
-  public void setDefaultCurrency(NullableCurrency defaultCurrency) {
-    this.defaultCurrency = defaultCurrency;
-  }
-
-  /**
-   * A human-friendly name associated to a given feed.
-   **/
-  public CatalogsCreativeAssetsFeedsUpdateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "A human-friendly name associated to a given feed.")
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  /**
-   **/
-  public CatalogsCreativeAssetsFeedsUpdateRequest format(CatalogsFormat format) {
-    this.format = format;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("format")
-  public CatalogsFormat getFormat() {
-    return format;
-  }
-  public void setFormat(CatalogsFormat format) {
-    this.format = format;
+  public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
   }
 
   /**
@@ -117,6 +82,40 @@ public class CatalogsCreativeAssetsFeedsUpdateRequest   {
   }
 
   /**
+   **/
+  public CatalogsCreativeAssetsFeedsUpdateRequest defaultCurrency(NullableCurrency defaultCurrency) {
+    this.defaultCurrency = defaultCurrency;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("default_currency")
+  public NullableCurrency getDefaultCurrency() {
+    return defaultCurrency;
+  }
+  public void setDefaultCurrency(NullableCurrency defaultCurrency) {
+    this.defaultCurrency = defaultCurrency;
+  }
+
+  /**
+   **/
+  public CatalogsCreativeAssetsFeedsUpdateRequest format(CatalogsFormat format) {
+    this.format = format;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("format")
+  public CatalogsFormat getFormat() {
+    return format;
+  }
+  public void setFormat(CatalogsFormat format) {
+    this.format = format;
+  }
+
+  /**
    * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
    **/
   public CatalogsCreativeAssetsFeedsUpdateRequest location(String location) {
@@ -132,6 +131,24 @@ public class CatalogsCreativeAssetsFeedsUpdateRequest   {
   }
   public void setLocation(String location) {
     this.location = location;
+  }
+
+  /**
+   * A human-friendly name associated to a given feed.
+   **/
+  public CatalogsCreativeAssetsFeedsUpdateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "A human-friendly name associated to a given feed.")
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
   }
 
   /**
@@ -168,23 +185,6 @@ public class CatalogsCreativeAssetsFeedsUpdateRequest   {
     this.status = status;
   }
 
-  /**
-   **/
-  public CatalogsCreativeAssetsFeedsUpdateRequest catalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-  public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -195,19 +195,19 @@ public class CatalogsCreativeAssetsFeedsUpdateRequest   {
       return false;
     }
     CatalogsCreativeAssetsFeedsUpdateRequest catalogsCreativeAssetsFeedsUpdateRequest = (CatalogsCreativeAssetsFeedsUpdateRequest) o;
-    return Objects.equals(defaultCurrency, catalogsCreativeAssetsFeedsUpdateRequest.defaultCurrency) &&
-        Objects.equals(name, catalogsCreativeAssetsFeedsUpdateRequest.name) &&
-        Objects.equals(format, catalogsCreativeAssetsFeedsUpdateRequest.format) &&
+    return Objects.equals(catalogType, catalogsCreativeAssetsFeedsUpdateRequest.catalogType) &&
         Objects.equals(credentials, catalogsCreativeAssetsFeedsUpdateRequest.credentials) &&
+        Objects.equals(defaultCurrency, catalogsCreativeAssetsFeedsUpdateRequest.defaultCurrency) &&
+        Objects.equals(format, catalogsCreativeAssetsFeedsUpdateRequest.format) &&
         Objects.equals(location, catalogsCreativeAssetsFeedsUpdateRequest.location) &&
+        Objects.equals(name, catalogsCreativeAssetsFeedsUpdateRequest.name) &&
         Objects.equals(preferredProcessingSchedule, catalogsCreativeAssetsFeedsUpdateRequest.preferredProcessingSchedule) &&
-        Objects.equals(status, catalogsCreativeAssetsFeedsUpdateRequest.status) &&
-        Objects.equals(catalogType, catalogsCreativeAssetsFeedsUpdateRequest.catalogType);
+        Objects.equals(status, catalogsCreativeAssetsFeedsUpdateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, credentials, location, preferredProcessingSchedule, status, catalogType);
+    return Objects.hash(catalogType, credentials, defaultCurrency, format, location, name, preferredProcessingSchedule, status);
   }
 
   @Override
@@ -215,14 +215,14 @@ public class CatalogsCreativeAssetsFeedsUpdateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreativeAssetsFeedsUpdateRequest {\n");
     
-    sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
+    sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

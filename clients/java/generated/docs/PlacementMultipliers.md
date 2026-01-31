@@ -18,6 +18,7 @@ This represents a mapping from placement to a bid price adjustment.  Multiplier 
 |---- | -----|
 | SEARCH | &quot;SEARCH&quot; |
 | BROWSE | &quot;BROWSE&quot; |
+| RELATED_PINS | &quot;RELATED_PINS&quot; |
 
 
 

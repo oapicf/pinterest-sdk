@@ -12,10 +12,10 @@ module UpdateAssetGroupResponse =
 
   [<CLIMutable>]
   type UpdateAssetGroupResponse = {
-    [<JsonProperty(PropertyName = "updated_asset_groups")>]
-    UpdatedAssetGroups : AssetGroupBinding[];
     [<JsonProperty(PropertyName = "exceptions")>]
     Exceptions : UpdateAssetGroupResponseExceptionsInner[];
+    [<JsonProperty(PropertyName = "updated_asset_groups")>]
+    UpdatedAssetGroups : AssetGroupBinding[];
   }
 
   //#endregion

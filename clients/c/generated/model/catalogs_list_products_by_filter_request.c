@@ -25,8 +25,8 @@ pinterest_rest_api_catalogs_list_products_by_filter_request_CATALOGTYPE_e catalo
 static catalogs_list_products_by_filter_request_t *catalogs_list_products_by_filter_request_create_internal(
     char *feed_id,
     catalogs_creative_assets_product_group_filters_t *filters,
-    pinterest_rest_api_catalogs_list_products_by_filter_request_CATALOGTYPE_e catalog_type,
     char *catalog_id,
+    pinterest_rest_api_catalogs_list_products_by_filter_request_CATALOGTYPE_e catalog_type,
     pinterest_rest_api_country__e country,
     pinterest_rest_api_catalogs_locale__e locale
     ) {
@@ -36,8 +36,8 @@ static catalogs_list_products_by_filter_request_t *catalogs_list_products_by_fil
     }
     catalogs_list_products_by_filter_request_local_var->feed_id = feed_id;
     catalogs_list_products_by_filter_request_local_var->filters = filters;
-    catalogs_list_products_by_filter_request_local_var->catalog_type = catalog_type;
     catalogs_list_products_by_filter_request_local_var->catalog_id = catalog_id;
+    catalogs_list_products_by_filter_request_local_var->catalog_type = catalog_type;
     catalogs_list_products_by_filter_request_local_var->country = country;
     catalogs_list_products_by_filter_request_local_var->locale = locale;
 
@@ -48,16 +48,16 @@ static catalogs_list_products_by_filter_request_t *catalogs_list_products_by_fil
 __attribute__((deprecated)) catalogs_list_products_by_filter_request_t *catalogs_list_products_by_filter_request_create(
     char *feed_id,
     catalogs_creative_assets_product_group_filters_t *filters,
-    pinterest_rest_api_catalogs_list_products_by_filter_request_CATALOGTYPE_e catalog_type,
     char *catalog_id,
+    pinterest_rest_api_catalogs_list_products_by_filter_request_CATALOGTYPE_e catalog_type,
     pinterest_rest_api_country__e country,
     pinterest_rest_api_catalogs_locale__e locale
     ) {
     return catalogs_list_products_by_filter_request_create_internal (
         feed_id,
         filters,
-        catalog_type,
         catalog_id,
+        catalog_type,
         country,
         locale
         );
@@ -113,6 +113,15 @@ cJSON *catalogs_list_products_by_filter_request_convertToJSON(catalogs_list_prod
     }
 
 
+    // catalogs_list_products_by_filter_request->catalog_id
+    if (!catalogs_list_products_by_filter_request->catalog_id) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "catalog_id", catalogs_list_products_by_filter_request->catalog_id) == NULL) {
+    goto fail; //String
+    }
+
+
     // catalogs_list_products_by_filter_request->catalog_type
     if (pinterest_rest_api_catalogs_list_products_by_filter_request_CATALOGTYPE_NULL == catalogs_list_products_by_filter_request->catalog_type) {
         goto fail;
@@ -120,15 +129,6 @@ cJSON *catalogs_list_products_by_filter_request_convertToJSON(catalogs_list_prod
     if(cJSON_AddStringToObject(item, "catalog_type", catalogs_list_products_by_filter_request_catalog_type_ToString(catalogs_list_products_by_filter_request->catalog_type)) == NULL)
     {
     goto fail; //Enum
-    }
-
-
-    // catalogs_list_products_by_filter_request->catalog_id
-    if (!catalogs_list_products_by_filter_request->catalog_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "catalog_id", catalogs_list_products_by_filter_request->catalog_id) == NULL) {
-    goto fail; //String
     }
 
 
@@ -207,6 +207,21 @@ catalogs_list_products_by_filter_request_t *catalogs_list_products_by_filter_req
     
     filters_local_nonprim = catalogs_creative_assets_product_group_filters_parseFromJSON(filters); //nonprimitive
 
+    // catalogs_list_products_by_filter_request->catalog_id
+    cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_list_products_by_filter_requestJSON, "catalog_id");
+    if (cJSON_IsNull(catalog_id)) {
+        catalog_id = NULL;
+    }
+    if (!catalog_id) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(catalog_id))
+    {
+    goto end; //String
+    }
+
     // catalogs_list_products_by_filter_request->catalog_type
     cJSON *catalog_type = cJSON_GetObjectItemCaseSensitive(catalogs_list_products_by_filter_requestJSON, "catalog_type");
     if (cJSON_IsNull(catalog_type)) {
@@ -223,21 +238,6 @@ catalogs_list_products_by_filter_request_t *catalogs_list_products_by_filter_req
     goto end; //Enum
     }
     catalog_typeVariable = catalogs_list_products_by_filter_request_catalog_type_FromString(catalog_type->valuestring);
-
-    // catalogs_list_products_by_filter_request->catalog_id
-    cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_list_products_by_filter_requestJSON, "catalog_id");
-    if (cJSON_IsNull(catalog_id)) {
-        catalog_id = NULL;
-    }
-    if (!catalog_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(catalog_id))
-    {
-    goto end; //String
-    }
 
     // catalogs_list_products_by_filter_request->country
     cJSON *country = cJSON_GetObjectItemCaseSensitive(catalogs_list_products_by_filter_requestJSON, "country");
@@ -267,8 +267,8 @@ catalogs_list_products_by_filter_request_t *catalogs_list_products_by_filter_req
     catalogs_list_products_by_filter_request_local_var = catalogs_list_products_by_filter_request_create_internal (
         strdup(feed_id->valuestring),
         filters_local_nonprim,
-        catalog_typeVariable,
         strdup(catalog_id->valuestring),
+        catalog_typeVariable,
         country_local_nonprim,
         locale_local_nonprim
         );

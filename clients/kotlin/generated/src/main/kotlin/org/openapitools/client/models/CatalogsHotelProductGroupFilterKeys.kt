@@ -16,6 +16,7 @@
 package org.openapitools.client.models
 
 import org.openapitools.client.models.BrandFilter
+import org.openapitools.client.models.CatalogsProductGroupFilterOperatorTypeCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleCountriesCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleStringCriteria
 import org.openapitools.client.models.CatalogsProductGroupPricingCurrencyCriteria
@@ -27,6 +28,7 @@ import org.openapitools.client.models.CustomLabel3Filter
 import org.openapitools.client.models.CustomLabel4Filter
 import org.openapitools.client.models.HotelIdFilter
 import org.openapitools.client.models.PriceFilter
+import org.openapitools.client.models.TitleKeywordsFilter
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -43,6 +45,7 @@ import com.squareup.moshi.JsonClass
  * @param CUSTOM_LABEL_3 
  * @param CUSTOM_LABEL_4 
  * @param COUNTRY 
+ * @param TITLE_KEYWORDS 
  */
 
 
@@ -58,22 +61,25 @@ data class CatalogsHotelProductGroupFilterKeys (
     val BRAND: CatalogsProductGroupMultipleStringCriteria,
 
     @Json(name = "CUSTOM_LABEL_0")
-    val CUSTOM_LABEL_0: CatalogsProductGroupMultipleStringCriteria,
+    val CUSTOM_LABEL_0: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @Json(name = "CUSTOM_LABEL_1")
-    val CUSTOM_LABEL_1: CatalogsProductGroupMultipleStringCriteria,
+    val CUSTOM_LABEL_1: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @Json(name = "CUSTOM_LABEL_2")
-    val CUSTOM_LABEL_2: CatalogsProductGroupMultipleStringCriteria,
+    val CUSTOM_LABEL_2: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @Json(name = "CUSTOM_LABEL_3")
-    val CUSTOM_LABEL_3: CatalogsProductGroupMultipleStringCriteria,
+    val CUSTOM_LABEL_3: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @Json(name = "CUSTOM_LABEL_4")
-    val CUSTOM_LABEL_4: CatalogsProductGroupMultipleStringCriteria,
+    val CUSTOM_LABEL_4: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @Json(name = "COUNTRY")
-    val COUNTRY: CatalogsProductGroupMultipleCountriesCriteria
+    val COUNTRY: CatalogsProductGroupMultipleCountriesCriteria,
+
+    @Json(name = "TITLE_KEYWORDS")
+    val TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria
 
 ) {
 

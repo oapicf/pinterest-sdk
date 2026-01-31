@@ -20,11 +20,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "This represents a mapping from placement to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified placement in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. All placement multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).")
 @JsonTypeName("PlacementMultipliers")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PlacementMultipliers extends HashMap<String, Double>  {
   public enum PLACEMENTEnum {
 
-    SEARCH(String.valueOf("SEARCH")), BROWSE(String.valueOf("BROWSE"));
+    SEARCH(String.valueOf("SEARCH")), BROWSE(String.valueOf("BROWSE")), RELATED_PINS(String.valueOf("RELATED_PINS"));
 
 
     private String value;

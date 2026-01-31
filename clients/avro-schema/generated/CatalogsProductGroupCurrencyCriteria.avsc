@@ -5,15 +5,15 @@
   "name": "CatalogsProductGroupCurrencyCriteria",
   "fields": [
     {
-      "name": "values",
-      "type": "model.NonNullableCatalogsCurrency",
-      "doc": ""
-    },
-    {
       "name": "negated",
       "type": ["boolean", "null"],
       "doc": "",
       "default": false
+    },
+    {
+      "name": "values",
+      "type": "model.NonNullableCatalogsCurrency",
+      "doc": ""
     }
   ]
 

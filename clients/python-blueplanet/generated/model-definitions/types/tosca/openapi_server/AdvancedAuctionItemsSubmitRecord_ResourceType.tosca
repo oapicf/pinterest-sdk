@@ -1,0 +1,75 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdvancedAuctionItemsSubmitRecord"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdvancedAuctionItemsSubmitRecord"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AdvancedAuctionBidOptions = openapi_server.resourceTypes.AdvancedAuctionBidOptions
+  AdvancedAuctionItemsSubmitDeleteRecord = openapi_server.resourceTypes.AdvancedAuctionItemsSubmitDeleteRecord
+  AdvancedAuctionItemsSubmitUpsertRecord = openapi_server.resourceTypes.AdvancedAuctionItemsSubmitUpsertRecord
+  AdvancedAuctionOperation = openapi_server.resourceTypes.AdvancedAuctionOperation
+  AdvancedAuctionOperationError = openapi_server.resourceTypes.AdvancedAuctionOperationError
+  Country = openapi_server.resourceTypes.Country
+  Language = openapi_server.resourceTypes.Language
+  UpdateMaskBidOptionField = openapi_server.resourceTypes.UpdateMaskBidOptionField
+}
+resourceTypes {
+
+  AdvancedAuctionItemsSubmitRecord {
+    title = AdvancedAuctionItemsSubmitRecord
+    description = AdvancedAuctionItemsSubmitRecord
+    derivedFrom = Root
+    properties {
+        operation {
+          type = AdvancedAuctionOperation
+          description = ""
+          optional = true
+        }
+        country {
+          type = Country
+          description = ""
+          optional = true
+        }
+        item_id {
+          type =  string
+          description = "The catalog retail item id in the merchant namespace"
+          optional = true
+        }
+        language {
+          type = Language
+          description = ""
+          optional = true
+        }
+        bid_options {
+          type = AdvancedAuctionBidOptions
+          description = ""
+          optional = true
+        }
+        errors {
+          type = array
+          items.type = AdvancedAuctionOperationError
+          description = "Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied."
+          optional = false
+        }
+        update_mask {
+          type = array
+          items.type = UpdateMaskBidOptionField
+          description = "The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the &#x60;bid_options&#x60; object in the body will be set to &#x60;null&#x60;. If an item bid option record is being created, fields not specified in the update mask will be initialized to &#x60;null&#x60;."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdvancedAuctionItemsSubmitRecord {
+    title = AdvancedAuctionItemsSubmitRecord
+    description = AdvancedAuctionItemsSubmitRecord
+    implements = openapi_server.resourceTypes.AdvancedAuctionItemsSubmitRecord
+
+  }
+}

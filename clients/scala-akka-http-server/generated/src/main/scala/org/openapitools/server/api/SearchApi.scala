@@ -8,9 +8,9 @@ import akka.http.scaladsl.unmarshalling.FromEntityUnmarshaller
 import akka.http.scaladsl.unmarshalling.FromStringUnmarshaller
 import org.openapitools.server.AkkaHttpHelper._
 import org.openapitools.server.model.Error
-import org.openapitools.server.model.PinsList200Response
 import org.openapitools.server.model.SearchPartnerPins200Response
 import org.openapitools.server.model.SearchUserBoardsGet200Response
+import org.openapitools.server.model.SearchUserPinsList200Response
 
 
 class SearchApi(
@@ -73,28 +73,28 @@ trait SearchApiService {
   def searchUserBoardsGet(adAccountId: Option[String], bookmark: Option[String], pageSize: Int, query: Option[String])
       (implicit toEntityMarshallerSearchUserBoardsGet200Response: ToEntityMarshaller[SearchUserBoardsGet200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def searchUserPinsList200(responsePinsList200Response: PinsList200Response)(implicit toEntityMarshallerPinsList200Response: ToEntityMarshaller[PinsList200Response]): Route =
-    complete((200, responsePinsList200Response))
+  def searchUserPinsList200(responseSearchUserPinsList200Response: SearchUserPinsList200Response)(implicit toEntityMarshallerSearchUserPinsList200Response: ToEntityMarshaller[SearchUserPinsList200Response]): Route =
+    complete((200, responseSearchUserPinsList200Response))
   def searchUserPinsList404(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((404, responseError))
   def searchUserPinsListDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: PinsList200Response
+   * Code: 200, Message: Success, DataType: SearchUserPinsList200Response
    * Code: 404, Message: User not found, DataType: Error
    * Code: 0, Message: Unexpected error, DataType: Error
    */
   def searchUserPinsList(query: String, adAccountId: Option[String], bookmark: Option[String])
-      (implicit toEntityMarshallerPinsList200Response: ToEntityMarshaller[PinsList200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+      (implicit toEntityMarshallerSearchUserPinsList200Response: ToEntityMarshaller[SearchUserPinsList200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
 }
 
 trait SearchApiMarshaller {
 
 
-  implicit def toEntityMarshallerSearchUserBoardsGet200Response: ToEntityMarshaller[SearchUserBoardsGet200Response]
+  implicit def toEntityMarshallerSearchUserPinsList200Response: ToEntityMarshaller[SearchUserPinsList200Response]
 
-  implicit def toEntityMarshallerPinsList200Response: ToEntityMarshaller[PinsList200Response]
+  implicit def toEntityMarshallerSearchUserBoardsGet200Response: ToEntityMarshaller[SearchUserBoardsGet200Response]
 
   implicit def toEntityMarshallerSearchPartnerPins200Response: ToEntityMarshaller[SearchPartnerPins200Response]
 

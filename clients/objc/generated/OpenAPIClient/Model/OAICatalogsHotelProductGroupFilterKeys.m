@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"pRICE": @"PRICE", @"hOTELID": @"HOTEL_ID", @"bRAND": @"BRAND", @"cUSTOMLABEL0": @"CUSTOM_LABEL_0", @"cUSTOMLABEL1": @"CUSTOM_LABEL_1", @"cUSTOMLABEL2": @"CUSTOM_LABEL_2", @"cUSTOMLABEL3": @"CUSTOM_LABEL_3", @"cUSTOMLABEL4": @"CUSTOM_LABEL_4", @"cOUNTRY": @"COUNTRY" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"pRICE": @"PRICE", @"hOTELID": @"HOTEL_ID", @"bRAND": @"BRAND", @"cUSTOMLABEL0": @"CUSTOM_LABEL_0", @"cUSTOMLABEL1": @"CUSTOM_LABEL_1", @"cUSTOMLABEL2": @"CUSTOM_LABEL_2", @"cUSTOMLABEL3": @"CUSTOM_LABEL_3", @"cUSTOMLABEL4": @"CUSTOM_LABEL_4", @"cOUNTRY": @"COUNTRY", @"tITLEKEYWORDS": @"TITLE_KEYWORDS" }];
 }
 
 /**

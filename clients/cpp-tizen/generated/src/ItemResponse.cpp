@@ -24,9 +24,9 @@ void
 ItemResponse::__init()
 {
 	//catalog_type = new CatalogsType();
+	//attributes = new CatalogsCreativeAssetsAttributes();
 	//item_id = std::string();
 	//new std::list()std::list> pins;
-	//attributes = new CatalogsCreativeAssetsAttributes();
 	//hotel_id = std::string();
 	//creative_assets_id = std::string();
 	//new std::list()std::list> errors;
@@ -40,6 +40,11 @@ ItemResponse::__cleanup()
 	//delete catalog_type;
 	//catalog_type = NULL;
 	//}
+	//if(attributes != NULL) {
+	//
+	//delete attributes;
+	//attributes = NULL;
+	//}
 	//if(item_id != NULL) {
 	//
 	//delete item_id;
@@ -49,11 +54,6 @@ ItemResponse::__cleanup()
 	//pins.RemoveAll(true);
 	//delete pins;
 	//pins = NULL;
-	//}
-	//if(attributes != NULL) {
-	//
-	//delete attributes;
-	//attributes = NULL;
 	//}
 	//if(hotel_id != NULL) {
 	//
@@ -92,6 +92,20 @@ ItemResponse::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *attributesKey = "attributes";
+	node = json_object_get_member(pJsonObject, attributesKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("CatalogsCreativeAssetsAttributes")) {
+			jsonToValue(&attributes, node, "CatalogsCreativeAssetsAttributes", "CatalogsCreativeAssetsAttributes");
+		} else {
+			
+			CatalogsCreativeAssetsAttributes* obj = static_cast<CatalogsCreativeAssetsAttributes*> (&attributes);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 	const gchar *item_idKey = "item_id";
 	node = json_object_get_member(pJsonObject, item_idKey);
 	if (node !=NULL) {
@@ -126,20 +140,6 @@ ItemResponse::fromJson(char* jsonStr)
 			pins = new_list;
 		}
 		
-	}
-	const gchar *attributesKey = "attributes";
-	node = json_object_get_member(pJsonObject, attributesKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("CatalogsCreativeAssetsAttributes")) {
-			jsonToValue(&attributes, node, "CatalogsCreativeAssetsAttributes", "CatalogsCreativeAssetsAttributes");
-		} else {
-			
-			CatalogsCreativeAssetsAttributes* obj = static_cast<CatalogsCreativeAssetsAttributes*> (&attributes);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
 	}
 	const gchar *hotel_idKey = "hotel_id";
 	node = json_object_get_member(pJsonObject, hotel_idKey);
@@ -213,6 +213,20 @@ ItemResponse::toJson()
 	}
 	const gchar *catalog_typeKey = "catalog_type";
 	json_object_set_member(pJsonObject, catalog_typeKey, node);
+	if (isprimitive("CatalogsCreativeAssetsAttributes")) {
+		CatalogsCreativeAssetsAttributes obj = getAttributes();
+		node = converttoJson(&obj, "CatalogsCreativeAssetsAttributes", "");
+	}
+	else {
+		
+		CatalogsCreativeAssetsAttributes obj = static_cast<CatalogsCreativeAssetsAttributes> (getAttributes());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *attributesKey = "attributes";
+	json_object_set_member(pJsonObject, attributesKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getItemId();
 		node = converttoJson(&obj, "std::string", "");
@@ -247,20 +261,6 @@ ItemResponse::toJson()
 	
 	const gchar *pinsKey = "pins";
 	json_object_set_member(pJsonObject, pinsKey, node);
-	if (isprimitive("CatalogsCreativeAssetsAttributes")) {
-		CatalogsCreativeAssetsAttributes obj = getAttributes();
-		node = converttoJson(&obj, "CatalogsCreativeAssetsAttributes", "");
-	}
-	else {
-		
-		CatalogsCreativeAssetsAttributes obj = static_cast<CatalogsCreativeAssetsAttributes> (getAttributes());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *attributesKey = "attributes";
-	json_object_set_member(pJsonObject, attributesKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getHotelId();
 		node = converttoJson(&obj, "std::string", "");
@@ -324,6 +324,18 @@ ItemResponse::setCatalogType(CatalogsType  catalog_type)
 	this->catalog_type = catalog_type;
 }
 
+CatalogsCreativeAssetsAttributes
+ItemResponse::getAttributes()
+{
+	return attributes;
+}
+
+void
+ItemResponse::setAttributes(CatalogsCreativeAssetsAttributes  attributes)
+{
+	this->attributes = attributes;
+}
+
 std::string
 ItemResponse::getItemId()
 {
@@ -346,18 +358,6 @@ void
 ItemResponse::setPins(std::list <Pin> pins)
 {
 	this->pins = pins;
-}
-
-CatalogsCreativeAssetsAttributes
-ItemResponse::getAttributes()
-{
-	return attributes;
-}
-
-void
-ItemResponse::setAttributes(CatalogsCreativeAssetsAttributes  attributes)
-{
-	this->attributes = attributes;
 }
 
 std::string

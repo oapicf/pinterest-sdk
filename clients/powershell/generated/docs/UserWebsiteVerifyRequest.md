@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Website** | **String** |  | [optional] 
 **VerificationMethod** | **String** |  | [optional] [default to "METATAG"]
+**Website** | **String** |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$UserWebsiteVerifyRequest = Initialize-PSOpenAPIToolsUserWebsiteVerifyRequest  -Website pintest-website-12345678.test/test_1 `
- -VerificationMethod null
+$UserWebsiteVerifyRequest = Initialize-PSOpenAPIToolsUserWebsiteVerifyRequest  -VerificationMethod null `
+ -Website pintest-website-12345678.test/test_1
 ```
 
 - Convert the resource to JSON

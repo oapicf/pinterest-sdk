@@ -8,13 +8,13 @@
 #' @description CreateMMMReportRequest Class
 #' @format An \code{R6Class} generator object
 #' @field countries A List of countries for filtering list(\link{TargetingAdvertiserCountry}) [optional]
-#' @field report_name Name of the Marketing Mix Modeling (MMM) report character
-#' @field start_date Metric report start date (UTC). Format: YYYY-MM-DD character
+#' @field columns Metric and entity columns list(\link{MMMReportingColumn})
 #' @field end_date Metric report end date (UTC). Format: YYYY-MM-DD character
 #' @field granularity DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly. character
 #' @field level Level of the report character
+#' @field report_name Name of the Marketing Mix Modeling (MMM) report character
+#' @field start_date Metric report start date (UTC). Format: YYYY-MM-DD character
 #' @field targeting_types List of targeting types list(\link{MMMReportingTargetingType})
-#' @field columns Metric and entity columns list(\link{MMMReportingColumn})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -22,38 +22,31 @@ CreateMMMReportRequest <- R6::R6Class(
   "CreateMMMReportRequest",
   public = list(
     `countries` = NULL,
-    `report_name` = NULL,
-    `start_date` = NULL,
+    `columns` = NULL,
     `end_date` = NULL,
     `granularity` = NULL,
     `level` = NULL,
+    `report_name` = NULL,
+    `start_date` = NULL,
     `targeting_types` = NULL,
-    `columns` = NULL,
 
     #' @description
     #' Initialize a new CreateMMMReportRequest class.
     #'
-    #' @param report_name Name of the Marketing Mix Modeling (MMM) report
-    #' @param start_date Metric report start date (UTC). Format: YYYY-MM-DD
+    #' @param columns Metric and entity columns
     #' @param end_date Metric report end date (UTC). Format: YYYY-MM-DD
     #' @param granularity DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly.
     #' @param level Level of the report
+    #' @param report_name Name of the Marketing Mix Modeling (MMM) report
+    #' @param start_date Metric report start date (UTC). Format: YYYY-MM-DD
     #' @param targeting_types List of targeting types
-    #' @param columns Metric and entity columns
     #' @param countries A List of countries for filtering
     #' @param ... Other optional arguments.
-    initialize = function(`report_name`, `start_date`, `end_date`, `granularity`, `level`, `targeting_types`, `columns`, `countries` = NULL, ...) {
-      if (!missing(`report_name`)) {
-        if (!(is.character(`report_name`) && length(`report_name`) == 1)) {
-          stop(paste("Error! Invalid data for `report_name`. Must be a string:", `report_name`))
-        }
-        self$`report_name` <- `report_name`
-      }
-      if (!missing(`start_date`)) {
-        if (!(is.character(`start_date`) && length(`start_date`) == 1)) {
-          stop(paste("Error! Invalid data for `start_date`. Must be a string:", `start_date`))
-        }
-        self$`start_date` <- `start_date`
+    initialize = function(`columns`, `end_date`, `granularity`, `level`, `report_name`, `start_date`, `targeting_types`, `countries` = NULL, ...) {
+      if (!missing(`columns`)) {
+        stopifnot(is.vector(`columns`), length(`columns`) != 0)
+        sapply(`columns`, function(x) stopifnot(R6::is.R6(x)))
+        self$`columns` <- `columns`
       }
       if (!missing(`end_date`)) {
         if (!(is.character(`end_date`) && length(`end_date`) == 1)) {
@@ -79,15 +72,22 @@ CreateMMMReportRequest <- R6::R6Class(
         }
         self$`level` <- `level`
       }
+      if (!missing(`report_name`)) {
+        if (!(is.character(`report_name`) && length(`report_name`) == 1)) {
+          stop(paste("Error! Invalid data for `report_name`. Must be a string:", `report_name`))
+        }
+        self$`report_name` <- `report_name`
+      }
+      if (!missing(`start_date`)) {
+        if (!(is.character(`start_date`) && length(`start_date`) == 1)) {
+          stop(paste("Error! Invalid data for `start_date`. Must be a string:", `start_date`))
+        }
+        self$`start_date` <- `start_date`
+      }
       if (!missing(`targeting_types`)) {
         stopifnot(is.vector(`targeting_types`), length(`targeting_types`) != 0)
         sapply(`targeting_types`, function(x) stopifnot(R6::is.R6(x)))
         self$`targeting_types` <- `targeting_types`
-      }
-      if (!missing(`columns`)) {
-        stopifnot(is.vector(`columns`), length(`columns`) != 0)
-        sapply(`columns`, function(x) stopifnot(R6::is.R6(x)))
-        self$`columns` <- `columns`
       }
       if (!is.null(`countries`)) {
         stopifnot(is.vector(`countries`), length(`countries`) != 0)
@@ -131,13 +131,9 @@ CreateMMMReportRequest <- R6::R6Class(
         CreateMMMReportRequestObject[["countries"]] <-
           lapply(self$`countries`, function(x) x$toSimpleType())
       }
-      if (!is.null(self$`report_name`)) {
-        CreateMMMReportRequestObject[["report_name"]] <-
-          self$`report_name`
-      }
-      if (!is.null(self$`start_date`)) {
-        CreateMMMReportRequestObject[["start_date"]] <-
-          self$`start_date`
+      if (!is.null(self$`columns`)) {
+        CreateMMMReportRequestObject[["columns"]] <-
+          lapply(self$`columns`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`end_date`)) {
         CreateMMMReportRequestObject[["end_date"]] <-
@@ -151,13 +147,17 @@ CreateMMMReportRequest <- R6::R6Class(
         CreateMMMReportRequestObject[["level"]] <-
           self$`level`
       }
+      if (!is.null(self$`report_name`)) {
+        CreateMMMReportRequestObject[["report_name"]] <-
+          self$`report_name`
+      }
+      if (!is.null(self$`start_date`)) {
+        CreateMMMReportRequestObject[["start_date"]] <-
+          self$`start_date`
+      }
       if (!is.null(self$`targeting_types`)) {
         CreateMMMReportRequestObject[["targeting_types"]] <-
           lapply(self$`targeting_types`, function(x) x$toSimpleType())
-      }
-      if (!is.null(self$`columns`)) {
-        CreateMMMReportRequestObject[["columns"]] <-
-          lapply(self$`columns`, function(x) x$toSimpleType())
       }
       return(CreateMMMReportRequestObject)
     },
@@ -172,11 +172,8 @@ CreateMMMReportRequest <- R6::R6Class(
       if (!is.null(this_object$`countries`)) {
         self$`countries` <- ApiClient$new()$deserializeObj(this_object$`countries`, "array[TargetingAdvertiserCountry]", loadNamespace("openapi"))
       }
-      if (!is.null(this_object$`report_name`)) {
-        self$`report_name` <- this_object$`report_name`
-      }
-      if (!is.null(this_object$`start_date`)) {
-        self$`start_date` <- this_object$`start_date`
+      if (!is.null(this_object$`columns`)) {
+        self$`columns` <- ApiClient$new()$deserializeObj(this_object$`columns`, "array[MMMReportingColumn]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`end_date`)) {
         self$`end_date` <- this_object$`end_date`
@@ -193,11 +190,14 @@ CreateMMMReportRequest <- R6::R6Class(
         }
         self$`level` <- this_object$`level`
       }
+      if (!is.null(this_object$`report_name`)) {
+        self$`report_name` <- this_object$`report_name`
+      }
+      if (!is.null(this_object$`start_date`)) {
+        self$`start_date` <- this_object$`start_date`
+      }
       if (!is.null(this_object$`targeting_types`)) {
         self$`targeting_types` <- ApiClient$new()$deserializeObj(this_object$`targeting_types`, "array[MMMReportingTargetingType]", loadNamespace("openapi"))
-      }
-      if (!is.null(this_object$`columns`)) {
-        self$`columns` <- ApiClient$new()$deserializeObj(this_object$`columns`, "array[MMMReportingColumn]", loadNamespace("openapi"))
       }
       self
     },
@@ -221,8 +221,7 @@ CreateMMMReportRequest <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`countries` <- ApiClient$new()$deserializeObj(this_object$`countries`, "array[TargetingAdvertiserCountry]", loadNamespace("openapi"))
-      self$`report_name` <- this_object$`report_name`
-      self$`start_date` <- this_object$`start_date`
+      self$`columns` <- ApiClient$new()$deserializeObj(this_object$`columns`, "array[MMMReportingColumn]", loadNamespace("openapi"))
       self$`end_date` <- this_object$`end_date`
       if (!is.null(this_object$`granularity`) && !(this_object$`granularity` %in% c("DAY", "WEEK"))) {
         stop(paste("Error! \"", this_object$`granularity`, "\" cannot be assigned to `granularity`. Must be \"DAY\", \"WEEK\".", sep = ""))
@@ -232,8 +231,9 @@ CreateMMMReportRequest <- R6::R6Class(
         stop(paste("Error! \"", this_object$`level`, "\" cannot be assigned to `level`. Must be \"CAMPAIGN_TARGETING\", \"AD_GROUP_TARGETING\".", sep = ""))
       }
       self$`level` <- this_object$`level`
+      self$`report_name` <- this_object$`report_name`
+      self$`start_date` <- this_object$`start_date`
       self$`targeting_types` <- ApiClient$new()$deserializeObj(this_object$`targeting_types`, "array[MMMReportingTargetingType]", loadNamespace("openapi"))
-      self$`columns` <- ApiClient$new()$deserializeObj(this_object$`columns`, "array[MMMReportingColumn]", loadNamespace("openapi"))
       self
     },
 
@@ -243,21 +243,12 @@ CreateMMMReportRequest <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
-      # check the required field `report_name`
-      if (!is.null(input_json$`report_name`)) {
-        if (!(is.character(input_json$`report_name`) && length(input_json$`report_name`) == 1)) {
-          stop(paste("Error! Invalid data for `report_name`. Must be a string:", input_json$`report_name`))
-        }
+      # check the required field `columns`
+      if (!is.null(input_json$`columns`)) {
+        stopifnot(is.vector(input_json$`columns`), length(input_json$`columns`) != 0)
+        tmp <- sapply(input_json$`columns`, function(x) stopifnot(R6::is.R6(x)))
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for CreateMMMReportRequest: the required field `report_name` is missing."))
-      }
-      # check the required field `start_date`
-      if (!is.null(input_json$`start_date`)) {
-        if (!(is.character(input_json$`start_date`) && length(input_json$`start_date`) == 1)) {
-          stop(paste("Error! Invalid data for `start_date`. Must be a string:", input_json$`start_date`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for CreateMMMReportRequest: the required field `start_date` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for CreateMMMReportRequest: the required field `columns` is missing."))
       }
       # check the required field `end_date`
       if (!is.null(input_json$`end_date`)) {
@@ -283,19 +274,28 @@ CreateMMMReportRequest <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CreateMMMReportRequest: the required field `level` is missing."))
       }
+      # check the required field `report_name`
+      if (!is.null(input_json$`report_name`)) {
+        if (!(is.character(input_json$`report_name`) && length(input_json$`report_name`) == 1)) {
+          stop(paste("Error! Invalid data for `report_name`. Must be a string:", input_json$`report_name`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CreateMMMReportRequest: the required field `report_name` is missing."))
+      }
+      # check the required field `start_date`
+      if (!is.null(input_json$`start_date`)) {
+        if (!(is.character(input_json$`start_date`) && length(input_json$`start_date`) == 1)) {
+          stop(paste("Error! Invalid data for `start_date`. Must be a string:", input_json$`start_date`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CreateMMMReportRequest: the required field `start_date` is missing."))
+      }
       # check the required field `targeting_types`
       if (!is.null(input_json$`targeting_types`)) {
         stopifnot(is.vector(input_json$`targeting_types`), length(input_json$`targeting_types`) != 0)
         tmp <- sapply(input_json$`targeting_types`, function(x) stopifnot(R6::is.R6(x)))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CreateMMMReportRequest: the required field `targeting_types` is missing."))
-      }
-      # check the required field `columns`
-      if (!is.null(input_json$`columns`)) {
-        stopifnot(is.vector(input_json$`columns`), length(input_json$`columns`) != 0)
-        tmp <- sapply(input_json$`columns`, function(x) stopifnot(R6::is.R6(x)))
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for CreateMMMReportRequest: the required field `columns` is missing."))
       }
     },
 
@@ -312,17 +312,8 @@ CreateMMMReportRequest <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      # check if the required `report_name` is null
-      if (is.null(self$`report_name`)) {
-        return(FALSE)
-      }
-
-      # check if the required `start_date` is null
-      if (is.null(self$`start_date`)) {
-        return(FALSE)
-      }
-
-      if (!str_detect(self$`start_date`, "^(\\d{4})-(\\d{2})-(\\d{2})$")) {
+      # check if the required `columns` is null
+      if (is.null(self$`columns`)) {
         return(FALSE)
       }
 
@@ -345,6 +336,20 @@ CreateMMMReportRequest <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `report_name` is null
+      if (is.null(self$`report_name`)) {
+        return(FALSE)
+      }
+
+      # check if the required `start_date` is null
+      if (is.null(self$`start_date`)) {
+        return(FALSE)
+      }
+
+      if (!str_detect(self$`start_date`, "^(\\d{4})-(\\d{2})-(\\d{2})$")) {
+        return(FALSE)
+      }
+
       # check if the required `targeting_types` is null
       if (is.null(self$`targeting_types`)) {
         return(FALSE)
@@ -357,11 +362,6 @@ CreateMMMReportRequest <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `columns` is null
-      if (is.null(self$`columns`)) {
-        return(FALSE)
-      }
-
       TRUE
     },
 
@@ -371,18 +371,9 @@ CreateMMMReportRequest <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      # check if the required `report_name` is null
-      if (is.null(self$`report_name`)) {
-        invalid_fields["report_name"] <- "Non-nullable required field `report_name` cannot be null."
-      }
-
-      # check if the required `start_date` is null
-      if (is.null(self$`start_date`)) {
-        invalid_fields["start_date"] <- "Non-nullable required field `start_date` cannot be null."
-      }
-
-      if (!str_detect(self$`start_date`, "^(\\d{4})-(\\d{2})-(\\d{2})$")) {
-        invalid_fields["start_date"] <- "Invalid value for `start_date`, must conform to the pattern ^(\\d{4})-(\\d{2})-(\\d{2})$."
+      # check if the required `columns` is null
+      if (is.null(self$`columns`)) {
+        invalid_fields["columns"] <- "Non-nullable required field `columns` cannot be null."
       }
 
       # check if the required `end_date` is null
@@ -404,6 +395,20 @@ CreateMMMReportRequest <- R6::R6Class(
         invalid_fields["level"] <- "Non-nullable required field `level` cannot be null."
       }
 
+      # check if the required `report_name` is null
+      if (is.null(self$`report_name`)) {
+        invalid_fields["report_name"] <- "Non-nullable required field `report_name` cannot be null."
+      }
+
+      # check if the required `start_date` is null
+      if (is.null(self$`start_date`)) {
+        invalid_fields["start_date"] <- "Non-nullable required field `start_date` cannot be null."
+      }
+
+      if (!str_detect(self$`start_date`, "^(\\d{4})-(\\d{2})-(\\d{2})$")) {
+        invalid_fields["start_date"] <- "Invalid value for `start_date`, must conform to the pattern ^(\\d{4})-(\\d{2})-(\\d{2})$."
+      }
+
       # check if the required `targeting_types` is null
       if (is.null(self$`targeting_types`)) {
         invalid_fields["targeting_types"] <- "Non-nullable required field `targeting_types` cannot be null."
@@ -414,11 +419,6 @@ CreateMMMReportRequest <- R6::R6Class(
       }
       if (length(self$`targeting_types`) < 1) {
         invalid_fields["targeting_types"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
-      }
-
-      # check if the required `columns` is null
-      if (is.null(self$`columns`)) {
-        invalid_fields["columns"] <- "Non-nullable required field `columns` cannot be null."
       }
 
       invalid_fields

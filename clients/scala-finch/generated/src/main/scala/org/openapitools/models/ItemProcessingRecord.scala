@@ -11,15 +11,15 @@ import scala.collection.immutable.Seq
 
 /**
  * Object describing an item processing record
- * @param itemUnderscoreid The catalog item id in the merchant namespace
  * @param errors Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
- * @param warnings Array with the validation warnings for the item processing record
+ * @param itemUnderscoreid The catalog item id in the merchant namespace
  * @param status 
+ * @param warnings Array with the validation warnings for the item processing record
  */
-case class ItemProcessingRecord(itemUnderscoreid: Option[String],
-                errors: Option[Seq[ItemValidationEvent]],
-                warnings: Option[Seq[ItemValidationEvent]],
-                status: Option[ItemProcessingStatus]
+case class ItemProcessingRecord(errors: Option[Seq[ItemValidationEvent]],
+                itemUnderscoreid: Option[String],
+                status: Option[ItemProcessingStatus],
+                warnings: Option[Seq[ItemValidationEvent]]
                 )
 
 object ItemProcessingRecord {

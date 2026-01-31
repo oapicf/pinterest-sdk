@@ -18,9 +18,10 @@ module CatalogsRetailBatchRequestItemsInner =
   //#endregion
 
   type CatalogsRetailBatchRequest_items_inner = {
+    Attributes : ItemAttributesRequest;
     ItemId : string;
     Operation : OperationEnum;
-    Attributes : ItemAttributesRequest;
     UpdateMask : UpdateMaskFieldType[];
+    LastUpdatedTime : int64;
   }
   //#endregion

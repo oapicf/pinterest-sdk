@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**values** | [**LIST [LIST [STRING_32]]**](LIST.md) |  | [default to null]
 **negated** | **BOOLEAN** |  | [optional] [default to false]
+**values** | [**LIST [LIST [STRING_32]]**](LIST.md) |  | [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

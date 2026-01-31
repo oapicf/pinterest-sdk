@@ -1,0 +1,45 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server GenderDemographics"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a GenderDemographics"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  GenderDemographics {
+    title = GenderDemographics
+    description = GenderDemographics
+    derivedFrom = Root
+    properties {
+        female {
+          type =  
+          description = "Percentage of female users"
+          optional = true
+        }
+        male {
+          type =  
+          description = "Percentage of male users"
+          optional = true
+        }
+        unspecified {
+          type =  
+          description = "Percentage of users with unspecified gender"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  GenderDemographics {
+    title = GenderDemographics
+    description = GenderDemographics
+    implements = openapi_server.resourceTypes.GenderDemographics
+
+  }
+}

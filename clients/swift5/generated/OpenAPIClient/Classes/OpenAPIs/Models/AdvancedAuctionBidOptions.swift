@@ -13,20 +13,20 @@ import AnyCodable
 /** Object describing a retail catalog item&#39;s bid options (bid price and bid multipliers). */
 public struct AdvancedAuctionBidOptions: Codable, JSONEncodable, Hashable {
 
+    public var appTypeMultipliers: AppTypeMultipliers?
     /** Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`. */
     public var bidInMicroCurrency: Int64?
-    public var appTypeMultipliers: AppTypeMultipliers?
     public var placementMultipliers: PlacementMultipliers?
 
-    public init(bidInMicroCurrency: Int64? = nil, appTypeMultipliers: AppTypeMultipliers? = nil, placementMultipliers: PlacementMultipliers? = nil) {
-        self.bidInMicroCurrency = bidInMicroCurrency
+    public init(appTypeMultipliers: AppTypeMultipliers? = nil, bidInMicroCurrency: Int64? = nil, placementMultipliers: PlacementMultipliers? = nil) {
         self.appTypeMultipliers = appTypeMultipliers
+        self.bidInMicroCurrency = bidInMicroCurrency
         self.placementMultipliers = placementMultipliers
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case bidInMicroCurrency = "bid_in_micro_currency"
         case appTypeMultipliers = "app_type_multipliers"
+        case bidInMicroCurrency = "bid_in_micro_currency"
         case placementMultipliers = "placement_multipliers"
     }
 
@@ -34,8 +34,8 @@ public struct AdvancedAuctionBidOptions: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(bidInMicroCurrency, forKey: .bidInMicroCurrency)
         try container.encodeIfPresent(appTypeMultipliers, forKey: .appTypeMultipliers)
+        try container.encodeIfPresent(bidInMicroCurrency, forKey: .bidInMicroCurrency)
         try container.encodeIfPresent(placementMultipliers, forKey: .placementMultipliers)
     }
 }

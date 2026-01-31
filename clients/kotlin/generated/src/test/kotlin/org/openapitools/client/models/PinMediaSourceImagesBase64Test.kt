@@ -19,7 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.PinMediaSourceImagesBase64
-import org.openapitools.client.models.PinMediaSourceImagesBase64ItemsInner
+import org.openapitools.client.models.PinMediaSourceImagesBase64Item
 
 class PinMediaSourceImagesBase64Test : ShouldSpec() {
     init {
@@ -32,7 +32,7 @@ class PinMediaSourceImagesBase64Test : ShouldSpec() {
             //modelInstance.items shouldBe ("TODO")
         }
 
-        // to test the property `sourceType`
+        // to test the property `sourceType` - The source type of the media.
         should("test sourceType") {
             // uncomment below to test the property
             //modelInstance.sourceType shouldBe ("TODO")

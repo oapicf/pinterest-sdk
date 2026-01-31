@@ -52,13 +52,6 @@ public:
 	/*! \brief Set 
 	 */
 	void setReportStatus(std::string  report_status);
-	/*! \brief Get URL to download the report
-	 */
-	std::string getUrl();
-
-	/*! \brief Set URL to download the report
-	 */
-	void setUrl(std::string  url);
 	/*! \brief Get Size of the report in bytes
 	 */
 	long long getSize();
@@ -66,11 +59,18 @@ public:
 	/*! \brief Set Size of the report in bytes
 	 */
 	void setSize(long long  size);
+	/*! \brief Get URL to download the report
+	 */
+	std::string getUrl();
+
+	/*! \brief Set URL to download the report
+	 */
+	void setUrl(std::string  url);
 
 private:
 	std::string report_status;
-	std::string url;
 	long long size;
+	std::string url;
 	void __init();
 	void __cleanup();
 

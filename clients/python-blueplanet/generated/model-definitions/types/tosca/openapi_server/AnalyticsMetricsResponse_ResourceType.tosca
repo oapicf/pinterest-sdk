@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AnalyticsMetricsResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AnalyticsMetricsResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AnalyticsDailyMetrics = openapi_server.resourceTypes.AnalyticsDailyMetrics
+}
+resourceTypes {
+
+  AnalyticsMetricsResponse {
+    title = AnalyticsMetricsResponse
+    description = AnalyticsMetricsResponse
+    derivedFrom = Root
+    properties {
+        daily_metrics {
+          type = array
+          items.type = AnalyticsDailyMetrics
+          description = "Array with the requested daily metric records"
+          optional = false
+        }
+        summary_metrics {
+          # TODO
+          description = "The metric name and value over the requested period for each requested metric"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AnalyticsMetricsResponse {
+    title = AnalyticsMetricsResponse
+    description = AnalyticsMetricsResponse
+    implements = openapi_server.resourceTypes.AnalyticsMetricsResponse
+
+  }
+}

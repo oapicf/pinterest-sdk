@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `ItemCreateBatchRecord`
 --
-SELECT `item_id`, `attributes` FROM `ItemCreateBatchRecord` WHERE 1;
+SELECT `attributes`, `item_id` FROM `ItemCreateBatchRecord` WHERE 1;
 
 --
 -- INSERT template for table `ItemCreateBatchRecord`
 --
-INSERT INTO `ItemCreateBatchRecord`(`item_id`, `attributes`) VALUES (?, ?);
+INSERT INTO `ItemCreateBatchRecord`(`attributes`, `item_id`) VALUES (?, ?);
 
 --
 -- UPDATE template for table `ItemCreateBatchRecord`
 --
-UPDATE `ItemCreateBatchRecord` SET `item_id` = ?, `attributes` = ? WHERE 1;
+UPDATE `ItemCreateBatchRecord` SET `attributes` = ?, `item_id` = ? WHERE 1;
 
 --
 -- DELETE template for table `ItemCreateBatchRecord`

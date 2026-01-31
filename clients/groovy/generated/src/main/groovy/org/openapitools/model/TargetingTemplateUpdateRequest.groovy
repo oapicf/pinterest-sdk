@@ -3,13 +3,18 @@ package org.openapitools.model;
 import groovy.transform.Canonical
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.model.TargetingSpec;
 
 @Canonical
 class TargetingTemplateUpdateRequest {
+    /* Targeting template ID */
+    String id
 
     enum OperationTypeEnum {
     
-        REMOVE("REMOVE")
+        REMOVE("REMOVE"),
+        
+        UPDATE("UPDATE")
     
         private final String value
     
@@ -29,6 +34,6 @@ class TargetingTemplateUpdateRequest {
 
     
     OperationTypeEnum operationType
-    /* Targeting template ID */
-    String id
+    
+    TargetingSpec targetingAttributes
 }

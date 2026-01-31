@@ -25,11 +25,25 @@ public class FeedsUpdateRequest  {
   
   @ApiModelProperty(value = "")
   @Valid
+  private CatalogsFeedCredentials credentials;
+
+  @ApiModelProperty(value = "")
+  @Valid
   private ProductAvailabilityType defaultAvailability;
 
   @ApiModelProperty(value = "")
   @Valid
   private NullableCurrency defaultCurrency;
+
+  @ApiModelProperty(value = "")
+  @Valid
+  private CatalogsFormat format;
+
+ /**
+  * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+  */
+  @ApiModelProperty(value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
+  private String location;
 
  /**
   * A human-friendly name associated to a given feed.
@@ -39,25 +53,35 @@ public class FeedsUpdateRequest  {
 
   @ApiModelProperty(value = "")
   @Valid
-  private CatalogsFormat format;
-
-  @ApiModelProperty(value = "")
-  @Valid
-  private CatalogsFeedCredentials credentials;
-
- /**
-  * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-  */
-  @ApiModelProperty(value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
-  private String location;
-
-  @ApiModelProperty(value = "")
-  @Valid
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
 
   @ApiModelProperty(value = "")
   @Valid
   private CatalogsStatus status;
+ /**
+  * Get credentials
+  * @return credentials
+  */
+  @JsonProperty("credentials")
+  public CatalogsFeedCredentials getCredentials() {
+    return credentials;
+  }
+
+  /**
+   * Sets the <code>credentials</code> property.
+   */
+ public void setCredentials(CatalogsFeedCredentials credentials) {
+    this.credentials = credentials;
+  }
+
+  /**
+   * Sets the <code>credentials</code> property.
+   */
+  public FeedsUpdateRequest credentials(CatalogsFeedCredentials credentials) {
+    this.credentials = credentials;
+    return this;
+  }
+
  /**
   * Get defaultAvailability
   * @return defaultAvailability
@@ -107,30 +131,6 @@ public class FeedsUpdateRequest  {
   }
 
  /**
-  * A human-friendly name associated to a given feed.
-  * @return name
-  */
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * Sets the <code>name</code> property.
-   */
- public void setName(String name) {
-    this.name = name;
-  }
-
-  /**
-   * Sets the <code>name</code> property.
-   */
-  public FeedsUpdateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
- /**
   * Get format
   * @return format
   */
@@ -155,30 +155,6 @@ public class FeedsUpdateRequest  {
   }
 
  /**
-  * Get credentials
-  * @return credentials
-  */
-  @JsonProperty("credentials")
-  public CatalogsFeedCredentials getCredentials() {
-    return credentials;
-  }
-
-  /**
-   * Sets the <code>credentials</code> property.
-   */
- public void setCredentials(CatalogsFeedCredentials credentials) {
-    this.credentials = credentials;
-  }
-
-  /**
-   * Sets the <code>credentials</code> property.
-   */
-  public FeedsUpdateRequest credentials(CatalogsFeedCredentials credentials) {
-    this.credentials = credentials;
-    return this;
-  }
-
- /**
   * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
   * @return location
   */
@@ -199,6 +175,30 @@ public class FeedsUpdateRequest  {
    */
   public FeedsUpdateRequest location(String location) {
     this.location = location;
+    return this;
+  }
+
+ /**
+  * A human-friendly name associated to a given feed.
+  * @return name
+  */
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  /**
+   * Sets the <code>name</code> property.
+   */
+ public void setName(String name) {
+    this.name = name;
+  }
+
+  /**
+   * Sets the <code>name</code> property.
+   */
+  public FeedsUpdateRequest name(String name) {
+    this.name = name;
     return this;
   }
 
@@ -260,19 +260,19 @@ public class FeedsUpdateRequest  {
       return false;
     }
     FeedsUpdateRequest feedsUpdateRequest = (FeedsUpdateRequest) o;
-    return Objects.equals(this.defaultAvailability, feedsUpdateRequest.defaultAvailability) &&
+    return Objects.equals(this.credentials, feedsUpdateRequest.credentials) &&
+        Objects.equals(this.defaultAvailability, feedsUpdateRequest.defaultAvailability) &&
         Objects.equals(this.defaultCurrency, feedsUpdateRequest.defaultCurrency) &&
-        Objects.equals(this.name, feedsUpdateRequest.name) &&
         Objects.equals(this.format, feedsUpdateRequest.format) &&
-        Objects.equals(this.credentials, feedsUpdateRequest.credentials) &&
         Objects.equals(this.location, feedsUpdateRequest.location) &&
+        Objects.equals(this.name, feedsUpdateRequest.name) &&
         Objects.equals(this.preferredProcessingSchedule, feedsUpdateRequest.preferredProcessingSchedule) &&
         Objects.equals(this.status, feedsUpdateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultAvailability, defaultCurrency, name, format, credentials, location, preferredProcessingSchedule, status);
+    return Objects.hash(credentials, defaultAvailability, defaultCurrency, format, location, name, preferredProcessingSchedule, status);
   }
 
   @Override
@@ -280,12 +280,12 @@ public class FeedsUpdateRequest  {
     StringBuilder sb = new StringBuilder();
     sb.append("class FeedsUpdateRequest {\n");
     
+    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
     sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
-    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");

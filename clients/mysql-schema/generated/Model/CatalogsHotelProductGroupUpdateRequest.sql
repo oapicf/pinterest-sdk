@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsHotelProductGroupUpdateRequest`
 --
-SELECT `catalog_type`, `name`, `description`, `filters` FROM `CatalogsHotelProductGroupUpdateRequest` WHERE 1;
+SELECT `catalog_type`, `description`, `filters`, `name` FROM `CatalogsHotelProductGroupUpdateRequest` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsHotelProductGroupUpdateRequest`
 --
-INSERT INTO `CatalogsHotelProductGroupUpdateRequest`(`catalog_type`, `name`, `description`, `filters`) VALUES (?, ?, ?, ?);
+INSERT INTO `CatalogsHotelProductGroupUpdateRequest`(`catalog_type`, `description`, `filters`, `name`) VALUES (?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsHotelProductGroupUpdateRequest`
 --
-UPDATE `CatalogsHotelProductGroupUpdateRequest` SET `catalog_type` = ?, `name` = ?, `description` = ?, `filters` = ? WHERE 1;
+UPDATE `CatalogsHotelProductGroupUpdateRequest` SET `catalog_type` = ?, `description` = ?, `filters` = ?, `name` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsHotelProductGroupUpdateRequest`

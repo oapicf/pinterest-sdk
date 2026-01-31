@@ -40,8 +40,8 @@
    (ds/opt :IMAGE_LINK_LENGTH_TOO_LONG) catalogs-item-validation-details-spec
    (ds/opt :IMAGE_LINK_MISSING) catalogs-item-validation-details-spec
    (ds/opt :INVALID_DOMAIN) catalogs-item-validation-details-spec
-   (ds/opt :ITEMID_MISSING) catalogs-item-validation-details-spec
    (ds/opt :ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE) catalogs-item-validation-details-spec
+   (ds/opt :ITEMID_MISSING) catalogs-item-validation-details-spec
    (ds/opt :LINK_FORMAT_INVALID) catalogs-item-validation-details-spec
    (ds/opt :LINK_LENGTH_TOO_LONG) catalogs-item-validation-details-spec
    (ds/opt :LIST_PRICE_INVALID) catalogs-item-validation-details-spec

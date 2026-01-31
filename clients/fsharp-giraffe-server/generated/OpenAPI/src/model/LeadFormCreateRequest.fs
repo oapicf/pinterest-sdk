@@ -13,13 +13,13 @@ module LeadFormCreateRequest =
 
 
   type LeadFormCreateRequest = {
-    Name : string option;
-    PrivacyPolicyLink : string option;
-    HasAcceptedTerms : bool;
     CompletionMessage : string option;
-    Status : LeadFormStatus;
     DisclosureLanguage : string option;
-    Questions : LeadFormQuestion[];
+    HasAcceptedTerms : bool;
+    Name : string option;
     PolicyLinks : LeadFormCommonPolicyLinksInner[];
+    PrivacyPolicyLink : string option;
+    Questions : LeadFormQuestion[];
+    Status : LeadFormStatus;
   }
   //#endregion

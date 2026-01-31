@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**List&lt;Interest&gt;**](Interest.md) |  | 
 **bookmark** | **String** |  |  [optional]
+**items** | [**List&lt;Interest&gt;**](Interest.md) |  | 
 
 
 

@@ -16,6 +16,11 @@ void main() {
   // final instance = TemplateResponseDateRange();
 
   group('test TemplateResponseDateRange', () {
+    // TemplateResponseDateRangeAbsoluteDateRange absoluteDateRange
+    test('to test the property `absoluteDateRange`', () async {
+      // TODO
+    });
+
     // TemplateResponseDateRangeDynamicDateRange dynamicDateRange
     test('to test the property `dynamicDateRange`', () async {
       // TODO
@@ -23,11 +28,6 @@ void main() {
 
     // TemplateResponseDateRangeRelativeDateRange relativeDateRange
     test('to test the property `relativeDateRange`', () async {
-      // TODO
-    });
-
-    // TemplateResponseDateRangeAbsoluteDateRange absoluteDateRange
-    test('to test the property `absoluteDateRange`', () async {
       // TODO
     });
 

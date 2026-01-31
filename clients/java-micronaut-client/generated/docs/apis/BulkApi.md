@@ -45,7 +45,7 @@ Mono<BulkDownloadResponse> BulkApi.bulkDownloadCreate(adAccountIdbulkDownloadReq
 
 Get advertiser entities in bulk
 
-Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, and/or keywords; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
 
 ### Parameters
 | Name | Type | Description  | Notes |
@@ -87,6 +87,7 @@ Get the status of a bulk request by &lt;code&gt;request_id&lt;/code&gt;, along w
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `ads:read`
+* **[client_credentials](auth.md#client_credentials)**, scopes: `ads:read`
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -100,7 +101,7 @@ Mono<BulkUpsertResponse> BulkApi.bulkUpsertCreate(adAccountIdbulkUpsertRequest)
 
 Create/update ad entities in bulk
 
-Either create or update any combination of campaigns, ad groups, product groups, ads, or keywords. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
+Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
 
 ### Parameters
 | Name | Type | Description  | Notes |

@@ -13,13 +13,31 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AdGroupsList200Response  {
   
-  @ApiModelProperty(required = true, value = "")
-
-  private List<AdGroupResponse> items = new ArrayList<>();
-
   @ApiModelProperty(value = "")
 
   private String bookmark;
+
+  @ApiModelProperty(required = true, value = "")
+
+  private List<AdGroupResponse> items = new ArrayList<>();
+ /**
+   * Get bookmark
+   * @return bookmark
+  **/
+  @JsonProperty("bookmark")
+  public String getBookmark() {
+    return bookmark;
+  }
+
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
+
+  public AdGroupsList200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
  /**
    * Get items
    * @return items
@@ -43,24 +61,6 @@ public class AdGroupsList200Response  {
     return this;
   }
 
- /**
-   * Get bookmark
-   * @return bookmark
-  **/
-  @JsonProperty("bookmark")
-  public String getBookmark() {
-    return bookmark;
-  }
-
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
-  public AdGroupsList200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -70,13 +70,13 @@ public class AdGroupsList200Response  {
       return false;
     }
     AdGroupsList200Response adGroupsList200Response = (AdGroupsList200Response) o;
-    return Objects.equals(this.items, adGroupsList200Response.items) &&
-        Objects.equals(this.bookmark, adGroupsList200Response.bookmark);
+    return Objects.equals(this.bookmark, adGroupsList200Response.bookmark) &&
+        Objects.equals(this.items, adGroupsList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -84,8 +84,8 @@ public class AdGroupsList200Response  {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdGroupsList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

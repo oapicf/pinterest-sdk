@@ -5,19 +5,19 @@
 -export_type([openapi_get_partner_assets_response/0]).
 
 -type openapi_get_partner_assets_response() ::
-    #{ 'asset_id' => binary(),
+    #{ 'asset_group_info' => openapi_asset_group_binding:openapi_asset_group_binding(),
+       'asset_id' => binary(),
        'asset_type' => binary(),
-       'permissions' => list(),
-       'asset_group_info' => openapi_asset_group_binding:openapi_asset_group_binding()
+       'permissions' => list()
      }.
 
-encode(#{ 'asset_id' := AssetId,
+encode(#{ 'asset_group_info' := AssetGroupInfo,
+          'asset_id' := AssetId,
           'asset_type' := AssetType,
-          'permissions' := Permissions,
-          'asset_group_info' := AssetGroupInfo
+          'permissions' := Permissions
         }) ->
-    #{ 'asset_id' => AssetId,
+    #{ 'asset_group_info' => AssetGroupInfo,
+       'asset_id' => AssetId,
        'asset_type' => AssetType,
-       'permissions' => Permissions,
-       'asset_group_info' => AssetGroupInfo
+       'permissions' => Permissions
      }.

@@ -19,8 +19,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CatalogsHotelItemsFilter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelItemsFilter   {
+  private String catalogId;
   public enum CatalogTypeEnum {
 
     HOTEL(String.valueOf("HOTEL"));
@@ -70,7 +71,6 @@ public class CatalogsHotelItemsFilter   {
 
   private CatalogTypeEnum catalogType;
   private @Valid List<String> hotelIds = new ArrayList<>();
-  private String catalogId;
 
   public CatalogsHotelItemsFilter() {
   }
@@ -82,6 +82,26 @@ public class CatalogsHotelItemsFilter   {
   ) {
     this.catalogType = catalogType;
     this.hotelIds = hotelIds;
+  }
+
+  /**
+   * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+   **/
+  public CatalogsHotelItemsFilter catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog")
+  @JsonProperty("catalog_id")
+   @Pattern(regexp="^\\d+$")public String getCatalogId() {
+    return catalogId;
+  }
+
+  @JsonProperty("catalog_id")
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
   }
 
   /**
@@ -138,26 +158,6 @@ public class CatalogsHotelItemsFilter   {
 
     return this;
   }
-  /**
-   * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
-   **/
-  public CatalogsHotelItemsFilter catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog")
-  @JsonProperty("catalog_id")
-   @Pattern(regexp="^\\d+$")public String getCatalogId() {
-    return catalogId;
-  }
-
-  @JsonProperty("catalog_id")
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -168,14 +168,14 @@ public class CatalogsHotelItemsFilter   {
       return false;
     }
     CatalogsHotelItemsFilter catalogsHotelItemsFilter = (CatalogsHotelItemsFilter) o;
-    return Objects.equals(this.catalogType, catalogsHotelItemsFilter.catalogType) &&
-        Objects.equals(this.hotelIds, catalogsHotelItemsFilter.hotelIds) &&
-        Objects.equals(this.catalogId, catalogsHotelItemsFilter.catalogId);
+    return Objects.equals(this.catalogId, catalogsHotelItemsFilter.catalogId) &&
+        Objects.equals(this.catalogType, catalogsHotelItemsFilter.catalogType) &&
+        Objects.equals(this.hotelIds, catalogsHotelItemsFilter.hotelIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, hotelIds, catalogId);
+    return Objects.hash(catalogId, catalogType, hotelIds);
   }
 
   @Override
@@ -183,9 +183,9 @@ public class CatalogsHotelItemsFilter   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelItemsFilter {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    hotelIds: ").append(toIndentedString(hotelIds)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

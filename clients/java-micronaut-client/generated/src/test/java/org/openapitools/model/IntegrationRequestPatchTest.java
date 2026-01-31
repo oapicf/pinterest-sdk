@@ -21,11 +21,11 @@ public class IntegrationRequestPatchTest {
     }
 
     /**
-     * Test the property 'connectedMerchantId'
+     * Test the property 'additionalId1'
      */
     @Test
-    public void connectedMerchantIdTest() {
-        // TODO: test connectedMerchantId
+    public void additionalId1Test() {
+        // TODO: test additionalId1
     }
 
     /**
@@ -45,6 +45,14 @@ public class IntegrationRequestPatchTest {
     }
 
     /**
+     * Test the property 'connectedMerchantId'
+     */
+    @Test
+    public void connectedMerchantIdTest() {
+        // TODO: test connectedMerchantId
+    }
+
+    /**
      * Test the property 'connectedTagId'
      */
     @Test
@@ -61,11 +69,19 @@ public class IntegrationRequestPatchTest {
     }
 
     /**
-     * Test the property 'partnerRefreshToken'
+     * Test the property 'partnerAccessTokenExpiry'
      */
     @Test
-    public void partnerRefreshTokenTest() {
-        // TODO: test partnerRefreshToken
+    public void partnerAccessTokenExpiryTest() {
+        // TODO: test partnerAccessTokenExpiry
+    }
+
+    /**
+     * Test the property 'partnerMetadata'
+     */
+    @Test
+    public void partnerMetadataTest() {
+        // TODO: test partnerMetadata
     }
 
     /**
@@ -77,11 +93,11 @@ public class IntegrationRequestPatchTest {
     }
 
     /**
-     * Test the property 'partnerAccessTokenExpiry'
+     * Test the property 'partnerRefreshToken'
      */
     @Test
-    public void partnerAccessTokenExpiryTest() {
-        // TODO: test partnerAccessTokenExpiry
+    public void partnerRefreshTokenTest() {
+        // TODO: test partnerRefreshToken
     }
 
     /**
@@ -98,22 +114,6 @@ public class IntegrationRequestPatchTest {
     @Test
     public void scopesTest() {
         // TODO: test scopes
-    }
-
-    /**
-     * Test the property 'additionalId1'
-     */
-    @Test
-    public void additionalId1Test() {
-        // TODO: test additionalId1
-    }
-
-    /**
-     * Test the property 'partnerMetadata'
-     */
-    @Test
-    public void partnerMetadataTest() {
-        // TODO: test partnerMetadata
     }
 
 }

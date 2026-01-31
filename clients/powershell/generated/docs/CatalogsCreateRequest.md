@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogType** | **String** | Type of the catalog entity. | 
+**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **Name** | **String** | A human-friendly name associated to a given catalog. | 
 
 ## Examples

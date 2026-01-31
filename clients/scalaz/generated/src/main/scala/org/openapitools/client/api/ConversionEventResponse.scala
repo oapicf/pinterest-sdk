@@ -12,11 +12,11 @@ import org.joda.time.DateTime
 import ConversionEventResponse._
 
 case class ConversionEventResponse (
-  conversionEvent: Option[ConversionTagType],
+  /* Id of the ad account. */
+  adAccountId: Option[String],
+conversionEvent: Option[ConversionTagType],
 /* Id of the tag. */
   conversionTagId: Option[String],
-/* Id of the ad account. */
-  adAccountId: Option[String],
 /* Creation date in epoch format. */
   createdTime: Option[Integer])
 

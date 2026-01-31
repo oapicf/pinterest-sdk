@@ -12,16 +12,16 @@ import org.joda.time.DateTime
 import AudienceCategory._
 
 case class AudienceCategory (
-  /* Interest unique key (same as ID). */
+  /* Interest ID. */
+  id: Option[String],
+/* Interest affinity index. */
+  index: Option[BigDecimal],
+/* Interest unique key (same as ID). */
   key: Option[String],
 /* Interest name. */
   name: Option[String],
 /* Interest's percent of category's total audience. */
   ratio: Option[BigDecimal],
-/* Interest affinity index. */
-  index: Option[BigDecimal],
-/* Interest ID. */
-  id: Option[String],
 /* Subcategory interest distribution */
   subcategories: Option[List[AudienceSubcategory]])
 

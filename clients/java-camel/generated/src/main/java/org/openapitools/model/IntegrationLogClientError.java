@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "IntegrationLogClientError", description = "System error details included in the log sent by the client.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class IntegrationLogClientError {
 
   private String cause;
@@ -129,7 +129,7 @@ public class IntegrationLogClientError {
    * Human-readable description of the error.
    * @return message
    */
-  @Size(max = 512) 
+  @Size(max = 8192) 
   @Schema(name = "message", description = "Human-readable description of the error.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("message")
   public String getMessage() {

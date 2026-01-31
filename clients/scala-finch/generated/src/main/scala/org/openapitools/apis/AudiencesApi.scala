@@ -4,7 +4,6 @@ import java.io._
 import org.openapitools._
 import org.openapitools.models._
 import org.openapitools.models.Audience
-import org.openapitools.models.AudienceCreateCustomRequest
 import org.openapitools.models.AudienceCreateRequest
 import org.openapitools.models.AudienceUpdateRequest
 import org.openapitools.models.AudiencesList200Response
@@ -30,7 +29,6 @@ object AudiencesApi {
     */
     def endpoints(da: DataAccessor) =
         audiences/create(da) :+:
-        audiences/createCustom(da) :+:
         audiences/get(da) :+:
         audiences/list(da) :+:
         audiences/update(da)
@@ -63,20 +61,6 @@ object AudiencesApi {
         private def audiences/create(da: DataAccessor): Endpoint[Audience] =
         post("ad_accounts" :: string :: "audiences" :: jsonBody[AudienceCreateRequest]) { (adAccountId: String, audienceCreateRequest: AudienceCreateRequest) =>
           da.Audiences_audiences/create(adAccountId, audienceCreateRequest) match {
-            case Left(error) => checkError(error)
-            case Right(data) => Ok(data)
-          }
-        } handle {
-          case e: Exception => BadRequest(e)
-        }
-
-        /**
-        * 
-        * @return An endpoint representing a Audience
-        */
-        private def audiences/createCustom(da: DataAccessor): Endpoint[Audience] =
-        post("ad_accounts" :: string :: "audiences" :: "custom" :: jsonBody[AudienceCreateCustomRequest]) { (adAccountId: String, audienceCreateCustomRequest: AudienceCreateCustomRequest) =>
-          da.Audiences_audiences/createCustom(adAccountId, audienceCreateCustomRequest) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }

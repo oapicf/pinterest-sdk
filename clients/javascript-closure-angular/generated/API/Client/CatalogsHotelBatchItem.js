@@ -7,6 +7,12 @@ goog.provide('API.Client.CatalogsHotelBatchItem');
 API.Client.CatalogsHotelBatchItem = function() {}
 
 /**
+ * @type {!API.Client.CatalogsUpdatableHotelAttributes}
+ * @export
+ */
+API.Client.CatalogsHotelBatchItem.prototype.attributes;
+
+/**
  * The catalog hotel id in the merchant namespace
  * @type {!string}
  * @export
@@ -18,12 +24,6 @@ API.Client.CatalogsHotelBatchItem.prototype.hotelId;
  * @export
  */
 API.Client.CatalogsHotelBatchItem.prototype.operation;
-
-/**
- * @type {!API.Client.CatalogsUpdatableHotelAttributes}
- * @export
- */
-API.Client.CatalogsHotelBatchItem.prototype.attributes;
 
 /** @enum {string} */
 API.Client.CatalogsHotelBatchItem.OperationEnum = { 

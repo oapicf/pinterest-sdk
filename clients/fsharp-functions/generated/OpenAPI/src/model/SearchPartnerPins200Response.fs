@@ -12,10 +12,10 @@ module SearchPartnerPins200Response =
 
   [<CLIMutable>]
   type SearchPartnerPins200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : SummaryPin[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : SummaryPin[];
   }
 
   //#endregion

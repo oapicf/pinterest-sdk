@@ -18,7 +18,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "System error details included in the log sent by the client.")
 @JsonTypeName("IntegrationLogClientError")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class IntegrationLogClientError   {
   private String cause;
   private Integer columnNumber;
@@ -124,7 +124,7 @@ public class IntegrationLogClientError   {
   
   @ApiModelProperty(value = "Human-readable description of the error.")
   @JsonProperty("message")
-   @Size(max=512)public String getMessage() {
+   @Size(max=8192)public String getMessage() {
     return message;
   }
 

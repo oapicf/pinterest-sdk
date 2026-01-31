@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [SSIOInsertionOrderStatus] | Insertion orders status by ad acount id | 
 **bookmark** | **String** |  | [optional] 
+**items** | [SSIOInsertionOrderStatus] | Insertion orders status by ad acount id | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,0 +1,61 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server IntegrationLogClientRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a IntegrationLogClientRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  IntegrationLogClientRequest {
+    title = IntegrationLogClientRequest
+    description = IntegrationLogClientRequest
+    derivedFrom = Root
+    properties {
+        host {
+          type =  string
+          description = "HTTP request host from host header."
+          optional = true
+        }
+        method {
+          type =  string
+          description = ""
+          enum = ["GET", "HEAD", "POST", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE", "PATCH"]
+          optional = true
+        }
+        path {
+          type =  string
+          description = "HTTP request path."
+          optional = true
+        }
+        request_headers {
+          # TODO
+          description = "HTTP request headers as key-value pairs."
+          optional = false
+        }
+        response_headers {
+          # TODO
+          description = "HTTP response headers as key-value pairs."
+          optional = false
+        }
+        response_status_code {
+          type =  integer
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  IntegrationLogClientRequest {
+    title = IntegrationLogClientRequest
+    description = IntegrationLogClientRequest
+    implements = openapi_server.resourceTypes.IntegrationLogClientRequest
+
+  }
+}

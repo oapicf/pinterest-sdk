@@ -3,8 +3,11 @@ package controllers;
 import apimodels.AdsCreditRedeemRequest;
 import apimodels.AdsCreditRedeemResponse;
 import apimodels.AdsCreditsDiscountsGet200Response;
+import apimodels.BillingInvoiceDownloadResponse;
+import apimodels.BillingInvoicesGet200Response;
 import apimodels.BillingProfilesGet200Response;
 import apimodels.Error;
+import java.time.LocalDate;
 import apimodels.SSIOAccountResponse;
 import apimodels.SSIOCreateInsertionOrderRequest;
 import apimodels.SSIOCreateInsertionOrderResponse;
@@ -76,6 +79,44 @@ public abstract class BillingApiControllerImpInterface {
     }
 
     public abstract AdsCreditsDiscountsGet200Response adsCreditsDiscountsGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception;
+
+    public Result billingInvoiceDownloadGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String billingInvoiceId) throws Exception {
+        if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
+            return unauthorized();
+        }
+
+        BillingInvoiceDownloadResponse obj = billingInvoiceDownloadGet(request, adAccountId, billingInvoiceId);
+
+        if (configuration.getBoolean("useOutputBeanValidation")) {
+            OpenAPIUtils.validate(obj);
+        }
+
+        JsonNode result = mapper.valueToTree(obj);
+
+        return ok(result);
+
+    }
+
+    public abstract BillingInvoiceDownloadResponse billingInvoiceDownloadGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,  @Pattern(regexp="^\\d+$") @Size(max=18)String billingInvoiceId) throws Exception;
+
+    public Result billingInvoicesGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, String sort, String order, String status, String documentType,  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")LocalDate startDueDate,  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")LocalDate endDueDate) throws Exception {
+        if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
+            return unauthorized();
+        }
+
+        BillingInvoicesGet200Response obj = billingInvoicesGet(request, adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate);
+
+        if (configuration.getBoolean("useOutputBeanValidation")) {
+            OpenAPIUtils.validate(obj);
+        }
+
+        JsonNode result = mapper.valueToTree(obj);
+
+        return ok(result);
+
+    }
+
+    public abstract BillingInvoicesGet200Response billingInvoicesGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, String bookmark,  @Min(1) @Max(250)Integer pageSize, String sort, String order, String status, String documentType,  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")LocalDate startDueDate,  @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$")LocalDate endDueDate) throws Exception;
 
     public Result billingProfilesGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull Boolean isActive, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {

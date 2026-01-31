@@ -7,6 +7,12 @@ goog.provide('API.Client.GetPartnerAssetsResponse');
 API.Client.GetPartnerAssetsResponse = function() {}
 
 /**
+ * @type {!API.Client.AssetGroupBinding}
+ * @export
+ */
+API.Client.GetPartnerAssetsResponse.prototype.assetGroupInfo;
+
+/**
  * Unique identifier of a business asset.
  * @type {!string}
  * @export
@@ -14,7 +20,7 @@ API.Client.GetPartnerAssetsResponse = function() {}
 API.Client.GetPartnerAssetsResponse.prototype.assetId;
 
 /**
- * Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+ * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
  * @type {!string}
  * @export
  */
@@ -26,10 +32,4 @@ API.Client.GetPartnerAssetsResponse.prototype.assetType;
  * @export
  */
 API.Client.GetPartnerAssetsResponse.prototype.permissions;
-
-/**
- * @type {!API.Client.AssetGroupBinding}
- * @export
- */
-API.Client.GetPartnerAssetsResponse.prototype.assetGroupInfo;
 

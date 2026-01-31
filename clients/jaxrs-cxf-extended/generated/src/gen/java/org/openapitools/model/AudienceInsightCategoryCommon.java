@@ -12,6 +12,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AudienceInsightCategoryCommon  {
   
   @ApiModelProperty(example = "549755885175", value = "")
+  private String id;
+
+  @ApiModelProperty(example = "1.2", value = "")
+  @Valid
+  private BigDecimal index;
+
+  @ApiModelProperty(example = "549755885175", value = "")
   private String key;
 
   @ApiModelProperty(example = "travel", value = "")
@@ -20,13 +27,54 @@ public class AudienceInsightCategoryCommon  {
   @ApiModelProperty(example = "0.551", value = "")
   @Valid
   private BigDecimal ratio;
+ /**
+  * Get id
+  * @return id
+  */
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
 
-  @ApiModelProperty(example = "1.2", value = "")
-  @Valid
-  private BigDecimal index;
+  /**
+   * Sets the <code>id</code> property.
+   */
+ public void setId(String id) {
+    this.id = id;
+  }
 
-  @ApiModelProperty(example = "549755885175", value = "")
-  private String id;
+  /**
+   * Sets the <code>id</code> property.
+   */
+  public AudienceInsightCategoryCommon id(String id) {
+    this.id = id;
+    return this;
+  }
+
+ /**
+  * Get index
+  * @return index
+  */
+  @JsonProperty("index")
+  public BigDecimal getIndex() {
+    return index;
+  }
+
+  /**
+   * Sets the <code>index</code> property.
+   */
+ public void setIndex(BigDecimal index) {
+    this.index = index;
+  }
+
+  /**
+   * Sets the <code>index</code> property.
+   */
+  public AudienceInsightCategoryCommon index(BigDecimal index) {
+    this.index = index;
+    return this;
+  }
+
  /**
   * Get key
   * @return key
@@ -99,54 +147,6 @@ public class AudienceInsightCategoryCommon  {
     return this;
   }
 
- /**
-  * Get index
-  * @return index
-  */
-  @JsonProperty("index")
-  public BigDecimal getIndex() {
-    return index;
-  }
-
-  /**
-   * Sets the <code>index</code> property.
-   */
- public void setIndex(BigDecimal index) {
-    this.index = index;
-  }
-
-  /**
-   * Sets the <code>index</code> property.
-   */
-  public AudienceInsightCategoryCommon index(BigDecimal index) {
-    this.index = index;
-    return this;
-  }
-
- /**
-  * Get id
-  * @return id
-  */
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-
-  /**
-   * Sets the <code>id</code> property.
-   */
- public void setId(String id) {
-    this.id = id;
-  }
-
-  /**
-   * Sets the <code>id</code> property.
-   */
-  public AudienceInsightCategoryCommon id(String id) {
-    this.id = id;
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -157,16 +157,16 @@ public class AudienceInsightCategoryCommon  {
       return false;
     }
     AudienceInsightCategoryCommon audienceInsightCategoryCommon = (AudienceInsightCategoryCommon) o;
-    return Objects.equals(this.key, audienceInsightCategoryCommon.key) &&
-        Objects.equals(this.name, audienceInsightCategoryCommon.name) &&
-        Objects.equals(this.ratio, audienceInsightCategoryCommon.ratio) &&
+    return Objects.equals(this.id, audienceInsightCategoryCommon.id) &&
         Objects.equals(this.index, audienceInsightCategoryCommon.index) &&
-        Objects.equals(this.id, audienceInsightCategoryCommon.id);
+        Objects.equals(this.key, audienceInsightCategoryCommon.key) &&
+        Objects.equals(this.name, audienceInsightCategoryCommon.name) &&
+        Objects.equals(this.ratio, audienceInsightCategoryCommon.ratio);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, name, ratio, index, id);
+    return Objects.hash(id, index, key, name, ratio);
   }
 
   @Override
@@ -174,11 +174,11 @@ public class AudienceInsightCategoryCommon  {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceInsightCategoryCommon {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    index: ").append(toIndentedString(index)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    ratio: ").append(toIndentedString(ratio)).append("\n");
-    sb.append("    index: ").append(toIndentedString(index)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

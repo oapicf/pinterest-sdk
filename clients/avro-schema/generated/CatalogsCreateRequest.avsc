@@ -6,14 +6,8 @@
   "fields": [
     {
       "name": "catalog_type",
-      "type": {
-        "type": "enum",
-        "name": "CatalogsCreateRequest_catalogUnderscoretype",
-        "symbols": [
-          "HOTEL"
-        ]
-      },
-      "doc": "Type of the catalog entity."
+      "type": "model.CatalogsType",
+      "doc": ""
     },
     {
       "name": "name",

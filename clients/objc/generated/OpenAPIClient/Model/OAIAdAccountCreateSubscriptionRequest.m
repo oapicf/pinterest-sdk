@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"webhookUrl": @"webhook_url", @"leadFormId": @"lead_form_id", @"partnerAccessToken": @"partner_access_token", @"partnerRefreshToken": @"partner_refresh_token", @"partnerMetadata": @"partner_metadata" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"leadFormId": @"lead_form_id", @"partnerAccessToken": @"partner_access_token", @"partnerMetadata": @"partner_metadata", @"partnerRefreshToken": @"partner_refresh_token", @"webhookUrl": @"webhook_url" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"leadFormId", @"partnerAccessToken", @"partnerRefreshToken", @"partnerMetadata"];
+  NSArray *optionalProperties = @[@"leadFormId", @"partnerAccessToken", @"partnerMetadata", @"partnerRefreshToken", ];
   return [optionalProperties containsObject:propertyName];
 }
 

@@ -7,36 +7,36 @@
 #' @title BulkUpsertStatusResponse
 #' @description BulkUpsertStatusResponse Class
 #' @format An \code{R6Class} generator object
-#' @field status  \link{BulkUpsertStatus} [optional]
 #' @field result_url  character [optional]
+#' @field status  \link{BulkUpsertStatus} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 BulkUpsertStatusResponse <- R6::R6Class(
   "BulkUpsertStatusResponse",
   public = list(
-    `status` = NULL,
     `result_url` = NULL,
+    `status` = NULL,
 
     #' @description
     #' Initialize a new BulkUpsertStatusResponse class.
     #'
-    #' @param status status
     #' @param result_url result_url
+    #' @param status status
     #' @param ... Other optional arguments.
-    initialize = function(`status` = NULL, `result_url` = NULL, ...) {
+    initialize = function(`result_url` = NULL, `status` = NULL, ...) {
+      if (!is.null(`result_url`)) {
+        if (!(is.character(`result_url`) && length(`result_url`) == 1)) {
+          stop(paste("Error! Invalid data for `result_url`. Must be a string:", `result_url`))
+        }
+        self$`result_url` <- `result_url`
+      }
       if (!is.null(`status`)) {
         if (!(`status` %in% c())) {
           stop(paste("Error! \"", `status`, "\" cannot be assigned to `status`. Must be .", sep = ""))
         }
         stopifnot(R6::is.R6(`status`))
         self$`status` <- `status`
-      }
-      if (!is.null(`result_url`)) {
-        if (!(is.character(`result_url`) && length(`result_url`) == 1)) {
-          stop(paste("Error! Invalid data for `result_url`. Must be a string:", `result_url`))
-        }
-        self$`result_url` <- `result_url`
       }
     },
 
@@ -71,13 +71,13 @@ BulkUpsertStatusResponse <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       BulkUpsertStatusResponseObject <- list()
-      if (!is.null(self$`status`)) {
-        BulkUpsertStatusResponseObject[["status"]] <-
-          self$`status`$toSimpleType()
-      }
       if (!is.null(self$`result_url`)) {
         BulkUpsertStatusResponseObject[["result_url"]] <-
           self$`result_url`
+      }
+      if (!is.null(self$`status`)) {
+        BulkUpsertStatusResponseObject[["status"]] <-
+          self$`status`$toSimpleType()
       }
       return(BulkUpsertStatusResponseObject)
     },
@@ -89,13 +89,13 @@ BulkUpsertStatusResponse <- R6::R6Class(
     #' @return the instance of BulkUpsertStatusResponse
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`result_url`)) {
+        self$`result_url` <- this_object$`result_url`
+      }
       if (!is.null(this_object$`status`)) {
         `status_object` <- BulkUpsertStatus$new()
         `status_object`$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
         self$`status` <- `status_object`
-      }
-      if (!is.null(this_object$`result_url`)) {
-        self$`result_url` <- this_object$`result_url`
       }
       self
     },
@@ -118,8 +118,8 @@ BulkUpsertStatusResponse <- R6::R6Class(
     #' @return the instance of BulkUpsertStatusResponse
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`status` <- BulkUpsertStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
       self$`result_url` <- this_object$`result_url`
+      self$`status` <- BulkUpsertStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
       self
     },
 

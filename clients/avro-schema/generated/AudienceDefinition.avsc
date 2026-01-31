@@ -11,15 +11,15 @@
       "default": null
     },
     {
-      "name": "type",
-      "type": ["null", "String"],
-      "doc": "Generated audience type to request.",
+      "name": "scope",
+      "type": ["null", "string"],
+      "doc": "",
       "default": null
     },
     {
-      "name": "scope",
-      "type": ["null", "String"],
-      "doc": "Generated audience scope to request.",
+      "name": "type",
+      "type": ["null", "string"],
+      "doc": "",
       "default": null
     }
   ]

@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsCreativeAssetsProductGroupCreateRequest`
 --
-SELECT `catalog_type`, `name`, `description`, `filters`, `catalog_id` FROM `CatalogsCreativeAssetsProductGroupCreateRequest` WHERE 1;
+SELECT `catalog_id`, `catalog_type`, `description`, `filters`, `name` FROM `CatalogsCreativeAssetsProductGroupCreateRequest` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsCreativeAssetsProductGroupCreateRequest`
 --
-INSERT INTO `CatalogsCreativeAssetsProductGroupCreateRequest`(`catalog_type`, `name`, `description`, `filters`, `catalog_id`) VALUES (?, ?, ?, ?, ?);
+INSERT INTO `CatalogsCreativeAssetsProductGroupCreateRequest`(`catalog_id`, `catalog_type`, `description`, `filters`, `name`) VALUES (?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsCreativeAssetsProductGroupCreateRequest`
 --
-UPDATE `CatalogsCreativeAssetsProductGroupCreateRequest` SET `catalog_type` = ?, `name` = ?, `description` = ?, `filters` = ?, `catalog_id` = ? WHERE 1;
+UPDATE `CatalogsCreativeAssetsProductGroupCreateRequest` SET `catalog_id` = ?, `catalog_type` = ?, `description` = ?, `filters` = ?, `name` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsCreativeAssetsProductGroupCreateRequest`

@@ -14,23 +14,17 @@ API.Client.AudienceInsightsResponse = function() {}
 API.Client.AudienceInsightsResponse.prototype.categories;
 
 /**
- * @type {!API.Client.AudienceDemographics}
- * @export
- */
-API.Client.AudienceInsightsResponse.prototype.demographics;
-
-/**
- * @type {!API.Client.AudienceInsightType}
- * @export
- */
-API.Client.AudienceInsightsResponse.prototype.type;
-
-/**
  * Generation date
  * @type {!string}
  * @export
  */
 API.Client.AudienceInsightsResponse.prototype.date;
+
+/**
+ * @type {!API.Client.AudienceDemographics}
+ * @export
+ */
+API.Client.AudienceInsightsResponse.prototype.demographics;
 
 /**
  * Population count.
@@ -45,4 +39,10 @@ API.Client.AudienceInsightsResponse.prototype.size;
  * @export
  */
 API.Client.AudienceInsightsResponse.prototype.sizeIsUpperBound;
+
+/**
+ * @type {!API.Client.AudienceInsightType}
+ * @export
+ */
+API.Client.AudienceInsightsResponse.prototype.type;
 

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -143,22 +143,22 @@ func (c *MediaAPIController) MediaList(w http.ResponseWriter, r *http.Request) {
 
 // MediaCreate - Register media upload
 func (c *MediaAPIController) MediaCreate(w http.ResponseWriter, r *http.Request) {
-	var mediaUploadRequestParam MediaUploadRequest
+	var mediaUploadCreateParam MediaUploadCreate
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
-	if err := d.Decode(&mediaUploadRequestParam); err != nil {
+	if err := d.Decode(&mediaUploadCreateParam); err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertMediaUploadRequestRequired(mediaUploadRequestParam); err != nil {
+	if err := AssertMediaUploadCreateRequired(mediaUploadCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	if err := AssertMediaUploadRequestConstraints(mediaUploadRequestParam); err != nil {
+	if err := AssertMediaUploadCreateConstraints(mediaUploadCreateParam); err != nil {
 		c.errorHandler(w, r, err, nil)
 		return
 	}
-	result, err := c.service.MediaCreate(r.Context(), mediaUploadRequestParam)
+	result, err := c.service.MediaCreate(r.Context(), mediaUploadCreateParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

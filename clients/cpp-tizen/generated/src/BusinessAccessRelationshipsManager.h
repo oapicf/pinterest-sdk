@@ -5,6 +5,9 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
+#include "Brand_accounts_create_200_response.h"
+#include "Brand_accounts_create_request.h"
+#include "Brand_accounts_update_request.h"
 #include "DeletePartnersRequest.h"
 #include "DeletePartnersResponse.h"
 #include "DeletedMembersResponse.h"
@@ -15,6 +18,7 @@
 #include "MemberBusinessRole.h"
 #include "MembersToDeleteBody.h"
 #include "PartnerType.h"
+#include "System_user_update_request.h"
 #include "UpdateMemberBusinessRoleBody.h"
 #include "UpdateMemberResultsResponseArray.h"
 #include <list>
@@ -35,6 +39,66 @@ class BusinessAccessRelationshipsManager {
 public:
 	BusinessAccessRelationshipsManager();
 	virtual ~BusinessAccessRelationshipsManager();
+
+/*! \brief Create a Brand Account. *Synchronous*
+ *
+ * Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+ * \param businessHierarchyId business hierarchy node id *Required*
+ * \param brandAccountsCreateRequest  *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool brandAccountsCreateSync(char * accessToken,
+	std::string businessHierarchyId, std::shared_ptr<Brand_accounts_create_request> brandAccountsCreateRequest, 
+	void(* handler)(Brand_accounts_create_200_response, Error, void* )
+	, void* userData);
+
+/*! \brief Create a Brand Account. *Asynchronous*
+ *
+ * Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+ * \param businessHierarchyId business hierarchy node id *Required*
+ * \param brandAccountsCreateRequest  *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool brandAccountsCreateAsync(char * accessToken,
+	std::string businessHierarchyId, std::shared_ptr<Brand_accounts_create_request> brandAccountsCreateRequest, 
+	void(* handler)(Brand_accounts_create_200_response, Error, void* )
+	, void* userData);
+
+
+/*! \brief Update a Brand Account. *Synchronous*
+ *
+ * Update an existing Brand Account
+ * \param businessHierarchyId business hierarchy node id *Required*
+ * \param brandAccountId Unique identifier of a brand account. *Required*
+ * \param brandAccountsUpdateRequest  *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool brandAccountsUpdateSync(char * accessToken,
+	std::string businessHierarchyId, std::string brandAccountId, std::shared_ptr<Brand_accounts_update_request> brandAccountsUpdateRequest, 
+	void(* handler)(Brand_accounts_create_200_response, Error, void* )
+	, void* userData);
+
+/*! \brief Update a Brand Account. *Asynchronous*
+ *
+ * Update an existing Brand Account
+ * \param businessHierarchyId business hierarchy node id *Required*
+ * \param brandAccountId Unique identifier of a brand account. *Required*
+ * \param brandAccountsUpdateRequest  *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool brandAccountsUpdateAsync(char * accessToken,
+	std::string businessHierarchyId, std::string brandAccountId, std::shared_ptr<Brand_accounts_update_request> brandAccountsUpdateRequest, 
+	void(* handler)(Brand_accounts_create_200_response, Error, void* )
+	, void* userData);
+
 
 /*! \brief Terminate business memberships. *Synchronous*
  *
@@ -127,6 +191,7 @@ bool getBusinessEmployersAsync(char * accessToken,
  *
  * Get all members of the specified business. The return response will include the member's business_role and assets they have access to if assets_summary=TRUE
  * \param businessId Unique identifier of the requesting business. *Required*
+ * \param fetchSystemUsers Fetches system users if True. Fetches regular user employees if False.
  * \param assetsSummary Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
  * \param businessRoles A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.
  * \param memberIds A list of business members ids separated by comma.
@@ -138,7 +203,7 @@ bool getBusinessEmployersAsync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool getBusinessMembersSync(char * accessToken,
-	std::string businessId, bool assetsSummary, std::list<MemberBusinessRole> businessRoles, std::string memberIds, int startIndex, std::string bookmark, int pageSize, 
+	std::string businessId, bool fetchSystemUsers, bool assetsSummary, std::list<MemberBusinessRole> businessRoles, std::string memberIds, int startIndex, std::string bookmark, int pageSize, 
 	void(* handler)(Get_business_members_200_response, Error, void* )
 	, void* userData);
 
@@ -146,6 +211,7 @@ bool getBusinessMembersSync(char * accessToken,
  *
  * Get all members of the specified business. The return response will include the member's business_role and assets they have access to if assets_summary=TRUE
  * \param businessId Unique identifier of the requesting business. *Required*
+ * \param fetchSystemUsers Fetches system users if True. Fetches regular user employees if False.
  * \param assetsSummary Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
  * \param businessRoles A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.
  * \param memberIds A list of business members ids separated by comma.
@@ -157,7 +223,7 @@ bool getBusinessMembersSync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool getBusinessMembersAsync(char * accessToken,
-	std::string businessId, bool assetsSummary, std::list<MemberBusinessRole> businessRoles, std::string memberIds, int startIndex, std::string bookmark, int pageSize, 
+	std::string businessId, bool fetchSystemUsers, bool assetsSummary, std::list<MemberBusinessRole> businessRoles, std::string memberIds, int startIndex, std::string bookmark, int pageSize, 
 	void(* handler)(Get_business_members_200_response, Error, void* )
 	, void* userData);
 
@@ -199,6 +265,37 @@ bool getBusinessPartnersAsync(char * accessToken,
 	std::string businessId, bool assetsSummary, PartnerType partnerType, std::string partnerIds, int startIndex, int pageSize, std::string bookmark, 
 	void(* handler)(Get_business_partners_200_response, Error, void* )
 	, void* userData);
+
+
+/*! \brief Update a system user information.. *Synchronous*
+ *
+ * Update a system user information such as name.
+ * \param businessId Unique identifier of the requesting business. *Required*
+ * \param systemUserId Unique identifier of a system user. *Required*
+ * \param systemUserUpdateRequest  *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool systemUserUpdateSync(char * accessToken,
+	std::string businessId, std::string systemUserId, std::shared_ptr<System_user_update_request> systemUserUpdateRequest, 
+	
+	void(* handler)(Error, void* ) , void* userData);
+
+/*! \brief Update a system user information.. *Asynchronous*
+ *
+ * Update a system user information such as name.
+ * \param businessId Unique identifier of the requesting business. *Required*
+ * \param systemUserId Unique identifier of a system user. *Required*
+ * \param systemUserUpdateRequest  *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool systemUserUpdateAsync(char * accessToken,
+	std::string businessId, std::string systemUserId, std::shared_ptr<System_user_update_request> systemUserUpdateRequest, 
+	
+	void(* handler)(Error, void* ) , void* userData);
 
 
 /*! \brief Update member's business role. *Synchronous*

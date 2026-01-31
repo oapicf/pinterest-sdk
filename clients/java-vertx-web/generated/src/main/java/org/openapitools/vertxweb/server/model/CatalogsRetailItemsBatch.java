@@ -20,23 +20,23 @@ import org.openapitools.vertxweb.server.model.ItemProcessingRecord;
 public class CatalogsRetailItemsBatch   {
   
   private String batchId;
-  private OffsetDateTime createdTime;
-  private OffsetDateTime completedTime;
-  private BatchOperationStatus status;
   private CatalogsType catalogType;
+  private OffsetDateTime completedTime;
+  private OffsetDateTime createdTime;
   private List<ItemProcessingRecord> items = new ArrayList<>();
+  private BatchOperationStatus status;
 
   public CatalogsRetailItemsBatch () {
 
   }
 
-  public CatalogsRetailItemsBatch (String batchId, OffsetDateTime createdTime, OffsetDateTime completedTime, BatchOperationStatus status, CatalogsType catalogType, List<ItemProcessingRecord> items) {
+  public CatalogsRetailItemsBatch (String batchId, CatalogsType catalogType, OffsetDateTime completedTime, OffsetDateTime createdTime, List<ItemProcessingRecord> items, BatchOperationStatus status) {
     this.batchId = batchId;
-    this.createdTime = createdTime;
-    this.completedTime = completedTime;
-    this.status = status;
     this.catalogType = catalogType;
+    this.completedTime = completedTime;
+    this.createdTime = createdTime;
     this.items = items;
+    this.status = status;
   }
 
     
@@ -49,12 +49,12 @@ public class CatalogsRetailItemsBatch   {
   }
 
     
-  @JsonProperty("created_time")
-  public OffsetDateTime getCreatedTime() {
-    return createdTime;
+  @JsonProperty("catalog_type")
+  public CatalogsType getCatalogType() {
+    return catalogType;
   }
-  public void setCreatedTime(OffsetDateTime createdTime) {
-    this.createdTime = createdTime;
+  public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
   }
 
     
@@ -67,21 +67,12 @@ public class CatalogsRetailItemsBatch   {
   }
 
     
-  @JsonProperty("status")
-  public BatchOperationStatus getStatus() {
-    return status;
+  @JsonProperty("created_time")
+  public OffsetDateTime getCreatedTime() {
+    return createdTime;
   }
-  public void setStatus(BatchOperationStatus status) {
-    this.status = status;
-  }
-
-    
-  @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-  public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
+  public void setCreatedTime(OffsetDateTime createdTime) {
+    this.createdTime = createdTime;
   }
 
     
@@ -91,6 +82,15 @@ public class CatalogsRetailItemsBatch   {
   }
   public void setItems(List<ItemProcessingRecord> items) {
     this.items = items;
+  }
+
+    
+  @JsonProperty("status")
+  public BatchOperationStatus getStatus() {
+    return status;
+  }
+  public void setStatus(BatchOperationStatus status) {
+    this.status = status;
   }
 
 
@@ -104,16 +104,16 @@ public class CatalogsRetailItemsBatch   {
     }
     CatalogsRetailItemsBatch catalogsRetailItemsBatch = (CatalogsRetailItemsBatch) o;
     return Objects.equals(batchId, catalogsRetailItemsBatch.batchId) &&
-        Objects.equals(createdTime, catalogsRetailItemsBatch.createdTime) &&
-        Objects.equals(completedTime, catalogsRetailItemsBatch.completedTime) &&
-        Objects.equals(status, catalogsRetailItemsBatch.status) &&
         Objects.equals(catalogType, catalogsRetailItemsBatch.catalogType) &&
-        Objects.equals(items, catalogsRetailItemsBatch.items);
+        Objects.equals(completedTime, catalogsRetailItemsBatch.completedTime) &&
+        Objects.equals(createdTime, catalogsRetailItemsBatch.createdTime) &&
+        Objects.equals(items, catalogsRetailItemsBatch.items) &&
+        Objects.equals(status, catalogsRetailItemsBatch.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(batchId, createdTime, completedTime, status, catalogType, items);
+    return Objects.hash(batchId, catalogType, completedTime, createdTime, items, status);
   }
 
   @Override
@@ -122,11 +122,11 @@ public class CatalogsRetailItemsBatch   {
     sb.append("class CatalogsRetailItemsBatch {\n");
     
     sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
-    sb.append("    completedTime: ").append(toIndentedString(completedTime)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    completedTime: ").append(toIndentedString(completedTime)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

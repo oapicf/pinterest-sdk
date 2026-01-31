@@ -73,8 +73,8 @@ private class OASCreateAssetAccessRequestBodyAssetTest {
     private static void maintainRenamedProperties() {
         OASCreateAssetAccessRequestBodyAsset createAssetAccessRequestBodyAssetRequestsInner = new OASCreateAssetAccessRequestBodyAsset();
         Map<String, String> x-property-mappings = createAssetAccessRequestBodyAssetRequestsInner.getx-property-mappings();
-        System.assertEquals('partnerId', x-property-mappings.get('partner_id'));
         System.assertEquals('assetIdToPermissions', x-property-mappings.get('asset_id_to_permissions'));
+        System.assertEquals('partnerId', x-property-mappings.get('partner_id'));
     }
 
     @isTest

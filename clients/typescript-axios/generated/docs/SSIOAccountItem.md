@@ -5,15 +5,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Salesforce id for billto_info | [optional] [default to undefined]
-**io_terms_id** | **string** | Salesforce id for IO Terms and Conditions | [optional] [default to undefined]
-**io_terms** | **string** | Salesforce text for IO Terms and Conditions | [optional] [default to undefined]
-**us_terms_id** | **string** | Salesforce id for US Terms and Conditions | [optional] [default to undefined]
-**us_terms** | **string** | Salesforce text for US Terms and Conditions | [optional] [default to undefined]
-**row_terms_id** | **string** | Salesforce id for Rest of the World Terms and Conditions | [optional] [default to undefined]
-**row_terms** | **string** | Salesforce text for Rest of the World Terms and Conditions | [optional] [default to undefined]
-**io_type** | **string** | Insertion Order Type - Pinterest Paper or Agency Paper | [optional] [default to undefined]
 **addresses** | [**Array&lt;SSIOAccountAddress&gt;**](SSIOAccountAddress.md) | Address information that is associated with this account. | [optional] [default to undefined]
+**id** | **string** | Salesforce id for billto_info | [optional] [default to undefined]
+**io_terms** | **string** | Salesforce text for IO Terms and Conditions | [optional] [default to undefined]
+**io_terms_id** | **string** | Salesforce id for IO Terms and Conditions | [optional] [default to undefined]
+**io_type** | **string** | Insertion Order Type - Pinterest Paper or Agency Paper | [optional] [default to undefined]
+**row_terms** | **string** | Salesforce text for Rest of the World Terms and Conditions | [optional] [default to undefined]
+**row_terms_id** | **string** | Salesforce id for Rest of the World Terms and Conditions | [optional] [default to undefined]
+**us_terms** | **string** | Salesforce text for US Terms and Conditions | [optional] [default to undefined]
+**us_terms_id** | **string** | Salesforce id for US Terms and Conditions | [optional] [default to undefined]
 
 ## Example
 
@@ -21,15 +21,15 @@ Name | Type | Description | Notes
 import { SSIOAccountItem } from './api';
 
 const instance: SSIOAccountItem = {
-    id,
-    io_terms_id,
-    io_terms,
-    us_terms_id,
-    us_terms,
-    row_terms_id,
-    row_terms,
-    io_type,
     addresses,
+    id,
+    io_terms,
+    io_terms_id,
+    io_type,
+    row_terms,
+    row_terms_id,
+    us_terms,
+    us_terms_id,
 };
 ```
 

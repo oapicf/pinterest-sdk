@@ -7,10 +7,11 @@ A request object that can have multiple operations on a single retail batch
 
 Name | Type
 ------------ | -------------
+`catalogId` | string
 `catalogType` | string
 `country` | [Country](Country.md)
-`language` | string
 `items` | [Array&lt;CatalogsRetailBatchRequestItemsInner&gt;](CatalogsRetailBatchRequestItemsInner.md)
+`language` | string
 
 ## Example
 
@@ -19,10 +20,11 @@ import type { CatalogsRetailBatchRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "catalogId": 2680059592705,
   "catalogType": null,
   "country": null,
-  "language": null,
   "items": null,
+  "language": null,
 } satisfies CatalogsRetailBatchRequest
 
 console.log(example)

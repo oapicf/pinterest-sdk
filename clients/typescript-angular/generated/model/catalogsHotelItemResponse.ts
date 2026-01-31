@@ -16,6 +16,7 @@ import { CatalogsType } from './catalogsType';
  * Object describing a hotel record
  */
 export interface CatalogsHotelItemResponse { 
+    attributes?: CatalogsHotelAttributes;
     catalog_type: CatalogsType;
     /**
      * The catalog hotel id in the merchant namespace
@@ -25,7 +26,6 @@ export interface CatalogsHotelItemResponse {
      * The pins mapped to the item
      */
     pins?: Array<Pin> | null;
-    attributes?: CatalogsHotelAttributes;
 }
 export namespace CatalogsHotelItemResponse {
 }

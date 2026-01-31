@@ -1,12 +1,17 @@
 package org.openapitools.api;
 
 import org.openapitools.model.Board;
+import org.openapitools.model.BoardCreate;
+import org.openapitools.model.BoardPrivacyFilter;
 import org.openapitools.model.BoardSection;
 import org.openapitools.model.BoardSectionsList200Response;
-import org.openapitools.model.BoardUpdate;
+import org.openapitools.model.BoardWithUpdatePrivacy;
+import org.openapitools.model.BoardWithUpdatePrivacyUpdate;
 import org.openapitools.model.BoardsList200Response;
 import org.openapitools.model.BoardsListPins200Response;
+import org.openapitools.model.CreativeType;
 import org.openapitools.model.Error;
+import org.openapitools.model.PinterestLibError;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -141,17 +146,17 @@ public class BoardsApiTest {
     /**
      * Create board
      *
-     * Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+     * Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
      */
     @Test
     @Disabled("Not Implemented")
     public void boardsCreateTest() {
         // given
-        Board board = new Board("Summer Recipes");
+        BoardCreate boardCreate = new BoardCreate("Summer recipes");
         String adAccountId = "example";
 
         // when
-        Board body = api.boardsCreate(board, adAccountId).block();
+        Board body = api.boardsCreate(boardCreate, adAccountId).block();
 
         // then
         // TODO implement the boardsCreateTest()
@@ -161,7 +166,7 @@ public class BoardsApiTest {
     /**
      * Delete board
      *
-     * Delete a board owned by the \&quot;operation user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+     * Delete a board owned by the \&quot;operation user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
      */
     @Test
     @Disabled("Not Implemented")
@@ -181,7 +186,7 @@ public class BoardsApiTest {
     /**
      * Get board
      *
-     * Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+     * Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
      */
     @Test
     @Disabled("Not Implemented")
@@ -201,19 +206,19 @@ public class BoardsApiTest {
     /**
      * List boards
      *
-     * Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+     * Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
      */
     @Test
     @Disabled("Not Implemented")
     public void boardsListTest() {
         // given
         String adAccountId = "example";
+        BoardPrivacyFilter privacy = BoardPrivacyFilter.fromValue("ALL");
         String bookmark = "example";
         Integer pageSize = 25;
-        String privacy = "example";
 
         // when
-        BoardsList200Response body = api.boardsList(adAccountId, bookmark, pageSize, privacy).block();
+        BoardsList200Response body = api.boardsList(adAccountId, privacy, bookmark, pageSize).block();
 
         // then
         // TODO implement the boardsListTest()
@@ -232,7 +237,7 @@ public class BoardsApiTest {
         String boardId = "example";
         String bookmark = "example";
         Integer pageSize = 25;
-        List<String> creativeTypes = Arrays.asList("example");
+        List<CreativeType> creativeTypes = Arrays.asList();
         String adAccountId = "example";
         Boolean pinMetrics = false;
 
@@ -247,18 +252,18 @@ public class BoardsApiTest {
     /**
      * Update board
      *
-     * Update a board owned by the \&quot;operating user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+     * Update a board owned by the \&quot;operating user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
      */
     @Test
     @Disabled("Not Implemented")
     public void boardsUpdateTest() {
         // given
         String boardId = "example";
-        BoardUpdate boardUpdate = new BoardUpdate();
+        BoardWithUpdatePrivacyUpdate boardWithUpdatePrivacyUpdate = new BoardWithUpdatePrivacyUpdate();
         String adAccountId = "example";
 
         // when
-        Board body = api.boardsUpdate(boardId, boardUpdate, adAccountId).block();
+        BoardWithUpdatePrivacy body = api.boardsUpdate(boardId, boardWithUpdatePrivacyUpdate, adAccountId).block();
 
         // then
         // TODO implement the boardsUpdateTest()

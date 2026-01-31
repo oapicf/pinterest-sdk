@@ -9,7 +9,7 @@ test_that("AdsCreditRedeem", {
   # tests for AdsCreditRedeem
   # base path: https://api.pinterest.com/v5
   # Redeem ad credits
-  # Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+  # Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
   # @param ad_account_id character Unique identifier of an ad account.
   # @param ads_credit_redeem_request AdsCreditRedeemRequest Redeem ad credits request.
   # @return [AdsCreditRedeemResponse]
@@ -22,7 +22,7 @@ test_that("AdsCreditsDiscountsGet", {
   # tests for AdsCreditsDiscountsGet
   # base path: https://api.pinterest.com/v5
   # Get ads credit discounts
-  # Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+  # Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
   # @param ad_account_id character Unique identifier of an ad account.
   # @param bookmark character Cursor used to fetch the next page of items (optional)
   # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
@@ -32,11 +32,44 @@ test_that("AdsCreditsDiscountsGet", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
+test_that("BillingInvoiceDownloadGet", {
+  # tests for BillingInvoiceDownloadGet
+  # base path: https://api.pinterest.com/v5
+  # Get download url for a billing invoice
+  # Get download url for a billing invoice.
+  # @param ad_account_id character Unique identifier of an ad account.
+  # @param billing_invoice_id character Unique identifier of a billing invoice.
+  # @return [BillingInvoiceDownloadResponse]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("BillingInvoicesGet", {
+  # tests for BillingInvoicesGet
+  # base path: https://api.pinterest.com/v5
+  # Get billing invoices
+  # Get billing invoices in the advertiser account.
+  # @param ad_account_id character Unique identifier of an ad account.
+  # @param bookmark character Cursor used to fetch the next page of items (optional)
+  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+  # @param sort character Field of which to sort billing invoices (optional)
+  # @param order character The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+  # @param status character Status of billing invoices to filter by (optional)
+  # @param document_type character Document type of billing invoices to filter by (optional)
+  # @param start_due_date character Starting point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
+  # @param end_due_date character Ending point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
+  # @return [BillingInvoicesGet200Response]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
 test_that("BillingProfilesGet", {
   # tests for BillingProfilesGet
   # base path: https://api.pinterest.com/v5
   # Get billing profiles
-  # Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+  # Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
   # @param ad_account_id character Unique identifier of an ad account.
   # @param is_active character Return active billing profiles, if false return all billing profiles.
   # @param bookmark character Cursor used to fetch the next page of items (optional)

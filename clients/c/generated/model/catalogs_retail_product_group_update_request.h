@@ -31,22 +31,22 @@ pinterest_rest_api_catalogs_retail_product_group_update_request_CATALOGTYPE_e ca
 
 typedef struct catalogs_retail_product_group_update_request_t {
     pinterest_rest_api_catalogs_retail_product_group_update_request_CATALOGTYPE_e catalog_type; //enum
-    char *name; // string
+    pinterest_rest_api_country__e country; //referenced enum
     char *description; // string
     struct catalogs_product_group_filters_request_t *filters; //model
-    pinterest_rest_api_country__e country; //referenced enum
     pinterest_rest_api_catalogs_locale__e locale; //referenced enum
+    char *name; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_retail_product_group_update_request_t;
 
 __attribute__((deprecated)) catalogs_retail_product_group_update_request_t *catalogs_retail_product_group_update_request_create(
     pinterest_rest_api_catalogs_retail_product_group_update_request_CATALOGTYPE_e catalog_type,
-    char *name,
+    pinterest_rest_api_country__e country,
     char *description,
     catalogs_product_group_filters_request_t *filters,
-    pinterest_rest_api_country__e country,
-    pinterest_rest_api_catalogs_locale__e locale
+    pinterest_rest_api_catalogs_locale__e locale,
+    char *name
 );
 
 void catalogs_retail_product_group_update_request_free(catalogs_retail_product_group_update_request_t *catalogs_retail_product_group_update_request);

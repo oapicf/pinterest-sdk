@@ -14,30 +14,21 @@ import org.openapitools.vertxweb.server.model.Country;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MultipleProductGroupsInner   {
   
-  private String name;
   private String description;
-  private Boolean isFeatured = false;
-  private CatalogsProductGroupFiltersRequest filters;
   private String feedId;
+  private CatalogsProductGroupFiltersRequest filters;
+  private Boolean isFeatured = false;
+  private String name;
 
   public MultipleProductGroupsInner () {
 
   }
 
-  public MultipleProductGroupsInner (String name, String description, Boolean isFeatured, CatalogsProductGroupFiltersRequest filters, String feedId) {
-    this.name = name;
+  public MultipleProductGroupsInner (String description, String feedId, CatalogsProductGroupFiltersRequest filters, Boolean isFeatured, String name) {
     this.description = description;
-    this.isFeatured = isFeatured;
-    this.filters = filters;
     this.feedId = feedId;
-  }
-
-    
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
+    this.filters = filters;
+    this.isFeatured = isFeatured;
     this.name = name;
   }
 
@@ -51,12 +42,12 @@ public class MultipleProductGroupsInner   {
   }
 
     
-  @JsonProperty("is_featured")
-  public Boolean getIsFeatured() {
-    return isFeatured;
+  @JsonProperty("feed_id")
+  public String getFeedId() {
+    return feedId;
   }
-  public void setIsFeatured(Boolean isFeatured) {
-    this.isFeatured = isFeatured;
+  public void setFeedId(String feedId) {
+    this.feedId = feedId;
   }
 
     
@@ -69,12 +60,21 @@ public class MultipleProductGroupsInner   {
   }
 
     
-  @JsonProperty("feed_id")
-  public String getFeedId() {
-    return feedId;
+  @JsonProperty("is_featured")
+  public Boolean getIsFeatured() {
+    return isFeatured;
   }
-  public void setFeedId(String feedId) {
-    this.feedId = feedId;
+  public void setIsFeatured(Boolean isFeatured) {
+    this.isFeatured = isFeatured;
+  }
+
+    
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -87,16 +87,16 @@ public class MultipleProductGroupsInner   {
       return false;
     }
     MultipleProductGroupsInner multipleProductGroupsInner = (MultipleProductGroupsInner) o;
-    return Objects.equals(name, multipleProductGroupsInner.name) &&
-        Objects.equals(description, multipleProductGroupsInner.description) &&
-        Objects.equals(isFeatured, multipleProductGroupsInner.isFeatured) &&
+    return Objects.equals(description, multipleProductGroupsInner.description) &&
+        Objects.equals(feedId, multipleProductGroupsInner.feedId) &&
         Objects.equals(filters, multipleProductGroupsInner.filters) &&
-        Objects.equals(feedId, multipleProductGroupsInner.feedId);
+        Objects.equals(isFeatured, multipleProductGroupsInner.isFeatured) &&
+        Objects.equals(name, multipleProductGroupsInner.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, isFeatured, filters, feedId);
+    return Objects.hash(description, feedId, filters, isFeatured, name);
   }
 
   @Override
@@ -104,11 +104,11 @@ public class MultipleProductGroupsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class MultipleProductGroupsInner {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
-    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    isFeatured: ").append(toIndentedString(isFeatured)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

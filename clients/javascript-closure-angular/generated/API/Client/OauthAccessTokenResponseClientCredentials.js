@@ -10,19 +10,7 @@ API.Client.OauthAccessTokenResponseClientCredentials = function() {}
  * @type {!string}
  * @export
  */
-API.Client.OauthAccessTokenResponseClientCredentials.prototype.responseType;
-
-/**
- * @type {!string}
- * @export
- */
 API.Client.OauthAccessTokenResponseClientCredentials.prototype.accessToken;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.OauthAccessTokenResponseClientCredentials.prototype.tokenType;
 
 /**
  * @type {!number}
@@ -34,7 +22,19 @@ API.Client.OauthAccessTokenResponseClientCredentials.prototype.expiresIn;
  * @type {!string}
  * @export
  */
+API.Client.OauthAccessTokenResponseClientCredentials.prototype.responseType;
+
+/**
+ * @type {!string}
+ * @export
+ */
 API.Client.OauthAccessTokenResponseClientCredentials.prototype.scope;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.OauthAccessTokenResponseClientCredentials.prototype.tokenType;
 
 /** @enum {string} */
 API.Client.OauthAccessTokenResponseClientCredentials.ResponseTypeEnum = { 

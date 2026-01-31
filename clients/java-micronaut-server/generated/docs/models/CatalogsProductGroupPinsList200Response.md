@@ -8,8 +8,8 @@ The class is defined in **[CatalogsProductGroupPinsList200Response.java](../../s
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;CatalogsProduct&gt;`](CatalogsProduct.md) | Pins | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;CatalogsProduct&gt;`](CatalogsProduct.md) | Pins | 
 
 
 

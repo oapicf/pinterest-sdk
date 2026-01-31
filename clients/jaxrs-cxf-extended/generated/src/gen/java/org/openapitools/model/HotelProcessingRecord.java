@@ -23,12 +23,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class HotelProcessingRecord  {
   
  /**
-  * The catalog hotel id in the merchant namespace
-  */
-  @ApiModelProperty(example = "DS0294-M", value = "The catalog hotel id in the merchant namespace")
-  private String hotelId;
-
- /**
   * Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
   */
   @ApiModelProperty(value = "Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.")
@@ -36,39 +30,21 @@ public class HotelProcessingRecord  {
   private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
 
  /**
+  * The catalog hotel id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog hotel id in the merchant namespace")
+  private String hotelId;
+
+  @ApiModelProperty(value = "")
+  @Valid
+  private ItemProcessingStatus status;
+
+ /**
   * Array with the validation warnings for the item processing record
   */
   @ApiModelProperty(value = "Array with the validation warnings for the item processing record")
   @Valid
   private List<@Valid ItemValidationEvent> warnings = new ArrayList<>();
-
-  @ApiModelProperty(value = "")
-  @Valid
-  private ItemProcessingStatus status;
- /**
-  * The catalog hotel id in the merchant namespace
-  * @return hotelId
-  */
-  @JsonProperty("hotel_id")
-  public String getHotelId() {
-    return hotelId;
-  }
-
-  /**
-   * Sets the <code>hotelId</code> property.
-   */
- public void setHotelId(String hotelId) {
-    this.hotelId = hotelId;
-  }
-
-  /**
-   * Sets the <code>hotelId</code> property.
-   */
-  public HotelProcessingRecord hotelId(String hotelId) {
-    this.hotelId = hotelId;
-    return this;
-  }
-
  /**
   * Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
   * @return errors
@@ -98,6 +74,54 @@ public class HotelProcessingRecord  {
    */
   public HotelProcessingRecord addErrorsItem(ItemValidationEvent errorsItem) {
     this.errors.add(errorsItem);
+    return this;
+  }
+
+ /**
+  * The catalog hotel id in the merchant namespace
+  * @return hotelId
+  */
+  @JsonProperty("hotel_id")
+  public String getHotelId() {
+    return hotelId;
+  }
+
+  /**
+   * Sets the <code>hotelId</code> property.
+   */
+ public void setHotelId(String hotelId) {
+    this.hotelId = hotelId;
+  }
+
+  /**
+   * Sets the <code>hotelId</code> property.
+   */
+  public HotelProcessingRecord hotelId(String hotelId) {
+    this.hotelId = hotelId;
+    return this;
+  }
+
+ /**
+  * Get status
+  * @return status
+  */
+  @JsonProperty("status")
+  public ItemProcessingStatus getStatus() {
+    return status;
+  }
+
+  /**
+   * Sets the <code>status</code> property.
+   */
+ public void setStatus(ItemProcessingStatus status) {
+    this.status = status;
+  }
+
+  /**
+   * Sets the <code>status</code> property.
+   */
+  public HotelProcessingRecord status(ItemProcessingStatus status) {
+    this.status = status;
     return this;
   }
 
@@ -133,30 +157,6 @@ public class HotelProcessingRecord  {
     return this;
   }
 
- /**
-  * Get status
-  * @return status
-  */
-  @JsonProperty("status")
-  public ItemProcessingStatus getStatus() {
-    return status;
-  }
-
-  /**
-   * Sets the <code>status</code> property.
-   */
- public void setStatus(ItemProcessingStatus status) {
-    this.status = status;
-  }
-
-  /**
-   * Sets the <code>status</code> property.
-   */
-  public HotelProcessingRecord status(ItemProcessingStatus status) {
-    this.status = status;
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -167,15 +167,15 @@ public class HotelProcessingRecord  {
       return false;
     }
     HotelProcessingRecord hotelProcessingRecord = (HotelProcessingRecord) o;
-    return Objects.equals(this.hotelId, hotelProcessingRecord.hotelId) &&
-        Objects.equals(this.errors, hotelProcessingRecord.errors) &&
-        Objects.equals(this.warnings, hotelProcessingRecord.warnings) &&
-        Objects.equals(this.status, hotelProcessingRecord.status);
+    return Objects.equals(this.errors, hotelProcessingRecord.errors) &&
+        Objects.equals(this.hotelId, hotelProcessingRecord.hotelId) &&
+        Objects.equals(this.status, hotelProcessingRecord.status) &&
+        Objects.equals(this.warnings, hotelProcessingRecord.warnings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hotelId, errors, warnings, status);
+    return Objects.hash(errors, hotelId, status, warnings);
   }
 
   @Override
@@ -183,10 +183,10 @@ public class HotelProcessingRecord  {
     StringBuilder sb = new StringBuilder();
     sb.append("class HotelProcessingRecord {\n");
     
-    sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
+    sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }

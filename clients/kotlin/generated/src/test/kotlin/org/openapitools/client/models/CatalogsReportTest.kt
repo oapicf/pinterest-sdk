@@ -31,16 +31,16 @@ class CatalogsReportTest : ShouldSpec() {
             //modelInstance.reportStatus shouldBe ("TODO")
         }
 
-        // to test the property `url` - URL to download the report
-        should("test url") {
-            // uncomment below to test the property
-            //modelInstance.url shouldBe ("TODO")
-        }
-
         // to test the property `propertySize` - Size of the report in bytes
         should("test propertySize") {
             // uncomment below to test the property
             //modelInstance.propertySize shouldBe ("TODO")
+        }
+
+        // to test the property `url` - URL to download the report
+        should("test url") {
+            // uncomment below to test the property
+            //modelInstance.url shouldBe ("TODO")
         }
 
     }

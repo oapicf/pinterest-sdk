@@ -5,7 +5,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Invoke-AdAccountsSubscriptionsDelById**](LeadAdsApi.md#Invoke-AdAccountsSubscriptionsDelById) | **DELETE** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Delete lead ads subscription
-[**Invoke-AdAccountsSubscriptionsGetById**](LeadAdsApi.md#Invoke-AdAccountsSubscriptionsGetById) | **GET** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Get lead ads subscription
+[**Invoke-AdAccountsSubscriptionsGetById**](LeadAdsApi.md#Invoke-AdAccountsSubscriptionsGetById) | **GET** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Get lead ads subscription by ID
 [**Invoke-AdAccountsSubscriptionsGetList**](LeadAdsApi.md#Invoke-AdAccountsSubscriptionsGetList) | **GET** /ad_accounts/{ad_account_id}/leads/subscriptions | Get lead ads subscriptions
 [**Invoke-AdAccountsSubscriptionsPost**](LeadAdsApi.md#Invoke-AdAccountsSubscriptionsPost) | **POST** /ad_accounts/{ad_account_id}/leads/subscriptions | Create lead ads subscription
 
@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 Delete lead ads subscription
 
-Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'
 
 ### Example
 ```powershell
@@ -63,13 +63,13 @@ void (empty response body)
 
 <a id="Invoke-AdAccountsSubscriptionsGetById"></a>
 # **Invoke-AdAccountsSubscriptionsGetById**
-> AdAccountGetSubscriptionResponse Invoke-AdAccountsSubscriptionsGetById<br>
+> LeadSubscription Invoke-AdAccountsSubscriptionsGetById<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SubscriptionId] <String><br>
 
-Get lead ads subscription
+Get lead ads subscription by ID
 
-Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Get an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'
 
 ### Example
 ```powershell
@@ -78,10 +78,13 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
+# Configure OAuth2 access token for authorization: client_credentials
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $SubscriptionId = "MySubscriptionId" # String | Unique identifier of a subscription.
 
-# Get lead ads subscription
+# Get lead ads subscription by ID
 try {
     $Result = Invoke-AdAccountsSubscriptionsGetById -AdAccountId $AdAccountId -SubscriptionId $SubscriptionId
 } catch {
@@ -99,11 +102,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AdAccountGetSubscriptionResponse**](AdAccountGetSubscriptionResponse.md) (PSCustomObject)
+[**LeadSubscription**](LeadSubscription.md) (PSCustomObject)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -116,12 +119,12 @@ Name | Type | Description  | Notes
 # **Invoke-AdAccountsSubscriptionsGetList**
 > AdAccountsSubscriptionsGetList200Response Invoke-AdAccountsSubscriptionsGetList<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
 
 Get lead ads subscriptions
 
-Get the advertiser's list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Get the advertiser's list of lead ads subscriptions. Only requests for the OWNER or ADMIN of the ad_account will be allowed.
 
 ### Example
 ```powershell
@@ -131,12 +134,12 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 # Get lead ads subscriptions
 try {
-    $Result = Invoke-AdAccountsSubscriptionsGetList -AdAccountId $AdAccountId -PageSize $PageSize -Bookmark $Bookmark
+    $Result = Invoke-AdAccountsSubscriptionsGetList -AdAccountId $AdAccountId -Bookmark $Bookmark -PageSize $PageSize
 } catch {
     Write-Host ("Exception occurred when calling Invoke-AdAccountsSubscriptionsGetList: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -148,8 +151,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
+ **PageSize** | **Int32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -168,13 +171,13 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-AdAccountsSubscriptionsPost"></a>
 # **Invoke-AdAccountsSubscriptionsPost**
-> AdAccountCreateSubscriptionResponse Invoke-AdAccountsSubscriptionsPost<br>
+> LeadSubscription Invoke-AdAccountsSubscriptionsPost<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountCreateSubscriptionRequest] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-LeadSubscriptionPostParamsCreate] <PSCustomObject><br>
 
 Create lead ads subscription
 
-Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.   - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.   - For data security, egress lead data is encrypted with AES-256-GCM.
 
 ### Example
 ```powershell
@@ -184,12 +187,12 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$AdAccountCreateSubscriptionRequestPartnerMetadata = Initialize-AdAccountCreateSubscriptionRequestPartnerMetadata -SubscriberKey "MySubscriberKey"
-$AdAccountCreateSubscriptionRequest = Initialize-AdAccountCreateSubscriptionRequest -WebhookUrl "https://webhook.example.com/xyz" -LeadFormId "383791336903426390" -PartnerAccessToken "MyPartnerAccessToken" -PartnerRefreshToken "MyPartnerRefreshToken" -PartnerMetadata $AdAccountCreateSubscriptionRequestPartnerMetadata # AdAccountCreateSubscriptionRequest | Subscription to create.
+$LeadSubscriptionPostParamsCreateAllOfPartnerMetadata = Initialize-LeadSubscriptionPostParamsCreateAllOfPartnerMetadata -SubscriberKey "MySubscriberKey"
+$LeadSubscriptionPostParamsCreate = Initialize-LeadSubscriptionPostParamsCreate -LeadFormId "MyLeadFormId" -WebhookUrl "MyWebhookUrl" -PartnerAccessToken "MyPartnerAccessToken" -PartnerMetadata $LeadSubscriptionPostParamsCreateAllOfPartnerMetadata -PartnerRefreshToken "MyPartnerRefreshToken" # LeadSubscriptionPostParamsCreate | 
 
 # Create lead ads subscription
 try {
-    $Result = Invoke-AdAccountsSubscriptionsPost -AdAccountId $AdAccountId -AdAccountCreateSubscriptionRequest $AdAccountCreateSubscriptionRequest
+    $Result = Invoke-AdAccountsSubscriptionsPost -AdAccountId $AdAccountId -LeadSubscriptionPostParamsCreate $LeadSubscriptionPostParamsCreate
 } catch {
     Write-Host ("Exception occurred when calling Invoke-AdAccountsSubscriptionsPost: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -201,11 +204,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **AdAccountCreateSubscriptionRequest** | [**AdAccountCreateSubscriptionRequest**](AdAccountCreateSubscriptionRequest.md)| Subscription to create. | 
+ **LeadSubscriptionPostParamsCreate** | [**LeadSubscriptionPostParamsCreate**](LeadSubscriptionPostParamsCreate.md)|  | 
 
 ### Return type
 
-[**AdAccountCreateSubscriptionResponse**](AdAccountCreateSubscriptionResponse.md) (PSCustomObject)
+[**LeadSubscription**](LeadSubscription.md) (PSCustomObject)
 
 ### Authorization
 

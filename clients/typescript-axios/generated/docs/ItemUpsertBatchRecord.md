@@ -6,8 +6,8 @@ Object describing an item batch record to upsert items
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**item_id** | **string** | The catalog item id in the merchant namespace | [optional] [default to undefined]
 **attributes** | [**ItemAttributesRequest**](ItemAttributesRequest.md) |  | [optional] [default to undefined]
+**item_id** | **string** | The catalog item id in the merchant namespace | [optional] [default to undefined]
 
 ## Example
 
@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 import { ItemUpsertBatchRecord } from './api';
 
 const instance: ItemUpsertBatchRecord = {
-    item_id,
     attributes,
+    item_id,
 };
 ```
 

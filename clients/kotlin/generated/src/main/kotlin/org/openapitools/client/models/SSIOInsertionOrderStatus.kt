@@ -22,13 +22,17 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
+ * @param creationTime Salesforce insertion order creation time
  * @param pinOrderId Salesforce order id
  * @param status Salesforce insertion order status
- * @param creationTime Salesforce insertion order creation time
  */
 
 
 data class SSIOInsertionOrderStatus (
+
+    /* Salesforce insertion order creation time */
+    @Json(name = "creation_time")
+    val creationTime: kotlin.String? = null,
 
     /* Salesforce order id */
     @Json(name = "pin_order_id")
@@ -36,11 +40,7 @@ data class SSIOInsertionOrderStatus (
 
     /* Salesforce insertion order status */
     @Json(name = "status")
-    val status: kotlin.String? = null,
-
-    /* Salesforce insertion order creation time */
-    @Json(name = "creation_time")
-    val creationTime: kotlin.String? = null
+    val status: kotlin.String? = null
 
 ) {
 

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,25 +22,25 @@ var _ MappedNullable = &IntegrationLog{}
 
 // IntegrationLog Schema for log sent from an integration application.
 type IntegrationLog struct {
-	// Timestamp in milliseconds of when the log was executed at the client.
-	ClientTimestamp int32 `json:"client_timestamp"`
-	// Log event type
-	EventType string `json:"event_type"`
-	// Log level type
-	LogLevel string `json:"log_level"`
-	ExternalBusinessId NullableString `json:"external_business_id,omitempty"`
 	AdvertiserId NullableString `json:"advertiser_id,omitempty"`
-	MerchantId NullableString `json:"merchant_id,omitempty"`
-	TagId NullableString `json:"tag_id,omitempty"`
-	FeedProfileId NullableString `json:"feed_profile_id,omitempty"`
-	// Explanation of the event that occured.
-	Message *string `json:"message,omitempty"`
 	// Version number of the integration application.
 	AppVersionNumber *string `json:"app_version_number,omitempty"`
+	// Timestamp in milliseconds of when the log was executed at the client.
+	ClientTimestamp int32 `json:"client_timestamp"`
+	Error *IntegrationLogClientError `json:"error,omitempty"`
+	// Log event type
+	EventType string `json:"event_type"`
+	ExternalBusinessId NullableString `json:"external_business_id,omitempty"`
+	FeedProfileId NullableString `json:"feed_profile_id,omitempty"`
+	// Log level type
+	LogLevel string `json:"log_level"`
+	MerchantId NullableString `json:"merchant_id,omitempty"`
+	// Explanation of the event that occured.
+	Message *string `json:"message,omitempty"`
 	// Version number of the platform the integration application is running on.
 	PlatformVersionNumber *string `json:"platform_version_number,omitempty"`
-	Error *IntegrationLogClientError `json:"error,omitempty"`
 	Request *IntegrationLogClientRequest `json:"request,omitempty"`
+	TagId NullableString `json:"tag_id,omitempty"`
 }
 
 type _IntegrationLog IntegrationLog
@@ -63,120 +63,6 @@ func NewIntegrationLog(clientTimestamp int32, eventType string, logLevel string)
 func NewIntegrationLogWithDefaults() *IntegrationLog {
 	this := IntegrationLog{}
 	return &this
-}
-
-// GetClientTimestamp returns the ClientTimestamp field value
-func (o *IntegrationLog) GetClientTimestamp() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.ClientTimestamp
-}
-
-// GetClientTimestampOk returns a tuple with the ClientTimestamp field value
-// and a boolean to check if the value has been set.
-func (o *IntegrationLog) GetClientTimestampOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ClientTimestamp, true
-}
-
-// SetClientTimestamp sets field value
-func (o *IntegrationLog) SetClientTimestamp(v int32) {
-	o.ClientTimestamp = v
-}
-
-// GetEventType returns the EventType field value
-func (o *IntegrationLog) GetEventType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.EventType
-}
-
-// GetEventTypeOk returns a tuple with the EventType field value
-// and a boolean to check if the value has been set.
-func (o *IntegrationLog) GetEventTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.EventType, true
-}
-
-// SetEventType sets field value
-func (o *IntegrationLog) SetEventType(v string) {
-	o.EventType = v
-}
-
-// GetLogLevel returns the LogLevel field value
-func (o *IntegrationLog) GetLogLevel() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.LogLevel
-}
-
-// GetLogLevelOk returns a tuple with the LogLevel field value
-// and a boolean to check if the value has been set.
-func (o *IntegrationLog) GetLogLevelOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.LogLevel, true
-}
-
-// SetLogLevel sets field value
-func (o *IntegrationLog) SetLogLevel(v string) {
-	o.LogLevel = v
-}
-
-// GetExternalBusinessId returns the ExternalBusinessId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *IntegrationLog) GetExternalBusinessId() string {
-	if o == nil || IsNil(o.ExternalBusinessId.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.ExternalBusinessId.Get()
-}
-
-// GetExternalBusinessIdOk returns a tuple with the ExternalBusinessId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *IntegrationLog) GetExternalBusinessIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.ExternalBusinessId.Get(), o.ExternalBusinessId.IsSet()
-}
-
-// HasExternalBusinessId returns a boolean if a field has been set.
-func (o *IntegrationLog) HasExternalBusinessId() bool {
-	if o != nil && o.ExternalBusinessId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetExternalBusinessId gets a reference to the given NullableString and assigns it to the ExternalBusinessId field.
-func (o *IntegrationLog) SetExternalBusinessId(v string) {
-	o.ExternalBusinessId.Set(&v)
-}
-// SetExternalBusinessIdNil sets the value for ExternalBusinessId to be an explicit nil
-func (o *IntegrationLog) SetExternalBusinessIdNil() {
-	o.ExternalBusinessId.Set(nil)
-}
-
-// UnsetExternalBusinessId ensures that no value is present for ExternalBusinessId, not even an explicit nil
-func (o *IntegrationLog) UnsetExternalBusinessId() {
-	o.ExternalBusinessId.Unset()
 }
 
 // GetAdvertiserId returns the AdvertiserId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -221,88 +107,158 @@ func (o *IntegrationLog) UnsetAdvertiserId() {
 	o.AdvertiserId.Unset()
 }
 
-// GetMerchantId returns the MerchantId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *IntegrationLog) GetMerchantId() string {
-	if o == nil || IsNil(o.MerchantId.Get()) {
+// GetAppVersionNumber returns the AppVersionNumber field value if set, zero value otherwise.
+func (o *IntegrationLog) GetAppVersionNumber() string {
+	if o == nil || IsNil(o.AppVersionNumber) {
 		var ret string
 		return ret
 	}
-	return *o.MerchantId.Get()
+	return *o.AppVersionNumber
 }
 
-// GetMerchantIdOk returns a tuple with the MerchantId field value if set, nil otherwise
+// GetAppVersionNumberOk returns a tuple with the AppVersionNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *IntegrationLog) GetMerchantIdOk() (*string, bool) {
-	if o == nil {
+func (o *IntegrationLog) GetAppVersionNumberOk() (*string, bool) {
+	if o == nil || IsNil(o.AppVersionNumber) {
 		return nil, false
 	}
-	return o.MerchantId.Get(), o.MerchantId.IsSet()
+	return o.AppVersionNumber, true
 }
 
-// HasMerchantId returns a boolean if a field has been set.
-func (o *IntegrationLog) HasMerchantId() bool {
-	if o != nil && o.MerchantId.IsSet() {
+// HasAppVersionNumber returns a boolean if a field has been set.
+func (o *IntegrationLog) HasAppVersionNumber() bool {
+	if o != nil && !IsNil(o.AppVersionNumber) {
 		return true
 	}
 
 	return false
 }
 
-// SetMerchantId gets a reference to the given NullableString and assigns it to the MerchantId field.
-func (o *IntegrationLog) SetMerchantId(v string) {
-	o.MerchantId.Set(&v)
-}
-// SetMerchantIdNil sets the value for MerchantId to be an explicit nil
-func (o *IntegrationLog) SetMerchantIdNil() {
-	o.MerchantId.Set(nil)
+// SetAppVersionNumber gets a reference to the given string and assigns it to the AppVersionNumber field.
+func (o *IntegrationLog) SetAppVersionNumber(v string) {
+	o.AppVersionNumber = &v
 }
 
-// UnsetMerchantId ensures that no value is present for MerchantId, not even an explicit nil
-func (o *IntegrationLog) UnsetMerchantId() {
-	o.MerchantId.Unset()
-}
-
-// GetTagId returns the TagId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *IntegrationLog) GetTagId() string {
-	if o == nil || IsNil(o.TagId.Get()) {
-		var ret string
+// GetClientTimestamp returns the ClientTimestamp field value
+func (o *IntegrationLog) GetClientTimestamp() int32 {
+	if o == nil {
+		var ret int32
 		return ret
 	}
-	return *o.TagId.Get()
+
+	return o.ClientTimestamp
 }
 
-// GetTagIdOk returns a tuple with the TagId field value if set, nil otherwise
+// GetClientTimestampOk returns a tuple with the ClientTimestamp field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *IntegrationLog) GetTagIdOk() (*string, bool) {
+func (o *IntegrationLog) GetClientTimestampOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.TagId.Get(), o.TagId.IsSet()
+	return &o.ClientTimestamp, true
 }
 
-// HasTagId returns a boolean if a field has been set.
-func (o *IntegrationLog) HasTagId() bool {
-	if o != nil && o.TagId.IsSet() {
+// SetClientTimestamp sets field value
+func (o *IntegrationLog) SetClientTimestamp(v int32) {
+	o.ClientTimestamp = v
+}
+
+// GetError returns the Error field value if set, zero value otherwise.
+func (o *IntegrationLog) GetError() IntegrationLogClientError {
+	if o == nil || IsNil(o.Error) {
+		var ret IntegrationLogClientError
+		return ret
+	}
+	return *o.Error
+}
+
+// GetErrorOk returns a tuple with the Error field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IntegrationLog) GetErrorOk() (*IntegrationLogClientError, bool) {
+	if o == nil || IsNil(o.Error) {
+		return nil, false
+	}
+	return o.Error, true
+}
+
+// HasError returns a boolean if a field has been set.
+func (o *IntegrationLog) HasError() bool {
+	if o != nil && !IsNil(o.Error) {
 		return true
 	}
 
 	return false
 }
 
-// SetTagId gets a reference to the given NullableString and assigns it to the TagId field.
-func (o *IntegrationLog) SetTagId(v string) {
-	o.TagId.Set(&v)
-}
-// SetTagIdNil sets the value for TagId to be an explicit nil
-func (o *IntegrationLog) SetTagIdNil() {
-	o.TagId.Set(nil)
+// SetError gets a reference to the given IntegrationLogClientError and assigns it to the Error field.
+func (o *IntegrationLog) SetError(v IntegrationLogClientError) {
+	o.Error = &v
 }
 
-// UnsetTagId ensures that no value is present for TagId, not even an explicit nil
-func (o *IntegrationLog) UnsetTagId() {
-	o.TagId.Unset()
+// GetEventType returns the EventType field value
+func (o *IntegrationLog) GetEventType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.EventType
+}
+
+// GetEventTypeOk returns a tuple with the EventType field value
+// and a boolean to check if the value has been set.
+func (o *IntegrationLog) GetEventTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.EventType, true
+}
+
+// SetEventType sets field value
+func (o *IntegrationLog) SetEventType(v string) {
+	o.EventType = v
+}
+
+// GetExternalBusinessId returns the ExternalBusinessId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *IntegrationLog) GetExternalBusinessId() string {
+	if o == nil || IsNil(o.ExternalBusinessId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ExternalBusinessId.Get()
+}
+
+// GetExternalBusinessIdOk returns a tuple with the ExternalBusinessId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *IntegrationLog) GetExternalBusinessIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ExternalBusinessId.Get(), o.ExternalBusinessId.IsSet()
+}
+
+// HasExternalBusinessId returns a boolean if a field has been set.
+func (o *IntegrationLog) HasExternalBusinessId() bool {
+	if o != nil && o.ExternalBusinessId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalBusinessId gets a reference to the given NullableString and assigns it to the ExternalBusinessId field.
+func (o *IntegrationLog) SetExternalBusinessId(v string) {
+	o.ExternalBusinessId.Set(&v)
+}
+// SetExternalBusinessIdNil sets the value for ExternalBusinessId to be an explicit nil
+func (o *IntegrationLog) SetExternalBusinessIdNil() {
+	o.ExternalBusinessId.Set(nil)
+}
+
+// UnsetExternalBusinessId ensures that no value is present for ExternalBusinessId, not even an explicit nil
+func (o *IntegrationLog) UnsetExternalBusinessId() {
+	o.ExternalBusinessId.Unset()
 }
 
 // GetFeedProfileId returns the FeedProfileId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -347,6 +303,72 @@ func (o *IntegrationLog) UnsetFeedProfileId() {
 	o.FeedProfileId.Unset()
 }
 
+// GetLogLevel returns the LogLevel field value
+func (o *IntegrationLog) GetLogLevel() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.LogLevel
+}
+
+// GetLogLevelOk returns a tuple with the LogLevel field value
+// and a boolean to check if the value has been set.
+func (o *IntegrationLog) GetLogLevelOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LogLevel, true
+}
+
+// SetLogLevel sets field value
+func (o *IntegrationLog) SetLogLevel(v string) {
+	o.LogLevel = v
+}
+
+// GetMerchantId returns the MerchantId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *IntegrationLog) GetMerchantId() string {
+	if o == nil || IsNil(o.MerchantId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.MerchantId.Get()
+}
+
+// GetMerchantIdOk returns a tuple with the MerchantId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *IntegrationLog) GetMerchantIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MerchantId.Get(), o.MerchantId.IsSet()
+}
+
+// HasMerchantId returns a boolean if a field has been set.
+func (o *IntegrationLog) HasMerchantId() bool {
+	if o != nil && o.MerchantId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMerchantId gets a reference to the given NullableString and assigns it to the MerchantId field.
+func (o *IntegrationLog) SetMerchantId(v string) {
+	o.MerchantId.Set(&v)
+}
+// SetMerchantIdNil sets the value for MerchantId to be an explicit nil
+func (o *IntegrationLog) SetMerchantIdNil() {
+	o.MerchantId.Set(nil)
+}
+
+// UnsetMerchantId ensures that no value is present for MerchantId, not even an explicit nil
+func (o *IntegrationLog) UnsetMerchantId() {
+	o.MerchantId.Unset()
+}
+
 // GetMessage returns the Message field value if set, zero value otherwise.
 func (o *IntegrationLog) GetMessage() string {
 	if o == nil || IsNil(o.Message) {
@@ -377,38 +399,6 @@ func (o *IntegrationLog) HasMessage() bool {
 // SetMessage gets a reference to the given string and assigns it to the Message field.
 func (o *IntegrationLog) SetMessage(v string) {
 	o.Message = &v
-}
-
-// GetAppVersionNumber returns the AppVersionNumber field value if set, zero value otherwise.
-func (o *IntegrationLog) GetAppVersionNumber() string {
-	if o == nil || IsNil(o.AppVersionNumber) {
-		var ret string
-		return ret
-	}
-	return *o.AppVersionNumber
-}
-
-// GetAppVersionNumberOk returns a tuple with the AppVersionNumber field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *IntegrationLog) GetAppVersionNumberOk() (*string, bool) {
-	if o == nil || IsNil(o.AppVersionNumber) {
-		return nil, false
-	}
-	return o.AppVersionNumber, true
-}
-
-// HasAppVersionNumber returns a boolean if a field has been set.
-func (o *IntegrationLog) HasAppVersionNumber() bool {
-	if o != nil && !IsNil(o.AppVersionNumber) {
-		return true
-	}
-
-	return false
-}
-
-// SetAppVersionNumber gets a reference to the given string and assigns it to the AppVersionNumber field.
-func (o *IntegrationLog) SetAppVersionNumber(v string) {
-	o.AppVersionNumber = &v
 }
 
 // GetPlatformVersionNumber returns the PlatformVersionNumber field value if set, zero value otherwise.
@@ -443,38 +433,6 @@ func (o *IntegrationLog) SetPlatformVersionNumber(v string) {
 	o.PlatformVersionNumber = &v
 }
 
-// GetError returns the Error field value if set, zero value otherwise.
-func (o *IntegrationLog) GetError() IntegrationLogClientError {
-	if o == nil || IsNil(o.Error) {
-		var ret IntegrationLogClientError
-		return ret
-	}
-	return *o.Error
-}
-
-// GetErrorOk returns a tuple with the Error field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *IntegrationLog) GetErrorOk() (*IntegrationLogClientError, bool) {
-	if o == nil || IsNil(o.Error) {
-		return nil, false
-	}
-	return o.Error, true
-}
-
-// HasError returns a boolean if a field has been set.
-func (o *IntegrationLog) HasError() bool {
-	if o != nil && !IsNil(o.Error) {
-		return true
-	}
-
-	return false
-}
-
-// SetError gets a reference to the given IntegrationLogClientError and assigns it to the Error field.
-func (o *IntegrationLog) SetError(v IntegrationLogClientError) {
-	o.Error = &v
-}
-
 // GetRequest returns the Request field value if set, zero value otherwise.
 func (o *IntegrationLog) GetRequest() IntegrationLogClientRequest {
 	if o == nil || IsNil(o.Request) {
@@ -507,6 +465,48 @@ func (o *IntegrationLog) SetRequest(v IntegrationLogClientRequest) {
 	o.Request = &v
 }
 
+// GetTagId returns the TagId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *IntegrationLog) GetTagId() string {
+	if o == nil || IsNil(o.TagId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.TagId.Get()
+}
+
+// GetTagIdOk returns a tuple with the TagId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *IntegrationLog) GetTagIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.TagId.Get(), o.TagId.IsSet()
+}
+
+// HasTagId returns a boolean if a field has been set.
+func (o *IntegrationLog) HasTagId() bool {
+	if o != nil && o.TagId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTagId gets a reference to the given NullableString and assigns it to the TagId field.
+func (o *IntegrationLog) SetTagId(v string) {
+	o.TagId.Set(&v)
+}
+// SetTagIdNil sets the value for TagId to be an explicit nil
+func (o *IntegrationLog) SetTagIdNil() {
+	o.TagId.Set(nil)
+}
+
+// UnsetTagId ensures that no value is present for TagId, not even an explicit nil
+func (o *IntegrationLog) UnsetTagId() {
+	o.TagId.Unset()
+}
+
 func (o IntegrationLog) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -517,38 +517,38 @@ func (o IntegrationLog) MarshalJSON() ([]byte, error) {
 
 func (o IntegrationLog) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["client_timestamp"] = o.ClientTimestamp
-	toSerialize["event_type"] = o.EventType
-	toSerialize["log_level"] = o.LogLevel
-	if o.ExternalBusinessId.IsSet() {
-		toSerialize["external_business_id"] = o.ExternalBusinessId.Get()
-	}
 	if o.AdvertiserId.IsSet() {
 		toSerialize["advertiser_id"] = o.AdvertiserId.Get()
-	}
-	if o.MerchantId.IsSet() {
-		toSerialize["merchant_id"] = o.MerchantId.Get()
-	}
-	if o.TagId.IsSet() {
-		toSerialize["tag_id"] = o.TagId.Get()
-	}
-	if o.FeedProfileId.IsSet() {
-		toSerialize["feed_profile_id"] = o.FeedProfileId.Get()
-	}
-	if !IsNil(o.Message) {
-		toSerialize["message"] = o.Message
 	}
 	if !IsNil(o.AppVersionNumber) {
 		toSerialize["app_version_number"] = o.AppVersionNumber
 	}
-	if !IsNil(o.PlatformVersionNumber) {
-		toSerialize["platform_version_number"] = o.PlatformVersionNumber
-	}
+	toSerialize["client_timestamp"] = o.ClientTimestamp
 	if !IsNil(o.Error) {
 		toSerialize["error"] = o.Error
 	}
+	toSerialize["event_type"] = o.EventType
+	if o.ExternalBusinessId.IsSet() {
+		toSerialize["external_business_id"] = o.ExternalBusinessId.Get()
+	}
+	if o.FeedProfileId.IsSet() {
+		toSerialize["feed_profile_id"] = o.FeedProfileId.Get()
+	}
+	toSerialize["log_level"] = o.LogLevel
+	if o.MerchantId.IsSet() {
+		toSerialize["merchant_id"] = o.MerchantId.Get()
+	}
+	if !IsNil(o.Message) {
+		toSerialize["message"] = o.Message
+	}
+	if !IsNil(o.PlatformVersionNumber) {
+		toSerialize["platform_version_number"] = o.PlatformVersionNumber
+	}
 	if !IsNil(o.Request) {
 		toSerialize["request"] = o.Request
+	}
+	if o.TagId.IsSet() {
+		toSerialize["tag_id"] = o.TagId.Get()
 	}
 	return toSerialize, nil
 }

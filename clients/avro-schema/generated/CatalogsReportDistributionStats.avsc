@@ -5,18 +5,6 @@
   "name": "CatalogsReportDistributionStats",
   "fields": [
     {
-      "name": "report_type",
-      "type": ["null", {
-        "type": "enum",
-        "name": "CatalogsReportDistributionStats_reportUnderscoretype",
-        "symbols": [
-          "DISTRIBUTION_ISSUES"
-        ]
-      }],
-      "doc": "",
-      "default": null
-    },
-    {
       "name": "catalog_id",
       "type": ["null", "string"],
       "doc": "ID of the catalog entity.",
@@ -35,6 +23,18 @@
       "default": null
     },
     {
+      "name": "ineligible_for_ads",
+      "type": ["null", "boolean"],
+      "doc": "Indicates if issue makes items ineligible for ads distribution",
+      "default": null
+    },
+    {
+      "name": "ineligible_for_organic",
+      "type": ["null", "boolean"],
+      "doc": "Indicates if issue makes items ineligible for organic distribution",
+      "default": null
+    },
+    {
       "name": "message",
       "type": ["null", "string"],
       "doc": "Title message describing the diagnostic issue",
@@ -47,15 +47,15 @@
       "default": null
     },
     {
-      "name": "ineligible_for_ads",
-      "type": ["null", "boolean"],
-      "doc": "Indicates if issue makes items ineligible for ads distribution",
-      "default": null
-    },
-    {
-      "name": "ineligible_for_organic",
-      "type": ["null", "boolean"],
-      "doc": "Indicates if issue makes items ineligible for organic distribution",
+      "name": "report_type",
+      "type": ["null", {
+        "type": "enum",
+        "name": "CatalogsReportDistributionStats_reportUnderscoretype",
+        "symbols": [
+          "DISTRIBUTION_ISSUES"
+        ]
+      }],
+      "doc": "",
       "default": null
     }
   ]

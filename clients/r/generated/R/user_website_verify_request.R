@@ -7,30 +7,24 @@
 #' @title UserWebsiteVerifyRequest
 #' @description UserWebsiteVerifyRequest Class
 #' @format An \code{R6Class} generator object
-#' @field website  character [optional]
 #' @field verification_method  character [optional]
+#' @field website  character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 UserWebsiteVerifyRequest <- R6::R6Class(
   "UserWebsiteVerifyRequest",
   public = list(
-    `website` = NULL,
     `verification_method` = NULL,
+    `website` = NULL,
 
     #' @description
     #' Initialize a new UserWebsiteVerifyRequest class.
     #'
-    #' @param website website
     #' @param verification_method verification_method. Default to "METATAG".
+    #' @param website website
     #' @param ... Other optional arguments.
-    initialize = function(`website` = NULL, `verification_method` = "METATAG", ...) {
-      if (!is.null(`website`)) {
-        if (!(is.character(`website`) && length(`website`) == 1)) {
-          stop(paste("Error! Invalid data for `website`. Must be a string:", `website`))
-        }
-        self$`website` <- `website`
-      }
+    initialize = function(`verification_method` = "METATAG", `website` = NULL, ...) {
       if (!is.null(`verification_method`)) {
         if (!(`verification_method` %in% c("FILENAME", "METATAG", "DNSTXT"))) {
           stop(paste("Error! \"", `verification_method`, "\" cannot be assigned to `verification_method`. Must be \"FILENAME\", \"METATAG\", \"DNSTXT\".", sep = ""))
@@ -39,6 +33,12 @@ UserWebsiteVerifyRequest <- R6::R6Class(
           stop(paste("Error! Invalid data for `verification_method`. Must be a string:", `verification_method`))
         }
         self$`verification_method` <- `verification_method`
+      }
+      if (!is.null(`website`)) {
+        if (!(is.character(`website`) && length(`website`) == 1)) {
+          stop(paste("Error! Invalid data for `website`. Must be a string:", `website`))
+        }
+        self$`website` <- `website`
       }
     },
 
@@ -73,13 +73,13 @@ UserWebsiteVerifyRequest <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       UserWebsiteVerifyRequestObject <- list()
-      if (!is.null(self$`website`)) {
-        UserWebsiteVerifyRequestObject[["website"]] <-
-          self$`website`
-      }
       if (!is.null(self$`verification_method`)) {
         UserWebsiteVerifyRequestObject[["verification_method"]] <-
           self$`verification_method`
+      }
+      if (!is.null(self$`website`)) {
+        UserWebsiteVerifyRequestObject[["website"]] <-
+          self$`website`
       }
       return(UserWebsiteVerifyRequestObject)
     },
@@ -91,14 +91,14 @@ UserWebsiteVerifyRequest <- R6::R6Class(
     #' @return the instance of UserWebsiteVerifyRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`website`)) {
-        self$`website` <- this_object$`website`
-      }
       if (!is.null(this_object$`verification_method`)) {
         if (!is.null(this_object$`verification_method`) && !(this_object$`verification_method` %in% c("FILENAME", "METATAG", "DNSTXT"))) {
           stop(paste("Error! \"", this_object$`verification_method`, "\" cannot be assigned to `verification_method`. Must be \"FILENAME\", \"METATAG\", \"DNSTXT\".", sep = ""))
         }
         self$`verification_method` <- this_object$`verification_method`
+      }
+      if (!is.null(this_object$`website`)) {
+        self$`website` <- this_object$`website`
       }
       self
     },
@@ -121,11 +121,11 @@ UserWebsiteVerifyRequest <- R6::R6Class(
     #' @return the instance of UserWebsiteVerifyRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`website` <- this_object$`website`
       if (!is.null(this_object$`verification_method`) && !(this_object$`verification_method` %in% c("FILENAME", "METATAG", "DNSTXT"))) {
         stop(paste("Error! \"", this_object$`verification_method`, "\" cannot be assigned to `verification_method`. Must be \"FILENAME\", \"METATAG\", \"DNSTXT\".", sep = ""))
       }
       self$`verification_method` <- this_object$`verification_method`
+      self$`website` <- this_object$`website`
       self
     },
 

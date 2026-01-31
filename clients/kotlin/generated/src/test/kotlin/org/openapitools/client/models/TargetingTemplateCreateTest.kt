@@ -47,16 +47,16 @@ class TargetingTemplateCreateTest : ShouldSpec() {
             //modelInstance.autoTargetingEnabled shouldBe ("TODO")
         }
 
-        // to test the property `placementGroup`
-        should("test placementGroup") {
-            // uncomment below to test the property
-            //modelInstance.placementGroup shouldBe ("TODO")
-        }
-
         // to test the property `keywords`
         should("test keywords") {
             // uncomment below to test the property
             //modelInstance.keywords shouldBe ("TODO")
+        }
+
+        // to test the property `placementGroup`
+        should("test placementGroup") {
+            // uncomment below to test the property
+            //modelInstance.placementGroup shouldBe ("TODO")
         }
 
         // to test the property `trackingUrls`

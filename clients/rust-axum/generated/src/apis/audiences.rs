@@ -23,19 +23,6 @@ pub enum AudiencesSlashCreateResponse {
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
-pub enum AudiencesSlashCreateCustomResponse {
-    /// Success
-    Status200_Success
-    (models::Audience)
-    ,
-    /// Unexpected error
-    Status0_UnexpectedError
-    (models::Error)
-}
-
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
-#[must_use]
-#[allow(clippy::large_enum_variant)]
 pub enum AudiencesSlashGetResponse {
     /// Success
     Status200_Success
@@ -100,19 +87,6 @@ pub trait Audiences<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Err
             body: &models::AudienceCreateRequest,
     ) -> Result<AudiencesSlashCreateResponse, E>;
 
-    /// Create custom audience.
-    ///
-    /// AudiencesSlashCreateCustom - POST /v5/ad_accounts/{ad_account_id}/audiences/custom
-    async fn audiences_slash_create_custom(
-    &self,
-    
-    method: &Method,
-    host: &Host,
-    cookies: &CookieJar,
-      path_params: &models::AudiencesSlashCreateCustomPathParams,
-            body: &models::AudienceCreateCustomRequest,
-    ) -> Result<AudiencesSlashCreateCustomResponse, E>;
-
     /// Get audience.
     ///
     /// AudiencesSlashGet - GET /v5/ad_accounts/{ad_account_id}/audiences/{audience_id}
@@ -148,6 +122,6 @@ pub trait Audiences<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Err
     host: &Host,
     cookies: &CookieJar,
       path_params: &models::AudiencesSlashUpdatePathParams,
-            body: &Option<models::AudienceUpdateRequest>,
+            body: &models::AudienceUpdateRequest,
     ) -> Result<AudiencesSlashUpdateResponse, E>;
 }

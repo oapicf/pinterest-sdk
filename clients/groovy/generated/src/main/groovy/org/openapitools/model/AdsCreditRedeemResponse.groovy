@@ -7,10 +7,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 @Canonical
 class AdsCreditRedeemResponse {
-    /* Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true). */
-    Boolean success
     /* Error code type if error occurs */
     Integer errorCode
     /* Reason for failure */
     String errorMessage
+    /* Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true). */
+    Boolean success
 }

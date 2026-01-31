@@ -52,7 +52,7 @@ set(SRCS
     model/action_type.c
     model/ad_account.c
     model/ad_account_analytics_response_inner.c
-    model/ad_account_create_request.c
+    model/ad_account_create.c
     model/ad_account_create_subscription_request.c
     model/ad_account_create_subscription_request_partner_metadata.c
     model/ad_account_create_subscription_response.c
@@ -75,21 +75,26 @@ set(SRCS
     model/ad_group_audience_sizing_response.c
     model/ad_group_common.c
     model/ad_group_create_request.c
+    model/ad_group_id_filter.c
     model/ad_group_response.c
     model/ad_group_summary_status.c
     model/ad_group_update_request.c
     model/ad_groups_analytics_response_inner.c
     model/ad_groups_list_200_response.c
+    model/ad_pin_analytics.c
     model/ad_pin_id.c
     model/ad_preview_create_from_image.c
     model/ad_preview_create_from_pin.c
     model/ad_preview_request.c
+    model/ad_preview_shopping.c
     model/ad_preview_url_response.c
     model/ad_response.c
     model/ad_update_request.c
+    model/ads_analytics_ad_group_targeting_type.c
     model/ads_analytics_ad_targeting_type.c
     model/ads_analytics_campaign_targeting_type.c
     model/ads_analytics_create_async_request.c
+    model/ads_analytics_create_async_request_all_of_custom_conversion_event_metrics.c
     model/ads_analytics_create_async_response.c
     model/ads_analytics_filter_column.c
     model/ads_analytics_filter_operator.c
@@ -114,10 +119,15 @@ set(SRCS
     model/advanced_auction_key.c
     model/advanced_auction_operation.c
     model/advanced_auction_operation_error.c
-    model/advanced_auction_processed_item.c
     model/advanced_auction_processed_items.c
+    model/advertiser_defined_event.c
+    model/advertiser_defined_events_response.c
+    model/age_trends_bucket.c
+    model/all_of.c
+    model/amazon_connect_request.c
     model/analytics_daily_metrics.c
     model/analytics_metrics_response.c
+    model/any_of.c
     model/app_type_multipliers.c
     model/asset_group_binding.c
     model/asset_group_type.c
@@ -126,11 +136,11 @@ set(SRCS
     model/audience_account_type.c
     model/audience_category.c
     model/audience_common.c
-    model/audience_create_custom_request.c
     model/audience_create_request.c
-    model/audience_data_party.c
     model/audience_definition.c
     model/audience_definition_response.c
+    model/audience_definition_scope.c
+    model/audience_definition_type.c
     model/audience_demographic_value.c
     model/audience_demographics.c
     model/audience_insight_category_array_response.c
@@ -139,7 +149,6 @@ set(SRCS
     model/audience_insights_response.c
     model/audience_rule.c
     model/audience_share_type.c
-    model/audience_sharing_type.c
     model/audience_subcategory.c
     model/audience_type.c
     model/audience_update_operation_type.c
@@ -156,18 +165,30 @@ set(SRCS
     model/bid_floor.c
     model/bid_floor_request.c
     model/bid_floor_spec.c
+    model/billing_invoice_download_response.c
+    model/billing_invoice_response.c
+    model/billing_invoices_get_200_response.c
     model/billing_profiles_get_200_response.c
     model/billing_profiles_response.c
     model/board.c
+    model/board_base.c
+    model/board_create.c
     model/board_media.c
     model/board_owner.c
+    model/board_privacy.c
+    model/board_privacy_filter.c
     model/board_section.c
     model/board_sections_list_200_response.c
-    model/board_update.c
+    model/board_update_privacy.c
+    model/board_with_update_privacy.c
+    model/board_with_update_privacy_update.c
     model/boards_list_200_response.c
     model/boards_list_pins_200_response.c
     model/boards_user_follows_list_200_response.c
     model/book_closed_response.c
+    model/brand_accounts_create_200_response.c
+    model/brand_accounts_create_request.c
+    model/brand_accounts_update_request.c
     model/brand_filter.c
     model/budget_type.c
     model/bulk_download_request.c
@@ -200,6 +221,10 @@ set(SRCS
     model/business_role_for_members.c
     model/business_shared_audience.c
     model/business_shared_audience_response.c
+    model/campaign_audience_multipliers.c
+    model/campaign_bid_options.c
+    model/campaign_bid_options_create.c
+    model/campaign_bid_options_update.c
     model/campaign_common.c
     model/campaign_create_common.c
     model/campaign_create_request.c
@@ -207,6 +232,8 @@ set(SRCS
     model/campaign_create_response_data.c
     model/campaign_create_response_item.c
     model/campaign_id.c
+    model/campaign_id_filter.c
+    model/campaign_objectives_filter.c
     model/campaign_response.c
     model/campaign_summary_status.c
     model/campaign_update_request.c
@@ -214,18 +241,22 @@ set(SRCS
     model/campaigns_analytics_response_inner.c
     model/campaigns_list_200_response.c
     model/cancel_invites_body.c
+    model/carousel_slot.c
     model/catalog.c
+    model/catalogs_available_filter_values.c
     model/catalogs_create_creative_assets_item.c
     model/catalogs_create_hotel_item.c
     model/catalogs_create_report_response.c
     model/catalogs_create_request.c
     model/catalogs_create_retail_item.c
     model/catalogs_creative_assets_attributes.c
+    model/catalogs_creative_assets_available_filter_values.c
     model/catalogs_creative_assets_batch_item.c
     model/catalogs_creative_assets_batch_request.c
     model/catalogs_creative_assets_feed.c
     model/catalogs_creative_assets_feeds_create_request.c
     model/catalogs_creative_assets_feeds_update_request.c
+    model/catalogs_creative_assets_filter_values_map.c
     model/catalogs_creative_assets_item_error_response.c
     model/catalogs_creative_assets_item_response.c
     model/catalogs_creative_assets_items_batch.c
@@ -260,6 +291,7 @@ set(SRCS
     model/catalogs_feed_validation_details.c
     model/catalogs_feed_validation_errors.c
     model/catalogs_feed_validation_warnings.c
+    model/catalogs_feed_video_counts.c
     model/catalogs_feeds_create_request.c
     model/catalogs_feeds_create_request_default_locale.c
     model/catalogs_feeds_update_request.c
@@ -267,11 +299,13 @@ set(SRCS
     model/catalogs_hotel_address.c
     model/catalogs_hotel_attributes.c
     model/catalogs_hotel_attributes_all_of_main_image.c
+    model/catalogs_hotel_available_filter_values.c
     model/catalogs_hotel_batch_item.c
     model/catalogs_hotel_batch_request.c
     model/catalogs_hotel_feed.c
     model/catalogs_hotel_feeds_create_request.c
     model/catalogs_hotel_feeds_update_request.c
+    model/catalogs_hotel_filter_values_map.c
     model/catalogs_hotel_guest_ratings.c
     model/catalogs_hotel_item_error_response.c
     model/catalogs_hotel_item_response.c
@@ -287,10 +321,13 @@ set(SRCS
     model/catalogs_hotel_product_group_filters_all_of.c
     model/catalogs_hotel_product_group_filters_any_of.c
     model/catalogs_hotel_product_group_product_counts.c
+    model/catalogs_hotel_product_group_type.c
     model/catalogs_hotel_product_group_update_request.c
     model/catalogs_hotel_product_metadata.c
     model/catalogs_hotel_report_parameters.c
     model/catalogs_hotel_report_parameters_report.c
+    model/catalogs_hotel_report_stats_parameters.c
+    model/catalogs_hotel_report_stats_parameters_report.c
     model/catalogs_item_validation_details.c
     model/catalogs_item_validation_errors.c
     model/catalogs_item_validation_issue.c
@@ -315,12 +352,11 @@ set(SRCS
     model/catalogs_product_group_create_request.c
     model/catalogs_product_group_currency_criteria.c
     model/catalogs_product_group_filter_keys.c
+    model/catalogs_product_group_filter_operator_type_criteria.c
     model/catalogs_product_group_filters.c
     model/catalogs_product_group_filters_all_of.c
     model/catalogs_product_group_filters_any_of.c
     model/catalogs_product_group_filters_request.c
-    model/catalogs_product_group_filters_request_any_of.c
-    model/catalogs_product_group_filters_request_any_of_1.c
     model/catalogs_product_group_multiple_countries_criteria.c
     model/catalogs_product_group_multiple_gender_criteria.c
     model/catalogs_product_group_multiple_media_types_criteria.c
@@ -332,21 +368,25 @@ set(SRCS
     model/catalogs_product_group_product_counts_vertical.c
     model/catalogs_product_group_status.c
     model/catalogs_product_group_type.c
+    model/catalogs_product_group_uint32_criteria.c
     model/catalogs_product_group_update_request.c
     model/catalogs_product_groups_list_200_response.c
     model/catalogs_product_groups_update_request.c
     model/catalogs_report.c
+    model/catalogs_report_all_items_filter.c
     model/catalogs_report_distribution_issue_filter.c
     model/catalogs_report_distribution_stats.c
     model/catalogs_report_feed_ingestion_filter.c
     model/catalogs_report_feed_ingestion_stats.c
     model/catalogs_report_parameters.c
     model/catalogs_report_stats.c
+    model/catalogs_retail_available_filter_values.c
     model/catalogs_retail_batch_request.c
     model/catalogs_retail_batch_request_items_inner.c
     model/catalogs_retail_feed.c
     model/catalogs_retail_feeds_create_request.c
     model/catalogs_retail_feeds_update_request.c
+    model/catalogs_retail_filter_values_map.c
     model/catalogs_retail_item_error_response.c
     model/catalogs_retail_item_response.c
     model/catalogs_retail_items_batch.c
@@ -360,6 +400,7 @@ set(SRCS
     model/catalogs_retail_product_group_update_request.c
     model/catalogs_retail_product_metadata.c
     model/catalogs_retail_report_parameters.c
+    model/catalogs_retail_report_stats_parameters.c
     model/catalogs_status.c
     model/catalogs_type.c
     model/catalogs_updatable_creative_assets_attributes.c
@@ -378,26 +419,34 @@ set(SRCS
     model/catalogs_vertical_product_group_update_request.c
     model/catalogs_verticals_list_products_by_catalog_based_filter_request.c
     model/condition_filter.c
+    model/content_type.c
+    model/conversion_access_token_response.c
     model/conversion_api_response.c
     model/conversion_api_response_events_inner.c
     model/conversion_attribution_window_days.c
+    model/conversion_event_app_info.c
+    model/conversion_event_device_info.c
     model/conversion_event_response.c
     model/conversion_events.c
     model/conversion_events_data_inner.c
     model/conversion_events_data_inner_custom_data.c
     model/conversion_events_data_inner_custom_data_contents_inner.c
     model/conversion_events_user_data.c
-    model/conversion_events_user_data_any_of.c
-    model/conversion_events_user_data_any_of_1.c
-    model/conversion_events_user_data_any_of_2.c
+    model/conversion_events_user_data_properties.c
+    model/conversion_health_selection_item.c
+    model/conversion_msot_events.c
+    model/conversion_product_report_request.c
+    model/conversion_product_reporting_column.c
     model/conversion_report_attribution_type.c
     model/conversion_report_time_type.c
+    model/conversion_tag.c
     model/conversion_tag_common.c
     model/conversion_tag_configs.c
     model/conversion_tag_create.c
     model/conversion_tag_list_response.c
     model/conversion_tag_response.c
     model/conversion_tag_type.c
+    model/conversion_tags_list_200_response.c
     model/country.c
     model/country_filter.c
     model/create_asset_access_request_body.c
@@ -426,10 +475,20 @@ set(SRCS
     model/custom_label2_filter.c
     model/custom_label3_filter.c
     model/custom_label4_filter.c
+    model/custom_number0_filter.c
+    model/custom_number1_filter.c
+    model/custom_number2_filter.c
+    model/custom_number3_filter.c
+    model/custom_number4_filter.c
     model/customer_list.c
     model/customer_list_request.c
     model/customer_list_update_request.c
+    model/customer_list_upload.c
+    model/customer_list_upload_create_request.c
+    model/customer_list_upload_create_response.c
+    model/customer_list_upload_response.c
     model/customer_lists_list_200_response.c
+    model/customizable_cta_type.c
     model/data_output_format.c
     model/data_status.c
     model/delete_asset_group_body.c
@@ -450,10 +509,15 @@ set(SRCS
     model/delivery_metrics_response.c
     model/delivery_metrics_response_items_inner.c
     model/detailed_error.c
+    model/disclosure_type.c
     model/enhanced_match_status_type.c
     model/entity_status.c
     model/error.c
+    model/error_detail.c
+    model/event_data.c
+    model/event_quality_score.c
     model/exception.c
+    model/featured_trend.c
     model/feed_processing_results_list_200_response.c
     model/feeds_create_request.c
     model/feeds_list_200_response.c
@@ -461,10 +525,13 @@ set(SRCS
     model/follow_user_request.c
     model/followers_list_200_response.c
     model/gender.c
+    model/gender_bucket.c
+    model/gender_demographics.c
     model/gender_filter.c
     model/get_audiences_order_by.c
     model/get_business_asset_type_response.c
     model/get_business_assets_response.c
+    model/get_business_assets_response_catalog_info.c
     model/get_business_employers_200_response.c
     model/get_business_members_200_response.c
     model/get_business_partners_200_response.c
@@ -483,9 +550,12 @@ set(SRCS
     model/grid_click_type.c
     model/hotel_id_filter.c
     model/hotel_processing_record.c
+    model/image_base64.c
     model/image_details.c
     model/image_metadata.c
-    model/image_metadata_images.c
+    model/image_size.c
+    model/ingestion_source_options.c
+    model/inner_product_categories_metrics_highlights.c
     model/integration_log.c
     model/integration_log_client_error.c
     model/integration_log_client_request.c
@@ -498,7 +568,9 @@ set(SRCS
     model/integration_request.c
     model/integration_request_patch.c
     model/integrations_get_list_200_response.c
+    model/integrations_logs_post_400_response.c
     model/interest.c
+    model/interests_enum.c
     model/invite_assets_summary.c
     model/invite_assets_summary_ad_accounts_inner.c
     model/invite_assets_summary_profiles_inner.c
@@ -519,8 +591,8 @@ set(SRCS
     model/item_processing_record.c
     model/item_processing_status.c
     model/item_response.c
-    model/item_response_any_of.c
-    model/item_response_any_of_1.c
+    model/item_response_one_of.c
+    model/item_response_one_of_1.c
     model/item_update_batch_record.c
     model/item_upsert_batch_record.c
     model/item_validation_event.c
@@ -537,6 +609,18 @@ set(SRCS
     model/keywords_metrics_array_response.c
     model/keywords_request.c
     model/keywords_response.c
+    model/label.c
+    model/label_bulk_update_request.c
+    model/label_create_request.c
+    model/label_create_request_labels_inner.c
+    model/label_error.c
+    model/label_parent_type.c
+    model/label_status.c
+    model/label_type.c
+    model/label_update_request.c
+    model/label_update_request_labels_inner.c
+    model/labels_list_200_response.c
+    model/labels_response.c
     model/language.c
     model/lead_form_array_response.c
     model/lead_form_array_response_items_inner.c
@@ -552,22 +636,27 @@ set(SRCS
     model/lead_form_test_response.c
     model/lead_form_update_request.c
     model/lead_forms_list_200_response.c
+    model/lead_subscription.c
+    model/lead_subscription_post_params_create.c
+    model/lead_subscription_post_params_create_all_of_partner_metadata.c
     model/leads_export_create_request.c
     model/leads_export_create_response.c
     model/leads_export_response_data.c
     model/leads_export_status.c
     model/line_item.c
     model/linked_business.c
+    model/local_store_update.c
+    model/lookback_period_options.c
     model/match_type.c
     model/match_type_response.c
     model/max_price_filter.c
+    model/media.c
     model/media_list_200_response.c
     model/media_type.c
     model/media_type_filter.c
     model/media_upload.c
-    model/media_upload_all_of_upload_parameters.c
-    model/media_upload_details.c
-    model/media_upload_request.c
+    model/media_upload_create.c
+    model/media_upload_parameters.c
     model/media_upload_status.c
     model/media_upload_type.c
     model/member_business_role.c
@@ -579,8 +668,11 @@ set(SRCS
     model/mmm_reporting_column.c
     model/mmm_reporting_targeting_type.c
     model/multiple_product_groups_inner.c
+    model/non_draft_entity_status.c
     model/non_nullable_catalogs_currency.c
     model/non_nullable_product_availability_type.c
+    model/notification_post_request.c
+    model/notification_response.c
     model/nullable_catalogs_item_field_type.c
     model/nullable_currency.c
     model/oauth_access_token_request_client_credentials.c
@@ -589,7 +681,6 @@ set(SRCS
     model/oauth_access_token_response.c
     model/oauth_access_token_response_client_credentials.c
     model/oauth_access_token_response_code.c
-    model/oauth_access_token_response_everlasting_refresh.c
     model/oauth_access_token_response_integration_refresh.c
     model/oauth_access_token_response_refresh.c
     model/objective_type.c
@@ -608,6 +699,7 @@ set(SRCS
     model/order_lines.c
     model/order_lines_array_response.c
     model/order_lines_list_200_response.c
+    model/overall_status_options.c
     model/pacing_delivery_type.c
     model/page_visit_conversion_tags_get_200_response.c
     model/paginated.c
@@ -624,33 +716,39 @@ set(SRCS
     model/pin_media_source_image_base64.c
     model/pin_media_source_image_url.c
     model/pin_media_source_images_base64.c
-    model/pin_media_source_images_base64_items_inner.c
+    model/pin_media_source_images_base64_item.c
     model/pin_media_source_images_url.c
-    model/pin_media_source_images_url_items_inner.c
+    model/pin_media_source_images_url_item.c
     model/pin_media_source_pin_url.c
     model/pin_media_source_video_id.c
     model/pin_media_with_image.c
-    model/pin_media_with_image_all_of_images.c
     model/pin_media_with_image_and_video.c
     model/pin_media_with_images.c
     model/pin_media_with_video.c
     model/pin_media_with_videos.c
     model/pin_promotion_summary_status.c
     model/pin_update.c
-    model/pin_update_carousel_slots_inner.c
     model/pins_list_200_response.c
     model/pins_save_request.c
-    model/pinterest_tag_event_data.c
+    model/pinterest_lib_error.c
+    model/pinterest_lib_pagination_order.c
+    model/pinterest_lib_status204.c
     model/placement_group_type.c
     model/placement_multipliers.c
+    model/predicted_time_series.c
     model/price_filter.c
     model/product_availability_type.c
+    model/product_categories_demographic.c
+    model/product_categories_engagement_type.c
+    model/product_categories_metrics_highlights.c
+    model/product_category_detail_lookback_window.c
+    model/product_category_details.c
+    model/product_category_enum.c
+    model/product_category_region.c
     model/product_group_analytics_response_inner.c
     model/product_group_promotion.c
     model/product_group_promotion_create_request.c
-    model/product_group_promotion_create_request_element.c
     model/product_group_promotion_response.c
-    model/product_group_promotion_response_element.c
     model/product_group_promotion_response_item.c
     model/product_group_promotion_update_request.c
     model/product_group_promotions_list_200_response.c
@@ -661,25 +759,44 @@ set(SRCS
     model/product_type2_filter.c
     model/product_type3_filter.c
     model/product_type4_filter.c
+    model/promotion_array_element.c
+    model/promotion_common.c
+    model/promotion_create_request.c
+    model/promotion_response.c
+    model/promotion_template_value.c
+    model/promotion_type.c
+    model/promotion_update_request.c
+    model/promotions_list_200_response.c
+    model/promotions_response.c
+    model/quality_component_details.c
+    model/quality_component_issue.c
+    model/quality_components.c
     model/quiz_pin_data.c
     model/quiz_pin_option.c
     model/quiz_pin_question.c
     model/quiz_pin_result.c
+    model/record_counts.c
     model/related_terms.c
     model/related_terms_related_terms_list_inner.c
     model/reporting_column_async.c
+    model/reporting_time_zone.c
     model/reports_stats_200_response.c
+    model/reports_stats_parameters_parameter.c
     model/respond_to_invites_response_array.c
     model/respond_to_invites_response_array_items_inner.c
     model/role.c
+    model/s3_file_part.c
+    model/s3_multipart_upload_data.c
     model/search_partner_pins_200_response.c
     model/search_user_boards_get_200_response.c
+    model/search_user_pins_list_200_response.c
     model/shared_audience.c
     model/shared_audience_account.c
     model/shared_audience_common.c
     model/shared_audience_response.c
     model/shared_audience_response_common.c
     model/single_interest_targeting_option_response.c
+    model/source_platform_options.c
     model/ssio_account_address.c
     model/ssio_account_item.c
     model/ssio_account_pmp_name.c
@@ -695,9 +812,19 @@ set(SRCS
     model/ssio_order_line.c
     model/ssio_order_lines_get_by_ad_account_200_response.c
     model/summary_pin.c
+    model/system_user_update_request.c
     model/targeting_advertiser_country.c
     model/targeting_spec.c
+    model/targeting_spec_age_bucket.c
     model/targeting_spec_app_type.c
+    model/targeting_spec_gender.c
+    model/targeting_spec_operation_age_bucket.c
+    model/targeting_spec_operation_app_type.c
+    model/targeting_spec_operation_gender.c
+    model/targeting_spec_operation_list.c
+    model/targeting_spec_operation_min_max_age.c
+    model/targeting_spec_operation_shopping_retargeting.c
+    model/targeting_spec_operation_string.c
     model/targeting_spec_shopping_retargeting.c
     model/targeting_template_audience_sizing.c
     model/targeting_template_audience_sizing_reach_estimate.c
@@ -709,6 +836,7 @@ set(SRCS
     model/targeting_template_response_data.c
     model/targeting_template_update_request.c
     model/targeting_type_filter.c
+    model/template_based_report.c
     model/template_response.c
     model/template_response_date_range.c
     model/template_response_date_range_absolute_date_range.c
@@ -716,6 +844,8 @@ set(SRCS
     model/template_response_date_range_relative_date_range.c
     model/templates_list_200_response.c
     model/terms_of_service.c
+    model/time_series.c
+    model/title_keywords_filter.c
     model/top_pins_analytics_response.c
     model/top_pins_analytics_response_date_availability.c
     model/top_pins_analytics_response_pins_inner.c
@@ -723,11 +853,17 @@ set(SRCS
     model/top_video_pins_analytics_response_pins_inner.c
     model/tracking_urls.c
     model/trend_type.c
+    model/trending_keyword.c
+    model/trending_keyword_demographics.c
+    model/trending_keyword_demographics_age_distribution.c
+    model/trending_keyword_demographics_gender_distribution.c
     model/trending_keywords_response.c
-    model/trending_keywords_response_trends_inner.c
-    model/trending_keywords_response_trends_inner_time_series.c
+    model/trending_pin.c
+    model/trending_product_category.c
+    model/trending_topic.c
     model/trends_supported_region.c
     model/updatable_item_attributes.c
+    model/updatable_item_attributes_gtin.c
     model/update_asset_group_body.c
     model/update_asset_group_body_asset_groups_to_update_inner.c
     model/update_asset_group_response.c
@@ -762,7 +898,8 @@ set(SRCS
     model/user_website_verify_request.c
     model/user_websites_get_200_response.c
     model/users_for_individual_asset_response.c
-    model/video_metadata.c
+    model/vertical_product_category.c
+    model/video_metadata_with_item_type.c
     api/AdAccountsAPI.c
     api/AdGroupsAPI.c
     api/AdsAPI.c
@@ -777,20 +914,32 @@ set(SRCS
     api/BusinessAccessInviteAPI.c
     api/BusinessAccessRelationshipsAPI.c
     api/CampaignsAPI.c
+    api/CatalogFeedsAPI.c
+    api/CatalogItemsAPI.c
+    api/CatalogProductGroupsAPI.c
+    api/CatalogReportsAPI.c
     api/CatalogsAPI.c
+    api/ConversionEqsAPI.c
     api/ConversionEventsAPI.c
     api/ConversionTagsAPI.c
+    api/ConversionsAPI.c
+    api/CustomerListUploadsAPI.c
     api/CustomerListsAPI.c
     api/IntegrationsAPI.c
     api/KeywordsAPI.c
+    api/LabelsAPI.c
     api/LeadAdsAPI.c
     api/LeadFormsAPI.c
     api/LeadsExportAPI.c
     api/MediaAPI.c
+    api/MsotEventsAPI.c
+    api/NotificationAPI.c
     api/OauthAPI.c
     api/OrderLinesAPI.c
     api/PinsAPI.c
+    api/ProductCategoriesAPI.c
     api/ProductGroupPromotionsAPI.c
+    api/PromotionsAPI.c
     api/ResourcesAPI.c
     api/SearchAPI.c
     api/TargetingTemplateAPI.c
@@ -812,7 +961,7 @@ set(HDRS
     model/action_type.h
     model/ad_account.h
     model/ad_account_analytics_response_inner.h
-    model/ad_account_create_request.h
+    model/ad_account_create.h
     model/ad_account_create_subscription_request.h
     model/ad_account_create_subscription_request_partner_metadata.h
     model/ad_account_create_subscription_response.h
@@ -835,21 +984,26 @@ set(HDRS
     model/ad_group_audience_sizing_response.h
     model/ad_group_common.h
     model/ad_group_create_request.h
+    model/ad_group_id_filter.h
     model/ad_group_response.h
     model/ad_group_summary_status.h
     model/ad_group_update_request.h
     model/ad_groups_analytics_response_inner.h
     model/ad_groups_list_200_response.h
+    model/ad_pin_analytics.h
     model/ad_pin_id.h
     model/ad_preview_create_from_image.h
     model/ad_preview_create_from_pin.h
     model/ad_preview_request.h
+    model/ad_preview_shopping.h
     model/ad_preview_url_response.h
     model/ad_response.h
     model/ad_update_request.h
+    model/ads_analytics_ad_group_targeting_type.h
     model/ads_analytics_ad_targeting_type.h
     model/ads_analytics_campaign_targeting_type.h
     model/ads_analytics_create_async_request.h
+    model/ads_analytics_create_async_request_all_of_custom_conversion_event_metrics.h
     model/ads_analytics_create_async_response.h
     model/ads_analytics_filter_column.h
     model/ads_analytics_filter_operator.h
@@ -874,10 +1028,15 @@ set(HDRS
     model/advanced_auction_key.h
     model/advanced_auction_operation.h
     model/advanced_auction_operation_error.h
-    model/advanced_auction_processed_item.h
     model/advanced_auction_processed_items.h
+    model/advertiser_defined_event.h
+    model/advertiser_defined_events_response.h
+    model/age_trends_bucket.h
+    model/all_of.h
+    model/amazon_connect_request.h
     model/analytics_daily_metrics.h
     model/analytics_metrics_response.h
+    model/any_of.h
     model/app_type_multipliers.h
     model/asset_group_binding.h
     model/asset_group_type.h
@@ -886,11 +1045,11 @@ set(HDRS
     model/audience_account_type.h
     model/audience_category.h
     model/audience_common.h
-    model/audience_create_custom_request.h
     model/audience_create_request.h
-    model/audience_data_party.h
     model/audience_definition.h
     model/audience_definition_response.h
+    model/audience_definition_scope.h
+    model/audience_definition_type.h
     model/audience_demographic_value.h
     model/audience_demographics.h
     model/audience_insight_category_array_response.h
@@ -899,7 +1058,6 @@ set(HDRS
     model/audience_insights_response.h
     model/audience_rule.h
     model/audience_share_type.h
-    model/audience_sharing_type.h
     model/audience_subcategory.h
     model/audience_type.h
     model/audience_update_operation_type.h
@@ -916,18 +1074,30 @@ set(HDRS
     model/bid_floor.h
     model/bid_floor_request.h
     model/bid_floor_spec.h
+    model/billing_invoice_download_response.h
+    model/billing_invoice_response.h
+    model/billing_invoices_get_200_response.h
     model/billing_profiles_get_200_response.h
     model/billing_profiles_response.h
     model/board.h
+    model/board_base.h
+    model/board_create.h
     model/board_media.h
     model/board_owner.h
+    model/board_privacy.h
+    model/board_privacy_filter.h
     model/board_section.h
     model/board_sections_list_200_response.h
-    model/board_update.h
+    model/board_update_privacy.h
+    model/board_with_update_privacy.h
+    model/board_with_update_privacy_update.h
     model/boards_list_200_response.h
     model/boards_list_pins_200_response.h
     model/boards_user_follows_list_200_response.h
     model/book_closed_response.h
+    model/brand_accounts_create_200_response.h
+    model/brand_accounts_create_request.h
+    model/brand_accounts_update_request.h
     model/brand_filter.h
     model/budget_type.h
     model/bulk_download_request.h
@@ -960,6 +1130,10 @@ set(HDRS
     model/business_role_for_members.h
     model/business_shared_audience.h
     model/business_shared_audience_response.h
+    model/campaign_audience_multipliers.h
+    model/campaign_bid_options.h
+    model/campaign_bid_options_create.h
+    model/campaign_bid_options_update.h
     model/campaign_common.h
     model/campaign_create_common.h
     model/campaign_create_request.h
@@ -967,6 +1141,8 @@ set(HDRS
     model/campaign_create_response_data.h
     model/campaign_create_response_item.h
     model/campaign_id.h
+    model/campaign_id_filter.h
+    model/campaign_objectives_filter.h
     model/campaign_response.h
     model/campaign_summary_status.h
     model/campaign_update_request.h
@@ -974,18 +1150,22 @@ set(HDRS
     model/campaigns_analytics_response_inner.h
     model/campaigns_list_200_response.h
     model/cancel_invites_body.h
+    model/carousel_slot.h
     model/catalog.h
+    model/catalogs_available_filter_values.h
     model/catalogs_create_creative_assets_item.h
     model/catalogs_create_hotel_item.h
     model/catalogs_create_report_response.h
     model/catalogs_create_request.h
     model/catalogs_create_retail_item.h
     model/catalogs_creative_assets_attributes.h
+    model/catalogs_creative_assets_available_filter_values.h
     model/catalogs_creative_assets_batch_item.h
     model/catalogs_creative_assets_batch_request.h
     model/catalogs_creative_assets_feed.h
     model/catalogs_creative_assets_feeds_create_request.h
     model/catalogs_creative_assets_feeds_update_request.h
+    model/catalogs_creative_assets_filter_values_map.h
     model/catalogs_creative_assets_item_error_response.h
     model/catalogs_creative_assets_item_response.h
     model/catalogs_creative_assets_items_batch.h
@@ -1020,6 +1200,7 @@ set(HDRS
     model/catalogs_feed_validation_details.h
     model/catalogs_feed_validation_errors.h
     model/catalogs_feed_validation_warnings.h
+    model/catalogs_feed_video_counts.h
     model/catalogs_feeds_create_request.h
     model/catalogs_feeds_create_request_default_locale.h
     model/catalogs_feeds_update_request.h
@@ -1027,11 +1208,13 @@ set(HDRS
     model/catalogs_hotel_address.h
     model/catalogs_hotel_attributes.h
     model/catalogs_hotel_attributes_all_of_main_image.h
+    model/catalogs_hotel_available_filter_values.h
     model/catalogs_hotel_batch_item.h
     model/catalogs_hotel_batch_request.h
     model/catalogs_hotel_feed.h
     model/catalogs_hotel_feeds_create_request.h
     model/catalogs_hotel_feeds_update_request.h
+    model/catalogs_hotel_filter_values_map.h
     model/catalogs_hotel_guest_ratings.h
     model/catalogs_hotel_item_error_response.h
     model/catalogs_hotel_item_response.h
@@ -1047,10 +1230,13 @@ set(HDRS
     model/catalogs_hotel_product_group_filters_all_of.h
     model/catalogs_hotel_product_group_filters_any_of.h
     model/catalogs_hotel_product_group_product_counts.h
+    model/catalogs_hotel_product_group_type.h
     model/catalogs_hotel_product_group_update_request.h
     model/catalogs_hotel_product_metadata.h
     model/catalogs_hotel_report_parameters.h
     model/catalogs_hotel_report_parameters_report.h
+    model/catalogs_hotel_report_stats_parameters.h
+    model/catalogs_hotel_report_stats_parameters_report.h
     model/catalogs_item_validation_details.h
     model/catalogs_item_validation_errors.h
     model/catalogs_item_validation_issue.h
@@ -1075,12 +1261,11 @@ set(HDRS
     model/catalogs_product_group_create_request.h
     model/catalogs_product_group_currency_criteria.h
     model/catalogs_product_group_filter_keys.h
+    model/catalogs_product_group_filter_operator_type_criteria.h
     model/catalogs_product_group_filters.h
     model/catalogs_product_group_filters_all_of.h
     model/catalogs_product_group_filters_any_of.h
     model/catalogs_product_group_filters_request.h
-    model/catalogs_product_group_filters_request_any_of.h
-    model/catalogs_product_group_filters_request_any_of_1.h
     model/catalogs_product_group_multiple_countries_criteria.h
     model/catalogs_product_group_multiple_gender_criteria.h
     model/catalogs_product_group_multiple_media_types_criteria.h
@@ -1092,21 +1277,25 @@ set(HDRS
     model/catalogs_product_group_product_counts_vertical.h
     model/catalogs_product_group_status.h
     model/catalogs_product_group_type.h
+    model/catalogs_product_group_uint32_criteria.h
     model/catalogs_product_group_update_request.h
     model/catalogs_product_groups_list_200_response.h
     model/catalogs_product_groups_update_request.h
     model/catalogs_report.h
+    model/catalogs_report_all_items_filter.h
     model/catalogs_report_distribution_issue_filter.h
     model/catalogs_report_distribution_stats.h
     model/catalogs_report_feed_ingestion_filter.h
     model/catalogs_report_feed_ingestion_stats.h
     model/catalogs_report_parameters.h
     model/catalogs_report_stats.h
+    model/catalogs_retail_available_filter_values.h
     model/catalogs_retail_batch_request.h
     model/catalogs_retail_batch_request_items_inner.h
     model/catalogs_retail_feed.h
     model/catalogs_retail_feeds_create_request.h
     model/catalogs_retail_feeds_update_request.h
+    model/catalogs_retail_filter_values_map.h
     model/catalogs_retail_item_error_response.h
     model/catalogs_retail_item_response.h
     model/catalogs_retail_items_batch.h
@@ -1120,6 +1309,7 @@ set(HDRS
     model/catalogs_retail_product_group_update_request.h
     model/catalogs_retail_product_metadata.h
     model/catalogs_retail_report_parameters.h
+    model/catalogs_retail_report_stats_parameters.h
     model/catalogs_status.h
     model/catalogs_type.h
     model/catalogs_updatable_creative_assets_attributes.h
@@ -1138,26 +1328,34 @@ set(HDRS
     model/catalogs_vertical_product_group_update_request.h
     model/catalogs_verticals_list_products_by_catalog_based_filter_request.h
     model/condition_filter.h
+    model/content_type.h
+    model/conversion_access_token_response.h
     model/conversion_api_response.h
     model/conversion_api_response_events_inner.h
     model/conversion_attribution_window_days.h
+    model/conversion_event_app_info.h
+    model/conversion_event_device_info.h
     model/conversion_event_response.h
     model/conversion_events.h
     model/conversion_events_data_inner.h
     model/conversion_events_data_inner_custom_data.h
     model/conversion_events_data_inner_custom_data_contents_inner.h
     model/conversion_events_user_data.h
-    model/conversion_events_user_data_any_of.h
-    model/conversion_events_user_data_any_of_1.h
-    model/conversion_events_user_data_any_of_2.h
+    model/conversion_events_user_data_properties.h
+    model/conversion_health_selection_item.h
+    model/conversion_msot_events.h
+    model/conversion_product_report_request.h
+    model/conversion_product_reporting_column.h
     model/conversion_report_attribution_type.h
     model/conversion_report_time_type.h
+    model/conversion_tag.h
     model/conversion_tag_common.h
     model/conversion_tag_configs.h
     model/conversion_tag_create.h
     model/conversion_tag_list_response.h
     model/conversion_tag_response.h
     model/conversion_tag_type.h
+    model/conversion_tags_list_200_response.h
     model/country.h
     model/country_filter.h
     model/create_asset_access_request_body.h
@@ -1186,10 +1384,20 @@ set(HDRS
     model/custom_label2_filter.h
     model/custom_label3_filter.h
     model/custom_label4_filter.h
+    model/custom_number0_filter.h
+    model/custom_number1_filter.h
+    model/custom_number2_filter.h
+    model/custom_number3_filter.h
+    model/custom_number4_filter.h
     model/customer_list.h
     model/customer_list_request.h
     model/customer_list_update_request.h
+    model/customer_list_upload.h
+    model/customer_list_upload_create_request.h
+    model/customer_list_upload_create_response.h
+    model/customer_list_upload_response.h
     model/customer_lists_list_200_response.h
+    model/customizable_cta_type.h
     model/data_output_format.h
     model/data_status.h
     model/delete_asset_group_body.h
@@ -1210,10 +1418,15 @@ set(HDRS
     model/delivery_metrics_response.h
     model/delivery_metrics_response_items_inner.h
     model/detailed_error.h
+    model/disclosure_type.h
     model/enhanced_match_status_type.h
     model/entity_status.h
     model/error.h
+    model/error_detail.h
+    model/event_data.h
+    model/event_quality_score.h
     model/exception.h
+    model/featured_trend.h
     model/feed_processing_results_list_200_response.h
     model/feeds_create_request.h
     model/feeds_list_200_response.h
@@ -1221,10 +1434,13 @@ set(HDRS
     model/follow_user_request.h
     model/followers_list_200_response.h
     model/gender.h
+    model/gender_bucket.h
+    model/gender_demographics.h
     model/gender_filter.h
     model/get_audiences_order_by.h
     model/get_business_asset_type_response.h
     model/get_business_assets_response.h
+    model/get_business_assets_response_catalog_info.h
     model/get_business_employers_200_response.h
     model/get_business_members_200_response.h
     model/get_business_partners_200_response.h
@@ -1243,9 +1459,12 @@ set(HDRS
     model/grid_click_type.h
     model/hotel_id_filter.h
     model/hotel_processing_record.h
+    model/image_base64.h
     model/image_details.h
     model/image_metadata.h
-    model/image_metadata_images.h
+    model/image_size.h
+    model/ingestion_source_options.h
+    model/inner_product_categories_metrics_highlights.h
     model/integration_log.h
     model/integration_log_client_error.h
     model/integration_log_client_request.h
@@ -1258,7 +1477,9 @@ set(HDRS
     model/integration_request.h
     model/integration_request_patch.h
     model/integrations_get_list_200_response.h
+    model/integrations_logs_post_400_response.h
     model/interest.h
+    model/interests_enum.h
     model/invite_assets_summary.h
     model/invite_assets_summary_ad_accounts_inner.h
     model/invite_assets_summary_profiles_inner.h
@@ -1279,8 +1500,8 @@ set(HDRS
     model/item_processing_record.h
     model/item_processing_status.h
     model/item_response.h
-    model/item_response_any_of.h
-    model/item_response_any_of_1.h
+    model/item_response_one_of.h
+    model/item_response_one_of_1.h
     model/item_update_batch_record.h
     model/item_upsert_batch_record.h
     model/item_validation_event.h
@@ -1297,6 +1518,18 @@ set(HDRS
     model/keywords_metrics_array_response.h
     model/keywords_request.h
     model/keywords_response.h
+    model/label.h
+    model/label_bulk_update_request.h
+    model/label_create_request.h
+    model/label_create_request_labels_inner.h
+    model/label_error.h
+    model/label_parent_type.h
+    model/label_status.h
+    model/label_type.h
+    model/label_update_request.h
+    model/label_update_request_labels_inner.h
+    model/labels_list_200_response.h
+    model/labels_response.h
     model/language.h
     model/lead_form_array_response.h
     model/lead_form_array_response_items_inner.h
@@ -1312,22 +1545,27 @@ set(HDRS
     model/lead_form_test_response.h
     model/lead_form_update_request.h
     model/lead_forms_list_200_response.h
+    model/lead_subscription.h
+    model/lead_subscription_post_params_create.h
+    model/lead_subscription_post_params_create_all_of_partner_metadata.h
     model/leads_export_create_request.h
     model/leads_export_create_response.h
     model/leads_export_response_data.h
     model/leads_export_status.h
     model/line_item.h
     model/linked_business.h
+    model/local_store_update.h
+    model/lookback_period_options.h
     model/match_type.h
     model/match_type_response.h
     model/max_price_filter.h
+    model/media.h
     model/media_list_200_response.h
     model/media_type.h
     model/media_type_filter.h
     model/media_upload.h
-    model/media_upload_all_of_upload_parameters.h
-    model/media_upload_details.h
-    model/media_upload_request.h
+    model/media_upload_create.h
+    model/media_upload_parameters.h
     model/media_upload_status.h
     model/media_upload_type.h
     model/member_business_role.h
@@ -1339,8 +1577,11 @@ set(HDRS
     model/mmm_reporting_column.h
     model/mmm_reporting_targeting_type.h
     model/multiple_product_groups_inner.h
+    model/non_draft_entity_status.h
     model/non_nullable_catalogs_currency.h
     model/non_nullable_product_availability_type.h
+    model/notification_post_request.h
+    model/notification_response.h
     model/nullable_catalogs_item_field_type.h
     model/nullable_currency.h
     model/oauth_access_token_request_client_credentials.h
@@ -1349,7 +1590,6 @@ set(HDRS
     model/oauth_access_token_response.h
     model/oauth_access_token_response_client_credentials.h
     model/oauth_access_token_response_code.h
-    model/oauth_access_token_response_everlasting_refresh.h
     model/oauth_access_token_response_integration_refresh.h
     model/oauth_access_token_response_refresh.h
     model/objective_type.h
@@ -1368,6 +1608,7 @@ set(HDRS
     model/order_lines.h
     model/order_lines_array_response.h
     model/order_lines_list_200_response.h
+    model/overall_status_options.h
     model/pacing_delivery_type.h
     model/page_visit_conversion_tags_get_200_response.h
     model/paginated.h
@@ -1384,33 +1625,39 @@ set(HDRS
     model/pin_media_source_image_base64.h
     model/pin_media_source_image_url.h
     model/pin_media_source_images_base64.h
-    model/pin_media_source_images_base64_items_inner.h
+    model/pin_media_source_images_base64_item.h
     model/pin_media_source_images_url.h
-    model/pin_media_source_images_url_items_inner.h
+    model/pin_media_source_images_url_item.h
     model/pin_media_source_pin_url.h
     model/pin_media_source_video_id.h
     model/pin_media_with_image.h
-    model/pin_media_with_image_all_of_images.h
     model/pin_media_with_image_and_video.h
     model/pin_media_with_images.h
     model/pin_media_with_video.h
     model/pin_media_with_videos.h
     model/pin_promotion_summary_status.h
     model/pin_update.h
-    model/pin_update_carousel_slots_inner.h
     model/pins_list_200_response.h
     model/pins_save_request.h
-    model/pinterest_tag_event_data.h
+    model/pinterest_lib_error.h
+    model/pinterest_lib_pagination_order.h
+    model/pinterest_lib_status204.h
     model/placement_group_type.h
     model/placement_multipliers.h
+    model/predicted_time_series.h
     model/price_filter.h
     model/product_availability_type.h
+    model/product_categories_demographic.h
+    model/product_categories_engagement_type.h
+    model/product_categories_metrics_highlights.h
+    model/product_category_detail_lookback_window.h
+    model/product_category_details.h
+    model/product_category_enum.h
+    model/product_category_region.h
     model/product_group_analytics_response_inner.h
     model/product_group_promotion.h
     model/product_group_promotion_create_request.h
-    model/product_group_promotion_create_request_element.h
     model/product_group_promotion_response.h
-    model/product_group_promotion_response_element.h
     model/product_group_promotion_response_item.h
     model/product_group_promotion_update_request.h
     model/product_group_promotions_list_200_response.h
@@ -1421,25 +1668,44 @@ set(HDRS
     model/product_type2_filter.h
     model/product_type3_filter.h
     model/product_type4_filter.h
+    model/promotion_array_element.h
+    model/promotion_common.h
+    model/promotion_create_request.h
+    model/promotion_response.h
+    model/promotion_template_value.h
+    model/promotion_type.h
+    model/promotion_update_request.h
+    model/promotions_list_200_response.h
+    model/promotions_response.h
+    model/quality_component_details.h
+    model/quality_component_issue.h
+    model/quality_components.h
     model/quiz_pin_data.h
     model/quiz_pin_option.h
     model/quiz_pin_question.h
     model/quiz_pin_result.h
+    model/record_counts.h
     model/related_terms.h
     model/related_terms_related_terms_list_inner.h
     model/reporting_column_async.h
+    model/reporting_time_zone.h
     model/reports_stats_200_response.h
+    model/reports_stats_parameters_parameter.h
     model/respond_to_invites_response_array.h
     model/respond_to_invites_response_array_items_inner.h
     model/role.h
+    model/s3_file_part.h
+    model/s3_multipart_upload_data.h
     model/search_partner_pins_200_response.h
     model/search_user_boards_get_200_response.h
+    model/search_user_pins_list_200_response.h
     model/shared_audience.h
     model/shared_audience_account.h
     model/shared_audience_common.h
     model/shared_audience_response.h
     model/shared_audience_response_common.h
     model/single_interest_targeting_option_response.h
+    model/source_platform_options.h
     model/ssio_account_address.h
     model/ssio_account_item.h
     model/ssio_account_pmp_name.h
@@ -1455,9 +1721,19 @@ set(HDRS
     model/ssio_order_line.h
     model/ssio_order_lines_get_by_ad_account_200_response.h
     model/summary_pin.h
+    model/system_user_update_request.h
     model/targeting_advertiser_country.h
     model/targeting_spec.h
+    model/targeting_spec_age_bucket.h
     model/targeting_spec_app_type.h
+    model/targeting_spec_gender.h
+    model/targeting_spec_operation_age_bucket.h
+    model/targeting_spec_operation_app_type.h
+    model/targeting_spec_operation_gender.h
+    model/targeting_spec_operation_list.h
+    model/targeting_spec_operation_min_max_age.h
+    model/targeting_spec_operation_shopping_retargeting.h
+    model/targeting_spec_operation_string.h
     model/targeting_spec_shopping_retargeting.h
     model/targeting_template_audience_sizing.h
     model/targeting_template_audience_sizing_reach_estimate.h
@@ -1469,6 +1745,7 @@ set(HDRS
     model/targeting_template_response_data.h
     model/targeting_template_update_request.h
     model/targeting_type_filter.h
+    model/template_based_report.h
     model/template_response.h
     model/template_response_date_range.h
     model/template_response_date_range_absolute_date_range.h
@@ -1476,6 +1753,8 @@ set(HDRS
     model/template_response_date_range_relative_date_range.h
     model/templates_list_200_response.h
     model/terms_of_service.h
+    model/time_series.h
+    model/title_keywords_filter.h
     model/top_pins_analytics_response.h
     model/top_pins_analytics_response_date_availability.h
     model/top_pins_analytics_response_pins_inner.h
@@ -1483,11 +1762,17 @@ set(HDRS
     model/top_video_pins_analytics_response_pins_inner.h
     model/tracking_urls.h
     model/trend_type.h
+    model/trending_keyword.h
+    model/trending_keyword_demographics.h
+    model/trending_keyword_demographics_age_distribution.h
+    model/trending_keyword_demographics_gender_distribution.h
     model/trending_keywords_response.h
-    model/trending_keywords_response_trends_inner.h
-    model/trending_keywords_response_trends_inner_time_series.h
+    model/trending_pin.h
+    model/trending_product_category.h
+    model/trending_topic.h
     model/trends_supported_region.h
     model/updatable_item_attributes.h
+    model/updatable_item_attributes_gtin.h
     model/update_asset_group_body.h
     model/update_asset_group_body_asset_groups_to_update_inner.h
     model/update_asset_group_response.h
@@ -1522,7 +1807,8 @@ set(HDRS
     model/user_website_verify_request.h
     model/user_websites_get_200_response.h
     model/users_for_individual_asset_response.h
-    model/video_metadata.h
+    model/vertical_product_category.h
+    model/video_metadata_with_item_type.h
     api/AdAccountsAPI.h
     api/AdGroupsAPI.h
     api/AdsAPI.h
@@ -1537,20 +1823,32 @@ set(HDRS
     api/BusinessAccessInviteAPI.h
     api/BusinessAccessRelationshipsAPI.h
     api/CampaignsAPI.h
+    api/CatalogFeedsAPI.h
+    api/CatalogItemsAPI.h
+    api/CatalogProductGroupsAPI.h
+    api/CatalogReportsAPI.h
     api/CatalogsAPI.h
+    api/ConversionEqsAPI.h
     api/ConversionEventsAPI.h
     api/ConversionTagsAPI.h
+    api/ConversionsAPI.h
+    api/CustomerListUploadsAPI.h
     api/CustomerListsAPI.h
     api/IntegrationsAPI.h
     api/KeywordsAPI.h
+    api/LabelsAPI.h
     api/LeadAdsAPI.h
     api/LeadFormsAPI.h
     api/LeadsExportAPI.h
     api/MediaAPI.h
+    api/MsotEventsAPI.h
+    api/NotificationAPI.h
     api/OauthAPI.h
     api/OrderLinesAPI.h
     api/PinsAPI.h
+    api/ProductCategoriesAPI.h
     api/ProductGroupPromotionsAPI.h
+    api/PromotionsAPI.h
     api/ResourcesAPI.h
     api/SearchAPI.h
     api/TargetingTemplateAPI.h
@@ -1656,20 +1954,32 @@ set(HDRS "")
 #    unit-tests/manual-BusinessAccessInviteAPI.c
 #    unit-tests/manual-BusinessAccessRelationshipsAPI.c
 #    unit-tests/manual-CampaignsAPI.c
+#    unit-tests/manual-CatalogFeedsAPI.c
+#    unit-tests/manual-CatalogItemsAPI.c
+#    unit-tests/manual-CatalogProductGroupsAPI.c
+#    unit-tests/manual-CatalogReportsAPI.c
 #    unit-tests/manual-CatalogsAPI.c
+#    unit-tests/manual-ConversionEqsAPI.c
 #    unit-tests/manual-ConversionEventsAPI.c
 #    unit-tests/manual-ConversionTagsAPI.c
+#    unit-tests/manual-ConversionsAPI.c
+#    unit-tests/manual-CustomerListUploadsAPI.c
 #    unit-tests/manual-CustomerListsAPI.c
 #    unit-tests/manual-IntegrationsAPI.c
 #    unit-tests/manual-KeywordsAPI.c
+#    unit-tests/manual-LabelsAPI.c
 #    unit-tests/manual-LeadAdsAPI.c
 #    unit-tests/manual-LeadFormsAPI.c
 #    unit-tests/manual-LeadsExportAPI.c
 #    unit-tests/manual-MediaAPI.c
+#    unit-tests/manual-MsotEventsAPI.c
+#    unit-tests/manual-NotificationAPI.c
 #    unit-tests/manual-OauthAPI.c
 #    unit-tests/manual-OrderLinesAPI.c
 #    unit-tests/manual-PinsAPI.c
+#    unit-tests/manual-ProductCategoriesAPI.c
 #    unit-tests/manual-ProductGroupPromotionsAPI.c
+#    unit-tests/manual-PromotionsAPI.c
 #    unit-tests/manual-ResourcesAPI.c
 #    unit-tests/manual-SearchAPI.c
 #    unit-tests/manual-TargetingTemplateAPI.c

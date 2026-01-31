@@ -111,6 +111,8 @@ try {
 
 Configure pinterest_oauth2:
     ApiClient.accessToken = ""
+Configure client_credentials:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 

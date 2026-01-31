@@ -19,7 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.TrendingKeywordsResponse
-import org.openapitools.client.models.TrendingKeywordsResponseTrendsInner
+import org.openapitools.client.models.TrendingKeyword
 
 class TrendingKeywordsResponseTest : ShouldSpec() {
     init {

@@ -9,8 +9,8 @@
 -export_type([openapi_ssio_insertion_orders_status_get_by_ad_account_200_response/0]).
 
 -type openapi_ssio_insertion_orders_status_get_by_ad_account_200_response() ::
-  [ {'items', list(openapi_s_sio_insertion_order_status:openapi_s_sio_insertion_order_status()) }
-  | {'bookmark', binary() }
+  [ {'bookmark', binary() }
+  | {'items', list(openapi_s_sio_insertion_order_status:openapi_s_sio_insertion_order_status()) }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_ssio_insertion_orders_status_get_by_ad_account_200_response() ->
     openapi_ssio_insertion_orders_status_get_by_ad_account_200_response([]).
 
 openapi_ssio_insertion_orders_status_get_by_ad_account_200_response(Fields) ->
-  Default = [ {'items', list(openapi_s_sio_insertion_order_status:openapi_s_sio_insertion_order_status()) }
-            , {'bookmark', binary() }
+  Default = [ {'bookmark', binary() }
+            , {'items', list(openapi_s_sio_insertion_order_status:openapi_s_sio_insertion_order_status()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

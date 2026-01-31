@@ -106,7 +106,7 @@ Update commerce integration metadata for the given external business ID. Note: I
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **externalBusinessId** | `String`| External business ID for the integration. | |
-| **integrationRequestPatch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata | [optional parameter] |
+| **integrationRequestPatch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md)| Parameters to get create/update the Integration Metadata | |
 
 
 ### Return type
@@ -132,7 +132,7 @@ Create commerce integration metadata to link an external business ID with a Pint
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **integrationRequest** | [**IntegrationRequest**](IntegrationRequest.md)| Parameters to get create/update the Integration Metadata | [optional parameter] |
+| **integrationRequest** | [**IntegrationRequest**](IntegrationRequest.md)| Parameters to get create/update the Integration Metadata | |
 
 
 ### Return type

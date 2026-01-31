@@ -1,0 +1,61 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server SummaryPin"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a SummaryPin"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  PinMedia = openapi_server.resourceTypes.PinMedia
+}
+resourceTypes {
+
+  SummaryPin {
+    title = SummaryPin
+    description = SummaryPin
+    derivedFrom = Root
+    properties {
+        alt_text {
+          type =  string
+          description = ""
+          optional = false
+        }
+        description {
+          type =  string
+          description = ""
+          optional = false
+        }
+        id {
+          type =  string
+          description = ""
+          optional = false
+        }
+        link {
+          type =  string
+          description = ""
+          optional = false
+        }
+        media {
+          type = PinMedia
+          description = ""
+          optional = false
+        }
+        title {
+          type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  SummaryPin {
+    title = SummaryPin
+    description = SummaryPin
+    implements = openapi_server.resourceTypes.SummaryPin
+
+  }
+}

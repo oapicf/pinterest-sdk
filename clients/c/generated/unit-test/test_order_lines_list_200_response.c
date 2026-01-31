@@ -22,13 +22,13 @@ order_lines_list_200_response_t* instantiate_order_lines_list_200_response(int i
   order_lines_list_200_response_t* order_lines_list_200_response = NULL;
   if (include_optional) {
     order_lines_list_200_response = order_lines_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     order_lines_list_200_response = order_lines_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

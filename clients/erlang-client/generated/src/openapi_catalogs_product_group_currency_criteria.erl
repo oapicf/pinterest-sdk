@@ -5,13 +5,13 @@
 -export_type([openapi_catalogs_product_group_currency_criteria/0]).
 
 -type openapi_catalogs_product_group_currency_criteria() ::
-    #{ 'values' := openapi_non_nullable_catalogs_currency:openapi_non_nullable_catalogs_currency(),
-       'negated' => boolean()
+    #{ 'negated' => boolean(),
+       'values' := openapi_non_nullable_catalogs_currency:openapi_non_nullable_catalogs_currency()
      }.
 
-encode(#{ 'values' := Values,
-          'negated' := Negated
+encode(#{ 'negated' := Negated,
+          'values' := Values
         }) ->
-    #{ 'values' => Values,
-       'negated' => Negated
+    #{ 'negated' => Negated,
+       'values' => Values
      }.

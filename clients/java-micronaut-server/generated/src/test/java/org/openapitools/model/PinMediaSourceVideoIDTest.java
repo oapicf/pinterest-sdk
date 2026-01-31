@@ -1,5 +1,6 @@
 package org.openapitools.model;
 
+import org.openapitools.model.ContentType;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -20,22 +21,6 @@ public class PinMediaSourceVideoIDTest {
     }
 
     /**
-     * Test the property 'sourceType'
-     */
-    @Test
-    public void sourceTypeTest() {
-        // TODO: test sourceType
-    }
-
-    /**
-     * Test the property 'coverImageUrl'
-     */
-    @Test
-    public void coverImageUrlTest() {
-        // TODO: test coverImageUrl
-    }
-
-    /**
      * Test the property 'coverImageContentType'
      */
     @Test
@@ -52,11 +37,19 @@ public class PinMediaSourceVideoIDTest {
     }
 
     /**
-     * Test the property 'mediaId'
+     * Test the property 'coverImageKeyFrameTime'
      */
     @Test
-    public void mediaIdTest() {
-        // TODO: test mediaId
+    public void coverImageKeyFrameTimeTest() {
+        // TODO: test coverImageKeyFrameTime
+    }
+
+    /**
+     * Test the property 'coverImageUrl'
+     */
+    @Test
+    public void coverImageUrlTest() {
+        // TODO: test coverImageUrl
     }
 
     /**
@@ -65,6 +58,22 @@ public class PinMediaSourceVideoIDTest {
     @Test
     public void isStandardTest() {
         // TODO: test isStandard
+    }
+
+    /**
+     * Test the property 'mediaId'
+     */
+    @Test
+    public void mediaIdTest() {
+        // TODO: test mediaId
+    }
+
+    /**
+     * Test the property 'sourceType'
+     */
+    @Test
+    public void sourceTypeTest() {
+        // TODO: test sourceType
     }
 
 }

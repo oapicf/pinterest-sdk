@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -14,18 +14,61 @@ package openapi
 
 
 
-// PinMedia - Pin media objects.
+// PinMedia - Pin media that can be an image, video, or a mix of both.
 type PinMedia struct {
 
-	MediaType string `json:"media_type,omitempty"`
+	Images ImageSize `json:"images,omitempty"`
+
+	MediaType string `json:"media_type"`
+
+	CoverImageUrl string `json:"cover_image_url,omitempty"`
+
+	// Duration (in miliseconds). Field maybe null after creation due to video processing time.
+	Duration *float32 `json:"duration,omitempty"`
+
+	// Height (in pixels). Field maybe null after creation due to video processing time.
+	Height *int32 `json:"height,omitempty"`
+
+	// Video url (720p).  **Note:** This field is limited and not available to all apps.
+	VideoUrl *string `json:"video_url,omitempty"`
+
+	// Width (in pixels). Field maybe null after creation due to video processing time.
+	Width *int32 `json:"width,omitempty"`
+
+	Items []PinMediaMetadata `json:"items,omitempty"`
 }
 
 // AssertPinMediaRequired checks if the required fields are not zero-ed
 func AssertPinMediaRequired(obj PinMedia) error {
+	elements := map[string]interface{}{
+		"media_type": obj.MediaType,
+	}
+	for name, el := range elements {
+		if isZero := IsZeroValue(el); isZero {
+			return &RequiredError{Field: name}
+		}
+	}
+
+	if err := AssertImageSizeRequired(obj.Images); err != nil {
+		return err
+	}
+	for _, el := range obj.Items {
+		if err := AssertPinMediaMetadataRequired(el); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 // AssertPinMediaConstraints checks if the values respects the defined constraints
 func AssertPinMediaConstraints(obj PinMedia) error {
+	if err := AssertImageSizeConstraints(obj.Images); err != nil {
+		return err
+	}
+	for _, el := range obj.Items {
+		if err := AssertPinMediaMetadataConstraints(el); err != nil {
+			return err
+		}
+	}
 	return nil
 }

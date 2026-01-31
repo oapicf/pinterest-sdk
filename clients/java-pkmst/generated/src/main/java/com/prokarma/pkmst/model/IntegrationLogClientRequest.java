@@ -18,8 +18,11 @@ import java.util.Map;
  */
 @ApiModel(description = "HTTP request details included in the log sent by the client.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class IntegrationLogClientRequest   {
+  @JsonProperty("host")
+  private String host;
+
   /**
    * Gets or Sets method
    */
@@ -68,9 +71,6 @@ public class IntegrationLogClientRequest   {
   @JsonProperty("method")
   private MethodEnum method;
 
-  @JsonProperty("host")
-  private String host;
-
   @JsonProperty("path")
   private String path;
 
@@ -84,24 +84,6 @@ public class IntegrationLogClientRequest   {
 
   @JsonProperty("response_status_code")
   private Integer responseStatusCode;
-
-  public IntegrationLogClientRequest method(MethodEnum method) {
-    this.method = method;
-    return this;
-  }
-
-  /**
-   * Get method
-   * @return method
-   */
-  @ApiModelProperty(required = true, value = "")
-  public MethodEnum getMethod() {
-    return method;
-  }
-
-  public void setMethod(MethodEnum method) {
-    this.method = method;
-  }
 
   public IntegrationLogClientRequest host(String host) {
     this.host = host;
@@ -119,6 +101,24 @@ public class IntegrationLogClientRequest   {
 
   public void setHost(String host) {
     this.host = host;
+  }
+
+  public IntegrationLogClientRequest method(MethodEnum method) {
+    this.method = method;
+    return this;
+  }
+
+  /**
+   * Get method
+   * @return method
+   */
+  @ApiModelProperty(required = true, value = "")
+  public MethodEnum getMethod() {
+    return method;
+  }
+
+  public void setMethod(MethodEnum method) {
+    this.method = method;
   }
 
   public IntegrationLogClientRequest path(String path) {
@@ -219,8 +219,8 @@ public class IntegrationLogClientRequest   {
       return false;
     }
     IntegrationLogClientRequest integrationLogClientRequest = (IntegrationLogClientRequest) o;
-    return Objects.equals(this.method, integrationLogClientRequest.method) &&
-        Objects.equals(this.host, integrationLogClientRequest.host) &&
+    return Objects.equals(this.host, integrationLogClientRequest.host) &&
+        Objects.equals(this.method, integrationLogClientRequest.method) &&
         Objects.equals(this.path, integrationLogClientRequest.path) &&
         Objects.equals(this.requestHeaders, integrationLogClientRequest.requestHeaders) &&
         Objects.equals(this.responseHeaders, integrationLogClientRequest.responseHeaders) &&
@@ -229,7 +229,7 @@ public class IntegrationLogClientRequest   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(method, host, path, requestHeaders, responseHeaders, responseStatusCode);
+    return Objects.hash(host, method, path, requestHeaders, responseHeaders, responseStatusCode);
   }
 
   @Override
@@ -237,8 +237,8 @@ public class IntegrationLogClientRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class IntegrationLogClientRequest {\n");
     
-    sb.append("    method: ").append(toIndentedString(method)).append("\n");
     sb.append("    host: ").append(toIndentedString(host)).append("\n");
+    sb.append("    method: ").append(toIndentedString(method)).append("\n");
     sb.append("    path: ").append(toIndentedString(path)).append("\n");
     sb.append("    requestHeaders: ").append(toIndentedString(requestHeaders)).append("\n");
     sb.append("    responseHeaders: ").append(toIndentedString(responseHeaders)).append("\n");

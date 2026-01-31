@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**array[SSIOOrderLine]**](SSIOOrderLine.md) | SSIO order lines by ad acount id | 
 **bookmark** | **character** |  | [optional] 
+**items** | [**array[SSIOOrderLine]**](SSIOOrderLine.md) | SSIO order lines by ad acount id | 
 
 

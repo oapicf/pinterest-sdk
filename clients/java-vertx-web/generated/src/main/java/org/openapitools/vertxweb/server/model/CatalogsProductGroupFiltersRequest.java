@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.vertxweb.server.model.AllOf;
+import org.openapitools.vertxweb.server.model.AnyOf;
 import org.openapitools.vertxweb.server.model.CatalogsProductGroupFilterKeys;
-import org.openapitools.vertxweb.server.model.CatalogsProductGroupFiltersRequestAnyOf;
-import org.openapitools.vertxweb.server.model.CatalogsProductGroupFiltersRequestAnyOf1;
 
 /**
  * Object holding a group of filters for request on catalog product group. This is a distinct schema It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.

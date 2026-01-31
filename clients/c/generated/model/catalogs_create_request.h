@@ -15,26 +15,19 @@
 
 typedef struct catalogs_create_request_t catalogs_create_request_t;
 
-
-// Enum CATALOGTYPE for catalogs_create_request
-
-typedef enum  { pinterest_rest_api_catalogs_create_request_CATALOGTYPE_NULL = 0, pinterest_rest_api_catalogs_create_request_CATALOGTYPE_HOTEL } pinterest_rest_api_catalogs_create_request_CATALOGTYPE_e;
-
-char* catalogs_create_request_catalog_type_ToString(pinterest_rest_api_catalogs_create_request_CATALOGTYPE_e catalog_type);
-
-pinterest_rest_api_catalogs_create_request_CATALOGTYPE_e catalogs_create_request_catalog_type_FromString(char* catalog_type);
+#include "catalogs_type.h"
 
 
 
 typedef struct catalogs_create_request_t {
-    pinterest_rest_api_catalogs_create_request_CATALOGTYPE_e catalog_type; //enum
+    pinterest_rest_api_catalogs_type__e catalog_type; //referenced enum
     char *name; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_create_request_t;
 
 __attribute__((deprecated)) catalogs_create_request_t *catalogs_create_request_create(
-    pinterest_rest_api_catalogs_create_request_CATALOGTYPE_e catalog_type,
+    pinterest_rest_api_catalogs_type__e catalog_type,
     char *name
 );
 

@@ -7,10 +7,10 @@
 #' @title CatalogsRetailListProductsByCatalogBasedFilterRequest
 #' @description CatalogsRetailListProductsByCatalogBasedFilterRequest Class
 #' @format An \code{R6Class} generator object
-#' @field catalog_type Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. character
 #' @field catalog_id Catalog id pertaining to the retail product group. character
-#' @field filters  \link{CatalogsProductGroupFilters}
+#' @field catalog_type Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. character
 #' @field country  \link{Country}
+#' @field filters  \link{CatalogsProductGroupFilters}
 #' @field locale  \link{CatalogsLocale}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -18,22 +18,28 @@
 CatalogsRetailListProductsByCatalogBasedFilterRequest <- R6::R6Class(
   "CatalogsRetailListProductsByCatalogBasedFilterRequest",
   public = list(
-    `catalog_type` = NULL,
     `catalog_id` = NULL,
-    `filters` = NULL,
+    `catalog_type` = NULL,
     `country` = NULL,
+    `filters` = NULL,
     `locale` = NULL,
 
     #' @description
     #' Initialize a new CatalogsRetailListProductsByCatalogBasedFilterRequest class.
     #'
-    #' @param catalog_type Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
     #' @param catalog_id Catalog id pertaining to the retail product group.
-    #' @param filters filters
+    #' @param catalog_type Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
     #' @param country country
+    #' @param filters filters
     #' @param locale locale
     #' @param ... Other optional arguments.
-    initialize = function(`catalog_type`, `catalog_id`, `filters`, `country`, `locale`, ...) {
+    initialize = function(`catalog_id`, `catalog_type`, `country`, `filters`, `locale`, ...) {
+      if (!missing(`catalog_id`)) {
+        if (!(is.character(`catalog_id`) && length(`catalog_id`) == 1)) {
+          stop(paste("Error! Invalid data for `catalog_id`. Must be a string:", `catalog_id`))
+        }
+        self$`catalog_id` <- `catalog_id`
+      }
       if (!missing(`catalog_type`)) {
         if (!(`catalog_type` %in% c("RETAIL"))) {
           stop(paste("Error! \"", `catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"RETAIL\".", sep = ""))
@@ -43,22 +49,16 @@ CatalogsRetailListProductsByCatalogBasedFilterRequest <- R6::R6Class(
         }
         self$`catalog_type` <- `catalog_type`
       }
-      if (!missing(`catalog_id`)) {
-        if (!(is.character(`catalog_id`) && length(`catalog_id`) == 1)) {
-          stop(paste("Error! Invalid data for `catalog_id`. Must be a string:", `catalog_id`))
-        }
-        self$`catalog_id` <- `catalog_id`
-      }
-      if (!missing(`filters`)) {
-        stopifnot(R6::is.R6(`filters`))
-        self$`filters` <- `filters`
-      }
       if (!missing(`country`)) {
         if (!(`country` %in% c())) {
           stop(paste("Error! \"", `country`, "\" cannot be assigned to `country`. Must be .", sep = ""))
         }
         stopifnot(R6::is.R6(`country`))
         self$`country` <- `country`
+      }
+      if (!missing(`filters`)) {
+        stopifnot(R6::is.R6(`filters`))
+        self$`filters` <- `filters`
       }
       if (!missing(`locale`)) {
         if (!(`locale` %in% c())) {
@@ -100,21 +100,21 @@ CatalogsRetailListProductsByCatalogBasedFilterRequest <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CatalogsRetailListProductsByCatalogBasedFilterRequestObject <- list()
-      if (!is.null(self$`catalog_type`)) {
-        CatalogsRetailListProductsByCatalogBasedFilterRequestObject[["catalog_type"]] <-
-          self$`catalog_type`
-      }
       if (!is.null(self$`catalog_id`)) {
         CatalogsRetailListProductsByCatalogBasedFilterRequestObject[["catalog_id"]] <-
           self$`catalog_id`
       }
-      if (!is.null(self$`filters`)) {
-        CatalogsRetailListProductsByCatalogBasedFilterRequestObject[["filters"]] <-
-          self$`filters`$toSimpleType()
+      if (!is.null(self$`catalog_type`)) {
+        CatalogsRetailListProductsByCatalogBasedFilterRequestObject[["catalog_type"]] <-
+          self$`catalog_type`
       }
       if (!is.null(self$`country`)) {
         CatalogsRetailListProductsByCatalogBasedFilterRequestObject[["country"]] <-
           self$`country`$toSimpleType()
+      }
+      if (!is.null(self$`filters`)) {
+        CatalogsRetailListProductsByCatalogBasedFilterRequestObject[["filters"]] <-
+          self$`filters`$toSimpleType()
       }
       if (!is.null(self$`locale`)) {
         CatalogsRetailListProductsByCatalogBasedFilterRequestObject[["locale"]] <-
@@ -130,24 +130,24 @@ CatalogsRetailListProductsByCatalogBasedFilterRequest <- R6::R6Class(
     #' @return the instance of CatalogsRetailListProductsByCatalogBasedFilterRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`catalog_id`)) {
+        self$`catalog_id` <- this_object$`catalog_id`
+      }
       if (!is.null(this_object$`catalog_type`)) {
         if (!is.null(this_object$`catalog_type`) && !(this_object$`catalog_type` %in% c("RETAIL"))) {
           stop(paste("Error! \"", this_object$`catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"RETAIL\".", sep = ""))
         }
         self$`catalog_type` <- this_object$`catalog_type`
       }
-      if (!is.null(this_object$`catalog_id`)) {
-        self$`catalog_id` <- this_object$`catalog_id`
+      if (!is.null(this_object$`country`)) {
+        `country_object` <- Country$new()
+        `country_object`$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
+        self$`country` <- `country_object`
       }
       if (!is.null(this_object$`filters`)) {
         `filters_object` <- CatalogsProductGroupFilters$new()
         `filters_object`$fromJSON(jsonlite::toJSON(this_object$`filters`, auto_unbox = TRUE, digits = NA))
         self$`filters` <- `filters_object`
-      }
-      if (!is.null(this_object$`country`)) {
-        `country_object` <- Country$new()
-        `country_object`$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
-        self$`country` <- `country_object`
       }
       if (!is.null(this_object$`locale`)) {
         `locale_object` <- CatalogsLocale$new()
@@ -175,13 +175,13 @@ CatalogsRetailListProductsByCatalogBasedFilterRequest <- R6::R6Class(
     #' @return the instance of CatalogsRetailListProductsByCatalogBasedFilterRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`catalog_id` <- this_object$`catalog_id`
       if (!is.null(this_object$`catalog_type`) && !(this_object$`catalog_type` %in% c("RETAIL"))) {
         stop(paste("Error! \"", this_object$`catalog_type`, "\" cannot be assigned to `catalog_type`. Must be \"RETAIL\".", sep = ""))
       }
       self$`catalog_type` <- this_object$`catalog_type`
-      self$`catalog_id` <- this_object$`catalog_id`
-      self$`filters` <- CatalogsProductGroupFilters$new()$fromJSON(jsonlite::toJSON(this_object$`filters`, auto_unbox = TRUE, digits = NA))
       self$`country` <- Country$new()$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
+      self$`filters` <- CatalogsProductGroupFilters$new()$fromJSON(jsonlite::toJSON(this_object$`filters`, auto_unbox = TRUE, digits = NA))
       self$`locale` <- CatalogsLocale$new()$fromJSON(jsonlite::toJSON(this_object$`locale`, auto_unbox = TRUE, digits = NA))
       self
     },
@@ -192,14 +192,6 @@ CatalogsRetailListProductsByCatalogBasedFilterRequest <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
-      # check the required field `catalog_type`
-      if (!is.null(input_json$`catalog_type`)) {
-        if (!(is.character(input_json$`catalog_type`) && length(input_json$`catalog_type`) == 1)) {
-          stop(paste("Error! Invalid data for `catalog_type`. Must be a string:", input_json$`catalog_type`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for CatalogsRetailListProductsByCatalogBasedFilterRequest: the required field `catalog_type` is missing."))
-      }
       # check the required field `catalog_id`
       if (!is.null(input_json$`catalog_id`)) {
         if (!(is.character(input_json$`catalog_id`) && length(input_json$`catalog_id`) == 1)) {
@@ -208,17 +200,25 @@ CatalogsRetailListProductsByCatalogBasedFilterRequest <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsRetailListProductsByCatalogBasedFilterRequest: the required field `catalog_id` is missing."))
       }
-      # check the required field `filters`
-      if (!is.null(input_json$`filters`)) {
-        stopifnot(R6::is.R6(input_json$`filters`))
+      # check the required field `catalog_type`
+      if (!is.null(input_json$`catalog_type`)) {
+        if (!(is.character(input_json$`catalog_type`) && length(input_json$`catalog_type`) == 1)) {
+          stop(paste("Error! Invalid data for `catalog_type`. Must be a string:", input_json$`catalog_type`))
+        }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for CatalogsRetailListProductsByCatalogBasedFilterRequest: the required field `filters` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsRetailListProductsByCatalogBasedFilterRequest: the required field `catalog_type` is missing."))
       }
       # check the required field `country`
       if (!is.null(input_json$`country`)) {
         stopifnot(R6::is.R6(input_json$`country`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsRetailListProductsByCatalogBasedFilterRequest: the required field `country` is missing."))
+      }
+      # check the required field `filters`
+      if (!is.null(input_json$`filters`)) {
+        stopifnot(R6::is.R6(input_json$`filters`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsRetailListProductsByCatalogBasedFilterRequest: the required field `filters` is missing."))
       }
       # check the required field `locale`
       if (!is.null(input_json$`locale`)) {
@@ -241,11 +241,6 @@ CatalogsRetailListProductsByCatalogBasedFilterRequest <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      # check if the required `catalog_type` is null
-      if (is.null(self$`catalog_type`)) {
-        return(FALSE)
-      }
-
       # check if the required `catalog_id` is null
       if (is.null(self$`catalog_id`)) {
         return(FALSE)
@@ -255,13 +250,18 @@ CatalogsRetailListProductsByCatalogBasedFilterRequest <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `filters` is null
-      if (is.null(self$`filters`)) {
+      # check if the required `catalog_type` is null
+      if (is.null(self$`catalog_type`)) {
         return(FALSE)
       }
 
       # check if the required `country` is null
       if (is.null(self$`country`)) {
+        return(FALSE)
+      }
+
+      # check if the required `filters` is null
+      if (is.null(self$`filters`)) {
         return(FALSE)
       }
 
@@ -279,11 +279,6 @@ CatalogsRetailListProductsByCatalogBasedFilterRequest <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      # check if the required `catalog_type` is null
-      if (is.null(self$`catalog_type`)) {
-        invalid_fields["catalog_type"] <- "Non-nullable required field `catalog_type` cannot be null."
-      }
-
       # check if the required `catalog_id` is null
       if (is.null(self$`catalog_id`)) {
         invalid_fields["catalog_id"] <- "Non-nullable required field `catalog_id` cannot be null."
@@ -293,14 +288,19 @@ CatalogsRetailListProductsByCatalogBasedFilterRequest <- R6::R6Class(
         invalid_fields["catalog_id"] <- "Invalid value for `catalog_id`, must conform to the pattern ^\\d+$."
       }
 
-      # check if the required `filters` is null
-      if (is.null(self$`filters`)) {
-        invalid_fields["filters"] <- "Non-nullable required field `filters` cannot be null."
+      # check if the required `catalog_type` is null
+      if (is.null(self$`catalog_type`)) {
+        invalid_fields["catalog_type"] <- "Non-nullable required field `catalog_type` cannot be null."
       }
 
       # check if the required `country` is null
       if (is.null(self$`country`)) {
         invalid_fields["country"] <- "Non-nullable required field `country` cannot be null."
+      }
+
+      # check if the required `filters` is null
+      if (is.null(self$`filters`)) {
+        invalid_fields["filters"] <- "Non-nullable required field `filters` cannot be null."
       }
 
       # check if the required `locale` is null

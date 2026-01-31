@@ -13,6 +13,8 @@ import org.openapitools.model.ItemDeleteBatchRecord;
 
 @Canonical
 class ItemsBatchPostRequest {
+    /* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
+    String catalogId
 
     enum CatalogTypeEnum {
     
@@ -38,6 +40,8 @@ class ItemsBatchPostRequest {
     CatalogTypeEnum catalogType
     
     Country country
+    /* Array with catalogs items */
+    List<ItemDeleteBatchRecord> items = new ArrayList<>()
 
     enum LanguageEnum {
     
@@ -273,10 +277,6 @@ class ItemsBatchPostRequest {
 
     /* We recommend using the CatalogsLocale values. */
     LanguageEnum language
-    /* Array with catalogs items */
-    List<ItemDeleteBatchRecord> items = new ArrayList<>()
-    /* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
-    String catalogId
     
     BatchOperation operation
 }

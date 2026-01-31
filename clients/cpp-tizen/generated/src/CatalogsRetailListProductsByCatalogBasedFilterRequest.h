@@ -48,13 +48,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
-	 */
-	std::string getCatalogType();
-
-	/*! \brief Set Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
-	 */
-	void setCatalogType(std::string  catalog_type);
 	/*! \brief Get Catalog id pertaining to the retail product group.
 	 */
 	std::string getCatalogId();
@@ -62,13 +55,13 @@ public:
 	/*! \brief Set Catalog id pertaining to the retail product group.
 	 */
 	void setCatalogId(std::string  catalog_id);
-	/*! \brief Get 
+	/*! \brief Get Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
 	 */
-	CatalogsProductGroupFilters getFilters();
+	std::string getCatalogType();
 
-	/*! \brief Set 
+	/*! \brief Set Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
 	 */
-	void setFilters(CatalogsProductGroupFilters  filters);
+	void setCatalogType(std::string  catalog_type);
 	/*! \brief Get 
 	 */
 	Country getCountry();
@@ -78,6 +71,13 @@ public:
 	void setCountry(Country  country);
 	/*! \brief Get 
 	 */
+	CatalogsProductGroupFilters getFilters();
+
+	/*! \brief Set 
+	 */
+	void setFilters(CatalogsProductGroupFilters  filters);
+	/*! \brief Get 
+	 */
 	CatalogsLocale getLocale();
 
 	/*! \brief Set 
@@ -85,10 +85,10 @@ public:
 	void setLocale(CatalogsLocale  locale);
 
 private:
-	std::string catalog_type;
 	std::string catalog_id;
-	CatalogsProductGroupFilters filters;
+	std::string catalog_type;
 	Country country;
+	CatalogsProductGroupFilters filters;
 	CatalogsLocale locale;
 	void __init();
 	void __cleanup();

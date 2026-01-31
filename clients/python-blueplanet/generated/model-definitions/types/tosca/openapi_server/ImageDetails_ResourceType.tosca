@@ -1,0 +1,45 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ImageDetails"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ImageDetails"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  ImageDetails {
+    title = ImageDetails
+    description = ImageDetails
+    derivedFrom = Root
+    properties {
+        height {
+          type =  integer
+          description = ""
+          optional = true
+        }
+        url {
+          type =  string
+          description = ""
+          optional = true
+        }
+        width {
+          type =  integer
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ImageDetails {
+    title = ImageDetails
+    description = ImageDetails
+    implements = openapi_server.resourceTypes.ImageDetails
+
+  }
+}

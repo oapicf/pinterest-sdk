@@ -3,17 +3,17 @@ Protected Class AdAccountOwner
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Public username for the user account
+			The owning account's user ID.
 		#tag EndNote
-		username As Xoson.O.OptionalString
+		id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The owning account's user ID.
+			Public username for the user account
 		#tag EndNote
-		id As Xoson.O.OptionalString
+		username As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -54,7 +54,7 @@ Protected Class AdAccountOwner
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="username"
+			Name="id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -62,7 +62,7 @@ Protected Class AdAccountOwner
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="id"
+			Name="username"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

@@ -29,15 +29,15 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsHotelItemErrorResponse", description = "Object describing a hotel item error")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class CatalogsHotelItemErrorResponse implements ItemResponseAnyOf1 {
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+public class CatalogsHotelItemErrorResponse implements ItemResponseOneOf1 {
 
   private CatalogsType catalogType;
 
-  private String hotelId;
-
   @Valid
   private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
+
+  private String hotelId;
 
   public CatalogsHotelItemErrorResponse() {
     super();
@@ -46,8 +46,9 @@ public class CatalogsHotelItemErrorResponse implements ItemResponseAnyOf1 {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsHotelItemErrorResponse(CatalogsType catalogType) {
+  public CatalogsHotelItemErrorResponse(CatalogsType catalogType, List<@Valid ItemValidationEvent> errors) {
     this.catalogType = catalogType;
+    this.errors = errors;
   }
 
   public CatalogsHotelItemErrorResponse catalogType(CatalogsType catalogType) {
@@ -70,6 +71,34 @@ public class CatalogsHotelItemErrorResponse implements ItemResponseAnyOf1 {
     this.catalogType = catalogType;
   }
 
+  public CatalogsHotelItemErrorResponse errors(List<@Valid ItemValidationEvent> errors) {
+    this.errors = errors;
+    return this;
+  }
+
+  public CatalogsHotelItemErrorResponse addErrorsItem(ItemValidationEvent errorsItem) {
+    if (this.errors == null) {
+      this.errors = new ArrayList<>();
+    }
+    this.errors.add(errorsItem);
+    return this;
+  }
+
+  /**
+   * Array with the errors for the item id requested
+   * @return errors
+   */
+  @NotNull @Valid 
+  @Schema(name = "errors", description = "Array with the errors for the item id requested", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("errors")
+  public List<@Valid ItemValidationEvent> getErrors() {
+    return errors;
+  }
+
+  public void setErrors(List<@Valid ItemValidationEvent> errors) {
+    this.errors = errors;
+  }
+
   public CatalogsHotelItemErrorResponse hotelId(String hotelId) {
     this.hotelId = hotelId;
     return this;
@@ -90,34 +119,6 @@ public class CatalogsHotelItemErrorResponse implements ItemResponseAnyOf1 {
     this.hotelId = hotelId;
   }
 
-  public CatalogsHotelItemErrorResponse errors(List<@Valid ItemValidationEvent> errors) {
-    this.errors = errors;
-    return this;
-  }
-
-  public CatalogsHotelItemErrorResponse addErrorsItem(ItemValidationEvent errorsItem) {
-    if (this.errors == null) {
-      this.errors = new ArrayList<>();
-    }
-    this.errors.add(errorsItem);
-    return this;
-  }
-
-  /**
-   * Array with the errors for the item id requested
-   * @return errors
-   */
-  @Valid 
-  @Schema(name = "errors", description = "Array with the errors for the item id requested", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("errors")
-  public List<@Valid ItemValidationEvent> getErrors() {
-    return errors;
-  }
-
-  public void setErrors(List<@Valid ItemValidationEvent> errors) {
-    this.errors = errors;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -128,13 +129,13 @@ public class CatalogsHotelItemErrorResponse implements ItemResponseAnyOf1 {
     }
     CatalogsHotelItemErrorResponse catalogsHotelItemErrorResponse = (CatalogsHotelItemErrorResponse) o;
     return Objects.equals(this.catalogType, catalogsHotelItemErrorResponse.catalogType) &&
-        Objects.equals(this.hotelId, catalogsHotelItemErrorResponse.hotelId) &&
-        Objects.equals(this.errors, catalogsHotelItemErrorResponse.errors);
+        Objects.equals(this.errors, catalogsHotelItemErrorResponse.errors) &&
+        Objects.equals(this.hotelId, catalogsHotelItemErrorResponse.hotelId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, hotelId, errors);
+    return Objects.hash(catalogType, errors, hotelId);
   }
 
   @Override
@@ -142,8 +143,8 @@ public class CatalogsHotelItemErrorResponse implements ItemResponseAnyOf1 {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelItemErrorResponse {\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

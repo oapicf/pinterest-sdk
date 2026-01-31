@@ -8,8 +8,8 @@
 #' @description AudienceDefinition Class
 #' @format An \code{R6Class} generator object
 #' @field date Generation date character [optional]
-#' @field type Generated audience type to request. character [optional]
-#' @field scope Generated audience scope to request. character [optional]
+#' @field scope  character [optional]
+#' @field type  character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -17,28 +17,34 @@ AudienceDefinition <- R6::R6Class(
   "AudienceDefinition",
   public = list(
     `date` = NULL,
-    `type` = NULL,
     `scope` = NULL,
+    `type` = NULL,
 
     #' @description
     #' Initialize a new AudienceDefinition class.
     #'
     #' @param date Generation date
-    #' @param type Generated audience type to request.
-    #' @param scope Generated audience scope to request.
+    #' @param scope scope
+    #' @param type type
     #' @param ... Other optional arguments.
-    initialize = function(`date` = NULL, `type` = NULL, `scope` = NULL, ...) {
+    initialize = function(`date` = NULL, `scope` = NULL, `type` = NULL, ...) {
       if (!is.null(`date`)) {
         if (!(is.character(`date`) && length(`date`) == 1)) {
           stop(paste("Error! Invalid data for `date`. Must be a string:", `date`))
         }
         self$`date` <- `date`
       }
-      if (!is.null(`type`)) {
-        self$`type` <- `type`
-      }
       if (!is.null(`scope`)) {
+        if (!(is.character(`scope`) && length(`scope`) == 1)) {
+          stop(paste("Error! Invalid data for `scope`. Must be a string:", `scope`))
+        }
         self$`scope` <- `scope`
+      }
+      if (!is.null(`type`)) {
+        if (!(is.character(`type`) && length(`type`) == 1)) {
+          stop(paste("Error! Invalid data for `type`. Must be a string:", `type`))
+        }
+        self$`type` <- `type`
       }
     },
 
@@ -77,13 +83,13 @@ AudienceDefinition <- R6::R6Class(
         AudienceDefinitionObject[["date"]] <-
           self$`date`
       }
-      if (!is.null(self$`type`)) {
-        AudienceDefinitionObject[["type"]] <-
-          self$`type`
-      }
       if (!is.null(self$`scope`)) {
         AudienceDefinitionObject[["scope"]] <-
           self$`scope`
+      }
+      if (!is.null(self$`type`)) {
+        AudienceDefinitionObject[["type"]] <-
+          self$`type`
       }
       return(AudienceDefinitionObject)
     },
@@ -98,11 +104,11 @@ AudienceDefinition <- R6::R6Class(
       if (!is.null(this_object$`date`)) {
         self$`date` <- this_object$`date`
       }
-      if (!is.null(this_object$`type`)) {
-        self$`type` <- this_object$`type`
-      }
       if (!is.null(this_object$`scope`)) {
         self$`scope` <- this_object$`scope`
+      }
+      if (!is.null(this_object$`type`)) {
+        self$`type` <- this_object$`type`
       }
       self
     },
@@ -126,8 +132,8 @@ AudienceDefinition <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`date` <- this_object$`date`
-      self$`type` <- this_object$`type`
       self$`scope` <- this_object$`scope`
+      self$`type` <- this_object$`type`
       self
     },
 

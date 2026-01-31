@@ -8,7 +8,7 @@ import org.openapitools.model.BulkUpsertStatus;
 @Canonical
 class BulkUpsertStatusResponse {
     
-    BulkUpsertStatus status
-    
     String resultUrl
+    
+    BulkUpsertStatus status
 }

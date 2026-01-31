@@ -20,23 +20,24 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}created_time`,
-                label: `Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss - [${labelPrefix}created_time]`,
-                type: 'string',
-            },
-            {
                 key: `${keyPrefix}completed_time`,
                 label: `Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss - [${labelPrefix}completed_time]`,
                 type: 'string',
             },
             {
-                key: `${keyPrefix}status`,
-                ...BatchOperationStatus.fields(`${keyPrefix}status`, isInput),
+                key: `${keyPrefix}created_time`,
+                label: `Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss - [${labelPrefix}created_time]`,
+                required: true,
+                type: 'string',
             },
             {
                 key: `${keyPrefix}items`,
                 label: `[${labelPrefix}items]`,
                 children: CreativeAssetsProcessingRecord.fields(`${keyPrefix}items${!isInput ? '[]' : ''}`, isInput, true), 
+            },
+            {
+                key: `${keyPrefix}status`,
+                ...BatchOperationStatus.fields(`${keyPrefix}status`, isInput),
             },
         ]
     },
@@ -45,10 +46,10 @@ module.exports = {
         return {
             'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
             'batch_id': bundle.inputData?.[`${keyPrefix}batch_id`],
-            'created_time': bundle.inputData?.[`${keyPrefix}created_time`],
             'completed_time': bundle.inputData?.[`${keyPrefix}completed_time`],
-            'status': bundle.inputData?.[`${keyPrefix}status`],
+            'created_time': bundle.inputData?.[`${keyPrefix}created_time`],
             'items': utils.childMapping(bundle.inputData?.[`${keyPrefix}items`], `${keyPrefix}items`, CreativeAssetsProcessingRecord),
+            'status': bundle.inputData?.[`${keyPrefix}status`],
         }
     },
 }

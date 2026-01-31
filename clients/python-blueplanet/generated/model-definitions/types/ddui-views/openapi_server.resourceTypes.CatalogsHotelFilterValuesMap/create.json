@@ -1,0 +1,22 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "brand" },
+      {"model": "custom_label_0" },
+      {"model": "custom_label_1" },
+      {"model": "custom_label_2" },
+      {"model": "custom_label_3" },
+      {"model": "custom_label_4" },
+    ]
+  }]
+}

@@ -21,9 +21,12 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Schema for log sent from an integration application.")
 @JsonTypeName("IntegrationLog")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class IntegrationLog   {
+  private String advertiserId;
+  private String appVersionNumber;
   private Integer clientTimestamp;
+  private IntegrationLogClientError error;
   public enum EventTypeEnum {
 
     APP(String.valueOf("APP")), API(String.valueOf("API"));
@@ -72,6 +75,8 @@ public class IntegrationLog   {
 }
 
   private EventTypeEnum eventType;
+  private String externalBusinessId;
+  private String feedProfileId;
   public enum LogLevelEnum {
 
     INFO(String.valueOf("INFO")), WARN(String.valueOf("WARN")), ERROR(String.valueOf("ERROR"));
@@ -120,16 +125,11 @@ public class IntegrationLog   {
 }
 
   private LogLevelEnum logLevel;
-  private String externalBusinessId;
-  private String advertiserId;
   private String merchantId;
-  private String tagId;
-  private String feedProfileId;
   private String message;
-  private String appVersionNumber;
   private String platformVersionNumber;
-  private IntegrationLogClientError error;
   private IntegrationLogClientRequest request;
+  private String tagId;
 
   public IntegrationLog() {
   }
@@ -143,6 +143,45 @@ public class IntegrationLog   {
     this.clientTimestamp = clientTimestamp;
     this.eventType = eventType;
     this.logLevel = logLevel;
+  }
+
+  /**
+   **/
+  public IntegrationLog advertiserId(String advertiserId) {
+    this.advertiserId = advertiserId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("advertiser_id")
+   @Size(max=128)public String getAdvertiserId() {
+    return advertiserId;
+  }
+
+  @JsonProperty("advertiser_id")
+  public void setAdvertiserId(String advertiserId) {
+    this.advertiserId = advertiserId;
+  }
+
+  /**
+   * Version number of the integration application.
+   **/
+  public IntegrationLog appVersionNumber(String appVersionNumber) {
+    this.appVersionNumber = appVersionNumber;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Version number of the integration application.")
+  @JsonProperty("app_version_number")
+   @Size(max=20)public String getAppVersionNumber() {
+    return appVersionNumber;
+  }
+
+  @JsonProperty("app_version_number")
+  public void setAppVersionNumber(String appVersionNumber) {
+    this.appVersionNumber = appVersionNumber;
   }
 
   /**
@@ -166,6 +205,25 @@ public class IntegrationLog   {
   }
 
   /**
+   **/
+  public IntegrationLog error(IntegrationLogClientError error) {
+    this.error = error;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("error")
+  @Valid public IntegrationLogClientError getError() {
+    return error;
+  }
+
+  @JsonProperty("error")
+  public void setError(IntegrationLogClientError error) {
+    this.error = error;
+  }
+
+  /**
    * Log event type
    **/
   public IntegrationLog eventType(EventTypeEnum eventType) {
@@ -183,6 +241,44 @@ public class IntegrationLog   {
   @JsonProperty(required = true, value = "event_type")
   public void setEventType(EventTypeEnum eventType) {
     this.eventType = eventType;
+  }
+
+  /**
+   **/
+  public IntegrationLog externalBusinessId(String externalBusinessId) {
+    this.externalBusinessId = externalBusinessId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("external_business_id")
+   @Size(max=2048)public String getExternalBusinessId() {
+    return externalBusinessId;
+  }
+
+  @JsonProperty("external_business_id")
+  public void setExternalBusinessId(String externalBusinessId) {
+    this.externalBusinessId = externalBusinessId;
+  }
+
+  /**
+   **/
+  public IntegrationLog feedProfileId(String feedProfileId) {
+    this.feedProfileId = feedProfileId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("feed_profile_id")
+   @Size(max=128)public String getFeedProfileId() {
+    return feedProfileId;
+  }
+
+  @JsonProperty("feed_profile_id")
+  public void setFeedProfileId(String feedProfileId) {
+    this.feedProfileId = feedProfileId;
   }
 
   /**
@@ -207,44 +303,6 @@ public class IntegrationLog   {
 
   /**
    **/
-  public IntegrationLog externalBusinessId(String externalBusinessId) {
-    this.externalBusinessId = externalBusinessId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("external_business_id")
-   @Size(max=2048)public String getExternalBusinessId() {
-    return externalBusinessId;
-  }
-
-  @JsonProperty("external_business_id")
-  public void setExternalBusinessId(String externalBusinessId) {
-    this.externalBusinessId = externalBusinessId;
-  }
-
-  /**
-   **/
-  public IntegrationLog advertiserId(String advertiserId) {
-    this.advertiserId = advertiserId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("advertiser_id")
-   @Size(max=128)public String getAdvertiserId() {
-    return advertiserId;
-  }
-
-  @JsonProperty("advertiser_id")
-  public void setAdvertiserId(String advertiserId) {
-    this.advertiserId = advertiserId;
-  }
-
-  /**
-   **/
   public IntegrationLog merchantId(String merchantId) {
     this.merchantId = merchantId;
     return this;
@@ -263,44 +321,6 @@ public class IntegrationLog   {
   }
 
   /**
-   **/
-  public IntegrationLog tagId(String tagId) {
-    this.tagId = tagId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("tag_id")
-   @Size(max=128)public String getTagId() {
-    return tagId;
-  }
-
-  @JsonProperty("tag_id")
-  public void setTagId(String tagId) {
-    this.tagId = tagId;
-  }
-
-  /**
-   **/
-  public IntegrationLog feedProfileId(String feedProfileId) {
-    this.feedProfileId = feedProfileId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("feed_profile_id")
-   @Size(max=128)public String getFeedProfileId() {
-    return feedProfileId;
-  }
-
-  @JsonProperty("feed_profile_id")
-  public void setFeedProfileId(String feedProfileId) {
-    this.feedProfileId = feedProfileId;
-  }
-
-  /**
    * Explanation of the event that occured.
    **/
   public IntegrationLog message(String message) {
@@ -311,33 +331,13 @@ public class IntegrationLog   {
   
   @ApiModelProperty(value = "Explanation of the event that occured.")
   @JsonProperty("message")
-   @Size(max=2048)public String getMessage() {
+   @Size(max=8192)public String getMessage() {
     return message;
   }
 
   @JsonProperty("message")
   public void setMessage(String message) {
     this.message = message;
-  }
-
-  /**
-   * Version number of the integration application.
-   **/
-  public IntegrationLog appVersionNumber(String appVersionNumber) {
-    this.appVersionNumber = appVersionNumber;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Version number of the integration application.")
-  @JsonProperty("app_version_number")
-   @Size(max=20)public String getAppVersionNumber() {
-    return appVersionNumber;
-  }
-
-  @JsonProperty("app_version_number")
-  public void setAppVersionNumber(String appVersionNumber) {
-    this.appVersionNumber = appVersionNumber;
   }
 
   /**
@@ -362,25 +362,6 @@ public class IntegrationLog   {
 
   /**
    **/
-  public IntegrationLog error(IntegrationLogClientError error) {
-    this.error = error;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("error")
-  @Valid public IntegrationLogClientError getError() {
-    return error;
-  }
-
-  @JsonProperty("error")
-  public void setError(IntegrationLogClientError error) {
-    this.error = error;
-  }
-
-  /**
-   **/
   public IntegrationLog request(IntegrationLogClientRequest request) {
     this.request = request;
     return this;
@@ -398,6 +379,25 @@ public class IntegrationLog   {
     this.request = request;
   }
 
+  /**
+   **/
+  public IntegrationLog tagId(String tagId) {
+    this.tagId = tagId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("tag_id")
+   @Size(max=128)public String getTagId() {
+    return tagId;
+  }
+
+  @JsonProperty("tag_id")
+  public void setTagId(String tagId) {
+    this.tagId = tagId;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -408,24 +408,24 @@ public class IntegrationLog   {
       return false;
     }
     IntegrationLog integrationLog = (IntegrationLog) o;
-    return Objects.equals(this.clientTimestamp, integrationLog.clientTimestamp) &&
-        Objects.equals(this.eventType, integrationLog.eventType) &&
-        Objects.equals(this.logLevel, integrationLog.logLevel) &&
-        Objects.equals(this.externalBusinessId, integrationLog.externalBusinessId) &&
-        Objects.equals(this.advertiserId, integrationLog.advertiserId) &&
-        Objects.equals(this.merchantId, integrationLog.merchantId) &&
-        Objects.equals(this.tagId, integrationLog.tagId) &&
-        Objects.equals(this.feedProfileId, integrationLog.feedProfileId) &&
-        Objects.equals(this.message, integrationLog.message) &&
+    return Objects.equals(this.advertiserId, integrationLog.advertiserId) &&
         Objects.equals(this.appVersionNumber, integrationLog.appVersionNumber) &&
-        Objects.equals(this.platformVersionNumber, integrationLog.platformVersionNumber) &&
+        Objects.equals(this.clientTimestamp, integrationLog.clientTimestamp) &&
         Objects.equals(this.error, integrationLog.error) &&
-        Objects.equals(this.request, integrationLog.request);
+        Objects.equals(this.eventType, integrationLog.eventType) &&
+        Objects.equals(this.externalBusinessId, integrationLog.externalBusinessId) &&
+        Objects.equals(this.feedProfileId, integrationLog.feedProfileId) &&
+        Objects.equals(this.logLevel, integrationLog.logLevel) &&
+        Objects.equals(this.merchantId, integrationLog.merchantId) &&
+        Objects.equals(this.message, integrationLog.message) &&
+        Objects.equals(this.platformVersionNumber, integrationLog.platformVersionNumber) &&
+        Objects.equals(this.request, integrationLog.request) &&
+        Objects.equals(this.tagId, integrationLog.tagId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(clientTimestamp, eventType, logLevel, externalBusinessId, advertiserId, merchantId, tagId, feedProfileId, message, appVersionNumber, platformVersionNumber, error, request);
+    return Objects.hash(advertiserId, appVersionNumber, clientTimestamp, error, eventType, externalBusinessId, feedProfileId, logLevel, merchantId, message, platformVersionNumber, request, tagId);
   }
 
   @Override
@@ -433,19 +433,19 @@ public class IntegrationLog   {
     StringBuilder sb = new StringBuilder();
     sb.append("class IntegrationLog {\n");
     
-    sb.append("    clientTimestamp: ").append(toIndentedString(clientTimestamp)).append("\n");
-    sb.append("    eventType: ").append(toIndentedString(eventType)).append("\n");
-    sb.append("    logLevel: ").append(toIndentedString(logLevel)).append("\n");
-    sb.append("    externalBusinessId: ").append(toIndentedString(externalBusinessId)).append("\n");
     sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
-    sb.append("    merchantId: ").append(toIndentedString(merchantId)).append("\n");
-    sb.append("    tagId: ").append(toIndentedString(tagId)).append("\n");
-    sb.append("    feedProfileId: ").append(toIndentedString(feedProfileId)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    appVersionNumber: ").append(toIndentedString(appVersionNumber)).append("\n");
-    sb.append("    platformVersionNumber: ").append(toIndentedString(platformVersionNumber)).append("\n");
+    sb.append("    clientTimestamp: ").append(toIndentedString(clientTimestamp)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("    eventType: ").append(toIndentedString(eventType)).append("\n");
+    sb.append("    externalBusinessId: ").append(toIndentedString(externalBusinessId)).append("\n");
+    sb.append("    feedProfileId: ").append(toIndentedString(feedProfileId)).append("\n");
+    sb.append("    logLevel: ").append(toIndentedString(logLevel)).append("\n");
+    sb.append("    merchantId: ").append(toIndentedString(merchantId)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    platformVersionNumber: ").append(toIndentedString(platformVersionNumber)).append("\n");
     sb.append("    request: ").append(toIndentedString(request)).append("\n");
+    sb.append("    tagId: ").append(toIndentedString(tagId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

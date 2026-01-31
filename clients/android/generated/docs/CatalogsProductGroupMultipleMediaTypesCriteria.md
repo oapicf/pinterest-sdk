@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**values** | [**List&lt;MediaType&gt;**](MediaType.md) |  | 
 **negated** | **Boolean** |  |  [optional]
+**values** | [**List&lt;MediaType&gt;**](MediaType.md) |  | 
 
 
 

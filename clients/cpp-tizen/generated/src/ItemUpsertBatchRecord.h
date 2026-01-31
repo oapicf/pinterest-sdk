@@ -46,13 +46,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get The catalog item id in the merchant namespace
-	 */
-	std::string getItemId();
-
-	/*! \brief Set The catalog item id in the merchant namespace
-	 */
-	void setItemId(std::string  item_id);
 	/*! \brief Get 
 	 */
 	ItemAttributesRequest getAttributes();
@@ -60,10 +53,17 @@ public:
 	/*! \brief Set 
 	 */
 	void setAttributes(ItemAttributesRequest  attributes);
+	/*! \brief Get The catalog item id in the merchant namespace
+	 */
+	std::string getItemId();
+
+	/*! \brief Set The catalog item id in the merchant namespace
+	 */
+	void setItemId(std::string  item_id);
 
 private:
-	std::string item_id;
 	ItemAttributesRequest attributes;
+	std::string item_id;
 	void __init();
 	void __cleanup();
 

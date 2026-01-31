@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server SsioInsertionOrdersStatusGetByAdAccount200Response"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a SsioInsertionOrdersStatusGetByAdAccount200Response"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  SSIOInsertionOrderStatus = openapi_server.resourceTypes.SSIOInsertionOrderStatus
+}
+resourceTypes {
+
+  SsioInsertionOrdersStatusGetByAdAccount200Response {
+    title = SsioInsertionOrdersStatusGetByAdAccount200Response
+    description = SsioInsertionOrdersStatusGetByAdAccount200Response
+    derivedFrom = Root
+    properties {
+        bookmark {
+          type =  string
+          description = ""
+          optional = false
+        }
+        items {
+          type = array
+          items.type = SSIOInsertionOrderStatus
+          description = "Insertion orders status by ad acount id"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  SsioInsertionOrdersStatusGetByAdAccount200Response {
+    title = SsioInsertionOrdersStatusGetByAdAccount200Response
+    description = SsioInsertionOrdersStatusGetByAdAccount200Response
+    implements = openapi_server.resourceTypes.SsioInsertionOrdersStatusGetByAdAccount200Response
+
+  }
+}

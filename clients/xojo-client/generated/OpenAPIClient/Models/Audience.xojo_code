@@ -11,6 +11,38 @@ Protected Class Audience
 
 	#tag Property, Flags = &h0
 		#tag Note
+			<a href="/docs/reference/glossary/#Audience Types">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+		#tag EndNote
+		audience_type As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			The company that created this audience.
+		#tag EndNote
+		created_by_company_name As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Creation time. Unix timestamp in seconds.
+		#tag EndNote
+		created_timestamp As Xoson.O.OptionalInteger
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Audience description.
+		#tag EndNote
+		description As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			Audience ID.
 		#tag EndNote
 		id As Xoson.O.OptionalString
@@ -22,22 +54,6 @@ Protected Class Audience
 			Audience name.
 		#tag EndNote
 		name As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			<a href="/docs/reference/glossary/#Audience Types">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
-		#tag EndNote
-		audience_type As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Audience description.
-		#tag EndNote
-		description As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -67,14 +83,6 @@ Protected Class Audience
 			Always "audience".
 		#tag EndNote
 		type As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Creation time. Unix timestamp in seconds.
-		#tag EndNote
-		created_timestamp As Xoson.O.OptionalInteger
 	#tag EndProperty
 
 
@@ -131,6 +139,38 @@ Protected Class Audience
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="audience_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="created_by_company_name"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="created_timestamp"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="description"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="id"
 			Visible=false
 			Group="Behavior"
@@ -140,22 +180,6 @@ Protected Class Audience
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="name"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="audience_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="description"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -192,14 +216,6 @@ Protected Class Audience
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="created_timestamp"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Integer"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

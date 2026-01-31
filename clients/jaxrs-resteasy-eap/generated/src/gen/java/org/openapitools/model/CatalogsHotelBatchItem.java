@@ -19,7 +19,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Hotel batch item")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "operation", visible = true)
+@ApiModel(description="Hotel batch item")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "operation", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsCreateHotelItem.class, name = "CREATE"),
   @JsonSubTypes.Type(value = CatalogsDeleteHotelItem.class, name = "DELETE"),
@@ -29,6 +29,7 @@ import io.swagger.annotations.*;
 
 public class CatalogsHotelBatchItem   {
   
+  private CatalogsUpdatableHotelAttributes attributes;
   private String hotelId;
 
   /**
@@ -50,7 +51,19 @@ public class CatalogsHotelBatchItem   {
   }
 
   private OperationEnum operation;
-  private CatalogsUpdatableHotelAttributes attributes;
+
+  /**
+   **/
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("attributes")
+  @NotNull
+  public CatalogsUpdatableHotelAttributes getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(CatalogsUpdatableHotelAttributes attributes) {
+    this.attributes = attributes;
+  }
 
   /**
    * The catalog hotel id in the merchant namespace
@@ -79,19 +92,6 @@ public class CatalogsHotelBatchItem   {
     this.operation = operation;
   }
 
-  /**
-   **/
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("attributes")
-  @NotNull
-  public CatalogsUpdatableHotelAttributes getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(CatalogsUpdatableHotelAttributes attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -102,14 +102,14 @@ public class CatalogsHotelBatchItem   {
       return false;
     }
     CatalogsHotelBatchItem catalogsHotelBatchItem = (CatalogsHotelBatchItem) o;
-    return Objects.equals(this.hotelId, catalogsHotelBatchItem.hotelId) &&
-        Objects.equals(this.operation, catalogsHotelBatchItem.operation) &&
-        Objects.equals(this.attributes, catalogsHotelBatchItem.attributes);
+    return Objects.equals(this.attributes, catalogsHotelBatchItem.attributes) &&
+        Objects.equals(this.hotelId, catalogsHotelBatchItem.hotelId) &&
+        Objects.equals(this.operation, catalogsHotelBatchItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hotelId, operation, attributes);
+    return Objects.hash(attributes, hotelId, operation);
   }
 
   @Override
@@ -117,9 +117,9 @@ public class CatalogsHotelBatchItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelBatchItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

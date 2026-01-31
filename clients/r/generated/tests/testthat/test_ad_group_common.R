@@ -5,20 +5,35 @@ context("Test AdGroupCommon")
 
 model_instance <- AdGroupCommon$new()
 
-test_that("name", {
-  # tests for the property `name` (character)
-  # Ad group name.
+test_that("auto_targeting_enabled", {
+  # tests for the property `auto_targeting_enabled` (character)
+  # Enable auto-targeting for ad group. Default value is True. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/performance-plus-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;Pinterest Performance+ targeting\&quot;&lt;/a&gt;.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`auto_targeting_enabled`, "EXPECTED_RESULT")
 })
 
-test_that("status", {
-  # tests for the property `status` (EntityStatus)
-  # Ad group/entity status.
+test_that("bid_in_micro_currency", {
+  # tests for the property `bid_in_micro_currency` (integer)
+  # Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`bid_in_micro_currency`, "EXPECTED_RESULT")
+})
+
+test_that("bid_strategy_type", {
+  # tests for the property `bid_strategy_type` (character)
+  # Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \&quot;Pinterest Performance+ bidding\&quot;.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`bid_strategy_type`, "EXPECTED_RESULT")
+})
+
+test_that("billable_event", {
+  # tests for the property `billable_event` (ActionType)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`billable_event`, "EXPECTED_RESULT")
 })
 
 test_that("budget_in_micro_currency", {
@@ -29,89 +44,11 @@ test_that("budget_in_micro_currency", {
   #expect_equal(model.instance$`budget_in_micro_currency`, "EXPECTED_RESULT")
 })
 
-test_that("bid_in_micro_currency", {
-  # tests for the property `bid_in_micro_currency` (integer)
-  # Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`bid_in_micro_currency`, "EXPECTED_RESULT")
-})
-
-test_that("optimization_goal_metadata", {
-  # tests for the property `optimization_goal_metadata` (OptimizationGoalMetadata)
-  # Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`optimization_goal_metadata`, "EXPECTED_RESULT")
-})
-
 test_that("budget_type", {
   # tests for the property `budget_type` (BudgetType)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`budget_type`, "EXPECTED_RESULT")
-})
-
-test_that("start_time", {
-  # tests for the property `start_time` (integer)
-  # Ad group start time. Unix timestamp in seconds. Defaults to current time.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`start_time`, "EXPECTED_RESULT")
-})
-
-test_that("end_time", {
-  # tests for the property `end_time` (integer)
-  # Ad group end time. Unix timestamp in seconds.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`end_time`, "EXPECTED_RESULT")
-})
-
-test_that("targeting_spec", {
-  # tests for the property `targeting_spec` (TargetingSpec)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`targeting_spec`, "EXPECTED_RESULT")
-})
-
-test_that("lifetime_frequency_cap", {
-  # tests for the property `lifetime_frequency_cap` (integer)
-  # Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`lifetime_frequency_cap`, "EXPECTED_RESULT")
-})
-
-test_that("tracking_urls", {
-  # tests for the property `tracking_urls` (TrackingUrls)
-  # Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`tracking_urls`, "EXPECTED_RESULT")
-})
-
-test_that("auto_targeting_enabled", {
-  # tests for the property `auto_targeting_enabled` (character)
-  # Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`auto_targeting_enabled`, "EXPECTED_RESULT")
-})
-
-test_that("placement_group", {
-  # tests for the property `placement_group` (PlacementGroupType)
-  # &lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`placement_group`, "EXPECTED_RESULT")
-})
-
-test_that("pacing_delivery_type", {
-  # tests for the property `pacing_delivery_type` (PacingDeliveryType)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`pacing_delivery_type`, "EXPECTED_RESULT")
 })
 
 test_that("campaign_id", {
@@ -122,19 +59,98 @@ test_that("campaign_id", {
   #expect_equal(model.instance$`campaign_id`, "EXPECTED_RESULT")
 })
 
-test_that("billable_event", {
-  # tests for the property `billable_event` (ActionType)
+test_that("end_time", {
+  # tests for the property `end_time` (integer)
+  # Timestamp in Unix format for scheduling when ads in the ad group stop appearing. If not specified, ads run indefinitely unless you update the ad group by changing their status to &#x60;paused&#x60;. Cannot occur after &#x60;end_time&#x60; for parent campaign (if specified). Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-ads/#step-2-create-an-ad-group\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling ads&lt;/a&gt;. For certain organizations (&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`billable_event`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`end_time`, "EXPECTED_RESULT")
 })
 
-test_that("bid_strategy_type", {
-  # tests for the property `bid_strategy_type` (character)
-  # Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
+test_that("is_creative_optimization", {
+  # tests for the property `is_creative_optimization` (character)
+  # Enable creative optimization for the ad group, default value is FALSE. When enabled, you allow Pinterest to automatically turn your product Pins into ads in different formats (collections and shopping) and deliver those ads to users at scale.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`bid_strategy_type`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`is_creative_optimization`, "EXPECTED_RESULT")
+})
+
+test_that("lifetime_frequency_cap", {
+  # tests for the property `lifetime_frequency_cap` (integer)
+  # Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`lifetime_frequency_cap`, "EXPECTED_RESULT")
+})
+
+test_that("name", {
+  # tests for the property `name` (character)
+  # Ad group name.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
+})
+
+test_that("optimization_goal_metadata", {
+  # tests for the property `optimization_goal_metadata` (OptimizationGoalMetadata)
+  # Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign&#39;s &#x60;objective_type&#x60; is set to &#x60;\&quot;WEB_CONVERSION\&quot;&#x60;.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`optimization_goal_metadata`, "EXPECTED_RESULT")
+})
+
+test_that("pacing_delivery_type", {
+  # tests for the property `pacing_delivery_type` (PacingDeliveryType)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`pacing_delivery_type`, "EXPECTED_RESULT")
+})
+
+test_that("placement_group", {
+  # tests for the property `placement_group` (PlacementGroupType)
+  # &lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`placement_group`, "EXPECTED_RESULT")
+})
+
+test_that("promotion_application_level", {
+  # tests for the property `promotion_application_level` (character)
+  # Specify if the promotion is applied at ad group or item level
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`promotion_application_level`, "EXPECTED_RESULT")
+})
+
+test_that("promotion_id", {
+  # tests for the property `promotion_id` (character)
+  # Promotion ID. To clear this field, set to null.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`promotion_id`, "EXPECTED_RESULT")
+})
+
+test_that("start_time", {
+  # tests for the property `start_time` (integer)
+  # Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign&#39;s &#x60;start_time&#x60;. Cannot precede &#x60;start_time&#x60; for parent campaign (if specified). Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-ads/#step-2-create-an-ad-group\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling ads&lt;/a&gt;. For certain organizations (&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`start_time`, "EXPECTED_RESULT")
+})
+
+test_that("status", {
+  # tests for the property `status` (EntityStatus)
+  # Ad group/entity status.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`status`, "EXPECTED_RESULT")
+})
+
+test_that("targeting_spec", {
+  # tests for the property `targeting_spec` (TargetingSpec)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`targeting_spec`, "EXPECTED_RESULT")
 })
 
 test_that("targeting_template_ids", {
@@ -143,4 +159,12 @@ test_that("targeting_template_ids", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`targeting_template_ids`, "EXPECTED_RESULT")
+})
+
+test_that("tracking_urls", {
+  # tests for the property `tracking_urls` (TrackingUrls)
+  # Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`tracking_urls`, "EXPECTED_RESULT")
 })

@@ -136,7 +136,7 @@ Update a batch of asset groups with the specified parameters.
 
 <a id="businessassetmembersget"></a>
 # **BusinessAssetMembersGet**
-> BusinessAssetMembersGet200Response BusinessAssetMembersGet (string businessId, string assetId, string bookmark = null, int pageSize = null, int startIndex = null)
+> BusinessAssetMembersGet200Response BusinessAssetMembersGet (string businessId, string assetId, bool fetchSystemUsers = null, string bookmark = null, int pageSize = null, int startIndex = null)
 
 Get members with access to asset
 
@@ -149,6 +149,7 @@ Get all the members the requesting business has granted access to on the given a
 |------|------|-------------|-------|
 | **businessId** | **string** | Unique identifier of the requesting business. |  |
 | **assetId** | **string** | Unique identifier of a business asset. |  |
+| **fetchSystemUsers** | **bool** | Fetches system users if True. Fetches regular user employees if False. | [optional] [default to false] |
 | **bookmark** | **string** | Cursor used to fetch the next page of items | [optional]  |
 | **pageSize** | **int** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **startIndex** | **int** | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |

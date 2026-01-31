@@ -14,11 +14,11 @@ import OauthAccessTokenResponseIntegrationRefresh._
 case class OauthAccessTokenResponseIntegrationRefresh (
   refreshToken: String,
 refreshTokenExpiresIn: Integer,
-responseType: Option[ResponseType],
 accessToken: String,
-tokenType: String,
 expiresIn: Integer,
-scope: String)
+responseType: Option[ResponseType],
+scope: String,
+tokenType: String)
 
 object OauthAccessTokenResponseIntegrationRefresh {
   import DateTimeCodecs._

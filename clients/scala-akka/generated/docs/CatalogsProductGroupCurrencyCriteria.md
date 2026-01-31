@@ -8,8 +8,8 @@ A currency filter. This filter cannot be negated
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**values** | **NonNullableCatalogsCurrency** |  | 
 **negated** | **Boolean** |  |  [optional]
+**values** | **NonNullableCatalogsCurrency** |  | 
 
 
 

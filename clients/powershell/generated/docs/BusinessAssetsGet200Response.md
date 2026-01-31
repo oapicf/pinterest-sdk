@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**GetBusinessAssetsResponse[]**](GetBusinessAssetsResponse.md) | List of assets the requesting business has access to. | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**GetBusinessAssetsResponse[]**](GetBusinessAssetsResponse.md) | List of assets the requesting business has access to. | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$BusinessAssetsGet200Response = Initialize-PSOpenAPIToolsBusinessAssetsGet200Response  -Items null `
- -Bookmark null
+$BusinessAssetsGet200Response = Initialize-PSOpenAPIToolsBusinessAssetsGet200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

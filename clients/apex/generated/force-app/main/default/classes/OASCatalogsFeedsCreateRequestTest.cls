@@ -73,25 +73,25 @@ private class OASCatalogsFeedsCreateRequestTest {
     private static void maintainRenamedProperties() {
         OASCatalogsFeedsCreateRequest catalogsFeedsCreateRequest = new OASCatalogsFeedsCreateRequest();
         Map<String, String> x-property-mappings = catalogsFeedsCreateRequest.getx-property-mappings();
+        System.assertEquals('defaultAvailability', x-property-mappings.get('default_availability'));
+        System.assertEquals('defaultCountry', x-property-mappings.get('default_country'));
         System.assertEquals('defaultCurrency', x-property-mappings.get('default_currency'));
         System.assertEquals('defaultLocale', x-property-mappings.get('default_locale'));
         System.assertEquals('preferredProcessingSchedule', x-property-mappings.get('preferred_processing_schedule'));
-        System.assertEquals('defaultCountry', x-property-mappings.get('default_country'));
-        System.assertEquals('defaultAvailability', x-property-mappings.get('default_availability'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASCatalogsFeedsCreateRequest catalogsFeedsCreateRequest = new OASCatalogsFeedsCreateRequest();
         System.assertEquals('ACTIVE', catalogsFeedsCreateRequest.status);
-        System.assertEquals(null, catalogsFeedsCreateRequest.defaultCurrency);
-        System.assertEquals(null, catalogsFeedsCreateRequest.name);
-        System.assertEquals(null, catalogsFeedsCreateRequest.format);
-        System.assertEquals(null, catalogsFeedsCreateRequest.defaultLocale);
         System.assertEquals(null, catalogsFeedsCreateRequest.credentials);
-        System.assertEquals(null, catalogsFeedsCreateRequest.location);
-        System.assertEquals(null, catalogsFeedsCreateRequest.preferredProcessingSchedule);
-        System.assertEquals(null, catalogsFeedsCreateRequest.defaultCountry);
         System.assertEquals(null, catalogsFeedsCreateRequest.defaultAvailability);
+        System.assertEquals(null, catalogsFeedsCreateRequest.defaultCountry);
+        System.assertEquals(null, catalogsFeedsCreateRequest.defaultCurrency);
+        System.assertEquals(null, catalogsFeedsCreateRequest.defaultLocale);
+        System.assertEquals(null, catalogsFeedsCreateRequest.format);
+        System.assertEquals(null, catalogsFeedsCreateRequest.location);
+        System.assertEquals(null, catalogsFeedsCreateRequest.name);
+        System.assertEquals(null, catalogsFeedsCreateRequest.preferredProcessingSchedule);
     }
 }

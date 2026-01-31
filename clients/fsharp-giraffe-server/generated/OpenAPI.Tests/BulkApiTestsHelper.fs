@@ -23,8 +23,6 @@ module BulkApiHandlerTestsHelper =
 
   BulkDownloadCreateBody <- WebUtility.HtmlDecode "{
   &quot;output_format&quot; : &quot;JSON&quot;,
-  &quot;entity_types&quot; : [ &quot;CAMPAIGN&quot;, &quot;AD_GROUP&quot; ],
-  &quot;updated_since&quot; : &quot;1622848072&quot;,
   &quot;campaign_filter&quot; : {
     &quot;start_time&quot; : &quot;1622848072&quot;,
     &quot;campaign_status&quot; : [ &quot;RUNNING&quot;, &quot;RUNNING&quot; ],
@@ -32,6 +30,8 @@ module BulkApiHandlerTestsHelper =
     &quot;name&quot; : &quot;campaign name&quot;,
     &quot;objective_type&quot; : [ &quot;AWARENESS&quot;, &quot;AWARENESS&quot; ]
   },
+  &quot;entity_types&quot; : [ &quot;CAMPAIGN&quot;, &quot;AD_GROUP&quot; ],
+  &quot;updated_since&quot; : &quot;1622848072&quot;,
   &quot;entity_ids&quot; : [ &quot;entity_ids&quot;, &quot;entity_ids&quot; ]
 }"
   BulkDownloadCreateExamples <- BulkDownloadCreateExamples.Add("application/json", BulkDownloadCreateBody)
@@ -50,17 +50,20 @@ module BulkApiHandlerTestsHelper =
     &quot;ad_groups&quot; : [ {
       &quot;bid_in_micro_currency&quot; : 5000000,
       &quot;targeting_template_ids&quot; : [ &quot;643&quot; ],
+      &quot;is_creative_optimization&quot; : true,
       &quot;end_time&quot; : 5705424000,
+      &quot;promotion_application_level&quot; : &quot;ITEM&quot;,
+      &quot;promotion_id&quot; : &quot;7834020347906&quot;,
       &quot;auto_targeting_enabled&quot; : true,
+      &quot;bid_multiplier&quot; : 1,
       &quot;tracking_urls&quot; : &quot;{}&quot;,
       &quot;budget_in_micro_currency&quot; : 5000000,
       &quot;bid_strategy_type&quot; : &quot;MAX_BID&quot;,
       &quot;start_time&quot; : 5686848000,
       &quot;billable_event&quot; : &quot;CLICKTHROUGH&quot;,
       &quot;targeting_spec&quot; : {
-        &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
         &quot;LOCATION&quot; : [ &quot;LOCATION&quot;, &quot;LOCATION&quot; ],
-        &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
+        &quot;MAXIMUM_AGE&quot; : &quot;65+&quot;,
         &quot;AGE_BUCKET&quot; : [ &quot;35-44&quot;, &quot;50-54&quot; ],
         &quot;AUDIENCE_INCLUDE&quot; : [ &quot;AUDIENCE_INCLUDE&quot;, &quot;AUDIENCE_INCLUDE&quot; ],
         &quot;SHOPPING_RETARGETING&quot; : [ {
@@ -72,11 +75,14 @@ module BulkApiHandlerTestsHelper =
           &quot;exclusion_window&quot; : 14,
           &quot;tag_types&quot; : [ 0, 6 ]
         } ],
-        &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
         &quot;TARGETING_STRATEGY&quot; : [ &quot;CHOOSE_YOUR_OWN&quot;, &quot;CHOOSE_YOUR_OWN&quot; ],
+        &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ],
+        &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
+        &quot;MINIMUM_AGE&quot; : &quot;18&quot;,
+        &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
+        &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
         &quot;APPTYPE&quot; : [ &quot;ipad&quot;, &quot;iphone&quot; ],
-        &quot;AUDIENCE_EXCLUDE&quot; : [ &quot;AUDIENCE_EXCLUDE&quot;, &quot;AUDIENCE_EXCLUDE&quot; ],
-        &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ]
+        &quot;AUDIENCE_EXCLUDE&quot; : [ &quot;AUDIENCE_EXCLUDE&quot;, &quot;AUDIENCE_EXCLUDE&quot; ]
       },
       &quot;name&quot; : &quot;Ad Group For Pin: 687195905986&quot;,
       &quot;lifetime_frequency_cap&quot; : 100,
@@ -84,22 +90,25 @@ module BulkApiHandlerTestsHelper =
       &quot;placement_group&quot; : &quot;placement_group&quot;,
       &quot;budget_type&quot; : &quot;DAILY&quot;,
       &quot;campaign_id&quot; : &quot;626736533506&quot;,
-      &quot;status&quot; : &quot;status&quot;,
-      &quot;pacing_delivery_type&quot; : &quot;STANDARD&quot;
+      &quot;pacing_delivery_type&quot; : &quot;STANDARD&quot;,
+      &quot;status&quot; : &quot;status&quot;
     }, {
       &quot;bid_in_micro_currency&quot; : 5000000,
       &quot;targeting_template_ids&quot; : [ &quot;643&quot; ],
+      &quot;is_creative_optimization&quot; : true,
       &quot;end_time&quot; : 5705424000,
+      &quot;promotion_application_level&quot; : &quot;ITEM&quot;,
+      &quot;promotion_id&quot; : &quot;7834020347906&quot;,
       &quot;auto_targeting_enabled&quot; : true,
+      &quot;bid_multiplier&quot; : 1,
       &quot;tracking_urls&quot; : &quot;{}&quot;,
       &quot;budget_in_micro_currency&quot; : 5000000,
       &quot;bid_strategy_type&quot; : &quot;MAX_BID&quot;,
       &quot;start_time&quot; : 5686848000,
       &quot;billable_event&quot; : &quot;CLICKTHROUGH&quot;,
       &quot;targeting_spec&quot; : {
-        &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
         &quot;LOCATION&quot; : [ &quot;LOCATION&quot;, &quot;LOCATION&quot; ],
-        &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
+        &quot;MAXIMUM_AGE&quot; : &quot;65+&quot;,
         &quot;AGE_BUCKET&quot; : [ &quot;35-44&quot;, &quot;50-54&quot; ],
         &quot;AUDIENCE_INCLUDE&quot; : [ &quot;AUDIENCE_INCLUDE&quot;, &quot;AUDIENCE_INCLUDE&quot; ],
         &quot;SHOPPING_RETARGETING&quot; : [ {
@@ -111,11 +120,14 @@ module BulkApiHandlerTestsHelper =
           &quot;exclusion_window&quot; : 14,
           &quot;tag_types&quot; : [ 0, 6 ]
         } ],
-        &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
         &quot;TARGETING_STRATEGY&quot; : [ &quot;CHOOSE_YOUR_OWN&quot;, &quot;CHOOSE_YOUR_OWN&quot; ],
+        &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ],
+        &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
+        &quot;MINIMUM_AGE&quot; : &quot;18&quot;,
+        &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
+        &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
         &quot;APPTYPE&quot; : [ &quot;ipad&quot;, &quot;iphone&quot; ],
-        &quot;AUDIENCE_EXCLUDE&quot; : [ &quot;AUDIENCE_EXCLUDE&quot;, &quot;AUDIENCE_EXCLUDE&quot; ],
-        &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ]
+        &quot;AUDIENCE_EXCLUDE&quot; : [ &quot;AUDIENCE_EXCLUDE&quot;, &quot;AUDIENCE_EXCLUDE&quot; ]
       },
       &quot;name&quot; : &quot;Ad Group For Pin: 687195905986&quot;,
       &quot;lifetime_frequency_cap&quot; : 100,
@@ -123,11 +135,12 @@ module BulkApiHandlerTestsHelper =
       &quot;placement_group&quot; : &quot;placement_group&quot;,
       &quot;budget_type&quot; : &quot;DAILY&quot;,
       &quot;campaign_id&quot; : &quot;626736533506&quot;,
-      &quot;status&quot; : &quot;status&quot;,
-      &quot;pacing_delivery_type&quot; : &quot;STANDARD&quot;
+      &quot;pacing_delivery_type&quot; : &quot;STANDARD&quot;,
+      &quot;status&quot; : &quot;status&quot;
     } ],
     &quot;ads&quot; : [ {
       &quot;is_removable&quot; : false,
+      &quot;disclosure_type&quot; : &quot;MED_GUIDE&quot;,
       &quot;view_tracking_url&quot; : &quot;view_tracking_url&quot;,
       &quot;android_deep_link&quot; : &quot;android_deep_link&quot;,
       &quot;destination_url&quot; : &quot;destination_url&quot;,
@@ -138,17 +151,19 @@ module BulkApiHandlerTestsHelper =
       &quot;carousel_ios_deep_links&quot; : [ &quot;carousel_ios_deep_links&quot;, &quot;carousel_ios_deep_links&quot; ],
       &quot;click_tracking_url&quot; : &quot;click_tracking_url&quot;,
       &quot;is_pin_deleted&quot; : false,
+      &quot;disclosure_url&quot; : &quot;disclosure_url&quot;,
       &quot;creative_type&quot; : &quot;REGULAR&quot;,
       &quot;grid_click_type&quot; : &quot;CLOSEUP&quot;,
       &quot;quiz_pin_data&quot; : &quot;{}&quot;,
       &quot;name&quot; : &quot;name&quot;,
-      &quot;lead_form_id&quot; : &quot;lead_form_id&quot;,
       &quot;customizable_cta_type&quot; : &quot;LEARN_MORE&quot;,
+      &quot;lead_form_id&quot; : &quot;lead_form_id&quot;,
       &quot;ad_group_id&quot; : &quot;2680059592705&quot;,
       &quot;pin_id&quot; : &quot;394205773611545468&quot;,
       &quot;status&quot; : &quot;ACTIVE&quot;
     }, {
       &quot;is_removable&quot; : false,
+      &quot;disclosure_type&quot; : &quot;MED_GUIDE&quot;,
       &quot;view_tracking_url&quot; : &quot;view_tracking_url&quot;,
       &quot;android_deep_link&quot; : &quot;android_deep_link&quot;,
       &quot;destination_url&quot; : &quot;destination_url&quot;,
@@ -159,23 +174,86 @@ module BulkApiHandlerTestsHelper =
       &quot;carousel_ios_deep_links&quot; : [ &quot;carousel_ios_deep_links&quot;, &quot;carousel_ios_deep_links&quot; ],
       &quot;click_tracking_url&quot; : &quot;click_tracking_url&quot;,
       &quot;is_pin_deleted&quot; : false,
+      &quot;disclosure_url&quot; : &quot;disclosure_url&quot;,
       &quot;creative_type&quot; : &quot;REGULAR&quot;,
       &quot;grid_click_type&quot; : &quot;CLOSEUP&quot;,
       &quot;quiz_pin_data&quot; : &quot;{}&quot;,
       &quot;name&quot; : &quot;name&quot;,
-      &quot;lead_form_id&quot; : &quot;lead_form_id&quot;,
       &quot;customizable_cta_type&quot; : &quot;LEARN_MORE&quot;,
+      &quot;lead_form_id&quot; : &quot;lead_form_id&quot;,
       &quot;ad_group_id&quot; : &quot;2680059592705&quot;,
       &quot;pin_id&quot; : &quot;394205773611545468&quot;,
       &quot;status&quot; : &quot;ACTIVE&quot;
     } ],
+    &quot;catalog_product_groups&quot; : [ {
+      &quot;name&quot; : &quot;name&quot;,
+      &quot;description&quot; : &quot;description&quot;,
+      &quot;filters&quot; : {
+        &quot;any_of&quot; : [ {
+          &quot;MIN_PRICE&quot; : {
+            &quot;inclusion&quot; : true,
+            &quot;negated&quot; : false,
+            &quot;values&quot; : 0.08008281904610115
+          }
+        }, {
+          &quot;MIN_PRICE&quot; : {
+            &quot;inclusion&quot; : true,
+            &quot;negated&quot; : false,
+            &quot;values&quot; : 0.08008281904610115
+          }
+        } ]
+      },
+      &quot;is_featured&quot; : false,
+      &quot;feed_id&quot; : &quot;2680059592705&quot;
+    }, {
+      &quot;name&quot; : &quot;name&quot;,
+      &quot;description&quot; : &quot;description&quot;,
+      &quot;filters&quot; : {
+        &quot;any_of&quot; : [ {
+          &quot;MIN_PRICE&quot; : {
+            &quot;inclusion&quot; : true,
+            &quot;negated&quot; : false,
+            &quot;values&quot; : 0.08008281904610115
+          }
+        }, {
+          &quot;MIN_PRICE&quot; : {
+            &quot;inclusion&quot; : true,
+            &quot;negated&quot; : false,
+            &quot;values&quot; : 0.08008281904610115
+          }
+        } ]
+      },
+      &quot;is_featured&quot; : false,
+      &quot;feed_id&quot; : &quot;2680059592705&quot;
+    } ],
     &quot;campaigns&quot; : [ {
+      &quot;bid_options&quot; : {
+        &quot;placement_multipliers&quot; : {
+          &quot;browse&quot; : 0.9,
+          &quot;search&quot; : 1.2,
+          &quot;related_pins&quot; : 1.1
+        },
+        &quot;app_type_multipliers&quot; : {
+          &quot;android_mobile&quot; : 1.1,
+          &quot;android_tablet&quot; : 1.1,
+          &quot;ipad&quot; : 1.2,
+          &quot;iphone&quot; : 1.2,
+          &quot;web&quot; : 0.9,
+          &quot;web_mobile&quot; : 0.8
+        },
+        &quot;audience_multipliers&quot; : {
+          &quot;123&quot; : 1.1,
+          &quot;456&quot; : 1.2
+        }
+      },
       &quot;default_ad_group_budget_in_micro_currency&quot; : 0,
       &quot;lifetime_spend_cap&quot; : 1432744744,
       &quot;end_time&quot; : 1644023526,
       &quot;is_flexible_daily_budgets&quot; : false,
       &quot;daily_spend_cap&quot; : 1432744744,
       &quot;objective_type&quot; : &quot;AWARENESS&quot;,
+      &quot;is_campaign_budget_optimization&quot; : true,
+      &quot;is_performance_plus&quot; : true,
       &quot;tracking_urls&quot; : &quot;{}&quot;,
       &quot;ad_account_id&quot; : &quot;549755885175&quot;,
       &quot;is_automated_campaign&quot; : false,
@@ -184,12 +262,33 @@ module BulkApiHandlerTestsHelper =
       &quot;order_line_id&quot; : &quot;549755885175&quot;,
       &quot;status&quot; : &quot;ACTIVE&quot;
     }, {
+      &quot;bid_options&quot; : {
+        &quot;placement_multipliers&quot; : {
+          &quot;browse&quot; : 0.9,
+          &quot;search&quot; : 1.2,
+          &quot;related_pins&quot; : 1.1
+        },
+        &quot;app_type_multipliers&quot; : {
+          &quot;android_mobile&quot; : 1.1,
+          &quot;android_tablet&quot; : 1.1,
+          &quot;ipad&quot; : 1.2,
+          &quot;iphone&quot; : 1.2,
+          &quot;web&quot; : 0.9,
+          &quot;web_mobile&quot; : 0.8
+        },
+        &quot;audience_multipliers&quot; : {
+          &quot;123&quot; : 1.1,
+          &quot;456&quot; : 1.2
+        }
+      },
       &quot;default_ad_group_budget_in_micro_currency&quot; : 0,
       &quot;lifetime_spend_cap&quot; : 1432744744,
       &quot;end_time&quot; : 1644023526,
       &quot;is_flexible_daily_budgets&quot; : false,
       &quot;daily_spend_cap&quot; : 1432744744,
       &quot;objective_type&quot; : &quot;AWARENESS&quot;,
+      &quot;is_campaign_budget_optimization&quot; : true,
+      &quot;is_performance_plus&quot; : true,
       &quot;tracking_urls&quot; : &quot;{}&quot;,
       &quot;ad_account_id&quot; : &quot;549755885175&quot;,
       &quot;is_automated_campaign&quot; : false,
@@ -201,70 +300,89 @@ module BulkApiHandlerTestsHelper =
     &quot;keywords&quot; : [ {
       &quot;keywords&quot; : [ {
         &quot;match_type&quot; : &quot;BROAD&quot;,
-        &quot;bid&quot; : 0,
+        &quot;bid&quot; : 6,
         &quot;value&quot; : &quot;value&quot;
       }, {
         &quot;match_type&quot; : &quot;BROAD&quot;,
-        &quot;bid&quot; : 0,
+        &quot;bid&quot; : 6,
         &quot;value&quot; : &quot;value&quot;
       } ],
       &quot;parent_id&quot; : &quot;383791336903426391&quot;
     }, {
       &quot;keywords&quot; : [ {
         &quot;match_type&quot; : &quot;BROAD&quot;,
-        &quot;bid&quot; : 0,
+        &quot;bid&quot; : 6,
         &quot;value&quot; : &quot;value&quot;
       }, {
         &quot;match_type&quot; : &quot;BROAD&quot;,
-        &quot;bid&quot; : 0,
+        &quot;bid&quot; : 6,
         &quot;value&quot; : &quot;value&quot;
       } ],
       &quot;parent_id&quot; : &quot;383791336903426391&quot;
     } ],
+    &quot;labels&quot; : [ {
+      &quot;parent_id&quot; : &quot;626753052072&quot;,
+      &quot;labels&quot; : [ {
+        &quot;label_type&quot; : &quot;BRAND&quot;,
+        &quot;value&quot; : &quot;value&quot;
+      }, {
+        &quot;label_type&quot; : &quot;BRAND&quot;,
+        &quot;value&quot; : &quot;value&quot;
+      } ]
+    }, {
+      &quot;parent_id&quot; : &quot;626753052072&quot;,
+      &quot;labels&quot; : [ {
+        &quot;label_type&quot; : &quot;BRAND&quot;,
+        &quot;value&quot; : &quot;value&quot;
+      }, {
+        &quot;label_type&quot; : &quot;BRAND&quot;,
+        &quot;value&quot; : &quot;value&quot;
+      } ]
+    } ],
     &quot;product_groups&quot; : [ {
       &quot;product_group_promotion&quot; : [ {
         &quot;slideshow_collections_description&quot; : &quot;Description&quot;,
+        &quot;creative_type&quot; : &quot;REGULAR&quot;,
         &quot;collections_hero_pin_id&quot; : &quot;123123&quot;,
         &quot;catalog_product_group_name&quot; : &quot;catalogProductGroupName&quot;,
         &quot;collections_hero_destination_url&quot; : &quot;http://www.pinterest.com&quot;,
         &quot;tracking_url&quot; : &quot;https://www.pinterest.com&quot;,
         &quot;slideshow_collections_title&quot; : &quot;Title&quot;,
         &quot;is_mdl&quot; : true,
-        &quot;status&quot; : &quot;ACTIVE&quot;,
-        &quot;creative_type&quot; : &quot;REGULAR&quot;
+        &quot;status&quot; : &quot;ACTIVE&quot;
       }, {
         &quot;slideshow_collections_description&quot; : &quot;Description&quot;,
+        &quot;creative_type&quot; : &quot;REGULAR&quot;,
         &quot;collections_hero_pin_id&quot; : &quot;123123&quot;,
         &quot;catalog_product_group_name&quot; : &quot;catalogProductGroupName&quot;,
         &quot;collections_hero_destination_url&quot; : &quot;http://www.pinterest.com&quot;,
         &quot;tracking_url&quot; : &quot;https://www.pinterest.com&quot;,
         &quot;slideshow_collections_title&quot; : &quot;Title&quot;,
         &quot;is_mdl&quot; : true,
-        &quot;status&quot; : &quot;ACTIVE&quot;,
-        &quot;creative_type&quot; : &quot;REGULAR&quot;
+        &quot;status&quot; : &quot;ACTIVE&quot;
       } ],
       &quot;ad_group_id&quot; : &quot;2680059592705&quot;
     }, {
       &quot;product_group_promotion&quot; : [ {
         &quot;slideshow_collections_description&quot; : &quot;Description&quot;,
+        &quot;creative_type&quot; : &quot;REGULAR&quot;,
         &quot;collections_hero_pin_id&quot; : &quot;123123&quot;,
         &quot;catalog_product_group_name&quot; : &quot;catalogProductGroupName&quot;,
         &quot;collections_hero_destination_url&quot; : &quot;http://www.pinterest.com&quot;,
         &quot;tracking_url&quot; : &quot;https://www.pinterest.com&quot;,
         &quot;slideshow_collections_title&quot; : &quot;Title&quot;,
         &quot;is_mdl&quot; : true,
-        &quot;status&quot; : &quot;ACTIVE&quot;,
-        &quot;creative_type&quot; : &quot;REGULAR&quot;
+        &quot;status&quot; : &quot;ACTIVE&quot;
       }, {
         &quot;slideshow_collections_description&quot; : &quot;Description&quot;,
+        &quot;creative_type&quot; : &quot;REGULAR&quot;,
         &quot;collections_hero_pin_id&quot; : &quot;123123&quot;,
         &quot;catalog_product_group_name&quot; : &quot;catalogProductGroupName&quot;,
         &quot;collections_hero_destination_url&quot; : &quot;http://www.pinterest.com&quot;,
         &quot;tracking_url&quot; : &quot;https://www.pinterest.com&quot;,
         &quot;slideshow_collections_title&quot; : &quot;Title&quot;,
         &quot;is_mdl&quot; : true,
-        &quot;status&quot; : &quot;ACTIVE&quot;,
-        &quot;creative_type&quot; : &quot;REGULAR&quot;
+        &quot;status&quot; : &quot;ACTIVE&quot;
       } ],
       &quot;ad_group_id&quot; : &quot;2680059592705&quot;
     } ]
@@ -273,17 +391,20 @@ module BulkApiHandlerTestsHelper =
     &quot;ad_groups&quot; : [ {
       &quot;bid_in_micro_currency&quot; : 5000000,
       &quot;targeting_template_ids&quot; : [ &quot;643&quot; ],
+      &quot;is_creative_optimization&quot; : true,
       &quot;end_time&quot; : 5705424000,
+      &quot;promotion_application_level&quot; : &quot;ITEM&quot;,
+      &quot;promotion_id&quot; : &quot;7834020347906&quot;,
       &quot;auto_targeting_enabled&quot; : true,
+      &quot;bid_multiplier&quot; : 1,
       &quot;tracking_urls&quot; : &quot;{}&quot;,
       &quot;budget_in_micro_currency&quot; : 5000000,
       &quot;bid_strategy_type&quot; : &quot;MAX_BID&quot;,
       &quot;start_time&quot; : 5686848000,
       &quot;billable_event&quot; : &quot;CLICKTHROUGH&quot;,
       &quot;targeting_spec&quot; : {
-        &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
         &quot;LOCATION&quot; : [ &quot;LOCATION&quot;, &quot;LOCATION&quot; ],
-        &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
+        &quot;MAXIMUM_AGE&quot; : &quot;65+&quot;,
         &quot;AGE_BUCKET&quot; : [ &quot;35-44&quot;, &quot;50-54&quot; ],
         &quot;AUDIENCE_INCLUDE&quot; : [ &quot;AUDIENCE_INCLUDE&quot;, &quot;AUDIENCE_INCLUDE&quot; ],
         &quot;SHOPPING_RETARGETING&quot; : [ {
@@ -295,11 +416,14 @@ module BulkApiHandlerTestsHelper =
           &quot;exclusion_window&quot; : 14,
           &quot;tag_types&quot; : [ 0, 6 ]
         } ],
-        &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
         &quot;TARGETING_STRATEGY&quot; : [ &quot;CHOOSE_YOUR_OWN&quot;, &quot;CHOOSE_YOUR_OWN&quot; ],
+        &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ],
+        &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
+        &quot;MINIMUM_AGE&quot; : &quot;18&quot;,
+        &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
+        &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
         &quot;APPTYPE&quot; : [ &quot;ipad&quot;, &quot;iphone&quot; ],
-        &quot;AUDIENCE_EXCLUDE&quot; : [ &quot;AUDIENCE_EXCLUDE&quot;, &quot;AUDIENCE_EXCLUDE&quot; ],
-        &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ]
+        &quot;AUDIENCE_EXCLUDE&quot; : [ &quot;AUDIENCE_EXCLUDE&quot;, &quot;AUDIENCE_EXCLUDE&quot; ]
       },
       &quot;name&quot; : &quot;Ad Group For Pin: 687195905986&quot;,
       &quot;lifetime_frequency_cap&quot; : 100,
@@ -308,22 +432,25 @@ module BulkApiHandlerTestsHelper =
       &quot;placement_group&quot; : &quot;placement_group&quot;,
       &quot;budget_type&quot; : &quot;budget_type&quot;,
       &quot;campaign_id&quot; : &quot;626736533506&quot;,
-      &quot;status&quot; : &quot;status&quot;,
-      &quot;pacing_delivery_type&quot; : &quot;pacing_delivery_type&quot;
+      &quot;pacing_delivery_type&quot; : &quot;pacing_delivery_type&quot;,
+      &quot;status&quot; : &quot;status&quot;
     }, {
       &quot;bid_in_micro_currency&quot; : 5000000,
       &quot;targeting_template_ids&quot; : [ &quot;643&quot; ],
+      &quot;is_creative_optimization&quot; : true,
       &quot;end_time&quot; : 5705424000,
+      &quot;promotion_application_level&quot; : &quot;ITEM&quot;,
+      &quot;promotion_id&quot; : &quot;7834020347906&quot;,
       &quot;auto_targeting_enabled&quot; : true,
+      &quot;bid_multiplier&quot; : 1,
       &quot;tracking_urls&quot; : &quot;{}&quot;,
       &quot;budget_in_micro_currency&quot; : 5000000,
       &quot;bid_strategy_type&quot; : &quot;MAX_BID&quot;,
       &quot;start_time&quot; : 5686848000,
       &quot;billable_event&quot; : &quot;CLICKTHROUGH&quot;,
       &quot;targeting_spec&quot; : {
-        &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
         &quot;LOCATION&quot; : [ &quot;LOCATION&quot;, &quot;LOCATION&quot; ],
-        &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
+        &quot;MAXIMUM_AGE&quot; : &quot;65+&quot;,
         &quot;AGE_BUCKET&quot; : [ &quot;35-44&quot;, &quot;50-54&quot; ],
         &quot;AUDIENCE_INCLUDE&quot; : [ &quot;AUDIENCE_INCLUDE&quot;, &quot;AUDIENCE_INCLUDE&quot; ],
         &quot;SHOPPING_RETARGETING&quot; : [ {
@@ -335,11 +462,14 @@ module BulkApiHandlerTestsHelper =
           &quot;exclusion_window&quot; : 14,
           &quot;tag_types&quot; : [ 0, 6 ]
         } ],
-        &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
         &quot;TARGETING_STRATEGY&quot; : [ &quot;CHOOSE_YOUR_OWN&quot;, &quot;CHOOSE_YOUR_OWN&quot; ],
+        &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ],
+        &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
+        &quot;MINIMUM_AGE&quot; : &quot;18&quot;,
+        &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
+        &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
         &quot;APPTYPE&quot; : [ &quot;ipad&quot;, &quot;iphone&quot; ],
-        &quot;AUDIENCE_EXCLUDE&quot; : [ &quot;AUDIENCE_EXCLUDE&quot;, &quot;AUDIENCE_EXCLUDE&quot; ],
-        &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ]
+        &quot;AUDIENCE_EXCLUDE&quot; : [ &quot;AUDIENCE_EXCLUDE&quot;, &quot;AUDIENCE_EXCLUDE&quot; ]
       },
       &quot;name&quot; : &quot;Ad Group For Pin: 687195905986&quot;,
       &quot;lifetime_frequency_cap&quot; : 100,
@@ -348,11 +478,12 @@ module BulkApiHandlerTestsHelper =
       &quot;placement_group&quot; : &quot;placement_group&quot;,
       &quot;budget_type&quot; : &quot;budget_type&quot;,
       &quot;campaign_id&quot; : &quot;626736533506&quot;,
-      &quot;status&quot; : &quot;status&quot;,
-      &quot;pacing_delivery_type&quot; : &quot;pacing_delivery_type&quot;
+      &quot;pacing_delivery_type&quot; : &quot;pacing_delivery_type&quot;,
+      &quot;status&quot; : &quot;status&quot;
     } ],
     &quot;ads&quot; : [ {
       &quot;is_removable&quot; : false,
+      &quot;disclosure_type&quot; : &quot;MED_GUIDE&quot;,
       &quot;view_tracking_url&quot; : &quot;view_tracking_url&quot;,
       &quot;android_deep_link&quot; : &quot;android_deep_link&quot;,
       &quot;destination_url&quot; : &quot;destination_url&quot;,
@@ -363,18 +494,20 @@ module BulkApiHandlerTestsHelper =
       &quot;carousel_ios_deep_links&quot; : [ &quot;carousel_ios_deep_links&quot;, &quot;carousel_ios_deep_links&quot; ],
       &quot;click_tracking_url&quot; : &quot;click_tracking_url&quot;,
       &quot;is_pin_deleted&quot; : false,
+      &quot;disclosure_url&quot; : &quot;disclosure_url&quot;,
       &quot;creative_type&quot; : &quot;REGULAR&quot;,
       &quot;grid_click_type&quot; : &quot;CLOSEUP&quot;,
       &quot;quiz_pin_data&quot; : &quot;{}&quot;,
       &quot;name&quot; : &quot;name&quot;,
-      &quot;lead_form_id&quot; : &quot;lead_form_id&quot;,
       &quot;customizable_cta_type&quot; : &quot;LEARN_MORE&quot;,
+      &quot;lead_form_id&quot; : &quot;lead_form_id&quot;,
       &quot;id&quot; : &quot;687195134316&quot;,
       &quot;ad_group_id&quot; : &quot;2680059592705&quot;,
       &quot;pin_id&quot; : &quot;394205773611545468&quot;,
       &quot;status&quot; : &quot;ACTIVE&quot;
     }, {
       &quot;is_removable&quot; : false,
+      &quot;disclosure_type&quot; : &quot;MED_GUIDE&quot;,
       &quot;view_tracking_url&quot; : &quot;view_tracking_url&quot;,
       &quot;android_deep_link&quot; : &quot;android_deep_link&quot;,
       &quot;destination_url&quot; : &quot;destination_url&quot;,
@@ -385,18 +518,48 @@ module BulkApiHandlerTestsHelper =
       &quot;carousel_ios_deep_links&quot; : [ &quot;carousel_ios_deep_links&quot;, &quot;carousel_ios_deep_links&quot; ],
       &quot;click_tracking_url&quot; : &quot;click_tracking_url&quot;,
       &quot;is_pin_deleted&quot; : false,
+      &quot;disclosure_url&quot; : &quot;disclosure_url&quot;,
       &quot;creative_type&quot; : &quot;REGULAR&quot;,
       &quot;grid_click_type&quot; : &quot;CLOSEUP&quot;,
       &quot;quiz_pin_data&quot; : &quot;{}&quot;,
       &quot;name&quot; : &quot;name&quot;,
-      &quot;lead_form_id&quot; : &quot;lead_form_id&quot;,
       &quot;customizable_cta_type&quot; : &quot;LEARN_MORE&quot;,
+      &quot;lead_form_id&quot; : &quot;lead_form_id&quot;,
       &quot;id&quot; : &quot;687195134316&quot;,
       &quot;ad_group_id&quot; : &quot;2680059592705&quot;,
       &quot;pin_id&quot; : &quot;394205773611545468&quot;,
       &quot;status&quot; : &quot;ACTIVE&quot;
     } ],
+    &quot;catalog_product_groups&quot; : [ {
+      &quot;name&quot; : &quot;name&quot;,
+      &quot;description&quot; : &quot;description&quot;,
+      &quot;is_featured&quot; : true
+    }, {
+      &quot;name&quot; : &quot;name&quot;,
+      &quot;description&quot; : &quot;description&quot;,
+      &quot;is_featured&quot; : true
+    } ],
     &quot;campaigns&quot; : [ {
+      &quot;bid_options&quot; : {
+        &quot;placement_multipliers&quot; : {
+          &quot;browse&quot; : 0.9,
+          &quot;search&quot; : 1.2,
+          &quot;related_pins&quot; : 1.1
+        },
+        &quot;update_mask&quot; : [ &quot;AUDIENCE&quot;, &quot;AUDIENCE&quot; ],
+        &quot;app_type_multipliers&quot; : {
+          &quot;android_mobile&quot; : 1.1,
+          &quot;android_tablet&quot; : 1.1,
+          &quot;ipad&quot; : 1.2,
+          &quot;iphone&quot; : 1.2,
+          &quot;web&quot; : 0.9,
+          &quot;web_mobile&quot; : 0.8
+        },
+        &quot;audience_multipliers&quot; : {
+          &quot;123&quot; : 1.1,
+          &quot;456&quot; : 1.2
+        }
+      },
       &quot;default_ad_group_budget_in_micro_currency&quot; : 0,
       &quot;lifetime_spend_cap&quot; : 1432744744,
       &quot;end_time&quot; : 1644023526,
@@ -404,6 +567,7 @@ module BulkApiHandlerTestsHelper =
       &quot;daily_spend_cap&quot; : 1432744744,
       &quot;objective_type&quot; : &quot;objective_type&quot;,
       &quot;is_campaign_budget_optimization&quot; : true,
+      &quot;is_performance_plus&quot; : true,
       &quot;tracking_urls&quot; : &quot;{}&quot;,
       &quot;ad_account_id&quot; : &quot;549755885175&quot;,
       &quot;is_automated_campaign&quot; : true,
@@ -413,6 +577,26 @@ module BulkApiHandlerTestsHelper =
       &quot;id&quot; : &quot;549755885175&quot;,
       &quot;status&quot; : &quot;status&quot;
     }, {
+      &quot;bid_options&quot; : {
+        &quot;placement_multipliers&quot; : {
+          &quot;browse&quot; : 0.9,
+          &quot;search&quot; : 1.2,
+          &quot;related_pins&quot; : 1.1
+        },
+        &quot;update_mask&quot; : [ &quot;AUDIENCE&quot;, &quot;AUDIENCE&quot; ],
+        &quot;app_type_multipliers&quot; : {
+          &quot;android_mobile&quot; : 1.1,
+          &quot;android_tablet&quot; : 1.1,
+          &quot;ipad&quot; : 1.2,
+          &quot;iphone&quot; : 1.2,
+          &quot;web&quot; : 0.9,
+          &quot;web_mobile&quot; : 0.8
+        },
+        &quot;audience_multipliers&quot; : {
+          &quot;123&quot; : 1.1,
+          &quot;456&quot; : 1.2
+        }
+      },
       &quot;default_ad_group_budget_in_micro_currency&quot; : 0,
       &quot;lifetime_spend_cap&quot; : 1432744744,
       &quot;end_time&quot; : 1644023526,
@@ -420,6 +604,7 @@ module BulkApiHandlerTestsHelper =
       &quot;daily_spend_cap&quot; : 1432744744,
       &quot;objective_type&quot; : &quot;objective_type&quot;,
       &quot;is_campaign_budget_optimization&quot; : true,
+      &quot;is_performance_plus&quot; : true,
       &quot;tracking_urls&quot; : &quot;{}&quot;,
       &quot;ad_account_id&quot; : &quot;549755885175&quot;,
       &quot;is_automated_campaign&quot; : true,
@@ -432,16 +617,26 @@ module BulkApiHandlerTestsHelper =
     &quot;keywords&quot; : [ {
       &quot;archived&quot; : false,
       &quot;id&quot; : &quot;2886364308355&quot;,
-      &quot;bid&quot; : 6
+      &quot;bid&quot; : 1
     }, {
       &quot;archived&quot; : false,
       &quot;id&quot; : &quot;2886364308355&quot;,
-      &quot;bid&quot; : 6
+      &quot;bid&quot; : 1
+    } ],
+    &quot;labels&quot; : [ {
+      &quot;id&quot; : &quot;1106385754497&quot;,
+      &quot;value&quot; : &quot;value&quot;,
+      &quot;status&quot; : &quot;ARCHIVED&quot;
+    }, {
+      &quot;id&quot; : &quot;1106385754497&quot;,
+      &quot;value&quot; : &quot;value&quot;,
+      &quot;status&quot; : &quot;ARCHIVED&quot;
     } ],
     &quot;product_groups&quot; : [ {
       &quot;product_group_promotion&quot; : [ {
         &quot;catalog_product_group_id&quot; : &quot;1234123&quot;,
         &quot;slideshow_collections_description&quot; : &quot;Description&quot;,
+        &quot;creative_type&quot; : &quot;REGULAR&quot;,
         &quot;collections_hero_pin_id&quot; : &quot;123123&quot;,
         &quot;catalog_product_group_name&quot; : &quot;ProductGroupName&quot;,
         &quot;collections_hero_destination_url&quot; : &quot;http://www.pinterest.com&quot;,
@@ -452,6 +647,7 @@ module BulkApiHandlerTestsHelper =
       }, {
         &quot;catalog_product_group_id&quot; : &quot;1231231&quot;,
         &quot;slideshow_collections_description&quot; : &quot;Other description&quot;,
+        &quot;creative_type&quot; : &quot;REGULAR&quot;,
         &quot;collections_hero_pin_id&quot; : &quot;123124&quot;,
         &quot;catalog_product_group_name&quot; : &quot;ProductGroupName&quot;,
         &quot;collections_hero_destination_url&quot; : &quot;http://www.pinterest.com&quot;,
@@ -465,6 +661,7 @@ module BulkApiHandlerTestsHelper =
       &quot;product_group_promotion&quot; : [ {
         &quot;catalog_product_group_id&quot; : &quot;1234123&quot;,
         &quot;slideshow_collections_description&quot; : &quot;Description&quot;,
+        &quot;creative_type&quot; : &quot;REGULAR&quot;,
         &quot;collections_hero_pin_id&quot; : &quot;123123&quot;,
         &quot;catalog_product_group_name&quot; : &quot;ProductGroupName&quot;,
         &quot;collections_hero_destination_url&quot; : &quot;http://www.pinterest.com&quot;,
@@ -475,6 +672,7 @@ module BulkApiHandlerTestsHelper =
       }, {
         &quot;catalog_product_group_id&quot; : &quot;1231231&quot;,
         &quot;slideshow_collections_description&quot; : &quot;Other description&quot;,
+        &quot;creative_type&quot; : &quot;REGULAR&quot;,
         &quot;collections_hero_pin_id&quot; : &quot;123124&quot;,
         &quot;catalog_product_group_name&quot; : &quot;ProductGroupName&quot;,
         &quot;collections_hero_destination_url&quot; : &quot;http://www.pinterest.com&quot;,

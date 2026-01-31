@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,8 +22,8 @@ var _ MappedNullable = &ReportsStats200Response{}
 
 // ReportsStats200Response struct for ReportsStats200Response
 type ReportsStats200Response struct {
-	Items []CatalogsReportStats `json:"items"`
 	Bookmark NullableString `json:"bookmark,omitempty"`
+	Items []CatalogsReportStats `json:"items"`
 }
 
 type _ReportsStats200Response ReportsStats200Response
@@ -44,30 +44,6 @@ func NewReportsStats200Response(items []CatalogsReportStats) *ReportsStats200Res
 func NewReportsStats200ResponseWithDefaults() *ReportsStats200Response {
 	this := ReportsStats200Response{}
 	return &this
-}
-
-// GetItems returns the Items field value
-func (o *ReportsStats200Response) GetItems() []CatalogsReportStats {
-	if o == nil {
-		var ret []CatalogsReportStats
-		return ret
-	}
-
-	return o.Items
-}
-
-// GetItemsOk returns a tuple with the Items field value
-// and a boolean to check if the value has been set.
-func (o *ReportsStats200Response) GetItemsOk() ([]CatalogsReportStats, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Items, true
-}
-
-// SetItems sets field value
-func (o *ReportsStats200Response) SetItems(v []CatalogsReportStats) {
-	o.Items = v
 }
 
 // GetBookmark returns the Bookmark field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -112,6 +88,30 @@ func (o *ReportsStats200Response) UnsetBookmark() {
 	o.Bookmark.Unset()
 }
 
+// GetItems returns the Items field value
+func (o *ReportsStats200Response) GetItems() []CatalogsReportStats {
+	if o == nil {
+		var ret []CatalogsReportStats
+		return ret
+	}
+
+	return o.Items
+}
+
+// GetItemsOk returns a tuple with the Items field value
+// and a boolean to check if the value has been set.
+func (o *ReportsStats200Response) GetItemsOk() ([]CatalogsReportStats, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Items, true
+}
+
+// SetItems sets field value
+func (o *ReportsStats200Response) SetItems(v []CatalogsReportStats) {
+	o.Items = v
+}
+
 func (o ReportsStats200Response) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -122,10 +122,10 @@ func (o ReportsStats200Response) MarshalJSON() ([]byte, error) {
 
 func (o ReportsStats200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["items"] = o.Items
 	if o.Bookmark.IsSet() {
 		toSerialize["bookmark"] = o.Bookmark.Get()
 	}
+	toSerialize["items"] = o.Items
 	return toSerialize, nil
 }
 

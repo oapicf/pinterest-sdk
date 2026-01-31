@@ -4,31 +4,82 @@ import java.util.Objects;
 import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.AdsAnalyticsTargetingType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TargetingTypeFilter   {
   
-  private List<AdsAnalyticsTargetingType> targetingTypes = new ArrayList<>();
 
   /**
-   * List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
+   * Reporting targeting type
+   */
+  public enum TargetingTypesEnum {
+    KEYWORD("KEYWORD"),
+
+        APPTYPE("APPTYPE"),
+
+        GENDER("GENDER"),
+
+        LOCATION("LOCATION"),
+
+        PLACEMENT("PLACEMENT"),
+
+        COUNTRY("COUNTRY"),
+
+        TARGETED_INTEREST("TARGETED_INTEREST"),
+
+        PINNER_INTEREST("PINNER_INTEREST"),
+
+        AUDIENCE_INCLUDE("AUDIENCE_INCLUDE"),
+
+        GEO("GEO"),
+
+        AGE_BUCKET("AGE_BUCKET"),
+
+        REGION("REGION"),
+
+        MEDIA_TYPE("MEDIA_TYPE"),
+
+        AGE_BUCKET_AND_GENDER("AGE_BUCKET_AND_GENDER"),
+
+        AUDIENCE_MULTIPLIER("AUDIENCE_MULTIPLIER"),
+
+        CREATIVE_ENHANCEMENTS("CREATIVE_ENHANCEMENTS"),
+
+        LOCAL_ADS_STORE_CODE("LOCAL_ADS_STORE_CODE");
+    private String value;
+
+    TargetingTypesEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+  }
+
+  private List<TargetingTypesEnum> targetingTypes = new ArrayList<>();
+
+  /**
+   * List of targeting types. Requires &#x60;level&#x60; to be a value ending in &#x60;_TARGETING&#x60;. [\&quot;AUDIENCE_MULTIPLIER\&quot;] is only available in CAMPAIGN_TARGETING level. [\&quot;MEDIA_TYPE\&quot;] is only available in PRODUCT_ITEM_TARGETING level. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.
    **/
   
-  @ApiModelProperty(value = "List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.")
+  @ApiModelProperty(value = "List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AUDIENCE_MULTIPLIER\"] is only available in CAMPAIGN_TARGETING level. [\"MEDIA_TYPE\"] is only available in PRODUCT_ITEM_TARGETING level. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.")
   @JsonProperty("targeting_types")
- @Size(min=1,max=5)  public List<AdsAnalyticsTargetingType> getTargetingTypes() {
+ @Size(min=1,max=5)  public List<TargetingTypesEnum> getTargetingTypes() {
     return targetingTypes;
   }
-  public void setTargetingTypes(List<AdsAnalyticsTargetingType> targetingTypes) {
+  public void setTargetingTypes(List<TargetingTypesEnum> targetingTypes) {
     this.targetingTypes = targetingTypes;
   }
 

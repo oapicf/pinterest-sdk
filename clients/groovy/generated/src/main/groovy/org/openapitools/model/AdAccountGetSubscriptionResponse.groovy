@@ -11,18 +11,18 @@ class AdAccountGetSubscriptionResponse {
     String leadFormId
     /* Standard HTTPS webhook URL. */
     String webhookUrl
-    /* Subscription ID. */
-    String id
-    /* User account used to subscribe lead data. */
-    String userAccountId
     /* The Ad Account ID that this lead form belongs to. */
     String adAccountId
     /* API version. */
     String apiVersion
-    /* Base64 encoded key for client to decrypt lead data. */
-    String cryptographicKey
+    /* Lead subscription creation time. Unix timestamp in milliseconds. */
+    Integer createdTime
     /* Lead data encryption algorithm. */
     String cryptographicAlgorithm
-    /* Lead form creation time. Unix timestamp in milliseconds. */
-    Integer createdTime
+    /* Base64 encoded key for client to decrypt lead data. */
+    String cryptographicKey
+    /* Subscription ID. */
+    String id
+    /* User account used to subscribe lead data. */
+    String userAccountId
 }

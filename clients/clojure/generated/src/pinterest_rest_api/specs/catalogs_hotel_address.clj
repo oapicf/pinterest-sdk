@@ -9,9 +9,9 @@
   {
    (ds/opt :addr1) string?
    (ds/opt :city) string?
-   (ds/opt :region) string?
    (ds/opt :country) string?
    (ds/opt :postal_code) string?
+   (ds/opt :region) string?
    })
 
 (def catalogs-hotel-address-spec

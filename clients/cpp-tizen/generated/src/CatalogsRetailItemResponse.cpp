@@ -23,15 +23,20 @@ CatalogsRetailItemResponse::~CatalogsRetailItemResponse()
 void
 CatalogsRetailItemResponse::__init()
 {
+	//attributes = new ItemAttributes();
 	//catalog_type = new CatalogsType();
 	//item_id = std::string();
 	//new std::list()std::list> pins;
-	//attributes = new ItemAttributes();
 }
 
 void
 CatalogsRetailItemResponse::__cleanup()
 {
+	//if(attributes != NULL) {
+	//
+	//delete attributes;
+	//attributes = NULL;
+	//}
 	//if(catalog_type != NULL) {
 	//
 	//delete catalog_type;
@@ -47,11 +52,6 @@ CatalogsRetailItemResponse::__cleanup()
 	//delete pins;
 	//pins = NULL;
 	//}
-	//if(attributes != NULL) {
-	//
-	//delete attributes;
-	//attributes = NULL;
-	//}
 	//
 }
 
@@ -60,6 +60,20 @@ CatalogsRetailItemResponse::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *attributesKey = "attributes";
+	node = json_object_get_member(pJsonObject, attributesKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("ItemAttributes")) {
+			jsonToValue(&attributes, node, "ItemAttributes", "ItemAttributes");
+		} else {
+			
+			ItemAttributes* obj = static_cast<ItemAttributes*> (&attributes);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 	const gchar *catalog_typeKey = "catalog_type";
 	node = json_object_get_member(pJsonObject, catalog_typeKey);
 	if (node !=NULL) {
@@ -109,20 +123,6 @@ CatalogsRetailItemResponse::fromJson(char* jsonStr)
 		}
 		
 	}
-	const gchar *attributesKey = "attributes";
-	node = json_object_get_member(pJsonObject, attributesKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("ItemAttributes")) {
-			jsonToValue(&attributes, node, "ItemAttributes", "ItemAttributes");
-		} else {
-			
-			ItemAttributes* obj = static_cast<ItemAttributes*> (&attributes);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
 }
 
 CatalogsRetailItemResponse::CatalogsRetailItemResponse(char* json)
@@ -135,6 +135,20 @@ CatalogsRetailItemResponse::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("ItemAttributes")) {
+		ItemAttributes obj = getAttributes();
+		node = converttoJson(&obj, "ItemAttributes", "");
+	}
+	else {
+		
+		ItemAttributes obj = static_cast<ItemAttributes> (getAttributes());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *attributesKey = "attributes";
+	json_object_set_member(pJsonObject, attributesKey, node);
 	if (isprimitive("CatalogsType")) {
 		CatalogsType obj = getCatalogType();
 		node = converttoJson(&obj, "CatalogsType", "");
@@ -183,26 +197,24 @@ CatalogsRetailItemResponse::toJson()
 	
 	const gchar *pinsKey = "pins";
 	json_object_set_member(pJsonObject, pinsKey, node);
-	if (isprimitive("ItemAttributes")) {
-		ItemAttributes obj = getAttributes();
-		node = converttoJson(&obj, "ItemAttributes", "");
-	}
-	else {
-		
-		ItemAttributes obj = static_cast<ItemAttributes> (getAttributes());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *attributesKey = "attributes";
-	json_object_set_member(pJsonObject, attributesKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+ItemAttributes
+CatalogsRetailItemResponse::getAttributes()
+{
+	return attributes;
+}
+
+void
+CatalogsRetailItemResponse::setAttributes(ItemAttributes  attributes)
+{
+	this->attributes = attributes;
 }
 
 CatalogsType
@@ -239,18 +251,6 @@ void
 CatalogsRetailItemResponse::setPins(std::list <Pin> pins)
 {
 	this->pins = pins;
-}
-
-ItemAttributes
-CatalogsRetailItemResponse::getAttributes()
-{
-	return attributes;
-}
-
-void
-CatalogsRetailItemResponse::setAttributes(ItemAttributes  attributes)
-{
-	this->attributes = attributes;
 }
 
 

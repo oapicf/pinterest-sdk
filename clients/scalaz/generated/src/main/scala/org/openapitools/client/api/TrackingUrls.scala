@@ -12,11 +12,11 @@ import org.joda.time.DateTime
 import TrackingUrls._
 
 case class TrackingUrls (
-  impression: Option[List[String]],
+  audienceVerification: Option[List[String]],
+buyableButton: Option[List[String]],
 click: Option[List[String]],
 engagement: Option[List[String]],
-buyableButton: Option[List[String]],
-audienceVerification: Option[List[String]])
+impression: Option[List[String]])
 
 object TrackingUrls {
   import DateTimeCodecs._

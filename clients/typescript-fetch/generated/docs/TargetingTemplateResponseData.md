@@ -6,18 +6,18 @@
 
 Name | Type
 ------------ | -------------
-`name` | string
 `autoTargetingEnabled` | boolean
-`targetingAttributes` | [TargetingSpec](TargetingSpec.md)
-`placementGroup` | [PlacementGroupType](PlacementGroupType.md)
 `keywords` | [Array&lt;TargetingTemplateKeyword&gt;](TargetingTemplateKeyword.md)
+`name` | string
+`placementGroup` | [PlacementGroupType](PlacementGroupType.md)
+`targetingAttributes` | [TargetingSpec](TargetingSpec.md)
 `trackingUrls` | [TrackingUrls](TrackingUrls.md)
-`id` | string
-`createdTime` | number
-`updatedTime` | number
 `adAccountId` | string
-`status` | string
+`createdTime` | number
+`id` | string
 `sizing` | [TargetingTemplateAudienceSizing](TargetingTemplateAudienceSizing.md)
+`status` | string
+`updatedTime` | number
 
 ## Example
 
@@ -26,18 +26,18 @@ import type { TargetingTemplateResponseData } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "name": Gaming,
   "autoTargetingEnabled": null,
-  "targetingAttributes": null,
-  "placementGroup": null,
   "keywords": [{value=cats, match_type=EXACT_NEGATIVE}],
+  "name": Gaming,
+  "placementGroup": null,
+  "targetingAttributes": null,
   "trackingUrls": null,
-  "id": 643,
-  "createdTime": 1432744744,
-  "updatedTime": 1432744744,
   "adAccountId": 549755885175,
-  "status": ACTIVE,
+  "createdTime": 1432744744,
+  "id": 643,
   "sizing": null,
+  "status": ACTIVE,
+  "updatedTime": 1432744744,
 } satisfies TargetingTemplateResponseData
 
 console.log(example)

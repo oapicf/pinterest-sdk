@@ -73,16 +73,16 @@ private class OASCatalogsCreativeAssetsItemsPostFiTest {
     private static void maintainRenamedProperties() {
         OASCatalogsCreativeAssetsItemsPostFi catalogsCreativeAssetsItemsPostFilter = new OASCatalogsCreativeAssetsItemsPostFi();
         Map<String, String> x-property-mappings = catalogsCreativeAssetsItemsPostFilter.getx-property-mappings();
+        System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
         System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
         System.assertEquals('creativeAssetsIds', x-property-mappings.get('creative_assets_ids'));
-        System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASCatalogsCreativeAssetsItemsPostFi catalogsCreativeAssetsItemsPostFilter = new OASCatalogsCreativeAssetsItemsPostFi();
         System.assertEquals(new List<String>(), catalogsCreativeAssetsItemsPostFilter.creativeAssetsIds);
-        System.assertEquals(null, catalogsCreativeAssetsItemsPostFilter.catalogType);
         System.assertEquals(null, catalogsCreativeAssetsItemsPostFilter.catalogId);
+        System.assertEquals(null, catalogsCreativeAssetsItemsPostFilter.catalogType);
     }
 }

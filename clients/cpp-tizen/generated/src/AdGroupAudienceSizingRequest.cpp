@@ -24,11 +24,11 @@ void
 AdGroupAudienceSizingRequest::__init()
 {
 	//auto_targeting_enabled = bool(false);
-	//placement_group = std::string();
 	//new std::list()std::list> creative_types;
-	//targeting_spec = new TargetingSpec();
-	//new std::list()std::list> product_group_ids;
 	//new std::list()std::list> keywords;
+	//placement_group = std::string();
+	//new std::list()std::list> product_group_ids;
+	//targeting_spec = new TargetingSpec();
 }
 
 void
@@ -39,30 +39,30 @@ AdGroupAudienceSizingRequest::__cleanup()
 	//delete auto_targeting_enabled;
 	//auto_targeting_enabled = NULL;
 	//}
-	//if(placement_group != NULL) {
-	//
-	//delete placement_group;
-	//placement_group = NULL;
-	//}
 	//if(creative_types != NULL) {
 	//creative_types.RemoveAll(true);
 	//delete creative_types;
 	//creative_types = NULL;
 	//}
-	//if(targeting_spec != NULL) {
+	//if(keywords != NULL) {
+	//keywords.RemoveAll(true);
+	//delete keywords;
+	//keywords = NULL;
+	//}
+	//if(placement_group != NULL) {
 	//
-	//delete targeting_spec;
-	//targeting_spec = NULL;
+	//delete placement_group;
+	//placement_group = NULL;
 	//}
 	//if(product_group_ids != NULL) {
 	//product_group_ids.RemoveAll(true);
 	//delete product_group_ids;
 	//product_group_ids = NULL;
 	//}
-	//if(keywords != NULL) {
-	//keywords.RemoveAll(true);
-	//delete keywords;
-	//keywords = NULL;
+	//if(targeting_spec != NULL) {
+	//
+	//delete targeting_spec;
+	//targeting_spec = NULL;
 	//}
 	//
 }
@@ -80,20 +80,6 @@ AdGroupAudienceSizingRequest::fromJson(char* jsonStr)
 		if (isprimitive("bool")) {
 			jsonToValue(&auto_targeting_enabled, node, "bool", "");
 		} else {
-			
-		}
-	}
-	const gchar *placement_groupKey = "placement_group";
-	node = json_object_get_member(pJsonObject, placement_groupKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("PlacementGroupType")) {
-			jsonToValue(&placement_group, node, "PlacementGroupType", "PlacementGroupType");
-		} else {
-			
-			PlacementGroupType* obj = static_cast<PlacementGroupType*> (&placement_group);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -116,42 +102,6 @@ AdGroupAudienceSizingRequest::fromJson(char* jsonStr)
 				new_list.push_back(inst);
 			}
 			creative_types = new_list;
-		}
-		
-	}
-	const gchar *targeting_specKey = "targeting_spec";
-	node = json_object_get_member(pJsonObject, targeting_specKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("TargetingSpec")) {
-			jsonToValue(&targeting_spec, node, "TargetingSpec", "TargetingSpec");
-		} else {
-			
-			TargetingSpec* obj = static_cast<TargetingSpec*> (&targeting_spec);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *product_group_idsKey = "product_group_ids";
-	node = json_object_get_member(pJsonObject, product_group_idsKey);
-	if (node !=NULL) {
-	
-		{
-			JsonArray* arr = json_node_get_array(node);
-			JsonNode*  temp_json;
-			list<std::string> new_list;
-			std::string inst;
-			for (guint i=0;i<json_array_get_length(arr);i++) {
-				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("std::string")) {
-					jsonToValue(&inst, temp_json, "std::string", "");
-				} else {
-					
-				}
-				new_list.push_back(inst);
-			}
-			product_group_ids = new_list;
 		}
 		
 	}
@@ -179,6 +129,56 @@ AdGroupAudienceSizingRequest::fromJson(char* jsonStr)
 		}
 		
 	}
+	const gchar *placement_groupKey = "placement_group";
+	node = json_object_get_member(pJsonObject, placement_groupKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("PlacementGroupType")) {
+			jsonToValue(&placement_group, node, "PlacementGroupType", "PlacementGroupType");
+		} else {
+			
+			PlacementGroupType* obj = static_cast<PlacementGroupType*> (&placement_group);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *product_group_idsKey = "product_group_ids";
+	node = json_object_get_member(pJsonObject, product_group_idsKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<std::string> new_list;
+			std::string inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("std::string")) {
+					jsonToValue(&inst, temp_json, "std::string", "");
+				} else {
+					
+				}
+				new_list.push_back(inst);
+			}
+			product_group_ids = new_list;
+		}
+		
+	}
+	const gchar *targeting_specKey = "targeting_spec";
+	node = json_object_get_member(pJsonObject, targeting_specKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("TargetingSpec")) {
+			jsonToValue(&targeting_spec, node, "TargetingSpec", "TargetingSpec");
+		} else {
+			
+			TargetingSpec* obj = static_cast<TargetingSpec*> (&targeting_spec);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 }
 
 AdGroupAudienceSizingRequest::AdGroupAudienceSizingRequest(char* json)
@@ -200,20 +200,6 @@ AdGroupAudienceSizingRequest::toJson()
 	}
 	const gchar *auto_targeting_enabledKey = "auto_targeting_enabled";
 	json_object_set_member(pJsonObject, auto_targeting_enabledKey, node);
-	if (isprimitive("PlacementGroupType")) {
-		PlacementGroupType obj = getPlacementGroup();
-		node = converttoJson(&obj, "PlacementGroupType", "");
-	}
-	else {
-		
-		PlacementGroupType obj = static_cast<PlacementGroupType> (getPlacementGroup());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *placement_groupKey = "placement_group";
-	json_object_set_member(pJsonObject, placement_groupKey, node);
 	if (isprimitive("std::string")) {
 		list<std::string> new_list = static_cast<list <std::string> > (getCreativeTypes());
 		node = converttoJson(&new_list, "std::string", "array");
@@ -229,35 +215,6 @@ AdGroupAudienceSizingRequest::toJson()
 	
 	const gchar *creative_typesKey = "creative_types";
 	json_object_set_member(pJsonObject, creative_typesKey, node);
-	if (isprimitive("TargetingSpec")) {
-		TargetingSpec obj = getTargetingSpec();
-		node = converttoJson(&obj, "TargetingSpec", "");
-	}
-	else {
-		
-		TargetingSpec obj = static_cast<TargetingSpec> (getTargetingSpec());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *targeting_specKey = "targeting_spec";
-	json_object_set_member(pJsonObject, targeting_specKey, node);
-	if (isprimitive("std::string")) {
-		list<std::string> new_list = static_cast<list <std::string> > (getProductGroupIds());
-		node = converttoJson(&new_list, "std::string", "array");
-	} else {
-		node = json_node_alloc();
-		list<std::string> new_list = static_cast<list <std::string> > (getProductGroupIds());
-		JsonArray* json_array = json_array_new();
-		GError *mygerror;
-		
-	}
-
-
-	
-	const gchar *product_group_idsKey = "product_group_ids";
-	json_object_set_member(pJsonObject, product_group_idsKey, node);
 	if (isprimitive("AdGroupAudienceSizingRequest_keywords_inner")) {
 		list<AdGroupAudienceSizingRequest_keywords_inner> new_list = static_cast<list <AdGroupAudienceSizingRequest_keywords_inner> > (getKeywords());
 		node = converttoJson(&new_list, "AdGroupAudienceSizingRequest_keywords_inner", "array");
@@ -283,6 +240,49 @@ AdGroupAudienceSizingRequest::toJson()
 	
 	const gchar *keywordsKey = "keywords";
 	json_object_set_member(pJsonObject, keywordsKey, node);
+	if (isprimitive("PlacementGroupType")) {
+		PlacementGroupType obj = getPlacementGroup();
+		node = converttoJson(&obj, "PlacementGroupType", "");
+	}
+	else {
+		
+		PlacementGroupType obj = static_cast<PlacementGroupType> (getPlacementGroup());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *placement_groupKey = "placement_group";
+	json_object_set_member(pJsonObject, placement_groupKey, node);
+	if (isprimitive("std::string")) {
+		list<std::string> new_list = static_cast<list <std::string> > (getProductGroupIds());
+		node = converttoJson(&new_list, "std::string", "array");
+	} else {
+		node = json_node_alloc();
+		list<std::string> new_list = static_cast<list <std::string> > (getProductGroupIds());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+	}
+
+
+	
+	const gchar *product_group_idsKey = "product_group_ids";
+	json_object_set_member(pJsonObject, product_group_idsKey, node);
+	if (isprimitive("TargetingSpec")) {
+		TargetingSpec obj = getTargetingSpec();
+		node = converttoJson(&obj, "TargetingSpec", "");
+	}
+	else {
+		
+		TargetingSpec obj = static_cast<TargetingSpec> (getTargetingSpec());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *targeting_specKey = "targeting_spec";
+	json_object_set_member(pJsonObject, targeting_specKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -303,18 +303,6 @@ AdGroupAudienceSizingRequest::setAutoTargetingEnabled(bool  auto_targeting_enabl
 	this->auto_targeting_enabled = auto_targeting_enabled;
 }
 
-PlacementGroupType
-AdGroupAudienceSizingRequest::getPlacementGroup()
-{
-	return placement_group;
-}
-
-void
-AdGroupAudienceSizingRequest::setPlacementGroup(PlacementGroupType  placement_group)
-{
-	this->placement_group = placement_group;
-}
-
 std::list<std::string>
 AdGroupAudienceSizingRequest::getCreativeTypes()
 {
@@ -327,16 +315,28 @@ AdGroupAudienceSizingRequest::setCreativeTypes(std::list <std::string> creative_
 	this->creative_types = creative_types;
 }
 
-TargetingSpec
-AdGroupAudienceSizingRequest::getTargetingSpec()
+std::list<AdGroupAudienceSizingRequest_keywords_inner>
+AdGroupAudienceSizingRequest::getKeywords()
 {
-	return targeting_spec;
+	return keywords;
 }
 
 void
-AdGroupAudienceSizingRequest::setTargetingSpec(TargetingSpec  targeting_spec)
+AdGroupAudienceSizingRequest::setKeywords(std::list <AdGroupAudienceSizingRequest_keywords_inner> keywords)
 {
-	this->targeting_spec = targeting_spec;
+	this->keywords = keywords;
+}
+
+PlacementGroupType
+AdGroupAudienceSizingRequest::getPlacementGroup()
+{
+	return placement_group;
+}
+
+void
+AdGroupAudienceSizingRequest::setPlacementGroup(PlacementGroupType  placement_group)
+{
+	this->placement_group = placement_group;
 }
 
 std::list<std::string>
@@ -351,16 +351,16 @@ AdGroupAudienceSizingRequest::setProductGroupIds(std::list <std::string> product
 	this->product_group_ids = product_group_ids;
 }
 
-std::list<AdGroupAudienceSizingRequest_keywords_inner>
-AdGroupAudienceSizingRequest::getKeywords()
+TargetingSpec
+AdGroupAudienceSizingRequest::getTargetingSpec()
 {
-	return keywords;
+	return targeting_spec;
 }
 
 void
-AdGroupAudienceSizingRequest::setKeywords(std::list <AdGroupAudienceSizingRequest_keywords_inner> keywords)
+AdGroupAudienceSizingRequest::setTargetingSpec(TargetingSpec  targeting_spec)
 {
-	this->keywords = keywords;
+	this->targeting_spec = targeting_spec;
 }
 
 

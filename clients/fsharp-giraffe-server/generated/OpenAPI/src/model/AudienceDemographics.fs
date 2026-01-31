@@ -11,9 +11,9 @@ module AudienceDemographics =
 
   type AudienceDemographics = {
     Ages : AudienceDemographicValue[];
-    Genders : AudienceDemographicValue[];
-    Devices : AudienceDemographicValue[];
-    Metros : AudienceDemographicValue[];
     Countries : AudienceDemographicValue[];
+    Devices : AudienceDemographicValue[];
+    Genders : AudienceDemographicValue[];
+    Metros : AudienceDemographicValue[];
   }
   //#endregion

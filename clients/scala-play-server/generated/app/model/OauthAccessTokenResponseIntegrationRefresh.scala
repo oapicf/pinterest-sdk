@@ -6,22 +6,22 @@ import play.api.libs.json._
   * Represents the Swagger definition for OauthAccessTokenResponseIntegrationRefresh.
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class OauthAccessTokenResponseIntegrationRefresh(
   refreshToken: String,
   refreshTokenExpiresIn: Int,
-  responseType: Option[OauthAccessTokenResponseIntegrationRefresh.ResponseType.Value],
   accessToken: String,
-  tokenType: String,
   expiresIn: Int,
-  scope: String
+  responseType: Option[OauthAccessTokenResponseIntegrationRefresh.ResponseType.Value],
+  scope: String,
+  tokenType: String
   additionalProperties: 
 )
 
 object OauthAccessTokenResponseIntegrationRefresh {
   implicit lazy val oauthAccessTokenResponseIntegrationRefreshJsonFormat: Format[OauthAccessTokenResponseIntegrationRefresh] = {
     val realJsonFormat = Json.format[OauthAccessTokenResponseIntegrationRefresh]
-    val declaredPropNames = Set("refreshToken", "refreshTokenExpiresIn", "responseType", "accessToken", "tokenType", "expiresIn", "scope")
+    val declaredPropNames = Set("refreshToken", "refreshTokenExpiresIn", "accessToken", "expiresIn", "responseType", "scope", "tokenType")
     
     Format(
       Reads {

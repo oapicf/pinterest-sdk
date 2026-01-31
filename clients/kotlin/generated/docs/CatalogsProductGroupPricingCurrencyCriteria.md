@@ -4,9 +4,9 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
+| **currency** | [**NonNullableCatalogsCurrency**](NonNullableCatalogsCurrency.md) |  |  |
 | **&#x60;operator&#x60;** | [**inline**](#&#x60;Operator&#x60;) |  |  |
 | **&#x60;value&#x60;** | [**java.math.BigDecimal**](java.math.BigDecimal.md) |  |  |
-| **currency** | [**NonNullableCatalogsCurrency**](NonNullableCatalogsCurrency.md) |  |  |
 | **negated** | **kotlin.Boolean** |  |  [optional] |
 
 

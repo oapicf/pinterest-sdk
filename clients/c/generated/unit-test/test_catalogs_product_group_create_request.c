@@ -24,19 +24,19 @@ catalogs_product_group_create_request_t* instantiate_catalogs_product_group_crea
   if (include_optional) {
     catalogs_product_group_create_request = catalogs_product_group_create_request_create(
       "0",
-      "0",
-      1,
+      "2680059592705",
        // false, not to have infinite recursion
       instantiate_catalogs_product_group_filters_request(0),
-      "2680059592705"
+      1,
+      "0"
     );
   } else {
     catalogs_product_group_create_request = catalogs_product_group_create_request_create(
       "0",
-      "0",
-      1,
+      "2680059592705",
       NULL,
-      "2680059592705"
+      1,
+      "0"
     );
   }
 

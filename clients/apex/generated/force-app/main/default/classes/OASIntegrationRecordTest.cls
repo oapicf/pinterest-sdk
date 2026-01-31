@@ -73,20 +73,20 @@ private class OASIntegrationRecordTest {
     private static void maintainRenamedProperties() {
         OASIntegrationRecord integrationRecord = new OASIntegrationRecord();
         Map<String, String> x-property-mappings = integrationRecord.getx-property-mappings();
-        System.assertEquals('externalBusinessId', x-property-mappings.get('external_business_id'));
-        System.assertEquals('connectedMerchantId', x-property-mappings.get('connected_merchant_id'));
-        System.assertEquals('connectedUserId', x-property-mappings.get('connected_user_id'));
+        System.assertEquals('additionalId1', x-property-mappings.get('additional_id_1'));
         System.assertEquals('connectedAdvertiserId', x-property-mappings.get('connected_advertiser_id'));
         System.assertEquals('connectedLbaId', x-property-mappings.get('connected_lba_id'));
+        System.assertEquals('connectedMerchantId', x-property-mappings.get('connected_merchant_id'));
         System.assertEquals('connectedTagId', x-property-mappings.get('connected_tag_id'));
-        System.assertEquals('partnerAccessToken', x-property-mappings.get('partner_access_token'));
-        System.assertEquals('partnerRefreshToken', x-property-mappings.get('partner_refresh_token'));
-        System.assertEquals('partnerPrimaryEmail', x-property-mappings.get('partner_primary_email'));
-        System.assertEquals('partnerAccessTokenExpiry', x-property-mappings.get('partner_access_token_expiry'));
-        System.assertEquals('partnerRefreshTokenExpiry', x-property-mappings.get('partner_refresh_token_expiry'));
-        System.assertEquals('partnerMetadata', x-property-mappings.get('partner_metadata'));
-        System.assertEquals('additionalId1', x-property-mappings.get('additional_id_1'));
+        System.assertEquals('connectedUserId', x-property-mappings.get('connected_user_id'));
         System.assertEquals('createdTime', x-property-mappings.get('created_time'));
+        System.assertEquals('externalBusinessId', x-property-mappings.get('external_business_id'));
+        System.assertEquals('partnerAccessToken', x-property-mappings.get('partner_access_token'));
+        System.assertEquals('partnerAccessTokenExpiry', x-property-mappings.get('partner_access_token_expiry'));
+        System.assertEquals('partnerMetadata', x-property-mappings.get('partner_metadata'));
+        System.assertEquals('partnerPrimaryEmail', x-property-mappings.get('partner_primary_email'));
+        System.assertEquals('partnerRefreshToken', x-property-mappings.get('partner_refresh_token'));
+        System.assertEquals('partnerRefreshTokenExpiry', x-property-mappings.get('partner_refresh_token_expiry'));
         System.assertEquals('updatedTime', x-property-mappings.get('updated_time'));
     }
 }

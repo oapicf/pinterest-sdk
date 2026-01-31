@@ -25,16 +25,10 @@ class TermsOfServiceTest : ShouldSpec() {
         // uncomment below to create an instance of TermsOfService
         //val modelInstance = TermsOfService()
 
-        // to test the property `id` - The ID of the terms of service
-        should("test id") {
+        // to test the property `adAccountId` - The ID of the ad account.
+        should("test adAccountId") {
             // uncomment below to test the property
-            //modelInstance.id shouldBe ("TODO")
-        }
-
-        // to test the property `html` - The terms of service content
-        should("test html") {
-            // uncomment below to test the property
-            //modelInstance.html shouldBe ("TODO")
+            //modelInstance.adAccountId shouldBe ("TODO")
         }
 
         // to test the property `hasAccepted` - Whether the ad account has accepted terms of service.
@@ -43,10 +37,16 @@ class TermsOfServiceTest : ShouldSpec() {
             //modelInstance.hasAccepted shouldBe ("TODO")
         }
 
-        // to test the property `adAccountId` - The ID of the ad account.
-        should("test adAccountId") {
+        // to test the property `html` - The terms of service content
+        should("test html") {
             // uncomment below to test the property
-            //modelInstance.adAccountId shouldBe ("TODO")
+            //modelInstance.html shouldBe ("TODO")
+        }
+
+        // to test the property `id` - The ID of the terms of service
+        should("test id") {
+            // uncomment below to test the property
+            //modelInstance.id shouldBe ("TODO")
         }
 
     }

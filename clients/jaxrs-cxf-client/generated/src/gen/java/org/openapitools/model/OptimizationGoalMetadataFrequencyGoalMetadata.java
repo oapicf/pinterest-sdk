@@ -8,7 +8,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class OptimizationGoalMetadataFrequencyGoalMetadata  {
   
-  @ApiModelProperty(value = "")
+ /**
+  * Frequency target can only be between 2 and 20
+  */
+  @ApiModelProperty(value = "Frequency target can only be between 2 and 20")
 
   private Integer frequency;
 
@@ -49,7 +52,9 @@ THIRTY_DAY(String.valueOf("THIRTY_DAY")), DAY(String.valueOf("DAY")), SEVEN_DAY(
 
   private TimerangeEnum timerange;
  /**
-   * Get frequency
+   * Frequency target can only be between 2 and 20
+   * minimum: 2
+   * maximum: 20
    * @return frequency
   **/
   @JsonProperty("frequency")

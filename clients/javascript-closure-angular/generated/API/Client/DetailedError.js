@@ -13,14 +13,14 @@ API.Client.DetailedError = function() {}
 API.Client.DetailedError.prototype.code;
 
 /**
- * @type {!string}
- * @export
- */
-API.Client.DetailedError.prototype.message;
-
-/**
  * @type {!API.Client.Object}
  * @export
  */
 API.Client.DetailedError.prototype.details;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.DetailedError.prototype.message;
 

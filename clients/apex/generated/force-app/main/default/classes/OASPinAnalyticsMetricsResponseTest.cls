@@ -73,16 +73,16 @@ private class OASPinAnalyticsMetricsResponseTest {
     private static void maintainRenamedProperties() {
         OASPinAnalyticsMetricsResponse pinAnalyticsMetricsResponse = new OASPinAnalyticsMetricsResponse();
         Map<String, String> x-property-mappings = pinAnalyticsMetricsResponse.getx-property-mappings();
-        System.assertEquals('lifetimeMetrics', x-property-mappings.get('lifetime_metrics'));
         System.assertEquals('dailyMetrics', x-property-mappings.get('daily_metrics'));
+        System.assertEquals('lifetimeMetrics', x-property-mappings.get('lifetime_metrics'));
         System.assertEquals('summaryMetrics', x-property-mappings.get('summary_metrics'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASPinAnalyticsMetricsResponse pinAnalyticsMetricsResponse = new OASPinAnalyticsMetricsResponse();
-        System.assertEquals(new Map<String, Integer>(), pinAnalyticsMetricsResponse.lifetimeMetrics);
         System.assertEquals(new List<OASPinAnalyticsMetricsResponseDailyM>(), pinAnalyticsMetricsResponse.dailyMetrics);
+        System.assertEquals(new Map<String, Integer>(), pinAnalyticsMetricsResponse.lifetimeMetrics);
         System.assertEquals(new Map<String, Double>(), pinAnalyticsMetricsResponse.summaryMetrics);
     }
 }

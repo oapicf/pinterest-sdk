@@ -25,50 +25,50 @@ catalogs_hotel_attributes_t* instantiate_catalogs_hotel_attributes(int include_o
   catalogs_hotel_attributes_t* catalogs_hotel_attributes = NULL;
   if (include_optional) {
     catalogs_hotel_attributes = catalogs_hotel_attributes_create(
-      "0",
-      "0",
-      "0",
-      "0",
-      1.337,
-      1.337,
-      list_createList(),
        // false, not to have infinite recursion
       instantiate_catalogs_hotel_address(0),
-      "0",
-      "0",
-      "0",
-      "0",
-      "0",
-      "0",
       "100 USD",
-      "90 USD",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
        // false, not to have infinite recursion
       instantiate_catalogs_hotel_guest_ratings(0),
+      1.337,
+      "0",
+      1.337,
+      "0",
+      list_createList(),
+      "90 USD",
+      ["https://scene.example.com/image/image_v2.jpg","https://scene.example.com/image/image_v3.jpg"],
        // false, not to have infinite recursion
-      instantiate_catalogs_hotel_attributes_all_of_main_image(0),
-      ["https://scene.example.com/image/image_v2.jpg","https://scene.example.com/image/image_v3.jpg"]
+      instantiate_catalogs_hotel_attributes_all_of_main_image(0)
     );
   } else {
     catalogs_hotel_attributes = catalogs_hotel_attributes_create(
-      "0",
-      "0",
-      "0",
-      "0",
-      1.337,
-      1.337,
-      list_createList(),
       NULL,
-      "0",
-      "0",
-      "0",
-      "0",
-      "0",
-      "0",
       "100 USD",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      NULL,
+      1.337,
+      "0",
+      1.337,
+      "0",
+      list_createList(),
       "90 USD",
-      NULL,
-      NULL,
-      ["https://scene.example.com/image/image_v2.jpg","https://scene.example.com/image/image_v3.jpg"]
+      ["https://scene.example.com/image/image_v2.jpg","https://scene.example.com/image/image_v3.jpg"],
+      NULL
     );
   }
 

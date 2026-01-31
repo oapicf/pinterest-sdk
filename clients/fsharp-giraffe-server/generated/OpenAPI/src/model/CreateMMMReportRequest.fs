@@ -19,12 +19,12 @@ module CreateMMMReportRequest =
 
   type CreateMMMReportRequest = {
     Countries : TargetingAdvertiserCountry[];
-    ReportName : string;
-    StartDate : string;
+    Columns : MMMReportingColumn[];
     EndDate : string;
     Granularity : GranularityEnum;
     Level : LevelEnum;
+    ReportName : string;
+    StartDate : string;
     TargetingTypes : MMMReportingTargetingType[];
-    Columns : MMMReportingColumn[];
   }
   //#endregion

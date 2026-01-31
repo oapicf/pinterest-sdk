@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Array&lt;CatalogsProduct&gt;**](CatalogsProduct.md) | Pins | [default to undefined]
 **bookmark** | **string** |  | [optional] [default to undefined]
+**items** | [**Array&lt;CatalogsProduct&gt;**](CatalogsProduct.md) | Pins | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { CatalogsProductGroupPinsList200Response } from './api';
 
 const instance: CatalogsProductGroupPinsList200Response = {
-    items,
     bookmark,
+    items,
 };
 ```
 

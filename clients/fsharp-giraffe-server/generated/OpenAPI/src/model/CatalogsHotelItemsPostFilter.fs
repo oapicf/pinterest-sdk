@@ -12,8 +12,8 @@ module CatalogsHotelItemsPostFilter =
   //#endregion
 
   type CatalogsHotelItemsPostFilter = {
+    CatalogId : string;
     CatalogType : CatalogTypeEnum;
     HotelIds : string[];
-    CatalogId : string;
   }
   //#endregion

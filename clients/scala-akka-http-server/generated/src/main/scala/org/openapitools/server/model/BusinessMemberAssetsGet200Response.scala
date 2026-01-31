@@ -2,11 +2,11 @@ package org.openapitools.server.model
 
 
 /**
- * @param items List asset permissions the given member was granted. for example: ''null''
  * @param bookmark  for example: ''null''
+ * @param items List asset permissions the given member was granted. for example: ''null''
 */
 final case class BusinessMemberAssetsGet200Response (
-  items: Seq[AssetIdPermissions],
-  bookmark: Option[String] = None
+  bookmark: Option[String] = None,
+  items: Seq[AssetIdPermissions]
 )
 

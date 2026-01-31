@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Values** | [**Gender[]**](Gender.md) |  | 
 **Negated** | **Boolean** |  | [optional] [default to $false]
+**Values** | [**Gender[]**](Gender.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsProductGroupMultipleGenderCriteria = Initialize-PSOpenAPIToolsCatalogsProductGroupMultipleGenderCriteria  -Values null `
- -Negated null
+$CatalogsProductGroupMultipleGenderCriteria = Initialize-PSOpenAPIToolsCatalogsProductGroupMultipleGenderCriteria  -Negated null `
+ -Values null
 ```
 
 - Convert the resource to JSON

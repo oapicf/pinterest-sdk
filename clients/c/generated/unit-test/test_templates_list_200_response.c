@@ -22,13 +22,13 @@ templates_list_200_response_t* instantiate_templates_list_200_response(int inclu
   templates_list_200_response_t* templates_list_200_response = NULL;
   if (include_optional) {
     templates_list_200_response = templates_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     templates_list_200_response = templates_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

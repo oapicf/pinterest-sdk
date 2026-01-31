@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TrendingKeywordsResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TrendingKeywordsResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  TrendingKeyword = openapi_server.resourceTypes.TrendingKeyword
+}
+resourceTypes {
+
+  TrendingKeywordsResponse {
+    title = TrendingKeywordsResponse
+    description = TrendingKeywordsResponse
+    derivedFrom = Root
+    properties {
+        trends {
+          type = array
+          items.type = TrendingKeyword
+          description = "The top trending keywords for the specified trend type in the requested region.&lt;br /&gt; Results are ordered, with the first element in the array representing the #1 top trend."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  TrendingKeywordsResponse {
+    title = TrendingKeywordsResponse
+    description = TrendingKeywordsResponse
+    implements = openapi_server.resourceTypes.TrendingKeywordsResponse
+
+  }
+}

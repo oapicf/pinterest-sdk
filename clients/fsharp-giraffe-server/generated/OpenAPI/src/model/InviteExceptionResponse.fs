@@ -10,8 +10,8 @@ module InviteExceptionResponse =
 
 
   type InviteExceptionResponse = {
-    InviteOrRequestId : string option;
     Code : int;
+    InviteOrRequestId : string option;
     Message : string;
     UsersOrPartnerIds : string[];
   }

@@ -25,13 +25,13 @@ AdAccountGetSubscriptionResponse::__init()
 {
 	//lead_form_id = std::string();
 	//webhook_url = std::string();
-	//id = std::string();
-	//user_account_id = std::string();
 	//ad_account_id = std::string();
 	//api_version = std::string();
-	//cryptographic_key = std::string();
-	//cryptographic_algorithm = std::string();
 	//created_time = int(0);
+	//cryptographic_algorithm = std::string();
+	//cryptographic_key = std::string();
+	//id = std::string();
+	//user_account_id = std::string();
 }
 
 void
@@ -47,16 +47,6 @@ AdAccountGetSubscriptionResponse::__cleanup()
 	//delete webhook_url;
 	//webhook_url = NULL;
 	//}
-	//if(id != NULL) {
-	//
-	//delete id;
-	//id = NULL;
-	//}
-	//if(user_account_id != NULL) {
-	//
-	//delete user_account_id;
-	//user_account_id = NULL;
-	//}
 	//if(ad_account_id != NULL) {
 	//
 	//delete ad_account_id;
@@ -67,20 +57,30 @@ AdAccountGetSubscriptionResponse::__cleanup()
 	//delete api_version;
 	//api_version = NULL;
 	//}
-	//if(cryptographic_key != NULL) {
+	//if(created_time != NULL) {
 	//
-	//delete cryptographic_key;
-	//cryptographic_key = NULL;
+	//delete created_time;
+	//created_time = NULL;
 	//}
 	//if(cryptographic_algorithm != NULL) {
 	//
 	//delete cryptographic_algorithm;
 	//cryptographic_algorithm = NULL;
 	//}
-	//if(created_time != NULL) {
+	//if(cryptographic_key != NULL) {
 	//
-	//delete created_time;
-	//created_time = NULL;
+	//delete cryptographic_key;
+	//cryptographic_key = NULL;
+	//}
+	//if(id != NULL) {
+	//
+	//delete id;
+	//id = NULL;
+	//}
+	//if(user_account_id != NULL) {
+	//
+	//delete user_account_id;
+	//user_account_id = NULL;
 	//}
 	//
 }
@@ -112,28 +112,6 @@ AdAccountGetSubscriptionResponse::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *idKey = "id";
-	node = json_object_get_member(pJsonObject, idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&id, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *user_account_idKey = "user_account_id";
-	node = json_object_get_member(pJsonObject, user_account_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&user_account_id, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *ad_account_idKey = "ad_account_id";
 	node = json_object_get_member(pJsonObject, ad_account_idKey);
 	if (node !=NULL) {
@@ -156,13 +134,13 @@ AdAccountGetSubscriptionResponse::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *cryptographic_keyKey = "cryptographic_key";
-	node = json_object_get_member(pJsonObject, cryptographic_keyKey);
+	const gchar *created_timeKey = "created_time";
+	node = json_object_get_member(pJsonObject, created_timeKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("std::string")) {
-			jsonToValue(&cryptographic_key, node, "std::string", "");
+		if (isprimitive("int")) {
+			jsonToValue(&created_time, node, "int", "");
 		} else {
 			
 		}
@@ -178,13 +156,35 @@ AdAccountGetSubscriptionResponse::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *created_timeKey = "created_time";
-	node = json_object_get_member(pJsonObject, created_timeKey);
+	const gchar *cryptographic_keyKey = "cryptographic_key";
+	node = json_object_get_member(pJsonObject, cryptographic_keyKey);
 	if (node !=NULL) {
 	
 
-		if (isprimitive("int")) {
-			jsonToValue(&created_time, node, "int", "");
+		if (isprimitive("std::string")) {
+			jsonToValue(&cryptographic_key, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *idKey = "id";
+	node = json_object_get_member(pJsonObject, idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *user_account_idKey = "user_account_id";
+	node = json_object_get_member(pJsonObject, user_account_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&user_account_id, node, "std::string", "");
 		} else {
 			
 		}
@@ -220,24 +220,6 @@ AdAccountGetSubscriptionResponse::toJson()
 	const gchar *webhook_urlKey = "webhook_url";
 	json_object_set_member(pJsonObject, webhook_urlKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *idKey = "id";
-	json_object_set_member(pJsonObject, idKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getUserAccountId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *user_account_idKey = "user_account_id";
-	json_object_set_member(pJsonObject, user_account_idKey, node);
-	if (isprimitive("std::string")) {
 		std::string obj = getAdAccountId();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -255,6 +237,24 @@ AdAccountGetSubscriptionResponse::toJson()
 	}
 	const gchar *api_versionKey = "api_version";
 	json_object_set_member(pJsonObject, api_versionKey, node);
+	if (isprimitive("int")) {
+		int obj = getCreatedTime();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *created_timeKey = "created_time";
+	json_object_set_member(pJsonObject, created_timeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCryptographicAlgorithm();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *cryptographic_algorithmKey = "cryptographic_algorithm";
+	json_object_set_member(pJsonObject, cryptographic_algorithmKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getCryptographicKey();
 		node = converttoJson(&obj, "std::string", "");
@@ -265,23 +265,23 @@ AdAccountGetSubscriptionResponse::toJson()
 	const gchar *cryptographic_keyKey = "cryptographic_key";
 	json_object_set_member(pJsonObject, cryptographic_keyKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getCryptographicAlgorithm();
+		std::string obj = getId();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *cryptographic_algorithmKey = "cryptographic_algorithm";
-	json_object_set_member(pJsonObject, cryptographic_algorithmKey, node);
-	if (isprimitive("int")) {
-		int obj = getCreatedTime();
-		node = converttoJson(&obj, "int", "");
+	const gchar *idKey = "id";
+	json_object_set_member(pJsonObject, idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getUserAccountId();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *created_timeKey = "created_time";
-	json_object_set_member(pJsonObject, created_timeKey, node);
+	const gchar *user_account_idKey = "user_account_id";
+	json_object_set_member(pJsonObject, user_account_idKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -315,30 +315,6 @@ AdAccountGetSubscriptionResponse::setWebhookUrl(std::string  webhook_url)
 }
 
 std::string
-AdAccountGetSubscriptionResponse::getId()
-{
-	return id;
-}
-
-void
-AdAccountGetSubscriptionResponse::setId(std::string  id)
-{
-	this->id = id;
-}
-
-std::string
-AdAccountGetSubscriptionResponse::getUserAccountId()
-{
-	return user_account_id;
-}
-
-void
-AdAccountGetSubscriptionResponse::setUserAccountId(std::string  user_account_id)
-{
-	this->user_account_id = user_account_id;
-}
-
-std::string
 AdAccountGetSubscriptionResponse::getAdAccountId()
 {
 	return ad_account_id;
@@ -362,16 +338,16 @@ AdAccountGetSubscriptionResponse::setApiVersion(std::string  api_version)
 	this->api_version = api_version;
 }
 
-std::string
-AdAccountGetSubscriptionResponse::getCryptographicKey()
+int
+AdAccountGetSubscriptionResponse::getCreatedTime()
 {
-	return cryptographic_key;
+	return created_time;
 }
 
 void
-AdAccountGetSubscriptionResponse::setCryptographicKey(std::string  cryptographic_key)
+AdAccountGetSubscriptionResponse::setCreatedTime(int  created_time)
 {
-	this->cryptographic_key = cryptographic_key;
+	this->created_time = created_time;
 }
 
 std::string
@@ -386,16 +362,40 @@ AdAccountGetSubscriptionResponse::setCryptographicAlgorithm(std::string  cryptog
 	this->cryptographic_algorithm = cryptographic_algorithm;
 }
 
-int
-AdAccountGetSubscriptionResponse::getCreatedTime()
+std::string
+AdAccountGetSubscriptionResponse::getCryptographicKey()
 {
-	return created_time;
+	return cryptographic_key;
 }
 
 void
-AdAccountGetSubscriptionResponse::setCreatedTime(int  created_time)
+AdAccountGetSubscriptionResponse::setCryptographicKey(std::string  cryptographic_key)
 {
-	this->created_time = created_time;
+	this->cryptographic_key = cryptographic_key;
+}
+
+std::string
+AdAccountGetSubscriptionResponse::getId()
+{
+	return id;
+}
+
+void
+AdAccountGetSubscriptionResponse::setId(std::string  id)
+{
+	this->id = id;
+}
+
+std::string
+AdAccountGetSubscriptionResponse::getUserAccountId()
+{
+	return user_account_id;
+}
+
+void
+AdAccountGetSubscriptionResponse::setUserAccountId(std::string  user_account_id)
+{
+	this->user_account_id = user_account_id;
 }
 
 

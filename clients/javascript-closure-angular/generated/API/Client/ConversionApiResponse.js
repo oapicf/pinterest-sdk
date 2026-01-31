@@ -7,11 +7,11 @@ goog.provide('API.Client.ConversionApiResponse');
 API.Client.ConversionApiResponse = function() {}
 
 /**
- * Total number of events received in the request.
- * @type {!number}
+ * Specific messages for each event received. The order will match the order in which the events were received in the request.
+ * @type {!Array<!API.Client.ConversionApiResponse_events_inner>}
  * @export
  */
-API.Client.ConversionApiResponse.prototype.numEventsReceived;
+API.Client.ConversionApiResponse.prototype.events;
 
 /**
  * Number of events that were successfully processed from the events.
@@ -21,9 +21,9 @@ API.Client.ConversionApiResponse.prototype.numEventsReceived;
 API.Client.ConversionApiResponse.prototype.numEventsProcessed;
 
 /**
- * Specific messages for each event received. The order will match the order in which the events were received in the request.
- * @type {!Array<!API.Client.ConversionApiResponse_events_inner>}
+ * Total number of events received in the request.
+ * @type {!number}
  * @export
  */
-API.Client.ConversionApiResponse.prototype.events;
+API.Client.ConversionApiResponse.prototype.numEventsReceived;
 

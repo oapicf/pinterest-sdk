@@ -3,14 +3,6 @@ Protected Class TemplateResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Template ID
-		#tag EndNote
-		id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
 			ID of the Ad Account that owns the template
 		#tag EndNote
 		ad_account_id As Xoson.O.OptionalString
@@ -27,74 +19,6 @@ Protected Class TemplateResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			ID of the user who created the template
-		#tag EndNote
-		user_id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Template Name
-		#tag EndNote
-		name As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			The number of days prior to the day the report will be delivered at which the report will start
-		#tag EndNote
-		report_start_relative_days_in_past As Xoson.O.OptionalDouble
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			The number of days prior to the day the report will be delivered at which the report will end
-		#tag EndNote
-		report_end_relative_days_in_past As Xoson.O.OptionalDouble
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		date_range As OpenAPIClient.Models.TemplateResponseDateRange
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		report_level As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		report_format As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			A list of columns to be included in the report
-		#tag EndNote
-		columns() As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		granularity As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			The length of the sliding window over which view conversions will be attributed
-		#tag EndNote
-		view_window_days As Xoson.O.OptionalDouble
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
 			The length of the sliding window over which click conversions will be attributed
 		#tag EndNote
 		click_window_days As Xoson.O.OptionalDouble
@@ -103,9 +27,9 @@ Protected Class TemplateResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The length of the sliding window over which engagement conversions will be attributed
+			A list of columns to be included in the report
 		#tag EndNote
-		engagement_window_days As Xoson.O.OptionalDouble
+		columns() As String
 	#tag EndProperty
 
 
@@ -119,9 +43,67 @@ Protected Class TemplateResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
+			The surface used to create this template
+		#tag EndNote
+		creation_source As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			A list of custom column IDs
+		#tag EndNote
+		custom_column_ids() As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		date_range As OpenAPIClient.Models.TemplateResponseDateRange
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			The length of the sliding window over which engagement conversions will be attributed
+		#tag EndNote
+		engagement_window_days As Xoson.O.OptionalDouble
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			A JSON representation of any filters to be applied before returning report data. Each filter object should contain all of the following fields:<br> "field": The column name<br> "operator": The operator. Allowed operators: ["=", "!=", "in", "not_in", "~", ">", "<", "contains_substring"]<br> "value": A single value or a list of values
 		#tag EndNote
 		filters_json As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		granularity As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Template ID
+		#tag EndNote
+		id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			The filter on the conversion ingestion source method for conversion metrics
+		#tag EndNote
+		ingestion_sources() As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			A boolean that indicates if the template has been deleted
+		#tag EndNote
+		is_deleted As Xoson.O.OptionalBoolean
 	#tag EndProperty
 
 
@@ -143,33 +125,35 @@ Protected Class TemplateResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The surface used to create this template
+			Template Name
 		#tag EndNote
-		creation_source As Xoson.O.OptionalString
+		name As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			A boolean that indicates if the template has been deleted
+			The number of days prior to the day the report will be delivered at which the report will end
 		#tag EndNote
-		is_deleted As Xoson.O.OptionalBoolean
+		report_end_relative_days_in_past As Xoson.O.OptionalDouble
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		report_format As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		report_level As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Time of last update in seconds since Unix epoch
+			The number of days prior to the day the report will be delivered at which the report will start
 		#tag EndNote
-		updated_time As Xoson.O.OptionalDouble
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			A list of custom column IDs
-		#tag EndNote
-		custom_column_ids() As String
+		report_start_relative_days_in_past As Xoson.O.OptionalDouble
 	#tag EndProperty
 
 
@@ -183,9 +167,25 @@ Protected Class TemplateResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The filter on the conversion ingestion source method for conversion metrics
+			Time of last update in seconds since Unix epoch
 		#tag EndNote
-		ingestion_sources() As String
+		updated_time As Xoson.O.OptionalDouble
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			ID of the user who created the template
+		#tag EndNote
+		user_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			The length of the sliding window over which view conversions will be attributed
+		#tag EndNote
+		view_window_days As Xoson.O.OptionalDouble
 	#tag EndProperty
 
 
@@ -195,6 +195,8 @@ Protected Class TemplateResponse
         SpendInMicroUsDollar
         BonusSpendInMicroDollar
         BonusSpendInDollar
+        AdsCreditSpendInMicroDollar
+        AdsCreditSpendInDollar
         PaidImpression
         PaidClickthrough
         SpendInDollar
@@ -206,6 +208,7 @@ Protected Class TemplateResponse
         Ctr
         Ectr
         OutboundCtr
+        OutboundCtr1
         CpcInMicroCurrency
         CpwInMicroDollar
         CpwInDollar
@@ -221,6 +224,9 @@ Protected Class TemplateResponse
         TargetingType
         TargetingValue
         TargetingValueName
+        CampaignBrandLabel
+        CampaignCustomLabels
+        AppInstallAppName
         PaidEvents
         BonusEvents
         Insertion
@@ -262,6 +268,7 @@ Protected Class TemplateResponse
         KeywordId
         KeywordIsDeleted
         BrandSfdcAccountId
+        AppInstallAppId
         CampaignActionType
         CampaignBidType
         CampaignEntityStatus
@@ -285,6 +292,7 @@ Protected Class TemplateResponse
         AdGroupBidStrategyType
         AdGroupExperimentName
         AdGroupExperimentCell
+        AdGroupBidMultiplier
         CampaignWebCloseupWhitelisted
         ProductGroupId
         ProductGroupDefinition
@@ -295,6 +303,10 @@ Protected Class TemplateResponse
         ProductGroupEntityStatus
         ProductGroupInclusion
         ProductGroupCreativeType
+        PromoId
+        PromoName
+        PromoIds
+        PromoNames
         ItemId
         ProductItemId
         InternalProductItemId
@@ -302,6 +314,16 @@ Protected Class TemplateResponse
         ProductItemName
         ProductItemImageUrl
         ProductItemPrice
+        ProductItemProductUrl
+        ProductItemPinUrl
+        ProductItemBrand
+        ProductItemDescription
+        ProductItemSalePrice
+        ProductItemProductType
+        ProductItemProductCategory
+        ProductItemCampaignName
+        ProductItemAdGroupName
+        ProductItemCurrency
         OrderLineId
         OrderLineName
         OrderLinePinRevShare
@@ -312,6 +334,15 @@ Protected Class TemplateResponse
         ConversionProductName
         ConversionProductBrand
         ConversionProductCategory
+        ConversionProductIdGroup
+        CartingTotalPurchaseIntentClicks
+        CartingTotalPurchaseIntentValue
+        CartingTotalPurchaseIntentValueInMicroCurrency
+        CartingRetailerName
+        CartingProductPrice
+        CartingProductPriceInMicroCurrency
+        CartingProductName
+        CartingProductId
         Clickthrough1
         Repin1
         Impression1
@@ -356,6 +387,7 @@ Protected Class TemplateResponse
         TotalImpressionFrequencyHll
         TotalOutboundClick
         CostPerOutboundClickInDollar
+        CostPerOutboundClickInDollar1
         EngagementPageVisit1
         EngagementSignup1
         EngagementCheckout1
@@ -367,6 +399,11 @@ Protected Class TemplateResponse
         EngagementViewCategory1
         EngagementAppInstall1
         EngagementUnknown1
+        EngagementAddPaymentInfo1
+        EngagementAddToWishlist1
+        EngagementInitiateCheckout1
+        EngagementSubscribe1
+        EngagementViewContent1
         ClickPageVisit1
         ClickSignup1
         ClickCheckout1
@@ -378,6 +415,11 @@ Protected Class TemplateResponse
         ClickViewCategory1
         ClickAppInstall1
         ClickUnknown1
+        ClickAddPaymentInfo1
+        ClickAddToWishlist1
+        ClickInitiateCheckout1
+        ClickSubscribe1
+        ClickViewContent1
         ViewPageVisit1
         ViewSignup1
         ViewCheckout1
@@ -389,6 +431,11 @@ Protected Class TemplateResponse
         ViewViewCategory1
         ViewAppInstall1
         ViewUnknown1
+        ViewAddPaymentInfo1
+        ViewAddToWishlist1
+        ViewInitiateCheckout1
+        ViewSubscribe1
+        ViewViewContent1
         Conversions1
         EngagementPageVisitValueInMicroDollar1
         EngagementSignupValueInMicroDollar1
@@ -401,6 +448,11 @@ Protected Class TemplateResponse
         EngagementViewCategoryValueInMicroDollar1
         EngagementAppInstallValueInMicroDollar1
         EngagementUnknownValueInMicroDollar1
+        EngagementAddPaymentInfoValueInMicroDollar1
+        EngagementAddToWishlistValueInMicroDollar1
+        EngagementInitiateCheckoutValueInMicroDollar1
+        EngagementSubscribeValueInMicroDollar1
+        EngagementViewContentValueInMicroDollar1
         ClickPageVisitValueInMicroDollar1
         ClickSignupValueInMicroDollar1
         ClickCheckoutValueInMicroDollar1
@@ -412,6 +464,11 @@ Protected Class TemplateResponse
         ClickViewCategoryValueInMicroDollar1
         ClickAppInstallValueInMicroDollar1
         ClickUnknownValueInMicroDollar1
+        ClickAddPaymentInfoValueInMicroDollar1
+        ClickAddToWishlistValueInMicroDollar1
+        ClickInitiateCheckoutValueInMicroDollar1
+        ClickSubscribeValueInMicroDollar1
+        ClickViewContentValueInMicroDollar1
         ViewPageVisitValueInMicroDollar1
         ViewSignupValueInMicroDollar1
         ViewCheckoutValueInMicroDollar1
@@ -423,6 +480,11 @@ Protected Class TemplateResponse
         ViewViewCategoryValueInMicroDollar1
         ViewAppInstallValueInMicroDollar1
         ViewUnknownValueInMicroDollar1
+        ViewAddPaymentInfoValueInMicroDollar1
+        ViewAddToWishlistValueInMicroDollar1
+        ViewInitiateCheckoutValueInMicroDollar1
+        ViewSubscribeValueInMicroDollar1
+        ViewViewContentValueInMicroDollar1
         ConversionsValueInMicroDollar1
         EngagementPageVisitQuantity1
         EngagementSignupQuantity1
@@ -435,6 +497,11 @@ Protected Class TemplateResponse
         EngagementViewCategoryQuantity1
         EngagementAppInstallQuantity1
         EngagementUnknownQuantity1
+        EngagementAddPaymentInfoQuantity1
+        EngagementAddToWishlistQuantity1
+        EngagementInitiateCheckoutQuantity1
+        EngagementSubscribeQuantity1
+        EngagementViewContentQuantity1
         ClickPageVisitQuantity1
         ClickSignupQuantity1
         ClickCheckoutQuantity1
@@ -446,6 +513,11 @@ Protected Class TemplateResponse
         ClickViewCategoryQuantity1
         ClickAppInstallQuantity1
         ClickUnknownQuantity1
+        ClickAddPaymentInfoQuantity1
+        ClickAddToWishlistQuantity1
+        ClickInitiateCheckoutQuantity1
+        ClickSubscribeQuantity1
+        ClickViewContentQuantity1
         ViewPageVisitQuantity1
         ViewSignupQuantity1
         ViewCheckoutQuantity1
@@ -457,6 +529,11 @@ Protected Class TemplateResponse
         ViewViewCategoryQuantity1
         ViewAppInstallQuantity1
         ViewUnknownQuantity1
+        ViewAddPaymentInfoQuantity1
+        ViewAddToWishlistQuantity1
+        ViewInitiateCheckoutQuantity1
+        ViewSubscribeQuantity1
+        ViewViewContentQuantity1
         ConversionsQuantity1
         EngagementPageVisit2
         EngagementSignup2
@@ -469,6 +546,11 @@ Protected Class TemplateResponse
         EngagementViewCategory2
         EngagementAppInstall2
         EngagementUnknown2
+        EngagementAddPaymentInfo2
+        EngagementAddToWishlist2
+        EngagementInitiateCheckout2
+        EngagementSubscribe2
+        EngagementViewContent2
         ClickPageVisit2
         ClickSignup2
         ClickCheckout2
@@ -480,6 +562,11 @@ Protected Class TemplateResponse
         ClickViewCategory2
         ClickAppInstall2
         ClickUnknown2
+        ClickAddPaymentInfo2
+        ClickAddToWishlist2
+        ClickInitiateCheckout2
+        ClickSubscribe2
+        ClickViewContent2
         ViewPageVisit2
         ViewSignup2
         ViewCheckout2
@@ -491,6 +578,11 @@ Protected Class TemplateResponse
         ViewViewCategory2
         ViewAppInstall2
         ViewUnknown2
+        ViewAddPaymentInfo2
+        ViewAddToWishlist2
+        ViewInitiateCheckout2
+        ViewSubscribe2
+        ViewViewContent2
         Conversions2
         EngagementPageVisitValueInMicroDollar2
         EngagementSignupValueInMicroDollar2
@@ -503,6 +595,11 @@ Protected Class TemplateResponse
         EngagementViewCategoryValueInMicroDollar2
         EngagementAppInstallValueInMicroDollar2
         EngagementUnknownValueInMicroDollar2
+        EngagementAddPaymentInfoValueInMicroDollar2
+        EngagementAddToWishlistValueInMicroDollar2
+        EngagementInitiateCheckoutValueInMicroDollar2
+        EngagementSubscribeValueInMicroDollar2
+        EngagementViewContentValueInMicroDollar2
         ClickPageVisitValueInMicroDollar2
         ClickSignupValueInMicroDollar2
         ClickCheckoutValueInMicroDollar2
@@ -514,6 +611,11 @@ Protected Class TemplateResponse
         ClickViewCategoryValueInMicroDollar2
         ClickAppInstallValueInMicroDollar2
         ClickUnknownValueInMicroDollar2
+        ClickAddPaymentInfoValueInMicroDollar2
+        ClickAddToWishlistValueInMicroDollar2
+        ClickInitiateCheckoutValueInMicroDollar2
+        ClickSubscribeValueInMicroDollar2
+        ClickViewContentValueInMicroDollar2
         ViewPageVisitValueInMicroDollar2
         ViewSignupValueInMicroDollar2
         ViewCheckoutValueInMicroDollar2
@@ -525,6 +627,11 @@ Protected Class TemplateResponse
         ViewViewCategoryValueInMicroDollar2
         ViewAppInstallValueInMicroDollar2
         ViewUnknownValueInMicroDollar2
+        ViewAddPaymentInfoValueInMicroDollar2
+        ViewAddToWishlistValueInMicroDollar2
+        ViewInitiateCheckoutValueInMicroDollar2
+        ViewSubscribeValueInMicroDollar2
+        ViewViewContentValueInMicroDollar2
         ConversionsValueInMicroDollar2
         EngagementPageVisitQuantity2
         EngagementSignupQuantity2
@@ -537,6 +644,11 @@ Protected Class TemplateResponse
         EngagementViewCategoryQuantity2
         EngagementAppInstallQuantity2
         EngagementUnknownQuantity2
+        EngagementAddPaymentInfoQuantity2
+        EngagementAddToWishlistQuantity2
+        EngagementInitiateCheckoutQuantity2
+        EngagementSubscribeQuantity2
+        EngagementViewContentQuantity2
         ClickPageVisitQuantity2
         ClickSignupQuantity2
         ClickCheckoutQuantity2
@@ -548,6 +660,11 @@ Protected Class TemplateResponse
         ClickViewCategoryQuantity2
         ClickAppInstallQuantity2
         ClickUnknownQuantity2
+        ClickAddPaymentInfoQuantity2
+        ClickAddToWishlistQuantity2
+        ClickInitiateCheckoutQuantity2
+        ClickSubscribeQuantity2
+        ClickViewContentQuantity2
         ViewPageVisitQuantity2
         ViewSignupQuantity2
         ViewCheckoutQuantity2
@@ -559,6 +676,11 @@ Protected Class TemplateResponse
         ViewViewCategoryQuantity2
         ViewAppInstallQuantity2
         ViewUnknownQuantity2
+        ViewAddPaymentInfoQuantity2
+        ViewAddToWishlistQuantity2
+        ViewInitiateCheckoutQuantity2
+        ViewSubscribeQuantity2
+        ViewViewContentQuantity2
         ConversionsQuantity2
         TotalEngagementPageVisit
         TotalEngagementSignup
@@ -571,6 +693,11 @@ Protected Class TemplateResponse
         TotalEngagementViewCategory
         TotalEngagementAppInstall
         TotalEngagementUnknown
+        TotalEngagementAddPaymentInfo
+        TotalEngagementAddToWishlist
+        TotalEngagementInitiateCheckout
+        TotalEngagementSubscribe
+        TotalEngagementViewContent
         TotalClickPageVisit
         TotalClickSignup
         TotalClickCheckout
@@ -582,6 +709,11 @@ Protected Class TemplateResponse
         TotalClickViewCategory
         TotalClickAppInstall
         TotalClickUnknown
+        TotalClickAddPaymentInfo
+        TotalClickAddToWishlist
+        TotalClickInitiateCheckout
+        TotalClickSubscribe
+        TotalClickViewContent
         TotalViewPageVisit
         TotalViewSignup
         TotalViewCheckout
@@ -593,6 +725,11 @@ Protected Class TemplateResponse
         TotalViewViewCategory
         TotalViewAppInstall
         TotalViewUnknown
+        TotalViewAddPaymentInfo
+        TotalViewAddToWishlist
+        TotalViewInitiateCheckout
+        TotalViewSubscribe
+        TotalViewViewContent
         TotalConversions
         TotalWebConversions
         TotalInappConversions
@@ -617,6 +754,16 @@ Protected Class TemplateResponse
         TotalEngagementViewCategoryValueInDollar
         TotalEngagementAppInstallValueInMicroDollar
         TotalEngagementUnknownValueInMicroDollar
+        TotalEngagementAddPaymentInfoValueInMicroDollar
+        TotalEngagementAddPaymentInfoValueInDollar
+        TotalEngagementAddToWishlistValueInMicroDollar
+        TotalEngagementAddToWishlistValueInDollar
+        TotalEngagementInitiateCheckoutValueInMicroDollar
+        TotalEngagementInitiateCheckoutValueInDollar
+        TotalEngagementSubscribeValueInMicroDollar
+        TotalEngagementSubscribeValueInDollar
+        TotalEngagementViewContentValueInMicroDollar
+        TotalEngagementViewContentValueInDollar
         TotalClickPageVisitValueInMicroDollar
         TotalClickPageVisitValueInDollar
         TotalClickSignupValueInMicroDollar
@@ -637,6 +784,16 @@ Protected Class TemplateResponse
         TotalClickViewCategoryValueInDollar
         TotalClickAppInstallValueInMicroDollar
         TotalClickUnknownValueInMicroDollar
+        TotalClickAddPaymentInfoValueInMicroDollar
+        TotalClickAddPaymentInfoValueInDollar
+        TotalClickAddToWishlistValueInMicroDollar
+        TotalClickAddToWishlistValueInDollar
+        TotalClickInitiateCheckoutValueInMicroDollar
+        TotalClickInitiateCheckoutValueInDollar
+        TotalClickSubscribeValueInMicroDollar
+        TotalClickSubscribeValueInDollar
+        TotalClickViewContentValueInMicroDollar
+        TotalClickViewContentValueInDollar
         TotalViewPageVisitValueInMicroDollar
         TotalViewPageVisitValueInDollar
         TotalViewSignupValueInMicroDollar
@@ -657,6 +814,16 @@ Protected Class TemplateResponse
         TotalViewViewCategoryValueInDollar
         TotalViewAppInstallValueInMicroDollar
         TotalViewUnknownValueInMicroDollar
+        TotalViewAddPaymentInfoValueInMicroDollar
+        TotalViewAddPaymentInfoValueInDollar
+        TotalViewAddToWishlistValueInMicroDollar
+        TotalViewAddToWishlistValueInDollar
+        TotalViewInitiateCheckoutValueInMicroDollar
+        TotalViewInitiateCheckoutValueInDollar
+        TotalViewSubscribeValueInMicroDollar
+        TotalViewSubscribeValueInDollar
+        TotalViewViewContentValueInMicroDollar
+        TotalViewViewContentValueInDollar
         TotalConversionsValueInMicroDollar
         TotalConversionsValueInDollar
         TotalEngagementPageVisitQuantity
@@ -670,6 +837,11 @@ Protected Class TemplateResponse
         TotalEngagementViewCategoryQuantity
         TotalEngagementAppInstallQuantity
         TotalEngagementUnknownQuantity
+        TotalEngagementAddPaymentInfoQuantity
+        TotalEngagementAddToWishlistQuantity
+        TotalEngagementInitiateCheckoutQuantity
+        TotalEngagementSubscribeQuantity
+        TotalEngagementViewContentQuantity
         TotalClickPageVisitQuantity
         TotalClickSignupQuantity
         TotalClickCheckoutQuantity
@@ -681,6 +853,11 @@ Protected Class TemplateResponse
         TotalClickViewCategoryQuantity
         TotalClickAppInstallQuantity
         TotalClickUnknownQuantity
+        TotalClickAddPaymentInfoQuantity
+        TotalClickAddToWishlistQuantity
+        TotalClickInitiateCheckoutQuantity
+        TotalClickSubscribeQuantity
+        TotalClickViewContentQuantity
         TotalViewPageVisitQuantity
         TotalViewSignupQuantity
         TotalViewCheckoutQuantity
@@ -692,6 +869,11 @@ Protected Class TemplateResponse
         TotalViewViewCategoryQuantity
         TotalViewAppInstallQuantity
         TotalViewUnknownQuantity
+        TotalViewAddPaymentInfoQuantity
+        TotalViewAddToWishlistQuantity
+        TotalViewInitiateCheckoutQuantity
+        TotalViewSubscribeQuantity
+        TotalViewViewContentQuantity
         TotalConversionsQuantity
         CostPerConversionInDollar
         TotalWebSessions
@@ -715,6 +897,10 @@ Protected Class TemplateResponse
         EcpiInMicroDollar
         CpiInDollar
         EcpiInDollar
+        InappSkanAppInstall
+        InappSkanAssistedAppInstall
+        InappSkanAppInstallCostPerAction
+        InappSkanAppInstallConversionRate
         OnsiteCheckoutsCpaBillable1
         OnsiteCheckoutsCpaBillable2
         OnsiteCheckoutsCpaBillable
@@ -916,6 +1102,11 @@ Protected Class TemplateResponse
         TotalViewCategory
         TotalAppInstall
         TotalUnknown
+        TotalAddPaymentInfo
+        TotalAddToWishlist
+        TotalInitiateCheckout
+        TotalSubscribe
+        TotalViewContent
         TotalPageVisitValueInMicroDollar
         TotalSignupValueInMicroDollar
         TotalCheckoutValueInMicroDollar
@@ -927,6 +1118,11 @@ Protected Class TemplateResponse
         TotalViewCategoryValueInMicroDollar
         TotalAppInstallValueInMicroDollar
         TotalUnknownValueInMicroDollar
+        TotalAddPaymentInfoValueInMicroDollar
+        TotalAddToWishlistValueInMicroDollar
+        TotalInitiateCheckoutValueInMicroDollar
+        TotalSubscribeValueInMicroDollar
+        TotalViewContentValueInMicroDollar
         AveragePageVisitValueInMicroDollar
         AverageSignupValueInMicroDollar
         AverageCheckoutValueInMicroDollar
@@ -937,6 +1133,11 @@ Protected Class TemplateResponse
         AverageWatchVideoValueInMicroDollar
         AverageViewCategoryValueInMicroDollar
         AverageUnknownValueInMicroDollar
+        AverageAddPaymentInfoValueInMicroDollar
+        AverageAddToWishlistValueInMicroDollar
+        AverageInitiateCheckoutValueInMicroDollar
+        AverageSubscribeValueInMicroDollar
+        AverageViewContentValueInMicroDollar
         AveragePageVisitValueInMicroUsDollar
         AverageSignupValueInMicroUsDollar
         AverageCheckoutValueInMicroUsDollar
@@ -947,6 +1148,11 @@ Protected Class TemplateResponse
         AverageWatchVideoValueInMicroUsDollar
         AverageViewCategoryValueInMicroUsDollar
         AverageUnknownValueInMicroUsDollar
+        AverageAddPaymentInfoValueInMicroUsDollar
+        AverageAddToWishlistValueInMicroUsDollar
+        AverageInitiateCheckoutValueInMicroUsDollar
+        AverageSubscribeValueInMicroUsDollar
+        AverageViewContentValueInMicroUsDollar
         TotalPageVisitValueInMicroUsDollar
         TotalSignupValueInMicroUsDollar
         TotalCheckoutValueInMicroUsDollar
@@ -957,6 +1163,11 @@ Protected Class TemplateResponse
         TotalWatchVideoValueInMicroUsDollar
         TotalViewCategoryValueInMicroUsDollar
         TotalUnknownValueInMicroUsDollar
+        TotalAddPaymentInfoValueInMicroUsDollar
+        TotalAddToWishlistValueInMicroUsDollar
+        TotalInitiateCheckoutValueInMicroUsDollar
+        TotalSubscribeValueInMicroUsDollar
+        TotalViewContentValueInMicroUsDollar
         TotalPageVisitQuantity
         TotalSignupQuantity
         TotalCheckoutQuantity
@@ -968,6 +1179,11 @@ Protected Class TemplateResponse
         TotalViewCategoryQuantity
         TotalAppInstallQuantity
         TotalUnknownQuantity
+        TotalAddPaymentInfoQuantity
+        TotalAddToWishlistQuantity
+        TotalInitiateCheckoutQuantity
+        TotalSubscribeQuantity
+        TotalViewContentQuantity
         TotalPageVisitValueInDollar
         TotalSignupValueInDollar
         TotalCheckoutValueInDollar
@@ -979,6 +1195,11 @@ Protected Class TemplateResponse
         TotalViewCategoryValueInDollar
         TotalAppInstallValueInDollar
         TotalUnknownValueInDollar
+        TotalAddPaymentInfoValueInDollar
+        TotalAddToWishlistValueInDollar
+        TotalInitiateCheckoutValueInDollar
+        TotalSubscribeValueInDollar
+        TotalViewContentValueInDollar
         PageVisitCostPerAction
         SignupCostPerAction
         CheckoutCostPerAction
@@ -991,6 +1212,11 @@ Protected Class TemplateResponse
         AppInstallCostPerAction
         UnknownCostPerAction
         AdGroupCpaInMicroCurrency
+        AddPaymentInfoCostPerAction
+        AddToWishlistCostPerAction
+        InitiateCheckoutCostPerAction
+        SubscribeCostPerAction
+        ViewContentCostPerAction
         PageVisitCostPerActionInUsDollar
         SignupCostPerActionInUsDollar
         CheckoutCostPerActionInUsDollar
@@ -1001,6 +1227,11 @@ Protected Class TemplateResponse
         WatchVideoCostPerActionInUsDollar
         ViewCategoryCostPerActionInUsDollar
         UnknownCostPerActionInUsDollar
+        AddPaymentInfoCostPerActionInUsDollar
+        AddToWishlistCostPerActionInUsDollar
+        InitiateCheckoutCostPerActionInUsDollar
+        SubscribeCostPerActionInUsDollar
+        ViewContentCostPerActionInUsDollar
         PageVisitRoas
         SignupRoas
         CheckoutRoas
@@ -1016,6 +1247,11 @@ Protected Class TemplateResponse
         ClickRoas
         EngagementRoas
         ViewRoas
+        AddPaymentInfoRoas
+        AddToWishlistRoas
+        InitiateCheckoutRoas
+        SubscribeRoas
+        ViewContentRoas
         Hour
         BoardEngagement
         BoardInsertion
@@ -1031,6 +1267,8 @@ Protected Class TemplateResponse
         ProductGroupAdGroupId
         ProductGroupAdGroupName
         ProductGroupAdGroupStatus
+        ProductGroupAdImageTag
+        ProductGroupAdVideoTag
         PromotedCatalogProductGroupReferenceId
         PromotedCatalogProductGroupReferenceName
         PromotedCatalogProductGroupId
@@ -1046,7 +1284,9 @@ Protected Class TemplateResponse
         PromotedCatalogProductGroupAdGroupName
         PromotedCatalogProductGroupAdGroupStatus
         PromotedCatalogProductGroupTrackingTemplateUrl
+        PromotedCatalogProductGroupSelectedImageTag
         Video3secViews1
+        Video15secUniqueViews1
         VideoP0Complete1
         VideoP25Complete1
         VideoP50Complete1
@@ -1061,10 +1301,14 @@ Protected Class TemplateResponse
         VideoP95Combined1
         VideoP97Combined1
         VideoP100Combined1
+        VideoStartsPaid
+        VideoStartsEarned
+        TotalVideoStarts
         VideoAvgWatchtime1
         VideoMrcViews1
         VideoViewRate1
         Video3secViews2
+        Video15secUniqueViews2
         VideoP0Complete2
         VideoP25Complete2
         VideoP50Complete2
@@ -1086,6 +1330,8 @@ Protected Class TemplateResponse
         PaidVideoImpression
         PaidVideoViewableRate
         VideoLength
+        VideoSpendInMicroDollar
+        VideoSpendInDollar
         CpvInMicroDollar
         CpvInDollar
         Cp3svInMicroDollar
@@ -1103,6 +1349,7 @@ Protected Class TemplateResponse
         EcpcvP95InDollar
         EcpcvP95InMicroDollar
         TotalVideo3secViews
+        TotalVideo15secUniqueViews
         TotalVideoP0Complete
         TotalVideoP25Complete
         TotalVideoP50Complete
@@ -1135,6 +1382,9 @@ Protected Class TemplateResponse
         VideoAvgWatchtimeInSecond1
         VideoAvgWatchtimeInSecond2
         TotalVideoAvgWatchtimeInSecond
+        VideoAvgWatchtimeInSecondVideoStartsPaid
+        VideoAvgWatchtimeInSecondVideoStartsEarned
+        TotalVideoAvgWatchtimeInSecondVideoStarts
         DeliveryStatusNoFanout
         DeliveryStatusWithFanout
         KeywordCompetitionBand
@@ -1204,6 +1454,7 @@ Protected Class TemplateResponse
         HoldoutExperiment
         AdGroupHoldoutExperiment
         PinPromotionHoldoutExperiment
+        ProductGroupHoldoutExperiment
         MultiObjectiveResult
         MultiObjectiveCost
         MultiObjectiveResultDescription
@@ -1523,6 +1774,218 @@ Protected Class TemplateResponse
         TotalInappViewAppInstall
         TotalInappViewAppInstallValueInMicroDollar
         TotalInappViewAppInstallValueInDollar
+        TotalAppInstallConversionRate
+        TotalInappAppInstallConversionRate
+        WebAddPaymentInfoCostPerAction
+        WebAddPaymentInfoRoas
+        TotalWebAddPaymentInfo
+        TotalWebAddPaymentInfoValueInMicroDollar
+        TotalWebAddPaymentInfoValueInDollar
+        TotalWebClickAddPaymentInfo
+        TotalWebClickAddPaymentInfoValueInMicroDollar
+        TotalWebClickAddPaymentInfoValueInDollar
+        TotalWebEngagementAddPaymentInfo
+        TotalWebEngagementAddPaymentInfoValueInMicroDollar
+        TotalWebEngagementAddPaymentInfoValueInDollar
+        TotalWebViewAddPaymentInfo
+        TotalWebViewAddPaymentInfoValueInMicroDollar
+        TotalWebViewAddPaymentInfoValueInDollar
+        InappAddPaymentInfoCostPerAction
+        InappAddPaymentInfoRoas
+        TotalInappAddPaymentInfo
+        TotalInappAddPaymentInfoValueInMicroDollar
+        TotalInappAddPaymentInfoValueInDollar
+        TotalInappClickAddPaymentInfo
+        TotalInappClickAddPaymentInfoValueInMicroDollar
+        TotalInappClickAddPaymentInfoValueInDollar
+        TotalInappEngagementAddPaymentInfo
+        TotalInappEngagementAddPaymentInfoValueInMicroDollar
+        TotalInappEngagementAddPaymentInfoValueInDollar
+        TotalInappViewAddPaymentInfo
+        TotalInappViewAddPaymentInfoValueInMicroDollar
+        TotalInappViewAddPaymentInfoValueInDollar
+        OfflineAddPaymentInfoCostPerAction
+        OfflineAddPaymentInfoRoas
+        TotalOfflineAddPaymentInfo
+        TotalOfflineAddPaymentInfoValueInMicroDollar
+        TotalOfflineAddPaymentInfoValueInDollar
+        TotalOfflineClickAddPaymentInfo
+        TotalOfflineClickAddPaymentInfoValueInMicroDollar
+        TotalOfflineClickAddPaymentInfoValueInDollar
+        TotalOfflineEngagementAddPaymentInfo
+        TotalOfflineEngagementAddPaymentInfoValueInMicroDollar
+        TotalOfflineEngagementAddPaymentInfoValueInDollar
+        TotalOfflineViewAddPaymentInfo
+        TotalOfflineViewAddPaymentInfoValueInMicroDollar
+        TotalOfflineViewAddPaymentInfoValueInDollar
+        WebAddToWishlistCostPerAction
+        WebAddToWishlistRoas
+        TotalWebAddToWishlist
+        TotalWebAddToWishlistValueInMicroDollar
+        TotalWebAddToWishlistValueInDollar
+        TotalWebClickAddToWishlist
+        TotalWebClickAddToWishlistValueInMicroDollar
+        TotalWebClickAddToWishlistValueInDollar
+        TotalWebEngagementAddToWishlist
+        TotalWebEngagementAddToWishlistValueInMicroDollar
+        TotalWebEngagementAddToWishlistValueInDollar
+        TotalWebViewAddToWishlist
+        TotalWebViewAddToWishlistValueInMicroDollar
+        TotalWebViewAddToWishlistValueInDollar
+        InappAddToWishlistCostPerAction
+        InappAddToWishlistRoas
+        TotalInappAddToWishlist
+        TotalInappAddToWishlistValueInMicroDollar
+        TotalInappAddToWishlistValueInDollar
+        TotalInappClickAddToWishlist
+        TotalInappClickAddToWishlistValueInMicroDollar
+        TotalInappClickAddToWishlistValueInDollar
+        TotalInappEngagementAddToWishlist
+        TotalInappEngagementAddToWishlistValueInMicroDollar
+        TotalInappEngagementAddToWishlistValueInDollar
+        TotalInappViewAddToWishlist
+        TotalInappViewAddToWishlistValueInMicroDollar
+        TotalInappViewAddToWishlistValueInDollar
+        OfflineAddToWishlistCostPerAction
+        OfflineAddToWishlistRoas
+        TotalOfflineAddToWishlist
+        TotalOfflineAddToWishlistValueInMicroDollar
+        TotalOfflineAddToWishlistValueInDollar
+        TotalOfflineClickAddToWishlist
+        TotalOfflineClickAddToWishlistValueInMicroDollar
+        TotalOfflineClickAddToWishlistValueInDollar
+        TotalOfflineEngagementAddToWishlist
+        TotalOfflineEngagementAddToWishlistValueInMicroDollar
+        TotalOfflineEngagementAddToWishlistValueInDollar
+        TotalOfflineViewAddToWishlist
+        TotalOfflineViewAddToWishlistValueInMicroDollar
+        TotalOfflineViewAddToWishlistValueInDollar
+        WebInitiateCheckoutCostPerAction
+        WebInitiateCheckoutRoas
+        TotalWebInitiateCheckout
+        TotalWebInitiateCheckoutValueInMicroDollar
+        TotalWebInitiateCheckoutValueInDollar
+        TotalWebClickInitiateCheckout
+        TotalWebClickInitiateCheckoutValueInMicroDollar
+        TotalWebClickInitiateCheckoutValueInDollar
+        TotalWebEngagementInitiateCheckout
+        TotalWebEngagementInitiateCheckoutValueInMicroDollar
+        TotalWebEngagementInitiateCheckoutValueInDollar
+        TotalWebViewInitiateCheckout
+        TotalWebViewInitiateCheckoutValueInMicroDollar
+        TotalWebViewInitiateCheckoutValueInDollar
+        InappInitiateCheckoutCostPerAction
+        InappInitiateCheckoutRoas
+        TotalInappInitiateCheckout
+        TotalInappInitiateCheckoutValueInMicroDollar
+        TotalInappInitiateCheckoutValueInDollar
+        TotalInappClickInitiateCheckout
+        TotalInappClickInitiateCheckoutValueInMicroDollar
+        TotalInappClickInitiateCheckoutValueInDollar
+        TotalInappEngagementInitiateCheckout
+        TotalInappEngagementInitiateCheckoutValueInMicroDollar
+        TotalInappEngagementInitiateCheckoutValueInDollar
+        TotalInappViewInitiateCheckout
+        TotalInappViewInitiateCheckoutValueInMicroDollar
+        TotalInappViewInitiateCheckoutValueInDollar
+        OfflineInitiateCheckoutCostPerAction
+        OfflineInitiateCheckoutRoas
+        TotalOfflineInitiateCheckout
+        TotalOfflineInitiateCheckoutValueInMicroDollar
+        TotalOfflineInitiateCheckoutValueInDollar
+        TotalOfflineClickInitiateCheckout
+        TotalOfflineClickInitiateCheckoutValueInMicroDollar
+        TotalOfflineClickInitiateCheckoutValueInDollar
+        TotalOfflineEngagementInitiateCheckout
+        TotalOfflineEngagementInitiateCheckoutValueInMicroDollar
+        TotalOfflineEngagementInitiateCheckoutValueInDollar
+        TotalOfflineViewInitiateCheckout
+        TotalOfflineViewInitiateCheckoutValueInMicroDollar
+        TotalOfflineViewInitiateCheckoutValueInDollar
+        WebSubscribeCostPerAction
+        WebSubscribeRoas
+        TotalWebSubscribe
+        TotalWebSubscribeValueInMicroDollar
+        TotalWebSubscribeValueInDollar
+        TotalWebClickSubscribe
+        TotalWebClickSubscribeValueInMicroDollar
+        TotalWebClickSubscribeValueInDollar
+        TotalWebEngagementSubscribe
+        TotalWebEngagementSubscribeValueInMicroDollar
+        TotalWebEngagementSubscribeValueInDollar
+        TotalWebViewSubscribe
+        TotalWebViewSubscribeValueInMicroDollar
+        TotalWebViewSubscribeValueInDollar
+        InappSubscribeCostPerAction
+        InappSubscribeRoas
+        TotalInappSubscribe
+        TotalInappSubscribeValueInMicroDollar
+        TotalInappSubscribeValueInDollar
+        TotalInappClickSubscribe
+        TotalInappClickSubscribeValueInMicroDollar
+        TotalInappClickSubscribeValueInDollar
+        TotalInappEngagementSubscribe
+        TotalInappEngagementSubscribeValueInMicroDollar
+        TotalInappEngagementSubscribeValueInDollar
+        TotalInappViewSubscribe
+        TotalInappViewSubscribeValueInMicroDollar
+        TotalInappViewSubscribeValueInDollar
+        OfflineSubscribeCostPerAction
+        OfflineSubscribeRoas
+        TotalOfflineSubscribe
+        TotalOfflineSubscribeValueInMicroDollar
+        TotalOfflineSubscribeValueInDollar
+        TotalOfflineClickSubscribe
+        TotalOfflineClickSubscribeValueInMicroDollar
+        TotalOfflineClickSubscribeValueInDollar
+        TotalOfflineEngagementSubscribe
+        TotalOfflineEngagementSubscribeValueInMicroDollar
+        TotalOfflineEngagementSubscribeValueInDollar
+        TotalOfflineViewSubscribe
+        TotalOfflineViewSubscribeValueInMicroDollar
+        TotalOfflineViewSubscribeValueInDollar
+        WebViewContentCostPerAction
+        WebViewContentRoas
+        TotalWebViewContent
+        TotalWebViewContentValueInMicroDollar
+        TotalWebViewContentValueInDollar
+        TotalWebClickViewContent
+        TotalWebClickViewContentValueInMicroDollar
+        TotalWebClickViewContentValueInDollar
+        TotalWebEngagementViewContent
+        TotalWebEngagementViewContentValueInMicroDollar
+        TotalWebEngagementViewContentValueInDollar
+        TotalWebViewViewContent
+        TotalWebViewViewContentValueInMicroDollar
+        TotalWebViewViewContentValueInDollar
+        InappViewContentCostPerAction
+        InappViewContentRoas
+        TotalInappViewContent
+        TotalInappViewContentValueInMicroDollar
+        TotalInappViewContentValueInDollar
+        TotalInappClickViewContent
+        TotalInappClickViewContentValueInMicroDollar
+        TotalInappClickViewContentValueInDollar
+        TotalInappEngagementViewContent
+        TotalInappEngagementViewContentValueInMicroDollar
+        TotalInappEngagementViewContentValueInDollar
+        TotalInappViewViewContent
+        TotalInappViewViewContentValueInMicroDollar
+        TotalInappViewViewContentValueInDollar
+        OfflineViewContentCostPerAction
+        OfflineViewContentRoas
+        TotalOfflineViewContent
+        TotalOfflineViewContentValueInMicroDollar
+        TotalOfflineViewContentValueInDollar
+        TotalOfflineClickViewContent
+        TotalOfflineClickViewContentValueInMicroDollar
+        TotalOfflineClickViewContentValueInDollar
+        TotalOfflineEngagementViewContent
+        TotalOfflineEngagementViewContentValueInMicroDollar
+        TotalOfflineEngagementViewContentValueInDollar
+        TotalOfflineViewViewContent
+        TotalOfflineViewViewContentValueInMicroDollar
+        TotalOfflineViewViewContentValueInDollar
         IdeaPinPageForward1
         IdeaPinPageForward2
         IdeaPinPageBackward1
@@ -1567,6 +2030,11 @@ Protected Class TemplateResponse
         TotalWatchVideoConversionRate
         TotalUnknownConversionRate
         TotalCustomConversionRate
+        TotalAddPaymentInfoConversionRate
+        TotalAddToWishlistConversionRate
+        TotalInitiateCheckoutConversionRate
+        TotalSubscribeConversionRate
+        TotalViewContentConversionRate
         StandardAdFeedItemId
         IsStandardFeedAd
         TargetingGender
@@ -1576,6 +2044,11 @@ Protected Class TemplateResponse
         TargetingApptype
         TargetingLocationCode
         TargetingMediaType
+        TargetingAgeBucket
+        TargetingAudienceMultiplier
+        TargetingLocalAdsStoreCode
+        TargetingLanguagesInclude
+        TargetingLanguagesExclude
         TotalConversionProductQuantity
         TotalWebConversionProductQuantity
         TotalInappConversionProductQuantity
@@ -1747,6 +2220,106 @@ Protected Class TemplateResponse
         TotalOfflineUnknownConversionProductValueInMicroUnits
         TotalOfflineUnknownConversionProductValueInUsd
         TotalOfflineUnknownConversionProductValueInMicroUsd
+        TotalAddPaymentInfoConversionProductQuantity
+        TotalAddPaymentInfoConversionProductValue
+        TotalAddPaymentInfoConversionProductValueInMicroUnits
+        TotalAddPaymentInfoConversionProductValueInUsd
+        TotalAddPaymentInfoConversionProductValueInMicroUsd
+        TotalWebAddPaymentInfoConversionProductQuantity
+        TotalWebAddPaymentInfoConversionProductValue
+        TotalWebAddPaymentInfoConversionProductValueInMicroUnits
+        TotalWebAddPaymentInfoConversionProductValueInUsd
+        TotalWebAddPaymentInfoConversionProductValueInMicroUsd
+        TotalInappAddPaymentInfoConversionProductQuantity
+        TotalInappAddPaymentInfoConversionProductValue
+        TotalInappAddPaymentInfoConversionProductValueInMicroUnits
+        TotalInappAddPaymentInfoConversionProductValueInUsd
+        TotalInappAddPaymentInfoConversionProductValueInMicroUsd
+        TotalOfflineAddPaymentInfoConversionProductQuantity
+        TotalOfflineAddPaymentInfoConversionProductValue
+        TotalOfflineAddPaymentInfoConversionProductValueInMicroUnits
+        TotalOfflineAddPaymentInfoConversionProductValueInUsd
+        TotalOfflineAddPaymentInfoConversionProductValueInMicroUsd
+        TotalAddToWishlistConversionProductQuantity
+        TotalAddToWishlistConversionProductValue
+        TotalAddToWishlistConversionProductValueInMicroUnits
+        TotalAddToWishlistConversionProductValueInUsd
+        TotalAddToWishlistConversionProductValueInMicroUsd
+        TotalWebAddToWishlistConversionProductQuantity
+        TotalWebAddToWishlistConversionProductValue
+        TotalWebAddToWishlistConversionProductValueInMicroUnits
+        TotalWebAddToWishlistConversionProductValueInUsd
+        TotalWebAddToWishlistConversionProductValueInMicroUsd
+        TotalInappAddToWishlistConversionProductQuantity
+        TotalInappAddToWishlistConversionProductValue
+        TotalInappAddToWishlistConversionProductValueInMicroUnits
+        TotalInappAddToWishlistConversionProductValueInUsd
+        TotalInappAddToWishlistConversionProductValueInMicroUsd
+        TotalOfflineAddToWishlistConversionProductQuantity
+        TotalOfflineAddToWishlistConversionProductValue
+        TotalOfflineAddToWishlistConversionProductValueInMicroUnits
+        TotalOfflineAddToWishlistConversionProductValueInUsd
+        TotalOfflineAddToWishlistConversionProductValueInMicroUsd
+        TotalInitiateCheckoutConversionProductQuantity
+        TotalInitiateCheckoutConversionProductValue
+        TotalInitiateCheckoutConversionProductValueInMicroUnits
+        TotalInitiateCheckoutConversionProductValueInUsd
+        TotalInitiateCheckoutConversionProductValueInMicroUsd
+        TotalWebInitiateCheckoutConversionProductQuantity
+        TotalWebInitiateCheckoutConversionProductValue
+        TotalWebInitiateCheckoutConversionProductValueInMicroUnits
+        TotalWebInitiateCheckoutConversionProductValueInUsd
+        TotalWebInitiateCheckoutConversionProductValueInMicroUsd
+        TotalInappInitiateCheckoutConversionProductQuantity
+        TotalInappInitiateCheckoutConversionProductValue
+        TotalInappInitiateCheckoutConversionProductValueInMicroUnits
+        TotalInappInitiateCheckoutConversionProductValueInUsd
+        TotalInappInitiateCheckoutConversionProductValueInMicroUsd
+        TotalOfflineInitiateCheckoutConversionProductQuantity
+        TotalOfflineInitiateCheckoutConversionProductValue
+        TotalOfflineInitiateCheckoutConversionProductValueInMicroUnits
+        TotalOfflineInitiateCheckoutConversionProductValueInUsd
+        TotalOfflineInitiateCheckoutConversionProductValueInMicroUsd
+        TotalSubscribeConversionProductQuantity
+        TotalSubscribeConversionProductValue
+        TotalSubscribeConversionProductValueInMicroUnits
+        TotalSubscribeConversionProductValueInUsd
+        TotalSubscribeConversionProductValueInMicroUsd
+        TotalWebSubscribeConversionProductQuantity
+        TotalWebSubscribeConversionProductValue
+        TotalWebSubscribeConversionProductValueInMicroUnits
+        TotalWebSubscribeConversionProductValueInUsd
+        TotalWebSubscribeConversionProductValueInMicroUsd
+        TotalInappSubscribeConversionProductQuantity
+        TotalInappSubscribeConversionProductValue
+        TotalInappSubscribeConversionProductValueInMicroUnits
+        TotalInappSubscribeConversionProductValueInUsd
+        TotalInappSubscribeConversionProductValueInMicroUsd
+        TotalOfflineSubscribeConversionProductQuantity
+        TotalOfflineSubscribeConversionProductValue
+        TotalOfflineSubscribeConversionProductValueInMicroUnits
+        TotalOfflineSubscribeConversionProductValueInUsd
+        TotalOfflineSubscribeConversionProductValueInMicroUsd
+        TotalViewContentConversionProductQuantity
+        TotalViewContentConversionProductValue
+        TotalViewContentConversionProductValueInMicroUnits
+        TotalViewContentConversionProductValueInUsd
+        TotalViewContentConversionProductValueInMicroUsd
+        TotalWebViewContentConversionProductQuantity
+        TotalWebViewContentConversionProductValue
+        TotalWebViewContentConversionProductValueInMicroUnits
+        TotalWebViewContentConversionProductValueInUsd
+        TotalWebViewContentConversionProductValueInMicroUsd
+        TotalInappViewContentConversionProductQuantity
+        TotalInappViewContentConversionProductValue
+        TotalInappViewContentConversionProductValueInMicroUnits
+        TotalInappViewContentConversionProductValueInUsd
+        TotalInappViewContentConversionProductValueInMicroUsd
+        TotalOfflineViewContentConversionProductQuantity
+        TotalOfflineViewContentConversionProductValue
+        TotalOfflineViewContentConversionProductValueInMicroUnits
+        TotalOfflineViewContentConversionProductValueInMicroUsd
+        TotalOfflineViewContentConversionProductValueInUsd
         TotalCheckoutConversionProductCountUnique
         TotalWebCheckoutConversionProductCountUnique
         TotalInappCheckoutConversionProductCountUnique
@@ -1777,6 +2350,783 @@ Protected Class TemplateResponse
         TotalWebUnknownConversionProductCountUnique
         TotalInappUnknownConversionProductCountUnique
         TotalOfflineUnknownConversionProductCountUnique
+        TotalAddPaymentInfoConversionProductCountUnique
+        TotalWebAddPaymentInfoConversionProductCountUnique
+        TotalInappAddPaymentInfoConversionProductCountUnique
+        TotalOfflineAddPaymentInfoConversionProductCountUnique
+        TotalAddToWishlistConversionProductCountUnique
+        TotalWebAddToWishlistConversionProductCountUnique
+        TotalInappAddToWishlistConversionProductCountUnique
+        TotalOfflineAddToWishlistConversionProductCountUnique
+        TotalInitiateCheckoutConversionProductCountUnique
+        TotalWebInitiateCheckoutConversionProductCountUnique
+        TotalInappInitiateCheckoutConversionProductCountUnique
+        TotalOfflineInitiateCheckoutConversionProductCountUnique
+        TotalSubscribeConversionProductCountUnique
+        TotalWebSubscribeConversionProductCountUnique
+        TotalInappSubscribeConversionProductCountUnique
+        TotalOfflineSubscribeConversionProductCountUnique
+        TotalViewContentConversionProductCountUnique
+        TotalWebViewContentConversionProductCountUnique
+        TotalInappViewContentConversionProductCountUnique
+        TotalOfflineViewContentConversionProductCountUnique
+        GenAiImageSignature
+        GenAiImageUrl
+        OriginalImageSignature
+        OriginalImageUrl
+        GenAiGenerationDate
+        IsRegenerating
+        GenAiImageCount
+        AdvertiserTimeZone
+        EngagementContact1
+        ClickContact1
+        ViewContact1
+        EngagementContactValueInMicroDollar1
+        ClickContactValueInMicroDollar1
+        ViewContactValueInMicroDollar1
+        EngagementContactQuantity1
+        ClickContactQuantity1
+        ViewContactQuantity1
+        EngagementContact2
+        ClickContact2
+        ViewContact2
+        EngagementContactValueInMicroDollar2
+        ClickContactValueInMicroDollar2
+        ViewContactValueInMicroDollar2
+        EngagementContactQuantity2
+        ClickContactQuantity2
+        ViewContactQuantity2
+        TotalEngagementContact
+        TotalClickContact
+        TotalViewContact
+        TotalEngagementContactValueInMicroDollar
+        TotalEngagementContactValueInDollar
+        TotalClickContactValueInMicroDollar
+        TotalClickContactValueInDollar
+        TotalViewContactValueInMicroDollar
+        TotalViewContactValueInDollar
+        TotalEngagementContactQuantity
+        TotalClickContactQuantity
+        TotalViewContactQuantity
+        TotalContact
+        TotalContactValueInMicroDollar
+        AverageContactValueInMicroDollar
+        AverageContactValueInMicroUsDollar
+        TotalContactValueInMicroUsDollar
+        TotalContactQuantity
+        TotalContactValueInDollar
+        ContactCostPerAction
+        ContactCostPerActionInUsDollar
+        ContactRoas
+        TotalContactConversionRate
+        WebContactCostPerAction
+        WebContactRoas
+        TotalWebContact
+        TotalWebContactValueInMicroDollar
+        TotalWebContactValueInDollar
+        TotalWebClickContact
+        TotalWebClickContactValueInMicroDollar
+        TotalWebClickContactValueInDollar
+        TotalWebEngagementContact
+        TotalWebEngagementContactValueInMicroDollar
+        TotalWebEngagementContactValueInDollar
+        TotalWebViewContact
+        TotalWebViewContactValueInMicroDollar
+        TotalWebViewContactValueInDollar
+        InappContactCostPerAction
+        InappContactRoas
+        TotalInappContact
+        TotalInappContactValueInMicroDollar
+        TotalInappContactValueInDollar
+        TotalInappClickContact
+        TotalInappClickContactValueInMicroDollar
+        TotalInappClickContactValueInDollar
+        TotalInappEngagementContact
+        TotalInappEngagementContactValueInMicroDollar
+        TotalInappEngagementContactValueInDollar
+        TotalInappViewContact
+        TotalInappViewContactValueInMicroDollar
+        TotalInappViewContactValueInDollar
+        OfflineContactCostPerAction
+        OfflineContactRoas
+        TotalOfflineContact
+        TotalOfflineContactValueInMicroDollar
+        TotalOfflineContactValueInDollar
+        TotalOfflineClickContact
+        TotalOfflineClickContactValueInMicroDollar
+        TotalOfflineClickContactValueInDollar
+        TotalOfflineEngagementContact
+        TotalOfflineEngagementContactValueInMicroDollar
+        TotalOfflineEngagementContactValueInDollar
+        TotalOfflineViewContact
+        TotalOfflineViewContactValueInMicroDollar
+        TotalOfflineViewContactValueInDollar
+        TotalContactConversionProductCountUnique
+        TotalWebContactConversionProductCountUnique
+        TotalInappContactConversionProductCountUnique
+        TotalOfflineContactConversionProductCountUnique
+        TotalContactConversionProductQuantity
+        TotalContactConversionProductValue
+        TotalContactConversionProductValueInMicroUnits
+        TotalContactConversionProductValueInUsd
+        TotalContactConversionProductValueInMicroUsd
+        TotalWebContactConversionProductQuantity
+        TotalWebContactConversionProductValue
+        TotalWebContactConversionProductValueInMicroUnits
+        TotalWebContactConversionProductValueInUsd
+        TotalWebContactConversionProductValueInMicroUsd
+        TotalInappContactConversionProductQuantity
+        TotalInappContactConversionProductValue
+        TotalInappContactConversionProductValueInMicroUnits
+        TotalInappContactConversionProductValueInUsd
+        TotalInappContactConversionProductValueInMicroUsd
+        TotalOfflineContactConversionProductQuantity
+        TotalOfflineContactConversionProductValue
+        TotalOfflineContactConversionProductValueInMicroUnits
+        TotalOfflineContactConversionProductValueInUsd
+        TotalOfflineContactConversionProductValueInMicroUsd
+        EngagementSchedule1
+        ClickSchedule1
+        ViewSchedule1
+        EngagementScheduleValueInMicroDollar1
+        ClickScheduleValueInMicroDollar1
+        ViewScheduleValueInMicroDollar1
+        EngagementScheduleQuantity1
+        ClickScheduleQuantity1
+        ViewScheduleQuantity1
+        EngagementSchedule2
+        ClickSchedule2
+        ViewSchedule2
+        EngagementScheduleValueInMicroDollar2
+        ClickScheduleValueInMicroDollar2
+        ViewScheduleValueInMicroDollar2
+        EngagementScheduleQuantity2
+        ClickScheduleQuantity2
+        ViewScheduleQuantity2
+        TotalEngagementSchedule
+        TotalClickSchedule
+        TotalViewSchedule
+        TotalEngagementScheduleValueInMicroDollar
+        TotalEngagementScheduleValueInDollar
+        TotalClickScheduleValueInMicroDollar
+        TotalClickScheduleValueInDollar
+        TotalViewScheduleValueInMicroDollar
+        TotalViewScheduleValueInDollar
+        TotalEngagementScheduleQuantity
+        TotalClickScheduleQuantity
+        TotalViewScheduleQuantity
+        TotalSchedule
+        TotalScheduleValueInMicroDollar
+        AverageScheduleValueInMicroDollar
+        AverageScheduleValueInMicroUsDollar
+        TotalScheduleValueInMicroUsDollar
+        TotalScheduleQuantity
+        TotalScheduleValueInDollar
+        ScheduleCostPerAction
+        ScheduleCostPerActionInUsDollar
+        ScheduleRoas
+        TotalScheduleConversionRate
+        WebScheduleCostPerAction
+        WebScheduleRoas
+        TotalWebSchedule
+        TotalWebScheduleValueInMicroDollar
+        TotalWebScheduleValueInDollar
+        TotalWebClickSchedule
+        TotalWebClickScheduleValueInMicroDollar
+        TotalWebClickScheduleValueInDollar
+        TotalWebEngagementSchedule
+        TotalWebEngagementScheduleValueInMicroDollar
+        TotalWebEngagementScheduleValueInDollar
+        TotalWebViewSchedule
+        TotalWebViewScheduleValueInMicroDollar
+        TotalWebViewScheduleValueInDollar
+        InappScheduleCostPerAction
+        InappScheduleRoas
+        TotalInappSchedule
+        TotalInappScheduleValueInMicroDollar
+        TotalInappScheduleValueInDollar
+        TotalInappClickSchedule
+        TotalInappClickScheduleValueInMicroDollar
+        TotalInappClickScheduleValueInDollar
+        TotalInappEngagementSchedule
+        TotalInappEngagementScheduleValueInMicroDollar
+        TotalInappEngagementScheduleValueInDollar
+        TotalInappViewSchedule
+        TotalInappViewScheduleValueInMicroDollar
+        TotalInappViewScheduleValueInDollar
+        OfflineScheduleCostPerAction
+        OfflineScheduleRoas
+        TotalOfflineSchedule
+        TotalOfflineScheduleValueInMicroDollar
+        TotalOfflineScheduleValueInDollar
+        TotalOfflineClickSchedule
+        TotalOfflineClickScheduleValueInMicroDollar
+        TotalOfflineClickScheduleValueInDollar
+        TotalOfflineEngagementSchedule
+        TotalOfflineEngagementScheduleValueInMicroDollar
+        TotalOfflineEngagementScheduleValueInDollar
+        TotalOfflineViewSchedule
+        TotalOfflineViewScheduleValueInMicroDollar
+        TotalOfflineViewScheduleValueInDollar
+        TotalScheduleConversionProductCountUnique
+        TotalWebScheduleConversionProductCountUnique
+        TotalInappScheduleConversionProductCountUnique
+        TotalOfflineScheduleConversionProductCountUnique
+        TotalScheduleConversionProductQuantity
+        TotalScheduleConversionProductValue
+        TotalScheduleConversionProductValueInMicroUnits
+        TotalScheduleConversionProductValueInUsd
+        TotalScheduleConversionProductValueInMicroUsd
+        TotalWebScheduleConversionProductQuantity
+        TotalWebScheduleConversionProductValue
+        TotalWebScheduleConversionProductValueInMicroUnits
+        TotalWebScheduleConversionProductValueInUsd
+        TotalWebScheduleConversionProductValueInMicroUsd
+        TotalInappScheduleConversionProductQuantity
+        TotalInappScheduleConversionProductValue
+        TotalInappScheduleConversionProductValueInMicroUnits
+        TotalInappScheduleConversionProductValueInUsd
+        TotalInappScheduleConversionProductValueInMicroUsd
+        TotalOfflineScheduleConversionProductQuantity
+        TotalOfflineScheduleConversionProductValue
+        TotalOfflineScheduleConversionProductValueInMicroUnits
+        TotalOfflineScheduleConversionProductValueInUsd
+        TotalOfflineScheduleConversionProductValueInMicroUsd
+        EngagementFindLocation1
+        ClickFindLocation1
+        ViewFindLocation1
+        EngagementFindLocationValueInMicroDollar1
+        ClickFindLocationValueInMicroDollar1
+        ViewFindLocationValueInMicroDollar1
+        EngagementFindLocationQuantity1
+        ClickFindLocationQuantity1
+        ViewFindLocationQuantity1
+        EngagementFindLocation2
+        ClickFindLocation2
+        ViewFindLocation2
+        EngagementFindLocationValueInMicroDollar2
+        ClickFindLocationValueInMicroDollar2
+        ViewFindLocationValueInMicroDollar2
+        EngagementFindLocationQuantity2
+        ClickFindLocationQuantity2
+        ViewFindLocationQuantity2
+        TotalEngagementFindLocation
+        TotalClickFindLocation
+        TotalViewFindLocation
+        TotalEngagementFindLocationValueInMicroDollar
+        TotalEngagementFindLocationValueInDollar
+        TotalClickFindLocationValueInMicroDollar
+        TotalClickFindLocationValueInDollar
+        TotalViewFindLocationValueInMicroDollar
+        TotalViewFindLocationValueInDollar
+        TotalEngagementFindLocationQuantity
+        TotalClickFindLocationQuantity
+        TotalViewFindLocationQuantity
+        TotalFindLocation
+        TotalFindLocationValueInMicroDollar
+        AverageFindLocationValueInMicroDollar
+        AverageFindLocationValueInMicroUsDollar
+        TotalFindLocationValueInMicroUsDollar
+        TotalFindLocationQuantity
+        TotalFindLocationValueInDollar
+        FindLocationCostPerAction
+        FindLocationCostPerActionInUsDollar
+        FindLocationRoas
+        TotalFindLocationConversionRate
+        WebFindLocationCostPerAction
+        WebFindLocationRoas
+        TotalWebFindLocation
+        TotalWebFindLocationValueInMicroDollar
+        TotalWebFindLocationValueInDollar
+        TotalWebClickFindLocation
+        TotalWebClickFindLocationValueInMicroDollar
+        TotalWebClickFindLocationValueInDollar
+        TotalWebEngagementFindLocation
+        TotalWebEngagementFindLocationValueInMicroDollar
+        TotalWebEngagementFindLocationValueInDollar
+        TotalWebViewFindLocation
+        TotalWebViewFindLocationValueInMicroDollar
+        TotalWebViewFindLocationValueInDollar
+        InappFindLocationCostPerAction
+        InappFindLocationRoas
+        TotalInappFindLocation
+        TotalInappFindLocationValueInMicroDollar
+        TotalInappFindLocationValueInDollar
+        TotalInappClickFindLocation
+        TotalInappClickFindLocationValueInMicroDollar
+        TotalInappClickFindLocationValueInDollar
+        TotalInappEngagementFindLocation
+        TotalInappEngagementFindLocationValueInMicroDollar
+        TotalInappEngagementFindLocationValueInDollar
+        TotalInappViewFindLocation
+        TotalInappViewFindLocationValueInMicroDollar
+        TotalInappViewFindLocationValueInDollar
+        OfflineFindLocationCostPerAction
+        OfflineFindLocationRoas
+        TotalOfflineFindLocation
+        TotalOfflineFindLocationValueInMicroDollar
+        TotalOfflineFindLocationValueInDollar
+        TotalOfflineClickFindLocation
+        TotalOfflineClickFindLocationValueInMicroDollar
+        TotalOfflineClickFindLocationValueInDollar
+        TotalOfflineEngagementFindLocation
+        TotalOfflineEngagementFindLocationValueInMicroDollar
+        TotalOfflineEngagementFindLocationValueInDollar
+        TotalOfflineViewFindLocation
+        TotalOfflineViewFindLocationValueInMicroDollar
+        TotalOfflineViewFindLocationValueInDollar
+        TotalFindLocationConversionProductCountUnique
+        TotalWebFindLocationConversionProductCountUnique
+        TotalInappFindLocationConversionProductCountUnique
+        TotalOfflineFindLocationConversionProductCountUnique
+        TotalFindLocationConversionProductQuantity
+        TotalFindLocationConversionProductValue
+        TotalFindLocationConversionProductValueInMicroUnits
+        TotalFindLocationConversionProductValueInUsd
+        TotalFindLocationConversionProductValueInMicroUsd
+        TotalWebFindLocationConversionProductQuantity
+        TotalWebFindLocationConversionProductValue
+        TotalWebFindLocationConversionProductValueInMicroUnits
+        TotalWebFindLocationConversionProductValueInUsd
+        TotalWebFindLocationConversionProductValueInMicroUsd
+        TotalInappFindLocationConversionProductQuantity
+        TotalInappFindLocationConversionProductValue
+        TotalInappFindLocationConversionProductValueInMicroUnits
+        TotalInappFindLocationConversionProductValueInUsd
+        TotalInappFindLocationConversionProductValueInMicroUsd
+        TotalOfflineFindLocationConversionProductQuantity
+        TotalOfflineFindLocationConversionProductValue
+        TotalOfflineFindLocationConversionProductValueInMicroUnits
+        TotalOfflineFindLocationConversionProductValueInUsd
+        TotalOfflineFindLocationConversionProductValueInMicroUsd
+        EngagementCustomizeProduct1
+        ClickCustomizeProduct1
+        ViewCustomizeProduct1
+        EngagementCustomizeProductValueInMicroDollar1
+        ClickCustomizeProductValueInMicroDollar1
+        ViewCustomizeProductValueInMicroDollar1
+        EngagementCustomizeProductQuantity1
+        ClickCustomizeProductQuantity1
+        ViewCustomizeProductQuantity1
+        EngagementCustomizeProduct2
+        ClickCustomizeProduct2
+        ViewCustomizeProduct2
+        EngagementCustomizeProductValueInMicroDollar2
+        ClickCustomizeProductValueInMicroDollar2
+        ViewCustomizeProductValueInMicroDollar2
+        EngagementCustomizeProductQuantity2
+        ClickCustomizeProductQuantity2
+        ViewCustomizeProductQuantity2
+        TotalEngagementCustomizeProduct
+        TotalClickCustomizeProduct
+        TotalViewCustomizeProduct
+        TotalEngagementCustomizeProductValueInMicroDollar
+        TotalEngagementCustomizeProductValueInDollar
+        TotalClickCustomizeProductValueInMicroDollar
+        TotalClickCustomizeProductValueInDollar
+        TotalViewCustomizeProductValueInMicroDollar
+        TotalViewCustomizeProductValueInDollar
+        TotalEngagementCustomizeProductQuantity
+        TotalClickCustomizeProductQuantity
+        TotalViewCustomizeProductQuantity
+        TotalCustomizeProduct
+        TotalCustomizeProductValueInMicroDollar
+        AverageCustomizeProductValueInMicroDollar
+        AverageCustomizeProductValueInMicroUsDollar
+        TotalCustomizeProductValueInMicroUsDollar
+        TotalCustomizeProductQuantity
+        TotalCustomizeProductValueInDollar
+        CustomizeProductCostPerAction
+        CustomizeProductCostPerActionInUsDollar
+        CustomizeProductRoas
+        TotalCustomizeProductConversionRate
+        WebCustomizeProductCostPerAction
+        WebCustomizeProductRoas
+        TotalWebCustomizeProduct
+        TotalWebCustomizeProductValueInMicroDollar
+        TotalWebCustomizeProductValueInDollar
+        TotalWebClickCustomizeProduct
+        TotalWebClickCustomizeProductValueInMicroDollar
+        TotalWebClickCustomizeProductValueInDollar
+        TotalWebEngagementCustomizeProduct
+        TotalWebEngagementCustomizeProductValueInMicroDollar
+        TotalWebEngagementCustomizeProductValueInDollar
+        TotalWebViewCustomizeProduct
+        TotalWebViewCustomizeProductValueInMicroDollar
+        TotalWebViewCustomizeProductValueInDollar
+        InappCustomizeProductCostPerAction
+        InappCustomizeProductRoas
+        TotalInappCustomizeProduct
+        TotalInappCustomizeProductValueInMicroDollar
+        TotalInappCustomizeProductValueInDollar
+        TotalInappClickCustomizeProduct
+        TotalInappClickCustomizeProductValueInMicroDollar
+        TotalInappClickCustomizeProductValueInDollar
+        TotalInappEngagementCustomizeProduct
+        TotalInappEngagementCustomizeProductValueInMicroDollar
+        TotalInappEngagementCustomizeProductValueInDollar
+        TotalInappViewCustomizeProduct
+        TotalInappViewCustomizeProductValueInMicroDollar
+        TotalInappViewCustomizeProductValueInDollar
+        OfflineCustomizeProductCostPerAction
+        OfflineCustomizeProductRoas
+        TotalOfflineCustomizeProduct
+        TotalOfflineCustomizeProductValueInMicroDollar
+        TotalOfflineCustomizeProductValueInDollar
+        TotalOfflineClickCustomizeProduct
+        TotalOfflineClickCustomizeProductValueInMicroDollar
+        TotalOfflineClickCustomizeProductValueInDollar
+        TotalOfflineEngagementCustomizeProduct
+        TotalOfflineEngagementCustomizeProductValueInMicroDollar
+        TotalOfflineEngagementCustomizeProductValueInDollar
+        TotalOfflineViewCustomizeProduct
+        TotalOfflineViewCustomizeProductValueInMicroDollar
+        TotalOfflineViewCustomizeProductValueInDollar
+        TotalCustomizeProductConversionProductCountUnique
+        TotalWebCustomizeProductConversionProductCountUnique
+        TotalInappCustomizeProductConversionProductCountUnique
+        TotalOfflineCustomizeProductConversionProductCountUnique
+        TotalCustomizeProductConversionProductQuantity
+        TotalCustomizeProductConversionProductValue
+        TotalCustomizeProductConversionProductValueInMicroUnits
+        TotalCustomizeProductConversionProductValueInUsd
+        TotalCustomizeProductConversionProductValueInMicroUsd
+        TotalWebCustomizeProductConversionProductQuantity
+        TotalWebCustomizeProductConversionProductValue
+        TotalWebCustomizeProductConversionProductValueInMicroUnits
+        TotalWebCustomizeProductConversionProductValueInUsd
+        TotalWebCustomizeProductConversionProductValueInMicroUsd
+        TotalInappCustomizeProductConversionProductQuantity
+        TotalInappCustomizeProductConversionProductValue
+        TotalInappCustomizeProductConversionProductValueInMicroUnits
+        TotalInappCustomizeProductConversionProductValueInUsd
+        TotalInappCustomizeProductConversionProductValueInMicroUsd
+        TotalOfflineCustomizeProductConversionProductQuantity
+        TotalOfflineCustomizeProductConversionProductValue
+        TotalOfflineCustomizeProductConversionProductValueInMicroUnits
+        TotalOfflineCustomizeProductConversionProductValueInUsd
+        TotalOfflineCustomizeProductConversionProductValueInMicroUsd
+        EngagementSubmitApplication1
+        ClickSubmitApplication1
+        ViewSubmitApplication1
+        EngagementSubmitApplicationValueInMicroDollar1
+        ClickSubmitApplicationValueInMicroDollar1
+        ViewSubmitApplicationValueInMicroDollar1
+        EngagementSubmitApplicationQuantity1
+        ClickSubmitApplicationQuantity1
+        ViewSubmitApplicationQuantity1
+        EngagementSubmitApplication2
+        ClickSubmitApplication2
+        ViewSubmitApplication2
+        EngagementSubmitApplicationValueInMicroDollar2
+        ClickSubmitApplicationValueInMicroDollar2
+        ViewSubmitApplicationValueInMicroDollar2
+        EngagementSubmitApplicationQuantity2
+        ClickSubmitApplicationQuantity2
+        ViewSubmitApplicationQuantity2
+        TotalEngagementSubmitApplication
+        TotalClickSubmitApplication
+        TotalViewSubmitApplication
+        TotalEngagementSubmitApplicationValueInMicroDollar
+        TotalEngagementSubmitApplicationValueInDollar
+        TotalClickSubmitApplicationValueInMicroDollar
+        TotalClickSubmitApplicationValueInDollar
+        TotalViewSubmitApplicationValueInMicroDollar
+        TotalViewSubmitApplicationValueInDollar
+        TotalEngagementSubmitApplicationQuantity
+        TotalClickSubmitApplicationQuantity
+        TotalViewSubmitApplicationQuantity
+        TotalSubmitApplication
+        TotalSubmitApplicationValueInMicroDollar
+        AverageSubmitApplicationValueInMicroDollar
+        AverageSubmitApplicationValueInMicroUsDollar
+        TotalSubmitApplicationValueInMicroUsDollar
+        TotalSubmitApplicationQuantity
+        TotalSubmitApplicationValueInDollar
+        SubmitApplicationCostPerAction
+        SubmitApplicationCostPerActionInUsDollar
+        SubmitApplicationRoas
+        TotalSubmitApplicationConversionRate
+        WebSubmitApplicationCostPerAction
+        WebSubmitApplicationRoas
+        TotalWebSubmitApplication
+        TotalWebSubmitApplicationValueInMicroDollar
+        TotalWebSubmitApplicationValueInDollar
+        TotalWebClickSubmitApplication
+        TotalWebClickSubmitApplicationValueInMicroDollar
+        TotalWebClickSubmitApplicationValueInDollar
+        TotalWebEngagementSubmitApplication
+        TotalWebEngagementSubmitApplicationValueInMicroDollar
+        TotalWebEngagementSubmitApplicationValueInDollar
+        TotalWebViewSubmitApplication
+        TotalWebViewSubmitApplicationValueInMicroDollar
+        TotalWebViewSubmitApplicationValueInDollar
+        InappSubmitApplicationCostPerAction
+        InappSubmitApplicationRoas
+        TotalInappSubmitApplication
+        TotalInappSubmitApplicationValueInMicroDollar
+        TotalInappSubmitApplicationValueInDollar
+        TotalInappClickSubmitApplication
+        TotalInappClickSubmitApplicationValueInMicroDollar
+        TotalInappClickSubmitApplicationValueInDollar
+        TotalInappEngagementSubmitApplication
+        TotalInappEngagementSubmitApplicationValueInMicroDollar
+        TotalInappEngagementSubmitApplicationValueInDollar
+        TotalInappViewSubmitApplication
+        TotalInappViewSubmitApplicationValueInMicroDollar
+        TotalInappViewSubmitApplicationValueInDollar
+        OfflineSubmitApplicationCostPerAction
+        OfflineSubmitApplicationRoas
+        TotalOfflineSubmitApplication
+        TotalOfflineSubmitApplicationValueInMicroDollar
+        TotalOfflineSubmitApplicationValueInDollar
+        TotalOfflineClickSubmitApplication
+        TotalOfflineClickSubmitApplicationValueInMicroDollar
+        TotalOfflineClickSubmitApplicationValueInDollar
+        TotalOfflineEngagementSubmitApplication
+        TotalOfflineEngagementSubmitApplicationValueInMicroDollar
+        TotalOfflineEngagementSubmitApplicationValueInDollar
+        TotalOfflineViewSubmitApplication
+        TotalOfflineViewSubmitApplicationValueInMicroDollar
+        TotalOfflineViewSubmitApplicationValueInDollar
+        TotalSubmitApplicationConversionProductCountUnique
+        TotalWebSubmitApplicationConversionProductCountUnique
+        TotalInappSubmitApplicationConversionProductCountUnique
+        TotalOfflineSubmitApplicationConversionProductCountUnique
+        TotalSubmitApplicationConversionProductQuantity
+        TotalSubmitApplicationConversionProductValue
+        TotalSubmitApplicationConversionProductValueInMicroUnits
+        TotalSubmitApplicationConversionProductValueInUsd
+        TotalSubmitApplicationConversionProductValueInMicroUsd
+        TotalWebSubmitApplicationConversionProductQuantity
+        TotalWebSubmitApplicationConversionProductValue
+        TotalWebSubmitApplicationConversionProductValueInMicroUnits
+        TotalWebSubmitApplicationConversionProductValueInUsd
+        TotalWebSubmitApplicationConversionProductValueInMicroUsd
+        TotalInappSubmitApplicationConversionProductQuantity
+        TotalInappSubmitApplicationConversionProductValue
+        TotalInappSubmitApplicationConversionProductValueInMicroUnits
+        TotalInappSubmitApplicationConversionProductValueInUsd
+        TotalInappSubmitApplicationConversionProductValueInMicroUsd
+        TotalOfflineSubmitApplicationConversionProductQuantity
+        TotalOfflineSubmitApplicationConversionProductValue
+        TotalOfflineSubmitApplicationConversionProductValueInMicroUnits
+        TotalOfflineSubmitApplicationConversionProductValueInUsd
+        TotalOfflineSubmitApplicationConversionProductValueInMicroUsd
+        EngagementStartTrial1
+        ClickStartTrial1
+        ViewStartTrial1
+        EngagementStartTrialValueInMicroDollar1
+        ClickStartTrialValueInMicroDollar1
+        ViewStartTrialValueInMicroDollar1
+        EngagementStartTrialQuantity1
+        ClickStartTrialQuantity1
+        ViewStartTrialQuantity1
+        EngagementStartTrial2
+        ClickStartTrial2
+        ViewStartTrial2
+        EngagementStartTrialValueInMicroDollar2
+        ClickStartTrialValueInMicroDollar2
+        ViewStartTrialValueInMicroDollar2
+        EngagementStartTrialQuantity2
+        ClickStartTrialQuantity2
+        ViewStartTrialQuantity2
+        TotalEngagementStartTrial
+        TotalClickStartTrial
+        TotalViewStartTrial
+        TotalEngagementStartTrialValueInMicroDollar
+        TotalEngagementStartTrialValueInDollar
+        TotalClickStartTrialValueInMicroDollar
+        TotalClickStartTrialValueInDollar
+        TotalViewStartTrialValueInMicroDollar
+        TotalViewStartTrialValueInDollar
+        TotalEngagementStartTrialQuantity
+        TotalClickStartTrialQuantity
+        TotalViewStartTrialQuantity
+        TotalStartTrial
+        TotalStartTrialValueInMicroDollar
+        AverageStartTrialValueInMicroDollar
+        AverageStartTrialValueInMicroUsDollar
+        TotalStartTrialValueInMicroUsDollar
+        TotalStartTrialQuantity
+        TotalStartTrialValueInDollar
+        StartTrialCostPerAction
+        StartTrialCostPerActionInUsDollar
+        StartTrialRoas
+        TotalStartTrialConversionRate
+        WebStartTrialCostPerAction
+        WebStartTrialRoas
+        TotalWebStartTrial
+        TotalWebStartTrialValueInMicroDollar
+        TotalWebStartTrialValueInDollar
+        TotalWebClickStartTrial
+        TotalWebClickStartTrialValueInMicroDollar
+        TotalWebClickStartTrialValueInDollar
+        TotalWebEngagementStartTrial
+        TotalWebEngagementStartTrialValueInMicroDollar
+        TotalWebEngagementStartTrialValueInDollar
+        TotalWebViewStartTrial
+        TotalWebViewStartTrialValueInMicroDollar
+        TotalWebViewStartTrialValueInDollar
+        InappStartTrialCostPerAction
+        InappStartTrialRoas
+        TotalInappStartTrial
+        TotalInappStartTrialValueInMicroDollar
+        TotalInappStartTrialValueInDollar
+        TotalInappClickStartTrial
+        TotalInappClickStartTrialValueInMicroDollar
+        TotalInappClickStartTrialValueInDollar
+        TotalInappEngagementStartTrial
+        TotalInappEngagementStartTrialValueInMicroDollar
+        TotalInappEngagementStartTrialValueInDollar
+        TotalInappViewStartTrial
+        TotalInappViewStartTrialValueInMicroDollar
+        TotalInappViewStartTrialValueInDollar
+        OfflineStartTrialCostPerAction
+        OfflineStartTrialRoas
+        TotalOfflineStartTrial
+        TotalOfflineStartTrialValueInMicroDollar
+        TotalOfflineStartTrialValueInDollar
+        TotalOfflineClickStartTrial
+        TotalOfflineClickStartTrialValueInMicroDollar
+        TotalOfflineClickStartTrialValueInDollar
+        TotalOfflineEngagementStartTrial
+        TotalOfflineEngagementStartTrialValueInMicroDollar
+        TotalOfflineEngagementStartTrialValueInDollar
+        TotalOfflineViewStartTrial
+        TotalOfflineViewStartTrialValueInMicroDollar
+        TotalOfflineViewStartTrialValueInDollar
+        TotalStartTrialConversionProductCountUnique
+        TotalWebStartTrialConversionProductCountUnique
+        TotalInappStartTrialConversionProductCountUnique
+        TotalOfflineStartTrialConversionProductCountUnique
+        TotalStartTrialConversionProductQuantity
+        TotalStartTrialConversionProductValue
+        TotalStartTrialConversionProductValueInMicroUnits
+        TotalStartTrialConversionProductValueInUsd
+        TotalStartTrialConversionProductValueInMicroUsd
+        TotalWebStartTrialConversionProductQuantity
+        TotalWebStartTrialConversionProductValue
+        TotalWebStartTrialConversionProductValueInMicroUnits
+        TotalWebStartTrialConversionProductValueInUsd
+        TotalWebStartTrialConversionProductValueInMicroUsd
+        TotalInappStartTrialConversionProductQuantity
+        TotalInappStartTrialConversionProductValue
+        TotalInappStartTrialConversionProductValueInMicroUnits
+        TotalInappStartTrialConversionProductValueInUsd
+        TotalInappStartTrialConversionProductValueInMicroUsd
+        TotalOfflineStartTrialConversionProductQuantity
+        TotalOfflineStartTrialConversionProductValue
+        TotalOfflineStartTrialConversionProductValueInMicroUnits
+        TotalOfflineStartTrialConversionProductValueInUsd
+        TotalOfflineStartTrialConversionProductValueInMicroUsd
+        EngagementAppOpen1
+        ClickAppOpen1
+        ViewAppOpen1
+        EngagementAppOpenValueInMicroDollar1
+        ClickAppOpenValueInMicroDollar1
+        ViewAppOpenValueInMicroDollar1
+        EngagementAppOpenQuantity1
+        ClickAppOpenQuantity1
+        ViewAppOpenQuantity1
+        EngagementAppOpen2
+        ClickAppOpen2
+        ViewAppOpen2
+        EngagementAppOpenValueInMicroDollar2
+        ClickAppOpenValueInMicroDollar2
+        ViewAppOpenValueInMicroDollar2
+        EngagementAppOpenQuantity2
+        ClickAppOpenQuantity2
+        ViewAppOpenQuantity2
+        TotalEngagementAppOpen
+        TotalClickAppOpen
+        TotalViewAppOpen
+        TotalEngagementAppOpenValueInMicroDollar
+        TotalEngagementAppOpenValueInDollar
+        TotalClickAppOpenValueInMicroDollar
+        TotalClickAppOpenValueInDollar
+        TotalViewAppOpenValueInMicroDollar
+        TotalViewAppOpenValueInDollar
+        TotalEngagementAppOpenQuantity
+        TotalClickAppOpenQuantity
+        TotalViewAppOpenQuantity
+        TotalAppOpen
+        TotalAppOpenValueInMicroDollar
+        AverageAppOpenValueInMicroDollar
+        AverageAppOpenValueInMicroUsDollar
+        TotalAppOpenValueInMicroUsDollar
+        TotalAppOpenQuantity
+        TotalAppOpenValueInDollar
+        AppOpenCostPerAction
+        AppOpenCostPerActionInUsDollar
+        AppOpenRoas
+        TotalAppOpenConversionRate
+        WebAppOpenCostPerAction
+        WebAppOpenRoas
+        TotalWebAppOpen
+        TotalWebAppOpenValueInMicroDollar
+        TotalWebAppOpenValueInDollar
+        TotalWebClickAppOpen
+        TotalWebClickAppOpenValueInMicroDollar
+        TotalWebClickAppOpenValueInDollar
+        TotalWebEngagementAppOpen
+        TotalWebEngagementAppOpenValueInMicroDollar
+        TotalWebEngagementAppOpenValueInDollar
+        TotalWebViewAppOpen
+        TotalWebViewAppOpenValueInMicroDollar
+        TotalWebViewAppOpenValueInDollar
+        InappAppOpenCostPerAction
+        InappAppOpenRoas
+        TotalInappAppOpen
+        TotalInappAppOpenValueInMicroDollar
+        TotalInappAppOpenValueInDollar
+        TotalInappClickAppOpen
+        TotalInappClickAppOpenValueInMicroDollar
+        TotalInappClickAppOpenValueInDollar
+        TotalInappEngagementAppOpen
+        TotalInappEngagementAppOpenValueInMicroDollar
+        TotalInappEngagementAppOpenValueInDollar
+        TotalInappViewAppOpen
+        TotalInappViewAppOpenValueInMicroDollar
+        TotalInappViewAppOpenValueInDollar
+        OfflineAppOpenCostPerAction
+        OfflineAppOpenRoas
+        TotalOfflineAppOpen
+        TotalOfflineAppOpenValueInMicroDollar
+        TotalOfflineAppOpenValueInDollar
+        TotalOfflineClickAppOpen
+        TotalOfflineClickAppOpenValueInMicroDollar
+        TotalOfflineClickAppOpenValueInDollar
+        TotalOfflineEngagementAppOpen
+        TotalOfflineEngagementAppOpenValueInMicroDollar
+        TotalOfflineEngagementAppOpenValueInDollar
+        TotalOfflineViewAppOpen
+        TotalOfflineViewAppOpenValueInMicroDollar
+        TotalOfflineViewAppOpenValueInDollar
+        TotalAppOpenConversionProductCountUnique
+        TotalWebAppOpenConversionProductCountUnique
+        TotalInappAppOpenConversionProductCountUnique
+        TotalOfflineAppOpenConversionProductCountUnique
+        TotalAppOpenConversionProductQuantity
+        TotalAppOpenConversionProductValue
+        TotalAppOpenConversionProductValueInMicroUnits
+        TotalAppOpenConversionProductValueInUsd
+        TotalAppOpenConversionProductValueInMicroUsd
+        TotalWebAppOpenConversionProductQuantity
+        TotalWebAppOpenConversionProductValue
+        TotalWebAppOpenConversionProductValueInMicroUnits
+        TotalWebAppOpenConversionProductValueInUsd
+        TotalWebAppOpenConversionProductValueInMicroUsd
+        TotalInappAppOpenConversionProductQuantity
+        TotalInappAppOpenConversionProductValue
+        TotalInappAppOpenConversionProductValueInMicroUnits
+        TotalInappAppOpenConversionProductValueInUsd
+        TotalInappAppOpenConversionProductValueInMicroUsd
+        TotalOfflineAppOpenConversionProductQuantity
+        TotalOfflineAppOpenConversionProductValue
+        TotalOfflineAppOpenConversionProductValueInMicroUnits
+        TotalOfflineAppOpenConversionProductValueInUsd
+        TotalOfflineAppOpenConversionProductValueInMicroUsd
         
     #tag EndEnum
 
@@ -1795,15 +3145,6 @@ Protected Class TemplateResponse
         
     #tag EndEnum
 
-    #tag Enum, Name = TypeEnum, Type = Integer, Flags = &h0
-        
-        Unspecified
-        Bulk
-        Overview
-        Table
-        
-    #tag EndEnum
-
     #tag Enum, Name = Ingestion_sourcesEnum, Type = Integer, Flags = &h0
         
         Tag
@@ -1811,6 +3152,15 @@ Protected Class TemplateResponse
         FileUpload
         ConversionsApi
         Native
+        
+    #tag EndEnum
+
+    #tag Enum, Name = TypeEnum, Type = Integer, Flags = &h0
+        
+        Unspecified
+        Bulk
+        Overview
+        Table
         
     #tag EndEnum
 
@@ -1827,6 +3177,10 @@ Protected Class TemplateResponse
 		      Return "BONUS_SPEND_IN_MICRO_DOLLAR"
 		    Case ColumnsEnum.BonusSpendInDollar
 		      Return "BONUS_SPEND_IN_DOLLAR"
+		    Case ColumnsEnum.AdsCreditSpendInMicroDollar
+		      Return "ADS_CREDIT_SPEND_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.AdsCreditSpendInDollar
+		      Return "ADS_CREDIT_SPEND_IN_DOLLAR"
 		    Case ColumnsEnum.PaidImpression
 		      Return "PAID_IMPRESSION"
 		    Case ColumnsEnum.PaidClickthrough
@@ -1849,6 +3203,8 @@ Protected Class TemplateResponse
 		      Return "ECTR"
 		    Case ColumnsEnum.OutboundCtr
 		      Return "OUTBOUND_CTR"
+		    Case ColumnsEnum.OutboundCtr1
+		      Return "OUTBOUND_CTR_1"
 		    Case ColumnsEnum.CpcInMicroCurrency
 		      Return "CPC_IN_MICRO_CURRENCY"
 		    Case ColumnsEnum.CpwInMicroDollar
@@ -1879,6 +3235,12 @@ Protected Class TemplateResponse
 		      Return "TARGETING_VALUE"
 		    Case ColumnsEnum.TargetingValueName
 		      Return "TARGETING_VALUE_NAME"
+		    Case ColumnsEnum.CampaignBrandLabel
+		      Return "CAMPAIGN_BRAND_LABEL"
+		    Case ColumnsEnum.CampaignCustomLabels
+		      Return "CAMPAIGN_CUSTOM_LABELS"
+		    Case ColumnsEnum.AppInstallAppName
+		      Return "APP_INSTALL_APP_NAME"
 		    Case ColumnsEnum.PaidEvents
 		      Return "PAID_EVENTS"
 		    Case ColumnsEnum.BonusEvents
@@ -1961,6 +3323,8 @@ Protected Class TemplateResponse
 		      Return "KEYWORD_IS_DELETED"
 		    Case ColumnsEnum.BrandSfdcAccountId
 		      Return "BRAND_SFDC_ACCOUNT_ID"
+		    Case ColumnsEnum.AppInstallAppId
+		      Return "APP_INSTALL_APP_ID"
 		    Case ColumnsEnum.CampaignActionType
 		      Return "CAMPAIGN_ACTION_TYPE"
 		    Case ColumnsEnum.CampaignBidType
@@ -2007,6 +3371,8 @@ Protected Class TemplateResponse
 		      Return "AD_GROUP_EXPERIMENT_NAME"
 		    Case ColumnsEnum.AdGroupExperimentCell
 		      Return "AD_GROUP_EXPERIMENT_CELL"
+		    Case ColumnsEnum.AdGroupBidMultiplier
+		      Return "AD_GROUP_BID_MULTIPLIER"
 		    Case ColumnsEnum.CampaignWebCloseupWhitelisted
 		      Return "CAMPAIGN_WEB_CLOSEUP_WHITELISTED"
 		    Case ColumnsEnum.ProductGroupId
@@ -2027,6 +3393,14 @@ Protected Class TemplateResponse
 		      Return "PRODUCT_GROUP_INCLUSION"
 		    Case ColumnsEnum.ProductGroupCreativeType
 		      Return "PRODUCT_GROUP_CREATIVE_TYPE"
+		    Case ColumnsEnum.PromoId
+		      Return "PROMO_ID"
+		    Case ColumnsEnum.PromoName
+		      Return "PROMO_NAME"
+		    Case ColumnsEnum.PromoIds
+		      Return "PROMO_IDS"
+		    Case ColumnsEnum.PromoNames
+		      Return "PROMO_NAMES"
 		    Case ColumnsEnum.ItemId
 		      Return "ITEM_ID"
 		    Case ColumnsEnum.ProductItemId
@@ -2041,6 +3415,26 @@ Protected Class TemplateResponse
 		      Return "PRODUCT_ITEM_IMAGE_URL"
 		    Case ColumnsEnum.ProductItemPrice
 		      Return "PRODUCT_ITEM_PRICE"
+		    Case ColumnsEnum.ProductItemProductUrl
+		      Return "PRODUCT_ITEM_PRODUCT_URL"
+		    Case ColumnsEnum.ProductItemPinUrl
+		      Return "PRODUCT_ITEM_PIN_URL"
+		    Case ColumnsEnum.ProductItemBrand
+		      Return "PRODUCT_ITEM_BRAND"
+		    Case ColumnsEnum.ProductItemDescription
+		      Return "PRODUCT_ITEM_DESCRIPTION"
+		    Case ColumnsEnum.ProductItemSalePrice
+		      Return "PRODUCT_ITEM_SALE_PRICE"
+		    Case ColumnsEnum.ProductItemProductType
+		      Return "PRODUCT_ITEM_PRODUCT_TYPE"
+		    Case ColumnsEnum.ProductItemProductCategory
+		      Return "PRODUCT_ITEM_PRODUCT_CATEGORY"
+		    Case ColumnsEnum.ProductItemCampaignName
+		      Return "PRODUCT_ITEM_CAMPAIGN_NAME"
+		    Case ColumnsEnum.ProductItemAdGroupName
+		      Return "PRODUCT_ITEM_AD_GROUP_NAME"
+		    Case ColumnsEnum.ProductItemCurrency
+		      Return "PRODUCT_ITEM_CURRENCY"
 		    Case ColumnsEnum.OrderLineId
 		      Return "ORDER_LINE_ID"
 		    Case ColumnsEnum.OrderLineName
@@ -2061,6 +3455,24 @@ Protected Class TemplateResponse
 		      Return "CONVERSION_PRODUCT_BRAND"
 		    Case ColumnsEnum.ConversionProductCategory
 		      Return "CONVERSION_PRODUCT_CATEGORY"
+		    Case ColumnsEnum.ConversionProductIdGroup
+		      Return "CONVERSION_PRODUCT_ID_GROUP"
+		    Case ColumnsEnum.CartingTotalPurchaseIntentClicks
+		      Return "CARTING_TOTAL_PURCHASE_INTENT_CLICKS"
+		    Case ColumnsEnum.CartingTotalPurchaseIntentValue
+		      Return "CARTING_TOTAL_PURCHASE_INTENT_VALUE"
+		    Case ColumnsEnum.CartingTotalPurchaseIntentValueInMicroCurrency
+		      Return "CARTING_TOTAL_PURCHASE_INTENT_VALUE_IN_MICRO_CURRENCY"
+		    Case ColumnsEnum.CartingRetailerName
+		      Return "CARTING_RETAILER_NAME"
+		    Case ColumnsEnum.CartingProductPrice
+		      Return "CARTING_PRODUCT_PRICE"
+		    Case ColumnsEnum.CartingProductPriceInMicroCurrency
+		      Return "CARTING_PRODUCT_PRICE_IN_MICRO_CURRENCY"
+		    Case ColumnsEnum.CartingProductName
+		      Return "CARTING_PRODUCT_NAME"
+		    Case ColumnsEnum.CartingProductId
+		      Return "CARTING_PRODUCT_ID"
 		    Case ColumnsEnum.Clickthrough1
 		      Return "CLICKTHROUGH_1"
 		    Case ColumnsEnum.Repin1
@@ -2149,6 +3561,8 @@ Protected Class TemplateResponse
 		      Return "TOTAL_OUTBOUND_CLICK"
 		    Case ColumnsEnum.CostPerOutboundClickInDollar
 		      Return "COST_PER_OUTBOUND_CLICK_IN_DOLLAR"
+		    Case ColumnsEnum.CostPerOutboundClickInDollar1
+		      Return "COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1"
 		    Case ColumnsEnum.EngagementPageVisit1
 		      Return "ENGAGEMENT_PAGE_VISIT_1"
 		    Case ColumnsEnum.EngagementSignup1
@@ -2171,6 +3585,16 @@ Protected Class TemplateResponse
 		      Return "ENGAGEMENT_APP_INSTALL_1"
 		    Case ColumnsEnum.EngagementUnknown1
 		      Return "ENGAGEMENT_UNKNOWN_1"
+		    Case ColumnsEnum.EngagementAddPaymentInfo1
+		      Return "ENGAGEMENT_ADD_PAYMENT_INFO_1"
+		    Case ColumnsEnum.EngagementAddToWishlist1
+		      Return "ENGAGEMENT_ADD_TO_WISHLIST_1"
+		    Case ColumnsEnum.EngagementInitiateCheckout1
+		      Return "ENGAGEMENT_INITIATE_CHECKOUT_1"
+		    Case ColumnsEnum.EngagementSubscribe1
+		      Return "ENGAGEMENT_SUBSCRIBE_1"
+		    Case ColumnsEnum.EngagementViewContent1
+		      Return "ENGAGEMENT_VIEW_CONTENT_1"
 		    Case ColumnsEnum.ClickPageVisit1
 		      Return "CLICK_PAGE_VISIT_1"
 		    Case ColumnsEnum.ClickSignup1
@@ -2193,6 +3617,16 @@ Protected Class TemplateResponse
 		      Return "CLICK_APP_INSTALL_1"
 		    Case ColumnsEnum.ClickUnknown1
 		      Return "CLICK_UNKNOWN_1"
+		    Case ColumnsEnum.ClickAddPaymentInfo1
+		      Return "CLICK_ADD_PAYMENT_INFO_1"
+		    Case ColumnsEnum.ClickAddToWishlist1
+		      Return "CLICK_ADD_TO_WISHLIST_1"
+		    Case ColumnsEnum.ClickInitiateCheckout1
+		      Return "CLICK_INITIATE_CHECKOUT_1"
+		    Case ColumnsEnum.ClickSubscribe1
+		      Return "CLICK_SUBSCRIBE_1"
+		    Case ColumnsEnum.ClickViewContent1
+		      Return "CLICK_VIEW_CONTENT_1"
 		    Case ColumnsEnum.ViewPageVisit1
 		      Return "VIEW_PAGE_VISIT_1"
 		    Case ColumnsEnum.ViewSignup1
@@ -2215,6 +3649,16 @@ Protected Class TemplateResponse
 		      Return "VIEW_APP_INSTALL_1"
 		    Case ColumnsEnum.ViewUnknown1
 		      Return "VIEW_UNKNOWN_1"
+		    Case ColumnsEnum.ViewAddPaymentInfo1
+		      Return "VIEW_ADD_PAYMENT_INFO_1"
+		    Case ColumnsEnum.ViewAddToWishlist1
+		      Return "VIEW_ADD_TO_WISHLIST_1"
+		    Case ColumnsEnum.ViewInitiateCheckout1
+		      Return "VIEW_INITIATE_CHECKOUT_1"
+		    Case ColumnsEnum.ViewSubscribe1
+		      Return "VIEW_SUBSCRIBE_1"
+		    Case ColumnsEnum.ViewViewContent1
+		      Return "VIEW_VIEW_CONTENT_1"
 		    Case ColumnsEnum.Conversions1
 		      Return "CONVERSIONS_1"
 		    Case ColumnsEnum.EngagementPageVisitValueInMicroDollar1
@@ -2239,6 +3683,16 @@ Protected Class TemplateResponse
 		      Return "ENGAGEMENT_APP_INSTALL_VALUE_IN_MICRO_DOLLAR_1"
 		    Case ColumnsEnum.EngagementUnknownValueInMicroDollar1
 		      Return "ENGAGEMENT_UNKNOWN_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.EngagementAddPaymentInfoValueInMicroDollar1
+		      Return "ENGAGEMENT_ADD_PAYMENT_INFO_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.EngagementAddToWishlistValueInMicroDollar1
+		      Return "ENGAGEMENT_ADD_TO_WISHLIST_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.EngagementInitiateCheckoutValueInMicroDollar1
+		      Return "ENGAGEMENT_INITIATE_CHECKOUT_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.EngagementSubscribeValueInMicroDollar1
+		      Return "ENGAGEMENT_SUBSCRIBE_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.EngagementViewContentValueInMicroDollar1
+		      Return "ENGAGEMENT_VIEW_CONTENT_VALUE_IN_MICRO_DOLLAR_1"
 		    Case ColumnsEnum.ClickPageVisitValueInMicroDollar1
 		      Return "CLICK_PAGE_VISIT_VALUE_IN_MICRO_DOLLAR_1"
 		    Case ColumnsEnum.ClickSignupValueInMicroDollar1
@@ -2261,6 +3715,16 @@ Protected Class TemplateResponse
 		      Return "CLICK_APP_INSTALL_VALUE_IN_MICRO_DOLLAR_1"
 		    Case ColumnsEnum.ClickUnknownValueInMicroDollar1
 		      Return "CLICK_UNKNOWN_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.ClickAddPaymentInfoValueInMicroDollar1
+		      Return "CLICK_ADD_PAYMENT_INFO_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.ClickAddToWishlistValueInMicroDollar1
+		      Return "CLICK_ADD_TO_WISHLIST_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.ClickInitiateCheckoutValueInMicroDollar1
+		      Return "CLICK_INITIATE_CHECKOUT_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.ClickSubscribeValueInMicroDollar1
+		      Return "CLICK_SUBSCRIBE_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.ClickViewContentValueInMicroDollar1
+		      Return "CLICK_VIEW_CONTENT_VALUE_IN_MICRO_DOLLAR_1"
 		    Case ColumnsEnum.ViewPageVisitValueInMicroDollar1
 		      Return "VIEW_PAGE_VISIT_VALUE_IN_MICRO_DOLLAR_1"
 		    Case ColumnsEnum.ViewSignupValueInMicroDollar1
@@ -2283,6 +3747,16 @@ Protected Class TemplateResponse
 		      Return "VIEW_APP_INSTALL_VALUE_IN_MICRO_DOLLAR_1"
 		    Case ColumnsEnum.ViewUnknownValueInMicroDollar1
 		      Return "VIEW_UNKNOWN_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.ViewAddPaymentInfoValueInMicroDollar1
+		      Return "VIEW_ADD_PAYMENT_INFO_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.ViewAddToWishlistValueInMicroDollar1
+		      Return "VIEW_ADD_TO_WISHLIST_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.ViewInitiateCheckoutValueInMicroDollar1
+		      Return "VIEW_INITIATE_CHECKOUT_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.ViewSubscribeValueInMicroDollar1
+		      Return "VIEW_SUBSCRIBE_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.ViewViewContentValueInMicroDollar1
+		      Return "VIEW_VIEW_CONTENT_VALUE_IN_MICRO_DOLLAR_1"
 		    Case ColumnsEnum.ConversionsValueInMicroDollar1
 		      Return "CONVERSIONS_VALUE_IN_MICRO_DOLLAR_1"
 		    Case ColumnsEnum.EngagementPageVisitQuantity1
@@ -2307,6 +3781,16 @@ Protected Class TemplateResponse
 		      Return "ENGAGEMENT_APP_INSTALL_QUANTITY_1"
 		    Case ColumnsEnum.EngagementUnknownQuantity1
 		      Return "ENGAGEMENT_UNKNOWN_QUANTITY_1"
+		    Case ColumnsEnum.EngagementAddPaymentInfoQuantity1
+		      Return "ENGAGEMENT_ADD_PAYMENT_INFO_QUANTITY_1"
+		    Case ColumnsEnum.EngagementAddToWishlistQuantity1
+		      Return "ENGAGEMENT_ADD_TO_WISHLIST_QUANTITY_1"
+		    Case ColumnsEnum.EngagementInitiateCheckoutQuantity1
+		      Return "ENGAGEMENT_INITIATE_CHECKOUT_QUANTITY_1"
+		    Case ColumnsEnum.EngagementSubscribeQuantity1
+		      Return "ENGAGEMENT_SUBSCRIBE_QUANTITY_1"
+		    Case ColumnsEnum.EngagementViewContentQuantity1
+		      Return "ENGAGEMENT_VIEW_CONTENT_QUANTITY_1"
 		    Case ColumnsEnum.ClickPageVisitQuantity1
 		      Return "CLICK_PAGE_VISIT_QUANTITY_1"
 		    Case ColumnsEnum.ClickSignupQuantity1
@@ -2329,6 +3813,16 @@ Protected Class TemplateResponse
 		      Return "CLICK_APP_INSTALL_QUANTITY_1"
 		    Case ColumnsEnum.ClickUnknownQuantity1
 		      Return "CLICK_UNKNOWN_QUANTITY_1"
+		    Case ColumnsEnum.ClickAddPaymentInfoQuantity1
+		      Return "CLICK_ADD_PAYMENT_INFO_QUANTITY_1"
+		    Case ColumnsEnum.ClickAddToWishlistQuantity1
+		      Return "CLICK_ADD_TO_WISHLIST_QUANTITY_1"
+		    Case ColumnsEnum.ClickInitiateCheckoutQuantity1
+		      Return "CLICK_INITIATE_CHECKOUT_QUANTITY_1"
+		    Case ColumnsEnum.ClickSubscribeQuantity1
+		      Return "CLICK_SUBSCRIBE_QUANTITY_1"
+		    Case ColumnsEnum.ClickViewContentQuantity1
+		      Return "CLICK_VIEW_CONTENT_QUANTITY_1"
 		    Case ColumnsEnum.ViewPageVisitQuantity1
 		      Return "VIEW_PAGE_VISIT_QUANTITY_1"
 		    Case ColumnsEnum.ViewSignupQuantity1
@@ -2351,6 +3845,16 @@ Protected Class TemplateResponse
 		      Return "VIEW_APP_INSTALL_QUANTITY_1"
 		    Case ColumnsEnum.ViewUnknownQuantity1
 		      Return "VIEW_UNKNOWN_QUANTITY_1"
+		    Case ColumnsEnum.ViewAddPaymentInfoQuantity1
+		      Return "VIEW_ADD_PAYMENT_INFO_QUANTITY_1"
+		    Case ColumnsEnum.ViewAddToWishlistQuantity1
+		      Return "VIEW_ADD_TO_WISHLIST_QUANTITY_1"
+		    Case ColumnsEnum.ViewInitiateCheckoutQuantity1
+		      Return "VIEW_INITIATE_CHECKOUT_QUANTITY_1"
+		    Case ColumnsEnum.ViewSubscribeQuantity1
+		      Return "VIEW_SUBSCRIBE_QUANTITY_1"
+		    Case ColumnsEnum.ViewViewContentQuantity1
+		      Return "VIEW_VIEW_CONTENT_QUANTITY_1"
 		    Case ColumnsEnum.ConversionsQuantity1
 		      Return "CONVERSIONS_QUANTITY_1"
 		    Case ColumnsEnum.EngagementPageVisit2
@@ -2375,6 +3879,16 @@ Protected Class TemplateResponse
 		      Return "ENGAGEMENT_APP_INSTALL_2"
 		    Case ColumnsEnum.EngagementUnknown2
 		      Return "ENGAGEMENT_UNKNOWN_2"
+		    Case ColumnsEnum.EngagementAddPaymentInfo2
+		      Return "ENGAGEMENT_ADD_PAYMENT_INFO_2"
+		    Case ColumnsEnum.EngagementAddToWishlist2
+		      Return "ENGAGEMENT_ADD_TO_WISHLIST_2"
+		    Case ColumnsEnum.EngagementInitiateCheckout2
+		      Return "ENGAGEMENT_INITIATE_CHECKOUT_2"
+		    Case ColumnsEnum.EngagementSubscribe2
+		      Return "ENGAGEMENT_SUBSCRIBE_2"
+		    Case ColumnsEnum.EngagementViewContent2
+		      Return "ENGAGEMENT_VIEW_CONTENT_2"
 		    Case ColumnsEnum.ClickPageVisit2
 		      Return "CLICK_PAGE_VISIT_2"
 		    Case ColumnsEnum.ClickSignup2
@@ -2397,6 +3911,16 @@ Protected Class TemplateResponse
 		      Return "CLICK_APP_INSTALL_2"
 		    Case ColumnsEnum.ClickUnknown2
 		      Return "CLICK_UNKNOWN_2"
+		    Case ColumnsEnum.ClickAddPaymentInfo2
+		      Return "CLICK_ADD_PAYMENT_INFO_2"
+		    Case ColumnsEnum.ClickAddToWishlist2
+		      Return "CLICK_ADD_TO_WISHLIST_2"
+		    Case ColumnsEnum.ClickInitiateCheckout2
+		      Return "CLICK_INITIATE_CHECKOUT_2"
+		    Case ColumnsEnum.ClickSubscribe2
+		      Return "CLICK_SUBSCRIBE_2"
+		    Case ColumnsEnum.ClickViewContent2
+		      Return "CLICK_VIEW_CONTENT_2"
 		    Case ColumnsEnum.ViewPageVisit2
 		      Return "VIEW_PAGE_VISIT_2"
 		    Case ColumnsEnum.ViewSignup2
@@ -2419,6 +3943,16 @@ Protected Class TemplateResponse
 		      Return "VIEW_APP_INSTALL_2"
 		    Case ColumnsEnum.ViewUnknown2
 		      Return "VIEW_UNKNOWN_2"
+		    Case ColumnsEnum.ViewAddPaymentInfo2
+		      Return "VIEW_ADD_PAYMENT_INFO_2"
+		    Case ColumnsEnum.ViewAddToWishlist2
+		      Return "VIEW_ADD_TO_WISHLIST_2"
+		    Case ColumnsEnum.ViewInitiateCheckout2
+		      Return "VIEW_INITIATE_CHECKOUT_2"
+		    Case ColumnsEnum.ViewSubscribe2
+		      Return "VIEW_SUBSCRIBE_2"
+		    Case ColumnsEnum.ViewViewContent2
+		      Return "VIEW_VIEW_CONTENT_2"
 		    Case ColumnsEnum.Conversions2
 		      Return "CONVERSIONS_2"
 		    Case ColumnsEnum.EngagementPageVisitValueInMicroDollar2
@@ -2443,6 +3977,16 @@ Protected Class TemplateResponse
 		      Return "ENGAGEMENT_APP_INSTALL_VALUE_IN_MICRO_DOLLAR_2"
 		    Case ColumnsEnum.EngagementUnknownValueInMicroDollar2
 		      Return "ENGAGEMENT_UNKNOWN_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.EngagementAddPaymentInfoValueInMicroDollar2
+		      Return "ENGAGEMENT_ADD_PAYMENT_INFO_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.EngagementAddToWishlistValueInMicroDollar2
+		      Return "ENGAGEMENT_ADD_TO_WISHLIST_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.EngagementInitiateCheckoutValueInMicroDollar2
+		      Return "ENGAGEMENT_INITIATE_CHECKOUT_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.EngagementSubscribeValueInMicroDollar2
+		      Return "ENGAGEMENT_SUBSCRIBE_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.EngagementViewContentValueInMicroDollar2
+		      Return "ENGAGEMENT_VIEW_CONTENT_VALUE_IN_MICRO_DOLLAR_2"
 		    Case ColumnsEnum.ClickPageVisitValueInMicroDollar2
 		      Return "CLICK_PAGE_VISIT_VALUE_IN_MICRO_DOLLAR_2"
 		    Case ColumnsEnum.ClickSignupValueInMicroDollar2
@@ -2465,6 +4009,16 @@ Protected Class TemplateResponse
 		      Return "CLICK_APP_INSTALL_VALUE_IN_MICRO_DOLLAR_2"
 		    Case ColumnsEnum.ClickUnknownValueInMicroDollar2
 		      Return "CLICK_UNKNOWN_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.ClickAddPaymentInfoValueInMicroDollar2
+		      Return "CLICK_ADD_PAYMENT_INFO_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.ClickAddToWishlistValueInMicroDollar2
+		      Return "CLICK_ADD_TO_WISHLIST_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.ClickInitiateCheckoutValueInMicroDollar2
+		      Return "CLICK_INITIATE_CHECKOUT_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.ClickSubscribeValueInMicroDollar2
+		      Return "CLICK_SUBSCRIBE_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.ClickViewContentValueInMicroDollar2
+		      Return "CLICK_VIEW_CONTENT_VALUE_IN_MICRO_DOLLAR_2"
 		    Case ColumnsEnum.ViewPageVisitValueInMicroDollar2
 		      Return "VIEW_PAGE_VISIT_VALUE_IN_MICRO_DOLLAR_2"
 		    Case ColumnsEnum.ViewSignupValueInMicroDollar2
@@ -2487,6 +4041,16 @@ Protected Class TemplateResponse
 		      Return "VIEW_APP_INSTALL_VALUE_IN_MICRO_DOLLAR_2"
 		    Case ColumnsEnum.ViewUnknownValueInMicroDollar2
 		      Return "VIEW_UNKNOWN_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.ViewAddPaymentInfoValueInMicroDollar2
+		      Return "VIEW_ADD_PAYMENT_INFO_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.ViewAddToWishlistValueInMicroDollar2
+		      Return "VIEW_ADD_TO_WISHLIST_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.ViewInitiateCheckoutValueInMicroDollar2
+		      Return "VIEW_INITIATE_CHECKOUT_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.ViewSubscribeValueInMicroDollar2
+		      Return "VIEW_SUBSCRIBE_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.ViewViewContentValueInMicroDollar2
+		      Return "VIEW_VIEW_CONTENT_VALUE_IN_MICRO_DOLLAR_2"
 		    Case ColumnsEnum.ConversionsValueInMicroDollar2
 		      Return "CONVERSIONS_VALUE_IN_MICRO_DOLLAR_2"
 		    Case ColumnsEnum.EngagementPageVisitQuantity2
@@ -2511,6 +4075,16 @@ Protected Class TemplateResponse
 		      Return "ENGAGEMENT_APP_INSTALL_QUANTITY_2"
 		    Case ColumnsEnum.EngagementUnknownQuantity2
 		      Return "ENGAGEMENT_UNKNOWN_QUANTITY_2"
+		    Case ColumnsEnum.EngagementAddPaymentInfoQuantity2
+		      Return "ENGAGEMENT_ADD_PAYMENT_INFO_QUANTITY_2"
+		    Case ColumnsEnum.EngagementAddToWishlistQuantity2
+		      Return "ENGAGEMENT_ADD_TO_WISHLIST_QUANTITY_2"
+		    Case ColumnsEnum.EngagementInitiateCheckoutQuantity2
+		      Return "ENGAGEMENT_INITIATE_CHECKOUT_QUANTITY_2"
+		    Case ColumnsEnum.EngagementSubscribeQuantity2
+		      Return "ENGAGEMENT_SUBSCRIBE_QUANTITY_2"
+		    Case ColumnsEnum.EngagementViewContentQuantity2
+		      Return "ENGAGEMENT_VIEW_CONTENT_QUANTITY_2"
 		    Case ColumnsEnum.ClickPageVisitQuantity2
 		      Return "CLICK_PAGE_VISIT_QUANTITY_2"
 		    Case ColumnsEnum.ClickSignupQuantity2
@@ -2533,6 +4107,16 @@ Protected Class TemplateResponse
 		      Return "CLICK_APP_INSTALL_QUANTITY_2"
 		    Case ColumnsEnum.ClickUnknownQuantity2
 		      Return "CLICK_UNKNOWN_QUANTITY_2"
+		    Case ColumnsEnum.ClickAddPaymentInfoQuantity2
+		      Return "CLICK_ADD_PAYMENT_INFO_QUANTITY_2"
+		    Case ColumnsEnum.ClickAddToWishlistQuantity2
+		      Return "CLICK_ADD_TO_WISHLIST_QUANTITY_2"
+		    Case ColumnsEnum.ClickInitiateCheckoutQuantity2
+		      Return "CLICK_INITIATE_CHECKOUT_QUANTITY_2"
+		    Case ColumnsEnum.ClickSubscribeQuantity2
+		      Return "CLICK_SUBSCRIBE_QUANTITY_2"
+		    Case ColumnsEnum.ClickViewContentQuantity2
+		      Return "CLICK_VIEW_CONTENT_QUANTITY_2"
 		    Case ColumnsEnum.ViewPageVisitQuantity2
 		      Return "VIEW_PAGE_VISIT_QUANTITY_2"
 		    Case ColumnsEnum.ViewSignupQuantity2
@@ -2555,6 +4139,16 @@ Protected Class TemplateResponse
 		      Return "VIEW_APP_INSTALL_QUANTITY_2"
 		    Case ColumnsEnum.ViewUnknownQuantity2
 		      Return "VIEW_UNKNOWN_QUANTITY_2"
+		    Case ColumnsEnum.ViewAddPaymentInfoQuantity2
+		      Return "VIEW_ADD_PAYMENT_INFO_QUANTITY_2"
+		    Case ColumnsEnum.ViewAddToWishlistQuantity2
+		      Return "VIEW_ADD_TO_WISHLIST_QUANTITY_2"
+		    Case ColumnsEnum.ViewInitiateCheckoutQuantity2
+		      Return "VIEW_INITIATE_CHECKOUT_QUANTITY_2"
+		    Case ColumnsEnum.ViewSubscribeQuantity2
+		      Return "VIEW_SUBSCRIBE_QUANTITY_2"
+		    Case ColumnsEnum.ViewViewContentQuantity2
+		      Return "VIEW_VIEW_CONTENT_QUANTITY_2"
 		    Case ColumnsEnum.ConversionsQuantity2
 		      Return "CONVERSIONS_QUANTITY_2"
 		    Case ColumnsEnum.TotalEngagementPageVisit
@@ -2579,6 +4173,16 @@ Protected Class TemplateResponse
 		      Return "TOTAL_ENGAGEMENT_APP_INSTALL"
 		    Case ColumnsEnum.TotalEngagementUnknown
 		      Return "TOTAL_ENGAGEMENT_UNKNOWN"
+		    Case ColumnsEnum.TotalEngagementAddPaymentInfo
+		      Return "TOTAL_ENGAGEMENT_ADD_PAYMENT_INFO"
+		    Case ColumnsEnum.TotalEngagementAddToWishlist
+		      Return "TOTAL_ENGAGEMENT_ADD_TO_WISHLIST"
+		    Case ColumnsEnum.TotalEngagementInitiateCheckout
+		      Return "TOTAL_ENGAGEMENT_INITIATE_CHECKOUT"
+		    Case ColumnsEnum.TotalEngagementSubscribe
+		      Return "TOTAL_ENGAGEMENT_SUBSCRIBE"
+		    Case ColumnsEnum.TotalEngagementViewContent
+		      Return "TOTAL_ENGAGEMENT_VIEW_CONTENT"
 		    Case ColumnsEnum.TotalClickPageVisit
 		      Return "TOTAL_CLICK_PAGE_VISIT"
 		    Case ColumnsEnum.TotalClickSignup
@@ -2601,6 +4205,16 @@ Protected Class TemplateResponse
 		      Return "TOTAL_CLICK_APP_INSTALL"
 		    Case ColumnsEnum.TotalClickUnknown
 		      Return "TOTAL_CLICK_UNKNOWN"
+		    Case ColumnsEnum.TotalClickAddPaymentInfo
+		      Return "TOTAL_CLICK_ADD_PAYMENT_INFO"
+		    Case ColumnsEnum.TotalClickAddToWishlist
+		      Return "TOTAL_CLICK_ADD_TO_WISHLIST"
+		    Case ColumnsEnum.TotalClickInitiateCheckout
+		      Return "TOTAL_CLICK_INITIATE_CHECKOUT"
+		    Case ColumnsEnum.TotalClickSubscribe
+		      Return "TOTAL_CLICK_SUBSCRIBE"
+		    Case ColumnsEnum.TotalClickViewContent
+		      Return "TOTAL_CLICK_VIEW_CONTENT"
 		    Case ColumnsEnum.TotalViewPageVisit
 		      Return "TOTAL_VIEW_PAGE_VISIT"
 		    Case ColumnsEnum.TotalViewSignup
@@ -2623,6 +4237,16 @@ Protected Class TemplateResponse
 		      Return "TOTAL_VIEW_APP_INSTALL"
 		    Case ColumnsEnum.TotalViewUnknown
 		      Return "TOTAL_VIEW_UNKNOWN"
+		    Case ColumnsEnum.TotalViewAddPaymentInfo
+		      Return "TOTAL_VIEW_ADD_PAYMENT_INFO"
+		    Case ColumnsEnum.TotalViewAddToWishlist
+		      Return "TOTAL_VIEW_ADD_TO_WISHLIST"
+		    Case ColumnsEnum.TotalViewInitiateCheckout
+		      Return "TOTAL_VIEW_INITIATE_CHECKOUT"
+		    Case ColumnsEnum.TotalViewSubscribe
+		      Return "TOTAL_VIEW_SUBSCRIBE"
+		    Case ColumnsEnum.TotalViewViewContent
+		      Return "TOTAL_VIEW_VIEW_CONTENT"
 		    Case ColumnsEnum.TotalConversions
 		      Return "TOTAL_CONVERSIONS"
 		    Case ColumnsEnum.TotalWebConversions
@@ -2671,6 +4295,26 @@ Protected Class TemplateResponse
 		      Return "TOTAL_ENGAGEMENT_APP_INSTALL_VALUE_IN_MICRO_DOLLAR"
 		    Case ColumnsEnum.TotalEngagementUnknownValueInMicroDollar
 		      Return "TOTAL_ENGAGEMENT_UNKNOWN_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalEngagementAddPaymentInfoValueInMicroDollar
+		      Return "TOTAL_ENGAGEMENT_ADD_PAYMENT_INFO_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalEngagementAddPaymentInfoValueInDollar
+		      Return "TOTAL_ENGAGEMENT_ADD_PAYMENT_INFO_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalEngagementAddToWishlistValueInMicroDollar
+		      Return "TOTAL_ENGAGEMENT_ADD_TO_WISHLIST_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalEngagementAddToWishlistValueInDollar
+		      Return "TOTAL_ENGAGEMENT_ADD_TO_WISHLIST_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalEngagementInitiateCheckoutValueInMicroDollar
+		      Return "TOTAL_ENGAGEMENT_INITIATE_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalEngagementInitiateCheckoutValueInDollar
+		      Return "TOTAL_ENGAGEMENT_INITIATE_CHECKOUT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalEngagementSubscribeValueInMicroDollar
+		      Return "TOTAL_ENGAGEMENT_SUBSCRIBE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalEngagementSubscribeValueInDollar
+		      Return "TOTAL_ENGAGEMENT_SUBSCRIBE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalEngagementViewContentValueInMicroDollar
+		      Return "TOTAL_ENGAGEMENT_VIEW_CONTENT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalEngagementViewContentValueInDollar
+		      Return "TOTAL_ENGAGEMENT_VIEW_CONTENT_VALUE_IN_DOLLAR"
 		    Case ColumnsEnum.TotalClickPageVisitValueInMicroDollar
 		      Return "TOTAL_CLICK_PAGE_VISIT_VALUE_IN_MICRO_DOLLAR"
 		    Case ColumnsEnum.TotalClickPageVisitValueInDollar
@@ -2711,6 +4355,26 @@ Protected Class TemplateResponse
 		      Return "TOTAL_CLICK_APP_INSTALL_VALUE_IN_MICRO_DOLLAR"
 		    Case ColumnsEnum.TotalClickUnknownValueInMicroDollar
 		      Return "TOTAL_CLICK_UNKNOWN_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalClickAddPaymentInfoValueInMicroDollar
+		      Return "TOTAL_CLICK_ADD_PAYMENT_INFO_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalClickAddPaymentInfoValueInDollar
+		      Return "TOTAL_CLICK_ADD_PAYMENT_INFO_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalClickAddToWishlistValueInMicroDollar
+		      Return "TOTAL_CLICK_ADD_TO_WISHLIST_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalClickAddToWishlistValueInDollar
+		      Return "TOTAL_CLICK_ADD_TO_WISHLIST_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalClickInitiateCheckoutValueInMicroDollar
+		      Return "TOTAL_CLICK_INITIATE_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalClickInitiateCheckoutValueInDollar
+		      Return "TOTAL_CLICK_INITIATE_CHECKOUT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalClickSubscribeValueInMicroDollar
+		      Return "TOTAL_CLICK_SUBSCRIBE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalClickSubscribeValueInDollar
+		      Return "TOTAL_CLICK_SUBSCRIBE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalClickViewContentValueInMicroDollar
+		      Return "TOTAL_CLICK_VIEW_CONTENT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalClickViewContentValueInDollar
+		      Return "TOTAL_CLICK_VIEW_CONTENT_VALUE_IN_DOLLAR"
 		    Case ColumnsEnum.TotalViewPageVisitValueInMicroDollar
 		      Return "TOTAL_VIEW_PAGE_VISIT_VALUE_IN_MICRO_DOLLAR"
 		    Case ColumnsEnum.TotalViewPageVisitValueInDollar
@@ -2751,6 +4415,26 @@ Protected Class TemplateResponse
 		      Return "TOTAL_VIEW_APP_INSTALL_VALUE_IN_MICRO_DOLLAR"
 		    Case ColumnsEnum.TotalViewUnknownValueInMicroDollar
 		      Return "TOTAL_VIEW_UNKNOWN_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalViewAddPaymentInfoValueInMicroDollar
+		      Return "TOTAL_VIEW_ADD_PAYMENT_INFO_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalViewAddPaymentInfoValueInDollar
+		      Return "TOTAL_VIEW_ADD_PAYMENT_INFO_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalViewAddToWishlistValueInMicroDollar
+		      Return "TOTAL_VIEW_ADD_TO_WISHLIST_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalViewAddToWishlistValueInDollar
+		      Return "TOTAL_VIEW_ADD_TO_WISHLIST_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalViewInitiateCheckoutValueInMicroDollar
+		      Return "TOTAL_VIEW_INITIATE_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalViewInitiateCheckoutValueInDollar
+		      Return "TOTAL_VIEW_INITIATE_CHECKOUT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalViewSubscribeValueInMicroDollar
+		      Return "TOTAL_VIEW_SUBSCRIBE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalViewSubscribeValueInDollar
+		      Return "TOTAL_VIEW_SUBSCRIBE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalViewViewContentValueInMicroDollar
+		      Return "TOTAL_VIEW_VIEW_CONTENT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalViewViewContentValueInDollar
+		      Return "TOTAL_VIEW_VIEW_CONTENT_VALUE_IN_DOLLAR"
 		    Case ColumnsEnum.TotalConversionsValueInMicroDollar
 		      Return "TOTAL_CONVERSIONS_VALUE_IN_MICRO_DOLLAR"
 		    Case ColumnsEnum.TotalConversionsValueInDollar
@@ -2777,6 +4461,16 @@ Protected Class TemplateResponse
 		      Return "TOTAL_ENGAGEMENT_APP_INSTALL_QUANTITY"
 		    Case ColumnsEnum.TotalEngagementUnknownQuantity
 		      Return "TOTAL_ENGAGEMENT_UNKNOWN_QUANTITY"
+		    Case ColumnsEnum.TotalEngagementAddPaymentInfoQuantity
+		      Return "TOTAL_ENGAGEMENT_ADD_PAYMENT_INFO_QUANTITY"
+		    Case ColumnsEnum.TotalEngagementAddToWishlistQuantity
+		      Return "TOTAL_ENGAGEMENT_ADD_TO_WISHLIST_QUANTITY"
+		    Case ColumnsEnum.TotalEngagementInitiateCheckoutQuantity
+		      Return "TOTAL_ENGAGEMENT_INITIATE_CHECKOUT_QUANTITY"
+		    Case ColumnsEnum.TotalEngagementSubscribeQuantity
+		      Return "TOTAL_ENGAGEMENT_SUBSCRIBE_QUANTITY"
+		    Case ColumnsEnum.TotalEngagementViewContentQuantity
+		      Return "TOTAL_ENGAGEMENT_VIEW_CONTENT_QUANTITY"
 		    Case ColumnsEnum.TotalClickPageVisitQuantity
 		      Return "TOTAL_CLICK_PAGE_VISIT_QUANTITY"
 		    Case ColumnsEnum.TotalClickSignupQuantity
@@ -2799,6 +4493,16 @@ Protected Class TemplateResponse
 		      Return "TOTAL_CLICK_APP_INSTALL_QUANTITY"
 		    Case ColumnsEnum.TotalClickUnknownQuantity
 		      Return "TOTAL_CLICK_UNKNOWN_QUANTITY"
+		    Case ColumnsEnum.TotalClickAddPaymentInfoQuantity
+		      Return "TOTAL_CLICK_ADD_PAYMENT_INFO_QUANTITY"
+		    Case ColumnsEnum.TotalClickAddToWishlistQuantity
+		      Return "TOTAL_CLICK_ADD_TO_WISHLIST_QUANTITY"
+		    Case ColumnsEnum.TotalClickInitiateCheckoutQuantity
+		      Return "TOTAL_CLICK_INITIATE_CHECKOUT_QUANTITY"
+		    Case ColumnsEnum.TotalClickSubscribeQuantity
+		      Return "TOTAL_CLICK_SUBSCRIBE_QUANTITY"
+		    Case ColumnsEnum.TotalClickViewContentQuantity
+		      Return "TOTAL_CLICK_VIEW_CONTENT_QUANTITY"
 		    Case ColumnsEnum.TotalViewPageVisitQuantity
 		      Return "TOTAL_VIEW_PAGE_VISIT_QUANTITY"
 		    Case ColumnsEnum.TotalViewSignupQuantity
@@ -2821,6 +4525,16 @@ Protected Class TemplateResponse
 		      Return "TOTAL_VIEW_APP_INSTALL_QUANTITY"
 		    Case ColumnsEnum.TotalViewUnknownQuantity
 		      Return "TOTAL_VIEW_UNKNOWN_QUANTITY"
+		    Case ColumnsEnum.TotalViewAddPaymentInfoQuantity
+		      Return "TOTAL_VIEW_ADD_PAYMENT_INFO_QUANTITY"
+		    Case ColumnsEnum.TotalViewAddToWishlistQuantity
+		      Return "TOTAL_VIEW_ADD_TO_WISHLIST_QUANTITY"
+		    Case ColumnsEnum.TotalViewInitiateCheckoutQuantity
+		      Return "TOTAL_VIEW_INITIATE_CHECKOUT_QUANTITY"
+		    Case ColumnsEnum.TotalViewSubscribeQuantity
+		      Return "TOTAL_VIEW_SUBSCRIBE_QUANTITY"
+		    Case ColumnsEnum.TotalViewViewContentQuantity
+		      Return "TOTAL_VIEW_VIEW_CONTENT_QUANTITY"
 		    Case ColumnsEnum.TotalConversionsQuantity
 		      Return "TOTAL_CONVERSIONS_QUANTITY"
 		    Case ColumnsEnum.CostPerConversionInDollar
@@ -2867,6 +4581,14 @@ Protected Class TemplateResponse
 		      Return "CPI_IN_DOLLAR"
 		    Case ColumnsEnum.EcpiInDollar
 		      Return "ECPI_IN_DOLLAR"
+		    Case ColumnsEnum.InappSkanAppInstall
+		      Return "INAPP_SKAN_APP_INSTALL"
+		    Case ColumnsEnum.InappSkanAssistedAppInstall
+		      Return "INAPP_SKAN_ASSISTED_APP_INSTALL"
+		    Case ColumnsEnum.InappSkanAppInstallCostPerAction
+		      Return "INAPP_SKAN_APP_INSTALL_COST_PER_ACTION"
+		    Case ColumnsEnum.InappSkanAppInstallConversionRate
+		      Return "INAPP_SKAN_APP_INSTALL_CONVERSION_RATE"
 		    Case ColumnsEnum.OnsiteCheckoutsCpaBillable1
 		      Return "ONSITE_CHECKOUTS_CPA_BILLABLE_1"
 		    Case ColumnsEnum.OnsiteCheckoutsCpaBillable2
@@ -3269,6 +4991,16 @@ Protected Class TemplateResponse
 		      Return "TOTAL_APP_INSTALL"
 		    Case ColumnsEnum.TotalUnknown
 		      Return "TOTAL_UNKNOWN"
+		    Case ColumnsEnum.TotalAddPaymentInfo
+		      Return "TOTAL_ADD_PAYMENT_INFO"
+		    Case ColumnsEnum.TotalAddToWishlist
+		      Return "TOTAL_ADD_TO_WISHLIST"
+		    Case ColumnsEnum.TotalInitiateCheckout
+		      Return "TOTAL_INITIATE_CHECKOUT"
+		    Case ColumnsEnum.TotalSubscribe
+		      Return "TOTAL_SUBSCRIBE"
+		    Case ColumnsEnum.TotalViewContent
+		      Return "TOTAL_VIEW_CONTENT"
 		    Case ColumnsEnum.TotalPageVisitValueInMicroDollar
 		      Return "TOTAL_PAGE_VISIT_VALUE_IN_MICRO_DOLLAR"
 		    Case ColumnsEnum.TotalSignupValueInMicroDollar
@@ -3291,6 +5023,16 @@ Protected Class TemplateResponse
 		      Return "TOTAL_APP_INSTALL_VALUE_IN_MICRO_DOLLAR"
 		    Case ColumnsEnum.TotalUnknownValueInMicroDollar
 		      Return "TOTAL_UNKNOWN_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalAddPaymentInfoValueInMicroDollar
+		      Return "TOTAL_ADD_PAYMENT_INFO_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalAddToWishlistValueInMicroDollar
+		      Return "TOTAL_ADD_TO_WISHLIST_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInitiateCheckoutValueInMicroDollar
+		      Return "TOTAL_INITIATE_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalSubscribeValueInMicroDollar
+		      Return "TOTAL_SUBSCRIBE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalViewContentValueInMicroDollar
+		      Return "TOTAL_VIEW_CONTENT_VALUE_IN_MICRO_DOLLAR"
 		    Case ColumnsEnum.AveragePageVisitValueInMicroDollar
 		      Return "AVERAGE_PAGE_VISIT_VALUE_IN_MICRO_DOLLAR"
 		    Case ColumnsEnum.AverageSignupValueInMicroDollar
@@ -3311,6 +5053,16 @@ Protected Class TemplateResponse
 		      Return "AVERAGE_VIEW_CATEGORY_VALUE_IN_MICRO_DOLLAR"
 		    Case ColumnsEnum.AverageUnknownValueInMicroDollar
 		      Return "AVERAGE_UNKNOWN_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.AverageAddPaymentInfoValueInMicroDollar
+		      Return "AVERAGE_ADD_PAYMENT_INFO_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.AverageAddToWishlistValueInMicroDollar
+		      Return "AVERAGE_ADD_TO_WISHLIST_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.AverageInitiateCheckoutValueInMicroDollar
+		      Return "AVERAGE_INITIATE_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.AverageSubscribeValueInMicroDollar
+		      Return "AVERAGE_SUBSCRIBE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.AverageViewContentValueInMicroDollar
+		      Return "AVERAGE_VIEW_CONTENT_VALUE_IN_MICRO_DOLLAR"
 		    Case ColumnsEnum.AveragePageVisitValueInMicroUsDollar
 		      Return "AVERAGE_PAGE_VISIT_VALUE_IN_MICRO_US_DOLLAR"
 		    Case ColumnsEnum.AverageSignupValueInMicroUsDollar
@@ -3331,6 +5083,16 @@ Protected Class TemplateResponse
 		      Return "AVERAGE_VIEW_CATEGORY_VALUE_IN_MICRO_US_DOLLAR"
 		    Case ColumnsEnum.AverageUnknownValueInMicroUsDollar
 		      Return "AVERAGE_UNKNOWN_VALUE_IN_MICRO_US_DOLLAR"
+		    Case ColumnsEnum.AverageAddPaymentInfoValueInMicroUsDollar
+		      Return "AVERAGE_ADD_PAYMENT_INFO_VALUE_IN_MICRO_US_DOLLAR"
+		    Case ColumnsEnum.AverageAddToWishlistValueInMicroUsDollar
+		      Return "AVERAGE_ADD_TO_WISHLIST_VALUE_IN_MICRO_US_DOLLAR"
+		    Case ColumnsEnum.AverageInitiateCheckoutValueInMicroUsDollar
+		      Return "AVERAGE_INITIATE_CHECKOUT_VALUE_IN_MICRO_US_DOLLAR"
+		    Case ColumnsEnum.AverageSubscribeValueInMicroUsDollar
+		      Return "AVERAGE_SUBSCRIBE_VALUE_IN_MICRO_US_DOLLAR"
+		    Case ColumnsEnum.AverageViewContentValueInMicroUsDollar
+		      Return "AVERAGE_VIEW_CONTENT_VALUE_IN_MICRO_US_DOLLAR"
 		    Case ColumnsEnum.TotalPageVisitValueInMicroUsDollar
 		      Return "TOTAL_PAGE_VISIT_VALUE_IN_MICRO_US_DOLLAR"
 		    Case ColumnsEnum.TotalSignupValueInMicroUsDollar
@@ -3351,6 +5113,16 @@ Protected Class TemplateResponse
 		      Return "TOTAL_VIEW_CATEGORY_VALUE_IN_MICRO_US_DOLLAR"
 		    Case ColumnsEnum.TotalUnknownValueInMicroUsDollar
 		      Return "TOTAL_UNKNOWN_VALUE_IN_MICRO_US_DOLLAR"
+		    Case ColumnsEnum.TotalAddPaymentInfoValueInMicroUsDollar
+		      Return "TOTAL_ADD_PAYMENT_INFO_VALUE_IN_MICRO_US_DOLLAR"
+		    Case ColumnsEnum.TotalAddToWishlistValueInMicroUsDollar
+		      Return "TOTAL_ADD_TO_WISHLIST_VALUE_IN_MICRO_US_DOLLAR"
+		    Case ColumnsEnum.TotalInitiateCheckoutValueInMicroUsDollar
+		      Return "TOTAL_INITIATE_CHECKOUT_VALUE_IN_MICRO_US_DOLLAR"
+		    Case ColumnsEnum.TotalSubscribeValueInMicroUsDollar
+		      Return "TOTAL_SUBSCRIBE_VALUE_IN_MICRO_US_DOLLAR"
+		    Case ColumnsEnum.TotalViewContentValueInMicroUsDollar
+		      Return "TOTAL_VIEW_CONTENT_VALUE_IN_MICRO_US_DOLLAR"
 		    Case ColumnsEnum.TotalPageVisitQuantity
 		      Return "TOTAL_PAGE_VISIT_QUANTITY"
 		    Case ColumnsEnum.TotalSignupQuantity
@@ -3373,6 +5145,16 @@ Protected Class TemplateResponse
 		      Return "TOTAL_APP_INSTALL_QUANTITY"
 		    Case ColumnsEnum.TotalUnknownQuantity
 		      Return "TOTAL_UNKNOWN_QUANTITY"
+		    Case ColumnsEnum.TotalAddPaymentInfoQuantity
+		      Return "TOTAL_ADD_PAYMENT_INFO_QUANTITY"
+		    Case ColumnsEnum.TotalAddToWishlistQuantity
+		      Return "TOTAL_ADD_TO_WISHLIST_QUANTITY"
+		    Case ColumnsEnum.TotalInitiateCheckoutQuantity
+		      Return "TOTAL_INITIATE_CHECKOUT_QUANTITY"
+		    Case ColumnsEnum.TotalSubscribeQuantity
+		      Return "TOTAL_SUBSCRIBE_QUANTITY"
+		    Case ColumnsEnum.TotalViewContentQuantity
+		      Return "TOTAL_VIEW_CONTENT_QUANTITY"
 		    Case ColumnsEnum.TotalPageVisitValueInDollar
 		      Return "TOTAL_PAGE_VISIT_VALUE_IN_DOLLAR"
 		    Case ColumnsEnum.TotalSignupValueInDollar
@@ -3395,6 +5177,16 @@ Protected Class TemplateResponse
 		      Return "TOTAL_APP_INSTALL_VALUE_IN_DOLLAR"
 		    Case ColumnsEnum.TotalUnknownValueInDollar
 		      Return "TOTAL_UNKNOWN_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalAddPaymentInfoValueInDollar
+		      Return "TOTAL_ADD_PAYMENT_INFO_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalAddToWishlistValueInDollar
+		      Return "TOTAL_ADD_TO_WISHLIST_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInitiateCheckoutValueInDollar
+		      Return "TOTAL_INITIATE_CHECKOUT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalSubscribeValueInDollar
+		      Return "TOTAL_SUBSCRIBE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalViewContentValueInDollar
+		      Return "TOTAL_VIEW_CONTENT_VALUE_IN_DOLLAR"
 		    Case ColumnsEnum.PageVisitCostPerAction
 		      Return "PAGE_VISIT_COST_PER_ACTION"
 		    Case ColumnsEnum.SignupCostPerAction
@@ -3419,6 +5211,16 @@ Protected Class TemplateResponse
 		      Return "UNKNOWN_COST_PER_ACTION"
 		    Case ColumnsEnum.AdGroupCpaInMicroCurrency
 		      Return "AD_GROUP_CPA_IN_MICRO_CURRENCY"
+		    Case ColumnsEnum.AddPaymentInfoCostPerAction
+		      Return "ADD_PAYMENT_INFO_COST_PER_ACTION"
+		    Case ColumnsEnum.AddToWishlistCostPerAction
+		      Return "ADD_TO_WISHLIST_COST_PER_ACTION"
+		    Case ColumnsEnum.InitiateCheckoutCostPerAction
+		      Return "INITIATE_CHECKOUT_COST_PER_ACTION"
+		    Case ColumnsEnum.SubscribeCostPerAction
+		      Return "SUBSCRIBE_COST_PER_ACTION"
+		    Case ColumnsEnum.ViewContentCostPerAction
+		      Return "VIEW_CONTENT_COST_PER_ACTION"
 		    Case ColumnsEnum.PageVisitCostPerActionInUsDollar
 		      Return "PAGE_VISIT_COST_PER_ACTION_IN_US_DOLLAR"
 		    Case ColumnsEnum.SignupCostPerActionInUsDollar
@@ -3439,6 +5241,16 @@ Protected Class TemplateResponse
 		      Return "VIEW_CATEGORY_COST_PER_ACTION_IN_US_DOLLAR"
 		    Case ColumnsEnum.UnknownCostPerActionInUsDollar
 		      Return "UNKNOWN_COST_PER_ACTION_IN_US_DOLLAR"
+		    Case ColumnsEnum.AddPaymentInfoCostPerActionInUsDollar
+		      Return "ADD_PAYMENT_INFO_COST_PER_ACTION_IN_US_DOLLAR"
+		    Case ColumnsEnum.AddToWishlistCostPerActionInUsDollar
+		      Return "ADD_TO_WISHLIST_COST_PER_ACTION_IN_US_DOLLAR"
+		    Case ColumnsEnum.InitiateCheckoutCostPerActionInUsDollar
+		      Return "INITIATE_CHECKOUT_COST_PER_ACTION_IN_US_DOLLAR"
+		    Case ColumnsEnum.SubscribeCostPerActionInUsDollar
+		      Return "SUBSCRIBE_COST_PER_ACTION_IN_US_DOLLAR"
+		    Case ColumnsEnum.ViewContentCostPerActionInUsDollar
+		      Return "VIEW_CONTENT_COST_PER_ACTION_IN_US_DOLLAR"
 		    Case ColumnsEnum.PageVisitRoas
 		      Return "PAGE_VISIT_ROAS"
 		    Case ColumnsEnum.SignupRoas
@@ -3469,6 +5281,16 @@ Protected Class TemplateResponse
 		      Return "ENGAGEMENT_ROAS"
 		    Case ColumnsEnum.ViewRoas
 		      Return "VIEW_ROAS"
+		    Case ColumnsEnum.AddPaymentInfoRoas
+		      Return "ADD_PAYMENT_INFO_ROAS"
+		    Case ColumnsEnum.AddToWishlistRoas
+		      Return "ADD_TO_WISHLIST_ROAS"
+		    Case ColumnsEnum.InitiateCheckoutRoas
+		      Return "INITIATE_CHECKOUT_ROAS"
+		    Case ColumnsEnum.SubscribeRoas
+		      Return "SUBSCRIBE_ROAS"
+		    Case ColumnsEnum.ViewContentRoas
+		      Return "VIEW_CONTENT_ROAS"
 		    Case ColumnsEnum.Hour
 		      Return "HOUR"
 		    Case ColumnsEnum.BoardEngagement
@@ -3499,6 +5321,10 @@ Protected Class TemplateResponse
 		      Return "PRODUCT_GROUP_AD_GROUP_NAME"
 		    Case ColumnsEnum.ProductGroupAdGroupStatus
 		      Return "PRODUCT_GROUP_AD_GROUP_STATUS"
+		    Case ColumnsEnum.ProductGroupAdImageTag
+		      Return "PRODUCT_GROUP_AD_IMAGE_TAG"
+		    Case ColumnsEnum.ProductGroupAdVideoTag
+		      Return "PRODUCT_GROUP_AD_VIDEO_TAG"
 		    Case ColumnsEnum.PromotedCatalogProductGroupReferenceId
 		      Return "PROMOTED_CATALOG_PRODUCT_GROUP_REFERENCE_ID"
 		    Case ColumnsEnum.PromotedCatalogProductGroupReferenceName
@@ -3529,8 +5355,12 @@ Protected Class TemplateResponse
 		      Return "PROMOTED_CATALOG_PRODUCT_GROUP_AD_GROUP_STATUS"
 		    Case ColumnsEnum.PromotedCatalogProductGroupTrackingTemplateUrl
 		      Return "PROMOTED_CATALOG_PRODUCT_GROUP_TRACKING_TEMPLATE_URL"
+		    Case ColumnsEnum.PromotedCatalogProductGroupSelectedImageTag
+		      Return "PROMOTED_CATALOG_PRODUCT_GROUP_SELECTED_IMAGE_TAG"
 		    Case ColumnsEnum.Video3secViews1
 		      Return "VIDEO_3SEC_VIEWS_1"
+		    Case ColumnsEnum.Video15secUniqueViews1
+		      Return "VIDEO_15SEC_UNIQUE_VIEWS_1"
 		    Case ColumnsEnum.VideoP0Complete1
 		      Return "VIDEO_P0_COMPLETE_1"
 		    Case ColumnsEnum.VideoP25Complete1
@@ -3559,6 +5389,12 @@ Protected Class TemplateResponse
 		      Return "VIDEO_P97_COMBINED_1"
 		    Case ColumnsEnum.VideoP100Combined1
 		      Return "VIDEO_P100_COMBINED_1"
+		    Case ColumnsEnum.VideoStartsPaid
+		      Return "VIDEO_STARTS_PAID"
+		    Case ColumnsEnum.VideoStartsEarned
+		      Return "VIDEO_STARTS_EARNED"
+		    Case ColumnsEnum.TotalVideoStarts
+		      Return "TOTAL_VIDEO_STARTS"
 		    Case ColumnsEnum.VideoAvgWatchtime1
 		      Return "VIDEO_AVG_WATCHTIME_1"
 		    Case ColumnsEnum.VideoMrcViews1
@@ -3567,6 +5403,8 @@ Protected Class TemplateResponse
 		      Return "VIDEO_VIEW_RATE_1"
 		    Case ColumnsEnum.Video3secViews2
 		      Return "VIDEO_3SEC_VIEWS_2"
+		    Case ColumnsEnum.Video15secUniqueViews2
+		      Return "VIDEO_15SEC_UNIQUE_VIEWS_2"
 		    Case ColumnsEnum.VideoP0Complete2
 		      Return "VIDEO_P0_COMPLETE_2"
 		    Case ColumnsEnum.VideoP25Complete2
@@ -3609,6 +5447,10 @@ Protected Class TemplateResponse
 		      Return "PAID_VIDEO_VIEWABLE_RATE"
 		    Case ColumnsEnum.VideoLength
 		      Return "VIDEO_LENGTH"
+		    Case ColumnsEnum.VideoSpendInMicroDollar
+		      Return "VIDEO_SPEND_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.VideoSpendInDollar
+		      Return "VIDEO_SPEND_IN_DOLLAR"
 		    Case ColumnsEnum.CpvInMicroDollar
 		      Return "CPV_IN_MICRO_DOLLAR"
 		    Case ColumnsEnum.CpvInDollar
@@ -3643,6 +5485,8 @@ Protected Class TemplateResponse
 		      Return "ECPCV_P95_IN_MICRO_DOLLAR"
 		    Case ColumnsEnum.TotalVideo3secViews
 		      Return "TOTAL_VIDEO_3SEC_VIEWS"
+		    Case ColumnsEnum.TotalVideo15secUniqueViews
+		      Return "TOTAL_VIDEO_15SEC_UNIQUE_VIEWS"
 		    Case ColumnsEnum.TotalVideoP0Complete
 		      Return "TOTAL_VIDEO_P0_COMPLETE"
 		    Case ColumnsEnum.TotalVideoP25Complete
@@ -3707,6 +5551,12 @@ Protected Class TemplateResponse
 		      Return "VIDEO_AVG_WATCHTIME_IN_SECOND_2"
 		    Case ColumnsEnum.TotalVideoAvgWatchtimeInSecond
 		      Return "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND"
+		    Case ColumnsEnum.VideoAvgWatchtimeInSecondVideoStartsPaid
+		      Return "VIDEO_AVG_WATCHTIME_IN_SECOND_VIDEO_STARTS_PAID"
+		    Case ColumnsEnum.VideoAvgWatchtimeInSecondVideoStartsEarned
+		      Return "VIDEO_AVG_WATCHTIME_IN_SECOND_VIDEO_STARTS_EARNED"
+		    Case ColumnsEnum.TotalVideoAvgWatchtimeInSecondVideoStarts
+		      Return "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND_VIDEO_STARTS"
 		    Case ColumnsEnum.DeliveryStatusNoFanout
 		      Return "DELIVERY_STATUS_NO_FANOUT"
 		    Case ColumnsEnum.DeliveryStatusWithFanout
@@ -3845,6 +5695,8 @@ Protected Class TemplateResponse
 		      Return "AD_GROUP_HOLDOUT_EXPERIMENT"
 		    Case ColumnsEnum.PinPromotionHoldoutExperiment
 		      Return "PIN_PROMOTION_HOLDOUT_EXPERIMENT"
+		    Case ColumnsEnum.ProductGroupHoldoutExperiment
+		      Return "PRODUCT_GROUP_HOLDOUT_EXPERIMENT"
 		    Case ColumnsEnum.MultiObjectiveResult
 		      Return "MULTI_OBJECTIVE_RESULT"
 		    Case ColumnsEnum.MultiObjectiveCost
@@ -4483,6 +6335,430 @@ Protected Class TemplateResponse
 		      Return "TOTAL_INAPP_VIEW_APP_INSTALL_VALUE_IN_MICRO_DOLLAR"
 		    Case ColumnsEnum.TotalInappViewAppInstallValueInDollar
 		      Return "TOTAL_INAPP_VIEW_APP_INSTALL_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalAppInstallConversionRate
+		      Return "TOTAL_APP_INSTALL_CONVERSION_RATE"
+		    Case ColumnsEnum.TotalInappAppInstallConversionRate
+		      Return "TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE"
+		    Case ColumnsEnum.WebAddPaymentInfoCostPerAction
+		      Return "WEB_ADD_PAYMENT_INFO_COST_PER_ACTION"
+		    Case ColumnsEnum.WebAddPaymentInfoRoas
+		      Return "WEB_ADD_PAYMENT_INFO_ROAS"
+		    Case ColumnsEnum.TotalWebAddPaymentInfo
+		      Return "TOTAL_WEB_ADD_PAYMENT_INFO"
+		    Case ColumnsEnum.TotalWebAddPaymentInfoValueInMicroDollar
+		      Return "TOTAL_WEB_ADD_PAYMENT_INFO_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebAddPaymentInfoValueInDollar
+		      Return "TOTAL_WEB_ADD_PAYMENT_INFO_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebClickAddPaymentInfo
+		      Return "TOTAL_WEB_CLICK_ADD_PAYMENT_INFO"
+		    Case ColumnsEnum.TotalWebClickAddPaymentInfoValueInMicroDollar
+		      Return "TOTAL_WEB_CLICK_ADD_PAYMENT_INFO_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebClickAddPaymentInfoValueInDollar
+		      Return "TOTAL_WEB_CLICK_ADD_PAYMENT_INFO_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebEngagementAddPaymentInfo
+		      Return "TOTAL_WEB_ENGAGEMENT_ADD_PAYMENT_INFO"
+		    Case ColumnsEnum.TotalWebEngagementAddPaymentInfoValueInMicroDollar
+		      Return "TOTAL_WEB_ENGAGEMENT_ADD_PAYMENT_INFO_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebEngagementAddPaymentInfoValueInDollar
+		      Return "TOTAL_WEB_ENGAGEMENT_ADD_PAYMENT_INFO_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebViewAddPaymentInfo
+		      Return "TOTAL_WEB_VIEW_ADD_PAYMENT_INFO"
+		    Case ColumnsEnum.TotalWebViewAddPaymentInfoValueInMicroDollar
+		      Return "TOTAL_WEB_VIEW_ADD_PAYMENT_INFO_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebViewAddPaymentInfoValueInDollar
+		      Return "TOTAL_WEB_VIEW_ADD_PAYMENT_INFO_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.InappAddPaymentInfoCostPerAction
+		      Return "INAPP_ADD_PAYMENT_INFO_COST_PER_ACTION"
+		    Case ColumnsEnum.InappAddPaymentInfoRoas
+		      Return "INAPP_ADD_PAYMENT_INFO_ROAS"
+		    Case ColumnsEnum.TotalInappAddPaymentInfo
+		      Return "TOTAL_INAPP_ADD_PAYMENT_INFO"
+		    Case ColumnsEnum.TotalInappAddPaymentInfoValueInMicroDollar
+		      Return "TOTAL_INAPP_ADD_PAYMENT_INFO_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappAddPaymentInfoValueInDollar
+		      Return "TOTAL_INAPP_ADD_PAYMENT_INFO_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappClickAddPaymentInfo
+		      Return "TOTAL_INAPP_CLICK_ADD_PAYMENT_INFO"
+		    Case ColumnsEnum.TotalInappClickAddPaymentInfoValueInMicroDollar
+		      Return "TOTAL_INAPP_CLICK_ADD_PAYMENT_INFO_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappClickAddPaymentInfoValueInDollar
+		      Return "TOTAL_INAPP_CLICK_ADD_PAYMENT_INFO_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappEngagementAddPaymentInfo
+		      Return "TOTAL_INAPP_ENGAGEMENT_ADD_PAYMENT_INFO"
+		    Case ColumnsEnum.TotalInappEngagementAddPaymentInfoValueInMicroDollar
+		      Return "TOTAL_INAPP_ENGAGEMENT_ADD_PAYMENT_INFO_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappEngagementAddPaymentInfoValueInDollar
+		      Return "TOTAL_INAPP_ENGAGEMENT_ADD_PAYMENT_INFO_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappViewAddPaymentInfo
+		      Return "TOTAL_INAPP_VIEW_ADD_PAYMENT_INFO"
+		    Case ColumnsEnum.TotalInappViewAddPaymentInfoValueInMicroDollar
+		      Return "TOTAL_INAPP_VIEW_ADD_PAYMENT_INFO_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappViewAddPaymentInfoValueInDollar
+		      Return "TOTAL_INAPP_VIEW_ADD_PAYMENT_INFO_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.OfflineAddPaymentInfoCostPerAction
+		      Return "OFFLINE_ADD_PAYMENT_INFO_COST_PER_ACTION"
+		    Case ColumnsEnum.OfflineAddPaymentInfoRoas
+		      Return "OFFLINE_ADD_PAYMENT_INFO_ROAS"
+		    Case ColumnsEnum.TotalOfflineAddPaymentInfo
+		      Return "TOTAL_OFFLINE_ADD_PAYMENT_INFO"
+		    Case ColumnsEnum.TotalOfflineAddPaymentInfoValueInMicroDollar
+		      Return "TOTAL_OFFLINE_ADD_PAYMENT_INFO_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineAddPaymentInfoValueInDollar
+		      Return "TOTAL_OFFLINE_ADD_PAYMENT_INFO_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineClickAddPaymentInfo
+		      Return "TOTAL_OFFLINE_CLICK_ADD_PAYMENT_INFO"
+		    Case ColumnsEnum.TotalOfflineClickAddPaymentInfoValueInMicroDollar
+		      Return "TOTAL_OFFLINE_CLICK_ADD_PAYMENT_INFO_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineClickAddPaymentInfoValueInDollar
+		      Return "TOTAL_OFFLINE_CLICK_ADD_PAYMENT_INFO_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineEngagementAddPaymentInfo
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_ADD_PAYMENT_INFO"
+		    Case ColumnsEnum.TotalOfflineEngagementAddPaymentInfoValueInMicroDollar
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_ADD_PAYMENT_INFO_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineEngagementAddPaymentInfoValueInDollar
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_ADD_PAYMENT_INFO_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineViewAddPaymentInfo
+		      Return "TOTAL_OFFLINE_VIEW_ADD_PAYMENT_INFO"
+		    Case ColumnsEnum.TotalOfflineViewAddPaymentInfoValueInMicroDollar
+		      Return "TOTAL_OFFLINE_VIEW_ADD_PAYMENT_INFO_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineViewAddPaymentInfoValueInDollar
+		      Return "TOTAL_OFFLINE_VIEW_ADD_PAYMENT_INFO_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.WebAddToWishlistCostPerAction
+		      Return "WEB_ADD_TO_WISHLIST_COST_PER_ACTION"
+		    Case ColumnsEnum.WebAddToWishlistRoas
+		      Return "WEB_ADD_TO_WISHLIST_ROAS"
+		    Case ColumnsEnum.TotalWebAddToWishlist
+		      Return "TOTAL_WEB_ADD_TO_WISHLIST"
+		    Case ColumnsEnum.TotalWebAddToWishlistValueInMicroDollar
+		      Return "TOTAL_WEB_ADD_TO_WISHLIST_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebAddToWishlistValueInDollar
+		      Return "TOTAL_WEB_ADD_TO_WISHLIST_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebClickAddToWishlist
+		      Return "TOTAL_WEB_CLICK_ADD_TO_WISHLIST"
+		    Case ColumnsEnum.TotalWebClickAddToWishlistValueInMicroDollar
+		      Return "TOTAL_WEB_CLICK_ADD_TO_WISHLIST_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebClickAddToWishlistValueInDollar
+		      Return "TOTAL_WEB_CLICK_ADD_TO_WISHLIST_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebEngagementAddToWishlist
+		      Return "TOTAL_WEB_ENGAGEMENT_ADD_TO_WISHLIST"
+		    Case ColumnsEnum.TotalWebEngagementAddToWishlistValueInMicroDollar
+		      Return "TOTAL_WEB_ENGAGEMENT_ADD_TO_WISHLIST_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebEngagementAddToWishlistValueInDollar
+		      Return "TOTAL_WEB_ENGAGEMENT_ADD_TO_WISHLIST_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebViewAddToWishlist
+		      Return "TOTAL_WEB_VIEW_ADD_TO_WISHLIST"
+		    Case ColumnsEnum.TotalWebViewAddToWishlistValueInMicroDollar
+		      Return "TOTAL_WEB_VIEW_ADD_TO_WISHLIST_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebViewAddToWishlistValueInDollar
+		      Return "TOTAL_WEB_VIEW_ADD_TO_WISHLIST_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.InappAddToWishlistCostPerAction
+		      Return "INAPP_ADD_TO_WISHLIST_COST_PER_ACTION"
+		    Case ColumnsEnum.InappAddToWishlistRoas
+		      Return "INAPP_ADD_TO_WISHLIST_ROAS"
+		    Case ColumnsEnum.TotalInappAddToWishlist
+		      Return "TOTAL_INAPP_ADD_TO_WISHLIST"
+		    Case ColumnsEnum.TotalInappAddToWishlistValueInMicroDollar
+		      Return "TOTAL_INAPP_ADD_TO_WISHLIST_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappAddToWishlistValueInDollar
+		      Return "TOTAL_INAPP_ADD_TO_WISHLIST_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappClickAddToWishlist
+		      Return "TOTAL_INAPP_CLICK_ADD_TO_WISHLIST"
+		    Case ColumnsEnum.TotalInappClickAddToWishlistValueInMicroDollar
+		      Return "TOTAL_INAPP_CLICK_ADD_TO_WISHLIST_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappClickAddToWishlistValueInDollar
+		      Return "TOTAL_INAPP_CLICK_ADD_TO_WISHLIST_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappEngagementAddToWishlist
+		      Return "TOTAL_INAPP_ENGAGEMENT_ADD_TO_WISHLIST"
+		    Case ColumnsEnum.TotalInappEngagementAddToWishlistValueInMicroDollar
+		      Return "TOTAL_INAPP_ENGAGEMENT_ADD_TO_WISHLIST_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappEngagementAddToWishlistValueInDollar
+		      Return "TOTAL_INAPP_ENGAGEMENT_ADD_TO_WISHLIST_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappViewAddToWishlist
+		      Return "TOTAL_INAPP_VIEW_ADD_TO_WISHLIST"
+		    Case ColumnsEnum.TotalInappViewAddToWishlistValueInMicroDollar
+		      Return "TOTAL_INAPP_VIEW_ADD_TO_WISHLIST_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappViewAddToWishlistValueInDollar
+		      Return "TOTAL_INAPP_VIEW_ADD_TO_WISHLIST_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.OfflineAddToWishlistCostPerAction
+		      Return "OFFLINE_ADD_TO_WISHLIST_COST_PER_ACTION"
+		    Case ColumnsEnum.OfflineAddToWishlistRoas
+		      Return "OFFLINE_ADD_TO_WISHLIST_ROAS"
+		    Case ColumnsEnum.TotalOfflineAddToWishlist
+		      Return "TOTAL_OFFLINE_ADD_TO_WISHLIST"
+		    Case ColumnsEnum.TotalOfflineAddToWishlistValueInMicroDollar
+		      Return "TOTAL_OFFLINE_ADD_TO_WISHLIST_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineAddToWishlistValueInDollar
+		      Return "TOTAL_OFFLINE_ADD_TO_WISHLIST_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineClickAddToWishlist
+		      Return "TOTAL_OFFLINE_CLICK_ADD_TO_WISHLIST"
+		    Case ColumnsEnum.TotalOfflineClickAddToWishlistValueInMicroDollar
+		      Return "TOTAL_OFFLINE_CLICK_ADD_TO_WISHLIST_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineClickAddToWishlistValueInDollar
+		      Return "TOTAL_OFFLINE_CLICK_ADD_TO_WISHLIST_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineEngagementAddToWishlist
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_ADD_TO_WISHLIST"
+		    Case ColumnsEnum.TotalOfflineEngagementAddToWishlistValueInMicroDollar
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_ADD_TO_WISHLIST_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineEngagementAddToWishlistValueInDollar
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_ADD_TO_WISHLIST_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineViewAddToWishlist
+		      Return "TOTAL_OFFLINE_VIEW_ADD_TO_WISHLIST"
+		    Case ColumnsEnum.TotalOfflineViewAddToWishlistValueInMicroDollar
+		      Return "TOTAL_OFFLINE_VIEW_ADD_TO_WISHLIST_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineViewAddToWishlistValueInDollar
+		      Return "TOTAL_OFFLINE_VIEW_ADD_TO_WISHLIST_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.WebInitiateCheckoutCostPerAction
+		      Return "WEB_INITIATE_CHECKOUT_COST_PER_ACTION"
+		    Case ColumnsEnum.WebInitiateCheckoutRoas
+		      Return "WEB_INITIATE_CHECKOUT_ROAS"
+		    Case ColumnsEnum.TotalWebInitiateCheckout
+		      Return "TOTAL_WEB_INITIATE_CHECKOUT"
+		    Case ColumnsEnum.TotalWebInitiateCheckoutValueInMicroDollar
+		      Return "TOTAL_WEB_INITIATE_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebInitiateCheckoutValueInDollar
+		      Return "TOTAL_WEB_INITIATE_CHECKOUT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebClickInitiateCheckout
+		      Return "TOTAL_WEB_CLICK_INITIATE_CHECKOUT"
+		    Case ColumnsEnum.TotalWebClickInitiateCheckoutValueInMicroDollar
+		      Return "TOTAL_WEB_CLICK_INITIATE_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebClickInitiateCheckoutValueInDollar
+		      Return "TOTAL_WEB_CLICK_INITIATE_CHECKOUT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebEngagementInitiateCheckout
+		      Return "TOTAL_WEB_ENGAGEMENT_INITIATE_CHECKOUT"
+		    Case ColumnsEnum.TotalWebEngagementInitiateCheckoutValueInMicroDollar
+		      Return "TOTAL_WEB_ENGAGEMENT_INITIATE_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebEngagementInitiateCheckoutValueInDollar
+		      Return "TOTAL_WEB_ENGAGEMENT_INITIATE_CHECKOUT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebViewInitiateCheckout
+		      Return "TOTAL_WEB_VIEW_INITIATE_CHECKOUT"
+		    Case ColumnsEnum.TotalWebViewInitiateCheckoutValueInMicroDollar
+		      Return "TOTAL_WEB_VIEW_INITIATE_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebViewInitiateCheckoutValueInDollar
+		      Return "TOTAL_WEB_VIEW_INITIATE_CHECKOUT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.InappInitiateCheckoutCostPerAction
+		      Return "INAPP_INITIATE_CHECKOUT_COST_PER_ACTION"
+		    Case ColumnsEnum.InappInitiateCheckoutRoas
+		      Return "INAPP_INITIATE_CHECKOUT_ROAS"
+		    Case ColumnsEnum.TotalInappInitiateCheckout
+		      Return "TOTAL_INAPP_INITIATE_CHECKOUT"
+		    Case ColumnsEnum.TotalInappInitiateCheckoutValueInMicroDollar
+		      Return "TOTAL_INAPP_INITIATE_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappInitiateCheckoutValueInDollar
+		      Return "TOTAL_INAPP_INITIATE_CHECKOUT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappClickInitiateCheckout
+		      Return "TOTAL_INAPP_CLICK_INITIATE_CHECKOUT"
+		    Case ColumnsEnum.TotalInappClickInitiateCheckoutValueInMicroDollar
+		      Return "TOTAL_INAPP_CLICK_INITIATE_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappClickInitiateCheckoutValueInDollar
+		      Return "TOTAL_INAPP_CLICK_INITIATE_CHECKOUT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappEngagementInitiateCheckout
+		      Return "TOTAL_INAPP_ENGAGEMENT_INITIATE_CHECKOUT"
+		    Case ColumnsEnum.TotalInappEngagementInitiateCheckoutValueInMicroDollar
+		      Return "TOTAL_INAPP_ENGAGEMENT_INITIATE_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappEngagementInitiateCheckoutValueInDollar
+		      Return "TOTAL_INAPP_ENGAGEMENT_INITIATE_CHECKOUT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappViewInitiateCheckout
+		      Return "TOTAL_INAPP_VIEW_INITIATE_CHECKOUT"
+		    Case ColumnsEnum.TotalInappViewInitiateCheckoutValueInMicroDollar
+		      Return "TOTAL_INAPP_VIEW_INITIATE_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappViewInitiateCheckoutValueInDollar
+		      Return "TOTAL_INAPP_VIEW_INITIATE_CHECKOUT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.OfflineInitiateCheckoutCostPerAction
+		      Return "OFFLINE_INITIATE_CHECKOUT_COST_PER_ACTION"
+		    Case ColumnsEnum.OfflineInitiateCheckoutRoas
+		      Return "OFFLINE_INITIATE_CHECKOUT_ROAS"
+		    Case ColumnsEnum.TotalOfflineInitiateCheckout
+		      Return "TOTAL_OFFLINE_INITIATE_CHECKOUT"
+		    Case ColumnsEnum.TotalOfflineInitiateCheckoutValueInMicroDollar
+		      Return "TOTAL_OFFLINE_INITIATE_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineInitiateCheckoutValueInDollar
+		      Return "TOTAL_OFFLINE_INITIATE_CHECKOUT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineClickInitiateCheckout
+		      Return "TOTAL_OFFLINE_CLICK_INITIATE_CHECKOUT"
+		    Case ColumnsEnum.TotalOfflineClickInitiateCheckoutValueInMicroDollar
+		      Return "TOTAL_OFFLINE_CLICK_INITIATE_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineClickInitiateCheckoutValueInDollar
+		      Return "TOTAL_OFFLINE_CLICK_INITIATE_CHECKOUT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineEngagementInitiateCheckout
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_INITIATE_CHECKOUT"
+		    Case ColumnsEnum.TotalOfflineEngagementInitiateCheckoutValueInMicroDollar
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_INITIATE_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineEngagementInitiateCheckoutValueInDollar
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_INITIATE_CHECKOUT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineViewInitiateCheckout
+		      Return "TOTAL_OFFLINE_VIEW_INITIATE_CHECKOUT"
+		    Case ColumnsEnum.TotalOfflineViewInitiateCheckoutValueInMicroDollar
+		      Return "TOTAL_OFFLINE_VIEW_INITIATE_CHECKOUT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineViewInitiateCheckoutValueInDollar
+		      Return "TOTAL_OFFLINE_VIEW_INITIATE_CHECKOUT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.WebSubscribeCostPerAction
+		      Return "WEB_SUBSCRIBE_COST_PER_ACTION"
+		    Case ColumnsEnum.WebSubscribeRoas
+		      Return "WEB_SUBSCRIBE_ROAS"
+		    Case ColumnsEnum.TotalWebSubscribe
+		      Return "TOTAL_WEB_SUBSCRIBE"
+		    Case ColumnsEnum.TotalWebSubscribeValueInMicroDollar
+		      Return "TOTAL_WEB_SUBSCRIBE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebSubscribeValueInDollar
+		      Return "TOTAL_WEB_SUBSCRIBE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebClickSubscribe
+		      Return "TOTAL_WEB_CLICK_SUBSCRIBE"
+		    Case ColumnsEnum.TotalWebClickSubscribeValueInMicroDollar
+		      Return "TOTAL_WEB_CLICK_SUBSCRIBE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebClickSubscribeValueInDollar
+		      Return "TOTAL_WEB_CLICK_SUBSCRIBE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebEngagementSubscribe
+		      Return "TOTAL_WEB_ENGAGEMENT_SUBSCRIBE"
+		    Case ColumnsEnum.TotalWebEngagementSubscribeValueInMicroDollar
+		      Return "TOTAL_WEB_ENGAGEMENT_SUBSCRIBE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebEngagementSubscribeValueInDollar
+		      Return "TOTAL_WEB_ENGAGEMENT_SUBSCRIBE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebViewSubscribe
+		      Return "TOTAL_WEB_VIEW_SUBSCRIBE"
+		    Case ColumnsEnum.TotalWebViewSubscribeValueInMicroDollar
+		      Return "TOTAL_WEB_VIEW_SUBSCRIBE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebViewSubscribeValueInDollar
+		      Return "TOTAL_WEB_VIEW_SUBSCRIBE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.InappSubscribeCostPerAction
+		      Return "INAPP_SUBSCRIBE_COST_PER_ACTION"
+		    Case ColumnsEnum.InappSubscribeRoas
+		      Return "INAPP_SUBSCRIBE_ROAS"
+		    Case ColumnsEnum.TotalInappSubscribe
+		      Return "TOTAL_INAPP_SUBSCRIBE"
+		    Case ColumnsEnum.TotalInappSubscribeValueInMicroDollar
+		      Return "TOTAL_INAPP_SUBSCRIBE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappSubscribeValueInDollar
+		      Return "TOTAL_INAPP_SUBSCRIBE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappClickSubscribe
+		      Return "TOTAL_INAPP_CLICK_SUBSCRIBE"
+		    Case ColumnsEnum.TotalInappClickSubscribeValueInMicroDollar
+		      Return "TOTAL_INAPP_CLICK_SUBSCRIBE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappClickSubscribeValueInDollar
+		      Return "TOTAL_INAPP_CLICK_SUBSCRIBE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappEngagementSubscribe
+		      Return "TOTAL_INAPP_ENGAGEMENT_SUBSCRIBE"
+		    Case ColumnsEnum.TotalInappEngagementSubscribeValueInMicroDollar
+		      Return "TOTAL_INAPP_ENGAGEMENT_SUBSCRIBE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappEngagementSubscribeValueInDollar
+		      Return "TOTAL_INAPP_ENGAGEMENT_SUBSCRIBE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappViewSubscribe
+		      Return "TOTAL_INAPP_VIEW_SUBSCRIBE"
+		    Case ColumnsEnum.TotalInappViewSubscribeValueInMicroDollar
+		      Return "TOTAL_INAPP_VIEW_SUBSCRIBE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappViewSubscribeValueInDollar
+		      Return "TOTAL_INAPP_VIEW_SUBSCRIBE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.OfflineSubscribeCostPerAction
+		      Return "OFFLINE_SUBSCRIBE_COST_PER_ACTION"
+		    Case ColumnsEnum.OfflineSubscribeRoas
+		      Return "OFFLINE_SUBSCRIBE_ROAS"
+		    Case ColumnsEnum.TotalOfflineSubscribe
+		      Return "TOTAL_OFFLINE_SUBSCRIBE"
+		    Case ColumnsEnum.TotalOfflineSubscribeValueInMicroDollar
+		      Return "TOTAL_OFFLINE_SUBSCRIBE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineSubscribeValueInDollar
+		      Return "TOTAL_OFFLINE_SUBSCRIBE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineClickSubscribe
+		      Return "TOTAL_OFFLINE_CLICK_SUBSCRIBE"
+		    Case ColumnsEnum.TotalOfflineClickSubscribeValueInMicroDollar
+		      Return "TOTAL_OFFLINE_CLICK_SUBSCRIBE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineClickSubscribeValueInDollar
+		      Return "TOTAL_OFFLINE_CLICK_SUBSCRIBE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineEngagementSubscribe
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_SUBSCRIBE"
+		    Case ColumnsEnum.TotalOfflineEngagementSubscribeValueInMicroDollar
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_SUBSCRIBE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineEngagementSubscribeValueInDollar
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_SUBSCRIBE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineViewSubscribe
+		      Return "TOTAL_OFFLINE_VIEW_SUBSCRIBE"
+		    Case ColumnsEnum.TotalOfflineViewSubscribeValueInMicroDollar
+		      Return "TOTAL_OFFLINE_VIEW_SUBSCRIBE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineViewSubscribeValueInDollar
+		      Return "TOTAL_OFFLINE_VIEW_SUBSCRIBE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.WebViewContentCostPerAction
+		      Return "WEB_VIEW_CONTENT_COST_PER_ACTION"
+		    Case ColumnsEnum.WebViewContentRoas
+		      Return "WEB_VIEW_CONTENT_ROAS"
+		    Case ColumnsEnum.TotalWebViewContent
+		      Return "TOTAL_WEB_VIEW_CONTENT"
+		    Case ColumnsEnum.TotalWebViewContentValueInMicroDollar
+		      Return "TOTAL_WEB_VIEW_CONTENT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebViewContentValueInDollar
+		      Return "TOTAL_WEB_VIEW_CONTENT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebClickViewContent
+		      Return "TOTAL_WEB_CLICK_VIEW_CONTENT"
+		    Case ColumnsEnum.TotalWebClickViewContentValueInMicroDollar
+		      Return "TOTAL_WEB_CLICK_VIEW_CONTENT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebClickViewContentValueInDollar
+		      Return "TOTAL_WEB_CLICK_VIEW_CONTENT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebEngagementViewContent
+		      Return "TOTAL_WEB_ENGAGEMENT_VIEW_CONTENT"
+		    Case ColumnsEnum.TotalWebEngagementViewContentValueInMicroDollar
+		      Return "TOTAL_WEB_ENGAGEMENT_VIEW_CONTENT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebEngagementViewContentValueInDollar
+		      Return "TOTAL_WEB_ENGAGEMENT_VIEW_CONTENT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebViewViewContent
+		      Return "TOTAL_WEB_VIEW_VIEW_CONTENT"
+		    Case ColumnsEnum.TotalWebViewViewContentValueInMicroDollar
+		      Return "TOTAL_WEB_VIEW_VIEW_CONTENT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebViewViewContentValueInDollar
+		      Return "TOTAL_WEB_VIEW_VIEW_CONTENT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.InappViewContentCostPerAction
+		      Return "INAPP_VIEW_CONTENT_COST_PER_ACTION"
+		    Case ColumnsEnum.InappViewContentRoas
+		      Return "INAPP_VIEW_CONTENT_ROAS"
+		    Case ColumnsEnum.TotalInappViewContent
+		      Return "TOTAL_INAPP_VIEW_CONTENT"
+		    Case ColumnsEnum.TotalInappViewContentValueInMicroDollar
+		      Return "TOTAL_INAPP_VIEW_CONTENT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappViewContentValueInDollar
+		      Return "TOTAL_INAPP_VIEW_CONTENT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappClickViewContent
+		      Return "TOTAL_INAPP_CLICK_VIEW_CONTENT"
+		    Case ColumnsEnum.TotalInappClickViewContentValueInMicroDollar
+		      Return "TOTAL_INAPP_CLICK_VIEW_CONTENT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappClickViewContentValueInDollar
+		      Return "TOTAL_INAPP_CLICK_VIEW_CONTENT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappEngagementViewContent
+		      Return "TOTAL_INAPP_ENGAGEMENT_VIEW_CONTENT"
+		    Case ColumnsEnum.TotalInappEngagementViewContentValueInMicroDollar
+		      Return "TOTAL_INAPP_ENGAGEMENT_VIEW_CONTENT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappEngagementViewContentValueInDollar
+		      Return "TOTAL_INAPP_ENGAGEMENT_VIEW_CONTENT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappViewViewContent
+		      Return "TOTAL_INAPP_VIEW_VIEW_CONTENT"
+		    Case ColumnsEnum.TotalInappViewViewContentValueInMicroDollar
+		      Return "TOTAL_INAPP_VIEW_VIEW_CONTENT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappViewViewContentValueInDollar
+		      Return "TOTAL_INAPP_VIEW_VIEW_CONTENT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.OfflineViewContentCostPerAction
+		      Return "OFFLINE_VIEW_CONTENT_COST_PER_ACTION"
+		    Case ColumnsEnum.OfflineViewContentRoas
+		      Return "OFFLINE_VIEW_CONTENT_ROAS"
+		    Case ColumnsEnum.TotalOfflineViewContent
+		      Return "TOTAL_OFFLINE_VIEW_CONTENT"
+		    Case ColumnsEnum.TotalOfflineViewContentValueInMicroDollar
+		      Return "TOTAL_OFFLINE_VIEW_CONTENT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineViewContentValueInDollar
+		      Return "TOTAL_OFFLINE_VIEW_CONTENT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineClickViewContent
+		      Return "TOTAL_OFFLINE_CLICK_VIEW_CONTENT"
+		    Case ColumnsEnum.TotalOfflineClickViewContentValueInMicroDollar
+		      Return "TOTAL_OFFLINE_CLICK_VIEW_CONTENT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineClickViewContentValueInDollar
+		      Return "TOTAL_OFFLINE_CLICK_VIEW_CONTENT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineEngagementViewContent
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_VIEW_CONTENT"
+		    Case ColumnsEnum.TotalOfflineEngagementViewContentValueInMicroDollar
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_VIEW_CONTENT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineEngagementViewContentValueInDollar
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_VIEW_CONTENT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineViewViewContent
+		      Return "TOTAL_OFFLINE_VIEW_VIEW_CONTENT"
+		    Case ColumnsEnum.TotalOfflineViewViewContentValueInMicroDollar
+		      Return "TOTAL_OFFLINE_VIEW_VIEW_CONTENT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineViewViewContentValueInDollar
+		      Return "TOTAL_OFFLINE_VIEW_VIEW_CONTENT_VALUE_IN_DOLLAR"
 		    Case ColumnsEnum.IdeaPinPageForward1
 		      Return "IDEA_PIN_PAGE_FORWARD_1"
 		    Case ColumnsEnum.IdeaPinPageForward2
@@ -4571,6 +6847,16 @@ Protected Class TemplateResponse
 		      Return "TOTAL_UNKNOWN_CONVERSION_RATE"
 		    Case ColumnsEnum.TotalCustomConversionRate
 		      Return "TOTAL_CUSTOM_CONVERSION_RATE"
+		    Case ColumnsEnum.TotalAddPaymentInfoConversionRate
+		      Return "TOTAL_ADD_PAYMENT_INFO_CONVERSION_RATE"
+		    Case ColumnsEnum.TotalAddToWishlistConversionRate
+		      Return "TOTAL_ADD_TO_WISHLIST_CONVERSION_RATE"
+		    Case ColumnsEnum.TotalInitiateCheckoutConversionRate
+		      Return "TOTAL_INITIATE_CHECKOUT_CONVERSION_RATE"
+		    Case ColumnsEnum.TotalSubscribeConversionRate
+		      Return "TOTAL_SUBSCRIBE_CONVERSION_RATE"
+		    Case ColumnsEnum.TotalViewContentConversionRate
+		      Return "TOTAL_VIEW_CONTENT_CONVERSION_RATE"
 		    Case ColumnsEnum.StandardAdFeedItemId
 		      Return "STANDARD_AD_FEED_ITEM_ID"
 		    Case ColumnsEnum.IsStandardFeedAd
@@ -4589,6 +6875,16 @@ Protected Class TemplateResponse
 		      Return "TARGETING_LOCATION_CODE"
 		    Case ColumnsEnum.TargetingMediaType
 		      Return "TARGETING_MEDIA_TYPE"
+		    Case ColumnsEnum.TargetingAgeBucket
+		      Return "TARGETING_AGE_BUCKET"
+		    Case ColumnsEnum.TargetingAudienceMultiplier
+		      Return "TARGETING_AUDIENCE_MULTIPLIER"
+		    Case ColumnsEnum.TargetingLocalAdsStoreCode
+		      Return "TARGETING_LOCAL_ADS_STORE_CODE"
+		    Case ColumnsEnum.TargetingLanguagesInclude
+		      Return "TARGETING_LANGUAGES_INCLUDE"
+		    Case ColumnsEnum.TargetingLanguagesExclude
+		      Return "TARGETING_LANGUAGES_EXCLUDE"
 		    Case ColumnsEnum.TotalConversionProductQuantity
 		      Return "TOTAL_CONVERSION_PRODUCT_QUANTITY"
 		    Case ColumnsEnum.TotalWebConversionProductQuantity
@@ -4931,6 +7227,206 @@ Protected Class TemplateResponse
 		      Return "TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_USD"
 		    Case ColumnsEnum.TotalOfflineUnknownConversionProductValueInMicroUsd
 		      Return "TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalAddPaymentInfoConversionProductQuantity
+		      Return "TOTAL_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalAddPaymentInfoConversionProductValue
+		      Return "TOTAL_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalAddPaymentInfoConversionProductValueInMicroUnits
+		      Return "TOTAL_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalAddPaymentInfoConversionProductValueInUsd
+		      Return "TOTAL_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalAddPaymentInfoConversionProductValueInMicroUsd
+		      Return "TOTAL_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalWebAddPaymentInfoConversionProductQuantity
+		      Return "TOTAL_WEB_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalWebAddPaymentInfoConversionProductValue
+		      Return "TOTAL_WEB_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalWebAddPaymentInfoConversionProductValueInMicroUnits
+		      Return "TOTAL_WEB_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalWebAddPaymentInfoConversionProductValueInUsd
+		      Return "TOTAL_WEB_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalWebAddPaymentInfoConversionProductValueInMicroUsd
+		      Return "TOTAL_WEB_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalInappAddPaymentInfoConversionProductQuantity
+		      Return "TOTAL_INAPP_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalInappAddPaymentInfoConversionProductValue
+		      Return "TOTAL_INAPP_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalInappAddPaymentInfoConversionProductValueInMicroUnits
+		      Return "TOTAL_INAPP_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalInappAddPaymentInfoConversionProductValueInUsd
+		      Return "TOTAL_INAPP_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalInappAddPaymentInfoConversionProductValueInMicroUsd
+		      Return "TOTAL_INAPP_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalOfflineAddPaymentInfoConversionProductQuantity
+		      Return "TOTAL_OFFLINE_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalOfflineAddPaymentInfoConversionProductValue
+		      Return "TOTAL_OFFLINE_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalOfflineAddPaymentInfoConversionProductValueInMicroUnits
+		      Return "TOTAL_OFFLINE_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalOfflineAddPaymentInfoConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalOfflineAddPaymentInfoConversionProductValueInMicroUsd
+		      Return "TOTAL_OFFLINE_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalAddToWishlistConversionProductQuantity
+		      Return "TOTAL_ADD_TO_WISHLIST_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalAddToWishlistConversionProductValue
+		      Return "TOTAL_ADD_TO_WISHLIST_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalAddToWishlistConversionProductValueInMicroUnits
+		      Return "TOTAL_ADD_TO_WISHLIST_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalAddToWishlistConversionProductValueInUsd
+		      Return "TOTAL_ADD_TO_WISHLIST_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalAddToWishlistConversionProductValueInMicroUsd
+		      Return "TOTAL_ADD_TO_WISHLIST_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalWebAddToWishlistConversionProductQuantity
+		      Return "TOTAL_WEB_ADD_TO_WISHLIST_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalWebAddToWishlistConversionProductValue
+		      Return "TOTAL_WEB_ADD_TO_WISHLIST_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalWebAddToWishlistConversionProductValueInMicroUnits
+		      Return "TOTAL_WEB_ADD_TO_WISHLIST_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalWebAddToWishlistConversionProductValueInUsd
+		      Return "TOTAL_WEB_ADD_TO_WISHLIST_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalWebAddToWishlistConversionProductValueInMicroUsd
+		      Return "TOTAL_WEB_ADD_TO_WISHLIST_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalInappAddToWishlistConversionProductQuantity
+		      Return "TOTAL_INAPP_ADD_TO_WISHLIST_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalInappAddToWishlistConversionProductValue
+		      Return "TOTAL_INAPP_ADD_TO_WISHLIST_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalInappAddToWishlistConversionProductValueInMicroUnits
+		      Return "TOTAL_INAPP_ADD_TO_WISHLIST_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalInappAddToWishlistConversionProductValueInUsd
+		      Return "TOTAL_INAPP_ADD_TO_WISHLIST_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalInappAddToWishlistConversionProductValueInMicroUsd
+		      Return "TOTAL_INAPP_ADD_TO_WISHLIST_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalOfflineAddToWishlistConversionProductQuantity
+		      Return "TOTAL_OFFLINE_ADD_TO_WISHLIST_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalOfflineAddToWishlistConversionProductValue
+		      Return "TOTAL_OFFLINE_ADD_TO_WISHLIST_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalOfflineAddToWishlistConversionProductValueInMicroUnits
+		      Return "TOTAL_OFFLINE_ADD_TO_WISHLIST_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalOfflineAddToWishlistConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_ADD_TO_WISHLIST_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalOfflineAddToWishlistConversionProductValueInMicroUsd
+		      Return "TOTAL_OFFLINE_ADD_TO_WISHLIST_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalInitiateCheckoutConversionProductQuantity
+		      Return "TOTAL_INITIATE_CHECKOUT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalInitiateCheckoutConversionProductValue
+		      Return "TOTAL_INITIATE_CHECKOUT_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalInitiateCheckoutConversionProductValueInMicroUnits
+		      Return "TOTAL_INITIATE_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalInitiateCheckoutConversionProductValueInUsd
+		      Return "TOTAL_INITIATE_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalInitiateCheckoutConversionProductValueInMicroUsd
+		      Return "TOTAL_INITIATE_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalWebInitiateCheckoutConversionProductQuantity
+		      Return "TOTAL_WEB_INITIATE_CHECKOUT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalWebInitiateCheckoutConversionProductValue
+		      Return "TOTAL_WEB_INITIATE_CHECKOUT_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalWebInitiateCheckoutConversionProductValueInMicroUnits
+		      Return "TOTAL_WEB_INITIATE_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalWebInitiateCheckoutConversionProductValueInUsd
+		      Return "TOTAL_WEB_INITIATE_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalWebInitiateCheckoutConversionProductValueInMicroUsd
+		      Return "TOTAL_WEB_INITIATE_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalInappInitiateCheckoutConversionProductQuantity
+		      Return "TOTAL_INAPP_INITIATE_CHECKOUT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalInappInitiateCheckoutConversionProductValue
+		      Return "TOTAL_INAPP_INITIATE_CHECKOUT_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalInappInitiateCheckoutConversionProductValueInMicroUnits
+		      Return "TOTAL_INAPP_INITIATE_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalInappInitiateCheckoutConversionProductValueInUsd
+		      Return "TOTAL_INAPP_INITIATE_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalInappInitiateCheckoutConversionProductValueInMicroUsd
+		      Return "TOTAL_INAPP_INITIATE_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalOfflineInitiateCheckoutConversionProductQuantity
+		      Return "TOTAL_OFFLINE_INITIATE_CHECKOUT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalOfflineInitiateCheckoutConversionProductValue
+		      Return "TOTAL_OFFLINE_INITIATE_CHECKOUT_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalOfflineInitiateCheckoutConversionProductValueInMicroUnits
+		      Return "TOTAL_OFFLINE_INITIATE_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalOfflineInitiateCheckoutConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_INITIATE_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalOfflineInitiateCheckoutConversionProductValueInMicroUsd
+		      Return "TOTAL_OFFLINE_INITIATE_CHECKOUT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalSubscribeConversionProductQuantity
+		      Return "TOTAL_SUBSCRIBE_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalSubscribeConversionProductValue
+		      Return "TOTAL_SUBSCRIBE_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalSubscribeConversionProductValueInMicroUnits
+		      Return "TOTAL_SUBSCRIBE_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalSubscribeConversionProductValueInUsd
+		      Return "TOTAL_SUBSCRIBE_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalSubscribeConversionProductValueInMicroUsd
+		      Return "TOTAL_SUBSCRIBE_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalWebSubscribeConversionProductQuantity
+		      Return "TOTAL_WEB_SUBSCRIBE_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalWebSubscribeConversionProductValue
+		      Return "TOTAL_WEB_SUBSCRIBE_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalWebSubscribeConversionProductValueInMicroUnits
+		      Return "TOTAL_WEB_SUBSCRIBE_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalWebSubscribeConversionProductValueInUsd
+		      Return "TOTAL_WEB_SUBSCRIBE_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalWebSubscribeConversionProductValueInMicroUsd
+		      Return "TOTAL_WEB_SUBSCRIBE_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalInappSubscribeConversionProductQuantity
+		      Return "TOTAL_INAPP_SUBSCRIBE_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalInappSubscribeConversionProductValue
+		      Return "TOTAL_INAPP_SUBSCRIBE_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalInappSubscribeConversionProductValueInMicroUnits
+		      Return "TOTAL_INAPP_SUBSCRIBE_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalInappSubscribeConversionProductValueInUsd
+		      Return "TOTAL_INAPP_SUBSCRIBE_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalInappSubscribeConversionProductValueInMicroUsd
+		      Return "TOTAL_INAPP_SUBSCRIBE_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalOfflineSubscribeConversionProductQuantity
+		      Return "TOTAL_OFFLINE_SUBSCRIBE_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalOfflineSubscribeConversionProductValue
+		      Return "TOTAL_OFFLINE_SUBSCRIBE_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalOfflineSubscribeConversionProductValueInMicroUnits
+		      Return "TOTAL_OFFLINE_SUBSCRIBE_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalOfflineSubscribeConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_SUBSCRIBE_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalOfflineSubscribeConversionProductValueInMicroUsd
+		      Return "TOTAL_OFFLINE_SUBSCRIBE_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalViewContentConversionProductQuantity
+		      Return "TOTAL_VIEW_CONTENT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalViewContentConversionProductValue
+		      Return "TOTAL_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalViewContentConversionProductValueInMicroUnits
+		      Return "TOTAL_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalViewContentConversionProductValueInUsd
+		      Return "TOTAL_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalViewContentConversionProductValueInMicroUsd
+		      Return "TOTAL_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalWebViewContentConversionProductQuantity
+		      Return "TOTAL_WEB_VIEW_CONTENT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalWebViewContentConversionProductValue
+		      Return "TOTAL_WEB_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalWebViewContentConversionProductValueInMicroUnits
+		      Return "TOTAL_WEB_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalWebViewContentConversionProductValueInUsd
+		      Return "TOTAL_WEB_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalWebViewContentConversionProductValueInMicroUsd
+		      Return "TOTAL_WEB_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalInappViewContentConversionProductQuantity
+		      Return "TOTAL_INAPP_VIEW_CONTENT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalInappViewContentConversionProductValue
+		      Return "TOTAL_INAPP_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalInappViewContentConversionProductValueInMicroUnits
+		      Return "TOTAL_INAPP_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalInappViewContentConversionProductValueInUsd
+		      Return "TOTAL_INAPP_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalInappViewContentConversionProductValueInMicroUsd
+		      Return "TOTAL_INAPP_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalOfflineViewContentConversionProductQuantity
+		      Return "TOTAL_OFFLINE_VIEW_CONTENT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalOfflineViewContentConversionProductValue
+		      Return "TOTAL_OFFLINE_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalOfflineViewContentConversionProductValueInMicroUnits
+		      Return "TOTAL_OFFLINE_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalOfflineViewContentConversionProductValueInMicroUsd
+		      Return "TOTAL_OFFLINE_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalOfflineViewContentConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE_IN_USD"
 		    Case ColumnsEnum.TotalCheckoutConversionProductCountUnique
 		      Return "TOTAL_CHECKOUT_CONVERSION_PRODUCT_COUNT_UNIQUE"
 		    Case ColumnsEnum.TotalWebCheckoutConversionProductCountUnique
@@ -4991,6 +7487,1560 @@ Protected Class TemplateResponse
 		      Return "TOTAL_INAPP_UNKNOWN_CONVERSION_PRODUCT_COUNT_UNIQUE"
 		    Case ColumnsEnum.TotalOfflineUnknownConversionProductCountUnique
 		      Return "TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalAddPaymentInfoConversionProductCountUnique
+		      Return "TOTAL_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalWebAddPaymentInfoConversionProductCountUnique
+		      Return "TOTAL_WEB_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalInappAddPaymentInfoConversionProductCountUnique
+		      Return "TOTAL_INAPP_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalOfflineAddPaymentInfoConversionProductCountUnique
+		      Return "TOTAL_OFFLINE_ADD_PAYMENT_INFO_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalAddToWishlistConversionProductCountUnique
+		      Return "TOTAL_ADD_TO_WISHLIST_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalWebAddToWishlistConversionProductCountUnique
+		      Return "TOTAL_WEB_ADD_TO_WISHLIST_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalInappAddToWishlistConversionProductCountUnique
+		      Return "TOTAL_INAPP_ADD_TO_WISHLIST_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalOfflineAddToWishlistConversionProductCountUnique
+		      Return "TOTAL_OFFLINE_ADD_TO_WISHLIST_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalInitiateCheckoutConversionProductCountUnique
+		      Return "TOTAL_INITIATE_CHECKOUT_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalWebInitiateCheckoutConversionProductCountUnique
+		      Return "TOTAL_WEB_INITIATE_CHECKOUT_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalInappInitiateCheckoutConversionProductCountUnique
+		      Return "TOTAL_INAPP_INITIATE_CHECKOUT_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalOfflineInitiateCheckoutConversionProductCountUnique
+		      Return "TOTAL_OFFLINE_INITIATE_CHECKOUT_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalSubscribeConversionProductCountUnique
+		      Return "TOTAL_SUBSCRIBE_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalWebSubscribeConversionProductCountUnique
+		      Return "TOTAL_WEB_SUBSCRIBE_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalInappSubscribeConversionProductCountUnique
+		      Return "TOTAL_INAPP_SUBSCRIBE_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalOfflineSubscribeConversionProductCountUnique
+		      Return "TOTAL_OFFLINE_SUBSCRIBE_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalViewContentConversionProductCountUnique
+		      Return "TOTAL_VIEW_CONTENT_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalWebViewContentConversionProductCountUnique
+		      Return "TOTAL_WEB_VIEW_CONTENT_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalInappViewContentConversionProductCountUnique
+		      Return "TOTAL_INAPP_VIEW_CONTENT_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalOfflineViewContentConversionProductCountUnique
+		      Return "TOTAL_OFFLINE_VIEW_CONTENT_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.GenAiImageSignature
+		      Return "GEN_AI_IMAGE_SIGNATURE"
+		    Case ColumnsEnum.GenAiImageUrl
+		      Return "GEN_AI_IMAGE_URL"
+		    Case ColumnsEnum.OriginalImageSignature
+		      Return "ORIGINAL_IMAGE_SIGNATURE"
+		    Case ColumnsEnum.OriginalImageUrl
+		      Return "ORIGINAL_IMAGE_URL"
+		    Case ColumnsEnum.GenAiGenerationDate
+		      Return "GEN_AI_GENERATION_DATE"
+		    Case ColumnsEnum.IsRegenerating
+		      Return "IS_REGENERATING"
+		    Case ColumnsEnum.GenAiImageCount
+		      Return "GEN_AI_IMAGE_COUNT"
+		    Case ColumnsEnum.AdvertiserTimeZone
+		      Return "ADVERTISER_TIME_ZONE"
+		    Case ColumnsEnum.EngagementContact1
+		      Return "ENGAGEMENT_CONTACT_1"
+		    Case ColumnsEnum.ClickContact1
+		      Return "CLICK_CONTACT_1"
+		    Case ColumnsEnum.ViewContact1
+		      Return "VIEW_CONTACT_1"
+		    Case ColumnsEnum.EngagementContactValueInMicroDollar1
+		      Return "ENGAGEMENT_CONTACT_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.ClickContactValueInMicroDollar1
+		      Return "CLICK_CONTACT_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.ViewContactValueInMicroDollar1
+		      Return "VIEW_CONTACT_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.EngagementContactQuantity1
+		      Return "ENGAGEMENT_CONTACT_QUANTITY_1"
+		    Case ColumnsEnum.ClickContactQuantity1
+		      Return "CLICK_CONTACT_QUANTITY_1"
+		    Case ColumnsEnum.ViewContactQuantity1
+		      Return "VIEW_CONTACT_QUANTITY_1"
+		    Case ColumnsEnum.EngagementContact2
+		      Return "ENGAGEMENT_CONTACT_2"
+		    Case ColumnsEnum.ClickContact2
+		      Return "CLICK_CONTACT_2"
+		    Case ColumnsEnum.ViewContact2
+		      Return "VIEW_CONTACT_2"
+		    Case ColumnsEnum.EngagementContactValueInMicroDollar2
+		      Return "ENGAGEMENT_CONTACT_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.ClickContactValueInMicroDollar2
+		      Return "CLICK_CONTACT_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.ViewContactValueInMicroDollar2
+		      Return "VIEW_CONTACT_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.EngagementContactQuantity2
+		      Return "ENGAGEMENT_CONTACT_QUANTITY_2"
+		    Case ColumnsEnum.ClickContactQuantity2
+		      Return "CLICK_CONTACT_QUANTITY_2"
+		    Case ColumnsEnum.ViewContactQuantity2
+		      Return "VIEW_CONTACT_QUANTITY_2"
+		    Case ColumnsEnum.TotalEngagementContact
+		      Return "TOTAL_ENGAGEMENT_CONTACT"
+		    Case ColumnsEnum.TotalClickContact
+		      Return "TOTAL_CLICK_CONTACT"
+		    Case ColumnsEnum.TotalViewContact
+		      Return "TOTAL_VIEW_CONTACT"
+		    Case ColumnsEnum.TotalEngagementContactValueInMicroDollar
+		      Return "TOTAL_ENGAGEMENT_CONTACT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalEngagementContactValueInDollar
+		      Return "TOTAL_ENGAGEMENT_CONTACT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalClickContactValueInMicroDollar
+		      Return "TOTAL_CLICK_CONTACT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalClickContactValueInDollar
+		      Return "TOTAL_CLICK_CONTACT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalViewContactValueInMicroDollar
+		      Return "TOTAL_VIEW_CONTACT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalViewContactValueInDollar
+		      Return "TOTAL_VIEW_CONTACT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalEngagementContactQuantity
+		      Return "TOTAL_ENGAGEMENT_CONTACT_QUANTITY"
+		    Case ColumnsEnum.TotalClickContactQuantity
+		      Return "TOTAL_CLICK_CONTACT_QUANTITY"
+		    Case ColumnsEnum.TotalViewContactQuantity
+		      Return "TOTAL_VIEW_CONTACT_QUANTITY"
+		    Case ColumnsEnum.TotalContact
+		      Return "TOTAL_CONTACT"
+		    Case ColumnsEnum.TotalContactValueInMicroDollar
+		      Return "TOTAL_CONTACT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.AverageContactValueInMicroDollar
+		      Return "AVERAGE_CONTACT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.AverageContactValueInMicroUsDollar
+		      Return "AVERAGE_CONTACT_VALUE_IN_MICRO_US_DOLLAR"
+		    Case ColumnsEnum.TotalContactValueInMicroUsDollar
+		      Return "TOTAL_CONTACT_VALUE_IN_MICRO_US_DOLLAR"
+		    Case ColumnsEnum.TotalContactQuantity
+		      Return "TOTAL_CONTACT_QUANTITY"
+		    Case ColumnsEnum.TotalContactValueInDollar
+		      Return "TOTAL_CONTACT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.ContactCostPerAction
+		      Return "CONTACT_COST_PER_ACTION"
+		    Case ColumnsEnum.ContactCostPerActionInUsDollar
+		      Return "CONTACT_COST_PER_ACTION_IN_US_DOLLAR"
+		    Case ColumnsEnum.ContactRoas
+		      Return "CONTACT_ROAS"
+		    Case ColumnsEnum.TotalContactConversionRate
+		      Return "TOTAL_CONTACT_CONVERSION_RATE"
+		    Case ColumnsEnum.WebContactCostPerAction
+		      Return "WEB_CONTACT_COST_PER_ACTION"
+		    Case ColumnsEnum.WebContactRoas
+		      Return "WEB_CONTACT_ROAS"
+		    Case ColumnsEnum.TotalWebContact
+		      Return "TOTAL_WEB_CONTACT"
+		    Case ColumnsEnum.TotalWebContactValueInMicroDollar
+		      Return "TOTAL_WEB_CONTACT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebContactValueInDollar
+		      Return "TOTAL_WEB_CONTACT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebClickContact
+		      Return "TOTAL_WEB_CLICK_CONTACT"
+		    Case ColumnsEnum.TotalWebClickContactValueInMicroDollar
+		      Return "TOTAL_WEB_CLICK_CONTACT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebClickContactValueInDollar
+		      Return "TOTAL_WEB_CLICK_CONTACT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebEngagementContact
+		      Return "TOTAL_WEB_ENGAGEMENT_CONTACT"
+		    Case ColumnsEnum.TotalWebEngagementContactValueInMicroDollar
+		      Return "TOTAL_WEB_ENGAGEMENT_CONTACT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebEngagementContactValueInDollar
+		      Return "TOTAL_WEB_ENGAGEMENT_CONTACT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebViewContact
+		      Return "TOTAL_WEB_VIEW_CONTACT"
+		    Case ColumnsEnum.TotalWebViewContactValueInMicroDollar
+		      Return "TOTAL_WEB_VIEW_CONTACT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebViewContactValueInDollar
+		      Return "TOTAL_WEB_VIEW_CONTACT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.InappContactCostPerAction
+		      Return "INAPP_CONTACT_COST_PER_ACTION"
+		    Case ColumnsEnum.InappContactRoas
+		      Return "INAPP_CONTACT_ROAS"
+		    Case ColumnsEnum.TotalInappContact
+		      Return "TOTAL_INAPP_CONTACT"
+		    Case ColumnsEnum.TotalInappContactValueInMicroDollar
+		      Return "TOTAL_INAPP_CONTACT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappContactValueInDollar
+		      Return "TOTAL_INAPP_CONTACT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappClickContact
+		      Return "TOTAL_INAPP_CLICK_CONTACT"
+		    Case ColumnsEnum.TotalInappClickContactValueInMicroDollar
+		      Return "TOTAL_INAPP_CLICK_CONTACT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappClickContactValueInDollar
+		      Return "TOTAL_INAPP_CLICK_CONTACT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappEngagementContact
+		      Return "TOTAL_INAPP_ENGAGEMENT_CONTACT"
+		    Case ColumnsEnum.TotalInappEngagementContactValueInMicroDollar
+		      Return "TOTAL_INAPP_ENGAGEMENT_CONTACT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappEngagementContactValueInDollar
+		      Return "TOTAL_INAPP_ENGAGEMENT_CONTACT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappViewContact
+		      Return "TOTAL_INAPP_VIEW_CONTACT"
+		    Case ColumnsEnum.TotalInappViewContactValueInMicroDollar
+		      Return "TOTAL_INAPP_VIEW_CONTACT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappViewContactValueInDollar
+		      Return "TOTAL_INAPP_VIEW_CONTACT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.OfflineContactCostPerAction
+		      Return "OFFLINE_CONTACT_COST_PER_ACTION"
+		    Case ColumnsEnum.OfflineContactRoas
+		      Return "OFFLINE_CONTACT_ROAS"
+		    Case ColumnsEnum.TotalOfflineContact
+		      Return "TOTAL_OFFLINE_CONTACT"
+		    Case ColumnsEnum.TotalOfflineContactValueInMicroDollar
+		      Return "TOTAL_OFFLINE_CONTACT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineContactValueInDollar
+		      Return "TOTAL_OFFLINE_CONTACT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineClickContact
+		      Return "TOTAL_OFFLINE_CLICK_CONTACT"
+		    Case ColumnsEnum.TotalOfflineClickContactValueInMicroDollar
+		      Return "TOTAL_OFFLINE_CLICK_CONTACT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineClickContactValueInDollar
+		      Return "TOTAL_OFFLINE_CLICK_CONTACT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineEngagementContact
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_CONTACT"
+		    Case ColumnsEnum.TotalOfflineEngagementContactValueInMicroDollar
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_CONTACT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineEngagementContactValueInDollar
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_CONTACT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineViewContact
+		      Return "TOTAL_OFFLINE_VIEW_CONTACT"
+		    Case ColumnsEnum.TotalOfflineViewContactValueInMicroDollar
+		      Return "TOTAL_OFFLINE_VIEW_CONTACT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineViewContactValueInDollar
+		      Return "TOTAL_OFFLINE_VIEW_CONTACT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalContactConversionProductCountUnique
+		      Return "TOTAL_CONTACT_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalWebContactConversionProductCountUnique
+		      Return "TOTAL_WEB_CONTACT_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalInappContactConversionProductCountUnique
+		      Return "TOTAL_INAPP_CONTACT_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalOfflineContactConversionProductCountUnique
+		      Return "TOTAL_OFFLINE_CONTACT_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalContactConversionProductQuantity
+		      Return "TOTAL_CONTACT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalContactConversionProductValue
+		      Return "TOTAL_CONTACT_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalContactConversionProductValueInMicroUnits
+		      Return "TOTAL_CONTACT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalContactConversionProductValueInUsd
+		      Return "TOTAL_CONTACT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalContactConversionProductValueInMicroUsd
+		      Return "TOTAL_CONTACT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalWebContactConversionProductQuantity
+		      Return "TOTAL_WEB_CONTACT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalWebContactConversionProductValue
+		      Return "TOTAL_WEB_CONTACT_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalWebContactConversionProductValueInMicroUnits
+		      Return "TOTAL_WEB_CONTACT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalWebContactConversionProductValueInUsd
+		      Return "TOTAL_WEB_CONTACT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalWebContactConversionProductValueInMicroUsd
+		      Return "TOTAL_WEB_CONTACT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalInappContactConversionProductQuantity
+		      Return "TOTAL_INAPP_CONTACT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalInappContactConversionProductValue
+		      Return "TOTAL_INAPP_CONTACT_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalInappContactConversionProductValueInMicroUnits
+		      Return "TOTAL_INAPP_CONTACT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalInappContactConversionProductValueInUsd
+		      Return "TOTAL_INAPP_CONTACT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalInappContactConversionProductValueInMicroUsd
+		      Return "TOTAL_INAPP_CONTACT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalOfflineContactConversionProductQuantity
+		      Return "TOTAL_OFFLINE_CONTACT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalOfflineContactConversionProductValue
+		      Return "TOTAL_OFFLINE_CONTACT_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalOfflineContactConversionProductValueInMicroUnits
+		      Return "TOTAL_OFFLINE_CONTACT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalOfflineContactConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_CONTACT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalOfflineContactConversionProductValueInMicroUsd
+		      Return "TOTAL_OFFLINE_CONTACT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.EngagementSchedule1
+		      Return "ENGAGEMENT_SCHEDULE_1"
+		    Case ColumnsEnum.ClickSchedule1
+		      Return "CLICK_SCHEDULE_1"
+		    Case ColumnsEnum.ViewSchedule1
+		      Return "VIEW_SCHEDULE_1"
+		    Case ColumnsEnum.EngagementScheduleValueInMicroDollar1
+		      Return "ENGAGEMENT_SCHEDULE_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.ClickScheduleValueInMicroDollar1
+		      Return "CLICK_SCHEDULE_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.ViewScheduleValueInMicroDollar1
+		      Return "VIEW_SCHEDULE_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.EngagementScheduleQuantity1
+		      Return "ENGAGEMENT_SCHEDULE_QUANTITY_1"
+		    Case ColumnsEnum.ClickScheduleQuantity1
+		      Return "CLICK_SCHEDULE_QUANTITY_1"
+		    Case ColumnsEnum.ViewScheduleQuantity1
+		      Return "VIEW_SCHEDULE_QUANTITY_1"
+		    Case ColumnsEnum.EngagementSchedule2
+		      Return "ENGAGEMENT_SCHEDULE_2"
+		    Case ColumnsEnum.ClickSchedule2
+		      Return "CLICK_SCHEDULE_2"
+		    Case ColumnsEnum.ViewSchedule2
+		      Return "VIEW_SCHEDULE_2"
+		    Case ColumnsEnum.EngagementScheduleValueInMicroDollar2
+		      Return "ENGAGEMENT_SCHEDULE_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.ClickScheduleValueInMicroDollar2
+		      Return "CLICK_SCHEDULE_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.ViewScheduleValueInMicroDollar2
+		      Return "VIEW_SCHEDULE_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.EngagementScheduleQuantity2
+		      Return "ENGAGEMENT_SCHEDULE_QUANTITY_2"
+		    Case ColumnsEnum.ClickScheduleQuantity2
+		      Return "CLICK_SCHEDULE_QUANTITY_2"
+		    Case ColumnsEnum.ViewScheduleQuantity2
+		      Return "VIEW_SCHEDULE_QUANTITY_2"
+		    Case ColumnsEnum.TotalEngagementSchedule
+		      Return "TOTAL_ENGAGEMENT_SCHEDULE"
+		    Case ColumnsEnum.TotalClickSchedule
+		      Return "TOTAL_CLICK_SCHEDULE"
+		    Case ColumnsEnum.TotalViewSchedule
+		      Return "TOTAL_VIEW_SCHEDULE"
+		    Case ColumnsEnum.TotalEngagementScheduleValueInMicroDollar
+		      Return "TOTAL_ENGAGEMENT_SCHEDULE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalEngagementScheduleValueInDollar
+		      Return "TOTAL_ENGAGEMENT_SCHEDULE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalClickScheduleValueInMicroDollar
+		      Return "TOTAL_CLICK_SCHEDULE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalClickScheduleValueInDollar
+		      Return "TOTAL_CLICK_SCHEDULE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalViewScheduleValueInMicroDollar
+		      Return "TOTAL_VIEW_SCHEDULE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalViewScheduleValueInDollar
+		      Return "TOTAL_VIEW_SCHEDULE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalEngagementScheduleQuantity
+		      Return "TOTAL_ENGAGEMENT_SCHEDULE_QUANTITY"
+		    Case ColumnsEnum.TotalClickScheduleQuantity
+		      Return "TOTAL_CLICK_SCHEDULE_QUANTITY"
+		    Case ColumnsEnum.TotalViewScheduleQuantity
+		      Return "TOTAL_VIEW_SCHEDULE_QUANTITY"
+		    Case ColumnsEnum.TotalSchedule
+		      Return "TOTAL_SCHEDULE"
+		    Case ColumnsEnum.TotalScheduleValueInMicroDollar
+		      Return "TOTAL_SCHEDULE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.AverageScheduleValueInMicroDollar
+		      Return "AVERAGE_SCHEDULE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.AverageScheduleValueInMicroUsDollar
+		      Return "AVERAGE_SCHEDULE_VALUE_IN_MICRO_US_DOLLAR"
+		    Case ColumnsEnum.TotalScheduleValueInMicroUsDollar
+		      Return "TOTAL_SCHEDULE_VALUE_IN_MICRO_US_DOLLAR"
+		    Case ColumnsEnum.TotalScheduleQuantity
+		      Return "TOTAL_SCHEDULE_QUANTITY"
+		    Case ColumnsEnum.TotalScheduleValueInDollar
+		      Return "TOTAL_SCHEDULE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.ScheduleCostPerAction
+		      Return "SCHEDULE_COST_PER_ACTION"
+		    Case ColumnsEnum.ScheduleCostPerActionInUsDollar
+		      Return "SCHEDULE_COST_PER_ACTION_IN_US_DOLLAR"
+		    Case ColumnsEnum.ScheduleRoas
+		      Return "SCHEDULE_ROAS"
+		    Case ColumnsEnum.TotalScheduleConversionRate
+		      Return "TOTAL_SCHEDULE_CONVERSION_RATE"
+		    Case ColumnsEnum.WebScheduleCostPerAction
+		      Return "WEB_SCHEDULE_COST_PER_ACTION"
+		    Case ColumnsEnum.WebScheduleRoas
+		      Return "WEB_SCHEDULE_ROAS"
+		    Case ColumnsEnum.TotalWebSchedule
+		      Return "TOTAL_WEB_SCHEDULE"
+		    Case ColumnsEnum.TotalWebScheduleValueInMicroDollar
+		      Return "TOTAL_WEB_SCHEDULE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebScheduleValueInDollar
+		      Return "TOTAL_WEB_SCHEDULE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebClickSchedule
+		      Return "TOTAL_WEB_CLICK_SCHEDULE"
+		    Case ColumnsEnum.TotalWebClickScheduleValueInMicroDollar
+		      Return "TOTAL_WEB_CLICK_SCHEDULE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebClickScheduleValueInDollar
+		      Return "TOTAL_WEB_CLICK_SCHEDULE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebEngagementSchedule
+		      Return "TOTAL_WEB_ENGAGEMENT_SCHEDULE"
+		    Case ColumnsEnum.TotalWebEngagementScheduleValueInMicroDollar
+		      Return "TOTAL_WEB_ENGAGEMENT_SCHEDULE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebEngagementScheduleValueInDollar
+		      Return "TOTAL_WEB_ENGAGEMENT_SCHEDULE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebViewSchedule
+		      Return "TOTAL_WEB_VIEW_SCHEDULE"
+		    Case ColumnsEnum.TotalWebViewScheduleValueInMicroDollar
+		      Return "TOTAL_WEB_VIEW_SCHEDULE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebViewScheduleValueInDollar
+		      Return "TOTAL_WEB_VIEW_SCHEDULE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.InappScheduleCostPerAction
+		      Return "INAPP_SCHEDULE_COST_PER_ACTION"
+		    Case ColumnsEnum.InappScheduleRoas
+		      Return "INAPP_SCHEDULE_ROAS"
+		    Case ColumnsEnum.TotalInappSchedule
+		      Return "TOTAL_INAPP_SCHEDULE"
+		    Case ColumnsEnum.TotalInappScheduleValueInMicroDollar
+		      Return "TOTAL_INAPP_SCHEDULE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappScheduleValueInDollar
+		      Return "TOTAL_INAPP_SCHEDULE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappClickSchedule
+		      Return "TOTAL_INAPP_CLICK_SCHEDULE"
+		    Case ColumnsEnum.TotalInappClickScheduleValueInMicroDollar
+		      Return "TOTAL_INAPP_CLICK_SCHEDULE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappClickScheduleValueInDollar
+		      Return "TOTAL_INAPP_CLICK_SCHEDULE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappEngagementSchedule
+		      Return "TOTAL_INAPP_ENGAGEMENT_SCHEDULE"
+		    Case ColumnsEnum.TotalInappEngagementScheduleValueInMicroDollar
+		      Return "TOTAL_INAPP_ENGAGEMENT_SCHEDULE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappEngagementScheduleValueInDollar
+		      Return "TOTAL_INAPP_ENGAGEMENT_SCHEDULE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappViewSchedule
+		      Return "TOTAL_INAPP_VIEW_SCHEDULE"
+		    Case ColumnsEnum.TotalInappViewScheduleValueInMicroDollar
+		      Return "TOTAL_INAPP_VIEW_SCHEDULE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappViewScheduleValueInDollar
+		      Return "TOTAL_INAPP_VIEW_SCHEDULE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.OfflineScheduleCostPerAction
+		      Return "OFFLINE_SCHEDULE_COST_PER_ACTION"
+		    Case ColumnsEnum.OfflineScheduleRoas
+		      Return "OFFLINE_SCHEDULE_ROAS"
+		    Case ColumnsEnum.TotalOfflineSchedule
+		      Return "TOTAL_OFFLINE_SCHEDULE"
+		    Case ColumnsEnum.TotalOfflineScheduleValueInMicroDollar
+		      Return "TOTAL_OFFLINE_SCHEDULE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineScheduleValueInDollar
+		      Return "TOTAL_OFFLINE_SCHEDULE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineClickSchedule
+		      Return "TOTAL_OFFLINE_CLICK_SCHEDULE"
+		    Case ColumnsEnum.TotalOfflineClickScheduleValueInMicroDollar
+		      Return "TOTAL_OFFLINE_CLICK_SCHEDULE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineClickScheduleValueInDollar
+		      Return "TOTAL_OFFLINE_CLICK_SCHEDULE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineEngagementSchedule
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_SCHEDULE"
+		    Case ColumnsEnum.TotalOfflineEngagementScheduleValueInMicroDollar
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_SCHEDULE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineEngagementScheduleValueInDollar
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_SCHEDULE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineViewSchedule
+		      Return "TOTAL_OFFLINE_VIEW_SCHEDULE"
+		    Case ColumnsEnum.TotalOfflineViewScheduleValueInMicroDollar
+		      Return "TOTAL_OFFLINE_VIEW_SCHEDULE_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineViewScheduleValueInDollar
+		      Return "TOTAL_OFFLINE_VIEW_SCHEDULE_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalScheduleConversionProductCountUnique
+		      Return "TOTAL_SCHEDULE_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalWebScheduleConversionProductCountUnique
+		      Return "TOTAL_WEB_SCHEDULE_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalInappScheduleConversionProductCountUnique
+		      Return "TOTAL_INAPP_SCHEDULE_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalOfflineScheduleConversionProductCountUnique
+		      Return "TOTAL_OFFLINE_SCHEDULE_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalScheduleConversionProductQuantity
+		      Return "TOTAL_SCHEDULE_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalScheduleConversionProductValue
+		      Return "TOTAL_SCHEDULE_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalScheduleConversionProductValueInMicroUnits
+		      Return "TOTAL_SCHEDULE_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalScheduleConversionProductValueInUsd
+		      Return "TOTAL_SCHEDULE_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalScheduleConversionProductValueInMicroUsd
+		      Return "TOTAL_SCHEDULE_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalWebScheduleConversionProductQuantity
+		      Return "TOTAL_WEB_SCHEDULE_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalWebScheduleConversionProductValue
+		      Return "TOTAL_WEB_SCHEDULE_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalWebScheduleConversionProductValueInMicroUnits
+		      Return "TOTAL_WEB_SCHEDULE_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalWebScheduleConversionProductValueInUsd
+		      Return "TOTAL_WEB_SCHEDULE_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalWebScheduleConversionProductValueInMicroUsd
+		      Return "TOTAL_WEB_SCHEDULE_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalInappScheduleConversionProductQuantity
+		      Return "TOTAL_INAPP_SCHEDULE_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalInappScheduleConversionProductValue
+		      Return "TOTAL_INAPP_SCHEDULE_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalInappScheduleConversionProductValueInMicroUnits
+		      Return "TOTAL_INAPP_SCHEDULE_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalInappScheduleConversionProductValueInUsd
+		      Return "TOTAL_INAPP_SCHEDULE_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalInappScheduleConversionProductValueInMicroUsd
+		      Return "TOTAL_INAPP_SCHEDULE_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalOfflineScheduleConversionProductQuantity
+		      Return "TOTAL_OFFLINE_SCHEDULE_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalOfflineScheduleConversionProductValue
+		      Return "TOTAL_OFFLINE_SCHEDULE_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalOfflineScheduleConversionProductValueInMicroUnits
+		      Return "TOTAL_OFFLINE_SCHEDULE_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalOfflineScheduleConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_SCHEDULE_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalOfflineScheduleConversionProductValueInMicroUsd
+		      Return "TOTAL_OFFLINE_SCHEDULE_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.EngagementFindLocation1
+		      Return "ENGAGEMENT_FIND_LOCATION_1"
+		    Case ColumnsEnum.ClickFindLocation1
+		      Return "CLICK_FIND_LOCATION_1"
+		    Case ColumnsEnum.ViewFindLocation1
+		      Return "VIEW_FIND_LOCATION_1"
+		    Case ColumnsEnum.EngagementFindLocationValueInMicroDollar1
+		      Return "ENGAGEMENT_FIND_LOCATION_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.ClickFindLocationValueInMicroDollar1
+		      Return "CLICK_FIND_LOCATION_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.ViewFindLocationValueInMicroDollar1
+		      Return "VIEW_FIND_LOCATION_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.EngagementFindLocationQuantity1
+		      Return "ENGAGEMENT_FIND_LOCATION_QUANTITY_1"
+		    Case ColumnsEnum.ClickFindLocationQuantity1
+		      Return "CLICK_FIND_LOCATION_QUANTITY_1"
+		    Case ColumnsEnum.ViewFindLocationQuantity1
+		      Return "VIEW_FIND_LOCATION_QUANTITY_1"
+		    Case ColumnsEnum.EngagementFindLocation2
+		      Return "ENGAGEMENT_FIND_LOCATION_2"
+		    Case ColumnsEnum.ClickFindLocation2
+		      Return "CLICK_FIND_LOCATION_2"
+		    Case ColumnsEnum.ViewFindLocation2
+		      Return "VIEW_FIND_LOCATION_2"
+		    Case ColumnsEnum.EngagementFindLocationValueInMicroDollar2
+		      Return "ENGAGEMENT_FIND_LOCATION_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.ClickFindLocationValueInMicroDollar2
+		      Return "CLICK_FIND_LOCATION_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.ViewFindLocationValueInMicroDollar2
+		      Return "VIEW_FIND_LOCATION_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.EngagementFindLocationQuantity2
+		      Return "ENGAGEMENT_FIND_LOCATION_QUANTITY_2"
+		    Case ColumnsEnum.ClickFindLocationQuantity2
+		      Return "CLICK_FIND_LOCATION_QUANTITY_2"
+		    Case ColumnsEnum.ViewFindLocationQuantity2
+		      Return "VIEW_FIND_LOCATION_QUANTITY_2"
+		    Case ColumnsEnum.TotalEngagementFindLocation
+		      Return "TOTAL_ENGAGEMENT_FIND_LOCATION"
+		    Case ColumnsEnum.TotalClickFindLocation
+		      Return "TOTAL_CLICK_FIND_LOCATION"
+		    Case ColumnsEnum.TotalViewFindLocation
+		      Return "TOTAL_VIEW_FIND_LOCATION"
+		    Case ColumnsEnum.TotalEngagementFindLocationValueInMicroDollar
+		      Return "TOTAL_ENGAGEMENT_FIND_LOCATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalEngagementFindLocationValueInDollar
+		      Return "TOTAL_ENGAGEMENT_FIND_LOCATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalClickFindLocationValueInMicroDollar
+		      Return "TOTAL_CLICK_FIND_LOCATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalClickFindLocationValueInDollar
+		      Return "TOTAL_CLICK_FIND_LOCATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalViewFindLocationValueInMicroDollar
+		      Return "TOTAL_VIEW_FIND_LOCATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalViewFindLocationValueInDollar
+		      Return "TOTAL_VIEW_FIND_LOCATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalEngagementFindLocationQuantity
+		      Return "TOTAL_ENGAGEMENT_FIND_LOCATION_QUANTITY"
+		    Case ColumnsEnum.TotalClickFindLocationQuantity
+		      Return "TOTAL_CLICK_FIND_LOCATION_QUANTITY"
+		    Case ColumnsEnum.TotalViewFindLocationQuantity
+		      Return "TOTAL_VIEW_FIND_LOCATION_QUANTITY"
+		    Case ColumnsEnum.TotalFindLocation
+		      Return "TOTAL_FIND_LOCATION"
+		    Case ColumnsEnum.TotalFindLocationValueInMicroDollar
+		      Return "TOTAL_FIND_LOCATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.AverageFindLocationValueInMicroDollar
+		      Return "AVERAGE_FIND_LOCATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.AverageFindLocationValueInMicroUsDollar
+		      Return "AVERAGE_FIND_LOCATION_VALUE_IN_MICRO_US_DOLLAR"
+		    Case ColumnsEnum.TotalFindLocationValueInMicroUsDollar
+		      Return "TOTAL_FIND_LOCATION_VALUE_IN_MICRO_US_DOLLAR"
+		    Case ColumnsEnum.TotalFindLocationQuantity
+		      Return "TOTAL_FIND_LOCATION_QUANTITY"
+		    Case ColumnsEnum.TotalFindLocationValueInDollar
+		      Return "TOTAL_FIND_LOCATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.FindLocationCostPerAction
+		      Return "FIND_LOCATION_COST_PER_ACTION"
+		    Case ColumnsEnum.FindLocationCostPerActionInUsDollar
+		      Return "FIND_LOCATION_COST_PER_ACTION_IN_US_DOLLAR"
+		    Case ColumnsEnum.FindLocationRoas
+		      Return "FIND_LOCATION_ROAS"
+		    Case ColumnsEnum.TotalFindLocationConversionRate
+		      Return "TOTAL_FIND_LOCATION_CONVERSION_RATE"
+		    Case ColumnsEnum.WebFindLocationCostPerAction
+		      Return "WEB_FIND_LOCATION_COST_PER_ACTION"
+		    Case ColumnsEnum.WebFindLocationRoas
+		      Return "WEB_FIND_LOCATION_ROAS"
+		    Case ColumnsEnum.TotalWebFindLocation
+		      Return "TOTAL_WEB_FIND_LOCATION"
+		    Case ColumnsEnum.TotalWebFindLocationValueInMicroDollar
+		      Return "TOTAL_WEB_FIND_LOCATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebFindLocationValueInDollar
+		      Return "TOTAL_WEB_FIND_LOCATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebClickFindLocation
+		      Return "TOTAL_WEB_CLICK_FIND_LOCATION"
+		    Case ColumnsEnum.TotalWebClickFindLocationValueInMicroDollar
+		      Return "TOTAL_WEB_CLICK_FIND_LOCATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebClickFindLocationValueInDollar
+		      Return "TOTAL_WEB_CLICK_FIND_LOCATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebEngagementFindLocation
+		      Return "TOTAL_WEB_ENGAGEMENT_FIND_LOCATION"
+		    Case ColumnsEnum.TotalWebEngagementFindLocationValueInMicroDollar
+		      Return "TOTAL_WEB_ENGAGEMENT_FIND_LOCATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebEngagementFindLocationValueInDollar
+		      Return "TOTAL_WEB_ENGAGEMENT_FIND_LOCATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebViewFindLocation
+		      Return "TOTAL_WEB_VIEW_FIND_LOCATION"
+		    Case ColumnsEnum.TotalWebViewFindLocationValueInMicroDollar
+		      Return "TOTAL_WEB_VIEW_FIND_LOCATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebViewFindLocationValueInDollar
+		      Return "TOTAL_WEB_VIEW_FIND_LOCATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.InappFindLocationCostPerAction
+		      Return "INAPP_FIND_LOCATION_COST_PER_ACTION"
+		    Case ColumnsEnum.InappFindLocationRoas
+		      Return "INAPP_FIND_LOCATION_ROAS"
+		    Case ColumnsEnum.TotalInappFindLocation
+		      Return "TOTAL_INAPP_FIND_LOCATION"
+		    Case ColumnsEnum.TotalInappFindLocationValueInMicroDollar
+		      Return "TOTAL_INAPP_FIND_LOCATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappFindLocationValueInDollar
+		      Return "TOTAL_INAPP_FIND_LOCATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappClickFindLocation
+		      Return "TOTAL_INAPP_CLICK_FIND_LOCATION"
+		    Case ColumnsEnum.TotalInappClickFindLocationValueInMicroDollar
+		      Return "TOTAL_INAPP_CLICK_FIND_LOCATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappClickFindLocationValueInDollar
+		      Return "TOTAL_INAPP_CLICK_FIND_LOCATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappEngagementFindLocation
+		      Return "TOTAL_INAPP_ENGAGEMENT_FIND_LOCATION"
+		    Case ColumnsEnum.TotalInappEngagementFindLocationValueInMicroDollar
+		      Return "TOTAL_INAPP_ENGAGEMENT_FIND_LOCATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappEngagementFindLocationValueInDollar
+		      Return "TOTAL_INAPP_ENGAGEMENT_FIND_LOCATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappViewFindLocation
+		      Return "TOTAL_INAPP_VIEW_FIND_LOCATION"
+		    Case ColumnsEnum.TotalInappViewFindLocationValueInMicroDollar
+		      Return "TOTAL_INAPP_VIEW_FIND_LOCATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappViewFindLocationValueInDollar
+		      Return "TOTAL_INAPP_VIEW_FIND_LOCATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.OfflineFindLocationCostPerAction
+		      Return "OFFLINE_FIND_LOCATION_COST_PER_ACTION"
+		    Case ColumnsEnum.OfflineFindLocationRoas
+		      Return "OFFLINE_FIND_LOCATION_ROAS"
+		    Case ColumnsEnum.TotalOfflineFindLocation
+		      Return "TOTAL_OFFLINE_FIND_LOCATION"
+		    Case ColumnsEnum.TotalOfflineFindLocationValueInMicroDollar
+		      Return "TOTAL_OFFLINE_FIND_LOCATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineFindLocationValueInDollar
+		      Return "TOTAL_OFFLINE_FIND_LOCATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineClickFindLocation
+		      Return "TOTAL_OFFLINE_CLICK_FIND_LOCATION"
+		    Case ColumnsEnum.TotalOfflineClickFindLocationValueInMicroDollar
+		      Return "TOTAL_OFFLINE_CLICK_FIND_LOCATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineClickFindLocationValueInDollar
+		      Return "TOTAL_OFFLINE_CLICK_FIND_LOCATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineEngagementFindLocation
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_FIND_LOCATION"
+		    Case ColumnsEnum.TotalOfflineEngagementFindLocationValueInMicroDollar
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_FIND_LOCATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineEngagementFindLocationValueInDollar
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_FIND_LOCATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineViewFindLocation
+		      Return "TOTAL_OFFLINE_VIEW_FIND_LOCATION"
+		    Case ColumnsEnum.TotalOfflineViewFindLocationValueInMicroDollar
+		      Return "TOTAL_OFFLINE_VIEW_FIND_LOCATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineViewFindLocationValueInDollar
+		      Return "TOTAL_OFFLINE_VIEW_FIND_LOCATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalFindLocationConversionProductCountUnique
+		      Return "TOTAL_FIND_LOCATION_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalWebFindLocationConversionProductCountUnique
+		      Return "TOTAL_WEB_FIND_LOCATION_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalInappFindLocationConversionProductCountUnique
+		      Return "TOTAL_INAPP_FIND_LOCATION_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalOfflineFindLocationConversionProductCountUnique
+		      Return "TOTAL_OFFLINE_FIND_LOCATION_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalFindLocationConversionProductQuantity
+		      Return "TOTAL_FIND_LOCATION_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalFindLocationConversionProductValue
+		      Return "TOTAL_FIND_LOCATION_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalFindLocationConversionProductValueInMicroUnits
+		      Return "TOTAL_FIND_LOCATION_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalFindLocationConversionProductValueInUsd
+		      Return "TOTAL_FIND_LOCATION_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalFindLocationConversionProductValueInMicroUsd
+		      Return "TOTAL_FIND_LOCATION_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalWebFindLocationConversionProductQuantity
+		      Return "TOTAL_WEB_FIND_LOCATION_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalWebFindLocationConversionProductValue
+		      Return "TOTAL_WEB_FIND_LOCATION_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalWebFindLocationConversionProductValueInMicroUnits
+		      Return "TOTAL_WEB_FIND_LOCATION_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalWebFindLocationConversionProductValueInUsd
+		      Return "TOTAL_WEB_FIND_LOCATION_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalWebFindLocationConversionProductValueInMicroUsd
+		      Return "TOTAL_WEB_FIND_LOCATION_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalInappFindLocationConversionProductQuantity
+		      Return "TOTAL_INAPP_FIND_LOCATION_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalInappFindLocationConversionProductValue
+		      Return "TOTAL_INAPP_FIND_LOCATION_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalInappFindLocationConversionProductValueInMicroUnits
+		      Return "TOTAL_INAPP_FIND_LOCATION_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalInappFindLocationConversionProductValueInUsd
+		      Return "TOTAL_INAPP_FIND_LOCATION_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalInappFindLocationConversionProductValueInMicroUsd
+		      Return "TOTAL_INAPP_FIND_LOCATION_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalOfflineFindLocationConversionProductQuantity
+		      Return "TOTAL_OFFLINE_FIND_LOCATION_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalOfflineFindLocationConversionProductValue
+		      Return "TOTAL_OFFLINE_FIND_LOCATION_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalOfflineFindLocationConversionProductValueInMicroUnits
+		      Return "TOTAL_OFFLINE_FIND_LOCATION_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalOfflineFindLocationConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_FIND_LOCATION_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalOfflineFindLocationConversionProductValueInMicroUsd
+		      Return "TOTAL_OFFLINE_FIND_LOCATION_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.EngagementCustomizeProduct1
+		      Return "ENGAGEMENT_CUSTOMIZE_PRODUCT_1"
+		    Case ColumnsEnum.ClickCustomizeProduct1
+		      Return "CLICK_CUSTOMIZE_PRODUCT_1"
+		    Case ColumnsEnum.ViewCustomizeProduct1
+		      Return "VIEW_CUSTOMIZE_PRODUCT_1"
+		    Case ColumnsEnum.EngagementCustomizeProductValueInMicroDollar1
+		      Return "ENGAGEMENT_CUSTOMIZE_PRODUCT_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.ClickCustomizeProductValueInMicroDollar1
+		      Return "CLICK_CUSTOMIZE_PRODUCT_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.ViewCustomizeProductValueInMicroDollar1
+		      Return "VIEW_CUSTOMIZE_PRODUCT_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.EngagementCustomizeProductQuantity1
+		      Return "ENGAGEMENT_CUSTOMIZE_PRODUCT_QUANTITY_1"
+		    Case ColumnsEnum.ClickCustomizeProductQuantity1
+		      Return "CLICK_CUSTOMIZE_PRODUCT_QUANTITY_1"
+		    Case ColumnsEnum.ViewCustomizeProductQuantity1
+		      Return "VIEW_CUSTOMIZE_PRODUCT_QUANTITY_1"
+		    Case ColumnsEnum.EngagementCustomizeProduct2
+		      Return "ENGAGEMENT_CUSTOMIZE_PRODUCT_2"
+		    Case ColumnsEnum.ClickCustomizeProduct2
+		      Return "CLICK_CUSTOMIZE_PRODUCT_2"
+		    Case ColumnsEnum.ViewCustomizeProduct2
+		      Return "VIEW_CUSTOMIZE_PRODUCT_2"
+		    Case ColumnsEnum.EngagementCustomizeProductValueInMicroDollar2
+		      Return "ENGAGEMENT_CUSTOMIZE_PRODUCT_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.ClickCustomizeProductValueInMicroDollar2
+		      Return "CLICK_CUSTOMIZE_PRODUCT_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.ViewCustomizeProductValueInMicroDollar2
+		      Return "VIEW_CUSTOMIZE_PRODUCT_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.EngagementCustomizeProductQuantity2
+		      Return "ENGAGEMENT_CUSTOMIZE_PRODUCT_QUANTITY_2"
+		    Case ColumnsEnum.ClickCustomizeProductQuantity2
+		      Return "CLICK_CUSTOMIZE_PRODUCT_QUANTITY_2"
+		    Case ColumnsEnum.ViewCustomizeProductQuantity2
+		      Return "VIEW_CUSTOMIZE_PRODUCT_QUANTITY_2"
+		    Case ColumnsEnum.TotalEngagementCustomizeProduct
+		      Return "TOTAL_ENGAGEMENT_CUSTOMIZE_PRODUCT"
+		    Case ColumnsEnum.TotalClickCustomizeProduct
+		      Return "TOTAL_CLICK_CUSTOMIZE_PRODUCT"
+		    Case ColumnsEnum.TotalViewCustomizeProduct
+		      Return "TOTAL_VIEW_CUSTOMIZE_PRODUCT"
+		    Case ColumnsEnum.TotalEngagementCustomizeProductValueInMicroDollar
+		      Return "TOTAL_ENGAGEMENT_CUSTOMIZE_PRODUCT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalEngagementCustomizeProductValueInDollar
+		      Return "TOTAL_ENGAGEMENT_CUSTOMIZE_PRODUCT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalClickCustomizeProductValueInMicroDollar
+		      Return "TOTAL_CLICK_CUSTOMIZE_PRODUCT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalClickCustomizeProductValueInDollar
+		      Return "TOTAL_CLICK_CUSTOMIZE_PRODUCT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalViewCustomizeProductValueInMicroDollar
+		      Return "TOTAL_VIEW_CUSTOMIZE_PRODUCT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalViewCustomizeProductValueInDollar
+		      Return "TOTAL_VIEW_CUSTOMIZE_PRODUCT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalEngagementCustomizeProductQuantity
+		      Return "TOTAL_ENGAGEMENT_CUSTOMIZE_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalClickCustomizeProductQuantity
+		      Return "TOTAL_CLICK_CUSTOMIZE_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalViewCustomizeProductQuantity
+		      Return "TOTAL_VIEW_CUSTOMIZE_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalCustomizeProduct
+		      Return "TOTAL_CUSTOMIZE_PRODUCT"
+		    Case ColumnsEnum.TotalCustomizeProductValueInMicroDollar
+		      Return "TOTAL_CUSTOMIZE_PRODUCT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.AverageCustomizeProductValueInMicroDollar
+		      Return "AVERAGE_CUSTOMIZE_PRODUCT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.AverageCustomizeProductValueInMicroUsDollar
+		      Return "AVERAGE_CUSTOMIZE_PRODUCT_VALUE_IN_MICRO_US_DOLLAR"
+		    Case ColumnsEnum.TotalCustomizeProductValueInMicroUsDollar
+		      Return "TOTAL_CUSTOMIZE_PRODUCT_VALUE_IN_MICRO_US_DOLLAR"
+		    Case ColumnsEnum.TotalCustomizeProductQuantity
+		      Return "TOTAL_CUSTOMIZE_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalCustomizeProductValueInDollar
+		      Return "TOTAL_CUSTOMIZE_PRODUCT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.CustomizeProductCostPerAction
+		      Return "CUSTOMIZE_PRODUCT_COST_PER_ACTION"
+		    Case ColumnsEnum.CustomizeProductCostPerActionInUsDollar
+		      Return "CUSTOMIZE_PRODUCT_COST_PER_ACTION_IN_US_DOLLAR"
+		    Case ColumnsEnum.CustomizeProductRoas
+		      Return "CUSTOMIZE_PRODUCT_ROAS"
+		    Case ColumnsEnum.TotalCustomizeProductConversionRate
+		      Return "TOTAL_CUSTOMIZE_PRODUCT_CONVERSION_RATE"
+		    Case ColumnsEnum.WebCustomizeProductCostPerAction
+		      Return "WEB_CUSTOMIZE_PRODUCT_COST_PER_ACTION"
+		    Case ColumnsEnum.WebCustomizeProductRoas
+		      Return "WEB_CUSTOMIZE_PRODUCT_ROAS"
+		    Case ColumnsEnum.TotalWebCustomizeProduct
+		      Return "TOTAL_WEB_CUSTOMIZE_PRODUCT"
+		    Case ColumnsEnum.TotalWebCustomizeProductValueInMicroDollar
+		      Return "TOTAL_WEB_CUSTOMIZE_PRODUCT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebCustomizeProductValueInDollar
+		      Return "TOTAL_WEB_CUSTOMIZE_PRODUCT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebClickCustomizeProduct
+		      Return "TOTAL_WEB_CLICK_CUSTOMIZE_PRODUCT"
+		    Case ColumnsEnum.TotalWebClickCustomizeProductValueInMicroDollar
+		      Return "TOTAL_WEB_CLICK_CUSTOMIZE_PRODUCT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebClickCustomizeProductValueInDollar
+		      Return "TOTAL_WEB_CLICK_CUSTOMIZE_PRODUCT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebEngagementCustomizeProduct
+		      Return "TOTAL_WEB_ENGAGEMENT_CUSTOMIZE_PRODUCT"
+		    Case ColumnsEnum.TotalWebEngagementCustomizeProductValueInMicroDollar
+		      Return "TOTAL_WEB_ENGAGEMENT_CUSTOMIZE_PRODUCT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebEngagementCustomizeProductValueInDollar
+		      Return "TOTAL_WEB_ENGAGEMENT_CUSTOMIZE_PRODUCT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebViewCustomizeProduct
+		      Return "TOTAL_WEB_VIEW_CUSTOMIZE_PRODUCT"
+		    Case ColumnsEnum.TotalWebViewCustomizeProductValueInMicroDollar
+		      Return "TOTAL_WEB_VIEW_CUSTOMIZE_PRODUCT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebViewCustomizeProductValueInDollar
+		      Return "TOTAL_WEB_VIEW_CUSTOMIZE_PRODUCT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.InappCustomizeProductCostPerAction
+		      Return "INAPP_CUSTOMIZE_PRODUCT_COST_PER_ACTION"
+		    Case ColumnsEnum.InappCustomizeProductRoas
+		      Return "INAPP_CUSTOMIZE_PRODUCT_ROAS"
+		    Case ColumnsEnum.TotalInappCustomizeProduct
+		      Return "TOTAL_INAPP_CUSTOMIZE_PRODUCT"
+		    Case ColumnsEnum.TotalInappCustomizeProductValueInMicroDollar
+		      Return "TOTAL_INAPP_CUSTOMIZE_PRODUCT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappCustomizeProductValueInDollar
+		      Return "TOTAL_INAPP_CUSTOMIZE_PRODUCT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappClickCustomizeProduct
+		      Return "TOTAL_INAPP_CLICK_CUSTOMIZE_PRODUCT"
+		    Case ColumnsEnum.TotalInappClickCustomizeProductValueInMicroDollar
+		      Return "TOTAL_INAPP_CLICK_CUSTOMIZE_PRODUCT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappClickCustomizeProductValueInDollar
+		      Return "TOTAL_INAPP_CLICK_CUSTOMIZE_PRODUCT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappEngagementCustomizeProduct
+		      Return "TOTAL_INAPP_ENGAGEMENT_CUSTOMIZE_PRODUCT"
+		    Case ColumnsEnum.TotalInappEngagementCustomizeProductValueInMicroDollar
+		      Return "TOTAL_INAPP_ENGAGEMENT_CUSTOMIZE_PRODUCT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappEngagementCustomizeProductValueInDollar
+		      Return "TOTAL_INAPP_ENGAGEMENT_CUSTOMIZE_PRODUCT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappViewCustomizeProduct
+		      Return "TOTAL_INAPP_VIEW_CUSTOMIZE_PRODUCT"
+		    Case ColumnsEnum.TotalInappViewCustomizeProductValueInMicroDollar
+		      Return "TOTAL_INAPP_VIEW_CUSTOMIZE_PRODUCT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappViewCustomizeProductValueInDollar
+		      Return "TOTAL_INAPP_VIEW_CUSTOMIZE_PRODUCT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.OfflineCustomizeProductCostPerAction
+		      Return "OFFLINE_CUSTOMIZE_PRODUCT_COST_PER_ACTION"
+		    Case ColumnsEnum.OfflineCustomizeProductRoas
+		      Return "OFFLINE_CUSTOMIZE_PRODUCT_ROAS"
+		    Case ColumnsEnum.TotalOfflineCustomizeProduct
+		      Return "TOTAL_OFFLINE_CUSTOMIZE_PRODUCT"
+		    Case ColumnsEnum.TotalOfflineCustomizeProductValueInMicroDollar
+		      Return "TOTAL_OFFLINE_CUSTOMIZE_PRODUCT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineCustomizeProductValueInDollar
+		      Return "TOTAL_OFFLINE_CUSTOMIZE_PRODUCT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineClickCustomizeProduct
+		      Return "TOTAL_OFFLINE_CLICK_CUSTOMIZE_PRODUCT"
+		    Case ColumnsEnum.TotalOfflineClickCustomizeProductValueInMicroDollar
+		      Return "TOTAL_OFFLINE_CLICK_CUSTOMIZE_PRODUCT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineClickCustomizeProductValueInDollar
+		      Return "TOTAL_OFFLINE_CLICK_CUSTOMIZE_PRODUCT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineEngagementCustomizeProduct
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_CUSTOMIZE_PRODUCT"
+		    Case ColumnsEnum.TotalOfflineEngagementCustomizeProductValueInMicroDollar
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_CUSTOMIZE_PRODUCT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineEngagementCustomizeProductValueInDollar
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_CUSTOMIZE_PRODUCT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineViewCustomizeProduct
+		      Return "TOTAL_OFFLINE_VIEW_CUSTOMIZE_PRODUCT"
+		    Case ColumnsEnum.TotalOfflineViewCustomizeProductValueInMicroDollar
+		      Return "TOTAL_OFFLINE_VIEW_CUSTOMIZE_PRODUCT_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineViewCustomizeProductValueInDollar
+		      Return "TOTAL_OFFLINE_VIEW_CUSTOMIZE_PRODUCT_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalCustomizeProductConversionProductCountUnique
+		      Return "TOTAL_CUSTOMIZE_PRODUCT_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalWebCustomizeProductConversionProductCountUnique
+		      Return "TOTAL_WEB_CUSTOMIZE_PRODUCT_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalInappCustomizeProductConversionProductCountUnique
+		      Return "TOTAL_INAPP_CUSTOMIZE_PRODUCT_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalOfflineCustomizeProductConversionProductCountUnique
+		      Return "TOTAL_OFFLINE_CUSTOMIZE_PRODUCT_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalCustomizeProductConversionProductQuantity
+		      Return "TOTAL_CUSTOMIZE_PRODUCT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalCustomizeProductConversionProductValue
+		      Return "TOTAL_CUSTOMIZE_PRODUCT_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalCustomizeProductConversionProductValueInMicroUnits
+		      Return "TOTAL_CUSTOMIZE_PRODUCT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalCustomizeProductConversionProductValueInUsd
+		      Return "TOTAL_CUSTOMIZE_PRODUCT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalCustomizeProductConversionProductValueInMicroUsd
+		      Return "TOTAL_CUSTOMIZE_PRODUCT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalWebCustomizeProductConversionProductQuantity
+		      Return "TOTAL_WEB_CUSTOMIZE_PRODUCT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalWebCustomizeProductConversionProductValue
+		      Return "TOTAL_WEB_CUSTOMIZE_PRODUCT_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalWebCustomizeProductConversionProductValueInMicroUnits
+		      Return "TOTAL_WEB_CUSTOMIZE_PRODUCT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalWebCustomizeProductConversionProductValueInUsd
+		      Return "TOTAL_WEB_CUSTOMIZE_PRODUCT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalWebCustomizeProductConversionProductValueInMicroUsd
+		      Return "TOTAL_WEB_CUSTOMIZE_PRODUCT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalInappCustomizeProductConversionProductQuantity
+		      Return "TOTAL_INAPP_CUSTOMIZE_PRODUCT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalInappCustomizeProductConversionProductValue
+		      Return "TOTAL_INAPP_CUSTOMIZE_PRODUCT_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalInappCustomizeProductConversionProductValueInMicroUnits
+		      Return "TOTAL_INAPP_CUSTOMIZE_PRODUCT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalInappCustomizeProductConversionProductValueInUsd
+		      Return "TOTAL_INAPP_CUSTOMIZE_PRODUCT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalInappCustomizeProductConversionProductValueInMicroUsd
+		      Return "TOTAL_INAPP_CUSTOMIZE_PRODUCT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalOfflineCustomizeProductConversionProductQuantity
+		      Return "TOTAL_OFFLINE_CUSTOMIZE_PRODUCT_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalOfflineCustomizeProductConversionProductValue
+		      Return "TOTAL_OFFLINE_CUSTOMIZE_PRODUCT_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalOfflineCustomizeProductConversionProductValueInMicroUnits
+		      Return "TOTAL_OFFLINE_CUSTOMIZE_PRODUCT_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalOfflineCustomizeProductConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_CUSTOMIZE_PRODUCT_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalOfflineCustomizeProductConversionProductValueInMicroUsd
+		      Return "TOTAL_OFFLINE_CUSTOMIZE_PRODUCT_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.EngagementSubmitApplication1
+		      Return "ENGAGEMENT_SUBMIT_APPLICATION_1"
+		    Case ColumnsEnum.ClickSubmitApplication1
+		      Return "CLICK_SUBMIT_APPLICATION_1"
+		    Case ColumnsEnum.ViewSubmitApplication1
+		      Return "VIEW_SUBMIT_APPLICATION_1"
+		    Case ColumnsEnum.EngagementSubmitApplicationValueInMicroDollar1
+		      Return "ENGAGEMENT_SUBMIT_APPLICATION_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.ClickSubmitApplicationValueInMicroDollar1
+		      Return "CLICK_SUBMIT_APPLICATION_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.ViewSubmitApplicationValueInMicroDollar1
+		      Return "VIEW_SUBMIT_APPLICATION_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.EngagementSubmitApplicationQuantity1
+		      Return "ENGAGEMENT_SUBMIT_APPLICATION_QUANTITY_1"
+		    Case ColumnsEnum.ClickSubmitApplicationQuantity1
+		      Return "CLICK_SUBMIT_APPLICATION_QUANTITY_1"
+		    Case ColumnsEnum.ViewSubmitApplicationQuantity1
+		      Return "VIEW_SUBMIT_APPLICATION_QUANTITY_1"
+		    Case ColumnsEnum.EngagementSubmitApplication2
+		      Return "ENGAGEMENT_SUBMIT_APPLICATION_2"
+		    Case ColumnsEnum.ClickSubmitApplication2
+		      Return "CLICK_SUBMIT_APPLICATION_2"
+		    Case ColumnsEnum.ViewSubmitApplication2
+		      Return "VIEW_SUBMIT_APPLICATION_2"
+		    Case ColumnsEnum.EngagementSubmitApplicationValueInMicroDollar2
+		      Return "ENGAGEMENT_SUBMIT_APPLICATION_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.ClickSubmitApplicationValueInMicroDollar2
+		      Return "CLICK_SUBMIT_APPLICATION_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.ViewSubmitApplicationValueInMicroDollar2
+		      Return "VIEW_SUBMIT_APPLICATION_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.EngagementSubmitApplicationQuantity2
+		      Return "ENGAGEMENT_SUBMIT_APPLICATION_QUANTITY_2"
+		    Case ColumnsEnum.ClickSubmitApplicationQuantity2
+		      Return "CLICK_SUBMIT_APPLICATION_QUANTITY_2"
+		    Case ColumnsEnum.ViewSubmitApplicationQuantity2
+		      Return "VIEW_SUBMIT_APPLICATION_QUANTITY_2"
+		    Case ColumnsEnum.TotalEngagementSubmitApplication
+		      Return "TOTAL_ENGAGEMENT_SUBMIT_APPLICATION"
+		    Case ColumnsEnum.TotalClickSubmitApplication
+		      Return "TOTAL_CLICK_SUBMIT_APPLICATION"
+		    Case ColumnsEnum.TotalViewSubmitApplication
+		      Return "TOTAL_VIEW_SUBMIT_APPLICATION"
+		    Case ColumnsEnum.TotalEngagementSubmitApplicationValueInMicroDollar
+		      Return "TOTAL_ENGAGEMENT_SUBMIT_APPLICATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalEngagementSubmitApplicationValueInDollar
+		      Return "TOTAL_ENGAGEMENT_SUBMIT_APPLICATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalClickSubmitApplicationValueInMicroDollar
+		      Return "TOTAL_CLICK_SUBMIT_APPLICATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalClickSubmitApplicationValueInDollar
+		      Return "TOTAL_CLICK_SUBMIT_APPLICATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalViewSubmitApplicationValueInMicroDollar
+		      Return "TOTAL_VIEW_SUBMIT_APPLICATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalViewSubmitApplicationValueInDollar
+		      Return "TOTAL_VIEW_SUBMIT_APPLICATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalEngagementSubmitApplicationQuantity
+		      Return "TOTAL_ENGAGEMENT_SUBMIT_APPLICATION_QUANTITY"
+		    Case ColumnsEnum.TotalClickSubmitApplicationQuantity
+		      Return "TOTAL_CLICK_SUBMIT_APPLICATION_QUANTITY"
+		    Case ColumnsEnum.TotalViewSubmitApplicationQuantity
+		      Return "TOTAL_VIEW_SUBMIT_APPLICATION_QUANTITY"
+		    Case ColumnsEnum.TotalSubmitApplication
+		      Return "TOTAL_SUBMIT_APPLICATION"
+		    Case ColumnsEnum.TotalSubmitApplicationValueInMicroDollar
+		      Return "TOTAL_SUBMIT_APPLICATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.AverageSubmitApplicationValueInMicroDollar
+		      Return "AVERAGE_SUBMIT_APPLICATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.AverageSubmitApplicationValueInMicroUsDollar
+		      Return "AVERAGE_SUBMIT_APPLICATION_VALUE_IN_MICRO_US_DOLLAR"
+		    Case ColumnsEnum.TotalSubmitApplicationValueInMicroUsDollar
+		      Return "TOTAL_SUBMIT_APPLICATION_VALUE_IN_MICRO_US_DOLLAR"
+		    Case ColumnsEnum.TotalSubmitApplicationQuantity
+		      Return "TOTAL_SUBMIT_APPLICATION_QUANTITY"
+		    Case ColumnsEnum.TotalSubmitApplicationValueInDollar
+		      Return "TOTAL_SUBMIT_APPLICATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.SubmitApplicationCostPerAction
+		      Return "SUBMIT_APPLICATION_COST_PER_ACTION"
+		    Case ColumnsEnum.SubmitApplicationCostPerActionInUsDollar
+		      Return "SUBMIT_APPLICATION_COST_PER_ACTION_IN_US_DOLLAR"
+		    Case ColumnsEnum.SubmitApplicationRoas
+		      Return "SUBMIT_APPLICATION_ROAS"
+		    Case ColumnsEnum.TotalSubmitApplicationConversionRate
+		      Return "TOTAL_SUBMIT_APPLICATION_CONVERSION_RATE"
+		    Case ColumnsEnum.WebSubmitApplicationCostPerAction
+		      Return "WEB_SUBMIT_APPLICATION_COST_PER_ACTION"
+		    Case ColumnsEnum.WebSubmitApplicationRoas
+		      Return "WEB_SUBMIT_APPLICATION_ROAS"
+		    Case ColumnsEnum.TotalWebSubmitApplication
+		      Return "TOTAL_WEB_SUBMIT_APPLICATION"
+		    Case ColumnsEnum.TotalWebSubmitApplicationValueInMicroDollar
+		      Return "TOTAL_WEB_SUBMIT_APPLICATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebSubmitApplicationValueInDollar
+		      Return "TOTAL_WEB_SUBMIT_APPLICATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebClickSubmitApplication
+		      Return "TOTAL_WEB_CLICK_SUBMIT_APPLICATION"
+		    Case ColumnsEnum.TotalWebClickSubmitApplicationValueInMicroDollar
+		      Return "TOTAL_WEB_CLICK_SUBMIT_APPLICATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebClickSubmitApplicationValueInDollar
+		      Return "TOTAL_WEB_CLICK_SUBMIT_APPLICATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebEngagementSubmitApplication
+		      Return "TOTAL_WEB_ENGAGEMENT_SUBMIT_APPLICATION"
+		    Case ColumnsEnum.TotalWebEngagementSubmitApplicationValueInMicroDollar
+		      Return "TOTAL_WEB_ENGAGEMENT_SUBMIT_APPLICATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebEngagementSubmitApplicationValueInDollar
+		      Return "TOTAL_WEB_ENGAGEMENT_SUBMIT_APPLICATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebViewSubmitApplication
+		      Return "TOTAL_WEB_VIEW_SUBMIT_APPLICATION"
+		    Case ColumnsEnum.TotalWebViewSubmitApplicationValueInMicroDollar
+		      Return "TOTAL_WEB_VIEW_SUBMIT_APPLICATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebViewSubmitApplicationValueInDollar
+		      Return "TOTAL_WEB_VIEW_SUBMIT_APPLICATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.InappSubmitApplicationCostPerAction
+		      Return "INAPP_SUBMIT_APPLICATION_COST_PER_ACTION"
+		    Case ColumnsEnum.InappSubmitApplicationRoas
+		      Return "INAPP_SUBMIT_APPLICATION_ROAS"
+		    Case ColumnsEnum.TotalInappSubmitApplication
+		      Return "TOTAL_INAPP_SUBMIT_APPLICATION"
+		    Case ColumnsEnum.TotalInappSubmitApplicationValueInMicroDollar
+		      Return "TOTAL_INAPP_SUBMIT_APPLICATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappSubmitApplicationValueInDollar
+		      Return "TOTAL_INAPP_SUBMIT_APPLICATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappClickSubmitApplication
+		      Return "TOTAL_INAPP_CLICK_SUBMIT_APPLICATION"
+		    Case ColumnsEnum.TotalInappClickSubmitApplicationValueInMicroDollar
+		      Return "TOTAL_INAPP_CLICK_SUBMIT_APPLICATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappClickSubmitApplicationValueInDollar
+		      Return "TOTAL_INAPP_CLICK_SUBMIT_APPLICATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappEngagementSubmitApplication
+		      Return "TOTAL_INAPP_ENGAGEMENT_SUBMIT_APPLICATION"
+		    Case ColumnsEnum.TotalInappEngagementSubmitApplicationValueInMicroDollar
+		      Return "TOTAL_INAPP_ENGAGEMENT_SUBMIT_APPLICATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappEngagementSubmitApplicationValueInDollar
+		      Return "TOTAL_INAPP_ENGAGEMENT_SUBMIT_APPLICATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappViewSubmitApplication
+		      Return "TOTAL_INAPP_VIEW_SUBMIT_APPLICATION"
+		    Case ColumnsEnum.TotalInappViewSubmitApplicationValueInMicroDollar
+		      Return "TOTAL_INAPP_VIEW_SUBMIT_APPLICATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappViewSubmitApplicationValueInDollar
+		      Return "TOTAL_INAPP_VIEW_SUBMIT_APPLICATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.OfflineSubmitApplicationCostPerAction
+		      Return "OFFLINE_SUBMIT_APPLICATION_COST_PER_ACTION"
+		    Case ColumnsEnum.OfflineSubmitApplicationRoas
+		      Return "OFFLINE_SUBMIT_APPLICATION_ROAS"
+		    Case ColumnsEnum.TotalOfflineSubmitApplication
+		      Return "TOTAL_OFFLINE_SUBMIT_APPLICATION"
+		    Case ColumnsEnum.TotalOfflineSubmitApplicationValueInMicroDollar
+		      Return "TOTAL_OFFLINE_SUBMIT_APPLICATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineSubmitApplicationValueInDollar
+		      Return "TOTAL_OFFLINE_SUBMIT_APPLICATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineClickSubmitApplication
+		      Return "TOTAL_OFFLINE_CLICK_SUBMIT_APPLICATION"
+		    Case ColumnsEnum.TotalOfflineClickSubmitApplicationValueInMicroDollar
+		      Return "TOTAL_OFFLINE_CLICK_SUBMIT_APPLICATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineClickSubmitApplicationValueInDollar
+		      Return "TOTAL_OFFLINE_CLICK_SUBMIT_APPLICATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineEngagementSubmitApplication
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_SUBMIT_APPLICATION"
+		    Case ColumnsEnum.TotalOfflineEngagementSubmitApplicationValueInMicroDollar
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_SUBMIT_APPLICATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineEngagementSubmitApplicationValueInDollar
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_SUBMIT_APPLICATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineViewSubmitApplication
+		      Return "TOTAL_OFFLINE_VIEW_SUBMIT_APPLICATION"
+		    Case ColumnsEnum.TotalOfflineViewSubmitApplicationValueInMicroDollar
+		      Return "TOTAL_OFFLINE_VIEW_SUBMIT_APPLICATION_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineViewSubmitApplicationValueInDollar
+		      Return "TOTAL_OFFLINE_VIEW_SUBMIT_APPLICATION_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalSubmitApplicationConversionProductCountUnique
+		      Return "TOTAL_SUBMIT_APPLICATION_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalWebSubmitApplicationConversionProductCountUnique
+		      Return "TOTAL_WEB_SUBMIT_APPLICATION_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalInappSubmitApplicationConversionProductCountUnique
+		      Return "TOTAL_INAPP_SUBMIT_APPLICATION_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalOfflineSubmitApplicationConversionProductCountUnique
+		      Return "TOTAL_OFFLINE_SUBMIT_APPLICATION_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalSubmitApplicationConversionProductQuantity
+		      Return "TOTAL_SUBMIT_APPLICATION_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalSubmitApplicationConversionProductValue
+		      Return "TOTAL_SUBMIT_APPLICATION_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalSubmitApplicationConversionProductValueInMicroUnits
+		      Return "TOTAL_SUBMIT_APPLICATION_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalSubmitApplicationConversionProductValueInUsd
+		      Return "TOTAL_SUBMIT_APPLICATION_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalSubmitApplicationConversionProductValueInMicroUsd
+		      Return "TOTAL_SUBMIT_APPLICATION_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalWebSubmitApplicationConversionProductQuantity
+		      Return "TOTAL_WEB_SUBMIT_APPLICATION_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalWebSubmitApplicationConversionProductValue
+		      Return "TOTAL_WEB_SUBMIT_APPLICATION_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalWebSubmitApplicationConversionProductValueInMicroUnits
+		      Return "TOTAL_WEB_SUBMIT_APPLICATION_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalWebSubmitApplicationConversionProductValueInUsd
+		      Return "TOTAL_WEB_SUBMIT_APPLICATION_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalWebSubmitApplicationConversionProductValueInMicroUsd
+		      Return "TOTAL_WEB_SUBMIT_APPLICATION_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalInappSubmitApplicationConversionProductQuantity
+		      Return "TOTAL_INAPP_SUBMIT_APPLICATION_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalInappSubmitApplicationConversionProductValue
+		      Return "TOTAL_INAPP_SUBMIT_APPLICATION_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalInappSubmitApplicationConversionProductValueInMicroUnits
+		      Return "TOTAL_INAPP_SUBMIT_APPLICATION_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalInappSubmitApplicationConversionProductValueInUsd
+		      Return "TOTAL_INAPP_SUBMIT_APPLICATION_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalInappSubmitApplicationConversionProductValueInMicroUsd
+		      Return "TOTAL_INAPP_SUBMIT_APPLICATION_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalOfflineSubmitApplicationConversionProductQuantity
+		      Return "TOTAL_OFFLINE_SUBMIT_APPLICATION_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalOfflineSubmitApplicationConversionProductValue
+		      Return "TOTAL_OFFLINE_SUBMIT_APPLICATION_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalOfflineSubmitApplicationConversionProductValueInMicroUnits
+		      Return "TOTAL_OFFLINE_SUBMIT_APPLICATION_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalOfflineSubmitApplicationConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_SUBMIT_APPLICATION_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalOfflineSubmitApplicationConversionProductValueInMicroUsd
+		      Return "TOTAL_OFFLINE_SUBMIT_APPLICATION_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.EngagementStartTrial1
+		      Return "ENGAGEMENT_START_TRIAL_1"
+		    Case ColumnsEnum.ClickStartTrial1
+		      Return "CLICK_START_TRIAL_1"
+		    Case ColumnsEnum.ViewStartTrial1
+		      Return "VIEW_START_TRIAL_1"
+		    Case ColumnsEnum.EngagementStartTrialValueInMicroDollar1
+		      Return "ENGAGEMENT_START_TRIAL_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.ClickStartTrialValueInMicroDollar1
+		      Return "CLICK_START_TRIAL_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.ViewStartTrialValueInMicroDollar1
+		      Return "VIEW_START_TRIAL_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.EngagementStartTrialQuantity1
+		      Return "ENGAGEMENT_START_TRIAL_QUANTITY_1"
+		    Case ColumnsEnum.ClickStartTrialQuantity1
+		      Return "CLICK_START_TRIAL_QUANTITY_1"
+		    Case ColumnsEnum.ViewStartTrialQuantity1
+		      Return "VIEW_START_TRIAL_QUANTITY_1"
+		    Case ColumnsEnum.EngagementStartTrial2
+		      Return "ENGAGEMENT_START_TRIAL_2"
+		    Case ColumnsEnum.ClickStartTrial2
+		      Return "CLICK_START_TRIAL_2"
+		    Case ColumnsEnum.ViewStartTrial2
+		      Return "VIEW_START_TRIAL_2"
+		    Case ColumnsEnum.EngagementStartTrialValueInMicroDollar2
+		      Return "ENGAGEMENT_START_TRIAL_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.ClickStartTrialValueInMicroDollar2
+		      Return "CLICK_START_TRIAL_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.ViewStartTrialValueInMicroDollar2
+		      Return "VIEW_START_TRIAL_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.EngagementStartTrialQuantity2
+		      Return "ENGAGEMENT_START_TRIAL_QUANTITY_2"
+		    Case ColumnsEnum.ClickStartTrialQuantity2
+		      Return "CLICK_START_TRIAL_QUANTITY_2"
+		    Case ColumnsEnum.ViewStartTrialQuantity2
+		      Return "VIEW_START_TRIAL_QUANTITY_2"
+		    Case ColumnsEnum.TotalEngagementStartTrial
+		      Return "TOTAL_ENGAGEMENT_START_TRIAL"
+		    Case ColumnsEnum.TotalClickStartTrial
+		      Return "TOTAL_CLICK_START_TRIAL"
+		    Case ColumnsEnum.TotalViewStartTrial
+		      Return "TOTAL_VIEW_START_TRIAL"
+		    Case ColumnsEnum.TotalEngagementStartTrialValueInMicroDollar
+		      Return "TOTAL_ENGAGEMENT_START_TRIAL_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalEngagementStartTrialValueInDollar
+		      Return "TOTAL_ENGAGEMENT_START_TRIAL_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalClickStartTrialValueInMicroDollar
+		      Return "TOTAL_CLICK_START_TRIAL_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalClickStartTrialValueInDollar
+		      Return "TOTAL_CLICK_START_TRIAL_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalViewStartTrialValueInMicroDollar
+		      Return "TOTAL_VIEW_START_TRIAL_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalViewStartTrialValueInDollar
+		      Return "TOTAL_VIEW_START_TRIAL_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalEngagementStartTrialQuantity
+		      Return "TOTAL_ENGAGEMENT_START_TRIAL_QUANTITY"
+		    Case ColumnsEnum.TotalClickStartTrialQuantity
+		      Return "TOTAL_CLICK_START_TRIAL_QUANTITY"
+		    Case ColumnsEnum.TotalViewStartTrialQuantity
+		      Return "TOTAL_VIEW_START_TRIAL_QUANTITY"
+		    Case ColumnsEnum.TotalStartTrial
+		      Return "TOTAL_START_TRIAL"
+		    Case ColumnsEnum.TotalStartTrialValueInMicroDollar
+		      Return "TOTAL_START_TRIAL_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.AverageStartTrialValueInMicroDollar
+		      Return "AVERAGE_START_TRIAL_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.AverageStartTrialValueInMicroUsDollar
+		      Return "AVERAGE_START_TRIAL_VALUE_IN_MICRO_US_DOLLAR"
+		    Case ColumnsEnum.TotalStartTrialValueInMicroUsDollar
+		      Return "TOTAL_START_TRIAL_VALUE_IN_MICRO_US_DOLLAR"
+		    Case ColumnsEnum.TotalStartTrialQuantity
+		      Return "TOTAL_START_TRIAL_QUANTITY"
+		    Case ColumnsEnum.TotalStartTrialValueInDollar
+		      Return "TOTAL_START_TRIAL_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.StartTrialCostPerAction
+		      Return "START_TRIAL_COST_PER_ACTION"
+		    Case ColumnsEnum.StartTrialCostPerActionInUsDollar
+		      Return "START_TRIAL_COST_PER_ACTION_IN_US_DOLLAR"
+		    Case ColumnsEnum.StartTrialRoas
+		      Return "START_TRIAL_ROAS"
+		    Case ColumnsEnum.TotalStartTrialConversionRate
+		      Return "TOTAL_START_TRIAL_CONVERSION_RATE"
+		    Case ColumnsEnum.WebStartTrialCostPerAction
+		      Return "WEB_START_TRIAL_COST_PER_ACTION"
+		    Case ColumnsEnum.WebStartTrialRoas
+		      Return "WEB_START_TRIAL_ROAS"
+		    Case ColumnsEnum.TotalWebStartTrial
+		      Return "TOTAL_WEB_START_TRIAL"
+		    Case ColumnsEnum.TotalWebStartTrialValueInMicroDollar
+		      Return "TOTAL_WEB_START_TRIAL_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebStartTrialValueInDollar
+		      Return "TOTAL_WEB_START_TRIAL_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebClickStartTrial
+		      Return "TOTAL_WEB_CLICK_START_TRIAL"
+		    Case ColumnsEnum.TotalWebClickStartTrialValueInMicroDollar
+		      Return "TOTAL_WEB_CLICK_START_TRIAL_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebClickStartTrialValueInDollar
+		      Return "TOTAL_WEB_CLICK_START_TRIAL_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebEngagementStartTrial
+		      Return "TOTAL_WEB_ENGAGEMENT_START_TRIAL"
+		    Case ColumnsEnum.TotalWebEngagementStartTrialValueInMicroDollar
+		      Return "TOTAL_WEB_ENGAGEMENT_START_TRIAL_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebEngagementStartTrialValueInDollar
+		      Return "TOTAL_WEB_ENGAGEMENT_START_TRIAL_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebViewStartTrial
+		      Return "TOTAL_WEB_VIEW_START_TRIAL"
+		    Case ColumnsEnum.TotalWebViewStartTrialValueInMicroDollar
+		      Return "TOTAL_WEB_VIEW_START_TRIAL_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebViewStartTrialValueInDollar
+		      Return "TOTAL_WEB_VIEW_START_TRIAL_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.InappStartTrialCostPerAction
+		      Return "INAPP_START_TRIAL_COST_PER_ACTION"
+		    Case ColumnsEnum.InappStartTrialRoas
+		      Return "INAPP_START_TRIAL_ROAS"
+		    Case ColumnsEnum.TotalInappStartTrial
+		      Return "TOTAL_INAPP_START_TRIAL"
+		    Case ColumnsEnum.TotalInappStartTrialValueInMicroDollar
+		      Return "TOTAL_INAPP_START_TRIAL_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappStartTrialValueInDollar
+		      Return "TOTAL_INAPP_START_TRIAL_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappClickStartTrial
+		      Return "TOTAL_INAPP_CLICK_START_TRIAL"
+		    Case ColumnsEnum.TotalInappClickStartTrialValueInMicroDollar
+		      Return "TOTAL_INAPP_CLICK_START_TRIAL_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappClickStartTrialValueInDollar
+		      Return "TOTAL_INAPP_CLICK_START_TRIAL_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappEngagementStartTrial
+		      Return "TOTAL_INAPP_ENGAGEMENT_START_TRIAL"
+		    Case ColumnsEnum.TotalInappEngagementStartTrialValueInMicroDollar
+		      Return "TOTAL_INAPP_ENGAGEMENT_START_TRIAL_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappEngagementStartTrialValueInDollar
+		      Return "TOTAL_INAPP_ENGAGEMENT_START_TRIAL_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappViewStartTrial
+		      Return "TOTAL_INAPP_VIEW_START_TRIAL"
+		    Case ColumnsEnum.TotalInappViewStartTrialValueInMicroDollar
+		      Return "TOTAL_INAPP_VIEW_START_TRIAL_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappViewStartTrialValueInDollar
+		      Return "TOTAL_INAPP_VIEW_START_TRIAL_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.OfflineStartTrialCostPerAction
+		      Return "OFFLINE_START_TRIAL_COST_PER_ACTION"
+		    Case ColumnsEnum.OfflineStartTrialRoas
+		      Return "OFFLINE_START_TRIAL_ROAS"
+		    Case ColumnsEnum.TotalOfflineStartTrial
+		      Return "TOTAL_OFFLINE_START_TRIAL"
+		    Case ColumnsEnum.TotalOfflineStartTrialValueInMicroDollar
+		      Return "TOTAL_OFFLINE_START_TRIAL_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineStartTrialValueInDollar
+		      Return "TOTAL_OFFLINE_START_TRIAL_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineClickStartTrial
+		      Return "TOTAL_OFFLINE_CLICK_START_TRIAL"
+		    Case ColumnsEnum.TotalOfflineClickStartTrialValueInMicroDollar
+		      Return "TOTAL_OFFLINE_CLICK_START_TRIAL_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineClickStartTrialValueInDollar
+		      Return "TOTAL_OFFLINE_CLICK_START_TRIAL_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineEngagementStartTrial
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_START_TRIAL"
+		    Case ColumnsEnum.TotalOfflineEngagementStartTrialValueInMicroDollar
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_START_TRIAL_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineEngagementStartTrialValueInDollar
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_START_TRIAL_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineViewStartTrial
+		      Return "TOTAL_OFFLINE_VIEW_START_TRIAL"
+		    Case ColumnsEnum.TotalOfflineViewStartTrialValueInMicroDollar
+		      Return "TOTAL_OFFLINE_VIEW_START_TRIAL_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineViewStartTrialValueInDollar
+		      Return "TOTAL_OFFLINE_VIEW_START_TRIAL_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalStartTrialConversionProductCountUnique
+		      Return "TOTAL_START_TRIAL_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalWebStartTrialConversionProductCountUnique
+		      Return "TOTAL_WEB_START_TRIAL_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalInappStartTrialConversionProductCountUnique
+		      Return "TOTAL_INAPP_START_TRIAL_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalOfflineStartTrialConversionProductCountUnique
+		      Return "TOTAL_OFFLINE_START_TRIAL_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalStartTrialConversionProductQuantity
+		      Return "TOTAL_START_TRIAL_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalStartTrialConversionProductValue
+		      Return "TOTAL_START_TRIAL_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalStartTrialConversionProductValueInMicroUnits
+		      Return "TOTAL_START_TRIAL_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalStartTrialConversionProductValueInUsd
+		      Return "TOTAL_START_TRIAL_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalStartTrialConversionProductValueInMicroUsd
+		      Return "TOTAL_START_TRIAL_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalWebStartTrialConversionProductQuantity
+		      Return "TOTAL_WEB_START_TRIAL_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalWebStartTrialConversionProductValue
+		      Return "TOTAL_WEB_START_TRIAL_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalWebStartTrialConversionProductValueInMicroUnits
+		      Return "TOTAL_WEB_START_TRIAL_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalWebStartTrialConversionProductValueInUsd
+		      Return "TOTAL_WEB_START_TRIAL_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalWebStartTrialConversionProductValueInMicroUsd
+		      Return "TOTAL_WEB_START_TRIAL_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalInappStartTrialConversionProductQuantity
+		      Return "TOTAL_INAPP_START_TRIAL_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalInappStartTrialConversionProductValue
+		      Return "TOTAL_INAPP_START_TRIAL_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalInappStartTrialConversionProductValueInMicroUnits
+		      Return "TOTAL_INAPP_START_TRIAL_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalInappStartTrialConversionProductValueInUsd
+		      Return "TOTAL_INAPP_START_TRIAL_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalInappStartTrialConversionProductValueInMicroUsd
+		      Return "TOTAL_INAPP_START_TRIAL_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalOfflineStartTrialConversionProductQuantity
+		      Return "TOTAL_OFFLINE_START_TRIAL_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalOfflineStartTrialConversionProductValue
+		      Return "TOTAL_OFFLINE_START_TRIAL_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalOfflineStartTrialConversionProductValueInMicroUnits
+		      Return "TOTAL_OFFLINE_START_TRIAL_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalOfflineStartTrialConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_START_TRIAL_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalOfflineStartTrialConversionProductValueInMicroUsd
+		      Return "TOTAL_OFFLINE_START_TRIAL_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.EngagementAppOpen1
+		      Return "ENGAGEMENT_APP_OPEN_1"
+		    Case ColumnsEnum.ClickAppOpen1
+		      Return "CLICK_APP_OPEN_1"
+		    Case ColumnsEnum.ViewAppOpen1
+		      Return "VIEW_APP_OPEN_1"
+		    Case ColumnsEnum.EngagementAppOpenValueInMicroDollar1
+		      Return "ENGAGEMENT_APP_OPEN_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.ClickAppOpenValueInMicroDollar1
+		      Return "CLICK_APP_OPEN_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.ViewAppOpenValueInMicroDollar1
+		      Return "VIEW_APP_OPEN_VALUE_IN_MICRO_DOLLAR_1"
+		    Case ColumnsEnum.EngagementAppOpenQuantity1
+		      Return "ENGAGEMENT_APP_OPEN_QUANTITY_1"
+		    Case ColumnsEnum.ClickAppOpenQuantity1
+		      Return "CLICK_APP_OPEN_QUANTITY_1"
+		    Case ColumnsEnum.ViewAppOpenQuantity1
+		      Return "VIEW_APP_OPEN_QUANTITY_1"
+		    Case ColumnsEnum.EngagementAppOpen2
+		      Return "ENGAGEMENT_APP_OPEN_2"
+		    Case ColumnsEnum.ClickAppOpen2
+		      Return "CLICK_APP_OPEN_2"
+		    Case ColumnsEnum.ViewAppOpen2
+		      Return "VIEW_APP_OPEN_2"
+		    Case ColumnsEnum.EngagementAppOpenValueInMicroDollar2
+		      Return "ENGAGEMENT_APP_OPEN_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.ClickAppOpenValueInMicroDollar2
+		      Return "CLICK_APP_OPEN_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.ViewAppOpenValueInMicroDollar2
+		      Return "VIEW_APP_OPEN_VALUE_IN_MICRO_DOLLAR_2"
+		    Case ColumnsEnum.EngagementAppOpenQuantity2
+		      Return "ENGAGEMENT_APP_OPEN_QUANTITY_2"
+		    Case ColumnsEnum.ClickAppOpenQuantity2
+		      Return "CLICK_APP_OPEN_QUANTITY_2"
+		    Case ColumnsEnum.ViewAppOpenQuantity2
+		      Return "VIEW_APP_OPEN_QUANTITY_2"
+		    Case ColumnsEnum.TotalEngagementAppOpen
+		      Return "TOTAL_ENGAGEMENT_APP_OPEN"
+		    Case ColumnsEnum.TotalClickAppOpen
+		      Return "TOTAL_CLICK_APP_OPEN"
+		    Case ColumnsEnum.TotalViewAppOpen
+		      Return "TOTAL_VIEW_APP_OPEN"
+		    Case ColumnsEnum.TotalEngagementAppOpenValueInMicroDollar
+		      Return "TOTAL_ENGAGEMENT_APP_OPEN_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalEngagementAppOpenValueInDollar
+		      Return "TOTAL_ENGAGEMENT_APP_OPEN_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalClickAppOpenValueInMicroDollar
+		      Return "TOTAL_CLICK_APP_OPEN_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalClickAppOpenValueInDollar
+		      Return "TOTAL_CLICK_APP_OPEN_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalViewAppOpenValueInMicroDollar
+		      Return "TOTAL_VIEW_APP_OPEN_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalViewAppOpenValueInDollar
+		      Return "TOTAL_VIEW_APP_OPEN_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalEngagementAppOpenQuantity
+		      Return "TOTAL_ENGAGEMENT_APP_OPEN_QUANTITY"
+		    Case ColumnsEnum.TotalClickAppOpenQuantity
+		      Return "TOTAL_CLICK_APP_OPEN_QUANTITY"
+		    Case ColumnsEnum.TotalViewAppOpenQuantity
+		      Return "TOTAL_VIEW_APP_OPEN_QUANTITY"
+		    Case ColumnsEnum.TotalAppOpen
+		      Return "TOTAL_APP_OPEN"
+		    Case ColumnsEnum.TotalAppOpenValueInMicroDollar
+		      Return "TOTAL_APP_OPEN_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.AverageAppOpenValueInMicroDollar
+		      Return "AVERAGE_APP_OPEN_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.AverageAppOpenValueInMicroUsDollar
+		      Return "AVERAGE_APP_OPEN_VALUE_IN_MICRO_US_DOLLAR"
+		    Case ColumnsEnum.TotalAppOpenValueInMicroUsDollar
+		      Return "TOTAL_APP_OPEN_VALUE_IN_MICRO_US_DOLLAR"
+		    Case ColumnsEnum.TotalAppOpenQuantity
+		      Return "TOTAL_APP_OPEN_QUANTITY"
+		    Case ColumnsEnum.TotalAppOpenValueInDollar
+		      Return "TOTAL_APP_OPEN_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.AppOpenCostPerAction
+		      Return "APP_OPEN_COST_PER_ACTION"
+		    Case ColumnsEnum.AppOpenCostPerActionInUsDollar
+		      Return "APP_OPEN_COST_PER_ACTION_IN_US_DOLLAR"
+		    Case ColumnsEnum.AppOpenRoas
+		      Return "APP_OPEN_ROAS"
+		    Case ColumnsEnum.TotalAppOpenConversionRate
+		      Return "TOTAL_APP_OPEN_CONVERSION_RATE"
+		    Case ColumnsEnum.WebAppOpenCostPerAction
+		      Return "WEB_APP_OPEN_COST_PER_ACTION"
+		    Case ColumnsEnum.WebAppOpenRoas
+		      Return "WEB_APP_OPEN_ROAS"
+		    Case ColumnsEnum.TotalWebAppOpen
+		      Return "TOTAL_WEB_APP_OPEN"
+		    Case ColumnsEnum.TotalWebAppOpenValueInMicroDollar
+		      Return "TOTAL_WEB_APP_OPEN_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebAppOpenValueInDollar
+		      Return "TOTAL_WEB_APP_OPEN_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebClickAppOpen
+		      Return "TOTAL_WEB_CLICK_APP_OPEN"
+		    Case ColumnsEnum.TotalWebClickAppOpenValueInMicroDollar
+		      Return "TOTAL_WEB_CLICK_APP_OPEN_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebClickAppOpenValueInDollar
+		      Return "TOTAL_WEB_CLICK_APP_OPEN_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebEngagementAppOpen
+		      Return "TOTAL_WEB_ENGAGEMENT_APP_OPEN"
+		    Case ColumnsEnum.TotalWebEngagementAppOpenValueInMicroDollar
+		      Return "TOTAL_WEB_ENGAGEMENT_APP_OPEN_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebEngagementAppOpenValueInDollar
+		      Return "TOTAL_WEB_ENGAGEMENT_APP_OPEN_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalWebViewAppOpen
+		      Return "TOTAL_WEB_VIEW_APP_OPEN"
+		    Case ColumnsEnum.TotalWebViewAppOpenValueInMicroDollar
+		      Return "TOTAL_WEB_VIEW_APP_OPEN_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalWebViewAppOpenValueInDollar
+		      Return "TOTAL_WEB_VIEW_APP_OPEN_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.InappAppOpenCostPerAction
+		      Return "INAPP_APP_OPEN_COST_PER_ACTION"
+		    Case ColumnsEnum.InappAppOpenRoas
+		      Return "INAPP_APP_OPEN_ROAS"
+		    Case ColumnsEnum.TotalInappAppOpen
+		      Return "TOTAL_INAPP_APP_OPEN"
+		    Case ColumnsEnum.TotalInappAppOpenValueInMicroDollar
+		      Return "TOTAL_INAPP_APP_OPEN_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappAppOpenValueInDollar
+		      Return "TOTAL_INAPP_APP_OPEN_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappClickAppOpen
+		      Return "TOTAL_INAPP_CLICK_APP_OPEN"
+		    Case ColumnsEnum.TotalInappClickAppOpenValueInMicroDollar
+		      Return "TOTAL_INAPP_CLICK_APP_OPEN_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappClickAppOpenValueInDollar
+		      Return "TOTAL_INAPP_CLICK_APP_OPEN_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappEngagementAppOpen
+		      Return "TOTAL_INAPP_ENGAGEMENT_APP_OPEN"
+		    Case ColumnsEnum.TotalInappEngagementAppOpenValueInMicroDollar
+		      Return "TOTAL_INAPP_ENGAGEMENT_APP_OPEN_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappEngagementAppOpenValueInDollar
+		      Return "TOTAL_INAPP_ENGAGEMENT_APP_OPEN_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalInappViewAppOpen
+		      Return "TOTAL_INAPP_VIEW_APP_OPEN"
+		    Case ColumnsEnum.TotalInappViewAppOpenValueInMicroDollar
+		      Return "TOTAL_INAPP_VIEW_APP_OPEN_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalInappViewAppOpenValueInDollar
+		      Return "TOTAL_INAPP_VIEW_APP_OPEN_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.OfflineAppOpenCostPerAction
+		      Return "OFFLINE_APP_OPEN_COST_PER_ACTION"
+		    Case ColumnsEnum.OfflineAppOpenRoas
+		      Return "OFFLINE_APP_OPEN_ROAS"
+		    Case ColumnsEnum.TotalOfflineAppOpen
+		      Return "TOTAL_OFFLINE_APP_OPEN"
+		    Case ColumnsEnum.TotalOfflineAppOpenValueInMicroDollar
+		      Return "TOTAL_OFFLINE_APP_OPEN_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineAppOpenValueInDollar
+		      Return "TOTAL_OFFLINE_APP_OPEN_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineClickAppOpen
+		      Return "TOTAL_OFFLINE_CLICK_APP_OPEN"
+		    Case ColumnsEnum.TotalOfflineClickAppOpenValueInMicroDollar
+		      Return "TOTAL_OFFLINE_CLICK_APP_OPEN_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineClickAppOpenValueInDollar
+		      Return "TOTAL_OFFLINE_CLICK_APP_OPEN_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineEngagementAppOpen
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_APP_OPEN"
+		    Case ColumnsEnum.TotalOfflineEngagementAppOpenValueInMicroDollar
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_APP_OPEN_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineEngagementAppOpenValueInDollar
+		      Return "TOTAL_OFFLINE_ENGAGEMENT_APP_OPEN_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineViewAppOpen
+		      Return "TOTAL_OFFLINE_VIEW_APP_OPEN"
+		    Case ColumnsEnum.TotalOfflineViewAppOpenValueInMicroDollar
+		      Return "TOTAL_OFFLINE_VIEW_APP_OPEN_VALUE_IN_MICRO_DOLLAR"
+		    Case ColumnsEnum.TotalOfflineViewAppOpenValueInDollar
+		      Return "TOTAL_OFFLINE_VIEW_APP_OPEN_VALUE_IN_DOLLAR"
+		    Case ColumnsEnum.TotalAppOpenConversionProductCountUnique
+		      Return "TOTAL_APP_OPEN_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalWebAppOpenConversionProductCountUnique
+		      Return "TOTAL_WEB_APP_OPEN_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalInappAppOpenConversionProductCountUnique
+		      Return "TOTAL_INAPP_APP_OPEN_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalOfflineAppOpenConversionProductCountUnique
+		      Return "TOTAL_OFFLINE_APP_OPEN_CONVERSION_PRODUCT_COUNT_UNIQUE"
+		    Case ColumnsEnum.TotalAppOpenConversionProductQuantity
+		      Return "TOTAL_APP_OPEN_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalAppOpenConversionProductValue
+		      Return "TOTAL_APP_OPEN_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalAppOpenConversionProductValueInMicroUnits
+		      Return "TOTAL_APP_OPEN_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalAppOpenConversionProductValueInUsd
+		      Return "TOTAL_APP_OPEN_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalAppOpenConversionProductValueInMicroUsd
+		      Return "TOTAL_APP_OPEN_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalWebAppOpenConversionProductQuantity
+		      Return "TOTAL_WEB_APP_OPEN_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalWebAppOpenConversionProductValue
+		      Return "TOTAL_WEB_APP_OPEN_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalWebAppOpenConversionProductValueInMicroUnits
+		      Return "TOTAL_WEB_APP_OPEN_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalWebAppOpenConversionProductValueInUsd
+		      Return "TOTAL_WEB_APP_OPEN_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalWebAppOpenConversionProductValueInMicroUsd
+		      Return "TOTAL_WEB_APP_OPEN_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalInappAppOpenConversionProductQuantity
+		      Return "TOTAL_INAPP_APP_OPEN_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalInappAppOpenConversionProductValue
+		      Return "TOTAL_INAPP_APP_OPEN_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalInappAppOpenConversionProductValueInMicroUnits
+		      Return "TOTAL_INAPP_APP_OPEN_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalInappAppOpenConversionProductValueInUsd
+		      Return "TOTAL_INAPP_APP_OPEN_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalInappAppOpenConversionProductValueInMicroUsd
+		      Return "TOTAL_INAPP_APP_OPEN_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
+		    Case ColumnsEnum.TotalOfflineAppOpenConversionProductQuantity
+		      Return "TOTAL_OFFLINE_APP_OPEN_CONVERSION_PRODUCT_QUANTITY"
+		    Case ColumnsEnum.TotalOfflineAppOpenConversionProductValue
+		      Return "TOTAL_OFFLINE_APP_OPEN_CONVERSION_PRODUCT_VALUE"
+		    Case ColumnsEnum.TotalOfflineAppOpenConversionProductValueInMicroUnits
+		      Return "TOTAL_OFFLINE_APP_OPEN_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"
+		    Case ColumnsEnum.TotalOfflineAppOpenConversionProductValueInUsd
+		      Return "TOTAL_OFFLINE_APP_OPEN_CONVERSION_PRODUCT_VALUE_IN_USD"
+		    Case ColumnsEnum.TotalOfflineAppOpenConversionProductValueInMicroUsd
+		      Return "TOTAL_OFFLINE_APP_OPEN_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"
 		    
 		  End Select
 		  Return ""
@@ -5025,23 +9075,6 @@ Protected Class TemplateResponse
 		End Function
 	#tag EndMethod
 	#tag Method, Flags = &h0
-		Shared Function TypeEnumToString(value As TypeEnum) As String
-		  Select Case value
-		    
-		    Case TypeEnum.Unspecified
-		      Return "UNSPECIFIED"
-		    Case TypeEnum.Bulk
-		      Return "BULK"
-		    Case TypeEnum.Overview
-		      Return "OVERVIEW"
-		    Case TypeEnum.Table
-		      Return "TABLE"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-	#tag Method, Flags = &h0
 		Shared Function Ingestion_sourcesEnumToString(value As Ingestion_sourcesEnum) As String
 		  Select Case value
 		    
@@ -5055,6 +9088,23 @@ Protected Class TemplateResponse
 		      Return "CONVERSIONS_API"
 		    Case Ingestion_sourcesEnum.Native
 		      Return "NATIVE"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+	#tag Method, Flags = &h0
+		Shared Function TypeEnumToString(value As TypeEnum) As String
+		  Select Case value
+		    
+		    Case TypeEnum.Unspecified
+		      Return "UNSPECIFIED"
+		    Case TypeEnum.Bulk
+		      Return "BULK"
+		    Case TypeEnum.Overview
+		      Return "OVERVIEW"
+		    Case TypeEnum.Table
+		      Return "TABLE"
 		    
 		  End Select
 		  Return ""
@@ -5096,14 +9146,6 @@ Protected Class TemplateResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="ad_account_id"
 			Visible=false
 			Group="Behavior"
@@ -5120,23 +9162,7 @@ Protected Class TemplateResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="user_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="name"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="report_start_relative_days_in_past"
+			Name="click_window_days"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -5144,11 +9170,11 @@ Protected Class TemplateResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="report_end_relative_days_in_past"
+			Name="custom_column_ids"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Double"
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -5157,46 +9183,6 @@ Protected Class TemplateResponse
 			Group="Behavior"
 			InitialValue=""
 			Type="TemplateResponseDateRange"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="report_level"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="MetricsReportingLevel"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="report_format"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="DataOutputFormat"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="granularity"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Granularity"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="view_window_days"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Double"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="click_window_days"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Double"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -5216,6 +9202,30 @@ Protected Class TemplateResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="granularity"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Granularity"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="is_deleted"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="is_owned_by_user"
 			Visible=false
 			Group="Behavior"
@@ -5232,11 +9242,43 @@ Protected Class TemplateResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="is_deleted"
+			Name="name"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Boolean"
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="report_end_relative_days_in_past"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Double"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="report_format"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="DataOutputFormat"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="report_level"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="MetricsReportingLevel"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="report_start_relative_days_in_past"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Double"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -5248,11 +9290,19 @@ Protected Class TemplateResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="custom_column_ids"
+			Name="user_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="view_window_days"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Double"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

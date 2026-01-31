@@ -11,7 +11,7 @@ module UpdateAssetGroupResponse =
 
 
   type UpdateAssetGroupResponse = {
-    UpdatedAssetGroups : AssetGroupBinding[];
     Exceptions : UpdateAssetGroupResponseExceptionsInner[];
+    UpdatedAssetGroups : AssetGroupBinding[];
   }
   //#endregion

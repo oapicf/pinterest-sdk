@@ -15,7 +15,7 @@ Method | HTTP request | Description
 > models::SearchPartnerPins200Response search_partner_pins(term, country_code, bookmark, locale, limit)
 Search pins by a given search term
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
 
 ### Parameters
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Required | Notes
 
 ## search_user_pins_slash_list
 
-> models::PinsList200Response search_user_pins_slash_list(query, ad_account_id, bookmark)
+> models::SearchUserPinsList200Response search_user_pins_slash_list(query, ad_account_id, bookmark)
 Search user's Pins
 
 Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
@@ -95,7 +95,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**models::PinsList200Response**](pins_list_200_response.md)
+[**models::SearchUserPinsList200Response**](search_user_pins_list_200_response.md)
 
 ### Authorization
 

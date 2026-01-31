@@ -15,12 +15,12 @@ module CatalogsFeedsUpdateRequest =
 
 
   type CatalogsFeedsUpdateRequest = {
+    Credentials : CatalogsFeedCredentials;
     DefaultAvailability : ProductAvailabilityType;
     DefaultCurrency : NullableCurrency;
-    Name : string;
     Format : CatalogsFormat;
-    Credentials : CatalogsFeedCredentials;
     Location : string;
+    Name : string;
     PreferredProcessingSchedule : CatalogsFeedProcessingSchedule;
     Status : CatalogsStatus;
   }

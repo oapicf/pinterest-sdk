@@ -1,0 +1,41 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "TargetingSpecOperationAppType",
+  "fields": [
+    {
+      "name": "field",
+      "type": {
+        "type": "enum",
+        "name": "TargetingSpecOperationAppType_field",
+        "symbols": [
+          "APPTYPE"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "operation",
+      "type": {
+        "type": "enum",
+        "name": "TargetingSpecOperationAppType_operation",
+        "symbols": [
+          "SET",
+          "ADD",
+          "REMOVE"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "values",
+      "type": {
+        "type": "array",
+        "items": "model.TargetingSpecAppType"
+      },
+      "doc": ""
+    }
+  ]
+
+}

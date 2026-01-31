@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**itemType** | **String** |  | [optional] 
-**title** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 
+**images** | [**ImageSize**](ImageSize.md) |  | [optional] 
+**itemType** | **String** |  | [optional] 
 **link** | **String** |  | [optional] 
-**images** | [**ImageMetadataImages**](ImageMetadataImages.md) |  | [optional] 
+**title** | **String** |  | [optional] 
 **coverImageUrl** | **String** |  | [optional] 
-**videoUrl** | **String** | Video url (720p). &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field is limited and not available to all apps. | [optional] 
-**duration** | **Number** | Duration (in milliseconds) | [optional] 
-**height** | **Number** | Height (in pixels) | [optional] 
-**width** | **Number** | Width (in pixels) | [optional] 
+**duration** | **Number** | Duration (in miliseconds). Field maybe null after creation due to video processing time. | [optional] 
+**height** | **Number** | Height (in pixels). Field maybe null after creation due to video processing time. | [optional] 
+**videoUrl** | **String** | Video url (720p).  **Note:** This field is limited and not available to all apps. | [optional] 
+**width** | **Number** | Width (in pixels). Field maybe null after creation due to video processing time. | [optional] 
 
 

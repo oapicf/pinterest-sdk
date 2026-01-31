@@ -3,6 +3,30 @@ Protected Class AudienceRule
 
 	#tag Property, Flags = &h0
 		#tag Note
+			Ad account ID.
+		#tag EndNote
+		ad_account_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Ad ID for engagement audience filter.
+		#tag EndNote
+		ad_id() As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Campaign ID for engagement audience filter.
+		#tag EndNote
+		campaign_id() As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			Valid countries include: "US", "CA", and "GB".
 		#tag EndNote
 		country As Xoson.O.OptionalString
@@ -35,6 +59,14 @@ Protected Class AudienceRule
 
 	#tag Property, Flags = &h0
 		#tag Note
+			Optional for ENGAGEMENT. Engager type value should be 1-2.
+		#tag EndNote
+		engager_type As Xoson.O.OptionalInteger
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			A Pinterest tag event. Optional for VISITOR `audience_type`. Possible values are `pagevisit`, `signup`, `checkout`, `viewcategory`, `search`, `addtocart`, `watchvideo`, `lead`, and `custom`. This field also accepts a partner-defined Pinterest tag event.
 		#tag EndNote
 		Escapedevent As Xoson.O.OptionalString
@@ -42,7 +74,31 @@ Protected Class AudienceRule
 
 
 	#tag Property, Flags = &h0
-		event_data As OpenAPIClient.Models.PinterestTagEventData
+		event_data As OpenAPIClient.Models.EventData
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: web, mobile, offline
+		#tag EndNote
+		event_source As Object
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: tag, mmp, file_upload, conversions_api
+		#tag EndNote
+		ingestion_source As Object
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Objective for engagement audience filter.
+		#tag EndNote
+		objective_type() As ObjectiveType
 	#tag EndProperty
 
 
@@ -102,62 +158,6 @@ Protected Class AudienceRule
 	#tag EndProperty
 
 
-	#tag Property, Flags = &h0
-		#tag Note
-			Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: web, mobile, offline
-		#tag EndNote
-		event_source As Object
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: tag, mmp, file_upload, conversions_api
-		#tag EndNote
-		ingestion_source As Object
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Optional for ENGAGEMENT. Engager type value should be 1-2.
-		#tag EndNote
-		engager_type As Xoson.O.OptionalInteger
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Campaign ID for engagement audience filter.
-		#tag EndNote
-		campaign_id() As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Ad ID for engagement audience filter.
-		#tag EndNote
-		ad_id() As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Objective for engagement audience filter.
-		#tag EndNote
-		objective_type() As ObjectiveType
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Ad account ID.
-		#tag EndNote
-		ad_account_id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
 
 
 
@@ -195,6 +195,30 @@ Protected Class AudienceRule
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="ad_account_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="ad_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="campaign_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="country"
 			Visible=false
 			Group="Behavior"
@@ -227,6 +251,14 @@ Protected Class AudienceRule
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="engager_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="Escapedevent"
 			Visible=false
 			Group="Behavior"
@@ -239,7 +271,31 @@ Protected Class AudienceRule
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="PinterestTagEventData"
+			Type="EventData"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="event_source"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Object"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="ingestion_source"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Object"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="objective_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="ObjectiveType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -292,62 +348,6 @@ Protected Class AudienceRule
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="visitor_source_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="event_source"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Object"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="ingestion_source"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Object"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="engager_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Integer"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="campaign_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="ad_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="objective_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="ObjectiveType"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="ad_account_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

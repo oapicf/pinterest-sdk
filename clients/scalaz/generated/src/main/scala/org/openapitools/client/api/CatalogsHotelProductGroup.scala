@@ -12,19 +12,20 @@ import org.joda.time.DateTime
 import CatalogsHotelProductGroup._
 
 case class CatalogsHotelProductGroup (
-  catalogType: CatalogType,
+  /* Catalog id pertaining to the hotel product group. */
+  catalogId: String,
+catalogType: CatalogType,
+/* Unix timestamp in seconds of when catalog product group was created. */
+  createdAt: Option[Integer],
+description: Option[String],
+filters: CatalogsHotelProductGroupFilters,
 /* ID of the hotel product group. */
   id: String,
 /* Name of hotel product group */
   name: Option[String],
-description: Option[String],
-filters: CatalogsHotelProductGroupFilters,
-/* Unix timestamp in seconds of when catalog product group was created. */
-  createdAt: Option[Integer],
+`type`: CatalogsHotelProductGroupType,
 /* Unix timestamp in seconds of last time catalog product group was updated. */
-  updatedAt: Option[Integer],
-/* Catalog id pertaining to the hotel product group. */
-  catalogId: String)
+  updatedAt: Option[Integer])
 
 object CatalogsHotelProductGroup {
   import DateTimeCodecs._

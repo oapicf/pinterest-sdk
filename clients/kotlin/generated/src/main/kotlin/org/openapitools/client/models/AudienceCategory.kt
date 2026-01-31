@@ -23,16 +23,24 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
+ * @param id Interest ID.
+ * @param index Interest affinity index.
  * @param key Interest unique key (same as ID).
  * @param name Interest name.
  * @param ratio Interest's percent of category's total audience.
- * @param index Interest affinity index.
- * @param id Interest ID.
  * @param subcategories Subcategory interest distribution
  */
 
 
 data class AudienceCategory (
+
+    /* Interest ID. */
+    @Json(name = "id")
+    val id: kotlin.String? = null,
+
+    /* Interest affinity index. */
+    @Json(name = "index")
+    val index: java.math.BigDecimal? = null,
 
     /* Interest unique key (same as ID). */
     @Json(name = "key")
@@ -45,14 +53,6 @@ data class AudienceCategory (
     /* Interest's percent of category's total audience. */
     @Json(name = "ratio")
     val ratio: java.math.BigDecimal? = null,
-
-    /* Interest affinity index. */
-    @Json(name = "index")
-    val index: java.math.BigDecimal? = null,
-
-    /* Interest ID. */
-    @Json(name = "id")
-    val id: kotlin.String? = null,
 
     /* Subcategory interest distribution */
     @Json(name = "subcategories")

@@ -6,8 +6,8 @@ User website verification request
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**website** | **string** |  | [optional] [default to undefined]
 **verification_method** | **string** |  | [optional] [default to VerificationMethodEnum_Metatag]
+**website** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 import { UserWebsiteVerifyRequest } from './api';
 
 const instance: UserWebsiteVerifyRequest = {
-    website,
     verification_method,
+    website,
 };
 ```
 

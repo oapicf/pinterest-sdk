@@ -14,11 +14,12 @@ import model.Error
 import model.Granularity
 import java.time.LocalDate
 import model.MetricsResponse
+import model.ReportingTimeZone
 
 /**
   * Provides a default implementation for [[AdsApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 class AdsApiImpl extends AdsApi {
   /**
     * @inheritdoc
@@ -32,7 +33,7 @@ class AdsApiImpl extends AdsApi {
   /**
     * @inheritdoc
     */
-  override def adTargetingAnalyticsGet(adAccountId: String, adIds: List[String], startDate: LocalDate, endDate: LocalDate, targetingTypes: List[AdsAnalyticsAdTargetingType], columns: List[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], attributionTypes: Option[ConversionReportAttributionType]): MetricsResponse = {
+  override def adTargetingAnalyticsGet(adAccountId: String, adIds: List[String], startDate: LocalDate, endDate: LocalDate, targetingTypes: List[AdsAnalyticsAdTargetingType], columns: List[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], attributionTypes: Option[List[ConversionReportAttributionType]], reportingTimezone: Option[ReportingTimeZone]): MetricsResponse = {
     // TODO: Implement better logic
 
     MetricsResponse(None)
@@ -41,7 +42,7 @@ class AdsApiImpl extends AdsApi {
   /**
     * @inheritdoc
     */
-  override def adsAnalytics(adAccountId: String, startDate: LocalDate, endDate: LocalDate, columns: List[String], granularity: Granularity, adIds: Option[List[String]], clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], pinIds: Option[List[String]], campaignIds: Option[List[String]]): List[AdsAnalyticsResponseInner] = {
+  override def adsAnalytics(adAccountId: String, startDate: LocalDate, endDate: LocalDate, columns: List[String], granularity: Granularity, adIds: Option[List[String]], clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], pinIds: Option[List[String]], campaignIds: Option[List[String]], reportingTimezone: Option[ReportingTimeZone]): List[AdsAnalyticsResponseInner] = {
     // TODO: Implement better logic
 
     List.empty[AdsAnalyticsResponseInner]
@@ -62,7 +63,7 @@ class AdsApiImpl extends AdsApi {
   override def adsGet(adAccountId: String, adId: String): AdResponse = {
     // TODO: Implement better logic
 
-    AdResponse(None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, Map.empty)
+    AdResponse(None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, Map.empty)
   }
 
   /**
@@ -71,7 +72,7 @@ class AdsApiImpl extends AdsApi {
   override def adsList(adAccountId: String, campaignIds: Option[List[String]], adGroupIds: Option[List[String]], adIds: Option[List[String]], entityStatuses: Option[List[String]], pageSize: Option[Int], order: Option[String], bookmark: Option[String]): AdsList200Response = {
     // TODO: Implement better logic
 
-    AdsList200Response(List.empty[AdResponse], None)
+    AdsList200Response(None, List.empty[AdResponse])
   }
 
   /**

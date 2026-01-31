@@ -1,6 +1,5 @@
 package controllers;
 
-import apimodels.DetailedError;
 import apimodels.Error;
 import apimodels.IntegrationLogsRequest;
 import apimodels.IntegrationLogsSuccessResponse;
@@ -9,6 +8,7 @@ import apimodels.IntegrationRecord;
 import apimodels.IntegrationRequest;
 import apimodels.IntegrationRequestPatch;
 import apimodels.IntegrationsGetList200Response;
+import apimodels.IntegrationsLogsPost400Response;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -32,7 +32,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class IntegrationsApiController extends Controller {
     private final IntegrationsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -65,7 +65,7 @@ public class IntegrationsApiController extends Controller {
                 OpenAPIUtils.validate(integrationRequestPatch);
             }
         } else {
-            integrationRequestPatch = null;
+            throw new IllegalArgumentException("'IntegrationRequestPatch' parameter is required");
         }
         return imp.integrationsCommercePatchHttp(request, externalBusinessId, integrationRequestPatch);
     }
@@ -80,7 +80,7 @@ public class IntegrationsApiController extends Controller {
                 OpenAPIUtils.validate(integrationRequest);
             }
         } else {
-            integrationRequest = null;
+            throw new IllegalArgumentException("'IntegrationRequest' parameter is required");
         }
         return imp.integrationsCommercePostHttp(request, integrationRequest);
     }

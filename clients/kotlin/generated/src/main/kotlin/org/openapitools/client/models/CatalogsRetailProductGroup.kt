@@ -25,46 +25,52 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param catalogType 
- * @param id ID of the catalog product group.
- * @param filters 
  * @param catalogId Catalog id pertaining to the retail product group.
+ * @param catalogType 
  * @param feedId id of the catalogs feed belonging to this catalog product group
- * @param name Name of catalog product group
+ * @param filters 
+ * @param id ID of the catalog product group.
+ * @param type 
+ * @param country 
+ * @param createdAt Unix timestamp in seconds of when catalog product group was created.
  * @param description 
  * @param isFeatured boolean indicator of whether the product group is being featured or not
- * @param type 
- * @param status 
- * @param createdAt Unix timestamp in seconds of when catalog product group was created.
- * @param updatedAt Unix timestamp in seconds of last time catalog product group was updated.
- * @param country 
  * @param locale 
+ * @param name Name of catalog product group
+ * @param status 
+ * @param updatedAt Unix timestamp in seconds of last time catalog product group was updated.
  */
 
 
 data class CatalogsRetailProductGroup (
 
-    @Json(name = "catalog_type")
-    val catalogType: CatalogsRetailProductGroup.CatalogType,
-
-    /* ID of the catalog product group. */
-    @Json(name = "id")
-    val id: kotlin.String,
-
-    @Json(name = "filters")
-    val filters: CatalogsProductGroupFilters,
-
     /* Catalog id pertaining to the retail product group. */
     @Json(name = "catalog_id")
     val catalogId: kotlin.String,
+
+    @Json(name = "catalog_type")
+    val catalogType: CatalogsRetailProductGroup.CatalogType,
 
     /* id of the catalogs feed belonging to this catalog product group */
     @Json(name = "feed_id")
     val feedId: kotlin.String?,
 
-    /* Name of catalog product group */
-    @Json(name = "name")
-    val name: kotlin.String? = null,
+    @Json(name = "filters")
+    val filters: CatalogsProductGroupFilters,
+
+    /* ID of the catalog product group. */
+    @Json(name = "id")
+    val id: kotlin.String,
+
+    @Json(name = "type")
+    val type: CatalogsProductGroupType,
+
+    @Json(name = "country")
+    val country: kotlin.String? = null,
+
+    /* Unix timestamp in seconds of when catalog product group was created. */
+    @Json(name = "created_at")
+    val createdAt: kotlin.Int? = null,
 
     @Json(name = "description")
     val description: kotlin.String? = null,
@@ -74,25 +80,19 @@ data class CatalogsRetailProductGroup (
     @Deprecated(message = "This property is deprecated.")
     val isFeatured: kotlin.Boolean? = null,
 
-    @Json(name = "type")
-    val type: CatalogsProductGroupType? = null,
+    @Json(name = "locale")
+    val locale: kotlin.String? = null,
+
+    /* Name of catalog product group */
+    @Json(name = "name")
+    val name: kotlin.String? = null,
 
     @Json(name = "status")
     val status: CatalogsProductGroupStatus? = null,
 
-    /* Unix timestamp in seconds of when catalog product group was created. */
-    @Json(name = "created_at")
-    val createdAt: kotlin.Int? = null,
-
     /* Unix timestamp in seconds of last time catalog product group was updated. */
     @Json(name = "updated_at")
-    val updatedAt: kotlin.Int? = null,
-
-    @Json(name = "country")
-    val country: kotlin.String? = null,
-
-    @Json(name = "locale")
-    val locale: kotlin.String? = null
+    val updatedAt: kotlin.Int? = null
 
 ) {
 

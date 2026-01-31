@@ -7,33 +7,27 @@
 #' @title AdsCreditRedeemResponse
 #' @description AdsCreditRedeemResponse Class
 #' @format An \code{R6Class} generator object
-#' @field success Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true). character [optional]
 #' @field errorCode Error code type if error occurs integer [optional]
 #' @field errorMessage Reason for failure character [optional]
+#' @field success Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true). character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 AdsCreditRedeemResponse <- R6::R6Class(
   "AdsCreditRedeemResponse",
   public = list(
-    `success` = NULL,
     `errorCode` = NULL,
     `errorMessage` = NULL,
+    `success` = NULL,
 
     #' @description
     #' Initialize a new AdsCreditRedeemResponse class.
     #'
-    #' @param success Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
     #' @param errorCode Error code type if error occurs
     #' @param errorMessage Reason for failure
+    #' @param success Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
     #' @param ... Other optional arguments.
-    initialize = function(`success` = NULL, `errorCode` = NULL, `errorMessage` = NULL, ...) {
-      if (!is.null(`success`)) {
-        if (!(is.logical(`success`) && length(`success`) == 1)) {
-          stop(paste("Error! Invalid data for `success`. Must be a boolean:", `success`))
-        }
-        self$`success` <- `success`
-      }
+    initialize = function(`errorCode` = NULL, `errorMessage` = NULL, `success` = NULL, ...) {
       if (!is.null(`errorCode`)) {
         if (!(is.numeric(`errorCode`) && length(`errorCode`) == 1)) {
           stop(paste("Error! Invalid data for `errorCode`. Must be an integer:", `errorCode`))
@@ -45,6 +39,12 @@ AdsCreditRedeemResponse <- R6::R6Class(
           stop(paste("Error! Invalid data for `errorMessage`. Must be a string:", `errorMessage`))
         }
         self$`errorMessage` <- `errorMessage`
+      }
+      if (!is.null(`success`)) {
+        if (!(is.logical(`success`) && length(`success`) == 1)) {
+          stop(paste("Error! Invalid data for `success`. Must be a boolean:", `success`))
+        }
+        self$`success` <- `success`
       }
     },
 
@@ -79,10 +79,6 @@ AdsCreditRedeemResponse <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       AdsCreditRedeemResponseObject <- list()
-      if (!is.null(self$`success`)) {
-        AdsCreditRedeemResponseObject[["success"]] <-
-          self$`success`
-      }
       if (!is.null(self$`errorCode`)) {
         AdsCreditRedeemResponseObject[["errorCode"]] <-
           self$`errorCode`
@@ -90,6 +86,10 @@ AdsCreditRedeemResponse <- R6::R6Class(
       if (!is.null(self$`errorMessage`)) {
         AdsCreditRedeemResponseObject[["errorMessage"]] <-
           self$`errorMessage`
+      }
+      if (!is.null(self$`success`)) {
+        AdsCreditRedeemResponseObject[["success"]] <-
+          self$`success`
       }
       return(AdsCreditRedeemResponseObject)
     },
@@ -101,14 +101,14 @@ AdsCreditRedeemResponse <- R6::R6Class(
     #' @return the instance of AdsCreditRedeemResponse
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`success`)) {
-        self$`success` <- this_object$`success`
-      }
       if (!is.null(this_object$`errorCode`)) {
         self$`errorCode` <- this_object$`errorCode`
       }
       if (!is.null(this_object$`errorMessage`)) {
         self$`errorMessage` <- this_object$`errorMessage`
+      }
+      if (!is.null(this_object$`success`)) {
+        self$`success` <- this_object$`success`
       }
       self
     },
@@ -131,9 +131,9 @@ AdsCreditRedeemResponse <- R6::R6Class(
     #' @return the instance of AdsCreditRedeemResponse
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`success` <- this_object$`success`
       self$`errorCode` <- this_object$`errorCode`
       self$`errorMessage` <- this_object$`errorMessage`
+      self$`success` <- this_object$`success`
       self
     },
 

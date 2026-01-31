@@ -12,10 +12,10 @@ module BulkDownloadRequest =
 
 
   type BulkDownloadRequest = {
-    EntityTypes : BulkEntityType[];
-    EntityIds : string[];
-    UpdatedSince : string;
     CampaignFilter : BulkDownloadRequestCampaignFilter;
+    EntityIds : string[];
+    EntityTypes : BulkEntityType[];
     OutputFormat : BulkOutputFormat;
+    UpdatedSince : string;
   }
   //#endregion

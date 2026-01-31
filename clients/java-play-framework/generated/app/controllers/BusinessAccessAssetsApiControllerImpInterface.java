@@ -105,12 +105,12 @@ public abstract class BusinessAccessAssetsApiControllerImpInterface {
 
     public abstract UpdateAssetGroupResponse assetGroupUpdate(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId, UpdateAssetGroupBody updateAssetGroupBody) throws Exception;
 
-    public Result businessAssetMembersGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String assetId, String bookmark,  @Min(1) @Max(250)Integer pageSize,  @Min(0)Integer startIndex) throws Exception {
+    public Result businessAssetMembersGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String assetId, Boolean fetchSystemUsers, String bookmark,  @Min(1) @Max(250)Integer pageSize,  @Min(0)Integer startIndex) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
 
-        BusinessAssetMembersGet200Response obj = businessAssetMembersGet(request, businessId, assetId, bookmark, pageSize, startIndex);
+        BusinessAssetMembersGet200Response obj = businessAssetMembersGet(request, businessId, assetId, fetchSystemUsers, bookmark, pageSize, startIndex);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             OpenAPIUtils.validate(obj);
@@ -122,7 +122,7 @@ public abstract class BusinessAccessAssetsApiControllerImpInterface {
 
     }
 
-    public abstract BusinessAssetMembersGet200Response businessAssetMembersGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String assetId, String bookmark,  @Min(1) @Max(250)Integer pageSize,  @Min(0)Integer startIndex) throws Exception;
+    public abstract BusinessAssetMembersGet200Response businessAssetMembersGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String assetId, Boolean fetchSystemUsers, String bookmark,  @Min(1) @Max(250)Integer pageSize,  @Min(0)Integer startIndex) throws Exception;
 
     public Result businessAssetPartnersGetHttp(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String assetId,  @Min(0)Integer startIndex, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {

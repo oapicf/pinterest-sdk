@@ -22,26 +22,26 @@ lead_form_update_request_t* instantiate_lead_form_update_request(int include_opt
   lead_form_update_request_t* lead_form_update_request = NULL;
   if (include_optional) {
     lead_form_update_request = lead_form_update_request_create(
-      "Lead Form 3/14/2023",
-      "https://www.advertisername.com/privacy-policy",
-      false,
       "Thank you for submitting. We will contact you soon.",
-      pinterest_rest_api_lead_form_update_request__"DRAFT",
       "By entering your personal information, you agree that your data will be collected and used.",
-      [{question_type=CUSTOM, custom_question_field_type=CHECKBOX, custom_question_label=What is your favorite animal?, custom_question_options=[Dog, Cat, Bird, Turtle]}],
+      false,
+      "Lead Form 3/14/2023",
       [{label=Copyright, link=https://policy.pinterest.com/en/copyright}],
+      "https://www.advertisername.com/privacy-policy",
+      [{question_type=CUSTOM, custom_question_field_type=CHECKBOX, custom_question_label=What is your favorite animal?, custom_question_options=[Dog, Cat, Bird, Turtle]}],
+      pinterest_rest_api_lead_form_update_request__"DRAFT",
       "7765300871171"
     );
   } else {
     lead_form_update_request = lead_form_update_request_create(
-      "Lead Form 3/14/2023",
-      "https://www.advertisername.com/privacy-policy",
-      false,
       "Thank you for submitting. We will contact you soon.",
-      pinterest_rest_api_lead_form_update_request__"DRAFT",
       "By entering your personal information, you agree that your data will be collected and used.",
-      [{question_type=CUSTOM, custom_question_field_type=CHECKBOX, custom_question_label=What is your favorite animal?, custom_question_options=[Dog, Cat, Bird, Turtle]}],
+      false,
+      "Lead Form 3/14/2023",
       [{label=Copyright, link=https://policy.pinterest.com/en/copyright}],
+      "https://www.advertisername.com/privacy-policy",
+      [{question_type=CUSTOM, custom_question_field_type=CHECKBOX, custom_question_label=What is your favorite animal?, custom_question_options=[Dog, Cat, Bird, Turtle]}],
+      pinterest_rest_api_lead_form_update_request__"DRAFT",
       "7765300871171"
     );
   }

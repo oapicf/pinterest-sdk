@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**productBrand** | **String** | Product brand. For example, \&quot;Parker\&quot;. | [optional] 
-**productCategory** | **String** | Product category. For example, \&quot;Shoes\&quot;. | [optional] 
+**productBrand** | **String** | Product brand. For example, &#39;Parker&#39;. | [optional] 
+**productCategory** | **String** | Product category. For example, &#39;Shoes&#39;. | [optional] 
 **productId** | **Number** | Product ID. For example, 1414. | [optional] 
-**productName** | **String** | Product name. For example, \&quot;Parker Boots\&quot;. | [optional] 
-**productPrice** | **String** | Product price. For example, \&quot;99.99\&quot;. | [optional] 
+**productName** | **String** | Product name. For example, &#39;Parker Boots&#39;. | [optional] 
+**productPrice** | **String** | Product price. For example, &#39;99.99&#39;. | [optional] 
 **productQuantity** | **Number** | Product quantity. For example, 2. | [optional] 
-**productVariant** | **String** | Product variant. For example, \&quot;Red\&quot;. | [optional] 
-**productVariantId** | **String** | Product variant ID. For example, \&quot;1414-34832\&quot;. | [optional] 
+**productVariant** | **String** | Product variant. For example, &#39;Red&#39;. | [optional] 
+**productVariantId** | **String** | Product variant ID. For example, &#39;1414-34832&#39;. | [optional] 
 
 

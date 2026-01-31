@@ -20,11 +20,11 @@ API.Client.AdsCreditDiscountsResponse.prototype.active;
 API.Client.AdsCreditDiscountsResponse.prototype.advertiserId;
 
 /**
- * The type of discount of this credit
+ * Currency value for the discount.
  * @type {!string}
  * @export
  */
-API.Client.AdsCreditDiscountsResponse.prototype.discountType;
+API.Client.AdsCreditDiscountsResponse.prototype.discountCurrency;
 
 /**
  * The discount applied in the offer’s currency value.
@@ -34,18 +34,11 @@ API.Client.AdsCreditDiscountsResponse.prototype.discountType;
 API.Client.AdsCreditDiscountsResponse.prototype.discountInMicroCurrency;
 
 /**
- * Currency value for the discount.
+ * The type of discount of this credit
  * @type {!string}
  * @export
  */
-API.Client.AdsCreditDiscountsResponse.prototype.discountCurrency;
-
-/**
- * Human readable title of the offer code.
- * @type {!string}
- * @export
- */
-API.Client.AdsCreditDiscountsResponse.prototype.title;
+API.Client.AdsCreditDiscountsResponse.prototype.discountType;
 
 /**
  * The credits left to spend.
@@ -53,6 +46,13 @@ API.Client.AdsCreditDiscountsResponse.prototype.title;
  * @export
  */
 API.Client.AdsCreditDiscountsResponse.prototype.remainingDiscountInMicroCurrency;
+
+/**
+ * Human readable title of the offer code.
+ * @type {!string}
+ * @export
+ */
+API.Client.AdsCreditDiscountsResponse.prototype.title;
 
 /** @enum {string} */
 API.Client.AdsCreditDiscountsResponse.DiscountTypeEnum = { 

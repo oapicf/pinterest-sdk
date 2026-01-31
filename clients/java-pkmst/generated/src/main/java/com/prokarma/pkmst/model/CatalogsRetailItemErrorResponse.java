@@ -21,17 +21,17 @@ import java.util.List;
  */
 @ApiModel(description = "Object describing a retail item error")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailItemErrorResponse   {
   @JsonProperty("catalog_type")
   private CatalogsType catalogType;
 
-  @JsonProperty("item_id")
-  private String itemId;
-
   @JsonProperty("errors")
   
-  private List<ItemValidationEvent> errors = null;
+  private List<ItemValidationEvent> errors = new ArrayList<>();
+
+  @JsonProperty("item_id")
+  private String itemId;
 
   public CatalogsRetailItemErrorResponse catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
@@ -49,6 +49,32 @@ public class CatalogsRetailItemErrorResponse   {
 
   public void setCatalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
+  }
+
+  public CatalogsRetailItemErrorResponse errors(List<ItemValidationEvent> errors) {
+    this.errors = errors;
+    return this;
+  }
+
+  public CatalogsRetailItemErrorResponse addErrorsItem(ItemValidationEvent errorsItem) {
+    if (this.errors == null) {
+      this.errors = new ArrayList<>();
+    }
+    this.errors.add(errorsItem);
+    return this;
+  }
+
+  /**
+   * Array with the errors for the item id requested
+   * @return errors
+   */
+  @ApiModelProperty(required = true, value = "Array with the errors for the item id requested")
+  public List<ItemValidationEvent> getErrors() {
+    return errors;
+  }
+
+  public void setErrors(List<ItemValidationEvent> errors) {
+    this.errors = errors;
   }
 
   public CatalogsRetailItemErrorResponse itemId(String itemId) {
@@ -69,32 +95,6 @@ public class CatalogsRetailItemErrorResponse   {
     this.itemId = itemId;
   }
 
-  public CatalogsRetailItemErrorResponse errors(List<ItemValidationEvent> errors) {
-    this.errors = errors;
-    return this;
-  }
-
-  public CatalogsRetailItemErrorResponse addErrorsItem(ItemValidationEvent errorsItem) {
-    if (this.errors == null) {
-      this.errors = new ArrayList<>();
-    }
-    this.errors.add(errorsItem);
-    return this;
-  }
-
-  /**
-   * Array with the errors for the item id requested
-   * @return errors
-   */
-  @ApiModelProperty(value = "Array with the errors for the item id requested")
-  public List<ItemValidationEvent> getErrors() {
-    return errors;
-  }
-
-  public void setErrors(List<ItemValidationEvent> errors) {
-    this.errors = errors;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -106,13 +106,13 @@ public class CatalogsRetailItemErrorResponse   {
     }
     CatalogsRetailItemErrorResponse catalogsRetailItemErrorResponse = (CatalogsRetailItemErrorResponse) o;
     return Objects.equals(this.catalogType, catalogsRetailItemErrorResponse.catalogType) &&
-        Objects.equals(this.itemId, catalogsRetailItemErrorResponse.itemId) &&
-        Objects.equals(this.errors, catalogsRetailItemErrorResponse.errors);
+        Objects.equals(this.errors, catalogsRetailItemErrorResponse.errors) &&
+        Objects.equals(this.itemId, catalogsRetailItemErrorResponse.itemId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, errors);
+    return Objects.hash(catalogType, errors, itemId);
   }
 
   @Override
@@ -121,8 +121,8 @@ public class CatalogsRetailItemErrorResponse   {
     sb.append("class CatalogsRetailItemErrorResponse {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

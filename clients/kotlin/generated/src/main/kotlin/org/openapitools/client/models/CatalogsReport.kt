@@ -23,8 +23,8 @@ import com.squareup.moshi.JsonClass
  * 
  *
  * @param reportStatus 
- * @param url URL to download the report
  * @param propertySize Size of the report in bytes
+ * @param url URL to download the report
  */
 
 
@@ -33,13 +33,13 @@ data class CatalogsReport (
     @Json(name = "report_status")
     val reportStatus: CatalogsReport.ReportStatus? = null,
 
-    /* URL to download the report */
-    @Json(name = "url")
-    val url: kotlin.String? = null,
-
     /* Size of the report in bytes */
     @Json(name = "size")
-    val propertySize: java.math.BigDecimal? = null
+    val propertySize: java.math.BigDecimal? = null,
+
+    /* URL to download the report */
+    @Json(name = "url")
+    val url: kotlin.String? = null
 
 ) {
 

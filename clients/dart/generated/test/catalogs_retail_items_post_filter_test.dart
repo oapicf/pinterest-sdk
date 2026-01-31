@@ -16,6 +16,12 @@ void main() {
   // final instance = CatalogsRetailItemsPostFilter();
 
   group('test CatalogsRetailItemsPostFilter', () {
+    // Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
+    // String catalogId
+    test('to test the property `catalogId`', () async {
+      // TODO
+    });
+
     // String catalogType
     test('to test the property `catalogType`', () async {
       // TODO
@@ -23,12 +29,6 @@ void main() {
 
     // List<String> itemIds (default value: const [])
     test('to test the property `itemIds`', () async {
-      // TODO
-    });
-
-    // Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
-    // String catalogId
-    test('to test the property `catalogId`', () async {
       // TODO
     });
 

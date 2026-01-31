@@ -45,13 +45,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Website with path or domain only
-	 */
-	std::string getWebsite();
-
-	/*! \brief Set Website with path or domain only
-	 */
-	void setWebsite(std::string  website);
 	/*! \brief Get Status of the verification process
 	 */
 	std::string getStatus();
@@ -66,11 +59,18 @@ public:
 	/*! \brief Set UTC timestamp when the verification happened - sometimes missing
 	 */
 	void setVerifiedAt(std::string  verified_at);
+	/*! \brief Get Website with path or domain only
+	 */
+	std::string getWebsite();
+
+	/*! \brief Set Website with path or domain only
+	 */
+	void setWebsite(std::string  website);
 
 private:
-	std::string website;
 	std::string status;
 	std::string verified_at;
+	std::string website;
 	void __init();
 	void __cleanup();
 

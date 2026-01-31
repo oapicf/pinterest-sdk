@@ -9,9 +9,30 @@ import javax.validation.Valid;
 /**
  * CatalogsReportFeedIngestionStats
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsReportFeedIngestionStats   {
+  @JsonProperty("catalog_id")
+  @Pattern(regexp="^\\d+$")
+
+  private String catalogId;
+
+  @JsonProperty("code")
+  
+  private Integer code;
+
+  @JsonProperty("code_label")
+  
+  private String codeLabel;
+
+  @JsonProperty("message")
+  
+  private String message;
+
+  @JsonProperty("occurrences")
+  
+  private Integer occurrences;
+
   /**
    * Gets or Sets reportType
    */
@@ -44,27 +65,6 @@ public class CatalogsReportFeedIngestionStats   {
   @JsonProperty("report_type")
   
   private ReportTypeEnum reportType;
-
-  @JsonProperty("catalog_id")
-  @Pattern(regexp="^\\d+$")
-
-  private String catalogId;
-
-  @JsonProperty("code")
-  
-  private Integer code;
-
-  @JsonProperty("code_label")
-  
-  private String codeLabel;
-
-  @JsonProperty("message")
-  
-  private String message;
-
-  @JsonProperty("occurrences")
-  
-  private Integer occurrences;
 
   /**
    * An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
@@ -100,23 +100,6 @@ public class CatalogsReportFeedIngestionStats   {
   @JsonProperty("severity")
   
   private SeverityEnum severity;
-
-  public CatalogsReportFeedIngestionStats reportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-    return this;
-  }
-
-   /**
-   * Get reportType
-   * @return reportType
-  **/
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-
-  public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
 
   public CatalogsReportFeedIngestionStats catalogId(String catalogId) {
     this.catalogId = catalogId;
@@ -203,6 +186,23 @@ public class CatalogsReportFeedIngestionStats   {
     this.occurrences = occurrences;
   }
 
+  public CatalogsReportFeedIngestionStats reportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+    return this;
+  }
+
+   /**
+   * Get reportType
+   * @return reportType
+  **/
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
   public CatalogsReportFeedIngestionStats severity(SeverityEnum severity) {
     this.severity = severity;
     return this;
@@ -230,18 +230,18 @@ public class CatalogsReportFeedIngestionStats   {
       return false;
     }
     CatalogsReportFeedIngestionStats catalogsReportFeedIngestionStats = (CatalogsReportFeedIngestionStats) o;
-    return Objects.equals(reportType, catalogsReportFeedIngestionStats.reportType) &&
-        Objects.equals(catalogId, catalogsReportFeedIngestionStats.catalogId) &&
+    return Objects.equals(catalogId, catalogsReportFeedIngestionStats.catalogId) &&
         Objects.equals(code, catalogsReportFeedIngestionStats.code) &&
         Objects.equals(codeLabel, catalogsReportFeedIngestionStats.codeLabel) &&
         Objects.equals(message, catalogsReportFeedIngestionStats.message) &&
         Objects.equals(occurrences, catalogsReportFeedIngestionStats.occurrences) &&
+        Objects.equals(reportType, catalogsReportFeedIngestionStats.reportType) &&
         Objects.equals(severity, catalogsReportFeedIngestionStats.severity);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, catalogId, code, codeLabel, message, occurrences, severity);
+    return Objects.hash(catalogId, code, codeLabel, message, occurrences, reportType, severity);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -250,12 +250,12 @@ public class CatalogsReportFeedIngestionStats   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportFeedIngestionStats {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    codeLabel: ").append(toIndentedString(codeLabel)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    occurrences: ").append(toIndentedString(occurrences)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    severity: ").append(toIndentedString(severity)).append("\n");
     sb.append("}");
     return sb.toString();

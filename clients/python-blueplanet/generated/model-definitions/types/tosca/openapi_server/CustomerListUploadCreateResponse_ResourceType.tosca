@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CustomerListUploadCreateResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CustomerListUploadCreateResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CustomerListUpload = openapi_server.resourceTypes.CustomerListUpload
+  S3MultipartUploadData = openapi_server.resourceTypes.S3MultipartUploadData
+}
+resourceTypes {
+
+  CustomerListUploadCreateResponse {
+    title = CustomerListUploadCreateResponse
+    description = CustomerListUploadCreateResponse
+    derivedFrom = Root
+    properties {
+        customer_list_upload {
+          type = CustomerListUpload
+          description = ""
+          optional = true
+        }
+        s3_multipart_upload_data {
+          type = S3MultipartUploadData
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CustomerListUploadCreateResponse {
+    title = CustomerListUploadCreateResponse
+    description = CustomerListUploadCreateResponse
+    implements = openapi_server.resourceTypes.CustomerListUploadCreateResponse
+
+  }
+}

@@ -20,19 +20,19 @@ typedef struct catalogs_product_group_update_request_t catalogs_product_group_up
 
 
 typedef struct catalogs_product_group_update_request_t {
-    char *name; // string
     char *description; // string
-    int is_featured; //boolean
     struct catalogs_product_group_filters_request_t *filters; //model
+    int is_featured; //boolean
+    char *name; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_product_group_update_request_t;
 
 __attribute__((deprecated)) catalogs_product_group_update_request_t *catalogs_product_group_update_request_create(
-    char *name,
     char *description,
+    catalogs_product_group_filters_request_t *filters,
     int is_featured,
-    catalogs_product_group_filters_request_t *filters
+    char *name
 );
 
 void catalogs_product_group_update_request_free(catalogs_product_group_update_request_t *catalogs_product_group_update_request);

@@ -16,13 +16,13 @@ void main() {
   // final instance = OrderLinesList200Response();
 
   group('test OrderLinesList200Response', () {
-    // List<OrderLine> items (default value: const [])
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // List<OrderLine> items (default value: const [])
+    test('to test the property `items`', () async {
       // TODO
     });
 

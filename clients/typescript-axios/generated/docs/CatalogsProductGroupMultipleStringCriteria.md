@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**values** | **Array&lt;string&gt;** |  | [default to undefined]
 **negated** | **boolean** |  | [optional] [default to false]
+**values** | **Array&lt;string&gt;** |  | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { CatalogsProductGroupMultipleStringCriteria } from './api';
 
 const instance: CatalogsProductGroupMultipleStringCriteria = {
-    values,
     negated,
+    values,
 };
 ```
 

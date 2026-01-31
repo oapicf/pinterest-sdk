@@ -25,8 +25,8 @@ CreativeAssetsProcessingRecord::__init()
 {
 	//creative_assets_id = std::string();
 	//new std::list()std::list> errors;
-	//new std::list()std::list> warnings;
 	//status = new ItemProcessingStatus();
+	//new std::list()std::list> warnings;
 }
 
 void
@@ -42,15 +42,15 @@ CreativeAssetsProcessingRecord::__cleanup()
 	//delete errors;
 	//errors = NULL;
 	//}
-	//if(warnings != NULL) {
-	//warnings.RemoveAll(true);
-	//delete warnings;
-	//warnings = NULL;
-	//}
 	//if(status != NULL) {
 	//
 	//delete status;
 	//status = NULL;
+	//}
+	//if(warnings != NULL) {
+	//warnings.RemoveAll(true);
+	//delete warnings;
+	//warnings = NULL;
 	//}
 	//
 }
@@ -95,6 +95,20 @@ CreativeAssetsProcessingRecord::fromJson(char* jsonStr)
 		}
 		
 	}
+	const gchar *statusKey = "status";
+	node = json_object_get_member(pJsonObject, statusKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("ItemProcessingStatus")) {
+			jsonToValue(&status, node, "ItemProcessingStatus", "ItemProcessingStatus");
+		} else {
+			
+			ItemProcessingStatus* obj = static_cast<ItemProcessingStatus*> (&status);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 	const gchar *warningsKey = "warnings";
 	node = json_object_get_member(pJsonObject, warningsKey);
 	if (node !=NULL) {
@@ -118,20 +132,6 @@ CreativeAssetsProcessingRecord::fromJson(char* jsonStr)
 			warnings = new_list;
 		}
 		
-	}
-	const gchar *statusKey = "status";
-	node = json_object_get_member(pJsonObject, statusKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("ItemProcessingStatus")) {
-			jsonToValue(&status, node, "ItemProcessingStatus", "ItemProcessingStatus");
-		} else {
-			
-			ItemProcessingStatus* obj = static_cast<ItemProcessingStatus*> (&status);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
 	}
 }
 
@@ -179,6 +179,20 @@ CreativeAssetsProcessingRecord::toJson()
 	
 	const gchar *errorsKey = "errors";
 	json_object_set_member(pJsonObject, errorsKey, node);
+	if (isprimitive("ItemProcessingStatus")) {
+		ItemProcessingStatus obj = getStatus();
+		node = converttoJson(&obj, "ItemProcessingStatus", "");
+	}
+	else {
+		
+		ItemProcessingStatus obj = static_cast<ItemProcessingStatus> (getStatus());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *statusKey = "status";
+	json_object_set_member(pJsonObject, statusKey, node);
 	if (isprimitive("ItemValidationEvent")) {
 		list<ItemValidationEvent> new_list = static_cast<list <ItemValidationEvent> > (getWarnings());
 		node = converttoJson(&new_list, "ItemValidationEvent", "array");
@@ -204,20 +218,6 @@ CreativeAssetsProcessingRecord::toJson()
 	
 	const gchar *warningsKey = "warnings";
 	json_object_set_member(pJsonObject, warningsKey, node);
-	if (isprimitive("ItemProcessingStatus")) {
-		ItemProcessingStatus obj = getStatus();
-		node = converttoJson(&obj, "ItemProcessingStatus", "");
-	}
-	else {
-		
-		ItemProcessingStatus obj = static_cast<ItemProcessingStatus> (getStatus());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *statusKey = "status";
-	json_object_set_member(pJsonObject, statusKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -250,18 +250,6 @@ CreativeAssetsProcessingRecord::setErrors(std::list <ItemValidationEvent> errors
 	this->errors = errors;
 }
 
-std::list<ItemValidationEvent>
-CreativeAssetsProcessingRecord::getWarnings()
-{
-	return warnings;
-}
-
-void
-CreativeAssetsProcessingRecord::setWarnings(std::list <ItemValidationEvent> warnings)
-{
-	this->warnings = warnings;
-}
-
 ItemProcessingStatus
 CreativeAssetsProcessingRecord::getStatus()
 {
@@ -272,6 +260,18 @@ void
 CreativeAssetsProcessingRecord::setStatus(ItemProcessingStatus  status)
 {
 	this->status = status;
+}
+
+std::list<ItemValidationEvent>
+CreativeAssetsProcessingRecord::getWarnings()
+{
+	return warnings;
+}
+
+void
+CreativeAssetsProcessingRecord::setWarnings(std::list <ItemValidationEvent> warnings)
+{
+	this->warnings = warnings;
 }
 
 

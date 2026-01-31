@@ -5,7 +5,6 @@ All URIs are relative to *https://api.pinterest.com/v5*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**audiences/create**](AudiencesApi.md#audiences/create) | **POST** /ad_accounts/{ad_account_id}/audiences | Create audience |
-| [**audiences/createCustom**](AudiencesApi.md#audiences/createCustom) | **POST** /ad_accounts/{ad_account_id}/audiences/custom | Create custom audience |
 | [**audiences/get**](AudiencesApi.md#audiences/get) | **GET** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Get audience |
 | [**audiences/list**](AudiencesApi.md#audiences/list) | **GET** /ad_accounts/{ad_account_id}/audiences | List audiences |
 | [**audiences/update**](AudiencesApi.md#audiences/update) | **PATCH** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Update audience |
@@ -17,7 +16,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Create audience
 
-    Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. &lt;p/&gt; For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt;.
+    Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;.
 
 ### Parameters
 
@@ -25,34 +24,6 @@ Create audience
 |------------- | ------------- | ------------- | -------------|
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [default to null] |
 | **AudienceCreateRequest** | [**AudienceCreateRequest**](../Models/AudienceCreateRequest.md)| List of ads to create, size limit [1, 30] | |
-
-### Return type
-
-[**Audience**](../Models/Audience.md)
-
-### Authorization
-
-[pinterest_oauth2](../README.md#pinterest_oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-<a name="audiences/createCustom"></a>
-# **audiences/createCustom**
-> Audience audiences/createCustom(ad\_account\_id, AudienceCreateCustomRequest)
-
-Create custom audience
-
-    Create a custom audience and find the audiences you want your ads to reach.
-
-### Parameters
-
-|Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **ad\_account\_id** | **String**| Unique identifier of an ad account. | [default to null] |
-| **AudienceCreateCustomRequest** | [**AudienceCreateCustomRequest**](../Models/AudienceCreateCustomRequest.md)| Custom audience to create. | |
 
 ### Return type
 
@@ -88,7 +59,7 @@ Get audience
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -119,7 +90,7 @@ List audiences
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -140,7 +111,7 @@ Update audience
 |------------- | ------------- | ------------- | -------------|
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [default to null] |
 | **audience\_id** | **String**| Unique identifier of an audience | [default to null] |
-| **AudienceUpdateRequest** | [**AudienceUpdateRequest**](../Models/AudienceUpdateRequest.md)| The audience to be updated. | [optional] |
+| **AudienceUpdateRequest** | [**AudienceUpdateRequest**](../Models/AudienceUpdateRequest.md)| The audience to be updated. | |
 
 ### Return type
 

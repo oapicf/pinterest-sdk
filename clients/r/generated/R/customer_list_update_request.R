@@ -7,33 +7,24 @@
 #' @title CustomerListUpdateRequest
 #' @description CustomerListUpdateRequest Class
 #' @format An \code{R6Class} generator object
-#' @field records Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5. character
 #' @field operation_type  \link{UserListOperationType}
-#' @field exceptions  \link{Exception} [optional]
+#' @field records Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5. character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CustomerListUpdateRequest <- R6::R6Class(
   "CustomerListUpdateRequest",
   public = list(
-    `records` = NULL,
     `operation_type` = NULL,
-    `exceptions` = NULL,
+    `records` = NULL,
 
     #' @description
     #' Initialize a new CustomerListUpdateRequest class.
     #'
-    #' @param records Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
     #' @param operation_type operation_type
-    #' @param exceptions exceptions
+    #' @param records Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
     #' @param ... Other optional arguments.
-    initialize = function(`records`, `operation_type`, `exceptions` = NULL, ...) {
-      if (!missing(`records`)) {
-        if (!(is.character(`records`) && length(`records`) == 1)) {
-          stop(paste("Error! Invalid data for `records`. Must be a string:", `records`))
-        }
-        self$`records` <- `records`
-      }
+    initialize = function(`operation_type`, `records`, ...) {
       if (!missing(`operation_type`)) {
         if (!(`operation_type` %in% c())) {
           stop(paste("Error! \"", `operation_type`, "\" cannot be assigned to `operation_type`. Must be .", sep = ""))
@@ -41,9 +32,11 @@ CustomerListUpdateRequest <- R6::R6Class(
         stopifnot(R6::is.R6(`operation_type`))
         self$`operation_type` <- `operation_type`
       }
-      if (!is.null(`exceptions`)) {
-        stopifnot(R6::is.R6(`exceptions`))
-        self$`exceptions` <- `exceptions`
+      if (!missing(`records`)) {
+        if (!(is.character(`records`) && length(`records`) == 1)) {
+          stop(paste("Error! Invalid data for `records`. Must be a string:", `records`))
+        }
+        self$`records` <- `records`
       }
     },
 
@@ -78,17 +71,13 @@ CustomerListUpdateRequest <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CustomerListUpdateRequestObject <- list()
-      if (!is.null(self$`records`)) {
-        CustomerListUpdateRequestObject[["records"]] <-
-          self$`records`
-      }
       if (!is.null(self$`operation_type`)) {
         CustomerListUpdateRequestObject[["operation_type"]] <-
           self$`operation_type`$toSimpleType()
       }
-      if (!is.null(self$`exceptions`)) {
-        CustomerListUpdateRequestObject[["exceptions"]] <-
-          self$`exceptions`$toSimpleType()
+      if (!is.null(self$`records`)) {
+        CustomerListUpdateRequestObject[["records"]] <-
+          self$`records`
       }
       return(CustomerListUpdateRequestObject)
     },
@@ -100,18 +89,13 @@ CustomerListUpdateRequest <- R6::R6Class(
     #' @return the instance of CustomerListUpdateRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`records`)) {
-        self$`records` <- this_object$`records`
-      }
       if (!is.null(this_object$`operation_type`)) {
         `operation_type_object` <- UserListOperationType$new()
         `operation_type_object`$fromJSON(jsonlite::toJSON(this_object$`operation_type`, auto_unbox = TRUE, digits = NA))
         self$`operation_type` <- `operation_type_object`
       }
-      if (!is.null(this_object$`exceptions`)) {
-        `exceptions_object` <- Exception$new()
-        `exceptions_object`$fromJSON(jsonlite::toJSON(this_object$`exceptions`, auto_unbox = TRUE, digits = NA))
-        self$`exceptions` <- `exceptions_object`
+      if (!is.null(this_object$`records`)) {
+        self$`records` <- this_object$`records`
       }
       self
     },
@@ -134,9 +118,8 @@ CustomerListUpdateRequest <- R6::R6Class(
     #' @return the instance of CustomerListUpdateRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`records` <- this_object$`records`
       self$`operation_type` <- UserListOperationType$new()$fromJSON(jsonlite::toJSON(this_object$`operation_type`, auto_unbox = TRUE, digits = NA))
-      self$`exceptions` <- Exception$new()$fromJSON(jsonlite::toJSON(this_object$`exceptions`, auto_unbox = TRUE, digits = NA))
+      self$`records` <- this_object$`records`
       self
     },
 
@@ -146,6 +129,12 @@ CustomerListUpdateRequest <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `operation_type`
+      if (!is.null(input_json$`operation_type`)) {
+        stopifnot(R6::is.R6(input_json$`operation_type`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CustomerListUpdateRequest: the required field `operation_type` is missing."))
+      }
       # check the required field `records`
       if (!is.null(input_json$`records`)) {
         if (!(is.character(input_json$`records`) && length(input_json$`records`) == 1)) {
@@ -153,12 +142,6 @@ CustomerListUpdateRequest <- R6::R6Class(
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CustomerListUpdateRequest: the required field `records` is missing."))
-      }
-      # check the required field `operation_type`
-      if (!is.null(input_json$`operation_type`)) {
-        stopifnot(R6::is.R6(input_json$`operation_type`))
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for CustomerListUpdateRequest: the required field `operation_type` is missing."))
       }
     },
 
@@ -175,13 +158,13 @@ CustomerListUpdateRequest <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      # check if the required `records` is null
-      if (is.null(self$`records`)) {
+      # check if the required `operation_type` is null
+      if (is.null(self$`operation_type`)) {
         return(FALSE)
       }
 
-      # check if the required `operation_type` is null
-      if (is.null(self$`operation_type`)) {
+      # check if the required `records` is null
+      if (is.null(self$`records`)) {
         return(FALSE)
       }
 
@@ -194,14 +177,14 @@ CustomerListUpdateRequest <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      # check if the required `records` is null
-      if (is.null(self$`records`)) {
-        invalid_fields["records"] <- "Non-nullable required field `records` cannot be null."
-      }
-
       # check if the required `operation_type` is null
       if (is.null(self$`operation_type`)) {
         invalid_fields["operation_type"] <- "Non-nullable required field `operation_type` cannot be null."
+      }
+
+      # check if the required `records` is null
+      if (is.null(self$`records`)) {
+        invalid_fields["records"] <- "Non-nullable required field `records` cannot be null."
       }
 
       invalid_fields

@@ -10,15 +10,15 @@ import org.openapitools._
  * 
  * @param addr1 Primary street address of hotel.
  * @param city City where the hotel is located.
- * @param region State, county, province, where the hotel is located.
  * @param country Country where the hotel is located.
  * @param postalUnderscorecode Required for countries with a postal code system. Postal or zip code of the hotel.
+ * @param region State, county, province, where the hotel is located.
  */
 case class CatalogsHotelAddress(addr1: Option[String],
                 city: Option[String],
-                region: Option[String],
                 country: Option[String],
-                postalUnderscorecode: Option[String]
+                postalUnderscorecode: Option[String],
+                region: Option[String]
                 )
 
 object CatalogsHotelAddress {

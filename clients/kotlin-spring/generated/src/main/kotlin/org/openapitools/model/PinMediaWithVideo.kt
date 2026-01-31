@@ -1,9 +1,10 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.PinMedia
-import org.openapitools.model.PinMediaWithImageAllOfImages
+import com.fasterxml.jackson.annotation.JsonValue
+import org.openapitools.model.ImageSize
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -17,37 +18,56 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * Pin with video.
- * @param images 
+ * @param mediaType 
  * @param coverImageUrl 
- * @param videoUrl Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
- * @param duration Duration (in milliseconds)
- * @param height Height (in pixels)
- * @param width Width (in pixels)
+ * @param duration Duration (in miliseconds). Field maybe null after creation due to video processing time.
+ * @param height Height (in pixels). Field maybe null after creation due to video processing time.
+ * @param images 
+ * @param videoUrl Video url (720p).  **Note:** This field is limited and not available to all apps.
+ * @param width Width (in pixels). Field maybe null after creation due to video processing time.
  */
 data class PinMediaWithVideo(
 
-    @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("images") val images: PinMediaWithImageAllOfImages? = null,
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("media_type", required = true) val mediaType: PinMediaWithVideo.MediaType,
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("cover_image_url") val coverImageUrl: kotlin.String? = null,
 
-    @Schema(example = "null", description = "Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.")
-    @get:JsonProperty("video_url") val videoUrl: kotlin.String? = null,
-
-    @Schema(example = "null", description = "Duration (in milliseconds)")
+    @Schema(example = "null", description = "Duration (in miliseconds). Field maybe null after creation due to video processing time.")
     @get:JsonProperty("duration") val duration: java.math.BigDecimal? = null,
 
-    @Schema(example = "null", description = "Height (in pixels)")
+    @Schema(example = "null", description = "Height (in pixels). Field maybe null after creation due to video processing time.")
     @get:JsonProperty("height") val height: kotlin.Int? = null,
 
-    @Schema(example = "null", description = "Width (in pixels)")
-    @get:JsonProperty("width") val width: kotlin.Int? = null,
-
+    @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("media_type") override val mediaType: kotlin.String? = null
-) : PinMedia {
+    @get:JsonProperty("images") val images: ImageSize? = null,
+
+    @Schema(example = "null", description = "Video url (720p).  **Note:** This field is limited and not available to all apps.")
+    @get:JsonProperty("video_url") val videoUrl: kotlin.String? = null,
+
+    @Schema(example = "null", description = "Width (in pixels). Field maybe null after creation due to video processing time.")
+    @get:JsonProperty("width") val width: kotlin.Int? = null
+) {
+
+    /**
+    * 
+    * Values: video
+    */
+    enum class MediaType(@get:JsonValue val value: kotlin.String) {
+
+        video("video");
+
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun forValue(value: kotlin.String): MediaType {
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PinMediaWithVideo'")
+            }
+        }
+    }
 
 }
 

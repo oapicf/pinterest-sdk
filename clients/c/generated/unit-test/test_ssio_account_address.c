@@ -22,17 +22,17 @@ ssio_account_address_t* instantiate_ssio_account_address(int include_optional) {
   ssio_account_address_t* ssio_account_address = NULL;
   if (include_optional) {
     ssio_account_address = ssio_account_address_create(
-      "475 Brannan Street, San Francisco, CA 94103",
-      "Billing",
       "a1C1N000004MUrLUAW",
-      "PIN US OU"
+      "475 Brannan Street, San Francisco, CA 94103",
+      "PIN US OU",
+      "Billing"
     );
   } else {
     ssio_account_address = ssio_account_address_create(
-      "475 Brannan Street, San Francisco, CA 94103",
-      "Billing",
       "a1C1N000004MUrLUAW",
-      "PIN US OU"
+      "475 Brannan Street, San Francisco, CA 94103",
+      "PIN US OU",
+      "Billing"
     );
   }
 

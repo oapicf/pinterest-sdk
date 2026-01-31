@@ -21,6 +21,14 @@ public class CatalogsCreateHotelItemTest {
     }
 
     /**
+     * Test the property 'attributes'
+     */
+    @Test
+    public void attributesTest() {
+        // TODO: test attributes
+    }
+
+    /**
      * Test the property 'hotelId'
      */
     @Test
@@ -34,14 +42,6 @@ public class CatalogsCreateHotelItemTest {
     @Test
     public void operationTest() {
         // TODO: test operation
-    }
-
-    /**
-     * Test the property 'attributes'
-     */
-    @Test
-    public void attributesTest() {
-        // TODO: test attributes
     }
 
 }

@@ -20,6 +20,8 @@ import java.util.Objects;
 @ApiModel(description = "HTTP request details included in the log sent by the client.")
 public class IntegrationLogClientRequest   {
   
+  private String host;
+
 
 public enum MethodEnum {
 
@@ -53,8 +55,6 @@ public enum MethodEnum {
 
   private MethodEnum method;
 
-  private String host;
-
   private String path;
 
   private Map<String, String> requestHeaders = new HashMap<>();
@@ -62,25 +62,6 @@ public enum MethodEnum {
   private Map<String, String> responseHeaders = new HashMap<>();
 
   private Integer responseStatusCode;
-
-  /**
-   **/
-  public IntegrationLogClientRequest method(MethodEnum method) {
-    this.method = method;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("method")
-  @NotNull
-  public MethodEnum getMethod() {
-    return method;
-  }
-  public void setMethod(MethodEnum method) {
-    this.method = method;
-  }
-
 
   /**
    * HTTP request host from host header.
@@ -99,6 +80,25 @@ public enum MethodEnum {
   }
   public void setHost(String host) {
     this.host = host;
+  }
+
+
+  /**
+   **/
+  public IntegrationLogClientRequest method(MethodEnum method) {
+    this.method = method;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("method")
+  @NotNull
+  public MethodEnum getMethod() {
+    return method;
+  }
+  public void setMethod(MethodEnum method) {
+    this.method = method;
   }
 
 
@@ -204,8 +204,8 @@ public enum MethodEnum {
       return false;
     }
     IntegrationLogClientRequest integrationLogClientRequest = (IntegrationLogClientRequest) o;
-    return Objects.equals(this.method, integrationLogClientRequest.method) &&
-        Objects.equals(this.host, integrationLogClientRequest.host) &&
+    return Objects.equals(this.host, integrationLogClientRequest.host) &&
+        Objects.equals(this.method, integrationLogClientRequest.method) &&
         Objects.equals(this.path, integrationLogClientRequest.path) &&
         Objects.equals(this.requestHeaders, integrationLogClientRequest.requestHeaders) &&
         Objects.equals(this.responseHeaders, integrationLogClientRequest.responseHeaders) &&
@@ -214,7 +214,7 @@ public enum MethodEnum {
 
   @Override
   public int hashCode() {
-    return Objects.hash(method, host, path, requestHeaders, responseHeaders, responseStatusCode);
+    return Objects.hash(host, method, path, requestHeaders, responseHeaders, responseStatusCode);
   }
 
   @Override
@@ -222,8 +222,8 @@ public enum MethodEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class IntegrationLogClientRequest {\n");
     
-    sb.append("    method: ").append(toIndentedString(method)).append("\n");
     sb.append("    host: ").append(toIndentedString(host)).append("\n");
+    sb.append("    method: ").append(toIndentedString(method)).append("\n");
     sb.append("    path: ").append(toIndentedString(path)).append("\n");
     sb.append("    requestHeaders: ").append(toIndentedString(requestHeaders)).append("\n");
     sb.append("    responseHeaders: ").append(toIndentedString(responseHeaders)).append("\n");

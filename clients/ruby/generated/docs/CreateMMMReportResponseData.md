@@ -4,10 +4,10 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **report_status** | [**BulkReportingJobStatus**](BulkReportingJobStatus.md) |  | [optional] |
-| **token** | **String** |  | [optional] |
 | **message** | **String** |  | [optional] |
+| **report_status** | [**BulkReportingJobStatus**](BulkReportingJobStatus.md) |  | [optional] |
 | **status** | **String** |  | [optional] |
+| **token** | **String** |  | [optional] |
 
 ## Example
 
@@ -15,10 +15,10 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::CreateMMMReportResponseData.new(
-  report_status: null,
-  token: null,
   message: null,
-  status: success
+  report_status: null,
+  status: success,
+  token: null
 )
 ```
 

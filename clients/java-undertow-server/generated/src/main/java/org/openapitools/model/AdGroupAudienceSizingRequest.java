@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -28,11 +28,10 @@ import org.openapitools.model.TargetingSpec;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdGroupAudienceSizingRequest   {
   
   private Boolean autoTargetingEnabled = true;
-  private PlacementGroupType placementGroup = "ALL";
 
 
   public enum CreativeTypesEnum {
@@ -59,12 +58,13 @@ public class AdGroupAudienceSizingRequest   {
   }
 
   private List<CreativeTypesEnum> creativeTypes;
-  private TargetingSpec targetingSpec;
-  private List<String> productGroupIds;
   private List<AdGroupAudienceSizingRequestKeywordsInner> keywords;
+  private PlacementGroupType placementGroup = "ALL";
+  private List<String> productGroupIds;
+  private TargetingSpec targetingSpec;
 
   /**
-   * Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+   * Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.
    */
   public AdGroupAudienceSizingRequest autoTargetingEnabled(Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
@@ -72,31 +72,13 @@ public class AdGroupAudienceSizingRequest   {
   }
 
   
-  @ApiModelProperty(example = "true", value = "Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.")
+  @ApiModelProperty(example = "true", value = "Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.")
   @JsonProperty("auto_targeting_enabled")
   public Boolean getAutoTargetingEnabled() {
     return autoTargetingEnabled;
   }
   public void setAutoTargetingEnabled(Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
-  }
-
-  /**
-   * <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
-   */
-  public AdGroupAudienceSizingRequest placementGroup(PlacementGroupType placementGroup) {
-    this.placementGroup = placementGroup;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "<a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.")
-  @JsonProperty("placement_group")
-  public PlacementGroupType getPlacementGroup() {
-    return placementGroup;
-  }
-  public void setPlacementGroup(PlacementGroupType placementGroup) {
-    this.placementGroup = placementGroup;
   }
 
   /**
@@ -118,20 +100,39 @@ public class AdGroupAudienceSizingRequest   {
   }
 
   /**
+   * Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
    */
-  public AdGroupAudienceSizingRequest targetingSpec(TargetingSpec targetingSpec) {
-    this.targetingSpec = targetingSpec;
+  public AdGroupAudienceSizingRequest keywords(List<AdGroupAudienceSizingRequestKeywordsInner> keywords) {
+    this.keywords = keywords;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
-  @JsonProperty("targeting_spec")
-  public TargetingSpec getTargetingSpec() {
-    return targetingSpec;
+  @ApiModelProperty(value = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted.")
+  @JsonProperty("keywords")
+  public List<AdGroupAudienceSizingRequestKeywordsInner> getKeywords() {
+    return keywords;
   }
-  public void setTargetingSpec(TargetingSpec targetingSpec) {
-    this.targetingSpec = targetingSpec;
+  public void setKeywords(List<AdGroupAudienceSizingRequestKeywordsInner> keywords) {
+    this.keywords = keywords;
+  }
+
+  /**
+   * <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
+   */
+  public AdGroupAudienceSizingRequest placementGroup(PlacementGroupType placementGroup) {
+    this.placementGroup = placementGroup;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "<a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.")
+  @JsonProperty("placement_group")
+  public PlacementGroupType getPlacementGroup() {
+    return placementGroup;
+  }
+  public void setPlacementGroup(PlacementGroupType placementGroup) {
+    this.placementGroup = placementGroup;
   }
 
   /**
@@ -153,21 +154,20 @@ public class AdGroupAudienceSizingRequest   {
   }
 
   /**
-   * Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
    */
-  public AdGroupAudienceSizingRequest keywords(List<AdGroupAudienceSizingRequestKeywordsInner> keywords) {
-    this.keywords = keywords;
+  public AdGroupAudienceSizingRequest targetingSpec(TargetingSpec targetingSpec) {
+    this.targetingSpec = targetingSpec;
     return this;
   }
 
   
-  @ApiModelProperty(value = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted.")
-  @JsonProperty("keywords")
-  public List<AdGroupAudienceSizingRequestKeywordsInner> getKeywords() {
-    return keywords;
+  @ApiModelProperty(value = "")
+  @JsonProperty("targeting_spec")
+  public TargetingSpec getTargetingSpec() {
+    return targetingSpec;
   }
-  public void setKeywords(List<AdGroupAudienceSizingRequestKeywordsInner> keywords) {
-    this.keywords = keywords;
+  public void setTargetingSpec(TargetingSpec targetingSpec) {
+    this.targetingSpec = targetingSpec;
   }
 
 
@@ -181,16 +181,16 @@ public class AdGroupAudienceSizingRequest   {
     }
     AdGroupAudienceSizingRequest adGroupAudienceSizingRequest = (AdGroupAudienceSizingRequest) o;
     return Objects.equals(autoTargetingEnabled, adGroupAudienceSizingRequest.autoTargetingEnabled) &&
-        Objects.equals(placementGroup, adGroupAudienceSizingRequest.placementGroup) &&
         Objects.equals(creativeTypes, adGroupAudienceSizingRequest.creativeTypes) &&
-        Objects.equals(targetingSpec, adGroupAudienceSizingRequest.targetingSpec) &&
+        Objects.equals(keywords, adGroupAudienceSizingRequest.keywords) &&
+        Objects.equals(placementGroup, adGroupAudienceSizingRequest.placementGroup) &&
         Objects.equals(productGroupIds, adGroupAudienceSizingRequest.productGroupIds) &&
-        Objects.equals(keywords, adGroupAudienceSizingRequest.keywords);
+        Objects.equals(targetingSpec, adGroupAudienceSizingRequest.targetingSpec);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(autoTargetingEnabled, placementGroup, creativeTypes, targetingSpec, productGroupIds, keywords);
+    return Objects.hash(autoTargetingEnabled, creativeTypes, keywords, placementGroup, productGroupIds, targetingSpec);
   }
 
   @Override
@@ -199,11 +199,11 @@ public class AdGroupAudienceSizingRequest   {
     sb.append("class AdGroupAudienceSizingRequest {\n");
     
     sb.append("    autoTargetingEnabled: ").append(toIndentedString(autoTargetingEnabled)).append("\n");
-    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
     sb.append("    creativeTypes: ").append(toIndentedString(creativeTypes)).append("\n");
-    sb.append("    targetingSpec: ").append(toIndentedString(targetingSpec)).append("\n");
-    sb.append("    productGroupIds: ").append(toIndentedString(productGroupIds)).append("\n");
     sb.append("    keywords: ").append(toIndentedString(keywords)).append("\n");
+    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
+    sb.append("    productGroupIds: ").append(toIndentedString(productGroupIds)).append("\n");
+    sb.append("    targetingSpec: ").append(toIndentedString(targetingSpec)).append("\n");
     sb.append("}");
     return sb.toString();
   }

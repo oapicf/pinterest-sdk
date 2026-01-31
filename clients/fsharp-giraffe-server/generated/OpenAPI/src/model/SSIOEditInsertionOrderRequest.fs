@@ -9,21 +9,21 @@ module SSIOEditInsertionOrderRequest =
 
 
   type SSIOEditInsertionOrderRequest = {
-    StartDate : string;
-    EndDate : string;
-    PoNumber : string;
-    BudgetAmount : decimal;
+    AgencyLink : string;
+    BillingContactEmail : string;
     BillingContactFirstname : string;
     BillingContactLastname : string;
-    BillingContactEmail : string;
+    BudgetAmount : decimal;
+    EndDate : string;
+    MediaContactEmail : string;
     MediaContactFirstname : string;
     MediaContactLastname : string;
-    MediaContactEmail : string;
-    AgencyLink : string;
+    PoNumber : string;
+    StartDate : string;
     UserEmail : string;
+    AdsManagerOrderLineId : string;
     OracleLineId : string;
     SalesforceOrderId : string;
     SalesforceOrderLineId : string;
-    AdsManagerOrderLineId : string;
   }
   //#endregion

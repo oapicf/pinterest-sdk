@@ -15,7 +15,7 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.ConversionTagResponse
+import org.openapitools.client.models.ConversionTag
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -30,7 +30,7 @@ import com.squareup.moshi.JsonClass
 data class ConversionTagListResponse (
 
     @Json(name = "items")
-    val items: kotlin.collections.List<ConversionTagResponse>? = null
+    val items: kotlin.collections.List<ConversionTag>? = null
 
 ) {
 

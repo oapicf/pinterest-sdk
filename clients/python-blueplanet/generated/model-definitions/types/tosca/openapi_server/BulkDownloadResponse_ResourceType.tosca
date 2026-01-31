@@ -1,0 +1,35 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BulkDownloadResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BulkDownloadResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  BulkDownloadResponse {
+    title = BulkDownloadResponse
+    description = BulkDownloadResponse
+    derivedFrom = Root
+    properties {
+        request_id {
+          type =  string
+          description = "ID of the bulk request."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BulkDownloadResponse {
+    title = BulkDownloadResponse
+    description = BulkDownloadResponse
+    implements = openapi_server.resourceTypes.BulkDownloadResponse
+
+  }
+}

@@ -17,10 +17,10 @@ case class AudienceCreateRequest (
 /* Audience name. */
   name: String,
 rule: AudienceRule,
-/* Audience description. */
-  description: Option[String],
 /* <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive. */
-  audienceType: AudienceType)
+  audienceType: AudienceType,
+/* Audience description. */
+  description: Option[String])
 
 object AudienceCreateRequest {
   import DateTimeCodecs._

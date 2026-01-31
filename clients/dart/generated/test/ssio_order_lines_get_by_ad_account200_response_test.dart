@@ -16,14 +16,14 @@ void main() {
   // final instance = SsioOrderLinesGetByAdAccount200Response();
 
   group('test SsioOrderLinesGetByAdAccount200Response', () {
-    // SSIO order lines by ad acount id
-    // List<SSIOOrderLine> items (default value: const [])
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // SSIO order lines by ad acount id
+    // List<SSIOOrderLine> items (default value: const [])
+    test('to test the property `items`', () async {
       // TODO
     });
 

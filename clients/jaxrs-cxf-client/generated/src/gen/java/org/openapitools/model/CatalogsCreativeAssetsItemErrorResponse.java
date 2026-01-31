@@ -32,7 +32,7 @@ public class CatalogsCreativeAssetsItemErrorResponse  {
  /**
   * Array with the errors for the item id requested
   */
-  @ApiModelProperty(value = "Array with the errors for the item id requested")
+  @ApiModelProperty(required = true, value = "Array with the errors for the item id requested")
 
   private List<ItemValidationEvent> errors = new ArrayList<>();
  /**

@@ -24,19 +24,19 @@ public class PaginatedTest {
     }
 
     /**
-     * Test the property 'items'
-     */
-    @Test
-    public void itemsTest() {
-        // TODO: test items
-    }
-
-    /**
      * Test the property 'bookmark'
      */
     @Test
     public void bookmarkTest() {
         // TODO: test bookmark
+    }
+
+    /**
+     * Test the property 'items'
+     */
+    @Test
+    public void itemsTest() {
+        // TODO: test items
     }
 
 }

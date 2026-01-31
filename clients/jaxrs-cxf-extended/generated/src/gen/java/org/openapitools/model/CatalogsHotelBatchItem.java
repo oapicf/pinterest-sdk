@@ -32,6 +32,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsHotelBatchItem  {
   
+  @ApiModelProperty(required = true, value = "")
+  @Valid
+  private CatalogsUpdatableHotelAttributes attributes;
+
  /**
   * The catalog hotel id in the merchant namespace
   */
@@ -69,10 +73,31 @@ public enum OperationEnum {
 
   @ApiModelProperty(required = true, value = "")
   private OperationEnum operation;
+ /**
+  * Get attributes
+  * @return attributes
+  */
+  @JsonProperty("attributes")
+  @NotNull
+  public CatalogsUpdatableHotelAttributes getAttributes() {
+    return attributes;
+  }
 
-  @ApiModelProperty(required = true, value = "")
-  @Valid
-  private CatalogsUpdatableHotelAttributes attributes;
+  /**
+   * Sets the <code>attributes</code> property.
+   */
+ public void setAttributes(CatalogsUpdatableHotelAttributes attributes) {
+    this.attributes = attributes;
+  }
+
+  /**
+   * Sets the <code>attributes</code> property.
+   */
+  public CatalogsHotelBatchItem attributes(CatalogsUpdatableHotelAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
  /**
   * The catalog hotel id in the merchant namespace
   * @return hotelId
@@ -123,31 +148,6 @@ public enum OperationEnum {
     return this;
   }
 
- /**
-  * Get attributes
-  * @return attributes
-  */
-  @JsonProperty("attributes")
-  @NotNull
-  public CatalogsUpdatableHotelAttributes getAttributes() {
-    return attributes;
-  }
-
-  /**
-   * Sets the <code>attributes</code> property.
-   */
- public void setAttributes(CatalogsUpdatableHotelAttributes attributes) {
-    this.attributes = attributes;
-  }
-
-  /**
-   * Sets the <code>attributes</code> property.
-   */
-  public CatalogsHotelBatchItem attributes(CatalogsUpdatableHotelAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -158,14 +158,14 @@ public enum OperationEnum {
       return false;
     }
     CatalogsHotelBatchItem catalogsHotelBatchItem = (CatalogsHotelBatchItem) o;
-    return Objects.equals(this.hotelId, catalogsHotelBatchItem.hotelId) &&
-        Objects.equals(this.operation, catalogsHotelBatchItem.operation) &&
-        Objects.equals(this.attributes, catalogsHotelBatchItem.attributes);
+    return Objects.equals(this.attributes, catalogsHotelBatchItem.attributes) &&
+        Objects.equals(this.hotelId, catalogsHotelBatchItem.hotelId) &&
+        Objects.equals(this.operation, catalogsHotelBatchItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hotelId, operation, attributes);
+    return Objects.hash(attributes, hotelId, operation);
   }
 
   @Override
@@ -173,9 +173,9 @@ public enum OperationEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelBatchItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

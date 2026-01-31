@@ -20,11 +20,18 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.GetBusinessAssetsResponse
 import org.openapitools.client.models.AssetGroupBinding
+import org.openapitools.client.models.GetBusinessAssetsResponseCatalogInfo
 
 class GetBusinessAssetsResponseTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of GetBusinessAssetsResponse
         //val modelInstance = GetBusinessAssetsResponse()
+
+        // to test the property `assetGroupInfo`
+        should("test assetGroupInfo") {
+            // uncomment below to test the property
+            //modelInstance.assetGroupInfo shouldBe ("TODO")
+        }
 
         // to test the property `assetId` - Unique identifier of a business asset.
         should("test assetId") {
@@ -32,16 +39,16 @@ class GetBusinessAssetsResponseTest : ShouldSpec() {
             //modelInstance.assetId shouldBe ("TODO")
         }
 
-        // to test the property `assetType` - Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+        // to test the property `assetType` - Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
         should("test assetType") {
             // uncomment below to test the property
             //modelInstance.assetType shouldBe ("TODO")
         }
 
-        // to test the property `assetGroupInfo`
-        should("test assetGroupInfo") {
+        // to test the property `catalogInfo`
+        should("test catalogInfo") {
             // uncomment below to test the property
-            //modelInstance.assetGroupInfo shouldBe ("TODO")
+            //modelInstance.catalogInfo shouldBe ("TODO")
         }
 
     }

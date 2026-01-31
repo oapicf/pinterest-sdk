@@ -1,0 +1,49 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server TargetingSpecOperationAgeBucket"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a TargetingSpecOperationAgeBucket"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  TargetingSpecAgeBucket = openapi_server.resourceTypes.TargetingSpecAgeBucket
+}
+resourceTypes {
+
+  TargetingSpecOperationAgeBucket {
+    title = TargetingSpecOperationAgeBucket
+    description = TargetingSpecOperationAgeBucket
+    derivedFrom = Root
+    properties {
+        _field {
+          type =  string
+          description = ""
+          enum = ["AGE_BUCKET"]
+          optional = true
+        }
+        operation {
+          type =  string
+          description = ""
+          enum = ["SET"]
+          optional = true
+        }
+        values {
+          type = array
+          items.type = TargetingSpecAgeBucket
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  TargetingSpecOperationAgeBucket {
+    title = TargetingSpecOperationAgeBucket
+    description = TargetingSpecOperationAgeBucket
+    implements = openapi_server.resourceTypes.TargetingSpecOperationAgeBucket
+
+  }
+}

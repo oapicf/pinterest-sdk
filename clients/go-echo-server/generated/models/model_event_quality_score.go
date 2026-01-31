@@ -1,0 +1,15 @@
+package models
+
+// EventQualityScore - Schema for GET Conversion EQS response.
+type EventQualityScore struct {
+
+	IngestionSource IngestionSourceOptions `json:"ingestion_source"`
+
+	LookbackPeriod LookbackPeriodOptions `json:"lookback_period"`
+
+	OverallStatus OverallStatusOptions `json:"overall_status"`
+
+	QualityComponents QualityComponents `json:"quality_components"`
+
+	SourcePlatform SourcePlatformOptions `json:"source_platform"`
+}

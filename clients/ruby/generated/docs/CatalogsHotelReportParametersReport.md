@@ -14,6 +14,7 @@ require 'pinterest_sdk'
 PinterestSdkClient::CatalogsHotelReportParametersReport.openapi_one_of
 # =>
 # [
+#   :'CatalogsReportAllItemsFilter',
 #   :'CatalogsReportDistributionIssueFilter',
 #   :'CatalogsReportFeedIngestionFilter'
 # ]
@@ -44,6 +45,7 @@ require 'pinterest_sdk'
 PinterestSdkClient::CatalogsHotelReportParametersReport.openapi_discriminator_mapping
 # =>
 # {
+#   :'ALL_ITEMS' => :'CatalogsReportAllItemsFilter',
 #   :'DISTRIBUTION_ISSUES' => :'CatalogsReportDistributionIssueFilter',
 #   :'FEED_INGESTION_ISSUES' => :'CatalogsReportFeedIngestionFilter'
 # }
@@ -59,7 +61,7 @@ Find the appropriate object from the `openapi_one_of` list and casts the data in
 require 'pinterest_sdk'
 
 PinterestSdkClient::CatalogsHotelReportParametersReport.build(data)
-# => #<CatalogsReportDistributionIssueFilter:0x00007fdd4aab02a0>
+# => #<CatalogsReportAllItemsFilter:0x00007fdd4aab02a0>
 
 PinterestSdkClient::CatalogsHotelReportParametersReport.build(data_that_doesnt_match)
 # => nil
@@ -73,6 +75,7 @@ PinterestSdkClient::CatalogsHotelReportParametersReport.build(data_that_doesnt_m
 
 #### Return type
 
+- `CatalogsReportAllItemsFilter`
 - `CatalogsReportDistributionIssueFilter`
 - `CatalogsReportFeedIngestionFilter`
 - `nil` (if no type matches)

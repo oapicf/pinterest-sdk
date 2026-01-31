@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BoardMedia"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BoardMedia"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  BoardMedia {
+    title = BoardMedia
+    description = BoardMedia
+    derivedFrom = Root
+    properties {
+        image_cover_url {
+          type =  string
+          description = "Board cover image"
+          optional = false
+        }
+        pin_thumbnail_urls {
+          type = array
+          items.type =  string
+          description = "Board pin thumbnail urls."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BoardMedia {
+    title = BoardMedia
+    description = BoardMedia
+    implements = openapi_server.resourceTypes.BoardMedia
+
+  }
+}

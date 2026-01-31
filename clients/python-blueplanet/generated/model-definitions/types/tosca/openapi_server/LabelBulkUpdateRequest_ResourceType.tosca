@@ -1,0 +1,46 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LabelBulkUpdateRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LabelBulkUpdateRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  LabelBulkUpdateRequest {
+    title = LabelBulkUpdateRequest
+    description = LabelBulkUpdateRequest
+    derivedFrom = Root
+    properties {
+        id {
+          type =  string
+          description = "Label ID."
+          optional = true
+        }
+        status {
+          type =  string
+          description = "Set status to &#x60;ARCHIVED&#x60; to remove the label from the parent entity."
+          enum = ["ARCHIVED"]
+          optional = false
+        }
+        value {
+          type =  string
+          description = "&lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; value field will be deprecated. Label name. 100-character limit."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  LabelBulkUpdateRequest {
+    title = LabelBulkUpdateRequest
+    description = LabelBulkUpdateRequest
+    implements = openapi_server.resourceTypes.LabelBulkUpdateRequest
+
+  }
+}

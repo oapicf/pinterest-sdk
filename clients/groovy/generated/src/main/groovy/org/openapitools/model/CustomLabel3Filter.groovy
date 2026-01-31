@@ -3,10 +3,10 @@ package org.openapitools.model;
 import groovy.transform.Canonical
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.CatalogsProductGroupMultipleStringCriteria;
+import org.openapitools.model.CatalogsProductGroupFilterOperatorTypeCriteria;
 
 @Canonical
 class CustomLabel3Filter {
     
-    CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_3
+    CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_3
 }

@@ -20,15 +20,15 @@ typedef struct ssio_order_lines_get_by_ad_account_200_response_t ssio_order_line
 
 
 typedef struct ssio_order_lines_get_by_ad_account_200_response_t {
-    list_t *items; //nonprimitive container
     char *bookmark; // string
+    list_t *items; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
 } ssio_order_lines_get_by_ad_account_200_response_t;
 
 __attribute__((deprecated)) ssio_order_lines_get_by_ad_account_200_response_t *ssio_order_lines_get_by_ad_account_200_response_create(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
 );
 
 void ssio_order_lines_get_by_ad_account_200_response_free(ssio_order_lines_get_by_ad_account_200_response_t *ssio_order_lines_get_by_ad_account_200_response);

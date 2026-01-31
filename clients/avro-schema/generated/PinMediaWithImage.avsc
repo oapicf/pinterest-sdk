@@ -5,16 +5,21 @@
   "name": "PinMediaWithImage",
   "fields": [
     {
-      "name": "media_type",
-      "type": ["null", "string"],
+      "name": "images",
+      "type": ["null", "model.ImageSize"],
       "doc": "",
       "default": null
     },
     {
-      "name": "images",
-      "type": ["null", "model.PinMediaWithImageAllOfImages"],
-      "doc": "",
-      "default": null
+      "name": "media_type",
+      "type": {
+        "type": "enum",
+        "name": "PinMediaWithImage_mediaUnderscoretype",
+        "symbols": [
+          "image"
+        ]
+      },
+      "doc": ""
     }
   ]
 

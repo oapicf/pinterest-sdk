@@ -19,6 +19,8 @@ import java.util.Objects;
 @ApiModel(description = "An item to be created")
 public class CatalogsCreateRetailItem   {
   
+  private ItemAttributesRequest attributes;
+
   private String itemId;
 
 
@@ -54,7 +56,24 @@ public enum OperationEnum {
 
   private OperationEnum operation;
 
-  private ItemAttributesRequest attributes;
+  /**
+   **/
+  public CatalogsCreateRetailItem attributes(ItemAttributesRequest attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("attributes")
+  @NotNull
+  public ItemAttributesRequest getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(ItemAttributesRequest attributes) {
+    this.attributes = attributes;
+  }
+
 
   /**
    * The catalog item id in the merchant namespace
@@ -95,25 +114,6 @@ public enum OperationEnum {
   }
 
 
-  /**
-   **/
-  public CatalogsCreateRetailItem attributes(ItemAttributesRequest attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("attributes")
-  @NotNull
-  public ItemAttributesRequest getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(ItemAttributesRequest attributes) {
-    this.attributes = attributes;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -124,14 +124,14 @@ public enum OperationEnum {
       return false;
     }
     CatalogsCreateRetailItem catalogsCreateRetailItem = (CatalogsCreateRetailItem) o;
-    return Objects.equals(this.itemId, catalogsCreateRetailItem.itemId) &&
-        Objects.equals(this.operation, catalogsCreateRetailItem.operation) &&
-        Objects.equals(this.attributes, catalogsCreateRetailItem.attributes);
+    return Objects.equals(this.attributes, catalogsCreateRetailItem.attributes) &&
+        Objects.equals(this.itemId, catalogsCreateRetailItem.itemId) &&
+        Objects.equals(this.operation, catalogsCreateRetailItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, operation, attributes);
+    return Objects.hash(attributes, itemId, operation);
   }
 
   @Override
@@ -139,9 +139,9 @@ public enum OperationEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreateRetailItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

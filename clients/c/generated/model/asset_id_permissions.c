@@ -6,35 +6,35 @@
 
 
 static asset_id_permissions_t *asset_id_permissions_create_internal(
+    asset_group_binding_t *asset_group_info,
     char *asset_id,
     char *asset_type,
-    list_t *permissions,
-    asset_group_binding_t *asset_group_info
+    list_t *permissions
     ) {
     asset_id_permissions_t *asset_id_permissions_local_var = malloc(sizeof(asset_id_permissions_t));
     if (!asset_id_permissions_local_var) {
         return NULL;
     }
+    asset_id_permissions_local_var->asset_group_info = asset_group_info;
     asset_id_permissions_local_var->asset_id = asset_id;
     asset_id_permissions_local_var->asset_type = asset_type;
     asset_id_permissions_local_var->permissions = permissions;
-    asset_id_permissions_local_var->asset_group_info = asset_group_info;
 
     asset_id_permissions_local_var->_library_owned = 1;
     return asset_id_permissions_local_var;
 }
 
 __attribute__((deprecated)) asset_id_permissions_t *asset_id_permissions_create(
+    asset_group_binding_t *asset_group_info,
     char *asset_id,
     char *asset_type,
-    list_t *permissions,
-    asset_group_binding_t *asset_group_info
+    list_t *permissions
     ) {
     return asset_id_permissions_create_internal (
+        asset_group_info,
         asset_id,
         asset_type,
-        permissions,
-        asset_group_info
+        permissions
         );
 }
 
@@ -47,6 +47,10 @@ void asset_id_permissions_free(asset_id_permissions_t *asset_id_permissions) {
         return ;
     }
     listEntry_t *listEntry;
+    if (asset_id_permissions->asset_group_info) {
+        asset_group_binding_free(asset_id_permissions->asset_group_info);
+        asset_id_permissions->asset_group_info = NULL;
+    }
     if (asset_id_permissions->asset_id) {
         free(asset_id_permissions->asset_id);
         asset_id_permissions->asset_id = NULL;
@@ -62,15 +66,24 @@ void asset_id_permissions_free(asset_id_permissions_t *asset_id_permissions) {
         list_freeList(asset_id_permissions->permissions);
         asset_id_permissions->permissions = NULL;
     }
-    if (asset_id_permissions->asset_group_info) {
-        asset_group_binding_free(asset_id_permissions->asset_group_info);
-        asset_id_permissions->asset_group_info = NULL;
-    }
     free(asset_id_permissions);
 }
 
 cJSON *asset_id_permissions_convertToJSON(asset_id_permissions_t *asset_id_permissions) {
     cJSON *item = cJSON_CreateObject();
+
+    // asset_id_permissions->asset_group_info
+    if(asset_id_permissions->asset_group_info) {
+    cJSON *asset_group_info_local_JSON = asset_group_binding_convertToJSON(asset_id_permissions->asset_group_info);
+    if(asset_group_info_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "asset_group_info", asset_group_info_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
 
     // asset_id_permissions->asset_id
     if(asset_id_permissions->asset_id) {
@@ -104,19 +117,6 @@ cJSON *asset_id_permissions_convertToJSON(asset_id_permissions_t *asset_id_permi
     }
     }
 
-
-    // asset_id_permissions->asset_group_info
-    if(asset_id_permissions->asset_group_info) {
-    cJSON *asset_group_info_local_JSON = asset_group_binding_convertToJSON(asset_id_permissions->asset_group_info);
-    if(asset_group_info_local_JSON == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "asset_group_info", asset_group_info_local_JSON);
-    if(item->child == NULL) {
-    goto fail;
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -129,11 +129,20 @@ asset_id_permissions_t *asset_id_permissions_parseFromJSON(cJSON *asset_id_permi
 
     asset_id_permissions_t *asset_id_permissions_local_var = NULL;
 
+    // define the local variable for asset_id_permissions->asset_group_info
+    asset_group_binding_t *asset_group_info_local_nonprim = NULL;
+
     // define the local list for asset_id_permissions->permissions
     list_t *permissionsList = NULL;
 
-    // define the local variable for asset_id_permissions->asset_group_info
-    asset_group_binding_t *asset_group_info_local_nonprim = NULL;
+    // asset_id_permissions->asset_group_info
+    cJSON *asset_group_info = cJSON_GetObjectItemCaseSensitive(asset_id_permissionsJSON, "asset_group_info");
+    if (cJSON_IsNull(asset_group_info)) {
+        asset_group_info = NULL;
+    }
+    if (asset_group_info) { 
+    asset_group_info_local_nonprim = asset_group_binding_parseFromJSON(asset_group_info); //nonprimitive
+    }
 
     // asset_id_permissions->asset_id
     cJSON *asset_id = cJSON_GetObjectItemCaseSensitive(asset_id_permissionsJSON, "asset_id");
@@ -181,25 +190,20 @@ asset_id_permissions_t *asset_id_permissions_parseFromJSON(cJSON *asset_id_permi
     }
     }
 
-    // asset_id_permissions->asset_group_info
-    cJSON *asset_group_info = cJSON_GetObjectItemCaseSensitive(asset_id_permissionsJSON, "asset_group_info");
-    if (cJSON_IsNull(asset_group_info)) {
-        asset_group_info = NULL;
-    }
-    if (asset_group_info) { 
-    asset_group_info_local_nonprim = asset_group_binding_parseFromJSON(asset_group_info); //nonprimitive
-    }
-
 
     asset_id_permissions_local_var = asset_id_permissions_create_internal (
+        asset_group_info ? asset_group_info_local_nonprim : NULL,
         asset_id && !cJSON_IsNull(asset_id) ? strdup(asset_id->valuestring) : NULL,
         asset_type && !cJSON_IsNull(asset_type) ? strdup(asset_type->valuestring) : NULL,
-        permissions ? permissionsList : NULL,
-        asset_group_info ? asset_group_info_local_nonprim : NULL
+        permissions ? permissionsList : NULL
         );
 
     return asset_id_permissions_local_var;
 end:
+    if (asset_group_info_local_nonprim) {
+        asset_group_binding_free(asset_group_info_local_nonprim);
+        asset_group_info_local_nonprim = NULL;
+    }
     if (permissionsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, permissionsList) {
@@ -208,10 +212,6 @@ end:
         }
         list_freeList(permissionsList);
         permissionsList = NULL;
-    }
-    if (asset_group_info_local_nonprim) {
-        asset_group_binding_free(asset_group_info_local_nonprim);
-        asset_group_info_local_nonprim = NULL;
     }
     return NULL;
 

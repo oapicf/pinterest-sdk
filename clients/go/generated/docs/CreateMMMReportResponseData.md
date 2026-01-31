@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ReportStatus** | Pointer to [**BulkReportingJobStatus**](BulkReportingJobStatus.md) |  | [optional] 
-**Token** | Pointer to **string** |  | [optional] 
 **Message** | Pointer to **NullableString** |  | [optional] 
+**ReportStatus** | Pointer to [**BulkReportingJobStatus**](BulkReportingJobStatus.md) |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
+**Token** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -27,56 +27,6 @@ will change when the set of required properties is changed
 NewCreateMMMReportResponseDataWithDefaults instantiates a new CreateMMMReportResponseData object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetReportStatus
-
-`func (o *CreateMMMReportResponseData) GetReportStatus() BulkReportingJobStatus`
-
-GetReportStatus returns the ReportStatus field if non-nil, zero value otherwise.
-
-### GetReportStatusOk
-
-`func (o *CreateMMMReportResponseData) GetReportStatusOk() (*BulkReportingJobStatus, bool)`
-
-GetReportStatusOk returns a tuple with the ReportStatus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReportStatus
-
-`func (o *CreateMMMReportResponseData) SetReportStatus(v BulkReportingJobStatus)`
-
-SetReportStatus sets ReportStatus field to given value.
-
-### HasReportStatus
-
-`func (o *CreateMMMReportResponseData) HasReportStatus() bool`
-
-HasReportStatus returns a boolean if a field has been set.
-
-### GetToken
-
-`func (o *CreateMMMReportResponseData) GetToken() string`
-
-GetToken returns the Token field if non-nil, zero value otherwise.
-
-### GetTokenOk
-
-`func (o *CreateMMMReportResponseData) GetTokenOk() (*string, bool)`
-
-GetTokenOk returns a tuple with the Token field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetToken
-
-`func (o *CreateMMMReportResponseData) SetToken(v string)`
-
-SetToken sets Token field to given value.
-
-### HasToken
-
-`func (o *CreateMMMReportResponseData) HasToken() bool`
-
-HasToken returns a boolean if a field has been set.
 
 ### GetMessage
 
@@ -113,6 +63,31 @@ HasMessage returns a boolean if a field has been set.
 `func (o *CreateMMMReportResponseData) UnsetMessage()`
 
 UnsetMessage ensures that no value is present for Message, not even an explicit nil
+### GetReportStatus
+
+`func (o *CreateMMMReportResponseData) GetReportStatus() BulkReportingJobStatus`
+
+GetReportStatus returns the ReportStatus field if non-nil, zero value otherwise.
+
+### GetReportStatusOk
+
+`func (o *CreateMMMReportResponseData) GetReportStatusOk() (*BulkReportingJobStatus, bool)`
+
+GetReportStatusOk returns a tuple with the ReportStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReportStatus
+
+`func (o *CreateMMMReportResponseData) SetReportStatus(v BulkReportingJobStatus)`
+
+SetReportStatus sets ReportStatus field to given value.
+
+### HasReportStatus
+
+`func (o *CreateMMMReportResponseData) HasReportStatus() bool`
+
+HasReportStatus returns a boolean if a field has been set.
+
 ### GetStatus
 
 `func (o *CreateMMMReportResponseData) GetStatus() string`
@@ -137,6 +112,31 @@ SetStatus sets Status field to given value.
 `func (o *CreateMMMReportResponseData) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetToken
+
+`func (o *CreateMMMReportResponseData) GetToken() string`
+
+GetToken returns the Token field if non-nil, zero value otherwise.
+
+### GetTokenOk
+
+`func (o *CreateMMMReportResponseData) GetTokenOk() (*string, bool)`
+
+GetTokenOk returns a tuple with the Token field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetToken
+
+`func (o *CreateMMMReportResponseData) SetToken(v string)`
+
+SetToken sets Token field to given value.
+
+### HasToken
+
+`func (o *CreateMMMReportResponseData) HasToken() bool`
+
+HasToken returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

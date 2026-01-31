@@ -20,28 +20,28 @@ import java.util.Objects;
 @ApiModel(description = "The relative date range of the template")
 public class TemplateResponseDateRangeRelativeDateRange   {
   
-  private String type;
+  private BigDecimal endDaysInPast;
 
   private BigDecimal startDaysInPast;
 
-  private BigDecimal endDaysInPast;
+  private String type;
 
   /**
-   * The date range type
+   * The end date of the date range
    **/
-  public TemplateResponseDateRangeRelativeDateRange type(String type) {
-    this.type = type;
+  public TemplateResponseDateRangeRelativeDateRange endDaysInPast(BigDecimal endDaysInPast) {
+    this.endDaysInPast = endDaysInPast;
     return this;
   }
 
   
-  @ApiModelProperty(example = "relative", value = "The date range type")
-  @JsonProperty("type")
-  public String getType() {
-    return type;
+  @ApiModelProperty(example = "7", value = "The end date of the date range")
+  @JsonProperty("end_days_in_past")
+  public BigDecimal getEndDaysInPast() {
+    return endDaysInPast;
   }
-  public void setType(String type) {
-    this.type = type;
+  public void setEndDaysInPast(BigDecimal endDaysInPast) {
+    this.endDaysInPast = endDaysInPast;
   }
 
 
@@ -65,21 +65,21 @@ public class TemplateResponseDateRangeRelativeDateRange   {
 
 
   /**
-   * The end date of the date range
+   * The date range type
    **/
-  public TemplateResponseDateRangeRelativeDateRange endDaysInPast(BigDecimal endDaysInPast) {
-    this.endDaysInPast = endDaysInPast;
+  public TemplateResponseDateRangeRelativeDateRange type(String type) {
+    this.type = type;
     return this;
   }
 
   
-  @ApiModelProperty(example = "7", value = "The end date of the date range")
-  @JsonProperty("end_days_in_past")
-  public BigDecimal getEndDaysInPast() {
-    return endDaysInPast;
+  @ApiModelProperty(example = "relative", value = "The date range type")
+  @JsonProperty("type")
+  public String getType() {
+    return type;
   }
-  public void setEndDaysInPast(BigDecimal endDaysInPast) {
-    this.endDaysInPast = endDaysInPast;
+  public void setType(String type) {
+    this.type = type;
   }
 
 
@@ -93,14 +93,14 @@ public class TemplateResponseDateRangeRelativeDateRange   {
       return false;
     }
     TemplateResponseDateRangeRelativeDateRange templateResponseDateRangeRelativeDateRange = (TemplateResponseDateRangeRelativeDateRange) o;
-    return Objects.equals(this.type, templateResponseDateRangeRelativeDateRange.type) &&
+    return Objects.equals(this.endDaysInPast, templateResponseDateRangeRelativeDateRange.endDaysInPast) &&
         Objects.equals(this.startDaysInPast, templateResponseDateRangeRelativeDateRange.startDaysInPast) &&
-        Objects.equals(this.endDaysInPast, templateResponseDateRangeRelativeDateRange.endDaysInPast);
+        Objects.equals(this.type, templateResponseDateRangeRelativeDateRange.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, startDaysInPast, endDaysInPast);
+    return Objects.hash(endDaysInPast, startDaysInPast, type);
   }
 
   @Override
@@ -108,9 +108,9 @@ public class TemplateResponseDateRangeRelativeDateRange   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TemplateResponseDateRangeRelativeDateRange {\n");
     
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    startDaysInPast: ").append(toIndentedString(startDaysInPast)).append("\n");
     sb.append("    endDaysInPast: ").append(toIndentedString(endDaysInPast)).append("\n");
+    sb.append("    startDaysInPast: ").append(toIndentedString(startDaysInPast)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

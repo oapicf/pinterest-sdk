@@ -8,11 +8,11 @@ Request object for updating a retail product group.
 Name | Type
 ------------ | -------------
 `catalogType` | string
-`name` | string
+`country` | [Country](Country.md)
 `description` | string
 `filters` | [CatalogsProductGroupFiltersRequest](CatalogsProductGroupFiltersRequest.md)
-`country` | [Country](Country.md)
 `locale` | [CatalogsLocale](CatalogsLocale.md)
+`name` | string
 
 ## Example
 
@@ -22,11 +22,11 @@ import type { CatalogsRetailProductGroupUpdateRequest } from ''
 // TODO: Update the object below with actual values
 const example = {
   "catalogType": null,
-  "name": null,
+  "country": null,
   "description": null,
   "filters": null,
-  "country": null,
   "locale": null,
+  "name": null,
 } satisfies CatalogsRetailProductGroupUpdateRequest
 
 console.log(example)

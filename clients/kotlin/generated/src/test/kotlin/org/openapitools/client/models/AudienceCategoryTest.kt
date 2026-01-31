@@ -26,6 +26,18 @@ class AudienceCategoryTest : ShouldSpec() {
         // uncomment below to create an instance of AudienceCategory
         //val modelInstance = AudienceCategory()
 
+        // to test the property `id` - Interest ID.
+        should("test id") {
+            // uncomment below to test the property
+            //modelInstance.id shouldBe ("TODO")
+        }
+
+        // to test the property `index` - Interest affinity index.
+        should("test index") {
+            // uncomment below to test the property
+            //modelInstance.index shouldBe ("TODO")
+        }
+
         // to test the property `key` - Interest unique key (same as ID).
         should("test key") {
             // uncomment below to test the property
@@ -42,18 +54,6 @@ class AudienceCategoryTest : ShouldSpec() {
         should("test ratio") {
             // uncomment below to test the property
             //modelInstance.ratio shouldBe ("TODO")
-        }
-
-        // to test the property `index` - Interest affinity index.
-        should("test index") {
-            // uncomment below to test the property
-            //modelInstance.index shouldBe ("TODO")
-        }
-
-        // to test the property `id` - Interest ID.
-        should("test id") {
-            // uncomment below to test the property
-            //modelInstance.id shouldBe ("TODO")
         }
 
         // to test the property `subcategories` - Subcategory interest distribution

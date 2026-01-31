@@ -12,10 +12,7 @@ import { ObjectiveType } from './objectiveType';
 
 
 export interface BulkDownloadRequestCampaignFilter { 
-    /**
-     * Unix UTC timestamp.
-     */
-    start_time?: string;
+    campaign_status?: Array<CampaignSummaryStatus>;
     /**
      * Unix UTC timestamp.
      */
@@ -24,7 +21,10 @@ export interface BulkDownloadRequestCampaignFilter {
      * Campaign name
      */
     name?: string;
-    campaign_status?: Array<CampaignSummaryStatus>;
     objective_type?: Array<ObjectiveType>;
+    /**
+     * Unix UTC timestamp.
+     */
+    start_time?: string;
 }
 

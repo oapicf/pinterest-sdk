@@ -7,10 +7,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 @Canonical
 class SSIOInsertionOrderStatusResponse {
+    /* Salesforce insertion order creation time */
+    String creationTime
     /* Salesforce order id */
     String pinOrderId
     /* Salesforce insertion order status */
     String status
-    /* Salesforce insertion order creation time */
-    String creationTime
 }

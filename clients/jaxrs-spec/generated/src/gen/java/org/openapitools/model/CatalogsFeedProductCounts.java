@@ -18,32 +18,12 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "The counts can be null early in the process.")
 @JsonTypeName("CatalogsFeedProductCounts")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsFeedProductCounts   {
-  private Integer original;
   private Integer ingested;
+  private Integer original;
 
   public CatalogsFeedProductCounts() {
-  }
-
-  /**
-   * The number of products in the feed file.
-   **/
-  public CatalogsFeedProductCounts original(Integer original) {
-    this.original = original;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "The number of products in the feed file.")
-  @JsonProperty("original")
-  public Integer getOriginal() {
-    return original;
-  }
-
-  @JsonProperty("original")
-  public void setOriginal(Integer original) {
-    this.original = original;
   }
 
   /**
@@ -66,6 +46,26 @@ public class CatalogsFeedProductCounts   {
     this.ingested = ingested;
   }
 
+  /**
+   * The number of products in the feed file.
+   **/
+  public CatalogsFeedProductCounts original(Integer original) {
+    this.original = original;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "The number of products in the feed file.")
+  @JsonProperty("original")
+  public Integer getOriginal() {
+    return original;
+  }
+
+  @JsonProperty("original")
+  public void setOriginal(Integer original) {
+    this.original = original;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -76,13 +76,13 @@ public class CatalogsFeedProductCounts   {
       return false;
     }
     CatalogsFeedProductCounts catalogsFeedProductCounts = (CatalogsFeedProductCounts) o;
-    return Objects.equals(this.original, catalogsFeedProductCounts.original) &&
-        Objects.equals(this.ingested, catalogsFeedProductCounts.ingested);
+    return Objects.equals(this.ingested, catalogsFeedProductCounts.ingested) &&
+        Objects.equals(this.original, catalogsFeedProductCounts.original);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(original, ingested);
+    return Objects.hash(ingested, original);
   }
 
   @Override
@@ -90,8 +90,8 @@ public class CatalogsFeedProductCounts   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsFeedProductCounts {\n");
     
-    sb.append("    original: ").append(toIndentedString(original)).append("\n");
     sb.append("    ingested: ").append(toIndentedString(ingested)).append("\n");
+    sb.append("    original: ").append(toIndentedString(original)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -23,14 +23,19 @@ CatalogsHotelItemsFilter::~CatalogsHotelItemsFilter()
 void
 CatalogsHotelItemsFilter::__init()
 {
+	//catalog_id = std::string();
 	//catalog_type = std::string();
 	//new std::list()std::list> hotel_ids;
-	//catalog_id = std::string();
 }
 
 void
 CatalogsHotelItemsFilter::__cleanup()
 {
+	//if(catalog_id != NULL) {
+	//
+	//delete catalog_id;
+	//catalog_id = NULL;
+	//}
 	//if(catalog_type != NULL) {
 	//
 	//delete catalog_type;
@@ -41,11 +46,6 @@ CatalogsHotelItemsFilter::__cleanup()
 	//delete hotel_ids;
 	//hotel_ids = NULL;
 	//}
-	//if(catalog_id != NULL) {
-	//
-	//delete catalog_id;
-	//catalog_id = NULL;
-	//}
 	//
 }
 
@@ -54,6 +54,17 @@ CatalogsHotelItemsFilter::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *catalog_idKey = "catalog_id";
+	node = json_object_get_member(pJsonObject, catalog_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&catalog_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *catalog_typeKey = "catalog_type";
 	node = json_object_get_member(pJsonObject, catalog_typeKey);
 	if (node !=NULL) {
@@ -87,17 +98,6 @@ CatalogsHotelItemsFilter::fromJson(char* jsonStr)
 		}
 		
 	}
-	const gchar *catalog_idKey = "catalog_id";
-	node = json_object_get_member(pJsonObject, catalog_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&catalog_id, node, "std::string", "");
-		} else {
-			
-		}
-	}
 }
 
 CatalogsHotelItemsFilter::CatalogsHotelItemsFilter(char* json)
@@ -110,6 +110,15 @@ CatalogsHotelItemsFilter::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("std::string")) {
+		std::string obj = getCatalogId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *catalog_idKey = "catalog_id";
+	json_object_set_member(pJsonObject, catalog_idKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getCatalogType();
 		node = converttoJson(&obj, "std::string", "");
@@ -134,21 +143,24 @@ CatalogsHotelItemsFilter::toJson()
 	
 	const gchar *hotel_idsKey = "hotel_ids";
 	json_object_set_member(pJsonObject, hotel_idsKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getCatalogId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *catalog_idKey = "catalog_id";
-	json_object_set_member(pJsonObject, catalog_idKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+std::string
+CatalogsHotelItemsFilter::getCatalogId()
+{
+	return catalog_id;
+}
+
+void
+CatalogsHotelItemsFilter::setCatalogId(std::string  catalog_id)
+{
+	this->catalog_id = catalog_id;
 }
 
 std::string
@@ -173,18 +185,6 @@ void
 CatalogsHotelItemsFilter::setHotelIds(std::list <std::string> hotel_ids)
 {
 	this->hotel_ids = hotel_ids;
-}
-
-std::string
-CatalogsHotelItemsFilter::getCatalogId()
-{
-	return catalog_id;
-}
-
-void
-CatalogsHotelItemsFilter::setCatalogId(std::string  catalog_id)
-{
-	this->catalog_id = catalog_id;
 }
 
 

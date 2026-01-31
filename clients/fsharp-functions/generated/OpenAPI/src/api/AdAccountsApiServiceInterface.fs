@@ -13,9 +13,11 @@ module AdAccountsApiServiceInterface =
       abstract member AdAccountsCreate : AdAccountsCreateBodyParams -> AdAccountsCreateResult
       abstract member AdAccountsGet : unit -> AdAccountsGetResult
       abstract member AdAccountsList : unit -> AdAccountsListResult
+      abstract member AnalyticsCreateConversionProductReport : AnalyticsCreateConversionProductReportBodyParams -> AnalyticsCreateConversionProductReportResult
       abstract member AnalyticsCreateMmmReport : AnalyticsCreateMmmReportBodyParams -> AnalyticsCreateMmmReportResult
       abstract member AnalyticsCreateReport : AnalyticsCreateReportBodyParams -> AnalyticsCreateReportResult
       abstract member AnalyticsCreateTemplateReport : unit -> AnalyticsCreateTemplateReportResult
+      abstract member AnalyticsGetConversionProductReport : unit -> AnalyticsGetConversionProductReportResult
       abstract member AnalyticsGetMmmReport : unit -> AnalyticsGetMmmReportResult
       abstract member AnalyticsGetReport : unit -> AnalyticsGetReportResult
       abstract member SandboxDelete : unit -> SandboxDeleteResult

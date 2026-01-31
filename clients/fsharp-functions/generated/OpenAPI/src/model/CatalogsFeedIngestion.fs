@@ -11,12 +11,12 @@ module CatalogsFeedIngestion =
 
   [<CLIMutable>]
   type CatalogsFeedIngestion = {
-    [<JsonProperty(PropertyName = "id")>]
-    Id : string;
-    [<JsonProperty(PropertyName = "feed_id")>]
-    FeedId : string;
     [<JsonProperty(PropertyName = "created_at")>]
     CreatedAt : DateTime;
+    [<JsonProperty(PropertyName = "feed_id")>]
+    FeedId : string;
+    [<JsonProperty(PropertyName = "id")>]
+    Id : string;
     [<JsonProperty(PropertyName = "status")>]
     Status : CatalogsFeedProcessingStatus;
   }

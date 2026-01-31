@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `ItemUpsertBatchRecord`
 --
-SELECT `item_id`, `attributes` FROM `ItemUpsertBatchRecord` WHERE 1;
+SELECT `attributes`, `item_id` FROM `ItemUpsertBatchRecord` WHERE 1;
 
 --
 -- INSERT template for table `ItemUpsertBatchRecord`
 --
-INSERT INTO `ItemUpsertBatchRecord`(`item_id`, `attributes`) VALUES (?, ?);
+INSERT INTO `ItemUpsertBatchRecord`(`attributes`, `item_id`) VALUES (?, ?);
 
 --
 -- UPDATE template for table `ItemUpsertBatchRecord`
 --
-UPDATE `ItemUpsertBatchRecord` SET `item_id` = ?, `attributes` = ? WHERE 1;
+UPDATE `ItemUpsertBatchRecord` SET `attributes` = ?, `item_id` = ? WHERE 1;
 
 --
 -- DELETE template for table `ItemUpsertBatchRecord`

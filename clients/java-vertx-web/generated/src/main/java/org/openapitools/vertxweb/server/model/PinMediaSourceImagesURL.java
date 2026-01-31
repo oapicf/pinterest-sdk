@@ -7,14 +7,16 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.vertxweb.server.model.PinMediaSourceImagesURLItemsInner;
+import org.openapitools.vertxweb.server.model.PinMediaSourceImagesURLItem;
 
 /**
- * Multiple images urls-based media source
+ * Multiple URL-based images media source
  **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PinMediaSourceImagesURL   {
   
+  private Integer index;
+  private List<PinMediaSourceImagesURLItem> items = new ArrayList<>();
 
 
   public enum SourceTypeEnum {
@@ -34,35 +36,15 @@ public class PinMediaSourceImagesURL   {
   }
 
   private SourceTypeEnum sourceType;
-  private List<PinMediaSourceImagesURLItemsInner> items = new ArrayList<>();
-  private Integer index;
 
   public PinMediaSourceImagesURL () {
 
   }
 
-  public PinMediaSourceImagesURL (SourceTypeEnum sourceType, List<PinMediaSourceImagesURLItemsInner> items, Integer index) {
-    this.sourceType = sourceType;
-    this.items = items;
+  public PinMediaSourceImagesURL (Integer index, List<PinMediaSourceImagesURLItem> items, SourceTypeEnum sourceType) {
     this.index = index;
-  }
-
-    
-  @JsonProperty("source_type")
-  public SourceTypeEnum getSourceType() {
-    return sourceType;
-  }
-  public void setSourceType(SourceTypeEnum sourceType) {
-    this.sourceType = sourceType;
-  }
-
-    
-  @JsonProperty("items")
-  public List<PinMediaSourceImagesURLItemsInner> getItems() {
-    return items;
-  }
-  public void setItems(List<PinMediaSourceImagesURLItemsInner> items) {
     this.items = items;
+    this.sourceType = sourceType;
   }
 
     
@@ -72,6 +54,24 @@ public class PinMediaSourceImagesURL   {
   }
   public void setIndex(Integer index) {
     this.index = index;
+  }
+
+    
+  @JsonProperty("items")
+  public List<PinMediaSourceImagesURLItem> getItems() {
+    return items;
+  }
+  public void setItems(List<PinMediaSourceImagesURLItem> items) {
+    this.items = items;
+  }
+
+    
+  @JsonProperty("source_type")
+  public SourceTypeEnum getSourceType() {
+    return sourceType;
+  }
+  public void setSourceType(SourceTypeEnum sourceType) {
+    this.sourceType = sourceType;
   }
 
 
@@ -84,14 +84,14 @@ public class PinMediaSourceImagesURL   {
       return false;
     }
     PinMediaSourceImagesURL pinMediaSourceImagesURL = (PinMediaSourceImagesURL) o;
-    return Objects.equals(sourceType, pinMediaSourceImagesURL.sourceType) &&
+    return Objects.equals(index, pinMediaSourceImagesURL.index) &&
         Objects.equals(items, pinMediaSourceImagesURL.items) &&
-        Objects.equals(index, pinMediaSourceImagesURL.index);
+        Objects.equals(sourceType, pinMediaSourceImagesURL.sourceType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceType, items, index);
+    return Objects.hash(index, items, sourceType);
   }
 
   @Override
@@ -99,9 +99,9 @@ public class PinMediaSourceImagesURL   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaSourceImagesURL {\n");
     
-    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    index: ").append(toIndentedString(index)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

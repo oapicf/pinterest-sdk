@@ -18,6 +18,8 @@ import java.util.Objects;
 @ApiModel(description = "Pin URL-based media source for product pin creation. Currently the field is only available to a list of beta users.")
 public class PinMediaSourcePinURL   {
   
+  private Boolean isAffiliateLink = false;
+
 
 public enum SourceTypeEnum {
 
@@ -51,7 +53,24 @@ public enum SourceTypeEnum {
 
   private SourceTypeEnum sourceType;
 
-  private Boolean isAffiliateLink = false;
+  /**
+   * This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
+   **/
+  public PinMediaSourcePinURL isAffiliateLink(Boolean isAffiliateLink) {
+    this.isAffiliateLink = isAffiliateLink;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.")
+  @JsonProperty("is_affiliate_link")
+  public Boolean getIsAffiliateLink() {
+    return isAffiliateLink;
+  }
+  public void setIsAffiliateLink(Boolean isAffiliateLink) {
+    this.isAffiliateLink = isAffiliateLink;
+  }
+
 
   /**
    **/
@@ -72,25 +91,6 @@ public enum SourceTypeEnum {
   }
 
 
-  /**
-   * This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
-   **/
-  public PinMediaSourcePinURL isAffiliateLink(Boolean isAffiliateLink) {
-    this.isAffiliateLink = isAffiliateLink;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.")
-  @JsonProperty("is_affiliate_link")
-  public Boolean getIsAffiliateLink() {
-    return isAffiliateLink;
-  }
-  public void setIsAffiliateLink(Boolean isAffiliateLink) {
-    this.isAffiliateLink = isAffiliateLink;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -101,13 +101,13 @@ public enum SourceTypeEnum {
       return false;
     }
     PinMediaSourcePinURL pinMediaSourcePinURL = (PinMediaSourcePinURL) o;
-    return Objects.equals(this.sourceType, pinMediaSourcePinURL.sourceType) &&
-        Objects.equals(this.isAffiliateLink, pinMediaSourcePinURL.isAffiliateLink);
+    return Objects.equals(this.isAffiliateLink, pinMediaSourcePinURL.isAffiliateLink) &&
+        Objects.equals(this.sourceType, pinMediaSourcePinURL.sourceType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceType, isAffiliateLink);
+    return Objects.hash(isAffiliateLink, sourceType);
   }
 
   @Override
@@ -115,8 +115,8 @@ public enum SourceTypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaSourcePinURL {\n");
     
-    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("    isAffiliateLink: ").append(toIndentedString(isAffiliateLink)).append("\n");
+    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

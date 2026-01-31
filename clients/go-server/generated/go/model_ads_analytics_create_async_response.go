@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,11 +16,11 @@ package openapi
 
 type AdsAnalyticsCreateAsyncResponse struct {
 
+	Message *string `json:"message,omitempty"`
+
 	ReportStatus BulkReportingJobStatus `json:"report_status,omitempty"`
 
 	Token string `json:"token,omitempty"`
-
-	Message *string `json:"message,omitempty"`
 }
 
 // AssertAdsAnalyticsCreateAsyncResponseRequired checks if the required fields are not zero-ed

@@ -3,7 +3,7 @@ private class OASBillingApiTest {
     /**
      * Redeem ad credits
      *
-     * Redeem ads credit on behalf of the ad account id and apply it towards billing.\n\n&lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Redeem ads credit on behalf of the ad account id and apply it towards billing.\n\n&lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/using-beta-and-restricted-features/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      */
     @isTest
     private static void adsCreditRedeemTest() {
@@ -53,7 +53,7 @@ private class OASBillingApiTest {
     /**
      * Get ads credit discounts
      *
-     * Returns the list of discounts applied to the account.\n\n&lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Returns the list of discounts applied to the account.\n\n&lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/using-beta-and-restricted-features/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      */
     @isTest
     private static void adsCreditsDiscountsGetTest() {
@@ -94,9 +94,116 @@ private class OASBillingApiTest {
     }
 
     /**
+     * Get download url for a billing invoice
+     *
+     * Get download url for a billing invoice.
+     */
+    @isTest
+    private static void billingInvoiceDownloadGetTest() {
+        HttpResponse res = new HttpResponse();
+        res.setStatusCode(200);
+        res.setStatus('OK');
+        Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
+
+        Map<String, Object> params = new Map<String, Object>{
+            'adAccountId' => 'null',
+            'billingInvoiceId' => 'null'
+        };
+
+        OASClient client;
+        OASBillingApi api;
+        OASBillingInvoiceDownloadResponse response;
+        OASBillingInvoiceDownloadResponse expectedResponse;
+        String js = '';
+
+        client = new OASClient();
+        api = new OASBillingApi(client);
+
+        js = JSON.serialize(OASBillingInvoiceDownloadResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBillingInvoiceDownloadResponse.getExample();
+        response = (OASBillingInvoiceDownloadResponse) api.billingInvoiceDownloadGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBillingInvoiceDownloadResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBillingInvoiceDownloadResponse.getExample();
+        response = (OASBillingInvoiceDownloadResponse) api.billingInvoiceDownloadGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBillingInvoiceDownloadResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBillingInvoiceDownloadResponse.getExample();
+        response = (OASBillingInvoiceDownloadResponse) api.billingInvoiceDownloadGet(params);
+        System.assertEquals(expectedResponse, response);
+    }
+
+    /**
+     * Get billing invoices
+     *
+     * Get billing invoices in the advertiser account.
+     */
+    @isTest
+    private static void billingInvoicesGetTest() {
+        HttpResponse res = new HttpResponse();
+        res.setStatusCode(200);
+        res.setStatus('OK');
+        Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
+
+        Map<String, Object> params = new Map<String, Object>{
+            'adAccountId' => 'null',
+            'bookmark' => 'null',
+            'pageSize' => '',
+            'r_sort' => DUE_DATE,
+            'order' => ASCENDING,
+            'status' => OPEN,
+            'documentType' => INVOICE,
+            'startDueDate' => Sun Jan 01 00:00:00 UTC 2023,
+            'endDueDate' => Mon Jan 01 00:00:00 UTC 2024
+        };
+
+        OASClient client;
+        OASBillingApi api;
+        OASBillingInvoicesGet200Response response;
+        OASBillingInvoicesGet200Response expectedResponse;
+        String js = '';
+
+        client = new OASClient();
+        api = new OASBillingApi(client);
+
+        js = JSON.serialize(OASBillingInvoicesGet200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBillingInvoicesGet200Response.getExample();
+        response = (OASBillingInvoicesGet200Response) api.billingInvoicesGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBillingInvoicesGet200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBillingInvoicesGet200Response.getExample();
+        response = (OASBillingInvoicesGet200Response) api.billingInvoicesGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBillingInvoicesGet200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBillingInvoicesGet200Response.getExample();
+        response = (OASBillingInvoicesGet200Response) api.billingInvoicesGet(params);
+        System.assertEquals(expectedResponse, response);
+    }
+
+    /**
      * Get billing profiles
      *
-     * Get billing profiles in the advertiser account.\n\n&lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get billing profiles in the advertiser account.\n\n&lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/using-beta-and-restricted-features/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      */
     @isTest
     private static void billingProfilesGetTest() {

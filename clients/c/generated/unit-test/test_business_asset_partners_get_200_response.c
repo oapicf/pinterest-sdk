@@ -22,13 +22,13 @@ business_asset_partners_get_200_response_t* instantiate_business_asset_partners_
   business_asset_partners_get_200_response_t* business_asset_partners_get_200_response = NULL;
   if (include_optional) {
     business_asset_partners_get_200_response = business_asset_partners_get_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     business_asset_partners_get_200_response = business_asset_partners_get_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

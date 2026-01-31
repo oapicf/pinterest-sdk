@@ -11,7 +11,7 @@ import { ConversionEventResponse } from './conversionEventResponse';
 
 
 export interface PageVisitConversionTagsGet200Response { 
-    items: Array<ConversionEventResponse>;
     bookmark?: string | null;
+    items: Array<ConversionEventResponse>;
 }
 

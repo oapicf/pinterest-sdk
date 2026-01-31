@@ -15,18 +15,35 @@ import javax.validation.Valid;
 /**
  * SearchUserBoardsGet200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class SearchUserBoardsGet200Response   {
+  @JsonProperty("bookmark")
+  
+  private String bookmark;
+
   @JsonProperty("items")
   @NotNull
 @Valid
 
   private List<@Valid Board> items = new ArrayList<>();
 
-  @JsonProperty("bookmark")
-  
-  private String bookmark;
+  public SearchUserBoardsGet200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
+   /**
+   * Get bookmark
+   * @return bookmark
+  **/
+  public String getBookmark() {
+    return bookmark;
+  }
+
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
 
   public SearchUserBoardsGet200Response items(List<@Valid Board> items) {
     this.items = items;
@@ -53,23 +70,6 @@ public class SearchUserBoardsGet200Response   {
     this.items = items;
   }
 
-  public SearchUserBoardsGet200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
-   /**
-   * Get bookmark
-   * @return bookmark
-  **/
-  public String getBookmark() {
-    return bookmark;
-  }
-
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -80,13 +80,13 @@ public class SearchUserBoardsGet200Response   {
       return false;
     }
     SearchUserBoardsGet200Response searchUserBoardsGet200Response = (SearchUserBoardsGet200Response) o;
-    return Objects.equals(items, searchUserBoardsGet200Response.items) &&
-        Objects.equals(bookmark, searchUserBoardsGet200Response.bookmark);
+    return Objects.equals(bookmark, searchUserBoardsGet200Response.bookmark) &&
+        Objects.equals(items, searchUserBoardsGet200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -95,8 +95,8 @@ public class SearchUserBoardsGet200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SearchUserBoardsGet200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

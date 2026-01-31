@@ -17,6 +17,12 @@
       "default": null
     },
     {
+      "name": "exceptions",
+      "type": ["null", "model.object"],
+      "doc": "Customer list errors",
+      "default": null
+    },
+    {
       "name": "id",
       "type": ["null", "string"],
       "doc": "Customer list ID.",
@@ -71,12 +77,6 @@
       "name": "updated_time",
       "type": ["null", "double"],
       "doc": "Last update time. Unix timestamp in seconds.",
-      "default": null
-    },
-    {
-      "name": "exceptions",
-      "type": ["null", "model.object"],
-      "doc": "Customer list errors",
       "default": null
     }
   ]

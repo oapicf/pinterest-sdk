@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -18,35 +18,38 @@ import (
 
 
 
-// PinMediaSource - Pin media source.
+// PinMediaSource - Pin media source that can be an image, video, or a mix of both passed in as a request.
 type PinMediaSource struct {
 
-	SourceType string `json:"source_type"`
-
-	ContentType string `json:"content_type"`
+	ContentType ContentType `json:"content_type"`
 
 	Data string `json:"data"`
 
 	// Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
 	IsStandard bool `json:"is_standard,omitempty"`
 
+	SourceType string `json:"source_type"`
+
 	Url string `json:"url"`
 
-	// Cover image url.
-	CoverImageUrl string `json:"cover_image_url,omitempty"`
-
 	// Content type for cover image Base64.
-	CoverImageContentType string `json:"cover_image_content_type,omitempty"`
+	CoverImageContentType ContentType `json:"cover_image_content_type,omitempty"`
 
 	// Cover image Base64.
 	CoverImageData string `json:"cover_image_data,omitempty"`
 
+	// Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.
+	CoverImageKeyFrameTime int32 `json:"cover_image_key_frame_time,omitempty"`
+
+	// Cover image URL.
+	CoverImageUrl string `json:"cover_image_url,omitempty"`
+
 	MediaId string `json:"media_id"`
 
-	// Array with image objects.
-	Items []PinMediaSourceImagesUrlItemsInner `json:"items"`
-
 	Index int32 `json:"index,omitempty"`
+
+	// Array with image objects.
+	Items []PinMediaSourceImagesUrlItem `json:"items"`
 
 	// This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
 	IsAffiliateLink bool `json:"is_affiliate_link,omitempty"`
@@ -55,9 +58,9 @@ type PinMediaSource struct {
 // AssertPinMediaSourceRequired checks if the required fields are not zero-ed
 func AssertPinMediaSourceRequired(obj PinMediaSource) error {
 	elements := map[string]interface{}{
-		"source_type": obj.SourceType,
 		"content_type": obj.ContentType,
 		"data": obj.Data,
+		"source_type": obj.SourceType,
 		"url": obj.Url,
 		"media_id": obj.MediaId,
 		"items": obj.Items,
@@ -69,7 +72,7 @@ func AssertPinMediaSourceRequired(obj PinMediaSource) error {
 	}
 
 	for _, el := range obj.Items {
-		if err := AssertPinMediaSourceImagesUrlItemsInnerRequired(el); err != nil {
+		if err := AssertPinMediaSourceImagesUrlItemRequired(el); err != nil {
 			return err
 		}
 	}
@@ -78,13 +81,16 @@ func AssertPinMediaSourceRequired(obj PinMediaSource) error {
 
 // AssertPinMediaSourceConstraints checks if the values respects the defined constraints
 func AssertPinMediaSourceConstraints(obj PinMediaSource) error {
-	for _, el := range obj.Items {
-		if err := AssertPinMediaSourceImagesUrlItemsInnerConstraints(el); err != nil {
-			return err
-		}
+	if obj.CoverImageKeyFrameTime < 0 {
+		return &ParsingError{Param: "CoverImageKeyFrameTime", Err: errors.New(errMsgMinValueConstraint)}
 	}
 	if obj.Index < 0 {
 		return &ParsingError{Param: "Index", Err: errors.New(errMsgMinValueConstraint)}
+	}
+	for _, el := range obj.Items {
+		if err := AssertPinMediaSourceImagesUrlItemConstraints(el); err != nil {
+			return err
+		}
 	}
 	return nil
 }

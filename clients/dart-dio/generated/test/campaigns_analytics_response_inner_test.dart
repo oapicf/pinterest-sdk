@@ -7,7 +7,7 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(CampaignsAnalyticsResponseInner, () {
-    // The ID of the campaing that this metrics belongs to.
+    // The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
     // String CAMPAIGN_ID
     test('to test the property `CAMPAIGN_ID`', () async {
       // TODO

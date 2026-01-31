@@ -12,8 +12,8 @@ import org.joda.time.DateTime
 import Paginated._
 
 case class Paginated (
-  items: List[Any],
-bookmark: Option[String])
+  bookmark: Option[String],
+items: List[Any])
 
 object Paginated {
   import DateTimeCodecs._

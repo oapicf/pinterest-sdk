@@ -7,16 +7,16 @@
 
 static catalogs_retail_item_error_response_t *catalogs_retail_item_error_response_create_internal(
     pinterest_rest_api_catalogs_type__e catalog_type,
-    char *item_id,
-    list_t *errors
+    list_t *errors,
+    char *item_id
     ) {
     catalogs_retail_item_error_response_t *catalogs_retail_item_error_response_local_var = malloc(sizeof(catalogs_retail_item_error_response_t));
     if (!catalogs_retail_item_error_response_local_var) {
         return NULL;
     }
     catalogs_retail_item_error_response_local_var->catalog_type = catalog_type;
-    catalogs_retail_item_error_response_local_var->item_id = item_id;
     catalogs_retail_item_error_response_local_var->errors = errors;
+    catalogs_retail_item_error_response_local_var->item_id = item_id;
 
     catalogs_retail_item_error_response_local_var->_library_owned = 1;
     return catalogs_retail_item_error_response_local_var;
@@ -24,13 +24,13 @@ static catalogs_retail_item_error_response_t *catalogs_retail_item_error_respons
 
 __attribute__((deprecated)) catalogs_retail_item_error_response_t *catalogs_retail_item_error_response_create(
     pinterest_rest_api_catalogs_type__e catalog_type,
-    char *item_id,
-    list_t *errors
+    list_t *errors,
+    char *item_id
     ) {
     return catalogs_retail_item_error_response_create_internal (
         catalog_type,
-        item_id,
-        errors
+        errors,
+        item_id
         );
 }
 
@@ -43,16 +43,16 @@ void catalogs_retail_item_error_response_free(catalogs_retail_item_error_respons
         return ;
     }
     listEntry_t *listEntry;
-    if (catalogs_retail_item_error_response->item_id) {
-        free(catalogs_retail_item_error_response->item_id);
-        catalogs_retail_item_error_response->item_id = NULL;
-    }
     if (catalogs_retail_item_error_response->errors) {
         list_ForEach(listEntry, catalogs_retail_item_error_response->errors) {
             item_validation_event_free(listEntry->data);
         }
         list_freeList(catalogs_retail_item_error_response->errors);
         catalogs_retail_item_error_response->errors = NULL;
+    }
+    if (catalogs_retail_item_error_response->item_id) {
+        free(catalogs_retail_item_error_response->item_id);
+        catalogs_retail_item_error_response->item_id = NULL;
     }
     free(catalogs_retail_item_error_response);
 }
@@ -74,16 +74,10 @@ cJSON *catalogs_retail_item_error_response_convertToJSON(catalogs_retail_item_er
     }
 
 
-    // catalogs_retail_item_error_response->item_id
-    if(catalogs_retail_item_error_response->item_id) {
-    if(cJSON_AddStringToObject(item, "item_id", catalogs_retail_item_error_response->item_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // catalogs_retail_item_error_response->errors
-    if(catalogs_retail_item_error_response->errors) {
+    if (!catalogs_retail_item_error_response->errors) {
+        goto fail;
+    }
     cJSON *errors = cJSON_AddArrayToObject(item, "errors");
     if(errors == NULL) {
     goto fail; //nonprimitive container
@@ -98,6 +92,13 @@ cJSON *catalogs_retail_item_error_response_convertToJSON(catalogs_retail_item_er
     }
     cJSON_AddItemToArray(errors, itemLocal);
     }
+    }
+
+
+    // catalogs_retail_item_error_response->item_id
+    if(catalogs_retail_item_error_response->item_id) {
+    if(cJSON_AddStringToObject(item, "item_id", catalogs_retail_item_error_response->item_id) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -131,24 +132,16 @@ catalogs_retail_item_error_response_t *catalogs_retail_item_error_response_parse
     
     catalog_type_local_nonprim = catalogs_type_parseFromJSON(catalog_type); //custom
 
-    // catalogs_retail_item_error_response->item_id
-    cJSON *item_id = cJSON_GetObjectItemCaseSensitive(catalogs_retail_item_error_responseJSON, "item_id");
-    if (cJSON_IsNull(item_id)) {
-        item_id = NULL;
-    }
-    if (item_id) { 
-    if(!cJSON_IsString(item_id) && !cJSON_IsNull(item_id))
-    {
-    goto end; //String
-    }
-    }
-
     // catalogs_retail_item_error_response->errors
     cJSON *errors = cJSON_GetObjectItemCaseSensitive(catalogs_retail_item_error_responseJSON, "errors");
     if (cJSON_IsNull(errors)) {
         errors = NULL;
     }
-    if (errors) { 
+    if (!errors) {
+        goto end;
+    }
+
+    
     cJSON *errors_local_nonprimitive = NULL;
     if(!cJSON_IsArray(errors)){
         goto end; //nonprimitive container
@@ -165,13 +158,24 @@ catalogs_retail_item_error_response_t *catalogs_retail_item_error_response_parse
 
         list_addElement(errorsList, errorsItem);
     }
+
+    // catalogs_retail_item_error_response->item_id
+    cJSON *item_id = cJSON_GetObjectItemCaseSensitive(catalogs_retail_item_error_responseJSON, "item_id");
+    if (cJSON_IsNull(item_id)) {
+        item_id = NULL;
+    }
+    if (item_id) { 
+    if(!cJSON_IsString(item_id) && !cJSON_IsNull(item_id))
+    {
+    goto end; //String
+    }
     }
 
 
     catalogs_retail_item_error_response_local_var = catalogs_retail_item_error_response_create_internal (
         catalog_type_local_nonprim,
-        item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL,
-        errors ? errorsList : NULL
+        errorsList,
+        item_id && !cJSON_IsNull(item_id) ? strdup(item_id->valuestring) : NULL
         );
 
     return catalogs_retail_item_error_response_local_var;

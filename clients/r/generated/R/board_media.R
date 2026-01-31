@@ -1,13 +1,13 @@
 #' Create a new BoardMedia
 #'
 #' @description
-#' Board media.
+#' BoardMedia Class
 #'
 #' @docType class
 #' @title BoardMedia
 #' @description BoardMedia Class
 #' @format An \code{R6Class} generator object
-#' @field image_cover_url Board cover image. character [optional]
+#' @field image_cover_url Board cover image character [optional]
 #' @field pin_thumbnail_urls Board pin thumbnail urls. list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -21,7 +21,7 @@ BoardMedia <- R6::R6Class(
     #' @description
     #' Initialize a new BoardMedia class.
     #'
-    #' @param image_cover_url Board cover image.
+    #' @param image_cover_url Board cover image
     #' @param pin_thumbnail_urls Board pin thumbnail urls.
     #' @param ... Other optional arguments.
     initialize = function(`image_cover_url` = NULL, `pin_thumbnail_urls` = NULL, ...) {

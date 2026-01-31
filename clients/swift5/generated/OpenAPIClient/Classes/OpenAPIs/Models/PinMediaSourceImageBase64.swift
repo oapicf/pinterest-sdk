@@ -10,45 +10,42 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Base64-encoded image media source */
+/** Image Base64-based media source. */
 public struct PinMediaSourceImageBase64: Codable, JSONEncodable, Hashable {
 
     public enum SourceType: String, Codable, CaseIterable {
         case imageBase64 = "image_base64"
     }
-    public enum ContentType: String, Codable, CaseIterable {
-        case imageSlashJpeg = "image/jpeg"
-        case imageSlashPng = "image/png"
-    }
-    public static let dataRule = StringRule(minLength: nil, maxLength: nil, pattern: "/[a-zA-Z0-9+\/=]+/")
-    public var sourceType: SourceType
+    public static let dataRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^[a-zA-Z0-9+\/=]+$/")
     public var contentType: ContentType
     public var data: String
     /** Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users. */
     public var isStandard: Bool? = true
+    /** The source type of the media. */
+    public var sourceType: SourceType
 
-    public init(sourceType: SourceType, contentType: ContentType, data: String, isStandard: Bool? = true) {
-        self.sourceType = sourceType
+    public init(contentType: ContentType, data: String, isStandard: Bool? = true, sourceType: SourceType) {
         self.contentType = contentType
         self.data = data
         self.isStandard = isStandard
+        self.sourceType = sourceType
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case sourceType = "source_type"
         case contentType = "content_type"
         case data
         case isStandard = "is_standard"
+        case sourceType = "source_type"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(sourceType, forKey: .sourceType)
         try container.encode(contentType, forKey: .contentType)
         try container.encode(data, forKey: .data)
         try container.encodeIfPresent(isStandard, forKey: .isStandard)
+        try container.encode(sourceType, forKey: .sourceType)
     }
 }
 

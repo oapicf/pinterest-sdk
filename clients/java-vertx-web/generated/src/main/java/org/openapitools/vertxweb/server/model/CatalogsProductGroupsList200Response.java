@@ -12,24 +12,15 @@ import org.openapitools.vertxweb.server.model.CatalogsVerticalProductGroup;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsProductGroupsList200Response   {
   
-  private List<CatalogsVerticalProductGroup> items = new ArrayList<>();
   private String bookmark;
+  private List<CatalogsVerticalProductGroup> items = new ArrayList<>();
 
   public CatalogsProductGroupsList200Response () {
 
   }
 
-  public CatalogsProductGroupsList200Response (List<CatalogsVerticalProductGroup> items, String bookmark) {
-    this.items = items;
+  public CatalogsProductGroupsList200Response (String bookmark, List<CatalogsVerticalProductGroup> items) {
     this.bookmark = bookmark;
-  }
-
-    
-  @JsonProperty("items")
-  public List<CatalogsVerticalProductGroup> getItems() {
-    return items;
-  }
-  public void setItems(List<CatalogsVerticalProductGroup> items) {
     this.items = items;
   }
 
@@ -42,6 +33,15 @@ public class CatalogsProductGroupsList200Response   {
     this.bookmark = bookmark;
   }
 
+    
+  @JsonProperty("items")
+  public List<CatalogsVerticalProductGroup> getItems() {
+    return items;
+  }
+  public void setItems(List<CatalogsVerticalProductGroup> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -52,13 +52,13 @@ public class CatalogsProductGroupsList200Response   {
       return false;
     }
     CatalogsProductGroupsList200Response catalogsProductGroupsList200Response = (CatalogsProductGroupsList200Response) o;
-    return Objects.equals(items, catalogsProductGroupsList200Response.items) &&
-        Objects.equals(bookmark, catalogsProductGroupsList200Response.bookmark);
+    return Objects.equals(bookmark, catalogsProductGroupsList200Response.bookmark) &&
+        Objects.equals(items, catalogsProductGroupsList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -66,8 +66,8 @@ public class CatalogsProductGroupsList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupsList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

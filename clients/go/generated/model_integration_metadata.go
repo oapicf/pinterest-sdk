@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,20 +20,20 @@ var _ MappedNullable = &IntegrationMetadata{}
 
 // IntegrationMetadata Integration metadata
 type IntegrationMetadata struct {
-	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
-	ExternalBusinessId *string `json:"external_business_id,omitempty"`
-	ConnectedMerchantId *string `json:"connected_merchant_id,omitempty"`
-	ConnectedUserId *string `json:"connected_user_id,omitempty"`
+	AdditionalId1 *string `json:"additional_id_1,omitempty"`
 	ConnectedAdvertiserId *string `json:"connected_advertiser_id,omitempty"`
 	ConnectedLbaId *string `json:"connected_lba_id,omitempty"`
+	ConnectedMerchantId *string `json:"connected_merchant_id,omitempty"`
 	ConnectedTagId *string `json:"connected_tag_id,omitempty"`
+	ConnectedUserId *string `json:"connected_user_id,omitempty"`
+	CreatedTimestamp *float32 `json:"created_timestamp,omitempty"`
+	ExternalBusinessId *string `json:"external_business_id,omitempty"`
+	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
 	PartnerAccessTokenExpiry *float32 `json:"partner_access_token_expiry,omitempty"`
+	PartnerMetadata *string `json:"partner_metadata,omitempty"`
 	PartnerRefreshTokenExpiry *float32 `json:"partner_refresh_token_expiry,omitempty"`
 	Scopes *string `json:"scopes,omitempty"`
-	CreatedTimestamp *float32 `json:"created_timestamp,omitempty"`
 	UpdatedTimestamp *float32 `json:"updated_timestamp,omitempty"`
-	AdditionalId1 *string `json:"additional_id_1,omitempty"`
-	PartnerMetadata *string `json:"partner_metadata,omitempty"`
 }
 
 // NewIntegrationMetadata instantiates a new IntegrationMetadata object
@@ -53,132 +53,36 @@ func NewIntegrationMetadataWithDefaults() *IntegrationMetadata {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *IntegrationMetadata) GetId() string {
-	if o == nil || IsNil(o.Id) {
+// GetAdditionalId1 returns the AdditionalId1 field value if set, zero value otherwise.
+func (o *IntegrationMetadata) GetAdditionalId1() string {
+	if o == nil || IsNil(o.AdditionalId1) {
 		var ret string
 		return ret
 	}
-	return *o.Id
+	return *o.AdditionalId1
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetAdditionalId1Ok returns a tuple with the AdditionalId1 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IntegrationMetadata) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+func (o *IntegrationMetadata) GetAdditionalId1Ok() (*string, bool) {
+	if o == nil || IsNil(o.AdditionalId1) {
 		return nil, false
 	}
-	return o.Id, true
+	return o.AdditionalId1, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *IntegrationMetadata) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+// HasAdditionalId1 returns a boolean if a field has been set.
+func (o *IntegrationMetadata) HasAdditionalId1() bool {
+	if o != nil && !IsNil(o.AdditionalId1) {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *IntegrationMetadata) SetId(v string) {
-	o.Id = &v
-}
-
-// GetExternalBusinessId returns the ExternalBusinessId field value if set, zero value otherwise.
-func (o *IntegrationMetadata) GetExternalBusinessId() string {
-	if o == nil || IsNil(o.ExternalBusinessId) {
-		var ret string
-		return ret
-	}
-	return *o.ExternalBusinessId
-}
-
-// GetExternalBusinessIdOk returns a tuple with the ExternalBusinessId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *IntegrationMetadata) GetExternalBusinessIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ExternalBusinessId) {
-		return nil, false
-	}
-	return o.ExternalBusinessId, true
-}
-
-// HasExternalBusinessId returns a boolean if a field has been set.
-func (o *IntegrationMetadata) HasExternalBusinessId() bool {
-	if o != nil && !IsNil(o.ExternalBusinessId) {
-		return true
-	}
-
-	return false
-}
-
-// SetExternalBusinessId gets a reference to the given string and assigns it to the ExternalBusinessId field.
-func (o *IntegrationMetadata) SetExternalBusinessId(v string) {
-	o.ExternalBusinessId = &v
-}
-
-// GetConnectedMerchantId returns the ConnectedMerchantId field value if set, zero value otherwise.
-func (o *IntegrationMetadata) GetConnectedMerchantId() string {
-	if o == nil || IsNil(o.ConnectedMerchantId) {
-		var ret string
-		return ret
-	}
-	return *o.ConnectedMerchantId
-}
-
-// GetConnectedMerchantIdOk returns a tuple with the ConnectedMerchantId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *IntegrationMetadata) GetConnectedMerchantIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ConnectedMerchantId) {
-		return nil, false
-	}
-	return o.ConnectedMerchantId, true
-}
-
-// HasConnectedMerchantId returns a boolean if a field has been set.
-func (o *IntegrationMetadata) HasConnectedMerchantId() bool {
-	if o != nil && !IsNil(o.ConnectedMerchantId) {
-		return true
-	}
-
-	return false
-}
-
-// SetConnectedMerchantId gets a reference to the given string and assigns it to the ConnectedMerchantId field.
-func (o *IntegrationMetadata) SetConnectedMerchantId(v string) {
-	o.ConnectedMerchantId = &v
-}
-
-// GetConnectedUserId returns the ConnectedUserId field value if set, zero value otherwise.
-func (o *IntegrationMetadata) GetConnectedUserId() string {
-	if o == nil || IsNil(o.ConnectedUserId) {
-		var ret string
-		return ret
-	}
-	return *o.ConnectedUserId
-}
-
-// GetConnectedUserIdOk returns a tuple with the ConnectedUserId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *IntegrationMetadata) GetConnectedUserIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ConnectedUserId) {
-		return nil, false
-	}
-	return o.ConnectedUserId, true
-}
-
-// HasConnectedUserId returns a boolean if a field has been set.
-func (o *IntegrationMetadata) HasConnectedUserId() bool {
-	if o != nil && !IsNil(o.ConnectedUserId) {
-		return true
-	}
-
-	return false
-}
-
-// SetConnectedUserId gets a reference to the given string and assigns it to the ConnectedUserId field.
-func (o *IntegrationMetadata) SetConnectedUserId(v string) {
-	o.ConnectedUserId = &v
+// SetAdditionalId1 gets a reference to the given string and assigns it to the AdditionalId1 field.
+func (o *IntegrationMetadata) SetAdditionalId1(v string) {
+	o.AdditionalId1 = &v
 }
 
 // GetConnectedAdvertiserId returns the ConnectedAdvertiserId field value if set, zero value otherwise.
@@ -245,6 +149,38 @@ func (o *IntegrationMetadata) SetConnectedLbaId(v string) {
 	o.ConnectedLbaId = &v
 }
 
+// GetConnectedMerchantId returns the ConnectedMerchantId field value if set, zero value otherwise.
+func (o *IntegrationMetadata) GetConnectedMerchantId() string {
+	if o == nil || IsNil(o.ConnectedMerchantId) {
+		var ret string
+		return ret
+	}
+	return *o.ConnectedMerchantId
+}
+
+// GetConnectedMerchantIdOk returns a tuple with the ConnectedMerchantId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IntegrationMetadata) GetConnectedMerchantIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ConnectedMerchantId) {
+		return nil, false
+	}
+	return o.ConnectedMerchantId, true
+}
+
+// HasConnectedMerchantId returns a boolean if a field has been set.
+func (o *IntegrationMetadata) HasConnectedMerchantId() bool {
+	if o != nil && !IsNil(o.ConnectedMerchantId) {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectedMerchantId gets a reference to the given string and assigns it to the ConnectedMerchantId field.
+func (o *IntegrationMetadata) SetConnectedMerchantId(v string) {
+	o.ConnectedMerchantId = &v
+}
+
 // GetConnectedTagId returns the ConnectedTagId field value if set, zero value otherwise.
 func (o *IntegrationMetadata) GetConnectedTagId() string {
 	if o == nil || IsNil(o.ConnectedTagId) {
@@ -277,6 +213,134 @@ func (o *IntegrationMetadata) SetConnectedTagId(v string) {
 	o.ConnectedTagId = &v
 }
 
+// GetConnectedUserId returns the ConnectedUserId field value if set, zero value otherwise.
+func (o *IntegrationMetadata) GetConnectedUserId() string {
+	if o == nil || IsNil(o.ConnectedUserId) {
+		var ret string
+		return ret
+	}
+	return *o.ConnectedUserId
+}
+
+// GetConnectedUserIdOk returns a tuple with the ConnectedUserId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IntegrationMetadata) GetConnectedUserIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ConnectedUserId) {
+		return nil, false
+	}
+	return o.ConnectedUserId, true
+}
+
+// HasConnectedUserId returns a boolean if a field has been set.
+func (o *IntegrationMetadata) HasConnectedUserId() bool {
+	if o != nil && !IsNil(o.ConnectedUserId) {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectedUserId gets a reference to the given string and assigns it to the ConnectedUserId field.
+func (o *IntegrationMetadata) SetConnectedUserId(v string) {
+	o.ConnectedUserId = &v
+}
+
+// GetCreatedTimestamp returns the CreatedTimestamp field value if set, zero value otherwise.
+func (o *IntegrationMetadata) GetCreatedTimestamp() float32 {
+	if o == nil || IsNil(o.CreatedTimestamp) {
+		var ret float32
+		return ret
+	}
+	return *o.CreatedTimestamp
+}
+
+// GetCreatedTimestampOk returns a tuple with the CreatedTimestamp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IntegrationMetadata) GetCreatedTimestampOk() (*float32, bool) {
+	if o == nil || IsNil(o.CreatedTimestamp) {
+		return nil, false
+	}
+	return o.CreatedTimestamp, true
+}
+
+// HasCreatedTimestamp returns a boolean if a field has been set.
+func (o *IntegrationMetadata) HasCreatedTimestamp() bool {
+	if o != nil && !IsNil(o.CreatedTimestamp) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedTimestamp gets a reference to the given float32 and assigns it to the CreatedTimestamp field.
+func (o *IntegrationMetadata) SetCreatedTimestamp(v float32) {
+	o.CreatedTimestamp = &v
+}
+
+// GetExternalBusinessId returns the ExternalBusinessId field value if set, zero value otherwise.
+func (o *IntegrationMetadata) GetExternalBusinessId() string {
+	if o == nil || IsNil(o.ExternalBusinessId) {
+		var ret string
+		return ret
+	}
+	return *o.ExternalBusinessId
+}
+
+// GetExternalBusinessIdOk returns a tuple with the ExternalBusinessId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IntegrationMetadata) GetExternalBusinessIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ExternalBusinessId) {
+		return nil, false
+	}
+	return o.ExternalBusinessId, true
+}
+
+// HasExternalBusinessId returns a boolean if a field has been set.
+func (o *IntegrationMetadata) HasExternalBusinessId() bool {
+	if o != nil && !IsNil(o.ExternalBusinessId) {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalBusinessId gets a reference to the given string and assigns it to the ExternalBusinessId field.
+func (o *IntegrationMetadata) SetExternalBusinessId(v string) {
+	o.ExternalBusinessId = &v
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *IntegrationMetadata) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IntegrationMetadata) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *IntegrationMetadata) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *IntegrationMetadata) SetId(v string) {
+	o.Id = &v
+}
+
 // GetPartnerAccessTokenExpiry returns the PartnerAccessTokenExpiry field value if set, zero value otherwise.
 func (o *IntegrationMetadata) GetPartnerAccessTokenExpiry() float32 {
 	if o == nil || IsNil(o.PartnerAccessTokenExpiry) {
@@ -307,6 +371,38 @@ func (o *IntegrationMetadata) HasPartnerAccessTokenExpiry() bool {
 // SetPartnerAccessTokenExpiry gets a reference to the given float32 and assigns it to the PartnerAccessTokenExpiry field.
 func (o *IntegrationMetadata) SetPartnerAccessTokenExpiry(v float32) {
 	o.PartnerAccessTokenExpiry = &v
+}
+
+// GetPartnerMetadata returns the PartnerMetadata field value if set, zero value otherwise.
+func (o *IntegrationMetadata) GetPartnerMetadata() string {
+	if o == nil || IsNil(o.PartnerMetadata) {
+		var ret string
+		return ret
+	}
+	return *o.PartnerMetadata
+}
+
+// GetPartnerMetadataOk returns a tuple with the PartnerMetadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IntegrationMetadata) GetPartnerMetadataOk() (*string, bool) {
+	if o == nil || IsNil(o.PartnerMetadata) {
+		return nil, false
+	}
+	return o.PartnerMetadata, true
+}
+
+// HasPartnerMetadata returns a boolean if a field has been set.
+func (o *IntegrationMetadata) HasPartnerMetadata() bool {
+	if o != nil && !IsNil(o.PartnerMetadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetPartnerMetadata gets a reference to the given string and assigns it to the PartnerMetadata field.
+func (o *IntegrationMetadata) SetPartnerMetadata(v string) {
+	o.PartnerMetadata = &v
 }
 
 // GetPartnerRefreshTokenExpiry returns the PartnerRefreshTokenExpiry field value if set, zero value otherwise.
@@ -373,38 +469,6 @@ func (o *IntegrationMetadata) SetScopes(v string) {
 	o.Scopes = &v
 }
 
-// GetCreatedTimestamp returns the CreatedTimestamp field value if set, zero value otherwise.
-func (o *IntegrationMetadata) GetCreatedTimestamp() float32 {
-	if o == nil || IsNil(o.CreatedTimestamp) {
-		var ret float32
-		return ret
-	}
-	return *o.CreatedTimestamp
-}
-
-// GetCreatedTimestampOk returns a tuple with the CreatedTimestamp field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *IntegrationMetadata) GetCreatedTimestampOk() (*float32, bool) {
-	if o == nil || IsNil(o.CreatedTimestamp) {
-		return nil, false
-	}
-	return o.CreatedTimestamp, true
-}
-
-// HasCreatedTimestamp returns a boolean if a field has been set.
-func (o *IntegrationMetadata) HasCreatedTimestamp() bool {
-	if o != nil && !IsNil(o.CreatedTimestamp) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedTimestamp gets a reference to the given float32 and assigns it to the CreatedTimestamp field.
-func (o *IntegrationMetadata) SetCreatedTimestamp(v float32) {
-	o.CreatedTimestamp = &v
-}
-
 // GetUpdatedTimestamp returns the UpdatedTimestamp field value if set, zero value otherwise.
 func (o *IntegrationMetadata) GetUpdatedTimestamp() float32 {
 	if o == nil || IsNil(o.UpdatedTimestamp) {
@@ -437,70 +501,6 @@ func (o *IntegrationMetadata) SetUpdatedTimestamp(v float32) {
 	o.UpdatedTimestamp = &v
 }
 
-// GetAdditionalId1 returns the AdditionalId1 field value if set, zero value otherwise.
-func (o *IntegrationMetadata) GetAdditionalId1() string {
-	if o == nil || IsNil(o.AdditionalId1) {
-		var ret string
-		return ret
-	}
-	return *o.AdditionalId1
-}
-
-// GetAdditionalId1Ok returns a tuple with the AdditionalId1 field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *IntegrationMetadata) GetAdditionalId1Ok() (*string, bool) {
-	if o == nil || IsNil(o.AdditionalId1) {
-		return nil, false
-	}
-	return o.AdditionalId1, true
-}
-
-// HasAdditionalId1 returns a boolean if a field has been set.
-func (o *IntegrationMetadata) HasAdditionalId1() bool {
-	if o != nil && !IsNil(o.AdditionalId1) {
-		return true
-	}
-
-	return false
-}
-
-// SetAdditionalId1 gets a reference to the given string and assigns it to the AdditionalId1 field.
-func (o *IntegrationMetadata) SetAdditionalId1(v string) {
-	o.AdditionalId1 = &v
-}
-
-// GetPartnerMetadata returns the PartnerMetadata field value if set, zero value otherwise.
-func (o *IntegrationMetadata) GetPartnerMetadata() string {
-	if o == nil || IsNil(o.PartnerMetadata) {
-		var ret string
-		return ret
-	}
-	return *o.PartnerMetadata
-}
-
-// GetPartnerMetadataOk returns a tuple with the PartnerMetadata field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *IntegrationMetadata) GetPartnerMetadataOk() (*string, bool) {
-	if o == nil || IsNil(o.PartnerMetadata) {
-		return nil, false
-	}
-	return o.PartnerMetadata, true
-}
-
-// HasPartnerMetadata returns a boolean if a field has been set.
-func (o *IntegrationMetadata) HasPartnerMetadata() bool {
-	if o != nil && !IsNil(o.PartnerMetadata) {
-		return true
-	}
-
-	return false
-}
-
-// SetPartnerMetadata gets a reference to the given string and assigns it to the PartnerMetadata field.
-func (o *IntegrationMetadata) SetPartnerMetadata(v string) {
-	o.PartnerMetadata = &v
-}
-
 func (o IntegrationMetadata) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -511,17 +511,8 @@ func (o IntegrationMetadata) MarshalJSON() ([]byte, error) {
 
 func (o IntegrationMetadata) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.ExternalBusinessId) {
-		toSerialize["external_business_id"] = o.ExternalBusinessId
-	}
-	if !IsNil(o.ConnectedMerchantId) {
-		toSerialize["connected_merchant_id"] = o.ConnectedMerchantId
-	}
-	if !IsNil(o.ConnectedUserId) {
-		toSerialize["connected_user_id"] = o.ConnectedUserId
+	if !IsNil(o.AdditionalId1) {
+		toSerialize["additional_id_1"] = o.AdditionalId1
 	}
 	if !IsNil(o.ConnectedAdvertiserId) {
 		toSerialize["connected_advertiser_id"] = o.ConnectedAdvertiserId
@@ -529,11 +520,29 @@ func (o IntegrationMetadata) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ConnectedLbaId) {
 		toSerialize["connected_lba_id"] = o.ConnectedLbaId
 	}
+	if !IsNil(o.ConnectedMerchantId) {
+		toSerialize["connected_merchant_id"] = o.ConnectedMerchantId
+	}
 	if !IsNil(o.ConnectedTagId) {
 		toSerialize["connected_tag_id"] = o.ConnectedTagId
 	}
+	if !IsNil(o.ConnectedUserId) {
+		toSerialize["connected_user_id"] = o.ConnectedUserId
+	}
+	if !IsNil(o.CreatedTimestamp) {
+		toSerialize["created_timestamp"] = o.CreatedTimestamp
+	}
+	if !IsNil(o.ExternalBusinessId) {
+		toSerialize["external_business_id"] = o.ExternalBusinessId
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.PartnerAccessTokenExpiry) {
 		toSerialize["partner_access_token_expiry"] = o.PartnerAccessTokenExpiry
+	}
+	if !IsNil(o.PartnerMetadata) {
+		toSerialize["partner_metadata"] = o.PartnerMetadata
 	}
 	if !IsNil(o.PartnerRefreshTokenExpiry) {
 		toSerialize["partner_refresh_token_expiry"] = o.PartnerRefreshTokenExpiry
@@ -541,17 +550,8 @@ func (o IntegrationMetadata) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Scopes) {
 		toSerialize["scopes"] = o.Scopes
 	}
-	if !IsNil(o.CreatedTimestamp) {
-		toSerialize["created_timestamp"] = o.CreatedTimestamp
-	}
 	if !IsNil(o.UpdatedTimestamp) {
 		toSerialize["updated_timestamp"] = o.UpdatedTimestamp
-	}
-	if !IsNil(o.AdditionalId1) {
-		toSerialize["additional_id_1"] = o.AdditionalId1
-	}
-	if !IsNil(o.PartnerMetadata) {
-		toSerialize["partner_metadata"] = o.PartnerMetadata
 	}
 	return toSerialize, nil
 }

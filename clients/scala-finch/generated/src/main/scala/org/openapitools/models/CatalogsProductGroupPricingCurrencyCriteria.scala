@@ -10,15 +10,15 @@ import org.openapitools.models.NonNullableCatalogsCurrency
 
 /**
  * 
- * @param operator 
- * @param value 
  * @param currency 
  * @param negated 
+ * @param operator 
+ * @param value 
  */
-case class CatalogsProductGroupPricingCurrencyCriteria(operator: String,
-                value: BigDecimal,
-                currency: NonNullableCatalogsCurrency,
-                negated: Option[Boolean]
+case class CatalogsProductGroupPricingCurrencyCriteria(currency: NonNullableCatalogsCurrency,
+                negated: Option[Boolean],
+                operator: String,
+                value: BigDecimal
                 )
 
 object CatalogsProductGroupPricingCurrencyCriteria {

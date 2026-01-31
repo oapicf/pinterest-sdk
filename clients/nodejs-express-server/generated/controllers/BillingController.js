@@ -16,6 +16,14 @@ const ads_credits_discounts/get = async (request, response) => {
   await Controller.handleRequest(request, response, service.ads_credits_discounts/get);
 };
 
+const billing_invoice_download/get = async (request, response) => {
+  await Controller.handleRequest(request, response, service.billing_invoice_download/get);
+};
+
+const billing_invoices/get = async (request, response) => {
+  await Controller.handleRequest(request, response, service.billing_invoices/get);
+};
+
 const billing_profiles/get = async (request, response) => {
   await Controller.handleRequest(request, response, service.billing_profiles/get);
 };
@@ -48,6 +56,8 @@ const ssio_order_lines/get_by_ad_account = async (request, response) => {
 module.exports = {
   ads_credit/redeem,
   ads_credits_discounts/get,
+  billing_invoice_download/get,
+  billing_invoices/get,
   billing_profiles/get,
   ssio_accounts/get,
   ssio_insertion_order/create,

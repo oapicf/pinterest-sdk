@@ -20,19 +20,19 @@ public class PinMediaSourcePinURLTest {
     }
 
     /**
-     * Test the property 'sourceType'
-     */
-    @Test
-    public void sourceTypeTest() {
-        // TODO: test sourceType
-    }
-
-    /**
      * Test the property 'isAffiliateLink'
      */
     @Test
     public void isAffiliateLinkTest() {
         // TODO: test isAffiliateLink
+    }
+
+    /**
+     * Test the property 'sourceType'
+     */
+    @Test
+    public void sourceTypeTest() {
+        // TODO: test sourceType
     }
 
 }

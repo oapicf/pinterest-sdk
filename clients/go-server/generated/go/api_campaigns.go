@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -89,6 +89,12 @@ func (c *CampaignsAPIController) Routes() Routes {
 			"/v5/ad_accounts/{ad_account_id}/campaigns/{campaign_id}",
 			c.CampaignsGet,
 		},
+		"AdPinsAnalytics": Route{
+			"AdPinsAnalytics",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/pins/analytics",
+			c.AdPinsAnalytics,
+		},
 	}
 }
 
@@ -130,6 +136,12 @@ func (c *CampaignsAPIController) OrderedRoutes() []Route {
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/campaigns/{campaign_id}",
 			c.CampaignsGet,
+		},
+		Route{
+			"AdPinsAnalytics",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/pins/analytics",
+			c.AdPinsAnalytics,
 		},
 	}
 }
@@ -366,7 +378,30 @@ func (c *CampaignsAPIController) CampaignsAnalytics(w http.ResponseWriter, r *ht
 		param := "TIME_OF_AD_ACTION"
 		conversionReportTimeParam = param
 	}
-	result, err := c.service.CampaignsAnalytics(r.Context(), adAccountIdParam, startDateParam, endDateParam, campaignIdsParam, columnsParam, granularityParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam)
+	var aggregateReportRowsParam bool
+	if query.Has("aggregate_report_rows") {
+		param, err := parseBoolParameter(
+			query.Get("aggregate_report_rows"),
+			WithParse[bool](parseBool),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "aggregate_report_rows", Err: err}, nil)
+			return
+		}
+
+		aggregateReportRowsParam = param
+	} else {
+		var param bool = false
+		aggregateReportRowsParam = param
+	}
+	var reportingTimezoneParam ReportingTimeZone
+	if query.Has("reporting_timezone") {
+		param := ReportingTimeZone(query.Get("reporting_timezone"))
+
+		reportingTimezoneParam = param
+	} else {
+	}
+	result, err := c.service.CampaignsAnalytics(r.Context(), adAccountIdParam, startDateParam, endDateParam, campaignIdsParam, columnsParam, granularityParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam, aggregateReportRowsParam, reportingTimezoneParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -494,14 +529,27 @@ func (c *CampaignsAPIController) CampaignTargetingAnalyticsGet(w http.ResponseWr
 		param := "TIME_OF_AD_ACTION"
 		conversionReportTimeParam = param
 	}
-	var attributionTypesParam ConversionReportAttributionType
+	var attributionTypesParam []ConversionReportAttributionType
 	if query.Has("attribution_types") {
-		param := ConversionReportAttributionType(query.Get("attribution_types"))
+		paramSplits := strings.Split(query.Get("attribution_types"), ",")
+		attributionTypesParam = make([]ConversionReportAttributionType, 0, len(paramSplits))
+		for _, param := range paramSplits {
+			paramEnum, err := NewConversionReportAttributionTypeFromValue(param)
+			if err != nil {
+				c.errorHandler(w, r, &ParsingError{Param: "attribution_types", Err: err}, nil)
+				return
+			}
+			attributionTypesParam = append(attributionTypesParam, paramEnum)
+		}
+	}
+	var reportingTimezoneParam ReportingTimeZone
+	if query.Has("reporting_timezone") {
+		param := ReportingTimeZone(query.Get("reporting_timezone"))
 
-		attributionTypesParam = param
+		reportingTimezoneParam = param
 	} else {
 	}
-	result, err := c.service.CampaignTargetingAnalyticsGet(r.Context(), adAccountIdParam, campaignIdsParam, startDateParam, endDateParam, targetingTypesParam, columnsParam, granularityParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam, attributionTypesParam)
+	result, err := c.service.CampaignTargetingAnalyticsGet(r.Context(), adAccountIdParam, campaignIdsParam, startDateParam, endDateParam, targetingTypesParam, columnsParam, granularityParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam, attributionTypesParam, reportingTimezoneParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)
@@ -525,6 +573,130 @@ func (c *CampaignsAPIController) CampaignsGet(w http.ResponseWriter, r *http.Req
 		return
 	}
 	result, err := c.service.CampaignsGet(r.Context(), adAccountIdParam, campaignIdParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	_ = EncodeJSONResponse(result.Body, &result.Code, w)
+}
+
+// AdPinsAnalytics - Get pins analytics
+func (c *CampaignsAPIController) AdPinsAnalytics(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	query, err := parseQuery(r.URL.RawQuery)
+	if err != nil {
+		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
+		return
+	}
+	adAccountIdParam := params["ad_account_id"]
+	if adAccountIdParam == "" {
+		c.errorHandler(w, r, &RequiredError{"ad_account_id"}, nil)
+		return
+	}
+	var campaignIdParam string
+	if query.Has("campaign_id") {
+		param := query.Get("campaign_id")
+
+		campaignIdParam = param
+	} else {
+		c.errorHandler(w, r, &RequiredError{Field: "campaign_id"}, nil)
+		return
+	}
+	var pinIdsParam []string
+	if query.Has("pin_ids") {
+		pinIdsParam = strings.Split(query.Get("pin_ids"), ",")
+	}
+	var startDateParam string
+	if query.Has("start_date") {
+		param := string(query.Get("start_date"))
+
+		startDateParam = param
+	} else {
+		c.errorHandler(w, r, &RequiredError{Field: "start_date"}, nil)
+		return
+	}
+	var endDateParam string
+	if query.Has("end_date") {
+		param := string(query.Get("end_date"))
+
+		endDateParam = param
+	} else {
+		c.errorHandler(w, r, &RequiredError{Field: "end_date"}, nil)
+		return
+	}
+	var columnsParam []string
+	if query.Has("columns") {
+		columnsParam = strings.Split(query.Get("columns"), ",")
+	}
+	var granularityParam Granularity
+	if query.Has("granularity") {
+		param := Granularity(query.Get("granularity"))
+
+		granularityParam = param
+	} else {
+		c.errorHandler(w, r, &RequiredError{Field: "granularity"}, nil)
+		return
+	}
+	var clickWindowDaysParam int32
+	if query.Has("click_window_days") {
+		param, err := parseNumericParameter[int32](
+			query.Get("click_window_days"),
+			WithParse[int32](parseInt32),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "click_window_days", Err: err}, nil)
+			return
+		}
+
+		clickWindowDaysParam = param
+	} else {
+		var param int32 = 30
+		clickWindowDaysParam = param
+	}
+	var engagementWindowDaysParam int32
+	if query.Has("engagement_window_days") {
+		param, err := parseNumericParameter[int32](
+			query.Get("engagement_window_days"),
+			WithParse[int32](parseInt32),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "engagement_window_days", Err: err}, nil)
+			return
+		}
+
+		engagementWindowDaysParam = param
+	} else {
+		var param int32 = 30
+		engagementWindowDaysParam = param
+	}
+	var viewWindowDaysParam int32
+	if query.Has("view_window_days") {
+		param, err := parseNumericParameter[int32](
+			query.Get("view_window_days"),
+			WithParse[int32](parseInt32),
+		)
+		if err != nil {
+			c.errorHandler(w, r, &ParsingError{Param: "view_window_days", Err: err}, nil)
+			return
+		}
+
+		viewWindowDaysParam = param
+	} else {
+		var param int32 = 1
+		viewWindowDaysParam = param
+	}
+	var conversionReportTimeParam string
+	if query.Has("conversion_report_time") {
+		param := query.Get("conversion_report_time")
+
+		conversionReportTimeParam = param
+	} else {
+		param := "TIME_OF_AD_ACTION"
+		conversionReportTimeParam = param
+	}
+	result, err := c.service.AdPinsAnalytics(r.Context(), adAccountIdParam, campaignIdParam, pinIdsParam, startDateParam, endDateParam, columnsParam, granularityParam, clickWindowDaysParam, engagementWindowDaysParam, viewWindowDaysParam, conversionReportTimeParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

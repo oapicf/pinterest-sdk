@@ -5,6 +5,12 @@
   "name": "GetBusinessAssetsResponse",
   "fields": [
     {
+      "name": "asset_group_info",
+      "type": ["null", "model.AssetGroupBinding"],
+      "doc": "",
+      "default": null
+    },
+    {
       "name": "asset_id",
       "type": ["null", "string"],
       "doc": "Unique identifier of a business asset.",
@@ -13,12 +19,12 @@
     {
       "name": "asset_type",
       "type": ["null", "string"],
-      "doc": "Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.",
+      "doc": "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.",
       "default": null
     },
     {
-      "name": "asset_group_info",
-      "type": ["null", "model.AssetGroupBinding"],
+      "name": "catalog_info",
+      "type": ["null", "model.GetBusinessAssetsResponseCatalogInfo"],
       "doc": "",
       "default": null
     }

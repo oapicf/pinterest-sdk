@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **NullableString** |  | [optional] 
-**IsFeatured** | Pointer to **bool** | boolean indicator of whether the product group is being featured or not | [optional] 
 **Filters** | Pointer to [**CatalogsProductGroupFiltersRequest**](CatalogsProductGroupFiltersRequest.md) |  | [optional] 
+**IsFeatured** | Pointer to **bool** | boolean indicator of whether the product group is being featured or not | [optional] 
+**Name** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -27,31 +27,6 @@ will change when the set of required properties is changed
 NewCatalogsProductGroupsUpdateRequestWithDefaults instantiates a new CatalogsProductGroupsUpdateRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetName
-
-`func (o *CatalogsProductGroupsUpdateRequest) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *CatalogsProductGroupsUpdateRequest) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *CatalogsProductGroupsUpdateRequest) SetName(v string)`
-
-SetName sets Name field to given value.
-
-### HasName
-
-`func (o *CatalogsProductGroupsUpdateRequest) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -88,6 +63,31 @@ HasDescription returns a boolean if a field has been set.
 `func (o *CatalogsProductGroupsUpdateRequest) UnsetDescription()`
 
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
+### GetFilters
+
+`func (o *CatalogsProductGroupsUpdateRequest) GetFilters() CatalogsProductGroupFiltersRequest`
+
+GetFilters returns the Filters field if non-nil, zero value otherwise.
+
+### GetFiltersOk
+
+`func (o *CatalogsProductGroupsUpdateRequest) GetFiltersOk() (*CatalogsProductGroupFiltersRequest, bool)`
+
+GetFiltersOk returns a tuple with the Filters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFilters
+
+`func (o *CatalogsProductGroupsUpdateRequest) SetFilters(v CatalogsProductGroupFiltersRequest)`
+
+SetFilters sets Filters field to given value.
+
+### HasFilters
+
+`func (o *CatalogsProductGroupsUpdateRequest) HasFilters() bool`
+
+HasFilters returns a boolean if a field has been set.
+
 ### GetIsFeatured
 
 `func (o *CatalogsProductGroupsUpdateRequest) GetIsFeatured() bool`
@@ -113,30 +113,30 @@ SetIsFeatured sets IsFeatured field to given value.
 
 HasIsFeatured returns a boolean if a field has been set.
 
-### GetFilters
+### GetName
 
-`func (o *CatalogsProductGroupsUpdateRequest) GetFilters() CatalogsProductGroupFiltersRequest`
+`func (o *CatalogsProductGroupsUpdateRequest) GetName() string`
 
-GetFilters returns the Filters field if non-nil, zero value otherwise.
+GetName returns the Name field if non-nil, zero value otherwise.
 
-### GetFiltersOk
+### GetNameOk
 
-`func (o *CatalogsProductGroupsUpdateRequest) GetFiltersOk() (*CatalogsProductGroupFiltersRequest, bool)`
+`func (o *CatalogsProductGroupsUpdateRequest) GetNameOk() (*string, bool)`
 
-GetFiltersOk returns a tuple with the Filters field if it's non-nil, zero value otherwise
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetFilters
+### SetName
 
-`func (o *CatalogsProductGroupsUpdateRequest) SetFilters(v CatalogsProductGroupFiltersRequest)`
+`func (o *CatalogsProductGroupsUpdateRequest) SetName(v string)`
 
-SetFilters sets Filters field to given value.
+SetName sets Name field to given value.
 
-### HasFilters
+### HasName
 
-`func (o *CatalogsProductGroupsUpdateRequest) HasFilters() bool`
+`func (o *CatalogsProductGroupsUpdateRequest) HasName() bool`
 
-HasFilters returns a boolean if a field has been set.
+HasName returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

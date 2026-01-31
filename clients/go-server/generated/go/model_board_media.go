@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -14,10 +14,9 @@ package openapi
 
 
 
-// BoardMedia - Board media.
 type BoardMedia struct {
 
-	// Board cover image.
+	// Board cover image
 	ImageCoverUrl *string `json:"image_cover_url,omitempty"`
 
 	// Board pin thumbnail urls.

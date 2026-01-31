@@ -6,29 +6,29 @@ All URIs are relative to *https://api.pinterest.com/v5*
 |------------- | ------------- | -------------|
 | [**conversionTags/create**](ConversionTagsApi.md#conversionTags/create) | **POST** /ad_accounts/{ad_account_id}/conversion_tags | Create conversion tag |
 | [**conversionTags/get**](ConversionTagsApi.md#conversionTags/get) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id} | Get conversion tag |
-| [**conversionTags/list**](ConversionTagsApi.md#conversionTags/list) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | Get conversion tags |
+| [**conversionTags/list**](ConversionTagsApi.md#conversionTags/list) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | List conversion tags |
 | [**ocpmEligibleConversionTags/get**](ConversionTagsApi.md#ocpmEligibleConversionTags/get) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible | Get Ocpm eligible conversion tags |
 | [**pageVisitConversionTags/get**](ConversionTagsApi.md#pageVisitConversionTags/get) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/page_visit | Get page visit conversion tags |
 
 
 <a name="conversionTags/create"></a>
 # **conversionTags/create**
-> ConversionTagResponse conversionTags/create(ad\_account\_id, ConversionTagCreate)
+> ConversionTag conversionTags/create(ad\_account\_id, ConversionTagCreate)
 
 Create conversion tag
 
-    Create a conversion tag, also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Pinterest tag&lt;/a&gt;, with the option to enable enhanced match.&lt;p/&gt; The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.&lt;p/&gt; For more information, see:&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot;&gt;Set up the Pinterest tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/\&quot;&gt;Pinterest Tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/#enhanced-match\&quot;&gt;Enhanced match&lt;/a&gt;
+    Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account&#39;s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
 
 ### Parameters
 
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [default to null] |
-| **ConversionTagCreate** | [**ConversionTagCreate**](../Models/ConversionTagCreate.md)| Conversion Tag to create | |
+| **ConversionTagCreate** | [**ConversionTagCreate**](../Models/ConversionTagCreate.md)|  | |
 
 ### Return type
 
-[**ConversionTagResponse**](../Models/ConversionTagResponse.md)
+[**ConversionTag**](../Models/ConversionTag.md)
 
 ### Authorization
 
@@ -41,7 +41,7 @@ Create conversion tag
 
 <a name="conversionTags/get"></a>
 # **conversionTags/get**
-> ConversionTagResponse conversionTags/get(ad\_account\_id, conversion\_tag\_id)
+> ConversionTag conversionTags/get(ad\_account\_id, conversion\_tag\_id)
 
 Get conversion tag
 
@@ -56,11 +56,11 @@ Get conversion tag
 
 ### Return type
 
-[**ConversionTagResponse**](../Models/ConversionTagResponse.md)
+[**ConversionTag**](../Models/ConversionTag.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -69,9 +69,9 @@ Get conversion tag
 
 <a name="conversionTags/list"></a>
 # **conversionTags/list**
-> ConversionTagListResponse conversionTags/list(ad\_account\_id, filter\_deleted)
+> conversion_tags_list_200_response conversionTags/list(ad\_account\_id, filter\_deleted)
 
-Get conversion tags
+List conversion tags
 
     List conversion tags associated with an ad account.
 
@@ -80,15 +80,15 @@ Get conversion tags
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **ad\_account\_id** | **String**| Unique identifier of an ad account. | [default to null] |
-| **filter\_deleted** | **Boolean**| Filter out deleted tags. | [optional] [default to false] |
+| **filter\_deleted** | **Boolean**| Filter by deleted status | [optional] [default to false] |
 
 ### Return type
 
-[**ConversionTagListResponse**](../Models/ConversionTagListResponse.md)
+[**conversion_tags_list_200_response**](../Models/conversion_tags_list_200_response.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -115,7 +115,7 @@ Get Ocpm eligible conversion tags
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -145,7 +145,7 @@ Get page visit conversion tags
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

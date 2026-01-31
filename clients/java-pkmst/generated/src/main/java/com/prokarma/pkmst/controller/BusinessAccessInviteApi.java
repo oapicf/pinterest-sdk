@@ -32,7 +32,7 @@ import java.util.List;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Api(value = "BusinessAccessInvite", description = "the BusinessAccessInvite API")
 public interface BusinessAccessInviteApi {
 
@@ -66,7 +66,7 @@ public interface BusinessAccessInviteApi {
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    ResponseEntity<DeleteInvitesResultsResponseArray> cancelInvitesOrRequests(@ApiParam(value = "Business id",required=true ) @PathVariable("business_id") String businessId,@ApiParam(value = "A list with invite ids" ,required=true )   @RequestBody CancelInvitesBody cancelInvitesBody, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
+    ResponseEntity<DeleteInvitesResultsResponseArray> cancelInvitesOrRequests(@ApiParam(value = "Unique identifier of the requesting business.",required=true ) @PathVariable("business_id") String businessId,@ApiParam(value = "A list with invite ids" ,required=true )   @RequestBody CancelInvitesBody cancelInvitesBody, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 
     @ApiOperation(value = "Update invite/request with an asset permission", notes = "Assign asset permissions information to an existing invite/request. Can be used to: - Request access to a partner's asset. Note: This is only for when no existing partnership exists. If an existing   partnership exists, use \"Create a request to access an existing partner's assets\" to request access to your   partner's assets.     - invite_type=\"PARTNER_REQUEST\" - Invite a partner to access your business assets. Note: This is only for when there is no existing partnership.   If there is an existing partnership, use \"Assign/Update partner asset permissions\" to assign a partner access to   new assets.     - invite_type=\"PARTNER_INVITE\" - Invite a member to access your business assets. Note: This is only for when there is no existing membership.   If there is an existing membership, use \"Assign/Update member asset permissions\" to assign a member access to new   assets.     - invite_type=\"MEMBER_INVITE\"  To learn more about permission levels, visit https://help.pinterest.com/en/business/article/business-manager-overview.", response = UpdateInvitesResultsResponseArray.class, authorizations = {
@@ -99,7 +99,7 @@ public interface BusinessAccessInviteApi {
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    ResponseEntity<CreateInvitesResultsResponseArray> createMembershipOrPartnershipInvites(@ApiParam(value = "Business id",required=true ) @PathVariable("business_id") String businessId,@ApiParam(value = "An object with the properties: invite_type, partners, members, business_role" ,required=true )   @RequestBody CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
+    ResponseEntity<CreateInvitesResultsResponseArray> createMembershipOrPartnershipInvites(@ApiParam(value = "Unique identifier of the requesting business.",required=true ) @PathVariable("business_id") String businessId,@ApiParam(value = "An object with the properties: invite_type, partners, members, business_role" ,required=true )   @RequestBody CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 
     @ApiOperation(value = "Get invites/requests", notes = "Get the membership/partnership invites and/or requests for the authorized user.", response = GetInvites200Response.class, authorizations = {

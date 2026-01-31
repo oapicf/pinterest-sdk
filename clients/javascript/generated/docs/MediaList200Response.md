@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[MediaUploadDetails]**](MediaUploadDetails.md) | Media | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[Media]**](Media.md) |  | 
 
 

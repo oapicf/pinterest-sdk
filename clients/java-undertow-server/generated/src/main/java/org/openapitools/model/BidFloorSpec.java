@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -30,15 +30,32 @@ import org.openapitools.model.OptimizationGoalMetadata;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BidFloorSpec   {
   
+  private ActionType billableEvent;
   private List<Country> countries = new ArrayList<>();
+  private CreativeType creativeType;
   private Currency currency;
   private ObjectiveType objectiveType;
-  private ActionType billableEvent;
   private OptimizationGoalMetadata optimizationGoalMetadata;
-  private CreativeType creativeType;
+
+  /**
+   */
+  public BidFloorSpec billableEvent(ActionType billableEvent) {
+    this.billableEvent = billableEvent;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("billable_event")
+  public ActionType getBillableEvent() {
+    return billableEvent;
+  }
+  public void setBillableEvent(ActionType billableEvent) {
+    this.billableEvent = billableEvent;
+  }
 
   /**
    */
@@ -55,6 +72,23 @@ public class BidFloorSpec   {
   }
   public void setCountries(List<Country> countries) {
     this.countries = countries;
+  }
+
+  /**
+   */
+  public BidFloorSpec creativeType(CreativeType creativeType) {
+    this.creativeType = creativeType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("creative_type")
+  public CreativeType getCreativeType() {
+    return creativeType;
+  }
+  public void setCreativeType(CreativeType creativeType) {
+    this.creativeType = creativeType;
   }
 
   /**
@@ -93,23 +127,6 @@ public class BidFloorSpec   {
 
   /**
    */
-  public BidFloorSpec billableEvent(ActionType billableEvent) {
-    this.billableEvent = billableEvent;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("billable_event")
-  public ActionType getBillableEvent() {
-    return billableEvent;
-  }
-  public void setBillableEvent(ActionType billableEvent) {
-    this.billableEvent = billableEvent;
-  }
-
-  /**
-   */
   public BidFloorSpec optimizationGoalMetadata(OptimizationGoalMetadata optimizationGoalMetadata) {
     this.optimizationGoalMetadata = optimizationGoalMetadata;
     return this;
@@ -125,23 +142,6 @@ public class BidFloorSpec   {
     this.optimizationGoalMetadata = optimizationGoalMetadata;
   }
 
-  /**
-   */
-  public BidFloorSpec creativeType(CreativeType creativeType) {
-    this.creativeType = creativeType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("creative_type")
-  public CreativeType getCreativeType() {
-    return creativeType;
-  }
-  public void setCreativeType(CreativeType creativeType) {
-    this.creativeType = creativeType;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -152,17 +152,17 @@ public class BidFloorSpec   {
       return false;
     }
     BidFloorSpec bidFloorSpec = (BidFloorSpec) o;
-    return Objects.equals(countries, bidFloorSpec.countries) &&
+    return Objects.equals(billableEvent, bidFloorSpec.billableEvent) &&
+        Objects.equals(countries, bidFloorSpec.countries) &&
+        Objects.equals(creativeType, bidFloorSpec.creativeType) &&
         Objects.equals(currency, bidFloorSpec.currency) &&
         Objects.equals(objectiveType, bidFloorSpec.objectiveType) &&
-        Objects.equals(billableEvent, bidFloorSpec.billableEvent) &&
-        Objects.equals(optimizationGoalMetadata, bidFloorSpec.optimizationGoalMetadata) &&
-        Objects.equals(creativeType, bidFloorSpec.creativeType);
+        Objects.equals(optimizationGoalMetadata, bidFloorSpec.optimizationGoalMetadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(countries, currency, objectiveType, billableEvent, optimizationGoalMetadata, creativeType);
+    return Objects.hash(billableEvent, countries, creativeType, currency, objectiveType, optimizationGoalMetadata);
   }
 
   @Override
@@ -170,12 +170,12 @@ public class BidFloorSpec   {
     StringBuilder sb = new StringBuilder();
     sb.append("class BidFloorSpec {\n");
     
+    sb.append("    billableEvent: ").append(toIndentedString(billableEvent)).append("\n");
     sb.append("    countries: ").append(toIndentedString(countries)).append("\n");
+    sb.append("    creativeType: ").append(toIndentedString(creativeType)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    objectiveType: ").append(toIndentedString(objectiveType)).append("\n");
-    sb.append("    billableEvent: ").append(toIndentedString(billableEvent)).append("\n");
     sb.append("    optimizationGoalMetadata: ").append(toIndentedString(optimizationGoalMetadata)).append("\n");
-    sb.append("    creativeType: ").append(toIndentedString(creativeType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"aGEBUCKET": @"AGE_BUCKET", @"aPPTYPE": @"APPTYPE", @"aUDIENCEEXCLUDE": @"AUDIENCE_EXCLUDE", @"aUDIENCEINCLUDE": @"AUDIENCE_INCLUDE", @"gENDER": @"GENDER", @"gEO": @"GEO", @"iNTEREST": @"INTEREST", @"lOCALE": @"LOCALE", @"lOCATION": @"LOCATION", @"sHOPPINGRETARGETING": @"SHOPPING_RETARGETING", @"tARGETINGSTRATEGY": @"TARGETING_STRATEGY" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"aGEBUCKET": @"AGE_BUCKET", @"aPPTYPE": @"APPTYPE", @"aUDIENCEEXCLUDE": @"AUDIENCE_EXCLUDE", @"aUDIENCEINCLUDE": @"AUDIENCE_INCLUDE", @"gENDER": @"GENDER", @"gEO": @"GEO", @"iNTEREST": @"INTEREST", @"lOCALE": @"LOCALE", @"lOCATION": @"LOCATION", @"mAXIMUMAGE": @"MAXIMUM_AGE", @"mINIMUMAGE": @"MINIMUM_AGE", @"sHOPPINGRETARGETING": @"SHOPPING_RETARGETING", @"tARGETINGSTRATEGY": @"TARGETING_STRATEGY" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"aGEBUCKET", @"aPPTYPE", @"aUDIENCEEXCLUDE", @"aUDIENCEINCLUDE", @"gENDER", @"gEO", @"iNTEREST", @"lOCALE", @"lOCATION", @"sHOPPINGRETARGETING", @"tARGETINGSTRATEGY"];
+  NSArray *optionalProperties = @[@"aGEBUCKET", @"aPPTYPE", @"aUDIENCEEXCLUDE", @"aUDIENCEINCLUDE", @"gENDER", @"gEO", @"iNTEREST", @"lOCALE", @"lOCATION", @"mAXIMUMAGE", @"mINIMUMAGE", @"sHOPPINGRETARGETING", @"tARGETINGSTRATEGY"];
   return [optionalProperties containsObject:propertyName];
 }
 

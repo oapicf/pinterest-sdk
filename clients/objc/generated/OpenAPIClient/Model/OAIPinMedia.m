@@ -58,7 +58,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"mediaType": @"media_type" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"images": @"images", @"mediaType": @"media_type", @"coverImageUrl": @"cover_image_url", @"duration": @"duration", @"height": @"height", @"videoUrl": @"video_url", @"width": @"width", @"items": @"items" }];
 }
 
 /**
@@ -68,7 +68,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"mediaType"];
+  NSArray *optionalProperties = @[@"images", @"coverImageUrl", @"duration", @"height", @"videoUrl", @"width", @"items"];
   return [optionalProperties containsObject:propertyName];
 }
 

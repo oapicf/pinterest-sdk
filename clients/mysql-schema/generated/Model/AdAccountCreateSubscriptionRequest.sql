@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `AdAccountCreateSubscriptionRequest`
 --
-SELECT `webhook_url`, `lead_form_id`, `partner_access_token`, `partner_refresh_token`, `partner_metadata` FROM `AdAccountCreateSubscriptionRequest` WHERE 1;
+SELECT `lead_form_id`, `partner_access_token`, `partner_metadata`, `partner_refresh_token`, `webhook_url` FROM `AdAccountCreateSubscriptionRequest` WHERE 1;
 
 --
 -- INSERT template for table `AdAccountCreateSubscriptionRequest`
 --
-INSERT INTO `AdAccountCreateSubscriptionRequest`(`webhook_url`, `lead_form_id`, `partner_access_token`, `partner_refresh_token`, `partner_metadata`) VALUES (?, ?, ?, ?, ?);
+INSERT INTO `AdAccountCreateSubscriptionRequest`(`lead_form_id`, `partner_access_token`, `partner_metadata`, `partner_refresh_token`, `webhook_url`) VALUES (?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `AdAccountCreateSubscriptionRequest`
 --
-UPDATE `AdAccountCreateSubscriptionRequest` SET `webhook_url` = ?, `lead_form_id` = ?, `partner_access_token` = ?, `partner_refresh_token` = ?, `partner_metadata` = ? WHERE 1;
+UPDATE `AdAccountCreateSubscriptionRequest` SET `lead_form_id` = ?, `partner_access_token` = ?, `partner_metadata` = ?, `partner_refresh_token` = ?, `webhook_url` = ? WHERE 1;
 
 --
 -- DELETE template for table `AdAccountCreateSubscriptionRequest`

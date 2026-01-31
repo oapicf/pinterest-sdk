@@ -15,31 +15,31 @@ ItemResponse <- R6::R6Class(
     actual_instance = NULL,
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
-    #' @field any_of  a list of object types defined in the anyOf schema.
-    any_of = list("ItemResponseAnyOf", "ItemResponseAnyOf1"),
+    #' @field one_of  a list of types defined in the oneOf schema.
+    one_of = list("ItemResponseOneOf", "ItemResponseOneOf1"),
 
     #' @description
     #' Initialize a new ItemResponse.
     #'
-    #' @param instance an instance of the object defined in the anyOf schemas: "ItemResponseAnyOf", "ItemResponseAnyOf1"
+    #' @param instance an instance of the object defined in the oneOf schemas: "ItemResponseOneOf", "ItemResponseOneOf1"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ItemResponseAnyOf") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ItemResponseOneOf") {
         self$actual_instance <- instance
-        self$actual_type <- "ItemResponseAnyOf"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ItemResponseAnyOf1") {
+        self$actual_type <- "ItemResponseOneOf"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ItemResponseOneOf1") {
         self$actual_instance <- instance
-        self$actual_type <- "ItemResponseAnyOf1"
+        self$actual_type <- "ItemResponseOneOf1"
       } else {
-        stop(paste("Failed to initialize ItemResponse with anyOf schemas ItemResponseAnyOf, ItemResponseAnyOf1. Provided class name: ",
+        stop(paste("Failed to initialize ItemResponse with oneOf schemas ItemResponseOneOf, ItemResponseOneOf1. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
 
     #' @description
     #' Deserialize JSON string into an instance of ItemResponse.
-    #' An alias to the method `fromJSON`.
+    #' An alias to the method `fromJSON` .
     #'
     #' @param input The input JSON.
     #'
@@ -55,39 +55,71 @@ ItemResponse <- R6::R6Class(
     #'
     #' @return An instance of ItemResponse.
     fromJSON = function(input) {
+      matched <- 0 # match counter
+      matched_schemas <- list() #names of matched schemas
       error_messages <- list()
+      instance <- NULL
 
-      `ItemResponseAnyOf_result` <- tryCatch({
-          `ItemResponseAnyOf`$public_methods$validateJSON(input)
-          `ItemResponseAnyOf_instance` <- `ItemResponseAnyOf`$new()
-          self$actual_instance <- `ItemResponseAnyOf_instance`$fromJSON(input)
-          self$actual_type <- "ItemResponseAnyOf"
-          return(self)
+      `ItemResponseOneOf_result` <- tryCatch({
+          `ItemResponseOneOf`$public_methods$validateJSON(input)
+          `ItemResponseOneOf_instance` <- `ItemResponseOneOf`$new()
+          instance <- `ItemResponseOneOf_instance`$fromJSON(input)
+          instance_type <- "ItemResponseOneOf"
+          matched_schemas <- append(matched_schemas, "ItemResponseOneOf")
+          matched <- matched + 1
         },
         error = function(err) err
       )
 
-      if (!is.null(`ItemResponseAnyOf_result`["error"])) {
-        error_messages <- append(error_messages, `ItemResponseAnyOf_result`["message"])
+      if (!is.null(`ItemResponseOneOf_result`["error"])) {
+        error_messages <- append(error_messages, `ItemResponseOneOf_result`["message"])
       }
 
-      `ItemResponseAnyOf1_result` <- tryCatch({
-          `ItemResponseAnyOf1`$public_methods$validateJSON(input)
-          `ItemResponseAnyOf1_instance` <- `ItemResponseAnyOf1`$new()
-          self$actual_instance <- `ItemResponseAnyOf1_instance`$fromJSON(input)
-          self$actual_type <- "ItemResponseAnyOf1"
-          return(self)
+      `ItemResponseOneOf1_result` <- tryCatch({
+          `ItemResponseOneOf1`$public_methods$validateJSON(input)
+          `ItemResponseOneOf1_instance` <- `ItemResponseOneOf1`$new()
+          instance <- `ItemResponseOneOf1_instance`$fromJSON(input)
+          instance_type <- "ItemResponseOneOf1"
+          matched_schemas <- append(matched_schemas, "ItemResponseOneOf1")
+          matched <- matched + 1
         },
         error = function(err) err
       )
 
-      if (!is.null(`ItemResponseAnyOf1_result`["error"])) {
-        error_messages <- append(error_messages, `ItemResponseAnyOf1_result`["message"])
+      if (!is.null(`ItemResponseOneOf1_result`["error"])) {
+        error_messages <- append(error_messages, `ItemResponseOneOf1_result`["message"])
       }
 
-      # no match
-      stop(paste("No match found when deserializing the input into ItemResponse with anyOf schemas ItemResponseAnyOf, ItemResponseAnyOf1. Details: >>",
-                 paste(error_messages, collapse = " >> ")))
+      if (matched == 1) {
+        # successfully match exactly 1 schema specified in oneOf
+        self$actual_instance <- instance
+        self$actual_type <- instance_type
+      } else if (matched > 1) {
+        # more than 1 match
+        stop(paste("Multiple matches found when deserializing the input into ItemResponse with oneOf schemas ItemResponseOneOf, ItemResponseOneOf1. Matched schemas: ",
+                   paste(matched_schemas, collapse = ", ")))
+      } else {
+        # no match
+        stop(paste("No match found when deserializing the input into ItemResponse with oneOf schemas ItemResponseOneOf, ItemResponseOneOf1. Details: >>",
+                   paste(error_messages, collapse = " >> ")))
+      }
+
+      self
+    },
+
+    #' @description
+    #' Serialize ItemResponse to JSON string.
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
+    #' @return JSON string representation of the ItemResponse.
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      if (!is.null(self$actual_instance)) {
+        json <- jsonlite::toJSON(simple, auto_unbox = TRUE, ...)
+        return(as.character(jsonlite::minify(json)))
+      } else {
+        return(NULL)
+      }
     },
 
     #' @description
@@ -105,18 +137,8 @@ ItemResponse <- R6::R6Class(
       if (!is.null(self$actual_instance)) {
         return(self$actual_instance$toSimpleType())
       } else {
-        NULL
+        return(NULL)
       }
-    },
-
-    #' @description
-    #' Serialize ItemResponse to JSON string.
-    #'
-    #' @param ... Parameters passed to `jsonlite::toJSON`
-    #' @return JSON string representation of the ItemResponse.
-    toJSONString = function(...) {
-      json <- jsonlite::toJSON(self$toSimpleType(), auto_unbox = TRUE, ...)
-      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description
@@ -145,7 +167,7 @@ ItemResponse <- R6::R6Class(
       jsoncontent <- c(
         sprintf('"actual_instance": %s', if (is.null(self$actual_instance)) NULL else self$actual_instance$toJSONString()),
         sprintf('"actual_type": "%s"', self$actual_type),
-        sprintf('"any_of": "%s"', paste(unlist(self$any_of), collapse = ", "))
+        sprintf('"one_of": "%s"', paste(unlist(self$one_of), collapse = ", "))
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
       as.character(jsonlite::prettify(paste("{", jsoncontent, "}", sep = "")))

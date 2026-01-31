@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `KeywordUpdate`
 --
-SELECT `id`, `archived`, `bid` FROM `KeywordUpdate` WHERE 1;
+SELECT `archived`, `bid`, `id` FROM `KeywordUpdate` WHERE 1;
 
 --
 -- INSERT template for table `KeywordUpdate`
 --
-INSERT INTO `KeywordUpdate`(`id`, `archived`, `bid`) VALUES (?, ?, ?);
+INSERT INTO `KeywordUpdate`(`archived`, `bid`, `id`) VALUES (?, ?, ?);
 
 --
 -- UPDATE template for table `KeywordUpdate`
 --
-UPDATE `KeywordUpdate` SET `id` = ?, `archived` = ?, `bid` = ? WHERE 1;
+UPDATE `KeywordUpdate` SET `archived` = ?, `bid` = ?, `id` = ? WHERE 1;
 
 --
 -- DELETE template for table `KeywordUpdate`

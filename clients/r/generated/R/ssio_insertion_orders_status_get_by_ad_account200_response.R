@@ -7,16 +7,16 @@
 #' @title SsioInsertionOrdersStatusGetByAdAccount200Response
 #' @description SsioInsertionOrdersStatusGetByAdAccount200Response Class
 #' @format An \code{R6Class} generator object
-#' @field items Insertion orders status by ad acount id list(\link{SSIOInsertionOrderStatus})
 #' @field bookmark  character [optional]
+#' @field items Insertion orders status by ad acount id list(\link{SSIOInsertionOrderStatus})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 SsioInsertionOrdersStatusGetByAdAccount200Response <- R6::R6Class(
   "SsioInsertionOrdersStatusGetByAdAccount200Response",
   public = list(
-    `items` = NULL,
     `bookmark` = NULL,
+    `items` = NULL,
 
     #' @description
     #' Initialize a new SsioInsertionOrdersStatusGetByAdAccount200Response class.
@@ -69,13 +69,13 @@ SsioInsertionOrdersStatusGetByAdAccount200Response <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       SsioInsertionOrdersStatusGetByAdAccount200ResponseObject <- list()
-      if (!is.null(self$`items`)) {
-        SsioInsertionOrdersStatusGetByAdAccount200ResponseObject[["items"]] <-
-          lapply(self$`items`, function(x) x$toSimpleType())
-      }
       if (!is.null(self$`bookmark`)) {
         SsioInsertionOrdersStatusGetByAdAccount200ResponseObject[["bookmark"]] <-
           self$`bookmark`
+      }
+      if (!is.null(self$`items`)) {
+        SsioInsertionOrdersStatusGetByAdAccount200ResponseObject[["items"]] <-
+          lapply(self$`items`, function(x) x$toSimpleType())
       }
       return(SsioInsertionOrdersStatusGetByAdAccount200ResponseObject)
     },
@@ -87,11 +87,11 @@ SsioInsertionOrdersStatusGetByAdAccount200Response <- R6::R6Class(
     #' @return the instance of SsioInsertionOrdersStatusGetByAdAccount200Response
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`items`)) {
-        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[SSIOInsertionOrderStatus]", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`bookmark`)) {
         self$`bookmark` <- this_object$`bookmark`
+      }
+      if (!is.null(this_object$`items`)) {
+        self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[SSIOInsertionOrderStatus]", loadNamespace("openapi"))
       }
       self
     },
@@ -114,8 +114,8 @@ SsioInsertionOrdersStatusGetByAdAccount200Response <- R6::R6Class(
     #' @return the instance of SsioInsertionOrdersStatusGetByAdAccount200Response
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[SSIOInsertionOrderStatus]", loadNamespace("openapi"))
       self$`bookmark` <- this_object$`bookmark`
+      self$`items` <- ApiClient$new()$deserializeObj(this_object$`items`, "array[SSIOInsertionOrderStatus]", loadNamespace("openapi"))
       self
     },
 

@@ -1,25 +1,21 @@
 # PinCreate
 
-Pin
+Resource create operation model.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** |  | [optional] [readonly] [default to undefined]
-**created_at** | **string** |  | [optional] [readonly] [default to undefined]
-**link** | **string** |  | [optional] [default to undefined]
-**title** | **string** |  | [optional] [default to undefined]
-**description** | **string** |  | [optional] [default to undefined]
-**dominant_color** | **string** | Dominant pin color. Hex number, e.g. \\\&quot;#6E7874\\\&quot;. | [optional] [default to undefined]
 **alt_text** | **string** |  | [optional] [default to undefined]
 **board_id** | **string** | The board to which this Pin belongs. | [optional] [default to undefined]
 **board_section_id** | **string** | The board section to which this Pin belongs. | [optional] [default to undefined]
-**board_owner** | [**BoardOwner**](BoardOwner.md) |  | [optional] [readonly] [default to undefined]
-**media** | [**PinMedia**](PinMedia.md) |  | [optional] [readonly] [default to undefined]
+**description** | **string** |  | [optional] [default to undefined]
+**dominant_color** | **string** | Dominant pin color. Hex number, e.g. &#x60;#6E7874&#x60;. | [optional] [default to undefined]
+**link** | **string** |  | [optional] [default to undefined]
 **media_source** | [**PinMediaSource**](PinMediaSource.md) |  | [optional] [default to undefined]
-**parent_pin_id** | **string** | The source pin id if this pin was saved from another pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/article/save-pins-on-pinterest\&quot;&gt;Learn more&lt;/a&gt;. | [optional] [default to undefined]
-**note** | **string** | Private note for this Pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/add-notes-to-your-pins\&quot;&gt;Learn more&lt;/a&gt;. | [optional] [default to undefined]
+**parent_pin_id** | **string** | The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest). | [optional] [default to undefined]
+**sponsor_id** | **string** | The sponsor account id to request paid partnership from.  Currently the field is only available to a list of users in a closed beta. | [optional] [default to undefined]
+**title** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -27,20 +23,16 @@ Name | Type | Description | Notes
 import { PinCreate } from './api';
 
 const instance: PinCreate = {
-    id,
-    created_at,
-    link,
-    title,
-    description,
-    dominant_color,
     alt_text,
     board_id,
     board_section_id,
-    board_owner,
-    media,
+    description,
+    dominant_color,
+    link,
     media_source,
     parent_pin_id,
-    note,
+    sponsor_id,
+    title,
 };
 ```
 

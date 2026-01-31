@@ -10,12 +10,12 @@ module CatalogsHotelItemsFilter =
 
   [<CLIMutable>]
   type CatalogsHotelItemsFilter = {
+    [<JsonProperty(PropertyName = "catalog_id")>]
+    CatalogId : string;
     [<JsonProperty(PropertyName = "catalog_type")>]
     CatalogType : string;
     [<JsonProperty(PropertyName = "hotel_ids")>]
     HotelIds : string[];
-    [<JsonProperty(PropertyName = "catalog_id")>]
-    CatalogId : string;
   }
 
   //#endregion

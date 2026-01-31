@@ -12,14 +12,14 @@ import org.joda.time.DateTime
 import CatalogsVerticalProductGroupCreateRequest._
 
 case class CatalogsVerticalProductGroupCreateRequest (
-  catalogType: CatalogType,
-name: String,
+  /* Catalog id pertaining to the creative assets product group. */
+  catalogId: String,
+catalogType: CatalogType,
+country: Option[Country],
 description: Option[String],
 filters: CatalogsCreativeAssetsProductGroupFilters,
-/* Catalog id pertaining to the creative assets product group. */
-  catalogId: String,
-country: Country,
-locale: CatalogsLocale)
+locale: Option[CatalogsLocale],
+name: String)
 
 object CatalogsVerticalProductGroupCreateRequest {
   import DateTimeCodecs._

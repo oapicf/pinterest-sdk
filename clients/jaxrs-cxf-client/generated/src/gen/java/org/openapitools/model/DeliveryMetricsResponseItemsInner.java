@@ -8,13 +8,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DeliveryMetricsResponseItemsInner  {
   
- /**
-  * Metric's name.
-  */
-  @ApiModelProperty(example = "AD_GROUP_ID", value = "Metric's name.")
-
-  private String name;
-
 public enum CategoryEnum {
 
 ADS(String.valueOf("ADS")), ORGANIC(String.valueOf("ORGANIC"));
@@ -65,24 +58,13 @@ ADS(String.valueOf("ADS")), ORGANIC(String.valueOf("ORGANIC"));
   @ApiModelProperty(example = "Ad group ID", value = "Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.")
 
   private String displayName;
+
  /**
-   * Metric&#39;s name.
-   * @return name
-  **/
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
+  * Metric's name.
+  */
+  @ApiModelProperty(example = "AD_GROUP_ID", value = "Metric's name.")
 
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public DeliveryMetricsResponseItemsInner name(String name) {
-    this.name = name;
-    return this;
-  }
-
+  private String name;
  /**
    * Category name
    * @return category
@@ -140,6 +122,24 @@ ADS(String.valueOf("ADS")), ORGANIC(String.valueOf("ORGANIC"));
     return this;
   }
 
+ /**
+   * Metric&#39;s name.
+   * @return name
+  **/
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public DeliveryMetricsResponseItemsInner name(String name) {
+    this.name = name;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -149,15 +149,15 @@ ADS(String.valueOf("ADS")), ORGANIC(String.valueOf("ORGANIC"));
       return false;
     }
     DeliveryMetricsResponseItemsInner deliveryMetricsResponseItemsInner = (DeliveryMetricsResponseItemsInner) o;
-    return Objects.equals(this.name, deliveryMetricsResponseItemsInner.name) &&
-        Objects.equals(this.category, deliveryMetricsResponseItemsInner.category) &&
+    return Objects.equals(this.category, deliveryMetricsResponseItemsInner.category) &&
         Objects.equals(this.definition, deliveryMetricsResponseItemsInner.definition) &&
-        Objects.equals(this.displayName, deliveryMetricsResponseItemsInner.displayName);
+        Objects.equals(this.displayName, deliveryMetricsResponseItemsInner.displayName) &&
+        Objects.equals(this.name, deliveryMetricsResponseItemsInner.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, category, definition, displayName);
+    return Objects.hash(category, definition, displayName, name);
   }
 
   @Override
@@ -165,10 +165,10 @@ ADS(String.valueOf("ADS")), ORGANIC(String.valueOf("ORGANIC"));
     StringBuilder sb = new StringBuilder();
     sb.append("class DeliveryMetricsResponseItemsInner {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    category: ").append(toIndentedString(category)).append("\n");
     sb.append("    definition: ").append(toIndentedString(definition)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

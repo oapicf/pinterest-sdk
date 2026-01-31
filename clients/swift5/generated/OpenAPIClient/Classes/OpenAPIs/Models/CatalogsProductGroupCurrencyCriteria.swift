@@ -13,25 +13,25 @@ import AnyCodable
 /** A currency filter. This filter cannot be negated */
 public struct CatalogsProductGroupCurrencyCriteria: Codable, JSONEncodable, Hashable {
 
-    public var values: NonNullableCatalogsCurrency
     public var negated: Bool? = false
+    public var values: NonNullableCatalogsCurrency
 
-    public init(values: NonNullableCatalogsCurrency, negated: Bool? = false) {
-        self.values = values
+    public init(negated: Bool? = false, values: NonNullableCatalogsCurrency) {
         self.negated = negated
+        self.values = values
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case values
         case negated
+        case values
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(values, forKey: .values)
         try container.encodeIfPresent(negated, forKey: .negated)
+        try container.encode(values, forKey: .values)
     }
 }
 

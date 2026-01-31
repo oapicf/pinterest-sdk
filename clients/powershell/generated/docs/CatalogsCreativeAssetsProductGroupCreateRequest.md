@@ -3,21 +3,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CatalogId** | **String** | Catalog id pertaining to the creative assets product group. | 
 **CatalogType** | **String** |  | 
-**Name** | **String** |  | 
 **Description** | **String** |  | [optional] 
 **Filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
-**CatalogId** | **String** | Catalog id pertaining to the creative assets product group. | 
+**Name** | **String** |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsCreativeAssetsProductGroupCreateRequest = Initialize-PSOpenAPIToolsCatalogsCreativeAssetsProductGroupCreateRequest  -CatalogType null `
- -Name null `
+$CatalogsCreativeAssetsProductGroupCreateRequest = Initialize-PSOpenAPIToolsCatalogsCreativeAssetsProductGroupCreateRequest  -CatalogId 2680059592705 `
+ -CatalogType null `
  -Description null `
  -Filters null `
- -CatalogId 2680059592705
+ -Name null
 ```
 
 - Convert the resource to JSON

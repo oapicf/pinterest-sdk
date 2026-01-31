@@ -2,15 +2,15 @@
 Protected Class IntegrationLogClientRequest
 
 	#tag Property, Flags = &h0
-		method As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		#tag Note
 			HTTP request host from host header.
 		#tag EndNote
 		host As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		method As String
 	#tag EndProperty
 
 

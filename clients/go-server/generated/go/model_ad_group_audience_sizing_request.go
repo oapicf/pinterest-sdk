@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,29 +16,26 @@ package openapi
 
 type AdGroupAudienceSizingRequest struct {
 
-	// Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+	// Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.
 	AutoTargetingEnabled bool `json:"auto_targeting_enabled,omitempty"`
-
-	// <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
-	PlacementGroup PlacementGroupType `json:"placement_group,omitempty"`
 
 	// Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
 	CreativeTypes *[]string `json:"creative_types,omitempty"`
 
-	TargetingSpec TargetingSpec `json:"targeting_spec,omitempty"`
+	// Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
+	Keywords *[]AdGroupAudienceSizingRequestKeywordsInner `json:"keywords,omitempty"`
+
+	// <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
+	PlacementGroup PlacementGroupType `json:"placement_group,omitempty"`
 
 	// Targeted product group IDs. </p><strong>Note:</strong> This can only be combined with shopping/catalog sales campaigns. For more information, <a href=\"https://help.pinterest.com/en/business/article/shopping-ads#section-14571\" target=\"_blank\">click here</a>. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored.
 	ProductGroupIds *[]string `json:"product_group_ids,omitempty"`
 
-	// Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
-	Keywords *[]AdGroupAudienceSizingRequestKeywordsInner `json:"keywords,omitempty"`
+	TargetingSpec TargetingSpec `json:"targeting_spec,omitempty"`
 }
 
 // AssertAdGroupAudienceSizingRequestRequired checks if the required fields are not zero-ed
 func AssertAdGroupAudienceSizingRequestRequired(obj AdGroupAudienceSizingRequest) error {
-	if err := AssertTargetingSpecRequired(obj.TargetingSpec); err != nil {
-		return err
-	}
 	if obj.Keywords != nil {
 		for _, el := range *obj.Keywords {
 			if err := AssertAdGroupAudienceSizingRequestKeywordsInnerRequired(el); err != nil {
@@ -46,14 +43,14 @@ func AssertAdGroupAudienceSizingRequestRequired(obj AdGroupAudienceSizingRequest
 			}
 		}
 	}
+	if err := AssertTargetingSpecRequired(obj.TargetingSpec); err != nil {
+		return err
+	}
 	return nil
 }
 
 // AssertAdGroupAudienceSizingRequestConstraints checks if the values respects the defined constraints
 func AssertAdGroupAudienceSizingRequestConstraints(obj AdGroupAudienceSizingRequest) error {
-	if err := AssertTargetingSpecConstraints(obj.TargetingSpec); err != nil {
-		return err
-	}
     if obj.Keywords != nil {
      	for _, el := range *obj.Keywords {
      		if err := AssertAdGroupAudienceSizingRequestKeywordsInnerConstraints(el); err != nil {
@@ -61,5 +58,8 @@ func AssertAdGroupAudienceSizingRequestConstraints(obj AdGroupAudienceSizingRequ
      		}
      	}
     }
+	if err := AssertTargetingSpecConstraints(obj.TargetingSpec); err != nil {
+		return err
+	}
 	return nil
 }

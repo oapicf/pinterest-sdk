@@ -12,10 +12,10 @@ import org.joda.time.DateTime
 import AnalyticsMetricsResponse._
 
 case class AnalyticsMetricsResponse (
-  /* The metric name and value over the requested period for each requested metric */
-  summaryMetrics: Option[Map[String, BigDecimal]],
-/* Array with the requested daily metric records */
-  dailyMetrics: Option[List[AnalyticsDailyMetrics]])
+  /* Array with the requested daily metric records */
+  dailyMetrics: Option[List[AnalyticsDailyMetrics]],
+/* The metric name and value over the requested period for each requested metric */
+  summaryMetrics: Option[Map[String, BigDecimal]])
 
 object AnalyticsMetricsResponse {
   import DateTimeCodecs._

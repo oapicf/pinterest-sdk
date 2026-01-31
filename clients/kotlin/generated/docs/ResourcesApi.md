@@ -51,6 +51,8 @@ This endpoint does not need any parameter.
 
 Configure pinterest_oauth2:
     ApiClient.accessToken = ""
+Configure client_credentials:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 
@@ -98,6 +100,8 @@ try {
 
 
 Configure pinterest_oauth2:
+    ApiClient.accessToken = ""
+Configure client_credentials:
     ApiClient.accessToken = ""
 
 ### HTTP request headers
@@ -147,6 +151,8 @@ try {
 
 Configure pinterest_oauth2:
     ApiClient.accessToken = ""
+Configure client_credentials:
+    ApiClient.accessToken = ""
 
 ### HTTP request headers
 
@@ -159,7 +165,7 @@ Configure pinterest_oauth2:
 
 Get lead form questions
 
-Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
 
 ### Example
 ```kotlin
@@ -294,6 +300,8 @@ try {
 
 
 Configure pinterest_oauth2:
+    ApiClient.accessToken = ""
+Configure client_credentials:
     ApiClient.accessToken = ""
 
 ### HTTP request headers

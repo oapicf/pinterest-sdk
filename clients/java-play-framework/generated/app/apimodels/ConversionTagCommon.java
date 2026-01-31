@@ -2,7 +2,6 @@ package apimodels;
 
 import apimodels.ConversionTagConfigs;
 import apimodels.EnhancedMatchStatusType;
-import apimodels.EntityStatus;
 import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.*;
@@ -14,16 +13,17 @@ import javax.validation.Valid;
 /**
  * ConversionTagCommon
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class ConversionTagCommon   {
-  @JsonProperty("ad_account_id")
-  
-  private String adAccountId;
-
   @JsonProperty("code_snippet")
   
   private String codeSnippet;
+
+  @JsonProperty("configs")
+  @Valid
+
+  private ConversionTagConfigs configs;
 
   @JsonProperty("enhanced_match_status")
   @Valid
@@ -40,39 +40,13 @@ public class ConversionTagCommon   {
   private BigDecimal lastFiredTimeMs;
 
   @JsonProperty("name")
-  
+  @NotNull
+
   private String name;
-
-  @JsonProperty("status")
-  @Valid
-
-  private EntityStatus status;
 
   @JsonProperty("version")
   
   private String version;
-
-  @JsonProperty("configs")
-  @Valid
-
-  private ConversionTagConfigs configs;
-
-  public ConversionTagCommon adAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
-    return this;
-  }
-
-   /**
-   * Ad account ID.
-   * @return adAccountId
-  **/
-  public String getAdAccountId() {
-    return adAccountId;
-  }
-
-  public void setAdAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
-  }
 
   public ConversionTagCommon codeSnippet(String codeSnippet) {
     this.codeSnippet = codeSnippet;
@@ -91,13 +65,30 @@ public class ConversionTagCommon   {
     this.codeSnippet = codeSnippet;
   }
 
+  public ConversionTagCommon configs(ConversionTagConfigs configs) {
+    this.configs = configs;
+    return this;
+  }
+
+   /**
+   * Get configs
+   * @return configs
+  **/
+  public ConversionTagConfigs getConfigs() {
+    return configs;
+  }
+
+  public void setConfigs(ConversionTagConfigs configs) {
+    this.configs = configs;
+  }
+
   public ConversionTagCommon enhancedMatchStatus(EnhancedMatchStatusType enhancedMatchStatus) {
     this.enhancedMatchStatus = enhancedMatchStatus;
     return this;
   }
 
    /**
-   * Get enhancedMatchStatus
+   * The enhanced match status of the tag
    * @return enhancedMatchStatus
   **/
   public EnhancedMatchStatusType getEnhancedMatchStatus() {
@@ -159,23 +150,6 @@ public class ConversionTagCommon   {
     this.name = name;
   }
 
-  public ConversionTagCommon status(EntityStatus status) {
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  public EntityStatus getStatus() {
-    return status;
-  }
-
-  public void setStatus(EntityStatus status) {
-    this.status = status;
-  }
-
   public ConversionTagCommon version(String version) {
     this.version = version;
     return this;
@@ -193,23 +167,6 @@ public class ConversionTagCommon   {
     this.version = version;
   }
 
-  public ConversionTagCommon configs(ConversionTagConfigs configs) {
-    this.configs = configs;
-    return this;
-  }
-
-   /**
-   * Get configs
-   * @return configs
-  **/
-  public ConversionTagConfigs getConfigs() {
-    return configs;
-  }
-
-  public void setConfigs(ConversionTagConfigs configs) {
-    this.configs = configs;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -220,20 +177,18 @@ public class ConversionTagCommon   {
       return false;
     }
     ConversionTagCommon conversionTagCommon = (ConversionTagCommon) o;
-    return Objects.equals(adAccountId, conversionTagCommon.adAccountId) &&
-        Objects.equals(codeSnippet, conversionTagCommon.codeSnippet) &&
+    return Objects.equals(codeSnippet, conversionTagCommon.codeSnippet) &&
+        Objects.equals(configs, conversionTagCommon.configs) &&
         Objects.equals(enhancedMatchStatus, conversionTagCommon.enhancedMatchStatus) &&
         Objects.equals(id, conversionTagCommon.id) &&
         Objects.equals(lastFiredTimeMs, conversionTagCommon.lastFiredTimeMs) &&
         Objects.equals(name, conversionTagCommon.name) &&
-        Objects.equals(status, conversionTagCommon.status) &&
-        Objects.equals(version, conversionTagCommon.version) &&
-        Objects.equals(configs, conversionTagCommon.configs);
+        Objects.equals(version, conversionTagCommon.version);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, codeSnippet, enhancedMatchStatus, id, lastFiredTimeMs, name, status, version, configs);
+    return Objects.hash(codeSnippet, configs, enhancedMatchStatus, id, lastFiredTimeMs, name, version);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -242,15 +197,13 @@ public class ConversionTagCommon   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionTagCommon {\n");
     
-    sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    codeSnippet: ").append(toIndentedString(codeSnippet)).append("\n");
+    sb.append("    configs: ").append(toIndentedString(configs)).append("\n");
     sb.append("    enhancedMatchStatus: ").append(toIndentedString(enhancedMatchStatus)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    lastFiredTimeMs: ").append(toIndentedString(lastFiredTimeMs)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    configs: ").append(toIndentedString(configs)).append("\n");
     sb.append("}");
     return sb.toString();
   }

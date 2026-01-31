@@ -10,12 +10,12 @@ module LeadsExportCreateRequest =
 
   [<CLIMutable>]
   type LeadsExportCreateRequest = {
-    [<JsonProperty(PropertyName = "start_date")>]
-    StartDate : string;
-    [<JsonProperty(PropertyName = "end_date")>]
-    EndDate : string;
     [<JsonProperty(PropertyName = "ad_id")>]
     AdId : string;
+    [<JsonProperty(PropertyName = "end_date")>]
+    EndDate : string;
+    [<JsonProperty(PropertyName = "start_date")>]
+    StartDate : string;
   }
 
   //#endregion

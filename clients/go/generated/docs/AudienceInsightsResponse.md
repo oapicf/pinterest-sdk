@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Categories** | Pointer to [**[]AudienceCategory**](AudienceCategory.md) | Category interest distribution | [optional] 
-**Demographics** | Pointer to [**AudienceDemographics**](AudienceDemographics.md) |  | [optional] 
-**Type** | Pointer to [**AudienceInsightType**](AudienceInsightType.md) |  | [optional] [default to YOUR_TOTAL_AUDIENCE]
 **Date** | Pointer to **NullableString** | Generation date | [optional] 
+**Demographics** | Pointer to [**AudienceDemographics**](AudienceDemographics.md) |  | [optional] 
 **Size** | Pointer to **int32** | Population count. | [optional] 
 **SizeIsUpperBound** | Pointer to **bool** | Indicates whether the audience size has been rounded up to the next highest upper boundary. | [optional] 
+**Type** | Pointer to [**AudienceInsightType**](AudienceInsightType.md) |  | [optional] [default to YOUR_TOTAL_AUDIENCE]
 
 ## Methods
 
@@ -55,56 +55,6 @@ SetCategories sets Categories field to given value.
 
 HasCategories returns a boolean if a field has been set.
 
-### GetDemographics
-
-`func (o *AudienceInsightsResponse) GetDemographics() AudienceDemographics`
-
-GetDemographics returns the Demographics field if non-nil, zero value otherwise.
-
-### GetDemographicsOk
-
-`func (o *AudienceInsightsResponse) GetDemographicsOk() (*AudienceDemographics, bool)`
-
-GetDemographicsOk returns a tuple with the Demographics field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDemographics
-
-`func (o *AudienceInsightsResponse) SetDemographics(v AudienceDemographics)`
-
-SetDemographics sets Demographics field to given value.
-
-### HasDemographics
-
-`func (o *AudienceInsightsResponse) HasDemographics() bool`
-
-HasDemographics returns a boolean if a field has been set.
-
-### GetType
-
-`func (o *AudienceInsightsResponse) GetType() AudienceInsightType`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *AudienceInsightsResponse) GetTypeOk() (*AudienceInsightType, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *AudienceInsightsResponse) SetType(v AudienceInsightType)`
-
-SetType sets Type field to given value.
-
-### HasType
-
-`func (o *AudienceInsightsResponse) HasType() bool`
-
-HasType returns a boolean if a field has been set.
-
 ### GetDate
 
 `func (o *AudienceInsightsResponse) GetDate() string`
@@ -140,6 +90,31 @@ HasDate returns a boolean if a field has been set.
 `func (o *AudienceInsightsResponse) UnsetDate()`
 
 UnsetDate ensures that no value is present for Date, not even an explicit nil
+### GetDemographics
+
+`func (o *AudienceInsightsResponse) GetDemographics() AudienceDemographics`
+
+GetDemographics returns the Demographics field if non-nil, zero value otherwise.
+
+### GetDemographicsOk
+
+`func (o *AudienceInsightsResponse) GetDemographicsOk() (*AudienceDemographics, bool)`
+
+GetDemographicsOk returns a tuple with the Demographics field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDemographics
+
+`func (o *AudienceInsightsResponse) SetDemographics(v AudienceDemographics)`
+
+SetDemographics sets Demographics field to given value.
+
+### HasDemographics
+
+`func (o *AudienceInsightsResponse) HasDemographics() bool`
+
+HasDemographics returns a boolean if a field has been set.
+
 ### GetSize
 
 `func (o *AudienceInsightsResponse) GetSize() int32`
@@ -189,6 +164,31 @@ SetSizeIsUpperBound sets SizeIsUpperBound field to given value.
 `func (o *AudienceInsightsResponse) HasSizeIsUpperBound() bool`
 
 HasSizeIsUpperBound returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *AudienceInsightsResponse) GetType() AudienceInsightType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *AudienceInsightsResponse) GetTypeOk() (*AudienceInsightType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *AudienceInsightsResponse) SetType(v AudienceInsightType)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *AudienceInsightsResponse) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

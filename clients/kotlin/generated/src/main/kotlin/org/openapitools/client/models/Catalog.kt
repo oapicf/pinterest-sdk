@@ -26,8 +26,8 @@ import com.squareup.moshi.JsonClass
  * @param createdAt 
  * @param id ID of the catalog entity.
  * @param updatedAt 
- * @param name A human-friendly name associated to a catalog entity.
  * @param catalogType 
+ * @param name A human-friendly name associated to a catalog entity.
  */
 
 
@@ -43,12 +43,12 @@ data class Catalog (
     @Json(name = "updated_at")
     val updatedAt: java.time.OffsetDateTime,
 
+    @Json(name = "catalog_type")
+    val catalogType: CatalogsType,
+
     /* A human-friendly name associated to a catalog entity. */
     @Json(name = "name")
-    val name: kotlin.String?,
-
-    @Json(name = "catalog_type")
-    val catalogType: CatalogsType
+    val name: kotlin.String?
 
 ) {
 

@@ -2,7 +2,7 @@
 
 # PinCreate
 
-Pin
+Resource create operation model.
 
 The class is defined in **[PinCreate.java](../../src/main/java/org/openapitools/model/PinCreate.java)**
 
@@ -10,24 +10,16 @@ The class is defined in **[PinCreate.java](../../src/main/java/org/openapitools/
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | `String` |  |  [optional property] [readonly property]
-**createdAt** | `OffsetDateTime` |  |  [optional property] [readonly property]
-**link** | `String` |  |  [optional property]
-**title** | `String` |  |  [optional property]
-**description** | `String` |  |  [optional property]
-**dominantColor** | `String` | Dominant pin color. Hex number, e.g. \\\&quot;#6E7874\\\&quot;. |  [optional property]
 **altText** | `String` |  |  [optional property]
 **boardId** | `String` | The board to which this Pin belongs. |  [optional property]
 **boardSectionId** | `String` | The board section to which this Pin belongs. |  [optional property]
-**boardOwner** | [`BoardOwner`](BoardOwner.md) |  |  [optional property] [readonly property]
-**media** | [`PinMedia`](PinMedia.md) |  |  [optional property] [readonly property]
+**description** | `String` |  |  [optional property]
+**dominantColor** | `String` | Dominant pin color. Hex number, e.g. &#x60;#6E7874&#x60;. |  [optional property]
+**link** | `String` |  |  [optional property]
 **mediaSource** | [`PinMediaSource`](PinMediaSource.md) |  |  [optional property]
-**parentPinId** | `String` | The source pin id if this pin was saved from another pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/article/save-pins-on-pinterest\&quot;&gt;Learn more&lt;/a&gt;. |  [optional property]
-**note** | `String` | Private note for this Pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/add-notes-to-your-pins\&quot;&gt;Learn more&lt;/a&gt;. |  [optional property]
-
-
-
-
+**parentPinId** | `String` | The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest). |  [optional property]
+**sponsorId** | `String` | The sponsor account id to request paid partnership from.  Currently the field is only available to a list of users in a closed beta. |  [optional property]
+**title** | `String` |  |  [optional property]
 
 
 

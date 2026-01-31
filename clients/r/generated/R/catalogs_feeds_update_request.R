@@ -7,12 +7,12 @@
 #' @title CatalogsFeedsUpdateRequest
 #' @description CatalogsFeedsUpdateRequest Class
 #' @format An \code{R6Class} generator object
+#' @field credentials  \link{CatalogsFeedCredentials} [optional]
 #' @field default_availability  \link{ProductAvailabilityType} [optional]
 #' @field default_currency  \link{NullableCurrency} [optional]
-#' @field name A human-friendly name associated to a given feed. character [optional]
 #' @field format  \link{CatalogsFormat} [optional]
-#' @field credentials  \link{CatalogsFeedCredentials} [optional]
 #' @field location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. character [optional]
+#' @field name A human-friendly name associated to a given feed. character [optional]
 #' @field preferred_processing_schedule  \link{CatalogsFeedProcessingSchedule} [optional]
 #' @field status  \link{CatalogsStatus} [optional]
 #' @importFrom R6 R6Class
@@ -21,28 +21,32 @@
 CatalogsFeedsUpdateRequest <- R6::R6Class(
   "CatalogsFeedsUpdateRequest",
   public = list(
+    `credentials` = NULL,
     `default_availability` = NULL,
     `default_currency` = NULL,
-    `name` = NULL,
     `format` = NULL,
-    `credentials` = NULL,
     `location` = NULL,
+    `name` = NULL,
     `preferred_processing_schedule` = NULL,
     `status` = NULL,
 
     #' @description
     #' Initialize a new CatalogsFeedsUpdateRequest class.
     #'
+    #' @param credentials credentials
     #' @param default_availability default_availability
     #' @param default_currency default_currency
-    #' @param name A human-friendly name associated to a given feed.
     #' @param format format
-    #' @param credentials credentials
     #' @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+    #' @param name A human-friendly name associated to a given feed.
     #' @param preferred_processing_schedule preferred_processing_schedule
     #' @param status status
     #' @param ... Other optional arguments.
-    initialize = function(`default_availability` = NULL, `default_currency` = NULL, `name` = NULL, `format` = NULL, `credentials` = NULL, `location` = NULL, `preferred_processing_schedule` = NULL, `status` = NULL, ...) {
+    initialize = function(`credentials` = NULL, `default_availability` = NULL, `default_currency` = NULL, `format` = NULL, `location` = NULL, `name` = NULL, `preferred_processing_schedule` = NULL, `status` = NULL, ...) {
+      if (!is.null(`credentials`)) {
+        stopifnot(R6::is.R6(`credentials`))
+        self$`credentials` <- `credentials`
+      }
       if (!is.null(`default_availability`)) {
         if (!(`default_availability` %in% c())) {
           stop(paste("Error! \"", `default_availability`, "\" cannot be assigned to `default_availability`. Must be .", sep = ""))
@@ -57,12 +61,6 @@ CatalogsFeedsUpdateRequest <- R6::R6Class(
         stopifnot(R6::is.R6(`default_currency`))
         self$`default_currency` <- `default_currency`
       }
-      if (!is.null(`name`)) {
-        if (!(is.character(`name`) && length(`name`) == 1)) {
-          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
-        }
-        self$`name` <- `name`
-      }
       if (!is.null(`format`)) {
         if (!(`format` %in% c())) {
           stop(paste("Error! \"", `format`, "\" cannot be assigned to `format`. Must be .", sep = ""))
@@ -70,15 +68,17 @@ CatalogsFeedsUpdateRequest <- R6::R6Class(
         stopifnot(R6::is.R6(`format`))
         self$`format` <- `format`
       }
-      if (!is.null(`credentials`)) {
-        stopifnot(R6::is.R6(`credentials`))
-        self$`credentials` <- `credentials`
-      }
       if (!is.null(`location`)) {
         if (!(is.character(`location`) && length(`location`) == 1)) {
           stop(paste("Error! Invalid data for `location`. Must be a string:", `location`))
         }
         self$`location` <- `location`
+      }
+      if (!is.null(`name`)) {
+        if (!(is.character(`name`) && length(`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
+        }
+        self$`name` <- `name`
       }
       if (!is.null(`preferred_processing_schedule`)) {
         stopifnot(R6::is.R6(`preferred_processing_schedule`))
@@ -124,6 +124,10 @@ CatalogsFeedsUpdateRequest <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CatalogsFeedsUpdateRequestObject <- list()
+      if (!is.null(self$`credentials`)) {
+        CatalogsFeedsUpdateRequestObject[["credentials"]] <-
+          self$`credentials`$toSimpleType()
+      }
       if (!is.null(self$`default_availability`)) {
         CatalogsFeedsUpdateRequestObject[["default_availability"]] <-
           self$`default_availability`$toSimpleType()
@@ -132,21 +136,17 @@ CatalogsFeedsUpdateRequest <- R6::R6Class(
         CatalogsFeedsUpdateRequestObject[["default_currency"]] <-
           self$`default_currency`$toSimpleType()
       }
-      if (!is.null(self$`name`)) {
-        CatalogsFeedsUpdateRequestObject[["name"]] <-
-          self$`name`
-      }
       if (!is.null(self$`format`)) {
         CatalogsFeedsUpdateRequestObject[["format"]] <-
           self$`format`$toSimpleType()
       }
-      if (!is.null(self$`credentials`)) {
-        CatalogsFeedsUpdateRequestObject[["credentials"]] <-
-          self$`credentials`$toSimpleType()
-      }
       if (!is.null(self$`location`)) {
         CatalogsFeedsUpdateRequestObject[["location"]] <-
           self$`location`
+      }
+      if (!is.null(self$`name`)) {
+        CatalogsFeedsUpdateRequestObject[["name"]] <-
+          self$`name`
       }
       if (!is.null(self$`preferred_processing_schedule`)) {
         CatalogsFeedsUpdateRequestObject[["preferred_processing_schedule"]] <-
@@ -166,6 +166,11 @@ CatalogsFeedsUpdateRequest <- R6::R6Class(
     #' @return the instance of CatalogsFeedsUpdateRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`credentials`)) {
+        `credentials_object` <- CatalogsFeedCredentials$new()
+        `credentials_object`$fromJSON(jsonlite::toJSON(this_object$`credentials`, auto_unbox = TRUE, digits = NA))
+        self$`credentials` <- `credentials_object`
+      }
       if (!is.null(this_object$`default_availability`)) {
         `default_availability_object` <- ProductAvailabilityType$new()
         `default_availability_object`$fromJSON(jsonlite::toJSON(this_object$`default_availability`, auto_unbox = TRUE, digits = NA))
@@ -176,21 +181,16 @@ CatalogsFeedsUpdateRequest <- R6::R6Class(
         `default_currency_object`$fromJSON(jsonlite::toJSON(this_object$`default_currency`, auto_unbox = TRUE, digits = NA))
         self$`default_currency` <- `default_currency_object`
       }
-      if (!is.null(this_object$`name`)) {
-        self$`name` <- this_object$`name`
-      }
       if (!is.null(this_object$`format`)) {
         `format_object` <- CatalogsFormat$new()
         `format_object`$fromJSON(jsonlite::toJSON(this_object$`format`, auto_unbox = TRUE, digits = NA))
         self$`format` <- `format_object`
       }
-      if (!is.null(this_object$`credentials`)) {
-        `credentials_object` <- CatalogsFeedCredentials$new()
-        `credentials_object`$fromJSON(jsonlite::toJSON(this_object$`credentials`, auto_unbox = TRUE, digits = NA))
-        self$`credentials` <- `credentials_object`
-      }
       if (!is.null(this_object$`location`)) {
         self$`location` <- this_object$`location`
+      }
+      if (!is.null(this_object$`name`)) {
+        self$`name` <- this_object$`name`
       }
       if (!is.null(this_object$`preferred_processing_schedule`)) {
         `preferred_processing_schedule_object` <- CatalogsFeedProcessingSchedule$new()
@@ -223,12 +223,12 @@ CatalogsFeedsUpdateRequest <- R6::R6Class(
     #' @return the instance of CatalogsFeedsUpdateRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`credentials` <- CatalogsFeedCredentials$new()$fromJSON(jsonlite::toJSON(this_object$`credentials`, auto_unbox = TRUE, digits = NA))
       self$`default_availability` <- ProductAvailabilityType$new()$fromJSON(jsonlite::toJSON(this_object$`default_availability`, auto_unbox = TRUE, digits = NA))
       self$`default_currency` <- NullableCurrency$new()$fromJSON(jsonlite::toJSON(this_object$`default_currency`, auto_unbox = TRUE, digits = NA))
-      self$`name` <- this_object$`name`
       self$`format` <- CatalogsFormat$new()$fromJSON(jsonlite::toJSON(this_object$`format`, auto_unbox = TRUE, digits = NA))
-      self$`credentials` <- CatalogsFeedCredentials$new()$fromJSON(jsonlite::toJSON(this_object$`credentials`, auto_unbox = TRUE, digits = NA))
       self$`location` <- this_object$`location`
+      self$`name` <- this_object$`name`
       self$`preferred_processing_schedule` <- CatalogsFeedProcessingSchedule$new()$fromJSON(jsonlite::toJSON(this_object$`preferred_processing_schedule`, auto_unbox = TRUE, digits = NA))
       self$`status` <- CatalogsStatus$new()$fromJSON(jsonlite::toJSON(this_object$`status`, auto_unbox = TRUE, digits = NA))
       self

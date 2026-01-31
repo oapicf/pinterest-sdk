@@ -16,17 +16,17 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * Object describing an item batch record to create items
- * @param itemId The catalog item id in the merchant namespace
  * @param attributes 
+ * @param itemId The catalog item id in the merchant namespace
  */
 data class ItemCreateBatchRecord(
 
-    @Schema(example = "DS0294-M", description = "The catalog item id in the merchant namespace")
-    @get:JsonProperty("item_id") val itemId: kotlin.String? = null,
-
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("attributes") val attributes: ItemAttributesRequest? = null
+    @get:JsonProperty("attributes") val attributes: ItemAttributesRequest? = null,
+
+    @Schema(example = "DS0294-M", description = "The catalog item id in the merchant namespace")
+    @get:JsonProperty("item_id") val itemId: kotlin.String? = null
 ) {
 
 }

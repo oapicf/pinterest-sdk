@@ -5,14 +5,6 @@ context("Test UserWebsiteVerificationCode")
 
 model_instance <- UserWebsiteVerificationCode$new()
 
-test_that("verification_code", {
-  # tests for the property `verification_code` (character)
-  # Code to check against the user claiming the website
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`verification_code`, "EXPECTED_RESULT")
-})
-
 test_that("dns_txt_record", {
   # tests for the property `dns_txt_record` (character)
   # DNS TXT record to check against for the website to be claimed
@@ -21,12 +13,12 @@ test_that("dns_txt_record", {
   #expect_equal(model.instance$`dns_txt_record`, "EXPECTED_RESULT")
 })
 
-test_that("metatag", {
-  # tests for the property `metatag` (character)
-  # Metatag the verification process searchs for the website to be claimed
+test_that("file_content", {
+  # tests for the property `file_content` (character)
+  # A full html file to upload to the website in order for it to be claimed
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`metatag`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`file_content`, "EXPECTED_RESULT")
 })
 
 test_that("filename", {
@@ -37,10 +29,18 @@ test_that("filename", {
   #expect_equal(model.instance$`filename`, "EXPECTED_RESULT")
 })
 
-test_that("file_content", {
-  # tests for the property `file_content` (character)
-  # A full html file to upload to the website in order for it to be claimed
+test_that("metatag", {
+  # tests for the property `metatag` (character)
+  # Metatag the verification process searchs for the website to be claimed
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`file_content`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`metatag`, "EXPECTED_RESULT")
+})
+
+test_that("verification_code", {
+  # tests for the property `verification_code` (character)
+  # Code to check against the user claiming the website
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`verification_code`, "EXPECTED_RESULT")
 })

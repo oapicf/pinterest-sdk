@@ -22,13 +22,13 @@ followers_list_200_response_t* instantiate_followers_list_200_response(int inclu
   followers_list_200_response_t* followers_list_200_response = NULL;
   if (include_optional) {
     followers_list_200_response = followers_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     followers_list_200_response = followers_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

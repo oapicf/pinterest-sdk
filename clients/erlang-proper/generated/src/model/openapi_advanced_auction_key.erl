@@ -9,8 +9,8 @@
 -export_type([openapi_advanced_auction_key/0]).
 
 -type openapi_advanced_auction_key() ::
-  [ {'item_id', binary() }
-  | {'country', openapi_country:openapi_country() }
+  [ {'country', openapi_country:openapi_country() }
+  | {'item_id', binary() }
   | {'language', openapi_language:openapi_language() }
   ].
 
@@ -19,8 +19,8 @@ openapi_advanced_auction_key() ->
     openapi_advanced_auction_key([]).
 
 openapi_advanced_auction_key(Fields) ->
-  Default = [ {'item_id', binary() }
-            , {'country', openapi_country:openapi_country() }
+  Default = [ {'country', openapi_country:openapi_country() }
+            , {'item_id', binary() }
             , {'language', openapi_language:openapi_language() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).

@@ -23,14 +23,14 @@ audience_definition_t* instantiate_audience_definition(int include_optional) {
   if (include_optional) {
     audience_definition = audience_definition_create(
       "2022-10-09",
-      "0",
-      "0"
+      "PARTNER",
+      "IMPRESSION_PLUS_ENGAGEMENT"
     );
   } else {
     audience_definition = audience_definition_create(
       "2022-10-09",
-      "0",
-      "0"
+      "PARTNER",
+      "IMPRESSION_PLUS_ENGAGEMENT"
     );
   }
 

@@ -4,15 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Records** | **string** | Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5. | 
 **OperationType** | [**UserListOperationType**](UserListOperationType.md) |  | 
-**Exceptions** | Pointer to [**Exception**](Exception.md) |  | [optional] 
+**Records** | **string** | Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5. | 
 
 ## Methods
 
 ### NewCustomerListUpdateRequest
 
-`func NewCustomerListUpdateRequest(records string, operationType UserListOperationType, ) *CustomerListUpdateRequest`
+`func NewCustomerListUpdateRequest(operationType UserListOperationType, records string, ) *CustomerListUpdateRequest`
 
 NewCustomerListUpdateRequest instantiates a new CustomerListUpdateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -26,26 +25,6 @@ will change when the set of required properties is changed
 NewCustomerListUpdateRequestWithDefaults instantiates a new CustomerListUpdateRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetRecords
-
-`func (o *CustomerListUpdateRequest) GetRecords() string`
-
-GetRecords returns the Records field if non-nil, zero value otherwise.
-
-### GetRecordsOk
-
-`func (o *CustomerListUpdateRequest) GetRecordsOk() (*string, bool)`
-
-GetRecordsOk returns a tuple with the Records field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRecords
-
-`func (o *CustomerListUpdateRequest) SetRecords(v string)`
-
-SetRecords sets Records field to given value.
-
 
 ### GetOperationType
 
@@ -67,30 +46,25 @@ and a boolean to check if the value has been set.
 SetOperationType sets OperationType field to given value.
 
 
-### GetExceptions
+### GetRecords
 
-`func (o *CustomerListUpdateRequest) GetExceptions() Exception`
+`func (o *CustomerListUpdateRequest) GetRecords() string`
 
-GetExceptions returns the Exceptions field if non-nil, zero value otherwise.
+GetRecords returns the Records field if non-nil, zero value otherwise.
 
-### GetExceptionsOk
+### GetRecordsOk
 
-`func (o *CustomerListUpdateRequest) GetExceptionsOk() (*Exception, bool)`
+`func (o *CustomerListUpdateRequest) GetRecordsOk() (*string, bool)`
 
-GetExceptionsOk returns a tuple with the Exceptions field if it's non-nil, zero value otherwise
+GetRecordsOk returns a tuple with the Records field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExceptions
+### SetRecords
 
-`func (o *CustomerListUpdateRequest) SetExceptions(v Exception)`
+`func (o *CustomerListUpdateRequest) SetRecords(v string)`
 
-SetExceptions sets Exceptions field to given value.
+SetRecords sets Records field to given value.
 
-### HasExceptions
-
-`func (o *CustomerListUpdateRequest) HasExceptions() bool`
-
-HasExceptions returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

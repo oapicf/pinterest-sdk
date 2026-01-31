@@ -11,7 +11,7 @@
 ## Enum: PLACEMENT
 | Name | Value |
 | ---- | ----- |
-| PLACEMENT | SEARCH, BROWSE |
+| PLACEMENT | SEARCH, BROWSE, RELATED_PINS |
 
 
 

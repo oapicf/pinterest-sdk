@@ -7,20 +7,20 @@
 -type openapi_catalogs_hotel_address() ::
     #{ 'addr1' => binary(),
        'city' => binary(),
-       'region' => binary(),
        'country' => binary(),
-       'postal_code' => binary()
+       'postal_code' => binary(),
+       'region' => binary()
      }.
 
 encode(#{ 'addr1' := Addr1,
           'city' := City,
-          'region' := Region,
           'country' := Country,
-          'postal_code' := PostalCode
+          'postal_code' := PostalCode,
+          'region' := Region
         }) ->
     #{ 'addr1' => Addr1,
        'city' => City,
-       'region' => Region,
        'country' => Country,
-       'postal_code' => PostalCode
+       'postal_code' => PostalCode,
+       'region' => Region
      }.

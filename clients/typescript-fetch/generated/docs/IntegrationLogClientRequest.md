@@ -7,8 +7,8 @@ HTTP request details included in the log sent by the client.
 
 Name | Type
 ------------ | -------------
-`method` | string
 `host` | string
+`method` | string
 `path` | string
 `requestHeaders` | { [key: string]: string; }
 `responseHeaders` | { [key: string]: string; }
@@ -21,8 +21,8 @@ import type { IntegrationLogClientRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "method": null,
   "host": null,
+  "method": null,
   "path": null,
   "requestHeaders": null,
   "responseHeaders": null,

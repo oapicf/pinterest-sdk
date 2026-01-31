@@ -6,6 +6,8 @@ import io.swagger.annotations.ApiModelProperty;
 
 @Canonical
 class CatalogsReportDistributionIssueFilter {
+    /* Unique identifier of a catalog. If not given, oldest catalog will be used */
+    String catalogId
 
     enum ReportTypeEnum {
     
@@ -29,6 +31,4 @@ class CatalogsReportDistributionIssueFilter {
 
     
     ReportTypeEnum reportType
-    /* Unique identifier of a catalog. If not given, oldest catalog will be used */
-    String catalogId
 }

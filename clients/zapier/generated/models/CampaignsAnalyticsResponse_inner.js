@@ -7,8 +7,7 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}CAMPAIGN_ID`,
-                label: `The ID of the campaing that this metrics belongs to. - [${labelPrefix}CAMPAIGN_ID]`,
-                required: true,
+                label: `The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true. - [${labelPrefix}CAMPAIGN_ID]`,
                 type: 'string',
             },
             {

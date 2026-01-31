@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**AdResponse[]**](AdResponse.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**AdResponse[]**](AdResponse.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$AdsList200Response = Initialize-PSOpenAPIToolsAdsList200Response  -Items null `
- -Bookmark null
+$AdsList200Response = Initialize-PSOpenAPIToolsAdsList200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

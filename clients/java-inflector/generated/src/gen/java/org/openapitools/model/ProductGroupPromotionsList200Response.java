@@ -10,36 +10,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.ProductGroupPromotionResponseItem;
+import org.openapitools.model.ProductGroupPromotion;
 
 
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ProductGroupPromotionsList200Response   {
-  @JsonProperty("items")
-  private List<ProductGroupPromotionResponseItem> items = new ArrayList<>();
-
   @JsonProperty("bookmark")
   private String bookmark;
 
-  /**
-   **/
-  public ProductGroupPromotionsList200Response items(List<ProductGroupPromotionResponseItem> items) {
-    this.items = items;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
-  public List<ProductGroupPromotionResponseItem> getItems() {
-    return items;
-  }
-  public void setItems(List<ProductGroupPromotionResponseItem> items) {
-    this.items = items;
-  }
+  private List<ProductGroupPromotion> items = new ArrayList<>();
 
   /**
    **/
@@ -58,6 +41,23 @@ public class ProductGroupPromotionsList200Response   {
     this.bookmark = bookmark;
   }
 
+  /**
+   **/
+  public ProductGroupPromotionsList200Response items(List<ProductGroupPromotion> items) {
+    this.items = items;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("items")
+  public List<ProductGroupPromotion> getItems() {
+    return items;
+  }
+  public void setItems(List<ProductGroupPromotion> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -68,13 +68,13 @@ public class ProductGroupPromotionsList200Response   {
       return false;
     }
     ProductGroupPromotionsList200Response productGroupPromotionsList200Response = (ProductGroupPromotionsList200Response) o;
-    return Objects.equals(items, productGroupPromotionsList200Response.items) &&
-        Objects.equals(bookmark, productGroupPromotionsList200Response.bookmark);
+    return Objects.equals(bookmark, productGroupPromotionsList200Response.bookmark) &&
+        Objects.equals(items, productGroupPromotionsList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -82,8 +82,8 @@ public class ProductGroupPromotionsList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ProductGroupPromotionsList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

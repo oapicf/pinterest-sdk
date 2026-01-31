@@ -11,10 +11,10 @@ import { NonNullableCatalogsCurrency } from './nonNullableCatalogsCurrency';
 
 
 export interface CatalogsProductGroupPricingCurrencyCriteria { 
-    operator: CatalogsProductGroupPricingCurrencyCriteria.OperatorEnum;
-    value: number;
     currency: NonNullableCatalogsCurrency;
     negated?: boolean;
+    operator: CatalogsProductGroupPricingCurrencyCriteria.OperatorEnum;
+    value: number;
 }
 export namespace CatalogsProductGroupPricingCurrencyCriteria {
     export const OperatorEnum = {

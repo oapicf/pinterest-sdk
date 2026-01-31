@@ -22,18 +22,22 @@ import javax.annotation.Generated;
  * Audience
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class Audience {
 
   private String adAccountId;
 
+  private String audienceType;
+
+  private JsonNullable<String> createdByCompanyName = JsonNullable.<String>undefined();
+
+  private JsonNullable<Integer> createdTimestamp = JsonNullable.<Integer>undefined();
+
+  private JsonNullable<String> description = JsonNullable.<String>undefined();
+
   private String id;
 
   private String name;
-
-  private String audienceType;
-
-  private JsonNullable<String> description = JsonNullable.<String>undefined();
 
   private AudienceRule rule;
 
@@ -42,8 +46,6 @@ public class Audience {
   private String status;
 
   private String type;
-
-  private JsonNullable<Integer> createdTimestamp = JsonNullable.<Integer>undefined();
 
   private JsonNullable<Integer> updatedTimestamp = JsonNullable.<Integer>undefined();
 
@@ -65,6 +67,86 @@ public class Audience {
 
   public void setAdAccountId(String adAccountId) {
     this.adAccountId = adAccountId;
+  }
+
+  public Audience audienceType(String audienceType) {
+    this.audienceType = audienceType;
+    return this;
+  }
+
+  /**
+   * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+   * @return audienceType
+   */
+  
+  @Schema(name = "audience_type", description = "<a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("audience_type")
+  public String getAudienceType() {
+    return audienceType;
+  }
+
+  public void setAudienceType(String audienceType) {
+    this.audienceType = audienceType;
+  }
+
+  public Audience createdByCompanyName(String createdByCompanyName) {
+    this.createdByCompanyName = JsonNullable.of(createdByCompanyName);
+    return this;
+  }
+
+  /**
+   * The company that created this audience.
+   * @return createdByCompanyName
+   */
+  
+  @Schema(name = "created_by_company_name", example = "Pinterest", description = "The company that created this audience.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("created_by_company_name")
+  public JsonNullable<String> getCreatedByCompanyName() {
+    return createdByCompanyName;
+  }
+
+  public void setCreatedByCompanyName(JsonNullable<String> createdByCompanyName) {
+    this.createdByCompanyName = createdByCompanyName;
+  }
+
+  public Audience createdTimestamp(Integer createdTimestamp) {
+    this.createdTimestamp = JsonNullable.of(createdTimestamp);
+    return this;
+  }
+
+  /**
+   * Creation time. Unix timestamp in seconds.
+   * @return createdTimestamp
+   */
+  
+  @Schema(name = "created_timestamp", example = "1451431341", description = "Creation time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("created_timestamp")
+  public JsonNullable<Integer> getCreatedTimestamp() {
+    return createdTimestamp;
+  }
+
+  public void setCreatedTimestamp(JsonNullable<Integer> createdTimestamp) {
+    this.createdTimestamp = createdTimestamp;
+  }
+
+  public Audience description(String description) {
+    this.description = JsonNullable.of(description);
+    return this;
+  }
+
+  /**
+   * Audience description.
+   * @return description
+   */
+  
+  @Schema(name = "description", example = "People who love making quilts.", description = "Audience description.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("description")
+  public JsonNullable<String> getDescription() {
+    return description;
+  }
+
+  public void setDescription(JsonNullable<String> description) {
+    this.description = description;
   }
 
   public Audience id(String id) {
@@ -105,46 +187,6 @@ public class Audience {
 
   public void setName(String name) {
     this.name = name;
-  }
-
-  public Audience audienceType(String audienceType) {
-    this.audienceType = audienceType;
-    return this;
-  }
-
-  /**
-   * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
-   * @return audienceType
-   */
-  
-  @Schema(name = "audience_type", description = "<a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("audience_type")
-  public String getAudienceType() {
-    return audienceType;
-  }
-
-  public void setAudienceType(String audienceType) {
-    this.audienceType = audienceType;
-  }
-
-  public Audience description(String description) {
-    this.description = JsonNullable.of(description);
-    return this;
-  }
-
-  /**
-   * Audience description.
-   * @return description
-   */
-  
-  @Schema(name = "description", example = "People who love making quilts.", description = "Audience description.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("description")
-  public JsonNullable<String> getDescription() {
-    return description;
-  }
-
-  public void setDescription(JsonNullable<String> description) {
-    this.description = description;
   }
 
   public Audience rule(AudienceRule rule) {
@@ -227,26 +269,6 @@ public class Audience {
     this.type = type;
   }
 
-  public Audience createdTimestamp(Integer createdTimestamp) {
-    this.createdTimestamp = JsonNullable.of(createdTimestamp);
-    return this;
-  }
-
-  /**
-   * Creation time. Unix timestamp in seconds.
-   * @return createdTimestamp
-   */
-  
-  @Schema(name = "created_timestamp", example = "1451431341", description = "Creation time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("created_timestamp")
-  public JsonNullable<Integer> getCreatedTimestamp() {
-    return createdTimestamp;
-  }
-
-  public void setCreatedTimestamp(JsonNullable<Integer> createdTimestamp) {
-    this.createdTimestamp = createdTimestamp;
-  }
-
   public Audience updatedTimestamp(Integer updatedTimestamp) {
     this.updatedTimestamp = JsonNullable.of(updatedTimestamp);
     return this;
@@ -277,15 +299,16 @@ public class Audience {
     }
     Audience audience = (Audience) o;
     return Objects.equals(this.adAccountId, audience.adAccountId) &&
+        Objects.equals(this.audienceType, audience.audienceType) &&
+        equalsNullable(this.createdByCompanyName, audience.createdByCompanyName) &&
+        equalsNullable(this.createdTimestamp, audience.createdTimestamp) &&
+        equalsNullable(this.description, audience.description) &&
         Objects.equals(this.id, audience.id) &&
         Objects.equals(this.name, audience.name) &&
-        Objects.equals(this.audienceType, audience.audienceType) &&
-        equalsNullable(this.description, audience.description) &&
         Objects.equals(this.rule, audience.rule) &&
         equalsNullable(this.size, audience.size) &&
         Objects.equals(this.status, audience.status) &&
         Objects.equals(this.type, audience.type) &&
-        equalsNullable(this.createdTimestamp, audience.createdTimestamp) &&
         equalsNullable(this.updatedTimestamp, audience.updatedTimestamp);
   }
 
@@ -295,7 +318,7 @@ public class Audience {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, id, name, audienceType, hashCodeNullable(description), rule, hashCodeNullable(size), status, type, hashCodeNullable(createdTimestamp), hashCodeNullable(updatedTimestamp));
+    return Objects.hash(adAccountId, audienceType, hashCodeNullable(createdByCompanyName), hashCodeNullable(createdTimestamp), hashCodeNullable(description), id, name, rule, hashCodeNullable(size), status, type, hashCodeNullable(updatedTimestamp));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -310,15 +333,16 @@ public class Audience {
     StringBuilder sb = new StringBuilder();
     sb.append("class Audience {\n");
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
+    sb.append("    audienceType: ").append(toIndentedString(audienceType)).append("\n");
+    sb.append("    createdByCompanyName: ").append(toIndentedString(createdByCompanyName)).append("\n");
+    sb.append("    createdTimestamp: ").append(toIndentedString(createdTimestamp)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    audienceType: ").append(toIndentedString(audienceType)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    rule: ").append(toIndentedString(rule)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    createdTimestamp: ").append(toIndentedString(createdTimestamp)).append("\n");
     sb.append("    updatedTimestamp: ").append(toIndentedString(updatedTimestamp)).append("\n");
     sb.append("}");
     return sb.toString();

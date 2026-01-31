@@ -13,9 +13,9 @@ import CatalogsHotelProductGroupUpdateRequest._
 
 case class CatalogsHotelProductGroupUpdateRequest (
   catalogType: Option[CatalogType],
-name: Option[String],
 description: Option[String],
-filters: Option[CatalogsHotelProductGroupFilters])
+filters: Option[CatalogsHotelProductGroupFilters],
+name: Option[String])
 
 object CatalogsHotelProductGroupUpdateRequest {
   import DateTimeCodecs._

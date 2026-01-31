@@ -13,11 +13,50 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class BillingProfilesResponse  {
   
  /**
-  * Billing ID.
+  * Advertiser ID of the billing.
   */
-  @ApiModelProperty(example = "12312451231", value = "Billing ID.")
+  @ApiModelProperty(example = "12312451231", value = "Advertiser ID of the billing.")
 
-  private String id;
+  private String advertiserId;
+
+public enum BillingTypeEnum {
+
+CREDIT_CARD(String.valueOf("CREDIT_CARD")), INVOICE(String.valueOf("INVOICE")), INTERNAL(String.valueOf("INTERNAL")), RECURRING(String.valueOf("RECURRING")), PREPAID(String.valueOf("PREPAID"));
+
+
+    private String value;
+
+    BillingTypeEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static BillingTypeEnum fromValue(String value) {
+        for (BillingTypeEnum b : BillingTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+ /**
+  * Billing type of the advertiser
+  */
+  @ApiModelProperty(example = "CREDIT_CARD", value = "Billing type of the advertiser")
+
+  private BillingTypeEnum billingType;
 
 public enum CardTypeEnum {
 
@@ -58,51 +97,12 @@ UNKNOWN(String.valueOf("UNKNOWN")), VISA(String.valueOf("VISA")), MASTERCARD(Str
 
   private CardTypeEnum cardType;
 
-public enum StatusEnum {
-
-UNSPECIFIED(String.valueOf("UNSPECIFIED")), VALID(String.valueOf("VALID")), INVALID(String.valueOf("INVALID")), PENDING(String.valueOf("PENDING")), DELETED(String.valueOf("DELETED")), SECONDARY(String.valueOf("SECONDARY")), PENDING_SECONDARY(String.valueOf("PENDING_SECONDARY"));
-
-
-    private String value;
-
-    StatusEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StatusEnum fromValue(String value) {
-        for (StatusEnum b : StatusEnum.values()) {
-            if (b.value.equals(value)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-}
-
  /**
-  * Status of the billing.
+  * Billing ID.
   */
-  @ApiModelProperty(example = "INVALID", value = "Status of the billing.")
+  @ApiModelProperty(example = "12312451231", value = "Billing ID.")
 
-  private StatusEnum status;
-
- /**
-  * Advertiser ID of the billing.
-  */
-  @ApiModelProperty(example = "12312451231", value = "Advertiser ID of the billing.")
-
-  private String advertiserId;
+  private String id;
 
 public enum PaymentMethodBrandEnum {
 
@@ -142,21 +142,81 @@ UNKNOWN(String.valueOf("UNKNOWN")), VISA(String.valueOf("VISA")), MASTERCARD(Str
   @ApiModelProperty(example = "VISA", value = "Brand of the payment method.")
 
   private PaymentMethodBrandEnum paymentMethodBrand;
+
+public enum StatusEnum {
+
+UNSPECIFIED(String.valueOf("UNSPECIFIED")), VALID(String.valueOf("VALID")), INVALID(String.valueOf("INVALID")), PENDING(String.valueOf("PENDING")), DELETED(String.valueOf("DELETED")), SECONDARY(String.valueOf("SECONDARY")), PENDING_SECONDARY(String.valueOf("PENDING_SECONDARY"));
+
+
+    private String value;
+
+    StatusEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static StatusEnum fromValue(String value) {
+        for (StatusEnum b : StatusEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
  /**
-   * Billing ID.
-   * @return id
+  * Status of the billing.
+  */
+  @ApiModelProperty(example = "INVALID", value = "Status of the billing.")
+
+  private StatusEnum status;
+ /**
+   * Advertiser ID of the billing.
+   * @return advertiserId
   **/
-  @JsonProperty("id")
- @Pattern(regexp="^\\d+$")  public String getId() {
-    return id;
+  @JsonProperty("advertiser_id")
+ @Pattern(regexp="^\\d+$")  public String getAdvertiserId() {
+    return advertiserId;
   }
 
-  public void setId(String id) {
-    this.id = id;
+  public void setAdvertiserId(String advertiserId) {
+    this.advertiserId = advertiserId;
   }
 
-  public BillingProfilesResponse id(String id) {
-    this.id = id;
+  public BillingProfilesResponse advertiserId(String advertiserId) {
+    this.advertiserId = advertiserId;
+    return this;
+  }
+
+ /**
+   * Billing type of the advertiser
+   * @return billingType
+  **/
+  @JsonProperty("billing_type")
+  public String getBillingType() {
+    if (billingType == null) {
+      return null;
+    }
+    return billingType.value();
+  }
+
+  public void setBillingType(BillingTypeEnum billingType) {
+    this.billingType = billingType;
+  }
+
+  public BillingProfilesResponse billingType(BillingTypeEnum billingType) {
+    this.billingType = billingType;
     return this;
   }
 
@@ -182,41 +242,20 @@ UNKNOWN(String.valueOf("UNKNOWN")), VISA(String.valueOf("VISA")), MASTERCARD(Str
   }
 
  /**
-   * Status of the billing.
-   * @return status
+   * Billing ID.
+   * @return id
   **/
-  @JsonProperty("status")
-  public String getStatus() {
-    if (status == null) {
-      return null;
-    }
-    return status.value();
+  @JsonProperty("id")
+ @Pattern(regexp="^\\d+$")  public String getId() {
+    return id;
   }
 
-  public void setStatus(StatusEnum status) {
-    this.status = status;
+  public void setId(String id) {
+    this.id = id;
   }
 
-  public BillingProfilesResponse status(StatusEnum status) {
-    this.status = status;
-    return this;
-  }
-
- /**
-   * Advertiser ID of the billing.
-   * @return advertiserId
-  **/
-  @JsonProperty("advertiser_id")
- @Pattern(regexp="^\\d+$")  public String getAdvertiserId() {
-    return advertiserId;
-  }
-
-  public void setAdvertiserId(String advertiserId) {
-    this.advertiserId = advertiserId;
-  }
-
-  public BillingProfilesResponse advertiserId(String advertiserId) {
-    this.advertiserId = advertiserId;
+  public BillingProfilesResponse id(String id) {
+    this.id = id;
     return this;
   }
 
@@ -241,6 +280,27 @@ UNKNOWN(String.valueOf("UNKNOWN")), VISA(String.valueOf("VISA")), MASTERCARD(Str
     return this;
   }
 
+ /**
+   * Status of the billing.
+   * @return status
+  **/
+  @JsonProperty("status")
+  public String getStatus() {
+    if (status == null) {
+      return null;
+    }
+    return status.value();
+  }
+
+  public void setStatus(StatusEnum status) {
+    this.status = status;
+  }
+
+  public BillingProfilesResponse status(StatusEnum status) {
+    this.status = status;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -250,16 +310,17 @@ UNKNOWN(String.valueOf("UNKNOWN")), VISA(String.valueOf("VISA")), MASTERCARD(Str
       return false;
     }
     BillingProfilesResponse billingProfilesResponse = (BillingProfilesResponse) o;
-    return Objects.equals(this.id, billingProfilesResponse.id) &&
+    return Objects.equals(this.advertiserId, billingProfilesResponse.advertiserId) &&
+        Objects.equals(this.billingType, billingProfilesResponse.billingType) &&
         Objects.equals(this.cardType, billingProfilesResponse.cardType) &&
-        Objects.equals(this.status, billingProfilesResponse.status) &&
-        Objects.equals(this.advertiserId, billingProfilesResponse.advertiserId) &&
-        Objects.equals(this.paymentMethodBrand, billingProfilesResponse.paymentMethodBrand);
+        Objects.equals(this.id, billingProfilesResponse.id) &&
+        Objects.equals(this.paymentMethodBrand, billingProfilesResponse.paymentMethodBrand) &&
+        Objects.equals(this.status, billingProfilesResponse.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, cardType, status, advertiserId, paymentMethodBrand);
+    return Objects.hash(advertiserId, billingType, cardType, id, paymentMethodBrand, status);
   }
 
   @Override
@@ -267,11 +328,12 @@ UNKNOWN(String.valueOf("UNKNOWN")), VISA(String.valueOf("VISA")), MASTERCARD(Str
     StringBuilder sb = new StringBuilder();
     sb.append("class BillingProfilesResponse {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    cardType: ").append(toIndentedString(cardType)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
+    sb.append("    billingType: ").append(toIndentedString(billingType)).append("\n");
+    sb.append("    cardType: ").append(toIndentedString(cardType)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    paymentMethodBrand: ").append(toIndentedString(paymentMethodBrand)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

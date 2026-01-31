@@ -5,25 +5,25 @@
 -export_type([openapi_items_batch_post_request/0]).
 
 -type openapi_items_batch_post_request() ::
-    #{ 'catalog_type' := binary(),
+    #{ 'catalog_id' => binary(),
+       'catalog_type' := binary(),
        'country' := openapi_country:openapi_country(),
-       'language' := binary(),
        'items' := list(),
-       'catalog_id' => binary(),
+       'language' := binary(),
        'operation' := openapi_batch_operation:openapi_batch_operation()
      }.
 
-encode(#{ 'catalog_type' := CatalogType,
+encode(#{ 'catalog_id' := CatalogId,
+          'catalog_type' := CatalogType,
           'country' := Country,
-          'language' := Language,
           'items' := Items,
-          'catalog_id' := CatalogId,
+          'language' := Language,
           'operation' := Operation
         }) ->
-    #{ 'catalog_type' => CatalogType,
+    #{ 'catalog_id' => CatalogId,
+       'catalog_type' => CatalogType,
        'country' => Country,
-       'language' => Language,
        'items' => Items,
-       'catalog_id' => CatalogId,
+       'language' => Language,
        'operation' => Operation
      }.

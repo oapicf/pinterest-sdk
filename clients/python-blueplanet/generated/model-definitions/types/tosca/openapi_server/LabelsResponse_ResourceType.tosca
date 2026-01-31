@@ -1,0 +1,44 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server LabelsResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a LabelsResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  Label = openapi_server.resourceTypes.Label
+  LabelError = openapi_server.resourceTypes.LabelError
+}
+resourceTypes {
+
+  LabelsResponse {
+    title = LabelsResponse
+    description = LabelsResponse
+    derivedFrom = Root
+    properties {
+        errors {
+          type = array
+          items.type = LabelError
+          description = "Labels that were not successfully applied."
+          optional = false
+        }
+        labels {
+          type = array
+          items.type = Label
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  LabelsResponse {
+    title = LabelsResponse
+    description = LabelsResponse
+    implements = openapi_server.resourceTypes.LabelsResponse
+
+  }
+}

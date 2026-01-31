@@ -20,115 +20,55 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "IntegrationMetadata", description = "Integration metadata")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class IntegrationMetadata {
 
-  private String id;
-
-  private String externalBusinessId;
-
-  private String connectedMerchantId;
-
-  private String connectedUserId;
+  private String additionalId1;
 
   private String connectedAdvertiserId;
 
   private String connectedLbaId;
 
+  private String connectedMerchantId;
+
   private String connectedTagId;
 
+  private String connectedUserId;
+
+  private BigDecimal createdTimestamp;
+
+  private String externalBusinessId;
+
+  private String id;
+
   private BigDecimal partnerAccessTokenExpiry;
+
+  private String partnerMetadata;
 
   private BigDecimal partnerRefreshTokenExpiry;
 
   private String scopes;
 
-  private BigDecimal createdTimestamp;
-
   private BigDecimal updatedTimestamp;
 
-  private String additionalId1;
-
-  private String partnerMetadata;
-
-  public IntegrationMetadata id(String id) {
-    this.id = id;
+  public IntegrationMetadata additionalId1(String additionalId1) {
+    this.additionalId1 = additionalId1;
     return this;
   }
 
   /**
-   * Get id
-   * @return id
-   */
-  @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public IntegrationMetadata externalBusinessId(String externalBusinessId) {
-    this.externalBusinessId = externalBusinessId;
-    return this;
-  }
-
-  /**
-   * Get externalBusinessId
-   * @return externalBusinessId
+   * Get additionalId1
+   * @return additionalId1
    */
   
-  @Schema(name = "external_business_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("external_business_id")
-  public String getExternalBusinessId() {
-    return externalBusinessId;
+  @Schema(name = "additional_id_1", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("additional_id_1")
+  public String getAdditionalId1() {
+    return additionalId1;
   }
 
-  public void setExternalBusinessId(String externalBusinessId) {
-    this.externalBusinessId = externalBusinessId;
-  }
-
-  public IntegrationMetadata connectedMerchantId(String connectedMerchantId) {
-    this.connectedMerchantId = connectedMerchantId;
-    return this;
-  }
-
-  /**
-   * Get connectedMerchantId
-   * @return connectedMerchantId
-   */
-  
-  @Schema(name = "connected_merchant_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("connected_merchant_id")
-  public String getConnectedMerchantId() {
-    return connectedMerchantId;
-  }
-
-  public void setConnectedMerchantId(String connectedMerchantId) {
-    this.connectedMerchantId = connectedMerchantId;
-  }
-
-  public IntegrationMetadata connectedUserId(String connectedUserId) {
-    this.connectedUserId = connectedUserId;
-    return this;
-  }
-
-  /**
-   * Get connectedUserId
-   * @return connectedUserId
-   */
-  
-  @Schema(name = "connected_user_id", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("connected_user_id")
-  public String getConnectedUserId() {
-    return connectedUserId;
-  }
-
-  public void setConnectedUserId(String connectedUserId) {
-    this.connectedUserId = connectedUserId;
+  public void setAdditionalId1(String additionalId1) {
+    this.additionalId1 = additionalId1;
   }
 
   public IntegrationMetadata connectedAdvertiserId(String connectedAdvertiserId) {
@@ -171,6 +111,26 @@ public class IntegrationMetadata {
     this.connectedLbaId = connectedLbaId;
   }
 
+  public IntegrationMetadata connectedMerchantId(String connectedMerchantId) {
+    this.connectedMerchantId = connectedMerchantId;
+    return this;
+  }
+
+  /**
+   * Get connectedMerchantId
+   * @return connectedMerchantId
+   */
+  
+  @Schema(name = "connected_merchant_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("connected_merchant_id")
+  public String getConnectedMerchantId() {
+    return connectedMerchantId;
+  }
+
+  public void setConnectedMerchantId(String connectedMerchantId) {
+    this.connectedMerchantId = connectedMerchantId;
+  }
+
   public IntegrationMetadata connectedTagId(String connectedTagId) {
     this.connectedTagId = connectedTagId;
     return this;
@@ -191,6 +151,86 @@ public class IntegrationMetadata {
     this.connectedTagId = connectedTagId;
   }
 
+  public IntegrationMetadata connectedUserId(String connectedUserId) {
+    this.connectedUserId = connectedUserId;
+    return this;
+  }
+
+  /**
+   * Get connectedUserId
+   * @return connectedUserId
+   */
+  
+  @Schema(name = "connected_user_id", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("connected_user_id")
+  public String getConnectedUserId() {
+    return connectedUserId;
+  }
+
+  public void setConnectedUserId(String connectedUserId) {
+    this.connectedUserId = connectedUserId;
+  }
+
+  public IntegrationMetadata createdTimestamp(BigDecimal createdTimestamp) {
+    this.createdTimestamp = createdTimestamp;
+    return this;
+  }
+
+  /**
+   * Get createdTimestamp
+   * @return createdTimestamp
+   */
+  @Valid 
+  @Schema(name = "created_timestamp", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("created_timestamp")
+  public BigDecimal getCreatedTimestamp() {
+    return createdTimestamp;
+  }
+
+  public void setCreatedTimestamp(BigDecimal createdTimestamp) {
+    this.createdTimestamp = createdTimestamp;
+  }
+
+  public IntegrationMetadata externalBusinessId(String externalBusinessId) {
+    this.externalBusinessId = externalBusinessId;
+    return this;
+  }
+
+  /**
+   * Get externalBusinessId
+   * @return externalBusinessId
+   */
+  
+  @Schema(name = "external_business_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("external_business_id")
+  public String getExternalBusinessId() {
+    return externalBusinessId;
+  }
+
+  public void setExternalBusinessId(String externalBusinessId) {
+    this.externalBusinessId = externalBusinessId;
+  }
+
+  public IntegrationMetadata id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * Get id
+   * @return id
+   */
+  @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
   public IntegrationMetadata partnerAccessTokenExpiry(BigDecimal partnerAccessTokenExpiry) {
     this.partnerAccessTokenExpiry = partnerAccessTokenExpiry;
     return this;
@@ -209,6 +249,26 @@ public class IntegrationMetadata {
 
   public void setPartnerAccessTokenExpiry(BigDecimal partnerAccessTokenExpiry) {
     this.partnerAccessTokenExpiry = partnerAccessTokenExpiry;
+  }
+
+  public IntegrationMetadata partnerMetadata(String partnerMetadata) {
+    this.partnerMetadata = partnerMetadata;
+    return this;
+  }
+
+  /**
+   * Get partnerMetadata
+   * @return partnerMetadata
+   */
+  
+  @Schema(name = "partner_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("partner_metadata")
+  public String getPartnerMetadata() {
+    return partnerMetadata;
+  }
+
+  public void setPartnerMetadata(String partnerMetadata) {
+    this.partnerMetadata = partnerMetadata;
   }
 
   public IntegrationMetadata partnerRefreshTokenExpiry(BigDecimal partnerRefreshTokenExpiry) {
@@ -251,26 +311,6 @@ public class IntegrationMetadata {
     this.scopes = scopes;
   }
 
-  public IntegrationMetadata createdTimestamp(BigDecimal createdTimestamp) {
-    this.createdTimestamp = createdTimestamp;
-    return this;
-  }
-
-  /**
-   * Get createdTimestamp
-   * @return createdTimestamp
-   */
-  @Valid 
-  @Schema(name = "created_timestamp", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("created_timestamp")
-  public BigDecimal getCreatedTimestamp() {
-    return createdTimestamp;
-  }
-
-  public void setCreatedTimestamp(BigDecimal createdTimestamp) {
-    this.createdTimestamp = createdTimestamp;
-  }
-
   public IntegrationMetadata updatedTimestamp(BigDecimal updatedTimestamp) {
     this.updatedTimestamp = updatedTimestamp;
     return this;
@@ -291,46 +331,6 @@ public class IntegrationMetadata {
     this.updatedTimestamp = updatedTimestamp;
   }
 
-  public IntegrationMetadata additionalId1(String additionalId1) {
-    this.additionalId1 = additionalId1;
-    return this;
-  }
-
-  /**
-   * Get additionalId1
-   * @return additionalId1
-   */
-  
-  @Schema(name = "additional_id_1", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("additional_id_1")
-  public String getAdditionalId1() {
-    return additionalId1;
-  }
-
-  public void setAdditionalId1(String additionalId1) {
-    this.additionalId1 = additionalId1;
-  }
-
-  public IntegrationMetadata partnerMetadata(String partnerMetadata) {
-    this.partnerMetadata = partnerMetadata;
-    return this;
-  }
-
-  /**
-   * Get partnerMetadata
-   * @return partnerMetadata
-   */
-  
-  @Schema(name = "partner_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("partner_metadata")
-  public String getPartnerMetadata() {
-    return partnerMetadata;
-  }
-
-  public void setPartnerMetadata(String partnerMetadata) {
-    this.partnerMetadata = partnerMetadata;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -340,45 +340,45 @@ public class IntegrationMetadata {
       return false;
     }
     IntegrationMetadata integrationMetadata = (IntegrationMetadata) o;
-    return Objects.equals(this.id, integrationMetadata.id) &&
-        Objects.equals(this.externalBusinessId, integrationMetadata.externalBusinessId) &&
-        Objects.equals(this.connectedMerchantId, integrationMetadata.connectedMerchantId) &&
-        Objects.equals(this.connectedUserId, integrationMetadata.connectedUserId) &&
+    return Objects.equals(this.additionalId1, integrationMetadata.additionalId1) &&
         Objects.equals(this.connectedAdvertiserId, integrationMetadata.connectedAdvertiserId) &&
         Objects.equals(this.connectedLbaId, integrationMetadata.connectedLbaId) &&
+        Objects.equals(this.connectedMerchantId, integrationMetadata.connectedMerchantId) &&
         Objects.equals(this.connectedTagId, integrationMetadata.connectedTagId) &&
+        Objects.equals(this.connectedUserId, integrationMetadata.connectedUserId) &&
+        Objects.equals(this.createdTimestamp, integrationMetadata.createdTimestamp) &&
+        Objects.equals(this.externalBusinessId, integrationMetadata.externalBusinessId) &&
+        Objects.equals(this.id, integrationMetadata.id) &&
         Objects.equals(this.partnerAccessTokenExpiry, integrationMetadata.partnerAccessTokenExpiry) &&
+        Objects.equals(this.partnerMetadata, integrationMetadata.partnerMetadata) &&
         Objects.equals(this.partnerRefreshTokenExpiry, integrationMetadata.partnerRefreshTokenExpiry) &&
         Objects.equals(this.scopes, integrationMetadata.scopes) &&
-        Objects.equals(this.createdTimestamp, integrationMetadata.createdTimestamp) &&
-        Objects.equals(this.updatedTimestamp, integrationMetadata.updatedTimestamp) &&
-        Objects.equals(this.additionalId1, integrationMetadata.additionalId1) &&
-        Objects.equals(this.partnerMetadata, integrationMetadata.partnerMetadata);
+        Objects.equals(this.updatedTimestamp, integrationMetadata.updatedTimestamp);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, externalBusinessId, connectedMerchantId, connectedUserId, connectedAdvertiserId, connectedLbaId, connectedTagId, partnerAccessTokenExpiry, partnerRefreshTokenExpiry, scopes, createdTimestamp, updatedTimestamp, additionalId1, partnerMetadata);
+    return Objects.hash(additionalId1, connectedAdvertiserId, connectedLbaId, connectedMerchantId, connectedTagId, connectedUserId, createdTimestamp, externalBusinessId, id, partnerAccessTokenExpiry, partnerMetadata, partnerRefreshTokenExpiry, scopes, updatedTimestamp);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class IntegrationMetadata {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    externalBusinessId: ").append(toIndentedString(externalBusinessId)).append("\n");
-    sb.append("    connectedMerchantId: ").append(toIndentedString(connectedMerchantId)).append("\n");
-    sb.append("    connectedUserId: ").append(toIndentedString(connectedUserId)).append("\n");
+    sb.append("    additionalId1: ").append(toIndentedString(additionalId1)).append("\n");
     sb.append("    connectedAdvertiserId: ").append(toIndentedString(connectedAdvertiserId)).append("\n");
     sb.append("    connectedLbaId: ").append(toIndentedString(connectedLbaId)).append("\n");
+    sb.append("    connectedMerchantId: ").append(toIndentedString(connectedMerchantId)).append("\n");
     sb.append("    connectedTagId: ").append(toIndentedString(connectedTagId)).append("\n");
+    sb.append("    connectedUserId: ").append(toIndentedString(connectedUserId)).append("\n");
+    sb.append("    createdTimestamp: ").append(toIndentedString(createdTimestamp)).append("\n");
+    sb.append("    externalBusinessId: ").append(toIndentedString(externalBusinessId)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    partnerAccessTokenExpiry: ").append(toIndentedString(partnerAccessTokenExpiry)).append("\n");
+    sb.append("    partnerMetadata: ").append(toIndentedString(partnerMetadata)).append("\n");
     sb.append("    partnerRefreshTokenExpiry: ").append(toIndentedString(partnerRefreshTokenExpiry)).append("\n");
     sb.append("    scopes: ").append(toIndentedString(scopes)).append("\n");
-    sb.append("    createdTimestamp: ").append(toIndentedString(createdTimestamp)).append("\n");
     sb.append("    updatedTimestamp: ").append(toIndentedString(updatedTimestamp)).append("\n");
-    sb.append("    additionalId1: ").append(toIndentedString(additionalId1)).append("\n");
-    sb.append("    partnerMetadata: ").append(toIndentedString(partnerMetadata)).append("\n");
     sb.append("}");
     return sb.toString();
   }

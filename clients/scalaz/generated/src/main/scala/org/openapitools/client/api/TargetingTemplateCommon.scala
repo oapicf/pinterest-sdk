@@ -12,13 +12,13 @@ import org.joda.time.DateTime
 import TargetingTemplateCommon._
 
 case class TargetingTemplateCommon (
-  /* targeting template name */
-  name: Option[String],
-/* Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. */
+  /* Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. */
   autoTargetingEnabled: Option[Boolean],
-targetingAttributes: Option[TargetingSpec],
-placementGroup: Option[PlacementGroupType],
 keywords: Option[List[TargetingTemplateKeyword]],
+/* targeting template name */
+  name: Option[String],
+placementGroup: Option[PlacementGroupType],
+targetingAttributes: Option[TargetingSpec],
 trackingUrls: Option[TrackingUrls])
 
 object TargetingTemplateCommon {

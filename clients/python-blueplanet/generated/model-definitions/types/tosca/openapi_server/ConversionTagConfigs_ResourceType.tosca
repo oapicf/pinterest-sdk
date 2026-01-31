@@ -1,0 +1,76 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ConversionTagConfigs"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ConversionTagConfigs"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  ConversionTagConfigs {
+    title = ConversionTagConfigs
+    description = ConversionTagConfigs
+    derivedFrom = Root
+    properties {
+        aem_db_enabled {
+          type =  boolean
+          description = "Whether Automatic Enhanced Match birthdate is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information."
+          optional = false
+        }
+        aem_enabled {
+          type =  boolean
+          description = "Whether Automatic Enhanced Match email is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information."
+          optional = false
+        }
+        aem_external_id_enabled {
+          type =  boolean
+          description = "Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information."
+          optional = false
+        }
+        aem_fnln_enabled {
+          type =  boolean
+          description = "Whether Automatic Enhanced Match name is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information."
+          optional = false
+        }
+        aem_ge_enabled {
+          type =  boolean
+          description = "Whether Automatic Enhanced Match gender is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information."
+          optional = false
+        }
+        aem_loc_enabled {
+          type =  boolean
+          description = "Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information."
+          optional = false
+        }
+        aem_ph_enabled {
+          type =  boolean
+          description = "Whether Automatic Enhanced Match phone is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information."
+          optional = false
+        }
+        md_frequency {
+          type =  
+          description = "Metadata ingestion frequency."
+          optional = false
+        }
+        no_code_capi_domains {
+          type = array
+          items.type =  string
+          description = "List of advertiser subdomains configured for NoCodeCAPI calls."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ConversionTagConfigs {
+    title = ConversionTagConfigs
+    description = ConversionTagConfigs
+    implements = openapi_server.resourceTypes.ConversionTagConfigs
+
+  }
+}

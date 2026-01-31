@@ -177,7 +177,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **business_asset_members_get**
-> BusinessAssetMembersGet200Response business_asset_members_get(business_id => $business_id, asset_id => $asset_id, bookmark => $bookmark, page_size => $page_size, start_index => $start_index)
+> BusinessAssetMembersGet200Response business_asset_members_get(business_id => $business_id, asset_id => $asset_id, fetch_system_users => $fetch_system_users, bookmark => $bookmark, page_size => $page_size, start_index => $start_index)
 
 Get members with access to asset
 
@@ -195,12 +195,13 @@ my $api_instance = WWW::OpenAPIClient::BusinessAccessAssetsApi->new(
 
 my $business_id = 729090764583391194; # string | Unique identifier of the requesting business.
 my $asset_id = 729090764583391194; # string | Unique identifier of a business asset.
+my $fetch_system_users = false; # boolean | Fetches system users if True. Fetches regular user employees if False.
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
 my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 my $start_index = 0; # int | An index to start fetching the results from. Only the results starting from this index will be returned.
 
 eval {
-    my $result = $api_instance->business_asset_members_get(business_id => $business_id, asset_id => $asset_id, bookmark => $bookmark, page_size => $page_size, start_index => $start_index);
+    my $result = $api_instance->business_asset_members_get(business_id => $business_id, asset_id => $asset_id, fetch_system_users => $fetch_system_users, bookmark => $bookmark, page_size => $page_size, start_index => $start_index);
     print Dumper($result);
 };
 if ($@) {
@@ -214,6 +215,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **string**| Unique identifier of the requesting business. | 
  **asset_id** | **string**| Unique identifier of a business asset. | 
+ **fetch_system_users** | **boolean**| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to false]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
  **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **start_index** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]

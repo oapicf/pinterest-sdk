@@ -13,41 +13,24 @@ import javax.validation.Valid;
 /**
  * CreateAssetGroupBody
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CreateAssetGroupBody   {
-  @JsonProperty("asset_group_name")
-  @NotNull
-
-  private String assetGroupName;
-
   @JsonProperty("asset_group_description")
   @NotNull
 
   private String assetGroupDescription;
+
+  @JsonProperty("asset_group_name")
+  @NotNull
+
+  private String assetGroupName;
 
   @JsonProperty("asset_group_types")
   @NotNull
 @Valid
 
   private List<AssetGroupType> assetGroupTypes = new ArrayList<>();
-
-  public CreateAssetGroupBody assetGroupName(String assetGroupName) {
-    this.assetGroupName = assetGroupName;
-    return this;
-  }
-
-   /**
-   * Asset Group name
-   * @return assetGroupName
-  **/
-  public String getAssetGroupName() {
-    return assetGroupName;
-  }
-
-  public void setAssetGroupName(String assetGroupName) {
-    this.assetGroupName = assetGroupName;
-  }
 
   public CreateAssetGroupBody assetGroupDescription(String assetGroupDescription) {
     this.assetGroupDescription = assetGroupDescription;
@@ -64,6 +47,23 @@ public class CreateAssetGroupBody   {
 
   public void setAssetGroupDescription(String assetGroupDescription) {
     this.assetGroupDescription = assetGroupDescription;
+  }
+
+  public CreateAssetGroupBody assetGroupName(String assetGroupName) {
+    this.assetGroupName = assetGroupName;
+    return this;
+  }
+
+   /**
+   * Asset Group name
+   * @return assetGroupName
+  **/
+  public String getAssetGroupName() {
+    return assetGroupName;
+  }
+
+  public void setAssetGroupName(String assetGroupName) {
+    this.assetGroupName = assetGroupName;
   }
 
   public CreateAssetGroupBody assetGroupTypes(List<AssetGroupType> assetGroupTypes) {
@@ -101,14 +101,14 @@ public class CreateAssetGroupBody   {
       return false;
     }
     CreateAssetGroupBody createAssetGroupBody = (CreateAssetGroupBody) o;
-    return Objects.equals(assetGroupName, createAssetGroupBody.assetGroupName) &&
-        Objects.equals(assetGroupDescription, createAssetGroupBody.assetGroupDescription) &&
+    return Objects.equals(assetGroupDescription, createAssetGroupBody.assetGroupDescription) &&
+        Objects.equals(assetGroupName, createAssetGroupBody.assetGroupName) &&
         Objects.equals(assetGroupTypes, createAssetGroupBody.assetGroupTypes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetGroupName, assetGroupDescription, assetGroupTypes);
+    return Objects.hash(assetGroupDescription, assetGroupName, assetGroupTypes);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -117,8 +117,8 @@ public class CreateAssetGroupBody   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateAssetGroupBody {\n");
     
-    sb.append("    assetGroupName: ").append(toIndentedString(assetGroupName)).append("\n");
     sb.append("    assetGroupDescription: ").append(toIndentedString(assetGroupDescription)).append("\n");
+    sb.append("    assetGroupName: ").append(toIndentedString(assetGroupName)).append("\n");
     sb.append("    assetGroupTypes: ").append(toIndentedString(assetGroupTypes)).append("\n");
     sb.append("}");
     return sb.toString();

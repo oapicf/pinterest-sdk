@@ -15,27 +15,24 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * Schema used for creating the integration metadata.
- * @param externalBusinessId External business ID for the integration.
- * @param connectedMerchantId 
+ * @param additionalId1 
  * @param connectedAdvertiserId 
  * @param connectedLbaId 
+ * @param connectedMerchantId 
  * @param connectedTagId 
+ * @param externalBusinessId External business ID for the integration.
  * @param partnerAccessToken 
- * @param partnerRefreshToken 
- * @param partnerPrimaryEmail 
  * @param partnerAccessTokenExpiry 
+ * @param partnerMetadata 
+ * @param partnerPrimaryEmail 
+ * @param partnerRefreshToken 
  * @param partnerRefreshTokenExpiry 
  * @param scopes 
- * @param additionalId1 
- * @param partnerMetadata 
  */
 data class IntegrationRequest(
 
-    @Schema(example = "null", description = "External business ID for the integration.")
-    @get:JsonProperty("external_business_id") val externalBusinessId: kotlin.String? = null,
-
     @Schema(example = "null", description = "")
-    @get:JsonProperty("connected_merchant_id") val connectedMerchantId: kotlin.String? = null,
+    @get:JsonProperty("additional_id_1") val additionalId1: kotlin.String? = null,
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("connected_advertiser_id") val connectedAdvertiserId: kotlin.String? = null,
@@ -44,31 +41,34 @@ data class IntegrationRequest(
     @get:JsonProperty("connected_lba_id") val connectedLbaId: kotlin.String? = null,
 
     @Schema(example = "null", description = "")
+    @get:JsonProperty("connected_merchant_id") val connectedMerchantId: kotlin.String? = null,
+
+    @Schema(example = "null", description = "")
     @get:JsonProperty("connected_tag_id") val connectedTagId: kotlin.String? = null,
+
+    @Schema(example = "null", description = "External business ID for the integration.")
+    @get:JsonProperty("external_business_id") val externalBusinessId: kotlin.String? = null,
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("partner_access_token") val partnerAccessToken: kotlin.String? = null,
 
     @Schema(example = "null", description = "")
-    @get:JsonProperty("partner_refresh_token") val partnerRefreshToken: kotlin.String? = null,
+    @get:JsonProperty("partner_access_token_expiry") val partnerAccessTokenExpiry: kotlin.Int? = null,
+
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("partner_metadata") val partnerMetadata: kotlin.String? = null,
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("partner_primary_email") val partnerPrimaryEmail: kotlin.String? = null,
 
     @Schema(example = "null", description = "")
-    @get:JsonProperty("partner_access_token_expiry") val partnerAccessTokenExpiry: kotlin.Int? = null,
+    @get:JsonProperty("partner_refresh_token") val partnerRefreshToken: kotlin.String? = null,
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("partner_refresh_token_expiry") val partnerRefreshTokenExpiry: kotlin.Int? = null,
 
     @Schema(example = "null", description = "")
-    @get:JsonProperty("scopes") val scopes: kotlin.String? = null,
-
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("additional_id_1") val additionalId1: kotlin.String? = null,
-
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("partner_metadata") val partnerMetadata: kotlin.String? = null
+    @get:JsonProperty("scopes") val scopes: kotlin.String? = null
 ) {
 
 }

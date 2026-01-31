@@ -7,14 +7,16 @@
 
 static audience_definition_t *audience_definition_create_internal(
     char *date,
+    char *scope,
+    char *type
     ) {
     audience_definition_t *audience_definition_local_var = malloc(sizeof(audience_definition_t));
     if (!audience_definition_local_var) {
         return NULL;
     }
     audience_definition_local_var->date = date;
-    audience_definition_local_var->type = type;
     audience_definition_local_var->scope = scope;
+    audience_definition_local_var->type = type;
 
     audience_definition_local_var->_library_owned = 1;
     return audience_definition_local_var;
@@ -22,11 +24,13 @@ static audience_definition_t *audience_definition_create_internal(
 
 __attribute__((deprecated)) audience_definition_t *audience_definition_create(
     char *date,
+    char *scope,
+    char *type
     ) {
     return audience_definition_create_internal (
         date,
-        type,
-        scope
+        scope,
+        type
         );
 }
 
@@ -43,6 +47,14 @@ void audience_definition_free(audience_definition_t *audience_definition) {
         free(audience_definition->date);
         audience_definition->date = NULL;
     }
+    if (audience_definition->scope) {
+        free(audience_definition->scope);
+        audience_definition->scope = NULL;
+    }
+    if (audience_definition->type) {
+        free(audience_definition->type);
+        audience_definition->type = NULL;
+    }
     free(audience_definition);
 }
 
@@ -57,13 +69,19 @@ cJSON *audience_definition_convertToJSON(audience_definition_t *audience_definit
     }
 
 
-    // audience_definition->type
-    if(audience_definition->type) {
+    // audience_definition->scope
+    if(audience_definition->scope) {
+    if(cJSON_AddStringToObject(item, "scope", audience_definition->scope) == NULL) {
+    goto fail; //String
+    }
     }
 
 
-    // audience_definition->scope
-    if(audience_definition->scope) {
+    // audience_definition->type
+    if(audience_definition->type) {
+    if(cJSON_AddStringToObject(item, "type", audience_definition->type) == NULL) {
+    goto fail; //String
+    }
     }
 
     return item;
@@ -90,23 +108,35 @@ audience_definition_t *audience_definition_parseFromJSON(cJSON *audience_definit
     }
     }
 
+    // audience_definition->scope
+    cJSON *scope = cJSON_GetObjectItemCaseSensitive(audience_definitionJSON, "scope");
+    if (cJSON_IsNull(scope)) {
+        scope = NULL;
+    }
+    if (scope) { 
+    if(!cJSON_IsString(scope) && !cJSON_IsNull(scope))
+    {
+    goto end; //String
+    }
+    }
+
     // audience_definition->type
     cJSON *type = cJSON_GetObjectItemCaseSensitive(audience_definitionJSON, "type");
     if (cJSON_IsNull(type)) {
         type = NULL;
     }
-    }
-
-    // audience_definition->scope
-    cJSON *scope = cJSON_GetObjectItemCaseSensitive(audience_definitionJSON, "scope");
-    if (cJSON_IsNull(scope)) {
-        scope = NULL;
+    if (type) { 
+    if(!cJSON_IsString(type) && !cJSON_IsNull(type))
+    {
+    goto end; //String
     }
     }
 
 
     audience_definition_local_var = audience_definition_create_internal (
         date && !cJSON_IsNull(date) ? strdup(date->valuestring) : NULL,
+        scope && !cJSON_IsNull(scope) ? strdup(scope->valuestring) : NULL,
+        type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL
         );
 
     return audience_definition_local_var;

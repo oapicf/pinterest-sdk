@@ -9,7 +9,7 @@ import javax.validation.Valid;
 /**
  * LineItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class LineItem   {
   @JsonProperty("product_brand")
@@ -50,7 +50,7 @@ public class LineItem   {
   }
 
    /**
-   * Product brand. For example, \"Parker\".
+   * Product brand. For example, 'Parker'.
    * @return productBrand
   **/
   public String getProductBrand() {
@@ -67,7 +67,7 @@ public class LineItem   {
   }
 
    /**
-   * Product category. For example, \"Shoes\".
+   * Product category. For example, 'Shoes'.
    * @return productCategory
   **/
   public String getProductCategory() {
@@ -101,7 +101,7 @@ public class LineItem   {
   }
 
    /**
-   * Product name. For example, \"Parker Boots\".
+   * Product name. For example, 'Parker Boots'.
    * @return productName
   **/
   public String getProductName() {
@@ -118,7 +118,7 @@ public class LineItem   {
   }
 
    /**
-   * Product price. For example, \"99.99\".
+   * Product price. For example, '99.99'.
    * @return productPrice
   **/
   public String getProductPrice() {
@@ -152,7 +152,7 @@ public class LineItem   {
   }
 
    /**
-   * Product variant. For example, \"Red\".
+   * Product variant. For example, 'Red'.
    * @return productVariant
   **/
   public String getProductVariant() {
@@ -169,7 +169,7 @@ public class LineItem   {
   }
 
    /**
-   * Product variant ID. For example, \"1414-34832\".
+   * Product variant ID. For example, '1414-34832'.
    * @return productVariantId
   **/
   public String getProductVariantId() {

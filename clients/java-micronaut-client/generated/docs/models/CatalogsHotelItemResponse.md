@@ -10,10 +10,10 @@ The class is defined in **[CatalogsHotelItemResponse.java](../../src/main/java/o
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**attributes** | [`CatalogsHotelAttributes`](CatalogsHotelAttributes.md) |  |  [optional property]
 **catalogType** | `CatalogsType` |  | 
 **hotelId** | `String` | The catalog hotel id in the merchant namespace |  [optional property]
 **pins** | [`List&lt;Pin&gt;`](Pin.md) | The pins mapped to the item |  [optional property]
-**attributes** | [`CatalogsHotelAttributes`](CatalogsHotelAttributes.md) |  |  [optional property]
 
 
 

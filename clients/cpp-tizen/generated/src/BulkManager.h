@@ -31,7 +31,7 @@ public:
 
 /*! \brief Get advertiser entities in bulk. *Synchronous*
  *
- * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, and/or keywords; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+ * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param bulkDownloadRequest Parameters to get ad entities in bulk *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -45,7 +45,7 @@ bool bulkDownloadCreateSync(char * accessToken,
 
 /*! \brief Get advertiser entities in bulk. *Asynchronous*
  *
- * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, and/or keywords; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+ * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param bulkDownloadRequest Parameters to get ad entities in bulk *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -91,7 +91,7 @@ bool bulkRequestGetAsync(char * accessToken,
 
 /*! \brief Create/update ad entities in bulk. *Synchronous*
  *
- * Either create or update any combination of campaigns, ad groups, product groups, ads, or keywords. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
+ * Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param bulkUpsertRequest Parameters to get create/update ad entities in bulk *Required*
  * \param handler The callback function to be invoked on completion. *Required*
@@ -105,7 +105,7 @@ bool bulkUpsertCreateSync(char * accessToken,
 
 /*! \brief Create/update ad entities in bulk. *Asynchronous*
  *
- * Either create or update any combination of campaigns, ad groups, product groups, ads, or keywords. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
+ * Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
  * \param adAccountId Unique identifier of an ad account. *Required*
  * \param bulkUpsertRequest Parameters to get create/update ad entities in bulk *Required*
  * \param handler The callback function to be invoked on completion. *Required*

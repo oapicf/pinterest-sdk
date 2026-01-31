@@ -1,0 +1,46 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CustomerListRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CustomerListRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  UserListType = openapi_server.resourceTypes.UserListType
+}
+resourceTypes {
+
+  CustomerListRequest {
+    title = CustomerListRequest
+    description = CustomerListRequest
+    derivedFrom = Root
+    properties {
+        list_type {
+          type = UserListType
+          description = ""
+          optional = false
+        }
+        name {
+          type =  string
+          description = "Customer list name."
+          optional = true
+        }
+        records {
+          type =  string
+          description = "Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CustomerListRequest {
+    title = CustomerListRequest
+    description = CustomerListRequest
+    implements = openapi_server.resourceTypes.CustomerListRequest
+
+  }
+}

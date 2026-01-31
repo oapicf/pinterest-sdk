@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [UserBusinessRoleBinding] | List of employers. | 
 **bookmark** | **String** |  | [optional] 
+**items** | [UserBusinessRoleBinding] | List of employers. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

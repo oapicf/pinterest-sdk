@@ -141,7 +141,7 @@ Protected Class ProductGroupPromotionsApi
 		  // - parameter adAccountId: (path) Unique identifier of an ad account. 
 		  // - parameter productGroupPromotionId: (path) Unique identifier of a product group promotion 
 		  //
-		  // Invokes ProductGroupPromotionsApiCallbackHandler.ProductGroupPromotionsGetCallback(ProductGroupPromotionResponse) on completion. 
+		  // Invokes ProductGroupPromotionsApiCallbackHandler.ProductGroupPromotionsGetCallback(ProductGroupPromotion) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/product_group_promotions/{product_group_promotion_id}
 		  // - Get a product group promotion by id
@@ -184,7 +184,7 @@ Protected Class ProductGroupPromotionsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function ProductGroupPromotionsGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.ProductGroupPromotionResponse) As Boolean
+		Private Function ProductGroupPromotionsGetPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.ProductGroupPromotion) As Boolean
 		  Dim contentType As String = Headers.Value("Content-Type")
 		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
 		  Content = DefineEncoding(Content, contentEncoding)
@@ -192,7 +192,7 @@ Protected Class ProductGroupPromotionsApi
 		  If HTTPStatus > 199 and HTTPStatus < 300 then
 		    If contentType.LeftB(16) = "application/json" then
 		      
-			  outData = New OpenAPIClient.Models.ProductGroupPromotionResponse
+			  outData = New OpenAPIClient.Models.ProductGroupPromotion
 			  Try
 		        Xoson.fromJSON(outData, Content.toText())
 
@@ -245,7 +245,7 @@ Protected Class ProductGroupPromotionsApi
 		  If sender <> nil Then sender.Close()
 
 		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
-		  Dim data As OpenAPIClient.Models.ProductGroupPromotionResponse
+		  Dim data As OpenAPIClient.Models.ProductGroupPromotion
 		  CallbackHandler.ProductGroupPromotionsGetCallback(error, data)
 		End Sub
 	#tag EndMethod
@@ -259,7 +259,7 @@ Protected Class ProductGroupPromotionsApi
 		  
 		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
 		  
-		  Dim data As OpenAPIClient.Models.ProductGroupPromotionResponse
+		  Dim data As OpenAPIClient.Models.ProductGroupPromotion
 		  Call ProductGroupPromotionsGetPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
 		  
 		  CallbackHandler.ProductGroupPromotionsGetCallback(error, data)
@@ -618,7 +618,7 @@ Protected Class ProductGroupPromotionsApi
 
 
 	#tag Method, Flags = &h0
-		Sub ProductGroupsAnalytics(, adAccountId As String, startDate As Date, endDate As Date, productGroupIds() As String, columns() As ColumnsEnum_ProductGroupsAnalytics, granularity As OpenAPIClient.Models.Granularity, clickWindowDays As Click_window_daysEnum_ProductGroupsAnalytics, engagementWindowDays As Engagement_window_daysEnum_ProductGroupsAnalytics, viewWindowDays As View_window_daysEnum_ProductGroupsAnalytics, conversionReportTime As Conversion_report_timeEnum_ProductGroupsAnalytics)
+		Sub ProductGroupsAnalytics(, adAccountId As String, startDate As Date, endDate As Date, productGroupIds() As String, columns() As ColumnsEnum_ProductGroupsAnalytics, granularity As OpenAPIClient.Models.Granularity, clickWindowDays As Click_window_daysEnum_ProductGroupsAnalytics, engagementWindowDays As Engagement_window_daysEnum_ProductGroupsAnalytics, viewWindowDays As View_window_daysEnum_ProductGroupsAnalytics, conversionReportTime As Conversion_report_timeEnum_ProductGroupsAnalytics, reportingTimezone As OpenAPIClient.Models.ReportingTimeZoneOptional)
 		  // Operation product_groups/analytics
 		  // Get product group analytics
 		  // - 
@@ -629,19 +629,23 @@ Protected Class ProductGroupPromotionsApi
 		  // - parameter columns: (query) Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned 
 		  // - parameter granularity: (query) TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly 
 		  // - parameter clickWindowDays: (query) Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
-		  // - parameter engagementWindowDays: (query) Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)
+		  // - parameter engagementWindowDays: (query) Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;. (optional, default to 30)
 		  // - parameter viewWindowDays: (query) Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to 1)
 		  // - parameter conversionReportTime: (query) The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to TIME_OF_AD_ACTION)
+		  // - parameter reportingTimezone: (query) Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional, default to Nil)
 		  //
 		  // Invokes ProductGroupPromotionsApiCallbackHandler.ProductGroupsAnalyticsCallback(ProductGroupAnalyticsResponseInner) on completion. 
 		  //
 		  // - GET /ad_accounts/{ad_account_id}/product_groups/analytics
-		  // - Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+		  // - Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href="https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts">Business Access</a>: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
 		  // - defaultResponse: Nil
 		  //
 		  // - OAuth:
 		  //   - type: oauth2
 		  //   - name: pinterest_oauth2
+		  // - OAuth:
+		  //   - type: oauth2
+		  //   - name: client_credentials
 		  //
 		  
 		  Dim localVarHTTPSocket As New HTTPSecureSocket
@@ -699,7 +703,10 @@ Protected Class ProductGroupPromotionsApi
 		  
 		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("conversion_report_time") + "=" + EncodeURLComponent(Conversion_report_timeEnum_ProductGroupsAnalyticsToString(conversionReportTime))
 		  
+		  If reportingTimezone <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("reporting_timezone") + "=" + EncodeURLComponent(Xoson.toJSON(reportingTimezone))
+		  
 
+		  
 		  
 		  
 
@@ -827,8 +834,12 @@ Protected Class ProductGroupPromotionsApi
 		      Return "CTR"
 		    Case ColumnsEnum_ProductGroupsAnalytics.Ectr
 		      Return "ECTR"
+		    Case ColumnsEnum_ProductGroupsAnalytics.OutboundCtr1
+		      Return "OUTBOUND_CTR_1"
 		    Case ColumnsEnum_ProductGroupsAnalytics.CampaignName
 		      Return "CAMPAIGN_NAME"
+		    Case ColumnsEnum_ProductGroupsAnalytics.CampaignBrandLabel
+		      Return "CAMPAIGN_BRAND_LABEL"
 		    Case ColumnsEnum_ProductGroupsAnalytics.PinId
 		      Return "PIN_ID"
 		    Case ColumnsEnum_ProductGroupsAnalytics.TotalEngagement
@@ -869,8 +880,20 @@ Protected Class ProductGroupPromotionsApi
 		      Return "CPM_IN_MICRO_DOLLAR"
 		    Case ColumnsEnum_ProductGroupsAnalytics.CpmInDollar
 		      Return "CPM_IN_DOLLAR"
+		    Case ColumnsEnum_ProductGroupsAnalytics.AdGroupName
+		      Return "AD_GROUP_NAME"
+		    Case ColumnsEnum_ProductGroupsAnalytics.AdGroupBudgetType
+		      Return "AD_GROUP_BUDGET_TYPE"
+		    Case ColumnsEnum_ProductGroupsAnalytics.AdGroupBudgetInLocalCurrency
+		      Return "AD_GROUP_BUDGET_IN_LOCAL_CURRENCY"
 		    Case ColumnsEnum_ProductGroupsAnalytics.AdGroupEntityStatus
 		      Return "AD_GROUP_ENTITY_STATUS"
+		    Case ColumnsEnum_ProductGroupsAnalytics.AdGroupBidMultiplier
+		      Return "AD_GROUP_BID_MULTIPLIER"
+		    Case ColumnsEnum_ProductGroupsAnalytics.PromoId
+		      Return "PROMO_ID"
+		    Case ColumnsEnum_ProductGroupsAnalytics.PromoName
+		      Return "PROMO_NAME"
 		    Case ColumnsEnum_ProductGroupsAnalytics.OrderLineId
 		      Return "ORDER_LINE_ID"
 		    Case ColumnsEnum_ProductGroupsAnalytics.OrderLineName
@@ -905,6 +928,8 @@ Protected Class ProductGroupPromotionsApi
 		      Return "TOTAL_IMPRESSION_FREQUENCY"
 		    Case ColumnsEnum_ProductGroupsAnalytics.CostPerOutboundClickInDollar
 		      Return "COST_PER_OUTBOUND_CLICK_IN_DOLLAR"
+		    Case ColumnsEnum_ProductGroupsAnalytics.CostPerOutboundClickInDollar1
+		      Return "COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1"
 		    Case ColumnsEnum_ProductGroupsAnalytics.TotalEngagementSignup
 		      Return "TOTAL_ENGAGEMENT_SIGNUP"
 		    Case ColumnsEnum_ProductGroupsAnalytics.TotalEngagementCheckout
@@ -947,10 +972,18 @@ Protected Class ProductGroupPromotionsApi
 		      Return "WEB_SESSIONS_1"
 		    Case ColumnsEnum_ProductGroupsAnalytics.WebSessions2
 		      Return "WEB_SESSIONS_2"
+		    Case ColumnsEnum_ProductGroupsAnalytics.AdName
+		      Return "AD_NAME"
 		    Case ColumnsEnum_ProductGroupsAnalytics.CampaignLifetimeSpendCap
 		      Return "CAMPAIGN_LIFETIME_SPEND_CAP"
+		    Case ColumnsEnum_ProductGroupsAnalytics.AdGroupOptimization
+		      Return "AD_GROUP_OPTIMIZATION"
 		    Case ColumnsEnum_ProductGroupsAnalytics.CampaignDailySpendCap
 		      Return "CAMPAIGN_DAILY_SPEND_CAP"
+		    Case ColumnsEnum_ProductGroupsAnalytics.CampaignBudgetOptimization
+		      Return "CAMPAIGN_BUDGET_OPTIMIZATION"
+		    Case ColumnsEnum_ProductGroupsAnalytics.IsPremiereCampaign
+		      Return "IS_PREMIERE_CAMPAIGN"
 		    Case ColumnsEnum_ProductGroupsAnalytics.TotalPageVisit
 		      Return "TOTAL_PAGE_VISIT"
 		    Case ColumnsEnum_ProductGroupsAnalytics.TotalSignup
@@ -961,6 +994,10 @@ Protected Class ProductGroupPromotionsApi
 		      Return "TOTAL_CUSTOM"
 		    Case ColumnsEnum_ProductGroupsAnalytics.TotalLead
 		      Return "TOTAL_LEAD"
+		    Case ColumnsEnum_ProductGroupsAnalytics.TotalAddToWishlist
+		      Return "TOTAL_ADD_TO_WISHLIST"
+		    Case ColumnsEnum_ProductGroupsAnalytics.TotalSubscribe
+		      Return "TOTAL_SUBSCRIBE"
 		    Case ColumnsEnum_ProductGroupsAnalytics.TotalSignupValueInMicroDollar
 		      Return "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR"
 		    Case ColumnsEnum_ProductGroupsAnalytics.TotalCheckoutValueInMicroDollar
@@ -975,10 +1012,20 @@ Protected Class ProductGroupPromotionsApi
 		      Return "CHECKOUT_ROAS"
 		    Case ColumnsEnum_ProductGroupsAnalytics.CustomRoas
 		      Return "CUSTOM_ROAS"
+		    Case ColumnsEnum_ProductGroupsAnalytics.ProductGroupAdImageTag
+		      Return "PRODUCT_GROUP_AD_IMAGE_TAG"
+		    Case ColumnsEnum_ProductGroupsAnalytics.ProductGroupAdVideoTag
+		      Return "PRODUCT_GROUP_AD_VIDEO_TAG"
+		    Case ColumnsEnum_ProductGroupsAnalytics.Video3secViews1
+		      Return "VIDEO_3SEC_VIEWS_1"
+		    Case ColumnsEnum_ProductGroupsAnalytics.Video15secUniqueViews1
+		      Return "VIDEO_15SEC_UNIQUE_VIEWS_1"
 		    Case ColumnsEnum_ProductGroupsAnalytics.VideoMrcViews1
 		      Return "VIDEO_MRC_VIEWS_1"
 		    Case ColumnsEnum_ProductGroupsAnalytics.Video3secViews2
 		      Return "VIDEO_3SEC_VIEWS_2"
+		    Case ColumnsEnum_ProductGroupsAnalytics.Video15secUniqueViews2
+		      Return "VIDEO_15SEC_UNIQUE_VIEWS_2"
 		    Case ColumnsEnum_ProductGroupsAnalytics.VideoP100Complete2
 		      Return "VIDEO_P100_COMPLETE_2"
 		    Case ColumnsEnum_ProductGroupsAnalytics.VideoP0Combined2
@@ -997,6 +1044,8 @@ Protected Class ProductGroupPromotionsApi
 		      Return "PAID_VIDEO_VIEWABLE_RATE"
 		    Case ColumnsEnum_ProductGroupsAnalytics.VideoLength
 		      Return "VIDEO_LENGTH"
+		    Case ColumnsEnum_ProductGroupsAnalytics.VideoSpendInDollar
+		      Return "VIDEO_SPEND_IN_DOLLAR"
 		    Case ColumnsEnum_ProductGroupsAnalytics.EcpvInDollar
 		      Return "ECPV_IN_DOLLAR"
 		    Case ColumnsEnum_ProductGroupsAnalytics.EcpcvInDollar
@@ -1005,6 +1054,8 @@ Protected Class ProductGroupPromotionsApi
 		      Return "ECPCV_P95_IN_DOLLAR"
 		    Case ColumnsEnum_ProductGroupsAnalytics.TotalVideo3secViews
 		      Return "TOTAL_VIDEO_3SEC_VIEWS"
+		    Case ColumnsEnum_ProductGroupsAnalytics.TotalVideo15secUniqueViews
+		      Return "TOTAL_VIDEO_15SEC_UNIQUE_VIEWS"
 		    Case ColumnsEnum_ProductGroupsAnalytics.TotalVideoP100Complete
 		      Return "TOTAL_VIDEO_P100_COMPLETE"
 		    Case ColumnsEnum_ProductGroupsAnalytics.TotalVideoP0Combined
@@ -1047,6 +1098,10 @@ Protected Class ProductGroupPromotionsApi
 		      Return "INAPP_CHECKOUT_COST_PER_ACTION"
 		    Case ColumnsEnum_ProductGroupsAnalytics.TotalOfflineCheckout
 		      Return "TOTAL_OFFLINE_CHECKOUT"
+		    Case ColumnsEnum_ProductGroupsAnalytics.TotalAppInstallConversionRate
+		      Return "TOTAL_APP_INSTALL_CONVERSION_RATE"
+		    Case ColumnsEnum_ProductGroupsAnalytics.TotalInappAppInstallConversionRate
+		      Return "TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE"
 		    Case ColumnsEnum_ProductGroupsAnalytics.IdeaPinProductTagVisit1
 		      Return "IDEA_PIN_PRODUCT_TAG_VISIT_1"
 		    Case ColumnsEnum_ProductGroupsAnalytics.IdeaPinProductTagVisit2
@@ -1235,7 +1290,9 @@ Protected Class ProductGroupPromotionsApi
         EcpcInDollar
         Ctr
         Ectr
+        OutboundCtr1
         CampaignName
+        CampaignBrandLabel
         PinId
         TotalEngagement
         Engagement1
@@ -1256,7 +1313,13 @@ Protected Class ProductGroupPromotionsApi
         CampaignObjectiveType
         CpmInMicroDollar
         CpmInDollar
+        AdGroupName
+        AdGroupBudgetType
+        AdGroupBudgetInLocalCurrency
         AdGroupEntityStatus
+        AdGroupBidMultiplier
+        PromoId
+        PromoName
         OrderLineId
         OrderLineName
         Clickthrough1
@@ -1274,6 +1337,7 @@ Protected Class ProductGroupPromotionsApi
         TotalImpressionUser
         TotalImpressionFrequency
         CostPerOutboundClickInDollar
+        CostPerOutboundClickInDollar1
         TotalEngagementSignup
         TotalEngagementCheckout
         TotalEngagementLead
@@ -1295,13 +1359,19 @@ Protected Class ProductGroupPromotionsApi
         TotalWebSessions
         WebSessions1
         WebSessions2
+        AdName
         CampaignLifetimeSpendCap
+        AdGroupOptimization
         CampaignDailySpendCap
+        CampaignBudgetOptimization
+        IsPremiereCampaign
         TotalPageVisit
         TotalSignup
         TotalCheckout
         TotalCustom
         TotalLead
+        TotalAddToWishlist
+        TotalSubscribe
         TotalSignupValueInMicroDollar
         TotalCheckoutValueInMicroDollar
         TotalCustomValueInMicroDollar
@@ -1309,8 +1379,13 @@ Protected Class ProductGroupPromotionsApi
         PageVisitRoas
         CheckoutRoas
         CustomRoas
+        ProductGroupAdImageTag
+        ProductGroupAdVideoTag
+        Video3secViews1
+        Video15secUniqueViews1
         VideoMrcViews1
         Video3secViews2
+        Video15secUniqueViews2
         VideoP100Complete2
         VideoP0Combined2
         VideoP25Combined2
@@ -1320,10 +1395,12 @@ Protected Class ProductGroupPromotionsApi
         VideoMrcViews2
         PaidVideoViewableRate
         VideoLength
+        VideoSpendInDollar
         EcpvInDollar
         EcpcvInDollar
         EcpcvP95InDollar
         TotalVideo3secViews
+        TotalVideo15secUniqueViews
         TotalVideoP100Complete
         TotalVideoP0Combined
         TotalVideoP25Combined
@@ -1345,6 +1422,8 @@ Protected Class ProductGroupPromotionsApi
         TotalWebViewCheckoutValueInMicroDollar
         InappCheckoutCostPerAction
         TotalOfflineCheckout
+        TotalAppInstallConversionRate
+        TotalInappAppInstallConversionRate
         IdeaPinProductTagVisit1
         IdeaPinProductTagVisit2
         TotalIdeaPinProductTagVisit

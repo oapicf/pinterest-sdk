@@ -8,7 +8,6 @@ import {canConsumeForm, isCodeInRange} from '../util';
 import {SecurityAuthentication} from '../auth/auth';
 
 
-import { DetailedError } from '../models/DetailedError';
 import { IntegrationLogsRequest } from '../models/IntegrationLogsRequest';
 import { IntegrationLogsSuccessResponse } from '../models/IntegrationLogsSuccessResponse';
 import { IntegrationMetadata } from '../models/IntegrationMetadata';
@@ -16,6 +15,7 @@ import { IntegrationRecord } from '../models/IntegrationRecord';
 import { IntegrationRequest } from '../models/IntegrationRequest';
 import { IntegrationRequestPatch } from '../models/IntegrationRequestPatch';
 import { IntegrationsGetList200Response } from '../models/IntegrationsGetList200Response';
+import { IntegrationsLogsPost400Response } from '../models/IntegrationsLogsPost400Response';
 
 /**
  * no description
@@ -104,7 +104,7 @@ export class IntegrationsApiRequestFactory extends BaseAPIRequestFactory {
      * @param externalBusinessId External business ID for the integration.
      * @param integrationRequestPatch Parameters to get create/update the Integration Metadata
      */
-    public async integrationsCommercePatch(externalBusinessId: string, integrationRequestPatch?: IntegrationRequestPatch, _options?: Configuration): Promise<RequestContext> {
+    public async integrationsCommercePatch(externalBusinessId: string, integrationRequestPatch: IntegrationRequestPatch, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'externalBusinessId' is not null or undefined
@@ -112,6 +112,11 @@ export class IntegrationsApiRequestFactory extends BaseAPIRequestFactory {
             throw new RequiredError("IntegrationsApi", "integrationsCommercePatch", "externalBusinessId");
         }
 
+
+        // verify required parameter 'integrationRequestPatch' is not null or undefined
+        if (integrationRequestPatch === null || integrationRequestPatch === undefined) {
+            throw new RequiredError("IntegrationsApi", "integrationsCommercePatch", "integrationRequestPatch");
+        }
 
 
         // Path Params
@@ -154,8 +159,13 @@ export class IntegrationsApiRequestFactory extends BaseAPIRequestFactory {
      * Create commerce integration
      * @param integrationRequest Parameters to get create/update the Integration Metadata
      */
-    public async integrationsCommercePost(integrationRequest?: IntegrationRequest, _options?: Configuration): Promise<RequestContext> {
+    public async integrationsCommercePost(integrationRequest: IntegrationRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
+
+        // verify required parameter 'integrationRequest' is not null or undefined
+        if (integrationRequest === null || integrationRequest === undefined) {
+            throw new RequiredError("IntegrationsApi", "integrationsCommercePost", "integrationRequest");
+        }
 
 
         // Path Params
@@ -604,11 +614,11 @@ export class IntegrationsApiResponseProcessor {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
-            const body: DetailedError = ObjectSerializer.deserialize(
+            const body: IntegrationsLogsPost400Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "DetailedError", ""
-            ) as DetailedError;
-            throw new ApiException<DetailedError>(response.httpStatusCode, "Bad request.", body, response.headers);
+                "IntegrationsLogsPost400Response", ""
+            ) as IntegrationsLogsPost400Response;
+            throw new ApiException<IntegrationsLogsPost400Response>(response.httpStatusCode, "Bad request.", body, response.headers);
         }
         if (isCodeInRange("0", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(

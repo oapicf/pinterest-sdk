@@ -6,14 +6,14 @@ goog.provide('API.Client.RelatedTerms_related_terms_list_inner');
 API.Client.RelatedTermsRelatedTermsListInner = function() {}
 
 /**
- * @type {!string}
- * @export
- */
-API.Client.RelatedTermsRelatedTermsListInner.prototype.term;
-
-/**
  * @type {!Array<!string>}
  * @export
  */
 API.Client.RelatedTermsRelatedTermsListInner.prototype.relatedTerms;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.RelatedTermsRelatedTermsListInner.prototype.term;
 

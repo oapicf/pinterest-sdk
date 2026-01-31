@@ -23,23 +23,25 @@ catalogs_feed_ingestion_errors_t* instantiate_catalogs_feed_ingestion_errors(int
   if (include_optional) {
     catalogs_feed_ingestion_errors = catalogs_feed_ingestion_errors_create(
       56,
+      56,
+      56,
+      56,
+      56,
+      56,
+      56,
       pinterest_rest_api_catalogs_feed_ingestion_errors_LARGEPRODUCTCOUNTDECREASE_1,
-      56,
-      56,
-      56,
-      56,
-      56,
       56
     );
   } else {
     catalogs_feed_ingestion_errors = catalogs_feed_ingestion_errors_create(
       56,
+      56,
+      56,
+      56,
+      56,
+      56,
+      56,
       pinterest_rest_api_catalogs_feed_ingestion_errors_LARGEPRODUCTCOUNTDECREASE_1,
-      56,
-      56,
-      56,
-      56,
-      56,
       56
     );
   }

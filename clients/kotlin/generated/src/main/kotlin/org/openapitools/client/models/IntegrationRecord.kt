@@ -22,39 +22,30 @@ import com.squareup.moshi.JsonClass
 /**
  * Integration record
  *
- * @param id 
- * @param externalBusinessId 
- * @param connectedMerchantId 
- * @param connectedUserId 
+ * @param additionalId1 
  * @param connectedAdvertiserId 
  * @param connectedLbaId 
+ * @param connectedMerchantId 
  * @param connectedTagId 
+ * @param connectedUserId 
+ * @param createdTime 
+ * @param externalBusinessId 
+ * @param id 
  * @param partnerAccessToken 
- * @param partnerRefreshToken 
- * @param partnerPrimaryEmail 
  * @param partnerAccessTokenExpiry 
+ * @param partnerMetadata 
+ * @param partnerPrimaryEmail 
+ * @param partnerRefreshToken 
  * @param partnerRefreshTokenExpiry 
  * @param scopes 
- * @param partnerMetadata 
- * @param additionalId1 
- * @param createdTime 
  * @param updatedTime 
  */
 
 
 data class IntegrationRecord (
 
-    @Json(name = "id")
-    val id: kotlin.String? = null,
-
-    @Json(name = "external_business_id")
-    val externalBusinessId: kotlin.String? = null,
-
-    @Json(name = "connected_merchant_id")
-    val connectedMerchantId: kotlin.String? = null,
-
-    @Json(name = "connected_user_id")
-    val connectedUserId: kotlin.String? = null,
+    @Json(name = "additional_id_1")
+    val additionalId1: kotlin.String? = null,
 
     @Json(name = "connected_advertiser_id")
     val connectedAdvertiserId: kotlin.String? = null,
@@ -62,35 +53,44 @@ data class IntegrationRecord (
     @Json(name = "connected_lba_id")
     val connectedLbaId: kotlin.String? = null,
 
+    @Json(name = "connected_merchant_id")
+    val connectedMerchantId: kotlin.String? = null,
+
     @Json(name = "connected_tag_id")
     val connectedTagId: kotlin.String? = null,
+
+    @Json(name = "connected_user_id")
+    val connectedUserId: kotlin.String? = null,
+
+    @Json(name = "created_time")
+    val createdTime: kotlin.Int? = null,
+
+    @Json(name = "external_business_id")
+    val externalBusinessId: kotlin.String? = null,
+
+    @Json(name = "id")
+    val id: kotlin.String? = null,
 
     @Json(name = "partner_access_token")
     val partnerAccessToken: kotlin.String? = null,
 
-    @Json(name = "partner_refresh_token")
-    val partnerRefreshToken: kotlin.String? = null,
+    @Json(name = "partner_access_token_expiry")
+    val partnerAccessTokenExpiry: kotlin.Int? = null,
+
+    @Json(name = "partner_metadata")
+    val partnerMetadata: kotlin.String? = null,
 
     @Json(name = "partner_primary_email")
     val partnerPrimaryEmail: kotlin.String? = null,
 
-    @Json(name = "partner_access_token_expiry")
-    val partnerAccessTokenExpiry: kotlin.Int? = null,
+    @Json(name = "partner_refresh_token")
+    val partnerRefreshToken: kotlin.String? = null,
 
     @Json(name = "partner_refresh_token_expiry")
     val partnerRefreshTokenExpiry: kotlin.Int? = null,
 
     @Json(name = "scopes")
     val scopes: kotlin.String? = null,
-
-    @Json(name = "partner_metadata")
-    val partnerMetadata: kotlin.String? = null,
-
-    @Json(name = "additional_id_1")
-    val additionalId1: kotlin.String? = null,
-
-    @Json(name = "created_time")
-    val createdTime: kotlin.Int? = null,
 
     @Json(name = "updated_time")
     val updatedTime: kotlin.Int? = null

@@ -20,52 +20,72 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("SSIOOrderLine")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SSIOOrderLine   {
-  private String salesforceOrderLineId;
+  private String acceptedTermsId;
+  private String acceptedTermsTime;
   private String adsManagerOrderLineId;
-  private String pinOrderId;
-  private String lastModifiedDateTime;
-  private LocalDate startDate;
-  private LocalDate endDate;
+  private String agencyLink;
   private String billToCompanyName;
+  private String billingContactEmail;
   private String billingContactFirstname;
   private String billingContactLastname;
-  private String billingContactEmail;
+  private BigDecimal budgetAmount;
+  private Currency currencyInfo;
+  private LocalDate endDate;
+  private BigDecimal estimatedMonthlySpend;
+  private String lastModifiedDateTime;
   private String mediaContactEmail;
   private String mediaContactFirstname;
   private String mediaContactLastname;
-  private Currency currencyInfo;
-  private String agencyLink;
-  private String poNumber;
   private String orderName;
+  private String pinOrderId;
   private String pmpName;
-  private String acceptedTermsId;
-  private String acceptedTermsTime;
-  private BigDecimal budgetAmount;
-  private BigDecimal estimatedMonthlySpend;
+  private String poNumber;
+  private String salesforceOrderLineId;
+  private LocalDate startDate;
 
   public SSIOOrderLine() {
   }
 
   /**
-   * OrderLineId in SFDC
+   * The SFDC id for the terms
    **/
-  public SSIOOrderLine salesforceOrderLineId(String salesforceOrderLineId) {
-    this.salesforceOrderLineId = salesforceOrderLineId;
+  public SSIOOrderLine acceptedTermsId(String acceptedTermsId) {
+    this.acceptedTermsId = acceptedTermsId;
     return this;
   }
 
   
-  @ApiModelProperty(value = "OrderLineId in SFDC")
-  @JsonProperty("salesforce_order_line_id")
-  public String getSalesforceOrderLineId() {
-    return salesforceOrderLineId;
+  @ApiModelProperty(value = "The SFDC id for the terms")
+  @JsonProperty("accepted_terms_id")
+  public String getAcceptedTermsId() {
+    return acceptedTermsId;
   }
 
-  @JsonProperty("salesforce_order_line_id")
-  public void setSalesforceOrderLineId(String salesforceOrderLineId) {
-    this.salesforceOrderLineId = salesforceOrderLineId;
+  @JsonProperty("accepted_terms_id")
+  public void setAcceptedTermsId(String acceptedTermsId) {
+    this.acceptedTermsId = acceptedTermsId;
+  }
+
+  /**
+   * The UTC timestamp (to the nearest sec) of when terms were accepted
+   **/
+  public SSIOOrderLine acceptedTermsTime(String acceptedTermsTime) {
+    this.acceptedTermsTime = acceptedTermsTime;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "2020-10-06T13:07:04.000Z", value = "The UTC timestamp (to the nearest sec) of when terms were accepted")
+  @JsonProperty("accepted_terms_time")
+   @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$")public String getAcceptedTermsTime() {
+    return acceptedTermsTime;
+  }
+
+  @JsonProperty("accepted_terms_time")
+  public void setAcceptedTermsTime(String acceptedTermsTime) {
+    this.acceptedTermsTime = acceptedTermsTime;
   }
 
   /**
@@ -89,83 +109,23 @@ public class SSIOOrderLine   {
   }
 
   /**
-   * The pin order id associated with the order line in SFDC
+   * Agency link
    **/
-  public SSIOOrderLine pinOrderId(String pinOrderId) {
-    this.pinOrderId = pinOrderId;
+  public SSIOOrderLine agencyLink(String agencyLink) {
+    this.agencyLink = agencyLink;
     return this;
   }
 
   
-  @ApiModelProperty(value = "The pin order id associated with the order line in SFDC")
-  @JsonProperty("pin_order_id")
-  public String getPinOrderId() {
-    return pinOrderId;
+  @ApiModelProperty(example = "", value = "Agency link")
+  @JsonProperty("agency_link")
+  public String getAgencyLink() {
+    return agencyLink;
   }
 
-  @JsonProperty("pin_order_id")
-  public void setPinOrderId(String pinOrderId) {
-    this.pinOrderId = pinOrderId;
-  }
-
-  /**
-   * Last modified date.
-   **/
-  public SSIOOrderLine lastModifiedDateTime(String lastModifiedDateTime) {
-    this.lastModifiedDateTime = lastModifiedDateTime;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "2020-10-06T13:07:04.000Z", value = "Last modified date.")
-  @JsonProperty("last_modified_date_time")
-   @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$")public String getLastModifiedDateTime() {
-    return lastModifiedDateTime;
-  }
-
-  @JsonProperty("last_modified_date_time")
-  public void setLastModifiedDateTime(String lastModifiedDateTime) {
-    this.lastModifiedDateTime = lastModifiedDateTime;
-  }
-
-  /**
-   * Start date of the order line.
-   **/
-  public SSIOOrderLine startDate(LocalDate startDate) {
-    this.startDate = startDate;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "2018-03-01", value = "Start date of the order line.")
-  @JsonProperty("start_date")
-  public LocalDate getStartDate() {
-    return startDate;
-  }
-
-  @JsonProperty("start_date")
-  public void setStartDate(LocalDate startDate) {
-    this.startDate = startDate;
-  }
-
-  /**
-   * End date of the order line.
-   **/
-  public SSIOOrderLine endDate(LocalDate endDate) {
-    this.endDate = endDate;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "2020-10-05", value = "End date of the order line.")
-  @JsonProperty("end_date")
-  public LocalDate getEndDate() {
-    return endDate;
-  }
-
-  @JsonProperty("end_date")
-  public void setEndDate(LocalDate endDate) {
-    this.endDate = endDate;
+  @JsonProperty("agency_link")
+  public void setAgencyLink(String agencyLink) {
+    this.agencyLink = agencyLink;
   }
 
   /**
@@ -186,6 +146,26 @@ public class SSIOOrderLine   {
   @JsonProperty("bill_to_company_name")
   public void setBillToCompanyName(String billToCompanyName) {
     this.billToCompanyName = billToCompanyName;
+  }
+
+  /**
+   * Billing contact email
+   **/
+  public SSIOOrderLine billingContactEmail(String billingContactEmail) {
+    this.billingContactEmail = billingContactEmail;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "mail@test.com", value = "Billing contact email")
+  @JsonProperty("billing_contact_email")
+  public String getBillingContactEmail() {
+    return billingContactEmail;
+  }
+
+  @JsonProperty("billing_contact_email")
+  public void setBillingContactEmail(String billingContactEmail) {
+    this.billingContactEmail = billingContactEmail;
   }
 
   /**
@@ -229,23 +209,102 @@ public class SSIOOrderLine   {
   }
 
   /**
-   * Billing contact email
+   * If Budget order line, the budget amount.
    **/
-  public SSIOOrderLine billingContactEmail(String billingContactEmail) {
-    this.billingContactEmail = billingContactEmail;
+  public SSIOOrderLine budgetAmount(BigDecimal budgetAmount) {
+    this.budgetAmount = budgetAmount;
     return this;
   }
 
   
-  @ApiModelProperty(example = "mail@test.com", value = "Billing contact email")
-  @JsonProperty("billing_contact_email")
-  public String getBillingContactEmail() {
-    return billingContactEmail;
+  @ApiModelProperty(example = "5000000", value = "If Budget order line, the budget amount.")
+  @JsonProperty("budget_amount")
+  @Valid public BigDecimal getBudgetAmount() {
+    return budgetAmount;
   }
 
-  @JsonProperty("billing_contact_email")
-  public void setBillingContactEmail(String billingContactEmail) {
-    this.billingContactEmail = billingContactEmail;
+  @JsonProperty("budget_amount")
+  public void setBudgetAmount(BigDecimal budgetAmount) {
+    this.budgetAmount = budgetAmount;
+  }
+
+  /**
+   **/
+  public SSIOOrderLine currencyInfo(Currency currencyInfo) {
+    this.currencyInfo = currencyInfo;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("currency_info")
+  public Currency getCurrencyInfo() {
+    return currencyInfo;
+  }
+
+  @JsonProperty("currency_info")
+  public void setCurrencyInfo(Currency currencyInfo) {
+    this.currencyInfo = currencyInfo;
+  }
+
+  /**
+   * End date of the order line.
+   **/
+  public SSIOOrderLine endDate(LocalDate endDate) {
+    this.endDate = endDate;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "2020-10-05", value = "End date of the order line.")
+  @JsonProperty("end_date")
+  public LocalDate getEndDate() {
+    return endDate;
+  }
+
+  @JsonProperty("end_date")
+  public void setEndDate(LocalDate endDate) {
+    this.endDate = endDate;
+  }
+
+  /**
+   * If Ongoing (perpetual) order line, the estimated monthly spend
+   **/
+  public SSIOOrderLine estimatedMonthlySpend(BigDecimal estimatedMonthlySpend) {
+    this.estimatedMonthlySpend = estimatedMonthlySpend;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "If Ongoing (perpetual) order line, the estimated monthly spend")
+  @JsonProperty("estimated_monthly_spend")
+  @Valid public BigDecimal getEstimatedMonthlySpend() {
+    return estimatedMonthlySpend;
+  }
+
+  @JsonProperty("estimated_monthly_spend")
+  public void setEstimatedMonthlySpend(BigDecimal estimatedMonthlySpend) {
+    this.estimatedMonthlySpend = estimatedMonthlySpend;
+  }
+
+  /**
+   * Last modified date.
+   **/
+  public SSIOOrderLine lastModifiedDateTime(String lastModifiedDateTime) {
+    this.lastModifiedDateTime = lastModifiedDateTime;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "2020-10-06T13:07:04.000Z", value = "Last modified date.")
+  @JsonProperty("last_modified_date_time")
+   @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$")public String getLastModifiedDateTime() {
+    return lastModifiedDateTime;
+  }
+
+  @JsonProperty("last_modified_date_time")
+  public void setLastModifiedDateTime(String lastModifiedDateTime) {
+    this.lastModifiedDateTime = lastModifiedDateTime;
   }
 
   /**
@@ -309,65 +368,6 @@ public class SSIOOrderLine   {
   }
 
   /**
-   **/
-  public SSIOOrderLine currencyInfo(Currency currencyInfo) {
-    this.currencyInfo = currencyInfo;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("currency_info")
-  public Currency getCurrencyInfo() {
-    return currencyInfo;
-  }
-
-  @JsonProperty("currency_info")
-  public void setCurrencyInfo(Currency currencyInfo) {
-    this.currencyInfo = currencyInfo;
-  }
-
-  /**
-   * Agency link
-   **/
-  public SSIOOrderLine agencyLink(String agencyLink) {
-    this.agencyLink = agencyLink;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "", value = "Agency link")
-  @JsonProperty("agency_link")
-  public String getAgencyLink() {
-    return agencyLink;
-  }
-
-  @JsonProperty("agency_link")
-  public void setAgencyLink(String agencyLink) {
-    this.agencyLink = agencyLink;
-  }
-
-  /**
-   * The po number
-   **/
-  public SSIOOrderLine poNumber(String poNumber) {
-    this.poNumber = poNumber;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "The po number")
-  @JsonProperty("po_number")
-  public String getPoNumber() {
-    return poNumber;
-  }
-
-  @JsonProperty("po_number")
-  public void setPoNumber(String poNumber) {
-    this.poNumber = poNumber;
-  }
-
-  /**
    * The order name
    **/
   public SSIOOrderLine orderName(String orderName) {
@@ -385,6 +385,26 @@ public class SSIOOrderLine   {
   @JsonProperty("order_name")
   public void setOrderName(String orderName) {
     this.orderName = orderName;
+  }
+
+  /**
+   * The pin order id associated with the order line in SFDC
+   **/
+  public SSIOOrderLine pinOrderId(String pinOrderId) {
+    this.pinOrderId = pinOrderId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "The pin order id associated with the order line in SFDC")
+  @JsonProperty("pin_order_id")
+  public String getPinOrderId() {
+    return pinOrderId;
+  }
+
+  @JsonProperty("pin_order_id")
+  public void setPinOrderId(String pinOrderId) {
+    this.pinOrderId = pinOrderId;
   }
 
   /**
@@ -408,83 +428,63 @@ public class SSIOOrderLine   {
   }
 
   /**
-   * The SFDC id for the terms
+   * The po number
    **/
-  public SSIOOrderLine acceptedTermsId(String acceptedTermsId) {
-    this.acceptedTermsId = acceptedTermsId;
+  public SSIOOrderLine poNumber(String poNumber) {
+    this.poNumber = poNumber;
     return this;
   }
 
   
-  @ApiModelProperty(value = "The SFDC id for the terms")
-  @JsonProperty("accepted_terms_id")
-  public String getAcceptedTermsId() {
-    return acceptedTermsId;
+  @ApiModelProperty(value = "The po number")
+  @JsonProperty("po_number")
+  public String getPoNumber() {
+    return poNumber;
   }
 
-  @JsonProperty("accepted_terms_id")
-  public void setAcceptedTermsId(String acceptedTermsId) {
-    this.acceptedTermsId = acceptedTermsId;
+  @JsonProperty("po_number")
+  public void setPoNumber(String poNumber) {
+    this.poNumber = poNumber;
   }
 
   /**
-   * The UTC timestamp (to the nearest sec) of when terms were accepted
+   * OrderLineId in SFDC
    **/
-  public SSIOOrderLine acceptedTermsTime(String acceptedTermsTime) {
-    this.acceptedTermsTime = acceptedTermsTime;
+  public SSIOOrderLine salesforceOrderLineId(String salesforceOrderLineId) {
+    this.salesforceOrderLineId = salesforceOrderLineId;
     return this;
   }
 
   
-  @ApiModelProperty(example = "2020-10-06T13:07:04.000Z", value = "The UTC timestamp (to the nearest sec) of when terms were accepted")
-  @JsonProperty("accepted_terms_time")
-   @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).(\\d{3})Z$")public String getAcceptedTermsTime() {
-    return acceptedTermsTime;
+  @ApiModelProperty(value = "OrderLineId in SFDC")
+  @JsonProperty("salesforce_order_line_id")
+  public String getSalesforceOrderLineId() {
+    return salesforceOrderLineId;
   }
 
-  @JsonProperty("accepted_terms_time")
-  public void setAcceptedTermsTime(String acceptedTermsTime) {
-    this.acceptedTermsTime = acceptedTermsTime;
+  @JsonProperty("salesforce_order_line_id")
+  public void setSalesforceOrderLineId(String salesforceOrderLineId) {
+    this.salesforceOrderLineId = salesforceOrderLineId;
   }
 
   /**
-   * If Budget order line, the budget amount.
+   * Start date of the order line.
    **/
-  public SSIOOrderLine budgetAmount(BigDecimal budgetAmount) {
-    this.budgetAmount = budgetAmount;
+  public SSIOOrderLine startDate(LocalDate startDate) {
+    this.startDate = startDate;
     return this;
   }
 
   
-  @ApiModelProperty(example = "5000000", value = "If Budget order line, the budget amount.")
-  @JsonProperty("budget_amount")
-  @Valid public BigDecimal getBudgetAmount() {
-    return budgetAmount;
+  @ApiModelProperty(example = "2018-03-01", value = "Start date of the order line.")
+  @JsonProperty("start_date")
+  public LocalDate getStartDate() {
+    return startDate;
   }
 
-  @JsonProperty("budget_amount")
-  public void setBudgetAmount(BigDecimal budgetAmount) {
-    this.budgetAmount = budgetAmount;
-  }
-
-  /**
-   * If Ongoing (perpetual) order line, the estimated monthly spend
-   **/
-  public SSIOOrderLine estimatedMonthlySpend(BigDecimal estimatedMonthlySpend) {
-    this.estimatedMonthlySpend = estimatedMonthlySpend;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "If Ongoing (perpetual) order line, the estimated monthly spend")
-  @JsonProperty("estimated_monthly_spend")
-  @Valid public BigDecimal getEstimatedMonthlySpend() {
-    return estimatedMonthlySpend;
-  }
-
-  @JsonProperty("estimated_monthly_spend")
-  public void setEstimatedMonthlySpend(BigDecimal estimatedMonthlySpend) {
-    this.estimatedMonthlySpend = estimatedMonthlySpend;
+  @JsonProperty("start_date")
+  public void setStartDate(LocalDate startDate) {
+    this.startDate = startDate;
   }
 
 
@@ -497,33 +497,33 @@ public class SSIOOrderLine   {
       return false;
     }
     SSIOOrderLine ssIOOrderLine = (SSIOOrderLine) o;
-    return Objects.equals(this.salesforceOrderLineId, ssIOOrderLine.salesforceOrderLineId) &&
+    return Objects.equals(this.acceptedTermsId, ssIOOrderLine.acceptedTermsId) &&
+        Objects.equals(this.acceptedTermsTime, ssIOOrderLine.acceptedTermsTime) &&
         Objects.equals(this.adsManagerOrderLineId, ssIOOrderLine.adsManagerOrderLineId) &&
-        Objects.equals(this.pinOrderId, ssIOOrderLine.pinOrderId) &&
-        Objects.equals(this.lastModifiedDateTime, ssIOOrderLine.lastModifiedDateTime) &&
-        Objects.equals(this.startDate, ssIOOrderLine.startDate) &&
-        Objects.equals(this.endDate, ssIOOrderLine.endDate) &&
+        Objects.equals(this.agencyLink, ssIOOrderLine.agencyLink) &&
         Objects.equals(this.billToCompanyName, ssIOOrderLine.billToCompanyName) &&
+        Objects.equals(this.billingContactEmail, ssIOOrderLine.billingContactEmail) &&
         Objects.equals(this.billingContactFirstname, ssIOOrderLine.billingContactFirstname) &&
         Objects.equals(this.billingContactLastname, ssIOOrderLine.billingContactLastname) &&
-        Objects.equals(this.billingContactEmail, ssIOOrderLine.billingContactEmail) &&
+        Objects.equals(this.budgetAmount, ssIOOrderLine.budgetAmount) &&
+        Objects.equals(this.currencyInfo, ssIOOrderLine.currencyInfo) &&
+        Objects.equals(this.endDate, ssIOOrderLine.endDate) &&
+        Objects.equals(this.estimatedMonthlySpend, ssIOOrderLine.estimatedMonthlySpend) &&
+        Objects.equals(this.lastModifiedDateTime, ssIOOrderLine.lastModifiedDateTime) &&
         Objects.equals(this.mediaContactEmail, ssIOOrderLine.mediaContactEmail) &&
         Objects.equals(this.mediaContactFirstname, ssIOOrderLine.mediaContactFirstname) &&
         Objects.equals(this.mediaContactLastname, ssIOOrderLine.mediaContactLastname) &&
-        Objects.equals(this.currencyInfo, ssIOOrderLine.currencyInfo) &&
-        Objects.equals(this.agencyLink, ssIOOrderLine.agencyLink) &&
-        Objects.equals(this.poNumber, ssIOOrderLine.poNumber) &&
         Objects.equals(this.orderName, ssIOOrderLine.orderName) &&
+        Objects.equals(this.pinOrderId, ssIOOrderLine.pinOrderId) &&
         Objects.equals(this.pmpName, ssIOOrderLine.pmpName) &&
-        Objects.equals(this.acceptedTermsId, ssIOOrderLine.acceptedTermsId) &&
-        Objects.equals(this.acceptedTermsTime, ssIOOrderLine.acceptedTermsTime) &&
-        Objects.equals(this.budgetAmount, ssIOOrderLine.budgetAmount) &&
-        Objects.equals(this.estimatedMonthlySpend, ssIOOrderLine.estimatedMonthlySpend);
+        Objects.equals(this.poNumber, ssIOOrderLine.poNumber) &&
+        Objects.equals(this.salesforceOrderLineId, ssIOOrderLine.salesforceOrderLineId) &&
+        Objects.equals(this.startDate, ssIOOrderLine.startDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(salesforceOrderLineId, adsManagerOrderLineId, pinOrderId, lastModifiedDateTime, startDate, endDate, billToCompanyName, billingContactFirstname, billingContactLastname, billingContactEmail, mediaContactEmail, mediaContactFirstname, mediaContactLastname, currencyInfo, agencyLink, poNumber, orderName, pmpName, acceptedTermsId, acceptedTermsTime, budgetAmount, estimatedMonthlySpend);
+    return Objects.hash(acceptedTermsId, acceptedTermsTime, adsManagerOrderLineId, agencyLink, billToCompanyName, billingContactEmail, billingContactFirstname, billingContactLastname, budgetAmount, currencyInfo, endDate, estimatedMonthlySpend, lastModifiedDateTime, mediaContactEmail, mediaContactFirstname, mediaContactLastname, orderName, pinOrderId, pmpName, poNumber, salesforceOrderLineId, startDate);
   }
 
   @Override
@@ -531,28 +531,28 @@ public class SSIOOrderLine   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSIOOrderLine {\n");
     
-    sb.append("    salesforceOrderLineId: ").append(toIndentedString(salesforceOrderLineId)).append("\n");
+    sb.append("    acceptedTermsId: ").append(toIndentedString(acceptedTermsId)).append("\n");
+    sb.append("    acceptedTermsTime: ").append(toIndentedString(acceptedTermsTime)).append("\n");
     sb.append("    adsManagerOrderLineId: ").append(toIndentedString(adsManagerOrderLineId)).append("\n");
-    sb.append("    pinOrderId: ").append(toIndentedString(pinOrderId)).append("\n");
-    sb.append("    lastModifiedDateTime: ").append(toIndentedString(lastModifiedDateTime)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    agencyLink: ").append(toIndentedString(agencyLink)).append("\n");
     sb.append("    billToCompanyName: ").append(toIndentedString(billToCompanyName)).append("\n");
+    sb.append("    billingContactEmail: ").append(toIndentedString(billingContactEmail)).append("\n");
     sb.append("    billingContactFirstname: ").append(toIndentedString(billingContactFirstname)).append("\n");
     sb.append("    billingContactLastname: ").append(toIndentedString(billingContactLastname)).append("\n");
-    sb.append("    billingContactEmail: ").append(toIndentedString(billingContactEmail)).append("\n");
+    sb.append("    budgetAmount: ").append(toIndentedString(budgetAmount)).append("\n");
+    sb.append("    currencyInfo: ").append(toIndentedString(currencyInfo)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    estimatedMonthlySpend: ").append(toIndentedString(estimatedMonthlySpend)).append("\n");
+    sb.append("    lastModifiedDateTime: ").append(toIndentedString(lastModifiedDateTime)).append("\n");
     sb.append("    mediaContactEmail: ").append(toIndentedString(mediaContactEmail)).append("\n");
     sb.append("    mediaContactFirstname: ").append(toIndentedString(mediaContactFirstname)).append("\n");
     sb.append("    mediaContactLastname: ").append(toIndentedString(mediaContactLastname)).append("\n");
-    sb.append("    currencyInfo: ").append(toIndentedString(currencyInfo)).append("\n");
-    sb.append("    agencyLink: ").append(toIndentedString(agencyLink)).append("\n");
-    sb.append("    poNumber: ").append(toIndentedString(poNumber)).append("\n");
     sb.append("    orderName: ").append(toIndentedString(orderName)).append("\n");
+    sb.append("    pinOrderId: ").append(toIndentedString(pinOrderId)).append("\n");
     sb.append("    pmpName: ").append(toIndentedString(pmpName)).append("\n");
-    sb.append("    acceptedTermsId: ").append(toIndentedString(acceptedTermsId)).append("\n");
-    sb.append("    acceptedTermsTime: ").append(toIndentedString(acceptedTermsTime)).append("\n");
-    sb.append("    budgetAmount: ").append(toIndentedString(budgetAmount)).append("\n");
-    sb.append("    estimatedMonthlySpend: ").append(toIndentedString(estimatedMonthlySpend)).append("\n");
+    sb.append("    poNumber: ").append(toIndentedString(poNumber)).append("\n");
+    sb.append("    salesforceOrderLineId: ").append(toIndentedString(salesforceOrderLineId)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }

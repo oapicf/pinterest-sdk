@@ -19,9 +19,9 @@ import io.swagger.v3.oas.annotations.media.Schema
 /**
  * Request object for updating a hotel product group.
  * @param catalogType 
- * @param name 
  * @param description 
  * @param filters 
+ * @param name 
  */
 data class CatalogsHotelProductGroupUpdateRequest(
 
@@ -29,14 +29,14 @@ data class CatalogsHotelProductGroupUpdateRequest(
     @get:JsonProperty("catalog_type") val catalogType: CatalogsHotelProductGroupUpdateRequest.CatalogType? = null,
 
     @Schema(example = "null", description = "")
-    @get:JsonProperty("name") val name: kotlin.String? = null,
-
-    @Schema(example = "null", description = "")
     @get:JsonProperty("description") val description: kotlin.String? = null,
 
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("filters") val filters: CatalogsHotelProductGroupFilters? = null
+    @get:JsonProperty("filters") val filters: CatalogsHotelProductGroupFilters? = null,
+
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("name") val name: kotlin.String? = null
 ) {
 
     /**

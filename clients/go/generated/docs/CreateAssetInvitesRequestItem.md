@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AssetIdToPermissions** | [**map[string][]Permissions**](array.md) | An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.  | 
 **InviteId** | **string** | Unique identifier of an invite. | 
 **InviteType** | [**InviteType**](InviteType.md) |  | 
-**AssetIdToPermissions** | [**map[string][]Permissions**](array.md) | An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.  | 
 
 ## Methods
 
 ### NewCreateAssetInvitesRequestItem
 
-`func NewCreateAssetInvitesRequestItem(inviteId string, inviteType InviteType, assetIdToPermissions map[string][]Permissions, ) *CreateAssetInvitesRequestItem`
+`func NewCreateAssetInvitesRequestItem(assetIdToPermissions map[string][]Permissions, inviteId string, inviteType InviteType, ) *CreateAssetInvitesRequestItem`
 
 NewCreateAssetInvitesRequestItem instantiates a new CreateAssetInvitesRequestItem object
 This constructor will assign default values to properties that have it defined,
@@ -26,6 +26,26 @@ will change when the set of required properties is changed
 NewCreateAssetInvitesRequestItemWithDefaults instantiates a new CreateAssetInvitesRequestItem object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAssetIdToPermissions
+
+`func (o *CreateAssetInvitesRequestItem) GetAssetIdToPermissions() map[string][]Permissions`
+
+GetAssetIdToPermissions returns the AssetIdToPermissions field if non-nil, zero value otherwise.
+
+### GetAssetIdToPermissionsOk
+
+`func (o *CreateAssetInvitesRequestItem) GetAssetIdToPermissionsOk() (*map[string][]Permissions, bool)`
+
+GetAssetIdToPermissionsOk returns a tuple with the AssetIdToPermissions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAssetIdToPermissions
+
+`func (o *CreateAssetInvitesRequestItem) SetAssetIdToPermissions(v map[string][]Permissions)`
+
+SetAssetIdToPermissions sets AssetIdToPermissions field to given value.
+
 
 ### GetInviteId
 
@@ -65,26 +85,6 @@ and a boolean to check if the value has been set.
 `func (o *CreateAssetInvitesRequestItem) SetInviteType(v InviteType)`
 
 SetInviteType sets InviteType field to given value.
-
-
-### GetAssetIdToPermissions
-
-`func (o *CreateAssetInvitesRequestItem) GetAssetIdToPermissions() map[string][]Permissions`
-
-GetAssetIdToPermissions returns the AssetIdToPermissions field if non-nil, zero value otherwise.
-
-### GetAssetIdToPermissionsOk
-
-`func (o *CreateAssetInvitesRequestItem) GetAssetIdToPermissionsOk() (*map[string][]Permissions, bool)`
-
-GetAssetIdToPermissionsOk returns a tuple with the AssetIdToPermissions field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAssetIdToPermissions
-
-`func (o *CreateAssetInvitesRequestItem) SetAssetIdToPermissions(v map[string][]Permissions)`
-
-SetAssetIdToPermissions sets AssetIdToPermissions field to given value.
 
 
 

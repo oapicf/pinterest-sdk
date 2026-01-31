@@ -12,12 +12,12 @@ module AdsCreditRedeemResponse =
 
   [<CLIMutable>]
   type AdsCreditRedeemResponse = {
-    [<JsonProperty(PropertyName = "success")>]
-    Success : bool;
     [<JsonProperty(PropertyName = "errorCode")>]
     ErrorCode : int option;
     [<JsonProperty(PropertyName = "errorMessage")>]
     ErrorMessage : string option;
+    [<JsonProperty(PropertyName = "success")>]
+    Success : bool;
   }
 
   //#endregion

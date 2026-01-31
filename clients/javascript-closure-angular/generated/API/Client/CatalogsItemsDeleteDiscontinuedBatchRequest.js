@@ -13,6 +13,13 @@ API.Client.CatalogsItemsDeleteDiscontinuedBatchRequest = function() {}
 API.Client.CatalogsItemsDeleteDiscontinuedBatchRequest.prototype.country;
 
 /**
+ * Array with catalogs items
+ * @type {!Array<!API.Client.ItemDeleteDiscontinuedBatchRecord>}
+ * @export
+ */
+API.Client.CatalogsItemsDeleteDiscontinuedBatchRequest.prototype.items;
+
+/**
  * We recommend using the CatalogsLocale values.
  * @type {!string}
  * @export
@@ -24,13 +31,6 @@ API.Client.CatalogsItemsDeleteDiscontinuedBatchRequest.prototype.language;
  * @export
  */
 API.Client.CatalogsItemsDeleteDiscontinuedBatchRequest.prototype.operation;
-
-/**
- * Array with catalogs items
- * @type {!Array<!API.Client.ItemDeleteDiscontinuedBatchRecord>}
- * @export
- */
-API.Client.CatalogsItemsDeleteDiscontinuedBatchRequest.prototype.items;
 
 /** @enum {string} */
 API.Client.CatalogsItemsDeleteDiscontinuedBatchRequest.LanguageEnum = { 

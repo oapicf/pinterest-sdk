@@ -16,14 +16,14 @@ void main() {
   // final instance = ItemCreateBatchRecord();
 
   group('test ItemCreateBatchRecord', () {
-    // The catalog item id in the merchant namespace
-    // String itemId
-    test('to test the property `itemId`', () async {
+    // ItemAttributesRequest attributes
+    test('to test the property `attributes`', () async {
       // TODO
     });
 
-    // ItemAttributesRequest attributes
-    test('to test the property `attributes`', () async {
+    // The catalog item id in the merchant namespace
+    // String itemId
+    test('to test the property `itemId`', () async {
       // TODO
     });
 

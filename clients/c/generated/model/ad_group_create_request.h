@@ -32,50 +32,66 @@ char* ad_group_create_request_bid_strategy_type_ToString(pinterest_rest_api_ad_g
 
 pinterest_rest_api_ad_group_create_request_BIDSTRATEGYTYPE_e ad_group_create_request_bid_strategy_type_FromString(char* bid_strategy_type);
 
+// Enum PROMOTIONAPPLICATIONLEVEL for ad_group_create_request
+
+typedef enum  { pinterest_rest_api_ad_group_create_request_PROMOTIONAPPLICATIONLEVEL_NULL = 0, pinterest_rest_api_ad_group_create_request_PROMOTIONAPPLICATIONLEVEL_NONE, pinterest_rest_api_ad_group_create_request_PROMOTIONAPPLICATIONLEVEL_ITEM, pinterest_rest_api_ad_group_create_request_PROMOTIONAPPLICATIONLEVEL_AD_GROUP } pinterest_rest_api_ad_group_create_request_PROMOTIONAPPLICATIONLEVEL_e;
+
+char* ad_group_create_request_promotion_application_level_ToString(pinterest_rest_api_ad_group_create_request_PROMOTIONAPPLICATIONLEVEL_e promotion_application_level);
+
+pinterest_rest_api_ad_group_create_request_PROMOTIONAPPLICATIONLEVEL_e ad_group_create_request_promotion_application_level_FromString(char* promotion_application_level);
+
 
 
 typedef struct ad_group_create_request_t {
-    char *name; // string
-    entity_status_t *status; // custom
-    int budget_in_micro_currency; //numeric
-    int bid_in_micro_currency; //numeric
-    struct optimization_goal_metadata_t *optimization_goal_metadata; //model
-    budget_type_t *budget_type; // custom
-    int start_time; //numeric
-    int end_time; //numeric
-    struct targeting_spec_t *targeting_spec; //model
-    int lifetime_frequency_cap; //numeric
-    struct tracking_urls_t *tracking_urls; //model
     int auto_targeting_enabled; //boolean
-    placement_group_type_t *placement_group; // custom
-    pacing_delivery_type_t *pacing_delivery_type; // custom
-    char *campaign_id; // string
-    pinterest_rest_api_action_type__e billable_event; //referenced enum
+    int bid_in_micro_currency; //numeric
     pinterest_rest_api_ad_group_create_request_BIDSTRATEGYTYPE_e bid_strategy_type; //enum
+    pinterest_rest_api_action_type__e billable_event; //referenced enum
+    int budget_in_micro_currency; //numeric
+    budget_type_t *budget_type; // custom
+    char *campaign_id; // string
+    int end_time; //numeric
+    int is_creative_optimization; //boolean
+    int lifetime_frequency_cap; //numeric
+    char *name; // string
+    struct optimization_goal_metadata_t *optimization_goal_metadata; //model
+    pacing_delivery_type_t *pacing_delivery_type; // custom
+    placement_group_type_t *placement_group; // custom
+    pinterest_rest_api_ad_group_create_request_PROMOTIONAPPLICATIONLEVEL_e promotion_application_level; //enum
+    char *promotion_id; // string
+    int start_time; //numeric
+    entity_status_t *status; // custom
+    struct targeting_spec_t *targeting_spec; //model
     list_t *targeting_template_ids; //primitive container
+    struct tracking_urls_t *tracking_urls; //model
+    double bid_multiplier; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } ad_group_create_request_t;
 
 __attribute__((deprecated)) ad_group_create_request_t *ad_group_create_request_create(
-    char *name,
-    entity_status_t *status,
-    int budget_in_micro_currency,
-    int bid_in_micro_currency,
-    optimization_goal_metadata_t *optimization_goal_metadata,
-    budget_type_t *budget_type,
-    int start_time,
-    int end_time,
-    targeting_spec_t *targeting_spec,
-    int lifetime_frequency_cap,
-    tracking_urls_t *tracking_urls,
     int auto_targeting_enabled,
-    placement_group_type_t *placement_group,
-    pacing_delivery_type_t *pacing_delivery_type,
-    char *campaign_id,
-    pinterest_rest_api_action_type__e billable_event,
+    int bid_in_micro_currency,
     pinterest_rest_api_ad_group_create_request_BIDSTRATEGYTYPE_e bid_strategy_type,
-    list_t *targeting_template_ids
+    pinterest_rest_api_action_type__e billable_event,
+    int budget_in_micro_currency,
+    budget_type_t *budget_type,
+    char *campaign_id,
+    int end_time,
+    int is_creative_optimization,
+    int lifetime_frequency_cap,
+    char *name,
+    optimization_goal_metadata_t *optimization_goal_metadata,
+    pacing_delivery_type_t *pacing_delivery_type,
+    placement_group_type_t *placement_group,
+    pinterest_rest_api_ad_group_create_request_PROMOTIONAPPLICATIONLEVEL_e promotion_application_level,
+    char *promotion_id,
+    int start_time,
+    entity_status_t *status,
+    targeting_spec_t *targeting_spec,
+    list_t *targeting_template_ids,
+    tracking_urls_t *tracking_urls,
+    double bid_multiplier
 );
 
 void ad_group_create_request_free(ad_group_create_request_t *ad_group_create_request);

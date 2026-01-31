@@ -8,6 +8,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsReportFeedIngestionStats   {
   
+  private String catalogId;
+  private Integer code;
+  private String codeLabel;
+  private String message;
+  private Integer occurrences;
 
 
   public enum ReportTypeEnum {
@@ -27,11 +32,6 @@ public class CatalogsReportFeedIngestionStats   {
   }
 
   private ReportTypeEnum reportType;
-  private String catalogId;
-  private Integer code;
-  private String codeLabel;
-  private String message;
-  private Integer occurrences;
 
 
   public enum SeverityEnum {
@@ -57,23 +57,14 @@ public class CatalogsReportFeedIngestionStats   {
 
   }
 
-  public CatalogsReportFeedIngestionStats (ReportTypeEnum reportType, String catalogId, Integer code, String codeLabel, String message, Integer occurrences, SeverityEnum severity) {
-    this.reportType = reportType;
+  public CatalogsReportFeedIngestionStats (String catalogId, Integer code, String codeLabel, String message, Integer occurrences, ReportTypeEnum reportType, SeverityEnum severity) {
     this.catalogId = catalogId;
     this.code = code;
     this.codeLabel = codeLabel;
     this.message = message;
     this.occurrences = occurrences;
-    this.severity = severity;
-  }
-
-    
-  @JsonProperty("report_type")
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-  public void setReportType(ReportTypeEnum reportType) {
     this.reportType = reportType;
+    this.severity = severity;
   }
 
     
@@ -122,6 +113,15 @@ public class CatalogsReportFeedIngestionStats   {
   }
 
     
+  @JsonProperty("report_type")
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
+    
   @JsonProperty("severity")
   public SeverityEnum getSeverity() {
     return severity;
@@ -140,18 +140,18 @@ public class CatalogsReportFeedIngestionStats   {
       return false;
     }
     CatalogsReportFeedIngestionStats catalogsReportFeedIngestionStats = (CatalogsReportFeedIngestionStats) o;
-    return Objects.equals(reportType, catalogsReportFeedIngestionStats.reportType) &&
-        Objects.equals(catalogId, catalogsReportFeedIngestionStats.catalogId) &&
+    return Objects.equals(catalogId, catalogsReportFeedIngestionStats.catalogId) &&
         Objects.equals(code, catalogsReportFeedIngestionStats.code) &&
         Objects.equals(codeLabel, catalogsReportFeedIngestionStats.codeLabel) &&
         Objects.equals(message, catalogsReportFeedIngestionStats.message) &&
         Objects.equals(occurrences, catalogsReportFeedIngestionStats.occurrences) &&
+        Objects.equals(reportType, catalogsReportFeedIngestionStats.reportType) &&
         Objects.equals(severity, catalogsReportFeedIngestionStats.severity);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, catalogId, code, codeLabel, message, occurrences, severity);
+    return Objects.hash(catalogId, code, codeLabel, message, occurrences, reportType, severity);
   }
 
   @Override
@@ -159,12 +159,12 @@ public class CatalogsReportFeedIngestionStats   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportFeedIngestionStats {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    codeLabel: ").append(toIndentedString(codeLabel)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    occurrences: ").append(toIndentedString(occurrences)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    severity: ").append(toIndentedString(severity)).append("\n");
     sb.append("}");
     return sb.toString();

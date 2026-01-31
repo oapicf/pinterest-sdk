@@ -33,19 +33,19 @@ public class CatalogsHotelItemErrorResponseTest {
     }
 
     /**
-     * Test the property 'hotelId'
-     */
-    @Test
-    public void hotelIdTest() {
-        // TODO: test hotelId
-    }
-
-    /**
      * Test the property 'errors'
      */
     @Test
     public void errorsTest() {
         // TODO: test errors
+    }
+
+    /**
+     * Test the property 'hotelId'
+     */
+    @Test
+    public void hotelIdTest() {
+        // TODO: test hotelId
     }
 
 }

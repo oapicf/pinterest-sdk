@@ -7,16 +7,16 @@ Request object for creating a feed.
 
 Name | Type
 ------------ | -------------
-`defaultCurrency` | [NullableCurrency](NullableCurrency.md)
-`name` | string
-`format` | [CatalogsFormat](CatalogsFormat.md)
-`defaultLocale` | [CatalogsFeedsCreateRequestDefaultLocale](CatalogsFeedsCreateRequestDefaultLocale.md)
-`defaultCountry` | [Country](Country.md)
-`credentials` | [CatalogsFeedCredentials](CatalogsFeedCredentials.md)
-`location` | string
-`preferredProcessingSchedule` | [CatalogsFeedProcessingSchedule](CatalogsFeedProcessingSchedule.md)
-`catalogType` | [CatalogsType](CatalogsType.md)
 `catalogId` | string
+`catalogType` | [CatalogsType](CatalogsType.md)
+`credentials` | [CatalogsFeedCredentials](CatalogsFeedCredentials.md)
+`defaultCountry` | [Country](Country.md)
+`defaultCurrency` | [NullableCurrency](NullableCurrency.md)
+`defaultLocale` | [CatalogsFeedsCreateRequestDefaultLocale](CatalogsFeedsCreateRequestDefaultLocale.md)
+`format` | [CatalogsFormat](CatalogsFormat.md)
+`location` | string
+`name` | string
+`preferredProcessingSchedule` | [CatalogsFeedProcessingSchedule](CatalogsFeedProcessingSchedule.md)
 `status` | [CatalogsStatus](CatalogsStatus.md)
 
 ## Example
@@ -26,16 +26,16 @@ import type { CatalogsCreativeAssetsFeedsCreateRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "defaultCurrency": null,
-  "name": null,
-  "format": null,
-  "defaultLocale": null,
-  "defaultCountry": null,
-  "credentials": null,
-  "location": null,
-  "preferredProcessingSchedule": null,
-  "catalogType": null,
   "catalogId": null,
+  "catalogType": null,
+  "credentials": null,
+  "defaultCountry": null,
+  "defaultCurrency": null,
+  "defaultLocale": null,
+  "format": null,
+  "location": null,
+  "name": null,
+  "preferredProcessingSchedule": null,
   "status": null,
 } satisfies CatalogsCreativeAssetsFeedsCreateRequest
 

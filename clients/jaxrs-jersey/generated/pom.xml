@@ -4,7 +4,7 @@
   <artifactId>openapi-jaxrs-server</artifactId>
   <packaging>jar</packaging>
   <name>openapi-jaxrs-server</name>
-  <version>5.14.0</version>
+  <version>5.23.0</version>
 
 
   <licenses>

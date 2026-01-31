@@ -3,9 +3,9 @@ Protected Class AdGroupsAnalyticsResponseInner
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The ID of the ad group that this metrics belongs to.
+			The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
 		#tag EndNote
-		AD_GROUP_ID As String
+		AD_GROUP_ID As Xoson.O.OptionalString
 	#tag EndProperty
 
 

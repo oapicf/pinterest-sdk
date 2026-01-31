@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **report_type** | **String** |  |  |
 | **catalog_id** | **String** | Unique identifier of a catalog. If not given, oldest catalog will be used | [optional] |
+| **report_type** | **String** |  |  |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::CatalogsReportDistributionIssueFilter.new(
-  report_type: null,
-  catalog_id: null
+  catalog_id: null,
+  report_type: null
 )
 ```
 

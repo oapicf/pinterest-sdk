@@ -5,13 +5,13 @@
 
 
 char* audience_rule_objective_type_ToString(pinterest_rest_api_audience_rule__e objective_type) {
-    char *objective_typeArray[] =  { "NULL", "AWARENESS", "CONSIDERATION", "VIDEO_VIEW", "WEB_CONVERSION", "CATALOG_SALES", "WEB_SESSIONS", "VIDEO_COMPLETION" };
+    char *objective_typeArray[] =  { "NULL", "AWARENESS", "CONSIDERATION", "WEB_CONVERSION", "CATALOG_SALES", "VIDEO_COMPLETION" };
     return objective_typeArray[objective_type - 1];
 }
 
 pinterest_rest_api_audience_rule__e audience_rule_objective_type_FromString(char* objective_type) {
     int stringToReturn = 0;
-    char *objective_typeArray[] =  { "NULL", "AWARENESS", "CONSIDERATION", "VIDEO_VIEW", "WEB_CONVERSION", "CATALOG_SALES", "WEB_SESSIONS", "VIDEO_COMPLETION" };
+    char *objective_typeArray[] =  { "NULL", "AWARENESS", "CONSIDERATION", "WEB_CONVERSION", "CATALOG_SALES", "VIDEO_COMPLETION" };
     size_t sizeofArray = sizeof(objective_typeArray) / sizeof(objective_typeArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(objective_type, objective_typeArray[stringToReturn]) == 0) {
@@ -23,37 +23,44 @@ pinterest_rest_api_audience_rule__e audience_rule_objective_type_FromString(char
 }
 
 static audience_rule_t *audience_rule_create_internal(
+    char *ad_account_id,
+    list_t *ad_id,
+    list_t *campaign_id,
     char *country,
     char *customer_list_id,
     list_t *engagement_domain,
     char *engagement_type,
+    int engager_type,
     char *event,
-    pinterest_tag_event_data_t *event_data,
+    event_data_t *event_data,
+    object_t *event_source,
+    object_t *ingestion_source,
+    list_t *objective_type,
     int percentage,
     list_t *pin_id,
     int prefill,
     int retention_days,
     list_t *seed_id,
     list_t *url,
-    char *visitor_source_id,
-    object_t *event_source,
-    object_t *ingestion_source,
-    int engager_type,
-    list_t *campaign_id,
-    list_t *ad_id,
-    list_t *objective_type,
-    char *ad_account_id
+    char *visitor_source_id
     ) {
     audience_rule_t *audience_rule_local_var = malloc(sizeof(audience_rule_t));
     if (!audience_rule_local_var) {
         return NULL;
     }
+    audience_rule_local_var->ad_account_id = ad_account_id;
+    audience_rule_local_var->ad_id = ad_id;
+    audience_rule_local_var->campaign_id = campaign_id;
     audience_rule_local_var->country = country;
     audience_rule_local_var->customer_list_id = customer_list_id;
     audience_rule_local_var->engagement_domain = engagement_domain;
     audience_rule_local_var->engagement_type = engagement_type;
+    audience_rule_local_var->engager_type = engager_type;
     audience_rule_local_var->event = event;
     audience_rule_local_var->event_data = event_data;
+    audience_rule_local_var->event_source = event_source;
+    audience_rule_local_var->ingestion_source = ingestion_source;
+    audience_rule_local_var->objective_type = objective_type;
     audience_rule_local_var->percentage = percentage;
     audience_rule_local_var->pin_id = pin_id;
     audience_rule_local_var->prefill = prefill;
@@ -61,61 +68,54 @@ static audience_rule_t *audience_rule_create_internal(
     audience_rule_local_var->seed_id = seed_id;
     audience_rule_local_var->url = url;
     audience_rule_local_var->visitor_source_id = visitor_source_id;
-    audience_rule_local_var->event_source = event_source;
-    audience_rule_local_var->ingestion_source = ingestion_source;
-    audience_rule_local_var->engager_type = engager_type;
-    audience_rule_local_var->campaign_id = campaign_id;
-    audience_rule_local_var->ad_id = ad_id;
-    audience_rule_local_var->objective_type = objective_type;
-    audience_rule_local_var->ad_account_id = ad_account_id;
 
     audience_rule_local_var->_library_owned = 1;
     return audience_rule_local_var;
 }
 
 __attribute__((deprecated)) audience_rule_t *audience_rule_create(
+    char *ad_account_id,
+    list_t *ad_id,
+    list_t *campaign_id,
     char *country,
     char *customer_list_id,
     list_t *engagement_domain,
     char *engagement_type,
+    int engager_type,
     char *event,
-    pinterest_tag_event_data_t *event_data,
+    event_data_t *event_data,
+    object_t *event_source,
+    object_t *ingestion_source,
+    list_t *objective_type,
     int percentage,
     list_t *pin_id,
     int prefill,
     int retention_days,
     list_t *seed_id,
     list_t *url,
-    char *visitor_source_id,
-    object_t *event_source,
-    object_t *ingestion_source,
-    int engager_type,
-    list_t *campaign_id,
-    list_t *ad_id,
-    list_t *objective_type,
-    char *ad_account_id
+    char *visitor_source_id
     ) {
     return audience_rule_create_internal (
+        ad_account_id,
+        ad_id,
+        campaign_id,
         country,
         customer_list_id,
         engagement_domain,
         engagement_type,
+        engager_type,
         event,
         event_data,
+        event_source,
+        ingestion_source,
+        objective_type,
         percentage,
         pin_id,
         prefill,
         retention_days,
         seed_id,
         url,
-        visitor_source_id,
-        event_source,
-        ingestion_source,
-        engager_type,
-        campaign_id,
-        ad_id,
-        objective_type,
-        ad_account_id
+        visitor_source_id
         );
 }
 
@@ -128,6 +128,24 @@ void audience_rule_free(audience_rule_t *audience_rule) {
         return ;
     }
     listEntry_t *listEntry;
+    if (audience_rule->ad_account_id) {
+        free(audience_rule->ad_account_id);
+        audience_rule->ad_account_id = NULL;
+    }
+    if (audience_rule->ad_id) {
+        list_ForEach(listEntry, audience_rule->ad_id) {
+            free(listEntry->data);
+        }
+        list_freeList(audience_rule->ad_id);
+        audience_rule->ad_id = NULL;
+    }
+    if (audience_rule->campaign_id) {
+        list_ForEach(listEntry, audience_rule->campaign_id) {
+            free(listEntry->data);
+        }
+        list_freeList(audience_rule->campaign_id);
+        audience_rule->campaign_id = NULL;
+    }
     if (audience_rule->country) {
         free(audience_rule->country);
         audience_rule->country = NULL;
@@ -152,8 +170,23 @@ void audience_rule_free(audience_rule_t *audience_rule) {
         audience_rule->event = NULL;
     }
     if (audience_rule->event_data) {
-        pinterest_tag_event_data_free(audience_rule->event_data);
+        event_data_free(audience_rule->event_data);
         audience_rule->event_data = NULL;
+    }
+    if (audience_rule->event_source) {
+        object_free(audience_rule->event_source);
+        audience_rule->event_source = NULL;
+    }
+    if (audience_rule->ingestion_source) {
+        object_free(audience_rule->ingestion_source);
+        audience_rule->ingestion_source = NULL;
+    }
+    if (audience_rule->objective_type) {
+        list_ForEach(listEntry, audience_rule->objective_type) {
+            objective_type_free(listEntry->data);
+        }
+        list_freeList(audience_rule->objective_type);
+        audience_rule->objective_type = NULL;
     }
     if (audience_rule->pin_id) {
         list_ForEach(listEntry, audience_rule->pin_id) {
@@ -180,44 +213,53 @@ void audience_rule_free(audience_rule_t *audience_rule) {
         free(audience_rule->visitor_source_id);
         audience_rule->visitor_source_id = NULL;
     }
-    if (audience_rule->event_source) {
-        object_free(audience_rule->event_source);
-        audience_rule->event_source = NULL;
-    }
-    if (audience_rule->ingestion_source) {
-        object_free(audience_rule->ingestion_source);
-        audience_rule->ingestion_source = NULL;
-    }
-    if (audience_rule->campaign_id) {
-        list_ForEach(listEntry, audience_rule->campaign_id) {
-            free(listEntry->data);
-        }
-        list_freeList(audience_rule->campaign_id);
-        audience_rule->campaign_id = NULL;
-    }
-    if (audience_rule->ad_id) {
-        list_ForEach(listEntry, audience_rule->ad_id) {
-            free(listEntry->data);
-        }
-        list_freeList(audience_rule->ad_id);
-        audience_rule->ad_id = NULL;
-    }
-    if (audience_rule->objective_type) {
-        list_ForEach(listEntry, audience_rule->objective_type) {
-            objective_type_free(listEntry->data);
-        }
-        list_freeList(audience_rule->objective_type);
-        audience_rule->objective_type = NULL;
-    }
-    if (audience_rule->ad_account_id) {
-        free(audience_rule->ad_account_id);
-        audience_rule->ad_account_id = NULL;
-    }
     free(audience_rule);
 }
 
 cJSON *audience_rule_convertToJSON(audience_rule_t *audience_rule) {
     cJSON *item = cJSON_CreateObject();
+
+    // audience_rule->ad_account_id
+    if(audience_rule->ad_account_id) {
+    if(cJSON_AddStringToObject(item, "ad_account_id", audience_rule->ad_account_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // audience_rule->ad_id
+    if(audience_rule->ad_id) {
+    cJSON *ad_id = cJSON_AddArrayToObject(item, "ad_id");
+    if(ad_id == NULL) {
+        goto fail; //primitive container
+    }
+
+    listEntry_t *ad_idListEntry;
+    list_ForEach(ad_idListEntry, audience_rule->ad_id) {
+    if(cJSON_AddStringToObject(ad_id, "", ad_idListEntry->data) == NULL)
+    {
+        goto fail;
+    }
+    }
+    }
+
+
+    // audience_rule->campaign_id
+    if(audience_rule->campaign_id) {
+    cJSON *campaign_id = cJSON_AddArrayToObject(item, "campaign_id");
+    if(campaign_id == NULL) {
+        goto fail; //primitive container
+    }
+
+    listEntry_t *campaign_idListEntry;
+    list_ForEach(campaign_idListEntry, audience_rule->campaign_id) {
+    if(cJSON_AddStringToObject(campaign_id, "", campaign_idListEntry->data) == NULL)
+    {
+        goto fail;
+    }
+    }
+    }
+
 
     // audience_rule->country
     if(audience_rule->country) {
@@ -260,6 +302,14 @@ cJSON *audience_rule_convertToJSON(audience_rule_t *audience_rule) {
     }
 
 
+    // audience_rule->engager_type
+    if(audience_rule->engager_type) {
+    if(cJSON_AddNumberToObject(item, "engager_type", audience_rule->engager_type) == NULL) {
+    goto fail; //Numeric
+    }
+    }
+
+
     // audience_rule->event
     if(audience_rule->event) {
     if(cJSON_AddStringToObject(item, "event", audience_rule->event) == NULL) {
@@ -270,13 +320,59 @@ cJSON *audience_rule_convertToJSON(audience_rule_t *audience_rule) {
 
     // audience_rule->event_data
     if(audience_rule->event_data) {
-    cJSON *event_data_local_JSON = pinterest_tag_event_data_convertToJSON(audience_rule->event_data);
+    cJSON *event_data_local_JSON = event_data_convertToJSON(audience_rule->event_data);
     if(event_data_local_JSON == NULL) {
     goto fail; //model
     }
     cJSON_AddItemToObject(item, "event_data", event_data_local_JSON);
     if(item->child == NULL) {
     goto fail;
+    }
+    }
+
+
+    // audience_rule->event_source
+    if(audience_rule->event_source) {
+    cJSON *event_source_object = object_convertToJSON(audience_rule->event_source);
+    if(event_source_object == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "event_source", event_source_object);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // audience_rule->ingestion_source
+    if(audience_rule->ingestion_source) {
+    cJSON *ingestion_source_object = object_convertToJSON(audience_rule->ingestion_source);
+    if(ingestion_source_object == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "ingestion_source", ingestion_source_object);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // audience_rule->objective_type
+    if(audience_rule->objective_type != pinterest_rest_api_list_OBJECTIVETYPE_NULL) {
+    cJSON *objective_type = cJSON_AddArrayToObject(item, "objective_type");
+    if(objective_type == NULL) {
+    goto fail; //nonprimitive container
+    }
+
+    listEntry_t *objective_typeListEntry;
+    if (audience_rule->objective_type) {
+    list_ForEach(objective_typeListEntry, audience_rule->objective_type) {
+    cJSON *itemLocal = objective_type_convertToJSON((pinterest_rest_api_audience_rule__e)objective_typeListEntry->data);
+    if(itemLocal == NULL) {
+    goto fail;
+    }
+    cJSON_AddItemToArray(objective_type, itemLocal);
+    }
     }
     }
 
@@ -363,102 +459,6 @@ cJSON *audience_rule_convertToJSON(audience_rule_t *audience_rule) {
     }
     }
 
-
-    // audience_rule->event_source
-    if(audience_rule->event_source) {
-    cJSON *event_source_object = object_convertToJSON(audience_rule->event_source);
-    if(event_source_object == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "event_source", event_source_object);
-    if(item->child == NULL) {
-    goto fail;
-    }
-    }
-
-
-    // audience_rule->ingestion_source
-    if(audience_rule->ingestion_source) {
-    cJSON *ingestion_source_object = object_convertToJSON(audience_rule->ingestion_source);
-    if(ingestion_source_object == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "ingestion_source", ingestion_source_object);
-    if(item->child == NULL) {
-    goto fail;
-    }
-    }
-
-
-    // audience_rule->engager_type
-    if(audience_rule->engager_type) {
-    if(cJSON_AddNumberToObject(item, "engager_type", audience_rule->engager_type) == NULL) {
-    goto fail; //Numeric
-    }
-    }
-
-
-    // audience_rule->campaign_id
-    if(audience_rule->campaign_id) {
-    cJSON *campaign_id = cJSON_AddArrayToObject(item, "campaign_id");
-    if(campaign_id == NULL) {
-        goto fail; //primitive container
-    }
-
-    listEntry_t *campaign_idListEntry;
-    list_ForEach(campaign_idListEntry, audience_rule->campaign_id) {
-    if(cJSON_AddStringToObject(campaign_id, "", campaign_idListEntry->data) == NULL)
-    {
-        goto fail;
-    }
-    }
-    }
-
-
-    // audience_rule->ad_id
-    if(audience_rule->ad_id) {
-    cJSON *ad_id = cJSON_AddArrayToObject(item, "ad_id");
-    if(ad_id == NULL) {
-        goto fail; //primitive container
-    }
-
-    listEntry_t *ad_idListEntry;
-    list_ForEach(ad_idListEntry, audience_rule->ad_id) {
-    if(cJSON_AddStringToObject(ad_id, "", ad_idListEntry->data) == NULL)
-    {
-        goto fail;
-    }
-    }
-    }
-
-
-    // audience_rule->objective_type
-    if(audience_rule->objective_type != pinterest_rest_api_list_OBJECTIVETYPE_NULL) {
-    cJSON *objective_type = cJSON_AddArrayToObject(item, "objective_type");
-    if(objective_type == NULL) {
-    goto fail; //nonprimitive container
-    }
-
-    listEntry_t *objective_typeListEntry;
-    if (audience_rule->objective_type) {
-    list_ForEach(objective_typeListEntry, audience_rule->objective_type) {
-    cJSON *itemLocal = objective_type_convertToJSON((pinterest_rest_api_audience_rule__e)objective_typeListEntry->data);
-    if(itemLocal == NULL) {
-    goto fail;
-    }
-    cJSON_AddItemToArray(objective_type, itemLocal);
-    }
-    }
-    }
-
-
-    // audience_rule->ad_account_id
-    if(audience_rule->ad_account_id) {
-    if(cJSON_AddStringToObject(item, "ad_account_id", audience_rule->ad_account_id) == NULL) {
-    goto fail; //String
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -471,11 +471,20 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
 
     audience_rule_t *audience_rule_local_var = NULL;
 
+    // define the local list for audience_rule->ad_id
+    list_t *ad_idList = NULL;
+
+    // define the local list for audience_rule->campaign_id
+    list_t *campaign_idList = NULL;
+
     // define the local list for audience_rule->engagement_domain
     list_t *engagement_domainList = NULL;
 
     // define the local variable for audience_rule->event_data
-    pinterest_tag_event_data_t *event_data_local_nonprim = NULL;
+    event_data_t *event_data_local_nonprim = NULL;
+
+    // define the local list for audience_rule->objective_type
+    list_t *objective_typeList = NULL;
 
     // define the local list for audience_rule->pin_id
     list_t *pin_idList = NULL;
@@ -486,14 +495,61 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
     // define the local list for audience_rule->url
     list_t *urlList = NULL;
 
-    // define the local list for audience_rule->campaign_id
-    list_t *campaign_idList = NULL;
+    // audience_rule->ad_account_id
+    cJSON *ad_account_id = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "ad_account_id");
+    if (cJSON_IsNull(ad_account_id)) {
+        ad_account_id = NULL;
+    }
+    if (ad_account_id) { 
+    if(!cJSON_IsString(ad_account_id) && !cJSON_IsNull(ad_account_id))
+    {
+    goto end; //String
+    }
+    }
 
-    // define the local list for audience_rule->ad_id
-    list_t *ad_idList = NULL;
+    // audience_rule->ad_id
+    cJSON *ad_id = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "ad_id");
+    if (cJSON_IsNull(ad_id)) {
+        ad_id = NULL;
+    }
+    if (ad_id) { 
+    cJSON *ad_id_local = NULL;
+    if(!cJSON_IsArray(ad_id)) {
+        goto end;//primitive container
+    }
+    ad_idList = list_createList();
 
-    // define the local list for audience_rule->objective_type
-    list_t *objective_typeList = NULL;
+    cJSON_ArrayForEach(ad_id_local, ad_id)
+    {
+        if(!cJSON_IsString(ad_id_local))
+        {
+            goto end;
+        }
+        list_addElement(ad_idList , strdup(ad_id_local->valuestring));
+    }
+    }
+
+    // audience_rule->campaign_id
+    cJSON *campaign_id = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "campaign_id");
+    if (cJSON_IsNull(campaign_id)) {
+        campaign_id = NULL;
+    }
+    if (campaign_id) { 
+    cJSON *campaign_id_local = NULL;
+    if(!cJSON_IsArray(campaign_id)) {
+        goto end;//primitive container
+    }
+    campaign_idList = list_createList();
+
+    cJSON_ArrayForEach(campaign_id_local, campaign_id)
+    {
+        if(!cJSON_IsString(campaign_id_local))
+        {
+            goto end;
+        }
+        list_addElement(campaign_idList , strdup(campaign_id_local->valuestring));
+    }
+    }
 
     // audience_rule->country
     cJSON *country = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "country");
@@ -553,6 +609,18 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
     }
     }
 
+    // audience_rule->engager_type
+    cJSON *engager_type = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "engager_type");
+    if (cJSON_IsNull(engager_type)) {
+        engager_type = NULL;
+    }
+    if (engager_type) { 
+    if(!cJSON_IsNumber(engager_type))
+    {
+    goto end; //Numeric
+    }
+    }
+
     // audience_rule->event
     cJSON *event = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "event");
     if (cJSON_IsNull(event)) {
@@ -571,7 +639,51 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
         event_data = NULL;
     }
     if (event_data) { 
-    event_data_local_nonprim = pinterest_tag_event_data_parseFromJSON(event_data); //nonprimitive
+    event_data_local_nonprim = event_data_parseFromJSON(event_data); //nonprimitive
+    }
+
+    // audience_rule->event_source
+    cJSON *event_source = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "event_source");
+    if (cJSON_IsNull(event_source)) {
+        event_source = NULL;
+    }
+    object_t *event_source_local_object = NULL;
+    if (event_source) { 
+    event_source_local_object = object_parseFromJSON(event_source); //object
+    }
+
+    // audience_rule->ingestion_source
+    cJSON *ingestion_source = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "ingestion_source");
+    if (cJSON_IsNull(ingestion_source)) {
+        ingestion_source = NULL;
+    }
+    object_t *ingestion_source_local_object = NULL;
+    if (ingestion_source) { 
+    ingestion_source_local_object = object_parseFromJSON(ingestion_source); //object
+    }
+
+    // audience_rule->objective_type
+    cJSON *objective_type = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "objective_type");
+    if (cJSON_IsNull(objective_type)) {
+        objective_type = NULL;
+    }
+    if (objective_type) { 
+    cJSON *objective_type_local_nonprimitive = NULL;
+    if(!cJSON_IsArray(objective_type)){
+        goto end; //nonprimitive container
+    }
+
+    objective_typeList = list_createList();
+
+    cJSON_ArrayForEach(objective_type_local_nonprimitive,objective_type )
+    {
+        if(!cJSON_IsObject(objective_type_local_nonprimitive)){
+            goto end;
+        }
+        audience_rule_objective_type_e objective_typeItem = objective_type_parseFromJSON(objective_type_local_nonprimitive);
+
+        list_addElement(objective_typeList, (void *)objective_typeItem);
+    }
     }
 
     // audience_rule->percentage
@@ -688,144 +800,50 @@ audience_rule_t *audience_rule_parseFromJSON(cJSON *audience_ruleJSON){
     }
     }
 
-    // audience_rule->event_source
-    cJSON *event_source = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "event_source");
-    if (cJSON_IsNull(event_source)) {
-        event_source = NULL;
-    }
-    object_t *event_source_local_object = NULL;
-    if (event_source) { 
-    event_source_local_object = object_parseFromJSON(event_source); //object
-    }
-
-    // audience_rule->ingestion_source
-    cJSON *ingestion_source = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "ingestion_source");
-    if (cJSON_IsNull(ingestion_source)) {
-        ingestion_source = NULL;
-    }
-    object_t *ingestion_source_local_object = NULL;
-    if (ingestion_source) { 
-    ingestion_source_local_object = object_parseFromJSON(ingestion_source); //object
-    }
-
-    // audience_rule->engager_type
-    cJSON *engager_type = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "engager_type");
-    if (cJSON_IsNull(engager_type)) {
-        engager_type = NULL;
-    }
-    if (engager_type) { 
-    if(!cJSON_IsNumber(engager_type))
-    {
-    goto end; //Numeric
-    }
-    }
-
-    // audience_rule->campaign_id
-    cJSON *campaign_id = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "campaign_id");
-    if (cJSON_IsNull(campaign_id)) {
-        campaign_id = NULL;
-    }
-    if (campaign_id) { 
-    cJSON *campaign_id_local = NULL;
-    if(!cJSON_IsArray(campaign_id)) {
-        goto end;//primitive container
-    }
-    campaign_idList = list_createList();
-
-    cJSON_ArrayForEach(campaign_id_local, campaign_id)
-    {
-        if(!cJSON_IsString(campaign_id_local))
-        {
-            goto end;
-        }
-        list_addElement(campaign_idList , strdup(campaign_id_local->valuestring));
-    }
-    }
-
-    // audience_rule->ad_id
-    cJSON *ad_id = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "ad_id");
-    if (cJSON_IsNull(ad_id)) {
-        ad_id = NULL;
-    }
-    if (ad_id) { 
-    cJSON *ad_id_local = NULL;
-    if(!cJSON_IsArray(ad_id)) {
-        goto end;//primitive container
-    }
-    ad_idList = list_createList();
-
-    cJSON_ArrayForEach(ad_id_local, ad_id)
-    {
-        if(!cJSON_IsString(ad_id_local))
-        {
-            goto end;
-        }
-        list_addElement(ad_idList , strdup(ad_id_local->valuestring));
-    }
-    }
-
-    // audience_rule->objective_type
-    cJSON *objective_type = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "objective_type");
-    if (cJSON_IsNull(objective_type)) {
-        objective_type = NULL;
-    }
-    if (objective_type) { 
-    cJSON *objective_type_local_nonprimitive = NULL;
-    if(!cJSON_IsArray(objective_type)){
-        goto end; //nonprimitive container
-    }
-
-    objective_typeList = list_createList();
-
-    cJSON_ArrayForEach(objective_type_local_nonprimitive,objective_type )
-    {
-        if(!cJSON_IsObject(objective_type_local_nonprimitive)){
-            goto end;
-        }
-        audience_rule_objective_type_e objective_typeItem = objective_type_parseFromJSON(objective_type_local_nonprimitive);
-
-        list_addElement(objective_typeList, (void *)objective_typeItem);
-    }
-    }
-
-    // audience_rule->ad_account_id
-    cJSON *ad_account_id = cJSON_GetObjectItemCaseSensitive(audience_ruleJSON, "ad_account_id");
-    if (cJSON_IsNull(ad_account_id)) {
-        ad_account_id = NULL;
-    }
-    if (ad_account_id) { 
-    if(!cJSON_IsString(ad_account_id) && !cJSON_IsNull(ad_account_id))
-    {
-    goto end; //String
-    }
-    }
-
 
     audience_rule_local_var = audience_rule_create_internal (
+        ad_account_id && !cJSON_IsNull(ad_account_id) ? strdup(ad_account_id->valuestring) : NULL,
+        ad_id ? ad_idList : NULL,
+        campaign_id ? campaign_idList : NULL,
         country && !cJSON_IsNull(country) ? strdup(country->valuestring) : NULL,
         customer_list_id && !cJSON_IsNull(customer_list_id) ? strdup(customer_list_id->valuestring) : NULL,
         engagement_domain ? engagement_domainList : NULL,
         engagement_type && !cJSON_IsNull(engagement_type) ? strdup(engagement_type->valuestring) : NULL,
+        engager_type ? engager_type->valuedouble : 0,
         event && !cJSON_IsNull(event) ? strdup(event->valuestring) : NULL,
         event_data ? event_data_local_nonprim : NULL,
+        event_source ? event_source_local_object : NULL,
+        ingestion_source ? ingestion_source_local_object : NULL,
+        objective_type ? objective_typeList : NULL,
         percentage ? percentage->valuedouble : 0,
         pin_id ? pin_idList : NULL,
         prefill ? prefill->valueint : 0,
         retention_days ? retention_days->valuedouble : 0,
         seed_id ? seed_idList : NULL,
         url ? urlList : NULL,
-        visitor_source_id && !cJSON_IsNull(visitor_source_id) ? strdup(visitor_source_id->valuestring) : NULL,
-        event_source ? event_source_local_object : NULL,
-        ingestion_source ? ingestion_source_local_object : NULL,
-        engager_type ? engager_type->valuedouble : 0,
-        campaign_id ? campaign_idList : NULL,
-        ad_id ? ad_idList : NULL,
-        objective_type ? objective_typeList : NULL,
-        ad_account_id && !cJSON_IsNull(ad_account_id) ? strdup(ad_account_id->valuestring) : NULL
+        visitor_source_id && !cJSON_IsNull(visitor_source_id) ? strdup(visitor_source_id->valuestring) : NULL
         );
 
     return audience_rule_local_var;
 end:
+    if (ad_idList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, ad_idList) {
+            free(listEntry->data);
+            listEntry->data = NULL;
+        }
+        list_freeList(ad_idList);
+        ad_idList = NULL;
+    }
+    if (campaign_idList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, campaign_idList) {
+            free(listEntry->data);
+            listEntry->data = NULL;
+        }
+        list_freeList(campaign_idList);
+        campaign_idList = NULL;
+    }
     if (engagement_domainList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, engagement_domainList) {
@@ -836,8 +854,17 @@ end:
         engagement_domainList = NULL;
     }
     if (event_data_local_nonprim) {
-        pinterest_tag_event_data_free(event_data_local_nonprim);
+        event_data_free(event_data_local_nonprim);
         event_data_local_nonprim = NULL;
+    }
+    if (objective_typeList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, objective_typeList) {
+            objective_type_free(listEntry->data);
+            listEntry->data = NULL;
+        }
+        list_freeList(objective_typeList);
+        objective_typeList = NULL;
     }
     if (pin_idList) {
         listEntry_t *listEntry = NULL;
@@ -865,33 +892,6 @@ end:
         }
         list_freeList(urlList);
         urlList = NULL;
-    }
-    if (campaign_idList) {
-        listEntry_t *listEntry = NULL;
-        list_ForEach(listEntry, campaign_idList) {
-            free(listEntry->data);
-            listEntry->data = NULL;
-        }
-        list_freeList(campaign_idList);
-        campaign_idList = NULL;
-    }
-    if (ad_idList) {
-        listEntry_t *listEntry = NULL;
-        list_ForEach(listEntry, ad_idList) {
-            free(listEntry->data);
-            listEntry->data = NULL;
-        }
-        list_freeList(ad_idList);
-        ad_idList = NULL;
-    }
-    if (objective_typeList) {
-        listEntry_t *listEntry = NULL;
-        list_ForEach(listEntry, objective_typeList) {
-            objective_type_free(listEntry->data);
-            listEntry->data = NULL;
-        }
-        list_freeList(objective_typeList);
-        objective_typeList = NULL;
     }
     return NULL;
 

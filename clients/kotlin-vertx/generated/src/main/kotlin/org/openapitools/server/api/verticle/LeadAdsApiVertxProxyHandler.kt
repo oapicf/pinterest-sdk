@@ -16,11 +16,10 @@ import io.vertx.core.json.Json
 import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
-import org.openapitools.server.api.model.AdAccountCreateSubscriptionRequest
-import org.openapitools.server.api.model.AdAccountCreateSubscriptionResponse
-import org.openapitools.server.api.model.AdAccountGetSubscriptionResponse
 import org.openapitools.server.api.model.AdAccountsSubscriptionsGetList200Response
-import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.LeadSubscription
+import org.openapitools.server.api.model.LeadSubscriptionPostParamsCreate
+import org.openapitools.server.api.model.PinterestLibError
 
 class LeadAdsApiVertxProxyHandler(private val vertx: Vertx, private val service: LeadAdsApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long
@@ -114,10 +113,10 @@ class LeadAdsApiVertxProxyHandler(private val vertx: Vertx, private val service:
                     if(adAccountId == null){
                         throw IllegalArgumentException("adAccountId is required")
                     }
-                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
+                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.adAccountsSubscriptionsGetList(adAccountId,pageSize,bookmark,context)
+                        val result = service.adAccountsSubscriptionsGetList(adAccountId,bookmark,pageSize,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -132,13 +131,13 @@ class LeadAdsApiVertxProxyHandler(private val vertx: Vertx, private val service:
                     if(adAccountId == null){
                         throw IllegalArgumentException("adAccountId is required")
                     }
-                    val adAccountCreateSubscriptionRequestParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (adAccountCreateSubscriptionRequestParam == null) {
-                        throw IllegalArgumentException("adAccountCreateSubscriptionRequest is required")
+                    val leadSubscriptionPostParamsCreateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (leadSubscriptionPostParamsCreateParam == null) {
+                        throw IllegalArgumentException("leadSubscriptionPostParamsCreate is required")
                     }
-                    val adAccountCreateSubscriptionRequest = Gson().fromJson(adAccountCreateSubscriptionRequestParam.encode(), AdAccountCreateSubscriptionRequest::class.java)
+                    val leadSubscriptionPostParamsCreate = Gson().fromJson(leadSubscriptionPostParamsCreateParam.encode(), LeadSubscriptionPostParamsCreate::class.java)
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.adAccountsSubscriptionsPost(adAccountId,adAccountCreateSubscriptionRequest,context)
+                        val result = service.adAccountsSubscriptionsPost(adAccountId,leadSubscriptionPostParamsCreate,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

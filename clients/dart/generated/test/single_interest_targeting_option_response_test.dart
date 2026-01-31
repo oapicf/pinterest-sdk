@@ -16,23 +16,23 @@ void main() {
   // final instance = SingleInterestTargetingOptionResponse();
 
   group('test SingleInterestTargetingOptionResponse', () {
-    // String id
-    test('to test the property `id`', () async {
-      // TODO
-    });
-
-    // String name
-    test('to test the property `name`', () async {
-      // TODO
-    });
-
     // List<String> childInterests (default value: const [])
     test('to test the property `childInterests`', () async {
       // TODO
     });
 
+    // String id
+    test('to test the property `id`', () async {
+      // TODO
+    });
+
     // int level
     test('to test the property `level`', () async {
+      // TODO
+    });
+
+    // String name
+    test('to test the property `name`', () async {
       // TODO
     });
 

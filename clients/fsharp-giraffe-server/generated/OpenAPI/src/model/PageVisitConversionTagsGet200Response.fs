@@ -11,7 +11,7 @@ module PageVisitConversionTagsGet200Response =
 
 
   type page_visit_conversion_tags_get_200_response = {
-    Items : ConversionEventResponse[];
     Bookmark : string option;
+    Items : ConversionEventResponse[];
   }
   //#endregion

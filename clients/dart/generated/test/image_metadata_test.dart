@@ -16,18 +16,18 @@ void main() {
   // final instance = ImageMetadata();
 
   group('test ImageMetadata', () {
-    // String itemType
-    test('to test the property `itemType`', () async {
-      // TODO
-    });
-
-    // String title
-    test('to test the property `title`', () async {
-      // TODO
-    });
-
     // String description
     test('to test the property `description`', () async {
+      // TODO
+    });
+
+    // ImageSize images
+    test('to test the property `images`', () async {
+      // TODO
+    });
+
+    // String itemType
+    test('to test the property `itemType`', () async {
       // TODO
     });
 
@@ -36,8 +36,8 @@ void main() {
       // TODO
     });
 
-    // ImageMetadataImages images
-    test('to test the property `images`', () async {
+    // String title
+    test('to test the property `title`', () async {
       // TODO
     });
 

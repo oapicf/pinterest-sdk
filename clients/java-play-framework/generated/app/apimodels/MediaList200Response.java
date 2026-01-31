@@ -1,6 +1,6 @@
 package apimodels;
 
-import apimodels.MediaUploadDetails;
+import apimodels.Media;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,43 +15,18 @@ import javax.validation.Valid;
 /**
  * MediaList200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class MediaList200Response   {
-  @JsonProperty("items")
-  @NotNull
-@Valid
-
-  private List<@Valid MediaUploadDetails> items = new ArrayList<>();
-
   @JsonProperty("bookmark")
   
   private String bookmark;
 
-  public MediaList200Response items(List<@Valid MediaUploadDetails> items) {
-    this.items = items;
-    return this;
-  }
+  @JsonProperty("items")
+  @NotNull
+@Valid
 
-  public MediaList200Response addItemsItem(MediaUploadDetails itemsItem) {
-    if (this.items == null) {
-      this.items = new ArrayList<>();
-    }
-    this.items.add(itemsItem);
-    return this;
-  }
-
-   /**
-   * Media
-   * @return items
-  **/
-  public List<@Valid MediaUploadDetails> getItems() {
-    return items;
-  }
-
-  public void setItems(List<@Valid MediaUploadDetails> items) {
-    this.items = items;
-  }
+  private List<@Valid Media> items = new ArrayList<>();
 
   public MediaList200Response bookmark(String bookmark) {
     this.bookmark = bookmark;
@@ -70,6 +45,31 @@ public class MediaList200Response   {
     this.bookmark = bookmark;
   }
 
+  public MediaList200Response items(List<@Valid Media> items) {
+    this.items = items;
+    return this;
+  }
+
+  public MediaList200Response addItemsItem(Media itemsItem) {
+    if (this.items == null) {
+      this.items = new ArrayList<>();
+    }
+    this.items.add(itemsItem);
+    return this;
+  }
+
+   /**
+   * Get items
+   * @return items
+  **/
+  public List<@Valid Media> getItems() {
+    return items;
+  }
+
+  public void setItems(List<@Valid Media> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -80,13 +80,13 @@ public class MediaList200Response   {
       return false;
     }
     MediaList200Response mediaList200Response = (MediaList200Response) o;
-    return Objects.equals(items, mediaList200Response.items) &&
-        Objects.equals(bookmark, mediaList200Response.bookmark);
+    return Objects.equals(bookmark, mediaList200Response.bookmark) &&
+        Objects.equals(items, mediaList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -95,8 +95,8 @@ public class MediaList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class MediaList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

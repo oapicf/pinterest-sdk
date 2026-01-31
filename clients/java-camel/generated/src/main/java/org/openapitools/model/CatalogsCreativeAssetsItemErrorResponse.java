@@ -29,8 +29,8 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsCreativeAssetsItemErrorResponse", description = "Object describing a creative assets item error")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
-public class CatalogsCreativeAssetsItemErrorResponse implements ItemResponseAnyOf1 {
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+public class CatalogsCreativeAssetsItemErrorResponse implements ItemResponseOneOf1 {
 
   private CatalogsType catalogType;
 
@@ -46,8 +46,9 @@ public class CatalogsCreativeAssetsItemErrorResponse implements ItemResponseAnyO
   /**
    * Constructor with only required parameters
    */
-  public CatalogsCreativeAssetsItemErrorResponse(CatalogsType catalogType) {
+  public CatalogsCreativeAssetsItemErrorResponse(CatalogsType catalogType, List<@Valid ItemValidationEvent> errors) {
     this.catalogType = catalogType;
+    this.errors = errors;
   }
 
   public CatalogsCreativeAssetsItemErrorResponse catalogType(CatalogsType catalogType) {
@@ -107,8 +108,8 @@ public class CatalogsCreativeAssetsItemErrorResponse implements ItemResponseAnyO
    * Array with the errors for the item id requested
    * @return errors
    */
-  @Valid 
-  @Schema(name = "errors", description = "Array with the errors for the item id requested", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull @Valid 
+  @Schema(name = "errors", description = "Array with the errors for the item id requested", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("errors")
   public List<@Valid ItemValidationEvent> getErrors() {
     return errors;

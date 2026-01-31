@@ -6,11 +6,11 @@ Request object for creating a product group.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** |  | [default to undefined]
 **description** | **string** |  | [optional] [default to undefined]
-**is_featured** | **boolean** | boolean indicator of whether the product group is being featured or not | [optional] [default to false]
-**filters** | [**CatalogsProductGroupFiltersRequest**](CatalogsProductGroupFiltersRequest.md) |  | [default to undefined]
 **feed_id** | **string** | Catalog Feed id pertaining to the catalog product group. | [default to undefined]
+**filters** | [**CatalogsProductGroupFiltersRequest**](CatalogsProductGroupFiltersRequest.md) |  | [default to undefined]
+**is_featured** | **boolean** | boolean indicator of whether the product group is being featured or not | [optional] [default to false]
+**name** | **string** |  | [default to undefined]
 
 ## Example
 
@@ -18,11 +18,11 @@ Name | Type | Description | Notes
 import { CatalogsProductGroupCreateRequest } from './api';
 
 const instance: CatalogsProductGroupCreateRequest = {
-    name,
     description,
-    is_featured,
-    filters,
     feed_id,
+    filters,
+    is_featured,
+    name,
 };
 ```
 

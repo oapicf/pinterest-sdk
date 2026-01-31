@@ -74,8 +74,8 @@ private class OASTargetingTemplateCreateTest {
         OASTargetingTemplateCreate targetingTemplateCreate = new OASTargetingTemplateCreate();
         Map<String, String> x-property-mappings = targetingTemplateCreate.getx-property-mappings();
         System.assertEquals('autoTargetingEnabled', x-property-mappings.get('auto_targeting_enabled'));
-        System.assertEquals('targetingAttributes', x-property-mappings.get('targeting_attributes'));
         System.assertEquals('placementGroup', x-property-mappings.get('placement_group'));
+        System.assertEquals('targetingAttributes', x-property-mappings.get('targeting_attributes'));
         System.assertEquals('trackingUrls', x-property-mappings.get('tracking_urls'));
     }
 
@@ -85,8 +85,8 @@ private class OASTargetingTemplateCreateTest {
         System.assertEquals(true, targetingTemplateCreate.autoTargetingEnabled);
         System.assertEquals(new List<OASTargetingTemplateKeyword>(), targetingTemplateCreate.keywords);
         System.assertEquals(null, targetingTemplateCreate.name);
-        System.assertEquals(null, targetingTemplateCreate.targetingAttributes);
         System.assertEquals(null, targetingTemplateCreate.placementGroup);
+        System.assertEquals(null, targetingTemplateCreate.targetingAttributes);
         System.assertEquals(null, targetingTemplateCreate.trackingUrls);
     }
 }

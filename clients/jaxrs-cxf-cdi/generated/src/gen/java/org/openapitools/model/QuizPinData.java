@@ -28,6 +28,8 @@ public class QuizPinData   {
 
   private List<@Valid QuizPinResult> results = new ArrayList<>();
 
+  private QuizPinResult tieBreakerCustomResult;
+
 
 public enum TieBreakerTypeEnum {
 
@@ -60,8 +62,6 @@ public enum TieBreakerTypeEnum {
 }
 
   private TieBreakerTypeEnum tieBreakerType;
-
-  private QuizPinResult tieBreakerCustomResult;
 
   /**
    **/
@@ -116,6 +116,24 @@ public enum TieBreakerTypeEnum {
 
 
   /**
+   **/
+  public QuizPinData tieBreakerCustomResult(QuizPinResult tieBreakerCustomResult) {
+    this.tieBreakerCustomResult = tieBreakerCustomResult;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("tie_breaker_custom_result")
+  public QuizPinResult getTieBreakerCustomResult() {
+    return tieBreakerCustomResult;
+  }
+  public void setTieBreakerCustomResult(QuizPinResult tieBreakerCustomResult) {
+    this.tieBreakerCustomResult = tieBreakerCustomResult;
+  }
+
+
+  /**
    * Quiz ad tie breaker type, default is RANDOM
    **/
   public QuizPinData tieBreakerType(TieBreakerTypeEnum tieBreakerType) {
@@ -134,24 +152,6 @@ public enum TieBreakerTypeEnum {
   }
 
 
-  /**
-   **/
-  public QuizPinData tieBreakerCustomResult(QuizPinResult tieBreakerCustomResult) {
-    this.tieBreakerCustomResult = tieBreakerCustomResult;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("tie_breaker_custom_result")
-  public QuizPinResult getTieBreakerCustomResult() {
-    return tieBreakerCustomResult;
-  }
-  public void setTieBreakerCustomResult(QuizPinResult tieBreakerCustomResult) {
-    this.tieBreakerCustomResult = tieBreakerCustomResult;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -164,13 +164,13 @@ public enum TieBreakerTypeEnum {
     QuizPinData quizPinData = (QuizPinData) o;
     return Objects.equals(this.questions, quizPinData.questions) &&
         Objects.equals(this.results, quizPinData.results) &&
-        Objects.equals(this.tieBreakerType, quizPinData.tieBreakerType) &&
-        Objects.equals(this.tieBreakerCustomResult, quizPinData.tieBreakerCustomResult);
+        Objects.equals(this.tieBreakerCustomResult, quizPinData.tieBreakerCustomResult) &&
+        Objects.equals(this.tieBreakerType, quizPinData.tieBreakerType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(questions, results, tieBreakerType, tieBreakerCustomResult);
+    return Objects.hash(questions, results, tieBreakerCustomResult, tieBreakerType);
   }
 
   @Override
@@ -180,8 +180,8 @@ public enum TieBreakerTypeEnum {
     
     sb.append("    questions: ").append(toIndentedString(questions)).append("\n");
     sb.append("    results: ").append(toIndentedString(results)).append("\n");
-    sb.append("    tieBreakerType: ").append(toIndentedString(tieBreakerType)).append("\n");
     sb.append("    tieBreakerCustomResult: ").append(toIndentedString(tieBreakerCustomResult)).append("\n");
+    sb.append("    tieBreakerType: ").append(toIndentedString(tieBreakerType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

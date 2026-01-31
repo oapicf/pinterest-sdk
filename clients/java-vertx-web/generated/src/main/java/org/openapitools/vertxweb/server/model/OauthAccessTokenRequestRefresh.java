@@ -10,7 +10,6 @@ public class OauthAccessTokenRequestRefresh   {
   
   private String refreshToken;
   private String scope;
-  private Boolean refreshOn;
 
 
   public enum GrantTypeEnum {
@@ -37,10 +36,9 @@ public class OauthAccessTokenRequestRefresh   {
 
   }
 
-  public OauthAccessTokenRequestRefresh (String refreshToken, String scope, Boolean refreshOn, GrantTypeEnum grantType) {
+  public OauthAccessTokenRequestRefresh (String refreshToken, String scope, GrantTypeEnum grantType) {
     this.refreshToken = refreshToken;
     this.scope = scope;
-    this.refreshOn = refreshOn;
     this.grantType = grantType;
   }
 
@@ -60,15 +58,6 @@ public class OauthAccessTokenRequestRefresh   {
   }
   public void setScope(String scope) {
     this.scope = scope;
-  }
-
-    
-  @JsonProperty("refresh_on")
-  public Boolean getRefreshOn() {
-    return refreshOn;
-  }
-  public void setRefreshOn(Boolean refreshOn) {
-    this.refreshOn = refreshOn;
   }
 
     
@@ -92,13 +81,12 @@ public class OauthAccessTokenRequestRefresh   {
     OauthAccessTokenRequestRefresh oauthAccessTokenRequestRefresh = (OauthAccessTokenRequestRefresh) o;
     return Objects.equals(refreshToken, oauthAccessTokenRequestRefresh.refreshToken) &&
         Objects.equals(scope, oauthAccessTokenRequestRefresh.scope) &&
-        Objects.equals(refreshOn, oauthAccessTokenRequestRefresh.refreshOn) &&
         Objects.equals(grantType, oauthAccessTokenRequestRefresh.grantType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(refreshToken, scope, refreshOn, grantType);
+    return Objects.hash(refreshToken, scope, grantType);
   }
 
   @Override
@@ -108,7 +96,6 @@ public class OauthAccessTokenRequestRefresh   {
     
     sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
-    sb.append("    refreshOn: ").append(toIndentedString(refreshOn)).append("\n");
     sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("}");
     return sb.toString();

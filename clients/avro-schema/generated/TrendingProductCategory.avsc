@@ -1,0 +1,38 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Trending shopping product category",
+  "name": "TrendingProductCategory",
+  "fields": [
+    {
+      "name": "engagement_type",
+      "type": "model.ProductCategoriesEngagementType",
+      "doc": "Engagement type"
+    },
+    {
+      "name": "pct_change_mom",
+      "type": "int",
+      "doc": "Month-over-month change percentage"
+    },
+    {
+      "name": "percent_relative_volume",
+      "type": "int",
+      "doc": "Relative volume percentage"
+    },
+    {
+      "name": "product_category",
+      "type": "string",
+      "doc": "Product Category Name"
+    },
+    {
+      "name": "verticals",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.VerticalProductCategory"
+      }],
+      "doc": "Vertical name associated with the product category",
+      "default": null
+    }
+  ]
+
+}

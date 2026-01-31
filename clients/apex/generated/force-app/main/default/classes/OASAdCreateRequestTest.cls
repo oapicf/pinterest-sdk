@@ -80,16 +80,18 @@ private class OASAdCreateRequestTest {
         System.assertEquals('carouselIosDeepLinks', x-property-mappings.get('carousel_ios_deep_links'));
         System.assertEquals('clickTrackingUrl', x-property-mappings.get('click_tracking_url'));
         System.assertEquals('creativeType', x-property-mappings.get('creative_type'));
+        System.assertEquals('customizableCtaType', x-property-mappings.get('customizable_cta_type'));
         System.assertEquals('destinationUrl', x-property-mappings.get('destination_url'));
+        System.assertEquals('disclosureType', x-property-mappings.get('disclosure_type'));
+        System.assertEquals('disclosureUrl', x-property-mappings.get('disclosure_url'));
+        System.assertEquals('gridClickType', x-property-mappings.get('grid_click_type'));
         System.assertEquals('iosDeepLink', x-property-mappings.get('ios_deep_link'));
         System.assertEquals('isPinDeleted', x-property-mappings.get('is_pin_deleted'));
         System.assertEquals('isRemovable', x-property-mappings.get('is_removable'));
+        System.assertEquals('leadFormId', x-property-mappings.get('lead_form_id'));
+        System.assertEquals('quizPinData', x-property-mappings.get('quiz_pin_data'));
         System.assertEquals('trackingUrls', x-property-mappings.get('tracking_urls'));
         System.assertEquals('viewTrackingUrl', x-property-mappings.get('view_tracking_url'));
-        System.assertEquals('leadFormId', x-property-mappings.get('lead_form_id'));
-        System.assertEquals('gridClickType', x-property-mappings.get('grid_click_type'));
-        System.assertEquals('customizableCtaType', x-property-mappings.get('customizable_cta_type'));
-        System.assertEquals('quizPinData', x-property-mappings.get('quiz_pin_data'));
         System.assertEquals('pinId', x-property-mappings.get('pin_id'));
     }
 
@@ -103,18 +105,20 @@ private class OASAdCreateRequestTest {
         System.assertEquals(null, adCreateRequest.androidDeepLink);
         System.assertEquals(null, adCreateRequest.clickTrackingUrl);
         System.assertEquals(null, adCreateRequest.creativeType);
+        System.assertEquals(null, adCreateRequest.customizableCtaType);
         System.assertEquals(null, adCreateRequest.destinationUrl);
+        System.assertEquals(null, adCreateRequest.disclosureType);
+        System.assertEquals(null, adCreateRequest.disclosureUrl);
+        System.assertEquals(null, adCreateRequest.gridClickType);
         System.assertEquals(null, adCreateRequest.iosDeepLink);
         System.assertEquals(null, adCreateRequest.isPinDeleted);
         System.assertEquals(null, adCreateRequest.isRemovable);
+        System.assertEquals(null, adCreateRequest.leadFormId);
         System.assertEquals(null, adCreateRequest.name);
+        System.assertEquals(null, adCreateRequest.quizPinData);
         System.assertEquals(null, adCreateRequest.status);
         System.assertEquals(null, adCreateRequest.trackingUrls);
         System.assertEquals(null, adCreateRequest.viewTrackingUrl);
-        System.assertEquals(null, adCreateRequest.leadFormId);
-        System.assertEquals(null, adCreateRequest.gridClickType);
-        System.assertEquals(null, adCreateRequest.customizableCtaType);
-        System.assertEquals(null, adCreateRequest.quizPinData);
         System.assertEquals(null, adCreateRequest.pinId);
     }
 }

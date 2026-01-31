@@ -1,15 +1,26 @@
 const utils = require('../utils/utils');
 const ImageMetadata = require('../models/ImageMetadata');
-const ImageMetadata_images = require('../models/ImageMetadata_images');
-const VideoMetadata = require('../models/VideoMetadata');
+const ImageSize = require('../models/ImageSize');
+const VideoMetadataWithItemType = require('../models/VideoMetadataWithItemType');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
+                key: `${keyPrefix}description`,
+                label: `[${labelPrefix}description]`,
+                type: 'string',
+            },
+            ...ImageSize.fields(`${keyPrefix}images`, isInput),
+            {
                 key: `${keyPrefix}item_type`,
                 label: `[${labelPrefix}item_type]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}link`,
+                label: `[${labelPrefix}link]`,
                 type: 'string',
             },
             {
@@ -18,39 +29,28 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}description`,
-                label: `[${labelPrefix}description]`,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}link`,
-                label: `[${labelPrefix}link]`,
-                type: 'string',
-            },
-            ...ImageMetadata_images.fields(`${keyPrefix}images`, isInput),
-            {
                 key: `${keyPrefix}cover_image_url`,
                 label: `[${labelPrefix}cover_image_url]`,
                 type: 'string',
             },
             {
-                key: `${keyPrefix}video_url`,
-                label: `Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps. - [${labelPrefix}video_url]`,
-                type: 'string',
-            },
-            {
                 key: `${keyPrefix}duration`,
-                label: `Duration (in milliseconds) - [${labelPrefix}duration]`,
+                label: `Duration (in miliseconds). Field maybe null after creation due to video processing time. - [${labelPrefix}duration]`,
                 type: 'number',
             },
             {
                 key: `${keyPrefix}height`,
-                label: `Height (in pixels) - [${labelPrefix}height]`,
+                label: `Height (in pixels). Field maybe null after creation due to video processing time. - [${labelPrefix}height]`,
                 type: 'integer',
             },
             {
+                key: `${keyPrefix}video_url`,
+                label: `Video url (720p).  **Note:** This field is limited and not available to all apps. - [${labelPrefix}video_url]`,
+                type: 'string',
+            },
+            {
                 key: `${keyPrefix}width`,
-                label: `Width (in pixels) - [${labelPrefix}width]`,
+                label: `Width (in pixels). Field maybe null after creation due to video processing time. - [${labelPrefix}width]`,
                 type: 'integer',
             },
         ]
@@ -58,15 +58,15 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'item_type': bundle.inputData?.[`${keyPrefix}item_type`],
-            'title': bundle.inputData?.[`${keyPrefix}title`],
             'description': bundle.inputData?.[`${keyPrefix}description`],
+            'images': utils.removeIfEmpty(ImageSize.mapping(bundle, `${keyPrefix}images`)),
+            'item_type': bundle.inputData?.[`${keyPrefix}item_type`],
             'link': bundle.inputData?.[`${keyPrefix}link`],
-            'images': utils.removeIfEmpty(ImageMetadata_images.mapping(bundle, `${keyPrefix}images`)),
+            'title': bundle.inputData?.[`${keyPrefix}title`],
             'cover_image_url': bundle.inputData?.[`${keyPrefix}cover_image_url`],
-            'video_url': bundle.inputData?.[`${keyPrefix}video_url`],
             'duration': bundle.inputData?.[`${keyPrefix}duration`],
             'height': bundle.inputData?.[`${keyPrefix}height`],
+            'video_url': bundle.inputData?.[`${keyPrefix}video_url`],
             'width': bundle.inputData?.[`${keyPrefix}width`],
         }
     },

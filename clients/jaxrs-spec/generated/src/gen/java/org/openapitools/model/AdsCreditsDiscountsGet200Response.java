@@ -22,10 +22,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("ads_credits_discounts_get_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdsCreditsDiscountsGet200Response   {
-  private @Valid List<@Valid AdsCreditDiscountsResponse> items = new ArrayList<>();
   private String bookmark;
+  private @Valid List<@Valid AdsCreditDiscountsResponse> items = new ArrayList<>();
 
   public AdsCreditsDiscountsGet200Response() {
   }
@@ -35,6 +35,25 @@ public class AdsCreditsDiscountsGet200Response   {
     @JsonProperty(required = true, value = "items") List<@Valid AdsCreditDiscountsResponse> items
   ) {
     this.items = items;
+  }
+
+  /**
+   **/
+  public AdsCreditsDiscountsGet200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("bookmark")
+  public String getBookmark() {
+    return bookmark;
+  }
+
+  @JsonProperty("bookmark")
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
   }
 
   /**
@@ -72,25 +91,6 @@ public class AdsCreditsDiscountsGet200Response   {
 
     return this;
   }
-  /**
-   **/
-  public AdsCreditsDiscountsGet200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("bookmark")
-  public String getBookmark() {
-    return bookmark;
-  }
-
-  @JsonProperty("bookmark")
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -101,13 +101,13 @@ public class AdsCreditsDiscountsGet200Response   {
       return false;
     }
     AdsCreditsDiscountsGet200Response adsCreditsDiscountsGet200Response = (AdsCreditsDiscountsGet200Response) o;
-    return Objects.equals(this.items, adsCreditsDiscountsGet200Response.items) &&
-        Objects.equals(this.bookmark, adsCreditsDiscountsGet200Response.bookmark);
+    return Objects.equals(this.bookmark, adsCreditsDiscountsGet200Response.bookmark) &&
+        Objects.equals(this.items, adsCreditsDiscountsGet200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -115,8 +115,8 @@ public class AdsCreditsDiscountsGet200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdsCreditsDiscountsGet200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

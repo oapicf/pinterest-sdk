@@ -9,9 +9,9 @@
 -export_type([openapi_catalogs_upsert_retail_item/0]).
 
 -type openapi_catalogs_upsert_retail_item() ::
-  [ {'item_id', binary() }
+  [ {'attributes', openapi_item_attributes_request:openapi_item_attributes_request() }
+  | {'item_id', binary() }
   | {'operation', binary() }
-  | {'attributes', openapi_item_attributes_request:openapi_item_attributes_request() }
   ].
 
 
@@ -19,9 +19,9 @@ openapi_catalogs_upsert_retail_item() ->
     openapi_catalogs_upsert_retail_item([]).
 
 openapi_catalogs_upsert_retail_item(Fields) ->
-  Default = [ {'item_id', binary() }
+  Default = [ {'attributes', openapi_item_attributes_request:openapi_item_attributes_request() }
+            , {'item_id', binary() }
             , {'operation', elements([<<"UPSERT">>]) }
-            , {'attributes', openapi_item_attributes_request:openapi_item_attributes_request() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

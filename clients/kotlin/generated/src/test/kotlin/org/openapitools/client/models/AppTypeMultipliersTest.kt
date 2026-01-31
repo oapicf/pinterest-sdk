@@ -19,7 +19,6 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.AppTypeMultipliers
-import org.openapitools.client.models.TargetingSpecAppType
 
 class AppTypeMultipliersTest : ShouldSpec() {
     init {

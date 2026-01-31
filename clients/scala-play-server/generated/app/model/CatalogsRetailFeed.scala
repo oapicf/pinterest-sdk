@@ -5,34 +5,34 @@ import java.time.OffsetDateTime
 
 /**
   * Catalogs Retail Feed object
-  * @param name A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
-  * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
   * @param defaultLocale The locale used within a feed for product descriptions.
+  * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+  * @param name A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class CatalogsRetailFeed(
   createdAt: OffsetDateTime,
   id: String,
   updatedAt: OffsetDateTime,
-  name: String,
-  format: CatalogsFormat,
   catalogType: CatalogsType,
   credentials: CatalogsFeedCredentials,
-  location: String,
-  preferredProcessingSchedule: CatalogsFeedProcessingSchedule,
-  status: CatalogsStatus,
+  defaultAvailability: ProductAvailabilityType,
+  defaultCountry: Country,
   defaultCurrency: NullableCurrency,
   defaultLocale: String,
-  defaultCountry: Country,
-  defaultAvailability: ProductAvailabilityType
+  format: CatalogsFormat,
+  location: String,
+  name: String,
+  preferredProcessingSchedule: CatalogsFeedProcessingSchedule,
+  status: CatalogsStatus
   additionalProperties: 
 )
 
 object CatalogsRetailFeed {
   implicit lazy val catalogsRetailFeedJsonFormat: Format[CatalogsRetailFeed] = {
     val realJsonFormat = Json.format[CatalogsRetailFeed]
-    val declaredPropNames = Set("createdAt", "id", "updatedAt", "name", "format", "catalogType", "credentials", "location", "preferredProcessingSchedule", "status", "defaultCurrency", "defaultLocale", "defaultCountry", "defaultAvailability")
+    val declaredPropNames = Set("createdAt", "id", "updatedAt", "catalogType", "credentials", "defaultAvailability", "defaultCountry", "defaultCurrency", "defaultLocale", "format", "location", "name", "preferredProcessingSchedule", "status")
     
     Format(
       Reads {

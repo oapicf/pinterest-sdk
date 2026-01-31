@@ -7,14 +7,14 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(SsioOrderLinesGetByAdAccount200Response, () {
-    // SSIO order lines by ad acount id
-    // BuiltList<SSIOOrderLine> items
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // SSIO order lines by ad acount id
+    // BuiltList<SSIOOrderLine> items
+    test('to test the property `items`', () async {
       // TODO
     });
 

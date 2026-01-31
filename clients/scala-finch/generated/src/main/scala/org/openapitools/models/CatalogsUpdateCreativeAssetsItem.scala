@@ -9,13 +9,13 @@ import org.openapitools.models.CatalogsUpdatableCreativeAssetsAttributes
 
 /**
  * A creative assets item to be updated.
+ * @param attributes 
  * @param creativeUnderscoreassetsUnderscoreid The catalog creative assets item id in the merchant namespace
  * @param operation 
- * @param attributes 
  */
-case class CatalogsUpdateCreativeAssetsItem(creativeUnderscoreassetsUnderscoreid: String,
-                operation: String,
-                attributes: CatalogsUpdatableCreativeAssetsAttributes
+case class CatalogsUpdateCreativeAssetsItem(attributes: CatalogsUpdatableCreativeAssetsAttributes,
+                creativeUnderscoreassetsUnderscoreid: String,
+                operation: String
                 )
 
 object CatalogsUpdateCreativeAssetsItem {

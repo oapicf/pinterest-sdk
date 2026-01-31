@@ -23,51 +23,15 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("PinAnalyticsMetricsResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinAnalyticsMetricsResponse   {
-  private @Valid Map<String, Integer> lifetimeMetrics = new HashMap<>();
   private @Valid List<@Valid PinAnalyticsMetricsResponseDailyMetricsInner> dailyMetrics = new ArrayList<>();
+  private @Valid Map<String, Integer> lifetimeMetrics = new HashMap<>();
   private @Valid Map<String, BigDecimal> summaryMetrics = new HashMap<>();
 
   public PinAnalyticsMetricsResponse() {
   }
 
-  /**
-   * The lifetime metric name and value.
-   **/
-  public PinAnalyticsMetricsResponse lifetimeMetrics(Map<String, Integer> lifetimeMetrics) {
-    this.lifetimeMetrics = lifetimeMetrics;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "{\"TOTAL_COMMENTS\":10,\"TOTAL_REACTIONS\":12}", value = "The lifetime metric name and value.")
-  @JsonProperty("lifetime_metrics")
-  public Map<String, Integer> getLifetimeMetrics() {
-    return lifetimeMetrics;
-  }
-
-  @JsonProperty("lifetime_metrics")
-  public void setLifetimeMetrics(Map<String, Integer> lifetimeMetrics) {
-    this.lifetimeMetrics = lifetimeMetrics;
-  }
-
-  public PinAnalyticsMetricsResponse putLifetimeMetricsItem(String key, Integer lifetimeMetricsItem) {
-    if (this.lifetimeMetrics == null) {
-      this.lifetimeMetrics = new HashMap<>();
-    }
-
-    this.lifetimeMetrics.put(key, lifetimeMetricsItem);
-    return this;
-  }
-
-  public PinAnalyticsMetricsResponse removeLifetimeMetricsItem(String key) {
-    if (this.lifetimeMetrics != null) {
-      this.lifetimeMetrics.remove(key);
-    }
-
-    return this;
-  }
   /**
    * Array with the requested daily metric records
    **/
@@ -100,6 +64,42 @@ public class PinAnalyticsMetricsResponse   {
   public PinAnalyticsMetricsResponse removeDailyMetricsItem(PinAnalyticsMetricsResponseDailyMetricsInner dailyMetricsItem) {
     if (dailyMetricsItem != null && this.dailyMetrics != null) {
       this.dailyMetrics.remove(dailyMetricsItem);
+    }
+
+    return this;
+  }
+  /**
+   * The lifetime metric name and value.
+   **/
+  public PinAnalyticsMetricsResponse lifetimeMetrics(Map<String, Integer> lifetimeMetrics) {
+    this.lifetimeMetrics = lifetimeMetrics;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "{\"TOTAL_COMMENTS\":10,\"TOTAL_REACTIONS\":12}", value = "The lifetime metric name and value.")
+  @JsonProperty("lifetime_metrics")
+  public Map<String, Integer> getLifetimeMetrics() {
+    return lifetimeMetrics;
+  }
+
+  @JsonProperty("lifetime_metrics")
+  public void setLifetimeMetrics(Map<String, Integer> lifetimeMetrics) {
+    this.lifetimeMetrics = lifetimeMetrics;
+  }
+
+  public PinAnalyticsMetricsResponse putLifetimeMetricsItem(String key, Integer lifetimeMetricsItem) {
+    if (this.lifetimeMetrics == null) {
+      this.lifetimeMetrics = new HashMap<>();
+    }
+
+    this.lifetimeMetrics.put(key, lifetimeMetricsItem);
+    return this;
+  }
+
+  public PinAnalyticsMetricsResponse removeLifetimeMetricsItem(String key) {
+    if (this.lifetimeMetrics != null) {
+      this.lifetimeMetrics.remove(key);
     }
 
     return this;
@@ -150,14 +150,14 @@ public class PinAnalyticsMetricsResponse   {
       return false;
     }
     PinAnalyticsMetricsResponse pinAnalyticsMetricsResponse = (PinAnalyticsMetricsResponse) o;
-    return Objects.equals(this.lifetimeMetrics, pinAnalyticsMetricsResponse.lifetimeMetrics) &&
-        Objects.equals(this.dailyMetrics, pinAnalyticsMetricsResponse.dailyMetrics) &&
+    return Objects.equals(this.dailyMetrics, pinAnalyticsMetricsResponse.dailyMetrics) &&
+        Objects.equals(this.lifetimeMetrics, pinAnalyticsMetricsResponse.lifetimeMetrics) &&
         Objects.equals(this.summaryMetrics, pinAnalyticsMetricsResponse.summaryMetrics);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(lifetimeMetrics, dailyMetrics, summaryMetrics);
+    return Objects.hash(dailyMetrics, lifetimeMetrics, summaryMetrics);
   }
 
   @Override
@@ -165,8 +165,8 @@ public class PinAnalyticsMetricsResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinAnalyticsMetricsResponse {\n");
     
-    sb.append("    lifetimeMetrics: ").append(toIndentedString(lifetimeMetrics)).append("\n");
     sb.append("    dailyMetrics: ").append(toIndentedString(dailyMetrics)).append("\n");
+    sb.append("    lifetimeMetrics: ").append(toIndentedString(lifetimeMetrics)).append("\n");
     sb.append("    summaryMetrics: ").append(toIndentedString(summaryMetrics)).append("\n");
     sb.append("}");
     return sb.toString();

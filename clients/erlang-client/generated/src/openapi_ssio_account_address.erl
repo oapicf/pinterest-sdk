@@ -5,19 +5,19 @@
 -export_type([openapi_ssio_account_address/0]).
 
 -type openapi_ssio_account_address() ::
-    #{ 'display' => binary(),
-       'purpose' => binary(),
-       'address_id' => binary(),
-       'order_legal_entity' => binary()
+    #{ 'address_id' => binary(),
+       'display' => binary(),
+       'order_legal_entity' => binary(),
+       'purpose' => binary()
      }.
 
-encode(#{ 'display' := Display,
-          'purpose' := Purpose,
-          'address_id' := AddressId,
-          'order_legal_entity' := OrderLegalEntity
+encode(#{ 'address_id' := AddressId,
+          'display' := Display,
+          'order_legal_entity' := OrderLegalEntity,
+          'purpose' := Purpose
         }) ->
-    #{ 'display' => Display,
-       'purpose' => Purpose,
-       'address_id' => AddressId,
-       'order_legal_entity' => OrderLegalEntity
+    #{ 'address_id' => AddressId,
+       'display' => Display,
+       'order_legal_entity' => OrderLegalEntity,
+       'purpose' => Purpose
      }.

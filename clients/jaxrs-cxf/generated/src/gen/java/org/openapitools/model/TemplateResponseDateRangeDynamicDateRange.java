@@ -18,16 +18,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TemplateResponseDateRangeDynamicDateRange  {
   
- /**
-  * The date range type
-  */
-  @ApiModelProperty(example = "dynamic", value = "The date range type")
-
-  private String type;
-
 public enum RangeEnum {
 
-YEAR_TO_DATE(String.valueOf("YEAR_TO_DATE")), QUARTER_TO_DATE(String.valueOf("QUARTER_TO_DATE")), MONTH_TO_DATE(String.valueOf("MONTH_TO_DATE")), LAST_MONTH(String.valueOf("LAST_MONTH"));
+YEAR_TO_DATE(String.valueOf("YEAR_TO_DATE")), QUARTER_TO_DATE(String.valueOf("QUARTER_TO_DATE")), MONTH_TO_DATE(String.valueOf("MONTH_TO_DATE")), LAST_MONTH(String.valueOf("LAST_MONTH")), LAST_QUARTER(String.valueOf("LAST_QUARTER"));
 
 
     private String value;
@@ -63,24 +56,13 @@ YEAR_TO_DATE(String.valueOf("YEAR_TO_DATE")), QUARTER_TO_DATE(String.valueOf("QU
   @ApiModelProperty(example = "YEAR_TO_DATE", value = "The dynamic range type")
 
   private RangeEnum range;
+
  /**
-   * The date range type
-   * @return type
-  **/
-  @JsonProperty("type")
-  public String getType() {
-    return type;
-  }
+  * The date range type
+  */
+  @ApiModelProperty(example = "dynamic", value = "The date range type")
 
-  public void setType(String type) {
-    this.type = type;
-  }
-
-  public TemplateResponseDateRangeDynamicDateRange type(String type) {
-    this.type = type;
-    return this;
-  }
-
+  private String type;
  /**
    * The dynamic range type
    * @return range
@@ -102,6 +84,24 @@ YEAR_TO_DATE(String.valueOf("YEAR_TO_DATE")), QUARTER_TO_DATE(String.valueOf("QU
     return this;
   }
 
+ /**
+   * The date range type
+   * @return type
+  **/
+  @JsonProperty("type")
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
+  public TemplateResponseDateRangeDynamicDateRange type(String type) {
+    this.type = type;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -111,13 +111,13 @@ YEAR_TO_DATE(String.valueOf("YEAR_TO_DATE")), QUARTER_TO_DATE(String.valueOf("QU
       return false;
     }
     TemplateResponseDateRangeDynamicDateRange templateResponseDateRangeDynamicDateRange = (TemplateResponseDateRangeDynamicDateRange) o;
-    return Objects.equals(this.type, templateResponseDateRangeDynamicDateRange.type) &&
-        Objects.equals(this.range, templateResponseDateRangeDynamicDateRange.range);
+    return Objects.equals(this.range, templateResponseDateRangeDynamicDateRange.range) &&
+        Objects.equals(this.type, templateResponseDateRangeDynamicDateRange.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, range);
+    return Objects.hash(range, type);
   }
 
   @Override
@@ -125,8 +125,8 @@ YEAR_TO_DATE(String.valueOf("YEAR_TO_DATE")), QUARTER_TO_DATE(String.valueOf("QU
     StringBuilder sb = new StringBuilder();
     sb.append("class TemplateResponseDateRangeDynamicDateRange {\n");
     
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    range: ").append(toIndentedString(range)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

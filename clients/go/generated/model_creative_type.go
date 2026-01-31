@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// CreativeType Ad creative type enum. For update, only draft ads may update creative type. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
+// CreativeType Ad creative type enum. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
 type CreativeType string
 
 // List of CreativeType
@@ -31,6 +31,9 @@ const (
 	IDEA CreativeType = "IDEA"
 	SHOWCASE CreativeType = "SHOWCASE"
 	QUIZ CreativeType = "QUIZ"
+	COLLAGE CreativeType = "COLLAGE"
+	MAX_WIDTH_REGULAR_COLLECTION CreativeType = "MAX_WIDTH_REGULAR_COLLECTION"
+	MAX_WIDTH_VIDEO_COLLECTION CreativeType = "MAX_WIDTH_VIDEO_COLLECTION"
 )
 
 // All allowed values of CreativeType enum
@@ -45,6 +48,9 @@ var AllowedCreativeTypeEnumValues = []CreativeType{
 	"IDEA",
 	"SHOWCASE",
 	"QUIZ",
+	"COLLAGE",
+	"MAX_WIDTH_REGULAR_COLLECTION",
+	"MAX_WIDTH_VIDEO_COLLECTION",
 }
 
 func (v *CreativeType) UnmarshalJSON(src []byte) error {

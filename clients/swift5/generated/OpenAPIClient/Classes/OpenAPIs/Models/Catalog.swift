@@ -18,24 +18,24 @@ public struct Catalog: Codable, JSONEncodable, Hashable {
     /** ID of the catalog entity. */
     public var id: String
     public var updatedAt: Date
+    public var catalogType: CatalogsType
     /** A human-friendly name associated to a catalog entity. */
     public var name: String?
-    public var catalogType: CatalogsType
 
-    public init(createdAt: Date, id: String, updatedAt: Date, name: String?, catalogType: CatalogsType) {
+    public init(createdAt: Date, id: String, updatedAt: Date, catalogType: CatalogsType, name: String?) {
         self.createdAt = createdAt
         self.id = id
         self.updatedAt = updatedAt
-        self.name = name
         self.catalogType = catalogType
+        self.name = name
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case createdAt = "created_at"
         case id
         case updatedAt = "updated_at"
-        case name
         case catalogType = "catalog_type"
+        case name
     }
 
     // Encodable protocol methods
@@ -45,8 +45,8 @@ public struct Catalog: Codable, JSONEncodable, Hashable {
         try container.encode(createdAt, forKey: .createdAt)
         try container.encode(id, forKey: .id)
         try container.encode(updatedAt, forKey: .updatedAt)
-        try container.encode(name, forKey: .name)
         try container.encode(catalogType, forKey: .catalogType)
+        try container.encode(name, forKey: .name)
     }
 }
 

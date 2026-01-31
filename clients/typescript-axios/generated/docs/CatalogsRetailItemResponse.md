@@ -6,10 +6,10 @@ Object describing a retail item record
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**attributes** | [**ItemAttributes**](ItemAttributes.md) |  | [optional] [default to undefined]
 **catalog_type** | [**CatalogsType**](CatalogsType.md) |  | [default to undefined]
 **item_id** | **string** | The catalog retail item id in the merchant namespace | [optional] [default to undefined]
 **pins** | [**Array&lt;Pin&gt;**](Pin.md) | The pins mapped to the item | [optional] [default to undefined]
-**attributes** | [**ItemAttributes**](ItemAttributes.md) |  | [optional] [default to undefined]
 
 ## Example
 
@@ -17,10 +17,10 @@ Name | Type | Description | Notes
 import { CatalogsRetailItemResponse } from './api';
 
 const instance: CatalogsRetailItemResponse = {
+    attributes,
     catalog_type,
     item_id,
     pins,
-    attributes,
 };
 ```
 

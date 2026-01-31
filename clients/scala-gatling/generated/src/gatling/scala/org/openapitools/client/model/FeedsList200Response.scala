@@ -3,14 +3,14 @@ package org.openapitools.client.model
 
 
 case class FeedsList200Response (
-    _items: List[CatalogsFeed],
-    _bookmark: Option[String]
+    _bookmark: Option[String],
+    _items: List[CatalogsFeed]
 )
 object FeedsList200Response {
-    def toStringBody(var_items: Object, var_bookmark: Object) =
+    def toStringBody(var_bookmark: Object, var_items: Object) =
         s"""
         | {
-        | "items":$var_items,"bookmark":$var_bookmark
+        | "bookmark":$var_bookmark,"items":$var_items
         | }
         """.stripMargin
 }

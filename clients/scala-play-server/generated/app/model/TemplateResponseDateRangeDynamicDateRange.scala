@@ -4,13 +4,13 @@ import play.api.libs.json._
 
 /**
   * The dynamic date range of the template
-  * @param `type` The date range type
   * @param range The dynamic range type
+  * @param `type` The date range type
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class TemplateResponseDateRangeDynamicDateRange(
-  `type`: Option[String],
-  range: Option[TemplateResponseDateRangeDynamicDateRange.Range.Value]
+  range: Option[TemplateResponseDateRangeDynamicDateRange.Range.Value],
+  `type`: Option[String]
 )
 
 object TemplateResponseDateRangeDynamicDateRange {
@@ -22,6 +22,7 @@ object TemplateResponseDateRangeDynamicDateRange {
     val QUARTERTODATE = Value("QUARTER_TO_DATE")
     val MONTHTODATE = Value("MONTH_TO_DATE")
     val LASTMONTH = Value("LAST_MONTH")
+    val LASTQUARTER = Value("LAST_QUARTER")
 
     type Range = Value
     implicit lazy val RangeJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])

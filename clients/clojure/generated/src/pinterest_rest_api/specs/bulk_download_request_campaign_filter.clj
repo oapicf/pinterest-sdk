@@ -9,11 +9,11 @@
 
 (def bulk-download-request-campaign-filter-data
   {
-   (ds/opt :start_time) string?
+   (ds/opt :campaign_status) (s/coll-of campaign-summary-status-spec)
    (ds/opt :end_time) string?
    (ds/opt :name) string?
-   (ds/opt :campaign_status) (s/coll-of campaign-summary-status-spec)
    (ds/opt :objective_type) (s/coll-of objective-type-spec)
+   (ds/opt :start_time) string?
    })
 
 (def bulk-download-request-campaign-filter-spec

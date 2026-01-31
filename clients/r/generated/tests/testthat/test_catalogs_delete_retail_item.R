@@ -13,6 +13,14 @@ test_that("item_id", {
   #expect_equal(model.instance$`item_id`, "EXPECTED_RESULT")
 })
 
+test_that("last_updated_time", {
+  # tests for the property `last_updated_time` (integer)
+  # The millisecond timestamp when the item was lastly modified by the merchant.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`last_updated_time`, "EXPECTED_RESULT")
+})
+
 test_that("operation", {
   # tests for the property `operation` (character)
 

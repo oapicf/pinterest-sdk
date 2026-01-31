@@ -8,8 +8,8 @@
 
 (def get-business-partners-200-response-data
   {
-   (ds/req :items) (s/coll-of user-business-role-binding-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of user-business-role-binding-spec)
    })
 
 (def get-business-partners-200-response-spec

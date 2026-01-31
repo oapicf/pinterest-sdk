@@ -6,10 +6,10 @@ The result, and link out, based on the user’s choice.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**organic_pin_id** | **string** |  | [optional] [default to undefined]
 **android_deep_link** | **string** |  | [optional] [default to undefined]
-**ios_deep_link** | **string** |  | [optional] [default to undefined]
 **destination_url** | **string** |  | [optional] [default to undefined]
+**ios_deep_link** | **string** |  | [optional] [default to undefined]
+**organic_pin_id** | **string** |  | [optional] [default to undefined]
 **result_id** | **number** |  | [optional] [default to undefined]
 
 ## Example
@@ -18,10 +18,10 @@ Name | Type | Description | Notes
 import { QuizPinResult } from './api';
 
 const instance: QuizPinResult = {
-    organic_pin_id,
     android_deep_link,
-    ios_deep_link,
     destination_url,
+    ios_deep_link,
+    organic_pin_id,
     result_id,
 };
 ```

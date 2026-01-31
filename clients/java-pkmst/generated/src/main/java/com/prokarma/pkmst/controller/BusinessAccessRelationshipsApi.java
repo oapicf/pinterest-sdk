@@ -5,6 +5,9 @@
  */
 package com.prokarma.pkmst.controller;
 
+import com.prokarma.pkmst.model.BrandAccountsCreate200Response;
+import com.prokarma.pkmst.model.BrandAccountsCreateRequest;
+import com.prokarma.pkmst.model.BrandAccountsUpdateRequest;
 import com.prokarma.pkmst.model.DeletePartnersRequest;
 import com.prokarma.pkmst.model.DeletePartnersResponse;
 import com.prokarma.pkmst.model.DeletedMembersResponse;
@@ -16,6 +19,7 @@ import java.util.List;
 import com.prokarma.pkmst.model.MemberBusinessRole;
 import com.prokarma.pkmst.model.MembersToDeleteBody;
 import com.prokarma.pkmst.model.PartnerType;
+import com.prokarma.pkmst.model.SystemUserUpdateRequest;
 import com.prokarma.pkmst.model.UpdateMemberBusinessRoleBody;
 import com.prokarma.pkmst.model.UpdateMemberResultsResponseArray;
 
@@ -31,9 +35,50 @@ import java.util.List;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Api(value = "BusinessAccessRelationships", description = "the BusinessAccessRelationships API")
 public interface BusinessAccessRelationshipsApi {
+
+    @ApiOperation(value = "Create a Brand Account", notes = "Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.", response = BrandAccountsCreate200Response.class, authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "biz_access:read", description = "See business access data"),
+            @AuthorizationScope(scope = "biz_access:write", description = "Create, update, or delete business access data") })
+         }, tags={ "business_access_relationships", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "Success", response = BrandAccountsCreate200Response.class),
+        @ApiResponse(code = 400, message = "Invalid parameters.", response = Error.class),
+        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+    @RequestMapping(
+        method = RequestMethod.POST,
+        value = "/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts",
+        produces = { "application/json" },
+        consumes = { "application/json" }
+    )
+    ResponseEntity<BrandAccountsCreate200Response> brandAccountsCreate(@ApiParam(value = "business hierarchy node id",required=true ) @PathVariable("business_hierarchy_id") String businessHierarchyId,@ApiParam(value = "" ,required=true )   @RequestBody BrandAccountsCreateRequest brandAccountsCreateRequest, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
+
+
+    @ApiOperation(value = "Update a Brand Account", notes = "Update an existing Brand Account", response = BrandAccountsCreate200Response.class, authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "biz_access:read", description = "See business access data"),
+            @AuthorizationScope(scope = "biz_access:write", description = "Create, update, or delete business access data") })
+         }, tags={ "business_access_relationships", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "Success", response = BrandAccountsCreate200Response.class),
+        @ApiResponse(code = 400, message = "Invalid parameters.", response = Error.class),
+        @ApiResponse(code = 401, message = "Not authenticated to update Brand Account", response = Error.class),
+        @ApiResponse(code = 403, message = "Not authorized to update Brand Account", response = Error.class),
+        @ApiResponse(code = 404, message = "Brand account not found", response = Error.class),
+        @ApiResponse(code = 409, message = "This account is not a brand account.", response = Error.class),
+        @ApiResponse(code = 429, message = "This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window.", response = Error.class),
+        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+    @RequestMapping(
+        method = RequestMethod.PATCH,
+        value = "/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}",
+        produces = { "application/json" },
+        consumes = { "application/json" }
+    )
+    ResponseEntity<BrandAccountsCreate200Response> brandAccountsUpdate(@ApiParam(value = "business hierarchy node id",required=true ) @PathVariable("business_hierarchy_id") String businessHierarchyId,@ApiParam(value = "Unique identifier of a brand account.",required=true ) @PathVariable("brand_account_id") String brandAccountId,@ApiParam(value = "" ,required=true )   @RequestBody BrandAccountsUpdateRequest brandAccountsUpdateRequest, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
+
 
     @ApiOperation(value = "Terminate business memberships", notes = "Terminate memberships between the specified members and your business.", response = DeletedMembersResponse.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
@@ -96,7 +141,7 @@ public interface BusinessAccessRelationshipsApi {
         value = "/businesses/{business_id}/members",
         produces = { "application/json" }
     )
-    ResponseEntity<GetBusinessMembers200Response> getBusinessMembers(@ApiParam(value = "Unique identifier of the requesting business.",required=true ) @PathVariable("business_id") String businessId,@ApiParam(value = "Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are", defaultValue = "false")  @RequestParam(value = "assets_summary", required = false, defaultValue="false") Boolean assetsSummary,@ApiParam(value = "A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.")  @RequestParam(value = "business_roles", required = false) List<MemberBusinessRole> businessRoles,@ApiParam(value = "A list of business members ids separated by comma.")  @RequestParam(value = "member_ids", required = false) String memberIds,@ApiParam(value = "An index to start fetching the results from. Only the results starting from this index will be returned.", defaultValue = "0")  @RequestParam(value = "start_index", required = false, defaultValue="0") Integer startIndex,@ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
+    ResponseEntity<GetBusinessMembers200Response> getBusinessMembers(@ApiParam(value = "Unique identifier of the requesting business.",required=true ) @PathVariable("business_id") String businessId,@ApiParam(value = "Fetches system users if True. Fetches regular user employees if False.", defaultValue = "false")  @RequestParam(value = "fetch_system_users", required = false, defaultValue="false") Boolean fetchSystemUsers,@ApiParam(value = "Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are", defaultValue = "false")  @RequestParam(value = "assets_summary", required = false, defaultValue="false") Boolean assetsSummary,@ApiParam(value = "A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.")  @RequestParam(value = "business_roles", required = false) List<MemberBusinessRole> businessRoles,@ApiParam(value = "A list of business members ids separated by comma.")  @RequestParam(value = "member_ids", required = false) String memberIds,@ApiParam(value = "An index to start fetching the results from. Only the results starting from this index will be returned.", defaultValue = "0")  @RequestParam(value = "start_index", required = false, defaultValue="0") Integer startIndex,@ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 
     @ApiOperation(value = "Get business partners", notes = "Get all partners of the specified business.  If the assets_summary=TRUE and: - partner_type=INTERNAL, the business assets returned are your business assets the partner has access to. - partner_type=EXTERNAL, the business assets returned are your partner's business assets the partner has granted you   access to.", response = GetBusinessPartners200Response.class, authorizations = {
@@ -112,6 +157,24 @@ public interface BusinessAccessRelationshipsApi {
         produces = { "application/json" }
     )
     ResponseEntity<GetBusinessPartners200Response> getBusinessPartners(@ApiParam(value = "Unique identifier of the requesting business.",required=true ) @PathVariable("business_id") String businessId,@ApiParam(value = "Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are", defaultValue = "false")  @RequestParam(value = "assets_summary", required = false, defaultValue="false") Boolean assetsSummary,@ApiParam(value = "Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.", allowableValues = "INTERNAL, EXTERNAL")  @RequestParam(value = "partner_type", required = false) PartnerType partnerType,@ApiParam(value = "A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.")  @RequestParam(value = "partner_ids", required = false) String partnerIds,@ApiParam(value = "An index to start fetching the results from. Only the results starting from this index will be returned.", defaultValue = "0")  @RequestParam(value = "start_index", required = false, defaultValue="0") Integer startIndex,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue = "25")  @RequestParam(value = "page_size", required = false, defaultValue="25") Integer pageSize,@ApiParam(value = "Cursor used to fetch the next page of items")  @RequestParam(value = "bookmark", required = false) String bookmark, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
+
+
+    @ApiOperation(value = "Update a system user information.", notes = "Update a system user information such as name.", response = Void.class, authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "biz_access:read", description = "See business access data"),
+            @AuthorizationScope(scope = "biz_access:write", description = "Create, update, or delete business access data") })
+         }, tags={ "business_access_relationships", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "System user updated successfully."),
+        @ApiResponse(code = 400, message = "Invalid parameters.", response = Error.class),
+        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
+    @RequestMapping(
+        method = RequestMethod.PATCH,
+        value = "/businesses/{business_id}/system_users/{system_user_id}",
+        produces = { "application/json" },
+        consumes = { "application/json" }
+    )
+    ResponseEntity<Void> systemUserUpdate(@ApiParam(value = "Unique identifier of the requesting business.",required=true ) @PathVariable("business_id") String businessId,@ApiParam(value = "Unique identifier of a system user.",required=true ) @PathVariable("system_user_id") String systemUserId,@ApiParam(value = "" ,required=true )   @RequestBody SystemUserUpdateRequest systemUserUpdateRequest, @RequestHeader(value = "Accept", required = false) String accept) throws Exception;
 
 
     @ApiOperation(value = "Update member's business role", notes = "Update a member's business role within the business.", response = UpdateMemberResultsResponseArray.class, authorizations = {

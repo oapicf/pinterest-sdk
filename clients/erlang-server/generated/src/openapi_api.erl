@@ -59,20 +59,32 @@ accept_callback(Class, OperationID, Req0, Context0) ->
     | 'businessAccessInvite'
     | 'businessAccessRelationships'
     | 'campaigns'
+    | 'catalogFeeds'
+    | 'catalogItems'
+    | 'catalogProductGroups'
+    | 'catalogReports'
     | 'catalogs'
+    | 'conversionEqs'
     | 'conversionEvents'
     | 'conversionTags'
+    | 'conversions'
+    | 'customerListUploads'
     | 'customerLists'
     | 'integrations'
     | 'keywords'
+    | 'labels'
     | 'leadAds'
     | 'leadForms'
     | 'leadsExport'
     | 'media'
+    | 'msotEvents'
+    | 'notification'
     | 'oauth'
     | 'orderLines'
     | 'pins'
+    | 'productCategories'
     | 'productGroupPromotions'
+    | 'promotions'
     | 'resources'
     | 'search'
     | 'targetingTemplate'
@@ -87,9 +99,11 @@ accept_callback(Class, OperationID, Req0, Context0) ->
     'ad_accounts/create' | %% Create ad account
     'ad_accounts/get' | %% Get ad account
     'ad_accounts/list' | %% List ad accounts
+    'analytics/create_conversion_product_report' | %% Create a request for a brand, category, SKU report
     'analytics/create_mmm_report' | %% Create a request for a Marketing Mix Modeling (MMM) report
     'analytics/create_report' | %% Create async request for an account analytics report
     'analytics/create_template_report' | %% Create async request for an analytics report using a template
+    'analytics/get_conversion_product_report' | %% Get advertiser brand, category, SKU report
     'analytics/get_mmm_report' | %% Get advertiser Marketing Mix Modeling (MMM) report.
     'analytics/get_report' | %% Get the account analytics report created by the async call
     'sandbox/delete' | %% Delete ads data for ad account in API Sandbox
@@ -121,12 +135,13 @@ accept_callback(Class, OperationID, Req0, Context0) ->
     'update_business_to_ad_account_shared_audience' | %% Update audience sharing from a business to ad accounts
     'update_business_to_business_shared_audience' | %% Update audience sharing between businesses
     'audiences/create' | %% Create audience
-    'audiences/create_custom' | %% Create custom audience
     'audiences/get' | %% Get audience
     'audiences/list' | %% List audiences
     'audiences/update' | %% Update audience
     'ads_credit/redeem' | %% Redeem ad credits
     'ads_credits_discounts/get' | %% Get ads credit discounts
+    'billing_invoice_download/get' | %% Get download url for a billing invoice
+    'billing_invoices/get' | %% Get billing invoices
     'billing_profiles/get' | %% Get billing profiles
     'ssio_accounts/get' | %% Get Salesforce account details including bill-to information.
     'ssio_insertion_order/create' | %% Create insertion order through SSIO.
@@ -166,20 +181,33 @@ accept_callback(Class, OperationID, Req0, Context0) ->
     'create_membership_or_partnership_invites' | %% Create invites or requests
     'get/invites' | %% Get invites/requests
     'respond_business_access_invites' | %% Accept or decline an invite/request
+    'brand_accounts/create' | %% Create a Brand Account
+    'brand_accounts/update' | %% Update a Brand Account
     'delete_business_membership' | %% Terminate business memberships
     'delete_business_partners' | %% Terminate business partnerships
     'get/business_employers' | %% List business employers for user
     'get/business_members' | %% Get business members
     'get/business_partners' | %% Get business partners
+    'system_user/update' | %% Update a system user information.
     'update/business_memberships' | %% Update member&#39;s business role
+    'ad_pins/analytics' | %% Get pins analytics
     'campaign_targeting_analytics/get' | %% Get targeting analytics for campaigns
     'campaigns/analytics' | %% Get campaign analytics
     'campaigns/create' | %% Create campaigns
     'campaigns/get' | %% Get campaign
     'campaigns/list' | %% List campaigns
     'campaigns/update' | %% Update campaigns
-    'catalogs/create' | %% Create catalog
-    'catalogs/list' | %% List catalogs
+    'feed_processing_results/list' | %% List feed processing results
+    'feeds/create' | %% Create feed
+    'feeds/delete' | %% Delete feed
+    'feeds/get' | %% Get feed
+    'feeds/ingest' | %% Ingest feed items
+    'feeds/list' | %% List feeds
+    'feeds/update' | %% Update feed
+    'items_issues/list' | %% List item issues
+    'items_batch/get' | %% Get item batch status
+    'items_batch/post' | %% Operate on item batch
+    'items/post' | %% Get catalogs items (POST)
     'catalogs_product_group_pins/list' | %% List products by product group
     'catalogs_product_groups/create' | %% Create product group
     'catalogs_product_groups/create_many' | %% Create product groups
@@ -189,28 +217,24 @@ accept_callback(Class, OperationID, Req0, Context0) ->
     'catalogs_product_groups/list' | %% List product groups
     'catalogs_product_groups/product_counts_get' | %% Get product counts
     'catalogs_product_groups/update' | %% Update single product group
-    'feed_processing_results/list' | %% List feed processing results
-    'feeds/create' | %% Create feed
-    'feeds/delete' | %% Delete feed
-    'feeds/get' | %% Get feed
-    'feeds/ingest' | %% Ingest feed items
-    'feeds/list' | %% List feeds
-    'feeds/update' | %% Update feed
-    'items_batch/get' | %% Get item batch status
-    'items_batch/post' | %% Operate on item batch
-    'items/get' | %% Get catalogs items
-    'items_issues/list' | %% List item issues
-    'items/post' | %% Get catalogs items (POST)
     'products_by_product_group_filter/list' | %% List products by filter
     'reports/create' | %% Build catalogs report
     'reports/get' | %% Get catalogs report
     'reports/stats' | %% List report stats
+    'catalogs/available_filter_values' | %% List available filter values
+    'catalogs/create' | %% Create catalog
+    'catalogs/list' | %% List catalogs
+    'conversion_eqs/list' | %% Get event quality score (EQS)
     'events/create' | %% Send conversions
     'conversion_tags/create' | %% Create conversion tag
     'conversion_tags/get' | %% Get conversion tag
-    'conversion_tags/list' | %% Get conversion tags
+    'conversion_tags/list' | %% List conversion tags
     'ocpm_eligible_conversion_tags/get' | %% Get Ocpm eligible conversion tags
     'page_visit_conversion_tags/get' | %% Get page visit conversion tags
+    'advertiser_defined_events/get' | %% Get advertiser defined events
+    'customer_list_uploads/create' | %% Create customer list upload
+    'customer_list_uploads/get' | %% Get customer list upload
+    'customer_list_uploads/run' | %% Run customer list upload
     'customer_lists/create' | %% Create customer lists
     'customer_lists/get' | %% Get customer list
     'customer_lists/list' | %% Get customer lists
@@ -227,8 +251,11 @@ accept_callback(Class, OperationID, Req0, Context0) ->
     'keywords/get' | %% Get keywords
     'keywords/update' | %% Update keywords
     'trending_keywords/list' | %% List trending keywords
+    'labels/create' | %% Create labels
+    'labels/list' | %% List labels
+    'labels/update' | %% Update labels
     'ad_accounts_subscriptions/del_by_id' | %% Delete lead ads subscription
-    'ad_accounts_subscriptions/get_by_id' | %% Get lead ads subscription
+    'ad_accounts_subscriptions/get_by_id' | %% Get lead ads subscription by ID
     'ad_accounts_subscriptions/get_list' | %% Get lead ads subscriptions
     'ad_accounts_subscriptions/post' | %% Create lead ads subscription
     'lead_form/get' | %% Get lead form by id
@@ -241,7 +268,11 @@ accept_callback(Class, OperationID, Req0, Context0) ->
     'media/create' | %% Register media upload
     'media/get' | %% Get media upload details
     'media/list' | %% List media uploads
+    'msot_events/create' | %% Send Measurement Source Of Truth (MSOT) attributed conversion events
+    'notification/post' | %% Receive notifications from external partners.
+    'oauth/conversion_token' | %% Generate OAuth access token for conversion API
     'oauth/token' | %% Generate OAuth access token
+    'token/revoke' | %% Revoke a token
     'order_lines/get' | %% Get order line
     'order_lines/list' | %% Get order lines
     'multi_pins/analytics' | %% Get multiple Pin analytics
@@ -252,11 +283,19 @@ accept_callback(Class, OperationID, Req0, Context0) ->
     'pins/list' | %% List Pins
     'pins/save' | %% Save Pin
     'pins/update' | %% Update Pin
+    'trends_featured_topics/list' | %% Get featured topics
+    'trends_product_categories_details/list' | %% Get product category details
+    'trends_product_categories_trending/list' | %% Get a list of growing Shopping Product Categories
     'product_group_promotions/create' | %% Create product group promotions
     'product_group_promotions/get' | %% Get a product group promotion by id
     'product_group_promotions/list' | %% Get product group promotions
     'product_group_promotions/update' | %% Update product group promotions
     'product_groups/analytics' | %% Get product group analytics
+    'promotions/create' | %% Create promotions
+    'promotions/delete' | %% Delete promotion by id
+    'promotions/get' | %% Get promotion by id
+    'promotions/list' | %% Get promotions
+    'promotions/update' | %% Update promotions
     'ad_account_countries/get' | %% Get ad accounts countries
     'delivery_metrics/get' | %% Get available metrics&#39; definitions
     'interest_targeting_options/get' | %% Get interest details
@@ -370,15 +409,53 @@ validate_response('ad_account_targeting_analytics/get', 0, Body, ValidatorState)
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('ad_accounts/create', 200, Body, ValidatorState) ->
     validate_response_body('AdAccount', 'AdAccount', Body, ValidatorState);
+validate_response('ad_accounts/create', 201, Body, ValidatorState) ->
+    validate_response_body('AdAccount', 'AdAccount', Body, ValidatorState);
+validate_response('ad_accounts/create', 400, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('ad_accounts/create', 401, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('ad_accounts/create', 403, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('ad_accounts/create', 404, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('ad_accounts/create', 429, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('ad_accounts/create', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('ad_accounts/get', 200, Body, ValidatorState) ->
     validate_response_body('AdAccount', 'AdAccount', Body, ValidatorState);
+validate_response('ad_accounts/get', 400, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('ad_accounts/get', 401, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('ad_accounts/get', 403, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('ad_accounts/get', 404, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('ad_accounts/get', 429, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('ad_accounts/get', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('ad_accounts/list', 200, Body, ValidatorState) ->
     validate_response_body('ad_accounts_list_200_response', 'ad_accounts_list_200_response', Body, ValidatorState);
+validate_response('ad_accounts/list', 400, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('ad_accounts/list', 401, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('ad_accounts/list', 403, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('ad_accounts/list', 404, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('ad_accounts/list', 429, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('ad_accounts/list', 0, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('analytics/create_conversion_product_report', 200, Body, ValidatorState) ->
+    validate_response_body('AdsAnalyticsCreateAsyncResponse', 'AdsAnalyticsCreateAsyncResponse', Body, ValidatorState);
+validate_response('analytics/create_conversion_product_report', 400, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('analytics/create_conversion_product_report', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('analytics/create_mmm_report', 200, Body, ValidatorState) ->
     validate_response_body('CreateMMMReportResponse', 'CreateMMMReportResponse', Body, ValidatorState);
@@ -393,10 +470,26 @@ validate_response('analytics/create_report', 400, Body, ValidatorState) ->
 validate_response('analytics/create_report', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('analytics/create_template_report', 200, Body, ValidatorState) ->
-    validate_response_body('AdsAnalyticsCreateAsyncResponse', 'AdsAnalyticsCreateAsyncResponse', Body, ValidatorState);
+    validate_response_body('TemplateBasedReport', 'TemplateBasedReport', Body, ValidatorState);
+validate_response('analytics/create_template_report', 201, Body, ValidatorState) ->
+    validate_response_body('TemplateBasedReport', 'TemplateBasedReport', Body, ValidatorState);
 validate_response('analytics/create_template_report', 400, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('analytics/create_template_report', 401, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('analytics/create_template_report', 403, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('analytics/create_template_report', 404, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('analytics/create_template_report', 429, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('analytics/create_template_report', 0, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('analytics/get_conversion_product_report', 200, Body, ValidatorState) ->
+    validate_response_body('AdsAnalyticsGetAsyncResponse', 'AdsAnalyticsGetAsyncResponse', Body, ValidatorState);
+validate_response('analytics/get_conversion_product_report', 400, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('analytics/get_conversion_product_report', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('analytics/get_mmm_report', 200, Body, ValidatorState) ->
     validate_response_body('GetMMMReportResponse', 'GetMMMReportResponse', Body, ValidatorState);
@@ -510,6 +603,8 @@ validate_response('advanced_auction_items_get/post', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('advanced_auction_items_submit/post', 200, Body, ValidatorState) ->
     validate_response_body('AdvancedAuctionProcessedItems', 'AdvancedAuctionProcessedItems', Body, ValidatorState);
+validate_response('advanced_auction_items_submit/post', 206, Body, ValidatorState) ->
+    validate_response_body('AdvancedAuctionProcessedItems', 'AdvancedAuctionProcessedItems', Body, ValidatorState);
 validate_response('advanced_auction_items_submit/post', 400, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('advanced_auction_items_submit/post', 401, Body, ValidatorState) ->
@@ -578,10 +673,6 @@ validate_response('audiences/create', 200, Body, ValidatorState) ->
     validate_response_body('Audience', 'Audience', Body, ValidatorState);
 validate_response('audiences/create', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('audiences/create_custom', 200, Body, ValidatorState) ->
-    validate_response_body('Audience', 'Audience', Body, ValidatorState);
-validate_response('audiences/create_custom', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('audiences/get', 200, Body, ValidatorState) ->
     validate_response_body('Audience', 'Audience', Body, ValidatorState);
 validate_response('audiences/get', 404, Body, ValidatorState) ->
@@ -607,6 +698,18 @@ validate_response('ads_credit/redeem', 0, Body, ValidatorState) ->
 validate_response('ads_credits_discounts/get', 200, Body, ValidatorState) ->
     validate_response_body('ads_credits_discounts_get_200_response', 'ads_credits_discounts_get_200_response', Body, ValidatorState);
 validate_response('ads_credits_discounts/get', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('billing_invoice_download/get', 200, Body, ValidatorState) ->
+    validate_response_body('BillingInvoiceDownloadResponse', 'BillingInvoiceDownloadResponse', Body, ValidatorState);
+validate_response('billing_invoice_download/get', 400, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('billing_invoice_download/get', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('billing_invoices/get', 200, Body, ValidatorState) ->
+    validate_response_body('billing_invoices_get_200_response', 'billing_invoices_get_200_response', Body, ValidatorState);
+validate_response('billing_invoices/get', 400, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('billing_invoices/get', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('billing_profiles/get', 200, Body, ValidatorState) ->
     validate_response_body('billing_profiles_get_200_response', 'billing_profiles_get_200_response', Body, ValidatorState);
@@ -694,34 +797,64 @@ validate_response('board_sections/update', 409, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('board_sections/update', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('boards/create', 200, Body, ValidatorState) ->
+    validate_response_body('Board', 'Board', Body, ValidatorState);
 validate_response('boards/create', 201, Body, ValidatorState) ->
     validate_response_body('Board', 'Board', Body, ValidatorState);
 validate_response('boards/create', 400, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('boards/create', 401, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('boards/create', 403, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('boards/create', 404, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('boards/create', 429, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('boards/create', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('boards/delete', 204, Body, ValidatorState) ->
     validate_response_body('', '', Body, ValidatorState);
+validate_response('boards/delete', 400, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('boards/delete', 401, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('boards/delete', 403, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('boards/delete', 404, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('boards/delete', 409, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('boards/delete', 429, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('boards/delete', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('boards/get', 200, Body, ValidatorState) ->
     validate_response_body('Board', 'Board', Body, ValidatorState);
+validate_response('boards/get', 400, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('boards/get', 401, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('boards/get', 403, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('boards/get', 404, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('boards/get', 429, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('boards/get', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('boards/list', 200, Body, ValidatorState) ->
     validate_response_body('boards_list_200_response', 'boards_list_200_response', Body, ValidatorState);
+validate_response('boards/list', 400, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('boards/list', 401, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('boards/list', 403, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('boards/list', 404, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('boards/list', 429, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('boards/list', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('boards/list_pins', 200, Body, ValidatorState) ->
     validate_response_body('boards_list_pins_200_response', 'boards_list_pins_200_response', Body, ValidatorState);
 validate_response('boards/list_pins', 404, Body, ValidatorState) ->
@@ -729,15 +862,19 @@ validate_response('boards/list_pins', 404, Body, ValidatorState) ->
 validate_response('boards/list_pins', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('boards/update', 200, Body, ValidatorState) ->
-    validate_response_body('Board', 'Board', Body, ValidatorState);
+    validate_response_body('BoardWithUpdatePrivacy', 'BoardWithUpdatePrivacy', Body, ValidatorState);
 validate_response('boards/update', 400, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('boards/update', 401, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('boards/update', 403, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('boards/update', 404, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('boards/update', 429, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('boards/update', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('bulk_download/create', 200, Body, ValidatorState) ->
     validate_response_body('BulkDownloadResponse', 'BulkDownloadResponse', Body, ValidatorState);
 validate_response('bulk_download/create', 0, Body, ValidatorState) ->
@@ -828,6 +965,28 @@ validate_response('respond_business_access_invites', 200, Body, ValidatorState) 
     validate_response_body('RespondToInvitesResponseArray', 'RespondToInvitesResponseArray', Body, ValidatorState);
 validate_response('respond_business_access_invites', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('brand_accounts/create', 200, Body, ValidatorState) ->
+    validate_response_body('brand_accounts_create_200_response', 'brand_accounts_create_200_response', Body, ValidatorState);
+validate_response('brand_accounts/create', 400, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('brand_accounts/create', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('brand_accounts/update', 200, Body, ValidatorState) ->
+    validate_response_body('brand_accounts_create_200_response', 'brand_accounts_create_200_response', Body, ValidatorState);
+validate_response('brand_accounts/update', 400, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('brand_accounts/update', 401, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('brand_accounts/update', 403, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('brand_accounts/update', 404, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('brand_accounts/update', 409, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('brand_accounts/update', 429, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('brand_accounts/update', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('delete_business_membership', 200, Body, ValidatorState) ->
     validate_response_body('DeletedMembersResponse', 'DeletedMembersResponse', Body, ValidatorState);
 validate_response('delete_business_membership', 0, Body, ValidatorState) ->
@@ -850,9 +1009,21 @@ validate_response('get/business_partners', 200, Body, ValidatorState) ->
     validate_response_body('get_business_partners_200_response', 'get_business_partners_200_response', Body, ValidatorState);
 validate_response('get/business_partners', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('system_user/update', 200, Body, ValidatorState) ->
+    validate_response_body('', '', Body, ValidatorState);
+validate_response('system_user/update', 400, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('system_user/update', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('update/business_memberships', 200, Body, ValidatorState) ->
     validate_response_body('UpdateMemberResultsResponseArray', 'UpdateMemberResultsResponseArray', Body, ValidatorState);
 validate_response('update/business_memberships', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('ad_pins/analytics', 200, Body, ValidatorState) ->
+    validate_response_body('list', 'AdPinAnalytics', Body, ValidatorState);
+validate_response('ad_pins/analytics', 400, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('ad_pins/analytics', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('campaign_targeting_analytics/get', 200, Body, ValidatorState) ->
     validate_response_body('MetricsResponse', 'MetricsResponse', Body, ValidatorState);
@@ -882,21 +1053,123 @@ validate_response('campaigns/update', 200, Body, ValidatorState) ->
     validate_response_body('CampaignUpdateResponse', 'CampaignUpdateResponse', Body, ValidatorState);
 validate_response('campaigns/update', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('catalogs/create', 200, Body, ValidatorState) ->
-    validate_response_body('Catalog', 'Catalog', Body, ValidatorState);
-validate_response('catalogs/create', 400, Body, ValidatorState) ->
+validate_response('feed_processing_results/list', 200, Body, ValidatorState) ->
+    validate_response_body('feed_processing_results_list_200_response', 'feed_processing_results_list_200_response', Body, ValidatorState);
+validate_response('feed_processing_results/list', 400, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('catalogs/create', 401, Body, ValidatorState) ->
+validate_response('feed_processing_results/list', 401, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('catalogs/create', 0, Body, ValidatorState) ->
+validate_response('feed_processing_results/list', 404, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('catalogs/list', 200, Body, ValidatorState) ->
-    validate_response_body('catalogs_list_200_response', 'catalogs_list_200_response', Body, ValidatorState);
-validate_response('catalogs/list', 400, Body, ValidatorState) ->
+validate_response('feed_processing_results/list', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('catalogs/list', 401, Body, ValidatorState) ->
+validate_response('feeds/create', 201, Body, ValidatorState) ->
+    validate_response_body('CatalogsFeed', 'CatalogsFeed', Body, ValidatorState);
+validate_response('feeds/create', 400, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('catalogs/list', 0, Body, ValidatorState) ->
+validate_response('feeds/create', 401, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('feeds/create', 403, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('feeds/create', 409, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('feeds/create', 422, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('feeds/create', 501, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('feeds/create', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('feeds/delete', 204, Body, ValidatorState) ->
+    validate_response_body('', '', Body, ValidatorState);
+validate_response('feeds/delete', 400, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('feeds/delete', 403, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('feeds/delete', 404, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('feeds/delete', 409, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('feeds/delete', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('feeds/get', 200, Body, ValidatorState) ->
+    validate_response_body('CatalogsFeed', 'CatalogsFeed', Body, ValidatorState);
+validate_response('feeds/get', 400, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('feeds/get', 401, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('feeds/get', 404, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('feeds/get', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('feeds/ingest', 200, Body, ValidatorState) ->
+    validate_response_body('CatalogsFeedIngestion', 'CatalogsFeedIngestion', Body, ValidatorState);
+validate_response('feeds/ingest', 400, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('feeds/ingest', 403, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('feeds/ingest', 404, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('feeds/ingest', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('feeds/list', 200, Body, ValidatorState) ->
+    validate_response_body('feeds_list_200_response', 'feeds_list_200_response', Body, ValidatorState);
+validate_response('feeds/list', 400, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('feeds/list', 401, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('feeds/list', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('feeds/update', 200, Body, ValidatorState) ->
+    validate_response_body('CatalogsFeed', 'CatalogsFeed', Body, ValidatorState);
+validate_response('feeds/update', 400, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('feeds/update', 403, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('feeds/update', 404, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('feeds/update', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('items_issues/list', 200, Body, ValidatorState) ->
+    validate_response_body('items_issues_list_200_response', 'items_issues_list_200_response', Body, ValidatorState);
+validate_response('items_issues/list', 401, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('items_issues/list', 404, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('items_issues/list', 501, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('items_issues/list', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('items_batch/get', 200, Body, ValidatorState) ->
+    validate_response_body('CatalogsItemsBatch', 'CatalogsItemsBatch', Body, ValidatorState);
+validate_response('items_batch/get', 401, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('items_batch/get', 403, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('items_batch/get', 404, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('items_batch/get', 405, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('items_batch/get', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('items_batch/post', 200, Body, ValidatorState) ->
+    validate_response_body('CatalogsItemsBatch', 'CatalogsItemsBatch', Body, ValidatorState);
+validate_response('items_batch/post', 400, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('items_batch/post', 401, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('items_batch/post', 403, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('items_batch/post', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('items/post', 200, Body, ValidatorState) ->
+    validate_response_body('CatalogsItems', 'CatalogsItems', Body, ValidatorState);
+validate_response('items/post', 400, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('items/post', 401, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('items/post', 403, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('items/post', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('catalogs_product_group_pins/list', 200, Body, ValidatorState) ->
     validate_response_body('catalogs_product_group_pins_list_200_response', 'catalogs_product_group_pins_list_200_response', Body, ValidatorState);
@@ -1008,134 +1281,6 @@ validate_response('catalogs_product_groups/update', 409, Body, ValidatorState) -
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('catalogs_product_groups/update', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feed_processing_results/list', 200, Body, ValidatorState) ->
-    validate_response_body('feed_processing_results_list_200_response', 'feed_processing_results_list_200_response', Body, ValidatorState);
-validate_response('feed_processing_results/list', 400, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feed_processing_results/list', 401, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feed_processing_results/list', 404, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feed_processing_results/list', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feeds/create', 201, Body, ValidatorState) ->
-    validate_response_body('CatalogsFeed', 'CatalogsFeed', Body, ValidatorState);
-validate_response('feeds/create', 400, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feeds/create', 401, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feeds/create', 403, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feeds/create', 409, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feeds/create', 422, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feeds/create', 501, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feeds/create', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feeds/delete', 204, Body, ValidatorState) ->
-    validate_response_body('', '', Body, ValidatorState);
-validate_response('feeds/delete', 400, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feeds/delete', 403, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feeds/delete', 404, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feeds/delete', 409, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feeds/delete', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feeds/get', 200, Body, ValidatorState) ->
-    validate_response_body('CatalogsFeed', 'CatalogsFeed', Body, ValidatorState);
-validate_response('feeds/get', 400, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feeds/get', 401, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feeds/get', 404, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feeds/get', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feeds/ingest', 200, Body, ValidatorState) ->
-    validate_response_body('CatalogsFeedIngestion', 'CatalogsFeedIngestion', Body, ValidatorState);
-validate_response('feeds/ingest', 400, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feeds/ingest', 403, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feeds/ingest', 404, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feeds/ingest', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feeds/list', 200, Body, ValidatorState) ->
-    validate_response_body('feeds_list_200_response', 'feeds_list_200_response', Body, ValidatorState);
-validate_response('feeds/list', 400, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feeds/list', 401, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feeds/list', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feeds/update', 200, Body, ValidatorState) ->
-    validate_response_body('CatalogsFeed', 'CatalogsFeed', Body, ValidatorState);
-validate_response('feeds/update', 400, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feeds/update', 403, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feeds/update', 404, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('feeds/update', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('items_batch/get', 200, Body, ValidatorState) ->
-    validate_response_body('CatalogsItemsBatch', 'CatalogsItemsBatch', Body, ValidatorState);
-validate_response('items_batch/get', 401, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('items_batch/get', 403, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('items_batch/get', 404, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('items_batch/get', 405, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('items_batch/get', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('items_batch/post', 200, Body, ValidatorState) ->
-    validate_response_body('CatalogsItemsBatch', 'CatalogsItemsBatch', Body, ValidatorState);
-validate_response('items_batch/post', 400, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('items_batch/post', 401, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('items_batch/post', 403, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('items_batch/post', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('items/get', 200, Body, ValidatorState) ->
-    validate_response_body('CatalogsItems', 'CatalogsItems', Body, ValidatorState);
-validate_response('items/get', 400, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('items/get', 401, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('items/get', 403, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('items/get', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('items_issues/list', 200, Body, ValidatorState) ->
-    validate_response_body('items_issues_list_200_response', 'items_issues_list_200_response', Body, ValidatorState);
-validate_response('items_issues/list', 401, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('items_issues/list', 404, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('items_issues/list', 501, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('items_issues/list', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('items/post', 200, Body, ValidatorState) ->
-    validate_response_body('CatalogsItems', 'CatalogsItems', Body, ValidatorState);
-validate_response('items/post', 400, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('items/post', 401, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('items/post', 403, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
-validate_response('items/post', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('products_by_product_group_filter/list', 200, Body, ValidatorState) ->
     validate_response_body('catalogs_product_group_pins_list_200_response', 'catalogs_product_group_pins_list_200_response', Body, ValidatorState);
 validate_response('products_by_product_group_filter/list', 401, Body, ValidatorState) ->
@@ -1166,6 +1311,50 @@ validate_response('reports/stats', 401, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('reports/stats', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('catalogs/available_filter_values', 200, Body, ValidatorState) ->
+    validate_response_body('CatalogsAvailableFilterValues', 'CatalogsAvailableFilterValues', Body, ValidatorState);
+validate_response('catalogs/available_filter_values', 400, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('catalogs/available_filter_values', 401, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('catalogs/available_filter_values', 403, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('catalogs/available_filter_values', 404, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('catalogs/available_filter_values', 409, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('catalogs/available_filter_values', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('catalogs/create', 200, Body, ValidatorState) ->
+    validate_response_body('Catalog', 'Catalog', Body, ValidatorState);
+validate_response('catalogs/create', 400, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('catalogs/create', 401, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('catalogs/create', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('catalogs/list', 200, Body, ValidatorState) ->
+    validate_response_body('catalogs_list_200_response', 'catalogs_list_200_response', Body, ValidatorState);
+validate_response('catalogs/list', 400, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('catalogs/list', 401, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('catalogs/list', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('conversion_eqs/list', 200, Body, ValidatorState) ->
+    validate_response_body('list', 'EventQualityScore', Body, ValidatorState);
+validate_response('conversion_eqs/list', 400, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('conversion_eqs/list', 401, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('conversion_eqs/list', 403, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('conversion_eqs/list', 404, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('conversion_eqs/list', 429, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('conversion_eqs/list', 0, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('events/create', 200, Body, ValidatorState) ->
     validate_response_body('ConversionApiResponse', 'ConversionApiResponse', Body, ValidatorState);
 validate_response('events/create', 400, Body, ValidatorState) ->
@@ -1183,17 +1372,39 @@ validate_response('events/create', 503, Body, ValidatorState) ->
 validate_response('events/create', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('conversion_tags/create', 200, Body, ValidatorState) ->
-    validate_response_body('ConversionTagResponse', 'ConversionTagResponse', Body, ValidatorState);
+    validate_response_body('ConversionTag', 'ConversionTag', Body, ValidatorState);
+validate_response('conversion_tags/create', 201, Body, ValidatorState) ->
+    validate_response_body('ConversionTag', 'ConversionTag', Body, ValidatorState);
+validate_response('conversion_tags/create', 400, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('conversion_tags/create', 401, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('conversion_tags/create', 403, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('conversion_tags/create', 404, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('conversion_tags/create', 429, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('conversion_tags/create', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('conversion_tags/get', 200, Body, ValidatorState) ->
-    validate_response_body('ConversionTagResponse', 'ConversionTagResponse', Body, ValidatorState);
+    validate_response_body('ConversionTag', 'ConversionTag', Body, ValidatorState);
 validate_response('conversion_tags/get', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('conversion_tags/list', 200, Body, ValidatorState) ->
-    validate_response_body('ConversionTagListResponse', 'ConversionTagListResponse', Body, ValidatorState);
+    validate_response_body('conversion_tags_list_200_response', 'conversion_tags_list_200_response', Body, ValidatorState);
+validate_response('conversion_tags/list', 400, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('conversion_tags/list', 401, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('conversion_tags/list', 403, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('conversion_tags/list', 404, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('conversion_tags/list', 429, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('conversion_tags/list', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('ocpm_eligible_conversion_tags/get', 200, Body, ValidatorState) ->
     validate_response_body('map', 'ConversionEventResponse', Body, ValidatorState);
 validate_response('ocpm_eligible_conversion_tags/get', 0, Body, ValidatorState) ->
@@ -1201,6 +1412,22 @@ validate_response('ocpm_eligible_conversion_tags/get', 0, Body, ValidatorState) 
 validate_response('page_visit_conversion_tags/get', 200, Body, ValidatorState) ->
     validate_response_body('page_visit_conversion_tags_get_200_response', 'page_visit_conversion_tags_get_200_response', Body, ValidatorState);
 validate_response('page_visit_conversion_tags/get', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('advertiser_defined_events/get', 200, Body, ValidatorState) ->
+    validate_response_body('AdvertiserDefinedEventsResponse', 'AdvertiserDefinedEventsResponse', Body, ValidatorState);
+validate_response('advertiser_defined_events/get', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('customer_list_uploads/create', 200, Body, ValidatorState) ->
+    validate_response_body('CustomerListUploadCreateResponse', 'CustomerListUploadCreateResponse', Body, ValidatorState);
+validate_response('customer_list_uploads/create', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('customer_list_uploads/get', 200, Body, ValidatorState) ->
+    validate_response_body('CustomerListUploadResponse', 'CustomerListUploadResponse', Body, ValidatorState);
+validate_response('customer_list_uploads/get', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('customer_list_uploads/run', 200, Body, ValidatorState) ->
+    validate_response_body('CustomerListUploadResponse', 'CustomerListUploadResponse', Body, ValidatorState);
+validate_response('customer_list_uploads/run', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('customer_lists/create', 200, Body, ValidatorState) ->
     validate_response_body('CustomerList', 'CustomerList', Body, ValidatorState);
@@ -1259,7 +1486,7 @@ validate_response('integrations/get_list', 0, Body, ValidatorState) ->
 validate_response('integrations_logs/post', 200, Body, ValidatorState) ->
     validate_response_body('IntegrationLogsSuccessResponse', 'IntegrationLogsSuccessResponse', Body, ValidatorState);
 validate_response('integrations_logs/post', 400, Body, ValidatorState) ->
-    validate_response_body('DetailedError', 'DetailedError', Body, ValidatorState);
+    validate_response_body('integrations_logs_post_400_response', 'integrations_logs_post_400_response', Body, ValidatorState);
 validate_response('integrations_logs/post', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('country_keywords_metrics/get', 200, Body, ValidatorState) ->
@@ -1284,40 +1511,70 @@ validate_response('trending_keywords/list', 400, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('trending_keywords/list', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('labels/create', 200, Body, ValidatorState) ->
+    validate_response_body('LabelsResponse', 'LabelsResponse', Body, ValidatorState);
+validate_response('labels/create', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('labels/list', 200, Body, ValidatorState) ->
+    validate_response_body('labels_list_200_response', 'labels_list_200_response', Body, ValidatorState);
+validate_response('labels/list', 400, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('labels/list', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('labels/update', 200, Body, ValidatorState) ->
+    validate_response_body('LabelsResponse', 'LabelsResponse', Body, ValidatorState);
+validate_response('labels/update', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('ad_accounts_subscriptions/del_by_id', 204, Body, ValidatorState) ->
     validate_response_body('', '', Body, ValidatorState);
 validate_response('ad_accounts_subscriptions/del_by_id', 400, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('ad_accounts_subscriptions/del_by_id', 401, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('ad_accounts_subscriptions/del_by_id', 403, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('ad_accounts_subscriptions/del_by_id', 404, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('ad_accounts_subscriptions/del_by_id', 429, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('ad_accounts_subscriptions/del_by_id', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('ad_accounts_subscriptions/get_by_id', 200, Body, ValidatorState) ->
-    validate_response_body('AdAccountGetSubscriptionResponse', 'AdAccountGetSubscriptionResponse', Body, ValidatorState);
+    validate_response_body('LeadSubscription', 'LeadSubscription', Body, ValidatorState);
 validate_response('ad_accounts_subscriptions/get_by_id', 400, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('ad_accounts_subscriptions/get_by_id', 401, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('ad_accounts_subscriptions/get_by_id', 403, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('ad_accounts_subscriptions/get_by_id', 404, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('ad_accounts_subscriptions/get_by_id', 429, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('ad_accounts_subscriptions/get_by_id', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('ad_accounts_subscriptions/get_list', 200, Body, ValidatorState) ->
     validate_response_body('ad_accounts_subscriptions_get_list_200_response', 'ad_accounts_subscriptions_get_list_200_response', Body, ValidatorState);
+validate_response('ad_accounts_subscriptions/get_list', 400, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('ad_accounts_subscriptions/get_list', 401, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('ad_accounts_subscriptions/get_list', 403, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('ad_accounts_subscriptions/get_list', 404, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('ad_accounts_subscriptions/get_list', 429, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('ad_accounts_subscriptions/get_list', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('ad_accounts_subscriptions/post', 200, Body, ValidatorState) ->
-    validate_response_body('AdAccountCreateSubscriptionResponse', 'AdAccountCreateSubscriptionResponse', Body, ValidatorState);
+    validate_response_body('LeadSubscription', 'LeadSubscription', Body, ValidatorState);
 validate_response('ad_accounts_subscriptions/post', 400, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('ad_accounts_subscriptions/post', 403, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('ad_accounts_subscriptions/post', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('lead_form/get', 200, Body, ValidatorState) ->
     validate_response_body('LeadFormResponse', 'LeadFormResponse', Body, ValidatorState);
 validate_response('lead_form/get', 400, Body, ValidatorState) ->
@@ -1366,23 +1623,83 @@ validate_response('leads_export/get', 404, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('leads_export/get', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('media/create', 200, Body, ValidatorState) ->
+    validate_response_body('MediaUpload', 'MediaUpload', Body, ValidatorState);
 validate_response('media/create', 201, Body, ValidatorState) ->
     validate_response_body('MediaUpload', 'MediaUpload', Body, ValidatorState);
+validate_response('media/create', 400, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('media/create', 401, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('media/create', 403, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('media/create', 404, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('media/create', 429, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('media/create', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('media/get', 200, Body, ValidatorState) ->
-    validate_response_body('MediaUploadDetails', 'MediaUploadDetails', Body, ValidatorState);
+    validate_response_body('Media', 'Media', Body, ValidatorState);
+validate_response('media/get', 400, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('media/get', 401, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('media/get', 403, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('media/get', 404, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('media/get', 429, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('media/get', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('media/list', 200, Body, ValidatorState) ->
     validate_response_body('media_list_200_response', 'media_list_200_response', Body, ValidatorState);
+validate_response('media/list', 400, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('media/list', 401, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('media/list', 403, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('media/list', 404, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('media/list', 429, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('media/list', 0, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('msot_events/create', 200, Body, ValidatorState) ->
+    validate_response_body('', '', Body, ValidatorState);
+validate_response('msot_events/create', 400, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('msot_events/create', 401, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('msot_events/create', 403, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('msot_events/create', 429, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('msot_events/create', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('notification/post', 200, Body, ValidatorState) ->
+    validate_response_body('NotificationResponse', 'NotificationResponse', Body, ValidatorState);
+validate_response('notification/post', 400, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('notification/post', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('oauth/conversion_token', 200, Body, ValidatorState) ->
+    validate_response_body('ConversionAccessTokenResponse', 'ConversionAccessTokenResponse', Body, ValidatorState);
+validate_response('oauth/conversion_token', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('oauth/token', 200, Body, ValidatorState) ->
     validate_response_body('OauthAccessTokenResponse', 'OauthAccessTokenResponse', Body, ValidatorState);
 validate_response('oauth/token', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('token/revoke', 200, Body, ValidatorState) ->
+    validate_response_body('', '', Body, ValidatorState);
+validate_response('token/revoke', 401, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('token/revoke', 403, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('token/revoke', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('order_lines/get', 200, Body, ValidatorState) ->
     validate_response_body('OrderLine', 'OrderLine', Body, ValidatorState);
@@ -1414,40 +1731,64 @@ validate_response('pins/analytics', 404, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('pins/analytics', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('pins/create', 200, Body, ValidatorState) ->
+    validate_response_body('Pin', 'Pin', Body, ValidatorState);
 validate_response('pins/create', 201, Body, ValidatorState) ->
     validate_response_body('Pin', 'Pin', Body, ValidatorState);
 validate_response('pins/create', 400, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('pins/create', 401, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('pins/create', 403, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('pins/create', 404, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('pins/create', 429, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('pins/create', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('pins/delete', 204, Body, ValidatorState) ->
     validate_response_body('', '', Body, ValidatorState);
+validate_response('pins/delete', 400, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('pins/delete', 401, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('pins/delete', 403, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('pins/delete', 404, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('pins/delete', 429, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('pins/delete', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('pins/get', 200, Body, ValidatorState) ->
     validate_response_body('Pin', 'Pin', Body, ValidatorState);
+validate_response('pins/get', 400, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('pins/get', 401, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('pins/get', 403, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('pins/get', 404, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('pins/get', 429, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('pins/get', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('pins/list', 200, Body, ValidatorState) ->
     validate_response_body('pins_list_200_response', 'pins_list_200_response', Body, ValidatorState);
 validate_response('pins/list', 400, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('pins/list', 401, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('pins/list', 403, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('pins/list', 404, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('pins/list', 429, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('pins/list', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('pins/save', 201, Body, ValidatorState) ->
     validate_response_body('Pin', 'Pin', Body, ValidatorState);
 validate_response('pins/save', 403, Body, ValidatorState) ->
@@ -1458,20 +1799,66 @@ validate_response('pins/save', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('pins/update', 200, Body, ValidatorState) ->
     validate_response_body('Pin', 'Pin', Body, ValidatorState);
+validate_response('pins/update', 400, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('pins/update', 401, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('pins/update', 403, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('pins/update', 404, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('pins/update', 429, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('pins/update', 0, Body, ValidatorState) ->
-    validate_response_body('Error', 'Error', Body, ValidatorState);
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('trends_featured_topics/list', 200, Body, ValidatorState) ->
+    validate_response_body('list', 'FeaturedTrend', Body, ValidatorState);
+validate_response('trends_featured_topics/list', 400, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('trends_featured_topics/list', 401, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('trends_featured_topics/list', 403, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('trends_featured_topics/list', 404, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('trends_featured_topics/list', 429, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('trends_featured_topics/list', 0, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('trends_product_categories_details/list', 200, Body, ValidatorState) ->
+    validate_response_body('list', 'ProductCategoryDetails', Body, ValidatorState);
+validate_response('trends_product_categories_details/list', 400, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('trends_product_categories_details/list', 401, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('trends_product_categories_details/list', 403, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('trends_product_categories_details/list', 404, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('trends_product_categories_details/list', 429, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('trends_product_categories_details/list', 0, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('trends_product_categories_trending/list', 200, Body, ValidatorState) ->
+    validate_response_body('list', 'TrendingProductCategory', Body, ValidatorState);
+validate_response('trends_product_categories_trending/list', 400, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('trends_product_categories_trending/list', 401, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('trends_product_categories_trending/list', 403, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('trends_product_categories_trending/list', 404, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('trends_product_categories_trending/list', 429, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
+validate_response('trends_product_categories_trending/list', 0, Body, ValidatorState) ->
+    validate_response_body('Pinterest.Lib.Error', 'Pinterest.Lib.Error', Body, ValidatorState);
 validate_response('product_group_promotions/create', 200, Body, ValidatorState) ->
     validate_response_body('ProductGroupPromotionResponse', 'ProductGroupPromotionResponse', Body, ValidatorState);
 validate_response('product_group_promotions/create', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('product_group_promotions/get', 200, Body, ValidatorState) ->
-    validate_response_body('ProductGroupPromotionResponse', 'ProductGroupPromotionResponse', Body, ValidatorState);
+    validate_response_body('ProductGroupPromotion', 'ProductGroupPromotion', Body, ValidatorState);
 validate_response('product_group_promotions/get', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('product_group_promotions/list', 200, Body, ValidatorState) ->
@@ -1487,6 +1874,34 @@ validate_response('product_groups/analytics', 200, Body, ValidatorState) ->
 validate_response('product_groups/analytics', 400, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('product_groups/analytics', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('promotions/create', 200, Body, ValidatorState) ->
+    validate_response_body('PromotionsResponse', 'PromotionsResponse', Body, ValidatorState);
+validate_response('promotions/create', 400, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('promotions/create', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('promotions/delete', 204, Body, ValidatorState) ->
+    validate_response_body('', '', Body, ValidatorState);
+validate_response('promotions/delete', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('promotions/get', 200, Body, ValidatorState) ->
+    validate_response_body('PromotionResponse', 'PromotionResponse', Body, ValidatorState);
+validate_response('promotions/get', 404, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('promotions/get', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('promotions/list', 200, Body, ValidatorState) ->
+    validate_response_body('promotions_list_200_response', 'promotions_list_200_response', Body, ValidatorState);
+validate_response('promotions/list', 400, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('promotions/list', 0, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('promotions/update', 200, Body, ValidatorState) ->
+    validate_response_body('PromotionsResponse', 'PromotionsResponse', Body, ValidatorState);
+validate_response('promotions/update', 400, Body, ValidatorState) ->
+    validate_response_body('Error', 'Error', Body, ValidatorState);
+validate_response('promotions/update', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('ad_account_countries/get', 200, Body, ValidatorState) ->
     validate_response_body('AdAccountsCountryResponse', 'AdAccountsCountryResponse', Body, ValidatorState);
@@ -1523,7 +1938,7 @@ validate_response('search_user_boards/get', 200, Body, ValidatorState) ->
 validate_response('search_user_boards/get', 0, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('search_user_pins/list', 200, Body, ValidatorState) ->
-    validate_response_body('pins_list_200_response', 'pins_list_200_response', Body, ValidatorState);
+    validate_response_body('search_user_pins_list_200_response', 'search_user_pins_list_200_response', Body, ValidatorState);
 validate_response('search_user_pins/list', 404, Body, ValidatorState) ->
     validate_response_body('Error', 'Error', Body, ValidatorState);
 validate_response('search_user_pins/list', 0, Body, ValidatorState) ->
@@ -1661,7 +2076,8 @@ request_params('ad_account/analytics') ->
         'click_window_days',
         'engagement_window_days',
         'view_window_days',
-        'conversion_report_time'
+        'conversion_report_time',
+        'reporting_timezone'
     ];
 request_params('ad_account_targeting_analytics/get') ->
     [
@@ -1675,11 +2091,12 @@ request_params('ad_account_targeting_analytics/get') ->
         'engagement_window_days',
         'view_window_days',
         'conversion_report_time',
-        'attribution_types'
+        'attribution_types',
+        'reporting_timezone'
     ];
 request_params('ad_accounts/create') ->
     [
-        'AdAccountCreateRequest'
+        'AdAccountCreate'
     ];
 request_params('ad_accounts/get') ->
     [
@@ -1687,9 +2104,14 @@ request_params('ad_accounts/get') ->
     ];
 request_params('ad_accounts/list') ->
     [
+        'include_shared_accounts',
         'bookmark',
-        'page_size',
-        'include_shared_accounts'
+        'page_size'
+    ];
+request_params('analytics/create_conversion_product_report') ->
+    [
+        'ad_account_id',
+        'ConversionProductReportRequest'
     ];
 request_params('analytics/create_mmm_report') ->
     [
@@ -1708,6 +2130,11 @@ request_params('analytics/create_template_report') ->
         'start_date',
         'end_date',
         'granularity'
+    ];
+request_params('analytics/get_conversion_product_report') ->
+    [
+        'ad_account_id',
+        'token'
     ];
 request_params('analytics/get_mmm_report') ->
     [
@@ -1741,7 +2168,9 @@ request_params('ad_groups/analytics') ->
         'click_window_days',
         'engagement_window_days',
         'view_window_days',
-        'conversion_report_time'
+        'conversion_report_time',
+        'aggregate_report_rows',
+        'reporting_timezone'
     ];
 request_params('ad_groups/audience_sizing') ->
     [
@@ -1787,7 +2216,8 @@ request_params('ad_groups_targeting_analytics/get') ->
         'engagement_window_days',
         'view_window_days',
         'conversion_report_time',
-        'attribution_types'
+        'attribution_types',
+        'reporting_timezone'
     ];
 request_params('ad_groups/update') ->
     [
@@ -1812,7 +2242,8 @@ request_params('ad_targeting_analytics/get') ->
         'engagement_window_days',
         'view_window_days',
         'conversion_report_time',
-        'attribution_types'
+        'attribution_types',
+        'reporting_timezone'
     ];
 request_params('ads/analytics') ->
     [
@@ -1827,7 +2258,8 @@ request_params('ads/analytics') ->
         'view_window_days',
         'conversion_report_time',
         'pin_ids',
-        'campaign_ids'
+        'campaign_ids',
+        'reporting_timezone'
     ];
 request_params('ads/create') ->
     [
@@ -1922,11 +2354,6 @@ request_params('audiences/create') ->
         'ad_account_id',
         'AudienceCreateRequest'
     ];
-request_params('audiences/create_custom') ->
-    [
-        'ad_account_id',
-        'AudienceCreateCustomRequest'
-    ];
 request_params('audiences/get') ->
     [
         'ad_account_id',
@@ -1956,6 +2383,23 @@ request_params('ads_credits_discounts/get') ->
         'ad_account_id',
         'bookmark',
         'page_size'
+    ];
+request_params('billing_invoice_download/get') ->
+    [
+        'ad_account_id',
+        'billing_invoice_id'
+    ];
+request_params('billing_invoices/get') ->
+    [
+        'ad_account_id',
+        'bookmark',
+        'page_size',
+        'sort',
+        'order',
+        'status',
+        'document_type',
+        'start_due_date',
+        'end_due_date'
     ];
 request_params('billing_profiles/get') ->
     [
@@ -2032,7 +2476,7 @@ request_params('board_sections/update') ->
     ];
 request_params('boards/create') ->
     [
-        'Board',
+        'BoardCreate',
         'ad_account_id'
     ];
 request_params('boards/delete') ->
@@ -2048,9 +2492,9 @@ request_params('boards/get') ->
 request_params('boards/list') ->
     [
         'ad_account_id',
+        'privacy',
         'bookmark',
-        'page_size',
-        'privacy'
+        'page_size'
     ];
 request_params('boards/list_pins') ->
     [
@@ -2064,7 +2508,7 @@ request_params('boards/list_pins') ->
 request_params('boards/update') ->
     [
         'board_id',
-        'BoardUpdate',
+        'BoardWithUpdatePrivacyUpdate',
         'ad_account_id'
     ];
 request_params('bulk_download/create') ->
@@ -2102,6 +2546,7 @@ request_params('business_asset_members/get') ->
     [
         'business_id',
         'asset_id',
+        'fetch_system_users',
         'bookmark',
         'page_size',
         'start_index'
@@ -2197,6 +2642,17 @@ request_params('respond_business_access_invites') ->
     [
         'AuthRespondInvitesBody'
     ];
+request_params('brand_accounts/create') ->
+    [
+        'business_hierarchy_id',
+        'brand_accounts_create_request'
+    ];
+request_params('brand_accounts/update') ->
+    [
+        'business_hierarchy_id',
+        'brand_account_id',
+        'brand_accounts_update_request'
+    ];
 request_params('delete_business_membership') ->
     [
         'business_id',
@@ -2215,6 +2671,7 @@ request_params('get/business_employers') ->
 request_params('get/business_members') ->
     [
         'business_id',
+        'fetch_system_users',
         'assets_summary',
         'business_roles',
         'member_ids',
@@ -2232,10 +2689,30 @@ request_params('get/business_partners') ->
         'page_size',
         'bookmark'
     ];
+request_params('system_user/update') ->
+    [
+        'business_id',
+        'system_user_id',
+        'system_user_update_request'
+    ];
 request_params('update/business_memberships') ->
     [
         'business_id',
         'array'
+    ];
+request_params('ad_pins/analytics') ->
+    [
+        'ad_account_id',
+        'campaign_id',
+        'pin_ids',
+        'start_date',
+        'end_date',
+        'columns',
+        'granularity',
+        'click_window_days',
+        'engagement_window_days',
+        'view_window_days',
+        'conversion_report_time'
     ];
 request_params('campaign_targeting_analytics/get') ->
     [
@@ -2250,7 +2727,8 @@ request_params('campaign_targeting_analytics/get') ->
         'engagement_window_days',
         'view_window_days',
         'conversion_report_time',
-        'attribution_types'
+        'attribution_types',
+        'reporting_timezone'
     ];
 request_params('campaigns/analytics') ->
     [
@@ -2263,7 +2741,9 @@ request_params('campaigns/analytics') ->
         'click_window_days',
         'engagement_window_days',
         'view_window_days',
-        'conversion_report_time'
+        'conversion_report_time',
+        'aggregate_report_rows',
+        'reporting_timezone'
     ];
 request_params('campaigns/create') ->
     [
@@ -2289,15 +2769,68 @@ request_params('campaigns/update') ->
         'ad_account_id',
         'array'
     ];
-request_params('catalogs/create') ->
+request_params('feed_processing_results/list') ->
     [
-        'CatalogsCreateRequest',
+        'feed_id',
+        'bookmark',
+        'page_size',
         'ad_account_id'
     ];
-request_params('catalogs/list') ->
+request_params('feeds/create') ->
+    [
+        'feeds_create_request',
+        'ad_account_id'
+    ];
+request_params('feeds/delete') ->
+    [
+        'feed_id',
+        'ad_account_id'
+    ];
+request_params('feeds/get') ->
+    [
+        'feed_id',
+        'ad_account_id'
+    ];
+request_params('feeds/ingest') ->
+    [
+        'feed_id',
+        'ad_account_id'
+    ];
+request_params('feeds/list') ->
     [
         'bookmark',
         'page_size',
+        'catalog_id',
+        'ad_account_id'
+    ];
+request_params('feeds/update') ->
+    [
+        'feed_id',
+        'feeds_update_request',
+        'ad_account_id'
+    ];
+request_params('items_issues/list') ->
+    [
+        'processing_result_id',
+        'bookmark',
+        'page_size',
+        'item_numbers',
+        'item_validation_issue',
+        'ad_account_id'
+    ];
+request_params('items_batch/get') ->
+    [
+        'batch_id',
+        'ad_account_id'
+    ];
+request_params('items_batch/post') ->
+    [
+        'items_batch_post_request',
+        'ad_account_id'
+    ];
+request_params('items/post') ->
+    [
+        'CatalogsItemsRequest',
         'ad_account_id'
     ];
 request_params('catalogs_product_group_pins/list') ->
@@ -2353,78 +2886,6 @@ request_params('catalogs_product_groups/update') ->
         'catalogs_product_groups_update_request',
         'ad_account_id'
     ];
-request_params('feed_processing_results/list') ->
-    [
-        'feed_id',
-        'bookmark',
-        'page_size',
-        'ad_account_id'
-    ];
-request_params('feeds/create') ->
-    [
-        'feeds_create_request',
-        'ad_account_id'
-    ];
-request_params('feeds/delete') ->
-    [
-        'feed_id',
-        'ad_account_id'
-    ];
-request_params('feeds/get') ->
-    [
-        'feed_id',
-        'ad_account_id'
-    ];
-request_params('feeds/ingest') ->
-    [
-        'feed_id',
-        'ad_account_id'
-    ];
-request_params('feeds/list') ->
-    [
-        'bookmark',
-        'page_size',
-        'catalog_id',
-        'ad_account_id'
-    ];
-request_params('feeds/update') ->
-    [
-        'feed_id',
-        'feeds_update_request',
-        'ad_account_id'
-    ];
-request_params('items_batch/get') ->
-    [
-        'batch_id',
-        'ad_account_id'
-    ];
-request_params('items_batch/post') ->
-    [
-        'items_batch_post_request',
-        'ad_account_id'
-    ];
-request_params('items/get') ->
-    [
-        'country',
-        'language',
-        'ad_account_id',
-        'item_ids',
-        'filters'
-    ];
-request_params('items_issues/list') ->
-    [
-        'processing_result_id',
-        'bookmark',
-        'page_size',
-        'item_numbers',
-        'item_validation_issue',
-        'ad_account_id'
-    ];
-request_params('items/post') ->
-    [
-        'CatalogsItemsRequest',
-        'ad_account_id'
-    ];
 request_params('products_by_product_group_filter/list') ->
     [
         'CatalogsListProductsByFilterRequest',
@@ -2449,6 +2910,32 @@ request_params('reports/stats') ->
         'ad_account_id',
         'page_size',
         'bookmark'
+    ];
+request_params('catalogs/available_filter_values') ->
+    [
+        'catalog_id',
+        'feed_id',
+        'country',
+        'language',
+        'ad_account_id'
+    ];
+request_params('catalogs/create') ->
+    [
+        'CatalogsCreateRequest',
+        'ad_account_id'
+    ];
+request_params('catalogs/list') ->
+    [
+        'bookmark',
+        'page_size',
+        'ad_account_id'
+    ];
+request_params('conversion_eqs/list') ->
+    [
+        'lookback_period',
+        'ad_account_id',
+        'source_platform',
+        'ingestion_source'
     ];
 request_params('events/create') ->
     [
@@ -2481,6 +2968,28 @@ request_params('page_visit_conversion_tags/get') ->
         'page_size',
         'order',
         'bookmark'
+    ];
+request_params('advertiser_defined_events/get') ->
+    [
+        'ad_account_id'
+    ];
+request_params('customer_list_uploads/create') ->
+    [
+        'ad_account_id',
+        'customer_list_id',
+        'CustomerListUploadCreateRequest'
+    ];
+request_params('customer_list_uploads/get') ->
+    [
+        'ad_account_id',
+        'customer_list_id',
+        'customer_list_upload_id'
+    ];
+request_params('customer_list_uploads/run') ->
+    [
+        'ad_account_id',
+        'customer_list_id',
+        'customer_list_upload_id'
     ];
 request_params('customer_lists/create') ->
     [
@@ -2551,6 +3060,7 @@ request_params('keywords/get') ->
         'ad_account_id',
         'campaign_id',
         'ad_group_id',
+        'ad_group_ids',
         'match_types',
         'page_size',
         'bookmark'
@@ -2569,7 +3079,29 @@ request_params('trending_keywords/list') ->
         'ages',
         'include_keywords',
         'normalize_against_group',
-        'limit'
+        'limit',
+        'include_prediction',
+        'include_demographics'
+    ];
+request_params('labels/create') ->
+    [
+        'ad_account_id',
+        'LabelCreateRequest'
+    ];
+request_params('labels/list') ->
+    [
+        'ad_account_id',
+        'campaign_ids',
+        'label_ids',
+        'entity_statuses',
+        'label_types',
+        'page_size',
+        'bookmark'
+    ];
+request_params('labels/update') ->
+    [
+        'ad_account_id',
+        'LabelUpdateRequest'
     ];
 request_params('ad_accounts_subscriptions/del_by_id') ->
     [
@@ -2584,13 +3116,13 @@ request_params('ad_accounts_subscriptions/get_by_id') ->
 request_params('ad_accounts_subscriptions/get_list') ->
     [
         'ad_account_id',
-        'page_size',
-        'bookmark'
+        'bookmark',
+        'page_size'
     ];
 request_params('ad_accounts_subscriptions/post') ->
     [
         'ad_account_id',
-        'AdAccountCreateSubscriptionRequest'
+        'LeadSubscriptionPostParamsCreate'
     ];
 request_params('lead_form/get') ->
     [
@@ -2632,7 +3164,7 @@ request_params('leads_export/get') ->
     ];
 request_params('media/create') ->
     [
-        'MediaUploadRequest'
+        'MediaUploadCreate'
     ];
 request_params('media/get') ->
     [
@@ -2643,9 +3175,26 @@ request_params('media/list') ->
         'bookmark',
         'page_size'
     ];
+request_params('msot_events/create') ->
+    [
+        'ad_account_id',
+        'ConversionMSOTEvents'
+    ];
+request_params('notification/post') ->
+    [
+        'notification_post_request'
+    ];
+request_params('oauth/conversion_token') ->
+    [
+    ];
 request_params('oauth/token') ->
     [
         'grant_type'
+    ];
+request_params('token/revoke') ->
+    [
+        'token',
+        'token_type_hint'
     ];
 request_params('order_lines/get') ->
     [
@@ -2691,19 +3240,19 @@ request_params('pins/delete') ->
 request_params('pins/get') ->
     [
         'pin_id',
-        'pin_metrics',
-        'ad_account_id'
+        'ad_account_id',
+        'pin_metrics'
     ];
 request_params('pins/list') ->
     [
-        'bookmark',
-        'page_size',
         'pin_filter',
+        'pin_metrics',
         'include_protected_pins',
         'pin_type',
         'creative_types',
         'ad_account_id',
-        'pin_metrics'
+        'bookmark',
+        'page_size'
     ];
 request_params('pins/save') ->
     [
@@ -2716,6 +3265,26 @@ request_params('pins/update') ->
         'pin_id',
         'PinUpdate',
         'ad_account_id'
+    ];
+request_params('trends_featured_topics/list') ->
+    [
+        'region',
+        'interest'
+    ];
+request_params('trends_product_categories_details/list') ->
+    [
+        'product_categories',
+        'region',
+        'lookback_window',
+        'engagement_type'
+    ];
+request_params('trends_product_categories_trending/list') ->
+    [
+        'region',
+        'verticals',
+        'ages',
+        'genders',
+        'engagement_type'
     ];
 request_params('product_group_promotions/create') ->
     [
@@ -2753,7 +3322,35 @@ request_params('product_groups/analytics') ->
         'click_window_days',
         'engagement_window_days',
         'view_window_days',
-        'conversion_report_time'
+        'conversion_report_time',
+        'reporting_timezone'
+    ];
+request_params('promotions/create') ->
+    [
+        'ad_account_id',
+        'array'
+    ];
+request_params('promotions/delete') ->
+    [
+        'ad_account_id',
+        'promotion_id'
+    ];
+request_params('promotions/get') ->
+    [
+        'ad_account_id',
+        'promotion_id'
+    ];
+request_params('promotions/list') ->
+    [
+        'ad_account_id',
+        'page_size',
+        'order',
+        'bookmark'
+    ];
+request_params('promotions/update') ->
+    [
+        'ad_account_id',
+        'array'
     ];
 request_params('ad_account_countries/get') ->
     [
@@ -2970,7 +3567,7 @@ request_param_info('ad_account/analytics', 'columns') ->
     #{
         source => qs_val,
         rules => [
-            {enum, ['SPEND_IN_MICRO_DOLLAR', 'PAID_IMPRESSION', 'SPEND_IN_DOLLAR', 'CPC_IN_MICRO_DOLLAR', 'ECPC_IN_MICRO_DOLLAR', 'ECPC_IN_DOLLAR', 'CTR', 'ECTR', 'CAMPAIGN_NAME', 'PIN_ID', 'TOTAL_ENGAGEMENT', 'ENGAGEMENT_1', 'ENGAGEMENT_2', 'ECPE_IN_DOLLAR', 'ENGAGEMENT_RATE', 'EENGAGEMENT_RATE', 'ECPM_IN_MICRO_DOLLAR', 'REPIN_RATE', 'CTR_2', 'CAMPAIGN_ID', 'ADVERTISER_ID', 'AD_ACCOUNT_ID', 'PIN_PROMOTION_ID', 'AD_ID', 'AD_GROUP_ID', 'CAMPAIGN_ENTITY_STATUS', 'CAMPAIGN_OBJECTIVE_TYPE', 'CPM_IN_MICRO_DOLLAR', 'CPM_IN_DOLLAR', 'AD_GROUP_ENTITY_STATUS', 'ORDER_LINE_ID', 'ORDER_LINE_NAME', 'CLICKTHROUGH_1', 'REPIN_1', 'IMPRESSION_1', 'IMPRESSION_1_GROSS', 'CLICKTHROUGH_1_GROSS', 'OUTBOUND_CLICK_1', 'CLICKTHROUGH_2', 'REPIN_2', 'IMPRESSION_2', 'OUTBOUND_CLICK_2', 'TOTAL_CLICKTHROUGH', 'TOTAL_IMPRESSION', 'TOTAL_IMPRESSION_USER', 'TOTAL_IMPRESSION_FREQUENCY', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR', 'TOTAL_ENGAGEMENT_SIGNUP', 'TOTAL_ENGAGEMENT_CHECKOUT', 'TOTAL_ENGAGEMENT_LEAD', 'TOTAL_CLICK_SIGNUP', 'TOTAL_CLICK_CHECKOUT', 'TOTAL_CLICK_ADD_TO_CART', 'TOTAL_CLICK_LEAD', 'TOTAL_VIEW_SIGNUP', 'TOTAL_VIEW_CHECKOUT', 'TOTAL_VIEW_ADD_TO_CART', 'TOTAL_VIEW_LEAD', 'TOTAL_CONVERSIONS', 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_SESSIONS', 'WEB_SESSIONS_1', 'WEB_SESSIONS_2', 'CAMPAIGN_LIFETIME_SPEND_CAP', 'CAMPAIGN_DAILY_SPEND_CAP', 'TOTAL_PAGE_VISIT', 'TOTAL_SIGNUP', 'TOTAL_CHECKOUT', 'TOTAL_CUSTOM', 'TOTAL_LEAD', 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR', 'PAGE_VISIT_COST_PER_ACTION', 'PAGE_VISIT_ROAS', 'CHECKOUT_ROAS', 'CUSTOM_ROAS', 'VIDEO_MRC_VIEWS_1', 'VIDEO_3SEC_VIEWS_2', 'VIDEO_P100_COMPLETE_2', 'VIDEO_P0_COMBINED_2', 'VIDEO_P25_COMBINED_2', 'VIDEO_P50_COMBINED_2', 'VIDEO_P75_COMBINED_2', 'VIDEO_P95_COMBINED_2', 'VIDEO_MRC_VIEWS_2', 'PAID_VIDEO_VIEWABLE_RATE', 'VIDEO_LENGTH', 'ECPV_IN_DOLLAR', 'ECPCV_IN_DOLLAR', 'ECPCV_P95_IN_DOLLAR', 'TOTAL_VIDEO_3SEC_VIEWS', 'TOTAL_VIDEO_P100_COMPLETE', 'TOTAL_VIDEO_P0_COMBINED', 'TOTAL_VIDEO_P25_COMBINED', 'TOTAL_VIDEO_P50_COMBINED', 'TOTAL_VIDEO_P75_COMBINED', 'TOTAL_VIDEO_P95_COMBINED', 'TOTAL_VIDEO_MRC_VIEWS', 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND', 'TOTAL_REPIN_RATE', 'WEB_CHECKOUT_COST_PER_ACTION', 'WEB_CHECKOUT_ROAS', 'TOTAL_WEB_CHECKOUT', 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_CLICK_CHECKOUT', 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_VIEW_CHECKOUT', 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'INAPP_CHECKOUT_COST_PER_ACTION', 'TOTAL_OFFLINE_CHECKOUT', 'IDEA_PIN_PRODUCT_TAG_VISIT_1', 'IDEA_PIN_PRODUCT_TAG_VISIT_2', 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT', 'LEADS', 'COST_PER_LEAD', 'QUIZ_COMPLETED', 'QUIZ_PIN_RESULT_OPEN', 'QUIZ_COMPLETION_RATE', 'SHOWCASE_PIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_CLICKTHROUGH', 'SHOWCASE_SUBPIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_IMPRESSION', 'SHOWCASE_SUBPIN_IMPRESSION', 'SHOWCASE_SUBPAGE_SWIPE_LEFT', 'SHOWCASE_SUBPAGE_SWIPE_RIGHT', 'SHOWCASE_SUBPIN_SWIPE_LEFT', 'SHOWCASE_SUBPIN_SWIPE_RIGHT', 'SHOWCASE_SUBPAGE_REPIN', 'SHOWCASE_SUBPIN_REPIN', 'SHOWCASE_SUBPAGE_CLOSEUP', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD', 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION', 'TOTAL_CHECKOUT_CONVERSION_RATE', 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE', 'TOTAL_ADD_TO_CART_CONVERSION_RATE', 'TOTAL_SIGNUP_CONVERSION_RATE', 'TOTAL_PAGE_VISIT_CONVERSION_RATE', 'TOTAL_LEAD_CONVERSION_RATE', 'TOTAL_SEARCH_CONVERSION_RATE', 'TOTAL_WATCH_VIDEO_CONVERSION_RATE', 'TOTAL_UNKNOWN_CONVERSION_RATE', 'TOTAL_CUSTOM_CONVERSION_RATE'] },
+            {enum, ['SPEND_IN_MICRO_DOLLAR', 'PAID_IMPRESSION', 'SPEND_IN_DOLLAR', 'CPC_IN_MICRO_DOLLAR', 'ECPC_IN_MICRO_DOLLAR', 'ECPC_IN_DOLLAR', 'CTR', 'ECTR', 'OUTBOUND_CTR_1', 'CAMPAIGN_NAME', 'CAMPAIGN_BRAND_LABEL', 'PIN_ID', 'TOTAL_ENGAGEMENT', 'ENGAGEMENT_1', 'ENGAGEMENT_2', 'ECPE_IN_DOLLAR', 'ENGAGEMENT_RATE', 'EENGAGEMENT_RATE', 'ECPM_IN_MICRO_DOLLAR', 'REPIN_RATE', 'CTR_2', 'CAMPAIGN_ID', 'ADVERTISER_ID', 'AD_ACCOUNT_ID', 'PIN_PROMOTION_ID', 'AD_ID', 'AD_GROUP_ID', 'CAMPAIGN_ENTITY_STATUS', 'CAMPAIGN_OBJECTIVE_TYPE', 'CPM_IN_MICRO_DOLLAR', 'CPM_IN_DOLLAR', 'AD_GROUP_NAME', 'AD_GROUP_BUDGET_TYPE', 'AD_GROUP_BUDGET_IN_LOCAL_CURRENCY', 'AD_GROUP_ENTITY_STATUS', 'AD_GROUP_BID_MULTIPLIER', 'PROMO_ID', 'PROMO_NAME', 'ORDER_LINE_ID', 'ORDER_LINE_NAME', 'CLICKTHROUGH_1', 'REPIN_1', 'IMPRESSION_1', 'IMPRESSION_1_GROSS', 'CLICKTHROUGH_1_GROSS', 'OUTBOUND_CLICK_1', 'CLICKTHROUGH_2', 'REPIN_2', 'IMPRESSION_2', 'OUTBOUND_CLICK_2', 'TOTAL_CLICKTHROUGH', 'TOTAL_IMPRESSION', 'TOTAL_IMPRESSION_USER', 'TOTAL_IMPRESSION_FREQUENCY', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1', 'TOTAL_ENGAGEMENT_SIGNUP', 'TOTAL_ENGAGEMENT_CHECKOUT', 'TOTAL_ENGAGEMENT_LEAD', 'TOTAL_CLICK_SIGNUP', 'TOTAL_CLICK_CHECKOUT', 'TOTAL_CLICK_ADD_TO_CART', 'TOTAL_CLICK_LEAD', 'TOTAL_VIEW_SIGNUP', 'TOTAL_VIEW_CHECKOUT', 'TOTAL_VIEW_ADD_TO_CART', 'TOTAL_VIEW_LEAD', 'TOTAL_CONVERSIONS', 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_SESSIONS', 'WEB_SESSIONS_1', 'WEB_SESSIONS_2', 'AD_NAME', 'CAMPAIGN_LIFETIME_SPEND_CAP', 'AD_GROUP_OPTIMIZATION', 'CAMPAIGN_DAILY_SPEND_CAP', 'CAMPAIGN_BUDGET_OPTIMIZATION', 'IS_PREMIERE_CAMPAIGN', 'TOTAL_PAGE_VISIT', 'TOTAL_SIGNUP', 'TOTAL_CHECKOUT', 'TOTAL_CUSTOM', 'TOTAL_LEAD', 'TOTAL_ADD_TO_WISHLIST', 'TOTAL_SUBSCRIBE', 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR', 'PAGE_VISIT_COST_PER_ACTION', 'PAGE_VISIT_ROAS', 'CHECKOUT_ROAS', 'CUSTOM_ROAS', 'PRODUCT_GROUP_AD_IMAGE_TAG', 'PRODUCT_GROUP_AD_VIDEO_TAG', 'VIDEO_3SEC_VIEWS_1', 'VIDEO_15SEC_UNIQUE_VIEWS_1', 'VIDEO_MRC_VIEWS_1', 'VIDEO_3SEC_VIEWS_2', 'VIDEO_15SEC_UNIQUE_VIEWS_2', 'VIDEO_P100_COMPLETE_2', 'VIDEO_P0_COMBINED_2', 'VIDEO_P25_COMBINED_2', 'VIDEO_P50_COMBINED_2', 'VIDEO_P75_COMBINED_2', 'VIDEO_P95_COMBINED_2', 'VIDEO_MRC_VIEWS_2', 'PAID_VIDEO_VIEWABLE_RATE', 'VIDEO_LENGTH', 'VIDEO_SPEND_IN_DOLLAR', 'ECPV_IN_DOLLAR', 'ECPCV_IN_DOLLAR', 'ECPCV_P95_IN_DOLLAR', 'TOTAL_VIDEO_3SEC_VIEWS', 'TOTAL_VIDEO_15SEC_UNIQUE_VIEWS', 'TOTAL_VIDEO_P100_COMPLETE', 'TOTAL_VIDEO_P0_COMBINED', 'TOTAL_VIDEO_P25_COMBINED', 'TOTAL_VIDEO_P50_COMBINED', 'TOTAL_VIDEO_P75_COMBINED', 'TOTAL_VIDEO_P95_COMBINED', 'TOTAL_VIDEO_MRC_VIEWS', 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND', 'TOTAL_REPIN_RATE', 'WEB_CHECKOUT_COST_PER_ACTION', 'WEB_CHECKOUT_ROAS', 'TOTAL_WEB_CHECKOUT', 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_CLICK_CHECKOUT', 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_VIEW_CHECKOUT', 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'INAPP_CHECKOUT_COST_PER_ACTION', 'TOTAL_OFFLINE_CHECKOUT', 'TOTAL_APP_INSTALL_CONVERSION_RATE', 'TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE', 'IDEA_PIN_PRODUCT_TAG_VISIT_1', 'IDEA_PIN_PRODUCT_TAG_VISIT_2', 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT', 'LEADS', 'COST_PER_LEAD', 'QUIZ_COMPLETED', 'QUIZ_PIN_RESULT_OPEN', 'QUIZ_COMPLETION_RATE', 'SHOWCASE_PIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_CLICKTHROUGH', 'SHOWCASE_SUBPIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_IMPRESSION', 'SHOWCASE_SUBPIN_IMPRESSION', 'SHOWCASE_SUBPAGE_SWIPE_LEFT', 'SHOWCASE_SUBPAGE_SWIPE_RIGHT', 'SHOWCASE_SUBPIN_SWIPE_LEFT', 'SHOWCASE_SUBPIN_SWIPE_RIGHT', 'SHOWCASE_SUBPAGE_REPIN', 'SHOWCASE_SUBPIN_REPIN', 'SHOWCASE_SUBPAGE_CLOSEUP', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD', 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION', 'TOTAL_CHECKOUT_CONVERSION_RATE', 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE', 'TOTAL_ADD_TO_CART_CONVERSION_RATE', 'TOTAL_SIGNUP_CONVERSION_RATE', 'TOTAL_PAGE_VISIT_CONVERSION_RATE', 'TOTAL_LEAD_CONVERSION_RATE', 'TOTAL_SEARCH_CONVERSION_RATE', 'TOTAL_WATCH_VIDEO_CONVERSION_RATE', 'TOTAL_UNKNOWN_CONVERSION_RATE', 'TOTAL_CUSTOM_CONVERSION_RATE'] },
             required
         ]
     };
@@ -3017,6 +3614,13 @@ request_param_info('ad_account/analytics', 'conversion_report_time') ->
             not_required
         ]
     };
+request_param_info('ad_account/analytics', 'reporting_timezone') ->
+    #{
+        source => qs_val,
+        rules => [
+            not_required
+        ]
+    };
 request_param_info('ad_account_targeting_analytics/get', 'ad_account_id') ->
     #{
         source => binding,
@@ -3054,7 +3658,7 @@ request_param_info('ad_account_targeting_analytics/get', 'columns') ->
     #{
         source => qs_val,
         rules => [
-            {enum, ['SPEND_IN_MICRO_DOLLAR', 'PAID_IMPRESSION', 'SPEND_IN_DOLLAR', 'CPC_IN_MICRO_DOLLAR', 'ECPC_IN_MICRO_DOLLAR', 'ECPC_IN_DOLLAR', 'CTR', 'ECTR', 'CAMPAIGN_NAME', 'PIN_ID', 'TOTAL_ENGAGEMENT', 'ENGAGEMENT_1', 'ENGAGEMENT_2', 'ECPE_IN_DOLLAR', 'ENGAGEMENT_RATE', 'EENGAGEMENT_RATE', 'ECPM_IN_MICRO_DOLLAR', 'REPIN_RATE', 'CTR_2', 'CAMPAIGN_ID', 'ADVERTISER_ID', 'AD_ACCOUNT_ID', 'PIN_PROMOTION_ID', 'AD_ID', 'AD_GROUP_ID', 'CAMPAIGN_ENTITY_STATUS', 'CAMPAIGN_OBJECTIVE_TYPE', 'CPM_IN_MICRO_DOLLAR', 'CPM_IN_DOLLAR', 'AD_GROUP_ENTITY_STATUS', 'ORDER_LINE_ID', 'ORDER_LINE_NAME', 'CLICKTHROUGH_1', 'REPIN_1', 'IMPRESSION_1', 'IMPRESSION_1_GROSS', 'CLICKTHROUGH_1_GROSS', 'OUTBOUND_CLICK_1', 'CLICKTHROUGH_2', 'REPIN_2', 'IMPRESSION_2', 'OUTBOUND_CLICK_2', 'TOTAL_CLICKTHROUGH', 'TOTAL_IMPRESSION', 'TOTAL_IMPRESSION_USER', 'TOTAL_IMPRESSION_FREQUENCY', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR', 'TOTAL_ENGAGEMENT_SIGNUP', 'TOTAL_ENGAGEMENT_CHECKOUT', 'TOTAL_ENGAGEMENT_LEAD', 'TOTAL_CLICK_SIGNUP', 'TOTAL_CLICK_CHECKOUT', 'TOTAL_CLICK_ADD_TO_CART', 'TOTAL_CLICK_LEAD', 'TOTAL_VIEW_SIGNUP', 'TOTAL_VIEW_CHECKOUT', 'TOTAL_VIEW_ADD_TO_CART', 'TOTAL_VIEW_LEAD', 'TOTAL_CONVERSIONS', 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_SESSIONS', 'WEB_SESSIONS_1', 'WEB_SESSIONS_2', 'CAMPAIGN_LIFETIME_SPEND_CAP', 'CAMPAIGN_DAILY_SPEND_CAP', 'TOTAL_PAGE_VISIT', 'TOTAL_SIGNUP', 'TOTAL_CHECKOUT', 'TOTAL_CUSTOM', 'TOTAL_LEAD', 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR', 'PAGE_VISIT_COST_PER_ACTION', 'PAGE_VISIT_ROAS', 'CHECKOUT_ROAS', 'CUSTOM_ROAS', 'VIDEO_MRC_VIEWS_1', 'VIDEO_3SEC_VIEWS_2', 'VIDEO_P100_COMPLETE_2', 'VIDEO_P0_COMBINED_2', 'VIDEO_P25_COMBINED_2', 'VIDEO_P50_COMBINED_2', 'VIDEO_P75_COMBINED_2', 'VIDEO_P95_COMBINED_2', 'VIDEO_MRC_VIEWS_2', 'PAID_VIDEO_VIEWABLE_RATE', 'VIDEO_LENGTH', 'ECPV_IN_DOLLAR', 'ECPCV_IN_DOLLAR', 'ECPCV_P95_IN_DOLLAR', 'TOTAL_VIDEO_3SEC_VIEWS', 'TOTAL_VIDEO_P100_COMPLETE', 'TOTAL_VIDEO_P0_COMBINED', 'TOTAL_VIDEO_P25_COMBINED', 'TOTAL_VIDEO_P50_COMBINED', 'TOTAL_VIDEO_P75_COMBINED', 'TOTAL_VIDEO_P95_COMBINED', 'TOTAL_VIDEO_MRC_VIEWS', 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND', 'TOTAL_REPIN_RATE', 'WEB_CHECKOUT_COST_PER_ACTION', 'WEB_CHECKOUT_ROAS', 'TOTAL_WEB_CHECKOUT', 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_CLICK_CHECKOUT', 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_VIEW_CHECKOUT', 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'INAPP_CHECKOUT_COST_PER_ACTION', 'TOTAL_OFFLINE_CHECKOUT', 'IDEA_PIN_PRODUCT_TAG_VISIT_1', 'IDEA_PIN_PRODUCT_TAG_VISIT_2', 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT', 'LEADS', 'COST_PER_LEAD', 'QUIZ_COMPLETED', 'QUIZ_PIN_RESULT_OPEN', 'QUIZ_COMPLETION_RATE', 'SHOWCASE_PIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_CLICKTHROUGH', 'SHOWCASE_SUBPIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_IMPRESSION', 'SHOWCASE_SUBPIN_IMPRESSION', 'SHOWCASE_SUBPAGE_SWIPE_LEFT', 'SHOWCASE_SUBPAGE_SWIPE_RIGHT', 'SHOWCASE_SUBPIN_SWIPE_LEFT', 'SHOWCASE_SUBPIN_SWIPE_RIGHT', 'SHOWCASE_SUBPAGE_REPIN', 'SHOWCASE_SUBPIN_REPIN', 'SHOWCASE_SUBPAGE_CLOSEUP', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD', 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION', 'TOTAL_CHECKOUT_CONVERSION_RATE', 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE', 'TOTAL_ADD_TO_CART_CONVERSION_RATE', 'TOTAL_SIGNUP_CONVERSION_RATE', 'TOTAL_PAGE_VISIT_CONVERSION_RATE', 'TOTAL_LEAD_CONVERSION_RATE', 'TOTAL_SEARCH_CONVERSION_RATE', 'TOTAL_WATCH_VIDEO_CONVERSION_RATE', 'TOTAL_UNKNOWN_CONVERSION_RATE', 'TOTAL_CUSTOM_CONVERSION_RATE'] },
+            {enum, ['SPEND_IN_MICRO_DOLLAR', 'PAID_IMPRESSION', 'SPEND_IN_DOLLAR', 'CPC_IN_MICRO_DOLLAR', 'ECPC_IN_MICRO_DOLLAR', 'ECPC_IN_DOLLAR', 'CTR', 'ECTR', 'OUTBOUND_CTR_1', 'CAMPAIGN_NAME', 'CAMPAIGN_BRAND_LABEL', 'PIN_ID', 'TOTAL_ENGAGEMENT', 'ENGAGEMENT_1', 'ENGAGEMENT_2', 'ECPE_IN_DOLLAR', 'ENGAGEMENT_RATE', 'EENGAGEMENT_RATE', 'ECPM_IN_MICRO_DOLLAR', 'REPIN_RATE', 'CTR_2', 'CAMPAIGN_ID', 'ADVERTISER_ID', 'AD_ACCOUNT_ID', 'PIN_PROMOTION_ID', 'AD_ID', 'AD_GROUP_ID', 'CAMPAIGN_ENTITY_STATUS', 'CAMPAIGN_OBJECTIVE_TYPE', 'CPM_IN_MICRO_DOLLAR', 'CPM_IN_DOLLAR', 'AD_GROUP_NAME', 'AD_GROUP_BUDGET_TYPE', 'AD_GROUP_BUDGET_IN_LOCAL_CURRENCY', 'AD_GROUP_ENTITY_STATUS', 'AD_GROUP_BID_MULTIPLIER', 'PROMO_ID', 'PROMO_NAME', 'ORDER_LINE_ID', 'ORDER_LINE_NAME', 'CLICKTHROUGH_1', 'REPIN_1', 'IMPRESSION_1', 'IMPRESSION_1_GROSS', 'CLICKTHROUGH_1_GROSS', 'OUTBOUND_CLICK_1', 'CLICKTHROUGH_2', 'REPIN_2', 'IMPRESSION_2', 'OUTBOUND_CLICK_2', 'TOTAL_CLICKTHROUGH', 'TOTAL_IMPRESSION', 'TOTAL_IMPRESSION_USER', 'TOTAL_IMPRESSION_FREQUENCY', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1', 'TOTAL_ENGAGEMENT_SIGNUP', 'TOTAL_ENGAGEMENT_CHECKOUT', 'TOTAL_ENGAGEMENT_LEAD', 'TOTAL_CLICK_SIGNUP', 'TOTAL_CLICK_CHECKOUT', 'TOTAL_CLICK_ADD_TO_CART', 'TOTAL_CLICK_LEAD', 'TOTAL_VIEW_SIGNUP', 'TOTAL_VIEW_CHECKOUT', 'TOTAL_VIEW_ADD_TO_CART', 'TOTAL_VIEW_LEAD', 'TOTAL_CONVERSIONS', 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_SESSIONS', 'WEB_SESSIONS_1', 'WEB_SESSIONS_2', 'AD_NAME', 'CAMPAIGN_LIFETIME_SPEND_CAP', 'AD_GROUP_OPTIMIZATION', 'CAMPAIGN_DAILY_SPEND_CAP', 'CAMPAIGN_BUDGET_OPTIMIZATION', 'IS_PREMIERE_CAMPAIGN', 'TOTAL_PAGE_VISIT', 'TOTAL_SIGNUP', 'TOTAL_CHECKOUT', 'TOTAL_CUSTOM', 'TOTAL_LEAD', 'TOTAL_ADD_TO_WISHLIST', 'TOTAL_SUBSCRIBE', 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR', 'PAGE_VISIT_COST_PER_ACTION', 'PAGE_VISIT_ROAS', 'CHECKOUT_ROAS', 'CUSTOM_ROAS', 'PRODUCT_GROUP_AD_IMAGE_TAG', 'PRODUCT_GROUP_AD_VIDEO_TAG', 'VIDEO_3SEC_VIEWS_1', 'VIDEO_15SEC_UNIQUE_VIEWS_1', 'VIDEO_MRC_VIEWS_1', 'VIDEO_3SEC_VIEWS_2', 'VIDEO_15SEC_UNIQUE_VIEWS_2', 'VIDEO_P100_COMPLETE_2', 'VIDEO_P0_COMBINED_2', 'VIDEO_P25_COMBINED_2', 'VIDEO_P50_COMBINED_2', 'VIDEO_P75_COMBINED_2', 'VIDEO_P95_COMBINED_2', 'VIDEO_MRC_VIEWS_2', 'PAID_VIDEO_VIEWABLE_RATE', 'VIDEO_LENGTH', 'VIDEO_SPEND_IN_DOLLAR', 'ECPV_IN_DOLLAR', 'ECPCV_IN_DOLLAR', 'ECPCV_P95_IN_DOLLAR', 'TOTAL_VIDEO_3SEC_VIEWS', 'TOTAL_VIDEO_15SEC_UNIQUE_VIEWS', 'TOTAL_VIDEO_P100_COMPLETE', 'TOTAL_VIDEO_P0_COMBINED', 'TOTAL_VIDEO_P25_COMBINED', 'TOTAL_VIDEO_P50_COMBINED', 'TOTAL_VIDEO_P75_COMBINED', 'TOTAL_VIDEO_P95_COMBINED', 'TOTAL_VIDEO_MRC_VIEWS', 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND', 'TOTAL_REPIN_RATE', 'WEB_CHECKOUT_COST_PER_ACTION', 'WEB_CHECKOUT_ROAS', 'TOTAL_WEB_CHECKOUT', 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_CLICK_CHECKOUT', 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_VIEW_CHECKOUT', 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'INAPP_CHECKOUT_COST_PER_ACTION', 'TOTAL_OFFLINE_CHECKOUT', 'TOTAL_APP_INSTALL_CONVERSION_RATE', 'TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE', 'IDEA_PIN_PRODUCT_TAG_VISIT_1', 'IDEA_PIN_PRODUCT_TAG_VISIT_2', 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT', 'LEADS', 'COST_PER_LEAD', 'QUIZ_COMPLETED', 'QUIZ_PIN_RESULT_OPEN', 'QUIZ_COMPLETION_RATE', 'SHOWCASE_PIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_CLICKTHROUGH', 'SHOWCASE_SUBPIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_IMPRESSION', 'SHOWCASE_SUBPIN_IMPRESSION', 'SHOWCASE_SUBPAGE_SWIPE_LEFT', 'SHOWCASE_SUBPAGE_SWIPE_RIGHT', 'SHOWCASE_SUBPIN_SWIPE_LEFT', 'SHOWCASE_SUBPIN_SWIPE_RIGHT', 'SHOWCASE_SUBPAGE_REPIN', 'SHOWCASE_SUBPIN_REPIN', 'SHOWCASE_SUBPAGE_CLOSEUP', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD', 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION', 'TOTAL_CHECKOUT_CONVERSION_RATE', 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE', 'TOTAL_ADD_TO_CART_CONVERSION_RATE', 'TOTAL_SIGNUP_CONVERSION_RATE', 'TOTAL_PAGE_VISIT_CONVERSION_RATE', 'TOTAL_LEAD_CONVERSION_RATE', 'TOTAL_SEARCH_CONVERSION_RATE', 'TOTAL_WATCH_VIDEO_CONVERSION_RATE', 'TOTAL_UNKNOWN_CONVERSION_RATE', 'TOTAL_CUSTOM_CONVERSION_RATE'] },
             required
         ]
     };
@@ -3108,11 +3712,18 @@ request_param_info('ad_account_targeting_analytics/get', 'attribution_types') ->
             not_required
         ]
     };
-request_param_info('ad_accounts/create', 'AdAccountCreateRequest') ->
+request_param_info('ad_account_targeting_analytics/get', 'reporting_timezone') ->
+    #{
+        source => qs_val,
+        rules => [
+            not_required
+        ]
+    };
+request_param_info('ad_accounts/create', 'AdAccountCreate') ->
     #{
         source => body,
         rules => [
-            {schema, object, <<"#/components/schemas/AdAccountCreateRequest">>},
+            {schema, object, <<"#/components/schemas/AdAccountCreate">>},
             required
         ]
     };
@@ -3124,6 +3735,14 @@ request_param_info('ad_accounts/get', 'ad_account_id') ->
             {max_length, 18},
             {pattern, "^\\d+$"},
             required
+        ]
+    };
+request_param_info('ad_accounts/list', 'include_shared_accounts') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, boolean},
+            not_required
         ]
     };
 request_param_info('ad_accounts/list', 'bookmark') ->
@@ -3144,12 +3763,22 @@ request_param_info('ad_accounts/list', 'page_size') ->
             not_required
         ]
     };
-request_param_info('ad_accounts/list', 'include_shared_accounts') ->
+request_param_info('analytics/create_conversion_product_report', 'ad_account_id') ->
     #{
-        source => qs_val,
+        source => binding,
         rules => [
-            {type, boolean},
-            not_required
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('analytics/create_conversion_product_report', 'ConversionProductReportRequest') ->
+    #{
+        source => body,
+        rules => [
+            {schema, object, <<"#/components/schemas/ConversionProductReportRequest">>},
+            required
         ]
     };
 request_param_info('analytics/create_mmm_report', 'ad_account_id') ->
@@ -3204,7 +3833,6 @@ request_param_info('analytics/create_template_report', 'template_id') ->
         rules => [
             {type, binary},
             {max_length, 18},
-            {pattern, "^\\d+$"},
             required
         ]
     };
@@ -3229,6 +3857,24 @@ request_param_info('analytics/create_template_report', 'granularity') ->
         source => qs_val,
         rules => [
             not_required
+        ]
+    };
+request_param_info('analytics/get_conversion_product_report', 'ad_account_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('analytics/get_conversion_product_report', 'token') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            required
         ]
     };
 request_param_info('analytics/get_mmm_report', 'ad_account_id') ->
@@ -3351,7 +3997,7 @@ request_param_info('ad_groups/analytics', 'columns') ->
     #{
         source => qs_val,
         rules => [
-            {enum, ['SPEND_IN_MICRO_DOLLAR', 'PAID_IMPRESSION', 'SPEND_IN_DOLLAR', 'CPC_IN_MICRO_DOLLAR', 'ECPC_IN_MICRO_DOLLAR', 'ECPC_IN_DOLLAR', 'CTR', 'ECTR', 'CAMPAIGN_NAME', 'PIN_ID', 'TOTAL_ENGAGEMENT', 'ENGAGEMENT_1', 'ENGAGEMENT_2', 'ECPE_IN_DOLLAR', 'ENGAGEMENT_RATE', 'EENGAGEMENT_RATE', 'ECPM_IN_MICRO_DOLLAR', 'REPIN_RATE', 'CTR_2', 'CAMPAIGN_ID', 'ADVERTISER_ID', 'AD_ACCOUNT_ID', 'PIN_PROMOTION_ID', 'AD_ID', 'AD_GROUP_ID', 'CAMPAIGN_ENTITY_STATUS', 'CAMPAIGN_OBJECTIVE_TYPE', 'CPM_IN_MICRO_DOLLAR', 'CPM_IN_DOLLAR', 'AD_GROUP_ENTITY_STATUS', 'ORDER_LINE_ID', 'ORDER_LINE_NAME', 'CLICKTHROUGH_1', 'REPIN_1', 'IMPRESSION_1', 'IMPRESSION_1_GROSS', 'CLICKTHROUGH_1_GROSS', 'OUTBOUND_CLICK_1', 'CLICKTHROUGH_2', 'REPIN_2', 'IMPRESSION_2', 'OUTBOUND_CLICK_2', 'TOTAL_CLICKTHROUGH', 'TOTAL_IMPRESSION', 'TOTAL_IMPRESSION_USER', 'TOTAL_IMPRESSION_FREQUENCY', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR', 'TOTAL_ENGAGEMENT_SIGNUP', 'TOTAL_ENGAGEMENT_CHECKOUT', 'TOTAL_ENGAGEMENT_LEAD', 'TOTAL_CLICK_SIGNUP', 'TOTAL_CLICK_CHECKOUT', 'TOTAL_CLICK_ADD_TO_CART', 'TOTAL_CLICK_LEAD', 'TOTAL_VIEW_SIGNUP', 'TOTAL_VIEW_CHECKOUT', 'TOTAL_VIEW_ADD_TO_CART', 'TOTAL_VIEW_LEAD', 'TOTAL_CONVERSIONS', 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_SESSIONS', 'WEB_SESSIONS_1', 'WEB_SESSIONS_2', 'CAMPAIGN_LIFETIME_SPEND_CAP', 'CAMPAIGN_DAILY_SPEND_CAP', 'TOTAL_PAGE_VISIT', 'TOTAL_SIGNUP', 'TOTAL_CHECKOUT', 'TOTAL_CUSTOM', 'TOTAL_LEAD', 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR', 'PAGE_VISIT_COST_PER_ACTION', 'PAGE_VISIT_ROAS', 'CHECKOUT_ROAS', 'CUSTOM_ROAS', 'VIDEO_MRC_VIEWS_1', 'VIDEO_3SEC_VIEWS_2', 'VIDEO_P100_COMPLETE_2', 'VIDEO_P0_COMBINED_2', 'VIDEO_P25_COMBINED_2', 'VIDEO_P50_COMBINED_2', 'VIDEO_P75_COMBINED_2', 'VIDEO_P95_COMBINED_2', 'VIDEO_MRC_VIEWS_2', 'PAID_VIDEO_VIEWABLE_RATE', 'VIDEO_LENGTH', 'ECPV_IN_DOLLAR', 'ECPCV_IN_DOLLAR', 'ECPCV_P95_IN_DOLLAR', 'TOTAL_VIDEO_3SEC_VIEWS', 'TOTAL_VIDEO_P100_COMPLETE', 'TOTAL_VIDEO_P0_COMBINED', 'TOTAL_VIDEO_P25_COMBINED', 'TOTAL_VIDEO_P50_COMBINED', 'TOTAL_VIDEO_P75_COMBINED', 'TOTAL_VIDEO_P95_COMBINED', 'TOTAL_VIDEO_MRC_VIEWS', 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND', 'TOTAL_REPIN_RATE', 'WEB_CHECKOUT_COST_PER_ACTION', 'WEB_CHECKOUT_ROAS', 'TOTAL_WEB_CHECKOUT', 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_CLICK_CHECKOUT', 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_VIEW_CHECKOUT', 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'INAPP_CHECKOUT_COST_PER_ACTION', 'TOTAL_OFFLINE_CHECKOUT', 'IDEA_PIN_PRODUCT_TAG_VISIT_1', 'IDEA_PIN_PRODUCT_TAG_VISIT_2', 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT', 'LEADS', 'COST_PER_LEAD', 'QUIZ_COMPLETED', 'QUIZ_PIN_RESULT_OPEN', 'QUIZ_COMPLETION_RATE', 'SHOWCASE_PIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_CLICKTHROUGH', 'SHOWCASE_SUBPIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_IMPRESSION', 'SHOWCASE_SUBPIN_IMPRESSION', 'SHOWCASE_SUBPAGE_SWIPE_LEFT', 'SHOWCASE_SUBPAGE_SWIPE_RIGHT', 'SHOWCASE_SUBPIN_SWIPE_LEFT', 'SHOWCASE_SUBPIN_SWIPE_RIGHT', 'SHOWCASE_SUBPAGE_REPIN', 'SHOWCASE_SUBPIN_REPIN', 'SHOWCASE_SUBPAGE_CLOSEUP', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD', 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION', 'TOTAL_CHECKOUT_CONVERSION_RATE', 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE', 'TOTAL_ADD_TO_CART_CONVERSION_RATE', 'TOTAL_SIGNUP_CONVERSION_RATE', 'TOTAL_PAGE_VISIT_CONVERSION_RATE', 'TOTAL_LEAD_CONVERSION_RATE', 'TOTAL_SEARCH_CONVERSION_RATE', 'TOTAL_WATCH_VIDEO_CONVERSION_RATE', 'TOTAL_UNKNOWN_CONVERSION_RATE', 'TOTAL_CUSTOM_CONVERSION_RATE'] },
+            {enum, ['SPEND_IN_MICRO_DOLLAR', 'PAID_IMPRESSION', 'SPEND_IN_DOLLAR', 'CPC_IN_MICRO_DOLLAR', 'ECPC_IN_MICRO_DOLLAR', 'ECPC_IN_DOLLAR', 'CTR', 'ECTR', 'OUTBOUND_CTR_1', 'CAMPAIGN_NAME', 'CAMPAIGN_BRAND_LABEL', 'PIN_ID', 'TOTAL_ENGAGEMENT', 'ENGAGEMENT_1', 'ENGAGEMENT_2', 'ECPE_IN_DOLLAR', 'ENGAGEMENT_RATE', 'EENGAGEMENT_RATE', 'ECPM_IN_MICRO_DOLLAR', 'REPIN_RATE', 'CTR_2', 'CAMPAIGN_ID', 'ADVERTISER_ID', 'AD_ACCOUNT_ID', 'PIN_PROMOTION_ID', 'AD_ID', 'AD_GROUP_ID', 'CAMPAIGN_ENTITY_STATUS', 'CAMPAIGN_OBJECTIVE_TYPE', 'CPM_IN_MICRO_DOLLAR', 'CPM_IN_DOLLAR', 'AD_GROUP_NAME', 'AD_GROUP_BUDGET_TYPE', 'AD_GROUP_BUDGET_IN_LOCAL_CURRENCY', 'AD_GROUP_ENTITY_STATUS', 'AD_GROUP_BID_MULTIPLIER', 'PROMO_ID', 'PROMO_NAME', 'ORDER_LINE_ID', 'ORDER_LINE_NAME', 'CLICKTHROUGH_1', 'REPIN_1', 'IMPRESSION_1', 'IMPRESSION_1_GROSS', 'CLICKTHROUGH_1_GROSS', 'OUTBOUND_CLICK_1', 'CLICKTHROUGH_2', 'REPIN_2', 'IMPRESSION_2', 'OUTBOUND_CLICK_2', 'TOTAL_CLICKTHROUGH', 'TOTAL_IMPRESSION', 'TOTAL_IMPRESSION_USER', 'TOTAL_IMPRESSION_FREQUENCY', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1', 'TOTAL_ENGAGEMENT_SIGNUP', 'TOTAL_ENGAGEMENT_CHECKOUT', 'TOTAL_ENGAGEMENT_LEAD', 'TOTAL_CLICK_SIGNUP', 'TOTAL_CLICK_CHECKOUT', 'TOTAL_CLICK_ADD_TO_CART', 'TOTAL_CLICK_LEAD', 'TOTAL_VIEW_SIGNUP', 'TOTAL_VIEW_CHECKOUT', 'TOTAL_VIEW_ADD_TO_CART', 'TOTAL_VIEW_LEAD', 'TOTAL_CONVERSIONS', 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_SESSIONS', 'WEB_SESSIONS_1', 'WEB_SESSIONS_2', 'AD_NAME', 'CAMPAIGN_LIFETIME_SPEND_CAP', 'AD_GROUP_OPTIMIZATION', 'CAMPAIGN_DAILY_SPEND_CAP', 'CAMPAIGN_BUDGET_OPTIMIZATION', 'IS_PREMIERE_CAMPAIGN', 'TOTAL_PAGE_VISIT', 'TOTAL_SIGNUP', 'TOTAL_CHECKOUT', 'TOTAL_CUSTOM', 'TOTAL_LEAD', 'TOTAL_ADD_TO_WISHLIST', 'TOTAL_SUBSCRIBE', 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR', 'PAGE_VISIT_COST_PER_ACTION', 'PAGE_VISIT_ROAS', 'CHECKOUT_ROAS', 'CUSTOM_ROAS', 'PRODUCT_GROUP_AD_IMAGE_TAG', 'PRODUCT_GROUP_AD_VIDEO_TAG', 'VIDEO_3SEC_VIEWS_1', 'VIDEO_15SEC_UNIQUE_VIEWS_1', 'VIDEO_MRC_VIEWS_1', 'VIDEO_3SEC_VIEWS_2', 'VIDEO_15SEC_UNIQUE_VIEWS_2', 'VIDEO_P100_COMPLETE_2', 'VIDEO_P0_COMBINED_2', 'VIDEO_P25_COMBINED_2', 'VIDEO_P50_COMBINED_2', 'VIDEO_P75_COMBINED_2', 'VIDEO_P95_COMBINED_2', 'VIDEO_MRC_VIEWS_2', 'PAID_VIDEO_VIEWABLE_RATE', 'VIDEO_LENGTH', 'VIDEO_SPEND_IN_DOLLAR', 'ECPV_IN_DOLLAR', 'ECPCV_IN_DOLLAR', 'ECPCV_P95_IN_DOLLAR', 'TOTAL_VIDEO_3SEC_VIEWS', 'TOTAL_VIDEO_15SEC_UNIQUE_VIEWS', 'TOTAL_VIDEO_P100_COMPLETE', 'TOTAL_VIDEO_P0_COMBINED', 'TOTAL_VIDEO_P25_COMBINED', 'TOTAL_VIDEO_P50_COMBINED', 'TOTAL_VIDEO_P75_COMBINED', 'TOTAL_VIDEO_P95_COMBINED', 'TOTAL_VIDEO_MRC_VIEWS', 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND', 'TOTAL_REPIN_RATE', 'WEB_CHECKOUT_COST_PER_ACTION', 'WEB_CHECKOUT_ROAS', 'TOTAL_WEB_CHECKOUT', 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_CLICK_CHECKOUT', 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_VIEW_CHECKOUT', 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'INAPP_CHECKOUT_COST_PER_ACTION', 'TOTAL_OFFLINE_CHECKOUT', 'TOTAL_APP_INSTALL_CONVERSION_RATE', 'TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE', 'IDEA_PIN_PRODUCT_TAG_VISIT_1', 'IDEA_PIN_PRODUCT_TAG_VISIT_2', 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT', 'LEADS', 'COST_PER_LEAD', 'QUIZ_COMPLETED', 'QUIZ_PIN_RESULT_OPEN', 'QUIZ_COMPLETION_RATE', 'SHOWCASE_PIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_CLICKTHROUGH', 'SHOWCASE_SUBPIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_IMPRESSION', 'SHOWCASE_SUBPIN_IMPRESSION', 'SHOWCASE_SUBPAGE_SWIPE_LEFT', 'SHOWCASE_SUBPAGE_SWIPE_RIGHT', 'SHOWCASE_SUBPIN_SWIPE_LEFT', 'SHOWCASE_SUBPIN_SWIPE_RIGHT', 'SHOWCASE_SUBPAGE_REPIN', 'SHOWCASE_SUBPIN_REPIN', 'SHOWCASE_SUBPAGE_CLOSEUP', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD', 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION', 'TOTAL_CHECKOUT_CONVERSION_RATE', 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE', 'TOTAL_ADD_TO_CART_CONVERSION_RATE', 'TOTAL_SIGNUP_CONVERSION_RATE', 'TOTAL_PAGE_VISIT_CONVERSION_RATE', 'TOTAL_LEAD_CONVERSION_RATE', 'TOTAL_SEARCH_CONVERSION_RATE', 'TOTAL_WATCH_VIDEO_CONVERSION_RATE', 'TOTAL_UNKNOWN_CONVERSION_RATE', 'TOTAL_CUSTOM_CONVERSION_RATE'] },
             required
         ]
     };
@@ -3398,6 +4044,21 @@ request_param_info('ad_groups/analytics', 'conversion_report_time') ->
             not_required
         ]
     };
+request_param_info('ad_groups/analytics', 'aggregate_report_rows') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, boolean},
+            not_required
+        ]
+    };
+request_param_info('ad_groups/analytics', 'reporting_timezone') ->
+    #{
+        source => qs_val,
+        rules => [
+            not_required
+        ]
+    };
 request_param_info('ad_groups/audience_sizing', 'ad_account_id') ->
     #{
         source => binding,
@@ -3413,7 +4074,7 @@ request_param_info('ad_groups/audience_sizing', 'AdGroupAudienceSizingRequest') 
         source => body,
         rules => [
             {schema, object, <<"#/components/schemas/AdGroupAudienceSizingRequest">>},
-            not_required
+            required
         ]
     };
 request_param_info('ad_groups_bid_floor/get', 'ad_account_id') ->
@@ -3583,7 +4244,7 @@ request_param_info('ad_groups_targeting_analytics/get', 'columns') ->
     #{
         source => qs_val,
         rules => [
-            {enum, ['SPEND_IN_MICRO_DOLLAR', 'PAID_IMPRESSION', 'SPEND_IN_DOLLAR', 'CPC_IN_MICRO_DOLLAR', 'ECPC_IN_MICRO_DOLLAR', 'ECPC_IN_DOLLAR', 'CTR', 'ECTR', 'CAMPAIGN_NAME', 'PIN_ID', 'TOTAL_ENGAGEMENT', 'ENGAGEMENT_1', 'ENGAGEMENT_2', 'ECPE_IN_DOLLAR', 'ENGAGEMENT_RATE', 'EENGAGEMENT_RATE', 'ECPM_IN_MICRO_DOLLAR', 'REPIN_RATE', 'CTR_2', 'CAMPAIGN_ID', 'ADVERTISER_ID', 'AD_ACCOUNT_ID', 'PIN_PROMOTION_ID', 'AD_ID', 'AD_GROUP_ID', 'CAMPAIGN_ENTITY_STATUS', 'CAMPAIGN_OBJECTIVE_TYPE', 'CPM_IN_MICRO_DOLLAR', 'CPM_IN_DOLLAR', 'AD_GROUP_ENTITY_STATUS', 'ORDER_LINE_ID', 'ORDER_LINE_NAME', 'CLICKTHROUGH_1', 'REPIN_1', 'IMPRESSION_1', 'IMPRESSION_1_GROSS', 'CLICKTHROUGH_1_GROSS', 'OUTBOUND_CLICK_1', 'CLICKTHROUGH_2', 'REPIN_2', 'IMPRESSION_2', 'OUTBOUND_CLICK_2', 'TOTAL_CLICKTHROUGH', 'TOTAL_IMPRESSION', 'TOTAL_IMPRESSION_USER', 'TOTAL_IMPRESSION_FREQUENCY', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR', 'TOTAL_ENGAGEMENT_SIGNUP', 'TOTAL_ENGAGEMENT_CHECKOUT', 'TOTAL_ENGAGEMENT_LEAD', 'TOTAL_CLICK_SIGNUP', 'TOTAL_CLICK_CHECKOUT', 'TOTAL_CLICK_ADD_TO_CART', 'TOTAL_CLICK_LEAD', 'TOTAL_VIEW_SIGNUP', 'TOTAL_VIEW_CHECKOUT', 'TOTAL_VIEW_ADD_TO_CART', 'TOTAL_VIEW_LEAD', 'TOTAL_CONVERSIONS', 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_SESSIONS', 'WEB_SESSIONS_1', 'WEB_SESSIONS_2', 'CAMPAIGN_LIFETIME_SPEND_CAP', 'CAMPAIGN_DAILY_SPEND_CAP', 'TOTAL_PAGE_VISIT', 'TOTAL_SIGNUP', 'TOTAL_CHECKOUT', 'TOTAL_CUSTOM', 'TOTAL_LEAD', 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR', 'PAGE_VISIT_COST_PER_ACTION', 'PAGE_VISIT_ROAS', 'CHECKOUT_ROAS', 'CUSTOM_ROAS', 'VIDEO_MRC_VIEWS_1', 'VIDEO_3SEC_VIEWS_2', 'VIDEO_P100_COMPLETE_2', 'VIDEO_P0_COMBINED_2', 'VIDEO_P25_COMBINED_2', 'VIDEO_P50_COMBINED_2', 'VIDEO_P75_COMBINED_2', 'VIDEO_P95_COMBINED_2', 'VIDEO_MRC_VIEWS_2', 'PAID_VIDEO_VIEWABLE_RATE', 'VIDEO_LENGTH', 'ECPV_IN_DOLLAR', 'ECPCV_IN_DOLLAR', 'ECPCV_P95_IN_DOLLAR', 'TOTAL_VIDEO_3SEC_VIEWS', 'TOTAL_VIDEO_P100_COMPLETE', 'TOTAL_VIDEO_P0_COMBINED', 'TOTAL_VIDEO_P25_COMBINED', 'TOTAL_VIDEO_P50_COMBINED', 'TOTAL_VIDEO_P75_COMBINED', 'TOTAL_VIDEO_P95_COMBINED', 'TOTAL_VIDEO_MRC_VIEWS', 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND', 'TOTAL_REPIN_RATE', 'WEB_CHECKOUT_COST_PER_ACTION', 'WEB_CHECKOUT_ROAS', 'TOTAL_WEB_CHECKOUT', 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_CLICK_CHECKOUT', 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_VIEW_CHECKOUT', 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'INAPP_CHECKOUT_COST_PER_ACTION', 'TOTAL_OFFLINE_CHECKOUT', 'IDEA_PIN_PRODUCT_TAG_VISIT_1', 'IDEA_PIN_PRODUCT_TAG_VISIT_2', 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT', 'LEADS', 'COST_PER_LEAD', 'QUIZ_COMPLETED', 'QUIZ_PIN_RESULT_OPEN', 'QUIZ_COMPLETION_RATE', 'SHOWCASE_PIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_CLICKTHROUGH', 'SHOWCASE_SUBPIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_IMPRESSION', 'SHOWCASE_SUBPIN_IMPRESSION', 'SHOWCASE_SUBPAGE_SWIPE_LEFT', 'SHOWCASE_SUBPAGE_SWIPE_RIGHT', 'SHOWCASE_SUBPIN_SWIPE_LEFT', 'SHOWCASE_SUBPIN_SWIPE_RIGHT', 'SHOWCASE_SUBPAGE_REPIN', 'SHOWCASE_SUBPIN_REPIN', 'SHOWCASE_SUBPAGE_CLOSEUP', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD', 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION', 'TOTAL_CHECKOUT_CONVERSION_RATE', 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE', 'TOTAL_ADD_TO_CART_CONVERSION_RATE', 'TOTAL_SIGNUP_CONVERSION_RATE', 'TOTAL_PAGE_VISIT_CONVERSION_RATE', 'TOTAL_LEAD_CONVERSION_RATE', 'TOTAL_SEARCH_CONVERSION_RATE', 'TOTAL_WATCH_VIDEO_CONVERSION_RATE', 'TOTAL_UNKNOWN_CONVERSION_RATE', 'TOTAL_CUSTOM_CONVERSION_RATE'] },
+            {enum, ['SPEND_IN_MICRO_DOLLAR', 'PAID_IMPRESSION', 'SPEND_IN_DOLLAR', 'CPC_IN_MICRO_DOLLAR', 'ECPC_IN_MICRO_DOLLAR', 'ECPC_IN_DOLLAR', 'CTR', 'ECTR', 'OUTBOUND_CTR_1', 'CAMPAIGN_NAME', 'CAMPAIGN_BRAND_LABEL', 'PIN_ID', 'TOTAL_ENGAGEMENT', 'ENGAGEMENT_1', 'ENGAGEMENT_2', 'ECPE_IN_DOLLAR', 'ENGAGEMENT_RATE', 'EENGAGEMENT_RATE', 'ECPM_IN_MICRO_DOLLAR', 'REPIN_RATE', 'CTR_2', 'CAMPAIGN_ID', 'ADVERTISER_ID', 'AD_ACCOUNT_ID', 'PIN_PROMOTION_ID', 'AD_ID', 'AD_GROUP_ID', 'CAMPAIGN_ENTITY_STATUS', 'CAMPAIGN_OBJECTIVE_TYPE', 'CPM_IN_MICRO_DOLLAR', 'CPM_IN_DOLLAR', 'AD_GROUP_NAME', 'AD_GROUP_BUDGET_TYPE', 'AD_GROUP_BUDGET_IN_LOCAL_CURRENCY', 'AD_GROUP_ENTITY_STATUS', 'AD_GROUP_BID_MULTIPLIER', 'PROMO_ID', 'PROMO_NAME', 'ORDER_LINE_ID', 'ORDER_LINE_NAME', 'CLICKTHROUGH_1', 'REPIN_1', 'IMPRESSION_1', 'IMPRESSION_1_GROSS', 'CLICKTHROUGH_1_GROSS', 'OUTBOUND_CLICK_1', 'CLICKTHROUGH_2', 'REPIN_2', 'IMPRESSION_2', 'OUTBOUND_CLICK_2', 'TOTAL_CLICKTHROUGH', 'TOTAL_IMPRESSION', 'TOTAL_IMPRESSION_USER', 'TOTAL_IMPRESSION_FREQUENCY', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1', 'TOTAL_ENGAGEMENT_SIGNUP', 'TOTAL_ENGAGEMENT_CHECKOUT', 'TOTAL_ENGAGEMENT_LEAD', 'TOTAL_CLICK_SIGNUP', 'TOTAL_CLICK_CHECKOUT', 'TOTAL_CLICK_ADD_TO_CART', 'TOTAL_CLICK_LEAD', 'TOTAL_VIEW_SIGNUP', 'TOTAL_VIEW_CHECKOUT', 'TOTAL_VIEW_ADD_TO_CART', 'TOTAL_VIEW_LEAD', 'TOTAL_CONVERSIONS', 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_SESSIONS', 'WEB_SESSIONS_1', 'WEB_SESSIONS_2', 'AD_NAME', 'CAMPAIGN_LIFETIME_SPEND_CAP', 'AD_GROUP_OPTIMIZATION', 'CAMPAIGN_DAILY_SPEND_CAP', 'CAMPAIGN_BUDGET_OPTIMIZATION', 'IS_PREMIERE_CAMPAIGN', 'TOTAL_PAGE_VISIT', 'TOTAL_SIGNUP', 'TOTAL_CHECKOUT', 'TOTAL_CUSTOM', 'TOTAL_LEAD', 'TOTAL_ADD_TO_WISHLIST', 'TOTAL_SUBSCRIBE', 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR', 'PAGE_VISIT_COST_PER_ACTION', 'PAGE_VISIT_ROAS', 'CHECKOUT_ROAS', 'CUSTOM_ROAS', 'PRODUCT_GROUP_AD_IMAGE_TAG', 'PRODUCT_GROUP_AD_VIDEO_TAG', 'VIDEO_3SEC_VIEWS_1', 'VIDEO_15SEC_UNIQUE_VIEWS_1', 'VIDEO_MRC_VIEWS_1', 'VIDEO_3SEC_VIEWS_2', 'VIDEO_15SEC_UNIQUE_VIEWS_2', 'VIDEO_P100_COMPLETE_2', 'VIDEO_P0_COMBINED_2', 'VIDEO_P25_COMBINED_2', 'VIDEO_P50_COMBINED_2', 'VIDEO_P75_COMBINED_2', 'VIDEO_P95_COMBINED_2', 'VIDEO_MRC_VIEWS_2', 'PAID_VIDEO_VIEWABLE_RATE', 'VIDEO_LENGTH', 'VIDEO_SPEND_IN_DOLLAR', 'ECPV_IN_DOLLAR', 'ECPCV_IN_DOLLAR', 'ECPCV_P95_IN_DOLLAR', 'TOTAL_VIDEO_3SEC_VIEWS', 'TOTAL_VIDEO_15SEC_UNIQUE_VIEWS', 'TOTAL_VIDEO_P100_COMPLETE', 'TOTAL_VIDEO_P0_COMBINED', 'TOTAL_VIDEO_P25_COMBINED', 'TOTAL_VIDEO_P50_COMBINED', 'TOTAL_VIDEO_P75_COMBINED', 'TOTAL_VIDEO_P95_COMBINED', 'TOTAL_VIDEO_MRC_VIEWS', 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND', 'TOTAL_REPIN_RATE', 'WEB_CHECKOUT_COST_PER_ACTION', 'WEB_CHECKOUT_ROAS', 'TOTAL_WEB_CHECKOUT', 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_CLICK_CHECKOUT', 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_VIEW_CHECKOUT', 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'INAPP_CHECKOUT_COST_PER_ACTION', 'TOTAL_OFFLINE_CHECKOUT', 'TOTAL_APP_INSTALL_CONVERSION_RATE', 'TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE', 'IDEA_PIN_PRODUCT_TAG_VISIT_1', 'IDEA_PIN_PRODUCT_TAG_VISIT_2', 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT', 'LEADS', 'COST_PER_LEAD', 'QUIZ_COMPLETED', 'QUIZ_PIN_RESULT_OPEN', 'QUIZ_COMPLETION_RATE', 'SHOWCASE_PIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_CLICKTHROUGH', 'SHOWCASE_SUBPIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_IMPRESSION', 'SHOWCASE_SUBPIN_IMPRESSION', 'SHOWCASE_SUBPAGE_SWIPE_LEFT', 'SHOWCASE_SUBPAGE_SWIPE_RIGHT', 'SHOWCASE_SUBPIN_SWIPE_LEFT', 'SHOWCASE_SUBPIN_SWIPE_RIGHT', 'SHOWCASE_SUBPAGE_REPIN', 'SHOWCASE_SUBPIN_REPIN', 'SHOWCASE_SUBPAGE_CLOSEUP', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD', 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION', 'TOTAL_CHECKOUT_CONVERSION_RATE', 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE', 'TOTAL_ADD_TO_CART_CONVERSION_RATE', 'TOTAL_SIGNUP_CONVERSION_RATE', 'TOTAL_PAGE_VISIT_CONVERSION_RATE', 'TOTAL_LEAD_CONVERSION_RATE', 'TOTAL_SEARCH_CONVERSION_RATE', 'TOTAL_WATCH_VIDEO_CONVERSION_RATE', 'TOTAL_UNKNOWN_CONVERSION_RATE', 'TOTAL_CUSTOM_CONVERSION_RATE'] },
             required
         ]
     };
@@ -3631,6 +4292,13 @@ request_param_info('ad_groups_targeting_analytics/get', 'conversion_report_time'
         ]
     };
 request_param_info('ad_groups_targeting_analytics/get', 'attribution_types') ->
+    #{
+        source => qs_val,
+        rules => [
+            not_required
+        ]
+    };
+request_param_info('ad_groups_targeting_analytics/get', 'reporting_timezone') ->
     #{
         source => qs_val,
         rules => [
@@ -3717,7 +4385,7 @@ request_param_info('ad_targeting_analytics/get', 'columns') ->
     #{
         source => qs_val,
         rules => [
-            {enum, ['SPEND_IN_MICRO_DOLLAR', 'PAID_IMPRESSION', 'SPEND_IN_DOLLAR', 'CPC_IN_MICRO_DOLLAR', 'ECPC_IN_MICRO_DOLLAR', 'ECPC_IN_DOLLAR', 'CTR', 'ECTR', 'CAMPAIGN_NAME', 'PIN_ID', 'TOTAL_ENGAGEMENT', 'ENGAGEMENT_1', 'ENGAGEMENT_2', 'ECPE_IN_DOLLAR', 'ENGAGEMENT_RATE', 'EENGAGEMENT_RATE', 'ECPM_IN_MICRO_DOLLAR', 'REPIN_RATE', 'CTR_2', 'CAMPAIGN_ID', 'ADVERTISER_ID', 'AD_ACCOUNT_ID', 'PIN_PROMOTION_ID', 'AD_ID', 'AD_GROUP_ID', 'CAMPAIGN_ENTITY_STATUS', 'CAMPAIGN_OBJECTIVE_TYPE', 'CPM_IN_MICRO_DOLLAR', 'CPM_IN_DOLLAR', 'AD_GROUP_ENTITY_STATUS', 'ORDER_LINE_ID', 'ORDER_LINE_NAME', 'CLICKTHROUGH_1', 'REPIN_1', 'IMPRESSION_1', 'IMPRESSION_1_GROSS', 'CLICKTHROUGH_1_GROSS', 'OUTBOUND_CLICK_1', 'CLICKTHROUGH_2', 'REPIN_2', 'IMPRESSION_2', 'OUTBOUND_CLICK_2', 'TOTAL_CLICKTHROUGH', 'TOTAL_IMPRESSION', 'TOTAL_IMPRESSION_USER', 'TOTAL_IMPRESSION_FREQUENCY', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR', 'TOTAL_ENGAGEMENT_SIGNUP', 'TOTAL_ENGAGEMENT_CHECKOUT', 'TOTAL_ENGAGEMENT_LEAD', 'TOTAL_CLICK_SIGNUP', 'TOTAL_CLICK_CHECKOUT', 'TOTAL_CLICK_ADD_TO_CART', 'TOTAL_CLICK_LEAD', 'TOTAL_VIEW_SIGNUP', 'TOTAL_VIEW_CHECKOUT', 'TOTAL_VIEW_ADD_TO_CART', 'TOTAL_VIEW_LEAD', 'TOTAL_CONVERSIONS', 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_SESSIONS', 'WEB_SESSIONS_1', 'WEB_SESSIONS_2', 'CAMPAIGN_LIFETIME_SPEND_CAP', 'CAMPAIGN_DAILY_SPEND_CAP', 'TOTAL_PAGE_VISIT', 'TOTAL_SIGNUP', 'TOTAL_CHECKOUT', 'TOTAL_CUSTOM', 'TOTAL_LEAD', 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR', 'PAGE_VISIT_COST_PER_ACTION', 'PAGE_VISIT_ROAS', 'CHECKOUT_ROAS', 'CUSTOM_ROAS', 'VIDEO_MRC_VIEWS_1', 'VIDEO_3SEC_VIEWS_2', 'VIDEO_P100_COMPLETE_2', 'VIDEO_P0_COMBINED_2', 'VIDEO_P25_COMBINED_2', 'VIDEO_P50_COMBINED_2', 'VIDEO_P75_COMBINED_2', 'VIDEO_P95_COMBINED_2', 'VIDEO_MRC_VIEWS_2', 'PAID_VIDEO_VIEWABLE_RATE', 'VIDEO_LENGTH', 'ECPV_IN_DOLLAR', 'ECPCV_IN_DOLLAR', 'ECPCV_P95_IN_DOLLAR', 'TOTAL_VIDEO_3SEC_VIEWS', 'TOTAL_VIDEO_P100_COMPLETE', 'TOTAL_VIDEO_P0_COMBINED', 'TOTAL_VIDEO_P25_COMBINED', 'TOTAL_VIDEO_P50_COMBINED', 'TOTAL_VIDEO_P75_COMBINED', 'TOTAL_VIDEO_P95_COMBINED', 'TOTAL_VIDEO_MRC_VIEWS', 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND', 'TOTAL_REPIN_RATE', 'WEB_CHECKOUT_COST_PER_ACTION', 'WEB_CHECKOUT_ROAS', 'TOTAL_WEB_CHECKOUT', 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_CLICK_CHECKOUT', 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_VIEW_CHECKOUT', 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'INAPP_CHECKOUT_COST_PER_ACTION', 'TOTAL_OFFLINE_CHECKOUT', 'IDEA_PIN_PRODUCT_TAG_VISIT_1', 'IDEA_PIN_PRODUCT_TAG_VISIT_2', 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT', 'LEADS', 'COST_PER_LEAD', 'QUIZ_COMPLETED', 'QUIZ_PIN_RESULT_OPEN', 'QUIZ_COMPLETION_RATE', 'SHOWCASE_PIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_CLICKTHROUGH', 'SHOWCASE_SUBPIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_IMPRESSION', 'SHOWCASE_SUBPIN_IMPRESSION', 'SHOWCASE_SUBPAGE_SWIPE_LEFT', 'SHOWCASE_SUBPAGE_SWIPE_RIGHT', 'SHOWCASE_SUBPIN_SWIPE_LEFT', 'SHOWCASE_SUBPIN_SWIPE_RIGHT', 'SHOWCASE_SUBPAGE_REPIN', 'SHOWCASE_SUBPIN_REPIN', 'SHOWCASE_SUBPAGE_CLOSEUP', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD', 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION', 'TOTAL_CHECKOUT_CONVERSION_RATE', 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE', 'TOTAL_ADD_TO_CART_CONVERSION_RATE', 'TOTAL_SIGNUP_CONVERSION_RATE', 'TOTAL_PAGE_VISIT_CONVERSION_RATE', 'TOTAL_LEAD_CONVERSION_RATE', 'TOTAL_SEARCH_CONVERSION_RATE', 'TOTAL_WATCH_VIDEO_CONVERSION_RATE', 'TOTAL_UNKNOWN_CONVERSION_RATE', 'TOTAL_CUSTOM_CONVERSION_RATE'] },
+            {enum, ['SPEND_IN_MICRO_DOLLAR', 'PAID_IMPRESSION', 'SPEND_IN_DOLLAR', 'CPC_IN_MICRO_DOLLAR', 'ECPC_IN_MICRO_DOLLAR', 'ECPC_IN_DOLLAR', 'CTR', 'ECTR', 'OUTBOUND_CTR_1', 'CAMPAIGN_NAME', 'CAMPAIGN_BRAND_LABEL', 'PIN_ID', 'TOTAL_ENGAGEMENT', 'ENGAGEMENT_1', 'ENGAGEMENT_2', 'ECPE_IN_DOLLAR', 'ENGAGEMENT_RATE', 'EENGAGEMENT_RATE', 'ECPM_IN_MICRO_DOLLAR', 'REPIN_RATE', 'CTR_2', 'CAMPAIGN_ID', 'ADVERTISER_ID', 'AD_ACCOUNT_ID', 'PIN_PROMOTION_ID', 'AD_ID', 'AD_GROUP_ID', 'CAMPAIGN_ENTITY_STATUS', 'CAMPAIGN_OBJECTIVE_TYPE', 'CPM_IN_MICRO_DOLLAR', 'CPM_IN_DOLLAR', 'AD_GROUP_NAME', 'AD_GROUP_BUDGET_TYPE', 'AD_GROUP_BUDGET_IN_LOCAL_CURRENCY', 'AD_GROUP_ENTITY_STATUS', 'AD_GROUP_BID_MULTIPLIER', 'PROMO_ID', 'PROMO_NAME', 'ORDER_LINE_ID', 'ORDER_LINE_NAME', 'CLICKTHROUGH_1', 'REPIN_1', 'IMPRESSION_1', 'IMPRESSION_1_GROSS', 'CLICKTHROUGH_1_GROSS', 'OUTBOUND_CLICK_1', 'CLICKTHROUGH_2', 'REPIN_2', 'IMPRESSION_2', 'OUTBOUND_CLICK_2', 'TOTAL_CLICKTHROUGH', 'TOTAL_IMPRESSION', 'TOTAL_IMPRESSION_USER', 'TOTAL_IMPRESSION_FREQUENCY', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1', 'TOTAL_ENGAGEMENT_SIGNUP', 'TOTAL_ENGAGEMENT_CHECKOUT', 'TOTAL_ENGAGEMENT_LEAD', 'TOTAL_CLICK_SIGNUP', 'TOTAL_CLICK_CHECKOUT', 'TOTAL_CLICK_ADD_TO_CART', 'TOTAL_CLICK_LEAD', 'TOTAL_VIEW_SIGNUP', 'TOTAL_VIEW_CHECKOUT', 'TOTAL_VIEW_ADD_TO_CART', 'TOTAL_VIEW_LEAD', 'TOTAL_CONVERSIONS', 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_SESSIONS', 'WEB_SESSIONS_1', 'WEB_SESSIONS_2', 'AD_NAME', 'CAMPAIGN_LIFETIME_SPEND_CAP', 'AD_GROUP_OPTIMIZATION', 'CAMPAIGN_DAILY_SPEND_CAP', 'CAMPAIGN_BUDGET_OPTIMIZATION', 'IS_PREMIERE_CAMPAIGN', 'TOTAL_PAGE_VISIT', 'TOTAL_SIGNUP', 'TOTAL_CHECKOUT', 'TOTAL_CUSTOM', 'TOTAL_LEAD', 'TOTAL_ADD_TO_WISHLIST', 'TOTAL_SUBSCRIBE', 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR', 'PAGE_VISIT_COST_PER_ACTION', 'PAGE_VISIT_ROAS', 'CHECKOUT_ROAS', 'CUSTOM_ROAS', 'PRODUCT_GROUP_AD_IMAGE_TAG', 'PRODUCT_GROUP_AD_VIDEO_TAG', 'VIDEO_3SEC_VIEWS_1', 'VIDEO_15SEC_UNIQUE_VIEWS_1', 'VIDEO_MRC_VIEWS_1', 'VIDEO_3SEC_VIEWS_2', 'VIDEO_15SEC_UNIQUE_VIEWS_2', 'VIDEO_P100_COMPLETE_2', 'VIDEO_P0_COMBINED_2', 'VIDEO_P25_COMBINED_2', 'VIDEO_P50_COMBINED_2', 'VIDEO_P75_COMBINED_2', 'VIDEO_P95_COMBINED_2', 'VIDEO_MRC_VIEWS_2', 'PAID_VIDEO_VIEWABLE_RATE', 'VIDEO_LENGTH', 'VIDEO_SPEND_IN_DOLLAR', 'ECPV_IN_DOLLAR', 'ECPCV_IN_DOLLAR', 'ECPCV_P95_IN_DOLLAR', 'TOTAL_VIDEO_3SEC_VIEWS', 'TOTAL_VIDEO_15SEC_UNIQUE_VIEWS', 'TOTAL_VIDEO_P100_COMPLETE', 'TOTAL_VIDEO_P0_COMBINED', 'TOTAL_VIDEO_P25_COMBINED', 'TOTAL_VIDEO_P50_COMBINED', 'TOTAL_VIDEO_P75_COMBINED', 'TOTAL_VIDEO_P95_COMBINED', 'TOTAL_VIDEO_MRC_VIEWS', 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND', 'TOTAL_REPIN_RATE', 'WEB_CHECKOUT_COST_PER_ACTION', 'WEB_CHECKOUT_ROAS', 'TOTAL_WEB_CHECKOUT', 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_CLICK_CHECKOUT', 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_VIEW_CHECKOUT', 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'INAPP_CHECKOUT_COST_PER_ACTION', 'TOTAL_OFFLINE_CHECKOUT', 'TOTAL_APP_INSTALL_CONVERSION_RATE', 'TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE', 'IDEA_PIN_PRODUCT_TAG_VISIT_1', 'IDEA_PIN_PRODUCT_TAG_VISIT_2', 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT', 'LEADS', 'COST_PER_LEAD', 'QUIZ_COMPLETED', 'QUIZ_PIN_RESULT_OPEN', 'QUIZ_COMPLETION_RATE', 'SHOWCASE_PIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_CLICKTHROUGH', 'SHOWCASE_SUBPIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_IMPRESSION', 'SHOWCASE_SUBPIN_IMPRESSION', 'SHOWCASE_SUBPAGE_SWIPE_LEFT', 'SHOWCASE_SUBPAGE_SWIPE_RIGHT', 'SHOWCASE_SUBPIN_SWIPE_LEFT', 'SHOWCASE_SUBPIN_SWIPE_RIGHT', 'SHOWCASE_SUBPAGE_REPIN', 'SHOWCASE_SUBPIN_REPIN', 'SHOWCASE_SUBPAGE_CLOSEUP', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD', 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION', 'TOTAL_CHECKOUT_CONVERSION_RATE', 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE', 'TOTAL_ADD_TO_CART_CONVERSION_RATE', 'TOTAL_SIGNUP_CONVERSION_RATE', 'TOTAL_PAGE_VISIT_CONVERSION_RATE', 'TOTAL_LEAD_CONVERSION_RATE', 'TOTAL_SEARCH_CONVERSION_RATE', 'TOTAL_WATCH_VIDEO_CONVERSION_RATE', 'TOTAL_UNKNOWN_CONVERSION_RATE', 'TOTAL_CUSTOM_CONVERSION_RATE'] },
             required
         ]
     };
@@ -3771,6 +4439,13 @@ request_param_info('ad_targeting_analytics/get', 'attribution_types') ->
             not_required
         ]
     };
+request_param_info('ad_targeting_analytics/get', 'reporting_timezone') ->
+    #{
+        source => qs_val,
+        rules => [
+            not_required
+        ]
+    };
 request_param_info('ads/analytics', 'ad_account_id') ->
     #{
         source => binding,
@@ -3801,7 +4476,7 @@ request_param_info('ads/analytics', 'columns') ->
     #{
         source => qs_val,
         rules => [
-            {enum, ['SPEND_IN_MICRO_DOLLAR', 'PAID_IMPRESSION', 'SPEND_IN_DOLLAR', 'CPC_IN_MICRO_DOLLAR', 'ECPC_IN_MICRO_DOLLAR', 'ECPC_IN_DOLLAR', 'CTR', 'ECTR', 'CAMPAIGN_NAME', 'PIN_ID', 'TOTAL_ENGAGEMENT', 'ENGAGEMENT_1', 'ENGAGEMENT_2', 'ECPE_IN_DOLLAR', 'ENGAGEMENT_RATE', 'EENGAGEMENT_RATE', 'ECPM_IN_MICRO_DOLLAR', 'REPIN_RATE', 'CTR_2', 'CAMPAIGN_ID', 'ADVERTISER_ID', 'AD_ACCOUNT_ID', 'PIN_PROMOTION_ID', 'AD_ID', 'AD_GROUP_ID', 'CAMPAIGN_ENTITY_STATUS', 'CAMPAIGN_OBJECTIVE_TYPE', 'CPM_IN_MICRO_DOLLAR', 'CPM_IN_DOLLAR', 'AD_GROUP_ENTITY_STATUS', 'ORDER_LINE_ID', 'ORDER_LINE_NAME', 'CLICKTHROUGH_1', 'REPIN_1', 'IMPRESSION_1', 'IMPRESSION_1_GROSS', 'CLICKTHROUGH_1_GROSS', 'OUTBOUND_CLICK_1', 'CLICKTHROUGH_2', 'REPIN_2', 'IMPRESSION_2', 'OUTBOUND_CLICK_2', 'TOTAL_CLICKTHROUGH', 'TOTAL_IMPRESSION', 'TOTAL_IMPRESSION_USER', 'TOTAL_IMPRESSION_FREQUENCY', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR', 'TOTAL_ENGAGEMENT_SIGNUP', 'TOTAL_ENGAGEMENT_CHECKOUT', 'TOTAL_ENGAGEMENT_LEAD', 'TOTAL_CLICK_SIGNUP', 'TOTAL_CLICK_CHECKOUT', 'TOTAL_CLICK_ADD_TO_CART', 'TOTAL_CLICK_LEAD', 'TOTAL_VIEW_SIGNUP', 'TOTAL_VIEW_CHECKOUT', 'TOTAL_VIEW_ADD_TO_CART', 'TOTAL_VIEW_LEAD', 'TOTAL_CONVERSIONS', 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_SESSIONS', 'WEB_SESSIONS_1', 'WEB_SESSIONS_2', 'CAMPAIGN_LIFETIME_SPEND_CAP', 'CAMPAIGN_DAILY_SPEND_CAP', 'TOTAL_PAGE_VISIT', 'TOTAL_SIGNUP', 'TOTAL_CHECKOUT', 'TOTAL_CUSTOM', 'TOTAL_LEAD', 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR', 'PAGE_VISIT_COST_PER_ACTION', 'PAGE_VISIT_ROAS', 'CHECKOUT_ROAS', 'CUSTOM_ROAS', 'VIDEO_MRC_VIEWS_1', 'VIDEO_3SEC_VIEWS_2', 'VIDEO_P100_COMPLETE_2', 'VIDEO_P0_COMBINED_2', 'VIDEO_P25_COMBINED_2', 'VIDEO_P50_COMBINED_2', 'VIDEO_P75_COMBINED_2', 'VIDEO_P95_COMBINED_2', 'VIDEO_MRC_VIEWS_2', 'PAID_VIDEO_VIEWABLE_RATE', 'VIDEO_LENGTH', 'ECPV_IN_DOLLAR', 'ECPCV_IN_DOLLAR', 'ECPCV_P95_IN_DOLLAR', 'TOTAL_VIDEO_3SEC_VIEWS', 'TOTAL_VIDEO_P100_COMPLETE', 'TOTAL_VIDEO_P0_COMBINED', 'TOTAL_VIDEO_P25_COMBINED', 'TOTAL_VIDEO_P50_COMBINED', 'TOTAL_VIDEO_P75_COMBINED', 'TOTAL_VIDEO_P95_COMBINED', 'TOTAL_VIDEO_MRC_VIEWS', 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND', 'TOTAL_REPIN_RATE', 'WEB_CHECKOUT_COST_PER_ACTION', 'WEB_CHECKOUT_ROAS', 'TOTAL_WEB_CHECKOUT', 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_CLICK_CHECKOUT', 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_VIEW_CHECKOUT', 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'INAPP_CHECKOUT_COST_PER_ACTION', 'TOTAL_OFFLINE_CHECKOUT', 'IDEA_PIN_PRODUCT_TAG_VISIT_1', 'IDEA_PIN_PRODUCT_TAG_VISIT_2', 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT', 'LEADS', 'COST_PER_LEAD', 'QUIZ_COMPLETED', 'QUIZ_PIN_RESULT_OPEN', 'QUIZ_COMPLETION_RATE', 'SHOWCASE_PIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_CLICKTHROUGH', 'SHOWCASE_SUBPIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_IMPRESSION', 'SHOWCASE_SUBPIN_IMPRESSION', 'SHOWCASE_SUBPAGE_SWIPE_LEFT', 'SHOWCASE_SUBPAGE_SWIPE_RIGHT', 'SHOWCASE_SUBPIN_SWIPE_LEFT', 'SHOWCASE_SUBPIN_SWIPE_RIGHT', 'SHOWCASE_SUBPAGE_REPIN', 'SHOWCASE_SUBPIN_REPIN', 'SHOWCASE_SUBPAGE_CLOSEUP', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD', 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION', 'TOTAL_CHECKOUT_CONVERSION_RATE', 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE', 'TOTAL_ADD_TO_CART_CONVERSION_RATE', 'TOTAL_SIGNUP_CONVERSION_RATE', 'TOTAL_PAGE_VISIT_CONVERSION_RATE', 'TOTAL_LEAD_CONVERSION_RATE', 'TOTAL_SEARCH_CONVERSION_RATE', 'TOTAL_WATCH_VIDEO_CONVERSION_RATE', 'TOTAL_UNKNOWN_CONVERSION_RATE', 'TOTAL_CUSTOM_CONVERSION_RATE'] },
+            {enum, ['SPEND_IN_MICRO_DOLLAR', 'PAID_IMPRESSION', 'SPEND_IN_DOLLAR', 'CPC_IN_MICRO_DOLLAR', 'ECPC_IN_MICRO_DOLLAR', 'ECPC_IN_DOLLAR', 'CTR', 'ECTR', 'OUTBOUND_CTR_1', 'CAMPAIGN_NAME', 'CAMPAIGN_BRAND_LABEL', 'PIN_ID', 'TOTAL_ENGAGEMENT', 'ENGAGEMENT_1', 'ENGAGEMENT_2', 'ECPE_IN_DOLLAR', 'ENGAGEMENT_RATE', 'EENGAGEMENT_RATE', 'ECPM_IN_MICRO_DOLLAR', 'REPIN_RATE', 'CTR_2', 'CAMPAIGN_ID', 'ADVERTISER_ID', 'AD_ACCOUNT_ID', 'PIN_PROMOTION_ID', 'AD_ID', 'AD_GROUP_ID', 'CAMPAIGN_ENTITY_STATUS', 'CAMPAIGN_OBJECTIVE_TYPE', 'CPM_IN_MICRO_DOLLAR', 'CPM_IN_DOLLAR', 'AD_GROUP_NAME', 'AD_GROUP_BUDGET_TYPE', 'AD_GROUP_BUDGET_IN_LOCAL_CURRENCY', 'AD_GROUP_ENTITY_STATUS', 'AD_GROUP_BID_MULTIPLIER', 'PROMO_ID', 'PROMO_NAME', 'ORDER_LINE_ID', 'ORDER_LINE_NAME', 'CLICKTHROUGH_1', 'REPIN_1', 'IMPRESSION_1', 'IMPRESSION_1_GROSS', 'CLICKTHROUGH_1_GROSS', 'OUTBOUND_CLICK_1', 'CLICKTHROUGH_2', 'REPIN_2', 'IMPRESSION_2', 'OUTBOUND_CLICK_2', 'TOTAL_CLICKTHROUGH', 'TOTAL_IMPRESSION', 'TOTAL_IMPRESSION_USER', 'TOTAL_IMPRESSION_FREQUENCY', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1', 'TOTAL_ENGAGEMENT_SIGNUP', 'TOTAL_ENGAGEMENT_CHECKOUT', 'TOTAL_ENGAGEMENT_LEAD', 'TOTAL_CLICK_SIGNUP', 'TOTAL_CLICK_CHECKOUT', 'TOTAL_CLICK_ADD_TO_CART', 'TOTAL_CLICK_LEAD', 'TOTAL_VIEW_SIGNUP', 'TOTAL_VIEW_CHECKOUT', 'TOTAL_VIEW_ADD_TO_CART', 'TOTAL_VIEW_LEAD', 'TOTAL_CONVERSIONS', 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_SESSIONS', 'WEB_SESSIONS_1', 'WEB_SESSIONS_2', 'AD_NAME', 'CAMPAIGN_LIFETIME_SPEND_CAP', 'AD_GROUP_OPTIMIZATION', 'CAMPAIGN_DAILY_SPEND_CAP', 'CAMPAIGN_BUDGET_OPTIMIZATION', 'IS_PREMIERE_CAMPAIGN', 'TOTAL_PAGE_VISIT', 'TOTAL_SIGNUP', 'TOTAL_CHECKOUT', 'TOTAL_CUSTOM', 'TOTAL_LEAD', 'TOTAL_ADD_TO_WISHLIST', 'TOTAL_SUBSCRIBE', 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR', 'PAGE_VISIT_COST_PER_ACTION', 'PAGE_VISIT_ROAS', 'CHECKOUT_ROAS', 'CUSTOM_ROAS', 'PRODUCT_GROUP_AD_IMAGE_TAG', 'PRODUCT_GROUP_AD_VIDEO_TAG', 'VIDEO_3SEC_VIEWS_1', 'VIDEO_15SEC_UNIQUE_VIEWS_1', 'VIDEO_MRC_VIEWS_1', 'VIDEO_3SEC_VIEWS_2', 'VIDEO_15SEC_UNIQUE_VIEWS_2', 'VIDEO_P100_COMPLETE_2', 'VIDEO_P0_COMBINED_2', 'VIDEO_P25_COMBINED_2', 'VIDEO_P50_COMBINED_2', 'VIDEO_P75_COMBINED_2', 'VIDEO_P95_COMBINED_2', 'VIDEO_MRC_VIEWS_2', 'PAID_VIDEO_VIEWABLE_RATE', 'VIDEO_LENGTH', 'VIDEO_SPEND_IN_DOLLAR', 'ECPV_IN_DOLLAR', 'ECPCV_IN_DOLLAR', 'ECPCV_P95_IN_DOLLAR', 'TOTAL_VIDEO_3SEC_VIEWS', 'TOTAL_VIDEO_15SEC_UNIQUE_VIEWS', 'TOTAL_VIDEO_P100_COMPLETE', 'TOTAL_VIDEO_P0_COMBINED', 'TOTAL_VIDEO_P25_COMBINED', 'TOTAL_VIDEO_P50_COMBINED', 'TOTAL_VIDEO_P75_COMBINED', 'TOTAL_VIDEO_P95_COMBINED', 'TOTAL_VIDEO_MRC_VIEWS', 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND', 'TOTAL_REPIN_RATE', 'WEB_CHECKOUT_COST_PER_ACTION', 'WEB_CHECKOUT_ROAS', 'TOTAL_WEB_CHECKOUT', 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_CLICK_CHECKOUT', 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_VIEW_CHECKOUT', 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'INAPP_CHECKOUT_COST_PER_ACTION', 'TOTAL_OFFLINE_CHECKOUT', 'TOTAL_APP_INSTALL_CONVERSION_RATE', 'TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE', 'IDEA_PIN_PRODUCT_TAG_VISIT_1', 'IDEA_PIN_PRODUCT_TAG_VISIT_2', 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT', 'LEADS', 'COST_PER_LEAD', 'QUIZ_COMPLETED', 'QUIZ_PIN_RESULT_OPEN', 'QUIZ_COMPLETION_RATE', 'SHOWCASE_PIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_CLICKTHROUGH', 'SHOWCASE_SUBPIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_IMPRESSION', 'SHOWCASE_SUBPIN_IMPRESSION', 'SHOWCASE_SUBPAGE_SWIPE_LEFT', 'SHOWCASE_SUBPAGE_SWIPE_RIGHT', 'SHOWCASE_SUBPIN_SWIPE_LEFT', 'SHOWCASE_SUBPIN_SWIPE_RIGHT', 'SHOWCASE_SUBPAGE_REPIN', 'SHOWCASE_SUBPIN_REPIN', 'SHOWCASE_SUBPAGE_CLOSEUP', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD', 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION', 'TOTAL_CHECKOUT_CONVERSION_RATE', 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE', 'TOTAL_ADD_TO_CART_CONVERSION_RATE', 'TOTAL_SIGNUP_CONVERSION_RATE', 'TOTAL_PAGE_VISIT_CONVERSION_RATE', 'TOTAL_LEAD_CONVERSION_RATE', 'TOTAL_SEARCH_CONVERSION_RATE', 'TOTAL_WATCH_VIDEO_CONVERSION_RATE', 'TOTAL_UNKNOWN_CONVERSION_RATE', 'TOTAL_CUSTOM_CONVERSION_RATE'] },
             required
         ]
     };
@@ -3863,6 +4538,13 @@ request_param_info('ads/analytics', 'pin_ids') ->
         ]
     };
 request_param_info('ads/analytics', 'campaign_ids') ->
+    #{
+        source => qs_val,
+        rules => [
+            not_required
+        ]
+    };
+request_param_info('ads/analytics', 'reporting_timezone') ->
     #{
         source => qs_val,
         rules => [
@@ -4275,24 +4957,6 @@ request_param_info('audiences/create', 'AudienceCreateRequest') ->
             required
         ]
     };
-request_param_info('audiences/create_custom', 'ad_account_id') ->
-    #{
-        source => binding,
-        rules => [
-            {type, binary},
-            {max_length, 18},
-            {pattern, "^\\d+$"},
-            required
-        ]
-    };
-request_param_info('audiences/create_custom', 'AudienceCreateCustomRequest') ->
-    #{
-        source => body,
-        rules => [
-            {schema, object, <<"#/components/schemas/AudienceCreateCustomRequest">>},
-            required
-        ]
-    };
 request_param_info('audiences/get', 'ad_account_id') ->
     #{
         source => binding,
@@ -4384,7 +5048,7 @@ request_param_info('audiences/update', 'AudienceUpdateRequest') ->
         source => body,
         rules => [
             {schema, object, <<"#/components/schemas/AudienceUpdateRequest">>},
-            not_required
+            required
         ]
     };
 request_param_info('ads_credit/redeem', 'ad_account_id') ->
@@ -4430,6 +5094,108 @@ request_param_info('ads_credits_discounts/get', 'page_size') ->
             {type, integer},
             {max, 250},
             {min, 1},
+            not_required
+        ]
+    };
+request_param_info('billing_invoice_download/get', 'ad_account_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('billing_invoice_download/get', 'billing_invoice_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('billing_invoices/get', 'ad_account_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('billing_invoices/get', 'bookmark') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            not_required
+        ]
+    };
+request_param_info('billing_invoices/get', 'page_size') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, integer},
+            {max, 250},
+            {min, 1},
+            not_required
+        ]
+    };
+request_param_info('billing_invoices/get', 'sort') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            {enum, ['DUE_DATE', 'BILLING_PERIOD', 'DOCUMENT_TYPE', 'TOTAL_AMOUNT', 'INVOICE_NUMBER'] },
+            not_required
+        ]
+    };
+request_param_info('billing_invoices/get', 'order') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            {enum, ['ASCENDING', 'DESCENDING'] },
+            not_required
+        ]
+    };
+request_param_info('billing_invoices/get', 'status') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            {enum, ['OPEN', 'CLOSED'] },
+            not_required
+        ]
+    };
+request_param_info('billing_invoices/get', 'document_type') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            {enum, ['INVOICE', 'CREDIT_MEMO'] },
+            not_required
+        ]
+    };
+request_param_info('billing_invoices/get', 'start_due_date') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, date},
+            {pattern, "^(\\d{4})-(\\d{2})-(\\d{2})$"},
+            not_required
+        ]
+    };
+request_param_info('billing_invoices/get', 'end_due_date') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, date},
+            {pattern, "^(\\d{4})-(\\d{2})-(\\d{2})$"},
             not_required
         ]
     };
@@ -4771,11 +5537,11 @@ request_param_info('board_sections/update', 'ad_account_id') ->
             not_required
         ]
     };
-request_param_info('boards/create', 'Board') ->
+request_param_info('boards/create', 'BoardCreate') ->
     #{
         source => body,
         rules => [
-            {schema, object, <<"#/components/schemas/Board">>},
+            {schema, object, <<"#/components/schemas/BoardCreate">>},
             required
         ]
     };
@@ -4837,6 +5603,13 @@ request_param_info('boards/list', 'ad_account_id') ->
             not_required
         ]
     };
+request_param_info('boards/list', 'privacy') ->
+    #{
+        source => qs_val,
+        rules => [
+            not_required
+        ]
+    };
 request_param_info('boards/list', 'bookmark') ->
     #{
         source => qs_val,
@@ -4852,15 +5625,6 @@ request_param_info('boards/list', 'page_size') ->
             {type, integer},
             {max, 250},
             {min, 1},
-            not_required
-        ]
-    };
-request_param_info('boards/list', 'privacy') ->
-    #{
-        source => qs_val,
-        rules => [
-            {type, binary},
-            {enum, ['ALL', 'PROTECTED', 'PUBLIC', 'SECRET', 'PUBLIC_AND_SECRET'] },
             not_required
         ]
     };
@@ -4895,7 +5659,6 @@ request_param_info('boards/list_pins', 'creative_types') ->
     #{
         source => qs_val,
         rules => [
-            {enum, ['REGULAR', 'VIDEO', 'SHOPPING', 'CAROUSEL', 'MAX_VIDEO', 'SHOP_THE_PIN', 'COLLECTION', 'IDEA'] },
             not_required
         ]
     };
@@ -4926,11 +5689,11 @@ request_param_info('boards/update', 'board_id') ->
             required
         ]
     };
-request_param_info('boards/update', 'BoardUpdate') ->
+request_param_info('boards/update', 'BoardWithUpdatePrivacyUpdate') ->
     #{
         source => body,
         rules => [
-            {schema, object, <<"#/components/schemas/BoardUpdate">>},
+            {schema, object, <<"#/components/schemas/BoardWithUpdatePrivacyUpdate">>},
             required
         ]
     };
@@ -5085,6 +5848,14 @@ request_param_info('business_asset_members/get', 'asset_id') ->
             required
         ]
     };
+request_param_info('business_asset_members/get', 'fetch_system_users') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, boolean},
+            not_required
+        ]
+    };
 request_param_info('business_asset_members/get', 'bookmark') ->
     #{
         source => qs_val,
@@ -5206,7 +5977,7 @@ request_param_info('business_assets/get', 'asset_type') ->
         source => qs_val,
         rules => [
             {type, binary},
-            {enum, ['AD_ACCOUNT', 'PROFILE', 'ASSET_GROUP'] },
+            {enum, ['AD_ACCOUNT', 'PROFILE', 'ASSET_GROUP', 'CATALOG', 'CONSUMER'] },
             not_required
         ]
     };
@@ -5264,7 +6035,7 @@ request_param_info('business_member_assets/get', 'asset_type') ->
         source => qs_val,
         rules => [
             {type, binary},
-            {enum, ['AD_ACCOUNT', 'PROFILE', 'ASSET_GROUP'] },
+            {enum, ['AD_ACCOUNT', 'PROFILE', 'ASSET_GROUP', 'CATALOG', 'CONSUMER'] },
             not_required
         ]
     };
@@ -5367,7 +6138,7 @@ request_param_info('business_partner_asset_access/get', 'asset_type') ->
         source => qs_val,
         rules => [
             {type, binary},
-            {enum, ['AD_ACCOUNT', 'PROFILE', 'ASSET_GROUP'] },
+            {enum, ['AD_ACCOUNT', 'PROFILE', 'ASSET_GROUP', 'CATALOG', 'CONSUMER'] },
             not_required
         ]
     };
@@ -5460,7 +6231,6 @@ request_param_info('cancel_invites_or_requests', 'business_id') ->
         source => binding,
         rules => [
             {type, binary},
-            {max_length, 20},
             {min_length, 1},
             {pattern, "^\\d+$"},
             required
@@ -5498,7 +6268,6 @@ request_param_info('create_membership_or_partnership_invites', 'business_id') ->
         source => binding,
         rules => [
             {type, binary},
-            {max_length, 20},
             {min_length, 1},
             {pattern, "^\\d+$"},
             required
@@ -5517,7 +6286,6 @@ request_param_info('get/invites', 'business_id') ->
         source => binding,
         rules => [
             {type, binary},
-            {max_length, 20},
             {min_length, 1},
             {pattern, "^\\d+$"},
             required
@@ -5569,6 +6337,55 @@ request_param_info('respond_business_access_invites', 'AuthRespondInvitesBody') 
         source => body,
         rules => [
             {schema, object, <<"#/components/schemas/AuthRespondInvitesBody">>},
+            required
+        ]
+    };
+request_param_info('brand_accounts/create', 'business_hierarchy_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 20},
+            {min_length, 1},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('brand_accounts/create', 'brand_accounts_create_request') ->
+    #{
+        source => body,
+        rules => [
+            {schema, object, <<"#/components/schemas/brand_accounts_create_request">>},
+            required
+        ]
+    };
+request_param_info('brand_accounts/update', 'business_hierarchy_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 20},
+            {min_length, 1},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('brand_accounts/update', 'brand_account_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 20},
+            {min_length, 1},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('brand_accounts/update', 'brand_accounts_update_request') ->
+    #{
+        source => body,
+        rules => [
+            {schema, object, <<"#/components/schemas/brand_accounts_update_request">>},
             required
         ]
     };
@@ -5637,6 +6454,14 @@ request_param_info('get/business_members', 'business_id') ->
             {min_length, 1},
             {pattern, "^\\d+$"},
             required
+        ]
+    };
+request_param_info('get/business_members', 'fetch_system_users') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, boolean},
+            not_required
         ]
     };
 request_param_info('get/business_members', 'assets_summary') ->
@@ -5752,6 +6577,36 @@ request_param_info('get/business_partners', 'bookmark') ->
             not_required
         ]
     };
+request_param_info('system_user/update', 'business_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 20},
+            {min_length, 1},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('system_user/update', 'system_user_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 20},
+            {min_length, 1},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('system_user/update', 'system_user_update_request') ->
+    #{
+        source => body,
+        rules => [
+            {schema, object, <<"#/components/schemas/system_user_update_request">>},
+            required
+        ]
+    };
 request_param_info('update/business_memberships', 'business_id') ->
     #{
         source => binding,
@@ -5769,6 +6624,100 @@ request_param_info('update/business_memberships', 'array') ->
         rules => [
             {schema, list, <<"#/components/schemas/UpdateMemberBusinessRoleBody">>},
             required
+        ]
+    };
+request_param_info('ad_pins/analytics', 'ad_account_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('ad_pins/analytics', 'campaign_id') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('ad_pins/analytics', 'pin_ids') ->
+    #{
+        source => qs_val,
+        rules => [
+            required
+        ]
+    };
+request_param_info('ad_pins/analytics', 'start_date') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, date},
+            required
+        ]
+    };
+request_param_info('ad_pins/analytics', 'end_date') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, date},
+            required
+        ]
+    };
+request_param_info('ad_pins/analytics', 'columns') ->
+    #{
+        source => qs_val,
+        rules => [
+            {enum, ['SPEND_IN_MICRO_DOLLAR', 'PAID_IMPRESSION', 'SPEND_IN_DOLLAR', 'CPC_IN_MICRO_DOLLAR', 'ECPC_IN_MICRO_DOLLAR', 'ECPC_IN_DOLLAR', 'CTR', 'ECTR', 'OUTBOUND_CTR_1', 'CAMPAIGN_NAME', 'CAMPAIGN_BRAND_LABEL', 'PIN_ID', 'TOTAL_ENGAGEMENT', 'ENGAGEMENT_1', 'ENGAGEMENT_2', 'ECPE_IN_DOLLAR', 'ENGAGEMENT_RATE', 'EENGAGEMENT_RATE', 'ECPM_IN_MICRO_DOLLAR', 'REPIN_RATE', 'CTR_2', 'CAMPAIGN_ID', 'ADVERTISER_ID', 'AD_ACCOUNT_ID', 'PIN_PROMOTION_ID', 'AD_ID', 'AD_GROUP_ID', 'CAMPAIGN_ENTITY_STATUS', 'CAMPAIGN_OBJECTIVE_TYPE', 'CPM_IN_MICRO_DOLLAR', 'CPM_IN_DOLLAR', 'AD_GROUP_NAME', 'AD_GROUP_BUDGET_TYPE', 'AD_GROUP_BUDGET_IN_LOCAL_CURRENCY', 'AD_GROUP_ENTITY_STATUS', 'AD_GROUP_BID_MULTIPLIER', 'PROMO_ID', 'PROMO_NAME', 'ORDER_LINE_ID', 'ORDER_LINE_NAME', 'CLICKTHROUGH_1', 'REPIN_1', 'IMPRESSION_1', 'IMPRESSION_1_GROSS', 'CLICKTHROUGH_1_GROSS', 'OUTBOUND_CLICK_1', 'CLICKTHROUGH_2', 'REPIN_2', 'IMPRESSION_2', 'OUTBOUND_CLICK_2', 'TOTAL_CLICKTHROUGH', 'TOTAL_IMPRESSION', 'TOTAL_IMPRESSION_USER', 'TOTAL_IMPRESSION_FREQUENCY', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1', 'TOTAL_ENGAGEMENT_SIGNUP', 'TOTAL_ENGAGEMENT_CHECKOUT', 'TOTAL_ENGAGEMENT_LEAD', 'TOTAL_CLICK_SIGNUP', 'TOTAL_CLICK_CHECKOUT', 'TOTAL_CLICK_ADD_TO_CART', 'TOTAL_CLICK_LEAD', 'TOTAL_VIEW_SIGNUP', 'TOTAL_VIEW_CHECKOUT', 'TOTAL_VIEW_ADD_TO_CART', 'TOTAL_VIEW_LEAD', 'TOTAL_CONVERSIONS', 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_SESSIONS', 'WEB_SESSIONS_1', 'WEB_SESSIONS_2', 'AD_NAME', 'CAMPAIGN_LIFETIME_SPEND_CAP', 'AD_GROUP_OPTIMIZATION', 'CAMPAIGN_DAILY_SPEND_CAP', 'CAMPAIGN_BUDGET_OPTIMIZATION', 'IS_PREMIERE_CAMPAIGN', 'TOTAL_PAGE_VISIT', 'TOTAL_SIGNUP', 'TOTAL_CHECKOUT', 'TOTAL_CUSTOM', 'TOTAL_LEAD', 'TOTAL_ADD_TO_WISHLIST', 'TOTAL_SUBSCRIBE', 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR', 'PAGE_VISIT_COST_PER_ACTION', 'PAGE_VISIT_ROAS', 'CHECKOUT_ROAS', 'CUSTOM_ROAS', 'PRODUCT_GROUP_AD_IMAGE_TAG', 'PRODUCT_GROUP_AD_VIDEO_TAG', 'VIDEO_3SEC_VIEWS_1', 'VIDEO_15SEC_UNIQUE_VIEWS_1', 'VIDEO_MRC_VIEWS_1', 'VIDEO_3SEC_VIEWS_2', 'VIDEO_15SEC_UNIQUE_VIEWS_2', 'VIDEO_P100_COMPLETE_2', 'VIDEO_P0_COMBINED_2', 'VIDEO_P25_COMBINED_2', 'VIDEO_P50_COMBINED_2', 'VIDEO_P75_COMBINED_2', 'VIDEO_P95_COMBINED_2', 'VIDEO_MRC_VIEWS_2', 'PAID_VIDEO_VIEWABLE_RATE', 'VIDEO_LENGTH', 'VIDEO_SPEND_IN_DOLLAR', 'ECPV_IN_DOLLAR', 'ECPCV_IN_DOLLAR', 'ECPCV_P95_IN_DOLLAR', 'TOTAL_VIDEO_3SEC_VIEWS', 'TOTAL_VIDEO_15SEC_UNIQUE_VIEWS', 'TOTAL_VIDEO_P100_COMPLETE', 'TOTAL_VIDEO_P0_COMBINED', 'TOTAL_VIDEO_P25_COMBINED', 'TOTAL_VIDEO_P50_COMBINED', 'TOTAL_VIDEO_P75_COMBINED', 'TOTAL_VIDEO_P95_COMBINED', 'TOTAL_VIDEO_MRC_VIEWS', 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND', 'TOTAL_REPIN_RATE', 'WEB_CHECKOUT_COST_PER_ACTION', 'WEB_CHECKOUT_ROAS', 'TOTAL_WEB_CHECKOUT', 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_CLICK_CHECKOUT', 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_VIEW_CHECKOUT', 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'INAPP_CHECKOUT_COST_PER_ACTION', 'TOTAL_OFFLINE_CHECKOUT', 'TOTAL_APP_INSTALL_CONVERSION_RATE', 'TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE', 'IDEA_PIN_PRODUCT_TAG_VISIT_1', 'IDEA_PIN_PRODUCT_TAG_VISIT_2', 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT', 'LEADS', 'COST_PER_LEAD', 'QUIZ_COMPLETED', 'QUIZ_PIN_RESULT_OPEN', 'QUIZ_COMPLETION_RATE', 'SHOWCASE_PIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_CLICKTHROUGH', 'SHOWCASE_SUBPIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_IMPRESSION', 'SHOWCASE_SUBPIN_IMPRESSION', 'SHOWCASE_SUBPAGE_SWIPE_LEFT', 'SHOWCASE_SUBPAGE_SWIPE_RIGHT', 'SHOWCASE_SUBPIN_SWIPE_LEFT', 'SHOWCASE_SUBPIN_SWIPE_RIGHT', 'SHOWCASE_SUBPAGE_REPIN', 'SHOWCASE_SUBPIN_REPIN', 'SHOWCASE_SUBPAGE_CLOSEUP', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD', 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION', 'TOTAL_CHECKOUT_CONVERSION_RATE', 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE', 'TOTAL_ADD_TO_CART_CONVERSION_RATE', 'TOTAL_SIGNUP_CONVERSION_RATE', 'TOTAL_PAGE_VISIT_CONVERSION_RATE', 'TOTAL_LEAD_CONVERSION_RATE', 'TOTAL_SEARCH_CONVERSION_RATE', 'TOTAL_WATCH_VIDEO_CONVERSION_RATE', 'TOTAL_UNKNOWN_CONVERSION_RATE', 'TOTAL_CUSTOM_CONVERSION_RATE'] },
+            required
+        ]
+    };
+request_param_info('ad_pins/analytics', 'granularity') ->
+    #{
+        source => qs_val,
+        rules => [
+            required
+        ]
+    };
+request_param_info('ad_pins/analytics', 'click_window_days') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, integer},
+            {enum, ['0', '1', '7', '14', '30', '60'] },
+            not_required
+        ]
+    };
+request_param_info('ad_pins/analytics', 'engagement_window_days') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, integer},
+            {enum, ['0', '1', '7', '14', '30', '60'] },
+            not_required
+        ]
+    };
+request_param_info('ad_pins/analytics', 'view_window_days') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, integer},
+            {enum, ['0', '1', '7', '14', '30', '60'] },
+            not_required
+        ]
+    };
+request_param_info('ad_pins/analytics', 'conversion_report_time') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            {enum, ['TIME_OF_AD_ACTION', 'TIME_OF_CONVERSION'] },
+            not_required
         ]
     };
 request_param_info('campaign_targeting_analytics/get', 'ad_account_id') ->
@@ -5815,7 +6764,7 @@ request_param_info('campaign_targeting_analytics/get', 'columns') ->
     #{
         source => qs_val,
         rules => [
-            {enum, ['SPEND_IN_MICRO_DOLLAR', 'PAID_IMPRESSION', 'SPEND_IN_DOLLAR', 'CPC_IN_MICRO_DOLLAR', 'ECPC_IN_MICRO_DOLLAR', 'ECPC_IN_DOLLAR', 'CTR', 'ECTR', 'CAMPAIGN_NAME', 'PIN_ID', 'TOTAL_ENGAGEMENT', 'ENGAGEMENT_1', 'ENGAGEMENT_2', 'ECPE_IN_DOLLAR', 'ENGAGEMENT_RATE', 'EENGAGEMENT_RATE', 'ECPM_IN_MICRO_DOLLAR', 'REPIN_RATE', 'CTR_2', 'CAMPAIGN_ID', 'ADVERTISER_ID', 'AD_ACCOUNT_ID', 'PIN_PROMOTION_ID', 'AD_ID', 'AD_GROUP_ID', 'CAMPAIGN_ENTITY_STATUS', 'CAMPAIGN_OBJECTIVE_TYPE', 'CPM_IN_MICRO_DOLLAR', 'CPM_IN_DOLLAR', 'AD_GROUP_ENTITY_STATUS', 'ORDER_LINE_ID', 'ORDER_LINE_NAME', 'CLICKTHROUGH_1', 'REPIN_1', 'IMPRESSION_1', 'IMPRESSION_1_GROSS', 'CLICKTHROUGH_1_GROSS', 'OUTBOUND_CLICK_1', 'CLICKTHROUGH_2', 'REPIN_2', 'IMPRESSION_2', 'OUTBOUND_CLICK_2', 'TOTAL_CLICKTHROUGH', 'TOTAL_IMPRESSION', 'TOTAL_IMPRESSION_USER', 'TOTAL_IMPRESSION_FREQUENCY', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR', 'TOTAL_ENGAGEMENT_SIGNUP', 'TOTAL_ENGAGEMENT_CHECKOUT', 'TOTAL_ENGAGEMENT_LEAD', 'TOTAL_CLICK_SIGNUP', 'TOTAL_CLICK_CHECKOUT', 'TOTAL_CLICK_ADD_TO_CART', 'TOTAL_CLICK_LEAD', 'TOTAL_VIEW_SIGNUP', 'TOTAL_VIEW_CHECKOUT', 'TOTAL_VIEW_ADD_TO_CART', 'TOTAL_VIEW_LEAD', 'TOTAL_CONVERSIONS', 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_SESSIONS', 'WEB_SESSIONS_1', 'WEB_SESSIONS_2', 'CAMPAIGN_LIFETIME_SPEND_CAP', 'CAMPAIGN_DAILY_SPEND_CAP', 'TOTAL_PAGE_VISIT', 'TOTAL_SIGNUP', 'TOTAL_CHECKOUT', 'TOTAL_CUSTOM', 'TOTAL_LEAD', 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR', 'PAGE_VISIT_COST_PER_ACTION', 'PAGE_VISIT_ROAS', 'CHECKOUT_ROAS', 'CUSTOM_ROAS', 'VIDEO_MRC_VIEWS_1', 'VIDEO_3SEC_VIEWS_2', 'VIDEO_P100_COMPLETE_2', 'VIDEO_P0_COMBINED_2', 'VIDEO_P25_COMBINED_2', 'VIDEO_P50_COMBINED_2', 'VIDEO_P75_COMBINED_2', 'VIDEO_P95_COMBINED_2', 'VIDEO_MRC_VIEWS_2', 'PAID_VIDEO_VIEWABLE_RATE', 'VIDEO_LENGTH', 'ECPV_IN_DOLLAR', 'ECPCV_IN_DOLLAR', 'ECPCV_P95_IN_DOLLAR', 'TOTAL_VIDEO_3SEC_VIEWS', 'TOTAL_VIDEO_P100_COMPLETE', 'TOTAL_VIDEO_P0_COMBINED', 'TOTAL_VIDEO_P25_COMBINED', 'TOTAL_VIDEO_P50_COMBINED', 'TOTAL_VIDEO_P75_COMBINED', 'TOTAL_VIDEO_P95_COMBINED', 'TOTAL_VIDEO_MRC_VIEWS', 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND', 'TOTAL_REPIN_RATE', 'WEB_CHECKOUT_COST_PER_ACTION', 'WEB_CHECKOUT_ROAS', 'TOTAL_WEB_CHECKOUT', 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_CLICK_CHECKOUT', 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_VIEW_CHECKOUT', 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'INAPP_CHECKOUT_COST_PER_ACTION', 'TOTAL_OFFLINE_CHECKOUT', 'IDEA_PIN_PRODUCT_TAG_VISIT_1', 'IDEA_PIN_PRODUCT_TAG_VISIT_2', 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT', 'LEADS', 'COST_PER_LEAD', 'QUIZ_COMPLETED', 'QUIZ_PIN_RESULT_OPEN', 'QUIZ_COMPLETION_RATE', 'SHOWCASE_PIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_CLICKTHROUGH', 'SHOWCASE_SUBPIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_IMPRESSION', 'SHOWCASE_SUBPIN_IMPRESSION', 'SHOWCASE_SUBPAGE_SWIPE_LEFT', 'SHOWCASE_SUBPAGE_SWIPE_RIGHT', 'SHOWCASE_SUBPIN_SWIPE_LEFT', 'SHOWCASE_SUBPIN_SWIPE_RIGHT', 'SHOWCASE_SUBPAGE_REPIN', 'SHOWCASE_SUBPIN_REPIN', 'SHOWCASE_SUBPAGE_CLOSEUP', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD', 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION', 'TOTAL_CHECKOUT_CONVERSION_RATE', 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE', 'TOTAL_ADD_TO_CART_CONVERSION_RATE', 'TOTAL_SIGNUP_CONVERSION_RATE', 'TOTAL_PAGE_VISIT_CONVERSION_RATE', 'TOTAL_LEAD_CONVERSION_RATE', 'TOTAL_SEARCH_CONVERSION_RATE', 'TOTAL_WATCH_VIDEO_CONVERSION_RATE', 'TOTAL_UNKNOWN_CONVERSION_RATE', 'TOTAL_CUSTOM_CONVERSION_RATE'] },
+            {enum, ['SPEND_IN_MICRO_DOLLAR', 'PAID_IMPRESSION', 'SPEND_IN_DOLLAR', 'CPC_IN_MICRO_DOLLAR', 'ECPC_IN_MICRO_DOLLAR', 'ECPC_IN_DOLLAR', 'CTR', 'ECTR', 'OUTBOUND_CTR_1', 'CAMPAIGN_NAME', 'CAMPAIGN_BRAND_LABEL', 'PIN_ID', 'TOTAL_ENGAGEMENT', 'ENGAGEMENT_1', 'ENGAGEMENT_2', 'ECPE_IN_DOLLAR', 'ENGAGEMENT_RATE', 'EENGAGEMENT_RATE', 'ECPM_IN_MICRO_DOLLAR', 'REPIN_RATE', 'CTR_2', 'CAMPAIGN_ID', 'ADVERTISER_ID', 'AD_ACCOUNT_ID', 'PIN_PROMOTION_ID', 'AD_ID', 'AD_GROUP_ID', 'CAMPAIGN_ENTITY_STATUS', 'CAMPAIGN_OBJECTIVE_TYPE', 'CPM_IN_MICRO_DOLLAR', 'CPM_IN_DOLLAR', 'AD_GROUP_NAME', 'AD_GROUP_BUDGET_TYPE', 'AD_GROUP_BUDGET_IN_LOCAL_CURRENCY', 'AD_GROUP_ENTITY_STATUS', 'AD_GROUP_BID_MULTIPLIER', 'PROMO_ID', 'PROMO_NAME', 'ORDER_LINE_ID', 'ORDER_LINE_NAME', 'CLICKTHROUGH_1', 'REPIN_1', 'IMPRESSION_1', 'IMPRESSION_1_GROSS', 'CLICKTHROUGH_1_GROSS', 'OUTBOUND_CLICK_1', 'CLICKTHROUGH_2', 'REPIN_2', 'IMPRESSION_2', 'OUTBOUND_CLICK_2', 'TOTAL_CLICKTHROUGH', 'TOTAL_IMPRESSION', 'TOTAL_IMPRESSION_USER', 'TOTAL_IMPRESSION_FREQUENCY', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1', 'TOTAL_ENGAGEMENT_SIGNUP', 'TOTAL_ENGAGEMENT_CHECKOUT', 'TOTAL_ENGAGEMENT_LEAD', 'TOTAL_CLICK_SIGNUP', 'TOTAL_CLICK_CHECKOUT', 'TOTAL_CLICK_ADD_TO_CART', 'TOTAL_CLICK_LEAD', 'TOTAL_VIEW_SIGNUP', 'TOTAL_VIEW_CHECKOUT', 'TOTAL_VIEW_ADD_TO_CART', 'TOTAL_VIEW_LEAD', 'TOTAL_CONVERSIONS', 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_SESSIONS', 'WEB_SESSIONS_1', 'WEB_SESSIONS_2', 'AD_NAME', 'CAMPAIGN_LIFETIME_SPEND_CAP', 'AD_GROUP_OPTIMIZATION', 'CAMPAIGN_DAILY_SPEND_CAP', 'CAMPAIGN_BUDGET_OPTIMIZATION', 'IS_PREMIERE_CAMPAIGN', 'TOTAL_PAGE_VISIT', 'TOTAL_SIGNUP', 'TOTAL_CHECKOUT', 'TOTAL_CUSTOM', 'TOTAL_LEAD', 'TOTAL_ADD_TO_WISHLIST', 'TOTAL_SUBSCRIBE', 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR', 'PAGE_VISIT_COST_PER_ACTION', 'PAGE_VISIT_ROAS', 'CHECKOUT_ROAS', 'CUSTOM_ROAS', 'PRODUCT_GROUP_AD_IMAGE_TAG', 'PRODUCT_GROUP_AD_VIDEO_TAG', 'VIDEO_3SEC_VIEWS_1', 'VIDEO_15SEC_UNIQUE_VIEWS_1', 'VIDEO_MRC_VIEWS_1', 'VIDEO_3SEC_VIEWS_2', 'VIDEO_15SEC_UNIQUE_VIEWS_2', 'VIDEO_P100_COMPLETE_2', 'VIDEO_P0_COMBINED_2', 'VIDEO_P25_COMBINED_2', 'VIDEO_P50_COMBINED_2', 'VIDEO_P75_COMBINED_2', 'VIDEO_P95_COMBINED_2', 'VIDEO_MRC_VIEWS_2', 'PAID_VIDEO_VIEWABLE_RATE', 'VIDEO_LENGTH', 'VIDEO_SPEND_IN_DOLLAR', 'ECPV_IN_DOLLAR', 'ECPCV_IN_DOLLAR', 'ECPCV_P95_IN_DOLLAR', 'TOTAL_VIDEO_3SEC_VIEWS', 'TOTAL_VIDEO_15SEC_UNIQUE_VIEWS', 'TOTAL_VIDEO_P100_COMPLETE', 'TOTAL_VIDEO_P0_COMBINED', 'TOTAL_VIDEO_P25_COMBINED', 'TOTAL_VIDEO_P50_COMBINED', 'TOTAL_VIDEO_P75_COMBINED', 'TOTAL_VIDEO_P95_COMBINED', 'TOTAL_VIDEO_MRC_VIEWS', 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND', 'TOTAL_REPIN_RATE', 'WEB_CHECKOUT_COST_PER_ACTION', 'WEB_CHECKOUT_ROAS', 'TOTAL_WEB_CHECKOUT', 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_CLICK_CHECKOUT', 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_VIEW_CHECKOUT', 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'INAPP_CHECKOUT_COST_PER_ACTION', 'TOTAL_OFFLINE_CHECKOUT', 'TOTAL_APP_INSTALL_CONVERSION_RATE', 'TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE', 'IDEA_PIN_PRODUCT_TAG_VISIT_1', 'IDEA_PIN_PRODUCT_TAG_VISIT_2', 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT', 'LEADS', 'COST_PER_LEAD', 'QUIZ_COMPLETED', 'QUIZ_PIN_RESULT_OPEN', 'QUIZ_COMPLETION_RATE', 'SHOWCASE_PIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_CLICKTHROUGH', 'SHOWCASE_SUBPIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_IMPRESSION', 'SHOWCASE_SUBPIN_IMPRESSION', 'SHOWCASE_SUBPAGE_SWIPE_LEFT', 'SHOWCASE_SUBPAGE_SWIPE_RIGHT', 'SHOWCASE_SUBPIN_SWIPE_LEFT', 'SHOWCASE_SUBPIN_SWIPE_RIGHT', 'SHOWCASE_SUBPAGE_REPIN', 'SHOWCASE_SUBPIN_REPIN', 'SHOWCASE_SUBPAGE_CLOSEUP', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD', 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION', 'TOTAL_CHECKOUT_CONVERSION_RATE', 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE', 'TOTAL_ADD_TO_CART_CONVERSION_RATE', 'TOTAL_SIGNUP_CONVERSION_RATE', 'TOTAL_PAGE_VISIT_CONVERSION_RATE', 'TOTAL_LEAD_CONVERSION_RATE', 'TOTAL_SEARCH_CONVERSION_RATE', 'TOTAL_WATCH_VIDEO_CONVERSION_RATE', 'TOTAL_UNKNOWN_CONVERSION_RATE', 'TOTAL_CUSTOM_CONVERSION_RATE'] },
             required
         ]
     };
@@ -5869,6 +6818,13 @@ request_param_info('campaign_targeting_analytics/get', 'attribution_types') ->
             not_required
         ]
     };
+request_param_info('campaign_targeting_analytics/get', 'reporting_timezone') ->
+    #{
+        source => qs_val,
+        rules => [
+            not_required
+        ]
+    };
 request_param_info('campaigns/analytics', 'ad_account_id') ->
     #{
         source => binding,
@@ -5906,7 +6862,7 @@ request_param_info('campaigns/analytics', 'columns') ->
     #{
         source => qs_val,
         rules => [
-            {enum, ['SPEND_IN_MICRO_DOLLAR', 'PAID_IMPRESSION', 'SPEND_IN_DOLLAR', 'CPC_IN_MICRO_DOLLAR', 'ECPC_IN_MICRO_DOLLAR', 'ECPC_IN_DOLLAR', 'CTR', 'ECTR', 'CAMPAIGN_NAME', 'PIN_ID', 'TOTAL_ENGAGEMENT', 'ENGAGEMENT_1', 'ENGAGEMENT_2', 'ECPE_IN_DOLLAR', 'ENGAGEMENT_RATE', 'EENGAGEMENT_RATE', 'ECPM_IN_MICRO_DOLLAR', 'REPIN_RATE', 'CTR_2', 'CAMPAIGN_ID', 'ADVERTISER_ID', 'AD_ACCOUNT_ID', 'PIN_PROMOTION_ID', 'AD_ID', 'AD_GROUP_ID', 'CAMPAIGN_ENTITY_STATUS', 'CAMPAIGN_OBJECTIVE_TYPE', 'CPM_IN_MICRO_DOLLAR', 'CPM_IN_DOLLAR', 'AD_GROUP_ENTITY_STATUS', 'ORDER_LINE_ID', 'ORDER_LINE_NAME', 'CLICKTHROUGH_1', 'REPIN_1', 'IMPRESSION_1', 'IMPRESSION_1_GROSS', 'CLICKTHROUGH_1_GROSS', 'OUTBOUND_CLICK_1', 'CLICKTHROUGH_2', 'REPIN_2', 'IMPRESSION_2', 'OUTBOUND_CLICK_2', 'TOTAL_CLICKTHROUGH', 'TOTAL_IMPRESSION', 'TOTAL_IMPRESSION_USER', 'TOTAL_IMPRESSION_FREQUENCY', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR', 'TOTAL_ENGAGEMENT_SIGNUP', 'TOTAL_ENGAGEMENT_CHECKOUT', 'TOTAL_ENGAGEMENT_LEAD', 'TOTAL_CLICK_SIGNUP', 'TOTAL_CLICK_CHECKOUT', 'TOTAL_CLICK_ADD_TO_CART', 'TOTAL_CLICK_LEAD', 'TOTAL_VIEW_SIGNUP', 'TOTAL_VIEW_CHECKOUT', 'TOTAL_VIEW_ADD_TO_CART', 'TOTAL_VIEW_LEAD', 'TOTAL_CONVERSIONS', 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_SESSIONS', 'WEB_SESSIONS_1', 'WEB_SESSIONS_2', 'CAMPAIGN_LIFETIME_SPEND_CAP', 'CAMPAIGN_DAILY_SPEND_CAP', 'TOTAL_PAGE_VISIT', 'TOTAL_SIGNUP', 'TOTAL_CHECKOUT', 'TOTAL_CUSTOM', 'TOTAL_LEAD', 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR', 'PAGE_VISIT_COST_PER_ACTION', 'PAGE_VISIT_ROAS', 'CHECKOUT_ROAS', 'CUSTOM_ROAS', 'VIDEO_MRC_VIEWS_1', 'VIDEO_3SEC_VIEWS_2', 'VIDEO_P100_COMPLETE_2', 'VIDEO_P0_COMBINED_2', 'VIDEO_P25_COMBINED_2', 'VIDEO_P50_COMBINED_2', 'VIDEO_P75_COMBINED_2', 'VIDEO_P95_COMBINED_2', 'VIDEO_MRC_VIEWS_2', 'PAID_VIDEO_VIEWABLE_RATE', 'VIDEO_LENGTH', 'ECPV_IN_DOLLAR', 'ECPCV_IN_DOLLAR', 'ECPCV_P95_IN_DOLLAR', 'TOTAL_VIDEO_3SEC_VIEWS', 'TOTAL_VIDEO_P100_COMPLETE', 'TOTAL_VIDEO_P0_COMBINED', 'TOTAL_VIDEO_P25_COMBINED', 'TOTAL_VIDEO_P50_COMBINED', 'TOTAL_VIDEO_P75_COMBINED', 'TOTAL_VIDEO_P95_COMBINED', 'TOTAL_VIDEO_MRC_VIEWS', 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND', 'TOTAL_REPIN_RATE', 'WEB_CHECKOUT_COST_PER_ACTION', 'WEB_CHECKOUT_ROAS', 'TOTAL_WEB_CHECKOUT', 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_CLICK_CHECKOUT', 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_VIEW_CHECKOUT', 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'INAPP_CHECKOUT_COST_PER_ACTION', 'TOTAL_OFFLINE_CHECKOUT', 'IDEA_PIN_PRODUCT_TAG_VISIT_1', 'IDEA_PIN_PRODUCT_TAG_VISIT_2', 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT', 'LEADS', 'COST_PER_LEAD', 'QUIZ_COMPLETED', 'QUIZ_PIN_RESULT_OPEN', 'QUIZ_COMPLETION_RATE', 'SHOWCASE_PIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_CLICKTHROUGH', 'SHOWCASE_SUBPIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_IMPRESSION', 'SHOWCASE_SUBPIN_IMPRESSION', 'SHOWCASE_SUBPAGE_SWIPE_LEFT', 'SHOWCASE_SUBPAGE_SWIPE_RIGHT', 'SHOWCASE_SUBPIN_SWIPE_LEFT', 'SHOWCASE_SUBPIN_SWIPE_RIGHT', 'SHOWCASE_SUBPAGE_REPIN', 'SHOWCASE_SUBPIN_REPIN', 'SHOWCASE_SUBPAGE_CLOSEUP', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD', 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION', 'TOTAL_CHECKOUT_CONVERSION_RATE', 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE', 'TOTAL_ADD_TO_CART_CONVERSION_RATE', 'TOTAL_SIGNUP_CONVERSION_RATE', 'TOTAL_PAGE_VISIT_CONVERSION_RATE', 'TOTAL_LEAD_CONVERSION_RATE', 'TOTAL_SEARCH_CONVERSION_RATE', 'TOTAL_WATCH_VIDEO_CONVERSION_RATE', 'TOTAL_UNKNOWN_CONVERSION_RATE', 'TOTAL_CUSTOM_CONVERSION_RATE'] },
+            {enum, ['SPEND_IN_MICRO_DOLLAR', 'PAID_IMPRESSION', 'SPEND_IN_DOLLAR', 'CPC_IN_MICRO_DOLLAR', 'ECPC_IN_MICRO_DOLLAR', 'ECPC_IN_DOLLAR', 'CTR', 'ECTR', 'OUTBOUND_CTR_1', 'CAMPAIGN_NAME', 'CAMPAIGN_BRAND_LABEL', 'PIN_ID', 'TOTAL_ENGAGEMENT', 'ENGAGEMENT_1', 'ENGAGEMENT_2', 'ECPE_IN_DOLLAR', 'ENGAGEMENT_RATE', 'EENGAGEMENT_RATE', 'ECPM_IN_MICRO_DOLLAR', 'REPIN_RATE', 'CTR_2', 'CAMPAIGN_ID', 'ADVERTISER_ID', 'AD_ACCOUNT_ID', 'PIN_PROMOTION_ID', 'AD_ID', 'AD_GROUP_ID', 'CAMPAIGN_ENTITY_STATUS', 'CAMPAIGN_OBJECTIVE_TYPE', 'CPM_IN_MICRO_DOLLAR', 'CPM_IN_DOLLAR', 'AD_GROUP_NAME', 'AD_GROUP_BUDGET_TYPE', 'AD_GROUP_BUDGET_IN_LOCAL_CURRENCY', 'AD_GROUP_ENTITY_STATUS', 'AD_GROUP_BID_MULTIPLIER', 'PROMO_ID', 'PROMO_NAME', 'ORDER_LINE_ID', 'ORDER_LINE_NAME', 'CLICKTHROUGH_1', 'REPIN_1', 'IMPRESSION_1', 'IMPRESSION_1_GROSS', 'CLICKTHROUGH_1_GROSS', 'OUTBOUND_CLICK_1', 'CLICKTHROUGH_2', 'REPIN_2', 'IMPRESSION_2', 'OUTBOUND_CLICK_2', 'TOTAL_CLICKTHROUGH', 'TOTAL_IMPRESSION', 'TOTAL_IMPRESSION_USER', 'TOTAL_IMPRESSION_FREQUENCY', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1', 'TOTAL_ENGAGEMENT_SIGNUP', 'TOTAL_ENGAGEMENT_CHECKOUT', 'TOTAL_ENGAGEMENT_LEAD', 'TOTAL_CLICK_SIGNUP', 'TOTAL_CLICK_CHECKOUT', 'TOTAL_CLICK_ADD_TO_CART', 'TOTAL_CLICK_LEAD', 'TOTAL_VIEW_SIGNUP', 'TOTAL_VIEW_CHECKOUT', 'TOTAL_VIEW_ADD_TO_CART', 'TOTAL_VIEW_LEAD', 'TOTAL_CONVERSIONS', 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_SESSIONS', 'WEB_SESSIONS_1', 'WEB_SESSIONS_2', 'AD_NAME', 'CAMPAIGN_LIFETIME_SPEND_CAP', 'AD_GROUP_OPTIMIZATION', 'CAMPAIGN_DAILY_SPEND_CAP', 'CAMPAIGN_BUDGET_OPTIMIZATION', 'IS_PREMIERE_CAMPAIGN', 'TOTAL_PAGE_VISIT', 'TOTAL_SIGNUP', 'TOTAL_CHECKOUT', 'TOTAL_CUSTOM', 'TOTAL_LEAD', 'TOTAL_ADD_TO_WISHLIST', 'TOTAL_SUBSCRIBE', 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR', 'PAGE_VISIT_COST_PER_ACTION', 'PAGE_VISIT_ROAS', 'CHECKOUT_ROAS', 'CUSTOM_ROAS', 'PRODUCT_GROUP_AD_IMAGE_TAG', 'PRODUCT_GROUP_AD_VIDEO_TAG', 'VIDEO_3SEC_VIEWS_1', 'VIDEO_15SEC_UNIQUE_VIEWS_1', 'VIDEO_MRC_VIEWS_1', 'VIDEO_3SEC_VIEWS_2', 'VIDEO_15SEC_UNIQUE_VIEWS_2', 'VIDEO_P100_COMPLETE_2', 'VIDEO_P0_COMBINED_2', 'VIDEO_P25_COMBINED_2', 'VIDEO_P50_COMBINED_2', 'VIDEO_P75_COMBINED_2', 'VIDEO_P95_COMBINED_2', 'VIDEO_MRC_VIEWS_2', 'PAID_VIDEO_VIEWABLE_RATE', 'VIDEO_LENGTH', 'VIDEO_SPEND_IN_DOLLAR', 'ECPV_IN_DOLLAR', 'ECPCV_IN_DOLLAR', 'ECPCV_P95_IN_DOLLAR', 'TOTAL_VIDEO_3SEC_VIEWS', 'TOTAL_VIDEO_15SEC_UNIQUE_VIEWS', 'TOTAL_VIDEO_P100_COMPLETE', 'TOTAL_VIDEO_P0_COMBINED', 'TOTAL_VIDEO_P25_COMBINED', 'TOTAL_VIDEO_P50_COMBINED', 'TOTAL_VIDEO_P75_COMBINED', 'TOTAL_VIDEO_P95_COMBINED', 'TOTAL_VIDEO_MRC_VIEWS', 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND', 'TOTAL_REPIN_RATE', 'WEB_CHECKOUT_COST_PER_ACTION', 'WEB_CHECKOUT_ROAS', 'TOTAL_WEB_CHECKOUT', 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_CLICK_CHECKOUT', 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_VIEW_CHECKOUT', 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'INAPP_CHECKOUT_COST_PER_ACTION', 'TOTAL_OFFLINE_CHECKOUT', 'TOTAL_APP_INSTALL_CONVERSION_RATE', 'TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE', 'IDEA_PIN_PRODUCT_TAG_VISIT_1', 'IDEA_PIN_PRODUCT_TAG_VISIT_2', 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT', 'LEADS', 'COST_PER_LEAD', 'QUIZ_COMPLETED', 'QUIZ_PIN_RESULT_OPEN', 'QUIZ_COMPLETION_RATE', 'SHOWCASE_PIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_CLICKTHROUGH', 'SHOWCASE_SUBPIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_IMPRESSION', 'SHOWCASE_SUBPIN_IMPRESSION', 'SHOWCASE_SUBPAGE_SWIPE_LEFT', 'SHOWCASE_SUBPAGE_SWIPE_RIGHT', 'SHOWCASE_SUBPIN_SWIPE_LEFT', 'SHOWCASE_SUBPIN_SWIPE_RIGHT', 'SHOWCASE_SUBPAGE_REPIN', 'SHOWCASE_SUBPIN_REPIN', 'SHOWCASE_SUBPAGE_CLOSEUP', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD', 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION', 'TOTAL_CHECKOUT_CONVERSION_RATE', 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE', 'TOTAL_ADD_TO_CART_CONVERSION_RATE', 'TOTAL_SIGNUP_CONVERSION_RATE', 'TOTAL_PAGE_VISIT_CONVERSION_RATE', 'TOTAL_LEAD_CONVERSION_RATE', 'TOTAL_SEARCH_CONVERSION_RATE', 'TOTAL_WATCH_VIDEO_CONVERSION_RATE', 'TOTAL_UNKNOWN_CONVERSION_RATE', 'TOTAL_CUSTOM_CONVERSION_RATE'] },
             required
         ]
     };
@@ -5950,6 +6906,21 @@ request_param_info('campaigns/analytics', 'conversion_report_time') ->
         rules => [
             {type, binary},
             {enum, ['TIME_OF_AD_ACTION', 'TIME_OF_CONVERSION'] },
+            not_required
+        ]
+    };
+request_param_info('campaigns/analytics', 'aggregate_report_rows') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, boolean},
+            not_required
+        ]
+    };
+request_param_info('campaigns/analytics', 'reporting_timezone') ->
+    #{
+        source => qs_val,
+        rules => [
             not_required
         ]
     };
@@ -6061,25 +7032,16 @@ request_param_info('campaigns/update', 'array') ->
             required
         ]
     };
-request_param_info('catalogs/create', 'CatalogsCreateRequest') ->
+request_param_info('feed_processing_results/list', 'feed_id') ->
     #{
-        source => body,
+        source => binding,
         rules => [
-            {schema, object, <<"#/components/schemas/CatalogsCreateRequest">>},
+            {type, binary},
+            {pattern, "^\\d+$"},
             required
         ]
     };
-request_param_info('catalogs/create', 'ad_account_id') ->
-    #{
-        source => qs_val,
-        rules => [
-            {type, binary},
-            {max_length, 18},
-            {pattern, "^\\d+$"},
-            not_required
-        ]
-    };
-request_param_info('catalogs/list', 'bookmark') ->
+request_param_info('feed_processing_results/list', 'bookmark') ->
     #{
         source => qs_val,
         rules => [
@@ -6087,7 +7049,7 @@ request_param_info('catalogs/list', 'bookmark') ->
             not_required
         ]
     };
-request_param_info('catalogs/list', 'page_size') ->
+request_param_info('feed_processing_results/list', 'page_size') ->
     #{
         source => qs_val,
         rules => [
@@ -6097,7 +7059,252 @@ request_param_info('catalogs/list', 'page_size') ->
             not_required
         ]
     };
-request_param_info('catalogs/list', 'ad_account_id') ->
+request_param_info('feed_processing_results/list', 'ad_account_id') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            not_required
+        ]
+    };
+request_param_info('feeds/create', 'feeds_create_request') ->
+    #{
+        source => body,
+        rules => [
+            {schema, object, <<"#/components/schemas/feeds_create_request">>},
+            required
+        ]
+    };
+request_param_info('feeds/create', 'ad_account_id') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            not_required
+        ]
+    };
+request_param_info('feeds/delete', 'feed_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('feeds/delete', 'ad_account_id') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            not_required
+        ]
+    };
+request_param_info('feeds/get', 'feed_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('feeds/get', 'ad_account_id') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            not_required
+        ]
+    };
+request_param_info('feeds/ingest', 'feed_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('feeds/ingest', 'ad_account_id') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            not_required
+        ]
+    };
+request_param_info('feeds/list', 'bookmark') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            not_required
+        ]
+    };
+request_param_info('feeds/list', 'page_size') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, integer},
+            {max, 250},
+            {min, 1},
+            not_required
+        ]
+    };
+request_param_info('feeds/list', 'catalog_id') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            {pattern, "^\\d+$"},
+            not_required
+        ]
+    };
+request_param_info('feeds/list', 'ad_account_id') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            not_required
+        ]
+    };
+request_param_info('feeds/update', 'feed_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('feeds/update', 'feeds_update_request') ->
+    #{
+        source => body,
+        rules => [
+            {schema, object, <<"#/components/schemas/feeds_update_request">>},
+            required
+        ]
+    };
+request_param_info('feeds/update', 'ad_account_id') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            not_required
+        ]
+    };
+request_param_info('items_issues/list', 'processing_result_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('items_issues/list', 'bookmark') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            not_required
+        ]
+    };
+request_param_info('items_issues/list', 'page_size') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, integer},
+            {max, 250},
+            {min, 1},
+            not_required
+        ]
+    };
+request_param_info('items_issues/list', 'item_numbers') ->
+    #{
+        source => qs_val,
+        rules => [
+            not_required
+        ]
+    };
+request_param_info('items_issues/list', 'item_validation_issue') ->
+    #{
+        source => qs_val,
+        rules => [
+            not_required
+        ]
+    };
+request_param_info('items_issues/list', 'ad_account_id') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            not_required
+        ]
+    };
+request_param_info('items_batch/get', 'batch_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {pattern, "^[a-zA-Z0-9]+$"},
+            required
+        ]
+    };
+request_param_info('items_batch/get', 'ad_account_id') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            not_required
+        ]
+    };
+request_param_info('items_batch/post', 'items_batch_post_request') ->
+    #{
+        source => body,
+        rules => [
+            {schema, object, <<"#/components/schemas/items_batch_post_request">>},
+            required
+        ]
+    };
+request_param_info('items_batch/post', 'ad_account_id') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            not_required
+        ]
+    };
+request_param_info('items/post', 'CatalogsItemsRequest') ->
+    #{
+        source => body,
+        rules => [
+            {schema, object, <<"#/components/schemas/CatalogsItemsRequest">>},
+            required
+        ]
+    };
+request_param_info('items/post', 'ad_account_id') ->
     #{
         source => qs_val,
         rules => [
@@ -6342,327 +7549,6 @@ request_param_info('catalogs_product_groups/update', 'ad_account_id') ->
             not_required
         ]
     };
-request_param_info('feed_processing_results/list', 'feed_id') ->
-    #{
-        source => binding,
-        rules => [
-            {type, binary},
-            {pattern, "^\\d+$"},
-            required
-        ]
-    };
-request_param_info('feed_processing_results/list', 'bookmark') ->
-    #{
-        source => qs_val,
-        rules => [
-            {type, binary},
-            not_required
-        ]
-    };
-request_param_info('feed_processing_results/list', 'page_size') ->
-    #{
-        source => qs_val,
-        rules => [
-            {type, integer},
-            {max, 250},
-            {min, 1},
-            not_required
-        ]
-    };
-request_param_info('feed_processing_results/list', 'ad_account_id') ->
-    #{
-        source => qs_val,
-        rules => [
-            {type, binary},
-            {max_length, 18},
-            {pattern, "^\\d+$"},
-            not_required
-        ]
-    };
-request_param_info('feeds/create', 'feeds_create_request') ->
-    #{
-        source => body,
-        rules => [
-            {schema, object, <<"#/components/schemas/feeds_create_request">>},
-            required
-        ]
-    };
-request_param_info('feeds/create', 'ad_account_id') ->
-    #{
-        source => qs_val,
-        rules => [
-            {type, binary},
-            {max_length, 18},
-            {pattern, "^\\d+$"},
-            not_required
-        ]
-    };
-request_param_info('feeds/delete', 'feed_id') ->
-    #{
-        source => binding,
-        rules => [
-            {type, binary},
-            {pattern, "^\\d+$"},
-            required
-        ]
-    };
-request_param_info('feeds/delete', 'ad_account_id') ->
-    #{
-        source => qs_val,
-        rules => [
-            {type, binary},
-            {max_length, 18},
-            {pattern, "^\\d+$"},
-            not_required
-        ]
-    };
-request_param_info('feeds/get', 'feed_id') ->
-    #{
-        source => binding,
-        rules => [
-            {type, binary},
-            {pattern, "^\\d+$"},
-            required
-        ]
-    };
-request_param_info('feeds/get', 'ad_account_id') ->
-    #{
-        source => qs_val,
-        rules => [
-            {type, binary},
-            {max_length, 18},
-            {pattern, "^\\d+$"},
-            not_required
-        ]
-    };
-request_param_info('feeds/ingest', 'feed_id') ->
-    #{
-        source => binding,
-        rules => [
-            {type, binary},
-            {pattern, "^\\d+$"},
-            required
-        ]
-    };
-request_param_info('feeds/ingest', 'ad_account_id') ->
-    #{
-        source => qs_val,
-        rules => [
-            {type, binary},
-            {max_length, 18},
-            {pattern, "^\\d+$"},
-            not_required
-        ]
-    };
-request_param_info('feeds/list', 'bookmark') ->
-    #{
-        source => qs_val,
-        rules => [
-            {type, binary},
-            not_required
-        ]
-    };
-request_param_info('feeds/list', 'page_size') ->
-    #{
-        source => qs_val,
-        rules => [
-            {type, integer},
-            {max, 250},
-            {min, 1},
-            not_required
-        ]
-    };
-request_param_info('feeds/list', 'catalog_id') ->
-    #{
-        source => qs_val,
-        rules => [
-            {type, binary},
-            {pattern, "^\\d+$"},
-            not_required
-        ]
-    };
-request_param_info('feeds/list', 'ad_account_id') ->
-    #{
-        source => qs_val,
-        rules => [
-            {type, binary},
-            {max_length, 18},
-            {pattern, "^\\d+$"},
-            not_required
-        ]
-    };
-request_param_info('feeds/update', 'feed_id') ->
-    #{
-        source => binding,
-        rules => [
-            {type, binary},
-            {pattern, "^\\d+$"},
-            required
-        ]
-    };
-request_param_info('feeds/update', 'feeds_update_request') ->
-    #{
-        source => body,
-        rules => [
-            {schema, object, <<"#/components/schemas/feeds_update_request">>},
-            required
-        ]
-    };
-request_param_info('feeds/update', 'ad_account_id') ->
-    #{
-        source => qs_val,
-        rules => [
-            {type, binary},
-            {max_length, 18},
-            {pattern, "^\\d+$"},
-            not_required
-        ]
-    };
-request_param_info('items_batch/get', 'batch_id') ->
-    #{
-        source => binding,
-        rules => [
-            {type, binary},
-            required
-        ]
-    };
-request_param_info('items_batch/get', 'ad_account_id') ->
-    #{
-        source => qs_val,
-        rules => [
-            {type, binary},
-            {max_length, 18},
-            {pattern, "^\\d+$"},
-            not_required
-        ]
-    };
-request_param_info('items_batch/post', 'items_batch_post_request') ->
-    #{
-        source => body,
-        rules => [
-            {schema, object, <<"#/components/schemas/items_batch_post_request">>},
-            required
-        ]
-    };
-request_param_info('items_batch/post', 'ad_account_id') ->
-    #{
-        source => qs_val,
-        rules => [
-            {type, binary},
-            {max_length, 18},
-            {pattern, "^\\d+$"},
-            not_required
-        ]
-    };
-request_param_info('items/get', 'country') ->
-    #{
-        source => qs_val,
-        rules => [
-            {type, binary},
-            required
-        ]
-    };
-request_param_info('items/get', 'language') ->
-    #{
-        source => qs_val,
-        rules => [
-            {type, binary},
-            required
-        ]
-    };
-request_param_info('items/get', 'ad_account_id') ->
-    #{
-        source => qs_val,
-        rules => [
-            {type, binary},
-            {max_length, 18},
-            {pattern, "^\\d+$"},
-            not_required
-        ]
-    };
-request_param_info('items/get', 'item_ids') ->
-    #{
-        source => qs_val,
-        rules => [
-            not_required
-        ]
-    };
-request_param_info('items/get', 'filters') ->
-    #{
-        source => qs_val,
-        rules => [
-            not_required
-        ]
-    };
-request_param_info('items_issues/list', 'processing_result_id') ->
-    #{
-        source => binding,
-        rules => [
-            {type, binary},
-            {pattern, "^\\d+$"},
-            required
-        ]
-    };
-request_param_info('items_issues/list', 'bookmark') ->
-    #{
-        source => qs_val,
-        rules => [
-            {type, binary},
-            not_required
-        ]
-    };
-request_param_info('items_issues/list', 'page_size') ->
-    #{
-        source => qs_val,
-        rules => [
-            {type, integer},
-            {max, 250},
-            {min, 1},
-            not_required
-        ]
-    };
-request_param_info('items_issues/list', 'item_numbers') ->
-    #{
-        source => qs_val,
-        rules => [
-            not_required
-        ]
-    };
-request_param_info('items_issues/list', 'item_validation_issue') ->
-    #{
-        source => qs_val,
-        rules => [
-            not_required
-        ]
-    };
-request_param_info('items_issues/list', 'ad_account_id') ->
-    #{
-        source => qs_val,
-        rules => [
-            {type, binary},
-            {max_length, 18},
-            {pattern, "^\\d+$"},
-            not_required
-        ]
-    };
-request_param_info('items/post', 'CatalogsItemsRequest') ->
-    #{
-        source => body,
-        rules => [
-            {schema, object, <<"#/components/schemas/CatalogsItemsRequest">>},
-            required
-        ]
-    };
-request_param_info('items/post', 'ad_account_id') ->
-    #{
-        source => qs_val,
-        rules => [
-            {type, binary},
-            {max_length, 18},
-            {pattern, "^\\d+$"},
-            not_required
-        ]
-    };
 request_param_info('products_by_product_group_filter/list', 'CatalogsListProductsByFilterRequest') ->
     #{
         source => body,
@@ -6775,6 +7661,125 @@ request_param_info('reports/stats', 'bookmark') ->
         source => qs_val,
         rules => [
             {type, binary},
+            not_required
+        ]
+    };
+request_param_info('catalogs/available_filter_values', 'catalog_id') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('catalogs/available_filter_values', 'feed_id') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            {pattern, "^\\d+$"},
+            not_required
+        ]
+    };
+request_param_info('catalogs/available_filter_values', 'country') ->
+    #{
+        source => qs_val,
+        rules => [
+            not_required
+        ]
+    };
+request_param_info('catalogs/available_filter_values', 'language') ->
+    #{
+        source => qs_val,
+        rules => [
+            not_required
+        ]
+    };
+request_param_info('catalogs/available_filter_values', 'ad_account_id') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            not_required
+        ]
+    };
+request_param_info('catalogs/create', 'CatalogsCreateRequest') ->
+    #{
+        source => body,
+        rules => [
+            {schema, object, <<"#/components/schemas/CatalogsCreateRequest">>},
+            required
+        ]
+    };
+request_param_info('catalogs/create', 'ad_account_id') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            not_required
+        ]
+    };
+request_param_info('catalogs/list', 'bookmark') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            not_required
+        ]
+    };
+request_param_info('catalogs/list', 'page_size') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, integer},
+            {max, 250},
+            {min, 1},
+            not_required
+        ]
+    };
+request_param_info('catalogs/list', 'ad_account_id') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            not_required
+        ]
+    };
+request_param_info('conversion_eqs/list', 'lookback_period') ->
+    #{
+        source => qs_val,
+        rules => [
+            required
+        ]
+    };
+request_param_info('conversion_eqs/list', 'ad_account_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('conversion_eqs/list', 'source_platform') ->
+    #{
+        source => qs_val,
+        rules => [
+            not_required
+        ]
+    };
+request_param_info('conversion_eqs/list', 'ingestion_source') ->
+    #{
+        source => qs_val,
+        rules => [
             not_required
         ]
     };
@@ -6905,6 +7910,104 @@ request_param_info('page_visit_conversion_tags/get', 'bookmark') ->
         rules => [
             {type, binary},
             not_required
+        ]
+    };
+request_param_info('advertiser_defined_events/get', 'ad_account_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('customer_list_uploads/create', 'ad_account_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('customer_list_uploads/create', 'customer_list_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('customer_list_uploads/create', 'CustomerListUploadCreateRequest') ->
+    #{
+        source => body,
+        rules => [
+            {schema, object, <<"#/components/schemas/CustomerListUploadCreateRequest">>},
+            required
+        ]
+    };
+request_param_info('customer_list_uploads/get', 'ad_account_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('customer_list_uploads/get', 'customer_list_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('customer_list_uploads/get', 'customer_list_upload_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('customer_list_uploads/run', 'ad_account_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('customer_list_uploads/run', 'customer_list_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('customer_list_uploads/run', 'customer_list_upload_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
         ]
     };
 request_param_info('customer_lists/create', 'ad_account_id') ->
@@ -7039,7 +8142,7 @@ request_param_info('integrations_commerce/patch', 'IntegrationRequestPatch') ->
         source => body,
         rules => [
             {schema, object, <<"#/components/schemas/IntegrationRequestPatch">>},
-            not_required
+            required
         ]
     };
 request_param_info('integrations_commerce/post', 'IntegrationRequest') ->
@@ -7047,7 +8150,7 @@ request_param_info('integrations_commerce/post', 'IntegrationRequest') ->
         source => body,
         rules => [
             {schema, object, <<"#/components/schemas/IntegrationRequest">>},
-            not_required
+            required
         ]
     };
 request_param_info('integrations/get_by_id', 'id') ->
@@ -7157,6 +8260,13 @@ request_param_info('keywords/get', 'ad_group_id') ->
             not_required
         ]
     };
+request_param_info('keywords/get', 'ad_group_ids') ->
+    #{
+        source => qs_val,
+        rules => [
+            not_required
+        ]
+    };
 request_param_info('keywords/get', 'match_types') ->
     #{
         source => qs_val,
@@ -7169,7 +8279,6 @@ request_param_info('keywords/get', 'page_size') ->
         source => qs_val,
         rules => [
             {type, integer},
-            {max, 250},
             {min, 1},
             not_required
         ]
@@ -7263,6 +8372,116 @@ request_param_info('trending_keywords/list', 'limit') ->
             not_required
         ]
     };
+request_param_info('trending_keywords/list', 'include_prediction') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, boolean},
+            not_required
+        ]
+    };
+request_param_info('trending_keywords/list', 'include_demographics') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, boolean},
+            not_required
+        ]
+    };
+request_param_info('labels/create', 'ad_account_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('labels/create', 'LabelCreateRequest') ->
+    #{
+        source => body,
+        rules => [
+            {schema, object, <<"#/components/schemas/LabelCreateRequest">>},
+            required
+        ]
+    };
+request_param_info('labels/list', 'ad_account_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('labels/list', 'campaign_ids') ->
+    #{
+        source => qs_val,
+        rules => [
+            not_required
+        ]
+    };
+request_param_info('labels/list', 'label_ids') ->
+    #{
+        source => qs_val,
+        rules => [
+            not_required
+        ]
+    };
+request_param_info('labels/list', 'entity_statuses') ->
+    #{
+        source => qs_val,
+        rules => [
+            {enum, ['ACTIVE', 'ARCHIVED'] },
+            not_required
+        ]
+    };
+request_param_info('labels/list', 'label_types') ->
+    #{
+        source => qs_val,
+        rules => [
+            {enum, ['BRAND', 'CUSTOM'] },
+            not_required
+        ]
+    };
+request_param_info('labels/list', 'page_size') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, integer},
+            {max, 250},
+            {min, 1},
+            not_required
+        ]
+    };
+request_param_info('labels/list', 'bookmark') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            not_required
+        ]
+    };
+request_param_info('labels/update', 'ad_account_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('labels/update', 'LabelUpdateRequest') ->
+    #{
+        source => body,
+        rules => [
+            {schema, object, <<"#/components/schemas/LabelUpdateRequest">>},
+            required
+        ]
+    };
 request_param_info('ad_accounts_subscriptions/del_by_id', 'ad_account_id') ->
     #{
         source => binding,
@@ -7311,6 +8530,14 @@ request_param_info('ad_accounts_subscriptions/get_list', 'ad_account_id') ->
             required
         ]
     };
+request_param_info('ad_accounts_subscriptions/get_list', 'bookmark') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            not_required
+        ]
+    };
 request_param_info('ad_accounts_subscriptions/get_list', 'page_size') ->
     #{
         source => qs_val,
@@ -7318,14 +8545,6 @@ request_param_info('ad_accounts_subscriptions/get_list', 'page_size') ->
             {type, integer},
             {max, 250},
             {min, 1},
-            not_required
-        ]
-    };
-request_param_info('ad_accounts_subscriptions/get_list', 'bookmark') ->
-    #{
-        source => qs_val,
-        rules => [
-            {type, binary},
             not_required
         ]
     };
@@ -7339,11 +8558,11 @@ request_param_info('ad_accounts_subscriptions/post', 'ad_account_id') ->
             required
         ]
     };
-request_param_info('ad_accounts_subscriptions/post', 'AdAccountCreateSubscriptionRequest') ->
+request_param_info('ad_accounts_subscriptions/post', 'LeadSubscriptionPostParamsCreate') ->
     #{
         source => body,
         rules => [
-            {schema, object, <<"#/components/schemas/AdAccountCreateSubscriptionRequest">>},
+            {schema, object, <<"#/components/schemas/LeadSubscriptionPostParamsCreate">>},
             required
         ]
     };
@@ -7503,11 +8722,11 @@ request_param_info('leads_export/get', 'leads_export_id') ->
             required
         ]
     };
-request_param_info('media/create', 'MediaUploadRequest') ->
+request_param_info('media/create', 'MediaUploadCreate') ->
     #{
         source => body,
         rules => [
-            {schema, object, <<"#/components/schemas/MediaUploadRequest">>},
+            {schema, object, <<"#/components/schemas/MediaUploadCreate">>},
             required
         ]
     };
@@ -7538,6 +8757,32 @@ request_param_info('media/list', 'page_size') ->
             not_required
         ]
     };
+request_param_info('msot_events/create', 'ad_account_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('msot_events/create', 'ConversionMSOTEvents') ->
+    #{
+        source => body,
+        rules => [
+            {schema, object, <<"#/components/schemas/ConversionMSOTEvents">>},
+            required
+        ]
+    };
+request_param_info('notification/post', 'notification_post_request') ->
+    #{
+        source => body,
+        rules => [
+            {schema, object, <<"#/components/schemas/notification_post_request">>},
+            required
+        ]
+    };
 request_param_info('oauth/token', 'grant_type') ->
     #{
         source => body,
@@ -7545,6 +8790,23 @@ request_param_info('oauth/token', 'grant_type') ->
             {type, binary},
             {enum, ['authorization_code', 'refresh_token', 'client_credentials'] },
             required
+        ]
+    };
+request_param_info('token/revoke', 'token') ->
+    #{
+        source => body,
+        rules => [
+            {type, binary},
+            required
+        ]
+    };
+request_param_info('token/revoke', 'token_type_hint') ->
+    #{
+        source => body,
+        rules => [
+            {type, binary},
+            {enum, ['access_token', 'refresh_token'] },
+            not_required
         ]
     };
 request_param_info('order_lines/get', 'ad_account_id') ->
@@ -7737,6 +8999,7 @@ request_param_info('pins/delete', 'pin_id') ->
         source => binding,
         rules => [
             {type, binary},
+            {pattern, "^\\d+$"},
             required
         ]
     };
@@ -7755,15 +9018,8 @@ request_param_info('pins/get', 'pin_id') ->
         source => binding,
         rules => [
             {type, binary},
+            {pattern, "^\\d+$"},
             required
-        ]
-    };
-request_param_info('pins/get', 'pin_metrics') ->
-    #{
-        source => qs_val,
-        rules => [
-            {type, boolean},
-            not_required
         ]
     };
 request_param_info('pins/get', 'ad_account_id') ->
@@ -7776,21 +9032,11 @@ request_param_info('pins/get', 'ad_account_id') ->
             not_required
         ]
     };
-request_param_info('pins/list', 'bookmark') ->
+request_param_info('pins/get', 'pin_metrics') ->
     #{
         source => qs_val,
         rules => [
-            {type, binary},
-            not_required
-        ]
-    };
-request_param_info('pins/list', 'page_size') ->
-    #{
-        source => qs_val,
-        rules => [
-            {type, integer},
-            {max, 250},
-            {min, 1},
+            {type, boolean},
             not_required
         ]
     };
@@ -7800,6 +9046,14 @@ request_param_info('pins/list', 'pin_filter') ->
         rules => [
             {type, binary},
             {enum, ['exclude_native', 'exclude_repins', 'has_been_promoted'] },
+            not_required
+        ]
+    };
+request_param_info('pins/list', 'pin_metrics') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, boolean},
             not_required
         ]
     };
@@ -7824,7 +9078,6 @@ request_param_info('pins/list', 'creative_types') ->
     #{
         source => qs_val,
         rules => [
-            {enum, ['REGULAR', 'VIDEO', 'SHOPPING', 'CAROUSEL', 'MAX_VIDEO', 'SHOP_THE_PIN', 'COLLECTION', 'IDEA'] },
             not_required
         ]
     };
@@ -7838,11 +9091,21 @@ request_param_info('pins/list', 'ad_account_id') ->
             not_required
         ]
     };
-request_param_info('pins/list', 'pin_metrics') ->
+request_param_info('pins/list', 'bookmark') ->
     #{
         source => qs_val,
         rules => [
-            {type, boolean},
+            {type, binary},
+            not_required
+        ]
+    };
+request_param_info('pins/list', 'page_size') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, integer},
+            {max, 250},
+            {min, 1},
             not_required
         ]
     };
@@ -7877,6 +9140,7 @@ request_param_info('pins/update', 'pin_id') ->
         source => binding,
         rules => [
             {type, binary},
+            {pattern, "^\\d+$"},
             required
         ]
     };
@@ -7895,6 +9159,83 @@ request_param_info('pins/update', 'ad_account_id') ->
             {type, binary},
             {max_length, 18},
             {pattern, "^\\d+$"},
+            not_required
+        ]
+    };
+request_param_info('trends_featured_topics/list', 'region') ->
+    #{
+        source => qs_val,
+        rules => [
+            required
+        ]
+    };
+request_param_info('trends_featured_topics/list', 'interest') ->
+    #{
+        source => qs_val,
+        rules => [
+            not_required
+        ]
+    };
+request_param_info('trends_product_categories_details/list', 'product_categories') ->
+    #{
+        source => qs_val,
+        rules => [
+            required
+        ]
+    };
+request_param_info('trends_product_categories_details/list', 'region') ->
+    #{
+        source => qs_val,
+        rules => [
+            required
+        ]
+    };
+request_param_info('trends_product_categories_details/list', 'lookback_window') ->
+    #{
+        source => qs_val,
+        rules => [
+            not_required
+        ]
+    };
+request_param_info('trends_product_categories_details/list', 'engagement_type') ->
+    #{
+        source => qs_val,
+        rules => [
+            not_required
+        ]
+    };
+request_param_info('trends_product_categories_trending/list', 'region') ->
+    #{
+        source => qs_val,
+        rules => [
+            required
+        ]
+    };
+request_param_info('trends_product_categories_trending/list', 'verticals') ->
+    #{
+        source => qs_val,
+        rules => [
+            not_required
+        ]
+    };
+request_param_info('trends_product_categories_trending/list', 'ages') ->
+    #{
+        source => qs_val,
+        rules => [
+            not_required
+        ]
+    };
+request_param_info('trends_product_categories_trending/list', 'genders') ->
+    #{
+        source => qs_val,
+        rules => [
+            not_required
+        ]
+    };
+request_param_info('trends_product_categories_trending/list', 'engagement_type') ->
+    #{
+        source => qs_val,
+        rules => [
             not_required
         ]
     };
@@ -8053,7 +9394,7 @@ request_param_info('product_groups/analytics', 'columns') ->
     #{
         source => qs_val,
         rules => [
-            {enum, ['SPEND_IN_MICRO_DOLLAR', 'PAID_IMPRESSION', 'SPEND_IN_DOLLAR', 'CPC_IN_MICRO_DOLLAR', 'ECPC_IN_MICRO_DOLLAR', 'ECPC_IN_DOLLAR', 'CTR', 'ECTR', 'CAMPAIGN_NAME', 'PIN_ID', 'TOTAL_ENGAGEMENT', 'ENGAGEMENT_1', 'ENGAGEMENT_2', 'ECPE_IN_DOLLAR', 'ENGAGEMENT_RATE', 'EENGAGEMENT_RATE', 'ECPM_IN_MICRO_DOLLAR', 'REPIN_RATE', 'CTR_2', 'CAMPAIGN_ID', 'ADVERTISER_ID', 'AD_ACCOUNT_ID', 'PIN_PROMOTION_ID', 'AD_ID', 'AD_GROUP_ID', 'CAMPAIGN_ENTITY_STATUS', 'CAMPAIGN_OBJECTIVE_TYPE', 'CPM_IN_MICRO_DOLLAR', 'CPM_IN_DOLLAR', 'AD_GROUP_ENTITY_STATUS', 'ORDER_LINE_ID', 'ORDER_LINE_NAME', 'CLICKTHROUGH_1', 'REPIN_1', 'IMPRESSION_1', 'IMPRESSION_1_GROSS', 'CLICKTHROUGH_1_GROSS', 'OUTBOUND_CLICK_1', 'CLICKTHROUGH_2', 'REPIN_2', 'IMPRESSION_2', 'OUTBOUND_CLICK_2', 'TOTAL_CLICKTHROUGH', 'TOTAL_IMPRESSION', 'TOTAL_IMPRESSION_USER', 'TOTAL_IMPRESSION_FREQUENCY', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR', 'TOTAL_ENGAGEMENT_SIGNUP', 'TOTAL_ENGAGEMENT_CHECKOUT', 'TOTAL_ENGAGEMENT_LEAD', 'TOTAL_CLICK_SIGNUP', 'TOTAL_CLICK_CHECKOUT', 'TOTAL_CLICK_ADD_TO_CART', 'TOTAL_CLICK_LEAD', 'TOTAL_VIEW_SIGNUP', 'TOTAL_VIEW_CHECKOUT', 'TOTAL_VIEW_ADD_TO_CART', 'TOTAL_VIEW_LEAD', 'TOTAL_CONVERSIONS', 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_SESSIONS', 'WEB_SESSIONS_1', 'WEB_SESSIONS_2', 'CAMPAIGN_LIFETIME_SPEND_CAP', 'CAMPAIGN_DAILY_SPEND_CAP', 'TOTAL_PAGE_VISIT', 'TOTAL_SIGNUP', 'TOTAL_CHECKOUT', 'TOTAL_CUSTOM', 'TOTAL_LEAD', 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR', 'PAGE_VISIT_COST_PER_ACTION', 'PAGE_VISIT_ROAS', 'CHECKOUT_ROAS', 'CUSTOM_ROAS', 'VIDEO_MRC_VIEWS_1', 'VIDEO_3SEC_VIEWS_2', 'VIDEO_P100_COMPLETE_2', 'VIDEO_P0_COMBINED_2', 'VIDEO_P25_COMBINED_2', 'VIDEO_P50_COMBINED_2', 'VIDEO_P75_COMBINED_2', 'VIDEO_P95_COMBINED_2', 'VIDEO_MRC_VIEWS_2', 'PAID_VIDEO_VIEWABLE_RATE', 'VIDEO_LENGTH', 'ECPV_IN_DOLLAR', 'ECPCV_IN_DOLLAR', 'ECPCV_P95_IN_DOLLAR', 'TOTAL_VIDEO_3SEC_VIEWS', 'TOTAL_VIDEO_P100_COMPLETE', 'TOTAL_VIDEO_P0_COMBINED', 'TOTAL_VIDEO_P25_COMBINED', 'TOTAL_VIDEO_P50_COMBINED', 'TOTAL_VIDEO_P75_COMBINED', 'TOTAL_VIDEO_P95_COMBINED', 'TOTAL_VIDEO_MRC_VIEWS', 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND', 'TOTAL_REPIN_RATE', 'WEB_CHECKOUT_COST_PER_ACTION', 'WEB_CHECKOUT_ROAS', 'TOTAL_WEB_CHECKOUT', 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_CLICK_CHECKOUT', 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_VIEW_CHECKOUT', 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'INAPP_CHECKOUT_COST_PER_ACTION', 'TOTAL_OFFLINE_CHECKOUT', 'IDEA_PIN_PRODUCT_TAG_VISIT_1', 'IDEA_PIN_PRODUCT_TAG_VISIT_2', 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT', 'LEADS', 'COST_PER_LEAD', 'QUIZ_COMPLETED', 'QUIZ_PIN_RESULT_OPEN', 'QUIZ_COMPLETION_RATE', 'SHOWCASE_PIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_CLICKTHROUGH', 'SHOWCASE_SUBPIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_IMPRESSION', 'SHOWCASE_SUBPIN_IMPRESSION', 'SHOWCASE_SUBPAGE_SWIPE_LEFT', 'SHOWCASE_SUBPAGE_SWIPE_RIGHT', 'SHOWCASE_SUBPIN_SWIPE_LEFT', 'SHOWCASE_SUBPIN_SWIPE_RIGHT', 'SHOWCASE_SUBPAGE_REPIN', 'SHOWCASE_SUBPIN_REPIN', 'SHOWCASE_SUBPAGE_CLOSEUP', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD', 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION', 'TOTAL_CHECKOUT_CONVERSION_RATE', 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE', 'TOTAL_ADD_TO_CART_CONVERSION_RATE', 'TOTAL_SIGNUP_CONVERSION_RATE', 'TOTAL_PAGE_VISIT_CONVERSION_RATE', 'TOTAL_LEAD_CONVERSION_RATE', 'TOTAL_SEARCH_CONVERSION_RATE', 'TOTAL_WATCH_VIDEO_CONVERSION_RATE', 'TOTAL_UNKNOWN_CONVERSION_RATE', 'TOTAL_CUSTOM_CONVERSION_RATE'] },
+            {enum, ['SPEND_IN_MICRO_DOLLAR', 'PAID_IMPRESSION', 'SPEND_IN_DOLLAR', 'CPC_IN_MICRO_DOLLAR', 'ECPC_IN_MICRO_DOLLAR', 'ECPC_IN_DOLLAR', 'CTR', 'ECTR', 'OUTBOUND_CTR_1', 'CAMPAIGN_NAME', 'CAMPAIGN_BRAND_LABEL', 'PIN_ID', 'TOTAL_ENGAGEMENT', 'ENGAGEMENT_1', 'ENGAGEMENT_2', 'ECPE_IN_DOLLAR', 'ENGAGEMENT_RATE', 'EENGAGEMENT_RATE', 'ECPM_IN_MICRO_DOLLAR', 'REPIN_RATE', 'CTR_2', 'CAMPAIGN_ID', 'ADVERTISER_ID', 'AD_ACCOUNT_ID', 'PIN_PROMOTION_ID', 'AD_ID', 'AD_GROUP_ID', 'CAMPAIGN_ENTITY_STATUS', 'CAMPAIGN_OBJECTIVE_TYPE', 'CPM_IN_MICRO_DOLLAR', 'CPM_IN_DOLLAR', 'AD_GROUP_NAME', 'AD_GROUP_BUDGET_TYPE', 'AD_GROUP_BUDGET_IN_LOCAL_CURRENCY', 'AD_GROUP_ENTITY_STATUS', 'AD_GROUP_BID_MULTIPLIER', 'PROMO_ID', 'PROMO_NAME', 'ORDER_LINE_ID', 'ORDER_LINE_NAME', 'CLICKTHROUGH_1', 'REPIN_1', 'IMPRESSION_1', 'IMPRESSION_1_GROSS', 'CLICKTHROUGH_1_GROSS', 'OUTBOUND_CLICK_1', 'CLICKTHROUGH_2', 'REPIN_2', 'IMPRESSION_2', 'OUTBOUND_CLICK_2', 'TOTAL_CLICKTHROUGH', 'TOTAL_IMPRESSION', 'TOTAL_IMPRESSION_USER', 'TOTAL_IMPRESSION_FREQUENCY', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR', 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1', 'TOTAL_ENGAGEMENT_SIGNUP', 'TOTAL_ENGAGEMENT_CHECKOUT', 'TOTAL_ENGAGEMENT_LEAD', 'TOTAL_CLICK_SIGNUP', 'TOTAL_CLICK_CHECKOUT', 'TOTAL_CLICK_ADD_TO_CART', 'TOTAL_CLICK_LEAD', 'TOTAL_VIEW_SIGNUP', 'TOTAL_VIEW_CHECKOUT', 'TOTAL_VIEW_ADD_TO_CART', 'TOTAL_VIEW_LEAD', 'TOTAL_CONVERSIONS', 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_SESSIONS', 'WEB_SESSIONS_1', 'WEB_SESSIONS_2', 'AD_NAME', 'CAMPAIGN_LIFETIME_SPEND_CAP', 'AD_GROUP_OPTIMIZATION', 'CAMPAIGN_DAILY_SPEND_CAP', 'CAMPAIGN_BUDGET_OPTIMIZATION', 'IS_PREMIERE_CAMPAIGN', 'TOTAL_PAGE_VISIT', 'TOTAL_SIGNUP', 'TOTAL_CHECKOUT', 'TOTAL_CUSTOM', 'TOTAL_LEAD', 'TOTAL_ADD_TO_WISHLIST', 'TOTAL_SUBSCRIBE', 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR', 'PAGE_VISIT_COST_PER_ACTION', 'PAGE_VISIT_ROAS', 'CHECKOUT_ROAS', 'CUSTOM_ROAS', 'PRODUCT_GROUP_AD_IMAGE_TAG', 'PRODUCT_GROUP_AD_VIDEO_TAG', 'VIDEO_3SEC_VIEWS_1', 'VIDEO_15SEC_UNIQUE_VIEWS_1', 'VIDEO_MRC_VIEWS_1', 'VIDEO_3SEC_VIEWS_2', 'VIDEO_15SEC_UNIQUE_VIEWS_2', 'VIDEO_P100_COMPLETE_2', 'VIDEO_P0_COMBINED_2', 'VIDEO_P25_COMBINED_2', 'VIDEO_P50_COMBINED_2', 'VIDEO_P75_COMBINED_2', 'VIDEO_P95_COMBINED_2', 'VIDEO_MRC_VIEWS_2', 'PAID_VIDEO_VIEWABLE_RATE', 'VIDEO_LENGTH', 'VIDEO_SPEND_IN_DOLLAR', 'ECPV_IN_DOLLAR', 'ECPCV_IN_DOLLAR', 'ECPCV_P95_IN_DOLLAR', 'TOTAL_VIDEO_3SEC_VIEWS', 'TOTAL_VIDEO_15SEC_UNIQUE_VIEWS', 'TOTAL_VIDEO_P100_COMPLETE', 'TOTAL_VIDEO_P0_COMBINED', 'TOTAL_VIDEO_P25_COMBINED', 'TOTAL_VIDEO_P50_COMBINED', 'TOTAL_VIDEO_P75_COMBINED', 'TOTAL_VIDEO_P95_COMBINED', 'TOTAL_VIDEO_MRC_VIEWS', 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND', 'TOTAL_REPIN_RATE', 'WEB_CHECKOUT_COST_PER_ACTION', 'WEB_CHECKOUT_ROAS', 'TOTAL_WEB_CHECKOUT', 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_CLICK_CHECKOUT', 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT', 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'TOTAL_WEB_VIEW_CHECKOUT', 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR', 'INAPP_CHECKOUT_COST_PER_ACTION', 'TOTAL_OFFLINE_CHECKOUT', 'TOTAL_APP_INSTALL_CONVERSION_RATE', 'TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE', 'IDEA_PIN_PRODUCT_TAG_VISIT_1', 'IDEA_PIN_PRODUCT_TAG_VISIT_2', 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT', 'LEADS', 'COST_PER_LEAD', 'QUIZ_COMPLETED', 'QUIZ_PIN_RESULT_OPEN', 'QUIZ_COMPLETION_RATE', 'SHOWCASE_PIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_CLICKTHROUGH', 'SHOWCASE_SUBPIN_CLICKTHROUGH', 'SHOWCASE_SUBPAGE_IMPRESSION', 'SHOWCASE_SUBPIN_IMPRESSION', 'SHOWCASE_SUBPAGE_SWIPE_LEFT', 'SHOWCASE_SUBPAGE_SWIPE_RIGHT', 'SHOWCASE_SUBPIN_SWIPE_LEFT', 'SHOWCASE_SUBPIN_SWIPE_RIGHT', 'SHOWCASE_SUBPAGE_REPIN', 'SHOWCASE_SUBPIN_REPIN', 'SHOWCASE_SUBPAGE_CLOSEUP', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD', 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD', 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION', 'TOTAL_CHECKOUT_CONVERSION_RATE', 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE', 'TOTAL_ADD_TO_CART_CONVERSION_RATE', 'TOTAL_SIGNUP_CONVERSION_RATE', 'TOTAL_PAGE_VISIT_CONVERSION_RATE', 'TOTAL_LEAD_CONVERSION_RATE', 'TOTAL_SEARCH_CONVERSION_RATE', 'TOTAL_WATCH_VIDEO_CONVERSION_RATE', 'TOTAL_UNKNOWN_CONVERSION_RATE', 'TOTAL_CUSTOM_CONVERSION_RATE'] },
             required
         ]
     };
@@ -8098,6 +9439,126 @@ request_param_info('product_groups/analytics', 'conversion_report_time') ->
             {type, binary},
             {enum, ['TIME_OF_AD_ACTION', 'TIME_OF_CONVERSION'] },
             not_required
+        ]
+    };
+request_param_info('product_groups/analytics', 'reporting_timezone') ->
+    #{
+        source => qs_val,
+        rules => [
+            not_required
+        ]
+    };
+request_param_info('promotions/create', 'ad_account_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('promotions/create', 'array') ->
+    #{
+        source => body,
+        rules => [
+            {schema, list, <<"#/components/schemas/PromotionCreateRequest">>},
+            required
+        ]
+    };
+request_param_info('promotions/delete', 'ad_account_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('promotions/delete', 'promotion_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('promotions/get', 'ad_account_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('promotions/get', 'promotion_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('promotions/list', 'ad_account_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('promotions/list', 'page_size') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, integer},
+            {max, 250},
+            {min, 1},
+            not_required
+        ]
+    };
+request_param_info('promotions/list', 'order') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            {enum, ['ASCENDING', 'DESCENDING'] },
+            not_required
+        ]
+    };
+request_param_info('promotions/list', 'bookmark') ->
+    #{
+        source => qs_val,
+        rules => [
+            {type, binary},
+            not_required
+        ]
+    };
+request_param_info('promotions/update', 'ad_account_id') ->
+    #{
+        source => binding,
+        rules => [
+            {type, binary},
+            {max_length, 18},
+            {pattern, "^\\d+$"},
+            required
+        ]
+    };
+request_param_info('promotions/update', 'array') ->
+    #{
+        source => body,
+        rules => [
+            {schema, list, <<"#/components/schemas/PromotionUpdateRequest">>},
+            required
         ]
     };
 request_param_info('delivery_metrics/get', 'report_type') ->

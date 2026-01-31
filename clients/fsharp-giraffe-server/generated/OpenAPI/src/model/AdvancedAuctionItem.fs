@@ -12,8 +12,8 @@ module AdvancedAuctionItem =
 
 
   type AdvancedAuctionItem = {
-    ItemId : string;
     Country : Country;
+    ItemId : string;
     Language : Language;
     BidOptions : AdvancedAuctionBidOptions;
   }

@@ -3,35 +3,35 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccountType** | **String** | Type of account | [optional] 
-**Id** | **String** | User account ID. | [optional] 
-**ProfileImage** | **String** |  | [optional] 
-**WebsiteUrl** | **String** |  | [optional] 
-**Username** | **String** |  | [optional] 
 **About** | **String** | Profile about description. | [optional] 
-**BusinessName** | **String** |  | [optional] 
+**AccountType** | **String** | Type of account | [optional] 
 **BoardCount** | **Int32** | User account board count.&lt;br/&gt;**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. | [optional] [readonly] 
-**PinCount** | **Int32** | User account pin count. This includes both created and saved pins. | [optional] [readonly] 
+**BusinessName** | **String** |  | [optional] 
 **FollowerCount** | **Int32** | User account follower count. | [optional] [readonly] 
 **FollowingCount** | **Int32** | User account following count. | [optional] [readonly] 
+**Id** | **String** | User account ID. | [optional] 
 **MonthlyViews** | **Int32** | User account monthly views. | [optional] [readonly] 
+**PinCount** | **Int32** | User account pin count. This includes both created and saved pins. | [optional] [readonly] 
+**ProfileImage** | **String** |  | [optional] 
+**Username** | **String** |  | [optional] 
+**WebsiteUrl** | **String** |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$Account = Initialize-PSOpenAPIToolsAccount  -AccountType null `
- -Id 2783136121146311751 `
- -ProfileImage null `
- -WebsiteUrl null `
- -Username null `
- -About null `
- -BusinessName null `
+$Account = Initialize-PSOpenAPIToolsAccount  -About null `
+ -AccountType null `
  -BoardCount 14 `
- -PinCount 339 `
+ -BusinessName null `
  -FollowerCount 10 `
  -FollowingCount 347 `
- -MonthlyViews 163
+ -Id 2783136121146311751 `
+ -MonthlyViews 163 `
+ -PinCount 339 `
+ -ProfileImage null `
+ -Username null `
+ -WebsiteUrl null
 ```
 
 - Convert the resource to JSON

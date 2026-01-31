@@ -9,11 +9,11 @@ import org.openapitools.models.BigDecimal
 
 /**
  * 
- * @param latestUnderscoreavailableUnderscoretimestamp 
  * @param isUnderscorerealtime 
+ * @param latestUnderscoreavailableUnderscoretimestamp 
  */
-case class TopPinsAnalyticsResponseDateAvailability(latestUnderscoreavailableUnderscoretimestamp: Option[BigDecimal],
-                isUnderscorerealtime: Option[Boolean]
+case class TopPinsAnalyticsResponseDateAvailability(isUnderscorerealtime: Option[Boolean],
+                latestUnderscoreavailableUnderscoretimestamp: Option[BigDecimal]
                 )
 
 object TopPinsAnalyticsResponseDateAvailability {

@@ -47,13 +47,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get List assets on which you granted access to your partner or assets on which your partner has granted you access.
-	 */
-	std::list<GetPartnerAssetsResponse> getItems();
-
-	/*! \brief Set List assets on which you granted access to your partner or assets on which your partner has granted you access.
-	 */
-	void setItems(std::list <GetPartnerAssetsResponse> items);
 	/*! \brief Get 
 	 */
 	std::string getBookmark();
@@ -61,10 +54,17 @@ public:
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
+	/*! \brief Get List assets on which you granted access to your partner or assets on which your partner has granted you access.
+	 */
+	std::list<GetPartnerAssetsResponse> getItems();
+
+	/*! \brief Set List assets on which you granted access to your partner or assets on which your partner has granted you access.
+	 */
+	void setItems(std::list <GetPartnerAssetsResponse> items);
 
 private:
-	std::list <GetPartnerAssetsResponse>items;
 	std::string bookmark;
+	std::list <GetPartnerAssetsResponse>items;
 	void __init();
 	void __cleanup();
 

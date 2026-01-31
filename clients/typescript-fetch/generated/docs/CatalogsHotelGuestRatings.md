@@ -7,10 +7,10 @@ If specified, you must provide all properties
 
 Name | Type
 ------------ | -------------
-`score` | number
-`numberOfReviewers` | number
 `maxScore` | number
+`numberOfReviewers` | number
 `ratingSystem` | string
+`score` | number
 
 ## Example
 
@@ -19,10 +19,10 @@ import type { CatalogsHotelGuestRatings } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "score": null,
-  "numberOfReviewers": null,
   "maxScore": null,
+  "numberOfReviewers": null,
   "ratingSystem": null,
+  "score": null,
 } satisfies CatalogsHotelGuestRatings
 
 console.log(example)

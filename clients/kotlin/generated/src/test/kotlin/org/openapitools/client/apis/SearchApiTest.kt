@@ -20,9 +20,9 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.SearchApi
 import org.openapitools.client.models.Error
-import org.openapitools.client.models.PinsList200Response
 import org.openapitools.client.models.SearchPartnerPins200Response
 import org.openapitools.client.models.SearchUserBoardsGet200Response
+import org.openapitools.client.models.SearchUserPinsList200Response
 
 class SearchApiTest : ShouldSpec() {
     init {
@@ -58,7 +58,7 @@ class SearchApiTest : ShouldSpec() {
             //val query : kotlin.String = Plants // kotlin.String | Search query. Can contain pin description keywords or comma-separated pin IDs.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val result : PinsList200Response = apiInstance.searchUserPinsList(query, adAccountId, bookmark)
+            //val result : SearchUserPinsList200Response = apiInstance.searchUserPinsList(query, adAccountId, bookmark)
             //result shouldBe ("TODO")
         }
 

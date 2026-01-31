@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -25,14 +25,14 @@ var _ MappedNullable = &CatalogsRetailItemsBatch{}
 type CatalogsRetailItemsBatch struct {
 	// Id of the catalogs items batch
 	BatchId *string `json:"batch_id,omitempty"`
-	// Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
-	CreatedTime *time.Time `json:"created_time,omitempty"`
+	CatalogType CatalogsType `json:"catalog_type"`
 	// Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
 	CompletedTime NullableTime `json:"completed_time,omitempty"`
-	Status *BatchOperationStatus `json:"status,omitempty"`
-	CatalogType CatalogsType `json:"catalog_type"`
+	// Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.
+	CreatedTime NullableTime `json:"created_time"`
 	// Array with the catalogs items processing records part of the catalogs items batch
 	Items []ItemProcessingRecord `json:"items,omitempty"`
+	Status *BatchOperationStatus `json:"status,omitempty"`
 }
 
 type _CatalogsRetailItemsBatch CatalogsRetailItemsBatch
@@ -41,9 +41,10 @@ type _CatalogsRetailItemsBatch CatalogsRetailItemsBatch
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsRetailItemsBatch(catalogType CatalogsType) *CatalogsRetailItemsBatch {
+func NewCatalogsRetailItemsBatch(catalogType CatalogsType, createdTime NullableTime) *CatalogsRetailItemsBatch {
 	this := CatalogsRetailItemsBatch{}
 	this.CatalogType = catalogType
+	this.CreatedTime = createdTime
 	return &this
 }
 
@@ -87,36 +88,28 @@ func (o *CatalogsRetailItemsBatch) SetBatchId(v string) {
 	o.BatchId = &v
 }
 
-// GetCreatedTime returns the CreatedTime field value if set, zero value otherwise.
-func (o *CatalogsRetailItemsBatch) GetCreatedTime() time.Time {
-	if o == nil || IsNil(o.CreatedTime) {
-		var ret time.Time
+// GetCatalogType returns the CatalogType field value
+func (o *CatalogsRetailItemsBatch) GetCatalogType() CatalogsType {
+	if o == nil {
+		var ret CatalogsType
 		return ret
 	}
-	return *o.CreatedTime
+
+	return o.CatalogType
 }
 
-// GetCreatedTimeOk returns a tuple with the CreatedTime field value if set, nil otherwise
+// GetCatalogTypeOk returns a tuple with the CatalogType field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsRetailItemsBatch) GetCreatedTimeOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.CreatedTime) {
+func (o *CatalogsRetailItemsBatch) GetCatalogTypeOk() (*CatalogsType, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedTime, true
+	return &o.CatalogType, true
 }
 
-// HasCreatedTime returns a boolean if a field has been set.
-func (o *CatalogsRetailItemsBatch) HasCreatedTime() bool {
-	if o != nil && !IsNil(o.CreatedTime) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedTime gets a reference to the given time.Time and assigns it to the CreatedTime field.
-func (o *CatalogsRetailItemsBatch) SetCreatedTime(v time.Time) {
-	o.CreatedTime = &v
+// SetCatalogType sets field value
+func (o *CatalogsRetailItemsBatch) SetCatalogType(v CatalogsType) {
+	o.CatalogType = v
 }
 
 // GetCompletedTime returns the CompletedTime field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -161,60 +154,30 @@ func (o *CatalogsRetailItemsBatch) UnsetCompletedTime() {
 	o.CompletedTime.Unset()
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *CatalogsRetailItemsBatch) GetStatus() BatchOperationStatus {
-	if o == nil || IsNil(o.Status) {
-		var ret BatchOperationStatus
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsRetailItemsBatch) GetStatusOk() (*BatchOperationStatus, bool) {
-	if o == nil || IsNil(o.Status) {
-		return nil, false
-	}
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *CatalogsRetailItemsBatch) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given BatchOperationStatus and assigns it to the Status field.
-func (o *CatalogsRetailItemsBatch) SetStatus(v BatchOperationStatus) {
-	o.Status = &v
-}
-
-// GetCatalogType returns the CatalogType field value
-func (o *CatalogsRetailItemsBatch) GetCatalogType() CatalogsType {
-	if o == nil {
-		var ret CatalogsType
+// GetCreatedTime returns the CreatedTime field value
+// If the value is explicit nil, the zero value for time.Time will be returned
+func (o *CatalogsRetailItemsBatch) GetCreatedTime() time.Time {
+	if o == nil || o.CreatedTime.Get() == nil {
+		var ret time.Time
 		return ret
 	}
 
-	return o.CatalogType
+	return *o.CreatedTime.Get()
 }
 
-// GetCatalogTypeOk returns a tuple with the CatalogType field value
+// GetCreatedTimeOk returns a tuple with the CreatedTime field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsRetailItemsBatch) GetCatalogTypeOk() (*CatalogsType, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CatalogsRetailItemsBatch) GetCreatedTimeOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.CatalogType, true
+	return o.CreatedTime.Get(), o.CreatedTime.IsSet()
 }
 
-// SetCatalogType sets field value
-func (o *CatalogsRetailItemsBatch) SetCatalogType(v CatalogsType) {
-	o.CatalogType = v
+// SetCreatedTime sets field value
+func (o *CatalogsRetailItemsBatch) SetCreatedTime(v time.Time) {
+	o.CreatedTime.Set(&v)
 }
 
 // GetItems returns the Items field value if set, zero value otherwise.
@@ -249,6 +212,38 @@ func (o *CatalogsRetailItemsBatch) SetItems(v []ItemProcessingRecord) {
 	o.Items = v
 }
 
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *CatalogsRetailItemsBatch) GetStatus() BatchOperationStatus {
+	if o == nil || IsNil(o.Status) {
+		var ret BatchOperationStatus
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsRetailItemsBatch) GetStatusOk() (*BatchOperationStatus, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *CatalogsRetailItemsBatch) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given BatchOperationStatus and assigns it to the Status field.
+func (o *CatalogsRetailItemsBatch) SetStatus(v BatchOperationStatus) {
+	o.Status = &v
+}
+
 func (o CatalogsRetailItemsBatch) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -262,18 +257,16 @@ func (o CatalogsRetailItemsBatch) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BatchId) {
 		toSerialize["batch_id"] = o.BatchId
 	}
-	if !IsNil(o.CreatedTime) {
-		toSerialize["created_time"] = o.CreatedTime
-	}
+	toSerialize["catalog_type"] = o.CatalogType
 	if o.CompletedTime.IsSet() {
 		toSerialize["completed_time"] = o.CompletedTime.Get()
 	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
-	toSerialize["catalog_type"] = o.CatalogType
+	toSerialize["created_time"] = o.CreatedTime.Get()
 	if !IsNil(o.Items) {
 		toSerialize["items"] = o.Items
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
 	}
 	return toSerialize, nil
 }
@@ -284,6 +277,7 @@ func (o *CatalogsRetailItemsBatch) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"catalog_type",
+		"created_time",
 	}
 
 	allProperties := make(map[string]interface{})

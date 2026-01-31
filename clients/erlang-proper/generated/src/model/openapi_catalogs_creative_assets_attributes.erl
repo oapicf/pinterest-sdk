@@ -9,17 +9,17 @@
 -export_type([openapi_catalogs_creative_assets_attributes/0]).
 
 -type openapi_catalogs_creative_assets_attributes() ::
-  [ {'title', binary() }
-  | {'description', binary() }
-  | {'link', binary() }
-  | {'ios_deep_link', binary() }
-  | {'android_deep_link', binary() }
-  | {'google_product_category', binary() }
+  [ {'android_deep_link', binary() }
   | {'custom_label_0', binary() }
   | {'custom_label_1', binary() }
   | {'custom_label_2', binary() }
   | {'custom_label_3', binary() }
   | {'custom_label_4', binary() }
+  | {'description', binary() }
+  | {'google_product_category', binary() }
+  | {'ios_deep_link', binary() }
+  | {'link', binary() }
+  | {'title', binary() }
   | {'visibility', binary() }
   | {'image_link', binary() }
   | {'video_link', binary() }
@@ -30,17 +30,17 @@ openapi_catalogs_creative_assets_attributes() ->
     openapi_catalogs_creative_assets_attributes([]).
 
 openapi_catalogs_creative_assets_attributes(Fields) ->
-  Default = [ {'title', binary() }
-            , {'description', binary() }
-            , {'link', binary() }
-            , {'ios_deep_link', binary() }
-            , {'android_deep_link', binary() }
-            , {'google_product_category', binary() }
+  Default = [ {'android_deep_link', binary() }
             , {'custom_label_0', binary() }
             , {'custom_label_1', binary() }
             , {'custom_label_2', binary() }
             , {'custom_label_3', binary() }
             , {'custom_label_4', binary() }
+            , {'description', binary() }
+            , {'google_product_category', binary() }
+            , {'ios_deep_link', binary() }
+            , {'link', binary() }
+            , {'title', binary() }
             , {'visibility', binary() }
             , {'image_link', binary() }
             , {'video_link', binary() }

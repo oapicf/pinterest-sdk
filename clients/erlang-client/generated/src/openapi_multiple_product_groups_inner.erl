@@ -5,34 +5,34 @@
 -export_type([openapi_multiple_product_groups_inner/0]).
 
 -type openapi_multiple_product_groups_inner() ::
-    #{ 'name' := binary(),
-       'description' => binary(),
-       'is_featured' => boolean(),
-       'filters' := openapi_catalogs_creative_assets_product_group_filters:openapi_catalogs_creative_assets_product_group_filters(),
+    #{ 'description' => binary(),
        'feed_id' := binary(),
-       'catalog_type' := binary(),
+       'filters' := openapi_catalogs_creative_assets_product_group_filters:openapi_catalogs_creative_assets_product_group_filters(),
+       'is_featured' => boolean(),
+       'name' := binary(),
        'catalog_id' := binary(),
-       'country' := openapi_country:openapi_country(),
-       'locale' := openapi_catalogs_locale:openapi_catalogs_locale()
+       'catalog_type' := binary(),
+       'country' => openapi_country:openapi_country(),
+       'locale' => openapi_catalogs_locale:openapi_catalogs_locale()
      }.
 
-encode(#{ 'name' := Name,
-          'description' := Description,
-          'is_featured' := IsFeatured,
-          'filters' := Filters,
+encode(#{ 'description' := Description,
           'feed_id' := FeedId,
-          'catalog_type' := CatalogType,
+          'filters' := Filters,
+          'is_featured' := IsFeatured,
+          'name' := Name,
           'catalog_id' := CatalogId,
+          'catalog_type' := CatalogType,
           'country' := Country,
           'locale' := Locale
         }) ->
-    #{ 'name' => Name,
-       'description' => Description,
-       'is_featured' => IsFeatured,
-       'filters' => Filters,
+    #{ 'description' => Description,
        'feed_id' => FeedId,
-       'catalog_type' => CatalogType,
+       'filters' => Filters,
+       'is_featured' => IsFeatured,
+       'name' => Name,
        'catalog_id' => CatalogId,
+       'catalog_type' => CatalogType,
        'country' => Country,
        'locale' => Locale
      }.

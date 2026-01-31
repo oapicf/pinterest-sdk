@@ -23,25 +23,25 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param startDate Starting date of time period. Format: YYYY-MM-DD
- * @param poNumber The po number
+ * @param billingContactEmail The billing contact email
  * @param billingContactFirstname The billing contact first name
  * @param billingContactLastname The billing contact last name
- * @param billingContactEmail The billing contact email
+ * @param mediaContactEmail The media contact email
  * @param mediaContactFirstname The media contact first name
  * @param mediaContactLastname The media contact last name
- * @param mediaContactEmail The media contact email
- * @param pmpId The pmp id
- * @param orderName The order name
- * @param orderLineType Type can be Budget or Perpetual
+ * @param poNumber The po number
+ * @param startDate Starting date of time period. Format: YYYY-MM-DD
  * @param acceptedTermsId The SFDC id for the terms
- * @param billtoCompanyId The bill-to company id
- * @param billtoBusinessAddressId The bill-to business address id
  * @param billtoBillingAddressId The bill-to billing address id
+ * @param billtoBusinessAddressId The bill-to business address id
+ * @param billtoCompanyId The bill-to company id
  * @param currencyInfo 
- * @param endDate End date of time period. Format: YYYY-MM-DD
- * @param budgetAmount If Budget order line, the budget amount.
+ * @param orderLineType Type can be Budget or Perpetual
+ * @param orderName The order name
+ * @param pmpId The pmp id
  * @param agencyLink URL link for agency
+ * @param budgetAmount If Budget order line, the budget amount.
+ * @param endDate End date of time period. Format: YYYY-MM-DD
  * @param userEmail The email of user submitting the insertion order
  * @param acceptedTermsTime The UTC timestamp (to the nearest sec) of when terms were accepted
  * @param estimatedMonthlySpend If Ongoing (perpetual) order line, the estimated monthly spend
@@ -50,13 +50,9 @@ import com.squareup.moshi.JsonClass
 
 data class SSIOCreateInsertionOrderRequest (
 
-    /* Starting date of time period. Format: YYYY-MM-DD */
-    @Json(name = "start_date")
-    val startDate: kotlin.String,
-
-    /* The po number */
-    @Json(name = "po_number")
-    val poNumber: kotlin.String,
+    /* The billing contact email */
+    @Json(name = "billing_contact_email")
+    val billingContactEmail: kotlin.String,
 
     /* The billing contact first name */
     @Json(name = "billing_contact_firstname")
@@ -66,9 +62,9 @@ data class SSIOCreateInsertionOrderRequest (
     @Json(name = "billing_contact_lastname")
     val billingContactLastname: kotlin.String,
 
-    /* The billing contact email */
-    @Json(name = "billing_contact_email")
-    val billingContactEmail: kotlin.String,
+    /* The media contact email */
+    @Json(name = "media_contact_email")
+    val mediaContactEmail: kotlin.String,
 
     /* The media contact first name */
     @Json(name = "media_contact_firstname")
@@ -78,52 +74,56 @@ data class SSIOCreateInsertionOrderRequest (
     @Json(name = "media_contact_lastname")
     val mediaContactLastname: kotlin.String,
 
-    /* The media contact email */
-    @Json(name = "media_contact_email")
-    val mediaContactEmail: kotlin.String,
+    /* The po number */
+    @Json(name = "po_number")
+    val poNumber: kotlin.String,
 
-    /* The pmp id */
-    @Json(name = "pmp_id")
-    val pmpId: kotlin.String,
-
-    /* The order name */
-    @Json(name = "order_name")
-    val orderName: kotlin.String,
-
-    /* Type can be Budget or Perpetual */
-    @Json(name = "order_line_type")
-    val orderLineType: SSIOCreateInsertionOrderRequest.OrderLineType,
+    /* Starting date of time period. Format: YYYY-MM-DD */
+    @Json(name = "start_date")
+    val startDate: kotlin.String,
 
     /* The SFDC id for the terms */
     @Json(name = "accepted_terms_id")
     val acceptedTermsId: kotlin.String,
 
-    /* The bill-to company id */
-    @Json(name = "billto_company_id")
-    val billtoCompanyId: kotlin.String,
+    /* The bill-to billing address id */
+    @Json(name = "billto_billing_address_id")
+    val billtoBillingAddressId: kotlin.String,
 
     /* The bill-to business address id */
     @Json(name = "billto_business_address_id")
     val billtoBusinessAddressId: kotlin.String,
 
-    /* The bill-to billing address id */
-    @Json(name = "billto_billing_address_id")
-    val billtoBillingAddressId: kotlin.String,
+    /* The bill-to company id */
+    @Json(name = "billto_company_id")
+    val billtoCompanyId: kotlin.String,
 
     @Json(name = "currency_info")
     val currencyInfo: Currency,
 
-    /* End date of time period. Format: YYYY-MM-DD */
-    @Json(name = "end_date")
-    val endDate: kotlin.String? = null,
+    /* Type can be Budget or Perpetual */
+    @Json(name = "order_line_type")
+    val orderLineType: SSIOCreateInsertionOrderRequest.OrderLineType,
+
+    /* The order name */
+    @Json(name = "order_name")
+    val orderName: kotlin.String,
+
+    /* The pmp id */
+    @Json(name = "pmp_id")
+    val pmpId: kotlin.String,
+
+    /* URL link for agency */
+    @Json(name = "agency_link")
+    val agencyLink: kotlin.String? = null,
 
     /* If Budget order line, the budget amount. */
     @Json(name = "budget_amount")
     val budgetAmount: java.math.BigDecimal? = null,
 
-    /* URL link for agency */
-    @Json(name = "agency_link")
-    val agencyLink: kotlin.String? = null,
+    /* End date of time period. Format: YYYY-MM-DD */
+    @Json(name = "end_date")
+    val endDate: kotlin.String? = null,
 
     /* The email of user submitting the insertion order */
     @Json(name = "user_email")

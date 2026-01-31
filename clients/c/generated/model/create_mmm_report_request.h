@@ -27,6 +27,14 @@ char* create_mmm_report_request_countries_ToString(pinterest_rest_api_create_mmm
 
 pinterest_rest_api_create_mmm_report_request__e create_mmm_report_request_countries_FromString(char* countries);
 
+// Enum  for create_mmm_report_request
+
+typedef enum  { pinterest_rest_api_create_mmm_report_request__NULL = 0, pinterest_rest_api_create_mmm_report_request__SPEND_IN_DOLLAR, pinterest_rest_api_create_mmm_report_request__SPEND_IN_MICRO_DOLLAR, pinterest_rest_api_create_mmm_report_request__ECPC_IN_DOLLAR, pinterest_rest_api_create_mmm_report_request__ECTR, pinterest_rest_api_create_mmm_report_request__CAMPAIGN_NAME, pinterest_rest_api_create_mmm_report_request__TOTAL_ENGAGEMENT, pinterest_rest_api_create_mmm_report_request__EENGAGEMENT_RATE, pinterest_rest_api_create_mmm_report_request__ECPM_IN_DOLLAR, pinterest_rest_api_create_mmm_report_request__CAMPAIGN_ID, pinterest_rest_api_create_mmm_report_request__ADVERTISER_ID, pinterest_rest_api_create_mmm_report_request__AD_GROUP_ID, pinterest_rest_api_create_mmm_report_request__AD_GROUP_NAME, pinterest_rest_api_create_mmm_report_request__CLICKTHROUGH_1, pinterest_rest_api_create_mmm_report_request__IMPRESSION_1, pinterest_rest_api_create_mmm_report_request__CLICKTHROUGH_2, pinterest_rest_api_create_mmm_report_request__IMPRESSION_2, pinterest_rest_api_create_mmm_report_request__TOTAL_CLICKTHROUGH, pinterest_rest_api_create_mmm_report_request__TOTAL_IMPRESSION, pinterest_rest_api_create_mmm_report_request__ADVERTISER_NAME, pinterest_rest_api_create_mmm_report_request__SPEND_ORDER_LINE_PAID_TYPE } pinterest_rest_api_create_mmm_report_request__e;
+
+char* create_mmm_report_request_columns_ToString(pinterest_rest_api_create_mmm_report_request__e columns);
+
+pinterest_rest_api_create_mmm_report_request__e create_mmm_report_request_columns_FromString(char* columns);
+
 // Enum GRANULARITY for create_mmm_report_request
 
 typedef enum  { pinterest_rest_api_create_mmm_report_request_GRANULARITY_NULL = 0, pinterest_rest_api_create_mmm_report_request_GRANULARITY_DAY, pinterest_rest_api_create_mmm_report_request_GRANULARITY_WEEK } pinterest_rest_api_create_mmm_report_request_GRANULARITY_e;
@@ -51,38 +59,30 @@ char* create_mmm_report_request_targeting_types_ToString(pinterest_rest_api_crea
 
 pinterest_rest_api_create_mmm_report_request__e create_mmm_report_request_targeting_types_FromString(char* targeting_types);
 
-// Enum  for create_mmm_report_request
-
-typedef enum  { pinterest_rest_api_create_mmm_report_request__NULL = 0, pinterest_rest_api_create_mmm_report_request__SPEND_IN_DOLLAR, pinterest_rest_api_create_mmm_report_request__SPEND_IN_MICRO_DOLLAR, pinterest_rest_api_create_mmm_report_request__ECPC_IN_DOLLAR, pinterest_rest_api_create_mmm_report_request__ECTR, pinterest_rest_api_create_mmm_report_request__CAMPAIGN_NAME, pinterest_rest_api_create_mmm_report_request__TOTAL_ENGAGEMENT, pinterest_rest_api_create_mmm_report_request__EENGAGEMENT_RATE, pinterest_rest_api_create_mmm_report_request__ECPM_IN_DOLLAR, pinterest_rest_api_create_mmm_report_request__CAMPAIGN_ID, pinterest_rest_api_create_mmm_report_request__ADVERTISER_ID, pinterest_rest_api_create_mmm_report_request__AD_GROUP_ID, pinterest_rest_api_create_mmm_report_request__AD_GROUP_NAME, pinterest_rest_api_create_mmm_report_request__CLICKTHROUGH_1, pinterest_rest_api_create_mmm_report_request__IMPRESSION_1, pinterest_rest_api_create_mmm_report_request__CLICKTHROUGH_2, pinterest_rest_api_create_mmm_report_request__IMPRESSION_2, pinterest_rest_api_create_mmm_report_request__TOTAL_CLICKTHROUGH, pinterest_rest_api_create_mmm_report_request__TOTAL_IMPRESSION, pinterest_rest_api_create_mmm_report_request__ADVERTISER_NAME, pinterest_rest_api_create_mmm_report_request__SPEND_ORDER_LINE_PAID_TYPE } pinterest_rest_api_create_mmm_report_request__e;
-
-char* create_mmm_report_request_columns_ToString(pinterest_rest_api_create_mmm_report_request__e columns);
-
-pinterest_rest_api_create_mmm_report_request__e create_mmm_report_request_columns_FromString(char* columns);
-
 
 
 typedef struct create_mmm_report_request_t {
     list_t *countries; //nonprimitive container
-    char *report_name; // string
-    char *start_date; // string
+    list_t *columns; //nonprimitive container
     char *end_date; // string
     pinterest_rest_api_create_mmm_report_request_GRANULARITY_e granularity; //enum
     pinterest_rest_api_create_mmm_report_request_LEVEL_e level; //enum
+    char *report_name; // string
+    char *start_date; // string
     list_t *targeting_types; //nonprimitive container
-    list_t *columns; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
 } create_mmm_report_request_t;
 
 __attribute__((deprecated)) create_mmm_report_request_t *create_mmm_report_request_create(
     list_t *countries,
-    char *report_name,
-    char *start_date,
+    list_t *columns,
     char *end_date,
     pinterest_rest_api_create_mmm_report_request_GRANULARITY_e granularity,
     pinterest_rest_api_create_mmm_report_request_LEVEL_e level,
-    list_t *targeting_types,
-    list_t *columns
+    char *report_name,
+    char *start_date,
+    list_t *targeting_types
 );
 
 void create_mmm_report_request_free(create_mmm_report_request_t *create_mmm_report_request);

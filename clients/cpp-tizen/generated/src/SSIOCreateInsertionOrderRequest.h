@@ -46,34 +46,20 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Starting date of time period. Format: YYYY-MM-DD
+	/*! \brief Get URL link for agency
 	 */
-	std::string getStartDate();
+	std::string getAgencyLink();
 
-	/*! \brief Set Starting date of time period. Format: YYYY-MM-DD
+	/*! \brief Set URL link for agency
 	 */
-	void setStartDate(std::string  start_date);
-	/*! \brief Get End date of time period. Format: YYYY-MM-DD
+	void setAgencyLink(std::string  agency_link);
+	/*! \brief Get The billing contact email
 	 */
-	std::string getEndDate();
+	std::string getBillingContactEmail();
 
-	/*! \brief Set End date of time period. Format: YYYY-MM-DD
+	/*! \brief Set The billing contact email
 	 */
-	void setEndDate(std::string  end_date);
-	/*! \brief Get The po number
-	 */
-	std::string getPoNumber();
-
-	/*! \brief Set The po number
-	 */
-	void setPoNumber(std::string  po_number);
-	/*! \brief Get If Budget order line, the budget amount.
-	 */
-	long long getBudgetAmount();
-
-	/*! \brief Set If Budget order line, the budget amount.
-	 */
-	void setBudgetAmount(long long  budget_amount);
+	void setBillingContactEmail(std::string  billing_contact_email);
 	/*! \brief Get The billing contact first name
 	 */
 	std::string getBillingContactFirstname();
@@ -88,13 +74,27 @@ public:
 	/*! \brief Set The billing contact last name
 	 */
 	void setBillingContactLastname(std::string  billing_contact_lastname);
-	/*! \brief Get The billing contact email
+	/*! \brief Get If Budget order line, the budget amount.
 	 */
-	std::string getBillingContactEmail();
+	long long getBudgetAmount();
 
-	/*! \brief Set The billing contact email
+	/*! \brief Set If Budget order line, the budget amount.
 	 */
-	void setBillingContactEmail(std::string  billing_contact_email);
+	void setBudgetAmount(long long  budget_amount);
+	/*! \brief Get End date of time period. Format: YYYY-MM-DD
+	 */
+	std::string getEndDate();
+
+	/*! \brief Set End date of time period. Format: YYYY-MM-DD
+	 */
+	void setEndDate(std::string  end_date);
+	/*! \brief Get The media contact email
+	 */
+	std::string getMediaContactEmail();
+
+	/*! \brief Set The media contact email
+	 */
+	void setMediaContactEmail(std::string  media_contact_email);
 	/*! \brief Get The media contact first name
 	 */
 	std::string getMediaContactFirstname();
@@ -109,20 +109,20 @@ public:
 	/*! \brief Set The media contact last name
 	 */
 	void setMediaContactLastname(std::string  media_contact_lastname);
-	/*! \brief Get The media contact email
+	/*! \brief Get The po number
 	 */
-	std::string getMediaContactEmail();
+	std::string getPoNumber();
 
-	/*! \brief Set The media contact email
+	/*! \brief Set The po number
 	 */
-	void setMediaContactEmail(std::string  media_contact_email);
-	/*! \brief Get URL link for agency
+	void setPoNumber(std::string  po_number);
+	/*! \brief Get Starting date of time period. Format: YYYY-MM-DD
 	 */
-	std::string getAgencyLink();
+	std::string getStartDate();
 
-	/*! \brief Set URL link for agency
+	/*! \brief Set Starting date of time period. Format: YYYY-MM-DD
 	 */
-	void setAgencyLink(std::string  agency_link);
+	void setStartDate(std::string  start_date);
 	/*! \brief Get The email of user submitting the insertion order
 	 */
 	std::string getUserEmail();
@@ -130,34 +130,6 @@ public:
 	/*! \brief Set The email of user submitting the insertion order
 	 */
 	void setUserEmail(std::string  user_email);
-	/*! \brief Get The UTC timestamp (to the nearest sec) of when terms were accepted
-	 */
-	int getAcceptedTermsTime();
-
-	/*! \brief Set The UTC timestamp (to the nearest sec) of when terms were accepted
-	 */
-	void setAcceptedTermsTime(int  accepted_terms_time);
-	/*! \brief Get The pmp id
-	 */
-	std::string getPmpId();
-
-	/*! \brief Set The pmp id
-	 */
-	void setPmpId(std::string  pmp_id);
-	/*! \brief Get The order name
-	 */
-	std::string getOrderName();
-
-	/*! \brief Set The order name
-	 */
-	void setOrderName(std::string  order_name);
-	/*! \brief Get Type can be Budget or Perpetual
-	 */
-	std::string getOrderLineType();
-
-	/*! \brief Set Type can be Budget or Perpetual
-	 */
-	void setOrderLineType(std::string  order_line_type);
 	/*! \brief Get The SFDC id for the terms
 	 */
 	std::string getAcceptedTermsId();
@@ -165,20 +137,13 @@ public:
 	/*! \brief Set The SFDC id for the terms
 	 */
 	void setAcceptedTermsId(std::string  accepted_terms_id);
-	/*! \brief Get The bill-to company id
+	/*! \brief Get The UTC timestamp (to the nearest sec) of when terms were accepted
 	 */
-	std::string getBilltoCompanyId();
+	int getAcceptedTermsTime();
 
-	/*! \brief Set The bill-to company id
+	/*! \brief Set The UTC timestamp (to the nearest sec) of when terms were accepted
 	 */
-	void setBilltoCompanyId(std::string  billto_company_id);
-	/*! \brief Get The bill-to business address id
-	 */
-	std::string getBilltoBusinessAddressId();
-
-	/*! \brief Set The bill-to business address id
-	 */
-	void setBilltoBusinessAddressId(std::string  billto_business_address_id);
+	void setAcceptedTermsTime(int  accepted_terms_time);
 	/*! \brief Get The bill-to billing address id
 	 */
 	std::string getBilltoBillingAddressId();
@@ -186,13 +151,20 @@ public:
 	/*! \brief Set The bill-to billing address id
 	 */
 	void setBilltoBillingAddressId(std::string  billto_billing_address_id);
-	/*! \brief Get If Ongoing (perpetual) order line, the estimated monthly spend
+	/*! \brief Get The bill-to business address id
 	 */
-	long long getEstimatedMonthlySpend();
+	std::string getBilltoBusinessAddressId();
 
-	/*! \brief Set If Ongoing (perpetual) order line, the estimated monthly spend
+	/*! \brief Set The bill-to business address id
 	 */
-	void setEstimatedMonthlySpend(long long  estimated_monthly_spend);
+	void setBilltoBusinessAddressId(std::string  billto_business_address_id);
+	/*! \brief Get The bill-to company id
+	 */
+	std::string getBilltoCompanyId();
+
+	/*! \brief Set The bill-to company id
+	 */
+	void setBilltoCompanyId(std::string  billto_company_id);
 	/*! \brief Get 
 	 */
 	Currency getCurrencyInfo();
@@ -200,30 +172,58 @@ public:
 	/*! \brief Set 
 	 */
 	void setCurrencyInfo(Currency  currency_info);
+	/*! \brief Get If Ongoing (perpetual) order line, the estimated monthly spend
+	 */
+	long long getEstimatedMonthlySpend();
+
+	/*! \brief Set If Ongoing (perpetual) order line, the estimated monthly spend
+	 */
+	void setEstimatedMonthlySpend(long long  estimated_monthly_spend);
+	/*! \brief Get Type can be Budget or Perpetual
+	 */
+	std::string getOrderLineType();
+
+	/*! \brief Set Type can be Budget or Perpetual
+	 */
+	void setOrderLineType(std::string  order_line_type);
+	/*! \brief Get The order name
+	 */
+	std::string getOrderName();
+
+	/*! \brief Set The order name
+	 */
+	void setOrderName(std::string  order_name);
+	/*! \brief Get The pmp id
+	 */
+	std::string getPmpId();
+
+	/*! \brief Set The pmp id
+	 */
+	void setPmpId(std::string  pmp_id);
 
 private:
-	std::string start_date;
-	std::string end_date;
-	std::string po_number;
-	long long budget_amount;
+	std::string agency_link;
+	std::string billing_contact_email;
 	std::string billing_contact_firstname;
 	std::string billing_contact_lastname;
-	std::string billing_contact_email;
+	long long budget_amount;
+	std::string end_date;
+	std::string media_contact_email;
 	std::string media_contact_firstname;
 	std::string media_contact_lastname;
-	std::string media_contact_email;
-	std::string agency_link;
+	std::string po_number;
+	std::string start_date;
 	std::string user_email;
-	int accepted_terms_time;
-	std::string pmp_id;
-	std::string order_name;
-	std::string order_line_type;
 	std::string accepted_terms_id;
-	std::string billto_company_id;
-	std::string billto_business_address_id;
+	int accepted_terms_time;
 	std::string billto_billing_address_id;
-	long long estimated_monthly_spend;
+	std::string billto_business_address_id;
+	std::string billto_company_id;
 	Currency currency_info;
+	long long estimated_monthly_spend;
+	std::string order_line_type;
+	std::string order_name;
+	std::string pmp_id;
 	void __init();
 	void __cleanup();
 

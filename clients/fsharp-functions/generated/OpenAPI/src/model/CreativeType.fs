@@ -18,6 +18,9 @@ module CreativeType =
   let IDEAEnum = "IDEA"
   let SHOWCASEEnum = "SHOWCASE"
   let QUIZEnum = "QUIZ"
+  let COLLAGEEnum = "COLLAGE"
+  let MAXWIDTHREGULARCOLLECTIONEnum = "MAX_WIDTH_REGULAR_COLLECTION"
+  let MAXWIDTHVIDEOCOLLECTIONEnum = "MAX_WIDTH_VIDEO_COLLECTION"
   type CreativeType = string
 
   //#endregion

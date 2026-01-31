@@ -14,6 +14,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ConversionApiResponseEventsInner  {
   
+ /**
+  * Error message containing more information about why the event failed to be processed.
+  */
+  @ApiModelProperty(value = "Error message containing more information about why the event failed to be processed.")
+
+  private String errorMessage;
+
 public enum StatusEnum {
 
 FAILED(String.valueOf("failed")), PROCESSED(String.valueOf("processed"));
@@ -54,18 +61,29 @@ FAILED(String.valueOf("failed")), PROCESSED(String.valueOf("processed"));
   private StatusEnum status;
 
  /**
-  * Error message containing more information about why the event failed to be processed.
-  */
-  @ApiModelProperty(value = "Error message containing more information about why the event failed to be processed.")
-
-  private String errorMessage;
-
- /**
   * Warning messages about any fields in the event which are not standard. These are not critical to event processing.
   */
   @ApiModelProperty(value = "Warning messages about any fields in the event which are not standard. These are not critical to event processing.")
 
   private String warningMessage;
+ /**
+   * Error message containing more information about why the event failed to be processed.
+   * @return errorMessage
+  **/
+  @JsonProperty("error_message")
+  public String getErrorMessage() {
+    return errorMessage;
+  }
+
+  public void setErrorMessage(String errorMessage) {
+    this.errorMessage = errorMessage;
+  }
+
+  public ConversionApiResponseEventsInner errorMessage(String errorMessage) {
+    this.errorMessage = errorMessage;
+    return this;
+  }
+
  /**
    * Whether the event was processed successfully.
    * @return status
@@ -85,24 +103,6 @@ FAILED(String.valueOf("failed")), PROCESSED(String.valueOf("processed"));
 
   public ConversionApiResponseEventsInner status(StatusEnum status) {
     this.status = status;
-    return this;
-  }
-
- /**
-   * Error message containing more information about why the event failed to be processed.
-   * @return errorMessage
-  **/
-  @JsonProperty("error_message")
-  public String getErrorMessage() {
-    return errorMessage;
-  }
-
-  public void setErrorMessage(String errorMessage) {
-    this.errorMessage = errorMessage;
-  }
-
-  public ConversionApiResponseEventsInner errorMessage(String errorMessage) {
-    this.errorMessage = errorMessage;
     return this;
   }
 
@@ -133,14 +133,14 @@ FAILED(String.valueOf("failed")), PROCESSED(String.valueOf("processed"));
       return false;
     }
     ConversionApiResponseEventsInner conversionApiResponseEventsInner = (ConversionApiResponseEventsInner) o;
-    return Objects.equals(this.status, conversionApiResponseEventsInner.status) &&
-        Objects.equals(this.errorMessage, conversionApiResponseEventsInner.errorMessage) &&
+    return Objects.equals(this.errorMessage, conversionApiResponseEventsInner.errorMessage) &&
+        Objects.equals(this.status, conversionApiResponseEventsInner.status) &&
         Objects.equals(this.warningMessage, conversionApiResponseEventsInner.warningMessage);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, errorMessage, warningMessage);
+    return Objects.hash(errorMessage, status, warningMessage);
   }
 
   @Override
@@ -148,8 +148,8 @@ FAILED(String.valueOf("failed")), PROCESSED(String.valueOf("processed"));
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionApiResponseEventsInner {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    warningMessage: ").append(toIndentedString(warningMessage)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -7,13 +7,35 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { AdsAnalyticsTargetingType } from './adsAnalyticsTargetingType';
 
 
 export interface TargetingTypeFilter { 
     /**
-     * List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
+     * List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AUDIENCE_MULTIPLIER\"] is only available in CAMPAIGN_TARGETING level. [\"MEDIA_TYPE\"] is only available in PRODUCT_ITEM_TARGETING level. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
      */
-    targeting_types?: Array<AdsAnalyticsTargetingType>;
+    targeting_types?: Array<TargetingTypeFilter.TargetingTypesEnum>;
 }
+export namespace TargetingTypeFilter {
+    export const TargetingTypesEnum = {
+        Keyword: 'KEYWORD',
+        Apptype: 'APPTYPE',
+        Gender: 'GENDER',
+        Location: 'LOCATION',
+        Placement: 'PLACEMENT',
+        Country: 'COUNTRY',
+        TargetedInterest: 'TARGETED_INTEREST',
+        PinnerInterest: 'PINNER_INTEREST',
+        AudienceInclude: 'AUDIENCE_INCLUDE',
+        Geo: 'GEO',
+        AgeBucket: 'AGE_BUCKET',
+        Region: 'REGION',
+        MediaType: 'MEDIA_TYPE',
+        AgeBucketAndGender: 'AGE_BUCKET_AND_GENDER',
+        AudienceMultiplier: 'AUDIENCE_MULTIPLIER',
+        CreativeEnhancements: 'CREATIVE_ENHANCEMENTS',
+        LocalAdsStoreCode: 'LOCAL_ADS_STORE_CODE'
+    } as const;
+    export type TargetingTypesEnum = typeof TargetingTypesEnum[keyof typeof TargetingTypesEnum];
+}
+
 

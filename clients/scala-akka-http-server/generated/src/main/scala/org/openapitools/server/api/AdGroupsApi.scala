@@ -16,7 +16,7 @@ import org.openapitools.server.model.AdGroupResponse
 import org.openapitools.server.model.AdGroupUpdateRequest
 import org.openapitools.server.model.AdGroupsAnalyticsResponseInner
 import org.openapitools.server.model.AdGroupsList200Response
-import org.openapitools.server.model.AdsAnalyticsTargetingType
+import org.openapitools.server.model.AdsAnalyticsAdGroupTargetingType
 import org.openapitools.server.model.BidFloor
 import org.openapitools.server.model.BidFloorRequest
 import org.openapitools.server.model.ConversionReportAttributionType
@@ -24,6 +24,7 @@ import org.openapitools.server.model.Error
 import org.openapitools.server.model.Granularity
 import java.time.LocalDate
 import org.openapitools.server.model.MetricsResponse
+import org.openapitools.server.model.ReportingTimeZone
 
 
 class AdGroupsApi(
@@ -39,8 +40,8 @@ import AdGroupsApiPatterns.adAccountIdPattern
   lazy val route: Route =
     path("ad_accounts" / adAccountIdPattern / "ad_groups" / "analytics") { (adAccountId) => 
       get { 
-        parameters("start_date".as[String], "end_date".as[String], "ad_group_ids".as[String], "columns".as[String], "granularity".as[String], "click_window_days".as[Int].?(30), "engagement_window_days".as[Int].?(30), "view_window_days".as[Int].?(1), "conversion_report_time".as[String].?("TIME_OF_AD_ACTION")) { (startDate, endDate, adGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime) => 
-            adGroupsService.adGroupsAnalytics(adAccountId = adAccountId, startDate = startDate, endDate = endDate, adGroupIds = adGroupIds, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime)
+        parameters("start_date".as[String], "end_date".as[String], "ad_group_ids".as[String], "columns".as[String], "granularity".as[String], "click_window_days".as[Int].?(30), "engagement_window_days".as[Int].?(30), "view_window_days".as[Int].?(1), "conversion_report_time".as[String].?("TIME_OF_AD_ACTION"), "aggregate_report_rows".as[Boolean].?(false), "reporting_timezone".as[String].?) { (startDate, endDate, adGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, aggregateReportRows, reportingTimezone) => 
+            adGroupsService.adGroupsAnalytics(adAccountId = adAccountId, startDate = startDate, endDate = endDate, adGroupIds = adGroupIds, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime, aggregateReportRows = aggregateReportRows, reportingTimezone = reportingTimezone)
         }
       }
     } ~
@@ -79,8 +80,8 @@ import AdGroupsApiPatterns.adAccountIdPattern
     } ~
     path("ad_accounts" / adAccountIdPattern / "ad_groups" / "targeting_analytics") { (adAccountId) => 
       get { 
-        parameters("ad_group_ids".as[String], "start_date".as[String], "end_date".as[String], "targeting_types".as[String], "columns".as[String], "granularity".as[String], "click_window_days".as[Int].?(30), "engagement_window_days".as[Int].?(30), "view_window_days".as[Int].?(1), "conversion_report_time".as[String].?("TIME_OF_AD_ACTION"), "attribution_types".as[String].?) { (adGroupIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes) => 
-            adGroupsService.adGroupsTargetingAnalyticsGet(adAccountId = adAccountId, adGroupIds = adGroupIds, startDate = startDate, endDate = endDate, targetingTypes = targetingTypes, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime, attributionTypes = attributionTypes)
+        parameters("ad_group_ids".as[String], "start_date".as[String], "end_date".as[String], "targeting_types".as[String], "columns".as[String], "granularity".as[String], "click_window_days".as[Int].?(30), "engagement_window_days".as[Int].?(30), "view_window_days".as[Int].?(1), "conversion_report_time".as[String].?("TIME_OF_AD_ACTION"), "attribution_types".as[String].?, "reporting_timezone".as[String].?) { (adGroupIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone) => 
+            adGroupsService.adGroupsTargetingAnalyticsGet(adAccountId = adAccountId, adGroupIds = adGroupIds, startDate = startDate, endDate = endDate, targetingTypes = targetingTypes, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime, attributionTypes = attributionTypes, reportingTimezone = reportingTimezone)
         }
       }
     } ~
@@ -112,7 +113,7 @@ trait AdGroupsApiService {
    * Code: 400, Message: Invalid ad account group analytics parameters., DataType: Error
    * Code: 0, Message: Unexpected error, DataType: Error
    */
-  def adGroupsAnalytics(adAccountId: String, startDate: String, endDate: String, adGroupIds: String, columns: String, granularity: String, clickWindowDays: Int, engagementWindowDays: Int, viewWindowDays: Int, conversionReportTime: String)
+  def adGroupsAnalytics(adAccountId: String, startDate: String, endDate: String, adGroupIds: String, columns: String, granularity: String, clickWindowDays: Int, engagementWindowDays: Int, viewWindowDays: Int, conversionReportTime: String, aggregateReportRows: Boolean, reportingTimezone: Option[String])
       (implicit toEntityMarshallerAdGroupsAnalyticsResponseInnerarray: ToEntityMarshaller[Seq[AdGroupsAnalyticsResponseInner]], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def adGroupsAudienceSizing200(responseAdGroupAudienceSizingResponse: AdGroupAudienceSizingResponse)(implicit toEntityMarshallerAdGroupAudienceSizingResponse: ToEntityMarshaller[AdGroupAudienceSizingResponse]): Route =
@@ -129,7 +130,7 @@ trait AdGroupsApiService {
    * Code: 403, Message: No access to requested audience list or product group., DataType: Error
    * Code: 0, Message: Unexpected error, DataType: Error
    */
-  def adGroupsAudienceSizing(adAccountId: String, adGroupAudienceSizingRequest: Option[AdGroupAudienceSizingRequest])
+  def adGroupsAudienceSizing(adAccountId: String, adGroupAudienceSizingRequest: AdGroupAudienceSizingRequest)
       (implicit toEntityMarshallerError: ToEntityMarshaller[Error], toEntityMarshallerAdGroupAudienceSizingResponse: ToEntityMarshaller[AdGroupAudienceSizingResponse]): Route
 
   def adGroupsBidFloorGet200(responseBidFloor: BidFloor)(implicit toEntityMarshallerBidFloor: ToEntityMarshaller[BidFloor]): Route =
@@ -187,7 +188,7 @@ trait AdGroupsApiService {
    * Code: 200, Message: Success, DataType: MetricsResponse
    * Code: 0, Message: Unexpected error, DataType: Error
    */
-  def adGroupsTargetingAnalyticsGet(adAccountId: String, adGroupIds: String, startDate: String, endDate: String, targetingTypes: String, columns: String, granularity: String, clickWindowDays: Int, engagementWindowDays: Int, viewWindowDays: Int, conversionReportTime: String, attributionTypes: Option[String])
+  def adGroupsTargetingAnalyticsGet(adAccountId: String, adGroupIds: String, startDate: String, endDate: String, targetingTypes: String, columns: String, granularity: String, clickWindowDays: Int, engagementWindowDays: Int, viewWindowDays: Int, conversionReportTime: String, attributionTypes: Option[String], reportingTimezone: Option[String])
       (implicit toEntityMarshallerError: ToEntityMarshaller[Error], toEntityMarshallerMetricsResponse: ToEntityMarshaller[MetricsResponse]): Route
 
   def adGroupsUpdate200(responseAdGroupArrayResponse: AdGroupArrayResponse)(implicit toEntityMarshallerAdGroupArrayResponse: ToEntityMarshaller[AdGroupArrayResponse]): Route =

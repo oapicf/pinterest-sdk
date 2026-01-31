@@ -12,22 +12,28 @@ import org.openapitools.model.AudienceRule;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class Audience   {
   @JsonProperty("ad_account_id")
   private String adAccountId;
+
+  @JsonProperty("audience_type")
+  private String audienceType;
+
+  @JsonProperty("created_by_company_name")
+  private String createdByCompanyName;
+
+  @JsonProperty("created_timestamp")
+  private Integer createdTimestamp;
+
+  @JsonProperty("description")
+  private String description;
 
   @JsonProperty("id")
   private String id;
 
   @JsonProperty("name")
   private String name;
-
-  @JsonProperty("audience_type")
-  private String audienceType;
-
-  @JsonProperty("description")
-  private String description;
 
   @JsonProperty("rule")
   private AudienceRule rule;
@@ -40,9 +46,6 @@ public class Audience   {
 
   @JsonProperty("type")
   private String type;
-
-  @JsonProperty("created_timestamp")
-  private Integer createdTimestamp;
 
   @JsonProperty("updated_timestamp")
   private Integer updatedTimestamp;
@@ -63,6 +66,78 @@ public class Audience   {
   }
   public void setAdAccountId(String adAccountId) {
     this.adAccountId = adAccountId;
+  }
+
+  /**
+   * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+   **/
+  public Audience audienceType(String audienceType) {
+    this.audienceType = audienceType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "<a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR")
+  @JsonProperty("audience_type")
+  public String getAudienceType() {
+    return audienceType;
+  }
+  public void setAudienceType(String audienceType) {
+    this.audienceType = audienceType;
+  }
+
+  /**
+   * The company that created this audience.
+   **/
+  public Audience createdByCompanyName(String createdByCompanyName) {
+    this.createdByCompanyName = createdByCompanyName;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "Pinterest", value = "The company that created this audience.")
+  @JsonProperty("created_by_company_name")
+  public String getCreatedByCompanyName() {
+    return createdByCompanyName;
+  }
+  public void setCreatedByCompanyName(String createdByCompanyName) {
+    this.createdByCompanyName = createdByCompanyName;
+  }
+
+  /**
+   * Creation time. Unix timestamp in seconds.
+   **/
+  public Audience createdTimestamp(Integer createdTimestamp) {
+    this.createdTimestamp = createdTimestamp;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "1451431341", value = "Creation time. Unix timestamp in seconds.")
+  @JsonProperty("created_timestamp")
+  public Integer getCreatedTimestamp() {
+    return createdTimestamp;
+  }
+  public void setCreatedTimestamp(Integer createdTimestamp) {
+    this.createdTimestamp = createdTimestamp;
+  }
+
+  /**
+   * Audience description.
+   **/
+  public Audience description(String description) {
+    this.description = description;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "People who love making quilts.", value = "Audience description.")
+  @JsonProperty("description")
+  public String getDescription() {
+    return description;
+  }
+  public void setDescription(String description) {
+    this.description = description;
   }
 
   /**
@@ -99,42 +174,6 @@ public class Audience   {
   }
   public void setName(String name) {
     this.name = name;
-  }
-
-  /**
-   * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
-   **/
-  public Audience audienceType(String audienceType) {
-    this.audienceType = audienceType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "<a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR")
-  @JsonProperty("audience_type")
-  public String getAudienceType() {
-    return audienceType;
-  }
-  public void setAudienceType(String audienceType) {
-    this.audienceType = audienceType;
-  }
-
-  /**
-   * Audience description.
-   **/
-  public Audience description(String description) {
-    this.description = description;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "People who love making quilts.", value = "Audience description.")
-  @JsonProperty("description")
-  public String getDescription() {
-    return description;
-  }
-  public void setDescription(String description) {
-    this.description = description;
   }
 
   /**
@@ -209,24 +248,6 @@ public class Audience   {
   }
 
   /**
-   * Creation time. Unix timestamp in seconds.
-   **/
-  public Audience createdTimestamp(Integer createdTimestamp) {
-    this.createdTimestamp = createdTimestamp;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "1451431341", value = "Creation time. Unix timestamp in seconds.")
-  @JsonProperty("created_timestamp")
-  public Integer getCreatedTimestamp() {
-    return createdTimestamp;
-  }
-  public void setCreatedTimestamp(Integer createdTimestamp) {
-    this.createdTimestamp = createdTimestamp;
-  }
-
-  /**
    * Last update time. Unix timestamp in seconds.
    **/
   public Audience updatedTimestamp(Integer updatedTimestamp) {
@@ -255,21 +276,22 @@ public class Audience   {
     }
     Audience audience = (Audience) o;
     return Objects.equals(adAccountId, audience.adAccountId) &&
+        Objects.equals(audienceType, audience.audienceType) &&
+        Objects.equals(createdByCompanyName, audience.createdByCompanyName) &&
+        Objects.equals(createdTimestamp, audience.createdTimestamp) &&
+        Objects.equals(description, audience.description) &&
         Objects.equals(id, audience.id) &&
         Objects.equals(name, audience.name) &&
-        Objects.equals(audienceType, audience.audienceType) &&
-        Objects.equals(description, audience.description) &&
         Objects.equals(rule, audience.rule) &&
         Objects.equals(size, audience.size) &&
         Objects.equals(status, audience.status) &&
         Objects.equals(type, audience.type) &&
-        Objects.equals(createdTimestamp, audience.createdTimestamp) &&
         Objects.equals(updatedTimestamp, audience.updatedTimestamp);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, id, name, audienceType, description, rule, size, status, type, createdTimestamp, updatedTimestamp);
+    return Objects.hash(adAccountId, audienceType, createdByCompanyName, createdTimestamp, description, id, name, rule, size, status, type, updatedTimestamp);
   }
 
   @Override
@@ -278,15 +300,16 @@ public class Audience   {
     sb.append("class Audience {\n");
     
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
+    sb.append("    audienceType: ").append(toIndentedString(audienceType)).append("\n");
+    sb.append("    createdByCompanyName: ").append(toIndentedString(createdByCompanyName)).append("\n");
+    sb.append("    createdTimestamp: ").append(toIndentedString(createdTimestamp)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    audienceType: ").append(toIndentedString(audienceType)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    rule: ").append(toIndentedString(rule)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    createdTimestamp: ").append(toIndentedString(createdTimestamp)).append("\n");
     sb.append("    updatedTimestamp: ").append(toIndentedString(updatedTimestamp)).append("\n");
     sb.append("}");
     return sb.toString();

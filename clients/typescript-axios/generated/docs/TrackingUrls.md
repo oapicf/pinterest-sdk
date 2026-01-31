@@ -6,11 +6,11 @@ Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,00
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**impression** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
+**audience_verification** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
+**buyable_button** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
 **click** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
 **engagement** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
-**buyable_button** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
-**audience_verification** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
+**impression** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -18,11 +18,11 @@ Name | Type | Description | Notes
 import { TrackingUrls } from './api';
 
 const instance: TrackingUrls = {
-    impression,
+    audience_verification,
+    buyable_button,
     click,
     engagement,
-    buyable_button,
-    audience_verification,
+    impression,
 };
 ```
 

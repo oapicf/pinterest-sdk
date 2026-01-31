@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,10 +22,10 @@ var _ MappedNullable = &CreateAssetAccessRequestBodyAssetRequestsInner{}
 
 // CreateAssetAccessRequestBodyAssetRequestsInner struct for CreateAssetAccessRequestBodyAssetRequestsInner
 type CreateAssetAccessRequestBodyAssetRequestsInner struct {
-	// Unique identifier of a business partner to request asset access to.
-	PartnerId string `json:"partner_id" validate:"regexp=^\\\\d+$"`
 	// An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
 	AssetIdToPermissions map[string][]Permissions `json:"asset_id_to_permissions"`
+	// Unique identifier of a business partner to request asset access to.
+	PartnerId string `json:"partner_id" validate:"regexp=^\\\\d+$"`
 }
 
 type _CreateAssetAccessRequestBodyAssetRequestsInner CreateAssetAccessRequestBodyAssetRequestsInner
@@ -34,10 +34,10 @@ type _CreateAssetAccessRequestBodyAssetRequestsInner CreateAssetAccessRequestBod
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateAssetAccessRequestBodyAssetRequestsInner(partnerId string, assetIdToPermissions map[string][]Permissions) *CreateAssetAccessRequestBodyAssetRequestsInner {
+func NewCreateAssetAccessRequestBodyAssetRequestsInner(assetIdToPermissions map[string][]Permissions, partnerId string) *CreateAssetAccessRequestBodyAssetRequestsInner {
 	this := CreateAssetAccessRequestBodyAssetRequestsInner{}
-	this.PartnerId = partnerId
 	this.AssetIdToPermissions = assetIdToPermissions
+	this.PartnerId = partnerId
 	return &this
 }
 
@@ -47,30 +47,6 @@ func NewCreateAssetAccessRequestBodyAssetRequestsInner(partnerId string, assetId
 func NewCreateAssetAccessRequestBodyAssetRequestsInnerWithDefaults() *CreateAssetAccessRequestBodyAssetRequestsInner {
 	this := CreateAssetAccessRequestBodyAssetRequestsInner{}
 	return &this
-}
-
-// GetPartnerId returns the PartnerId field value
-func (o *CreateAssetAccessRequestBodyAssetRequestsInner) GetPartnerId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.PartnerId
-}
-
-// GetPartnerIdOk returns a tuple with the PartnerId field value
-// and a boolean to check if the value has been set.
-func (o *CreateAssetAccessRequestBodyAssetRequestsInner) GetPartnerIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.PartnerId, true
-}
-
-// SetPartnerId sets field value
-func (o *CreateAssetAccessRequestBodyAssetRequestsInner) SetPartnerId(v string) {
-	o.PartnerId = v
 }
 
 // GetAssetIdToPermissions returns the AssetIdToPermissions field value
@@ -97,6 +73,30 @@ func (o *CreateAssetAccessRequestBodyAssetRequestsInner) SetAssetIdToPermissions
 	o.AssetIdToPermissions = v
 }
 
+// GetPartnerId returns the PartnerId field value
+func (o *CreateAssetAccessRequestBodyAssetRequestsInner) GetPartnerId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.PartnerId
+}
+
+// GetPartnerIdOk returns a tuple with the PartnerId field value
+// and a boolean to check if the value has been set.
+func (o *CreateAssetAccessRequestBodyAssetRequestsInner) GetPartnerIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PartnerId, true
+}
+
+// SetPartnerId sets field value
+func (o *CreateAssetAccessRequestBodyAssetRequestsInner) SetPartnerId(v string) {
+	o.PartnerId = v
+}
+
 func (o CreateAssetAccessRequestBodyAssetRequestsInner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -107,8 +107,8 @@ func (o CreateAssetAccessRequestBodyAssetRequestsInner) MarshalJSON() ([]byte, e
 
 func (o CreateAssetAccessRequestBodyAssetRequestsInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["partner_id"] = o.PartnerId
 	toSerialize["asset_id_to_permissions"] = o.AssetIdToPermissions
+	toSerialize["partner_id"] = o.PartnerId
 	return toSerialize, nil
 }
 
@@ -117,8 +117,8 @@ func (o *CreateAssetAccessRequestBodyAssetRequestsInner) UnmarshalJSON(data []by
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"partner_id",
 		"asset_id_to_permissions",
+		"partner_id",
 	}
 
 	allProperties := make(map[string]interface{})

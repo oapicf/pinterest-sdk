@@ -14,33 +14,42 @@ import org.openapitools.vertxweb.server.model.NonNullableProductAvailabilityType
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsRetailProductMetadata   {
   
-  private String itemId;
-  private String itemGroupId;
   private NonNullableProductAvailabilityType availability;
+  private NonNullableCatalogsCurrency currency;
+  private String itemGroupId;
+  private String itemId;
   private BigDecimal price;
   private BigDecimal salePrice;
-  private NonNullableCatalogsCurrency currency;
 
   public CatalogsRetailProductMetadata () {
 
   }
 
-  public CatalogsRetailProductMetadata (String itemId, String itemGroupId, NonNullableProductAvailabilityType availability, BigDecimal price, BigDecimal salePrice, NonNullableCatalogsCurrency currency) {
-    this.itemId = itemId;
-    this.itemGroupId = itemGroupId;
+  public CatalogsRetailProductMetadata (NonNullableProductAvailabilityType availability, NonNullableCatalogsCurrency currency, String itemGroupId, String itemId, BigDecimal price, BigDecimal salePrice) {
     this.availability = availability;
+    this.currency = currency;
+    this.itemGroupId = itemGroupId;
+    this.itemId = itemId;
     this.price = price;
     this.salePrice = salePrice;
-    this.currency = currency;
   }
 
     
-  @JsonProperty("item_id")
-  public String getItemId() {
-    return itemId;
+  @JsonProperty("availability")
+  public NonNullableProductAvailabilityType getAvailability() {
+    return availability;
   }
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
+  public void setAvailability(NonNullableProductAvailabilityType availability) {
+    this.availability = availability;
+  }
+
+    
+  @JsonProperty("currency")
+  public NonNullableCatalogsCurrency getCurrency() {
+    return currency;
+  }
+  public void setCurrency(NonNullableCatalogsCurrency currency) {
+    this.currency = currency;
   }
 
     
@@ -53,12 +62,12 @@ public class CatalogsRetailProductMetadata   {
   }
 
     
-  @JsonProperty("availability")
-  public NonNullableProductAvailabilityType getAvailability() {
-    return availability;
+  @JsonProperty("item_id")
+  public String getItemId() {
+    return itemId;
   }
-  public void setAvailability(NonNullableProductAvailabilityType availability) {
-    this.availability = availability;
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
   }
 
     
@@ -79,15 +88,6 @@ public class CatalogsRetailProductMetadata   {
     this.salePrice = salePrice;
   }
 
-    
-  @JsonProperty("currency")
-  public NonNullableCatalogsCurrency getCurrency() {
-    return currency;
-  }
-  public void setCurrency(NonNullableCatalogsCurrency currency) {
-    this.currency = currency;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -98,17 +98,17 @@ public class CatalogsRetailProductMetadata   {
       return false;
     }
     CatalogsRetailProductMetadata catalogsRetailProductMetadata = (CatalogsRetailProductMetadata) o;
-    return Objects.equals(itemId, catalogsRetailProductMetadata.itemId) &&
+    return Objects.equals(availability, catalogsRetailProductMetadata.availability) &&
+        Objects.equals(currency, catalogsRetailProductMetadata.currency) &&
         Objects.equals(itemGroupId, catalogsRetailProductMetadata.itemGroupId) &&
-        Objects.equals(availability, catalogsRetailProductMetadata.availability) &&
+        Objects.equals(itemId, catalogsRetailProductMetadata.itemId) &&
         Objects.equals(price, catalogsRetailProductMetadata.price) &&
-        Objects.equals(salePrice, catalogsRetailProductMetadata.salePrice) &&
-        Objects.equals(currency, catalogsRetailProductMetadata.currency);
+        Objects.equals(salePrice, catalogsRetailProductMetadata.salePrice);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, itemGroupId, availability, price, salePrice, currency);
+    return Objects.hash(availability, currency, itemGroupId, itemId, price, salePrice);
   }
 
   @Override
@@ -116,12 +116,12 @@ public class CatalogsRetailProductMetadata   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailProductMetadata {\n");
     
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
-    sb.append("    itemGroupId: ").append(toIndentedString(itemGroupId)).append("\n");
     sb.append("    availability: ").append(toIndentedString(availability)).append("\n");
+    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
+    sb.append("    itemGroupId: ").append(toIndentedString(itemGroupId)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    salePrice: ").append(toIndentedString(salePrice)).append("\n");
-    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("}");
     return sb.toString();
   }

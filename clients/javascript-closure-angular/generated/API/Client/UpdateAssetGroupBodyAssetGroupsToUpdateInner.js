@@ -13,20 +13,6 @@ API.Client.UpdateAssetGroupBodyAssetGroupsToUpdateInner = function() {}
 API.Client.UpdateAssetGroupBodyAssetGroupsToUpdateInner.prototype.assetGroupId;
 
 /**
- * Asset Group name
- * @type {!string}
- * @export
- */
-API.Client.UpdateAssetGroupBodyAssetGroupsToUpdateInner.prototype.name;
-
-/**
- * Asset group description
- * @type {!string}
- * @export
- */
-API.Client.UpdateAssetGroupBodyAssetGroupsToUpdateInner.prototype.description;
-
-/**
  * Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
  * @type {!Array<!API.Client.AssetGroupType>}
  * @export
@@ -46,4 +32,18 @@ API.Client.UpdateAssetGroupBodyAssetGroupsToUpdateInner.prototype.assetsToAdd;
  * @export
  */
 API.Client.UpdateAssetGroupBodyAssetGroupsToUpdateInner.prototype.assetsToRemove;
+
+/**
+ * Asset group description
+ * @type {!string}
+ * @export
+ */
+API.Client.UpdateAssetGroupBodyAssetGroupsToUpdateInner.prototype.description;
+
+/**
+ * Asset Group name
+ * @type {!string}
+ * @export
+ */
+API.Client.UpdateAssetGroupBodyAssetGroupsToUpdateInner.prototype.name;
 

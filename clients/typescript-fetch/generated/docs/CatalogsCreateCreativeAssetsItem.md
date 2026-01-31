@@ -7,9 +7,9 @@ A creative assets item to be created.
 
 Name | Type
 ------------ | -------------
+`attributes` | [CatalogsCreativeAssetsAttributes](CatalogsCreativeAssetsAttributes.md)
 `creativeAssetsId` | string
 `operation` | string
-`attributes` | [CatalogsCreativeAssetsAttributes](CatalogsCreativeAssetsAttributes.md)
 
 ## Example
 
@@ -18,9 +18,9 @@ import type { CatalogsCreateCreativeAssetsItem } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "attributes": null,
   "creativeAssetsId": DS0294-M,
   "operation": null,
-  "attributes": null,
 } satisfies CatalogsCreateCreativeAssetsItem
 
 console.log(example)

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,9 +22,9 @@ var _ MappedNullable = &SsioOrderLinesGetByAdAccount200Response{}
 
 // SsioOrderLinesGetByAdAccount200Response struct for SsioOrderLinesGetByAdAccount200Response
 type SsioOrderLinesGetByAdAccount200Response struct {
+	Bookmark NullableString `json:"bookmark,omitempty"`
 	// SSIO order lines by ad acount id
 	Items []SSIOOrderLine `json:"items"`
-	Bookmark NullableString `json:"bookmark,omitempty"`
 }
 
 type _SsioOrderLinesGetByAdAccount200Response SsioOrderLinesGetByAdAccount200Response
@@ -45,30 +45,6 @@ func NewSsioOrderLinesGetByAdAccount200Response(items []SSIOOrderLine) *SsioOrde
 func NewSsioOrderLinesGetByAdAccount200ResponseWithDefaults() *SsioOrderLinesGetByAdAccount200Response {
 	this := SsioOrderLinesGetByAdAccount200Response{}
 	return &this
-}
-
-// GetItems returns the Items field value
-func (o *SsioOrderLinesGetByAdAccount200Response) GetItems() []SSIOOrderLine {
-	if o == nil {
-		var ret []SSIOOrderLine
-		return ret
-	}
-
-	return o.Items
-}
-
-// GetItemsOk returns a tuple with the Items field value
-// and a boolean to check if the value has been set.
-func (o *SsioOrderLinesGetByAdAccount200Response) GetItemsOk() ([]SSIOOrderLine, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Items, true
-}
-
-// SetItems sets field value
-func (o *SsioOrderLinesGetByAdAccount200Response) SetItems(v []SSIOOrderLine) {
-	o.Items = v
 }
 
 // GetBookmark returns the Bookmark field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -113,6 +89,30 @@ func (o *SsioOrderLinesGetByAdAccount200Response) UnsetBookmark() {
 	o.Bookmark.Unset()
 }
 
+// GetItems returns the Items field value
+func (o *SsioOrderLinesGetByAdAccount200Response) GetItems() []SSIOOrderLine {
+	if o == nil {
+		var ret []SSIOOrderLine
+		return ret
+	}
+
+	return o.Items
+}
+
+// GetItemsOk returns a tuple with the Items field value
+// and a boolean to check if the value has been set.
+func (o *SsioOrderLinesGetByAdAccount200Response) GetItemsOk() ([]SSIOOrderLine, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Items, true
+}
+
+// SetItems sets field value
+func (o *SsioOrderLinesGetByAdAccount200Response) SetItems(v []SSIOOrderLine) {
+	o.Items = v
+}
+
 func (o SsioOrderLinesGetByAdAccount200Response) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -123,10 +123,10 @@ func (o SsioOrderLinesGetByAdAccount200Response) MarshalJSON() ([]byte, error) {
 
 func (o SsioOrderLinesGetByAdAccount200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["items"] = o.Items
 	if o.Bookmark.IsSet() {
 		toSerialize["bookmark"] = o.Bookmark.Get()
 	}
+	toSerialize["items"] = o.Items
 	return toSerialize, nil
 }
 

@@ -5,6 +5,9 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
+import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -20,59 +23,19 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsHotelGuestRatings", description = "If specified, you must provide all properties")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelGuestRatings {
 
-  private BigDecimal score;
+  private JsonNullable<BigDecimal> maxScore = JsonNullable.<BigDecimal>undefined();
 
-  private Integer numberOfReviewers;
+  private JsonNullable<Integer> numberOfReviewers = JsonNullable.<Integer>undefined();
 
-  private BigDecimal maxScore;
+  private JsonNullable<String> ratingSystem = JsonNullable.<String>undefined();
 
-  private String ratingSystem;
-
-  public CatalogsHotelGuestRatings score(BigDecimal score) {
-    this.score = score;
-    return this;
-  }
-
-  /**
-   * Your hotel's rating.
-   * @return score
-   */
-  @Valid 
-  @Schema(name = "score", description = "Your hotel's rating.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("score")
-  public BigDecimal getScore() {
-    return score;
-  }
-
-  public void setScore(BigDecimal score) {
-    this.score = score;
-  }
-
-  public CatalogsHotelGuestRatings numberOfReviewers(Integer numberOfReviewers) {
-    this.numberOfReviewers = numberOfReviewers;
-    return this;
-  }
-
-  /**
-   * Total number of people who have rated this hotel.
-   * @return numberOfReviewers
-   */
-  
-  @Schema(name = "number_of_reviewers", description = "Total number of people who have rated this hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("number_of_reviewers")
-  public Integer getNumberOfReviewers() {
-    return numberOfReviewers;
-  }
-
-  public void setNumberOfReviewers(Integer numberOfReviewers) {
-    this.numberOfReviewers = numberOfReviewers;
-  }
+  private JsonNullable<BigDecimal> score = JsonNullable.<BigDecimal>undefined();
 
   public CatalogsHotelGuestRatings maxScore(BigDecimal maxScore) {
-    this.maxScore = maxScore;
+    this.maxScore = JsonNullable.of(maxScore);
     return this;
   }
 
@@ -83,16 +46,36 @@ public class CatalogsHotelGuestRatings {
   @Valid 
   @Schema(name = "max_score", description = "Max value for the hotel rating score.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("max_score")
-  public BigDecimal getMaxScore() {
+  public JsonNullable<BigDecimal> getMaxScore() {
     return maxScore;
   }
 
-  public void setMaxScore(BigDecimal maxScore) {
+  public void setMaxScore(JsonNullable<BigDecimal> maxScore) {
     this.maxScore = maxScore;
   }
 
+  public CatalogsHotelGuestRatings numberOfReviewers(Integer numberOfReviewers) {
+    this.numberOfReviewers = JsonNullable.of(numberOfReviewers);
+    return this;
+  }
+
+  /**
+   * Total number of people who have rated this hotel.
+   * @return numberOfReviewers
+   */
+  
+  @Schema(name = "number_of_reviewers", description = "Total number of people who have rated this hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("number_of_reviewers")
+  public JsonNullable<Integer> getNumberOfReviewers() {
+    return numberOfReviewers;
+  }
+
+  public void setNumberOfReviewers(JsonNullable<Integer> numberOfReviewers) {
+    this.numberOfReviewers = numberOfReviewers;
+  }
+
   public CatalogsHotelGuestRatings ratingSystem(String ratingSystem) {
-    this.ratingSystem = ratingSystem;
+    this.ratingSystem = JsonNullable.of(ratingSystem);
     return this;
   }
 
@@ -103,12 +86,32 @@ public class CatalogsHotelGuestRatings {
   
   @Schema(name = "rating_system", description = "System you use for guest reviews.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("rating_system")
-  public String getRatingSystem() {
+  public JsonNullable<String> getRatingSystem() {
     return ratingSystem;
   }
 
-  public void setRatingSystem(String ratingSystem) {
+  public void setRatingSystem(JsonNullable<String> ratingSystem) {
     this.ratingSystem = ratingSystem;
+  }
+
+  public CatalogsHotelGuestRatings score(BigDecimal score) {
+    this.score = JsonNullable.of(score);
+    return this;
+  }
+
+  /**
+   * Your hotel's rating.
+   * @return score
+   */
+  @Valid 
+  @Schema(name = "score", description = "Your hotel's rating.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("score")
+  public JsonNullable<BigDecimal> getScore() {
+    return score;
+  }
+
+  public void setScore(JsonNullable<BigDecimal> score) {
+    this.score = score;
   }
 
   @Override
@@ -120,25 +123,36 @@ public class CatalogsHotelGuestRatings {
       return false;
     }
     CatalogsHotelGuestRatings catalogsHotelGuestRatings = (CatalogsHotelGuestRatings) o;
-    return Objects.equals(this.score, catalogsHotelGuestRatings.score) &&
-        Objects.equals(this.numberOfReviewers, catalogsHotelGuestRatings.numberOfReviewers) &&
-        Objects.equals(this.maxScore, catalogsHotelGuestRatings.maxScore) &&
-        Objects.equals(this.ratingSystem, catalogsHotelGuestRatings.ratingSystem);
+    return equalsNullable(this.maxScore, catalogsHotelGuestRatings.maxScore) &&
+        equalsNullable(this.numberOfReviewers, catalogsHotelGuestRatings.numberOfReviewers) &&
+        equalsNullable(this.ratingSystem, catalogsHotelGuestRatings.ratingSystem) &&
+        equalsNullable(this.score, catalogsHotelGuestRatings.score);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(score, numberOfReviewers, maxScore, ratingSystem);
+    return Objects.hash(hashCodeNullable(maxScore), hashCodeNullable(numberOfReviewers), hashCodeNullable(ratingSystem), hashCodeNullable(score));
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelGuestRatings {\n");
-    sb.append("    score: ").append(toIndentedString(score)).append("\n");
-    sb.append("    numberOfReviewers: ").append(toIndentedString(numberOfReviewers)).append("\n");
     sb.append("    maxScore: ").append(toIndentedString(maxScore)).append("\n");
+    sb.append("    numberOfReviewers: ").append(toIndentedString(numberOfReviewers)).append("\n");
     sb.append("    ratingSystem: ").append(toIndentedString(ratingSystem)).append("\n");
+    sb.append("    score: ").append(toIndentedString(score)).append("\n");
     sb.append("}");
     return sb.toString();
   }

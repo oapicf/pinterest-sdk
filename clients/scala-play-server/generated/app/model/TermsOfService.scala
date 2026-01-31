@@ -4,17 +4,17 @@ import play.api.libs.json._
 
 /**
   * Represents the Swagger definition for TermsOfService.
-  * @param id The ID of the terms of service
-  * @param html The terms of service content
-  * @param hasAccepted Whether the ad account has accepted terms of service.
   * @param adAccountId The ID of the ad account.
+  * @param hasAccepted Whether the ad account has accepted terms of service.
+  * @param html The terms of service content
+  * @param id The ID of the terms of service
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class TermsOfService(
-  id: Option[String],
-  html: Option[String],
+  adAccountId: Option[String],
   hasAccepted: Option[Boolean],
-  adAccountId: Option[String]
+  html: Option[String],
+  id: Option[String]
 )
 
 object TermsOfService {

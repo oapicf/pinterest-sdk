@@ -4,21 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AdAccountId** | Pointer to **string** | Ad account ID. | [optional] 
-**CodeSnippet** | Pointer to **string** | Tag code snippet. | [optional] 
-**EnhancedMatchStatus** | Pointer to [**NullableEnhancedMatchStatusType**](EnhancedMatchStatusType.md) |  | [optional] 
-**Id** | Pointer to **string** | Tag ID. | [optional] 
-**LastFiredTimeMs** | Pointer to **NullableFloat32** | Time for the last event fired. | [optional] 
-**Name** | Pointer to **string** | Conversion tag name. | [optional] 
-**Status** | Pointer to [**EntityStatus**](EntityStatus.md) |  | [optional] 
-**Version** | Pointer to **string** | Version number. | [optional] 
-**Configs** | Pointer to [**ConversionTagConfigs**](ConversionTagConfigs.md) |  | [optional] 
+**CodeSnippet** | Pointer to **string** | Tag code snippet. | [optional] [readonly] 
+**Configs** | Pointer to [**ConversionTagConfigs**](ConversionTagConfigs.md) |  | [optional] [readonly] 
+**EnhancedMatchStatus** | Pointer to [**NullableEnhancedMatchStatusType**](EnhancedMatchStatusType.md) | The enhanced match status of the tag | [optional] [readonly] 
+**Id** | Pointer to **string** | Tag ID. | [optional] [readonly] 
+**LastFiredTimeMs** | Pointer to **NullableFloat32** | Time for the last event fired. | [optional] [readonly] 
+**Name** | **string** | Conversion tag name. | 
+**Version** | Pointer to **string** | Version number. | [optional] [readonly] 
 
 ## Methods
 
 ### NewConversionTagCommon
 
-`func NewConversionTagCommon() *ConversionTagCommon`
+`func NewConversionTagCommon(name string, ) *ConversionTagCommon`
 
 NewConversionTagCommon instantiates a new ConversionTagCommon object
 This constructor will assign default values to properties that have it defined,
@@ -32,31 +30,6 @@ will change when the set of required properties is changed
 NewConversionTagCommonWithDefaults instantiates a new ConversionTagCommon object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetAdAccountId
-
-`func (o *ConversionTagCommon) GetAdAccountId() string`
-
-GetAdAccountId returns the AdAccountId field if non-nil, zero value otherwise.
-
-### GetAdAccountIdOk
-
-`func (o *ConversionTagCommon) GetAdAccountIdOk() (*string, bool)`
-
-GetAdAccountIdOk returns a tuple with the AdAccountId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdAccountId
-
-`func (o *ConversionTagCommon) SetAdAccountId(v string)`
-
-SetAdAccountId sets AdAccountId field to given value.
-
-### HasAdAccountId
-
-`func (o *ConversionTagCommon) HasAdAccountId() bool`
-
-HasAdAccountId returns a boolean if a field has been set.
 
 ### GetCodeSnippet
 
@@ -82,6 +55,31 @@ SetCodeSnippet sets CodeSnippet field to given value.
 `func (o *ConversionTagCommon) HasCodeSnippet() bool`
 
 HasCodeSnippet returns a boolean if a field has been set.
+
+### GetConfigs
+
+`func (o *ConversionTagCommon) GetConfigs() ConversionTagConfigs`
+
+GetConfigs returns the Configs field if non-nil, zero value otherwise.
+
+### GetConfigsOk
+
+`func (o *ConversionTagCommon) GetConfigsOk() (*ConversionTagConfigs, bool)`
+
+GetConfigsOk returns a tuple with the Configs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfigs
+
+`func (o *ConversionTagCommon) SetConfigs(v ConversionTagConfigs)`
+
+SetConfigs sets Configs field to given value.
+
+### HasConfigs
+
+`func (o *ConversionTagCommon) HasConfigs() bool`
+
+HasConfigs returns a boolean if a field has been set.
 
 ### GetEnhancedMatchStatus
 
@@ -197,36 +195,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *ConversionTagCommon) HasName() bool`
-
-HasName returns a boolean if a field has been set.
-
-### GetStatus
-
-`func (o *ConversionTagCommon) GetStatus() EntityStatus`
-
-GetStatus returns the Status field if non-nil, zero value otherwise.
-
-### GetStatusOk
-
-`func (o *ConversionTagCommon) GetStatusOk() (*EntityStatus, bool)`
-
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatus
-
-`func (o *ConversionTagCommon) SetStatus(v EntityStatus)`
-
-SetStatus sets Status field to given value.
-
-### HasStatus
-
-`func (o *ConversionTagCommon) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
 
 ### GetVersion
 
@@ -252,31 +220,6 @@ SetVersion sets Version field to given value.
 `func (o *ConversionTagCommon) HasVersion() bool`
 
 HasVersion returns a boolean if a field has been set.
-
-### GetConfigs
-
-`func (o *ConversionTagCommon) GetConfigs() ConversionTagConfigs`
-
-GetConfigs returns the Configs field if non-nil, zero value otherwise.
-
-### GetConfigsOk
-
-`func (o *ConversionTagCommon) GetConfigsOk() (*ConversionTagConfigs, bool)`
-
-GetConfigsOk returns a tuple with the Configs field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetConfigs
-
-`func (o *ConversionTagCommon) SetConfigs(v ConversionTagConfigs)`
-
-SetConfigs sets Configs field to given value.
-
-### HasConfigs
-
-`func (o *ConversionTagCommon) HasConfigs() bool`
-
-HasConfigs returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

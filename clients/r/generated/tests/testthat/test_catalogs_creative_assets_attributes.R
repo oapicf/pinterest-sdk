@@ -5,52 +5,12 @@ context("Test CatalogsCreativeAssetsAttributes")
 
 model_instance <- CatalogsCreativeAssetsAttributes$new()
 
-test_that("title", {
-  # tests for the property `title` (character)
-  # The name of the creative assets.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`title`, "EXPECTED_RESULT")
-})
-
-test_that("description", {
-  # tests for the property `description` (character)
-  # Brief description of the creative assets.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`description`, "EXPECTED_RESULT")
-})
-
-test_that("link", {
-  # tests for the property `link` (character)
-  # Link to the creative assets page.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`link`, "EXPECTED_RESULT")
-})
-
-test_that("ios_deep_link", {
-  # tests for the property `ios_deep_link` (character)
-  # IOS deep link to the creative assets page.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`ios_deep_link`, "EXPECTED_RESULT")
-})
-
 test_that("android_deep_link", {
   # tests for the property `android_deep_link` (character)
   # Link to the creative assets page.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`android_deep_link`, "EXPECTED_RESULT")
-})
-
-test_that("google_product_category", {
-  # tests for the property `google_product_category` (character)
-  # The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`google_product_category`, "EXPECTED_RESULT")
 })
 
 test_that("custom_label_0", {
@@ -91,6 +51,46 @@ test_that("custom_label_4", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`custom_label_4`, "EXPECTED_RESULT")
+})
+
+test_that("description", {
+  # tests for the property `description` (character)
+  # Brief description of the creative assets.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`description`, "EXPECTED_RESULT")
+})
+
+test_that("google_product_category", {
+  # tests for the property `google_product_category` (character)
+  # The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`google_product_category`, "EXPECTED_RESULT")
+})
+
+test_that("ios_deep_link", {
+  # tests for the property `ios_deep_link` (character)
+  # IOS deep link to the creative assets page.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ios_deep_link`, "EXPECTED_RESULT")
+})
+
+test_that("link", {
+  # tests for the property `link` (character)
+  # Link to the creative assets page.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`link`, "EXPECTED_RESULT")
+})
+
+test_that("title", {
+  # tests for the property `title` (character)
+  # The name of the creative assets.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`title`, "EXPECTED_RESULT")
 })
 
 test_that("visibility", {

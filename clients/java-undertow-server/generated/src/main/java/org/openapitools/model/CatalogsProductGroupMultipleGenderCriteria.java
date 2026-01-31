@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -24,28 +24,11 @@ import org.openapitools.model.Gender;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsProductGroupMultipleGenderCriteria   {
   
-  private List<Gender> values = new ArrayList<>();
   private Boolean negated = false;
-
-  /**
-   */
-  public CatalogsProductGroupMultipleGenderCriteria values(List<Gender> values) {
-    this.values = values;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("values")
-  public List<Gender> getValues() {
-    return values;
-  }
-  public void setValues(List<Gender> values) {
-    this.values = values;
-  }
+  private List<Gender> values = new ArrayList<>();
 
   /**
    */
@@ -64,6 +47,23 @@ public class CatalogsProductGroupMultipleGenderCriteria   {
     this.negated = negated;
   }
 
+  /**
+   */
+  public CatalogsProductGroupMultipleGenderCriteria values(List<Gender> values) {
+    this.values = values;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("values")
+  public List<Gender> getValues() {
+    return values;
+  }
+  public void setValues(List<Gender> values) {
+    this.values = values;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -74,13 +74,13 @@ public class CatalogsProductGroupMultipleGenderCriteria   {
       return false;
     }
     CatalogsProductGroupMultipleGenderCriteria catalogsProductGroupMultipleGenderCriteria = (CatalogsProductGroupMultipleGenderCriteria) o;
-    return Objects.equals(values, catalogsProductGroupMultipleGenderCriteria.values) &&
-        Objects.equals(negated, catalogsProductGroupMultipleGenderCriteria.negated);
+    return Objects.equals(negated, catalogsProductGroupMultipleGenderCriteria.negated) &&
+        Objects.equals(values, catalogsProductGroupMultipleGenderCriteria.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, negated);
+    return Objects.hash(negated, values);
   }
 
   @Override
@@ -88,8 +88,8 @@ public class CatalogsProductGroupMultipleGenderCriteria   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupMultipleGenderCriteria {\n");
     
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Eligible** | Pointer to **bool** | Advertiser eligible to create order lines | [optional] 
-**CanEdit** | Pointer to **bool** | Advertiser eligible to update order lines | [optional] 
 **BilltoInfos** | Pointer to [**[]SSIOAccountItem**](SSIOAccountItem.md) | An array of Salesforce account information that includes address, io terms, etc. | [optional] 
+**CanEdit** | Pointer to **bool** | Advertiser eligible to update order lines | [optional] 
 **Currency** | Pointer to **string** |  | [optional] 
-**PmpNames** | Pointer to [**[]SSIOAccountPMPName**](SSIOAccountPMPName.md) |  | [optional] 
+**Eligible** | Pointer to **bool** | Advertiser eligible to create order lines | [optional] 
 **Error** | Pointer to **string** | Error indicator from Salesforce which could be \&quot;No Error\&quot; | [optional] 
+**PmpNames** | Pointer to [**[]SSIOAccountPMPName**](SSIOAccountPMPName.md) |  | [optional] 
 
 ## Methods
 
@@ -29,56 +29,6 @@ will change when the set of required properties is changed
 NewSSIOAccountResponseWithDefaults instantiates a new SSIOAccountResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetEligible
-
-`func (o *SSIOAccountResponse) GetEligible() bool`
-
-GetEligible returns the Eligible field if non-nil, zero value otherwise.
-
-### GetEligibleOk
-
-`func (o *SSIOAccountResponse) GetEligibleOk() (*bool, bool)`
-
-GetEligibleOk returns a tuple with the Eligible field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEligible
-
-`func (o *SSIOAccountResponse) SetEligible(v bool)`
-
-SetEligible sets Eligible field to given value.
-
-### HasEligible
-
-`func (o *SSIOAccountResponse) HasEligible() bool`
-
-HasEligible returns a boolean if a field has been set.
-
-### GetCanEdit
-
-`func (o *SSIOAccountResponse) GetCanEdit() bool`
-
-GetCanEdit returns the CanEdit field if non-nil, zero value otherwise.
-
-### GetCanEditOk
-
-`func (o *SSIOAccountResponse) GetCanEditOk() (*bool, bool)`
-
-GetCanEditOk returns a tuple with the CanEdit field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCanEdit
-
-`func (o *SSIOAccountResponse) SetCanEdit(v bool)`
-
-SetCanEdit sets CanEdit field to given value.
-
-### HasCanEdit
-
-`func (o *SSIOAccountResponse) HasCanEdit() bool`
-
-HasCanEdit returns a boolean if a field has been set.
 
 ### GetBilltoInfos
 
@@ -105,6 +55,31 @@ SetBilltoInfos sets BilltoInfos field to given value.
 
 HasBilltoInfos returns a boolean if a field has been set.
 
+### GetCanEdit
+
+`func (o *SSIOAccountResponse) GetCanEdit() bool`
+
+GetCanEdit returns the CanEdit field if non-nil, zero value otherwise.
+
+### GetCanEditOk
+
+`func (o *SSIOAccountResponse) GetCanEditOk() (*bool, bool)`
+
+GetCanEditOk returns a tuple with the CanEdit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCanEdit
+
+`func (o *SSIOAccountResponse) SetCanEdit(v bool)`
+
+SetCanEdit sets CanEdit field to given value.
+
+### HasCanEdit
+
+`func (o *SSIOAccountResponse) HasCanEdit() bool`
+
+HasCanEdit returns a boolean if a field has been set.
+
 ### GetCurrency
 
 `func (o *SSIOAccountResponse) GetCurrency() string`
@@ -130,30 +105,30 @@ SetCurrency sets Currency field to given value.
 
 HasCurrency returns a boolean if a field has been set.
 
-### GetPmpNames
+### GetEligible
 
-`func (o *SSIOAccountResponse) GetPmpNames() []SSIOAccountPMPName`
+`func (o *SSIOAccountResponse) GetEligible() bool`
 
-GetPmpNames returns the PmpNames field if non-nil, zero value otherwise.
+GetEligible returns the Eligible field if non-nil, zero value otherwise.
 
-### GetPmpNamesOk
+### GetEligibleOk
 
-`func (o *SSIOAccountResponse) GetPmpNamesOk() (*[]SSIOAccountPMPName, bool)`
+`func (o *SSIOAccountResponse) GetEligibleOk() (*bool, bool)`
 
-GetPmpNamesOk returns a tuple with the PmpNames field if it's non-nil, zero value otherwise
+GetEligibleOk returns a tuple with the Eligible field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPmpNames
+### SetEligible
 
-`func (o *SSIOAccountResponse) SetPmpNames(v []SSIOAccountPMPName)`
+`func (o *SSIOAccountResponse) SetEligible(v bool)`
 
-SetPmpNames sets PmpNames field to given value.
+SetEligible sets Eligible field to given value.
 
-### HasPmpNames
+### HasEligible
 
-`func (o *SSIOAccountResponse) HasPmpNames() bool`
+`func (o *SSIOAccountResponse) HasEligible() bool`
 
-HasPmpNames returns a boolean if a field has been set.
+HasEligible returns a boolean if a field has been set.
 
 ### GetError
 
@@ -179,6 +154,31 @@ SetError sets Error field to given value.
 `func (o *SSIOAccountResponse) HasError() bool`
 
 HasError returns a boolean if a field has been set.
+
+### GetPmpNames
+
+`func (o *SSIOAccountResponse) GetPmpNames() []SSIOAccountPMPName`
+
+GetPmpNames returns the PmpNames field if non-nil, zero value otherwise.
+
+### GetPmpNamesOk
+
+`func (o *SSIOAccountResponse) GetPmpNamesOk() (*[]SSIOAccountPMPName, bool)`
+
+GetPmpNamesOk returns a tuple with the PmpNames field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPmpNames
+
+`func (o *SSIOAccountResponse) SetPmpNames(v []SSIOAccountPMPName)`
+
+SetPmpNames sets PmpNames field to given value.
+
+### HasPmpNames
+
+`func (o *SSIOAccountResponse) HasPmpNames() bool`
+
+HasPmpNames returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

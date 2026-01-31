@@ -9,7 +9,13 @@ class OauthAccessTokenResponseCode {
     
     String refreshToken
     
+    Integer refreshTokenExpiresAt
+    
     Integer refreshTokenExpiresIn
+    
+    String accessToken
+    
+    Integer expiresIn
 
     enum ResponseTypeEnum {
     
@@ -38,11 +44,7 @@ class OauthAccessTokenResponseCode {
     
     ResponseTypeEnum responseType
     
-    String accessToken
+    String scope
     
     String tokenType = "bearer"
-    
-    Integer expiresIn
-    
-    String scope
 }

@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import org.openapitools.model.DetailedError;
 import org.openapitools.model.Error;
 import org.openapitools.model.IntegrationLogsRequest;
 import org.openapitools.model.IntegrationLogsSuccessResponse;
@@ -9,6 +8,7 @@ import org.openapitools.model.IntegrationRecord;
 import org.openapitools.model.IntegrationRequest;
 import org.openapitools.model.IntegrationRequestPatch;
 import org.openapitools.model.IntegrationsGetList200Response;
+import org.openapitools.model.IntegrationsLogsPost400Response;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
@@ -26,7 +26,7 @@ import javax.validation.Valid;
 */
 @Path("/integrations")
 @Api(description = "the integrations API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class IntegrationsApi {
 
     @DELETE
@@ -75,7 +75,7 @@ public class IntegrationsApi {
         @ApiResponse(code = 409, message = "Can't access this integration metadata.", response = Error.class),
         @ApiResponse(code = 200, message = "Unexpected error.", response = Error.class)
     })
-    public Response integrationsCommercePatch(@PathParam("external_business_id") @ApiParam("External business ID for the integration.") String externalBusinessId,@Valid IntegrationRequestPatch integrationRequestPatch) {
+    public Response integrationsCommercePatch(@PathParam("external_business_id") @ApiParam("External business ID for the integration.") String externalBusinessId,@Valid @NotNull IntegrationRequestPatch integrationRequestPatch) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -93,7 +93,7 @@ public class IntegrationsApi {
         @ApiResponse(code = 409, message = "Can't access this integration metadata.", response = Error.class),
         @ApiResponse(code = 200, message = "Unexpected error.", response = Error.class)
     })
-    public Response integrationsCommercePost(@Valid IntegrationRequest integrationRequest) {
+    public Response integrationsCommercePost(@Valid @NotNull IntegrationRequest integrationRequest) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -137,7 +137,7 @@ public class IntegrationsApi {
          }, tags={ "integrations" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success.", response = IntegrationLogsSuccessResponse.class),
-        @ApiResponse(code = 400, message = "Bad request.", response = DetailedError.class),
+        @ApiResponse(code = 400, message = "Bad request.", response = IntegrationsLogsPost400Response.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
     })
     public Response integrationsLogsPost(@Valid @NotNull IntegrationLogsRequest integrationLogsRequest) {

@@ -48,9 +48,30 @@ void main() {
       // TODO
     });
 
+    // CustomizableCTAType customizableCtaType
+    test('to test the property `customizableCtaType`', () async {
+      // TODO
+    });
+
     // Destination URL.
     // String destinationUrl
     test('to test the property `destinationUrl`', () async {
+      // TODO
+    });
+
+    // DisclosureType disclosureType
+    test('to test the property `disclosureType`', () async {
+      // TODO
+    });
+
+    // URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
+    // String disclosureUrl
+    test('to test the property `disclosureUrl`', () async {
+      // TODO
+    });
+
+    // GridClickType gridClickType
+    test('to test the property `gridClickType`', () async {
       // TODO
     });
 
@@ -72,9 +93,21 @@ void main() {
       // TODO
     });
 
+    // Lead form ID for lead ad generation.
+    // String leadFormId
+    test('to test the property `leadFormId`', () async {
+      // TODO
+    });
+
     // Name of the ad - 255 chars max.
     // String name
     test('to test the property `name`', () async {
+      // TODO
+    });
+
+    // Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
+    // QuizPinData quizPinData
+    test('to test the property `quizPinData`', () async {
       // TODO
     });
 
@@ -91,29 +124,6 @@ void main() {
     // Tracking URL for ad impressions.
     // String viewTrackingUrl
     test('to test the property `viewTrackingUrl`', () async {
-      // TODO
-    });
-
-    // Lead form ID for lead ad generation.
-    // String leadFormId
-    test('to test the property `leadFormId`', () async {
-      // TODO
-    });
-
-    // GridClickType gridClickType
-    test('to test the property `gridClickType`', () async {
-      // TODO
-    });
-
-    // Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
-    // String customizableCtaType
-    test('to test the property `customizableCtaType`', () async {
-      // TODO
-    });
-
-    // Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
-    // QuizPinData quizPinData
-    test('to test the property `quizPinData`', () async {
       // TODO
     });
 

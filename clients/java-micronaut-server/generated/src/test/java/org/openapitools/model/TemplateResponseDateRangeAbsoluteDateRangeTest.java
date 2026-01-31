@@ -22,11 +22,11 @@ public class TemplateResponseDateRangeAbsoluteDateRangeTest {
     }
 
     /**
-     * Test the property 'type'
+     * Test the property 'endDate'
      */
     @Test
-    public void typeTest() {
-        // TODO: test type
+    public void endDateTest() {
+        // TODO: test endDate
     }
 
     /**
@@ -38,11 +38,11 @@ public class TemplateResponseDateRangeAbsoluteDateRangeTest {
     }
 
     /**
-     * Test the property 'endDate'
+     * Test the property 'type'
      */
     @Test
-    public void endDateTest() {
-        // TODO: test endDate
+    public void typeTest() {
+        // TODO: test type
     }
 
 }

@@ -16,7 +16,7 @@ feature -- Test routines
     test_search_partner_pins
             -- Search pins by a given search term
             --
-            -- &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+            -- &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
         local
             l_response: SEARCH_PARTNER_PINS_200_RESPONSE
             l_term: STRING_32
@@ -55,7 +55,7 @@ feature -- Test routines
             --
             -- Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
         local
-            l_response: PINS_LIST_200_RESPONSE
+            l_response: SEARCH_USER_PINS_LIST_200_RESPONSE
             l_query: STRING_32
             l_ad_account_id: STRING_32
             l_bookmark: STRING_32

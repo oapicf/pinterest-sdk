@@ -5,15 +5,9 @@
   "name": "TermsOfService",
   "fields": [
     {
-      "name": "id",
+      "name": "ad_account_id",
       "type": ["null", "string"],
-      "doc": "The ID of the terms of service",
-      "default": null
-    },
-    {
-      "name": "html",
-      "type": ["null", "string"],
-      "doc": "The terms of service content",
+      "doc": "The ID of the ad account.",
       "default": null
     },
     {
@@ -23,9 +17,15 @@
       "default": null
     },
     {
-      "name": "ad_account_id",
+      "name": "html",
       "type": ["null", "string"],
-      "doc": "The ID of the ad account.",
+      "doc": "The terms of service content",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "The ID of the terms of service",
       "default": null
     }
   ]

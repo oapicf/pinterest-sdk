@@ -19,11 +19,10 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import org.openapitools.client.models.AdAccountCreateSubscriptionRequest
-import org.openapitools.client.models.AdAccountCreateSubscriptionResponse
-import org.openapitools.client.models.AdAccountGetSubscriptionResponse
 import org.openapitools.client.models.AdAccountsSubscriptionsGetList200Response
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.LeadSubscription
+import org.openapitools.client.models.LeadSubscriptionPostParamsCreate
+import org.openapitools.client.models.PinterestLibError
 
 import com.squareup.moshi.Json
 
@@ -52,7 +51,7 @@ open class LeadAdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * DELETE /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}
      * Delete lead ads subscription
-     * Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.&#39;
      * @param adAccountId Unique identifier of an ad account.
      * @param subscriptionId Unique identifier of a subscription.
      * @return void
@@ -84,7 +83,7 @@ open class LeadAdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * DELETE /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}
      * Delete lead ads subscription
-     * Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.&#39;
      * @param adAccountId Unique identifier of an ad account.
      * @param subscriptionId Unique identifier of a subscription.
      * @return ApiResponse<Unit?>
@@ -125,11 +124,11 @@ open class LeadAdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * GET /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}
-     * Get lead ads subscription
-     * Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get lead ads subscription by ID
+     * Get an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.&#39;
      * @param adAccountId Unique identifier of an ad account.
      * @param subscriptionId Unique identifier of a subscription.
-     * @return AdAccountGetSubscriptionResponse
+     * @return LeadSubscription
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -138,11 +137,11 @@ open class LeadAdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun adAccountsSubscriptionsGetById(adAccountId: kotlin.String, subscriptionId: kotlin.String) : AdAccountGetSubscriptionResponse {
+    fun adAccountsSubscriptionsGetById(adAccountId: kotlin.String, subscriptionId: kotlin.String) : LeadSubscription {
         val localVarResponse = adAccountsSubscriptionsGetByIdWithHttpInfo(adAccountId = adAccountId, subscriptionId = subscriptionId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as AdAccountGetSubscriptionResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as LeadSubscription
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -158,20 +157,20 @@ open class LeadAdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * GET /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}
-     * Get lead ads subscription
-     * Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get lead ads subscription by ID
+     * Get an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.&#39;
      * @param adAccountId Unique identifier of an ad account.
      * @param subscriptionId Unique identifier of a subscription.
-     * @return ApiResponse<AdAccountGetSubscriptionResponse?>
+     * @return ApiResponse<LeadSubscription?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun adAccountsSubscriptionsGetByIdWithHttpInfo(adAccountId: kotlin.String, subscriptionId: kotlin.String) : ApiResponse<AdAccountGetSubscriptionResponse?> {
+    fun adAccountsSubscriptionsGetByIdWithHttpInfo(adAccountId: kotlin.String, subscriptionId: kotlin.String) : ApiResponse<LeadSubscription?> {
         val localVariableConfig = adAccountsSubscriptionsGetByIdRequestConfig(adAccountId = adAccountId, subscriptionId = subscriptionId)
 
-        return request<Unit, AdAccountGetSubscriptionResponse>(
+        return request<Unit, LeadSubscription>(
             localVariableConfig
         )
     }
@@ -202,10 +201,10 @@ open class LeadAdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * GET /ad_accounts/{ad_account_id}/leads/subscriptions
      * Get lead ads subscriptions
-     * Get the advertiser&#39;s list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get the advertiser&#39;s list of lead ads subscriptions. Only requests for the OWNER or ADMIN of the ad_account will be allowed.
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return AdAccountsSubscriptionsGetList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -215,8 +214,8 @@ open class LeadAdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun adAccountsSubscriptionsGetList(adAccountId: kotlin.String, pageSize: kotlin.Int? = 25, bookmark: kotlin.String? = null) : AdAccountsSubscriptionsGetList200Response {
-        val localVarResponse = adAccountsSubscriptionsGetListWithHttpInfo(adAccountId = adAccountId, pageSize = pageSize, bookmark = bookmark)
+    fun adAccountsSubscriptionsGetList(adAccountId: kotlin.String, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : AdAccountsSubscriptionsGetList200Response {
+        val localVarResponse = adAccountsSubscriptionsGetListWithHttpInfo(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as AdAccountsSubscriptionsGetList200Response
@@ -236,18 +235,18 @@ open class LeadAdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * GET /ad_accounts/{ad_account_id}/leads/subscriptions
      * Get lead ads subscriptions
-     * Get the advertiser&#39;s list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get the advertiser&#39;s list of lead ads subscriptions. Only requests for the OWNER or ADMIN of the ad_account will be allowed.
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return ApiResponse<AdAccountsSubscriptionsGetList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun adAccountsSubscriptionsGetListWithHttpInfo(adAccountId: kotlin.String, pageSize: kotlin.Int?, bookmark: kotlin.String?) : ApiResponse<AdAccountsSubscriptionsGetList200Response?> {
-        val localVariableConfig = adAccountsSubscriptionsGetListRequestConfig(adAccountId = adAccountId, pageSize = pageSize, bookmark = bookmark)
+    fun adAccountsSubscriptionsGetListWithHttpInfo(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<AdAccountsSubscriptionsGetList200Response?> {
+        val localVariableConfig = adAccountsSubscriptionsGetListRequestConfig(adAccountId = adAccountId, bookmark = bookmark, pageSize = pageSize)
 
         return request<Unit, AdAccountsSubscriptionsGetList200Response>(
             localVariableConfig
@@ -258,19 +257,19 @@ open class LeadAdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * To obtain the request config of the operation adAccountsSubscriptionsGetList
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
+     * @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      * @return RequestConfig
      */
-    fun adAccountsSubscriptionsGetListRequestConfig(adAccountId: kotlin.String, pageSize: kotlin.Int?, bookmark: kotlin.String?) : RequestConfig<Unit> {
+    fun adAccountsSubscriptionsGetListRequestConfig(adAccountId: kotlin.String, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                if (pageSize != null) {
-                    put("page_size", listOf(pageSize.toString()))
-                }
                 if (bookmark != null) {
                     put("bookmark", listOf(bookmark.toString()))
+                }
+                if (pageSize != null) {
+                    put("page_size", listOf(pageSize.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -289,10 +288,10 @@ open class LeadAdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * POST /ad_accounts/{ad_account_id}/leads/subscriptions
      * Create lead ads subscription
-     * Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.   - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.   - For data security, egress lead data is encrypted with AES-256-GCM.
      * @param adAccountId Unique identifier of an ad account.
-     * @param adAccountCreateSubscriptionRequest Subscription to create.
-     * @return AdAccountCreateSubscriptionResponse
+     * @param leadSubscriptionPostParamsCreate 
+     * @return LeadSubscription
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -301,11 +300,11 @@ open class LeadAdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun adAccountsSubscriptionsPost(adAccountId: kotlin.String, adAccountCreateSubscriptionRequest: AdAccountCreateSubscriptionRequest) : AdAccountCreateSubscriptionResponse {
-        val localVarResponse = adAccountsSubscriptionsPostWithHttpInfo(adAccountId = adAccountId, adAccountCreateSubscriptionRequest = adAccountCreateSubscriptionRequest)
+    fun adAccountsSubscriptionsPost(adAccountId: kotlin.String, leadSubscriptionPostParamsCreate: LeadSubscriptionPostParamsCreate) : LeadSubscription {
+        val localVarResponse = adAccountsSubscriptionsPostWithHttpInfo(adAccountId = adAccountId, leadSubscriptionPostParamsCreate = leadSubscriptionPostParamsCreate)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as AdAccountCreateSubscriptionResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as LeadSubscription
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -322,19 +321,19 @@ open class LeadAdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * POST /ad_accounts/{ad_account_id}/leads/subscriptions
      * Create lead ads subscription
-     * Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.   - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.   - For data security, egress lead data is encrypted with AES-256-GCM.
      * @param adAccountId Unique identifier of an ad account.
-     * @param adAccountCreateSubscriptionRequest Subscription to create.
-     * @return ApiResponse<AdAccountCreateSubscriptionResponse?>
+     * @param leadSubscriptionPostParamsCreate 
+     * @return ApiResponse<LeadSubscription?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun adAccountsSubscriptionsPostWithHttpInfo(adAccountId: kotlin.String, adAccountCreateSubscriptionRequest: AdAccountCreateSubscriptionRequest) : ApiResponse<AdAccountCreateSubscriptionResponse?> {
-        val localVariableConfig = adAccountsSubscriptionsPostRequestConfig(adAccountId = adAccountId, adAccountCreateSubscriptionRequest = adAccountCreateSubscriptionRequest)
+    fun adAccountsSubscriptionsPostWithHttpInfo(adAccountId: kotlin.String, leadSubscriptionPostParamsCreate: LeadSubscriptionPostParamsCreate) : ApiResponse<LeadSubscription?> {
+        val localVariableConfig = adAccountsSubscriptionsPostRequestConfig(adAccountId = adAccountId, leadSubscriptionPostParamsCreate = leadSubscriptionPostParamsCreate)
 
-        return request<AdAccountCreateSubscriptionRequest, AdAccountCreateSubscriptionResponse>(
+        return request<LeadSubscriptionPostParamsCreate, LeadSubscription>(
             localVariableConfig
         )
     }
@@ -343,11 +342,11 @@ open class LeadAdsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * To obtain the request config of the operation adAccountsSubscriptionsPost
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param adAccountCreateSubscriptionRequest Subscription to create.
+     * @param leadSubscriptionPostParamsCreate 
      * @return RequestConfig
      */
-    fun adAccountsSubscriptionsPostRequestConfig(adAccountId: kotlin.String, adAccountCreateSubscriptionRequest: AdAccountCreateSubscriptionRequest) : RequestConfig<AdAccountCreateSubscriptionRequest> {
-        val localVariableBody = adAccountCreateSubscriptionRequest
+    fun adAccountsSubscriptionsPostRequestConfig(adAccountId: kotlin.String, leadSubscriptionPostParamsCreate: LeadSubscriptionPostParamsCreate) : RequestConfig<LeadSubscriptionPostParamsCreate> {
+        val localVariableBody = leadSubscriptionPostParamsCreate
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Content-Type"] = "application/json"

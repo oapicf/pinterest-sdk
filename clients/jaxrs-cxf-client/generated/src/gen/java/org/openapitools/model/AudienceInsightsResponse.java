@@ -27,20 +27,16 @@ public class AudienceInsightsResponse  {
 
   private List<AudienceCategory> categories = new ArrayList<>();
 
-  @ApiModelProperty(value = "")
-
-  private AudienceDemographics demographics;
-
-  @ApiModelProperty(value = "")
-
-  private AudienceInsightType type = AudienceInsightType.YOUR_TOTAL_AUDIENCE;
-
  /**
   * Generation date
   */
   @ApiModelProperty(example = "2022-10-09", value = "Generation date")
 
   private String date;
+
+  @ApiModelProperty(value = "")
+
+  private AudienceDemographics demographics;
 
  /**
   * Population count.
@@ -55,6 +51,10 @@ public class AudienceInsightsResponse  {
   @ApiModelProperty(example = "true", value = "Indicates whether the audience size has been rounded up to the next highest upper boundary.")
 
   private Boolean sizeIsUpperBound;
+
+  @ApiModelProperty(value = "")
+
+  private AudienceInsightType type = AudienceInsightType.YOUR_TOTAL_AUDIENCE;
  /**
    * Category interest distribution
    * @return categories
@@ -79,42 +79,6 @@ public class AudienceInsightsResponse  {
   }
 
  /**
-   * Get demographics
-   * @return demographics
-  **/
-  @JsonProperty("demographics")
-  public AudienceDemographics getDemographics() {
-    return demographics;
-  }
-
-  public void setDemographics(AudienceDemographics demographics) {
-    this.demographics = demographics;
-  }
-
-  public AudienceInsightsResponse demographics(AudienceDemographics demographics) {
-    this.demographics = demographics;
-    return this;
-  }
-
- /**
-   * Get type
-   * @return type
-  **/
-  @JsonProperty("type")
-  public AudienceInsightType getType() {
-    return type;
-  }
-
-  public void setType(AudienceInsightType type) {
-    this.type = type;
-  }
-
-  public AudienceInsightsResponse type(AudienceInsightType type) {
-    this.type = type;
-    return this;
-  }
-
- /**
    * Generation date
    * @return date
   **/
@@ -129,6 +93,24 @@ public class AudienceInsightsResponse  {
 
   public AudienceInsightsResponse date(String date) {
     this.date = date;
+    return this;
+  }
+
+ /**
+   * Get demographics
+   * @return demographics
+  **/
+  @JsonProperty("demographics")
+  public AudienceDemographics getDemographics() {
+    return demographics;
+  }
+
+  public void setDemographics(AudienceDemographics demographics) {
+    this.demographics = demographics;
+  }
+
+  public AudienceInsightsResponse demographics(AudienceDemographics demographics) {
+    this.demographics = demographics;
     return this;
   }
 
@@ -168,6 +150,24 @@ public class AudienceInsightsResponse  {
     return this;
   }
 
+ /**
+   * Get type
+   * @return type
+  **/
+  @JsonProperty("type")
+  public AudienceInsightType getType() {
+    return type;
+  }
+
+  public void setType(AudienceInsightType type) {
+    this.type = type;
+  }
+
+  public AudienceInsightsResponse type(AudienceInsightType type) {
+    this.type = type;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -178,16 +178,16 @@ public class AudienceInsightsResponse  {
     }
     AudienceInsightsResponse audienceInsightsResponse = (AudienceInsightsResponse) o;
     return Objects.equals(this.categories, audienceInsightsResponse.categories) &&
-        Objects.equals(this.demographics, audienceInsightsResponse.demographics) &&
-        Objects.equals(this.type, audienceInsightsResponse.type) &&
         Objects.equals(this.date, audienceInsightsResponse.date) &&
+        Objects.equals(this.demographics, audienceInsightsResponse.demographics) &&
         Objects.equals(this.size, audienceInsightsResponse.size) &&
-        Objects.equals(this.sizeIsUpperBound, audienceInsightsResponse.sizeIsUpperBound);
+        Objects.equals(this.sizeIsUpperBound, audienceInsightsResponse.sizeIsUpperBound) &&
+        Objects.equals(this.type, audienceInsightsResponse.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(categories, demographics, type, date, size, sizeIsUpperBound);
+    return Objects.hash(categories, date, demographics, size, sizeIsUpperBound, type);
   }
 
   @Override
@@ -196,11 +196,11 @@ public class AudienceInsightsResponse  {
     sb.append("class AudienceInsightsResponse {\n");
     
     sb.append("    categories: ").append(toIndentedString(categories)).append("\n");
-    sb.append("    demographics: ").append(toIndentedString(demographics)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
+    sb.append("    demographics: ").append(toIndentedString(demographics)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
     sb.append("    sizeIsUpperBound: ").append(toIndentedString(sizeIsUpperBound)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

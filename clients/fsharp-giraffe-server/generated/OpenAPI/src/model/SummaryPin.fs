@@ -11,10 +11,11 @@ module SummaryPin =
 
 
   type SummaryPin = {
-    Media : PinMedia;
     AltText : string option;
-    Link : string option;
-    Title : string option;
     Description : string option;
+    Id : string;
+    Link : string option;
+    Media : PinMedia;
+    Title : string option;
   }
   //#endregion

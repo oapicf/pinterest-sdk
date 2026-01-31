@@ -9,8 +9,8 @@
 
 
 #include <string>
+#include "MediaUploadParameters.h"
 #include "MediaUploadType.h"
-#include "MediaUpload_allOf_upload_parameters.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -61,6 +61,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setMediaType(MediaUploadType  media_type);
+	/*! \brief Get The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
+	 */
+	MediaUploadParameters getUploadParameters();
+
+	/*! \brief Set The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
+	 */
+	void setUploadParameters(MediaUploadParameters  upload_parameters);
 	/*! \brief Get The URL where you will POST your media file.
 	 */
 	std::string getUploadUrl();
@@ -68,19 +75,12 @@ public:
 	/*! \brief Set The URL where you will POST your media file.
 	 */
 	void setUploadUrl(std::string  upload_url);
-	/*! \brief Get 
-	 */
-	MediaUpload_allOf_upload_parameters getUploadParameters();
-
-	/*! \brief Set 
-	 */
-	void setUploadParameters(MediaUpload_allOf_upload_parameters  upload_parameters);
 
 private:
 	std::string media_id;
 	MediaUploadType media_type;
+	MediaUploadParameters upload_parameters;
 	std::string upload_url;
-	MediaUpload_allOf_upload_parameters upload_parameters;
 	void __init();
 	void __cleanup();
 

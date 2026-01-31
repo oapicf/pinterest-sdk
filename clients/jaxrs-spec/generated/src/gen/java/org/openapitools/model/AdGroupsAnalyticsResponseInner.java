@@ -20,7 +20,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("AdGroupsAnalyticsResponse_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdGroupsAnalyticsResponseInner extends HashMap<String, Object>  {
   private String AD_GROUP_ID;
   private LocalDate DATE;
@@ -28,17 +28,8 @@ public class AdGroupsAnalyticsResponseInner extends HashMap<String, Object>  {
   public AdGroupsAnalyticsResponseInner() {
   }
 
-  @JsonCreator
-  public AdGroupsAnalyticsResponseInner(
-    @JsonProperty(required = true, value = "AD_GROUP_ID") String AD_GROUP_ID
-  ) {
-    super(
-    );
-    this.AD_GROUP_ID = AD_GROUP_ID;
-  }
-
   /**
-   * The ID of the ad group that this metrics belongs to.
+   * The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
    **/
   public AdGroupsAnalyticsResponseInner AD_GROUP_ID(String AD_GROUP_ID) {
     this.AD_GROUP_ID = AD_GROUP_ID;
@@ -46,13 +37,13 @@ public class AdGroupsAnalyticsResponseInner extends HashMap<String, Object>  {
   }
 
   
-  @ApiModelProperty(required = true, value = "The ID of the ad group that this metrics belongs to.")
-  @JsonProperty(required = true, value = "AD_GROUP_ID")
-  @NotNull  @Pattern(regexp="^\\d+$")public String getADGROUPID() {
+  @ApiModelProperty(value = "The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true.")
+  @JsonProperty("AD_GROUP_ID")
+   @Pattern(regexp="^\\d+$")public String getADGROUPID() {
     return AD_GROUP_ID;
   }
 
-  @JsonProperty(required = true, value = "AD_GROUP_ID")
+  @JsonProperty("AD_GROUP_ID")
   public void setADGROUPID(String AD_GROUP_ID) {
     this.AD_GROUP_ID = AD_GROUP_ID;
   }

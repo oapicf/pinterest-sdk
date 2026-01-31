@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,20 +16,20 @@ package openapi
 
 type LinkedBusiness struct {
 
-	// Username
-	Username string `json:"username,omitempty"`
-
-	// image_small_url
-	ImageSmallUrl string `json:"image_small_url,omitempty"`
+	// image_large_url
+	ImageLargeUrl string `json:"image_large_url,omitempty"`
 
 	// image_medium_url
 	ImageMediumUrl string `json:"image_medium_url,omitempty"`
 
-	// image_large_url
-	ImageLargeUrl string `json:"image_large_url,omitempty"`
+	// image_small_url
+	ImageSmallUrl string `json:"image_small_url,omitempty"`
 
 	// image_xlarge_url
 	ImageXlargeUrl string `json:"image_xlarge_url,omitempty"`
+
+	// Username
+	Username string `json:"username,omitempty"`
 }
 
 // AssertLinkedBusinessRequired checks if the required fields are not zero-ed

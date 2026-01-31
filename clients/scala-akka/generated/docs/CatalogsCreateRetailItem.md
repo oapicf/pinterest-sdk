@@ -8,9 +8,9 @@ An item to be created
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**attributes** | [**ItemAttributesRequest**](ItemAttributesRequest.md) |  | 
 **itemId** | **String** | The catalog item id in the merchant namespace | 
 **operation** | [**Operation**](#Operation) |  | 
-**attributes** | [**ItemAttributesRequest**](ItemAttributesRequest.md) |  | 
 
 
 ## Enum: Operation

@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.AdvancedAuctionProcessedItem;
+import org.openapitools.model.AdvancedAuctionItemsSubmitRecord;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -24,13 +24,13 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "AdvancedAuctionProcessedItems", description = "Response object containing the results of an operation on an item bid option")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionProcessedItems {
 
   private @Nullable String catalogId;
 
   @Valid
-  private List<@Valid AdvancedAuctionProcessedItem> items = new ArrayList<>();
+  private List<@Valid AdvancedAuctionItemsSubmitRecord> items = new ArrayList<>();
 
   public AdvancedAuctionProcessedItems catalogId(@Nullable String catalogId) {
     this.catalogId = catalogId;
@@ -52,12 +52,12 @@ public class AdvancedAuctionProcessedItems {
     this.catalogId = catalogId;
   }
 
-  public AdvancedAuctionProcessedItems items(List<@Valid AdvancedAuctionProcessedItem> items) {
+  public AdvancedAuctionProcessedItems items(List<@Valid AdvancedAuctionItemsSubmitRecord> items) {
     this.items = items;
     return this;
   }
 
-  public AdvancedAuctionProcessedItems addItemsItem(AdvancedAuctionProcessedItem itemsItem) {
+  public AdvancedAuctionProcessedItems addItemsItem(AdvancedAuctionItemsSubmitRecord itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -72,11 +72,11 @@ public class AdvancedAuctionProcessedItems {
   @Valid 
   @Schema(name = "items", description = "Array of advanced auction processed items", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("items")
-  public List<@Valid AdvancedAuctionProcessedItem> getItems() {
+  public List<@Valid AdvancedAuctionItemsSubmitRecord> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid AdvancedAuctionProcessedItem> items) {
+  public void setItems(List<@Valid AdvancedAuctionItemsSubmitRecord> items) {
     this.items = items;
   }
 

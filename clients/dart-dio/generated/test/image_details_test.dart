@@ -7,11 +7,6 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(ImageDetails, () {
-    // int width
-    test('to test the property `width`', () async {
-      // TODO
-    });
-
     // int height
     test('to test the property `height`', () async {
       // TODO
@@ -19,6 +14,11 @@ void main() {
 
     // String url
     test('to test the property `url`', () async {
+      // TODO
+    });
+
+    // int width
+    test('to test the property `width`', () async {
       // TODO
     });
 

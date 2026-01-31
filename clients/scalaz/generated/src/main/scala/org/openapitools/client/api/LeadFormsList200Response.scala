@@ -12,8 +12,8 @@ import org.joda.time.DateTime
 import LeadFormsList200Response._
 
 case class LeadFormsList200Response (
-  items: List[LeadFormResponse],
-bookmark: Option[String])
+  bookmark: Option[String],
+items: List[LeadFormResponse])
 
 object LeadFormsList200Response {
   import DateTimeCodecs._

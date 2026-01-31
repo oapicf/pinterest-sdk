@@ -25,16 +25,16 @@ class IntegrationLogClientRequestTest : ShouldSpec() {
         // uncomment below to create an instance of IntegrationLogClientRequest
         //val modelInstance = IntegrationLogClientRequest()
 
-        // to test the property `method`
-        should("test method") {
-            // uncomment below to test the property
-            //modelInstance.method shouldBe ("TODO")
-        }
-
         // to test the property `host` - HTTP request host from host header.
         should("test host") {
             // uncomment below to test the property
             //modelInstance.host shouldBe ("TODO")
+        }
+
+        // to test the property `method`
+        should("test method") {
+            // uncomment below to test the property
+            //modelInstance.method shouldBe ("TODO")
         }
 
         // to test the property `path` - HTTP request path.

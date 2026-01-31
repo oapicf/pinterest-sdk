@@ -74,12 +74,12 @@ private class OASTargetingTemplateResponseDataTest {
         OASTargetingTemplateResponseData targetingTemplateResponseData = new OASTargetingTemplateResponseData();
         Map<String, String> x-property-mappings = targetingTemplateResponseData.getx-property-mappings();
         System.assertEquals('autoTargetingEnabled', x-property-mappings.get('auto_targeting_enabled'));
-        System.assertEquals('targetingAttributes', x-property-mappings.get('targeting_attributes'));
         System.assertEquals('placementGroup', x-property-mappings.get('placement_group'));
+        System.assertEquals('targetingAttributes', x-property-mappings.get('targeting_attributes'));
         System.assertEquals('trackingUrls', x-property-mappings.get('tracking_urls'));
+        System.assertEquals('adAccountId', x-property-mappings.get('ad_account_id'));
         System.assertEquals('createdTime', x-property-mappings.get('created_time'));
         System.assertEquals('updatedTime', x-property-mappings.get('updated_time'));
-        System.assertEquals('adAccountId', x-property-mappings.get('ad_account_id'));
     }
 
     @isTest
@@ -89,13 +89,13 @@ private class OASTargetingTemplateResponseDataTest {
         System.assertEquals(new List<OASTargetingTemplateKeyword>(), targetingTemplateResponseData.keywords);
         System.assertEquals(StatusEnum.ACTIVE, targetingTemplateResponseData.status);
         System.assertEquals(null, targetingTemplateResponseData.name);
-        System.assertEquals(null, targetingTemplateResponseData.targetingAttributes);
         System.assertEquals(null, targetingTemplateResponseData.placementGroup);
+        System.assertEquals(null, targetingTemplateResponseData.targetingAttributes);
         System.assertEquals(null, targetingTemplateResponseData.trackingUrls);
-        System.assertEquals(null, targetingTemplateResponseData.id);
-        System.assertEquals(null, targetingTemplateResponseData.createdTime);
-        System.assertEquals(null, targetingTemplateResponseData.updatedTime);
         System.assertEquals(null, targetingTemplateResponseData.adAccountId);
+        System.assertEquals(null, targetingTemplateResponseData.createdTime);
+        System.assertEquals(null, targetingTemplateResponseData.id);
         System.assertEquals(null, targetingTemplateResponseData.sizing);
+        System.assertEquals(null, targetingTemplateResponseData.updatedTime);
     }
 }

@@ -29,11 +29,27 @@ public class BidFloorSpecTest {
     }
 
     /**
+     * Test the property 'billableEvent'
+     */
+    @Test
+    public void billableEventTest() {
+        // TODO: test billableEvent
+    }
+
+    /**
      * Test the property 'countries'
      */
     @Test
     public void countriesTest() {
         // TODO: test countries
+    }
+
+    /**
+     * Test the property 'creativeType'
+     */
+    @Test
+    public void creativeTypeTest() {
+        // TODO: test creativeType
     }
 
     /**
@@ -53,27 +69,11 @@ public class BidFloorSpecTest {
     }
 
     /**
-     * Test the property 'billableEvent'
-     */
-    @Test
-    public void billableEventTest() {
-        // TODO: test billableEvent
-    }
-
-    /**
      * Test the property 'optimizationGoalMetadata'
      */
     @Test
     public void optimizationGoalMetadataTest() {
         // TODO: test optimizationGoalMetadata
-    }
-
-    /**
-     * Test the property 'creativeType'
-     */
-    @Test
-    public void creativeTypeTest() {
-        // TODO: test creativeType
     }
 
 }

@@ -24,10 +24,10 @@ item_response_t* instantiate_item_response(int include_optional) {
   if (include_optional) {
     item_response = item_response_create(
       pinterest_rest_api_item_response__RETAIL,
-      "DS0294-M",
-      list_createList(),
        // false, not to have infinite recursion
       instantiate_catalogs_creative_assets_attributes(0),
+      "DS0294-M",
+      list_createList(),
       "DS0294-M",
       "DS0294-M",
       list_createList()
@@ -35,9 +35,9 @@ item_response_t* instantiate_item_response(int include_optional) {
   } else {
     item_response = item_response_create(
       pinterest_rest_api_item_response__RETAIL,
+      NULL,
       "DS0294-M",
       list_createList(),
-      NULL,
       "DS0294-M",
       "DS0294-M",
       list_createList()

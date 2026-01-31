@@ -1,0 +1,2 @@
+testCase,httpStatusCode,lookbackPeriod,adAccountId,sourcePlatform,ingestionSource
+Success,200,0,0,0,0

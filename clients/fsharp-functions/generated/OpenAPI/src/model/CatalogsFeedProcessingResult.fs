@@ -7,6 +7,7 @@ open OpenAPI.Model.CatalogsFeedIngestionDetails
 open OpenAPI.Model.CatalogsFeedProcessingStatus
 open OpenAPI.Model.CatalogsFeedProductCounts
 open OpenAPI.Model.CatalogsFeedValidationDetails
+open OpenAPI.Model.CatalogsFeedVideoCounts
 
 module CatalogsFeedProcessingResult =
 
@@ -22,12 +23,14 @@ module CatalogsFeedProcessingResult =
     UpdatedAt : DateTime;
     [<JsonProperty(PropertyName = "ingestion_details")>]
     IngestionDetails : CatalogsFeedIngestionDetails;
-    [<JsonProperty(PropertyName = "status")>]
-    Status : CatalogsFeedProcessingStatus;
     [<JsonProperty(PropertyName = "product_counts")>]
     ProductCounts : CatalogsFeedProductCounts;
+    [<JsonProperty(PropertyName = "status")>]
+    Status : CatalogsFeedProcessingStatus;
     [<JsonProperty(PropertyName = "validation_details")>]
     ValidationDetails : CatalogsFeedValidationDetails;
+    [<JsonProperty(PropertyName = "video_counts")>]
+    VideoCounts : CatalogsFeedVideoCounts;
   }
 
   //#endregion

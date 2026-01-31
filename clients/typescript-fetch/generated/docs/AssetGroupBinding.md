@@ -6,16 +6,17 @@
 
 Name | Type
 ------------ | -------------
-`id` | string
-`assetGroupName` | string
-`assetGroupDescription` | string
-`assetGroupTypes` | Array&lt;string&gt;
 `adAccountsIds` | Array&lt;string&gt;
-`profilesIds` | Array&lt;string&gt;
-`createdTime` | number
-`updatedTime` | number
-`owner` | [BusinessAccessUserSummary](BusinessAccessUserSummary.md)
+`assetGroupDescription` | string
+`assetGroupName` | string
+`assetGroupTypes` | Array&lt;string&gt;
+`catalogsIds` | Array&lt;string&gt;
 `createdBy` | [BusinessAccessUserSummary](BusinessAccessUserSummary.md)
+`createdTime` | number
+`id` | string
+`owner` | [BusinessAccessUserSummary](BusinessAccessUserSummary.md)
+`profilesIds` | Array&lt;string&gt;
+`updatedTime` | number
 
 ## Example
 
@@ -24,16 +25,17 @@ import type { AssetGroupBinding } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "id": 666791336903426391,
-  "assetGroupName": Canada Ad Accounts,
-  "assetGroupDescription": Asset group that has ad accounts used in Canada,
-  "assetGroupTypes": ["LOCATION_OR_LANGUAGE"],
   "adAccountsIds": ["549755885175"],
-  "profilesIds": ["630433785246278264"],
-  "createdTime": 1646767577816,
-  "updatedTime": 1646767577816,
-  "owner": null,
+  "assetGroupDescription": Asset group that has ad accounts used in Canada,
+  "assetGroupName": Canada Ad Accounts,
+  "assetGroupTypes": ["LOCATION_OR_LANGUAGE"],
+  "catalogsIds": ["4836859046874"],
   "createdBy": null,
+  "createdTime": 1646767577816,
+  "id": 666791336903426391,
+  "owner": null,
+  "profilesIds": ["630433785246278264"],
+  "updatedTime": 1646767577816,
 } satisfies AssetGroupBinding
 
 console.log(example)

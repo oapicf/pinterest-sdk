@@ -10,15 +10,16 @@
 (def campaign-common-data
   {
    (ds/opt :ad_account_id) string?
-   (ds/opt :name) string?
-   (ds/opt :status) entity-status-spec
-   (ds/opt :lifetime_spend_cap) int?
    (ds/opt :daily_spend_cap) int?
-   (ds/opt :order_line_id) string?
-   (ds/opt :tracking_urls) tracking-urls-spec
-   (ds/opt :start_time) int?
    (ds/opt :end_time) int?
+   (ds/opt :is_automated_campaign) boolean?
    (ds/opt :is_flexible_daily_budgets) boolean?
+   (ds/opt :lifetime_spend_cap) int?
+   (ds/opt :name) string?
+   (ds/opt :order_line_id) string?
+   (ds/opt :start_time) int?
+   (ds/opt :status) entity-status-spec
+   (ds/opt :tracking_urls) tracking-urls-spec
    })
 
 (def campaign-common-spec

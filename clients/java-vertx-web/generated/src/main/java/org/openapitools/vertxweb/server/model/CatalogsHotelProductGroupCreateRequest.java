@@ -13,6 +13,7 @@ import org.openapitools.vertxweb.server.model.CatalogsHotelProductGroupFilters;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsHotelProductGroupCreateRequest   {
   
+  private String catalogId;
 
 
   public enum CatalogTypeEnum {
@@ -32,20 +33,28 @@ public class CatalogsHotelProductGroupCreateRequest   {
   }
 
   private CatalogTypeEnum catalogType;
-  private String name;
   private String description;
   private CatalogsHotelProductGroupFilters filters;
-  private String catalogId;
+  private String name;
 
   public CatalogsHotelProductGroupCreateRequest () {
 
   }
 
-  public CatalogsHotelProductGroupCreateRequest (CatalogTypeEnum catalogType, String name, String description, CatalogsHotelProductGroupFilters filters, String catalogId) {
+  public CatalogsHotelProductGroupCreateRequest (String catalogId, CatalogTypeEnum catalogType, String description, CatalogsHotelProductGroupFilters filters, String name) {
+    this.catalogId = catalogId;
     this.catalogType = catalogType;
-    this.name = name;
     this.description = description;
     this.filters = filters;
+    this.name = name;
+  }
+
+    
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
   }
 
@@ -56,15 +65,6 @@ public class CatalogsHotelProductGroupCreateRequest   {
   }
   public void setCatalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
-  }
-
-    
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
   }
 
     
@@ -86,12 +86,12 @@ public class CatalogsHotelProductGroupCreateRequest   {
   }
 
     
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
+  @JsonProperty("name")
+  public String getName() {
+    return name;
   }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -104,16 +104,16 @@ public class CatalogsHotelProductGroupCreateRequest   {
       return false;
     }
     CatalogsHotelProductGroupCreateRequest catalogsHotelProductGroupCreateRequest = (CatalogsHotelProductGroupCreateRequest) o;
-    return Objects.equals(catalogType, catalogsHotelProductGroupCreateRequest.catalogType) &&
-        Objects.equals(name, catalogsHotelProductGroupCreateRequest.name) &&
+    return Objects.equals(catalogId, catalogsHotelProductGroupCreateRequest.catalogId) &&
+        Objects.equals(catalogType, catalogsHotelProductGroupCreateRequest.catalogType) &&
         Objects.equals(description, catalogsHotelProductGroupCreateRequest.description) &&
         Objects.equals(filters, catalogsHotelProductGroupCreateRequest.filters) &&
-        Objects.equals(catalogId, catalogsHotelProductGroupCreateRequest.catalogId);
+        Objects.equals(name, catalogsHotelProductGroupCreateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters, catalogId);
+    return Objects.hash(catalogId, catalogType, description, filters, name);
   }
 
   @Override
@@ -121,11 +121,11 @@ public class CatalogsHotelProductGroupCreateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelProductGroupCreateRequest {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

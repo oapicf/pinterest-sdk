@@ -35,6 +35,8 @@ import java.util.Objects;
 
 public class CatalogsVerticalBatchRequest   {
   
+  private String catalogId;
+
 
 public enum CatalogTypeEnum {
 
@@ -70,6 +72,8 @@ public enum CatalogTypeEnum {
 
   private Country country;
 
+  private List<@Valid CatalogsCreativeAssetsBatchItem> items = new ArrayList<>();
+
 
 public enum LanguageEnum {
 
@@ -103,9 +107,24 @@ public enum LanguageEnum {
 
   private LanguageEnum language;
 
-  private List<@Valid CatalogsCreativeAssetsBatchItem> items = new ArrayList<>();
+  /**
+   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+   **/
+  public CatalogsVerticalBatchRequest catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
 
-  private String catalogId;
+  
+  @ApiModelProperty(example = "2680059592705", value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
+  @JsonProperty("catalog_id")
+ @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
 
   /**
    **/
@@ -146,26 +165,6 @@ public enum LanguageEnum {
 
 
   /**
-   * We recommend using the CatalogsLocale values.
-   **/
-  public CatalogsVerticalBatchRequest language(LanguageEnum language) {
-    this.language = language;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "We recommend using the CatalogsLocale values.")
-  @JsonProperty("language")
-  @NotNull
-  public LanguageEnum getLanguage() {
-    return language;
-  }
-  public void setLanguage(LanguageEnum language) {
-    this.language = language;
-  }
-
-
-  /**
    * Array with creative assets item operations
    **/
   public CatalogsVerticalBatchRequest items(List<@Valid CatalogsCreativeAssetsBatchItem> items) {
@@ -194,21 +193,22 @@ public enum LanguageEnum {
 
 
   /**
-   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+   * We recommend using the CatalogsLocale values.
    **/
-  public CatalogsVerticalBatchRequest catalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public CatalogsVerticalBatchRequest language(LanguageEnum language) {
+    this.language = language;
     return this;
   }
 
   
-  @ApiModelProperty(example = "2680059592705", value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
-  @JsonProperty("catalog_id")
- @Pattern(regexp="^\\d+$")  public String getCatalogId() {
-    return catalogId;
+  @ApiModelProperty(required = true, value = "We recommend using the CatalogsLocale values.")
+  @JsonProperty("language")
+  @NotNull
+  public LanguageEnum getLanguage() {
+    return language;
   }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public void setLanguage(LanguageEnum language) {
+    this.language = language;
   }
 
 
@@ -222,16 +222,16 @@ public enum LanguageEnum {
       return false;
     }
     CatalogsVerticalBatchRequest catalogsVerticalBatchRequest = (CatalogsVerticalBatchRequest) o;
-    return Objects.equals(this.catalogType, catalogsVerticalBatchRequest.catalogType) &&
+    return Objects.equals(this.catalogId, catalogsVerticalBatchRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsVerticalBatchRequest.catalogType) &&
         Objects.equals(this.country, catalogsVerticalBatchRequest.country) &&
-        Objects.equals(this.language, catalogsVerticalBatchRequest.language) &&
         Objects.equals(this.items, catalogsVerticalBatchRequest.items) &&
-        Objects.equals(this.catalogId, catalogsVerticalBatchRequest.catalogId);
+        Objects.equals(this.language, catalogsVerticalBatchRequest.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, country, language, items, catalogId);
+    return Objects.hash(catalogId, catalogType, country, items, language);
   }
 
   @Override
@@ -239,11 +239,11 @@ public enum LanguageEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsVerticalBatchRequest {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();
   }

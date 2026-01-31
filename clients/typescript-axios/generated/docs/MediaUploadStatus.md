@@ -1,6 +1,5 @@
 # MediaUploadStatus
 
-Media upload status
 
 ## Enum
 

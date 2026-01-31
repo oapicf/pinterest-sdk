@@ -8,9 +8,9 @@ Request object for updating a creative assets product group.
 Name | Type
 ------------ | -------------
 `catalogType` | string
-`name` | string
 `description` | string
 `filters` | [CatalogsCreativeAssetsProductGroupFilters](CatalogsCreativeAssetsProductGroupFilters.md)
+`name` | string
 
 ## Example
 
@@ -20,9 +20,9 @@ import type { CatalogsCreativeAssetsProductGroupUpdateRequest } from ''
 // TODO: Update the object below with actual values
 const example = {
   "catalogType": null,
-  "name": null,
   "description": null,
   "filters": null,
+  "name": null,
 } satisfies CatalogsCreativeAssetsProductGroupUpdateRequest
 
 console.log(example)

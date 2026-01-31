@@ -9,7 +9,7 @@
 -export_type([openapi_trending_keywords_response/0]).
 
 -type openapi_trending_keywords_response() ::
-  [ {'trends', list(openapi_trending_keywords_response_trends_inner:openapi_trending_keywords_response_trends_inner()) }
+  [ {'trends', list(openapi_trending_keyword:openapi_trending_keyword()) }
   ].
 
 
@@ -17,7 +17,7 @@ openapi_trending_keywords_response() ->
     openapi_trending_keywords_response([]).
 
 openapi_trending_keywords_response(Fields) ->
-  Default = [ {'trends', list(openapi_trending_keywords_response_trends_inner:openapi_trending_keywords_response_trends_inner()) }
+  Default = [ {'trends', list(openapi_trending_keyword:openapi_trending_keyword()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

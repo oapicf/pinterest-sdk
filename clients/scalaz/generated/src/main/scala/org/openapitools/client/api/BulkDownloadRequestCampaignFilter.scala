@@ -12,14 +12,14 @@ import org.joda.time.DateTime
 import BulkDownloadRequestCampaignFilter._
 
 case class BulkDownloadRequestCampaignFilter (
-  /* Unix UTC timestamp. */
-  startTime: Option[String],
+  campaignStatus: Option[List[CampaignSummaryStatus]],
 /* Unix UTC timestamp. */
   endTime: Option[String],
 /* Campaign name */
   name: Option[String],
-campaignStatus: Option[List[CampaignSummaryStatus]],
-objectiveType: Option[List[ObjectiveType]])
+objectiveType: Option[List[ObjectiveType]],
+/* Unix UTC timestamp. */
+  startTime: Option[String])
 
 object BulkDownloadRequestCampaignFilter {
   import DateTimeCodecs._

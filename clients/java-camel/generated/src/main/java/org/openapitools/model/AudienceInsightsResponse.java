@@ -28,21 +28,21 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "AudienceInsightsResponse", description = "Audience interests and demographics.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceInsightsResponse {
 
   @Valid
   private List<@Valid AudienceCategory> categories = new ArrayList<>();
 
-  private AudienceDemographics demographics;
-
-  private AudienceInsightType type = AudienceInsightType.YOUR_TOTAL_AUDIENCE;
-
   private JsonNullable<@Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$") String> date = JsonNullable.<String>undefined();
+
+  private AudienceDemographics demographics;
 
   private Integer size;
 
   private Boolean sizeIsUpperBound;
+
+  private AudienceInsightType type = AudienceInsightType.YOUR_TOTAL_AUDIENCE;
 
   public AudienceInsightsResponse categories(List<@Valid AudienceCategory> categories) {
     this.categories = categories;
@@ -72,46 +72,6 @@ public class AudienceInsightsResponse {
     this.categories = categories;
   }
 
-  public AudienceInsightsResponse demographics(AudienceDemographics demographics) {
-    this.demographics = demographics;
-    return this;
-  }
-
-  /**
-   * Get demographics
-   * @return demographics
-   */
-  @Valid 
-  @Schema(name = "demographics", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("demographics")
-  public AudienceDemographics getDemographics() {
-    return demographics;
-  }
-
-  public void setDemographics(AudienceDemographics demographics) {
-    this.demographics = demographics;
-  }
-
-  public AudienceInsightsResponse type(AudienceInsightType type) {
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * Get type
-   * @return type
-   */
-  @Valid 
-  @Schema(name = "type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("type")
-  public AudienceInsightType getType() {
-    return type;
-  }
-
-  public void setType(AudienceInsightType type) {
-    this.type = type;
-  }
-
   public AudienceInsightsResponse date(String date) {
     this.date = JsonNullable.of(date);
     return this;
@@ -130,6 +90,26 @@ public class AudienceInsightsResponse {
 
   public void setDate(JsonNullable<String> date) {
     this.date = date;
+  }
+
+  public AudienceInsightsResponse demographics(AudienceDemographics demographics) {
+    this.demographics = demographics;
+    return this;
+  }
+
+  /**
+   * Get demographics
+   * @return demographics
+   */
+  @Valid 
+  @Schema(name = "demographics", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("demographics")
+  public AudienceDemographics getDemographics() {
+    return demographics;
+  }
+
+  public void setDemographics(AudienceDemographics demographics) {
+    this.demographics = demographics;
   }
 
   public AudienceInsightsResponse size(Integer size) {
@@ -172,6 +152,26 @@ public class AudienceInsightsResponse {
     this.sizeIsUpperBound = sizeIsUpperBound;
   }
 
+  public AudienceInsightsResponse type(AudienceInsightType type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Get type
+   * @return type
+   */
+  @Valid 
+  @Schema(name = "type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("type")
+  public AudienceInsightType getType() {
+    return type;
+  }
+
+  public void setType(AudienceInsightType type) {
+    this.type = type;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -182,11 +182,11 @@ public class AudienceInsightsResponse {
     }
     AudienceInsightsResponse audienceInsightsResponse = (AudienceInsightsResponse) o;
     return Objects.equals(this.categories, audienceInsightsResponse.categories) &&
-        Objects.equals(this.demographics, audienceInsightsResponse.demographics) &&
-        Objects.equals(this.type, audienceInsightsResponse.type) &&
         equalsNullable(this.date, audienceInsightsResponse.date) &&
+        Objects.equals(this.demographics, audienceInsightsResponse.demographics) &&
         Objects.equals(this.size, audienceInsightsResponse.size) &&
-        Objects.equals(this.sizeIsUpperBound, audienceInsightsResponse.sizeIsUpperBound);
+        Objects.equals(this.sizeIsUpperBound, audienceInsightsResponse.sizeIsUpperBound) &&
+        Objects.equals(this.type, audienceInsightsResponse.type);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -195,7 +195,7 @@ public class AudienceInsightsResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(categories, demographics, type, hashCodeNullable(date), size, sizeIsUpperBound);
+    return Objects.hash(categories, hashCodeNullable(date), demographics, size, sizeIsUpperBound, type);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -210,11 +210,11 @@ public class AudienceInsightsResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceInsightsResponse {\n");
     sb.append("    categories: ").append(toIndentedString(categories)).append("\n");
-    sb.append("    demographics: ").append(toIndentedString(demographics)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
+    sb.append("    demographics: ").append(toIndentedString(demographics)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
     sb.append("    sizeIsUpperBound: ").append(toIndentedString(sizeIsUpperBound)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

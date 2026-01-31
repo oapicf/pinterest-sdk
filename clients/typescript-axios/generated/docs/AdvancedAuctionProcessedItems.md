@@ -7,7 +7,7 @@ Response object containing the results of an operation on an item bid option
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalog_id** | **string** | Catalog id pertaining to all items | [optional] [default to undefined]
-**items** | [**Array&lt;AdvancedAuctionProcessedItem&gt;**](AdvancedAuctionProcessedItem.md) | Array of advanced auction processed items | [optional] [default to undefined]
+**items** | [**Array&lt;AdvancedAuctionItemsSubmitRecord&gt;**](AdvancedAuctionItemsSubmitRecord.md) | Array of advanced auction processed items | [optional] [default to undefined]
 
 ## Example
 

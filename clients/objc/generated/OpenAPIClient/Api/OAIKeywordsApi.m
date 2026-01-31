@@ -135,7 +135,7 @@ NSInteger kOAIKeywordsApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -252,9 +252,11 @@ NSInteger kOAIKeywordsApiMissingParamErrorCode = 234513;
 ///
 ///  @param adGroupId Ad group Id. (optional)
 ///
+///  @param adGroupIds List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. (optional)
+///
 ///  @param matchTypes Keyword <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type</a> (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
 ///
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
@@ -263,6 +265,7 @@ NSInteger kOAIKeywordsApiMissingParamErrorCode = 234513;
 -(NSURLSessionTask*) keywordsGetWithAdAccountId: (NSString*) adAccountId
     campaignId: (NSString*) campaignId
     adGroupId: (NSString*) adGroupId
+    adGroupIds: (NSArray<NSString*>*) adGroupIds
     matchTypes: (NSArray<OAIMatchType>*) matchTypes
     pageSize: (NSNumber*) pageSize
     bookmark: (NSString*) bookmark
@@ -292,6 +295,9 @@ NSInteger kOAIKeywordsApiMissingParamErrorCode = 234513;
     if (adGroupId != nil) {
         queryParams[@"ad_group_id"] = adGroupId;
     }
+    if (adGroupIds != nil) {
+        queryParams[@"ad_group_ids"] = [[OAIQueryParamCollection alloc] initWithValuesAndFormat: adGroupIds format: @"multi"];
+    }
     if (matchTypes != nil) {
         queryParams[@"match_types"] = [[OAIQueryParamCollection alloc] initWithValuesAndFormat: matchTypes format: @"multi"];
     }
@@ -316,7 +322,7 @@ NSInteger kOAIKeywordsApiMissingParamErrorCode = 234513;
     NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
 
     // Authentication setting
-    NSArray *authSettings = @[@"pinterest_oauth2"];
+    NSArray *authSettings = @[@"pinterest_oauth2", @"client_credentials"];
 
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
@@ -443,6 +449,10 @@ NSInteger kOAIKeywordsApiMissingParamErrorCode = 234513;
 ///
 ///  @param limit The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a `limit` of 50 will return the top 50 trends. (optional, default to @50)
 ///
+///  @param includePrediction <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including predicted weekly search volume data for the next 90 days. By default (`false`), the response will not include predicted data. (optional, default to @(NO))
+///
+///  @param includeDemographics <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including the age and gender distribution for each keyword. By default (`false`), the response will not include demographics data. (optional, default to @(NO))
+///
 ///  @returns OAITrendingKeywordsResponse*
 ///
 -(NSURLSessionTask*) trendingKeywordsListWithRegion: (OAITrendsSupportedRegion) region
@@ -453,6 +463,8 @@ NSInteger kOAIKeywordsApiMissingParamErrorCode = 234513;
     includeKeywords: (NSArray<NSString*>*) includeKeywords
     normalizeAgainstGroup: (NSNumber*) normalizeAgainstGroup
     limit: (NSNumber*) limit
+    includePrediction: (NSNumber*) includePrediction
+    includeDemographics: (NSNumber*) includeDemographics
     completionHandler: (void (^)(OAITrendingKeywordsResponse* output, NSError* error)) handler {
     // verify the required parameter 'region' is set
     if (region == nil) {
@@ -504,6 +516,12 @@ NSInteger kOAIKeywordsApiMissingParamErrorCode = 234513;
     }
     if (limit != nil) {
         queryParams[@"limit"] = limit;
+    }
+    if (includePrediction != nil) {
+        queryParams[@"include_prediction"] = [includePrediction isEqual:@(YES)] ? @"true" : @"false";
+    }
+    if (includeDemographics != nil) {
+        queryParams[@"include_demographics"] = [includeDemographics isEqual:@(YES)] ? @"true" : @"false";
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];

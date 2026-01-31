@@ -3,8 +3,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **method** | **String** |  | [default to null] |
 | **host** | **String** | HTTP request host from host header. | [default to null] |
+| **method** | **String** |  | [default to null] |
 | **path** | **String** | HTTP request path. | [default to null] |
 | **request\_headers** | **Map** | HTTP request headers as key-value pairs. | [optional] [default to null] |
 | **response\_headers** | **Map** | HTTP response headers as key-value pairs. | [optional] [default to null] |

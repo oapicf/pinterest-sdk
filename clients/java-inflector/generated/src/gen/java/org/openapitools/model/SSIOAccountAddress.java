@@ -10,55 +10,19 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SSIOAccountAddress   {
-  @JsonProperty("display")
-  private String display;
-
-  @JsonProperty("purpose")
-  private String purpose;
-
   @JsonProperty("address_id")
   private String addressId;
+
+  @JsonProperty("display")
+  private String display;
 
   @JsonProperty("order_legal_entity")
   private String orderLegalEntity;
 
-  /**
-   * Address display
-   **/
-  public SSIOAccountAddress display(String display) {
-    this.display = display;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "475 Brannan Street, San Francisco, CA 94103", value = "Address display")
-  @JsonProperty("display")
-  public String getDisplay() {
-    return display;
-  }
-  public void setDisplay(String display) {
-    this.display = display;
-  }
-
-  /**
-   * Purpose for which the address is used, usually Billing or Businness
-   **/
-  public SSIOAccountAddress purpose(String purpose) {
-    this.purpose = purpose;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "Billing", value = "Purpose for which the address is used, usually Billing or Businness")
   @JsonProperty("purpose")
-  public String getPurpose() {
-    return purpose;
-  }
-  public void setPurpose(String purpose) {
-    this.purpose = purpose;
-  }
+  private String purpose;
 
   /**
    * Salesforce id for address
@@ -79,6 +43,24 @@ public class SSIOAccountAddress   {
   }
 
   /**
+   * Address display
+   **/
+  public SSIOAccountAddress display(String display) {
+    this.display = display;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "475 Brannan Street, San Francisco, CA 94103", value = "Address display")
+  @JsonProperty("display")
+  public String getDisplay() {
+    return display;
+  }
+  public void setDisplay(String display) {
+    this.display = display;
+  }
+
+  /**
    * Legal entity for this insertion order
    **/
   public SSIOAccountAddress orderLegalEntity(String orderLegalEntity) {
@@ -96,6 +78,24 @@ public class SSIOAccountAddress   {
     this.orderLegalEntity = orderLegalEntity;
   }
 
+  /**
+   * Purpose for which the address is used, usually Billing or Businness
+   **/
+  public SSIOAccountAddress purpose(String purpose) {
+    this.purpose = purpose;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "Billing", value = "Purpose for which the address is used, usually Billing or Businness")
+  @JsonProperty("purpose")
+  public String getPurpose() {
+    return purpose;
+  }
+  public void setPurpose(String purpose) {
+    this.purpose = purpose;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -106,15 +106,15 @@ public class SSIOAccountAddress   {
       return false;
     }
     SSIOAccountAddress ssIOAccountAddress = (SSIOAccountAddress) o;
-    return Objects.equals(display, ssIOAccountAddress.display) &&
-        Objects.equals(purpose, ssIOAccountAddress.purpose) &&
-        Objects.equals(addressId, ssIOAccountAddress.addressId) &&
-        Objects.equals(orderLegalEntity, ssIOAccountAddress.orderLegalEntity);
+    return Objects.equals(addressId, ssIOAccountAddress.addressId) &&
+        Objects.equals(display, ssIOAccountAddress.display) &&
+        Objects.equals(orderLegalEntity, ssIOAccountAddress.orderLegalEntity) &&
+        Objects.equals(purpose, ssIOAccountAddress.purpose);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(display, purpose, addressId, orderLegalEntity);
+    return Objects.hash(addressId, display, orderLegalEntity, purpose);
   }
 
   @Override
@@ -122,10 +122,10 @@ public class SSIOAccountAddress   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSIOAccountAddress {\n");
     
-    sb.append("    display: ").append(toIndentedString(display)).append("\n");
-    sb.append("    purpose: ").append(toIndentedString(purpose)).append("\n");
     sb.append("    addressId: ").append(toIndentedString(addressId)).append("\n");
+    sb.append("    display: ").append(toIndentedString(display)).append("\n");
     sb.append("    orderLegalEntity: ").append(toIndentedString(orderLegalEntity)).append("\n");
+    sb.append("    purpose: ").append(toIndentedString(purpose)).append("\n");
     sb.append("}");
     return sb.toString();
   }

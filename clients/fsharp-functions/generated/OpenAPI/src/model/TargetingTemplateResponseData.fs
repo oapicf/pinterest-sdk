@@ -15,30 +15,30 @@ module TargetingTemplateResponseData =
 
   [<CLIMutable>]
   type TargetingTemplateResponseData = {
-    [<JsonProperty(PropertyName = "name")>]
-    Name : string;
     [<JsonProperty(PropertyName = "auto_targeting_enabled")>]
     AutoTargetingEnabled : bool;
-    [<JsonProperty(PropertyName = "targeting_attributes")>]
-    TargetingAttributes : TargetingSpec;
-    [<JsonProperty(PropertyName = "placement_group")>]
-    PlacementGroup : PlacementGroupType;
     [<JsonProperty(PropertyName = "keywords")>]
     Keywords : TargetingTemplateKeyword[];
+    [<JsonProperty(PropertyName = "name")>]
+    Name : string;
+    [<JsonProperty(PropertyName = "placement_group")>]
+    PlacementGroup : PlacementGroupType;
+    [<JsonProperty(PropertyName = "targeting_attributes")>]
+    TargetingAttributes : TargetingSpec;
     [<JsonProperty(PropertyName = "tracking_urls")>]
     TrackingUrls : TrackingUrls;
-    [<JsonProperty(PropertyName = "id")>]
-    Id : string;
-    [<JsonProperty(PropertyName = "created_time")>]
-    CreatedTime : int;
-    [<JsonProperty(PropertyName = "updated_time")>]
-    UpdatedTime : int;
     [<JsonProperty(PropertyName = "ad_account_id")>]
     AdAccountId : string;
-    [<JsonProperty(PropertyName = "status")>]
-    Status : string;
+    [<JsonProperty(PropertyName = "created_time")>]
+    CreatedTime : int;
+    [<JsonProperty(PropertyName = "id")>]
+    Id : string;
     [<JsonProperty(PropertyName = "sizing")>]
     Sizing : TargetingTemplateAudienceSizing;
+    [<JsonProperty(PropertyName = "status")>]
+    Status : string;
+    [<JsonProperty(PropertyName = "updated_time")>]
+    UpdatedTime : int;
   }
 
   //#endregion

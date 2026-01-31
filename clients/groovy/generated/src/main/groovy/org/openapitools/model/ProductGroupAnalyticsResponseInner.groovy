@@ -7,8 +7,8 @@ import java.util.HashMap;
 
 @Canonical
 class ProductGroupAnalyticsResponseInner {
-    /* The ID of the product group that this metrics belongs to. */
-    String PRODUCT_GROUP_ID
     /* Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`) */
     Date DATE
+    /* The ID of the product group that this metrics belongs to. */
+    String PRODUCT_GROUP_ID
 }

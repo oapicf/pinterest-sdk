@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,11 +16,11 @@ package openapi
 
 type UserSummary struct {
 
-	// Username
-	Username string `json:"username,omitempty"`
-
 	// Always \"user\"
 	Type string `json:"type,omitempty"`
+
+	// Username
+	Username string `json:"username,omitempty"`
 }
 
 // AssertUserSummaryRequired checks if the required fields are not zero-ed

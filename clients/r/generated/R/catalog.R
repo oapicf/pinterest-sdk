@@ -10,8 +10,8 @@
 #' @field created_at  character
 #' @field id ID of the catalog entity. character
 #' @field updated_at  character
-#' @field name A human-friendly name associated to a catalog entity. character
 #' @field catalog_type  \link{CatalogsType}
+#' @field name A human-friendly name associated to a catalog entity. character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -21,8 +21,8 @@ Catalog <- R6::R6Class(
     `created_at` = NULL,
     `id` = NULL,
     `updated_at` = NULL,
-    `name` = NULL,
     `catalog_type` = NULL,
+    `name` = NULL,
 
     #' @description
     #' Initialize a new Catalog class.
@@ -30,10 +30,10 @@ Catalog <- R6::R6Class(
     #' @param created_at created_at
     #' @param id ID of the catalog entity.
     #' @param updated_at updated_at
-    #' @param name A human-friendly name associated to a catalog entity.
     #' @param catalog_type catalog_type
+    #' @param name A human-friendly name associated to a catalog entity.
     #' @param ... Other optional arguments.
-    initialize = function(`created_at`, `id`, `updated_at`, `name`, `catalog_type`, ...) {
+    initialize = function(`created_at`, `id`, `updated_at`, `catalog_type`, `name`, ...) {
       if (!missing(`created_at`)) {
         if (!(is.character(`created_at`) && length(`created_at`) == 1)) {
           stop(paste("Error! Invalid data for `created_at`. Must be a string:", `created_at`))
@@ -52,18 +52,18 @@ Catalog <- R6::R6Class(
         }
         self$`updated_at` <- `updated_at`
       }
-      if (!missing(`name`)) {
-        if (!(is.character(`name`) && length(`name`) == 1)) {
-          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
-        }
-        self$`name` <- `name`
-      }
       if (!missing(`catalog_type`)) {
         if (!(`catalog_type` %in% c())) {
           stop(paste("Error! \"", `catalog_type`, "\" cannot be assigned to `catalog_type`. Must be .", sep = ""))
         }
         stopifnot(R6::is.R6(`catalog_type`))
         self$`catalog_type` <- `catalog_type`
+      }
+      if (!missing(`name`)) {
+        if (!(is.character(`name`) && length(`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
+        }
+        self$`name` <- `name`
       }
     },
 
@@ -110,13 +110,13 @@ Catalog <- R6::R6Class(
         CatalogObject[["updated_at"]] <-
           self$`updated_at`
       }
-      if (!is.null(self$`name`)) {
-        CatalogObject[["name"]] <-
-          self$`name`
-      }
       if (!is.null(self$`catalog_type`)) {
         CatalogObject[["catalog_type"]] <-
           self$`catalog_type`$toSimpleType()
+      }
+      if (!is.null(self$`name`)) {
+        CatalogObject[["name"]] <-
+          self$`name`
       }
       return(CatalogObject)
     },
@@ -137,13 +137,13 @@ Catalog <- R6::R6Class(
       if (!is.null(this_object$`updated_at`)) {
         self$`updated_at` <- this_object$`updated_at`
       }
-      if (!is.null(this_object$`name`)) {
-        self$`name` <- this_object$`name`
-      }
       if (!is.null(this_object$`catalog_type`)) {
         `catalog_type_object` <- CatalogsType$new()
         `catalog_type_object`$fromJSON(jsonlite::toJSON(this_object$`catalog_type`, auto_unbox = TRUE, digits = NA))
         self$`catalog_type` <- `catalog_type_object`
+      }
+      if (!is.null(this_object$`name`)) {
+        self$`name` <- this_object$`name`
       }
       self
     },
@@ -169,8 +169,8 @@ Catalog <- R6::R6Class(
       self$`created_at` <- this_object$`created_at`
       self$`id` <- this_object$`id`
       self$`updated_at` <- this_object$`updated_at`
-      self$`name` <- this_object$`name`
       self$`catalog_type` <- CatalogsType$new()$fromJSON(jsonlite::toJSON(this_object$`catalog_type`, auto_unbox = TRUE, digits = NA))
+      self$`name` <- this_object$`name`
       self
     },
 
@@ -204,6 +204,12 @@ Catalog <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for Catalog: the required field `updated_at` is missing."))
       }
+      # check the required field `catalog_type`
+      if (!is.null(input_json$`catalog_type`)) {
+        stopifnot(R6::is.R6(input_json$`catalog_type`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for Catalog: the required field `catalog_type` is missing."))
+      }
       # check the required field `name`
       if (!is.null(input_json$`name`)) {
         if (!(is.character(input_json$`name`) && length(input_json$`name`) == 1)) {
@@ -211,12 +217,6 @@ Catalog <- R6::R6Class(
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for Catalog: the required field `name` is missing."))
-      }
-      # check the required field `catalog_type`
-      if (!is.null(input_json$`catalog_type`)) {
-        stopifnot(R6::is.R6(input_json$`catalog_type`))
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for Catalog: the required field `catalog_type` is missing."))
       }
     },
 

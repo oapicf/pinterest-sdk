@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -26,6 +26,10 @@ public enum PermissionsWithOwner {
         ANALYST("ANALYST"),
         
         FINANCE_MANAGER("FINANCE_MANAGER"),
+        
+        FINANCE_EDIT("FINANCE_EDIT"),
+        
+        FINANCE_VIEW("FINANCE_VIEW"),
         
         AUDIENCE_MANAGER("AUDIENCE_MANAGER"),
         

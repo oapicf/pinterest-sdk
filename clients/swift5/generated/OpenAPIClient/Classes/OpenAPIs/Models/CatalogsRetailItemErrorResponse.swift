@@ -14,21 +14,21 @@ import AnyCodable
 public struct CatalogsRetailItemErrorResponse: Codable, JSONEncodable, Hashable {
 
     public var catalogType: CatalogsType
+    /** Array with the errors for the item id requested */
+    public var errors: [ItemValidationEvent]
     /** The catalog item id in the merchant namespace */
     public var itemId: String?
-    /** Array with the errors for the item id requested */
-    public var errors: [ItemValidationEvent]?
 
-    public init(catalogType: CatalogsType, itemId: String? = nil, errors: [ItemValidationEvent]? = nil) {
+    public init(catalogType: CatalogsType, errors: [ItemValidationEvent], itemId: String? = nil) {
         self.catalogType = catalogType
-        self.itemId = itemId
         self.errors = errors
+        self.itemId = itemId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case catalogType = "catalog_type"
-        case itemId = "item_id"
         case errors
+        case itemId = "item_id"
     }
 
     // Encodable protocol methods
@@ -36,8 +36,8 @@ public struct CatalogsRetailItemErrorResponse: Codable, JSONEncodable, Hashable 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(catalogType, forKey: .catalogType)
+        try container.encode(errors, forKey: .errors)
         try container.encodeIfPresent(itemId, forKey: .itemId)
-        try container.encodeIfPresent(errors, forKey: .errors)
     }
 }
 

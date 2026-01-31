@@ -4,31 +4,31 @@ import play.api.libs.json._
 
 /**
   * Order Line
-  * @param id Order line ID.
-  * @param `type` Always \"orderline\".
   * @param adAccountId Ad account ID.
+  * @param budget Order line budget in micro currency.
+  * @param endTime End time. Unix timestamp.
+  * @param id Order line ID.
+  * @param name Order line name.
+  * @param paidBudget Order line paid budget in micro currency.
+  * @param paidType Order line paid type.
   * @param purchaseOrderId Purchase order ID.
   * @param startTime Start time. Unix timestamp.
-  * @param endTime End time. Unix timestamp.
-  * @param budget Order line budget in micro currency.
-  * @param paidBudget Order line paid budget in micro currency.
   * @param status Order line status.
-  * @param name Order line name.
-  * @param paidType Order line paid type.
+  * @param `type` Always \"orderline\".
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class OrderLines(
-  id: Option[String],
-  `type`: Option[String],
   adAccountId: Option[String],
+  budget: Option[BigDecimal],
+  endTime: Option[BigDecimal],
+  id: Option[String],
+  name: Option[String],
+  paidBudget: Option[BigDecimal],
+  paidType: Option[OrderLinePaidType],
   purchaseOrderId: Option[String],
   startTime: Option[BigDecimal],
-  endTime: Option[BigDecimal],
-  budget: Option[BigDecimal],
-  paidBudget: Option[BigDecimal],
   status: Option[OrderLineStatus],
-  name: Option[String],
-  paidType: Option[OrderLinePaidType]
+  `type`: Option[String]
 )
 
 object OrderLines {

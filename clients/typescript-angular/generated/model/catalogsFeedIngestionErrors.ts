@@ -11,29 +11,17 @@
 
 export interface CatalogsFeedIngestionErrors { 
     /**
-     * We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.
-     */
-    LINE_LEVEL_INTERNAL_ERROR?: number;
-    /**
-     * The product count has decreased by more than 99% compared to the last successful ingestion.
-     */
-    LARGE_PRODUCT_COUNT_DECREASE?: CatalogsFeedIngestionErrors.LARGEPRODUCTCOUNTDECREASEEnum;
-    /**
      * We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information.
      */
     ACCOUNT_FLAGGED?: number;
     /**
-     * We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.
+     * Update your Google Sheets sharing settings to \'Anyone with link\' as a Viewer so that Pinterest can access your file.
      */
-    IMAGE_LEVEL_INTERNAL_ERROR?: number;
+    FETCH_GOOGLE_SHEET_NOT_SHARED?: number;
     /**
      * Image files are unreadable. Please upload new files to continue.
      */
     IMAGE_FILE_NOT_ACCESSIBLE?: number;
-    /**
-     * Image files are unreadable. Please check your link and upload new files to continue.
-     */
-    IMAGE_MALFORMED_URL?: number;
     /**
      * Image files are unreadable. Please upload new files to continue.
      */
@@ -42,6 +30,22 @@ export interface CatalogsFeedIngestionErrors {
      * Image files are unreadable. Please upload new files to continue.
      */
     IMAGE_INVALID_FILE?: number;
+    /**
+     * We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.
+     */
+    IMAGE_LEVEL_INTERNAL_ERROR?: number;
+    /**
+     * Image files are unreadable. Please check your link and upload new files to continue.
+     */
+    IMAGE_MALFORMED_URL?: number;
+    /**
+     * The product count has decreased by more than 99% compared to the last successful ingestion.
+     */
+    LARGE_PRODUCT_COUNT_DECREASE?: CatalogsFeedIngestionErrors.LARGEPRODUCTCOUNTDECREASEEnum;
+    /**
+     * We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.
+     */
+    LINE_LEVEL_INTERNAL_ERROR?: number;
 }
 export namespace CatalogsFeedIngestionErrors {
     export const LARGEPRODUCTCOUNTDECREASEEnum = {

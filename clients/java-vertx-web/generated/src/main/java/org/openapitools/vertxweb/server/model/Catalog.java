@@ -16,19 +16,19 @@ public class Catalog   {
   private OffsetDateTime createdAt;
   private String id;
   private OffsetDateTime updatedAt;
-  private String name;
   private CatalogsType catalogType;
+  private String name;
 
   public Catalog () {
 
   }
 
-  public Catalog (OffsetDateTime createdAt, String id, OffsetDateTime updatedAt, String name, CatalogsType catalogType) {
+  public Catalog (OffsetDateTime createdAt, String id, OffsetDateTime updatedAt, CatalogsType catalogType, String name) {
     this.createdAt = createdAt;
     this.id = id;
     this.updatedAt = updatedAt;
-    this.name = name;
     this.catalogType = catalogType;
+    this.name = name;
   }
 
     
@@ -59,21 +59,21 @@ public class Catalog   {
   }
 
     
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
-
-    
   @JsonProperty("catalog_type")
   public CatalogsType getCatalogType() {
     return catalogType;
   }
   public void setCatalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
+  }
+
+    
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -89,13 +89,13 @@ public class Catalog   {
     return Objects.equals(createdAt, catalog.createdAt) &&
         Objects.equals(id, catalog.id) &&
         Objects.equals(updatedAt, catalog.updatedAt) &&
-        Objects.equals(name, catalog.name) &&
-        Objects.equals(catalogType, catalog.catalogType);
+        Objects.equals(catalogType, catalog.catalogType) &&
+        Objects.equals(name, catalog.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, id, updatedAt, name, catalogType);
+    return Objects.hash(createdAt, id, updatedAt, catalogType, name);
   }
 
   @Override
@@ -106,8 +106,8 @@ public class Catalog   {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

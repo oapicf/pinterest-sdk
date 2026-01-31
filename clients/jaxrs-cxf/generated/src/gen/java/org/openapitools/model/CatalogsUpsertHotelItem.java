@@ -18,6 +18,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsUpsertHotelItem  {
   
+  @ApiModelProperty(required = true, value = "")
+
+  @Valid
+
+  private CatalogsHotelAttributes attributes;
+
  /**
   * The catalog hotel id in the merchant namespace
   */
@@ -60,12 +66,25 @@ UPSERT(String.valueOf("UPSERT"));
   @ApiModelProperty(required = true, value = "")
 
   private OperationEnum operation;
+ /**
+   * Get attributes
+   * @return attributes
+  **/
+  @JsonProperty("attributes")
+  @NotNull
+  public CatalogsHotelAttributes getAttributes() {
+    return attributes;
+  }
 
-  @ApiModelProperty(required = true, value = "")
+  public void setAttributes(CatalogsHotelAttributes attributes) {
+    this.attributes = attributes;
+  }
 
-  @Valid
+  public CatalogsUpsertHotelItem attributes(CatalogsHotelAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
 
-  private CatalogsHotelAttributes attributes;
  /**
    * The catalog hotel id in the merchant namespace
    * @return hotelId
@@ -107,25 +126,6 @@ UPSERT(String.valueOf("UPSERT"));
     return this;
   }
 
- /**
-   * Get attributes
-   * @return attributes
-  **/
-  @JsonProperty("attributes")
-  @NotNull
-  public CatalogsHotelAttributes getAttributes() {
-    return attributes;
-  }
-
-  public void setAttributes(CatalogsHotelAttributes attributes) {
-    this.attributes = attributes;
-  }
-
-  public CatalogsUpsertHotelItem attributes(CatalogsHotelAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -135,14 +135,14 @@ UPSERT(String.valueOf("UPSERT"));
       return false;
     }
     CatalogsUpsertHotelItem catalogsUpsertHotelItem = (CatalogsUpsertHotelItem) o;
-    return Objects.equals(this.hotelId, catalogsUpsertHotelItem.hotelId) &&
-        Objects.equals(this.operation, catalogsUpsertHotelItem.operation) &&
-        Objects.equals(this.attributes, catalogsUpsertHotelItem.attributes);
+    return Objects.equals(this.attributes, catalogsUpsertHotelItem.attributes) &&
+        Objects.equals(this.hotelId, catalogsUpsertHotelItem.hotelId) &&
+        Objects.equals(this.operation, catalogsUpsertHotelItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hotelId, operation, attributes);
+    return Objects.hash(attributes, hotelId, operation);
   }
 
   @Override
@@ -150,9 +150,9 @@ UPSERT(String.valueOf("UPSERT"));
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsUpsertHotelItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

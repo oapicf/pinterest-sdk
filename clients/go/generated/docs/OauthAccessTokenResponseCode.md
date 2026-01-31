@@ -4,19 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RefreshToken** | **string** |  | 
-**RefreshTokenExpiresIn** | **int32** |  | 
-**ResponseType** | Pointer to **string** |  | [optional] 
+**RefreshToken** | Pointer to **string** |  | [optional] 
+**RefreshTokenExpiresAt** | Pointer to **int32** |  | [optional] 
+**RefreshTokenExpiresIn** | Pointer to **int32** |  | [optional] 
 **AccessToken** | **string** |  | 
-**TokenType** | **string** |  | [default to "bearer"]
 **ExpiresIn** | **int32** |  | 
+**ResponseType** | Pointer to **string** |  | [optional] 
 **Scope** | **string** |  | 
+**TokenType** | **string** |  | [default to "bearer"]
 
 ## Methods
 
 ### NewOauthAccessTokenResponseCode
 
-`func NewOauthAccessTokenResponseCode(refreshToken string, refreshTokenExpiresIn int32, accessToken string, tokenType string, expiresIn int32, scope string, ) *OauthAccessTokenResponseCode`
+`func NewOauthAccessTokenResponseCode(accessToken string, expiresIn int32, scope string, tokenType string, ) *OauthAccessTokenResponseCode`
 
 NewOauthAccessTokenResponseCode instantiates a new OauthAccessTokenResponseCode object
 This constructor will assign default values to properties that have it defined,
@@ -50,6 +51,36 @@ and a boolean to check if the value has been set.
 
 SetRefreshToken sets RefreshToken field to given value.
 
+### HasRefreshToken
+
+`func (o *OauthAccessTokenResponseCode) HasRefreshToken() bool`
+
+HasRefreshToken returns a boolean if a field has been set.
+
+### GetRefreshTokenExpiresAt
+
+`func (o *OauthAccessTokenResponseCode) GetRefreshTokenExpiresAt() int32`
+
+GetRefreshTokenExpiresAt returns the RefreshTokenExpiresAt field if non-nil, zero value otherwise.
+
+### GetRefreshTokenExpiresAtOk
+
+`func (o *OauthAccessTokenResponseCode) GetRefreshTokenExpiresAtOk() (*int32, bool)`
+
+GetRefreshTokenExpiresAtOk returns a tuple with the RefreshTokenExpiresAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRefreshTokenExpiresAt
+
+`func (o *OauthAccessTokenResponseCode) SetRefreshTokenExpiresAt(v int32)`
+
+SetRefreshTokenExpiresAt sets RefreshTokenExpiresAt field to given value.
+
+### HasRefreshTokenExpiresAt
+
+`func (o *OauthAccessTokenResponseCode) HasRefreshTokenExpiresAt() bool`
+
+HasRefreshTokenExpiresAt returns a boolean if a field has been set.
 
 ### GetRefreshTokenExpiresIn
 
@@ -69,6 +100,51 @@ and a boolean to check if the value has been set.
 `func (o *OauthAccessTokenResponseCode) SetRefreshTokenExpiresIn(v int32)`
 
 SetRefreshTokenExpiresIn sets RefreshTokenExpiresIn field to given value.
+
+### HasRefreshTokenExpiresIn
+
+`func (o *OauthAccessTokenResponseCode) HasRefreshTokenExpiresIn() bool`
+
+HasRefreshTokenExpiresIn returns a boolean if a field has been set.
+
+### GetAccessToken
+
+`func (o *OauthAccessTokenResponseCode) GetAccessToken() string`
+
+GetAccessToken returns the AccessToken field if non-nil, zero value otherwise.
+
+### GetAccessTokenOk
+
+`func (o *OauthAccessTokenResponseCode) GetAccessTokenOk() (*string, bool)`
+
+GetAccessTokenOk returns a tuple with the AccessToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessToken
+
+`func (o *OauthAccessTokenResponseCode) SetAccessToken(v string)`
+
+SetAccessToken sets AccessToken field to given value.
+
+
+### GetExpiresIn
+
+`func (o *OauthAccessTokenResponseCode) GetExpiresIn() int32`
+
+GetExpiresIn returns the ExpiresIn field if non-nil, zero value otherwise.
+
+### GetExpiresInOk
+
+`func (o *OauthAccessTokenResponseCode) GetExpiresInOk() (*int32, bool)`
+
+GetExpiresInOk returns a tuple with the ExpiresIn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpiresIn
+
+`func (o *OauthAccessTokenResponseCode) SetExpiresIn(v int32)`
+
+SetExpiresIn sets ExpiresIn field to given value.
 
 
 ### GetResponseType
@@ -96,24 +172,24 @@ SetResponseType sets ResponseType field to given value.
 
 HasResponseType returns a boolean if a field has been set.
 
-### GetAccessToken
+### GetScope
 
-`func (o *OauthAccessTokenResponseCode) GetAccessToken() string`
+`func (o *OauthAccessTokenResponseCode) GetScope() string`
 
-GetAccessToken returns the AccessToken field if non-nil, zero value otherwise.
+GetScope returns the Scope field if non-nil, zero value otherwise.
 
-### GetAccessTokenOk
+### GetScopeOk
 
-`func (o *OauthAccessTokenResponseCode) GetAccessTokenOk() (*string, bool)`
+`func (o *OauthAccessTokenResponseCode) GetScopeOk() (*string, bool)`
 
-GetAccessTokenOk returns a tuple with the AccessToken field if it's non-nil, zero value otherwise
+GetScopeOk returns a tuple with the Scope field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAccessToken
+### SetScope
 
-`func (o *OauthAccessTokenResponseCode) SetAccessToken(v string)`
+`func (o *OauthAccessTokenResponseCode) SetScope(v string)`
 
-SetAccessToken sets AccessToken field to given value.
+SetScope sets Scope field to given value.
 
 
 ### GetTokenType
@@ -134,46 +210,6 @@ and a boolean to check if the value has been set.
 `func (o *OauthAccessTokenResponseCode) SetTokenType(v string)`
 
 SetTokenType sets TokenType field to given value.
-
-
-### GetExpiresIn
-
-`func (o *OauthAccessTokenResponseCode) GetExpiresIn() int32`
-
-GetExpiresIn returns the ExpiresIn field if non-nil, zero value otherwise.
-
-### GetExpiresInOk
-
-`func (o *OauthAccessTokenResponseCode) GetExpiresInOk() (*int32, bool)`
-
-GetExpiresInOk returns a tuple with the ExpiresIn field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExpiresIn
-
-`func (o *OauthAccessTokenResponseCode) SetExpiresIn(v int32)`
-
-SetExpiresIn sets ExpiresIn field to given value.
-
-
-### GetScope
-
-`func (o *OauthAccessTokenResponseCode) GetScope() string`
-
-GetScope returns the Scope field if non-nil, zero value otherwise.
-
-### GetScopeOk
-
-`func (o *OauthAccessTokenResponseCode) GetScopeOk() (*string, bool)`
-
-GetScopeOk returns a tuple with the Scope field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetScope
-
-`func (o *OauthAccessTokenResponseCode) SetScope(v string)`
-
-SetScope sets Scope field to given value.
 
 
 

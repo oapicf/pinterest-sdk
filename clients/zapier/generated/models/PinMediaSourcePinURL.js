@@ -5,6 +5,11 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
+                key: `${keyPrefix}is_affiliate_link`,
+                label: `This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products. - [${labelPrefix}is_affiliate_link]`,
+                type: 'boolean',
+            },
+            {
                 key: `${keyPrefix}source_type`,
                 label: `[${labelPrefix}source_type]`,
                 required: true,
@@ -13,18 +18,13 @@ module.exports = {
                     'pin_url',
                 ],
             },
-            {
-                key: `${keyPrefix}is_affiliate_link`,
-                label: `This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products. - [${labelPrefix}is_affiliate_link]`,
-                type: 'boolean',
-            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'source_type': bundle.inputData?.[`${keyPrefix}source_type`],
             'is_affiliate_link': bundle.inputData?.[`${keyPrefix}is_affiliate_link`],
+            'source_type': bundle.inputData?.[`${keyPrefix}source_type`],
         }
     },
 }

@@ -1,0 +1,133 @@
+package org.openapitools.model;
+
+import java.net.URI;
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
+import org.openapitools.model.GenderDemographics;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+
+import java.util.*;
+import javax.annotation.Generated;
+
+/**
+ * Age and gender distribution who engaged with this product category in the past 3 months
+ */
+
+@Schema(name = "ProductCategoriesDemographic", description = "Age and gender distribution who engaged with this product category in the past 3 months")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+public class ProductCategoriesDemographic {
+
+  @Valid
+  private Map<String, BigDecimal> age = new HashMap<>();
+
+  private GenderDemographics gender;
+
+  public ProductCategoriesDemographic() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public ProductCategoriesDemographic(Map<String, BigDecimal> age, GenderDemographics gender) {
+    this.age = age;
+    this.gender = gender;
+  }
+
+  public ProductCategoriesDemographic age(Map<String, BigDecimal> age) {
+    this.age = age;
+    return this;
+  }
+
+  public ProductCategoriesDemographic putAgeItem(String key, BigDecimal ageItem) {
+    if (this.age == null) {
+      this.age = new HashMap<>();
+    }
+    this.age.put(key, ageItem);
+    return this;
+  }
+
+  /**
+   * Age demographic distribution
+   * @return age
+   */
+  @NotNull @Valid 
+  @Schema(name = "age", description = "Age demographic distribution", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("age")
+  public Map<String, BigDecimal> getAge() {
+    return age;
+  }
+
+  public void setAge(Map<String, BigDecimal> age) {
+    this.age = age;
+  }
+
+  public ProductCategoriesDemographic gender(GenderDemographics gender) {
+    this.gender = gender;
+    return this;
+  }
+
+  /**
+   * Get gender
+   * @return gender
+   */
+  @NotNull @Valid 
+  @Schema(name = "gender", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("gender")
+  public GenderDemographics getGender() {
+    return gender;
+  }
+
+  public void setGender(GenderDemographics gender) {
+    this.gender = gender;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    ProductCategoriesDemographic productCategoriesDemographic = (ProductCategoriesDemographic) o;
+    return Objects.equals(this.age, productCategoriesDemographic.age) &&
+        Objects.equals(this.gender, productCategoriesDemographic.gender);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(age, gender);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class ProductCategoriesDemographic {\n");
+    sb.append("    age: ").append(toIndentedString(age)).append("\n");
+    sb.append("    gender: ").append(toIndentedString(gender)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}
+

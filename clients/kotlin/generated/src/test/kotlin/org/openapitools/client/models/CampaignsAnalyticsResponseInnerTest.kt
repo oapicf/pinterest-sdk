@@ -25,7 +25,7 @@ class CampaignsAnalyticsResponseInnerTest : ShouldSpec() {
         // uncomment below to create an instance of CampaignsAnalyticsResponseInner
         //val modelInstance = CampaignsAnalyticsResponseInner()
 
-        // to test the property `CAMPAIGN_ID` - The ID of the campaing that this metrics belongs to.
+        // to test the property `CAMPAIGN_ID` - The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
         should("test CAMPAIGN_ID") {
             // uncomment below to test the property
             //modelInstance.CAMPAIGN_ID shouldBe ("TODO")

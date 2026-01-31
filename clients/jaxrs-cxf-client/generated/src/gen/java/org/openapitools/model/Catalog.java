@@ -30,16 +30,16 @@ public class Catalog  {
 
   private Date updatedAt;
 
+  @ApiModelProperty(required = true, value = "")
+
+  private CatalogsType catalogType;
+
  /**
   * A human-friendly name associated to a catalog entity.
   */
   @ApiModelProperty(required = true, value = "A human-friendly name associated to a catalog entity.")
 
   private String name;
-
-  @ApiModelProperty(required = true, value = "")
-
-  private CatalogsType catalogType;
  /**
    * Get createdAt
    * @return createdAt
@@ -95,24 +95,6 @@ public class Catalog  {
   }
 
  /**
-   * A human-friendly name associated to a catalog entity.
-   * @return name
-  **/
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public Catalog name(String name) {
-    this.name = name;
-    return this;
-  }
-
- /**
    * Get catalogType
    * @return catalogType
   **/
@@ -130,6 +112,24 @@ public class Catalog  {
     return this;
   }
 
+ /**
+   * A human-friendly name associated to a catalog entity.
+   * @return name
+  **/
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public Catalog name(String name) {
+    this.name = name;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -142,13 +142,13 @@ public class Catalog  {
     return Objects.equals(this.createdAt, catalog.createdAt) &&
         Objects.equals(this.id, catalog.id) &&
         Objects.equals(this.updatedAt, catalog.updatedAt) &&
-        Objects.equals(this.name, catalog.name) &&
-        Objects.equals(this.catalogType, catalog.catalogType);
+        Objects.equals(this.catalogType, catalog.catalogType) &&
+        Objects.equals(this.name, catalog.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, id, updatedAt, name, catalogType);
+    return Objects.hash(createdAt, id, updatedAt, catalogType, name);
   }
 
   @Override
@@ -159,8 +159,8 @@ public class Catalog  {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

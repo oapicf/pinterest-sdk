@@ -14,13 +14,13 @@ import { CatalogsProductGroupFiltersRequest } from './catalogsProductGroupFilter
  * Request object for updating a product group.
  */
 export interface CatalogsProductGroupUpdateRequest { 
-    name?: string;
     description?: string | null;
+    filters?: CatalogsProductGroupFiltersRequest;
     /**
      * boolean indicator of whether the product group is being featured or not
      * @deprecated
      */
     is_featured?: boolean;
-    filters?: CatalogsProductGroupFiltersRequest;
+    name?: string;
 }
 

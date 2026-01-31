@@ -5,8 +5,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **feedId** | **String** | Catalog Feed id pertaining to the catalog product group filter. | 
 **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
-**catalogType** | **String** |  | 
 **catalogId** | **String** | Catalog id pertaining to the creative assets product group. | 
+**catalogType** | **String** |  | 
 **country** | [**Country**](Country.md) |  | 
 **locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | 
 

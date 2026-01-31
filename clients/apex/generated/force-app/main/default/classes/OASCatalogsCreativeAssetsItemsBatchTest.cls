@@ -74,9 +74,9 @@ private class OASCatalogsCreativeAssetsItemsBatchTest {
         OASCatalogsCreativeAssetsItemsBatch catalogsCreativeAssetsItemsBatch = new OASCatalogsCreativeAssetsItemsBatch();
         Map<String, String> x-property-mappings = catalogsCreativeAssetsItemsBatch.getx-property-mappings();
         System.assertEquals('batchId', x-property-mappings.get('batch_id'));
-        System.assertEquals('createdTime', x-property-mappings.get('created_time'));
-        System.assertEquals('completedTime', x-property-mappings.get('completed_time'));
         System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
+        System.assertEquals('completedTime', x-property-mappings.get('completed_time'));
+        System.assertEquals('createdTime', x-property-mappings.get('created_time'));
     }
 
     @isTest
@@ -84,9 +84,9 @@ private class OASCatalogsCreativeAssetsItemsBatchTest {
         OASCatalogsCreativeAssetsItemsBatch catalogsCreativeAssetsItemsBatch = new OASCatalogsCreativeAssetsItemsBatch();
         System.assertEquals(new List<OASCreativeAssetsProcessingRecord>(), catalogsCreativeAssetsItemsBatch.items);
         System.assertEquals(null, catalogsCreativeAssetsItemsBatch.batchId);
-        System.assertEquals(null, catalogsCreativeAssetsItemsBatch.createdTime);
-        System.assertEquals(null, catalogsCreativeAssetsItemsBatch.completedTime);
-        System.assertEquals(null, catalogsCreativeAssetsItemsBatch.status);
         System.assertEquals(null, catalogsCreativeAssetsItemsBatch.catalogType);
+        System.assertEquals(null, catalogsCreativeAssetsItemsBatch.completedTime);
+        System.assertEquals(null, catalogsCreativeAssetsItemsBatch.createdTime);
+        System.assertEquals(null, catalogsCreativeAssetsItemsBatch.status);
     }
 }

@@ -16,6 +16,7 @@
 package org.openapitools.client.models
 
 import org.openapitools.client.models.AssetGroupBinding
+import org.openapitools.client.models.GetBusinessAssetsResponseCatalogInfo
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -23,24 +24,28 @@ import com.squareup.moshi.JsonClass
 /**
  * An object containing the permissions a business has on the asset.
  *
- * @param assetId Unique identifier of a business asset.
- * @param assetType Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
  * @param assetGroupInfo 
+ * @param assetId Unique identifier of a business asset.
+ * @param assetType Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
+ * @param catalogInfo 
  */
 
 
 data class GetBusinessAssetsResponse (
 
+    @Json(name = "asset_group_info")
+    val assetGroupInfo: AssetGroupBinding? = null,
+
     /* Unique identifier of a business asset. */
     @Json(name = "asset_id")
     val assetId: kotlin.String? = null,
 
-    /* Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. */
+    /* Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. */
     @Json(name = "asset_type")
     val assetType: kotlin.String? = null,
 
-    @Json(name = "asset_group_info")
-    val assetGroupInfo: AssetGroupBinding? = null
+    @Json(name = "catalog_info")
+    val catalogInfo: GetBusinessAssetsResponseCatalogInfo? = null
 
 ) {
 

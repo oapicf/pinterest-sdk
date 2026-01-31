@@ -7,11 +7,10 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open LeadAdsApiHandlerParams
 open LeadAdsApiServiceInterface
 open LeadAdsApiServiceImplementation
-open OpenAPI.Model.AdAccountCreateSubscriptionRequest
-open OpenAPI.Model.AdAccountCreateSubscriptionResponse
-open OpenAPI.Model.AdAccountGetSubscriptionResponse
 open OpenAPI.Model.AdAccountsSubscriptionsGetList200Response
-open OpenAPI.Model.Error
+open OpenAPI.Model.LeadSubscription
+open OpenAPI.Model.LeadSubscriptionPostParamsCreate
+open OpenAPI.Model.PinterestLibError
 
 module LeadAdsApiHandler =
 
@@ -34,10 +33,14 @@ module LeadAdsApiHandler =
                             setStatusCode 204 >=> text resolved.content
                       | AdAccountsSubscriptionsDelByIdStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | AdAccountsSubscriptionsDelByIdStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
                       | AdAccountsSubscriptionsDelByIdStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
                       | AdAccountsSubscriptionsDelByIdStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
+                      | AdAccountsSubscriptionsDelByIdStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AdAccountsSubscriptionsDelByIdDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -46,7 +49,7 @@ module LeadAdsApiHandler =
 
     //#region AdAccountsSubscriptionsGetById
     /// <summary>
-    /// Get lead ads subscription
+    /// Get lead ads subscription by ID
     /// </summary>
 
     let AdAccountsSubscriptionsGetById (pathParams:AdAccountsSubscriptionsGetByIdPathParams) : HttpHandler =
@@ -59,10 +62,14 @@ module LeadAdsApiHandler =
                             setStatusCode 200 >=> json resolved.content
                       | AdAccountsSubscriptionsGetByIdStatusCode400 resolved ->
                             setStatusCode 400 >=> json resolved.content
+                      | AdAccountsSubscriptionsGetByIdStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
                       | AdAccountsSubscriptionsGetByIdStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
                       | AdAccountsSubscriptionsGetByIdStatusCode404 resolved ->
                             setStatusCode 404 >=> json resolved.content
+                      | AdAccountsSubscriptionsGetByIdStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AdAccountsSubscriptionsGetByIdDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx
@@ -83,8 +90,16 @@ module LeadAdsApiHandler =
           return! (match result with
                       | AdAccountsSubscriptionsGetListStatusCode200 resolved ->
                             setStatusCode 200 >=> json resolved.content
+                      | AdAccountsSubscriptionsGetListStatusCode400 resolved ->
+                            setStatusCode 400 >=> json resolved.content
+                      | AdAccountsSubscriptionsGetListStatusCode401 resolved ->
+                            setStatusCode 401 >=> json resolved.content
                       | AdAccountsSubscriptionsGetListStatusCode403 resolved ->
                             setStatusCode 403 >=> json resolved.content
+                      | AdAccountsSubscriptionsGetListStatusCode404 resolved ->
+                            setStatusCode 404 >=> json resolved.content
+                      | AdAccountsSubscriptionsGetListStatusCode429 resolved ->
+                            setStatusCode 429 >=> json resolved.content
                       | AdAccountsSubscriptionsGetListDefaultStatusCode resolved ->
                             setStatusCode 0 >=> json resolved.content
           ) next ctx

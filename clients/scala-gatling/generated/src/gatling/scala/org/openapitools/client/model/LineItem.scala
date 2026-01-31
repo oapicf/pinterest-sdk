@@ -3,21 +3,21 @@ package org.openapitools.client.model
 
 
 case class LineItem (
-    /* Product brand. For example, \"Parker\". */
+    /* Product brand. For example, 'Parker'. */
     _productBrand: Option[String],
-    /* Product category. For example, \"Shoes\". */
+    /* Product category. For example, 'Shoes'. */
     _productCategory: Option[String],
     /* Product ID. For example, 1414. */
     _productId: Option[Integer],
-    /* Product name. For example, \"Parker Boots\". */
+    /* Product name. For example, 'Parker Boots'. */
     _productName: Option[String],
-    /* Product price. For example, \"99.99\". */
+    /* Product price. For example, '99.99'. */
     _productPrice: Option[String],
     /* Product quantity. For example, 2. */
     _productQuantity: Option[Integer],
-    /* Product variant. For example, \"Red\". */
+    /* Product variant. For example, 'Red'. */
     _productVariant: Option[String],
-    /* Product variant ID. For example, \"1414-34832\". */
+    /* Product variant ID. For example, '1414-34832'. */
     _productVariantId: Option[String]
 )
 object LineItem {

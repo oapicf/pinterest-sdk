@@ -16,57 +16,65 @@
 #include "../model/conversion_events_data_inner.h"
 conversion_events_data_inner_t* instantiate_conversion_events_data_inner(int include_optional);
 
-#include "test_conversion_events_user_data.c"
+#include "test_conversion_event_app_info.c"
 #include "test_conversion_events_data_inner_custom_data.c"
+#include "test_conversion_event_device_info.c"
+#include "test_conversion_events_user_data.c"
 
 
 conversion_events_data_inner_t* instantiate_conversion_events_data_inner(int include_optional) {
   conversion_events_data_inner_t* conversion_events_data_inner = NULL;
   if (include_optional) {
     conversion_events_data_inner = conversion_events_data_inner_create(
-      "checkout",
       "app_ios",
-      1451431341,
+      "429047995",
+       // false, not to have infinite recursion
+      instantiate_conversion_event_app_info(0),
+      "Pinterest",
+      "7.9",
+       // false, not to have infinite recursion
+      instantiate_conversion_events_data_inner_custom_data(0),
+      "Apple",
+      "T-Mobile",
+       // false, not to have infinite recursion
+      instantiate_conversion_event_device_info(0),
+      "iPhone X",
+      "iPhone",
       "eventId0001",
+      "checkout",
       "https://www.my-clothing-shop.org/",
+      1451431341,
+      "en",
       false,
+      "12.1.4",
       "ss-partnername",
        // false, not to have infinite recursion
       instantiate_conversion_events_user_data(0),
-       // false, not to have infinite recursion
-      instantiate_conversion_events_data_inner_custom_data(0),
-      "429047995",
-      "Pinterest",
-      "7.9",
-      "Apple",
-      "T-Mobile",
-      "iPhone X",
-      "iPhone",
-      "12.1.4",
-      false,
-      "en"
+      false
     );
   } else {
     conversion_events_data_inner = conversion_events_data_inner_create(
-      "checkout",
       "app_ios",
-      1451431341,
-      "eventId0001",
-      "https://www.my-clothing-shop.org/",
-      false,
-      "ss-partnername",
-      NULL,
-      NULL,
       "429047995",
+      NULL,
       "Pinterest",
       "7.9",
+      NULL,
       "Apple",
       "T-Mobile",
+      NULL,
       "iPhone X",
       "iPhone",
-      "12.1.4",
+      "eventId0001",
+      "checkout",
+      "https://www.my-clothing-shop.org/",
+      1451431341,
+      "en",
       false,
-      "en"
+      "12.1.4",
+      "ss-partnername",
+      NULL,
+      false
     );
   }
 

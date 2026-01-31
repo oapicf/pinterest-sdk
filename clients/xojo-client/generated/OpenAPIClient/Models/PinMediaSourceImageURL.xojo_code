@@ -2,20 +2,23 @@
 Protected Class PinMediaSourceImageURL
 
 	#tag Property, Flags = &h0
+		#tag Note
+			Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
+		#tag EndNote
+		is_standard As Xoson.O.OptionalBoolean
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			The source type of the media.
+		#tag EndNote
 		source_type As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		url As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
-		#tag EndNote
-		is_standard As Xoson.O.OptionalBoolean
 	#tag EndProperty
 
 
@@ -73,19 +76,19 @@ Protected Class PinMediaSourceImageURL
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="url"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="is_standard"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="url"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

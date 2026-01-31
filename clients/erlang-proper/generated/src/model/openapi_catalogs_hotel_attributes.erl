@@ -9,25 +9,25 @@
 -export_type([openapi_catalogs_hotel_attributes/0]).
 
 -type openapi_catalogs_hotel_attributes() ::
-  [ {'name', binary() }
-  | {'link', binary() }
-  | {'description', binary() }
+  [ {'address', openapi_catalogs_hotel_address:openapi_catalogs_hotel_address() }
+  | {'base_price', binary() }
   | {'brand', binary() }
-  | {'latitude', integer() }
-  | {'longitude', integer() }
-  | {'neighborhood', list(binary()) }
-  | {'address', openapi_catalogs_hotel_address:openapi_catalogs_hotel_address() }
+  | {'category', binary() }
   | {'custom_label_0', binary() }
   | {'custom_label_1', binary() }
   | {'custom_label_2', binary() }
   | {'custom_label_3', binary() }
   | {'custom_label_4', binary() }
-  | {'category', binary() }
-  | {'base_price', binary() }
-  | {'sale_price', binary() }
+  | {'description', binary() }
   | {'guest_ratings', openapi_catalogs_hotel_guest_ratings:openapi_catalogs_hotel_guest_ratings() }
-  | {'main_image', openapi_catalogs_hotel_attributes_all_of_main_image:openapi_catalogs_hotel_attributes_all_of_main_image() }
+  | {'latitude', integer() }
+  | {'link', binary() }
+  | {'longitude', integer() }
+  | {'name', binary() }
+  | {'neighborhood', list(binary()) }
+  | {'sale_price', binary() }
   | {'additional_image_link', list(binary()) }
+  | {'main_image', openapi_catalogs_hotel_attributes_all_of_main_image:openapi_catalogs_hotel_attributes_all_of_main_image() }
   ].
 
 
@@ -35,25 +35,25 @@ openapi_catalogs_hotel_attributes() ->
     openapi_catalogs_hotel_attributes([]).
 
 openapi_catalogs_hotel_attributes(Fields) ->
-  Default = [ {'name', binary() }
-            , {'link', binary() }
-            , {'description', binary() }
+  Default = [ {'address', openapi_catalogs_hotel_address:openapi_catalogs_hotel_address() }
+            , {'base_price', binary() }
             , {'brand', binary() }
-            , {'latitude', integer() }
-            , {'longitude', integer() }
-            , {'neighborhood', list(binary()) }
-            , {'address', openapi_catalogs_hotel_address:openapi_catalogs_hotel_address() }
+            , {'category', binary() }
             , {'custom_label_0', binary() }
             , {'custom_label_1', binary() }
             , {'custom_label_2', binary() }
             , {'custom_label_3', binary() }
             , {'custom_label_4', binary() }
-            , {'category', binary() }
-            , {'base_price', binary() }
-            , {'sale_price', binary() }
+            , {'description', binary() }
             , {'guest_ratings', openapi_catalogs_hotel_guest_ratings:openapi_catalogs_hotel_guest_ratings() }
-            , {'main_image', openapi_catalogs_hotel_attributes_all_of_main_image:openapi_catalogs_hotel_attributes_all_of_main_image() }
+            , {'latitude', integer() }
+            , {'link', binary() }
+            , {'longitude', integer() }
+            , {'name', binary() }
+            , {'neighborhood', list(binary()) }
+            , {'sale_price', binary() }
             , {'additional_image_link', list(binary()) }
+            , {'main_image', openapi_catalogs_hotel_attributes_all_of_main_image:openapi_catalogs_hotel_attributes_all_of_main_image() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

@@ -3,17 +3,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Attributes** | [**CatalogsHotelAttributes**](CatalogsHotelAttributes.md) |  | 
 **HotelId** | **String** | The catalog hotel id in the merchant namespace | 
 **Operation** | **String** |  | 
-**Attributes** | [**CatalogsHotelAttributes**](CatalogsHotelAttributes.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsUpsertHotelItem = Initialize-PSOpenAPIToolsCatalogsUpsertHotelItem  -HotelId DS0294-M `
- -Operation null `
- -Attributes null
+$CatalogsUpsertHotelItem = Initialize-PSOpenAPIToolsCatalogsUpsertHotelItem  -Attributes null `
+ -HotelId DS0294-M `
+ -Operation null
 ```
 
 - Convert the resource to JSON

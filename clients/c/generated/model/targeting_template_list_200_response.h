@@ -15,20 +15,20 @@
 
 typedef struct targeting_template_list_200_response_t targeting_template_list_200_response_t;
 
-#include "targeting_template_response_data.h"
+#include "targeting_template_get_response_data.h"
 
 
 
 typedef struct targeting_template_list_200_response_t {
-    list_t *items; //nonprimitive container
     char *bookmark; // string
+    list_t *items; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
 } targeting_template_list_200_response_t;
 
 __attribute__((deprecated)) targeting_template_list_200_response_t *targeting_template_list_200_response_create(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
 );
 
 void targeting_template_list_200_response_free(targeting_template_list_200_response_t *targeting_template_list_200_response);

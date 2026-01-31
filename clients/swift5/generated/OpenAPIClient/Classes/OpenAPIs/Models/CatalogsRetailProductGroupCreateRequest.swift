@@ -17,47 +17,47 @@ public struct CatalogsRetailProductGroupCreateRequest: Codable, JSONEncodable, H
         case retail = "RETAIL"
     }
     public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    /** Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. */
-    public var catalogType: CatalogType
-    public var name: String
-    public var description: String?
-    public var filters: CatalogsProductGroupFiltersRequest
     /** Catalog id pertaining to the retail product group. */
     public var catalogId: String
-    public var country: Country
-    public var locale: CatalogsLocale
+    /** Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. */
+    public var catalogType: CatalogType
+    public var country: Country?
+    public var description: String?
+    public var filters: CatalogsProductGroupFiltersRequest
+    public var locale: CatalogsLocale?
+    public var name: String
 
-    public init(catalogType: CatalogType, name: String, description: String? = nil, filters: CatalogsProductGroupFiltersRequest, catalogId: String, country: Country, locale: CatalogsLocale) {
+    public init(catalogId: String, catalogType: CatalogType, country: Country? = nil, description: String? = nil, filters: CatalogsProductGroupFiltersRequest, locale: CatalogsLocale? = nil, name: String) {
+        self.catalogId = catalogId
         self.catalogType = catalogType
-        self.name = name
+        self.country = country
         self.description = description
         self.filters = filters
-        self.catalogId = catalogId
-        self.country = country
         self.locale = locale
+        self.name = name
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case catalogId = "catalog_id"
         case catalogType = "catalog_type"
-        case name
+        case country
         case description
         case filters
-        case catalogId = "catalog_id"
-        case country
         case locale
+        case name
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(catalogId, forKey: .catalogId)
         try container.encode(catalogType, forKey: .catalogType)
-        try container.encode(name, forKey: .name)
+        try container.encodeIfPresent(country, forKey: .country)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encode(filters, forKey: .filters)
-        try container.encode(catalogId, forKey: .catalogId)
-        try container.encode(country, forKey: .country)
-        try container.encode(locale, forKey: .locale)
+        try container.encodeIfPresent(locale, forKey: .locale)
+        try container.encode(name, forKey: .name)
     }
 }
 

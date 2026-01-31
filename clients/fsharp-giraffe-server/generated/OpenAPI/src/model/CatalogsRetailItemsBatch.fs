@@ -13,10 +13,10 @@ module CatalogsRetailItemsBatch =
 
   type CatalogsRetailItemsBatch = {
     BatchId : string;
-    CreatedTime : Nullable<DateTime>;
-    CompletedTime : Nullable<DateTime>;
-    Status : BatchOperationStatus;
     CatalogType : CatalogsType;
+    CompletedTime : Nullable<DateTime>;
+    CreatedTime : DateTime;
     Items : ItemProcessingRecord[];
+    Status : BatchOperationStatus;
   }
   //#endregion

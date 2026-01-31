@@ -24,6 +24,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsHotelItemResponse  {
   
+  @ApiModelProperty(value = "")
+  @Valid
+  private CatalogsHotelAttributes attributes;
+
   @ApiModelProperty(required = true, value = "")
   @Valid
   private CatalogsType catalogType;
@@ -40,10 +44,30 @@ public class CatalogsHotelItemResponse  {
   @ApiModelProperty(value = "The pins mapped to the item")
   @Valid
   private List<@Valid Pin> pins;
+ /**
+  * Get attributes
+  * @return attributes
+  */
+  @JsonProperty("attributes")
+  public CatalogsHotelAttributes getAttributes() {
+    return attributes;
+  }
 
-  @ApiModelProperty(value = "")
-  @Valid
-  private CatalogsHotelAttributes attributes;
+  /**
+   * Sets the <code>attributes</code> property.
+   */
+ public void setAttributes(CatalogsHotelAttributes attributes) {
+    this.attributes = attributes;
+  }
+
+  /**
+   * Sets the <code>attributes</code> property.
+   */
+  public CatalogsHotelItemResponse attributes(CatalogsHotelAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
  /**
   * Get catalogType
   * @return catalogType
@@ -125,30 +149,6 @@ public class CatalogsHotelItemResponse  {
     return this;
   }
 
- /**
-  * Get attributes
-  * @return attributes
-  */
-  @JsonProperty("attributes")
-  public CatalogsHotelAttributes getAttributes() {
-    return attributes;
-  }
-
-  /**
-   * Sets the <code>attributes</code> property.
-   */
- public void setAttributes(CatalogsHotelAttributes attributes) {
-    this.attributes = attributes;
-  }
-
-  /**
-   * Sets the <code>attributes</code> property.
-   */
-  public CatalogsHotelItemResponse attributes(CatalogsHotelAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -159,15 +159,15 @@ public class CatalogsHotelItemResponse  {
       return false;
     }
     CatalogsHotelItemResponse catalogsHotelItemResponse = (CatalogsHotelItemResponse) o;
-    return Objects.equals(this.catalogType, catalogsHotelItemResponse.catalogType) &&
+    return Objects.equals(this.attributes, catalogsHotelItemResponse.attributes) &&
+        Objects.equals(this.catalogType, catalogsHotelItemResponse.catalogType) &&
         Objects.equals(this.hotelId, catalogsHotelItemResponse.hotelId) &&
-        Objects.equals(this.pins, catalogsHotelItemResponse.pins) &&
-        Objects.equals(this.attributes, catalogsHotelItemResponse.attributes);
+        Objects.equals(this.pins, catalogsHotelItemResponse.pins);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, hotelId, pins, attributes);
+    return Objects.hash(attributes, catalogType, hotelId, pins);
   }
 
   @Override
@@ -175,10 +175,10 @@ public class CatalogsHotelItemResponse  {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelItemResponse {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

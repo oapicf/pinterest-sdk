@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "TargetingSpec.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -45,13 +46,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
-	 */
-	std::string getOperationType();
-
-	/*! \brief Set 
-	 */
-	void setOperationType(std::string  operation_type);
 	/*! \brief Get Targeting template ID
 	 */
 	std::string getId();
@@ -59,10 +53,25 @@ public:
 	/*! \brief Set Targeting template ID
 	 */
 	void setId(std::string  id);
+	/*! \brief Get 
+	 */
+	std::string getOperationType();
+
+	/*! \brief Set 
+	 */
+	void setOperationType(std::string  operation_type);
+	/*! \brief Get 
+	 */
+	TargetingSpec getTargetingAttributes();
+
+	/*! \brief Set 
+	 */
+	void setTargetingAttributes(TargetingSpec  targeting_attributes);
 
 private:
-	std::string operation_type;
 	std::string id;
+	std::string operation_type;
+	TargetingSpec targeting_attributes;
 	void __init();
 	void __cleanup();
 

@@ -10,8 +10,8 @@ module SSIOInsertionOrderStatus =
 
 
   type SSIOInsertionOrderStatus = {
+    CreationTime : string option;
     PinOrderId : string;
     Status : string;
-    CreationTime : string option;
   }
   //#endregion

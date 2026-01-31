@@ -3,11 +3,13 @@ package apimodels;
 import apimodels.AvailabilityFilter;
 import apimodels.BrandFilter;
 import apimodels.CatalogsProductGroupCurrencyCriteria;
+import apimodels.CatalogsProductGroupFilterOperatorTypeCriteria;
 import apimodels.CatalogsProductGroupMultipleGenderCriteria;
 import apimodels.CatalogsProductGroupMultipleMediaTypesCriteria;
 import apimodels.CatalogsProductGroupMultipleStringCriteria;
 import apimodels.CatalogsProductGroupMultipleStringListCriteria;
 import apimodels.CatalogsProductGroupPricingCriteria;
+import apimodels.CatalogsProductGroupUint32Criteria;
 import apimodels.ConditionFilter;
 import apimodels.CurrencyFilter;
 import apimodels.CustomLabel0Filter;
@@ -15,6 +17,11 @@ import apimodels.CustomLabel1Filter;
 import apimodels.CustomLabel2Filter;
 import apimodels.CustomLabel3Filter;
 import apimodels.CustomLabel4Filter;
+import apimodels.CustomNumber0Filter;
+import apimodels.CustomNumber1Filter;
+import apimodels.CustomNumber2Filter;
+import apimodels.CustomNumber3Filter;
+import apimodels.CustomNumber4Filter;
 import apimodels.GenderFilter;
 import apimodels.GoogleProductCategory0Filter;
 import apimodels.GoogleProductCategory1Filter;
@@ -34,6 +41,7 @@ import apimodels.ProductType1Filter;
 import apimodels.ProductType2Filter;
 import apimodels.ProductType3Filter;
 import apimodels.ProductType4Filter;
+import apimodels.TitleKeywordsFilter;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
 import javax.validation.*;
@@ -43,7 +51,7 @@ import javax.validation.Valid;
 /**
  * CatalogsProductGroupFilterKeys
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsProductGroupFilterKeys   {
   @JsonProperty("MIN_PRICE")
@@ -92,31 +100,31 @@ public class CatalogsProductGroupFilterKeys   {
   @NotNull
 @Valid
 
-  private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_0;
+  private CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_0;
 
   @JsonProperty("CUSTOM_LABEL_1")
   @NotNull
 @Valid
 
-  private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_1;
+  private CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_1;
 
   @JsonProperty("CUSTOM_LABEL_2")
   @NotNull
 @Valid
 
-  private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_2;
+  private CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_2;
 
   @JsonProperty("CUSTOM_LABEL_3")
   @NotNull
 @Valid
 
-  private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_3;
+  private CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_3;
 
   @JsonProperty("CUSTOM_LABEL_4")
   @NotNull
 @Valid
 
-  private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_4;
+  private CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_4;
 
   @JsonProperty("ITEM_GROUP_ID")
   @NotNull
@@ -213,6 +221,42 @@ public class CatalogsProductGroupFilterKeys   {
 @Valid
 
   private CatalogsProductGroupMultipleStringCriteria PRODUCT_GROUP;
+
+  @JsonProperty("CUSTOM_NUMBER_0")
+  @NotNull
+@Valid
+
+  private CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_0;
+
+  @JsonProperty("CUSTOM_NUMBER_1")
+  @NotNull
+@Valid
+
+  private CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_1;
+
+  @JsonProperty("CUSTOM_NUMBER_2")
+  @NotNull
+@Valid
+
+  private CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_2;
+
+  @JsonProperty("CUSTOM_NUMBER_3")
+  @NotNull
+@Valid
+
+  private CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_3;
+
+  @JsonProperty("CUSTOM_NUMBER_4")
+  @NotNull
+@Valid
+
+  private CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_4;
+
+  @JsonProperty("TITLE_KEYWORDS")
+  @NotNull
+@Valid
+
+  private CatalogsProductGroupMultipleStringCriteria TITLE_KEYWORDS;
 
   public CatalogsProductGroupFilterKeys MIN_PRICE(CatalogsProductGroupPricingCriteria MIN_PRICE) {
     this.MIN_PRICE = MIN_PRICE;
@@ -333,7 +377,7 @@ public class CatalogsProductGroupFilterKeys   {
     this.CONDITION = CONDITION;
   }
 
-  public CatalogsProductGroupFilterKeys CUSTOM_LABEL_0(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_0) {
+  public CatalogsProductGroupFilterKeys CUSTOM_LABEL_0(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_0) {
     this.CUSTOM_LABEL_0 = CUSTOM_LABEL_0;
     return this;
   }
@@ -342,15 +386,15 @@ public class CatalogsProductGroupFilterKeys   {
    * Get CUSTOM_LABEL_0
    * @return CUSTOM_LABEL_0
   **/
-  public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL0() {
+  public CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL0() {
     return CUSTOM_LABEL_0;
   }
 
-  public void setCUSTOMLABEL0(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_0) {
+  public void setCUSTOMLABEL0(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_0) {
     this.CUSTOM_LABEL_0 = CUSTOM_LABEL_0;
   }
 
-  public CatalogsProductGroupFilterKeys CUSTOM_LABEL_1(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_1) {
+  public CatalogsProductGroupFilterKeys CUSTOM_LABEL_1(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_1) {
     this.CUSTOM_LABEL_1 = CUSTOM_LABEL_1;
     return this;
   }
@@ -359,15 +403,15 @@ public class CatalogsProductGroupFilterKeys   {
    * Get CUSTOM_LABEL_1
    * @return CUSTOM_LABEL_1
   **/
-  public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL1() {
+  public CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL1() {
     return CUSTOM_LABEL_1;
   }
 
-  public void setCUSTOMLABEL1(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_1) {
+  public void setCUSTOMLABEL1(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_1) {
     this.CUSTOM_LABEL_1 = CUSTOM_LABEL_1;
   }
 
-  public CatalogsProductGroupFilterKeys CUSTOM_LABEL_2(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_2) {
+  public CatalogsProductGroupFilterKeys CUSTOM_LABEL_2(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_2) {
     this.CUSTOM_LABEL_2 = CUSTOM_LABEL_2;
     return this;
   }
@@ -376,15 +420,15 @@ public class CatalogsProductGroupFilterKeys   {
    * Get CUSTOM_LABEL_2
    * @return CUSTOM_LABEL_2
   **/
-  public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL2() {
+  public CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL2() {
     return CUSTOM_LABEL_2;
   }
 
-  public void setCUSTOMLABEL2(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_2) {
+  public void setCUSTOMLABEL2(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_2) {
     this.CUSTOM_LABEL_2 = CUSTOM_LABEL_2;
   }
 
-  public CatalogsProductGroupFilterKeys CUSTOM_LABEL_3(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_3) {
+  public CatalogsProductGroupFilterKeys CUSTOM_LABEL_3(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_3) {
     this.CUSTOM_LABEL_3 = CUSTOM_LABEL_3;
     return this;
   }
@@ -393,15 +437,15 @@ public class CatalogsProductGroupFilterKeys   {
    * Get CUSTOM_LABEL_3
    * @return CUSTOM_LABEL_3
   **/
-  public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL3() {
+  public CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL3() {
     return CUSTOM_LABEL_3;
   }
 
-  public void setCUSTOMLABEL3(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_3) {
+  public void setCUSTOMLABEL3(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_3) {
     this.CUSTOM_LABEL_3 = CUSTOM_LABEL_3;
   }
 
-  public CatalogsProductGroupFilterKeys CUSTOM_LABEL_4(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_4) {
+  public CatalogsProductGroupFilterKeys CUSTOM_LABEL_4(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_4) {
     this.CUSTOM_LABEL_4 = CUSTOM_LABEL_4;
     return this;
   }
@@ -410,11 +454,11 @@ public class CatalogsProductGroupFilterKeys   {
    * Get CUSTOM_LABEL_4
    * @return CUSTOM_LABEL_4
   **/
-  public CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL4() {
+  public CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL4() {
     return CUSTOM_LABEL_4;
   }
 
-  public void setCUSTOMLABEL4(CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_4) {
+  public void setCUSTOMLABEL4(CatalogsProductGroupFilterOperatorTypeCriteria CUSTOM_LABEL_4) {
     this.CUSTOM_LABEL_4 = CUSTOM_LABEL_4;
   }
 
@@ -690,6 +734,108 @@ public class CatalogsProductGroupFilterKeys   {
     this.PRODUCT_GROUP = PRODUCT_GROUP;
   }
 
+  public CatalogsProductGroupFilterKeys CUSTOM_NUMBER_0(CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_0) {
+    this.CUSTOM_NUMBER_0 = CUSTOM_NUMBER_0;
+    return this;
+  }
+
+   /**
+   * Get CUSTOM_NUMBER_0
+   * @return CUSTOM_NUMBER_0
+  **/
+  public CatalogsProductGroupUint32Criteria getCUSTOMNUMBER0() {
+    return CUSTOM_NUMBER_0;
+  }
+
+  public void setCUSTOMNUMBER0(CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_0) {
+    this.CUSTOM_NUMBER_0 = CUSTOM_NUMBER_0;
+  }
+
+  public CatalogsProductGroupFilterKeys CUSTOM_NUMBER_1(CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_1) {
+    this.CUSTOM_NUMBER_1 = CUSTOM_NUMBER_1;
+    return this;
+  }
+
+   /**
+   * Get CUSTOM_NUMBER_1
+   * @return CUSTOM_NUMBER_1
+  **/
+  public CatalogsProductGroupUint32Criteria getCUSTOMNUMBER1() {
+    return CUSTOM_NUMBER_1;
+  }
+
+  public void setCUSTOMNUMBER1(CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_1) {
+    this.CUSTOM_NUMBER_1 = CUSTOM_NUMBER_1;
+  }
+
+  public CatalogsProductGroupFilterKeys CUSTOM_NUMBER_2(CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_2) {
+    this.CUSTOM_NUMBER_2 = CUSTOM_NUMBER_2;
+    return this;
+  }
+
+   /**
+   * Get CUSTOM_NUMBER_2
+   * @return CUSTOM_NUMBER_2
+  **/
+  public CatalogsProductGroupUint32Criteria getCUSTOMNUMBER2() {
+    return CUSTOM_NUMBER_2;
+  }
+
+  public void setCUSTOMNUMBER2(CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_2) {
+    this.CUSTOM_NUMBER_2 = CUSTOM_NUMBER_2;
+  }
+
+  public CatalogsProductGroupFilterKeys CUSTOM_NUMBER_3(CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_3) {
+    this.CUSTOM_NUMBER_3 = CUSTOM_NUMBER_3;
+    return this;
+  }
+
+   /**
+   * Get CUSTOM_NUMBER_3
+   * @return CUSTOM_NUMBER_3
+  **/
+  public CatalogsProductGroupUint32Criteria getCUSTOMNUMBER3() {
+    return CUSTOM_NUMBER_3;
+  }
+
+  public void setCUSTOMNUMBER3(CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_3) {
+    this.CUSTOM_NUMBER_3 = CUSTOM_NUMBER_3;
+  }
+
+  public CatalogsProductGroupFilterKeys CUSTOM_NUMBER_4(CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_4) {
+    this.CUSTOM_NUMBER_4 = CUSTOM_NUMBER_4;
+    return this;
+  }
+
+   /**
+   * Get CUSTOM_NUMBER_4
+   * @return CUSTOM_NUMBER_4
+  **/
+  public CatalogsProductGroupUint32Criteria getCUSTOMNUMBER4() {
+    return CUSTOM_NUMBER_4;
+  }
+
+  public void setCUSTOMNUMBER4(CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_4) {
+    this.CUSTOM_NUMBER_4 = CUSTOM_NUMBER_4;
+  }
+
+  public CatalogsProductGroupFilterKeys TITLE_KEYWORDS(CatalogsProductGroupMultipleStringCriteria TITLE_KEYWORDS) {
+    this.TITLE_KEYWORDS = TITLE_KEYWORDS;
+    return this;
+  }
+
+   /**
+   * Get TITLE_KEYWORDS
+   * @return TITLE_KEYWORDS
+  **/
+  public CatalogsProductGroupMultipleStringCriteria getTITLEKEYWORDS() {
+    return TITLE_KEYWORDS;
+  }
+
+  public void setTITLEKEYWORDS(CatalogsProductGroupMultipleStringCriteria TITLE_KEYWORDS) {
+    this.TITLE_KEYWORDS = TITLE_KEYWORDS;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -727,12 +873,18 @@ public class CatalogsProductGroupFilterKeys   {
         Objects.equals(GOOGLE_PRODUCT_CATEGORY_2, catalogsProductGroupFilterKeys.GOOGLE_PRODUCT_CATEGORY_2) &&
         Objects.equals(GOOGLE_PRODUCT_CATEGORY_1, catalogsProductGroupFilterKeys.GOOGLE_PRODUCT_CATEGORY_1) &&
         Objects.equals(GOOGLE_PRODUCT_CATEGORY_0, catalogsProductGroupFilterKeys.GOOGLE_PRODUCT_CATEGORY_0) &&
-        Objects.equals(PRODUCT_GROUP, catalogsProductGroupFilterKeys.PRODUCT_GROUP);
+        Objects.equals(PRODUCT_GROUP, catalogsProductGroupFilterKeys.PRODUCT_GROUP) &&
+        Objects.equals(CUSTOM_NUMBER_0, catalogsProductGroupFilterKeys.CUSTOM_NUMBER_0) &&
+        Objects.equals(CUSTOM_NUMBER_1, catalogsProductGroupFilterKeys.CUSTOM_NUMBER_1) &&
+        Objects.equals(CUSTOM_NUMBER_2, catalogsProductGroupFilterKeys.CUSTOM_NUMBER_2) &&
+        Objects.equals(CUSTOM_NUMBER_3, catalogsProductGroupFilterKeys.CUSTOM_NUMBER_3) &&
+        Objects.equals(CUSTOM_NUMBER_4, catalogsProductGroupFilterKeys.CUSTOM_NUMBER_4) &&
+        Objects.equals(TITLE_KEYWORDS, catalogsProductGroupFilterKeys.TITLE_KEYWORDS);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(MIN_PRICE, MAX_PRICE, CURRENCY, ITEM_ID, AVAILABILITY, BRAND, CONDITION, CUSTOM_LABEL_0, CUSTOM_LABEL_1, CUSTOM_LABEL_2, CUSTOM_LABEL_3, CUSTOM_LABEL_4, ITEM_GROUP_ID, GENDER, MEDIA_TYPE, PRODUCT_TYPE_4, PRODUCT_TYPE_3, PRODUCT_TYPE_2, PRODUCT_TYPE_1, PRODUCT_TYPE_0, GOOGLE_PRODUCT_CATEGORY_6, GOOGLE_PRODUCT_CATEGORY_5, GOOGLE_PRODUCT_CATEGORY_4, GOOGLE_PRODUCT_CATEGORY_3, GOOGLE_PRODUCT_CATEGORY_2, GOOGLE_PRODUCT_CATEGORY_1, GOOGLE_PRODUCT_CATEGORY_0, PRODUCT_GROUP);
+    return Objects.hash(MIN_PRICE, MAX_PRICE, CURRENCY, ITEM_ID, AVAILABILITY, BRAND, CONDITION, CUSTOM_LABEL_0, CUSTOM_LABEL_1, CUSTOM_LABEL_2, CUSTOM_LABEL_3, CUSTOM_LABEL_4, ITEM_GROUP_ID, GENDER, MEDIA_TYPE, PRODUCT_TYPE_4, PRODUCT_TYPE_3, PRODUCT_TYPE_2, PRODUCT_TYPE_1, PRODUCT_TYPE_0, GOOGLE_PRODUCT_CATEGORY_6, GOOGLE_PRODUCT_CATEGORY_5, GOOGLE_PRODUCT_CATEGORY_4, GOOGLE_PRODUCT_CATEGORY_3, GOOGLE_PRODUCT_CATEGORY_2, GOOGLE_PRODUCT_CATEGORY_1, GOOGLE_PRODUCT_CATEGORY_0, PRODUCT_GROUP, CUSTOM_NUMBER_0, CUSTOM_NUMBER_1, CUSTOM_NUMBER_2, CUSTOM_NUMBER_3, CUSTOM_NUMBER_4, TITLE_KEYWORDS);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -769,6 +921,12 @@ public class CatalogsProductGroupFilterKeys   {
     sb.append("    GOOGLE_PRODUCT_CATEGORY_1: ").append(toIndentedString(GOOGLE_PRODUCT_CATEGORY_1)).append("\n");
     sb.append("    GOOGLE_PRODUCT_CATEGORY_0: ").append(toIndentedString(GOOGLE_PRODUCT_CATEGORY_0)).append("\n");
     sb.append("    PRODUCT_GROUP: ").append(toIndentedString(PRODUCT_GROUP)).append("\n");
+    sb.append("    CUSTOM_NUMBER_0: ").append(toIndentedString(CUSTOM_NUMBER_0)).append("\n");
+    sb.append("    CUSTOM_NUMBER_1: ").append(toIndentedString(CUSTOM_NUMBER_1)).append("\n");
+    sb.append("    CUSTOM_NUMBER_2: ").append(toIndentedString(CUSTOM_NUMBER_2)).append("\n");
+    sb.append("    CUSTOM_NUMBER_3: ").append(toIndentedString(CUSTOM_NUMBER_3)).append("\n");
+    sb.append("    CUSTOM_NUMBER_4: ").append(toIndentedString(CUSTOM_NUMBER_4)).append("\n");
+    sb.append("    TITLE_KEYWORDS: ").append(toIndentedString(TITLE_KEYWORDS)).append("\n");
     sb.append("}");
     return sb.toString();
   }

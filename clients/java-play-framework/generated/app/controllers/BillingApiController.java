@@ -3,8 +3,11 @@ package controllers;
 import apimodels.AdsCreditRedeemRequest;
 import apimodels.AdsCreditRedeemResponse;
 import apimodels.AdsCreditsDiscountsGet200Response;
+import apimodels.BillingInvoiceDownloadResponse;
+import apimodels.BillingInvoicesGet200Response;
 import apimodels.BillingProfilesGet200Response;
 import apimodels.Error;
+import java.time.LocalDate;
 import apimodels.SSIOAccountResponse;
 import apimodels.SSIOCreateInsertionOrderRequest;
 import apimodels.SSIOCreateInsertionOrderResponse;
@@ -36,7 +39,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BillingApiController extends Controller {
     private final BillingApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -81,6 +84,72 @@ public class BillingApiController extends Controller {
             pageSize = 25;
         }
         return imp.adsCreditsDiscountsGetHttp(request, adAccountId, bookmark, pageSize);
+    }
+
+    @ApiAction
+    public Result billingInvoiceDownloadGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @Pattern(regexp="^\\d+$") @Size(max=18)String billingInvoiceId) throws Exception {
+        return imp.billingInvoiceDownloadGetHttp(request, adAccountId, billingInvoiceId);
+    }
+
+    @ApiAction
+    public Result billingInvoicesGet(Http.Request request,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+        String valuebookmark = request.getQueryString("bookmark");
+        String bookmark;
+        if (valuebookmark != null) {
+            bookmark = valuebookmark;
+        } else {
+            bookmark = null;
+        }
+        String valuepageSize = request.getQueryString("page_size");
+        Integer pageSize;
+        if (valuepageSize != null) {
+            pageSize = Integer.parseInt(valuepageSize);
+        } else {
+            pageSize = 25;
+        }
+        String valuesort = request.getQueryString("sort");
+        String sort;
+        if (valuesort != null) {
+            sort = valuesort;
+        } else {
+            sort = "DUE_DATE";
+        }
+        String valueorder = request.getQueryString("order");
+        String order;
+        if (valueorder != null) {
+            order = valueorder;
+        } else {
+            order = null;
+        }
+        String valuestatus = request.getQueryString("status");
+        String status;
+        if (valuestatus != null) {
+            status = valuestatus;
+        } else {
+            status = null;
+        }
+        String valuedocumentType = request.getQueryString("document_type");
+        String documentType;
+        if (valuedocumentType != null) {
+            documentType = valuedocumentType;
+        } else {
+            documentType = null;
+        }
+        String valuestartDueDate = request.getQueryString("start_due_date");
+        LocalDate startDueDate;
+        if (valuestartDueDate != null) {
+            startDueDate = LocalDate.parse(valuestartDueDate);
+        } else {
+            startDueDate = null;
+        }
+        String valueendDueDate = request.getQueryString("end_due_date");
+        LocalDate endDueDate;
+        if (valueendDueDate != null) {
+            endDueDate = LocalDate.parse(valueendDueDate);
+        } else {
+            endDueDate = null;
+        }
+        return imp.billingInvoicesGetHttp(request, adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate);
     }
 
     @ApiAction

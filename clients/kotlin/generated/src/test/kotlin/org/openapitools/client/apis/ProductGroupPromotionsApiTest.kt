@@ -22,10 +22,12 @@ import org.openapitools.client.apis.ProductGroupPromotionsApi
 import org.openapitools.client.models.Error
 import org.openapitools.client.models.Granularity
 import org.openapitools.client.models.ProductGroupAnalyticsResponseInner
+import org.openapitools.client.models.ProductGroupPromotion
 import org.openapitools.client.models.ProductGroupPromotionCreateRequest
 import org.openapitools.client.models.ProductGroupPromotionResponse
 import org.openapitools.client.models.ProductGroupPromotionUpdateRequest
 import org.openapitools.client.models.ProductGroupPromotionsList200Response
+import org.openapitools.client.models.ReportingTimeZone
 
 class ProductGroupPromotionsApiTest : ShouldSpec() {
     init {
@@ -46,7 +48,7 @@ class ProductGroupPromotionsApiTest : ShouldSpec() {
             // uncomment below to test productGroupPromotionsGet
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val productGroupPromotionId : kotlin.String = productGroupPromotionId_example // kotlin.String | Unique identifier of a product group promotion
-            //val result : ProductGroupPromotionResponse = apiInstance.productGroupPromotionsGet(adAccountId, productGroupPromotionId)
+            //val result : ProductGroupPromotion = apiInstance.productGroupPromotionsGet(adAccountId, productGroupPromotionId)
             //result shouldBe ("TODO")
         }
 
@@ -83,10 +85,11 @@ class ProductGroupPromotionsApiTest : ShouldSpec() {
             //val columns : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
             //val granularity : Granularity = DAY // Granularity | TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
             //val clickWindowDays : kotlin.Int = 1 // kotlin.Int | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-            //val engagementWindowDays : kotlin.Int = 56 // kotlin.Int | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
+            //val engagementWindowDays : kotlin.Int = 56 // kotlin.Int | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.
             //val viewWindowDays : kotlin.Int = 56 // kotlin.Int | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
             //val conversionReportTime : kotlin.String = TIME_OF_AD_ACTION // kotlin.String | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
-            //val result : kotlin.collections.List<ProductGroupAnalyticsResponseInner> = apiInstance.productGroupsAnalytics(adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime)
+            //val reportingTimezone : ReportingTimeZone =  // ReportingTimeZone | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+            //val result : kotlin.collections.List<ProductGroupAnalyticsResponseInner> = apiInstance.productGroupsAnalytics(adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone)
             //result shouldBe ("TODO")
         }
 

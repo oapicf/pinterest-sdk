@@ -5,14 +5,13 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.AdsAnalyticsTargetingType
 import scala.collection.immutable.Seq
 
 /**
  * 
- * @param targetingUnderscoretypes List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
+ * @param targetingUnderscoretypes List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AUDIENCE_MULTIPLIER\"] is only available in CAMPAIGN_TARGETING level. [\"MEDIA_TYPE\"] is only available in PRODUCT_ITEM_TARGETING level. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
  */
-case class TargetingTypeFilter(targetingUnderscoretypes: Option[Seq[AdsAnalyticsTargetingType]]
+case class TargetingTypeFilter(targetingUnderscoretypes: Option[Seq[String]]
                 )
 
 object TargetingTypeFilter {

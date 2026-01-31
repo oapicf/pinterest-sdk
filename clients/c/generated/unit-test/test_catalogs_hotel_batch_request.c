@@ -24,19 +24,19 @@ catalogs_hotel_batch_request_t* instantiate_catalogs_hotel_batch_request(int inc
   catalogs_hotel_batch_request_t* catalogs_hotel_batch_request = NULL;
   if (include_optional) {
     catalogs_hotel_batch_request = catalogs_hotel_batch_request_create(
+      "2680059592705",
       pinterest_rest_api_catalogs_hotel_batch_request_CATALOGTYPE_HOTEL,
-      pinterest_rest_api_catalogs_hotel_batch_request__"US",
-      pinterest_rest_api_catalogs_hotel_batch_request_LANGUAGE_af-ZA,
+      pinterest_rest_api_catalogs_hotel_batch_request__AD,
       list_createList(),
-      "2680059592705"
+      pinterest_rest_api_catalogs_hotel_batch_request_LANGUAGE_af-ZA
     );
   } else {
     catalogs_hotel_batch_request = catalogs_hotel_batch_request_create(
+      "2680059592705",
       pinterest_rest_api_catalogs_hotel_batch_request_CATALOGTYPE_HOTEL,
-      pinterest_rest_api_catalogs_hotel_batch_request__"US",
-      pinterest_rest_api_catalogs_hotel_batch_request_LANGUAGE_af-ZA,
+      pinterest_rest_api_catalogs_hotel_batch_request__AD,
       list_createList(),
-      "2680059592705"
+      pinterest_rest_api_catalogs_hotel_batch_request_LANGUAGE_af-ZA
     );
   }
 

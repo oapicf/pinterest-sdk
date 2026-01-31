@@ -79,7 +79,7 @@ private class OASUpdateAssetGroupResponseTest {
     @isTest
     private static void defaultValuesPopulated() {
         OASUpdateAssetGroupResponse updateAssetGroupResponse = new OASUpdateAssetGroupResponse();
-        System.assertEquals(new List<OASAssetGroupBinding>(), updateAssetGroupResponse.updatedAssetGroups);
         System.assertEquals(new List<OASUpdateAssetGroupResponseException>(), updateAssetGroupResponse.exceptions);
+        System.assertEquals(new List<OASAssetGroupBinding>(), updateAssetGroupResponse.updatedAssetGroups);
     }
 }

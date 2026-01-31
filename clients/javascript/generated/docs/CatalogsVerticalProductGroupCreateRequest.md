@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**catalogId** | **String** | Catalog id pertaining to the creative assets product group. | 
 **catalogType** | **String** |  | 
-**name** | **String** |  | 
+**country** | [**Country**](Country.md) |  | [optional] 
 **description** | **String** |  | [optional] 
 **filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | 
-**catalogId** | **String** | Catalog id pertaining to the creative assets product group. | 
-**country** | [**Country**](Country.md) |  | 
-**locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | 
+**locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | [optional] 
+**name** | **String** |  | 
 
 
 

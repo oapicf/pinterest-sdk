@@ -12,34 +12,34 @@ import AnyCodable
 
 public struct AudienceCategory: Codable, JSONEncodable, Hashable {
 
+    /** Interest ID. */
+    public var id: String?
+    /** Interest affinity index. */
+    public var index: Double?
     /** Interest unique key (same as ID). */
     public var key: String?
     /** Interest name. */
     public var name: String?
     /** Interest's percent of category's total audience. */
     public var ratio: Double?
-    /** Interest affinity index. */
-    public var index: Double?
-    /** Interest ID. */
-    public var id: String?
     /** Subcategory interest distribution */
     public var subcategories: [AudienceSubcategory]?
 
-    public init(key: String? = nil, name: String? = nil, ratio: Double? = nil, index: Double? = nil, id: String? = nil, subcategories: [AudienceSubcategory]? = nil) {
+    public init(id: String? = nil, index: Double? = nil, key: String? = nil, name: String? = nil, ratio: Double? = nil, subcategories: [AudienceSubcategory]? = nil) {
+        self.id = id
+        self.index = index
         self.key = key
         self.name = name
         self.ratio = ratio
-        self.index = index
-        self.id = id
         self.subcategories = subcategories
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case id
+        case index
         case key
         case name
         case ratio
-        case index
-        case id
         case subcategories
     }
 
@@ -47,11 +47,11 @@ public struct AudienceCategory: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(index, forKey: .index)
         try container.encodeIfPresent(key, forKey: .key)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(ratio, forKey: .ratio)
-        try container.encodeIfPresent(index, forKey: .index)
-        try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(subcategories, forKey: .subcategories)
     }
 }

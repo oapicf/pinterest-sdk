@@ -41,19 +41,19 @@ public class CatalogsListProductsByFilterRequestTest {
     }
 
     /**
-     * Test the property 'catalogType'
-     */
-    @Test
-    public void catalogTypeTest() {
-        // TODO: test catalogType
-    }
-
-    /**
      * Test the property 'catalogId'
      */
     @Test
     public void catalogIdTest() {
         // TODO: test catalogId
+    }
+
+    /**
+     * Test the property 'catalogType'
+     */
+    @Test
+    public void catalogTypeTest() {
+        // TODO: test catalogType
     }
 
     /**

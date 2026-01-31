@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,7 +13,6 @@ package openapi
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the AdGroupsAnalyticsResponseInner type satisfies the MappedNullable interface at compile time
@@ -21,8 +20,8 @@ var _ MappedNullable = &AdGroupsAnalyticsResponseInner{}
 
 // AdGroupsAnalyticsResponseInner struct for AdGroupsAnalyticsResponseInner
 type AdGroupsAnalyticsResponseInner struct {
-	// The ID of the ad group that this metrics belongs to.
-	AD_GROUP_ID string `json:"AD_GROUP_ID" validate:"regexp=^\\\\d+$"`
+	// The ID of the ad group that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
+	AD_GROUP_ID *string `json:"AD_GROUP_ID,omitempty" validate:"regexp=^\\\\d+$"`
 	// Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
 	DATE *string `json:"DATE,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -34,9 +33,8 @@ type _AdGroupsAnalyticsResponseInner AdGroupsAnalyticsResponseInner
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAdGroupsAnalyticsResponseInner(aDGROUPID string) *AdGroupsAnalyticsResponseInner {
+func NewAdGroupsAnalyticsResponseInner() *AdGroupsAnalyticsResponseInner {
 	this := AdGroupsAnalyticsResponseInner{}
-	this.AD_GROUP_ID = aDGROUPID
 	return &this
 }
 
@@ -48,28 +46,36 @@ func NewAdGroupsAnalyticsResponseInnerWithDefaults() *AdGroupsAnalyticsResponseI
 	return &this
 }
 
-// GetAD_GROUP_ID returns the AD_GROUP_ID field value
+// GetAD_GROUP_ID returns the AD_GROUP_ID field value if set, zero value otherwise.
 func (o *AdGroupsAnalyticsResponseInner) GetAD_GROUP_ID() string {
-	if o == nil {
+	if o == nil || IsNil(o.AD_GROUP_ID) {
 		var ret string
 		return ret
 	}
-
-	return o.AD_GROUP_ID
+	return *o.AD_GROUP_ID
 }
 
-// GetAD_GROUP_IDOk returns a tuple with the AD_GROUP_ID field value
+// GetAD_GROUP_IDOk returns a tuple with the AD_GROUP_ID field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AdGroupsAnalyticsResponseInner) GetAD_GROUP_IDOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AD_GROUP_ID) {
 		return nil, false
 	}
-	return &o.AD_GROUP_ID, true
+	return o.AD_GROUP_ID, true
 }
 
-// SetAD_GROUP_ID sets field value
+// HasAD_GROUP_ID returns a boolean if a field has been set.
+func (o *AdGroupsAnalyticsResponseInner) HasAD_GROUP_ID() bool {
+	if o != nil && !IsNil(o.AD_GROUP_ID) {
+		return true
+	}
+
+	return false
+}
+
+// SetAD_GROUP_ID gets a reference to the given string and assigns it to the AD_GROUP_ID field.
 func (o *AdGroupsAnalyticsResponseInner) SetAD_GROUP_ID(v string) {
-	o.AD_GROUP_ID = v
+	o.AD_GROUP_ID = &v
 }
 
 // GetDATE returns the DATE field value if set, zero value otherwise.
@@ -114,7 +120,9 @@ func (o AdGroupsAnalyticsResponseInner) MarshalJSON() ([]byte, error) {
 
 func (o AdGroupsAnalyticsResponseInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["AD_GROUP_ID"] = o.AD_GROUP_ID
+	if !IsNil(o.AD_GROUP_ID) {
+		toSerialize["AD_GROUP_ID"] = o.AD_GROUP_ID
+	}
 	if !IsNil(o.DATE) {
 		toSerialize["DATE"] = o.DATE
 	}
@@ -127,27 +135,6 @@ func (o AdGroupsAnalyticsResponseInner) ToMap() (map[string]interface{}, error) 
 }
 
 func (o *AdGroupsAnalyticsResponseInner) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"AD_GROUP_ID",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
 	varAdGroupsAnalyticsResponseInner := _AdGroupsAnalyticsResponseInner{}
 
 	err = json.Unmarshal(data, &varAdGroupsAnalyticsResponseInner)

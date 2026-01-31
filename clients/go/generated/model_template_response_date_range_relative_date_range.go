@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,12 +20,12 @@ var _ MappedNullable = &TemplateResponseDateRangeRelativeDateRange{}
 
 // TemplateResponseDateRangeRelativeDateRange The relative date range of the template
 type TemplateResponseDateRangeRelativeDateRange struct {
-	// The date range type
-	Type *string `json:"type,omitempty"`
-	// The start date of the date range
-	StartDaysInPast *float32 `json:"start_days_in_past,omitempty"`
 	// The end date of the date range
 	EndDaysInPast *float32 `json:"end_days_in_past,omitempty"`
+	// The start date of the date range
+	StartDaysInPast *float32 `json:"start_days_in_past,omitempty"`
+	// The date range type
+	Type *string `json:"type,omitempty"`
 }
 
 // NewTemplateResponseDateRangeRelativeDateRange instantiates a new TemplateResponseDateRangeRelativeDateRange object
@@ -43,70 +43,6 @@ func NewTemplateResponseDateRangeRelativeDateRange() *TemplateResponseDateRangeR
 func NewTemplateResponseDateRangeRelativeDateRangeWithDefaults() *TemplateResponseDateRangeRelativeDateRange {
 	this := TemplateResponseDateRangeRelativeDateRange{}
 	return &this
-}
-
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *TemplateResponseDateRangeRelativeDateRange) GetType() string {
-	if o == nil || IsNil(o.Type) {
-		var ret string
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TemplateResponseDateRangeRelativeDateRange) GetTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.Type) {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *TemplateResponseDateRangeRelativeDateRange) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *TemplateResponseDateRangeRelativeDateRange) SetType(v string) {
-	o.Type = &v
-}
-
-// GetStartDaysInPast returns the StartDaysInPast field value if set, zero value otherwise.
-func (o *TemplateResponseDateRangeRelativeDateRange) GetStartDaysInPast() float32 {
-	if o == nil || IsNil(o.StartDaysInPast) {
-		var ret float32
-		return ret
-	}
-	return *o.StartDaysInPast
-}
-
-// GetStartDaysInPastOk returns a tuple with the StartDaysInPast field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TemplateResponseDateRangeRelativeDateRange) GetStartDaysInPastOk() (*float32, bool) {
-	if o == nil || IsNil(o.StartDaysInPast) {
-		return nil, false
-	}
-	return o.StartDaysInPast, true
-}
-
-// HasStartDaysInPast returns a boolean if a field has been set.
-func (o *TemplateResponseDateRangeRelativeDateRange) HasStartDaysInPast() bool {
-	if o != nil && !IsNil(o.StartDaysInPast) {
-		return true
-	}
-
-	return false
-}
-
-// SetStartDaysInPast gets a reference to the given float32 and assigns it to the StartDaysInPast field.
-func (o *TemplateResponseDateRangeRelativeDateRange) SetStartDaysInPast(v float32) {
-	o.StartDaysInPast = &v
 }
 
 // GetEndDaysInPast returns the EndDaysInPast field value if set, zero value otherwise.
@@ -141,6 +77,70 @@ func (o *TemplateResponseDateRangeRelativeDateRange) SetEndDaysInPast(v float32)
 	o.EndDaysInPast = &v
 }
 
+// GetStartDaysInPast returns the StartDaysInPast field value if set, zero value otherwise.
+func (o *TemplateResponseDateRangeRelativeDateRange) GetStartDaysInPast() float32 {
+	if o == nil || IsNil(o.StartDaysInPast) {
+		var ret float32
+		return ret
+	}
+	return *o.StartDaysInPast
+}
+
+// GetStartDaysInPastOk returns a tuple with the StartDaysInPast field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TemplateResponseDateRangeRelativeDateRange) GetStartDaysInPastOk() (*float32, bool) {
+	if o == nil || IsNil(o.StartDaysInPast) {
+		return nil, false
+	}
+	return o.StartDaysInPast, true
+}
+
+// HasStartDaysInPast returns a boolean if a field has been set.
+func (o *TemplateResponseDateRangeRelativeDateRange) HasStartDaysInPast() bool {
+	if o != nil && !IsNil(o.StartDaysInPast) {
+		return true
+	}
+
+	return false
+}
+
+// SetStartDaysInPast gets a reference to the given float32 and assigns it to the StartDaysInPast field.
+func (o *TemplateResponseDateRangeRelativeDateRange) SetStartDaysInPast(v float32) {
+	o.StartDaysInPast = &v
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *TemplateResponseDateRangeRelativeDateRange) GetType() string {
+	if o == nil || IsNil(o.Type) {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TemplateResponseDateRangeRelativeDateRange) GetTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *TemplateResponseDateRangeRelativeDateRange) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *TemplateResponseDateRangeRelativeDateRange) SetType(v string) {
+	o.Type = &v
+}
+
 func (o TemplateResponseDateRangeRelativeDateRange) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -151,14 +151,14 @@ func (o TemplateResponseDateRangeRelativeDateRange) MarshalJSON() ([]byte, error
 
 func (o TemplateResponseDateRangeRelativeDateRange) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
+	if !IsNil(o.EndDaysInPast) {
+		toSerialize["end_days_in_past"] = o.EndDaysInPast
 	}
 	if !IsNil(o.StartDaysInPast) {
 		toSerialize["start_days_in_past"] = o.StartDaysInPast
 	}
-	if !IsNil(o.EndDaysInPast) {
-		toSerialize["end_days_in_past"] = o.EndDaysInPast
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
 	return toSerialize, nil
 }

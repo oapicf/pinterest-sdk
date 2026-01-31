@@ -13,19 +13,19 @@ import AnyCodable
 public struct ProductGroupAnalyticsResponseInner: Codable, JSONEncodable, Hashable {
 
     public static let PRODUCT_GROUP_IDRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    /** The ID of the product group that this metrics belongs to. */
-    public var PRODUCT_GROUP_ID: String
     /** Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`) */
     public var DATE: Date?
+    /** The ID of the product group that this metrics belongs to. */
+    public var PRODUCT_GROUP_ID: String
 
-    public init(PRODUCT_GROUP_ID: String, DATE: Date? = nil) {
-        self.PRODUCT_GROUP_ID = PRODUCT_GROUP_ID
+    public init(DATE: Date? = nil, PRODUCT_GROUP_ID: String) {
         self.DATE = DATE
+        self.PRODUCT_GROUP_ID = PRODUCT_GROUP_ID
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case PRODUCT_GROUP_ID
         case DATE
+        case PRODUCT_GROUP_ID
     }
 
     public var additionalProperties: [String: AnyCodable] = [:]
@@ -47,8 +47,8 @@ public struct ProductGroupAnalyticsResponseInner: Codable, JSONEncodable, Hashab
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(PRODUCT_GROUP_ID, forKey: .PRODUCT_GROUP_ID)
         try container.encodeIfPresent(DATE, forKey: .DATE)
+        try container.encode(PRODUCT_GROUP_ID, forKey: .PRODUCT_GROUP_ID)
         var additionalPropertiesContainer = encoder.container(keyedBy: String.self)
         try additionalPropertiesContainer.encodeMap(additionalProperties)
     }
@@ -58,11 +58,11 @@ public struct ProductGroupAnalyticsResponseInner: Codable, JSONEncodable, Hashab
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        PRODUCT_GROUP_ID = try container.decode(String.self, forKey: .PRODUCT_GROUP_ID)
         DATE = try container.decodeIfPresent(Date.self, forKey: .DATE)
+        PRODUCT_GROUP_ID = try container.decode(String.self, forKey: .PRODUCT_GROUP_ID)
         var nonAdditionalPropertyKeys = Set<String>()
-        nonAdditionalPropertyKeys.insert("PRODUCT_GROUP_ID")
         nonAdditionalPropertyKeys.insert("DATE")
+        nonAdditionalPropertyKeys.insert("PRODUCT_GROUP_ID")
         let additionalPropertiesContainer = try decoder.container(keyedBy: String.self)
         additionalProperties = try additionalPropertiesContainer.decodeMap(AnyCodable.self, excludedKeys: nonAdditionalPropertyKeys)
     }

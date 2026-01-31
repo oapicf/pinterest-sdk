@@ -8,13 +8,13 @@ import org.openapitools._
 
 /**
  * 
- * @param website Website with path or domain only
  * @param status Status of the verification process
  * @param verifiedUnderscoreat UTC timestamp when the verification happened - sometimes missing
+ * @param website Website with path or domain only
  */
-case class UserWebsiteSummary(website: Option[String],
-                status: Option[String],
-                verifiedUnderscoreat: Option[String]
+case class UserWebsiteSummary(status: Option[String],
+                verifiedUnderscoreat: Option[String],
+                website: Option[String]
                 )
 
 object UserWebsiteSummary {

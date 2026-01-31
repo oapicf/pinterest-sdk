@@ -20,22 +20,22 @@ typedef struct conversion_events_data_inner_custom_data_contents_inner_t convers
 
 typedef struct conversion_events_data_inner_custom_data_contents_inner_t {
     char *id; // string
+    char *item_brand; // string
+    char *item_category; // string
+    char *item_name; // string
     char *item_price; // string
     long quantity; //numeric
-    char *item_name; // string
-    char *item_category; // string
-    char *item_brand; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } conversion_events_data_inner_custom_data_contents_inner_t;
 
 __attribute__((deprecated)) conversion_events_data_inner_custom_data_contents_inner_t *conversion_events_data_inner_custom_data_contents_inner_create(
     char *id,
-    char *item_price,
-    long quantity,
-    char *item_name,
+    char *item_brand,
     char *item_category,
-    char *item_brand
+    char *item_name,
+    char *item_price,
+    long quantity
 );
 
 void conversion_events_data_inner_custom_data_contents_inner_free(conversion_events_data_inner_custom_data_contents_inner_t *conversion_events_data_inner_custom_data_contents_inner);

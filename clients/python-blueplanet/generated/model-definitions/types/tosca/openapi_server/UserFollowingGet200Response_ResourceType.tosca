@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server UserFollowingGet200Response"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a UserFollowingGet200Response"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  UserSummary = openapi_server.resourceTypes.UserSummary
+}
+resourceTypes {
+
+  UserFollowingGet200Response {
+    title = UserFollowingGet200Response
+    description = UserFollowingGet200Response
+    derivedFrom = Root
+    properties {
+        bookmark {
+          type =  string
+          description = ""
+          optional = false
+        }
+        items {
+          type = array
+          items.type = UserSummary
+          description = "Users"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  UserFollowingGet200Response {
+    title = UserFollowingGet200Response
+    description = UserFollowingGet200Response
+    implements = openapi_server.resourceTypes.UserFollowingGet200Response
+
+  }
+}

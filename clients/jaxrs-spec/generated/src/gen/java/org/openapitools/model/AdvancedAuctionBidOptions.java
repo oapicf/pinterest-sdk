@@ -21,13 +21,32 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Object describing a retail catalog item's bid options (bid price and bid multipliers).")
 @JsonTypeName("AdvancedAuctionBidOptions")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionBidOptions   {
-  private Long bidInMicroCurrency;
   private AppTypeMultipliers appTypeMultipliers;
+  private Long bidInMicroCurrency;
   private PlacementMultipliers placementMultipliers;
 
   public AdvancedAuctionBidOptions() {
+  }
+
+  /**
+   **/
+  public AdvancedAuctionBidOptions appTypeMultipliers(AppTypeMultipliers appTypeMultipliers) {
+    this.appTypeMultipliers = appTypeMultipliers;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("app_type_multipliers")
+  @Valid public AppTypeMultipliers getAppTypeMultipliers() {
+    return appTypeMultipliers;
+  }
+
+  @JsonProperty("app_type_multipliers")
+  public void setAppTypeMultipliers(AppTypeMultipliers appTypeMultipliers) {
+    this.appTypeMultipliers = appTypeMultipliers;
   }
 
   /**
@@ -48,25 +67,6 @@ public class AdvancedAuctionBidOptions   {
   @JsonProperty("bid_in_micro_currency")
   public void setBidInMicroCurrency(Long bidInMicroCurrency) {
     this.bidInMicroCurrency = bidInMicroCurrency;
-  }
-
-  /**
-   **/
-  public AdvancedAuctionBidOptions appTypeMultipliers(AppTypeMultipliers appTypeMultipliers) {
-    this.appTypeMultipliers = appTypeMultipliers;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("app_type_multipliers")
-  @Valid public AppTypeMultipliers getAppTypeMultipliers() {
-    return appTypeMultipliers;
-  }
-
-  @JsonProperty("app_type_multipliers")
-  public void setAppTypeMultipliers(AppTypeMultipliers appTypeMultipliers) {
-    this.appTypeMultipliers = appTypeMultipliers;
   }
 
   /**
@@ -98,14 +98,14 @@ public class AdvancedAuctionBidOptions   {
       return false;
     }
     AdvancedAuctionBidOptions advancedAuctionBidOptions = (AdvancedAuctionBidOptions) o;
-    return Objects.equals(this.bidInMicroCurrency, advancedAuctionBidOptions.bidInMicroCurrency) &&
-        Objects.equals(this.appTypeMultipliers, advancedAuctionBidOptions.appTypeMultipliers) &&
+    return Objects.equals(this.appTypeMultipliers, advancedAuctionBidOptions.appTypeMultipliers) &&
+        Objects.equals(this.bidInMicroCurrency, advancedAuctionBidOptions.bidInMicroCurrency) &&
         Objects.equals(this.placementMultipliers, advancedAuctionBidOptions.placementMultipliers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bidInMicroCurrency, appTypeMultipliers, placementMultipliers);
+    return Objects.hash(appTypeMultipliers, bidInMicroCurrency, placementMultipliers);
   }
 
   @Override
@@ -113,8 +113,8 @@ public class AdvancedAuctionBidOptions   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvancedAuctionBidOptions {\n");
     
-    sb.append("    bidInMicroCurrency: ").append(toIndentedString(bidInMicroCurrency)).append("\n");
     sb.append("    appTypeMultipliers: ").append(toIndentedString(appTypeMultipliers)).append("\n");
+    sb.append("    bidInMicroCurrency: ").append(toIndentedString(bidInMicroCurrency)).append("\n");
     sb.append("    placementMultipliers: ").append(toIndentedString(placementMultipliers)).append("\n");
     sb.append("}");
     return sb.toString();

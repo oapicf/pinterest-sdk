@@ -22,15 +22,15 @@ integration_logs_invalid_log_response_rejected_logs_inner_t* instantiate_integra
   integration_logs_invalid_log_response_rejected_logs_inner_t* integration_logs_invalid_log_response_rejected_logs_inner = NULL;
   if (include_optional) {
     integration_logs_invalid_log_response_rejected_logs_inner = integration_logs_invalid_log_response_rejected_logs_inner_create(
-      56,
       "0",
+      56,
       "0",
       "0"
     );
   } else {
     integration_logs_invalid_log_response_rejected_logs_inner = integration_logs_invalid_log_response_rejected_logs_inner_create(
-      56,
       "0",
+      56,
       "0",
       "0"
     );

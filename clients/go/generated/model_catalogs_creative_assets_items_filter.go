@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,10 +22,10 @@ var _ MappedNullable = &CatalogsCreativeAssetsItemsFilter{}
 
 // CatalogsCreativeAssetsItemsFilter struct for CatalogsCreativeAssetsItemsFilter
 type CatalogsCreativeAssetsItemsFilter struct {
-	CatalogType string `json:"catalog_type"`
-	CreativeAssetsIds []string `json:"creative_assets_ids"`
 	// Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
 	CatalogId *string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
+	CatalogType string `json:"catalog_type"`
+	CreativeAssetsIds []string `json:"creative_assets_ids"`
 }
 
 type _CatalogsCreativeAssetsItemsFilter CatalogsCreativeAssetsItemsFilter
@@ -47,6 +47,38 @@ func NewCatalogsCreativeAssetsItemsFilter(catalogType string, creativeAssetsIds 
 func NewCatalogsCreativeAssetsItemsFilterWithDefaults() *CatalogsCreativeAssetsItemsFilter {
 	this := CatalogsCreativeAssetsItemsFilter{}
 	return &this
+}
+
+// GetCatalogId returns the CatalogId field value if set, zero value otherwise.
+func (o *CatalogsCreativeAssetsItemsFilter) GetCatalogId() string {
+	if o == nil || IsNil(o.CatalogId) {
+		var ret string
+		return ret
+	}
+	return *o.CatalogId
+}
+
+// GetCatalogIdOk returns a tuple with the CatalogId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsCreativeAssetsItemsFilter) GetCatalogIdOk() (*string, bool) {
+	if o == nil || IsNil(o.CatalogId) {
+		return nil, false
+	}
+	return o.CatalogId, true
+}
+
+// HasCatalogId returns a boolean if a field has been set.
+func (o *CatalogsCreativeAssetsItemsFilter) HasCatalogId() bool {
+	if o != nil && !IsNil(o.CatalogId) {
+		return true
+	}
+
+	return false
+}
+
+// SetCatalogId gets a reference to the given string and assigns it to the CatalogId field.
+func (o *CatalogsCreativeAssetsItemsFilter) SetCatalogId(v string) {
+	o.CatalogId = &v
 }
 
 // GetCatalogType returns the CatalogType field value
@@ -97,38 +129,6 @@ func (o *CatalogsCreativeAssetsItemsFilter) SetCreativeAssetsIds(v []string) {
 	o.CreativeAssetsIds = v
 }
 
-// GetCatalogId returns the CatalogId field value if set, zero value otherwise.
-func (o *CatalogsCreativeAssetsItemsFilter) GetCatalogId() string {
-	if o == nil || IsNil(o.CatalogId) {
-		var ret string
-		return ret
-	}
-	return *o.CatalogId
-}
-
-// GetCatalogIdOk returns a tuple with the CatalogId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsCreativeAssetsItemsFilter) GetCatalogIdOk() (*string, bool) {
-	if o == nil || IsNil(o.CatalogId) {
-		return nil, false
-	}
-	return o.CatalogId, true
-}
-
-// HasCatalogId returns a boolean if a field has been set.
-func (o *CatalogsCreativeAssetsItemsFilter) HasCatalogId() bool {
-	if o != nil && !IsNil(o.CatalogId) {
-		return true
-	}
-
-	return false
-}
-
-// SetCatalogId gets a reference to the given string and assigns it to the CatalogId field.
-func (o *CatalogsCreativeAssetsItemsFilter) SetCatalogId(v string) {
-	o.CatalogId = &v
-}
-
 func (o CatalogsCreativeAssetsItemsFilter) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -139,11 +139,11 @@ func (o CatalogsCreativeAssetsItemsFilter) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsCreativeAssetsItemsFilter) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["catalog_type"] = o.CatalogType
-	toSerialize["creative_assets_ids"] = o.CreativeAssetsIds
 	if !IsNil(o.CatalogId) {
 		toSerialize["catalog_id"] = o.CatalogId
 	}
+	toSerialize["catalog_type"] = o.CatalogType
+	toSerialize["creative_assets_ids"] = o.CreativeAssetsIds
 	return toSerialize, nil
 }
 

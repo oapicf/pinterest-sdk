@@ -1,0 +1,25 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "id" },
+      {"model": "invite_data" },
+      {"model": "is_received_invite" },
+      {"model": "user" },
+      {"model": "assets_summary" },
+      {"model": "business_roles" },
+      {"model": "created_by_business" },
+      {"model": "created_by_user" },
+      {"model": "created_time" },
+    ]
+  }]
+}

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,10 +22,9 @@ var _ MappedNullable = &CustomerListUpdateRequest{}
 
 // CustomerListUpdateRequest struct for CustomerListUpdateRequest
 type CustomerListUpdateRequest struct {
+	OperationType UserListOperationType `json:"operation_type"`
 	// Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
 	Records string `json:"records"`
-	OperationType UserListOperationType `json:"operation_type"`
-	Exceptions Exception `json:"exceptions,omitempty"`
 }
 
 type _CustomerListUpdateRequest CustomerListUpdateRequest
@@ -34,10 +33,10 @@ type _CustomerListUpdateRequest CustomerListUpdateRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCustomerListUpdateRequest(records string, operationType UserListOperationType) *CustomerListUpdateRequest {
+func NewCustomerListUpdateRequest(operationType UserListOperationType, records string) *CustomerListUpdateRequest {
 	this := CustomerListUpdateRequest{}
-	this.Records = records
 	this.OperationType = operationType
+	this.Records = records
 	return &this
 }
 
@@ -47,30 +46,6 @@ func NewCustomerListUpdateRequest(records string, operationType UserListOperatio
 func NewCustomerListUpdateRequestWithDefaults() *CustomerListUpdateRequest {
 	this := CustomerListUpdateRequest{}
 	return &this
-}
-
-// GetRecords returns the Records field value
-func (o *CustomerListUpdateRequest) GetRecords() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Records
-}
-
-// GetRecordsOk returns a tuple with the Records field value
-// and a boolean to check if the value has been set.
-func (o *CustomerListUpdateRequest) GetRecordsOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Records, true
-}
-
-// SetRecords sets field value
-func (o *CustomerListUpdateRequest) SetRecords(v string) {
-	o.Records = v
 }
 
 // GetOperationType returns the OperationType field value
@@ -97,36 +72,28 @@ func (o *CustomerListUpdateRequest) SetOperationType(v UserListOperationType) {
 	o.OperationType = v
 }
 
-// GetExceptions returns the Exceptions field value if set, zero value otherwise.
-func (o *CustomerListUpdateRequest) GetExceptions() Exception {
-	if o == nil || IsNil(o.Exceptions) {
-		var ret Exception
+// GetRecords returns the Records field value
+func (o *CustomerListUpdateRequest) GetRecords() string {
+	if o == nil {
+		var ret string
 		return ret
 	}
-	return o.Exceptions
+
+	return o.Records
 }
 
-// GetExceptionsOk returns a tuple with the Exceptions field value if set, nil otherwise
+// GetRecordsOk returns a tuple with the Records field value
 // and a boolean to check if the value has been set.
-func (o *CustomerListUpdateRequest) GetExceptionsOk() (Exception, bool) {
-	if o == nil || IsNil(o.Exceptions) {
-		return Exception{}, false
+func (o *CustomerListUpdateRequest) GetRecordsOk() (*string, bool) {
+	if o == nil {
+		return nil, false
 	}
-	return o.Exceptions, true
+	return &o.Records, true
 }
 
-// HasExceptions returns a boolean if a field has been set.
-func (o *CustomerListUpdateRequest) HasExceptions() bool {
-	if o != nil && !IsNil(o.Exceptions) {
-		return true
-	}
-
-	return false
-}
-
-// SetExceptions gets a reference to the given Exception and assigns it to the Exceptions field.
-func (o *CustomerListUpdateRequest) SetExceptions(v Exception) {
-	o.Exceptions = v
+// SetRecords sets field value
+func (o *CustomerListUpdateRequest) SetRecords(v string) {
+	o.Records = v
 }
 
 func (o CustomerListUpdateRequest) MarshalJSON() ([]byte, error) {
@@ -139,11 +106,8 @@ func (o CustomerListUpdateRequest) MarshalJSON() ([]byte, error) {
 
 func (o CustomerListUpdateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["records"] = o.Records
 	toSerialize["operation_type"] = o.OperationType
-	if !IsNil(o.Exceptions) {
-		toSerialize["exceptions"] = o.Exceptions
-	}
+	toSerialize["records"] = o.Records
 	return toSerialize, nil
 }
 
@@ -152,8 +116,8 @@ func (o *CustomerListUpdateRequest) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"records",
 		"operation_type",
+		"records",
 	}
 
 	allProperties := make(map[string]interface{})

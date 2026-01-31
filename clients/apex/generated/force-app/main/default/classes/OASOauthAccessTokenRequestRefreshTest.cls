@@ -74,7 +74,6 @@ private class OASOauthAccessTokenRequestRefreshTest {
         OASOauthAccessTokenRequestRefresh oauthAccessTokenRequestRefresh = new OASOauthAccessTokenRequestRefresh();
         Map<String, String> x-property-mappings = oauthAccessTokenRequestRefresh.getx-property-mappings();
         System.assertEquals('refreshToken', x-property-mappings.get('refresh_token'));
-        System.assertEquals('refreshOn', x-property-mappings.get('refresh_on'));
         System.assertEquals('grantType', x-property-mappings.get('grant_type'));
     }
 }

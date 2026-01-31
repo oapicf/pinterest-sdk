@@ -5,10 +5,12 @@ Request for creation of entities in bulk.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**campaigns** | [**array[CampaignUpdateRequest]**](CampaignUpdateRequest.md) |  | [optional] 
 **ad_groups** | [**array[AdGroupUpdateRequest]**](AdGroupUpdateRequest.md) |  | [optional] 
 **ads** | [**array[AdUpdateRequest]**](AdUpdateRequest.md) |  | [optional] 
-**product_groups** | [**array[ProductGroupPromotionUpdateRequest]**](ProductGroupPromotionUpdateRequest.md) |  | [optional] 
+**campaigns** | [**array[CampaignUpdateRequest]**](CampaignUpdateRequest.md) |  | [optional] 
+**catalog_product_groups** | [**array[CatalogsProductGroupsUpdateRequest]**](catalogs_product_groups_update_request.md) |  | [optional] 
 **keywords** | [**array[KeywordUpdate]**](KeywordUpdate.md) |  | [optional] 
+**labels** | [**array[LabelBulkUpdateRequest]**](LabelBulkUpdateRequest.md) |  | [optional] 
+**product_groups** | [**array[ProductGroupPromotionUpdateRequest]**](ProductGroupPromotionUpdateRequest.md) |  | [optional] 
 
 

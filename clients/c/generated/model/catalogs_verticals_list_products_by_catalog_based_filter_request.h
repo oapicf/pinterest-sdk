@@ -33,20 +33,20 @@ pinterest_rest_api_catalogs_verticals_list_products_by_catalog_based_filter_requ
 
 
 typedef struct catalogs_verticals_list_products_by_catalog_based_filter_request_t {
-    pinterest_rest_api_catalogs_verticals_list_products_by_catalog_based_filter_request_CATALOGTYPE_e catalog_type; //enum
     char *catalog_id; // string
-    struct catalogs_creative_assets_product_group_filters_t *filters; //model
+    pinterest_rest_api_catalogs_verticals_list_products_by_catalog_based_filter_request_CATALOGTYPE_e catalog_type; //enum
     pinterest_rest_api_country__e country; //referenced enum
+    struct catalogs_creative_assets_product_group_filters_t *filters; //model
     pinterest_rest_api_catalogs_locale__e locale; //referenced enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_verticals_list_products_by_catalog_based_filter_request_t;
 
 __attribute__((deprecated)) catalogs_verticals_list_products_by_catalog_based_filter_request_t *catalogs_verticals_list_products_by_catalog_based_filter_request_create(
-    pinterest_rest_api_catalogs_verticals_list_products_by_catalog_based_filter_request_CATALOGTYPE_e catalog_type,
     char *catalog_id,
-    catalogs_creative_assets_product_group_filters_t *filters,
+    pinterest_rest_api_catalogs_verticals_list_products_by_catalog_based_filter_request_CATALOGTYPE_e catalog_type,
     pinterest_rest_api_country__e country,
+    catalogs_creative_assets_product_group_filters_t *filters,
     pinterest_rest_api_catalogs_locale__e locale
 );
 

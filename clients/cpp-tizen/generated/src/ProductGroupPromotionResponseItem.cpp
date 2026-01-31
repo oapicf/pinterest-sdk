@@ -23,7 +23,7 @@ ProductGroupPromotionResponseItem::~ProductGroupPromotionResponseItem()
 void
 ProductGroupPromotionResponseItem::__init()
 {
-	//data = new ProductGroupPromotionResponseElement();
+	//data = new ProductGroupPromotion();
 	//new std::list()std::list> exceptions;
 }
 
@@ -53,11 +53,11 @@ ProductGroupPromotionResponseItem::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("ProductGroupPromotionResponseElement")) {
-			jsonToValue(&data, node, "ProductGroupPromotionResponseElement", "ProductGroupPromotionResponseElement");
+		if (isprimitive("ProductGroupPromotion")) {
+			jsonToValue(&data, node, "ProductGroupPromotion", "ProductGroupPromotion");
 		} else {
 			
-			ProductGroupPromotionResponseElement* obj = static_cast<ProductGroupPromotionResponseElement*> (&data);
+			ProductGroupPromotion* obj = static_cast<ProductGroupPromotion*> (&data);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -98,13 +98,13 @@ ProductGroupPromotionResponseItem::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("ProductGroupPromotionResponseElement")) {
-		ProductGroupPromotionResponseElement obj = getData();
-		node = converttoJson(&obj, "ProductGroupPromotionResponseElement", "");
+	if (isprimitive("ProductGroupPromotion")) {
+		ProductGroupPromotion obj = getData();
+		node = converttoJson(&obj, "ProductGroupPromotion", "");
 	}
 	else {
 		
-		ProductGroupPromotionResponseElement obj = static_cast<ProductGroupPromotionResponseElement> (getData());
+		ProductGroupPromotion obj = static_cast<ProductGroupPromotion> (getData());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -145,14 +145,14 @@ ProductGroupPromotionResponseItem::toJson()
 	return ret;
 }
 
-ProductGroupPromotionResponseElement
+ProductGroupPromotion
 ProductGroupPromotionResponseItem::getData()
 {
 	return data;
 }
 
 void
-ProductGroupPromotionResponseItem::setData(ProductGroupPromotionResponseElement  data)
+ProductGroupPromotionResponseItem::setData(ProductGroupPromotion  data)
 {
 	this->data = data;
 }

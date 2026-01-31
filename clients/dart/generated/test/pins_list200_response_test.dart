@@ -16,13 +16,13 @@ void main() {
   // final instance = PinsList200Response();
 
   group('test PinsList200Response', () {
-    // List<Pin> items (default value: const [])
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // List<Pin> items (default value: const [])
+    test('to test the property `items`', () async {
       // TODO
     });
 

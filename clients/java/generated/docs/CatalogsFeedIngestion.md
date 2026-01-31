@@ -7,9 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **String** |  |  |
-|**feedId** | **String** |  |  |
 |**createdAt** | **OffsetDateTime** |  |  |
+|**feedId** | **String** |  |  |
+|**id** | **String** |  |  |
 |**status** | **CatalogsFeedProcessingStatus** |  |  |
 
 

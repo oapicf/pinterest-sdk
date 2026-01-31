@@ -19,21 +19,21 @@ typedef struct audience_insight_category_common_t audience_insight_category_comm
 
 
 typedef struct audience_insight_category_common_t {
+    char *id; // string
+    double index; //numeric
     char *key; // string
     char *name; // string
     double ratio; //numeric
-    double index; //numeric
-    char *id; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } audience_insight_category_common_t;
 
 __attribute__((deprecated)) audience_insight_category_common_t *audience_insight_category_common_create(
+    char *id,
+    double index,
     char *key,
     char *name,
-    double ratio,
-    double index,
-    char *id
+    double ratio
 );
 
 void audience_insight_category_common_free(audience_insight_category_common_t *audience_insight_category_common);

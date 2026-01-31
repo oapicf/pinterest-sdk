@@ -15,14 +15,14 @@ import CatalogsCreativeAssetsItemsBatch._
 case class CatalogsCreativeAssetsItemsBatch (
   /* Id of the catalogs items batch */
   batchId: Option[String],
-/* Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss */
-  createdTime: Option[OffsetDateTime],
+catalogType: CatalogsType,
 /* Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss */
   completedTime: Option[OffsetDateTime],
-status: Option[BatchOperationStatus],
-catalogType: CatalogsType,
+/* Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss */
+  createdTime: Option[OffsetDateTime],
 /* Array with the catalogs items processing records part of the catalogs items batch */
-  items: Option[List[CreativeAssetsProcessingRecord]])
+  items: Option[List[CreativeAssetsProcessingRecord]],
+status: Option[BatchOperationStatus])
 
 object CatalogsCreativeAssetsItemsBatch {
   import DateTimeCodecs._

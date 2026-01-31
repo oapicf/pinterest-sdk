@@ -15,16 +15,16 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param username Username
  * @param type Always \"user\"
+ * @param username Username
  */
 data class UserSummary(
 
-    @Schema(example = "username", description = "Username")
-    @get:JsonProperty("username") val username: kotlin.String? = null,
-
     @Schema(example = "user", description = "Always \"user\"")
-    @get:JsonProperty("type") val type: kotlin.String? = null
+    @get:JsonProperty("type") val type: kotlin.String? = null,
+
+    @Schema(example = "username", description = "Username")
+    @get:JsonProperty("username") val username: kotlin.String? = null
 ) {
 
 }

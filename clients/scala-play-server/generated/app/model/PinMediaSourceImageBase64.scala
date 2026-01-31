@@ -3,15 +3,16 @@ package model
 import play.api.libs.json._
 
 /**
-  * Base64-encoded image media source
+  * Image Base64-based media source.
   * @param isStandard Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
+  * @param sourceType The source type of the media.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class PinMediaSourceImageBase64(
-  sourceType: PinMediaSourceImageBase64.SourceType.Value,
-  contentType: PinMediaSourceImageBase64.ContentType.Value,
+  contentType: ContentType,
   data: String,
-  isStandard: Option[Boolean]
+  isStandard: Option[Boolean],
+  sourceType: PinMediaSourceImageBase64.SourceType.Value
 )
 
 object PinMediaSourceImageBase64 {
@@ -23,15 +24,6 @@ object PinMediaSourceImageBase64 {
 
     type SourceType = Value
     implicit lazy val SourceTypeJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])
-  }
-
-  // noinspection TypeAnnotation
-  object ContentType extends Enumeration {
-    val ImageJpeg = Value("image/jpeg")
-    val ImagePng = Value("image/png")
-
-    type ContentType = Value
-    implicit lazy val ContentTypeJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])
   }
 }
 

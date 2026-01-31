@@ -21,7 +21,6 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param name Customer list name.
  * @param records Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
  * @param listType 
- * @param exceptions Customer list errors.
  */
 data class CustomerListRequest(
 
@@ -33,11 +32,7 @@ data class CustomerListRequest(
 
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("list_type") val listType: UserListType? = "EMAIL",
-
-    @field:Valid
-    @Schema(example = "null", description = "Customer list errors.")
-    @get:JsonProperty("exceptions") val exceptions: kotlin.Any? = null
+    @get:JsonProperty("list_type") val listType: UserListType? = "EMAIL"
 ) {
 
 }

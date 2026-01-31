@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `UpdatePartnerAssetAccessBody_accesses_inner`
 --
-SELECT `partner_id`, `asset_id`, `permissions` FROM `UpdatePartnerAssetAccessBody_accesses_inner` WHERE 1;
+SELECT `asset_id`, `partner_id`, `permissions` FROM `UpdatePartnerAssetAccessBody_accesses_inner` WHERE 1;
 
 --
 -- INSERT template for table `UpdatePartnerAssetAccessBody_accesses_inner`
 --
-INSERT INTO `UpdatePartnerAssetAccessBody_accesses_inner`(`partner_id`, `asset_id`, `permissions`) VALUES (?, ?, ?);
+INSERT INTO `UpdatePartnerAssetAccessBody_accesses_inner`(`asset_id`, `partner_id`, `permissions`) VALUES (?, ?, ?);
 
 --
 -- UPDATE template for table `UpdatePartnerAssetAccessBody_accesses_inner`
 --
-UPDATE `UpdatePartnerAssetAccessBody_accesses_inner` SET `partner_id` = ?, `asset_id` = ?, `permissions` = ? WHERE 1;
+UPDATE `UpdatePartnerAssetAccessBody_accesses_inner` SET `asset_id` = ?, `partner_id` = ?, `permissions` = ? WHERE 1;
 
 --
 -- DELETE template for table `UpdatePartnerAssetAccessBody_accesses_inner`

@@ -14,7 +14,7 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Search pins by a given search term
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
 
 
 ### Parameters
@@ -92,7 +92,7 @@ Search for boards for the \"operation user_account\". This includes boards of al
 
 <a id="searchuserpinslist"></a>
 # **SearchUserPinsList**
-> PinsList200Response SearchUserPinsList (string query, string adAccountId = null, string bookmark = null)
+> SearchUserPinsList200Response SearchUserPinsList (string query, string adAccountId = null, string bookmark = null)
 
 Search user's Pins
 
@@ -109,7 +109,7 @@ Search for pins for the \"operation user_account\". - By default, the \"operatio
 
 ### Return type
 
-[**PinsList200Response**](PinsList200Response.md)
+[**SearchUserPinsList200Response**](SearchUserPinsList200Response.md)
 
 ### Authorization
 

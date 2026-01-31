@@ -14,10 +14,10 @@ module GetMMMReportResponseData =
   type GetMMMReportResponseData = {
     [<JsonProperty(PropertyName = "report_status")>]
     ReportStatus : string;
-    [<JsonProperty(PropertyName = "url")>]
-    Url : string option;
     [<JsonProperty(PropertyName = "size")>]
     Size : decimal option;
+    [<JsonProperty(PropertyName = "url")>]
+    Url : string option;
   }
 
   //#endregion

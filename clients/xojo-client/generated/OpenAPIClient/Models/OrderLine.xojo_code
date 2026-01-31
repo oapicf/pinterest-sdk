@@ -3,6 +3,30 @@ Protected Class OrderLine
 
 	#tag Property, Flags = &h0
 		#tag Note
+			Ad account ID.
+		#tag EndNote
+		ad_account_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Order line budget in micro currency.
+		#tag EndNote
+		budget As Xoson.O.OptionalDouble
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			End time. Unix timestamp.
+		#tag EndNote
+		end_time As Xoson.O.OptionalDouble
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			Order line ID.
 		#tag EndNote
 		id As Xoson.O.OptionalString
@@ -11,17 +35,25 @@ Protected Class OrderLine
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Always "orderline".
+			Order line name.
 		#tag EndNote
-		type As Xoson.O.OptionalString
+		name As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Ad account ID.
+			Order line paid budget in micro currency.
 		#tag EndNote
-		ad_account_id As Xoson.O.OptionalString
+		paid_budget As Xoson.O.OptionalDouble
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Order line paid type.
+		#tag EndNote
+		paid_type As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -43,30 +75,6 @@ Protected Class OrderLine
 
 	#tag Property, Flags = &h0
 		#tag Note
-			End time. Unix timestamp.
-		#tag EndNote
-		end_time As Xoson.O.OptionalDouble
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Order line budget in micro currency.
-		#tag EndNote
-		budget As Xoson.O.OptionalDouble
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Order line paid budget in micro currency.
-		#tag EndNote
-		paid_budget As Xoson.O.OptionalDouble
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
 			Order line status.
 		#tag EndNote
 		status As Xoson.O.OptionalString
@@ -75,17 +83,9 @@ Protected Class OrderLine
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Order line name.
+			Always "orderline".
 		#tag EndNote
-		name As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Order line paid type.
-		#tag EndNote
-		paid_type As Xoson.O.OptionalString
+		type As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -134,6 +134,30 @@ Protected Class OrderLine
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="ad_account_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="budget"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Double"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="end_time"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Double"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="id"
 			Visible=false
 			Group="Behavior"
@@ -142,7 +166,7 @@ Protected Class OrderLine
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="type"
+			Name="name"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -150,11 +174,19 @@ Protected Class OrderLine
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="ad_account_id"
+			Name="paid_budget"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="String"
+			Type="Double"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="paid_type"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="OrderLinePaidType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -174,30 +206,6 @@ Protected Class OrderLine
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="end_time"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Double"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="budget"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Double"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="paid_budget"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Double"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="status"
 			Visible=false
 			Group="Behavior"
@@ -206,19 +214,11 @@ Protected Class OrderLine
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="name"
+			Name="type"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="paid_type"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="OrderLinePaidType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

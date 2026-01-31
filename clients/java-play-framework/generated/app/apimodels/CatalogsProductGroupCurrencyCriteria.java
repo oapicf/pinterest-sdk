@@ -10,35 +10,18 @@ import javax.validation.Valid;
 /**
  * A currency filter. This filter cannot be negated
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsProductGroupCurrencyCriteria   {
+  @JsonProperty("negated")
+  
+  private Boolean negated = false;
+
   @JsonProperty("values")
   @NotNull
 @Valid
 
   private NonNullableCatalogsCurrency values;
-
-  @JsonProperty("negated")
-  
-  private Boolean negated = false;
-
-  public CatalogsProductGroupCurrencyCriteria values(NonNullableCatalogsCurrency values) {
-    this.values = values;
-    return this;
-  }
-
-   /**
-   * Get values
-   * @return values
-  **/
-  public NonNullableCatalogsCurrency getValues() {
-    return values;
-  }
-
-  public void setValues(NonNullableCatalogsCurrency values) {
-    this.values = values;
-  }
 
   public CatalogsProductGroupCurrencyCriteria negated(Boolean negated) {
     this.negated = negated;
@@ -57,6 +40,23 @@ public class CatalogsProductGroupCurrencyCriteria   {
     this.negated = negated;
   }
 
+  public CatalogsProductGroupCurrencyCriteria values(NonNullableCatalogsCurrency values) {
+    this.values = values;
+    return this;
+  }
+
+   /**
+   * Get values
+   * @return values
+  **/
+  public NonNullableCatalogsCurrency getValues() {
+    return values;
+  }
+
+  public void setValues(NonNullableCatalogsCurrency values) {
+    this.values = values;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -67,13 +67,13 @@ public class CatalogsProductGroupCurrencyCriteria   {
       return false;
     }
     CatalogsProductGroupCurrencyCriteria catalogsProductGroupCurrencyCriteria = (CatalogsProductGroupCurrencyCriteria) o;
-    return Objects.equals(values, catalogsProductGroupCurrencyCriteria.values) &&
-        Objects.equals(negated, catalogsProductGroupCurrencyCriteria.negated);
+    return Objects.equals(negated, catalogsProductGroupCurrencyCriteria.negated) &&
+        Objects.equals(values, catalogsProductGroupCurrencyCriteria.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, negated);
+    return Objects.hash(negated, values);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -82,8 +82,8 @@ public class CatalogsProductGroupCurrencyCriteria   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupCurrencyCriteria {\n");
     
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

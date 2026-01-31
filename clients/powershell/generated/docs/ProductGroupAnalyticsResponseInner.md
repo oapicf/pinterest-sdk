@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PRODUCTGROUPID** | **String** | The ID of the product group that this metrics belongs to. | 
 **DATE** | **System.DateTime** | Current metrics date. Only returned when granularity is a time-based value (&#x60;DAY&#x60;, &#x60;HOUR&#x60;, &#x60;WEEK&#x60;, &#x60;MONTH&#x60;) | [optional] 
+**PRODUCTGROUPID** | **String** | The ID of the product group that this metrics belongs to. | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$ProductGroupAnalyticsResponseInner = Initialize-PSOpenAPIToolsProductGroupAnalyticsResponseInner  -PRODUCTGROUPID null `
- -DATE null
+$ProductGroupAnalyticsResponseInner = Initialize-PSOpenAPIToolsProductGroupAnalyticsResponseInner  -DATE null `
+ -PRODUCTGROUPID null
 ```
 
 - Convert the resource to JSON

@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsHotelAttributesAllOfMainImage"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsHotelAttributesAllOfMainImage"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CatalogsHotelAttributesAllOfMainImage {
+    title = CatalogsHotelAttributesAllOfMainImage
+    description = CatalogsHotelAttributesAllOfMainImage
+    derivedFrom = Root
+    properties {
+        link {
+          type =  string
+          description = "&lt;p&gt;&lt;&#x3D; 2000 characters&lt;/p&gt; &lt;p&gt;The link to the main hotel image. Image should be at least 75x75 pixels to avoid errors. Use the additional_image_link field to add more images of your hotel. The URL of your main_image.link must be accessible by the Pinterest user-agent, and send the accurate image. Please make sure there is no template or placeholder image at the link. Must start with http:// or https://.&lt;/p&gt;"
+          optional = false
+        }
+        tag {
+          type = array
+          items.type =  string
+          description = "Tag appended to the image that identifies image category or details. There can be multiple tags associated with an image"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsHotelAttributesAllOfMainImage {
+    title = CatalogsHotelAttributesAllOfMainImage
+    description = CatalogsHotelAttributesAllOfMainImage
+    implements = openapi_server.resourceTypes.CatalogsHotelAttributesAllOfMainImage
+
+  }
+}

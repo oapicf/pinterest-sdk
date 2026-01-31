@@ -16,7 +16,7 @@ module QuizPinData =
   type QuizPinData = {
     Questions : QuizPinQuestion[];
     Results : QuizPinResult[];
-    TieBreakerType : TieBreakerTypeEnum;
     TieBreakerCustomResult : QuizPinResult;
+    TieBreakerType : TieBreakerTypeEnum;
   }
   //#endregion

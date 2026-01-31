@@ -16,19 +16,23 @@
 #include "../model/targeting_template_update_request.h"
 targeting_template_update_request_t* instantiate_targeting_template_update_request(int include_optional);
 
+#include "test_targeting_spec.c"
 
 
 targeting_template_update_request_t* instantiate_targeting_template_update_request(int include_optional) {
   targeting_template_update_request_t* targeting_template_update_request = NULL;
   if (include_optional) {
     targeting_template_update_request = targeting_template_update_request_create(
+      "643",
       pinterest_rest_api_targeting_template_update_request_OPERATIONTYPE_REMOVE,
-      "643"
+       // false, not to have infinite recursion
+      instantiate_targeting_spec(0)
     );
   } else {
     targeting_template_update_request = targeting_template_update_request_create(
+      "643",
       pinterest_rest_api_targeting_template_update_request_OPERATIONTYPE_REMOVE,
-      "643"
+      NULL
     );
   }
 

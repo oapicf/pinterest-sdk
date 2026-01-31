@@ -17,7 +17,7 @@ openapi_placement_multipliers() ->
     openapi_placement_multipliers([]).
 
 openapi_placement_multipliers(Fields) ->
-  Default = [ {'PLACEMENT', elements([<<"SEARCH">>, <<"BROWSE">>]) }
+  Default = [ {'PLACEMENT', elements([<<"SEARCH">>, <<"BROWSE">>, <<"RELATED_PINS">>]) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

@@ -25,8 +25,10 @@ import javax.annotation.Generated;
  * CatalogsHotelItemsFilter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelItemsFilter implements CatalogsItemsFilters {
+
+  private String catalogId;
 
   /**
    * Gets or Sets catalogType
@@ -66,8 +68,6 @@ public class CatalogsHotelItemsFilter implements CatalogsItemsFilters {
   @Valid
   private List<String> hotelIds = new ArrayList<>();
 
-  private String catalogId;
-
   public CatalogsHotelItemsFilter() {
     super();
   }
@@ -78,6 +78,26 @@ public class CatalogsHotelItemsFilter implements CatalogsItemsFilters {
   public CatalogsHotelItemsFilter(CatalogTypeEnum catalogType, List<String> hotelIds) {
     this.catalogType = catalogType;
     this.hotelIds = hotelIds;
+  }
+
+  public CatalogsHotelItemsFilter catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
+  /**
+   * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+   * @return catalogId
+   */
+  @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "catalog_id", description = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
   }
 
   public CatalogsHotelItemsFilter catalogType(CatalogTypeEnum catalogType) {
@@ -128,26 +148,6 @@ public class CatalogsHotelItemsFilter implements CatalogsItemsFilters {
     this.hotelIds = hotelIds;
   }
 
-  public CatalogsHotelItemsFilter catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-  /**
-   * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
-   * @return catalogId
-   */
-  @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "catalog_id", description = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
-  }
-
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -157,23 +157,23 @@ public class CatalogsHotelItemsFilter implements CatalogsItemsFilters {
       return false;
     }
     CatalogsHotelItemsFilter catalogsHotelItemsFilter = (CatalogsHotelItemsFilter) o;
-    return Objects.equals(this.catalogType, catalogsHotelItemsFilter.catalogType) &&
-        Objects.equals(this.hotelIds, catalogsHotelItemsFilter.hotelIds) &&
-        Objects.equals(this.catalogId, catalogsHotelItemsFilter.catalogId);
+    return Objects.equals(this.catalogId, catalogsHotelItemsFilter.catalogId) &&
+        Objects.equals(this.catalogType, catalogsHotelItemsFilter.catalogType) &&
+        Objects.equals(this.hotelIds, catalogsHotelItemsFilter.hotelIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, hotelIds, catalogId);
+    return Objects.hash(catalogId, catalogType, hotelIds);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelItemsFilter {\n");
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    hotelIds: ").append(toIndentedString(hotelIds)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -9,9 +9,9 @@ import org.openapitools.model.BulkReportingJobStatus;
 @Canonical
 class AdsAnalyticsCreateAsyncResponse {
     
+    String message
+    
     BulkReportingJobStatus reportStatus
     
     String token
-    
-    String message
 }

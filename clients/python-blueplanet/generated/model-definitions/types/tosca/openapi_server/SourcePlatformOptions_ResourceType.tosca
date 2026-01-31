@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server SourcePlatformOptions"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a SourcePlatformOptions"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  SourcePlatformOptions {
+    title = SourcePlatformOptions
+    description = SourcePlatformOptions
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  SourcePlatformOptions {
+    title = SourcePlatformOptions
+    description = SourcePlatformOptions
+    implements = openapi_server.resourceTypes.SourcePlatformOptions
+
+  }
+}

@@ -2,7 +2,7 @@
 Protected Class CatalogsFeedIngestion
 
 	#tag Property, Flags = &h0
-		id As String
+		created_at As Date
 	#tag EndProperty
 
 
@@ -12,7 +12,7 @@ Protected Class CatalogsFeedIngestion
 
 
 	#tag Property, Flags = &h0
-		created_at As Date
+		id As String
 	#tag EndProperty
 
 
@@ -58,11 +58,11 @@ Protected Class CatalogsFeedIngestion
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="id"
+			Name="created_at"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="String"
+			Type="Date"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -74,11 +74,11 @@ Protected Class CatalogsFeedIngestion
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="created_at"
+			Name="id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Date"
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `SSIOInsertionOrderStatusResponse`
 --
-SELECT `pin_order_id`, `status`, `creation_time` FROM `SSIOInsertionOrderStatusResponse` WHERE 1;
+SELECT `creation_time`, `pin_order_id`, `status` FROM `SSIOInsertionOrderStatusResponse` WHERE 1;
 
 --
 -- INSERT template for table `SSIOInsertionOrderStatusResponse`
 --
-INSERT INTO `SSIOInsertionOrderStatusResponse`(`pin_order_id`, `status`, `creation_time`) VALUES (?, ?, ?);
+INSERT INTO `SSIOInsertionOrderStatusResponse`(`creation_time`, `pin_order_id`, `status`) VALUES (?, ?, ?);
 
 --
 -- UPDATE template for table `SSIOInsertionOrderStatusResponse`
 --
-UPDATE `SSIOInsertionOrderStatusResponse` SET `pin_order_id` = ?, `status` = ?, `creation_time` = ? WHERE 1;
+UPDATE `SSIOInsertionOrderStatusResponse` SET `creation_time` = ?, `pin_order_id` = ?, `status` = ? WHERE 1;
 
 --
 -- DELETE template for table `SSIOInsertionOrderStatusResponse`

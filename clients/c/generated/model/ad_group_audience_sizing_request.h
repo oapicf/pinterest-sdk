@@ -31,22 +31,22 @@ pinterest_rest_api_ad_group_audience_sizing_request_CREATIVETYPES_e ad_group_aud
 
 typedef struct ad_group_audience_sizing_request_t {
     int auto_targeting_enabled; //boolean
-    placement_group_type_t *placement_group; // custom
     list_t *creative_types; //primitive container
-    struct targeting_spec_t *targeting_spec; //model
-    list_t *product_group_ids; //primitive container
     list_t *keywords; //nonprimitive container
+    placement_group_type_t *placement_group; // custom
+    list_t *product_group_ids; //primitive container
+    struct targeting_spec_t *targeting_spec; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
 } ad_group_audience_sizing_request_t;
 
 __attribute__((deprecated)) ad_group_audience_sizing_request_t *ad_group_audience_sizing_request_create(
     int auto_targeting_enabled,
-    placement_group_type_t *placement_group,
     list_t *creative_types,
-    targeting_spec_t *targeting_spec,
+    list_t *keywords,
+    placement_group_type_t *placement_group,
     list_t *product_group_ids,
-    list_t *keywords
+    targeting_spec_t *targeting_spec
 );
 
 void ad_group_audience_sizing_request_free(ad_group_audience_sizing_request_t *ad_group_audience_sizing_request);

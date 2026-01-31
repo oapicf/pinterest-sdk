@@ -9,25 +9,23 @@
 -export_type([openapi_pin/0]).
 
 -type openapi_pin() ::
-  [ {'id', binary() }
+  [ {'alt_text', binary() }
+  | {'board_id', binary() }
+  | {'board_owner', openapi_board_owner:openapi_board_owner() }
+  | {'board_section_id', binary() }
   | {'created_at', datetime() }
-  | {'link', binary() }
-  | {'title', binary() }
+  | {'creative_type', openapi_creative_type:openapi_creative_type() }
   | {'description', binary() }
   | {'dominant_color', binary() }
-  | {'alt_text', binary() }
-  | {'creative_type', openapi_creative_type:openapi_creative_type() }
-  | {'board_id', binary() }
-  | {'board_section_id', binary() }
-  | {'board_owner', openapi_board_owner:openapi_board_owner() }
-  | {'is_owner', boolean() }
-  | {'media', openapi_pin_media:openapi_pin_media() }
-  | {'media_source', openapi_pin_media_source:openapi_pin_media_source() }
-  | {'parent_pin_id', binary() }
-  | {'is_standard', boolean() }
   | {'has_been_promoted', boolean() }
-  | {'note', binary() }
+  | {'id', binary() }
+  | {'is_owner', boolean() }
+  | {'is_standard', boolean() }
+  | {'link', binary() }
+  | {'media', openapi_pin_media:openapi_pin_media() }
+  | {'parent_pin_id', binary() }
   | {'pin_metrics', map() }
+  | {'title', binary() }
   ].
 
 
@@ -35,25 +33,23 @@ openapi_pin() ->
     openapi_pin([]).
 
 openapi_pin(Fields) ->
-  Default = [ {'id', binary() }
+  Default = [ {'alt_text', binary() }
+            , {'board_id', binary() }
+            , {'board_owner', openapi_board_owner:openapi_board_owner() }
+            , {'board_section_id', binary() }
             , {'created_at', datetime() }
-            , {'link', binary() }
-            , {'title', binary() }
+            , {'creative_type', openapi_creative_type:openapi_creative_type() }
             , {'description', binary() }
             , {'dominant_color', binary() }
-            , {'alt_text', binary() }
-            , {'creative_type', openapi_creative_type:openapi_creative_type() }
-            , {'board_id', binary() }
-            , {'board_section_id', binary() }
-            , {'board_owner', openapi_board_owner:openapi_board_owner() }
-            , {'is_owner', boolean() }
-            , {'media', openapi_pin_media:openapi_pin_media() }
-            , {'media_source', openapi_pin_media_source:openapi_pin_media_source() }
-            , {'parent_pin_id', binary() }
-            , {'is_standard', boolean() }
             , {'has_been_promoted', boolean() }
-            , {'note', binary() }
+            , {'id', binary() }
+            , {'is_owner', boolean() }
+            , {'is_standard', boolean() }
+            , {'link', binary() }
+            , {'media', openapi_pin_media:openapi_pin_media() }
+            , {'parent_pin_id', binary() }
             , {'pin_metrics', map() }
+            , {'title', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

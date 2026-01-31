@@ -12,8 +12,8 @@ import org.joda.time.DateTime
 import TopPinsAnalyticsResponseDateAvailability._
 
 case class TopPinsAnalyticsResponseDateAvailability (
-  latestAvailableTimestamp: Option[BigDecimal],
-isRealtime: Option[Boolean])
+  isRealtime: Option[Boolean],
+latestAvailableTimestamp: Option[BigDecimal])
 
 object TopPinsAnalyticsResponseDateAvailability {
   import DateTimeCodecs._

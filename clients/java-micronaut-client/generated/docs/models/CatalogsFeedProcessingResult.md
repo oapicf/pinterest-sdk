@@ -12,9 +12,11 @@ Name | Type | Description | Notes
 **id** | `String` |  | 
 **updatedAt** | `OffsetDateTime` |  | 
 **ingestionDetails** | [`CatalogsFeedIngestionDetails`](CatalogsFeedIngestionDetails.md) |  | 
-**status** | `CatalogsFeedProcessingStatus` |  | 
 **productCounts** | [`CatalogsFeedProductCounts`](CatalogsFeedProductCounts.md) |  | 
+**status** | `CatalogsFeedProcessingStatus` |  | 
 **validationDetails** | [`CatalogsFeedValidationDetails`](CatalogsFeedValidationDetails.md) |  | 
+**videoCounts** | [`CatalogsFeedVideoCounts`](CatalogsFeedVideoCounts.md) |  |  [optional property]
+
 
 
 

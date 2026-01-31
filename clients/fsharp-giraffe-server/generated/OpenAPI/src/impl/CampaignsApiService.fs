@@ -1,4 +1,5 @@
 namespace OpenAPI
+open OpenAPI.Model.AdPinAnalytics
 open OpenAPI.Model.AdsAnalyticsCampaignTargetingType
 open OpenAPI.Model.CampaignCreateRequest
 open OpenAPI.Model.CampaignCreateResponse
@@ -11,6 +12,7 @@ open OpenAPI.Model.ConversionReportAttributionType
 open OpenAPI.Model.Error
 open OpenAPI.Model.Granularity
 open OpenAPI.Model.MetricsResponse
+open OpenAPI.Model.ReportingTimeZone
 open CampaignsApiHandlerParams
 open CampaignsApiServiceInterface
 open System.Collections.Generic
@@ -22,6 +24,17 @@ module CampaignsApiServiceImplementation =
     //#region Service implementation
     type CampaignsApiServiceImpl() =
       interface ICampaignsApiService with
+
+        member this.AdPinsAnalytics ctx args =
+          if true then
+            let content = "Success" :> obj :?> AdPinAnalytics[] // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            AdPinsAnalyticsStatusCode200 { content = content }
+          else if true then
+            let content = "Invalid ad account pins analytics parameters." :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            AdPinsAnalyticsStatusCode400 { content = content }
+          else
+            let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
+            AdPinsAnalyticsDefaultStatusCode { content = content }
 
         member this.CampaignTargetingAnalyticsGet ctx args =
           if true then

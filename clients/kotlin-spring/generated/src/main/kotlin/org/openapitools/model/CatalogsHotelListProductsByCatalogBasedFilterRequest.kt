@@ -18,18 +18,18 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * Request object to list products for a given hotel catalog_id and product group filter.
- * @param catalogType 
  * @param catalogId Catalog id pertaining to the hotel product group.
+ * @param catalogType 
  * @param filters 
  */
 data class CatalogsHotelListProductsByCatalogBasedFilterRequest(
 
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsHotelListProductsByCatalogBasedFilterRequest.CatalogType,
-
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "2680059592705", required = true, description = "Catalog id pertaining to the hotel product group.")
     @get:JsonProperty("catalog_id", required = true) val catalogId: kotlin.String,
+
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsHotelListProductsByCatalogBasedFilterRequest.CatalogType,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")

@@ -6,7 +6,8 @@ Pin with image.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**images** | [**PinMediaWithImageAllOfImages**](PinMediaWithImageAllOfImages.md) |  | [optional] [default to undefined]
+**images** | [**ImageSize**](ImageSize.md) |  | [optional] [default to undefined]
+**media_type** | **string** |  | [default to undefined]
 
 ## Example
 
@@ -15,6 +16,7 @@ import { PinMediaWithImage } from './api';
 
 const instance: PinMediaWithImage = {
     images,
+    media_type,
 };
 ```
 

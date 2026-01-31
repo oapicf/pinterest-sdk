@@ -5,15 +5,15 @@
   "name": "ItemBatchRecord",
   "fields": [
     {
-      "name": "item_id",
-      "type": ["null", "string"],
-      "doc": "The catalog item id in the merchant namespace",
-      "default": null
-    },
-    {
       "name": "attributes",
       "type": ["null", "model.ItemAttributesRequest"],
       "doc": "",
+      "default": null
+    },
+    {
+      "name": "item_id",
+      "type": ["null", "string"],
+      "doc": "The catalog item id in the merchant namespace",
       "default": null
     },
     {

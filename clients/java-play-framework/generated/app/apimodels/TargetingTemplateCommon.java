@@ -17,53 +17,36 @@ import javax.validation.Valid;
 /**
  * TargetingTemplateCommon
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class TargetingTemplateCommon   {
-  @JsonProperty("name")
-  
-  private String name;
-
   @JsonProperty("auto_targeting_enabled")
   
   private Boolean autoTargetingEnabled = true;
-
-  @JsonProperty("targeting_attributes")
-  @Valid
-
-  private TargetingSpec targetingAttributes;
-
-  @JsonProperty("placement_group")
-  @Valid
-
-  private PlacementGroupType placementGroup = PlacementGroupType.ALL;
 
   @JsonProperty("keywords")
   @Valid
 
   private List<@Valid TargetingTemplateKeyword> keywords = null;
 
+  @JsonProperty("name")
+  
+  private String name;
+
+  @JsonProperty("placement_group")
+  @Valid
+
+  private PlacementGroupType placementGroup = PlacementGroupType.ALL;
+
+  @JsonProperty("targeting_attributes")
+  @Valid
+
+  private TargetingSpec targetingAttributes;
+
   @JsonProperty("tracking_urls")
   @Valid
 
   private TrackingUrls trackingUrls;
-
-  public TargetingTemplateCommon name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * targeting template name
-   * @return name
-  **/
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
 
   public TargetingTemplateCommon autoTargetingEnabled(Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
@@ -80,40 +63,6 @@ public class TargetingTemplateCommon   {
 
   public void setAutoTargetingEnabled(Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
-  }
-
-  public TargetingTemplateCommon targetingAttributes(TargetingSpec targetingAttributes) {
-    this.targetingAttributes = targetingAttributes;
-    return this;
-  }
-
-   /**
-   * Get targetingAttributes
-   * @return targetingAttributes
-  **/
-  public TargetingSpec getTargetingAttributes() {
-    return targetingAttributes;
-  }
-
-  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
-    this.targetingAttributes = targetingAttributes;
-  }
-
-  public TargetingTemplateCommon placementGroup(PlacementGroupType placementGroup) {
-    this.placementGroup = placementGroup;
-    return this;
-  }
-
-   /**
-   * Get placementGroup
-   * @return placementGroup
-  **/
-  public PlacementGroupType getPlacementGroup() {
-    return placementGroup;
-  }
-
-  public void setPlacementGroup(PlacementGroupType placementGroup) {
-    this.placementGroup = placementGroup;
   }
 
   public TargetingTemplateCommon keywords(List<@Valid TargetingTemplateKeyword> keywords) {
@@ -139,6 +88,57 @@ public class TargetingTemplateCommon   {
 
   public void setKeywords(List<@Valid TargetingTemplateKeyword> keywords) {
     this.keywords = keywords;
+  }
+
+  public TargetingTemplateCommon name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * targeting template name
+   * @return name
+  **/
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public TargetingTemplateCommon placementGroup(PlacementGroupType placementGroup) {
+    this.placementGroup = placementGroup;
+    return this;
+  }
+
+   /**
+   * Get placementGroup
+   * @return placementGroup
+  **/
+  public PlacementGroupType getPlacementGroup() {
+    return placementGroup;
+  }
+
+  public void setPlacementGroup(PlacementGroupType placementGroup) {
+    this.placementGroup = placementGroup;
+  }
+
+  public TargetingTemplateCommon targetingAttributes(TargetingSpec targetingAttributes) {
+    this.targetingAttributes = targetingAttributes;
+    return this;
+  }
+
+   /**
+   * Get targetingAttributes
+   * @return targetingAttributes
+  **/
+  public TargetingSpec getTargetingAttributes() {
+    return targetingAttributes;
+  }
+
+  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
+    this.targetingAttributes = targetingAttributes;
   }
 
   public TargetingTemplateCommon trackingUrls(TrackingUrls trackingUrls) {
@@ -168,17 +168,17 @@ public class TargetingTemplateCommon   {
       return false;
     }
     TargetingTemplateCommon targetingTemplateCommon = (TargetingTemplateCommon) o;
-    return Objects.equals(name, targetingTemplateCommon.name) &&
-        Objects.equals(autoTargetingEnabled, targetingTemplateCommon.autoTargetingEnabled) &&
-        Objects.equals(targetingAttributes, targetingTemplateCommon.targetingAttributes) &&
-        Objects.equals(placementGroup, targetingTemplateCommon.placementGroup) &&
+    return Objects.equals(autoTargetingEnabled, targetingTemplateCommon.autoTargetingEnabled) &&
         Objects.equals(keywords, targetingTemplateCommon.keywords) &&
+        Objects.equals(name, targetingTemplateCommon.name) &&
+        Objects.equals(placementGroup, targetingTemplateCommon.placementGroup) &&
+        Objects.equals(targetingAttributes, targetingTemplateCommon.targetingAttributes) &&
         Objects.equals(trackingUrls, targetingTemplateCommon.trackingUrls);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, autoTargetingEnabled, targetingAttributes, placementGroup, keywords, trackingUrls);
+    return Objects.hash(autoTargetingEnabled, keywords, name, placementGroup, targetingAttributes, trackingUrls);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -187,11 +187,11 @@ public class TargetingTemplateCommon   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TargetingTemplateCommon {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    autoTargetingEnabled: ").append(toIndentedString(autoTargetingEnabled)).append("\n");
-    sb.append("    targetingAttributes: ").append(toIndentedString(targetingAttributes)).append("\n");
-    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
     sb.append("    keywords: ").append(toIndentedString(keywords)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
+    sb.append("    targetingAttributes: ").append(toIndentedString(targetingAttributes)).append("\n");
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("}");
     return sb.toString();

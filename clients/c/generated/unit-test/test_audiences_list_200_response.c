@@ -22,13 +22,13 @@ audiences_list_200_response_t* instantiate_audiences_list_200_response(int inclu
   audiences_list_200_response_t* audiences_list_200_response = NULL;
   if (include_optional) {
     audiences_list_200_response = audiences_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     audiences_list_200_response = audiences_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

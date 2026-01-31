@@ -11,6 +11,7 @@ import org.openapitools.models.BigDecimal
  * 
  * @param adUnderscoreaccountUnderscoreid Associated ad account ID.
  * @param createdUnderscoretime Creation time. Unix timestamp in seconds.
+ * @param exceptions Customer list errors
  * @param id Customer list ID.
  * @param name Customer list name.
  * @param numUnderscorebatches Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.
@@ -19,10 +20,10 @@ import org.openapitools.models.BigDecimal
  * @param status Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
  * @param _type Always \"customerlist\".
  * @param updatedUnderscoretime Last update time. Unix timestamp in seconds.
- * @param exceptions Customer list errors
  */
 case class CustomerList(adUnderscoreaccountUnderscoreid: Option[String],
                 createdUnderscoretime: Option[BigDecimal],
+                exceptions: Option[Object],
                 id: Option[String],
                 name: Option[String],
                 numUnderscorebatches: Option[BigDecimal],
@@ -30,8 +31,7 @@ case class CustomerList(adUnderscoreaccountUnderscoreid: Option[String],
                 numUnderscoreuploadedUnderscoreuserUnderscorerecords: Option[BigDecimal],
                 status: Option[String],
                 _type: Option[String],
-                updatedUnderscoretime: Option[BigDecimal],
-                exceptions: Option[Object]
+                updatedUnderscoretime: Option[BigDecimal]
                 )
 
 object CustomerList {

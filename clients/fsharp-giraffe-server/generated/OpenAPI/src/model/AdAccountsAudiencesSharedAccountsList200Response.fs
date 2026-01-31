@@ -11,7 +11,7 @@ module AdAccountsAudiencesSharedAccountsList200Response =
 
 
   type ad_accounts_audiences_shared_accounts_list_200_response = {
-    Items : SharedAudienceAccount[];
     Bookmark : string option;
+    Items : SharedAudienceAccount[];
   }
   //#endregion

@@ -7,26 +7,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ImageDetails   {
   
-  private Integer width;
   private Integer height;
   private String url;
+  private Integer width;
 
   public ImageDetails () {
 
   }
 
-  public ImageDetails (Integer width, Integer height, String url) {
-    this.width = width;
+  public ImageDetails (Integer height, String url, Integer width) {
     this.height = height;
     this.url = url;
-  }
-
-    
-  @JsonProperty("width")
-  public Integer getWidth() {
-    return width;
-  }
-  public void setWidth(Integer width) {
     this.width = width;
   }
 
@@ -48,6 +39,15 @@ public class ImageDetails   {
     this.url = url;
   }
 
+    
+  @JsonProperty("width")
+  public Integer getWidth() {
+    return width;
+  }
+  public void setWidth(Integer width) {
+    this.width = width;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -58,14 +58,14 @@ public class ImageDetails   {
       return false;
     }
     ImageDetails imageDetails = (ImageDetails) o;
-    return Objects.equals(width, imageDetails.width) &&
-        Objects.equals(height, imageDetails.height) &&
-        Objects.equals(url, imageDetails.url);
+    return Objects.equals(height, imageDetails.height) &&
+        Objects.equals(url, imageDetails.url) &&
+        Objects.equals(width, imageDetails.width);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(width, height, url);
+    return Objects.hash(height, url, width);
   }
 
   @Override
@@ -73,9 +73,9 @@ public class ImageDetails   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ImageDetails {\n");
     
-    sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
+    sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -20,11 +20,30 @@ import java.util.Objects;
 @ApiModel(description = "Object uniquely identifying a retail catalog item")
 public class AdvancedAuctionItemsGetRecord   {
   
-  private String itemId;
-
   private Country country;
 
+  private String itemId;
+
   private Language language;
+
+  /**
+   **/
+  public AdvancedAuctionItemsGetRecord country(Country country) {
+    this.country = country;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("country")
+  @NotNull
+  public Country getCountry() {
+    return country;
+  }
+  public void setCountry(Country country) {
+    this.country = country;
+  }
+
 
   /**
    * The catalog retail item id in the merchant namespace
@@ -43,25 +62,6 @@ public class AdvancedAuctionItemsGetRecord   {
   }
   public void setItemId(String itemId) {
     this.itemId = itemId;
-  }
-
-
-  /**
-   **/
-  public AdvancedAuctionItemsGetRecord country(Country country) {
-    this.country = country;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("country")
-  @NotNull
-  public Country getCountry() {
-    return country;
-  }
-  public void setCountry(Country country) {
-    this.country = country;
   }
 
 
@@ -94,14 +94,14 @@ public class AdvancedAuctionItemsGetRecord   {
       return false;
     }
     AdvancedAuctionItemsGetRecord advancedAuctionItemsGetRecord = (AdvancedAuctionItemsGetRecord) o;
-    return Objects.equals(this.itemId, advancedAuctionItemsGetRecord.itemId) &&
-        Objects.equals(this.country, advancedAuctionItemsGetRecord.country) &&
+    return Objects.equals(this.country, advancedAuctionItemsGetRecord.country) &&
+        Objects.equals(this.itemId, advancedAuctionItemsGetRecord.itemId) &&
         Objects.equals(this.language, advancedAuctionItemsGetRecord.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, country, language);
+    return Objects.hash(country, itemId, language);
   }
 
   @Override
@@ -109,8 +109,8 @@ public class AdvancedAuctionItemsGetRecord   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvancedAuctionItemsGetRecord {\n");
     
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();

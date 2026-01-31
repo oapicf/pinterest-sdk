@@ -1,0 +1,35 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "address" },
+      {"model": "base_price" },
+      {"model": "brand" },
+      {"model": "category" },
+      {"model": "custom_label_0" },
+      {"model": "custom_label_1" },
+      {"model": "custom_label_2" },
+      {"model": "custom_label_3" },
+      {"model": "custom_label_4" },
+      {"model": "description" },
+      {"model": "guest_ratings" },
+      {"model": "latitude" },
+      {"model": "link" },
+      {"model": "longitude" },
+      {"model": "name" },
+      {"model": "neighborhood" },
+      {"model": "sale_price" },
+      {"model": "additional_image_link" },
+      {"model": "main_image" },
+    ]
+  }]
+}

@@ -5,6 +5,11 @@
   "name": "CatalogsUpdateHotelItem",
   "fields": [
     {
+      "name": "attributes",
+      "type": "model.CatalogsUpdatableHotelAttributes",
+      "doc": ""
+    },
+    {
       "name": "hotel_id",
       "type": "string",
       "doc": "The catalog hotel item id in the merchant namespace"
@@ -18,11 +23,6 @@
           "UPDATE"
         ]
       },
-      "doc": ""
-    },
-    {
-      "name": "attributes",
-      "type": "model.CatalogsUpdatableHotelAttributes",
       "doc": ""
     }
   ]

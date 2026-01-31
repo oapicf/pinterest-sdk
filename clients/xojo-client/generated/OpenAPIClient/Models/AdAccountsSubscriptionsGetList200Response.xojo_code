@@ -2,12 +2,12 @@
 Protected Class AdAccountsSubscriptionsGetList200Response
 
 	#tag Property, Flags = &h0
-		items() As OpenAPIClient.Models.AdAccountGetSubscriptionResponse
+		bookmark As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		bookmark As Xoson.O.OptionalString
+		items() As OpenAPIClient.Models.LeadSubscription
 	#tag EndProperty
 
 
@@ -48,19 +48,19 @@ Protected Class AdAccountsSubscriptionsGetList200Response
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="items"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="AdAccountGetSubscriptionResponse"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="bookmark"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="items"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="LeadSubscription"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

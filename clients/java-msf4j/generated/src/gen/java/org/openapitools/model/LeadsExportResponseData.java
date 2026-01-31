@@ -12,31 +12,13 @@ import org.openapitools.model.LeadsExportStatus;
 /**
  * LeadsExportResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LeadsExportResponseData   {
-  @JsonProperty("export_status")
-  private LeadsExportStatus exportStatus;
-
   @JsonProperty("download_url")
   private String downloadUrl;
 
-  public LeadsExportResponseData exportStatus(LeadsExportStatus exportStatus) {
-    this.exportStatus = exportStatus;
-    return this;
-  }
-
-   /**
-   * Get exportStatus
-   * @return exportStatus
-  **/
-  @ApiModelProperty(value = "")
-  public LeadsExportStatus getExportStatus() {
-    return exportStatus;
-  }
-
-  public void setExportStatus(LeadsExportStatus exportStatus) {
-    this.exportStatus = exportStatus;
-  }
+  @JsonProperty("export_status")
+  private LeadsExportStatus exportStatus;
 
   public LeadsExportResponseData downloadUrl(String downloadUrl) {
     this.downloadUrl = downloadUrl;
@@ -56,6 +38,24 @@ public class LeadsExportResponseData   {
     this.downloadUrl = downloadUrl;
   }
 
+  public LeadsExportResponseData exportStatus(LeadsExportStatus exportStatus) {
+    this.exportStatus = exportStatus;
+    return this;
+  }
+
+   /**
+   * Get exportStatus
+   * @return exportStatus
+  **/
+  @ApiModelProperty(value = "")
+  public LeadsExportStatus getExportStatus() {
+    return exportStatus;
+  }
+
+  public void setExportStatus(LeadsExportStatus exportStatus) {
+    this.exportStatus = exportStatus;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -66,13 +66,13 @@ public class LeadsExportResponseData   {
       return false;
     }
     LeadsExportResponseData leadsExportResponseData = (LeadsExportResponseData) o;
-    return Objects.equals(this.exportStatus, leadsExportResponseData.exportStatus) &&
-        Objects.equals(this.downloadUrl, leadsExportResponseData.downloadUrl);
+    return Objects.equals(this.downloadUrl, leadsExportResponseData.downloadUrl) &&
+        Objects.equals(this.exportStatus, leadsExportResponseData.exportStatus);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(exportStatus, downloadUrl);
+    return Objects.hash(downloadUrl, exportStatus);
   }
 
   @Override
@@ -80,8 +80,8 @@ public class LeadsExportResponseData   {
     StringBuilder sb = new StringBuilder();
     sb.append("class LeadsExportResponseData {\n");
     
-    sb.append("    exportStatus: ").append(toIndentedString(exportStatus)).append("\n");
     sb.append("    downloadUrl: ").append(toIndentedString(downloadUrl)).append("\n");
+    sb.append("    exportStatus: ").append(toIndentedString(exportStatus)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -9,9 +9,9 @@ Request object to update catalogs items
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**country** | **Country** |  |  |
+|**items** | [**List&lt;ItemUpdateBatchRecord&gt;**](ItemUpdateBatchRecord.md) | Array with catalogs items |  |
 |**language** | [**LanguageEnum**](#LanguageEnum) | We recommend using the CatalogsLocale values. |  |
 |**operation** | **BatchOperation** |  |  |
-|**items** | [**List&lt;ItemUpdateBatchRecord&gt;**](ItemUpdateBatchRecord.md) | Array with catalogs items |  |
 
 
 

@@ -18,8 +18,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("ConversionApiResponse_events_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionApiResponseEventsInner   {
+  private String errorMessage;
   public enum StatusEnum {
 
     FAILED(String.valueOf("failed")), PROCESSED(String.valueOf("processed"));
@@ -68,7 +69,6 @@ public class ConversionApiResponseEventsInner   {
 }
 
   private StatusEnum status;
-  private String errorMessage;
   private String warningMessage;
 
   public ConversionApiResponseEventsInner() {
@@ -78,26 +78,6 @@ public class ConversionApiResponseEventsInner   {
   public ConversionApiResponseEventsInner(
     @JsonProperty(required = true, value = "status") StatusEnum status
   ) {
-    this.status = status;
-  }
-
-  /**
-   * Whether the event was processed successfully.
-   **/
-  public ConversionApiResponseEventsInner status(StatusEnum status) {
-    this.status = status;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "processed", required = true, value = "Whether the event was processed successfully.")
-  @JsonProperty(required = true, value = "status")
-  @NotNull public StatusEnum getStatus() {
-    return status;
-  }
-
-  @JsonProperty(required = true, value = "status")
-  public void setStatus(StatusEnum status) {
     this.status = status;
   }
 
@@ -119,6 +99,26 @@ public class ConversionApiResponseEventsInner   {
   @JsonProperty("error_message")
   public void setErrorMessage(String errorMessage) {
     this.errorMessage = errorMessage;
+  }
+
+  /**
+   * Whether the event was processed successfully.
+   **/
+  public ConversionApiResponseEventsInner status(StatusEnum status) {
+    this.status = status;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "processed", required = true, value = "Whether the event was processed successfully.")
+  @JsonProperty(required = true, value = "status")
+  @NotNull public StatusEnum getStatus() {
+    return status;
+  }
+
+  @JsonProperty(required = true, value = "status")
+  public void setStatus(StatusEnum status) {
+    this.status = status;
   }
 
   /**
@@ -151,14 +151,14 @@ public class ConversionApiResponseEventsInner   {
       return false;
     }
     ConversionApiResponseEventsInner conversionApiResponseEventsInner = (ConversionApiResponseEventsInner) o;
-    return Objects.equals(this.status, conversionApiResponseEventsInner.status) &&
-        Objects.equals(this.errorMessage, conversionApiResponseEventsInner.errorMessage) &&
+    return Objects.equals(this.errorMessage, conversionApiResponseEventsInner.errorMessage) &&
+        Objects.equals(this.status, conversionApiResponseEventsInner.status) &&
         Objects.equals(this.warningMessage, conversionApiResponseEventsInner.warningMessage);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, errorMessage, warningMessage);
+    return Objects.hash(errorMessage, status, warningMessage);
   }
 
   @Override
@@ -166,8 +166,8 @@ public class ConversionApiResponseEventsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionApiResponseEventsInner {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    warningMessage: ").append(toIndentedString(warningMessage)).append("\n");
     sb.append("}");
     return sb.toString();

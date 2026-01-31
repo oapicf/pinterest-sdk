@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **export_status** | [**LeadsExportStatus**](LeadsExportStatus.md) |  | [optional] |
 | **download_url** | **String** |  | [optional] |
+| **export_status** | [**LeadsExportStatus**](LeadsExportStatus.md) |  | [optional] |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::LeadsExportResponseData.new(
-  export_status: null,
-  download_url: null
+  download_url: null,
+  export_status: null
 )
 ```
 

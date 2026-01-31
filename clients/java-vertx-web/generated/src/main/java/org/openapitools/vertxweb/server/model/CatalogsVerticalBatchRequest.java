@@ -19,6 +19,7 @@ import org.openapitools.vertxweb.server.model.Country;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsVerticalBatchRequest   {
   
+  private String catalogId;
 
 
   public enum CatalogTypeEnum {
@@ -39,6 +40,7 @@ public class CatalogsVerticalBatchRequest   {
 
   private CatalogTypeEnum catalogType;
   private Country country;
+  private List<CatalogsCreativeAssetsBatchItem> items = new ArrayList<>();
 
 
   public enum LanguageEnum {
@@ -164,18 +166,25 @@ public class CatalogsVerticalBatchRequest   {
   }
 
   private LanguageEnum language;
-  private List<CatalogsCreativeAssetsBatchItem> items = new ArrayList<>();
-  private String catalogId;
 
   public CatalogsVerticalBatchRequest () {
 
   }
 
-  public CatalogsVerticalBatchRequest (CatalogTypeEnum catalogType, Country country, LanguageEnum language, List<CatalogsCreativeAssetsBatchItem> items, String catalogId) {
+  public CatalogsVerticalBatchRequest (String catalogId, CatalogTypeEnum catalogType, Country country, List<CatalogsCreativeAssetsBatchItem> items, LanguageEnum language) {
+    this.catalogId = catalogId;
     this.catalogType = catalogType;
     this.country = country;
-    this.language = language;
     this.items = items;
+    this.language = language;
+  }
+
+    
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
+  }
+  public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
   }
 
@@ -198,15 +207,6 @@ public class CatalogsVerticalBatchRequest   {
   }
 
     
-  @JsonProperty("language")
-  public LanguageEnum getLanguage() {
-    return language;
-  }
-  public void setLanguage(LanguageEnum language) {
-    this.language = language;
-  }
-
-    
   @JsonProperty("items")
   public List<CatalogsCreativeAssetsBatchItem> getItems() {
     return items;
@@ -216,12 +216,12 @@ public class CatalogsVerticalBatchRequest   {
   }
 
     
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
+  @JsonProperty("language")
+  public LanguageEnum getLanguage() {
+    return language;
   }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public void setLanguage(LanguageEnum language) {
+    this.language = language;
   }
 
 
@@ -234,16 +234,16 @@ public class CatalogsVerticalBatchRequest   {
       return false;
     }
     CatalogsVerticalBatchRequest catalogsVerticalBatchRequest = (CatalogsVerticalBatchRequest) o;
-    return Objects.equals(catalogType, catalogsVerticalBatchRequest.catalogType) &&
+    return Objects.equals(catalogId, catalogsVerticalBatchRequest.catalogId) &&
+        Objects.equals(catalogType, catalogsVerticalBatchRequest.catalogType) &&
         Objects.equals(country, catalogsVerticalBatchRequest.country) &&
-        Objects.equals(language, catalogsVerticalBatchRequest.language) &&
         Objects.equals(items, catalogsVerticalBatchRequest.items) &&
-        Objects.equals(catalogId, catalogsVerticalBatchRequest.catalogId);
+        Objects.equals(language, catalogsVerticalBatchRequest.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, country, language, items, catalogId);
+    return Objects.hash(catalogId, catalogType, country, items, language);
   }
 
   @Override
@@ -251,11 +251,11 @@ public class CatalogsVerticalBatchRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsVerticalBatchRequest {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();
   }

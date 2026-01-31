@@ -1,58 +1,52 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "Pin fields for updates",
+  "doc": "Resource create or update operation model.",
   "name": "PinUpdate",
   "fields": [
     {
       "name": "alt_text",
       "type": ["null", "string"],
-      "doc": "Pin's alternative text.",
+      "doc": "",
       "default": null
     },
     {
       "name": "board_id",
       "type": ["null", "string"],
-      "doc": "The id of the board to move the Pin onto.",
+      "doc": "The board to which this Pin belongs.",
       "default": null
     },
     {
       "name": "board_section_id",
       "type": ["null", "string"],
-      "doc": "<a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID.",
-      "default": null
-    },
-    {
-      "name": "description",
-      "type": ["null", "string"],
-      "doc": "Pin description - 800 characters maximum.",
-      "default": null
-    },
-    {
-      "name": "link",
-      "type": ["null", "string"],
-      "doc": "URL viewer is taken to when they click pin.",
-      "default": null
-    },
-    {
-      "name": "title",
-      "type": ["null", "string"],
-      "doc": "The native pin title that creators explicitly prefer to display.",
+      "doc": "The board section to which this Pin belongs.",
       "default": null
     },
     {
       "name": "carousel_slots",
       "type": ["null", {
         "type": "array",
-        "items": "model.PinUpdateCarouselSlotsInner"
+        "items": "model.CarouselSlot"
       }],
       "doc": "Carousel Pin slots data.",
       "default": null
     },
     {
-      "name": "note",
+      "name": "description",
       "type": ["null", "string"],
-      "doc": "Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.",
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "link",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "title",
+      "type": ["null", "string"],
+      "doc": "",
       "default": null
     }
   ]

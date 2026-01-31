@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**items** | [**List&lt;CatalogsFeedProcessingResult&gt;**](CatalogsFeedProcessingResult.md) |  |  |
 |**bookmark** | **String** |  |  [optional] |
+|**items** | [**List&lt;CatalogsFeedProcessingResult&gt;**](CatalogsFeedProcessingResult.md) |  |  |
 
 
 

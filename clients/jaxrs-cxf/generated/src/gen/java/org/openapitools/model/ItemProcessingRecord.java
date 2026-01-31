@@ -23,13 +23,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ItemProcessingRecord  {
   
  /**
-  * The catalog item id in the merchant namespace
-  */
-  @ApiModelProperty(example = "DS0294-M", value = "The catalog item id in the merchant namespace")
-
-  private String itemId;
-
- /**
   * Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
   */
   @ApiModelProperty(value = "Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.")
@@ -39,6 +32,19 @@ public class ItemProcessingRecord  {
   private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
 
  /**
+  * The catalog item id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog item id in the merchant namespace")
+
+  private String itemId;
+
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  private ItemProcessingStatus status;
+
+ /**
   * Array with the validation warnings for the item processing record
   */
   @ApiModelProperty(value = "Array with the validation warnings for the item processing record")
@@ -46,30 +52,6 @@ public class ItemProcessingRecord  {
   @Valid
 
   private List<@Valid ItemValidationEvent> warnings = new ArrayList<>();
-
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  private ItemProcessingStatus status;
- /**
-   * The catalog item id in the merchant namespace
-   * @return itemId
-  **/
-  @JsonProperty("item_id")
-  public String getItemId() {
-    return itemId;
-  }
-
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
-  }
-
-  public ItemProcessingRecord itemId(String itemId) {
-    this.itemId = itemId;
-    return this;
-  }
-
  /**
    * Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
    * @return errors
@@ -90,6 +72,42 @@ public class ItemProcessingRecord  {
 
   public ItemProcessingRecord addErrorsItem(ItemValidationEvent errorsItem) {
     this.errors.add(errorsItem);
+    return this;
+  }
+
+ /**
+   * The catalog item id in the merchant namespace
+   * @return itemId
+  **/
+  @JsonProperty("item_id")
+  public String getItemId() {
+    return itemId;
+  }
+
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
+  }
+
+  public ItemProcessingRecord itemId(String itemId) {
+    this.itemId = itemId;
+    return this;
+  }
+
+ /**
+   * Get status
+   * @return status
+  **/
+  @JsonProperty("status")
+  public ItemProcessingStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(ItemProcessingStatus status) {
+    this.status = status;
+  }
+
+  public ItemProcessingRecord status(ItemProcessingStatus status) {
+    this.status = status;
     return this;
   }
 
@@ -116,24 +134,6 @@ public class ItemProcessingRecord  {
     return this;
   }
 
- /**
-   * Get status
-   * @return status
-  **/
-  @JsonProperty("status")
-  public ItemProcessingStatus getStatus() {
-    return status;
-  }
-
-  public void setStatus(ItemProcessingStatus status) {
-    this.status = status;
-  }
-
-  public ItemProcessingRecord status(ItemProcessingStatus status) {
-    this.status = status;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -143,15 +143,15 @@ public class ItemProcessingRecord  {
       return false;
     }
     ItemProcessingRecord itemProcessingRecord = (ItemProcessingRecord) o;
-    return Objects.equals(this.itemId, itemProcessingRecord.itemId) &&
-        Objects.equals(this.errors, itemProcessingRecord.errors) &&
-        Objects.equals(this.warnings, itemProcessingRecord.warnings) &&
-        Objects.equals(this.status, itemProcessingRecord.status);
+    return Objects.equals(this.errors, itemProcessingRecord.errors) &&
+        Objects.equals(this.itemId, itemProcessingRecord.itemId) &&
+        Objects.equals(this.status, itemProcessingRecord.status) &&
+        Objects.equals(this.warnings, itemProcessingRecord.warnings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, errors, warnings, status);
+    return Objects.hash(errors, itemId, status, warnings);
   }
 
   @Override
@@ -159,10 +159,10 @@ public class ItemProcessingRecord  {
     StringBuilder sb = new StringBuilder();
     sb.append("class ItemProcessingRecord {\n");
     
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }

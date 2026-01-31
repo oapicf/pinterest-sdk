@@ -13,7 +13,7 @@ module AdsAnalyticsGetAsyncResponse =
 
   type AdsAnalyticsGetAsyncResponse = {
     ReportStatus : BulkReportingJobStatus;
-    Url : string option;
     Size : decimal option;
+    Url : string option;
   }
   //#endregion

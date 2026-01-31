@@ -10,6 +10,7 @@
 
 #include <string>
 #include "BrandFilter.h"
+#include "CatalogsProductGroupFilterOperatorTypeCriteria.h"
 #include "CatalogsProductGroupMultipleCountriesCriteria.h"
 #include "CatalogsProductGroupMultipleStringCriteria.h"
 #include "Catalogs_product_group_pricing_currency_criteria.h"
@@ -21,6 +22,7 @@
 #include "CustomLabel4Filter.h"
 #include "HotelIdFilter.h"
 #include "PriceFilter.h"
+#include "TitleKeywordsFilter.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -80,39 +82,39 @@ public:
 	void setBRAND(CatalogsProductGroupMultipleStringCriteria  bRAND);
 	/*! \brief Get 
 	 */
-	CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL0();
+	CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL0();
 
 	/*! \brief Set 
 	 */
-	void setCUSTOMLABEL0(CatalogsProductGroupMultipleStringCriteria  cUSTOM_LABEL_0);
+	void setCUSTOMLABEL0(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_0);
 	/*! \brief Get 
 	 */
-	CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL1();
+	CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL1();
 
 	/*! \brief Set 
 	 */
-	void setCUSTOMLABEL1(CatalogsProductGroupMultipleStringCriteria  cUSTOM_LABEL_1);
+	void setCUSTOMLABEL1(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_1);
 	/*! \brief Get 
 	 */
-	CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL2();
+	CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL2();
 
 	/*! \brief Set 
 	 */
-	void setCUSTOMLABEL2(CatalogsProductGroupMultipleStringCriteria  cUSTOM_LABEL_2);
+	void setCUSTOMLABEL2(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_2);
 	/*! \brief Get 
 	 */
-	CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL3();
+	CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL3();
 
 	/*! \brief Set 
 	 */
-	void setCUSTOMLABEL3(CatalogsProductGroupMultipleStringCriteria  cUSTOM_LABEL_3);
+	void setCUSTOMLABEL3(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_3);
 	/*! \brief Get 
 	 */
-	CatalogsProductGroupMultipleStringCriteria getCUSTOMLABEL4();
+	CatalogsProductGroupFilterOperatorTypeCriteria getCUSTOMLABEL4();
 
 	/*! \brief Set 
 	 */
-	void setCUSTOMLABEL4(CatalogsProductGroupMultipleStringCriteria  cUSTOM_LABEL_4);
+	void setCUSTOMLABEL4(CatalogsProductGroupFilterOperatorTypeCriteria  cUSTOM_LABEL_4);
 	/*! \brief Get 
 	 */
 	CatalogsProductGroupMultipleCountriesCriteria getCOUNTRY();
@@ -120,17 +122,25 @@ public:
 	/*! \brief Set 
 	 */
 	void setCOUNTRY(CatalogsProductGroupMultipleCountriesCriteria  cOUNTRY);
+	/*! \brief Get 
+	 */
+	CatalogsProductGroupMultipleStringCriteria getTITLEKEYWORDS();
+
+	/*! \brief Set 
+	 */
+	void setTITLEKEYWORDS(CatalogsProductGroupMultipleStringCriteria  tITLE_KEYWORDS);
 
 private:
 	Catalogs_product_group_pricing_currency_criteria pRICE;
 	CatalogsProductGroupMultipleStringCriteria hOTEL_ID;
 	CatalogsProductGroupMultipleStringCriteria bRAND;
-	CatalogsProductGroupMultipleStringCriteria cUSTOM_LABEL_0;
-	CatalogsProductGroupMultipleStringCriteria cUSTOM_LABEL_1;
-	CatalogsProductGroupMultipleStringCriteria cUSTOM_LABEL_2;
-	CatalogsProductGroupMultipleStringCriteria cUSTOM_LABEL_3;
-	CatalogsProductGroupMultipleStringCriteria cUSTOM_LABEL_4;
+	CatalogsProductGroupFilterOperatorTypeCriteria cUSTOM_LABEL_0;
+	CatalogsProductGroupFilterOperatorTypeCriteria cUSTOM_LABEL_1;
+	CatalogsProductGroupFilterOperatorTypeCriteria cUSTOM_LABEL_2;
+	CatalogsProductGroupFilterOperatorTypeCriteria cUSTOM_LABEL_3;
+	CatalogsProductGroupFilterOperatorTypeCriteria cUSTOM_LABEL_4;
 	CatalogsProductGroupMultipleCountriesCriteria cOUNTRY;
+	CatalogsProductGroupMultipleStringCriteria tITLE_KEYWORDS;
 	void __init();
 	void __cleanup();
 

@@ -14,18 +14,18 @@ module CatalogsRetailProductMetadata =
 
   [<CLIMutable>]
   type CatalogsRetailProductMetadata = {
-    [<JsonProperty(PropertyName = "item_id")>]
-    ItemId : string;
-    [<JsonProperty(PropertyName = "item_group_id")>]
-    ItemGroupId : string option;
     [<JsonProperty(PropertyName = "availability")>]
     Availability : NonNullableProductAvailabilityType;
+    [<JsonProperty(PropertyName = "currency")>]
+    Currency : NonNullableCatalogsCurrency;
+    [<JsonProperty(PropertyName = "item_group_id")>]
+    ItemGroupId : string option;
+    [<JsonProperty(PropertyName = "item_id")>]
+    ItemId : string;
     [<JsonProperty(PropertyName = "price")>]
     Price : decimal;
     [<JsonProperty(PropertyName = "sale_price")>]
     SalePrice : decimal option;
-    [<JsonProperty(PropertyName = "currency")>]
-    Currency : NonNullableCatalogsCurrency;
   }
 
   //#endregion

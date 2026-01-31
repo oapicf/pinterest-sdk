@@ -7,16 +7,17 @@ goog.provide('API.Client.CatalogsHotelProductGroupCreateRequest');
 API.Client.CatalogsHotelProductGroupCreateRequest = function() {}
 
 /**
+ * Catalog id pertaining to the hotel product group.
  * @type {!string}
  * @export
  */
-API.Client.CatalogsHotelProductGroupCreateRequest.prototype.catalogType;
+API.Client.CatalogsHotelProductGroupCreateRequest.prototype.catalogId;
 
 /**
  * @type {!string}
  * @export
  */
-API.Client.CatalogsHotelProductGroupCreateRequest.prototype.name;
+API.Client.CatalogsHotelProductGroupCreateRequest.prototype.catalogType;
 
 /**
  * @type {!string}
@@ -31,11 +32,10 @@ API.Client.CatalogsHotelProductGroupCreateRequest.prototype.description;
 API.Client.CatalogsHotelProductGroupCreateRequest.prototype.filters;
 
 /**
- * Catalog id pertaining to the hotel product group.
  * @type {!string}
  * @export
  */
-API.Client.CatalogsHotelProductGroupCreateRequest.prototype.catalogId;
+API.Client.CatalogsHotelProductGroupCreateRequest.prototype.name;
 
 /** @enum {string} */
 API.Client.CatalogsHotelProductGroupCreateRequest.CatalogTypeEnum = { 

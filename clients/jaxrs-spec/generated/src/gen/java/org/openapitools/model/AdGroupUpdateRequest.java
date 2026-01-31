@@ -2,6 +2,7 @@ package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -28,24 +29,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("AdGroupUpdateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdGroupUpdateRequest   {
-  private String name;
-  private EntityStatus status;
-  private Integer budgetInMicroCurrency;
-  private Integer bidInMicroCurrency;
-  private OptimizationGoalMetadata optimizationGoalMetadata;
-  private BudgetType budgetType;
-  private Integer startTime;
-  private Integer endTime;
-  private TargetingSpec targetingSpec;
-  private Integer lifetimeFrequencyCap;
-  private TrackingUrls trackingUrls;
   private Boolean autoTargetingEnabled;
-  private PlacementGroupType placementGroup;
-  private PacingDeliveryType pacingDeliveryType;
-  private String campaignId;
-  private ActionType billableEvent;
+  private Integer bidInMicroCurrency;
   public enum BidStrategyTypeEnum {
 
     AUTOMATIC_BID(String.valueOf("AUTOMATIC_BID")), MAX_BID(String.valueOf("MAX_BID")), TARGET_AVG(String.valueOf("TARGET_AVG"));
@@ -94,7 +81,72 @@ public class AdGroupUpdateRequest   {
 }
 
   private BidStrategyTypeEnum bidStrategyType;
+  private ActionType billableEvent;
+  private Integer budgetInMicroCurrency;
+  private BudgetType budgetType;
+  private String campaignId;
+  private Integer endTime;
+  private Boolean isCreativeOptimization;
+  private Integer lifetimeFrequencyCap;
+  private String name;
+  private OptimizationGoalMetadata optimizationGoalMetadata;
+  private PacingDeliveryType pacingDeliveryType;
+  private PlacementGroupType placementGroup;
+  public enum PromotionApplicationLevelEnum {
+
+    NONE(String.valueOf("NONE")), ITEM(String.valueOf("ITEM")), AD_GROUP(String.valueOf("AD_GROUP"));
+
+
+    private String value;
+
+    PromotionApplicationLevelEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    /**
+     * Convert a String into String, as specified in the
+     * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
+     */
+    public static PromotionApplicationLevelEnum fromString(String s) {
+        for (PromotionApplicationLevelEnum b : PromotionApplicationLevelEnum.values()) {
+            // using Objects.toString() to be safe if value type non-object type
+            // because types like 'int' etc. will be auto-boxed
+            if (java.util.Objects.toString(b.value).equals(s)) {
+                return b;
+            }
+        }
+        return null;
+    }
+
+    @JsonCreator
+    public static PromotionApplicationLevelEnum fromValue(String value) {
+        for (PromotionApplicationLevelEnum b : PromotionApplicationLevelEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        return null;
+    }
+}
+
+  private PromotionApplicationLevelEnum promotionApplicationLevel;
+  private String promotionId = "0";
+  private Integer startTime;
+  private EntityStatus status;
+  private TargetingSpec targetingSpec;
   private @Valid List<@Pattern(regexp = "^\\d+$")String> targetingTemplateIds;
+  private TrackingUrls trackingUrls;
+  private BigDecimal bidMultiplier;
   private String id;
 
   public AdGroupUpdateRequest() {
@@ -108,43 +160,82 @@ public class AdGroupUpdateRequest   {
   }
 
   /**
-   * Ad group name.
+   * Enable auto-targeting for ad group. Default value is True. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/performance-plus-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;Pinterest Performance+ targeting\&quot;&lt;/a&gt;.
    **/
-  public AdGroupUpdateRequest name(String name) {
-    this.name = name;
+  public AdGroupUpdateRequest autoTargetingEnabled(Boolean autoTargetingEnabled) {
+    this.autoTargetingEnabled = autoTargetingEnabled;
     return this;
   }
 
   
-  @ApiModelProperty(example = "Ad Group For Pin: 687195905986", value = "Ad group name.")
-  @JsonProperty("name")
-  public String getName() {
-    return name;
+  @ApiModelProperty(example = "true", value = "Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.")
+  @JsonProperty("auto_targeting_enabled")
+  public Boolean getAutoTargetingEnabled() {
+    return autoTargetingEnabled;
   }
 
-  @JsonProperty("name")
-  public void setName(String name) {
-    this.name = name;
+  @JsonProperty("auto_targeting_enabled")
+  public void setAutoTargetingEnabled(Boolean autoTargetingEnabled) {
+    this.autoTargetingEnabled = autoTargetingEnabled;
   }
 
   /**
-   * Ad group/entity status.
+   * Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH.
    **/
-  public AdGroupUpdateRequest status(EntityStatus status) {
-    this.status = status;
+  public AdGroupUpdateRequest bidInMicroCurrency(Integer bidInMicroCurrency) {
+    this.bidInMicroCurrency = bidInMicroCurrency;
     return this;
   }
 
   
-  @ApiModelProperty(value = "Ad group/entity status.")
-  @JsonProperty("status")
-  public EntityStatus getStatus() {
-    return status;
+  @ApiModelProperty(example = "5000000", value = "Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH.")
+  @JsonProperty("bid_in_micro_currency")
+  public Integer getBidInMicroCurrency() {
+    return bidInMicroCurrency;
   }
 
-  @JsonProperty("status")
-  public void setStatus(EntityStatus status) {
-    this.status = status;
+  @JsonProperty("bid_in_micro_currency")
+  public void setBidInMicroCurrency(Integer bidInMicroCurrency) {
+    this.bidInMicroCurrency = bidInMicroCurrency;
+  }
+
+  /**
+   * Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \&quot;Pinterest Performance+ bidding\&quot;.
+   **/
+  public AdGroupUpdateRequest bidStrategyType(BidStrategyTypeEnum bidStrategyType) {
+    this.bidStrategyType = bidStrategyType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "MAX_BID", value = "Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".")
+  @JsonProperty("bid_strategy_type")
+  public BidStrategyTypeEnum getBidStrategyType() {
+    return bidStrategyType;
+  }
+
+  @JsonProperty("bid_strategy_type")
+  public void setBidStrategyType(BidStrategyTypeEnum bidStrategyType) {
+    this.bidStrategyType = bidStrategyType;
+  }
+
+  /**
+   **/
+  public AdGroupUpdateRequest billableEvent(ActionType billableEvent) {
+    this.billableEvent = billableEvent;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("billable_event")
+  public ActionType getBillableEvent() {
+    return billableEvent;
+  }
+
+  @JsonProperty("billable_event")
+  public void setBillableEvent(ActionType billableEvent) {
+    this.billableEvent = billableEvent;
   }
 
   /**
@@ -168,23 +259,122 @@ public class AdGroupUpdateRequest   {
   }
 
   /**
-   * Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.
    **/
-  public AdGroupUpdateRequest bidInMicroCurrency(Integer bidInMicroCurrency) {
-    this.bidInMicroCurrency = bidInMicroCurrency;
+  public AdGroupUpdateRequest budgetType(BudgetType budgetType) {
+    this.budgetType = budgetType;
     return this;
   }
 
   
-  @ApiModelProperty(example = "5000000", value = "Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.")
-  @JsonProperty("bid_in_micro_currency")
-  public Integer getBidInMicroCurrency() {
-    return bidInMicroCurrency;
+  @ApiModelProperty(value = "")
+  @JsonProperty("budget_type")
+  public BudgetType getBudgetType() {
+    return budgetType;
   }
 
-  @JsonProperty("bid_in_micro_currency")
-  public void setBidInMicroCurrency(Integer bidInMicroCurrency) {
-    this.bidInMicroCurrency = bidInMicroCurrency;
+  @JsonProperty("budget_type")
+  public void setBudgetType(BudgetType budgetType) {
+    this.budgetType = budgetType;
+  }
+
+  /**
+   * Campaign ID of the ad group.
+   **/
+  public AdGroupUpdateRequest campaignId(String campaignId) {
+    this.campaignId = campaignId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "626736533506", value = "Campaign ID of the ad group.")
+  @JsonProperty("campaign_id")
+   @Pattern(regexp="^[C]?\\d+$")public String getCampaignId() {
+    return campaignId;
+  }
+
+  @JsonProperty("campaign_id")
+  public void setCampaignId(String campaignId) {
+    this.campaignId = campaignId;
+  }
+
+  /**
+   * Timestamp in Unix format for scheduling when ads in the ad group stop appearing. If not specified, ads run indefinitely unless you update the ad group by changing their status to &#x60;paused&#x60;. Cannot occur after &#x60;end_time&#x60; for parent campaign (if specified). Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-ads/#step-2-create-an-ad-group\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling ads&lt;/a&gt;. For certain organizations (&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.
+   **/
+  public AdGroupUpdateRequest endTime(Integer endTime) {
+    this.endTime = endTime;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "5705424000", value = "Timestamp in Unix format for scheduling when ads in the ad group stop appearing. If not specified, ads run indefinitely unless you update the ad group by changing their status to `paused`. Cannot occur after `end_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.")
+  @JsonProperty("end_time")
+  public Integer getEndTime() {
+    return endTime;
+  }
+
+  @JsonProperty("end_time")
+  public void setEndTime(Integer endTime) {
+    this.endTime = endTime;
+  }
+
+  /**
+   * Enable creative optimization for the ad group, default value is FALSE. When enabled, you allow Pinterest to automatically turn your product Pins into ads in different formats (collections and shopping) and deliver those ads to users at scale.
+   **/
+  public AdGroupUpdateRequest isCreativeOptimization(Boolean isCreativeOptimization) {
+    this.isCreativeOptimization = isCreativeOptimization;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "true", value = "Enable creative optimization for the ad group, default value is FALSE. When enabled, you allow Pinterest to automatically turn your product Pins into ads in different formats (collections and shopping) and deliver those ads to users at scale.")
+  @JsonProperty("is_creative_optimization")
+  public Boolean getIsCreativeOptimization() {
+    return isCreativeOptimization;
+  }
+
+  @JsonProperty("is_creative_optimization")
+  public void setIsCreativeOptimization(Boolean isCreativeOptimization) {
+    this.isCreativeOptimization = isCreativeOptimization;
+  }
+
+  /**
+   * Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.
+   **/
+  public AdGroupUpdateRequest lifetimeFrequencyCap(Integer lifetimeFrequencyCap) {
+    this.lifetimeFrequencyCap = lifetimeFrequencyCap;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "100", value = "Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.")
+  @JsonProperty("lifetime_frequency_cap")
+  public Integer getLifetimeFrequencyCap() {
+    return lifetimeFrequencyCap;
+  }
+
+  @JsonProperty("lifetime_frequency_cap")
+  public void setLifetimeFrequencyCap(Integer lifetimeFrequencyCap) {
+    this.lifetimeFrequencyCap = lifetimeFrequencyCap;
+  }
+
+  /**
+   * Ad group name.
+   **/
+  public AdGroupUpdateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "Ad Group For Pin: 687195905986", value = "Ad group name.")
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  @JsonProperty("name")
+  public void setName(String name) {
+    this.name = name;
   }
 
   /**
@@ -209,140 +399,21 @@ public class AdGroupUpdateRequest   {
 
   /**
    **/
-  public AdGroupUpdateRequest budgetType(BudgetType budgetType) {
-    this.budgetType = budgetType;
+  public AdGroupUpdateRequest pacingDeliveryType(PacingDeliveryType pacingDeliveryType) {
+    this.pacingDeliveryType = pacingDeliveryType;
     return this;
   }
 
   
   @ApiModelProperty(value = "")
-  @JsonProperty("budget_type")
-  public BudgetType getBudgetType() {
-    return budgetType;
+  @JsonProperty("pacing_delivery_type")
+  public PacingDeliveryType getPacingDeliveryType() {
+    return pacingDeliveryType;
   }
 
-  @JsonProperty("budget_type")
-  public void setBudgetType(BudgetType budgetType) {
-    this.budgetType = budgetType;
-  }
-
-  /**
-   * Ad group start time. Unix timestamp in seconds. Defaults to current time.
-   **/
-  public AdGroupUpdateRequest startTime(Integer startTime) {
-    this.startTime = startTime;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "5686848000", value = "Ad group start time. Unix timestamp in seconds. Defaults to current time.")
-  @JsonProperty("start_time")
-  public Integer getStartTime() {
-    return startTime;
-  }
-
-  @JsonProperty("start_time")
-  public void setStartTime(Integer startTime) {
-    this.startTime = startTime;
-  }
-
-  /**
-   * Ad group end time. Unix timestamp in seconds.
-   **/
-  public AdGroupUpdateRequest endTime(Integer endTime) {
-    this.endTime = endTime;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "5705424000", value = "Ad group end time. Unix timestamp in seconds.")
-  @JsonProperty("end_time")
-  public Integer getEndTime() {
-    return endTime;
-  }
-
-  @JsonProperty("end_time")
-  public void setEndTime(Integer endTime) {
-    this.endTime = endTime;
-  }
-
-  /**
-   **/
-  public AdGroupUpdateRequest targetingSpec(TargetingSpec targetingSpec) {
-    this.targetingSpec = targetingSpec;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("targeting_spec")
-  @Valid public TargetingSpec getTargetingSpec() {
-    return targetingSpec;
-  }
-
-  @JsonProperty("targeting_spec")
-  public void setTargetingSpec(TargetingSpec targetingSpec) {
-    this.targetingSpec = targetingSpec;
-  }
-
-  /**
-   * Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION &lt;a href&#x3D;\&quot;/docs/redoc/#section/Billable-event\&quot;&gt;billable_event&lt;/a&gt; value. This field **REQUIRES** the &#x60;end_time&#x60; field.
-   **/
-  public AdGroupUpdateRequest lifetimeFrequencyCap(Integer lifetimeFrequencyCap) {
-    this.lifetimeFrequencyCap = lifetimeFrequencyCap;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "100", value = "Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.")
-  @JsonProperty("lifetime_frequency_cap")
-  public Integer getLifetimeFrequencyCap() {
-    return lifetimeFrequencyCap;
-  }
-
-  @JsonProperty("lifetime_frequency_cap")
-  public void setLifetimeFrequencyCap(Integer lifetimeFrequencyCap) {
-    this.lifetimeFrequencyCap = lifetimeFrequencyCap;
-  }
-
-  /**
-   * Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.
-   **/
-  public AdGroupUpdateRequest trackingUrls(TrackingUrls trackingUrls) {
-    this.trackingUrls = trackingUrls;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.")
-  @JsonProperty("tracking_urls")
-  @Valid public TrackingUrls getTrackingUrls() {
-    return trackingUrls;
-  }
-
-  @JsonProperty("tracking_urls")
-  public void setTrackingUrls(TrackingUrls trackingUrls) {
-    this.trackingUrls = trackingUrls;
-  }
-
-  /**
-   * Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.
-   **/
-  public AdGroupUpdateRequest autoTargetingEnabled(Boolean autoTargetingEnabled) {
-    this.autoTargetingEnabled = autoTargetingEnabled;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "true", value = "Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.")
-  @JsonProperty("auto_targeting_enabled")
-  public Boolean getAutoTargetingEnabled() {
-    return autoTargetingEnabled;
-  }
-
-  @JsonProperty("auto_targeting_enabled")
-  public void setAutoTargetingEnabled(Boolean autoTargetingEnabled) {
-    this.autoTargetingEnabled = autoTargetingEnabled;
+  @JsonProperty("pacing_delivery_type")
+  public void setPacingDeliveryType(PacingDeliveryType pacingDeliveryType) {
+    this.pacingDeliveryType = pacingDeliveryType;
   }
 
   /**
@@ -366,81 +437,102 @@ public class AdGroupUpdateRequest   {
   }
 
   /**
+   * Specify if the promotion is applied at ad group or item level
    **/
-  public AdGroupUpdateRequest pacingDeliveryType(PacingDeliveryType pacingDeliveryType) {
-    this.pacingDeliveryType = pacingDeliveryType;
+  public AdGroupUpdateRequest promotionApplicationLevel(PromotionApplicationLevelEnum promotionApplicationLevel) {
+    this.promotionApplicationLevel = promotionApplicationLevel;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "ITEM", value = "Specify if the promotion is applied at ad group or item level")
+  @JsonProperty("promotion_application_level")
+  public PromotionApplicationLevelEnum getPromotionApplicationLevel() {
+    return promotionApplicationLevel;
+  }
+
+  @JsonProperty("promotion_application_level")
+  public void setPromotionApplicationLevel(PromotionApplicationLevelEnum promotionApplicationLevel) {
+    this.promotionApplicationLevel = promotionApplicationLevel;
+  }
+
+  /**
+   * Promotion ID. To clear this field, set to null.
+   **/
+  public AdGroupUpdateRequest promotionId(String promotionId) {
+    this.promotionId = promotionId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "7834020347906", value = "Promotion ID. To clear this field, set to null.")
+  @JsonProperty("promotion_id")
+   @Pattern(regexp="^\\d+$")public String getPromotionId() {
+    return promotionId;
+  }
+
+  @JsonProperty("promotion_id")
+  public void setPromotionId(String promotionId) {
+    this.promotionId = promotionId;
+  }
+
+  /**
+   * Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign&#39;s &#x60;start_time&#x60;. Cannot precede &#x60;start_time&#x60; for parent campaign (if specified). Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-ads/#step-2-create-an-ad-group\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling ads&lt;/a&gt;. For certain organizations (&lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.
+   **/
+  public AdGroupUpdateRequest startTime(Integer startTime) {
+    this.startTime = startTime;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "5686848000", value = "Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign's `start_time`. Cannot precede `start_time` for parent campaign (if specified). Learn about <a href=\"/docs/api-features/managing-ads/#step-2-create-an-ad-group\" target=\"blank\">scheduling ads</a>. For certain organizations (<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a>): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.")
+  @JsonProperty("start_time")
+  public Integer getStartTime() {
+    return startTime;
+  }
+
+  @JsonProperty("start_time")
+  public void setStartTime(Integer startTime) {
+    this.startTime = startTime;
+  }
+
+  /**
+   * Ad group/entity status.
+   **/
+  public AdGroupUpdateRequest status(EntityStatus status) {
+    this.status = status;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Ad group/entity status.")
+  @JsonProperty("status")
+  public EntityStatus getStatus() {
+    return status;
+  }
+
+  @JsonProperty("status")
+  public void setStatus(EntityStatus status) {
+    this.status = status;
+  }
+
+  /**
+   **/
+  public AdGroupUpdateRequest targetingSpec(TargetingSpec targetingSpec) {
+    this.targetingSpec = targetingSpec;
     return this;
   }
 
   
   @ApiModelProperty(value = "")
-  @JsonProperty("pacing_delivery_type")
-  public PacingDeliveryType getPacingDeliveryType() {
-    return pacingDeliveryType;
+  @JsonProperty("targeting_spec")
+  @Valid public TargetingSpec getTargetingSpec() {
+    return targetingSpec;
   }
 
-  @JsonProperty("pacing_delivery_type")
-  public void setPacingDeliveryType(PacingDeliveryType pacingDeliveryType) {
-    this.pacingDeliveryType = pacingDeliveryType;
-  }
-
-  /**
-   * Campaign ID of the ad group.
-   **/
-  public AdGroupUpdateRequest campaignId(String campaignId) {
-    this.campaignId = campaignId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "626736533506", value = "Campaign ID of the ad group.")
-  @JsonProperty("campaign_id")
-   @Pattern(regexp="^[C]?\\d+$")public String getCampaignId() {
-    return campaignId;
-  }
-
-  @JsonProperty("campaign_id")
-  public void setCampaignId(String campaignId) {
-    this.campaignId = campaignId;
-  }
-
-  /**
-   **/
-  public AdGroupUpdateRequest billableEvent(ActionType billableEvent) {
-    this.billableEvent = billableEvent;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("billable_event")
-  public ActionType getBillableEvent() {
-    return billableEvent;
-  }
-
-  @JsonProperty("billable_event")
-  public void setBillableEvent(ActionType billableEvent) {
-    this.billableEvent = billableEvent;
-  }
-
-  /**
-   * Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
-   **/
-  public AdGroupUpdateRequest bidStrategyType(BidStrategyTypeEnum bidStrategyType) {
-    this.bidStrategyType = bidStrategyType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "MAX_BID", value = "Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.")
-  @JsonProperty("bid_strategy_type")
-  public BidStrategyTypeEnum getBidStrategyType() {
-    return bidStrategyType;
-  }
-
-  @JsonProperty("bid_strategy_type")
-  public void setBidStrategyType(BidStrategyTypeEnum bidStrategyType) {
-    this.bidStrategyType = bidStrategyType;
+  @JsonProperty("targeting_spec")
+  public void setTargetingSpec(TargetingSpec targetingSpec) {
+    this.targetingSpec = targetingSpec;
   }
 
   /**
@@ -480,6 +572,48 @@ public class AdGroupUpdateRequest   {
     return this;
   }
   /**
+   * Third-party tracking URLs.&lt;br&gt; JSON object with the format: {\&quot;&lt;a href&#x3D;\&quot;/docs/redoc/#section/Tracking-URL-event\&quot;&gt;Tracking event enum&lt;/a&gt;\&quot;:[URL string array],...}&lt;br&gt; For example: {\&quot;impression\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;], \&quot;click\&quot;: [\&quot;URL1\&quot;, \&quot;URL2\&quot;, \&quot;URL3\&quot;]}.&lt;br&gt;Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.&lt;br&gt;&lt;br&gt; For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.
+   **/
+  public AdGroupUpdateRequest trackingUrls(TrackingUrls trackingUrls) {
+    this.trackingUrls = trackingUrls;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.")
+  @JsonProperty("tracking_urls")
+  @Valid public TrackingUrls getTrackingUrls() {
+    return trackingUrls;
+  }
+
+  @JsonProperty("tracking_urls")
+  public void setTrackingUrls(TrackingUrls trackingUrls) {
+    this.trackingUrls = trackingUrls;
+  }
+
+  /**
+   * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank&gt;Open beta&lt;/a&gt; Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the &#x60;bid_strategy&#x60; type for your ad group is set to &#x60;AUTOMATIC_BID&#x60;. - Not currently supported for &lt;a href&#x3D;\&quot;/docs/api-features/pinterest-performance-plus-setup/\&quot; target&#x3D;\&quot;blank\&quot;&gt;Pinterest Performance+ campaigns&lt;/a&gt;.
+   * minimum: 0
+   * maximum: 10
+   **/
+  public AdGroupUpdateRequest bidMultiplier(BigDecimal bidMultiplier) {
+    this.bidMultiplier = bidMultiplier;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "1", value = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.")
+  @JsonProperty("bid_multiplier")
+  @Valid  @DecimalMin("0") @DecimalMax("10")public BigDecimal getBidMultiplier() {
+    return bidMultiplier;
+  }
+
+  @JsonProperty("bid_multiplier")
+  public void setBidMultiplier(BigDecimal bidMultiplier) {
+    this.bidMultiplier = bidMultiplier;
+  }
+
+  /**
    * Ad group ID.
    **/
   public AdGroupUpdateRequest id(String id) {
@@ -509,30 +643,34 @@ public class AdGroupUpdateRequest   {
       return false;
     }
     AdGroupUpdateRequest adGroupUpdateRequest = (AdGroupUpdateRequest) o;
-    return Objects.equals(this.name, adGroupUpdateRequest.name) &&
-        Objects.equals(this.status, adGroupUpdateRequest.status) &&
-        Objects.equals(this.budgetInMicroCurrency, adGroupUpdateRequest.budgetInMicroCurrency) &&
+    return Objects.equals(this.autoTargetingEnabled, adGroupUpdateRequest.autoTargetingEnabled) &&
         Objects.equals(this.bidInMicroCurrency, adGroupUpdateRequest.bidInMicroCurrency) &&
-        Objects.equals(this.optimizationGoalMetadata, adGroupUpdateRequest.optimizationGoalMetadata) &&
-        Objects.equals(this.budgetType, adGroupUpdateRequest.budgetType) &&
-        Objects.equals(this.startTime, adGroupUpdateRequest.startTime) &&
-        Objects.equals(this.endTime, adGroupUpdateRequest.endTime) &&
-        Objects.equals(this.targetingSpec, adGroupUpdateRequest.targetingSpec) &&
-        Objects.equals(this.lifetimeFrequencyCap, adGroupUpdateRequest.lifetimeFrequencyCap) &&
-        Objects.equals(this.trackingUrls, adGroupUpdateRequest.trackingUrls) &&
-        Objects.equals(this.autoTargetingEnabled, adGroupUpdateRequest.autoTargetingEnabled) &&
-        Objects.equals(this.placementGroup, adGroupUpdateRequest.placementGroup) &&
-        Objects.equals(this.pacingDeliveryType, adGroupUpdateRequest.pacingDeliveryType) &&
-        Objects.equals(this.campaignId, adGroupUpdateRequest.campaignId) &&
-        Objects.equals(this.billableEvent, adGroupUpdateRequest.billableEvent) &&
         Objects.equals(this.bidStrategyType, adGroupUpdateRequest.bidStrategyType) &&
+        Objects.equals(this.billableEvent, adGroupUpdateRequest.billableEvent) &&
+        Objects.equals(this.budgetInMicroCurrency, adGroupUpdateRequest.budgetInMicroCurrency) &&
+        Objects.equals(this.budgetType, adGroupUpdateRequest.budgetType) &&
+        Objects.equals(this.campaignId, adGroupUpdateRequest.campaignId) &&
+        Objects.equals(this.endTime, adGroupUpdateRequest.endTime) &&
+        Objects.equals(this.isCreativeOptimization, adGroupUpdateRequest.isCreativeOptimization) &&
+        Objects.equals(this.lifetimeFrequencyCap, adGroupUpdateRequest.lifetimeFrequencyCap) &&
+        Objects.equals(this.name, adGroupUpdateRequest.name) &&
+        Objects.equals(this.optimizationGoalMetadata, adGroupUpdateRequest.optimizationGoalMetadata) &&
+        Objects.equals(this.pacingDeliveryType, adGroupUpdateRequest.pacingDeliveryType) &&
+        Objects.equals(this.placementGroup, adGroupUpdateRequest.placementGroup) &&
+        Objects.equals(this.promotionApplicationLevel, adGroupUpdateRequest.promotionApplicationLevel) &&
+        Objects.equals(this.promotionId, adGroupUpdateRequest.promotionId) &&
+        Objects.equals(this.startTime, adGroupUpdateRequest.startTime) &&
+        Objects.equals(this.status, adGroupUpdateRequest.status) &&
+        Objects.equals(this.targetingSpec, adGroupUpdateRequest.targetingSpec) &&
         Objects.equals(this.targetingTemplateIds, adGroupUpdateRequest.targetingTemplateIds) &&
+        Objects.equals(this.trackingUrls, adGroupUpdateRequest.trackingUrls) &&
+        Objects.equals(this.bidMultiplier, adGroupUpdateRequest.bidMultiplier) &&
         Objects.equals(this.id, adGroupUpdateRequest.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, status, budgetInMicroCurrency, bidInMicroCurrency, optimizationGoalMetadata, budgetType, startTime, endTime, targetingSpec, lifetimeFrequencyCap, trackingUrls, autoTargetingEnabled, placementGroup, pacingDeliveryType, campaignId, billableEvent, bidStrategyType, targetingTemplateIds, id);
+    return Objects.hash(autoTargetingEnabled, bidInMicroCurrency, bidStrategyType, billableEvent, budgetInMicroCurrency, budgetType, campaignId, endTime, isCreativeOptimization, lifetimeFrequencyCap, name, optimizationGoalMetadata, pacingDeliveryType, placementGroup, promotionApplicationLevel, promotionId, startTime, status, targetingSpec, targetingTemplateIds, trackingUrls, bidMultiplier, id);
   }
 
   @Override
@@ -540,24 +678,28 @@ public class AdGroupUpdateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdGroupUpdateRequest {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    budgetInMicroCurrency: ").append(toIndentedString(budgetInMicroCurrency)).append("\n");
-    sb.append("    bidInMicroCurrency: ").append(toIndentedString(bidInMicroCurrency)).append("\n");
-    sb.append("    optimizationGoalMetadata: ").append(toIndentedString(optimizationGoalMetadata)).append("\n");
-    sb.append("    budgetType: ").append(toIndentedString(budgetType)).append("\n");
-    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
-    sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
-    sb.append("    targetingSpec: ").append(toIndentedString(targetingSpec)).append("\n");
-    sb.append("    lifetimeFrequencyCap: ").append(toIndentedString(lifetimeFrequencyCap)).append("\n");
-    sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    autoTargetingEnabled: ").append(toIndentedString(autoTargetingEnabled)).append("\n");
-    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
-    sb.append("    pacingDeliveryType: ").append(toIndentedString(pacingDeliveryType)).append("\n");
-    sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
-    sb.append("    billableEvent: ").append(toIndentedString(billableEvent)).append("\n");
+    sb.append("    bidInMicroCurrency: ").append(toIndentedString(bidInMicroCurrency)).append("\n");
     sb.append("    bidStrategyType: ").append(toIndentedString(bidStrategyType)).append("\n");
+    sb.append("    billableEvent: ").append(toIndentedString(billableEvent)).append("\n");
+    sb.append("    budgetInMicroCurrency: ").append(toIndentedString(budgetInMicroCurrency)).append("\n");
+    sb.append("    budgetType: ").append(toIndentedString(budgetType)).append("\n");
+    sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
+    sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
+    sb.append("    isCreativeOptimization: ").append(toIndentedString(isCreativeOptimization)).append("\n");
+    sb.append("    lifetimeFrequencyCap: ").append(toIndentedString(lifetimeFrequencyCap)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    optimizationGoalMetadata: ").append(toIndentedString(optimizationGoalMetadata)).append("\n");
+    sb.append("    pacingDeliveryType: ").append(toIndentedString(pacingDeliveryType)).append("\n");
+    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
+    sb.append("    promotionApplicationLevel: ").append(toIndentedString(promotionApplicationLevel)).append("\n");
+    sb.append("    promotionId: ").append(toIndentedString(promotionId)).append("\n");
+    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    targetingSpec: ").append(toIndentedString(targetingSpec)).append("\n");
     sb.append("    targetingTemplateIds: ").append(toIndentedString(targetingTemplateIds)).append("\n");
+    sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
+    sb.append("    bidMultiplier: ").append(toIndentedString(bidMultiplier)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();

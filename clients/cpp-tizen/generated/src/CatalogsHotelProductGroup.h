@@ -10,6 +10,7 @@
 
 #include <string>
 #include "CatalogsHotelProductGroupFilters.h"
+#include "CatalogsHotelProductGroupType.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -46,6 +47,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get Catalog id pertaining to the hotel product group.
+	 */
+	std::string getCatalogId();
+
+	/*! \brief Set Catalog id pertaining to the hotel product group.
+	 */
+	void setCatalogId(std::string  catalog_id);
 	/*! \brief Get 
 	 */
 	std::string getCatalogType();
@@ -53,6 +61,27 @@ public:
 	/*! \brief Set 
 	 */
 	void setCatalogType(std::string  catalog_type);
+	/*! \brief Get Unix timestamp in seconds of when catalog product group was created.
+	 */
+	int getCreatedAt();
+
+	/*! \brief Set Unix timestamp in seconds of when catalog product group was created.
+	 */
+	void setCreatedAt(int  created_at);
+	/*! \brief Get 
+	 */
+	std::string getDescription();
+
+	/*! \brief Set 
+	 */
+	void setDescription(std::string  description);
+	/*! \brief Get 
+	 */
+	CatalogsHotelProductGroupFilters getFilters();
+
+	/*! \brief Set 
+	 */
+	void setFilters(CatalogsHotelProductGroupFilters  filters);
 	/*! \brief Get ID of the hotel product group.
 	 */
 	std::string getId();
@@ -69,25 +98,11 @@ public:
 	void setName(std::string  name);
 	/*! \brief Get 
 	 */
-	std::string getDescription();
+	CatalogsHotelProductGroupType getType();
 
 	/*! \brief Set 
 	 */
-	void setDescription(std::string  description);
-	/*! \brief Get 
-	 */
-	CatalogsHotelProductGroupFilters getFilters();
-
-	/*! \brief Set 
-	 */
-	void setFilters(CatalogsHotelProductGroupFilters  filters);
-	/*! \brief Get Unix timestamp in seconds of when catalog product group was created.
-	 */
-	int getCreatedAt();
-
-	/*! \brief Set Unix timestamp in seconds of when catalog product group was created.
-	 */
-	void setCreatedAt(int  created_at);
+	void setType(CatalogsHotelProductGroupType  type);
 	/*! \brief Get Unix timestamp in seconds of last time catalog product group was updated.
 	 */
 	int getUpdatedAt();
@@ -95,23 +110,17 @@ public:
 	/*! \brief Set Unix timestamp in seconds of last time catalog product group was updated.
 	 */
 	void setUpdatedAt(int  updated_at);
-	/*! \brief Get Catalog id pertaining to the hotel product group.
-	 */
-	std::string getCatalogId();
-
-	/*! \brief Set Catalog id pertaining to the hotel product group.
-	 */
-	void setCatalogId(std::string  catalog_id);
 
 private:
+	std::string catalog_id;
 	std::string catalog_type;
-	std::string id;
-	std::string name;
+	int created_at;
 	std::string description;
 	CatalogsHotelProductGroupFilters filters;
-	int created_at;
+	std::string id;
+	std::string name;
+	CatalogsHotelProductGroupType type;
 	int updated_at;
-	std::string catalog_id;
 	void __init();
 	void __cleanup();
 

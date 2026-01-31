@@ -25,13 +25,13 @@ class LineItemTest : ShouldSpec() {
         // uncomment below to create an instance of LineItem
         //val modelInstance = LineItem()
 
-        // to test the property `productBrand` - Product brand. For example, \"Parker\".
+        // to test the property `productBrand` - Product brand. For example, 'Parker'.
         should("test productBrand") {
             // uncomment below to test the property
             //modelInstance.productBrand shouldBe ("TODO")
         }
 
-        // to test the property `productCategory` - Product category. For example, \"Shoes\".
+        // to test the property `productCategory` - Product category. For example, 'Shoes'.
         should("test productCategory") {
             // uncomment below to test the property
             //modelInstance.productCategory shouldBe ("TODO")
@@ -43,13 +43,13 @@ class LineItemTest : ShouldSpec() {
             //modelInstance.productId shouldBe ("TODO")
         }
 
-        // to test the property `productName` - Product name. For example, \"Parker Boots\".
+        // to test the property `productName` - Product name. For example, 'Parker Boots'.
         should("test productName") {
             // uncomment below to test the property
             //modelInstance.productName shouldBe ("TODO")
         }
 
-        // to test the property `productPrice` - Product price. For example, \"99.99\".
+        // to test the property `productPrice` - Product price. For example, '99.99'.
         should("test productPrice") {
             // uncomment below to test the property
             //modelInstance.productPrice shouldBe ("TODO")
@@ -61,13 +61,13 @@ class LineItemTest : ShouldSpec() {
             //modelInstance.productQuantity shouldBe ("TODO")
         }
 
-        // to test the property `productVariant` - Product variant. For example, \"Red\".
+        // to test the property `productVariant` - Product variant. For example, 'Red'.
         should("test productVariant") {
             // uncomment below to test the property
             //modelInstance.productVariant shouldBe ("TODO")
         }
 
-        // to test the property `productVariantId` - Product variant ID. For example, \"1414-34832\".
+        // to test the property `productVariantId` - Product variant ID. For example, '1414-34832'.
         should("test productVariantId") {
             // uncomment below to test the property
             //modelInstance.productVariantId shouldBe ("TODO")

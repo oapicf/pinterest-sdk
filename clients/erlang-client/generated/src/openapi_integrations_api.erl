@@ -96,12 +96,12 @@ integrations_commerce/get(Ctx, ExternalBusinessId, Optional) ->
 
 %% @doc Update commerce integration
 %% Update commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
--spec integrations_commerce/patch(ctx:ctx(), binary()) -> {ok, openapi_integration_metadata:openapi_integration_metadata(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-integrations_commerce/patch(Ctx, ExternalBusinessId) ->
-    integrations_commerce/patch(Ctx, ExternalBusinessId, #{}).
+-spec integrations_commerce/patch(ctx:ctx(), binary(), openapi_integration_request_patch:openapi_integration_request_patch()) -> {ok, openapi_integration_metadata:openapi_integration_metadata(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+integrations_commerce/patch(Ctx, ExternalBusinessId, OpenapiIntegrationRequestPatch) ->
+    integrations_commerce/patch(Ctx, ExternalBusinessId, OpenapiIntegrationRequestPatch, #{}).
 
--spec integrations_commerce/patch(ctx:ctx(), binary(), maps:map()) -> {ok, openapi_integration_metadata:openapi_integration_metadata(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-integrations_commerce/patch(Ctx, ExternalBusinessId, Optional) ->
+-spec integrations_commerce/patch(ctx:ctx(), binary(), openapi_integration_request_patch:openapi_integration_request_patch(), maps:map()) -> {ok, openapi_integration_metadata:openapi_integration_metadata(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+integrations_commerce/patch(Ctx, ExternalBusinessId, OpenapiIntegrationRequestPatch, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 
@@ -117,12 +117,12 @@ integrations_commerce/patch(Ctx, ExternalBusinessId, Optional) ->
 
 %% @doc Create commerce integration
 %% Create commerce integration metadata to link an external business ID with a Pinterest merchant & ad account. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
--spec integrations_commerce/post(ctx:ctx()) -> {ok, openapi_integration_metadata:openapi_integration_metadata(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-integrations_commerce/post(Ctx) ->
-    integrations_commerce/post(Ctx, #{}).
+-spec integrations_commerce/post(ctx:ctx(), openapi_integration_request:openapi_integration_request()) -> {ok, openapi_integration_metadata:openapi_integration_metadata(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+integrations_commerce/post(Ctx, OpenapiIntegrationRequest) ->
+    integrations_commerce/post(Ctx, OpenapiIntegrationRequest, #{}).
 
--spec integrations_commerce/post(ctx:ctx(), maps:map()) -> {ok, openapi_integration_metadata:openapi_integration_metadata(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
-integrations_commerce/post(Ctx, Optional) ->
+-spec integrations_commerce/post(ctx:ctx(), openapi_integration_request:openapi_integration_request(), maps:map()) -> {ok, openapi_integration_metadata:openapi_integration_metadata(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+integrations_commerce/post(Ctx, OpenapiIntegrationRequest, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
 

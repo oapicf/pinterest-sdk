@@ -30,11 +30,11 @@ module IntegrationsApiHandlerTestsHelper =
   &quot;connected_lba_id&quot; : &quot;connected_lba_id&quot;,
   &quot;partner_primary_email&quot; : &quot;partner_primary_email&quot;,
   &quot;connected_tag_id&quot; : &quot;connected_tag_id&quot;,
-  &quot;partner_refresh_token&quot; : &quot;partner_refresh_token&quot;,
   &quot;additional_id_1&quot; : &quot;additional_id_1&quot;,
+  &quot;partner_refresh_token&quot; : &quot;partner_refresh_token&quot;,
   &quot;connected_merchant_id&quot; : &quot;connected_merchant_id&quot;,
-  &quot;scopes&quot; : &quot;scopes&quot;,
   &quot;partner_metadata&quot; : &quot;partner_metadata&quot;,
+  &quot;scopes&quot; : &quot;scopes&quot;,
   &quot;partner_access_token&quot; : &quot;partner_access_token&quot;,
   &quot;partner_access_token_expiry&quot; : 0.8008281904610115,
   &quot;partner_refresh_token_expiry&quot; : 6.027456183070403
@@ -57,8 +57,8 @@ module IntegrationsApiHandlerTestsHelper =
   &quot;partner_refresh_token_expiry&quot; : 6,
   &quot;external_business_id&quot; : &quot;external_business_id&quot;,
   &quot;connected_lba_id&quot; : &quot;connected_lba_id&quot;,
-  &quot;partner_refresh_token&quot; : &quot;partner_refresh_token&quot;,
   &quot;additional_id_1&quot; : &quot;additional_id_1&quot;,
+  &quot;partner_refresh_token&quot; : &quot;partner_refresh_token&quot;,
   &quot;connected_merchant_id&quot; : &quot;connected_merchant_id&quot;,
   &quot;scopes&quot; : &quot;scopes&quot;,
   &quot;partner_access_token_expiry&quot; : 0
@@ -78,8 +78,8 @@ module IntegrationsApiHandlerTestsHelper =
 
   IntegrationsLogsPostBody <- WebUtility.HtmlDecode "{
   &quot;logs&quot; : [ {
-    &quot;client_timestamp&quot; : 0,
     &quot;app_version_number&quot; : &quot;app_version_number&quot;,
+    &quot;client_timestamp&quot; : 0,
     &quot;request&quot; : {
       &quot;path&quot; : &quot;path&quot;,
       &quot;response_headers&quot; : {
@@ -94,7 +94,6 @@ module IntegrationsApiHandlerTestsHelper =
     },
     &quot;log_level&quot; : &quot;INFO&quot;,
     &quot;merchant_id&quot; : &quot;merchant_id&quot;,
-    &quot;message&quot; : &quot;message&quot;,
     &quot;error&quot; : {
       &quot;number&quot; : 5,
       &quot;file_name&quot; : &quot;file_name&quot;,
@@ -106,6 +105,7 @@ module IntegrationsApiHandlerTestsHelper =
       &quot;message&quot; : &quot;message&quot;,
       &quot;message_detail&quot; : &quot;message_detail&quot;
     },
+    &quot;message&quot; : &quot;message&quot;,
     &quot;platform_version_number&quot; : &quot;platform_version_number&quot;,
     &quot;advertiser_id&quot; : &quot;advertiser_id&quot;,
     &quot;external_business_id&quot; : &quot;external_business_id&quot;,
@@ -113,8 +113,8 @@ module IntegrationsApiHandlerTestsHelper =
     &quot;tag_id&quot; : &quot;tag_id&quot;,
     &quot;feed_profile_id&quot; : &quot;feed_profile_id&quot;
   }, {
-    &quot;client_timestamp&quot; : 0,
     &quot;app_version_number&quot; : &quot;app_version_number&quot;,
+    &quot;client_timestamp&quot; : 0,
     &quot;request&quot; : {
       &quot;path&quot; : &quot;path&quot;,
       &quot;response_headers&quot; : {
@@ -129,7 +129,6 @@ module IntegrationsApiHandlerTestsHelper =
     },
     &quot;log_level&quot; : &quot;INFO&quot;,
     &quot;merchant_id&quot; : &quot;merchant_id&quot;,
-    &quot;message&quot; : &quot;message&quot;,
     &quot;error&quot; : {
       &quot;number&quot; : 5,
       &quot;file_name&quot; : &quot;file_name&quot;,
@@ -141,6 +140,7 @@ module IntegrationsApiHandlerTestsHelper =
       &quot;message&quot; : &quot;message&quot;,
       &quot;message_detail&quot; : &quot;message_detail&quot;
     },
+    &quot;message&quot; : &quot;message&quot;,
     &quot;platform_version_number&quot; : &quot;platform_version_number&quot;,
     &quot;advertiser_id&quot; : &quot;advertiser_id&quot;,
     &quot;external_business_id&quot; : &quot;external_business_id&quot;,
@@ -148,8 +148,8 @@ module IntegrationsApiHandlerTestsHelper =
     &quot;tag_id&quot; : &quot;tag_id&quot;,
     &quot;feed_profile_id&quot; : &quot;feed_profile_id&quot;
   }, {
-    &quot;client_timestamp&quot; : 0,
     &quot;app_version_number&quot; : &quot;app_version_number&quot;,
+    &quot;client_timestamp&quot; : 0,
     &quot;request&quot; : {
       &quot;path&quot; : &quot;path&quot;,
       &quot;response_headers&quot; : {
@@ -164,7 +164,6 @@ module IntegrationsApiHandlerTestsHelper =
     },
     &quot;log_level&quot; : &quot;INFO&quot;,
     &quot;merchant_id&quot; : &quot;merchant_id&quot;,
-    &quot;message&quot; : &quot;message&quot;,
     &quot;error&quot; : {
       &quot;number&quot; : 5,
       &quot;file_name&quot; : &quot;file_name&quot;,
@@ -176,6 +175,7 @@ module IntegrationsApiHandlerTestsHelper =
       &quot;message&quot; : &quot;message&quot;,
       &quot;message_detail&quot; : &quot;message_detail&quot;
     },
+    &quot;message&quot; : &quot;message&quot;,
     &quot;platform_version_number&quot; : &quot;platform_version_number&quot;,
     &quot;advertiser_id&quot; : &quot;advertiser_id&quot;,
     &quot;external_business_id&quot; : &quot;external_business_id&quot;,
@@ -183,8 +183,8 @@ module IntegrationsApiHandlerTestsHelper =
     &quot;tag_id&quot; : &quot;tag_id&quot;,
     &quot;feed_profile_id&quot; : &quot;feed_profile_id&quot;
   }, {
-    &quot;client_timestamp&quot; : 0,
     &quot;app_version_number&quot; : &quot;app_version_number&quot;,
+    &quot;client_timestamp&quot; : 0,
     &quot;request&quot; : {
       &quot;path&quot; : &quot;path&quot;,
       &quot;response_headers&quot; : {
@@ -199,7 +199,6 @@ module IntegrationsApiHandlerTestsHelper =
     },
     &quot;log_level&quot; : &quot;INFO&quot;,
     &quot;merchant_id&quot; : &quot;merchant_id&quot;,
-    &quot;message&quot; : &quot;message&quot;,
     &quot;error&quot; : {
       &quot;number&quot; : 5,
       &quot;file_name&quot; : &quot;file_name&quot;,
@@ -211,6 +210,7 @@ module IntegrationsApiHandlerTestsHelper =
       &quot;message&quot; : &quot;message&quot;,
       &quot;message_detail&quot; : &quot;message_detail&quot;
     },
+    &quot;message&quot; : &quot;message&quot;,
     &quot;platform_version_number&quot; : &quot;platform_version_number&quot;,
     &quot;advertiser_id&quot; : &quot;advertiser_id&quot;,
     &quot;external_business_id&quot; : &quot;external_business_id&quot;,
@@ -218,8 +218,8 @@ module IntegrationsApiHandlerTestsHelper =
     &quot;tag_id&quot; : &quot;tag_id&quot;,
     &quot;feed_profile_id&quot; : &quot;feed_profile_id&quot;
   }, {
-    &quot;client_timestamp&quot; : 0,
     &quot;app_version_number&quot; : &quot;app_version_number&quot;,
+    &quot;client_timestamp&quot; : 0,
     &quot;request&quot; : {
       &quot;path&quot; : &quot;path&quot;,
       &quot;response_headers&quot; : {
@@ -234,7 +234,6 @@ module IntegrationsApiHandlerTestsHelper =
     },
     &quot;log_level&quot; : &quot;INFO&quot;,
     &quot;merchant_id&quot; : &quot;merchant_id&quot;,
-    &quot;message&quot; : &quot;message&quot;,
     &quot;error&quot; : {
       &quot;number&quot; : 5,
       &quot;file_name&quot; : &quot;file_name&quot;,
@@ -246,6 +245,7 @@ module IntegrationsApiHandlerTestsHelper =
       &quot;message&quot; : &quot;message&quot;,
       &quot;message_detail&quot; : &quot;message_detail&quot;
     },
+    &quot;message&quot; : &quot;message&quot;,
     &quot;platform_version_number&quot; : &quot;platform_version_number&quot;,
     &quot;advertiser_id&quot; : &quot;advertiser_id&quot;,
     &quot;external_business_id&quot; : &quot;external_business_id&quot;,

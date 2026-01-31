@@ -31,6 +31,8 @@
 
 * `AGE_BUCKET_AND_GENDER` (value: `"AGE_BUCKET_AND_GENDER"`)
 
+* `AUDIENCE_MULTIPLIER` (value: `"AUDIENCE_MULTIPLIER"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

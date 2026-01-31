@@ -1,0 +1,33 @@
+
+# AdPreviewShopping
+
+## Properties
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **catalogProductGroupId** | **kotlin.String** | Catalog Product Group Id. |  |
+| **creativeType** | [**inline**](#CreativeType) | Ad format of the shopping ad preview. |  |
+| **customizableCtaType** | [**CustomizableCTAType**](CustomizableCTAType.md) | Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are &#x60;SHOP_NOW&#x60;, &#x60;BOOK_NOW&#x60;, &#x60;ON_SALE&#x60;, &#x60;GET_DEAL&#x60;, &#x60;BUY_ONLINE_PICKUP_IN_STORE&#x60; |  [optional] |
+| **heroImageTitle** | **kotlin.String** | Title displayed below ad. |  [optional] |
+| **heroImageUrl** | **kotlin.String** | Hero image URL. |  [optional] |
+| **heroPinId** | **kotlin.String** | Pin id for the hero image. When creative type is COLLECTION, either hero_pin_id or (hero_image_url, hero_image_title) is required. |  [optional] |
+| **imageTag** | **kotlin.String** | Multi image template tag. |  [optional] |
+| **itemId** | **kotlin.String** | Item id for product to preview standard shopping ads, optional and only applicable when creative type is SHOPPING. |  [optional] |
+| **preferredMediaType** | [**inline**](#PreferredMediaType) | Preferred media type. |  [optional] |
+| **videoTag** | **kotlin.String** | Multi video template tag, image_tag and video_tag are mutual exclusive. |  [optional] |
+
+
+<a id="CreativeType"></a>
+## Enum: creative_type
+| Name | Value |
+| ---- | ----- |
+| creativeType | SHOPPING, CAROUSEL, COLLECTION, REGULAR |
+
+
+<a id="PreferredMediaType"></a>
+## Enum: preferred_media_type
+| Name | Value |
+| ---- | ----- |
+| preferredMediaType | VIDEO, IMAGE |
+
+
+

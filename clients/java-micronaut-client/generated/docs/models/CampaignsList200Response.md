@@ -8,8 +8,8 @@ The class is defined in **[CampaignsList200Response.java](../../src/main/java/or
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;CampaignResponse&gt;`](CampaignResponse.md) |  | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;CampaignResponse&gt;`](CampaignResponse.md) |  | 
 
 
 

@@ -399,7 +399,7 @@ Name | Type | Description  | Notes
 
 ## BoardsCreate
 
-> Board BoardsCreate(ctx).Board(board).AdAccountId(adAccountId).Execute()
+> Board BoardsCreate(ctx).BoardCreate(boardCreate).AdAccountId(adAccountId).Execute()
 
 Create board
 
@@ -418,12 +418,12 @@ import (
 )
 
 func main() {
-	board := *openapiclient.NewBoard("Summer Recipes") // Board | Create a board using a single board json object.
+	boardCreate := *openapiclient.NewBoardCreate("Summer recipes") // BoardCreate | 
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BoardsAPI.BoardsCreate(context.Background()).Board(board).AdAccountId(adAccountId).Execute()
+	resp, r, err := apiClient.BoardsAPI.BoardsCreate(context.Background()).BoardCreate(boardCreate).AdAccountId(adAccountId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BoardsAPI.BoardsCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -444,7 +444,7 @@ Other parameters are passed through a pointer to a apiBoardsCreateRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **board** | [**Board**](Board.md) | Create a board using a single board json object. | 
+ **boardCreate** | [**BoardCreate**](BoardCreate.md) |  | 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
 
 ### Return type
@@ -453,7 +453,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -486,7 +486,7 @@ import (
 )
 
 func main() {
-	boardId := "boardId_example" // string | Unique identifier of a board.
+	boardId := "boardId_example" // string | 
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -505,7 +505,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**boardId** | **string** | Unique identifier of a board. | 
+**boardId** | **string** |  | 
 
 ### Other Parameters
 
@@ -556,7 +556,7 @@ import (
 )
 
 func main() {
-	boardId := "boardId_example" // string | Unique identifier of a board.
+	boardId := "boardId_example" // string | 
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -577,7 +577,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**boardId** | **string** | Unique identifier of a board. | 
+**boardId** | **string** |  | 
 
 ### Other Parameters
 
@@ -609,7 +609,7 @@ Name | Type | Description  | Notes
 
 ## BoardsList
 
-> BoardsList200Response BoardsList(ctx).AdAccountId(adAccountId).Bookmark(bookmark).PageSize(pageSize).Privacy(privacy).Execute()
+> BoardsList200Response BoardsList(ctx).AdAccountId(adAccountId).Privacy(privacy).Bookmark(bookmark).PageSize(pageSize).Execute()
 
 List boards
 
@@ -629,13 +629,13 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
+	privacy := openapiclient.BoardPrivacyFilter("ALL") // BoardPrivacyFilter | The privacy level of the board (optional)
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
-	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-	privacy := "privacy_example" // string | Privacy setting for a board. (optional)
+	pageSize := int32(56) // int32 | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BoardsAPI.BoardsList(context.Background()).AdAccountId(adAccountId).Bookmark(bookmark).PageSize(pageSize).Privacy(privacy).Execute()
+	resp, r, err := apiClient.BoardsAPI.BoardsList(context.Background()).AdAccountId(adAccountId).Privacy(privacy).Bookmark(bookmark).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BoardsAPI.BoardsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -657,9 +657,9 @@ Other parameters are passed through a pointer to a apiBoardsListRequest struct v
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **string** | Unique identifier of an ad account. | 
+ **privacy** | [**BoardPrivacyFilter**](BoardPrivacyFilter.md) | The privacy level of the board | 
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
- **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
- **privacy** | **string** | Privacy setting for a board. | 
+ **pageSize** | **int32** | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [default to 25]
 
 ### Return type
 
@@ -703,9 +703,9 @@ func main() {
 	boardId := "boardId_example" // string | Unique identifier of a board.
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
 	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
-	creativeTypes := []string{"REGULAR"} // []string | Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
+	creativeTypes := []openapiclient.CreativeType{openapiclient.CreativeType("REGULAR")} // []CreativeType | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
-	pinMetrics := true // bool | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional) (default to false)
+	pinMetrics := true // bool | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -737,9 +737,9 @@ Name | Type | Description  | Notes
 
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
  **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
- **creativeTypes** | **[]string** | Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | 
+ **creativeTypes** | [**[]CreativeType**](CreativeType.md) | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
- **pinMetrics** | **bool** | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [default to false]
+ **pinMetrics** | **bool** | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [default to false]
 
 ### Return type
 
@@ -761,7 +761,7 @@ Name | Type | Description  | Notes
 
 ## BoardsUpdate
 
-> Board BoardsUpdate(ctx, boardId).BoardUpdate(boardUpdate).AdAccountId(adAccountId).Execute()
+> BoardWithUpdatePrivacy BoardsUpdate(ctx, boardId).BoardWithUpdatePrivacyUpdate(boardWithUpdatePrivacyUpdate).AdAccountId(adAccountId).Execute()
 
 Update board
 
@@ -780,18 +780,18 @@ import (
 )
 
 func main() {
-	boardId := "boardId_example" // string | Unique identifier of a board.
-	boardUpdate := *openapiclient.NewBoardUpdate() // BoardUpdate | Update a board.
+	boardId := "boardId_example" // string | 
+	boardWithUpdatePrivacyUpdate := *openapiclient.NewBoardWithUpdatePrivacyUpdate() // BoardWithUpdatePrivacyUpdate | 
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BoardsAPI.BoardsUpdate(context.Background(), boardId).BoardUpdate(boardUpdate).AdAccountId(adAccountId).Execute()
+	resp, r, err := apiClient.BoardsAPI.BoardsUpdate(context.Background(), boardId).BoardWithUpdatePrivacyUpdate(boardWithUpdatePrivacyUpdate).AdAccountId(adAccountId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BoardsAPI.BoardsUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `BoardsUpdate`: Board
+	// response from `BoardsUpdate`: BoardWithUpdatePrivacy
 	fmt.Fprintf(os.Stdout, "Response from `BoardsAPI.BoardsUpdate`: %v\n", resp)
 }
 ```
@@ -802,7 +802,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**boardId** | **string** | Unique identifier of a board. | 
+**boardId** | **string** |  | 
 
 ### Other Parameters
 
@@ -812,16 +812,16 @@ Other parameters are passed through a pointer to a apiBoardsUpdateRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **boardUpdate** | [**BoardUpdate**](BoardUpdate.md) | Update a board. | 
+ **boardWithUpdatePrivacyUpdate** | [**BoardWithUpdatePrivacyUpdate**](BoardWithUpdatePrivacyUpdate.md) |  | 
  **adAccountId** | **string** | Unique identifier of an ad account. | 
 
 ### Return type
 
-[**Board**](Board.md)
+[**BoardWithUpdatePrivacy**](BoardWithUpdatePrivacy.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

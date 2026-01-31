@@ -1,0 +1,30 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "additional_id_1" },
+      {"model": "connected_advertiser_id" },
+      {"model": "connected_lba_id" },
+      {"model": "connected_merchant_id" },
+      {"model": "connected_tag_id" },
+      {"model": "connected_user_id" },
+      {"model": "created_timestamp" },
+      {"model": "external_business_id" },
+      {"model": "id" },
+      {"model": "partner_access_token_expiry" },
+      {"model": "partner_metadata" },
+      {"model": "partner_refresh_token_expiry" },
+      {"model": "scopes" },
+      {"model": "updated_timestamp" },
+    ]
+  }]
+}

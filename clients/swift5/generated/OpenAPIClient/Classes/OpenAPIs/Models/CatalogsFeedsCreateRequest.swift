@@ -14,42 +14,42 @@ import AnyCodable
 public struct CatalogsFeedsCreateRequest: Codable, JSONEncodable, Hashable {
 
     public static let locationRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(http|https|ftp|sftp):\/\//")
-    public var defaultCurrency: NullableCurrency?
-    /** A human-friendly name associated to a given feed. */
-    public var name: String
-    public var format: CatalogsFormat
-    public var defaultLocale: CatalogsFeedsCreateRequestDefaultLocale?
     public var credentials: CatalogsFeedCredentials?
+    public var defaultAvailability: ProductAvailabilityType?
+    public var defaultCountry: Country?
+    public var defaultCurrency: NullableCurrency?
+    public var defaultLocale: CatalogsFeedsCreateRequestDefaultLocale?
+    public var format: CatalogsFormat
     /** The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
     public var location: String
+    /** A human-friendly name associated to a given feed. */
+    public var name: String
     public var preferredProcessingSchedule: CatalogsFeedProcessingSchedule?
-    public var defaultCountry: Country?
-    public var defaultAvailability: ProductAvailabilityType?
     public var status: CatalogsStatus? = "ACTIVE"
 
-    public init(defaultCurrency: NullableCurrency? = nil, name: String, format: CatalogsFormat, defaultLocale: CatalogsFeedsCreateRequestDefaultLocale? = nil, credentials: CatalogsFeedCredentials? = nil, location: String, preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = nil, defaultCountry: Country? = nil, defaultAvailability: ProductAvailabilityType? = nil, status: CatalogsStatus? = "ACTIVE") {
-        self.defaultCurrency = defaultCurrency
-        self.name = name
-        self.format = format
-        self.defaultLocale = defaultLocale
+    public init(credentials: CatalogsFeedCredentials? = nil, defaultAvailability: ProductAvailabilityType? = nil, defaultCountry: Country? = nil, defaultCurrency: NullableCurrency? = nil, defaultLocale: CatalogsFeedsCreateRequestDefaultLocale? = nil, format: CatalogsFormat, location: String, name: String, preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = nil, status: CatalogsStatus? = "ACTIVE") {
         self.credentials = credentials
-        self.location = location
-        self.preferredProcessingSchedule = preferredProcessingSchedule
-        self.defaultCountry = defaultCountry
         self.defaultAvailability = defaultAvailability
+        self.defaultCountry = defaultCountry
+        self.defaultCurrency = defaultCurrency
+        self.defaultLocale = defaultLocale
+        self.format = format
+        self.location = location
+        self.name = name
+        self.preferredProcessingSchedule = preferredProcessingSchedule
         self.status = status
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case defaultCurrency = "default_currency"
-        case name
-        case format
-        case defaultLocale = "default_locale"
         case credentials
-        case location
-        case preferredProcessingSchedule = "preferred_processing_schedule"
-        case defaultCountry = "default_country"
         case defaultAvailability = "default_availability"
+        case defaultCountry = "default_country"
+        case defaultCurrency = "default_currency"
+        case defaultLocale = "default_locale"
+        case format
+        case location
+        case name
+        case preferredProcessingSchedule = "preferred_processing_schedule"
         case status
     }
 
@@ -57,15 +57,15 @@ public struct CatalogsFeedsCreateRequest: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(defaultCurrency, forKey: .defaultCurrency)
-        try container.encode(name, forKey: .name)
-        try container.encode(format, forKey: .format)
-        try container.encodeIfPresent(defaultLocale, forKey: .defaultLocale)
         try container.encodeIfPresent(credentials, forKey: .credentials)
-        try container.encode(location, forKey: .location)
-        try container.encodeIfPresent(preferredProcessingSchedule, forKey: .preferredProcessingSchedule)
-        try container.encodeIfPresent(defaultCountry, forKey: .defaultCountry)
         try container.encodeIfPresent(defaultAvailability, forKey: .defaultAvailability)
+        try container.encodeIfPresent(defaultCountry, forKey: .defaultCountry)
+        try container.encodeIfPresent(defaultCurrency, forKey: .defaultCurrency)
+        try container.encodeIfPresent(defaultLocale, forKey: .defaultLocale)
+        try container.encode(format, forKey: .format)
+        try container.encode(location, forKey: .location)
+        try container.encode(name, forKey: .name)
+        try container.encodeIfPresent(preferredProcessingSchedule, forKey: .preferredProcessingSchedule)
         try container.encodeIfPresent(status, forKey: .status)
     }
 }

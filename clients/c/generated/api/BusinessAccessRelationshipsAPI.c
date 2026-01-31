@@ -95,6 +95,253 @@ end:
 */
 
 
+// Create a Brand Account
+//
+// Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+//
+brand_accounts_create_200_response_t*
+BusinessAccessRelationshipsAPI_brandAccountsCreate(apiClient_t *apiClient, char *business_hierarchy_id, brand_accounts_create_request_t *brand_accounts_create_request)
+{
+    list_t    *localVarQueryParameters = NULL;
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
+    char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
+
+    // create the path
+    char *localVarPath = strdup("/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts");
+
+    if(!business_hierarchy_id)
+        goto end;
+
+
+    // Path Params
+    long sizeOfPathParams_business_hierarchy_id = strlen(business_hierarchy_id)+3 + sizeof("{ business_hierarchy_id }") - 1;
+    if(business_hierarchy_id == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_business_hierarchy_id = malloc(sizeOfPathParams_business_hierarchy_id);
+    sprintf(localVarToReplace_business_hierarchy_id, "{%s}", "business_hierarchy_id");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_business_hierarchy_id, business_hierarchy_id);
+
+
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_brand_accounts_create_request = NULL;
+    if (brand_accounts_create_request != NULL)
+    {
+        //not string, not binary
+        localVarSingleItemJSON_brand_accounts_create_request = brand_accounts_create_request_convertToJSON(brand_accounts_create_request);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_brand_accounts_create_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    localVarBodyLength,
+                    "POST");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","Success");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","Invalid parameters.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 0) {
+    //    printf("%s\n","Unexpected error");
+    //}
+    //nonprimitive not container
+    brand_accounts_create_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BusinessAccessRelationshipsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = brand_accounts_create_200_response_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
+        cJSON_Delete(BusinessAccessRelationshipsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    
+    
+    
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
+    free(localVarPath);
+    free(localVarToReplace_business_hierarchy_id);
+    if (localVarSingleItemJSON_brand_accounts_create_request) {
+        cJSON_Delete(localVarSingleItemJSON_brand_accounts_create_request);
+        localVarSingleItemJSON_brand_accounts_create_request = NULL;
+    }
+    free(localVarBodyParameters);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// Update a Brand Account
+//
+// Update an existing Brand Account
+//
+brand_accounts_create_200_response_t*
+BusinessAccessRelationshipsAPI_brandAccountsUpdate(apiClient_t *apiClient, char *business_hierarchy_id, char *brand_account_id, brand_accounts_update_request_t *brand_accounts_update_request)
+{
+    list_t    *localVarQueryParameters = NULL;
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
+    char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
+
+    // create the path
+    char *localVarPath = strdup("/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}");
+
+    if(!business_hierarchy_id)
+        goto end;
+    if(!brand_account_id)
+        goto end;
+
+
+    // Path Params
+    long sizeOfPathParams_business_hierarchy_id = strlen(business_hierarchy_id)+3 + strlen(brand_account_id)+3 + sizeof("{ business_hierarchy_id }") - 1;
+    if(business_hierarchy_id == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_business_hierarchy_id = malloc(sizeOfPathParams_business_hierarchy_id);
+    sprintf(localVarToReplace_business_hierarchy_id, "{%s}", "business_hierarchy_id");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_business_hierarchy_id, business_hierarchy_id);
+
+    // Path Params
+    long sizeOfPathParams_brand_account_id = strlen(business_hierarchy_id)+3 + strlen(brand_account_id)+3 + sizeof("{ brand_account_id }") - 1;
+    if(brand_account_id == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_brand_account_id = malloc(sizeOfPathParams_brand_account_id);
+    sprintf(localVarToReplace_brand_account_id, "{%s}", "brand_account_id");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_brand_account_id, brand_account_id);
+
+
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_brand_accounts_update_request = NULL;
+    if (brand_accounts_update_request != NULL)
+    {
+        //not string, not binary
+        localVarSingleItemJSON_brand_accounts_update_request = brand_accounts_update_request_convertToJSON(brand_accounts_update_request);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_brand_accounts_update_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    localVarBodyLength,
+                    "PATCH");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","Success");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","Invalid parameters.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Not authenticated to update Brand Account");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 403) {
+    //    printf("%s\n","Not authorized to update Brand Account");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 404) {
+    //    printf("%s\n","Brand account not found");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 409) {
+    //    printf("%s\n","This account is not a brand account.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 429) {
+    //    printf("%s\n","This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 0) {
+    //    printf("%s\n","Unexpected error");
+    //}
+    //nonprimitive not container
+    brand_accounts_create_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BusinessAccessRelationshipsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = brand_accounts_create_200_response_parseFromJSON(BusinessAccessRelationshipsAPIlocalVarJSON);
+        cJSON_Delete(BusinessAccessRelationshipsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    
+    
+    
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
+    free(localVarPath);
+    free(localVarToReplace_business_hierarchy_id);
+    free(localVarToReplace_brand_account_id);
+    if (localVarSingleItemJSON_brand_accounts_update_request) {
+        cJSON_Delete(localVarSingleItemJSON_brand_accounts_update_request);
+        localVarSingleItemJSON_brand_accounts_update_request = NULL;
+    }
+    free(localVarBodyParameters);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
 // Terminate business memberships
 //
 // Terminate memberships between the specified members and your business.
@@ -433,7 +680,7 @@ end:
 // Get all members of the specified business. The return response will include the member's business_role and assets they have access to if assets_summary=TRUE
 //
 get_business_members_200_response_t*
-BusinessAccessRelationshipsAPI_getBusinessMembers(apiClient_t *apiClient, char *business_id, int *assets_summary, list_t *business_roles, char *member_ids, int *start_index, char *bookmark, int *page_size)
+BusinessAccessRelationshipsAPI_getBusinessMembers(apiClient_t *apiClient, char *business_id, int *fetch_system_users, int *assets_summary, list_t *business_roles, char *member_ids, int *start_index, char *bookmark, int *page_size)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -464,6 +711,19 @@ BusinessAccessRelationshipsAPI_getBusinessMembers(apiClient_t *apiClient, char *
     localVarPath = strReplace(localVarPath, localVarToReplace_business_id, business_id);
 
 
+
+    // query parameters
+    char *keyQuery_fetch_system_users = NULL;
+    char * valueQuery_fetch_system_users = NULL;
+    keyValuePair_t *keyPairQuery_fetch_system_users = 0;
+    if (fetch_system_users)
+    {
+        keyQuery_fetch_system_users = strdup("fetch_system_users");
+        valueQuery_fetch_system_users = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueQuery_fetch_system_users, MAX_NUMBER_LENGTH, "%d", *fetch_system_users);
+        keyPairQuery_fetch_system_users = keyValuePair_create(keyQuery_fetch_system_users, valueQuery_fetch_system_users);
+        list_addElement(localVarQueryParameters,keyPairQuery_fetch_system_users);
+    }
 
     // query parameters
     char *keyQuery_assets_summary = NULL;
@@ -577,6 +837,18 @@ BusinessAccessRelationshipsAPI_getBusinessMembers(apiClient_t *apiClient, char *
     
     free(localVarPath);
     free(localVarToReplace_business_id);
+    if(keyQuery_fetch_system_users){
+        free(keyQuery_fetch_system_users);
+        keyQuery_fetch_system_users = NULL;
+    }
+    if(valueQuery_fetch_system_users){
+        free(valueQuery_fetch_system_users);
+        valueQuery_fetch_system_users = NULL;
+    }
+    if(keyPairQuery_fetch_system_users){
+        keyValuePair_free(keyPairQuery_fetch_system_users);
+        keyPairQuery_fetch_system_users = NULL;
+    }
     if(keyQuery_assets_summary){
         free(keyQuery_assets_summary);
         keyQuery_assets_summary = NULL;
@@ -872,6 +1144,112 @@ BusinessAccessRelationshipsAPI_getBusinessPartners(apiClient_t *apiClient, char 
 end:
     free(localVarPath);
     return NULL;
+
+}
+
+// Update a system user information.
+//
+// Update a system user information such as name.
+//
+void
+BusinessAccessRelationshipsAPI_systemUserUpdate(apiClient_t *apiClient, char *business_id, char *system_user_id, system_user_update_request_t *system_user_update_request)
+{
+    list_t    *localVarQueryParameters = NULL;
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
+    char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
+
+    // create the path
+    char *localVarPath = strdup("/businesses/{business_id}/system_users/{system_user_id}");
+
+    if(!business_id)
+        goto end;
+    if(!system_user_id)
+        goto end;
+
+
+    // Path Params
+    long sizeOfPathParams_business_id = strlen(business_id)+3 + strlen(system_user_id)+3 + sizeof("{ business_id }") - 1;
+    if(business_id == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_business_id = malloc(sizeOfPathParams_business_id);
+    sprintf(localVarToReplace_business_id, "{%s}", "business_id");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_business_id, business_id);
+
+    // Path Params
+    long sizeOfPathParams_system_user_id = strlen(business_id)+3 + strlen(system_user_id)+3 + sizeof("{ system_user_id }") - 1;
+    if(system_user_id == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_system_user_id = malloc(sizeOfPathParams_system_user_id);
+    sprintf(localVarToReplace_system_user_id, "{%s}", "system_user_id");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_system_user_id, system_user_id);
+
+
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_system_user_update_request = NULL;
+    if (system_user_update_request != NULL)
+    {
+        //not string, not binary
+        localVarSingleItemJSON_system_user_update_request = system_user_update_request_convertToJSON(system_user_update_request);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_system_user_update_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    localVarBodyLength,
+                    "PATCH");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","System user updated successfully.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 400) {
+    //    printf("%s\n","Invalid parameters.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 0) {
+    //    printf("%s\n","Unexpected error");
+    //}
+    //No return type
+end:
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    
+    
+    
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
+    free(localVarPath);
+    free(localVarToReplace_business_id);
+    free(localVarToReplace_system_user_id);
+    if (localVarSingleItemJSON_system_user_update_request) {
+        cJSON_Delete(localVarSingleItemJSON_system_user_update_request);
+        localVarSingleItemJSON_system_user_update_request = NULL;
+    }
+    free(localVarBodyParameters);
 
 }
 

@@ -1,0 +1,45 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server QualityComponentIssue"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a QualityComponentIssue"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  QualityComponentIssue {
+    title = QualityComponentIssue
+    description = QualityComponentIssue
+    derivedFrom = Root
+    properties {
+        id {
+          type =  string
+          description = "Unique identifier for the issue check."
+          optional = true
+        }
+        name {
+          type =  string
+          description = "Human-readable name of the issue."
+          optional = true
+        }
+        reason {
+          type =  string
+          description = "Detailed reason for the issue."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  QualityComponentIssue {
+    title = QualityComponentIssue
+    description = QualityComponentIssue
+    implements = openapi_server.resourceTypes.QualityComponentIssue
+
+  }
+}

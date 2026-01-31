@@ -1,0 +1,75 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsFeedProcessingResult"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsFeedProcessingResult"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsFeedIngestionDetails = openapi_server.resourceTypes.CatalogsFeedIngestionDetails
+  CatalogsFeedProcessingStatus = openapi_server.resourceTypes.CatalogsFeedProcessingStatus
+  CatalogsFeedProductCounts = openapi_server.resourceTypes.CatalogsFeedProductCounts
+  CatalogsFeedValidationDetails = openapi_server.resourceTypes.CatalogsFeedValidationDetails
+  CatalogsFeedVideoCounts = openapi_server.resourceTypes.CatalogsFeedVideoCounts
+}
+resourceTypes {
+
+  CatalogsFeedProcessingResult {
+    title = CatalogsFeedProcessingResult
+    description = CatalogsFeedProcessingResult
+    derivedFrom = Root
+    properties {
+        created_at {
+          type =  string
+          description = ""
+          optional = true
+        }
+        id {
+          type =  string
+          description = ""
+          optional = true
+        }
+        updated_at {
+          type =  string
+          description = ""
+          optional = true
+        }
+        ingestion_details {
+          type = CatalogsFeedIngestionDetails
+          description = ""
+          optional = true
+        }
+        product_counts {
+          type = CatalogsFeedProductCounts
+          description = ""
+          optional = true
+        }
+        status {
+          type = CatalogsFeedProcessingStatus
+          description = ""
+          optional = true
+        }
+        validation_details {
+          type = CatalogsFeedValidationDetails
+          description = ""
+          optional = true
+        }
+        video_counts {
+          type = CatalogsFeedVideoCounts
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsFeedProcessingResult {
+    title = CatalogsFeedProcessingResult
+    description = CatalogsFeedProcessingResult
+    implements = openapi_server.resourceTypes.CatalogsFeedProcessingResult
+
+  }
+}

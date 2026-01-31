@@ -10,7 +10,6 @@
 
 
 export interface CatalogsReportDistributionStats { 
-    report_type?: CatalogsReportDistributionStats.ReportTypeEnum;
     /**
      * ID of the catalog entity.
      */
@@ -24,14 +23,6 @@ export interface CatalogsReportDistributionStats {
      */
     code_label?: string;
     /**
-     * Title message describing the diagnostic issue
-     */
-    message?: string;
-    /**
-     * Number of occurrences of the issue
-     */
-    occurrences?: number;
-    /**
      * Indicates if issue makes items ineligible for ads distribution
      */
     ineligible_for_ads?: boolean;
@@ -39,6 +30,15 @@ export interface CatalogsReportDistributionStats {
      * Indicates if issue makes items ineligible for organic distribution
      */
     ineligible_for_organic?: boolean;
+    /**
+     * Title message describing the diagnostic issue
+     */
+    message?: string;
+    /**
+     * Number of occurrences of the issue
+     */
+    occurrences?: number;
+    report_type?: CatalogsReportDistributionStats.ReportTypeEnum;
 }
 export namespace CatalogsReportDistributionStats {
     export const ReportTypeEnum = {

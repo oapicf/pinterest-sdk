@@ -13,18 +13,18 @@ import org.openapitools.models.Country
 
 /**
  * 
- * @param name 
  * @param description 
- * @param isUnderscorefeatured boolean indicator of whether the product group is being featured or not
  * @param filters 
+ * @param isUnderscorefeatured boolean indicator of whether the product group is being featured or not
+ * @param name 
  * @param catalogUnderscoretype 
  * @param country 
  * @param locale 
  */
-case class CatalogsProductGroupsUpdateRequest(name: Option[String],
-                description: Option[String],
-                isUnderscorefeatured: Option[Boolean],
+case class CatalogsProductGroupsUpdateRequest(description: Option[String],
                 filters: Option[CatalogsCreativeAssetsProductGroupFilters],
+                isUnderscorefeatured: Option[Boolean],
+                name: Option[String],
                 catalogUnderscoretype: Option[String],
                 country: Option[Country],
                 locale: Option[CatalogsLocale]

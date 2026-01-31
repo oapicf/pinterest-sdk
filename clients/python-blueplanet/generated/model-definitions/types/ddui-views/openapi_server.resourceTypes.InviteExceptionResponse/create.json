@@ -1,0 +1,20 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "code" },
+      {"model": "invite_or_request_id" },
+      {"model": "message" },
+      {"model": "users_or_partner_ids" },
+    ]
+  }]
+}

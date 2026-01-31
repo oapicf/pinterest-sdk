@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** | Display name | [optional] [default to undefined]
 **id** | **string** | Salesforce id for PMP | [optional] [default to undefined]
+**name** | **string** | Display name | [optional] [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { SSIOAccountPMPName } from './api';
 
 const instance: SSIOAccountPMPName = {
-    name,
     id,
+    name,
 };
 ```
 

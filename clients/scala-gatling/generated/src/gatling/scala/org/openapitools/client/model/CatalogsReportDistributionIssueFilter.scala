@@ -3,15 +3,15 @@ package org.openapitools.client.model
 
 
 case class CatalogsReportDistributionIssueFilter (
-    _reportType: String,
     /* Unique identifier of a catalog. If not given, oldest catalog will be used */
-    _catalogId: Option[String]
+    _catalogId: Option[String],
+    _reportType: String
 )
 object CatalogsReportDistributionIssueFilter {
-    def toStringBody(var_reportType: Object, var_catalogId: Object) =
+    def toStringBody(var_catalogId: Object, var_reportType: Object) =
         s"""
         | {
-        | "reportType":$var_reportType,"catalogId":$var_catalogId
+        | "catalogId":$var_catalogId,"reportType":$var_reportType
         | }
         """.stripMargin
 }

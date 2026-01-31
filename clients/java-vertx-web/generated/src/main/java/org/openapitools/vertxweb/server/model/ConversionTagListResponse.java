@@ -6,27 +6,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.vertxweb.server.model.ConversionTagResponse;
+import org.openapitools.vertxweb.server.model.ConversionTag;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ConversionTagListResponse   {
   
-  private List<ConversionTagResponse> items = new ArrayList<>();
+  private List<ConversionTag> items = new ArrayList<>();
 
   public ConversionTagListResponse () {
 
   }
 
-  public ConversionTagListResponse (List<ConversionTagResponse> items) {
+  public ConversionTagListResponse (List<ConversionTag> items) {
     this.items = items;
   }
 
     
   @JsonProperty("items")
-  public List<ConversionTagResponse> getItems() {
+  public List<ConversionTag> getItems() {
     return items;
   }
-  public void setItems(List<ConversionTagResponse> items) {
+  public void setItems(List<ConversionTag> items) {
     this.items = items;
   }
 

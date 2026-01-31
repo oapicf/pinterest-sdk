@@ -1,0 +1,15 @@
+# WWW::OpenAPIClient::Object::CustomNumber2Filter
+
+## Load the model package
+```perl
+use WWW::OpenAPIClient::Object::CustomNumber2Filter;
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**custom_number_2** | [**CatalogsProductGroupUint32Criteria**](.md) |  | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

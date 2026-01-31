@@ -3,6 +3,9 @@ package org.openapitools.apis
 import java.io._
 import org.openapitools._
 import org.openapitools.models._
+import org.openapitools.models.BrandAccountsCreate200Response
+import org.openapitools.models.BrandAccountsCreateRequest
+import org.openapitools.models.BrandAccountsUpdateRequest
 import org.openapitools.models.DeletePartnersRequest
 import org.openapitools.models.DeletePartnersResponse
 import org.openapitools.models.DeletedMembersResponse
@@ -14,6 +17,7 @@ import org.openapitools.models.MemberBusinessRole
 import org.openapitools.models.MembersToDeleteBody
 import org.openapitools.models.PartnerType
 import scala.collection.immutable.Seq
+import org.openapitools.models.SystemUserUpdateRequest
 import org.openapitools.models.UpdateMemberBusinessRoleBody
 import org.openapitools.models.UpdateMemberResultsResponseArray
 import io.finch.circe._
@@ -36,11 +40,14 @@ object BusinessAccessRelationshipsApi {
     * @return Bundled compilation of all service endpoints.
     */
     def endpoints(da: DataAccessor) =
+        brandAccounts/create(da) :+:
+        brandAccounts/update(da) :+:
         deleteBusinessMembership(da) :+:
         deleteBusinessPartners(da) :+:
         get/businessEmployers(da) :+:
         get/businessMembers(da) :+:
         get/businessPartners(da) :+:
+        systemUser/update(da) :+:
         update/businessMemberships(da)
 
 
@@ -63,6 +70,34 @@ object BusinessAccessRelationshipsApi {
       def toZonedDateTime: ZonedDateTime = ZonedDateTime.parse(s, datetimeformatter)
 
     }
+
+        /**
+        * 
+        * @return An endpoint representing a BrandAccountsCreate200Response
+        */
+        private def brandAccounts/create(da: DataAccessor): Endpoint[BrandAccountsCreate200Response] =
+        post("business_access" :: "business_hierarchy" :: string :: "brand_accounts" :: jsonBody[BrandAccountsCreateRequest]) { (businessHierarchyId: String, brandAccountsCreateRequest: BrandAccountsCreateRequest) =>
+          da.BusinessAccessRelationships_brandAccounts/create(businessHierarchyId, brandAccountsCreateRequest) match {
+            case Left(error) => checkError(error)
+            case Right(data) => Ok(data)
+          }
+        } handle {
+          case e: Exception => BadRequest(e)
+        }
+
+        /**
+        * 
+        * @return An endpoint representing a BrandAccountsCreate200Response
+        */
+        private def brandAccounts/update(da: DataAccessor): Endpoint[BrandAccountsCreate200Response] =
+        patch("business_access" :: "business_hierarchy" :: string :: "brand_accounts" :: string :: jsonBody[BrandAccountsUpdateRequest]) { (businessHierarchyId: String, brandAccountId: String, brandAccountsUpdateRequest: BrandAccountsUpdateRequest) =>
+          da.BusinessAccessRelationships_brandAccounts/update(businessHierarchyId, brandAccountId, brandAccountsUpdateRequest) match {
+            case Left(error) => checkError(error)
+            case Right(data) => Ok(data)
+          }
+        } handle {
+          case e: Exception => BadRequest(e)
+        }
 
         /**
         * 
@@ -111,8 +146,8 @@ object BusinessAccessRelationshipsApi {
         * @return An endpoint representing a GetBusinessMembers200Response
         */
         private def get/businessMembers(da: DataAccessor): Endpoint[GetBusinessMembers200Response] =
-        get("businesses" :: string :: "members" :: paramOption("assets_summary").map(_.map(_.toBoolean)) :: params("business_roles") :: paramOption("member_ids") :: paramOption("start_index").map(_.map(_.toInt)) :: paramOption("bookmark") :: paramOption("page_size").map(_.map(_.toInt))) { (businessId: String, assetsSummary: Option[Boolean], businessRoles: Seq[MemberBusinessRole], memberIds: Option[String], startIndex: Option[Int], bookmark: Option[String], pageSize: Option[Int]) =>
-          da.BusinessAccessRelationships_get/businessMembers(businessId, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize) match {
+        get("businesses" :: string :: "members" :: paramOption("fetch_system_users").map(_.map(_.toBoolean)) :: paramOption("assets_summary").map(_.map(_.toBoolean)) :: params("business_roles") :: paramOption("member_ids") :: paramOption("start_index").map(_.map(_.toInt)) :: paramOption("bookmark") :: paramOption("page_size").map(_.map(_.toInt))) { (businessId: String, fetchSystemUsers: Option[Boolean], assetsSummary: Option[Boolean], businessRoles: Seq[MemberBusinessRole], memberIds: Option[String], startIndex: Option[Int], bookmark: Option[String], pageSize: Option[Int]) =>
+          da.BusinessAccessRelationships_get/businessMembers(businessId, fetchSystemUsers, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }
@@ -127,6 +162,20 @@ object BusinessAccessRelationshipsApi {
         private def get/businessPartners(da: DataAccessor): Endpoint[GetBusinessPartners200Response] =
         get("businesses" :: string :: "partners" :: paramOption("assets_summary").map(_.map(_.toBoolean)) :: paramOption("partner_type").map(_.map(_.toPartnerType)) :: paramOption("partner_ids") :: paramOption("start_index").map(_.map(_.toInt)) :: paramOption("page_size").map(_.map(_.toInt)) :: paramOption("bookmark")) { (businessId: String, assetsSummary: Option[Boolean], partnerType: Option[PartnerType], partnerIds: Option[String], startIndex: Option[Int], pageSize: Option[Int], bookmark: Option[String]) =>
           da.BusinessAccessRelationships_get/businessPartners(businessId, assetsSummary, partnerType, partnerIds, startIndex, pageSize, bookmark) match {
+            case Left(error) => checkError(error)
+            case Right(data) => Ok(data)
+          }
+        } handle {
+          case e: Exception => BadRequest(e)
+        }
+
+        /**
+        * 
+        * @return An endpoint representing a Unit
+        */
+        private def systemUser/update(da: DataAccessor): Endpoint[Unit] =
+        patch("businesses" :: string :: "system_users" :: string :: jsonBody[SystemUserUpdateRequest]) { (businessId: String, systemUserId: String, systemUserUpdateRequest: SystemUserUpdateRequest) =>
+          da.BusinessAccessRelationships_systemUser/update(businessId, systemUserId, systemUserUpdateRequest) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }

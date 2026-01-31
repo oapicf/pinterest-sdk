@@ -5,22 +5,22 @@
 -export_type([openapi_image_metadata/0]).
 
 -type openapi_image_metadata() ::
-    #{ 'item_type' => binary(),
-       'title' => binary(),
-       'description' => binary(),
+    #{ 'description' => binary(),
+       'images' => openapi_image_size:openapi_image_size(),
+       'item_type' => binary(),
        'link' => binary(),
-       'images' => openapi_image_metadata_images:openapi_image_metadata_images()
+       'title' => binary()
      }.
 
-encode(#{ 'item_type' := ItemType,
-          'title' := Title,
-          'description' := Description,
+encode(#{ 'description' := Description,
+          'images' := Images,
+          'item_type' := ItemType,
           'link' := Link,
-          'images' := Images
+          'title' := Title
         }) ->
-    #{ 'item_type' => ItemType,
-       'title' => Title,
-       'description' => Description,
+    #{ 'description' => Description,
+       'images' => Images,
+       'item_type' => ItemType,
        'link' => Link,
-       'images' => Images
+       'title' => Title
      }.

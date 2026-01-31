@@ -3,11 +3,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**itemType** | **NSString*** |  | [optional] 
-**title** | **NSString*** |  | [optional] 
 **_description** | **NSString*** |  | [optional] 
+**images** | [**OAIImageSize***](OAIImageSize.md) |  | [optional] 
+**itemType** | **NSString*** |  | [optional] 
 **link** | **NSString*** |  | [optional] 
-**images** | [**OAIImageMetadataImages***](OAIImageMetadataImages.md) |  | [optional] 
+**title** | **NSString*** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

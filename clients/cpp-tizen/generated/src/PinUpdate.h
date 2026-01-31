@@ -1,7 +1,7 @@
 /*
  * PinUpdate.h
  *
- * Pin fields for updates
+ * Resource create or update operation model.
  */
 
 #ifndef _PinUpdate_H_
@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "PinUpdate_carousel_slots_inner.h"
+#include "CarouselSlot.h"
 #include <list>
 #include "Object.h"
 
@@ -22,7 +22,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Pin fields for updates
+/*! \brief Resource create or update operation model.
  *
  *  \ingroup Models
  *
@@ -47,72 +47,64 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Pin's alternative text.
+	/*! \brief Get 
 	 */
 	std::string getAltText();
 
-	/*! \brief Set Pin's alternative text.
+	/*! \brief Set 
 	 */
 	void setAltText(std::string  alt_text);
-	/*! \brief Get The id of the board to move the Pin onto.
+	/*! \brief Get The board to which this Pin belongs.
 	 */
 	std::string getBoardId();
 
-	/*! \brief Set The id of the board to move the Pin onto.
+	/*! \brief Set The board to which this Pin belongs.
 	 */
 	void setBoardId(std::string  board_id);
-	/*! \brief Get <a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID.
+	/*! \brief Get The board section to which this Pin belongs.
 	 */
 	std::string getBoardSectionId();
 
-	/*! \brief Set <a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID.
+	/*! \brief Set The board section to which this Pin belongs.
 	 */
 	void setBoardSectionId(std::string  board_section_id);
-	/*! \brief Get Pin description - 800 characters maximum.
-	 */
-	std::string getDescription();
-
-	/*! \brief Set Pin description - 800 characters maximum.
-	 */
-	void setDescription(std::string  description);
-	/*! \brief Get URL viewer is taken to when they click pin.
-	 */
-	std::string getLink();
-
-	/*! \brief Set URL viewer is taken to when they click pin.
-	 */
-	void setLink(std::string  link);
-	/*! \brief Get The native pin title that creators explicitly prefer to display.
-	 */
-	std::string getTitle();
-
-	/*! \brief Set The native pin title that creators explicitly prefer to display.
-	 */
-	void setTitle(std::string  title);
 	/*! \brief Get Carousel Pin slots data.
 	 */
-	std::list<PinUpdate_carousel_slots_inner> getCarouselSlots();
+	std::list<CarouselSlot> getCarouselSlots();
 
 	/*! \brief Set Carousel Pin slots data.
 	 */
-	void setCarouselSlots(std::list <PinUpdate_carousel_slots_inner> carousel_slots);
-	/*! \brief Get Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
+	void setCarouselSlots(std::list <CarouselSlot> carousel_slots);
+	/*! \brief Get 
 	 */
-	std::string getNote();
+	std::string getDescription();
 
-	/*! \brief Set Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
+	/*! \brief Set 
 	 */
-	void setNote(std::string  note);
+	void setDescription(std::string  description);
+	/*! \brief Get 
+	 */
+	std::string getLink();
+
+	/*! \brief Set 
+	 */
+	void setLink(std::string  link);
+	/*! \brief Get 
+	 */
+	std::string getTitle();
+
+	/*! \brief Set 
+	 */
+	void setTitle(std::string  title);
 
 private:
 	std::string alt_text;
 	std::string board_id;
 	std::string board_section_id;
+	std::list <CarouselSlot>carousel_slots;
 	std::string description;
 	std::string link;
 	std::string title;
-	std::list <PinUpdate_carousel_slots_inner>carousel_slots;
-	std::string note;
 	void __init();
 	void __cleanup();
 

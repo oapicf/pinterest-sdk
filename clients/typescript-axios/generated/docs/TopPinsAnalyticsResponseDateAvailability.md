@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**latest_available_timestamp** | **number** |  | [optional] [default to undefined]
 **is_realtime** | **boolean** |  | [optional] [default to undefined]
+**latest_available_timestamp** | **number** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { TopPinsAnalyticsResponseDateAvailability } from './api';
 
 const instance: TopPinsAnalyticsResponseDateAvailability = {
-    latest_available_timestamp,
     is_realtime,
+    latest_available_timestamp,
 };
 ```
 

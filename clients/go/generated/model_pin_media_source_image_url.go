@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,12 +20,13 @@ import (
 // checks if the PinMediaSourceImageURL type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &PinMediaSourceImageURL{}
 
-// PinMediaSourceImageURL Image URL-based media source
+// PinMediaSourceImageURL Image URL-based media source.
 type PinMediaSourceImageURL struct {
-	SourceType string `json:"source_type"`
-	Url string `json:"url"`
 	// Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
 	IsStandard *bool `json:"is_standard,omitempty"`
+	// The source type of the media.
+	SourceType string `json:"source_type"`
+	Url string `json:"url"`
 }
 
 type _PinMediaSourceImageURL PinMediaSourceImageURL
@@ -36,10 +37,10 @@ type _PinMediaSourceImageURL PinMediaSourceImageURL
 // will change when the set of required properties is changed
 func NewPinMediaSourceImageURL(sourceType string, url string) *PinMediaSourceImageURL {
 	this := PinMediaSourceImageURL{}
-	this.SourceType = sourceType
-	this.Url = url
 	var isStandard bool = true
 	this.IsStandard = &isStandard
+	this.SourceType = sourceType
+	this.Url = url
 	return &this
 }
 
@@ -51,6 +52,38 @@ func NewPinMediaSourceImageURLWithDefaults() *PinMediaSourceImageURL {
 	var isStandard bool = true
 	this.IsStandard = &isStandard
 	return &this
+}
+
+// GetIsStandard returns the IsStandard field value if set, zero value otherwise.
+func (o *PinMediaSourceImageURL) GetIsStandard() bool {
+	if o == nil || IsNil(o.IsStandard) {
+		var ret bool
+		return ret
+	}
+	return *o.IsStandard
+}
+
+// GetIsStandardOk returns a tuple with the IsStandard field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PinMediaSourceImageURL) GetIsStandardOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsStandard) {
+		return nil, false
+	}
+	return o.IsStandard, true
+}
+
+// HasIsStandard returns a boolean if a field has been set.
+func (o *PinMediaSourceImageURL) HasIsStandard() bool {
+	if o != nil && !IsNil(o.IsStandard) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsStandard gets a reference to the given bool and assigns it to the IsStandard field.
+func (o *PinMediaSourceImageURL) SetIsStandard(v bool) {
+	o.IsStandard = &v
 }
 
 // GetSourceType returns the SourceType field value
@@ -101,38 +134,6 @@ func (o *PinMediaSourceImageURL) SetUrl(v string) {
 	o.Url = v
 }
 
-// GetIsStandard returns the IsStandard field value if set, zero value otherwise.
-func (o *PinMediaSourceImageURL) GetIsStandard() bool {
-	if o == nil || IsNil(o.IsStandard) {
-		var ret bool
-		return ret
-	}
-	return *o.IsStandard
-}
-
-// GetIsStandardOk returns a tuple with the IsStandard field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PinMediaSourceImageURL) GetIsStandardOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsStandard) {
-		return nil, false
-	}
-	return o.IsStandard, true
-}
-
-// HasIsStandard returns a boolean if a field has been set.
-func (o *PinMediaSourceImageURL) HasIsStandard() bool {
-	if o != nil && !IsNil(o.IsStandard) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsStandard gets a reference to the given bool and assigns it to the IsStandard field.
-func (o *PinMediaSourceImageURL) SetIsStandard(v bool) {
-	o.IsStandard = &v
-}
-
 func (o PinMediaSourceImageURL) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -143,11 +144,11 @@ func (o PinMediaSourceImageURL) MarshalJSON() ([]byte, error) {
 
 func (o PinMediaSourceImageURL) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["source_type"] = o.SourceType
-	toSerialize["url"] = o.Url
 	if !IsNil(o.IsStandard) {
 		toSerialize["is_standard"] = o.IsStandard
 	}
+	toSerialize["source_type"] = o.SourceType
+	toSerialize["url"] = o.Url
 	return toSerialize, nil
 }
 

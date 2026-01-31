@@ -25,9 +25,31 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsRetailFeedsUpdateRequest  {
   
+  @ApiModelProperty(required = true, value = "")
+  @Valid
+  private CatalogsType catalogType;
+
+  @ApiModelProperty(value = "")
+  @Valid
+  private CatalogsFeedCredentials credentials;
+
+  @ApiModelProperty(value = "")
+  @Valid
+  private ProductAvailabilityType defaultAvailability;
+
   @ApiModelProperty(value = "")
   @Valid
   private NullableCurrency defaultCurrency;
+
+  @ApiModelProperty(value = "")
+  @Valid
+  private CatalogsFormat format;
+
+ /**
+  * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+  */
+  @ApiModelProperty(value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
+  private String location;
 
  /**
   * A human-friendly name associated to a given feed.
@@ -37,102 +59,33 @@ public class CatalogsRetailFeedsUpdateRequest  {
 
   @ApiModelProperty(value = "")
   @Valid
-  private CatalogsFormat format;
-
-  @ApiModelProperty(value = "")
-  @Valid
-  private CatalogsFeedCredentials credentials;
-
- /**
-  * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-  */
-  @ApiModelProperty(value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
-  private String location;
-
-  @ApiModelProperty(value = "")
-  @Valid
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
 
   @ApiModelProperty(value = "")
   @Valid
   private CatalogsStatus status;
-
-  @ApiModelProperty(required = true, value = "")
-  @Valid
-  private CatalogsType catalogType;
-
-  @ApiModelProperty(value = "")
-  @Valid
-  private ProductAvailabilityType defaultAvailability;
  /**
-  * Get defaultCurrency
-  * @return defaultCurrency
+  * Get catalogType
+  * @return catalogType
   */
-  @JsonProperty("default_currency")
-  public NullableCurrency getDefaultCurrency() {
-    return defaultCurrency;
+  @JsonProperty("catalog_type")
+  @NotNull
+  public CatalogsType getCatalogType() {
+    return catalogType;
   }
 
   /**
-   * Sets the <code>defaultCurrency</code> property.
+   * Sets the <code>catalogType</code> property.
    */
- public void setDefaultCurrency(NullableCurrency defaultCurrency) {
-    this.defaultCurrency = defaultCurrency;
+ public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
   }
 
   /**
-   * Sets the <code>defaultCurrency</code> property.
+   * Sets the <code>catalogType</code> property.
    */
-  public CatalogsRetailFeedsUpdateRequest defaultCurrency(NullableCurrency defaultCurrency) {
-    this.defaultCurrency = defaultCurrency;
-    return this;
-  }
-
- /**
-  * A human-friendly name associated to a given feed.
-  * @return name
-  */
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * Sets the <code>name</code> property.
-   */
- public void setName(String name) {
-    this.name = name;
-  }
-
-  /**
-   * Sets the <code>name</code> property.
-   */
-  public CatalogsRetailFeedsUpdateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
- /**
-  * Get format
-  * @return format
-  */
-  @JsonProperty("format")
-  public CatalogsFormat getFormat() {
-    return format;
-  }
-
-  /**
-   * Sets the <code>format</code> property.
-   */
- public void setFormat(CatalogsFormat format) {
-    this.format = format;
-  }
-
-  /**
-   * Sets the <code>format</code> property.
-   */
-  public CatalogsRetailFeedsUpdateRequest format(CatalogsFormat format) {
-    this.format = format;
+  public CatalogsRetailFeedsUpdateRequest catalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
     return this;
   }
 
@@ -161,6 +114,78 @@ public class CatalogsRetailFeedsUpdateRequest  {
   }
 
  /**
+  * Get defaultAvailability
+  * @return defaultAvailability
+  */
+  @JsonProperty("default_availability")
+  public ProductAvailabilityType getDefaultAvailability() {
+    return defaultAvailability;
+  }
+
+  /**
+   * Sets the <code>defaultAvailability</code> property.
+   */
+ public void setDefaultAvailability(ProductAvailabilityType defaultAvailability) {
+    this.defaultAvailability = defaultAvailability;
+  }
+
+  /**
+   * Sets the <code>defaultAvailability</code> property.
+   */
+  public CatalogsRetailFeedsUpdateRequest defaultAvailability(ProductAvailabilityType defaultAvailability) {
+    this.defaultAvailability = defaultAvailability;
+    return this;
+  }
+
+ /**
+  * Get defaultCurrency
+  * @return defaultCurrency
+  */
+  @JsonProperty("default_currency")
+  public NullableCurrency getDefaultCurrency() {
+    return defaultCurrency;
+  }
+
+  /**
+   * Sets the <code>defaultCurrency</code> property.
+   */
+ public void setDefaultCurrency(NullableCurrency defaultCurrency) {
+    this.defaultCurrency = defaultCurrency;
+  }
+
+  /**
+   * Sets the <code>defaultCurrency</code> property.
+   */
+  public CatalogsRetailFeedsUpdateRequest defaultCurrency(NullableCurrency defaultCurrency) {
+    this.defaultCurrency = defaultCurrency;
+    return this;
+  }
+
+ /**
+  * Get format
+  * @return format
+  */
+  @JsonProperty("format")
+  public CatalogsFormat getFormat() {
+    return format;
+  }
+
+  /**
+   * Sets the <code>format</code> property.
+   */
+ public void setFormat(CatalogsFormat format) {
+    this.format = format;
+  }
+
+  /**
+   * Sets the <code>format</code> property.
+   */
+  public CatalogsRetailFeedsUpdateRequest format(CatalogsFormat format) {
+    this.format = format;
+    return this;
+  }
+
+ /**
   * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
   * @return location
   */
@@ -181,6 +206,30 @@ public class CatalogsRetailFeedsUpdateRequest  {
    */
   public CatalogsRetailFeedsUpdateRequest location(String location) {
     this.location = location;
+    return this;
+  }
+
+ /**
+  * A human-friendly name associated to a given feed.
+  * @return name
+  */
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  /**
+   * Sets the <code>name</code> property.
+   */
+ public void setName(String name) {
+    this.name = name;
+  }
+
+  /**
+   * Sets the <code>name</code> property.
+   */
+  public CatalogsRetailFeedsUpdateRequest name(String name) {
+    this.name = name;
     return this;
   }
 
@@ -232,55 +281,6 @@ public class CatalogsRetailFeedsUpdateRequest  {
     return this;
   }
 
- /**
-  * Get catalogType
-  * @return catalogType
-  */
-  @JsonProperty("catalog_type")
-  @NotNull
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-
-  /**
-   * Sets the <code>catalogType</code> property.
-   */
- public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-  }
-
-  /**
-   * Sets the <code>catalogType</code> property.
-   */
-  public CatalogsRetailFeedsUpdateRequest catalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
- /**
-  * Get defaultAvailability
-  * @return defaultAvailability
-  */
-  @JsonProperty("default_availability")
-  public ProductAvailabilityType getDefaultAvailability() {
-    return defaultAvailability;
-  }
-
-  /**
-   * Sets the <code>defaultAvailability</code> property.
-   */
- public void setDefaultAvailability(ProductAvailabilityType defaultAvailability) {
-    this.defaultAvailability = defaultAvailability;
-  }
-
-  /**
-   * Sets the <code>defaultAvailability</code> property.
-   */
-  public CatalogsRetailFeedsUpdateRequest defaultAvailability(ProductAvailabilityType defaultAvailability) {
-    this.defaultAvailability = defaultAvailability;
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -291,20 +291,20 @@ public class CatalogsRetailFeedsUpdateRequest  {
       return false;
     }
     CatalogsRetailFeedsUpdateRequest catalogsRetailFeedsUpdateRequest = (CatalogsRetailFeedsUpdateRequest) o;
-    return Objects.equals(this.defaultCurrency, catalogsRetailFeedsUpdateRequest.defaultCurrency) &&
-        Objects.equals(this.name, catalogsRetailFeedsUpdateRequest.name) &&
-        Objects.equals(this.format, catalogsRetailFeedsUpdateRequest.format) &&
+    return Objects.equals(this.catalogType, catalogsRetailFeedsUpdateRequest.catalogType) &&
         Objects.equals(this.credentials, catalogsRetailFeedsUpdateRequest.credentials) &&
+        Objects.equals(this.defaultAvailability, catalogsRetailFeedsUpdateRequest.defaultAvailability) &&
+        Objects.equals(this.defaultCurrency, catalogsRetailFeedsUpdateRequest.defaultCurrency) &&
+        Objects.equals(this.format, catalogsRetailFeedsUpdateRequest.format) &&
         Objects.equals(this.location, catalogsRetailFeedsUpdateRequest.location) &&
+        Objects.equals(this.name, catalogsRetailFeedsUpdateRequest.name) &&
         Objects.equals(this.preferredProcessingSchedule, catalogsRetailFeedsUpdateRequest.preferredProcessingSchedule) &&
-        Objects.equals(this.status, catalogsRetailFeedsUpdateRequest.status) &&
-        Objects.equals(this.catalogType, catalogsRetailFeedsUpdateRequest.catalogType) &&
-        Objects.equals(this.defaultAvailability, catalogsRetailFeedsUpdateRequest.defaultAvailability);
+        Objects.equals(this.status, catalogsRetailFeedsUpdateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, credentials, location, preferredProcessingSchedule, status, catalogType, defaultAvailability);
+    return Objects.hash(catalogType, credentials, defaultAvailability, defaultCurrency, format, location, name, preferredProcessingSchedule, status);
   }
 
   @Override
@@ -312,15 +312,15 @@ public class CatalogsRetailFeedsUpdateRequest  {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailFeedsUpdateRequest {\n");
     
-    sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
+    sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
+    sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
     sb.append("}");
     return sb.toString();
   }

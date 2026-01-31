@@ -18,6 +18,26 @@ open OpenAPI.BusinessAccessRelationshipsApiHandlerParams
 module BusinessAccessRelationshipsApiHandlerTestsHelper =
 
 
+  let mutable BrandAccountsCreateExamples = Map.empty
+  let mutable BrandAccountsCreateBody = ""
+
+  BrandAccountsCreateBody <- WebUtility.HtmlDecode ""
+  BrandAccountsCreateExamples <- BrandAccountsCreateExamples.Add("", BrandAccountsCreateBody)
+
+  let getBrandAccountsCreateExample mediaType =
+    BrandAccountsCreateExamples.[mediaType]
+      |> getConverter mediaType
+
+  let mutable BrandAccountsUpdateExamples = Map.empty
+  let mutable BrandAccountsUpdateBody = ""
+
+  BrandAccountsUpdateBody <- WebUtility.HtmlDecode ""
+  BrandAccountsUpdateExamples <- BrandAccountsUpdateExamples.Add("", BrandAccountsUpdateBody)
+
+  let getBrandAccountsUpdateExample mediaType =
+    BrandAccountsUpdateExamples.[mediaType]
+      |> getConverter mediaType
+
   let mutable DeleteBusinessMembershipExamples = Map.empty
   let mutable DeleteBusinessMembershipBody = ""
 
@@ -63,6 +83,16 @@ module BusinessAccessRelationshipsApiHandlerTestsHelper =
 
   ()
 
+
+  let mutable SystemUserUpdateExamples = Map.empty
+  let mutable SystemUserUpdateBody = ""
+
+  SystemUserUpdateBody <- WebUtility.HtmlDecode ""
+  SystemUserUpdateExamples <- SystemUserUpdateExamples.Add("", SystemUserUpdateBody)
+
+  let getSystemUserUpdateExample mediaType =
+    SystemUserUpdateExamples.[mediaType]
+      |> getConverter mediaType
 
   let mutable UpdateBusinessMembershipsExamples = Map.empty
   let mutable UpdateBusinessMembershipsBody = ""

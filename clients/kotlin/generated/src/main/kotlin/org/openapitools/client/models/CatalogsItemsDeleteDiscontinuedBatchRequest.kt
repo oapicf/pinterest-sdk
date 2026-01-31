@@ -26,9 +26,9 @@ import com.squareup.moshi.JsonClass
  * Request object to discontinue catalogs items
  *
  * @param country 
+ * @param items Array with catalogs items
  * @param language We recommend using the CatalogsLocale values.
  * @param operation 
- * @param items Array with catalogs items
  */
 
 
@@ -37,16 +37,16 @@ data class CatalogsItemsDeleteDiscontinuedBatchRequest (
     @Json(name = "country")
     val country: Country,
 
+    /* Array with catalogs items */
+    @Json(name = "items")
+    val items: kotlin.collections.List<ItemDeleteDiscontinuedBatchRecord>,
+
     /* We recommend using the CatalogsLocale values. */
     @Json(name = "language")
     val language: CatalogsItemsDeleteDiscontinuedBatchRequest.Language,
 
     @Json(name = "operation")
-    val operation: BatchOperation,
-
-    /* Array with catalogs items */
-    @Json(name = "items")
-    val items: kotlin.collections.List<ItemDeleteDiscontinuedBatchRecord>
+    val operation: BatchOperation
 
 ) {
 

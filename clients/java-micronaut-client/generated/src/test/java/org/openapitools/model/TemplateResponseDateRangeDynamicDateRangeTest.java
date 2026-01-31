@@ -21,19 +21,19 @@ public class TemplateResponseDateRangeDynamicDateRangeTest {
     }
 
     /**
-     * Test the property 'type'
-     */
-    @Test
-    public void typeTest() {
-        // TODO: test type
-    }
-
-    /**
      * Test the property 'range'
      */
     @Test
     public void rangeTest() {
         // TODO: test range
+    }
+
+    /**
+     * Test the property 'type'
+     */
+    @Test
+    public void typeTest() {
+        // TODO: test type
     }
 
 }

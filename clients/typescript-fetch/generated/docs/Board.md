@@ -1,23 +1,23 @@
 
 # Board
 
-Board
 
 ## Properties
 
 Name | Type
 ------------ | -------------
-`id` | string
-`createdAt` | Date
 `boardPinsModifiedAt` | Date
-`name` | string
-`description` | string
 `collaboratorCount` | number
-`pinCount` | number
+`createdAt` | Date
+`description` | string
 `followerCount` | number
+`id` | string
+`isAdsOnly` | boolean
 `media` | [BoardMedia](BoardMedia.md)
+`name` | string
 `owner` | [BoardOwner](BoardOwner.md)
-`privacy` | string
+`pinCount` | number
+`privacy` | [BoardPrivacy](BoardPrivacy.md)
 
 ## Example
 
@@ -26,16 +26,17 @@ import type { Board } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "id": 549755885175,
-  "createdAt": 2020-01-01T20:10:40Z,
-  "boardPinsModifiedAt": 2020-01-01T20:10:40Z,
-  "name": Summer Recipes,
-  "description": My favorite summer recipes,
+  "boardPinsModifiedAt": null,
   "collaboratorCount": 17,
-  "pinCount": 5,
+  "createdAt": null,
+  "description": My favorite summer recipes,
   "followerCount": 13,
+  "id": 549755885175,
+  "isAdsOnly": true,
   "media": null,
+  "name": Summer recipes,
   "owner": null,
+  "pinCount": 5,
   "privacy": null,
 } satisfies Board
 

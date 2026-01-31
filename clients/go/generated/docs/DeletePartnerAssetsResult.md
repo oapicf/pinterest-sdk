@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssetId** | Pointer to **string** | Unique identifier of a business asset. | [optional] 
-**AssetType** | Pointer to **string** | Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. | [optional] 
-**Permissions** | Pointer to **[]string** | Permission levels member or partner has on an asset. | [optional] 
+**AssetType** | Pointer to **string** | Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. | [optional] 
 **IsSharedPartner** | Pointer to **bool** | If is_shared_partner&#x3D;FALSE, you terminated a partner&#39;s asset access to your business asset.&lt;br&gt; If is_shared_partner&#x3D;TRUE, you terminated your asset access to your partner&#39;s business asset. | [optional] 
 **PartnerId** | Pointer to **string** | Unique identifier of a business partner. | [optional] 
+**Permissions** | Pointer to **[]string** | Permission levels member or partner has on an asset. | [optional] 
 
 ## Methods
 
@@ -79,31 +79,6 @@ SetAssetType sets AssetType field to given value.
 
 HasAssetType returns a boolean if a field has been set.
 
-### GetPermissions
-
-`func (o *DeletePartnerAssetsResult) GetPermissions() []string`
-
-GetPermissions returns the Permissions field if non-nil, zero value otherwise.
-
-### GetPermissionsOk
-
-`func (o *DeletePartnerAssetsResult) GetPermissionsOk() (*[]string, bool)`
-
-GetPermissionsOk returns a tuple with the Permissions field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPermissions
-
-`func (o *DeletePartnerAssetsResult) SetPermissions(v []string)`
-
-SetPermissions sets Permissions field to given value.
-
-### HasPermissions
-
-`func (o *DeletePartnerAssetsResult) HasPermissions() bool`
-
-HasPermissions returns a boolean if a field has been set.
-
 ### GetIsSharedPartner
 
 `func (o *DeletePartnerAssetsResult) GetIsSharedPartner() bool`
@@ -153,6 +128,31 @@ SetPartnerId sets PartnerId field to given value.
 `func (o *DeletePartnerAssetsResult) HasPartnerId() bool`
 
 HasPartnerId returns a boolean if a field has been set.
+
+### GetPermissions
+
+`func (o *DeletePartnerAssetsResult) GetPermissions() []string`
+
+GetPermissions returns the Permissions field if non-nil, zero value otherwise.
+
+### GetPermissionsOk
+
+`func (o *DeletePartnerAssetsResult) GetPermissionsOk() (*[]string, bool)`
+
+GetPermissionsOk returns a tuple with the Permissions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPermissions
+
+`func (o *DeletePartnerAssetsResult) SetPermissions(v []string)`
+
+SetPermissions sets Permissions field to given value.
+
+### HasPermissions
+
+`func (o *DeletePartnerAssetsResult) HasPermissions() bool`
+
+HasPermissions returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

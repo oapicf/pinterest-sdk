@@ -12,11 +12,12 @@ import org.joda.time.DateTime
 import PinMediaSourceImageBase64._
 
 case class PinMediaSourceImageBase64 (
-  sourceType: SourceType,
-`contentType`: `ContentType`,
+  `contentType`: ModelContentType,
 data: String,
 /* Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users. */
-  isStandard: Option[Boolean])
+  isStandard: Option[Boolean],
+/* The source type of the media. */
+  sourceType: SourceType)
 
 object PinMediaSourceImageBase64 {
   import DateTimeCodecs._
@@ -39,28 +40,6 @@ object PinMediaSourceImageBase64 {
 
   implicit val SourceTypeEnumDecoder: DecodeJson[SourceType] =
     DecodeJson.optionDecoder[SourceType](n => n.string.flatMap(jStr => SourceType.toSourceType(jStr)), "SourceType failed to de-serialize")
-  sealed trait `ContentType`
-  case object ImageJpeg extends `ContentType`
-  case object ImagePng extends `ContentType`
-
-  object `ContentType` {
-    def to`ContentType`(s: String): Option[`ContentType`] = s match {
-      case "ImageJpeg" => Some(ImageJpeg)
-      case "ImagePng" => Some(ImagePng)
-      case _ => None
-    }
-
-    def from`ContentType`(x: `ContentType`): String = x match {
-      case ImageJpeg => "ImageJpeg"
-      case ImagePng => "ImagePng"
-    }
-  }
-
-  implicit val `ContentType`EnumEncoder: EncodeJson[`ContentType`] =
-    EncodeJson[`ContentType`](is => StringEncodeJson(`ContentType`.from`ContentType`(is)))
-
-  implicit val `ContentType`EnumDecoder: DecodeJson[`ContentType`] =
-    DecodeJson.optionDecoder[`ContentType`](n => n.string.flatMap(jStr => `ContentType`.to`ContentType`(jStr)), "`ContentType` failed to de-serialize")
 
   implicit val PinMediaSourceImageBase64CodecJson: CodecJson[PinMediaSourceImageBase64] = CodecJson.derive[PinMediaSourceImageBase64]
   implicit val PinMediaSourceImageBase64Decoder: EntityDecoder[PinMediaSourceImageBase64] = jsonOf[PinMediaSourceImageBase64]

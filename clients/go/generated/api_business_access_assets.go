@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -448,9 +448,16 @@ type ApiBusinessAssetMembersGetRequest struct {
 	ApiService *BusinessAccessAssetsAPIService
 	businessId string
 	assetId string
+	fetchSystemUsers *bool
 	bookmark *string
 	pageSize *int32
 	startIndex *int32
+}
+
+// Fetches system users if True. Fetches regular user employees if False.
+func (r ApiBusinessAssetMembersGetRequest) FetchSystemUsers(fetchSystemUsers bool) ApiBusinessAssetMembersGetRequest {
+	r.fetchSystemUsers = &fetchSystemUsers
+	return r
 }
 
 // Cursor used to fetch the next page of items
@@ -529,6 +536,13 @@ func (a *BusinessAccessAssetsAPIService) BusinessAssetMembersGetExecute(r ApiBus
 		return localVarReturnValue, nil, reportError("assetId must have less than 20 elements")
 	}
 
+	if r.fetchSystemUsers != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "fetch_system_users", r.fetchSystemUsers, "form", "")
+	} else {
+        var defaultValue bool = false
+        parameterAddToHeaderOrQuery(localVarQueryParams, "fetch_system_users", defaultValue, "form", "")
+        r.fetchSystemUsers = &defaultValue
+	}
 	if r.bookmark != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
 	}

@@ -10,6 +10,8 @@
 import { CampaignUpdateRequest } from './campaignUpdateRequest';
 import { AdGroupUpdateRequest } from './adGroupUpdateRequest';
 import { KeywordUpdate } from './keywordUpdate';
+import { CatalogsProductGroupsUpdateRequest } from './catalogsProductGroupsUpdateRequest';
+import { LabelBulkUpdateRequest } from './labelBulkUpdateRequest';
 import { ProductGroupPromotionUpdateRequest } from './productGroupPromotionUpdateRequest';
 import { AdUpdateRequest } from './adUpdateRequest';
 
@@ -18,10 +20,12 @@ import { AdUpdateRequest } from './adUpdateRequest';
  * Request for creation of entities in bulk.
  */
 export interface BulkUpsertRequestUpdate { 
-    campaigns?: Array<CampaignUpdateRequest>;
     ad_groups?: Array<AdGroupUpdateRequest>;
     ads?: Array<AdUpdateRequest>;
-    product_groups?: Array<ProductGroupPromotionUpdateRequest>;
+    campaigns?: Array<CampaignUpdateRequest>;
+    catalog_product_groups?: Array<CatalogsProductGroupsUpdateRequest>;
     keywords?: Array<KeywordUpdate>;
+    labels?: Array<LabelBulkUpdateRequest>;
+    product_groups?: Array<ProductGroupPromotionUpdateRequest>;
 }
 

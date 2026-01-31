@@ -7,11 +7,11 @@
 
 (def user-website-verification-code-data
   {
-   (ds/opt :verification_code) string?
    (ds/opt :dns_txt_record) string?
-   (ds/opt :metatag) string?
-   (ds/opt :filename) string?
    (ds/opt :file_content) string?
+   (ds/opt :filename) string?
+   (ds/opt :metatag) string?
+   (ds/opt :verification_code) string?
    })
 
 (def user-website-verification-code-spec

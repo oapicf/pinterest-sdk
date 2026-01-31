@@ -6,19 +6,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.vertxweb.server.model.ProductGroupPromotionCreateRequestElement;
+import org.openapitools.vertxweb.server.model.ProductGroupPromotion;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProductGroupPromotionCreateRequest   {
   
   private String adGroupId;
-  private List<ProductGroupPromotionCreateRequestElement> productGroupPromotion = new ArrayList<>();
+  private List<ProductGroupPromotion> productGroupPromotion = new ArrayList<>();
 
   public ProductGroupPromotionCreateRequest () {
 
   }
 
-  public ProductGroupPromotionCreateRequest (String adGroupId, List<ProductGroupPromotionCreateRequestElement> productGroupPromotion) {
+  public ProductGroupPromotionCreateRequest (String adGroupId, List<ProductGroupPromotion> productGroupPromotion) {
     this.adGroupId = adGroupId;
     this.productGroupPromotion = productGroupPromotion;
   }
@@ -34,10 +34,10 @@ public class ProductGroupPromotionCreateRequest   {
 
     
   @JsonProperty("product_group_promotion")
-  public List<ProductGroupPromotionCreateRequestElement> getProductGroupPromotion() {
+  public List<ProductGroupPromotion> getProductGroupPromotion() {
     return productGroupPromotion;
   }
-  public void setProductGroupPromotion(List<ProductGroupPromotionCreateRequestElement> productGroupPromotion) {
+  public void setProductGroupPromotion(List<ProductGroupPromotion> productGroupPromotion) {
     this.productGroupPromotion = productGroupPromotion;
   }
 

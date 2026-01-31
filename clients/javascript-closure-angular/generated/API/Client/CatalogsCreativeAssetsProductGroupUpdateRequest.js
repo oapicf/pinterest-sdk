@@ -16,12 +16,6 @@ API.Client.CatalogsCreativeAssetsProductGroupUpdateRequest.prototype.catalogType
  * @type {!string}
  * @export
  */
-API.Client.CatalogsCreativeAssetsProductGroupUpdateRequest.prototype.name;
-
-/**
- * @type {!string}
- * @export
- */
 API.Client.CatalogsCreativeAssetsProductGroupUpdateRequest.prototype.description;
 
 /**
@@ -29,6 +23,12 @@ API.Client.CatalogsCreativeAssetsProductGroupUpdateRequest.prototype.description
  * @export
  */
 API.Client.CatalogsCreativeAssetsProductGroupUpdateRequest.prototype.filters;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsCreativeAssetsProductGroupUpdateRequest.prototype.name;
 
 /** @enum {string} */
 API.Client.CatalogsCreativeAssetsProductGroupUpdateRequest.CatalogTypeEnum = { 

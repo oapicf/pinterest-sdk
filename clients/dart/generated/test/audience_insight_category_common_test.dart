@@ -16,6 +16,16 @@ void main() {
   // final instance = AudienceInsightCategoryCommon();
 
   group('test AudienceInsightCategoryCommon', () {
+    // String id
+    test('to test the property `id`', () async {
+      // TODO
+    });
+
+    // num index
+    test('to test the property `index`', () async {
+      // TODO
+    });
+
     // String key
     test('to test the property `key`', () async {
       // TODO
@@ -28,16 +38,6 @@ void main() {
 
     // num ratio
     test('to test the property `ratio`', () async {
-      // TODO
-    });
-
-    // num index
-    test('to test the property `index`', () async {
-      // TODO
-    });
-
-    // String id
-    test('to test the property `id`', () async {
       // TODO
     });
 

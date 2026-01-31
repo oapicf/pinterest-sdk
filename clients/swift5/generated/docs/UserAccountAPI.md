@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 Follow user
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Use this request, as a signed-in user, to follow another user.
 
 ### Example
 ```swift
@@ -716,7 +716,7 @@ Verify a website as a signed-in user.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let userWebsiteVerifyRequest = UserWebsiteVerifyRequest(website: "website_example", verificationMethod: "verificationMethod_example") // UserWebsiteVerifyRequest | Verify a website.
+let userWebsiteVerifyRequest = UserWebsiteVerifyRequest(verificationMethod: "verificationMethod_example", website: "website_example") // UserWebsiteVerifyRequest | Verify a website.
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Verify website

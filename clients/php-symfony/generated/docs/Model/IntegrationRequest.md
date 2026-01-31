@@ -3,19 +3,19 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**externalBusinessId** | **string** | External business ID for the integration. | [optional] 
-**connectedMerchantId** | **string** |  | [optional] 
+**additionalId1** | **string** |  | [optional] 
 **connectedAdvertiserId** | **string** |  | [optional] 
 **connectedLbaId** | **string** |  | [optional] 
+**connectedMerchantId** | **string** |  | [optional] 
 **connectedTagId** | **string** |  | [optional] 
+**externalBusinessId** | **string** | External business ID for the integration. | [optional] 
 **partnerAccessToken** | **string** |  | [optional] 
-**partnerRefreshToken** | **string** |  | [optional] 
-**partnerPrimaryEmail** | **string** |  | [optional] 
 **partnerAccessTokenExpiry** | **int** |  | [optional] 
+**partnerMetadata** | **string** |  | [optional] 
+**partnerPrimaryEmail** | **string** |  | [optional] 
+**partnerRefreshToken** | **string** |  | [optional] 
 **partnerRefreshTokenExpiry** | **int** |  | [optional] 
 **scopes** | **string** |  | [optional] 
-**additionalId1** | **string** |  | [optional] 
-**partnerMetadata** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

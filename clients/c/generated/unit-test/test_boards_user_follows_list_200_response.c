@@ -22,13 +22,13 @@ boards_user_follows_list_200_response_t* instantiate_boards_user_follows_list_20
   boards_user_follows_list_200_response_t* boards_user_follows_list_200_response = NULL;
   if (include_optional) {
     boards_user_follows_list_200_response = boards_user_follows_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     boards_user_follows_list_200_response = boards_user_follows_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

@@ -2,15 +2,15 @@ package org.openapitools.server.model
 
 
 /**
- * = Images =
+ * = Object containing images definitions. =
  *
  * Pin with multiple images.
  *
- * @param mediaType  for example: ''null''
  * @param items  for example: ''null''
+ * @param mediaType  for example: ''null''
 */
 final case class PinMediaWithImages (
-  mediaType: Option[String] = None,
-  items: Option[Seq[ImageMetadata]] = None
+  items: Option[Seq[ImageMetadata]] = None,
+  mediaType: String
 )
 

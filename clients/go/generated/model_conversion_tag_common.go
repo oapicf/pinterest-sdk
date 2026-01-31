@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,6 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ConversionTagCommon type satisfies the MappedNullable interface at compile time
@@ -20,29 +22,30 @@ var _ MappedNullable = &ConversionTagCommon{}
 
 // ConversionTagCommon struct for ConversionTagCommon
 type ConversionTagCommon struct {
-	// Ad account ID.
-	AdAccountId *string `json:"ad_account_id,omitempty"`
 	// Tag code snippet.
 	CodeSnippet *string `json:"code_snippet,omitempty"`
+	Configs *ConversionTagConfigs `json:"configs,omitempty"`
+	// The enhanced match status of the tag
 	EnhancedMatchStatus NullableEnhancedMatchStatusType `json:"enhanced_match_status,omitempty"`
 	// Tag ID.
 	Id *string `json:"id,omitempty"`
 	// Time for the last event fired.
 	LastFiredTimeMs NullableFloat32 `json:"last_fired_time_ms,omitempty"`
 	// Conversion tag name.
-	Name *string `json:"name,omitempty"`
-	Status *EntityStatus `json:"status,omitempty"`
+	Name string `json:"name"`
 	// Version number.
 	Version *string `json:"version,omitempty"`
-	Configs *ConversionTagConfigs `json:"configs,omitempty"`
 }
+
+type _ConversionTagCommon ConversionTagCommon
 
 // NewConversionTagCommon instantiates a new ConversionTagCommon object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConversionTagCommon() *ConversionTagCommon {
+func NewConversionTagCommon(name string) *ConversionTagCommon {
 	this := ConversionTagCommon{}
+	this.Name = name
 	return &this
 }
 
@@ -52,38 +55,6 @@ func NewConversionTagCommon() *ConversionTagCommon {
 func NewConversionTagCommonWithDefaults() *ConversionTagCommon {
 	this := ConversionTagCommon{}
 	return &this
-}
-
-// GetAdAccountId returns the AdAccountId field value if set, zero value otherwise.
-func (o *ConversionTagCommon) GetAdAccountId() string {
-	if o == nil || IsNil(o.AdAccountId) {
-		var ret string
-		return ret
-	}
-	return *o.AdAccountId
-}
-
-// GetAdAccountIdOk returns a tuple with the AdAccountId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ConversionTagCommon) GetAdAccountIdOk() (*string, bool) {
-	if o == nil || IsNil(o.AdAccountId) {
-		return nil, false
-	}
-	return o.AdAccountId, true
-}
-
-// HasAdAccountId returns a boolean if a field has been set.
-func (o *ConversionTagCommon) HasAdAccountId() bool {
-	if o != nil && !IsNil(o.AdAccountId) {
-		return true
-	}
-
-	return false
-}
-
-// SetAdAccountId gets a reference to the given string and assigns it to the AdAccountId field.
-func (o *ConversionTagCommon) SetAdAccountId(v string) {
-	o.AdAccountId = &v
 }
 
 // GetCodeSnippet returns the CodeSnippet field value if set, zero value otherwise.
@@ -116,6 +87,38 @@ func (o *ConversionTagCommon) HasCodeSnippet() bool {
 // SetCodeSnippet gets a reference to the given string and assigns it to the CodeSnippet field.
 func (o *ConversionTagCommon) SetCodeSnippet(v string) {
 	o.CodeSnippet = &v
+}
+
+// GetConfigs returns the Configs field value if set, zero value otherwise.
+func (o *ConversionTagCommon) GetConfigs() ConversionTagConfigs {
+	if o == nil || IsNil(o.Configs) {
+		var ret ConversionTagConfigs
+		return ret
+	}
+	return *o.Configs
+}
+
+// GetConfigsOk returns a tuple with the Configs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConversionTagCommon) GetConfigsOk() (*ConversionTagConfigs, bool) {
+	if o == nil || IsNil(o.Configs) {
+		return nil, false
+	}
+	return o.Configs, true
+}
+
+// HasConfigs returns a boolean if a field has been set.
+func (o *ConversionTagCommon) HasConfigs() bool {
+	if o != nil && !IsNil(o.Configs) {
+		return true
+	}
+
+	return false
+}
+
+// SetConfigs gets a reference to the given ConversionTagConfigs and assigns it to the Configs field.
+func (o *ConversionTagCommon) SetConfigs(v ConversionTagConfigs) {
+	o.Configs = &v
 }
 
 // GetEnhancedMatchStatus returns the EnhancedMatchStatus field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -234,68 +237,28 @@ func (o *ConversionTagCommon) UnsetLastFiredTimeMs() {
 	o.LastFiredTimeMs.Unset()
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *ConversionTagCommon) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ConversionTagCommon) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *ConversionTagCommon) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *ConversionTagCommon) SetName(v string) {
-	o.Name = &v
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *ConversionTagCommon) GetStatus() EntityStatus {
-	if o == nil || IsNil(o.Status) {
-		var ret EntityStatus
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ConversionTagCommon) GetStatusOk() (*EntityStatus, bool) {
-	if o == nil || IsNil(o.Status) {
-		return nil, false
-	}
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *ConversionTagCommon) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given EntityStatus and assigns it to the Status field.
-func (o *ConversionTagCommon) SetStatus(v EntityStatus) {
-	o.Status = &v
+	o.Name = v
 }
 
 // GetVersion returns the Version field value if set, zero value otherwise.
@@ -330,38 +293,6 @@ func (o *ConversionTagCommon) SetVersion(v string) {
 	o.Version = &v
 }
 
-// GetConfigs returns the Configs field value if set, zero value otherwise.
-func (o *ConversionTagCommon) GetConfigs() ConversionTagConfigs {
-	if o == nil || IsNil(o.Configs) {
-		var ret ConversionTagConfigs
-		return ret
-	}
-	return *o.Configs
-}
-
-// GetConfigsOk returns a tuple with the Configs field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ConversionTagCommon) GetConfigsOk() (*ConversionTagConfigs, bool) {
-	if o == nil || IsNil(o.Configs) {
-		return nil, false
-	}
-	return o.Configs, true
-}
-
-// HasConfigs returns a boolean if a field has been set.
-func (o *ConversionTagCommon) HasConfigs() bool {
-	if o != nil && !IsNil(o.Configs) {
-		return true
-	}
-
-	return false
-}
-
-// SetConfigs gets a reference to the given ConversionTagConfigs and assigns it to the Configs field.
-func (o *ConversionTagCommon) SetConfigs(v ConversionTagConfigs) {
-	o.Configs = &v
-}
-
 func (o ConversionTagCommon) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -372,11 +303,11 @@ func (o ConversionTagCommon) MarshalJSON() ([]byte, error) {
 
 func (o ConversionTagCommon) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AdAccountId) {
-		toSerialize["ad_account_id"] = o.AdAccountId
-	}
 	if !IsNil(o.CodeSnippet) {
 		toSerialize["code_snippet"] = o.CodeSnippet
+	}
+	if !IsNil(o.Configs) {
+		toSerialize["configs"] = o.Configs
 	}
 	if o.EnhancedMatchStatus.IsSet() {
 		toSerialize["enhanced_match_status"] = o.EnhancedMatchStatus.Get()
@@ -387,19 +318,48 @@ func (o ConversionTagCommon) ToMap() (map[string]interface{}, error) {
 	if o.LastFiredTimeMs.IsSet() {
 		toSerialize["last_fired_time_ms"] = o.LastFiredTimeMs.Get()
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
+	toSerialize["name"] = o.Name
 	if !IsNil(o.Version) {
 		toSerialize["version"] = o.Version
 	}
-	if !IsNil(o.Configs) {
-		toSerialize["configs"] = o.Configs
-	}
 	return toSerialize, nil
+}
+
+func (o *ConversionTagCommon) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varConversionTagCommon := _ConversionTagCommon{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varConversionTagCommon)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ConversionTagCommon(varConversionTagCommon)
+
+	return err
 }
 
 type NullableConversionTagCommon struct {

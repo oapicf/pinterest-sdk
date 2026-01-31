@@ -10,12 +10,12 @@ import org.openapitools.models.PlacementMultipliers
 
 /**
  * Object describing a retail catalog item's bid options (bid price and bid multipliers).
- * @param bidUnderscoreinUnderscoremicroUnderscorecurrency Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.
  * @param appUnderscoretypeUnderscoremultipliers 
+ * @param bidUnderscoreinUnderscoremicroUnderscorecurrency Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.
  * @param placementUnderscoremultipliers 
  */
-case class AdvancedAuctionBidOptions(bidUnderscoreinUnderscoremicroUnderscorecurrency: Option[Long],
-                appUnderscoretypeUnderscoremultipliers: Option[AppTypeMultipliers],
+case class AdvancedAuctionBidOptions(appUnderscoretypeUnderscoremultipliers: Option[AppTypeMultipliers],
+                bidUnderscoreinUnderscoremicroUnderscorecurrency: Option[Long],
                 placementUnderscoremultipliers: Option[PlacementMultipliers]
                 )
 

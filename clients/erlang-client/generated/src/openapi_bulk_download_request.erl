@@ -5,22 +5,22 @@
 -export_type([openapi_bulk_download_request/0]).
 
 -type openapi_bulk_download_request() ::
-    #{ 'entity_types' => list(),
+    #{ 'campaign_filter' => openapi_bulk_download_request_campaign_filter:openapi_bulk_download_request_campaign_filter(),
        'entity_ids' => list(),
-       'updated_since' => binary(),
-       'campaign_filter' => openapi_bulk_download_request_campaign_filter:openapi_bulk_download_request_campaign_filter(),
-       'output_format' => openapi_bulk_output_format:openapi_bulk_output_format()
+       'entity_types' => list(),
+       'output_format' => openapi_bulk_output_format:openapi_bulk_output_format(),
+       'updated_since' => binary()
      }.
 
-encode(#{ 'entity_types' := EntityTypes,
+encode(#{ 'campaign_filter' := CampaignFilter,
           'entity_ids' := EntityIds,
-          'updated_since' := UpdatedSince,
-          'campaign_filter' := CampaignFilter,
-          'output_format' := OutputFormat
+          'entity_types' := EntityTypes,
+          'output_format' := OutputFormat,
+          'updated_since' := UpdatedSince
         }) ->
-    #{ 'entity_types' => EntityTypes,
+    #{ 'campaign_filter' => CampaignFilter,
        'entity_ids' => EntityIds,
-       'updated_since' => UpdatedSince,
-       'campaign_filter' => CampaignFilter,
-       'output_format' => OutputFormat
+       'entity_types' => EntityTypes,
+       'output_format' => OutputFormat,
+       'updated_since' => UpdatedSince
      }.

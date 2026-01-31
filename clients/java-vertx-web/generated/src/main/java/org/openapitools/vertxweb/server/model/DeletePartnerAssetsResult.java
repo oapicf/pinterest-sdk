@@ -15,20 +15,20 @@ public class DeletePartnerAssetsResult   {
   
   private String assetId;
   private String assetType;
-  private List<String> permissions = new ArrayList<>();
   private Boolean isSharedPartner;
   private String partnerId;
+  private List<String> permissions = new ArrayList<>();
 
   public DeletePartnerAssetsResult () {
 
   }
 
-  public DeletePartnerAssetsResult (String assetId, String assetType, List<String> permissions, Boolean isSharedPartner, String partnerId) {
+  public DeletePartnerAssetsResult (String assetId, String assetType, Boolean isSharedPartner, String partnerId, List<String> permissions) {
     this.assetId = assetId;
     this.assetType = assetType;
-    this.permissions = permissions;
     this.isSharedPartner = isSharedPartner;
     this.partnerId = partnerId;
+    this.permissions = permissions;
   }
 
     
@@ -50,15 +50,6 @@ public class DeletePartnerAssetsResult   {
   }
 
     
-  @JsonProperty("permissions")
-  public List<String> getPermissions() {
-    return permissions;
-  }
-  public void setPermissions(List<String> permissions) {
-    this.permissions = permissions;
-  }
-
-    
   @JsonProperty("is_shared_partner")
   public Boolean getIsSharedPartner() {
     return isSharedPartner;
@@ -76,6 +67,15 @@ public class DeletePartnerAssetsResult   {
     this.partnerId = partnerId;
   }
 
+    
+  @JsonProperty("permissions")
+  public List<String> getPermissions() {
+    return permissions;
+  }
+  public void setPermissions(List<String> permissions) {
+    this.permissions = permissions;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -88,14 +88,14 @@ public class DeletePartnerAssetsResult   {
     DeletePartnerAssetsResult deletePartnerAssetsResult = (DeletePartnerAssetsResult) o;
     return Objects.equals(assetId, deletePartnerAssetsResult.assetId) &&
         Objects.equals(assetType, deletePartnerAssetsResult.assetType) &&
-        Objects.equals(permissions, deletePartnerAssetsResult.permissions) &&
         Objects.equals(isSharedPartner, deletePartnerAssetsResult.isSharedPartner) &&
-        Objects.equals(partnerId, deletePartnerAssetsResult.partnerId);
+        Objects.equals(partnerId, deletePartnerAssetsResult.partnerId) &&
+        Objects.equals(permissions, deletePartnerAssetsResult.permissions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetId, assetType, permissions, isSharedPartner, partnerId);
+    return Objects.hash(assetId, assetType, isSharedPartner, partnerId, permissions);
   }
 
   @Override
@@ -105,9 +105,9 @@ public class DeletePartnerAssetsResult   {
     
     sb.append("    assetId: ").append(toIndentedString(assetId)).append("\n");
     sb.append("    assetType: ").append(toIndentedString(assetType)).append("\n");
-    sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
     sb.append("    isSharedPartner: ").append(toIndentedString(isSharedPartner)).append("\n");
     sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
+    sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

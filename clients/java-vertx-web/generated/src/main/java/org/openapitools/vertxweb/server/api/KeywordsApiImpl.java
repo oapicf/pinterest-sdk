@@ -31,7 +31,7 @@ public class KeywordsApiImpl implements KeywordsApi {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<KeywordsGet200Response>> keywordsGet(String adAccountId, String campaignId, String adGroupId, List<MatchType> matchTypes, Integer pageSize, String bookmark) {
+    public Future<ApiResponse<KeywordsGet200Response>> keywordsGet(String adAccountId, String campaignId, String adGroupId, List<String> adGroupIds, List<MatchType> matchTypes, Integer pageSize, String bookmark) {
         return Future.failedFuture(new HttpException(501));
     }
 
@@ -39,7 +39,7 @@ public class KeywordsApiImpl implements KeywordsApi {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<TrendingKeywordsResponse>> trendingKeywordsList(TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, List<String> includeKeywords, Boolean normalizeAgainstGroup, Integer limit) {
+    public Future<ApiResponse<TrendingKeywordsResponse>> trendingKeywordsList(TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, List<String> includeKeywords, Boolean normalizeAgainstGroup, Integer limit, Boolean includePrediction, Boolean includeDemographics) {
         return Future.failedFuture(new HttpException(501));
     }
 

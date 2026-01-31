@@ -10,40 +10,22 @@ import org.openapitools.model.AdAccountCreateSubscriptionRequestPartnerMetadata;
 /**
  * AdAccountCreateSubscriptionRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdAccountCreateSubscriptionRequest   {
-  @JsonProperty("webhook_url")
-  private String webhookUrl;
-
   @JsonProperty("lead_form_id")
   private String leadFormId;
 
   @JsonProperty("partner_access_token")
   private String partnerAccessToken;
 
-  @JsonProperty("partner_refresh_token")
-  private String partnerRefreshToken;
-
   @JsonProperty("partner_metadata")
   private AdAccountCreateSubscriptionRequestPartnerMetadata partnerMetadata;
 
-  public AdAccountCreateSubscriptionRequest webhookUrl(String webhookUrl) {
-    this.webhookUrl = webhookUrl;
-    return this;
-  }
+  @JsonProperty("partner_refresh_token")
+  private String partnerRefreshToken;
 
-   /**
-   * Standard HTTPS webhook URL.
-   * @return webhookUrl
-  **/
-  @ApiModelProperty(example = "https://webhook.example.com/xyz", required = true, value = "Standard HTTPS webhook URL.")
-  public String getWebhookUrl() {
-    return webhookUrl;
-  }
-
-  public void setWebhookUrl(String webhookUrl) {
-    this.webhookUrl = webhookUrl;
-  }
+  @JsonProperty("webhook_url")
+  private String webhookUrl;
 
   public AdAccountCreateSubscriptionRequest leadFormId(String leadFormId) {
     this.leadFormId = leadFormId;
@@ -81,24 +63,6 @@ public class AdAccountCreateSubscriptionRequest   {
     this.partnerAccessToken = partnerAccessToken;
   }
 
-  public AdAccountCreateSubscriptionRequest partnerRefreshToken(String partnerRefreshToken) {
-    this.partnerRefreshToken = partnerRefreshToken;
-    return this;
-  }
-
-   /**
-   * Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
-   * @return partnerRefreshToken
-  **/
-  @ApiModelProperty(value = "Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.")
-  public String getPartnerRefreshToken() {
-    return partnerRefreshToken;
-  }
-
-  public void setPartnerRefreshToken(String partnerRefreshToken) {
-    this.partnerRefreshToken = partnerRefreshToken;
-  }
-
   public AdAccountCreateSubscriptionRequest partnerMetadata(AdAccountCreateSubscriptionRequestPartnerMetadata partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
     return this;
@@ -117,6 +81,42 @@ public class AdAccountCreateSubscriptionRequest   {
     this.partnerMetadata = partnerMetadata;
   }
 
+  public AdAccountCreateSubscriptionRequest partnerRefreshToken(String partnerRefreshToken) {
+    this.partnerRefreshToken = partnerRefreshToken;
+    return this;
+  }
+
+   /**
+   * Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
+   * @return partnerRefreshToken
+  **/
+  @ApiModelProperty(value = "Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.")
+  public String getPartnerRefreshToken() {
+    return partnerRefreshToken;
+  }
+
+  public void setPartnerRefreshToken(String partnerRefreshToken) {
+    this.partnerRefreshToken = partnerRefreshToken;
+  }
+
+  public AdAccountCreateSubscriptionRequest webhookUrl(String webhookUrl) {
+    this.webhookUrl = webhookUrl;
+    return this;
+  }
+
+   /**
+   * Standard HTTPS webhook URL.
+   * @return webhookUrl
+  **/
+  @ApiModelProperty(example = "https://webhook.example.com/xyz", required = true, value = "Standard HTTPS webhook URL.")
+  public String getWebhookUrl() {
+    return webhookUrl;
+  }
+
+  public void setWebhookUrl(String webhookUrl) {
+    this.webhookUrl = webhookUrl;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -127,16 +127,16 @@ public class AdAccountCreateSubscriptionRequest   {
       return false;
     }
     AdAccountCreateSubscriptionRequest adAccountCreateSubscriptionRequest = (AdAccountCreateSubscriptionRequest) o;
-    return Objects.equals(this.webhookUrl, adAccountCreateSubscriptionRequest.webhookUrl) &&
-        Objects.equals(this.leadFormId, adAccountCreateSubscriptionRequest.leadFormId) &&
+    return Objects.equals(this.leadFormId, adAccountCreateSubscriptionRequest.leadFormId) &&
         Objects.equals(this.partnerAccessToken, adAccountCreateSubscriptionRequest.partnerAccessToken) &&
+        Objects.equals(this.partnerMetadata, adAccountCreateSubscriptionRequest.partnerMetadata) &&
         Objects.equals(this.partnerRefreshToken, adAccountCreateSubscriptionRequest.partnerRefreshToken) &&
-        Objects.equals(this.partnerMetadata, adAccountCreateSubscriptionRequest.partnerMetadata);
+        Objects.equals(this.webhookUrl, adAccountCreateSubscriptionRequest.webhookUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(webhookUrl, leadFormId, partnerAccessToken, partnerRefreshToken, partnerMetadata);
+    return Objects.hash(leadFormId, partnerAccessToken, partnerMetadata, partnerRefreshToken, webhookUrl);
   }
 
   @Override
@@ -144,11 +144,11 @@ public class AdAccountCreateSubscriptionRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdAccountCreateSubscriptionRequest {\n");
     
-    sb.append("    webhookUrl: ").append(toIndentedString(webhookUrl)).append("\n");
     sb.append("    leadFormId: ").append(toIndentedString(leadFormId)).append("\n");
     sb.append("    partnerAccessToken: ").append(toIndentedString(partnerAccessToken)).append("\n");
-    sb.append("    partnerRefreshToken: ").append(toIndentedString(partnerRefreshToken)).append("\n");
     sb.append("    partnerMetadata: ").append(toIndentedString(partnerMetadata)).append("\n");
+    sb.append("    partnerRefreshToken: ").append(toIndentedString(partnerRefreshToken)).append("\n");
+    sb.append("    webhookUrl: ").append(toIndentedString(webhookUrl)).append("\n");
     sb.append("}");
     return sb.toString();
   }

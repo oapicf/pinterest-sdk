@@ -6,17 +6,17 @@ package org.openapitools.server.model
  *
  * Request object for creating a hotel product group.
  *
+ * @param catalogId Catalog id pertaining to the hotel product group. for example: ''2680059592705''
  * @param catalogType  for example: ''null''
- * @param name  for example: ''null''
  * @param description  for example: ''null''
  * @param filters  for example: ''null''
- * @param catalogId Catalog id pertaining to the hotel product group. for example: ''2680059592705''
+ * @param name  for example: ''null''
 */
 final case class CatalogsHotelProductGroupCreateRequest (
+  catalogId: String,
   catalogType: String,
-  name: String,
   description: Option[String] = None,
   filters: CatalogsHotelProductGroupFilters,
-  catalogId: String
+  name: String
 )
 

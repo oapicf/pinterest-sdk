@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Array&lt;CatalogsFeed&gt;**](CatalogsFeed.md) |  | [default to undefined]
 **bookmark** | **string** |  | [optional] [default to undefined]
+**items** | [**Array&lt;CatalogsFeed&gt;**](CatalogsFeed.md) |  | [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { FeedsList200Response } from './api';
 
 const instance: FeedsList200Response = {
-    items,
     bookmark,
+    items,
 };
 ```
 

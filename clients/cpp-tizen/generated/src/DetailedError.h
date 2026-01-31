@@ -54,23 +54,23 @@ public:
 	void setCode(int  code);
 	/*! \brief Get 
 	 */
-	std::string getMessage();
-
-	/*! \brief Set 
-	 */
-	void setMessage(std::string  message);
-	/*! \brief Get 
-	 */
 	std::string getDetails();
 
 	/*! \brief Set 
 	 */
 	void setDetails(std::string  details);
+	/*! \brief Get 
+	 */
+	std::string getMessage();
+
+	/*! \brief Set 
+	 */
+	void setMessage(std::string  message);
 
 private:
 	int code;
-	std::string message;
 	std::string details;
+	std::string message;
 	void __init();
 	void __cleanup();
 

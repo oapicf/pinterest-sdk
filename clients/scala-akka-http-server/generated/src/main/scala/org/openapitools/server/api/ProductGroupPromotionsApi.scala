@@ -12,10 +12,12 @@ import org.openapitools.server.model.Error
 import org.openapitools.server.model.Granularity
 import java.time.LocalDate
 import org.openapitools.server.model.ProductGroupAnalyticsResponseInner
+import org.openapitools.server.model.ProductGroupPromotion
 import org.openapitools.server.model.ProductGroupPromotionCreateRequest
 import org.openapitools.server.model.ProductGroupPromotionResponse
 import org.openapitools.server.model.ProductGroupPromotionUpdateRequest
 import org.openapitools.server.model.ProductGroupPromotionsList200Response
+import org.openapitools.server.model.ReportingTimeZone
 
 
 class ProductGroupPromotionsApi(
@@ -57,8 +59,8 @@ import ProductGroupPromotionsApiPatterns.adAccountIdPattern
     } ~
     path("ad_accounts" / adAccountIdPattern / "product_groups" / "analytics") { (adAccountId) => 
       get { 
-        parameters("start_date".as[String], "end_date".as[String], "product_group_ids".as[String], "columns".as[String], "granularity".as[String], "click_window_days".as[Int].?(30), "engagement_window_days".as[Int].?(30), "view_window_days".as[Int].?(1), "conversion_report_time".as[String].?("TIME_OF_AD_ACTION")) { (startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime) => 
-            productGroupPromotionsService.productGroupsAnalytics(adAccountId = adAccountId, startDate = startDate, endDate = endDate, productGroupIds = productGroupIds, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime)
+        parameters("start_date".as[String], "end_date".as[String], "product_group_ids".as[String], "columns".as[String], "granularity".as[String], "click_window_days".as[Int].?(30), "engagement_window_days".as[Int].?(30), "view_window_days".as[Int].?(1), "conversion_report_time".as[String].?("TIME_OF_AD_ACTION"), "reporting_timezone".as[String].?) { (startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone) => 
+            productGroupPromotionsService.productGroupsAnalytics(adAccountId = adAccountId, startDate = startDate, endDate = endDate, productGroupIds = productGroupIds, columns = columns, granularity = granularity, clickWindowDays = clickWindowDays, engagementWindowDays = engagementWindowDays, viewWindowDays = viewWindowDays, conversionReportTime = conversionReportTime, reportingTimezone = reportingTimezone)
         }
       }
     }
@@ -83,16 +85,16 @@ trait ProductGroupPromotionsApiService {
   def productGroupPromotionsCreate(adAccountId: String, productGroupPromotionCreateRequest: ProductGroupPromotionCreateRequest)
       (implicit toEntityMarshallerProductGroupPromotionResponse: ToEntityMarshaller[ProductGroupPromotionResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
-  def productGroupPromotionsGet200(responseProductGroupPromotionResponse: ProductGroupPromotionResponse)(implicit toEntityMarshallerProductGroupPromotionResponse: ToEntityMarshaller[ProductGroupPromotionResponse]): Route =
-    complete((200, responseProductGroupPromotionResponse))
+  def productGroupPromotionsGet200(responseProductGroupPromotion: ProductGroupPromotion)(implicit toEntityMarshallerProductGroupPromotion: ToEntityMarshaller[ProductGroupPromotion]): Route =
+    complete((200, responseProductGroupPromotion))
   def productGroupPromotionsGetDefault(statusCode: Int, responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((statusCode, responseError))
   /**
-   * Code: 200, Message: Success, DataType: ProductGroupPromotionResponse
+   * Code: 200, Message: Success, DataType: ProductGroupPromotion
    * Code: 0, Message: Unexpected error, DataType: Error
    */
   def productGroupPromotionsGet(adAccountId: String, productGroupPromotionId: String)
-      (implicit toEntityMarshallerProductGroupPromotionResponse: ToEntityMarshaller[ProductGroupPromotionResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
+      (implicit toEntityMarshallerProductGroupPromotion: ToEntityMarshaller[ProductGroupPromotion], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def productGroupPromotionsList200(responseProductGroupPromotionsList200Response: ProductGroupPromotionsList200Response)(implicit toEntityMarshallerProductGroupPromotionsList200Response: ToEntityMarshaller[ProductGroupPromotionsList200Response]): Route =
     complete((200, responseProductGroupPromotionsList200Response))
@@ -127,7 +129,7 @@ trait ProductGroupPromotionsApiService {
    * Code: 400, Message: Invalid ad account ads analytics parameters., DataType: Error
    * Code: 0, Message: Unexpected error, DataType: Error
    */
-  def productGroupsAnalytics(adAccountId: String, startDate: String, endDate: String, productGroupIds: String, columns: String, granularity: String, clickWindowDays: Int, engagementWindowDays: Int, viewWindowDays: Int, conversionReportTime: String)
+  def productGroupsAnalytics(adAccountId: String, startDate: String, endDate: String, productGroupIds: String, columns: String, granularity: String, clickWindowDays: Int, engagementWindowDays: Int, viewWindowDays: Int, conversionReportTime: String, reportingTimezone: Option[String])
       (implicit toEntityMarshallerProductGroupAnalyticsResponseInnerarray: ToEntityMarshaller[Seq[ProductGroupAnalyticsResponseInner]], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
 }
@@ -138,6 +140,8 @@ trait ProductGroupPromotionsApiMarshaller {
   implicit def fromEntityUnmarshallerProductGroupPromotionUpdateRequest: FromEntityUnmarshaller[ProductGroupPromotionUpdateRequest]
 
 
+
+  implicit def toEntityMarshallerProductGroupPromotion: ToEntityMarshaller[ProductGroupPromotion]
 
   implicit def toEntityMarshallerProductGroupAnalyticsResponseInnerarray: ToEntityMarshaller[Seq[ProductGroupAnalyticsResponseInner]]
 

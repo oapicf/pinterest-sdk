@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**frequency** | **number** |  | [optional] [default to undefined]
+**frequency** | **number** | Frequency target can only be between 2 and 20 | [optional] [default to undefined]
 **timerange** | **string** | User entity counts time range | [optional] [default to undefined]
 
 ## Example

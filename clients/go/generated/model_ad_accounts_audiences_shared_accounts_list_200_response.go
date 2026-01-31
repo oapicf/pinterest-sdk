@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,8 +22,8 @@ var _ MappedNullable = &AdAccountsAudiencesSharedAccountsList200Response{}
 
 // AdAccountsAudiencesSharedAccountsList200Response struct for AdAccountsAudiencesSharedAccountsList200Response
 type AdAccountsAudiencesSharedAccountsList200Response struct {
-	Items []SharedAudienceAccount `json:"items"`
 	Bookmark NullableString `json:"bookmark,omitempty"`
+	Items []SharedAudienceAccount `json:"items"`
 }
 
 type _AdAccountsAudiencesSharedAccountsList200Response AdAccountsAudiencesSharedAccountsList200Response
@@ -44,30 +44,6 @@ func NewAdAccountsAudiencesSharedAccountsList200Response(items []SharedAudienceA
 func NewAdAccountsAudiencesSharedAccountsList200ResponseWithDefaults() *AdAccountsAudiencesSharedAccountsList200Response {
 	this := AdAccountsAudiencesSharedAccountsList200Response{}
 	return &this
-}
-
-// GetItems returns the Items field value
-func (o *AdAccountsAudiencesSharedAccountsList200Response) GetItems() []SharedAudienceAccount {
-	if o == nil {
-		var ret []SharedAudienceAccount
-		return ret
-	}
-
-	return o.Items
-}
-
-// GetItemsOk returns a tuple with the Items field value
-// and a boolean to check if the value has been set.
-func (o *AdAccountsAudiencesSharedAccountsList200Response) GetItemsOk() ([]SharedAudienceAccount, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Items, true
-}
-
-// SetItems sets field value
-func (o *AdAccountsAudiencesSharedAccountsList200Response) SetItems(v []SharedAudienceAccount) {
-	o.Items = v
 }
 
 // GetBookmark returns the Bookmark field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -112,6 +88,30 @@ func (o *AdAccountsAudiencesSharedAccountsList200Response) UnsetBookmark() {
 	o.Bookmark.Unset()
 }
 
+// GetItems returns the Items field value
+func (o *AdAccountsAudiencesSharedAccountsList200Response) GetItems() []SharedAudienceAccount {
+	if o == nil {
+		var ret []SharedAudienceAccount
+		return ret
+	}
+
+	return o.Items
+}
+
+// GetItemsOk returns a tuple with the Items field value
+// and a boolean to check if the value has been set.
+func (o *AdAccountsAudiencesSharedAccountsList200Response) GetItemsOk() ([]SharedAudienceAccount, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Items, true
+}
+
+// SetItems sets field value
+func (o *AdAccountsAudiencesSharedAccountsList200Response) SetItems(v []SharedAudienceAccount) {
+	o.Items = v
+}
+
 func (o AdAccountsAudiencesSharedAccountsList200Response) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -122,10 +122,10 @@ func (o AdAccountsAudiencesSharedAccountsList200Response) MarshalJSON() ([]byte,
 
 func (o AdAccountsAudiencesSharedAccountsList200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["items"] = o.Items
 	if o.Bookmark.IsSet() {
 		toSerialize["bookmark"] = o.Bookmark.Get()
 	}
+	toSerialize["items"] = o.Items
 	return toSerialize, nil
 }
 

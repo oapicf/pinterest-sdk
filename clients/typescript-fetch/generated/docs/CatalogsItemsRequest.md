@@ -8,8 +8,8 @@ Request object of catalogs items
 Name | Type
 ------------ | -------------
 `country` | [Country](Country.md)
-`language` | string
 `filters` | [CatalogsItemsPostFilters](CatalogsItemsPostFilters.md)
+`language` | string
 
 ## Example
 
@@ -19,8 +19,8 @@ import type { CatalogsItemsRequest } from ''
 // TODO: Update the object below with actual values
 const example = {
   "country": null,
-  "language": null,
   "filters": null,
+  "language": null,
 } satisfies CatalogsItemsRequest
 
 console.log(example)

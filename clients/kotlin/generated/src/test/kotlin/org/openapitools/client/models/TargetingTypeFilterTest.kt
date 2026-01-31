@@ -19,14 +19,13 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.TargetingTypeFilter
-import org.openapitools.client.models.AdsAnalyticsTargetingType
 
 class TargetingTypeFilterTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of TargetingTypeFilter
         //val modelInstance = TargetingTypeFilter()
 
-        // to test the property `targetingTypes` - List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
+        // to test the property `targetingTypes` - List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AUDIENCE_MULTIPLIER\"] is only available in CAMPAIGN_TARGETING level. [\"MEDIA_TYPE\"] is only available in PRODUCT_ITEM_TARGETING level. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
         should("test targetingTypes") {
             // uncomment below to test the property
             //modelInstance.targetingTypes shouldBe ("TODO")

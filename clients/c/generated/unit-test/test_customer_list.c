@@ -24,6 +24,7 @@ customer_list_t* instantiate_customer_list(int include_optional) {
     customer_list = customer_list_create(
       "549756359984",
       1452208622,
+      0,
       "643",
       "The Glengarry Glen Ross leads",
       2,
@@ -31,13 +32,13 @@ customer_list_t* instantiate_customer_list(int include_optional) {
       11,
       pinterest_rest_api_customer_list_STATUS_"PROCESSING",
       "customerlist",
-      1461269616,
-      0
+      1461269616
     );
   } else {
     customer_list = customer_list_create(
       "549756359984",
       1452208622,
+      0,
       "643",
       "The Glengarry Glen Ross leads",
       2,
@@ -45,8 +46,7 @@ customer_list_t* instantiate_customer_list(int include_optional) {
       11,
       pinterest_rest_api_customer_list_STATUS_"PROCESSING",
       "customerlist",
-      1461269616,
-      0
+      1461269616
     );
   }
 

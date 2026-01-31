@@ -1,7 +1,7 @@
 /*
  * Language.h
  *
- * Language code, which is among the offical ISO 639-1 language list.
+ * Language code, which is among the official ISO 639-1 language list.
  */
 
 #ifndef _Language_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Language code, which is among the offical ISO 639-1 language list.
+/*! \brief Language code, which is among the official ISO 639-1 language list.
  *
  *  \ingroup Models
  *

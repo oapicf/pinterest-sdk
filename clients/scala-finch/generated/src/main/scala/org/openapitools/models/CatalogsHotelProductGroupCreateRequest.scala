@@ -9,17 +9,17 @@ import org.openapitools.models.CatalogsHotelProductGroupFilters
 
 /**
  * Request object for creating a hotel product group.
+ * @param catalogUnderscoreid Catalog id pertaining to the hotel product group.
  * @param catalogUnderscoretype 
- * @param name 
  * @param description 
  * @param filters 
- * @param catalogUnderscoreid Catalog id pertaining to the hotel product group.
+ * @param name 
  */
-case class CatalogsHotelProductGroupCreateRequest(catalogUnderscoretype: String,
-                name: String,
+case class CatalogsHotelProductGroupCreateRequest(catalogUnderscoreid: String,
+                catalogUnderscoretype: String,
                 description: Option[String],
                 filters: CatalogsHotelProductGroupFilters,
-                catalogUnderscoreid: String
+                name: String
                 )
 
 object CatalogsHotelProductGroupCreateRequest {

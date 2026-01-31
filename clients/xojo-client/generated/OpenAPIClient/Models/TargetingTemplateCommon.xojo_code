@@ -3,14 +3,6 @@ Protected Class TargetingTemplateCommon
 
 	#tag Property, Flags = &h0
 		#tag Note
-			targeting template name
-		#tag EndNote
-		name As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
 			Enable auto-targeting for ad group. Also known as <a href="https://help.pinterest.com/en/business/article/expanded-targeting" target="_blank">"expanded targeting"</a>.
 		#tag EndNote
 		auto_targeting_enabled As Xoson.O.OptionalBoolean
@@ -18,7 +10,15 @@ Protected Class TargetingTemplateCommon
 
 
 	#tag Property, Flags = &h0
-		targeting_attributes As OpenAPIClient.Models.TargetingSpec
+		keywords() As OpenAPIClient.Models.TargetingTemplateKeyword
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			targeting template name
+		#tag EndNote
+		name As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -28,7 +28,7 @@ Protected Class TargetingTemplateCommon
 
 
 	#tag Property, Flags = &h0
-		keywords() As OpenAPIClient.Models.TargetingTemplateKeyword
+		targeting_attributes As OpenAPIClient.Models.TargetingSpec
 	#tag EndProperty
 
 
@@ -74,14 +74,6 @@ Protected Class TargetingTemplateCommon
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="name"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="auto_targeting_enabled"
 			Visible=false
 			Group="Behavior"
@@ -90,11 +82,19 @@ Protected Class TargetingTemplateCommon
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="targeting_attributes"
+			Name="keywords"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="TargetingSpec"
+			Type="TargetingTemplateKeyword"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="name"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -106,11 +106,11 @@ Protected Class TargetingTemplateCommon
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="keywords"
+			Name="targeting_attributes"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="TargetingTemplateKeyword"
+			Type="TargetingSpec"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

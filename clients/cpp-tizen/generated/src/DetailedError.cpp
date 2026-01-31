@@ -24,8 +24,8 @@ void
 DetailedError::__init()
 {
 	//code = int(0);
-	//message = std::string();
 	//details = null;
+	//message = std::string();
 }
 
 void
@@ -36,15 +36,15 @@ DetailedError::__cleanup()
 	//delete code;
 	//code = NULL;
 	//}
-	//if(message != NULL) {
-	//
-	//delete message;
-	//message = NULL;
-	//}
 	//if(details != NULL) {
 	//
 	//delete details;
 	//details = NULL;
+	//}
+	//if(message != NULL) {
+	//
+	//delete message;
+	//message = NULL;
 	//}
 	//
 }
@@ -65,17 +65,6 @@ DetailedError::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *messageKey = "message";
-	node = json_object_get_member(pJsonObject, messageKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&message, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *detailsKey = "details";
 	node = json_object_get_member(pJsonObject, detailsKey);
 	if (node !=NULL) {
@@ -87,6 +76,17 @@ DetailedError::fromJson(char* jsonStr)
 			
 			std::string* obj = static_cast<std::string*> (&details);
 			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *messageKey = "message";
+	node = json_object_get_member(pJsonObject, messageKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&message, node, "std::string", "");
+		} else {
 			
 		}
 	}
@@ -112,15 +112,6 @@ DetailedError::toJson()
 	const gchar *codeKey = "code";
 	json_object_set_member(pJsonObject, codeKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getMessage();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *messageKey = "message";
-	json_object_set_member(pJsonObject, messageKey, node);
-	if (isprimitive("std::string")) {
 		std::string obj = getDetails();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -134,6 +125,15 @@ DetailedError::toJson()
 	}
 	const gchar *detailsKey = "details";
 	json_object_set_member(pJsonObject, detailsKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getMessage();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *messageKey = "message";
+	json_object_set_member(pJsonObject, messageKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -155,18 +155,6 @@ DetailedError::setCode(int  code)
 }
 
 std::string
-DetailedError::getMessage()
-{
-	return message;
-}
-
-void
-DetailedError::setMessage(std::string  message)
-{
-	this->message = message;
-}
-
-std::string
 DetailedError::getDetails()
 {
 	return details;
@@ -176,6 +164,18 @@ void
 DetailedError::setDetails(std::string  details)
 {
 	this->details = details;
+}
+
+std::string
+DetailedError::getMessage()
+{
+	return message;
+}
+
+void
+DetailedError::setMessage(std::string  message)
+{
+	this->message = message;
 }
 
 

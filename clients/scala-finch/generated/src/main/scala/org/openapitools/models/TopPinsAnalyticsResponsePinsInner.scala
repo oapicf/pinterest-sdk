@@ -10,12 +10,12 @@ import org.openapitools.models.DataStatus
 
 /**
  * Array with metrics, status, and pin id for the requested metric
- * @param metrics The metric name and daily value for each requested metric
  * @param dataUnderscorestatus 
+ * @param metrics The metric name and daily value for each requested metric
  * @param pinUnderscoreid The pin id
  */
-case class TopPinsAnalyticsResponsePinsInner(metrics: Option[Map[String, BigDecimal]],
-                dataUnderscorestatus: Option[Map[String, DataStatus]],
+case class TopPinsAnalyticsResponsePinsInner(dataUnderscorestatus: Option[Map[String, DataStatus]],
+                metrics: Option[Map[String, BigDecimal]],
                 pinUnderscoreid: Option[String]
                 )
 

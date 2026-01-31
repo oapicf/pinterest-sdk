@@ -17,20 +17,20 @@ public struct CatalogsHotelListProductsByCatalogBasedFilterRequest: Codable, JSO
         case hotel = "HOTEL"
     }
     public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public var catalogType: CatalogType
     /** Catalog id pertaining to the hotel product group. */
     public var catalogId: String
+    public var catalogType: CatalogType
     public var filters: CatalogsHotelProductGroupFilters
 
-    public init(catalogType: CatalogType, catalogId: String, filters: CatalogsHotelProductGroupFilters) {
-        self.catalogType = catalogType
+    public init(catalogId: String, catalogType: CatalogType, filters: CatalogsHotelProductGroupFilters) {
         self.catalogId = catalogId
+        self.catalogType = catalogType
         self.filters = filters
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case catalogType = "catalog_type"
         case catalogId = "catalog_id"
+        case catalogType = "catalog_type"
         case filters
     }
 
@@ -38,8 +38,8 @@ public struct CatalogsHotelListProductsByCatalogBasedFilterRequest: Codable, JSO
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(catalogType, forKey: .catalogType)
         try container.encode(catalogId, forKey: .catalogId)
+        try container.encode(catalogType, forKey: .catalogType)
         try container.encode(filters, forKey: .filters)
     }
 }

@@ -18,19 +18,19 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param memberId Unique identifier of the member
  * @param businessRole 
+ * @param memberId Unique identifier of the member
  */
 data class MembersToDeleteBodyMembersInner(
+
+    @field:Valid
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("business_role", required = true) val businessRole: BusinessRoleForMembers,
 
     @get:Pattern(regexp="^\\d+$")
     @get:Size(max=25)
     @Schema(example = "140943737684417", required = true, description = "Unique identifier of the member")
-    @get:JsonProperty("member_id", required = true) val memberId: kotlin.String,
-
-    @field:Valid
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("business_role", required = true) val businessRole: BusinessRoleForMembers
+    @get:JsonProperty("member_id", required = true) val memberId: kotlin.String
 ) {
 
 }

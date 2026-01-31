@@ -5,15 +5,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdAccountId** | Pointer to **string** | Ad account ID. | [optional] 
+**AudienceType** | Pointer to **string** | &lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR | [optional] 
+**CreatedByCompanyName** | Pointer to **NullableString** | The company that created this audience. | [optional] 
+**CreatedTimestamp** | Pointer to **NullableInt32** | Creation time. Unix timestamp in seconds. | [optional] 
+**Description** | Pointer to **NullableString** | Audience description. | [optional] 
 **Id** | Pointer to **string** | Audience ID. | [optional] 
 **Name** | Pointer to **string** | Audience name. | [optional] 
-**AudienceType** | Pointer to **string** | &lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR | [optional] 
-**Description** | Pointer to **NullableString** | Audience description. | [optional] 
 **Rule** | Pointer to [**AudienceRule**](AudienceRule.md) |  | [optional] 
 **Size** | Pointer to **NullableInt32** | Audience size. | [optional] 
 **Status** | Pointer to **string** | Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it. | [optional] 
 **Type** | Pointer to **string** | Always \&quot;audience\&quot;. | [optional] 
-**CreatedTimestamp** | Pointer to **NullableInt32** | Creation time. Unix timestamp in seconds. | [optional] 
 **UpdatedTimestamp** | Pointer to **NullableInt32** | Last update time. Unix timestamp in seconds. | [optional] 
 
 ## Methods
@@ -60,6 +61,136 @@ SetAdAccountId sets AdAccountId field to given value.
 
 HasAdAccountId returns a boolean if a field has been set.
 
+### GetAudienceType
+
+`func (o *Audience) GetAudienceType() string`
+
+GetAudienceType returns the AudienceType field if non-nil, zero value otherwise.
+
+### GetAudienceTypeOk
+
+`func (o *Audience) GetAudienceTypeOk() (*string, bool)`
+
+GetAudienceTypeOk returns a tuple with the AudienceType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAudienceType
+
+`func (o *Audience) SetAudienceType(v string)`
+
+SetAudienceType sets AudienceType field to given value.
+
+### HasAudienceType
+
+`func (o *Audience) HasAudienceType() bool`
+
+HasAudienceType returns a boolean if a field has been set.
+
+### GetCreatedByCompanyName
+
+`func (o *Audience) GetCreatedByCompanyName() string`
+
+GetCreatedByCompanyName returns the CreatedByCompanyName field if non-nil, zero value otherwise.
+
+### GetCreatedByCompanyNameOk
+
+`func (o *Audience) GetCreatedByCompanyNameOk() (*string, bool)`
+
+GetCreatedByCompanyNameOk returns a tuple with the CreatedByCompanyName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedByCompanyName
+
+`func (o *Audience) SetCreatedByCompanyName(v string)`
+
+SetCreatedByCompanyName sets CreatedByCompanyName field to given value.
+
+### HasCreatedByCompanyName
+
+`func (o *Audience) HasCreatedByCompanyName() bool`
+
+HasCreatedByCompanyName returns a boolean if a field has been set.
+
+### SetCreatedByCompanyNameNil
+
+`func (o *Audience) SetCreatedByCompanyNameNil(b bool)`
+
+ SetCreatedByCompanyNameNil sets the value for CreatedByCompanyName to be an explicit nil
+
+### UnsetCreatedByCompanyName
+`func (o *Audience) UnsetCreatedByCompanyName()`
+
+UnsetCreatedByCompanyName ensures that no value is present for CreatedByCompanyName, not even an explicit nil
+### GetCreatedTimestamp
+
+`func (o *Audience) GetCreatedTimestamp() int32`
+
+GetCreatedTimestamp returns the CreatedTimestamp field if non-nil, zero value otherwise.
+
+### GetCreatedTimestampOk
+
+`func (o *Audience) GetCreatedTimestampOk() (*int32, bool)`
+
+GetCreatedTimestampOk returns a tuple with the CreatedTimestamp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedTimestamp
+
+`func (o *Audience) SetCreatedTimestamp(v int32)`
+
+SetCreatedTimestamp sets CreatedTimestamp field to given value.
+
+### HasCreatedTimestamp
+
+`func (o *Audience) HasCreatedTimestamp() bool`
+
+HasCreatedTimestamp returns a boolean if a field has been set.
+
+### SetCreatedTimestampNil
+
+`func (o *Audience) SetCreatedTimestampNil(b bool)`
+
+ SetCreatedTimestampNil sets the value for CreatedTimestamp to be an explicit nil
+
+### UnsetCreatedTimestamp
+`func (o *Audience) UnsetCreatedTimestamp()`
+
+UnsetCreatedTimestamp ensures that no value is present for CreatedTimestamp, not even an explicit nil
+### GetDescription
+
+`func (o *Audience) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *Audience) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *Audience) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *Audience) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
+
+### SetDescriptionNil
+
+`func (o *Audience) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *Audience) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetId
 
 `func (o *Audience) GetId() string`
@@ -110,66 +241,6 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
-### GetAudienceType
-
-`func (o *Audience) GetAudienceType() string`
-
-GetAudienceType returns the AudienceType field if non-nil, zero value otherwise.
-
-### GetAudienceTypeOk
-
-`func (o *Audience) GetAudienceTypeOk() (*string, bool)`
-
-GetAudienceTypeOk returns a tuple with the AudienceType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAudienceType
-
-`func (o *Audience) SetAudienceType(v string)`
-
-SetAudienceType sets AudienceType field to given value.
-
-### HasAudienceType
-
-`func (o *Audience) HasAudienceType() bool`
-
-HasAudienceType returns a boolean if a field has been set.
-
-### GetDescription
-
-`func (o *Audience) GetDescription() string`
-
-GetDescription returns the Description field if non-nil, zero value otherwise.
-
-### GetDescriptionOk
-
-`func (o *Audience) GetDescriptionOk() (*string, bool)`
-
-GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDescription
-
-`func (o *Audience) SetDescription(v string)`
-
-SetDescription sets Description field to given value.
-
-### HasDescription
-
-`func (o *Audience) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
-
-### SetDescriptionNil
-
-`func (o *Audience) SetDescriptionNil(b bool)`
-
- SetDescriptionNil sets the value for Description to be an explicit nil
-
-### UnsetDescription
-`func (o *Audience) UnsetDescription()`
-
-UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetRule
 
 `func (o *Audience) GetRule() AudienceRule`
@@ -280,41 +351,6 @@ SetType sets Type field to given value.
 
 HasType returns a boolean if a field has been set.
 
-### GetCreatedTimestamp
-
-`func (o *Audience) GetCreatedTimestamp() int32`
-
-GetCreatedTimestamp returns the CreatedTimestamp field if non-nil, zero value otherwise.
-
-### GetCreatedTimestampOk
-
-`func (o *Audience) GetCreatedTimestampOk() (*int32, bool)`
-
-GetCreatedTimestampOk returns a tuple with the CreatedTimestamp field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreatedTimestamp
-
-`func (o *Audience) SetCreatedTimestamp(v int32)`
-
-SetCreatedTimestamp sets CreatedTimestamp field to given value.
-
-### HasCreatedTimestamp
-
-`func (o *Audience) HasCreatedTimestamp() bool`
-
-HasCreatedTimestamp returns a boolean if a field has been set.
-
-### SetCreatedTimestampNil
-
-`func (o *Audience) SetCreatedTimestampNil(b bool)`
-
- SetCreatedTimestampNil sets the value for CreatedTimestamp to be an explicit nil
-
-### UnsetCreatedTimestamp
-`func (o *Audience) UnsetCreatedTimestamp()`
-
-UnsetCreatedTimestamp ensures that no value is present for CreatedTimestamp, not even an explicit nil
 ### GetUpdatedTimestamp
 
 `func (o *Audience) GetUpdatedTimestamp() int32`

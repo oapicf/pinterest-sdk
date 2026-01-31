@@ -3,17 +3,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Success** | **Boolean** | Returns true if the offer code was successfully applied(validateOnly&#x3D;false) or can be applied(validateOnly&#x3D;true). | [optional] 
 **ErrorCode** | **Int32** | Error code type if error occurs | [optional] 
 **ErrorMessage** | **String** | Reason for failure | [optional] 
+**Success** | **Boolean** | Returns true if the offer code was successfully applied(validateOnly&#x3D;false) or can be applied(validateOnly&#x3D;true). | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$AdsCreditRedeemResponse = Initialize-PSOpenAPIToolsAdsCreditRedeemResponse  -Success false `
- -ErrorCode 2708 `
- -ErrorMessage The offer has already been redeemed by this advertiser
+$AdsCreditRedeemResponse = Initialize-PSOpenAPIToolsAdsCreditRedeemResponse  -ErrorCode 2708 `
+ -ErrorMessage The offer has already been redeemed by this advertiser `
+ -Success false
 ```
 
 - Convert the resource to JSON

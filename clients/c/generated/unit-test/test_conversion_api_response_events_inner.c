@@ -22,14 +22,14 @@ conversion_api_response_events_inner_t* instantiate_conversion_api_response_even
   conversion_api_response_events_inner_t* conversion_api_response_events_inner = NULL;
   if (include_optional) {
     conversion_api_response_events_inner = conversion_api_response_events_inner_create(
-      pinterest_rest_api_conversion_api_response_events_inner_STATUS_"processed",
       "0",
+      pinterest_rest_api_conversion_api_response_events_inner_STATUS_"processed",
       "0"
     );
   } else {
     conversion_api_response_events_inner = conversion_api_response_events_inner_create(
-      pinterest_rest_api_conversion_api_response_events_inner_STATUS_"processed",
       "0",
+      pinterest_rest_api_conversion_api_response_events_inner_STATUS_"processed",
       "0"
     );
   }

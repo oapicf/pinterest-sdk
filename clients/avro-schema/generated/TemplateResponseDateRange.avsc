@@ -5,6 +5,12 @@
   "name": "TemplateResponseDateRange",
   "fields": [
     {
+      "name": "absolute_date_range",
+      "type": ["null", "model.TemplateResponseDateRangeAbsoluteDateRange"],
+      "doc": "",
+      "default": null
+    },
+    {
       "name": "dynamic_date_range",
       "type": ["null", "model.TemplateResponseDateRangeDynamicDateRange"],
       "doc": "",
@@ -13,12 +19,6 @@
     {
       "name": "relative_date_range",
       "type": ["null", "model.TemplateResponseDateRangeRelativeDateRange"],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "absolute_date_range",
-      "type": ["null", "model.TemplateResponseDateRangeAbsoluteDateRange"],
       "doc": "",
       "default": null
     }

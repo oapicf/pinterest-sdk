@@ -13,7 +13,7 @@ Protected Class AdvancedAuctionProcessedItems
 		#tag Note
 			Array of advanced auction processed items
 		#tag EndNote
-		items() As OpenAPIClient.Models.AdvancedAuctionProcessedItem
+		items() As OpenAPIClient.Models.AdvancedAuctionItemsSubmitRecord
 	#tag EndProperty
 
 
@@ -66,7 +66,7 @@ Protected Class AdvancedAuctionProcessedItems
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="AdvancedAuctionProcessedItem"
+			Type="AdvancedAuctionItemsSubmitRecord"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

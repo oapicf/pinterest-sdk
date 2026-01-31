@@ -12,19 +12,19 @@ import scala.collection.immutable.Seq
 
 /**
  * 
- * @param autoUnderscoretargetingUnderscoreenabled Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
- * @param placementUnderscoregroup <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
+ * @param autoUnderscoretargetingUnderscoreenabled Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.
  * @param creativeUnderscoretypes Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
- * @param targetingUnderscorespec 
- * @param productUnderscoregroupUnderscoreids Targeted product group IDs. </p><strong>Note:</strong> This can only be combined with shopping/catalog sales campaigns. For more information, <a href=\"https://help.pinterest.com/en/business/article/shopping-ads#section-14571\" target=\"_blank\">click here</a>. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored.
  * @param keywords Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
+ * @param placementUnderscoregroup <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
+ * @param productUnderscoregroupUnderscoreids Targeted product group IDs. </p><strong>Note:</strong> This can only be combined with shopping/catalog sales campaigns. For more information, <a href=\"https://help.pinterest.com/en/business/article/shopping-ads#section-14571\" target=\"_blank\">click here</a>. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored.
+ * @param targetingUnderscorespec 
  */
 case class AdGroupAudienceSizingRequest(autoUnderscoretargetingUnderscoreenabled: Option[Boolean],
-                placementUnderscoregroup: Option[PlacementGroupType],
                 creativeUnderscoretypes: Option[Seq[String]],
-                targetingUnderscorespec: Option[TargetingSpec],
+                keywords: Option[Seq[AdGroupAudienceSizingRequestKeywordsInner]],
+                placementUnderscoregroup: Option[PlacementGroupType],
                 productUnderscoregroupUnderscoreids: Option[Seq[String]],
-                keywords: Option[Seq[AdGroupAudienceSizingRequestKeywordsInner]]
+                targetingUnderscorespec: Option[TargetingSpec]
                 )
 
 object AdGroupAudienceSizingRequest {

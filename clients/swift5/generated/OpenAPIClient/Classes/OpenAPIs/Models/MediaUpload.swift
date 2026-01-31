@@ -13,35 +13,37 @@ import AnyCodable
 /** Media upload that has been registered but not uploaded/processed yet. */
 public struct MediaUpload: Codable, JSONEncodable, Hashable {
 
+    public static let mediaIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Unique identifier for this media upload. Used to track status and for attaching during Pin creation. */
-    public var mediaId: String?
-    public var mediaType: MediaUploadType?
+    public var mediaId: String
+    public var mediaType: MediaUploadType
+    /** The list of parameter key/value pairs you will need to send with your POST request to upload your media file. */
+    public var uploadParameters: MediaUploadParameters?
     /** The URL where you will POST your media file. */
     public var uploadUrl: String?
-    public var uploadParameters: MediaUploadAllOfUploadParameters?
 
-    public init(mediaId: String? = nil, mediaType: MediaUploadType? = nil, uploadUrl: String? = nil, uploadParameters: MediaUploadAllOfUploadParameters? = nil) {
+    public init(mediaId: String, mediaType: MediaUploadType, uploadParameters: MediaUploadParameters? = nil, uploadUrl: String? = nil) {
         self.mediaId = mediaId
         self.mediaType = mediaType
-        self.uploadUrl = uploadUrl
         self.uploadParameters = uploadParameters
+        self.uploadUrl = uploadUrl
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case mediaId = "media_id"
         case mediaType = "media_type"
-        case uploadUrl = "upload_url"
         case uploadParameters = "upload_parameters"
+        case uploadUrl = "upload_url"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(mediaId, forKey: .mediaId)
-        try container.encodeIfPresent(mediaType, forKey: .mediaType)
-        try container.encodeIfPresent(uploadUrl, forKey: .uploadUrl)
+        try container.encode(mediaId, forKey: .mediaId)
+        try container.encode(mediaType, forKey: .mediaType)
         try container.encodeIfPresent(uploadParameters, forKey: .uploadParameters)
+        try container.encodeIfPresent(uploadUrl, forKey: .uploadUrl)
     }
 }
 

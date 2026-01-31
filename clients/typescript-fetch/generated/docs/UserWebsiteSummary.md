@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
-`website` | string
 `status` | string
 `verifiedAt` | string
+`website` | string
 
 ## Example
 
@@ -17,9 +17,9 @@ import type { UserWebsiteSummary } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "website": mysite.test,
   "status": success,
   "verifiedAt": 2022-12-14T21:03:01.602000,
+  "website": mysite.test,
 } satisfies UserWebsiteSummary
 
 console.log(example)

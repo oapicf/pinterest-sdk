@@ -1,13 +1,58 @@
 -module(openapi_business_access_relationships_api).
 
--export([delete_business_membership/3, delete_business_membership/4,
+-export([brand_accounts/create/3, brand_accounts/create/4,
+         brand_accounts/update/4, brand_accounts/update/5,
+         delete_business_membership/3, delete_business_membership/4,
          delete_business_partners/3, delete_business_partners/4,
          get/business_employers/1, get/business_employers/2,
          get/business_members/2, get/business_members/3,
          get/business_partners/2, get/business_partners/3,
+         system_user/update/4, system_user/update/5,
          update/business_memberships/3, update/business_memberships/4]).
 
 -define(BASE_URL, <<"/v5">>).
+
+%% @doc Create a Brand Account
+%% Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+-spec brand_accounts/create(ctx:ctx(), binary(), openapi_brand_accounts_create_request:openapi_brand_accounts_create_request()) -> {ok, openapi_brand_accounts_create_200_response:openapi_brand_accounts_create_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+brand_accounts/create(Ctx, BusinessHierarchyId, OpenapiBrandAccountsCreateRequest) ->
+    brand_accounts/create(Ctx, BusinessHierarchyId, OpenapiBrandAccountsCreateRequest, #{}).
+
+-spec brand_accounts/create(ctx:ctx(), binary(), openapi_brand_accounts_create_request:openapi_brand_accounts_create_request(), maps:map()) -> {ok, openapi_brand_accounts_create_200_response:openapi_brand_accounts_create_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+brand_accounts/create(Ctx, BusinessHierarchyId, OpenapiBrandAccountsCreateRequest, Optional) ->
+    _OptionalParams = maps:get(params, Optional, #{}),
+    Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
+
+    Method = post,
+    Path = [?BASE_URL, "/business_access/business_hierarchy/", BusinessHierarchyId, "/brand_accounts"],
+    QS = [],
+    Headers = [],
+    Body1 = OpenapiBrandAccountsCreateRequest,
+    ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/json">>]),
+    Opts = maps:get(hackney_opts, Optional, []),
+
+    openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
+
+%% @doc Update a Brand Account
+%% Update an existing Brand Account
+-spec brand_accounts/update(ctx:ctx(), binary(), binary(), openapi_brand_accounts_update_request:openapi_brand_accounts_update_request()) -> {ok, openapi_brand_accounts_create_200_response:openapi_brand_accounts_create_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+brand_accounts/update(Ctx, BusinessHierarchyId, BrandAccountId, OpenapiBrandAccountsUpdateRequest) ->
+    brand_accounts/update(Ctx, BusinessHierarchyId, BrandAccountId, OpenapiBrandAccountsUpdateRequest, #{}).
+
+-spec brand_accounts/update(ctx:ctx(), binary(), binary(), openapi_brand_accounts_update_request:openapi_brand_accounts_update_request(), maps:map()) -> {ok, openapi_brand_accounts_create_200_response:openapi_brand_accounts_create_200_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+brand_accounts/update(Ctx, BusinessHierarchyId, BrandAccountId, OpenapiBrandAccountsUpdateRequest, Optional) ->
+    _OptionalParams = maps:get(params, Optional, #{}),
+    Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
+
+    Method = patch,
+    Path = [?BASE_URL, "/business_access/business_hierarchy/", BusinessHierarchyId, "/brand_accounts/", BrandAccountId, ""],
+    QS = [],
+    Headers = [],
+    Body1 = OpenapiBrandAccountsUpdateRequest,
+    ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/json">>]),
+    Opts = maps:get(hackney_opts, Optional, []),
+
+    openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Terminate business memberships
 %% Terminate memberships between the specified members and your business.
@@ -85,7 +130,7 @@ get/business_members(Ctx, BusinessId, Optional) ->
 
     Method = get,
     Path = [?BASE_URL, "/businesses/", BusinessId, "/members"],
-    QS = lists:flatten([])++openapi_utils:optional_params(['assets_summary', 'business_roles', 'member_ids', 'start_index', 'bookmark', 'page_size'], _OptionalParams),
+    QS = lists:flatten([])++openapi_utils:optional_params(['fetch_system_users', 'assets_summary', 'business_roles', 'member_ids', 'start_index', 'bookmark', 'page_size'], _OptionalParams),
     Headers = [],
     Body1 = [],
     ContentTypeHeader = openapi_utils:select_header_content_type([]),
@@ -110,6 +155,27 @@ get/business_partners(Ctx, BusinessId, Optional) ->
     Headers = [],
     Body1 = [],
     ContentTypeHeader = openapi_utils:select_header_content_type([]),
+    Opts = maps:get(hackney_opts, Optional, []),
+
+    openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
+
+%% @doc Update a system user information.
+%% Update a system user information such as name.
+-spec system_user/update(ctx:ctx(), binary(), binary(), openapi_system_user_update_request:openapi_system_user_update_request()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+system_user/update(Ctx, BusinessId, SystemUserId, OpenapiSystemUserUpdateRequest) ->
+    system_user/update(Ctx, BusinessId, SystemUserId, OpenapiSystemUserUpdateRequest, #{}).
+
+-spec system_user/update(ctx:ctx(), binary(), binary(), openapi_system_user_update_request:openapi_system_user_update_request(), maps:map()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+system_user/update(Ctx, BusinessId, SystemUserId, OpenapiSystemUserUpdateRequest, Optional) ->
+    _OptionalParams = maps:get(params, Optional, #{}),
+    Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
+
+    Method = patch,
+    Path = [?BASE_URL, "/businesses/", BusinessId, "/system_users/", SystemUserId, ""],
+    QS = [],
+    Headers = [],
+    Body1 = OpenapiSystemUserUpdateRequest,
+    ContentTypeHeader = openapi_utils:select_header_content_type([<<"application/json">>]),
     Opts = maps:get(hackney_opts, Optional, []),
 
     openapi_utils:request(Ctx, Method, Path, QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).

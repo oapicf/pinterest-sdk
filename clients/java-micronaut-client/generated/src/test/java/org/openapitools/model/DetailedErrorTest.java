@@ -28,19 +28,19 @@ public class DetailedErrorTest {
     }
 
     /**
-     * Test the property 'message'
-     */
-    @Test
-    public void messageTest() {
-        // TODO: test message
-    }
-
-    /**
      * Test the property 'details'
      */
     @Test
     public void detailsTest() {
         // TODO: test details
+    }
+
+    /**
+     * Test the property 'message'
+     */
+    @Test
+    public void messageTest() {
+        // TODO: test message
     }
 
 }

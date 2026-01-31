@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server PromotionsResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a PromotionsResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  PromotionArrayElement = openapi_server.resourceTypes.PromotionArrayElement
+}
+resourceTypes {
+
+  PromotionsResponse {
+    title = PromotionsResponse
+    description = PromotionsResponse
+    derivedFrom = Root
+    properties {
+        promotions {
+          type = array
+          items.type = PromotionArrayElement
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  PromotionsResponse {
+    title = PromotionsResponse
+    description = PromotionsResponse
+    implements = openapi_server.resourceTypes.PromotionsResponse
+
+  }
+}

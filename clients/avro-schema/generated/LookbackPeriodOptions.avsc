@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "Days in lookback window in the GET Conversion EQS response.",
+  "name": "LookbackPeriodOptions",
+  "symbols": [
+    "_1d",
+    "_14d"
+  ]
+}

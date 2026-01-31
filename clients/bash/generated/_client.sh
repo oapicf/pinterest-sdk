@@ -302,9 +302,11 @@ case $state in
             "adAccountsCreate[Create ad account]" \
             "adAccountsGet[Get ad account]" \
             "adAccountsList[List ad accounts]" \
+            "analyticsCreateConversionProductReport[Create a request for a brand, category, SKU report]" \
             "analyticsCreateMmmReport[Create a request for a Marketing Mix Modeling (MMM) report]" \
             "analyticsCreateReport[Create async request for an account analytics report]" \
             "analyticsCreateTemplateReport[Create async request for an analytics report using a template]" \
+            "analyticsGetConversionProductReport[Get advertiser brand, category, SKU report]" \
             "analyticsGetMmmReport[Get advertiser Marketing Mix Modeling (MMM) report.]" \
             "analyticsGetReport[Get the account analytics report created by the async call]" \
             "sandboxDelete[Delete ads data for ad account in API Sandbox]" \
@@ -330,11 +332,12 @@ case $state in
             "updateAdAccountToBusinessSharedAudience[Update audience sharing from an ad account to businesses]" \
             "updateBusinessToAdAccountSharedAudience[Update audience sharing from a business to ad accounts]" \
             "updateBusinessToBusinessSharedAudience[Update audience sharing between businesses]"             "audiencesCreate[Create audience]" \
-            "audiencesCreateCustom[Create custom audience]" \
             "audiencesGet[Get audience]" \
             "audiencesList[List audiences]" \
             "audiencesUpdate[Update audience]"             "adsCreditRedeem[Redeem ad credits]" \
             "adsCreditsDiscountsGet[Get ads credit discounts]" \
+            "billingInvoiceDownloadGet[Get download url for a billing invoice]" \
+            "billingInvoicesGet[Get billing invoices]" \
             "billingProfilesGet[Get billing profiles]" \
             "ssioAccountsGet[Get Salesforce account details including bill-to information.]" \
             "ssioInsertionOrderCreate[Create insertion order through SSIO.]" \
@@ -369,19 +372,30 @@ case $state in
             "createAssetInvites[Update invite/request with an asset permission]" \
             "createMembershipOrPartnershipInvites[Create invites or requests]" \
             "getInvites[Get invites/requests]" \
-            "respondBusinessAccessInvites[Accept or decline an invite/request]"             "deleteBusinessMembership[Terminate business memberships]" \
+            "respondBusinessAccessInvites[Accept or decline an invite/request]"             "brandAccountsCreate[Create a Brand Account]" \
+            "brandAccountsUpdate[Update a Brand Account]" \
+            "deleteBusinessMembership[Terminate business memberships]" \
             "deleteBusinessPartners[Terminate business partnerships]" \
             "getBusinessEmployers[List business employers for user]" \
             "getBusinessMembers[Get business members]" \
             "getBusinessPartners[Get business partners]" \
-            "updateBusinessMemberships[Update member's business role]"             "campaignTargetingAnalyticsGet[Get targeting analytics for campaigns]" \
+            "systemUserUpdate[Update a system user information.]" \
+            "updateBusinessMemberships[Update member's business role]"             "adPinsAnalytics[Get pins analytics]" \
+            "campaignTargetingAnalyticsGet[Get targeting analytics for campaigns]" \
             "campaignsAnalytics[Get campaign analytics]" \
             "campaignsCreate[Create campaigns]" \
             "campaignsGet[Get campaign]" \
             "campaignsList[List campaigns]" \
-            "campaignsUpdate[Update campaigns]"             "catalogsCreate[Create catalog]" \
-            "catalogsList[List catalogs]" \
-            "catalogsProductGroupPinsList[List products by product group]" \
+            "campaignsUpdate[Update campaigns]"             "feedProcessingResultsList[List feed processing results]" \
+            "feedsCreate[Create feed]" \
+            "feedsDelete[Delete feed]" \
+            "feedsGet[Get feed]" \
+            "feedsIngest[Ingest feed items]" \
+            "feedsList[List feeds]" \
+            "feedsUpdate[Update feed]" \
+            "itemsIssuesList[List item issues]"             "itemsBatchGet[Get item batch status]" \
+            "itemsBatchPost[Operate on item batch]" \
+            "itemsPost[Get catalogs items (POST)]"             "catalogsProductGroupPinsList[List products by product group]" \
             "catalogsProductGroupsCreate[Create product group]" \
             "catalogsProductGroupsCreateMany[Create product groups]" \
             "catalogsProductGroupsDelete[Delete product group]" \
@@ -390,26 +404,17 @@ case $state in
             "catalogsProductGroupsList[List product groups]" \
             "catalogsProductGroupsProductCountsGet[Get product counts]" \
             "catalogsProductGroupsUpdate[Update single product group]" \
-            "feedProcessingResultsList[List feed processing results]" \
-            "feedsCreate[Create feed]" \
-            "feedsDelete[Delete feed]" \
-            "feedsGet[Get feed]" \
-            "feedsIngest[Ingest feed items]" \
-            "feedsList[List feeds]" \
-            "feedsUpdate[Update feed]" \
-            "itemsBatchGet[Get item batch status]" \
-            "itemsBatchPost[Operate on item batch]" \
-            "itemsGet[Get catalogs items]" \
-            "itemsIssuesList[List item issues]" \
-            "itemsPost[Get catalogs items (POST)]" \
-            "productsByProductGroupFilterList[List products by filter]" \
-            "reportsCreate[Build catalogs report]" \
+            "productsByProductGroupFilterList[List products by filter]"             "reportsCreate[Build catalogs report]" \
             "reportsGet[Get catalogs report]" \
-            "reportsStats[List report stats]"             "eventsCreate[Send conversions]"             "conversionTagsCreate[Create conversion tag]" \
+            "reportsStats[List report stats]"             "catalogsAvailableFilterValues[List available filter values]" \
+            "catalogsCreate[Create catalog]" \
+            "catalogsList[List catalogs]"             "conversionEqsList[Get event quality score (EQS)]"             "eventsCreate[Send conversions]"             "conversionTagsCreate[Create conversion tag]" \
             "conversionTagsGet[Get conversion tag]" \
-            "conversionTagsList[Get conversion tags]" \
+            "conversionTagsList[List conversion tags]" \
             "ocpmEligibleConversionTagsGet[Get Ocpm eligible conversion tags]" \
-            "pageVisitConversionTagsGet[Get page visit conversion tags]"             "customerListsCreate[Create customer lists]" \
+            "pageVisitConversionTagsGet[Get page visit conversion tags]"             "advertiserDefinedEventsGet[Get advertiser defined events]"             "customerListUploadsCreate[Create customer list upload]" \
+            "customerListUploadsGet[Get customer list upload]" \
+            "customerListUploadsRun[Run customer list upload]"             "customerListsCreate[Create customer lists]" \
             "customerListsGet[Get customer list]" \
             "customerListsList[Get customer lists]" \
             "customerListsUpdate[Update customer list]"             "integrationsCommerceDel[Delete commerce integration]" \
@@ -422,8 +427,10 @@ case $state in
             "keywordsCreate[Create keywords]" \
             "keywordsGet[Get keywords]" \
             "keywordsUpdate[Update keywords]" \
-            "trendingKeywordsList[List trending keywords]"             "adAccountsSubscriptionsDelById[Delete lead ads subscription]" \
-            "adAccountsSubscriptionsGetById[Get lead ads subscription]" \
+            "trendingKeywordsList[List trending keywords]"             "labelsCreate[Create labels]" \
+            "labelsList[List labels]" \
+            "labelsUpdate[Update labels]"             "adAccountsSubscriptionsDelById[Delete lead ads subscription]" \
+            "adAccountsSubscriptionsGetById[Get lead ads subscription by ID]" \
             "adAccountsSubscriptionsGetList[Get lead ads subscriptions]" \
             "adAccountsSubscriptionsPost[Create lead ads subscription]"             "leadFormGet[Get lead form by id]" \
             "leadFormTestCreate[Create lead form test data]" \
@@ -432,7 +439,9 @@ case $state in
             "leadFormsUpdate[Update lead forms]"             "leadsExportCreate[Create a request to export leads collected from a lead ad]" \
             "leadsExportGet[Get the lead export from the lead export create call]"             "mediaCreate[Register media upload]" \
             "mediaGet[Get media upload details]" \
-            "mediaList[List media uploads]"             "oauthToken[Generate OAuth access token]"             "orderLinesGet[Get order line]" \
+            "mediaList[List media uploads]"             "msotEventsCreate[Send Measurement Source Of Truth (MSOT) attributed conversion events]"             "notificationPost[Receive notifications from external partners.]"             "oauthConversionToken[Generate OAuth access token for conversion API]" \
+            "oauthToken[Generate OAuth access token]" \
+            "tokenRevoke[Revoke a token]"             "orderLinesGet[Get order line]" \
             "orderLinesList[Get order lines]"             "multiPinsAnalytics[Get multiple Pin analytics]" \
             "pinsAnalytics[Get Pin analytics]" \
             "pinsCreate[Create Pin]" \
@@ -440,11 +449,17 @@ case $state in
             "pinsGet[Get Pin]" \
             "pinsList[List Pins]" \
             "pinsSave[Save Pin]" \
-            "pinsUpdate[Update Pin]"             "productGroupPromotionsCreate[Create product group promotions]" \
+            "pinsUpdate[Update Pin]"             "trendsFeaturedTopicsList[Get featured topics]" \
+            "trendsProductCategoriesDetailsList[Get product category details]" \
+            "trendsProductCategoriesTrendingList[Get a list of growing Shopping Product Categories]"             "productGroupPromotionsCreate[Create product group promotions]" \
             "productGroupPromotionsGet[Get a product group promotion by id]" \
             "productGroupPromotionsList[Get product group promotions]" \
             "productGroupPromotionsUpdate[Update product group promotions]" \
-            "productGroupsAnalytics[Get product group analytics]"             "adAccountCountriesGet[Get ad accounts countries]" \
+            "productGroupsAnalytics[Get product group analytics]"             "promotionsCreate[Create promotions]" \
+            "promotionsDelete[Delete promotion by id]" \
+            "promotionsGet[Get promotion by id]" \
+            "promotionsList[Get promotions]" \
+            "promotionsUpdate[Update promotions]"             "adAccountCountriesGet[Get ad accounts countries]" \
             "deliveryMetricsGet[Get available metrics' definitions]" \
             "interestTargetingOptionsGet[Get interest details]" \
             "leadFormQuestionsGet[Get lead form questions]" \
@@ -484,9 +499,10 @@ case $state in
 "columns=:[QUERY] Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned"
 "granularity=:[QUERY] TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly"
 "click_window_days=:[QUERY] Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days."
-"engagement_window_days=:[QUERY] Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days."
+"engagement_window_days=:[QUERY] Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;."
 "view_window_days=:[QUERY] Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;1&#39; day."
 "conversion_report_time=:[QUERY] The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event."
+"reporting_timezone=:[QUERY] Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
@@ -500,10 +516,11 @@ case $state in
 "columns=:[QUERY] Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned"
 "granularity=:[QUERY] TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly"
 "click_window_days=:[QUERY] Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days."
-"engagement_window_days=:[QUERY] Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days."
+"engagement_window_days=:[QUERY] Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;."
 "view_window_days=:[QUERY] Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;1&#39; day."
 "conversion_report_time=:[QUERY] The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event."
 "attribution_types=:[QUERY] List of types of attribution for the conversion report"
+"reporting_timezone=:[QUERY] Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
@@ -516,18 +533,26 @@ case $state in
       adAccountsGet)
         local -a _op_arguments
         _op_arguments=(
-          "ad_account_id=:[PATH] Unique identifier of an ad account."
+          "ad_account_id=:[PATH] "
                     )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
       adAccountsList)
         local -a _op_arguments
         _op_arguments=(
-                    "bookmark=:[QUERY] Cursor used to fetch the next page of items"
-"page_size=:[QUERY] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information."
-"include_shared_accounts=true:[QUERY] Include shared ad accounts"
+                    "include_shared_accounts=true:[QUERY] Include shared ad accounts"
           "include_shared_accounts=false:[QUERY] Include shared ad accounts"
+"bookmark=:[QUERY] Cursor used to fetch the next page of items"
+"page_size=:[QUERY] Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information."
           )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      analyticsCreateConversionProductReport)
+        local -a _op_arguments
+        _op_arguments=(
+          "ad_account_id=:[PATH] Unique identifier of an ad account."
+                    )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
       analyticsCreateMmmReport)
@@ -547,11 +572,27 @@ case $state in
       analyticsCreateTemplateReport)
         local -a _op_arguments
         _op_arguments=(
-          "ad_account_id=:[PATH] Unique identifier of an ad account."
+          "ad_account_id=:[PATH] "
 "template_id=:[PATH] Unique identifier of a template."
           "start_date=:[QUERY] Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years back from today."
 "end_date=:[QUERY] Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years past start date."
-"granularity=:[QUERY] TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly"
+"granularity=:[QUERY] TOTAL - metrics are aggregated over the specified date range.
+
+  DAY - metrics are broken down daily.
+
+  HOUR - metrics are broken down hourly.
+
+  WEEKLY - metrics are broken down weekly.
+
+  MONTHLY - metrics are broken down monthly"
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      analyticsGetConversionProductReport)
+        local -a _op_arguments
+        _op_arguments=(
+          "ad_account_id=:[PATH] Unique identifier of an ad account."
+          "token=:[QUERY] Token returned from the post request creation call"
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
@@ -600,9 +641,12 @@ items."
 "columns=:[QUERY] Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned"
 "granularity=:[QUERY] TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly"
 "click_window_days=:[QUERY] Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days."
-"engagement_window_days=:[QUERY] Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days."
+"engagement_window_days=:[QUERY] Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;."
 "view_window_days=:[QUERY] Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;1&#39; day."
 "conversion_report_time=:[QUERY] The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event."
+"aggregate_report_rows=true:[QUERY] Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users."
+          "aggregate_report_rows=false:[QUERY] Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users."
+"reporting_timezone=:[QUERY] Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
@@ -659,14 +703,15 @@ items."
           "ad_group_ids=:[QUERY] List of Ad group Ids to use to filter the results."
 "start_date=:[QUERY] Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today."
 "end_date=:[QUERY] Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date."
-"targeting_types=:[QUERY] Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users."
+"targeting_types=:[QUERY] Targeting type breakdowns for the report. The reporting per targeting type &lt;br&gt; is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;, \&quot;CREATIVE_ENHANCEMENTS\&quot;] are in BETA and not yet available to all users."
 "columns=:[QUERY] Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned"
 "granularity=:[QUERY] TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly"
 "click_window_days=:[QUERY] Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days."
-"engagement_window_days=:[QUERY] Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days."
+"engagement_window_days=:[QUERY] Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;."
 "view_window_days=:[QUERY] Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;1&#39; day."
 "conversion_report_time=:[QUERY] The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event."
 "attribution_types=:[QUERY] List of types of attribution for the conversion report"
+"reporting_timezone=:[QUERY] Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
@@ -695,10 +740,11 @@ items."
 "columns=:[QUERY] Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned"
 "granularity=:[QUERY] TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly"
 "click_window_days=:[QUERY] Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days."
-"engagement_window_days=:[QUERY] Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days."
+"engagement_window_days=:[QUERY] Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;."
 "view_window_days=:[QUERY] Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;1&#39; day."
 "conversion_report_time=:[QUERY] The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event."
 "attribution_types=:[QUERY] List of types of attribution for the conversion report"
+"reporting_timezone=:[QUERY] Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
@@ -712,11 +758,12 @@ items."
 "columns=:[QUERY] Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned"
 "granularity=:[QUERY] TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly"
 "click_window_days=:[QUERY] Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days."
-"engagement_window_days=:[QUERY] Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days."
+"engagement_window_days=:[QUERY] Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;."
 "view_window_days=:[QUERY] Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;1&#39; day."
 "conversion_report_time=:[QUERY] The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event."
 "pin_ids=:[QUERY] List of Pin IDs."
 "campaign_ids=:[QUERY] List of Campaign Ids to use to filter the results."
+"reporting_timezone=:[QUERY] Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
@@ -856,13 +903,6 @@ items."
                     )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
-      audiencesCreateCustom)
-        local -a _op_arguments
-        _op_arguments=(
-          "ad_account_id=:[PATH] Unique identifier of an ad account."
-                    )
-        _describe -t actions 'operations' _op_arguments -S '' && ret=0
-        ;;
       audiencesGet)
         local -a _op_arguments
         _op_arguments=(
@@ -905,6 +945,31 @@ Note that higher-value IDs are associated with more-recently added items."
           "ad_account_id=:[PATH] Unique identifier of an ad account."
           "bookmark=:[QUERY] Cursor used to fetch the next page of items"
 "page_size=:[QUERY] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information."
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      billingInvoiceDownloadGet)
+        local -a _op_arguments
+        _op_arguments=(
+          "ad_account_id=:[PATH] Unique identifier of an ad account."
+"billing_invoice_id=:[PATH] Unique identifier of a billing invoice."
+                    )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      billingInvoicesGet)
+        local -a _op_arguments
+        _op_arguments=(
+          "ad_account_id=:[PATH] Unique identifier of an ad account."
+          "bookmark=:[QUERY] Cursor used to fetch the next page of items"
+"page_size=:[QUERY] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information."
+"sort=:[QUERY] Field of which to sort billing invoices"
+"order=:[QUERY] The order in which to sort the items returned: “ASCENDING” or “DESCENDING”
+by ID. Note that higher-value IDs are associated with more-recently added
+items."
+"status=:[QUERY] Status of billing invoices to filter by"
+"document_type=:[QUERY] Document type of billing invoices to filter by"
+"start_due_date=:[QUERY] Starting point for due dates when searching for invoices. Format: YYYY-MM-DD"
+"end_due_date=:[QUERY] Ending point for due dates when searching for invoices. Format: YYYY-MM-DD"
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
@@ -1024,7 +1089,7 @@ Note that higher-value IDs are associated with more-recently added items."
       boardsDelete)
         local -a _op_arguments
         _op_arguments=(
-          "board_id=:[PATH] Unique identifier of a board."
+          "board_id=:[PATH] "
           "ad_account_id=:[QUERY] Unique identifier of an ad account."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
@@ -1032,7 +1097,7 @@ Note that higher-value IDs are associated with more-recently added items."
       boardsGet)
         local -a _op_arguments
         _op_arguments=(
-          "board_id=:[PATH] Unique identifier of a board."
+          "board_id=:[PATH] "
           "ad_account_id=:[QUERY] Unique identifier of an ad account."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
@@ -1041,9 +1106,10 @@ Note that higher-value IDs are associated with more-recently added items."
         local -a _op_arguments
         _op_arguments=(
                     "ad_account_id=:[QUERY] Unique identifier of an ad account."
+"privacy=:[QUERY] The privacy level of the board"
 "bookmark=:[QUERY] Cursor used to fetch the next page of items"
-"page_size=:[QUERY] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information."
-"privacy=:[QUERY] Privacy setting for a board."
+"page_size=:[QUERY] Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
@@ -1053,17 +1119,25 @@ Note that higher-value IDs are associated with more-recently added items."
           "board_id=:[PATH] Unique identifier of a board."
           "bookmark=:[QUERY] Cursor used to fetch the next page of items"
 "page_size=:[QUERY] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information."
-"creative_types=:[QUERY] Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead."
+"creative_types=:[QUERY] Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead."
 "ad_account_id=:[QUERY] Unique identifier of an ad account."
-"pin_metrics=true:[QUERY] Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then."
-          "pin_metrics=false:[QUERY] Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then."
+"pin_metrics=true:[QUERY] Specify whether to return 90d and lifetime Pin metrics. Total comments
+and total reactions are only available with lifetime Pin metrics. If Pin was
+created before &#39;2023-03-20&#39; lifetime metrics will only be available
+for Video and Idea Pin formats. Lifetime metrics are available for all Pin
+formats since then."
+          "pin_metrics=false:[QUERY] Specify whether to return 90d and lifetime Pin metrics. Total comments
+and total reactions are only available with lifetime Pin metrics. If Pin was
+created before &#39;2023-03-20&#39; lifetime metrics will only be available
+for Video and Idea Pin formats. Lifetime metrics are available for all Pin
+formats since then."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
       boardsUpdate)
         local -a _op_arguments
         _op_arguments=(
-          "board_id=:[PATH] Unique identifier of a board."
+          "board_id=:[PATH] "
           "ad_account_id=:[QUERY] Unique identifier of an ad account."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
@@ -1118,7 +1192,9 @@ Note that higher-value IDs are associated with more-recently added items."
         _op_arguments=(
           "business_id=:[PATH] Unique identifier of the requesting business."
 "asset_id=:[PATH] Unique identifier of a business asset."
-          "bookmark=:[QUERY] Cursor used to fetch the next page of items"
+          "fetch_system_users=true:[QUERY] Fetches system users if True. Fetches regular user employees if False."
+          "fetch_system_users=false:[QUERY] Fetches system users if True. Fetches regular user employees if False."
+"bookmark=:[QUERY] Cursor used to fetch the next page of items"
 "page_size=:[QUERY] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information."
 "start_index=:[QUERY] An index to start fetching the results from. Only the results starting from this index will be returned."
           )
@@ -1214,7 +1290,7 @@ If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you h
       cancelInvitesOrRequests)
         local -a _op_arguments
         _op_arguments=(
-          "business_id=:[PATH] Business id"
+          "business_id=:[PATH] Unique identifier of the requesting business."
                     )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
@@ -1228,7 +1304,7 @@ If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you h
       createMembershipOrPartnershipInvites)
         local -a _op_arguments
         _op_arguments=(
-          "business_id=:[PATH] Business id"
+          "business_id=:[PATH] Unique identifier of the requesting business."
                     )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
@@ -1249,6 +1325,21 @@ If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you h
         local -a _op_arguments
         _op_arguments=(
                               )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      brandAccountsCreate)
+        local -a _op_arguments
+        _op_arguments=(
+          "business_hierarchy_id=:[PATH] business hierarchy node id"
+                    )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      brandAccountsUpdate)
+        local -a _op_arguments
+        _op_arguments=(
+          "business_hierarchy_id=:[PATH] business hierarchy node id"
+"brand_account_id=:[PATH] Unique identifier of a brand account."
+                    )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
       deleteBusinessMembership)
@@ -1277,7 +1368,9 @@ If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you h
         local -a _op_arguments
         _op_arguments=(
           "business_id=:[PATH] Unique identifier of the requesting business."
-          "assets_summary=true:[QUERY] Include assets summary in the response if this is true.
+          "fetch_system_users=true:[QUERY] Fetches system users if True. Fetches regular user employees if False."
+          "fetch_system_users=false:[QUERY] Fetches system users if True. Fetches regular user employees if False."
+"assets_summary=true:[QUERY] Include assets summary in the response if this is true.
 
 The assets summary returns a dictionary representing a summary of the assets
 for the business user ID, with information like the ad accounts and profiles
@@ -1319,11 +1412,36 @@ If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you h
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
+      systemUserUpdate)
+        local -a _op_arguments
+        _op_arguments=(
+          "business_id=:[PATH] Unique identifier of the requesting business."
+"system_user_id=:[PATH] Unique identifier of a system user."
+                    )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
       updateBusinessMemberships)
         local -a _op_arguments
         _op_arguments=(
           "business_id=:[PATH] Business id"
                     )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      adPinsAnalytics)
+        local -a _op_arguments
+        _op_arguments=(
+          "ad_account_id=:[PATH] Unique identifier of an ad account."
+          "campaign_id=:[QUERY] Campaign Id to use to filter the results."
+"pin_ids=:[QUERY] List of Pin IDs."
+"start_date=:[QUERY] Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today."
+"end_date=:[QUERY] Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date."
+"columns=:[QUERY] Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned"
+"granularity=:[QUERY] TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly"
+"click_window_days=:[QUERY] Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days."
+"engagement_window_days=:[QUERY] Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;."
+"view_window_days=:[QUERY] Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;1&#39; day."
+"conversion_report_time=:[QUERY] The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event."
+          )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
       campaignTargetingAnalyticsGet)
@@ -1337,10 +1455,11 @@ If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you h
 "columns=:[QUERY] Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned"
 "granularity=:[QUERY] TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly"
 "click_window_days=:[QUERY] Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days."
-"engagement_window_days=:[QUERY] Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days."
+"engagement_window_days=:[QUERY] Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;."
 "view_window_days=:[QUERY] Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;1&#39; day."
 "conversion_report_time=:[QUERY] The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event."
 "attribution_types=:[QUERY] List of types of attribution for the conversion report"
+"reporting_timezone=:[QUERY] Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
@@ -1354,9 +1473,12 @@ If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you h
 "columns=:[QUERY] Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned"
 "granularity=:[QUERY] TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly"
 "click_window_days=:[QUERY] Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days."
-"engagement_window_days=:[QUERY] Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days."
+"engagement_window_days=:[QUERY] Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;."
 "view_window_days=:[QUERY] Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;1&#39; day."
 "conversion_report_time=:[QUERY] The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event."
+"aggregate_report_rows=true:[QUERY] Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users."
+          "aggregate_report_rows=false:[QUERY] Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users."
+"reporting_timezone=:[QUERY] Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
@@ -1396,19 +1518,96 @@ items."
                     )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
-      catalogsCreate)
+      feedProcessingResultsList)
+        local -a _op_arguments
+        _op_arguments=(
+          "feed_id=:[PATH] Unique identifier of a feed"
+          "bookmark=:[QUERY] Cursor used to fetch the next page of items"
+"page_size=:[QUERY] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information."
+"ad_account_id=:[QUERY] Unique identifier of an ad account."
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      feedsCreate)
         local -a _op_arguments
         _op_arguments=(
                     "ad_account_id=:[QUERY] Unique identifier of an ad account."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
-      catalogsList)
+      feedsDelete)
+        local -a _op_arguments
+        _op_arguments=(
+          "feed_id=:[PATH] Unique identifier of a feed"
+          "ad_account_id=:[QUERY] Unique identifier of an ad account."
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      feedsGet)
+        local -a _op_arguments
+        _op_arguments=(
+          "feed_id=:[PATH] Unique identifier of a feed"
+          "ad_account_id=:[QUERY] Unique identifier of an ad account."
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      feedsIngest)
+        local -a _op_arguments
+        _op_arguments=(
+          "feed_id=:[PATH] Unique identifier of a feed"
+          "ad_account_id=:[QUERY] Unique identifier of an ad account."
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      feedsList)
         local -a _op_arguments
         _op_arguments=(
                     "bookmark=:[QUERY] Cursor used to fetch the next page of items"
 "page_size=:[QUERY] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information."
+"catalog_id=:[QUERY] Filter entities for a given catalog_id. If not given, all catalogs are considered."
 "ad_account_id=:[QUERY] Unique identifier of an ad account."
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      feedsUpdate)
+        local -a _op_arguments
+        _op_arguments=(
+          "feed_id=:[PATH] Unique identifier of a feed"
+          "ad_account_id=:[QUERY] Unique identifier of an ad account."
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      itemsIssuesList)
+        local -a _op_arguments
+        _op_arguments=(
+          "processing_result_id=:[PATH] Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list)."
+          "bookmark=:[QUERY] Cursor used to fetch the next page of items"
+"page_size=:[QUERY] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information."
+"item_numbers=:[QUERY] Item number based on order of appearance in the Catalogs Feed. For example, &#39;0&#39; refers to first item found in a feed that was downloaded from a &#39;location&#39; specified during feed creation."
+"item_validation_issue=:[QUERY] Filter item validation issues that have a given type of item validation issue."
+"ad_account_id=:[QUERY] Unique identifier of an ad account."
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      itemsBatchGet)
+        local -a _op_arguments
+        _op_arguments=(
+          "batch_id=:[PATH] Id of a catalogs items batch to fetch"
+          "ad_account_id=:[QUERY] Unique identifier of an ad account."
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      itemsBatchPost)
+        local -a _op_arguments
+        _op_arguments=(
+                    "ad_account_id=:[QUERY] Unique identifier of an ad account."
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      itemsPost)
+        local -a _op_arguments
+        _op_arguments=(
+                    "ad_account_id=:[QUERY] Unique identifier of an ad account."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
@@ -1419,8 +1618,16 @@ items."
           "bookmark=:[QUERY] Cursor used to fetch the next page of items"
 "page_size=:[QUERY] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information."
 "ad_account_id=:[QUERY] Unique identifier of an ad account."
-"pin_metrics=true:[QUERY] Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then."
-          "pin_metrics=false:[QUERY] Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then."
+"pin_metrics=true:[QUERY] Specify whether to return 90d and lifetime Pin metrics. Total comments
+and total reactions are only available with lifetime Pin metrics. If Pin was
+created before &#39;2023-03-20&#39; lifetime metrics will only be available
+for Video and Idea Pin formats. Lifetime metrics are available for all Pin
+formats since then."
+          "pin_metrics=false:[QUERY] Specify whether to return 90d and lifetime Pin metrics. Total comments
+and total reactions are only available with lifetime Pin metrics. If Pin was
+created before &#39;2023-03-20&#39; lifetime metrics will only be available
+for Video and Idea Pin formats. Lifetime metrics are available for all Pin
+formats since then."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
@@ -1490,118 +1697,22 @@ items."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
-      feedProcessingResultsList)
-        local -a _op_arguments
-        _op_arguments=(
-          "feed_id=:[PATH] Unique identifier of a feed"
-          "bookmark=:[QUERY] Cursor used to fetch the next page of items"
-"page_size=:[QUERY] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information."
-"ad_account_id=:[QUERY] Unique identifier of an ad account."
-          )
-        _describe -t actions 'operations' _op_arguments -S '' && ret=0
-        ;;
-      feedsCreate)
-        local -a _op_arguments
-        _op_arguments=(
-                    "ad_account_id=:[QUERY] Unique identifier of an ad account."
-          )
-        _describe -t actions 'operations' _op_arguments -S '' && ret=0
-        ;;
-      feedsDelete)
-        local -a _op_arguments
-        _op_arguments=(
-          "feed_id=:[PATH] Unique identifier of a feed"
-          "ad_account_id=:[QUERY] Unique identifier of an ad account."
-          )
-        _describe -t actions 'operations' _op_arguments -S '' && ret=0
-        ;;
-      feedsGet)
-        local -a _op_arguments
-        _op_arguments=(
-          "feed_id=:[PATH] Unique identifier of a feed"
-          "ad_account_id=:[QUERY] Unique identifier of an ad account."
-          )
-        _describe -t actions 'operations' _op_arguments -S '' && ret=0
-        ;;
-      feedsIngest)
-        local -a _op_arguments
-        _op_arguments=(
-          "feed_id=:[PATH] Unique identifier of a feed"
-          "ad_account_id=:[QUERY] Unique identifier of an ad account."
-          )
-        _describe -t actions 'operations' _op_arguments -S '' && ret=0
-        ;;
-      feedsList)
-        local -a _op_arguments
-        _op_arguments=(
-                    "bookmark=:[QUERY] Cursor used to fetch the next page of items"
-"page_size=:[QUERY] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information."
-"catalog_id=:[QUERY] Filter entities for a given catalog_id. If not given, all catalogs are considered."
-"ad_account_id=:[QUERY] Unique identifier of an ad account."
-          )
-        _describe -t actions 'operations' _op_arguments -S '' && ret=0
-        ;;
-      feedsUpdate)
-        local -a _op_arguments
-        _op_arguments=(
-          "feed_id=:[PATH] Unique identifier of a feed"
-          "ad_account_id=:[QUERY] Unique identifier of an ad account."
-          )
-        _describe -t actions 'operations' _op_arguments -S '' && ret=0
-        ;;
-      itemsBatchGet)
-        local -a _op_arguments
-        _op_arguments=(
-          "batch_id=:[PATH] Id of a catalogs items batch to fetch"
-          "ad_account_id=:[QUERY] Unique identifier of an ad account."
-          )
-        _describe -t actions 'operations' _op_arguments -S '' && ret=0
-        ;;
-      itemsBatchPost)
-        local -a _op_arguments
-        _op_arguments=(
-                    "ad_account_id=:[QUERY] Unique identifier of an ad account."
-          )
-        _describe -t actions 'operations' _op_arguments -S '' && ret=0
-        ;;
-      itemsGet)
-        local -a _op_arguments
-        _op_arguments=(
-                    "ad_account_id=:[QUERY] Unique identifier of an ad account."
-"country=:[QUERY] Country for the Catalogs Items"
-"language=:[QUERY] Language for the Catalogs Items"
-"item_ids=:[QUERY] This parameter is deprecated. Use filters instead."
-"filters=:[QUERY] Identifies items to be retrieved. This is a required parameter."
-          )
-        _describe -t actions 'operations' _op_arguments -S '' && ret=0
-        ;;
-      itemsIssuesList)
-        local -a _op_arguments
-        _op_arguments=(
-          "processing_result_id=:[PATH] Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list)."
-          "bookmark=:[QUERY] Cursor used to fetch the next page of items"
-"page_size=:[QUERY] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information."
-"item_numbers=:[QUERY] Item number based on order of appearance in the Catalogs Feed. For example, &#39;0&#39; refers to first item found in a feed that was downloaded from a &#39;location&#39; specified during feed creation."
-"item_validation_issue=:[QUERY] Filter item validation issues that have a given type of item validation issue."
-"ad_account_id=:[QUERY] Unique identifier of an ad account."
-          )
-        _describe -t actions 'operations' _op_arguments -S '' && ret=0
-        ;;
-      itemsPost)
-        local -a _op_arguments
-        _op_arguments=(
-                    "ad_account_id=:[QUERY] Unique identifier of an ad account."
-          )
-        _describe -t actions 'operations' _op_arguments -S '' && ret=0
-        ;;
       productsByProductGroupFilterList)
         local -a _op_arguments
         _op_arguments=(
                     "bookmark=:[QUERY] Cursor used to fetch the next page of items"
 "page_size=:[QUERY] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information."
 "ad_account_id=:[QUERY] Unique identifier of an ad account."
-"pin_metrics=true:[QUERY] Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then."
-          "pin_metrics=false:[QUERY] Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then."
+"pin_metrics=true:[QUERY] Specify whether to return 90d and lifetime Pin metrics. Total comments
+and total reactions are only available with lifetime Pin metrics. If Pin was
+created before &#39;2023-03-20&#39; lifetime metrics will only be available
+for Video and Idea Pin formats. Lifetime metrics are available for all Pin
+formats since then."
+          "pin_metrics=false:[QUERY] Specify whether to return 90d and lifetime Pin metrics. Total comments
+and total reactions are only available with lifetime Pin metrics. If Pin was
+created before &#39;2023-03-20&#39; lifetime metrics will only be available
+for Video and Idea Pin formats. Lifetime metrics are available for all Pin
+formats since then."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
@@ -1627,6 +1738,43 @@ items."
 "page_size=:[QUERY] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information."
 "bookmark=:[QUERY] Cursor used to fetch the next page of items"
 "parameters=:[QUERY] Contains the parameters for report identification."
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      catalogsAvailableFilterValues)
+        local -a _op_arguments
+        _op_arguments=(
+                    "catalog_id=:[QUERY] Filter entities for a given catalog_id."
+"feed_id=:[QUERY] Filter entities for a given feed_id. If not given, all feeds are considered."
+"country=:[QUERY] Country for the Catalogs Items"
+"language=:[QUERY] Language for the Catalogs Items"
+"ad_account_id=:[QUERY] Unique identifier of an ad account."
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      catalogsCreate)
+        local -a _op_arguments
+        _op_arguments=(
+                    "ad_account_id=:[QUERY] Unique identifier of an ad account."
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      catalogsList)
+        local -a _op_arguments
+        _op_arguments=(
+                    "bookmark=:[QUERY] Cursor used to fetch the next page of items"
+"page_size=:[QUERY] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information."
+"ad_account_id=:[QUERY] Unique identifier of an ad account."
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      conversionEqsList)
+        local -a _op_arguments
+        _op_arguments=(
+          "ad_account_id=:[PATH] Unique identifier of an ad account."
+          "lookback_period=:[QUERY] Lookback window (number of days)."
+"source_platform=:[QUERY] Source platform of event."
+"ingestion_source=:[QUERY] Ingestion source of event."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
@@ -1660,8 +1808,8 @@ Warning: If you use this query parameter, be certain that it is off (set to fals
         local -a _op_arguments
         _op_arguments=(
           "ad_account_id=:[PATH] Unique identifier of an ad account."
-          "filter_deleted=true:[QUERY] Filter out deleted tags."
-          "filter_deleted=false:[QUERY] Filter out deleted tags."
+          "filter_deleted=true:[QUERY] Filter by deleted status"
+          "filter_deleted=false:[QUERY] Filter by deleted status"
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
@@ -1682,6 +1830,39 @@ by ID. Note that higher-value IDs are associated with more-recently added
 items."
 "bookmark=:[QUERY] Cursor used to fetch the next page of items"
           )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      advertiserDefinedEventsGet)
+        local -a _op_arguments
+        _op_arguments=(
+          "ad_account_id=:[PATH] Unique identifier of an ad account."
+                    )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      customerListUploadsCreate)
+        local -a _op_arguments
+        _op_arguments=(
+          "ad_account_id=:[PATH] Unique identifier of an ad account."
+"customer_list_id=:[PATH] Unique identifier of a customer list"
+                    )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      customerListUploadsGet)
+        local -a _op_arguments
+        _op_arguments=(
+          "ad_account_id=:[PATH] Unique identifier of an ad account."
+"customer_list_id=:[PATH] Unique identifier of a customer list"
+"customer_list_upload_id=:[PATH] Unique identifier of a customer list upload"
+                    )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      customerListUploadsRun)
+        local -a _op_arguments
+        _op_arguments=(
+          "ad_account_id=:[PATH] Unique identifier of an ad account."
+"customer_list_id=:[PATH] Unique identifier of a customer list"
+"customer_list_upload_id=:[PATH] Unique identifier of a customer list upload"
+                    )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
       customerListsCreate)
@@ -1789,8 +1970,9 @@ items."
           "ad_account_id=:[PATH] Unique identifier of an ad account."
           "campaign_id=:[QUERY] Campaign Id to use to filter the results."
 "ad_group_id=:[QUERY] Ad group Id."
+"ad_group_ids=:[QUERY] List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users."
 "match_types=:[QUERY] Keyword &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot;&gt;match type&lt;/a&gt;"
-"page_size=:[QUERY] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information."
+"page_size=:[QUERY] Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information."
 "bookmark=:[QUERY] Cursor used to fetch the next page of items"
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
@@ -1871,7 +2053,46 @@ If set to &#39;true&#39;, the data will be normalized as a group.  The peak sear
 By default (&#39;false&#39;), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword&#39;s time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.&lt;br /&gt;
 If set to &#39;true&#39;, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords."
 "limit=:[QUERY] The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a &#39;limit&#39; of 50 will return the top 50 trends."
+"include_prediction=true:[QUERY] &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;
+Including predicted weekly search volume data for the next 90 days.
+By default (&#39;false&#39;), the response will not include predicted data."
+          "include_prediction=false:[QUERY] &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;
+Including predicted weekly search volume data for the next 90 days.
+By default (&#39;false&#39;), the response will not include predicted data."
+"include_demographics=true:[QUERY] &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;
+Including the age and gender distribution for each keyword.
+By default (&#39;false&#39;), the response will not include demographics data."
+          "include_demographics=false:[QUERY] &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;
+Including the age and gender distribution for each keyword.
+By default (&#39;false&#39;), the response will not include demographics data."
           )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      labelsCreate)
+        local -a _op_arguments
+        _op_arguments=(
+          "ad_account_id=:[PATH] Unique identifier of an ad account."
+                    )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      labelsList)
+        local -a _op_arguments
+        _op_arguments=(
+          "ad_account_id=:[PATH] Unique identifier of an ad account."
+          "campaign_ids=:[QUERY] List of Campaign Ids to use to filter the results."
+"label_ids=:[QUERY] List of Label Ids to use to filter the results."
+"entity_statuses=:[QUERY] Label entity status"
+"label_types=:[QUERY] Label type."
+"page_size=:[QUERY] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information."
+"bookmark=:[QUERY] Cursor used to fetch the next page of items"
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      labelsUpdate)
+        local -a _op_arguments
+        _op_arguments=(
+          "ad_account_id=:[PATH] Unique identifier of an ad account."
+                    )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
       adAccountsSubscriptionsDelById)
@@ -1894,8 +2115,9 @@ If set to &#39;true&#39;, the data will be normalized as a group.  The peak sear
         local -a _op_arguments
         _op_arguments=(
           "ad_account_id=:[PATH] Unique identifier of an ad account."
-          "page_size=:[QUERY] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information."
-"bookmark=:[QUERY] Cursor used to fetch the next page of items"
+          "bookmark=:[QUERY] Cursor used to fetch the next page of items"
+"page_size=:[QUERY] Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
@@ -1972,7 +2194,8 @@ items."
       mediaGet)
         local -a _op_arguments
         _op_arguments=(
-          "media_id=:[PATH] Media identifier"
+          "media_id=:[PATH] Unique identifier for this media upload. Used to track status
+and for attaching during Pin creation."
                     )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
@@ -1980,11 +2203,37 @@ items."
         local -a _op_arguments
         _op_arguments=(
                     "bookmark=:[QUERY] Cursor used to fetch the next page of items"
-"page_size=:[QUERY] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information."
+"page_size=:[QUERY] Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
+      msotEventsCreate)
+        local -a _op_arguments
+        _op_arguments=(
+          "ad_account_id=:[PATH] Unique identifier of an ad account."
+                    )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      notificationPost)
+        local -a _op_arguments
+        _op_arguments=(
+                              )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      oauthConversionToken)
+        local -a _op_arguments
+        _op_arguments=(
+                              )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
       oauthToken)
+        local -a _op_arguments
+        _op_arguments=(
+                              )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      tokenRevoke)
         local -a _op_arguments
         _op_arguments=(
                               )
@@ -2045,7 +2294,7 @@ items."
       pinsDelete)
         local -a _op_arguments
         _op_arguments=(
-          "pin_id=:[PATH] Unique identifier of a Pin."
+          "pin_id=:[PATH] "
           "ad_account_id=:[QUERY] Unique identifier of an ad account."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
@@ -2053,26 +2302,43 @@ items."
       pinsGet)
         local -a _op_arguments
         _op_arguments=(
-          "pin_id=:[PATH] Unique identifier of a Pin."
-          "pin_metrics=true:[QUERY] Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then."
-          "pin_metrics=false:[QUERY] Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then."
-"ad_account_id=:[QUERY] Unique identifier of an ad account."
+          "pin_id=:[PATH] "
+          "ad_account_id=:[QUERY] Unique identifier of an ad account."
+"pin_metrics=true:[QUERY] Specify whether to return 90d and lifetime Pin metrics. Total comments
+and total reactions are only available with lifetime Pin metrics. If Pin was
+created before &#39;2023-03-20&#39; lifetime metrics will only be available
+for Video and Idea Pin formats. Lifetime metrics are available for all Pin
+formats since then."
+          "pin_metrics=false:[QUERY] Specify whether to return 90d and lifetime Pin metrics. Total comments
+and total reactions are only available with lifetime Pin metrics. If Pin was
+created before &#39;2023-03-20&#39; lifetime metrics will only be available
+for Video and Idea Pin formats. Lifetime metrics are available for all Pin
+formats since then."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
       pinsList)
         local -a _op_arguments
         _op_arguments=(
-                    "bookmark=:[QUERY] Cursor used to fetch the next page of items"
-"page_size=:[QUERY] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information."
-"pin_filter=:[QUERY] Pin filter."
-"include_protected_pins=true:[QUERY] Specify if return pins from protected boards"
-          "include_protected_pins=false:[QUERY] Specify if return pins from protected boards"
+                    "pin_filter=:[QUERY] The filter to apply to the pins"
+"pin_metrics=true:[QUERY] Specify whether to return 90d and lifetime Pin metrics. Total comments
+and total reactions are only available with lifetime Pin metrics. If Pin was
+created before &#39;2023-03-20&#39; lifetime metrics will only be available
+for Video and Idea Pin formats. Lifetime metrics are available for all Pin
+formats since then."
+          "pin_metrics=false:[QUERY] Specify whether to return 90d and lifetime Pin metrics. Total comments
+and total reactions are only available with lifetime Pin metrics. If Pin was
+created before &#39;2023-03-20&#39; lifetime metrics will only be available
+for Video and Idea Pin formats. Lifetime metrics are available for all Pin
+formats since then."
+"include_protected_pins=true:[QUERY] Whether to include protected pins in the results"
+          "include_protected_pins=false:[QUERY] Whether to include protected pins in the results"
 "pin_type=:[QUERY] The type of pins to return, currently only enabled for private pins"
-"creative_types=:[QUERY] Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead."
+"creative_types=:[QUERY] Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead."
 "ad_account_id=:[QUERY] Unique identifier of an ad account."
-"pin_metrics=true:[QUERY] Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then."
-          "pin_metrics=false:[QUERY] Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then."
+"bookmark=:[QUERY] Cursor used to fetch the next page of items"
+"page_size=:[QUERY] Maximum number of items to include in a single page.
+See documentation on [Pagination](/docs/reference/pagination/) for more information."
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
@@ -2087,8 +2353,62 @@ items."
       pinsUpdate)
         local -a _op_arguments
         _op_arguments=(
-          "pin_id=:[PATH] Unique identifier of a Pin."
+          "pin_id=:[PATH] "
           "ad_account_id=:[QUERY] Unique identifier of an ad account."
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      trendsFeaturedTopicsList)
+        local -a _op_arguments
+        _op_arguments=(
+                    "interest=:[QUERY] Interest to filter by"
+"region=:[QUERY] The geographic region of interest. Only top product categories within the specified region will be returned.
+     The &#39;region&#39; parameter is formatted as ISO 3166-2 country codes delimited by &#39;+&#39;.
+
+    - &#39;US&#39; - United States
+    - &#39;GB+IE&#39; - Great Britain &amp; Ireland
+    - &#39;CA&#39; - Canada"
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      trendsProductCategoriesDetailsList)
+        local -a _op_arguments
+        _op_arguments=(
+                    "product_categories=:[QUERY] List of product categories"
+"region=:[QUERY] The geographic region of interest. Only top product categories within the specified region will be returned.
+     The &#39;region&#39; parameter is formatted as ISO 3166-2 country codes delimited by &#39;+&#39;.
+
+    - &#39;US&#39; - United States
+    - &#39;GB+IE&#39; - Great Britain &amp; Ireland
+    - &#39;CA&#39; - Canada"
+"lookback_window=:[QUERY] Time period for historical data analysis in days. The lookback window defines how far back in time the API will analyze data to compute trend metrics.
+  - &#39;90&#39; - Last 90 days (3 months)
+  - &#39;180&#39; - Last 180 days (6 months)
+  - &#39;365&#39; - Last 365 days (1 year)
+  - &#39;730&#39; - Last 730 days (2 years)"
+"engagement_type=:[QUERY] Type of engagement metric to analyze.
+- &#39;ENGAGEMENT&#39; - Overall engagement metric
+- &#39;OUTBOUND_CLICK&#39; - Number of outbound clicks
+- &#39;SAVE&#39; - Number of pin saves"
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      trendsProductCategoriesTrendingList)
+        local -a _op_arguments
+        _op_arguments=(
+                    "region=:[QUERY] The geographic region of interest. Only top product categories within the specified region will be returned.
+     The &#39;region&#39; parameter is formatted as ISO 3166-2 country codes delimited by &#39;+&#39;.
+
+    - &#39;US&#39; - United States
+    - &#39;GB+IE&#39; - Great Britain &amp; Ireland
+    - &#39;CA&#39; - Canada"
+"verticals=:[QUERY] List of verticals to filter by"
+"ages=:[QUERY] Age to filter by. If not provided, the results will be filtered by all ages."
+"genders=:[QUERY] Gender to filter by, If not provided, the results will be filtered by all genders."
+"engagement_type=:[QUERY] Type of engagement metric to analyze.
+- &#39;ENGAGEMENT&#39; - Overall engagement metric
+- &#39;OUTBOUND_CLICK&#39; - Number of outbound clicks
+- &#39;SAVE&#39; - Number of pin saves"
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
@@ -2139,10 +2459,53 @@ items."
 "columns=:[QUERY] Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned"
 "granularity=:[QUERY] TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly"
 "click_window_days=:[QUERY] Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days."
-"engagement_window_days=:[QUERY] Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days."
+"engagement_window_days=:[QUERY] Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;30&#39; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;."
 "view_window_days=:[QUERY] Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#39;1&#39; day."
 "conversion_report_time=:[QUERY] The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event."
+"reporting_timezone=:[QUERY] Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users."
           )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      promotionsCreate)
+        local -a _op_arguments
+        _op_arguments=(
+          "ad_account_id=:[PATH] Unique identifier of an ad account."
+                    )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      promotionsDelete)
+        local -a _op_arguments
+        _op_arguments=(
+          "ad_account_id=:[PATH] Unique identifier of an ad account."
+"promotion_id=:[PATH] Unique identifier of a promotion"
+                    )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      promotionsGet)
+        local -a _op_arguments
+        _op_arguments=(
+          "ad_account_id=:[PATH] Unique identifier of an ad account."
+"promotion_id=:[PATH] Unique identifier of a promotion"
+                    )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      promotionsList)
+        local -a _op_arguments
+        _op_arguments=(
+          "ad_account_id=:[PATH] Unique identifier of an ad account."
+          "page_size=:[QUERY] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information."
+"order=:[QUERY] The order in which to sort the items returned: “ASCENDING” or “DESCENDING”
+by ID. Note that higher-value IDs are associated with more-recently added
+items."
+"bookmark=:[QUERY] Cursor used to fetch the next page of items"
+          )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      promotionsUpdate)
+        local -a _op_arguments
+        _op_arguments=(
+          "ad_account_id=:[PATH] Unique identifier of an ad account."
+                    )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
       adAccountCountriesGet)

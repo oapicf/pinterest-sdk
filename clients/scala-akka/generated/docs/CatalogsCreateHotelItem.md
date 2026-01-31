@@ -8,9 +8,9 @@ A hotel item to be created.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**attributes** | [**CatalogsHotelAttributes**](CatalogsHotelAttributes.md) |  | 
 **hotelId** | **String** | The catalog hotel id in the merchant namespace | 
 **operation** | [**Operation**](#Operation) |  | 
-**attributes** | [**CatalogsHotelAttributes**](CatalogsHotelAttributes.md) |  | 
 
 
 ## Enum: Operation

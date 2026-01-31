@@ -28,6 +28,14 @@ public class CatalogsDeleteRetailItemTest {
     }
 
     /**
+     * Test the property 'lastUpdatedTime'
+     */
+    @Test
+    public void lastUpdatedTimeTest() {
+        // TODO: test lastUpdatedTime
+    }
+
+    /**
      * Test the property 'operation'
      */
     @Test

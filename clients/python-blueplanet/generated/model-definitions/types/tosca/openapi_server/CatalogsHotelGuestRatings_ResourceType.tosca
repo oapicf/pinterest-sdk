@@ -1,0 +1,50 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsHotelGuestRatings"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsHotelGuestRatings"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CatalogsHotelGuestRatings {
+    title = CatalogsHotelGuestRatings
+    description = CatalogsHotelGuestRatings
+    derivedFrom = Root
+    properties {
+        max_score {
+          type =  
+          description = "Max value for the hotel rating score."
+          optional = false
+        }
+        number_of_reviewers {
+          type =  integer
+          description = "Total number of people who have rated this hotel."
+          optional = false
+        }
+        rating_system {
+          type =  string
+          description = "System you use for guest reviews."
+          optional = false
+        }
+        score {
+          type =  
+          description = "Your hotel&#39;s rating."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsHotelGuestRatings {
+    title = CatalogsHotelGuestRatings
+    description = CatalogsHotelGuestRatings
+    implements = openapi_server.resourceTypes.CatalogsHotelGuestRatings
+
+  }
+}

@@ -173,6 +173,7 @@ open class BusinessAccessAssetsAPI {
      
      - parameter businessId: (path) Unique identifier of the requesting business. 
      - parameter assetId: (path) Unique identifier of a business asset. 
+     - parameter fetchSystemUsers: (query) Fetches system users if True. Fetches regular user employees if False. (optional, default to false)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
      - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter startIndex: (query) An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
@@ -180,8 +181,8 @@ open class BusinessAccessAssetsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func businessAssetMembersGet(businessId: String, assetId: String, bookmark: String? = nil, pageSize: Int? = nil, startIndex: Int? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BusinessAssetMembersGet200Response?, _ error: Error?) -> Void)) -> RequestTask {
-        return businessAssetMembersGetWithRequestBuilder(businessId: businessId, assetId: assetId, bookmark: bookmark, pageSize: pageSize, startIndex: startIndex).execute(apiResponseQueue) { result in
+    open class func businessAssetMembersGet(businessId: String, assetId: String, fetchSystemUsers: Bool? = nil, bookmark: String? = nil, pageSize: Int? = nil, startIndex: Int? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: BusinessAssetMembersGet200Response?, _ error: Error?) -> Void)) -> RequestTask {
+        return businessAssetMembersGetWithRequestBuilder(businessId: businessId, assetId: assetId, fetchSystemUsers: fetchSystemUsers, bookmark: bookmark, pageSize: pageSize, startIndex: startIndex).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -200,12 +201,13 @@ open class BusinessAccessAssetsAPI {
        - name: pinterest_oauth2
      - parameter businessId: (path) Unique identifier of the requesting business. 
      - parameter assetId: (path) Unique identifier of a business asset. 
+     - parameter fetchSystemUsers: (query) Fetches system users if True. Fetches regular user employees if False. (optional, default to false)
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
      - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      - parameter startIndex: (query) An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
      - returns: RequestBuilder<BusinessAssetMembersGet200Response> 
      */
-    open class func businessAssetMembersGetWithRequestBuilder(businessId: String, assetId: String, bookmark: String? = nil, pageSize: Int? = nil, startIndex: Int? = nil) -> RequestBuilder<BusinessAssetMembersGet200Response> {
+    open class func businessAssetMembersGetWithRequestBuilder(businessId: String, assetId: String, fetchSystemUsers: Bool? = nil, bookmark: String? = nil, pageSize: Int? = nil, startIndex: Int? = nil) -> RequestBuilder<BusinessAssetMembersGet200Response> {
         var localVariablePath = "/businesses/{business_id}/assets/{asset_id}/members"
         let businessIdPreEscape = "\(APIHelper.mapValueToPathItem(businessId))"
         let businessIdPostEscape = businessIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -218,6 +220,7 @@ open class BusinessAccessAssetsAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "fetch_system_users": (wrappedValue: fetchSystemUsers?.encodeToJSON(), isExplode: true),
             "bookmark": (wrappedValue: bookmark?.encodeToJSON(), isExplode: true),
             "page_size": (wrappedValue: pageSize?.encodeToJSON(), isExplode: true),
             "start_index": (wrappedValue: startIndex?.encodeToJSON(), isExplode: true),
@@ -307,6 +310,8 @@ open class BusinessAccessAssetsAPI {
         case adAccount = "AD_ACCOUNT"
         case profile = "PROFILE"
         case assetGroup = "ASSET_GROUP"
+        case catalog = "CATALOG"
+        case consumer = "CONSUMER"
     }
 
     /**
@@ -389,6 +394,8 @@ open class BusinessAccessAssetsAPI {
         case adAccount = "AD_ACCOUNT"
         case profile = "PROFILE"
         case assetGroup = "ASSET_GROUP"
+        case catalog = "CATALOG"
+        case consumer = "CONSUMER"
     }
 
     /**
@@ -571,6 +578,8 @@ open class BusinessAccessAssetsAPI {
         case adAccount = "AD_ACCOUNT"
         case profile = "PROFILE"
         case assetGroup = "ASSET_GROUP"
+        case catalog = "CATALOG"
+        case consumer = "CONSUMER"
     }
 
     /**

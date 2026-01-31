@@ -10,11 +10,11 @@ import scala.collection.immutable.Seq
 
 /**
  * 
- * @param values 
  * @param negated 
+ * @param values 
  */
-case class CatalogsProductGroupMultipleMediaTypesCriteria(values: Seq[MediaType],
-                negated: Option[Boolean]
+case class CatalogsProductGroupMultipleMediaTypesCriteria(negated: Option[Boolean],
+                values: Seq[MediaType]
                 )
 
 object CatalogsProductGroupMultipleMediaTypesCriteria {

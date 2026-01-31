@@ -8,8 +8,8 @@
 
 (def customer-lists-list-200-response-data
   {
-   (ds/req :items) (s/coll-of customer-list-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of customer-list-spec)
    })
 
 (def customer-lists-list-200-response-spec

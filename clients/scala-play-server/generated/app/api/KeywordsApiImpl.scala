@@ -14,7 +14,7 @@ import model.TrendsSupportedRegion
 /**
   * Provides a default implementation for [[KeywordsApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 class KeywordsApiImpl extends KeywordsApi {
   /**
     * @inheritdoc
@@ -37,10 +37,10 @@ class KeywordsApiImpl extends KeywordsApi {
   /**
     * @inheritdoc
     */
-  override def keywordsGet(adAccountId: String, campaignId: Option[String], adGroupId: Option[String], matchTypes: Option[List[MatchType]], pageSize: Option[Int], bookmark: Option[String]): KeywordsGet200Response = {
+  override def keywordsGet(adAccountId: String, campaignId: Option[String], adGroupId: Option[String], adGroupIds: Option[List[String]], matchTypes: Option[List[MatchType]], pageSize: Option[Int], bookmark: Option[String]): KeywordsGet200Response = {
     // TODO: Implement better logic
 
-    KeywordsGet200Response(List.empty[Keyword], None)
+    KeywordsGet200Response(None, List.empty[Keyword])
   }
 
   /**
@@ -55,7 +55,7 @@ class KeywordsApiImpl extends KeywordsApi {
   /**
     * @inheritdoc
     */
-  override def trendingKeywordsList(region: TrendsSupportedRegion, trendType: TrendType, interests: Option[List[String]], genders: Option[List[String]], ages: Option[List[String]], includeKeywords: Option[List[String]], normalizeAgainstGroup: Option[Boolean], limit: Option[Int]): TrendingKeywordsResponse = {
+  override def trendingKeywordsList(region: TrendsSupportedRegion, trendType: TrendType, interests: Option[List[String]], genders: Option[List[String]], ages: Option[List[String]], includeKeywords: Option[List[String]], normalizeAgainstGroup: Option[Boolean], limit: Option[Int], includePrediction: Option[Boolean], includeDemographics: Option[Boolean]): TrendingKeywordsResponse = {
     // TODO: Implement better logic
 
     TrendingKeywordsResponse(None)

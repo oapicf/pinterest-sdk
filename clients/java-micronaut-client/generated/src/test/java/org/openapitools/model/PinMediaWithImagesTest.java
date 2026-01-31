@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.ImageMetadata;
-import org.openapitools.model.PinMedia;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -25,19 +24,19 @@ public class PinMediaWithImagesTest {
     }
 
     /**
-     * Test the property 'mediaType'
-     */
-    @Test
-    public void mediaTypeTest() {
-        // TODO: test mediaType
-    }
-
-    /**
      * Test the property 'items'
      */
     @Test
     public void itemsTest() {
         // TODO: test items
+    }
+
+    /**
+     * Test the property 'mediaType'
+     */
+    @Test
+    public void mediaTypeTest() {
+        // TODO: test mediaType
     }
 
 }

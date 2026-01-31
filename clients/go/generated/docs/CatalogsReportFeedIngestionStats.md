@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ReportType** | Pointer to **string** |  | [optional] 
 **CatalogId** | Pointer to **string** | ID of the catalog entity. | [optional] 
 **Code** | Pointer to **int32** | The event code that a diagnostics aggregated number references | [optional] 
 **CodeLabel** | Pointer to **string** | A human-friendly label for the event code (e.g, &#39;AVAILABILITY_INVALID&#39;) | [optional] 
 **Message** | Pointer to **string** | Title message describing the diagnostic issue | [optional] 
 **Occurrences** | Pointer to **int32** | Number of occurrences of the issue | [optional] 
+**ReportType** | Pointer to **string** |  | [optional] 
 **Severity** | Pointer to **string** | An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue | [optional] 
 
 ## Methods
@@ -30,31 +30,6 @@ will change when the set of required properties is changed
 NewCatalogsReportFeedIngestionStatsWithDefaults instantiates a new CatalogsReportFeedIngestionStats object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetReportType
-
-`func (o *CatalogsReportFeedIngestionStats) GetReportType() string`
-
-GetReportType returns the ReportType field if non-nil, zero value otherwise.
-
-### GetReportTypeOk
-
-`func (o *CatalogsReportFeedIngestionStats) GetReportTypeOk() (*string, bool)`
-
-GetReportTypeOk returns a tuple with the ReportType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReportType
-
-`func (o *CatalogsReportFeedIngestionStats) SetReportType(v string)`
-
-SetReportType sets ReportType field to given value.
-
-### HasReportType
-
-`func (o *CatalogsReportFeedIngestionStats) HasReportType() bool`
-
-HasReportType returns a boolean if a field has been set.
 
 ### GetCatalogId
 
@@ -180,6 +155,31 @@ SetOccurrences sets Occurrences field to given value.
 `func (o *CatalogsReportFeedIngestionStats) HasOccurrences() bool`
 
 HasOccurrences returns a boolean if a field has been set.
+
+### GetReportType
+
+`func (o *CatalogsReportFeedIngestionStats) GetReportType() string`
+
+GetReportType returns the ReportType field if non-nil, zero value otherwise.
+
+### GetReportTypeOk
+
+`func (o *CatalogsReportFeedIngestionStats) GetReportTypeOk() (*string, bool)`
+
+GetReportTypeOk returns a tuple with the ReportType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReportType
+
+`func (o *CatalogsReportFeedIngestionStats) SetReportType(v string)`
+
+SetReportType sets ReportType field to given value.
+
+### HasReportType
+
+`func (o *CatalogsReportFeedIngestionStats) HasReportType() bool`
+
+HasReportType returns a boolean if a field has been set.
 
 ### GetSeverity
 

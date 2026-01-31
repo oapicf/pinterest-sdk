@@ -2,6 +2,11 @@
 Protected Class GetPartnerAssetsResponse
 
 	#tag Property, Flags = &h0
+		asset_group_info As OpenAPIClient.Models.AssetGroupBinding
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		#tag Note
 			Unique identifier of a business asset.
 		#tag EndNote
@@ -11,7 +16,7 @@ Protected Class GetPartnerAssetsResponse
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+			Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
 		#tag EndNote
 		asset_type As Xoson.O.OptionalString
 	#tag EndProperty
@@ -22,11 +27,6 @@ Protected Class GetPartnerAssetsResponse
 			The permissions you or your partner has on the asset. If partner_type=INTERNAL, the permission levels are for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the permission levels are for the access you have to the partner's business asset.
 		#tag EndNote
 		permissions() As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		asset_group_info As OpenAPIClient.Models.AssetGroupBinding
 	#tag EndProperty
 
 
@@ -67,6 +67,14 @@ Protected Class GetPartnerAssetsResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="asset_group_info"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="AssetGroupBinding"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="asset_id"
 			Visible=false
 			Group="Behavior"
@@ -88,14 +96,6 @@ Protected Class GetPartnerAssetsResponse
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="asset_group_info"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="AssetGroupBinding"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

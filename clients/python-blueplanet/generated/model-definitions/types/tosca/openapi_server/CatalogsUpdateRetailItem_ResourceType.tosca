@@ -1,0 +1,54 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsUpdateRetailItem"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsUpdateRetailItem"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  UpdatableItemAttributes = openapi_server.resourceTypes.UpdatableItemAttributes
+  UpdateMaskFieldType = openapi_server.resourceTypes.UpdateMaskFieldType
+}
+resourceTypes {
+
+  CatalogsUpdateRetailItem {
+    title = CatalogsUpdateRetailItem
+    description = CatalogsUpdateRetailItem
+    derivedFrom = Root
+    properties {
+        attributes {
+          type = UpdatableItemAttributes
+          description = ""
+          optional = true
+        }
+        item_id {
+          type =  string
+          description = "The catalog item id in the merchant namespace"
+          optional = true
+        }
+        operation {
+          type =  string
+          description = ""
+          enum = ["UPDATE"]
+          optional = true
+        }
+        update_mask {
+          type = array
+          items.type = UpdateMaskFieldType
+          description = "The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsUpdateRetailItem {
+    title = CatalogsUpdateRetailItem
+    description = CatalogsUpdateRetailItem
+    implements = openapi_server.resourceTypes.CatalogsUpdateRetailItem
+
+  }
+}

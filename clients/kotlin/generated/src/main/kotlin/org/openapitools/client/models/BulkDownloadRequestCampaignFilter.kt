@@ -24,19 +24,18 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param startTime Unix UTC timestamp.
+ * @param campaignStatus 
  * @param endTime Unix UTC timestamp.
  * @param name Campaign name
- * @param campaignStatus 
  * @param objectiveType 
+ * @param startTime Unix UTC timestamp.
  */
 
 
 data class BulkDownloadRequestCampaignFilter (
 
-    /* Unix UTC timestamp. */
-    @Json(name = "start_time")
-    val startTime: kotlin.String? = null,
+    @Json(name = "campaign_status")
+    val campaignStatus: kotlin.collections.List<CampaignSummaryStatus>? = null,
 
     /* Unix UTC timestamp. */
     @Json(name = "end_time")
@@ -46,11 +45,12 @@ data class BulkDownloadRequestCampaignFilter (
     @Json(name = "name")
     val name: kotlin.String? = null,
 
-    @Json(name = "campaign_status")
-    val campaignStatus: kotlin.collections.List<CampaignSummaryStatus>? = null,
-
     @Json(name = "objective_type")
-    val objectiveType: kotlin.collections.List<ObjectiveType>? = null
+    val objectiveType: kotlin.collections.List<ObjectiveType>? = null,
+
+    /* Unix UTC timestamp. */
+    @Json(name = "start_time")
+    val startTime: kotlin.String? = null
 
 ) {
 

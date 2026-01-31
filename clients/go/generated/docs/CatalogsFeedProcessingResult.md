@@ -8,15 +8,16 @@ Name | Type | Description | Notes
 **Id** | **string** |  | 
 **UpdatedAt** | **time.Time** |  | 
 **IngestionDetails** | [**CatalogsFeedIngestionDetails**](CatalogsFeedIngestionDetails.md) |  | 
-**Status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | 
 **ProductCounts** | [**NullableCatalogsFeedProductCounts**](CatalogsFeedProductCounts.md) |  | 
+**Status** | [**CatalogsFeedProcessingStatus**](CatalogsFeedProcessingStatus.md) |  | 
 **ValidationDetails** | [**CatalogsFeedValidationDetails**](CatalogsFeedValidationDetails.md) |  | 
+**VideoCounts** | Pointer to [**CatalogsFeedVideoCounts**](CatalogsFeedVideoCounts.md) |  | [optional] 
 
 ## Methods
 
 ### NewCatalogsFeedProcessingResult
 
-`func NewCatalogsFeedProcessingResult(createdAt time.Time, id string, updatedAt time.Time, ingestionDetails CatalogsFeedIngestionDetails, status CatalogsFeedProcessingStatus, productCounts NullableCatalogsFeedProductCounts, validationDetails CatalogsFeedValidationDetails, ) *CatalogsFeedProcessingResult`
+`func NewCatalogsFeedProcessingResult(createdAt time.Time, id string, updatedAt time.Time, ingestionDetails CatalogsFeedIngestionDetails, productCounts NullableCatalogsFeedProductCounts, status CatalogsFeedProcessingStatus, validationDetails CatalogsFeedValidationDetails, ) *CatalogsFeedProcessingResult`
 
 NewCatalogsFeedProcessingResult instantiates a new CatalogsFeedProcessingResult object
 This constructor will assign default values to properties that have it defined,
@@ -111,26 +112,6 @@ and a boolean to check if the value has been set.
 SetIngestionDetails sets IngestionDetails field to given value.
 
 
-### GetStatus
-
-`func (o *CatalogsFeedProcessingResult) GetStatus() CatalogsFeedProcessingStatus`
-
-GetStatus returns the Status field if non-nil, zero value otherwise.
-
-### GetStatusOk
-
-`func (o *CatalogsFeedProcessingResult) GetStatusOk() (*CatalogsFeedProcessingStatus, bool)`
-
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatus
-
-`func (o *CatalogsFeedProcessingResult) SetStatus(v CatalogsFeedProcessingStatus)`
-
-SetStatus sets Status field to given value.
-
-
 ### GetProductCounts
 
 `func (o *CatalogsFeedProcessingResult) GetProductCounts() CatalogsFeedProductCounts`
@@ -161,6 +142,26 @@ SetProductCounts sets ProductCounts field to given value.
 `func (o *CatalogsFeedProcessingResult) UnsetProductCounts()`
 
 UnsetProductCounts ensures that no value is present for ProductCounts, not even an explicit nil
+### GetStatus
+
+`func (o *CatalogsFeedProcessingResult) GetStatus() CatalogsFeedProcessingStatus`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *CatalogsFeedProcessingResult) GetStatusOk() (*CatalogsFeedProcessingStatus, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *CatalogsFeedProcessingResult) SetStatus(v CatalogsFeedProcessingStatus)`
+
+SetStatus sets Status field to given value.
+
+
 ### GetValidationDetails
 
 `func (o *CatalogsFeedProcessingResult) GetValidationDetails() CatalogsFeedValidationDetails`
@@ -180,6 +181,31 @@ and a boolean to check if the value has been set.
 
 SetValidationDetails sets ValidationDetails field to given value.
 
+
+### GetVideoCounts
+
+`func (o *CatalogsFeedProcessingResult) GetVideoCounts() CatalogsFeedVideoCounts`
+
+GetVideoCounts returns the VideoCounts field if non-nil, zero value otherwise.
+
+### GetVideoCountsOk
+
+`func (o *CatalogsFeedProcessingResult) GetVideoCountsOk() (*CatalogsFeedVideoCounts, bool)`
+
+GetVideoCountsOk returns a tuple with the VideoCounts field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVideoCounts
+
+`func (o *CatalogsFeedProcessingResult) SetVideoCounts(v CatalogsFeedVideoCounts)`
+
+SetVideoCounts sets VideoCounts field to given value.
+
+### HasVideoCounts
+
+`func (o *CatalogsFeedProcessingResult) HasVideoCounts() bool`
+
+HasVideoCounts returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

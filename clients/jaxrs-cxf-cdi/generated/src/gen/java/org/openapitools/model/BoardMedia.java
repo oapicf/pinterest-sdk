@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -12,15 +11,12 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
-/**
- * Board media.
- **/
 
 import io.swagger.annotations.*;
 import java.util.Objects;
 
 
-@ApiModel(description = "Board media.")
+
 public class BoardMedia   {
   
   private String imageCoverUrl;
@@ -28,7 +24,7 @@ public class BoardMedia   {
   private List<String> pinThumbnailUrls = new ArrayList<>();
 
   /**
-   * Board cover image.
+   * Board cover image
    **/
   public BoardMedia imageCoverUrl(String imageCoverUrl) {
     this.imageCoverUrl = imageCoverUrl;
@@ -36,7 +32,7 @@ public class BoardMedia   {
   }
 
   
-  @ApiModelProperty(example = "https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg", value = "Board cover image.")
+  @ApiModelProperty(example = "https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg", value = "Board cover image")
   @JsonProperty("image_cover_url")
   public String getImageCoverUrl() {
     return imageCoverUrl;

@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BulkUpsertStatusResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BulkUpsertStatusResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BulkUpsertStatus = openapi_server.resourceTypes.BulkUpsertStatus
+}
+resourceTypes {
+
+  BulkUpsertStatusResponse {
+    title = BulkUpsertStatusResponse
+    description = BulkUpsertStatusResponse
+    derivedFrom = Root
+    properties {
+        result_url {
+          type =  string
+          description = ""
+          optional = false
+        }
+        status {
+          type = BulkUpsertStatus
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BulkUpsertStatusResponse {
+    title = BulkUpsertStatusResponse
+    description = BulkUpsertStatusResponse
+    implements = openapi_server.resourceTypes.BulkUpsertStatusResponse
+
+  }
+}

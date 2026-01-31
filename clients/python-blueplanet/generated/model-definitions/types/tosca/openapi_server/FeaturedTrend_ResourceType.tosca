@@ -1,0 +1,49 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server FeaturedTrend"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a FeaturedTrend"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  InterestsEnum = openapi_server.resourceTypes.InterestsEnum
+  ProductCategoryRegion = openapi_server.resourceTypes.ProductCategoryRegion
+  TrendingTopic = openapi_server.resourceTypes.TrendingTopic
+}
+resourceTypes {
+
+  FeaturedTrend {
+    title = FeaturedTrend
+    description = FeaturedTrend
+    derivedFrom = Root
+    properties {
+        interest {
+          type = InterestsEnum
+          description = "The main interest category"
+          optional = true
+        }
+        market {
+          type = ProductCategoryRegion
+          description = "Market code (e.g., &#39;US&#39;, &#39;UK&#39;, etc.)"
+          optional = false
+        }
+        trends {
+          type = array
+          items.type = TrendingTopic
+          description = "List of trending topics within this interest category"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  FeaturedTrend {
+    title = FeaturedTrend
+    description = FeaturedTrend
+    implements = openapi_server.resourceTypes.FeaturedTrend
+
+  }
+}

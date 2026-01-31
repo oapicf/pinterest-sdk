@@ -25,16 +25,16 @@ class InviteExceptionResponseTest : ShouldSpec() {
         // uncomment below to create an instance of InviteExceptionResponse
         //val modelInstance = InviteExceptionResponse()
 
-        // to test the property `inviteOrRequestId` - Unique identifier of the invite/request.
-        should("test inviteOrRequestId") {
-            // uncomment below to test the property
-            //modelInstance.inviteOrRequestId shouldBe ("TODO")
-        }
-
         // to test the property `code` - Error code associated with the error in performing the action on the invite/request.
         should("test code") {
             // uncomment below to test the property
             //modelInstance.code shouldBe ("TODO")
+        }
+
+        // to test the property `inviteOrRequestId` - Unique identifier of the invite/request.
+        should("test inviteOrRequestId") {
+            // uncomment below to test the property
+            //modelInstance.inviteOrRequestId shouldBe ("TODO")
         }
 
         // to test the property `message` - Error message associated with the error in performing the action on the invite/request.

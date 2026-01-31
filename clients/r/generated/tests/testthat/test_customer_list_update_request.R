@@ -5,14 +5,6 @@ context("Test CustomerListUpdateRequest")
 
 model_instance <- CustomerListUpdateRequest$new()
 
-test_that("records", {
-  # tests for the property `records` (character)
-  # Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`records`, "EXPECTED_RESULT")
-})
-
 test_that("operation_type", {
   # tests for the property `operation_type` (UserListOperationType)
 
@@ -20,9 +12,10 @@ test_that("operation_type", {
   #expect_equal(model.instance$`operation_type`, "EXPECTED_RESULT")
 })
 
-test_that("exceptions", {
-  # tests for the property `exceptions` (Exception)
+test_that("records", {
+  # tests for the property `records` (character)
+  # Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`exceptions`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`records`, "EXPECTED_RESULT")
 })

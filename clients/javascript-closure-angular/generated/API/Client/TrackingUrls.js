@@ -10,7 +10,13 @@ API.Client.TrackingUrls = function() {}
  * @type {!Array<!string>}
  * @export
  */
-API.Client.TrackingUrls.prototype.impression;
+API.Client.TrackingUrls.prototype.audienceVerification;
+
+/**
+ * @type {!Array<!string>}
+ * @export
+ */
+API.Client.TrackingUrls.prototype.buyableButton;
 
 /**
  * @type {!Array<!string>}
@@ -28,11 +34,5 @@ API.Client.TrackingUrls.prototype.engagement;
  * @type {!Array<!string>}
  * @export
  */
-API.Client.TrackingUrls.prototype.buyableButton;
-
-/**
- * @type {!Array<!string>}
- * @export
- */
-API.Client.TrackingUrls.prototype.audienceVerification;
+API.Client.TrackingUrls.prototype.impression;
 

@@ -23,29 +23,29 @@ import com.squareup.moshi.JsonClass
 /**
  * An object containing the permissions a business member has on the asset.
  *
- * @param assetId Unique identifier of a business asset.
- * @param assetType Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
- * @param permissions Permission levels member or partner has on an asset.
  * @param assetGroupInfo 
+ * @param assetId Unique identifier of a business asset.
+ * @param assetType Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
+ * @param permissions Permission levels member or partner has on an asset.
  */
 
 
 data class AssetIdPermissions (
 
+    @Json(name = "asset_group_info")
+    val assetGroupInfo: AssetGroupBinding? = null,
+
     /* Unique identifier of a business asset. */
     @Json(name = "asset_id")
     val assetId: kotlin.String? = null,
 
-    /* Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. */
+    /* Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. */
     @Json(name = "asset_type")
     val assetType: kotlin.String? = null,
 
     /* Permission levels member or partner has on an asset. */
     @Json(name = "permissions")
-    val permissions: kotlin.collections.List<kotlin.String>? = null,
-
-    @Json(name = "asset_group_info")
-    val assetGroupInfo: AssetGroupBinding? = null
+    val permissions: kotlin.collections.List<kotlin.String>? = null
 
 ) {
 

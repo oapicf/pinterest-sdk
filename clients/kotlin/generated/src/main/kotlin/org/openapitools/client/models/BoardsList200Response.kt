@@ -23,14 +23,13 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param items Boards
+ * @param items 
  * @param bookmark 
  */
 
 
 data class BoardsList200Response (
 
-    /* Boards */
     @Json(name = "items")
     val items: kotlin.collections.List<Board>,
 

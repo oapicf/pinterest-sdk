@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdsCreditRedeemRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdsCreditRedeemRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  AdsCreditRedeemRequest {
+    title = AdsCreditRedeemRequest
+    description = AdsCreditRedeemRequest
+    derivedFrom = Root
+    properties {
+        offer_code_hash {
+          type =  string
+          description = "Takes in a SHA256 hash of the offerCode."
+          optional = true
+        }
+        validate_only {
+          type =  boolean
+          description = "If true, only validate if we can redeem offer code. Otherwise it will actually apply the offer code to the account"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdsCreditRedeemRequest {
+    title = AdsCreditRedeemRequest
+    description = AdsCreditRedeemRequest
+    implements = openapi_server.resourceTypes.AdsCreditRedeemRequest
+
+  }
+}

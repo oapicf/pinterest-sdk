@@ -22,15 +22,15 @@ quiz_pin_question_t* instantiate_quiz_pin_question(int include_optional) {
   quiz_pin_question_t* quiz_pin_question = NULL;
   if (include_optional) {
     quiz_pin_question = quiz_pin_question_create(
+      list_createList(),
       1.337,
-      "0",
-      list_createList()
+      "0"
     );
   } else {
     quiz_pin_question = quiz_pin_question_create(
+      list_createList(),
       1.337,
-      "0",
-      list_createList()
+      "0"
     );
   }
 

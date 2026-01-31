@@ -3,22 +3,24 @@ package org.openapitools.client.model
 
 
 case class BillingProfilesResponse (
-    /* Billing ID. */
-    _id: Option[String],
-    /* Type of the card. */
-    _cardType: Option[String],
-    /* Status of the billing. */
-    _status: Option[String],
     /* Advertiser ID of the billing. */
     _advertiserId: Option[String],
+    /* Billing type of the advertiser */
+    _billingType: Option[String],
+    /* Type of the card. */
+    _cardType: Option[String],
+    /* Billing ID. */
+    _id: Option[String],
     /* Brand of the payment method. */
-    _paymentMethodBrand: Option[String]
+    _paymentMethodBrand: Option[String],
+    /* Status of the billing. */
+    _status: Option[String]
 )
 object BillingProfilesResponse {
-    def toStringBody(var_id: Object, var_cardType: Object, var_status: Object, var_advertiserId: Object, var_paymentMethodBrand: Object) =
+    def toStringBody(var_advertiserId: Object, var_billingType: Object, var_cardType: Object, var_id: Object, var_paymentMethodBrand: Object, var_status: Object) =
         s"""
         | {
-        | "id":$var_id,"cardType":$var_cardType,"status":$var_status,"advertiserId":$var_advertiserId,"paymentMethodBrand":$var_paymentMethodBrand
+        | "advertiserId":$var_advertiserId,"billingType":$var_billingType,"cardType":$var_cardType,"id":$var_id,"paymentMethodBrand":$var_paymentMethodBrand,"status":$var_status
         | }
         """.stripMargin
 }

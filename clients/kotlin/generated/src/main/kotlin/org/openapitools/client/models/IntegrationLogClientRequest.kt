@@ -22,8 +22,8 @@ import com.squareup.moshi.JsonClass
 /**
  * HTTP request details included in the log sent by the client.
  *
- * @param method 
  * @param host HTTP request host from host header.
+ * @param method 
  * @param path HTTP request path.
  * @param requestHeaders HTTP request headers as key-value pairs.
  * @param responseHeaders HTTP response headers as key-value pairs.
@@ -33,12 +33,12 @@ import com.squareup.moshi.JsonClass
 
 data class IntegrationLogClientRequest (
 
-    @Json(name = "method")
-    val method: IntegrationLogClientRequest.Method,
-
     /* HTTP request host from host header. */
     @Json(name = "host")
     val host: kotlin.String,
+
+    @Json(name = "method")
+    val method: IntegrationLogClientRequest.Method,
 
     /* HTTP request path. */
     @Json(name = "path")

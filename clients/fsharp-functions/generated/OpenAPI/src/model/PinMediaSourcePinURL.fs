@@ -10,10 +10,10 @@ module PinMediaSourcePinURL =
 
   [<CLIMutable>]
   type PinMediaSourcePinURL = {
-    [<JsonProperty(PropertyName = "source_type")>]
-    SourceType : string;
     [<JsonProperty(PropertyName = "is_affiliate_link")>]
     IsAffiliateLink : bool;
+    [<JsonProperty(PropertyName = "source_type")>]
+    SourceType : string;
   }
 
   //#endregion

@@ -20,6 +20,7 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CatalogsHotelProductGroupFilterKeys
 import org.openapitools.client.models.BrandFilter
+import org.openapitools.client.models.CatalogsProductGroupFilterOperatorTypeCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleCountriesCriteria
 import org.openapitools.client.models.CatalogsProductGroupMultipleStringCriteria
 import org.openapitools.client.models.CatalogsProductGroupPricingCurrencyCriteria
@@ -31,6 +32,7 @@ import org.openapitools.client.models.CustomLabel3Filter
 import org.openapitools.client.models.CustomLabel4Filter
 import org.openapitools.client.models.HotelIdFilter
 import org.openapitools.client.models.PriceFilter
+import org.openapitools.client.models.TitleKeywordsFilter
 
 class CatalogsHotelProductGroupFilterKeysTest : ShouldSpec() {
     init {
@@ -89,6 +91,12 @@ class CatalogsHotelProductGroupFilterKeysTest : ShouldSpec() {
         should("test COUNTRY") {
             // uncomment below to test the property
             //modelInstance.COUNTRY shouldBe ("TODO")
+        }
+
+        // to test the property `TITLE_KEYWORDS`
+        should("test TITLE_KEYWORDS") {
+            // uncomment below to test the property
+            //modelInstance.TITLE_KEYWORDS shouldBe ("TODO")
         }
 
     }

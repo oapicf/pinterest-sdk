@@ -11,7 +11,7 @@ import org.openapitools.model.SharedAudienceAccount;
 @Canonical
 class AdAccountsAudiencesSharedAccountsList200Response {
     
-    List<SharedAudienceAccount> items = new ArrayList<>()
-    
     String bookmark
+    
+    List<SharedAudienceAccount> items = new ArrayList<>()
 }

@@ -20,6 +20,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsRetailListProductsByCatalogBasedFilterRequest  {
   
+ /**
+  * Catalog id pertaining to the retail product group.
+  */
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the retail product group.")
+
+  private String catalogId;
+
 public enum CatalogTypeEnum {
 
 RETAIL(String.valueOf("RETAIL"));
@@ -59,12 +66,11 @@ RETAIL(String.valueOf("RETAIL"));
 
   private CatalogTypeEnum catalogType;
 
- /**
-  * Catalog id pertaining to the retail product group.
-  */
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the retail product group.")
+  @ApiModelProperty(required = true, value = "")
 
-  private String catalogId;
+  @Valid
+
+  private Country country;
 
   @ApiModelProperty(required = true, value = "")
 
@@ -76,13 +82,26 @@ RETAIL(String.valueOf("RETAIL"));
 
   @Valid
 
-  private Country country;
-
-  @ApiModelProperty(required = true, value = "")
-
-  @Valid
-
   private CatalogsLocale locale;
+ /**
+   * Catalog id pertaining to the retail product group.
+   * @return catalogId
+  **/
+  @JsonProperty("catalog_id")
+  @NotNull
+ @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
+  public CatalogsRetailListProductsByCatalogBasedFilterRequest catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
  /**
    * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
    * @return catalogType
@@ -106,21 +125,21 @@ RETAIL(String.valueOf("RETAIL"));
   }
 
  /**
-   * Catalog id pertaining to the retail product group.
-   * @return catalogId
+   * Get country
+   * @return country
   **/
-  @JsonProperty("catalog_id")
+  @JsonProperty("country")
   @NotNull
- @Pattern(regexp="^\\d+$")  public String getCatalogId() {
-    return catalogId;
+  public Country getCountry() {
+    return country;
   }
 
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public void setCountry(Country country) {
+    this.country = country;
   }
 
-  public CatalogsRetailListProductsByCatalogBasedFilterRequest catalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public CatalogsRetailListProductsByCatalogBasedFilterRequest country(Country country) {
+    this.country = country;
     return this;
   }
 
@@ -140,25 +159,6 @@ RETAIL(String.valueOf("RETAIL"));
 
   public CatalogsRetailListProductsByCatalogBasedFilterRequest filters(CatalogsProductGroupFilters filters) {
     this.filters = filters;
-    return this;
-  }
-
- /**
-   * Get country
-   * @return country
-  **/
-  @JsonProperty("country")
-  @NotNull
-  public Country getCountry() {
-    return country;
-  }
-
-  public void setCountry(Country country) {
-    this.country = country;
-  }
-
-  public CatalogsRetailListProductsByCatalogBasedFilterRequest country(Country country) {
-    this.country = country;
     return this;
   }
 
@@ -190,16 +190,16 @@ RETAIL(String.valueOf("RETAIL"));
       return false;
     }
     CatalogsRetailListProductsByCatalogBasedFilterRequest catalogsRetailListProductsByCatalogBasedFilterRequest = (CatalogsRetailListProductsByCatalogBasedFilterRequest) o;
-    return Objects.equals(this.catalogType, catalogsRetailListProductsByCatalogBasedFilterRequest.catalogType) &&
-        Objects.equals(this.catalogId, catalogsRetailListProductsByCatalogBasedFilterRequest.catalogId) &&
-        Objects.equals(this.filters, catalogsRetailListProductsByCatalogBasedFilterRequest.filters) &&
+    return Objects.equals(this.catalogId, catalogsRetailListProductsByCatalogBasedFilterRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsRetailListProductsByCatalogBasedFilterRequest.catalogType) &&
         Objects.equals(this.country, catalogsRetailListProductsByCatalogBasedFilterRequest.country) &&
+        Objects.equals(this.filters, catalogsRetailListProductsByCatalogBasedFilterRequest.filters) &&
         Objects.equals(this.locale, catalogsRetailListProductsByCatalogBasedFilterRequest.locale);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, catalogId, filters, country, locale);
+    return Objects.hash(catalogId, catalogType, country, filters, locale);
   }
 
   @Override
@@ -207,10 +207,10 @@ RETAIL(String.valueOf("RETAIL"));
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailListProductsByCatalogBasedFilterRequest {\n");
     
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
-    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
     sb.append("}");
     return sb.toString();

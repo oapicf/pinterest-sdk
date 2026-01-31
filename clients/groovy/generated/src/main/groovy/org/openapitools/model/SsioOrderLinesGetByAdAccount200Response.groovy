@@ -10,8 +10,8 @@ import org.openapitools.model.SSIOOrderLine;
 
 @Canonical
 class SsioOrderLinesGetByAdAccount200Response {
-    /* SSIO order lines by ad acount id */
-    List<SSIOOrderLine> items = new ArrayList<>()
     
     String bookmark
+    /* SSIO order lines by ad acount id */
+    List<SSIOOrderLine> items = new ArrayList<>()
 }

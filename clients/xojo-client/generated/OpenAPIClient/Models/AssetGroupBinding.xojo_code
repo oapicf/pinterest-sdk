@@ -3,17 +3,9 @@ Protected Class AssetGroupBinding
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Asset Group ID.
+			A list of ad account IDs under the asset group
 		#tag EndNote
-		id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Asset Group name
-		#tag EndNote
-		asset_group_name As Xoson.O.OptionalString
+		ad_accounts_ids() As String
 	#tag EndProperty
 
 
@@ -27,6 +19,14 @@ Protected Class AssetGroupBinding
 
 	#tag Property, Flags = &h0
 		#tag Note
+			Asset Group name
+		#tag EndNote
+		asset_group_name As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			Asset group types
 		#tag EndNote
 		asset_group_types() As String
@@ -35,17 +35,17 @@ Protected Class AssetGroupBinding
 
 	#tag Property, Flags = &h0
 		#tag Note
-			A list of ad account IDs under the asset group
+			A list of catalog IDs under asset group
 		#tag EndNote
-		ad_accounts_ids() As String
+		catalogs_ids() As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		#tag Note
-			A list of profile IDs under asset group
+			The data of the user that created the asset group.
 		#tag EndNote
-		profiles_ids() As String
+		created_by As OpenAPIClient.Models.BusinessAccessUserSummary
 	#tag EndProperty
 
 
@@ -59,9 +59,9 @@ Protected Class AssetGroupBinding
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The last update time of the asset group
+			Asset Group ID.
 		#tag EndNote
-		updated_time As Xoson.O.OptionalInteger
+		id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -75,9 +75,17 @@ Protected Class AssetGroupBinding
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The data of the user that created the asset group.
+			A list of profile IDs under asset group
 		#tag EndNote
-		created_by As OpenAPIClient.Models.BusinessAccessUserSummary
+		profiles_ids() As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			The last update time of the asset group
+		#tag EndNote
+		updated_time As Xoson.O.OptionalInteger
 	#tag EndProperty
 
 
@@ -118,15 +126,7 @@ Protected Class AssetGroupBinding
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="asset_group_name"
+			Name="ad_accounts_ids"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -142,6 +142,14 @@ Protected Class AssetGroupBinding
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="asset_group_name"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="asset_group_types"
 			Visible=false
 			Group="Behavior"
@@ -150,7 +158,7 @@ Protected Class AssetGroupBinding
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="ad_accounts_ids"
+			Name="catalogs_ids"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -158,11 +166,11 @@ Protected Class AssetGroupBinding
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="profiles_ids"
+			Name="created_by"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="String"
+			Type="BusinessAccessUserSummary"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -174,11 +182,11 @@ Protected Class AssetGroupBinding
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="updated_time"
+			Name="id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Integer"
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -190,11 +198,19 @@ Protected Class AssetGroupBinding
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="created_by"
+			Name="profiles_ids"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="BusinessAccessUserSummary"
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="updated_time"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

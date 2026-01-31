@@ -13,23 +13,11 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LeadsExportResponseData   {
   
-  private LeadsExportStatus exportStatus;
   private String downloadUrl;
-
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("export_status")
-  public LeadsExportStatus getExportStatus() {
-    return exportStatus;
-  }
-  public void setExportStatus(LeadsExportStatus exportStatus) {
-    this.exportStatus = exportStatus;
-  }
+  private LeadsExportStatus exportStatus;
 
   /**
    **/
@@ -43,6 +31,18 @@ public class LeadsExportResponseData   {
     this.downloadUrl = downloadUrl;
   }
 
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("export_status")
+  public LeadsExportStatus getExportStatus() {
+    return exportStatus;
+  }
+  public void setExportStatus(LeadsExportStatus exportStatus) {
+    this.exportStatus = exportStatus;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -53,13 +53,13 @@ public class LeadsExportResponseData   {
       return false;
     }
     LeadsExportResponseData leadsExportResponseData = (LeadsExportResponseData) o;
-    return Objects.equals(this.exportStatus, leadsExportResponseData.exportStatus) &&
-        Objects.equals(this.downloadUrl, leadsExportResponseData.downloadUrl);
+    return Objects.equals(this.downloadUrl, leadsExportResponseData.downloadUrl) &&
+        Objects.equals(this.exportStatus, leadsExportResponseData.exportStatus);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(exportStatus, downloadUrl);
+    return Objects.hash(downloadUrl, exportStatus);
   }
 
   @Override
@@ -67,8 +67,8 @@ public class LeadsExportResponseData   {
     StringBuilder sb = new StringBuilder();
     sb.append("class LeadsExportResponseData {\n");
     
-    sb.append("    exportStatus: ").append(toIndentedString(exportStatus)).append("\n");
     sb.append("    downloadUrl: ").append(toIndentedString(downloadUrl)).append("\n");
+    sb.append("    exportStatus: ").append(toIndentedString(exportStatus)).append("\n");
     sb.append("}");
     return sb.toString();
   }

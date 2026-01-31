@@ -23,22 +23,22 @@ CatalogsProductGroupCurrencyCriteria::~CatalogsProductGroupCurrencyCriteria()
 void
 CatalogsProductGroupCurrencyCriteria::__init()
 {
-	//values = new NonNullableCatalogsCurrency();
 	//negated = bool(false);
+	//values = new NonNullableCatalogsCurrency();
 }
 
 void
 CatalogsProductGroupCurrencyCriteria::__cleanup()
 {
-	//if(values != NULL) {
-	//
-	//delete values;
-	//values = NULL;
-	//}
 	//if(negated != NULL) {
 	//
 	//delete negated;
 	//negated = NULL;
+	//}
+	//if(values != NULL) {
+	//
+	//delete values;
+	//values = NULL;
 	//}
 	//
 }
@@ -48,6 +48,17 @@ CatalogsProductGroupCurrencyCriteria::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *negatedKey = "negated";
+	node = json_object_get_member(pJsonObject, negatedKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&negated, node, "bool", "");
+		} else {
+			
+		}
+	}
 	const gchar *valuesKey = "values";
 	node = json_object_get_member(pJsonObject, valuesKey);
 	if (node !=NULL) {
@@ -59,17 +70,6 @@ CatalogsProductGroupCurrencyCriteria::fromJson(char* jsonStr)
 			
 			NonNullableCatalogsCurrency* obj = static_cast<NonNullableCatalogsCurrency*> (&values);
 			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *negatedKey = "negated";
-	node = json_object_get_member(pJsonObject, negatedKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("bool")) {
-			jsonToValue(&negated, node, "bool", "");
-		} else {
 			
 		}
 	}
@@ -85,6 +85,15 @@ CatalogsProductGroupCurrencyCriteria::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("bool")) {
+		bool obj = getNegated();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *negatedKey = "negated";
+	json_object_set_member(pJsonObject, negatedKey, node);
 	if (isprimitive("NonNullableCatalogsCurrency")) {
 		NonNullableCatalogsCurrency obj = getValues();
 		node = converttoJson(&obj, "NonNullableCatalogsCurrency", "");
@@ -99,33 +108,12 @@ CatalogsProductGroupCurrencyCriteria::toJson()
 	}
 	const gchar *valuesKey = "values";
 	json_object_set_member(pJsonObject, valuesKey, node);
-	if (isprimitive("bool")) {
-		bool obj = getNegated();
-		node = converttoJson(&obj, "bool", "");
-	}
-	else {
-		
-	}
-	const gchar *negatedKey = "negated";
-	json_object_set_member(pJsonObject, negatedKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
-}
-
-NonNullableCatalogsCurrency
-CatalogsProductGroupCurrencyCriteria::getValues()
-{
-	return values;
-}
-
-void
-CatalogsProductGroupCurrencyCriteria::setValues(NonNullableCatalogsCurrency  values)
-{
-	this->values = values;
 }
 
 bool
@@ -138,6 +126,18 @@ void
 CatalogsProductGroupCurrencyCriteria::setNegated(bool  negated)
 {
 	this->negated = negated;
+}
+
+NonNullableCatalogsCurrency
+CatalogsProductGroupCurrencyCriteria::getValues()
+{
+	return values;
+}
+
+void
+CatalogsProductGroupCurrencyCriteria::setValues(NonNullableCatalogsCurrency  values)
+{
+	this->values = values;
 }
 
 

@@ -5,14 +5,6 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}report_type`,
-                label: `[${labelPrefix}report_type]`,
-                type: 'string',
-                choices: [
-                    'DISTRIBUTION_ISSUES',
-                ],
-            },
-            {
                 key: `${keyPrefix}catalog_id`,
                 label: `ID of the catalog entity. - [${labelPrefix}catalog_id]`,
                 type: 'string',
@@ -28,6 +20,16 @@ module.exports = {
                 type: 'string',
             },
             {
+                key: `${keyPrefix}ineligible_for_ads`,
+                label: `Indicates if issue makes items ineligible for ads distribution - [${labelPrefix}ineligible_for_ads]`,
+                type: 'boolean',
+            },
+            {
+                key: `${keyPrefix}ineligible_for_organic`,
+                label: `Indicates if issue makes items ineligible for organic distribution - [${labelPrefix}ineligible_for_organic]`,
+                type: 'boolean',
+            },
+            {
                 key: `${keyPrefix}message`,
                 label: `Title message describing the diagnostic issue - [${labelPrefix}message]`,
                 type: 'string',
@@ -38,28 +40,26 @@ module.exports = {
                 type: 'integer',
             },
             {
-                key: `${keyPrefix}ineligible_for_ads`,
-                label: `Indicates if issue makes items ineligible for ads distribution - [${labelPrefix}ineligible_for_ads]`,
-                type: 'boolean',
-            },
-            {
-                key: `${keyPrefix}ineligible_for_organic`,
-                label: `Indicates if issue makes items ineligible for organic distribution - [${labelPrefix}ineligible_for_organic]`,
-                type: 'boolean',
+                key: `${keyPrefix}report_type`,
+                label: `[${labelPrefix}report_type]`,
+                type: 'string',
+                choices: [
+                    'DISTRIBUTION_ISSUES',
+                ],
             },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'report_type': bundle.inputData?.[`${keyPrefix}report_type`],
             'catalog_id': bundle.inputData?.[`${keyPrefix}catalog_id`],
             'code': bundle.inputData?.[`${keyPrefix}code`],
             'code_label': bundle.inputData?.[`${keyPrefix}code_label`],
-            'message': bundle.inputData?.[`${keyPrefix}message`],
-            'occurrences': bundle.inputData?.[`${keyPrefix}occurrences`],
             'ineligible_for_ads': bundle.inputData?.[`${keyPrefix}ineligible_for_ads`],
             'ineligible_for_organic': bundle.inputData?.[`${keyPrefix}ineligible_for_organic`],
+            'message': bundle.inputData?.[`${keyPrefix}message`],
+            'occurrences': bundle.inputData?.[`${keyPrefix}occurrences`],
+            'report_type': bundle.inputData?.[`${keyPrefix}report_type`],
         }
     },
 }

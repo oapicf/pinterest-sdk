@@ -16,6 +16,8 @@
 package org.openapitools.client.models
 
 import org.openapitools.client.models.CreativeType
+import org.openapitools.client.models.CustomizableCTAType
+import org.openapitools.client.models.DisclosureType
 import org.openapitools.client.models.EntityStatus
 import org.openapitools.client.models.GridClickType
 import org.openapitools.client.models.QuizPinData
@@ -35,18 +37,20 @@ import com.squareup.moshi.JsonClass
  * @param carouselIosDeepLinks Comma-separated deep links for the carousel pin on iOS.
  * @param clickTrackingUrl Tracking url for the ad clicks.
  * @param creativeType 
+ * @param customizableCtaType 
  * @param destinationUrl Destination URL.
+ * @param disclosureType 
+ * @param disclosureUrl URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
+ * @param gridClickType 
  * @param iosDeepLink Deep link URL for iOS devices.
  * @param isPinDeleted Is original pin deleted?
  * @param isRemovable Is pin repinnable?
+ * @param leadFormId Lead form ID for lead ad generation.
  * @param name Name of the ad - 255 chars max.
+ * @param quizPinData Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
  * @param status 
  * @param trackingUrls 
  * @param viewTrackingUrl Tracking URL for ad impressions.
- * @param leadFormId Lead form ID for lead ad generation.
- * @param gridClickType 
- * @param customizableCtaType Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
- * @param quizPinData Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
  * @param pinId Pin ID. This field may only be updated for draft ads.
  */
 
@@ -84,9 +88,22 @@ data class AdUpdateRequest (
     @Json(name = "creative_type")
     val creativeType: CreativeType? = null,
 
+    @Json(name = "customizable_cta_type")
+    val customizableCtaType: CustomizableCTAType? = null,
+
     /* Destination URL. */
     @Json(name = "destination_url")
     val destinationUrl: kotlin.String? = null,
+
+    @Json(name = "disclosure_type")
+    val disclosureType: DisclosureType? = null,
+
+    /* URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure. */
+    @Json(name = "disclosure_url")
+    val disclosureUrl: kotlin.String? = null,
+
+    @Json(name = "grid_click_type")
+    val gridClickType: GridClickType? = null,
 
     /* Deep link URL for iOS devices. */
     @Json(name = "ios_deep_link")
@@ -100,9 +117,17 @@ data class AdUpdateRequest (
     @Json(name = "is_removable")
     val isRemovable: kotlin.Boolean? = null,
 
+    /* Lead form ID for lead ad generation. */
+    @Json(name = "lead_form_id")
+    val leadFormId: kotlin.String? = null,
+
     /* Name of the ad - 255 chars max. */
     @Json(name = "name")
     val name: kotlin.String? = null,
+
+    /* Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. */
+    @Json(name = "quiz_pin_data")
+    val quizPinData: QuizPinData? = null,
 
     @Json(name = "status")
     val status: EntityStatus? = null,
@@ -114,53 +139,12 @@ data class AdUpdateRequest (
     @Json(name = "view_tracking_url")
     val viewTrackingUrl: kotlin.String? = null,
 
-    /* Lead form ID for lead ad generation. */
-    @Json(name = "lead_form_id")
-    val leadFormId: kotlin.String? = null,
-
-    @Json(name = "grid_click_type")
-    val gridClickType: GridClickType? = null,
-
-    /* Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only) */
-    @Json(name = "customizable_cta_type")
-    val customizableCtaType: AdUpdateRequest.CustomizableCtaType? = null,
-
-    /* Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. */
-    @Json(name = "quiz_pin_data")
-    val quizPinData: QuizPinData? = null,
-
     /* Pin ID. This field may only be updated for draft ads. */
     @Json(name = "pin_id")
     val pinId: kotlin.String? = null
 
 ) {
 
-    /**
-     * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
-     *
-     * Values: GET_OFFER,LEARN_MORE,ORDER_NOW,SHOP_NOW,SIGN_UP,SUBSCRIBE,BUY_NOW,CONTACT_US,GET_QUOTE,VISIT_SITE,APPLY_NOW,BOOK_NOW,REQUEST_DEMO,REGISTER_NOW,FIND_A_DEALER,ADD_TO_CART,WATCH_NOW,READ_MORE
-     */
-    @JsonClass(generateAdapter = false)
-    enum class CustomizableCtaType(val value: kotlin.String) {
-        @Json(name = "GET_OFFER") GET_OFFER("GET_OFFER"),
-        @Json(name = "LEARN_MORE") LEARN_MORE("LEARN_MORE"),
-        @Json(name = "ORDER_NOW") ORDER_NOW("ORDER_NOW"),
-        @Json(name = "SHOP_NOW") SHOP_NOW("SHOP_NOW"),
-        @Json(name = "SIGN_UP") SIGN_UP("SIGN_UP"),
-        @Json(name = "SUBSCRIBE") SUBSCRIBE("SUBSCRIBE"),
-        @Json(name = "BUY_NOW") BUY_NOW("BUY_NOW"),
-        @Json(name = "CONTACT_US") CONTACT_US("CONTACT_US"),
-        @Json(name = "GET_QUOTE") GET_QUOTE("GET_QUOTE"),
-        @Json(name = "VISIT_SITE") VISIT_SITE("VISIT_SITE"),
-        @Json(name = "APPLY_NOW") APPLY_NOW("APPLY_NOW"),
-        @Json(name = "BOOK_NOW") BOOK_NOW("BOOK_NOW"),
-        @Json(name = "REQUEST_DEMO") REQUEST_DEMO("REQUEST_DEMO"),
-        @Json(name = "REGISTER_NOW") REGISTER_NOW("REGISTER_NOW"),
-        @Json(name = "FIND_A_DEALER") FIND_A_DEALER("FIND_A_DEALER"),
-        @Json(name = "ADD_TO_CART") ADD_TO_CART("ADD_TO_CART"),
-        @Json(name = "WATCH_NOW") WATCH_NOW("WATCH_NOW"),
-        @Json(name = "READ_MORE") READ_MORE("READ_MORE");
-    }
 
 }
 

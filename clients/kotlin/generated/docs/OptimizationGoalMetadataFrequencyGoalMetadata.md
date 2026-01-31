@@ -4,7 +4,7 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **frequency** | **kotlin.Int** |  |  [optional] |
+| **frequency** | **kotlin.Int** | Frequency target can only be between 2 and 20 |  [optional] |
 | **timerange** | [**inline**](#Timerange) | User entity counts time range |  [optional] |
 
 

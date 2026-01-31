@@ -9,8 +9,8 @@
 -export_type([openapi_search_user_boards_get_200_response/0]).
 
 -type openapi_search_user_boards_get_200_response() ::
-  [ {'items', list(openapi_board:openapi_board()) }
-  | {'bookmark', binary() }
+  [ {'bookmark', binary() }
+  | {'items', list(openapi_board:openapi_board()) }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_search_user_boards_get_200_response() ->
     openapi_search_user_boards_get_200_response([]).
 
 openapi_search_user_boards_get_200_response(Fields) ->
-  Default = [ {'items', list(openapi_board:openapi_board()) }
-            , {'bookmark', binary() }
+  Default = [ {'bookmark', binary() }
+            , {'items', list(openapi_board:openapi_board()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

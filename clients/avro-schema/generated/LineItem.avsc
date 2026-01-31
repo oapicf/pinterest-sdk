@@ -7,13 +7,13 @@
     {
       "name": "product_brand",
       "type": ["null", "string"],
-      "doc": "Product brand. For example, \"Parker\".",
+      "doc": "Product brand. For example, 'Parker'.",
       "default": null
     },
     {
       "name": "product_category",
       "type": ["null", "string"],
-      "doc": "Product category. For example, \"Shoes\".",
+      "doc": "Product category. For example, 'Shoes'.",
       "default": null
     },
     {
@@ -25,13 +25,13 @@
     {
       "name": "product_name",
       "type": ["null", "string"],
-      "doc": "Product name. For example, \"Parker Boots\".",
+      "doc": "Product name. For example, 'Parker Boots'.",
       "default": null
     },
     {
       "name": "product_price",
       "type": ["null", "string"],
-      "doc": "Product price. For example, \"99.99\".",
+      "doc": "Product price. For example, '99.99'.",
       "default": null
     },
     {
@@ -43,13 +43,13 @@
     {
       "name": "product_variant",
       "type": ["null", "string"],
-      "doc": "Product variant. For example, \"Red\".",
+      "doc": "Product variant. For example, 'Red'.",
       "default": null
     },
     {
       "name": "product_variant_id",
       "type": ["null", "string"],
-      "doc": "Product variant ID. For example, \"1414-34832\".",
+      "doc": "Product variant ID. For example, '1414-34832'.",
       "default": null
     }
   ]

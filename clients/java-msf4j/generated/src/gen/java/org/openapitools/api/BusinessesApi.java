@@ -50,6 +50,7 @@ import org.openapitools.model.PermissionsWithOwner;
 import org.openapitools.model.RespondToInvitesResponseArray;
 import org.openapitools.model.SharedAudience;
 import org.openapitools.model.SharedAudienceResponse;
+import org.openapitools.model.SystemUserUpdateRequest;
 import org.openapitools.model.UpdateAssetGroupBody;
 import org.openapitools.model.UpdateAssetGroupResponse;
 import org.openapitools.model.UpdateInvitesResultsResponseArray;
@@ -77,7 +78,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the businesses API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BusinessesApi  {
    private final BusinessesApiService delegate = BusinessesApiServiceFactory.getBusinessesApi();
 
@@ -208,12 +209,13 @@ public class BusinessesApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = BusinessAssetMembersGet200Response.class) })
     public Response businessAssetMembersGet(@ApiParam(value = "Unique identifier of the requesting business.",required=true) @PathParam("business_id") String businessId
 ,@ApiParam(value = "Unique identifier of a business asset.",required=true) @PathParam("asset_id") String assetId
+,@ApiParam(value = "Fetches system users if True. Fetches regular user employees if False.", defaultValue="false") @DefaultValue("false") @QueryParam("fetch_system_users") Boolean fetchSystemUsers
 ,@ApiParam(value = "Cursor used to fetch the next page of items") @QueryParam("bookmark") String bookmark
 ,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25") @QueryParam("page_size") Integer pageSize
 ,@ApiParam(value = "An index to start fetching the results from. Only the results starting from this index will be returned.", defaultValue="0") @DefaultValue("0") @QueryParam("start_index") Integer startIndex
 )
     throws NotFoundException {
-        return delegate.businessAssetMembersGet(businessId,assetId,bookmark,pageSize,startIndex);
+        return delegate.businessAssetMembersGet(businessId,assetId,fetchSystemUsers,bookmark,pageSize,startIndex);
     }
     @GET
     @Path("/{business_id}/assets/{asset_id}/partners")
@@ -254,7 +256,7 @@ public class BusinessesApi  {
 ,@ApiParam(value = "A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned.") @QueryParam("permissions") List<PermissionsWithOwner> permissions
 ,@ApiParam(value = "A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child.") @QueryParam("child_asset_id") String childAssetId
 ,@ApiParam(value = "An asset group unique identifier. Used to fetch assets contained within the specified asset group.") @QueryParam("asset_group_id") String assetGroupId
-,@ApiParam(value = "A resource type to filter the assets by. Only assets of the specified type will be returned.", allowableValues="AD_ACCOUNT, PROFILE, ASSET_GROUP", defaultValue="AD_ACCOUNT") @DefaultValue("AD_ACCOUNT") @QueryParam("asset_type") String assetType
+,@ApiParam(value = "A resource type to filter the assets by. Only assets of the specified type will be returned.", allowableValues="AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER", defaultValue="AD_ACCOUNT") @DefaultValue("AD_ACCOUNT") @QueryParam("asset_type") String assetType
 ,@ApiParam(value = "An index to start fetching the results from. Only the results starting from this index will be returned.", defaultValue="0") @DefaultValue("0") @QueryParam("start_index") Integer startIndex
 ,@ApiParam(value = "Cursor used to fetch the next page of items") @QueryParam("bookmark") String bookmark
 ,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25") @QueryParam("page_size") Integer pageSize
@@ -277,7 +279,7 @@ public class BusinessesApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = BusinessMemberAssetsGet200Response.class) })
     public Response businessMemberAssetsGet(@ApiParam(value = "Unique identifier of the requesting business.",required=true) @PathParam("business_id") String businessId
 ,@ApiParam(value = "The member id to fetch assets for.",required=true) @PathParam("member_id") String memberId
-,@ApiParam(value = "A resource type to filter the assets by. Only assets of the specified type will be returned.", allowableValues="AD_ACCOUNT, PROFILE, ASSET_GROUP", defaultValue="AD_ACCOUNT") @DefaultValue("AD_ACCOUNT") @QueryParam("asset_type") String assetType
+,@ApiParam(value = "A resource type to filter the assets by. Only assets of the specified type will be returned.", allowableValues="AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER", defaultValue="AD_ACCOUNT") @DefaultValue("AD_ACCOUNT") @QueryParam("asset_type") String assetType
 ,@ApiParam(value = "An index to start fetching the results from. Only the results starting from this index will be returned.", defaultValue="0") @DefaultValue("0") @QueryParam("start_index") Integer startIndex
 ,@ApiParam(value = "Cursor used to fetch the next page of items") @QueryParam("bookmark") String bookmark
 ,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25") @QueryParam("page_size") Integer pageSize
@@ -339,7 +341,7 @@ public class BusinessesApi  {
     public Response businessPartnerAssetAccessGet(@ApiParam(value = "Unique identifier of the requesting business.",required=true) @PathParam("business_id") String businessId
 ,@ApiParam(value = "The partner id to be bound to the Business",required=true) @PathParam("partner_id") String partnerId
 ,@ApiParam(value = "Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.", allowableValues="INTERNAL, EXTERNAL", defaultValue="INTERNAL") @DefaultValue("INTERNAL") @QueryParam("partner_type") PartnerType partnerType
-,@ApiParam(value = "A resource type to filter the assets by. Only assets of the specified type will be returned.", allowableValues="AD_ACCOUNT, PROFILE, ASSET_GROUP", defaultValue="AD_ACCOUNT") @DefaultValue("AD_ACCOUNT") @QueryParam("asset_type") String assetType
+,@ApiParam(value = "A resource type to filter the assets by. Only assets of the specified type will be returned.", allowableValues="AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER", defaultValue="AD_ACCOUNT") @DefaultValue("AD_ACCOUNT") @QueryParam("asset_type") String assetType
 ,@ApiParam(value = "An index to start fetching the results from. Only the results starting from this index will be returned.", defaultValue="0") @DefaultValue("0") @QueryParam("start_index") Integer startIndex
 ,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25") @QueryParam("page_size") Integer pageSize
 ,@ApiParam(value = "Cursor used to fetch the next page of items") @QueryParam("bookmark") String bookmark
@@ -360,7 +362,7 @@ public class BusinessesApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = DeleteInvitesResultsResponseArray.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = DeleteInvitesResultsResponseArray.class) })
-    public Response cancelInvitesOrRequests(@ApiParam(value = "Business id",required=true) @PathParam("business_id") String businessId
+    public Response cancelInvitesOrRequests(@ApiParam(value = "Unique identifier of the requesting business.",required=true) @PathParam("business_id") String businessId
 ,@ApiParam(value = "A list with invite ids" ,required=true) CancelInvitesBody cancelInvitesBody
 )
     throws NotFoundException {
@@ -399,7 +401,7 @@ public class BusinessesApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = CreateInvitesResultsResponseArray.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = CreateInvitesResultsResponseArray.class) })
-    public Response createMembershipOrPartnershipInvites(@ApiParam(value = "Business id",required=true) @PathParam("business_id") String businessId
+    public Response createMembershipOrPartnershipInvites(@ApiParam(value = "Unique identifier of the requesting business.",required=true) @PathParam("business_id") String businessId
 ,@ApiParam(value = "An object with the properties: invite_type, partners, members, business_role" ,required=true) CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody
 )
     throws NotFoundException {
@@ -498,6 +500,7 @@ public class BusinessesApi  {
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = GetBusinessMembers200Response.class) })
     public Response getBusinessMembers(@ApiParam(value = "Unique identifier of the requesting business.",required=true) @PathParam("business_id") String businessId
+,@ApiParam(value = "Fetches system users if True. Fetches regular user employees if False.", defaultValue="false") @DefaultValue("false") @QueryParam("fetch_system_users") Boolean fetchSystemUsers
 ,@ApiParam(value = "Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are", defaultValue="false") @DefaultValue("false") @QueryParam("assets_summary") Boolean assetsSummary
 ,@ApiParam(value = "A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.") @QueryParam("business_roles") List<MemberBusinessRole> businessRoles
 ,@ApiParam(value = "A list of business members ids separated by comma.") @QueryParam("member_ids") String memberIds
@@ -506,7 +509,7 @@ public class BusinessesApi  {
 ,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25") @QueryParam("page_size") Integer pageSize
 )
     throws NotFoundException {
-        return delegate.getBusinessMembers(businessId,assetsSummary,businessRoles,memberIds,startIndex,bookmark,pageSize);
+        return delegate.getBusinessMembers(businessId,fetchSystemUsers,assetsSummary,businessRoles,memberIds,startIndex,bookmark,pageSize);
     }
     @GET
     @Path("/{business_id}/partners")
@@ -598,6 +601,29 @@ public class BusinessesApi  {
         return delegate.sharedAudiencesForBusinessList(businessId,bookmark,order,pageSize);
     }
     @PATCH
+    @Path("/{business_id}/system_users/{system_user_id}")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @io.swagger.annotations.ApiOperation(value = "Update a system user information.", notes = "Update a system user information such as name.", response = Void.class, authorizations = {
+        @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
+            @io.swagger.annotations.AuthorizationScope(scope = "biz_access:read", description = "See business access data"),
+            @io.swagger.annotations.AuthorizationScope(scope = "biz_access:write", description = "Create, update, or delete business access data")
+        })
+    }, tags={ "business_access_relationships", })
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "System user updated successfully.", response = Void.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid parameters.", response = Void.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Void.class) })
+    public Response systemUserUpdate(@ApiParam(value = "Unique identifier of the requesting business.",required=true) @PathParam("business_id") String businessId
+,@ApiParam(value = "Unique identifier of a system user.",required=true) @PathParam("system_user_id") String systemUserId
+,@ApiParam(value = "" ,required=true) SystemUserUpdateRequest systemUserUpdateRequest
+)
+    throws NotFoundException {
+        return delegate.systemUserUpdate(businessId,systemUserId,systemUserUpdateRequest);
+    }
+    @PATCH
     @Path("/{business_id}/members")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
@@ -620,7 +646,7 @@ public class BusinessesApi  {
     @Path("/{business_id}/audiences/ad_accounts/shared")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Update audience sharing from a business to ad accounts", notes = "From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.", response = SharedAudienceResponse.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Update audience sharing from a business to ad accounts", notes = "From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.", response = SharedAudienceResponse.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "biz_access:write", description = "Create, update, or delete business access data")
         })
@@ -641,7 +667,7 @@ public class BusinessesApi  {
     @Path("/{business_id}/audiences/businesses/shared")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Update audience sharing between businesses", notes = "From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.", response = BusinessSharedAudienceResponse.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Update audience sharing between businesses", notes = "From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.", response = BusinessSharedAudienceResponse.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "pinterest_oauth2", scopes = {
             @io.swagger.annotations.AuthorizationScope(scope = "biz_access:write", description = "Create, update, or delete business access data")
         })

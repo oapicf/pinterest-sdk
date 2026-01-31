@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"connectedMerchantId": @"connected_merchant_id", @"connectedAdvertiserId": @"connected_advertiser_id", @"connectedLbaId": @"connected_lba_id", @"connectedTagId": @"connected_tag_id", @"partnerAccessToken": @"partner_access_token", @"partnerRefreshToken": @"partner_refresh_token", @"partnerPrimaryEmail": @"partner_primary_email", @"partnerAccessTokenExpiry": @"partner_access_token_expiry", @"partnerRefreshTokenExpiry": @"partner_refresh_token_expiry", @"scopes": @"scopes", @"additionalId1": @"additional_id_1", @"partnerMetadata": @"partner_metadata" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"additionalId1": @"additional_id_1", @"connectedAdvertiserId": @"connected_advertiser_id", @"connectedLbaId": @"connected_lba_id", @"connectedMerchantId": @"connected_merchant_id", @"connectedTagId": @"connected_tag_id", @"partnerAccessToken": @"partner_access_token", @"partnerAccessTokenExpiry": @"partner_access_token_expiry", @"partnerMetadata": @"partner_metadata", @"partnerPrimaryEmail": @"partner_primary_email", @"partnerRefreshToken": @"partner_refresh_token", @"partnerRefreshTokenExpiry": @"partner_refresh_token_expiry", @"scopes": @"scopes" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"connectedMerchantId", @"connectedAdvertiserId", @"connectedLbaId", @"connectedTagId", @"partnerAccessToken", @"partnerRefreshToken", @"partnerPrimaryEmail", @"partnerAccessTokenExpiry", @"partnerRefreshTokenExpiry", @"scopes", @"additionalId1", @"partnerMetadata"];
+  NSArray *optionalProperties = @[@"additionalId1", @"connectedAdvertiserId", @"connectedLbaId", @"connectedMerchantId", @"connectedTagId", @"partnerAccessToken", @"partnerAccessTokenExpiry", @"partnerMetadata", @"partnerPrimaryEmail", @"partnerRefreshToken", @"partnerRefreshTokenExpiry", @"scopes"];
   return [optionalProperties containsObject:propertyName];
 }
 

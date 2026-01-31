@@ -7,12 +7,13 @@
 Name | Type
 ------------ | -------------
 `refreshToken` | string
+`refreshTokenExpiresAt` | number
 `refreshTokenExpiresIn` | number
-`responseType` | string
 `accessToken` | string
-`tokenType` | string
 `expiresIn` | number
+`responseType` | string
 `scope` | string
+`tokenType` | string
 
 ## Example
 
@@ -22,12 +23,13 @@ import type { OauthAccessTokenResponseCode } from ''
 // TODO: Update the object below with actual values
 const example = {
   "refreshToken": null,
+  "refreshTokenExpiresAt": null,
   "refreshTokenExpiresIn": null,
-  "responseType": null,
   "accessToken": null,
-  "tokenType": null,
   "expiresIn": null,
+  "responseType": null,
   "scope": null,
+  "tokenType": null,
 } satisfies OauthAccessTokenResponseCode
 
 console.log(example)

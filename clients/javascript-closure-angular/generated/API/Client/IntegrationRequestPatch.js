@@ -10,7 +10,7 @@ API.Client.IntegrationRequestPatch = function() {}
  * @type {!string}
  * @export
  */
-API.Client.IntegrationRequestPatch.prototype.connectedMerchantId;
+API.Client.IntegrationRequestPatch.prototype.additionalId1;
 
 /**
  * @type {!string}
@@ -28,6 +28,12 @@ API.Client.IntegrationRequestPatch.prototype.connectedLbaId;
  * @type {!string}
  * @export
  */
+API.Client.IntegrationRequestPatch.prototype.connectedMerchantId;
+
+/**
+ * @type {!string}
+ * @export
+ */
 API.Client.IntegrationRequestPatch.prototype.connectedTagId;
 
 /**
@@ -37,10 +43,16 @@ API.Client.IntegrationRequestPatch.prototype.connectedTagId;
 API.Client.IntegrationRequestPatch.prototype.partnerAccessToken;
 
 /**
+ * @type {!number}
+ * @export
+ */
+API.Client.IntegrationRequestPatch.prototype.partnerAccessTokenExpiry;
+
+/**
  * @type {!string}
  * @export
  */
-API.Client.IntegrationRequestPatch.prototype.partnerRefreshToken;
+API.Client.IntegrationRequestPatch.prototype.partnerMetadata;
 
 /**
  * @type {!string}
@@ -49,10 +61,10 @@ API.Client.IntegrationRequestPatch.prototype.partnerRefreshToken;
 API.Client.IntegrationRequestPatch.prototype.partnerPrimaryEmail;
 
 /**
- * @type {!number}
+ * @type {!string}
  * @export
  */
-API.Client.IntegrationRequestPatch.prototype.partnerAccessTokenExpiry;
+API.Client.IntegrationRequestPatch.prototype.partnerRefreshToken;
 
 /**
  * @type {!number}
@@ -65,16 +77,4 @@ API.Client.IntegrationRequestPatch.prototype.partnerRefreshTokenExpiry;
  * @export
  */
 API.Client.IntegrationRequestPatch.prototype.scopes;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.IntegrationRequestPatch.prototype.additionalId1;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.IntegrationRequestPatch.prototype.partnerMetadata;
 

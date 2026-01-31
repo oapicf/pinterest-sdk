@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;UserBusinessRoleBinding&gt;](UserBusinessRoleBinding.md)
 `bookmark` | string
+`items` | [Array&lt;UserBusinessRoleBinding&gt;](UserBusinessRoleBinding.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { GetBusinessEmployers200Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "items": null,
   "bookmark": null,
+  "items": null,
 } satisfies GetBusinessEmployers200Response
 
 console.log(example)

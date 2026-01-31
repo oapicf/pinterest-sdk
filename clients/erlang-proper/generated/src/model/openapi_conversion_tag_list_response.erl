@@ -9,7 +9,7 @@
 -export_type([openapi_conversion_tag_list_response/0]).
 
 -type openapi_conversion_tag_list_response() ::
-  [ {'items', list(openapi_conversion_tag_response:openapi_conversion_tag_response()) }
+  [ {'items', list(openapi_conversion_tag:openapi_conversion_tag()) }
   ].
 
 
@@ -17,7 +17,7 @@ openapi_conversion_tag_list_response() ->
     openapi_conversion_tag_list_response([]).
 
 openapi_conversion_tag_list_response(Fields) ->
-  Default = [ {'items', list(openapi_conversion_tag_response:openapi_conversion_tag_response()) }
+  Default = [ {'items', list(openapi_conversion_tag:openapi_conversion_tag()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

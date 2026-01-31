@@ -5,7 +5,7 @@ Pin with image.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**media_type** | **character** |  | [optional] 
-**images** | [**PinMediaWithImageAllOfImages**](PinMediaWithImage_allOf_images.md) |  | [optional] 
+**images** | [**ImageSize**](ImageSize.md) |  | [optional] 
+**media_type** | **character** |  | [Enum: [image]] 
 
 

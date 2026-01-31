@@ -11,15 +11,15 @@ import scala.collection.immutable.Seq
 
 /**
  * 
- * @param questionUnderscoretype 
  * @param customUnderscorequestionUnderscorefieldUnderscoretype 
  * @param customUnderscorequestionUnderscorelabel Question label for a custom question.
  * @param customUnderscorequestionUnderscoreoptions Question options for a custom question.
+ * @param questionUnderscoretype 
  */
-case class LeadFormQuestion(questionUnderscoretype: Option[LeadFormQuestionType],
-                customUnderscorequestionUnderscorefieldUnderscoretype: Option[LeadFormQuestionFieldType],
+case class LeadFormQuestion(customUnderscorequestionUnderscorefieldUnderscoretype: Option[LeadFormQuestionFieldType],
                 customUnderscorequestionUnderscorelabel: Option[String],
-                customUnderscorequestionUnderscoreoptions: Option[Seq[String]]
+                customUnderscorequestionUnderscoreoptions: Option[Seq[String]],
+                questionUnderscoretype: Option[LeadFormQuestionType]
                 )
 
 object LeadFormQuestion {

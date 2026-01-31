@@ -34,6 +34,14 @@ public class CatalogsRetailBatchRequestItemsInnerTest {
     }
 
     /**
+     * Test the property 'attributes'
+     */
+    @Test
+    public void attributesTest() {
+        // TODO: test attributes
+    }
+
+    /**
      * Test the property 'itemId'
      */
     @Test
@@ -50,19 +58,19 @@ public class CatalogsRetailBatchRequestItemsInnerTest {
     }
 
     /**
-     * Test the property 'attributes'
-     */
-    @Test
-    public void attributesTest() {
-        // TODO: test attributes
-    }
-
-    /**
      * Test the property 'updateMask'
      */
     @Test
     public void updateMaskTest() {
         // TODO: test updateMask
+    }
+
+    /**
+     * Test the property 'lastUpdatedTime'
+     */
+    @Test
+    public void lastUpdatedTimeTest() {
+        // TODO: test lastUpdatedTime
     }
 
 }

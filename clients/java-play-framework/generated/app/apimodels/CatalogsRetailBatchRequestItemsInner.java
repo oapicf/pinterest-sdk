@@ -23,9 +23,15 @@ import javax.validation.Valid;
 /**
  * CatalogsRetailBatchRequestItemsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsRetailBatchRequestItemsInner   {
+  @JsonProperty("attributes")
+  @NotNull
+@Valid
+
+  private ItemAttributesRequest attributes;
+
   @JsonProperty("item_id")
   @NotNull
 
@@ -65,16 +71,31 @@ public class CatalogsRetailBatchRequestItemsInner   {
 
   private OperationEnum operation;
 
-  @JsonProperty("attributes")
-  @NotNull
-@Valid
-
-  private ItemAttributesRequest attributes;
-
   @JsonProperty("update_mask")
   @Valid
 
   private List<UpdateMaskFieldType> updateMask = null;
+
+  @JsonProperty("last_updated_time")
+  
+  private Long lastUpdatedTime;
+
+  public CatalogsRetailBatchRequestItemsInner attributes(ItemAttributesRequest attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  public ItemAttributesRequest getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(ItemAttributesRequest attributes) {
+    this.attributes = attributes;
+  }
 
   public CatalogsRetailBatchRequestItemsInner itemId(String itemId) {
     this.itemId = itemId;
@@ -110,23 +131,6 @@ public class CatalogsRetailBatchRequestItemsInner   {
     this.operation = operation;
   }
 
-  public CatalogsRetailBatchRequestItemsInner attributes(ItemAttributesRequest attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  public ItemAttributesRequest getAttributes() {
-    return attributes;
-  }
-
-  public void setAttributes(ItemAttributesRequest attributes) {
-    this.attributes = attributes;
-  }
-
   public CatalogsRetailBatchRequestItemsInner updateMask(List<UpdateMaskFieldType> updateMask) {
     this.updateMask = updateMask;
     return this;
@@ -152,6 +156,23 @@ public class CatalogsRetailBatchRequestItemsInner   {
     this.updateMask = updateMask;
   }
 
+  public CatalogsRetailBatchRequestItemsInner lastUpdatedTime(Long lastUpdatedTime) {
+    this.lastUpdatedTime = lastUpdatedTime;
+    return this;
+  }
+
+   /**
+   * The millisecond timestamp when the item was lastly modified by the merchant.
+   * @return lastUpdatedTime
+  **/
+  public Long getLastUpdatedTime() {
+    return lastUpdatedTime;
+  }
+
+  public void setLastUpdatedTime(Long lastUpdatedTime) {
+    this.lastUpdatedTime = lastUpdatedTime;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -162,15 +183,16 @@ public class CatalogsRetailBatchRequestItemsInner   {
       return false;
     }
     CatalogsRetailBatchRequestItemsInner catalogsRetailBatchRequestItemsInner = (CatalogsRetailBatchRequestItemsInner) o;
-    return Objects.equals(itemId, catalogsRetailBatchRequestItemsInner.itemId) &&
+    return Objects.equals(attributes, catalogsRetailBatchRequestItemsInner.attributes) &&
+        Objects.equals(itemId, catalogsRetailBatchRequestItemsInner.itemId) &&
         Objects.equals(operation, catalogsRetailBatchRequestItemsInner.operation) &&
-        Objects.equals(attributes, catalogsRetailBatchRequestItemsInner.attributes) &&
-        Objects.equals(updateMask, catalogsRetailBatchRequestItemsInner.updateMask);
+        Objects.equals(updateMask, catalogsRetailBatchRequestItemsInner.updateMask) &&
+        Objects.equals(lastUpdatedTime, catalogsRetailBatchRequestItemsInner.lastUpdatedTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, operation, attributes, updateMask);
+    return Objects.hash(attributes, itemId, operation, updateMask, lastUpdatedTime);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -179,10 +201,11 @@ public class CatalogsRetailBatchRequestItemsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailBatchRequestItemsInner {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    updateMask: ").append(toIndentedString(updateMask)).append("\n");
+    sb.append("    lastUpdatedTime: ").append(toIndentedString(lastUpdatedTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }

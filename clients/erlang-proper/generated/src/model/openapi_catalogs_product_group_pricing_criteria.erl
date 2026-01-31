@@ -10,8 +10,8 @@
 
 -type openapi_catalogs_product_group_pricing_criteria() ::
   [ {'inclusion', boolean() }
-  | {'values', integer() }
   | {'negated', boolean() }
+  | {'values', integer() }
   ].
 
 
@@ -20,8 +20,8 @@ openapi_catalogs_product_group_pricing_criteria() ->
 
 openapi_catalogs_product_group_pricing_criteria(Fields) ->
   Default = [ {'inclusion', boolean() }
-            , {'values', integer() }
             , {'negated', boolean() }
+            , {'values', integer() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

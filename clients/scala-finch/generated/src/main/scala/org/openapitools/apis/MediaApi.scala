@@ -3,11 +3,11 @@ package org.openapitools.apis
 import java.io._
 import org.openapitools._
 import org.openapitools.models._
-import org.openapitools.models.Error
+import org.openapitools.models.Media
 import org.openapitools.models.MediaList200Response
 import org.openapitools.models.MediaUpload
-import org.openapitools.models.MediaUploadDetails
-import org.openapitools.models.MediaUploadRequest
+import org.openapitools.models.MediaUploadCreate
+import org.openapitools.models.PinterestLibError
 import io.finch.circe._
 import io.circe.generic.semiauto._
 import com.twitter.concurrent.AsyncStream
@@ -58,8 +58,8 @@ object MediaApi {
         * @return An endpoint representing a MediaUpload
         */
         private def media/create(da: DataAccessor): Endpoint[MediaUpload] =
-        post("media" :: jsonBody[MediaUploadRequest]) { (mediaUploadRequest: MediaUploadRequest) =>
-          da.Media_media/create(mediaUploadRequest) match {
+        post("media" :: jsonBody[MediaUploadCreate]) { (mediaUploadCreate: MediaUploadCreate) =>
+          da.Media_media/create(mediaUploadCreate) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }
@@ -69,9 +69,9 @@ object MediaApi {
 
         /**
         * 
-        * @return An endpoint representing a MediaUploadDetails
+        * @return An endpoint representing a Media
         */
-        private def media/get(da: DataAccessor): Endpoint[MediaUploadDetails] =
+        private def media/get(da: DataAccessor): Endpoint[Media] =
         get("media" :: string) { (mediaId: String) =>
           da.Media_media/get(mediaId) match {
             case Left(error) => checkError(error)

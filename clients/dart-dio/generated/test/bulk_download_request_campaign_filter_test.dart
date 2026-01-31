@@ -7,9 +7,8 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(BulkDownloadRequestCampaignFilter, () {
-    // Unix UTC timestamp.
-    // String startTime
-    test('to test the property `startTime`', () async {
+    // BuiltList<CampaignSummaryStatus> campaignStatus
+    test('to test the property `campaignStatus`', () async {
       // TODO
     });
 
@@ -25,13 +24,14 @@ void main() {
       // TODO
     });
 
-    // BuiltList<CampaignSummaryStatus> campaignStatus
-    test('to test the property `campaignStatus`', () async {
+    // BuiltList<ObjectiveType> objectiveType
+    test('to test the property `objectiveType`', () async {
       // TODO
     });
 
-    // BuiltList<ObjectiveType> objectiveType
-    test('to test the property `objectiveType`', () async {
+    // Unix UTC timestamp.
+    // String startTime
+    test('to test the property `startTime`', () async {
       // TODO
     });
 

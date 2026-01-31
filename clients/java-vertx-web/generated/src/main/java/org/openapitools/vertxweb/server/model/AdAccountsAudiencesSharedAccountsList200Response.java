@@ -12,24 +12,15 @@ import org.openapitools.vertxweb.server.model.SharedAudienceAccount;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AdAccountsAudiencesSharedAccountsList200Response   {
   
-  private List<SharedAudienceAccount> items = new ArrayList<>();
   private String bookmark;
+  private List<SharedAudienceAccount> items = new ArrayList<>();
 
   public AdAccountsAudiencesSharedAccountsList200Response () {
 
   }
 
-  public AdAccountsAudiencesSharedAccountsList200Response (List<SharedAudienceAccount> items, String bookmark) {
-    this.items = items;
+  public AdAccountsAudiencesSharedAccountsList200Response (String bookmark, List<SharedAudienceAccount> items) {
     this.bookmark = bookmark;
-  }
-
-    
-  @JsonProperty("items")
-  public List<SharedAudienceAccount> getItems() {
-    return items;
-  }
-  public void setItems(List<SharedAudienceAccount> items) {
     this.items = items;
   }
 
@@ -42,6 +33,15 @@ public class AdAccountsAudiencesSharedAccountsList200Response   {
     this.bookmark = bookmark;
   }
 
+    
+  @JsonProperty("items")
+  public List<SharedAudienceAccount> getItems() {
+    return items;
+  }
+  public void setItems(List<SharedAudienceAccount> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -52,13 +52,13 @@ public class AdAccountsAudiencesSharedAccountsList200Response   {
       return false;
     }
     AdAccountsAudiencesSharedAccountsList200Response adAccountsAudiencesSharedAccountsList200Response = (AdAccountsAudiencesSharedAccountsList200Response) o;
-    return Objects.equals(items, adAccountsAudiencesSharedAccountsList200Response.items) &&
-        Objects.equals(bookmark, adAccountsAudiencesSharedAccountsList200Response.bookmark);
+    return Objects.equals(bookmark, adAccountsAudiencesSharedAccountsList200Response.bookmark) &&
+        Objects.equals(items, adAccountsAudiencesSharedAccountsList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -66,8 +66,8 @@ public class AdAccountsAudiencesSharedAccountsList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdAccountsAudiencesSharedAccountsList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

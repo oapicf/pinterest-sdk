@@ -5,18 +5,18 @@ context("Test UpdateAssetGroupResponse")
 
 model_instance <- UpdateAssetGroupResponse$new()
 
-test_that("updated_asset_groups", {
-  # tests for the property `updated_asset_groups` (array[AssetGroupBinding])
-  # A list of successfully edited asset groups.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`updated_asset_groups`, "EXPECTED_RESULT")
-})
-
 test_that("exceptions", {
   # tests for the property `exceptions` (array[UpdateAssetGroupResponseExceptionsInner])
   # A list of errors associated with the asset groups. Will be returned if there is an error.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`exceptions`, "EXPECTED_RESULT")
+})
+
+test_that("updated_asset_groups", {
+  # tests for the property `updated_asset_groups` (array[AssetGroupBinding])
+  # A list of successfully edited asset groups.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`updated_asset_groups`, "EXPECTED_RESULT")
 })

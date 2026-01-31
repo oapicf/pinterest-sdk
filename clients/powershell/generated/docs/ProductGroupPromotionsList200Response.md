@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**ProductGroupPromotionResponseItem[]**](ProductGroupPromotionResponseItem.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**ProductGroupPromotion[]**](ProductGroupPromotion.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$ProductGroupPromotionsList200Response = Initialize-PSOpenAPIToolsProductGroupPromotionsList200Response  -Items null `
- -Bookmark null
+$ProductGroupPromotionsList200Response = Initialize-PSOpenAPIToolsProductGroupPromotionsList200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

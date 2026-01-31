@@ -51,6 +51,7 @@ test_that("BusinessAssetMembersGet", {
   # Get all the members the requesting business has granted access to on the given asset.
   # @param business_id character Unique identifier of the requesting business.
   # @param asset_id character Unique identifier of a business asset.
+  # @param fetch_system_users character Fetches system users if True. Fetches regular user employees if False. (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
   # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
   # @param start_index integer An index to start fetching the results from. Only the results starting from this index will be returned. (optional)

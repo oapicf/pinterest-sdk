@@ -9,9 +9,9 @@
 -export_type([openapi_template_response_date_range_relative_date_range/0]).
 
 -type openapi_template_response_date_range_relative_date_range() ::
-  [ {'type', binary() }
+  [ {'end_days_in_past', integer() }
   | {'start_days_in_past', integer() }
-  | {'end_days_in_past', integer() }
+  | {'type', binary() }
   ].
 
 
@@ -19,9 +19,9 @@ openapi_template_response_date_range_relative_date_range() ->
     openapi_template_response_date_range_relative_date_range([]).
 
 openapi_template_response_date_range_relative_date_range(Fields) ->
-  Default = [ {'type', binary() }
+  Default = [ {'end_days_in_past', integer() }
             , {'start_days_in_past', integer() }
-            , {'end_days_in_past', integer() }
+            , {'type', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

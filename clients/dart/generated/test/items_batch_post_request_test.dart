@@ -16,6 +16,12 @@ void main() {
   // final instance = ItemsBatchPostRequest();
 
   group('test ItemsBatchPostRequest', () {
+    // Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+    // String catalogId
+    test('to test the property `catalogId`', () async {
+      // TODO
+    });
+
     // String catalogType
     test('to test the property `catalogType`', () async {
       // TODO
@@ -26,21 +32,15 @@ void main() {
       // TODO
     });
 
-    // We recommend using the CatalogsLocale values.
-    // String language
-    test('to test the property `language`', () async {
-      // TODO
-    });
-
     // Array with catalogs items
     // List<ItemDeleteBatchRecord> items (default value: const [])
     test('to test the property `items`', () async {
       // TODO
     });
 
-    // Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-    // String catalogId
-    test('to test the property `catalogId`', () async {
+    // We recommend using the CatalogsLocale values.
+    // String language
+    test('to test the property `language`', () async {
       // TODO
     });
 

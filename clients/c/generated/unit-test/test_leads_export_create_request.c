@@ -22,15 +22,15 @@ leads_export_create_request_t* instantiate_leads_export_create_request(int inclu
   leads_export_create_request_t* leads_export_create_request = NULL;
   if (include_optional) {
     leads_export_create_request = leads_export_create_request_create(
+      "687201361754",
       "2020-12-20",
-      "2020-12-20",
-      "687201361754"
+      "2020-12-20"
     );
   } else {
     leads_export_create_request = leads_export_create_request_create(
+      "687201361754",
       "2020-12-20",
-      "2020-12-20",
-      "687201361754"
+      "2020-12-20"
     );
   }
 

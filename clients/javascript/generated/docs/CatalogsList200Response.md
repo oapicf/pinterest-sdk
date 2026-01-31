@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[Catalog]**](Catalog.md) |  | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[Catalog]**](Catalog.md) |  | 
 
 

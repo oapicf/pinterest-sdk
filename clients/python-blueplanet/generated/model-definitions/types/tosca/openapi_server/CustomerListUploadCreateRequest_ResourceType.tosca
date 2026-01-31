@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CustomerListUploadCreateRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CustomerListUploadCreateRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  UserListOperationType = openapi_server.resourceTypes.UserListOperationType
+}
+resourceTypes {
+
+  CustomerListUploadCreateRequest {
+    title = CustomerListUploadCreateRequest
+    description = CustomerListUploadCreateRequest
+    derivedFrom = Root
+    properties {
+        operation {
+          type = UserListOperationType
+          description = ""
+          optional = true
+        }
+        total_parts {
+          type =  integer
+          description = "Number of parts to upload the file in."
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CustomerListUploadCreateRequest {
+    title = CustomerListUploadCreateRequest
+    description = CustomerListUploadCreateRequest
+    implements = openapi_server.resourceTypes.CustomerListUploadCreateRequest
+
+  }
+}

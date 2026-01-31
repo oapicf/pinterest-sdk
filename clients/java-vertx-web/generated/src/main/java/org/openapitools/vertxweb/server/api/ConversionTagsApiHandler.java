@@ -1,11 +1,12 @@
 package org.openapitools.vertxweb.server.api;
 
 import org.openapitools.vertxweb.server.model.ConversionEventResponse;
+import org.openapitools.vertxweb.server.model.ConversionTag;
 import org.openapitools.vertxweb.server.model.ConversionTagCreate;
-import org.openapitools.vertxweb.server.model.ConversionTagListResponse;
-import org.openapitools.vertxweb.server.model.ConversionTagResponse;
+import org.openapitools.vertxweb.server.model.ConversionTagsList200Response;
 import org.openapitools.vertxweb.server.model.Error;
 import org.openapitools.vertxweb.server.model.PageVisitConversionTagsGet200Response;
+import org.openapitools.vertxweb.server.model.PinterestLibError;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import io.vertx.core.json.jackson.DatabindCodec;

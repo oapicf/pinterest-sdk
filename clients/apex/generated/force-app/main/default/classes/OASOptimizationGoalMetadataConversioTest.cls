@@ -79,5 +79,6 @@ private class OASOptimizationGoalMetadataConversioTest {
         System.assertEquals('cpaGoalValueInMicroCurrency', x-property-mappings.get('cpa_goal_value_in_micro_currency'));
         System.assertEquals('isRoasOptimized', x-property-mappings.get('is_roas_optimized'));
         System.assertEquals('learningModeType', x-property-mappings.get('learning_mode_type'));
+        System.assertEquals('reportingEvent', x-property-mappings.get('reporting_event'));
     }
 }

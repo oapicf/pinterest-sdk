@@ -12,19 +12,19 @@ import org.joda.time.DateTime
 import CatalogsCreativeAssetsProductGroup._
 
 case class CatalogsCreativeAssetsProductGroup (
-  catalogType: CatalogType,
+  /* Catalog id pertaining to the creative assets product group. */
+  catalogId: String,
+catalogType: CatalogType,
+/* Unix timestamp in seconds of when catalog product group was created. */
+  createdAt: Option[Integer],
+description: Option[String],
+filters: CatalogsCreativeAssetsProductGroupFilters,
 /* ID of the creative assets product group. */
   id: String,
 /* Name of creative assets product group */
   name: Option[String],
-description: Option[String],
-filters: CatalogsCreativeAssetsProductGroupFilters,
-/* Unix timestamp in seconds of when catalog product group was created. */
-  createdAt: Option[Integer],
 /* Unix timestamp in seconds of last time catalog product group was updated. */
-  updatedAt: Option[Integer],
-/* Catalog id pertaining to the creative assets product group. */
-  catalogId: String)
+  updatedAt: Option[Integer])
 
 object CatalogsCreativeAssetsProductGroup {
   import DateTimeCodecs._

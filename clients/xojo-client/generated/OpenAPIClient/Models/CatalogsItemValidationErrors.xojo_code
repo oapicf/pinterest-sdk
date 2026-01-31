@@ -52,12 +52,12 @@ Protected Class CatalogsItemValidationErrors
 
 
 	#tag Property, Flags = &h0
-		ITEMID_MISSING As OpenAPIClient.Models.CatalogsItemValidationDetails
+		ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE As OpenAPIClient.Models.CatalogsItemValidationDetails
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE As OpenAPIClient.Models.CatalogsItemValidationDetails
+		ITEMID_MISSING As OpenAPIClient.Models.CatalogsItemValidationDetails
 	#tag EndProperty
 
 
@@ -233,7 +233,7 @@ Protected Class CatalogsItemValidationErrors
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="ITEMID_MISSING"
+			Name="ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -241,7 +241,7 @@ Protected Class CatalogsItemValidationErrors
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE"
+			Name="ITEMID_MISSING"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

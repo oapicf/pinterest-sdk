@@ -5,6 +5,11 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
+                key: `${keyPrefix}error_message`,
+                label: `Error message containing more information about why the event failed to be processed. - [${labelPrefix}error_message]`,
+                type: 'string',
+            },
+            {
                 key: `${keyPrefix}status`,
                 label: `Whether the event was processed successfully. - [${labelPrefix}status]`,
                 required: true,
@@ -13,11 +18,6 @@ module.exports = {
                     'failed',
                     'processed',
                 ],
-            },
-            {
-                key: `${keyPrefix}error_message`,
-                label: `Error message containing more information about why the event failed to be processed. - [${labelPrefix}error_message]`,
-                type: 'string',
             },
             {
                 key: `${keyPrefix}warning_message`,
@@ -29,8 +29,8 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'status': bundle.inputData?.[`${keyPrefix}status`],
             'error_message': bundle.inputData?.[`${keyPrefix}error_message`],
+            'status': bundle.inputData?.[`${keyPrefix}status`],
             'warning_message': bundle.inputData?.[`${keyPrefix}warning_message`],
         }
     },

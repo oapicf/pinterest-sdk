@@ -6,11 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **active** | **Boolean** | True if the offer code is currently active. | [optional] 
 **advertiserId** | **String** | Advertiser ID the offer was applied to. | [optional] 
-**discountType** | **String** | The type of discount of this credit | [optional] 
-**discountInMicroCurrency** | **Number** | The discount applied in the offer’s currency value. | [optional] 
 **discountCurrency** | **String** | Currency value for the discount. | [optional] 
-**title** | **String** | Human readable title of the offer code. | [optional] 
+**discountInMicroCurrency** | **Number** | The discount applied in the offer’s currency value. | [optional] 
+**discountType** | **String** | The type of discount of this credit | [optional] 
 **remainingDiscountInMicroCurrency** | **Number** | The credits left to spend. | [optional] 
+**title** | **String** | Human readable title of the offer code. | [optional] 
 
 
 

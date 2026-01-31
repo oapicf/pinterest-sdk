@@ -72,7 +72,7 @@ private class OASCatalogsProductGroupMultipleStrinTest {
     @isTest
     private static void defaultValuesPopulated() {
         OASCatalogsProductGroupMultipleStrin catalogsProductGroupMultipleStringListCriteria = new OASCatalogsProductGroupMultipleStrin();
-        System.assertEquals(new List<List<String>>(), catalogsProductGroupMultipleStringListCriteria.values);
         System.assertEquals(false, catalogsProductGroupMultipleStringListCriteria.negated);
+        System.assertEquals(new List<List<String>>(), catalogsProductGroupMultipleStringListCriteria.values);
     }
 }

@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -20,33 +20,14 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ImageDetails   {
   
-  private Integer width;
   private Integer height;
   private String url;
+  private Integer width;
 
   /**
-   * minimum: 100
-   */
-  public ImageDetails width(Integer width) {
-    this.width = width;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("width")
-  public Integer getWidth() {
-    return width;
-  }
-  public void setWidth(Integer width) {
-    this.width = width;
-  }
-
-  /**
-   * minimum: 100
    */
   public ImageDetails height(Integer height) {
     this.height = height;
@@ -80,6 +61,23 @@ public class ImageDetails   {
     this.url = url;
   }
 
+  /**
+   */
+  public ImageDetails width(Integer width) {
+    this.width = width;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("width")
+  public Integer getWidth() {
+    return width;
+  }
+  public void setWidth(Integer width) {
+    this.width = width;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -90,14 +88,14 @@ public class ImageDetails   {
       return false;
     }
     ImageDetails imageDetails = (ImageDetails) o;
-    return Objects.equals(width, imageDetails.width) &&
-        Objects.equals(height, imageDetails.height) &&
-        Objects.equals(url, imageDetails.url);
+    return Objects.equals(height, imageDetails.height) &&
+        Objects.equals(url, imageDetails.url) &&
+        Objects.equals(width, imageDetails.width);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(width, height, url);
+    return Objects.hash(height, url, width);
   }
 
   @Override
@@ -105,9 +103,9 @@ public class ImageDetails   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ImageDetails {\n");
     
-    sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
+    sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("}");
     return sb.toString();
   }

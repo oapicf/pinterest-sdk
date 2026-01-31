@@ -2,12 +2,7 @@
 <h2>AdGroupAudienceSizingRequest</h2>
 <ul class="parameter">
   <li class="param-required-false">autoUnderscoretargetingUnderscoreenabled : Boolean
-    <br/>Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">placementUnderscoregroup : PlacementGroupType
-    <br/>&lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.
+    <br/>Enable auto-targeting for ad group. Default value is True. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/performance-plus-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;Pinterest Performance+ targeting\&quot;&lt;/a&gt;.
   </li>
 </ul>
 <ul class="parameter">
@@ -20,8 +15,13 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">targetingUnderscorespec : TargetingSpec
-    <br/>
+  <li class="param-required-false">keywords : List
+    <br/>Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">placementUnderscoregroup : PlacementGroupType
+    <br/>&lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.
   </li>
 </ul>
 <ul class="parameter">
@@ -30,7 +30,7 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">keywords : List
-    <br/>Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
+  <li class="param-required-false">targetingUnderscorespec : TargetingSpec
+    <br/>
   </li>
 </ul>

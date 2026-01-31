@@ -1,0 +1,55 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CampaignBidOptionsUpdate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CampaignBidOptionsUpdate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AppTypeMultipliers = openapi_server.resourceTypes.AppTypeMultipliers
+  CampaignAudienceMultipliers = openapi_server.resourceTypes.CampaignAudienceMultipliers
+  PlacementMultipliers = openapi_server.resourceTypes.PlacementMultipliers
+}
+resourceTypes {
+
+  CampaignBidOptionsUpdate {
+    title = CampaignBidOptionsUpdate
+    description = CampaignBidOptionsUpdate
+    derivedFrom = Root
+    properties {
+        app_type_multipliers {
+          type = AppTypeMultipliers
+          description = ""
+          optional = false
+        }
+        audience_multipliers {
+          type = CampaignAudienceMultipliers
+          description = ""
+          optional = false
+        }
+        placement_multipliers {
+          type = PlacementMultipliers
+          description = ""
+          optional = false
+        }
+        update_mask {
+          type = array
+          items.type =  string
+          description = "List of fields to update, only the fields in the list will be updated."
+          enum = ["AUDIENCE", "APP_TYPE", "PLACEMENT", "GENDER", "AGE_BUCKET"]
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CampaignBidOptionsUpdate {
+    title = CampaignBidOptionsUpdate
+    description = CampaignBidOptionsUpdate
+    implements = openapi_server.resourceTypes.CampaignBidOptionsUpdate
+
+  }
+}

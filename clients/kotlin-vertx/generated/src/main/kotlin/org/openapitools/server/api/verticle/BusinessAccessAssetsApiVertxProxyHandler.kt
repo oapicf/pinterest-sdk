@@ -158,11 +158,12 @@ class BusinessAccessAssetsApiVertxProxyHandler(private val vertx: Vertx, private
                     if(assetId == null){
                         throw IllegalArgumentException("assetId is required")
                     }
+                    val fetchSystemUsers = ApiHandlerUtils.searchStringInJson(params,"fetch_system_users")?.toBoolean()
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
                     val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     val startIndex = ApiHandlerUtils.searchIntegerInJson(params,"start_index")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.businessAssetMembersGet(businessId,assetId,bookmark,pageSize,startIndex,context)
+                        val result = service.businessAssetMembersGet(businessId,assetId,fetchSystemUsers,bookmark,pageSize,startIndex,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

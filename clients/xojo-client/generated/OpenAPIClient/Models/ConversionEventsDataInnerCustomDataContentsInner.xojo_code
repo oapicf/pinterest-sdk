@@ -11,25 +11,9 @@ Protected Class ConversionEventsDataInnerCustomDataContentsInner
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The price of a product. Accepted as a string in the request; it will be parsed into a double. This is the original item value before any discount. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href="https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs" target="_blank">here</a> (Install the Pinterest tag section).
+			The brand of a product.
 		#tag EndNote
-		item_price As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			The amount of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href="https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs" target="_blank">here</a> (Install the Pinterest tag section).
-		#tag EndNote
-		quantity As Xoson.O.OptionalInt64
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			The name of a product.
-		#tag EndNote
-		item_name As Xoson.O.OptionalString
+		item_brand As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -43,9 +27,25 @@ Protected Class ConversionEventsDataInnerCustomDataContentsInner
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The brand of a product.
+			The name of a product.
 		#tag EndNote
-		item_brand As Xoson.O.OptionalString
+		item_name As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			The price of a product. Accepted as a string in the request; it will be parsed into a double. This is the original item value before any discount. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href="https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs" target="_blank">here</a> (Install the Pinterest tag section).
+		#tag EndNote
+		item_price As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			The amount of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href="https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs" target="_blank">here</a> (Install the Pinterest tag section).
+		#tag EndNote
+		quantity As Xoson.O.OptionalInt64
 	#tag EndProperty
 
 
@@ -94,23 +94,7 @@ Protected Class ConversionEventsDataInnerCustomDataContentsInner
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="item_price"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="quantity"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Int64"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="item_name"
+			Name="item_brand"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -126,11 +110,27 @@ Protected Class ConversionEventsDataInnerCustomDataContentsInner
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="item_brand"
+			Name="item_name"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="item_price"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="quantity"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Int64"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

@@ -73,15 +73,15 @@ private class OASIntegrationLogTest {
     private static void maintainRenamedProperties() {
         OASIntegrationLog integrationLog = new OASIntegrationLog();
         Map<String, String> x-property-mappings = integrationLog.getx-property-mappings();
+        System.assertEquals('advertiserId', x-property-mappings.get('advertiser_id'));
+        System.assertEquals('appVersionNumber', x-property-mappings.get('app_version_number'));
         System.assertEquals('clientTimestamp', x-property-mappings.get('client_timestamp'));
         System.assertEquals('eventType', x-property-mappings.get('event_type'));
-        System.assertEquals('logLevel', x-property-mappings.get('log_level'));
         System.assertEquals('externalBusinessId', x-property-mappings.get('external_business_id'));
-        System.assertEquals('advertiserId', x-property-mappings.get('advertiser_id'));
-        System.assertEquals('merchantId', x-property-mappings.get('merchant_id'));
-        System.assertEquals('tagId', x-property-mappings.get('tag_id'));
         System.assertEquals('feedProfileId', x-property-mappings.get('feed_profile_id'));
-        System.assertEquals('appVersionNumber', x-property-mappings.get('app_version_number'));
+        System.assertEquals('logLevel', x-property-mappings.get('log_level'));
+        System.assertEquals('merchantId', x-property-mappings.get('merchant_id'));
         System.assertEquals('platformVersionNumber', x-property-mappings.get('platform_version_number'));
+        System.assertEquals('tagId', x-property-mappings.get('tag_id'));
     }
 }

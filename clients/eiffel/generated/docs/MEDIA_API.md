@@ -10,19 +10,19 @@ Feature | HTTP request | Description
 
 
 # **media_create**
-> media_create (media_upload_request: MEDIA_UPLOAD_REQUEST ): detachable MEDIA_UPLOAD
+> media_create (media_upload_create: MEDIA_UPLOAD_CREATE ): detachable MEDIA_UPLOAD
 
 
 Register media upload
 
-Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using `curl`, for example) to `upload_url` using the `Content-Type` header value. Send the media file's contents as the request's `file` parameter and also include all of the parameters from `upload_parameters`.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **media_upload_request** | [**MEDIA_UPLOAD_REQUEST**](MEDIA_UPLOAD_REQUEST.md)| Create a media upload request | 
+ **media_upload_create** | [**MEDIA_UPLOAD_CREATE**](MEDIA_UPLOAD_CREATE.md)|  | 
 
 ### Return type
 
@@ -40,23 +40,23 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **media_get**
-> media_get (media_id: STRING_32 ): detachable MEDIA_UPLOAD_DETAILS
+> media_get (media_id: STRING_32 ): detachable MEDIA
 
 
 Get media upload details
 
-Get details for a registered media upload, including its current status.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **media_id** | **STRING_32**| Media identifier | [default to null]
+ **media_id** | **STRING_32**| Unique identifier for this media upload. Used to track status and for attaching during Pin creation. | [default to null]
 
 ### Return type
 
-[**MEDIA_UPLOAD_DETAILS**](MediaUploadDetails.md)
+[**MEDIA**](Media.md)
 
 ### Authorization
 
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 
 List media uploads
 
-List media uploads filtered by given parameters.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 
 
 ### Parameters
@@ -83,7 +83,7 @@ List media uploads filtered by given parameters.  <strong><a href='/docs/api-fea
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bookmark** | **STRING_32**| Cursor used to fetch the next page of items | [optional] [default to null]
- **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **page_size** | **INTEGER_32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 

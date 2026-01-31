@@ -24,17 +24,36 @@ import java.util.Objects;
 
 public class BidFloorSpec   {
   
+  private ActionType billableEvent;
+
   private List<Country> countries = new ArrayList<>();
+
+  private CreativeType creativeType;
 
   private Currency currency;
 
   private ObjectiveType objectiveType;
 
-  private ActionType billableEvent;
-
   private OptimizationGoalMetadata optimizationGoalMetadata;
 
-  private CreativeType creativeType;
+  /**
+   **/
+  public BidFloorSpec billableEvent(ActionType billableEvent) {
+    this.billableEvent = billableEvent;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("billable_event")
+  @NotNull
+  public ActionType getBillableEvent() {
+    return billableEvent;
+  }
+  public void setBillableEvent(ActionType billableEvent) {
+    this.billableEvent = billableEvent;
+  }
+
 
   /**
    **/
@@ -59,6 +78,24 @@ public class BidFloorSpec   {
     }
     this.countries.add(countriesItem);
     return this;
+  }
+
+
+  /**
+   **/
+  public BidFloorSpec creativeType(CreativeType creativeType) {
+    this.creativeType = creativeType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("creative_type")
+  public CreativeType getCreativeType() {
+    return creativeType;
+  }
+  public void setCreativeType(CreativeType creativeType) {
+    this.creativeType = creativeType;
   }
 
 
@@ -101,25 +138,6 @@ public class BidFloorSpec   {
 
   /**
    **/
-  public BidFloorSpec billableEvent(ActionType billableEvent) {
-    this.billableEvent = billableEvent;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("billable_event")
-  @NotNull
-  public ActionType getBillableEvent() {
-    return billableEvent;
-  }
-  public void setBillableEvent(ActionType billableEvent) {
-    this.billableEvent = billableEvent;
-  }
-
-
-  /**
-   **/
   public BidFloorSpec optimizationGoalMetadata(OptimizationGoalMetadata optimizationGoalMetadata) {
     this.optimizationGoalMetadata = optimizationGoalMetadata;
     return this;
@@ -136,24 +154,6 @@ public class BidFloorSpec   {
   }
 
 
-  /**
-   **/
-  public BidFloorSpec creativeType(CreativeType creativeType) {
-    this.creativeType = creativeType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("creative_type")
-  public CreativeType getCreativeType() {
-    return creativeType;
-  }
-  public void setCreativeType(CreativeType creativeType) {
-    this.creativeType = creativeType;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -164,17 +164,17 @@ public class BidFloorSpec   {
       return false;
     }
     BidFloorSpec bidFloorSpec = (BidFloorSpec) o;
-    return Objects.equals(this.countries, bidFloorSpec.countries) &&
+    return Objects.equals(this.billableEvent, bidFloorSpec.billableEvent) &&
+        Objects.equals(this.countries, bidFloorSpec.countries) &&
+        Objects.equals(this.creativeType, bidFloorSpec.creativeType) &&
         Objects.equals(this.currency, bidFloorSpec.currency) &&
         Objects.equals(this.objectiveType, bidFloorSpec.objectiveType) &&
-        Objects.equals(this.billableEvent, bidFloorSpec.billableEvent) &&
-        Objects.equals(this.optimizationGoalMetadata, bidFloorSpec.optimizationGoalMetadata) &&
-        Objects.equals(this.creativeType, bidFloorSpec.creativeType);
+        Objects.equals(this.optimizationGoalMetadata, bidFloorSpec.optimizationGoalMetadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(countries, currency, objectiveType, billableEvent, optimizationGoalMetadata, creativeType);
+    return Objects.hash(billableEvent, countries, creativeType, currency, objectiveType, optimizationGoalMetadata);
   }
 
   @Override
@@ -182,12 +182,12 @@ public class BidFloorSpec   {
     StringBuilder sb = new StringBuilder();
     sb.append("class BidFloorSpec {\n");
     
+    sb.append("    billableEvent: ").append(toIndentedString(billableEvent)).append("\n");
     sb.append("    countries: ").append(toIndentedString(countries)).append("\n");
+    sb.append("    creativeType: ").append(toIndentedString(creativeType)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    objectiveType: ").append(toIndentedString(objectiveType)).append("\n");
-    sb.append("    billableEvent: ").append(toIndentedString(billableEvent)).append("\n");
     sb.append("    optimizationGoalMetadata: ").append(toIndentedString(optimizationGoalMetadata)).append("\n");
-    sb.append("    creativeType: ").append(toIndentedString(creativeType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

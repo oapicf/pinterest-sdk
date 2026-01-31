@@ -14,8 +14,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class InviteExceptionResponse   {
   
-  private String inviteOrRequestId;
   private Integer code;
+  private String inviteOrRequestId;
   private String message;
   private List<String> usersOrPartnerIds;
 
@@ -23,20 +23,11 @@ public class InviteExceptionResponse   {
 
   }
 
-  public InviteExceptionResponse (String inviteOrRequestId, Integer code, String message, List<String> usersOrPartnerIds) {
-    this.inviteOrRequestId = inviteOrRequestId;
+  public InviteExceptionResponse (Integer code, String inviteOrRequestId, String message, List<String> usersOrPartnerIds) {
     this.code = code;
+    this.inviteOrRequestId = inviteOrRequestId;
     this.message = message;
     this.usersOrPartnerIds = usersOrPartnerIds;
-  }
-
-    
-  @JsonProperty("invite_or_request_id")
-  public String getInviteOrRequestId() {
-    return inviteOrRequestId;
-  }
-  public void setInviteOrRequestId(String inviteOrRequestId) {
-    this.inviteOrRequestId = inviteOrRequestId;
   }
 
     
@@ -46,6 +37,15 @@ public class InviteExceptionResponse   {
   }
   public void setCode(Integer code) {
     this.code = code;
+  }
+
+    
+  @JsonProperty("invite_or_request_id")
+  public String getInviteOrRequestId() {
+    return inviteOrRequestId;
+  }
+  public void setInviteOrRequestId(String inviteOrRequestId) {
+    this.inviteOrRequestId = inviteOrRequestId;
   }
 
     
@@ -76,15 +76,15 @@ public class InviteExceptionResponse   {
       return false;
     }
     InviteExceptionResponse inviteExceptionResponse = (InviteExceptionResponse) o;
-    return Objects.equals(inviteOrRequestId, inviteExceptionResponse.inviteOrRequestId) &&
-        Objects.equals(code, inviteExceptionResponse.code) &&
+    return Objects.equals(code, inviteExceptionResponse.code) &&
+        Objects.equals(inviteOrRequestId, inviteExceptionResponse.inviteOrRequestId) &&
         Objects.equals(message, inviteExceptionResponse.message) &&
         Objects.equals(usersOrPartnerIds, inviteExceptionResponse.usersOrPartnerIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(inviteOrRequestId, code, message, usersOrPartnerIds);
+    return Objects.hash(code, inviteOrRequestId, message, usersOrPartnerIds);
   }
 
   @Override
@@ -92,8 +92,8 @@ public class InviteExceptionResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InviteExceptionResponse {\n");
     
-    sb.append("    inviteOrRequestId: ").append(toIndentedString(inviteOrRequestId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    inviteOrRequestId: ").append(toIndentedString(inviteOrRequestId)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    usersOrPartnerIds: ").append(toIndentedString(usersOrPartnerIds)).append("\n");
     sb.append("}");

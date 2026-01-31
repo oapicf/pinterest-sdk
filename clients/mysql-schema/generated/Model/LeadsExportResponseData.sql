@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `LeadsExportResponseData`
 --
-SELECT `export_status`, `download_url` FROM `LeadsExportResponseData` WHERE 1;
+SELECT `download_url`, `export_status` FROM `LeadsExportResponseData` WHERE 1;
 
 --
 -- INSERT template for table `LeadsExportResponseData`
 --
-INSERT INTO `LeadsExportResponseData`(`export_status`, `download_url`) VALUES (?, ?);
+INSERT INTO `LeadsExportResponseData`(`download_url`, `export_status`) VALUES (?, ?);
 
 --
 -- UPDATE template for table `LeadsExportResponseData`
 --
-UPDATE `LeadsExportResponseData` SET `export_status` = ?, `download_url` = ? WHERE 1;
+UPDATE `LeadsExportResponseData` SET `download_url` = ?, `export_status` = ? WHERE 1;
 
 --
 -- DELETE template for table `LeadsExportResponseData`

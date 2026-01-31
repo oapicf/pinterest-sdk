@@ -21,48 +21,83 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.")
 @JsonTypeName("TrackingUrls")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TrackingUrls   {
-  private @Valid List<String> impression = new ArrayList<>();
+  private @Valid List<String> audienceVerification = new ArrayList<>();
+  private @Valid List<String> buyableButton = new ArrayList<>();
   private @Valid List<String> click = new ArrayList<>();
   private @Valid List<String> engagement = new ArrayList<>();
-  private @Valid List<String> buyableButton = new ArrayList<>();
-  private @Valid List<String> audienceVerification = new ArrayList<>();
+  private @Valid List<String> impression = new ArrayList<>();
 
   public TrackingUrls() {
   }
 
   /**
    **/
-  public TrackingUrls impression(List<String> impression) {
-    this.impression = impression;
+  public TrackingUrls audienceVerification(List<String> audienceVerification) {
+    this.audienceVerification = audienceVerification;
     return this;
   }
 
   
   @ApiModelProperty(value = "")
-  @JsonProperty("impression")
-  public List<String> getImpression() {
-    return impression;
+  @JsonProperty("audience_verification")
+  public List<String> getAudienceVerification() {
+    return audienceVerification;
   }
 
-  @JsonProperty("impression")
-  public void setImpression(List<String> impression) {
-    this.impression = impression;
+  @JsonProperty("audience_verification")
+  public void setAudienceVerification(List<String> audienceVerification) {
+    this.audienceVerification = audienceVerification;
   }
 
-  public TrackingUrls addImpressionItem(String impressionItem) {
-    if (this.impression == null) {
-      this.impression = new ArrayList<>();
+  public TrackingUrls addAudienceVerificationItem(String audienceVerificationItem) {
+    if (this.audienceVerification == null) {
+      this.audienceVerification = new ArrayList<>();
     }
 
-    this.impression.add(impressionItem);
+    this.audienceVerification.add(audienceVerificationItem);
     return this;
   }
 
-  public TrackingUrls removeImpressionItem(String impressionItem) {
-    if (impressionItem != null && this.impression != null) {
-      this.impression.remove(impressionItem);
+  public TrackingUrls removeAudienceVerificationItem(String audienceVerificationItem) {
+    if (audienceVerificationItem != null && this.audienceVerification != null) {
+      this.audienceVerification.remove(audienceVerificationItem);
+    }
+
+    return this;
+  }
+  /**
+   **/
+  public TrackingUrls buyableButton(List<String> buyableButton) {
+    this.buyableButton = buyableButton;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("buyable_button")
+  public List<String> getBuyableButton() {
+    return buyableButton;
+  }
+
+  @JsonProperty("buyable_button")
+  public void setBuyableButton(List<String> buyableButton) {
+    this.buyableButton = buyableButton;
+  }
+
+  public TrackingUrls addBuyableButtonItem(String buyableButtonItem) {
+    if (this.buyableButton == null) {
+      this.buyableButton = new ArrayList<>();
+    }
+
+    this.buyableButton.add(buyableButtonItem);
+    return this;
+  }
+
+  public TrackingUrls removeBuyableButtonItem(String buyableButtonItem) {
+    if (buyableButtonItem != null && this.buyableButton != null) {
+      this.buyableButton.remove(buyableButtonItem);
     }
 
     return this;
@@ -139,70 +174,35 @@ public class TrackingUrls   {
   }
   /**
    **/
-  public TrackingUrls buyableButton(List<String> buyableButton) {
-    this.buyableButton = buyableButton;
+  public TrackingUrls impression(List<String> impression) {
+    this.impression = impression;
     return this;
   }
 
   
   @ApiModelProperty(value = "")
-  @JsonProperty("buyable_button")
-  public List<String> getBuyableButton() {
-    return buyableButton;
+  @JsonProperty("impression")
+  public List<String> getImpression() {
+    return impression;
   }
 
-  @JsonProperty("buyable_button")
-  public void setBuyableButton(List<String> buyableButton) {
-    this.buyableButton = buyableButton;
+  @JsonProperty("impression")
+  public void setImpression(List<String> impression) {
+    this.impression = impression;
   }
 
-  public TrackingUrls addBuyableButtonItem(String buyableButtonItem) {
-    if (this.buyableButton == null) {
-      this.buyableButton = new ArrayList<>();
+  public TrackingUrls addImpressionItem(String impressionItem) {
+    if (this.impression == null) {
+      this.impression = new ArrayList<>();
     }
 
-    this.buyableButton.add(buyableButtonItem);
+    this.impression.add(impressionItem);
     return this;
   }
 
-  public TrackingUrls removeBuyableButtonItem(String buyableButtonItem) {
-    if (buyableButtonItem != null && this.buyableButton != null) {
-      this.buyableButton.remove(buyableButtonItem);
-    }
-
-    return this;
-  }
-  /**
-   **/
-  public TrackingUrls audienceVerification(List<String> audienceVerification) {
-    this.audienceVerification = audienceVerification;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("audience_verification")
-  public List<String> getAudienceVerification() {
-    return audienceVerification;
-  }
-
-  @JsonProperty("audience_verification")
-  public void setAudienceVerification(List<String> audienceVerification) {
-    this.audienceVerification = audienceVerification;
-  }
-
-  public TrackingUrls addAudienceVerificationItem(String audienceVerificationItem) {
-    if (this.audienceVerification == null) {
-      this.audienceVerification = new ArrayList<>();
-    }
-
-    this.audienceVerification.add(audienceVerificationItem);
-    return this;
-  }
-
-  public TrackingUrls removeAudienceVerificationItem(String audienceVerificationItem) {
-    if (audienceVerificationItem != null && this.audienceVerification != null) {
-      this.audienceVerification.remove(audienceVerificationItem);
+  public TrackingUrls removeImpressionItem(String impressionItem) {
+    if (impressionItem != null && this.impression != null) {
+      this.impression.remove(impressionItem);
     }
 
     return this;
@@ -217,16 +217,16 @@ public class TrackingUrls   {
       return false;
     }
     TrackingUrls trackingUrls = (TrackingUrls) o;
-    return Objects.equals(this.impression, trackingUrls.impression) &&
+    return Objects.equals(this.audienceVerification, trackingUrls.audienceVerification) &&
+        Objects.equals(this.buyableButton, trackingUrls.buyableButton) &&
         Objects.equals(this.click, trackingUrls.click) &&
         Objects.equals(this.engagement, trackingUrls.engagement) &&
-        Objects.equals(this.buyableButton, trackingUrls.buyableButton) &&
-        Objects.equals(this.audienceVerification, trackingUrls.audienceVerification);
+        Objects.equals(this.impression, trackingUrls.impression);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(impression, click, engagement, buyableButton, audienceVerification);
+    return Objects.hash(audienceVerification, buyableButton, click, engagement, impression);
   }
 
   @Override
@@ -234,11 +234,11 @@ public class TrackingUrls   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TrackingUrls {\n");
     
-    sb.append("    impression: ").append(toIndentedString(impression)).append("\n");
+    sb.append("    audienceVerification: ").append(toIndentedString(audienceVerification)).append("\n");
+    sb.append("    buyableButton: ").append(toIndentedString(buyableButton)).append("\n");
     sb.append("    click: ").append(toIndentedString(click)).append("\n");
     sb.append("    engagement: ").append(toIndentedString(engagement)).append("\n");
-    sb.append("    buyableButton: ").append(toIndentedString(buyableButton)).append("\n");
-    sb.append("    audienceVerification: ").append(toIndentedString(audienceVerification)).append("\n");
+    sb.append("    impression: ").append(toIndentedString(impression)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -23,26 +23,26 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param reportStatus 
- * @param token 
  * @param message 
+ * @param reportStatus 
  * @param status 
+ * @param token 
  */
 
 
 data class CreateMMMReportResponseData (
 
-    @Json(name = "report_status")
-    val reportStatus: BulkReportingJobStatus? = null,
-
-    @Json(name = "token")
-    val token: kotlin.String? = null,
-
     @Json(name = "message")
     val message: kotlin.String? = null,
 
+    @Json(name = "report_status")
+    val reportStatus: BulkReportingJobStatus? = null,
+
     @Json(name = "status")
-    val status: kotlin.String? = null
+    val status: kotlin.String? = null,
+
+    @Json(name = "token")
+    val token: kotlin.String? = null
 
 ) {
 

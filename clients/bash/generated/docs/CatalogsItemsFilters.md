@@ -4,8 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalogUnderscoretype** | [**CatalogsType**](CatalogsType.md) |  | [default to null]
-**itemUnderscoreids** | **array[string]** |  | [default to null]
 **catalogUnderscoreid** | **string** |  | [optional] [default to null]
+**itemUnderscoreids** | **array[string]** |  | [default to null]
 **hotelUnderscoreids** | **array[string]** |  | [default to null]
 **creativeUnderscoreassetsUnderscoreids** | **array[string]** |  | [default to null]
 

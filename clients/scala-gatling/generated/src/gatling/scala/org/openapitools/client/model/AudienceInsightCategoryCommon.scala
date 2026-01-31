@@ -3,17 +3,17 @@ package org.openapitools.client.model
 
 
 case class AudienceInsightCategoryCommon (
+    _id: Option[String],
+    _index: Option[Number],
     _key: Option[String],
     _name: Option[String],
-    _ratio: Option[Number],
-    _index: Option[Number],
-    _id: Option[String]
+    _ratio: Option[Number]
 )
 object AudienceInsightCategoryCommon {
-    def toStringBody(var_key: Object, var_name: Object, var_ratio: Object, var_index: Object, var_id: Object) =
+    def toStringBody(var_id: Object, var_index: Object, var_key: Object, var_name: Object, var_ratio: Object) =
         s"""
         | {
-        | "key":$var_key,"name":$var_name,"ratio":$var_ratio,"index":$var_index,"id":$var_id
+        | "id":$var_id,"index":$var_index,"key":$var_key,"name":$var_name,"ratio":$var_ratio
         | }
         """.stripMargin
 }

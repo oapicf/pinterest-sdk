@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[SummaryPin]**](SummaryPin.md) |  | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[SummaryPin]**](SummaryPin.md) |  | 
 
 

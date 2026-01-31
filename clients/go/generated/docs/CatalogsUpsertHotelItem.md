@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Attributes** | [**CatalogsHotelAttributes**](CatalogsHotelAttributes.md) |  | 
 **HotelId** | **string** | The catalog hotel id in the merchant namespace | 
 **Operation** | **string** |  | 
-**Attributes** | [**CatalogsHotelAttributes**](CatalogsHotelAttributes.md) |  | 
 
 ## Methods
 
 ### NewCatalogsUpsertHotelItem
 
-`func NewCatalogsUpsertHotelItem(hotelId string, operation string, attributes CatalogsHotelAttributes, ) *CatalogsUpsertHotelItem`
+`func NewCatalogsUpsertHotelItem(attributes CatalogsHotelAttributes, hotelId string, operation string, ) *CatalogsUpsertHotelItem`
 
 NewCatalogsUpsertHotelItem instantiates a new CatalogsUpsertHotelItem object
 This constructor will assign default values to properties that have it defined,
@@ -26,6 +26,26 @@ will change when the set of required properties is changed
 NewCatalogsUpsertHotelItemWithDefaults instantiates a new CatalogsUpsertHotelItem object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAttributes
+
+`func (o *CatalogsUpsertHotelItem) GetAttributes() CatalogsHotelAttributes`
+
+GetAttributes returns the Attributes field if non-nil, zero value otherwise.
+
+### GetAttributesOk
+
+`func (o *CatalogsUpsertHotelItem) GetAttributesOk() (*CatalogsHotelAttributes, bool)`
+
+GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAttributes
+
+`func (o *CatalogsUpsertHotelItem) SetAttributes(v CatalogsHotelAttributes)`
+
+SetAttributes sets Attributes field to given value.
+
 
 ### GetHotelId
 
@@ -65,26 +85,6 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsUpsertHotelItem) SetOperation(v string)`
 
 SetOperation sets Operation field to given value.
-
-
-### GetAttributes
-
-`func (o *CatalogsUpsertHotelItem) GetAttributes() CatalogsHotelAttributes`
-
-GetAttributes returns the Attributes field if non-nil, zero value otherwise.
-
-### GetAttributesOk
-
-`func (o *CatalogsUpsertHotelItem) GetAttributesOk() (*CatalogsHotelAttributes, bool)`
-
-GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAttributes
-
-`func (o *CatalogsUpsertHotelItem) SetAttributes(v CatalogsHotelAttributes)`
-
-SetAttributes sets Attributes field to given value.
 
 
 

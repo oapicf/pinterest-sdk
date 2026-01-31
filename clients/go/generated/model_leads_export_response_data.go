@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,8 +20,8 @@ var _ MappedNullable = &LeadsExportResponseData{}
 
 // LeadsExportResponseData struct for LeadsExportResponseData
 type LeadsExportResponseData struct {
-	ExportStatus *LeadsExportStatus `json:"export_status,omitempty"`
 	DownloadUrl NullableString `json:"download_url,omitempty"`
+	ExportStatus *LeadsExportStatus `json:"export_status,omitempty"`
 }
 
 // NewLeadsExportResponseData instantiates a new LeadsExportResponseData object
@@ -39,38 +39,6 @@ func NewLeadsExportResponseData() *LeadsExportResponseData {
 func NewLeadsExportResponseDataWithDefaults() *LeadsExportResponseData {
 	this := LeadsExportResponseData{}
 	return &this
-}
-
-// GetExportStatus returns the ExportStatus field value if set, zero value otherwise.
-func (o *LeadsExportResponseData) GetExportStatus() LeadsExportStatus {
-	if o == nil || IsNil(o.ExportStatus) {
-		var ret LeadsExportStatus
-		return ret
-	}
-	return *o.ExportStatus
-}
-
-// GetExportStatusOk returns a tuple with the ExportStatus field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LeadsExportResponseData) GetExportStatusOk() (*LeadsExportStatus, bool) {
-	if o == nil || IsNil(o.ExportStatus) {
-		return nil, false
-	}
-	return o.ExportStatus, true
-}
-
-// HasExportStatus returns a boolean if a field has been set.
-func (o *LeadsExportResponseData) HasExportStatus() bool {
-	if o != nil && !IsNil(o.ExportStatus) {
-		return true
-	}
-
-	return false
-}
-
-// SetExportStatus gets a reference to the given LeadsExportStatus and assigns it to the ExportStatus field.
-func (o *LeadsExportResponseData) SetExportStatus(v LeadsExportStatus) {
-	o.ExportStatus = &v
 }
 
 // GetDownloadUrl returns the DownloadUrl field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -115,6 +83,38 @@ func (o *LeadsExportResponseData) UnsetDownloadUrl() {
 	o.DownloadUrl.Unset()
 }
 
+// GetExportStatus returns the ExportStatus field value if set, zero value otherwise.
+func (o *LeadsExportResponseData) GetExportStatus() LeadsExportStatus {
+	if o == nil || IsNil(o.ExportStatus) {
+		var ret LeadsExportStatus
+		return ret
+	}
+	return *o.ExportStatus
+}
+
+// GetExportStatusOk returns a tuple with the ExportStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LeadsExportResponseData) GetExportStatusOk() (*LeadsExportStatus, bool) {
+	if o == nil || IsNil(o.ExportStatus) {
+		return nil, false
+	}
+	return o.ExportStatus, true
+}
+
+// HasExportStatus returns a boolean if a field has been set.
+func (o *LeadsExportResponseData) HasExportStatus() bool {
+	if o != nil && !IsNil(o.ExportStatus) {
+		return true
+	}
+
+	return false
+}
+
+// SetExportStatus gets a reference to the given LeadsExportStatus and assigns it to the ExportStatus field.
+func (o *LeadsExportResponseData) SetExportStatus(v LeadsExportStatus) {
+	o.ExportStatus = &v
+}
+
 func (o LeadsExportResponseData) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -125,11 +125,11 @@ func (o LeadsExportResponseData) MarshalJSON() ([]byte, error) {
 
 func (o LeadsExportResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ExportStatus) {
-		toSerialize["export_status"] = o.ExportStatus
-	}
 	if o.DownloadUrl.IsSet() {
 		toSerialize["download_url"] = o.DownloadUrl.Get()
+	}
+	if !IsNil(o.ExportStatus) {
+		toSerialize["export_status"] = o.ExportStatus
 	}
 	return toSerialize, nil
 }

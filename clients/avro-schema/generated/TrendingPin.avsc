@@ -1,0 +1,29 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Pin image data for trending topics",
+  "name": "TrendingPin",
+  "fields": [
+    {
+      "name": "height",
+      "type": "int",
+      "doc": "Height of the pin image in pixels"
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "doc": "Unique identifier for the pin"
+    },
+    {
+      "name": "src",
+      "type": "string",
+      "doc": "URL of the pin image"
+    },
+    {
+      "name": "width",
+      "type": "int",
+      "doc": "Width of the pin image in pixels"
+    }
+  ]
+
+}

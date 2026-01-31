@@ -73,9 +73,9 @@ private class OASCatalogsRetailProductMetadataTest {
     private static void maintainRenamedProperties() {
         OASCatalogsRetailProductMetadata catalogsRetailProductMetadata = new OASCatalogsRetailProductMetadata();
         Map<String, String> x-property-mappings = catalogsRetailProductMetadata.getx-property-mappings();
-        System.assertEquals('itemId', x-property-mappings.get('item_id'));
-        System.assertEquals('itemGroupId', x-property-mappings.get('item_group_id'));
-        System.assertEquals('salePrice', x-property-mappings.get('sale_price'));
         System.assertEquals('r_currency', x-property-mappings.get('currency'));
+        System.assertEquals('itemGroupId', x-property-mappings.get('item_group_id'));
+        System.assertEquals('itemId', x-property-mappings.get('item_id'));
+        System.assertEquals('salePrice', x-property-mappings.get('sale_price'));
     }
 }

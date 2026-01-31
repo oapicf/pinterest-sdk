@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `BillingProfilesResponse`
 --
-SELECT `id`, `card_type`, `status`, `advertiser_id`, `payment_method_brand` FROM `BillingProfilesResponse` WHERE 1;
+SELECT `advertiser_id`, `billing_type`, `card_type`, `id`, `payment_method_brand`, `status` FROM `BillingProfilesResponse` WHERE 1;
 
 --
 -- INSERT template for table `BillingProfilesResponse`
 --
-INSERT INTO `BillingProfilesResponse`(`id`, `card_type`, `status`, `advertiser_id`, `payment_method_brand`) VALUES (?, ?, ?, ?, ?);
+INSERT INTO `BillingProfilesResponse`(`advertiser_id`, `billing_type`, `card_type`, `id`, `payment_method_brand`, `status`) VALUES (?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `BillingProfilesResponse`
 --
-UPDATE `BillingProfilesResponse` SET `id` = ?, `card_type` = ?, `status` = ?, `advertiser_id` = ?, `payment_method_brand` = ? WHERE 1;
+UPDATE `BillingProfilesResponse` SET `advertiser_id` = ?, `billing_type` = ?, `card_type` = ?, `id` = ?, `payment_method_brand` = ?, `status` = ? WHERE 1;
 
 --
 -- DELETE template for table `BillingProfilesResponse`

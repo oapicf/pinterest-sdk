@@ -14,12 +14,12 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdsAnalyticsGetAsyncResponse   {
   
   private BulkReportingJobStatus reportStatus;
-  private String url;
   private BigDecimal size;
+  private String url;
 
   /**
    **/
@@ -38,18 +38,6 @@ public class AdsAnalyticsGetAsyncResponse   {
    **/
   
   @ApiModelProperty(value = "")
-  @JsonProperty("url")
-  public String getUrl() {
-    return url;
-  }
-  public void setUrl(String url) {
-    this.url = url;
-  }
-
-  /**
-   **/
-  
-  @ApiModelProperty(value = "")
   @JsonProperty("size")
   @Valid
   public BigDecimal getSize() {
@@ -57,6 +45,18 @@ public class AdsAnalyticsGetAsyncResponse   {
   }
   public void setSize(BigDecimal size) {
     this.size = size;
+  }
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("url")
+  public String getUrl() {
+    return url;
+  }
+  public void setUrl(String url) {
+    this.url = url;
   }
 
 
@@ -70,13 +70,13 @@ public class AdsAnalyticsGetAsyncResponse   {
     }
     AdsAnalyticsGetAsyncResponse adsAnalyticsGetAsyncResponse = (AdsAnalyticsGetAsyncResponse) o;
     return Objects.equals(this.reportStatus, adsAnalyticsGetAsyncResponse.reportStatus) &&
-        Objects.equals(this.url, adsAnalyticsGetAsyncResponse.url) &&
-        Objects.equals(this.size, adsAnalyticsGetAsyncResponse.size);
+        Objects.equals(this.size, adsAnalyticsGetAsyncResponse.size) &&
+        Objects.equals(this.url, adsAnalyticsGetAsyncResponse.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportStatus, url, size);
+    return Objects.hash(reportStatus, size, url);
   }
 
   @Override
@@ -85,8 +85,8 @@ public class AdsAnalyticsGetAsyncResponse   {
     sb.append("class AdsAnalyticsGetAsyncResponse {\n");
     
     sb.append("    reportStatus: ").append(toIndentedString(reportStatus)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
   }

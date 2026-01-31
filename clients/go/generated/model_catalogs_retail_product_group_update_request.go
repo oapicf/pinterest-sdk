@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,11 +22,11 @@ var _ MappedNullable = &CatalogsRetailProductGroupUpdateRequest{}
 type CatalogsRetailProductGroupUpdateRequest struct {
 	// Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
 	CatalogType *string `json:"catalog_type,omitempty"`
-	Name *string `json:"name,omitempty"`
+	Country *Country `json:"country,omitempty"`
 	Description NullableString `json:"description,omitempty"`
 	Filters *CatalogsProductGroupFiltersRequest `json:"filters,omitempty"`
-	Country *Country `json:"country,omitempty"`
 	Locale *CatalogsLocale `json:"locale,omitempty"`
+	Name *string `json:"name,omitempty"`
 }
 
 // NewCatalogsRetailProductGroupUpdateRequest instantiates a new CatalogsRetailProductGroupUpdateRequest object
@@ -78,36 +78,36 @@ func (o *CatalogsRetailProductGroupUpdateRequest) SetCatalogType(v string) {
 	o.CatalogType = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *CatalogsRetailProductGroupUpdateRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
-		var ret string
+// GetCountry returns the Country field value if set, zero value otherwise.
+func (o *CatalogsRetailProductGroupUpdateRequest) GetCountry() Country {
+	if o == nil || IsNil(o.Country) {
+		var ret Country
 		return ret
 	}
-	return *o.Name
+	return *o.Country
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetCountryOk returns a tuple with the Country field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsRetailProductGroupUpdateRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+func (o *CatalogsRetailProductGroupUpdateRequest) GetCountryOk() (*Country, bool) {
+	if o == nil || IsNil(o.Country) {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Country, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *CatalogsRetailProductGroupUpdateRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+// HasCountry returns a boolean if a field has been set.
+func (o *CatalogsRetailProductGroupUpdateRequest) HasCountry() bool {
+	if o != nil && !IsNil(o.Country) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *CatalogsRetailProductGroupUpdateRequest) SetName(v string) {
-	o.Name = &v
+// SetCountry gets a reference to the given Country and assigns it to the Country field.
+func (o *CatalogsRetailProductGroupUpdateRequest) SetCountry(v Country) {
+	o.Country = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -184,38 +184,6 @@ func (o *CatalogsRetailProductGroupUpdateRequest) SetFilters(v CatalogsProductGr
 	o.Filters = &v
 }
 
-// GetCountry returns the Country field value if set, zero value otherwise.
-func (o *CatalogsRetailProductGroupUpdateRequest) GetCountry() Country {
-	if o == nil || IsNil(o.Country) {
-		var ret Country
-		return ret
-	}
-	return *o.Country
-}
-
-// GetCountryOk returns a tuple with the Country field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsRetailProductGroupUpdateRequest) GetCountryOk() (*Country, bool) {
-	if o == nil || IsNil(o.Country) {
-		return nil, false
-	}
-	return o.Country, true
-}
-
-// HasCountry returns a boolean if a field has been set.
-func (o *CatalogsRetailProductGroupUpdateRequest) HasCountry() bool {
-	if o != nil && !IsNil(o.Country) {
-		return true
-	}
-
-	return false
-}
-
-// SetCountry gets a reference to the given Country and assigns it to the Country field.
-func (o *CatalogsRetailProductGroupUpdateRequest) SetCountry(v Country) {
-	o.Country = &v
-}
-
 // GetLocale returns the Locale field value if set, zero value otherwise.
 func (o *CatalogsRetailProductGroupUpdateRequest) GetLocale() CatalogsLocale {
 	if o == nil || IsNil(o.Locale) {
@@ -248,6 +216,38 @@ func (o *CatalogsRetailProductGroupUpdateRequest) SetLocale(v CatalogsLocale) {
 	o.Locale = &v
 }
 
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *CatalogsRetailProductGroupUpdateRequest) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsRetailProductGroupUpdateRequest) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *CatalogsRetailProductGroupUpdateRequest) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *CatalogsRetailProductGroupUpdateRequest) SetName(v string) {
+	o.Name = &v
+}
+
 func (o CatalogsRetailProductGroupUpdateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -261,8 +261,8 @@ func (o CatalogsRetailProductGroupUpdateRequest) ToMap() (map[string]interface{}
 	if !IsNil(o.CatalogType) {
 		toSerialize["catalog_type"] = o.CatalogType
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if !IsNil(o.Country) {
+		toSerialize["country"] = o.Country
 	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
@@ -270,11 +270,11 @@ func (o CatalogsRetailProductGroupUpdateRequest) ToMap() (map[string]interface{}
 	if !IsNil(o.Filters) {
 		toSerialize["filters"] = o.Filters
 	}
-	if !IsNil(o.Country) {
-		toSerialize["country"] = o.Country
-	}
 	if !IsNil(o.Locale) {
 		toSerialize["locale"] = o.Locale
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	return toSerialize, nil
 }

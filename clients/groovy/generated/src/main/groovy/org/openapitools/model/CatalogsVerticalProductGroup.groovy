@@ -7,12 +7,14 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsCreativeAssetsProductGroup;
 import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
 import org.openapitools.model.CatalogsHotelProductGroup;
+import org.openapitools.model.CatalogsHotelProductGroupType;
 import org.openapitools.model.CatalogsProductGroupStatus;
-import org.openapitools.model.CatalogsProductGroupType;
 import org.openapitools.model.CatalogsRetailProductGroup;
 
 @Canonical
 class CatalogsVerticalProductGroup {
+    /* Catalog id pertaining to the creative assets product group. */
+    String catalogId
 
     enum CatalogTypeEnum {
     
@@ -36,30 +38,28 @@ class CatalogsVerticalProductGroup {
 
     
     CatalogTypeEnum catalogType
-    /* ID of the creative assets product group. */
-    String id
-    /* Name of creative assets product group */
-    String name
     
-    String description
-    
-    CatalogsCreativeAssetsProductGroupFilters filters
-    /* boolean indicator of whether the product group is being featured or not */
-    Boolean isFeatured
-    
-    CatalogsProductGroupType type
-    
-    CatalogsProductGroupStatus status
+    String country
     /* Unix timestamp in seconds of when catalog product group was created. */
     Integer createdAt
-    /* Unix timestamp in seconds of last time catalog product group was updated. */
-    Integer updatedAt
-    /* Catalog id pertaining to the creative assets product group. */
-    String catalogId
+    
+    String description
     /* id of the catalogs feed belonging to this catalog product group */
     String feedId
     
-    String country
+    CatalogsCreativeAssetsProductGroupFilters filters
+    /* ID of the creative assets product group. */
+    String id
+    /* boolean indicator of whether the product group is being featured or not */
+    Boolean isFeatured
     
     String locale
+    /* Name of creative assets product group */
+    String name
+    
+    CatalogsProductGroupStatus status
+    
+    CatalogsHotelProductGroupType type
+    /* Unix timestamp in seconds of last time catalog product group was updated. */
+    Integer updatedAt
 }

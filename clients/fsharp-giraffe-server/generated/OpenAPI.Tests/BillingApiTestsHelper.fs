@@ -36,6 +36,10 @@ module BillingApiHandlerTestsHelper =
 
   ()
 
+  ()
+
+  ()
+
 
   let mutable SsioInsertionOrderCreateExamples = Map.empty
   let mutable SsioInsertionOrderCreateBody = ""
@@ -46,23 +50,23 @@ module BillingApiHandlerTestsHelper =
   &quot;billing_contact_firstname&quot; : &quot;billing_contact_firstname&quot;,
   &quot;user_email&quot; : &quot;test@example&quot;,
   &quot;order_line_type&quot; : &quot;BUDGET&quot;,
-  &quot;currency_info&quot; : &quot;USD&quot;,
+  &quot;currency_info&quot; : &quot;UNK&quot;,
   &quot;billing_contact_email&quot; : &quot;test@example&quot;,
   &quot;estimated_monthly_spend&quot; : 6.027456183070403,
   &quot;media_contact_email&quot; : &quot;test@example&quot;,
   &quot;billing_contact_lastname&quot; : &quot;billing_contact_lastname&quot;,
   &quot;order_name&quot; : &quot;order_name&quot;,
-  &quot;po_number&quot; : &quot;po_number&quot;,
   &quot;agency_link&quot; : &quot;agency_link&quot;,
+  &quot;po_number&quot; : &quot;po_number&quot;,
   &quot;pmp_id&quot; : &quot;pmp_id&quot;,
   &quot;accepted_terms_id&quot; : &quot;accepted_terms_id&quot;,
   &quot;accepted_terms_time&quot; : 0,
   &quot;media_contact_lastname&quot; : &quot;media_contact_lastname&quot;,
-  &quot;start_date&quot; : &quot;2020-12-20&quot;,
   &quot;budget_amount&quot; : 5000000,
   &quot;media_contact_firstname&quot; : &quot;media_contact_firstname&quot;,
-  &quot;billto_business_address_id&quot; : &quot;billto_business_address_id&quot;,
-  &quot;billto_billing_address_id&quot; : &quot;billto_billing_address_id&quot;
+  &quot;start_date&quot; : &quot;2020-12-20&quot;,
+  &quot;billto_billing_address_id&quot; : &quot;billto_billing_address_id&quot;,
+  &quot;billto_business_address_id&quot; : &quot;billto_business_address_id&quot;
 }"
   SsioInsertionOrderCreateExamples <- SsioInsertionOrderCreateExamples.Add("application/json", SsioInsertionOrderCreateBody)
 
@@ -83,12 +87,12 @@ module BillingApiHandlerTestsHelper =
   &quot;media_contact_email&quot; : &quot;test@example&quot;,
   &quot;billing_contact_lastname&quot; : &quot;billing_contact_lastname&quot;,
   &quot;salesforce_order_id&quot; : &quot;salesforce_order_id&quot;,
-  &quot;po_number&quot; : &quot;po_number&quot;,
   &quot;agency_link&quot; : &quot;agency_link&quot;,
+  &quot;po_number&quot; : &quot;po_number&quot;,
   &quot;media_contact_lastname&quot; : &quot;media_contact_lastname&quot;,
-  &quot;start_date&quot; : &quot;2020-12-20&quot;,
   &quot;budget_amount&quot; : 5000000,
   &quot;media_contact_firstname&quot; : &quot;media_contact_firstname&quot;,
+  &quot;start_date&quot; : &quot;2020-12-20&quot;,
   &quot;oracle_line_id&quot; : &quot;oracle_line_id&quot;
 }"
   SsioInsertionOrderEditExamples <- SsioInsertionOrderEditExamples.Add("application/json", SsioInsertionOrderEditBody)

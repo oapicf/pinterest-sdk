@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelAddress   {
   @JsonProperty("addr1")
   private String addr1;
@@ -18,14 +18,14 @@ public class CatalogsHotelAddress   {
   @JsonProperty("city")
   private String city;
 
-  @JsonProperty("region")
-  private String region;
-
   @JsonProperty("country")
   private String country;
 
   @JsonProperty("postal_code")
   private String postalCode;
+
+  @JsonProperty("region")
+  private String region;
 
   /**
    * Primary street address of hotel.
@@ -64,24 +64,6 @@ public class CatalogsHotelAddress   {
   }
 
   /**
-   * State, county, province, where the hotel is located.
-   **/
-  public CatalogsHotelAddress region(String region) {
-    this.region = region;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "State, county, province, where the hotel is located.")
-  @JsonProperty("region")
-  public String getRegion() {
-    return region;
-  }
-  public void setRegion(String region) {
-    this.region = region;
-  }
-
-  /**
    * Country where the hotel is located.
    **/
   public CatalogsHotelAddress country(String country) {
@@ -117,6 +99,24 @@ public class CatalogsHotelAddress   {
     this.postalCode = postalCode;
   }
 
+  /**
+   * State, county, province, where the hotel is located.
+   **/
+  public CatalogsHotelAddress region(String region) {
+    this.region = region;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "State, county, province, where the hotel is located.")
+  @JsonProperty("region")
+  public String getRegion() {
+    return region;
+  }
+  public void setRegion(String region) {
+    this.region = region;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -129,14 +129,14 @@ public class CatalogsHotelAddress   {
     CatalogsHotelAddress catalogsHotelAddress = (CatalogsHotelAddress) o;
     return Objects.equals(addr1, catalogsHotelAddress.addr1) &&
         Objects.equals(city, catalogsHotelAddress.city) &&
-        Objects.equals(region, catalogsHotelAddress.region) &&
         Objects.equals(country, catalogsHotelAddress.country) &&
-        Objects.equals(postalCode, catalogsHotelAddress.postalCode);
+        Objects.equals(postalCode, catalogsHotelAddress.postalCode) &&
+        Objects.equals(region, catalogsHotelAddress.region);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(addr1, city, region, country, postalCode);
+    return Objects.hash(addr1, city, country, postalCode, region);
   }
 
   @Override
@@ -146,9 +146,9 @@ public class CatalogsHotelAddress   {
     
     sb.append("    addr1: ").append(toIndentedString(addr1)).append("\n");
     sb.append("    city: ").append(toIndentedString(city)).append("\n");
-    sb.append("    region: ").append(toIndentedString(region)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    postalCode: ").append(toIndentedString(postalCode)).append("\n");
+    sb.append("    region: ").append(toIndentedString(region)).append("\n");
     sb.append("}");
     return sb.toString();
   }

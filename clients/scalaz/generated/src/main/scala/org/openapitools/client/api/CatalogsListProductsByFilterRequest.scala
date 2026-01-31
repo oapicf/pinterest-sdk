@@ -15,9 +15,9 @@ case class CatalogsListProductsByFilterRequest (
   /* Catalog Feed id pertaining to the catalog product group filter. */
   feedId: String,
 filters: CatalogsCreativeAssetsProductGroupFilters,
-catalogType: CatalogType,
 /* Catalog id pertaining to the creative assets product group. */
   catalogId: String,
+catalogType: CatalogType,
 country: Country,
 locale: CatalogsLocale)
 

@@ -3,6 +3,22 @@ Protected Class AudienceCategory
 
 	#tag Property, Flags = &h0
 		#tag Note
+			Interest ID.
+		#tag EndNote
+		id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Interest affinity index.
+		#tag EndNote
+		index As Xoson.O.OptionalDouble
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			Interest unique key (same as ID).
 		#tag EndNote
 		key As Xoson.O.OptionalString
@@ -22,22 +38,6 @@ Protected Class AudienceCategory
 			Interest's percent of category's total audience.
 		#tag EndNote
 		ratio As Xoson.O.OptionalDouble
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Interest affinity index.
-		#tag EndNote
-		index As Xoson.O.OptionalDouble
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Interest ID.
-		#tag EndNote
-		id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -86,6 +86,22 @@ Protected Class AudienceCategory
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="index"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Double"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="key"
 			Visible=false
 			Group="Behavior"
@@ -107,22 +123,6 @@ Protected Class AudienceCategory
 			Group="Behavior"
 			InitialValue=""
 			Type="Double"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="index"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Double"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

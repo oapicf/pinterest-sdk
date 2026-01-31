@@ -9,10 +9,10 @@ import org.openapitools.model.AssetGroupType;
 
 @Canonical
 class CreateAssetGroupBody {
-    /* Asset Group name */
-    String assetGroupName
     /* Asset group description */
     String assetGroupDescription
+    /* Asset Group name */
+    String assetGroupName
     /* Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group. */
     List<AssetGroupType> assetGroupTypes = new ArrayList<>()
 }

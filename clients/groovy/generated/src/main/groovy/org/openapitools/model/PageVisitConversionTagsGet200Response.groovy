@@ -11,7 +11,7 @@ import org.openapitools.model.ConversionEventResponse;
 @Canonical
 class PageVisitConversionTagsGet200Response {
     
-    List<ConversionEventResponse> items = new ArrayList<>()
-    
     String bookmark
+    
+    List<ConversionEventResponse> items = new ArrayList<>()
 }

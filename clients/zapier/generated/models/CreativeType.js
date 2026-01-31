@@ -3,7 +3,7 @@ const utils = require('../utils/utils');
 module.exports = {
         fields: (key) => (
             {
-                label: `Ad creative type enum. For update, only draft ads may update creative type. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. - [${key.replaceAll('__', '.')}]`,
+                label: `Ad creative type enum. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. - [${key.replaceAll('__', '.')}]`,
                 choices: [
                     'REGULAR',
                     'VIDEO',
@@ -15,6 +15,9 @@ module.exports = {
                     'IDEA',
                     'SHOWCASE',
                     'QUIZ',
+                    'COLLAGE',
+                    'MAX_WIDTH_REGULAR_COLLECTION',
+                    'MAX_WIDTH_VIDEO_COLLECTION',
                 ],
             }
         )

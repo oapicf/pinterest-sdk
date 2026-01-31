@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,30 +16,28 @@ package openapi
 
 type MultipleProductGroupsInner struct {
 
-	Name string `json:"name"`
-
 	Description *string `json:"description,omitempty"`
+
+	// Catalog Feed id pertaining to the catalog product group.
+	FeedId string `json:"feed_id"`
+
+	Filters CatalogsProductGroupFiltersRequest `json:"filters"`
 
 	// boolean indicator of whether the product group is being featured or not
 	// Deprecated
 	IsFeatured bool `json:"is_featured,omitempty"`
 
-	Filters CatalogsProductGroupFiltersRequest `json:"filters"`
-
-	// Catalog Feed id pertaining to the catalog product group.
-	FeedId string `json:"feed_id"`
+	Name string `json:"name"`
 }
 
 // AssertMultipleProductGroupsInnerRequired checks if the required fields are not zero-ed
 func AssertMultipleProductGroupsInnerRequired(obj MultipleProductGroupsInner) error {
 	elements := map[string]interface{}{
-		"name": obj.Name,
-		"filters": obj.Filters,
 		"feed_id": obj.FeedId,
-		"catalog_type": obj.CatalogType,
+		"filters": obj.Filters,
+		"name": obj.Name,
 		"catalog_id": obj.CatalogId,
-		"country": obj.Country,
-		"locale": obj.Locale,
+		"catalog_type": obj.CatalogType,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

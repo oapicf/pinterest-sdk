@@ -9,7 +9,7 @@ import org.openapitools.model.LeadsExportStatus;
 @Canonical
 class LeadsExportResponseData {
     
-    LeadsExportStatus exportStatus
-    
     String downloadUrl
+    
+    LeadsExportStatus exportStatus
 }

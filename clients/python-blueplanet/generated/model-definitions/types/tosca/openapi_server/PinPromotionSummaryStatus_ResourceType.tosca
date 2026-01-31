@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server PinPromotionSummaryStatus"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a PinPromotionSummaryStatus"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  PinPromotionSummaryStatus {
+    title = PinPromotionSummaryStatus
+    description = PinPromotionSummaryStatus
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  PinPromotionSummaryStatus {
+    title = PinPromotionSummaryStatus
+    description = PinPromotionSummaryStatus
+    implements = openapi_server.resourceTypes.PinPromotionSummaryStatus
+
+  }
+}

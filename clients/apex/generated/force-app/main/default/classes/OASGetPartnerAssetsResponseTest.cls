@@ -73,17 +73,17 @@ private class OASGetPartnerAssetsResponseTest {
     private static void maintainRenamedProperties() {
         OASGetPartnerAssetsResponse getPartnerAssetsResponse = new OASGetPartnerAssetsResponse();
         Map<String, String> x-property-mappings = getPartnerAssetsResponse.getx-property-mappings();
+        System.assertEquals('assetGroupInfo', x-property-mappings.get('asset_group_info'));
         System.assertEquals('assetId', x-property-mappings.get('asset_id'));
         System.assertEquals('assetType', x-property-mappings.get('asset_type'));
-        System.assertEquals('assetGroupInfo', x-property-mappings.get('asset_group_info'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASGetPartnerAssetsResponse getPartnerAssetsResponse = new OASGetPartnerAssetsResponse();
         System.assertEquals(new List<String>(), getPartnerAssetsResponse.permissions);
+        System.assertEquals(null, getPartnerAssetsResponse.assetGroupInfo);
         System.assertEquals(null, getPartnerAssetsResponse.assetId);
         System.assertEquals(null, getPartnerAssetsResponse.assetType);
-        System.assertEquals(null, getPartnerAssetsResponse.assetGroupInfo);
     }
 }

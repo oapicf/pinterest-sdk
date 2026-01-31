@@ -18,7 +18,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"refreshToken": @"refresh_token", @"refreshTokenExpiresIn": @"refresh_token_expires_in", @"responseType": @"response_type", @"accessToken": @"access_token", @"tokenType": @"token_type", @"expiresIn": @"expires_in", @"scope": @"scope" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"refreshToken": @"refresh_token", @"refreshTokenExpiresAt": @"refresh_token_expires_at", @"refreshTokenExpiresIn": @"refresh_token_expires_in", @"accessToken": @"access_token", @"expiresIn": @"expires_in", @"responseType": @"response_type", @"scope": @"scope", @"tokenType": @"token_type" }];
 }
 
 /**
@@ -28,7 +28,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"responseType", ];
+  NSArray *optionalProperties = @[@"refreshToken", @"refreshTokenExpiresAt", @"refreshTokenExpiresIn", @"responseType", ];
   return [optionalProperties containsObject:propertyName];
 }
 

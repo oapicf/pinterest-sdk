@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -35,27 +35,29 @@ type AdUpdateRequest struct {
 	// Tracking url for the ad clicks.
 	ClickTrackingUrl NullableString `json:"click_tracking_url,omitempty"`
 	CreativeType *CreativeType `json:"creative_type,omitempty"`
+	CustomizableCtaType NullableCustomizableCTAType `json:"customizable_cta_type,omitempty"`
 	// Destination URL.
 	DestinationUrl NullableString `json:"destination_url,omitempty"`
+	DisclosureType NullableDisclosureType `json:"disclosure_type,omitempty"`
+	// URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
+	DisclosureUrl NullableString `json:"disclosure_url,omitempty"`
+	GridClickType NullableGridClickType `json:"grid_click_type,omitempty"`
 	// Deep link URL for iOS devices.
 	IosDeepLink NullableString `json:"ios_deep_link,omitempty"`
 	// Is original pin deleted?
 	IsPinDeleted *bool `json:"is_pin_deleted,omitempty"`
 	// Is pin repinnable?
 	IsRemovable *bool `json:"is_removable,omitempty"`
+	// Lead form ID for lead ad generation.
+	LeadFormId NullableString `json:"lead_form_id,omitempty" validate:"regexp=^(AG)?\\\\d+$"`
 	// Name of the ad - 255 chars max.
 	Name NullableString `json:"name,omitempty"`
+	// Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
+	QuizPinData NullableQuizPinData `json:"quiz_pin_data,omitempty"`
 	Status *EntityStatus `json:"status,omitempty"`
 	TrackingUrls NullableTrackingUrls `json:"tracking_urls,omitempty"`
 	// Tracking URL for ad impressions.
 	ViewTrackingUrl NullableString `json:"view_tracking_url,omitempty"`
-	// Lead form ID for lead ad generation.
-	LeadFormId NullableString `json:"lead_form_id,omitempty" validate:"regexp=^(AG)?\\\\d+$"`
-	GridClickType NullableGridClickType `json:"grid_click_type,omitempty"`
-	// Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
-	CustomizableCtaType NullableString `json:"customizable_cta_type,omitempty"`
-	// Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
-	QuizPinData NullableQuizPinData `json:"quiz_pin_data,omitempty"`
 	// The ID of this ad.
 	Id string `json:"id" validate:"regexp=^\\\\d+$"`
 	// Pin ID. This field may only be updated for draft ads.
@@ -329,6 +331,48 @@ func (o *AdUpdateRequest) SetCreativeType(v CreativeType) {
 	o.CreativeType = &v
 }
 
+// GetCustomizableCtaType returns the CustomizableCtaType field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AdUpdateRequest) GetCustomizableCtaType() CustomizableCTAType {
+	if o == nil || IsNil(o.CustomizableCtaType.Get()) {
+		var ret CustomizableCTAType
+		return ret
+	}
+	return *o.CustomizableCtaType.Get()
+}
+
+// GetCustomizableCtaTypeOk returns a tuple with the CustomizableCtaType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AdUpdateRequest) GetCustomizableCtaTypeOk() (*CustomizableCTAType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CustomizableCtaType.Get(), o.CustomizableCtaType.IsSet()
+}
+
+// HasCustomizableCtaType returns a boolean if a field has been set.
+func (o *AdUpdateRequest) HasCustomizableCtaType() bool {
+	if o != nil && o.CustomizableCtaType.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomizableCtaType gets a reference to the given NullableCustomizableCTAType and assigns it to the CustomizableCtaType field.
+func (o *AdUpdateRequest) SetCustomizableCtaType(v CustomizableCTAType) {
+	o.CustomizableCtaType.Set(&v)
+}
+// SetCustomizableCtaTypeNil sets the value for CustomizableCtaType to be an explicit nil
+func (o *AdUpdateRequest) SetCustomizableCtaTypeNil() {
+	o.CustomizableCtaType.Set(nil)
+}
+
+// UnsetCustomizableCtaType ensures that no value is present for CustomizableCtaType, not even an explicit nil
+func (o *AdUpdateRequest) UnsetCustomizableCtaType() {
+	o.CustomizableCtaType.Unset()
+}
+
 // GetDestinationUrl returns the DestinationUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AdUpdateRequest) GetDestinationUrl() string {
 	if o == nil || IsNil(o.DestinationUrl.Get()) {
@@ -369,6 +413,132 @@ func (o *AdUpdateRequest) SetDestinationUrlNil() {
 // UnsetDestinationUrl ensures that no value is present for DestinationUrl, not even an explicit nil
 func (o *AdUpdateRequest) UnsetDestinationUrl() {
 	o.DestinationUrl.Unset()
+}
+
+// GetDisclosureType returns the DisclosureType field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AdUpdateRequest) GetDisclosureType() DisclosureType {
+	if o == nil || IsNil(o.DisclosureType.Get()) {
+		var ret DisclosureType
+		return ret
+	}
+	return *o.DisclosureType.Get()
+}
+
+// GetDisclosureTypeOk returns a tuple with the DisclosureType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AdUpdateRequest) GetDisclosureTypeOk() (*DisclosureType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DisclosureType.Get(), o.DisclosureType.IsSet()
+}
+
+// HasDisclosureType returns a boolean if a field has been set.
+func (o *AdUpdateRequest) HasDisclosureType() bool {
+	if o != nil && o.DisclosureType.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDisclosureType gets a reference to the given NullableDisclosureType and assigns it to the DisclosureType field.
+func (o *AdUpdateRequest) SetDisclosureType(v DisclosureType) {
+	o.DisclosureType.Set(&v)
+}
+// SetDisclosureTypeNil sets the value for DisclosureType to be an explicit nil
+func (o *AdUpdateRequest) SetDisclosureTypeNil() {
+	o.DisclosureType.Set(nil)
+}
+
+// UnsetDisclosureType ensures that no value is present for DisclosureType, not even an explicit nil
+func (o *AdUpdateRequest) UnsetDisclosureType() {
+	o.DisclosureType.Unset()
+}
+
+// GetDisclosureUrl returns the DisclosureUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AdUpdateRequest) GetDisclosureUrl() string {
+	if o == nil || IsNil(o.DisclosureUrl.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.DisclosureUrl.Get()
+}
+
+// GetDisclosureUrlOk returns a tuple with the DisclosureUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AdUpdateRequest) GetDisclosureUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DisclosureUrl.Get(), o.DisclosureUrl.IsSet()
+}
+
+// HasDisclosureUrl returns a boolean if a field has been set.
+func (o *AdUpdateRequest) HasDisclosureUrl() bool {
+	if o != nil && o.DisclosureUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDisclosureUrl gets a reference to the given NullableString and assigns it to the DisclosureUrl field.
+func (o *AdUpdateRequest) SetDisclosureUrl(v string) {
+	o.DisclosureUrl.Set(&v)
+}
+// SetDisclosureUrlNil sets the value for DisclosureUrl to be an explicit nil
+func (o *AdUpdateRequest) SetDisclosureUrlNil() {
+	o.DisclosureUrl.Set(nil)
+}
+
+// UnsetDisclosureUrl ensures that no value is present for DisclosureUrl, not even an explicit nil
+func (o *AdUpdateRequest) UnsetDisclosureUrl() {
+	o.DisclosureUrl.Unset()
+}
+
+// GetGridClickType returns the GridClickType field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AdUpdateRequest) GetGridClickType() GridClickType {
+	if o == nil || IsNil(o.GridClickType.Get()) {
+		var ret GridClickType
+		return ret
+	}
+	return *o.GridClickType.Get()
+}
+
+// GetGridClickTypeOk returns a tuple with the GridClickType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AdUpdateRequest) GetGridClickTypeOk() (*GridClickType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.GridClickType.Get(), o.GridClickType.IsSet()
+}
+
+// HasGridClickType returns a boolean if a field has been set.
+func (o *AdUpdateRequest) HasGridClickType() bool {
+	if o != nil && o.GridClickType.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetGridClickType gets a reference to the given NullableGridClickType and assigns it to the GridClickType field.
+func (o *AdUpdateRequest) SetGridClickType(v GridClickType) {
+	o.GridClickType.Set(&v)
+}
+// SetGridClickTypeNil sets the value for GridClickType to be an explicit nil
+func (o *AdUpdateRequest) SetGridClickTypeNil() {
+	o.GridClickType.Set(nil)
+}
+
+// UnsetGridClickType ensures that no value is present for GridClickType, not even an explicit nil
+func (o *AdUpdateRequest) UnsetGridClickType() {
+	o.GridClickType.Unset()
 }
 
 // GetIosDeepLink returns the IosDeepLink field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -477,6 +647,48 @@ func (o *AdUpdateRequest) SetIsRemovable(v bool) {
 	o.IsRemovable = &v
 }
 
+// GetLeadFormId returns the LeadFormId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AdUpdateRequest) GetLeadFormId() string {
+	if o == nil || IsNil(o.LeadFormId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.LeadFormId.Get()
+}
+
+// GetLeadFormIdOk returns a tuple with the LeadFormId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AdUpdateRequest) GetLeadFormIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LeadFormId.Get(), o.LeadFormId.IsSet()
+}
+
+// HasLeadFormId returns a boolean if a field has been set.
+func (o *AdUpdateRequest) HasLeadFormId() bool {
+	if o != nil && o.LeadFormId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLeadFormId gets a reference to the given NullableString and assigns it to the LeadFormId field.
+func (o *AdUpdateRequest) SetLeadFormId(v string) {
+	o.LeadFormId.Set(&v)
+}
+// SetLeadFormIdNil sets the value for LeadFormId to be an explicit nil
+func (o *AdUpdateRequest) SetLeadFormIdNil() {
+	o.LeadFormId.Set(nil)
+}
+
+// UnsetLeadFormId ensures that no value is present for LeadFormId, not even an explicit nil
+func (o *AdUpdateRequest) UnsetLeadFormId() {
+	o.LeadFormId.Unset()
+}
+
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AdUpdateRequest) GetName() string {
 	if o == nil || IsNil(o.Name.Get()) {
@@ -517,6 +729,48 @@ func (o *AdUpdateRequest) SetNameNil() {
 // UnsetName ensures that no value is present for Name, not even an explicit nil
 func (o *AdUpdateRequest) UnsetName() {
 	o.Name.Unset()
+}
+
+// GetQuizPinData returns the QuizPinData field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AdUpdateRequest) GetQuizPinData() QuizPinData {
+	if o == nil || IsNil(o.QuizPinData.Get()) {
+		var ret QuizPinData
+		return ret
+	}
+	return *o.QuizPinData.Get()
+}
+
+// GetQuizPinDataOk returns a tuple with the QuizPinData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AdUpdateRequest) GetQuizPinDataOk() (*QuizPinData, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.QuizPinData.Get(), o.QuizPinData.IsSet()
+}
+
+// HasQuizPinData returns a boolean if a field has been set.
+func (o *AdUpdateRequest) HasQuizPinData() bool {
+	if o != nil && o.QuizPinData.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetQuizPinData gets a reference to the given NullableQuizPinData and assigns it to the QuizPinData field.
+func (o *AdUpdateRequest) SetQuizPinData(v QuizPinData) {
+	o.QuizPinData.Set(&v)
+}
+// SetQuizPinDataNil sets the value for QuizPinData to be an explicit nil
+func (o *AdUpdateRequest) SetQuizPinDataNil() {
+	o.QuizPinData.Set(nil)
+}
+
+// UnsetQuizPinData ensures that no value is present for QuizPinData, not even an explicit nil
+func (o *AdUpdateRequest) UnsetQuizPinData() {
+	o.QuizPinData.Unset()
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -635,174 +889,6 @@ func (o *AdUpdateRequest) UnsetViewTrackingUrl() {
 	o.ViewTrackingUrl.Unset()
 }
 
-// GetLeadFormId returns the LeadFormId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdUpdateRequest) GetLeadFormId() string {
-	if o == nil || IsNil(o.LeadFormId.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.LeadFormId.Get()
-}
-
-// GetLeadFormIdOk returns a tuple with the LeadFormId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdUpdateRequest) GetLeadFormIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.LeadFormId.Get(), o.LeadFormId.IsSet()
-}
-
-// HasLeadFormId returns a boolean if a field has been set.
-func (o *AdUpdateRequest) HasLeadFormId() bool {
-	if o != nil && o.LeadFormId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLeadFormId gets a reference to the given NullableString and assigns it to the LeadFormId field.
-func (o *AdUpdateRequest) SetLeadFormId(v string) {
-	o.LeadFormId.Set(&v)
-}
-// SetLeadFormIdNil sets the value for LeadFormId to be an explicit nil
-func (o *AdUpdateRequest) SetLeadFormIdNil() {
-	o.LeadFormId.Set(nil)
-}
-
-// UnsetLeadFormId ensures that no value is present for LeadFormId, not even an explicit nil
-func (o *AdUpdateRequest) UnsetLeadFormId() {
-	o.LeadFormId.Unset()
-}
-
-// GetGridClickType returns the GridClickType field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdUpdateRequest) GetGridClickType() GridClickType {
-	if o == nil || IsNil(o.GridClickType.Get()) {
-		var ret GridClickType
-		return ret
-	}
-	return *o.GridClickType.Get()
-}
-
-// GetGridClickTypeOk returns a tuple with the GridClickType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdUpdateRequest) GetGridClickTypeOk() (*GridClickType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.GridClickType.Get(), o.GridClickType.IsSet()
-}
-
-// HasGridClickType returns a boolean if a field has been set.
-func (o *AdUpdateRequest) HasGridClickType() bool {
-	if o != nil && o.GridClickType.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetGridClickType gets a reference to the given NullableGridClickType and assigns it to the GridClickType field.
-func (o *AdUpdateRequest) SetGridClickType(v GridClickType) {
-	o.GridClickType.Set(&v)
-}
-// SetGridClickTypeNil sets the value for GridClickType to be an explicit nil
-func (o *AdUpdateRequest) SetGridClickTypeNil() {
-	o.GridClickType.Set(nil)
-}
-
-// UnsetGridClickType ensures that no value is present for GridClickType, not even an explicit nil
-func (o *AdUpdateRequest) UnsetGridClickType() {
-	o.GridClickType.Unset()
-}
-
-// GetCustomizableCtaType returns the CustomizableCtaType field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdUpdateRequest) GetCustomizableCtaType() string {
-	if o == nil || IsNil(o.CustomizableCtaType.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.CustomizableCtaType.Get()
-}
-
-// GetCustomizableCtaTypeOk returns a tuple with the CustomizableCtaType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdUpdateRequest) GetCustomizableCtaTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.CustomizableCtaType.Get(), o.CustomizableCtaType.IsSet()
-}
-
-// HasCustomizableCtaType returns a boolean if a field has been set.
-func (o *AdUpdateRequest) HasCustomizableCtaType() bool {
-	if o != nil && o.CustomizableCtaType.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCustomizableCtaType gets a reference to the given NullableString and assigns it to the CustomizableCtaType field.
-func (o *AdUpdateRequest) SetCustomizableCtaType(v string) {
-	o.CustomizableCtaType.Set(&v)
-}
-// SetCustomizableCtaTypeNil sets the value for CustomizableCtaType to be an explicit nil
-func (o *AdUpdateRequest) SetCustomizableCtaTypeNil() {
-	o.CustomizableCtaType.Set(nil)
-}
-
-// UnsetCustomizableCtaType ensures that no value is present for CustomizableCtaType, not even an explicit nil
-func (o *AdUpdateRequest) UnsetCustomizableCtaType() {
-	o.CustomizableCtaType.Unset()
-}
-
-// GetQuizPinData returns the QuizPinData field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdUpdateRequest) GetQuizPinData() QuizPinData {
-	if o == nil || IsNil(o.QuizPinData.Get()) {
-		var ret QuizPinData
-		return ret
-	}
-	return *o.QuizPinData.Get()
-}
-
-// GetQuizPinDataOk returns a tuple with the QuizPinData field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdUpdateRequest) GetQuizPinDataOk() (*QuizPinData, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.QuizPinData.Get(), o.QuizPinData.IsSet()
-}
-
-// HasQuizPinData returns a boolean if a field has been set.
-func (o *AdUpdateRequest) HasQuizPinData() bool {
-	if o != nil && o.QuizPinData.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetQuizPinData gets a reference to the given NullableQuizPinData and assigns it to the QuizPinData field.
-func (o *AdUpdateRequest) SetQuizPinData(v QuizPinData) {
-	o.QuizPinData.Set(&v)
-}
-// SetQuizPinDataNil sets the value for QuizPinData to be an explicit nil
-func (o *AdUpdateRequest) SetQuizPinDataNil() {
-	o.QuizPinData.Set(nil)
-}
-
-// UnsetQuizPinData ensures that no value is present for QuizPinData, not even an explicit nil
-func (o *AdUpdateRequest) UnsetQuizPinData() {
-	o.QuizPinData.Unset()
-}
-
 // GetId returns the Id field value
 func (o *AdUpdateRequest) GetId() string {
 	if o == nil {
@@ -900,8 +986,20 @@ func (o AdUpdateRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CreativeType) {
 		toSerialize["creative_type"] = o.CreativeType
 	}
+	if o.CustomizableCtaType.IsSet() {
+		toSerialize["customizable_cta_type"] = o.CustomizableCtaType.Get()
+	}
 	if o.DestinationUrl.IsSet() {
 		toSerialize["destination_url"] = o.DestinationUrl.Get()
+	}
+	if o.DisclosureType.IsSet() {
+		toSerialize["disclosure_type"] = o.DisclosureType.Get()
+	}
+	if o.DisclosureUrl.IsSet() {
+		toSerialize["disclosure_url"] = o.DisclosureUrl.Get()
+	}
+	if o.GridClickType.IsSet() {
+		toSerialize["grid_click_type"] = o.GridClickType.Get()
 	}
 	if o.IosDeepLink.IsSet() {
 		toSerialize["ios_deep_link"] = o.IosDeepLink.Get()
@@ -912,8 +1010,14 @@ func (o AdUpdateRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsRemovable) {
 		toSerialize["is_removable"] = o.IsRemovable
 	}
+	if o.LeadFormId.IsSet() {
+		toSerialize["lead_form_id"] = o.LeadFormId.Get()
+	}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
+	}
+	if o.QuizPinData.IsSet() {
+		toSerialize["quiz_pin_data"] = o.QuizPinData.Get()
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
@@ -923,18 +1027,6 @@ func (o AdUpdateRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if o.ViewTrackingUrl.IsSet() {
 		toSerialize["view_tracking_url"] = o.ViewTrackingUrl.Get()
-	}
-	if o.LeadFormId.IsSet() {
-		toSerialize["lead_form_id"] = o.LeadFormId.Get()
-	}
-	if o.GridClickType.IsSet() {
-		toSerialize["grid_click_type"] = o.GridClickType.Get()
-	}
-	if o.CustomizableCtaType.IsSet() {
-		toSerialize["customizable_cta_type"] = o.CustomizableCtaType.Get()
-	}
-	if o.QuizPinData.IsSet() {
-		toSerialize["quiz_pin_data"] = o.QuizPinData.Get()
 	}
 	toSerialize["id"] = o.Id
 	if o.PinId.IsSet() {

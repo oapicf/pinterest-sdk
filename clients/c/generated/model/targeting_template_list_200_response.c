@@ -6,27 +6,27 @@
 
 
 static targeting_template_list_200_response_t *targeting_template_list_200_response_create_internal(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     targeting_template_list_200_response_t *targeting_template_list_200_response_local_var = malloc(sizeof(targeting_template_list_200_response_t));
     if (!targeting_template_list_200_response_local_var) {
         return NULL;
     }
-    targeting_template_list_200_response_local_var->items = items;
     targeting_template_list_200_response_local_var->bookmark = bookmark;
+    targeting_template_list_200_response_local_var->items = items;
 
     targeting_template_list_200_response_local_var->_library_owned = 1;
     return targeting_template_list_200_response_local_var;
 }
 
 __attribute__((deprecated)) targeting_template_list_200_response_t *targeting_template_list_200_response_create(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     return targeting_template_list_200_response_create_internal (
-        items,
-        bookmark
+        bookmark,
+        items
         );
 }
 
@@ -39,22 +39,30 @@ void targeting_template_list_200_response_free(targeting_template_list_200_respo
         return ;
     }
     listEntry_t *listEntry;
-    if (targeting_template_list_200_response->items) {
-        list_ForEach(listEntry, targeting_template_list_200_response->items) {
-            targeting_template_response_data_free(listEntry->data);
-        }
-        list_freeList(targeting_template_list_200_response->items);
-        targeting_template_list_200_response->items = NULL;
-    }
     if (targeting_template_list_200_response->bookmark) {
         free(targeting_template_list_200_response->bookmark);
         targeting_template_list_200_response->bookmark = NULL;
+    }
+    if (targeting_template_list_200_response->items) {
+        list_ForEach(listEntry, targeting_template_list_200_response->items) {
+            targeting_template_get_response_data_free(listEntry->data);
+        }
+        list_freeList(targeting_template_list_200_response->items);
+        targeting_template_list_200_response->items = NULL;
     }
     free(targeting_template_list_200_response);
 }
 
 cJSON *targeting_template_list_200_response_convertToJSON(targeting_template_list_200_response_t *targeting_template_list_200_response) {
     cJSON *item = cJSON_CreateObject();
+
+    // targeting_template_list_200_response->bookmark
+    if(targeting_template_list_200_response->bookmark) {
+    if(cJSON_AddStringToObject(item, "bookmark", targeting_template_list_200_response->bookmark) == NULL) {
+    goto fail; //String
+    }
+    }
+
 
     // targeting_template_list_200_response->items
     if (!targeting_template_list_200_response->items) {
@@ -68,19 +76,11 @@ cJSON *targeting_template_list_200_response_convertToJSON(targeting_template_lis
     listEntry_t *itemsListEntry;
     if (targeting_template_list_200_response->items) {
     list_ForEach(itemsListEntry, targeting_template_list_200_response->items) {
-    cJSON *itemLocal = targeting_template_response_data_convertToJSON(itemsListEntry->data);
+    cJSON *itemLocal = targeting_template_get_response_data_convertToJSON(itemsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
     cJSON_AddItemToArray(items, itemLocal);
-    }
-    }
-
-
-    // targeting_template_list_200_response->bookmark
-    if(targeting_template_list_200_response->bookmark) {
-    if(cJSON_AddStringToObject(item, "bookmark", targeting_template_list_200_response->bookmark) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -98,6 +98,18 @@ targeting_template_list_200_response_t *targeting_template_list_200_response_par
 
     // define the local list for targeting_template_list_200_response->items
     list_t *itemsList = NULL;
+
+    // targeting_template_list_200_response->bookmark
+    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(targeting_template_list_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
+    if (bookmark) { 
+    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
+    {
+    goto end; //String
+    }
+    }
 
     // targeting_template_list_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(targeting_template_list_200_responseJSON, "items");
@@ -121,27 +133,15 @@ targeting_template_list_200_response_t *targeting_template_list_200_response_par
         if(!cJSON_IsObject(items_local_nonprimitive)){
             goto end;
         }
-        targeting_template_response_data_t *itemsItem = targeting_template_response_data_parseFromJSON(items_local_nonprimitive);
+        targeting_template_get_response_data_t *itemsItem = targeting_template_get_response_data_parseFromJSON(items_local_nonprimitive);
 
         list_addElement(itemsList, itemsItem);
     }
 
-    // targeting_template_list_200_response->bookmark
-    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(targeting_template_list_200_responseJSON, "bookmark");
-    if (cJSON_IsNull(bookmark)) {
-        bookmark = NULL;
-    }
-    if (bookmark) { 
-    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
-    {
-    goto end; //String
-    }
-    }
-
 
     targeting_template_list_200_response_local_var = targeting_template_list_200_response_create_internal (
-        itemsList,
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
+        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        itemsList
         );
 
     return targeting_template_list_200_response_local_var;
@@ -149,7 +149,7 @@ end:
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {
-            targeting_template_response_data_free(listEntry->data);
+            targeting_template_get_response_data_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(itemsList);

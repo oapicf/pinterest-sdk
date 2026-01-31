@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,22 +20,24 @@ var _ MappedNullable = &CatalogsFeedIngestionErrors{}
 
 // CatalogsFeedIngestionErrors struct for CatalogsFeedIngestionErrors
 type CatalogsFeedIngestionErrors struct {
-	// We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.
-	LINE_LEVEL_INTERNAL_ERROR *int32 `json:"LINE_LEVEL_INTERNAL_ERROR,omitempty"`
-	// The product count has decreased by more than 99% compared to the last successful ingestion.
-	LARGE_PRODUCT_COUNT_DECREASE *int32 `json:"LARGE_PRODUCT_COUNT_DECREASE,omitempty"`
 	// We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information.
 	ACCOUNT_FLAGGED *int32 `json:"ACCOUNT_FLAGGED,omitempty"`
-	// We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.
-	IMAGE_LEVEL_INTERNAL_ERROR *int32 `json:"IMAGE_LEVEL_INTERNAL_ERROR,omitempty"`
+	// Update your Google Sheets sharing settings to 'Anyone with link' as a Viewer so that Pinterest can access your file.
+	FETCH_GOOGLE_SHEET_NOT_SHARED *int32 `json:"FETCH_GOOGLE_SHEET_NOT_SHARED,omitempty"`
 	// Image files are unreadable. Please upload new files to continue.
 	IMAGE_FILE_NOT_ACCESSIBLE *int32 `json:"IMAGE_FILE_NOT_ACCESSIBLE,omitempty"`
-	// Image files are unreadable. Please check your link and upload new files to continue.
-	IMAGE_MALFORMED_URL *int32 `json:"IMAGE_MALFORMED_URL,omitempty"`
 	// Image files are unreadable. Please upload new files to continue.
 	IMAGE_FILE_NOT_FOUND *int32 `json:"IMAGE_FILE_NOT_FOUND,omitempty"`
 	// Image files are unreadable. Please upload new files to continue.
 	IMAGE_INVALID_FILE *int32 `json:"IMAGE_INVALID_FILE,omitempty"`
+	// We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.
+	IMAGE_LEVEL_INTERNAL_ERROR *int32 `json:"IMAGE_LEVEL_INTERNAL_ERROR,omitempty"`
+	// Image files are unreadable. Please check your link and upload new files to continue.
+	IMAGE_MALFORMED_URL *int32 `json:"IMAGE_MALFORMED_URL,omitempty"`
+	// The product count has decreased by more than 99% compared to the last successful ingestion.
+	LARGE_PRODUCT_COUNT_DECREASE *int32 `json:"LARGE_PRODUCT_COUNT_DECREASE,omitempty"`
+	// We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.
+	LINE_LEVEL_INTERNAL_ERROR *int32 `json:"LINE_LEVEL_INTERNAL_ERROR,omitempty"`
 }
 
 // NewCatalogsFeedIngestionErrors instantiates a new CatalogsFeedIngestionErrors object
@@ -53,70 +55,6 @@ func NewCatalogsFeedIngestionErrors() *CatalogsFeedIngestionErrors {
 func NewCatalogsFeedIngestionErrorsWithDefaults() *CatalogsFeedIngestionErrors {
 	this := CatalogsFeedIngestionErrors{}
 	return &this
-}
-
-// GetLINE_LEVEL_INTERNAL_ERROR returns the LINE_LEVEL_INTERNAL_ERROR field value if set, zero value otherwise.
-func (o *CatalogsFeedIngestionErrors) GetLINE_LEVEL_INTERNAL_ERROR() int32 {
-	if o == nil || IsNil(o.LINE_LEVEL_INTERNAL_ERROR) {
-		var ret int32
-		return ret
-	}
-	return *o.LINE_LEVEL_INTERNAL_ERROR
-}
-
-// GetLINE_LEVEL_INTERNAL_ERROROk returns a tuple with the LINE_LEVEL_INTERNAL_ERROR field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsFeedIngestionErrors) GetLINE_LEVEL_INTERNAL_ERROROk() (*int32, bool) {
-	if o == nil || IsNil(o.LINE_LEVEL_INTERNAL_ERROR) {
-		return nil, false
-	}
-	return o.LINE_LEVEL_INTERNAL_ERROR, true
-}
-
-// HasLINE_LEVEL_INTERNAL_ERROR returns a boolean if a field has been set.
-func (o *CatalogsFeedIngestionErrors) HasLINE_LEVEL_INTERNAL_ERROR() bool {
-	if o != nil && !IsNil(o.LINE_LEVEL_INTERNAL_ERROR) {
-		return true
-	}
-
-	return false
-}
-
-// SetLINE_LEVEL_INTERNAL_ERROR gets a reference to the given int32 and assigns it to the LINE_LEVEL_INTERNAL_ERROR field.
-func (o *CatalogsFeedIngestionErrors) SetLINE_LEVEL_INTERNAL_ERROR(v int32) {
-	o.LINE_LEVEL_INTERNAL_ERROR = &v
-}
-
-// GetLARGE_PRODUCT_COUNT_DECREASE returns the LARGE_PRODUCT_COUNT_DECREASE field value if set, zero value otherwise.
-func (o *CatalogsFeedIngestionErrors) GetLARGE_PRODUCT_COUNT_DECREASE() int32 {
-	if o == nil || IsNil(o.LARGE_PRODUCT_COUNT_DECREASE) {
-		var ret int32
-		return ret
-	}
-	return *o.LARGE_PRODUCT_COUNT_DECREASE
-}
-
-// GetLARGE_PRODUCT_COUNT_DECREASEOk returns a tuple with the LARGE_PRODUCT_COUNT_DECREASE field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsFeedIngestionErrors) GetLARGE_PRODUCT_COUNT_DECREASEOk() (*int32, bool) {
-	if o == nil || IsNil(o.LARGE_PRODUCT_COUNT_DECREASE) {
-		return nil, false
-	}
-	return o.LARGE_PRODUCT_COUNT_DECREASE, true
-}
-
-// HasLARGE_PRODUCT_COUNT_DECREASE returns a boolean if a field has been set.
-func (o *CatalogsFeedIngestionErrors) HasLARGE_PRODUCT_COUNT_DECREASE() bool {
-	if o != nil && !IsNil(o.LARGE_PRODUCT_COUNT_DECREASE) {
-		return true
-	}
-
-	return false
-}
-
-// SetLARGE_PRODUCT_COUNT_DECREASE gets a reference to the given int32 and assigns it to the LARGE_PRODUCT_COUNT_DECREASE field.
-func (o *CatalogsFeedIngestionErrors) SetLARGE_PRODUCT_COUNT_DECREASE(v int32) {
-	o.LARGE_PRODUCT_COUNT_DECREASE = &v
 }
 
 // GetACCOUNT_FLAGGED returns the ACCOUNT_FLAGGED field value if set, zero value otherwise.
@@ -151,36 +89,36 @@ func (o *CatalogsFeedIngestionErrors) SetACCOUNT_FLAGGED(v int32) {
 	o.ACCOUNT_FLAGGED = &v
 }
 
-// GetIMAGE_LEVEL_INTERNAL_ERROR returns the IMAGE_LEVEL_INTERNAL_ERROR field value if set, zero value otherwise.
-func (o *CatalogsFeedIngestionErrors) GetIMAGE_LEVEL_INTERNAL_ERROR() int32 {
-	if o == nil || IsNil(o.IMAGE_LEVEL_INTERNAL_ERROR) {
+// GetFETCH_GOOGLE_SHEET_NOT_SHARED returns the FETCH_GOOGLE_SHEET_NOT_SHARED field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionErrors) GetFETCH_GOOGLE_SHEET_NOT_SHARED() int32 {
+	if o == nil || IsNil(o.FETCH_GOOGLE_SHEET_NOT_SHARED) {
 		var ret int32
 		return ret
 	}
-	return *o.IMAGE_LEVEL_INTERNAL_ERROR
+	return *o.FETCH_GOOGLE_SHEET_NOT_SHARED
 }
 
-// GetIMAGE_LEVEL_INTERNAL_ERROROk returns a tuple with the IMAGE_LEVEL_INTERNAL_ERROR field value if set, nil otherwise
+// GetFETCH_GOOGLE_SHEET_NOT_SHAREDOk returns a tuple with the FETCH_GOOGLE_SHEET_NOT_SHARED field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogsFeedIngestionErrors) GetIMAGE_LEVEL_INTERNAL_ERROROk() (*int32, bool) {
-	if o == nil || IsNil(o.IMAGE_LEVEL_INTERNAL_ERROR) {
+func (o *CatalogsFeedIngestionErrors) GetFETCH_GOOGLE_SHEET_NOT_SHAREDOk() (*int32, bool) {
+	if o == nil || IsNil(o.FETCH_GOOGLE_SHEET_NOT_SHARED) {
 		return nil, false
 	}
-	return o.IMAGE_LEVEL_INTERNAL_ERROR, true
+	return o.FETCH_GOOGLE_SHEET_NOT_SHARED, true
 }
 
-// HasIMAGE_LEVEL_INTERNAL_ERROR returns a boolean if a field has been set.
-func (o *CatalogsFeedIngestionErrors) HasIMAGE_LEVEL_INTERNAL_ERROR() bool {
-	if o != nil && !IsNil(o.IMAGE_LEVEL_INTERNAL_ERROR) {
+// HasFETCH_GOOGLE_SHEET_NOT_SHARED returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionErrors) HasFETCH_GOOGLE_SHEET_NOT_SHARED() bool {
+	if o != nil && !IsNil(o.FETCH_GOOGLE_SHEET_NOT_SHARED) {
 		return true
 	}
 
 	return false
 }
 
-// SetIMAGE_LEVEL_INTERNAL_ERROR gets a reference to the given int32 and assigns it to the IMAGE_LEVEL_INTERNAL_ERROR field.
-func (o *CatalogsFeedIngestionErrors) SetIMAGE_LEVEL_INTERNAL_ERROR(v int32) {
-	o.IMAGE_LEVEL_INTERNAL_ERROR = &v
+// SetFETCH_GOOGLE_SHEET_NOT_SHARED gets a reference to the given int32 and assigns it to the FETCH_GOOGLE_SHEET_NOT_SHARED field.
+func (o *CatalogsFeedIngestionErrors) SetFETCH_GOOGLE_SHEET_NOT_SHARED(v int32) {
+	o.FETCH_GOOGLE_SHEET_NOT_SHARED = &v
 }
 
 // GetIMAGE_FILE_NOT_ACCESSIBLE returns the IMAGE_FILE_NOT_ACCESSIBLE field value if set, zero value otherwise.
@@ -213,38 +151,6 @@ func (o *CatalogsFeedIngestionErrors) HasIMAGE_FILE_NOT_ACCESSIBLE() bool {
 // SetIMAGE_FILE_NOT_ACCESSIBLE gets a reference to the given int32 and assigns it to the IMAGE_FILE_NOT_ACCESSIBLE field.
 func (o *CatalogsFeedIngestionErrors) SetIMAGE_FILE_NOT_ACCESSIBLE(v int32) {
 	o.IMAGE_FILE_NOT_ACCESSIBLE = &v
-}
-
-// GetIMAGE_MALFORMED_URL returns the IMAGE_MALFORMED_URL field value if set, zero value otherwise.
-func (o *CatalogsFeedIngestionErrors) GetIMAGE_MALFORMED_URL() int32 {
-	if o == nil || IsNil(o.IMAGE_MALFORMED_URL) {
-		var ret int32
-		return ret
-	}
-	return *o.IMAGE_MALFORMED_URL
-}
-
-// GetIMAGE_MALFORMED_URLOk returns a tuple with the IMAGE_MALFORMED_URL field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsFeedIngestionErrors) GetIMAGE_MALFORMED_URLOk() (*int32, bool) {
-	if o == nil || IsNil(o.IMAGE_MALFORMED_URL) {
-		return nil, false
-	}
-	return o.IMAGE_MALFORMED_URL, true
-}
-
-// HasIMAGE_MALFORMED_URL returns a boolean if a field has been set.
-func (o *CatalogsFeedIngestionErrors) HasIMAGE_MALFORMED_URL() bool {
-	if o != nil && !IsNil(o.IMAGE_MALFORMED_URL) {
-		return true
-	}
-
-	return false
-}
-
-// SetIMAGE_MALFORMED_URL gets a reference to the given int32 and assigns it to the IMAGE_MALFORMED_URL field.
-func (o *CatalogsFeedIngestionErrors) SetIMAGE_MALFORMED_URL(v int32) {
-	o.IMAGE_MALFORMED_URL = &v
 }
 
 // GetIMAGE_FILE_NOT_FOUND returns the IMAGE_FILE_NOT_FOUND field value if set, zero value otherwise.
@@ -311,6 +217,134 @@ func (o *CatalogsFeedIngestionErrors) SetIMAGE_INVALID_FILE(v int32) {
 	o.IMAGE_INVALID_FILE = &v
 }
 
+// GetIMAGE_LEVEL_INTERNAL_ERROR returns the IMAGE_LEVEL_INTERNAL_ERROR field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionErrors) GetIMAGE_LEVEL_INTERNAL_ERROR() int32 {
+	if o == nil || IsNil(o.IMAGE_LEVEL_INTERNAL_ERROR) {
+		var ret int32
+		return ret
+	}
+	return *o.IMAGE_LEVEL_INTERNAL_ERROR
+}
+
+// GetIMAGE_LEVEL_INTERNAL_ERROROk returns a tuple with the IMAGE_LEVEL_INTERNAL_ERROR field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionErrors) GetIMAGE_LEVEL_INTERNAL_ERROROk() (*int32, bool) {
+	if o == nil || IsNil(o.IMAGE_LEVEL_INTERNAL_ERROR) {
+		return nil, false
+	}
+	return o.IMAGE_LEVEL_INTERNAL_ERROR, true
+}
+
+// HasIMAGE_LEVEL_INTERNAL_ERROR returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionErrors) HasIMAGE_LEVEL_INTERNAL_ERROR() bool {
+	if o != nil && !IsNil(o.IMAGE_LEVEL_INTERNAL_ERROR) {
+		return true
+	}
+
+	return false
+}
+
+// SetIMAGE_LEVEL_INTERNAL_ERROR gets a reference to the given int32 and assigns it to the IMAGE_LEVEL_INTERNAL_ERROR field.
+func (o *CatalogsFeedIngestionErrors) SetIMAGE_LEVEL_INTERNAL_ERROR(v int32) {
+	o.IMAGE_LEVEL_INTERNAL_ERROR = &v
+}
+
+// GetIMAGE_MALFORMED_URL returns the IMAGE_MALFORMED_URL field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionErrors) GetIMAGE_MALFORMED_URL() int32 {
+	if o == nil || IsNil(o.IMAGE_MALFORMED_URL) {
+		var ret int32
+		return ret
+	}
+	return *o.IMAGE_MALFORMED_URL
+}
+
+// GetIMAGE_MALFORMED_URLOk returns a tuple with the IMAGE_MALFORMED_URL field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionErrors) GetIMAGE_MALFORMED_URLOk() (*int32, bool) {
+	if o == nil || IsNil(o.IMAGE_MALFORMED_URL) {
+		return nil, false
+	}
+	return o.IMAGE_MALFORMED_URL, true
+}
+
+// HasIMAGE_MALFORMED_URL returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionErrors) HasIMAGE_MALFORMED_URL() bool {
+	if o != nil && !IsNil(o.IMAGE_MALFORMED_URL) {
+		return true
+	}
+
+	return false
+}
+
+// SetIMAGE_MALFORMED_URL gets a reference to the given int32 and assigns it to the IMAGE_MALFORMED_URL field.
+func (o *CatalogsFeedIngestionErrors) SetIMAGE_MALFORMED_URL(v int32) {
+	o.IMAGE_MALFORMED_URL = &v
+}
+
+// GetLARGE_PRODUCT_COUNT_DECREASE returns the LARGE_PRODUCT_COUNT_DECREASE field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionErrors) GetLARGE_PRODUCT_COUNT_DECREASE() int32 {
+	if o == nil || IsNil(o.LARGE_PRODUCT_COUNT_DECREASE) {
+		var ret int32
+		return ret
+	}
+	return *o.LARGE_PRODUCT_COUNT_DECREASE
+}
+
+// GetLARGE_PRODUCT_COUNT_DECREASEOk returns a tuple with the LARGE_PRODUCT_COUNT_DECREASE field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionErrors) GetLARGE_PRODUCT_COUNT_DECREASEOk() (*int32, bool) {
+	if o == nil || IsNil(o.LARGE_PRODUCT_COUNT_DECREASE) {
+		return nil, false
+	}
+	return o.LARGE_PRODUCT_COUNT_DECREASE, true
+}
+
+// HasLARGE_PRODUCT_COUNT_DECREASE returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionErrors) HasLARGE_PRODUCT_COUNT_DECREASE() bool {
+	if o != nil && !IsNil(o.LARGE_PRODUCT_COUNT_DECREASE) {
+		return true
+	}
+
+	return false
+}
+
+// SetLARGE_PRODUCT_COUNT_DECREASE gets a reference to the given int32 and assigns it to the LARGE_PRODUCT_COUNT_DECREASE field.
+func (o *CatalogsFeedIngestionErrors) SetLARGE_PRODUCT_COUNT_DECREASE(v int32) {
+	o.LARGE_PRODUCT_COUNT_DECREASE = &v
+}
+
+// GetLINE_LEVEL_INTERNAL_ERROR returns the LINE_LEVEL_INTERNAL_ERROR field value if set, zero value otherwise.
+func (o *CatalogsFeedIngestionErrors) GetLINE_LEVEL_INTERNAL_ERROR() int32 {
+	if o == nil || IsNil(o.LINE_LEVEL_INTERNAL_ERROR) {
+		var ret int32
+		return ret
+	}
+	return *o.LINE_LEVEL_INTERNAL_ERROR
+}
+
+// GetLINE_LEVEL_INTERNAL_ERROROk returns a tuple with the LINE_LEVEL_INTERNAL_ERROR field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsFeedIngestionErrors) GetLINE_LEVEL_INTERNAL_ERROROk() (*int32, bool) {
+	if o == nil || IsNil(o.LINE_LEVEL_INTERNAL_ERROR) {
+		return nil, false
+	}
+	return o.LINE_LEVEL_INTERNAL_ERROR, true
+}
+
+// HasLINE_LEVEL_INTERNAL_ERROR returns a boolean if a field has been set.
+func (o *CatalogsFeedIngestionErrors) HasLINE_LEVEL_INTERNAL_ERROR() bool {
+	if o != nil && !IsNil(o.LINE_LEVEL_INTERNAL_ERROR) {
+		return true
+	}
+
+	return false
+}
+
+// SetLINE_LEVEL_INTERNAL_ERROR gets a reference to the given int32 and assigns it to the LINE_LEVEL_INTERNAL_ERROR field.
+func (o *CatalogsFeedIngestionErrors) SetLINE_LEVEL_INTERNAL_ERROR(v int32) {
+	o.LINE_LEVEL_INTERNAL_ERROR = &v
+}
+
 func (o CatalogsFeedIngestionErrors) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -321,29 +355,32 @@ func (o CatalogsFeedIngestionErrors) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsFeedIngestionErrors) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.LINE_LEVEL_INTERNAL_ERROR) {
-		toSerialize["LINE_LEVEL_INTERNAL_ERROR"] = o.LINE_LEVEL_INTERNAL_ERROR
-	}
-	if !IsNil(o.LARGE_PRODUCT_COUNT_DECREASE) {
-		toSerialize["LARGE_PRODUCT_COUNT_DECREASE"] = o.LARGE_PRODUCT_COUNT_DECREASE
-	}
 	if !IsNil(o.ACCOUNT_FLAGGED) {
 		toSerialize["ACCOUNT_FLAGGED"] = o.ACCOUNT_FLAGGED
 	}
-	if !IsNil(o.IMAGE_LEVEL_INTERNAL_ERROR) {
-		toSerialize["IMAGE_LEVEL_INTERNAL_ERROR"] = o.IMAGE_LEVEL_INTERNAL_ERROR
+	if !IsNil(o.FETCH_GOOGLE_SHEET_NOT_SHARED) {
+		toSerialize["FETCH_GOOGLE_SHEET_NOT_SHARED"] = o.FETCH_GOOGLE_SHEET_NOT_SHARED
 	}
 	if !IsNil(o.IMAGE_FILE_NOT_ACCESSIBLE) {
 		toSerialize["IMAGE_FILE_NOT_ACCESSIBLE"] = o.IMAGE_FILE_NOT_ACCESSIBLE
-	}
-	if !IsNil(o.IMAGE_MALFORMED_URL) {
-		toSerialize["IMAGE_MALFORMED_URL"] = o.IMAGE_MALFORMED_URL
 	}
 	if !IsNil(o.IMAGE_FILE_NOT_FOUND) {
 		toSerialize["IMAGE_FILE_NOT_FOUND"] = o.IMAGE_FILE_NOT_FOUND
 	}
 	if !IsNil(o.IMAGE_INVALID_FILE) {
 		toSerialize["IMAGE_INVALID_FILE"] = o.IMAGE_INVALID_FILE
+	}
+	if !IsNil(o.IMAGE_LEVEL_INTERNAL_ERROR) {
+		toSerialize["IMAGE_LEVEL_INTERNAL_ERROR"] = o.IMAGE_LEVEL_INTERNAL_ERROR
+	}
+	if !IsNil(o.IMAGE_MALFORMED_URL) {
+		toSerialize["IMAGE_MALFORMED_URL"] = o.IMAGE_MALFORMED_URL
+	}
+	if !IsNil(o.LARGE_PRODUCT_COUNT_DECREASE) {
+		toSerialize["LARGE_PRODUCT_COUNT_DECREASE"] = o.LARGE_PRODUCT_COUNT_DECREASE
+	}
+	if !IsNil(o.LINE_LEVEL_INTERNAL_ERROR) {
+		toSerialize["LINE_LEVEL_INTERNAL_ERROR"] = o.LINE_LEVEL_INTERNAL_ERROR
 	}
 	return toSerialize, nil
 }

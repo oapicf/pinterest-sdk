@@ -15,13 +15,13 @@ open class MediaAPI {
     /**
      Register media upload
      
-     - parameter mediaUploadRequest: (body) Create a media upload request 
+     - parameter mediaUploadCreate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func mediaCreate(mediaUploadRequest: MediaUploadRequest, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MediaUpload?, _ error: Error?) -> Void)) -> RequestTask {
-        return mediaCreateWithRequestBuilder(mediaUploadRequest: mediaUploadRequest).execute(apiResponseQueue) { result in
+    open class func mediaCreate(mediaUploadCreate: MediaUploadCreate, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MediaUpload?, _ error: Error?) -> Void)) -> RequestTask {
+        return mediaCreateWithRequestBuilder(mediaUploadCreate: mediaUploadCreate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -34,17 +34,17 @@ open class MediaAPI {
     /**
      Register media upload
      - POST /media
-     - Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+     - Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using `curl`, for example) to `upload_url` using the `Content-Type` header value. Send the media file's contents as the request's `file` parameter and also include all of the parameters from `upload_parameters`.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
-     - parameter mediaUploadRequest: (body) Create a media upload request 
+     - parameter mediaUploadCreate: (body)  
      - returns: RequestBuilder<MediaUpload> 
      */
-    open class func mediaCreateWithRequestBuilder(mediaUploadRequest: MediaUploadRequest) -> RequestBuilder<MediaUpload> {
+    open class func mediaCreateWithRequestBuilder(mediaUploadCreate: MediaUploadCreate) -> RequestBuilder<MediaUpload> {
         let localVariablePath = "/media"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: mediaUploadRequest)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: mediaUploadCreate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -62,12 +62,12 @@ open class MediaAPI {
     /**
      Get media upload details
      
-     - parameter mediaId: (path) Media identifier 
+     - parameter mediaId: (path) Unique identifier for this media upload. Used to track status and for attaching during Pin creation. 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func mediaGet(mediaId: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: MediaUploadDetails?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func mediaGet(mediaId: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Media?, _ error: Error?) -> Void)) -> RequestTask {
         return mediaGetWithRequestBuilder(mediaId: mediaId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -81,14 +81,14 @@ open class MediaAPI {
     /**
      Get media upload details
      - GET /media/{media_id}
-     - Get details for a registered media upload, including its current status.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+     - Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
-     - parameter mediaId: (path) Media identifier 
-     - returns: RequestBuilder<MediaUploadDetails> 
+     - parameter mediaId: (path) Unique identifier for this media upload. Used to track status and for attaching during Pin creation. 
+     - returns: RequestBuilder<Media> 
      */
-    open class func mediaGetWithRequestBuilder(mediaId: String) -> RequestBuilder<MediaUploadDetails> {
+    open class func mediaGetWithRequestBuilder(mediaId: String) -> RequestBuilder<Media> {
         var localVariablePath = "/media/{media_id}"
         let mediaIdPreEscape = "\(APIHelper.mapValueToPathItem(mediaId))"
         let mediaIdPostEscape = mediaIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -104,7 +104,7 @@ open class MediaAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<MediaUploadDetails>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Media>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -113,7 +113,7 @@ open class MediaAPI {
      List media uploads
      
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -132,12 +132,12 @@ open class MediaAPI {
     /**
      List media uploads
      - GET /media
-     - List media uploads filtered by given parameters.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+     - List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
      - OAuth:
        - type: oauth2
        - name: pinterest_oauth2
      - parameter bookmark: (query) Cursor used to fetch the next page of items (optional)
-     - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
+     - parameter pageSize: (query) Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to 25)
      - returns: RequestBuilder<MediaList200Response> 
      */
     open class func mediaListWithRequestBuilder(bookmark: String? = nil, pageSize: Int? = nil) -> RequestBuilder<MediaList200Response> {

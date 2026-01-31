@@ -5,33 +5,26 @@ context("Test CatalogsCreativeAssetsFeedsCreateRequest")
 
 model_instance <- CatalogsCreativeAssetsFeedsCreateRequest$new()
 
-test_that("default_currency", {
-  # tests for the property `default_currency` (NullableCurrency)
+test_that("catalog_id", {
+  # tests for the property `catalog_id` (character)
+  # Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`default_currency`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`catalog_id`, "EXPECTED_RESULT")
 })
 
-test_that("name", {
-  # tests for the property `name` (character)
-  # A human-friendly name associated to a given feed.
+test_that("catalog_type", {
+  # tests for the property `catalog_type` (CatalogsType)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`catalog_type`, "EXPECTED_RESULT")
 })
 
-test_that("format", {
-  # tests for the property `format` (CatalogsFormat)
+test_that("credentials", {
+  # tests for the property `credentials` (CatalogsFeedCredentials)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`format`, "EXPECTED_RESULT")
-})
-
-test_that("default_locale", {
-  # tests for the property `default_locale` (CatalogsFeedsCreateRequestDefaultLocale)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`default_locale`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`credentials`, "EXPECTED_RESULT")
 })
 
 test_that("default_country", {
@@ -41,11 +34,25 @@ test_that("default_country", {
   #expect_equal(model.instance$`default_country`, "EXPECTED_RESULT")
 })
 
-test_that("credentials", {
-  # tests for the property `credentials` (CatalogsFeedCredentials)
+test_that("default_currency", {
+  # tests for the property `default_currency` (NullableCurrency)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`credentials`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`default_currency`, "EXPECTED_RESULT")
+})
+
+test_that("default_locale", {
+  # tests for the property `default_locale` (CatalogsFeedsCreateRequestDefaultLocale)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`default_locale`, "EXPECTED_RESULT")
+})
+
+test_that("format", {
+  # tests for the property `format` (CatalogsFormat)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`format`, "EXPECTED_RESULT")
 })
 
 test_that("location", {
@@ -56,26 +63,19 @@ test_that("location", {
   #expect_equal(model.instance$`location`, "EXPECTED_RESULT")
 })
 
+test_that("name", {
+  # tests for the property `name` (character)
+  # A human-friendly name associated to a given feed.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
+})
+
 test_that("preferred_processing_schedule", {
   # tests for the property `preferred_processing_schedule` (CatalogsFeedProcessingSchedule)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`preferred_processing_schedule`, "EXPECTED_RESULT")
-})
-
-test_that("catalog_type", {
-  # tests for the property `catalog_type` (CatalogsType)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`catalog_type`, "EXPECTED_RESULT")
-})
-
-test_that("catalog_id", {
-  # tests for the property `catalog_id` (character)
-  # Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`catalog_id`, "EXPECTED_RESULT")
 })
 
 test_that("status", {

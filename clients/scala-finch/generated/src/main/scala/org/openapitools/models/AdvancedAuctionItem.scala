@@ -11,13 +11,13 @@ import org.openapitools.models.Language
 
 /**
  * 
- * @param itemUnderscoreid The catalog retail item id in the merchant namespace
  * @param country 
+ * @param itemUnderscoreid The catalog retail item id in the merchant namespace
  * @param language 
  * @param bidUnderscoreoptions 
  */
-case class AdvancedAuctionItem(itemUnderscoreid: String,
-                country: Country,
+case class AdvancedAuctionItem(country: Country,
+                itemUnderscoreid: String,
                 language: Language,
                 bidUnderscoreoptions: AdvancedAuctionBidOptions
                 )

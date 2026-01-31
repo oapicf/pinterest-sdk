@@ -29,6 +29,11 @@ public class AdAccountsApi extends RouteBuilder {
                     .tokenUrl("https://api.pinterest.com/v5/oauth/token")
                     .authorizationUrl("https://www.pinterest.com/oauth/")
                         .withScope("ads:read","See all of your advertising data, including ads, ad groups, campaigns etc.")
+                .end()
+                .oauth2("client_credentials")
+                    .flow("application")
+                    .tokenUrl("https://api.pinterest.com/v3/oauth/access_token/")
+                        .withScope("ads:read","See all of your advertising data, including ads, ad groups, campaigns etc.")
                 
             .endSecurityDefinition()
             .get("/ad_accounts/{ad_account_id}/analytics")
@@ -76,7 +81,7 @@ public class AdAccountsApi extends RouteBuilder {
                     .name("engagementWindowDays")
                     .type(RestParamType.query)
                     .required(false)
-                    .description("Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.")
+                    .description("Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.")
                 .endParam()
                 .param()
                     .name("viewWindowDays")
@@ -90,6 +95,12 @@ public class AdAccountsApi extends RouteBuilder {
                     .required(false)
                     .description("The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.")
                 .endParam()
+                .param()
+                    .name("reportingTimezone")
+                    .type(RestParamType.query)
+                    .required(false)
+                    .description("Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.")
+                .endParam()
                 .to("direct:adAccountAnalytics");
         
 
@@ -102,6 +113,11 @@ public class AdAccountsApi extends RouteBuilder {
                     .flow("accessCode")
                     .tokenUrl("https://api.pinterest.com/v5/oauth/token")
                     .authorizationUrl("https://www.pinterest.com/oauth/")
+                        .withScope("ads:read","See all of your advertising data, including ads, ad groups, campaigns etc.")
+                .end()
+                .oauth2("client_credentials")
+                    .flow("application")
+                    .tokenUrl("https://api.pinterest.com/v3/oauth/access_token/")
                         .withScope("ads:read","See all of your advertising data, including ads, ad groups, campaigns etc.")
                 
             .endSecurityDefinition()
@@ -156,7 +172,7 @@ public class AdAccountsApi extends RouteBuilder {
                     .name("engagementWindowDays")
                     .type(RestParamType.query)
                     .required(false)
-                    .description("Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.")
+                    .description("Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.")
                 .endParam()
                 .param()
                     .name("viewWindowDays")
@@ -175,6 +191,12 @@ public class AdAccountsApi extends RouteBuilder {
                     .type(RestParamType.query)
                     .required(false)
                     .description("List of types of attribution for the conversion report")
+                .endParam()
+                .param()
+                    .name("reportingTimezone")
+                    .type(RestParamType.query)
+                    .required(false)
+                    .description("Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.")
                 .endParam()
                 .to("direct:adAccountTargetingAnalyticsGet");
         
@@ -197,13 +219,12 @@ public class AdAccountsApi extends RouteBuilder {
                 .produces("application/json")
                 .outType(AdAccount.class)
                 .consumes("application/json")
-                .type(AdAccountCreateRequest.class)
+                .type(AdAccountCreate.class)
                 
                 .param()
-                    .name("adAccountCreateRequest")
+                    .name("adAccountCreate")
                     .type(RestParamType.body)
                     .required(true)
-                    .description("Ad account to create.")
                 .endParam()
                 .to("direct:adAccountsCreate");
         
@@ -218,6 +239,11 @@ public class AdAccountsApi extends RouteBuilder {
                     .tokenUrl("https://api.pinterest.com/v5/oauth/token")
                     .authorizationUrl("https://www.pinterest.com/oauth/")
                         .withScope("ads:read","See all of your advertising data, including ads, ad groups, campaigns etc.")
+                .end()
+                .oauth2("client_credentials")
+                    .flow("application")
+                    .tokenUrl("https://api.pinterest.com/v3/oauth/access_token/")
+                        .withScope("ads:read","See all of your advertising data, including ads, ad groups, campaigns etc.")
                 
             .endSecurityDefinition()
             .get("/ad_accounts/{ad_account_id}")
@@ -229,7 +255,6 @@ public class AdAccountsApi extends RouteBuilder {
                     .name("adAccountId")
                     .type(RestParamType.path)
                     .required(true)
-                    .description("Unique identifier of an ad account.")
                 .endParam()
                 .to("direct:adAccountsGet");
         
@@ -244,6 +269,11 @@ public class AdAccountsApi extends RouteBuilder {
                     .tokenUrl("https://api.pinterest.com/v5/oauth/token")
                     .authorizationUrl("https://www.pinterest.com/oauth/")
                         .withScope("ads:read","See all of your advertising data, including ads, ad groups, campaigns etc.")
+                .end()
+                .oauth2("client_credentials")
+                    .flow("application")
+                    .tokenUrl("https://api.pinterest.com/v3/oauth/access_token/")
+                        .withScope("ads:read","See all of your advertising data, including ads, ad groups, campaigns etc.")
                 
             .endSecurityDefinition()
             .get("/ad_accounts")
@@ -251,6 +281,12 @@ public class AdAccountsApi extends RouteBuilder {
                 .id("adAccountsListApi")
                 .produces("application/json")
                 .outType(AdAccountsList200Response.class)
+                .param()
+                    .name("includeSharedAccounts")
+                    .type(RestParamType.query)
+                    .required(false)
+                    .description("Include shared ad accounts")
+                .endParam()
                 .param()
                     .name("bookmark")
                     .type(RestParamType.query)
@@ -261,15 +297,43 @@ public class AdAccountsApi extends RouteBuilder {
                     .name("pageSize")
                     .type(RestParamType.query)
                     .required(false)
-                    .description("Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.")
-                .endParam()
-                .param()
-                    .name("includeSharedAccounts")
-                    .type(RestParamType.query)
-                    .required(false)
-                    .description("Include shared ad accounts")
+                    .description("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")
                 .endParam()
                 .to("direct:adAccountsList");
+        
+
+        /**
+        POST /ad_accounts/{ad_account_id}/reports/brand_category_sku : Create a request for a brand, category, SKU report
+        **/
+        rest()
+            .securityDefinitions()
+                .oauth2("pinterest_oauth2")
+                    .flow("accessCode")
+                    .tokenUrl("https://api.pinterest.com/v5/oauth/token")
+                    .authorizationUrl("https://www.pinterest.com/oauth/")
+                        .withScope("ads:read","See all of your advertising data, including ads, ad groups, campaigns etc.")
+                
+            .endSecurityDefinition()
+            .post("/ad_accounts/{ad_account_id}/reports/brand_category_sku")
+                .description("Create a request for a brand, category, SKU report")
+                .id("analyticsCreateConversionProductReportApi")
+                .produces("application/json")
+                .outType(AdsAnalyticsCreateAsyncResponse.class)
+                .consumes("application/json")
+                .type(ConversionProductReportRequest.class)
+                
+                .param()
+                    .name("adAccountId")
+                    .type(RestParamType.path)
+                    .required(true)
+                    .description("Unique identifier of an ad account.")
+                .endParam()
+                .param()
+                    .name("conversionProductReportRequest")
+                    .type(RestParamType.body)
+                    .required(true)
+                .endParam()
+                .to("direct:analyticsCreateConversionProductReport");
         
 
         /**
@@ -356,12 +420,11 @@ public class AdAccountsApi extends RouteBuilder {
                 .description("Create async request for an analytics report using a template")
                 .id("analyticsCreateTemplateReportApi")
                 .produces("application/json")
-                .outType(AdsAnalyticsCreateAsyncResponse.class)
+                .outType(TemplateBasedReport.class)
                 .param()
                     .name("adAccountId")
                     .type(RestParamType.path)
                     .required(true)
-                    .description("Unique identifier of an ad account.")
                 .endParam()
                 .param()
                     .name("templateId")
@@ -385,9 +448,41 @@ public class AdAccountsApi extends RouteBuilder {
                     .name("granularity")
                     .type(RestParamType.query)
                     .required(false)
-                    .description("TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly")
+                    .description("   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEKLY - metrics are broken down weekly.    MONTHLY - metrics are broken down monthly")
                 .endParam()
                 .to("direct:analyticsCreateTemplateReport");
+        
+
+        /**
+        GET /ad_accounts/{ad_account_id}/reports/brand_category_sku : Get advertiser brand, category, SKU report
+        **/
+        rest()
+            .securityDefinitions()
+                .oauth2("pinterest_oauth2")
+                    .flow("accessCode")
+                    .tokenUrl("https://api.pinterest.com/v5/oauth/token")
+                    .authorizationUrl("https://www.pinterest.com/oauth/")
+                        .withScope("ads:read","See all of your advertising data, including ads, ad groups, campaigns etc.")
+                
+            .endSecurityDefinition()
+            .get("/ad_accounts/{ad_account_id}/reports/brand_category_sku")
+                .description("Get advertiser brand, category, SKU report")
+                .id("analyticsGetConversionProductReportApi")
+                .produces("application/json")
+                .outType(AdsAnalyticsGetAsyncResponse.class)
+                .param()
+                    .name("adAccountId")
+                    .type(RestParamType.path)
+                    .required(true)
+                    .description("Unique identifier of an ad account.")
+                .endParam()
+                .param()
+                    .name("token")
+                    .type(RestParamType.query)
+                    .required(true)
+                    .description("Token returned from the post request creation call")
+                .endParam()
+                .to("direct:analyticsGetConversionProductReport");
         
 
         /**

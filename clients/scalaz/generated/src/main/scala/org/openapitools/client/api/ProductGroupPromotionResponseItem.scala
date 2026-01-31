@@ -12,7 +12,7 @@ import org.joda.time.DateTime
 import ProductGroupPromotionResponseItem._
 
 case class ProductGroupPromotionResponseItem (
-  data: Option[ProductGroupPromotionResponseElement],
+  data: Option[ProductGroupPromotion],
 exceptions: Option[List[Exception]])
 
 object ProductGroupPromotionResponseItem {

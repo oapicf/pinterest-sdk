@@ -4,18 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SourceType** | **string** |  | 
-**CoverImageUrl** | Pointer to **string** | Cover image url. | [optional] 
-**CoverImageContentType** | Pointer to **string** | Content type for cover image Base64. | [optional] 
+**CoverImageContentType** | Pointer to [**ContentType**](ContentType.md) | Content type for cover image Base64. | [optional] 
 **CoverImageData** | Pointer to **string** | Cover image Base64. | [optional] 
-**MediaId** | **string** |  | 
+**CoverImageKeyFrameTime** | Pointer to **int32** | Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used. | [optional] 
+**CoverImageUrl** | Pointer to **string** | Cover image URL. | [optional] 
 **IsStandard** | Pointer to **bool** | Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users. | [optional] [default to true]
+**MediaId** | **string** |  | 
+**SourceType** | **string** |  | 
 
 ## Methods
 
 ### NewPinMediaSourceVideoID
 
-`func NewPinMediaSourceVideoID(sourceType string, mediaId string, ) *PinMediaSourceVideoID`
+`func NewPinMediaSourceVideoID(mediaId string, sourceType string, ) *PinMediaSourceVideoID`
 
 NewPinMediaSourceVideoID instantiates a new PinMediaSourceVideoID object
 This constructor will assign default values to properties that have it defined,
@@ -30,67 +31,22 @@ NewPinMediaSourceVideoIDWithDefaults instantiates a new PinMediaSourceVideoID ob
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetSourceType
-
-`func (o *PinMediaSourceVideoID) GetSourceType() string`
-
-GetSourceType returns the SourceType field if non-nil, zero value otherwise.
-
-### GetSourceTypeOk
-
-`func (o *PinMediaSourceVideoID) GetSourceTypeOk() (*string, bool)`
-
-GetSourceTypeOk returns a tuple with the SourceType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSourceType
-
-`func (o *PinMediaSourceVideoID) SetSourceType(v string)`
-
-SetSourceType sets SourceType field to given value.
-
-
-### GetCoverImageUrl
-
-`func (o *PinMediaSourceVideoID) GetCoverImageUrl() string`
-
-GetCoverImageUrl returns the CoverImageUrl field if non-nil, zero value otherwise.
-
-### GetCoverImageUrlOk
-
-`func (o *PinMediaSourceVideoID) GetCoverImageUrlOk() (*string, bool)`
-
-GetCoverImageUrlOk returns a tuple with the CoverImageUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCoverImageUrl
-
-`func (o *PinMediaSourceVideoID) SetCoverImageUrl(v string)`
-
-SetCoverImageUrl sets CoverImageUrl field to given value.
-
-### HasCoverImageUrl
-
-`func (o *PinMediaSourceVideoID) HasCoverImageUrl() bool`
-
-HasCoverImageUrl returns a boolean if a field has been set.
-
 ### GetCoverImageContentType
 
-`func (o *PinMediaSourceVideoID) GetCoverImageContentType() string`
+`func (o *PinMediaSourceVideoID) GetCoverImageContentType() ContentType`
 
 GetCoverImageContentType returns the CoverImageContentType field if non-nil, zero value otherwise.
 
 ### GetCoverImageContentTypeOk
 
-`func (o *PinMediaSourceVideoID) GetCoverImageContentTypeOk() (*string, bool)`
+`func (o *PinMediaSourceVideoID) GetCoverImageContentTypeOk() (*ContentType, bool)`
 
 GetCoverImageContentTypeOk returns a tuple with the CoverImageContentType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCoverImageContentType
 
-`func (o *PinMediaSourceVideoID) SetCoverImageContentType(v string)`
+`func (o *PinMediaSourceVideoID) SetCoverImageContentType(v ContentType)`
 
 SetCoverImageContentType sets CoverImageContentType field to given value.
 
@@ -125,25 +81,55 @@ SetCoverImageData sets CoverImageData field to given value.
 
 HasCoverImageData returns a boolean if a field has been set.
 
-### GetMediaId
+### GetCoverImageKeyFrameTime
 
-`func (o *PinMediaSourceVideoID) GetMediaId() string`
+`func (o *PinMediaSourceVideoID) GetCoverImageKeyFrameTime() int32`
 
-GetMediaId returns the MediaId field if non-nil, zero value otherwise.
+GetCoverImageKeyFrameTime returns the CoverImageKeyFrameTime field if non-nil, zero value otherwise.
 
-### GetMediaIdOk
+### GetCoverImageKeyFrameTimeOk
 
-`func (o *PinMediaSourceVideoID) GetMediaIdOk() (*string, bool)`
+`func (o *PinMediaSourceVideoID) GetCoverImageKeyFrameTimeOk() (*int32, bool)`
 
-GetMediaIdOk returns a tuple with the MediaId field if it's non-nil, zero value otherwise
+GetCoverImageKeyFrameTimeOk returns a tuple with the CoverImageKeyFrameTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMediaId
+### SetCoverImageKeyFrameTime
 
-`func (o *PinMediaSourceVideoID) SetMediaId(v string)`
+`func (o *PinMediaSourceVideoID) SetCoverImageKeyFrameTime(v int32)`
 
-SetMediaId sets MediaId field to given value.
+SetCoverImageKeyFrameTime sets CoverImageKeyFrameTime field to given value.
 
+### HasCoverImageKeyFrameTime
+
+`func (o *PinMediaSourceVideoID) HasCoverImageKeyFrameTime() bool`
+
+HasCoverImageKeyFrameTime returns a boolean if a field has been set.
+
+### GetCoverImageUrl
+
+`func (o *PinMediaSourceVideoID) GetCoverImageUrl() string`
+
+GetCoverImageUrl returns the CoverImageUrl field if non-nil, zero value otherwise.
+
+### GetCoverImageUrlOk
+
+`func (o *PinMediaSourceVideoID) GetCoverImageUrlOk() (*string, bool)`
+
+GetCoverImageUrlOk returns a tuple with the CoverImageUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCoverImageUrl
+
+`func (o *PinMediaSourceVideoID) SetCoverImageUrl(v string)`
+
+SetCoverImageUrl sets CoverImageUrl field to given value.
+
+### HasCoverImageUrl
+
+`func (o *PinMediaSourceVideoID) HasCoverImageUrl() bool`
+
+HasCoverImageUrl returns a boolean if a field has been set.
 
 ### GetIsStandard
 
@@ -169,6 +155,46 @@ SetIsStandard sets IsStandard field to given value.
 `func (o *PinMediaSourceVideoID) HasIsStandard() bool`
 
 HasIsStandard returns a boolean if a field has been set.
+
+### GetMediaId
+
+`func (o *PinMediaSourceVideoID) GetMediaId() string`
+
+GetMediaId returns the MediaId field if non-nil, zero value otherwise.
+
+### GetMediaIdOk
+
+`func (o *PinMediaSourceVideoID) GetMediaIdOk() (*string, bool)`
+
+GetMediaIdOk returns a tuple with the MediaId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMediaId
+
+`func (o *PinMediaSourceVideoID) SetMediaId(v string)`
+
+SetMediaId sets MediaId field to given value.
+
+
+### GetSourceType
+
+`func (o *PinMediaSourceVideoID) GetSourceType() string`
+
+GetSourceType returns the SourceType field if non-nil, zero value otherwise.
+
+### GetSourceTypeOk
+
+`func (o *PinMediaSourceVideoID) GetSourceTypeOk() (*string, bool)`
+
+GetSourceTypeOk returns a tuple with the SourceType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSourceType
+
+`func (o *PinMediaSourceVideoID) SetSourceType(v string)`
+
+SetSourceType sets SourceType field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

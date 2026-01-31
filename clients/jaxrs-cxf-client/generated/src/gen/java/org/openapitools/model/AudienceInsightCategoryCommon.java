@@ -11,6 +11,14 @@ public class AudienceInsightCategoryCommon  {
   
   @ApiModelProperty(example = "549755885175", value = "")
 
+  private String id;
+
+  @ApiModelProperty(example = "1.2", value = "")
+
+  private BigDecimal index;
+
+  @ApiModelProperty(example = "549755885175", value = "")
+
   private String key;
 
   @ApiModelProperty(example = "travel", value = "")
@@ -20,14 +28,42 @@ public class AudienceInsightCategoryCommon  {
   @ApiModelProperty(example = "0.551", value = "")
 
   private BigDecimal ratio;
+ /**
+   * Get id
+   * @return id
+  **/
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
 
-  @ApiModelProperty(example = "1.2", value = "")
+  public void setId(String id) {
+    this.id = id;
+  }
 
-  private BigDecimal index;
+  public AudienceInsightCategoryCommon id(String id) {
+    this.id = id;
+    return this;
+  }
 
-  @ApiModelProperty(example = "549755885175", value = "")
+ /**
+   * Get index
+   * @return index
+  **/
+  @JsonProperty("index")
+  public BigDecimal getIndex() {
+    return index;
+  }
 
-  private String id;
+  public void setIndex(BigDecimal index) {
+    this.index = index;
+  }
+
+  public AudienceInsightCategoryCommon index(BigDecimal index) {
+    this.index = index;
+    return this;
+  }
+
  /**
    * Get key
    * @return key
@@ -82,42 +118,6 @@ public class AudienceInsightCategoryCommon  {
     return this;
   }
 
- /**
-   * Get index
-   * @return index
-  **/
-  @JsonProperty("index")
-  public BigDecimal getIndex() {
-    return index;
-  }
-
-  public void setIndex(BigDecimal index) {
-    this.index = index;
-  }
-
-  public AudienceInsightCategoryCommon index(BigDecimal index) {
-    this.index = index;
-    return this;
-  }
-
- /**
-   * Get id
-   * @return id
-  **/
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public AudienceInsightCategoryCommon id(String id) {
-    this.id = id;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -127,16 +127,16 @@ public class AudienceInsightCategoryCommon  {
       return false;
     }
     AudienceInsightCategoryCommon audienceInsightCategoryCommon = (AudienceInsightCategoryCommon) o;
-    return Objects.equals(this.key, audienceInsightCategoryCommon.key) &&
-        Objects.equals(this.name, audienceInsightCategoryCommon.name) &&
-        Objects.equals(this.ratio, audienceInsightCategoryCommon.ratio) &&
+    return Objects.equals(this.id, audienceInsightCategoryCommon.id) &&
         Objects.equals(this.index, audienceInsightCategoryCommon.index) &&
-        Objects.equals(this.id, audienceInsightCategoryCommon.id);
+        Objects.equals(this.key, audienceInsightCategoryCommon.key) &&
+        Objects.equals(this.name, audienceInsightCategoryCommon.name) &&
+        Objects.equals(this.ratio, audienceInsightCategoryCommon.ratio);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, name, ratio, index, id);
+    return Objects.hash(id, index, key, name, ratio);
   }
 
   @Override
@@ -144,11 +144,11 @@ public class AudienceInsightCategoryCommon  {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceInsightCategoryCommon {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    index: ").append(toIndentedString(index)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    ratio: ").append(toIndentedString(ratio)).append("\n");
-    sb.append("    index: ").append(toIndentedString(index)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

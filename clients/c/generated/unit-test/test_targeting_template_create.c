@@ -24,21 +24,21 @@ targeting_template_create_t* instantiate_targeting_template_create(int include_o
   targeting_template_create_t* targeting_template_create = NULL;
   if (include_optional) {
     targeting_template_create = targeting_template_create_create(
-      "Gaming",
       1,
+      [{value=cats, match_type=EXACT_NEGATIVE}],
+      "Gaming",
+      pinterest_rest_api_targeting_template_create__"ALL",
        // false, not to have infinite recursion
       instantiate_targeting_spec(0),
-      pinterest_rest_api_targeting_template_create__"ALL",
-      [{value=cats, match_type=EXACT_NEGATIVE}],
       {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]}
     );
   } else {
     targeting_template_create = targeting_template_create_create(
-      "Gaming",
       1,
-      NULL,
-      pinterest_rest_api_targeting_template_create__"ALL",
       [{value=cats, match_type=EXACT_NEGATIVE}],
+      "Gaming",
+      pinterest_rest_api_targeting_template_create__"ALL",
+      NULL,
       {"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]}
     );
   }

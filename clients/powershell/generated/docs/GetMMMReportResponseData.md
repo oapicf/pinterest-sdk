@@ -4,16 +4,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ReportStatus** | **String** |  | [optional] 
-**Url** | **String** |  | [optional] 
 **Size** | **Decimal** |  | [optional] 
+**Url** | **String** |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
 $GetMMMReportResponseData = Initialize-PSOpenAPIToolsGetMMMReportResponseData  -ReportStatus null `
- -Url null `
- -Size null
+ -Size null `
+ -Url null
 ```
 
 - Convert the resource to JSON

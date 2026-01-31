@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Attributes** | Pointer to [**CatalogsCreativeAssetsAttributes**](CatalogsCreativeAssetsAttributes.md) |  | [optional] 
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **CreativeAssetsId** | Pointer to **string** | The catalog creative assets id in the merchant namespace | [optional] 
 **Pins** | Pointer to [**[]Pin**](Pin.md) | The pins mapped to the item | [optional] 
-**Attributes** | Pointer to [**CatalogsCreativeAssetsAttributes**](CatalogsCreativeAssetsAttributes.md) |  | [optional] 
 
 ## Methods
 
@@ -27,6 +27,31 @@ will change when the set of required properties is changed
 NewCatalogsCreativeAssetsItemResponseWithDefaults instantiates a new CatalogsCreativeAssetsItemResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAttributes
+
+`func (o *CatalogsCreativeAssetsItemResponse) GetAttributes() CatalogsCreativeAssetsAttributes`
+
+GetAttributes returns the Attributes field if non-nil, zero value otherwise.
+
+### GetAttributesOk
+
+`func (o *CatalogsCreativeAssetsItemResponse) GetAttributesOk() (*CatalogsCreativeAssetsAttributes, bool)`
+
+GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAttributes
+
+`func (o *CatalogsCreativeAssetsItemResponse) SetAttributes(v CatalogsCreativeAssetsAttributes)`
+
+SetAttributes sets Attributes field to given value.
+
+### HasAttributes
+
+`func (o *CatalogsCreativeAssetsItemResponse) HasAttributes() bool`
+
+HasAttributes returns a boolean if a field has been set.
 
 ### GetCatalogType
 
@@ -108,31 +133,6 @@ HasPins returns a boolean if a field has been set.
 `func (o *CatalogsCreativeAssetsItemResponse) UnsetPins()`
 
 UnsetPins ensures that no value is present for Pins, not even an explicit nil
-### GetAttributes
-
-`func (o *CatalogsCreativeAssetsItemResponse) GetAttributes() CatalogsCreativeAssetsAttributes`
-
-GetAttributes returns the Attributes field if non-nil, zero value otherwise.
-
-### GetAttributesOk
-
-`func (o *CatalogsCreativeAssetsItemResponse) GetAttributesOk() (*CatalogsCreativeAssetsAttributes, bool)`
-
-GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAttributes
-
-`func (o *CatalogsCreativeAssetsItemResponse) SetAttributes(v CatalogsCreativeAssetsAttributes)`
-
-SetAttributes sets Attributes field to given value.
-
-### HasAttributes
-
-`func (o *CatalogsCreativeAssetsItemResponse) HasAttributes() bool`
-
-HasAttributes returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

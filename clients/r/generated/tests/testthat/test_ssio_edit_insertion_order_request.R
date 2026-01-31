@@ -5,36 +5,20 @@ context("Test SSIOEditInsertionOrderRequest")
 
 model_instance <- SSIOEditInsertionOrderRequest$new()
 
-test_that("start_date", {
-  # tests for the property `start_date` (character)
-  # Starting date of time period. Format: YYYY-MM-DD
+test_that("agency_link", {
+  # tests for the property `agency_link` (character)
+  # URL link for agency
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`start_date`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`agency_link`, "EXPECTED_RESULT")
 })
 
-test_that("end_date", {
-  # tests for the property `end_date` (character)
-  # End date of time period. Format: YYYY-MM-DD
+test_that("billing_contact_email", {
+  # tests for the property `billing_contact_email` (character)
+  # The billing contact email
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`end_date`, "EXPECTED_RESULT")
-})
-
-test_that("po_number", {
-  # tests for the property `po_number` (character)
-  # The po number
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`po_number`, "EXPECTED_RESULT")
-})
-
-test_that("budget_amount", {
-  # tests for the property `budget_amount` (numeric)
-  # If Budget order line, the budget amount.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`budget_amount`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`billing_contact_email`, "EXPECTED_RESULT")
 })
 
 test_that("billing_contact_firstname", {
@@ -53,12 +37,28 @@ test_that("billing_contact_lastname", {
   #expect_equal(model.instance$`billing_contact_lastname`, "EXPECTED_RESULT")
 })
 
-test_that("billing_contact_email", {
-  # tests for the property `billing_contact_email` (character)
-  # The billing contact email
+test_that("budget_amount", {
+  # tests for the property `budget_amount` (numeric)
+  # If Budget order line, the budget amount.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`billing_contact_email`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`budget_amount`, "EXPECTED_RESULT")
+})
+
+test_that("end_date", {
+  # tests for the property `end_date` (character)
+  # End date of time period. Format: YYYY-MM-DD
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`end_date`, "EXPECTED_RESULT")
+})
+
+test_that("media_contact_email", {
+  # tests for the property `media_contact_email` (character)
+  # The media contact email
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`media_contact_email`, "EXPECTED_RESULT")
 })
 
 test_that("media_contact_firstname", {
@@ -77,20 +77,20 @@ test_that("media_contact_lastname", {
   #expect_equal(model.instance$`media_contact_lastname`, "EXPECTED_RESULT")
 })
 
-test_that("media_contact_email", {
-  # tests for the property `media_contact_email` (character)
-  # The media contact email
+test_that("po_number", {
+  # tests for the property `po_number` (character)
+  # The po number
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`media_contact_email`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`po_number`, "EXPECTED_RESULT")
 })
 
-test_that("agency_link", {
-  # tests for the property `agency_link` (character)
-  # URL link for agency
+test_that("start_date", {
+  # tests for the property `start_date` (character)
+  # Starting date of time period. Format: YYYY-MM-DD
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`agency_link`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`start_date`, "EXPECTED_RESULT")
 })
 
 test_that("user_email", {
@@ -99,6 +99,14 @@ test_that("user_email", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`user_email`, "EXPECTED_RESULT")
+})
+
+test_that("ads_manager_order_line_id", {
+  # tests for the property `ads_manager_order_line_id` (character)
+  # Ads manager OrderLineId
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ads_manager_order_line_id`, "EXPECTED_RESULT")
 })
 
 test_that("oracle_line_id", {
@@ -123,12 +131,4 @@ test_that("salesforce_order_line_id", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`salesforce_order_line_id`, "EXPECTED_RESULT")
-})
-
-test_that("ads_manager_order_line_id", {
-  # tests for the property `ads_manager_order_line_id` (character)
-  # Ads manager OrderLineId
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`ads_manager_order_line_id`, "EXPECTED_RESULT")
 })

@@ -193,17 +193,17 @@ Update a board section on a board owned by the \&quot;operation user_account\&qu
 <a id="boardsCreate"></a>
 # **boardsCreate**
 ```java
-Mono<Board> BoardsApi.boardsCreate(boardadAccountId)
+Mono<Board> BoardsApi.boardsCreate(boardCreateadAccountId)
 ```
 
 Create board
 
-Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+Create a board owned by the \&quot;operation user_account\&quot;. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
 
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **board** | [**Board**](Board.md)| Create a board using a single board json object. | |
+| **boardCreate** | [**BoardCreate**](BoardCreate.md)|  | |
 | **adAccountId** | `String`| Unique identifier of an ad account. | [optional parameter] |
 
 
@@ -212,6 +212,7 @@ Create a board owned by the \&quot;operation user_account\&quot;. Optional: Busi
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `boards:read`, `boards:write`
+* **[client_credentials](auth.md#client_credentials)**, scopes: `boards:read`, `boards:write`
 
 ### HTTP request headers
  - **Content-Type**: `application/json`
@@ -225,12 +226,12 @@ Mono<Void> BoardsApi.boardsDelete(boardIdadAccountId)
 
 Delete board
 
-Delete a board owned by the \&quot;operation user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+Delete a board owned by the \&quot;operation user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
 
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **boardId** | `String`| Unique identifier of a board. | |
+| **boardId** | `String`|  | |
 | **adAccountId** | `String`| Unique identifier of an ad account. | [optional parameter] |
 
 
@@ -251,12 +252,12 @@ Mono<Board> BoardsApi.boardsGet(boardIdadAccountId)
 
 Get board
 
-Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
 
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **boardId** | `String`| Unique identifier of a board. | |
+| **boardId** | `String`|  | |
 | **adAccountId** | `String`| Unique identifier of an ad account. | [optional parameter] |
 
 
@@ -274,20 +275,20 @@ Get a board owned by the operation user_account - or a group board that has been
 <a id="boardsList"></a>
 # **boardsList**
 ```java
-Mono<BoardsList200Response> BoardsApi.boardsList(adAccountIdbookmarkpageSizeprivacy)
+Mono<BoardsList200Response> BoardsApi.boardsList(adAccountIdprivacybookmarkpageSize)
 ```
 
 List boards
 
-Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+Get a list of the boards owned by the \&quot;operation user_account\&quot; + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
 
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adAccountId** | `String`| Unique identifier of an ad account. | [optional parameter] |
+| **privacy** | [**BoardPrivacyFilter**](.md)| The privacy level of the board | [optional parameter] [enum: `ALL`, `PUBLIC`, `PROTECTED`, `SECRET`, `PUBLIC_AND_SECRET`] |
 | **bookmark** | `String`| Cursor used to fetch the next page of items | [optional parameter] |
-| **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
-| **privacy** | `String`| Privacy setting for a board. | [optional parameter] [enum: `ALL`, `PROTECTED`, `PUBLIC`, `SECRET`, `PUBLIC_AND_SECRET`] |
+| **pageSize** | `Integer`| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional parameter] [default to `25`] |
 
 
 ### Return type
@@ -317,9 +318,9 @@ Get a list of the Pins on a board owned by the \&quot;operation user_account\&qu
 | **boardId** | `String`| Unique identifier of a board. | |
 | **bookmark** | `String`| Cursor used to fetch the next page of items | [optional parameter] |
 | **pageSize** | `Integer`| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional parameter] [default to `25`] |
-| **creativeTypes** | [**List&lt;String&gt;**](String.md)| Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional parameter] [enum: `REGULAR`, `VIDEO`, `SHOPPING`, `CAROUSEL`, `MAX_VIDEO`, `SHOP_THE_PIN`, `COLLECTION`, `IDEA`] |
+| **creativeTypes** | [**List&lt;CreativeType&gt;**](CreativeType.md)| Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional parameter] |
 | **adAccountId** | `String`| Unique identifier of an ad account. | [optional parameter] |
-| **pinMetrics** | `Boolean`| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional parameter] [default to `false`] |
+| **pinMetrics** | `Boolean`| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional parameter] [default to `false`] |
 
 
 ### Return type
@@ -336,26 +337,27 @@ Get a list of the Pins on a board owned by the \&quot;operation user_account\&qu
 <a id="boardsUpdate"></a>
 # **boardsUpdate**
 ```java
-Mono<Board> BoardsApi.boardsUpdate(boardIdboardUpdateadAccountId)
+Mono<BoardWithUpdatePrivacy> BoardsApi.boardsUpdate(boardIdboardWithUpdatePrivacyUpdateadAccountId)
 ```
 
 Update board
 
-Update a board owned by the \&quot;operating user_account\&quot;. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
+Update a board owned by the \&quot;operating user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
 
 ### Parameters
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **boardId** | `String`| Unique identifier of a board. | |
-| **boardUpdate** | [**BoardUpdate**](BoardUpdate.md)| Update a board. | |
+| **boardId** | `String`|  | |
+| **boardWithUpdatePrivacyUpdate** | [**BoardWithUpdatePrivacyUpdate**](BoardWithUpdatePrivacyUpdate.md)|  | |
 | **adAccountId** | `String`| Unique identifier of an ad account. | [optional parameter] |
 
 
 ### Return type
-[**Board**](Board.md)
+[**BoardWithUpdatePrivacy**](BoardWithUpdatePrivacy.md)
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `boards:read`, `boards:write`
+* **[client_credentials](auth.md#client_credentials)**, scopes: `boards:read`, `boards:write`
 
 ### HTTP request headers
  - **Content-Type**: `application/json`

@@ -6,12 +6,6 @@ goog.provide('API.Client.CatalogsReportFeedIngestionFilter');
 API.Client.CatalogsReportFeedIngestionFilter = function() {}
 
 /**
- * @type {!string}
- * @export
- */
-API.Client.CatalogsReportFeedIngestionFilter.prototype.reportType;
-
-/**
  * ID of the feed entity.
  * @type {!string}
  * @export
@@ -24,6 +18,12 @@ API.Client.CatalogsReportFeedIngestionFilter.prototype.feedId;
  * @export
  */
 API.Client.CatalogsReportFeedIngestionFilter.prototype.processingResultId;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsReportFeedIngestionFilter.prototype.reportType;
 
 /** @enum {string} */
 API.Client.CatalogsReportFeedIngestionFilter.ReportTypeEnum = { 

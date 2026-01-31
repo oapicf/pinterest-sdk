@@ -22,13 +22,13 @@ board_sections_list_200_response_t* instantiate_board_sections_list_200_response
   board_sections_list_200_response_t* board_sections_list_200_response = NULL;
   if (include_optional) {
     board_sections_list_200_response = board_sections_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     board_sections_list_200_response = board_sections_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

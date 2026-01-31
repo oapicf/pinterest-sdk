@@ -9,13 +9,13 @@ import org.openapitools.models.CatalogsUpdatableHotelAttributes
 
 /**
  * Object describing an hotel item batch record
+ * @param attributes 
  * @param hotelUnderscoreid The catalog hotel item id in the merchant namespace
  * @param operation 
- * @param attributes 
  */
-case class CatalogsUpdateHotelItem(hotelUnderscoreid: String,
-                operation: String,
-                attributes: CatalogsUpdatableHotelAttributes
+case class CatalogsUpdateHotelItem(attributes: CatalogsUpdatableHotelAttributes,
+                hotelUnderscoreid: String,
+                operation: String
                 )
 
 object CatalogsUpdateHotelItem {

@@ -12,8 +12,8 @@ import org.joda.time.DateTime
 import ProductGroupPromotionsList200Response._
 
 case class ProductGroupPromotionsList200Response (
-  items: List[ProductGroupPromotionResponseItem],
-bookmark: Option[String])
+  bookmark: Option[String],
+items: List[ProductGroupPromotion])
 
 object ProductGroupPromotionsList200Response {
   import DateTimeCodecs._

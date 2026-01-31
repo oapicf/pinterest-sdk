@@ -8,11 +8,12 @@ Summarized pin information
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**media** | [**PinMedia**](PinMedia.md) |  |  [optional] [readonly] |
 |**altText** | **String** |  |  [optional] |
-|**link** | **String** |  |  [optional] |
-|**title** | **String** |  |  [optional] |
 |**description** | **String** |  |  [optional] |
+|**id** | **String** |  |  [optional] |
+|**link** | **String** |  |  [optional] |
+|**media** | [**PinMedia**](PinMedia.md) |  |  [optional] [readonly] |
+|**title** | **String** |  |  [optional] |
 
 
 

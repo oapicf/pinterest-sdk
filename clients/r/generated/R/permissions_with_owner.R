@@ -92,7 +92,7 @@ PermissionsWithOwner <- R6::R6Class(
 
 # add to utils.R
 .parse_PermissionsWithOwner <- function(vals) {
-  res <- gsub("^\\[|\\]$", "", "[ADMIN, ANALYST, FINANCE_MANAGER, AUDIENCE_MANAGER, CAMPAIGN_MANAGER, CATALOGS_MANAGER, CATALOGS_VIEWER, PROFILE_PUBLISHER, OWNER]")
+  res <- gsub("^\\[|\\]$", "", "[ADMIN, ANALYST, FINANCE_MANAGER, FINANCE_EDIT, FINANCE_VIEW, AUDIENCE_MANAGER, CAMPAIGN_MANAGER, CATALOGS_MANAGER, CATALOGS_VIEWER, PROFILE_PUBLISHER, OWNER]")
   unlist(strsplit(res, ", "))
 }
 

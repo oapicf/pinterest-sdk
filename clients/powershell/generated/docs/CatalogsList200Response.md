@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**Catalog[]**](Catalog.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**Catalog[]**](Catalog.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsList200Response = Initialize-PSOpenAPIToolsCatalogsList200Response  -Items null `
- -Bookmark null
+$CatalogsList200Response = Initialize-PSOpenAPIToolsCatalogsList200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

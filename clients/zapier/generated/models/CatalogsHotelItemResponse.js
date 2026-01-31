@@ -7,6 +7,7 @@ module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
+            ...CatalogsHotelAttributes.fields(`${keyPrefix}attributes`, isInput),
             {
                 key: `${keyPrefix}catalog_type`,
                 ...CatalogsType.fields(`${keyPrefix}catalog_type`, isInput),
@@ -21,16 +22,15 @@ module.exports = {
                 label: `[${labelPrefix}pins]`,
                 children: Pin.fields(`${keyPrefix}pins${!isInput ? '[]' : ''}`, isInput, true), 
             },
-            ...CatalogsHotelAttributes.fields(`${keyPrefix}attributes`, isInput),
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
+            'attributes': utils.removeIfEmpty(CatalogsHotelAttributes.mapping(bundle, `${keyPrefix}attributes`)),
             'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
             'hotel_id': bundle.inputData?.[`${keyPrefix}hotel_id`],
             'pins': utils.childMapping(bundle.inputData?.[`${keyPrefix}pins`], `${keyPrefix}pins`, Pin),
-            'attributes': utils.removeIfEmpty(CatalogsHotelAttributes.mapping(bundle, `${keyPrefix}attributes`)),
         }
     },
 }

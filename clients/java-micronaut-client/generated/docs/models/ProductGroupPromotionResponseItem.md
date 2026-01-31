@@ -8,7 +8,7 @@ The class is defined in **[ProductGroupPromotionResponseItem.java](../../src/mai
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [`ProductGroupPromotionResponseElement`](ProductGroupPromotionResponseElement.md) |  |  [optional property]
+**data** | [`ProductGroupPromotion`](ProductGroupPromotion.md) |  |  [optional property]
 **exceptions** | [`List&lt;Exception&gt;`](Exception.md) |  |  [optional property]
 
 

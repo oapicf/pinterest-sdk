@@ -22,54 +22,37 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param accountType Type of account
- * @param id User account ID.
- * @param profileImage 
- * @param websiteUrl 
- * @param username 
  * @param about Profile about description.
- * @param businessName 
+ * @param accountType Type of account
  * @param boardCount User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
- * @param pinCount User account pin count. This includes both created and saved pins.
+ * @param businessName 
  * @param followerCount User account follower count.
  * @param followingCount User account following count.
+ * @param id User account ID.
  * @param monthlyViews User account monthly views.
+ * @param pinCount User account pin count. This includes both created and saved pins.
+ * @param profileImage 
+ * @param username 
+ * @param websiteUrl 
  */
 
 
 data class Account (
 
-    /* Type of account */
-    @Json(name = "account_type")
-    val accountType: Account.AccountType? = null,
-
-    /* User account ID. */
-    @Json(name = "id")
-    val id: kotlin.String? = null,
-
-    @Json(name = "profile_image")
-    val profileImage: kotlin.String? = null,
-
-    @Json(name = "website_url")
-    val websiteUrl: kotlin.String? = null,
-
-    @Json(name = "username")
-    val username: kotlin.String? = null,
-
     /* Profile about description. */
     @Json(name = "about")
     val about: kotlin.String? = null,
 
-    @Json(name = "business_name")
-    val businessName: kotlin.String? = null,
+    /* Type of account */
+    @Json(name = "account_type")
+    val accountType: Account.AccountType? = null,
 
     /* User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards. */
     @Json(name = "board_count")
     val boardCount: kotlin.Int? = null,
 
-    /* User account pin count. This includes both created and saved pins. */
-    @Json(name = "pin_count")
-    val pinCount: kotlin.Int? = null,
+    @Json(name = "business_name")
+    val businessName: kotlin.String? = null,
 
     /* User account follower count. */
     @Json(name = "follower_count")
@@ -79,9 +62,26 @@ data class Account (
     @Json(name = "following_count")
     val followingCount: kotlin.Int? = null,
 
+    /* User account ID. */
+    @Json(name = "id")
+    val id: kotlin.String? = null,
+
     /* User account monthly views. */
     @Json(name = "monthly_views")
-    val monthlyViews: kotlin.Int? = null
+    val monthlyViews: kotlin.Int? = null,
+
+    /* User account pin count. This includes both created and saved pins. */
+    @Json(name = "pin_count")
+    val pinCount: kotlin.Int? = null,
+
+    @Json(name = "profile_image")
+    val profileImage: kotlin.String? = null,
+
+    @Json(name = "username")
+    val username: kotlin.String? = null,
+
+    @Json(name = "website_url")
+    val websiteUrl: kotlin.String? = null
 
 ) {
 

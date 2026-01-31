@@ -30,6 +30,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `ads:read`
+* **client_credentials**, scopes: `ads:read`
 
 ### HTTP request headers
  - **Accepts Content-Type**: Not defined
@@ -55,6 +56,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 * **pinterest_oauth2**, scopes: `ads:read`
+* **client_credentials**, scopes: `ads:read`
 
 ### HTTP request headers
  - **Accepts Content-Type**: Not defined

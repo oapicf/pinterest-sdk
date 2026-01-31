@@ -15,7 +15,7 @@ import javax.validation.Valid;
 /**
  * Request object to upsert catalogs items
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsItemsUpsertBatchRequest   {
   @JsonProperty("country")
@@ -23,6 +23,13 @@ public class CatalogsItemsUpsertBatchRequest   {
 @Valid
 
   private Country country;
+
+  @JsonProperty("items")
+  @NotNull
+@Size(min=1,max=1000)
+@Valid
+
+  private List<@Valid ItemUpsertBatchRecord> items = new ArrayList<>();
 
   /**
    * We recommend using the CatalogsLocale values.
@@ -276,13 +283,6 @@ public class CatalogsItemsUpsertBatchRequest   {
 
   private BatchOperation operation;
 
-  @JsonProperty("items")
-  @NotNull
-@Size(min=1,max=1000)
-@Valid
-
-  private List<@Valid ItemUpsertBatchRecord> items = new ArrayList<>();
-
   public CatalogsItemsUpsertBatchRequest country(Country country) {
     this.country = country;
     return this;
@@ -298,6 +298,31 @@ public class CatalogsItemsUpsertBatchRequest   {
 
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+  public CatalogsItemsUpsertBatchRequest items(List<@Valid ItemUpsertBatchRecord> items) {
+    this.items = items;
+    return this;
+  }
+
+  public CatalogsItemsUpsertBatchRequest addItemsItem(ItemUpsertBatchRecord itemsItem) {
+    if (this.items == null) {
+      this.items = new ArrayList<>();
+    }
+    this.items.add(itemsItem);
+    return this;
+  }
+
+   /**
+   * Array with catalogs items
+   * @return items
+  **/
+  public List<@Valid ItemUpsertBatchRecord> getItems() {
+    return items;
+  }
+
+  public void setItems(List<@Valid ItemUpsertBatchRecord> items) {
+    this.items = items;
   }
 
   public CatalogsItemsUpsertBatchRequest language(LanguageEnum language) {
@@ -334,31 +359,6 @@ public class CatalogsItemsUpsertBatchRequest   {
     this.operation = operation;
   }
 
-  public CatalogsItemsUpsertBatchRequest items(List<@Valid ItemUpsertBatchRecord> items) {
-    this.items = items;
-    return this;
-  }
-
-  public CatalogsItemsUpsertBatchRequest addItemsItem(ItemUpsertBatchRecord itemsItem) {
-    if (this.items == null) {
-      this.items = new ArrayList<>();
-    }
-    this.items.add(itemsItem);
-    return this;
-  }
-
-   /**
-   * Array with catalogs items
-   * @return items
-  **/
-  public List<@Valid ItemUpsertBatchRecord> getItems() {
-    return items;
-  }
-
-  public void setItems(List<@Valid ItemUpsertBatchRecord> items) {
-    this.items = items;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -370,14 +370,14 @@ public class CatalogsItemsUpsertBatchRequest   {
     }
     CatalogsItemsUpsertBatchRequest catalogsItemsUpsertBatchRequest = (CatalogsItemsUpsertBatchRequest) o;
     return Objects.equals(country, catalogsItemsUpsertBatchRequest.country) &&
+        Objects.equals(items, catalogsItemsUpsertBatchRequest.items) &&
         Objects.equals(language, catalogsItemsUpsertBatchRequest.language) &&
-        Objects.equals(operation, catalogsItemsUpsertBatchRequest.operation) &&
-        Objects.equals(items, catalogsItemsUpsertBatchRequest.items);
+        Objects.equals(operation, catalogsItemsUpsertBatchRequest.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, language, operation, items);
+    return Objects.hash(country, items, language, operation);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -387,9 +387,9 @@ public class CatalogsItemsUpsertBatchRequest   {
     sb.append("class CatalogsItemsUpsertBatchRequest {\n");
     
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

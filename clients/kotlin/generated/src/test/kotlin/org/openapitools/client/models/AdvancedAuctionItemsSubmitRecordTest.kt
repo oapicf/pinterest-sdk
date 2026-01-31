@@ -23,6 +23,7 @@ import org.openapitools.client.models.AdvancedAuctionBidOptions
 import org.openapitools.client.models.AdvancedAuctionItemsSubmitDeleteRecord
 import org.openapitools.client.models.AdvancedAuctionItemsSubmitUpsertRecord
 import org.openapitools.client.models.AdvancedAuctionOperation
+import org.openapitools.client.models.AdvancedAuctionOperationError
 import org.openapitools.client.models.Country
 import org.openapitools.client.models.Language
 import org.openapitools.client.models.UpdateMaskBidOptionField
@@ -38,16 +39,16 @@ class AdvancedAuctionItemsSubmitRecordTest : ShouldSpec() {
             //modelInstance.operation shouldBe ("TODO")
         }
 
-        // to test the property `itemId` - The catalog retail item id in the merchant namespace
-        should("test itemId") {
-            // uncomment below to test the property
-            //modelInstance.itemId shouldBe ("TODO")
-        }
-
         // to test the property `country`
         should("test country") {
             // uncomment below to test the property
             //modelInstance.country shouldBe ("TODO")
+        }
+
+        // to test the property `itemId` - The catalog retail item id in the merchant namespace
+        should("test itemId") {
+            // uncomment below to test the property
+            //modelInstance.itemId shouldBe ("TODO")
         }
 
         // to test the property `language`
@@ -66,6 +67,12 @@ class AdvancedAuctionItemsSubmitRecordTest : ShouldSpec() {
         should("test updateMask") {
             // uncomment below to test the property
             //modelInstance.updateMask shouldBe ("TODO")
+        }
+
+        // to test the property `errors` - Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+        should("test errors") {
+            // uncomment below to test the property
+            //modelInstance.errors shouldBe ("TODO")
         }
 
     }

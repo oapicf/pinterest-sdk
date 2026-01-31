@@ -7,18 +7,8 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(OauthAccessTokenResponse, () {
-    // String responseType
-    test('to test the property `responseType`', () async {
-      // TODO
-    });
-
     // String accessToken
     test('to test the property `accessToken`', () async {
-      // TODO
-    });
-
-    // String tokenType (default value: 'bearer')
-    test('to test the property `tokenType`', () async {
       // TODO
     });
 
@@ -27,8 +17,18 @@ void main() {
       // TODO
     });
 
+    // String responseType
+    test('to test the property `responseType`', () async {
+      // TODO
+    });
+
     // String scope
     test('to test the property `scope`', () async {
+      // TODO
+    });
+
+    // String tokenType (default value: 'bearer')
+    test('to test the property `tokenType`', () async {
       // TODO
     });
 

@@ -15,39 +15,22 @@ import javax.validation.Valid;
 /**
  * Object describing an item batch record to update items
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class ItemUpdateBatchRecord   {
-  @JsonProperty("item_id")
-  
-  private String itemId;
-
   @JsonProperty("attributes")
   @Valid
 
   private UpdatableItemAttributes attributes;
 
+  @JsonProperty("item_id")
+  
+  private String itemId;
+
   @JsonProperty("update_mask")
   @Valid
 
   private List<UpdateMaskFieldType> updateMask = null;
-
-  public ItemUpdateBatchRecord itemId(String itemId) {
-    this.itemId = itemId;
-    return this;
-  }
-
-   /**
-   * The catalog item id in the merchant namespace
-   * @return itemId
-  **/
-  public String getItemId() {
-    return itemId;
-  }
-
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
-  }
 
   public ItemUpdateBatchRecord attributes(UpdatableItemAttributes attributes) {
     this.attributes = attributes;
@@ -64,6 +47,23 @@ public class ItemUpdateBatchRecord   {
 
   public void setAttributes(UpdatableItemAttributes attributes) {
     this.attributes = attributes;
+  }
+
+  public ItemUpdateBatchRecord itemId(String itemId) {
+    this.itemId = itemId;
+    return this;
+  }
+
+   /**
+   * The catalog item id in the merchant namespace
+   * @return itemId
+  **/
+  public String getItemId() {
+    return itemId;
+  }
+
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
   }
 
   public ItemUpdateBatchRecord updateMask(List<UpdateMaskFieldType> updateMask) {
@@ -101,14 +101,14 @@ public class ItemUpdateBatchRecord   {
       return false;
     }
     ItemUpdateBatchRecord itemUpdateBatchRecord = (ItemUpdateBatchRecord) o;
-    return Objects.equals(itemId, itemUpdateBatchRecord.itemId) &&
-        Objects.equals(attributes, itemUpdateBatchRecord.attributes) &&
+    return Objects.equals(attributes, itemUpdateBatchRecord.attributes) &&
+        Objects.equals(itemId, itemUpdateBatchRecord.itemId) &&
         Objects.equals(updateMask, itemUpdateBatchRecord.updateMask);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, attributes, updateMask);
+    return Objects.hash(attributes, itemId, updateMask);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -117,8 +117,8 @@ public class ItemUpdateBatchRecord   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ItemUpdateBatchRecord {\n");
     
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    updateMask: ").append(toIndentedString(updateMask)).append("\n");
     sb.append("}");
     return sb.toString();

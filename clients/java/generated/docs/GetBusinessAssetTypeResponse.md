@@ -13,5 +13,7 @@
 
 * `CONVERSION_TAG` (value: `"CONVERSION_TAG"`)
 
+* `CATALOG` (value: `"CATALOG"`)
+
 
 

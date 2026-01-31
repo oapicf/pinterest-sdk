@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,24 +17,23 @@ package openapi
 // BulkUpsertRequestUpdate - Request for creation of entities in bulk.
 type BulkUpsertRequestUpdate struct {
 
-	Campaigns []CampaignUpdateRequest `json:"campaigns,omitempty"`
-
 	AdGroups []AdGroupUpdateRequest `json:"ad_groups,omitempty"`
 
 	Ads []AdUpdateRequest `json:"ads,omitempty"`
 
-	ProductGroups []ProductGroupPromotionUpdateRequest `json:"product_groups,omitempty"`
+	Campaigns []CampaignUpdateRequest `json:"campaigns,omitempty"`
+
+	CatalogProductGroups []CatalogsProductGroupsUpdateRequest `json:"catalog_product_groups,omitempty"`
 
 	Keywords []KeywordUpdate `json:"keywords,omitempty"`
+
+	Labels []LabelBulkUpdateRequest `json:"labels,omitempty"`
+
+	ProductGroups []ProductGroupPromotionUpdateRequest `json:"product_groups,omitempty"`
 }
 
 // AssertBulkUpsertRequestUpdateRequired checks if the required fields are not zero-ed
 func AssertBulkUpsertRequestUpdateRequired(obj BulkUpsertRequestUpdate) error {
-	for _, el := range obj.Campaigns {
-		if err := AssertCampaignUpdateRequestRequired(el); err != nil {
-			return err
-		}
-	}
 	for _, el := range obj.AdGroups {
 		if err := AssertAdGroupUpdateRequestRequired(el); err != nil {
 			return err
@@ -45,8 +44,13 @@ func AssertBulkUpsertRequestUpdateRequired(obj BulkUpsertRequestUpdate) error {
 			return err
 		}
 	}
-	for _, el := range obj.ProductGroups {
-		if err := AssertProductGroupPromotionUpdateRequestRequired(el); err != nil {
+	for _, el := range obj.Campaigns {
+		if err := AssertCampaignUpdateRequestRequired(el); err != nil {
+			return err
+		}
+	}
+	for _, el := range obj.CatalogProductGroups {
+		if err := AssertCatalogsProductGroupsUpdateRequestRequired(el); err != nil {
 			return err
 		}
 	}
@@ -55,16 +59,21 @@ func AssertBulkUpsertRequestUpdateRequired(obj BulkUpsertRequestUpdate) error {
 			return err
 		}
 	}
+	for _, el := range obj.Labels {
+		if err := AssertLabelBulkUpdateRequestRequired(el); err != nil {
+			return err
+		}
+	}
+	for _, el := range obj.ProductGroups {
+		if err := AssertProductGroupPromotionUpdateRequestRequired(el); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 // AssertBulkUpsertRequestUpdateConstraints checks if the values respects the defined constraints
 func AssertBulkUpsertRequestUpdateConstraints(obj BulkUpsertRequestUpdate) error {
-	for _, el := range obj.Campaigns {
-		if err := AssertCampaignUpdateRequestConstraints(el); err != nil {
-			return err
-		}
-	}
 	for _, el := range obj.AdGroups {
 		if err := AssertAdGroupUpdateRequestConstraints(el); err != nil {
 			return err
@@ -75,13 +84,28 @@ func AssertBulkUpsertRequestUpdateConstraints(obj BulkUpsertRequestUpdate) error
 			return err
 		}
 	}
-	for _, el := range obj.ProductGroups {
-		if err := AssertProductGroupPromotionUpdateRequestConstraints(el); err != nil {
+	for _, el := range obj.Campaigns {
+		if err := AssertCampaignUpdateRequestConstraints(el); err != nil {
+			return err
+		}
+	}
+	for _, el := range obj.CatalogProductGroups {
+		if err := AssertCatalogsProductGroupsUpdateRequestConstraints(el); err != nil {
 			return err
 		}
 	}
 	for _, el := range obj.Keywords {
 		if err := AssertKeywordUpdateConstraints(el); err != nil {
+			return err
+		}
+	}
+	for _, el := range obj.Labels {
+		if err := AssertLabelBulkUpdateRequestConstraints(el); err != nil {
+			return err
+		}
+	}
+	for _, el := range obj.ProductGroups {
+		if err := AssertProductGroupPromotionUpdateRequestConstraints(el); err != nil {
 			return err
 		}
 	}

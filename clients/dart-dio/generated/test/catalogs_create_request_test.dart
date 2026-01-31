@@ -7,8 +7,7 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(CatalogsCreateRequest, () {
-    // Type of the catalog entity.
-    // String catalogType
+    // CatalogsType catalogType
     test('to test the property `catalogType`', () async {
       // TODO
     });

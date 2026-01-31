@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,7 +24,7 @@ var _ MappedNullable = &CatalogsRetailProduct{}
 type CatalogsRetailProduct struct {
 	CatalogType string `json:"catalog_type"`
 	Metadata CatalogsRetailProductMetadata `json:"metadata"`
-	Pin NullablePin `json:"pin"`
+	Pin Pin `json:"pin"`
 }
 
 type _CatalogsRetailProduct CatalogsRetailProduct
@@ -33,7 +33,7 @@ type _CatalogsRetailProduct CatalogsRetailProduct
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsRetailProduct(catalogType string, metadata CatalogsRetailProductMetadata, pin NullablePin) *CatalogsRetailProduct {
+func NewCatalogsRetailProduct(catalogType string, metadata CatalogsRetailProductMetadata, pin Pin) *CatalogsRetailProduct {
 	this := CatalogsRetailProduct{}
 	this.CatalogType = catalogType
 	this.Metadata = metadata
@@ -98,29 +98,27 @@ func (o *CatalogsRetailProduct) SetMetadata(v CatalogsRetailProductMetadata) {
 }
 
 // GetPin returns the Pin field value
-// If the value is explicit nil, the zero value for Pin will be returned
 func (o *CatalogsRetailProduct) GetPin() Pin {
-	if o == nil || o.Pin.Get() == nil {
+	if o == nil {
 		var ret Pin
 		return ret
 	}
 
-	return *o.Pin.Get()
+	return o.Pin
 }
 
 // GetPinOk returns a tuple with the Pin field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogsRetailProduct) GetPinOk() (*Pin, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Pin.Get(), o.Pin.IsSet()
+	return &o.Pin, true
 }
 
 // SetPin sets field value
 func (o *CatalogsRetailProduct) SetPin(v Pin) {
-	o.Pin.Set(&v)
+	o.Pin = v
 }
 
 func (o CatalogsRetailProduct) MarshalJSON() ([]byte, error) {
@@ -135,7 +133,7 @@ func (o CatalogsRetailProduct) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["catalog_type"] = o.CatalogType
 	toSerialize["metadata"] = o.Metadata
-	toSerialize["pin"] = o.Pin.Get()
+	toSerialize["pin"] = o.Pin
 	return toSerialize, nil
 }
 

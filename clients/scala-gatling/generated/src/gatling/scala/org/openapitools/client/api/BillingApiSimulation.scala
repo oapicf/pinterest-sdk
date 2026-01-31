@@ -58,6 +58,8 @@ class BillingApiSimulation extends Simulation {
     // Setup all the operations per second for the test to ultimately be generated from configs
     val adsCreditRedeemPerSecond = config.getDouble("performance.operationsPerSecond.adsCreditRedeem") * rateMultiplier * instanceMultiplier
     val adsCreditsDiscountsGetPerSecond = config.getDouble("performance.operationsPerSecond.adsCreditsDiscountsGet") * rateMultiplier * instanceMultiplier
+    val billingInvoiceDownloadGetPerSecond = config.getDouble("performance.operationsPerSecond.billingInvoiceDownloadGet") * rateMultiplier * instanceMultiplier
+    val billingInvoicesGetPerSecond = config.getDouble("performance.operationsPerSecond.billingInvoicesGet") * rateMultiplier * instanceMultiplier
     val billingProfilesGetPerSecond = config.getDouble("performance.operationsPerSecond.billingProfilesGet") * rateMultiplier * instanceMultiplier
     val ssioAccountsGetPerSecond = config.getDouble("performance.operationsPerSecond.ssioAccountsGet") * rateMultiplier * instanceMultiplier
     val ssioInsertionOrderCreatePerSecond = config.getDouble("performance.operationsPerSecond.ssioInsertionOrderCreate") * rateMultiplier * instanceMultiplier
@@ -72,6 +74,9 @@ class BillingApiSimulation extends Simulation {
     val ads_credit/redeemPATHFeeder = csv(userDataDirectory + File.separator + "adsCreditRedeem-pathParams.csv").random
     val ads_credits_discounts/getQUERYFeeder = csv(userDataDirectory + File.separator + "adsCreditsDiscountsGet-queryParams.csv").random
     val ads_credits_discounts/getPATHFeeder = csv(userDataDirectory + File.separator + "adsCreditsDiscountsGet-pathParams.csv").random
+    val billing_invoice_download/getPATHFeeder = csv(userDataDirectory + File.separator + "billingInvoiceDownloadGet-pathParams.csv").random
+    val billing_invoices/getQUERYFeeder = csv(userDataDirectory + File.separator + "billingInvoicesGet-queryParams.csv").random
+    val billing_invoices/getPATHFeeder = csv(userDataDirectory + File.separator + "billingInvoicesGet-pathParams.csv").random
     val billing_profiles/getQUERYFeeder = csv(userDataDirectory + File.separator + "billingProfilesGet-queryParams.csv").random
     val billing_profiles/getPATHFeeder = csv(userDataDirectory + File.separator + "billingProfilesGet-pathParams.csv").random
     val ssio_accounts/getPATHFeeder = csv(userDataDirectory + File.separator + "ssioAccountsGet-pathParams.csv").random
@@ -117,14 +122,51 @@ class BillingApiSimulation extends Simulation {
     )
 
     
+    val scnbillingInvoiceDownloadGet = scenario("billingInvoiceDownloadGetSimulation")
+        .feed(billing_invoice_download/getPATHFeeder)
+        .exec(http("billingInvoiceDownloadGet")
+        .httpRequest("GET","/ad_accounts/${ad_account_id}/billing_invoice/${billing_invoice_id}/download")
+)
+
+    // Run scnbillingInvoiceDownloadGet with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnbillingInvoiceDownloadGet.inject(
+        rampUsersPerSec(1) to(billingInvoiceDownloadGetPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(billingInvoiceDownloadGetPerSecond) during(durationSeconds),
+        rampUsersPerSec(billingInvoiceDownloadGetPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scnbillingInvoicesGet = scenario("billingInvoicesGetSimulation")
+        .feed(billing_invoices/getQUERYFeeder)
+        .feed(billing_invoices/getPATHFeeder)
+        .exec(http("billingInvoicesGet")
+        .httpRequest("GET","/ad_accounts/${ad_account_id}/billing_invoices")
+        .queryParam("start_due_date","${start_due_date}")
+        .queryParam("end_due_date","${end_due_date}")
+        .queryParam("bookmark","${bookmark}")
+        .queryParam("page_size","${page_size}")
+        .queryParam("status","${status}")
+        .queryParam("sort","${sort}")
+        .queryParam("document_type","${document_type}")
+        .queryParam("order","${order}")
+)
+
+    // Run scnbillingInvoicesGet with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnbillingInvoicesGet.inject(
+        rampUsersPerSec(1) to(billingInvoicesGetPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(billingInvoicesGetPerSecond) during(durationSeconds),
+        rampUsersPerSec(billingInvoicesGetPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
     val scnbillingProfilesGet = scenario("billingProfilesGetSimulation")
         .feed(billing_profiles/getQUERYFeeder)
         .feed(billing_profiles/getPATHFeeder)
         .exec(http("billingProfilesGet")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/billing_profiles")
+        .queryParam("is_active","${is_active}")
         .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
-        .queryParam("is_active","${is_active}")
 )
 
     // Run scnbillingProfilesGet with warm up and reach a constant rate for entire duration

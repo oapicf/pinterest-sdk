@@ -15,23 +15,26 @@
 
 typedef struct advanced_auction_items_submit_delete_record_t advanced_auction_items_submit_delete_record_t;
 
+#include "advanced_auction_operation_error.h"
 #include "country.h"
 #include "language.h"
 
 
 
 typedef struct advanced_auction_items_submit_delete_record_t {
-    char *item_id; // string
     pinterest_rest_api_country__e country; //referenced enum
+    char *item_id; // string
     pinterest_rest_api_language__e language; //referenced enum
+    list_t *errors; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
 } advanced_auction_items_submit_delete_record_t;
 
 __attribute__((deprecated)) advanced_auction_items_submit_delete_record_t *advanced_auction_items_submit_delete_record_create(
-    char *item_id,
     pinterest_rest_api_country__e country,
-    pinterest_rest_api_language__e language
+    char *item_id,
+    pinterest_rest_api_language__e language,
+    list_t *errors
 );
 
 void advanced_auction_items_submit_delete_record_free(advanced_auction_items_submit_delete_record_t *advanced_auction_items_submit_delete_record);

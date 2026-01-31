@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,6 +17,8 @@ package openapi
 // CatalogsCreativeAssetsItemResponse - Object describing a hotel record
 type CatalogsCreativeAssetsItemResponse struct {
 
+	Attributes CatalogsCreativeAssetsAttributes `json:"attributes,omitempty"`
+
 	CatalogType CatalogsType `json:"catalog_type"`
 
 	// The catalog creative assets id in the merchant namespace
@@ -24,8 +26,6 @@ type CatalogsCreativeAssetsItemResponse struct {
 
 	// The pins mapped to the item
 	Pins *[]Pin `json:"pins,omitempty"`
-
-	Attributes CatalogsCreativeAssetsAttributes `json:"attributes,omitempty"`
 }
 
 // AssertCatalogsCreativeAssetsItemResponseRequired checks if the required fields are not zero-ed
@@ -39,6 +39,9 @@ func AssertCatalogsCreativeAssetsItemResponseRequired(obj CatalogsCreativeAssets
 		}
 	}
 
+	if err := AssertCatalogsCreativeAssetsAttributesRequired(obj.Attributes); err != nil {
+		return err
+	}
 	if obj.Pins != nil {
 		for _, el := range *obj.Pins {
 			if err := AssertPinRequired(el); err != nil {
@@ -46,14 +49,14 @@ func AssertCatalogsCreativeAssetsItemResponseRequired(obj CatalogsCreativeAssets
 			}
 		}
 	}
-	if err := AssertCatalogsCreativeAssetsAttributesRequired(obj.Attributes); err != nil {
-		return err
-	}
 	return nil
 }
 
 // AssertCatalogsCreativeAssetsItemResponseConstraints checks if the values respects the defined constraints
 func AssertCatalogsCreativeAssetsItemResponseConstraints(obj CatalogsCreativeAssetsItemResponse) error {
+	if err := AssertCatalogsCreativeAssetsAttributesConstraints(obj.Attributes); err != nil {
+		return err
+	}
     if obj.Pins != nil {
      	for _, el := range *obj.Pins {
      		if err := AssertPinConstraints(el); err != nil {
@@ -61,8 +64,5 @@ func AssertCatalogsCreativeAssetsItemResponseConstraints(obj CatalogsCreativeAss
      		}
      	}
     }
-	if err := AssertCatalogsCreativeAssetsAttributesConstraints(obj.Attributes); err != nil {
-		return err
-	}
 	return nil
 }

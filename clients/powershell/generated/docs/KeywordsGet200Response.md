@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**Keyword[]**](Keyword.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**Keyword[]**](Keyword.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$KeywordsGet200Response = Initialize-PSOpenAPIToolsKeywordsGet200Response  -Items null `
- -Bookmark null
+$KeywordsGet200Response = Initialize-PSOpenAPIToolsKeywordsGet200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

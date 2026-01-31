@@ -2,15 +2,15 @@
 Protected Class SearchUserBoardsGet200Response
 
 	#tag Property, Flags = &h0
-		#tag Note
-			items
-		#tag EndNote
-		items() As OpenAPIClient.Models.Board
+		bookmark As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		bookmark As Xoson.O.OptionalString
+		#tag Note
+			items
+		#tag EndNote
+		items() As OpenAPIClient.Models.Board
 	#tag EndProperty
 
 
@@ -51,19 +51,19 @@ Protected Class SearchUserBoardsGet200Response
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="items"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Board"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="bookmark"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="items"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Board"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

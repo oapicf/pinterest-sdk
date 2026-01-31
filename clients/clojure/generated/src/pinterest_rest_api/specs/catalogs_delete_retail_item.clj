@@ -8,6 +8,7 @@
 (def catalogs-delete-retail-item-data
   {
    (ds/req :item_id) string?
+   (ds/opt :last_updated_time) int?
    (ds/req :operation) string?
    })
 

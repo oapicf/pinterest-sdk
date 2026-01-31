@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**CatalogsItemValidationIssues[]**](CatalogsItemValidationIssues.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**CatalogsItemValidationIssues[]**](CatalogsItemValidationIssues.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$ItemsIssuesList200Response = Initialize-PSOpenAPIToolsItemsIssuesList200Response  -Items null `
- -Bookmark null
+$ItemsIssuesList200Response = Initialize-PSOpenAPIToolsItemsIssuesList200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

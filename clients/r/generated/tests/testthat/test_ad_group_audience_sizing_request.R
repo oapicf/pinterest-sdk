@@ -7,18 +7,10 @@ model_instance <- AdGroupAudienceSizingRequest$new()
 
 test_that("auto_targeting_enabled", {
   # tests for the property `auto_targeting_enabled` (character)
-  # Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.
+  # Enable auto-targeting for ad group. Default value is True. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/performance-plus-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;Pinterest Performance+ targeting\&quot;&lt;/a&gt;.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`auto_targeting_enabled`, "EXPECTED_RESULT")
-})
-
-test_that("placement_group", {
-  # tests for the property `placement_group` (PlacementGroupType)
-  # &lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`placement_group`, "EXPECTED_RESULT")
 })
 
 test_that("creative_types", {
@@ -29,11 +21,20 @@ test_that("creative_types", {
   #expect_equal(model.instance$`creative_types`, "EXPECTED_RESULT")
 })
 
-test_that("targeting_spec", {
-  # tests for the property `targeting_spec` (TargetingSpec)
+test_that("keywords", {
+  # tests for the property `keywords` (array[AdGroupAudienceSizingRequestKeywordsInner])
+  # Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`targeting_spec`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`keywords`, "EXPECTED_RESULT")
+})
+
+test_that("placement_group", {
+  # tests for the property `placement_group` (PlacementGroupType)
+  # &lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`placement_group`, "EXPECTED_RESULT")
 })
 
 test_that("product_group_ids", {
@@ -44,10 +45,9 @@ test_that("product_group_ids", {
   #expect_equal(model.instance$`product_group_ids`, "EXPECTED_RESULT")
 })
 
-test_that("keywords", {
-  # tests for the property `keywords` (array[AdGroupAudienceSizingRequestKeywordsInner])
-  # Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
+test_that("targeting_spec", {
+  # tests for the property `targeting_spec` (TargetingSpec)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`keywords`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`targeting_spec`, "EXPECTED_RESULT")
 })

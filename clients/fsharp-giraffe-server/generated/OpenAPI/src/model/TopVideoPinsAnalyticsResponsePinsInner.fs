@@ -11,8 +11,8 @@ module TopVideoPinsAnalyticsResponsePinsInner =
 
 
   type TopVideoPinsAnalyticsResponse_pins_inner = {
-    Metrics : IDictionary<string, decimal>;
     DataStatus : IDictionary<string, DataStatus>;
+    Metrics : IDictionary<string, decimal>;
     PinId : string;
   }
   //#endregion

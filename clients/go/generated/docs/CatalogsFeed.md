@@ -7,24 +7,24 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | 
 **Id** | **string** |  | 
 **UpdatedAt** | **time.Time** |  | 
-**Name** | **NullableString** | A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. | 
-**Format** | [**CatalogsFormat**](CatalogsFormat.md) |  | 
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **Credentials** | [**NullableCatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | 
-**Location** | **string** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | 
-**PreferredProcessingSchedule** | [**NullableCatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | 
-**Status** | [**CatalogsStatus**](CatalogsStatus.md) |  | 
+**DefaultAvailability** | [**NullableProductAvailabilityType**](ProductAvailabilityType.md) |  | 
+**DefaultCountry** | [**Country**](Country.md) |  | 
 **DefaultCurrency** | [**NullableNullableCurrency**](NullableCurrency.md) |  | 
 **DefaultLocale** | **string** | The locale used within a feed for product descriptions. | 
-**DefaultCountry** | [**Country**](Country.md) |  | 
-**DefaultAvailability** | [**NullableProductAvailabilityType**](ProductAvailabilityType.md) |  | 
-**CatalogId** | **NullableString** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. | 
+**Format** | [**CatalogsFormat**](CatalogsFormat.md) |  | 
+**Location** | **string** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | 
+**Name** | **NullableString** | A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future. | 
+**PreferredProcessingSchedule** | [**NullableCatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | 
+**Status** | [**CatalogsStatus**](CatalogsStatus.md) |  | 
+**CatalogId** | **string** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. | 
 
 ## Methods
 
 ### NewCatalogsFeed
 
-`func NewCatalogsFeed(createdAt time.Time, id string, updatedAt time.Time, name NullableString, format CatalogsFormat, catalogType CatalogsType, credentials NullableCatalogsFeedCredentials, location string, preferredProcessingSchedule NullableCatalogsFeedProcessingSchedule, status CatalogsStatus, defaultCurrency NullableNullableCurrency, defaultLocale string, defaultCountry Country, defaultAvailability NullableProductAvailabilityType, catalogId NullableString, ) *CatalogsFeed`
+`func NewCatalogsFeed(createdAt time.Time, id string, updatedAt time.Time, catalogType CatalogsType, credentials NullableCatalogsFeedCredentials, defaultAvailability NullableProductAvailabilityType, defaultCountry Country, defaultCurrency NullableNullableCurrency, defaultLocale string, format CatalogsFormat, location string, name NullableString, preferredProcessingSchedule NullableCatalogsFeedProcessingSchedule, status CatalogsStatus, catalogId string, ) *CatalogsFeed`
 
 NewCatalogsFeed instantiates a new CatalogsFeed object
 This constructor will assign default values to properties that have it defined,
@@ -99,56 +99,6 @@ and a boolean to check if the value has been set.
 SetUpdatedAt sets UpdatedAt field to given value.
 
 
-### GetName
-
-`func (o *CatalogsFeed) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *CatalogsFeed) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *CatalogsFeed) SetName(v string)`
-
-SetName sets Name field to given value.
-
-
-### SetNameNil
-
-`func (o *CatalogsFeed) SetNameNil(b bool)`
-
- SetNameNil sets the value for Name to be an explicit nil
-
-### UnsetName
-`func (o *CatalogsFeed) UnsetName()`
-
-UnsetName ensures that no value is present for Name, not even an explicit nil
-### GetFormat
-
-`func (o *CatalogsFeed) GetFormat() CatalogsFormat`
-
-GetFormat returns the Format field if non-nil, zero value otherwise.
-
-### GetFormatOk
-
-`func (o *CatalogsFeed) GetFormatOk() (*CatalogsFormat, bool)`
-
-GetFormatOk returns a tuple with the Format field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFormat
-
-`func (o *CatalogsFeed) SetFormat(v CatalogsFormat)`
-
-SetFormat sets Format field to given value.
-
-
 ### GetCatalogType
 
 `func (o *CatalogsFeed) GetCatalogType() CatalogsType`
@@ -199,74 +149,54 @@ SetCredentials sets Credentials field to given value.
 `func (o *CatalogsFeed) UnsetCredentials()`
 
 UnsetCredentials ensures that no value is present for Credentials, not even an explicit nil
-### GetLocation
+### GetDefaultAvailability
 
-`func (o *CatalogsFeed) GetLocation() string`
+`func (o *CatalogsFeed) GetDefaultAvailability() ProductAvailabilityType`
 
-GetLocation returns the Location field if non-nil, zero value otherwise.
+GetDefaultAvailability returns the DefaultAvailability field if non-nil, zero value otherwise.
 
-### GetLocationOk
+### GetDefaultAvailabilityOk
 
-`func (o *CatalogsFeed) GetLocationOk() (*string, bool)`
+`func (o *CatalogsFeed) GetDefaultAvailabilityOk() (*ProductAvailabilityType, bool)`
 
-GetLocationOk returns a tuple with the Location field if it's non-nil, zero value otherwise
+GetDefaultAvailabilityOk returns a tuple with the DefaultAvailability field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetLocation
+### SetDefaultAvailability
 
-`func (o *CatalogsFeed) SetLocation(v string)`
+`func (o *CatalogsFeed) SetDefaultAvailability(v ProductAvailabilityType)`
 
-SetLocation sets Location field to given value.
+SetDefaultAvailability sets DefaultAvailability field to given value.
 
 
-### GetPreferredProcessingSchedule
+### SetDefaultAvailabilityNil
 
-`func (o *CatalogsFeed) GetPreferredProcessingSchedule() CatalogsFeedProcessingSchedule`
+`func (o *CatalogsFeed) SetDefaultAvailabilityNil(b bool)`
 
-GetPreferredProcessingSchedule returns the PreferredProcessingSchedule field if non-nil, zero value otherwise.
+ SetDefaultAvailabilityNil sets the value for DefaultAvailability to be an explicit nil
 
-### GetPreferredProcessingScheduleOk
+### UnsetDefaultAvailability
+`func (o *CatalogsFeed) UnsetDefaultAvailability()`
 
-`func (o *CatalogsFeed) GetPreferredProcessingScheduleOk() (*CatalogsFeedProcessingSchedule, bool)`
+UnsetDefaultAvailability ensures that no value is present for DefaultAvailability, not even an explicit nil
+### GetDefaultCountry
 
-GetPreferredProcessingScheduleOk returns a tuple with the PreferredProcessingSchedule field if it's non-nil, zero value otherwise
+`func (o *CatalogsFeed) GetDefaultCountry() Country`
+
+GetDefaultCountry returns the DefaultCountry field if non-nil, zero value otherwise.
+
+### GetDefaultCountryOk
+
+`func (o *CatalogsFeed) GetDefaultCountryOk() (*Country, bool)`
+
+GetDefaultCountryOk returns a tuple with the DefaultCountry field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPreferredProcessingSchedule
+### SetDefaultCountry
 
-`func (o *CatalogsFeed) SetPreferredProcessingSchedule(v CatalogsFeedProcessingSchedule)`
+`func (o *CatalogsFeed) SetDefaultCountry(v Country)`
 
-SetPreferredProcessingSchedule sets PreferredProcessingSchedule field to given value.
-
-
-### SetPreferredProcessingScheduleNil
-
-`func (o *CatalogsFeed) SetPreferredProcessingScheduleNil(b bool)`
-
- SetPreferredProcessingScheduleNil sets the value for PreferredProcessingSchedule to be an explicit nil
-
-### UnsetPreferredProcessingSchedule
-`func (o *CatalogsFeed) UnsetPreferredProcessingSchedule()`
-
-UnsetPreferredProcessingSchedule ensures that no value is present for PreferredProcessingSchedule, not even an explicit nil
-### GetStatus
-
-`func (o *CatalogsFeed) GetStatus() CatalogsStatus`
-
-GetStatus returns the Status field if non-nil, zero value otherwise.
-
-### GetStatusOk
-
-`func (o *CatalogsFeed) GetStatusOk() (*CatalogsStatus, bool)`
-
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatus
-
-`func (o *CatalogsFeed) SetStatus(v CatalogsStatus)`
-
-SetStatus sets Status field to given value.
+SetDefaultCountry sets DefaultCountry field to given value.
 
 
 ### GetDefaultCurrency
@@ -319,56 +249,126 @@ and a boolean to check if the value has been set.
 SetDefaultLocale sets DefaultLocale field to given value.
 
 
-### GetDefaultCountry
+### GetFormat
 
-`func (o *CatalogsFeed) GetDefaultCountry() Country`
+`func (o *CatalogsFeed) GetFormat() CatalogsFormat`
 
-GetDefaultCountry returns the DefaultCountry field if non-nil, zero value otherwise.
+GetFormat returns the Format field if non-nil, zero value otherwise.
 
-### GetDefaultCountryOk
+### GetFormatOk
 
-`func (o *CatalogsFeed) GetDefaultCountryOk() (*Country, bool)`
+`func (o *CatalogsFeed) GetFormatOk() (*CatalogsFormat, bool)`
 
-GetDefaultCountryOk returns a tuple with the DefaultCountry field if it's non-nil, zero value otherwise
+GetFormatOk returns a tuple with the Format field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDefaultCountry
+### SetFormat
 
-`func (o *CatalogsFeed) SetDefaultCountry(v Country)`
+`func (o *CatalogsFeed) SetFormat(v CatalogsFormat)`
 
-SetDefaultCountry sets DefaultCountry field to given value.
+SetFormat sets Format field to given value.
 
 
-### GetDefaultAvailability
+### GetLocation
 
-`func (o *CatalogsFeed) GetDefaultAvailability() ProductAvailabilityType`
+`func (o *CatalogsFeed) GetLocation() string`
 
-GetDefaultAvailability returns the DefaultAvailability field if non-nil, zero value otherwise.
+GetLocation returns the Location field if non-nil, zero value otherwise.
 
-### GetDefaultAvailabilityOk
+### GetLocationOk
 
-`func (o *CatalogsFeed) GetDefaultAvailabilityOk() (*ProductAvailabilityType, bool)`
+`func (o *CatalogsFeed) GetLocationOk() (*string, bool)`
 
-GetDefaultAvailabilityOk returns a tuple with the DefaultAvailability field if it's non-nil, zero value otherwise
+GetLocationOk returns a tuple with the Location field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDefaultAvailability
+### SetLocation
 
-`func (o *CatalogsFeed) SetDefaultAvailability(v ProductAvailabilityType)`
+`func (o *CatalogsFeed) SetLocation(v string)`
 
-SetDefaultAvailability sets DefaultAvailability field to given value.
+SetLocation sets Location field to given value.
 
 
-### SetDefaultAvailabilityNil
+### GetName
 
-`func (o *CatalogsFeed) SetDefaultAvailabilityNil(b bool)`
+`func (o *CatalogsFeed) GetName() string`
 
- SetDefaultAvailabilityNil sets the value for DefaultAvailability to be an explicit nil
+GetName returns the Name field if non-nil, zero value otherwise.
 
-### UnsetDefaultAvailability
-`func (o *CatalogsFeed) UnsetDefaultAvailability()`
+### GetNameOk
 
-UnsetDefaultAvailability ensures that no value is present for DefaultAvailability, not even an explicit nil
+`func (o *CatalogsFeed) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *CatalogsFeed) SetName(v string)`
+
+SetName sets Name field to given value.
+
+
+### SetNameNil
+
+`func (o *CatalogsFeed) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *CatalogsFeed) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
+### GetPreferredProcessingSchedule
+
+`func (o *CatalogsFeed) GetPreferredProcessingSchedule() CatalogsFeedProcessingSchedule`
+
+GetPreferredProcessingSchedule returns the PreferredProcessingSchedule field if non-nil, zero value otherwise.
+
+### GetPreferredProcessingScheduleOk
+
+`func (o *CatalogsFeed) GetPreferredProcessingScheduleOk() (*CatalogsFeedProcessingSchedule, bool)`
+
+GetPreferredProcessingScheduleOk returns a tuple with the PreferredProcessingSchedule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPreferredProcessingSchedule
+
+`func (o *CatalogsFeed) SetPreferredProcessingSchedule(v CatalogsFeedProcessingSchedule)`
+
+SetPreferredProcessingSchedule sets PreferredProcessingSchedule field to given value.
+
+
+### SetPreferredProcessingScheduleNil
+
+`func (o *CatalogsFeed) SetPreferredProcessingScheduleNil(b bool)`
+
+ SetPreferredProcessingScheduleNil sets the value for PreferredProcessingSchedule to be an explicit nil
+
+### UnsetPreferredProcessingSchedule
+`func (o *CatalogsFeed) UnsetPreferredProcessingSchedule()`
+
+UnsetPreferredProcessingSchedule ensures that no value is present for PreferredProcessingSchedule, not even an explicit nil
+### GetStatus
+
+`func (o *CatalogsFeed) GetStatus() CatalogsStatus`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *CatalogsFeed) GetStatusOk() (*CatalogsStatus, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *CatalogsFeed) SetStatus(v CatalogsStatus)`
+
+SetStatus sets Status field to given value.
+
+
 ### GetCatalogId
 
 `func (o *CatalogsFeed) GetCatalogId() string`
@@ -389,16 +389,6 @@ and a boolean to check if the value has been set.
 SetCatalogId sets CatalogId field to given value.
 
 
-### SetCatalogIdNil
-
-`func (o *CatalogsFeed) SetCatalogIdNil(b bool)`
-
- SetCatalogIdNil sets the value for CatalogId to be an explicit nil
-
-### UnsetCatalogId
-`func (o *CatalogsFeed) UnsetCatalogId()`
-
-UnsetCatalogId ensures that no value is present for CatalogId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

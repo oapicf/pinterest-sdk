@@ -16,9 +16,8 @@ void main() {
   // final instance = CatalogsItemValidationIssues();
 
   group('test CatalogsItemValidationIssues', () {
-    // Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
-    // int itemNumber
-    test('to test the property `itemNumber`', () async {
+    // CatalogsItemValidationErrors errors
+    test('to test the property `errors`', () async {
       // TODO
     });
 
@@ -28,8 +27,9 @@ void main() {
       // TODO
     });
 
-    // CatalogsItemValidationErrors errors
-    test('to test the property `errors`', () async {
+    // Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
+    // int itemNumber
+    test('to test the property `itemNumber`', () async {
       // TODO
     });
 

@@ -35,7 +35,7 @@ feature -- Test routines
             --
             -- Get a product group promotion by id
         local
-            l_response: PRODUCT_GROUP_PROMOTION_RESPONSE
+            l_response: PRODUCT_GROUP_PROMOTION
             l_ad_account_id: STRING_32
             l_product_group_promotion_id: STRING_32
         do
@@ -88,7 +88,7 @@ feature -- Test routines
     test_product_groups_analytics
             -- Get product group analytics
             --
-            -- Get analytics for the specified product groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+            -- Get analytics for the specified product groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
         local
             l_response: LIST [PRODUCT_GROUP_ANALYTICS_RESPONSE_INNER]
             l_ad_account_id: STRING_32
@@ -101,6 +101,7 @@ feature -- Test routines
             l_engagement_window_days: INTEGER_32
             l_view_window_days: INTEGER_32
             l_conversion_report_time: STRING_32
+            l_reporting_timezone: REPORTING_TIME_ZONE
         do
             -- TODO: Initialize required params.
             -- l_ad_account_id
@@ -110,7 +111,7 @@ feature -- Test routines
             -- create {ARRAYED_LIST [STRING_32]} l_columns.make (2)
             -- l_granularity
 
-            -- l_response := api.product_groups_analytics(l_ad_account_id, l_start_date, l_end_date, l_product_group_ids, l_columns, l_granularity, l_click_window_days, l_engagement_window_days, l_view_window_days, l_conversion_report_time)
+            -- l_response := api.product_groups_analytics(l_ad_account_id, l_start_date, l_end_date, l_product_group_ids, l_columns, l_granularity, l_click_window_days, l_engagement_window_days, l_view_window_days, l_conversion_report_time, l_reporting_timezone)
             assert ("not_implemented", False)
         end
 

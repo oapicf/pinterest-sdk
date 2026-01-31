@@ -6,10 +6,10 @@ import io.swagger.annotations.ApiModelProperty;
 
 @Canonical
 class DeleteAssetGroupResponseExceptionsInner {
+    /* Asset group id of the exception. */
+    String assetGroupId
     /* Error code associated with the error deleting asset group. */
     Integer code
     /* Error message associated with the error deleting asset group. */
     String message
-    /* Asset group id of the exception. */
-    String assetGroupId
 }

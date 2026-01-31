@@ -3,8 +3,8 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.EventData
 open OpenAPI.Model.ObjectiveType
-open OpenAPI.Model.PinterestTagEventData
 
 module AudienceRule =
 
@@ -12,6 +12,12 @@ module AudienceRule =
 
   [<CLIMutable>]
   type AudienceRule = {
+    [<JsonProperty(PropertyName = "ad_account_id")>]
+    AdAccountId : string;
+    [<JsonProperty(PropertyName = "ad_id")>]
+    AdId : string[];
+    [<JsonProperty(PropertyName = "campaign_id")>]
+    CampaignId : string[];
     [<JsonProperty(PropertyName = "country")>]
     Country : string;
     [<JsonProperty(PropertyName = "customer_list_id")>]
@@ -20,10 +26,18 @@ module AudienceRule =
     EngagementDomain : string[];
     [<JsonProperty(PropertyName = "engagement_type")>]
     EngagementType : string;
+    [<JsonProperty(PropertyName = "engager_type")>]
+    EngagerType : int;
     [<JsonProperty(PropertyName = "event")>]
     Event : string;
     [<JsonProperty(PropertyName = "event_data")>]
-    EventData : PinterestTagEventData;
+    EventData : EventData;
+    [<JsonProperty(PropertyName = "event_source")>]
+    EventSource : obj;
+    [<JsonProperty(PropertyName = "ingestion_source")>]
+    IngestionSource : obj;
+    [<JsonProperty(PropertyName = "objective_type")>]
+    ObjectiveType : ObjectiveType[];
     [<JsonProperty(PropertyName = "percentage")>]
     Percentage : int;
     [<JsonProperty(PropertyName = "pin_id")>]
@@ -38,20 +52,6 @@ module AudienceRule =
     Url : string[];
     [<JsonProperty(PropertyName = "visitor_source_id")>]
     VisitorSourceId : string;
-    [<JsonProperty(PropertyName = "event_source")>]
-    EventSource : obj;
-    [<JsonProperty(PropertyName = "ingestion_source")>]
-    IngestionSource : obj;
-    [<JsonProperty(PropertyName = "engager_type")>]
-    EngagerType : int;
-    [<JsonProperty(PropertyName = "campaign_id")>]
-    CampaignId : string[];
-    [<JsonProperty(PropertyName = "ad_id")>]
-    AdId : string[];
-    [<JsonProperty(PropertyName = "objective_type")>]
-    ObjectiveType : ObjectiveType[];
-    [<JsonProperty(PropertyName = "ad_account_id")>]
-    AdAccountId : string;
   }
 
   //#endregion

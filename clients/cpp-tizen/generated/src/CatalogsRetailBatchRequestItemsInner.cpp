@@ -23,15 +23,21 @@ CatalogsRetailBatchRequest_items_inner::~CatalogsRetailBatchRequest_items_inner(
 void
 CatalogsRetailBatchRequest_items_inner::__init()
 {
+	//attributes = new ItemAttributesRequest();
 	//item_id = std::string();
 	//operation = std::string();
-	//attributes = new ItemAttributesRequest();
 	//new std::list()std::list> update_mask;
+	//last_updated_time = long(0);
 }
 
 void
 CatalogsRetailBatchRequest_items_inner::__cleanup()
 {
+	//if(attributes != NULL) {
+	//
+	//delete attributes;
+	//attributes = NULL;
+	//}
 	//if(item_id != NULL) {
 	//
 	//delete item_id;
@@ -42,15 +48,15 @@ CatalogsRetailBatchRequest_items_inner::__cleanup()
 	//delete operation;
 	//operation = NULL;
 	//}
-	//if(attributes != NULL) {
-	//
-	//delete attributes;
-	//attributes = NULL;
-	//}
 	//if(update_mask != NULL) {
 	//update_mask.RemoveAll(true);
 	//delete update_mask;
 	//update_mask = NULL;
+	//}
+	//if(last_updated_time != NULL) {
+	//
+	//delete last_updated_time;
+	//last_updated_time = NULL;
 	//}
 	//
 }
@@ -60,6 +66,20 @@ CatalogsRetailBatchRequest_items_inner::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *attributesKey = "attributes";
+	node = json_object_get_member(pJsonObject, attributesKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("ItemAttributesRequest")) {
+			jsonToValue(&attributes, node, "ItemAttributesRequest", "ItemAttributesRequest");
+		} else {
+			
+			ItemAttributesRequest* obj = static_cast<ItemAttributesRequest*> (&attributes);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 	const gchar *item_idKey = "item_id";
 	node = json_object_get_member(pJsonObject, item_idKey);
 	if (node !=NULL) {
@@ -79,20 +99,6 @@ CatalogsRetailBatchRequest_items_inner::fromJson(char* jsonStr)
 		if (isprimitive("std::string")) {
 			jsonToValue(&operation, node, "std::string", "");
 		} else {
-			
-		}
-	}
-	const gchar *attributesKey = "attributes";
-	node = json_object_get_member(pJsonObject, attributesKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("ItemAttributesRequest")) {
-			jsonToValue(&attributes, node, "ItemAttributesRequest", "ItemAttributesRequest");
-		} else {
-			
-			ItemAttributesRequest* obj = static_cast<ItemAttributesRequest*> (&attributes);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -120,6 +126,17 @@ CatalogsRetailBatchRequest_items_inner::fromJson(char* jsonStr)
 		}
 		
 	}
+	const gchar *last_updated_timeKey = "last_updated_time";
+	node = json_object_get_member(pJsonObject, last_updated_timeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("long long")) {
+			jsonToValue(&last_updated_time, node, "long long", "");
+		} else {
+			
+		}
+	}
 }
 
 CatalogsRetailBatchRequest_items_inner::CatalogsRetailBatchRequest_items_inner(char* json)
@@ -132,6 +149,20 @@ CatalogsRetailBatchRequest_items_inner::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("ItemAttributesRequest")) {
+		ItemAttributesRequest obj = getAttributes();
+		node = converttoJson(&obj, "ItemAttributesRequest", "");
+	}
+	else {
+		
+		ItemAttributesRequest obj = static_cast<ItemAttributesRequest> (getAttributes());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *attributesKey = "attributes";
+	json_object_set_member(pJsonObject, attributesKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getItemId();
 		node = converttoJson(&obj, "std::string", "");
@@ -150,20 +181,6 @@ CatalogsRetailBatchRequest_items_inner::toJson()
 	}
 	const gchar *operationKey = "operation";
 	json_object_set_member(pJsonObject, operationKey, node);
-	if (isprimitive("ItemAttributesRequest")) {
-		ItemAttributesRequest obj = getAttributes();
-		node = converttoJson(&obj, "ItemAttributesRequest", "");
-	}
-	else {
-		
-		ItemAttributesRequest obj = static_cast<ItemAttributesRequest> (getAttributes());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *attributesKey = "attributes";
-	json_object_set_member(pJsonObject, attributesKey, node);
 	if (isprimitive("UpdateMaskFieldType")) {
 		list<UpdateMaskFieldType> new_list = static_cast<list <UpdateMaskFieldType> > (getUpdateMask());
 		node = converttoJson(&new_list, "UpdateMaskFieldType", "array");
@@ -189,12 +206,33 @@ CatalogsRetailBatchRequest_items_inner::toJson()
 	
 	const gchar *update_maskKey = "update_mask";
 	json_object_set_member(pJsonObject, update_maskKey, node);
+	if (isprimitive("long long")) {
+		long long obj = getLastUpdatedTime();
+		node = converttoJson(&obj, "long long", "");
+	}
+	else {
+		
+	}
+	const gchar *last_updated_timeKey = "last_updated_time";
+	json_object_set_member(pJsonObject, last_updated_timeKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+ItemAttributesRequest
+CatalogsRetailBatchRequest_items_inner::getAttributes()
+{
+	return attributes;
+}
+
+void
+CatalogsRetailBatchRequest_items_inner::setAttributes(ItemAttributesRequest  attributes)
+{
+	this->attributes = attributes;
 }
 
 std::string
@@ -221,18 +259,6 @@ CatalogsRetailBatchRequest_items_inner::setOperation(std::string  operation)
 	this->operation = operation;
 }
 
-ItemAttributesRequest
-CatalogsRetailBatchRequest_items_inner::getAttributes()
-{
-	return attributes;
-}
-
-void
-CatalogsRetailBatchRequest_items_inner::setAttributes(ItemAttributesRequest  attributes)
-{
-	this->attributes = attributes;
-}
-
 std::list<UpdateMaskFieldType>
 CatalogsRetailBatchRequest_items_inner::getUpdateMask()
 {
@@ -243,6 +269,18 @@ void
 CatalogsRetailBatchRequest_items_inner::setUpdateMask(std::list <UpdateMaskFieldType> update_mask)
 {
 	this->update_mask = update_mask;
+}
+
+long long
+CatalogsRetailBatchRequest_items_inner::getLastUpdatedTime()
+{
+	return last_updated_time;
+}
+
+void
+CatalogsRetailBatchRequest_items_inner::setLastUpdatedTime(long long  last_updated_time)
+{
+	this->last_updated_time = last_updated_time;
 }
 
 

@@ -11,10 +11,7 @@ import { Board } from './board';
 
 
 export interface BoardsList200Response { 
-    /**
-     * Boards
-     */
-    items: Array<Board>;
     bookmark?: string | null;
+    items: Array<Board>;
 }
 

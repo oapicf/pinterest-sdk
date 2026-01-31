@@ -1,0 +1,10 @@
+{
+  "namespace": "model",
+  "type": "enum",
+  "doc": "<p>Catalog hotel product group type</p> <p>MERCHANT_CREATED: Product groups created by merchants. <br>ALL_LISTINGS: Includes every hotel item in your catalog.",
+  "name": "CatalogsHotelProductGroupType",
+  "symbols": [
+    "MERCHANT_CREATED",
+    "ALL_LISTINGS"
+  ]
+}

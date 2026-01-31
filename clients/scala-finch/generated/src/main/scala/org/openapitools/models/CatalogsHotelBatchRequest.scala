@@ -11,17 +11,17 @@ import scala.collection.immutable.Seq
 
 /**
  * Request object to update catalogs hotel items
+ * @param catalogUnderscoreid Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
  * @param catalogUnderscoretype 
  * @param country 
- * @param language We recommend using the CatalogsLocale values.
  * @param items Array with catalogs item operations
- * @param catalogUnderscoreid Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+ * @param language We recommend using the CatalogsLocale values.
  */
-case class CatalogsHotelBatchRequest(catalogUnderscoretype: String,
+case class CatalogsHotelBatchRequest(catalogUnderscoreid: Option[String],
+                catalogUnderscoretype: String,
                 country: Country,
-                language: String,
                 items: Seq[CatalogsHotelBatchItem],
-                catalogUnderscoreid: Option[String]
+                language: String
                 )
 
 object CatalogsHotelBatchRequest {

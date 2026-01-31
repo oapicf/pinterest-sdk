@@ -22,13 +22,13 @@ catalogs_product_group_multiple_string_criteria_t* instantiate_catalogs_product_
   catalogs_product_group_multiple_string_criteria_t* catalogs_product_group_multiple_string_criteria = NULL;
   if (include_optional) {
     catalogs_product_group_multiple_string_criteria = catalogs_product_group_multiple_string_criteria_create(
-      list_createList(),
-      1
+      1,
+      list_createList()
     );
   } else {
     catalogs_product_group_multiple_string_criteria = catalogs_product_group_multiple_string_criteria_create(
-      list_createList(),
-      1
+      1,
+      list_createList()
     );
   }
 

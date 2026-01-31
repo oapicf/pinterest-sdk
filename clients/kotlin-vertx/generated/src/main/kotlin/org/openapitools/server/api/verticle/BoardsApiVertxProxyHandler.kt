@@ -17,12 +17,17 @@ import io.vertx.core.json.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
 import org.openapitools.server.api.model.Board
+import org.openapitools.server.api.model.BoardCreate
+import org.openapitools.server.api.model.BoardPrivacyFilter
 import org.openapitools.server.api.model.BoardSection
 import org.openapitools.server.api.model.BoardSectionsList200Response
-import org.openapitools.server.api.model.BoardUpdate
+import org.openapitools.server.api.model.BoardWithUpdatePrivacy
+import org.openapitools.server.api.model.BoardWithUpdatePrivacyUpdate
 import org.openapitools.server.api.model.BoardsList200Response
 import org.openapitools.server.api.model.BoardsListPins200Response
+import org.openapitools.server.api.model.CreativeType
 import org.openapitools.server.api.model.Error
+import org.openapitools.server.api.model.PinterestLibError
 
 class BoardsApiVertxProxyHandler(private val vertx: Vertx, private val service: BoardsApi, topLevel: Boolean, private val timeoutSeconds: Long) : ProxyHandler() {
     private lateinit var timerID: Long
@@ -183,14 +188,14 @@ class BoardsApiVertxProxyHandler(private val vertx: Vertx, private val service: 
         
                 "boardsCreate" -> {
                     val params = context.params
-                    val boardParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (boardParam == null) {
-                        throw IllegalArgumentException("board is required")
+                    val boardCreateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (boardCreateParam == null) {
+                        throw IllegalArgumentException("boardCreate is required")
                     }
-                    val board = Gson().fromJson(boardParam.encode(), Board::class.java)
+                    val boardCreate = Gson().fromJson(boardCreateParam.encode(), BoardCreate::class.java)
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.boardsCreate(board,adAccountId,context)
+                        val result = service.boardsCreate(boardCreate,adAccountId,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -236,11 +241,12 @@ class BoardsApiVertxProxyHandler(private val vertx: Vertx, private val service: 
                 "boardsList" -> {
                     val params = context.params
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
+                    val privacyParam = ApiHandlerUtils.searchJsonObjectInJson(params,"privacy")
+                    val privacy = if(privacyParam ==null) null else Gson().fromJson(privacyParam.encode(), BoardPrivacyFilter::class.java)
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
                     val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
-                    val privacy = ApiHandlerUtils.searchStringInJson(params,"privacy")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.boardsList(adAccountId,bookmark,pageSize,privacy,context)
+                        val result = service.boardsList(adAccountId,privacy,bookmark,pageSize,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())
@@ -258,9 +264,9 @@ class BoardsApiVertxProxyHandler(private val vertx: Vertx, private val service: 
                     val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
                     val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     val creativeTypesParam = ApiHandlerUtils.searchJsonArrayInJson(params,"creative_types")
-                    val creativeTypes:kotlin.Array<kotlin.String>? = if(creativeTypesParam == null) null
+                    val creativeTypes:kotlin.Array<CreativeType>? = if(creativeTypesParam == null) null
                             else Gson().fromJson(creativeTypesParam.encode(),
-                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
+                            , object : TypeToken<kotlin.collections.List<CreativeType>>(){}.type)
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     val pinMetrics = ApiHandlerUtils.searchStringInJson(params,"pin_metrics")?.toBoolean()
                     GlobalScope.launch(vertx.dispatcher()){
@@ -279,14 +285,14 @@ class BoardsApiVertxProxyHandler(private val vertx: Vertx, private val service: 
                     if(boardId == null){
                         throw IllegalArgumentException("boardId is required")
                     }
-                    val boardUpdateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
-                    if (boardUpdateParam == null) {
-                        throw IllegalArgumentException("boardUpdate is required")
+                    val boardWithUpdatePrivacyUpdateParam = ApiHandlerUtils.searchJsonObjectInJson(params,"body")
+                    if (boardWithUpdatePrivacyUpdateParam == null) {
+                        throw IllegalArgumentException("boardWithUpdatePrivacyUpdate is required")
                     }
-                    val boardUpdate = Gson().fromJson(boardUpdateParam.encode(), BoardUpdate::class.java)
+                    val boardWithUpdatePrivacyUpdate = Gson().fromJson(boardWithUpdatePrivacyUpdateParam.encode(), BoardWithUpdatePrivacyUpdate::class.java)
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     GlobalScope.launch(vertx.dispatcher()){
-                        val result = service.boardsUpdate(boardId,boardUpdate,adAccountId,context)
+                        val result = service.boardsUpdate(boardId,boardWithUpdatePrivacyUpdate,adAccountId,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

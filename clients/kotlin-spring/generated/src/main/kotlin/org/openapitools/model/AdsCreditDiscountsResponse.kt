@@ -19,11 +19,11 @@ import io.swagger.v3.oas.annotations.media.Schema
  * 
  * @param active True if the offer code is currently active.
  * @param advertiserId Advertiser ID the offer was applied to.
- * @param discountType The type of discount of this credit
- * @param discountInMicroCurrency The discount applied in the offer’s currency value.
  * @param discountCurrency Currency value for the discount.
- * @param title Human readable title of the offer code.
+ * @param discountInMicroCurrency The discount applied in the offer’s currency value.
+ * @param discountType The type of discount of this credit
  * @param remainingDiscountInMicroCurrency The credits left to spend.
+ * @param title Human readable title of the offer code.
  */
 data class AdsCreditDiscountsResponse(
 
@@ -34,20 +34,20 @@ data class AdsCreditDiscountsResponse(
     @Schema(example = "12312451231", description = "Advertiser ID the offer was applied to.")
     @get:JsonProperty("advertiser_id") val advertiserId: kotlin.String? = null,
 
-    @Schema(example = "null", description = "The type of discount of this credit")
-    @get:JsonProperty("discountType") val discountType: AdsCreditDiscountsResponse.DiscountType? = null,
+    @Schema(example = "USD", description = "Currency value for the discount.")
+    @get:JsonProperty("discountCurrency") val discountCurrency: kotlin.String? = null,
 
     @Schema(example = "125000000", description = "The discount applied in the offer’s currency value.")
     @get:JsonProperty("discountInMicroCurrency") val discountInMicroCurrency: java.math.BigDecimal? = null,
 
-    @Schema(example = "USD", description = "Currency value for the discount.")
-    @get:JsonProperty("discountCurrency") val discountCurrency: kotlin.String? = null,
-
-    @Schema(example = "Ads Credits", description = "Human readable title of the offer code.")
-    @get:JsonProperty("title") val title: kotlin.String? = null,
+    @Schema(example = "null", description = "The type of discount of this credit")
+    @get:JsonProperty("discountType") val discountType: AdsCreditDiscountsResponse.DiscountType? = null,
 
     @Schema(example = "125000000", description = "The credits left to spend.")
-    @get:JsonProperty("remainingDiscountInMicroCurrency") val remainingDiscountInMicroCurrency: java.math.BigDecimal? = null
+    @get:JsonProperty("remainingDiscountInMicroCurrency") val remainingDiscountInMicroCurrency: java.math.BigDecimal? = null,
+
+    @Schema(example = "Ads Credits", description = "Human readable title of the offer code.")
+    @get:JsonProperty("title") val title: kotlin.String? = null
 ) {
 
     /**

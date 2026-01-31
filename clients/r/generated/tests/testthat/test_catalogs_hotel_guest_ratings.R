@@ -5,12 +5,12 @@ context("Test CatalogsHotelGuestRatings")
 
 model_instance <- CatalogsHotelGuestRatings$new()
 
-test_that("score", {
-  # tests for the property `score` (numeric)
-  # Your hotel&#39;s rating.
+test_that("max_score", {
+  # tests for the property `max_score` (numeric)
+  # Max value for the hotel rating score.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`score`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`max_score`, "EXPECTED_RESULT")
 })
 
 test_that("number_of_reviewers", {
@@ -21,18 +21,18 @@ test_that("number_of_reviewers", {
   #expect_equal(model.instance$`number_of_reviewers`, "EXPECTED_RESULT")
 })
 
-test_that("max_score", {
-  # tests for the property `max_score` (numeric)
-  # Max value for the hotel rating score.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`max_score`, "EXPECTED_RESULT")
-})
-
 test_that("rating_system", {
   # tests for the property `rating_system` (character)
   # System you use for guest reviews.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`rating_system`, "EXPECTED_RESULT")
+})
+
+test_that("score", {
+  # tests for the property `score` (numeric)
+  # Your hotel&#39;s rating.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`score`, "EXPECTED_RESULT")
 })

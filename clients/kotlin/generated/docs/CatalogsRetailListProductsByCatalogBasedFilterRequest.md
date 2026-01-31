@@ -4,10 +4,10 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **catalogType** | [**inline**](#CatalogType) | Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. |  |
 | **catalogId** | **kotlin.String** | Catalog id pertaining to the retail product group. |  |
-| **filters** | [**CatalogsProductGroupFilters**](CatalogsProductGroupFilters.md) |  |  |
+| **catalogType** | [**inline**](#CatalogType) | Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. |  |
 | **country** | [**Country**](Country.md) |  |  |
+| **filters** | [**CatalogsProductGroupFilters**](CatalogsProductGroupFilters.md) |  |  |
 | **locale** | [**CatalogsLocale**](CatalogsLocale.md) |  |  |
 
 

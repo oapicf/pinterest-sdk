@@ -16,8 +16,8 @@ Name | Type
 `iMAGELINKLENGTHTOOLONG` | [CatalogsItemValidationDetails](CatalogsItemValidationDetails.md)
 `iMAGELINKMISSING` | [CatalogsItemValidationDetails](CatalogsItemValidationDetails.md)
 `iNVALIDDOMAIN` | [CatalogsItemValidationDetails](CatalogsItemValidationDetails.md)
-`iTEMIDMISSING` | [CatalogsItemValidationDetails](CatalogsItemValidationDetails.md)
 `iTEMMAINIMAGEDOWNLOADFAILURE` | [CatalogsItemValidationDetails](CatalogsItemValidationDetails.md)
+`iTEMIDMISSING` | [CatalogsItemValidationDetails](CatalogsItemValidationDetails.md)
 `lINKFORMATINVALID` | [CatalogsItemValidationDetails](CatalogsItemValidationDetails.md)
 `lINKLENGTHTOOLONG` | [CatalogsItemValidationDetails](CatalogsItemValidationDetails.md)
 `lISTPRICEINVALID` | [CatalogsItemValidationDetails](CatalogsItemValidationDetails.md)
@@ -47,8 +47,8 @@ const example = {
   "iMAGELINKLENGTHTOOLONG": null,
   "iMAGELINKMISSING": null,
   "iNVALIDDOMAIN": null,
-  "iTEMIDMISSING": null,
   "iTEMMAINIMAGEDOWNLOADFAILURE": null,
+  "iTEMIDMISSING": null,
   "lINKFORMATINVALID": null,
   "lINKLENGTHTOOLONG": null,
   "lISTPRICEINVALID": null,

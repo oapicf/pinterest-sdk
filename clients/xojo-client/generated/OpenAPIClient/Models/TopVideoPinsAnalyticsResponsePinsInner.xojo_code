@@ -2,15 +2,15 @@
 Protected Class TopVideoPinsAnalyticsResponsePinsInner
 
 	#tag Property, Flags = &h0
-		#tag Note
-			The metric name and daily value for each requested metric
-		#tag EndNote
-		metrics As Dictionary
+		data_status As Dictionary
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		data_status As Dictionary
+		#tag Note
+			The metric name and daily value for each requested metric
+		#tag EndNote
+		metrics As Dictionary
 	#tag EndProperty
 
 
@@ -59,7 +59,7 @@ Protected Class TopVideoPinsAnalyticsResponsePinsInner
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="metrics"
+			Name="data_status"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -67,7 +67,7 @@ Protected Class TopVideoPinsAnalyticsResponsePinsInner
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="data_status"
+			Name="metrics"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

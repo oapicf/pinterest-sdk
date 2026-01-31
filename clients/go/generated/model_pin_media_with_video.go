@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,6 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PinMediaWithVideo type satisfies the MappedNullable interface at compile time
@@ -20,25 +22,28 @@ var _ MappedNullable = &PinMediaWithVideo{}
 
 // PinMediaWithVideo Pin with video.
 type PinMediaWithVideo struct {
-	PinMedia
-	Images *PinMediaWithImageAllOfImages `json:"images,omitempty"`
 	CoverImageUrl *string `json:"cover_image_url,omitempty"`
-	// Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
+	// Duration (in miliseconds). Field maybe null after creation due to video processing time.
+	Duration NullableFloat32 `json:"duration,omitempty"`
+	// Height (in pixels). Field maybe null after creation due to video processing time.
+	Height NullableInt32 `json:"height,omitempty"`
+	Images *ImageSize `json:"images,omitempty"`
+	MediaType string `json:"media_type"`
+	// Video url (720p).  **Note:** This field is limited and not available to all apps.
 	VideoUrl NullableString `json:"video_url,omitempty"`
-	// Duration (in milliseconds)
-	Duration *float32 `json:"duration,omitempty"`
-	// Height (in pixels)
-	Height *int32 `json:"height,omitempty"`
-	// Width (in pixels)
-	Width *int32 `json:"width,omitempty"`
+	// Width (in pixels). Field maybe null after creation due to video processing time.
+	Width NullableInt32 `json:"width,omitempty"`
 }
+
+type _PinMediaWithVideo PinMediaWithVideo
 
 // NewPinMediaWithVideo instantiates a new PinMediaWithVideo object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPinMediaWithVideo() *PinMediaWithVideo {
+func NewPinMediaWithVideo(mediaType string) *PinMediaWithVideo {
 	this := PinMediaWithVideo{}
+	this.MediaType = mediaType
 	return &this
 }
 
@@ -48,38 +53,6 @@ func NewPinMediaWithVideo() *PinMediaWithVideo {
 func NewPinMediaWithVideoWithDefaults() *PinMediaWithVideo {
 	this := PinMediaWithVideo{}
 	return &this
-}
-
-// GetImages returns the Images field value if set, zero value otherwise.
-func (o *PinMediaWithVideo) GetImages() PinMediaWithImageAllOfImages {
-	if o == nil || IsNil(o.Images) {
-		var ret PinMediaWithImageAllOfImages
-		return ret
-	}
-	return *o.Images
-}
-
-// GetImagesOk returns a tuple with the Images field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PinMediaWithVideo) GetImagesOk() (*PinMediaWithImageAllOfImages, bool) {
-	if o == nil || IsNil(o.Images) {
-		return nil, false
-	}
-	return o.Images, true
-}
-
-// HasImages returns a boolean if a field has been set.
-func (o *PinMediaWithVideo) HasImages() bool {
-	if o != nil && !IsNil(o.Images) {
-		return true
-	}
-
-	return false
-}
-
-// SetImages gets a reference to the given PinMediaWithImageAllOfImages and assigns it to the Images field.
-func (o *PinMediaWithVideo) SetImages(v PinMediaWithImageAllOfImages) {
-	o.Images = &v
 }
 
 // GetCoverImageUrl returns the CoverImageUrl field value if set, zero value otherwise.
@@ -112,6 +85,146 @@ func (o *PinMediaWithVideo) HasCoverImageUrl() bool {
 // SetCoverImageUrl gets a reference to the given string and assigns it to the CoverImageUrl field.
 func (o *PinMediaWithVideo) SetCoverImageUrl(v string) {
 	o.CoverImageUrl = &v
+}
+
+// GetDuration returns the Duration field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PinMediaWithVideo) GetDuration() float32 {
+	if o == nil || IsNil(o.Duration.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.Duration.Get()
+}
+
+// GetDurationOk returns a tuple with the Duration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PinMediaWithVideo) GetDurationOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Duration.Get(), o.Duration.IsSet()
+}
+
+// HasDuration returns a boolean if a field has been set.
+func (o *PinMediaWithVideo) HasDuration() bool {
+	if o != nil && o.Duration.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDuration gets a reference to the given NullableFloat32 and assigns it to the Duration field.
+func (o *PinMediaWithVideo) SetDuration(v float32) {
+	o.Duration.Set(&v)
+}
+// SetDurationNil sets the value for Duration to be an explicit nil
+func (o *PinMediaWithVideo) SetDurationNil() {
+	o.Duration.Set(nil)
+}
+
+// UnsetDuration ensures that no value is present for Duration, not even an explicit nil
+func (o *PinMediaWithVideo) UnsetDuration() {
+	o.Duration.Unset()
+}
+
+// GetHeight returns the Height field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PinMediaWithVideo) GetHeight() int32 {
+	if o == nil || IsNil(o.Height.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.Height.Get()
+}
+
+// GetHeightOk returns a tuple with the Height field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PinMediaWithVideo) GetHeightOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Height.Get(), o.Height.IsSet()
+}
+
+// HasHeight returns a boolean if a field has been set.
+func (o *PinMediaWithVideo) HasHeight() bool {
+	if o != nil && o.Height.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetHeight gets a reference to the given NullableInt32 and assigns it to the Height field.
+func (o *PinMediaWithVideo) SetHeight(v int32) {
+	o.Height.Set(&v)
+}
+// SetHeightNil sets the value for Height to be an explicit nil
+func (o *PinMediaWithVideo) SetHeightNil() {
+	o.Height.Set(nil)
+}
+
+// UnsetHeight ensures that no value is present for Height, not even an explicit nil
+func (o *PinMediaWithVideo) UnsetHeight() {
+	o.Height.Unset()
+}
+
+// GetImages returns the Images field value if set, zero value otherwise.
+func (o *PinMediaWithVideo) GetImages() ImageSize {
+	if o == nil || IsNil(o.Images) {
+		var ret ImageSize
+		return ret
+	}
+	return *o.Images
+}
+
+// GetImagesOk returns a tuple with the Images field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PinMediaWithVideo) GetImagesOk() (*ImageSize, bool) {
+	if o == nil || IsNil(o.Images) {
+		return nil, false
+	}
+	return o.Images, true
+}
+
+// HasImages returns a boolean if a field has been set.
+func (o *PinMediaWithVideo) HasImages() bool {
+	if o != nil && !IsNil(o.Images) {
+		return true
+	}
+
+	return false
+}
+
+// SetImages gets a reference to the given ImageSize and assigns it to the Images field.
+func (o *PinMediaWithVideo) SetImages(v ImageSize) {
+	o.Images = &v
+}
+
+// GetMediaType returns the MediaType field value
+func (o *PinMediaWithVideo) GetMediaType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MediaType
+}
+
+// GetMediaTypeOk returns a tuple with the MediaType field value
+// and a boolean to check if the value has been set.
+func (o *PinMediaWithVideo) GetMediaTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MediaType, true
+}
+
+// SetMediaType sets field value
+func (o *PinMediaWithVideo) SetMediaType(v string) {
+	o.MediaType = v
 }
 
 // GetVideoUrl returns the VideoUrl field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -156,100 +269,46 @@ func (o *PinMediaWithVideo) UnsetVideoUrl() {
 	o.VideoUrl.Unset()
 }
 
-// GetDuration returns the Duration field value if set, zero value otherwise.
-func (o *PinMediaWithVideo) GetDuration() float32 {
-	if o == nil || IsNil(o.Duration) {
-		var ret float32
-		return ret
-	}
-	return *o.Duration
-}
-
-// GetDurationOk returns a tuple with the Duration field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PinMediaWithVideo) GetDurationOk() (*float32, bool) {
-	if o == nil || IsNil(o.Duration) {
-		return nil, false
-	}
-	return o.Duration, true
-}
-
-// HasDuration returns a boolean if a field has been set.
-func (o *PinMediaWithVideo) HasDuration() bool {
-	if o != nil && !IsNil(o.Duration) {
-		return true
-	}
-
-	return false
-}
-
-// SetDuration gets a reference to the given float32 and assigns it to the Duration field.
-func (o *PinMediaWithVideo) SetDuration(v float32) {
-	o.Duration = &v
-}
-
-// GetHeight returns the Height field value if set, zero value otherwise.
-func (o *PinMediaWithVideo) GetHeight() int32 {
-	if o == nil || IsNil(o.Height) {
-		var ret int32
-		return ret
-	}
-	return *o.Height
-}
-
-// GetHeightOk returns a tuple with the Height field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PinMediaWithVideo) GetHeightOk() (*int32, bool) {
-	if o == nil || IsNil(o.Height) {
-		return nil, false
-	}
-	return o.Height, true
-}
-
-// HasHeight returns a boolean if a field has been set.
-func (o *PinMediaWithVideo) HasHeight() bool {
-	if o != nil && !IsNil(o.Height) {
-		return true
-	}
-
-	return false
-}
-
-// SetHeight gets a reference to the given int32 and assigns it to the Height field.
-func (o *PinMediaWithVideo) SetHeight(v int32) {
-	o.Height = &v
-}
-
-// GetWidth returns the Width field value if set, zero value otherwise.
+// GetWidth returns the Width field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PinMediaWithVideo) GetWidth() int32 {
-	if o == nil || IsNil(o.Width) {
+	if o == nil || IsNil(o.Width.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.Width
+	return *o.Width.Get()
 }
 
 // GetWidthOk returns a tuple with the Width field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PinMediaWithVideo) GetWidthOk() (*int32, bool) {
-	if o == nil || IsNil(o.Width) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Width, true
+	return o.Width.Get(), o.Width.IsSet()
 }
 
 // HasWidth returns a boolean if a field has been set.
 func (o *PinMediaWithVideo) HasWidth() bool {
-	if o != nil && !IsNil(o.Width) {
+	if o != nil && o.Width.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetWidth gets a reference to the given int32 and assigns it to the Width field.
+// SetWidth gets a reference to the given NullableInt32 and assigns it to the Width field.
 func (o *PinMediaWithVideo) SetWidth(v int32) {
-	o.Width = &v
+	o.Width.Set(&v)
+}
+// SetWidthNil sets the value for Width to be an explicit nil
+func (o *PinMediaWithVideo) SetWidthNil() {
+	o.Width.Set(nil)
+}
+
+// UnsetWidth ensures that no value is present for Width, not even an explicit nil
+func (o *PinMediaWithVideo) UnsetWidth() {
+	o.Width.Unset()
 }
 
 func (o PinMediaWithVideo) MarshalJSON() ([]byte, error) {
@@ -262,25 +321,63 @@ func (o PinMediaWithVideo) MarshalJSON() ([]byte, error) {
 
 func (o PinMediaWithVideo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Images) {
-		toSerialize["images"] = o.Images
-	}
 	if !IsNil(o.CoverImageUrl) {
 		toSerialize["cover_image_url"] = o.CoverImageUrl
 	}
+	if o.Duration.IsSet() {
+		toSerialize["duration"] = o.Duration.Get()
+	}
+	if o.Height.IsSet() {
+		toSerialize["height"] = o.Height.Get()
+	}
+	if !IsNil(o.Images) {
+		toSerialize["images"] = o.Images
+	}
+	toSerialize["media_type"] = o.MediaType
 	if o.VideoUrl.IsSet() {
 		toSerialize["video_url"] = o.VideoUrl.Get()
 	}
-	if !IsNil(o.Duration) {
-		toSerialize["duration"] = o.Duration
-	}
-	if !IsNil(o.Height) {
-		toSerialize["height"] = o.Height
-	}
-	if !IsNil(o.Width) {
-		toSerialize["width"] = o.Width
+	if o.Width.IsSet() {
+		toSerialize["width"] = o.Width.Get()
 	}
 	return toSerialize, nil
+}
+
+func (o *PinMediaWithVideo) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"media_type",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPinMediaWithVideo := _PinMediaWithVideo{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPinMediaWithVideo)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PinMediaWithVideo(varPinMediaWithVideo)
+
+	return err
 }
 
 type NullablePinMediaWithVideo struct {

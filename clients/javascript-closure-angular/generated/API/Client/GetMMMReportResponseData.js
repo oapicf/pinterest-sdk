@@ -12,16 +12,16 @@ API.Client.GetMMMReportResponseData = function() {}
 API.Client.GetMMMReportResponseData.prototype.reportStatus;
 
 /**
- * @type {!string}
- * @export
- */
-API.Client.GetMMMReportResponseData.prototype.url;
-
-/**
  * @type {!number}
  * @export
  */
 API.Client.GetMMMReportResponseData.prototype.size;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.GetMMMReportResponseData.prototype.url;
 
 /** @enum {string} */
 API.Client.GetMMMReportResponseData.ReportStatusEnum = { 

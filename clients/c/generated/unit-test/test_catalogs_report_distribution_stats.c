@@ -22,25 +22,25 @@ catalogs_report_distribution_stats_t* instantiate_catalogs_report_distribution_s
   catalogs_report_distribution_stats_t* catalogs_report_distribution_stats = NULL;
   if (include_optional) {
     catalogs_report_distribution_stats = catalogs_report_distribution_stats_create(
-      pinterest_rest_api_catalogs_report_distribution_stats_REPORTTYPE_DISTRIBUTION_ISSUES,
       "a",
       56,
       "SPAM",
+      true,
+      true,
       "0",
       10,
-      true,
-      true
+      pinterest_rest_api_catalogs_report_distribution_stats_REPORTTYPE_DISTRIBUTION_ISSUES
     );
   } else {
     catalogs_report_distribution_stats = catalogs_report_distribution_stats_create(
-      pinterest_rest_api_catalogs_report_distribution_stats_REPORTTYPE_DISTRIBUTION_ISSUES,
       "a",
       56,
       "SPAM",
+      true,
+      true,
       "0",
       10,
-      true,
-      true
+      pinterest_rest_api_catalogs_report_distribution_stats_REPORTTYPE_DISTRIBUTION_ISSUES
     );
   }
 

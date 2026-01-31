@@ -3,7 +3,7 @@ const utils = require('../utils/utils');
 module.exports = {
         fields: (key) => (
             {
-                label: `Language code, which is among the offical ISO 639-1 language list. - [${key.replaceAll('__', '.')}]`,
+                label: `Language code, which is among the official ISO 639-1 language list. - [${key.replaceAll('__', '.')}]`,
                 choices: [
                     'AM',
                     'AR',

@@ -12,26 +12,6 @@ import AnyCodable
 
 public struct AdResponse: Codable, JSONEncodable, Hashable {
 
-    public enum CustomizableCtaType: String, Codable, CaseIterable {
-        case getOffer = "GET_OFFER"
-        case learnMore = "LEARN_MORE"
-        case orderNow = "ORDER_NOW"
-        case shopNow = "SHOP_NOW"
-        case signUp = "SIGN_UP"
-        case subscribe = "SUBSCRIBE"
-        case buyNow = "BUY_NOW"
-        case contactUs = "CONTACT_US"
-        case getQuote = "GET_QUOTE"
-        case visitSite = "VISIT_SITE"
-        case applyNow = "APPLY_NOW"
-        case bookNow = "BOOK_NOW"
-        case requestDemo = "REQUEST_DEMO"
-        case registerNow = "REGISTER_NOW"
-        case findADealer = "FIND_A_DEALER"
-        case addToCart = "ADD_TO_CART"
-        case watchNow = "WATCH_NOW"
-        case readMore = "READ_MORE"
-    }
     public enum RejectedReasons: String, Codable, CaseIterable {
         case hashtags = "HASHTAGS"
         case promotionsAndPrices = "PROMOTIONS_AND_PRICES"
@@ -107,27 +87,29 @@ public struct AdResponse: Codable, JSONEncodable, Hashable {
     /** Tracking url for the ad clicks. */
     public var clickTrackingUrl: String?
     public var creativeType: CreativeType?
+    public var customizableCtaType: CustomizableCTAType?
     /** Destination URL. */
     public var destinationUrl: String?
+    public var disclosureType: DisclosureType?
+    /** URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure. */
+    public var disclosureUrl: String?
+    public var gridClickType: GridClickType?
     /** Deep link URL for iOS devices. */
     public var iosDeepLink: String?
     /** Is original pin deleted? */
     public var isPinDeleted: Bool?
     /** Is pin repinnable? */
     public var isRemovable: Bool?
+    /** Lead form ID for lead ad generation. */
+    public var leadFormId: String?
     /** Name of the ad - 255 chars max. */
     public var name: String?
+    /** Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. */
+    public var quizPinData: QuizPinData?
     public var status: EntityStatus?
     public var trackingUrls: TrackingUrls?
     /** Tracking URL for ad impressions. */
     public var viewTrackingUrl: String?
-    /** Lead form ID for lead ad generation. */
-    public var leadFormId: String?
-    public var gridClickType: GridClickType?
-    /** Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only) */
-    public var customizableCtaType: CustomizableCtaType?
-    /** Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved. */
-    public var quizPinData: QuizPinData?
     /** Pin ID. */
     public var pinId: String?
     /** The ID of the advertiser that this ad belongs to. */
@@ -146,14 +128,14 @@ public struct AdResponse: Codable, JSONEncodable, Hashable {
     public var rejectionLabels: [String]?
     /** Ad review status */
     public var reviewStatus: ReviewStatus?
+    /** Ad summary status */
+    public var summaryStatus: PinPromotionSummaryStatus?
     /** Always \"ad\". */
     public var type: String?
     /** Last update time. Unix timestamp in seconds. */
     public var updatedTime: Int?
-    /** Ad summary status */
-    public var summaryStatus: PinPromotionSummaryStatus?
 
-    public init(adGroupId: String? = nil, androidDeepLink: String? = nil, carouselAndroidDeepLinks: [String]? = nil, carouselDestinationUrls: [String]? = nil, carouselIosDeepLinks: [String]? = nil, clickTrackingUrl: String? = nil, creativeType: CreativeType? = nil, destinationUrl: String? = nil, iosDeepLink: String? = nil, isPinDeleted: Bool? = nil, isRemovable: Bool? = nil, name: String? = nil, status: EntityStatus? = nil, trackingUrls: TrackingUrls? = nil, viewTrackingUrl: String? = nil, leadFormId: String? = nil, gridClickType: GridClickType? = nil, customizableCtaType: CustomizableCtaType? = nil, quizPinData: QuizPinData? = nil, pinId: String? = nil, adAccountId: String? = nil, campaignId: String? = nil, collectionItemsDestinationUrlTemplate: String? = nil, createdTime: Int? = nil, id: String? = nil, rejectedReasons: [RejectedReasons]? = nil, rejectionLabels: [String]? = nil, reviewStatus: ReviewStatus? = nil, type: String? = nil, updatedTime: Int? = nil, summaryStatus: PinPromotionSummaryStatus? = nil) {
+    public init(adGroupId: String? = nil, androidDeepLink: String? = nil, carouselAndroidDeepLinks: [String]? = nil, carouselDestinationUrls: [String]? = nil, carouselIosDeepLinks: [String]? = nil, clickTrackingUrl: String? = nil, creativeType: CreativeType? = nil, customizableCtaType: CustomizableCTAType? = nil, destinationUrl: String? = nil, disclosureType: DisclosureType? = nil, disclosureUrl: String? = nil, gridClickType: GridClickType? = nil, iosDeepLink: String? = nil, isPinDeleted: Bool? = nil, isRemovable: Bool? = nil, leadFormId: String? = nil, name: String? = nil, quizPinData: QuizPinData? = nil, status: EntityStatus? = nil, trackingUrls: TrackingUrls? = nil, viewTrackingUrl: String? = nil, pinId: String? = nil, adAccountId: String? = nil, campaignId: String? = nil, collectionItemsDestinationUrlTemplate: String? = nil, createdTime: Int? = nil, id: String? = nil, rejectedReasons: [RejectedReasons]? = nil, rejectionLabels: [String]? = nil, reviewStatus: ReviewStatus? = nil, summaryStatus: PinPromotionSummaryStatus? = nil, type: String? = nil, updatedTime: Int? = nil) {
         self.adGroupId = adGroupId
         self.androidDeepLink = androidDeepLink
         self.carouselAndroidDeepLinks = carouselAndroidDeepLinks
@@ -161,18 +143,20 @@ public struct AdResponse: Codable, JSONEncodable, Hashable {
         self.carouselIosDeepLinks = carouselIosDeepLinks
         self.clickTrackingUrl = clickTrackingUrl
         self.creativeType = creativeType
+        self.customizableCtaType = customizableCtaType
         self.destinationUrl = destinationUrl
+        self.disclosureType = disclosureType
+        self.disclosureUrl = disclosureUrl
+        self.gridClickType = gridClickType
         self.iosDeepLink = iosDeepLink
         self.isPinDeleted = isPinDeleted
         self.isRemovable = isRemovable
+        self.leadFormId = leadFormId
         self.name = name
+        self.quizPinData = quizPinData
         self.status = status
         self.trackingUrls = trackingUrls
         self.viewTrackingUrl = viewTrackingUrl
-        self.leadFormId = leadFormId
-        self.gridClickType = gridClickType
-        self.customizableCtaType = customizableCtaType
-        self.quizPinData = quizPinData
         self.pinId = pinId
         self.adAccountId = adAccountId
         self.campaignId = campaignId
@@ -182,9 +166,9 @@ public struct AdResponse: Codable, JSONEncodable, Hashable {
         self.rejectedReasons = rejectedReasons
         self.rejectionLabels = rejectionLabels
         self.reviewStatus = reviewStatus
+        self.summaryStatus = summaryStatus
         self.type = type
         self.updatedTime = updatedTime
-        self.summaryStatus = summaryStatus
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -195,18 +179,20 @@ public struct AdResponse: Codable, JSONEncodable, Hashable {
         case carouselIosDeepLinks = "carousel_ios_deep_links"
         case clickTrackingUrl = "click_tracking_url"
         case creativeType = "creative_type"
+        case customizableCtaType = "customizable_cta_type"
         case destinationUrl = "destination_url"
+        case disclosureType = "disclosure_type"
+        case disclosureUrl = "disclosure_url"
+        case gridClickType = "grid_click_type"
         case iosDeepLink = "ios_deep_link"
         case isPinDeleted = "is_pin_deleted"
         case isRemovable = "is_removable"
+        case leadFormId = "lead_form_id"
         case name
+        case quizPinData = "quiz_pin_data"
         case status
         case trackingUrls = "tracking_urls"
         case viewTrackingUrl = "view_tracking_url"
-        case leadFormId = "lead_form_id"
-        case gridClickType = "grid_click_type"
-        case customizableCtaType = "customizable_cta_type"
-        case quizPinData = "quiz_pin_data"
         case pinId = "pin_id"
         case adAccountId = "ad_account_id"
         case campaignId = "campaign_id"
@@ -216,9 +202,9 @@ public struct AdResponse: Codable, JSONEncodable, Hashable {
         case rejectedReasons = "rejected_reasons"
         case rejectionLabels = "rejection_labels"
         case reviewStatus = "review_status"
+        case summaryStatus = "summary_status"
         case type
         case updatedTime = "updated_time"
-        case summaryStatus = "summary_status"
     }
 
     // Encodable protocol methods
@@ -232,18 +218,20 @@ public struct AdResponse: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(carouselIosDeepLinks, forKey: .carouselIosDeepLinks)
         try container.encodeIfPresent(clickTrackingUrl, forKey: .clickTrackingUrl)
         try container.encodeIfPresent(creativeType, forKey: .creativeType)
+        try container.encodeIfPresent(customizableCtaType, forKey: .customizableCtaType)
         try container.encodeIfPresent(destinationUrl, forKey: .destinationUrl)
+        try container.encodeIfPresent(disclosureType, forKey: .disclosureType)
+        try container.encodeIfPresent(disclosureUrl, forKey: .disclosureUrl)
+        try container.encodeIfPresent(gridClickType, forKey: .gridClickType)
         try container.encodeIfPresent(iosDeepLink, forKey: .iosDeepLink)
         try container.encodeIfPresent(isPinDeleted, forKey: .isPinDeleted)
         try container.encodeIfPresent(isRemovable, forKey: .isRemovable)
+        try container.encodeIfPresent(leadFormId, forKey: .leadFormId)
         try container.encodeIfPresent(name, forKey: .name)
+        try container.encodeIfPresent(quizPinData, forKey: .quizPinData)
         try container.encodeIfPresent(status, forKey: .status)
         try container.encodeIfPresent(trackingUrls, forKey: .trackingUrls)
         try container.encodeIfPresent(viewTrackingUrl, forKey: .viewTrackingUrl)
-        try container.encodeIfPresent(leadFormId, forKey: .leadFormId)
-        try container.encodeIfPresent(gridClickType, forKey: .gridClickType)
-        try container.encodeIfPresent(customizableCtaType, forKey: .customizableCtaType)
-        try container.encodeIfPresent(quizPinData, forKey: .quizPinData)
         try container.encodeIfPresent(pinId, forKey: .pinId)
         try container.encodeIfPresent(adAccountId, forKey: .adAccountId)
         try container.encodeIfPresent(campaignId, forKey: .campaignId)
@@ -253,9 +241,9 @@ public struct AdResponse: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(rejectedReasons, forKey: .rejectedReasons)
         try container.encodeIfPresent(rejectionLabels, forKey: .rejectionLabels)
         try container.encodeIfPresent(reviewStatus, forKey: .reviewStatus)
+        try container.encodeIfPresent(summaryStatus, forKey: .summaryStatus)
         try container.encodeIfPresent(type, forKey: .type)
         try container.encodeIfPresent(updatedTime, forKey: .updatedTime)
-        try container.encodeIfPresent(summaryStatus, forKey: .summaryStatus)
     }
 }
 

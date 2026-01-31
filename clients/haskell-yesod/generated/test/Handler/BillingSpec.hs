@@ -18,6 +18,16 @@ spec = withApp $ do
             get $ AdAccountsByTextAdsCreditDiscountsR "adAccountId_example"
             statusIs 501
 
+    describe "getAdAccountsByTextBillingInvoiceByTextDownloadR" $
+        it "returns 501 Not Implemented" $ do
+            get $ AdAccountsByTextBillingInvoiceByTextDownloadR "adAccountId_example" "billingInvoiceId_example"
+            statusIs 501
+
+    describe "getAdAccountsByTextBillingInvoicesR" $
+        it "returns 501 Not Implemented" $ do
+            get $ AdAccountsByTextBillingInvoicesR "adAccountId_example"
+            statusIs 501
+
     describe "getAdAccountsByTextBillingProfilesR" $
         it "returns 501 Not Implemented" $ do
             get $ AdAccountsByTextBillingProfilesR "adAccountId_example"

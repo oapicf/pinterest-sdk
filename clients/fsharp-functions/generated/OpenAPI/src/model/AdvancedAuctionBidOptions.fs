@@ -12,10 +12,10 @@ module AdvancedAuctionBidOptions =
 
   [<CLIMutable>]
   type AdvancedAuctionBidOptions = {
-    [<JsonProperty(PropertyName = "bid_in_micro_currency")>]
-    BidInMicroCurrency : int64;
     [<JsonProperty(PropertyName = "app_type_multipliers")>]
     AppTypeMultipliers : AppTypeMultipliers;
+    [<JsonProperty(PropertyName = "bid_in_micro_currency")>]
+    BidInMicroCurrency : int64;
     [<JsonProperty(PropertyName = "placement_multipliers")>]
     PlacementMultipliers : PlacementMultipliers;
   }

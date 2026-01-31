@@ -25,6 +25,12 @@ class SSIOInsertionOrderStatusTest : ShouldSpec() {
         // uncomment below to create an instance of SSIOInsertionOrderStatus
         //val modelInstance = SSIOInsertionOrderStatus()
 
+        // to test the property `creationTime` - Salesforce insertion order creation time
+        should("test creationTime") {
+            // uncomment below to test the property
+            //modelInstance.creationTime shouldBe ("TODO")
+        }
+
         // to test the property `pinOrderId` - Salesforce order id
         should("test pinOrderId") {
             // uncomment below to test the property
@@ -35,12 +41,6 @@ class SSIOInsertionOrderStatusTest : ShouldSpec() {
         should("test status") {
             // uncomment below to test the property
             //modelInstance.status shouldBe ("TODO")
-        }
-
-        // to test the property `creationTime` - Salesforce insertion order creation time
-        should("test creationTime") {
-            // uncomment below to test the property
-            //modelInstance.creationTime shouldBe ("TODO")
         }
 
     }

@@ -22,16 +22,16 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param CAMPAIGN_ID The ID of the campaing that this metrics belongs to.
+ * @param CAMPAIGN_ID The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
  * @param DATE Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
  */
 
 
 data class CampaignsAnalyticsResponseInner (
 
-    /* The ID of the campaing that this metrics belongs to. */
+    /* The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true. */
     @Json(name = "CAMPAIGN_ID")
-    val CAMPAIGN_ID: kotlin.String,
+    val CAMPAIGN_ID: kotlin.String? = null,
 
     /* Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`) */
     @Json(name = "DATE")

@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server RespondToInvitesResponseArrayItemsInner"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a RespondToInvitesResponseArrayItemsInner"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BaseInviteDataResponse = openapi_server.resourceTypes.BaseInviteDataResponse
+  InviteExceptionResponse = openapi_server.resourceTypes.InviteExceptionResponse
+}
+resourceTypes {
+
+  RespondToInvitesResponseArrayItemsInner {
+    title = RespondToInvitesResponseArrayItemsInner
+    description = RespondToInvitesResponseArrayItemsInner
+    derivedFrom = Root
+    properties {
+        exception {
+          type = InviteExceptionResponse
+          description = ""
+          optional = false
+        }
+        invite {
+          type = BaseInviteDataResponse
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  RespondToInvitesResponseArrayItemsInner {
+    title = RespondToInvitesResponseArrayItemsInner
+    description = RespondToInvitesResponseArrayItemsInner
+    implements = openapi_server.resourceTypes.RespondToInvitesResponseArrayItemsInner
+
+  }
+}

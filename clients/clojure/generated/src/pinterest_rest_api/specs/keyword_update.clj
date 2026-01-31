@@ -7,9 +7,9 @@
 
 (def keyword-update-data
   {
-   (ds/req :id) string?
    (ds/opt :archived) boolean?
    (ds/opt :bid) int?
+   (ds/req :id) string?
    })
 
 (def keyword-update-spec

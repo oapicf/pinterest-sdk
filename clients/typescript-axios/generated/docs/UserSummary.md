@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**username** | **string** | Username | [optional] [default to undefined]
 **type** | **string** | Always \&quot;user\&quot; | [optional] [default to undefined]
+**username** | **string** | Username | [optional] [default to undefined]
 
 ## Example
 
@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 import { UserSummary } from './api';
 
 const instance: UserSummary = {
-    username,
     type,
+    username,
 };
 ```
 

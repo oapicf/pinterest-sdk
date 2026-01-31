@@ -4,8 +4,8 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **catalogType** | [**inline**](#CatalogType) |  |  |
 | **catalogId** | **kotlin.String** | Catalog id pertaining to the hotel product group. |  |
+| **catalogType** | [**inline**](#CatalogType) |  |  |
 | **filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  |  |
 
 

@@ -18,8 +18,8 @@ public class CatalogsItemValidationErrors   {
   private CatalogsItemValidationDetails IMAGE_LINK_LENGTH_TOO_LONG;
   private CatalogsItemValidationDetails IMAGE_LINK_MISSING;
   private CatalogsItemValidationDetails INVALID_DOMAIN;
-  private CatalogsItemValidationDetails ITEMID_MISSING;
   private CatalogsItemValidationDetails ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
+  private CatalogsItemValidationDetails ITEMID_MISSING;
   private CatalogsItemValidationDetails LINK_FORMAT_INVALID;
   private CatalogsItemValidationDetails LINK_LENGTH_TOO_LONG;
   private CatalogsItemValidationDetails LIST_PRICE_INVALID;
@@ -36,7 +36,7 @@ public class CatalogsItemValidationErrors   {
 
   }
 
-  public CatalogsItemValidationErrors (CatalogsItemValidationDetails ADULT_INVALID, CatalogsItemValidationDetails ADWORDS_FORMAT_INVALID, CatalogsItemValidationDetails AVAILABILITY_INVALID, CatalogsItemValidationDetails BLOCKLISTED_IMAGE_SIGNATURE, CatalogsItemValidationDetails DESCRIPTION_MISSING, CatalogsItemValidationDetails DUPLICATE_PRODUCTS, CatalogsItemValidationDetails IMAGE_LINK_INVALID, CatalogsItemValidationDetails IMAGE_LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails IMAGE_LINK_MISSING, CatalogsItemValidationDetails INVALID_DOMAIN, CatalogsItemValidationDetails ITEMID_MISSING, CatalogsItemValidationDetails ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE, CatalogsItemValidationDetails LINK_FORMAT_INVALID, CatalogsItemValidationDetails LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails LIST_PRICE_INVALID, CatalogsItemValidationDetails MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED, CatalogsItemValidationDetails PARSE_LINE_ERROR, CatalogsItemValidationDetails PINJOIN_CONTENT_UNSAFE, CatalogsItemValidationDetails PRICE_CANNOT_BE_DETERMINED, CatalogsItemValidationDetails PRICE_MISSING, CatalogsItemValidationDetails PRODUCT_LINK_MISSING, CatalogsItemValidationDetails PRODUCT_PRICE_INVALID, CatalogsItemValidationDetails TITLE_MISSING) {
+  public CatalogsItemValidationErrors (CatalogsItemValidationDetails ADULT_INVALID, CatalogsItemValidationDetails ADWORDS_FORMAT_INVALID, CatalogsItemValidationDetails AVAILABILITY_INVALID, CatalogsItemValidationDetails BLOCKLISTED_IMAGE_SIGNATURE, CatalogsItemValidationDetails DESCRIPTION_MISSING, CatalogsItemValidationDetails DUPLICATE_PRODUCTS, CatalogsItemValidationDetails IMAGE_LINK_INVALID, CatalogsItemValidationDetails IMAGE_LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails IMAGE_LINK_MISSING, CatalogsItemValidationDetails INVALID_DOMAIN, CatalogsItemValidationDetails ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE, CatalogsItemValidationDetails ITEMID_MISSING, CatalogsItemValidationDetails LINK_FORMAT_INVALID, CatalogsItemValidationDetails LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails LIST_PRICE_INVALID, CatalogsItemValidationDetails MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED, CatalogsItemValidationDetails PARSE_LINE_ERROR, CatalogsItemValidationDetails PINJOIN_CONTENT_UNSAFE, CatalogsItemValidationDetails PRICE_CANNOT_BE_DETERMINED, CatalogsItemValidationDetails PRICE_MISSING, CatalogsItemValidationDetails PRODUCT_LINK_MISSING, CatalogsItemValidationDetails PRODUCT_PRICE_INVALID, CatalogsItemValidationDetails TITLE_MISSING) {
     this.ADULT_INVALID = ADULT_INVALID;
     this.ADWORDS_FORMAT_INVALID = ADWORDS_FORMAT_INVALID;
     this.AVAILABILITY_INVALID = AVAILABILITY_INVALID;
@@ -47,8 +47,8 @@ public class CatalogsItemValidationErrors   {
     this.IMAGE_LINK_LENGTH_TOO_LONG = IMAGE_LINK_LENGTH_TOO_LONG;
     this.IMAGE_LINK_MISSING = IMAGE_LINK_MISSING;
     this.INVALID_DOMAIN = INVALID_DOMAIN;
-    this.ITEMID_MISSING = ITEMID_MISSING;
     this.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE = ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
+    this.ITEMID_MISSING = ITEMID_MISSING;
     this.LINK_FORMAT_INVALID = LINK_FORMAT_INVALID;
     this.LINK_LENGTH_TOO_LONG = LINK_LENGTH_TOO_LONG;
     this.LIST_PRICE_INVALID = LIST_PRICE_INVALID;
@@ -153,21 +153,21 @@ public class CatalogsItemValidationErrors   {
   }
 
     
-  @JsonProperty("ITEMID_MISSING")
-  public CatalogsItemValidationDetails getITEMIDMISSING() {
-    return ITEMID_MISSING;
-  }
-  public void setITEMIDMISSING(CatalogsItemValidationDetails ITEMID_MISSING) {
-    this.ITEMID_MISSING = ITEMID_MISSING;
-  }
-
-    
   @JsonProperty("ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE")
   public CatalogsItemValidationDetails getITEMMAINIMAGEDOWNLOADFAILURE() {
     return ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
   }
   public void setITEMMAINIMAGEDOWNLOADFAILURE(CatalogsItemValidationDetails ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE) {
     this.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE = ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
+  }
+
+    
+  @JsonProperty("ITEMID_MISSING")
+  public CatalogsItemValidationDetails getITEMIDMISSING() {
+    return ITEMID_MISSING;
+  }
+  public void setITEMIDMISSING(CatalogsItemValidationDetails ITEMID_MISSING) {
+    this.ITEMID_MISSING = ITEMID_MISSING;
   }
 
     
@@ -289,8 +289,8 @@ public class CatalogsItemValidationErrors   {
         Objects.equals(IMAGE_LINK_LENGTH_TOO_LONG, catalogsItemValidationErrors.IMAGE_LINK_LENGTH_TOO_LONG) &&
         Objects.equals(IMAGE_LINK_MISSING, catalogsItemValidationErrors.IMAGE_LINK_MISSING) &&
         Objects.equals(INVALID_DOMAIN, catalogsItemValidationErrors.INVALID_DOMAIN) &&
-        Objects.equals(ITEMID_MISSING, catalogsItemValidationErrors.ITEMID_MISSING) &&
         Objects.equals(ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE, catalogsItemValidationErrors.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE) &&
+        Objects.equals(ITEMID_MISSING, catalogsItemValidationErrors.ITEMID_MISSING) &&
         Objects.equals(LINK_FORMAT_INVALID, catalogsItemValidationErrors.LINK_FORMAT_INVALID) &&
         Objects.equals(LINK_LENGTH_TOO_LONG, catalogsItemValidationErrors.LINK_LENGTH_TOO_LONG) &&
         Objects.equals(LIST_PRICE_INVALID, catalogsItemValidationErrors.LIST_PRICE_INVALID) &&
@@ -306,7 +306,7 @@ public class CatalogsItemValidationErrors   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ADULT_INVALID, ADWORDS_FORMAT_INVALID, AVAILABILITY_INVALID, BLOCKLISTED_IMAGE_SIGNATURE, DESCRIPTION_MISSING, DUPLICATE_PRODUCTS, IMAGE_LINK_INVALID, IMAGE_LINK_LENGTH_TOO_LONG, IMAGE_LINK_MISSING, INVALID_DOMAIN, ITEMID_MISSING, ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE, LINK_FORMAT_INVALID, LINK_LENGTH_TOO_LONG, LIST_PRICE_INVALID, MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED, PARSE_LINE_ERROR, PINJOIN_CONTENT_UNSAFE, PRICE_CANNOT_BE_DETERMINED, PRICE_MISSING, PRODUCT_LINK_MISSING, PRODUCT_PRICE_INVALID, TITLE_MISSING);
+    return Objects.hash(ADULT_INVALID, ADWORDS_FORMAT_INVALID, AVAILABILITY_INVALID, BLOCKLISTED_IMAGE_SIGNATURE, DESCRIPTION_MISSING, DUPLICATE_PRODUCTS, IMAGE_LINK_INVALID, IMAGE_LINK_LENGTH_TOO_LONG, IMAGE_LINK_MISSING, INVALID_DOMAIN, ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE, ITEMID_MISSING, LINK_FORMAT_INVALID, LINK_LENGTH_TOO_LONG, LIST_PRICE_INVALID, MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED, PARSE_LINE_ERROR, PINJOIN_CONTENT_UNSAFE, PRICE_CANNOT_BE_DETERMINED, PRICE_MISSING, PRODUCT_LINK_MISSING, PRODUCT_PRICE_INVALID, TITLE_MISSING);
   }
 
   @Override
@@ -324,8 +324,8 @@ public class CatalogsItemValidationErrors   {
     sb.append("    IMAGE_LINK_LENGTH_TOO_LONG: ").append(toIndentedString(IMAGE_LINK_LENGTH_TOO_LONG)).append("\n");
     sb.append("    IMAGE_LINK_MISSING: ").append(toIndentedString(IMAGE_LINK_MISSING)).append("\n");
     sb.append("    INVALID_DOMAIN: ").append(toIndentedString(INVALID_DOMAIN)).append("\n");
-    sb.append("    ITEMID_MISSING: ").append(toIndentedString(ITEMID_MISSING)).append("\n");
     sb.append("    ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE: ").append(toIndentedString(ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE)).append("\n");
+    sb.append("    ITEMID_MISSING: ").append(toIndentedString(ITEMID_MISSING)).append("\n");
     sb.append("    LINK_FORMAT_INVALID: ").append(toIndentedString(LINK_FORMAT_INVALID)).append("\n");
     sb.append("    LINK_LENGTH_TOO_LONG: ").append(toIndentedString(LINK_LENGTH_TOO_LONG)).append("\n");
     sb.append("    LIST_PRICE_INVALID: ").append(toIndentedString(LIST_PRICE_INVALID)).append("\n");

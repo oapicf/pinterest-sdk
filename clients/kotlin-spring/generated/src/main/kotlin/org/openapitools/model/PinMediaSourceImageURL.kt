@@ -16,14 +16,14 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
- * Image URL-based media source
- * @param sourceType 
+ * Image URL-based media source.
+ * @param sourceType The source type of the media.
  * @param url 
  * @param isStandard Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
  */
 data class PinMediaSourceImageURL(
 
-    @Schema(example = "null", required = true, description = "")
+    @Schema(example = "null", required = true, description = "The source type of the media.")
     @get:JsonProperty("source_type", required = true) val sourceType: PinMediaSourceImageURL.SourceType,
 
     @Schema(example = "null", required = true, description = "")
@@ -34,7 +34,7 @@ data class PinMediaSourceImageURL(
 ) {
 
     /**
-    * 
+    * The source type of the media.
     * Values: image_url
     */
     enum class SourceType(@get:JsonValue val value: kotlin.String) {

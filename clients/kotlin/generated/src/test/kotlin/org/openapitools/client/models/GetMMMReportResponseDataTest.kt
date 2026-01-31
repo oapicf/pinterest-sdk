@@ -31,16 +31,16 @@ class GetMMMReportResponseDataTest : ShouldSpec() {
             //modelInstance.reportStatus shouldBe ("TODO")
         }
 
-        // to test the property `url`
-        should("test url") {
-            // uncomment below to test the property
-            //modelInstance.url shouldBe ("TODO")
-        }
-
         // to test the property `propertySize`
         should("test propertySize") {
             // uncomment below to test the property
             //modelInstance.propertySize shouldBe ("TODO")
+        }
+
+        // to test the property `url`
+        should("test url") {
+            // uncomment below to test the property
+            //modelInstance.url shouldBe ("TODO")
         }
 
     }

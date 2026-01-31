@@ -8,6 +8,8 @@ import java.util.Arrays;
 
 @Canonical
 class CatalogsRetailItemsFilter {
+    /* Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog */
+    String catalogId
 
     enum CatalogTypeEnum {
     
@@ -33,6 +35,4 @@ class CatalogsRetailItemsFilter {
     CatalogTypeEnum catalogType
     
     List<String> itemIds = new ArrayList<>()
-    /* Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog */
-    String catalogId
 }

@@ -24,8 +24,8 @@ import com.squareup.moshi.JsonClass
  * 
  *
  * @param reportStatus 
- * @param url 
  * @param propertySize 
+ * @param url 
  */
 
 
@@ -34,11 +34,11 @@ data class AdsAnalyticsGetAsyncResponse (
     @Json(name = "report_status")
     val reportStatus: BulkReportingJobStatus? = null,
 
-    @Json(name = "url")
-    val url: kotlin.String? = null,
-
     @Json(name = "size")
-    val propertySize: java.math.BigDecimal? = null
+    val propertySize: java.math.BigDecimal? = null,
+
+    @Json(name = "url")
+    val url: kotlin.String? = null
 
 ) {
 

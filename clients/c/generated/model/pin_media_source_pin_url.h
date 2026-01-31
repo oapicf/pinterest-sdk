@@ -27,15 +27,15 @@ pinterest_rest_api_pin_media_source_pin_url_SOURCETYPE_e pin_media_source_pin_ur
 
 
 typedef struct pin_media_source_pin_url_t {
-    pinterest_rest_api_pin_media_source_pin_url_SOURCETYPE_e source_type; //enum
     int is_affiliate_link; //boolean
+    pinterest_rest_api_pin_media_source_pin_url_SOURCETYPE_e source_type; //enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } pin_media_source_pin_url_t;
 
 __attribute__((deprecated)) pin_media_source_pin_url_t *pin_media_source_pin_url_create(
-    pinterest_rest_api_pin_media_source_pin_url_SOURCETYPE_e source_type,
-    int is_affiliate_link
+    int is_affiliate_link,
+    pinterest_rest_api_pin_media_source_pin_url_SOURCETYPE_e source_type
 );
 
 void pin_media_source_pin_url_free(pin_media_source_pin_url_t *pin_media_source_pin_url);

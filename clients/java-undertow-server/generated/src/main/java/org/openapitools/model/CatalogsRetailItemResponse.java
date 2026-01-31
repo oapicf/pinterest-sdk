@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -31,13 +31,30 @@ import org.openapitools.model.Pin;
  */
 
 @ApiModel(description = "Object describing a retail item record")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailItemResponse   {
   
+  private ItemAttributes attributes;
   private CatalogsType catalogType;
   private String itemId;
   private List<Pin> pins;
-  private ItemAttributes attributes;
+
+  /**
+   */
+  public CatalogsRetailItemResponse attributes(ItemAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("attributes")
+  public ItemAttributes getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(ItemAttributes attributes) {
+    this.attributes = attributes;
+  }
 
   /**
    */
@@ -92,23 +109,6 @@ public class CatalogsRetailItemResponse   {
     this.pins = pins;
   }
 
-  /**
-   */
-  public CatalogsRetailItemResponse attributes(ItemAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("attributes")
-  public ItemAttributes getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(ItemAttributes attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -119,15 +119,15 @@ public class CatalogsRetailItemResponse   {
       return false;
     }
     CatalogsRetailItemResponse catalogsRetailItemResponse = (CatalogsRetailItemResponse) o;
-    return Objects.equals(catalogType, catalogsRetailItemResponse.catalogType) &&
+    return Objects.equals(attributes, catalogsRetailItemResponse.attributes) &&
+        Objects.equals(catalogType, catalogsRetailItemResponse.catalogType) &&
         Objects.equals(itemId, catalogsRetailItemResponse.itemId) &&
-        Objects.equals(pins, catalogsRetailItemResponse.pins) &&
-        Objects.equals(attributes, catalogsRetailItemResponse.attributes);
+        Objects.equals(pins, catalogsRetailItemResponse.pins);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, pins, attributes);
+    return Objects.hash(attributes, catalogType, itemId, pins);
   }
 
   @Override
@@ -135,10 +135,10 @@ public class CatalogsRetailItemResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailItemResponse {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

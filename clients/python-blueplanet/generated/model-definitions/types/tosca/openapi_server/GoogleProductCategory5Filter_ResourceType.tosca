@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server GoogleProductCategory5Filter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a GoogleProductCategory5Filter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsProductGroupMultipleStringListCriteria = openapi_server.resourceTypes.CatalogsProductGroupMultipleStringListCriteria
+}
+resourceTypes {
+
+  GoogleProductCategory5Filter {
+    title = GoogleProductCategory5Filter
+    description = GoogleProductCategory5Filter
+    derivedFrom = Root
+    properties {
+        google_product_category_5 {
+          type = CatalogsProductGroupMultipleStringListCriteria
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  GoogleProductCategory5Filter {
+    title = GoogleProductCategory5Filter
+    description = GoogleProductCategory5Filter
+    implements = openapi_server.resourceTypes.GoogleProductCategory5Filter
+
+  }
+}

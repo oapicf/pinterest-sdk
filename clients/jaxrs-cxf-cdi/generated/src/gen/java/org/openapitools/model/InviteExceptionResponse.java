@@ -22,32 +22,13 @@ import java.util.Objects;
 @ApiModel(description = "An exception object if there is an error performing the action. Will only be provided if there is an error.")
 public class InviteExceptionResponse   {
   
-  private String inviteOrRequestId;
-
   private Integer code;
+
+  private String inviteOrRequestId;
 
   private String message;
 
   private List<String> usersOrPartnerIds;
-
-  /**
-   * Unique identifier of the invite/request.
-   **/
-  public InviteExceptionResponse inviteOrRequestId(String inviteOrRequestId) {
-    this.inviteOrRequestId = inviteOrRequestId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "383791336903426391", value = "Unique identifier of the invite/request.")
-  @JsonProperty("invite_or_request_id")
- @Pattern(regexp="^\\d+$")  public String getInviteOrRequestId() {
-    return inviteOrRequestId;
-  }
-  public void setInviteOrRequestId(String inviteOrRequestId) {
-    this.inviteOrRequestId = inviteOrRequestId;
-  }
-
 
   /**
    * Error code associated with the error in performing the action on the invite/request.
@@ -65,6 +46,25 @@ public class InviteExceptionResponse   {
   }
   public void setCode(Integer code) {
     this.code = code;
+  }
+
+
+  /**
+   * Unique identifier of the invite/request.
+   **/
+  public InviteExceptionResponse inviteOrRequestId(String inviteOrRequestId) {
+    this.inviteOrRequestId = inviteOrRequestId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "383791336903426391", value = "Unique identifier of the invite/request.")
+  @JsonProperty("invite_or_request_id")
+ @Pattern(regexp="^\\d+$")  public String getInviteOrRequestId() {
+    return inviteOrRequestId;
+  }
+  public void setInviteOrRequestId(String inviteOrRequestId) {
+    this.inviteOrRequestId = inviteOrRequestId;
   }
 
 
@@ -124,15 +124,15 @@ public class InviteExceptionResponse   {
       return false;
     }
     InviteExceptionResponse inviteExceptionResponse = (InviteExceptionResponse) o;
-    return Objects.equals(this.inviteOrRequestId, inviteExceptionResponse.inviteOrRequestId) &&
-        Objects.equals(this.code, inviteExceptionResponse.code) &&
+    return Objects.equals(this.code, inviteExceptionResponse.code) &&
+        Objects.equals(this.inviteOrRequestId, inviteExceptionResponse.inviteOrRequestId) &&
         Objects.equals(this.message, inviteExceptionResponse.message) &&
         Objects.equals(this.usersOrPartnerIds, inviteExceptionResponse.usersOrPartnerIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(inviteOrRequestId, code, message, usersOrPartnerIds);
+    return Objects.hash(code, inviteOrRequestId, message, usersOrPartnerIds);
   }
 
   @Override
@@ -140,8 +140,8 @@ public class InviteExceptionResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InviteExceptionResponse {\n");
     
-    sb.append("    inviteOrRequestId: ").append(toIndentedString(inviteOrRequestId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    inviteOrRequestId: ").append(toIndentedString(inviteOrRequestId)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    usersOrPartnerIds: ").append(toIndentedString(usersOrPartnerIds)).append("\n");
     sb.append("}");

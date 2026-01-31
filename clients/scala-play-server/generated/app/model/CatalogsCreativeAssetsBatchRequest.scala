@@ -4,17 +4,17 @@ import play.api.libs.json._
 
 /**
   * Request object to update catalogs creative assets items
-  * @param language We recommend using the CatalogsLocale values.
-  * @param items Array with creative assets item operations
   * @param catalogId Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+  * @param items Array with creative assets item operations
+  * @param language We recommend using the CatalogsLocale values.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class CatalogsCreativeAssetsBatchRequest(
+  catalogId: Option[String],
   catalogType: CatalogsCreativeAssetsBatchRequest.CatalogType.Value,
   country: Country,
-  language: CatalogsCreativeAssetsBatchRequest.Language.Value,
   items: List[CatalogsCreativeAssetsBatchItem],
-  catalogId: Option[String]
+  language: CatalogsCreativeAssetsBatchRequest.Language.Value
 )
 
 object CatalogsCreativeAssetsBatchRequest {

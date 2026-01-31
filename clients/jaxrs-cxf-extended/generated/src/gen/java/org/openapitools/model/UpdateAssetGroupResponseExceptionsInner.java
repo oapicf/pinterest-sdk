@@ -12,6 +12,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class UpdateAssetGroupResponseExceptionsInner  {
   
  /**
+  * Asset group id of the exception.
+  */
+  @ApiModelProperty(example = "666791336903426391", value = "Asset group id of the exception.")
+  private String assetGroupId;
+
+ /**
   * Error code associated with the error editing asset group.
   */
   @ApiModelProperty(example = "29", value = "Error code associated with the error editing asset group.")
@@ -22,12 +28,30 @@ public class UpdateAssetGroupResponseExceptionsInner  {
   */
   @ApiModelProperty(example = "You are not permitted to access that resource.", value = "Error message associated with the error editing asset group.")
   private String message;
-
  /**
   * Asset group id of the exception.
+  * @return assetGroupId
   */
-  @ApiModelProperty(example = "666791336903426391", value = "Asset group id of the exception.")
-  private String assetGroupId;
+  @JsonProperty("asset_group_id")
+  public String getAssetGroupId() {
+    return assetGroupId;
+  }
+
+  /**
+   * Sets the <code>assetGroupId</code> property.
+   */
+ public void setAssetGroupId(String assetGroupId) {
+    this.assetGroupId = assetGroupId;
+  }
+
+  /**
+   * Sets the <code>assetGroupId</code> property.
+   */
+  public UpdateAssetGroupResponseExceptionsInner assetGroupId(String assetGroupId) {
+    this.assetGroupId = assetGroupId;
+    return this;
+  }
+
  /**
   * Error code associated with the error editing asset group.
   * @return code
@@ -76,30 +100,6 @@ public class UpdateAssetGroupResponseExceptionsInner  {
     return this;
   }
 
- /**
-  * Asset group id of the exception.
-  * @return assetGroupId
-  */
-  @JsonProperty("asset_group_id")
-  public String getAssetGroupId() {
-    return assetGroupId;
-  }
-
-  /**
-   * Sets the <code>assetGroupId</code> property.
-   */
- public void setAssetGroupId(String assetGroupId) {
-    this.assetGroupId = assetGroupId;
-  }
-
-  /**
-   * Sets the <code>assetGroupId</code> property.
-   */
-  public UpdateAssetGroupResponseExceptionsInner assetGroupId(String assetGroupId) {
-    this.assetGroupId = assetGroupId;
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -110,14 +110,14 @@ public class UpdateAssetGroupResponseExceptionsInner  {
       return false;
     }
     UpdateAssetGroupResponseExceptionsInner updateAssetGroupResponseExceptionsInner = (UpdateAssetGroupResponseExceptionsInner) o;
-    return Objects.equals(this.code, updateAssetGroupResponseExceptionsInner.code) &&
-        Objects.equals(this.message, updateAssetGroupResponseExceptionsInner.message) &&
-        Objects.equals(this.assetGroupId, updateAssetGroupResponseExceptionsInner.assetGroupId);
+    return Objects.equals(this.assetGroupId, updateAssetGroupResponseExceptionsInner.assetGroupId) &&
+        Objects.equals(this.code, updateAssetGroupResponseExceptionsInner.code) &&
+        Objects.equals(this.message, updateAssetGroupResponseExceptionsInner.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message, assetGroupId);
+    return Objects.hash(assetGroupId, code, message);
   }
 
   @Override
@@ -125,9 +125,9 @@ public class UpdateAssetGroupResponseExceptionsInner  {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateAssetGroupResponseExceptionsInner {\n");
     
+    sb.append("    assetGroupId: ").append(toIndentedString(assetGroupId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    assetGroupId: ").append(toIndentedString(assetGroupId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

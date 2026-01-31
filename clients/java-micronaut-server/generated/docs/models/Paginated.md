@@ -8,8 +8,8 @@ The class is defined in **[Paginated.java](../../src/main/java/org/openapitools/
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | `List&lt;Object&gt;` |  | 
 **bookmark** | `String` |  |  [optional property]
+**items** | `List&lt;Object&gt;` |  | 
 
 
 

@@ -51,15 +51,15 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 
   @ApiModelProperty(value = "")
 
-  private String name;
-
-  @ApiModelProperty(value = "")
-
   private String description;
 
   @ApiModelProperty(value = "")
 
   private CatalogsCreativeAssetsProductGroupFilters filters;
+
+  @ApiModelProperty(value = "")
+
+  private String name;
  /**
    * Get catalogType
    * @return catalogType
@@ -78,24 +78,6 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 
   public CatalogsCreativeAssetsProductGroupUpdateRequest catalogType(CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
-    return this;
-  }
-
- /**
-   * Get name
-   * @return name
-  **/
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public CatalogsCreativeAssetsProductGroupUpdateRequest name(String name) {
-    this.name = name;
     return this;
   }
 
@@ -135,6 +117,24 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
     return this;
   }
 
+ /**
+   * Get name
+   * @return name
+  **/
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public CatalogsCreativeAssetsProductGroupUpdateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -145,14 +145,14 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
     }
     CatalogsCreativeAssetsProductGroupUpdateRequest catalogsCreativeAssetsProductGroupUpdateRequest = (CatalogsCreativeAssetsProductGroupUpdateRequest) o;
     return Objects.equals(this.catalogType, catalogsCreativeAssetsProductGroupUpdateRequest.catalogType) &&
-        Objects.equals(this.name, catalogsCreativeAssetsProductGroupUpdateRequest.name) &&
         Objects.equals(this.description, catalogsCreativeAssetsProductGroupUpdateRequest.description) &&
-        Objects.equals(this.filters, catalogsCreativeAssetsProductGroupUpdateRequest.filters);
+        Objects.equals(this.filters, catalogsCreativeAssetsProductGroupUpdateRequest.filters) &&
+        Objects.equals(this.name, catalogsCreativeAssetsProductGroupUpdateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters);
+    return Objects.hash(catalogType, description, filters, name);
   }
 
   @Override
@@ -161,9 +161,9 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
     sb.append("class CatalogsCreativeAssetsProductGroupUpdateRequest {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

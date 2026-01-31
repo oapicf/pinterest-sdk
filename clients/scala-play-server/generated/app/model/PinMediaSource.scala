@@ -3,32 +3,59 @@ package model
 import play.api.libs.json._
 
 /**
-  * Pin media source.
+  * Pin media source that can be an image, video, or a mix of both passed in as a request.
   * @param isStandard Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
-  * @param coverImageUrl Cover image url.
   * @param coverImageContentType Content type for cover image Base64.
   * @param coverImageData Cover image Base64.
+  * @param coverImageKeyFrameTime Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.
+  * @param coverImageUrl Cover image URL.
   * @param items Array with image objects.
   * @param isAffiliateLink This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
+  * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class PinMediaSource(
-  sourceType: PinMediaSource.SourceType.Value,
-  contentType: PinMediaSource.ContentType.Value,
+  contentType: ContentType,
   data: String,
   isStandard: Option[Boolean],
+  sourceType: PinMediaSource.SourceType.Value,
   url: String,
-  coverImageUrl: Option[String],
-  coverImageContentType: Option[PinMediaSource.CoverImageContentType.Value],
+  coverImageContentType: Option[ContentType],
   coverImageData: Option[String],
+  coverImageKeyFrameTime: Option[Int],
+  coverImageUrl: Option[String],
   mediaId: String,
-  items: List[PinMediaSourceImagesURLItemsInner],
   index: Option[Int],
+  items: List[PinMediaSourceImagesURLItem],
   isAffiliateLink: Option[Boolean]
+  additionalProperties: 
 )
 
 object PinMediaSource {
-  implicit lazy val pinMediaSourceJsonFormat: Format[PinMediaSource] = Json.format[PinMediaSource]
+  implicit lazy val pinMediaSourceJsonFormat: Format[PinMediaSource] = {
+    val realJsonFormat = Json.format[PinMediaSource]
+    val declaredPropNames = Set("contentType", "data", "isStandard", "sourceType", "url", "coverImageContentType", "coverImageData", "coverImageKeyFrameTime", "coverImageUrl", "mediaId", "index", "items", "isAffiliateLink")
+    
+    Format(
+      Reads {
+        case JsObject(xs) =>
+          val declaredProps = xs.filterKeys(declaredPropNames)
+          val additionalProps = JsObject(xs -- declaredPropNames)
+          val restructuredProps = declaredProps + ("additionalProperties" -> additionalProps)
+          val newObj = JsObject(restructuredProps)
+          realJsonFormat.reads(newObj)
+        case _ =>
+          JsError("error.expected.jsobject")
+      },
+      Writes { pinMediaSource =>
+        val jsObj = realJsonFormat.writes(pinMediaSource)
+        val additionalProps = jsObj.value("additionalProperties").as[JsObject]
+        val declaredProps = jsObj - "additionalProperties"
+        val newObj = declaredProps ++ additionalProps
+        newObj
+      }
+    )
+  }
 
   // noinspection TypeAnnotation
   object SourceType extends Enumeration {
@@ -36,24 +63,6 @@ object PinMediaSource {
 
     type SourceType = Value
     implicit lazy val SourceTypeJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])
-  }
-
-  // noinspection TypeAnnotation
-  object ContentType extends Enumeration {
-    val ImageJpeg = Value("image/jpeg")
-    val ImagePng = Value("image/png")
-
-    type ContentType = Value
-    implicit lazy val ContentTypeJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])
-  }
-
-  // noinspection TypeAnnotation
-  object CoverImageContentType extends Enumeration {
-    val ImageJpeg = Value("image/jpeg")
-    val ImagePng = Value("image/png")
-
-    type CoverImageContentType = Value
-    implicit lazy val CoverImageContentTypeJsonFormat: Format[Value] = Format(Reads.enumNameReads(this), Writes.enumNameWrites[this.type])
   }
 }
 

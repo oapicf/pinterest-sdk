@@ -22,13 +22,13 @@ lead_forms_list_200_response_t* instantiate_lead_forms_list_200_response(int inc
   lead_forms_list_200_response_t* lead_forms_list_200_response = NULL;
   if (include_optional) {
     lead_forms_list_200_response = lead_forms_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     lead_forms_list_200_response = lead_forms_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

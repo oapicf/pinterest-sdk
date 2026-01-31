@@ -1,0 +1,69 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CustomerListUploadResponse",
+  "fields": [
+    {
+      "name": "ad_account_id",
+      "type": "string",
+      "doc": "Advertiser ID."
+    },
+    {
+      "name": "creation_time",
+      "type": "int",
+      "doc": "Customer List Upload creation_time. Epoch (seconds)."
+    },
+    {
+      "name": "customer_list_id",
+      "type": "string",
+      "doc": "ID of the customer list associated with this upload."
+    },
+    {
+      "name": "error_counts",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.ErrorDetail"
+      }],
+      "doc": "Error counts by error code",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "doc": "Customer List Upload ID."
+    },
+    {
+      "name": "operation",
+      "type": "model.UserListOperationType",
+      "doc": ""
+    },
+    {
+      "name": "record_counts",
+      "type": ["null", "model.RecordCounts"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "state",
+      "type": {
+        "type": "enum",
+        "name": "CustomerListUploadResponse_state",
+        "symbols": [
+          "NOT_STARTED",
+          "RUNNING",
+          "PAUSED",
+          "SUCCEEDED",
+          "FAILED"
+        ]
+      },
+      "doc": "Workload processing state"
+    },
+    {
+      "name": "updated_time",
+      "type": "int",
+      "doc": "Customer List Upload updated_time. Epoch (seconds)."
+    }
+  ]
+
+}

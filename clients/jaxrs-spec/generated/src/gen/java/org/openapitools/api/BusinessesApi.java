@@ -42,6 +42,7 @@ import org.openapitools.model.PermissionsWithOwner;
 import org.openapitools.model.RespondToInvitesResponseArray;
 import org.openapitools.model.SharedAudience;
 import org.openapitools.model.SharedAudienceResponse;
+import org.openapitools.model.SystemUserUpdateRequest;
 import org.openapitools.model.UpdateAssetGroupBody;
 import org.openapitools.model.UpdateAssetGroupResponse;
 import org.openapitools.model.UpdateInvitesResultsResponseArray;
@@ -68,7 +69,7 @@ import javax.validation.Valid;
 */
 @Path("/businesses")
 @Api(description = "the businesses API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BusinessesApi {
 
     @POST
@@ -170,7 +171,7 @@ public class BusinessesApi {
         @ApiResponse(code = 200, message = "Sucess", response = BusinessAssetMembersGet200Response.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
     })
-    public Response businessAssetMembersGet(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@PathParam("asset_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of a business asset.") String assetId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.")  Integer pageSize,@QueryParam("start_index") @Min(0) @DefaultValue("0")  @ApiParam("An index to start fetching the results from. Only the results starting from this index will be returned.")  Integer startIndex) {
+    public Response businessAssetMembersGet(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@PathParam("asset_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of a business asset.") String assetId,@QueryParam("fetch_system_users") @DefaultValue("false")  @ApiParam("Fetches system users if True. Fetches regular user employees if False.")  Boolean fetchSystemUsers,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.")  Integer pageSize,@QueryParam("start_index") @Min(0) @DefaultValue("0")  @ApiParam("An index to start fetching the results from. Only the results starting from this index will be returned.")  Integer startIndex) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -278,7 +279,7 @@ public class BusinessesApi {
         @ApiResponse(code = 200, message = "Success", response = DeleteInvitesResultsResponseArray.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
     })
-    public Response cancelInvitesOrRequests(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Business id") String businessId,@Valid @NotNull CancelInvitesBody cancelInvitesBody) {
+    public Response cancelInvitesOrRequests(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1) @ApiParam("Unique identifier of the requesting business.") String businessId,@Valid @NotNull CancelInvitesBody cancelInvitesBody) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -311,7 +312,7 @@ public class BusinessesApi {
         @ApiResponse(code = 200, message = "Success", response = CreateInvitesResultsResponseArray.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
     })
-    public Response createMembershipOrPartnershipInvites(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Business id") String businessId,@Valid @NotNull CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody) {
+    public Response createMembershipOrPartnershipInvites(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1) @ApiParam("Unique identifier of the requesting business.") String businessId,@Valid @NotNull CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -391,7 +392,7 @@ public class BusinessesApi {
         @ApiResponse(code = 200, message = "Success", response = GetBusinessMembers200Response.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
     })
-    public Response getBusinessMembers(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@QueryParam("assets_summary") @DefaultValue("false")  @ApiParam("Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are")  Boolean assetsSummary,@QueryParam("business_roles")  @ApiParam("A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.")  List<MemberBusinessRole> businessRoles,@QueryParam("member_ids") @Size(max=500)  @ApiParam("A list of business members ids separated by comma.")  String memberIds,@QueryParam("start_index") @Min(0) @DefaultValue("0")  @ApiParam("An index to start fetching the results from. Only the results starting from this index will be returned.")  Integer startIndex,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.")  Integer pageSize) {
+    public Response getBusinessMembers(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@QueryParam("fetch_system_users") @DefaultValue("false")  @ApiParam("Fetches system users if True. Fetches regular user employees if False.")  Boolean fetchSystemUsers,@QueryParam("assets_summary") @DefaultValue("false")  @ApiParam("Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are")  Boolean assetsSummary,@QueryParam("business_roles")  @ApiParam("A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.")  List<MemberBusinessRole> businessRoles,@QueryParam("member_ids") @Size(max=500)  @ApiParam("A list of business members ids separated by comma.")  String memberIds,@QueryParam("start_index") @Min(0) @DefaultValue("0")  @ApiParam("An index to start fetching the results from. Only the results starting from this index will be returned.")  Integer startIndex,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.")  Integer pageSize) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -421,7 +422,7 @@ public class BusinessesApi {
         @ApiResponse(code = 200, message = "Success", response = GetInvites200Response.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
     })
-    public Response getInvites(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@QueryParam("is_member") @DefaultValue("true")  @ApiParam("A boolean field to indicate whether the invite is to create a partnership or a membership.")  Boolean isMember,@QueryParam("invite_status") @Size(min=1)  @ApiParam("A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.")  List<String> inviteStatus,@QueryParam("invite_type")  @ApiParam("Invite type to filter invites by. Only invites of the specified type will be returned.")  InviteType inviteType,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.")  Integer pageSize) {
+    public Response getInvites(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1) @ApiParam("Unique identifier of the requesting business.") String businessId,@QueryParam("is_member") @DefaultValue("true")  @ApiParam("A boolean field to indicate whether the invite is to create a partnership or a membership.")  Boolean isMember,@QueryParam("invite_status") @Size(min=1)  @ApiParam("A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.")  List<String> inviteStatus,@QueryParam("invite_type")  @ApiParam("Invite type to filter invites by. Only invites of the specified type will be returned.")  InviteType inviteType,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.")  Integer pageSize) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -459,6 +460,24 @@ public class BusinessesApi {
     }
 
     @PATCH
+    @Path("/{business_id}/system_users/{system_user_id}")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Update a system user information.", notes = "Update a system user information such as name.", response = Void.class, authorizations = {
+        @Authorization(value = "pinterest_oauth2", scopes = {
+            @AuthorizationScope(scope = "biz_access:read", description = "See business access data"),
+            @AuthorizationScope(scope = "biz_access:write", description = "Create, update, or delete business access data") })
+         }, tags={ "business_access_relationships" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "System user updated successfully.", response = Void.class),
+        @ApiResponse(code = 400, message = "Invalid parameters.", response = Error.class),
+        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
+    })
+    public Response systemUserUpdate(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@PathParam("system_user_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of a system user.") String systemUserId,@Valid @NotNull SystemUserUpdateRequest systemUserUpdateRequest) {
+        return Response.ok().entity("magic!").build();
+    }
+
+    @PATCH
     @Path("/{business_id}/members")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
@@ -478,7 +497,7 @@ public class BusinessesApi {
     @Path("/{business_id}/audiences/ad_accounts/shared")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Update audience sharing from a business to ad accounts", notes = "From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.", response = SharedAudienceResponse.class, authorizations = {
+    @ApiOperation(value = "Update audience sharing from a business to ad accounts", notes = "From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.", response = SharedAudienceResponse.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "biz_access:write", description = "Create, update, or delete business access data") })
          }, tags={ "audience_sharing" })
@@ -495,7 +514,7 @@ public class BusinessesApi {
     @Path("/{business_id}/audiences/businesses/shared")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Update audience sharing between businesses", notes = "From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.", response = BusinessSharedAudienceResponse.class, authorizations = {
+    @ApiOperation(value = "Update audience sharing between businesses", notes = "From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.", response = BusinessSharedAudienceResponse.class, authorizations = {
         @Authorization(value = "pinterest_oauth2", scopes = {
             @AuthorizationScope(scope = "biz_access:write", description = "Create, update, or delete business access data") })
          }, tags={ "audience_sharing" })

@@ -5,21 +5,21 @@
   "name": "TopPinsAnalyticsResponsePinsInner",
   "fields": [
     {
-      "name": "metrics",
-      "type": ["null", {
-        "type": "map",
-        "items": "double"
-      }],
-      "doc": "The metric name and daily value for each requested metric",
-      "default": null
-    },
-    {
       "name": "data_status",
       "type": ["null", {
         "type": "map",
         "items": "model.DataStatus"
       }],
       "doc": "",
+      "default": null
+    },
+    {
+      "name": "metrics",
+      "type": ["null", {
+        "type": "map",
+        "items": "double"
+      }],
+      "doc": "The metric name and daily value for each requested metric",
       "default": null
     },
     {

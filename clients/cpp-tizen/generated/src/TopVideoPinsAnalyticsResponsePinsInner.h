@@ -47,13 +47,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get The metric name and daily value for each requested metric
-	 */
-	std::map<std::string, std::string> getMetrics();
-
-	/*! \brief Set The metric name and daily value for each requested metric
-	 */
-	void setMetrics(std::map <std::string, std::string> metrics);
 	/*! \brief Get 
 	 */
 	std::map<std::string, std::string> getDataStatus();
@@ -61,6 +54,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setDataStatus(std::map <std::string, std::string> data_status);
+	/*! \brief Get The metric name and daily value for each requested metric
+	 */
+	std::map<std::string, std::string> getMetrics();
+
+	/*! \brief Set The metric name and daily value for each requested metric
+	 */
+	void setMetrics(std::map <std::string, std::string> metrics);
 	/*! \brief Get The pin id
 	 */
 	std::string getPinId();
@@ -70,8 +70,8 @@ public:
 	void setPinId(std::string  pin_id);
 
 private:
-	std::map <std::string, std::string>metrics;
 	std::map <std::string, std::string>data_status;
+	std::map <std::string, std::string>metrics;
 	std::string pin_id;
 	void __init();
 	void __cleanup();

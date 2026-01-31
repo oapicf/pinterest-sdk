@@ -35,27 +35,19 @@ public class AudienceInsightsResponseTest {
     }
 
     /**
-     * Test the property 'demographics'
-     */
-    @Test
-    public void demographicsTest() {
-        // TODO: test demographics
-    }
-
-    /**
-     * Test the property 'type'
-     */
-    @Test
-    public void typeTest() {
-        // TODO: test type
-    }
-
-    /**
      * Test the property 'date'
      */
     @Test
     public void dateTest() {
         // TODO: test date
+    }
+
+    /**
+     * Test the property 'demographics'
+     */
+    @Test
+    public void demographicsTest() {
+        // TODO: test demographics
     }
 
     /**
@@ -72,6 +64,14 @@ public class AudienceInsightsResponseTest {
     @Test
     public void sizeIsUpperBoundTest() {
         // TODO: test sizeIsUpperBound
+    }
+
+    /**
+     * Test the property 'type'
+     */
+    @Test
+    public void typeTest() {
+        // TODO: test type
     }
 
 }

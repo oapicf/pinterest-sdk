@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`values` | [Array&lt;Gender&gt;](Gender.md)
 `negated` | boolean
+`values` | [Array&lt;Gender&gt;](Gender.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { CatalogsProductGroupMultipleGenderCriteria } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "values": null,
   "negated": null,
+  "values": null,
 } satisfies CatalogsProductGroupMultipleGenderCriteria
 
 console.log(example)

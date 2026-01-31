@@ -6,11 +6,11 @@
 
 Name | Type
 ------------ | -------------
+`id` | string
+`index` | number
 `key` | string
 `name` | string
 `ratio` | number
-`index` | number
-`id` | string
 `subcategories` | [Array&lt;AudienceSubcategory&gt;](AudienceSubcategory.md)
 
 ## Example
@@ -20,11 +20,11 @@ import type { AudienceCategory } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "id": 1234567,
+  "index": 1.2,
   "key": 1234567,
   "name": travel,
   "ratio": 0.551,
-  "index": 1.2,
-  "id": 1234567,
   "subcategories": null,
 } satisfies AudienceCategory
 

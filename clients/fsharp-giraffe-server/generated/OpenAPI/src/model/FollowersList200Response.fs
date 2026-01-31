@@ -11,7 +11,7 @@ module FollowersList200Response =
 
 
   type followers_list_200_response = {
-    Items : UserSummary[];
     Bookmark : string option;
+    Items : UserSummary[];
   }
   //#endregion

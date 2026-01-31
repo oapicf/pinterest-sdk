@@ -18,6 +18,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsCreateRetailItem  {
   
+  @ApiModelProperty(required = true, value = "")
+  @Valid
+  private ItemAttributesRequest attributes;
+
  /**
   * The catalog item id in the merchant namespace
   */
@@ -55,10 +59,31 @@ public enum OperationEnum {
 
   @ApiModelProperty(required = true, value = "")
   private OperationEnum operation;
+ /**
+  * Get attributes
+  * @return attributes
+  */
+  @JsonProperty("attributes")
+  @NotNull
+  public ItemAttributesRequest getAttributes() {
+    return attributes;
+  }
 
-  @ApiModelProperty(required = true, value = "")
-  @Valid
-  private ItemAttributesRequest attributes;
+  /**
+   * Sets the <code>attributes</code> property.
+   */
+ public void setAttributes(ItemAttributesRequest attributes) {
+    this.attributes = attributes;
+  }
+
+  /**
+   * Sets the <code>attributes</code> property.
+   */
+  public CatalogsCreateRetailItem attributes(ItemAttributesRequest attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
  /**
   * The catalog item id in the merchant namespace
   * @return itemId
@@ -109,31 +134,6 @@ public enum OperationEnum {
     return this;
   }
 
- /**
-  * Get attributes
-  * @return attributes
-  */
-  @JsonProperty("attributes")
-  @NotNull
-  public ItemAttributesRequest getAttributes() {
-    return attributes;
-  }
-
-  /**
-   * Sets the <code>attributes</code> property.
-   */
- public void setAttributes(ItemAttributesRequest attributes) {
-    this.attributes = attributes;
-  }
-
-  /**
-   * Sets the <code>attributes</code> property.
-   */
-  public CatalogsCreateRetailItem attributes(ItemAttributesRequest attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -144,14 +144,14 @@ public enum OperationEnum {
       return false;
     }
     CatalogsCreateRetailItem catalogsCreateRetailItem = (CatalogsCreateRetailItem) o;
-    return Objects.equals(this.itemId, catalogsCreateRetailItem.itemId) &&
-        Objects.equals(this.operation, catalogsCreateRetailItem.operation) &&
-        Objects.equals(this.attributes, catalogsCreateRetailItem.attributes);
+    return Objects.equals(this.attributes, catalogsCreateRetailItem.attributes) &&
+        Objects.equals(this.itemId, catalogsCreateRetailItem.itemId) &&
+        Objects.equals(this.operation, catalogsCreateRetailItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, operation, attributes);
+    return Objects.hash(attributes, itemId, operation);
   }
 
   @Override
@@ -159,9 +159,9 @@ public enum OperationEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreateRetailItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

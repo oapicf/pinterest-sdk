@@ -7,35 +7,35 @@
 #' @title SSIOAccountPMPName
 #' @description SSIOAccountPMPName Class
 #' @format An \code{R6Class} generator object
-#' @field name Display name character [optional]
 #' @field id Salesforce id for PMP character [optional]
+#' @field name Display name character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 SSIOAccountPMPName <- R6::R6Class(
   "SSIOAccountPMPName",
   public = list(
-    `name` = NULL,
     `id` = NULL,
+    `name` = NULL,
 
     #' @description
     #' Initialize a new SSIOAccountPMPName class.
     #'
-    #' @param name Display name
     #' @param id Salesforce id for PMP
+    #' @param name Display name
     #' @param ... Other optional arguments.
-    initialize = function(`name` = NULL, `id` = NULL, ...) {
-      if (!is.null(`name`)) {
-        if (!(is.character(`name`) && length(`name`) == 1)) {
-          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
-        }
-        self$`name` <- `name`
-      }
+    initialize = function(`id` = NULL, `name` = NULL, ...) {
       if (!is.null(`id`)) {
         if (!(is.character(`id`) && length(`id`) == 1)) {
           stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
         }
         self$`id` <- `id`
+      }
+      if (!is.null(`name`)) {
+        if (!(is.character(`name`) && length(`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
+        }
+        self$`name` <- `name`
       }
     },
 
@@ -70,13 +70,13 @@ SSIOAccountPMPName <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       SSIOAccountPMPNameObject <- list()
-      if (!is.null(self$`name`)) {
-        SSIOAccountPMPNameObject[["name"]] <-
-          self$`name`
-      }
       if (!is.null(self$`id`)) {
         SSIOAccountPMPNameObject[["id"]] <-
           self$`id`
+      }
+      if (!is.null(self$`name`)) {
+        SSIOAccountPMPNameObject[["name"]] <-
+          self$`name`
       }
       return(SSIOAccountPMPNameObject)
     },
@@ -88,11 +88,11 @@ SSIOAccountPMPName <- R6::R6Class(
     #' @return the instance of SSIOAccountPMPName
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`name`)) {
-        self$`name` <- this_object$`name`
-      }
       if (!is.null(this_object$`id`)) {
         self$`id` <- this_object$`id`
+      }
+      if (!is.null(this_object$`name`)) {
+        self$`name` <- this_object$`name`
       }
       self
     },
@@ -115,8 +115,8 @@ SSIOAccountPMPName <- R6::R6Class(
     #' @return the instance of SSIOAccountPMPName
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`name` <- this_object$`name`
       self$`id` <- this_object$`id`
+      self$`name` <- this_object$`name`
       self
     },
 

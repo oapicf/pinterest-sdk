@@ -12,15 +12,15 @@ import org.joda.time.DateTime
 import CatalogsRetailProductGroupCreateRequest._
 
 case class CatalogsRetailProductGroupCreateRequest (
-  /* Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. */
+  /* Catalog id pertaining to the retail product group. */
+  catalogId: String,
+/* Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. */
   catalogType: CatalogType,
-name: String,
+country: Option[Country],
 description: Option[String],
 filters: CatalogsProductGroupFiltersRequest,
-/* Catalog id pertaining to the retail product group. */
-  catalogId: String,
-country: Country,
-locale: CatalogsLocale)
+locale: Option[CatalogsLocale],
+name: String)
 
 object CatalogsRetailProductGroupCreateRequest {
   import DateTimeCodecs._

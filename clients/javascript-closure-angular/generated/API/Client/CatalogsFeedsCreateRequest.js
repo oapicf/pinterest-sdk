@@ -7,23 +7,28 @@ goog.provide('API.Client.CatalogsFeedsCreateRequest');
 API.Client.CatalogsFeedsCreateRequest = function() {}
 
 /**
+ * @type {!API.Client.CatalogsFeedCredentials}
+ * @export
+ */
+API.Client.CatalogsFeedsCreateRequest.prototype.credentials;
+
+/**
+ * @type {!API.Client.ProductAvailabilityType}
+ * @export
+ */
+API.Client.CatalogsFeedsCreateRequest.prototype.defaultAvailability;
+
+/**
+ * @type {!API.Client.Country}
+ * @export
+ */
+API.Client.CatalogsFeedsCreateRequest.prototype.defaultCountry;
+
+/**
  * @type {!API.Client.NullableCurrency}
  * @export
  */
 API.Client.CatalogsFeedsCreateRequest.prototype.defaultCurrency;
-
-/**
- * A human-friendly name associated to a given feed.
- * @type {!string}
- * @export
- */
-API.Client.CatalogsFeedsCreateRequest.prototype.name;
-
-/**
- * @type {!API.Client.CatalogsFormat}
- * @export
- */
-API.Client.CatalogsFeedsCreateRequest.prototype.format;
 
 /**
  * @type {!API.Client.CatalogsFeedsCreateRequest_default_locale}
@@ -32,10 +37,10 @@ API.Client.CatalogsFeedsCreateRequest.prototype.format;
 API.Client.CatalogsFeedsCreateRequest.prototype.defaultLocale;
 
 /**
- * @type {!API.Client.CatalogsFeedCredentials}
+ * @type {!API.Client.CatalogsFormat}
  * @export
  */
-API.Client.CatalogsFeedsCreateRequest.prototype.credentials;
+API.Client.CatalogsFeedsCreateRequest.prototype.format;
 
 /**
  * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
@@ -45,22 +50,17 @@ API.Client.CatalogsFeedsCreateRequest.prototype.credentials;
 API.Client.CatalogsFeedsCreateRequest.prototype.location;
 
 /**
+ * A human-friendly name associated to a given feed.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsFeedsCreateRequest.prototype.name;
+
+/**
  * @type {!API.Client.CatalogsFeedProcessingSchedule}
  * @export
  */
 API.Client.CatalogsFeedsCreateRequest.prototype.preferredProcessingSchedule;
-
-/**
- * @type {!API.Client.Country}
- * @export
- */
-API.Client.CatalogsFeedsCreateRequest.prototype.defaultCountry;
-
-/**
- * @type {!API.Client.ProductAvailabilityType}
- * @export
- */
-API.Client.CatalogsFeedsCreateRequest.prototype.defaultAvailability;
 
 /**
  * @type {!API.Client.CatalogsStatus}

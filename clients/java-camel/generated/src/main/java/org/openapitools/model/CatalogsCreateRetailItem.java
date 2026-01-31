@@ -21,8 +21,10 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsCreateRetailItem", description = "An item to be created")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreateRetailItem {
+
+  private ItemAttributesRequest attributes;
 
   private String itemId;
 
@@ -61,8 +63,6 @@ public class CatalogsCreateRetailItem {
 
   private OperationEnum operation;
 
-  private ItemAttributesRequest attributes;
-
   public CatalogsCreateRetailItem() {
     super();
   }
@@ -70,9 +70,29 @@ public class CatalogsCreateRetailItem {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsCreateRetailItem(String itemId, OperationEnum operation, ItemAttributesRequest attributes) {
+  public CatalogsCreateRetailItem(ItemAttributesRequest attributes, String itemId, OperationEnum operation) {
+    this.attributes = attributes;
     this.itemId = itemId;
     this.operation = operation;
+  }
+
+  public CatalogsCreateRetailItem attributes(ItemAttributesRequest attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  /**
+   * Get attributes
+   * @return attributes
+   */
+  @NotNull @Valid 
+  @Schema(name = "attributes", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("attributes")
+  public ItemAttributesRequest getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 
@@ -116,26 +136,6 @@ public class CatalogsCreateRetailItem {
     this.operation = operation;
   }
 
-  public CatalogsCreateRetailItem attributes(ItemAttributesRequest attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  /**
-   * Get attributes
-   * @return attributes
-   */
-  @NotNull @Valid 
-  @Schema(name = "attributes", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("attributes")
-  public ItemAttributesRequest getAttributes() {
-    return attributes;
-  }
-
-  public void setAttributes(ItemAttributesRequest attributes) {
-    this.attributes = attributes;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -145,23 +145,23 @@ public class CatalogsCreateRetailItem {
       return false;
     }
     CatalogsCreateRetailItem catalogsCreateRetailItem = (CatalogsCreateRetailItem) o;
-    return Objects.equals(this.itemId, catalogsCreateRetailItem.itemId) &&
-        Objects.equals(this.operation, catalogsCreateRetailItem.operation) &&
-        Objects.equals(this.attributes, catalogsCreateRetailItem.attributes);
+    return Objects.equals(this.attributes, catalogsCreateRetailItem.attributes) &&
+        Objects.equals(this.itemId, catalogsCreateRetailItem.itemId) &&
+        Objects.equals(this.operation, catalogsCreateRetailItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, operation, attributes);
+    return Objects.hash(attributes, itemId, operation);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreateRetailItem {\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

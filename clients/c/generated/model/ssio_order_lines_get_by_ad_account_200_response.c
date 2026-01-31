@@ -6,27 +6,27 @@
 
 
 static ssio_order_lines_get_by_ad_account_200_response_t *ssio_order_lines_get_by_ad_account_200_response_create_internal(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     ssio_order_lines_get_by_ad_account_200_response_t *ssio_order_lines_get_by_ad_account_200_response_local_var = malloc(sizeof(ssio_order_lines_get_by_ad_account_200_response_t));
     if (!ssio_order_lines_get_by_ad_account_200_response_local_var) {
         return NULL;
     }
-    ssio_order_lines_get_by_ad_account_200_response_local_var->items = items;
     ssio_order_lines_get_by_ad_account_200_response_local_var->bookmark = bookmark;
+    ssio_order_lines_get_by_ad_account_200_response_local_var->items = items;
 
     ssio_order_lines_get_by_ad_account_200_response_local_var->_library_owned = 1;
     return ssio_order_lines_get_by_ad_account_200_response_local_var;
 }
 
 __attribute__((deprecated)) ssio_order_lines_get_by_ad_account_200_response_t *ssio_order_lines_get_by_ad_account_200_response_create(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     return ssio_order_lines_get_by_ad_account_200_response_create_internal (
-        items,
-        bookmark
+        bookmark,
+        items
         );
 }
 
@@ -39,6 +39,10 @@ void ssio_order_lines_get_by_ad_account_200_response_free(ssio_order_lines_get_b
         return ;
     }
     listEntry_t *listEntry;
+    if (ssio_order_lines_get_by_ad_account_200_response->bookmark) {
+        free(ssio_order_lines_get_by_ad_account_200_response->bookmark);
+        ssio_order_lines_get_by_ad_account_200_response->bookmark = NULL;
+    }
     if (ssio_order_lines_get_by_ad_account_200_response->items) {
         list_ForEach(listEntry, ssio_order_lines_get_by_ad_account_200_response->items) {
             ssio_order_line_free(listEntry->data);
@@ -46,15 +50,19 @@ void ssio_order_lines_get_by_ad_account_200_response_free(ssio_order_lines_get_b
         list_freeList(ssio_order_lines_get_by_ad_account_200_response->items);
         ssio_order_lines_get_by_ad_account_200_response->items = NULL;
     }
-    if (ssio_order_lines_get_by_ad_account_200_response->bookmark) {
-        free(ssio_order_lines_get_by_ad_account_200_response->bookmark);
-        ssio_order_lines_get_by_ad_account_200_response->bookmark = NULL;
-    }
     free(ssio_order_lines_get_by_ad_account_200_response);
 }
 
 cJSON *ssio_order_lines_get_by_ad_account_200_response_convertToJSON(ssio_order_lines_get_by_ad_account_200_response_t *ssio_order_lines_get_by_ad_account_200_response) {
     cJSON *item = cJSON_CreateObject();
+
+    // ssio_order_lines_get_by_ad_account_200_response->bookmark
+    if(ssio_order_lines_get_by_ad_account_200_response->bookmark) {
+    if(cJSON_AddStringToObject(item, "bookmark", ssio_order_lines_get_by_ad_account_200_response->bookmark) == NULL) {
+    goto fail; //String
+    }
+    }
+
 
     // ssio_order_lines_get_by_ad_account_200_response->items
     if (!ssio_order_lines_get_by_ad_account_200_response->items) {
@@ -76,14 +84,6 @@ cJSON *ssio_order_lines_get_by_ad_account_200_response_convertToJSON(ssio_order_
     }
     }
 
-
-    // ssio_order_lines_get_by_ad_account_200_response->bookmark
-    if(ssio_order_lines_get_by_ad_account_200_response->bookmark) {
-    if(cJSON_AddStringToObject(item, "bookmark", ssio_order_lines_get_by_ad_account_200_response->bookmark) == NULL) {
-    goto fail; //String
-    }
-    }
-
     return item;
 fail:
     if (item) {
@@ -98,6 +98,18 @@ ssio_order_lines_get_by_ad_account_200_response_t *ssio_order_lines_get_by_ad_ac
 
     // define the local list for ssio_order_lines_get_by_ad_account_200_response->items
     list_t *itemsList = NULL;
+
+    // ssio_order_lines_get_by_ad_account_200_response->bookmark
+    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(ssio_order_lines_get_by_ad_account_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
+    if (bookmark) { 
+    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
+    {
+    goto end; //String
+    }
+    }
 
     // ssio_order_lines_get_by_ad_account_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(ssio_order_lines_get_by_ad_account_200_responseJSON, "items");
@@ -126,22 +138,10 @@ ssio_order_lines_get_by_ad_account_200_response_t *ssio_order_lines_get_by_ad_ac
         list_addElement(itemsList, itemsItem);
     }
 
-    // ssio_order_lines_get_by_ad_account_200_response->bookmark
-    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(ssio_order_lines_get_by_ad_account_200_responseJSON, "bookmark");
-    if (cJSON_IsNull(bookmark)) {
-        bookmark = NULL;
-    }
-    if (bookmark) { 
-    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
-    {
-    goto end; //String
-    }
-    }
-
 
     ssio_order_lines_get_by_ad_account_200_response_local_var = ssio_order_lines_get_by_ad_account_200_response_create_internal (
-        itemsList,
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
+        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        itemsList
         );
 
     return ssio_order_lines_get_by_ad_account_200_response_local_var;

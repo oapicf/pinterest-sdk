@@ -12,6 +12,7 @@ import org.openapitools.vertxweb.server.model.CatalogsCreativeAssetsAttributes;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsCreateCreativeAssetsItem   {
   
+  private CatalogsCreativeAssetsAttributes attributes;
   private String creativeAssetsId;
 
 
@@ -32,15 +33,23 @@ public class CatalogsCreateCreativeAssetsItem   {
   }
 
   private OperationEnum operation;
-  private CatalogsCreativeAssetsAttributes attributes;
 
   public CatalogsCreateCreativeAssetsItem () {
 
   }
 
-  public CatalogsCreateCreativeAssetsItem (String creativeAssetsId, OperationEnum operation, CatalogsCreativeAssetsAttributes attributes) {
+  public CatalogsCreateCreativeAssetsItem (CatalogsCreativeAssetsAttributes attributes, String creativeAssetsId, OperationEnum operation) {
+    this.attributes = attributes;
     this.creativeAssetsId = creativeAssetsId;
     this.operation = operation;
+  }
+
+    
+  @JsonProperty("attributes")
+  public CatalogsCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
     this.attributes = attributes;
   }
 
@@ -62,15 +71,6 @@ public class CatalogsCreateCreativeAssetsItem   {
     this.operation = operation;
   }
 
-    
-  @JsonProperty("attributes")
-  public CatalogsCreativeAssetsAttributes getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -81,14 +81,14 @@ public class CatalogsCreateCreativeAssetsItem   {
       return false;
     }
     CatalogsCreateCreativeAssetsItem catalogsCreateCreativeAssetsItem = (CatalogsCreateCreativeAssetsItem) o;
-    return Objects.equals(creativeAssetsId, catalogsCreateCreativeAssetsItem.creativeAssetsId) &&
-        Objects.equals(operation, catalogsCreateCreativeAssetsItem.operation) &&
-        Objects.equals(attributes, catalogsCreateCreativeAssetsItem.attributes);
+    return Objects.equals(attributes, catalogsCreateCreativeAssetsItem.attributes) &&
+        Objects.equals(creativeAssetsId, catalogsCreateCreativeAssetsItem.creativeAssetsId) &&
+        Objects.equals(operation, catalogsCreateCreativeAssetsItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(creativeAssetsId, operation, attributes);
+    return Objects.hash(attributes, creativeAssetsId, operation);
   }
 
   @Override
@@ -96,9 +96,9 @@ public class CatalogsCreateCreativeAssetsItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreateCreativeAssetsItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,10 +20,10 @@ var _ MappedNullable = &UserSummary{}
 
 // UserSummary struct for UserSummary
 type UserSummary struct {
-	// Username
-	Username *string `json:"username,omitempty"`
 	// Always \"user\"
 	Type *string `json:"type,omitempty"`
+	// Username
+	Username *string `json:"username,omitempty"`
 }
 
 // NewUserSummary instantiates a new UserSummary object
@@ -41,38 +41,6 @@ func NewUserSummary() *UserSummary {
 func NewUserSummaryWithDefaults() *UserSummary {
 	this := UserSummary{}
 	return &this
-}
-
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *UserSummary) GetUsername() string {
-	if o == nil || IsNil(o.Username) {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UserSummary) GetUsernameOk() (*string, bool) {
-	if o == nil || IsNil(o.Username) {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *UserSummary) HasUsername() bool {
-	if o != nil && !IsNil(o.Username) {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *UserSummary) SetUsername(v string) {
-	o.Username = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -107,6 +75,38 @@ func (o *UserSummary) SetType(v string) {
 	o.Type = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *UserSummary) GetUsername() string {
+	if o == nil || IsNil(o.Username) {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserSummary) GetUsernameOk() (*string, bool) {
+	if o == nil || IsNil(o.Username) {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *UserSummary) HasUsername() bool {
+	if o != nil && !IsNil(o.Username) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *UserSummary) SetUsername(v string) {
+	o.Username = &v
+}
+
 func (o UserSummary) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -117,11 +117,11 @@ func (o UserSummary) MarshalJSON() ([]byte, error) {
 
 func (o UserSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Username) {
-		toSerialize["username"] = o.Username
-	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
 	}
 	return toSerialize, nil
 }

@@ -105,7 +105,7 @@ Note: If you're interested in joining the beta, please reach out to your Pintere
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **externalBusinessId** | **string** | External business ID for the integration. | [default to null]
- **integrationRequestPatch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md) | Parameters to get create/update the Integration Metadata | [optional]
+ **integrationRequestPatch** | [**IntegrationRequestPatch**](IntegrationRequestPatch.md) | Parameters to get create/update the Integration Metadata |
 
 ### Return type
 
@@ -141,7 +141,7 @@ Note: If you're interested in joining the beta, please reach out to your Pintere
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integrationRequest** | [**IntegrationRequest**](IntegrationRequest.md) | Parameters to get create/update the Integration Metadata | [optional]
+ **integrationRequest** | [**IntegrationRequest**](IntegrationRequest.md) | Parameters to get create/update the Integration Metadata |
 
 ### Return type
 

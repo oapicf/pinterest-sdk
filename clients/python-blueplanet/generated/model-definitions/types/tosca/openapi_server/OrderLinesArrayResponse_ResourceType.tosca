@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server OrderLinesArrayResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a OrderLinesArrayResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  OrderLines = openapi_server.resourceTypes.OrderLines
+}
+resourceTypes {
+
+  OrderLinesArrayResponse {
+    title = OrderLinesArrayResponse
+    description = OrderLinesArrayResponse
+    derivedFrom = Root
+    properties {
+        items {
+          type = array
+          items.type = OrderLines
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  OrderLinesArrayResponse {
+    title = OrderLinesArrayResponse
+    description = OrderLinesArrayResponse
+    implements = openapi_server.resourceTypes.OrderLinesArrayResponse
+
+  }
+}

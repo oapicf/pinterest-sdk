@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Key performance metrics highlights for this product category",
+  "name": "ProductCategoriesMetricsHighlights",
+  "fields": [
+    {
+      "name": "engagement",
+      "type": ["null", "model.InnerProductCategoriesMetricsHighlights"],
+      "doc": "Engagement metric value",
+      "default": null
+    },
+    {
+      "name": "outbound_clicks",
+      "type": ["null", "model.InnerProductCategoriesMetricsHighlights"],
+      "doc": "Number of outbound clicks",
+      "default": null
+    },
+    {
+      "name": "pin_saves",
+      "type": ["null", "model.InnerProductCategoriesMetricsHighlights"],
+      "doc": "Number of pin saves",
+      "default": null
+    }
+  ]
+
+}

@@ -299,11 +299,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **boards_create**
-> Board boards_create(board => $board, ad_account_id => $ad_account_id)
+> Board boards_create(board_create => $board_create, ad_account_id => $ad_account_id)
 
 Create board
 
-Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Example
 ```perl
@@ -313,13 +313,15 @@ my $api_instance = WWW::OpenAPIClient::BoardsApi->new(
 
     # Configure OAuth2 access token for authorization: pinterest_oauth2
     access_token => 'YOUR_ACCESS_TOKEN',
+    # Configure OAuth2 access token for authorization: client_credentials
+    access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $board = WWW::OpenAPIClient::Object::Board->new(); # Board | Create a board using a single board json object.
+my $board_create = WWW::OpenAPIClient::Object::BoardCreate->new(); # BoardCreate | 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 
 eval {
-    my $result = $api_instance->boards_create(board => $board, ad_account_id => $ad_account_id);
+    my $result = $api_instance->boards_create(board_create => $board_create, ad_account_id => $ad_account_id);
     print Dumper($result);
 };
 if ($@) {
@@ -331,7 +333,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **board** | [**Board**](Board.md)| Create a board using a single board json object. | 
+ **board_create** | [**BoardCreate**](BoardCreate.md)|  | 
  **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -340,7 +342,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -354,7 +356,7 @@ Name | Type | Description  | Notes
 
 Delete board
 
-Delete a board owned by the \"operation user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Delete a board owned by the \"operation user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Example
 ```perl
@@ -366,7 +368,7 @@ my $api_instance = WWW::OpenAPIClient::BoardsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $board_id = "board_id_example"; # string | Unique identifier of a board.
+my $board_id = "board_id_example"; # string | 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 
 eval {
@@ -381,7 +383,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **board_id** | **string**| Unique identifier of a board. | 
+ **board_id** | **string**|  | 
  **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -404,7 +406,7 @@ void (empty response body)
 
 Get board
 
-Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Example
 ```perl
@@ -418,7 +420,7 @@ my $api_instance = WWW::OpenAPIClient::BoardsApi->new(
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $board_id = "board_id_example"; # string | Unique identifier of a board.
+my $board_id = "board_id_example"; # string | 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 
 eval {
@@ -434,7 +436,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **board_id** | **string**| Unique identifier of a board. | 
+ **board_id** | **string**|  | 
  **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
@@ -453,11 +455,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **boards_list**
-> BoardsList200Response boards_list(ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size, privacy => $privacy)
+> BoardsList200Response boards_list(ad_account_id => $ad_account_id, privacy => $privacy, bookmark => $bookmark, page_size => $page_size)
 
 List boards
 
-Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
 
 ### Example
 ```perl
@@ -472,12 +474,12 @@ my $api_instance = WWW::OpenAPIClient::BoardsApi->new(
 );
 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
+my $privacy = new WWW::OpenAPIClient.BoardPrivacyFilter(); # BoardPrivacyFilter | The privacy level of the board
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
-my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-my $privacy = "privacy_example"; # string | Privacy setting for a board.
+my $page_size = 25; # int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
 
 eval {
-    my $result = $api_instance->boards_list(ad_account_id => $ad_account_id, bookmark => $bookmark, page_size => $page_size, privacy => $privacy);
+    my $result = $api_instance->boards_list(ad_account_id => $ad_account_id, privacy => $privacy, bookmark => $bookmark, page_size => $page_size);
     print Dumper($result);
 };
 if ($@) {
@@ -490,9 +492,9 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] 
+ **privacy** | [**BoardPrivacyFilter**](.md)| The privacy level of the board | [optional] 
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
- **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **privacy** | **string**| Privacy setting for a board. | [optional] 
+ **page_size** | **int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -531,9 +533,9 @@ my $api_instance = WWW::OpenAPIClient::BoardsApi->new(
 my $board_id = "board_id_example"; # string | Unique identifier of a board.
 my $bookmark = "bookmark_example"; # string | Cursor used to fetch the next page of items
 my $page_size = 25; # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-my $creative_types = [("REGULAR")]; # ARRAY[string] | Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
+my $creative_types = [(new WWW::OpenAPIClient.CreativeType())]; # ARRAY[CreativeType] | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
-my $pin_metrics = false; # boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+my $pin_metrics = false; # boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
 
 eval {
     my $result = $api_instance->boards_list_pins(board_id => $board_id, bookmark => $bookmark, page_size => $page_size, creative_types => $creative_types, ad_account_id => $ad_account_id, pin_metrics => $pin_metrics);
@@ -551,9 +553,9 @@ Name | Type | Description  | Notes
  **board_id** | **string**| Unique identifier of a board. | 
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] 
  **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **creative_types** | [**ARRAY[string]**](string.md)| Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] 
+ **creative_types** | [**ARRAY[CreativeType]**](CreativeType.md)| Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] 
  **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] 
- **pin_metrics** | **boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false]
+ **pin_metrics** | **boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false]
 
 ### Return type
 
@@ -571,11 +573,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **boards_update**
-> Board boards_update(board_id => $board_id, board_update => $board_update, ad_account_id => $ad_account_id)
+> BoardWithUpdatePrivacy boards_update(board_id => $board_id, board_with_update_privacy_update => $board_with_update_privacy_update, ad_account_id => $ad_account_id)
 
 Update board
 
-Update a board owned by the \"operating user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Update a board owned by the \"operating user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 ### Example
 ```perl
@@ -585,14 +587,16 @@ my $api_instance = WWW::OpenAPIClient::BoardsApi->new(
 
     # Configure OAuth2 access token for authorization: pinterest_oauth2
     access_token => 'YOUR_ACCESS_TOKEN',
+    # Configure OAuth2 access token for authorization: client_credentials
+    access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $board_id = "board_id_example"; # string | Unique identifier of a board.
-my $board_update = WWW::OpenAPIClient::Object::BoardUpdate->new(); # BoardUpdate | Update a board.
+my $board_id = "board_id_example"; # string | 
+my $board_with_update_privacy_update = WWW::OpenAPIClient::Object::BoardWithUpdatePrivacyUpdate->new(); # BoardWithUpdatePrivacyUpdate | 
 my $ad_account_id = "ad_account_id_example"; # string | Unique identifier of an ad account.
 
 eval {
-    my $result = $api_instance->boards_update(board_id => $board_id, board_update => $board_update, ad_account_id => $ad_account_id);
+    my $result = $api_instance->boards_update(board_id => $board_id, board_with_update_privacy_update => $board_with_update_privacy_update, ad_account_id => $ad_account_id);
     print Dumper($result);
 };
 if ($@) {
@@ -604,17 +608,17 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **board_id** | **string**| Unique identifier of a board. | 
- **board_update** | [**BoardUpdate**](BoardUpdate.md)| Update a board. | 
+ **board_id** | **string**|  | 
+ **board_with_update_privacy_update** | [**BoardWithUpdatePrivacyUpdate**](BoardWithUpdatePrivacyUpdate.md)|  | 
  **ad_account_id** | **string**| Unique identifier of an ad account. | [optional] 
 
 ### Return type
 
-[**Board**](Board.md)
+[**BoardWithUpdatePrivacy**](BoardWithUpdatePrivacy.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

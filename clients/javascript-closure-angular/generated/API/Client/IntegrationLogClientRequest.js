@@ -7,17 +7,17 @@ goog.provide('API.Client.IntegrationLogClientRequest');
 API.Client.IntegrationLogClientRequest = function() {}
 
 /**
- * @type {!string}
- * @export
- */
-API.Client.IntegrationLogClientRequest.prototype.method;
-
-/**
  * HTTP request host from host header.
  * @type {!string}
  * @export
  */
 API.Client.IntegrationLogClientRequest.prototype.host;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.IntegrationLogClientRequest.prototype.method;
 
 /**
  * HTTP request path.

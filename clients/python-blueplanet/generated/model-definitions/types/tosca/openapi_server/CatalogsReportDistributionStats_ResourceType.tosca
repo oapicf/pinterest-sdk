@@ -1,0 +1,72 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsReportDistributionStats"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsReportDistributionStats"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CatalogsReportDistributionStats {
+    title = CatalogsReportDistributionStats
+    description = CatalogsReportDistributionStats
+    derivedFrom = Root
+    properties {
+        catalog_id {
+          type =  string
+          description = "ID of the catalog entity."
+          optional = false
+        }
+        code {
+          type =  integer
+          description = "The event code that a diagnostics aggregated number references"
+          optional = false
+        }
+        code_label {
+          type =  string
+          description = "A human-friendly label for the event code (e.g, &#39;SPAM&#39;)"
+          optional = false
+        }
+        ineligible_for_ads {
+          type =  boolean
+          description = "Indicates if issue makes items ineligible for ads distribution"
+          optional = false
+        }
+        ineligible_for_organic {
+          type =  boolean
+          description = "Indicates if issue makes items ineligible for organic distribution"
+          optional = false
+        }
+        message {
+          type =  string
+          description = "Title message describing the diagnostic issue"
+          optional = false
+        }
+        occurrences {
+          type =  integer
+          description = "Number of occurrences of the issue"
+          optional = false
+        }
+        report_type {
+          type =  string
+          description = ""
+          enum = ["DISTRIBUTION_ISSUES"]
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsReportDistributionStats {
+    title = CatalogsReportDistributionStats
+    description = CatalogsReportDistributionStats
+    implements = openapi_server.resourceTypes.CatalogsReportDistributionStats
+
+  }
+}

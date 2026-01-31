@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**QuestionType** | Pointer to [**LeadFormQuestionType**](LeadFormQuestionType.md) |  | [optional] 
 **CustomQuestionFieldType** | Pointer to [**NullableLeadFormQuestionFieldType**](LeadFormQuestionFieldType.md) |  | [optional] 
 **CustomQuestionLabel** | Pointer to **NullableString** | Question label for a custom question. | [optional] 
 **CustomQuestionOptions** | Pointer to **[]string** | Question options for a custom question. | [optional] 
+**QuestionType** | Pointer to [**LeadFormQuestionType**](LeadFormQuestionType.md) |  | [optional] 
 
 ## Methods
 
@@ -27,31 +27,6 @@ will change when the set of required properties is changed
 NewLeadFormQuestionWithDefaults instantiates a new LeadFormQuestion object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetQuestionType
-
-`func (o *LeadFormQuestion) GetQuestionType() LeadFormQuestionType`
-
-GetQuestionType returns the QuestionType field if non-nil, zero value otherwise.
-
-### GetQuestionTypeOk
-
-`func (o *LeadFormQuestion) GetQuestionTypeOk() (*LeadFormQuestionType, bool)`
-
-GetQuestionTypeOk returns a tuple with the QuestionType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetQuestionType
-
-`func (o *LeadFormQuestion) SetQuestionType(v LeadFormQuestionType)`
-
-SetQuestionType sets QuestionType field to given value.
-
-### HasQuestionType
-
-`func (o *LeadFormQuestion) HasQuestionType() bool`
-
-HasQuestionType returns a boolean if a field has been set.
 
 ### GetCustomQuestionFieldType
 
@@ -158,6 +133,31 @@ HasCustomQuestionOptions returns a boolean if a field has been set.
 `func (o *LeadFormQuestion) UnsetCustomQuestionOptions()`
 
 UnsetCustomQuestionOptions ensures that no value is present for CustomQuestionOptions, not even an explicit nil
+### GetQuestionType
+
+`func (o *LeadFormQuestion) GetQuestionType() LeadFormQuestionType`
+
+GetQuestionType returns the QuestionType field if non-nil, zero value otherwise.
+
+### GetQuestionTypeOk
+
+`func (o *LeadFormQuestion) GetQuestionTypeOk() (*LeadFormQuestionType, bool)`
+
+GetQuestionTypeOk returns a tuple with the QuestionType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetQuestionType
+
+`func (o *LeadFormQuestion) SetQuestionType(v LeadFormQuestionType)`
+
+SetQuestionType sets QuestionType field to given value.
+
+### HasQuestionType
+
+`func (o *LeadFormQuestion) HasQuestionType() bool`
+
+HasQuestionType returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

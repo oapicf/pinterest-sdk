@@ -5,9 +5,12 @@
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
 | **accessToken** | **kotlin.String** |  |  |
-| **tokenType** | **kotlin.String** |  |  |
 | **expiresIn** | **kotlin.Int** |  |  |
 | **scope** | **kotlin.String** |  |  |
+| **tokenType** | **kotlin.String** |  |  |
+| **refreshToken** | **kotlin.String** |  |  |
+| **refreshTokenExpiresAt** | **kotlin.Int** |  |  |
+| **refreshTokenExpiresIn** | **kotlin.Int** |  |  |
 | **responseType** | [**inline**](#ResponseType) |  |  [optional] |
 
 

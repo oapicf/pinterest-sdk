@@ -13,13 +13,31 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class PinsList200Response  {
   
-  @ApiModelProperty(required = true, value = "")
-
-  private List<Pin> items = new ArrayList<>();
-
   @ApiModelProperty(value = "")
 
   private String bookmark;
+
+  @ApiModelProperty(required = true, value = "")
+
+  private List<Pin> items = new ArrayList<>();
+ /**
+   * Get bookmark
+   * @return bookmark
+  **/
+  @JsonProperty("bookmark")
+  public String getBookmark() {
+    return bookmark;
+  }
+
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
+  }
+
+  public PinsList200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
  /**
    * Get items
    * @return items
@@ -43,24 +61,6 @@ public class PinsList200Response  {
     return this;
   }
 
- /**
-   * Get bookmark
-   * @return bookmark
-  **/
-  @JsonProperty("bookmark")
-  public String getBookmark() {
-    return bookmark;
-  }
-
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
-  public PinsList200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -70,13 +70,13 @@ public class PinsList200Response  {
       return false;
     }
     PinsList200Response pinsList200Response = (PinsList200Response) o;
-    return Objects.equals(this.items, pinsList200Response.items) &&
-        Objects.equals(this.bookmark, pinsList200Response.bookmark);
+    return Objects.equals(this.bookmark, pinsList200Response.bookmark) &&
+        Objects.equals(this.items, pinsList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -84,8 +84,8 @@ public class PinsList200Response  {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinsList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

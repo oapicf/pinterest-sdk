@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
-`startDate` | string
-`endDate` | string
 `adId` | string
+`endDate` | string
+`startDate` | string
 
 ## Example
 
@@ -17,9 +17,9 @@ import type { LeadsExportCreateRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "startDate": 2020-12-20,
-  "endDate": 2020-12-20,
   "adId": 687201361754,
+  "endDate": 2020-12-20,
+  "startDate": 2020-12-20,
 } satisfies LeadsExportCreateRequest
 
 console.log(example)

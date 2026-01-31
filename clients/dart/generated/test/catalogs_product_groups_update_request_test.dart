@@ -16,13 +16,13 @@ void main() {
   // final instance = CatalogsProductGroupsUpdateRequest();
 
   group('test CatalogsProductGroupsUpdateRequest', () {
-    // String name
-    test('to test the property `name`', () async {
+    // String description
+    test('to test the property `description`', () async {
       // TODO
     });
 
-    // String description
-    test('to test the property `description`', () async {
+    // CatalogsCreativeAssetsProductGroupFilters filters
+    test('to test the property `filters`', () async {
       // TODO
     });
 
@@ -32,8 +32,8 @@ void main() {
       // TODO
     });
 
-    // CatalogsCreativeAssetsProductGroupFilters filters
-    test('to test the property `filters`', () async {
+    // String name
+    test('to test the property `name`', () async {
       // TODO
     });
 

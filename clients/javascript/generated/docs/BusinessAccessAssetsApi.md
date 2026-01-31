@@ -193,6 +193,7 @@ let apiInstance = new PinterestSdk.BusinessAccessAssetsApi();
 let businessId = "729090764583391194"; // String | Unique identifier of the requesting business.
 let assetId = "729090764583391194"; // String | Unique identifier of a business asset.
 let opts = {
+  'fetchSystemUsers': false, // Boolean | Fetches system users if True. Fetches regular user employees if False.
   'bookmark': "bookmark_example", // String | Cursor used to fetch the next page of items
   'pageSize': 25, // Number | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
   'startIndex': 0 // Number | An index to start fetching the results from. Only the results starting from this index will be returned.
@@ -213,6 +214,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. | 
  **assetId** | **String**| Unique identifier of a business asset. | 
+ **fetchSystemUsers** | **Boolean**| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to false]
  **bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
  **pageSize** | **Number**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **startIndex** | **Number**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]

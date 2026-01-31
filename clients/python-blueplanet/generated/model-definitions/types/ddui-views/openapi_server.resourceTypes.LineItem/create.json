@@ -1,0 +1,24 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "product_brand" },
+      {"model": "product_category" },
+      {"model": "product_id" },
+      {"model": "product_name" },
+      {"model": "product_price" },
+      {"model": "product_quantity" },
+      {"model": "product_variant" },
+      {"model": "product_variant_id" },
+    ]
+  }]
+}

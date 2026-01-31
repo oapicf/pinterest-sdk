@@ -24,8 +24,8 @@ void
 GetMMMReportResponseData::__init()
 {
 	//report_status = std::string();
-	//url = std::string();
 	//size = double(0);
+	//url = std::string();
 }
 
 void
@@ -36,15 +36,15 @@ GetMMMReportResponseData::__cleanup()
 	//delete report_status;
 	//report_status = NULL;
 	//}
-	//if(url != NULL) {
-	//
-	//delete url;
-	//url = NULL;
-	//}
 	//if(size != NULL) {
 	//
 	//delete size;
 	//size = NULL;
+	//}
+	//if(url != NULL) {
+	//
+	//delete url;
+	//url = NULL;
 	//}
 	//
 }
@@ -65,17 +65,6 @@ GetMMMReportResponseData::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *urlKey = "url";
-	node = json_object_get_member(pJsonObject, urlKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&url, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *sizeKey = "size";
 	node = json_object_get_member(pJsonObject, sizeKey);
 	if (node !=NULL) {
@@ -87,6 +76,17 @@ GetMMMReportResponseData::fromJson(char* jsonStr)
 			
 			long long* obj = static_cast<long long*> (&size);
 			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *urlKey = "url";
+	node = json_object_get_member(pJsonObject, urlKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&url, node, "std::string", "");
+		} else {
 			
 		}
 	}
@@ -111,15 +111,6 @@ GetMMMReportResponseData::toJson()
 	}
 	const gchar *report_statusKey = "report_status";
 	json_object_set_member(pJsonObject, report_statusKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getUrl();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *urlKey = "url";
-	json_object_set_member(pJsonObject, urlKey, node);
 	if (isprimitive("long long")) {
 		long long obj = getSize();
 		node = converttoJson(&obj, "long long", "");
@@ -134,6 +125,15 @@ GetMMMReportResponseData::toJson()
 	}
 	const gchar *sizeKey = "size";
 	json_object_set_member(pJsonObject, sizeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getUrl();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *urlKey = "url";
+	json_object_set_member(pJsonObject, urlKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -154,18 +154,6 @@ GetMMMReportResponseData::setReportStatus(std::string  report_status)
 	this->report_status = report_status;
 }
 
-std::string
-GetMMMReportResponseData::getUrl()
-{
-	return url;
-}
-
-void
-GetMMMReportResponseData::setUrl(std::string  url)
-{
-	this->url = url;
-}
-
 long long
 GetMMMReportResponseData::getSize()
 {
@@ -176,6 +164,18 @@ void
 GetMMMReportResponseData::setSize(long long  size)
 {
 	this->size = size;
+}
+
+std::string
+GetMMMReportResponseData::getUrl()
+{
+	return url;
+}
+
+void
+GetMMMReportResponseData::setUrl(std::string  url)
+{
+	this->url = url;
 }
 
 

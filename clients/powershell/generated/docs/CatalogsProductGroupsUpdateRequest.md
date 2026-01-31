@@ -3,10 +3,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **String** |  | [optional] 
 **Description** | **String** |  | [optional] 
-**IsFeatured** | **Boolean** | boolean indicator of whether the product group is being featured or not | [optional] 
 **Filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | [optional] 
+**IsFeatured** | **Boolean** | boolean indicator of whether the product group is being featured or not | [optional] 
+**Name** | **String** |  | [optional] 
 **CatalogType** | **String** |  | [optional] 
 **Country** | [**Country**](Country.md) |  | [optional] 
 **Locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | [optional] 
@@ -15,10 +15,10 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CatalogsProductGroupsUpdateRequest = Initialize-PSOpenAPIToolsCatalogsProductGroupsUpdateRequest  -Name null `
- -Description null `
- -IsFeatured null `
+$CatalogsProductGroupsUpdateRequest = Initialize-PSOpenAPIToolsCatalogsProductGroupsUpdateRequest  -Description null `
  -Filters null `
+ -IsFeatured null `
+ -Name null `
  -CatalogType null `
  -Country null `
  -Locale null

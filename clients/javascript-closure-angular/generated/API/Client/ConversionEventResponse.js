@@ -6,6 +6,13 @@ goog.provide('API.Client.ConversionEventResponse');
 API.Client.ConversionEventResponse = function() {}
 
 /**
+ * Id of the ad account.
+ * @type {!string}
+ * @export
+ */
+API.Client.ConversionEventResponse.prototype.adAccountId;
+
+/**
  * @type {!API.Client.ConversionTagType}
  * @export
  */
@@ -17,13 +24,6 @@ API.Client.ConversionEventResponse.prototype.conversionEvent;
  * @export
  */
 API.Client.ConversionEventResponse.prototype.conversionTagId;
-
-/**
- * Id of the ad account.
- * @type {!string}
- * @export
- */
-API.Client.ConversionEventResponse.prototype.adAccountId;
 
 /**
  * Creation date in epoch format.

@@ -14,8 +14,8 @@ import { NonNullableCatalogsCurrency } from './nonNullableCatalogsCurrency';
  * A currency filter. This filter cannot be negated
  */
 export interface CatalogsProductGroupCurrencyCriteria { 
-    values: NonNullableCatalogsCurrency;
     negated?: boolean;
+    values: NonNullableCatalogsCurrency;
 }
 export namespace CatalogsProductGroupCurrencyCriteria {
 }

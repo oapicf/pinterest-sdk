@@ -5,11 +5,6 @@
   "name": "KeywordUpdate",
   "fields": [
     {
-      "name": "id",
-      "type": "string",
-      "doc": "Keyword ID."
-    },
-    {
       "name": "archived",
       "type": ["null", "boolean"],
       "doc": "Is keyword archived?",
@@ -20,6 +15,11 @@
       "type": ["null", "int"],
       "doc": "</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.",
       "default": null
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "doc": "Keyword ID."
     }
   ]
 

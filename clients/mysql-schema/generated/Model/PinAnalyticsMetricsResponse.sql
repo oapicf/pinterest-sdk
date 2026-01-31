@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `PinAnalyticsMetricsResponse`
 --
-SELECT `lifetime_metrics`, `daily_metrics`, `summary_metrics` FROM `PinAnalyticsMetricsResponse` WHERE 1;
+SELECT `daily_metrics`, `lifetime_metrics`, `summary_metrics` FROM `PinAnalyticsMetricsResponse` WHERE 1;
 
 --
 -- INSERT template for table `PinAnalyticsMetricsResponse`
 --
-INSERT INTO `PinAnalyticsMetricsResponse`(`lifetime_metrics`, `daily_metrics`, `summary_metrics`) VALUES (?, ?, ?);
+INSERT INTO `PinAnalyticsMetricsResponse`(`daily_metrics`, `lifetime_metrics`, `summary_metrics`) VALUES (?, ?, ?);
 
 --
 -- UPDATE template for table `PinAnalyticsMetricsResponse`
 --
-UPDATE `PinAnalyticsMetricsResponse` SET `lifetime_metrics` = ?, `daily_metrics` = ?, `summary_metrics` = ? WHERE 1;
+UPDATE `PinAnalyticsMetricsResponse` SET `daily_metrics` = ?, `lifetime_metrics` = ?, `summary_metrics` = ? WHERE 1;
 
 --
 -- DELETE template for table `PinAnalyticsMetricsResponse`

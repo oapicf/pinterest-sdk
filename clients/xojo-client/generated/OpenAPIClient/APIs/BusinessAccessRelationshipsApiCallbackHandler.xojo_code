@@ -1,6 +1,18 @@
 #tag Interface
 Protected Interface BusinessAccessRelationshipsApiCallbackHandler
 	#tag Method, Flags = &h0
+		Sub BrandAccountsCreateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BrandAccountsCreate200Response)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub BrandAccountsUpdateCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.BrandAccountsCreate200Response)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub DeleteBusinessMembershipCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.DeletedMembersResponse)
 		  
 		End Sub
@@ -26,6 +38,12 @@ Protected Interface BusinessAccessRelationshipsApiCallbackHandler
 
 	#tag Method, Flags = &h0
 		Sub GetBusinessPartnersCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.GetBusinessPartners200Response)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub SystemUserUpdateCallback(status As OpenAPIClient.OpenAPIClientException)
 		  
 		End Sub
 	#tag EndMethod

@@ -22,19 +22,19 @@ linked_business_t* instantiate_linked_business(int include_optional) {
   linked_business_t* linked_business = NULL;
   if (include_optional) {
     linked_business = linked_business_create(
-      "username",
       "https://www.example.com/dj23454f53dfk2324.jpg",
       "https://www.example.com/dj23454f53dfk2324.jpg",
       "https://www.example.com/dj23454f53dfk2324.jpg",
-      "https://www.example.com/dj23454f53dfk2324.jpg"
+      "https://www.example.com/dj23454f53dfk2324.jpg",
+      "username"
     );
   } else {
     linked_business = linked_business_create(
-      "username",
       "https://www.example.com/dj23454f53dfk2324.jpg",
       "https://www.example.com/dj23454f53dfk2324.jpg",
       "https://www.example.com/dj23454f53dfk2324.jpg",
-      "https://www.example.com/dj23454f53dfk2324.jpg"
+      "https://www.example.com/dj23454f53dfk2324.jpg",
+      "username"
     );
   }
 

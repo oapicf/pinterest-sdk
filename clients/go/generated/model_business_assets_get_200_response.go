@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,9 +22,9 @@ var _ MappedNullable = &BusinessAssetsGet200Response{}
 
 // BusinessAssetsGet200Response struct for BusinessAssetsGet200Response
 type BusinessAssetsGet200Response struct {
+	Bookmark NullableString `json:"bookmark,omitempty"`
 	// List of assets the requesting business has access to.
 	Items []GetBusinessAssetsResponse `json:"items"`
-	Bookmark NullableString `json:"bookmark,omitempty"`
 }
 
 type _BusinessAssetsGet200Response BusinessAssetsGet200Response
@@ -45,30 +45,6 @@ func NewBusinessAssetsGet200Response(items []GetBusinessAssetsResponse) *Busines
 func NewBusinessAssetsGet200ResponseWithDefaults() *BusinessAssetsGet200Response {
 	this := BusinessAssetsGet200Response{}
 	return &this
-}
-
-// GetItems returns the Items field value
-func (o *BusinessAssetsGet200Response) GetItems() []GetBusinessAssetsResponse {
-	if o == nil {
-		var ret []GetBusinessAssetsResponse
-		return ret
-	}
-
-	return o.Items
-}
-
-// GetItemsOk returns a tuple with the Items field value
-// and a boolean to check if the value has been set.
-func (o *BusinessAssetsGet200Response) GetItemsOk() ([]GetBusinessAssetsResponse, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Items, true
-}
-
-// SetItems sets field value
-func (o *BusinessAssetsGet200Response) SetItems(v []GetBusinessAssetsResponse) {
-	o.Items = v
 }
 
 // GetBookmark returns the Bookmark field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -113,6 +89,30 @@ func (o *BusinessAssetsGet200Response) UnsetBookmark() {
 	o.Bookmark.Unset()
 }
 
+// GetItems returns the Items field value
+func (o *BusinessAssetsGet200Response) GetItems() []GetBusinessAssetsResponse {
+	if o == nil {
+		var ret []GetBusinessAssetsResponse
+		return ret
+	}
+
+	return o.Items
+}
+
+// GetItemsOk returns a tuple with the Items field value
+// and a boolean to check if the value has been set.
+func (o *BusinessAssetsGet200Response) GetItemsOk() ([]GetBusinessAssetsResponse, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Items, true
+}
+
+// SetItems sets field value
+func (o *BusinessAssetsGet200Response) SetItems(v []GetBusinessAssetsResponse) {
+	o.Items = v
+}
+
 func (o BusinessAssetsGet200Response) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -123,10 +123,10 @@ func (o BusinessAssetsGet200Response) MarshalJSON() ([]byte, error) {
 
 func (o BusinessAssetsGet200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["items"] = o.Items
 	if o.Bookmark.IsSet() {
 		toSerialize["bookmark"] = o.Bookmark.Get()
 	}
+	toSerialize["items"] = o.Items
 	return toSerialize, nil
 }
 

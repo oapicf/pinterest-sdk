@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,34 +16,34 @@ package openapi
 
 type PinMediaMetadata struct {
 
-	ItemType string `json:"item_type,omitempty"`
-
-	Title *string `json:"title,omitempty"`
-
 	Description *string `json:"description,omitempty"`
+
+	Images ImageSize `json:"images,omitempty"`
+
+	ItemType string `json:"item_type,omitempty"`
 
 	Link *string `json:"link,omitempty"`
 
-	Images ImageMetadataImages `json:"images,omitempty"`
+	Title *string `json:"title,omitempty"`
 
 	CoverImageUrl string `json:"cover_image_url,omitempty"`
 
-	// Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
+	// Duration (in miliseconds). Field maybe null after creation due to video processing time.
+	Duration *float32 `json:"duration,omitempty"`
+
+	// Height (in pixels). Field maybe null after creation due to video processing time.
+	Height *int32 `json:"height,omitempty"`
+
+	// Video url (720p).  **Note:** This field is limited and not available to all apps.
 	VideoUrl *string `json:"video_url,omitempty"`
 
-	// Duration (in milliseconds)
-	Duration float32 `json:"duration,omitempty"`
-
-	// Height (in pixels)
-	Height int32 `json:"height,omitempty"`
-
-	// Width (in pixels)
-	Width int32 `json:"width,omitempty"`
+	// Width (in pixels). Field maybe null after creation due to video processing time.
+	Width *int32 `json:"width,omitempty"`
 }
 
 // AssertPinMediaMetadataRequired checks if the required fields are not zero-ed
 func AssertPinMediaMetadataRequired(obj PinMediaMetadata) error {
-	if err := AssertImageMetadataImagesRequired(obj.Images); err != nil {
+	if err := AssertImageSizeRequired(obj.Images); err != nil {
 		return err
 	}
 	return nil
@@ -51,7 +51,7 @@ func AssertPinMediaMetadataRequired(obj PinMediaMetadata) error {
 
 // AssertPinMediaMetadataConstraints checks if the values respects the defined constraints
 func AssertPinMediaMetadataConstraints(obj PinMediaMetadata) error {
-	if err := AssertImageMetadataImagesConstraints(obj.Images); err != nil {
+	if err := AssertImageSizeConstraints(obj.Images); err != nil {
 		return err
 	}
 	return nil

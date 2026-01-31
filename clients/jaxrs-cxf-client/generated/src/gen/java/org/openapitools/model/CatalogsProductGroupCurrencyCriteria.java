@@ -14,31 +14,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsProductGroupCurrencyCriteria  {
   
-  @ApiModelProperty(required = true, value = "")
-
-  private NonNullableCatalogsCurrency values;
-
   @ApiModelProperty(value = "")
 
   private Boolean negated = false;
- /**
-   * Get values
-   * @return values
-  **/
-  @JsonProperty("values")
-  public NonNullableCatalogsCurrency getValues() {
-    return values;
-  }
 
-  public void setValues(NonNullableCatalogsCurrency values) {
-    this.values = values;
-  }
+  @ApiModelProperty(required = true, value = "")
 
-  public CatalogsProductGroupCurrencyCriteria values(NonNullableCatalogsCurrency values) {
-    this.values = values;
-    return this;
-  }
-
+  private NonNullableCatalogsCurrency values;
  /**
    * Get negated
    * @return negated
@@ -57,6 +39,24 @@ public class CatalogsProductGroupCurrencyCriteria  {
     return this;
   }
 
+ /**
+   * Get values
+   * @return values
+  **/
+  @JsonProperty("values")
+  public NonNullableCatalogsCurrency getValues() {
+    return values;
+  }
+
+  public void setValues(NonNullableCatalogsCurrency values) {
+    this.values = values;
+  }
+
+  public CatalogsProductGroupCurrencyCriteria values(NonNullableCatalogsCurrency values) {
+    this.values = values;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -66,13 +66,13 @@ public class CatalogsProductGroupCurrencyCriteria  {
       return false;
     }
     CatalogsProductGroupCurrencyCriteria catalogsProductGroupCurrencyCriteria = (CatalogsProductGroupCurrencyCriteria) o;
-    return Objects.equals(this.values, catalogsProductGroupCurrencyCriteria.values) &&
-        Objects.equals(this.negated, catalogsProductGroupCurrencyCriteria.negated);
+    return Objects.equals(this.negated, catalogsProductGroupCurrencyCriteria.negated) &&
+        Objects.equals(this.values, catalogsProductGroupCurrencyCriteria.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, negated);
+    return Objects.hash(negated, values);
   }
 
   @Override
@@ -80,8 +80,8 @@ public class CatalogsProductGroupCurrencyCriteria  {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupCurrencyCriteria {\n");
     
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

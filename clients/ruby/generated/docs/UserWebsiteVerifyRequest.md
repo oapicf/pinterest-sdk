@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **website** | **String** |  | [optional] |
 | **verification_method** | **String** |  | [optional][default to &#39;METATAG&#39;] |
+| **website** | **String** |  | [optional] |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::UserWebsiteVerifyRequest.new(
-  website: pintest-website-12345678.test/test_1,
-  verification_method: null
+  verification_method: null,
+  website: pintest-website-12345678.test/test_1
 )
 ```
 

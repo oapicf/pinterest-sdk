@@ -9,10 +9,10 @@ Name | Type
 ------------ | -------------
 `catalogType` | [CatalogsType](CatalogsType.md)
 `batchId` | string
-`createdTime` | Date
 `completedTime` | Date
-`status` | [BatchOperationStatus](BatchOperationStatus.md)
+`createdTime` | Date
 `items` | [Array&lt;CreativeAssetsProcessingRecord&gt;](CreativeAssetsProcessingRecord.md)
+`status` | [BatchOperationStatus](BatchOperationStatus.md)
 
 ## Example
 
@@ -23,10 +23,10 @@ import type { CatalogsItemsBatch } from ''
 const example = {
   "catalogType": null,
   "batchId": 595953100599279259-66753b9bb65c46c49bd8503b27fecf9e,
-  "createdTime": null,
   "completedTime": null,
-  "status": null,
+  "createdTime": null,
   "items": null,
+  "status": null,
 } satisfies CatalogsItemsBatch
 
 console.log(example)

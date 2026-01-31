@@ -21,18 +21,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ItemUpdateBatchRecord  {
   
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  private UpdatableItemAttributes attributes;
+
  /**
   * The catalog item id in the merchant namespace
   */
   @ApiModelProperty(example = "DS0294-M", value = "The catalog item id in the merchant namespace")
 
   private String itemId;
-
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  private UpdatableItemAttributes attributes;
 
  /**
   * The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
@@ -42,24 +42,6 @@ public class ItemUpdateBatchRecord  {
   @Valid
 
   private List<UpdateMaskFieldType> updateMask;
- /**
-   * The catalog item id in the merchant namespace
-   * @return itemId
-  **/
-  @JsonProperty("item_id")
-  public String getItemId() {
-    return itemId;
-  }
-
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
-  }
-
-  public ItemUpdateBatchRecord itemId(String itemId) {
-    this.itemId = itemId;
-    return this;
-  }
-
  /**
    * Get attributes
    * @return attributes
@@ -75,6 +57,24 @@ public class ItemUpdateBatchRecord  {
 
   public ItemUpdateBatchRecord attributes(UpdatableItemAttributes attributes) {
     this.attributes = attributes;
+    return this;
+  }
+
+ /**
+   * The catalog item id in the merchant namespace
+   * @return itemId
+  **/
+  @JsonProperty("item_id")
+  public String getItemId() {
+    return itemId;
+  }
+
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
+  }
+
+  public ItemUpdateBatchRecord itemId(String itemId) {
+    this.itemId = itemId;
     return this;
   }
 
@@ -110,14 +110,14 @@ public class ItemUpdateBatchRecord  {
       return false;
     }
     ItemUpdateBatchRecord itemUpdateBatchRecord = (ItemUpdateBatchRecord) o;
-    return Objects.equals(this.itemId, itemUpdateBatchRecord.itemId) &&
-        Objects.equals(this.attributes, itemUpdateBatchRecord.attributes) &&
+    return Objects.equals(this.attributes, itemUpdateBatchRecord.attributes) &&
+        Objects.equals(this.itemId, itemUpdateBatchRecord.itemId) &&
         Objects.equals(this.updateMask, itemUpdateBatchRecord.updateMask);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, attributes, updateMask);
+    return Objects.hash(attributes, itemId, updateMask);
   }
 
   @Override
@@ -125,8 +125,8 @@ public class ItemUpdateBatchRecord  {
     StringBuilder sb = new StringBuilder();
     sb.append("class ItemUpdateBatchRecord {\n");
     
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    updateMask: ").append(toIndentedString(updateMask)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -15,43 +15,18 @@ import javax.validation.Valid;
 /**
  * BoardsList200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class BoardsList200Response   {
+  @JsonProperty("bookmark")
+  
+  private String bookmark;
+
   @JsonProperty("items")
   @NotNull
 @Valid
 
   private List<@Valid Board> items = new ArrayList<>();
-
-  @JsonProperty("bookmark")
-  
-  private String bookmark;
-
-  public BoardsList200Response items(List<@Valid Board> items) {
-    this.items = items;
-    return this;
-  }
-
-  public BoardsList200Response addItemsItem(Board itemsItem) {
-    if (this.items == null) {
-      this.items = new ArrayList<>();
-    }
-    this.items.add(itemsItem);
-    return this;
-  }
-
-   /**
-   * Boards
-   * @return items
-  **/
-  public List<@Valid Board> getItems() {
-    return items;
-  }
-
-  public void setItems(List<@Valid Board> items) {
-    this.items = items;
-  }
 
   public BoardsList200Response bookmark(String bookmark) {
     this.bookmark = bookmark;
@@ -70,6 +45,31 @@ public class BoardsList200Response   {
     this.bookmark = bookmark;
   }
 
+  public BoardsList200Response items(List<@Valid Board> items) {
+    this.items = items;
+    return this;
+  }
+
+  public BoardsList200Response addItemsItem(Board itemsItem) {
+    if (this.items == null) {
+      this.items = new ArrayList<>();
+    }
+    this.items.add(itemsItem);
+    return this;
+  }
+
+   /**
+   * Get items
+   * @return items
+  **/
+  public List<@Valid Board> getItems() {
+    return items;
+  }
+
+  public void setItems(List<@Valid Board> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -80,13 +80,13 @@ public class BoardsList200Response   {
       return false;
     }
     BoardsList200Response boardsList200Response = (BoardsList200Response) o;
-    return Objects.equals(items, boardsList200Response.items) &&
-        Objects.equals(bookmark, boardsList200Response.bookmark);
+    return Objects.equals(bookmark, boardsList200Response.bookmark) &&
+        Objects.equals(items, boardsList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -95,8 +95,8 @@ public class BoardsList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class BoardsList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

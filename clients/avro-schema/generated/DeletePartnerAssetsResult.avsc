@@ -13,16 +13,7 @@
     {
       "name": "asset_type",
       "type": ["null", "string"],
-      "doc": "Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.",
-      "default": null
-    },
-    {
-      "name": "permissions",
-      "type": ["null", {
-        "type": "array",
-        "items": "string"
-      }],
-      "doc": "Permission levels member or partner has on an asset.",
+      "doc": "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.",
       "default": null
     },
     {
@@ -35,6 +26,15 @@
       "name": "partner_id",
       "type": ["null", "string"],
       "doc": "Unique identifier of a business partner.",
+      "default": null
+    },
+    {
+      "name": "permissions",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "Permission levels member or partner has on an asset.",
       "default": null
     }
   ]

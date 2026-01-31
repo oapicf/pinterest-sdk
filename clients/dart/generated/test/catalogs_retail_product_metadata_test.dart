@@ -16,9 +16,13 @@ void main() {
   // final instance = CatalogsRetailProductMetadata();
 
   group('test CatalogsRetailProductMetadata', () {
-    // The user-created unique ID that represents the product.
-    // String itemId
-    test('to test the property `itemId`', () async {
+    // NonNullableProductAvailabilityType availability
+    test('to test the property `availability`', () async {
+      // TODO
+    });
+
+    // NonNullableCatalogsCurrency currency
+    test('to test the property `currency`', () async {
       // TODO
     });
 
@@ -28,8 +32,9 @@ void main() {
       // TODO
     });
 
-    // NonNullableProductAvailabilityType availability
-    test('to test the property `availability`', () async {
+    // The user-created unique ID that represents the product.
+    // String itemId
+    test('to test the property `itemId`', () async {
       // TODO
     });
 
@@ -42,11 +47,6 @@ void main() {
     // The discounted price of the product.
     // num salePrice
     test('to test the property `salePrice`', () async {
-      // TODO
-    });
-
-    // NonNullableCatalogsCurrency currency
-    test('to test the property `currency`', () async {
       // TODO
     });
 

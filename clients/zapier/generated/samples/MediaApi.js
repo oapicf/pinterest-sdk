@@ -1,7 +1,9 @@
 module.exports = {
     "MediaUploadSample": 
         { data: {} },
-    "MediaUploadDetailsSample": 
+    "MediaUploadSample": 
+        { data: {} },
+    "MediaSample": 
         { data: {} },
     "media_list_200_responseSample": 
         { data: {} },

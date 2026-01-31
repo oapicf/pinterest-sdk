@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Addr1** | Pointer to **string** | Primary street address of hotel. | [optional] 
 **City** | Pointer to **string** | City where the hotel is located. | [optional] 
-**Region** | Pointer to **string** | State, county, province, where the hotel is located. | [optional] 
 **Country** | Pointer to **string** | Country where the hotel is located. | [optional] 
 **PostalCode** | Pointer to **string** | Required for countries with a postal code system. Postal or zip code of the hotel. | [optional] 
+**Region** | Pointer to **string** | State, county, province, where the hotel is located. | [optional] 
 
 ## Methods
 
@@ -79,31 +79,6 @@ SetCity sets City field to given value.
 
 HasCity returns a boolean if a field has been set.
 
-### GetRegion
-
-`func (o *CatalogsHotelAddress) GetRegion() string`
-
-GetRegion returns the Region field if non-nil, zero value otherwise.
-
-### GetRegionOk
-
-`func (o *CatalogsHotelAddress) GetRegionOk() (*string, bool)`
-
-GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRegion
-
-`func (o *CatalogsHotelAddress) SetRegion(v string)`
-
-SetRegion sets Region field to given value.
-
-### HasRegion
-
-`func (o *CatalogsHotelAddress) HasRegion() bool`
-
-HasRegion returns a boolean if a field has been set.
-
 ### GetCountry
 
 `func (o *CatalogsHotelAddress) GetCountry() string`
@@ -153,6 +128,31 @@ SetPostalCode sets PostalCode field to given value.
 `func (o *CatalogsHotelAddress) HasPostalCode() bool`
 
 HasPostalCode returns a boolean if a field has been set.
+
+### GetRegion
+
+`func (o *CatalogsHotelAddress) GetRegion() string`
+
+GetRegion returns the Region field if non-nil, zero value otherwise.
+
+### GetRegionOk
+
+`func (o *CatalogsHotelAddress) GetRegionOk() (*string, bool)`
+
+GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegion
+
+`func (o *CatalogsHotelAddress) SetRegion(v string)`
+
+SetRegion sets Region field to given value.
+
+### HasRegion
+
+`func (o *CatalogsHotelAddress) HasRegion() bool`
+
+HasRegion returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

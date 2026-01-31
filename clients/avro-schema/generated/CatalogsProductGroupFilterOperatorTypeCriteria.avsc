@@ -1,0 +1,36 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CatalogsProductGroupFilterOperatorTypeCriteria",
+  "fields": [
+    {
+      "name": "filter_operator_type",
+      "type": [{
+        "type": "enum",
+        "name": "CatalogsProductGroupFilterOperatorTypeCriteria_filterUnderscoreoperatorUnderscoretype",
+        "symbols": [
+          "IS",
+          "CONTAINS"
+        ]
+      }, "null"],
+      "doc": "",
+      "default": FilterUnderscoreoperatorUnderscoretypeEnum.IS
+    },
+    {
+      "name": "negated",
+      "type": ["boolean", "null"],
+      "doc": "",
+      "default": false
+    },
+    {
+      "name": "values",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": ""
+    }
+  ]
+
+}

@@ -4,9 +4,15 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.AdPreviewCreateFromImage;
 import org.openapitools.model.AdPreviewCreateFromPin;
+import org.openapitools.model.AdPreviewShopping;
+import org.openapitools.model.CustomizableCTAType;
 import org.springframework.lang.Nullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -20,6 +26,6 @@ import java.util.*;
 import javax.annotation.Generated;
 
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public interface AdPreviewRequest {
 }

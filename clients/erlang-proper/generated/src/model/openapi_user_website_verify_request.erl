@@ -9,8 +9,8 @@
 -export_type([openapi_user_website_verify_request/0]).
 
 -type openapi_user_website_verify_request() ::
-  [ {'website', binary() }
-  | {'verification_method', binary() }
+  [ {'verification_method', binary() }
+  | {'website', binary() }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_user_website_verify_request() ->
     openapi_user_website_verify_request([]).
 
 openapi_user_website_verify_request(Fields) ->
-  Default = [ {'website', binary() }
-            , {'verification_method', elements([<<"FILENAME">>, <<"METATAG">>, <<"DNSTXT">>]) }
+  Default = [ {'verification_method', elements([<<"FILENAME">>, <<"METATAG">>, <<"DNSTXT">>]) }
+            , {'website', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

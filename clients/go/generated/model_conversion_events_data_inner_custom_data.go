@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,30 +20,36 @@ var _ MappedNullable = &ConversionEventsDataInnerCustomData{}
 
 // ConversionEventsDataInnerCustomData Object containing other custom data.
 type ConversionEventsDataInnerCustomData struct {
-	// The ISO-4217 currency code. If not provided, we will default to the advertiser's currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.
-	Currency NullableString `json:"currency,omitempty"`
-	// Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.
-	Value NullableString `json:"value,omitempty"`
+	// The brand of the content associated with the event.
+	ContentBrand NullableString `json:"content_brand,omitempty"`
+	// The category of the content associated with the event.
+	ContentCategory NullableString `json:"content_category,omitempty"`
 	// List of products IDs. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
 	ContentIds []string `json:"content_ids,omitempty"`
 	// The name of the page or product associated with the event.
 	ContentName NullableString `json:"content_name,omitempty"`
-	// The category of the content associated with the event.
-	ContentCategory NullableString `json:"content_category,omitempty"`
-	// The brand of the content associated with the event.
-	ContentBrand NullableString `json:"content_brand,omitempty"`
 	// A list of objects containing information about products, such as price and quantity. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
 	Contents []ConversionEventsDataInnerCustomDataContentsInner `json:"contents,omitempty"`
-	// Total number of products of the event. For example, the total number of items purchased in a checkout event. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
-	NumItems *int64 `json:"num_items,omitempty"`
-	// The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest.
-	OrderId NullableString `json:"order_id,omitempty"`
-	// The search string related to the user conversion event.
-	SearchString NullableString `json:"search_string,omitempty"`
-	// Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"/docs/api-features/conversion-overview/\" target=\"_blank\">dev site</a> for specific opt_out_type set up.
-	OptOutType NullableString `json:"opt_out_type,omitempty"`
+	// The ISO-4217 currency code. If not provided, we will default to the advertiser's currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.
+	Currency NullableString `json:"currency,omitempty"`
+	// Only use when instructed.
+	ExternalMeasurementId NullableString `json:"external_measurement_id,omitempty"`
+	// Only use when instructed.
+	ExternalMeasurementVendorId NullableInt32 `json:"external_measurement_vendor_id,omitempty"`
 	// Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided.
 	Np NullableString `json:"np,omitempty"`
+	// Total number of products of the event. For example, the total number of items purchased in a checkout event. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
+	NumItems *int64 `json:"num_items,omitempty"`
+	// Flags for different privacy rights laws to opt out users of sharing personal information. Separate values with commas. See the Help Center article about <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">limited data processing</a> and the developer's guide for <a href=\"/docs/track-conversions/track-conversions-in-the-api/#whether-the-user-has-opted-out-of-web-or-offline-conversion-events\" target=\"_blank\">tracking conversion events</a> for help with using this parameter.
+	OptOutType NullableString `json:"opt_out_type,omitempty"`
+	// The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest.
+	OrderId NullableString `json:"order_id,omitempty"`
+	// Predicted lifetime value of user associated with the event. Accepted as a string in the request; it will be parsed into a double.
+	PredictedLtv NullableString `json:"predicted_ltv,omitempty"`
+	// The search string related to the user conversion event.
+	SearchString NullableString `json:"search_string,omitempty"`
+	// Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.
+	Value NullableString `json:"value,omitempty"`
 }
 
 // NewConversionEventsDataInnerCustomData instantiates a new ConversionEventsDataInnerCustomData object
@@ -63,88 +69,88 @@ func NewConversionEventsDataInnerCustomDataWithDefaults() *ConversionEventsDataI
 	return &this
 }
 
-// GetCurrency returns the Currency field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ConversionEventsDataInnerCustomData) GetCurrency() string {
-	if o == nil || IsNil(o.Currency.Get()) {
+// GetContentBrand returns the ContentBrand field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ConversionEventsDataInnerCustomData) GetContentBrand() string {
+	if o == nil || IsNil(o.ContentBrand.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Currency.Get()
+	return *o.ContentBrand.Get()
 }
 
-// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
+// GetContentBrandOk returns a tuple with the ContentBrand field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ConversionEventsDataInnerCustomData) GetCurrencyOk() (*string, bool) {
+func (o *ConversionEventsDataInnerCustomData) GetContentBrandOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Currency.Get(), o.Currency.IsSet()
+	return o.ContentBrand.Get(), o.ContentBrand.IsSet()
 }
 
-// HasCurrency returns a boolean if a field has been set.
-func (o *ConversionEventsDataInnerCustomData) HasCurrency() bool {
-	if o != nil && o.Currency.IsSet() {
+// HasContentBrand returns a boolean if a field has been set.
+func (o *ConversionEventsDataInnerCustomData) HasContentBrand() bool {
+	if o != nil && o.ContentBrand.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCurrency gets a reference to the given NullableString and assigns it to the Currency field.
-func (o *ConversionEventsDataInnerCustomData) SetCurrency(v string) {
-	o.Currency.Set(&v)
+// SetContentBrand gets a reference to the given NullableString and assigns it to the ContentBrand field.
+func (o *ConversionEventsDataInnerCustomData) SetContentBrand(v string) {
+	o.ContentBrand.Set(&v)
 }
-// SetCurrencyNil sets the value for Currency to be an explicit nil
-func (o *ConversionEventsDataInnerCustomData) SetCurrencyNil() {
-	o.Currency.Set(nil)
-}
-
-// UnsetCurrency ensures that no value is present for Currency, not even an explicit nil
-func (o *ConversionEventsDataInnerCustomData) UnsetCurrency() {
-	o.Currency.Unset()
+// SetContentBrandNil sets the value for ContentBrand to be an explicit nil
+func (o *ConversionEventsDataInnerCustomData) SetContentBrandNil() {
+	o.ContentBrand.Set(nil)
 }
 
-// GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ConversionEventsDataInnerCustomData) GetValue() string {
-	if o == nil || IsNil(o.Value.Get()) {
+// UnsetContentBrand ensures that no value is present for ContentBrand, not even an explicit nil
+func (o *ConversionEventsDataInnerCustomData) UnsetContentBrand() {
+	o.ContentBrand.Unset()
+}
+
+// GetContentCategory returns the ContentCategory field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ConversionEventsDataInnerCustomData) GetContentCategory() string {
+	if o == nil || IsNil(o.ContentCategory.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Value.Get()
+	return *o.ContentCategory.Get()
 }
 
-// GetValueOk returns a tuple with the Value field value if set, nil otherwise
+// GetContentCategoryOk returns a tuple with the ContentCategory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ConversionEventsDataInnerCustomData) GetValueOk() (*string, bool) {
+func (o *ConversionEventsDataInnerCustomData) GetContentCategoryOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Value.Get(), o.Value.IsSet()
+	return o.ContentCategory.Get(), o.ContentCategory.IsSet()
 }
 
-// HasValue returns a boolean if a field has been set.
-func (o *ConversionEventsDataInnerCustomData) HasValue() bool {
-	if o != nil && o.Value.IsSet() {
+// HasContentCategory returns a boolean if a field has been set.
+func (o *ConversionEventsDataInnerCustomData) HasContentCategory() bool {
+	if o != nil && o.ContentCategory.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetValue gets a reference to the given NullableString and assigns it to the Value field.
-func (o *ConversionEventsDataInnerCustomData) SetValue(v string) {
-	o.Value.Set(&v)
+// SetContentCategory gets a reference to the given NullableString and assigns it to the ContentCategory field.
+func (o *ConversionEventsDataInnerCustomData) SetContentCategory(v string) {
+	o.ContentCategory.Set(&v)
 }
-// SetValueNil sets the value for Value to be an explicit nil
-func (o *ConversionEventsDataInnerCustomData) SetValueNil() {
-	o.Value.Set(nil)
+// SetContentCategoryNil sets the value for ContentCategory to be an explicit nil
+func (o *ConversionEventsDataInnerCustomData) SetContentCategoryNil() {
+	o.ContentCategory.Set(nil)
 }
 
-// UnsetValue ensures that no value is present for Value, not even an explicit nil
-func (o *ConversionEventsDataInnerCustomData) UnsetValue() {
-	o.Value.Unset()
+// UnsetContentCategory ensures that no value is present for ContentCategory, not even an explicit nil
+func (o *ConversionEventsDataInnerCustomData) UnsetContentCategory() {
+	o.ContentCategory.Unset()
 }
 
 // GetContentIds returns the ContentIds field value if set, zero value otherwise.
@@ -221,90 +227,6 @@ func (o *ConversionEventsDataInnerCustomData) UnsetContentName() {
 	o.ContentName.Unset()
 }
 
-// GetContentCategory returns the ContentCategory field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ConversionEventsDataInnerCustomData) GetContentCategory() string {
-	if o == nil || IsNil(o.ContentCategory.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.ContentCategory.Get()
-}
-
-// GetContentCategoryOk returns a tuple with the ContentCategory field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ConversionEventsDataInnerCustomData) GetContentCategoryOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.ContentCategory.Get(), o.ContentCategory.IsSet()
-}
-
-// HasContentCategory returns a boolean if a field has been set.
-func (o *ConversionEventsDataInnerCustomData) HasContentCategory() bool {
-	if o != nil && o.ContentCategory.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetContentCategory gets a reference to the given NullableString and assigns it to the ContentCategory field.
-func (o *ConversionEventsDataInnerCustomData) SetContentCategory(v string) {
-	o.ContentCategory.Set(&v)
-}
-// SetContentCategoryNil sets the value for ContentCategory to be an explicit nil
-func (o *ConversionEventsDataInnerCustomData) SetContentCategoryNil() {
-	o.ContentCategory.Set(nil)
-}
-
-// UnsetContentCategory ensures that no value is present for ContentCategory, not even an explicit nil
-func (o *ConversionEventsDataInnerCustomData) UnsetContentCategory() {
-	o.ContentCategory.Unset()
-}
-
-// GetContentBrand returns the ContentBrand field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ConversionEventsDataInnerCustomData) GetContentBrand() string {
-	if o == nil || IsNil(o.ContentBrand.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.ContentBrand.Get()
-}
-
-// GetContentBrandOk returns a tuple with the ContentBrand field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ConversionEventsDataInnerCustomData) GetContentBrandOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.ContentBrand.Get(), o.ContentBrand.IsSet()
-}
-
-// HasContentBrand returns a boolean if a field has been set.
-func (o *ConversionEventsDataInnerCustomData) HasContentBrand() bool {
-	if o != nil && o.ContentBrand.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetContentBrand gets a reference to the given NullableString and assigns it to the ContentBrand field.
-func (o *ConversionEventsDataInnerCustomData) SetContentBrand(v string) {
-	o.ContentBrand.Set(&v)
-}
-// SetContentBrandNil sets the value for ContentBrand to be an explicit nil
-func (o *ConversionEventsDataInnerCustomData) SetContentBrandNil() {
-	o.ContentBrand.Set(nil)
-}
-
-// UnsetContentBrand ensures that no value is present for ContentBrand, not even an explicit nil
-func (o *ConversionEventsDataInnerCustomData) UnsetContentBrand() {
-	o.ContentBrand.Unset()
-}
-
 // GetContents returns the Contents field value if set, zero value otherwise.
 func (o *ConversionEventsDataInnerCustomData) GetContents() []ConversionEventsDataInnerCustomDataContentsInner {
 	if o == nil || IsNil(o.Contents) {
@@ -337,162 +259,130 @@ func (o *ConversionEventsDataInnerCustomData) SetContents(v []ConversionEventsDa
 	o.Contents = v
 }
 
-// GetNumItems returns the NumItems field value if set, zero value otherwise.
-func (o *ConversionEventsDataInnerCustomData) GetNumItems() int64 {
-	if o == nil || IsNil(o.NumItems) {
-		var ret int64
-		return ret
-	}
-	return *o.NumItems
-}
-
-// GetNumItemsOk returns a tuple with the NumItems field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ConversionEventsDataInnerCustomData) GetNumItemsOk() (*int64, bool) {
-	if o == nil || IsNil(o.NumItems) {
-		return nil, false
-	}
-	return o.NumItems, true
-}
-
-// HasNumItems returns a boolean if a field has been set.
-func (o *ConversionEventsDataInnerCustomData) HasNumItems() bool {
-	if o != nil && !IsNil(o.NumItems) {
-		return true
-	}
-
-	return false
-}
-
-// SetNumItems gets a reference to the given int64 and assigns it to the NumItems field.
-func (o *ConversionEventsDataInnerCustomData) SetNumItems(v int64) {
-	o.NumItems = &v
-}
-
-// GetOrderId returns the OrderId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ConversionEventsDataInnerCustomData) GetOrderId() string {
-	if o == nil || IsNil(o.OrderId.Get()) {
+// GetCurrency returns the Currency field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ConversionEventsDataInnerCustomData) GetCurrency() string {
+	if o == nil || IsNil(o.Currency.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.OrderId.Get()
+	return *o.Currency.Get()
 }
 
-// GetOrderIdOk returns a tuple with the OrderId field value if set, nil otherwise
+// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ConversionEventsDataInnerCustomData) GetOrderIdOk() (*string, bool) {
+func (o *ConversionEventsDataInnerCustomData) GetCurrencyOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.OrderId.Get(), o.OrderId.IsSet()
+	return o.Currency.Get(), o.Currency.IsSet()
 }
 
-// HasOrderId returns a boolean if a field has been set.
-func (o *ConversionEventsDataInnerCustomData) HasOrderId() bool {
-	if o != nil && o.OrderId.IsSet() {
+// HasCurrency returns a boolean if a field has been set.
+func (o *ConversionEventsDataInnerCustomData) HasCurrency() bool {
+	if o != nil && o.Currency.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetOrderId gets a reference to the given NullableString and assigns it to the OrderId field.
-func (o *ConversionEventsDataInnerCustomData) SetOrderId(v string) {
-	o.OrderId.Set(&v)
+// SetCurrency gets a reference to the given NullableString and assigns it to the Currency field.
+func (o *ConversionEventsDataInnerCustomData) SetCurrency(v string) {
+	o.Currency.Set(&v)
 }
-// SetOrderIdNil sets the value for OrderId to be an explicit nil
-func (o *ConversionEventsDataInnerCustomData) SetOrderIdNil() {
-	o.OrderId.Set(nil)
-}
-
-// UnsetOrderId ensures that no value is present for OrderId, not even an explicit nil
-func (o *ConversionEventsDataInnerCustomData) UnsetOrderId() {
-	o.OrderId.Unset()
+// SetCurrencyNil sets the value for Currency to be an explicit nil
+func (o *ConversionEventsDataInnerCustomData) SetCurrencyNil() {
+	o.Currency.Set(nil)
 }
 
-// GetSearchString returns the SearchString field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ConversionEventsDataInnerCustomData) GetSearchString() string {
-	if o == nil || IsNil(o.SearchString.Get()) {
+// UnsetCurrency ensures that no value is present for Currency, not even an explicit nil
+func (o *ConversionEventsDataInnerCustomData) UnsetCurrency() {
+	o.Currency.Unset()
+}
+
+// GetExternalMeasurementId returns the ExternalMeasurementId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ConversionEventsDataInnerCustomData) GetExternalMeasurementId() string {
+	if o == nil || IsNil(o.ExternalMeasurementId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.SearchString.Get()
+	return *o.ExternalMeasurementId.Get()
 }
 
-// GetSearchStringOk returns a tuple with the SearchString field value if set, nil otherwise
+// GetExternalMeasurementIdOk returns a tuple with the ExternalMeasurementId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ConversionEventsDataInnerCustomData) GetSearchStringOk() (*string, bool) {
+func (o *ConversionEventsDataInnerCustomData) GetExternalMeasurementIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.SearchString.Get(), o.SearchString.IsSet()
+	return o.ExternalMeasurementId.Get(), o.ExternalMeasurementId.IsSet()
 }
 
-// HasSearchString returns a boolean if a field has been set.
-func (o *ConversionEventsDataInnerCustomData) HasSearchString() bool {
-	if o != nil && o.SearchString.IsSet() {
+// HasExternalMeasurementId returns a boolean if a field has been set.
+func (o *ConversionEventsDataInnerCustomData) HasExternalMeasurementId() bool {
+	if o != nil && o.ExternalMeasurementId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSearchString gets a reference to the given NullableString and assigns it to the SearchString field.
-func (o *ConversionEventsDataInnerCustomData) SetSearchString(v string) {
-	o.SearchString.Set(&v)
+// SetExternalMeasurementId gets a reference to the given NullableString and assigns it to the ExternalMeasurementId field.
+func (o *ConversionEventsDataInnerCustomData) SetExternalMeasurementId(v string) {
+	o.ExternalMeasurementId.Set(&v)
 }
-// SetSearchStringNil sets the value for SearchString to be an explicit nil
-func (o *ConversionEventsDataInnerCustomData) SetSearchStringNil() {
-	o.SearchString.Set(nil)
-}
-
-// UnsetSearchString ensures that no value is present for SearchString, not even an explicit nil
-func (o *ConversionEventsDataInnerCustomData) UnsetSearchString() {
-	o.SearchString.Unset()
+// SetExternalMeasurementIdNil sets the value for ExternalMeasurementId to be an explicit nil
+func (o *ConversionEventsDataInnerCustomData) SetExternalMeasurementIdNil() {
+	o.ExternalMeasurementId.Set(nil)
 }
 
-// GetOptOutType returns the OptOutType field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ConversionEventsDataInnerCustomData) GetOptOutType() string {
-	if o == nil || IsNil(o.OptOutType.Get()) {
-		var ret string
+// UnsetExternalMeasurementId ensures that no value is present for ExternalMeasurementId, not even an explicit nil
+func (o *ConversionEventsDataInnerCustomData) UnsetExternalMeasurementId() {
+	o.ExternalMeasurementId.Unset()
+}
+
+// GetExternalMeasurementVendorId returns the ExternalMeasurementVendorId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ConversionEventsDataInnerCustomData) GetExternalMeasurementVendorId() int32 {
+	if o == nil || IsNil(o.ExternalMeasurementVendorId.Get()) {
+		var ret int32
 		return ret
 	}
-	return *o.OptOutType.Get()
+	return *o.ExternalMeasurementVendorId.Get()
 }
 
-// GetOptOutTypeOk returns a tuple with the OptOutType field value if set, nil otherwise
+// GetExternalMeasurementVendorIdOk returns a tuple with the ExternalMeasurementVendorId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ConversionEventsDataInnerCustomData) GetOptOutTypeOk() (*string, bool) {
+func (o *ConversionEventsDataInnerCustomData) GetExternalMeasurementVendorIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.OptOutType.Get(), o.OptOutType.IsSet()
+	return o.ExternalMeasurementVendorId.Get(), o.ExternalMeasurementVendorId.IsSet()
 }
 
-// HasOptOutType returns a boolean if a field has been set.
-func (o *ConversionEventsDataInnerCustomData) HasOptOutType() bool {
-	if o != nil && o.OptOutType.IsSet() {
+// HasExternalMeasurementVendorId returns a boolean if a field has been set.
+func (o *ConversionEventsDataInnerCustomData) HasExternalMeasurementVendorId() bool {
+	if o != nil && o.ExternalMeasurementVendorId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetOptOutType gets a reference to the given NullableString and assigns it to the OptOutType field.
-func (o *ConversionEventsDataInnerCustomData) SetOptOutType(v string) {
-	o.OptOutType.Set(&v)
+// SetExternalMeasurementVendorId gets a reference to the given NullableInt32 and assigns it to the ExternalMeasurementVendorId field.
+func (o *ConversionEventsDataInnerCustomData) SetExternalMeasurementVendorId(v int32) {
+	o.ExternalMeasurementVendorId.Set(&v)
 }
-// SetOptOutTypeNil sets the value for OptOutType to be an explicit nil
-func (o *ConversionEventsDataInnerCustomData) SetOptOutTypeNil() {
-	o.OptOutType.Set(nil)
+// SetExternalMeasurementVendorIdNil sets the value for ExternalMeasurementVendorId to be an explicit nil
+func (o *ConversionEventsDataInnerCustomData) SetExternalMeasurementVendorIdNil() {
+	o.ExternalMeasurementVendorId.Set(nil)
 }
 
-// UnsetOptOutType ensures that no value is present for OptOutType, not even an explicit nil
-func (o *ConversionEventsDataInnerCustomData) UnsetOptOutType() {
-	o.OptOutType.Unset()
+// UnsetExternalMeasurementVendorId ensures that no value is present for ExternalMeasurementVendorId, not even an explicit nil
+func (o *ConversionEventsDataInnerCustomData) UnsetExternalMeasurementVendorId() {
+	o.ExternalMeasurementVendorId.Unset()
 }
 
 // GetNp returns the Np field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -537,6 +427,248 @@ func (o *ConversionEventsDataInnerCustomData) UnsetNp() {
 	o.Np.Unset()
 }
 
+// GetNumItems returns the NumItems field value if set, zero value otherwise.
+func (o *ConversionEventsDataInnerCustomData) GetNumItems() int64 {
+	if o == nil || IsNil(o.NumItems) {
+		var ret int64
+		return ret
+	}
+	return *o.NumItems
+}
+
+// GetNumItemsOk returns a tuple with the NumItems field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConversionEventsDataInnerCustomData) GetNumItemsOk() (*int64, bool) {
+	if o == nil || IsNil(o.NumItems) {
+		return nil, false
+	}
+	return o.NumItems, true
+}
+
+// HasNumItems returns a boolean if a field has been set.
+func (o *ConversionEventsDataInnerCustomData) HasNumItems() bool {
+	if o != nil && !IsNil(o.NumItems) {
+		return true
+	}
+
+	return false
+}
+
+// SetNumItems gets a reference to the given int64 and assigns it to the NumItems field.
+func (o *ConversionEventsDataInnerCustomData) SetNumItems(v int64) {
+	o.NumItems = &v
+}
+
+// GetOptOutType returns the OptOutType field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ConversionEventsDataInnerCustomData) GetOptOutType() string {
+	if o == nil || IsNil(o.OptOutType.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.OptOutType.Get()
+}
+
+// GetOptOutTypeOk returns a tuple with the OptOutType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ConversionEventsDataInnerCustomData) GetOptOutTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.OptOutType.Get(), o.OptOutType.IsSet()
+}
+
+// HasOptOutType returns a boolean if a field has been set.
+func (o *ConversionEventsDataInnerCustomData) HasOptOutType() bool {
+	if o != nil && o.OptOutType.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOptOutType gets a reference to the given NullableString and assigns it to the OptOutType field.
+func (o *ConversionEventsDataInnerCustomData) SetOptOutType(v string) {
+	o.OptOutType.Set(&v)
+}
+// SetOptOutTypeNil sets the value for OptOutType to be an explicit nil
+func (o *ConversionEventsDataInnerCustomData) SetOptOutTypeNil() {
+	o.OptOutType.Set(nil)
+}
+
+// UnsetOptOutType ensures that no value is present for OptOutType, not even an explicit nil
+func (o *ConversionEventsDataInnerCustomData) UnsetOptOutType() {
+	o.OptOutType.Unset()
+}
+
+// GetOrderId returns the OrderId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ConversionEventsDataInnerCustomData) GetOrderId() string {
+	if o == nil || IsNil(o.OrderId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.OrderId.Get()
+}
+
+// GetOrderIdOk returns a tuple with the OrderId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ConversionEventsDataInnerCustomData) GetOrderIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.OrderId.Get(), o.OrderId.IsSet()
+}
+
+// HasOrderId returns a boolean if a field has been set.
+func (o *ConversionEventsDataInnerCustomData) HasOrderId() bool {
+	if o != nil && o.OrderId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOrderId gets a reference to the given NullableString and assigns it to the OrderId field.
+func (o *ConversionEventsDataInnerCustomData) SetOrderId(v string) {
+	o.OrderId.Set(&v)
+}
+// SetOrderIdNil sets the value for OrderId to be an explicit nil
+func (o *ConversionEventsDataInnerCustomData) SetOrderIdNil() {
+	o.OrderId.Set(nil)
+}
+
+// UnsetOrderId ensures that no value is present for OrderId, not even an explicit nil
+func (o *ConversionEventsDataInnerCustomData) UnsetOrderId() {
+	o.OrderId.Unset()
+}
+
+// GetPredictedLtv returns the PredictedLtv field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ConversionEventsDataInnerCustomData) GetPredictedLtv() string {
+	if o == nil || IsNil(o.PredictedLtv.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.PredictedLtv.Get()
+}
+
+// GetPredictedLtvOk returns a tuple with the PredictedLtv field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ConversionEventsDataInnerCustomData) GetPredictedLtvOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PredictedLtv.Get(), o.PredictedLtv.IsSet()
+}
+
+// HasPredictedLtv returns a boolean if a field has been set.
+func (o *ConversionEventsDataInnerCustomData) HasPredictedLtv() bool {
+	if o != nil && o.PredictedLtv.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPredictedLtv gets a reference to the given NullableString and assigns it to the PredictedLtv field.
+func (o *ConversionEventsDataInnerCustomData) SetPredictedLtv(v string) {
+	o.PredictedLtv.Set(&v)
+}
+// SetPredictedLtvNil sets the value for PredictedLtv to be an explicit nil
+func (o *ConversionEventsDataInnerCustomData) SetPredictedLtvNil() {
+	o.PredictedLtv.Set(nil)
+}
+
+// UnsetPredictedLtv ensures that no value is present for PredictedLtv, not even an explicit nil
+func (o *ConversionEventsDataInnerCustomData) UnsetPredictedLtv() {
+	o.PredictedLtv.Unset()
+}
+
+// GetSearchString returns the SearchString field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ConversionEventsDataInnerCustomData) GetSearchString() string {
+	if o == nil || IsNil(o.SearchString.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.SearchString.Get()
+}
+
+// GetSearchStringOk returns a tuple with the SearchString field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ConversionEventsDataInnerCustomData) GetSearchStringOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SearchString.Get(), o.SearchString.IsSet()
+}
+
+// HasSearchString returns a boolean if a field has been set.
+func (o *ConversionEventsDataInnerCustomData) HasSearchString() bool {
+	if o != nil && o.SearchString.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSearchString gets a reference to the given NullableString and assigns it to the SearchString field.
+func (o *ConversionEventsDataInnerCustomData) SetSearchString(v string) {
+	o.SearchString.Set(&v)
+}
+// SetSearchStringNil sets the value for SearchString to be an explicit nil
+func (o *ConversionEventsDataInnerCustomData) SetSearchStringNil() {
+	o.SearchString.Set(nil)
+}
+
+// UnsetSearchString ensures that no value is present for SearchString, not even an explicit nil
+func (o *ConversionEventsDataInnerCustomData) UnsetSearchString() {
+	o.SearchString.Unset()
+}
+
+// GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ConversionEventsDataInnerCustomData) GetValue() string {
+	if o == nil || IsNil(o.Value.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Value.Get()
+}
+
+// GetValueOk returns a tuple with the Value field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ConversionEventsDataInnerCustomData) GetValueOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Value.Get(), o.Value.IsSet()
+}
+
+// HasValue returns a boolean if a field has been set.
+func (o *ConversionEventsDataInnerCustomData) HasValue() bool {
+	if o != nil && o.Value.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetValue gets a reference to the given NullableString and assigns it to the Value field.
+func (o *ConversionEventsDataInnerCustomData) SetValue(v string) {
+	o.Value.Set(&v)
+}
+// SetValueNil sets the value for Value to be an explicit nil
+func (o *ConversionEventsDataInnerCustomData) SetValueNil() {
+	o.Value.Set(nil)
+}
+
+// UnsetValue ensures that no value is present for Value, not even an explicit nil
+func (o *ConversionEventsDataInnerCustomData) UnsetValue() {
+	o.Value.Unset()
+}
+
 func (o ConversionEventsDataInnerCustomData) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -547,11 +679,11 @@ func (o ConversionEventsDataInnerCustomData) MarshalJSON() ([]byte, error) {
 
 func (o ConversionEventsDataInnerCustomData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Currency.IsSet() {
-		toSerialize["currency"] = o.Currency.Get()
+	if o.ContentBrand.IsSet() {
+		toSerialize["content_brand"] = o.ContentBrand.Get()
 	}
-	if o.Value.IsSet() {
-		toSerialize["value"] = o.Value.Get()
+	if o.ContentCategory.IsSet() {
+		toSerialize["content_category"] = o.ContentCategory.Get()
 	}
 	if !IsNil(o.ContentIds) {
 		toSerialize["content_ids"] = o.ContentIds
@@ -559,29 +691,38 @@ func (o ConversionEventsDataInnerCustomData) ToMap() (map[string]interface{}, er
 	if o.ContentName.IsSet() {
 		toSerialize["content_name"] = o.ContentName.Get()
 	}
-	if o.ContentCategory.IsSet() {
-		toSerialize["content_category"] = o.ContentCategory.Get()
-	}
-	if o.ContentBrand.IsSet() {
-		toSerialize["content_brand"] = o.ContentBrand.Get()
-	}
 	if !IsNil(o.Contents) {
 		toSerialize["contents"] = o.Contents
+	}
+	if o.Currency.IsSet() {
+		toSerialize["currency"] = o.Currency.Get()
+	}
+	if o.ExternalMeasurementId.IsSet() {
+		toSerialize["external_measurement_id"] = o.ExternalMeasurementId.Get()
+	}
+	if o.ExternalMeasurementVendorId.IsSet() {
+		toSerialize["external_measurement_vendor_id"] = o.ExternalMeasurementVendorId.Get()
+	}
+	if o.Np.IsSet() {
+		toSerialize["np"] = o.Np.Get()
 	}
 	if !IsNil(o.NumItems) {
 		toSerialize["num_items"] = o.NumItems
 	}
+	if o.OptOutType.IsSet() {
+		toSerialize["opt_out_type"] = o.OptOutType.Get()
+	}
 	if o.OrderId.IsSet() {
 		toSerialize["order_id"] = o.OrderId.Get()
+	}
+	if o.PredictedLtv.IsSet() {
+		toSerialize["predicted_ltv"] = o.PredictedLtv.Get()
 	}
 	if o.SearchString.IsSet() {
 		toSerialize["search_string"] = o.SearchString.Get()
 	}
-	if o.OptOutType.IsSet() {
-		toSerialize["opt_out_type"] = o.OptOutType.Get()
-	}
-	if o.Np.IsSet() {
-		toSerialize["np"] = o.Np.Get()
+	if o.Value.IsSet() {
+		toSerialize["value"] = o.Value.Get()
 	}
 	return toSerialize, nil
 }

@@ -1,0 +1,112 @@
+/*
+ * ItemResponse_oneOf.h
+ *
+ * Successful item response
+ */
+
+#ifndef _ItemResponse_oneOf_H_
+#define _ItemResponse_oneOf_H_
+
+
+#include <string>
+#include "CatalogsCreativeAssetsAttributes.h"
+#include "CatalogsCreativeAssetsItemResponse.h"
+#include "CatalogsHotelItemResponse.h"
+#include "CatalogsRetailItemResponse.h"
+#include "CatalogsType.h"
+#include "Pin.h"
+#include <list>
+#include "Object.h"
+
+/** \defgroup Models Data Structures for API
+ *  Classes containing all the Data Structures needed for calling/returned by API endpoints
+ *
+ */
+
+namespace Tizen {
+namespace ArtikCloud {
+
+
+/*! \brief Successful item response
+ *
+ *  \ingroup Models
+ *
+ */
+
+class ItemResponse_oneOf : public Object {
+public:
+	/*! \brief Constructor.
+	 */
+	ItemResponse_oneOf();
+	ItemResponse_oneOf(char* str);
+
+	/*! \brief Destructor.
+	 */
+	virtual ~ItemResponse_oneOf();
+
+	/*! \brief Retrieve a string JSON representation of this class.
+	 */
+	char* toJson();
+
+	/*! \brief Fills in members of this class from JSON string representing it.
+	 */
+	void fromJson(char* jsonStr);
+
+	/*! \brief Get 
+	 */
+	CatalogsType getCatalogType();
+
+	/*! \brief Set 
+	 */
+	void setCatalogType(CatalogsType  catalog_type);
+	/*! \brief Get 
+	 */
+	CatalogsCreativeAssetsAttributes getAttributes();
+
+	/*! \brief Set 
+	 */
+	void setAttributes(CatalogsCreativeAssetsAttributes  attributes);
+	/*! \brief Get The catalog retail item id in the merchant namespace
+	 */
+	std::string getItemId();
+
+	/*! \brief Set The catalog retail item id in the merchant namespace
+	 */
+	void setItemId(std::string  item_id);
+	/*! \brief Get The pins mapped to the item
+	 */
+	std::list<Pin> getPins();
+
+	/*! \brief Set The pins mapped to the item
+	 */
+	void setPins(std::list <Pin> pins);
+	/*! \brief Get The catalog hotel id in the merchant namespace
+	 */
+	std::string getHotelId();
+
+	/*! \brief Set The catalog hotel id in the merchant namespace
+	 */
+	void setHotelId(std::string  hotel_id);
+	/*! \brief Get The catalog creative assets id in the merchant namespace
+	 */
+	std::string getCreativeAssetsId();
+
+	/*! \brief Set The catalog creative assets id in the merchant namespace
+	 */
+	void setCreativeAssetsId(std::string  creative_assets_id);
+
+private:
+	CatalogsType catalog_type;
+	CatalogsCreativeAssetsAttributes attributes;
+	std::string item_id;
+	std::list <Pin>pins;
+	std::string hotel_id;
+	std::string creative_assets_id;
+	void __init();
+	void __cleanup();
+
+};
+}
+}
+
+#endif /* _ItemResponse_oneOf_H_ */

@@ -1,0 +1,62 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server InviteBusinessRoleBinding"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a InviteBusinessRoleBinding"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  BaseInviteDataResponseInviteData = openapi_server.resourceTypes.BaseInviteDataResponseInviteData
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  InviteBusinessRoleBinding {
+    title = InviteBusinessRoleBinding
+    description = InviteBusinessRoleBinding
+    derivedFrom = Root
+    properties {
+        id {
+          type =  string
+          description = "Unique identifier of the invite/request."
+          optional = false
+        }
+        invite_data {
+          type = BaseInviteDataResponseInviteData
+          description = ""
+          optional = false
+        }
+        is_received_invite {
+          type =  boolean
+          description = "Indicates whether the invite/request was received."
+          optional = false
+        }
+        user {
+          type =  
+          description = "Metadata for the user that updated the invite/request."
+          optional = false
+        }
+        created_by_business_id {
+          type =  string
+          description = "Unique identifier for the business that created the invite/request."
+          optional = false
+        }
+        created_by_user_id {
+          type =  string
+          description = "Unique identifier for the user that created the invite/request."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  InviteBusinessRoleBinding {
+    title = InviteBusinessRoleBinding
+    description = InviteBusinessRoleBinding
+    implements = openapi_server.resourceTypes.InviteBusinessRoleBinding
+
+  }
+}

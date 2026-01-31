@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**List&lt;AdAccountGetSubscriptionResponse&gt;**](AdAccountGetSubscriptionResponse.md) |  | 
 **bookmark** | **String** |  |  [optional]
+**items** | [**List&lt;LeadSubscription&gt;**](LeadSubscription.md) |  | 
 
 
 

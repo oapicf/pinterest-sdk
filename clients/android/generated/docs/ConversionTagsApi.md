@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**conversionTagsCreate**](ConversionTagsApi.md#conversionTagsCreate) | **POST** /ad_accounts/{ad_account_id}/conversion_tags | Create conversion tag
 [**conversionTagsGet**](ConversionTagsApi.md#conversionTagsGet) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id} | Get conversion tag
-[**conversionTagsList**](ConversionTagsApi.md#conversionTagsList) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | Get conversion tags
+[**conversionTagsList**](ConversionTagsApi.md#conversionTagsList) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | List conversion tags
 [**ocpmEligibleConversionTagsGet**](ConversionTagsApi.md#ocpmEligibleConversionTagsGet) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible | Get Ocpm eligible conversion tags
 [**pageVisitConversionTagsGet**](ConversionTagsApi.md#pageVisitConversionTagsGet) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/page_visit | Get page visit conversion tags
 
@@ -14,11 +14,11 @@ Method | HTTP request | Description
 
 ## conversionTagsCreate
 
-> ConversionTagResponse conversionTagsCreate(adAccountId, conversionTagCreate)
+> ConversionTag conversionTagsCreate(adAccountId, conversionTagCreate)
 
 Create conversion tag
 
-Create a conversion tag, also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Pinterest tag&lt;/a&gt;, with the option to enable enhanced match.&lt;p/&gt; The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.&lt;p/&gt; For more information, see:&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot;&gt;Set up the Pinterest tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/\&quot;&gt;Pinterest Tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/#enhanced-match\&quot;&gt;Enhanced match&lt;/a&gt;
+Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account&#39;s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
 
 ### Example
 
@@ -28,9 +28,9 @@ Create a conversion tag, also known as &lt;a href&#x3D;\&quot;https://help.pinte
 
 ConversionTagsApi apiInstance = new ConversionTagsApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
-ConversionTagCreate conversionTagCreate = new ConversionTagCreate(); // ConversionTagCreate | Conversion Tag to create
+ConversionTagCreate conversionTagCreate = new ConversionTagCreate(); // ConversionTagCreate | 
 try {
-    ConversionTagResponse result = apiInstance.conversionTagsCreate(adAccountId, conversionTagCreate);
+    ConversionTag result = apiInstance.conversionTagsCreate(adAccountId, conversionTagCreate);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ConversionTagsApi#conversionTagsCreate");
@@ -44,11 +44,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
- **conversionTagCreate** | [**ConversionTagCreate**](ConversionTagCreate.md)| Conversion Tag to create |
+ **conversionTagCreate** | [**ConversionTagCreate**](ConversionTagCreate.md)|  |
 
 ### Return type
 
-[**ConversionTagResponse**](ConversionTagResponse.md)
+[**ConversionTag**](ConversionTag.md)
 
 ### Authorization
 
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 
 ## conversionTagsGet
 
-> ConversionTagResponse conversionTagsGet(adAccountId, conversionTagId)
+> ConversionTag conversionTagsGet(adAccountId, conversionTagId)
 
 Get conversion tag
 
@@ -78,7 +78,7 @@ ConversionTagsApi apiInstance = new ConversionTagsApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
 String conversionTagId = 2617998078212; // String | Id of the conversion tag.
 try {
-    ConversionTagResponse result = apiInstance.conversionTagsGet(adAccountId, conversionTagId);
+    ConversionTag result = apiInstance.conversionTagsGet(adAccountId, conversionTagId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ConversionTagsApi#conversionTagsGet");
@@ -96,11 +96,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ConversionTagResponse**](ConversionTagResponse.md)
+[**ConversionTag**](ConversionTag.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -110,9 +110,9 @@ Name | Type | Description  | Notes
 
 ## conversionTagsList
 
-> ConversionTagListResponse conversionTagsList(adAccountId, filterDeleted)
+> ConversionTagsList200Response conversionTagsList(adAccountId, filterDeleted)
 
-Get conversion tags
+List conversion tags
 
 List conversion tags associated with an ad account.
 
@@ -124,9 +124,9 @@ List conversion tags associated with an ad account.
 
 ConversionTagsApi apiInstance = new ConversionTagsApi();
 String adAccountId = null; // String | Unique identifier of an ad account.
-Boolean filterDeleted = true; // Boolean | Filter out deleted tags.
+Boolean filterDeleted = false; // Boolean | Filter by deleted status
 try {
-    ConversionTagListResponse result = apiInstance.conversionTagsList(adAccountId, filterDeleted);
+    ConversionTagsList200Response result = apiInstance.conversionTagsList(adAccountId, filterDeleted);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ConversionTagsApi#conversionTagsList");
@@ -140,15 +140,15 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **adAccountId** | **String**| Unique identifier of an ad account. | [default to null]
- **filterDeleted** | **Boolean**| Filter out deleted tags. | [optional] [default to false]
+ **filterDeleted** | **Boolean**| Filter by deleted status | [optional] [default to false]
 
 ### Return type
 
-[**ConversionTagListResponse**](ConversionTagListResponse.md)
+[**ConversionTagsList200Response**](ConversionTagsList200Response.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -246,7 +246,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

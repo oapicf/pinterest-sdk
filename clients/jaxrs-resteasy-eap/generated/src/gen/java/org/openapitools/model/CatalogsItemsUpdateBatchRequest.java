@@ -17,10 +17,11 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Request object to update catalogs items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@ApiModel(description="Request object to update catalogs items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItemsUpdateBatchRequest   {
   
   private Country country;
+  private List<@Valid ItemUpdateBatchRecord> items = new ArrayList<>();
 
   /**
    * We recommend using the CatalogsLocale values.
@@ -254,7 +255,6 @@ public class CatalogsItemsUpdateBatchRequest   {
 
   private LanguageEnum language;
   private BatchOperation operation;
-  private List<@Valid ItemUpdateBatchRecord> items = new ArrayList<>();
 
   /**
    **/
@@ -267,6 +267,20 @@ public class CatalogsItemsUpdateBatchRequest   {
   }
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+  /**
+   * Array with catalogs items
+   **/
+  
+  @ApiModelProperty(required = true, value = "Array with catalogs items")
+  @JsonProperty("items")
+  @NotNull
+ @Size(min=1,max=1000)  public List<@Valid ItemUpdateBatchRecord> getItems() {
+    return items;
+  }
+  public void setItems(List<@Valid ItemUpdateBatchRecord> items) {
+    this.items = items;
   }
 
   /**
@@ -296,20 +310,6 @@ public class CatalogsItemsUpdateBatchRequest   {
     this.operation = operation;
   }
 
-  /**
-   * Array with catalogs items
-   **/
-  
-  @ApiModelProperty(required = true, value = "Array with catalogs items")
-  @JsonProperty("items")
-  @NotNull
- @Size(min=1,max=1000)  public List<@Valid ItemUpdateBatchRecord> getItems() {
-    return items;
-  }
-  public void setItems(List<@Valid ItemUpdateBatchRecord> items) {
-    this.items = items;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -321,14 +321,14 @@ public class CatalogsItemsUpdateBatchRequest   {
     }
     CatalogsItemsUpdateBatchRequest catalogsItemsUpdateBatchRequest = (CatalogsItemsUpdateBatchRequest) o;
     return Objects.equals(this.country, catalogsItemsUpdateBatchRequest.country) &&
+        Objects.equals(this.items, catalogsItemsUpdateBatchRequest.items) &&
         Objects.equals(this.language, catalogsItemsUpdateBatchRequest.language) &&
-        Objects.equals(this.operation, catalogsItemsUpdateBatchRequest.operation) &&
-        Objects.equals(this.items, catalogsItemsUpdateBatchRequest.items);
+        Objects.equals(this.operation, catalogsItemsUpdateBatchRequest.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, language, operation, items);
+    return Objects.hash(country, items, language, operation);
   }
 
   @Override
@@ -337,9 +337,9 @@ public class CatalogsItemsUpdateBatchRequest   {
     sb.append("class CatalogsItemsUpdateBatchRequest {\n");
     
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

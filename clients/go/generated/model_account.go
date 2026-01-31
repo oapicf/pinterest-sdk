@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,26 +20,26 @@ var _ MappedNullable = &Account{}
 
 // Account struct for Account
 type Account struct {
-	// Type of account
-	AccountType *string `json:"account_type,omitempty"`
-	// User account ID.
-	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
-	ProfileImage *string `json:"profile_image,omitempty"`
-	WebsiteUrl *string `json:"website_url,omitempty"`
-	Username *string `json:"username,omitempty"`
 	// Profile about description.
 	About *string `json:"about,omitempty"`
-	BusinessName NullableString `json:"business_name,omitempty"`
+	// Type of account
+	AccountType *string `json:"account_type,omitempty"`
 	// User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
 	BoardCount NullableInt32 `json:"board_count,omitempty"`
-	// User account pin count. This includes both created and saved pins.
-	PinCount NullableInt32 `json:"pin_count,omitempty"`
+	BusinessName NullableString `json:"business_name,omitempty"`
 	// User account follower count.
 	FollowerCount NullableInt32 `json:"follower_count,omitempty"`
 	// User account following count.
 	FollowingCount NullableInt32 `json:"following_count,omitempty"`
+	// User account ID.
+	Id *string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
 	// User account monthly views.
 	MonthlyViews NullableInt32 `json:"monthly_views,omitempty"`
+	// User account pin count. This includes both created and saved pins.
+	PinCount NullableInt32 `json:"pin_count,omitempty"`
+	ProfileImage *string `json:"profile_image,omitempty"`
+	Username *string `json:"username,omitempty"`
+	WebsiteUrl *string `json:"website_url,omitempty"`
 }
 
 // NewAccount instantiates a new Account object
@@ -57,166 +57,6 @@ func NewAccount() *Account {
 func NewAccountWithDefaults() *Account {
 	this := Account{}
 	return &this
-}
-
-// GetAccountType returns the AccountType field value if set, zero value otherwise.
-func (o *Account) GetAccountType() string {
-	if o == nil || IsNil(o.AccountType) {
-		var ret string
-		return ret
-	}
-	return *o.AccountType
-}
-
-// GetAccountTypeOk returns a tuple with the AccountType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Account) GetAccountTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.AccountType) {
-		return nil, false
-	}
-	return o.AccountType, true
-}
-
-// HasAccountType returns a boolean if a field has been set.
-func (o *Account) HasAccountType() bool {
-	if o != nil && !IsNil(o.AccountType) {
-		return true
-	}
-
-	return false
-}
-
-// SetAccountType gets a reference to the given string and assigns it to the AccountType field.
-func (o *Account) SetAccountType(v string) {
-	o.AccountType = &v
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *Account) GetId() string {
-	if o == nil || IsNil(o.Id) {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Account) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *Account) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Account) SetId(v string) {
-	o.Id = &v
-}
-
-// GetProfileImage returns the ProfileImage field value if set, zero value otherwise.
-func (o *Account) GetProfileImage() string {
-	if o == nil || IsNil(o.ProfileImage) {
-		var ret string
-		return ret
-	}
-	return *o.ProfileImage
-}
-
-// GetProfileImageOk returns a tuple with the ProfileImage field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Account) GetProfileImageOk() (*string, bool) {
-	if o == nil || IsNil(o.ProfileImage) {
-		return nil, false
-	}
-	return o.ProfileImage, true
-}
-
-// HasProfileImage returns a boolean if a field has been set.
-func (o *Account) HasProfileImage() bool {
-	if o != nil && !IsNil(o.ProfileImage) {
-		return true
-	}
-
-	return false
-}
-
-// SetProfileImage gets a reference to the given string and assigns it to the ProfileImage field.
-func (o *Account) SetProfileImage(v string) {
-	o.ProfileImage = &v
-}
-
-// GetWebsiteUrl returns the WebsiteUrl field value if set, zero value otherwise.
-func (o *Account) GetWebsiteUrl() string {
-	if o == nil || IsNil(o.WebsiteUrl) {
-		var ret string
-		return ret
-	}
-	return *o.WebsiteUrl
-}
-
-// GetWebsiteUrlOk returns a tuple with the WebsiteUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Account) GetWebsiteUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.WebsiteUrl) {
-		return nil, false
-	}
-	return o.WebsiteUrl, true
-}
-
-// HasWebsiteUrl returns a boolean if a field has been set.
-func (o *Account) HasWebsiteUrl() bool {
-	if o != nil && !IsNil(o.WebsiteUrl) {
-		return true
-	}
-
-	return false
-}
-
-// SetWebsiteUrl gets a reference to the given string and assigns it to the WebsiteUrl field.
-func (o *Account) SetWebsiteUrl(v string) {
-	o.WebsiteUrl = &v
-}
-
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *Account) GetUsername() string {
-	if o == nil || IsNil(o.Username) {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Account) GetUsernameOk() (*string, bool) {
-	if o == nil || IsNil(o.Username) {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *Account) HasUsername() bool {
-	if o != nil && !IsNil(o.Username) {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *Account) SetUsername(v string) {
-	o.Username = &v
 }
 
 // GetAbout returns the About field value if set, zero value otherwise.
@@ -251,46 +91,36 @@ func (o *Account) SetAbout(v string) {
 	o.About = &v
 }
 
-// GetBusinessName returns the BusinessName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Account) GetBusinessName() string {
-	if o == nil || IsNil(o.BusinessName.Get()) {
+// GetAccountType returns the AccountType field value if set, zero value otherwise.
+func (o *Account) GetAccountType() string {
+	if o == nil || IsNil(o.AccountType) {
 		var ret string
 		return ret
 	}
-	return *o.BusinessName.Get()
+	return *o.AccountType
 }
 
-// GetBusinessNameOk returns a tuple with the BusinessName field value if set, nil otherwise
+// GetAccountTypeOk returns a tuple with the AccountType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Account) GetBusinessNameOk() (*string, bool) {
-	if o == nil {
+func (o *Account) GetAccountTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.AccountType) {
 		return nil, false
 	}
-	return o.BusinessName.Get(), o.BusinessName.IsSet()
+	return o.AccountType, true
 }
 
-// HasBusinessName returns a boolean if a field has been set.
-func (o *Account) HasBusinessName() bool {
-	if o != nil && o.BusinessName.IsSet() {
+// HasAccountType returns a boolean if a field has been set.
+func (o *Account) HasAccountType() bool {
+	if o != nil && !IsNil(o.AccountType) {
 		return true
 	}
 
 	return false
 }
 
-// SetBusinessName gets a reference to the given NullableString and assigns it to the BusinessName field.
-func (o *Account) SetBusinessName(v string) {
-	o.BusinessName.Set(&v)
-}
-// SetBusinessNameNil sets the value for BusinessName to be an explicit nil
-func (o *Account) SetBusinessNameNil() {
-	o.BusinessName.Set(nil)
-}
-
-// UnsetBusinessName ensures that no value is present for BusinessName, not even an explicit nil
-func (o *Account) UnsetBusinessName() {
-	o.BusinessName.Unset()
+// SetAccountType gets a reference to the given string and assigns it to the AccountType field.
+func (o *Account) SetAccountType(v string) {
+	o.AccountType = &v
 }
 
 // GetBoardCount returns the BoardCount field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -335,46 +165,46 @@ func (o *Account) UnsetBoardCount() {
 	o.BoardCount.Unset()
 }
 
-// GetPinCount returns the PinCount field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Account) GetPinCount() int32 {
-	if o == nil || IsNil(o.PinCount.Get()) {
-		var ret int32
+// GetBusinessName returns the BusinessName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Account) GetBusinessName() string {
+	if o == nil || IsNil(o.BusinessName.Get()) {
+		var ret string
 		return ret
 	}
-	return *o.PinCount.Get()
+	return *o.BusinessName.Get()
 }
 
-// GetPinCountOk returns a tuple with the PinCount field value if set, nil otherwise
+// GetBusinessNameOk returns a tuple with the BusinessName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Account) GetPinCountOk() (*int32, bool) {
+func (o *Account) GetBusinessNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.PinCount.Get(), o.PinCount.IsSet()
+	return o.BusinessName.Get(), o.BusinessName.IsSet()
 }
 
-// HasPinCount returns a boolean if a field has been set.
-func (o *Account) HasPinCount() bool {
-	if o != nil && o.PinCount.IsSet() {
+// HasBusinessName returns a boolean if a field has been set.
+func (o *Account) HasBusinessName() bool {
+	if o != nil && o.BusinessName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPinCount gets a reference to the given NullableInt32 and assigns it to the PinCount field.
-func (o *Account) SetPinCount(v int32) {
-	o.PinCount.Set(&v)
+// SetBusinessName gets a reference to the given NullableString and assigns it to the BusinessName field.
+func (o *Account) SetBusinessName(v string) {
+	o.BusinessName.Set(&v)
 }
-// SetPinCountNil sets the value for PinCount to be an explicit nil
-func (o *Account) SetPinCountNil() {
-	o.PinCount.Set(nil)
+// SetBusinessNameNil sets the value for BusinessName to be an explicit nil
+func (o *Account) SetBusinessNameNil() {
+	o.BusinessName.Set(nil)
 }
 
-// UnsetPinCount ensures that no value is present for PinCount, not even an explicit nil
-func (o *Account) UnsetPinCount() {
-	o.PinCount.Unset()
+// UnsetBusinessName ensures that no value is present for BusinessName, not even an explicit nil
+func (o *Account) UnsetBusinessName() {
+	o.BusinessName.Unset()
 }
 
 // GetFollowerCount returns the FollowerCount field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -461,6 +291,38 @@ func (o *Account) UnsetFollowingCount() {
 	o.FollowingCount.Unset()
 }
 
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *Account) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Account) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *Account) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *Account) SetId(v string) {
+	o.Id = &v
+}
+
 // GetMonthlyViews returns the MonthlyViews field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Account) GetMonthlyViews() int32 {
 	if o == nil || IsNil(o.MonthlyViews.Get()) {
@@ -503,6 +365,144 @@ func (o *Account) UnsetMonthlyViews() {
 	o.MonthlyViews.Unset()
 }
 
+// GetPinCount returns the PinCount field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Account) GetPinCount() int32 {
+	if o == nil || IsNil(o.PinCount.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.PinCount.Get()
+}
+
+// GetPinCountOk returns a tuple with the PinCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Account) GetPinCountOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PinCount.Get(), o.PinCount.IsSet()
+}
+
+// HasPinCount returns a boolean if a field has been set.
+func (o *Account) HasPinCount() bool {
+	if o != nil && o.PinCount.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPinCount gets a reference to the given NullableInt32 and assigns it to the PinCount field.
+func (o *Account) SetPinCount(v int32) {
+	o.PinCount.Set(&v)
+}
+// SetPinCountNil sets the value for PinCount to be an explicit nil
+func (o *Account) SetPinCountNil() {
+	o.PinCount.Set(nil)
+}
+
+// UnsetPinCount ensures that no value is present for PinCount, not even an explicit nil
+func (o *Account) UnsetPinCount() {
+	o.PinCount.Unset()
+}
+
+// GetProfileImage returns the ProfileImage field value if set, zero value otherwise.
+func (o *Account) GetProfileImage() string {
+	if o == nil || IsNil(o.ProfileImage) {
+		var ret string
+		return ret
+	}
+	return *o.ProfileImage
+}
+
+// GetProfileImageOk returns a tuple with the ProfileImage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Account) GetProfileImageOk() (*string, bool) {
+	if o == nil || IsNil(o.ProfileImage) {
+		return nil, false
+	}
+	return o.ProfileImage, true
+}
+
+// HasProfileImage returns a boolean if a field has been set.
+func (o *Account) HasProfileImage() bool {
+	if o != nil && !IsNil(o.ProfileImage) {
+		return true
+	}
+
+	return false
+}
+
+// SetProfileImage gets a reference to the given string and assigns it to the ProfileImage field.
+func (o *Account) SetProfileImage(v string) {
+	o.ProfileImage = &v
+}
+
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *Account) GetUsername() string {
+	if o == nil || IsNil(o.Username) {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Account) GetUsernameOk() (*string, bool) {
+	if o == nil || IsNil(o.Username) {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *Account) HasUsername() bool {
+	if o != nil && !IsNil(o.Username) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *Account) SetUsername(v string) {
+	o.Username = &v
+}
+
+// GetWebsiteUrl returns the WebsiteUrl field value if set, zero value otherwise.
+func (o *Account) GetWebsiteUrl() string {
+	if o == nil || IsNil(o.WebsiteUrl) {
+		var ret string
+		return ret
+	}
+	return *o.WebsiteUrl
+}
+
+// GetWebsiteUrlOk returns a tuple with the WebsiteUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Account) GetWebsiteUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.WebsiteUrl) {
+		return nil, false
+	}
+	return o.WebsiteUrl, true
+}
+
+// HasWebsiteUrl returns a boolean if a field has been set.
+func (o *Account) HasWebsiteUrl() bool {
+	if o != nil && !IsNil(o.WebsiteUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetWebsiteUrl gets a reference to the given string and assigns it to the WebsiteUrl field.
+func (o *Account) SetWebsiteUrl(v string) {
+	o.WebsiteUrl = &v
+}
+
 func (o Account) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -513,32 +513,17 @@ func (o Account) MarshalJSON() ([]byte, error) {
 
 func (o Account) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AccountType) {
-		toSerialize["account_type"] = o.AccountType
-	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.ProfileImage) {
-		toSerialize["profile_image"] = o.ProfileImage
-	}
-	if !IsNil(o.WebsiteUrl) {
-		toSerialize["website_url"] = o.WebsiteUrl
-	}
-	if !IsNil(o.Username) {
-		toSerialize["username"] = o.Username
-	}
 	if !IsNil(o.About) {
 		toSerialize["about"] = o.About
 	}
-	if o.BusinessName.IsSet() {
-		toSerialize["business_name"] = o.BusinessName.Get()
+	if !IsNil(o.AccountType) {
+		toSerialize["account_type"] = o.AccountType
 	}
 	if o.BoardCount.IsSet() {
 		toSerialize["board_count"] = o.BoardCount.Get()
 	}
-	if o.PinCount.IsSet() {
-		toSerialize["pin_count"] = o.PinCount.Get()
+	if o.BusinessName.IsSet() {
+		toSerialize["business_name"] = o.BusinessName.Get()
 	}
 	if o.FollowerCount.IsSet() {
 		toSerialize["follower_count"] = o.FollowerCount.Get()
@@ -546,8 +531,23 @@ func (o Account) ToMap() (map[string]interface{}, error) {
 	if o.FollowingCount.IsSet() {
 		toSerialize["following_count"] = o.FollowingCount.Get()
 	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if o.MonthlyViews.IsSet() {
 		toSerialize["monthly_views"] = o.MonthlyViews.Get()
+	}
+	if o.PinCount.IsSet() {
+		toSerialize["pin_count"] = o.PinCount.Get()
+	}
+	if !IsNil(o.ProfileImage) {
+		toSerialize["profile_image"] = o.ProfileImage
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.WebsiteUrl) {
+		toSerialize["website_url"] = o.WebsiteUrl
 	}
 	return toSerialize, nil
 }

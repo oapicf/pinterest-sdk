@@ -1,0 +1,19 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "conversion_tag_v3_goal_metadata" },
+      {"model": "frequency_goal_metadata" },
+      {"model": "scrollup_goal_metadata" },
+    ]
+  }]
+}

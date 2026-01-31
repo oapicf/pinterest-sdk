@@ -4,7 +4,7 @@
 
 Pinterest REST API
 
-- API version: 5.14.0
+- API version: 5.23.0
 - Generator version: 7.18.0
 
 Pinterest's REST API
@@ -44,7 +44,8 @@ class Example : public QObject {
     qint32 create();
     qint32 create();
     QString create();
-    OAIConversionReportAttributionType create();
+    QList<OAIConversionReportAttributionType> create();
+    OAIReportingTimeZone create();
 public Q_SLOTS:
    void exampleFunction1();
 };
@@ -79,14 +80,18 @@ qint32 Example::create(){
     qint32 obj;
 QString Example::create(){
     QString obj;
-OAIConversionReportAttributionType Example::create(){
-    OAIConversionReportAttributionType obj;
+QList&lt;OAIConversionReportAttributionType&gt; Example::create(){
+    QList<OAIConversionReportAttributionType> obj;
+OAIReportingTimeZone Example::create(){
+    OAIReportingTimeZone obj;
  return obj;
 }
 
 void Example::exampleFunction1(){
      OAIAdAccountsApi apiInstance;
      
+      //OAuth Authentication supported right now
+
       //OAuth Authentication supported right now
 
       QEventLoop loop;
@@ -175,7 +180,7 @@ void Example::exampleFunction1(){
           loop.quit();
       });
 
-      qint32 engagement_window_days = create(); // qint32 | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
+      qint32 engagement_window_days = create(); // qint32 | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.
 
       QEventLoop loop;
       connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignal, [&]() {
@@ -208,8 +213,19 @@ void Example::exampleFunction1(){
           loop.quit();
       });
 
-      OAIConversionReportAttributionType attribution_types = create(); // OAIConversionReportAttributionType | List of types of attribution for the conversion report
-      apiInstance.adAccountTargetingAnalytics_get(ad_account_idstart_dateend_datetargeting_typescolumnsgranularityclick_window_daysengagement_window_daysview_window_daysconversion_report_timeattribution_types);
+      QList<OAIConversionReportAttributionType> attribution_types = create(); // QList<OAIConversionReportAttributionType> | List of types of attribution for the conversion report
+
+      QEventLoop loop;
+      connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignal, [&]() {
+          loop.quit();
+      });
+      connect(&apiInstance, &OAIAdAccountsApi::adAccountTargetingAnalytics_getSignalE, [&](QNetworkReply::NetworkError, QString error_str) {
+          qDebug() << "Error happened while issuing request : " << error_str;
+          loop.quit();
+      });
+
+      OAIReportingTimeZone reporting_timezone = create(); // OAIReportingTimeZone | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+      apiInstance.adAccountTargetingAnalytics_get(ad_account_idstart_dateend_datetargeting_typescolumnsgranularityclick_window_daysengagement_window_daysview_window_daysconversion_report_timeattribution_typesreporting_timezone);
       QTimer::singleShot(5000, &loop, &QEventLoop::quit);
       loop.exec();
   }
@@ -289,6 +305,7 @@ Authentication schemes defined for the API:
   - boards:write_secret: Create, update, or delete your secret boards
   - catalogs:read: See all of your catalogs data
   - catalogs:write: Create, update, or delete your catalogs data
+  - msot:write: Create measurement source of truth events
   - pins:read: See your public Pins
   - pins:read_secret: See your secret Pins
   - pins:write: Create, update, or delete your public Pins
@@ -325,6 +342,7 @@ Authentication schemes defined for the API:
   - boards:write_secret: Create, update, or delete your secret boards
   - catalogs:read: See all of your catalogs data
   - catalogs:write: Create, update, or delete your catalogs data
+  - msot:write: Create measurement source of truth events
   - pins:read: See your public Pins
   - pins:read_secret: See your secret Pins
   - pins:write: Create, update, or delete your public Pins

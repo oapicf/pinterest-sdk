@@ -26,8 +26,9 @@ import com.squareup.moshi.JsonClass
  *
  * @param catalogType 
  * @param country 
- * @param language We recommend using the CatalogsLocale values.
  * @param items Array with catalogs item operations
+ * @param language We recommend using the CatalogsLocale values.
+ * @param catalogId Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
  */
 
 
@@ -39,13 +40,17 @@ data class CatalogsRetailBatchRequest (
     @Json(name = "country")
     val country: Country,
 
+    /* Array with catalogs item operations */
+    @Json(name = "items")
+    val items: kotlin.collections.List<CatalogsRetailBatchRequestItemsInner>,
+
     /* We recommend using the CatalogsLocale values. */
     @Json(name = "language")
     val language: CatalogsRetailBatchRequest.Language,
 
-    /* Array with catalogs item operations */
-    @Json(name = "items")
-    val items: kotlin.collections.List<CatalogsRetailBatchRequestItemsInner>
+    /* Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog */
+    @Json(name = "catalog_id")
+    val catalogId: kotlin.String? = null
 
 ) {
 

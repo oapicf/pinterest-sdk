@@ -5,6 +5,9 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
+#include "../model/brand_accounts_create_200_response.h"
+#include "../model/brand_accounts_create_request.h"
+#include "../model/brand_accounts_update_request.h"
 #include "../model/delete_partners_request.h"
 #include "../model/delete_partners_response.h"
 #include "../model/deleted_members_response.h"
@@ -15,6 +18,7 @@
 #include "../model/member_business_role.h"
 #include "../model/members_to_delete_body.h"
 #include "../model/partner_type.h"
+#include "../model/system_user_update_request.h"
 #include "../model/update_member_business_role_body.h"
 #include "../model/update_member_results_response_array.h"
 
@@ -23,6 +27,22 @@ typedef enum  { pinterest_rest_api_getBusinessMembers_BUSINESSROLES_NULL = 0, pi
 
 // Enum  for BusinessAccessRelationshipsAPI_getBusinessPartners
 typedef enum  { pinterest_rest_api_getBusinessPartners__NULL = 0, pinterest_rest_api_getBusinessPartners__INTERNAL, pinterest_rest_api_getBusinessPartners__EXTERNAL } pinterest_rest_api_getBusinessPartners_partner_type_e;
+
+
+// Create a Brand Account
+//
+// Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+//
+brand_accounts_create_200_response_t*
+BusinessAccessRelationshipsAPI_brandAccountsCreate(apiClient_t *apiClient, char *business_hierarchy_id, brand_accounts_create_request_t *brand_accounts_create_request);
+
+
+// Update a Brand Account
+//
+// Update an existing Brand Account
+//
+brand_accounts_create_200_response_t*
+BusinessAccessRelationshipsAPI_brandAccountsUpdate(apiClient_t *apiClient, char *business_hierarchy_id, char *brand_account_id, brand_accounts_update_request_t *brand_accounts_update_request);
 
 
 // Terminate business memberships
@@ -54,7 +74,7 @@ BusinessAccessRelationshipsAPI_getBusinessEmployers(apiClient_t *apiClient, int 
 // Get all members of the specified business. The return response will include the member's business_role and assets they have access to if assets_summary=TRUE
 //
 get_business_members_200_response_t*
-BusinessAccessRelationshipsAPI_getBusinessMembers(apiClient_t *apiClient, char *business_id, int *assets_summary, list_t *business_roles, char *member_ids, int *start_index, char *bookmark, int *page_size);
+BusinessAccessRelationshipsAPI_getBusinessMembers(apiClient_t *apiClient, char *business_id, int *fetch_system_users, int *assets_summary, list_t *business_roles, char *member_ids, int *start_index, char *bookmark, int *page_size);
 
 
 // Get business partners
@@ -63,6 +83,14 @@ BusinessAccessRelationshipsAPI_getBusinessMembers(apiClient_t *apiClient, char *
 //
 get_business_partners_200_response_t*
 BusinessAccessRelationshipsAPI_getBusinessPartners(apiClient_t *apiClient, char *business_id, int *assets_summary, partner_type_e partner_type, char *partner_ids, int *start_index, int *page_size, char *bookmark);
+
+
+// Update a system user information.
+//
+// Update a system user information such as name.
+//
+void
+BusinessAccessRelationshipsAPI_systemUserUpdate(apiClient_t *apiClient, char *business_id, char *system_user_id, system_user_update_request_t *system_user_update_request);
 
 
 // Update member's business role

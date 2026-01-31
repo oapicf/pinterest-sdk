@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"country": @"country", @"customerListId": @"customer_list_id", @"engagementDomain": @"engagement_domain", @"engagementType": @"engagement_type", @"event": @"event", @"eventData": @"event_data", @"percentage": @"percentage", @"pinId": @"pin_id", @"prefill": @"prefill", @"retentionDays": @"retention_days", @"seedId": @"seed_id", @"url": @"url", @"visitorSourceId": @"visitor_source_id", @"eventSource": @"event_source", @"ingestionSource": @"ingestion_source", @"engagerType": @"engager_type", @"campaignId": @"campaign_id", @"adId": @"ad_id", @"objectiveType": @"objective_type", @"adAccountId": @"ad_account_id" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"adAccountId": @"ad_account_id", @"adId": @"ad_id", @"campaignId": @"campaign_id", @"country": @"country", @"customerListId": @"customer_list_id", @"engagementDomain": @"engagement_domain", @"engagementType": @"engagement_type", @"engagerType": @"engager_type", @"event": @"event", @"eventData": @"event_data", @"eventSource": @"event_source", @"ingestionSource": @"ingestion_source", @"objectiveType": @"objective_type", @"percentage": @"percentage", @"pinId": @"pin_id", @"prefill": @"prefill", @"retentionDays": @"retention_days", @"seedId": @"seed_id", @"url": @"url", @"visitorSourceId": @"visitor_source_id" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"country", @"customerListId", @"engagementDomain", @"engagementType", @"event", @"eventData", @"percentage", @"pinId", @"prefill", @"retentionDays", @"seedId", @"url", @"visitorSourceId", @"eventSource", @"ingestionSource", @"engagerType", @"campaignId", @"adId", @"objectiveType", @"adAccountId"];
+  NSArray *optionalProperties = @[@"adAccountId", @"adId", @"campaignId", @"country", @"customerListId", @"engagementDomain", @"engagementType", @"engagerType", @"event", @"eventData", @"eventSource", @"ingestionSource", @"objectiveType", @"percentage", @"pinId", @"prefill", @"retentionDays", @"seedId", @"url", @"visitorSourceId"];
   return [optionalProperties containsObject:propertyName];
 }
 

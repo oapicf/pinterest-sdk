@@ -33,6 +33,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
+// Configure OAuth2 access token for authorization: client_credentials
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new OpenAPI\Client\Api\KeywordsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -66,7 +69,7 @@ try {
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -142,7 +145,7 @@ try {
 ## `keywordsGet()`
 
 ```php
-keywordsGet($ad_account_id, $campaign_id, $ad_group_id, $match_types, $page_size, $bookmark): \OpenAPI\Client\Model\KeywordsGet200Response
+keywordsGet($ad_account_id, $campaign_id, $ad_group_id, $ad_group_ids, $match_types, $page_size, $bookmark): \OpenAPI\Client\Model\KeywordsGet200Response
 ```
 
 Get keywords
@@ -159,6 +162,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 // Configure OAuth2 access token for authorization: pinterest_oauth2
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
+// Configure OAuth2 access token for authorization: client_credentials
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new OpenAPI\Client\Api\KeywordsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -169,12 +175,13 @@ $apiInstance = new OpenAPI\Client\Api\KeywordsApi(
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 $campaign_id = 'campaign_id_example'; // string | Campaign Id to use to filter the results.
 $ad_group_id = 123123123; // string | Ad group Id.
+$ad_group_ids = array('ad_group_ids_example'); // string[] | List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.
 $match_types = array(new \OpenAPI\Client\Model\\OpenAPI\Client\Model\MatchType()); // \OpenAPI\Client\Model\MatchType[] | Keyword <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type</a>
-$page_size = 25; // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+$page_size = 25; // int | Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
 $bookmark = 'bookmark_example'; // string | Cursor used to fetch the next page of items
 
 try {
-    $result = $apiInstance->keywordsGet($ad_account_id, $campaign_id, $ad_group_id, $match_types, $page_size, $bookmark);
+    $result = $apiInstance->keywordsGet($ad_account_id, $campaign_id, $ad_group_id, $ad_group_ids, $match_types, $page_size, $bookmark);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling KeywordsApi->keywordsGet: ', $e->getMessage(), PHP_EOL;
@@ -188,8 +195,9 @@ try {
 | **ad_account_id** | **string**| Unique identifier of an ad account. | |
 | **campaign_id** | **string**| Campaign Id to use to filter the results. | [optional] |
 | **ad_group_id** | **string**| Ad group Id. | [optional] |
+| **ad_group_ids** | [**string[]**](../Model/string.md)| List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. | [optional] |
 | **match_types** | [**\OpenAPI\Client\Model\MatchType[]**](../Model/\OpenAPI\Client\Model\MatchType.md)| Keyword &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot;&gt;match type&lt;/a&gt; | [optional] |
-| **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
+| **page_size** | **int**| Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | **bookmark** | **string**| Cursor used to fetch the next page of items | [optional] |
 
 ### Return type
@@ -198,7 +206,7 @@ try {
 
 ### Authorization
 
-[pinterest_oauth2](../../README.md#pinterest_oauth2)
+[pinterest_oauth2](../../README.md#pinterest_oauth2), [client_credentials](../../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -274,7 +282,7 @@ try {
 ## `trendingKeywordsList()`
 
 ```php
-trendingKeywordsList($region, $trend_type, $interests, $genders, $ages, $include_keywords, $normalize_against_group, $limit): \OpenAPI\Client\Model\TrendingKeywordsResponse
+trendingKeywordsList($region, $trend_type, $interests, $genders, $ages, $include_keywords, $normalize_against_group, $limit, $include_prediction, $include_demographics): \OpenAPI\Client\Model\TrendingKeywordsResponse
 ```
 
 List trending keywords
@@ -306,9 +314,11 @@ $ages = ["35-44","50-54"]; // string[] | If set, filters the results to trends a
 $include_keywords = ["recipes","dessert"]; // string[] | If set, filters the results to top trends which include at least one of the specified keywords.<br /> If unset, no keyword filtering logic is applied.
 $normalize_against_group = true; // bool | Governs how the resulting time series data will be normalized to a [0-100] scale.<br /> By default (`false`), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword's time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.<br /> If set to `true`, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords.
 $limit = 25; // int | The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a `limit` of 50 will return the top 50 trends.
+$include_prediction = true; // bool | <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including predicted weekly search volume data for the next 90 days. By default (`false`), the response will not include predicted data.
+$include_demographics = true; // bool | <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including the age and gender distribution for each keyword. By default (`false`), the response will not include demographics data.
 
 try {
-    $result = $apiInstance->trendingKeywordsList($region, $trend_type, $interests, $genders, $ages, $include_keywords, $normalize_against_group, $limit);
+    $result = $apiInstance->trendingKeywordsList($region, $trend_type, $interests, $genders, $ages, $include_keywords, $normalize_against_group, $limit, $include_prediction, $include_demographics);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling KeywordsApi->trendingKeywordsList: ', $e->getMessage(), PHP_EOL;
@@ -327,6 +337,8 @@ try {
 | **include_keywords** | [**string[]**](../Model/string.md)| If set, filters the results to top trends which include at least one of the specified keywords.&lt;br /&gt; If unset, no keyword filtering logic is applied. | [optional] |
 | **normalize_against_group** | **bool**| Governs how the resulting time series data will be normalized to a [0-100] scale.&lt;br /&gt; By default (&#x60;false&#x60;), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword&#39;s time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.&lt;br /&gt; If set to &#x60;true&#x60;, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords. | [optional] [default to false] |
 | **limit** | **int**| The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a &#x60;limit&#x60; of 50 will return the top 50 trends. | [optional] [default to 50] |
+| **include_prediction** | **bool**| &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including predicted weekly search volume data for the next 90 days. By default (&#x60;false&#x60;), the response will not include predicted data. | [optional] [default to false] |
+| **include_demographics** | **bool**| &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; Including the age and gender distribution for each keyword. By default (&#x60;false&#x60;), the response will not include demographics data. | [optional] [default to false] |
 
 ### Return type
 

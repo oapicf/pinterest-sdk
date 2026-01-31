@@ -5,19 +5,19 @@
   "name": "ImageMetadata",
   "fields": [
     {
-      "name": "item_type",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "title",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
-    },
-    {
       "name": "description",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "images",
+      "type": ["null", "model.ImageSize"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "item_type",
       "type": ["null", "string"],
       "doc": "",
       "default": null
@@ -29,8 +29,8 @@
       "default": null
     },
     {
-      "name": "images",
-      "type": ["null", "model.ImageMetadataImages"],
+      "name": "title",
+      "type": ["null", "string"],
       "doc": "",
       "default": null
     }

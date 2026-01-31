@@ -8,7 +8,7 @@ Get a list of the boards a user follows. The request returns a board summary obj
 
 - `POST` to `/user_account/following/:username`, OperationId: `follow_user/update`:
 Follow user.
-&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
 
 - `GET` to `/user_account/followers`, OperationId: `followers/list`:
 List followers.

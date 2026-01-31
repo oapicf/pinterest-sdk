@@ -12,12 +12,12 @@ import org.joda.time.DateTime
 import CatalogsCreativeAssetsItemResponse._
 
 case class CatalogsCreativeAssetsItemResponse (
-  catalogType: CatalogsType,
+  attributes: Option[CatalogsCreativeAssetsAttributes],
+catalogType: CatalogsType,
 /* The catalog creative assets id in the merchant namespace */
   creativeAssetsId: Option[String],
 /* The pins mapped to the item */
-  pins: Option[List[Pin]],
-attributes: Option[CatalogsCreativeAssetsAttributes])
+  pins: Option[List[Pin]])
 
 object CatalogsCreativeAssetsItemResponse {
   import DateTimeCodecs._

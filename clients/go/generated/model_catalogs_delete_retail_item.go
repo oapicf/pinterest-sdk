@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -24,6 +24,8 @@ var _ MappedNullable = &CatalogsDeleteRetailItem{}
 type CatalogsDeleteRetailItem struct {
 	// The catalog item id in the merchant namespace
 	ItemId string `json:"item_id"`
+	// The millisecond timestamp when the item was lastly modified by the merchant.
+	LastUpdatedTime *int64 `json:"last_updated_time,omitempty"`
 	Operation string `json:"operation"`
 }
 
@@ -72,6 +74,38 @@ func (o *CatalogsDeleteRetailItem) SetItemId(v string) {
 	o.ItemId = v
 }
 
+// GetLastUpdatedTime returns the LastUpdatedTime field value if set, zero value otherwise.
+func (o *CatalogsDeleteRetailItem) GetLastUpdatedTime() int64 {
+	if o == nil || IsNil(o.LastUpdatedTime) {
+		var ret int64
+		return ret
+	}
+	return *o.LastUpdatedTime
+}
+
+// GetLastUpdatedTimeOk returns a tuple with the LastUpdatedTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsDeleteRetailItem) GetLastUpdatedTimeOk() (*int64, bool) {
+	if o == nil || IsNil(o.LastUpdatedTime) {
+		return nil, false
+	}
+	return o.LastUpdatedTime, true
+}
+
+// HasLastUpdatedTime returns a boolean if a field has been set.
+func (o *CatalogsDeleteRetailItem) HasLastUpdatedTime() bool {
+	if o != nil && !IsNil(o.LastUpdatedTime) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastUpdatedTime gets a reference to the given int64 and assigns it to the LastUpdatedTime field.
+func (o *CatalogsDeleteRetailItem) SetLastUpdatedTime(v int64) {
+	o.LastUpdatedTime = &v
+}
+
 // GetOperation returns the Operation field value
 func (o *CatalogsDeleteRetailItem) GetOperation() string {
 	if o == nil {
@@ -107,6 +141,9 @@ func (o CatalogsDeleteRetailItem) MarshalJSON() ([]byte, error) {
 func (o CatalogsDeleteRetailItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["item_id"] = o.ItemId
+	if !IsNil(o.LastUpdatedTime) {
+		toSerialize["last_updated_time"] = o.LastUpdatedTime
+	}
 	toSerialize["operation"] = o.Operation
 	return toSerialize, nil
 }

@@ -5,11 +5,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Active** | **Boolean** | True if the offer code is currently active. | [optional] 
 **AdvertiserId** | **String** | Advertiser ID the offer was applied to. | [optional] 
-**DiscountType** | **String** | The type of discount of this credit | [optional] 
-**DiscountInMicroCurrency** | **Decimal** | The discount applied in the offer’s currency value. | [optional] 
 **DiscountCurrency** | **String** | Currency value for the discount. | [optional] 
-**Title** | **String** | Human readable title of the offer code. | [optional] 
+**DiscountInMicroCurrency** | **Decimal** | The discount applied in the offer’s currency value. | [optional] 
+**DiscountType** | **String** | The type of discount of this credit | [optional] 
 **RemainingDiscountInMicroCurrency** | **Decimal** | The credits left to spend. | [optional] 
+**Title** | **String** | Human readable title of the offer code. | [optional] 
 
 ## Examples
 
@@ -17,11 +17,11 @@ Name | Type | Description | Notes
 ```powershell
 $AdsCreditDiscountsResponse = Initialize-PSOpenAPIToolsAdsCreditDiscountsResponse  -Active true `
  -AdvertiserId 12312451231 `
- -DiscountType null `
- -DiscountInMicroCurrency 125000000 `
  -DiscountCurrency USD `
- -Title Ads Credits `
- -RemainingDiscountInMicroCurrency 125000000
+ -DiscountInMicroCurrency 125000000 `
+ -DiscountType null `
+ -RemainingDiscountInMicroCurrency 125000000 `
+ -Title Ads Credits
 ```
 
 - Convert the resource to JSON

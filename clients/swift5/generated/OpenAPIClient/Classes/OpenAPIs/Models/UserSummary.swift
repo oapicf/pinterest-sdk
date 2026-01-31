@@ -12,27 +12,27 @@ import AnyCodable
 
 public struct UserSummary: Codable, JSONEncodable, Hashable {
 
-    /** Username */
-    public var username: String?
     /** Always \"user\" */
     public var type: String?
+    /** Username */
+    public var username: String?
 
-    public init(username: String? = nil, type: String? = nil) {
-        self.username = username
+    public init(type: String? = nil, username: String? = nil) {
         self.type = type
+        self.username = username
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case username
         case type
+        case username
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(username, forKey: .username)
         try container.encodeIfPresent(type, forKey: .type)
+        try container.encodeIfPresent(username, forKey: .username)
     }
 }
 

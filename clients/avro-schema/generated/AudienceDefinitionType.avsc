@@ -1,0 +1,22 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Generated audience type to request.",
+  "name": "AudienceDefinitionType",
+  "fields": [
+    {
+      "name": "scope",
+      "type": ["null", {
+        "type": "enum",
+        "name": "AudienceDefinitionType_scope",
+        "symbols": [
+          "IMPRESSION_PLUS_ENGAGEMENT",
+          "ENGAGEMENT"
+        ]
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

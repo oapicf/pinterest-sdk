@@ -21,6 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsRetailProductGroupCreateRequest  {
   
+ /**
+  * Catalog id pertaining to the retail product group.
+  */
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the retail product group.")
+
+  private String catalogId;
+
 public enum CatalogTypeEnum {
 
 RETAIL(String.valueOf("RETAIL"));
@@ -60,9 +67,11 @@ RETAIL(String.valueOf("RETAIL"));
 
   private CatalogTypeEnum catalogType;
 
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
-  private String name;
+  @Valid
+
+  private Country country;
 
   @ApiModelProperty(value = "")
 
@@ -74,24 +83,34 @@ RETAIL(String.valueOf("RETAIL"));
 
   private CatalogsProductGroupFiltersRequest filters;
 
- /**
-  * Catalog id pertaining to the retail product group.
-  */
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the retail product group.")
-
-  private String catalogId;
-
-  @ApiModelProperty(required = true, value = "")
-
-  @Valid
-
-  private Country country;
-
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
   @Valid
 
   private CatalogsLocale locale;
+
+  @ApiModelProperty(required = true, value = "")
+
+  private String name;
+ /**
+   * Catalog id pertaining to the retail product group.
+   * @return catalogId
+  **/
+  @JsonProperty("catalog_id")
+  @NotNull
+ @Pattern(regexp="^\\d+$")  public String getCatalogId() {
+    return catalogId;
+  }
+
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
+  }
+
+  public CatalogsRetailProductGroupCreateRequest catalogId(String catalogId) {
+    this.catalogId = catalogId;
+    return this;
+  }
+
  /**
    * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
    * @return catalogType
@@ -115,21 +134,20 @@ RETAIL(String.valueOf("RETAIL"));
   }
 
  /**
-   * Get name
-   * @return name
+   * Get country
+   * @return country
   **/
-  @JsonProperty("name")
-  @NotNull
-  public String getName() {
-    return name;
+  @JsonProperty("country")
+  public Country getCountry() {
+    return country;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setCountry(Country country) {
+    this.country = country;
   }
 
-  public CatalogsRetailProductGroupCreateRequest name(String name) {
-    this.name = name;
+  public CatalogsRetailProductGroupCreateRequest country(Country country) {
+    this.country = country;
     return this;
   }
 
@@ -171,49 +189,10 @@ RETAIL(String.valueOf("RETAIL"));
   }
 
  /**
-   * Catalog id pertaining to the retail product group.
-   * @return catalogId
-  **/
-  @JsonProperty("catalog_id")
-  @NotNull
- @Pattern(regexp="^\\d+$")  public String getCatalogId() {
-    return catalogId;
-  }
-
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
-  public CatalogsRetailProductGroupCreateRequest catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
- /**
-   * Get country
-   * @return country
-  **/
-  @JsonProperty("country")
-  @NotNull
-  public Country getCountry() {
-    return country;
-  }
-
-  public void setCountry(Country country) {
-    this.country = country;
-  }
-
-  public CatalogsRetailProductGroupCreateRequest country(Country country) {
-    this.country = country;
-    return this;
-  }
-
- /**
    * Get locale
    * @return locale
   **/
   @JsonProperty("locale")
-  @NotNull
   public CatalogsLocale getLocale() {
     return locale;
   }
@@ -227,6 +206,25 @@ RETAIL(String.valueOf("RETAIL"));
     return this;
   }
 
+ /**
+   * Get name
+   * @return name
+  **/
+  @JsonProperty("name")
+  @NotNull
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public CatalogsRetailProductGroupCreateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -236,18 +234,18 @@ RETAIL(String.valueOf("RETAIL"));
       return false;
     }
     CatalogsRetailProductGroupCreateRequest catalogsRetailProductGroupCreateRequest = (CatalogsRetailProductGroupCreateRequest) o;
-    return Objects.equals(this.catalogType, catalogsRetailProductGroupCreateRequest.catalogType) &&
-        Objects.equals(this.name, catalogsRetailProductGroupCreateRequest.name) &&
+    return Objects.equals(this.catalogId, catalogsRetailProductGroupCreateRequest.catalogId) &&
+        Objects.equals(this.catalogType, catalogsRetailProductGroupCreateRequest.catalogType) &&
+        Objects.equals(this.country, catalogsRetailProductGroupCreateRequest.country) &&
         Objects.equals(this.description, catalogsRetailProductGroupCreateRequest.description) &&
         Objects.equals(this.filters, catalogsRetailProductGroupCreateRequest.filters) &&
-        Objects.equals(this.catalogId, catalogsRetailProductGroupCreateRequest.catalogId) &&
-        Objects.equals(this.country, catalogsRetailProductGroupCreateRequest.country) &&
-        Objects.equals(this.locale, catalogsRetailProductGroupCreateRequest.locale);
+        Objects.equals(this.locale, catalogsRetailProductGroupCreateRequest.locale) &&
+        Objects.equals(this.name, catalogsRetailProductGroupCreateRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, name, description, filters, catalogId, country, locale);
+    return Objects.hash(catalogId, catalogType, country, description, filters, locale, name);
   }
 
   @Override
@@ -255,13 +253,13 @@ RETAIL(String.valueOf("RETAIL"));
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailProductGroupCreateRequest {\n");
     
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
-    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

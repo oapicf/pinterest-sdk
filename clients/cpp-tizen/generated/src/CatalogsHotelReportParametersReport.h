@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "CatalogsReportAllItemsFilter.h"
 #include "CatalogsReportDistributionIssueFilter.h"
 #include "CatalogsReportFeedIngestionFilter.h"
 #include "Object.h"

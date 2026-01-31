@@ -5,12 +5,6 @@
   "name": "LeadFormQuestion",
   "fields": [
     {
-      "name": "question_type",
-      "type": ["null", "model.LeadFormQuestionType"],
-      "doc": "",
-      "default": null
-    },
-    {
       "name": "custom_question_field_type",
       "type": ["null", "model.LeadFormQuestionFieldType"],
       "doc": "",
@@ -29,6 +23,12 @@
         "items": "string"
       }],
       "doc": "Question options for a custom question.",
+      "default": null
+    },
+    {
+      "name": "question_type",
+      "type": ["null", "model.LeadFormQuestionType"],
+      "doc": "",
       "default": null
     }
   ]

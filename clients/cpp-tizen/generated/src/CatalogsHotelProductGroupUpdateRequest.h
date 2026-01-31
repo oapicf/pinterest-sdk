@@ -55,13 +55,6 @@ public:
 	void setCatalogType(std::string  catalog_type);
 	/*! \brief Get 
 	 */
-	std::string getName();
-
-	/*! \brief Set 
-	 */
-	void setName(std::string  name);
-	/*! \brief Get 
-	 */
 	std::string getDescription();
 
 	/*! \brief Set 
@@ -74,12 +67,19 @@ public:
 	/*! \brief Set 
 	 */
 	void setFilters(CatalogsHotelProductGroupFilters  filters);
+	/*! \brief Get 
+	 */
+	std::string getName();
+
+	/*! \brief Set 
+	 */
+	void setName(std::string  name);
 
 private:
 	std::string catalog_type;
-	std::string name;
 	std::string description;
 	CatalogsHotelProductGroupFilters filters;
+	std::string name;
 	void __init();
 	void __cleanup();
 

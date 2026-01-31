@@ -3,11 +3,11 @@ const Service = require('./Service');
 
 /**
 * Create conversion tag
-* Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\" target=\"_blank\">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\">Set up the Pinterest tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/\">Pinterest Tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/#enhanced-match\">Enhanced match</a>
+* Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account's website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
-* conversionTagCreate ConversionTagCreate Conversion Tag to create
-* returns ConversionTagResponse
+* conversionTagCreate ConversionTagCreate 
+* returns ConversionTag
 * */
 const conversion_tags/create = ({ adUnderscoreaccountUnderscoreid, conversionTagCreate }) => new Promise(
   async (resolve, reject) => {
@@ -30,7 +30,7 @@ const conversion_tags/create = ({ adUnderscoreaccountUnderscoreid, conversionTag
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
 * conversionUnderscoretagUnderscoreid String Id of the conversion tag.
-* returns ConversionTagResponse
+* returns ConversionTag
 * */
 const conversion_tags/get = ({ adUnderscoreaccountUnderscoreid, conversionUnderscoretagUnderscoreid }) => new Promise(
   async (resolve, reject) => {
@@ -48,12 +48,12 @@ const conversion_tags/get = ({ adUnderscoreaccountUnderscoreid, conversionUnders
   },
 );
 /**
-* Get conversion tags
+* List conversion tags
 * List conversion tags associated with an ad account.
 *
 * adUnderscoreaccountUnderscoreid String Unique identifier of an ad account.
-* filterUnderscoredeleted Boolean Filter out deleted tags. (optional)
-* returns ConversionTagListResponse
+* filterUnderscoredeleted Boolean Filter by deleted status (optional)
+* returns conversion_tags_list_200_response
 * */
 const conversion_tags/list = ({ adUnderscoreaccountUnderscoreid, filterUnderscoredeleted }) => new Promise(
   async (resolve, reject) => {

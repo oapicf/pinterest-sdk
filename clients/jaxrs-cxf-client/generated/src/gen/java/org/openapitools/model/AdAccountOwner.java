@@ -9,36 +9,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AdAccountOwner  {
   
  /**
-  * Public username for the user account
-  */
-  @ApiModelProperty(value = "Public username for the user account")
-
-  private String username;
-
- /**
   * The owning account's user ID.
   */
   @ApiModelProperty(value = "The owning account's user ID.")
 
   private String id;
+
  /**
-   * Public username for the user account
-   * @return username
-  **/
-  @JsonProperty("username")
-  public String getUsername() {
-    return username;
-  }
+  * Public username for the user account
+  */
+  @ApiModelProperty(value = "Public username for the user account")
 
-  public void setUsername(String username) {
-    this.username = username;
-  }
-
-  public AdAccountOwner username(String username) {
-    this.username = username;
-    return this;
-  }
-
+  private String username;
  /**
    * The owning account&#39;s user ID.
    * @return id
@@ -57,6 +39,24 @@ public class AdAccountOwner  {
     return this;
   }
 
+ /**
+   * Public username for the user account
+   * @return username
+  **/
+  @JsonProperty("username")
+  public String getUsername() {
+    return username;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
+  public AdAccountOwner username(String username) {
+    this.username = username;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -66,13 +66,13 @@ public class AdAccountOwner  {
       return false;
     }
     AdAccountOwner adAccountOwner = (AdAccountOwner) o;
-    return Objects.equals(this.username, adAccountOwner.username) &&
-        Objects.equals(this.id, adAccountOwner.id);
+    return Objects.equals(this.id, adAccountOwner.id) &&
+        Objects.equals(this.username, adAccountOwner.username);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(username, id);
+    return Objects.hash(id, username);
   }
 
   @Override
@@ -80,8 +80,8 @@ public class AdAccountOwner  {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdAccountOwner {\n");
     
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("}");
     return sb.toString();
   }

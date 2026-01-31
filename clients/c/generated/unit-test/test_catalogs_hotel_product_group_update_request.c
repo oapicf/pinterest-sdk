@@ -25,16 +25,16 @@ catalogs_hotel_product_group_update_request_t* instantiate_catalogs_hotel_produc
     catalogs_hotel_product_group_update_request = catalogs_hotel_product_group_update_request_create(
       pinterest_rest_api_catalogs_hotel_product_group_update_request_CATALOGTYPE_HOTEL,
       "0",
-      "0",
        // false, not to have infinite recursion
-      instantiate_catalogs_hotel_product_group_filters(0)
+      instantiate_catalogs_hotel_product_group_filters(0),
+      "0"
     );
   } else {
     catalogs_hotel_product_group_update_request = catalogs_hotel_product_group_update_request_create(
       pinterest_rest_api_catalogs_hotel_product_group_update_request_CATALOGTYPE_HOTEL,
       "0",
-      "0",
-      NULL
+      NULL,
+      "0"
     );
   }
 

@@ -5,6 +5,20 @@ context("Test AudienceInsightCategoryCommon")
 
 model_instance <- AudienceInsightCategoryCommon$new()
 
+test_that("id", {
+  # tests for the property `id` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
+})
+
+test_that("index", {
+  # tests for the property `index` (numeric)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`index`, "EXPECTED_RESULT")
+})
+
 test_that("key", {
   # tests for the property `key` (character)
 
@@ -24,18 +38,4 @@ test_that("ratio", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`ratio`, "EXPECTED_RESULT")
-})
-
-test_that("index", {
-  # tests for the property `index` (numeric)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`index`, "EXPECTED_RESULT")
-})
-
-test_that("id", {
-  # tests for the property `id` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
 })

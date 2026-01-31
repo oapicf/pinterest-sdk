@@ -1,5 +1,6 @@
 package controllers;
 
+import apimodels.CreativeType;
 import apimodels.Error;
 import java.time.LocalDate;
 import java.util.Map;
@@ -9,6 +10,7 @@ import apimodels.PinCreate;
 import apimodels.PinUpdate;
 import apimodels.PinsList200Response;
 import apimodels.PinsSaveRequest;
+import apimodels.PinterestLibError;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -32,7 +34,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinsApiController extends Controller {
     private final PinsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -177,7 +179,7 @@ public class PinsApiController extends Controller {
     }
 
     @ApiAction
-    public Result pinsDelete(Http.Request request, String pinId) throws Exception {
+    public Result pinsDelete(Http.Request request,  @Pattern(regexp="^\\d+$")String pinId) throws Exception {
         String valueadAccountId = request.getQueryString("ad_account_id");
         String adAccountId;
         if (valueadAccountId != null) {
@@ -189,14 +191,7 @@ public class PinsApiController extends Controller {
     }
 
     @ApiAction
-    public Result pinsGet(Http.Request request, String pinId) throws Exception {
-        String valuepinMetrics = request.getQueryString("pin_metrics");
-        Boolean pinMetrics;
-        if (valuepinMetrics != null) {
-            pinMetrics = Boolean.valueOf(valuepinMetrics);
-        } else {
-            pinMetrics = false;
-        }
+    public Result pinsGet(Http.Request request,  @Pattern(regexp="^\\d+$")String pinId) throws Exception {
         String valueadAccountId = request.getQueryString("ad_account_id");
         String adAccountId;
         if (valueadAccountId != null) {
@@ -204,31 +199,31 @@ public class PinsApiController extends Controller {
         } else {
             adAccountId = null;
         }
-        return imp.pinsGetHttp(request, pinId, pinMetrics, adAccountId);
+        String valuepinMetrics = request.getQueryString("pin_metrics");
+        Boolean pinMetrics;
+        if (valuepinMetrics != null) {
+            pinMetrics = Boolean.valueOf(valuepinMetrics);
+        } else {
+            pinMetrics = false;
+        }
+        return imp.pinsGetHttp(request, pinId, adAccountId, pinMetrics);
     }
 
     @ApiAction
     public Result pinsList(Http.Request request) throws Exception {
-        String valuebookmark = request.getQueryString("bookmark");
-        String bookmark;
-        if (valuebookmark != null) {
-            bookmark = valuebookmark;
-        } else {
-            bookmark = null;
-        }
-        String valuepageSize = request.getQueryString("page_size");
-        Integer pageSize;
-        if (valuepageSize != null) {
-            pageSize = Integer.parseInt(valuepageSize);
-        } else {
-            pageSize = 25;
-        }
         String valuepinFilter = request.getQueryString("pin_filter");
         String pinFilter;
         if (valuepinFilter != null) {
             pinFilter = valuepinFilter;
         } else {
             pinFilter = null;
+        }
+        String valuepinMetrics = request.getQueryString("pin_metrics");
+        Boolean pinMetrics;
+        if (valuepinMetrics != null) {
+            pinMetrics = Boolean.valueOf(valuepinMetrics);
+        } else {
+            pinMetrics = false;
         }
         String valueincludeProtectedPins = request.getQueryString("include_protected_pins");
         Boolean includeProtectedPins;
@@ -246,7 +241,7 @@ public class PinsApiController extends Controller {
         }
         String[] creativeTypesArray = request.queryString().get("creative_types");
         List<String> creativeTypesList = OpenAPIUtils.parametersToList("multi", creativeTypesArray);
-        List<String> creativeTypes = new ArrayList<>();
+        List<CreativeType> creativeTypes = new ArrayList<>();
         for (String curParam : creativeTypesList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation
@@ -260,14 +255,21 @@ public class PinsApiController extends Controller {
         } else {
             adAccountId = null;
         }
-        String valuepinMetrics = request.getQueryString("pin_metrics");
-        Boolean pinMetrics;
-        if (valuepinMetrics != null) {
-            pinMetrics = Boolean.valueOf(valuepinMetrics);
+        String valuebookmark = request.getQueryString("bookmark");
+        String bookmark;
+        if (valuebookmark != null) {
+            bookmark = valuebookmark;
         } else {
-            pinMetrics = false;
+            bookmark = null;
         }
-        return imp.pinsListHttp(request, bookmark, pageSize, pinFilter, includeProtectedPins, pinType, creativeTypes, adAccountId, pinMetrics);
+        String valuepageSize = request.getQueryString("page_size");
+        Integer pageSize;
+        if (valuepageSize != null) {
+            pageSize = Integer.parseInt(valuepageSize);
+        } else {
+            pageSize = 25;
+        }
+        return imp.pinsListHttp(request, pinFilter, pinMetrics, includeProtectedPins, pinType, creativeTypes, adAccountId, bookmark, pageSize);
     }
 
     @ApiAction
@@ -293,7 +295,7 @@ public class PinsApiController extends Controller {
     }
 
     @ApiAction
-    public Result pinsUpdate(Http.Request request, String pinId) throws Exception {
+    public Result pinsUpdate(Http.Request request,  @Pattern(regexp="^\\d+$")String pinId) throws Exception {
         JsonNode nodepinUpdate = request.body().asJson();
         PinUpdate pinUpdate;
         if (nodepinUpdate != null) {

@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "NotificationResponse",
+  "fields": [
+    {
+      "name": "success",
+      "type": ["null", "boolean"],
+      "doc": "Returns true if the notification accepted.",
+      "default": null
+    },
+    {
+      "name": "received_at",
+      "type": ["null", "int"],
+      "doc": "Received time. Unix timestamp in seconds.",
+      "default": null
+    },
+    {
+      "name": "error_msg",
+      "type": ["null", "string"],
+      "doc": "error message when success is false",
+      "default": null
+    }
+  ]
+
+}

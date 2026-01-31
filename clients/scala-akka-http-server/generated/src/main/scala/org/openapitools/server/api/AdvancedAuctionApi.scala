@@ -71,6 +71,8 @@ trait AdvancedAuctionApiService {
 
   def advancedAuctionItemsSubmitPost200(responseAdvancedAuctionProcessedItems: AdvancedAuctionProcessedItems)(implicit toEntityMarshallerAdvancedAuctionProcessedItems: ToEntityMarshaller[AdvancedAuctionProcessedItems]): Route =
     complete((200, responseAdvancedAuctionProcessedItems))
+  def advancedAuctionItemsSubmitPost206(responseAdvancedAuctionProcessedItems: AdvancedAuctionProcessedItems)(implicit toEntityMarshallerAdvancedAuctionProcessedItems: ToEntityMarshaller[AdvancedAuctionProcessedItems]): Route =
+    complete((206, responseAdvancedAuctionProcessedItems))
   def advancedAuctionItemsSubmitPost400(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
     complete((400, responseError))
   def advancedAuctionItemsSubmitPost401(responseError: Error)(implicit toEntityMarshallerError: ToEntityMarshaller[Error]): Route =
@@ -83,6 +85,7 @@ trait AdvancedAuctionApiService {
     complete((statusCode, responseError))
   /**
    * Code: 200, Message: Response containing the results of the item bid options operations, DataType: AdvancedAuctionProcessedItems
+   * Code: 206, Message: Response containing the results of the item bid options operations (where some/all operation results have errors), DataType: AdvancedAuctionProcessedItems
    * Code: 400, Message: Invalid request parameters., DataType: Error
    * Code: 401, Message: Not authenticated to post item bid options, DataType: Error
    * Code: 403, Message: Not authorized to post item bid options, DataType: Error

@@ -20,12 +20,17 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.BoardsApi
 import org.openapitools.client.models.Board
+import org.openapitools.client.models.BoardCreate
+import org.openapitools.client.models.BoardPrivacyFilter
 import org.openapitools.client.models.BoardSection
 import org.openapitools.client.models.BoardSectionsList200Response
-import org.openapitools.client.models.BoardUpdate
+import org.openapitools.client.models.BoardWithUpdatePrivacy
+import org.openapitools.client.models.BoardWithUpdatePrivacyUpdate
 import org.openapitools.client.models.BoardsList200Response
 import org.openapitools.client.models.BoardsListPins200Response
+import org.openapitools.client.models.CreativeType
 import org.openapitools.client.models.Error
+import org.openapitools.client.models.PinterestLibError
 
 class BoardsApiTest : ShouldSpec() {
     init {
@@ -88,16 +93,16 @@ class BoardsApiTest : ShouldSpec() {
         // to test boardsCreate
         should("test boardsCreate") {
             // uncomment below to test boardsCreate
-            //val board : Board =  // Board | Create a board using a single board json object.
+            //val boardCreate : BoardCreate =  // BoardCreate | 
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val result : Board = apiInstance.boardsCreate(board, adAccountId)
+            //val result : Board = apiInstance.boardsCreate(boardCreate, adAccountId)
             //result shouldBe ("TODO")
         }
 
         // to test boardsDelete
         should("test boardsDelete") {
             // uncomment below to test boardsDelete
-            //val boardId : kotlin.String = boardId_example // kotlin.String | Unique identifier of a board.
+            //val boardId : kotlin.String = boardId_example // kotlin.String | 
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //apiInstance.boardsDelete(boardId, adAccountId)
         }
@@ -105,7 +110,7 @@ class BoardsApiTest : ShouldSpec() {
         // to test boardsGet
         should("test boardsGet") {
             // uncomment below to test boardsGet
-            //val boardId : kotlin.String = boardId_example // kotlin.String | Unique identifier of a board.
+            //val boardId : kotlin.String = boardId_example // kotlin.String | 
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val result : Board = apiInstance.boardsGet(boardId, adAccountId)
             //result shouldBe ("TODO")
@@ -115,10 +120,10 @@ class BoardsApiTest : ShouldSpec() {
         should("test boardsList") {
             // uncomment below to test boardsList
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
+            //val privacy : BoardPrivacyFilter =  // BoardPrivacyFilter | The privacy level of the board
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-            //val privacy : kotlin.String = privacy_example // kotlin.String | Privacy setting for a board.
-            //val result : BoardsList200Response = apiInstance.boardsList(adAccountId, bookmark, pageSize, privacy)
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val result : BoardsList200Response = apiInstance.boardsList(adAccountId, privacy, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
 
@@ -128,9 +133,9 @@ class BoardsApiTest : ShouldSpec() {
             //val boardId : kotlin.String = boardId_example // kotlin.String | Unique identifier of a board.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
             //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-            //val creativeTypes : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
+            //val creativeTypes : kotlin.collections.List<CreativeType> =  // kotlin.collections.List<CreativeType> | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val pinMetrics : kotlin.Boolean = true // kotlin.Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+            //val pinMetrics : kotlin.Boolean = true // kotlin.Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
             //val result : BoardsListPins200Response = apiInstance.boardsListPins(boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics)
             //result shouldBe ("TODO")
         }
@@ -138,10 +143,10 @@ class BoardsApiTest : ShouldSpec() {
         // to test boardsUpdate
         should("test boardsUpdate") {
             // uncomment below to test boardsUpdate
-            //val boardId : kotlin.String = boardId_example // kotlin.String | Unique identifier of a board.
-            //val boardUpdate : BoardUpdate =  // BoardUpdate | Update a board.
+            //val boardId : kotlin.String = boardId_example // kotlin.String | 
+            //val boardWithUpdatePrivacyUpdate : BoardWithUpdatePrivacyUpdate =  // BoardWithUpdatePrivacyUpdate | 
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val result : Board = apiInstance.boardsUpdate(boardId, boardUpdate, adAccountId)
+            //val result : BoardWithUpdatePrivacy = apiInstance.boardsUpdate(boardId, boardWithUpdatePrivacyUpdate, adAccountId)
             //result shouldBe ("TODO")
         }
 

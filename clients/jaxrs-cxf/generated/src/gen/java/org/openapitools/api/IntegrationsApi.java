@@ -1,6 +1,5 @@
 package org.openapitools.api;
 
-import org.openapitools.model.DetailedError;
 import org.openapitools.model.Error;
 import org.openapitools.model.IntegrationLogsRequest;
 import org.openapitools.model.IntegrationLogsSuccessResponse;
@@ -9,6 +8,7 @@ import org.openapitools.model.IntegrationRecord;
 import org.openapitools.model.IntegrationRequest;
 import org.openapitools.model.IntegrationRequestPatch;
 import org.openapitools.model.IntegrationsGetList200Response;
+import org.openapitools.model.IntegrationsLogsPost400Response;
 
 import java.util.List;
 import java.util.Map;
@@ -81,7 +81,7 @@ public interface IntegrationsApi  {
         @ApiResponse(code = 404, message = "Integration not found.", response = Error.class),
         @ApiResponse(code = 409, message = "Can't access this integration metadata.", response = Error.class),
         @ApiResponse(code = 200, message = "Unexpected error.", response = Error.class) })
-    public IntegrationMetadata integrationsCommercePatch(@PathParam("external_business_id") String externalBusinessId, @Valid IntegrationRequestPatch integrationRequestPatch);
+    public IntegrationMetadata integrationsCommercePatch(@PathParam("external_business_id") String externalBusinessId, @Valid @NotNull IntegrationRequestPatch integrationRequestPatch);
 
     /**
      * Create commerce integration
@@ -99,7 +99,7 @@ public interface IntegrationsApi  {
         @ApiResponse(code = 404, message = "Integration not found.", response = Error.class),
         @ApiResponse(code = 409, message = "Can't access this integration metadata.", response = Error.class),
         @ApiResponse(code = 200, message = "Unexpected error.", response = Error.class) })
-    public IntegrationMetadata integrationsCommercePost(@Valid IntegrationRequest integrationRequest);
+    public IntegrationMetadata integrationsCommercePost(@Valid @NotNull IntegrationRequest integrationRequest);
 
     /**
      * Get integration metadata
@@ -145,7 +145,7 @@ public interface IntegrationsApi  {
     @ApiOperation(value = "Receives batched logs from integration applications.", tags={ "integrations" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success.", response = IntegrationLogsSuccessResponse.class),
-        @ApiResponse(code = 400, message = "Bad request.", response = DetailedError.class),
+        @ApiResponse(code = 400, message = "Bad request.", response = IntegrationsLogsPost400Response.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
     public IntegrationLogsSuccessResponse integrationsLogsPost(@Valid @NotNull IntegrationLogsRequest integrationLogsRequest);
 }

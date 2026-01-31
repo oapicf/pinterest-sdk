@@ -18,7 +18,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"sourceType": @"source_type", @"coverImageUrl": @"cover_image_url", @"coverImageContentType": @"cover_image_content_type", @"coverImageData": @"cover_image_data", @"mediaId": @"media_id", @"isStandard": @"is_standard" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"coverImageContentType": @"cover_image_content_type", @"coverImageData": @"cover_image_data", @"coverImageKeyFrameTime": @"cover_image_key_frame_time", @"coverImageUrl": @"cover_image_url", @"isStandard": @"is_standard", @"mediaId": @"media_id", @"sourceType": @"source_type" }];
 }
 
 /**
@@ -28,7 +28,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"coverImageUrl", @"coverImageContentType", @"coverImageData", @"isStandard"];
+  NSArray *optionalProperties = @[@"coverImageContentType", @"coverImageData", @"coverImageKeyFrameTime", @"coverImageUrl", @"isStandard", ];
   return [optionalProperties containsObject:propertyName];
 }
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[BoardSection]**](BoardSection.md) | Board sections | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[BoardSection]**](BoardSection.md) | Board sections | 
 
 

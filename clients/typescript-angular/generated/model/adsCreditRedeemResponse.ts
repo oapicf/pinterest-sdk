@@ -11,10 +11,6 @@
 
 export interface AdsCreditRedeemResponse { 
     /**
-     * Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
-     */
-    success?: boolean;
-    /**
      * Error code type if error occurs
      */
     errorCode?: number | null;
@@ -22,5 +18,9 @@ export interface AdsCreditRedeemResponse {
      * Reason for failure
      */
     errorMessage?: string | null;
+    /**
+     * Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
+     */
+    success?: boolean;
 }
 

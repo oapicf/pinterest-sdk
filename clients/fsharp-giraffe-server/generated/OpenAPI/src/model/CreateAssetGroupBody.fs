@@ -10,8 +10,8 @@ module CreateAssetGroupBody =
 
 
   type CreateAssetGroupBody = {
-    AssetGroupName : string;
     AssetGroupDescription : string;
+    AssetGroupName : string;
     AssetGroupTypes : AssetGroupType[];
   }
   //#endregion

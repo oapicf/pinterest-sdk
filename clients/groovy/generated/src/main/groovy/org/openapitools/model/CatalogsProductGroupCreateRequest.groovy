@@ -9,13 +9,13 @@ import org.openapitools.model.CatalogsProductGroupFiltersRequest;
 @Canonical
 class CatalogsProductGroupCreateRequest {
     
-    String name
-    
     String description
+    /* Catalog Feed id pertaining to the catalog product group. */
+    String feedId
+    
+    CatalogsProductGroupFiltersRequest filters
     /* boolean indicator of whether the product group is being featured or not */
     Boolean isFeatured = false
     
-    CatalogsProductGroupFiltersRequest filters
-    /* Catalog Feed id pertaining to the catalog product group. */
-    String feedId
+    String name
 }

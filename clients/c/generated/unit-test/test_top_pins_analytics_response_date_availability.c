@@ -22,13 +22,13 @@ top_pins_analytics_response_date_availability_t* instantiate_top_pins_analytics_
   top_pins_analytics_response_date_availability_t* top_pins_analytics_response_date_availability = NULL;
   if (include_optional) {
     top_pins_analytics_response_date_availability = top_pins_analytics_response_date_availability_create(
-      1649116799000,
-      false
+      false,
+      1649116799000
     );
   } else {
     top_pins_analytics_response_date_availability = top_pins_analytics_response_date_availability_create(
-      1649116799000,
-      false
+      false,
+      1649116799000
     );
   }
 

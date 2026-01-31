@@ -5,14 +5,6 @@ context("Test AdAccountCreateSubscriptionRequest")
 
 model_instance <- AdAccountCreateSubscriptionRequest$new()
 
-test_that("webhook_url", {
-  # tests for the property `webhook_url` (character)
-  # Standard HTTPS webhook URL.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`webhook_url`, "EXPECTED_RESULT")
-})
-
 test_that("lead_form_id", {
   # tests for the property `lead_form_id` (character)
   # Lead form ID.
@@ -29,6 +21,13 @@ test_that("partner_access_token", {
   #expect_equal(model.instance$`partner_access_token`, "EXPECTED_RESULT")
 })
 
+test_that("partner_metadata", {
+  # tests for the property `partner_metadata` (AdAccountCreateSubscriptionRequestPartnerMetadata)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`partner_metadata`, "EXPECTED_RESULT")
+})
+
 test_that("partner_refresh_token", {
   # tests for the property `partner_refresh_token` (character)
   # Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
@@ -37,9 +36,10 @@ test_that("partner_refresh_token", {
   #expect_equal(model.instance$`partner_refresh_token`, "EXPECTED_RESULT")
 })
 
-test_that("partner_metadata", {
-  # tests for the property `partner_metadata` (AdAccountCreateSubscriptionRequestPartnerMetadata)
+test_that("webhook_url", {
+  # tests for the property `webhook_url` (character)
+  # Standard HTTPS webhook URL.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`partner_metadata`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`webhook_url`, "EXPECTED_RESULT")
 })

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,28 +22,28 @@ var _ MappedNullable = &CatalogsRetailProductGroup{}
 
 // CatalogsRetailProductGroup struct for CatalogsRetailProductGroup
 type CatalogsRetailProductGroup struct {
+	// Catalog id pertaining to the retail product group.
+	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
 	CatalogType string `json:"catalog_type"`
+	Country NullableString `json:"country,omitempty"`
+	// Unix timestamp in seconds of when catalog product group was created.
+	CreatedAt *int32 `json:"created_at,omitempty"`
+	Description NullableString `json:"description,omitempty"`
+	// id of the catalogs feed belonging to this catalog product group
+	FeedId NullableString `json:"feed_id" validate:"regexp=^\\\\d+$"`
+	Filters CatalogsProductGroupFilters `json:"filters"`
 	// ID of the catalog product group.
 	Id string `json:"id" validate:"regexp=^\\\\d+$"`
-	// Name of catalog product group
-	Name *string `json:"name,omitempty"`
-	Description NullableString `json:"description,omitempty"`
-	Filters CatalogsProductGroupFilters `json:"filters"`
 	// boolean indicator of whether the product group is being featured or not
 	// Deprecated
 	IsFeatured *bool `json:"is_featured,omitempty"`
-	Type *CatalogsProductGroupType `json:"type,omitempty"`
+	Locale NullableString `json:"locale,omitempty"`
+	// Name of catalog product group
+	Name *string `json:"name,omitempty"`
 	Status *CatalogsProductGroupStatus `json:"status,omitempty"`
-	// Unix timestamp in seconds of when catalog product group was created.
-	CreatedAt *int32 `json:"created_at,omitempty"`
+	Type CatalogsProductGroupType `json:"type"`
 	// Unix timestamp in seconds of last time catalog product group was updated.
 	UpdatedAt *int32 `json:"updated_at,omitempty"`
-	// Catalog id pertaining to the retail product group.
-	CatalogId string `json:"catalog_id" validate:"regexp=^\\\\d+$"`
-	// id of the catalogs feed belonging to this catalog product group
-	FeedId NullableString `json:"feed_id" validate:"regexp=^\\\\d+$"`
-	Country NullableString `json:"country,omitempty"`
-	Locale NullableString `json:"locale,omitempty"`
 }
 
 type _CatalogsRetailProductGroup CatalogsRetailProductGroup
@@ -52,13 +52,14 @@ type _CatalogsRetailProductGroup CatalogsRetailProductGroup
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsRetailProductGroup(catalogType string, id string, filters CatalogsProductGroupFilters, catalogId string, feedId NullableString) *CatalogsRetailProductGroup {
+func NewCatalogsRetailProductGroup(catalogId string, catalogType string, feedId NullableString, filters CatalogsProductGroupFilters, id string, type_ CatalogsProductGroupType) *CatalogsRetailProductGroup {
 	this := CatalogsRetailProductGroup{}
-	this.CatalogType = catalogType
-	this.Id = id
-	this.Filters = filters
 	this.CatalogId = catalogId
+	this.CatalogType = catalogType
 	this.FeedId = feedId
+	this.Filters = filters
+	this.Id = id
+	this.Type = type_
 	return &this
 }
 
@@ -68,315 +69,6 @@ func NewCatalogsRetailProductGroup(catalogType string, id string, filters Catalo
 func NewCatalogsRetailProductGroupWithDefaults() *CatalogsRetailProductGroup {
 	this := CatalogsRetailProductGroup{}
 	return &this
-}
-
-// GetCatalogType returns the CatalogType field value
-func (o *CatalogsRetailProductGroup) GetCatalogType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.CatalogType
-}
-
-// GetCatalogTypeOk returns a tuple with the CatalogType field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsRetailProductGroup) GetCatalogTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CatalogType, true
-}
-
-// SetCatalogType sets field value
-func (o *CatalogsRetailProductGroup) SetCatalogType(v string) {
-	o.CatalogType = v
-}
-
-// GetId returns the Id field value
-func (o *CatalogsRetailProductGroup) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsRetailProductGroup) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *CatalogsRetailProductGroup) SetId(v string) {
-	o.Id = v
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *CatalogsRetailProductGroup) GetName() string {
-	if o == nil || IsNil(o.Name) {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsRetailProductGroup) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *CatalogsRetailProductGroup) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *CatalogsRetailProductGroup) SetName(v string) {
-	o.Name = &v
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CatalogsRetailProductGroup) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Description.Get()
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CatalogsRetailProductGroup) GetDescriptionOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Description.Get(), o.Description.IsSet()
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *CatalogsRetailProductGroup) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
-func (o *CatalogsRetailProductGroup) SetDescription(v string) {
-	o.Description.Set(&v)
-}
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *CatalogsRetailProductGroup) SetDescriptionNil() {
-	o.Description.Set(nil)
-}
-
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *CatalogsRetailProductGroup) UnsetDescription() {
-	o.Description.Unset()
-}
-
-// GetFilters returns the Filters field value
-func (o *CatalogsRetailProductGroup) GetFilters() CatalogsProductGroupFilters {
-	if o == nil {
-		var ret CatalogsProductGroupFilters
-		return ret
-	}
-
-	return o.Filters
-}
-
-// GetFiltersOk returns a tuple with the Filters field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsRetailProductGroup) GetFiltersOk() (*CatalogsProductGroupFilters, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Filters, true
-}
-
-// SetFilters sets field value
-func (o *CatalogsRetailProductGroup) SetFilters(v CatalogsProductGroupFilters) {
-	o.Filters = v
-}
-
-// GetIsFeatured returns the IsFeatured field value if set, zero value otherwise.
-// Deprecated
-func (o *CatalogsRetailProductGroup) GetIsFeatured() bool {
-	if o == nil || IsNil(o.IsFeatured) {
-		var ret bool
-		return ret
-	}
-	return *o.IsFeatured
-}
-
-// GetIsFeaturedOk returns a tuple with the IsFeatured field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// Deprecated
-func (o *CatalogsRetailProductGroup) GetIsFeaturedOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsFeatured) {
-		return nil, false
-	}
-	return o.IsFeatured, true
-}
-
-// HasIsFeatured returns a boolean if a field has been set.
-func (o *CatalogsRetailProductGroup) HasIsFeatured() bool {
-	if o != nil && !IsNil(o.IsFeatured) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsFeatured gets a reference to the given bool and assigns it to the IsFeatured field.
-// Deprecated
-func (o *CatalogsRetailProductGroup) SetIsFeatured(v bool) {
-	o.IsFeatured = &v
-}
-
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *CatalogsRetailProductGroup) GetType() CatalogsProductGroupType {
-	if o == nil || IsNil(o.Type) {
-		var ret CatalogsProductGroupType
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsRetailProductGroup) GetTypeOk() (*CatalogsProductGroupType, bool) {
-	if o == nil || IsNil(o.Type) {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *CatalogsRetailProductGroup) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given CatalogsProductGroupType and assigns it to the Type field.
-func (o *CatalogsRetailProductGroup) SetType(v CatalogsProductGroupType) {
-	o.Type = &v
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *CatalogsRetailProductGroup) GetStatus() CatalogsProductGroupStatus {
-	if o == nil || IsNil(o.Status) {
-		var ret CatalogsProductGroupStatus
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsRetailProductGroup) GetStatusOk() (*CatalogsProductGroupStatus, bool) {
-	if o == nil || IsNil(o.Status) {
-		return nil, false
-	}
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *CatalogsRetailProductGroup) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given CatalogsProductGroupStatus and assigns it to the Status field.
-func (o *CatalogsRetailProductGroup) SetStatus(v CatalogsProductGroupStatus) {
-	o.Status = &v
-}
-
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *CatalogsRetailProductGroup) GetCreatedAt() int32 {
-	if o == nil || IsNil(o.CreatedAt) {
-		var ret int32
-		return ret
-	}
-	return *o.CreatedAt
-}
-
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsRetailProductGroup) GetCreatedAtOk() (*int32, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
-		return nil, false
-	}
-	return o.CreatedAt, true
-}
-
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *CatalogsRetailProductGroup) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given int32 and assigns it to the CreatedAt field.
-func (o *CatalogsRetailProductGroup) SetCreatedAt(v int32) {
-	o.CreatedAt = &v
-}
-
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *CatalogsRetailProductGroup) GetUpdatedAt() int32 {
-	if o == nil || IsNil(o.UpdatedAt) {
-		var ret int32
-		return ret
-	}
-	return *o.UpdatedAt
-}
-
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsRetailProductGroup) GetUpdatedAtOk() (*int32, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
-		return nil, false
-	}
-	return o.UpdatedAt, true
-}
-
-// HasUpdatedAt returns a boolean if a field has been set.
-func (o *CatalogsRetailProductGroup) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetUpdatedAt gets a reference to the given int32 and assigns it to the UpdatedAt field.
-func (o *CatalogsRetailProductGroup) SetUpdatedAt(v int32) {
-	o.UpdatedAt = &v
 }
 
 // GetCatalogId returns the CatalogId field value
@@ -403,30 +95,28 @@ func (o *CatalogsRetailProductGroup) SetCatalogId(v string) {
 	o.CatalogId = v
 }
 
-// GetFeedId returns the FeedId field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *CatalogsRetailProductGroup) GetFeedId() string {
-	if o == nil || o.FeedId.Get() == nil {
+// GetCatalogType returns the CatalogType field value
+func (o *CatalogsRetailProductGroup) GetCatalogType() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.FeedId.Get()
+	return o.CatalogType
 }
 
-// GetFeedIdOk returns a tuple with the FeedId field value
+// GetCatalogTypeOk returns a tuple with the CatalogType field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CatalogsRetailProductGroup) GetFeedIdOk() (*string, bool) {
+func (o *CatalogsRetailProductGroup) GetCatalogTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.FeedId.Get(), o.FeedId.IsSet()
+	return &o.CatalogType, true
 }
 
-// SetFeedId sets field value
-func (o *CatalogsRetailProductGroup) SetFeedId(v string) {
-	o.FeedId.Set(&v)
+// SetCatalogType sets field value
+func (o *CatalogsRetailProductGroup) SetCatalogType(v string) {
+	o.CatalogType = v
 }
 
 // GetCountry returns the Country field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -471,6 +161,189 @@ func (o *CatalogsRetailProductGroup) UnsetCountry() {
 	o.Country.Unset()
 }
 
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+func (o *CatalogsRetailProductGroup) GetCreatedAt() int32 {
+	if o == nil || IsNil(o.CreatedAt) {
+		var ret int32
+		return ret
+	}
+	return *o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsRetailProductGroup) GetCreatedAtOk() (*int32, bool) {
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
+	}
+	return o.CreatedAt, true
+}
+
+// HasCreatedAt returns a boolean if a field has been set.
+func (o *CatalogsRetailProductGroup) HasCreatedAt() bool {
+	if o != nil && !IsNil(o.CreatedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedAt gets a reference to the given int32 and assigns it to the CreatedAt field.
+func (o *CatalogsRetailProductGroup) SetCreatedAt(v int32) {
+	o.CreatedAt = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CatalogsRetailProductGroup) GetDescription() string {
+	if o == nil || IsNil(o.Description.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Description.Get()
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CatalogsRetailProductGroup) GetDescriptionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Description.Get(), o.Description.IsSet()
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *CatalogsRetailProductGroup) HasDescription() bool {
+	if o != nil && o.Description.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+func (o *CatalogsRetailProductGroup) SetDescription(v string) {
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *CatalogsRetailProductGroup) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *CatalogsRetailProductGroup) UnsetDescription() {
+	o.Description.Unset()
+}
+
+// GetFeedId returns the FeedId field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *CatalogsRetailProductGroup) GetFeedId() string {
+	if o == nil || o.FeedId.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.FeedId.Get()
+}
+
+// GetFeedIdOk returns a tuple with the FeedId field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CatalogsRetailProductGroup) GetFeedIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FeedId.Get(), o.FeedId.IsSet()
+}
+
+// SetFeedId sets field value
+func (o *CatalogsRetailProductGroup) SetFeedId(v string) {
+	o.FeedId.Set(&v)
+}
+
+// GetFilters returns the Filters field value
+func (o *CatalogsRetailProductGroup) GetFilters() CatalogsProductGroupFilters {
+	if o == nil {
+		var ret CatalogsProductGroupFilters
+		return ret
+	}
+
+	return o.Filters
+}
+
+// GetFiltersOk returns a tuple with the Filters field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsRetailProductGroup) GetFiltersOk() (*CatalogsProductGroupFilters, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Filters, true
+}
+
+// SetFilters sets field value
+func (o *CatalogsRetailProductGroup) SetFilters(v CatalogsProductGroupFilters) {
+	o.Filters = v
+}
+
+// GetId returns the Id field value
+func (o *CatalogsRetailProductGroup) GetId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsRetailProductGroup) GetIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *CatalogsRetailProductGroup) SetId(v string) {
+	o.Id = v
+}
+
+// GetIsFeatured returns the IsFeatured field value if set, zero value otherwise.
+// Deprecated
+func (o *CatalogsRetailProductGroup) GetIsFeatured() bool {
+	if o == nil || IsNil(o.IsFeatured) {
+		var ret bool
+		return ret
+	}
+	return *o.IsFeatured
+}
+
+// GetIsFeaturedOk returns a tuple with the IsFeatured field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// Deprecated
+func (o *CatalogsRetailProductGroup) GetIsFeaturedOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsFeatured) {
+		return nil, false
+	}
+	return o.IsFeatured, true
+}
+
+// HasIsFeatured returns a boolean if a field has been set.
+func (o *CatalogsRetailProductGroup) HasIsFeatured() bool {
+	if o != nil && !IsNil(o.IsFeatured) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsFeatured gets a reference to the given bool and assigns it to the IsFeatured field.
+// Deprecated
+func (o *CatalogsRetailProductGroup) SetIsFeatured(v bool) {
+	o.IsFeatured = &v
+}
+
 // GetLocale returns the Locale field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogsRetailProductGroup) GetLocale() string {
 	if o == nil || IsNil(o.Locale.Get()) {
@@ -513,6 +386,126 @@ func (o *CatalogsRetailProductGroup) UnsetLocale() {
 	o.Locale.Unset()
 }
 
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *CatalogsRetailProductGroup) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsRetailProductGroup) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *CatalogsRetailProductGroup) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *CatalogsRetailProductGroup) SetName(v string) {
+	o.Name = &v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *CatalogsRetailProductGroup) GetStatus() CatalogsProductGroupStatus {
+	if o == nil || IsNil(o.Status) {
+		var ret CatalogsProductGroupStatus
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsRetailProductGroup) GetStatusOk() (*CatalogsProductGroupStatus, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *CatalogsRetailProductGroup) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given CatalogsProductGroupStatus and assigns it to the Status field.
+func (o *CatalogsRetailProductGroup) SetStatus(v CatalogsProductGroupStatus) {
+	o.Status = &v
+}
+
+// GetType returns the Type field value
+func (o *CatalogsRetailProductGroup) GetType() CatalogsProductGroupType {
+	if o == nil {
+		var ret CatalogsProductGroupType
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsRetailProductGroup) GetTypeOk() (*CatalogsProductGroupType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *CatalogsRetailProductGroup) SetType(v CatalogsProductGroupType) {
+	o.Type = v
+}
+
+// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+func (o *CatalogsRetailProductGroup) GetUpdatedAt() int32 {
+	if o == nil || IsNil(o.UpdatedAt) {
+		var ret int32
+		return ret
+	}
+	return *o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsRetailProductGroup) GetUpdatedAtOk() (*int32, bool) {
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
+	}
+	return o.UpdatedAt, true
+}
+
+// HasUpdatedAt returns a boolean if a field has been set.
+func (o *CatalogsRetailProductGroup) HasUpdatedAt() bool {
+	if o != nil && !IsNil(o.UpdatedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedAt gets a reference to the given int32 and assigns it to the UpdatedAt field.
+func (o *CatalogsRetailProductGroup) SetUpdatedAt(v int32) {
+	o.UpdatedAt = &v
+}
+
 func (o CatalogsRetailProductGroup) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -523,37 +516,35 @@ func (o CatalogsRetailProductGroup) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsRetailProductGroup) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["catalog_id"] = o.CatalogId
 	toSerialize["catalog_type"] = o.CatalogType
-	toSerialize["id"] = o.Id
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
-	}
-	toSerialize["filters"] = o.Filters
-	if !IsNil(o.IsFeatured) {
-		toSerialize["is_featured"] = o.IsFeatured
-	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
+	if o.Country.IsSet() {
+		toSerialize["country"] = o.Country.Get()
 	}
 	if !IsNil(o.CreatedAt) {
 		toSerialize["created_at"] = o.CreatedAt
 	}
-	if !IsNil(o.UpdatedAt) {
-		toSerialize["updated_at"] = o.UpdatedAt
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
-	toSerialize["catalog_id"] = o.CatalogId
 	toSerialize["feed_id"] = o.FeedId.Get()
-	if o.Country.IsSet() {
-		toSerialize["country"] = o.Country.Get()
+	toSerialize["filters"] = o.Filters
+	toSerialize["id"] = o.Id
+	if !IsNil(o.IsFeatured) {
+		toSerialize["is_featured"] = o.IsFeatured
 	}
 	if o.Locale.IsSet() {
 		toSerialize["locale"] = o.Locale.Get()
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	toSerialize["type"] = o.Type
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
 	}
 	return toSerialize, nil
 }
@@ -563,11 +554,12 @@ func (o *CatalogsRetailProductGroup) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"catalog_type",
-		"id",
-		"filters",
 		"catalog_id",
+		"catalog_type",
 		"feed_id",
+		"filters",
+		"id",
+		"type",
 	}
 
 	allProperties := make(map[string]interface{})

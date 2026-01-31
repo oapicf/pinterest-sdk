@@ -22,13 +22,13 @@ user_website_verify_request_t* instantiate_user_website_verify_request(int inclu
   user_website_verify_request_t* user_website_verify_request = NULL;
   if (include_optional) {
     user_website_verify_request = user_website_verify_request_create(
-      "pintest-website-12345678.test/test_1",
-      pinterest_rest_api_user_website_verify_request_VERIFICATIONMETHOD_"METATAG"
+      pinterest_rest_api_user_website_verify_request_VERIFICATIONMETHOD_"METATAG",
+      "pintest-website-12345678.test/test_1"
     );
   } else {
     user_website_verify_request = user_website_verify_request_create(
-      "pintest-website-12345678.test/test_1",
-      pinterest_rest_api_user_website_verify_request_VERIFICATIONMETHOD_"METATAG"
+      pinterest_rest_api_user_website_verify_request_VERIFICATIONMETHOD_"METATAG",
+      "pintest-website-12345678.test/test_1"
     );
   }
 

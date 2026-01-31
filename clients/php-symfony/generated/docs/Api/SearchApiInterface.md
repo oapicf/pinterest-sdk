@@ -25,7 +25,7 @@ services:
 
 Search pins by a given search term
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
 
 ### Example Implementation
 ```php
@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **searchUserPinsList**
-> OpenAPI\Server\Model\PinsList200Response searchUserPinsList($query, $adAccountId, $bookmark)
+> OpenAPI\Server\Model\SearchUserPinsList200Response searchUserPinsList($query, $adAccountId, $bookmark)
 
 Search user's Pins
 
@@ -210,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OpenAPI\Server\Model\PinsList200Response**](../Model/PinsList200Response.md)
+[**OpenAPI\Server\Model\SearchUserPinsList200Response**](../Model/SearchUserPinsList200Response.md)
 
 ### Authorization
 

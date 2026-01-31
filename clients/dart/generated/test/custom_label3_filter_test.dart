@@ -16,7 +16,7 @@ void main() {
   // final instance = CustomLabel3Filter();
 
   group('test CustomLabel3Filter', () {
-    // CatalogsProductGroupMultipleStringCriteria cUSTOMLABEL3
+    // CatalogsProductGroupFilterOperatorTypeCriteria cUSTOMLABEL3
     test('to test the property `cUSTOMLABEL3`', () async {
       // TODO
     });

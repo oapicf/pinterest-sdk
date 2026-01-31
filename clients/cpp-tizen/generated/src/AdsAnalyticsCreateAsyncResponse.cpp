@@ -23,14 +23,19 @@ AdsAnalyticsCreateAsyncResponse::~AdsAnalyticsCreateAsyncResponse()
 void
 AdsAnalyticsCreateAsyncResponse::__init()
 {
+	//message = std::string();
 	//report_status = std::string();
 	//token = std::string();
-	//message = std::string();
 }
 
 void
 AdsAnalyticsCreateAsyncResponse::__cleanup()
 {
+	//if(message != NULL) {
+	//
+	//delete message;
+	//message = NULL;
+	//}
 	//if(report_status != NULL) {
 	//
 	//delete report_status;
@@ -41,11 +46,6 @@ AdsAnalyticsCreateAsyncResponse::__cleanup()
 	//delete token;
 	//token = NULL;
 	//}
-	//if(message != NULL) {
-	//
-	//delete message;
-	//message = NULL;
-	//}
 	//
 }
 
@@ -54,6 +54,17 @@ AdsAnalyticsCreateAsyncResponse::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *messageKey = "message";
+	node = json_object_get_member(pJsonObject, messageKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&message, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *report_statusKey = "report_status";
 	node = json_object_get_member(pJsonObject, report_statusKey);
 	if (node !=NULL) {
@@ -79,17 +90,6 @@ AdsAnalyticsCreateAsyncResponse::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *messageKey = "message";
-	node = json_object_get_member(pJsonObject, messageKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&message, node, "std::string", "");
-		} else {
-			
-		}
-	}
 }
 
 AdsAnalyticsCreateAsyncResponse::AdsAnalyticsCreateAsyncResponse(char* json)
@@ -102,6 +102,15 @@ AdsAnalyticsCreateAsyncResponse::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("std::string")) {
+		std::string obj = getMessage();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *messageKey = "message";
+	json_object_set_member(pJsonObject, messageKey, node);
 	if (isprimitive("BulkReportingJobStatus")) {
 		BulkReportingJobStatus obj = getReportStatus();
 		node = converttoJson(&obj, "BulkReportingJobStatus", "");
@@ -125,21 +134,24 @@ AdsAnalyticsCreateAsyncResponse::toJson()
 	}
 	const gchar *tokenKey = "token";
 	json_object_set_member(pJsonObject, tokenKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getMessage();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *messageKey = "message";
-	json_object_set_member(pJsonObject, messageKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+std::string
+AdsAnalyticsCreateAsyncResponse::getMessage()
+{
+	return message;
+}
+
+void
+AdsAnalyticsCreateAsyncResponse::setMessage(std::string  message)
+{
+	this->message = message;
 }
 
 BulkReportingJobStatus
@@ -164,18 +176,6 @@ void
 AdsAnalyticsCreateAsyncResponse::setToken(std::string  token)
 {
 	this->token = token;
-}
-
-std::string
-AdsAnalyticsCreateAsyncResponse::getMessage()
-{
-	return message;
-}
-
-void
-AdsAnalyticsCreateAsyncResponse::setMessage(std::string  message)
-{
-	this->message = message;
 }
 
 

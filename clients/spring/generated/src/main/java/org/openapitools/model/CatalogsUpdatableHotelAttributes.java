@@ -27,25 +27,16 @@ import javax.annotation.Generated;
  * CatalogsUpdatableHotelAttributes
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsUpdatableHotelAttributes {
 
-  private JsonNullable<String> name = JsonNullable.<String>undefined();
+  private @Nullable CatalogsHotelAddress address;
 
-  private JsonNullable<String> link = JsonNullable.<String>undefined();
-
-  private JsonNullable<String> description = JsonNullable.<String>undefined();
+  private JsonNullable<String> basePrice = JsonNullable.<String>undefined();
 
   private JsonNullable<String> brand = JsonNullable.<String>undefined();
 
-  private @Nullable BigDecimal latitude;
-
-  private JsonNullable<BigDecimal> longitude = JsonNullable.<BigDecimal>undefined();
-
-  @Valid
-  private JsonNullable<List<String>> neighborhood = JsonNullable.<List<String>>undefined();
-
-  private @Nullable CatalogsHotelAddress address;
+  private JsonNullable<String> category = JsonNullable.<String>undefined();
 
   private JsonNullable<String> customLabel0 = JsonNullable.<String>undefined();
 
@@ -57,72 +48,61 @@ public class CatalogsUpdatableHotelAttributes {
 
   private JsonNullable<String> customLabel4 = JsonNullable.<String>undefined();
 
-  private JsonNullable<String> category = JsonNullable.<String>undefined();
-
-  private JsonNullable<String> basePrice = JsonNullable.<String>undefined();
-
-  private JsonNullable<String> salePrice = JsonNullable.<String>undefined();
+  private JsonNullable<String> description = JsonNullable.<String>undefined();
 
   private @Nullable CatalogsHotelGuestRatings guestRatings;
 
-  public CatalogsUpdatableHotelAttributes name(String name) {
-    this.name = JsonNullable.of(name);
+  private @Nullable BigDecimal latitude;
+
+  private JsonNullable<String> link = JsonNullable.<String>undefined();
+
+  private JsonNullable<BigDecimal> longitude = JsonNullable.<BigDecimal>undefined();
+
+  private JsonNullable<String> name = JsonNullable.<String>undefined();
+
+  @Valid
+  private JsonNullable<List<String>> neighborhood = JsonNullable.<List<String>>undefined();
+
+  private JsonNullable<String> salePrice = JsonNullable.<String>undefined();
+
+  public CatalogsUpdatableHotelAttributes address(@Nullable CatalogsHotelAddress address) {
+    this.address = address;
     return this;
   }
 
   /**
-   * The hotel's name.
-   * @return name
+   * Get address
+   * @return address
    */
-  
-  @Schema(name = "name", description = "The hotel's name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("name")
-  public JsonNullable<String> getName() {
-    return name;
+  @Valid 
+  @Schema(name = "address", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("address")
+  public @Nullable CatalogsHotelAddress getAddress() {
+    return address;
   }
 
-  public void setName(JsonNullable<String> name) {
-    this.name = name;
+  public void setAddress(@Nullable CatalogsHotelAddress address) {
+    this.address = address;
   }
 
-  public CatalogsUpdatableHotelAttributes link(String link) {
-    this.link = JsonNullable.of(link);
+  public CatalogsUpdatableHotelAttributes basePrice(String basePrice) {
+    this.basePrice = JsonNullable.of(basePrice);
     return this;
   }
 
   /**
-   * Link to the product page
-   * @return link
+   * Base price of the hotel room per night followed by the ISO currency code
+   * @return basePrice
    */
   
-  @Schema(name = "link", description = "Link to the product page", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("link")
-  public JsonNullable<String> getLink() {
-    return link;
+  @Schema(name = "base_price", example = "100 USD", description = "Base price of the hotel room per night followed by the ISO currency code", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("base_price")
+  public JsonNullable<String> getBasePrice() {
+    return basePrice;
   }
 
-  public void setLink(JsonNullable<String> link) {
-    this.link = link;
-  }
-
-  public CatalogsUpdatableHotelAttributes description(String description) {
-    this.description = JsonNullable.of(description);
-    return this;
-  }
-
-  /**
-   * Brief description of the hotel.
-   * @return description
-   */
-  
-  @Schema(name = "description", description = "Brief description of the hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("description")
-  public JsonNullable<String> getDescription() {
-    return description;
-  }
-
-  public void setDescription(JsonNullable<String> description) {
-    this.description = description;
+  public void setBasePrice(JsonNullable<String> basePrice) {
+    this.basePrice = basePrice;
   }
 
   public CatalogsUpdatableHotelAttributes brand(String brand) {
@@ -145,92 +125,24 @@ public class CatalogsUpdatableHotelAttributes {
     this.brand = brand;
   }
 
-  public CatalogsUpdatableHotelAttributes latitude(@Nullable BigDecimal latitude) {
-    this.latitude = latitude;
+  public CatalogsUpdatableHotelAttributes category(String category) {
+    this.category = JsonNullable.of(category);
     return this;
   }
 
   /**
-   * Latitude of the hotel.
-   * @return latitude
-   */
-  @Valid 
-  @Schema(name = "latitude", description = "Latitude of the hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("latitude")
-  public @Nullable BigDecimal getLatitude() {
-    return latitude;
-  }
-
-  public void setLatitude(@Nullable BigDecimal latitude) {
-    this.latitude = latitude;
-  }
-
-  public CatalogsUpdatableHotelAttributes longitude(BigDecimal longitude) {
-    this.longitude = JsonNullable.of(longitude);
-    return this;
-  }
-
-  /**
-   * Longitude of the hotel.
-   * @return longitude
-   */
-  @Valid 
-  @Schema(name = "longitude", description = "Longitude of the hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("longitude")
-  public JsonNullable<BigDecimal> getLongitude() {
-    return longitude;
-  }
-
-  public void setLongitude(JsonNullable<BigDecimal> longitude) {
-    this.longitude = longitude;
-  }
-
-  public CatalogsUpdatableHotelAttributes neighborhood(List<String> neighborhood) {
-    this.neighborhood = JsonNullable.of(neighborhood);
-    return this;
-  }
-
-  public CatalogsUpdatableHotelAttributes addNeighborhoodItem(String neighborhoodItem) {
-    if (this.neighborhood == null || !this.neighborhood.isPresent()) {
-      this.neighborhood = JsonNullable.of(new ArrayList<>());
-    }
-    this.neighborhood.get().add(neighborhoodItem);
-    return this;
-  }
-
-  /**
-   * A list of neighborhoods where the hotel is located
-   * @return neighborhood
+   * The type of property. The category can be any type of internal description desired.
+   * @return category
    */
   
-  @Schema(name = "neighborhood", description = "A list of neighborhoods where the hotel is located", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("neighborhood")
-  public JsonNullable<List<String>> getNeighborhood() {
-    return neighborhood;
+  @Schema(name = "category", description = "The type of property. The category can be any type of internal description desired.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("category")
+  public JsonNullable<String> getCategory() {
+    return category;
   }
 
-  public void setNeighborhood(JsonNullable<List<String>> neighborhood) {
-    this.neighborhood = neighborhood;
-  }
-
-  public CatalogsUpdatableHotelAttributes address(@Nullable CatalogsHotelAddress address) {
-    this.address = address;
-    return this;
-  }
-
-  /**
-   * Get address
-   * @return address
-   */
-  @Valid 
-  @Schema(name = "address", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("address")
-  public @Nullable CatalogsHotelAddress getAddress() {
-    return address;
-  }
-
-  public void setAddress(@Nullable CatalogsHotelAddress address) {
-    this.address = address;
+  public void setCategory(JsonNullable<String> category) {
+    this.category = category;
   }
 
   public CatalogsUpdatableHotelAttributes customLabel0(String customLabel0) {
@@ -333,64 +245,24 @@ public class CatalogsUpdatableHotelAttributes {
     this.customLabel4 = customLabel4;
   }
 
-  public CatalogsUpdatableHotelAttributes category(String category) {
-    this.category = JsonNullable.of(category);
+  public CatalogsUpdatableHotelAttributes description(String description) {
+    this.description = JsonNullable.of(description);
     return this;
   }
 
   /**
-   * The type of property. The category can be any type of internal description desired.
-   * @return category
+   * Brief description of the hotel.
+   * @return description
    */
   
-  @Schema(name = "category", description = "The type of property. The category can be any type of internal description desired.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("category")
-  public JsonNullable<String> getCategory() {
-    return category;
+  @Schema(name = "description", description = "Brief description of the hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("description")
+  public JsonNullable<String> getDescription() {
+    return description;
   }
 
-  public void setCategory(JsonNullable<String> category) {
-    this.category = category;
-  }
-
-  public CatalogsUpdatableHotelAttributes basePrice(String basePrice) {
-    this.basePrice = JsonNullable.of(basePrice);
-    return this;
-  }
-
-  /**
-   * Base price of the hotel room per night followed by the ISO currency code
-   * @return basePrice
-   */
-  
-  @Schema(name = "base_price", example = "100 USD", description = "Base price of the hotel room per night followed by the ISO currency code", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("base_price")
-  public JsonNullable<String> getBasePrice() {
-    return basePrice;
-  }
-
-  public void setBasePrice(JsonNullable<String> basePrice) {
-    this.basePrice = basePrice;
-  }
-
-  public CatalogsUpdatableHotelAttributes salePrice(String salePrice) {
-    this.salePrice = JsonNullable.of(salePrice);
-    return this;
-  }
-
-  /**
-   * Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
-   * @return salePrice
-   */
-  
-  @Schema(name = "sale_price", example = "90 USD", description = "Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("sale_price")
-  public JsonNullable<String> getSalePrice() {
-    return salePrice;
-  }
-
-  public void setSalePrice(JsonNullable<String> salePrice) {
-    this.salePrice = salePrice;
+  public void setDescription(JsonNullable<String> description) {
+    this.description = description;
   }
 
   public CatalogsUpdatableHotelAttributes guestRatings(@Nullable CatalogsHotelGuestRatings guestRatings) {
@@ -413,6 +285,134 @@ public class CatalogsUpdatableHotelAttributes {
     this.guestRatings = guestRatings;
   }
 
+  public CatalogsUpdatableHotelAttributes latitude(@Nullable BigDecimal latitude) {
+    this.latitude = latitude;
+    return this;
+  }
+
+  /**
+   * Latitude of the hotel.
+   * @return latitude
+   */
+  @Valid 
+  @Schema(name = "latitude", description = "Latitude of the hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("latitude")
+  public @Nullable BigDecimal getLatitude() {
+    return latitude;
+  }
+
+  public void setLatitude(@Nullable BigDecimal latitude) {
+    this.latitude = latitude;
+  }
+
+  public CatalogsUpdatableHotelAttributes link(String link) {
+    this.link = JsonNullable.of(link);
+    return this;
+  }
+
+  /**
+   * Link to the product page
+   * @return link
+   */
+  
+  @Schema(name = "link", description = "Link to the product page", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("link")
+  public JsonNullable<String> getLink() {
+    return link;
+  }
+
+  public void setLink(JsonNullable<String> link) {
+    this.link = link;
+  }
+
+  public CatalogsUpdatableHotelAttributes longitude(BigDecimal longitude) {
+    this.longitude = JsonNullable.of(longitude);
+    return this;
+  }
+
+  /**
+   * Longitude of the hotel.
+   * @return longitude
+   */
+  @Valid 
+  @Schema(name = "longitude", description = "Longitude of the hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("longitude")
+  public JsonNullable<BigDecimal> getLongitude() {
+    return longitude;
+  }
+
+  public void setLongitude(JsonNullable<BigDecimal> longitude) {
+    this.longitude = longitude;
+  }
+
+  public CatalogsUpdatableHotelAttributes name(String name) {
+    this.name = JsonNullable.of(name);
+    return this;
+  }
+
+  /**
+   * The hotel's name.
+   * @return name
+   */
+  
+  @Schema(name = "name", description = "The hotel's name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("name")
+  public JsonNullable<String> getName() {
+    return name;
+  }
+
+  public void setName(JsonNullable<String> name) {
+    this.name = name;
+  }
+
+  public CatalogsUpdatableHotelAttributes neighborhood(List<String> neighborhood) {
+    this.neighborhood = JsonNullable.of(neighborhood);
+    return this;
+  }
+
+  public CatalogsUpdatableHotelAttributes addNeighborhoodItem(String neighborhoodItem) {
+    if (this.neighborhood == null || !this.neighborhood.isPresent()) {
+      this.neighborhood = JsonNullable.of(new ArrayList<>());
+    }
+    this.neighborhood.get().add(neighborhoodItem);
+    return this;
+  }
+
+  /**
+   * A list of neighborhoods where the hotel is located
+   * @return neighborhood
+   */
+  
+  @Schema(name = "neighborhood", description = "A list of neighborhoods where the hotel is located", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("neighborhood")
+  public JsonNullable<List<String>> getNeighborhood() {
+    return neighborhood;
+  }
+
+  public void setNeighborhood(JsonNullable<List<String>> neighborhood) {
+    this.neighborhood = neighborhood;
+  }
+
+  public CatalogsUpdatableHotelAttributes salePrice(String salePrice) {
+    this.salePrice = JsonNullable.of(salePrice);
+    return this;
+  }
+
+  /**
+   * Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
+   * @return salePrice
+   */
+  
+  @Schema(name = "sale_price", example = "90 USD", description = "Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("sale_price")
+  public JsonNullable<String> getSalePrice() {
+    return salePrice;
+  }
+
+  public void setSalePrice(JsonNullable<String> salePrice) {
+    this.salePrice = salePrice;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -422,23 +422,23 @@ public class CatalogsUpdatableHotelAttributes {
       return false;
     }
     CatalogsUpdatableHotelAttributes catalogsUpdatableHotelAttributes = (CatalogsUpdatableHotelAttributes) o;
-    return equalsNullable(this.name, catalogsUpdatableHotelAttributes.name) &&
-        equalsNullable(this.link, catalogsUpdatableHotelAttributes.link) &&
-        equalsNullable(this.description, catalogsUpdatableHotelAttributes.description) &&
+    return Objects.equals(this.address, catalogsUpdatableHotelAttributes.address) &&
+        equalsNullable(this.basePrice, catalogsUpdatableHotelAttributes.basePrice) &&
         equalsNullable(this.brand, catalogsUpdatableHotelAttributes.brand) &&
-        Objects.equals(this.latitude, catalogsUpdatableHotelAttributes.latitude) &&
-        equalsNullable(this.longitude, catalogsUpdatableHotelAttributes.longitude) &&
-        equalsNullable(this.neighborhood, catalogsUpdatableHotelAttributes.neighborhood) &&
-        Objects.equals(this.address, catalogsUpdatableHotelAttributes.address) &&
+        equalsNullable(this.category, catalogsUpdatableHotelAttributes.category) &&
         equalsNullable(this.customLabel0, catalogsUpdatableHotelAttributes.customLabel0) &&
         equalsNullable(this.customLabel1, catalogsUpdatableHotelAttributes.customLabel1) &&
         equalsNullable(this.customLabel2, catalogsUpdatableHotelAttributes.customLabel2) &&
         equalsNullable(this.customLabel3, catalogsUpdatableHotelAttributes.customLabel3) &&
         equalsNullable(this.customLabel4, catalogsUpdatableHotelAttributes.customLabel4) &&
-        equalsNullable(this.category, catalogsUpdatableHotelAttributes.category) &&
-        equalsNullable(this.basePrice, catalogsUpdatableHotelAttributes.basePrice) &&
-        equalsNullable(this.salePrice, catalogsUpdatableHotelAttributes.salePrice) &&
-        Objects.equals(this.guestRatings, catalogsUpdatableHotelAttributes.guestRatings);
+        equalsNullable(this.description, catalogsUpdatableHotelAttributes.description) &&
+        Objects.equals(this.guestRatings, catalogsUpdatableHotelAttributes.guestRatings) &&
+        Objects.equals(this.latitude, catalogsUpdatableHotelAttributes.latitude) &&
+        equalsNullable(this.link, catalogsUpdatableHotelAttributes.link) &&
+        equalsNullable(this.longitude, catalogsUpdatableHotelAttributes.longitude) &&
+        equalsNullable(this.name, catalogsUpdatableHotelAttributes.name) &&
+        equalsNullable(this.neighborhood, catalogsUpdatableHotelAttributes.neighborhood) &&
+        equalsNullable(this.salePrice, catalogsUpdatableHotelAttributes.salePrice);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -447,7 +447,7 @@ public class CatalogsUpdatableHotelAttributes {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(name), hashCodeNullable(link), hashCodeNullable(description), hashCodeNullable(brand), latitude, hashCodeNullable(longitude), hashCodeNullable(neighborhood), address, hashCodeNullable(customLabel0), hashCodeNullable(customLabel1), hashCodeNullable(customLabel2), hashCodeNullable(customLabel3), hashCodeNullable(customLabel4), hashCodeNullable(category), hashCodeNullable(basePrice), hashCodeNullable(salePrice), guestRatings);
+    return Objects.hash(address, hashCodeNullable(basePrice), hashCodeNullable(brand), hashCodeNullable(category), hashCodeNullable(customLabel0), hashCodeNullable(customLabel1), hashCodeNullable(customLabel2), hashCodeNullable(customLabel3), hashCodeNullable(customLabel4), hashCodeNullable(description), guestRatings, latitude, hashCodeNullable(link), hashCodeNullable(longitude), hashCodeNullable(name), hashCodeNullable(neighborhood), hashCodeNullable(salePrice));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -461,23 +461,23 @@ public class CatalogsUpdatableHotelAttributes {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsUpdatableHotelAttributes {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    link: ").append(toIndentedString(link)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
-    sb.append("    latitude: ").append(toIndentedString(latitude)).append("\n");
-    sb.append("    longitude: ").append(toIndentedString(longitude)).append("\n");
-    sb.append("    neighborhood: ").append(toIndentedString(neighborhood)).append("\n");
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
+    sb.append("    basePrice: ").append(toIndentedString(basePrice)).append("\n");
+    sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
+    sb.append("    category: ").append(toIndentedString(category)).append("\n");
     sb.append("    customLabel0: ").append(toIndentedString(customLabel0)).append("\n");
     sb.append("    customLabel1: ").append(toIndentedString(customLabel1)).append("\n");
     sb.append("    customLabel2: ").append(toIndentedString(customLabel2)).append("\n");
     sb.append("    customLabel3: ").append(toIndentedString(customLabel3)).append("\n");
     sb.append("    customLabel4: ").append(toIndentedString(customLabel4)).append("\n");
-    sb.append("    category: ").append(toIndentedString(category)).append("\n");
-    sb.append("    basePrice: ").append(toIndentedString(basePrice)).append("\n");
-    sb.append("    salePrice: ").append(toIndentedString(salePrice)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    guestRatings: ").append(toIndentedString(guestRatings)).append("\n");
+    sb.append("    latitude: ").append(toIndentedString(latitude)).append("\n");
+    sb.append("    link: ").append(toIndentedString(link)).append("\n");
+    sb.append("    longitude: ").append(toIndentedString(longitude)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    neighborhood: ").append(toIndentedString(neighborhood)).append("\n");
+    sb.append("    salePrice: ").append(toIndentedString(salePrice)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,0 +1,84 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdPreviewShopping"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdPreviewShopping"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CustomizableCTAType = openapi_server.resourceTypes.CustomizableCTAType
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  AdPreviewShopping {
+    title = AdPreviewShopping
+    description = AdPreviewShopping
+    derivedFrom = Root
+    properties {
+        catalog_product_group_id {
+          type =  string
+          description = "Catalog Product Group Id."
+          optional = true
+        }
+        creative_type {
+          type =  string
+          description = "Ad format of the shopping ad preview."
+          enum = ["SHOPPING", "CAROUSEL", "COLLECTION", "REGULAR"]
+          optional = true
+        }
+        customizable_cta_type {
+          type = CustomizableCTAType
+          description = "Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are &#x60;SHOP_NOW&#x60;, &#x60;BOOK_NOW&#x60;, &#x60;ON_SALE&#x60;, &#x60;GET_DEAL&#x60;, &#x60;BUY_ONLINE_PICKUP_IN_STORE&#x60;"
+          optional = false
+        }
+        hero_image_title {
+          type =  string
+          description = "Title displayed below ad."
+          optional = false
+        }
+        hero_image_url {
+          type =  string
+          description = "Hero image URL."
+          optional = false
+        }
+        hero_pin_id {
+          type =  string
+          description = "Pin id for the hero image. When creative type is COLLECTION, either hero_pin_id or (hero_image_url, hero_image_title) is required."
+          optional = false
+        }
+        image_tag {
+          type =  string
+          description = "Multi image template tag."
+          optional = false
+        }
+        item_id {
+          type =  string
+          description = "Item id for product to preview standard shopping ads, optional and only applicable when creative type is SHOPPING."
+          optional = false
+        }
+        preferred_media_type {
+          type =  string
+          description = "Preferred media type."
+          enum = ["VIDEO", "IMAGE"]
+          optional = false
+        }
+        video_tag {
+          type =  string
+          description = "Multi video template tag, image_tag and video_tag are mutual exclusive."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdPreviewShopping {
+    title = AdPreviewShopping
+    description = AdPreviewShopping
+    implements = openapi_server.resourceTypes.AdPreviewShopping
+
+  }
+}

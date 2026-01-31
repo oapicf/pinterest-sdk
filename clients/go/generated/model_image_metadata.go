@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,11 +20,11 @@ var _ MappedNullable = &ImageMetadata{}
 
 // ImageMetadata struct for ImageMetadata
 type ImageMetadata struct {
-	ItemType *string `json:"item_type,omitempty"`
-	Title NullableString `json:"title,omitempty"`
 	Description NullableString `json:"description,omitempty"`
+	Images *ImageSize `json:"images,omitempty"`
+	ItemType *string `json:"item_type,omitempty"`
 	Link NullableString `json:"link,omitempty"`
-	Images *ImageMetadataImages `json:"images,omitempty"`
+	Title NullableString `json:"title,omitempty"`
 }
 
 // NewImageMetadata instantiates a new ImageMetadata object
@@ -42,80 +42,6 @@ func NewImageMetadata() *ImageMetadata {
 func NewImageMetadataWithDefaults() *ImageMetadata {
 	this := ImageMetadata{}
 	return &this
-}
-
-// GetItemType returns the ItemType field value if set, zero value otherwise.
-func (o *ImageMetadata) GetItemType() string {
-	if o == nil || IsNil(o.ItemType) {
-		var ret string
-		return ret
-	}
-	return *o.ItemType
-}
-
-// GetItemTypeOk returns a tuple with the ItemType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ImageMetadata) GetItemTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.ItemType) {
-		return nil, false
-	}
-	return o.ItemType, true
-}
-
-// HasItemType returns a boolean if a field has been set.
-func (o *ImageMetadata) HasItemType() bool {
-	if o != nil && !IsNil(o.ItemType) {
-		return true
-	}
-
-	return false
-}
-
-// SetItemType gets a reference to the given string and assigns it to the ItemType field.
-func (o *ImageMetadata) SetItemType(v string) {
-	o.ItemType = &v
-}
-
-// GetTitle returns the Title field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ImageMetadata) GetTitle() string {
-	if o == nil || IsNil(o.Title.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Title.Get()
-}
-
-// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ImageMetadata) GetTitleOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Title.Get(), o.Title.IsSet()
-}
-
-// HasTitle returns a boolean if a field has been set.
-func (o *ImageMetadata) HasTitle() bool {
-	if o != nil && o.Title.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetTitle gets a reference to the given NullableString and assigns it to the Title field.
-func (o *ImageMetadata) SetTitle(v string) {
-	o.Title.Set(&v)
-}
-// SetTitleNil sets the value for Title to be an explicit nil
-func (o *ImageMetadata) SetTitleNil() {
-	o.Title.Set(nil)
-}
-
-// UnsetTitle ensures that no value is present for Title, not even an explicit nil
-func (o *ImageMetadata) UnsetTitle() {
-	o.Title.Unset()
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -160,6 +86,70 @@ func (o *ImageMetadata) UnsetDescription() {
 	o.Description.Unset()
 }
 
+// GetImages returns the Images field value if set, zero value otherwise.
+func (o *ImageMetadata) GetImages() ImageSize {
+	if o == nil || IsNil(o.Images) {
+		var ret ImageSize
+		return ret
+	}
+	return *o.Images
+}
+
+// GetImagesOk returns a tuple with the Images field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ImageMetadata) GetImagesOk() (*ImageSize, bool) {
+	if o == nil || IsNil(o.Images) {
+		return nil, false
+	}
+	return o.Images, true
+}
+
+// HasImages returns a boolean if a field has been set.
+func (o *ImageMetadata) HasImages() bool {
+	if o != nil && !IsNil(o.Images) {
+		return true
+	}
+
+	return false
+}
+
+// SetImages gets a reference to the given ImageSize and assigns it to the Images field.
+func (o *ImageMetadata) SetImages(v ImageSize) {
+	o.Images = &v
+}
+
+// GetItemType returns the ItemType field value if set, zero value otherwise.
+func (o *ImageMetadata) GetItemType() string {
+	if o == nil || IsNil(o.ItemType) {
+		var ret string
+		return ret
+	}
+	return *o.ItemType
+}
+
+// GetItemTypeOk returns a tuple with the ItemType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ImageMetadata) GetItemTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ItemType) {
+		return nil, false
+	}
+	return o.ItemType, true
+}
+
+// HasItemType returns a boolean if a field has been set.
+func (o *ImageMetadata) HasItemType() bool {
+	if o != nil && !IsNil(o.ItemType) {
+		return true
+	}
+
+	return false
+}
+
+// SetItemType gets a reference to the given string and assigns it to the ItemType field.
+func (o *ImageMetadata) SetItemType(v string) {
+	o.ItemType = &v
+}
+
 // GetLink returns the Link field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ImageMetadata) GetLink() string {
 	if o == nil || IsNil(o.Link.Get()) {
@@ -202,36 +192,46 @@ func (o *ImageMetadata) UnsetLink() {
 	o.Link.Unset()
 }
 
-// GetImages returns the Images field value if set, zero value otherwise.
-func (o *ImageMetadata) GetImages() ImageMetadataImages {
-	if o == nil || IsNil(o.Images) {
-		var ret ImageMetadataImages
+// GetTitle returns the Title field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ImageMetadata) GetTitle() string {
+	if o == nil || IsNil(o.Title.Get()) {
+		var ret string
 		return ret
 	}
-	return *o.Images
+	return *o.Title.Get()
 }
 
-// GetImagesOk returns a tuple with the Images field value if set, nil otherwise
+// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ImageMetadata) GetImagesOk() (*ImageMetadataImages, bool) {
-	if o == nil || IsNil(o.Images) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ImageMetadata) GetTitleOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Images, true
+	return o.Title.Get(), o.Title.IsSet()
 }
 
-// HasImages returns a boolean if a field has been set.
-func (o *ImageMetadata) HasImages() bool {
-	if o != nil && !IsNil(o.Images) {
+// HasTitle returns a boolean if a field has been set.
+func (o *ImageMetadata) HasTitle() bool {
+	if o != nil && o.Title.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetImages gets a reference to the given ImageMetadataImages and assigns it to the Images field.
-func (o *ImageMetadata) SetImages(v ImageMetadataImages) {
-	o.Images = &v
+// SetTitle gets a reference to the given NullableString and assigns it to the Title field.
+func (o *ImageMetadata) SetTitle(v string) {
+	o.Title.Set(&v)
+}
+// SetTitleNil sets the value for Title to be an explicit nil
+func (o *ImageMetadata) SetTitleNil() {
+	o.Title.Set(nil)
+}
+
+// UnsetTitle ensures that no value is present for Title, not even an explicit nil
+func (o *ImageMetadata) UnsetTitle() {
+	o.Title.Unset()
 }
 
 func (o ImageMetadata) MarshalJSON() ([]byte, error) {
@@ -244,20 +244,20 @@ func (o ImageMetadata) MarshalJSON() ([]byte, error) {
 
 func (o ImageMetadata) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ItemType) {
-		toSerialize["item_type"] = o.ItemType
-	}
-	if o.Title.IsSet() {
-		toSerialize["title"] = o.Title.Get()
-	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
+	}
+	if !IsNil(o.Images) {
+		toSerialize["images"] = o.Images
+	}
+	if !IsNil(o.ItemType) {
+		toSerialize["item_type"] = o.ItemType
 	}
 	if o.Link.IsSet() {
 		toSerialize["link"] = o.Link.Get()
 	}
-	if !IsNil(o.Images) {
-		toSerialize["images"] = o.Images
+	if o.Title.IsSet() {
+		toSerialize["title"] = o.Title.Get()
 	}
 	return toSerialize, nil
 }

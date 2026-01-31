@@ -9,28 +9,28 @@
 -export_type([openapi_ssio_create_insertion_order_request/0]).
 
 -type openapi_ssio_create_insertion_order_request() ::
-  [ {'start_date', binary() }
-  | {'end_date', binary() }
-  | {'po_number', binary() }
-  | {'budget_amount', integer() }
+  [ {'agency_link', binary() }
+  | {'billing_contact_email', binary() }
   | {'billing_contact_firstname', binary() }
   | {'billing_contact_lastname', binary() }
-  | {'billing_contact_email', binary() }
+  | {'budget_amount', integer() }
+  | {'end_date', binary() }
+  | {'media_contact_email', binary() }
   | {'media_contact_firstname', binary() }
   | {'media_contact_lastname', binary() }
-  | {'media_contact_email', binary() }
-  | {'agency_link', binary() }
+  | {'po_number', binary() }
+  | {'start_date', binary() }
   | {'user_email', binary() }
-  | {'accepted_terms_time', integer() }
-  | {'pmp_id', binary() }
-  | {'order_name', binary() }
-  | {'order_line_type', binary() }
   | {'accepted_terms_id', binary() }
-  | {'billto_company_id', binary() }
-  | {'billto_business_address_id', binary() }
+  | {'accepted_terms_time', integer() }
   | {'billto_billing_address_id', binary() }
-  | {'estimated_monthly_spend', integer() }
+  | {'billto_business_address_id', binary() }
+  | {'billto_company_id', binary() }
   | {'currency_info', openapi_currency:openapi_currency() }
+  | {'estimated_monthly_spend', integer() }
+  | {'order_line_type', binary() }
+  | {'order_name', binary() }
+  | {'pmp_id', binary() }
   ].
 
 
@@ -38,28 +38,28 @@ openapi_ssio_create_insertion_order_request() ->
     openapi_ssio_create_insertion_order_request([]).
 
 openapi_ssio_create_insertion_order_request(Fields) ->
-  Default = [ {'start_date', binary() }
-            , {'end_date', binary() }
-            , {'po_number', binary() }
-            , {'budget_amount', integer() }
+  Default = [ {'agency_link', binary() }
+            , {'billing_contact_email', binary() }
             , {'billing_contact_firstname', binary() }
             , {'billing_contact_lastname', binary() }
-            , {'billing_contact_email', binary() }
+            , {'budget_amount', integer() }
+            , {'end_date', binary() }
+            , {'media_contact_email', binary() }
             , {'media_contact_firstname', binary() }
             , {'media_contact_lastname', binary() }
-            , {'media_contact_email', binary() }
-            , {'agency_link', binary() }
+            , {'po_number', binary() }
+            , {'start_date', binary() }
             , {'user_email', binary() }
-            , {'accepted_terms_time', integer() }
-            , {'pmp_id', binary() }
-            , {'order_name', binary() }
-            , {'order_line_type', elements([<<"BUDGET">>, <<"PERPETUALS">>]) }
             , {'accepted_terms_id', binary() }
-            , {'billto_company_id', binary() }
-            , {'billto_business_address_id', binary() }
+            , {'accepted_terms_time', integer() }
             , {'billto_billing_address_id', binary() }
-            , {'estimated_monthly_spend', integer() }
+            , {'billto_business_address_id', binary() }
+            , {'billto_company_id', binary() }
             , {'currency_info', openapi_currency:openapi_currency() }
+            , {'estimated_monthly_spend', integer() }
+            , {'order_line_type', elements([<<"BUDGET">>, <<"PERPETUALS">>]) }
+            , {'order_name', binary() }
+            , {'pmp_id', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

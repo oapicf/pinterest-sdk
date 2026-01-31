@@ -3,7 +3,7 @@ package org.openapitools.model;
 
 
 /**
- * Media upload status
+ * Gets or Sets MediaUploadStatus
  */
 public enum MediaUploadStatus {
   

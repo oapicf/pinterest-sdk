@@ -25,28 +25,28 @@ class SingleInterestTargetingOptionResponseTest : ShouldSpec() {
         // uncomment below to create an instance of SingleInterestTargetingOptionResponse
         //val modelInstance = SingleInterestTargetingOptionResponse()
 
-        // to test the property `id`
-        should("test id") {
-            // uncomment below to test the property
-            //modelInstance.id shouldBe ("TODO")
-        }
-
-        // to test the property `name`
-        should("test name") {
-            // uncomment below to test the property
-            //modelInstance.name shouldBe ("TODO")
-        }
-
         // to test the property `childInterests`
         should("test childInterests") {
             // uncomment below to test the property
             //modelInstance.childInterests shouldBe ("TODO")
         }
 
+        // to test the property `id`
+        should("test id") {
+            // uncomment below to test the property
+            //modelInstance.id shouldBe ("TODO")
+        }
+
         // to test the property `level`
         should("test level") {
             // uncomment below to test the property
             //modelInstance.level shouldBe ("TODO")
+        }
+
+        // to test the property `name`
+        should("test name") {
+            // uncomment below to test the property
+            //modelInstance.name shouldBe ("TODO")
         }
 
     }

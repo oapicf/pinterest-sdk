@@ -9,13 +9,13 @@ import org.openapitools.models.CatalogsHotelAttributes
 
 /**
  * A hotel item to be upserted.
+ * @param attributes 
  * @param hotelUnderscoreid The catalog hotel id in the merchant namespace
  * @param operation 
- * @param attributes 
  */
-case class CatalogsUpsertHotelItem(hotelUnderscoreid: String,
-                operation: String,
-                attributes: CatalogsHotelAttributes
+case class CatalogsUpsertHotelItem(attributes: CatalogsHotelAttributes,
+                hotelUnderscoreid: String,
+                operation: String
                 )
 
 object CatalogsUpsertHotelItem {

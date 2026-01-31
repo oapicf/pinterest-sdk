@@ -7,22 +7,22 @@
 
 static audience_insights_response_t *audience_insights_response_create_internal(
     list_t *categories,
-    audience_demographics_t *demographics,
-    pinterest_rest_api_audience_insight_type__e type,
     char *date,
+    audience_demographics_t *demographics,
     int size,
-    int size_is_upper_bound
+    int size_is_upper_bound,
+    pinterest_rest_api_audience_insight_type__e type
     ) {
     audience_insights_response_t *audience_insights_response_local_var = malloc(sizeof(audience_insights_response_t));
     if (!audience_insights_response_local_var) {
         return NULL;
     }
     audience_insights_response_local_var->categories = categories;
-    audience_insights_response_local_var->demographics = demographics;
-    audience_insights_response_local_var->type = type;
     audience_insights_response_local_var->date = date;
+    audience_insights_response_local_var->demographics = demographics;
     audience_insights_response_local_var->size = size;
     audience_insights_response_local_var->size_is_upper_bound = size_is_upper_bound;
+    audience_insights_response_local_var->type = type;
 
     audience_insights_response_local_var->_library_owned = 1;
     return audience_insights_response_local_var;
@@ -30,19 +30,19 @@ static audience_insights_response_t *audience_insights_response_create_internal(
 
 __attribute__((deprecated)) audience_insights_response_t *audience_insights_response_create(
     list_t *categories,
-    audience_demographics_t *demographics,
-    pinterest_rest_api_audience_insight_type__e type,
     char *date,
+    audience_demographics_t *demographics,
     int size,
-    int size_is_upper_bound
+    int size_is_upper_bound,
+    pinterest_rest_api_audience_insight_type__e type
     ) {
     return audience_insights_response_create_internal (
         categories,
-        demographics,
-        type,
         date,
+        demographics,
         size,
-        size_is_upper_bound
+        size_is_upper_bound,
+        type
         );
 }
 
@@ -62,13 +62,13 @@ void audience_insights_response_free(audience_insights_response_t *audience_insi
         list_freeList(audience_insights_response->categories);
         audience_insights_response->categories = NULL;
     }
-    if (audience_insights_response->demographics) {
-        audience_demographics_free(audience_insights_response->demographics);
-        audience_insights_response->demographics = NULL;
-    }
     if (audience_insights_response->date) {
         free(audience_insights_response->date);
         audience_insights_response->date = NULL;
+    }
+    if (audience_insights_response->demographics) {
+        audience_demographics_free(audience_insights_response->demographics);
+        audience_insights_response->demographics = NULL;
     }
     free(audience_insights_response);
 }
@@ -96,6 +96,14 @@ cJSON *audience_insights_response_convertToJSON(audience_insights_response_t *au
     }
 
 
+    // audience_insights_response->date
+    if(audience_insights_response->date) {
+    if(cJSON_AddStringToObject(item, "date", audience_insights_response->date) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
     // audience_insights_response->demographics
     if(audience_insights_response->demographics) {
     cJSON *demographics_local_JSON = audience_demographics_convertToJSON(audience_insights_response->demographics);
@@ -105,27 +113,6 @@ cJSON *audience_insights_response_convertToJSON(audience_insights_response_t *au
     cJSON_AddItemToObject(item, "demographics", demographics_local_JSON);
     if(item->child == NULL) {
     goto fail;
-    }
-    }
-
-
-    // audience_insights_response->type
-    if(audience_insights_response->type != pinterest_rest_api_audience_insight_type__NULL) {
-    cJSON *type_local_JSON = audience_insight_type_convertToJSON(audience_insights_response->type);
-    if(type_local_JSON == NULL) {
-        goto fail; // custom
-    }
-    cJSON_AddItemToObject(item, "type", type_local_JSON);
-    if(item->child == NULL) {
-        goto fail;
-    }
-    }
-
-
-    // audience_insights_response->date
-    if(audience_insights_response->date) {
-    if(cJSON_AddStringToObject(item, "date", audience_insights_response->date) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -142,6 +129,19 @@ cJSON *audience_insights_response_convertToJSON(audience_insights_response_t *au
     if(audience_insights_response->size_is_upper_bound) {
     if(cJSON_AddBoolToObject(item, "size_is_upper_bound", audience_insights_response->size_is_upper_bound) == NULL) {
     goto fail; //Bool
+    }
+    }
+
+
+    // audience_insights_response->type
+    if(audience_insights_response->type != pinterest_rest_api_audience_insight_type__NULL) {
+    cJSON *type_local_JSON = audience_insight_type_convertToJSON(audience_insights_response->type);
+    if(type_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "type", type_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
     }
     }
 
@@ -190,24 +190,6 @@ audience_insights_response_t *audience_insights_response_parseFromJSON(cJSON *au
     }
     }
 
-    // audience_insights_response->demographics
-    cJSON *demographics = cJSON_GetObjectItemCaseSensitive(audience_insights_responseJSON, "demographics");
-    if (cJSON_IsNull(demographics)) {
-        demographics = NULL;
-    }
-    if (demographics) { 
-    demographics_local_nonprim = audience_demographics_parseFromJSON(demographics); //nonprimitive
-    }
-
-    // audience_insights_response->type
-    cJSON *type = cJSON_GetObjectItemCaseSensitive(audience_insights_responseJSON, "type");
-    if (cJSON_IsNull(type)) {
-        type = NULL;
-    }
-    if (type) { 
-    type_local_nonprim = audience_insight_type_parseFromJSON(type); //custom
-    }
-
     // audience_insights_response->date
     cJSON *date = cJSON_GetObjectItemCaseSensitive(audience_insights_responseJSON, "date");
     if (cJSON_IsNull(date)) {
@@ -218,6 +200,15 @@ audience_insights_response_t *audience_insights_response_parseFromJSON(cJSON *au
     {
     goto end; //String
     }
+    }
+
+    // audience_insights_response->demographics
+    cJSON *demographics = cJSON_GetObjectItemCaseSensitive(audience_insights_responseJSON, "demographics");
+    if (cJSON_IsNull(demographics)) {
+        demographics = NULL;
+    }
+    if (demographics) { 
+    demographics_local_nonprim = audience_demographics_parseFromJSON(demographics); //nonprimitive
     }
 
     // audience_insights_response->size
@@ -244,14 +235,23 @@ audience_insights_response_t *audience_insights_response_parseFromJSON(cJSON *au
     }
     }
 
+    // audience_insights_response->type
+    cJSON *type = cJSON_GetObjectItemCaseSensitive(audience_insights_responseJSON, "type");
+    if (cJSON_IsNull(type)) {
+        type = NULL;
+    }
+    if (type) { 
+    type_local_nonprim = audience_insight_type_parseFromJSON(type); //custom
+    }
+
 
     audience_insights_response_local_var = audience_insights_response_create_internal (
         categories ? categoriesList : NULL,
-        demographics ? demographics_local_nonprim : NULL,
-        type ? type_local_nonprim : 0,
         date && !cJSON_IsNull(date) ? strdup(date->valuestring) : NULL,
+        demographics ? demographics_local_nonprim : NULL,
         size ? size->valuedouble : 0,
-        size_is_upper_bound ? size_is_upper_bound->valueint : 0
+        size_is_upper_bound ? size_is_upper_bound->valueint : 0,
+        type ? type_local_nonprim : 0
         );
 
     return audience_insights_response_local_var;

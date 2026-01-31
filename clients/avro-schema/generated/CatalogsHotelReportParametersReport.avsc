@@ -11,7 +11,8 @@
         "name": "CatalogsHotelReportParametersReport_reportUnderscoretype",
         "symbols": [
           "FEED_INGESTION_ISSUES",
-          "DISTRIBUTION_ISSUES"
+          "DISTRIBUTION_ISSUES",
+          "ALL_ITEMS"
         ]
       }],
       "doc": "",

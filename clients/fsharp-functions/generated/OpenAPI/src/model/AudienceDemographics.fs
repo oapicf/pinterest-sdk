@@ -13,14 +13,14 @@ module AudienceDemographics =
   type AudienceDemographics = {
     [<JsonProperty(PropertyName = "ages")>]
     Ages : AudienceDemographicValue[];
-    [<JsonProperty(PropertyName = "genders")>]
-    Genders : AudienceDemographicValue[];
-    [<JsonProperty(PropertyName = "devices")>]
-    Devices : AudienceDemographicValue[];
-    [<JsonProperty(PropertyName = "metros")>]
-    Metros : AudienceDemographicValue[];
     [<JsonProperty(PropertyName = "countries")>]
     Countries : AudienceDemographicValue[];
+    [<JsonProperty(PropertyName = "devices")>]
+    Devices : AudienceDemographicValue[];
+    [<JsonProperty(PropertyName = "genders")>]
+    Genders : AudienceDemographicValue[];
+    [<JsonProperty(PropertyName = "metros")>]
+    Metros : AudienceDemographicValue[];
   }
 
   //#endregion

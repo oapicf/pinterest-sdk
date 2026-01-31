@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,14 +22,14 @@ var _ MappedNullable = &AudienceInsightsResponse{}
 type AudienceInsightsResponse struct {
 	// Category interest distribution
 	Categories []AudienceCategory `json:"categories,omitempty"`
-	Demographics *AudienceDemographics `json:"demographics,omitempty"`
-	Type *AudienceInsightType `json:"type,omitempty"`
 	// Generation date
 	Date NullableString `json:"date,omitempty" validate:"regexp=^\\\\d{4}-\\\\d{2}-\\\\d{2}$"`
+	Demographics *AudienceDemographics `json:"demographics,omitempty"`
 	// Population count.
 	Size *int32 `json:"size,omitempty"`
 	// Indicates whether the audience size has been rounded up to the next highest upper boundary.
 	SizeIsUpperBound *bool `json:"size_is_upper_bound,omitempty"`
+	Type *AudienceInsightType `json:"type,omitempty"`
 }
 
 // NewAudienceInsightsResponse instantiates a new AudienceInsightsResponse object
@@ -85,70 +85,6 @@ func (o *AudienceInsightsResponse) SetCategories(v []AudienceCategory) {
 	o.Categories = v
 }
 
-// GetDemographics returns the Demographics field value if set, zero value otherwise.
-func (o *AudienceInsightsResponse) GetDemographics() AudienceDemographics {
-	if o == nil || IsNil(o.Demographics) {
-		var ret AudienceDemographics
-		return ret
-	}
-	return *o.Demographics
-}
-
-// GetDemographicsOk returns a tuple with the Demographics field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AudienceInsightsResponse) GetDemographicsOk() (*AudienceDemographics, bool) {
-	if o == nil || IsNil(o.Demographics) {
-		return nil, false
-	}
-	return o.Demographics, true
-}
-
-// HasDemographics returns a boolean if a field has been set.
-func (o *AudienceInsightsResponse) HasDemographics() bool {
-	if o != nil && !IsNil(o.Demographics) {
-		return true
-	}
-
-	return false
-}
-
-// SetDemographics gets a reference to the given AudienceDemographics and assigns it to the Demographics field.
-func (o *AudienceInsightsResponse) SetDemographics(v AudienceDemographics) {
-	o.Demographics = &v
-}
-
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *AudienceInsightsResponse) GetType() AudienceInsightType {
-	if o == nil || IsNil(o.Type) {
-		var ret AudienceInsightType
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AudienceInsightsResponse) GetTypeOk() (*AudienceInsightType, bool) {
-	if o == nil || IsNil(o.Type) {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *AudienceInsightsResponse) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given AudienceInsightType and assigns it to the Type field.
-func (o *AudienceInsightsResponse) SetType(v AudienceInsightType) {
-	o.Type = &v
-}
-
 // GetDate returns the Date field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AudienceInsightsResponse) GetDate() string {
 	if o == nil || IsNil(o.Date.Get()) {
@@ -189,6 +125,38 @@ func (o *AudienceInsightsResponse) SetDateNil() {
 // UnsetDate ensures that no value is present for Date, not even an explicit nil
 func (o *AudienceInsightsResponse) UnsetDate() {
 	o.Date.Unset()
+}
+
+// GetDemographics returns the Demographics field value if set, zero value otherwise.
+func (o *AudienceInsightsResponse) GetDemographics() AudienceDemographics {
+	if o == nil || IsNil(o.Demographics) {
+		var ret AudienceDemographics
+		return ret
+	}
+	return *o.Demographics
+}
+
+// GetDemographicsOk returns a tuple with the Demographics field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AudienceInsightsResponse) GetDemographicsOk() (*AudienceDemographics, bool) {
+	if o == nil || IsNil(o.Demographics) {
+		return nil, false
+	}
+	return o.Demographics, true
+}
+
+// HasDemographics returns a boolean if a field has been set.
+func (o *AudienceInsightsResponse) HasDemographics() bool {
+	if o != nil && !IsNil(o.Demographics) {
+		return true
+	}
+
+	return false
+}
+
+// SetDemographics gets a reference to the given AudienceDemographics and assigns it to the Demographics field.
+func (o *AudienceInsightsResponse) SetDemographics(v AudienceDemographics) {
+	o.Demographics = &v
 }
 
 // GetSize returns the Size field value if set, zero value otherwise.
@@ -255,6 +223,38 @@ func (o *AudienceInsightsResponse) SetSizeIsUpperBound(v bool) {
 	o.SizeIsUpperBound = &v
 }
 
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *AudienceInsightsResponse) GetType() AudienceInsightType {
+	if o == nil || IsNil(o.Type) {
+		var ret AudienceInsightType
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AudienceInsightsResponse) GetTypeOk() (*AudienceInsightType, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *AudienceInsightsResponse) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given AudienceInsightType and assigns it to the Type field.
+func (o *AudienceInsightsResponse) SetType(v AudienceInsightType) {
+	o.Type = &v
+}
+
 func (o AudienceInsightsResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -268,20 +268,20 @@ func (o AudienceInsightsResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Categories) {
 		toSerialize["categories"] = o.Categories
 	}
-	if !IsNil(o.Demographics) {
-		toSerialize["demographics"] = o.Demographics
-	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
 	if o.Date.IsSet() {
 		toSerialize["date"] = o.Date.Get()
+	}
+	if !IsNil(o.Demographics) {
+		toSerialize["demographics"] = o.Demographics
 	}
 	if !IsNil(o.Size) {
 		toSerialize["size"] = o.Size
 	}
 	if !IsNil(o.SizeIsUpperBound) {
 		toSerialize["size_is_upper_bound"] = o.SizeIsUpperBound
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
 	return toSerialize, nil
 }

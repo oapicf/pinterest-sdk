@@ -1,0 +1,25 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Object holding available filter values for each filter key",
+  "name": "CatalogsAvailableFilterValues",
+  "fields": [
+    {
+      "name": "catalog_type",
+      "type": {
+        "type": "enum",
+        "name": "CatalogsAvailableFilterValues_catalogUnderscoretype",
+        "symbols": [
+          "CREATIVE_ASSETS"
+        ]
+      },
+      "doc": ""
+    },
+    {
+      "name": "filter_values",
+      "type": "model.CatalogsCreativeAssetsFilterValuesMap",
+      "doc": ""
+    }
+  ]
+
+}

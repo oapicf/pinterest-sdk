@@ -58,6 +58,7 @@ Get Audience Insights for an ad account. The response will return insights for 3
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `ads:read`
+* **[client_credentials](auth.md#client_credentials)**, scopes: `ads:read`
 
 ### HTTP request headers
  - **Content-Type**: Not defined
@@ -84,6 +85,7 @@ Get the scope and type of available audiences, which along with a date, is an au
 
 ### Authorization
 * **[pinterest_oauth2](auth.md#pinterest_oauth2)**, scopes: `ads:read`
+* **[client_credentials](auth.md#client_credentials)**, scopes: `ads:read`
 
 ### HTTP request headers
  - **Content-Type**: Not defined

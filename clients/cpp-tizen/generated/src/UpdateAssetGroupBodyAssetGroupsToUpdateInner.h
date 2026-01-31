@@ -54,20 +54,6 @@ public:
 	/*! \brief Set Unique identifier of the asset group to update.
 	 */
 	void setAssetGroupId(std::string  asset_group_id);
-	/*! \brief Get Asset Group name
-	 */
-	std::string getName();
-
-	/*! \brief Set Asset Group name
-	 */
-	void setName(std::string  name);
-	/*! \brief Get Asset group description
-	 */
-	std::string getDescription();
-
-	/*! \brief Set Asset group description
-	 */
-	void setDescription(std::string  description);
 	/*! \brief Get Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
 	 */
 	std::list<AssetGroupType> getAssetGroupTypes();
@@ -89,14 +75,28 @@ public:
 	/*! \brief Set A list of asset ids to remove from the asset group.
 	 */
 	void setAssetsToRemove(std::list <std::string> assets_to_remove);
+	/*! \brief Get Asset group description
+	 */
+	std::string getDescription();
+
+	/*! \brief Set Asset group description
+	 */
+	void setDescription(std::string  description);
+	/*! \brief Get Asset Group name
+	 */
+	std::string getName();
+
+	/*! \brief Set Asset Group name
+	 */
+	void setName(std::string  name);
 
 private:
 	std::string asset_group_id;
-	std::string name;
-	std::string description;
 	std::list <AssetGroupType>asset_group_types;
 	std::list <std::string>assets_to_add;
 	std::list <std::string>assets_to_remove;
+	std::string description;
+	std::string name;
 	void __init();
 	void __cleanup();
 

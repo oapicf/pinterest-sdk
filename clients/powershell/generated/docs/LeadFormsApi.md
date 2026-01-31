@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 Create lead form test data
 
-Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.
 
 ### Example
 ```powershell
@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 
 Create lead forms
 
-<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’ s description, questions and confirmation sections.  For more, see <a class=""reference external"" href=""https://help.pinterest.com/en/business/article/lead-ads"">Lead ads</a>.
+<strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see <a class=""reference external"" href=""https://help.pinterest.com/en/business/article/lead-ads"">Lead ads</a>.
 
 ### Example
 ```powershell
@@ -134,9 +134,9 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$LeadFormQuestion = Initialize-LeadFormQuestion -QuestionType "CUSTOM" -CustomQuestionFieldType "TEXT_FIELD" -CustomQuestionLabel "MyCustomQuestionLabel" -CustomQuestionOptions "MyCustomQuestionOptions"
 $LeadFormCommonPolicyLinksInner = Initialize-LeadFormCommonPolicyLinksInner -Label "MyLabel" -Link "MyLink"
-$LeadFormCreateRequest = Initialize-LeadFormCreateRequest -Name "Lead Form 3/14/2023" -PrivacyPolicyLink "https://www.advertisername.com/privacy-policy" -HasAcceptedTerms $false -CompletionMessage "Thank you for submitting. We will contact you soon." -Status "DRAFT" -DisclosureLanguage "By entering your personal information, you agree that your data will be collected and used." -Questions $LeadFormQuestion -PolicyLinks $LeadFormCommonPolicyLinksInner # LeadFormCreateRequest[] | List of lead forms to create, size limit [1, 30].
+$LeadFormQuestion = Initialize-LeadFormQuestion -CustomQuestionFieldType "TEXT_FIELD" -CustomQuestionLabel "MyCustomQuestionLabel" -CustomQuestionOptions "MyCustomQuestionOptions" -QuestionType "CUSTOM"
+$LeadFormCreateRequest = Initialize-LeadFormCreateRequest -CompletionMessage "Thank you for submitting. We will contact you soon." -DisclosureLanguage "By entering your personal information, you agree that your data will be collected and used." -HasAcceptedTerms $false -Name "Lead Form 3/14/2023" -PolicyLinks $LeadFormCommonPolicyLinksInner -PrivacyPolicyLink "https://www.advertisername.com/privacy-policy" -Questions $LeadFormQuestion -Status "DRAFT" # LeadFormCreateRequest[] | List of lead forms to create, size limit [1, 30].
 
 # Create lead forms
 try {
@@ -244,9 +244,9 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$LeadFormQuestion = Initialize-LeadFormQuestion -QuestionType "CUSTOM" -CustomQuestionFieldType "TEXT_FIELD" -CustomQuestionLabel "MyCustomQuestionLabel" -CustomQuestionOptions "MyCustomQuestionOptions"
 $LeadFormCommonPolicyLinksInner = Initialize-LeadFormCommonPolicyLinksInner -Label "MyLabel" -Link "MyLink"
-$LeadFormUpdateRequest = Initialize-LeadFormUpdateRequest -Name "Lead Form 3/14/2023" -PrivacyPolicyLink "https://www.advertisername.com/privacy-policy" -HasAcceptedTerms $false -CompletionMessage "Thank you for submitting. We will contact you soon." -Status "DRAFT" -DisclosureLanguage "By entering your personal information, you agree that your data will be collected and used." -Questions $LeadFormQuestion -PolicyLinks $LeadFormCommonPolicyLinksInner -Id "7765300871171" # LeadFormUpdateRequest[] | List of lead forms to update, size limit [1, 30].
+$LeadFormQuestion = Initialize-LeadFormQuestion -CustomQuestionFieldType "TEXT_FIELD" -CustomQuestionLabel "MyCustomQuestionLabel" -CustomQuestionOptions "MyCustomQuestionOptions" -QuestionType "CUSTOM"
+$LeadFormUpdateRequest = Initialize-LeadFormUpdateRequest -CompletionMessage "Thank you for submitting. We will contact you soon." -DisclosureLanguage "By entering your personal information, you agree that your data will be collected and used." -HasAcceptedTerms $false -Name "Lead Form 3/14/2023" -PolicyLinks $LeadFormCommonPolicyLinksInner -PrivacyPolicyLink "https://www.advertisername.com/privacy-policy" -Questions $LeadFormQuestion -Status "DRAFT" -Id "7765300871171" # LeadFormUpdateRequest[] | List of lead forms to update, size limit [1, 30].
 
 # Update lead forms
 try {

@@ -6,7 +6,8 @@ Pin with multiple videos.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Array&lt;VideoMetadata&gt;**](VideoMetadata.md) |  | [optional] [default to undefined]
+**items** | [**Array&lt;VideoMetadataWithItemType&gt;**](VideoMetadataWithItemType.md) |  | [optional] [default to undefined]
+**media_type** | **string** |  | [default to undefined]
 
 ## Example
 
@@ -15,6 +16,7 @@ import { PinMediaWithVideos } from './api';
 
 const instance: PinMediaWithVideos = {
     items,
+    media_type,
 };
 ```
 

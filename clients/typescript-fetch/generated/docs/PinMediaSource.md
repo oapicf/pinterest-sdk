@@ -1,23 +1,24 @@
 
 # PinMediaSource
 
-Pin media source.
+Pin media source that can be an image, video, or a mix of both passed in as a request.
 
 ## Properties
 
 Name | Type
 ------------ | -------------
-`sourceType` | string
-`contentType` | string
+`contentType` | [ContentType](ContentType.md)
 `data` | string
 `isStandard` | boolean
+`sourceType` | string
 `url` | string
-`coverImageUrl` | string
-`coverImageContentType` | string
+`coverImageContentType` | [ContentType](ContentType.md)
 `coverImageData` | string
+`coverImageKeyFrameTime` | number
+`coverImageUrl` | string
 `mediaId` | string
-`items` | [Array&lt;PinMediaSourceImagesURLItemsInner&gt;](PinMediaSourceImagesURLItemsInner.md)
 `index` | number
+`items` | [Array&lt;PinMediaSourceImagesURLItem&gt;](PinMediaSourceImagesURLItem.md)
 `isAffiliateLink` | boolean
 
 ## Example
@@ -27,17 +28,18 @@ import type { PinMediaSource } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "sourceType": null,
   "contentType": null,
   "data": null,
   "isStandard": null,
+  "sourceType": null,
   "url": null,
-  "coverImageUrl": null,
   "coverImageContentType": null,
   "coverImageData": null,
+  "coverImageKeyFrameTime": null,
+  "coverImageUrl": null,
   "mediaId": null,
-  "items": null,
   "index": null,
+  "items": null,
   "isAffiliateLink": null,
 } satisfies PinMediaSource
 

@@ -23,20 +23,15 @@ LeadFormQuestion::~LeadFormQuestion()
 void
 LeadFormQuestion::__init()
 {
-	//question_type = new LeadFormQuestionType();
 	//custom_question_field_type = new LeadFormQuestionFieldType();
 	//custom_question_label = std::string();
 	//new std::list()std::list> custom_question_options;
+	//question_type = new LeadFormQuestionType();
 }
 
 void
 LeadFormQuestion::__cleanup()
 {
-	//if(question_type != NULL) {
-	//
-	//delete question_type;
-	//question_type = NULL;
-	//}
 	//if(custom_question_field_type != NULL) {
 	//
 	//delete custom_question_field_type;
@@ -52,6 +47,11 @@ LeadFormQuestion::__cleanup()
 	//delete custom_question_options;
 	//custom_question_options = NULL;
 	//}
+	//if(question_type != NULL) {
+	//
+	//delete question_type;
+	//question_type = NULL;
+	//}
 	//
 }
 
@@ -60,20 +60,6 @@ LeadFormQuestion::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *question_typeKey = "question_type";
-	node = json_object_get_member(pJsonObject, question_typeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("LeadFormQuestionType")) {
-			jsonToValue(&question_type, node, "LeadFormQuestionType", "LeadFormQuestionType");
-		} else {
-			
-			LeadFormQuestionType* obj = static_cast<LeadFormQuestionType*> (&question_type);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
 	const gchar *custom_question_field_typeKey = "custom_question_field_type";
 	node = json_object_get_member(pJsonObject, custom_question_field_typeKey);
 	if (node !=NULL) {
@@ -121,6 +107,20 @@ LeadFormQuestion::fromJson(char* jsonStr)
 		}
 		
 	}
+	const gchar *question_typeKey = "question_type";
+	node = json_object_get_member(pJsonObject, question_typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("LeadFormQuestionType")) {
+			jsonToValue(&question_type, node, "LeadFormQuestionType", "LeadFormQuestionType");
+		} else {
+			
+			LeadFormQuestionType* obj = static_cast<LeadFormQuestionType*> (&question_type);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 }
 
 LeadFormQuestion::LeadFormQuestion(char* json)
@@ -133,20 +133,6 @@ LeadFormQuestion::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("LeadFormQuestionType")) {
-		LeadFormQuestionType obj = getQuestionType();
-		node = converttoJson(&obj, "LeadFormQuestionType", "");
-	}
-	else {
-		
-		LeadFormQuestionType obj = static_cast<LeadFormQuestionType> (getQuestionType());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *question_typeKey = "question_type";
-	json_object_set_member(pJsonObject, question_typeKey, node);
 	if (isprimitive("LeadFormQuestionFieldType")) {
 		LeadFormQuestionFieldType obj = getCustomQuestionFieldType();
 		node = converttoJson(&obj, "LeadFormQuestionFieldType", "");
@@ -185,24 +171,26 @@ LeadFormQuestion::toJson()
 	
 	const gchar *custom_question_optionsKey = "custom_question_options";
 	json_object_set_member(pJsonObject, custom_question_optionsKey, node);
+	if (isprimitive("LeadFormQuestionType")) {
+		LeadFormQuestionType obj = getQuestionType();
+		node = converttoJson(&obj, "LeadFormQuestionType", "");
+	}
+	else {
+		
+		LeadFormQuestionType obj = static_cast<LeadFormQuestionType> (getQuestionType());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *question_typeKey = "question_type";
+	json_object_set_member(pJsonObject, question_typeKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
-}
-
-LeadFormQuestionType
-LeadFormQuestion::getQuestionType()
-{
-	return question_type;
-}
-
-void
-LeadFormQuestion::setQuestionType(LeadFormQuestionType  question_type)
-{
-	this->question_type = question_type;
 }
 
 LeadFormQuestionFieldType
@@ -239,6 +227,18 @@ void
 LeadFormQuestion::setCustomQuestionOptions(std::list <std::string> custom_question_options)
 {
 	this->custom_question_options = custom_question_options;
+}
+
+LeadFormQuestionType
+LeadFormQuestion::getQuestionType()
+{
+	return question_type;
+}
+
+void
+LeadFormQuestion::setQuestionType(LeadFormQuestionType  question_type)
+{
+	this->question_type = question_type;
 }
 
 

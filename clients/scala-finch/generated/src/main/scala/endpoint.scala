@@ -52,20 +52,32 @@ object endpoint {
           BusinessAccessInviteApi.endpoints(da)  :+:
           BusinessAccessRelationshipsApi.endpoints(da)  :+:
           CampaignsApi.endpoints(da)  :+:
+          CatalogFeedsApi.endpoints(da)  :+:
+          CatalogItemsApi.endpoints(da)  :+:
+          CatalogProductGroupsApi.endpoints(da)  :+:
+          CatalogReportsApi.endpoints(da)  :+:
           CatalogsApi.endpoints(da)  :+:
+          ConversionEqsApi.endpoints(da)  :+:
           ConversionEventsApi.endpoints(da)  :+:
           ConversionTagsApi.endpoints(da)  :+:
+          ConversionsApi.endpoints(da)  :+:
+          CustomerListUploadsApi.endpoints(da)  :+:
           CustomerListsApi.endpoints(da)  :+:
           IntegrationsApi.endpoints(da)  :+:
           KeywordsApi.endpoints(da)  :+:
+          LabelsApi.endpoints(da)  :+:
           LeadAdsApi.endpoints(da)  :+:
           LeadFormsApi.endpoints(da)  :+:
           LeadsExportApi.endpoints(da)  :+:
           MediaApi.endpoints(da)  :+:
+          MsotEventsApi.endpoints(da)  :+:
+          NotificationApi.endpoints(da)  :+:
           OauthApi.endpoints(da)  :+:
           OrderLinesApi.endpoints(da)  :+:
           PinsApi.endpoints(da)  :+:
+          ProductCategoriesApi.endpoints(da)  :+:
           ProductGroupPromotionsApi.endpoints(da)  :+:
+          PromotionsApi.endpoints(da)  :+:
           ResourcesApi.endpoints(da)  :+:
           SearchApi.endpoints(da)  :+:
           TargetingTemplateApi.endpoints(da)  :+:

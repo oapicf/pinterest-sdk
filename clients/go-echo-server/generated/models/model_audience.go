@@ -5,17 +5,23 @@ type Audience struct {
 	// Ad account ID.
 	AdAccountId string `json:"ad_account_id,omitempty" validate:"regexp=^\\\\d+$"`
 
+	// <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+	AudienceType string `json:"audience_type,omitempty"`
+
+	// The company that created this audience.
+	CreatedByCompanyName *string `json:"created_by_company_name,omitempty"`
+
+	// Creation time. Unix timestamp in seconds.
+	CreatedTimestamp *int32 `json:"created_timestamp,omitempty"`
+
+	// Audience description.
+	Description *string `json:"description,omitempty"`
+
 	// Audience ID.
 	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
 
 	// Audience name.
 	Name string `json:"name,omitempty"`
-
-	// <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
-	AudienceType string `json:"audience_type,omitempty"`
-
-	// Audience description.
-	Description *string `json:"description,omitempty"`
 
 	Rule AudienceRule `json:"rule,omitempty"`
 
@@ -27,9 +33,6 @@ type Audience struct {
 
 	// Always \"audience\".
 	Type string `json:"type,omitempty"`
-
-	// Creation time. Unix timestamp in seconds.
-	CreatedTimestamp *int32 `json:"created_timestamp,omitempty"`
 
 	// Last update time. Unix timestamp in seconds.
 	UpdatedTimestamp *int32 `json:"updated_timestamp,omitempty"`

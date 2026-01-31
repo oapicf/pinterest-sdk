@@ -2,7 +2,7 @@ package org.openapitools.server.model
 
 
 /**
- * @param frequency  for example: ''null''
+ * @param frequency Frequency target can only be between 2 and 20 for example: ''null''
  * @param timerange User entity counts time range for example: ''DAY''
 */
 final case class OptimizationGoalMetadataFrequencyGoalMetadata (

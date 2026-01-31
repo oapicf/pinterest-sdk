@@ -20,7 +20,7 @@ openapi_catalogs_hotel_report_parameters_report() ->
     openapi_catalogs_hotel_report_parameters_report([]).
 
 openapi_catalogs_hotel_report_parameters_report(Fields) ->
-  Default = [ {'report_type', elements([<<"FEED_INGESTION_ISSUES">>, <<"DISTRIBUTION_ISSUES">>]) }
+  Default = [ {'report_type', elements([<<"FEED_INGESTION_ISSUES">>, <<"DISTRIBUTION_ISSUES">>, <<"ALL_ITEMS">>]) }
             , {'feed_id', binary() }
             , {'processing_result_id', binary() }
             , {'catalog_id', binary() }

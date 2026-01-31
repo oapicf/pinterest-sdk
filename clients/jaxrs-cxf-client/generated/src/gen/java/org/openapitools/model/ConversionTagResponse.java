@@ -14,13 +14,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ConversionTagResponse  {
   
  /**
-  * Ad account ID.
-  */
-  @ApiModelProperty(example = "549755885175", value = "Ad account ID.")
-
-  private String adAccountId;
-
- /**
   * Tag code snippet.
   */
   @ApiModelProperty(example = "<script type=text/javascript> [...]", value = "Tag code snippet.")
@@ -28,6 +21,13 @@ public class ConversionTagResponse  {
   private String codeSnippet;
 
   @ApiModelProperty(value = "")
+
+  private ConversionTagConfigs configs;
+
+ /**
+  * The enhanced match status of the tag
+  */
+  @ApiModelProperty(value = "The enhanced match status of the tag")
 
   private EnhancedMatchStatusType enhancedMatchStatus;
 
@@ -48,13 +48,9 @@ public class ConversionTagResponse  {
  /**
   * Conversion tag name.
   */
-  @ApiModelProperty(example = "ACME Checkout Test Tag", value = "Conversion tag name.")
+  @ApiModelProperty(example = "ACME Checkout Test Tag", required = true, value = "Conversion tag name.")
 
   private String name;
-
-  @ApiModelProperty(value = "")
-
-  private EntityStatus status;
 
  /**
   * Version number.
@@ -63,27 +59,16 @@ public class ConversionTagResponse  {
 
   private String version;
 
+ /**
+  * Ad account ID.
+  */
+  @ApiModelProperty(example = "549755885175", required = true, value = "Ad account ID.")
+
+  private String adAccountId;
+
   @ApiModelProperty(value = "")
 
-  private ConversionTagConfigs configs;
- /**
-   * Ad account ID.
-   * @return adAccountId
-  **/
-  @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
-    return adAccountId;
-  }
-
-  public void setAdAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
-  }
-
-  public ConversionTagResponse adAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
-    return this;
-  }
-
+  private EntityStatus status;
  /**
    * Tag code snippet.
    * @return codeSnippet
@@ -93,17 +78,19 @@ public class ConversionTagResponse  {
     return codeSnippet;
   }
 
-  public void setCodeSnippet(String codeSnippet) {
-    this.codeSnippet = codeSnippet;
-  }
-
-  public ConversionTagResponse codeSnippet(String codeSnippet) {
-    this.codeSnippet = codeSnippet;
-    return this;
-  }
 
  /**
-   * Get enhancedMatchStatus
+   * Get configs
+   * @return configs
+  **/
+  @JsonProperty("configs")
+  public ConversionTagConfigs getConfigs() {
+    return configs;
+  }
+
+
+ /**
+   * The enhanced match status of the tag
    * @return enhancedMatchStatus
   **/
   @JsonProperty("enhanced_match_status")
@@ -111,14 +98,6 @@ public class ConversionTagResponse  {
     return enhancedMatchStatus;
   }
 
-  public void setEnhancedMatchStatus(EnhancedMatchStatusType enhancedMatchStatus) {
-    this.enhancedMatchStatus = enhancedMatchStatus;
-  }
-
-  public ConversionTagResponse enhancedMatchStatus(EnhancedMatchStatusType enhancedMatchStatus) {
-    this.enhancedMatchStatus = enhancedMatchStatus;
-    return this;
-  }
 
  /**
    * Tag ID.
@@ -129,14 +108,6 @@ public class ConversionTagResponse  {
     return id;
   }
 
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public ConversionTagResponse id(String id) {
-    this.id = id;
-    return this;
-  }
 
  /**
    * Time for the last event fired.
@@ -147,14 +118,6 @@ public class ConversionTagResponse  {
     return lastFiredTimeMs;
   }
 
-  public void setLastFiredTimeMs(BigDecimal lastFiredTimeMs) {
-    this.lastFiredTimeMs = lastFiredTimeMs;
-  }
-
-  public ConversionTagResponse lastFiredTimeMs(BigDecimal lastFiredTimeMs) {
-    this.lastFiredTimeMs = lastFiredTimeMs;
-    return this;
-  }
 
  /**
    * Conversion tag name.
@@ -175,24 +138,6 @@ public class ConversionTagResponse  {
   }
 
  /**
-   * Get status
-   * @return status
-  **/
-  @JsonProperty("status")
-  public EntityStatus getStatus() {
-    return status;
-  }
-
-  public void setStatus(EntityStatus status) {
-    this.status = status;
-  }
-
-  public ConversionTagResponse status(EntityStatus status) {
-    this.status = status;
-    return this;
-  }
-
- /**
    * Version number.
    * @return version
   **/
@@ -201,32 +146,26 @@ public class ConversionTagResponse  {
     return version;
   }
 
-  public void setVersion(String version) {
-    this.version = version;
-  }
-
-  public ConversionTagResponse version(String version) {
-    this.version = version;
-    return this;
-  }
 
  /**
-   * Get configs
-   * @return configs
+   * Ad account ID.
+   * @return adAccountId
   **/
-  @JsonProperty("configs")
-  public ConversionTagConfigs getConfigs() {
-    return configs;
+  @JsonProperty("ad_account_id")
+  public String getAdAccountId() {
+    return adAccountId;
   }
 
-  public void setConfigs(ConversionTagConfigs configs) {
-    this.configs = configs;
+
+ /**
+   * Get status
+   * @return status
+  **/
+  @JsonProperty("status")
+  public EntityStatus getStatus() {
+    return status;
   }
 
-  public ConversionTagResponse configs(ConversionTagConfigs configs) {
-    this.configs = configs;
-    return this;
-  }
 
   @Override
   public boolean equals(Object o) {
@@ -237,20 +176,20 @@ public class ConversionTagResponse  {
       return false;
     }
     ConversionTagResponse conversionTagResponse = (ConversionTagResponse) o;
-    return Objects.equals(this.adAccountId, conversionTagResponse.adAccountId) &&
-        Objects.equals(this.codeSnippet, conversionTagResponse.codeSnippet) &&
+    return Objects.equals(this.codeSnippet, conversionTagResponse.codeSnippet) &&
+        Objects.equals(this.configs, conversionTagResponse.configs) &&
         Objects.equals(this.enhancedMatchStatus, conversionTagResponse.enhancedMatchStatus) &&
         Objects.equals(this.id, conversionTagResponse.id) &&
         Objects.equals(this.lastFiredTimeMs, conversionTagResponse.lastFiredTimeMs) &&
         Objects.equals(this.name, conversionTagResponse.name) &&
-        Objects.equals(this.status, conversionTagResponse.status) &&
         Objects.equals(this.version, conversionTagResponse.version) &&
-        Objects.equals(this.configs, conversionTagResponse.configs);
+        Objects.equals(this.adAccountId, conversionTagResponse.adAccountId) &&
+        Objects.equals(this.status, conversionTagResponse.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adAccountId, codeSnippet, enhancedMatchStatus, id, lastFiredTimeMs, name, status, version, configs);
+    return Objects.hash(codeSnippet, configs, enhancedMatchStatus, id, lastFiredTimeMs, name, version, adAccountId, status);
   }
 
   @Override
@@ -258,15 +197,15 @@ public class ConversionTagResponse  {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionTagResponse {\n");
     
-    sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
     sb.append("    codeSnippet: ").append(toIndentedString(codeSnippet)).append("\n");
+    sb.append("    configs: ").append(toIndentedString(configs)).append("\n");
     sb.append("    enhancedMatchStatus: ").append(toIndentedString(enhancedMatchStatus)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    lastFiredTimeMs: ").append(toIndentedString(lastFiredTimeMs)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    configs: ").append(toIndentedString(configs)).append("\n");
+    sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,0 +1,80 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsReportStats"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsReportStats"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsReportDistributionStats = openapi_server.resourceTypes.CatalogsReportDistributionStats
+  CatalogsReportFeedIngestionStats = openapi_server.resourceTypes.CatalogsReportFeedIngestionStats
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CatalogsReportStats {
+    title = CatalogsReportStats
+    description = CatalogsReportStats
+    derivedFrom = Root
+    properties {
+        report_type {
+          type =  string
+          description = ""
+          enum = ["FEED_INGESTION_ISSUES", "DISTRIBUTION_ISSUES"]
+          optional = true
+        }
+        catalog_id {
+          type =  string
+          description = "ID of the catalog entity."
+          optional = false
+        }
+        code {
+          type =  integer
+          description = "The event code that a diagnostics aggregated number references"
+          optional = false
+        }
+        code_label {
+          type =  string
+          description = "A human-friendly label for the event code (e.g, &#39;SPAM&#39;)"
+          optional = false
+        }
+        message {
+          type =  string
+          description = "Title message describing the diagnostic issue"
+          optional = false
+        }
+        occurrences {
+          type =  integer
+          description = "Number of occurrences of the issue"
+          optional = false
+        }
+        severity {
+          type =  string
+          description = "An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue"
+          enum = ["WARN", "ERROR"]
+          optional = false
+        }
+        ineligible_for_ads {
+          type =  boolean
+          description = "Indicates if issue makes items ineligible for ads distribution"
+          optional = false
+        }
+        ineligible_for_organic {
+          type =  boolean
+          description = "Indicates if issue makes items ineligible for organic distribution"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsReportStats {
+    title = CatalogsReportStats
+    description = CatalogsReportStats
+    implements = openapi_server.resourceTypes.CatalogsReportStats
+
+  }
+}

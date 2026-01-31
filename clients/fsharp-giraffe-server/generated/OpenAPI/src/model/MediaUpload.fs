@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.MediaUploadAllOfUploadParameters
+open OpenAPI.Model.MediaUploadParameters
 open OpenAPI.Model.MediaUploadType
 
 module MediaUpload =
@@ -13,7 +13,7 @@ module MediaUpload =
   type MediaUpload = {
     MediaId : string;
     MediaType : MediaUploadType;
+    UploadParameters : MediaUploadParameters;
     UploadUrl : string;
-    UploadParameters : MediaUploadAllOfUploadParameters;
   }
   //#endregion

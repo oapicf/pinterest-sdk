@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -27,29 +27,29 @@ import org.openapitools.model.ConversionApiResponseEventsInner;
  */
 
 @ApiModel(description = "Schema describing the object in the response, which contains information about the events that were received and processed.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionApiResponse   {
   
-  private Integer numEventsReceived;
-  private Integer numEventsProcessed;
   private List<ConversionApiResponseEventsInner> events = new ArrayList<>();
+  private Integer numEventsProcessed;
+  private Integer numEventsReceived;
 
   /**
-   * Total number of events received in the request.
+   * Specific messages for each event received. The order will match the order in which the events were received in the request.
    */
-  public ConversionApiResponse numEventsReceived(Integer numEventsReceived) {
-    this.numEventsReceived = numEventsReceived;
+  public ConversionApiResponse events(List<ConversionApiResponseEventsInner> events) {
+    this.events = events;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "Total number of events received in the request.")
-  @JsonProperty("num_events_received")
-  public Integer getNumEventsReceived() {
-    return numEventsReceived;
+  @ApiModelProperty(required = true, value = "Specific messages for each event received. The order will match the order in which the events were received in the request.")
+  @JsonProperty("events")
+  public List<ConversionApiResponseEventsInner> getEvents() {
+    return events;
   }
-  public void setNumEventsReceived(Integer numEventsReceived) {
-    this.numEventsReceived = numEventsReceived;
+  public void setEvents(List<ConversionApiResponseEventsInner> events) {
+    this.events = events;
   }
 
   /**
@@ -71,21 +71,21 @@ public class ConversionApiResponse   {
   }
 
   /**
-   * Specific messages for each event received. The order will match the order in which the events were received in the request.
+   * Total number of events received in the request.
    */
-  public ConversionApiResponse events(List<ConversionApiResponseEventsInner> events) {
-    this.events = events;
+  public ConversionApiResponse numEventsReceived(Integer numEventsReceived) {
+    this.numEventsReceived = numEventsReceived;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "Specific messages for each event received. The order will match the order in which the events were received in the request.")
-  @JsonProperty("events")
-  public List<ConversionApiResponseEventsInner> getEvents() {
-    return events;
+  @ApiModelProperty(required = true, value = "Total number of events received in the request.")
+  @JsonProperty("num_events_received")
+  public Integer getNumEventsReceived() {
+    return numEventsReceived;
   }
-  public void setEvents(List<ConversionApiResponseEventsInner> events) {
-    this.events = events;
+  public void setNumEventsReceived(Integer numEventsReceived) {
+    this.numEventsReceived = numEventsReceived;
   }
 
 
@@ -98,14 +98,14 @@ public class ConversionApiResponse   {
       return false;
     }
     ConversionApiResponse conversionApiResponse = (ConversionApiResponse) o;
-    return Objects.equals(numEventsReceived, conversionApiResponse.numEventsReceived) &&
+    return Objects.equals(events, conversionApiResponse.events) &&
         Objects.equals(numEventsProcessed, conversionApiResponse.numEventsProcessed) &&
-        Objects.equals(events, conversionApiResponse.events);
+        Objects.equals(numEventsReceived, conversionApiResponse.numEventsReceived);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(numEventsReceived, numEventsProcessed, events);
+    return Objects.hash(events, numEventsProcessed, numEventsReceived);
   }
 
   @Override
@@ -113,9 +113,9 @@ public class ConversionApiResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionApiResponse {\n");
     
-    sb.append("    numEventsReceived: ").append(toIndentedString(numEventsReceived)).append("\n");
-    sb.append("    numEventsProcessed: ").append(toIndentedString(numEventsProcessed)).append("\n");
     sb.append("    events: ").append(toIndentedString(events)).append("\n");
+    sb.append("    numEventsProcessed: ").append(toIndentedString(numEventsProcessed)).append("\n");
+    sb.append("    numEventsReceived: ").append(toIndentedString(numEventsReceived)).append("\n");
     sb.append("}");
     return sb.toString();
   }

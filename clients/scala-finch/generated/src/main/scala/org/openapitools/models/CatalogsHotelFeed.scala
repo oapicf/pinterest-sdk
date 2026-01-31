@@ -18,30 +18,30 @@ import org.openapitools.models.NullableCurrency
  * @param createdUnderscoreat 
  * @param id 
  * @param updatedUnderscoreat 
- * @param name A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
- * @param format 
+ * @param catalogUnderscoreid Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
  * @param catalogUnderscoretype 
  * @param credentials 
- * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
- * @param preferredUnderscoreprocessingUnderscoreschedule 
- * @param status 
  * @param defaultUnderscorecurrency 
  * @param defaultUnderscorelocale The locale used within a feed for product descriptions.
- * @param catalogUnderscoreid Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
+ * @param format 
+ * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+ * @param name A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+ * @param preferredUnderscoreprocessingUnderscoreschedule 
+ * @param status 
  */
 case class CatalogsHotelFeed(createdUnderscoreat: ZonedDateTime,
                 id: String,
                 updatedUnderscoreat: ZonedDateTime,
-                name: String,
-                format: CatalogsFormat,
+                catalogUnderscoreid: String,
                 catalogUnderscoretype: CatalogsType,
                 credentials: CatalogsFeedCredentials,
-                location: String,
-                preferredUnderscoreprocessingUnderscoreschedule: CatalogsFeedProcessingSchedule,
-                status: CatalogsStatus,
                 defaultUnderscorecurrency: NullableCurrency,
                 defaultUnderscorelocale: String,
-                catalogUnderscoreid: String
+                format: CatalogsFormat,
+                location: String,
+                name: String,
+                preferredUnderscoreprocessingUnderscoreschedule: CatalogsFeedProcessingSchedule,
+                status: CatalogsStatus
                 )
 
 object CatalogsHotelFeed {

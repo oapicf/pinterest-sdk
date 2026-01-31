@@ -11,14 +11,39 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceInsightCategoryCommon   {
   
+  private String id;
+  private BigDecimal index;
   private String key;
   private String name;
   private BigDecimal ratio;
-  private BigDecimal index;
-  private String id;
+
+  /**
+   **/
+  
+  @ApiModelProperty(example = "549755885175", value = "")
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  /**
+   **/
+  
+  @ApiModelProperty(example = "1.2", value = "")
+  @JsonProperty("index")
+  @Valid
+  public BigDecimal getIndex() {
+    return index;
+  }
+  public void setIndex(BigDecimal index) {
+    this.index = index;
+  }
 
   /**
    **/
@@ -57,31 +82,6 @@ public class AudienceInsightCategoryCommon   {
     this.ratio = ratio;
   }
 
-  /**
-   **/
-  
-  @ApiModelProperty(example = "1.2", value = "")
-  @JsonProperty("index")
-  @Valid
-  public BigDecimal getIndex() {
-    return index;
-  }
-  public void setIndex(BigDecimal index) {
-    this.index = index;
-  }
-
-  /**
-   **/
-  
-  @ApiModelProperty(example = "549755885175", value = "")
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-  public void setId(String id) {
-    this.id = id;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -92,16 +92,16 @@ public class AudienceInsightCategoryCommon   {
       return false;
     }
     AudienceInsightCategoryCommon audienceInsightCategoryCommon = (AudienceInsightCategoryCommon) o;
-    return Objects.equals(this.key, audienceInsightCategoryCommon.key) &&
-        Objects.equals(this.name, audienceInsightCategoryCommon.name) &&
-        Objects.equals(this.ratio, audienceInsightCategoryCommon.ratio) &&
+    return Objects.equals(this.id, audienceInsightCategoryCommon.id) &&
         Objects.equals(this.index, audienceInsightCategoryCommon.index) &&
-        Objects.equals(this.id, audienceInsightCategoryCommon.id);
+        Objects.equals(this.key, audienceInsightCategoryCommon.key) &&
+        Objects.equals(this.name, audienceInsightCategoryCommon.name) &&
+        Objects.equals(this.ratio, audienceInsightCategoryCommon.ratio);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, name, ratio, index, id);
+    return Objects.hash(id, index, key, name, ratio);
   }
 
   @Override
@@ -109,11 +109,11 @@ public class AudienceInsightCategoryCommon   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceInsightCategoryCommon {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    index: ").append(toIndentedString(index)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    ratio: ").append(toIndentedString(ratio)).append("\n");
-    sb.append("    index: ").append(toIndentedString(index)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

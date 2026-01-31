@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CatalogId** | Pointer to **string** | Catalog id pertaining to all items | [optional] 
-**Items** | Pointer to [**[]AdvancedAuctionProcessedItem**](AdvancedAuctionProcessedItem.md) | Array of advanced auction processed items | [optional] 
+**Items** | Pointer to [**[]AdvancedAuctionItemsSubmitRecord**](AdvancedAuctionItemsSubmitRecord.md) | Array of advanced auction processed items | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasCatalogId returns a boolean if a field has been set.
 
 ### GetItems
 
-`func (o *AdvancedAuctionProcessedItems) GetItems() []AdvancedAuctionProcessedItem`
+`func (o *AdvancedAuctionProcessedItems) GetItems() []AdvancedAuctionItemsSubmitRecord`
 
 GetItems returns the Items field if non-nil, zero value otherwise.
 
 ### GetItemsOk
 
-`func (o *AdvancedAuctionProcessedItems) GetItemsOk() (*[]AdvancedAuctionProcessedItem, bool)`
+`func (o *AdvancedAuctionProcessedItems) GetItemsOk() (*[]AdvancedAuctionItemsSubmitRecord, bool)`
 
 GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItems
 
-`func (o *AdvancedAuctionProcessedItems) SetItems(v []AdvancedAuctionProcessedItem)`
+`func (o *AdvancedAuctionProcessedItems) SetItems(v []AdvancedAuctionItemsSubmitRecord)`
 
 SetItems sets Items field to given value.
 

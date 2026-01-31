@@ -18,12 +18,18 @@ package org.openapitools.client.models
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
-import org.openapitools.client.models.TargetingSpecSHOPPINGRETARGETING
+import org.openapitools.client.models.TargetingSpecShoppingRetargeting
 
-class TargetingSpecSHOPPINGRETARGETINGTest : ShouldSpec() {
+class TargetingSpecShoppingRetargetingTest : ShouldSpec() {
     init {
-        // uncomment below to create an instance of TargetingSpecSHOPPINGRETARGETING
-        //val modelInstance = TargetingSpecSHOPPINGRETARGETING()
+        // uncomment below to create an instance of TargetingSpecShoppingRetargeting
+        //val modelInstance = TargetingSpecShoppingRetargeting()
+
+        // to test the property `exclusionWindow` - Number of days ago to stop lookback timeframe for dynamic retargeting
+        should("test exclusionWindow") {
+            // uncomment below to test the property
+            //modelInstance.exclusionWindow shouldBe ("TODO")
+        }
 
         // to test the property `lookbackWindow` - Number of days ago to start lookback timeframe for dynamic retargeting
         should("test lookbackWindow") {
@@ -35,12 +41,6 @@ class TargetingSpecSHOPPINGRETARGETINGTest : ShouldSpec() {
         should("test tagTypes") {
             // uncomment below to test the property
             //modelInstance.tagTypes shouldBe ("TODO")
-        }
-
-        // to test the property `exclusionWindow` - Number of days ago to stop lookback timeframe for dynamic retargeting
-        should("test exclusionWindow") {
-            // uncomment below to test the property
-            //modelInstance.exclusionWindow shouldBe ("TODO")
         }
 
     }

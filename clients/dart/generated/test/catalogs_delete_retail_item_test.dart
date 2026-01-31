@@ -22,6 +22,12 @@ void main() {
       // TODO
     });
 
+    // The millisecond timestamp when the item was lastly modified by the merchant.
+    // int lastUpdatedTime
+    test('to test the property `lastUpdatedTime`', () async {
+      // TODO
+    });
+
     // String operation
     test('to test the property `operation`', () async {
       // TODO

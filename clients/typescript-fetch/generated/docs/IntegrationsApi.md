@@ -188,7 +188,7 @@ async function example() {
   const body = {
     // string | External business ID for the integration.
     externalBusinessId: externalBusinessId_example,
-    // IntegrationRequestPatch | Parameters to get create/update the Integration Metadata (optional)
+    // IntegrationRequestPatch | Parameters to get create/update the Integration Metadata
     integrationRequestPatch: ...,
   } satisfies IntegrationsCommercePatchRequest;
 
@@ -210,7 +210,7 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **externalBusinessId** | `string` | External business ID for the integration. | [Defaults to `undefined`] |
-| **integrationRequestPatch** | [IntegrationRequestPatch](IntegrationRequestPatch.md) | Parameters to get create/update the Integration Metadata | [Optional] |
+| **integrationRequestPatch** | [IntegrationRequestPatch](IntegrationRequestPatch.md) | Parameters to get create/update the Integration Metadata | |
 
 ### Return type
 
@@ -263,7 +263,7 @@ async function example() {
   const api = new IntegrationsApi(config);
 
   const body = {
-    // IntegrationRequest | Parameters to get create/update the Integration Metadata (optional)
+    // IntegrationRequest | Parameters to get create/update the Integration Metadata
     integrationRequest: ...,
   } satisfies IntegrationsCommercePostRequest;
 
@@ -284,7 +284,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **integrationRequest** | [IntegrationRequest](IntegrationRequest.md) | Parameters to get create/update the Integration Metadata | [Optional] |
+| **integrationRequest** | [IntegrationRequest](IntegrationRequest.md) | Parameters to get create/update the Integration Metadata | |
 
 ### Return type
 

@@ -6,20 +6,20 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Invoke-ConversionTagsCreate**](ConversionTagsApi.md#Invoke-ConversionTagsCreate) | **POST** /ad_accounts/{ad_account_id}/conversion_tags | Create conversion tag
 [**Invoke-ConversionTagsGet**](ConversionTagsApi.md#Invoke-ConversionTagsGet) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id} | Get conversion tag
-[**Invoke-ConversionTagsList**](ConversionTagsApi.md#Invoke-ConversionTagsList) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | Get conversion tags
+[**Invoke-ConversionTagsList**](ConversionTagsApi.md#Invoke-ConversionTagsList) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | List conversion tags
 [**Invoke-OcpmEligibleConversionTagsGet**](ConversionTagsApi.md#Invoke-OcpmEligibleConversionTagsGet) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible | Get Ocpm eligible conversion tags
 [**Invoke-PageVisitConversionTagsGet**](ConversionTagsApi.md#Invoke-PageVisitConversionTagsGet) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/page_visit | Get page visit conversion tags
 
 
 <a id="Invoke-ConversionTagsCreate"></a>
 # **Invoke-ConversionTagsCreate**
-> ConversionTagResponse Invoke-ConversionTagsCreate<br>
+> ConversionTag Invoke-ConversionTagsCreate<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ConversionTagCreate] <PSCustomObject><br>
 
 Create conversion tag
 
-Create a conversion tag, also known as <a href=""https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag"" target=""_blank"">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class=""reference external"" href=""https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag"">Set up the Pinterest tag</a><p/> <a class=""reference external"" href=""/docs/api-features/pinterest-tag/"">Pinterest Tag</a><p/> <a class=""reference external"" href=""/docs/api-features/pinterest-tag/#enhanced-match"">Enhanced match</a>
+Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account's website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
 
 ### Example
 ```powershell
@@ -29,7 +29,7 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$ConversionTagCreate = Initialize-ConversionTagCreate -AemEnabled $true -MdFrequency 0.6 -AemFnlnEnabled $true -AemPhEnabled $true -AemGeEnabled $true -AemDbEnabled $true -AemLocEnabled $true -Name "ACME Tools Tag" # ConversionTagCreate | Conversion Tag to create
+$ConversionTagCreate = Initialize-ConversionTagCreate -AemDbEnabled $false -AemEnabled $false -AemExternalIdEnabled $false -AemFnlnEnabled $false -AemGeEnabled $false -AemLocEnabled $false -AemPhEnabled $false -MdFrequency 0.6 -Name "ACME Checkout Test Tag" # ConversionTagCreate | 
 
 # Create conversion tag
 try {
@@ -45,11 +45,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **ConversionTagCreate** | [**ConversionTagCreate**](ConversionTagCreate.md)| Conversion Tag to create | 
+ **ConversionTagCreate** | [**ConversionTagCreate**](ConversionTagCreate.md)|  | 
 
 ### Return type
 
-[**ConversionTagResponse**](ConversionTagResponse.md) (PSCustomObject)
+[**ConversionTag**](ConversionTag.md) (PSCustomObject)
 
 ### Authorization
 
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-ConversionTagsGet"></a>
 # **Invoke-ConversionTagsGet**
-> ConversionTagResponse Invoke-ConversionTagsGet<br>
+> ConversionTag Invoke-ConversionTagsGet<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ConversionTagId] <String><br>
 
@@ -77,6 +77,9 @@ Get information about an existing conversion tag.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
+# Configure OAuth2 access token for authorization: client_credentials
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
@@ -100,11 +103,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ConversionTagResponse**](ConversionTagResponse.md) (PSCustomObject)
+[**ConversionTag**](ConversionTag.md) (PSCustomObject)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -115,11 +118,11 @@ Name | Type | Description  | Notes
 
 <a id="Invoke-ConversionTagsList"></a>
 # **Invoke-ConversionTagsList**
-> ConversionTagListResponse Invoke-ConversionTagsList<br>
+> ConversionTagsList200Response Invoke-ConversionTagsList<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-FilterDeleted] <System.Nullable[Boolean]><br>
 
-Get conversion tags
+List conversion tags
 
 List conversion tags associated with an ad account.
 
@@ -130,10 +133,13 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$FilterDeleted = $true # Boolean | Filter out deleted tags. (optional) (default to $false)
+# Configure OAuth2 access token for authorization: client_credentials
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-# Get conversion tags
+$AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
+$FilterDeleted = $true # Boolean | Filter by deleted status (optional) (default to $false)
+
+# List conversion tags
 try {
     $Result = Invoke-ConversionTagsList -AdAccountId $AdAccountId -FilterDeleted $FilterDeleted
 } catch {
@@ -147,15 +153,15 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
- **FilterDeleted** | **Boolean**| Filter out deleted tags. | [optional] [default to $false]
+ **FilterDeleted** | **Boolean**| Filter by deleted status | [optional] [default to $false]
 
 ### Return type
 
-[**ConversionTagListResponse**](ConversionTagListResponse.md) (PSCustomObject)
+[**ConversionTagsList200Response**](ConversionTagsList200Response.md) (PSCustomObject)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -178,6 +184,9 @@ Get Ocpm eligible conversion tag events for an ad account.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
+# Configure OAuth2 access token for authorization: client_credentials
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
@@ -203,7 +212,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -229,6 +238,9 @@ Get all page visit conversion tag events for an ad account.
 # general setting of the PowerShell module, e.g. base URL, authentication, etc
 $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
+# Configure OAuth2 access token for authorization: client_credentials
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
@@ -260,7 +272,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

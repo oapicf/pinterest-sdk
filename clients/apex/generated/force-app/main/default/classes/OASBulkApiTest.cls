@@ -3,7 +3,7 @@ private class OASBulkApiTest {
     /**
      * Get advertiser entities in bulk
      *
-     * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads,\nand/or keywords; can filter by campaigns. Though the entities may be active, archived, or paused,\nonly active entities will return data.
+     * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads,\nkeywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused,\nonly active entities will return data.
      */
     @isTest
     private static void bulkDownloadCreateTest() {
@@ -83,12 +83,29 @@ private class OASBulkApiTest {
         expectedResponse = OASBulkUpsertStatusResponse.getExample();
         response = (OASBulkUpsertStatusResponse) api.bulkRequestGet(params);
         System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASBulkApi(client);
+
+        js = JSON.serialize(OASBulkUpsertStatusResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBulkUpsertStatusResponse.getExample();
+        response = (OASBulkUpsertStatusResponse) api.bulkRequestGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBulkUpsertStatusResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBulkUpsertStatusResponse.getExample();
+        response = (OASBulkUpsertStatusResponse) api.bulkRequestGet(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Create/update ad entities in bulk
      *
-     * Either create or update any combination of campaigns, ad groups, product groups, ads, or keywords.\nNote that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt;\nthat can be used to obtain the status of the request.
+     * Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels.\nNote that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt;\nthat can be used to obtain the status of the request.
      */
     @isTest
     private static void bulkUpsertCreateTest() {

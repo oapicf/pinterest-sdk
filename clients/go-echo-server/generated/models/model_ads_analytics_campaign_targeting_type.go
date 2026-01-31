@@ -18,4 +18,5 @@ const (
 	REGION AdsAnalyticsCampaignTargetingType = "REGION"
 	CREATIVE_TYPE AdsAnalyticsCampaignTargetingType = "CREATIVE_TYPE"
 	AGE_BUCKET_AND_GENDER AdsAnalyticsCampaignTargetingType = "AGE_BUCKET_AND_GENDER"
+	AUDIENCE_MULTIPLIER AdsAnalyticsCampaignTargetingType = "AUDIENCE_MULTIPLIER"
 )

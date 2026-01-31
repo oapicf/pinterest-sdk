@@ -6,9 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**attributes** | [**CatalogsUpdatableCreativeAssetsAttributes**](CatalogsUpdatableCreativeAssetsAttributes.md) |  | 
 **creativeAssetsId** | **String** | The catalog creative assets item id in the merchant namespace | 
 **operation** | [**OperationEnum**](#OperationEnum) |  | 
-**attributes** | [**CatalogsUpdatableCreativeAssetsAttributes**](CatalogsUpdatableCreativeAssetsAttributes.md) |  | 
 
 
 ## Enum: OperationEnum

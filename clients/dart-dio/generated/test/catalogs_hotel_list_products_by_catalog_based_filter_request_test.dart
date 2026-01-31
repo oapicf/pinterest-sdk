@@ -7,14 +7,14 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(CatalogsHotelListProductsByCatalogBasedFilterRequest, () {
-    // String catalogType
-    test('to test the property `catalogType`', () async {
-      // TODO
-    });
-
     // Catalog id pertaining to the hotel product group.
     // String catalogId
     test('to test the property `catalogId`', () async {
+      // TODO
+    });
+
+    // String catalogType
+    test('to test the property `catalogType`', () async {
       // TODO
     });
 

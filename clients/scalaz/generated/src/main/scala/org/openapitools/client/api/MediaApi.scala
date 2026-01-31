@@ -22,10 +22,10 @@ import scalaz.concurrent.Task
 import HelperCodecs._
 
 import org.openapitools.client.api.Error
+import org.openapitools.client.api.Media
 import org.openapitools.client.api.MediaList200Response
 import org.openapitools.client.api.MediaUpload
-import org.openapitools.client.api.MediaUploadDetails
-import org.openapitools.client.api.MediaUploadRequest
+import org.openapitools.client.api.MediaUploadCreate
 
 object MediaApi {
 
@@ -33,7 +33,7 @@ object MediaApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def mediaCreate(host: String, mediaUploadRequest: MediaUploadRequest): Task[MediaUpload] = {
+  def mediaCreate(host: String, mediaUploadCreate: MediaUploadCreate): Task[MediaUpload] = {
     implicit val returnTypeDecoder: EntityDecoder[MediaUpload] = jsonOf[MediaUpload]
 
     val path = "/media"
@@ -48,14 +48,14 @@ object MediaApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(mediaUploadRequest)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(mediaUploadCreate)
       resp          <- client.expect[MediaUpload](req)
 
     } yield resp
   }
 
-  def mediaGet(host: String, mediaId: String): Task[MediaUploadDetails] = {
-    implicit val returnTypeDecoder: EntityDecoder[MediaUploadDetails] = jsonOf[MediaUploadDetails]
+  def mediaGet(host: String, mediaId: String): Task[Media] = {
+    implicit val returnTypeDecoder: EntityDecoder[Media] = jsonOf[Media]
 
     val path = "/media/{media_id}".replaceAll("\\{" + "media_id" + "\\}",escape(mediaId.toString))
 
@@ -70,7 +70,7 @@ object MediaApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[MediaUploadDetails](req)
+      resp          <- client.expect[Media](req)
 
     } yield resp
   }
@@ -103,7 +103,7 @@ class HttpServiceMediaApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def mediaCreate(mediaUploadRequest: MediaUploadRequest): Task[MediaUpload] = {
+  def mediaCreate(mediaUploadCreate: MediaUploadCreate): Task[MediaUpload] = {
     implicit val returnTypeDecoder: EntityDecoder[MediaUpload] = jsonOf[MediaUpload]
 
     val path = "/media"
@@ -118,14 +118,14 @@ class HttpServiceMediaApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(mediaUploadRequest)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(mediaUploadCreate)
       resp          <- client.expect[MediaUpload](req)
 
     } yield resp
   }
 
-  def mediaGet(mediaId: String): Task[MediaUploadDetails] = {
-    implicit val returnTypeDecoder: EntityDecoder[MediaUploadDetails] = jsonOf[MediaUploadDetails]
+  def mediaGet(mediaId: String): Task[Media] = {
+    implicit val returnTypeDecoder: EntityDecoder[Media] = jsonOf[Media]
 
     val path = "/media/{media_id}".replaceAll("\\{" + "media_id" + "\\}",escape(mediaId.toString))
 
@@ -140,7 +140,7 @@ class HttpServiceMediaApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[MediaUploadDetails](req)
+      resp          <- client.expect[Media](req)
 
     } yield resp
   }

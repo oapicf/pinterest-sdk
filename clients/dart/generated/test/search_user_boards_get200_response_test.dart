@@ -16,14 +16,14 @@ void main() {
   // final instance = SearchUserBoardsGet200Response();
 
   group('test SearchUserBoardsGet200Response', () {
-    // items
-    // List<Board> items (default value: const [])
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // items
+    // List<Board> items (default value: const [])
+    test('to test the property `items`', () async {
       // TODO
     });
 

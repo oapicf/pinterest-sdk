@@ -27,15 +27,15 @@ pinterest_rest_api_catalogs_report_distribution_issue_filter_REPORTTYPE_e catalo
 
 
 typedef struct catalogs_report_distribution_issue_filter_t {
-    pinterest_rest_api_catalogs_report_distribution_issue_filter_REPORTTYPE_e report_type; //enum
     char *catalog_id; // string
+    pinterest_rest_api_catalogs_report_distribution_issue_filter_REPORTTYPE_e report_type; //enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_report_distribution_issue_filter_t;
 
 __attribute__((deprecated)) catalogs_report_distribution_issue_filter_t *catalogs_report_distribution_issue_filter_create(
-    pinterest_rest_api_catalogs_report_distribution_issue_filter_REPORTTYPE_e report_type,
-    char *catalog_id
+    char *catalog_id,
+    pinterest_rest_api_catalogs_report_distribution_issue_filter_REPORTTYPE_e report_type
 );
 
 void catalogs_report_distribution_issue_filter_free(catalogs_report_distribution_issue_filter_t *catalogs_report_distribution_issue_filter);

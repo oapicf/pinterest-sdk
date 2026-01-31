@@ -12,7 +12,9 @@
 #include "AdGroupUpdateRequest.h"
 #include "AdUpdateRequest.h"
 #include "CampaignUpdateRequest.h"
+#include "Catalogs_product_groups_update_request.h"
 #include "KeywordUpdate.h"
+#include "LabelBulkUpdateRequest.h"
 #include "ProductGroupPromotionUpdateRequest.h"
 #include <list>
 #include "Object.h"
@@ -53,13 +55,6 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<CampaignUpdateRequest> getCampaigns();
-
-	/*! \brief Set 
-	 */
-	void setCampaigns(std::list <CampaignUpdateRequest> campaigns);
-	/*! \brief Get 
-	 */
 	std::list<AdGroupUpdateRequest> getAdGroups();
 
 	/*! \brief Set 
@@ -74,11 +69,18 @@ public:
 	void setAds(std::list <AdUpdateRequest> ads);
 	/*! \brief Get 
 	 */
-	std::list<ProductGroupPromotionUpdateRequest> getProductGroups();
+	std::list<CampaignUpdateRequest> getCampaigns();
 
 	/*! \brief Set 
 	 */
-	void setProductGroups(std::list <ProductGroupPromotionUpdateRequest> product_groups);
+	void setCampaigns(std::list <CampaignUpdateRequest> campaigns);
+	/*! \brief Get 
+	 */
+	std::list<Catalogs_product_groups_update_request> getCatalogProductGroups();
+
+	/*! \brief Set 
+	 */
+	void setCatalogProductGroups(std::list <Catalogs_product_groups_update_request> catalog_product_groups);
 	/*! \brief Get 
 	 */
 	std::list<KeywordUpdate> getKeywords();
@@ -86,13 +88,29 @@ public:
 	/*! \brief Set 
 	 */
 	void setKeywords(std::list <KeywordUpdate> keywords);
+	/*! \brief Get 
+	 */
+	std::list<LabelBulkUpdateRequest> getLabels();
+
+	/*! \brief Set 
+	 */
+	void setLabels(std::list <LabelBulkUpdateRequest> labels);
+	/*! \brief Get 
+	 */
+	std::list<ProductGroupPromotionUpdateRequest> getProductGroups();
+
+	/*! \brief Set 
+	 */
+	void setProductGroups(std::list <ProductGroupPromotionUpdateRequest> product_groups);
 
 private:
-	std::list <CampaignUpdateRequest>campaigns;
 	std::list <AdGroupUpdateRequest>ad_groups;
 	std::list <AdUpdateRequest>ads;
-	std::list <ProductGroupPromotionUpdateRequest>product_groups;
+	std::list <CampaignUpdateRequest>campaigns;
+	std::list <Catalogs_product_groups_update_request>catalog_product_groups;
 	std::list <KeywordUpdate>keywords;
+	std::list <LabelBulkUpdateRequest>labels;
+	std::list <ProductGroupPromotionUpdateRequest>product_groups;
 	void __init();
 	void __cleanup();
 

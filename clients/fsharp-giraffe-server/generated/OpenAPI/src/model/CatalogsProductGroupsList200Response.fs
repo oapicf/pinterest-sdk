@@ -11,7 +11,7 @@ module CatalogsProductGroupsList200Response =
 
 
   type catalogs_product_groups_list_200_response = {
-    Items : CatalogsVerticalProductGroup[];
     Bookmark : string option;
+    Items : CatalogsVerticalProductGroup[];
   }
   //#endregion

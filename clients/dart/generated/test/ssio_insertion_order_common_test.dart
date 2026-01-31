@@ -16,27 +16,15 @@ void main() {
   // final instance = SSIOInsertionOrderCommon();
 
   group('test SSIOInsertionOrderCommon', () {
-    // Starting date of time period. Format: YYYY-MM-DD
-    // String startDate
-    test('to test the property `startDate`', () async {
+    // URL link for agency
+    // String agencyLink
+    test('to test the property `agencyLink`', () async {
       // TODO
     });
 
-    // End date of time period. Format: YYYY-MM-DD
-    // String endDate
-    test('to test the property `endDate`', () async {
-      // TODO
-    });
-
-    // The po number
-    // String poNumber
-    test('to test the property `poNumber`', () async {
-      // TODO
-    });
-
-    // If Budget order line, the budget amount.
-    // num budgetAmount
-    test('to test the property `budgetAmount`', () async {
+    // The billing contact email
+    // String billingContactEmail
+    test('to test the property `billingContactEmail`', () async {
       // TODO
     });
 
@@ -52,9 +40,21 @@ void main() {
       // TODO
     });
 
-    // The billing contact email
-    // String billingContactEmail
-    test('to test the property `billingContactEmail`', () async {
+    // If Budget order line, the budget amount.
+    // num budgetAmount
+    test('to test the property `budgetAmount`', () async {
+      // TODO
+    });
+
+    // End date of time period. Format: YYYY-MM-DD
+    // String endDate
+    test('to test the property `endDate`', () async {
+      // TODO
+    });
+
+    // The media contact email
+    // String mediaContactEmail
+    test('to test the property `mediaContactEmail`', () async {
       // TODO
     });
 
@@ -70,15 +70,15 @@ void main() {
       // TODO
     });
 
-    // The media contact email
-    // String mediaContactEmail
-    test('to test the property `mediaContactEmail`', () async {
+    // The po number
+    // String poNumber
+    test('to test the property `poNumber`', () async {
       // TODO
     });
 
-    // URL link for agency
-    // String agencyLink
-    test('to test the property `agencyLink`', () async {
+    // Starting date of time period. Format: YYYY-MM-DD
+    // String startDate
+    test('to test the property `startDate`', () async {
       // TODO
     });
 

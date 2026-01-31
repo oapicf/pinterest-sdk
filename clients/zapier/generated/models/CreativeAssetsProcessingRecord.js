@@ -17,13 +17,13 @@ module.exports = {
                 children: ItemValidationEvent.fields(`${keyPrefix}errors${!isInput ? '[]' : ''}`, isInput, true), 
             },
             {
+                key: `${keyPrefix}status`,
+                ...ItemProcessingStatus.fields(`${keyPrefix}status`, isInput),
+            },
+            {
                 key: `${keyPrefix}warnings`,
                 label: `[${labelPrefix}warnings]`,
                 children: ItemValidationEvent.fields(`${keyPrefix}warnings${!isInput ? '[]' : ''}`, isInput, true), 
-            },
-            {
-                key: `${keyPrefix}status`,
-                ...ItemProcessingStatus.fields(`${keyPrefix}status`, isInput),
             },
         ]
     },
@@ -32,8 +32,8 @@ module.exports = {
         return {
             'creative_assets_id': bundle.inputData?.[`${keyPrefix}creative_assets_id`],
             'errors': utils.childMapping(bundle.inputData?.[`${keyPrefix}errors`], `${keyPrefix}errors`, ItemValidationEvent),
-            'warnings': utils.childMapping(bundle.inputData?.[`${keyPrefix}warnings`], `${keyPrefix}warnings`, ItemValidationEvent),
             'status': bundle.inputData?.[`${keyPrefix}status`],
+            'warnings': utils.childMapping(bundle.inputData?.[`${keyPrefix}warnings`], `${keyPrefix}warnings`, ItemValidationEvent),
         }
     },
 }

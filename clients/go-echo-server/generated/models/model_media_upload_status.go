@@ -1,5 +1,5 @@
 package models
-// MediaUploadStatus : Media upload status
+
 type MediaUploadStatus string
 
 // List of MediaUploadStatus

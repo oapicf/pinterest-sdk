@@ -22,13 +22,13 @@ catalogs_product_group_currency_criteria_t* instantiate_catalogs_product_group_c
   catalogs_product_group_currency_criteria_t* catalogs_product_group_currency_criteria = NULL;
   if (include_optional) {
     catalogs_product_group_currency_criteria = catalogs_product_group_currency_criteria_create(
-      pinterest_rest_api_catalogs_product_group_currency_criteria__"USD",
-      1
+      1,
+      pinterest_rest_api_catalogs_product_group_currency_criteria__"USD"
     );
   } else {
     catalogs_product_group_currency_criteria = catalogs_product_group_currency_criteria_create(
-      pinterest_rest_api_catalogs_product_group_currency_criteria__"USD",
-      1
+      1,
+      pinterest_rest_api_catalogs_product_group_currency_criteria__"USD"
     );
   }
 

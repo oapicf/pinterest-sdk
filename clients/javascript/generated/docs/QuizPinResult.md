@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**organicPinId** | **String** |  | [optional] 
 **androidDeepLink** | **String** |  | [optional] 
-**iosDeepLink** | **String** |  | [optional] 
 **destinationUrl** | **String** |  | [optional] 
+**iosDeepLink** | **String** |  | [optional] 
+**organicPinId** | **String** |  | [optional] 
 **resultId** | **Number** |  | [optional] 
 
 

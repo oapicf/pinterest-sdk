@@ -9,7 +9,7 @@ class DetailedError {
     
     Integer code
     
-    String message
-    
     Object details
+    
+    String message
 }

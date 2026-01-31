@@ -3,27 +3,29 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CatalogId** | **String** | Catalog id pertaining to the hotel product group. | 
 **CatalogType** | **String** |  | 
-**Id** | **String** | ID of the hotel product group. | 
-**Name** | **String** | Name of hotel product group | [optional] 
+**CreatedAt** | **Int32** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
 **Description** | **String** |  | [optional] 
 **Filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | 
-**CreatedAt** | **Int32** | Unix timestamp in seconds of when catalog product group was created. | [optional] 
+**Id** | **String** | ID of the hotel product group. | 
+**Name** | **String** | Name of hotel product group | [optional] 
+**Type** | [**CatalogsHotelProductGroupType**](CatalogsHotelProductGroupType.md) |  | 
 **UpdatedAt** | **Int32** | Unix timestamp in seconds of last time catalog product group was updated. | [optional] 
-**CatalogId** | **String** | Catalog id pertaining to the hotel product group. | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsHotelProductGroup = Initialize-PSOpenAPIToolsCatalogsHotelProductGroup  -CatalogType null `
- -Id 443727193917 `
- -Name Most Popular `
+$CatalogsHotelProductGroup = Initialize-PSOpenAPIToolsCatalogsHotelProductGroup  -CatalogId null `
+ -CatalogType null `
+ -CreatedAt 1621350033000 `
  -Description null `
  -Filters null `
- -CreatedAt 1621350033000 `
- -UpdatedAt 1622742155000 `
- -CatalogId null
+ -Id 443727193917 `
+ -Name Most Popular `
+ -Type null `
+ -UpdatedAt 1622742155000
 ```
 
 - Convert the resource to JSON

@@ -11,13 +11,13 @@ import org.openapitools.models.TemplateResponseDateRangeRelativeDateRange
 
 /**
  * 
+ * @param absoluteUnderscoredateUnderscorerange 
  * @param dynamicUnderscoredateUnderscorerange 
  * @param relativeUnderscoredateUnderscorerange 
- * @param absoluteUnderscoredateUnderscorerange 
  */
-case class TemplateResponseDateRange(dynamicUnderscoredateUnderscorerange: Option[TemplateResponseDateRangeDynamicDateRange],
-                relativeUnderscoredateUnderscorerange: Option[TemplateResponseDateRangeRelativeDateRange],
-                absoluteUnderscoredateUnderscorerange: Option[TemplateResponseDateRangeAbsoluteDateRange]
+case class TemplateResponseDateRange(absoluteUnderscoredateUnderscorerange: Option[TemplateResponseDateRangeAbsoluteDateRange],
+                dynamicUnderscoredateUnderscorerange: Option[TemplateResponseDateRangeDynamicDateRange],
+                relativeUnderscoredateUnderscorerange: Option[TemplateResponseDateRangeRelativeDateRange]
                 )
 
 object TemplateResponseDateRange {

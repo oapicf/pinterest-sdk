@@ -11,7 +11,7 @@ module CampaignsList200Response =
 
 
   type campaigns_list_200_response = {
-    Items : CampaignResponse[];
     Bookmark : string option;
+    Items : CampaignResponse[];
   }
   //#endregion

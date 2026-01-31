@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**array[Pin]**](Pin.md) |  | 
 **bookmark** | **character** |  | [optional] 
+**items** | [**array[Pin]**](Pin.md) |  | 
 
 

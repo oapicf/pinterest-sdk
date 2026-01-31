@@ -20,14 +20,6 @@ public class CatalogsReportDistributionStatsTest {
     }
 
     /**
-     * Test the property 'reportType'
-     */
-    @Test
-    public void reportTypeTest() {
-        // TODO: test reportType
-    }
-
-    /**
      * Test the property 'catalogId'
      */
     @Test
@@ -52,6 +44,22 @@ public class CatalogsReportDistributionStatsTest {
     }
 
     /**
+     * Test the property 'ineligibleForAds'
+     */
+    @Test
+    public void ineligibleForAdsTest() {
+        // TODO: test ineligibleForAds
+    }
+
+    /**
+     * Test the property 'ineligibleForOrganic'
+     */
+    @Test
+    public void ineligibleForOrganicTest() {
+        // TODO: test ineligibleForOrganic
+    }
+
+    /**
      * Test the property 'message'
      */
     @Test
@@ -68,19 +76,11 @@ public class CatalogsReportDistributionStatsTest {
     }
 
     /**
-     * Test the property 'ineligibleForAds'
+     * Test the property 'reportType'
      */
     @Test
-    public void ineligibleForAdsTest() {
-        // TODO: test ineligibleForAds
-    }
-
-    /**
-     * Test the property 'ineligibleForOrganic'
-     */
-    @Test
-    public void ineligibleForOrganicTest() {
-        // TODO: test ineligibleForOrganic
+    public void reportTypeTest() {
+        // TODO: test reportType
     }
 
 }

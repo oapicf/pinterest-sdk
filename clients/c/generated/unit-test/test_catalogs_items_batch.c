@@ -26,8 +26,8 @@ catalogs_items_batch_t* instantiate_catalogs_items_batch(int include_optional) {
       "595953100599279259-66753b9bb65c46c49bd8503b27fecf9e",
       "2013-10-20T19:20:30+01:00",
       "2013-10-20T19:20:30+01:00",
-      pinterest_rest_api_catalogs_items_batch__"PROCESSING",
-      list_createList()
+      list_createList(),
+      pinterest_rest_api_catalogs_items_batch__"PROCESSING"
     );
   } else {
     catalogs_items_batch = catalogs_items_batch_create(
@@ -35,8 +35,8 @@ catalogs_items_batch_t* instantiate_catalogs_items_batch(int include_optional) {
       "595953100599279259-66753b9bb65c46c49bd8503b27fecf9e",
       "2013-10-20T19:20:30+01:00",
       "2013-10-20T19:20:30+01:00",
-      pinterest_rest_api_catalogs_items_batch__"PROCESSING",
-      list_createList()
+      list_createList(),
+      pinterest_rest_api_catalogs_items_batch__"PROCESSING"
     );
   }
 

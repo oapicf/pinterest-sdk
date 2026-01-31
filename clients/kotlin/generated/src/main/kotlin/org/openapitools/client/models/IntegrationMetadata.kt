@@ -22,36 +22,27 @@ import com.squareup.moshi.JsonClass
 /**
  * Integration metadata
  *
- * @param id 
- * @param externalBusinessId 
- * @param connectedMerchantId 
- * @param connectedUserId 
+ * @param additionalId1 
  * @param connectedAdvertiserId 
  * @param connectedLbaId 
+ * @param connectedMerchantId 
  * @param connectedTagId 
+ * @param connectedUserId 
+ * @param createdTimestamp 
+ * @param externalBusinessId 
+ * @param id 
  * @param partnerAccessTokenExpiry 
+ * @param partnerMetadata 
  * @param partnerRefreshTokenExpiry 
  * @param scopes 
- * @param createdTimestamp 
  * @param updatedTimestamp 
- * @param additionalId1 
- * @param partnerMetadata 
  */
 
 
 data class IntegrationMetadata (
 
-    @Json(name = "id")
-    val id: kotlin.String? = null,
-
-    @Json(name = "external_business_id")
-    val externalBusinessId: kotlin.String? = null,
-
-    @Json(name = "connected_merchant_id")
-    val connectedMerchantId: kotlin.String? = null,
-
-    @Json(name = "connected_user_id")
-    val connectedUserId: kotlin.String? = null,
+    @Json(name = "additional_id_1")
+    val additionalId1: kotlin.String? = null,
 
     @Json(name = "connected_advertiser_id")
     val connectedAdvertiserId: kotlin.String? = null,
@@ -59,11 +50,29 @@ data class IntegrationMetadata (
     @Json(name = "connected_lba_id")
     val connectedLbaId: kotlin.String? = null,
 
+    @Json(name = "connected_merchant_id")
+    val connectedMerchantId: kotlin.String? = null,
+
     @Json(name = "connected_tag_id")
     val connectedTagId: kotlin.String? = null,
 
+    @Json(name = "connected_user_id")
+    val connectedUserId: kotlin.String? = null,
+
+    @Json(name = "created_timestamp")
+    val createdTimestamp: java.math.BigDecimal? = null,
+
+    @Json(name = "external_business_id")
+    val externalBusinessId: kotlin.String? = null,
+
+    @Json(name = "id")
+    val id: kotlin.String? = null,
+
     @Json(name = "partner_access_token_expiry")
     val partnerAccessTokenExpiry: java.math.BigDecimal? = null,
+
+    @Json(name = "partner_metadata")
+    val partnerMetadata: kotlin.String? = null,
 
     @Json(name = "partner_refresh_token_expiry")
     val partnerRefreshTokenExpiry: java.math.BigDecimal? = null,
@@ -71,17 +80,8 @@ data class IntegrationMetadata (
     @Json(name = "scopes")
     val scopes: kotlin.String? = null,
 
-    @Json(name = "created_timestamp")
-    val createdTimestamp: java.math.BigDecimal? = null,
-
     @Json(name = "updated_timestamp")
-    val updatedTimestamp: java.math.BigDecimal? = null,
-
-    @Json(name = "additional_id_1")
-    val additionalId1: kotlin.String? = null,
-
-    @Json(name = "partner_metadata")
-    val partnerMetadata: kotlin.String? = null
+    val updatedTimestamp: java.math.BigDecimal? = null
 
 ) {
 

@@ -11,11 +11,11 @@ Name | Type | Description | Notes
 **AVAILABILITY** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 **BRAND** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 **CONDITION** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
-**CUSTOMLABEL0** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
-**CUSTOMLABEL1** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
-**CUSTOMLABEL2** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
-**CUSTOMLABEL3** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
-**CUSTOMLABEL4** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
+**CUSTOMLABEL0** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
+**CUSTOMLABEL1** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
+**CUSTOMLABEL2** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
+**CUSTOMLABEL3** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
+**CUSTOMLABEL4** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
 **ITEM_GROUP_ID** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 **GENDER** | [**CatalogsProductGroupMultipleGenderCriteria**](CatalogsProductGroupMultipleGenderCriteria.md) |  | 
 **MEDIA_TYPE** | [**CatalogsProductGroupMultipleMediaTypesCriteria**](CatalogsProductGroupMultipleMediaTypesCriteria.md) |  | 
@@ -32,12 +32,18 @@ Name | Type | Description | Notes
 **GOOGLEPRODUCTCATEGORY1** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
 **GOOGLEPRODUCTCATEGORY0** | [**CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  | 
 **PRODUCT_GROUP** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
+**CUSTOMNUMBER0** | [**CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  | 
+**CUSTOMNUMBER1** | [**CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  | 
+**CUSTOMNUMBER2** | [**CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  | 
+**CUSTOMNUMBER3** | [**CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  | 
+**CUSTOMNUMBER4** | [**CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  | 
+**TITLE_KEYWORDS** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
 
 ## Methods
 
 ### NewCatalogsProductGroupFilterKeys
 
-`func NewCatalogsProductGroupFilterKeys(mINPRICE CatalogsProductGroupPricingCriteria, mAXPRICE CatalogsProductGroupPricingCriteria, cURRENCY CatalogsProductGroupCurrencyCriteria, iTEMID CatalogsProductGroupMultipleStringCriteria, aVAILABILITY CatalogsProductGroupMultipleStringCriteria, bRAND CatalogsProductGroupMultipleStringCriteria, cONDITION CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL0 CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL1 CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL2 CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL3 CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL4 CatalogsProductGroupMultipleStringCriteria, iTEMGROUPID CatalogsProductGroupMultipleStringCriteria, gENDER CatalogsProductGroupMultipleGenderCriteria, mEDIATYPE CatalogsProductGroupMultipleMediaTypesCriteria, pRODUCTTYPE4 CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE3 CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE2 CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE1 CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE0 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY6 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY5 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY4 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY3 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY2 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY1 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY0 CatalogsProductGroupMultipleStringListCriteria, pRODUCTGROUP CatalogsProductGroupMultipleStringCriteria, ) *CatalogsProductGroupFilterKeys`
+`func NewCatalogsProductGroupFilterKeys(mINPRICE CatalogsProductGroupPricingCriteria, mAXPRICE CatalogsProductGroupPricingCriteria, cURRENCY CatalogsProductGroupCurrencyCriteria, iTEMID CatalogsProductGroupMultipleStringCriteria, aVAILABILITY CatalogsProductGroupMultipleStringCriteria, bRAND CatalogsProductGroupMultipleStringCriteria, cONDITION CatalogsProductGroupMultipleStringCriteria, cUSTOMLABEL0 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL1 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL2 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL3 CatalogsProductGroupFilterOperatorTypeCriteria, cUSTOMLABEL4 CatalogsProductGroupFilterOperatorTypeCriteria, iTEMGROUPID CatalogsProductGroupMultipleStringCriteria, gENDER CatalogsProductGroupMultipleGenderCriteria, mEDIATYPE CatalogsProductGroupMultipleMediaTypesCriteria, pRODUCTTYPE4 CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE3 CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE2 CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE1 CatalogsProductGroupMultipleStringListCriteria, pRODUCTTYPE0 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY6 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY5 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY4 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY3 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY2 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY1 CatalogsProductGroupMultipleStringListCriteria, gOOGLEPRODUCTCATEGORY0 CatalogsProductGroupMultipleStringListCriteria, pRODUCTGROUP CatalogsProductGroupMultipleStringCriteria, cUSTOMNUMBER0 CatalogsProductGroupUint32Criteria, cUSTOMNUMBER1 CatalogsProductGroupUint32Criteria, cUSTOMNUMBER2 CatalogsProductGroupUint32Criteria, cUSTOMNUMBER3 CatalogsProductGroupUint32Criteria, cUSTOMNUMBER4 CatalogsProductGroupUint32Criteria, tITLEKEYWORDS CatalogsProductGroupMultipleStringCriteria, ) *CatalogsProductGroupFilterKeys`
 
 NewCatalogsProductGroupFilterKeys instantiates a new CatalogsProductGroupFilterKeys object
 This constructor will assign default values to properties that have it defined,
@@ -194,100 +200,100 @@ SetCONDITION sets CONDITION field to given value.
 
 ### GetCUSTOMLABEL0
 
-`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMLABEL0() CatalogsProductGroupMultipleStringCriteria`
+`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMLABEL0() CatalogsProductGroupFilterOperatorTypeCriteria`
 
 GetCUSTOMLABEL0 returns the CUSTOMLABEL0 field if non-nil, zero value otherwise.
 
 ### GetCUSTOMLABEL0Ok
 
-`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMLABEL0Ok() (*CatalogsProductGroupMultipleStringCriteria, bool)`
+`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMLABEL0Ok() (*CatalogsProductGroupFilterOperatorTypeCriteria, bool)`
 
 GetCUSTOMLABEL0Ok returns a tuple with the CUSTOMLABEL0 field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCUSTOMLABEL0
 
-`func (o *CatalogsProductGroupFilterKeys) SetCUSTOMLABEL0(v CatalogsProductGroupMultipleStringCriteria)`
+`func (o *CatalogsProductGroupFilterKeys) SetCUSTOMLABEL0(v CatalogsProductGroupFilterOperatorTypeCriteria)`
 
 SetCUSTOMLABEL0 sets CUSTOMLABEL0 field to given value.
 
 
 ### GetCUSTOMLABEL1
 
-`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMLABEL1() CatalogsProductGroupMultipleStringCriteria`
+`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMLABEL1() CatalogsProductGroupFilterOperatorTypeCriteria`
 
 GetCUSTOMLABEL1 returns the CUSTOMLABEL1 field if non-nil, zero value otherwise.
 
 ### GetCUSTOMLABEL1Ok
 
-`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMLABEL1Ok() (*CatalogsProductGroupMultipleStringCriteria, bool)`
+`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMLABEL1Ok() (*CatalogsProductGroupFilterOperatorTypeCriteria, bool)`
 
 GetCUSTOMLABEL1Ok returns a tuple with the CUSTOMLABEL1 field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCUSTOMLABEL1
 
-`func (o *CatalogsProductGroupFilterKeys) SetCUSTOMLABEL1(v CatalogsProductGroupMultipleStringCriteria)`
+`func (o *CatalogsProductGroupFilterKeys) SetCUSTOMLABEL1(v CatalogsProductGroupFilterOperatorTypeCriteria)`
 
 SetCUSTOMLABEL1 sets CUSTOMLABEL1 field to given value.
 
 
 ### GetCUSTOMLABEL2
 
-`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMLABEL2() CatalogsProductGroupMultipleStringCriteria`
+`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMLABEL2() CatalogsProductGroupFilterOperatorTypeCriteria`
 
 GetCUSTOMLABEL2 returns the CUSTOMLABEL2 field if non-nil, zero value otherwise.
 
 ### GetCUSTOMLABEL2Ok
 
-`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMLABEL2Ok() (*CatalogsProductGroupMultipleStringCriteria, bool)`
+`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMLABEL2Ok() (*CatalogsProductGroupFilterOperatorTypeCriteria, bool)`
 
 GetCUSTOMLABEL2Ok returns a tuple with the CUSTOMLABEL2 field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCUSTOMLABEL2
 
-`func (o *CatalogsProductGroupFilterKeys) SetCUSTOMLABEL2(v CatalogsProductGroupMultipleStringCriteria)`
+`func (o *CatalogsProductGroupFilterKeys) SetCUSTOMLABEL2(v CatalogsProductGroupFilterOperatorTypeCriteria)`
 
 SetCUSTOMLABEL2 sets CUSTOMLABEL2 field to given value.
 
 
 ### GetCUSTOMLABEL3
 
-`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMLABEL3() CatalogsProductGroupMultipleStringCriteria`
+`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMLABEL3() CatalogsProductGroupFilterOperatorTypeCriteria`
 
 GetCUSTOMLABEL3 returns the CUSTOMLABEL3 field if non-nil, zero value otherwise.
 
 ### GetCUSTOMLABEL3Ok
 
-`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMLABEL3Ok() (*CatalogsProductGroupMultipleStringCriteria, bool)`
+`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMLABEL3Ok() (*CatalogsProductGroupFilterOperatorTypeCriteria, bool)`
 
 GetCUSTOMLABEL3Ok returns a tuple with the CUSTOMLABEL3 field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCUSTOMLABEL3
 
-`func (o *CatalogsProductGroupFilterKeys) SetCUSTOMLABEL3(v CatalogsProductGroupMultipleStringCriteria)`
+`func (o *CatalogsProductGroupFilterKeys) SetCUSTOMLABEL3(v CatalogsProductGroupFilterOperatorTypeCriteria)`
 
 SetCUSTOMLABEL3 sets CUSTOMLABEL3 field to given value.
 
 
 ### GetCUSTOMLABEL4
 
-`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMLABEL4() CatalogsProductGroupMultipleStringCriteria`
+`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMLABEL4() CatalogsProductGroupFilterOperatorTypeCriteria`
 
 GetCUSTOMLABEL4 returns the CUSTOMLABEL4 field if non-nil, zero value otherwise.
 
 ### GetCUSTOMLABEL4Ok
 
-`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMLABEL4Ok() (*CatalogsProductGroupMultipleStringCriteria, bool)`
+`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMLABEL4Ok() (*CatalogsProductGroupFilterOperatorTypeCriteria, bool)`
 
 GetCUSTOMLABEL4Ok returns a tuple with the CUSTOMLABEL4 field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCUSTOMLABEL4
 
-`func (o *CatalogsProductGroupFilterKeys) SetCUSTOMLABEL4(v CatalogsProductGroupMultipleStringCriteria)`
+`func (o *CatalogsProductGroupFilterKeys) SetCUSTOMLABEL4(v CatalogsProductGroupFilterOperatorTypeCriteria)`
 
 SetCUSTOMLABEL4 sets CUSTOMLABEL4 field to given value.
 
@@ -610,6 +616,126 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsProductGroupFilterKeys) SetPRODUCT_GROUP(v CatalogsProductGroupMultipleStringCriteria)`
 
 SetPRODUCT_GROUP sets PRODUCT_GROUP field to given value.
+
+
+### GetCUSTOMNUMBER0
+
+`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMNUMBER0() CatalogsProductGroupUint32Criteria`
+
+GetCUSTOMNUMBER0 returns the CUSTOMNUMBER0 field if non-nil, zero value otherwise.
+
+### GetCUSTOMNUMBER0Ok
+
+`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMNUMBER0Ok() (*CatalogsProductGroupUint32Criteria, bool)`
+
+GetCUSTOMNUMBER0Ok returns a tuple with the CUSTOMNUMBER0 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCUSTOMNUMBER0
+
+`func (o *CatalogsProductGroupFilterKeys) SetCUSTOMNUMBER0(v CatalogsProductGroupUint32Criteria)`
+
+SetCUSTOMNUMBER0 sets CUSTOMNUMBER0 field to given value.
+
+
+### GetCUSTOMNUMBER1
+
+`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMNUMBER1() CatalogsProductGroupUint32Criteria`
+
+GetCUSTOMNUMBER1 returns the CUSTOMNUMBER1 field if non-nil, zero value otherwise.
+
+### GetCUSTOMNUMBER1Ok
+
+`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMNUMBER1Ok() (*CatalogsProductGroupUint32Criteria, bool)`
+
+GetCUSTOMNUMBER1Ok returns a tuple with the CUSTOMNUMBER1 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCUSTOMNUMBER1
+
+`func (o *CatalogsProductGroupFilterKeys) SetCUSTOMNUMBER1(v CatalogsProductGroupUint32Criteria)`
+
+SetCUSTOMNUMBER1 sets CUSTOMNUMBER1 field to given value.
+
+
+### GetCUSTOMNUMBER2
+
+`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMNUMBER2() CatalogsProductGroupUint32Criteria`
+
+GetCUSTOMNUMBER2 returns the CUSTOMNUMBER2 field if non-nil, zero value otherwise.
+
+### GetCUSTOMNUMBER2Ok
+
+`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMNUMBER2Ok() (*CatalogsProductGroupUint32Criteria, bool)`
+
+GetCUSTOMNUMBER2Ok returns a tuple with the CUSTOMNUMBER2 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCUSTOMNUMBER2
+
+`func (o *CatalogsProductGroupFilterKeys) SetCUSTOMNUMBER2(v CatalogsProductGroupUint32Criteria)`
+
+SetCUSTOMNUMBER2 sets CUSTOMNUMBER2 field to given value.
+
+
+### GetCUSTOMNUMBER3
+
+`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMNUMBER3() CatalogsProductGroupUint32Criteria`
+
+GetCUSTOMNUMBER3 returns the CUSTOMNUMBER3 field if non-nil, zero value otherwise.
+
+### GetCUSTOMNUMBER3Ok
+
+`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMNUMBER3Ok() (*CatalogsProductGroupUint32Criteria, bool)`
+
+GetCUSTOMNUMBER3Ok returns a tuple with the CUSTOMNUMBER3 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCUSTOMNUMBER3
+
+`func (o *CatalogsProductGroupFilterKeys) SetCUSTOMNUMBER3(v CatalogsProductGroupUint32Criteria)`
+
+SetCUSTOMNUMBER3 sets CUSTOMNUMBER3 field to given value.
+
+
+### GetCUSTOMNUMBER4
+
+`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMNUMBER4() CatalogsProductGroupUint32Criteria`
+
+GetCUSTOMNUMBER4 returns the CUSTOMNUMBER4 field if non-nil, zero value otherwise.
+
+### GetCUSTOMNUMBER4Ok
+
+`func (o *CatalogsProductGroupFilterKeys) GetCUSTOMNUMBER4Ok() (*CatalogsProductGroupUint32Criteria, bool)`
+
+GetCUSTOMNUMBER4Ok returns a tuple with the CUSTOMNUMBER4 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCUSTOMNUMBER4
+
+`func (o *CatalogsProductGroupFilterKeys) SetCUSTOMNUMBER4(v CatalogsProductGroupUint32Criteria)`
+
+SetCUSTOMNUMBER4 sets CUSTOMNUMBER4 field to given value.
+
+
+### GetTITLE_KEYWORDS
+
+`func (o *CatalogsProductGroupFilterKeys) GetTITLE_KEYWORDS() CatalogsProductGroupMultipleStringCriteria`
+
+GetTITLE_KEYWORDS returns the TITLE_KEYWORDS field if non-nil, zero value otherwise.
+
+### GetTITLE_KEYWORDSOk
+
+`func (o *CatalogsProductGroupFilterKeys) GetTITLE_KEYWORDSOk() (*CatalogsProductGroupMultipleStringCriteria, bool)`
+
+GetTITLE_KEYWORDSOk returns a tuple with the TITLE_KEYWORDS field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTITLE_KEYWORDS
+
+`func (o *CatalogsProductGroupFilterKeys) SetTITLE_KEYWORDS(v CatalogsProductGroupMultipleStringCriteria)`
+
+SetTITLE_KEYWORDS sets TITLE_KEYWORDS field to given value.
 
 
 

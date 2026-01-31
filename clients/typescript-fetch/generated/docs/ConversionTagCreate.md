@@ -1,18 +1,20 @@
 
 # ConversionTagCreate
 
+Resource create operation model.
 
 ## Properties
 
 Name | Type
 ------------ | -------------
-`aemEnabled` | boolean
-`mdFrequency` | number
-`aemFnlnEnabled` | boolean
-`aemPhEnabled` | boolean
-`aemGeEnabled` | boolean
 `aemDbEnabled` | boolean
+`aemEnabled` | boolean
+`aemExternalIdEnabled` | boolean
+`aemFnlnEnabled` | boolean
+`aemGeEnabled` | boolean
 `aemLocEnabled` | boolean
+`aemPhEnabled` | boolean
+`mdFrequency` | number
 `name` | string
 
 ## Example
@@ -22,14 +24,15 @@ import type { ConversionTagCreate } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "aemEnabled": true,
+  "aemDbEnabled": null,
+  "aemEnabled": null,
+  "aemExternalIdEnabled": null,
+  "aemFnlnEnabled": null,
+  "aemGeEnabled": null,
+  "aemLocEnabled": null,
+  "aemPhEnabled": null,
   "mdFrequency": 0.6,
-  "aemFnlnEnabled": true,
-  "aemPhEnabled": true,
-  "aemGeEnabled": true,
-  "aemDbEnabled": true,
-  "aemLocEnabled": true,
-  "name": ACME Tools Tag,
+  "name": ACME Checkout Test Tag,
 } satisfies ConversionTagCreate
 
 console.log(example)

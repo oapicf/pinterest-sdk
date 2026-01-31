@@ -11,7 +11,7 @@ import org.openapitools.model.BillingProfilesResponse;
 @Canonical
 class BillingProfilesGet200Response {
     
-    List<BillingProfilesResponse> items = new ArrayList<>()
-    
     String bookmark
+    
+    List<BillingProfilesResponse> items = new ArrayList<>()
 }

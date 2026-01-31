@@ -2,12 +2,15 @@
 Protected Class CatalogsHotelProductGroupCreateRequest
 
 	#tag Property, Flags = &h0
-		catalog_type As String
+		#tag Note
+			Catalog id pertaining to the hotel product group.
+		#tag EndNote
+		catalog_id As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		name As String
+		catalog_type As String
 	#tag EndProperty
 
 
@@ -22,10 +25,7 @@ Protected Class CatalogsHotelProductGroupCreateRequest
 
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Catalog id pertaining to the hotel product group.
-		#tag EndNote
-		catalog_id As String
+		name As String
 	#tag EndProperty
 
 
@@ -83,7 +83,7 @@ Protected Class CatalogsHotelProductGroupCreateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="name"
+			Name="catalog_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -107,7 +107,7 @@ Protected Class CatalogsHotelProductGroupCreateRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="catalog_id"
+			Name="name"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

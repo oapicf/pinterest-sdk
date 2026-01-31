@@ -13,9 +13,9 @@ import java.time.OffsetDateTime
 import CatalogsFeedIngestion._
 
 case class CatalogsFeedIngestion (
-  id: String,
+  createdAt: OffsetDateTime,
 feedId: String,
-createdAt: OffsetDateTime,
+id: String,
 status: CatalogsFeedProcessingStatus)
 
 object CatalogsFeedIngestion {

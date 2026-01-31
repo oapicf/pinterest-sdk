@@ -3,14 +3,6 @@ Protected Class UserWebsiteSummary
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Website with path or domain only
-		#tag EndNote
-		website As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
 			Status of the verification process
 		#tag EndNote
 		status As Xoson.O.OptionalString
@@ -22,6 +14,14 @@ Protected Class UserWebsiteSummary
 			UTC timestamp when the verification happened - sometimes missing
 		#tag EndNote
 		verified_at As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Website with path or domain only
+		#tag EndNote
+		website As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -62,14 +62,6 @@ Protected Class UserWebsiteSummary
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="website"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="status"
 			Visible=false
 			Group="Behavior"
@@ -79,6 +71,14 @@ Protected Class UserWebsiteSummary
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="verified_at"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="website"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

@@ -11,7 +11,7 @@ import org.openapitools.model.AdsCreditDiscountsResponse;
 @Canonical
 class AdsCreditsDiscountsGet200Response {
     
-    List<AdsCreditDiscountsResponse> items = new ArrayList<>()
-    
     String bookmark
+    
+    List<AdsCreditDiscountsResponse> items = new ArrayList<>()
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.PinUpdateCarouselSlotsInner;
+import org.openapitools.model.CarouselSlot;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -12,69 +12,50 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Pin fields for updates
+ * Resource create or update operation model.
  */
-@ApiModel(description="Pin fields for updates")
+@ApiModel(description="Resource create or update operation model.")
 
 public class PinUpdate  {
   
- /**
-  * Pin's alternative text.
-  */
-  @ApiModelProperty(value = "Pin's alternative text.")
+  @ApiModelProperty(value = "")
 
   private String altText;
 
  /**
-  * The id of the board to move the Pin onto.
+  * The board to which this Pin belongs.
   */
-  @ApiModelProperty(value = "The id of the board to move the Pin onto.")
+  @ApiModelProperty(value = "The board to which this Pin belongs.")
 
   private String boardId;
 
  /**
-  * <a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID.
+  * The board section to which this Pin belongs.
   */
-  @ApiModelProperty(value = "<a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID.")
+  @ApiModelProperty(value = "The board section to which this Pin belongs.")
 
   private String boardSectionId;
-
- /**
-  * Pin description - 800 characters maximum.
-  */
-  @ApiModelProperty(value = "Pin description - 800 characters maximum.")
-
-  private String description;
-
- /**
-  * URL viewer is taken to when they click pin.
-  */
-  @ApiModelProperty(example = "https://www.pinterest.com/", value = "URL viewer is taken to when they click pin.")
-
-  private String link;
-
- /**
-  * The native pin title that creators explicitly prefer to display.
-  */
-  @ApiModelProperty(value = "The native pin title that creators explicitly prefer to display.")
-
-  private String title;
 
  /**
   * Carousel Pin slots data.
   */
   @ApiModelProperty(value = "Carousel Pin slots data.")
 
-  private List<PinUpdateCarouselSlotsInner> carouselSlots = new ArrayList<>();
+  private List<CarouselSlot> carouselSlots = new ArrayList<>();
 
- /**
-  * Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
-  */
-  @ApiModelProperty(value = "Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.")
+  @ApiModelProperty(value = "")
 
-  private String note;
+  private String description;
+
+  @ApiModelProperty(value = "")
+
+  private String link;
+
+  @ApiModelProperty(value = "")
+
+  private String title;
  /**
-   * Pin&#39;s alternative text.
+   * Get altText
    * @return altText
   **/
   @JsonProperty("alt_text")
@@ -92,7 +73,7 @@ public class PinUpdate  {
   }
 
  /**
-   * The id of the board to move the Pin onto.
+   * The board to which this Pin belongs.
    * @return boardId
   **/
   @JsonProperty("board_id")
@@ -110,7 +91,7 @@ public class PinUpdate  {
   }
 
  /**
-   * &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/create-a-board-section\&quot;&gt;Board section&lt;/a&gt; ID.
+   * The board section to which this Pin belongs.
    * @return boardSectionId
   **/
   @JsonProperty("board_section_id")
@@ -128,7 +109,30 @@ public class PinUpdate  {
   }
 
  /**
-   * Pin description - 800 characters maximum.
+   * Carousel Pin slots data.
+   * @return carouselSlots
+  **/
+  @JsonProperty("carousel_slots")
+  public List<CarouselSlot> getCarouselSlots() {
+    return carouselSlots;
+  }
+
+  public void setCarouselSlots(List<CarouselSlot> carouselSlots) {
+    this.carouselSlots = carouselSlots;
+  }
+
+  public PinUpdate carouselSlots(List<CarouselSlot> carouselSlots) {
+    this.carouselSlots = carouselSlots;
+    return this;
+  }
+
+  public PinUpdate addCarouselSlotsItem(CarouselSlot carouselSlotsItem) {
+    this.carouselSlots.add(carouselSlotsItem);
+    return this;
+  }
+
+ /**
+   * Get description
    * @return description
   **/
   @JsonProperty("description")
@@ -146,7 +150,7 @@ public class PinUpdate  {
   }
 
  /**
-   * URL viewer is taken to when they click pin.
+   * Get link
    * @return link
   **/
   @JsonProperty("link")
@@ -164,7 +168,7 @@ public class PinUpdate  {
   }
 
  /**
-   * The native pin title that creators explicitly prefer to display.
+   * Get title
    * @return title
   **/
   @JsonProperty("title")
@@ -181,47 +185,6 @@ public class PinUpdate  {
     return this;
   }
 
- /**
-   * Carousel Pin slots data.
-   * @return carouselSlots
-  **/
-  @JsonProperty("carousel_slots")
-  public List<PinUpdateCarouselSlotsInner> getCarouselSlots() {
-    return carouselSlots;
-  }
-
-  public void setCarouselSlots(List<PinUpdateCarouselSlotsInner> carouselSlots) {
-    this.carouselSlots = carouselSlots;
-  }
-
-  public PinUpdate carouselSlots(List<PinUpdateCarouselSlotsInner> carouselSlots) {
-    this.carouselSlots = carouselSlots;
-    return this;
-  }
-
-  public PinUpdate addCarouselSlotsItem(PinUpdateCarouselSlotsInner carouselSlotsItem) {
-    this.carouselSlots.add(carouselSlotsItem);
-    return this;
-  }
-
- /**
-   * Private note for this Pin. &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/article/add-notes-to-your-pins\&quot;&gt;Learn more&lt;/a&gt;.
-   * @return note
-  **/
-  @JsonProperty("note")
-  public String getNote() {
-    return note;
-  }
-
-  public void setNote(String note) {
-    this.note = note;
-  }
-
-  public PinUpdate note(String note) {
-    this.note = note;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -234,16 +197,15 @@ public class PinUpdate  {
     return Objects.equals(this.altText, pinUpdate.altText) &&
         Objects.equals(this.boardId, pinUpdate.boardId) &&
         Objects.equals(this.boardSectionId, pinUpdate.boardSectionId) &&
+        Objects.equals(this.carouselSlots, pinUpdate.carouselSlots) &&
         Objects.equals(this.description, pinUpdate.description) &&
         Objects.equals(this.link, pinUpdate.link) &&
-        Objects.equals(this.title, pinUpdate.title) &&
-        Objects.equals(this.carouselSlots, pinUpdate.carouselSlots) &&
-        Objects.equals(this.note, pinUpdate.note);
+        Objects.equals(this.title, pinUpdate.title);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(altText, boardId, boardSectionId, description, link, title, carouselSlots, note);
+    return Objects.hash(altText, boardId, boardSectionId, carouselSlots, description, link, title);
   }
 
   @Override
@@ -254,11 +216,10 @@ public class PinUpdate  {
     sb.append("    altText: ").append(toIndentedString(altText)).append("\n");
     sb.append("    boardId: ").append(toIndentedString(boardId)).append("\n");
     sb.append("    boardSectionId: ").append(toIndentedString(boardSectionId)).append("\n");
+    sb.append("    carouselSlots: ").append(toIndentedString(carouselSlots)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    carouselSlots: ").append(toIndentedString(carouselSlots)).append("\n");
-    sb.append("    note: ").append(toIndentedString(note)).append("\n");
     sb.append("}");
     return sb.toString();
   }

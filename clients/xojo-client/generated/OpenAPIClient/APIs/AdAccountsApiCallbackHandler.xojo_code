@@ -31,6 +31,12 @@ Protected Interface AdAccountsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub AnalyticsCreateConversionProductReportCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AdsAnalyticsCreateAsyncResponse)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub AnalyticsCreateMmmReportCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.CreateMMMReportResponse)
 		  
 		End Sub
@@ -43,7 +49,13 @@ Protected Interface AdAccountsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub AnalyticsCreateTemplateReportCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AdsAnalyticsCreateAsyncResponse)
+		Sub AnalyticsCreateTemplateReportCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.TemplateBasedReport)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub AnalyticsGetConversionProductReportCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.AdsAnalyticsGetAsyncResponse)
 		  
 		End Sub
 	#tag EndMethod

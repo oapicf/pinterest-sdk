@@ -1,0 +1,345 @@
+# pinterestsdk.AudiencesApi
+
+All URIs are relative to *https://api.pinterest.com/v5*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**audiences_create**](AudiencesApi.md#audiences_create) | **POST** /ad_accounts/{ad_account_id}/audiences | Create audience
+[**audiences_get**](AudiencesApi.md#audiences_get) | **GET** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Get audience
+[**audiences_list**](AudiencesApi.md#audiences_list) | **GET** /ad_accounts/{ad_account_id}/audiences | List audiences
+[**audiences_update**](AudiencesApi.md#audiences_update) | **PATCH** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Update audience
+
+
+# **audiences_create**
+> Audience audiences_create(ad_account_id, audience_create_request)
+
+Create audience
+
+Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with
+the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude
+specific `audience_ids` when you create an ad group. <p/>
+Learn about <a href="/docs/work-with-targets-and-audiences/create-audiences/" target="_blank">creating different kinds of audiences</a>.
+
+### Example
+
+* OAuth Authentication (pinterest_oauth2):
+
+```python
+import pinterestsdk
+from pinterestsdk.models.audience import Audience
+from pinterestsdk.models.audience_create_request import AudienceCreateRequest
+from pinterestsdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.pinterest.com/v5
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pinterestsdk.Configuration(
+    host = "https://api.pinterest.com/v5"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with pinterestsdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pinterestsdk.AudiencesApi(api_client)
+    ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
+    audience_create_request = pinterestsdk.AudienceCreateRequest() # AudienceCreateRequest | List of ads to create, size limit [1, 30]
+
+    try:
+        # Create audience
+        api_response = api_instance.audiences_create(ad_account_id, audience_create_request)
+        print("The response of AudiencesApi->audiences_create:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AudiencesApi->audiences_create: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ad_account_id** | **str**| Unique identifier of an ad account. | 
+ **audience_create_request** | [**AudienceCreateRequest**](AudienceCreateRequest.md)| List of ads to create, size limit [1, 30] | 
+
+### Return type
+
+[**Audience**](Audience.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**0** | Unexpected error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **audiences_get**
+> Audience audiences_get(ad_account_id, audience_id)
+
+Get audience
+
+Get a specific audience given the audience ID.
+
+### Example
+
+* OAuth Authentication (pinterest_oauth2):
+* OAuth Authentication (client_credentials):
+
+```python
+import pinterestsdk
+from pinterestsdk.models.audience import Audience
+from pinterestsdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.pinterest.com/v5
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pinterestsdk.Configuration(
+    host = "https://api.pinterest.com/v5"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with pinterestsdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pinterestsdk.AudiencesApi(api_client)
+    ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
+    audience_id = 'audience_id_example' # str | Unique identifier of an audience
+
+    try:
+        # Get audience
+        api_response = api_instance.audiences_get(ad_account_id, audience_id)
+        print("The response of AudiencesApi->audiences_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AudiencesApi->audiences_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ad_account_id** | **str**| Unique identifier of an ad account. | 
+ **audience_id** | **str**| Unique identifier of an audience | 
+
+### Return type
+
+[**Audience**](Audience.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**404** | Audience not found. |  -  |
+**0** | Unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **audiences_list**
+> AudiencesList200Response audiences_list(ad_account_id, bookmark=bookmark, order=order, page_size=page_size, ownership_type=ownership_type)
+
+List audiences
+
+Get list of audiences for the ad account.
+
+### Example
+
+* OAuth Authentication (pinterest_oauth2):
+* OAuth Authentication (client_credentials):
+
+```python
+import pinterestsdk
+from pinterestsdk.models.audiences_list200_response import AudiencesList200Response
+from pinterestsdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.pinterest.com/v5
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pinterestsdk.Configuration(
+    host = "https://api.pinterest.com/v5"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with pinterestsdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pinterestsdk.AudiencesApi(api_client)
+    ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
+    bookmark = 'bookmark_example' # str | Cursor used to fetch the next page of items (optional)
+    order = 'ASCENDING' # str | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional)
+    page_size = 25 # int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+    ownership_type = OWNED # str | Filter audiences by ownership type. (optional) (default to OWNED)
+
+    try:
+        # List audiences
+        api_response = api_instance.audiences_list(ad_account_id, bookmark=bookmark, order=order, page_size=page_size, ownership_type=ownership_type)
+        print("The response of AudiencesApi->audiences_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AudiencesApi->audiences_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ad_account_id** | **str**| Unique identifier of an ad account. | 
+ **bookmark** | **str**| Cursor used to fetch the next page of items | [optional] 
+ **order** | **str**| The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. | [optional] 
+ **page_size** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **ownership_type** | **str**| Filter audiences by ownership type. | [optional] [default to OWNED]
+
+### Return type
+
+[**AudiencesList200Response**](AudiencesList200Response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | Invalid ad account audience parameters. |  -  |
+**0** | Unexpected error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **audiences_update**
+> Audience audiences_update(ad_account_id, audience_id, audience_update_request)
+
+Update audience
+
+Update (edit or remove) an existing targeting audience.
+
+### Example
+
+* OAuth Authentication (pinterest_oauth2):
+
+```python
+import pinterestsdk
+from pinterestsdk.models.audience import Audience
+from pinterestsdk.models.audience_update_request import AudienceUpdateRequest
+from pinterestsdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.pinterest.com/v5
+# See configuration.py for a list of all supported configuration parameters.
+configuration = pinterestsdk.Configuration(
+    host = "https://api.pinterest.com/v5"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with pinterestsdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = pinterestsdk.AudiencesApi(api_client)
+    ad_account_id = 'ad_account_id_example' # str | Unique identifier of an ad account.
+    audience_id = 'audience_id_example' # str | Unique identifier of an audience
+    audience_update_request = pinterestsdk.AudienceUpdateRequest() # AudienceUpdateRequest | The audience to be updated.
+
+    try:
+        # Update audience
+        api_response = api_instance.audiences_update(ad_account_id, audience_id, audience_update_request)
+        print("The response of AudiencesApi->audiences_update:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AudiencesApi->audiences_update: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ad_account_id** | **str**| Unique identifier of an ad account. | 
+ **audience_id** | **str**| Unique identifier of an audience | 
+ **audience_update_request** | [**AudienceUpdateRequest**](AudienceUpdateRequest.md)| The audience to be updated. | 
+
+### Return type
+
+[**Audience**](Audience.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**0** | Unexpected error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

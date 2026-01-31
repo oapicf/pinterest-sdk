@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -75,7 +75,7 @@ func (s *AdGroupsAPIService) AdGroupsUpdate(ctx context.Context, adAccountId str
 }
 
 // AdGroupsAnalytics - Get ad group analytics
-func (s *AdGroupsAPIService) AdGroupsAnalytics(ctx context.Context, adAccountId string, startDate string, endDate string, adGroupIds []string, columns []string, granularity Granularity, clickWindowDays int32, engagementWindowDays int32, viewWindowDays int32, conversionReportTime string) (ImplResponse, error) {
+func (s *AdGroupsAPIService) AdGroupsAnalytics(ctx context.Context, adAccountId string, startDate string, endDate string, adGroupIds []string, columns []string, granularity Granularity, clickWindowDays int32, engagementWindowDays int32, viewWindowDays int32, conversionReportTime string, aggregateReportRows bool, reportingTimezone ReportingTimeZone) (ImplResponse, error) {
 	// TODO - update AdGroupsAnalytics with the required logic for this service method.
 	// Add api_ad_groups_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -92,7 +92,7 @@ func (s *AdGroupsAPIService) AdGroupsAnalytics(ctx context.Context, adAccountId 
 }
 
 // AdGroupsTargetingAnalyticsGet - Get targeting analytics for ad groups
-func (s *AdGroupsAPIService) AdGroupsTargetingAnalyticsGet(ctx context.Context, adAccountId string, adGroupIds []string, startDate string, endDate string, targetingTypes []AdsAnalyticsTargetingType, columns []string, granularity Granularity, clickWindowDays int32, engagementWindowDays int32, viewWindowDays int32, conversionReportTime string, attributionTypes ConversionReportAttributionType) (ImplResponse, error) {
+func (s *AdGroupsAPIService) AdGroupsTargetingAnalyticsGet(ctx context.Context, adAccountId string, adGroupIds []string, startDate string, endDate string, targetingTypes []AdsAnalyticsAdGroupTargetingType, columns []string, granularity Granularity, clickWindowDays int32, engagementWindowDays int32, viewWindowDays int32, conversionReportTime string, attributionTypes []ConversionReportAttributionType, reportingTimezone ReportingTimeZone) (ImplResponse, error) {
 	// TODO - update AdGroupsTargetingAnalyticsGet with the required logic for this service method.
 	// Add api_ad_groups_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

@@ -1,0 +1,50 @@
+/*
+ * catalogs_product_group_filter_operator_type_criteria.h
+ *
+ * 
+ */
+
+#ifndef _catalogs_product_group_filter_operator_type_criteria_H_
+#define _catalogs_product_group_filter_operator_type_criteria_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct catalogs_product_group_filter_operator_type_criteria_t catalogs_product_group_filter_operator_type_criteria_t;
+
+
+// Enum FILTEROPERATORTYPE for catalogs_product_group_filter_operator_type_criteria
+
+typedef enum  { pinterest_rest_api_catalogs_product_group_filter_operator_type_criteria_FILTEROPERATORTYPE_NULL = 0, pinterest_rest_api_catalogs_product_group_filter_operator_type_criteria_FILTEROPERATORTYPE_IS, pinterest_rest_api_catalogs_product_group_filter_operator_type_criteria_FILTEROPERATORTYPE_CONTAINS } pinterest_rest_api_catalogs_product_group_filter_operator_type_criteria_FILTEROPERATORTYPE_e;
+
+char* catalogs_product_group_filter_operator_type_criteria_filter_operator_type_ToString(pinterest_rest_api_catalogs_product_group_filter_operator_type_criteria_FILTEROPERATORTYPE_e filter_operator_type);
+
+pinterest_rest_api_catalogs_product_group_filter_operator_type_criteria_FILTEROPERATORTYPE_e catalogs_product_group_filter_operator_type_criteria_filter_operator_type_FromString(char* filter_operator_type);
+
+
+
+typedef struct catalogs_product_group_filter_operator_type_criteria_t {
+    pinterest_rest_api_catalogs_product_group_filter_operator_type_criteria_FILTEROPERATORTYPE_e filter_operator_type; //enum
+    int negated; //boolean
+    list_t *values; //primitive container
+
+    int _library_owned; // Is the library responsible for freeing this object?
+} catalogs_product_group_filter_operator_type_criteria_t;
+
+__attribute__((deprecated)) catalogs_product_group_filter_operator_type_criteria_t *catalogs_product_group_filter_operator_type_criteria_create(
+    pinterest_rest_api_catalogs_product_group_filter_operator_type_criteria_FILTEROPERATORTYPE_e filter_operator_type,
+    int negated,
+    list_t *values
+);
+
+void catalogs_product_group_filter_operator_type_criteria_free(catalogs_product_group_filter_operator_type_criteria_t *catalogs_product_group_filter_operator_type_criteria);
+
+catalogs_product_group_filter_operator_type_criteria_t *catalogs_product_group_filter_operator_type_criteria_parseFromJSON(cJSON *catalogs_product_group_filter_operator_type_criteriaJSON);
+
+cJSON *catalogs_product_group_filter_operator_type_criteria_convertToJSON(catalogs_product_group_filter_operator_type_criteria_t *catalogs_product_group_filter_operator_type_criteria);
+
+#endif /* _catalogs_product_group_filter_operator_type_criteria_H_ */
+

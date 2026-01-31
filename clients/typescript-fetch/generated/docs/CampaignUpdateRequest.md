@@ -8,18 +8,20 @@ Name | Type
 ------------ | -------------
 `id` | string
 `adAccountId` | string
-`name` | string
-`status` | [EntityStatus](EntityStatus.md)
-`lifetimeSpendCap` | number
 `dailySpendCap` | number
-`orderLineId` | string
-`trackingUrls` | [TrackingUrls](TrackingUrls.md)
-`startTime` | number
 `endTime` | number
-`isFlexibleDailyBudgets` | boolean
-`defaultAdGroupBudgetInMicroCurrency` | number
 `isAutomatedCampaign` | boolean
+`isFlexibleDailyBudgets` | boolean
+`lifetimeSpendCap` | number
+`name` | string
+`orderLineId` | string
+`startTime` | number
+`status` | [EntityStatus](EntityStatus.md)
+`trackingUrls` | [TrackingUrls](TrackingUrls.md)
+`defaultAdGroupBudgetInMicroCurrency` | number
 `isCampaignBudgetOptimization` | boolean
+`bidOptions` | [CampaignBidOptionsUpdate](CampaignBidOptionsUpdate.md)
+`isPerformancePlus` | boolean
 `objectiveType` | [ObjectiveType](ObjectiveType.md)
 
 ## Example
@@ -31,18 +33,20 @@ import type { CampaignUpdateRequest } from ''
 const example = {
   "id": 549755885175,
   "adAccountId": 549755885175,
-  "name": ACME Tools,
-  "status": null,
-  "lifetimeSpendCap": 1432744744,
   "dailySpendCap": 1432744744,
-  "orderLineId": 549755885175,
-  "trackingUrls": null,
-  "startTime": 1580865126,
   "endTime": 1644023526,
-  "isFlexibleDailyBudgets": true,
-  "defaultAdGroupBudgetInMicroCurrency": 0,
   "isAutomatedCampaign": true,
+  "isFlexibleDailyBudgets": true,
+  "lifetimeSpendCap": 1432744744,
+  "name": ACME Tools,
+  "orderLineId": 549755885175,
+  "startTime": 1580865126,
+  "status": null,
+  "trackingUrls": null,
+  "defaultAdGroupBudgetInMicroCurrency": 0,
   "isCampaignBudgetOptimization": true,
+  "bidOptions": null,
+  "isPerformancePlus": true,
   "objectiveType": null,
 } satisfies CampaignUpdateRequest
 

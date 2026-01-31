@@ -30,6 +30,12 @@ class CatalogsCreativeAssetsBatchItemTest : ShouldSpec() {
         // uncomment below to create an instance of CatalogsCreativeAssetsBatchItem
         //val modelInstance = CatalogsCreativeAssetsBatchItem()
 
+        // to test the property `attributes`
+        should("test attributes") {
+            // uncomment below to test the property
+            //modelInstance.attributes shouldBe ("TODO")
+        }
+
         // to test the property `creativeAssetsId` - The catalog creative assets id in the merchant namespace
         should("test creativeAssetsId") {
             // uncomment below to test the property
@@ -40,12 +46,6 @@ class CatalogsCreativeAssetsBatchItemTest : ShouldSpec() {
         should("test operation") {
             // uncomment below to test the property
             //modelInstance.operation shouldBe ("TODO")
-        }
-
-        // to test the property `attributes`
-        should("test attributes") {
-            // uncomment below to test the property
-            //modelInstance.attributes shouldBe ("TODO")
         }
 
     }

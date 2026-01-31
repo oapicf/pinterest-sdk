@@ -7,14 +7,14 @@ goog.provide('API.Client.BulkUpsertStatusResponse');
 API.Client.BulkUpsertStatusResponse = function() {}
 
 /**
- * @type {!API.Client.BulkUpsertStatus}
- * @export
- */
-API.Client.BulkUpsertStatusResponse.prototype.status;
-
-/**
  * @type {!string}
  * @export
  */
 API.Client.BulkUpsertStatusResponse.prototype.resultUrl;
+
+/**
+ * @type {!API.Client.BulkUpsertStatus}
+ * @export
+ */
+API.Client.BulkUpsertStatusResponse.prototype.status;
 

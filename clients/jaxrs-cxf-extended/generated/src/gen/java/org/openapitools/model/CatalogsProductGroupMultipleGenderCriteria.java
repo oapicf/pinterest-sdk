@@ -14,12 +14,36 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsProductGroupMultipleGenderCriteria  {
   
+  @ApiModelProperty(value = "")
+  private Boolean negated = false;
+
   @ApiModelProperty(required = true, value = "")
   @Valid
   private List<Gender> values = new ArrayList<>();
+ /**
+  * Get negated
+  * @return negated
+  */
+  @JsonProperty("negated")
+  public Boolean getNegated() {
+    return negated;
+  }
 
-  @ApiModelProperty(value = "")
-  private Boolean negated = false;
+  /**
+   * Sets the <code>negated</code> property.
+   */
+ public void setNegated(Boolean negated) {
+    this.negated = negated;
+  }
+
+  /**
+   * Sets the <code>negated</code> property.
+   */
+  public CatalogsProductGroupMultipleGenderCriteria negated(Boolean negated) {
+    this.negated = negated;
+    return this;
+  }
+
  /**
   * Get values
   * @return values
@@ -53,30 +77,6 @@ public class CatalogsProductGroupMultipleGenderCriteria  {
     return this;
   }
 
- /**
-  * Get negated
-  * @return negated
-  */
-  @JsonProperty("negated")
-  public Boolean getNegated() {
-    return negated;
-  }
-
-  /**
-   * Sets the <code>negated</code> property.
-   */
- public void setNegated(Boolean negated) {
-    this.negated = negated;
-  }
-
-  /**
-   * Sets the <code>negated</code> property.
-   */
-  public CatalogsProductGroupMultipleGenderCriteria negated(Boolean negated) {
-    this.negated = negated;
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -87,13 +87,13 @@ public class CatalogsProductGroupMultipleGenderCriteria  {
       return false;
     }
     CatalogsProductGroupMultipleGenderCriteria catalogsProductGroupMultipleGenderCriteria = (CatalogsProductGroupMultipleGenderCriteria) o;
-    return Objects.equals(this.values, catalogsProductGroupMultipleGenderCriteria.values) &&
-        Objects.equals(this.negated, catalogsProductGroupMultipleGenderCriteria.negated);
+    return Objects.equals(this.negated, catalogsProductGroupMultipleGenderCriteria.negated) &&
+        Objects.equals(this.values, catalogsProductGroupMultipleGenderCriteria.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, negated);
+    return Objects.hash(negated, values);
   }
 
   @Override
@@ -101,8 +101,8 @@ public class CatalogsProductGroupMultipleGenderCriteria  {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupMultipleGenderCriteria {\n");
     
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

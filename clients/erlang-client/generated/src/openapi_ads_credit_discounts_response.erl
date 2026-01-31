@@ -7,26 +7,26 @@
 -type openapi_ads_credit_discounts_response() ::
     #{ 'active' => boolean(),
        'advertiser_id' => binary(),
-       'discountType' => binary(),
-       'discountInMicroCurrency' => integer(),
        'discountCurrency' => binary(),
-       'title' => binary(),
-       'remainingDiscountInMicroCurrency' => integer()
+       'discountInMicroCurrency' => integer(),
+       'discountType' => binary(),
+       'remainingDiscountInMicroCurrency' => integer(),
+       'title' => binary()
      }.
 
 encode(#{ 'active' := Active,
           'advertiser_id' := AdvertiserId,
-          'discountType' := DiscountType,
-          'discountInMicroCurrency' := DiscountInMicroCurrency,
           'discountCurrency' := DiscountCurrency,
-          'title' := Title,
-          'remainingDiscountInMicroCurrency' := RemainingDiscountInMicroCurrency
+          'discountInMicroCurrency' := DiscountInMicroCurrency,
+          'discountType' := DiscountType,
+          'remainingDiscountInMicroCurrency' := RemainingDiscountInMicroCurrency,
+          'title' := Title
         }) ->
     #{ 'active' => Active,
        'advertiser_id' => AdvertiserId,
-       'discountType' => DiscountType,
-       'discountInMicroCurrency' => DiscountInMicroCurrency,
        'discountCurrency' => DiscountCurrency,
-       'title' => Title,
-       'remainingDiscountInMicroCurrency' => RemainingDiscountInMicroCurrency
+       'discountInMicroCurrency' => DiscountInMicroCurrency,
+       'discountType' => DiscountType,
+       'remainingDiscountInMicroCurrency' => RemainingDiscountInMicroCurrency,
+       'title' => Title
      }.

@@ -4,10 +4,12 @@ import org.openapitools.model.Error;
 import org.openapitools.model.Granularity;
 import java.time.LocalDate;
 import org.openapitools.model.ProductGroupAnalyticsResponseInner;
+import org.openapitools.model.ProductGroupPromotion;
 import org.openapitools.model.ProductGroupPromotionCreateRequest;
 import org.openapitools.model.ProductGroupPromotionResponse;
 import org.openapitools.model.ProductGroupPromotionUpdateRequest;
 import org.openapitools.model.ProductGroupPromotionsList200Response;
+import org.openapitools.model.ReportingTimeZone;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
@@ -92,7 +94,7 @@ public class ProductGroupPromotionsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@4f2fcbe0");
+            .accept("[Ljava.lang.String;@5cb33571");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, ProductGroupPromotionResponse.class);
@@ -118,7 +120,7 @@ public class ProductGroupPromotionsControllerTest {
         String productGroupPromotionId = "example";
 
         // when
-        ProductGroupPromotionResponse result = controller.productGroupPromotionsGet(adAccountId, productGroupPromotionId).block();
+        ProductGroupPromotion result = controller.productGroupPromotionsGet(adAccountId, productGroupPromotionId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -140,10 +142,10 @@ public class ProductGroupPromotionsControllerTest {
             put("product_group_promotion_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@6d80b629");
+            .accept("[Ljava.lang.String;@3c8c4ec3");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, ProductGroupPromotionResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, ProductGroupPromotion.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -192,7 +194,7 @@ public class ProductGroupPromotionsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@6578cfe8");
+            .accept("[Ljava.lang.String;@521146e3");
         request.getParameters()
             .add("product_group_promotion_ids", Arrays.asList("example")) // The query format should be multi
             .add("entity_statuses", Arrays.asList("example")) // The query format should be multi
@@ -247,7 +249,7 @@ public class ProductGroupPromotionsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@1f795106");
+            .accept("[Ljava.lang.String;@5f02fcb3");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, ProductGroupPromotionResponse.class);
@@ -261,7 +263,7 @@ public class ProductGroupPromotionsControllerTest {
      *
      * The method should: Get product group analytics
      *
-     * Get analytics for the specified product groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the specified product groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -279,9 +281,10 @@ public class ProductGroupPromotionsControllerTest {
         Integer engagementWindowDays = 30;
         Integer viewWindowDays = 1;
         String conversionReportTime = "TIME_OF_AD_ACTION";
+        ReportingTimeZone reportingTimezone = ReportingTimeZone.fromValue("PINTEREST_TIME_ZONE");
 
         // when
-        List<ProductGroupAnalyticsResponseInner> result = controller.productGroupsAnalytics(adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime).block();
+        List<ProductGroupAnalyticsResponseInner> result = controller.productGroupsAnalytics(adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone).block();
 
         // then
         Assertions.assertTrue(true);
@@ -302,7 +305,7 @@ public class ProductGroupPromotionsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@2e38e9c2");
+            .accept("[Ljava.lang.String;@1a5f429f");
         request.getParameters()
             .add("start_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
             .add("end_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
@@ -312,7 +315,8 @@ public class ProductGroupPromotionsControllerTest {
             .add("click_window_days", String.valueOf(30)) // The query parameter format should be 
             .add("engagement_window_days", String.valueOf(30)) // The query parameter format should be 
             .add("view_window_days", String.valueOf(1)) // The query parameter format should be 
-            .add("conversion_report_time", "TIME_OF_AD_ACTION"); // The query parameter format should be 
+            .add("conversion_report_time", "TIME_OF_AD_ACTION") // The query parameter format should be 
+            .add("reporting_timezone", String.valueOf(ReportingTimeZone.fromValue("PINTEREST_TIME_ZONE"))); // The query parameter format should be 
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, Argument.of(List.class, ProductGroupAnalyticsResponseInner.class));

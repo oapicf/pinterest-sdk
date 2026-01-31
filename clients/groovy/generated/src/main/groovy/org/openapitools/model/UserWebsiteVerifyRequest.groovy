@@ -6,8 +6,6 @@ import io.swagger.annotations.ApiModelProperty;
 
 @Canonical
 class UserWebsiteVerifyRequest {
-    
-    String website
 
     enum VerificationMethodEnum {
     
@@ -35,4 +33,6 @@ class UserWebsiteVerifyRequest {
 
     
     VerificationMethodEnum verificationMethod = VerificationMethodEnum.METATAG
+    
+    String website
 }

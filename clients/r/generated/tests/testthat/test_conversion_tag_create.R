@@ -5,12 +5,60 @@ context("Test ConversionTagCreate")
 
 model_instance <- ConversionTagCreate$new()
 
+test_that("aem_db_enabled", {
+  # tests for the property `aem_db_enabled` (character)
+  # Whether Automatic Enhanced Match birthdate is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`aem_db_enabled`, "EXPECTED_RESULT")
+})
+
 test_that("aem_enabled", {
   # tests for the property `aem_enabled` (character)
-  # Whether Automatic Enhanced Match email is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.
+  # Whether Automatic Enhanced Match email is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`aem_enabled`, "EXPECTED_RESULT")
+})
+
+test_that("aem_external_id_enabled", {
+  # tests for the property `aem_external_id_enabled` (character)
+  # Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`aem_external_id_enabled`, "EXPECTED_RESULT")
+})
+
+test_that("aem_fnln_enabled", {
+  # tests for the property `aem_fnln_enabled` (character)
+  # Whether Automatic Enhanced Match name is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`aem_fnln_enabled`, "EXPECTED_RESULT")
+})
+
+test_that("aem_ge_enabled", {
+  # tests for the property `aem_ge_enabled` (character)
+  # Whether Automatic Enhanced Match gender is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`aem_ge_enabled`, "EXPECTED_RESULT")
+})
+
+test_that("aem_loc_enabled", {
+  # tests for the property `aem_loc_enabled` (character)
+  # Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`aem_loc_enabled`, "EXPECTED_RESULT")
+})
+
+test_that("aem_ph_enabled", {
+  # tests for the property `aem_ph_enabled` (character)
+  # Whether Automatic Enhanced Match phone is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`aem_ph_enabled`, "EXPECTED_RESULT")
 })
 
 test_that("md_frequency", {
@@ -19,46 +67,6 @@ test_that("md_frequency", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`md_frequency`, "EXPECTED_RESULT")
-})
-
-test_that("aem_fnln_enabled", {
-  # tests for the property `aem_fnln_enabled` (character)
-  # Whether Automatic Enhanced Match name is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`aem_fnln_enabled`, "EXPECTED_RESULT")
-})
-
-test_that("aem_ph_enabled", {
-  # tests for the property `aem_ph_enabled` (character)
-  # Whether Automatic Enhanced Match phone is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`aem_ph_enabled`, "EXPECTED_RESULT")
-})
-
-test_that("aem_ge_enabled", {
-  # tests for the property `aem_ge_enabled` (character)
-  # Whether Automatic Enhanced Match gender is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`aem_ge_enabled`, "EXPECTED_RESULT")
-})
-
-test_that("aem_db_enabled", {
-  # tests for the property `aem_db_enabled` (character)
-  # Whether Automatic Enhanced Match birthdate is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`aem_db_enabled`, "EXPECTED_RESULT")
-})
-
-test_that("aem_loc_enabled", {
-  # tests for the property `aem_loc_enabled` (character)
-  # Whether Automatic Enhanced Match location is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`aem_loc_enabled`, "EXPECTED_RESULT")
 })
 
 test_that("name", {

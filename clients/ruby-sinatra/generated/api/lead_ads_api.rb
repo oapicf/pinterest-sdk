@@ -7,7 +7,7 @@ MyApp.add_route('DELETE', '/v5/ad_accounts/{ad_account_id}/leads/subscriptions/{
   "nickname" => "ad_accounts_subscriptions/del_by_id",
   "responseClass" => "void",
   "endpoint" => "/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}",
-  "notes" => "Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>",
+  "notes" => "Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -31,11 +31,11 @@ end
 
 MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}', {
   "resourcePath" => "/LeadAds",
-  "summary" => "Get lead ads subscription",
+  "summary" => "Get lead ads subscription by ID",
   "nickname" => "ad_accounts_subscriptions/get_by_id",
-  "responseClass" => "AdAccountGetSubscriptionResponse",
+  "responseClass" => "LeadSubscription",
   "endpoint" => "/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}",
-  "notes" => "Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>",
+  "notes" => "Get an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -63,21 +63,21 @@ MyApp.add_route('GET', '/v5/ad_accounts/{ad_account_id}/leads/subscriptions', {
   "nickname" => "ad_accounts_subscriptions/get_list",
   "responseClass" => "ad_accounts_subscriptions_get_list_200_response",
   "endpoint" => "/ad_accounts/{ad_account_id}/leads/subscriptions",
-  "notes" => "Get the advertiser's list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>",
+  "notes" => "Get the advertiser's list of lead ads subscriptions. Only requests for the OWNER or ADMIN of the ad_account will be allowed.",
   "parameters" => [
-    {
-      "name" => "page_size",
-      "description" => "Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.",
-      "dataType" => "Integer",
-      "allowableValues" => "",
-      "defaultValue" => "25",
-      "paramType" => "query",
-    },
     {
       "name" => "bookmark",
       "description" => "Cursor used to fetch the next page of items",
       "dataType" => "String",
       "allowableValues" => "",
+      "paramType" => "query",
+    },
+    {
+      "name" => "page_size",
+      "description" => "Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.",
+      "dataType" => "Integer",
+      "allowableValues" => "",
+      "defaultValue" => "25",
       "paramType" => "query",
     },
     {
@@ -98,9 +98,9 @@ MyApp.add_route('POST', '/v5/ad_accounts/{ad_account_id}/leads/subscriptions', {
   "resourcePath" => "/LeadAds",
   "summary" => "Create lead ads subscription",
   "nickname" => "ad_accounts_subscriptions/post",
-  "responseClass" => "AdAccountCreateSubscriptionResponse",
+  "responseClass" => "LeadSubscription",
   "endpoint" => "/ad_accounts/{ad_account_id}/leads/subscriptions",
-  "notes" => "Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>",
+  "notes" => "Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.   - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.   - For data security, egress lead data is encrypted with AES-256-GCM.",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -110,8 +110,8 @@ MyApp.add_route('POST', '/v5/ad_accounts/{ad_account_id}/leads/subscriptions', {
     },
     {
       "name" => "body",
-      "description" => "Subscription to create.",
-      "dataType" => "AdAccountCreateSubscriptionRequest",
+      "description" => "",
+      "dataType" => "LeadSubscriptionPostParamsCreate",
       "paramType" => "body",
     }
     ]}) do

@@ -22,19 +22,19 @@ public class MembersToDeleteBodyMembersInnerTest {
     }
 
     /**
-     * Test the property 'memberId'
-     */
-    @Test
-    public void memberIdTest() {
-        // TODO: test memberId
-    }
-
-    /**
      * Test the property 'businessRole'
      */
     @Test
     public void businessRoleTest() {
         // TODO: test businessRole
+    }
+
+    /**
+     * Test the property 'memberId'
+     */
+    @Test
+    public void memberIdTest() {
+        // TODO: test memberId
     }
 
 }

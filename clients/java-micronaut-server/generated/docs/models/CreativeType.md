@@ -27,5 +27,11 @@ The class is defined in **[CreativeType.java](../../src/main/java/org/openapitoo
 
 * `QUIZ` (value: `"QUIZ"`)
 
+* `COLLAGE` (value: `"COLLAGE"`)
+
+* `MAX_WIDTH_REGULAR_COLLECTION` (value: `"MAX_WIDTH_REGULAR_COLLECTION"`)
+
+* `MAX_WIDTH_VIDEO_COLLECTION` (value: `"MAX_WIDTH_VIDEO_COLLECTION"`)
+
 
 

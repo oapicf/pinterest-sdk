@@ -48,22 +48,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	LeadsExportStatus getExportStatus();
-
-	/*! \brief Set 
-	 */
-	void setExportStatus(LeadsExportStatus  export_status);
-	/*! \brief Get 
-	 */
 	std::string getDownloadUrl();
 
 	/*! \brief Set 
 	 */
 	void setDownloadUrl(std::string  download_url);
+	/*! \brief Get 
+	 */
+	LeadsExportStatus getExportStatus();
+
+	/*! \brief Set 
+	 */
+	void setExportStatus(LeadsExportStatus  export_status);
 
 private:
-	LeadsExportStatus export_status;
 	std::string download_url;
+	LeadsExportStatus export_status;
 	void __init();
 	void __cleanup();
 

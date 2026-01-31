@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"questionType": @"question_type", @"customQuestionFieldType": @"custom_question_field_type", @"customQuestionLabel": @"custom_question_label", @"customQuestionOptions": @"custom_question_options" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"customQuestionFieldType": @"custom_question_field_type", @"customQuestionLabel": @"custom_question_label", @"customQuestionOptions": @"custom_question_options", @"questionType": @"question_type" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"questionType", @"customQuestionFieldType", @"customQuestionLabel", @"customQuestionOptions"];
+  NSArray *optionalProperties = @[@"customQuestionFieldType", @"customQuestionLabel", @"customQuestionOptions", @"questionType"];
   return [optionalProperties containsObject:propertyName];
 }
 

@@ -1,7 +1,7 @@
 package org.openapitools.model;
 
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.ImageMetadataImages;
+import org.openapitools.model.ImageSize;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -22,27 +22,27 @@ public class ImageMetadataTest {
     }
 
     /**
-     * Test the property 'itemType'
-     */
-    @Test
-    public void itemTypeTest() {
-        // TODO: test itemType
-    }
-
-    /**
-     * Test the property 'title'
-     */
-    @Test
-    public void titleTest() {
-        // TODO: test title
-    }
-
-    /**
      * Test the property 'description'
      */
     @Test
     public void descriptionTest() {
         // TODO: test description
+    }
+
+    /**
+     * Test the property 'images'
+     */
+    @Test
+    public void imagesTest() {
+        // TODO: test images
+    }
+
+    /**
+     * Test the property 'itemType'
+     */
+    @Test
+    public void itemTypeTest() {
+        // TODO: test itemType
     }
 
     /**
@@ -54,11 +54,11 @@ public class ImageMetadataTest {
     }
 
     /**
-     * Test the property 'images'
+     * Test the property 'title'
      */
     @Test
-    public void imagesTest() {
-        // TODO: test images
+    public void titleTest() {
+        // TODO: test title
     }
 
 }

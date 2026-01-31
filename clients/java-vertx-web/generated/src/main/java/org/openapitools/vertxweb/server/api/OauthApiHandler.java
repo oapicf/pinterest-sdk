@@ -1,5 +1,6 @@
 package org.openapitools.vertxweb.server.api;
 
+import org.openapitools.vertxweb.server.model.ConversionAccessTokenResponse;
 import org.openapitools.vertxweb.server.model.Error;
 import org.openapitools.vertxweb.server.model.OauthAccessTokenResponse;
 
@@ -33,7 +34,29 @@ public class OauthApiHandler {
     }
 
     public void mount(RouterBuilder builder) {
+        builder.operation("oauthConversionToken").handler(this::oauthConversionToken);
         builder.operation("oauthToken").handler(this::oauthToken);
+        builder.operation("tokenRevoke").handler(this::tokenRevoke);
+    }
+
+    private void oauthConversionToken(RoutingContext routingContext) {
+        logger.info("oauthConversionToken()");
+
+        // Param extraction
+        RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
+
+
+
+        api.oauthConversionToken()
+            .onSuccess(apiResponse -> {
+                routingContext.response().setStatusCode(apiResponse.getStatusCode());
+                if (apiResponse.hasData()) {
+                    routingContext.json(apiResponse.getData());
+                } else {
+                    routingContext.response().end();
+                }
+            })
+            .onFailure(routingContext::fail);
     }
 
     private void oauthToken(RoutingContext routingContext) {
@@ -48,6 +71,29 @@ public class OauthApiHandler {
         logger.debug("Parameter formBody is {}", formBody);
 
         api.oauthToken(formBody)
+            .onSuccess(apiResponse -> {
+                routingContext.response().setStatusCode(apiResponse.getStatusCode());
+                if (apiResponse.hasData()) {
+                    routingContext.json(apiResponse.getData());
+                } else {
+                    routingContext.response().end();
+                }
+            })
+            .onFailure(routingContext::fail);
+    }
+
+    private void tokenRevoke(RoutingContext routingContext) {
+        logger.info("tokenRevoke()");
+
+        // Param extraction
+        RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
+
+        RequestParameter body = requestParameters.body();
+        JsonObject formBody = body != null ? body.getJsonObject() : null;
+
+        logger.debug("Parameter formBody is {}", formBody);
+
+        api.tokenRevoke(formBody)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

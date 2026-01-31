@@ -9,18 +9,21 @@
 -export_type([openapi_conversion_events_data_inner_custom_data/0]).
 
 -type openapi_conversion_events_data_inner_custom_data() ::
-  [ {'currency', binary() }
-  | {'value', binary() }
+  [ {'content_brand', binary() }
+  | {'content_category', binary() }
   | {'content_ids', list(binary()) }
   | {'content_name', binary() }
-  | {'content_category', binary() }
-  | {'content_brand', binary() }
   | {'contents', list(openapi_conversion_events_data_inner_custom_data_contents_inner:openapi_conversion_events_data_inner_custom_data_contents_inner()) }
-  | {'num_items', integer() }
-  | {'order_id', binary() }
-  | {'search_string', binary() }
-  | {'opt_out_type', binary() }
+  | {'currency', binary() }
+  | {'external_measurement_id', binary() }
+  | {'external_measurement_vendor_id', integer() }
   | {'np', binary() }
+  | {'num_items', integer() }
+  | {'opt_out_type', binary() }
+  | {'order_id', binary() }
+  | {'predicted_ltv', binary() }
+  | {'search_string', binary() }
+  | {'value', binary() }
   ].
 
 
@@ -28,18 +31,21 @@ openapi_conversion_events_data_inner_custom_data() ->
     openapi_conversion_events_data_inner_custom_data([]).
 
 openapi_conversion_events_data_inner_custom_data(Fields) ->
-  Default = [ {'currency', binary() }
-            , {'value', binary() }
+  Default = [ {'content_brand', binary() }
+            , {'content_category', binary() }
             , {'content_ids', list(binary()) }
             , {'content_name', binary() }
-            , {'content_category', binary() }
-            , {'content_brand', binary() }
             , {'contents', list(openapi_conversion_events_data_inner_custom_data_contents_inner:openapi_conversion_events_data_inner_custom_data_contents_inner()) }
-            , {'num_items', integer() }
-            , {'order_id', binary() }
-            , {'search_string', binary() }
-            , {'opt_out_type', binary() }
+            , {'currency', binary() }
+            , {'external_measurement_id', binary() }
+            , {'external_measurement_vendor_id', integer() }
             , {'np', binary() }
+            , {'num_items', integer() }
+            , {'opt_out_type', binary() }
+            , {'order_id', binary() }
+            , {'predicted_ltv', binary() }
+            , {'search_string', binary() }
+            , {'value', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

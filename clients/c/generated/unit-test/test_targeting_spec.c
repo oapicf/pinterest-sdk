@@ -31,6 +31,8 @@ targeting_spec_t* instantiate_targeting_spec(int include_optional) {
       list_createList(),
       list_createList(),
       list_createList(),
+      "65+",
+      "18",
       list_createList(),
       list_createList()
     );
@@ -45,6 +47,8 @@ targeting_spec_t* instantiate_targeting_spec(int include_optional) {
       list_createList(),
       list_createList(),
       list_createList(),
+      "65+",
+      "18",
       list_createList(),
       list_createList()
     );

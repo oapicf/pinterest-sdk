@@ -12,27 +12,27 @@ import AnyCodable
 
 public struct UpdateAssetGroupResponse: Codable, JSONEncodable, Hashable {
 
-    /** A list of successfully edited asset groups. */
-    public var updatedAssetGroups: [AssetGroupBinding]?
     /** A list of errors associated with the asset groups. Will be returned if there is an error. */
     public var exceptions: [UpdateAssetGroupResponseExceptionsInner]?
+    /** A list of successfully edited asset groups. */
+    public var updatedAssetGroups: [AssetGroupBinding]?
 
-    public init(updatedAssetGroups: [AssetGroupBinding]? = nil, exceptions: [UpdateAssetGroupResponseExceptionsInner]? = nil) {
-        self.updatedAssetGroups = updatedAssetGroups
+    public init(exceptions: [UpdateAssetGroupResponseExceptionsInner]? = nil, updatedAssetGroups: [AssetGroupBinding]? = nil) {
         self.exceptions = exceptions
+        self.updatedAssetGroups = updatedAssetGroups
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case updatedAssetGroups = "updated_asset_groups"
         case exceptions
+        case updatedAssetGroups = "updated_asset_groups"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(updatedAssetGroups, forKey: .updatedAssetGroups)
         try container.encodeIfPresent(exceptions, forKey: .exceptions)
+        try container.encodeIfPresent(updatedAssetGroups, forKey: .updatedAssetGroups)
     }
 }
 

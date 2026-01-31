@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Gets or Sets Permissions
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public enum Permissions {
   
   ADMIN("ADMIN"),
@@ -29,13 +29,21 @@ public enum Permissions {
   
   FINANCE_MANAGER("FINANCE_MANAGER"),
   
+  FINANCE_EDIT("FINANCE_EDIT"),
+  
+  FINANCE_VIEW("FINANCE_VIEW"),
+  
   AUDIENCE_MANAGER("AUDIENCE_MANAGER"),
   
   CAMPAIGN_MANAGER("CAMPAIGN_MANAGER"),
   
   CATALOGS_MANAGER("CATALOGS_MANAGER"),
   
-  PROFILE_PUBLISHER("PROFILE_PUBLISHER");
+  CATALOGS_VIEWER("CATALOGS_VIEWER"),
+  
+  PROFILE_PUBLISHER("PROFILE_PUBLISHER"),
+  
+  CONSUMER_USER("CONSUMER_USER");
 
   private final String value;
 

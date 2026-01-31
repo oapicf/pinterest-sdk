@@ -12,36 +12,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TopPinsAnalyticsResponseDateAvailability  {
   
+  @ApiModelProperty(example = "false", value = "")
+  private Boolean isRealtime;
+
   @ApiModelProperty(example = "1649116799000", value = "")
   @Valid
   private BigDecimal latestAvailableTimestamp;
-
-  @ApiModelProperty(example = "false", value = "")
-  private Boolean isRealtime;
- /**
-  * Get latestAvailableTimestamp
-  * @return latestAvailableTimestamp
-  */
-  @JsonProperty("latest_available_timestamp")
-  public BigDecimal getLatestAvailableTimestamp() {
-    return latestAvailableTimestamp;
-  }
-
-  /**
-   * Sets the <code>latestAvailableTimestamp</code> property.
-   */
- public void setLatestAvailableTimestamp(BigDecimal latestAvailableTimestamp) {
-    this.latestAvailableTimestamp = latestAvailableTimestamp;
-  }
-
-  /**
-   * Sets the <code>latestAvailableTimestamp</code> property.
-   */
-  public TopPinsAnalyticsResponseDateAvailability latestAvailableTimestamp(BigDecimal latestAvailableTimestamp) {
-    this.latestAvailableTimestamp = latestAvailableTimestamp;
-    return this;
-  }
-
  /**
   * Get isRealtime
   * @return isRealtime
@@ -66,6 +42,30 @@ public class TopPinsAnalyticsResponseDateAvailability  {
     return this;
   }
 
+ /**
+  * Get latestAvailableTimestamp
+  * @return latestAvailableTimestamp
+  */
+  @JsonProperty("latest_available_timestamp")
+  public BigDecimal getLatestAvailableTimestamp() {
+    return latestAvailableTimestamp;
+  }
+
+  /**
+   * Sets the <code>latestAvailableTimestamp</code> property.
+   */
+ public void setLatestAvailableTimestamp(BigDecimal latestAvailableTimestamp) {
+    this.latestAvailableTimestamp = latestAvailableTimestamp;
+  }
+
+  /**
+   * Sets the <code>latestAvailableTimestamp</code> property.
+   */
+  public TopPinsAnalyticsResponseDateAvailability latestAvailableTimestamp(BigDecimal latestAvailableTimestamp) {
+    this.latestAvailableTimestamp = latestAvailableTimestamp;
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -76,13 +76,13 @@ public class TopPinsAnalyticsResponseDateAvailability  {
       return false;
     }
     TopPinsAnalyticsResponseDateAvailability topPinsAnalyticsResponseDateAvailability = (TopPinsAnalyticsResponseDateAvailability) o;
-    return Objects.equals(this.latestAvailableTimestamp, topPinsAnalyticsResponseDateAvailability.latestAvailableTimestamp) &&
-        Objects.equals(this.isRealtime, topPinsAnalyticsResponseDateAvailability.isRealtime);
+    return Objects.equals(this.isRealtime, topPinsAnalyticsResponseDateAvailability.isRealtime) &&
+        Objects.equals(this.latestAvailableTimestamp, topPinsAnalyticsResponseDateAvailability.latestAvailableTimestamp);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(latestAvailableTimestamp, isRealtime);
+    return Objects.hash(isRealtime, latestAvailableTimestamp);
   }
 
   @Override
@@ -90,8 +90,8 @@ public class TopPinsAnalyticsResponseDateAvailability  {
     StringBuilder sb = new StringBuilder();
     sb.append("class TopPinsAnalyticsResponseDateAvailability {\n");
     
-    sb.append("    latestAvailableTimestamp: ").append(toIndentedString(latestAvailableTimestamp)).append("\n");
     sb.append("    isRealtime: ").append(toIndentedString(isRealtime)).append("\n");
+    sb.append("    latestAvailableTimestamp: ").append(toIndentedString(latestAvailableTimestamp)).append("\n");
     sb.append("}");
     return sb.toString();
   }

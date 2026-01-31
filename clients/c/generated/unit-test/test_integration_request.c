@@ -29,11 +29,11 @@ integration_request_t* instantiate_integration_request(int include_optional) {
       "0",
       "0",
       "0",
-      "0",
-      56,
       56,
       "0",
       "0",
+      "0",
+      56,
       "0"
     );
   } else {
@@ -45,11 +45,11 @@ integration_request_t* instantiate_integration_request(int include_optional) {
       "0",
       "0",
       "0",
-      "0",
-      56,
       56,
       "0",
       "0",
+      "0",
+      56,
       "0"
     );
   }

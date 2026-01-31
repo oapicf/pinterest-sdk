@@ -3,29 +3,29 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DefaultCurrency** | [**NullableCurrency**](NullableCurrency.md) |  | [optional] 
-**Name** | **String** | A human-friendly name associated to a given feed. | [optional] 
-**Format** | [**CatalogsFormat**](CatalogsFormat.md) |  | [optional] 
+**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **Credentials** | [**CatalogsFeedCredentials**](CatalogsFeedCredentials.md) |  | [optional] 
+**DefaultAvailability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] 
+**DefaultCurrency** | [**NullableCurrency**](NullableCurrency.md) |  | [optional] 
+**Format** | [**CatalogsFormat**](CatalogsFormat.md) |  | [optional] 
 **Location** | **String** | The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. | [optional] 
+**Name** | **String** | A human-friendly name associated to a given feed. | [optional] 
 **PreferredProcessingSchedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
 **Status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] 
-**CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
-**DefaultAvailability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$CatalogsVerticalFeedsUpdateRequest = Initialize-PSOpenAPIToolsCatalogsVerticalFeedsUpdateRequest  -DefaultCurrency null `
- -Name null `
- -Format null `
+$CatalogsVerticalFeedsUpdateRequest = Initialize-PSOpenAPIToolsCatalogsVerticalFeedsUpdateRequest  -CatalogType null `
  -Credentials null `
+ -DefaultAvailability null `
+ -DefaultCurrency null `
+ -Format null `
  -Location null `
+ -Name null `
  -PreferredProcessingSchedule null `
- -Status null `
- -CatalogType null `
- -DefaultAvailability null
+ -Status null
 ```
 
 - Convert the resource to JSON

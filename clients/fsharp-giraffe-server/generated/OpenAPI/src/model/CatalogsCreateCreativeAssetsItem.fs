@@ -13,8 +13,8 @@ module CatalogsCreateCreativeAssetsItem =
   //#endregion
 
   type CatalogsCreateCreativeAssetsItem = {
+    Attributes : CatalogsCreativeAssetsAttributes;
     CreativeAssetsId : string;
     Operation : OperationEnum;
-    Attributes : CatalogsCreativeAssetsAttributes;
   }
   //#endregion

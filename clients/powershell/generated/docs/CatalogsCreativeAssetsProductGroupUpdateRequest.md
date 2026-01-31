@@ -4,18 +4,18 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CatalogType** | **String** |  | [optional] 
-**Name** | **String** |  | [optional] 
 **Description** | **String** |  | [optional] 
 **Filters** | [**CatalogsCreativeAssetsProductGroupFilters**](CatalogsCreativeAssetsProductGroupFilters.md) |  | [optional] 
+**Name** | **String** |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
 $CatalogsCreativeAssetsProductGroupUpdateRequest = Initialize-PSOpenAPIToolsCatalogsCreativeAssetsProductGroupUpdateRequest  -CatalogType null `
- -Name null `
  -Description null `
- -Filters null
+ -Filters null `
+ -Name null
 ```
 
 - Convert the resource to JSON

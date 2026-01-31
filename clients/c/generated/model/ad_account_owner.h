@@ -19,15 +19,15 @@ typedef struct ad_account_owner_t ad_account_owner_t;
 
 
 typedef struct ad_account_owner_t {
-    char *username; // string
     char *id; // string
+    char *username; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } ad_account_owner_t;
 
 __attribute__((deprecated)) ad_account_owner_t *ad_account_owner_create(
-    char *username,
-    char *id
+    char *id,
+    char *username
 );
 
 void ad_account_owner_free(ad_account_owner_t *ad_account_owner);

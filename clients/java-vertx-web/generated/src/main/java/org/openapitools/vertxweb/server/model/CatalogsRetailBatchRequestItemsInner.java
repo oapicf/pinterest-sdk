@@ -18,6 +18,7 @@ import org.openapitools.vertxweb.server.model.UpdateMaskFieldType;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsRetailBatchRequestItemsInner   {
   
+  private ItemAttributesRequest attributes;
   private String itemId;
 
 
@@ -38,18 +39,28 @@ public class CatalogsRetailBatchRequestItemsInner   {
   }
 
   private OperationEnum operation;
-  private ItemAttributesRequest attributes;
   private List<UpdateMaskFieldType> updateMask;
+  private Long lastUpdatedTime;
 
   public CatalogsRetailBatchRequestItemsInner () {
 
   }
 
-  public CatalogsRetailBatchRequestItemsInner (String itemId, OperationEnum operation, ItemAttributesRequest attributes, List<UpdateMaskFieldType> updateMask) {
+  public CatalogsRetailBatchRequestItemsInner (ItemAttributesRequest attributes, String itemId, OperationEnum operation, List<UpdateMaskFieldType> updateMask, Long lastUpdatedTime) {
+    this.attributes = attributes;
     this.itemId = itemId;
     this.operation = operation;
-    this.attributes = attributes;
     this.updateMask = updateMask;
+    this.lastUpdatedTime = lastUpdatedTime;
+  }
+
+    
+  @JsonProperty("attributes")
+  public ItemAttributesRequest getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(ItemAttributesRequest attributes) {
+    this.attributes = attributes;
   }
 
     
@@ -71,21 +82,21 @@ public class CatalogsRetailBatchRequestItemsInner   {
   }
 
     
-  @JsonProperty("attributes")
-  public ItemAttributesRequest getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(ItemAttributesRequest attributes) {
-    this.attributes = attributes;
-  }
-
-    
   @JsonProperty("update_mask")
   public List<UpdateMaskFieldType> getUpdateMask() {
     return updateMask;
   }
   public void setUpdateMask(List<UpdateMaskFieldType> updateMask) {
     this.updateMask = updateMask;
+  }
+
+    
+  @JsonProperty("last_updated_time")
+  public Long getLastUpdatedTime() {
+    return lastUpdatedTime;
+  }
+  public void setLastUpdatedTime(Long lastUpdatedTime) {
+    this.lastUpdatedTime = lastUpdatedTime;
   }
 
 
@@ -98,15 +109,16 @@ public class CatalogsRetailBatchRequestItemsInner   {
       return false;
     }
     CatalogsRetailBatchRequestItemsInner catalogsRetailBatchRequestItemsInner = (CatalogsRetailBatchRequestItemsInner) o;
-    return Objects.equals(itemId, catalogsRetailBatchRequestItemsInner.itemId) &&
+    return Objects.equals(attributes, catalogsRetailBatchRequestItemsInner.attributes) &&
+        Objects.equals(itemId, catalogsRetailBatchRequestItemsInner.itemId) &&
         Objects.equals(operation, catalogsRetailBatchRequestItemsInner.operation) &&
-        Objects.equals(attributes, catalogsRetailBatchRequestItemsInner.attributes) &&
-        Objects.equals(updateMask, catalogsRetailBatchRequestItemsInner.updateMask);
+        Objects.equals(updateMask, catalogsRetailBatchRequestItemsInner.updateMask) &&
+        Objects.equals(lastUpdatedTime, catalogsRetailBatchRequestItemsInner.lastUpdatedTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, operation, attributes, updateMask);
+    return Objects.hash(attributes, itemId, operation, updateMask, lastUpdatedTime);
   }
 
   @Override
@@ -114,10 +126,11 @@ public class CatalogsRetailBatchRequestItemsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailBatchRequestItemsInner {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    updateMask: ").append(toIndentedString(updateMask)).append("\n");
+    sb.append("    lastUpdatedTime: ").append(toIndentedString(lastUpdatedTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }

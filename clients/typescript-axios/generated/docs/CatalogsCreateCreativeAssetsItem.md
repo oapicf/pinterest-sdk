@@ -6,9 +6,9 @@ A creative assets item to be created.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**attributes** | [**CatalogsCreativeAssetsAttributes**](CatalogsCreativeAssetsAttributes.md) |  | [default to undefined]
 **creative_assets_id** | **string** | The catalog creative assets id in the merchant namespace | [default to undefined]
 **operation** | **string** |  | [default to undefined]
-**attributes** | [**CatalogsCreativeAssetsAttributes**](CatalogsCreativeAssetsAttributes.md) |  | [default to undefined]
 
 ## Example
 
@@ -16,9 +16,9 @@ Name | Type | Description | Notes
 import { CatalogsCreateCreativeAssetsItem } from './api';
 
 const instance: CatalogsCreateCreativeAssetsItem = {
+    attributes,
     creative_assets_id,
     operation,
-    attributes,
 };
 ```
 

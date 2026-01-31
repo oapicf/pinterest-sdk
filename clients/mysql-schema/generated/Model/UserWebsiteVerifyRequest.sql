@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `UserWebsiteVerifyRequest`
 --
-SELECT `website`, `verification_method` FROM `UserWebsiteVerifyRequest` WHERE 1;
+SELECT `verification_method`, `website` FROM `UserWebsiteVerifyRequest` WHERE 1;
 
 --
 -- INSERT template for table `UserWebsiteVerifyRequest`
 --
-INSERT INTO `UserWebsiteVerifyRequest`(`website`, `verification_method`) VALUES (?, ?);
+INSERT INTO `UserWebsiteVerifyRequest`(`verification_method`, `website`) VALUES (?, ?);
 
 --
 -- UPDATE template for table `UserWebsiteVerifyRequest`
 --
-UPDATE `UserWebsiteVerifyRequest` SET `website` = ?, `verification_method` = ? WHERE 1;
+UPDATE `UserWebsiteVerifyRequest` SET `verification_method` = ?, `website` = ? WHERE 1;
 
 --
 -- DELETE template for table `UserWebsiteVerifyRequest`

@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ReportStatus** | Pointer to **string** |  | [optional] 
-**Url** | Pointer to **NullableString** |  | [optional] 
 **Size** | Pointer to **NullableFloat32** |  | [optional] 
+**Url** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -52,41 +52,6 @@ SetReportStatus sets ReportStatus field to given value.
 
 HasReportStatus returns a boolean if a field has been set.
 
-### GetUrl
-
-`func (o *GetMMMReportResponseData) GetUrl() string`
-
-GetUrl returns the Url field if non-nil, zero value otherwise.
-
-### GetUrlOk
-
-`func (o *GetMMMReportResponseData) GetUrlOk() (*string, bool)`
-
-GetUrlOk returns a tuple with the Url field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUrl
-
-`func (o *GetMMMReportResponseData) SetUrl(v string)`
-
-SetUrl sets Url field to given value.
-
-### HasUrl
-
-`func (o *GetMMMReportResponseData) HasUrl() bool`
-
-HasUrl returns a boolean if a field has been set.
-
-### SetUrlNil
-
-`func (o *GetMMMReportResponseData) SetUrlNil(b bool)`
-
- SetUrlNil sets the value for Url to be an explicit nil
-
-### UnsetUrl
-`func (o *GetMMMReportResponseData) UnsetUrl()`
-
-UnsetUrl ensures that no value is present for Url, not even an explicit nil
 ### GetSize
 
 `func (o *GetMMMReportResponseData) GetSize() float32`
@@ -122,6 +87,41 @@ HasSize returns a boolean if a field has been set.
 `func (o *GetMMMReportResponseData) UnsetSize()`
 
 UnsetSize ensures that no value is present for Size, not even an explicit nil
+### GetUrl
+
+`func (o *GetMMMReportResponseData) GetUrl() string`
+
+GetUrl returns the Url field if non-nil, zero value otherwise.
+
+### GetUrlOk
+
+`func (o *GetMMMReportResponseData) GetUrlOk() (*string, bool)`
+
+GetUrlOk returns a tuple with the Url field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUrl
+
+`func (o *GetMMMReportResponseData) SetUrl(v string)`
+
+SetUrl sets Url field to given value.
+
+### HasUrl
+
+`func (o *GetMMMReportResponseData) HasUrl() bool`
+
+HasUrl returns a boolean if a field has been set.
+
+### SetUrlNil
+
+`func (o *GetMMMReportResponseData) SetUrlNil(b bool)`
+
+ SetUrlNil sets the value for Url to be an explicit nil
+
+### UnsetUrl
+`func (o *GetMMMReportResponseData) UnsetUrl()`
+
+UnsetUrl ensures that no value is present for Url, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

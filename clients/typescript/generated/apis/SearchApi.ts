@@ -8,9 +8,9 @@ import {canConsumeForm, isCodeInRange} from '../util';
 import {SecurityAuthentication} from '../auth/auth';
 
 
-import { PinsList200Response } from '../models/PinsList200Response';
 import { SearchPartnerPins200Response } from '../models/SearchPartnerPins200Response';
 import { SearchUserBoardsGet200Response } from '../models/SearchUserBoardsGet200Response';
+import { SearchUserPinsList200Response } from '../models/SearchUserPinsList200Response';
 
 /**
  * no description
@@ -18,7 +18,7 @@ import { SearchUserBoardsGet200Response } from '../models/SearchUserBoardsGet200
 export class SearchApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
-     * <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+     * <strong>This endpoint is currently in beta and not available to all apps. <a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
      * Search pins by a given search term
      * @param term Search term to look up pins.
      * @param countryCode Two letter country code (ISO 3166-1 alpha-2)
@@ -301,13 +301,13 @@ export class SearchApiResponseProcessor {
      * @params response Response returned by the server for a request to searchUserPinsList
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async searchUserPinsListWithHttpInfo(response: ResponseContext): Promise<HttpInfo<PinsList200Response >> {
+     public async searchUserPinsListWithHttpInfo(response: ResponseContext): Promise<HttpInfo<SearchUserPinsList200Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: PinsList200Response = ObjectSerializer.deserialize(
+            const body: SearchUserPinsList200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "PinsList200Response", ""
-            ) as PinsList200Response;
+                "SearchUserPinsList200Response", ""
+            ) as SearchUserPinsList200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("404", response.httpStatusCode)) {
@@ -327,10 +327,10 @@ export class SearchApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: PinsList200Response = ObjectSerializer.deserialize(
+            const body: SearchUserPinsList200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "PinsList200Response", ""
-            ) as PinsList200Response;
+                "SearchUserPinsList200Response", ""
+            ) as SearchUserPinsList200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

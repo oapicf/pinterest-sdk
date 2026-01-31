@@ -14,14 +14,12 @@
       "default": null
     },
     {
-      "name": "report_name",
-      "type": "string",
-      "doc": "Name of the Marketing Mix Modeling (MMM) report"
-    },
-    {
-      "name": "start_date",
-      "type": "string",
-      "doc": "Metric report start date (UTC). Format: YYYY-MM-DD"
+      "name": "columns",
+      "type": {
+        "type": "array",
+        "items": "model.MMMReportingColumn"
+      },
+      "doc": "Metric and entity columns"
     },
     {
       "name": "end_date",
@@ -53,20 +51,22 @@
       "doc": "Level of the report"
     },
     {
+      "name": "report_name",
+      "type": "string",
+      "doc": "Name of the Marketing Mix Modeling (MMM) report"
+    },
+    {
+      "name": "start_date",
+      "type": "string",
+      "doc": "Metric report start date (UTC). Format: YYYY-MM-DD"
+    },
+    {
       "name": "targeting_types",
       "type": {
         "type": "array",
         "items": "model.MMMReportingTargetingType"
       },
       "doc": "List of targeting types"
-    },
-    {
-      "name": "columns",
-      "type": {
-        "type": "array",
-        "items": "model.MMMReportingColumn"
-      },
-      "doc": "Metric and entity columns"
     }
   ]
 

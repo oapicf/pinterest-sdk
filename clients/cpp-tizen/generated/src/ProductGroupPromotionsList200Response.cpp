@@ -23,22 +23,22 @@ Product_group_promotions_list_200_response::~Product_group_promotions_list_200_r
 void
 Product_group_promotions_list_200_response::__init()
 {
-	//new std::list()std::list> items;
 	//bookmark = std::string();
+	//new std::list()std::list> items;
 }
 
 void
 Product_group_promotions_list_200_response::__cleanup()
 {
-	//if(items != NULL) {
-	//items.RemoveAll(true);
-	//delete items;
-	//items = NULL;
-	//}
 	//if(bookmark != NULL) {
 	//
 	//delete bookmark;
 	//bookmark = NULL;
+	//}
+	//if(items != NULL) {
+	//items.RemoveAll(true);
+	//delete items;
+	//items = NULL;
 	//}
 	//
 }
@@ -48,30 +48,6 @@ Product_group_promotions_list_200_response::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *itemsKey = "items";
-	node = json_object_get_member(pJsonObject, itemsKey);
-	if (node !=NULL) {
-	
-		{
-			JsonArray* arr = json_node_get_array(node);
-			JsonNode*  temp_json;
-			list<ProductGroupPromotionResponseItem> new_list;
-			ProductGroupPromotionResponseItem inst;
-			for (guint i=0;i<json_array_get_length(arr);i++) {
-				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("ProductGroupPromotionResponseItem")) {
-					jsonToValue(&inst, temp_json, "ProductGroupPromotionResponseItem", "");
-				} else {
-					
-					inst.fromJson(json_to_string(temp_json, false));
-					
-				}
-				new_list.push_back(inst);
-			}
-			items = new_list;
-		}
-		
-	}
 	const gchar *bookmarkKey = "bookmark";
 	node = json_object_get_member(pJsonObject, bookmarkKey);
 	if (node !=NULL) {
@@ -82,6 +58,30 @@ Product_group_promotions_list_200_response::fromJson(char* jsonStr)
 		} else {
 			
 		}
+	}
+	const gchar *itemsKey = "items";
+	node = json_object_get_member(pJsonObject, itemsKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<ProductGroupPromotion> new_list;
+			ProductGroupPromotion inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("ProductGroupPromotion")) {
+					jsonToValue(&inst, temp_json, "ProductGroupPromotion", "");
+				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
+					
+				}
+				new_list.push_back(inst);
+			}
+			items = new_list;
+		}
+		
 	}
 }
 
@@ -95,18 +95,27 @@ Product_group_promotions_list_200_response::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("ProductGroupPromotionResponseItem")) {
-		list<ProductGroupPromotionResponseItem> new_list = static_cast<list <ProductGroupPromotionResponseItem> > (getItems());
-		node = converttoJson(&new_list, "ProductGroupPromotionResponseItem", "array");
+	if (isprimitive("std::string")) {
+		std::string obj = getBookmark();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *bookmarkKey = "bookmark";
+	json_object_set_member(pJsonObject, bookmarkKey, node);
+	if (isprimitive("ProductGroupPromotion")) {
+		list<ProductGroupPromotion> new_list = static_cast<list <ProductGroupPromotion> > (getItems());
+		node = converttoJson(&new_list, "ProductGroupPromotion", "array");
 	} else {
 		node = json_node_alloc();
-		list<ProductGroupPromotionResponseItem> new_list = static_cast<list <ProductGroupPromotionResponseItem> > (getItems());
+		list<ProductGroupPromotion> new_list = static_cast<list <ProductGroupPromotion> > (getItems());
 		JsonArray* json_array = json_array_new();
 		GError *mygerror;
 		
-		for (list<ProductGroupPromotionResponseItem>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+		for (list<ProductGroupPromotion>::iterator it = new_list.begin(); it != new_list.end(); it++) {
 			mygerror = NULL;
-			ProductGroupPromotionResponseItem obj = *it;
+			ProductGroupPromotion obj = *it;
 			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
 			json_array_add_element(json_array, node_temp);
 			g_clear_error(&mygerror);
@@ -120,33 +129,12 @@ Product_group_promotions_list_200_response::toJson()
 	
 	const gchar *itemsKey = "items";
 	json_object_set_member(pJsonObject, itemsKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getBookmark();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *bookmarkKey = "bookmark";
-	json_object_set_member(pJsonObject, bookmarkKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
-}
-
-std::list<ProductGroupPromotionResponseItem>
-Product_group_promotions_list_200_response::getItems()
-{
-	return items;
-}
-
-void
-Product_group_promotions_list_200_response::setItems(std::list <ProductGroupPromotionResponseItem> items)
-{
-	this->items = items;
 }
 
 std::string
@@ -159,6 +147,18 @@ void
 Product_group_promotions_list_200_response::setBookmark(std::string  bookmark)
 {
 	this->bookmark = bookmark;
+}
+
+std::list<ProductGroupPromotion>
+Product_group_promotions_list_200_response::getItems()
+{
+	return items;
+}
+
+void
+Product_group_promotions_list_200_response::setItems(std::list <ProductGroupPromotion> items)
+{
+	this->items = items;
 }
 
 

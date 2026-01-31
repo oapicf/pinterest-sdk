@@ -10,6 +10,7 @@
 
 -type openapi_catalogs_delete_retail_item() ::
   [ {'item_id', binary() }
+  | {'last_updated_time', integer() }
   | {'operation', binary() }
   ].
 
@@ -19,6 +20,7 @@ openapi_catalogs_delete_retail_item() ->
 
 openapi_catalogs_delete_retail_item(Fields) ->
   Default = [ {'item_id', binary() }
+            , {'last_updated_time', integer() }
             , {'operation', elements([<<"DELETE">>]) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).

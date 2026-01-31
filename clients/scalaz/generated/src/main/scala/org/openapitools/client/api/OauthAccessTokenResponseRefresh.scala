@@ -12,11 +12,14 @@ import org.joda.time.DateTime
 import OauthAccessTokenResponseRefresh._
 
 case class OauthAccessTokenResponseRefresh (
-  responseType: Option[ResponseType],
-accessToken: String,
-tokenType: String,
+  accessToken: String,
 expiresIn: Integer,
-scope: String)
+responseType: Option[ResponseType],
+scope: String,
+tokenType: String,
+refreshToken: String,
+refreshTokenExpiresAt: Integer,
+refreshTokenExpiresIn: Integer)
 
 object OauthAccessTokenResponseRefresh {
   import DateTimeCodecs._

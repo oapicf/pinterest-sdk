@@ -8,22 +8,40 @@ import java.math.BigDecimal;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AudienceInsightCategoryCommon   {
   
+  private String id;
+  private BigDecimal index;
   private String key;
   private String name;
   private BigDecimal ratio;
-  private BigDecimal index;
-  private String id;
 
   public AudienceInsightCategoryCommon () {
 
   }
 
-  public AudienceInsightCategoryCommon (String key, String name, BigDecimal ratio, BigDecimal index, String id) {
+  public AudienceInsightCategoryCommon (String id, BigDecimal index, String key, String name, BigDecimal ratio) {
+    this.id = id;
+    this.index = index;
     this.key = key;
     this.name = name;
     this.ratio = ratio;
-    this.index = index;
+  }
+
+    
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
     this.id = id;
+  }
+
+    
+  @JsonProperty("index")
+  public BigDecimal getIndex() {
+    return index;
+  }
+  public void setIndex(BigDecimal index) {
+    this.index = index;
   }
 
     
@@ -53,24 +71,6 @@ public class AudienceInsightCategoryCommon   {
     this.ratio = ratio;
   }
 
-    
-  @JsonProperty("index")
-  public BigDecimal getIndex() {
-    return index;
-  }
-  public void setIndex(BigDecimal index) {
-    this.index = index;
-  }
-
-    
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-  public void setId(String id) {
-    this.id = id;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -81,16 +81,16 @@ public class AudienceInsightCategoryCommon   {
       return false;
     }
     AudienceInsightCategoryCommon audienceInsightCategoryCommon = (AudienceInsightCategoryCommon) o;
-    return Objects.equals(key, audienceInsightCategoryCommon.key) &&
-        Objects.equals(name, audienceInsightCategoryCommon.name) &&
-        Objects.equals(ratio, audienceInsightCategoryCommon.ratio) &&
+    return Objects.equals(id, audienceInsightCategoryCommon.id) &&
         Objects.equals(index, audienceInsightCategoryCommon.index) &&
-        Objects.equals(id, audienceInsightCategoryCommon.id);
+        Objects.equals(key, audienceInsightCategoryCommon.key) &&
+        Objects.equals(name, audienceInsightCategoryCommon.name) &&
+        Objects.equals(ratio, audienceInsightCategoryCommon.ratio);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, name, ratio, index, id);
+    return Objects.hash(id, index, key, name, ratio);
   }
 
   @Override
@@ -98,11 +98,11 @@ public class AudienceInsightCategoryCommon   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceInsightCategoryCommon {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    index: ").append(toIndentedString(index)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    ratio: ").append(toIndentedString(ratio)).append("\n");
-    sb.append("    index: ").append(toIndentedString(index)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -25,22 +25,16 @@ class UserWebsiteVerificationCodeTest : ShouldSpec() {
         // uncomment below to create an instance of UserWebsiteVerificationCode
         //val modelInstance = UserWebsiteVerificationCode()
 
-        // to test the property `verificationCode` - Code to check against the user claiming the website
-        should("test verificationCode") {
-            // uncomment below to test the property
-            //modelInstance.verificationCode shouldBe ("TODO")
-        }
-
         // to test the property `dnsTxtRecord` - DNS TXT record to check against for the website to be claimed
         should("test dnsTxtRecord") {
             // uncomment below to test the property
             //modelInstance.dnsTxtRecord shouldBe ("TODO")
         }
 
-        // to test the property `metatag` - Metatag the verification process searchs for the website to be claimed
-        should("test metatag") {
+        // to test the property `fileContent` - A full html file to upload to the website in order for it to be claimed
+        should("test fileContent") {
             // uncomment below to test the property
-            //modelInstance.metatag shouldBe ("TODO")
+            //modelInstance.fileContent shouldBe ("TODO")
         }
 
         // to test the property `filename` - File expected to find on the website being claimed
@@ -49,10 +43,16 @@ class UserWebsiteVerificationCodeTest : ShouldSpec() {
             //modelInstance.filename shouldBe ("TODO")
         }
 
-        // to test the property `fileContent` - A full html file to upload to the website in order for it to be claimed
-        should("test fileContent") {
+        // to test the property `metatag` - Metatag the verification process searchs for the website to be claimed
+        should("test metatag") {
             // uncomment below to test the property
-            //modelInstance.fileContent shouldBe ("TODO")
+            //modelInstance.metatag shouldBe ("TODO")
+        }
+
+        // to test the property `verificationCode` - Code to check against the user claiming the website
+        should("test verificationCode") {
+            // uncomment below to test the property
+            //modelInstance.verificationCode shouldBe ("TODO")
         }
 
     }

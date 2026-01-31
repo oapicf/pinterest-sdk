@@ -1,0 +1,45 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsFeedVideoCounts"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsFeedVideoCounts"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CatalogsFeedVideoCounts {
+    title = CatalogsFeedVideoCounts
+    description = CatalogsFeedVideoCounts
+    derivedFrom = Root
+    properties {
+        ingested_videos {
+          type =  integer
+          description = "The number of videos successfully ingested from the feed file."
+          optional = false
+        }
+        not_ingested_videos {
+          type =  integer
+          description = "The number of videos that were not ingested from the feed file."
+          optional = false
+        }
+        total_videos {
+          type =  integer
+          description = "The number of videos in the feed file."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsFeedVideoCounts {
+    title = CatalogsFeedVideoCounts
+    description = CatalogsFeedVideoCounts
+    implements = openapi_server.resourceTypes.CatalogsFeedVideoCounts
+
+  }
+}

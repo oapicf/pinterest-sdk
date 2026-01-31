@@ -6,10 +6,15 @@
 
 Name | Type
 ------------ | -------------
-`id` | string
-`cryptographicKey` | string
-`cryptographicAlgorithm` | string
+`adAccountId` | string
+`apiVersion` | string
 `createdTime` | number
+`cryptographicAlgorithm` | string
+`cryptographicKey` | string
+`id` | string
+`leadFormId` | string
+`userAccountId` | string
+`webhookUrl` | string
 
 ## Example
 
@@ -18,10 +23,15 @@ import type { AdAccountCreateSubscriptionResponse } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "id": 8078432025948590686,
-  "cryptographicKey": ucvxbV2Tdss0vNeYsdh4Qfa/1Khm2b0PqXvXeTTZh54,
-  "cryptographicAlgorithm": AES-256-GCM,
+  "adAccountId": 549755885176,
+  "apiVersion": v5,
   "createdTime": 1699209842000,
+  "cryptographicAlgorithm": AES-256-GCM,
+  "cryptographicKey": ucvxbV2Tdss0vNeYsdh4Qfa/1Khm2b0PqXvXeTTZh54,
+  "id": 8078432025948590686,
+  "leadFormId": 383791336903426390,
+  "userAccountId": 549755885175,
+  "webhookUrl": https://webhook.example.com/xyz,
 } satisfies AdAccountCreateSubscriptionResponse
 
 console.log(example)

@@ -24,8 +24,6 @@ public class AdGroupAudienceSizingRequest   {
   
   private Boolean autoTargetingEnabled = true;
 
-  private PlacementGroupType placementGroup = "ALL";
-
 
 public enum CreativeTypesEnum {
 
@@ -59,14 +57,16 @@ public enum CreativeTypesEnum {
 
   private List<CreativeTypesEnum> creativeTypes;
 
-  private TargetingSpec targetingSpec;
+  private List<@Valid AdGroupAudienceSizingRequestKeywordsInner> keywords;
+
+  private PlacementGroupType placementGroup = "ALL";
 
   private List<@Pattern(regexp = "^\\d+$")String> productGroupIds;
 
-  private List<@Valid AdGroupAudienceSizingRequestKeywordsInner> keywords;
+  private TargetingSpec targetingSpec;
 
   /**
-   * Enable auto-targeting for ad group. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/expanded-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;expanded targeting\&quot;&lt;/a&gt;.
+   * Enable auto-targeting for ad group. Default value is True. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/performance-plus-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;Pinterest Performance+ targeting\&quot;&lt;/a&gt;.
    **/
   public AdGroupAudienceSizingRequest autoTargetingEnabled(Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
@@ -74,32 +74,13 @@ public enum CreativeTypesEnum {
   }
 
   
-  @ApiModelProperty(example = "true", value = "Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.")
+  @ApiModelProperty(example = "true", value = "Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.")
   @JsonProperty("auto_targeting_enabled")
   public Boolean getAutoTargetingEnabled() {
     return autoTargetingEnabled;
   }
   public void setAutoTargetingEnabled(Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
-  }
-
-
-  /**
-   * &lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.
-   **/
-  public AdGroupAudienceSizingRequest placementGroup(PlacementGroupType placementGroup) {
-    this.placementGroup = placementGroup;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "<a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.")
-  @JsonProperty("placement_group")
-  public PlacementGroupType getPlacementGroup() {
-    return placementGroup;
-  }
-  public void setPlacementGroup(PlacementGroupType placementGroup) {
-    this.placementGroup = placementGroup;
   }
 
 
@@ -131,20 +112,48 @@ public enum CreativeTypesEnum {
 
 
   /**
+   * Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
    **/
-  public AdGroupAudienceSizingRequest targetingSpec(TargetingSpec targetingSpec) {
-    this.targetingSpec = targetingSpec;
+  public AdGroupAudienceSizingRequest keywords(List<@Valid AdGroupAudienceSizingRequestKeywordsInner> keywords) {
+    this.keywords = keywords;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
-  @JsonProperty("targeting_spec")
-  public TargetingSpec getTargetingSpec() {
-    return targetingSpec;
+  @ApiModelProperty(value = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted.")
+  @JsonProperty("keywords")
+  public List<@Valid AdGroupAudienceSizingRequestKeywordsInner> getKeywords() {
+    return keywords;
   }
-  public void setTargetingSpec(TargetingSpec targetingSpec) {
-    this.targetingSpec = targetingSpec;
+  public void setKeywords(List<@Valid AdGroupAudienceSizingRequestKeywordsInner> keywords) {
+    this.keywords = keywords;
+  }
+
+  public AdGroupAudienceSizingRequest addKeywordsItem(AdGroupAudienceSizingRequestKeywordsInner keywordsItem) {
+    if (this.keywords == null) {
+      this.keywords = new ArrayList<>();
+    }
+    this.keywords.add(keywordsItem);
+    return this;
+  }
+
+
+  /**
+   * &lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;.
+   **/
+  public AdGroupAudienceSizingRequest placementGroup(PlacementGroupType placementGroup) {
+    this.placementGroup = placementGroup;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "<a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.")
+  @JsonProperty("placement_group")
+  public PlacementGroupType getPlacementGroup() {
+    return placementGroup;
+  }
+  public void setPlacementGroup(PlacementGroupType placementGroup) {
+    this.placementGroup = placementGroup;
   }
 
 
@@ -176,29 +185,20 @@ public enum CreativeTypesEnum {
 
 
   /**
-   * Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
    **/
-  public AdGroupAudienceSizingRequest keywords(List<@Valid AdGroupAudienceSizingRequestKeywordsInner> keywords) {
-    this.keywords = keywords;
+  public AdGroupAudienceSizingRequest targetingSpec(TargetingSpec targetingSpec) {
+    this.targetingSpec = targetingSpec;
     return this;
   }
 
   
-  @ApiModelProperty(value = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted.")
-  @JsonProperty("keywords")
-  public List<@Valid AdGroupAudienceSizingRequestKeywordsInner> getKeywords() {
-    return keywords;
+  @ApiModelProperty(value = "")
+  @JsonProperty("targeting_spec")
+  public TargetingSpec getTargetingSpec() {
+    return targetingSpec;
   }
-  public void setKeywords(List<@Valid AdGroupAudienceSizingRequestKeywordsInner> keywords) {
-    this.keywords = keywords;
-  }
-
-  public AdGroupAudienceSizingRequest addKeywordsItem(AdGroupAudienceSizingRequestKeywordsInner keywordsItem) {
-    if (this.keywords == null) {
-      this.keywords = new ArrayList<>();
-    }
-    this.keywords.add(keywordsItem);
-    return this;
+  public void setTargetingSpec(TargetingSpec targetingSpec) {
+    this.targetingSpec = targetingSpec;
   }
 
 
@@ -213,16 +213,16 @@ public enum CreativeTypesEnum {
     }
     AdGroupAudienceSizingRequest adGroupAudienceSizingRequest = (AdGroupAudienceSizingRequest) o;
     return Objects.equals(this.autoTargetingEnabled, adGroupAudienceSizingRequest.autoTargetingEnabled) &&
-        Objects.equals(this.placementGroup, adGroupAudienceSizingRequest.placementGroup) &&
         Objects.equals(this.creativeTypes, adGroupAudienceSizingRequest.creativeTypes) &&
-        Objects.equals(this.targetingSpec, adGroupAudienceSizingRequest.targetingSpec) &&
+        Objects.equals(this.keywords, adGroupAudienceSizingRequest.keywords) &&
+        Objects.equals(this.placementGroup, adGroupAudienceSizingRequest.placementGroup) &&
         Objects.equals(this.productGroupIds, adGroupAudienceSizingRequest.productGroupIds) &&
-        Objects.equals(this.keywords, adGroupAudienceSizingRequest.keywords);
+        Objects.equals(this.targetingSpec, adGroupAudienceSizingRequest.targetingSpec);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(autoTargetingEnabled, placementGroup, creativeTypes, targetingSpec, productGroupIds, keywords);
+    return Objects.hash(autoTargetingEnabled, creativeTypes, keywords, placementGroup, productGroupIds, targetingSpec);
   }
 
   @Override
@@ -231,11 +231,11 @@ public enum CreativeTypesEnum {
     sb.append("class AdGroupAudienceSizingRequest {\n");
     
     sb.append("    autoTargetingEnabled: ").append(toIndentedString(autoTargetingEnabled)).append("\n");
-    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
     sb.append("    creativeTypes: ").append(toIndentedString(creativeTypes)).append("\n");
-    sb.append("    targetingSpec: ").append(toIndentedString(targetingSpec)).append("\n");
-    sb.append("    productGroupIds: ").append(toIndentedString(productGroupIds)).append("\n");
     sb.append("    keywords: ").append(toIndentedString(keywords)).append("\n");
+    sb.append("    placementGroup: ").append(toIndentedString(placementGroup)).append("\n");
+    sb.append("    productGroupIds: ").append(toIndentedString(productGroupIds)).append("\n");
+    sb.append("    targetingSpec: ").append(toIndentedString(targetingSpec)).append("\n");
     sb.append("}");
     return sb.toString();
   }

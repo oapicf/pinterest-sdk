@@ -6,11 +6,11 @@ A successful OAuth client token response for the client token flow.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**response_type** | **string** |  | [optional] [default to undefined]
 **access_token** | **string** |  | [default to undefined]
-**token_type** | **string** |  | [default to 'bearer']
 **expires_in** | **number** |  | [default to undefined]
+**response_type** | **string** |  | [optional] [default to undefined]
 **scope** | **string** |  | [default to undefined]
+**token_type** | **string** |  | [default to 'bearer']
 
 ## Example
 
@@ -18,11 +18,11 @@ Name | Type | Description | Notes
 import { OauthAccessTokenResponseClientCredentials } from './api';
 
 const instance: OauthAccessTokenResponseClientCredentials = {
-    response_type,
     access_token,
-    token_type,
     expires_in,
+    response_type,
     scope,
+    token_type,
 };
 ```
 

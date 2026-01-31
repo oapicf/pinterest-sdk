@@ -67,7 +67,7 @@ public interface BusinessAccessInviteApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success", response = DeleteInvitesResultsResponseArray.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public DeleteInvitesResultsResponseArray cancelInvitesOrRequests(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @Valid @NotNull CancelInvitesBody cancelInvitesBody);
+    public DeleteInvitesResultsResponseArray cancelInvitesOrRequests(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1) String businessId, @Valid @NotNull CancelInvitesBody cancelInvitesBody);
 
     /**
      * Update invite/request with an asset permission
@@ -99,7 +99,7 @@ public interface BusinessAccessInviteApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success", response = CreateInvitesResultsResponseArray.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public CreateInvitesResultsResponseArray createMembershipOrPartnershipInvites(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @Valid @NotNull CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody);
+    public CreateInvitesResultsResponseArray createMembershipOrPartnershipInvites(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1) String businessId, @Valid @NotNull CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody);
 
     /**
      * Get invites/requests
@@ -114,7 +114,7 @@ public interface BusinessAccessInviteApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success", response = GetInvites200Response.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public GetInvites200Response getInvites(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @QueryParam("is_member") @DefaultValue("true")Boolean isMember, @QueryParam("invite_status") @Size(min=1) List<String> inviteStatus, @QueryParam("invite_type") InviteType inviteType, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")Integer pageSize);
+    public GetInvites200Response getInvites(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1) String businessId, @QueryParam("is_member") @DefaultValue("true")Boolean isMember, @QueryParam("invite_status") @Size(min=1) List<String> inviteStatus, @QueryParam("invite_type") InviteType inviteType, @QueryParam("bookmark") String bookmark, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")Integer pageSize);
 
     /**
      * Accept or decline an invite/request

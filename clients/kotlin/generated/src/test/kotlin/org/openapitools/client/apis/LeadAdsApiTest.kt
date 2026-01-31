@@ -19,11 +19,10 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.LeadAdsApi
-import org.openapitools.client.models.AdAccountCreateSubscriptionRequest
-import org.openapitools.client.models.AdAccountCreateSubscriptionResponse
-import org.openapitools.client.models.AdAccountGetSubscriptionResponse
 import org.openapitools.client.models.AdAccountsSubscriptionsGetList200Response
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.LeadSubscription
+import org.openapitools.client.models.LeadSubscriptionPostParamsCreate
+import org.openapitools.client.models.PinterestLibError
 
 class LeadAdsApiTest : ShouldSpec() {
     init {
@@ -43,7 +42,7 @@ class LeadAdsApiTest : ShouldSpec() {
             // uncomment below to test adAccountsSubscriptionsGetById
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val subscriptionId : kotlin.String = subscriptionId_example // kotlin.String | Unique identifier of a subscription.
-            //val result : AdAccountGetSubscriptionResponse = apiInstance.adAccountsSubscriptionsGetById(adAccountId, subscriptionId)
+            //val result : LeadSubscription = apiInstance.adAccountsSubscriptionsGetById(adAccountId, subscriptionId)
             //result shouldBe ("TODO")
         }
 
@@ -51,9 +50,9 @@ class LeadAdsApiTest : ShouldSpec() {
         should("test adAccountsSubscriptionsGetList") {
             // uncomment below to test adAccountsSubscriptionsGetList
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val result : AdAccountsSubscriptionsGetList200Response = apiInstance.adAccountsSubscriptionsGetList(adAccountId, pageSize, bookmark)
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val result : AdAccountsSubscriptionsGetList200Response = apiInstance.adAccountsSubscriptionsGetList(adAccountId, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
 
@@ -61,8 +60,8 @@ class LeadAdsApiTest : ShouldSpec() {
         should("test adAccountsSubscriptionsPost") {
             // uncomment below to test adAccountsSubscriptionsPost
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val adAccountCreateSubscriptionRequest : AdAccountCreateSubscriptionRequest =  // AdAccountCreateSubscriptionRequest | Subscription to create.
-            //val result : AdAccountCreateSubscriptionResponse = apiInstance.adAccountsSubscriptionsPost(adAccountId, adAccountCreateSubscriptionRequest)
+            //val leadSubscriptionPostParamsCreate : LeadSubscriptionPostParamsCreate =  // LeadSubscriptionPostParamsCreate | 
+            //val result : LeadSubscription = apiInstance.adAccountsSubscriptionsPost(adAccountId, leadSubscriptionPostParamsCreate)
             //result shouldBe ("TODO")
         }
 

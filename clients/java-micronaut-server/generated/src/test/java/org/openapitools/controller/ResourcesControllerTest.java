@@ -83,7 +83,7 @@ public class ResourcesControllerTest {
         // given
         String uri = UriTemplate.of("/resources/ad_account_countries").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@1485c38d");
+            .accept("[Ljava.lang.String;@411d9acf");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdAccountsCountryResponse.class);
@@ -126,7 +126,7 @@ public class ResourcesControllerTest {
         // given
         String uri = UriTemplate.of("/resources/delivery_metrics").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@3a4aba84");
+            .accept("[Ljava.lang.String;@6b0445d4");
         request.getParameters()
             .add("report_type", "example"); // The query parameter format should be 
 
@@ -174,7 +174,7 @@ public class ResourcesControllerTest {
             put("interest_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@5956be7c");
+            .accept("[Ljava.lang.String;@70aecb8c");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, SingleInterestTargetingOptionResponse.class);
@@ -188,7 +188,7 @@ public class ResourcesControllerTest {
      *
      * The method should: Get lead form questions
      *
-     * Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      *
      * TODO fill in the parameters and test return value.
      */
@@ -216,7 +216,7 @@ public class ResourcesControllerTest {
         // given
         String uri = UriTemplate.of("/resources/lead_form_questions").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@654a3f0b");
+            .accept("[Ljava.lang.String;@18cbde4d");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request); // To retrieve body you must specify required type (e.g. Map.class) as second argument 
@@ -259,7 +259,7 @@ public class ResourcesControllerTest {
         // given
         String uri = UriTemplate.of("/resources/metrics_ready_state").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@5fe91184");
+            .accept("[Ljava.lang.String;@35ade479");
         request.getParameters()
             .add("date", "2022-07-13"); // The query parameter format should be 
 
@@ -311,7 +311,7 @@ public class ResourcesControllerTest {
             put("targeting_type", "APPTYPE");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@30180e67");
+            .accept("[Ljava.lang.String;@7cce2dfd");
         request.getParameters()
             .add("client_id", "1094834") // The query parameter format should be 
             .add("oauth_signature", "8209f") // The query parameter format should be 

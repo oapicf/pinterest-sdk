@@ -11,10 +11,10 @@ module Paginated =
 
   [<CLIMutable>]
   type Paginated = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : obj[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : obj[];
   }
 
   //#endregion

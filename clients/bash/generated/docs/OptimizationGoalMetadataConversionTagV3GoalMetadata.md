@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **cpaUnderscoregoalUnderscorevalueUnderscoreinUnderscoremicroUnderscorecurrency** | **string** |  | [optional] [default to null]
 **isUnderscoreroasUnderscoreoptimized** | **boolean** | is_roas_optimized | [optional] [default to null]
 **learningUnderscoremodeUnderscoretype** | **string** | ConversionLearningModeType | [optional] [default to null]
+**reportingUnderscoreevent** | **string** |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

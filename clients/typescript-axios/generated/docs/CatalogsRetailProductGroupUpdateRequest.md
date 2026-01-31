@@ -7,11 +7,11 @@ Request object for updating a retail product group.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalog_type** | **string** | Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. | [optional] [default to undefined]
-**name** | **string** |  | [optional] [default to undefined]
+**country** | [**Country**](Country.md) |  | [optional] [default to undefined]
 **description** | **string** |  | [optional] [default to undefined]
 **filters** | [**CatalogsProductGroupFiltersRequest**](CatalogsProductGroupFiltersRequest.md) |  | [optional] [default to undefined]
-**country** | [**Country**](Country.md) |  | [optional] [default to undefined]
 **locale** | [**CatalogsLocale**](CatalogsLocale.md) |  | [optional] [default to undefined]
+**name** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -20,11 +20,11 @@ import { CatalogsRetailProductGroupUpdateRequest } from './api';
 
 const instance: CatalogsRetailProductGroupUpdateRequest = {
     catalog_type,
-    name,
+    country,
     description,
     filters,
-    country,
     locale,
+    name,
 };
 ```
 

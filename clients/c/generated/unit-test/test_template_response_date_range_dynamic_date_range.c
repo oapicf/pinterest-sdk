@@ -22,13 +22,13 @@ template_response_date_range_dynamic_date_range_t* instantiate_template_response
   template_response_date_range_dynamic_date_range_t* template_response_date_range_dynamic_date_range = NULL;
   if (include_optional) {
     template_response_date_range_dynamic_date_range = template_response_date_range_dynamic_date_range_create(
-      "dynamic",
-      pinterest_rest_api_template_response_date_range_dynamic_date_range_RANGE_"YEAR_TO_DATE"
+      pinterest_rest_api_template_response_date_range_dynamic_date_range_RANGE_"YEAR_TO_DATE",
+      "dynamic"
     );
   } else {
     template_response_date_range_dynamic_date_range = template_response_date_range_dynamic_date_range_create(
-      "dynamic",
-      pinterest_rest_api_template_response_date_range_dynamic_date_range_RANGE_"YEAR_TO_DATE"
+      pinterest_rest_api_template_response_date_range_dynamic_date_range_RANGE_"YEAR_TO_DATE",
+      "dynamic"
     );
   }
 

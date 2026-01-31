@@ -7,10 +7,12 @@ import org.openapitools.models.Error
 import org.openapitools.models.Granularity
 import java.time.LocalDateTime
 import org.openapitools.models.ProductGroupAnalyticsResponseInner
+import org.openapitools.models.ProductGroupPromotion
 import org.openapitools.models.ProductGroupPromotionCreateRequest
 import org.openapitools.models.ProductGroupPromotionResponse
 import org.openapitools.models.ProductGroupPromotionUpdateRequest
 import org.openapitools.models.ProductGroupPromotionsList200Response
+import org.openapitools.models.ReportingTimeZone
 import scala.collection.immutable.Seq
 import io.finch.circe._
 import io.circe.generic.semiauto._
@@ -75,9 +77,9 @@ object ProductGroupPromotionsApi {
 
         /**
         * 
-        * @return An endpoint representing a ProductGroupPromotionResponse
+        * @return An endpoint representing a ProductGroupPromotion
         */
-        private def productGroupPromotions/get(da: DataAccessor): Endpoint[ProductGroupPromotionResponse] =
+        private def productGroupPromotions/get(da: DataAccessor): Endpoint[ProductGroupPromotion] =
         get("ad_accounts" :: string :: "product_group_promotions" :: string) { (adAccountId: String, productGroupPromotionId: String) =>
           da.ProductGroupPromotions_productGroupPromotions/get(adAccountId, productGroupPromotionId) match {
             case Left(error) => checkError(error)
@@ -120,8 +122,8 @@ object ProductGroupPromotionsApi {
         * @return An endpoint representing a Seq[ProductGroupAnalyticsResponseInner]
         */
         private def productGroups/analytics(da: DataAccessor): Endpoint[Seq[ProductGroupAnalyticsResponseInner]] =
-        get("ad_accounts" :: string :: "product_groups" :: "analytics" :: param("start_date").map(_.toLocalDateTime) :: param("end_date").map(_.toLocalDateTime) :: params("product_group_ids") :: params("columns") :: param("granularity").map(_.toGranularity) :: paramOption("click_window_days").map(_.map(_.toInt)) :: paramOption("engagement_window_days").map(_.map(_.toInt)) :: paramOption("view_window_days").map(_.map(_.toInt)) :: paramOption("conversion_report_time")) { (adAccountId: String, startDate: LocalDateTime, endDate: LocalDateTime, productGroupIds: Seq[String], columns: Seq[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String]) =>
-          da.ProductGroupPromotions_productGroups/analytics(adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime) match {
+        get("ad_accounts" :: string :: "product_groups" :: "analytics" :: param("start_date").map(_.toLocalDateTime) :: param("end_date").map(_.toLocalDateTime) :: params("product_group_ids") :: params("columns") :: param("granularity").map(_.toGranularity) :: paramOption("click_window_days").map(_.map(_.toInt)) :: paramOption("engagement_window_days").map(_.map(_.toInt)) :: paramOption("view_window_days").map(_.map(_.toInt)) :: paramOption("conversion_report_time") :: paramOption("reporting_timezone").map(_.map(_.toReportingTimeZone))) { (adAccountId: String, startDate: LocalDateTime, endDate: LocalDateTime, productGroupIds: Seq[String], columns: Seq[String], granularity: Granularity, clickWindowDays: Option[Int], engagementWindowDays: Option[Int], viewWindowDays: Option[Int], conversionReportTime: Option[String], reportingTimezone: Option[ReportingTimeZone]) =>
+          da.ProductGroupPromotions_productGroups/analytics(adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
           }

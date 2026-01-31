@@ -52,6 +52,13 @@ public:
 	/*! \brief Set The catalog item id in the merchant namespace
 	 */
 	void setItemId(std::string  item_id);
+	/*! \brief Get The millisecond timestamp when the item was lastly modified by the merchant.
+	 */
+	long long getLastUpdatedTime();
+
+	/*! \brief Set The millisecond timestamp when the item was lastly modified by the merchant.
+	 */
+	void setLastUpdatedTime(long long  last_updated_time);
 	/*! \brief Get 
 	 */
 	std::string getOperation();
@@ -62,6 +69,7 @@ public:
 
 private:
 	std::string item_id;
+	long long last_updated_time;
 	std::string operation;
 	void __init();
 	void __cleanup();

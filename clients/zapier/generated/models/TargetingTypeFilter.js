@@ -1,5 +1,4 @@
 const utils = require('../utils/utils');
-const AdsAnalyticsTargetingType = require('../models/AdsAnalyticsTargetingType');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -7,16 +6,18 @@ module.exports = {
         return [
             {
                 key: `${keyPrefix}targeting_types`,
+                label: `List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AUDIENCE_MULTIPLIER\"] is only available in CAMPAIGN_TARGETING level. [\"MEDIA_TYPE\"] is only available in PRODUCT_ITEM_TARGETING level. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users. - [${labelPrefix}targeting_types]`,
                 list: true,
                 type: 'string',
-                ...AdsAnalyticsTargetingType.fields(`${keyPrefix}targeting_types`, isInput),
+                choices: [
+                ],
             },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'targeting_types': utils.childMapping(bundle.inputData?.[`${keyPrefix}targeting_types`], `${keyPrefix}targeting_types`, AdsAnalyticsTargetingType),
+            'targeting_types': bundle.inputData?.[`${keyPrefix}targeting_types`],
         }
     },
 }

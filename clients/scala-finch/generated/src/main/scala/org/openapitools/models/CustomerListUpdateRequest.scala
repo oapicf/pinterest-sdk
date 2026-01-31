@@ -5,18 +5,15 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.Exception
 import org.openapitools.models.UserListOperationType
 
 /**
  * 
- * @param records Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
  * @param operationUnderscoretype 
- * @param exceptions 
+ * @param records Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
  */
-case class CustomerListUpdateRequest(records: String,
-                operationUnderscoretype: UserListOperationType,
-                exceptions: Option[Exception]
+case class CustomerListUpdateRequest(operationUnderscoretype: UserListOperationType,
+                records: String
                 )
 
 object CustomerListUpdateRequest {

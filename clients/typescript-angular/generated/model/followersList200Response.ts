@@ -11,7 +11,7 @@ import { UserSummary } from './userSummary';
 
 
 export interface FollowersList200Response { 
-    items: Array<UserSummary>;
     bookmark?: string | null;
+    items: Array<UserSummary>;
 }
 

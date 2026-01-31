@@ -49,22 +49,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<ConversionEventResponse> getItems();
-
-	/*! \brief Set 
-	 */
-	void setItems(std::list <ConversionEventResponse> items);
-	/*! \brief Get 
-	 */
 	std::string getBookmark();
 
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
+	/*! \brief Get 
+	 */
+	std::list<ConversionEventResponse> getItems();
+
+	/*! \brief Set 
+	 */
+	void setItems(std::list <ConversionEventResponse> items);
 
 private:
-	std::list <ConversionEventResponse>items;
 	std::string bookmark;
+	std::list <ConversionEventResponse>items;
 	void __init();
 	void __cleanup();
 

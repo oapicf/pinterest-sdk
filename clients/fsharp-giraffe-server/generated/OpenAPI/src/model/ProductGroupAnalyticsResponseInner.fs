@@ -11,7 +11,7 @@ module ProductGroupAnalyticsResponseInner =
 
 
   type ProductGroupAnalyticsResponse_inner = {
-    PRODUCT_GROUP_ID : string;
     DATE : DateTime;
+    PRODUCT_GROUP_ID : string;
   }
   //#endregion

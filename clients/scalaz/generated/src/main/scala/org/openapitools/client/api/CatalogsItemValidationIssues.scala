@@ -12,11 +12,11 @@ import org.joda.time.DateTime
 import CatalogsItemValidationIssues._
 
 case class CatalogsItemValidationIssues (
-  /* Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation. */
-  itemNumber: Integer,
+  errors: CatalogsItemValidationErrors,
 /* The merchant-created unique ID that represents the product. */
   itemId: String,
-errors: CatalogsItemValidationErrors,
+/* Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation. */
+  itemNumber: Integer,
 warnings: CatalogsItemValidationWarnings)
 
 object CatalogsItemValidationIssues {

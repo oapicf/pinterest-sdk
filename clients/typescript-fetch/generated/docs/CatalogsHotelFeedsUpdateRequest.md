@@ -7,14 +7,14 @@ Request object for updating a feed.
 
 Name | Type
 ------------ | -------------
-`defaultCurrency` | [NullableCurrency](NullableCurrency.md)
-`name` | string
-`format` | [CatalogsFormat](CatalogsFormat.md)
+`catalogType` | [CatalogsType](CatalogsType.md)
 `credentials` | [CatalogsFeedCredentials](CatalogsFeedCredentials.md)
+`defaultCurrency` | [NullableCurrency](NullableCurrency.md)
+`format` | [CatalogsFormat](CatalogsFormat.md)
 `location` | string
+`name` | string
 `preferredProcessingSchedule` | [CatalogsFeedProcessingSchedule](CatalogsFeedProcessingSchedule.md)
 `status` | [CatalogsStatus](CatalogsStatus.md)
-`catalogType` | [CatalogsType](CatalogsType.md)
 
 ## Example
 
@@ -23,14 +23,14 @@ import type { CatalogsHotelFeedsUpdateRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "defaultCurrency": null,
-  "name": null,
-  "format": null,
+  "catalogType": null,
   "credentials": null,
+  "defaultCurrency": null,
+  "format": null,
   "location": null,
+  "name": null,
   "preferredProcessingSchedule": null,
   "status": null,
-  "catalogType": null,
 } satisfies CatalogsHotelFeedsUpdateRequest
 
 console.log(example)

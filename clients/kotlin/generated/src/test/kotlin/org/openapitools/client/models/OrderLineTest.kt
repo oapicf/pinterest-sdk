@@ -33,22 +33,46 @@ class OrderLineTest : ShouldSpec() {
             //modelInstance.campaignIds shouldBe ("TODO")
         }
 
+        // to test the property `adAccountId` - Ad account ID.
+        should("test adAccountId") {
+            // uncomment below to test the property
+            //modelInstance.adAccountId shouldBe ("TODO")
+        }
+
+        // to test the property `budget` - Order line budget in micro currency.
+        should("test budget") {
+            // uncomment below to test the property
+            //modelInstance.budget shouldBe ("TODO")
+        }
+
+        // to test the property `endTime` - End time. Unix timestamp.
+        should("test endTime") {
+            // uncomment below to test the property
+            //modelInstance.endTime shouldBe ("TODO")
+        }
+
         // to test the property `id` - Order line ID.
         should("test id") {
             // uncomment below to test the property
             //modelInstance.id shouldBe ("TODO")
         }
 
-        // to test the property `type` - Always \"orderline\".
-        should("test type") {
+        // to test the property `name` - Order line name.
+        should("test name") {
             // uncomment below to test the property
-            //modelInstance.type shouldBe ("TODO")
+            //modelInstance.name shouldBe ("TODO")
         }
 
-        // to test the property `adAccountId` - Ad account ID.
-        should("test adAccountId") {
+        // to test the property `paidBudget` - Order line paid budget in micro currency.
+        should("test paidBudget") {
             // uncomment below to test the property
-            //modelInstance.adAccountId shouldBe ("TODO")
+            //modelInstance.paidBudget shouldBe ("TODO")
+        }
+
+        // to test the property `paidType` - Order line paid type.
+        should("test paidType") {
+            // uncomment below to test the property
+            //modelInstance.paidType shouldBe ("TODO")
         }
 
         // to test the property `purchaseOrderId` - Purchase order ID.
@@ -63,40 +87,16 @@ class OrderLineTest : ShouldSpec() {
             //modelInstance.startTime shouldBe ("TODO")
         }
 
-        // to test the property `endTime` - End time. Unix timestamp.
-        should("test endTime") {
-            // uncomment below to test the property
-            //modelInstance.endTime shouldBe ("TODO")
-        }
-
-        // to test the property `budget` - Order line budget in micro currency.
-        should("test budget") {
-            // uncomment below to test the property
-            //modelInstance.budget shouldBe ("TODO")
-        }
-
-        // to test the property `paidBudget` - Order line paid budget in micro currency.
-        should("test paidBudget") {
-            // uncomment below to test the property
-            //modelInstance.paidBudget shouldBe ("TODO")
-        }
-
         // to test the property `status` - Order line status.
         should("test status") {
             // uncomment below to test the property
             //modelInstance.status shouldBe ("TODO")
         }
 
-        // to test the property `name` - Order line name.
-        should("test name") {
+        // to test the property `type` - Always \"orderline\".
+        should("test type") {
             // uncomment below to test the property
-            //modelInstance.name shouldBe ("TODO")
-        }
-
-        // to test the property `paidType` - Order line paid type.
-        should("test paidType") {
-            // uncomment below to test the property
-            //modelInstance.paidType shouldBe ("TODO")
+            //modelInstance.type shouldBe ("TODO")
         }
 
     }

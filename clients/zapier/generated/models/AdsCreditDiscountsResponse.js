@@ -15,6 +15,16 @@ module.exports = {
                 type: 'string',
             },
             {
+                key: `${keyPrefix}discountCurrency`,
+                label: `Currency value for the discount. - [${labelPrefix}discountCurrency]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}discountInMicroCurrency`,
+                label: `The discount applied in the offer’s currency value. - [${labelPrefix}discountInMicroCurrency]`,
+                type: 'number',
+            },
+            {
                 key: `${keyPrefix}discountType`,
                 label: `The type of discount of this credit - [${labelPrefix}discountType]`,
                 type: 'string',
@@ -42,24 +52,14 @@ module.exports = {
                 ],
             },
             {
-                key: `${keyPrefix}discountInMicroCurrency`,
-                label: `The discount applied in the offer’s currency value. - [${labelPrefix}discountInMicroCurrency]`,
+                key: `${keyPrefix}remainingDiscountInMicroCurrency`,
+                label: `The credits left to spend. - [${labelPrefix}remainingDiscountInMicroCurrency]`,
                 type: 'number',
-            },
-            {
-                key: `${keyPrefix}discountCurrency`,
-                label: `Currency value for the discount. - [${labelPrefix}discountCurrency]`,
-                type: 'string',
             },
             {
                 key: `${keyPrefix}title`,
                 label: `Human readable title of the offer code. - [${labelPrefix}title]`,
                 type: 'string',
-            },
-            {
-                key: `${keyPrefix}remainingDiscountInMicroCurrency`,
-                label: `The credits left to spend. - [${labelPrefix}remainingDiscountInMicroCurrency]`,
-                type: 'number',
             },
         ]
     },
@@ -68,11 +68,11 @@ module.exports = {
         return {
             'active': bundle.inputData?.[`${keyPrefix}active`],
             'advertiser_id': bundle.inputData?.[`${keyPrefix}advertiser_id`],
-            'discountType': bundle.inputData?.[`${keyPrefix}discountType`],
-            'discountInMicroCurrency': bundle.inputData?.[`${keyPrefix}discountInMicroCurrency`],
             'discountCurrency': bundle.inputData?.[`${keyPrefix}discountCurrency`],
-            'title': bundle.inputData?.[`${keyPrefix}title`],
+            'discountInMicroCurrency': bundle.inputData?.[`${keyPrefix}discountInMicroCurrency`],
+            'discountType': bundle.inputData?.[`${keyPrefix}discountType`],
             'remainingDiscountInMicroCurrency': bundle.inputData?.[`${keyPrefix}remainingDiscountInMicroCurrency`],
+            'title': bundle.inputData?.[`${keyPrefix}title`],
         }
     },
 }

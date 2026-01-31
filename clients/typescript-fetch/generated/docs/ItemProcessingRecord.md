@@ -7,10 +7,10 @@ Object describing an item processing record
 
 Name | Type
 ------------ | -------------
-`itemId` | string
 `errors` | [Array&lt;ItemValidationEvent&gt;](ItemValidationEvent.md)
-`warnings` | [Array&lt;ItemValidationEvent&gt;](ItemValidationEvent.md)
+`itemId` | string
 `status` | [ItemProcessingStatus](ItemProcessingStatus.md)
+`warnings` | [Array&lt;ItemValidationEvent&gt;](ItemValidationEvent.md)
 
 ## Example
 
@@ -19,10 +19,10 @@ import type { ItemProcessingRecord } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "itemId": DS0294-M,
   "errors": null,
-  "warnings": null,
+  "itemId": DS0294-M,
   "status": null,
+  "warnings": null,
 } satisfies ItemProcessingRecord
 
 console.log(example)

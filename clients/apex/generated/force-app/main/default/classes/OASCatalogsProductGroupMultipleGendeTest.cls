@@ -72,7 +72,7 @@ private class OASCatalogsProductGroupMultipleGendeTest {
     @isTest
     private static void defaultValuesPopulated() {
         OASCatalogsProductGroupMultipleGende catalogsProductGroupMultipleGenderCriteria = new OASCatalogsProductGroupMultipleGende();
-        System.assertEquals(new List<OASGender>(), catalogsProductGroupMultipleGenderCriteria.values);
         System.assertEquals(false, catalogsProductGroupMultipleGenderCriteria.negated);
+        System.assertEquals(new List<OASGender>(), catalogsProductGroupMultipleGenderCriteria.values);
     }
 }

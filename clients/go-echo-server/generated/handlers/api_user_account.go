@@ -70,6 +70,7 @@ func (c *Container) UserAccountAnalyticsTopVideoPins(ctx echo.Context) error {
 
 
 // UserAccountFollowedInterests - List following interests
+// Deprecated
 func (c *Container) UserAccountFollowedInterests(ctx echo.Context) error {
 	return ctx.JSON(http.StatusOK, models.HelloWorld {
 		Message: "Hello World",

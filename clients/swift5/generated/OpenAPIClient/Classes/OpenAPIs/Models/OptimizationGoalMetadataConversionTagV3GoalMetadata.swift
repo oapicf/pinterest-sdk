@@ -34,18 +34,21 @@ public struct OptimizationGoalMetadataConversionTagV3GoalMetadata: Codable, JSON
     public var conversionEvent: ConversionEvent?
     public var conversionTagId: String?
     public var cpaGoalValueInMicroCurrency: String?
-    /** ROAS optimization is not supported */
+    /** Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when `conversion_event` is set to `\"CHECKOUT\"` and `bid_strategy_type` is set to `\"AUTOMATIC_BID\"`. <br>This parameter is not enabled for all advertisers. <a href=\"https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/\">Learn more</a>. */
     public var isRoasOptimized: Bool?
     /** Conversion learning model type */
     public var learningModeType: LearningModeType?
+    /** Event name for custom or standard events mapped to an oCPM model */
+    public var reportingEvent: String?
 
-    public init(attributionWindows: OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows? = nil, conversionEvent: ConversionEvent? = nil, conversionTagId: String? = nil, cpaGoalValueInMicroCurrency: String? = nil, isRoasOptimized: Bool? = nil, learningModeType: LearningModeType? = nil) {
+    public init(attributionWindows: OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows? = nil, conversionEvent: ConversionEvent? = nil, conversionTagId: String? = nil, cpaGoalValueInMicroCurrency: String? = nil, isRoasOptimized: Bool? = nil, learningModeType: LearningModeType? = nil, reportingEvent: String? = nil) {
         self.attributionWindows = attributionWindows
         self.conversionEvent = conversionEvent
         self.conversionTagId = conversionTagId
         self.cpaGoalValueInMicroCurrency = cpaGoalValueInMicroCurrency
         self.isRoasOptimized = isRoasOptimized
         self.learningModeType = learningModeType
+        self.reportingEvent = reportingEvent
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -55,6 +58,7 @@ public struct OptimizationGoalMetadataConversionTagV3GoalMetadata: Codable, JSON
         case cpaGoalValueInMicroCurrency = "cpa_goal_value_in_micro_currency"
         case isRoasOptimized = "is_roas_optimized"
         case learningModeType = "learning_mode_type"
+        case reportingEvent = "reporting_event"
     }
 
     // Encodable protocol methods
@@ -67,6 +71,7 @@ public struct OptimizationGoalMetadataConversionTagV3GoalMetadata: Codable, JSON
         try container.encodeIfPresent(cpaGoalValueInMicroCurrency, forKey: .cpaGoalValueInMicroCurrency)
         try container.encodeIfPresent(isRoasOptimized, forKey: .isRoasOptimized)
         try container.encodeIfPresent(learningModeType, forKey: .learningModeType)
+        try container.encodeIfPresent(reportingEvent, forKey: .reportingEvent)
     }
 }
 

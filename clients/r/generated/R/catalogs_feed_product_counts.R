@@ -7,35 +7,35 @@
 #' @title CatalogsFeedProductCounts
 #' @description CatalogsFeedProductCounts Class
 #' @format An \code{R6Class} generator object
-#' @field original The number of products in the feed file. integer [optional]
 #' @field ingested The number of products successfully ingested from the feed file. integer [optional]
+#' @field original The number of products in the feed file. integer [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CatalogsFeedProductCounts <- R6::R6Class(
   "CatalogsFeedProductCounts",
   public = list(
-    `original` = NULL,
     `ingested` = NULL,
+    `original` = NULL,
 
     #' @description
     #' Initialize a new CatalogsFeedProductCounts class.
     #'
-    #' @param original The number of products in the feed file.
     #' @param ingested The number of products successfully ingested from the feed file.
+    #' @param original The number of products in the feed file.
     #' @param ... Other optional arguments.
-    initialize = function(`original` = NULL, `ingested` = NULL, ...) {
-      if (!is.null(`original`)) {
-        if (!(is.numeric(`original`) && length(`original`) == 1)) {
-          stop(paste("Error! Invalid data for `original`. Must be an integer:", `original`))
-        }
-        self$`original` <- `original`
-      }
+    initialize = function(`ingested` = NULL, `original` = NULL, ...) {
       if (!is.null(`ingested`)) {
         if (!(is.numeric(`ingested`) && length(`ingested`) == 1)) {
           stop(paste("Error! Invalid data for `ingested`. Must be an integer:", `ingested`))
         }
         self$`ingested` <- `ingested`
+      }
+      if (!is.null(`original`)) {
+        if (!(is.numeric(`original`) && length(`original`) == 1)) {
+          stop(paste("Error! Invalid data for `original`. Must be an integer:", `original`))
+        }
+        self$`original` <- `original`
       }
     },
 
@@ -70,13 +70,13 @@ CatalogsFeedProductCounts <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CatalogsFeedProductCountsObject <- list()
-      if (!is.null(self$`original`)) {
-        CatalogsFeedProductCountsObject[["original"]] <-
-          self$`original`
-      }
       if (!is.null(self$`ingested`)) {
         CatalogsFeedProductCountsObject[["ingested"]] <-
           self$`ingested`
+      }
+      if (!is.null(self$`original`)) {
+        CatalogsFeedProductCountsObject[["original"]] <-
+          self$`original`
       }
       return(CatalogsFeedProductCountsObject)
     },
@@ -88,11 +88,11 @@ CatalogsFeedProductCounts <- R6::R6Class(
     #' @return the instance of CatalogsFeedProductCounts
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`original`)) {
-        self$`original` <- this_object$`original`
-      }
       if (!is.null(this_object$`ingested`)) {
         self$`ingested` <- this_object$`ingested`
+      }
+      if (!is.null(this_object$`original`)) {
+        self$`original` <- this_object$`original`
       }
       self
     },
@@ -115,8 +115,8 @@ CatalogsFeedProductCounts <- R6::R6Class(
     #' @return the instance of CatalogsFeedProductCounts
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`original` <- this_object$`original`
       self$`ingested` <- this_object$`ingested`
+      self$`original` <- this_object$`original`
       self
     },
 

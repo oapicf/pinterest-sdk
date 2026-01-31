@@ -73,9 +73,9 @@ private class OASCreateAssetInvitesRequestItemTest {
     private static void maintainRenamedProperties() {
         OASCreateAssetInvitesRequestItem createAssetInvitesRequestItem = new OASCreateAssetInvitesRequestItem();
         Map<String, String> x-property-mappings = createAssetInvitesRequestItem.getx-property-mappings();
+        System.assertEquals('assetIdToPermissions', x-property-mappings.get('asset_id_to_permissions'));
         System.assertEquals('inviteId', x-property-mappings.get('invite_id'));
         System.assertEquals('inviteType', x-property-mappings.get('invite_type'));
-        System.assertEquals('assetIdToPermissions', x-property-mappings.get('asset_id_to_permissions'));
     }
 
     @isTest

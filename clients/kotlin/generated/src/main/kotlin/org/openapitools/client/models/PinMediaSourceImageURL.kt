@@ -20,9 +20,9 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Image URL-based media source
+ * Image URL-based media source.
  *
- * @param sourceType 
+ * @param sourceType The source type of the media.
  * @param url 
  * @param isStandard Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
  */
@@ -30,6 +30,7 @@ import com.squareup.moshi.JsonClass
 
 data class PinMediaSourceImageURL (
 
+    /* The source type of the media. */
     @Json(name = "source_type")
     val sourceType: PinMediaSourceImageURL.SourceType,
 
@@ -43,7 +44,7 @@ data class PinMediaSourceImageURL (
 ) {
 
     /**
-     * 
+     * The source type of the media.
      *
      * Values: image_url
      */

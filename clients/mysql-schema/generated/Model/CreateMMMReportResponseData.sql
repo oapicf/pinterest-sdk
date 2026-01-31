@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CreateMMMReportResponseData`
 --
-SELECT `report_status`, `token`, `message`, `status` FROM `CreateMMMReportResponseData` WHERE 1;
+SELECT `message`, `report_status`, `status`, `token` FROM `CreateMMMReportResponseData` WHERE 1;
 
 --
 -- INSERT template for table `CreateMMMReportResponseData`
 --
-INSERT INTO `CreateMMMReportResponseData`(`report_status`, `token`, `message`, `status`) VALUES (?, ?, ?, ?);
+INSERT INTO `CreateMMMReportResponseData`(`message`, `report_status`, `status`, `token`) VALUES (?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CreateMMMReportResponseData`
 --
-UPDATE `CreateMMMReportResponseData` SET `report_status` = ?, `token` = ?, `message` = ?, `status` = ? WHERE 1;
+UPDATE `CreateMMMReportResponseData` SET `message` = ?, `report_status` = ?, `status` = ?, `token` = ? WHERE 1;
 
 --
 -- DELETE template for table `CreateMMMReportResponseData`

@@ -73,17 +73,17 @@ private class OASAssetIdPermissionsTest {
     private static void maintainRenamedProperties() {
         OASAssetIdPermissions assetIdPermissions = new OASAssetIdPermissions();
         Map<String, String> x-property-mappings = assetIdPermissions.getx-property-mappings();
+        System.assertEquals('assetGroupInfo', x-property-mappings.get('asset_group_info'));
         System.assertEquals('assetId', x-property-mappings.get('asset_id'));
         System.assertEquals('assetType', x-property-mappings.get('asset_type'));
-        System.assertEquals('assetGroupInfo', x-property-mappings.get('asset_group_info'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASAssetIdPermissions assetIdPermissions = new OASAssetIdPermissions();
         System.assertEquals(new List<String>(), assetIdPermissions.permissions);
+        System.assertEquals(null, assetIdPermissions.assetGroupInfo);
         System.assertEquals(null, assetIdPermissions.assetId);
         System.assertEquals(null, assetIdPermissions.assetType);
-        System.assertEquals(null, assetIdPermissions.assetGroupInfo);
     }
 }

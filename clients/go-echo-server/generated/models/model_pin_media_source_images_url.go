@@ -1,12 +1,13 @@
 package models
 
-// PinMediaSourceImagesUrl - Multiple images urls-based media source
+// PinMediaSourceImagesUrl - Multiple URL-based images media source
 type PinMediaSourceImagesUrl struct {
 
-	SourceType string `json:"source_type,omitempty"`
+	Index int32 `json:"index,omitempty"`
 
 	// Array with image objects.
-	Items []PinMediaSourceImagesUrlItemsInner `json:"items"`
+	Items []PinMediaSourceImagesUrlItem `json:"items"`
 
-	Index int32 `json:"index,omitempty"`
+	// The source type of the media.
+	SourceType string `json:"source_type"`
 }

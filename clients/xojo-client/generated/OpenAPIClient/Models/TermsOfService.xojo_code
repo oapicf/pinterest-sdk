@@ -3,17 +3,9 @@ Protected Class TermsOfService
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The ID of the terms of service
+			The ID of the ad account.
 		#tag EndNote
-		id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			The terms of service content
-		#tag EndNote
-		html As Xoson.O.OptionalString
+		ad_account_id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -27,9 +19,17 @@ Protected Class TermsOfService
 
 	#tag Property, Flags = &h0
 		#tag Note
-			The ID of the ad account.
+			The terms of service content
 		#tag EndNote
-		ad_account_id As Xoson.O.OptionalString
+		html As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			The ID of the terms of service
+		#tag EndNote
+		id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -70,15 +70,7 @@ Protected Class TermsOfService
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="html"
+			Name="ad_account_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -94,7 +86,15 @@ Protected Class TermsOfService
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="ad_account_id"
+			Name="html"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

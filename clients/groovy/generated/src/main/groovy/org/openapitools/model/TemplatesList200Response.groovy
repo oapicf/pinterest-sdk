@@ -11,7 +11,7 @@ import org.openapitools.model.TemplateResponse;
 @Canonical
 class TemplatesList200Response {
     
-    List<TemplateResponse> items = new ArrayList<>()
-    
     String bookmark
+    
+    List<TemplateResponse> items = new ArrayList<>()
 }

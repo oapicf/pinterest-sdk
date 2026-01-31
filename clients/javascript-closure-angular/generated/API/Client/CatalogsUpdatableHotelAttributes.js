@@ -6,25 +6,17 @@ goog.provide('API.Client.CatalogsUpdatableHotelAttributes');
 API.Client.CatalogsUpdatableHotelAttributes = function() {}
 
 /**
- * The hotel's name.
- * @type {!string}
+ * @type {!API.Client.CatalogsHotelAddress}
  * @export
  */
-API.Client.CatalogsUpdatableHotelAttributes.prototype.name;
+API.Client.CatalogsUpdatableHotelAttributes.prototype.address;
 
 /**
- * Link to the product page
+ * Base price of the hotel room per night followed by the ISO currency code
  * @type {!string}
  * @export
  */
-API.Client.CatalogsUpdatableHotelAttributes.prototype.link;
-
-/**
- * Brief description of the hotel.
- * @type {!string}
- * @export
- */
-API.Client.CatalogsUpdatableHotelAttributes.prototype.description;
+API.Client.CatalogsUpdatableHotelAttributes.prototype.basePrice;
 
 /**
  * The brand to which this hotel belongs to.
@@ -34,31 +26,11 @@ API.Client.CatalogsUpdatableHotelAttributes.prototype.description;
 API.Client.CatalogsUpdatableHotelAttributes.prototype.brand;
 
 /**
- * Latitude of the hotel.
- * @type {!number}
+ * The type of property. The category can be any type of internal description desired.
+ * @type {!string}
  * @export
  */
-API.Client.CatalogsUpdatableHotelAttributes.prototype.latitude;
-
-/**
- * Longitude of the hotel.
- * @type {!number}
- * @export
- */
-API.Client.CatalogsUpdatableHotelAttributes.prototype.longitude;
-
-/**
- * A list of neighborhoods where the hotel is located
- * @type {!Array<!string>}
- * @export
- */
-API.Client.CatalogsUpdatableHotelAttributes.prototype.neighborhood;
-
-/**
- * @type {!API.Client.CatalogsHotelAddress}
- * @export
- */
-API.Client.CatalogsUpdatableHotelAttributes.prototype.address;
+API.Client.CatalogsUpdatableHotelAttributes.prototype.category;
 
 /**
  * Custom grouping of hotels
@@ -96,18 +68,52 @@ API.Client.CatalogsUpdatableHotelAttributes.prototype.customLabel3;
 API.Client.CatalogsUpdatableHotelAttributes.prototype.customLabel4;
 
 /**
- * The type of property. The category can be any type of internal description desired.
+ * Brief description of the hotel.
  * @type {!string}
  * @export
  */
-API.Client.CatalogsUpdatableHotelAttributes.prototype.category;
+API.Client.CatalogsUpdatableHotelAttributes.prototype.description;
 
 /**
- * Base price of the hotel room per night followed by the ISO currency code
+ * @type {!API.Client.CatalogsHotelGuestRatings}
+ * @export
+ */
+API.Client.CatalogsUpdatableHotelAttributes.prototype.guestRatings;
+
+/**
+ * Latitude of the hotel.
+ * @type {!number}
+ * @export
+ */
+API.Client.CatalogsUpdatableHotelAttributes.prototype.latitude;
+
+/**
+ * Link to the product page
  * @type {!string}
  * @export
  */
-API.Client.CatalogsUpdatableHotelAttributes.prototype.basePrice;
+API.Client.CatalogsUpdatableHotelAttributes.prototype.link;
+
+/**
+ * Longitude of the hotel.
+ * @type {!number}
+ * @export
+ */
+API.Client.CatalogsUpdatableHotelAttributes.prototype.longitude;
+
+/**
+ * The hotel's name.
+ * @type {!string}
+ * @export
+ */
+API.Client.CatalogsUpdatableHotelAttributes.prototype.name;
+
+/**
+ * A list of neighborhoods where the hotel is located
+ * @type {!Array<!string>}
+ * @export
+ */
+API.Client.CatalogsUpdatableHotelAttributes.prototype.neighborhood;
 
 /**
  * Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
@@ -115,10 +121,4 @@ API.Client.CatalogsUpdatableHotelAttributes.prototype.basePrice;
  * @export
  */
 API.Client.CatalogsUpdatableHotelAttributes.prototype.salePrice;
-
-/**
- * @type {!API.Client.CatalogsHotelGuestRatings}
- * @export
- */
-API.Client.CatalogsUpdatableHotelAttributes.prototype.guestRatings;
 

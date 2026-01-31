@@ -6,11 +6,11 @@ goog.provide('API.Client.LeadsExportCreateRequest');
 API.Client.LeadsExportCreateRequest = function() {}
 
 /**
- * Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
+ * ID for the ad collecting leads
  * @type {!string}
  * @export
  */
-API.Client.LeadsExportCreateRequest.prototype.startDate;
+API.Client.LeadsExportCreateRequest.prototype.adId;
 
 /**
  * Export leads collected on and before end date (UTC). Format: YYYY-MM-DD
@@ -20,9 +20,9 @@ API.Client.LeadsExportCreateRequest.prototype.startDate;
 API.Client.LeadsExportCreateRequest.prototype.endDate;
 
 /**
- * ID for the ad collecting leads
+ * Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
  * @type {!string}
  * @export
  */
-API.Client.LeadsExportCreateRequest.prototype.adId;
+API.Client.LeadsExportCreateRequest.prototype.startDate;
 

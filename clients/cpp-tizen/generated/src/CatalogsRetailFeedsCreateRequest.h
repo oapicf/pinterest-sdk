@@ -54,55 +54,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
+	/*! \brief Get Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. Currently, this field has no effect.
 	 */
-	NullableCurrency getDefaultCurrency();
+	std::string getCatalogId();
 
-	/*! \brief Set 
+	/*! \brief Set Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. Currently, this field has no effect.
 	 */
-	void setDefaultCurrency(NullableCurrency  default_currency);
-	/*! \brief Get A human-friendly name associated to a given feed.
-	 */
-	std::string getName();
-
-	/*! \brief Set A human-friendly name associated to a given feed.
-	 */
-	void setName(std::string  name);
-	/*! \brief Get 
-	 */
-	CatalogsFormat getFormat();
-
-	/*! \brief Set 
-	 */
-	void setFormat(CatalogsFormat  format);
-	/*! \brief Get 
-	 */
-	CatalogsFeedsCreateRequest_default_locale getDefaultLocale();
-
-	/*! \brief Set 
-	 */
-	void setDefaultLocale(CatalogsFeedsCreateRequest_default_locale  default_locale);
-	/*! \brief Get 
-	 */
-	CatalogsFeedCredentials getCredentials();
-
-	/*! \brief Set 
-	 */
-	void setCredentials(CatalogsFeedCredentials  credentials);
-	/*! \brief Get The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-	 */
-	std::string getLocation();
-
-	/*! \brief Set The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-	 */
-	void setLocation(std::string  location);
-	/*! \brief Get 
-	 */
-	CatalogsFeedProcessingSchedule getPreferredProcessingSchedule();
-
-	/*! \brief Set 
-	 */
-	void setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule  preferred_processing_schedule);
+	void setCatalogId(std::string  catalog_id);
 	/*! \brief Get 
 	 */
 	CatalogsType getCatalogType();
@@ -112,11 +70,11 @@ public:
 	void setCatalogType(CatalogsType  catalog_type);
 	/*! \brief Get 
 	 */
-	Country getDefaultCountry();
+	CatalogsFeedCredentials getCredentials();
 
 	/*! \brief Set 
 	 */
-	void setDefaultCountry(Country  default_country);
+	void setCredentials(CatalogsFeedCredentials  credentials);
 	/*! \brief Get 
 	 */
 	ProductAvailabilityType getDefaultAvailability();
@@ -126,6 +84,55 @@ public:
 	void setDefaultAvailability(ProductAvailabilityType  default_availability);
 	/*! \brief Get 
 	 */
+	Country getDefaultCountry();
+
+	/*! \brief Set 
+	 */
+	void setDefaultCountry(Country  default_country);
+	/*! \brief Get 
+	 */
+	NullableCurrency getDefaultCurrency();
+
+	/*! \brief Set 
+	 */
+	void setDefaultCurrency(NullableCurrency  default_currency);
+	/*! \brief Get 
+	 */
+	CatalogsFeedsCreateRequest_default_locale getDefaultLocale();
+
+	/*! \brief Set 
+	 */
+	void setDefaultLocale(CatalogsFeedsCreateRequest_default_locale  default_locale);
+	/*! \brief Get 
+	 */
+	CatalogsFormat getFormat();
+
+	/*! \brief Set 
+	 */
+	void setFormat(CatalogsFormat  format);
+	/*! \brief Get The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+	 */
+	std::string getLocation();
+
+	/*! \brief Set The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+	 */
+	void setLocation(std::string  location);
+	/*! \brief Get A human-friendly name associated to a given feed.
+	 */
+	std::string getName();
+
+	/*! \brief Set A human-friendly name associated to a given feed.
+	 */
+	void setName(std::string  name);
+	/*! \brief Get 
+	 */
+	CatalogsFeedProcessingSchedule getPreferredProcessingSchedule();
+
+	/*! \brief Set 
+	 */
+	void setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule  preferred_processing_schedule);
+	/*! \brief Get 
+	 */
 	CatalogsStatus getStatus();
 
 	/*! \brief Set 
@@ -133,16 +140,17 @@ public:
 	void setStatus(CatalogsStatus  status);
 
 private:
-	NullableCurrency default_currency;
-	std::string name;
-	CatalogsFormat format;
-	CatalogsFeedsCreateRequest_default_locale default_locale;
-	CatalogsFeedCredentials credentials;
-	std::string location;
-	CatalogsFeedProcessingSchedule preferred_processing_schedule;
+	std::string catalog_id;
 	CatalogsType catalog_type;
-	Country default_country;
+	CatalogsFeedCredentials credentials;
 	ProductAvailabilityType default_availability;
+	Country default_country;
+	NullableCurrency default_currency;
+	CatalogsFeedsCreateRequest_default_locale default_locale;
+	CatalogsFormat format;
+	std::string location;
+	std::string name;
+	CatalogsFeedProcessingSchedule preferred_processing_schedule;
 	CatalogsStatus status;
 	void __init();
 	void __cleanup();

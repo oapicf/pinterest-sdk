@@ -16,6 +16,11 @@ void main() {
   // final instance = CatalogsCreateHotelItem();
 
   group('test CatalogsCreateHotelItem', () {
+    // CatalogsHotelAttributes attributes
+    test('to test the property `attributes`', () async {
+      // TODO
+    });
+
     // The catalog hotel id in the merchant namespace
     // String hotelId
     test('to test the property `hotelId`', () async {
@@ -24,11 +29,6 @@ void main() {
 
     // String operation
     test('to test the property `operation`', () async {
-      // TODO
-    });
-
-    // CatalogsHotelAttributes attributes
-    test('to test the property `attributes`', () async {
       // TODO
     });
 

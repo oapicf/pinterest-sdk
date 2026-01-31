@@ -7,11 +7,11 @@
 
 (def tracking-urls-data
   {
-   (ds/opt :impression) (s/coll-of string?)
+   (ds/opt :audience_verification) (s/coll-of string?)
+   (ds/opt :buyable_button) (s/coll-of string?)
    (ds/opt :click) (s/coll-of string?)
    (ds/opt :engagement) (s/coll-of string?)
-   (ds/opt :buyable_button) (s/coll-of string?)
-   (ds/opt :audience_verification) (s/coll-of string?)
+   (ds/opt :impression) (s/coll-of string?)
    })
 
 (def tracking-urls-spec

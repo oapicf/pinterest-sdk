@@ -12,13 +12,13 @@ void main() {
       // TODO
     });
 
-    // String url
-    test('to test the property `url`', () async {
+    // num size
+    test('to test the property `size`', () async {
       // TODO
     });
 
-    // num size
-    test('to test the property `size`', () async {
+    // String url
+    test('to test the property `url`', () async {
       // TODO
     });
 

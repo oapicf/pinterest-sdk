@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `OauthAccessTokenResponse`
 --
-SELECT `response_type`, `access_token`, `token_type`, `expires_in`, `scope` FROM `OauthAccessTokenResponse` WHERE 1;
+SELECT `access_token`, `expires_in`, `response_type`, `scope`, `token_type` FROM `OauthAccessTokenResponse` WHERE 1;
 
 --
 -- INSERT template for table `OauthAccessTokenResponse`
 --
-INSERT INTO `OauthAccessTokenResponse`(`response_type`, `access_token`, `token_type`, `expires_in`, `scope`) VALUES (?, ?, ?, ?, ?);
+INSERT INTO `OauthAccessTokenResponse`(`access_token`, `expires_in`, `response_type`, `scope`, `token_type`) VALUES (?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `OauthAccessTokenResponse`
 --
-UPDATE `OauthAccessTokenResponse` SET `response_type` = ?, `access_token` = ?, `token_type` = ?, `expires_in` = ?, `scope` = ? WHERE 1;
+UPDATE `OauthAccessTokenResponse` SET `access_token` = ?, `expires_in` = ?, `response_type` = ?, `scope` = ?, `token_type` = ? WHERE 1;
 
 --
 -- DELETE template for table `OauthAccessTokenResponse`

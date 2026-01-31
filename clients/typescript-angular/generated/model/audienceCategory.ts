@@ -12,6 +12,14 @@ import { AudienceSubcategory } from './audienceSubcategory';
 
 export interface AudienceCategory { 
     /**
+     * Interest ID.
+     */
+    id?: string;
+    /**
+     * Interest affinity index.
+     */
+    index?: number;
+    /**
      * Interest unique key (same as ID).
      */
     key?: string;
@@ -23,14 +31,6 @@ export interface AudienceCategory {
      * Interest\'s percent of category\'s total audience.
      */
     ratio?: number;
-    /**
-     * Interest affinity index.
-     */
-    index?: number;
-    /**
-     * Interest ID.
-     */
-    id?: string;
     /**
      * Subcategory interest distribution
      */

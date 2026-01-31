@@ -7,37 +7,42 @@
 #' @title TrackingUrls
 #' @description TrackingUrls Class
 #' @format An \code{R6Class} generator object
-#' @field impression  list(character) [optional]
+#' @field audience_verification  list(character) [optional]
+#' @field buyable_button  list(character) [optional]
 #' @field click  list(character) [optional]
 #' @field engagement  list(character) [optional]
-#' @field buyable_button  list(character) [optional]
-#' @field audience_verification  list(character) [optional]
+#' @field impression  list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 TrackingUrls <- R6::R6Class(
   "TrackingUrls",
   public = list(
-    `impression` = NULL,
+    `audience_verification` = NULL,
+    `buyable_button` = NULL,
     `click` = NULL,
     `engagement` = NULL,
-    `buyable_button` = NULL,
-    `audience_verification` = NULL,
+    `impression` = NULL,
 
     #' @description
     #' Initialize a new TrackingUrls class.
     #'
-    #' @param impression impression
+    #' @param audience_verification audience_verification
+    #' @param buyable_button buyable_button
     #' @param click click
     #' @param engagement engagement
-    #' @param buyable_button buyable_button
-    #' @param audience_verification audience_verification
+    #' @param impression impression
     #' @param ... Other optional arguments.
-    initialize = function(`impression` = NULL, `click` = NULL, `engagement` = NULL, `buyable_button` = NULL, `audience_verification` = NULL, ...) {
-      if (!is.null(`impression`)) {
-        stopifnot(is.vector(`impression`), length(`impression`) != 0)
-        sapply(`impression`, function(x) stopifnot(is.character(x)))
-        self$`impression` <- `impression`
+    initialize = function(`audience_verification` = NULL, `buyable_button` = NULL, `click` = NULL, `engagement` = NULL, `impression` = NULL, ...) {
+      if (!is.null(`audience_verification`)) {
+        stopifnot(is.vector(`audience_verification`), length(`audience_verification`) != 0)
+        sapply(`audience_verification`, function(x) stopifnot(is.character(x)))
+        self$`audience_verification` <- `audience_verification`
+      }
+      if (!is.null(`buyable_button`)) {
+        stopifnot(is.vector(`buyable_button`), length(`buyable_button`) != 0)
+        sapply(`buyable_button`, function(x) stopifnot(is.character(x)))
+        self$`buyable_button` <- `buyable_button`
       }
       if (!is.null(`click`)) {
         stopifnot(is.vector(`click`), length(`click`) != 0)
@@ -49,15 +54,10 @@ TrackingUrls <- R6::R6Class(
         sapply(`engagement`, function(x) stopifnot(is.character(x)))
         self$`engagement` <- `engagement`
       }
-      if (!is.null(`buyable_button`)) {
-        stopifnot(is.vector(`buyable_button`), length(`buyable_button`) != 0)
-        sapply(`buyable_button`, function(x) stopifnot(is.character(x)))
-        self$`buyable_button` <- `buyable_button`
-      }
-      if (!is.null(`audience_verification`)) {
-        stopifnot(is.vector(`audience_verification`), length(`audience_verification`) != 0)
-        sapply(`audience_verification`, function(x) stopifnot(is.character(x)))
-        self$`audience_verification` <- `audience_verification`
+      if (!is.null(`impression`)) {
+        stopifnot(is.vector(`impression`), length(`impression`) != 0)
+        sapply(`impression`, function(x) stopifnot(is.character(x)))
+        self$`impression` <- `impression`
       }
     },
 
@@ -92,9 +92,13 @@ TrackingUrls <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       TrackingUrlsObject <- list()
-      if (!is.null(self$`impression`)) {
-        TrackingUrlsObject[["impression"]] <-
-          self$`impression`
+      if (!is.null(self$`audience_verification`)) {
+        TrackingUrlsObject[["audience_verification"]] <-
+          self$`audience_verification`
+      }
+      if (!is.null(self$`buyable_button`)) {
+        TrackingUrlsObject[["buyable_button"]] <-
+          self$`buyable_button`
       }
       if (!is.null(self$`click`)) {
         TrackingUrlsObject[["click"]] <-
@@ -104,13 +108,9 @@ TrackingUrls <- R6::R6Class(
         TrackingUrlsObject[["engagement"]] <-
           self$`engagement`
       }
-      if (!is.null(self$`buyable_button`)) {
-        TrackingUrlsObject[["buyable_button"]] <-
-          self$`buyable_button`
-      }
-      if (!is.null(self$`audience_verification`)) {
-        TrackingUrlsObject[["audience_verification"]] <-
-          self$`audience_verification`
+      if (!is.null(self$`impression`)) {
+        TrackingUrlsObject[["impression"]] <-
+          self$`impression`
       }
       return(TrackingUrlsObject)
     },
@@ -122,8 +122,11 @@ TrackingUrls <- R6::R6Class(
     #' @return the instance of TrackingUrls
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`impression`)) {
-        self$`impression` <- ApiClient$new()$deserializeObj(this_object$`impression`, "array[character]", loadNamespace("openapi"))
+      if (!is.null(this_object$`audience_verification`)) {
+        self$`audience_verification` <- ApiClient$new()$deserializeObj(this_object$`audience_verification`, "array[character]", loadNamespace("openapi"))
+      }
+      if (!is.null(this_object$`buyable_button`)) {
+        self$`buyable_button` <- ApiClient$new()$deserializeObj(this_object$`buyable_button`, "array[character]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`click`)) {
         self$`click` <- ApiClient$new()$deserializeObj(this_object$`click`, "array[character]", loadNamespace("openapi"))
@@ -131,11 +134,8 @@ TrackingUrls <- R6::R6Class(
       if (!is.null(this_object$`engagement`)) {
         self$`engagement` <- ApiClient$new()$deserializeObj(this_object$`engagement`, "array[character]", loadNamespace("openapi"))
       }
-      if (!is.null(this_object$`buyable_button`)) {
-        self$`buyable_button` <- ApiClient$new()$deserializeObj(this_object$`buyable_button`, "array[character]", loadNamespace("openapi"))
-      }
-      if (!is.null(this_object$`audience_verification`)) {
-        self$`audience_verification` <- ApiClient$new()$deserializeObj(this_object$`audience_verification`, "array[character]", loadNamespace("openapi"))
+      if (!is.null(this_object$`impression`)) {
+        self$`impression` <- ApiClient$new()$deserializeObj(this_object$`impression`, "array[character]", loadNamespace("openapi"))
       }
       self
     },
@@ -158,11 +158,11 @@ TrackingUrls <- R6::R6Class(
     #' @return the instance of TrackingUrls
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`impression` <- ApiClient$new()$deserializeObj(this_object$`impression`, "array[character]", loadNamespace("openapi"))
+      self$`audience_verification` <- ApiClient$new()$deserializeObj(this_object$`audience_verification`, "array[character]", loadNamespace("openapi"))
+      self$`buyable_button` <- ApiClient$new()$deserializeObj(this_object$`buyable_button`, "array[character]", loadNamespace("openapi"))
       self$`click` <- ApiClient$new()$deserializeObj(this_object$`click`, "array[character]", loadNamespace("openapi"))
       self$`engagement` <- ApiClient$new()$deserializeObj(this_object$`engagement`, "array[character]", loadNamespace("openapi"))
-      self$`buyable_button` <- ApiClient$new()$deserializeObj(this_object$`buyable_button`, "array[character]", loadNamespace("openapi"))
-      self$`audience_verification` <- ApiClient$new()$deserializeObj(this_object$`audience_verification`, "array[character]", loadNamespace("openapi"))
+      self$`impression` <- ApiClient$new()$deserializeObj(this_object$`impression`, "array[character]", loadNamespace("openapi"))
       self
     },
 

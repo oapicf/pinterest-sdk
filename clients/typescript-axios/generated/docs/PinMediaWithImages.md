@@ -7,6 +7,7 @@ Pin with multiple images.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **items** | [**Array&lt;ImageMetadata&gt;**](ImageMetadata.md) |  | [optional] [default to undefined]
+**media_type** | **string** |  | [default to undefined]
 
 ## Example
 
@@ -15,6 +16,7 @@ import { PinMediaWithImages } from './api';
 
 const instance: PinMediaWithImages = {
     items,
+    media_type,
 };
 ```
 

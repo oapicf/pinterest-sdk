@@ -5,22 +5,25 @@
 -export_type([openapi_billing_profiles_response/0]).
 
 -type openapi_billing_profiles_response() ::
-    #{ 'id' => binary(),
+    #{ 'advertiser_id' => binary(),
+       'billing_type' => binary(),
        'card_type' => binary(),
-       'status' => binary(),
-       'advertiser_id' => binary(),
-       'payment_method_brand' => binary()
+       'id' => binary(),
+       'payment_method_brand' => binary(),
+       'status' => binary()
      }.
 
-encode(#{ 'id' := Id,
+encode(#{ 'advertiser_id' := AdvertiserId,
+          'billing_type' := BillingType,
           'card_type' := CardType,
-          'status' := Status,
-          'advertiser_id' := AdvertiserId,
-          'payment_method_brand' := PaymentMethodBrand
+          'id' := Id,
+          'payment_method_brand' := PaymentMethodBrand,
+          'status' := Status
         }) ->
-    #{ 'id' => Id,
+    #{ 'advertiser_id' => AdvertiserId,
+       'billing_type' => BillingType,
        'card_type' => CardType,
-       'status' => Status,
-       'advertiser_id' => AdvertiserId,
-       'payment_method_brand' => PaymentMethodBrand
+       'id' => Id,
+       'payment_method_brand' => PaymentMethodBrand,
+       'status' => Status
      }.

@@ -7,16 +7,17 @@ goog.provide('API.Client.CatalogsCreativeAssetsProductGroupCreateRequest');
 API.Client.CatalogsCreativeAssetsProductGroupCreateRequest = function() {}
 
 /**
+ * Catalog id pertaining to the creative assets product group.
  * @type {!string}
  * @export
  */
-API.Client.CatalogsCreativeAssetsProductGroupCreateRequest.prototype.catalogType;
+API.Client.CatalogsCreativeAssetsProductGroupCreateRequest.prototype.catalogId;
 
 /**
  * @type {!string}
  * @export
  */
-API.Client.CatalogsCreativeAssetsProductGroupCreateRequest.prototype.name;
+API.Client.CatalogsCreativeAssetsProductGroupCreateRequest.prototype.catalogType;
 
 /**
  * @type {!string}
@@ -31,11 +32,10 @@ API.Client.CatalogsCreativeAssetsProductGroupCreateRequest.prototype.description
 API.Client.CatalogsCreativeAssetsProductGroupCreateRequest.prototype.filters;
 
 /**
- * Catalog id pertaining to the creative assets product group.
  * @type {!string}
  * @export
  */
-API.Client.CatalogsCreativeAssetsProductGroupCreateRequest.prototype.catalogId;
+API.Client.CatalogsCreativeAssetsProductGroupCreateRequest.prototype.name;
 
 /** @enum {string} */
 API.Client.CatalogsCreativeAssetsProductGroupCreateRequest.CatalogTypeEnum = { 

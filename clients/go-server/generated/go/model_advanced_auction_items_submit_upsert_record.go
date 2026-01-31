@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,14 +17,17 @@ package openapi
 // AdvancedAuctionItemsSubmitUpsertRecord - Object describing an item bid option upsert operation
 type AdvancedAuctionItemsSubmitUpsertRecord struct {
 
+	Country Country `json:"country"`
+
 	// The catalog retail item id in the merchant namespace
 	ItemId string `json:"item_id"`
-
-	Country Country `json:"country"`
 
 	Language Language `json:"language"`
 
 	BidOptions AdvancedAuctionBidOptions `json:"bid_options"`
+
+	// Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+	Errors []AdvancedAuctionOperationError `json:"errors,omitempty"`
 
 	// The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`.
 	UpdateMask *[]UpdateMaskBidOptionField `json:"update_mask"`
@@ -33,8 +36,8 @@ type AdvancedAuctionItemsSubmitUpsertRecord struct {
 // AssertAdvancedAuctionItemsSubmitUpsertRecordRequired checks if the required fields are not zero-ed
 func AssertAdvancedAuctionItemsSubmitUpsertRecordRequired(obj AdvancedAuctionItemsSubmitUpsertRecord) error {
 	elements := map[string]interface{}{
-		"item_id": obj.ItemId,
 		"country": obj.Country,
+		"item_id": obj.ItemId,
 		"language": obj.Language,
 		"bid_options": obj.BidOptions,
 		"update_mask": obj.UpdateMask,
@@ -48,6 +51,11 @@ func AssertAdvancedAuctionItemsSubmitUpsertRecordRequired(obj AdvancedAuctionIte
 	if err := AssertAdvancedAuctionBidOptionsRequired(obj.BidOptions); err != nil {
 		return err
 	}
+	for _, el := range obj.Errors {
+		if err := AssertAdvancedAuctionOperationErrorRequired(el); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
@@ -55,6 +63,11 @@ func AssertAdvancedAuctionItemsSubmitUpsertRecordRequired(obj AdvancedAuctionIte
 func AssertAdvancedAuctionItemsSubmitUpsertRecordConstraints(obj AdvancedAuctionItemsSubmitUpsertRecord) error {
 	if err := AssertAdvancedAuctionBidOptionsConstraints(obj.BidOptions); err != nil {
 		return err
+	}
+	for _, el := range obj.Errors {
+		if err := AssertAdvancedAuctionOperationErrorConstraints(el); err != nil {
+			return err
+		}
 	}
 	return nil
 }

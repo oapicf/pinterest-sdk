@@ -19,17 +19,17 @@ typedef struct delete_asset_group_response_exceptions_inner_t delete_asset_group
 
 
 typedef struct delete_asset_group_response_exceptions_inner_t {
+    char *asset_group_id; // string
     int code; //numeric
     char *message; // string
-    char *asset_group_id; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } delete_asset_group_response_exceptions_inner_t;
 
 __attribute__((deprecated)) delete_asset_group_response_exceptions_inner_t *delete_asset_group_response_exceptions_inner_create(
+    char *asset_group_id,
     int code,
-    char *message,
-    char *asset_group_id
+    char *message
 );
 
 void delete_asset_group_response_exceptions_inner_free(delete_asset_group_response_exceptions_inner_t *delete_asset_group_response_exceptions_inner);

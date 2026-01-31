@@ -15,16 +15,16 @@ module AdGroupAudienceSizingRequest =
   type AdGroupAudienceSizingRequest = {
     [<JsonProperty(PropertyName = "auto_targeting_enabled")>]
     AutoTargetingEnabled : bool;
-    [<JsonProperty(PropertyName = "placement_group")>]
-    PlacementGroup : PlacementGroupType;
     [<JsonProperty(PropertyName = "creative_types")>]
     CreativeTypes : string[];
-    [<JsonProperty(PropertyName = "targeting_spec")>]
-    TargetingSpec : TargetingSpec;
-    [<JsonProperty(PropertyName = "product_group_ids")>]
-    ProductGroupIds : string[];
     [<JsonProperty(PropertyName = "keywords")>]
     Keywords : AdGroupAudienceSizingRequestKeywordsInner[];
+    [<JsonProperty(PropertyName = "placement_group")>]
+    PlacementGroup : PlacementGroupType;
+    [<JsonProperty(PropertyName = "product_group_ids")>]
+    ProductGroupIds : string[];
+    [<JsonProperty(PropertyName = "targeting_spec")>]
+    TargetingSpec : TargetingSpec;
   }
 
   //#endregion

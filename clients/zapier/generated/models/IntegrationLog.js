@@ -7,11 +7,22 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
+                key: `${keyPrefix}advertiser_id`,
+                label: `[${labelPrefix}advertiser_id]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}app_version_number`,
+                label: `Version number of the integration application. - [${labelPrefix}app_version_number]`,
+                type: 'string',
+            },
+            {
                 key: `${keyPrefix}client_timestamp`,
                 label: `Timestamp in milliseconds of when the log was executed at the client. - [${labelPrefix}client_timestamp]`,
                 required: true,
                 type: 'integer',
             },
+            ...IntegrationLogClientError.fields(`${keyPrefix}error`, isInput),
             {
                 key: `${keyPrefix}event_type`,
                 label: `Log event type - [${labelPrefix}event_type]`,
@@ -21,6 +32,16 @@ module.exports = {
                     'APP',
                     'API',
                 ],
+            },
+            {
+                key: `${keyPrefix}external_business_id`,
+                label: `[${labelPrefix}external_business_id]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}feed_profile_id`,
+                label: `[${labelPrefix}feed_profile_id]`,
+                type: 'string',
             },
             {
                 key: `${keyPrefix}log_level`,
@@ -34,28 +55,8 @@ module.exports = {
                 ],
             },
             {
-                key: `${keyPrefix}external_business_id`,
-                label: `[${labelPrefix}external_business_id]`,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}advertiser_id`,
-                label: `[${labelPrefix}advertiser_id]`,
-                type: 'string',
-            },
-            {
                 key: `${keyPrefix}merchant_id`,
                 label: `[${labelPrefix}merchant_id]`,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}tag_id`,
-                label: `[${labelPrefix}tag_id]`,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}feed_profile_id`,
-                label: `[${labelPrefix}feed_profile_id]`,
                 type: 'string',
             },
             {
@@ -64,35 +65,34 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}app_version_number`,
-                label: `Version number of the integration application. - [${labelPrefix}app_version_number]`,
-                type: 'string',
-            },
-            {
                 key: `${keyPrefix}platform_version_number`,
                 label: `Version number of the platform the integration application is running on. - [${labelPrefix}platform_version_number]`,
                 type: 'string',
             },
-            ...IntegrationLogClientError.fields(`${keyPrefix}error`, isInput),
             ...IntegrationLogClientRequest.fields(`${keyPrefix}request`, isInput),
+            {
+                key: `${keyPrefix}tag_id`,
+                label: `[${labelPrefix}tag_id]`,
+                type: 'string',
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'client_timestamp': bundle.inputData?.[`${keyPrefix}client_timestamp`],
-            'event_type': bundle.inputData?.[`${keyPrefix}event_type`],
-            'log_level': bundle.inputData?.[`${keyPrefix}log_level`],
-            'external_business_id': bundle.inputData?.[`${keyPrefix}external_business_id`],
             'advertiser_id': bundle.inputData?.[`${keyPrefix}advertiser_id`],
-            'merchant_id': bundle.inputData?.[`${keyPrefix}merchant_id`],
-            'tag_id': bundle.inputData?.[`${keyPrefix}tag_id`],
-            'feed_profile_id': bundle.inputData?.[`${keyPrefix}feed_profile_id`],
-            'message': bundle.inputData?.[`${keyPrefix}message`],
             'app_version_number': bundle.inputData?.[`${keyPrefix}app_version_number`],
-            'platform_version_number': bundle.inputData?.[`${keyPrefix}platform_version_number`],
+            'client_timestamp': bundle.inputData?.[`${keyPrefix}client_timestamp`],
             'error': utils.removeIfEmpty(IntegrationLogClientError.mapping(bundle, `${keyPrefix}error`)),
+            'event_type': bundle.inputData?.[`${keyPrefix}event_type`],
+            'external_business_id': bundle.inputData?.[`${keyPrefix}external_business_id`],
+            'feed_profile_id': bundle.inputData?.[`${keyPrefix}feed_profile_id`],
+            'log_level': bundle.inputData?.[`${keyPrefix}log_level`],
+            'merchant_id': bundle.inputData?.[`${keyPrefix}merchant_id`],
+            'message': bundle.inputData?.[`${keyPrefix}message`],
+            'platform_version_number': bundle.inputData?.[`${keyPrefix}platform_version_number`],
             'request': utils.removeIfEmpty(IntegrationLogClientRequest.mapping(bundle, `${keyPrefix}request`)),
+            'tag_id': bundle.inputData?.[`${keyPrefix}tag_id`],
         }
     },
 }

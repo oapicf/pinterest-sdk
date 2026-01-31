@@ -73,7 +73,7 @@ private class OASCatalogsItemValidationIssuesTest {
     private static void maintainRenamedProperties() {
         OASCatalogsItemValidationIssues catalogsItemValidationIssues = new OASCatalogsItemValidationIssues();
         Map<String, String> x-property-mappings = catalogsItemValidationIssues.getx-property-mappings();
-        System.assertEquals('itemNumber', x-property-mappings.get('item_number'));
         System.assertEquals('itemId', x-property-mappings.get('item_id'));
+        System.assertEquals('itemNumber', x-property-mappings.get('item_number'));
     }
 }

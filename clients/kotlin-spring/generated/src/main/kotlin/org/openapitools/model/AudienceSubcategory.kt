@@ -15,13 +15,19 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
+ * @param id Subinterest ID.
+ * @param index Subinterest affinity index.
  * @param key Interest unique key (same as ID).
  * @param name Subinterest name.
  * @param ratio Subinterest's percent of category's total audience.
- * @param index Subinterest affinity index.
- * @param id Subinterest ID.
  */
 data class AudienceSubcategory(
+
+    @Schema(example = "958862518888", description = "Subinterest ID.")
+    @get:JsonProperty("id") val id: kotlin.String? = null,
+
+    @Schema(example = "1.2", description = "Subinterest affinity index.")
+    @get:JsonProperty("index") val index: java.math.BigDecimal? = null,
 
     @Schema(example = "958862518888", description = "Interest unique key (same as ID).")
     @get:JsonProperty("key") val key: kotlin.String? = null,
@@ -30,13 +36,7 @@ data class AudienceSubcategory(
     @get:JsonProperty("name") val name: kotlin.String? = null,
 
     @Schema(example = "0.482", description = "Subinterest's percent of category's total audience.")
-    @get:JsonProperty("ratio") val ratio: java.math.BigDecimal? = null,
-
-    @Schema(example = "1.2", description = "Subinterest affinity index.")
-    @get:JsonProperty("index") val index: java.math.BigDecimal? = null,
-
-    @Schema(example = "958862518888", description = "Subinterest ID.")
-    @get:JsonProperty("id") val id: kotlin.String? = null
+    @get:JsonProperty("ratio") val ratio: java.math.BigDecimal? = null
 ) {
 
 }

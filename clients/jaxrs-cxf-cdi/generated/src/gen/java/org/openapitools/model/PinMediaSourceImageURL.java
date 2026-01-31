@@ -8,16 +8,18 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 
 /**
- * Image URL-based media source
+ * Image URL-based media source.
  **/
 
 import io.swagger.annotations.*;
 import java.util.Objects;
 
 
-@ApiModel(description = "Image URL-based media source")
+@ApiModel(description = "Image URL-based media source.")
 public class PinMediaSourceImageURL   {
   
+  private Boolean isStandard = true;
+
 
 public enum SourceTypeEnum {
 
@@ -53,9 +55,27 @@ public enum SourceTypeEnum {
 
   private String url;
 
-  private Boolean isStandard = true;
+  /**
+   * Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
+   **/
+  public PinMediaSourceImageURL isStandard(Boolean isStandard) {
+    this.isStandard = isStandard;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.")
+  @JsonProperty("is_standard")
+  public Boolean getIsStandard() {
+    return isStandard;
+  }
+  public void setIsStandard(Boolean isStandard) {
+    this.isStandard = isStandard;
+  }
+
 
   /**
+   * The source type of the media.
    **/
   public PinMediaSourceImageURL sourceType(SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
@@ -63,7 +83,7 @@ public enum SourceTypeEnum {
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "The source type of the media.")
   @JsonProperty("source_type")
   @NotNull
   public SourceTypeEnum getSourceType() {
@@ -93,25 +113,6 @@ public enum SourceTypeEnum {
   }
 
 
-  /**
-   * Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
-   **/
-  public PinMediaSourceImageURL isStandard(Boolean isStandard) {
-    this.isStandard = isStandard;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.")
-  @JsonProperty("is_standard")
-  public Boolean getIsStandard() {
-    return isStandard;
-  }
-  public void setIsStandard(Boolean isStandard) {
-    this.isStandard = isStandard;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -122,14 +123,14 @@ public enum SourceTypeEnum {
       return false;
     }
     PinMediaSourceImageURL pinMediaSourceImageURL = (PinMediaSourceImageURL) o;
-    return Objects.equals(this.sourceType, pinMediaSourceImageURL.sourceType) &&
-        Objects.equals(this.url, pinMediaSourceImageURL.url) &&
-        Objects.equals(this.isStandard, pinMediaSourceImageURL.isStandard);
+    return Objects.equals(this.isStandard, pinMediaSourceImageURL.isStandard) &&
+        Objects.equals(this.sourceType, pinMediaSourceImageURL.sourceType) &&
+        Objects.equals(this.url, pinMediaSourceImageURL.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceType, url, isStandard);
+    return Objects.hash(isStandard, sourceType, url);
   }
 
   @Override
@@ -137,9 +138,9 @@ public enum SourceTypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaSourceImageURL {\n");
     
+    sb.append("    isStandard: ").append(toIndentedString(isStandard)).append("\n");
     sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
-    sb.append("    isStandard: ").append(toIndentedString(isStandard)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -16,18 +16,12 @@
 typedef struct ad_create_request_t ad_create_request_t;
 
 #include "creative_type.h"
+#include "customizable_cta_type.h"
+#include "disclosure_type.h"
 #include "entity_status.h"
 #include "grid_click_type.h"
 #include "quiz_pin_data.h"
 #include "tracking_urls.h"
-
-// Enum CUSTOMIZABLECTATYPE for ad_create_request
-
-typedef enum  { pinterest_rest_api_ad_create_request_CUSTOMIZABLECTATYPE_NULL = 0, pinterest_rest_api_ad_create_request_CUSTOMIZABLECTATYPE_GET_OFFER, pinterest_rest_api_ad_create_request_CUSTOMIZABLECTATYPE_LEARN_MORE, pinterest_rest_api_ad_create_request_CUSTOMIZABLECTATYPE_ORDER_NOW, pinterest_rest_api_ad_create_request_CUSTOMIZABLECTATYPE_SHOP_NOW, pinterest_rest_api_ad_create_request_CUSTOMIZABLECTATYPE_SIGN_UP, pinterest_rest_api_ad_create_request_CUSTOMIZABLECTATYPE_SUBSCRIBE, pinterest_rest_api_ad_create_request_CUSTOMIZABLECTATYPE_BUY_NOW, pinterest_rest_api_ad_create_request_CUSTOMIZABLECTATYPE_CONTACT_US, pinterest_rest_api_ad_create_request_CUSTOMIZABLECTATYPE_GET_QUOTE, pinterest_rest_api_ad_create_request_CUSTOMIZABLECTATYPE_VISIT_SITE, pinterest_rest_api_ad_create_request_CUSTOMIZABLECTATYPE_APPLY_NOW, pinterest_rest_api_ad_create_request_CUSTOMIZABLECTATYPE_BOOK_NOW, pinterest_rest_api_ad_create_request_CUSTOMIZABLECTATYPE_REQUEST_DEMO, pinterest_rest_api_ad_create_request_CUSTOMIZABLECTATYPE_REGISTER_NOW, pinterest_rest_api_ad_create_request_CUSTOMIZABLECTATYPE_FIND_A_DEALER, pinterest_rest_api_ad_create_request_CUSTOMIZABLECTATYPE_ADD_TO_CART, pinterest_rest_api_ad_create_request_CUSTOMIZABLECTATYPE_WATCH_NOW, pinterest_rest_api_ad_create_request_CUSTOMIZABLECTATYPE_READ_MORE } pinterest_rest_api_ad_create_request_CUSTOMIZABLECTATYPE_e;
-
-char* ad_create_request_customizable_cta_type_ToString(pinterest_rest_api_ad_create_request_CUSTOMIZABLECTATYPE_e customizable_cta_type);
-
-pinterest_rest_api_ad_create_request_CUSTOMIZABLECTATYPE_e ad_create_request_customizable_cta_type_FromString(char* customizable_cta_type);
 
 
 
@@ -39,18 +33,20 @@ typedef struct ad_create_request_t {
     list_t *carousel_ios_deep_links; //primitive container
     char *click_tracking_url; // string
     pinterest_rest_api_creative_type__e creative_type; //referenced enum
+    pinterest_rest_api_customizable_cta_type__e customizable_cta_type; //referenced enum
     char *destination_url; // string
+    pinterest_rest_api_disclosure_type__e disclosure_type; //referenced enum
+    char *disclosure_url; // string
+    pinterest_rest_api_grid_click_type__e grid_click_type; //referenced enum
     char *ios_deep_link; // string
     int is_pin_deleted; //boolean
     int is_removable; //boolean
+    char *lead_form_id; // string
     char *name; // string
+    struct quiz_pin_data_t *quiz_pin_data; //model
     pinterest_rest_api_entity_status__e status; //referenced enum
     struct tracking_urls_t *tracking_urls; //model
     char *view_tracking_url; // string
-    char *lead_form_id; // string
-    pinterest_rest_api_grid_click_type__e grid_click_type; //referenced enum
-    pinterest_rest_api_ad_create_request_CUSTOMIZABLECTATYPE_e customizable_cta_type; //enum
-    struct quiz_pin_data_t *quiz_pin_data; //model
     char *pin_id; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -64,18 +60,20 @@ __attribute__((deprecated)) ad_create_request_t *ad_create_request_create(
     list_t *carousel_ios_deep_links,
     char *click_tracking_url,
     pinterest_rest_api_creative_type__e creative_type,
+    pinterest_rest_api_customizable_cta_type__e customizable_cta_type,
     char *destination_url,
+    pinterest_rest_api_disclosure_type__e disclosure_type,
+    char *disclosure_url,
+    pinterest_rest_api_grid_click_type__e grid_click_type,
     char *ios_deep_link,
     int is_pin_deleted,
     int is_removable,
+    char *lead_form_id,
     char *name,
+    quiz_pin_data_t *quiz_pin_data,
     pinterest_rest_api_entity_status__e status,
     tracking_urls_t *tracking_urls,
     char *view_tracking_url,
-    char *lead_form_id,
-    pinterest_rest_api_grid_click_type__e grid_click_type,
-    pinterest_rest_api_ad_create_request_CUSTOMIZABLECTATYPE_e customizable_cta_type,
-    quiz_pin_data_t *quiz_pin_data,
     char *pin_id
 );
 

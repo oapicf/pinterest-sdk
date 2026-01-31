@@ -16,12 +16,6 @@ void main() {
   // final instance = UserWebsiteSummary();
 
   group('test UserWebsiteSummary', () {
-    // Website with path or domain only
-    // String website
-    test('to test the property `website`', () async {
-      // TODO
-    });
-
     // Status of the verification process
     // String status
     test('to test the property `status`', () async {
@@ -31,6 +25,12 @@ void main() {
     // UTC timestamp when the verification happened - sometimes missing
     // String verifiedAt
     test('to test the property `verifiedAt`', () async {
+      // TODO
+    });
+
+    // Website with path or domain only
+    // String website
+    test('to test the property `website`', () async {
       // TODO
     });
 

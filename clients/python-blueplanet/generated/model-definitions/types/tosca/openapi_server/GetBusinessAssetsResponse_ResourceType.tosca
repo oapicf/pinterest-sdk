@@ -1,0 +1,53 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server GetBusinessAssetsResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a GetBusinessAssetsResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AssetGroupBinding = openapi_server.resourceTypes.AssetGroupBinding
+  GetBusinessAssetsResponseCatalogInfo = openapi_server.resourceTypes.GetBusinessAssetsResponseCatalogInfo
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  GetBusinessAssetsResponse {
+    title = GetBusinessAssetsResponse
+    description = GetBusinessAssetsResponse
+    derivedFrom = Root
+    properties {
+        asset_group_info {
+          type = AssetGroupBinding
+          description = ""
+          optional = false
+        }
+        asset_id {
+          type =  string
+          description = "Unique identifier of a business asset."
+          optional = false
+        }
+        asset_type {
+          type =  string
+          description = "Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG."
+          optional = false
+        }
+        catalog_info {
+          type = GetBusinessAssetsResponseCatalogInfo
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  GetBusinessAssetsResponse {
+    title = GetBusinessAssetsResponse
+    description = GetBusinessAssetsResponse
+    implements = openapi_server.resourceTypes.GetBusinessAssetsResponse
+
+  }
+}

@@ -11,8 +11,29 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsReportDistributionStats   {
+  @JsonProperty("catalog_id")
+  private String catalogId;
+
+  @JsonProperty("code")
+  private Integer code;
+
+  @JsonProperty("code_label")
+  private String codeLabel;
+
+  @JsonProperty("ineligible_for_ads")
+  private Boolean ineligibleForAds;
+
+  @JsonProperty("ineligible_for_organic")
+  private Boolean ineligibleForOrganic;
+
+  @JsonProperty("message")
+  private String message;
+
+  @JsonProperty("occurrences")
+  private Integer occurrences;
+
   /**
    * Gets or Sets reportType
    */
@@ -44,44 +65,6 @@ public class CatalogsReportDistributionStats   {
 
   @JsonProperty("report_type")
   private ReportTypeEnum reportType;
-
-  @JsonProperty("catalog_id")
-  private String catalogId;
-
-  @JsonProperty("code")
-  private Integer code;
-
-  @JsonProperty("code_label")
-  private String codeLabel;
-
-  @JsonProperty("message")
-  private String message;
-
-  @JsonProperty("occurrences")
-  private Integer occurrences;
-
-  @JsonProperty("ineligible_for_ads")
-  private Boolean ineligibleForAds;
-
-  @JsonProperty("ineligible_for_organic")
-  private Boolean ineligibleForOrganic;
-
-  /**
-   **/
-  public CatalogsReportDistributionStats reportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("report_type")
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-  public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
 
   /**
    * ID of the catalog entity.
@@ -138,6 +121,42 @@ public class CatalogsReportDistributionStats   {
   }
 
   /**
+   * Indicates if issue makes items ineligible for ads distribution
+   **/
+  public CatalogsReportDistributionStats ineligibleForAds(Boolean ineligibleForAds) {
+    this.ineligibleForAds = ineligibleForAds;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "true", value = "Indicates if issue makes items ineligible for ads distribution")
+  @JsonProperty("ineligible_for_ads")
+  public Boolean getIneligibleForAds() {
+    return ineligibleForAds;
+  }
+  public void setIneligibleForAds(Boolean ineligibleForAds) {
+    this.ineligibleForAds = ineligibleForAds;
+  }
+
+  /**
+   * Indicates if issue makes items ineligible for organic distribution
+   **/
+  public CatalogsReportDistributionStats ineligibleForOrganic(Boolean ineligibleForOrganic) {
+    this.ineligibleForOrganic = ineligibleForOrganic;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "true", value = "Indicates if issue makes items ineligible for organic distribution")
+  @JsonProperty("ineligible_for_organic")
+  public Boolean getIneligibleForOrganic() {
+    return ineligibleForOrganic;
+  }
+  public void setIneligibleForOrganic(Boolean ineligibleForOrganic) {
+    this.ineligibleForOrganic = ineligibleForOrganic;
+  }
+
+  /**
    * Title message describing the diagnostic issue
    **/
   public CatalogsReportDistributionStats message(String message) {
@@ -174,39 +193,20 @@ public class CatalogsReportDistributionStats   {
   }
 
   /**
-   * Indicates if issue makes items ineligible for ads distribution
    **/
-  public CatalogsReportDistributionStats ineligibleForAds(Boolean ineligibleForAds) {
-    this.ineligibleForAds = ineligibleForAds;
+  public CatalogsReportDistributionStats reportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
     return this;
   }
 
   
-  @ApiModelProperty(example = "true", value = "Indicates if issue makes items ineligible for ads distribution")
-  @JsonProperty("ineligible_for_ads")
-  public Boolean getIneligibleForAds() {
-    return ineligibleForAds;
+  @ApiModelProperty(value = "")
+  @JsonProperty("report_type")
+  public ReportTypeEnum getReportType() {
+    return reportType;
   }
-  public void setIneligibleForAds(Boolean ineligibleForAds) {
-    this.ineligibleForAds = ineligibleForAds;
-  }
-
-  /**
-   * Indicates if issue makes items ineligible for organic distribution
-   **/
-  public CatalogsReportDistributionStats ineligibleForOrganic(Boolean ineligibleForOrganic) {
-    this.ineligibleForOrganic = ineligibleForOrganic;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "true", value = "Indicates if issue makes items ineligible for organic distribution")
-  @JsonProperty("ineligible_for_organic")
-  public Boolean getIneligibleForOrganic() {
-    return ineligibleForOrganic;
-  }
-  public void setIneligibleForOrganic(Boolean ineligibleForOrganic) {
-    this.ineligibleForOrganic = ineligibleForOrganic;
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
   }
 
 
@@ -219,19 +219,19 @@ public class CatalogsReportDistributionStats   {
       return false;
     }
     CatalogsReportDistributionStats catalogsReportDistributionStats = (CatalogsReportDistributionStats) o;
-    return Objects.equals(reportType, catalogsReportDistributionStats.reportType) &&
-        Objects.equals(catalogId, catalogsReportDistributionStats.catalogId) &&
+    return Objects.equals(catalogId, catalogsReportDistributionStats.catalogId) &&
         Objects.equals(code, catalogsReportDistributionStats.code) &&
         Objects.equals(codeLabel, catalogsReportDistributionStats.codeLabel) &&
+        Objects.equals(ineligibleForAds, catalogsReportDistributionStats.ineligibleForAds) &&
+        Objects.equals(ineligibleForOrganic, catalogsReportDistributionStats.ineligibleForOrganic) &&
         Objects.equals(message, catalogsReportDistributionStats.message) &&
         Objects.equals(occurrences, catalogsReportDistributionStats.occurrences) &&
-        Objects.equals(ineligibleForAds, catalogsReportDistributionStats.ineligibleForAds) &&
-        Objects.equals(ineligibleForOrganic, catalogsReportDistributionStats.ineligibleForOrganic);
+        Objects.equals(reportType, catalogsReportDistributionStats.reportType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, catalogId, code, codeLabel, message, occurrences, ineligibleForAds, ineligibleForOrganic);
+    return Objects.hash(catalogId, code, codeLabel, ineligibleForAds, ineligibleForOrganic, message, occurrences, reportType);
   }
 
   @Override
@@ -239,14 +239,14 @@ public class CatalogsReportDistributionStats   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportDistributionStats {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    codeLabel: ").append(toIndentedString(codeLabel)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    occurrences: ").append(toIndentedString(occurrences)).append("\n");
     sb.append("    ineligibleForAds: ").append(toIndentedString(ineligibleForAds)).append("\n");
     sb.append("    ineligibleForOrganic: ").append(toIndentedString(ineligibleForOrganic)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    occurrences: ").append(toIndentedString(occurrences)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

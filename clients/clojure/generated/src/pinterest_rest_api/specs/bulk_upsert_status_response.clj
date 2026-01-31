@@ -8,8 +8,8 @@
 
 (def bulk-upsert-status-response-data
   {
-   (ds/opt :status) bulk-upsert-status-spec
    (ds/opt :result_url) string?
+   (ds/opt :status) bulk-upsert-status-spec
    })
 
 (def bulk-upsert-status-response-spec

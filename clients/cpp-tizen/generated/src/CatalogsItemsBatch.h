@@ -66,13 +66,6 @@ public:
 	/*! \brief Set Id of the catalogs items batch
 	 */
 	void setBatchId(std::string  batch_id);
-	/*! \brief Get Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
-	 */
-	std::string getCreatedTime();
-
-	/*! \brief Set Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
-	 */
-	void setCreatedTime(std::string  created_time);
 	/*! \brief Get Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
 	 */
 	std::string getCompletedTime();
@@ -80,13 +73,13 @@ public:
 	/*! \brief Set Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
 	 */
 	void setCompletedTime(std::string  completed_time);
-	/*! \brief Get 
+	/*! \brief Get Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
 	 */
-	BatchOperationStatus getStatus();
+	std::string getCreatedTime();
 
-	/*! \brief Set 
+	/*! \brief Set Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
 	 */
-	void setStatus(BatchOperationStatus  status);
+	void setCreatedTime(std::string  created_time);
 	/*! \brief Get Array with the catalogs items processing records part of the catalogs items batch
 	 */
 	std::list<CreativeAssetsProcessingRecord> getItems();
@@ -94,14 +87,21 @@ public:
 	/*! \brief Set Array with the catalogs items processing records part of the catalogs items batch
 	 */
 	void setItems(std::list <CreativeAssetsProcessingRecord> items);
+	/*! \brief Get 
+	 */
+	BatchOperationStatus getStatus();
+
+	/*! \brief Set 
+	 */
+	void setStatus(BatchOperationStatus  status);
 
 private:
 	CatalogsType catalog_type;
 	std::string batch_id;
-	std::string created_time;
 	std::string completed_time;
-	BatchOperationStatus status;
+	std::string created_time;
 	std::list <CreativeAssetsProcessingRecord>items;
+	BatchOperationStatus status;
 	void __init();
 	void __cleanup();
 

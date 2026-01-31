@@ -4,8 +4,8 @@ open System
 open System.Collections.Generic
 open OpenAPI.Model.CatalogsCreativeAssetsAttributes
 open OpenAPI.Model.CatalogsType
-open OpenAPI.Model.ItemResponseAnyOf
-open OpenAPI.Model.ItemResponseAnyOf1
+open OpenAPI.Model.ItemResponseOneOf
+open OpenAPI.Model.ItemResponseOneOf1
 open OpenAPI.Model.ItemValidationEvent
 open OpenAPI.Model.Pin
 
@@ -16,9 +16,9 @@ module ItemResponse =
 
   type ItemResponse = {
     CatalogType : CatalogsType;
+    Attributes : CatalogsCreativeAssetsAttributes;
     ItemId : string;
     Pins : Pin[];
-    Attributes : CatalogsCreativeAssetsAttributes;
     HotelId : string;
     CreativeAssetsId : string;
     Errors : ItemValidationEvent[];

@@ -12,12 +12,12 @@ import org.joda.time.DateTime
 import LeadFormQuestion._
 
 case class LeadFormQuestion (
-  questionType: Option[LeadFormQuestionType],
-customQuestionFieldType: Option[LeadFormQuestionFieldType],
+  customQuestionFieldType: Option[LeadFormQuestionFieldType],
 /* Question label for a custom question. */
   customQuestionLabel: Option[String],
 /* Question options for a custom question. */
-  customQuestionOptions: Option[List[String]])
+  customQuestionOptions: Option[List[String]],
+questionType: Option[LeadFormQuestionType])
 
 object LeadFormQuestion {
   import DateTimeCodecs._

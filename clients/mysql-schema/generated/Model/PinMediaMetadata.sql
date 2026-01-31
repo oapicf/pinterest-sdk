@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `PinMediaMetadata`
 --
-SELECT `item_type`, `title`, `description`, `link`, `images`, `cover_image_url`, `video_url`, `duration`, `height`, `width` FROM `PinMediaMetadata` WHERE 1;
+SELECT `description`, `images`, `item_type`, `link`, `title`, `cover_image_url`, `duration`, `height`, `video_url`, `width` FROM `PinMediaMetadata` WHERE 1;
 
 --
 -- INSERT template for table `PinMediaMetadata`
 --
-INSERT INTO `PinMediaMetadata`(`item_type`, `title`, `description`, `link`, `images`, `cover_image_url`, `video_url`, `duration`, `height`, `width`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `PinMediaMetadata`(`description`, `images`, `item_type`, `link`, `title`, `cover_image_url`, `duration`, `height`, `video_url`, `width`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `PinMediaMetadata`
 --
-UPDATE `PinMediaMetadata` SET `item_type` = ?, `title` = ?, `description` = ?, `link` = ?, `images` = ?, `cover_image_url` = ?, `video_url` = ?, `duration` = ?, `height` = ?, `width` = ? WHERE 1;
+UPDATE `PinMediaMetadata` SET `description` = ?, `images` = ?, `item_type` = ?, `link` = ?, `title` = ?, `cover_image_url` = ?, `duration` = ?, `height` = ?, `video_url` = ?, `width` = ? WHERE 1;
 
 --
 -- DELETE template for table `PinMediaMetadata`

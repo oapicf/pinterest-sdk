@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server DeleteMemberAccessResultsResponseArray"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a DeleteMemberAccessResultsResponseArray"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  DeleteMemberAccessResult = openapi_server.resourceTypes.DeleteMemberAccessResult
+}
+resourceTypes {
+
+  DeleteMemberAccessResultsResponseArray {
+    title = DeleteMemberAccessResultsResponseArray
+    description = DeleteMemberAccessResultsResponseArray
+    derivedFrom = Root
+    properties {
+        items {
+          type = array
+          items.type = DeleteMemberAccessResult
+          description = "List of member asset permissions that were deleted."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  DeleteMemberAccessResultsResponseArray {
+    title = DeleteMemberAccessResultsResponseArray
+    description = DeleteMemberAccessResultsResponseArray
+    implements = openapi_server.resourceTypes.DeleteMemberAccessResultsResponseArray
+
+  }
+}

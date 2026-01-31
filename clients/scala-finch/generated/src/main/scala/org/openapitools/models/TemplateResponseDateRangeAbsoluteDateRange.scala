@@ -9,13 +9,13 @@ import org.openapitools.models.BigDecimal
 
 /**
  * The absolute date range of the template
- * @param _type The date range type
- * @param startUnderscoredate The start date of the date range
  * @param endUnderscoredate The end date of the date range
+ * @param startUnderscoredate The start date of the date range
+ * @param _type The date range type
  */
-case class TemplateResponseDateRangeAbsoluteDateRange(_type: Option[String],
+case class TemplateResponseDateRangeAbsoluteDateRange(endUnderscoredate: Option[BigDecimal],
                 startUnderscoredate: Option[BigDecimal],
-                endUnderscoredate: Option[BigDecimal]
+                _type: Option[String]
                 )
 
 object TemplateResponseDateRangeAbsoluteDateRange {

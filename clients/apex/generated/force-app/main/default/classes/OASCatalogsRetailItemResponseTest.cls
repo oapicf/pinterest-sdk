@@ -81,8 +81,8 @@ private class OASCatalogsRetailItemResponseTest {
     private static void defaultValuesPopulated() {
         OASCatalogsRetailItemResponse catalogsRetailItemResponse = new OASCatalogsRetailItemResponse();
         System.assertEquals(new List<OASPin>(), catalogsRetailItemResponse.pins);
+        System.assertEquals(null, catalogsRetailItemResponse.attributes);
         System.assertEquals(null, catalogsRetailItemResponse.catalogType);
         System.assertEquals(null, catalogsRetailItemResponse.itemId);
-        System.assertEquals(null, catalogsRetailItemResponse.attributes);
     }
 }

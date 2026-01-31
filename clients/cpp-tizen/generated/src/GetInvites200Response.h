@@ -47,13 +47,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get List of invite and request data.
-	 */
-	std::list<InviteResponse> getItems();
-
-	/*! \brief Set List of invite and request data.
-	 */
-	void setItems(std::list <InviteResponse> items);
 	/*! \brief Get 
 	 */
 	std::string getBookmark();
@@ -61,10 +54,17 @@ public:
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
+	/*! \brief Get List of invite and request data.
+	 */
+	std::list<InviteResponse> getItems();
+
+	/*! \brief Set List of invite and request data.
+	 */
+	void setItems(std::list <InviteResponse> items);
 
 private:
-	std::list <InviteResponse>items;
 	std::string bookmark;
+	std::list <InviteResponse>items;
 	void __init();
 	void __cleanup();
 

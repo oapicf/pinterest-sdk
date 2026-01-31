@@ -10,11 +10,11 @@
 
 -type openapi_audience_insights_response() ::
   [ {'categories', list(openapi_audience_category:openapi_audience_category()) }
-  | {'demographics', openapi_audience_demographics:openapi_audience_demographics() }
-  | {'type', openapi_audience_insight_type:openapi_audience_insight_type() }
   | {'date', binary() }
+  | {'demographics', openapi_audience_demographics:openapi_audience_demographics() }
   | {'size', integer() }
   | {'size_is_upper_bound', boolean() }
+  | {'type', openapi_audience_insight_type:openapi_audience_insight_type() }
   ].
 
 
@@ -23,11 +23,11 @@ openapi_audience_insights_response() ->
 
 openapi_audience_insights_response(Fields) ->
   Default = [ {'categories', list(openapi_audience_category:openapi_audience_category()) }
-            , {'demographics', openapi_audience_demographics:openapi_audience_demographics() }
-            , {'type', openapi_audience_insight_type:openapi_audience_insight_type() }
             , {'date', binary() }
+            , {'demographics', openapi_audience_demographics:openapi_audience_demographics() }
             , {'size', integer() }
             , {'size_is_upper_bound', boolean() }
+            , {'type', openapi_audience_insight_type:openapi_audience_insight_type() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

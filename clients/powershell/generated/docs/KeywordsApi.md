@@ -29,6 +29,9 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
+# Configure OAuth2 access token for authorization: client_credentials
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $CountryCode = "US" # String | Two letter country code (ISO 3166-1 alpha-2)
 $Keywords = "MyKeywords" # String[] | Comma-separated keywords
@@ -56,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -123,6 +126,7 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CampaignId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdGroupId] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdGroupIds] <String[]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-MatchTypes] <PSCustomObject[]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
@@ -138,16 +142,20 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
+# Configure OAuth2 access token for authorization: client_credentials
+$Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
+
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
 $CampaignId = "MyCampaignId" # String | Campaign Id to use to filter the results. (optional)
 $AdGroupId = "123123123" # String | Ad group Id. (optional)
+$AdGroupIds = "MyAdGroupIds" # String[] | List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. (optional)
 $MatchTypes = "BROAD" # MatchType[] | Keyword <a target=""_blank"" href=""/docs/api-features/targeting-overview/"">match type</a> (optional)
-$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
+$PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
 
 # Get keywords
 try {
-    $Result = Invoke-KeywordsGet -AdAccountId $AdAccountId -CampaignId $CampaignId -AdGroupId $AdGroupId -MatchTypes $MatchTypes -PageSize $PageSize -Bookmark $Bookmark
+    $Result = Invoke-KeywordsGet -AdAccountId $AdAccountId -CampaignId $CampaignId -AdGroupId $AdGroupId -AdGroupIds $AdGroupIds -MatchTypes $MatchTypes -PageSize $PageSize -Bookmark $Bookmark
 } catch {
     Write-Host ("Exception occurred when calling Invoke-KeywordsGet: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -161,8 +169,9 @@ Name | Type | Description  | Notes
  **AdAccountId** | **String**| Unique identifier of an ad account. | 
  **CampaignId** | **String**| Campaign Id to use to filter the results. | [optional] 
  **AdGroupId** | **String**| Ad group Id. | [optional] 
+ **AdGroupIds** | [**String[]**](String.md)| List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. | [optional] 
  **MatchTypes** | [**MatchType[]**](MatchType.md)| Keyword &lt;a target&#x3D;&quot;&quot;_blank&quot;&quot; href&#x3D;&quot;&quot;/docs/api-features/targeting-overview/&quot;&quot;&gt;match type&lt;/a&gt; | [optional] 
- **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
+ **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
 
 ### Return type
@@ -171,7 +180,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -198,7 +207,7 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$KeywordUpdate = Initialize-KeywordUpdate -Id "2886364308355" -Archived $false -Bid 0
+$KeywordUpdate = Initialize-KeywordUpdate -Archived $false -Bid 0 -Id "2886364308355"
 $KeywordUpdateBody = Initialize-KeywordUpdateBody -Keywords $KeywordUpdate # KeywordUpdateBody | 
 
 # Update keywords
@@ -243,6 +252,8 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-IncludeKeywords] <String[]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-NormalizeAgainstGroup] <System.Nullable[Boolean]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Limit] <System.Nullable[Int32]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-IncludePrediction] <System.Nullable[Boolean]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-IncludeDemographics] <System.Nullable[Boolean]><br>
 
 List trending keywords
 
@@ -263,10 +274,12 @@ $Ages = "18-24" # String[] | If set, filters the results to trends among users i
 $IncludeKeywords = "MyIncludeKeywords" # String[] | If set, filters the results to top trends which include at least one of the specified keywords.<br /> If unset, no keyword filtering logic is applied. (optional)
 $NormalizeAgainstGroup = $true # Boolean | Governs how the resulting time series data will be normalized to a [0-100] scale.<br /> By default (`false`), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword's time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.<br /> If set to `true`, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords. (optional) (default to $false)
 $Limit = 25 # Int32 | The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a `limit` of 50 will return the top 50 trends. (optional) (default to 50)
+$IncludePrediction = $true # Boolean | <a href=""/docs/getting-started/using-beta-and-restricted-features/"" target=""blank"" target=""blank"">Closed beta</a> Including predicted weekly search volume data for the next 90 days. By default (`false`), the response will not include predicted data. (optional) (default to $false)
+$IncludeDemographics = $true # Boolean | <a href=""/docs/getting-started/using-beta-and-restricted-features/"" target=""blank"" target=""blank"">Closed beta</a> Including the age and gender distribution for each keyword. By default (`false`), the response will not include demographics data. (optional) (default to $false)
 
 # List trending keywords
 try {
-    $Result = Invoke-TrendingKeywordsList -Region $Region -TrendType $TrendType -Interests $Interests -Genders $Genders -Ages $Ages -IncludeKeywords $IncludeKeywords -NormalizeAgainstGroup $NormalizeAgainstGroup -Limit $Limit
+    $Result = Invoke-TrendingKeywordsList -Region $Region -TrendType $TrendType -Interests $Interests -Genders $Genders -Ages $Ages -IncludeKeywords $IncludeKeywords -NormalizeAgainstGroup $NormalizeAgainstGroup -Limit $Limit -IncludePrediction $IncludePrediction -IncludeDemographics $IncludeDemographics
 } catch {
     Write-Host ("Exception occurred when calling Invoke-TrendingKeywordsList: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -285,6 +298,8 @@ Name | Type | Description  | Notes
  **IncludeKeywords** | [**String[]**](String.md)| If set, filters the results to top trends which include at least one of the specified keywords.&lt;br /&gt; If unset, no keyword filtering logic is applied. | [optional] 
  **NormalizeAgainstGroup** | **Boolean**| Governs how the resulting time series data will be normalized to a [0-100] scale.&lt;br /&gt; By default (&#x60;false&#x60;), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword&#39;s time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.&lt;br /&gt; If set to &#x60;true&#x60;, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords. | [optional] [default to $false]
  **Limit** | **Int32**| The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a &#x60;limit&#x60; of 50 will return the top 50 trends. | [optional] [default to 50]
+ **IncludePrediction** | **Boolean**| &lt;a href&#x3D;&quot;&quot;/docs/getting-started/using-beta-and-restricted-features/&quot;&quot; target&#x3D;&quot;&quot;blank&quot;&quot; target&#x3D;&quot;&quot;blank&quot;&quot;&gt;Closed beta&lt;/a&gt; Including predicted weekly search volume data for the next 90 days. By default (&#x60;false&#x60;), the response will not include predicted data. | [optional] [default to $false]
+ **IncludeDemographics** | **Boolean**| &lt;a href&#x3D;&quot;&quot;/docs/getting-started/using-beta-and-restricted-features/&quot;&quot; target&#x3D;&quot;&quot;blank&quot;&quot; target&#x3D;&quot;&quot;blank&quot;&quot;&gt;Closed beta&lt;/a&gt; Including the age and gender distribution for each keyword. By default (&#x60;false&#x60;), the response will not include demographics data. | [optional] [default to $false]
 
 ### Return type
 

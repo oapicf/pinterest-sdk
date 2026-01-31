@@ -16,6 +16,7 @@
 typedef struct catalogs_hotel_product_group_filter_keys_t catalogs_hotel_product_group_filter_keys_t;
 
 #include "brand_filter.h"
+#include "catalogs_product_group_filter_operator_type_criteria.h"
 #include "catalogs_product_group_multiple_countries_criteria.h"
 #include "catalogs_product_group_multiple_string_criteria.h"
 #include "catalogs_product_group_pricing_currency_criteria.h"
@@ -27,6 +28,7 @@ typedef struct catalogs_hotel_product_group_filter_keys_t catalogs_hotel_product
 #include "custom_label4_filter.h"
 #include "hotel_id_filter.h"
 #include "price_filter.h"
+#include "title_keywords_filter.h"
 
 
 
@@ -34,12 +36,13 @@ typedef struct catalogs_hotel_product_group_filter_keys_t {
     struct catalogs_product_group_pricing_currency_criteria_t *price; //model
     catalogs_product_group_multiple_string_criteria_t *hotel_id; //object
     catalogs_product_group_multiple_string_criteria_t *brand; //object
-    catalogs_product_group_multiple_string_criteria_t *custom_label_0; //object
-    catalogs_product_group_multiple_string_criteria_t *custom_label_1; //object
-    catalogs_product_group_multiple_string_criteria_t *custom_label_2; //object
-    catalogs_product_group_multiple_string_criteria_t *custom_label_3; //object
-    catalogs_product_group_multiple_string_criteria_t *custom_label_4; //object
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_0; //object
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_1; //object
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_2; //object
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_3; //object
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_4; //object
     catalogs_product_group_multiple_countries_criteria_t *country; //object
+    catalogs_product_group_multiple_string_criteria_t *title_keywords; //object
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_hotel_product_group_filter_keys_t;
@@ -48,12 +51,13 @@ __attribute__((deprecated)) catalogs_hotel_product_group_filter_keys_t *catalogs
     catalogs_product_group_pricing_currency_criteria_t *price,
     catalogs_product_group_multiple_string_criteria_t *hotel_id,
     catalogs_product_group_multiple_string_criteria_t *brand,
-    catalogs_product_group_multiple_string_criteria_t *custom_label_0,
-    catalogs_product_group_multiple_string_criteria_t *custom_label_1,
-    catalogs_product_group_multiple_string_criteria_t *custom_label_2,
-    catalogs_product_group_multiple_string_criteria_t *custom_label_3,
-    catalogs_product_group_multiple_string_criteria_t *custom_label_4,
-    catalogs_product_group_multiple_countries_criteria_t *country
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_0,
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_1,
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_2,
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_3,
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_4,
+    catalogs_product_group_multiple_countries_criteria_t *country,
+    catalogs_product_group_multiple_string_criteria_t *title_keywords
 );
 
 void catalogs_hotel_product_group_filter_keys_free(catalogs_hotel_product_group_filter_keys_t *catalogs_hotel_product_group_filter_keys);

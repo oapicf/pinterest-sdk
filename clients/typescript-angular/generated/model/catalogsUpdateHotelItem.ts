@@ -14,12 +14,12 @@ import { CatalogsUpdatableHotelAttributes } from './catalogsUpdatableHotelAttrib
  * Object describing an hotel item batch record
  */
 export interface CatalogsUpdateHotelItem { 
+    attributes: CatalogsUpdatableHotelAttributes;
     /**
      * The catalog hotel item id in the merchant namespace
      */
     hotel_id: string;
     operation: CatalogsUpdateHotelItem.OperationEnum;
-    attributes: CatalogsUpdatableHotelAttributes;
 }
 export namespace CatalogsUpdateHotelItem {
     export const OperationEnum = {

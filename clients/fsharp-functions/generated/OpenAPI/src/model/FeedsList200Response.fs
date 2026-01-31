@@ -12,10 +12,10 @@ module FeedsList200Response =
 
   [<CLIMutable>]
   type FeedsList200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : CatalogsFeed[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : CatalogsFeed[];
   }
 
   //#endregion

@@ -1,6 +1,7 @@
 package apimodels;
 
 import apimodels.ItemAttributesRequestAllOfImageLink;
+import apimodels.UpdatableItemAttributesGtin;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,12 +16,196 @@ import javax.validation.Valid;
 /**
  * ItemAttributesRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class ItemAttributesRequest   {
+  @JsonProperty("ad_image_0_link")
+  
+  private String adImage0Link;
+
+  @JsonProperty("ad_image_0_tag")
+  
+  private String adImage0Tag;
+
+  @JsonProperty("ad_image_10_link")
+  
+  private String adImage10Link;
+
+  @JsonProperty("ad_image_10_tag")
+  
+  private String adImage10Tag;
+
+  @JsonProperty("ad_image_11_link")
+  
+  private String adImage11Link;
+
+  @JsonProperty("ad_image_11_tag")
+  
+  private String adImage11Tag;
+
+  @JsonProperty("ad_image_12_link")
+  
+  private String adImage12Link;
+
+  @JsonProperty("ad_image_12_tag")
+  
+  private String adImage12Tag;
+
+  @JsonProperty("ad_image_13_link")
+  
+  private String adImage13Link;
+
+  @JsonProperty("ad_image_13_tag")
+  
+  private String adImage13Tag;
+
+  @JsonProperty("ad_image_14_link")
+  
+  private String adImage14Link;
+
+  @JsonProperty("ad_image_14_tag")
+  
+  private String adImage14Tag;
+
+  @JsonProperty("ad_image_15_link")
+  
+  private String adImage15Link;
+
+  @JsonProperty("ad_image_15_tag")
+  
+  private String adImage15Tag;
+
+  @JsonProperty("ad_image_16_link")
+  
+  private String adImage16Link;
+
+  @JsonProperty("ad_image_16_tag")
+  
+  private String adImage16Tag;
+
+  @JsonProperty("ad_image_17_link")
+  
+  private String adImage17Link;
+
+  @JsonProperty("ad_image_17_tag")
+  
+  private String adImage17Tag;
+
+  @JsonProperty("ad_image_18_link")
+  
+  private String adImage18Link;
+
+  @JsonProperty("ad_image_18_tag")
+  
+  private String adImage18Tag;
+
+  @JsonProperty("ad_image_19_link")
+  
+  private String adImage19Link;
+
+  @JsonProperty("ad_image_19_tag")
+  
+  private String adImage19Tag;
+
+  @JsonProperty("ad_image_1_link")
+  
+  private String adImage1Link;
+
+  @JsonProperty("ad_image_1_tag")
+  
+  private String adImage1Tag;
+
+  @JsonProperty("ad_image_2_link")
+  
+  private String adImage2Link;
+
+  @JsonProperty("ad_image_2_tag")
+  
+  private String adImage2Tag;
+
+  @JsonProperty("ad_image_3_link")
+  
+  private String adImage3Link;
+
+  @JsonProperty("ad_image_3_tag")
+  
+  private String adImage3Tag;
+
+  @JsonProperty("ad_image_4_link")
+  
+  private String adImage4Link;
+
+  @JsonProperty("ad_image_4_tag")
+  
+  private String adImage4Tag;
+
+  @JsonProperty("ad_image_5_link")
+  
+  private String adImage5Link;
+
+  @JsonProperty("ad_image_5_tag")
+  
+  private String adImage5Tag;
+
+  @JsonProperty("ad_image_6_link")
+  
+  private String adImage6Link;
+
+  @JsonProperty("ad_image_6_tag")
+  
+  private String adImage6Tag;
+
+  @JsonProperty("ad_image_7_link")
+  
+  private String adImage7Link;
+
+  @JsonProperty("ad_image_7_tag")
+  
+  private String adImage7Tag;
+
+  @JsonProperty("ad_image_8_link")
+  
+  private String adImage8Link;
+
+  @JsonProperty("ad_image_8_tag")
+  
+  private String adImage8Tag;
+
+  @JsonProperty("ad_image_9_link")
+  
+  private String adImage9Link;
+
+  @JsonProperty("ad_image_9_tag")
+  
+  private String adImage9Tag;
+
   @JsonProperty("ad_link")
   
   private String adLink;
+
+  @JsonProperty("ad_video_0_link")
+  
+  private String adVideo0Link;
+
+  @JsonProperty("ad_video_0_tag")
+  
+  private String adVideo0Tag;
+
+  @JsonProperty("ad_video_1_link")
+  
+  private String adVideo1Link;
+
+  @JsonProperty("ad_video_1_tag")
+  
+  private String adVideo1Tag;
+
+  @JsonProperty("ad_video_2_link")
+  
+  private String adVideo2Link;
+
+  @JsonProperty("ad_video_2_tag")
+  
+  private String adVideo2Tag;
 
   @JsonProperty("adult")
   
@@ -29,6 +214,10 @@ public class ItemAttributesRequest   {
   @JsonProperty("age_group")
   
   private String ageGroup;
+
+  @JsonProperty("android_deep_link")
+  
+  private String androidDeepLink;
 
   @JsonProperty("availability")
   
@@ -56,24 +245,49 @@ public class ItemAttributesRequest   {
   private String condition;
 
   @JsonProperty("custom_label_0")
-  
+  @Size(max=511)
+
   private String customLabel0;
 
   @JsonProperty("custom_label_1")
-  
+  @Size(max=511)
+
   private String customLabel1;
 
   @JsonProperty("custom_label_2")
-  
+  @Size(max=511)
+
   private String customLabel2;
 
   @JsonProperty("custom_label_3")
-  
+  @Size(max=511)
+
   private String customLabel3;
 
   @JsonProperty("custom_label_4")
-  
+  @Size(max=511)
+
   private String customLabel4;
+
+  @JsonProperty("custom_number_0")
+  
+  private Integer customNumber0;
+
+  @JsonProperty("custom_number_1")
+  
+  private Integer customNumber1;
+
+  @JsonProperty("custom_number_2")
+  
+  private Integer customNumber2;
+
+  @JsonProperty("custom_number_3")
+  
+  private Integer customNumber3;
+
+  @JsonProperty("custom_number_4")
+  
+  private Integer customNumber4;
 
   @JsonProperty("description")
   
@@ -96,12 +310,21 @@ public class ItemAttributesRequest   {
   private String googleProductCategory;
 
   @JsonProperty("gtin")
-  
-  private Integer gtin;
+  @Valid
+
+  private UpdatableItemAttributesGtin gtin;
 
   @JsonProperty("id")
   
   private String id;
+
+  @JsonProperty("installment_price")
+  
+  private String installmentPrice;
+
+  @JsonProperty("ios_deep_link")
+  
+  private String iosDeepLink;
 
   @JsonProperty("item_group_id")
   
@@ -151,9 +374,17 @@ public class ItemAttributesRequest   {
   
   private String productType;
 
+  @JsonProperty("promotion_id")
+  
+  private String promotionId;
+
   @JsonProperty("sale_price")
   
   private String salePrice;
+
+  @JsonProperty("sale_price_effective_date")
+  
+  private String salePriceEffectiveDate;
 
   @JsonProperty("shipping")
   
@@ -191,6 +422,14 @@ public class ItemAttributesRequest   {
   
   private String title;
 
+  @JsonProperty("unit_pricing_base_measure")
+  
+  private String unitPricingBaseMeasure;
+
+  @JsonProperty("unit_pricing_measure")
+  
+  private String unitPricingMeasure;
+
   @JsonProperty("variant_names")
   
   private List<String> variantNames = null;
@@ -208,9 +447,693 @@ public class ItemAttributesRequest   {
 
   private ItemAttributesRequestAllOfImageLink imageLink;
 
+  @JsonProperty("save_pin_disabled")
+  
+  private Boolean savePinDisabled = false;
+
   @JsonProperty("video_link")
   
   private String videoLink;
+
+  public ItemAttributesRequest adImage0Link(String adImage0Link) {
+    this.adImage0Link = adImage0Link;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * @return adImage0Link
+  **/
+  public String getAdImage0Link() {
+    return adImage0Link;
+  }
+
+  public void setAdImage0Link(String adImage0Link) {
+    this.adImage0Link = adImage0Link;
+  }
+
+  public ItemAttributesRequest adImage0Tag(String adImage0Tag) {
+    this.adImage0Tag = adImage0Tag;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * @return adImage0Tag
+  **/
+  public String getAdImage0Tag() {
+    return adImage0Tag;
+  }
+
+  public void setAdImage0Tag(String adImage0Tag) {
+    this.adImage0Tag = adImage0Tag;
+  }
+
+  public ItemAttributesRequest adImage10Link(String adImage10Link) {
+    this.adImage10Link = adImage10Link;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * @return adImage10Link
+  **/
+  public String getAdImage10Link() {
+    return adImage10Link;
+  }
+
+  public void setAdImage10Link(String adImage10Link) {
+    this.adImage10Link = adImage10Link;
+  }
+
+  public ItemAttributesRequest adImage10Tag(String adImage10Tag) {
+    this.adImage10Tag = adImage10Tag;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * @return adImage10Tag
+  **/
+  public String getAdImage10Tag() {
+    return adImage10Tag;
+  }
+
+  public void setAdImage10Tag(String adImage10Tag) {
+    this.adImage10Tag = adImage10Tag;
+  }
+
+  public ItemAttributesRequest adImage11Link(String adImage11Link) {
+    this.adImage11Link = adImage11Link;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * @return adImage11Link
+  **/
+  public String getAdImage11Link() {
+    return adImage11Link;
+  }
+
+  public void setAdImage11Link(String adImage11Link) {
+    this.adImage11Link = adImage11Link;
+  }
+
+  public ItemAttributesRequest adImage11Tag(String adImage11Tag) {
+    this.adImage11Tag = adImage11Tag;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * @return adImage11Tag
+  **/
+  public String getAdImage11Tag() {
+    return adImage11Tag;
+  }
+
+  public void setAdImage11Tag(String adImage11Tag) {
+    this.adImage11Tag = adImage11Tag;
+  }
+
+  public ItemAttributesRequest adImage12Link(String adImage12Link) {
+    this.adImage12Link = adImage12Link;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * @return adImage12Link
+  **/
+  public String getAdImage12Link() {
+    return adImage12Link;
+  }
+
+  public void setAdImage12Link(String adImage12Link) {
+    this.adImage12Link = adImage12Link;
+  }
+
+  public ItemAttributesRequest adImage12Tag(String adImage12Tag) {
+    this.adImage12Tag = adImage12Tag;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * @return adImage12Tag
+  **/
+  public String getAdImage12Tag() {
+    return adImage12Tag;
+  }
+
+  public void setAdImage12Tag(String adImage12Tag) {
+    this.adImage12Tag = adImage12Tag;
+  }
+
+  public ItemAttributesRequest adImage13Link(String adImage13Link) {
+    this.adImage13Link = adImage13Link;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * @return adImage13Link
+  **/
+  public String getAdImage13Link() {
+    return adImage13Link;
+  }
+
+  public void setAdImage13Link(String adImage13Link) {
+    this.adImage13Link = adImage13Link;
+  }
+
+  public ItemAttributesRequest adImage13Tag(String adImage13Tag) {
+    this.adImage13Tag = adImage13Tag;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * @return adImage13Tag
+  **/
+  public String getAdImage13Tag() {
+    return adImage13Tag;
+  }
+
+  public void setAdImage13Tag(String adImage13Tag) {
+    this.adImage13Tag = adImage13Tag;
+  }
+
+  public ItemAttributesRequest adImage14Link(String adImage14Link) {
+    this.adImage14Link = adImage14Link;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * @return adImage14Link
+  **/
+  public String getAdImage14Link() {
+    return adImage14Link;
+  }
+
+  public void setAdImage14Link(String adImage14Link) {
+    this.adImage14Link = adImage14Link;
+  }
+
+  public ItemAttributesRequest adImage14Tag(String adImage14Tag) {
+    this.adImage14Tag = adImage14Tag;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * @return adImage14Tag
+  **/
+  public String getAdImage14Tag() {
+    return adImage14Tag;
+  }
+
+  public void setAdImage14Tag(String adImage14Tag) {
+    this.adImage14Tag = adImage14Tag;
+  }
+
+  public ItemAttributesRequest adImage15Link(String adImage15Link) {
+    this.adImage15Link = adImage15Link;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * @return adImage15Link
+  **/
+  public String getAdImage15Link() {
+    return adImage15Link;
+  }
+
+  public void setAdImage15Link(String adImage15Link) {
+    this.adImage15Link = adImage15Link;
+  }
+
+  public ItemAttributesRequest adImage15Tag(String adImage15Tag) {
+    this.adImage15Tag = adImage15Tag;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * @return adImage15Tag
+  **/
+  public String getAdImage15Tag() {
+    return adImage15Tag;
+  }
+
+  public void setAdImage15Tag(String adImage15Tag) {
+    this.adImage15Tag = adImage15Tag;
+  }
+
+  public ItemAttributesRequest adImage16Link(String adImage16Link) {
+    this.adImage16Link = adImage16Link;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * @return adImage16Link
+  **/
+  public String getAdImage16Link() {
+    return adImage16Link;
+  }
+
+  public void setAdImage16Link(String adImage16Link) {
+    this.adImage16Link = adImage16Link;
+  }
+
+  public ItemAttributesRequest adImage16Tag(String adImage16Tag) {
+    this.adImage16Tag = adImage16Tag;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * @return adImage16Tag
+  **/
+  public String getAdImage16Tag() {
+    return adImage16Tag;
+  }
+
+  public void setAdImage16Tag(String adImage16Tag) {
+    this.adImage16Tag = adImage16Tag;
+  }
+
+  public ItemAttributesRequest adImage17Link(String adImage17Link) {
+    this.adImage17Link = adImage17Link;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * @return adImage17Link
+  **/
+  public String getAdImage17Link() {
+    return adImage17Link;
+  }
+
+  public void setAdImage17Link(String adImage17Link) {
+    this.adImage17Link = adImage17Link;
+  }
+
+  public ItemAttributesRequest adImage17Tag(String adImage17Tag) {
+    this.adImage17Tag = adImage17Tag;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * @return adImage17Tag
+  **/
+  public String getAdImage17Tag() {
+    return adImage17Tag;
+  }
+
+  public void setAdImage17Tag(String adImage17Tag) {
+    this.adImage17Tag = adImage17Tag;
+  }
+
+  public ItemAttributesRequest adImage18Link(String adImage18Link) {
+    this.adImage18Link = adImage18Link;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * @return adImage18Link
+  **/
+  public String getAdImage18Link() {
+    return adImage18Link;
+  }
+
+  public void setAdImage18Link(String adImage18Link) {
+    this.adImage18Link = adImage18Link;
+  }
+
+  public ItemAttributesRequest adImage18Tag(String adImage18Tag) {
+    this.adImage18Tag = adImage18Tag;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * @return adImage18Tag
+  **/
+  public String getAdImage18Tag() {
+    return adImage18Tag;
+  }
+
+  public void setAdImage18Tag(String adImage18Tag) {
+    this.adImage18Tag = adImage18Tag;
+  }
+
+  public ItemAttributesRequest adImage19Link(String adImage19Link) {
+    this.adImage19Link = adImage19Link;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * @return adImage19Link
+  **/
+  public String getAdImage19Link() {
+    return adImage19Link;
+  }
+
+  public void setAdImage19Link(String adImage19Link) {
+    this.adImage19Link = adImage19Link;
+  }
+
+  public ItemAttributesRequest adImage19Tag(String adImage19Tag) {
+    this.adImage19Tag = adImage19Tag;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * @return adImage19Tag
+  **/
+  public String getAdImage19Tag() {
+    return adImage19Tag;
+  }
+
+  public void setAdImage19Tag(String adImage19Tag) {
+    this.adImage19Tag = adImage19Tag;
+  }
+
+  public ItemAttributesRequest adImage1Link(String adImage1Link) {
+    this.adImage1Link = adImage1Link;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * @return adImage1Link
+  **/
+  public String getAdImage1Link() {
+    return adImage1Link;
+  }
+
+  public void setAdImage1Link(String adImage1Link) {
+    this.adImage1Link = adImage1Link;
+  }
+
+  public ItemAttributesRequest adImage1Tag(String adImage1Tag) {
+    this.adImage1Tag = adImage1Tag;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * @return adImage1Tag
+  **/
+  public String getAdImage1Tag() {
+    return adImage1Tag;
+  }
+
+  public void setAdImage1Tag(String adImage1Tag) {
+    this.adImage1Tag = adImage1Tag;
+  }
+
+  public ItemAttributesRequest adImage2Link(String adImage2Link) {
+    this.adImage2Link = adImage2Link;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * @return adImage2Link
+  **/
+  public String getAdImage2Link() {
+    return adImage2Link;
+  }
+
+  public void setAdImage2Link(String adImage2Link) {
+    this.adImage2Link = adImage2Link;
+  }
+
+  public ItemAttributesRequest adImage2Tag(String adImage2Tag) {
+    this.adImage2Tag = adImage2Tag;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * @return adImage2Tag
+  **/
+  public String getAdImage2Tag() {
+    return adImage2Tag;
+  }
+
+  public void setAdImage2Tag(String adImage2Tag) {
+    this.adImage2Tag = adImage2Tag;
+  }
+
+  public ItemAttributesRequest adImage3Link(String adImage3Link) {
+    this.adImage3Link = adImage3Link;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * @return adImage3Link
+  **/
+  public String getAdImage3Link() {
+    return adImage3Link;
+  }
+
+  public void setAdImage3Link(String adImage3Link) {
+    this.adImage3Link = adImage3Link;
+  }
+
+  public ItemAttributesRequest adImage3Tag(String adImage3Tag) {
+    this.adImage3Tag = adImage3Tag;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * @return adImage3Tag
+  **/
+  public String getAdImage3Tag() {
+    return adImage3Tag;
+  }
+
+  public void setAdImage3Tag(String adImage3Tag) {
+    this.adImage3Tag = adImage3Tag;
+  }
+
+  public ItemAttributesRequest adImage4Link(String adImage4Link) {
+    this.adImage4Link = adImage4Link;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * @return adImage4Link
+  **/
+  public String getAdImage4Link() {
+    return adImage4Link;
+  }
+
+  public void setAdImage4Link(String adImage4Link) {
+    this.adImage4Link = adImage4Link;
+  }
+
+  public ItemAttributesRequest adImage4Tag(String adImage4Tag) {
+    this.adImage4Tag = adImage4Tag;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * @return adImage4Tag
+  **/
+  public String getAdImage4Tag() {
+    return adImage4Tag;
+  }
+
+  public void setAdImage4Tag(String adImage4Tag) {
+    this.adImage4Tag = adImage4Tag;
+  }
+
+  public ItemAttributesRequest adImage5Link(String adImage5Link) {
+    this.adImage5Link = adImage5Link;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * @return adImage5Link
+  **/
+  public String getAdImage5Link() {
+    return adImage5Link;
+  }
+
+  public void setAdImage5Link(String adImage5Link) {
+    this.adImage5Link = adImage5Link;
+  }
+
+  public ItemAttributesRequest adImage5Tag(String adImage5Tag) {
+    this.adImage5Tag = adImage5Tag;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * @return adImage5Tag
+  **/
+  public String getAdImage5Tag() {
+    return adImage5Tag;
+  }
+
+  public void setAdImage5Tag(String adImage5Tag) {
+    this.adImage5Tag = adImage5Tag;
+  }
+
+  public ItemAttributesRequest adImage6Link(String adImage6Link) {
+    this.adImage6Link = adImage6Link;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * @return adImage6Link
+  **/
+  public String getAdImage6Link() {
+    return adImage6Link;
+  }
+
+  public void setAdImage6Link(String adImage6Link) {
+    this.adImage6Link = adImage6Link;
+  }
+
+  public ItemAttributesRequest adImage6Tag(String adImage6Tag) {
+    this.adImage6Tag = adImage6Tag;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * @return adImage6Tag
+  **/
+  public String getAdImage6Tag() {
+    return adImage6Tag;
+  }
+
+  public void setAdImage6Tag(String adImage6Tag) {
+    this.adImage6Tag = adImage6Tag;
+  }
+
+  public ItemAttributesRequest adImage7Link(String adImage7Link) {
+    this.adImage7Link = adImage7Link;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * @return adImage7Link
+  **/
+  public String getAdImage7Link() {
+    return adImage7Link;
+  }
+
+  public void setAdImage7Link(String adImage7Link) {
+    this.adImage7Link = adImage7Link;
+  }
+
+  public ItemAttributesRequest adImage7Tag(String adImage7Tag) {
+    this.adImage7Tag = adImage7Tag;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * @return adImage7Tag
+  **/
+  public String getAdImage7Tag() {
+    return adImage7Tag;
+  }
+
+  public void setAdImage7Tag(String adImage7Tag) {
+    this.adImage7Tag = adImage7Tag;
+  }
+
+  public ItemAttributesRequest adImage8Link(String adImage8Link) {
+    this.adImage8Link = adImage8Link;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * @return adImage8Link
+  **/
+  public String getAdImage8Link() {
+    return adImage8Link;
+  }
+
+  public void setAdImage8Link(String adImage8Link) {
+    this.adImage8Link = adImage8Link;
+  }
+
+  public ItemAttributesRequest adImage8Tag(String adImage8Tag) {
+    this.adImage8Tag = adImage8Tag;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * @return adImage8Tag
+  **/
+  public String getAdImage8Tag() {
+    return adImage8Tag;
+  }
+
+  public void setAdImage8Tag(String adImage8Tag) {
+    this.adImage8Tag = adImage8Tag;
+  }
+
+  public ItemAttributesRequest adImage9Link(String adImage9Link) {
+    this.adImage9Link = adImage9Link;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad image link that supplements main image for shopping campaigns.</p> <p>Image format:</p> <ul>   <li>Pixel size at least 75 x 75</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder images in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * @return adImage9Link
+  **/
+  public String getAdImage9Link() {
+    return adImage9Link;
+  }
+
+  public void setAdImage9Link(String adImage9Link) {
+    this.adImage9Link = adImage9Link;
+  }
+
+  public ItemAttributesRequest adImage9Tag(String adImage9Tag) {
+    this.adImage9Tag = adImage9Tag;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.</p>
+   * @return adImage9Tag
+  **/
+  public String getAdImage9Tag() {
+    return adImage9Tag;
+  }
+
+  public void setAdImage9Tag(String adImage9Tag) {
+    this.adImage9Tag = adImage9Tag;
+  }
 
   public ItemAttributesRequest adLink(String adLink) {
     this.adLink = adLink;
@@ -227,6 +1150,108 @@ public class ItemAttributesRequest   {
 
   public void setAdLink(String adLink) {
     this.adLink = adLink;
+  }
+
+  public ItemAttributesRequest adVideo0Link(String adVideo0Link) {
+    this.adVideo0Link = adVideo0Link;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * @return adVideo0Link
+  **/
+  public String getAdVideo0Link() {
+    return adVideo0Link;
+  }
+
+  public void setAdVideo0Link(String adVideo0Link) {
+    this.adVideo0Link = adVideo0Link;
+  }
+
+  public ItemAttributesRequest adVideo0Tag(String adVideo0Tag) {
+    this.adVideo0Tag = adVideo0Tag;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>
+   * @return adVideo0Tag
+  **/
+  public String getAdVideo0Tag() {
+    return adVideo0Tag;
+  }
+
+  public void setAdVideo0Tag(String adVideo0Tag) {
+    this.adVideo0Tag = adVideo0Tag;
+  }
+
+  public ItemAttributesRequest adVideo1Link(String adVideo1Link) {
+    this.adVideo1Link = adVideo1Link;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * @return adVideo1Link
+  **/
+  public String getAdVideo1Link() {
+    return adVideo1Link;
+  }
+
+  public void setAdVideo1Link(String adVideo1Link) {
+    this.adVideo1Link = adVideo1Link;
+  }
+
+  public ItemAttributesRequest adVideo1Tag(String adVideo1Tag) {
+    this.adVideo1Tag = adVideo1Tag;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>
+   * @return adVideo1Tag
+  **/
+  public String getAdVideo1Tag() {
+    return adVideo1Tag;
+  }
+
+  public void setAdVideo1Tag(String adVideo1Tag) {
+    this.adVideo1Tag = adVideo1Tag;
+  }
+
+  public ItemAttributesRequest adVideo2Link(String adVideo2Link) {
+    this.adVideo2Link = adVideo2Link;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 2000 characters</p> <p>Ad video link that supplements main video for shopping campaigns.</p> <p>Video format:</p> <ul>   <li>Pixel size between 75 x 75 and 9450 x 9450</li>   <li>File size smaller than 2 GB</li>   <li>Time span between 4 seconds and 15 minutes</li>   <li>Accepted formats: .MP4, .MOV, .M4V</li> </ul> <p>Link guidelines:</p> <ul>   <li>Include extension in file name</li>   <li>Do not include template or placeholder videos in link</li>   <li>Make URL accessible to Pinterest user-agent</li>   <li>Must start with http:// or https://</li> </ul>
+   * @return adVideo2Link
+  **/
+  public String getAdVideo2Link() {
+    return adVideo2Link;
+  }
+
+  public void setAdVideo2Link(String adVideo2Link) {
+    this.adVideo2Link = adVideo2Link;
+  }
+
+  public ItemAttributesRequest adVideo2Tag(String adVideo2Tag) {
+    this.adVideo2Tag = adVideo2Tag;
+    return this;
+  }
+
+   /**
+   * <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> <p><= 511 characters</p> <p>If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.</p>
+   * @return adVideo2Tag
+  **/
+  public String getAdVideo2Tag() {
+    return adVideo2Tag;
+  }
+
+  public void setAdVideo2Tag(String adVideo2Tag) {
+    this.adVideo2Tag = adVideo2Tag;
   }
 
   public ItemAttributesRequest adult(Boolean adult) {
@@ -252,7 +1277,7 @@ public class ItemAttributesRequest   {
   }
 
    /**
-   * The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+   * The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’, ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
    * @return ageGroup
   **/
   public String getAgeGroup() {
@@ -263,13 +1288,30 @@ public class ItemAttributesRequest   {
     this.ageGroup = ageGroup;
   }
 
+  public ItemAttributesRequest androidDeepLink(String androidDeepLink) {
+    this.androidDeepLink = androidDeepLink;
+    return this;
+  }
+
+   /**
+   * The deep link to the product on the Android app.
+   * @return androidDeepLink
+  **/
+  public String getAndroidDeepLink() {
+    return androidDeepLink;
+  }
+
+  public void setAndroidDeepLink(String androidDeepLink) {
+    this.androidDeepLink = androidDeepLink;
+  }
+
   public ItemAttributesRequest availability(String availability) {
     this.availability = availability;
     return this;
   }
 
    /**
-   * The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
+   * The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’, ‘preorder’.
    * @return availability
   **/
   public String getAvailability() {
@@ -371,7 +1413,7 @@ public class ItemAttributesRequest   {
   }
 
    /**
-   * <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+   * <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
    * @return customLabel0
   **/
   public String getCustomLabel0() {
@@ -388,7 +1430,7 @@ public class ItemAttributesRequest   {
   }
 
    /**
-   * <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+   * <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
    * @return customLabel1
   **/
   public String getCustomLabel1() {
@@ -405,7 +1447,7 @@ public class ItemAttributesRequest   {
   }
 
    /**
-   * <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+   * <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
    * @return customLabel2
   **/
   public String getCustomLabel2() {
@@ -422,7 +1464,7 @@ public class ItemAttributesRequest   {
   }
 
    /**
-   * <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+   * <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
    * @return customLabel3
   **/
   public String getCustomLabel3() {
@@ -439,7 +1481,7 @@ public class ItemAttributesRequest   {
   }
 
    /**
-   * <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+   * <p><= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs</p> <p>Custom grouping of products.</p>
    * @return customLabel4
   **/
   public String getCustomLabel4() {
@@ -448,6 +1490,91 @@ public class ItemAttributesRequest   {
 
   public void setCustomLabel4(String customLabel4) {
     this.customLabel4 = customLabel4;
+  }
+
+  public ItemAttributesRequest customNumber0(Integer customNumber0) {
+    this.customNumber0 = customNumber0;
+    return this;
+  }
+
+   /**
+   * an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+   * @return customNumber0
+  **/
+  public Integer getCustomNumber0() {
+    return customNumber0;
+  }
+
+  public void setCustomNumber0(Integer customNumber0) {
+    this.customNumber0 = customNumber0;
+  }
+
+  public ItemAttributesRequest customNumber1(Integer customNumber1) {
+    this.customNumber1 = customNumber1;
+    return this;
+  }
+
+   /**
+   * an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+   * @return customNumber1
+  **/
+  public Integer getCustomNumber1() {
+    return customNumber1;
+  }
+
+  public void setCustomNumber1(Integer customNumber1) {
+    this.customNumber1 = customNumber1;
+  }
+
+  public ItemAttributesRequest customNumber2(Integer customNumber2) {
+    this.customNumber2 = customNumber2;
+    return this;
+  }
+
+   /**
+   * an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+   * @return customNumber2
+  **/
+  public Integer getCustomNumber2() {
+    return customNumber2;
+  }
+
+  public void setCustomNumber2(Integer customNumber2) {
+    this.customNumber2 = customNumber2;
+  }
+
+  public ItemAttributesRequest customNumber3(Integer customNumber3) {
+    this.customNumber3 = customNumber3;
+    return this;
+  }
+
+   /**
+   * an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+   * @return customNumber3
+  **/
+  public Integer getCustomNumber3() {
+    return customNumber3;
+  }
+
+  public void setCustomNumber3(Integer customNumber3) {
+    this.customNumber3 = customNumber3;
+  }
+
+  public ItemAttributesRequest customNumber4(Integer customNumber4) {
+    this.customNumber4 = customNumber4;
+    return this;
+  }
+
+   /**
+   * an attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
+   * @return customNumber4
+  **/
+  public Integer getCustomNumber4() {
+    return customNumber4;
+  }
+
+  public void setCustomNumber4(Integer customNumber4) {
+    this.customNumber4 = customNumber4;
   }
 
   public ItemAttributesRequest description(String description) {
@@ -507,7 +1634,7 @@ public class ItemAttributesRequest   {
   }
 
    /**
-   * The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
+   * The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’, or ‘unisex’.
    * @return gender
   **/
   public String getGender() {
@@ -535,20 +1662,20 @@ public class ItemAttributesRequest   {
     this.googleProductCategory = googleProductCategory;
   }
 
-  public ItemAttributesRequest gtin(Integer gtin) {
+  public ItemAttributesRequest gtin(UpdatableItemAttributesGtin gtin) {
     this.gtin = gtin;
     return this;
   }
 
    /**
-   * The unique universal product identifier.
+   * Get gtin
    * @return gtin
   **/
-  public Integer getGtin() {
+  public UpdatableItemAttributesGtin getGtin() {
     return gtin;
   }
 
-  public void setGtin(Integer gtin) {
+  public void setGtin(UpdatableItemAttributesGtin gtin) {
     this.gtin = gtin;
   }
 
@@ -567,6 +1694,40 @@ public class ItemAttributesRequest   {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+  public ItemAttributesRequest installmentPrice(String installmentPrice) {
+    this.installmentPrice = installmentPrice;
+    return this;
+  }
+
+   /**
+   * Installment price of the product. This data will only be shown to pinners in the enabled countries. Expected format: <payment_count>:<payment_amount> <currency>
+   * @return installmentPrice
+  **/
+  public String getInstallmentPrice() {
+    return installmentPrice;
+  }
+
+  public void setInstallmentPrice(String installmentPrice) {
+    this.installmentPrice = installmentPrice;
+  }
+
+  public ItemAttributesRequest iosDeepLink(String iosDeepLink) {
+    this.iosDeepLink = iosDeepLink;
+    return this;
+  }
+
+   /**
+   * The deep link to the product on the iOS app.
+   * @return iosDeepLink
+  **/
+  public String getIosDeepLink() {
+    return iosDeepLink;
+  }
+
+  public void setIosDeepLink(String iosDeepLink) {
+    this.iosDeepLink = iosDeepLink;
   }
 
   public ItemAttributesRequest itemGroupId(String itemGroupId) {
@@ -773,6 +1934,23 @@ public class ItemAttributesRequest   {
     this.productType = productType;
   }
 
+  public ItemAttributesRequest promotionId(String promotionId) {
+    this.promotionId = promotionId;
+    return this;
+  }
+
+   /**
+   * A unique identifier referencing the promotion associated with this catalog item.
+   * @return promotionId
+  **/
+  public String getPromotionId() {
+    return promotionId;
+  }
+
+  public void setPromotionId(String promotionId) {
+    this.promotionId = promotionId;
+  }
+
   public ItemAttributesRequest salePrice(String salePrice) {
     this.salePrice = salePrice;
     return this;
@@ -788,6 +1966,23 @@ public class ItemAttributesRequest   {
 
   public void setSalePrice(String salePrice) {
     this.salePrice = salePrice;
+  }
+
+  public ItemAttributesRequest salePriceEffectiveDate(String salePriceEffectiveDate) {
+    this.salePriceEffectiveDate = salePriceEffectiveDate;
+    return this;
+  }
+
+   /**
+   * Sale price effective date. Expected format: <start_date>/<end_date> (ISO 8601 format)
+   * @return salePriceEffectiveDate
+  **/
+  public String getSalePriceEffectiveDate() {
+    return salePriceEffectiveDate;
+  }
+
+  public void setSalePriceEffectiveDate(String salePriceEffectiveDate) {
+    this.salePriceEffectiveDate = salePriceEffectiveDate;
   }
 
   public ItemAttributesRequest shipping(String shipping) {
@@ -881,7 +2076,7 @@ public class ItemAttributesRequest   {
   }
 
    /**
-   * Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
+   * Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’, ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘BR’, ‘MEX’, or ‘AU’.
    * @return sizeSystem
   **/
   public String getSizeSystem() {
@@ -898,7 +2093,7 @@ public class ItemAttributesRequest   {
   }
 
    /**
-   * Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
+   * Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’, ‘plus’, ‘big_and_tall’, or ‘maternity’.
    * @return sizeType
   **/
   public String getSizeType() {
@@ -941,6 +2136,40 @@ public class ItemAttributesRequest   {
 
   public void setTitle(String title) {
     this.title = title;
+  }
+
+  public ItemAttributesRequest unitPricingBaseMeasure(String unitPricingBaseMeasure) {
+    this.unitPricingBaseMeasure = unitPricingBaseMeasure;
+    return this;
+  }
+
+   /**
+   * Unit pricing base measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <base_measure> <unit_type>
+   * @return unitPricingBaseMeasure
+  **/
+  public String getUnitPricingBaseMeasure() {
+    return unitPricingBaseMeasure;
+  }
+
+  public void setUnitPricingBaseMeasure(String unitPricingBaseMeasure) {
+    this.unitPricingBaseMeasure = unitPricingBaseMeasure;
+  }
+
+  public ItemAttributesRequest unitPricingMeasure(String unitPricingMeasure) {
+    this.unitPricingMeasure = unitPricingMeasure;
+    return this;
+  }
+
+   /**
+   * Unit pricing total measure of the product. This data will only be shown to pinners in the enabled countries. Expected format: <total_units> <unit_type>
+   * @return unitPricingMeasure
+  **/
+  public String getUnitPricingMeasure() {
+    return unitPricingMeasure;
+  }
+
+  public void setUnitPricingMeasure(String unitPricingMeasure) {
+    this.unitPricingMeasure = unitPricingMeasure;
   }
 
   public ItemAttributesRequest variantNames(List<String> variantNames) {
@@ -1035,6 +2264,23 @@ public class ItemAttributesRequest   {
     this.imageLink = imageLink;
   }
 
+  public ItemAttributesRequest savePinDisabled(Boolean savePinDisabled) {
+    this.savePinDisabled = savePinDisabled;
+    return this;
+  }
+
+   /**
+   * By default, product pins created from a catalog are able to be saved by Pinners. If you want to disable the save pin feature, set this attribute to true. This feature is only available for allowlisted merchants. Please contact your account manager to enable this feature.
+   * @return savePinDisabled
+  **/
+  public Boolean getSavePinDisabled() {
+    return savePinDisabled;
+  }
+
+  public void setSavePinDisabled(Boolean savePinDisabled) {
+    this.savePinDisabled = savePinDisabled;
+  }
+
   public ItemAttributesRequest videoLink(String videoLink) {
     this.videoLink = videoLink;
     return this;
@@ -1062,9 +2308,56 @@ public class ItemAttributesRequest   {
       return false;
     }
     ItemAttributesRequest itemAttributesRequest = (ItemAttributesRequest) o;
-    return Objects.equals(adLink, itemAttributesRequest.adLink) &&
+    return Objects.equals(adImage0Link, itemAttributesRequest.adImage0Link) &&
+        Objects.equals(adImage0Tag, itemAttributesRequest.adImage0Tag) &&
+        Objects.equals(adImage10Link, itemAttributesRequest.adImage10Link) &&
+        Objects.equals(adImage10Tag, itemAttributesRequest.adImage10Tag) &&
+        Objects.equals(adImage11Link, itemAttributesRequest.adImage11Link) &&
+        Objects.equals(adImage11Tag, itemAttributesRequest.adImage11Tag) &&
+        Objects.equals(adImage12Link, itemAttributesRequest.adImage12Link) &&
+        Objects.equals(adImage12Tag, itemAttributesRequest.adImage12Tag) &&
+        Objects.equals(adImage13Link, itemAttributesRequest.adImage13Link) &&
+        Objects.equals(adImage13Tag, itemAttributesRequest.adImage13Tag) &&
+        Objects.equals(adImage14Link, itemAttributesRequest.adImage14Link) &&
+        Objects.equals(adImage14Tag, itemAttributesRequest.adImage14Tag) &&
+        Objects.equals(adImage15Link, itemAttributesRequest.adImage15Link) &&
+        Objects.equals(adImage15Tag, itemAttributesRequest.adImage15Tag) &&
+        Objects.equals(adImage16Link, itemAttributesRequest.adImage16Link) &&
+        Objects.equals(adImage16Tag, itemAttributesRequest.adImage16Tag) &&
+        Objects.equals(adImage17Link, itemAttributesRequest.adImage17Link) &&
+        Objects.equals(adImage17Tag, itemAttributesRequest.adImage17Tag) &&
+        Objects.equals(adImage18Link, itemAttributesRequest.adImage18Link) &&
+        Objects.equals(adImage18Tag, itemAttributesRequest.adImage18Tag) &&
+        Objects.equals(adImage19Link, itemAttributesRequest.adImage19Link) &&
+        Objects.equals(adImage19Tag, itemAttributesRequest.adImage19Tag) &&
+        Objects.equals(adImage1Link, itemAttributesRequest.adImage1Link) &&
+        Objects.equals(adImage1Tag, itemAttributesRequest.adImage1Tag) &&
+        Objects.equals(adImage2Link, itemAttributesRequest.adImage2Link) &&
+        Objects.equals(adImage2Tag, itemAttributesRequest.adImage2Tag) &&
+        Objects.equals(adImage3Link, itemAttributesRequest.adImage3Link) &&
+        Objects.equals(adImage3Tag, itemAttributesRequest.adImage3Tag) &&
+        Objects.equals(adImage4Link, itemAttributesRequest.adImage4Link) &&
+        Objects.equals(adImage4Tag, itemAttributesRequest.adImage4Tag) &&
+        Objects.equals(adImage5Link, itemAttributesRequest.adImage5Link) &&
+        Objects.equals(adImage5Tag, itemAttributesRequest.adImage5Tag) &&
+        Objects.equals(adImage6Link, itemAttributesRequest.adImage6Link) &&
+        Objects.equals(adImage6Tag, itemAttributesRequest.adImage6Tag) &&
+        Objects.equals(adImage7Link, itemAttributesRequest.adImage7Link) &&
+        Objects.equals(adImage7Tag, itemAttributesRequest.adImage7Tag) &&
+        Objects.equals(adImage8Link, itemAttributesRequest.adImage8Link) &&
+        Objects.equals(adImage8Tag, itemAttributesRequest.adImage8Tag) &&
+        Objects.equals(adImage9Link, itemAttributesRequest.adImage9Link) &&
+        Objects.equals(adImage9Tag, itemAttributesRequest.adImage9Tag) &&
+        Objects.equals(adLink, itemAttributesRequest.adLink) &&
+        Objects.equals(adVideo0Link, itemAttributesRequest.adVideo0Link) &&
+        Objects.equals(adVideo0Tag, itemAttributesRequest.adVideo0Tag) &&
+        Objects.equals(adVideo1Link, itemAttributesRequest.adVideo1Link) &&
+        Objects.equals(adVideo1Tag, itemAttributesRequest.adVideo1Tag) &&
+        Objects.equals(adVideo2Link, itemAttributesRequest.adVideo2Link) &&
+        Objects.equals(adVideo2Tag, itemAttributesRequest.adVideo2Tag) &&
         Objects.equals(adult, itemAttributesRequest.adult) &&
         Objects.equals(ageGroup, itemAttributesRequest.ageGroup) &&
+        Objects.equals(androidDeepLink, itemAttributesRequest.androidDeepLink) &&
         Objects.equals(availability, itemAttributesRequest.availability) &&
         Objects.equals(averageReviewRating, itemAttributesRequest.averageReviewRating) &&
         Objects.equals(brand, itemAttributesRequest.brand) &&
@@ -1076,6 +2369,11 @@ public class ItemAttributesRequest   {
         Objects.equals(customLabel2, itemAttributesRequest.customLabel2) &&
         Objects.equals(customLabel3, itemAttributesRequest.customLabel3) &&
         Objects.equals(customLabel4, itemAttributesRequest.customLabel4) &&
+        Objects.equals(customNumber0, itemAttributesRequest.customNumber0) &&
+        Objects.equals(customNumber1, itemAttributesRequest.customNumber1) &&
+        Objects.equals(customNumber2, itemAttributesRequest.customNumber2) &&
+        Objects.equals(customNumber3, itemAttributesRequest.customNumber3) &&
+        Objects.equals(customNumber4, itemAttributesRequest.customNumber4) &&
         Objects.equals(description, itemAttributesRequest.description) &&
         Objects.equals(freeShippingLabel, itemAttributesRequest.freeShippingLabel) &&
         Objects.equals(freeShippingLimit, itemAttributesRequest.freeShippingLimit) &&
@@ -1083,6 +2381,8 @@ public class ItemAttributesRequest   {
         Objects.equals(googleProductCategory, itemAttributesRequest.googleProductCategory) &&
         Objects.equals(gtin, itemAttributesRequest.gtin) &&
         Objects.equals(id, itemAttributesRequest.id) &&
+        Objects.equals(installmentPrice, itemAttributesRequest.installmentPrice) &&
+        Objects.equals(iosDeepLink, itemAttributesRequest.iosDeepLink) &&
         Objects.equals(itemGroupId, itemAttributesRequest.itemGroupId) &&
         Objects.equals(lastUpdatedTime, itemAttributesRequest.lastUpdatedTime) &&
         Objects.equals(link, itemAttributesRequest.link) &&
@@ -1095,7 +2395,9 @@ public class ItemAttributesRequest   {
         Objects.equals(pattern, itemAttributesRequest.pattern) &&
         Objects.equals(price, itemAttributesRequest.price) &&
         Objects.equals(productType, itemAttributesRequest.productType) &&
+        Objects.equals(promotionId, itemAttributesRequest.promotionId) &&
         Objects.equals(salePrice, itemAttributesRequest.salePrice) &&
+        Objects.equals(salePriceEffectiveDate, itemAttributesRequest.salePriceEffectiveDate) &&
         Objects.equals(shipping, itemAttributesRequest.shipping) &&
         Objects.equals(shippingHeight, itemAttributesRequest.shippingHeight) &&
         Objects.equals(shippingWeight, itemAttributesRequest.shippingWeight) &&
@@ -1105,16 +2407,19 @@ public class ItemAttributesRequest   {
         Objects.equals(sizeType, itemAttributesRequest.sizeType) &&
         Objects.equals(tax, itemAttributesRequest.tax) &&
         Objects.equals(title, itemAttributesRequest.title) &&
+        Objects.equals(unitPricingBaseMeasure, itemAttributesRequest.unitPricingBaseMeasure) &&
+        Objects.equals(unitPricingMeasure, itemAttributesRequest.unitPricingMeasure) &&
         Objects.equals(variantNames, itemAttributesRequest.variantNames) &&
         Objects.equals(variantValues, itemAttributesRequest.variantValues) &&
         Objects.equals(additionalImageLink, itemAttributesRequest.additionalImageLink) &&
         Objects.equals(imageLink, itemAttributesRequest.imageLink) &&
+        Objects.equals(savePinDisabled, itemAttributesRequest.savePinDisabled) &&
         Objects.equals(videoLink, itemAttributesRequest.videoLink);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adLink, adult, ageGroup, availability, averageReviewRating, brand, checkoutEnabled, color, condition, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, freeShippingLabel, freeShippingLimit, gender, googleProductCategory, gtin, id, itemGroupId, lastUpdatedTime, link, material, minAdPrice, mobileLink, mpn, numberOfRatings, numberOfReviews, pattern, price, productType, salePrice, shipping, shippingHeight, shippingWeight, shippingWidth, size, sizeSystem, sizeType, tax, title, variantNames, variantValues, additionalImageLink, imageLink, videoLink);
+    return Objects.hash(adImage0Link, adImage0Tag, adImage10Link, adImage10Tag, adImage11Link, adImage11Tag, adImage12Link, adImage12Tag, adImage13Link, adImage13Tag, adImage14Link, adImage14Tag, adImage15Link, adImage15Tag, adImage16Link, adImage16Tag, adImage17Link, adImage17Tag, adImage18Link, adImage18Tag, adImage19Link, adImage19Tag, adImage1Link, adImage1Tag, adImage2Link, adImage2Tag, adImage3Link, adImage3Tag, adImage4Link, adImage4Tag, adImage5Link, adImage5Tag, adImage6Link, adImage6Tag, adImage7Link, adImage7Tag, adImage8Link, adImage8Tag, adImage9Link, adImage9Tag, adLink, adVideo0Link, adVideo0Tag, adVideo1Link, adVideo1Tag, adVideo2Link, adVideo2Tag, adult, ageGroup, androidDeepLink, availability, averageReviewRating, brand, checkoutEnabled, color, condition, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, customNumber0, customNumber1, customNumber2, customNumber3, customNumber4, description, freeShippingLabel, freeShippingLimit, gender, googleProductCategory, gtin, id, installmentPrice, iosDeepLink, itemGroupId, lastUpdatedTime, link, material, minAdPrice, mobileLink, mpn, numberOfRatings, numberOfReviews, pattern, price, productType, promotionId, salePrice, salePriceEffectiveDate, shipping, shippingHeight, shippingWeight, shippingWidth, size, sizeSystem, sizeType, tax, title, unitPricingBaseMeasure, unitPricingMeasure, variantNames, variantValues, additionalImageLink, imageLink, savePinDisabled, videoLink);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -1123,9 +2428,56 @@ public class ItemAttributesRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ItemAttributesRequest {\n");
     
+    sb.append("    adImage0Link: ").append(toIndentedString(adImage0Link)).append("\n");
+    sb.append("    adImage0Tag: ").append(toIndentedString(adImage0Tag)).append("\n");
+    sb.append("    adImage10Link: ").append(toIndentedString(adImage10Link)).append("\n");
+    sb.append("    adImage10Tag: ").append(toIndentedString(adImage10Tag)).append("\n");
+    sb.append("    adImage11Link: ").append(toIndentedString(adImage11Link)).append("\n");
+    sb.append("    adImage11Tag: ").append(toIndentedString(adImage11Tag)).append("\n");
+    sb.append("    adImage12Link: ").append(toIndentedString(adImage12Link)).append("\n");
+    sb.append("    adImage12Tag: ").append(toIndentedString(adImage12Tag)).append("\n");
+    sb.append("    adImage13Link: ").append(toIndentedString(adImage13Link)).append("\n");
+    sb.append("    adImage13Tag: ").append(toIndentedString(adImage13Tag)).append("\n");
+    sb.append("    adImage14Link: ").append(toIndentedString(adImage14Link)).append("\n");
+    sb.append("    adImage14Tag: ").append(toIndentedString(adImage14Tag)).append("\n");
+    sb.append("    adImage15Link: ").append(toIndentedString(adImage15Link)).append("\n");
+    sb.append("    adImage15Tag: ").append(toIndentedString(adImage15Tag)).append("\n");
+    sb.append("    adImage16Link: ").append(toIndentedString(adImage16Link)).append("\n");
+    sb.append("    adImage16Tag: ").append(toIndentedString(adImage16Tag)).append("\n");
+    sb.append("    adImage17Link: ").append(toIndentedString(adImage17Link)).append("\n");
+    sb.append("    adImage17Tag: ").append(toIndentedString(adImage17Tag)).append("\n");
+    sb.append("    adImage18Link: ").append(toIndentedString(adImage18Link)).append("\n");
+    sb.append("    adImage18Tag: ").append(toIndentedString(adImage18Tag)).append("\n");
+    sb.append("    adImage19Link: ").append(toIndentedString(adImage19Link)).append("\n");
+    sb.append("    adImage19Tag: ").append(toIndentedString(adImage19Tag)).append("\n");
+    sb.append("    adImage1Link: ").append(toIndentedString(adImage1Link)).append("\n");
+    sb.append("    adImage1Tag: ").append(toIndentedString(adImage1Tag)).append("\n");
+    sb.append("    adImage2Link: ").append(toIndentedString(adImage2Link)).append("\n");
+    sb.append("    adImage2Tag: ").append(toIndentedString(adImage2Tag)).append("\n");
+    sb.append("    adImage3Link: ").append(toIndentedString(adImage3Link)).append("\n");
+    sb.append("    adImage3Tag: ").append(toIndentedString(adImage3Tag)).append("\n");
+    sb.append("    adImage4Link: ").append(toIndentedString(adImage4Link)).append("\n");
+    sb.append("    adImage4Tag: ").append(toIndentedString(adImage4Tag)).append("\n");
+    sb.append("    adImage5Link: ").append(toIndentedString(adImage5Link)).append("\n");
+    sb.append("    adImage5Tag: ").append(toIndentedString(adImage5Tag)).append("\n");
+    sb.append("    adImage6Link: ").append(toIndentedString(adImage6Link)).append("\n");
+    sb.append("    adImage6Tag: ").append(toIndentedString(adImage6Tag)).append("\n");
+    sb.append("    adImage7Link: ").append(toIndentedString(adImage7Link)).append("\n");
+    sb.append("    adImage7Tag: ").append(toIndentedString(adImage7Tag)).append("\n");
+    sb.append("    adImage8Link: ").append(toIndentedString(adImage8Link)).append("\n");
+    sb.append("    adImage8Tag: ").append(toIndentedString(adImage8Tag)).append("\n");
+    sb.append("    adImage9Link: ").append(toIndentedString(adImage9Link)).append("\n");
+    sb.append("    adImage9Tag: ").append(toIndentedString(adImage9Tag)).append("\n");
     sb.append("    adLink: ").append(toIndentedString(adLink)).append("\n");
+    sb.append("    adVideo0Link: ").append(toIndentedString(adVideo0Link)).append("\n");
+    sb.append("    adVideo0Tag: ").append(toIndentedString(adVideo0Tag)).append("\n");
+    sb.append("    adVideo1Link: ").append(toIndentedString(adVideo1Link)).append("\n");
+    sb.append("    adVideo1Tag: ").append(toIndentedString(adVideo1Tag)).append("\n");
+    sb.append("    adVideo2Link: ").append(toIndentedString(adVideo2Link)).append("\n");
+    sb.append("    adVideo2Tag: ").append(toIndentedString(adVideo2Tag)).append("\n");
     sb.append("    adult: ").append(toIndentedString(adult)).append("\n");
     sb.append("    ageGroup: ").append(toIndentedString(ageGroup)).append("\n");
+    sb.append("    androidDeepLink: ").append(toIndentedString(androidDeepLink)).append("\n");
     sb.append("    availability: ").append(toIndentedString(availability)).append("\n");
     sb.append("    averageReviewRating: ").append(toIndentedString(averageReviewRating)).append("\n");
     sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
@@ -1137,6 +2489,11 @@ public class ItemAttributesRequest   {
     sb.append("    customLabel2: ").append(toIndentedString(customLabel2)).append("\n");
     sb.append("    customLabel3: ").append(toIndentedString(customLabel3)).append("\n");
     sb.append("    customLabel4: ").append(toIndentedString(customLabel4)).append("\n");
+    sb.append("    customNumber0: ").append(toIndentedString(customNumber0)).append("\n");
+    sb.append("    customNumber1: ").append(toIndentedString(customNumber1)).append("\n");
+    sb.append("    customNumber2: ").append(toIndentedString(customNumber2)).append("\n");
+    sb.append("    customNumber3: ").append(toIndentedString(customNumber3)).append("\n");
+    sb.append("    customNumber4: ").append(toIndentedString(customNumber4)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    freeShippingLabel: ").append(toIndentedString(freeShippingLabel)).append("\n");
     sb.append("    freeShippingLimit: ").append(toIndentedString(freeShippingLimit)).append("\n");
@@ -1144,6 +2501,8 @@ public class ItemAttributesRequest   {
     sb.append("    googleProductCategory: ").append(toIndentedString(googleProductCategory)).append("\n");
     sb.append("    gtin: ").append(toIndentedString(gtin)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    installmentPrice: ").append(toIndentedString(installmentPrice)).append("\n");
+    sb.append("    iosDeepLink: ").append(toIndentedString(iosDeepLink)).append("\n");
     sb.append("    itemGroupId: ").append(toIndentedString(itemGroupId)).append("\n");
     sb.append("    lastUpdatedTime: ").append(toIndentedString(lastUpdatedTime)).append("\n");
     sb.append("    link: ").append(toIndentedString(link)).append("\n");
@@ -1156,7 +2515,9 @@ public class ItemAttributesRequest   {
     sb.append("    pattern: ").append(toIndentedString(pattern)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    productType: ").append(toIndentedString(productType)).append("\n");
+    sb.append("    promotionId: ").append(toIndentedString(promotionId)).append("\n");
     sb.append("    salePrice: ").append(toIndentedString(salePrice)).append("\n");
+    sb.append("    salePriceEffectiveDate: ").append(toIndentedString(salePriceEffectiveDate)).append("\n");
     sb.append("    shipping: ").append(toIndentedString(shipping)).append("\n");
     sb.append("    shippingHeight: ").append(toIndentedString(shippingHeight)).append("\n");
     sb.append("    shippingWeight: ").append(toIndentedString(shippingWeight)).append("\n");
@@ -1166,10 +2527,13 @@ public class ItemAttributesRequest   {
     sb.append("    sizeType: ").append(toIndentedString(sizeType)).append("\n");
     sb.append("    tax: ").append(toIndentedString(tax)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    unitPricingBaseMeasure: ").append(toIndentedString(unitPricingBaseMeasure)).append("\n");
+    sb.append("    unitPricingMeasure: ").append(toIndentedString(unitPricingMeasure)).append("\n");
     sb.append("    variantNames: ").append(toIndentedString(variantNames)).append("\n");
     sb.append("    variantValues: ").append(toIndentedString(variantValues)).append("\n");
     sb.append("    additionalImageLink: ").append(toIndentedString(additionalImageLink)).append("\n");
     sb.append("    imageLink: ").append(toIndentedString(imageLink)).append("\n");
+    sb.append("    savePinDisabled: ").append(toIndentedString(savePinDisabled)).append("\n");
     sb.append("    videoLink: ").append(toIndentedString(videoLink)).append("\n");
     sb.append("}");
     return sb.toString();

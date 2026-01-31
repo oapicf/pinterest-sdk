@@ -8,9 +8,9 @@
 
 (def create-asset-invites-request-item-data
   {
+   (ds/req :asset_id_to_permissions) (s/map-of string? (s/coll-of permissions-spec))
    (ds/req :invite_id) string?
    (ds/req :invite_type) invite-type-spec
-   (ds/req :asset_id_to_permissions) (s/map-of string? (s/coll-of permissions-spec))
    })
 
 (def create-asset-invites-request-item-spec

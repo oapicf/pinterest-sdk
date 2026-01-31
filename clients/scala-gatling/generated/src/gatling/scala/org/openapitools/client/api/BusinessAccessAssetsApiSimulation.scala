@@ -141,8 +141,9 @@ class BusinessAccessAssetsApiSimulation extends Simulation {
         .exec(http("businessAssetMembersGet")
         .httpRequest("GET","/businesses/${business_id}/assets/${asset_id}/members")
         .queryParam("bookmark","${bookmark}")
-        .queryParam("page_size","${page_size}")
         .queryParam("start_index","${start_index}")
+        .queryParam("page_size","${page_size}")
+        .queryParam("fetch_system_users","${fetch_system_users}")
 )
 
     // Run scnbusinessAssetMembersGet with warm up and reach a constant rate for entire duration
@@ -176,13 +177,13 @@ class BusinessAccessAssetsApiSimulation extends Simulation {
         .feed(business_assets/getPATHFeeder)
         .exec(http("businessAssetsGet")
         .httpRequest("GET","/businesses/${business_id}/assets")
+        .queryParam("asset_type","${asset_type}")
         .queryParam("start_index","${start_index}")
         .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
         .queryParam("permissions","${permissions}")
         .queryParam("child_asset_id","${child_asset_id}")
         .queryParam("asset_group_id","${asset_group_id}")
-        .queryParam("asset_type","${asset_type}")
 )
 
     // Run scnbusinessAssetsGet with warm up and reach a constant rate for entire duration
@@ -198,10 +199,10 @@ class BusinessAccessAssetsApiSimulation extends Simulation {
         .feed(business_member_assets/getPATHFeeder)
         .exec(http("businessMemberAssetsGet")
         .httpRequest("GET","/businesses/${business_id}/members/${member_id}/assets")
+        .queryParam("asset_type","${asset_type}")
         .queryParam("start_index","${start_index}")
         .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
-        .queryParam("asset_type","${asset_type}")
 )
 
     // Run scnbusinessMemberAssetsGet with warm up and reach a constant rate for entire duration
@@ -245,11 +246,11 @@ class BusinessAccessAssetsApiSimulation extends Simulation {
         .feed(business_partner_asset_access/getPATHFeeder)
         .exec(http("businessPartnerAssetAccessGet")
         .httpRequest("GET","/businesses/${business_id}/partners/${partner_id}/assets")
-        .queryParam("start_index","${start_index}")
-        .queryParam("page_size","${page_size}")
-        .queryParam("bookmark","${bookmark}")
-        .queryParam("partner_type","${partner_type}")
         .queryParam("asset_type","${asset_type}")
+        .queryParam("start_index","${start_index}")
+        .queryParam("bookmark","${bookmark}")
+        .queryParam("page_size","${page_size}")
+        .queryParam("partner_type","${partner_type}")
 )
 
     // Run scnbusinessPartnerAssetAccessGet with warm up and reach a constant rate for entire duration

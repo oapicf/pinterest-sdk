@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **String** | Display name | [optional] 
 **Id** | **String** | Salesforce id for PMP | [optional] 
+**Name** | **String** | Display name | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$SSIOAccountPMPName = Initialize-PSOpenAPIToolsSSIOAccountPMPName  -Name Bidalgo `
- -Id 0011N00001LW2aSQAT
+$SSIOAccountPMPName = Initialize-PSOpenAPIToolsSSIOAccountPMPName  -Id 0011N00001LW2aSQAT `
+ -Name Bidalgo
 ```
 
 - Convert the resource to JSON

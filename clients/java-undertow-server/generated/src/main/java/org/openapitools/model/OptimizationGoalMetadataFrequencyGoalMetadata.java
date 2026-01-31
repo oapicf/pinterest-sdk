@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -21,7 +21,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OptimizationGoalMetadataFrequencyGoalMetadata   {
   
   private Integer frequency;
@@ -51,6 +51,9 @@ public class OptimizationGoalMetadataFrequencyGoalMetadata   {
   private TimerangeEnum timerange;
 
   /**
+   * Frequency target can only be between 2 and 20
+   * minimum: 2
+   * maximum: 20
    */
   public OptimizationGoalMetadataFrequencyGoalMetadata frequency(Integer frequency) {
     this.frequency = frequency;
@@ -58,7 +61,7 @@ public class OptimizationGoalMetadataFrequencyGoalMetadata   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Frequency target can only be between 2 and 20")
   @JsonProperty("frequency")
   public Integer getFrequency() {
     return frequency;

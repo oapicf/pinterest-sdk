@@ -23,11 +23,19 @@ public class TrackingUrlsTest {
     }
 
     /**
-     * Test the property 'impression'
+     * Test the property 'audienceVerification'
      */
     @Test
-    public void impressionTest() {
-        // TODO: test impression
+    public void audienceVerificationTest() {
+        // TODO: test audienceVerification
+    }
+
+    /**
+     * Test the property 'buyableButton'
+     */
+    @Test
+    public void buyableButtonTest() {
+        // TODO: test buyableButton
     }
 
     /**
@@ -47,19 +55,11 @@ public class TrackingUrlsTest {
     }
 
     /**
-     * Test the property 'buyableButton'
+     * Test the property 'impression'
      */
     @Test
-    public void buyableButtonTest() {
-        // TODO: test buyableButton
-    }
-
-    /**
-     * Test the property 'audienceVerification'
-     */
-    @Test
-    public void audienceVerificationTest() {
-        // TODO: test audienceVerification
+    public void impressionTest() {
+        // TODO: test impression
     }
 
 }

@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 ## **businessAssetMembersGet**
-> OpenAPI\Server\Model\BusinessAssetMembersGet200Response businessAssetMembersGet($businessId, $assetId, $bookmark, $pageSize, $startIndex)
+> OpenAPI\Server\Model\BusinessAssetMembersGet200Response businessAssetMembersGet($businessId, $assetId, $fetchSystemUsers, $bookmark, $pageSize, $startIndex)
 
 Get members with access to asset
 
@@ -250,7 +250,7 @@ class BusinessAccessAssetsApi implements BusinessAccessAssetsApiInterface
     /**
      * Implementation of BusinessAccessAssetsApiInterface#businessAssetMembersGet
      */
-    public function businessAssetMembersGet(string $businessId, string $assetId, ?string $bookmark, int $pageSize, int $startIndex, int &$responseCode, array &$responseHeaders): array|object|null
+    public function businessAssetMembersGet(string $businessId, string $assetId, bool $fetchSystemUsers, ?string $bookmark, int $pageSize, int $startIndex, int &$responseCode, array &$responseHeaders): array|object|null
     {
         // Implement the operation ...
     }
@@ -265,6 +265,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string**| Unique identifier of the requesting business. |
  **assetId** | **string**| Unique identifier of a business asset. |
+ **fetchSystemUsers** | **bool**| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to false]
  **bookmark** | **string**| Cursor used to fetch the next page of items | [optional]
  **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **startIndex** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]

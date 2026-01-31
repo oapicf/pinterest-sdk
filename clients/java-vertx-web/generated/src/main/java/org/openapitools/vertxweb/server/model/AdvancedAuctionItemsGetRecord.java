@@ -13,27 +13,18 @@ import org.openapitools.vertxweb.server.model.Language;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AdvancedAuctionItemsGetRecord   {
   
-  private String itemId;
   private Country country;
+  private String itemId;
   private Language language;
 
   public AdvancedAuctionItemsGetRecord () {
 
   }
 
-  public AdvancedAuctionItemsGetRecord (String itemId, Country country, Language language) {
-    this.itemId = itemId;
+  public AdvancedAuctionItemsGetRecord (Country country, String itemId, Language language) {
     this.country = country;
-    this.language = language;
-  }
-
-    
-  @JsonProperty("item_id")
-  public String getItemId() {
-    return itemId;
-  }
-  public void setItemId(String itemId) {
     this.itemId = itemId;
+    this.language = language;
   }
 
     
@@ -43,6 +34,15 @@ public class AdvancedAuctionItemsGetRecord   {
   }
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+    
+  @JsonProperty("item_id")
+  public String getItemId() {
+    return itemId;
+  }
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
   }
 
     
@@ -64,14 +64,14 @@ public class AdvancedAuctionItemsGetRecord   {
       return false;
     }
     AdvancedAuctionItemsGetRecord advancedAuctionItemsGetRecord = (AdvancedAuctionItemsGetRecord) o;
-    return Objects.equals(itemId, advancedAuctionItemsGetRecord.itemId) &&
-        Objects.equals(country, advancedAuctionItemsGetRecord.country) &&
+    return Objects.equals(country, advancedAuctionItemsGetRecord.country) &&
+        Objects.equals(itemId, advancedAuctionItemsGetRecord.itemId) &&
         Objects.equals(language, advancedAuctionItemsGetRecord.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, country, language);
+    return Objects.hash(country, itemId, language);
   }
 
   @Override
@@ -79,8 +79,8 @@ public class AdvancedAuctionItemsGetRecord   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvancedAuctionItemsGetRecord {\n");
     
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();

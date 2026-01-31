@@ -1,0 +1,73 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsVerticalProductGroupCreateRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsVerticalProductGroupCreateRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsCreativeAssetsProductGroupCreateRequest = openapi_server.resourceTypes.CatalogsCreativeAssetsProductGroupCreateRequest
+  CatalogsCreativeAssetsProductGroupFilters = openapi_server.resourceTypes.CatalogsCreativeAssetsProductGroupFilters
+  CatalogsHotelProductGroupCreateRequest = openapi_server.resourceTypes.CatalogsHotelProductGroupCreateRequest
+  CatalogsLocale = openapi_server.resourceTypes.CatalogsLocale
+  CatalogsRetailProductGroupCreateRequest = openapi_server.resourceTypes.CatalogsRetailProductGroupCreateRequest
+  Country = openapi_server.resourceTypes.Country
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  CatalogsVerticalProductGroupCreateRequest {
+    title = CatalogsVerticalProductGroupCreateRequest
+    description = CatalogsVerticalProductGroupCreateRequest
+    derivedFrom = Root
+    properties {
+        catalog_id {
+          type =  string
+          description = "Catalog id pertaining to the creative assets product group."
+          optional = true
+        }
+        catalog_type {
+          type =  string
+          description = ""
+          enum = ["CREATIVE_ASSETS"]
+          optional = true
+        }
+        country {
+          type = Country
+          description = ""
+          optional = false
+        }
+        description {
+          type =  string
+          description = ""
+          optional = false
+        }
+        filters {
+          type = CatalogsCreativeAssetsProductGroupFilters
+          description = ""
+          optional = true
+        }
+        locale {
+          type = CatalogsLocale
+          description = ""
+          optional = false
+        }
+        name {
+          type =  string
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsVerticalProductGroupCreateRequest {
+    title = CatalogsVerticalProductGroupCreateRequest
+    description = CatalogsVerticalProductGroupCreateRequest
+    implements = openapi_server.resourceTypes.CatalogsVerticalProductGroupCreateRequest
+
+  }
+}

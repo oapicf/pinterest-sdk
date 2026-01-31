@@ -1,0 +1,50 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server SSIOAccountAddress"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a SSIOAccountAddress"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  SSIOAccountAddress {
+    title = SSIOAccountAddress
+    description = SSIOAccountAddress
+    derivedFrom = Root
+    properties {
+        address_id {
+          type =  string
+          description = "Salesforce id for address"
+          optional = false
+        }
+        display {
+          type =  string
+          description = "Address display"
+          optional = false
+        }
+        order_legal_entity {
+          type =  string
+          description = "Legal entity for this insertion order"
+          optional = false
+        }
+        purpose {
+          type =  string
+          description = "Purpose for which the address is used, usually Billing or Businness"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  SSIOAccountAddress {
+    title = SSIOAccountAddress
+    description = SSIOAccountAddress
+    implements = openapi_server.resourceTypes.SSIOAccountAddress
+
+  }
+}

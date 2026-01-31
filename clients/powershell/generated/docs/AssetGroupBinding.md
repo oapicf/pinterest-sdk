@@ -3,31 +3,33 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **String** | Asset Group ID. | [optional] 
-**AssetGroupName** | **String** | Asset Group name | [optional] 
-**AssetGroupDescription** | **String** | Asset group description | [optional] 
-**AssetGroupTypes** | **String[]** | Asset group types | [optional] 
 **AdAccountsIds** | **String[]** | A list of ad account IDs under the asset group | [optional] 
-**ProfilesIds** | **String[]** | A list of profile IDs under asset group | [optional] 
-**CreatedTime** | **Int32** | The creation time of the asset group | [optional] 
-**UpdatedTime** | **Int32** | The last update time of the asset group | [optional] 
-**Owner** | [**BusinessAccessUserSummary**](BusinessAccessUserSummary.md) | The data of the business that owns the asset group. | [optional] 
+**AssetGroupDescription** | **String** | Asset group description | [optional] 
+**AssetGroupName** | **String** | Asset Group name | [optional] 
+**AssetGroupTypes** | **String[]** | Asset group types | [optional] 
+**CatalogsIds** | **String[]** | A list of catalog IDs under asset group | [optional] 
 **CreatedBy** | [**BusinessAccessUserSummary**](BusinessAccessUserSummary.md) | The data of the user that created the asset group. | [optional] 
+**CreatedTime** | **Int32** | The creation time of the asset group | [optional] 
+**Id** | **String** | Asset Group ID. | [optional] 
+**Owner** | [**BusinessAccessUserSummary**](BusinessAccessUserSummary.md) | The data of the business that owns the asset group. | [optional] 
+**ProfilesIds** | **String[]** | A list of profile IDs under asset group | [optional] 
+**UpdatedTime** | **Int32** | The last update time of the asset group | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$AssetGroupBinding = Initialize-PSOpenAPIToolsAssetGroupBinding  -Id 666791336903426391 `
- -AssetGroupName Canada Ad Accounts `
+$AssetGroupBinding = Initialize-PSOpenAPIToolsAssetGroupBinding  -AdAccountsIds [&quot;549755885175&quot;] `
  -AssetGroupDescription Asset group that has ad accounts used in Canada `
+ -AssetGroupName Canada Ad Accounts `
  -AssetGroupTypes [&quot;LOCATION_OR_LANGUAGE&quot;] `
- -AdAccountsIds [&quot;549755885175&quot;] `
- -ProfilesIds [&quot;630433785246278264&quot;] `
+ -CatalogsIds [&quot;4836859046874&quot;] `
+ -CreatedBy null `
  -CreatedTime 1646767577816 `
- -UpdatedTime 1646767577816 `
+ -Id 666791336903426391 `
  -Owner null `
- -CreatedBy null
+ -ProfilesIds [&quot;630433785246278264&quot;] `
+ -UpdatedTime 1646767577816
 ```
 
 - Convert the resource to JSON

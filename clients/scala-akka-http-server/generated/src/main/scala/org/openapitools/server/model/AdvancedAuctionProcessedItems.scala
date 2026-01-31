@@ -9,6 +9,6 @@ package org.openapitools.server.model
 */
 final case class AdvancedAuctionProcessedItems (
   catalogId: Option[String] = None,
-  items: Option[Seq[AdvancedAuctionProcessedItem]] = None
+  items: Option[Seq[AdvancedAuctionItemsSubmitRecord]] = None
 )
 

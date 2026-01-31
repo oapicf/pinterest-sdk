@@ -8,8 +8,13 @@ Pin with multiple images.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**mediaType** | **String** |  |  [optional]
 **items** | [**Seq&lt;ImageMetadata&gt;**](ImageMetadata.md) |  |  [optional]
+**mediaType** | [**MediaType**](#MediaType) |  | 
+
+
+## Enum: MediaType
+Allowed values: [multiple_images]
+
 
 
 

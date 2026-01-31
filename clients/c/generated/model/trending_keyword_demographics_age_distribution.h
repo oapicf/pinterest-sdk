@@ -1,0 +1,46 @@
+/*
+ * trending_keyword_demographics_age_distribution.h
+ *
+ * This represents a mapping from age bucket to distribution of search volume for a keyword. The sum of all values in this object should approximately be 1.
+ */
+
+#ifndef _trending_keyword_demographics_age_distribution_H_
+#define _trending_keyword_demographics_age_distribution_H_
+
+#include <string.h>
+#include "../external/cJSON.h"
+#include "../include/list.h"
+#include "../include/keyValuePair.h"
+#include "../include/binary.h"
+
+typedef struct trending_keyword_demographics_age_distribution_t trending_keyword_demographics_age_distribution_t;
+
+
+// Enum AGEDISTRIBUTION for trending_keyword_demographics_age_distribution
+
+typedef enum  { pinterest_rest_api_trending_keyword_demographics_age_distribution_AGEDISTRIBUTION_NULL = 0, pinterest_rest_api_trending_keyword_demographics_age_distribution_AGEDISTRIBUTION__18_24, pinterest_rest_api_trending_keyword_demographics_age_distribution_AGEDISTRIBUTION__25_34, pinterest_rest_api_trending_keyword_demographics_age_distribution_AGEDISTRIBUTION__35_44, pinterest_rest_api_trending_keyword_demographics_age_distribution_AGEDISTRIBUTION__45_49, pinterest_rest_api_trending_keyword_demographics_age_distribution_AGEDISTRIBUTION__50_54, pinterest_rest_api_trending_keyword_demographics_age_distribution_AGEDISTRIBUTION__55_64, pinterest_rest_api_trending_keyword_demographics_age_distribution_AGEDISTRIBUTION__65+ } pinterest_rest_api_trending_keyword_demographics_age_distribution_AGEDISTRIBUTION_e;
+
+char* trending_keyword_demographics_age_distribution_age_distribution_ToString(pinterest_rest_api_trending_keyword_demographics_age_distribution_AGEDISTRIBUTION_e age_distribution);
+
+pinterest_rest_api_trending_keyword_demographics_age_distribution_AGEDISTRIBUTION_e trending_keyword_demographics_age_distribution_age_distribution_FromString(char* age_distribution);
+
+
+
+typedef struct trending_keyword_demographics_age_distribution_t {
+    pinterest_rest_api_trending_keyword_demographics_age_distribution_AGEDISTRIBUTION_e age_distribution; //enum
+
+    int _library_owned; // Is the library responsible for freeing this object?
+} trending_keyword_demographics_age_distribution_t;
+
+__attribute__((deprecated)) trending_keyword_demographics_age_distribution_t *trending_keyword_demographics_age_distribution_create(
+    pinterest_rest_api_trending_keyword_demographics_age_distribution_AGEDISTRIBUTION_e age_distribution
+);
+
+void trending_keyword_demographics_age_distribution_free(trending_keyword_demographics_age_distribution_t *trending_keyword_demographics_age_distribution);
+
+trending_keyword_demographics_age_distribution_t *trending_keyword_demographics_age_distribution_parseFromJSON(cJSON *trending_keyword_demographics_age_distributionJSON);
+
+cJSON *trending_keyword_demographics_age_distribution_convertToJSON(trending_keyword_demographics_age_distribution_t *trending_keyword_demographics_age_distribution);
+
+#endif /* _trending_keyword_demographics_age_distribution_H_ */
+

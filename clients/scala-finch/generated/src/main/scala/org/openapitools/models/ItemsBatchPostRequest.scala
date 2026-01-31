@@ -14,18 +14,18 @@ import scala.collection.immutable.Seq
 
 /**
  * 
+ * @param catalogUnderscoreid Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
  * @param catalogUnderscoretype 
  * @param country 
- * @param language We recommend using the CatalogsLocale values.
  * @param items Array with catalogs items
- * @param catalogUnderscoreid Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+ * @param language We recommend using the CatalogsLocale values.
  * @param operation 
  */
-case class ItemsBatchPostRequest(catalogUnderscoretype: String,
+case class ItemsBatchPostRequest(catalogUnderscoreid: Option[String],
+                catalogUnderscoretype: String,
                 country: Country,
-                language: String,
                 items: Seq[ItemDeleteBatchRecord],
-                catalogUnderscoreid: Option[String],
+                language: String,
                 operation: BatchOperation
                 )
 

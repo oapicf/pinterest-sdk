@@ -19,8 +19,12 @@ import javax.annotation.Generated;
  * AudienceSubcategory
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceSubcategory {
+
+  private String id;
+
+  private BigDecimal index;
 
   private String key;
 
@@ -28,9 +32,45 @@ public class AudienceSubcategory {
 
   private BigDecimal ratio;
 
-  private BigDecimal index;
+  public AudienceSubcategory id(String id) {
+    this.id = id;
+    return this;
+  }
 
-  private String id;
+  /**
+   * Subinterest ID.
+   * @return id
+   */
+  
+  @Schema(name = "id", example = "958862518888", description = "Subinterest ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public AudienceSubcategory index(BigDecimal index) {
+    this.index = index;
+    return this;
+  }
+
+  /**
+   * Subinterest affinity index.
+   * @return index
+   */
+  @Valid 
+  @Schema(name = "index", example = "1.2", description = "Subinterest affinity index.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("index")
+  public BigDecimal getIndex() {
+    return index;
+  }
+
+  public void setIndex(BigDecimal index) {
+    this.index = index;
+  }
 
   public AudienceSubcategory key(String key) {
     this.key = key;
@@ -92,46 +132,6 @@ public class AudienceSubcategory {
     this.ratio = ratio;
   }
 
-  public AudienceSubcategory index(BigDecimal index) {
-    this.index = index;
-    return this;
-  }
-
-  /**
-   * Subinterest affinity index.
-   * @return index
-   */
-  @Valid 
-  @Schema(name = "index", example = "1.2", description = "Subinterest affinity index.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("index")
-  public BigDecimal getIndex() {
-    return index;
-  }
-
-  public void setIndex(BigDecimal index) {
-    this.index = index;
-  }
-
-  public AudienceSubcategory id(String id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Subinterest ID.
-   * @return id
-   */
-  
-  @Schema(name = "id", example = "958862518888", description = "Subinterest ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -141,27 +141,27 @@ public class AudienceSubcategory {
       return false;
     }
     AudienceSubcategory audienceSubcategory = (AudienceSubcategory) o;
-    return Objects.equals(this.key, audienceSubcategory.key) &&
-        Objects.equals(this.name, audienceSubcategory.name) &&
-        Objects.equals(this.ratio, audienceSubcategory.ratio) &&
+    return Objects.equals(this.id, audienceSubcategory.id) &&
         Objects.equals(this.index, audienceSubcategory.index) &&
-        Objects.equals(this.id, audienceSubcategory.id);
+        Objects.equals(this.key, audienceSubcategory.key) &&
+        Objects.equals(this.name, audienceSubcategory.name) &&
+        Objects.equals(this.ratio, audienceSubcategory.ratio);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, name, ratio, index, id);
+    return Objects.hash(id, index, key, name, ratio);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceSubcategory {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    index: ").append(toIndentedString(index)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    ratio: ").append(toIndentedString(ratio)).append("\n");
-    sb.append("    index: ").append(toIndentedString(index)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

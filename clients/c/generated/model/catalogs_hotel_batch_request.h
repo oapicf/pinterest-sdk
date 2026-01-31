@@ -29,21 +29,21 @@ pinterest_rest_api_catalogs_hotel_batch_request_CATALOGTYPE_e catalogs_hotel_bat
 
 
 typedef struct catalogs_hotel_batch_request_t {
+    char *catalog_id; // string
     pinterest_rest_api_catalogs_hotel_batch_request_CATALOGTYPE_e catalog_type; //enum
     pinterest_rest_api_country__e country; //referenced enum
-    pinterest_rest_api_catalogs_hotel_batch_request_LANGUAGE_e language; //enum
     list_t *items; //nonprimitive container
-    char *catalog_id; // string
+    pinterest_rest_api_catalogs_hotel_batch_request_LANGUAGE_e language; //enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_hotel_batch_request_t;
 
 __attribute__((deprecated)) catalogs_hotel_batch_request_t *catalogs_hotel_batch_request_create(
+    char *catalog_id,
     pinterest_rest_api_catalogs_hotel_batch_request_CATALOGTYPE_e catalog_type,
     pinterest_rest_api_country__e country,
-    pinterest_rest_api_catalogs_hotel_batch_request_LANGUAGE_e language,
     list_t *items,
-    char *catalog_id
+    pinterest_rest_api_catalogs_hotel_batch_request_LANGUAGE_e language
 );
 
 void catalogs_hotel_batch_request_free(catalogs_hotel_batch_request_t *catalogs_hotel_batch_request);

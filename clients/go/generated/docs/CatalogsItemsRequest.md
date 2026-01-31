@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Country** | [**Country**](Country.md) |  | 
-**Language** | **string** | We recommend using the CatalogsLocale values. | 
 **Filters** | [**CatalogsItemsPostFilters**](CatalogsItemsPostFilters.md) |  | 
+**Language** | **string** | We recommend using the CatalogsLocale values. | 
 
 ## Methods
 
 ### NewCatalogsItemsRequest
 
-`func NewCatalogsItemsRequest(country Country, language string, filters CatalogsItemsPostFilters, ) *CatalogsItemsRequest`
+`func NewCatalogsItemsRequest(country Country, filters CatalogsItemsPostFilters, language string, ) *CatalogsItemsRequest`
 
 NewCatalogsItemsRequest instantiates a new CatalogsItemsRequest object
 This constructor will assign default values to properties that have it defined,
@@ -47,26 +47,6 @@ and a boolean to check if the value has been set.
 SetCountry sets Country field to given value.
 
 
-### GetLanguage
-
-`func (o *CatalogsItemsRequest) GetLanguage() string`
-
-GetLanguage returns the Language field if non-nil, zero value otherwise.
-
-### GetLanguageOk
-
-`func (o *CatalogsItemsRequest) GetLanguageOk() (*string, bool)`
-
-GetLanguageOk returns a tuple with the Language field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLanguage
-
-`func (o *CatalogsItemsRequest) SetLanguage(v string)`
-
-SetLanguage sets Language field to given value.
-
-
 ### GetFilters
 
 `func (o *CatalogsItemsRequest) GetFilters() CatalogsItemsPostFilters`
@@ -85,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *CatalogsItemsRequest) SetFilters(v CatalogsItemsPostFilters)`
 
 SetFilters sets Filters field to given value.
+
+
+### GetLanguage
+
+`func (o *CatalogsItemsRequest) GetLanguage() string`
+
+GetLanguage returns the Language field if non-nil, zero value otherwise.
+
+### GetLanguageOk
+
+`func (o *CatalogsItemsRequest) GetLanguageOk() (*string, bool)`
+
+GetLanguageOk returns a tuple with the Language field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLanguage
+
+`func (o *CatalogsItemsRequest) SetLanguage(v string)`
+
+SetLanguage sets Language field to given value.
 
 
 

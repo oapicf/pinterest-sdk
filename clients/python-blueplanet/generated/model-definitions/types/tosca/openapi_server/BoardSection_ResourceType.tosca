@@ -1,0 +1,40 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server BoardSection"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a BoardSection"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  BoardSection {
+    title = BoardSection
+    description = BoardSection
+    derivedFrom = Root
+    properties {
+        id {
+          type =  string
+          description = ""
+          optional = false
+        }
+        name {
+          type =  string
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  BoardSection {
+    title = BoardSection
+    description = BoardSection
+    implements = openapi_server.resourceTypes.BoardSection
+
+  }
+}

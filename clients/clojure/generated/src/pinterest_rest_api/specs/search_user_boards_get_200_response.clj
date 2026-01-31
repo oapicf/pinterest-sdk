@@ -8,8 +8,8 @@
 
 (def search-user-boards-get-200-response-data
   {
-   (ds/req :items) (s/coll-of board-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of board-spec)
    })
 
 (def search-user-boards-get-200-response-spec

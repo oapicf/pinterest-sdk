@@ -9,11 +9,11 @@
 -export_type([openapi_tracking_urls/0]).
 
 -type openapi_tracking_urls() ::
-  [ {'impression', list(binary()) }
+  [ {'audience_verification', list(binary()) }
+  | {'buyable_button', list(binary()) }
   | {'click', list(binary()) }
   | {'engagement', list(binary()) }
-  | {'buyable_button', list(binary()) }
-  | {'audience_verification', list(binary()) }
+  | {'impression', list(binary()) }
   ].
 
 
@@ -21,11 +21,11 @@ openapi_tracking_urls() ->
     openapi_tracking_urls([]).
 
 openapi_tracking_urls(Fields) ->
-  Default = [ {'impression', list(binary()) }
+  Default = [ {'audience_verification', list(binary()) }
+            , {'buyable_button', list(binary()) }
             , {'click', list(binary()) }
             , {'engagement', list(binary()) }
-            , {'buyable_button', list(binary()) }
-            , {'audience_verification', list(binary()) }
+            , {'impression', list(binary()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

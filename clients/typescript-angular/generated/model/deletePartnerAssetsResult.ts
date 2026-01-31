@@ -18,13 +18,9 @@ export interface DeletePartnerAssetsResult {
      */
     asset_id?: string;
     /**
-     * Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+     * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
      */
     asset_type?: string;
-    /**
-     * Permission levels member or partner has on an asset.
-     */
-    permissions?: Array<string>;
     /**
      * If is_shared_partner=FALSE, you terminated a partner\'s asset access to your business asset.<br> If is_shared_partner=TRUE, you terminated your asset access to your partner\'s business asset.
      */
@@ -33,5 +29,9 @@ export interface DeletePartnerAssetsResult {
      * Unique identifier of a business partner.
      */
     partner_id?: string;
+    /**
+     * Permission levels member or partner has on an asset.
+     */
+    permissions?: Array<string>;
 }
 

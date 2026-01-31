@@ -14,14 +14,14 @@ import AudienceInsightsResponse._
 case class AudienceInsightsResponse (
   /* Category interest distribution */
   categories: Option[List[AudienceCategory]],
-demographics: Option[AudienceDemographics],
-`type`: Option[AudienceInsightType],
 /* Generation date */
   date: Option[String],
+demographics: Option[AudienceDemographics],
 /* Population count. */
   size: Option[Integer],
 /* Indicates whether the audience size has been rounded up to the next highest upper boundary. */
-  sizeIsUpperBound: Option[Boolean])
+  sizeIsUpperBound: Option[Boolean],
+`type`: Option[AudienceInsightType])
 
 object AudienceInsightsResponse {
   import DateTimeCodecs._

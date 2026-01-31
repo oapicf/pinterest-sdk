@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,12 +20,12 @@ var _ MappedNullable = &LeadFormQuestion{}
 
 // LeadFormQuestion struct for LeadFormQuestion
 type LeadFormQuestion struct {
-	QuestionType *LeadFormQuestionType `json:"question_type,omitempty"`
 	CustomQuestionFieldType NullableLeadFormQuestionFieldType `json:"custom_question_field_type,omitempty"`
 	// Question label for a custom question.
 	CustomQuestionLabel NullableString `json:"custom_question_label,omitempty"`
 	// Question options for a custom question.
 	CustomQuestionOptions []string `json:"custom_question_options,omitempty"`
+	QuestionType *LeadFormQuestionType `json:"question_type,omitempty"`
 }
 
 // NewLeadFormQuestion instantiates a new LeadFormQuestion object
@@ -43,38 +43,6 @@ func NewLeadFormQuestion() *LeadFormQuestion {
 func NewLeadFormQuestionWithDefaults() *LeadFormQuestion {
 	this := LeadFormQuestion{}
 	return &this
-}
-
-// GetQuestionType returns the QuestionType field value if set, zero value otherwise.
-func (o *LeadFormQuestion) GetQuestionType() LeadFormQuestionType {
-	if o == nil || IsNil(o.QuestionType) {
-		var ret LeadFormQuestionType
-		return ret
-	}
-	return *o.QuestionType
-}
-
-// GetQuestionTypeOk returns a tuple with the QuestionType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LeadFormQuestion) GetQuestionTypeOk() (*LeadFormQuestionType, bool) {
-	if o == nil || IsNil(o.QuestionType) {
-		return nil, false
-	}
-	return o.QuestionType, true
-}
-
-// HasQuestionType returns a boolean if a field has been set.
-func (o *LeadFormQuestion) HasQuestionType() bool {
-	if o != nil && !IsNil(o.QuestionType) {
-		return true
-	}
-
-	return false
-}
-
-// SetQuestionType gets a reference to the given LeadFormQuestionType and assigns it to the QuestionType field.
-func (o *LeadFormQuestion) SetQuestionType(v LeadFormQuestionType) {
-	o.QuestionType = &v
 }
 
 // GetCustomQuestionFieldType returns the CustomQuestionFieldType field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -194,6 +162,38 @@ func (o *LeadFormQuestion) SetCustomQuestionOptions(v []string) {
 	o.CustomQuestionOptions = v
 }
 
+// GetQuestionType returns the QuestionType field value if set, zero value otherwise.
+func (o *LeadFormQuestion) GetQuestionType() LeadFormQuestionType {
+	if o == nil || IsNil(o.QuestionType) {
+		var ret LeadFormQuestionType
+		return ret
+	}
+	return *o.QuestionType
+}
+
+// GetQuestionTypeOk returns a tuple with the QuestionType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LeadFormQuestion) GetQuestionTypeOk() (*LeadFormQuestionType, bool) {
+	if o == nil || IsNil(o.QuestionType) {
+		return nil, false
+	}
+	return o.QuestionType, true
+}
+
+// HasQuestionType returns a boolean if a field has been set.
+func (o *LeadFormQuestion) HasQuestionType() bool {
+	if o != nil && !IsNil(o.QuestionType) {
+		return true
+	}
+
+	return false
+}
+
+// SetQuestionType gets a reference to the given LeadFormQuestionType and assigns it to the QuestionType field.
+func (o *LeadFormQuestion) SetQuestionType(v LeadFormQuestionType) {
+	o.QuestionType = &v
+}
+
 func (o LeadFormQuestion) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -204,9 +204,6 @@ func (o LeadFormQuestion) MarshalJSON() ([]byte, error) {
 
 func (o LeadFormQuestion) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.QuestionType) {
-		toSerialize["question_type"] = o.QuestionType
-	}
 	if o.CustomQuestionFieldType.IsSet() {
 		toSerialize["custom_question_field_type"] = o.CustomQuestionFieldType.Get()
 	}
@@ -215,6 +212,9 @@ func (o LeadFormQuestion) ToMap() (map[string]interface{}, error) {
 	}
 	if o.CustomQuestionOptions != nil {
 		toSerialize["custom_question_options"] = o.CustomQuestionOptions
+	}
+	if !IsNil(o.QuestionType) {
+		toSerialize["question_type"] = o.QuestionType
 	}
 	return toSerialize, nil
 }

@@ -91,7 +91,7 @@ business_asset_members/get(Ctx, BusinessId, AssetId, Optional) ->
 
     Method = get,
     Path = [?BASE_URL, "/businesses/", BusinessId, "/assets/", AssetId, "/members"],
-    QS = lists:flatten([])++openapi_utils:optional_params(['bookmark', 'page_size', 'start_index'], _OptionalParams),
+    QS = lists:flatten([])++openapi_utils:optional_params(['fetch_system_users', 'bookmark', 'page_size', 'start_index'], _OptionalParams),
     Headers = [],
     Body1 = [],
     ContentTypeHeader = openapi_utils:select_header_content_type([]),

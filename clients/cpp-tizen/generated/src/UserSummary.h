@@ -45,13 +45,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Username
-	 */
-	std::string getUsername();
-
-	/*! \brief Set Username
-	 */
-	void setUsername(std::string  username);
 	/*! \brief Get Always \"user\"
 	 */
 	std::string getType();
@@ -59,10 +52,17 @@ public:
 	/*! \brief Set Always \"user\"
 	 */
 	void setType(std::string  type);
+	/*! \brief Get Username
+	 */
+	std::string getUsername();
+
+	/*! \brief Set Username
+	 */
+	void setUsername(std::string  username);
 
 private:
-	std::string username;
 	std::string type;
+	std::string username;
 	void __init();
 	void __cleanup();
 

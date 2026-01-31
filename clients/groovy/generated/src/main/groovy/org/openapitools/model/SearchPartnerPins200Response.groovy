@@ -11,7 +11,7 @@ import org.openapitools.model.SummaryPin;
 @Canonical
 class SearchPartnerPins200Response {
     
-    List<SummaryPin> items = new ArrayList<>()
-    
     String bookmark
+    
+    List<SummaryPin> items = new ArrayList<>()
 }

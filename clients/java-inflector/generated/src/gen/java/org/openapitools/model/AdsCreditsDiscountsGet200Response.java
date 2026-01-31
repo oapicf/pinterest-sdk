@@ -16,30 +16,13 @@ import org.openapitools.model.AdsCreditDiscountsResponse;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdsCreditsDiscountsGet200Response   {
-  @JsonProperty("items")
-  private List<AdsCreditDiscountsResponse> items = new ArrayList<>();
-
   @JsonProperty("bookmark")
   private String bookmark;
 
-  /**
-   **/
-  public AdsCreditsDiscountsGet200Response items(List<AdsCreditDiscountsResponse> items) {
-    this.items = items;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
-  public List<AdsCreditDiscountsResponse> getItems() {
-    return items;
-  }
-  public void setItems(List<AdsCreditDiscountsResponse> items) {
-    this.items = items;
-  }
+  private List<AdsCreditDiscountsResponse> items = new ArrayList<>();
 
   /**
    **/
@@ -58,6 +41,23 @@ public class AdsCreditsDiscountsGet200Response   {
     this.bookmark = bookmark;
   }
 
+  /**
+   **/
+  public AdsCreditsDiscountsGet200Response items(List<AdsCreditDiscountsResponse> items) {
+    this.items = items;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("items")
+  public List<AdsCreditDiscountsResponse> getItems() {
+    return items;
+  }
+  public void setItems(List<AdsCreditDiscountsResponse> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -68,13 +68,13 @@ public class AdsCreditsDiscountsGet200Response   {
       return false;
     }
     AdsCreditsDiscountsGet200Response adsCreditsDiscountsGet200Response = (AdsCreditsDiscountsGet200Response) o;
-    return Objects.equals(items, adsCreditsDiscountsGet200Response.items) &&
-        Objects.equals(bookmark, adsCreditsDiscountsGet200Response.bookmark);
+    return Objects.equals(bookmark, adsCreditsDiscountsGet200Response.bookmark) &&
+        Objects.equals(items, adsCreditsDiscountsGet200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -82,8 +82,8 @@ public class AdsCreditsDiscountsGet200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdsCreditsDiscountsGet200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

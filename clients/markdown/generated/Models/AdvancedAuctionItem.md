@@ -3,8 +3,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **item\_id** | **String** | The catalog retail item id in the merchant namespace | [default to null] |
 | **country** | [**Country**](Country.md) |  | [default to null] |
+| **item\_id** | **String** | The catalog retail item id in the merchant namespace | [default to null] |
 | **language** | [**Language**](Language.md) |  | [default to null] |
 | **bid\_options** | [**AdvancedAuctionBidOptions**](AdvancedAuctionBidOptions.md) |  | [default to null] |
 

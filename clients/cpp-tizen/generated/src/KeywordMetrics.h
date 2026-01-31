@@ -45,13 +45,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Average cost per click
-	 */
-	long long getAvgCpcInMicroCurrency();
-
-	/*! \brief Set Average cost per click
-	 */
-	void setAvgCpcInMicroCurrency(long long  avg_cpc_in_micro_currency);
 	/*! \brief Get Keyword's search frequency. This value is based on keyword frequency in pepsi client response
 	 */
 	std::string getKeywordQueryVolume();
@@ -61,7 +54,6 @@ public:
 	void setKeywordQueryVolume(std::string  keyword_query_volume);
 
 private:
-	long long avg_cpc_in_micro_currency;
 	std::string keyword_query_volume;
 	void __init();
 	void __cleanup();

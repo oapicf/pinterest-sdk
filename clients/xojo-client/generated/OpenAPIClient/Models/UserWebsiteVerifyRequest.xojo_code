@@ -2,12 +2,12 @@
 Protected Class UserWebsiteVerifyRequest
 
 	#tag Property, Flags = &h0
-		website As Xoson.O.OptionalString
+		verification_method As Xoson.O.OptionalString
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		verification_method As Xoson.O.OptionalString
+		website As Xoson.O.OptionalString
 	#tag EndProperty
 
 

@@ -12,16 +12,16 @@ module BulkDownloadRequestCampaignFilter =
 
   [<CLIMutable>]
   type BulkDownloadRequestCampaignFilter = {
-    [<JsonProperty(PropertyName = "start_time")>]
-    StartTime : string;
+    [<JsonProperty(PropertyName = "campaign_status")>]
+    CampaignStatus : CampaignSummaryStatus[];
     [<JsonProperty(PropertyName = "end_time")>]
     EndTime : string;
     [<JsonProperty(PropertyName = "name")>]
     Name : string;
-    [<JsonProperty(PropertyName = "campaign_status")>]
-    CampaignStatus : CampaignSummaryStatus[];
     [<JsonProperty(PropertyName = "objective_type")>]
     ObjectiveType : ObjectiveType[];
+    [<JsonProperty(PropertyName = "start_time")>]
+    StartTime : string;
   }
 
   //#endregion

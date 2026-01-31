@@ -10,25 +10,7 @@ API.Client.IntegrationRecord = function() {}
  * @type {!string}
  * @export
  */
-API.Client.IntegrationRecord.prototype.id;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.IntegrationRecord.prototype.externalBusinessId;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.IntegrationRecord.prototype.connectedMerchantId;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.IntegrationRecord.prototype.connectedUserId;
+API.Client.IntegrationRecord.prototype.additionalId1;
 
 /**
  * @type {!string}
@@ -46,7 +28,37 @@ API.Client.IntegrationRecord.prototype.connectedLbaId;
  * @type {!string}
  * @export
  */
+API.Client.IntegrationRecord.prototype.connectedMerchantId;
+
+/**
+ * @type {!string}
+ * @export
+ */
 API.Client.IntegrationRecord.prototype.connectedTagId;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.IntegrationRecord.prototype.connectedUserId;
+
+/**
+ * @type {!number}
+ * @export
+ */
+API.Client.IntegrationRecord.prototype.createdTime;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.IntegrationRecord.prototype.externalBusinessId;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.IntegrationRecord.prototype.id;
 
 /**
  * @type {!string}
@@ -55,10 +67,16 @@ API.Client.IntegrationRecord.prototype.connectedTagId;
 API.Client.IntegrationRecord.prototype.partnerAccessToken;
 
 /**
+ * @type {!number}
+ * @export
+ */
+API.Client.IntegrationRecord.prototype.partnerAccessTokenExpiry;
+
+/**
  * @type {!string}
  * @export
  */
-API.Client.IntegrationRecord.prototype.partnerRefreshToken;
+API.Client.IntegrationRecord.prototype.partnerMetadata;
 
 /**
  * @type {!string}
@@ -67,10 +85,10 @@ API.Client.IntegrationRecord.prototype.partnerRefreshToken;
 API.Client.IntegrationRecord.prototype.partnerPrimaryEmail;
 
 /**
- * @type {!number}
+ * @type {!string}
  * @export
  */
-API.Client.IntegrationRecord.prototype.partnerAccessTokenExpiry;
+API.Client.IntegrationRecord.prototype.partnerRefreshToken;
 
 /**
  * @type {!number}
@@ -83,24 +101,6 @@ API.Client.IntegrationRecord.prototype.partnerRefreshTokenExpiry;
  * @export
  */
 API.Client.IntegrationRecord.prototype.scopes;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.IntegrationRecord.prototype.partnerMetadata;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.IntegrationRecord.prototype.additionalId1;
-
-/**
- * @type {!number}
- * @export
- */
-API.Client.IntegrationRecord.prototype.createdTime;
 
 /**
  * @type {!number}

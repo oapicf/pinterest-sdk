@@ -19,9 +19,9 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CatalogsProductGroupFiltersRequest
+import org.openapitools.client.models.AllOf
+import org.openapitools.client.models.AnyOf
 import org.openapitools.client.models.CatalogsProductGroupFilterKeys
-import org.openapitools.client.models.CatalogsProductGroupFiltersRequestAnyOf
-import org.openapitools.client.models.CatalogsProductGroupFiltersRequestAnyOf1
 
 class CatalogsProductGroupFiltersRequestTest : ShouldSpec() {
     init {

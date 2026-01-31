@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -18,21 +18,23 @@ import (
 
 
 
-// PinMediaSourceImagesUrl - Multiple images urls-based media source
+// PinMediaSourceImagesUrl - Multiple URL-based images media source
 type PinMediaSourceImagesUrl struct {
 
-	SourceType string `json:"source_type,omitempty"`
+	Index int32 `json:"index,omitempty"`
 
 	// Array with image objects.
-	Items []PinMediaSourceImagesUrlItemsInner `json:"items"`
+	Items []PinMediaSourceImagesUrlItem `json:"items"`
 
-	Index int32 `json:"index,omitempty"`
+	// The source type of the media.
+	SourceType string `json:"source_type"`
 }
 
 // AssertPinMediaSourceImagesUrlRequired checks if the required fields are not zero-ed
 func AssertPinMediaSourceImagesUrlRequired(obj PinMediaSourceImagesUrl) error {
 	elements := map[string]interface{}{
 		"items": obj.Items,
+		"source_type": obj.SourceType,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {
@@ -41,7 +43,7 @@ func AssertPinMediaSourceImagesUrlRequired(obj PinMediaSourceImagesUrl) error {
 	}
 
 	for _, el := range obj.Items {
-		if err := AssertPinMediaSourceImagesUrlItemsInnerRequired(el); err != nil {
+		if err := AssertPinMediaSourceImagesUrlItemRequired(el); err != nil {
 			return err
 		}
 	}
@@ -50,13 +52,13 @@ func AssertPinMediaSourceImagesUrlRequired(obj PinMediaSourceImagesUrl) error {
 
 // AssertPinMediaSourceImagesUrlConstraints checks if the values respects the defined constraints
 func AssertPinMediaSourceImagesUrlConstraints(obj PinMediaSourceImagesUrl) error {
-	for _, el := range obj.Items {
-		if err := AssertPinMediaSourceImagesUrlItemsInnerConstraints(el); err != nil {
-			return err
-		}
-	}
 	if obj.Index < 0 {
 		return &ParsingError{Param: "Index", Err: errors.New(errMsgMinValueConstraint)}
+	}
+	for _, el := range obj.Items {
+		if err := AssertPinMediaSourceImagesUrlItemConstraints(el); err != nil {
+			return err
+		}
 	}
 	return nil
 }

@@ -9,8 +9,7 @@
 
 
 #include <string>
-#include "PinMedia.h"
-#include "PinMediaWithImage_allOf_images.h"
+#include "ImageSize.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -49,61 +48,61 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::string getMediaType();
-
-	/*! \brief Set 
-	 */
-	void setMediaType(std::string  media_type);
-	/*! \brief Get 
-	 */
-	PinMediaWithImage_allOf_images getImages();
-
-	/*! \brief Set 
-	 */
-	void setImages(PinMediaWithImage_allOf_images  images);
-	/*! \brief Get 
-	 */
 	std::string getCoverImageUrl();
 
 	/*! \brief Set 
 	 */
 	void setCoverImageUrl(std::string  cover_image_url);
-	/*! \brief Get Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
-	 */
-	std::string getVideoUrl();
-
-	/*! \brief Set Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
-	 */
-	void setVideoUrl(std::string  video_url);
-	/*! \brief Get Duration (in milliseconds)
+	/*! \brief Get Duration (in miliseconds). Field maybe null after creation due to video processing time.
 	 */
 	long long getDuration();
 
-	/*! \brief Set Duration (in milliseconds)
+	/*! \brief Set Duration (in miliseconds). Field maybe null after creation due to video processing time.
 	 */
 	void setDuration(long long  duration);
-	/*! \brief Get Height (in pixels)
+	/*! \brief Get Height (in pixels). Field maybe null after creation due to video processing time.
 	 */
 	int getHeight();
 
-	/*! \brief Set Height (in pixels)
+	/*! \brief Set Height (in pixels). Field maybe null after creation due to video processing time.
 	 */
 	void setHeight(int  height);
-	/*! \brief Get Width (in pixels)
+	/*! \brief Get 
+	 */
+	ImageSize getImages();
+
+	/*! \brief Set 
+	 */
+	void setImages(ImageSize  images);
+	/*! \brief Get 
+	 */
+	std::string getMediaType();
+
+	/*! \brief Set 
+	 */
+	void setMediaType(std::string  media_type);
+	/*! \brief Get Video url (720p).  **Note:** This field is limited and not available to all apps.
+	 */
+	std::string getVideoUrl();
+
+	/*! \brief Set Video url (720p).  **Note:** This field is limited and not available to all apps.
+	 */
+	void setVideoUrl(std::string  video_url);
+	/*! \brief Get Width (in pixels). Field maybe null after creation due to video processing time.
 	 */
 	int getWidth();
 
-	/*! \brief Set Width (in pixels)
+	/*! \brief Set Width (in pixels). Field maybe null after creation due to video processing time.
 	 */
 	void setWidth(int  width);
 
 private:
-	std::string media_type;
-	PinMediaWithImage_allOf_images images;
 	std::string cover_image_url;
-	std::string video_url;
 	long long duration;
 	int height;
+	ImageSize images;
+	std::string media_type;
+	std::string video_url;
 	int width;
 	void __init();
 	void __cleanup();

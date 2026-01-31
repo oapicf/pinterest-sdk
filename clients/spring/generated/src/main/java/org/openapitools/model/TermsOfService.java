@@ -22,55 +22,35 @@ import javax.annotation.Generated;
  * TermsOfService
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TermsOfService {
-
-  private @Nullable String id;
-
-  private JsonNullable<String> html = JsonNullable.<String>undefined();
-
-  private @Nullable Boolean hasAccepted;
 
   private @Nullable String adAccountId;
 
-  public TermsOfService id(@Nullable String id) {
-    this.id = id;
+  private @Nullable Boolean hasAccepted;
+
+  private JsonNullable<String> html = JsonNullable.<String>undefined();
+
+  private @Nullable String id;
+
+  public TermsOfService adAccountId(@Nullable String adAccountId) {
+    this.adAccountId = adAccountId;
     return this;
   }
 
   /**
-   * The ID of the terms of service
-   * @return id
+   * The ID of the ad account.
+   * @return adAccountId
    */
   
-  @Schema(name = "id", example = "2650449554526", description = "The ID of the terms of service", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("id")
-  public @Nullable String getId() {
-    return id;
+  @Schema(name = "ad_account_id", example = "549755885175", description = "The ID of the ad account.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("ad_account_id")
+  public @Nullable String getAdAccountId() {
+    return adAccountId;
   }
 
-  public void setId(@Nullable String id) {
-    this.id = id;
-  }
-
-  public TermsOfService html(String html) {
-    this.html = JsonNullable.of(html);
-    return this;
-  }
-
-  /**
-   * The terms of service content
-   * @return html
-   */
-  
-  @Schema(name = "html", example = "example test", description = "The terms of service content", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("html")
-  public JsonNullable<String> getHtml() {
-    return html;
-  }
-
-  public void setHtml(JsonNullable<String> html) {
-    this.html = html;
+  public void setAdAccountId(@Nullable String adAccountId) {
+    this.adAccountId = adAccountId;
   }
 
   public TermsOfService hasAccepted(@Nullable Boolean hasAccepted) {
@@ -93,24 +73,44 @@ public class TermsOfService {
     this.hasAccepted = hasAccepted;
   }
 
-  public TermsOfService adAccountId(@Nullable String adAccountId) {
-    this.adAccountId = adAccountId;
+  public TermsOfService html(String html) {
+    this.html = JsonNullable.of(html);
     return this;
   }
 
   /**
-   * The ID of the ad account.
-   * @return adAccountId
+   * The terms of service content
+   * @return html
    */
   
-  @Schema(name = "ad_account_id", example = "549755885175", description = "The ID of the ad account.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("ad_account_id")
-  public @Nullable String getAdAccountId() {
-    return adAccountId;
+  @Schema(name = "html", example = "example test", description = "The terms of service content", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("html")
+  public JsonNullable<String> getHtml() {
+    return html;
   }
 
-  public void setAdAccountId(@Nullable String adAccountId) {
-    this.adAccountId = adAccountId;
+  public void setHtml(JsonNullable<String> html) {
+    this.html = html;
+  }
+
+  public TermsOfService id(@Nullable String id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * The ID of the terms of service
+   * @return id
+   */
+  
+  @Schema(name = "id", example = "2650449554526", description = "The ID of the terms of service", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("id")
+  public @Nullable String getId() {
+    return id;
+  }
+
+  public void setId(@Nullable String id) {
+    this.id = id;
   }
 
   @Override
@@ -122,10 +122,10 @@ public class TermsOfService {
       return false;
     }
     TermsOfService termsOfService = (TermsOfService) o;
-    return Objects.equals(this.id, termsOfService.id) &&
-        equalsNullable(this.html, termsOfService.html) &&
+    return Objects.equals(this.adAccountId, termsOfService.adAccountId) &&
         Objects.equals(this.hasAccepted, termsOfService.hasAccepted) &&
-        Objects.equals(this.adAccountId, termsOfService.adAccountId);
+        equalsNullable(this.html, termsOfService.html) &&
+        Objects.equals(this.id, termsOfService.id);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -134,7 +134,7 @@ public class TermsOfService {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, hashCodeNullable(html), hasAccepted, adAccountId);
+    return Objects.hash(adAccountId, hasAccepted, hashCodeNullable(html), id);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -148,10 +148,10 @@ public class TermsOfService {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TermsOfService {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    html: ").append(toIndentedString(html)).append("\n");
-    sb.append("    hasAccepted: ").append(toIndentedString(hasAccepted)).append("\n");
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
+    sb.append("    hasAccepted: ").append(toIndentedString(hasAccepted)).append("\n");
+    sb.append("    html: ").append(toIndentedString(html)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

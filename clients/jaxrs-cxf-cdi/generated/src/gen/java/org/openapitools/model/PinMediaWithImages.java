@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.ImageMetadata;
-import org.openapitools.model.PinMedia;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -21,9 +20,42 @@ import java.util.Objects;
 
 
 @ApiModel(description = "Pin with multiple images.")
-public class PinMediaWithImages extends PinMedia  {
+public class PinMediaWithImages   {
   
   private List<@Valid ImageMetadata> items = new ArrayList<>();
+
+
+public enum MediaTypeEnum {
+
+    @JsonProperty("multiple_images") MULTIPLE_IMAGES(String.valueOf("multiple_images"));
+
+
+    private String value;
+
+    MediaTypeEnum(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static MediaTypeEnum fromValue(String value) {
+        for (MediaTypeEnum b : MediaTypeEnum.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+}
+
+  private MediaTypeEnum mediaType;
 
   /**
    **/
@@ -51,6 +83,25 @@ public class PinMediaWithImages extends PinMedia  {
   }
 
 
+  /**
+   **/
+  public PinMediaWithImages mediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("media_type")
+  @NotNull
+  public MediaTypeEnum getMediaType() {
+    return mediaType;
+  }
+  public void setMediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -61,20 +112,22 @@ public class PinMediaWithImages extends PinMedia  {
       return false;
     }
     PinMediaWithImages pinMediaWithImages = (PinMediaWithImages) o;
-    return super.equals(o) && Objects.equals(this.items, pinMediaWithImages.items);
+    return Objects.equals(this.items, pinMediaWithImages.items) &&
+        Objects.equals(this.mediaType, pinMediaWithImages.mediaType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode(), items);
+    return Objects.hash(items, mediaType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaWithImages {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

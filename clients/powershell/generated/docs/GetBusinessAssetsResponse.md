@@ -3,17 +3,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AssetId** | **String** | Unique identifier of a business asset. | [optional] 
-**AssetType** | **String** | Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP. | [optional] 
 **AssetGroupInfo** | [**AssetGroupBinding**](AssetGroupBinding.md) |  | [optional] 
+**AssetId** | **String** | Unique identifier of a business asset. | [optional] 
+**AssetType** | **String** | Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. | [optional] 
+**CatalogInfo** | [**GetBusinessAssetsResponseCatalogInfo**](GetBusinessAssetsResponseCatalogInfo.md) |  | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$GetBusinessAssetsResponse = Initialize-PSOpenAPIToolsGetBusinessAssetsResponse  -AssetId 549755885175 `
+$GetBusinessAssetsResponse = Initialize-PSOpenAPIToolsGetBusinessAssetsResponse  -AssetGroupInfo null `
+ -AssetId 549755885175 `
  -AssetType AD_ACCOUNT `
- -AssetGroupInfo null
+ -CatalogInfo null
 ```
 
 - Convert the resource to JSON

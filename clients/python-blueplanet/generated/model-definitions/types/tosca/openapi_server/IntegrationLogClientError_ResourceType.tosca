@@ -1,0 +1,75 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server IntegrationLogClientError"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a IntegrationLogClientError"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  IntegrationLogClientError {
+    title = IntegrationLogClientError
+    description = IntegrationLogClientError
+    derivedFrom = Root
+    properties {
+        cause {
+          type =  string
+          description = "Original cause of the error."
+          optional = false
+        }
+        column_number {
+          type =  integer
+          description = "Column number in the line of the file that raised the error."
+          optional = false
+        }
+        file_name {
+          type =  string
+          description = "Filename where the error happened."
+          optional = false
+        }
+        line_number {
+          type =  integer
+          description = "Line number where the error happened."
+          optional = false
+        }
+        message {
+          type =  string
+          description = "Human-readable description of the error."
+          optional = false
+        }
+        message_detail {
+          type =  string
+          description = "More detail about the message."
+          optional = false
+        }
+        name {
+          type =  string
+          description = "Filename where the error happened."
+          optional = false
+        }
+        number {
+          type =  integer
+          description = "Integer that specifies the error code."
+          optional = false
+        }
+        stack_trace {
+          type =  string
+          description = "Stack trace of where the error happened."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  IntegrationLogClientError {
+    title = IntegrationLogClientError
+    description = IntegrationLogClientError
+    implements = openapi_server.resourceTypes.IntegrationLogClientError
+
+  }
+}

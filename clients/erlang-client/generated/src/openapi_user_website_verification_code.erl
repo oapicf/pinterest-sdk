@@ -5,22 +5,22 @@
 -export_type([openapi_user_website_verification_code/0]).
 
 -type openapi_user_website_verification_code() ::
-    #{ 'verification_code' => binary(),
-       'dns_txt_record' => binary(),
-       'metatag' => binary(),
+    #{ 'dns_txt_record' => binary(),
+       'file_content' => binary(),
        'filename' => binary(),
-       'file_content' => binary()
+       'metatag' => binary(),
+       'verification_code' => binary()
      }.
 
-encode(#{ 'verification_code' := VerificationCode,
-          'dns_txt_record' := DnsTxtRecord,
-          'metatag' := Metatag,
+encode(#{ 'dns_txt_record' := DnsTxtRecord,
+          'file_content' := FileContent,
           'filename' := Filename,
-          'file_content' := FileContent
+          'metatag' := Metatag,
+          'verification_code' := VerificationCode
         }) ->
-    #{ 'verification_code' => VerificationCode,
-       'dns_txt_record' => DnsTxtRecord,
-       'metatag' => Metatag,
+    #{ 'dns_txt_record' => DnsTxtRecord,
+       'file_content' => FileContent,
        'filename' => Filename,
-       'file_content' => FileContent
+       'metatag' => Metatag,
+       'verification_code' => VerificationCode
      }.

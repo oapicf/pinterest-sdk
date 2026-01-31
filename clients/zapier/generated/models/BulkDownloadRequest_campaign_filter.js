@@ -7,9 +7,10 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}start_time`,
-                label: `Unix UTC timestamp. - [${labelPrefix}start_time]`,
+                key: `${keyPrefix}campaign_status`,
+                list: true,
                 type: 'string',
+                ...CampaignSummaryStatus.fields(`${keyPrefix}campaign_status`, isInput),
             },
             {
                 key: `${keyPrefix}end_time`,
@@ -22,27 +23,26 @@ module.exports = {
                 type: 'string',
             },
             {
-                key: `${keyPrefix}campaign_status`,
-                list: true,
-                type: 'string',
-                ...CampaignSummaryStatus.fields(`${keyPrefix}campaign_status`, isInput),
-            },
-            {
                 key: `${keyPrefix}objective_type`,
                 list: true,
                 type: 'string',
                 ...ObjectiveType.fields(`${keyPrefix}objective_type`, isInput),
+            },
+            {
+                key: `${keyPrefix}start_time`,
+                label: `Unix UTC timestamp. - [${labelPrefix}start_time]`,
+                type: 'string',
             },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'start_time': bundle.inputData?.[`${keyPrefix}start_time`],
+            'campaign_status': utils.childMapping(bundle.inputData?.[`${keyPrefix}campaign_status`], `${keyPrefix}campaign_status`, CampaignSummaryStatus),
             'end_time': bundle.inputData?.[`${keyPrefix}end_time`],
             'name': bundle.inputData?.[`${keyPrefix}name`],
-            'campaign_status': utils.childMapping(bundle.inputData?.[`${keyPrefix}campaign_status`], `${keyPrefix}campaign_status`, CampaignSummaryStatus),
             'objective_type': utils.childMapping(bundle.inputData?.[`${keyPrefix}objective_type`], `${keyPrefix}objective_type`, ObjectiveType),
+            'start_time': bundle.inputData?.[`${keyPrefix}start_time`],
         }
     },
 }

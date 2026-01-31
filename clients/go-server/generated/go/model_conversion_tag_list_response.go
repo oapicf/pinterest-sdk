@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,13 +16,13 @@ package openapi
 
 type ConversionTagListResponse struct {
 
-	Items []ConversionTagResponse `json:"items,omitempty"`
+	Items []ConversionTag `json:"items,omitempty"`
 }
 
 // AssertConversionTagListResponseRequired checks if the required fields are not zero-ed
 func AssertConversionTagListResponseRequired(obj ConversionTagListResponse) error {
 	for _, el := range obj.Items {
-		if err := AssertConversionTagResponseRequired(el); err != nil {
+		if err := AssertConversionTagRequired(el); err != nil {
 			return err
 		}
 	}
@@ -32,7 +32,7 @@ func AssertConversionTagListResponseRequired(obj ConversionTagListResponse) erro
 // AssertConversionTagListResponseConstraints checks if the values respects the defined constraints
 func AssertConversionTagListResponseConstraints(obj ConversionTagListResponse) error {
 	for _, el := range obj.Items {
-		if err := AssertConversionTagResponseConstraints(el); err != nil {
+		if err := AssertConversionTagConstraints(el); err != nil {
 			return err
 		}
 	}

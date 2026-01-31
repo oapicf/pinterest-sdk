@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 Search pins by a given search term
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
 
 ### Example
 ```swift
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 # **searchUserPinsList**
 ```swift
-    open class func searchUserPinsList(query: String, adAccountId: String? = nil, bookmark: String? = nil, completion: @escaping (_ data: PinsList200Response?, _ error: Error?) -> Void)
+    open class func searchUserPinsList(query: String, adAccountId: String? = nil, bookmark: String? = nil, completion: @escaping (_ data: SearchUserPinsList200Response?, _ error: Error?) -> Void)
 ```
 
 Search user's Pins
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PinsList200Response**](PinsList200Response.md)
+[**SearchUserPinsList200Response**](SearchUserPinsList200Response.md)
 
 ### Authorization
 

@@ -8,6 +8,16 @@ import           TestImport
 spec :: Spec
 spec = withApp $ do
 
+    describe "postBusinessAccessBusinessHierarchyByTextBrandAccountsR" $
+        it "returns 501 Not Implemented" $ do
+            post $ BusinessAccessBusinessHierarchyByTextBrandAccountsR "7009386637860"
+            statusIs 501
+
+    describe "patchBusinessAccessBusinessHierarchyByTextBrandAccountsByTextR" $
+        it "returns 501 Not Implemented" $ do
+            performMethod "PATCH" $ BusinessAccessBusinessHierarchyByTextBrandAccountsByTextR "7009386637860" "729090764583391194"
+            statusIs 501
+
     describe "deleteBusinessesByTextMembersR" $
         it "returns 501 Not Implemented" $ do
             performMethod "DELETE" $ BusinessesByTextMembersR "729090764583391194"
@@ -31,6 +41,11 @@ spec = withApp $ do
     describe "getBusinessesByTextPartnersR" $
         it "returns 501 Not Implemented" $ do
             get $ BusinessesByTextPartnersR "729090764583391194"
+            statusIs 501
+
+    describe "patchBusinessesByTextSystemUsersByTextR" $
+        it "returns 501 Not Implemented" $ do
+            performMethod "PATCH" $ BusinessesByTextSystemUsersByTextR "729090764583391194" "729090764583391194"
             statusIs 501
 
     describe "patchBusinessesByTextMembersR" $

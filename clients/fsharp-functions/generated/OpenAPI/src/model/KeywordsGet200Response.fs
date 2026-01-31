@@ -12,10 +12,10 @@ module KeywordsGet200Response =
 
   [<CLIMutable>]
   type KeywordsGet200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : Keyword[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : Keyword[];
   }
 
   //#endregion

@@ -8,23 +8,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ConversionEventsDataInnerCustomDataContentsInner   {
   
   private String id;
+  private String itemBrand;
+  private String itemCategory;
+  private String itemName;
   private String itemPrice;
   private Long quantity;
-  private String itemName;
-  private String itemCategory;
-  private String itemBrand;
 
   public ConversionEventsDataInnerCustomDataContentsInner () {
 
   }
 
-  public ConversionEventsDataInnerCustomDataContentsInner (String id, String itemPrice, Long quantity, String itemName, String itemCategory, String itemBrand) {
+  public ConversionEventsDataInnerCustomDataContentsInner (String id, String itemBrand, String itemCategory, String itemName, String itemPrice, Long quantity) {
     this.id = id;
+    this.itemBrand = itemBrand;
+    this.itemCategory = itemCategory;
+    this.itemName = itemName;
     this.itemPrice = itemPrice;
     this.quantity = quantity;
-    this.itemName = itemName;
-    this.itemCategory = itemCategory;
-    this.itemBrand = itemBrand;
   }
 
     
@@ -34,6 +34,33 @@ public class ConversionEventsDataInnerCustomDataContentsInner   {
   }
   public void setId(String id) {
     this.id = id;
+  }
+
+    
+  @JsonProperty("item_brand")
+  public String getItemBrand() {
+    return itemBrand;
+  }
+  public void setItemBrand(String itemBrand) {
+    this.itemBrand = itemBrand;
+  }
+
+    
+  @JsonProperty("item_category")
+  public String getItemCategory() {
+    return itemCategory;
+  }
+  public void setItemCategory(String itemCategory) {
+    this.itemCategory = itemCategory;
+  }
+
+    
+  @JsonProperty("item_name")
+  public String getItemName() {
+    return itemName;
+  }
+  public void setItemName(String itemName) {
+    this.itemName = itemName;
   }
 
     
@@ -54,33 +81,6 @@ public class ConversionEventsDataInnerCustomDataContentsInner   {
     this.quantity = quantity;
   }
 
-    
-  @JsonProperty("item_name")
-  public String getItemName() {
-    return itemName;
-  }
-  public void setItemName(String itemName) {
-    this.itemName = itemName;
-  }
-
-    
-  @JsonProperty("item_category")
-  public String getItemCategory() {
-    return itemCategory;
-  }
-  public void setItemCategory(String itemCategory) {
-    this.itemCategory = itemCategory;
-  }
-
-    
-  @JsonProperty("item_brand")
-  public String getItemBrand() {
-    return itemBrand;
-  }
-  public void setItemBrand(String itemBrand) {
-    this.itemBrand = itemBrand;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -92,16 +92,16 @@ public class ConversionEventsDataInnerCustomDataContentsInner   {
     }
     ConversionEventsDataInnerCustomDataContentsInner conversionEventsDataInnerCustomDataContentsInner = (ConversionEventsDataInnerCustomDataContentsInner) o;
     return Objects.equals(id, conversionEventsDataInnerCustomDataContentsInner.id) &&
-        Objects.equals(itemPrice, conversionEventsDataInnerCustomDataContentsInner.itemPrice) &&
-        Objects.equals(quantity, conversionEventsDataInnerCustomDataContentsInner.quantity) &&
-        Objects.equals(itemName, conversionEventsDataInnerCustomDataContentsInner.itemName) &&
+        Objects.equals(itemBrand, conversionEventsDataInnerCustomDataContentsInner.itemBrand) &&
         Objects.equals(itemCategory, conversionEventsDataInnerCustomDataContentsInner.itemCategory) &&
-        Objects.equals(itemBrand, conversionEventsDataInnerCustomDataContentsInner.itemBrand);
+        Objects.equals(itemName, conversionEventsDataInnerCustomDataContentsInner.itemName) &&
+        Objects.equals(itemPrice, conversionEventsDataInnerCustomDataContentsInner.itemPrice) &&
+        Objects.equals(quantity, conversionEventsDataInnerCustomDataContentsInner.quantity);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, itemPrice, quantity, itemName, itemCategory, itemBrand);
+    return Objects.hash(id, itemBrand, itemCategory, itemName, itemPrice, quantity);
   }
 
   @Override
@@ -110,11 +110,11 @@ public class ConversionEventsDataInnerCustomDataContentsInner   {
     sb.append("class ConversionEventsDataInnerCustomDataContentsInner {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    itemBrand: ").append(toIndentedString(itemBrand)).append("\n");
+    sb.append("    itemCategory: ").append(toIndentedString(itemCategory)).append("\n");
+    sb.append("    itemName: ").append(toIndentedString(itemName)).append("\n");
     sb.append("    itemPrice: ").append(toIndentedString(itemPrice)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
-    sb.append("    itemName: ").append(toIndentedString(itemName)).append("\n");
-    sb.append("    itemCategory: ").append(toIndentedString(itemCategory)).append("\n");
-    sb.append("    itemBrand: ").append(toIndentedString(itemBrand)).append("\n");
     sb.append("}");
     return sb.toString();
   }

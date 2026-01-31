@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,24 +17,23 @@ package openapi
 // BulkUpsertRequestCreate - Request for creation of entities in bulk.
 type BulkUpsertRequestCreate struct {
 
-	Campaigns []CampaignCreateRequest `json:"campaigns,omitempty"`
-
 	AdGroups []AdGroupCreateRequest `json:"ad_groups,omitempty"`
 
 	Ads []AdCreateRequest `json:"ads,omitempty"`
 
-	ProductGroups []ProductGroupPromotionCreateRequest `json:"product_groups,omitempty"`
+	Campaigns []CampaignCreateRequest `json:"campaigns,omitempty"`
+
+	CatalogProductGroups []MultipleProductGroupsInner `json:"catalog_product_groups,omitempty"`
 
 	Keywords []KeywordsRequest `json:"keywords,omitempty"`
+
+	Labels []LabelCreateRequest `json:"labels,omitempty"`
+
+	ProductGroups []ProductGroupPromotionCreateRequest `json:"product_groups,omitempty"`
 }
 
 // AssertBulkUpsertRequestCreateRequired checks if the required fields are not zero-ed
 func AssertBulkUpsertRequestCreateRequired(obj BulkUpsertRequestCreate) error {
-	for _, el := range obj.Campaigns {
-		if err := AssertCampaignCreateRequestRequired(el); err != nil {
-			return err
-		}
-	}
 	for _, el := range obj.AdGroups {
 		if err := AssertAdGroupCreateRequestRequired(el); err != nil {
 			return err
@@ -45,8 +44,13 @@ func AssertBulkUpsertRequestCreateRequired(obj BulkUpsertRequestCreate) error {
 			return err
 		}
 	}
-	for _, el := range obj.ProductGroups {
-		if err := AssertProductGroupPromotionCreateRequestRequired(el); err != nil {
+	for _, el := range obj.Campaigns {
+		if err := AssertCampaignCreateRequestRequired(el); err != nil {
+			return err
+		}
+	}
+	for _, el := range obj.CatalogProductGroups {
+		if err := AssertMultipleProductGroupsInnerRequired(el); err != nil {
 			return err
 		}
 	}
@@ -55,16 +59,21 @@ func AssertBulkUpsertRequestCreateRequired(obj BulkUpsertRequestCreate) error {
 			return err
 		}
 	}
+	for _, el := range obj.Labels {
+		if err := AssertLabelCreateRequestRequired(el); err != nil {
+			return err
+		}
+	}
+	for _, el := range obj.ProductGroups {
+		if err := AssertProductGroupPromotionCreateRequestRequired(el); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 // AssertBulkUpsertRequestCreateConstraints checks if the values respects the defined constraints
 func AssertBulkUpsertRequestCreateConstraints(obj BulkUpsertRequestCreate) error {
-	for _, el := range obj.Campaigns {
-		if err := AssertCampaignCreateRequestConstraints(el); err != nil {
-			return err
-		}
-	}
 	for _, el := range obj.AdGroups {
 		if err := AssertAdGroupCreateRequestConstraints(el); err != nil {
 			return err
@@ -75,13 +84,28 @@ func AssertBulkUpsertRequestCreateConstraints(obj BulkUpsertRequestCreate) error
 			return err
 		}
 	}
-	for _, el := range obj.ProductGroups {
-		if err := AssertProductGroupPromotionCreateRequestConstraints(el); err != nil {
+	for _, el := range obj.Campaigns {
+		if err := AssertCampaignCreateRequestConstraints(el); err != nil {
+			return err
+		}
+	}
+	for _, el := range obj.CatalogProductGroups {
+		if err := AssertMultipleProductGroupsInnerConstraints(el); err != nil {
 			return err
 		}
 	}
 	for _, el := range obj.Keywords {
 		if err := AssertKeywordsRequestConstraints(el); err != nil {
+			return err
+		}
+	}
+	for _, el := range obj.Labels {
+		if err := AssertLabelCreateRequestConstraints(el); err != nil {
+			return err
+		}
+	}
+	for _, el := range obj.ProductGroups {
+		if err := AssertProductGroupPromotionCreateRequestConstraints(el); err != nil {
 			return err
 		}
 	}

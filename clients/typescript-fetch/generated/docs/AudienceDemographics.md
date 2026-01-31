@@ -8,10 +8,10 @@ Audience demographics
 Name | Type
 ------------ | -------------
 `ages` | [Array&lt;AudienceDemographicValue&gt;](AudienceDemographicValue.md)
-`genders` | [Array&lt;AudienceDemographicValue&gt;](AudienceDemographicValue.md)
-`devices` | [Array&lt;AudienceDemographicValue&gt;](AudienceDemographicValue.md)
-`metros` | [Array&lt;AudienceDemographicValue&gt;](AudienceDemographicValue.md)
 `countries` | [Array&lt;AudienceDemographicValue&gt;](AudienceDemographicValue.md)
+`devices` | [Array&lt;AudienceDemographicValue&gt;](AudienceDemographicValue.md)
+`genders` | [Array&lt;AudienceDemographicValue&gt;](AudienceDemographicValue.md)
+`metros` | [Array&lt;AudienceDemographicValue&gt;](AudienceDemographicValue.md)
 
 ## Example
 
@@ -21,10 +21,10 @@ import type { AudienceDemographics } from ''
 // TODO: Update the object below with actual values
 const example = {
   "ages": null,
-  "genders": null,
-  "devices": null,
-  "metros": null,
   "countries": null,
+  "devices": null,
+  "genders": null,
+  "metros": null,
 } satisfies AudienceDemographics
 
 console.log(example)

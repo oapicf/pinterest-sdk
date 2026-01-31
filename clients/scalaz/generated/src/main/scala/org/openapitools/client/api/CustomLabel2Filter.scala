@@ -12,7 +12,7 @@ import org.joda.time.DateTime
 import CustomLabel2Filter._
 
 case class CustomLabel2Filter (
-  CUSTOM_LABEL_2: CatalogsProductGroupMultipleStringCriteria)
+  CUSTOM_LABEL_2: CatalogsProductGroupFilterOperatorTypeCriteria)
 
 object CustomLabel2Filter {
   import DateTimeCodecs._

@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,9 +22,9 @@ var _ MappedNullable = &CatalogsReportDistributionIssueFilter{}
 
 // CatalogsReportDistributionIssueFilter struct for CatalogsReportDistributionIssueFilter
 type CatalogsReportDistributionIssueFilter struct {
-	ReportType string `json:"report_type"`
 	// Unique identifier of a catalog. If not given, oldest catalog will be used
 	CatalogId *string `json:"catalog_id,omitempty" validate:"regexp=^\\\\d+$"`
+	ReportType string `json:"report_type"`
 }
 
 type _CatalogsReportDistributionIssueFilter CatalogsReportDistributionIssueFilter
@@ -45,30 +45,6 @@ func NewCatalogsReportDistributionIssueFilter(reportType string) *CatalogsReport
 func NewCatalogsReportDistributionIssueFilterWithDefaults() *CatalogsReportDistributionIssueFilter {
 	this := CatalogsReportDistributionIssueFilter{}
 	return &this
-}
-
-// GetReportType returns the ReportType field value
-func (o *CatalogsReportDistributionIssueFilter) GetReportType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ReportType
-}
-
-// GetReportTypeOk returns a tuple with the ReportType field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsReportDistributionIssueFilter) GetReportTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ReportType, true
-}
-
-// SetReportType sets field value
-func (o *CatalogsReportDistributionIssueFilter) SetReportType(v string) {
-	o.ReportType = v
 }
 
 // GetCatalogId returns the CatalogId field value if set, zero value otherwise.
@@ -103,6 +79,30 @@ func (o *CatalogsReportDistributionIssueFilter) SetCatalogId(v string) {
 	o.CatalogId = &v
 }
 
+// GetReportType returns the ReportType field value
+func (o *CatalogsReportDistributionIssueFilter) GetReportType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ReportType
+}
+
+// GetReportTypeOk returns a tuple with the ReportType field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsReportDistributionIssueFilter) GetReportTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ReportType, true
+}
+
+// SetReportType sets field value
+func (o *CatalogsReportDistributionIssueFilter) SetReportType(v string) {
+	o.ReportType = v
+}
+
 func (o CatalogsReportDistributionIssueFilter) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -113,10 +113,10 @@ func (o CatalogsReportDistributionIssueFilter) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsReportDistributionIssueFilter) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["report_type"] = o.ReportType
 	if !IsNil(o.CatalogId) {
 		toSerialize["catalog_id"] = o.CatalogId
 	}
+	toSerialize["report_type"] = o.ReportType
 	return toSerialize, nil
 }
 

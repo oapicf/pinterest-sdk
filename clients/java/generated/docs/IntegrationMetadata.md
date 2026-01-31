@@ -8,20 +8,20 @@ Integration metadata
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **String** |  |  [optional] |
-|**externalBusinessId** | **String** |  |  [optional] |
-|**connectedMerchantId** | **String** |  |  [optional] |
-|**connectedUserId** | **String** |  |  [optional] [readonly] |
+|**additionalId1** | **String** |  |  [optional] |
 |**connectedAdvertiserId** | **String** |  |  [optional] [readonly] |
 |**connectedLbaId** | **String** |  |  [optional] |
+|**connectedMerchantId** | **String** |  |  [optional] |
 |**connectedTagId** | **String** |  |  [optional] |
+|**connectedUserId** | **String** |  |  [optional] [readonly] |
+|**createdTimestamp** | **BigDecimal** |  |  [optional] |
+|**externalBusinessId** | **String** |  |  [optional] |
+|**id** | **String** |  |  [optional] |
 |**partnerAccessTokenExpiry** | **BigDecimal** |  |  [optional] |
+|**partnerMetadata** | **String** |  |  [optional] |
 |**partnerRefreshTokenExpiry** | **BigDecimal** |  |  [optional] |
 |**scopes** | **String** |  |  [optional] |
-|**createdTimestamp** | **BigDecimal** |  |  [optional] |
 |**updatedTimestamp** | **BigDecimal** |  |  [optional] |
-|**additionalId1** | **String** |  |  [optional] |
-|**partnerMetadata** | **String** |  |  [optional] |
 
 
 

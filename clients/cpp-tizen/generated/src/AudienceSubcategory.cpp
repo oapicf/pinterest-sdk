@@ -23,16 +23,26 @@ AudienceSubcategory::~AudienceSubcategory()
 void
 AudienceSubcategory::__init()
 {
+	//id = std::string();
+	//index = double(0);
 	//key = std::string();
 	//name = std::string();
 	//ratio = double(0);
-	//index = double(0);
-	//id = std::string();
 }
 
 void
 AudienceSubcategory::__cleanup()
 {
+	//if(id != NULL) {
+	//
+	//delete id;
+	//id = NULL;
+	//}
+	//if(index != NULL) {
+	//
+	//delete index;
+	//index = NULL;
+	//}
 	//if(key != NULL) {
 	//
 	//delete key;
@@ -48,16 +58,6 @@ AudienceSubcategory::__cleanup()
 	//delete ratio;
 	//ratio = NULL;
 	//}
-	//if(index != NULL) {
-	//
-	//delete index;
-	//index = NULL;
-	//}
-	//if(id != NULL) {
-	//
-	//delete id;
-	//id = NULL;
-	//}
 	//
 }
 
@@ -66,6 +66,31 @@ AudienceSubcategory::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *idKey = "id";
+	node = json_object_get_member(pJsonObject, idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *indexKey = "index";
+	node = json_object_get_member(pJsonObject, indexKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("long long")) {
+			jsonToValue(&index, node, "long long", "");
+		} else {
+			
+			long long* obj = static_cast<long long*> (&index);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 	const gchar *keyKey = "key";
 	node = json_object_get_member(pJsonObject, keyKey);
 	if (node !=NULL) {
@@ -102,31 +127,6 @@ AudienceSubcategory::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *indexKey = "index";
-	node = json_object_get_member(pJsonObject, indexKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("long long")) {
-			jsonToValue(&index, node, "long long", "");
-		} else {
-			
-			long long* obj = static_cast<long long*> (&index);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *idKey = "id";
-	node = json_object_get_member(pJsonObject, idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&id, node, "std::string", "");
-		} else {
-			
-		}
-	}
 }
 
 AudienceSubcategory::AudienceSubcategory(char* json)
@@ -139,6 +139,29 @@ AudienceSubcategory::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("std::string")) {
+		std::string obj = getId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *idKey = "id";
+	json_object_set_member(pJsonObject, idKey, node);
+	if (isprimitive("long long")) {
+		long long obj = getIndex();
+		node = converttoJson(&obj, "long long", "");
+	}
+	else {
+		
+		long long obj = static_cast<long long> (getIndex());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *indexKey = "index";
+	json_object_set_member(pJsonObject, indexKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getKey();
 		node = converttoJson(&obj, "std::string", "");
@@ -171,35 +194,36 @@ AudienceSubcategory::toJson()
 	}
 	const gchar *ratioKey = "ratio";
 	json_object_set_member(pJsonObject, ratioKey, node);
-	if (isprimitive("long long")) {
-		long long obj = getIndex();
-		node = converttoJson(&obj, "long long", "");
-	}
-	else {
-		
-		long long obj = static_cast<long long> (getIndex());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *indexKey = "index";
-	json_object_set_member(pJsonObject, indexKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *idKey = "id";
-	json_object_set_member(pJsonObject, idKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+std::string
+AudienceSubcategory::getId()
+{
+	return id;
+}
+
+void
+AudienceSubcategory::setId(std::string  id)
+{
+	this->id = id;
+}
+
+long long
+AudienceSubcategory::getIndex()
+{
+	return index;
+}
+
+void
+AudienceSubcategory::setIndex(long long  index)
+{
+	this->index = index;
 }
 
 std::string
@@ -236,30 +260,6 @@ void
 AudienceSubcategory::setRatio(long long  ratio)
 {
 	this->ratio = ratio;
-}
-
-long long
-AudienceSubcategory::getIndex()
-{
-	return index;
-}
-
-void
-AudienceSubcategory::setIndex(long long  index)
-{
-	this->index = index;
-}
-
-std::string
-AudienceSubcategory::getId()
-{
-	return id;
-}
-
-void
-AudienceSubcategory::setId(std::string  id)
-{
-	this->id = id;
 }
 
 

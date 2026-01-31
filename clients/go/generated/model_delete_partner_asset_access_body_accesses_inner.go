@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,10 +22,10 @@ var _ MappedNullable = &DeletePartnerAssetAccessBodyAccessesInner{}
 
 // DeletePartnerAssetAccessBodyAccessesInner struct for DeletePartnerAssetAccessBodyAccessesInner
 type DeletePartnerAssetAccessBodyAccessesInner struct {
-	// Unique identifier of a business partner to update asset access to.
-	PartnerId string `json:"partner_id" validate:"regexp=^\\\\d+$"`
 	// Unique identifier of the business asset.
 	AssetId string `json:"asset_id" validate:"regexp=^\\\\d+$"`
+	// Unique identifier of a business partner to update asset access to.
+	PartnerId string `json:"partner_id" validate:"regexp=^\\\\d+$"`
 	// If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset.
 	PartnerType *string `json:"partner_type,omitempty"`
 }
@@ -36,10 +36,10 @@ type _DeletePartnerAssetAccessBodyAccessesInner DeletePartnerAssetAccessBodyAcce
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeletePartnerAssetAccessBodyAccessesInner(partnerId string, assetId string) *DeletePartnerAssetAccessBodyAccessesInner {
+func NewDeletePartnerAssetAccessBodyAccessesInner(assetId string, partnerId string) *DeletePartnerAssetAccessBodyAccessesInner {
 	this := DeletePartnerAssetAccessBodyAccessesInner{}
-	this.PartnerId = partnerId
 	this.AssetId = assetId
+	this.PartnerId = partnerId
 	var partnerType string = "INTERNAL"
 	this.PartnerType = &partnerType
 	return &this
@@ -53,30 +53,6 @@ func NewDeletePartnerAssetAccessBodyAccessesInnerWithDefaults() *DeletePartnerAs
 	var partnerType string = "INTERNAL"
 	this.PartnerType = &partnerType
 	return &this
-}
-
-// GetPartnerId returns the PartnerId field value
-func (o *DeletePartnerAssetAccessBodyAccessesInner) GetPartnerId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.PartnerId
-}
-
-// GetPartnerIdOk returns a tuple with the PartnerId field value
-// and a boolean to check if the value has been set.
-func (o *DeletePartnerAssetAccessBodyAccessesInner) GetPartnerIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.PartnerId, true
-}
-
-// SetPartnerId sets field value
-func (o *DeletePartnerAssetAccessBodyAccessesInner) SetPartnerId(v string) {
-	o.PartnerId = v
 }
 
 // GetAssetId returns the AssetId field value
@@ -101,6 +77,30 @@ func (o *DeletePartnerAssetAccessBodyAccessesInner) GetAssetIdOk() (*string, boo
 // SetAssetId sets field value
 func (o *DeletePartnerAssetAccessBodyAccessesInner) SetAssetId(v string) {
 	o.AssetId = v
+}
+
+// GetPartnerId returns the PartnerId field value
+func (o *DeletePartnerAssetAccessBodyAccessesInner) GetPartnerId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.PartnerId
+}
+
+// GetPartnerIdOk returns a tuple with the PartnerId field value
+// and a boolean to check if the value has been set.
+func (o *DeletePartnerAssetAccessBodyAccessesInner) GetPartnerIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PartnerId, true
+}
+
+// SetPartnerId sets field value
+func (o *DeletePartnerAssetAccessBodyAccessesInner) SetPartnerId(v string) {
+	o.PartnerId = v
 }
 
 // GetPartnerType returns the PartnerType field value if set, zero value otherwise.
@@ -145,8 +145,8 @@ func (o DeletePartnerAssetAccessBodyAccessesInner) MarshalJSON() ([]byte, error)
 
 func (o DeletePartnerAssetAccessBodyAccessesInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["partner_id"] = o.PartnerId
 	toSerialize["asset_id"] = o.AssetId
+	toSerialize["partner_id"] = o.PartnerId
 	if !IsNil(o.PartnerType) {
 		toSerialize["partner_type"] = o.PartnerType
 	}
@@ -158,8 +158,8 @@ func (o *DeletePartnerAssetAccessBodyAccessesInner) UnmarshalJSON(data []byte) (
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"partner_id",
 		"asset_id",
+		"partner_id",
 	}
 
 	allProperties := make(map[string]interface{})

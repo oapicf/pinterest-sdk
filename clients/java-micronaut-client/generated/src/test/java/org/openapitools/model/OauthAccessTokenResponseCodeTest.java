@@ -28,19 +28,19 @@ public class OauthAccessTokenResponseCodeTest {
     }
 
     /**
+     * Test the property 'refreshTokenExpiresAt'
+     */
+    @Test
+    public void refreshTokenExpiresAtTest() {
+        // TODO: test refreshTokenExpiresAt
+    }
+
+    /**
      * Test the property 'refreshTokenExpiresIn'
      */
     @Test
     public void refreshTokenExpiresInTest() {
         // TODO: test refreshTokenExpiresIn
-    }
-
-    /**
-     * Test the property 'responseType'
-     */
-    @Test
-    public void responseTypeTest() {
-        // TODO: test responseType
     }
 
     /**
@@ -52,14 +52,6 @@ public class OauthAccessTokenResponseCodeTest {
     }
 
     /**
-     * Test the property 'tokenType'
-     */
-    @Test
-    public void tokenTypeTest() {
-        // TODO: test tokenType
-    }
-
-    /**
      * Test the property 'expiresIn'
      */
     @Test
@@ -68,11 +60,27 @@ public class OauthAccessTokenResponseCodeTest {
     }
 
     /**
+     * Test the property 'responseType'
+     */
+    @Test
+    public void responseTypeTest() {
+        // TODO: test responseType
+    }
+
+    /**
      * Test the property 'scope'
      */
     @Test
     public void scopeTest() {
         // TODO: test scope
+    }
+
+    /**
+     * Test the property 'tokenType'
+     */
+    @Test
+    public void tokenTypeTest() {
+        // TODO: test tokenType
     }
 
 }

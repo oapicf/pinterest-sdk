@@ -49,7 +49,7 @@ interface BusinessAccessAssetsApi  {
     suspend fun assetGroupUpdate(businessId:kotlin.String?,updateAssetGroupBody:UpdateAssetGroupBody?,context:OperationRequest):Response<UpdateAssetGroupResponse>
     /* businessAssetMembersGet
      * Get members with access to asset */
-    suspend fun businessAssetMembersGet(businessId:kotlin.String?,assetId:kotlin.String?,bookmark:kotlin.String?,pageSize:kotlin.Int?,startIndex:kotlin.Int?,context:OperationRequest):Response<BusinessAssetMembersGet200Response>
+    suspend fun businessAssetMembersGet(businessId:kotlin.String?,assetId:kotlin.String?,fetchSystemUsers:kotlin.Boolean?,bookmark:kotlin.String?,pageSize:kotlin.Int?,startIndex:kotlin.Int?,context:OperationRequest):Response<BusinessAssetMembersGet200Response>
     /* businessAssetPartnersGet
      * Get partners with access to asset */
     suspend fun businessAssetPartnersGet(businessId:kotlin.String?,assetId:kotlin.String?,startIndex:kotlin.Int?,bookmark:kotlin.String?,pageSize:kotlin.Int?,context:OperationRequest):Response<BusinessAssetPartnersGet200Response>

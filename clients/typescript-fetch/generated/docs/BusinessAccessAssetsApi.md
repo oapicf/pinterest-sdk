@@ -249,7 +249,7 @@ example().catch(console.error);
 
 ## businessAssetMembersGet
 
-> BusinessAssetMembersGet200Response businessAssetMembersGet(businessId, assetId, bookmark, pageSize, startIndex)
+> BusinessAssetMembersGet200Response businessAssetMembersGet(businessId, assetId, fetchSystemUsers, bookmark, pageSize, startIndex)
 
 Get members with access to asset
 
@@ -277,6 +277,8 @@ async function example() {
     businessId: 729090764583391194,
     // string | Unique identifier of a business asset.
     assetId: 729090764583391194,
+    // boolean | Fetches system users if True. Fetches regular user employees if False. (optional)
+    fetchSystemUsers: true,
     // string | Cursor used to fetch the next page of items (optional)
     bookmark: bookmark_example,
     // number | Maximum number of items to include in a single page of the response. See documentation on <a href=\'/docs/reference/pagination/\'>Pagination</a> for more information. (optional)
@@ -304,6 +306,7 @@ example().catch(console.error);
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | `string` | Unique identifier of the requesting business. | [Defaults to `undefined`] |
 | **assetId** | `string` | Unique identifier of a business asset. | [Defaults to `undefined`] |
+| **fetchSystemUsers** | `boolean` | Fetches system users if True. Fetches regular user employees if False. | [Optional] [Defaults to `false`] |
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
 | **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
 | **startIndex** | `number` | An index to start fetching the results from. Only the results starting from this index will be returned. | [Optional] [Defaults to `0`] |
@@ -449,7 +452,7 @@ async function example() {
     childAssetId: 549764894835,
     // string | An asset group unique identifier. Used to fetch assets contained within the specified asset group. (optional)
     assetGroupId: 7078106104032,
-    // 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional)
+    // 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER' | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional)
     assetType: AD_ACCOUNT,
     // number | An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
     startIndex: 0,
@@ -480,7 +483,7 @@ example().catch(console.error);
 | **permissions** | `Array<PermissionsWithOwner>` | A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned. | [Optional] |
 | **childAssetId** | `string` | A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child. | [Optional] [Defaults to `undefined`] |
 | **assetGroupId** | `string` | An asset group unique identifier. Used to fetch assets contained within the specified asset group. | [Optional] [Defaults to `undefined`] |
-| **assetType** | `AD_ACCOUNT`, `PROFILE`, `ASSET_GROUP` | A resource type to filter the assets by. Only assets of the specified type will be returned. | [Optional] [Defaults to `&#39;AD_ACCOUNT&#39;`] [Enum: AD_ACCOUNT, PROFILE, ASSET_GROUP] |
+| **assetType** | `AD_ACCOUNT`, `PROFILE`, `ASSET_GROUP`, `CATALOG`, `CONSUMER` | A resource type to filter the assets by. Only assets of the specified type will be returned. | [Optional] [Defaults to `&#39;AD_ACCOUNT&#39;`] [Enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER] |
 | **startIndex** | `number` | An index to start fetching the results from. Only the results starting from this index will be returned. | [Optional] [Defaults to `0`] |
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
 | **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
@@ -538,7 +541,7 @@ async function example() {
     businessId: 729090764583391194,
     // string | The member id to fetch assets for.
     memberId: 729090764583391194,
-    // 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional)
+    // 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER' | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional)
     assetType: AD_ACCOUNT,
     // number | An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
     startIndex: 0,
@@ -567,7 +570,7 @@ example().catch(console.error);
 |------------- | ------------- | ------------- | -------------|
 | **businessId** | `string` | Unique identifier of the requesting business. | [Defaults to `undefined`] |
 | **memberId** | `string` | The member id to fetch assets for. | [Defaults to `undefined`] |
-| **assetType** | `AD_ACCOUNT`, `PROFILE`, `ASSET_GROUP` | A resource type to filter the assets by. Only assets of the specified type will be returned. | [Optional] [Defaults to `&#39;AD_ACCOUNT&#39;`] [Enum: AD_ACCOUNT, PROFILE, ASSET_GROUP] |
+| **assetType** | `AD_ACCOUNT`, `PROFILE`, `ASSET_GROUP`, `CATALOG`, `CONSUMER` | A resource type to filter the assets by. Only assets of the specified type will be returned. | [Optional] [Defaults to `&#39;AD_ACCOUNT&#39;`] [Enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER] |
 | **startIndex** | `number` | An index to start fetching the results from. Only the results starting from this index will be returned. | [Optional] [Defaults to `0`] |
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |
 | **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
@@ -777,7 +780,7 @@ async function example() {
     partnerId: 729090764583391194,
     // PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner\'s business asset. (optional)
     partnerType: INTERNAL,
-    // 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional)
+    // 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CATALOG' | 'CONSUMER' | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional)
     assetType: AD_ACCOUNT,
     // number | An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
     startIndex: 0,
@@ -807,7 +810,7 @@ example().catch(console.error);
 | **businessId** | `string` | Unique identifier of the requesting business. | [Defaults to `undefined`] |
 | **partnerId** | `string` | The partner id to be bound to the Business | [Defaults to `undefined`] |
 | **partnerType** | `PartnerType` | Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner\&#39;s business asset. | [Optional] [Defaults to `undefined`] [Enum: INTERNAL, EXTERNAL] |
-| **assetType** | `AD_ACCOUNT`, `PROFILE`, `ASSET_GROUP` | A resource type to filter the assets by. Only assets of the specified type will be returned. | [Optional] [Defaults to `&#39;AD_ACCOUNT&#39;`] [Enum: AD_ACCOUNT, PROFILE, ASSET_GROUP] |
+| **assetType** | `AD_ACCOUNT`, `PROFILE`, `ASSET_GROUP`, `CATALOG`, `CONSUMER` | A resource type to filter the assets by. Only assets of the specified type will be returned. | [Optional] [Defaults to `&#39;AD_ACCOUNT&#39;`] [Enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER] |
 | **startIndex** | `number` | An index to start fetching the results from. Only the results starting from this index will be returned. | [Optional] [Defaults to `0`] |
 | **pageSize** | `number` | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information. | [Optional] [Defaults to `25`] |
 | **bookmark** | `string` | Cursor used to fetch the next page of items | [Optional] [Defaults to `undefined`] |

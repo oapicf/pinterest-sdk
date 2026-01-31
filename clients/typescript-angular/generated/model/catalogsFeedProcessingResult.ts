@@ -10,6 +10,7 @@
 import { CatalogsFeedProductCounts } from './catalogsFeedProductCounts';
 import { CatalogsFeedValidationDetails } from './catalogsFeedValidationDetails';
 import { CatalogsFeedProcessingStatus } from './catalogsFeedProcessingStatus';
+import { CatalogsFeedVideoCounts } from './catalogsFeedVideoCounts';
 import { CatalogsFeedIngestionDetails } from './catalogsFeedIngestionDetails';
 
 
@@ -18,9 +19,10 @@ export interface CatalogsFeedProcessingResult {
     id: string;
     updated_at: string;
     ingestion_details: CatalogsFeedIngestionDetails;
-    status: CatalogsFeedProcessingStatus;
     product_counts: CatalogsFeedProductCounts | null;
+    status: CatalogsFeedProcessingStatus;
     validation_details: CatalogsFeedValidationDetails;
+    video_counts?: CatalogsFeedVideoCounts;
 }
 export namespace CatalogsFeedProcessingResult {
 }

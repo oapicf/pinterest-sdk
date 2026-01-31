@@ -11,8 +11,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * Account
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class Account   {
+  @JsonProperty("about")
+  private String about;
+
   /**
    * Type of account
    */
@@ -47,29 +50,11 @@ public class Account   {
   @JsonProperty("account_type")
   private AccountTypeEnum accountType;
 
-  @JsonProperty("id")
-  private String id;
-
-  @JsonProperty("profile_image")
-  private String profileImage;
-
-  @JsonProperty("website_url")
-  private String websiteUrl;
-
-  @JsonProperty("username")
-  private String username;
-
-  @JsonProperty("about")
-  private String about;
-
-  @JsonProperty("business_name")
-  private String businessName;
-
   @JsonProperty("board_count")
   private Integer boardCount;
 
-  @JsonProperty("pin_count")
-  private Integer pinCount;
+  @JsonProperty("business_name")
+  private String businessName;
 
   @JsonProperty("follower_count")
   private Integer followerCount;
@@ -77,8 +62,41 @@ public class Account   {
   @JsonProperty("following_count")
   private Integer followingCount;
 
+  @JsonProperty("id")
+  private String id;
+
   @JsonProperty("monthly_views")
   private Integer monthlyViews;
+
+  @JsonProperty("pin_count")
+  private Integer pinCount;
+
+  @JsonProperty("profile_image")
+  private String profileImage;
+
+  @JsonProperty("username")
+  private String username;
+
+  @JsonProperty("website_url")
+  private String websiteUrl;
+
+  public Account about(String about) {
+    this.about = about;
+    return this;
+  }
+
+   /**
+   * Profile about description.
+   * @return about
+  **/
+  @ApiModelProperty(value = "Profile about description.")
+  public String getAbout() {
+    return about;
+  }
+
+  public void setAbout(String about) {
+    this.about = about;
+  }
 
   public Account accountType(AccountTypeEnum accountType) {
     this.accountType = accountType;
@@ -98,94 +116,13 @@ public class Account   {
     this.accountType = accountType;
   }
 
-  public Account id(String id) {
-    this.id = id;
-    return this;
-  }
-
    /**
-   * User account ID.
-   * @return id
+   * User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
+   * @return boardCount
   **/
-  @ApiModelProperty(example = "2783136121146311751", value = "User account ID.")
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public Account profileImage(String profileImage) {
-    this.profileImage = profileImage;
-    return this;
-  }
-
-   /**
-   * Get profileImage
-   * @return profileImage
-  **/
-  @ApiModelProperty(value = "")
-  public String getProfileImage() {
-    return profileImage;
-  }
-
-  public void setProfileImage(String profileImage) {
-    this.profileImage = profileImage;
-  }
-
-  public Account websiteUrl(String websiteUrl) {
-    this.websiteUrl = websiteUrl;
-    return this;
-  }
-
-   /**
-   * Get websiteUrl
-   * @return websiteUrl
-  **/
-  @ApiModelProperty(value = "")
-  public String getWebsiteUrl() {
-    return websiteUrl;
-  }
-
-  public void setWebsiteUrl(String websiteUrl) {
-    this.websiteUrl = websiteUrl;
-  }
-
-  public Account username(String username) {
-    this.username = username;
-    return this;
-  }
-
-   /**
-   * Get username
-   * @return username
-  **/
-  @ApiModelProperty(value = "")
-  public String getUsername() {
-    return username;
-  }
-
-  public void setUsername(String username) {
-    this.username = username;
-  }
-
-  public Account about(String about) {
-    this.about = about;
-    return this;
-  }
-
-   /**
-   * Profile about description.
-   * @return about
-  **/
-  @ApiModelProperty(value = "Profile about description.")
-  public String getAbout() {
-    return about;
-  }
-
-  public void setAbout(String about) {
-    this.about = about;
+  @ApiModelProperty(example = "14", value = "User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.")
+  public Integer getBoardCount() {
+    return boardCount;
   }
 
   public Account businessName(String businessName) {
@@ -207,24 +144,6 @@ public class Account   {
   }
 
    /**
-   * User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
-   * @return boardCount
-  **/
-  @ApiModelProperty(example = "14", value = "User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.")
-  public Integer getBoardCount() {
-    return boardCount;
-  }
-
-   /**
-   * User account pin count. This includes both created and saved pins.
-   * @return pinCount
-  **/
-  @ApiModelProperty(example = "339", value = "User account pin count. This includes both created and saved pins.")
-  public Integer getPinCount() {
-    return pinCount;
-  }
-
-   /**
    * User account follower count.
    * @return followerCount
   **/
@@ -242,6 +161,24 @@ public class Account   {
     return followingCount;
   }
 
+  public Account id(String id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * User account ID.
+   * @return id
+  **/
+  @ApiModelProperty(example = "2783136121146311751", value = "User account ID.")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
    /**
    * User account monthly views.
    * @return monthlyViews
@@ -249,6 +186,69 @@ public class Account   {
   @ApiModelProperty(example = "163", value = "User account monthly views.")
   public Integer getMonthlyViews() {
     return monthlyViews;
+  }
+
+   /**
+   * User account pin count. This includes both created and saved pins.
+   * @return pinCount
+  **/
+  @ApiModelProperty(example = "339", value = "User account pin count. This includes both created and saved pins.")
+  public Integer getPinCount() {
+    return pinCount;
+  }
+
+  public Account profileImage(String profileImage) {
+    this.profileImage = profileImage;
+    return this;
+  }
+
+   /**
+   * Get profileImage
+   * @return profileImage
+  **/
+  @ApiModelProperty(value = "")
+  public String getProfileImage() {
+    return profileImage;
+  }
+
+  public void setProfileImage(String profileImage) {
+    this.profileImage = profileImage;
+  }
+
+  public Account username(String username) {
+    this.username = username;
+    return this;
+  }
+
+   /**
+   * Get username
+   * @return username
+  **/
+  @ApiModelProperty(value = "")
+  public String getUsername() {
+    return username;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
+  public Account websiteUrl(String websiteUrl) {
+    this.websiteUrl = websiteUrl;
+    return this;
+  }
+
+   /**
+   * Get websiteUrl
+   * @return websiteUrl
+  **/
+  @ApiModelProperty(value = "")
+  public String getWebsiteUrl() {
+    return websiteUrl;
+  }
+
+  public void setWebsiteUrl(String websiteUrl) {
+    this.websiteUrl = websiteUrl;
   }
 
 
@@ -261,23 +261,23 @@ public class Account   {
       return false;
     }
     Account account = (Account) o;
-    return Objects.equals(this.accountType, account.accountType) &&
-        Objects.equals(this.id, account.id) &&
-        Objects.equals(this.profileImage, account.profileImage) &&
-        Objects.equals(this.websiteUrl, account.websiteUrl) &&
-        Objects.equals(this.username, account.username) &&
-        Objects.equals(this.about, account.about) &&
-        Objects.equals(this.businessName, account.businessName) &&
+    return Objects.equals(this.about, account.about) &&
+        Objects.equals(this.accountType, account.accountType) &&
         Objects.equals(this.boardCount, account.boardCount) &&
-        Objects.equals(this.pinCount, account.pinCount) &&
+        Objects.equals(this.businessName, account.businessName) &&
         Objects.equals(this.followerCount, account.followerCount) &&
         Objects.equals(this.followingCount, account.followingCount) &&
-        Objects.equals(this.monthlyViews, account.monthlyViews);
+        Objects.equals(this.id, account.id) &&
+        Objects.equals(this.monthlyViews, account.monthlyViews) &&
+        Objects.equals(this.pinCount, account.pinCount) &&
+        Objects.equals(this.profileImage, account.profileImage) &&
+        Objects.equals(this.username, account.username) &&
+        Objects.equals(this.websiteUrl, account.websiteUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountType, id, profileImage, websiteUrl, username, about, businessName, boardCount, pinCount, followerCount, followingCount, monthlyViews);
+    return Objects.hash(about, accountType, boardCount, businessName, followerCount, followingCount, id, monthlyViews, pinCount, profileImage, username, websiteUrl);
   }
 
   @Override
@@ -285,18 +285,18 @@ public class Account   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Account {\n");
     
-    sb.append("    accountType: ").append(toIndentedString(accountType)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    profileImage: ").append(toIndentedString(profileImage)).append("\n");
-    sb.append("    websiteUrl: ").append(toIndentedString(websiteUrl)).append("\n");
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    about: ").append(toIndentedString(about)).append("\n");
-    sb.append("    businessName: ").append(toIndentedString(businessName)).append("\n");
+    sb.append("    accountType: ").append(toIndentedString(accountType)).append("\n");
     sb.append("    boardCount: ").append(toIndentedString(boardCount)).append("\n");
-    sb.append("    pinCount: ").append(toIndentedString(pinCount)).append("\n");
+    sb.append("    businessName: ").append(toIndentedString(businessName)).append("\n");
     sb.append("    followerCount: ").append(toIndentedString(followerCount)).append("\n");
     sb.append("    followingCount: ").append(toIndentedString(followingCount)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    monthlyViews: ").append(toIndentedString(monthlyViews)).append("\n");
+    sb.append("    pinCount: ").append(toIndentedString(pinCount)).append("\n");
+    sb.append("    profileImage: ").append(toIndentedString(profileImage)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
+    sb.append("    websiteUrl: ").append(toIndentedString(websiteUrl)).append("\n");
     sb.append("}");
     return sb.toString();
   }

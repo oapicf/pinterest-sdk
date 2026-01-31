@@ -32,11 +32,11 @@ public class AudienceDemographicsTest {
     }
 
     /**
-     * Test the property 'genders'
+     * Test the property 'countries'
      */
     @Test
-    public void gendersTest() {
-        // TODO: test genders
+    public void countriesTest() {
+        // TODO: test countries
     }
 
     /**
@@ -48,19 +48,19 @@ public class AudienceDemographicsTest {
     }
 
     /**
+     * Test the property 'genders'
+     */
+    @Test
+    public void gendersTest() {
+        // TODO: test genders
+    }
+
+    /**
      * Test the property 'metros'
      */
     @Test
     public void metrosTest() {
         // TODO: test metros
-    }
-
-    /**
-     * Test the property 'countries'
-     */
-    @Test
-    public void countriesTest() {
-        // TODO: test countries
     }
 
 }

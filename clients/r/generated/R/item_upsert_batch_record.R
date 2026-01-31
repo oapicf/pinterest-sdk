@@ -7,33 +7,33 @@
 #' @title ItemUpsertBatchRecord
 #' @description ItemUpsertBatchRecord Class
 #' @format An \code{R6Class} generator object
-#' @field item_id The catalog item id in the merchant namespace character [optional]
 #' @field attributes  \link{ItemAttributesRequest} [optional]
+#' @field item_id The catalog item id in the merchant namespace character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 ItemUpsertBatchRecord <- R6::R6Class(
   "ItemUpsertBatchRecord",
   public = list(
-    `item_id` = NULL,
     `attributes` = NULL,
+    `item_id` = NULL,
 
     #' @description
     #' Initialize a new ItemUpsertBatchRecord class.
     #'
-    #' @param item_id The catalog item id in the merchant namespace
     #' @param attributes attributes
+    #' @param item_id The catalog item id in the merchant namespace
     #' @param ... Other optional arguments.
-    initialize = function(`item_id` = NULL, `attributes` = NULL, ...) {
+    initialize = function(`attributes` = NULL, `item_id` = NULL, ...) {
+      if (!is.null(`attributes`)) {
+        stopifnot(R6::is.R6(`attributes`))
+        self$`attributes` <- `attributes`
+      }
       if (!is.null(`item_id`)) {
         if (!(is.character(`item_id`) && length(`item_id`) == 1)) {
           stop(paste("Error! Invalid data for `item_id`. Must be a string:", `item_id`))
         }
         self$`item_id` <- `item_id`
-      }
-      if (!is.null(`attributes`)) {
-        stopifnot(R6::is.R6(`attributes`))
-        self$`attributes` <- `attributes`
       }
     },
 
@@ -68,13 +68,13 @@ ItemUpsertBatchRecord <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       ItemUpsertBatchRecordObject <- list()
-      if (!is.null(self$`item_id`)) {
-        ItemUpsertBatchRecordObject[["item_id"]] <-
-          self$`item_id`
-      }
       if (!is.null(self$`attributes`)) {
         ItemUpsertBatchRecordObject[["attributes"]] <-
           self$`attributes`$toSimpleType()
+      }
+      if (!is.null(self$`item_id`)) {
+        ItemUpsertBatchRecordObject[["item_id"]] <-
+          self$`item_id`
       }
       return(ItemUpsertBatchRecordObject)
     },
@@ -86,13 +86,13 @@ ItemUpsertBatchRecord <- R6::R6Class(
     #' @return the instance of ItemUpsertBatchRecord
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`item_id`)) {
-        self$`item_id` <- this_object$`item_id`
-      }
       if (!is.null(this_object$`attributes`)) {
         `attributes_object` <- ItemAttributesRequest$new()
         `attributes_object`$fromJSON(jsonlite::toJSON(this_object$`attributes`, auto_unbox = TRUE, digits = NA))
         self$`attributes` <- `attributes_object`
+      }
+      if (!is.null(this_object$`item_id`)) {
+        self$`item_id` <- this_object$`item_id`
       }
       self
     },
@@ -115,8 +115,8 @@ ItemUpsertBatchRecord <- R6::R6Class(
     #' @return the instance of ItemUpsertBatchRecord
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`item_id` <- this_object$`item_id`
       self$`attributes` <- ItemAttributesRequest$new()$fromJSON(jsonlite::toJSON(this_object$`attributes`, auto_unbox = TRUE, digits = NA))
+      self$`item_id` <- this_object$`item_id`
       self
     },
 

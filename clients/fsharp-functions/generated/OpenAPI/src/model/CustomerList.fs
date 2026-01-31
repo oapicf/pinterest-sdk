@@ -14,6 +14,8 @@ module CustomerList =
     AdAccountId : string;
     [<JsonProperty(PropertyName = "created_time")>]
     CreatedTime : decimal;
+    [<JsonProperty(PropertyName = "exceptions")>]
+    Exceptions : obj;
     [<JsonProperty(PropertyName = "id")>]
     Id : string;
     [<JsonProperty(PropertyName = "name")>]
@@ -30,8 +32,6 @@ module CustomerList =
     Type : string;
     [<JsonProperty(PropertyName = "updated_time")>]
     UpdatedTime : decimal;
-    [<JsonProperty(PropertyName = "exceptions")>]
-    Exceptions : obj;
   }
 
   //#endregion

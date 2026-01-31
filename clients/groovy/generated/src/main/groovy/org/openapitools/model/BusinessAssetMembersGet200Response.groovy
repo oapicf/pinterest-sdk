@@ -10,8 +10,8 @@ import org.openapitools.model.UserSingleAssetBinding;
 
 @Canonical
 class BusinessAssetMembersGet200Response {
-    /* List of members with permissions to the asset. */
-    List<UserSingleAssetBinding> items = new ArrayList<>()
     
     String bookmark
+    /* List of members with permissions to the asset. */
+    List<UserSingleAssetBinding> items = new ArrayList<>()
 }

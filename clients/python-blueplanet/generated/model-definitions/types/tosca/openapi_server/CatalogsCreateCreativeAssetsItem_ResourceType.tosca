@@ -1,0 +1,47 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsCreateCreativeAssetsItem"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsCreateCreativeAssetsItem"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsCreativeAssetsAttributes = openapi_server.resourceTypes.CatalogsCreativeAssetsAttributes
+}
+resourceTypes {
+
+  CatalogsCreateCreativeAssetsItem {
+    title = CatalogsCreateCreativeAssetsItem
+    description = CatalogsCreateCreativeAssetsItem
+    derivedFrom = Root
+    properties {
+        attributes {
+          type = CatalogsCreativeAssetsAttributes
+          description = ""
+          optional = true
+        }
+        creative_assets_id {
+          type =  string
+          description = "The catalog creative assets id in the merchant namespace"
+          optional = true
+        }
+        operation {
+          type =  string
+          description = ""
+          enum = ["CREATE"]
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsCreateCreativeAssetsItem {
+    title = CatalogsCreateCreativeAssetsItem
+    description = CatalogsCreateCreativeAssetsItem
+    implements = openapi_server.resourceTypes.CatalogsCreateCreativeAssetsItem
+
+  }
+}

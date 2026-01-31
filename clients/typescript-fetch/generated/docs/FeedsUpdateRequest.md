@@ -6,12 +6,12 @@
 
 Name | Type
 ------------ | -------------
+`credentials` | [CatalogsFeedCredentials](CatalogsFeedCredentials.md)
 `defaultAvailability` | [ProductAvailabilityType](ProductAvailabilityType.md)
 `defaultCurrency` | [NullableCurrency](NullableCurrency.md)
-`name` | string
 `format` | [CatalogsFormat](CatalogsFormat.md)
-`credentials` | [CatalogsFeedCredentials](CatalogsFeedCredentials.md)
 `location` | string
+`name` | string
 `preferredProcessingSchedule` | [CatalogsFeedProcessingSchedule](CatalogsFeedProcessingSchedule.md)
 `status` | [CatalogsStatus](CatalogsStatus.md)
 
@@ -22,12 +22,12 @@ import type { FeedsUpdateRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "credentials": null,
   "defaultAvailability": null,
   "defaultCurrency": null,
-  "name": null,
   "format": null,
-  "credentials": null,
   "location": null,
+  "name": null,
   "preferredProcessingSchedule": null,
   "status": null,
 } satisfies FeedsUpdateRequest

@@ -12,14 +12,14 @@ module ItemProcessingRecord =
 
   [<CLIMutable>]
   type ItemProcessingRecord = {
-    [<JsonProperty(PropertyName = "item_id")>]
-    ItemId : string;
     [<JsonProperty(PropertyName = "errors")>]
     Errors : ItemValidationEvent[];
-    [<JsonProperty(PropertyName = "warnings")>]
-    Warnings : ItemValidationEvent[];
+    [<JsonProperty(PropertyName = "item_id")>]
+    ItemId : string;
     [<JsonProperty(PropertyName = "status")>]
     Status : ItemProcessingStatus;
+    [<JsonProperty(PropertyName = "warnings")>]
+    Warnings : ItemValidationEvent[];
   }
 
   //#endregion

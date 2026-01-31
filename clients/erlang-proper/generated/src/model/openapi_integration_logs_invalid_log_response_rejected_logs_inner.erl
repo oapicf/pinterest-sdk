@@ -9,10 +9,10 @@
 -export_type([openapi_integration_logs_invalid_log_response_rejected_logs_inner/0]).
 
 -type openapi_integration_logs_invalid_log_response_rejected_logs_inner() ::
-  [ {'log_index', integer() }
-  | {'field', binary() }
-  | {'value', binary() }
+  [ {'field', binary() }
+  | {'log_index', integer() }
   | {'reason', binary() }
+  | {'value', binary() }
   ].
 
 
@@ -20,10 +20,10 @@ openapi_integration_logs_invalid_log_response_rejected_logs_inner() ->
     openapi_integration_logs_invalid_log_response_rejected_logs_inner([]).
 
 openapi_integration_logs_invalid_log_response_rejected_logs_inner(Fields) ->
-  Default = [ {'log_index', integer() }
-            , {'field', binary() }
-            , {'value', binary() }
+  Default = [ {'field', binary() }
+            , {'log_index', integer() }
             , {'reason', binary() }
+            , {'value', binary() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

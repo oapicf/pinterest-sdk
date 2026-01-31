@@ -47,25 +47,11 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::string getOrganicPinId();
-
-	/*! \brief Set 
-	 */
-	void setOrganicPinId(std::string  organic_pin_id);
-	/*! \brief Get 
-	 */
 	std::string getAndroidDeepLink();
 
 	/*! \brief Set 
 	 */
 	void setAndroidDeepLink(std::string  android_deep_link);
-	/*! \brief Get 
-	 */
-	std::string getIosDeepLink();
-
-	/*! \brief Set 
-	 */
-	void setIosDeepLink(std::string  ios_deep_link);
 	/*! \brief Get 
 	 */
 	std::string getDestinationUrl();
@@ -75,6 +61,20 @@ public:
 	void setDestinationUrl(std::string  destination_url);
 	/*! \brief Get 
 	 */
+	std::string getIosDeepLink();
+
+	/*! \brief Set 
+	 */
+	void setIosDeepLink(std::string  ios_deep_link);
+	/*! \brief Get 
+	 */
+	std::string getOrganicPinId();
+
+	/*! \brief Set 
+	 */
+	void setOrganicPinId(std::string  organic_pin_id);
+	/*! \brief Get 
+	 */
 	long long getResultId();
 
 	/*! \brief Set 
@@ -82,10 +82,10 @@ public:
 	void setResultId(long long  result_id);
 
 private:
-	std::string organic_pin_id;
 	std::string android_deep_link;
-	std::string ios_deep_link;
 	std::string destination_url;
+	std::string ios_deep_link;
+	std::string organic_pin_id;
 	long long result_id;
 	void __init();
 	void __cleanup();

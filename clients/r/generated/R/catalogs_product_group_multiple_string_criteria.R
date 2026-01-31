@@ -7,16 +7,16 @@
 #' @title CatalogsProductGroupMultipleStringCriteria
 #' @description CatalogsProductGroupMultipleStringCriteria Class
 #' @format An \code{R6Class} generator object
-#' @field values  list(character)
 #' @field negated  character [optional]
+#' @field values  list(character)
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CatalogsProductGroupMultipleStringCriteria <- R6::R6Class(
   "CatalogsProductGroupMultipleStringCriteria",
   public = list(
-    `values` = NULL,
     `negated` = NULL,
+    `values` = NULL,
 
     #' @description
     #' Initialize a new CatalogsProductGroupMultipleStringCriteria class.
@@ -69,13 +69,13 @@ CatalogsProductGroupMultipleStringCriteria <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CatalogsProductGroupMultipleStringCriteriaObject <- list()
-      if (!is.null(self$`values`)) {
-        CatalogsProductGroupMultipleStringCriteriaObject[["values"]] <-
-          self$`values`
-      }
       if (!is.null(self$`negated`)) {
         CatalogsProductGroupMultipleStringCriteriaObject[["negated"]] <-
           self$`negated`
+      }
+      if (!is.null(self$`values`)) {
+        CatalogsProductGroupMultipleStringCriteriaObject[["values"]] <-
+          self$`values`
       }
       return(CatalogsProductGroupMultipleStringCriteriaObject)
     },
@@ -87,11 +87,11 @@ CatalogsProductGroupMultipleStringCriteria <- R6::R6Class(
     #' @return the instance of CatalogsProductGroupMultipleStringCriteria
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`values`)) {
-        self$`values` <- ApiClient$new()$deserializeObj(this_object$`values`, "array[character]", loadNamespace("openapi"))
-      }
       if (!is.null(this_object$`negated`)) {
         self$`negated` <- this_object$`negated`
+      }
+      if (!is.null(this_object$`values`)) {
+        self$`values` <- ApiClient$new()$deserializeObj(this_object$`values`, "array[character]", loadNamespace("openapi"))
       }
       self
     },
@@ -114,8 +114,8 @@ CatalogsProductGroupMultipleStringCriteria <- R6::R6Class(
     #' @return the instance of CatalogsProductGroupMultipleStringCriteria
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`values` <- ApiClient$new()$deserializeObj(this_object$`values`, "array[character]", loadNamespace("openapi"))
       self$`negated` <- this_object$`negated`
+      self$`values` <- ApiClient$new()$deserializeObj(this_object$`values`, "array[character]", loadNamespace("openapi"))
       self
     },
 

@@ -46,8 +46,8 @@ class KeywordsApi(
     } ~
     path("ad_accounts" / adAccountIdPattern / "keywords") { (adAccountId) => 
       get { 
-        parameters("campaign_id".as[String].?, "ad_group_id".as[String].?, "match_types".as[String].?, "page_size".as[Int].?(25), "bookmark".as[String].?) { (campaignId, adGroupId, matchTypes, pageSize, bookmark) => 
-            keywordsService.keywordsGet(adAccountId = adAccountId, campaignId = campaignId, adGroupId = adGroupId, matchTypes = matchTypes, pageSize = pageSize, bookmark = bookmark)
+        parameters("campaign_id".as[String].?, "ad_group_id".as[String].?, "ad_group_ids".as[String].?, "match_types".as[String].?, "page_size".as[Int].?(25), "bookmark".as[String].?) { (campaignId, adGroupId, adGroupIds, matchTypes, pageSize, bookmark) => 
+            keywordsService.keywordsGet(adAccountId = adAccountId, campaignId = campaignId, adGroupId = adGroupId, adGroupIds = adGroupIds, matchTypes = matchTypes, pageSize = pageSize, bookmark = bookmark)
         }
       }
     } ~
@@ -60,8 +60,8 @@ class KeywordsApi(
     } ~
     path("trends" / "keywords" / Segment / "top" / Segment) { (region, trendType) => 
       get { 
-        parameters("interests".as[String].?, "genders".as[String].?, "ages".as[String].?, "include_keywords".as[String].?, "normalize_against_group".as[Boolean].?(false), "limit".as[Int].?(50)) { (interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit) => 
-            keywordsService.trendingKeywordsList(region = region, trendType = trendType, interests = interests, genders = genders, ages = ages, includeKeywords = includeKeywords, normalizeAgainstGroup = normalizeAgainstGroup, limit = limit)
+        parameters("interests".as[String].?, "genders".as[String].?, "ages".as[String].?, "include_keywords".as[String].?, "normalize_against_group".as[Boolean].?(false), "limit".as[Int].?(50), "include_prediction".as[Boolean].?(false), "include_demographics".as[Boolean].?(false)) { (interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, includePrediction, includeDemographics) => 
+            keywordsService.trendingKeywordsList(region = region, trendType = trendType, interests = interests, genders = genders, ages = ages, includeKeywords = includeKeywords, normalizeAgainstGroup = normalizeAgainstGroup, limit = limit, includePrediction = includePrediction, includeDemographics = includeDemographics)
         }
       }
     }
@@ -104,7 +104,7 @@ trait KeywordsApiService {
    * Code: 200, Message: Success, DataType: KeywordsGet200Response
    * Code: 0, Message: Unexpected error, DataType: Error
    */
-  def keywordsGet(adAccountId: String, campaignId: Option[String], adGroupId: Option[String], matchTypes: Option[String], pageSize: Int, bookmark: Option[String])
+  def keywordsGet(adAccountId: String, campaignId: Option[String], adGroupId: Option[String], adGroupIds: Option[String], matchTypes: Option[String], pageSize: Int, bookmark: Option[String])
       (implicit toEntityMarshallerKeywordsGet200Response: ToEntityMarshaller[KeywordsGet200Response], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
   def keywordsUpdate200(responseKeywordsResponse: KeywordsResponse)(implicit toEntityMarshallerKeywordsResponse: ToEntityMarshaller[KeywordsResponse]): Route =
@@ -129,7 +129,7 @@ trait KeywordsApiService {
    * Code: 400, Message: Invalid trending keywords request parameters, DataType: Error
    * Code: 0, Message: Unexpected error, DataType: Error
    */
-  def trendingKeywordsList(region: String, trendType: String, interests: Option[String], genders: Option[String], ages: Option[String], includeKeywords: Option[String], normalizeAgainstGroup: Boolean, limit: Int)
+  def trendingKeywordsList(region: String, trendType: String, interests: Option[String], genders: Option[String], ages: Option[String], includeKeywords: Option[String], normalizeAgainstGroup: Boolean, limit: Int, includePrediction: Boolean, includeDemographics: Boolean)
       (implicit toEntityMarshallerTrendingKeywordsResponse: ToEntityMarshaller[TrendingKeywordsResponse], toEntityMarshallerError: ToEntityMarshaller[Error]): Route
 
 }

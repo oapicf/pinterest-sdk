@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AssetGroupId** | Pointer to **string** | Asset group id of the exception. | [optional] 
 **Code** | Pointer to **int32** | Error code associated with the error deleting asset group. | [optional] 
 **Message** | Pointer to **string** | Error message associated with the error deleting asset group. | [optional] 
-**AssetGroupId** | Pointer to **string** | Asset group id of the exception. | [optional] 
 
 ## Methods
 
@@ -26,6 +26,31 @@ will change when the set of required properties is changed
 NewDeleteAssetGroupResponseExceptionsInnerWithDefaults instantiates a new DeleteAssetGroupResponseExceptionsInner object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAssetGroupId
+
+`func (o *DeleteAssetGroupResponseExceptionsInner) GetAssetGroupId() string`
+
+GetAssetGroupId returns the AssetGroupId field if non-nil, zero value otherwise.
+
+### GetAssetGroupIdOk
+
+`func (o *DeleteAssetGroupResponseExceptionsInner) GetAssetGroupIdOk() (*string, bool)`
+
+GetAssetGroupIdOk returns a tuple with the AssetGroupId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAssetGroupId
+
+`func (o *DeleteAssetGroupResponseExceptionsInner) SetAssetGroupId(v string)`
+
+SetAssetGroupId sets AssetGroupId field to given value.
+
+### HasAssetGroupId
+
+`func (o *DeleteAssetGroupResponseExceptionsInner) HasAssetGroupId() bool`
+
+HasAssetGroupId returns a boolean if a field has been set.
 
 ### GetCode
 
@@ -76,31 +101,6 @@ SetMessage sets Message field to given value.
 `func (o *DeleteAssetGroupResponseExceptionsInner) HasMessage() bool`
 
 HasMessage returns a boolean if a field has been set.
-
-### GetAssetGroupId
-
-`func (o *DeleteAssetGroupResponseExceptionsInner) GetAssetGroupId() string`
-
-GetAssetGroupId returns the AssetGroupId field if non-nil, zero value otherwise.
-
-### GetAssetGroupIdOk
-
-`func (o *DeleteAssetGroupResponseExceptionsInner) GetAssetGroupIdOk() (*string, bool)`
-
-GetAssetGroupIdOk returns a tuple with the AssetGroupId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAssetGroupId
-
-`func (o *DeleteAssetGroupResponseExceptionsInner) SetAssetGroupId(v string)`
-
-SetAssetGroupId sets AssetGroupId field to given value.
-
-### HasAssetGroupId
-
-`func (o *DeleteAssetGroupResponseExceptionsInner) HasAssetGroupId() bool`
-
-HasAssetGroupId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

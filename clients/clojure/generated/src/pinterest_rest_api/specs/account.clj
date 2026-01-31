@@ -7,18 +7,18 @@
 
 (def account-data
   {
-   (ds/opt :account_type) string?
-   (ds/opt :id) string?
-   (ds/opt :profile_image) string?
-   (ds/opt :website_url) string?
-   (ds/opt :username) string?
    (ds/opt :about) string?
-   (ds/opt :business_name) string?
+   (ds/opt :account_type) string?
    (ds/opt :board_count) int?
-   (ds/opt :pin_count) int?
+   (ds/opt :business_name) string?
    (ds/opt :follower_count) int?
    (ds/opt :following_count) int?
+   (ds/opt :id) string?
    (ds/opt :monthly_views) int?
+   (ds/opt :pin_count) int?
+   (ds/opt :profile_image) string?
+   (ds/opt :username) string?
+   (ds/opt :website_url) string?
    })
 
 (def account-spec

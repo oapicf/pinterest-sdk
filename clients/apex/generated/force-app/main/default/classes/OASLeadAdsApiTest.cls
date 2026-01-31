@@ -3,7 +3,7 @@ private class OASLeadAdsApiTest {
     /**
      * Delete lead ads subscription
      *
-     * Delete an existing lead ads webhook subscription by ID.\n- Only requests for the OWNER or ADMIN of the ad_account will be allowed.\n\n&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Delete an existing lead ads webhook subscription by ID.\n  - Only requests for the OWNER or ADMIN of the ad_account will be allowed.\&#39;
      */
     @isTest
     private static void adAccountsSubscriptionsDelByIdTest() {
@@ -54,12 +54,28 @@ private class OASLeadAdsApiTest {
         expectedResponse = ;
         response = () api.adAccountsSubscriptionsDelById(params);
         System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize();
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = ;
+        response = () api.adAccountsSubscriptionsDelById(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize();
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = ;
+        response = () api.adAccountsSubscriptionsDelById(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
-     * Get lead ads subscription
+     * Get lead ads subscription by ID
      *
-     * Get a specific lead ads subscription record.\n- Only requests for the OWNER or ADMIN of the ad_account will be allowed.\n\n&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get an existing lead ads webhook subscription by ID.\n  - Only requests for the OWNER or ADMIN of the ad_account will be allowed.\&#39;
      */
     @isTest
     private static void adAccountsSubscriptionsGetByIdTest() {
@@ -75,57 +91,130 @@ private class OASLeadAdsApiTest {
 
         OASClient client;
         OASLeadAdsApi api;
-        OASAdAccountGetSubscriptionResponse response;
-        OASAdAccountGetSubscriptionResponse expectedResponse;
+        OASLeadSubscription response;
+        OASLeadSubscription expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASLeadAdsApi(client);
 
-        js = JSON.serialize(OASAdAccountGetSubscriptionResponse.getExample());
+        js = JSON.serialize(OASLeadSubscription.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAdAccountGetSubscriptionResponse.getExample();
-        response = (OASAdAccountGetSubscriptionResponse) api.adAccountsSubscriptionsGetById(params);
+        expectedResponse = OASLeadSubscription.getExample();
+        response = (OASLeadSubscription) api.adAccountsSubscriptionsGetById(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASAdAccountGetSubscriptionResponse.getExample());
+        js = JSON.serialize(OASLeadSubscription.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAdAccountGetSubscriptionResponse.getExample();
-        response = (OASAdAccountGetSubscriptionResponse) api.adAccountsSubscriptionsGetById(params);
+        expectedResponse = OASLeadSubscription.getExample();
+        response = (OASLeadSubscription) api.adAccountsSubscriptionsGetById(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASAdAccountGetSubscriptionResponse.getExample());
+        js = JSON.serialize(OASLeadSubscription.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAdAccountGetSubscriptionResponse.getExample();
-        response = (OASAdAccountGetSubscriptionResponse) api.adAccountsSubscriptionsGetById(params);
+        expectedResponse = OASLeadSubscription.getExample();
+        response = (OASLeadSubscription) api.adAccountsSubscriptionsGetById(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASAdAccountGetSubscriptionResponse.getExample());
+        js = JSON.serialize(OASLeadSubscription.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAdAccountGetSubscriptionResponse.getExample();
-        response = (OASAdAccountGetSubscriptionResponse) api.adAccountsSubscriptionsGetById(params);
+        expectedResponse = OASLeadSubscription.getExample();
+        response = (OASLeadSubscription) api.adAccountsSubscriptionsGetById(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASAdAccountGetSubscriptionResponse.getExample());
+        js = JSON.serialize(OASLeadSubscription.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAdAccountGetSubscriptionResponse.getExample();
-        response = (OASAdAccountGetSubscriptionResponse) api.adAccountsSubscriptionsGetById(params);
+        expectedResponse = OASLeadSubscription.getExample();
+        response = (OASLeadSubscription) api.adAccountsSubscriptionsGetById(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASLeadSubscription.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASLeadSubscription.getExample();
+        response = (OASLeadSubscription) api.adAccountsSubscriptionsGetById(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASLeadSubscription.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASLeadSubscription.getExample();
+        response = (OASLeadSubscription) api.adAccountsSubscriptionsGetById(params);
+        System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASLeadAdsApi(client);
+
+        js = JSON.serialize(OASLeadSubscription.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASLeadSubscription.getExample();
+        response = (OASLeadSubscription) api.adAccountsSubscriptionsGetById(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASLeadSubscription.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASLeadSubscription.getExample();
+        response = (OASLeadSubscription) api.adAccountsSubscriptionsGetById(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASLeadSubscription.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASLeadSubscription.getExample();
+        response = (OASLeadSubscription) api.adAccountsSubscriptionsGetById(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASLeadSubscription.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASLeadSubscription.getExample();
+        response = (OASLeadSubscription) api.adAccountsSubscriptionsGetById(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASLeadSubscription.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASLeadSubscription.getExample();
+        response = (OASLeadSubscription) api.adAccountsSubscriptionsGetById(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASLeadSubscription.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASLeadSubscription.getExample();
+        response = (OASLeadSubscription) api.adAccountsSubscriptionsGetById(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASLeadSubscription.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASLeadSubscription.getExample();
+        response = (OASLeadSubscription) api.adAccountsSubscriptionsGetById(params);
         System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Get lead ads subscriptions
      *
-     * Get the advertiser\&#39;s list of lead ads subscriptions.\n- Only requests for the OWNER or ADMIN of the ad_account will be allowed.\n\n&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get the advertiser\&#39;s list of lead ads subscriptions. Only requests for the OWNER or ADMIN of the ad_account will be allowed.
      */
     @isTest
     private static void adAccountsSubscriptionsGetListTest() {
@@ -136,8 +225,8 @@ private class OASLeadAdsApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
-            'pageSize' => '',
-            'bookmark' => 'null'
+            'bookmark' => 'null',
+            'pageSize' => ''
         };
 
         OASClient client;
@@ -171,12 +260,44 @@ private class OASLeadAdsApiTest {
         expectedResponse = OASAdAccountsSubscriptionsGetList200.getExample();
         response = (OASAdAccountsSubscriptionsGetList200) api.adAccountsSubscriptionsGetList(params);
         System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsSubscriptionsGetList200.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsSubscriptionsGetList200.getExample();
+        response = (OASAdAccountsSubscriptionsGetList200) api.adAccountsSubscriptionsGetList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsSubscriptionsGetList200.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsSubscriptionsGetList200.getExample();
+        response = (OASAdAccountsSubscriptionsGetList200) api.adAccountsSubscriptionsGetList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsSubscriptionsGetList200.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsSubscriptionsGetList200.getExample();
+        response = (OASAdAccountsSubscriptionsGetList200) api.adAccountsSubscriptionsGetList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsSubscriptionsGetList200.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsSubscriptionsGetList200.getExample();
+        response = (OASAdAccountsSubscriptionsGetList200) api.adAccountsSubscriptionsGetList(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Create lead ads subscription
      *
-     * Create a lead ads webhook subscription.\nSubscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level.\n- Only requests for the OWNER or ADMIN of the ad_account will be allowed.\n- Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.\n- For data security, egress lead data is encrypted with AES-256-GCM.\n\n&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Create a lead ads webhook subscription.\nSubscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level.\n  - Only requests for the OWNER or ADMIN of the ad_account will be allowed.\n  - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records.\n  - For data security, egress lead data is encrypted with AES-256-GCM.
      */
     @isTest
     private static void adAccountsSubscriptionsPostTest() {
@@ -187,47 +308,47 @@ private class OASLeadAdsApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
-            'oaSAdAccountCreateSubscriptionReques' => ''
+            'oaSLeadSubscriptionPostParamsCreate' => ''
         };
 
         OASClient client;
         OASLeadAdsApi api;
-        OASAdAccountCreateSubscriptionRespon response;
-        OASAdAccountCreateSubscriptionRespon expectedResponse;
+        OASLeadSubscription response;
+        OASLeadSubscription expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASLeadAdsApi(client);
 
-        js = JSON.serialize(OASAdAccountCreateSubscriptionRespon.getExample());
+        js = JSON.serialize(OASLeadSubscription.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAdAccountCreateSubscriptionRespon.getExample();
-        response = (OASAdAccountCreateSubscriptionRespon) api.adAccountsSubscriptionsPost(params);
+        expectedResponse = OASLeadSubscription.getExample();
+        response = (OASLeadSubscription) api.adAccountsSubscriptionsPost(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASAdAccountCreateSubscriptionRespon.getExample());
+        js = JSON.serialize(OASLeadSubscription.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAdAccountCreateSubscriptionRespon.getExample();
-        response = (OASAdAccountCreateSubscriptionRespon) api.adAccountsSubscriptionsPost(params);
+        expectedResponse = OASLeadSubscription.getExample();
+        response = (OASLeadSubscription) api.adAccountsSubscriptionsPost(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASAdAccountCreateSubscriptionRespon.getExample());
+        js = JSON.serialize(OASLeadSubscription.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAdAccountCreateSubscriptionRespon.getExample();
-        response = (OASAdAccountCreateSubscriptionRespon) api.adAccountsSubscriptionsPost(params);
+        expectedResponse = OASLeadSubscription.getExample();
+        response = (OASLeadSubscription) api.adAccountsSubscriptionsPost(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASAdAccountCreateSubscriptionRespon.getExample());
+        js = JSON.serialize(OASLeadSubscription.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAdAccountCreateSubscriptionRespon.getExample();
-        response = (OASAdAccountCreateSubscriptionRespon) api.adAccountsSubscriptionsPost(params);
+        expectedResponse = OASLeadSubscription.getExample();
+        response = (OASLeadSubscription) api.adAccountsSubscriptionsPost(params);
         System.assertEquals(expectedResponse, response);
     }
 }

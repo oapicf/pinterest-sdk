@@ -12,13 +12,13 @@ import org.joda.time.DateTime
 import HotelProcessingRecord._
 
 case class HotelProcessingRecord (
-  /* The catalog hotel id in the merchant namespace */
-  hotelId: Option[String],
-/* Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail. */
+  /* Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail. */
   errors: Option[List[ItemValidationEvent]],
+/* The catalog hotel id in the merchant namespace */
+  hotelId: Option[String],
+status: Option[ItemProcessingStatus],
 /* Array with the validation warnings for the item processing record */
-  warnings: Option[List[ItemValidationEvent]],
-status: Option[ItemProcessingStatus])
+  warnings: Option[List[ItemValidationEvent]])
 
 object HotelProcessingRecord {
   import DateTimeCodecs._

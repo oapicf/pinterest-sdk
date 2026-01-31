@@ -1,0 +1,47 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdvancedAuctionBidOptions"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdvancedAuctionBidOptions"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AppTypeMultipliers = openapi_server.resourceTypes.AppTypeMultipliers
+  PlacementMultipliers = openapi_server.resourceTypes.PlacementMultipliers
+}
+resourceTypes {
+
+  AdvancedAuctionBidOptions {
+    title = AdvancedAuctionBidOptions
+    description = AdvancedAuctionBidOptions
+    derivedFrom = Root
+    properties {
+        app_type_multipliers {
+          type = AppTypeMultipliers
+          description = ""
+          optional = false
+        }
+        bid_in_micro_currency {
+          type =  integer
+          description = "Bid price in micro currency. A value of 0 will stop distribution for this item in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. A value of &#x60;null&#x60; will fallback to the ad group&#39;s &#x60;bid_in_micro_currency&#x60;."
+          optional = false
+        }
+        placement_multipliers {
+          type = PlacementMultipliers
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdvancedAuctionBidOptions {
+    title = AdvancedAuctionBidOptions
+    description = AdvancedAuctionBidOptions
+    implements = openapi_server.resourceTypes.AdvancedAuctionBidOptions
+
+  }
+}

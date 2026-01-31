@@ -7,13 +7,13 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(PinMediaWithVideos, () {
-    // String mediaType
-    test('to test the property `mediaType`', () async {
+    // BuiltList<VideoMetadataWithItemType> items
+    test('to test the property `items`', () async {
       // TODO
     });
 
-    // BuiltList<VideoMetadata> items
-    test('to test the property `items`', () async {
+    // String mediaType
+    test('to test the property `mediaType`', () async {
       // TODO
     });
 

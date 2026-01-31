@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,9 +16,9 @@ package openapi
 
 type LeadsExportResponseData struct {
 
-	ExportStatus LeadsExportStatus `json:"export_status,omitempty"`
-
 	DownloadUrl *string `json:"download_url,omitempty"`
+
+	ExportStatus LeadsExportStatus `json:"export_status,omitempty"`
 }
 
 // AssertLeadsExportResponseDataRequired checks if the required fields are not zero-ed

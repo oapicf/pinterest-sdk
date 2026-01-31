@@ -5,6 +5,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.openapitools.model.ContentType;
 import org.springframework.lang.Nullable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -23,15 +24,21 @@ import java.util.*;
 import javax.annotation.Generated;
 
 /**
- * Base64-encoded image media source
+ * Image Base64-based media source.
  */
 
-@Schema(name = "PinMediaSourceImageBase64", description = "Base64-encoded image media source")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Schema(name = "PinMediaSourceImageBase64", description = "Image Base64-based media source.")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinMediaSourceImageBase64 implements PinMediaSource {
 
+  private ContentType contentType;
+
+  private String data;
+
+  private Boolean isStandard = true;
+
   /**
-   * Gets or Sets sourceType
+   * The source type of the media.
    */
   public enum SourceTypeEnum {
     IMAGE_BASE64("image_base64");
@@ -65,47 +72,6 @@ public class PinMediaSourceImageBase64 implements PinMediaSource {
 
   private SourceTypeEnum sourceType;
 
-  /**
-   * Gets or Sets contentType
-   */
-  public enum ContentTypeEnum {
-    IMAGE_JPEG("image/jpeg"),
-    
-    IMAGE_PNG("image/png");
-
-    private final String value;
-
-    ContentTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static ContentTypeEnum fromValue(String value) {
-      for (ContentTypeEnum b : ContentTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private ContentTypeEnum contentType;
-
-  private String data;
-
-  private Boolean isStandard = true;
-
   public PinMediaSourceImageBase64() {
     super();
   }
@@ -113,33 +79,13 @@ public class PinMediaSourceImageBase64 implements PinMediaSource {
   /**
    * Constructor with only required parameters
    */
-  public PinMediaSourceImageBase64(SourceTypeEnum sourceType, ContentTypeEnum contentType, String data) {
-    this.sourceType = sourceType;
+  public PinMediaSourceImageBase64(ContentType contentType, String data, SourceTypeEnum sourceType) {
     this.contentType = contentType;
     this.data = data;
-  }
-
-  public PinMediaSourceImageBase64 sourceType(SourceTypeEnum sourceType) {
-    this.sourceType = sourceType;
-    return this;
-  }
-
-  /**
-   * Get sourceType
-   * @return sourceType
-   */
-  @NotNull 
-  @Schema(name = "source_type", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("source_type")
-  public SourceTypeEnum getSourceType() {
-    return sourceType;
-  }
-
-  public void setSourceType(SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
   }
 
-  public PinMediaSourceImageBase64 contentType(ContentTypeEnum contentType) {
+  public PinMediaSourceImageBase64 contentType(ContentType contentType) {
     this.contentType = contentType;
     return this;
   }
@@ -148,14 +94,14 @@ public class PinMediaSourceImageBase64 implements PinMediaSource {
    * Get contentType
    * @return contentType
    */
-  @NotNull 
+  @NotNull @Valid 
   @Schema(name = "content_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("content_type")
-  public ContentTypeEnum getContentType() {
+  public ContentType getContentType() {
     return contentType;
   }
 
-  public void setContentType(ContentTypeEnum contentType) {
+  public void setContentType(ContentType contentType) {
     this.contentType = contentType;
   }
 
@@ -168,7 +114,7 @@ public class PinMediaSourceImageBase64 implements PinMediaSource {
    * Get data
    * @return data
    */
-  @NotNull @Pattern(regexp = "[a-zA-Z0-9+/=]+") 
+  @NotNull @Pattern(regexp = "^[a-zA-Z0-9+/=]+$") 
   @Schema(name = "data", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("data")
   public String getData() {
@@ -199,6 +145,26 @@ public class PinMediaSourceImageBase64 implements PinMediaSource {
     this.isStandard = isStandard;
   }
 
+  public PinMediaSourceImageBase64 sourceType(SourceTypeEnum sourceType) {
+    this.sourceType = sourceType;
+    return this;
+  }
+
+  /**
+   * The source type of the media.
+   * @return sourceType
+   */
+  @NotNull 
+  @Schema(name = "source_type", description = "The source type of the media.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("source_type")
+  public SourceTypeEnum getSourceType() {
+    return sourceType;
+  }
+
+  public void setSourceType(SourceTypeEnum sourceType) {
+    this.sourceType = sourceType;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -208,25 +174,25 @@ public class PinMediaSourceImageBase64 implements PinMediaSource {
       return false;
     }
     PinMediaSourceImageBase64 pinMediaSourceImageBase64 = (PinMediaSourceImageBase64) o;
-    return Objects.equals(this.sourceType, pinMediaSourceImageBase64.sourceType) &&
-        Objects.equals(this.contentType, pinMediaSourceImageBase64.contentType) &&
+    return Objects.equals(this.contentType, pinMediaSourceImageBase64.contentType) &&
         Objects.equals(this.data, pinMediaSourceImageBase64.data) &&
-        Objects.equals(this.isStandard, pinMediaSourceImageBase64.isStandard);
+        Objects.equals(this.isStandard, pinMediaSourceImageBase64.isStandard) &&
+        Objects.equals(this.sourceType, pinMediaSourceImageBase64.sourceType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceType, contentType, data, isStandard);
+    return Objects.hash(contentType, data, isStandard, sourceType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaSourceImageBase64 {\n");
-    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("    contentType: ").append(toIndentedString(contentType)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    isStandard: ").append(toIndentedString(isStandard)).append("\n");
+    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

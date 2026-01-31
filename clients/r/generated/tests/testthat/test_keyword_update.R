@@ -5,14 +5,6 @@ context("Test KeywordUpdate")
 
 model_instance <- KeywordUpdate$new()
 
-test_that("id", {
-  # tests for the property `id` (character)
-  # Keyword ID.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
-})
-
 test_that("archived", {
   # tests for the property `archived` (character)
   # Is keyword archived?
@@ -27,4 +19,12 @@ test_that("bid", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`bid`, "EXPECTED_RESULT")
+})
+
+test_that("id", {
+  # tests for the property `id` (character)
+  # Keyword ID.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
 })

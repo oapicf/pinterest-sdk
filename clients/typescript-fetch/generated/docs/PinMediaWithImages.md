@@ -8,6 +8,7 @@ Pin with multiple images.
 Name | Type
 ------------ | -------------
 `items` | [Array&lt;ImageMetadata&gt;](ImageMetadata.md)
+`mediaType` | string
 
 ## Example
 
@@ -17,6 +18,7 @@ import type { PinMediaWithImages } from ''
 // TODO: Update the object below with actual values
 const example = {
   "items": null,
+  "mediaType": null,
 } satisfies PinMediaWithImages
 
 console.log(example)

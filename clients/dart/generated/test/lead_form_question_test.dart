@@ -16,11 +16,6 @@ void main() {
   // final instance = LeadFormQuestion();
 
   group('test LeadFormQuestion', () {
-    // LeadFormQuestionType questionType
-    test('to test the property `questionType`', () async {
-      // TODO
-    });
-
     // LeadFormQuestionFieldType customQuestionFieldType
     test('to test the property `customQuestionFieldType`', () async {
       // TODO
@@ -35,6 +30,11 @@ void main() {
     // Question options for a custom question.
     // List<String> customQuestionOptions (default value: const [])
     test('to test the property `customQuestionOptions`', () async {
+      // TODO
+    });
+
+    // LeadFormQuestionType questionType
+    test('to test the property `questionType`', () async {
       // TODO
     });
 

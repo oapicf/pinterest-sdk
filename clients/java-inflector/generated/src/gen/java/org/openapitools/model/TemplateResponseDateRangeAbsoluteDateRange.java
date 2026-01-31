@@ -15,33 +15,33 @@ import java.math.BigDecimal;
  **/
 
 @ApiModel(description = "The absolute date range of the template")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TemplateResponseDateRangeAbsoluteDateRange   {
-  @JsonProperty("type")
-  private String type;
+  @JsonProperty("end_date")
+  private BigDecimal endDate;
 
   @JsonProperty("start_date")
   private BigDecimal startDate;
 
-  @JsonProperty("end_date")
-  private BigDecimal endDate;
+  @JsonProperty("type")
+  private String type;
 
   /**
-   * The date range type
+   * The end date of the date range
    **/
-  public TemplateResponseDateRangeAbsoluteDateRange type(String type) {
-    this.type = type;
+  public TemplateResponseDateRangeAbsoluteDateRange endDate(BigDecimal endDate) {
+    this.endDate = endDate;
     return this;
   }
 
   
-  @ApiModelProperty(example = "absolute", value = "The date range type")
-  @JsonProperty("type")
-  public String getType() {
-    return type;
+  @ApiModelProperty(example = "6.027456183070403", value = "The end date of the date range")
+  @JsonProperty("end_date")
+  public BigDecimal getEndDate() {
+    return endDate;
   }
-  public void setType(String type) {
-    this.type = type;
+  public void setEndDate(BigDecimal endDate) {
+    this.endDate = endDate;
   }
 
   /**
@@ -63,21 +63,21 @@ public class TemplateResponseDateRangeAbsoluteDateRange   {
   }
 
   /**
-   * The end date of the date range
+   * The date range type
    **/
-  public TemplateResponseDateRangeAbsoluteDateRange endDate(BigDecimal endDate) {
-    this.endDate = endDate;
+  public TemplateResponseDateRangeAbsoluteDateRange type(String type) {
+    this.type = type;
     return this;
   }
 
   
-  @ApiModelProperty(example = "6.027456183070403", value = "The end date of the date range")
-  @JsonProperty("end_date")
-  public BigDecimal getEndDate() {
-    return endDate;
+  @ApiModelProperty(example = "absolute", value = "The date range type")
+  @JsonProperty("type")
+  public String getType() {
+    return type;
   }
-  public void setEndDate(BigDecimal endDate) {
-    this.endDate = endDate;
+  public void setType(String type) {
+    this.type = type;
   }
 
 
@@ -90,14 +90,14 @@ public class TemplateResponseDateRangeAbsoluteDateRange   {
       return false;
     }
     TemplateResponseDateRangeAbsoluteDateRange templateResponseDateRangeAbsoluteDateRange = (TemplateResponseDateRangeAbsoluteDateRange) o;
-    return Objects.equals(type, templateResponseDateRangeAbsoluteDateRange.type) &&
+    return Objects.equals(endDate, templateResponseDateRangeAbsoluteDateRange.endDate) &&
         Objects.equals(startDate, templateResponseDateRangeAbsoluteDateRange.startDate) &&
-        Objects.equals(endDate, templateResponseDateRangeAbsoluteDateRange.endDate);
+        Objects.equals(type, templateResponseDateRangeAbsoluteDateRange.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, startDate, endDate);
+    return Objects.hash(endDate, startDate, type);
   }
 
   @Override
@@ -105,9 +105,9 @@ public class TemplateResponseDateRangeAbsoluteDateRange   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TemplateResponseDateRangeAbsoluteDateRange {\n");
     
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

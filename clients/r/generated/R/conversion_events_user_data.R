@@ -16,26 +16,20 @@ ConversionEventsUserData <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field any_of  a list of object types defined in the anyOf schema.
-    any_of = list("ConversionEventsUserDataAnyOf", "ConversionEventsUserDataAnyOf1", "ConversionEventsUserDataAnyOf2"),
+    any_of = list("ConversionEventsUserDataProperties"),
 
     #' @description
     #' Initialize a new ConversionEventsUserData.
     #'
-    #' @param instance an instance of the object defined in the anyOf schemas: "ConversionEventsUserDataAnyOf", "ConversionEventsUserDataAnyOf1", "ConversionEventsUserDataAnyOf2"
+    #' @param instance an instance of the object defined in the anyOf schemas: "ConversionEventsUserDataProperties"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ConversionEventsUserDataAnyOf") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ConversionEventsUserDataProperties") {
         self$actual_instance <- instance
-        self$actual_type <- "ConversionEventsUserDataAnyOf"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ConversionEventsUserDataAnyOf1") {
-        self$actual_instance <- instance
-        self$actual_type <- "ConversionEventsUserDataAnyOf1"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ConversionEventsUserDataAnyOf2") {
-        self$actual_instance <- instance
-        self$actual_type <- "ConversionEventsUserDataAnyOf2"
+        self$actual_type <- "ConversionEventsUserDataProperties"
       } else {
-        stop(paste("Failed to initialize ConversionEventsUserData with anyOf schemas ConversionEventsUserDataAnyOf, ConversionEventsUserDataAnyOf1, ConversionEventsUserDataAnyOf2. Provided class name: ",
+        stop(paste("Failed to initialize ConversionEventsUserData with anyOf schemas ConversionEventsUserDataProperties. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -60,50 +54,50 @@ ConversionEventsUserData <- R6::R6Class(
     fromJSON = function(input) {
       error_messages <- list()
 
-      `ConversionEventsUserDataAnyOf_result` <- tryCatch({
-          `ConversionEventsUserDataAnyOf`$public_methods$validateJSON(input)
-          `ConversionEventsUserDataAnyOf_instance` <- `ConversionEventsUserDataAnyOf`$new()
-          self$actual_instance <- `ConversionEventsUserDataAnyOf_instance`$fromJSON(input)
-          self$actual_type <- "ConversionEventsUserDataAnyOf"
+      `ConversionEventsUserDataProperties_result` <- tryCatch({
+          `ConversionEventsUserDataProperties`$public_methods$validateJSON(input)
+          `ConversionEventsUserDataProperties_instance` <- `ConversionEventsUserDataProperties`$new()
+          self$actual_instance <- `ConversionEventsUserDataProperties_instance`$fromJSON(input)
+          self$actual_type <- "ConversionEventsUserDataProperties"
           return(self)
         },
         error = function(err) err
       )
 
-      if (!is.null(`ConversionEventsUserDataAnyOf_result`["error"])) {
-        error_messages <- append(error_messages, `ConversionEventsUserDataAnyOf_result`["message"])
+      if (!is.null(`ConversionEventsUserDataProperties_result`["error"])) {
+        error_messages <- append(error_messages, `ConversionEventsUserDataProperties_result`["message"])
       }
 
-      `ConversionEventsUserDataAnyOf1_result` <- tryCatch({
-          `ConversionEventsUserDataAnyOf1`$public_methods$validateJSON(input)
-          `ConversionEventsUserDataAnyOf1_instance` <- `ConversionEventsUserDataAnyOf1`$new()
-          self$actual_instance <- `ConversionEventsUserDataAnyOf1_instance`$fromJSON(input)
-          self$actual_type <- "ConversionEventsUserDataAnyOf1"
+      `ConversionEventsUserDataProperties_result` <- tryCatch({
+          `ConversionEventsUserDataProperties`$public_methods$validateJSON(input)
+          `ConversionEventsUserDataProperties_instance` <- `ConversionEventsUserDataProperties`$new()
+          self$actual_instance <- `ConversionEventsUserDataProperties_instance`$fromJSON(input)
+          self$actual_type <- "ConversionEventsUserDataProperties"
           return(self)
         },
         error = function(err) err
       )
 
-      if (!is.null(`ConversionEventsUserDataAnyOf1_result`["error"])) {
-        error_messages <- append(error_messages, `ConversionEventsUserDataAnyOf1_result`["message"])
+      if (!is.null(`ConversionEventsUserDataProperties_result`["error"])) {
+        error_messages <- append(error_messages, `ConversionEventsUserDataProperties_result`["message"])
       }
 
-      `ConversionEventsUserDataAnyOf2_result` <- tryCatch({
-          `ConversionEventsUserDataAnyOf2`$public_methods$validateJSON(input)
-          `ConversionEventsUserDataAnyOf2_instance` <- `ConversionEventsUserDataAnyOf2`$new()
-          self$actual_instance <- `ConversionEventsUserDataAnyOf2_instance`$fromJSON(input)
-          self$actual_type <- "ConversionEventsUserDataAnyOf2"
+      `ConversionEventsUserDataProperties_result` <- tryCatch({
+          `ConversionEventsUserDataProperties`$public_methods$validateJSON(input)
+          `ConversionEventsUserDataProperties_instance` <- `ConversionEventsUserDataProperties`$new()
+          self$actual_instance <- `ConversionEventsUserDataProperties_instance`$fromJSON(input)
+          self$actual_type <- "ConversionEventsUserDataProperties"
           return(self)
         },
         error = function(err) err
       )
 
-      if (!is.null(`ConversionEventsUserDataAnyOf2_result`["error"])) {
-        error_messages <- append(error_messages, `ConversionEventsUserDataAnyOf2_result`["message"])
+      if (!is.null(`ConversionEventsUserDataProperties_result`["error"])) {
+        error_messages <- append(error_messages, `ConversionEventsUserDataProperties_result`["message"])
       }
 
       # no match
-      stop(paste("No match found when deserializing the input into ConversionEventsUserData with anyOf schemas ConversionEventsUserDataAnyOf, ConversionEventsUserDataAnyOf1, ConversionEventsUserDataAnyOf2. Details: >>",
+      stop(paste("No match found when deserializing the input into ConversionEventsUserData with anyOf schemas ConversionEventsUserDataProperties. Details: >>",
                  paste(error_messages, collapse = " >> ")))
     },
 

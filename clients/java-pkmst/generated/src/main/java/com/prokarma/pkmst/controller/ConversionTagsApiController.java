@@ -1,13 +1,14 @@
 package com.prokarma.pkmst.controller;
 
 import com.prokarma.pkmst.model.ConversionEventResponse;
+import com.prokarma.pkmst.model.ConversionTag;
 import com.prokarma.pkmst.model.ConversionTagCreate;
-import com.prokarma.pkmst.model.ConversionTagListResponse;
-import com.prokarma.pkmst.model.ConversionTagResponse;
+import com.prokarma.pkmst.model.ConversionTagsList200Response;
 import com.prokarma.pkmst.model.Error;
 import java.util.List;
 import java.util.Map;
 import com.prokarma.pkmst.model.PageVisitConversionTagsGet200Response;
+import com.prokarma.pkmst.model.PinterestLibError;
 
 import io.swagger.annotations.*;
 
@@ -30,7 +31,7 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Controller
 public class ConversionTagsApiController implements ConversionTagsApi {
     private final ObjectMapper objectMapper;
@@ -39,55 +40,110 @@ public class ConversionTagsApiController implements ConversionTagsApi {
         this.objectMapper = objectMapper;
     }
 
-    public ResponseEntity<ConversionTagResponse> conversionTagsCreate(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
-        @ApiParam(value = "Conversion Tag to create" ,required=true )   @RequestBody ConversionTagCreate conversionTagCreate,
+    public ResponseEntity<ConversionTag> conversionTagsCreate(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
+        @ApiParam(value = "" ,required=true )   @RequestBody ConversionTagCreate conversionTagCreate,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<ConversionTagResponse>(objectMapper.readValue("", ConversionTagResponse.class), HttpStatus.OK);
+            return new ResponseEntity<ConversionTag>(objectMapper.readValue("", ConversionTag.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<ConversionTagResponse>(objectMapper.readValue("", ConversionTagResponse.class), HttpStatus.OK);
+            return new ResponseEntity<ConversionTag>(objectMapper.readValue("", ConversionTag.class), HttpStatus.OK);
         }
 
-        return new ResponseEntity<ConversionTagResponse>(HttpStatus.OK);
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<ConversionTag>(objectMapper.readValue("", ConversionTag.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<ConversionTag>(objectMapper.readValue("", ConversionTag.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<ConversionTag>(objectMapper.readValue("", ConversionTag.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<ConversionTag>(objectMapper.readValue("", ConversionTag.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<ConversionTag>(objectMapper.readValue("", ConversionTag.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<ConversionTag>(objectMapper.readValue("", ConversionTag.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<ConversionTag>(HttpStatus.OK);
     }
 
-    public ResponseEntity<ConversionTagResponse> conversionTagsGet(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
+    public ResponseEntity<ConversionTag> conversionTagsGet(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
         @ApiParam(value = "Id of the conversion tag.",required=true ) @PathVariable("conversion_tag_id") String conversionTagId,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<ConversionTagResponse>(objectMapper.readValue("", ConversionTagResponse.class), HttpStatus.OK);
+            return new ResponseEntity<ConversionTag>(objectMapper.readValue("", ConversionTag.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<ConversionTagResponse>(objectMapper.readValue("", ConversionTagResponse.class), HttpStatus.OK);
+            return new ResponseEntity<ConversionTag>(objectMapper.readValue("", ConversionTag.class), HttpStatus.OK);
         }
 
-        return new ResponseEntity<ConversionTagResponse>(HttpStatus.OK);
+        return new ResponseEntity<ConversionTag>(HttpStatus.OK);
     }
 
-    public ResponseEntity<ConversionTagListResponse> conversionTagsList(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
-        @ApiParam(value = "Filter out deleted tags.", defaultValue = "false")  @RequestParam(value = "filter_deleted", required = false, defaultValue="false") Boolean filterDeleted,
+    public ResponseEntity<ConversionTagsList200Response> conversionTagsList(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,
+        @ApiParam(value = "Filter by deleted status", defaultValue = "false")  @RequestParam(value = "filter_deleted", required = false, defaultValue="false") Boolean filterDeleted,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<ConversionTagListResponse>(objectMapper.readValue("", ConversionTagListResponse.class), HttpStatus.OK);
+            return new ResponseEntity<ConversionTagsList200Response>(objectMapper.readValue("", ConversionTagsList200Response.class), HttpStatus.OK);
         }
 
 
         if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<ConversionTagListResponse>(objectMapper.readValue("", ConversionTagListResponse.class), HttpStatus.OK);
+            return new ResponseEntity<ConversionTagsList200Response>(objectMapper.readValue("", ConversionTagsList200Response.class), HttpStatus.OK);
         }
 
-        return new ResponseEntity<ConversionTagListResponse>(HttpStatus.OK);
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<ConversionTagsList200Response>(objectMapper.readValue("", ConversionTagsList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<ConversionTagsList200Response>(objectMapper.readValue("", ConversionTagsList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<ConversionTagsList200Response>(objectMapper.readValue("", ConversionTagsList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<ConversionTagsList200Response>(objectMapper.readValue("", ConversionTagsList200Response.class), HttpStatus.OK);
+        }
+
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<ConversionTagsList200Response>(objectMapper.readValue("", ConversionTagsList200Response.class), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<ConversionTagsList200Response>(HttpStatus.OK);
     }
 
     public ResponseEntity<Map<String, List<ConversionEventResponse>>> ocpmEligibleConversionTagsGet(@ApiParam(value = "Unique identifier of an ad account.",required=true ) @PathVariable("ad_account_id") String adAccountId,

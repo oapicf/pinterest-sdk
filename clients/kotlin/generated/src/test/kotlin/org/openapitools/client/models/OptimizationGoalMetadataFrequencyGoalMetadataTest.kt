@@ -25,7 +25,7 @@ class OptimizationGoalMetadataFrequencyGoalMetadataTest : ShouldSpec() {
         // uncomment below to create an instance of OptimizationGoalMetadataFrequencyGoalMetadata
         //val modelInstance = OptimizationGoalMetadataFrequencyGoalMetadata()
 
-        // to test the property `frequency`
+        // to test the property `frequency` - Frequency target can only be between 2 and 20
         should("test frequency") {
             // uncomment below to test the property
             //modelInstance.frequency shouldBe ("TODO")

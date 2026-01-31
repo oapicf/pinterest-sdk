@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,8 +22,8 @@ var _ MappedNullable = &FeedProcessingResultsList200Response{}
 
 // FeedProcessingResultsList200Response struct for FeedProcessingResultsList200Response
 type FeedProcessingResultsList200Response struct {
-	Items []CatalogsFeedProcessingResult `json:"items"`
 	Bookmark NullableString `json:"bookmark,omitempty"`
+	Items []CatalogsFeedProcessingResult `json:"items"`
 }
 
 type _FeedProcessingResultsList200Response FeedProcessingResultsList200Response
@@ -44,30 +44,6 @@ func NewFeedProcessingResultsList200Response(items []CatalogsFeedProcessingResul
 func NewFeedProcessingResultsList200ResponseWithDefaults() *FeedProcessingResultsList200Response {
 	this := FeedProcessingResultsList200Response{}
 	return &this
-}
-
-// GetItems returns the Items field value
-func (o *FeedProcessingResultsList200Response) GetItems() []CatalogsFeedProcessingResult {
-	if o == nil {
-		var ret []CatalogsFeedProcessingResult
-		return ret
-	}
-
-	return o.Items
-}
-
-// GetItemsOk returns a tuple with the Items field value
-// and a boolean to check if the value has been set.
-func (o *FeedProcessingResultsList200Response) GetItemsOk() ([]CatalogsFeedProcessingResult, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Items, true
-}
-
-// SetItems sets field value
-func (o *FeedProcessingResultsList200Response) SetItems(v []CatalogsFeedProcessingResult) {
-	o.Items = v
 }
 
 // GetBookmark returns the Bookmark field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -112,6 +88,30 @@ func (o *FeedProcessingResultsList200Response) UnsetBookmark() {
 	o.Bookmark.Unset()
 }
 
+// GetItems returns the Items field value
+func (o *FeedProcessingResultsList200Response) GetItems() []CatalogsFeedProcessingResult {
+	if o == nil {
+		var ret []CatalogsFeedProcessingResult
+		return ret
+	}
+
+	return o.Items
+}
+
+// GetItemsOk returns a tuple with the Items field value
+// and a boolean to check if the value has been set.
+func (o *FeedProcessingResultsList200Response) GetItemsOk() ([]CatalogsFeedProcessingResult, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Items, true
+}
+
+// SetItems sets field value
+func (o *FeedProcessingResultsList200Response) SetItems(v []CatalogsFeedProcessingResult) {
+	o.Items = v
+}
+
 func (o FeedProcessingResultsList200Response) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -122,10 +122,10 @@ func (o FeedProcessingResultsList200Response) MarshalJSON() ([]byte, error) {
 
 func (o FeedProcessingResultsList200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["items"] = o.Items
 	if o.Bookmark.IsSet() {
 		toSerialize["bookmark"] = o.Bookmark.Get()
 	}
+	toSerialize["items"] = o.Items
 	return toSerialize, nil
 }
 

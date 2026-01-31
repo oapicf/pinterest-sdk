@@ -73,27 +73,27 @@ private class OASSSIOCreateInsertionOrderRequestTest {
     private static void maintainRenamedProperties() {
         OASSSIOCreateInsertionOrderRequest ssIOCreateInsertionOrderRequest = new OASSSIOCreateInsertionOrderRequest();
         Map<String, String> x-property-mappings = ssIOCreateInsertionOrderRequest.getx-property-mappings();
-        System.assertEquals('startDate', x-property-mappings.get('start_date'));
-        System.assertEquals('endDate', x-property-mappings.get('end_date'));
-        System.assertEquals('poNumber', x-property-mappings.get('po_number'));
-        System.assertEquals('budgetAmount', x-property-mappings.get('budget_amount'));
+        System.assertEquals('agencyLink', x-property-mappings.get('agency_link'));
+        System.assertEquals('billingContactEmail', x-property-mappings.get('billing_contact_email'));
         System.assertEquals('billingContactFirstname', x-property-mappings.get('billing_contact_firstname'));
         System.assertEquals('billingContactLastname', x-property-mappings.get('billing_contact_lastname'));
-        System.assertEquals('billingContactEmail', x-property-mappings.get('billing_contact_email'));
+        System.assertEquals('budgetAmount', x-property-mappings.get('budget_amount'));
+        System.assertEquals('endDate', x-property-mappings.get('end_date'));
+        System.assertEquals('mediaContactEmail', x-property-mappings.get('media_contact_email'));
         System.assertEquals('mediaContactFirstname', x-property-mappings.get('media_contact_firstname'));
         System.assertEquals('mediaContactLastname', x-property-mappings.get('media_contact_lastname'));
-        System.assertEquals('mediaContactEmail', x-property-mappings.get('media_contact_email'));
-        System.assertEquals('agencyLink', x-property-mappings.get('agency_link'));
+        System.assertEquals('poNumber', x-property-mappings.get('po_number'));
+        System.assertEquals('startDate', x-property-mappings.get('start_date'));
         System.assertEquals('userEmail', x-property-mappings.get('user_email'));
-        System.assertEquals('acceptedTermsTime', x-property-mappings.get('accepted_terms_time'));
-        System.assertEquals('pmpId', x-property-mappings.get('pmp_id'));
-        System.assertEquals('orderName', x-property-mappings.get('order_name'));
-        System.assertEquals('orderLineType', x-property-mappings.get('order_line_type'));
         System.assertEquals('acceptedTermsId', x-property-mappings.get('accepted_terms_id'));
-        System.assertEquals('billtoCompanyId', x-property-mappings.get('billto_company_id'));
-        System.assertEquals('billtoBusinessAddressId', x-property-mappings.get('billto_business_address_id'));
+        System.assertEquals('acceptedTermsTime', x-property-mappings.get('accepted_terms_time'));
         System.assertEquals('billtoBillingAddressId', x-property-mappings.get('billto_billing_address_id'));
-        System.assertEquals('estimatedMonthlySpend', x-property-mappings.get('estimated_monthly_spend'));
+        System.assertEquals('billtoBusinessAddressId', x-property-mappings.get('billto_business_address_id'));
+        System.assertEquals('billtoCompanyId', x-property-mappings.get('billto_company_id'));
         System.assertEquals('currencyInfo', x-property-mappings.get('currency_info'));
+        System.assertEquals('estimatedMonthlySpend', x-property-mappings.get('estimated_monthly_spend'));
+        System.assertEquals('orderLineType', x-property-mappings.get('order_line_type'));
+        System.assertEquals('orderName', x-property-mappings.get('order_name'));
+        System.assertEquals('pmpId', x-property-mappings.get('pmp_id'));
     }
 }

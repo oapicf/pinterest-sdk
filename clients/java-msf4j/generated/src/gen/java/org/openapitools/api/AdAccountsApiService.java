@@ -8,10 +8,7 @@ import org.wso2.msf4j.formparam.FileInfo;
 
 import org.openapitools.model.AdAccount;
 import org.openapitools.model.AdAccountAnalyticsResponseInner;
-import org.openapitools.model.AdAccountCreateRequest;
-import org.openapitools.model.AdAccountCreateSubscriptionRequest;
-import org.openapitools.model.AdAccountCreateSubscriptionResponse;
-import org.openapitools.model.AdAccountGetSubscriptionResponse;
+import org.openapitools.model.AdAccountCreate;
 import org.openapitools.model.AdAccountsAudiencesSharedAccountsList200Response;
 import org.openapitools.model.AdAccountsList200Response;
 import org.openapitools.model.AdAccountsSubscriptionsGetList200Response;
@@ -25,10 +22,12 @@ import org.openapitools.model.AdGroupResponse;
 import org.openapitools.model.AdGroupUpdateRequest;
 import org.openapitools.model.AdGroupsAnalyticsResponseInner;
 import org.openapitools.model.AdGroupsList200Response;
+import org.openapitools.model.AdPinAnalytics;
 import org.openapitools.model.AdPreviewRequest;
 import org.openapitools.model.AdPreviewURLResponse;
 import org.openapitools.model.AdResponse;
 import org.openapitools.model.AdUpdateRequest;
+import org.openapitools.model.AdsAnalyticsAdGroupTargetingType;
 import org.openapitools.model.AdsAnalyticsAdTargetingType;
 import org.openapitools.model.AdsAnalyticsCampaignTargetingType;
 import org.openapitools.model.AdsAnalyticsCreateAsyncRequest;
@@ -40,9 +39,9 @@ import org.openapitools.model.AdsCreditRedeemRequest;
 import org.openapitools.model.AdsCreditRedeemResponse;
 import org.openapitools.model.AdsCreditsDiscountsGet200Response;
 import org.openapitools.model.AdsList200Response;
+import org.openapitools.model.AdvertiserDefinedEventsResponse;
 import org.openapitools.model.Audience;
 import org.openapitools.model.AudienceAccountType;
-import org.openapitools.model.AudienceCreateCustomRequest;
 import org.openapitools.model.AudienceCreateRequest;
 import org.openapitools.model.AudienceDefinitionResponse;
 import org.openapitools.model.AudienceInsightType;
@@ -51,6 +50,8 @@ import org.openapitools.model.AudienceUpdateRequest;
 import org.openapitools.model.AudiencesList200Response;
 import org.openapitools.model.BidFloor;
 import org.openapitools.model.BidFloorRequest;
+import org.openapitools.model.BillingInvoiceDownloadResponse;
+import org.openapitools.model.BillingInvoicesGet200Response;
 import org.openapitools.model.BillingProfilesGet200Response;
 import org.openapitools.model.BulkDownloadRequest;
 import org.openapitools.model.BulkDownloadResponse;
@@ -69,26 +70,37 @@ import org.openapitools.model.CampaignsList200Response;
 import org.openapitools.model.ConversionApiResponse;
 import org.openapitools.model.ConversionEventResponse;
 import org.openapitools.model.ConversionEvents;
+import org.openapitools.model.ConversionMSOTEvents;
+import org.openapitools.model.ConversionProductReportRequest;
 import org.openapitools.model.ConversionReportAttributionType;
+import org.openapitools.model.ConversionTag;
 import org.openapitools.model.ConversionTagCreate;
-import org.openapitools.model.ConversionTagListResponse;
-import org.openapitools.model.ConversionTagResponse;
+import org.openapitools.model.ConversionTagsList200Response;
 import org.openapitools.model.CreateMMMReportRequest;
 import org.openapitools.model.CreateMMMReportResponse;
 import org.openapitools.model.CustomerList;
 import org.openapitools.model.CustomerListRequest;
 import org.openapitools.model.CustomerListUpdateRequest;
+import org.openapitools.model.CustomerListUploadCreateRequest;
+import org.openapitools.model.CustomerListUploadCreateResponse;
+import org.openapitools.model.CustomerListUploadResponse;
 import org.openapitools.model.CustomerListsList200Response;
 import java.util.Date;
 import org.openapitools.model.DetailedError;
 import org.openapitools.model.Error;
+import org.openapitools.model.EventQualityScore;
 import org.openapitools.model.GetMMMReportResponse;
 import org.openapitools.model.Granularity;
+import org.openapitools.model.IngestionSourceOptions;
 import org.openapitools.model.KeywordUpdateBody;
 import org.openapitools.model.KeywordsGet200Response;
 import org.openapitools.model.KeywordsMetricsArrayResponse;
 import org.openapitools.model.KeywordsRequest;
 import org.openapitools.model.KeywordsResponse;
+import org.openapitools.model.LabelCreateRequest;
+import org.openapitools.model.LabelUpdateRequest;
+import org.openapitools.model.LabelsList200Response;
+import org.openapitools.model.LabelsResponse;
 import org.openapitools.model.LeadFormArrayResponse;
 import org.openapitools.model.LeadFormCreateRequest;
 import org.openapitools.model.LeadFormResponse;
@@ -96,21 +108,32 @@ import org.openapitools.model.LeadFormTestRequest;
 import org.openapitools.model.LeadFormTestResponse;
 import org.openapitools.model.LeadFormUpdateRequest;
 import org.openapitools.model.LeadFormsList200Response;
+import org.openapitools.model.LeadSubscription;
+import org.openapitools.model.LeadSubscriptionPostParamsCreate;
 import org.openapitools.model.LeadsExportCreateRequest;
 import org.openapitools.model.LeadsExportCreateResponse;
 import org.openapitools.model.LeadsExportResponseData;
 import java.util.List;
+import org.openapitools.model.LookbackPeriodOptions;
 import java.util.Map;
 import org.openapitools.model.MatchType;
 import org.openapitools.model.MetricsResponse;
 import org.openapitools.model.OrderLine;
 import org.openapitools.model.OrderLinesList200Response;
 import org.openapitools.model.PageVisitConversionTagsGet200Response;
+import org.openapitools.model.PinterestLibError;
 import org.openapitools.model.ProductGroupAnalyticsResponseInner;
+import org.openapitools.model.ProductGroupPromotion;
 import org.openapitools.model.ProductGroupPromotionCreateRequest;
 import org.openapitools.model.ProductGroupPromotionResponse;
 import org.openapitools.model.ProductGroupPromotionUpdateRequest;
 import org.openapitools.model.ProductGroupPromotionsList200Response;
+import org.openapitools.model.PromotionCreateRequest;
+import org.openapitools.model.PromotionResponse;
+import org.openapitools.model.PromotionUpdateRequest;
+import org.openapitools.model.PromotionsList200Response;
+import org.openapitools.model.PromotionsResponse;
+import org.openapitools.model.ReportingTimeZone;
 import org.openapitools.model.SSIOAccountResponse;
 import org.openapitools.model.SSIOCreateInsertionOrderRequest;
 import org.openapitools.model.SSIOCreateInsertionOrderResponse;
@@ -119,12 +142,14 @@ import org.openapitools.model.SSIOEditInsertionOrderResponse;
 import org.openapitools.model.SSIOInsertionOrderStatusResponse;
 import org.openapitools.model.SharedAudience;
 import org.openapitools.model.SharedAudienceResponse;
+import org.openapitools.model.SourcePlatformOptions;
 import org.openapitools.model.SsioInsertionOrdersStatusGetByAdAccount200Response;
 import org.openapitools.model.SsioOrderLinesGetByAdAccount200Response;
 import org.openapitools.model.TargetingTemplateCreate;
 import org.openapitools.model.TargetingTemplateGetResponseData;
 import org.openapitools.model.TargetingTemplateList200Response;
 import org.openapitools.model.TargetingTemplateUpdateRequest;
+import org.openapitools.model.TemplateBasedReport;
 import org.openapitools.model.TemplatesList200Response;
 import org.openapitools.model.TermsOfService;
 
@@ -136,7 +161,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public abstract class AdAccountsApiService {
     public abstract Response adAccountAnalytics(String adAccountId
  ,Date startDate
@@ -147,6 +172,7 @@ public abstract class AdAccountsApiService {
  ,Integer engagementWindowDays
  ,Integer viewWindowDays
  ,String conversionReportTime
+ ,ReportingTimeZone reportingTimezone
  ) throws NotFoundException;
     public abstract Response adAccountTargetingAnalyticsGet(String adAccountId
  ,Date startDate
@@ -158,7 +184,8 @@ public abstract class AdAccountsApiService {
  ,Integer engagementWindowDays
  ,Integer viewWindowDays
  ,String conversionReportTime
- ,ConversionReportAttributionType attributionTypes
+ ,List<ConversionReportAttributionType> attributionTypes
+ ,ReportingTimeZone reportingTimezone
  ) throws NotFoundException;
     public abstract Response adAccountsAudiencesSharedAccountsList(String adAccountId
  ,String audienceId
@@ -166,13 +193,13 @@ public abstract class AdAccountsApiService {
  ,Integer pageSize
  ,String bookmark
  ) throws NotFoundException;
-    public abstract Response adAccountsCreate(AdAccountCreateRequest adAccountCreateRequest
+    public abstract Response adAccountsCreate(AdAccountCreate adAccountCreate
  ) throws NotFoundException;
     public abstract Response adAccountsGet(String adAccountId
  ) throws NotFoundException;
-    public abstract Response adAccountsList(String bookmark
+    public abstract Response adAccountsList(Boolean includeSharedAccounts
+ ,String bookmark
  ,Integer pageSize
- ,Boolean includeSharedAccounts
  ) throws NotFoundException;
     public abstract Response adAccountsSubscriptionsDelById(String adAccountId
  ,String subscriptionId
@@ -181,11 +208,11 @@ public abstract class AdAccountsApiService {
  ,String subscriptionId
  ) throws NotFoundException;
     public abstract Response adAccountsSubscriptionsGetList(String adAccountId
- ,Integer pageSize
  ,String bookmark
+ ,Integer pageSize
  ) throws NotFoundException;
     public abstract Response adAccountsSubscriptionsPost(String adAccountId
- ,AdAccountCreateSubscriptionRequest adAccountCreateSubscriptionRequest
+ ,LeadSubscriptionPostParamsCreate leadSubscriptionPostParamsCreate
  ) throws NotFoundException;
     public abstract Response adGroupsAnalytics(String adAccountId
  ,Date startDate
@@ -197,6 +224,8 @@ public abstract class AdAccountsApiService {
  ,Integer engagementWindowDays
  ,Integer viewWindowDays
  ,String conversionReportTime
+ ,Boolean aggregateReportRows
+ ,ReportingTimeZone reportingTimezone
  ) throws NotFoundException;
     public abstract Response adGroupsAudienceSizing(String adAccountId
  ,AdGroupAudienceSizingRequest adGroupAudienceSizingRequest
@@ -223,17 +252,30 @@ public abstract class AdAccountsApiService {
  ,List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds
  ,Date startDate
  ,Date endDate
- ,List<AdsAnalyticsTargetingType> targetingTypes
+ ,List<AdsAnalyticsAdGroupTargetingType> targetingTypes
  ,List<String> columns
  ,Granularity granularity
  ,Integer clickWindowDays
  ,Integer engagementWindowDays
  ,Integer viewWindowDays
  ,String conversionReportTime
- ,ConversionReportAttributionType attributionTypes
+ ,List<ConversionReportAttributionType> attributionTypes
+ ,ReportingTimeZone reportingTimezone
  ) throws NotFoundException;
     public abstract Response adGroupsUpdate(String adAccountId
  ,List<@Valid AdGroupUpdateRequest> adGroupUpdateRequest
+ ) throws NotFoundException;
+    public abstract Response adPinsAnalytics(String adAccountId
+ ,String campaignId
+ ,List<@Pattern(regexp = "^\\d+$")String> pinIds
+ ,Date startDate
+ ,Date endDate
+ ,List<String> columns
+ ,Granularity granularity
+ ,Integer clickWindowDays
+ ,Integer engagementWindowDays
+ ,Integer viewWindowDays
+ ,String conversionReportTime
  ) throws NotFoundException;
     public abstract Response adPreviewsCreate(String adAccountId
  ,AdPreviewRequest adPreviewRequest
@@ -249,7 +291,8 @@ public abstract class AdAccountsApiService {
  ,Integer engagementWindowDays
  ,Integer viewWindowDays
  ,String conversionReportTime
- ,ConversionReportAttributionType attributionTypes
+ ,List<ConversionReportAttributionType> attributionTypes
+ ,ReportingTimeZone reportingTimezone
  ) throws NotFoundException;
     public abstract Response adsAnalytics(String adAccountId
  ,Date startDate
@@ -263,6 +306,7 @@ public abstract class AdAccountsApiService {
  ,String conversionReportTime
  ,List<@Pattern(regexp = "^\\d+$")String> pinIds
  ,List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds
+ ,ReportingTimeZone reportingTimezone
  ) throws NotFoundException;
     public abstract Response adsCreate(String adAccountId
  ,List<@Valid AdCreateRequest> adCreateRequest
@@ -289,6 +333,11 @@ public abstract class AdAccountsApiService {
     public abstract Response adsUpdate(String adAccountId
  ,List<@Valid AdUpdateRequest> adUpdateRequest
  ) throws NotFoundException;
+    public abstract Response advertiserDefinedEventsGet(String adAccountId
+ ) throws NotFoundException;
+    public abstract Response analyticsCreateConversionProductReport(String adAccountId
+ ,ConversionProductReportRequest conversionProductReportRequest
+ ) throws NotFoundException;
     public abstract Response analyticsCreateMmmReport(String adAccountId
  ,CreateMMMReportRequest createMMMReportRequest
  ) throws NotFoundException;
@@ -300,6 +349,9 @@ public abstract class AdAccountsApiService {
  ,Date startDate
  ,Date endDate
  ,Granularity granularity
+ ) throws NotFoundException;
+    public abstract Response analyticsGetConversionProductReport(String adAccountId
+ ,String token
  ) throws NotFoundException;
     public abstract Response analyticsGetMmmReport(String adAccountId
  ,String token
@@ -315,9 +367,6 @@ public abstract class AdAccountsApiService {
     public abstract Response audiencesCreate(String adAccountId
  ,AudienceCreateRequest audienceCreateRequest
  ) throws NotFoundException;
-    public abstract Response audiencesCreateCustom(String adAccountId
- ,AudienceCreateCustomRequest audienceCreateCustomRequest
- ) throws NotFoundException;
     public abstract Response audiencesGet(String adAccountId
  ,String audienceId
  ) throws NotFoundException;
@@ -330,6 +379,19 @@ public abstract class AdAccountsApiService {
     public abstract Response audiencesUpdate(String adAccountId
  ,String audienceId
  ,AudienceUpdateRequest audienceUpdateRequest
+ ) throws NotFoundException;
+    public abstract Response billingInvoiceDownloadGet(String adAccountId
+ ,String billingInvoiceId
+ ) throws NotFoundException;
+    public abstract Response billingInvoicesGet(String adAccountId
+ ,String bookmark
+ ,Integer pageSize
+ ,String sort
+ ,String order
+ ,String status
+ ,String documentType
+ ,Date startDueDate
+ ,Date endDueDate
  ) throws NotFoundException;
     public abstract Response billingProfilesGet(String adAccountId
  ,Boolean isActive
@@ -357,7 +419,8 @@ public abstract class AdAccountsApiService {
  ,Integer engagementWindowDays
  ,Integer viewWindowDays
  ,String conversionReportTime
- ,ConversionReportAttributionType attributionTypes
+ ,List<ConversionReportAttributionType> attributionTypes
+ ,ReportingTimeZone reportingTimezone
  ) throws NotFoundException;
     public abstract Response campaignsAnalytics(String adAccountId
  ,Date startDate
@@ -369,6 +432,8 @@ public abstract class AdAccountsApiService {
  ,Integer engagementWindowDays
  ,Integer viewWindowDays
  ,String conversionReportTime
+ ,Boolean aggregateReportRows
+ ,ReportingTimeZone reportingTimezone
  ) throws NotFoundException;
     public abstract Response campaignsCreate(String adAccountId
  ,List<@Valid CampaignCreateRequest> campaignCreateRequest
@@ -386,6 +451,11 @@ public abstract class AdAccountsApiService {
     public abstract Response campaignsUpdate(String adAccountId
  ,List<@Valid CampaignUpdateRequest> campaignUpdateRequest
  ) throws NotFoundException;
+    public abstract Response conversionEqsList(LookbackPeriodOptions lookbackPeriod
+ ,String adAccountId
+ ,SourcePlatformOptions sourcePlatform
+ ,IngestionSourceOptions ingestionSource
+ ) throws NotFoundException;
     public abstract Response conversionTagsCreate(String adAccountId
  ,ConversionTagCreate conversionTagCreate
  ) throws NotFoundException;
@@ -398,6 +468,18 @@ public abstract class AdAccountsApiService {
     public abstract Response countryKeywordsMetricsGet(String adAccountId
  ,String countryCode
  ,List<String> keywords
+ ) throws NotFoundException;
+    public abstract Response customerListUploadsCreate(String adAccountId
+ ,String customerListId
+ ,CustomerListUploadCreateRequest customerListUploadCreateRequest
+ ) throws NotFoundException;
+    public abstract Response customerListUploadsGet(String adAccountId
+ ,String customerListId
+ ,String customerListUploadId
+ ) throws NotFoundException;
+    public abstract Response customerListUploadsRun(String adAccountId
+ ,String customerListId
+ ,String customerListUploadId
  ) throws NotFoundException;
     public abstract Response customerListsCreate(String adAccountId
  ,CustomerListRequest customerListRequest
@@ -424,12 +506,27 @@ public abstract class AdAccountsApiService {
     public abstract Response keywordsGet(String adAccountId
  ,String campaignId
  ,String adGroupId
+ ,List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds
  ,List<MatchType> matchTypes
  ,Integer pageSize
  ,String bookmark
  ) throws NotFoundException;
     public abstract Response keywordsUpdate(String adAccountId
  ,KeywordUpdateBody keywordUpdateBody
+ ) throws NotFoundException;
+    public abstract Response labelsCreate(String adAccountId
+ ,LabelCreateRequest labelCreateRequest
+ ) throws NotFoundException;
+    public abstract Response labelsList(String adAccountId
+ ,List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds
+ ,List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> labelIds
+ ,List<String> entityStatuses
+ ,List<String> labelTypes
+ ,Integer pageSize
+ ,String bookmark
+ ) throws NotFoundException;
+    public abstract Response labelsUpdate(String adAccountId
+ ,LabelUpdateRequest labelUpdateRequest
  ) throws NotFoundException;
     public abstract Response leadFormGet(String adAccountId
  ,String leadFormId
@@ -454,6 +551,9 @@ public abstract class AdAccountsApiService {
  ) throws NotFoundException;
     public abstract Response leadsExportGet(String adAccountId
  ,String leadsExportId
+ ) throws NotFoundException;
+    public abstract Response msotEventsCreate(String adAccountId
+ ,ConversionMSOTEvents conversionMSOTEvents
  ) throws NotFoundException;
     public abstract Response ocpmEligibleConversionTagsGet(String adAccountId
  ) throws NotFoundException;
@@ -497,6 +597,24 @@ public abstract class AdAccountsApiService {
  ,Integer engagementWindowDays
  ,Integer viewWindowDays
  ,String conversionReportTime
+ ,ReportingTimeZone reportingTimezone
+ ) throws NotFoundException;
+    public abstract Response promotionsCreate(String adAccountId
+ ,List<@Valid PromotionCreateRequest> promotionCreateRequest
+ ) throws NotFoundException;
+    public abstract Response promotionsDelete(String adAccountId
+ ,String promotionId
+ ) throws NotFoundException;
+    public abstract Response promotionsGet(String adAccountId
+ ,String promotionId
+ ) throws NotFoundException;
+    public abstract Response promotionsList(String adAccountId
+ ,Integer pageSize
+ ,String order
+ ,String bookmark
+ ) throws NotFoundException;
+    public abstract Response promotionsUpdate(String adAccountId
+ ,List<@Valid PromotionUpdateRequest> promotionUpdateRequest
  ) throws NotFoundException;
     public abstract Response sandboxDelete(String adAccountId
  ) throws NotFoundException;

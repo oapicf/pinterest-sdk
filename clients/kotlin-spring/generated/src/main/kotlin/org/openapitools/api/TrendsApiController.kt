@@ -1,9 +1,21 @@
 package org.openapitools.api
 
+import org.openapitools.model.AgeTrendsBucket
 import org.openapitools.model.Error
+import org.openapitools.model.FeaturedTrend
+import org.openapitools.model.GenderBucket
+import org.openapitools.model.InterestsEnum
+import org.openapitools.model.PinterestLibError
+import org.openapitools.model.ProductCategoriesEngagementType
+import org.openapitools.model.ProductCategoryDetailLookbackWindow
+import org.openapitools.model.ProductCategoryDetails
+import org.openapitools.model.ProductCategoryEnum
+import org.openapitools.model.ProductCategoryRegion
 import org.openapitools.model.TrendType
 import org.openapitools.model.TrendingKeywordsResponse
+import org.openapitools.model.TrendingProductCategory
 import org.openapitools.model.TrendsSupportedRegion
+import org.openapitools.model.VerticalProductCategory
 import io.swagger.v3.oas.annotations.*
 import io.swagger.v3.oas.annotations.enums.*
 import io.swagger.v3.oas.annotations.media.*
@@ -61,8 +73,93 @@ class TrendsApiController() {
         @Parameter(description = "If set, filters the results to trends among users in the specified age range(s).<br /> If unset, trends among all age groups will be returned.", schema = Schema(allowableValues = ["18-24", "25-34", "35-44", "45-49", "50-54", "55-64", "65+"])) @Valid @RequestParam(value = "ages", required = false) ages: kotlin.collections.List<kotlin.String>?,
         @Size(min=1,max=50) @Parameter(description = "If set, filters the results to top trends which include at least one of the specified keywords.<br /> If unset, no keyword filtering logic is applied.") @Valid @RequestParam(value = "include_keywords", required = false) includeKeywords: kotlin.collections.List<kotlin.String>?,
         @Parameter(description = "Governs how the resulting time series data will be normalized to a [0-100] scale.<br /> By default (`false`), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword's time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.<br /> If set to `true`, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords.", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "normalize_against_group", required = false, defaultValue = "false") normalizeAgainstGroup: kotlin.Boolean,
-        @Min(value=1) @Max(value=50) @Parameter(description = "The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a `limit` of 50 will return the top 50 trends.", schema = Schema(defaultValue = "50")) @Valid @RequestParam(value = "limit", required = false, defaultValue = "50") limit: kotlin.Int
+        @Min(value=1) @Max(value=50) @Parameter(description = "The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a `limit` of 50 will return the top 50 trends.", schema = Schema(defaultValue = "50")) @Valid @RequestParam(value = "limit", required = false, defaultValue = "50") limit: kotlin.Int,
+        @Parameter(description = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including predicted weekly search volume data for the next 90 days. By default (`false`), the response will not include predicted data.", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "include_prediction", required = false, defaultValue = "false") includePrediction: kotlin.Boolean,
+        @Parameter(description = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including the age and gender distribution for each keyword. By default (`false`), the response will not include demographics data.", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "include_demographics", required = false, defaultValue = "false") includeDemographics: kotlin.Boolean
     ): ResponseEntity<TrendingKeywordsResponse> {
+        return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
+    }
+
+    @Operation(
+        summary = "Get featured topics",
+        operationId = "trendsFeaturedTopicsList",
+        description = """  Enables advertisers to pull top five trending topics by interest and market, at full parity with the Pinterest Trends UI.""",
+        responses = [
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(array = ArraySchema(schema = Schema(implementation = FeaturedTrend::class)))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "200", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
+        security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "user_accounts:read" ]),SecurityRequirement(name = "client_credentials", scopes = [ "user_accounts:read" ]) ]
+    )
+    @RequestMapping(
+        method = [RequestMethod.GET],
+        value = [PATH_TRENDS_FEATURED_TOPICS_LIST /* "/trends/topics/featured" */],
+        produces = ["application/json"]
+    )
+    fun trendsFeaturedTopicsList(
+        @NotNull @Parameter(description = "      The geographic region of interest. Only top product categories within the specified region will be returned.      The `region` parameter is formatted as ISO 3166-2 country codes delimited by `+`.      - `US` - United States     - `GB+IE` - Great Britain & Ireland     - `CA` - Canada", required = true, schema = Schema(allowableValues = ["US", "GB+IE", "CA"])) @Valid @RequestParam(value = "region", required = true) region: ProductCategoryRegion,
+        @Parameter(description = "Interest to filter by", schema = Schema(allowableValues = ["ALL", "ANIMALS", "ARCHITECTURE", "ART", "BEAUTY", "DIY_AND_CRAFTS", "EDUCATION", "EVENT_PLANNING", "FASHION", "FOOD_AND_DRINKS", "GARDENING", "HEALTH", "HOME_DECOR", "PARENTING", "TRAVEL", "WEDDING"])) @Valid @RequestParam(value = "interest", required = false) interest: InterestsEnum?
+    ): ResponseEntity<List<FeaturedTrend>> {
+        return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
+    }
+
+    @Operation(
+        summary = "Get product category details",
+        operationId = "trendsProductCategoriesDetailsList",
+        description = """  Enables advertisers to retrieve demographic information, related pins, and trend lines for specified product categories""",
+        responses = [
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(array = ArraySchema(schema = Schema(implementation = ProductCategoryDetails::class)))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "200", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
+        security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "user_accounts:read" ]),SecurityRequirement(name = "client_credentials", scopes = [ "user_accounts:read" ]) ]
+    )
+    @RequestMapping(
+        method = [RequestMethod.GET],
+        value = [PATH_TRENDS_PRODUCT_CATEGORIES_DETAILS_LIST /* "/trends/product_categories/details" */],
+        produces = ["application/json"]
+    )
+    fun trendsProductCategoriesDetailsList(
+        @NotNull @Size(min=1,max=20) @Parameter(description = "List of product categories", required = true) @Valid @RequestParam(value = "product_categories", required = true) productCategories: kotlin.collections.List<ProductCategoryEnum>,
+        @NotNull @Parameter(description = "      The geographic region of interest. Only top product categories within the specified region will be returned.      The `region` parameter is formatted as ISO 3166-2 country codes delimited by `+`.      - `US` - United States     - `GB+IE` - Great Britain & Ireland     - `CA` - Canada", required = true, schema = Schema(allowableValues = ["US", "GB+IE", "CA"])) @Valid @RequestParam(value = "region", required = true) region: ProductCategoryRegion,
+        @Parameter(description = "   Time period for historical data analysis in days. The lookback window defines how far back in time the API will analyze data to compute trend metrics.   - `90` - Last 90 days (3 months)   - `180` - Last 180 days (6 months)   - `365` - Last 365 days (1 year)   - `730` - Last 730 days (2 years)", schema = Schema(allowableValues = ["90", "180", "365", "730"])) @Valid @RequestParam(value = "lookback_window", required = false) lookbackWindow: ProductCategoryDetailLookbackWindow?,
+        @Parameter(description = "     Type of engagement metric to analyze. - `ENGAGEMENT` - Overall engagement metric - `OUTBOUND_CLICK` - Number of outbound clicks - `SAVE` - Number of pin saves", schema = Schema(allowableValues = ["ENGAGEMENT", "OUTBOUND_CLICK", "SAVE"])) @Valid @RequestParam(value = "engagement_type", required = false) engagementType: ProductCategoriesEngagementType?
+    ): ResponseEntity<List<ProductCategoryDetails>> {
+        return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
+    }
+
+    @Operation(
+        summary = "Get a list of growing Shopping Product Categories",
+        operationId = "trendsProductCategoriesTrendingList",
+        description = """  Get a list of growing Shopping Product Categories in ranked order allowing filtering by engagement type, vertical, age, and gender.""",
+        responses = [
+            ApiResponse(responseCode = "200", description = "The request has succeeded.", content = [Content(array = ArraySchema(schema = Schema(implementation = TrendingProductCategory::class)))]),
+            ApiResponse(responseCode = "400", description = "The request could not be understood by the server due to unexpected data.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "401", description = "Authentication is required and has either failed or not been provided.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "403", description = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "404", description = "The requested resource could not be found on this server.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "429", description = "The user has sent too many requests in a given amount of time and is being rate limited.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]),
+            ApiResponse(responseCode = "200", description = "An unexpected error response.", content = [Content(schema = Schema(implementation = PinterestLibError::class))]) ],
+        security = [ SecurityRequirement(name = "pinterest_oauth2", scopes = [ "user_accounts:read" ]),SecurityRequirement(name = "client_credentials", scopes = [ "user_accounts:read" ]) ]
+    )
+    @RequestMapping(
+        method = [RequestMethod.GET],
+        value = [PATH_TRENDS_PRODUCT_CATEGORIES_TRENDING_LIST /* "/trends/product_categories/trending" */],
+        produces = ["application/json"]
+    )
+    fun trendsProductCategoriesTrendingList(
+        @NotNull @Parameter(description = "      The geographic region of interest. Only top product categories within the specified region will be returned.      The `region` parameter is formatted as ISO 3166-2 country codes delimited by `+`.      - `US` - United States     - `GB+IE` - Great Britain & Ireland     - `CA` - Canada", required = true, schema = Schema(allowableValues = ["US", "GB+IE", "CA"])) @Valid @RequestParam(value = "region", required = true) region: ProductCategoryRegion,
+        @Parameter(description = "List of verticals to filter by") @Valid @RequestParam(value = "verticals", required = false) verticals: kotlin.collections.List<VerticalProductCategory>?,
+        @Parameter(description = "Age to filter by. If not provided, the results will be filtered by all ages.") @Valid @RequestParam(value = "ages", required = false) ages: kotlin.collections.List<AgeTrendsBucket>?,
+        @Parameter(description = "Gender to filter by, If not provided, the results will be filtered by all genders.") @Valid @RequestParam(value = "genders", required = false) genders: kotlin.collections.List<GenderBucket>?,
+        @Parameter(description = "     Type of engagement metric to analyze. - `ENGAGEMENT` - Overall engagement metric - `OUTBOUND_CLICK` - Number of outbound clicks - `SAVE` - Number of pin saves", schema = Schema(allowableValues = ["ENGAGEMENT", "OUTBOUND_CLICK", "SAVE"])) @Valid @RequestParam(value = "engagement_type", required = false) engagementType: ProductCategoriesEngagementType?
+    ): ResponseEntity<List<TrendingProductCategory>> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -70,5 +167,8 @@ class TrendsApiController() {
         //for your own safety never directly reuse these path definitions in tests
         const val BASE_PATH: String = "/v5"
         const val PATH_TRENDING_KEYWORDS_LIST: String = "/trends/keywords/{region}/top/{trend_type}"
+        const val PATH_TRENDS_FEATURED_TOPICS_LIST: String = "/trends/topics/featured"
+        const val PATH_TRENDS_PRODUCT_CATEGORIES_DETAILS_LIST: String = "/trends/product_categories/details"
+        const val PATH_TRENDS_PRODUCT_CATEGORIES_TRENDING_LIST: String = "/trends/product_categories/trending"
     }
 }

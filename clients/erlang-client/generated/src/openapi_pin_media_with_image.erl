@@ -5,13 +5,13 @@
 -export_type([openapi_pin_media_with_image/0]).
 
 -type openapi_pin_media_with_image() ::
-    #{ 'media_type' => binary(),
-       'images' => openapi_pin_media_with_image_all_of_images:openapi_pin_media_with_image_all_of_images()
+    #{ 'images' => openapi_image_size:openapi_image_size(),
+       'media_type' := binary()
      }.
 
-encode(#{ 'media_type' := MediaType,
-          'images' := Images
+encode(#{ 'images' := Images,
+          'media_type' := MediaType
         }) ->
-    #{ 'media_type' => MediaType,
-       'images' => Images
+    #{ 'images' => Images,
+       'media_type' => MediaType
      }.

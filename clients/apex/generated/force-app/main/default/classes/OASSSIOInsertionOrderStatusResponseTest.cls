@@ -73,7 +73,7 @@ private class OASSSIOInsertionOrderStatusResponseTest {
     private static void maintainRenamedProperties() {
         OASSSIOInsertionOrderStatusResponse ssIOInsertionOrderStatusResponse = new OASSSIOInsertionOrderStatusResponse();
         Map<String, String> x-property-mappings = ssIOInsertionOrderStatusResponse.getx-property-mappings();
-        System.assertEquals('pinOrderId', x-property-mappings.get('pin_order_id'));
         System.assertEquals('creationTime', x-property-mappings.get('creation_time'));
+        System.assertEquals('pinOrderId', x-property-mappings.get('pin_order_id'));
     }
 }

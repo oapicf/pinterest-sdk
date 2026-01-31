@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**SSIOOrderLine[]**](SSIOOrderLine.md) | SSIO order lines by ad acount id | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**SSIOOrderLine[]**](SSIOOrderLine.md) | SSIO order lines by ad acount id | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$SsioOrderLinesGetByAdAccount200Response = Initialize-PSOpenAPIToolsSsioOrderLinesGetByAdAccount200Response  -Items null `
- -Bookmark null
+$SsioOrderLinesGetByAdAccount200Response = Initialize-PSOpenAPIToolsSsioOrderLinesGetByAdAccount200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

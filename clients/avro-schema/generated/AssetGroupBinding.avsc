@@ -5,21 +5,24 @@
   "name": "AssetGroupBinding",
   "fields": [
     {
-      "name": "id",
-      "type": ["null", "string"],
-      "doc": "Asset Group ID.",
-      "default": null
-    },
-    {
-      "name": "asset_group_name",
-      "type": ["null", "string"],
-      "doc": "Asset Group name",
+      "name": "ad_accounts_ids",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "A list of ad account IDs under the asset group",
       "default": null
     },
     {
       "name": "asset_group_description",
       "type": ["null", "string"],
       "doc": "Asset group description",
+      "default": null
+    },
+    {
+      "name": "asset_group_name",
+      "type": ["null", "string"],
+      "doc": "Asset Group name",
       "default": null
     },
     {
@@ -32,12 +35,36 @@
       "default": null
     },
     {
-      "name": "ad_accounts_ids",
+      "name": "catalogs_ids",
       "type": ["null", {
         "type": "array",
         "items": "string"
       }],
-      "doc": "A list of ad account IDs under the asset group",
+      "doc": "A list of catalog IDs under asset group",
+      "default": null
+    },
+    {
+      "name": "created_by",
+      "type": ["null", "model.BusinessAccessUserSummary"],
+      "doc": "The data of the user that created the asset group.",
+      "default": null
+    },
+    {
+      "name": "created_time",
+      "type": ["null", "int"],
+      "doc": "The creation time of the asset group",
+      "default": null
+    },
+    {
+      "name": "id",
+      "type": ["null", "string"],
+      "doc": "Asset Group ID.",
+      "default": null
+    },
+    {
+      "name": "owner",
+      "type": ["null", "model.BusinessAccessUserSummary"],
+      "doc": "The data of the business that owns the asset group.",
       "default": null
     },
     {
@@ -50,27 +77,9 @@
       "default": null
     },
     {
-      "name": "created_time",
-      "type": ["null", "int"],
-      "doc": "The creation time of the asset group",
-      "default": null
-    },
-    {
       "name": "updated_time",
       "type": ["null", "int"],
       "doc": "The last update time of the asset group",
-      "default": null
-    },
-    {
-      "name": "owner",
-      "type": ["null", "model.BusinessAccessUserSummary"],
-      "doc": "The data of the business that owns the asset group.",
-      "default": null
-    },
-    {
-      "name": "created_by",
-      "type": ["null", "model.BusinessAccessUserSummary"],
-      "doc": "The data of the user that created the asset group.",
       "default": null
     }
   ]

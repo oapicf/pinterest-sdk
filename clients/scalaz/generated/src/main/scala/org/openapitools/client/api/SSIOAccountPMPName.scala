@@ -12,10 +12,10 @@ import org.joda.time.DateTime
 import SSIOAccountPMPName._
 
 case class SSIOAccountPMPName (
-  /* Display name */
-  name: Option[String],
-/* Salesforce id for PMP */
-  id: Option[String])
+  /* Salesforce id for PMP */
+  id: Option[String],
+/* Display name */
+  name: Option[String])
 
 object SSIOAccountPMPName {
   import DateTimeCodecs._

@@ -5,15 +5,15 @@
   "name": "SSIOAccountPMPName",
   "fields": [
     {
-      "name": "name",
-      "type": ["null", "string"],
-      "doc": "Display name",
-      "default": null
-    },
-    {
       "name": "id",
       "type": ["null", "string"],
       "doc": "Salesforce id for PMP",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Display name",
       "default": null
     }
   ]

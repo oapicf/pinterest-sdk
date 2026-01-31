@@ -24,8 +24,8 @@ void
 CatalogsProductGroupPricingCriteria::__init()
 {
 	//inclusion = bool(false);
-	//values = double(0);
 	//negated = bool(false);
+	//values = double(0);
 }
 
 void
@@ -36,15 +36,15 @@ CatalogsProductGroupPricingCriteria::__cleanup()
 	//delete inclusion;
 	//inclusion = NULL;
 	//}
-	//if(values != NULL) {
-	//
-	//delete values;
-	//values = NULL;
-	//}
 	//if(negated != NULL) {
 	//
 	//delete negated;
 	//negated = NULL;
+	//}
+	//if(values != NULL) {
+	//
+	//delete values;
+	//values = NULL;
 	//}
 	//
 }
@@ -65,6 +65,17 @@ CatalogsProductGroupPricingCriteria::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *negatedKey = "negated";
+	node = json_object_get_member(pJsonObject, negatedKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("bool")) {
+			jsonToValue(&negated, node, "bool", "");
+		} else {
+			
+		}
+	}
 	const gchar *valuesKey = "values";
 	node = json_object_get_member(pJsonObject, valuesKey);
 	if (node !=NULL) {
@@ -76,17 +87,6 @@ CatalogsProductGroupPricingCriteria::fromJson(char* jsonStr)
 			
 			long long* obj = static_cast<long long*> (&values);
 			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *negatedKey = "negated";
-	node = json_object_get_member(pJsonObject, negatedKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("bool")) {
-			jsonToValue(&negated, node, "bool", "");
-		} else {
 			
 		}
 	}
@@ -111,6 +111,15 @@ CatalogsProductGroupPricingCriteria::toJson()
 	}
 	const gchar *inclusionKey = "inclusion";
 	json_object_set_member(pJsonObject, inclusionKey, node);
+	if (isprimitive("bool")) {
+		bool obj = getNegated();
+		node = converttoJson(&obj, "bool", "");
+	}
+	else {
+		
+	}
+	const gchar *negatedKey = "negated";
+	json_object_set_member(pJsonObject, negatedKey, node);
 	if (isprimitive("long long")) {
 		long long obj = getValues();
 		node = converttoJson(&obj, "long long", "");
@@ -125,15 +134,6 @@ CatalogsProductGroupPricingCriteria::toJson()
 	}
 	const gchar *valuesKey = "values";
 	json_object_set_member(pJsonObject, valuesKey, node);
-	if (isprimitive("bool")) {
-		bool obj = getNegated();
-		node = converttoJson(&obj, "bool", "");
-	}
-	else {
-		
-	}
-	const gchar *negatedKey = "negated";
-	json_object_set_member(pJsonObject, negatedKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -154,18 +154,6 @@ CatalogsProductGroupPricingCriteria::setInclusion(bool  inclusion)
 	this->inclusion = inclusion;
 }
 
-long long
-CatalogsProductGroupPricingCriteria::getValues()
-{
-	return values;
-}
-
-void
-CatalogsProductGroupPricingCriteria::setValues(long long  values)
-{
-	this->values = values;
-}
-
 bool
 CatalogsProductGroupPricingCriteria::getNegated()
 {
@@ -176,6 +164,18 @@ void
 CatalogsProductGroupPricingCriteria::setNegated(bool  negated)
 {
 	this->negated = negated;
+}
+
+long long
+CatalogsProductGroupPricingCriteria::getValues()
+{
+	return values;
+}
+
+void
+CatalogsProductGroupPricingCriteria::setValues(long long  values)
+{
+	this->values = values;
 }
 
 

@@ -5,6 +5,11 @@
   "name": "CatalogsHotelListProductsByCatalogBasedFilterRequest",
   "fields": [
     {
+      "name": "catalog_id",
+      "type": "string",
+      "doc": "Catalog id pertaining to the hotel product group."
+    },
+    {
       "name": "catalog_type",
       "type": {
         "type": "enum",
@@ -14,11 +19,6 @@
         ]
       },
       "doc": ""
-    },
-    {
-      "name": "catalog_id",
-      "type": "string",
-      "doc": "Catalog id pertaining to the hotel product group."
     },
     {
       "name": "filters",

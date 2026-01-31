@@ -1,11 +1,12 @@
 package org.openapitools.api;
 
 import org.openapitools.model.ConversionEventResponse;
+import org.openapitools.model.ConversionTag;
 import org.openapitools.model.ConversionTagCreate;
-import org.openapitools.model.ConversionTagListResponse;
-import org.openapitools.model.ConversionTagResponse;
+import org.openapitools.model.ConversionTagsList200Response;
 import org.openapitools.model.Error;
 import org.openapitools.model.PageVisitConversionTagsGet200Response;
+import org.openapitools.model.PinterestLibError;
 
 import java.util.List;
 import java.util.Map;
@@ -31,7 +32,7 @@ public interface ConversionTagsApi  {
     /**
      * Create conversion tag
      *
-     * Create a conversion tag, also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Pinterest tag&lt;/a&gt;, with the option to enable enhanced match.&lt;p/&gt; The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.&lt;p/&gt; For more information, see:&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\&quot;&gt;Set up the Pinterest tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/\&quot;&gt;Pinterest Tag&lt;/a&gt;&lt;p/&gt; &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;/docs/api-features/pinterest-tag/#enhanced-match\&quot;&gt;Enhanced match&lt;/a&gt;
+     * Create a conversion tag, also known as [Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag), with the option to enable enhanced match.  The Pinterest Tag tracks actions people take on the ad account&#39;s website after they view the ad account&#39;s ad on Pinterest. The advertiser needs to customize this tag to track conversions.  For more information, see:  [Set up the Pinterest tag](https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag)  [Pinterest Tag](/docs/track-conversions/pinterest-tag/)  [Enhanced match](/docs/track-conversions/pinterest-tag/#enhanced-match)
      *
      */
     @POST
@@ -40,9 +41,15 @@ public interface ConversionTagsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Create conversion tag", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = ConversionTagResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public ConversionTagResponse conversionTagsCreate(@PathParam("ad_account_id") String adAccountId, ConversionTagCreate conversionTagCreate);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = ConversionTag.class),
+        @ApiResponse(code = 201, message = "Resource create operation completed successfully.", response = ConversionTag.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public ConversionTag conversionTagsCreate(@PathParam("ad_account_id") String adAccountId, ConversionTagCreate conversionTagCreate);
 
     /**
      * Get conversion tag
@@ -55,12 +62,12 @@ public interface ConversionTagsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Get conversion tag", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = ConversionTagResponse.class),
+        @ApiResponse(code = 200, message = "Success", response = ConversionTag.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public ConversionTagResponse conversionTagsGet(@PathParam("ad_account_id") String adAccountId, @PathParam("conversion_tag_id") String conversionTagId);
+    public ConversionTag conversionTagsGet(@PathParam("ad_account_id") String adAccountId, @PathParam("conversion_tag_id") String conversionTagId);
 
     /**
-     * Get conversion tags
+     * List conversion tags
      *
      * List conversion tags associated with an ad account.
      *
@@ -68,11 +75,16 @@ public interface ConversionTagsApi  {
     @GET
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get conversion tags", tags={  })
+    @ApiOperation(value = "List conversion tags", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Success", response = ConversionTagListResponse.class),
-        @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public ConversionTagListResponse conversionTagsList(@PathParam("ad_account_id") String adAccountId, @QueryParam("filter_deleted") @DefaultValue("false")Boolean filterDeleted);
+        @ApiResponse(code = 200, message = "The request has succeeded.", response = ConversionTagsList200Response.class),
+        @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
+        @ApiResponse(code = 401, message = "Authentication is required and has either failed or not been provided.", response = PinterestLibError.class),
+        @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
+        @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
+        @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
+        @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
+    public ConversionTagsList200Response conversionTagsList(@PathParam("ad_account_id") String adAccountId, @QueryParam("filter_deleted") @DefaultValue("false")Boolean filterDeleted);
 
     /**
      * Get Ocpm eligible conversion tags

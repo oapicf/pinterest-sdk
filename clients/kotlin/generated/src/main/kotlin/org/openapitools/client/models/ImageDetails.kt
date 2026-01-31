@@ -22,22 +22,22 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param width 
  * @param height 
  * @param url 
+ * @param width 
  */
 
 
 data class ImageDetails (
 
-    @Json(name = "width")
-    val width: kotlin.Int,
-
     @Json(name = "height")
     val height: kotlin.Int?,
 
     @Json(name = "url")
-    val url: kotlin.String
+    val url: kotlin.String,
+
+    @Json(name = "width")
+    val width: kotlin.Int?
 
 ) {
 

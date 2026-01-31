@@ -11,7 +11,7 @@ import { CustomerList } from './customerList';
 
 
 export interface CustomerListsList200Response { 
-    items: Array<CustomerList>;
     bookmark?: string | null;
+    items: Array<CustomerList>;
 }
 

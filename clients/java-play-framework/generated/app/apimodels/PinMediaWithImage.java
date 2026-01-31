@@ -1,7 +1,6 @@
 package apimodels;
 
-import apimodels.PinMedia;
-import apimodels.PinMediaWithImageAllOfImages;
+import apimodels.ImageSize;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
 import javax.validation.*;
@@ -11,15 +10,49 @@ import javax.validation.Valid;
 /**
  * Pin with image.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
-public class PinMediaWithImage extends PinMedia  {
+public class PinMediaWithImage   {
   @JsonProperty("images")
   @Valid
 
-  private PinMediaWithImageAllOfImages images;
+  private ImageSize images;
 
-  public PinMediaWithImage images(PinMediaWithImageAllOfImages images) {
+  /**
+   * Gets or Sets mediaType
+   */
+  public enum MediaTypeEnum {
+    IMAGE("image");
+
+    private final String value;
+
+    MediaTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static MediaTypeEnum fromValue(String value) {
+      for (MediaTypeEnum b : MediaTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  @JsonProperty("media_type")
+  @NotNull
+
+  private MediaTypeEnum mediaType;
+
+  public PinMediaWithImage images(ImageSize images) {
     this.images = images;
     return this;
   }
@@ -28,12 +61,29 @@ public class PinMediaWithImage extends PinMedia  {
    * Get images
    * @return images
   **/
-  public PinMediaWithImageAllOfImages getImages() {
+  public ImageSize getImages() {
     return images;
   }
 
-  public void setImages(PinMediaWithImageAllOfImages images) {
+  public void setImages(ImageSize images) {
     this.images = images;
+  }
+
+  public PinMediaWithImage mediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
+    return this;
+  }
+
+   /**
+   * Get mediaType
+   * @return mediaType
+  **/
+  public MediaTypeEnum getMediaType() {
+    return mediaType;
+  }
+
+  public void setMediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
   }
 
 
@@ -47,12 +97,12 @@ public class PinMediaWithImage extends PinMedia  {
     }
     PinMediaWithImage pinMediaWithImage = (PinMediaWithImage) o;
     return Objects.equals(images, pinMediaWithImage.images) &&
-        super.equals(o);
+        Objects.equals(mediaType, pinMediaWithImage.mediaType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(images, super.hashCode());
+    return Objects.hash(images, mediaType);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -60,8 +110,9 @@ public class PinMediaWithImage extends PinMedia  {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinMediaWithImage {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
     sb.append("    images: ").append(toIndentedString(images)).append("\n");
+    sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

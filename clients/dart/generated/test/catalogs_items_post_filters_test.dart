@@ -21,14 +21,14 @@ void main() {
       // TODO
     });
 
-    // List<String> itemIds (default value: const [])
-    test('to test the property `itemIds`', () async {
-      // TODO
-    });
-
     // Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
     // String catalogId
     test('to test the property `catalogId`', () async {
+      // TODO
+    });
+
+    // List<String> itemIds (default value: const [])
+    test('to test the property `itemIds`', () async {
       // TODO
     });
 

@@ -12,8 +12,8 @@
   {
    (ds/opt :questions) (s/coll-of quiz-pin-question-spec)
    (ds/opt :results) (s/coll-of quiz-pin-result-spec)
-   (ds/opt :tie_breaker_type) string?
    (ds/opt :tie_breaker_custom_result) quiz-pin-result-spec
+   (ds/opt :tie_breaker_type) string?
    })
 
 (def quiz-pin-data-spec

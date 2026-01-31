@@ -11,6 +11,8 @@ import {SecurityAuthentication} from '../auth/auth';
 import { AdsCreditRedeemRequest } from '../models/AdsCreditRedeemRequest';
 import { AdsCreditRedeemResponse } from '../models/AdsCreditRedeemResponse';
 import { AdsCreditsDiscountsGet200Response } from '../models/AdsCreditsDiscountsGet200Response';
+import { BillingInvoiceDownloadResponse } from '../models/BillingInvoiceDownloadResponse';
+import { BillingInvoicesGet200Response } from '../models/BillingInvoicesGet200Response';
 import { BillingProfilesGet200Response } from '../models/BillingProfilesGet200Response';
 import { SSIOAccountResponse } from '../models/SSIOAccountResponse';
 import { SSIOCreateInsertionOrderRequest } from '../models/SSIOCreateInsertionOrderRequest';
@@ -27,7 +29,7 @@ import { SsioOrderLinesGetByAdAccount200Response } from '../models/SsioOrderLine
 export class BillingApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
-     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.</strong>
      * Redeem ad credits
      * @param adAccountId Unique identifier of an ad account.
      * @param adsCreditRedeemRequest Redeem ad credits request.
@@ -83,7 +85,7 @@ export class BillingApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+     * Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.</strong>
      * Get ads credit discounts
      * @param adAccountId Unique identifier of an ad account.
      * @param bookmark Cursor used to fetch the next page of items
@@ -135,7 +137,147 @@ export class BillingApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/beta-and-advanced-access/\'>Learn more</a>.</strong>
+     * Get download url for a billing invoice.
+     * Get download url for a billing invoice
+     * @param adAccountId Unique identifier of an ad account.
+     * @param billingInvoiceId Unique identifier of a billing invoice.
+     */
+    public async billingInvoiceDownloadGet(adAccountId: string, billingInvoiceId: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'adAccountId' is not null or undefined
+        if (adAccountId === null || adAccountId === undefined) {
+            throw new RequiredError("BillingApi", "billingInvoiceDownloadGet", "adAccountId");
+        }
+
+
+        // verify required parameter 'billingInvoiceId' is not null or undefined
+        if (billingInvoiceId === null || billingInvoiceId === undefined) {
+            throw new RequiredError("BillingApi", "billingInvoiceDownloadGet", "billingInvoiceId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download'
+            .replace('{' + 'ad_account_id' + '}', encodeURIComponent(String(adAccountId)))
+            .replace('{' + 'billing_invoice_id' + '}', encodeURIComponent(String(billingInvoiceId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["pinterest_oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Get billing invoices in the advertiser account.
+     * Get billing invoices
+     * @param adAccountId Unique identifier of an ad account.
+     * @param bookmark Cursor used to fetch the next page of items
+     * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
+     * @param sort Field of which to sort billing invoices
+     * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+     * @param status Status of billing invoices to filter by
+     * @param documentType Document type of billing invoices to filter by
+     * @param startDueDate Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
+     * @param endDueDate Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
+     */
+    public async billingInvoicesGet(adAccountId: string, bookmark?: string, pageSize?: number, sort?: 'DUE_DATE' | 'BILLING_PERIOD' | 'DOCUMENT_TYPE' | 'TOTAL_AMOUNT' | 'INVOICE_NUMBER', order?: 'ASCENDING' | 'DESCENDING', status?: 'OPEN' | 'CLOSED', documentType?: 'INVOICE' | 'CREDIT_MEMO', startDueDate?: string, endDueDate?: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'adAccountId' is not null or undefined
+        if (adAccountId === null || adAccountId === undefined) {
+            throw new RequiredError("BillingApi", "billingInvoicesGet", "adAccountId");
+        }
+
+
+
+
+
+
+
+
+
+
+        // Path Params
+        const localVarPath = '/ad_accounts/{ad_account_id}/billing_invoices'
+            .replace('{' + 'ad_account_id' + '}', encodeURIComponent(String(adAccountId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (bookmark !== undefined) {
+            requestContext.setQueryParam("bookmark", ObjectSerializer.serialize(bookmark, "string", ""));
+        }
+
+        // Query Params
+        if (pageSize !== undefined) {
+            requestContext.setQueryParam("page_size", ObjectSerializer.serialize(pageSize, "number", ""));
+        }
+
+        // Query Params
+        if (sort !== undefined) {
+            requestContext.setQueryParam("sort", ObjectSerializer.serialize(sort, "'DUE_DATE' | 'BILLING_PERIOD' | 'DOCUMENT_TYPE' | 'TOTAL_AMOUNT' | 'INVOICE_NUMBER'", ""));
+        }
+
+        // Query Params
+        if (order !== undefined) {
+            requestContext.setQueryParam("order", ObjectSerializer.serialize(order, "'ASCENDING' | 'DESCENDING'", ""));
+        }
+
+        // Query Params
+        if (status !== undefined) {
+            requestContext.setQueryParam("status", ObjectSerializer.serialize(status, "'OPEN' | 'CLOSED'", ""));
+        }
+
+        // Query Params
+        if (documentType !== undefined) {
+            requestContext.setQueryParam("document_type", ObjectSerializer.serialize(documentType, "'INVOICE' | 'CREDIT_MEMO'", ""));
+        }
+
+        // Query Params
+        if (startDueDate !== undefined) {
+            requestContext.setQueryParam("start_due_date", ObjectSerializer.serialize(startDueDate, "string", "date"));
+        }
+
+        // Query Params
+        if (endDueDate !== undefined) {
+            requestContext.setQueryParam("end_due_date", ObjectSerializer.serialize(endDueDate, "string", "date"));
+        }
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["pinterest_oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href=\'/docs/getting-started/using-beta-and-restricted-features/\'>Learn more</a>.</strong>
      * Get billing profiles
      * @param adAccountId Unique identifier of an ad account.
      * @param isActive Return active billing profiles, if false return all billing profiles.
@@ -582,6 +724,92 @@ export class BillingApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "AdsCreditsDiscountsGet200Response", ""
             ) as AdsCreditsDiscountsGet200Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to billingInvoiceDownloadGet
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async billingInvoiceDownloadGetWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BillingInvoiceDownloadResponse >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: BillingInvoiceDownloadResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "BillingInvoiceDownloadResponse", ""
+            ) as BillingInvoiceDownloadResponse;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Invalid request parameter.", body, response.headers);
+        }
+        if (isCodeInRange("0", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unexpected error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: BillingInvoiceDownloadResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "BillingInvoiceDownloadResponse", ""
+            ) as BillingInvoiceDownloadResponse;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to billingInvoicesGet
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async billingInvoicesGetWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BillingInvoicesGet200Response >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: BillingInvoicesGet200Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "BillingInvoicesGet200Response", ""
+            ) as BillingInvoicesGet200Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Invalid request parameter.", body, response.headers);
+        }
+        if (isCodeInRange("0", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unexpected error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: BillingInvoicesGet200Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "BillingInvoicesGet200Response", ""
+            ) as BillingInvoicesGet200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

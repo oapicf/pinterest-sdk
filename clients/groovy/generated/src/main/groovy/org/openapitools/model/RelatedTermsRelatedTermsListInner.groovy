@@ -9,7 +9,7 @@ import java.util.Arrays;
 @Canonical
 class RelatedTermsRelatedTermsListInner {
     
-    String term
-    
     List<String> relatedTerms = new ArrayList<>()
+    
+    String term
 }

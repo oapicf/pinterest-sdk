@@ -23,31 +23,31 @@ pinterest_rest_api_catalogs_report_feed_ingestion_filter_REPORTTYPE_e catalogs_r
 }
 
 static catalogs_report_feed_ingestion_filter_t *catalogs_report_feed_ingestion_filter_create_internal(
-    pinterest_rest_api_catalogs_report_feed_ingestion_filter_REPORTTYPE_e report_type,
     char *feed_id,
-    char *processing_result_id
+    char *processing_result_id,
+    pinterest_rest_api_catalogs_report_feed_ingestion_filter_REPORTTYPE_e report_type
     ) {
     catalogs_report_feed_ingestion_filter_t *catalogs_report_feed_ingestion_filter_local_var = malloc(sizeof(catalogs_report_feed_ingestion_filter_t));
     if (!catalogs_report_feed_ingestion_filter_local_var) {
         return NULL;
     }
-    catalogs_report_feed_ingestion_filter_local_var->report_type = report_type;
     catalogs_report_feed_ingestion_filter_local_var->feed_id = feed_id;
     catalogs_report_feed_ingestion_filter_local_var->processing_result_id = processing_result_id;
+    catalogs_report_feed_ingestion_filter_local_var->report_type = report_type;
 
     catalogs_report_feed_ingestion_filter_local_var->_library_owned = 1;
     return catalogs_report_feed_ingestion_filter_local_var;
 }
 
 __attribute__((deprecated)) catalogs_report_feed_ingestion_filter_t *catalogs_report_feed_ingestion_filter_create(
-    pinterest_rest_api_catalogs_report_feed_ingestion_filter_REPORTTYPE_e report_type,
     char *feed_id,
-    char *processing_result_id
+    char *processing_result_id,
+    pinterest_rest_api_catalogs_report_feed_ingestion_filter_REPORTTYPE_e report_type
     ) {
     return catalogs_report_feed_ingestion_filter_create_internal (
-        report_type,
         feed_id,
-        processing_result_id
+        processing_result_id,
+        report_type
         );
 }
 
@@ -74,16 +74,6 @@ void catalogs_report_feed_ingestion_filter_free(catalogs_report_feed_ingestion_f
 cJSON *catalogs_report_feed_ingestion_filter_convertToJSON(catalogs_report_feed_ingestion_filter_t *catalogs_report_feed_ingestion_filter) {
     cJSON *item = cJSON_CreateObject();
 
-    // catalogs_report_feed_ingestion_filter->report_type
-    if (pinterest_rest_api_catalogs_report_feed_ingestion_filter_REPORTTYPE_NULL == catalogs_report_feed_ingestion_filter->report_type) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "report_type", catalogs_report_feed_ingestion_filter_report_type_ToString(catalogs_report_feed_ingestion_filter->report_type)) == NULL)
-    {
-    goto fail; //Enum
-    }
-
-
     // catalogs_report_feed_ingestion_filter->feed_id
     if (!catalogs_report_feed_ingestion_filter->feed_id) {
         goto fail;
@@ -100,6 +90,16 @@ cJSON *catalogs_report_feed_ingestion_filter_convertToJSON(catalogs_report_feed_
     }
     }
 
+
+    // catalogs_report_feed_ingestion_filter->report_type
+    if (pinterest_rest_api_catalogs_report_feed_ingestion_filter_REPORTTYPE_NULL == catalogs_report_feed_ingestion_filter->report_type) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "report_type", catalogs_report_feed_ingestion_filter_report_type_ToString(catalogs_report_feed_ingestion_filter->report_type)) == NULL)
+    {
+    goto fail; //Enum
+    }
+
     return item;
 fail:
     if (item) {
@@ -111,23 +111,6 @@ fail:
 catalogs_report_feed_ingestion_filter_t *catalogs_report_feed_ingestion_filter_parseFromJSON(cJSON *catalogs_report_feed_ingestion_filterJSON){
 
     catalogs_report_feed_ingestion_filter_t *catalogs_report_feed_ingestion_filter_local_var = NULL;
-
-    // catalogs_report_feed_ingestion_filter->report_type
-    cJSON *report_type = cJSON_GetObjectItemCaseSensitive(catalogs_report_feed_ingestion_filterJSON, "report_type");
-    if (cJSON_IsNull(report_type)) {
-        report_type = NULL;
-    }
-    if (!report_type) {
-        goto end;
-    }
-
-    pinterest_rest_api_catalogs_report_feed_ingestion_filter_REPORTTYPE_e report_typeVariable;
-    
-    if(!cJSON_IsString(report_type))
-    {
-    goto end; //Enum
-    }
-    report_typeVariable = catalogs_report_feed_ingestion_filter_report_type_FromString(report_type->valuestring);
 
     // catalogs_report_feed_ingestion_filter->feed_id
     cJSON *feed_id = cJSON_GetObjectItemCaseSensitive(catalogs_report_feed_ingestion_filterJSON, "feed_id");
@@ -156,11 +139,28 @@ catalogs_report_feed_ingestion_filter_t *catalogs_report_feed_ingestion_filter_p
     }
     }
 
+    // catalogs_report_feed_ingestion_filter->report_type
+    cJSON *report_type = cJSON_GetObjectItemCaseSensitive(catalogs_report_feed_ingestion_filterJSON, "report_type");
+    if (cJSON_IsNull(report_type)) {
+        report_type = NULL;
+    }
+    if (!report_type) {
+        goto end;
+    }
+
+    pinterest_rest_api_catalogs_report_feed_ingestion_filter_REPORTTYPE_e report_typeVariable;
+    
+    if(!cJSON_IsString(report_type))
+    {
+    goto end; //Enum
+    }
+    report_typeVariable = catalogs_report_feed_ingestion_filter_report_type_FromString(report_type->valuestring);
+
 
     catalogs_report_feed_ingestion_filter_local_var = catalogs_report_feed_ingestion_filter_create_internal (
-        report_typeVariable,
         strdup(feed_id->valuestring),
-        processing_result_id && !cJSON_IsNull(processing_result_id) ? strdup(processing_result_id->valuestring) : NULL
+        processing_result_id && !cJSON_IsNull(processing_result_id) ? strdup(processing_result_id->valuestring) : NULL,
+        report_typeVariable
         );
 
     return catalogs_report_feed_ingestion_filter_local_var;

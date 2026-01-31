@@ -22,7 +22,7 @@ import com.squareup.moshi.JsonClass
 /**
  * Type of asset.
  *
- * Values: AD_ACCOUNT,PROFILE,ASSET_GROUP,CONVERSION_TAG
+ * Values: AD_ACCOUNT,PROFILE,ASSET_GROUP,CONVERSION_TAG,CATALOG
  */
 
 @JsonClass(generateAdapter = false)
@@ -38,7 +38,10 @@ enum class GetBusinessAssetTypeResponse(val value: kotlin.String) {
     ASSET_GROUP("ASSET_GROUP"),
 
     @Json(name = "CONVERSION_TAG")
-    CONVERSION_TAG("CONVERSION_TAG");
+    CONVERSION_TAG("CONVERSION_TAG"),
+
+    @Json(name = "CATALOG")
+    CATALOG("CATALOG");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use

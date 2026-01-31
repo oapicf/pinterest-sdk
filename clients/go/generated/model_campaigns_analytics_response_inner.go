@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -13,7 +13,6 @@ package openapi
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the CampaignsAnalyticsResponseInner type satisfies the MappedNullable interface at compile time
@@ -21,8 +20,8 @@ var _ MappedNullable = &CampaignsAnalyticsResponseInner{}
 
 // CampaignsAnalyticsResponseInner struct for CampaignsAnalyticsResponseInner
 type CampaignsAnalyticsResponseInner struct {
-	// The ID of the campaing that this metrics belongs to.
-	CAMPAIGN_ID string `json:"CAMPAIGN_ID" validate:"regexp=^\\\\d+$"`
+	// The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
+	CAMPAIGN_ID *string `json:"CAMPAIGN_ID,omitempty" validate:"regexp=^\\\\d+$"`
 	// Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
 	DATE *string `json:"DATE,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -34,9 +33,8 @@ type _CampaignsAnalyticsResponseInner CampaignsAnalyticsResponseInner
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCampaignsAnalyticsResponseInner(cAMPAIGNID string) *CampaignsAnalyticsResponseInner {
+func NewCampaignsAnalyticsResponseInner() *CampaignsAnalyticsResponseInner {
 	this := CampaignsAnalyticsResponseInner{}
-	this.CAMPAIGN_ID = cAMPAIGNID
 	return &this
 }
 
@@ -48,28 +46,36 @@ func NewCampaignsAnalyticsResponseInnerWithDefaults() *CampaignsAnalyticsRespons
 	return &this
 }
 
-// GetCAMPAIGN_ID returns the CAMPAIGN_ID field value
+// GetCAMPAIGN_ID returns the CAMPAIGN_ID field value if set, zero value otherwise.
 func (o *CampaignsAnalyticsResponseInner) GetCAMPAIGN_ID() string {
-	if o == nil {
+	if o == nil || IsNil(o.CAMPAIGN_ID) {
 		var ret string
 		return ret
 	}
-
-	return o.CAMPAIGN_ID
+	return *o.CAMPAIGN_ID
 }
 
-// GetCAMPAIGN_IDOk returns a tuple with the CAMPAIGN_ID field value
+// GetCAMPAIGN_IDOk returns a tuple with the CAMPAIGN_ID field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CampaignsAnalyticsResponseInner) GetCAMPAIGN_IDOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CAMPAIGN_ID) {
 		return nil, false
 	}
-	return &o.CAMPAIGN_ID, true
+	return o.CAMPAIGN_ID, true
 }
 
-// SetCAMPAIGN_ID sets field value
+// HasCAMPAIGN_ID returns a boolean if a field has been set.
+func (o *CampaignsAnalyticsResponseInner) HasCAMPAIGN_ID() bool {
+	if o != nil && !IsNil(o.CAMPAIGN_ID) {
+		return true
+	}
+
+	return false
+}
+
+// SetCAMPAIGN_ID gets a reference to the given string and assigns it to the CAMPAIGN_ID field.
 func (o *CampaignsAnalyticsResponseInner) SetCAMPAIGN_ID(v string) {
-	o.CAMPAIGN_ID = v
+	o.CAMPAIGN_ID = &v
 }
 
 // GetDATE returns the DATE field value if set, zero value otherwise.
@@ -114,7 +120,9 @@ func (o CampaignsAnalyticsResponseInner) MarshalJSON() ([]byte, error) {
 
 func (o CampaignsAnalyticsResponseInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["CAMPAIGN_ID"] = o.CAMPAIGN_ID
+	if !IsNil(o.CAMPAIGN_ID) {
+		toSerialize["CAMPAIGN_ID"] = o.CAMPAIGN_ID
+	}
 	if !IsNil(o.DATE) {
 		toSerialize["DATE"] = o.DATE
 	}
@@ -127,27 +135,6 @@ func (o CampaignsAnalyticsResponseInner) ToMap() (map[string]interface{}, error)
 }
 
 func (o *CampaignsAnalyticsResponseInner) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"CAMPAIGN_ID",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
 	varCampaignsAnalyticsResponseInner := _CampaignsAnalyticsResponseInner{}
 
 	err = json.Unmarshal(data, &varCampaignsAnalyticsResponseInner)

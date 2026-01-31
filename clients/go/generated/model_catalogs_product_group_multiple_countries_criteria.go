@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,8 +22,8 @@ var _ MappedNullable = &CatalogsProductGroupMultipleCountriesCriteria{}
 
 // CatalogsProductGroupMultipleCountriesCriteria struct for CatalogsProductGroupMultipleCountriesCriteria
 type CatalogsProductGroupMultipleCountriesCriteria struct {
-	Values []Country `json:"values"`
 	Negated *bool `json:"negated,omitempty"`
+	Values []Country `json:"values"`
 }
 
 type _CatalogsProductGroupMultipleCountriesCriteria CatalogsProductGroupMultipleCountriesCriteria
@@ -34,9 +34,9 @@ type _CatalogsProductGroupMultipleCountriesCriteria CatalogsProductGroupMultiple
 // will change when the set of required properties is changed
 func NewCatalogsProductGroupMultipleCountriesCriteria(values []Country) *CatalogsProductGroupMultipleCountriesCriteria {
 	this := CatalogsProductGroupMultipleCountriesCriteria{}
-	this.Values = values
 	var negated bool = false
 	this.Negated = &negated
+	this.Values = values
 	return &this
 }
 
@@ -48,30 +48,6 @@ func NewCatalogsProductGroupMultipleCountriesCriteriaWithDefaults() *CatalogsPro
 	var negated bool = false
 	this.Negated = &negated
 	return &this
-}
-
-// GetValues returns the Values field value
-func (o *CatalogsProductGroupMultipleCountriesCriteria) GetValues() []Country {
-	if o == nil {
-		var ret []Country
-		return ret
-	}
-
-	return o.Values
-}
-
-// GetValuesOk returns a tuple with the Values field value
-// and a boolean to check if the value has been set.
-func (o *CatalogsProductGroupMultipleCountriesCriteria) GetValuesOk() ([]Country, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Values, true
-}
-
-// SetValues sets field value
-func (o *CatalogsProductGroupMultipleCountriesCriteria) SetValues(v []Country) {
-	o.Values = v
 }
 
 // GetNegated returns the Negated field value if set, zero value otherwise.
@@ -106,6 +82,30 @@ func (o *CatalogsProductGroupMultipleCountriesCriteria) SetNegated(v bool) {
 	o.Negated = &v
 }
 
+// GetValues returns the Values field value
+func (o *CatalogsProductGroupMultipleCountriesCriteria) GetValues() []Country {
+	if o == nil {
+		var ret []Country
+		return ret
+	}
+
+	return o.Values
+}
+
+// GetValuesOk returns a tuple with the Values field value
+// and a boolean to check if the value has been set.
+func (o *CatalogsProductGroupMultipleCountriesCriteria) GetValuesOk() ([]Country, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Values, true
+}
+
+// SetValues sets field value
+func (o *CatalogsProductGroupMultipleCountriesCriteria) SetValues(v []Country) {
+	o.Values = v
+}
+
 func (o CatalogsProductGroupMultipleCountriesCriteria) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -116,10 +116,10 @@ func (o CatalogsProductGroupMultipleCountriesCriteria) MarshalJSON() ([]byte, er
 
 func (o CatalogsProductGroupMultipleCountriesCriteria) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["values"] = o.Values
 	if !IsNil(o.Negated) {
 		toSerialize["negated"] = o.Negated
 	}
+	toSerialize["values"] = o.Values
 	return toSerialize, nil
 }
 

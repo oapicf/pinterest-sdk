@@ -12,10 +12,10 @@ module BoardsListPins200Response =
 
   [<CLIMutable>]
   type BoardsListPins200Response = {
-    [<JsonProperty(PropertyName = "items")>]
-    Items : Pin[];
     [<JsonProperty(PropertyName = "bookmark")>]
     Bookmark : string option;
+    [<JsonProperty(PropertyName = "items")>]
+    Items : Pin[];
   }
 
   //#endregion

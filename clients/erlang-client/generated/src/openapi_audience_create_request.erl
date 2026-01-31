@@ -8,19 +8,19 @@
     #{ 'ad_account_id' => binary(),
        'name' := binary(),
        'rule' := openapi_audience_rule:openapi_audience_rule(),
-       'description' => binary(),
-       'audience_type' := openapi_audience_type:openapi_audience_type()
+       'audience_type' := openapi_audience_type:openapi_audience_type(),
+       'description' => binary()
      }.
 
 encode(#{ 'ad_account_id' := AdAccountId,
           'name' := Name,
           'rule' := Rule,
-          'description' := Description,
-          'audience_type' := AudienceType
+          'audience_type' := AudienceType,
+          'description' := Description
         }) ->
     #{ 'ad_account_id' => AdAccountId,
        'name' => Name,
        'rule' => Rule,
-       'description' => Description,
-       'audience_type' => AudienceType
+       'audience_type' => AudienceType,
+       'description' => Description
      }.

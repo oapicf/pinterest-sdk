@@ -22,15 +22,15 @@ import javax.annotation.Generated;
  * CatalogsFeedIngestion
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsFeedIngestion {
-
-  private String id;
-
-  private String feedId;
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private Date createdAt;
+
+  private String feedId;
+
+  private String id;
 
   private CatalogsFeedProcessingStatus status;
 
@@ -41,31 +41,31 @@ public class CatalogsFeedIngestion {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsFeedIngestion(String id, String feedId, Date createdAt, CatalogsFeedProcessingStatus status) {
-    this.id = id;
-    this.feedId = feedId;
+  public CatalogsFeedIngestion(Date createdAt, String feedId, String id, CatalogsFeedProcessingStatus status) {
     this.createdAt = createdAt;
+    this.feedId = feedId;
+    this.id = id;
     this.status = status;
   }
 
-  public CatalogsFeedIngestion id(String id) {
-    this.id = id;
+  public CatalogsFeedIngestion createdAt(Date createdAt) {
+    this.createdAt = createdAt;
     return this;
   }
 
   /**
-   * Get id
-   * @return id
+   * Get createdAt
+   * @return createdAt
    */
-  @NotNull 
-  @Schema(name = "id", example = "01234", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("id")
-  public String getId() {
-    return id;
+  @NotNull @Valid 
+  @Schema(name = "created_at", example = "2022-03-14T15:16:34Z", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("created_at")
+  public Date getCreatedAt() {
+    return createdAt;
   }
 
-  public void setId(String id) {
-    this.id = id;
+  public void setCreatedAt(Date createdAt) {
+    this.createdAt = createdAt;
   }
 
   public CatalogsFeedIngestion feedId(String feedId) {
@@ -88,24 +88,24 @@ public class CatalogsFeedIngestion {
     this.feedId = feedId;
   }
 
-  public CatalogsFeedIngestion createdAt(Date createdAt) {
-    this.createdAt = createdAt;
+  public CatalogsFeedIngestion id(String id) {
+    this.id = id;
     return this;
   }
 
   /**
-   * Get createdAt
-   * @return createdAt
+   * Get id
+   * @return id
    */
-  @NotNull @Valid 
-  @Schema(name = "created_at", example = "2022-03-14T15:16:34Z", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("created_at")
-  public Date getCreatedAt() {
-    return createdAt;
+  @NotNull 
+  @Schema(name = "id", example = "01234", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("id")
+  public String getId() {
+    return id;
   }
 
-  public void setCreatedAt(Date createdAt) {
-    this.createdAt = createdAt;
+  public void setId(String id) {
+    this.id = id;
   }
 
   public CatalogsFeedIngestion status(CatalogsFeedProcessingStatus status) {
@@ -137,24 +137,24 @@ public class CatalogsFeedIngestion {
       return false;
     }
     CatalogsFeedIngestion catalogsFeedIngestion = (CatalogsFeedIngestion) o;
-    return Objects.equals(this.id, catalogsFeedIngestion.id) &&
+    return Objects.equals(this.createdAt, catalogsFeedIngestion.createdAt) &&
         Objects.equals(this.feedId, catalogsFeedIngestion.feedId) &&
-        Objects.equals(this.createdAt, catalogsFeedIngestion.createdAt) &&
+        Objects.equals(this.id, catalogsFeedIngestion.id) &&
         Objects.equals(this.status, catalogsFeedIngestion.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, feedId, createdAt, status);
+    return Objects.hash(createdAt, feedId, id, status);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsFeedIngestion {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();

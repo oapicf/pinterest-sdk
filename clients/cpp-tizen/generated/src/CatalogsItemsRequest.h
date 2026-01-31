@@ -54,13 +54,6 @@ public:
 	/*! \brief Set 
 	 */
 	void setCountry(Country  country);
-	/*! \brief Get We recommend using the CatalogsLocale values.
-	 */
-	std::string getLanguage();
-
-	/*! \brief Set We recommend using the CatalogsLocale values.
-	 */
-	void setLanguage(std::string  language);
 	/*! \brief Get 
 	 */
 	CatalogsItemsPostFilters getFilters();
@@ -68,11 +61,18 @@ public:
 	/*! \brief Set 
 	 */
 	void setFilters(CatalogsItemsPostFilters  filters);
+	/*! \brief Get We recommend using the CatalogsLocale values.
+	 */
+	std::string getLanguage();
+
+	/*! \brief Set We recommend using the CatalogsLocale values.
+	 */
+	void setLanguage(std::string  language);
 
 private:
 	Country country;
-	std::string language;
 	CatalogsItemsPostFilters filters;
+	std::string language;
 	void __init();
 	void __cleanup();
 

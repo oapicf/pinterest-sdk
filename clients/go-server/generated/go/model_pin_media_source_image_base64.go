@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -14,25 +14,26 @@ package openapi
 
 
 
-// PinMediaSourceImageBase64 - Base64-encoded image media source
+// PinMediaSourceImageBase64 - Image Base64-based media source.
 type PinMediaSourceImageBase64 struct {
 
-	SourceType string `json:"source_type"`
+	ContentType ContentType `json:"content_type"`
 
-	ContentType string `json:"content_type"`
-
-	Data string `json:"data" validate:"regexp=[a-zA-Z0-9+\\/=]+"`
+	Data string `json:"data" validate:"regexp=^[a-zA-Z0-9+\\/=]+$"`
 
 	// Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
 	IsStandard bool `json:"is_standard,omitempty"`
+
+	// The source type of the media.
+	SourceType string `json:"source_type"`
 }
 
 // AssertPinMediaSourceImageBase64Required checks if the required fields are not zero-ed
 func AssertPinMediaSourceImageBase64Required(obj PinMediaSourceImageBase64) error {
 	elements := map[string]interface{}{
-		"source_type": obj.SourceType,
 		"content_type": obj.ContentType,
 		"data": obj.Data,
+		"source_type": obj.SourceType,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

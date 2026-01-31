@@ -7,17 +7,17 @@ Order Line
 
 Name | Type
 ------------ | -------------
-`id` | string
-`type` | string
 `adAccountId` | string
+`budget` | number
+`endTime` | number
+`id` | string
+`name` | string
+`paidBudget` | number
+`paidType` | [OrderLinePaidType](OrderLinePaidType.md)
 `purchaseOrderId` | string
 `startTime` | number
-`endTime` | number
-`budget` | number
-`paidBudget` | number
 `status` | [OrderLineStatus](OrderLineStatus.md)
-`name` | string
-`paidType` | [OrderLinePaidType](OrderLinePaidType.md)
+`type` | string
 
 ## Example
 
@@ -26,17 +26,17 @@ import type { OrderLines } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "id": 2680059592705,
-  "type": orderline,
   "adAccountId": 549755885175,
+  "budget": 5000000,
+  "endTime": 1461269616,
+  "id": 2680059592705,
+  "name": Order Line Name 1,
+  "paidBudget": 5000000,
+  "paidType": null,
   "purchaseOrderId": PO12345,
   "startTime": 1452208622,
-  "endTime": 1461269616,
-  "budget": 5000000,
-  "paidBudget": 5000000,
   "status": null,
-  "name": Order Line Name 1,
-  "paidType": null,
+  "type": orderline,
 } satisfies OrderLines
 
 console.log(example)

@@ -15,20 +15,20 @@ module AdAccount =
 
   [<CLIMutable>]
   type AdAccount = {
+    [<JsonProperty(PropertyName = "country")>]
+    Country : Country;
+    [<JsonProperty(PropertyName = "created_time")>]
+    CreatedTime : int option;
+    [<JsonProperty(PropertyName = "currency")>]
+    Currency : Currency;
     [<JsonProperty(PropertyName = "id")>]
     Id : string;
     [<JsonProperty(PropertyName = "name")>]
     Name : string;
     [<JsonProperty(PropertyName = "owner")>]
     Owner : AdAccountOwner;
-    [<JsonProperty(PropertyName = "country")>]
-    Country : Country;
-    [<JsonProperty(PropertyName = "currency")>]
-    Currency : Currency;
     [<JsonProperty(PropertyName = "permissions")>]
     Permissions : BusinessAccessRole[];
-    [<JsonProperty(PropertyName = "created_time")>]
-    CreatedTime : int option;
     [<JsonProperty(PropertyName = "updated_time")>]
     UpdatedTime : int option;
   }

@@ -10,31 +10,13 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UserSummary   {
-  @JsonProperty("username")
-  private String username;
-
   @JsonProperty("type")
   private String type;
 
-  /**
-   * Username
-   **/
-  public UserSummary username(String username) {
-    this.username = username;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "username", value = "Username")
   @JsonProperty("username")
-  public String getUsername() {
-    return username;
-  }
-  public void setUsername(String username) {
-    this.username = username;
-  }
+  private String username;
 
   /**
    * Always \"user\"
@@ -54,6 +36,24 @@ public class UserSummary   {
     this.type = type;
   }
 
+  /**
+   * Username
+   **/
+  public UserSummary username(String username) {
+    this.username = username;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "username", value = "Username")
+  @JsonProperty("username")
+  public String getUsername() {
+    return username;
+  }
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -64,13 +64,13 @@ public class UserSummary   {
       return false;
     }
     UserSummary userSummary = (UserSummary) o;
-    return Objects.equals(username, userSummary.username) &&
-        Objects.equals(type, userSummary.type);
+    return Objects.equals(type, userSummary.type) &&
+        Objects.equals(username, userSummary.username);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(username, type);
+    return Objects.hash(type, username);
   }
 
   @Override
@@ -78,8 +78,8 @@ public class UserSummary   {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserSummary {\n");
     
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("}");
     return sb.toString();
   }

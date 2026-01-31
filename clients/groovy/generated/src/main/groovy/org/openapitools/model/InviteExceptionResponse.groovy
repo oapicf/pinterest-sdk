@@ -9,10 +9,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 @Canonical
 class InviteExceptionResponse {
-    /* Unique identifier of the invite/request. */
-    String inviteOrRequestId
     /* Error code associated with the error in performing the action on the invite/request. */
     Integer code
+    /* Unique identifier of the invite/request. */
+    String inviteOrRequestId
     /* Error message associated with the error in performing the action on the invite/request. */
     String message
     /* A list of users' usernames or emails OR a list of partner ids that caused the error. */

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,11 +16,11 @@ package openapi
 
 type AdAccountOwner struct {
 
-	// Public username for the user account
-	Username string `json:"username,omitempty"`
-
 	// The owning account's user ID.
 	Id string `json:"id,omitempty"`
+
+	// Public username for the user account
+	Username string `json:"username,omitempty"`
 }
 
 // AssertAdAccountOwnerRequired checks if the required fields are not zero-ed

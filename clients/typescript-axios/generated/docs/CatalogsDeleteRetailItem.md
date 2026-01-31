@@ -7,6 +7,7 @@ An item to be deleted
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **item_id** | **string** | The catalog item id in the merchant namespace | [default to undefined]
+**last_updated_time** | **number** | The millisecond timestamp when the item was lastly modified by the merchant. | [optional] [default to undefined]
 **operation** | **string** |  | [default to undefined]
 
 ## Example
@@ -16,6 +17,7 @@ import { CatalogsDeleteRetailItem } from './api';
 
 const instance: CatalogsDeleteRetailItem = {
     item_id,
+    last_updated_time,
     operation,
 };
 ```

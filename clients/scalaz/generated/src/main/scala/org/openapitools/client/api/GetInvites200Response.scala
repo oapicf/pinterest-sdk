@@ -12,9 +12,9 @@ import org.joda.time.DateTime
 import GetInvites200Response._
 
 case class GetInvites200Response (
-  /* List of invite and request data. */
-  items: List[InviteResponse],
-bookmark: Option[String])
+  bookmark: Option[String],
+/* List of invite and request data. */
+  items: List[InviteResponse])
 
 object GetInvites200Response {
   import DateTimeCodecs._

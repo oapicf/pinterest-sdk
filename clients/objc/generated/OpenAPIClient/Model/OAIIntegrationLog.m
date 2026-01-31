@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"clientTimestamp": @"client_timestamp", @"eventType": @"event_type", @"logLevel": @"log_level", @"externalBusinessId": @"external_business_id", @"advertiserId": @"advertiser_id", @"merchantId": @"merchant_id", @"tagId": @"tag_id", @"feedProfileId": @"feed_profile_id", @"message": @"message", @"appVersionNumber": @"app_version_number", @"platformVersionNumber": @"platform_version_number", @"error": @"error", @"request": @"request" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"advertiserId": @"advertiser_id", @"appVersionNumber": @"app_version_number", @"clientTimestamp": @"client_timestamp", @"error": @"error", @"eventType": @"event_type", @"externalBusinessId": @"external_business_id", @"feedProfileId": @"feed_profile_id", @"logLevel": @"log_level", @"merchantId": @"merchant_id", @"message": @"message", @"platformVersionNumber": @"platform_version_number", @"request": @"request", @"tagId": @"tag_id" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"externalBusinessId", @"advertiserId", @"merchantId", @"tagId", @"feedProfileId", @"message", @"appVersionNumber", @"platformVersionNumber", @"error", @"request"];
+  NSArray *optionalProperties = @[@"advertiserId", @"appVersionNumber", @"error", @"externalBusinessId", @"feedProfileId", @"merchantId", @"message", @"platformVersionNumber", @"request", @"tagId"];
   return [optionalProperties containsObject:propertyName];
 }
 

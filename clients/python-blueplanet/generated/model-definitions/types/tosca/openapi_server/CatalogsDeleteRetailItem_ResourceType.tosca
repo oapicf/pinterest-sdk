@@ -1,0 +1,46 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsDeleteRetailItem"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsDeleteRetailItem"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CatalogsDeleteRetailItem {
+    title = CatalogsDeleteRetailItem
+    description = CatalogsDeleteRetailItem
+    derivedFrom = Root
+    properties {
+        item_id {
+          type =  string
+          description = "The catalog item id in the merchant namespace"
+          optional = true
+        }
+        last_updated_time {
+          type =  integer
+          description = "The millisecond timestamp when the item was lastly modified by the merchant."
+          optional = false
+        }
+        operation {
+          type =  string
+          description = ""
+          enum = ["DELETE"]
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsDeleteRetailItem {
+    title = CatalogsDeleteRetailItem
+    description = CatalogsDeleteRetailItem
+    implements = openapi_server.resourceTypes.CatalogsDeleteRetailItem
+
+  }
+}

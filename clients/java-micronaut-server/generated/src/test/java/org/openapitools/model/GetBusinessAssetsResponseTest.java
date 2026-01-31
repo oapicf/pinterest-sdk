@@ -1,6 +1,8 @@
 package org.openapitools.model;
 
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.AssetGroupBinding;
+import org.openapitools.model.GetBusinessAssetsResponseCatalogInfo;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -21,6 +23,14 @@ public class GetBusinessAssetsResponseTest {
     }
 
     /**
+     * Test the property 'assetGroupInfo'
+     */
+    @Test
+    public void assetGroupInfoTest() {
+        // TODO: test assetGroupInfo
+    }
+
+    /**
      * Test the property 'assetId'
      */
     @Test
@@ -37,11 +47,11 @@ public class GetBusinessAssetsResponseTest {
     }
 
     /**
-     * Test the property 'assetGroupInfo'
+     * Test the property 'catalogInfo'
      */
     @Test
-    public void assetGroupInfoTest() {
-        // TODO: test assetGroupInfo
+    public void catalogInfoTest() {
+        // TODO: test catalogInfo
     }
 
 }

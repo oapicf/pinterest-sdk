@@ -19,27 +19,27 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * Object describing an item processing record
- * @param itemId The catalog item id in the merchant namespace
  * @param errors Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
- * @param warnings Array with the validation warnings for the item processing record
+ * @param itemId The catalog item id in the merchant namespace
  * @param status 
+ * @param warnings Array with the validation warnings for the item processing record
  */
 data class ItemProcessingRecord(
-
-    @Schema(example = "DS0294-M", description = "The catalog item id in the merchant namespace")
-    @get:JsonProperty("item_id") val itemId: kotlin.String? = null,
 
     @field:Valid
     @Schema(example = "null", description = "Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.")
     @get:JsonProperty("errors") val errors: kotlin.collections.List<ItemValidationEvent>? = null,
 
-    @field:Valid
-    @Schema(example = "null", description = "Array with the validation warnings for the item processing record")
-    @get:JsonProperty("warnings") val warnings: kotlin.collections.List<ItemValidationEvent>? = null,
+    @Schema(example = "DS0294-M", description = "The catalog item id in the merchant namespace")
+    @get:JsonProperty("item_id") val itemId: kotlin.String? = null,
 
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("status") val status: ItemProcessingStatus? = null
+    @get:JsonProperty("status") val status: ItemProcessingStatus? = null,
+
+    @field:Valid
+    @Schema(example = "null", description = "Array with the validation warnings for the item processing record")
+    @get:JsonProperty("warnings") val warnings: kotlin.collections.List<ItemValidationEvent>? = null
 ) {
 
 }

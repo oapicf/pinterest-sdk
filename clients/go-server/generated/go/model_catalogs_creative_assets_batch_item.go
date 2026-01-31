@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,20 +17,20 @@ package openapi
 // CatalogsCreativeAssetsBatchItem - Creative assets batch item
 type CatalogsCreativeAssetsBatchItem struct {
 
+	Attributes CatalogsUpdatableCreativeAssetsAttributes `json:"attributes"`
+
 	// The catalog creative assets id in the merchant namespace
 	CreativeAssetsId string `json:"creative_assets_id"`
 
 	Operation string `json:"operation"`
-
-	Attributes CatalogsUpdatableCreativeAssetsAttributes `json:"attributes"`
 }
 
 // AssertCatalogsCreativeAssetsBatchItemRequired checks if the required fields are not zero-ed
 func AssertCatalogsCreativeAssetsBatchItemRequired(obj CatalogsCreativeAssetsBatchItem) error {
 	elements := map[string]interface{}{
+		"attributes": obj.Attributes,
 		"creative_assets_id": obj.CreativeAssetsId,
 		"operation": obj.Operation,
-		"attributes": obj.Attributes,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

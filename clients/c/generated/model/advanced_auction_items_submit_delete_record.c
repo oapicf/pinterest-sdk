@@ -6,31 +6,35 @@
 
 
 static advanced_auction_items_submit_delete_record_t *advanced_auction_items_submit_delete_record_create_internal(
-    char *item_id,
     pinterest_rest_api_country__e country,
-    pinterest_rest_api_language__e language
+    char *item_id,
+    pinterest_rest_api_language__e language,
+    list_t *errors
     ) {
     advanced_auction_items_submit_delete_record_t *advanced_auction_items_submit_delete_record_local_var = malloc(sizeof(advanced_auction_items_submit_delete_record_t));
     if (!advanced_auction_items_submit_delete_record_local_var) {
         return NULL;
     }
-    advanced_auction_items_submit_delete_record_local_var->item_id = item_id;
     advanced_auction_items_submit_delete_record_local_var->country = country;
+    advanced_auction_items_submit_delete_record_local_var->item_id = item_id;
     advanced_auction_items_submit_delete_record_local_var->language = language;
+    advanced_auction_items_submit_delete_record_local_var->errors = errors;
 
     advanced_auction_items_submit_delete_record_local_var->_library_owned = 1;
     return advanced_auction_items_submit_delete_record_local_var;
 }
 
 __attribute__((deprecated)) advanced_auction_items_submit_delete_record_t *advanced_auction_items_submit_delete_record_create(
-    char *item_id,
     pinterest_rest_api_country__e country,
-    pinterest_rest_api_language__e language
+    char *item_id,
+    pinterest_rest_api_language__e language,
+    list_t *errors
     ) {
     return advanced_auction_items_submit_delete_record_create_internal (
-        item_id,
         country,
-        language
+        item_id,
+        language,
+        errors
         );
 }
 
@@ -47,20 +51,18 @@ void advanced_auction_items_submit_delete_record_free(advanced_auction_items_sub
         free(advanced_auction_items_submit_delete_record->item_id);
         advanced_auction_items_submit_delete_record->item_id = NULL;
     }
+    if (advanced_auction_items_submit_delete_record->errors) {
+        list_ForEach(listEntry, advanced_auction_items_submit_delete_record->errors) {
+            advanced_auction_operation_error_free(listEntry->data);
+        }
+        list_freeList(advanced_auction_items_submit_delete_record->errors);
+        advanced_auction_items_submit_delete_record->errors = NULL;
+    }
     free(advanced_auction_items_submit_delete_record);
 }
 
 cJSON *advanced_auction_items_submit_delete_record_convertToJSON(advanced_auction_items_submit_delete_record_t *advanced_auction_items_submit_delete_record) {
     cJSON *item = cJSON_CreateObject();
-
-    // advanced_auction_items_submit_delete_record->item_id
-    if (!advanced_auction_items_submit_delete_record->item_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "item_id", advanced_auction_items_submit_delete_record->item_id) == NULL) {
-    goto fail; //String
-    }
-
 
     // advanced_auction_items_submit_delete_record->country
     if (pinterest_rest_api_country__NULL == advanced_auction_items_submit_delete_record->country) {
@@ -76,6 +78,15 @@ cJSON *advanced_auction_items_submit_delete_record_convertToJSON(advanced_auctio
     }
 
 
+    // advanced_auction_items_submit_delete_record->item_id
+    if (!advanced_auction_items_submit_delete_record->item_id) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "item_id", advanced_auction_items_submit_delete_record->item_id) == NULL) {
+    goto fail; //String
+    }
+
+
     // advanced_auction_items_submit_delete_record->language
     if (pinterest_rest_api_language__NULL == advanced_auction_items_submit_delete_record->language) {
         goto fail;
@@ -87,6 +98,26 @@ cJSON *advanced_auction_items_submit_delete_record_convertToJSON(advanced_auctio
     cJSON_AddItemToObject(item, "language", language_local_JSON);
     if(item->child == NULL) {
         goto fail;
+    }
+
+
+    // advanced_auction_items_submit_delete_record->errors
+    if(advanced_auction_items_submit_delete_record->errors) {
+    cJSON *errors = cJSON_AddArrayToObject(item, "errors");
+    if(errors == NULL) {
+    goto fail; //nonprimitive container
+    }
+
+    listEntry_t *errorsListEntry;
+    if (advanced_auction_items_submit_delete_record->errors) {
+    list_ForEach(errorsListEntry, advanced_auction_items_submit_delete_record->errors) {
+    cJSON *itemLocal = advanced_auction_operation_error_convertToJSON(errorsListEntry->data);
+    if(itemLocal == NULL) {
+    goto fail;
+    }
+    cJSON_AddItemToArray(errors, itemLocal);
+    }
+    }
     }
 
     return item;
@@ -107,6 +138,21 @@ advanced_auction_items_submit_delete_record_t *advanced_auction_items_submit_del
     // define the local variable for advanced_auction_items_submit_delete_record->language
     pinterest_rest_api_language__e language_local_nonprim = 0;
 
+    // define the local list for advanced_auction_items_submit_delete_record->errors
+    list_t *errorsList = NULL;
+
+    // advanced_auction_items_submit_delete_record->country
+    cJSON *country = cJSON_GetObjectItemCaseSensitive(advanced_auction_items_submit_delete_recordJSON, "country");
+    if (cJSON_IsNull(country)) {
+        country = NULL;
+    }
+    if (!country) {
+        goto end;
+    }
+
+    
+    country_local_nonprim = country_parseFromJSON(country); //custom
+
     // advanced_auction_items_submit_delete_record->item_id
     cJSON *item_id = cJSON_GetObjectItemCaseSensitive(advanced_auction_items_submit_delete_recordJSON, "item_id");
     if (cJSON_IsNull(item_id)) {
@@ -122,18 +168,6 @@ advanced_auction_items_submit_delete_record_t *advanced_auction_items_submit_del
     goto end; //String
     }
 
-    // advanced_auction_items_submit_delete_record->country
-    cJSON *country = cJSON_GetObjectItemCaseSensitive(advanced_auction_items_submit_delete_recordJSON, "country");
-    if (cJSON_IsNull(country)) {
-        country = NULL;
-    }
-    if (!country) {
-        goto end;
-    }
-
-    
-    country_local_nonprim = country_parseFromJSON(country); //custom
-
     // advanced_auction_items_submit_delete_record->language
     cJSON *language = cJSON_GetObjectItemCaseSensitive(advanced_auction_items_submit_delete_recordJSON, "language");
     if (cJSON_IsNull(language)) {
@@ -146,11 +180,36 @@ advanced_auction_items_submit_delete_record_t *advanced_auction_items_submit_del
     
     language_local_nonprim = language_parseFromJSON(language); //custom
 
+    // advanced_auction_items_submit_delete_record->errors
+    cJSON *errors = cJSON_GetObjectItemCaseSensitive(advanced_auction_items_submit_delete_recordJSON, "errors");
+    if (cJSON_IsNull(errors)) {
+        errors = NULL;
+    }
+    if (errors) { 
+    cJSON *errors_local_nonprimitive = NULL;
+    if(!cJSON_IsArray(errors)){
+        goto end; //nonprimitive container
+    }
+
+    errorsList = list_createList();
+
+    cJSON_ArrayForEach(errors_local_nonprimitive,errors )
+    {
+        if(!cJSON_IsObject(errors_local_nonprimitive)){
+            goto end;
+        }
+        advanced_auction_operation_error_t *errorsItem = advanced_auction_operation_error_parseFromJSON(errors_local_nonprimitive);
+
+        list_addElement(errorsList, errorsItem);
+    }
+    }
+
 
     advanced_auction_items_submit_delete_record_local_var = advanced_auction_items_submit_delete_record_create_internal (
-        strdup(item_id->valuestring),
         country_local_nonprim,
-        language_local_nonprim
+        strdup(item_id->valuestring),
+        language_local_nonprim,
+        errors ? errorsList : NULL
         );
 
     return advanced_auction_items_submit_delete_record_local_var;
@@ -160,6 +219,15 @@ end:
     }
     if (language_local_nonprim) {
         language_local_nonprim = 0;
+    }
+    if (errorsList) {
+        listEntry_t *listEntry = NULL;
+        list_ForEach(listEntry, errorsList) {
+            advanced_auction_operation_error_free(listEntry->data);
+            listEntry->data = NULL;
+        }
+        list_freeList(errorsList);
+        errorsList = NULL;
     }
     return NULL;
 

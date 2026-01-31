@@ -12,6 +12,7 @@ import org.openapitools.vertxweb.server.model.ItemAttributesRequest;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsUpsertRetailItem   {
   
+  private ItemAttributesRequest attributes;
   private String itemId;
 
 
@@ -32,15 +33,23 @@ public class CatalogsUpsertRetailItem   {
   }
 
   private OperationEnum operation;
-  private ItemAttributesRequest attributes;
 
   public CatalogsUpsertRetailItem () {
 
   }
 
-  public CatalogsUpsertRetailItem (String itemId, OperationEnum operation, ItemAttributesRequest attributes) {
+  public CatalogsUpsertRetailItem (ItemAttributesRequest attributes, String itemId, OperationEnum operation) {
+    this.attributes = attributes;
     this.itemId = itemId;
     this.operation = operation;
+  }
+
+    
+  @JsonProperty("attributes")
+  public ItemAttributesRequest getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 
@@ -62,15 +71,6 @@ public class CatalogsUpsertRetailItem   {
     this.operation = operation;
   }
 
-    
-  @JsonProperty("attributes")
-  public ItemAttributesRequest getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(ItemAttributesRequest attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -81,14 +81,14 @@ public class CatalogsUpsertRetailItem   {
       return false;
     }
     CatalogsUpsertRetailItem catalogsUpsertRetailItem = (CatalogsUpsertRetailItem) o;
-    return Objects.equals(itemId, catalogsUpsertRetailItem.itemId) &&
-        Objects.equals(operation, catalogsUpsertRetailItem.operation) &&
-        Objects.equals(attributes, catalogsUpsertRetailItem.attributes);
+    return Objects.equals(attributes, catalogsUpsertRetailItem.attributes) &&
+        Objects.equals(itemId, catalogsUpsertRetailItem.itemId) &&
+        Objects.equals(operation, catalogsUpsertRetailItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, operation, attributes);
+    return Objects.hash(attributes, itemId, operation);
   }
 
   @Override
@@ -96,9 +96,9 @@ public class CatalogsUpsertRetailItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsUpsertRetailItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

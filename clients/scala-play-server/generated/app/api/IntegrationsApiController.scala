@@ -4,7 +4,6 @@ import org.openapitools.OpenApiExceptions
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json._
 import play.api.mvc._
-import model.DetailedError
 import model.Error
 import model.IntegrationLogsRequest
 import model.IntegrationLogsSuccessResponse
@@ -13,8 +12,9 @@ import model.IntegrationRecord
 import model.IntegrationRequest
 import model.IntegrationRequestPatch
 import model.IntegrationsGetList200Response
+import model.IntegrationsLogsPost400Response
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Singleton
 class IntegrationsApiController @Inject()(cc: ControllerComponents, api: IntegrationsApi) extends AbstractController(cc) {
   /**
@@ -50,7 +50,9 @@ class IntegrationsApiController @Inject()(cc: ControllerComponents, api: Integra
     */
   def integrationsCommercePatch(externalBusinessId: String): Action[AnyContent] = Action { request =>
     def executeApi(): IntegrationMetadata = {
-      val integrationRequestPatch = request.body.asJson.map(_.as[IntegrationRequestPatch])
+      val integrationRequestPatch = request.body.asJson.map(_.as[IntegrationRequestPatch]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "integrationRequestPatch")
+      }
       api.integrationsCommercePatch(externalBusinessId, integrationRequestPatch)
     }
 
@@ -64,7 +66,9 @@ class IntegrationsApiController @Inject()(cc: ControllerComponents, api: Integra
     */
   def integrationsCommercePost(): Action[AnyContent] = Action { request =>
     def executeApi(): IntegrationMetadata = {
-      val integrationRequest = request.body.asJson.map(_.as[IntegrationRequest])
+      val integrationRequest = request.body.asJson.map(_.as[IntegrationRequest]).getOrElse {
+        throw new OpenApiExceptions.MissingRequiredParameterException("body", "integrationRequest")
+      }
       api.integrationsCommercePost(integrationRequest)
     }
 

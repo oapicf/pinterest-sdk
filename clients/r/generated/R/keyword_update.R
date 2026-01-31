@@ -7,18 +7,18 @@
 #' @title KeywordUpdate
 #' @description KeywordUpdate Class
 #' @format An \code{R6Class} generator object
-#' @field id Keyword ID. character
 #' @field archived Is keyword archived? character [optional]
 #' @field bid </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. integer [optional]
+#' @field id Keyword ID. character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 KeywordUpdate <- R6::R6Class(
   "KeywordUpdate",
   public = list(
-    `id` = NULL,
     `archived` = NULL,
     `bid` = NULL,
+    `id` = NULL,
 
     #' @description
     #' Initialize a new KeywordUpdate class.
@@ -79,10 +79,6 @@ KeywordUpdate <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       KeywordUpdateObject <- list()
-      if (!is.null(self$`id`)) {
-        KeywordUpdateObject[["id"]] <-
-          self$`id`
-      }
       if (!is.null(self$`archived`)) {
         KeywordUpdateObject[["archived"]] <-
           self$`archived`
@@ -90,6 +86,10 @@ KeywordUpdate <- R6::R6Class(
       if (!is.null(self$`bid`)) {
         KeywordUpdateObject[["bid"]] <-
           self$`bid`
+      }
+      if (!is.null(self$`id`)) {
+        KeywordUpdateObject[["id"]] <-
+          self$`id`
       }
       return(KeywordUpdateObject)
     },
@@ -101,14 +101,14 @@ KeywordUpdate <- R6::R6Class(
     #' @return the instance of KeywordUpdate
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`id`)) {
-        self$`id` <- this_object$`id`
-      }
       if (!is.null(this_object$`archived`)) {
         self$`archived` <- this_object$`archived`
       }
       if (!is.null(this_object$`bid`)) {
         self$`bid` <- this_object$`bid`
+      }
+      if (!is.null(this_object$`id`)) {
+        self$`id` <- this_object$`id`
       }
       self
     },
@@ -131,9 +131,9 @@ KeywordUpdate <- R6::R6Class(
     #' @return the instance of KeywordUpdate
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`id` <- this_object$`id`
       self$`archived` <- this_object$`archived`
       self$`bid` <- this_object$`bid`
+      self$`id` <- this_object$`id`
       self
     },
 

@@ -16,14 +16,14 @@ void main() {
   // final instance = GetInvites200Response();
 
   group('test GetInvites200Response', () {
-    // List of invite and request data.
-    // List<InviteResponse> items (default value: const [])
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // List of invite and request data.
+    // List<InviteResponse> items (default value: const [])
+    test('to test the property `items`', () async {
       // TODO
     });
 

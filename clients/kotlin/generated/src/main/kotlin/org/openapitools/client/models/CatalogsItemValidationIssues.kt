@@ -24,25 +24,25 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param itemNumber Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
- * @param itemId The merchant-created unique ID that represents the product.
  * @param errors 
+ * @param itemId The merchant-created unique ID that represents the product.
+ * @param itemNumber Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
  * @param warnings 
  */
 
 
 data class CatalogsItemValidationIssues (
 
-    /* Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation. */
-    @Json(name = "item_number")
-    val itemNumber: kotlin.Int,
+    @Json(name = "errors")
+    val errors: CatalogsItemValidationErrors,
 
     /* The merchant-created unique ID that represents the product. */
     @Json(name = "item_id")
     val itemId: kotlin.String?,
 
-    @Json(name = "errors")
-    val errors: CatalogsItemValidationErrors,
+    /* Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation. */
+    @Json(name = "item_number")
+    val itemNumber: kotlin.Int,
 
     @Json(name = "warnings")
     val warnings: CatalogsItemValidationWarnings

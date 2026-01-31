@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Salesforce id for billto_info | [optional] 
-**IoTermsId** | Pointer to **string** | Salesforce id for IO Terms and Conditions | [optional] 
-**IoTerms** | Pointer to **string** | Salesforce text for IO Terms and Conditions | [optional] 
-**UsTermsId** | Pointer to **string** | Salesforce id for US Terms and Conditions | [optional] 
-**UsTerms** | Pointer to **string** | Salesforce text for US Terms and Conditions | [optional] 
-**RowTermsId** | Pointer to **string** | Salesforce id for Rest of the World Terms and Conditions | [optional] 
-**RowTerms** | Pointer to **string** | Salesforce text for Rest of the World Terms and Conditions | [optional] 
-**IoType** | Pointer to **string** | Insertion Order Type - Pinterest Paper or Agency Paper | [optional] 
 **Addresses** | Pointer to [**[]SSIOAccountAddress**](SSIOAccountAddress.md) | Address information that is associated with this account. | [optional] 
+**Id** | Pointer to **string** | Salesforce id for billto_info | [optional] 
+**IoTerms** | Pointer to **string** | Salesforce text for IO Terms and Conditions | [optional] 
+**IoTermsId** | Pointer to **string** | Salesforce id for IO Terms and Conditions | [optional] 
+**IoType** | Pointer to **string** | Insertion Order Type - Pinterest Paper or Agency Paper | [optional] 
+**RowTerms** | Pointer to **string** | Salesforce text for Rest of the World Terms and Conditions | [optional] 
+**RowTermsId** | Pointer to **string** | Salesforce id for Rest of the World Terms and Conditions | [optional] 
+**UsTerms** | Pointer to **string** | Salesforce text for US Terms and Conditions | [optional] 
+**UsTermsId** | Pointer to **string** | Salesforce id for US Terms and Conditions | [optional] 
 
 ## Methods
 
@@ -32,6 +32,31 @@ will change when the set of required properties is changed
 NewSSIOAccountItemWithDefaults instantiates a new SSIOAccountItem object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAddresses
+
+`func (o *SSIOAccountItem) GetAddresses() []SSIOAccountAddress`
+
+GetAddresses returns the Addresses field if non-nil, zero value otherwise.
+
+### GetAddressesOk
+
+`func (o *SSIOAccountItem) GetAddressesOk() (*[]SSIOAccountAddress, bool)`
+
+GetAddressesOk returns a tuple with the Addresses field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAddresses
+
+`func (o *SSIOAccountItem) SetAddresses(v []SSIOAccountAddress)`
+
+SetAddresses sets Addresses field to given value.
+
+### HasAddresses
+
+`func (o *SSIOAccountItem) HasAddresses() bool`
+
+HasAddresses returns a boolean if a field has been set.
 
 ### GetId
 
@@ -58,31 +83,6 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
-### GetIoTermsId
-
-`func (o *SSIOAccountItem) GetIoTermsId() string`
-
-GetIoTermsId returns the IoTermsId field if non-nil, zero value otherwise.
-
-### GetIoTermsIdOk
-
-`func (o *SSIOAccountItem) GetIoTermsIdOk() (*string, bool)`
-
-GetIoTermsIdOk returns a tuple with the IoTermsId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIoTermsId
-
-`func (o *SSIOAccountItem) SetIoTermsId(v string)`
-
-SetIoTermsId sets IoTermsId field to given value.
-
-### HasIoTermsId
-
-`func (o *SSIOAccountItem) HasIoTermsId() bool`
-
-HasIoTermsId returns a boolean if a field has been set.
-
 ### GetIoTerms
 
 `func (o *SSIOAccountItem) GetIoTerms() string`
@@ -108,105 +108,30 @@ SetIoTerms sets IoTerms field to given value.
 
 HasIoTerms returns a boolean if a field has been set.
 
-### GetUsTermsId
+### GetIoTermsId
 
-`func (o *SSIOAccountItem) GetUsTermsId() string`
+`func (o *SSIOAccountItem) GetIoTermsId() string`
 
-GetUsTermsId returns the UsTermsId field if non-nil, zero value otherwise.
+GetIoTermsId returns the IoTermsId field if non-nil, zero value otherwise.
 
-### GetUsTermsIdOk
+### GetIoTermsIdOk
 
-`func (o *SSIOAccountItem) GetUsTermsIdOk() (*string, bool)`
+`func (o *SSIOAccountItem) GetIoTermsIdOk() (*string, bool)`
 
-GetUsTermsIdOk returns a tuple with the UsTermsId field if it's non-nil, zero value otherwise
+GetIoTermsIdOk returns a tuple with the IoTermsId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetUsTermsId
+### SetIoTermsId
 
-`func (o *SSIOAccountItem) SetUsTermsId(v string)`
+`func (o *SSIOAccountItem) SetIoTermsId(v string)`
 
-SetUsTermsId sets UsTermsId field to given value.
+SetIoTermsId sets IoTermsId field to given value.
 
-### HasUsTermsId
+### HasIoTermsId
 
-`func (o *SSIOAccountItem) HasUsTermsId() bool`
+`func (o *SSIOAccountItem) HasIoTermsId() bool`
 
-HasUsTermsId returns a boolean if a field has been set.
-
-### GetUsTerms
-
-`func (o *SSIOAccountItem) GetUsTerms() string`
-
-GetUsTerms returns the UsTerms field if non-nil, zero value otherwise.
-
-### GetUsTermsOk
-
-`func (o *SSIOAccountItem) GetUsTermsOk() (*string, bool)`
-
-GetUsTermsOk returns a tuple with the UsTerms field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsTerms
-
-`func (o *SSIOAccountItem) SetUsTerms(v string)`
-
-SetUsTerms sets UsTerms field to given value.
-
-### HasUsTerms
-
-`func (o *SSIOAccountItem) HasUsTerms() bool`
-
-HasUsTerms returns a boolean if a field has been set.
-
-### GetRowTermsId
-
-`func (o *SSIOAccountItem) GetRowTermsId() string`
-
-GetRowTermsId returns the RowTermsId field if non-nil, zero value otherwise.
-
-### GetRowTermsIdOk
-
-`func (o *SSIOAccountItem) GetRowTermsIdOk() (*string, bool)`
-
-GetRowTermsIdOk returns a tuple with the RowTermsId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRowTermsId
-
-`func (o *SSIOAccountItem) SetRowTermsId(v string)`
-
-SetRowTermsId sets RowTermsId field to given value.
-
-### HasRowTermsId
-
-`func (o *SSIOAccountItem) HasRowTermsId() bool`
-
-HasRowTermsId returns a boolean if a field has been set.
-
-### GetRowTerms
-
-`func (o *SSIOAccountItem) GetRowTerms() string`
-
-GetRowTerms returns the RowTerms field if non-nil, zero value otherwise.
-
-### GetRowTermsOk
-
-`func (o *SSIOAccountItem) GetRowTermsOk() (*string, bool)`
-
-GetRowTermsOk returns a tuple with the RowTerms field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRowTerms
-
-`func (o *SSIOAccountItem) SetRowTerms(v string)`
-
-SetRowTerms sets RowTerms field to given value.
-
-### HasRowTerms
-
-`func (o *SSIOAccountItem) HasRowTerms() bool`
-
-HasRowTerms returns a boolean if a field has been set.
+HasIoTermsId returns a boolean if a field has been set.
 
 ### GetIoType
 
@@ -233,30 +158,105 @@ SetIoType sets IoType field to given value.
 
 HasIoType returns a boolean if a field has been set.
 
-### GetAddresses
+### GetRowTerms
 
-`func (o *SSIOAccountItem) GetAddresses() []SSIOAccountAddress`
+`func (o *SSIOAccountItem) GetRowTerms() string`
 
-GetAddresses returns the Addresses field if non-nil, zero value otherwise.
+GetRowTerms returns the RowTerms field if non-nil, zero value otherwise.
 
-### GetAddressesOk
+### GetRowTermsOk
 
-`func (o *SSIOAccountItem) GetAddressesOk() (*[]SSIOAccountAddress, bool)`
+`func (o *SSIOAccountItem) GetRowTermsOk() (*string, bool)`
 
-GetAddressesOk returns a tuple with the Addresses field if it's non-nil, zero value otherwise
+GetRowTermsOk returns a tuple with the RowTerms field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAddresses
+### SetRowTerms
 
-`func (o *SSIOAccountItem) SetAddresses(v []SSIOAccountAddress)`
+`func (o *SSIOAccountItem) SetRowTerms(v string)`
 
-SetAddresses sets Addresses field to given value.
+SetRowTerms sets RowTerms field to given value.
 
-### HasAddresses
+### HasRowTerms
 
-`func (o *SSIOAccountItem) HasAddresses() bool`
+`func (o *SSIOAccountItem) HasRowTerms() bool`
 
-HasAddresses returns a boolean if a field has been set.
+HasRowTerms returns a boolean if a field has been set.
+
+### GetRowTermsId
+
+`func (o *SSIOAccountItem) GetRowTermsId() string`
+
+GetRowTermsId returns the RowTermsId field if non-nil, zero value otherwise.
+
+### GetRowTermsIdOk
+
+`func (o *SSIOAccountItem) GetRowTermsIdOk() (*string, bool)`
+
+GetRowTermsIdOk returns a tuple with the RowTermsId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRowTermsId
+
+`func (o *SSIOAccountItem) SetRowTermsId(v string)`
+
+SetRowTermsId sets RowTermsId field to given value.
+
+### HasRowTermsId
+
+`func (o *SSIOAccountItem) HasRowTermsId() bool`
+
+HasRowTermsId returns a boolean if a field has been set.
+
+### GetUsTerms
+
+`func (o *SSIOAccountItem) GetUsTerms() string`
+
+GetUsTerms returns the UsTerms field if non-nil, zero value otherwise.
+
+### GetUsTermsOk
+
+`func (o *SSIOAccountItem) GetUsTermsOk() (*string, bool)`
+
+GetUsTermsOk returns a tuple with the UsTerms field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsTerms
+
+`func (o *SSIOAccountItem) SetUsTerms(v string)`
+
+SetUsTerms sets UsTerms field to given value.
+
+### HasUsTerms
+
+`func (o *SSIOAccountItem) HasUsTerms() bool`
+
+HasUsTerms returns a boolean if a field has been set.
+
+### GetUsTermsId
+
+`func (o *SSIOAccountItem) GetUsTermsId() string`
+
+GetUsTermsId returns the UsTermsId field if non-nil, zero value otherwise.
+
+### GetUsTermsIdOk
+
+`func (o *SSIOAccountItem) GetUsTermsIdOk() (*string, bool)`
+
+GetUsTermsIdOk returns a tuple with the UsTermsId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsTermsId
+
+`func (o *SSIOAccountItem) SetUsTermsId(v string)`
+
+SetUsTermsId sets UsTermsId field to given value.
+
+### HasUsTermsId
+
+`func (o *SSIOAccountItem) HasUsTermsId() bool`
+
+HasUsTermsId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

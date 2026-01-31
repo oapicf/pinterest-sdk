@@ -7,23 +7,23 @@
 -type openapi_catalogs_list_products_by_filter_request() ::
     #{ 'feed_id' := binary(),
        'filters' := openapi_catalogs_creative_assets_product_group_filters:openapi_catalogs_creative_assets_product_group_filters(),
-       'catalog_type' := binary(),
        'catalog_id' := binary(),
+       'catalog_type' := binary(),
        'country' := openapi_country:openapi_country(),
        'locale' := openapi_catalogs_locale:openapi_catalogs_locale()
      }.
 
 encode(#{ 'feed_id' := FeedId,
           'filters' := Filters,
-          'catalog_type' := CatalogType,
           'catalog_id' := CatalogId,
+          'catalog_type' := CatalogType,
           'country' := Country,
           'locale' := Locale
         }) ->
     #{ 'feed_id' => FeedId,
        'filters' => Filters,
-       'catalog_type' => CatalogType,
        'catalog_id' => CatalogId,
+       'catalog_type' => CatalogType,
        'country' => Country,
        'locale' => Locale
      }.

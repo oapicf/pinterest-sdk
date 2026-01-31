@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "ProductGroupPromotionResponseItem.h"
+#include "ProductGroupPromotion.h"
 #include <list>
 #include "Object.h"
 
@@ -49,22 +49,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::list<ProductGroupPromotionResponseItem> getItems();
-
-	/*! \brief Set 
-	 */
-	void setItems(std::list <ProductGroupPromotionResponseItem> items);
-	/*! \brief Get 
-	 */
 	std::string getBookmark();
 
 	/*! \brief Set 
 	 */
 	void setBookmark(std::string  bookmark);
+	/*! \brief Get 
+	 */
+	std::list<ProductGroupPromotion> getItems();
+
+	/*! \brief Set 
+	 */
+	void setItems(std::list <ProductGroupPromotion> items);
 
 private:
-	std::list <ProductGroupPromotionResponseItem>items;
 	std::string bookmark;
+	std::list <ProductGroupPromotion>items;
 	void __init();
 	void __cleanup();
 

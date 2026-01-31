@@ -23,16 +23,16 @@ pinterest_rest_api_catalogs_creative_assets_list_products_by_catalog_based_filte
 }
 
 static catalogs_creative_assets_list_products_by_catalog_based_filter_request_t *catalogs_creative_assets_list_products_by_catalog_based_filter_request_create_internal(
-    pinterest_rest_api_catalogs_creative_assets_list_products_by_catalog_based_filter_request_CATALOGTYPE_e catalog_type,
     char *catalog_id,
+    pinterest_rest_api_catalogs_creative_assets_list_products_by_catalog_based_filter_request_CATALOGTYPE_e catalog_type,
     catalogs_creative_assets_product_group_filters_t *filters
     ) {
     catalogs_creative_assets_list_products_by_catalog_based_filter_request_t *catalogs_creative_assets_list_products_by_catalog_based_filter_request_local_var = malloc(sizeof(catalogs_creative_assets_list_products_by_catalog_based_filter_request_t));
     if (!catalogs_creative_assets_list_products_by_catalog_based_filter_request_local_var) {
         return NULL;
     }
-    catalogs_creative_assets_list_products_by_catalog_based_filter_request_local_var->catalog_type = catalog_type;
     catalogs_creative_assets_list_products_by_catalog_based_filter_request_local_var->catalog_id = catalog_id;
+    catalogs_creative_assets_list_products_by_catalog_based_filter_request_local_var->catalog_type = catalog_type;
     catalogs_creative_assets_list_products_by_catalog_based_filter_request_local_var->filters = filters;
 
     catalogs_creative_assets_list_products_by_catalog_based_filter_request_local_var->_library_owned = 1;
@@ -40,13 +40,13 @@ static catalogs_creative_assets_list_products_by_catalog_based_filter_request_t 
 }
 
 __attribute__((deprecated)) catalogs_creative_assets_list_products_by_catalog_based_filter_request_t *catalogs_creative_assets_list_products_by_catalog_based_filter_request_create(
-    pinterest_rest_api_catalogs_creative_assets_list_products_by_catalog_based_filter_request_CATALOGTYPE_e catalog_type,
     char *catalog_id,
+    pinterest_rest_api_catalogs_creative_assets_list_products_by_catalog_based_filter_request_CATALOGTYPE_e catalog_type,
     catalogs_creative_assets_product_group_filters_t *filters
     ) {
     return catalogs_creative_assets_list_products_by_catalog_based_filter_request_create_internal (
-        catalog_type,
         catalog_id,
+        catalog_type,
         filters
         );
 }
@@ -74,6 +74,15 @@ void catalogs_creative_assets_list_products_by_catalog_based_filter_request_free
 cJSON *catalogs_creative_assets_list_products_by_catalog_based_filter_request_convertToJSON(catalogs_creative_assets_list_products_by_catalog_based_filter_request_t *catalogs_creative_assets_list_products_by_catalog_based_filter_request) {
     cJSON *item = cJSON_CreateObject();
 
+    // catalogs_creative_assets_list_products_by_catalog_based_filter_request->catalog_id
+    if (!catalogs_creative_assets_list_products_by_catalog_based_filter_request->catalog_id) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "catalog_id", catalogs_creative_assets_list_products_by_catalog_based_filter_request->catalog_id) == NULL) {
+    goto fail; //String
+    }
+
+
     // catalogs_creative_assets_list_products_by_catalog_based_filter_request->catalog_type
     if (pinterest_rest_api_catalogs_creative_assets_list_products_by_catalog_based_filter_request_CATALOGTYPE_NULL == catalogs_creative_assets_list_products_by_catalog_based_filter_request->catalog_type) {
         goto fail;
@@ -81,15 +90,6 @@ cJSON *catalogs_creative_assets_list_products_by_catalog_based_filter_request_co
     if(cJSON_AddStringToObject(item, "catalog_type", catalogs_creative_assets_list_products_by_catalog_based_filter_request_catalog_type_ToString(catalogs_creative_assets_list_products_by_catalog_based_filter_request->catalog_type)) == NULL)
     {
     goto fail; //Enum
-    }
-
-
-    // catalogs_creative_assets_list_products_by_catalog_based_filter_request->catalog_id
-    if (!catalogs_creative_assets_list_products_by_catalog_based_filter_request->catalog_id) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "catalog_id", catalogs_creative_assets_list_products_by_catalog_based_filter_request->catalog_id) == NULL) {
-    goto fail; //String
     }
 
 
@@ -121,6 +121,21 @@ catalogs_creative_assets_list_products_by_catalog_based_filter_request_t *catalo
     // define the local variable for catalogs_creative_assets_list_products_by_catalog_based_filter_request->filters
     catalogs_creative_assets_product_group_filters_t *filters_local_nonprim = NULL;
 
+    // catalogs_creative_assets_list_products_by_catalog_based_filter_request->catalog_id
+    cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_list_products_by_catalog_based_filter_requestJSON, "catalog_id");
+    if (cJSON_IsNull(catalog_id)) {
+        catalog_id = NULL;
+    }
+    if (!catalog_id) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(catalog_id))
+    {
+    goto end; //String
+    }
+
     // catalogs_creative_assets_list_products_by_catalog_based_filter_request->catalog_type
     cJSON *catalog_type = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_list_products_by_catalog_based_filter_requestJSON, "catalog_type");
     if (cJSON_IsNull(catalog_type)) {
@@ -138,21 +153,6 @@ catalogs_creative_assets_list_products_by_catalog_based_filter_request_t *catalo
     }
     catalog_typeVariable = catalogs_creative_assets_list_products_by_catalog_based_filter_request_catalog_type_FromString(catalog_type->valuestring);
 
-    // catalogs_creative_assets_list_products_by_catalog_based_filter_request->catalog_id
-    cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_list_products_by_catalog_based_filter_requestJSON, "catalog_id");
-    if (cJSON_IsNull(catalog_id)) {
-        catalog_id = NULL;
-    }
-    if (!catalog_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(catalog_id))
-    {
-    goto end; //String
-    }
-
     // catalogs_creative_assets_list_products_by_catalog_based_filter_request->filters
     cJSON *filters = cJSON_GetObjectItemCaseSensitive(catalogs_creative_assets_list_products_by_catalog_based_filter_requestJSON, "filters");
     if (cJSON_IsNull(filters)) {
@@ -167,8 +167,8 @@ catalogs_creative_assets_list_products_by_catalog_based_filter_request_t *catalo
 
 
     catalogs_creative_assets_list_products_by_catalog_based_filter_request_local_var = catalogs_creative_assets_list_products_by_catalog_based_filter_request_create_internal (
-        catalog_typeVariable,
         strdup(catalog_id->valuestring),
+        catalog_typeVariable,
         filters_local_nonprim
         );
 

@@ -92,7 +92,7 @@ EnhancedMatchStatusType <- R6::R6Class(
 
 # add to utils.R
 .parse_EnhancedMatchStatusType <- function(vals) {
-  res <- gsub("^\\[|\\]$", "", "[UNKNOWN, NOT_VALIDATED, VALIDATING_IN_PROGRESS, VALIDATION_COMPLETE, null]")
+  res <- gsub("^\\[|\\]$", "", "[UNKNOWN, NOT_VALIDATED, VALIDATING_IN_PROGRESS, VALIDATION_COMPLETE]")
   unlist(strsplit(res, ", "))
 }
 

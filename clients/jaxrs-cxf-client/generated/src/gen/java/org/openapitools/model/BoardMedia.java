@@ -5,22 +5,17 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * Board media.
- */
-@ApiModel(description="Board media.")
 
 public class BoardMedia  {
   
  /**
-  * Board cover image.
+  * Board cover image
   */
-  @ApiModelProperty(example = "https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg", value = "Board cover image.")
+  @ApiModelProperty(example = "https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg", value = "Board cover image")
 
   private String imageCoverUrl;
 
@@ -31,7 +26,7 @@ public class BoardMedia  {
 
   private List<String> pinThumbnailUrls = new ArrayList<>();
  /**
-   * Board cover image.
+   * Board cover image
    * @return imageCoverUrl
   **/
   @JsonProperty("image_cover_url")

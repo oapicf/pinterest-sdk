@@ -6,30 +6,30 @@
 
 
 static pin_media_metadata_t *pin_media_metadata_create_internal(
-    char *item_type,
-    char *title,
     char *description,
+    image_size_t *images,
+    char *item_type,
     char *link,
-    image_metadata_images_t *images,
+    char *title,
     char *cover_image_url,
-    char *video_url,
     double duration,
     int height,
+    char *video_url,
     int width
     ) {
     pin_media_metadata_t *pin_media_metadata_local_var = malloc(sizeof(pin_media_metadata_t));
     if (!pin_media_metadata_local_var) {
         return NULL;
     }
-    pin_media_metadata_local_var->item_type = item_type;
-    pin_media_metadata_local_var->title = title;
     pin_media_metadata_local_var->description = description;
-    pin_media_metadata_local_var->link = link;
     pin_media_metadata_local_var->images = images;
+    pin_media_metadata_local_var->item_type = item_type;
+    pin_media_metadata_local_var->link = link;
+    pin_media_metadata_local_var->title = title;
     pin_media_metadata_local_var->cover_image_url = cover_image_url;
-    pin_media_metadata_local_var->video_url = video_url;
     pin_media_metadata_local_var->duration = duration;
     pin_media_metadata_local_var->height = height;
+    pin_media_metadata_local_var->video_url = video_url;
     pin_media_metadata_local_var->width = width;
 
     pin_media_metadata_local_var->_library_owned = 1;
@@ -37,27 +37,27 @@ static pin_media_metadata_t *pin_media_metadata_create_internal(
 }
 
 __attribute__((deprecated)) pin_media_metadata_t *pin_media_metadata_create(
-    char *item_type,
-    char *title,
     char *description,
+    image_size_t *images,
+    char *item_type,
     char *link,
-    image_metadata_images_t *images,
+    char *title,
     char *cover_image_url,
-    char *video_url,
     double duration,
     int height,
+    char *video_url,
     int width
     ) {
     return pin_media_metadata_create_internal (
-        item_type,
-        title,
         description,
-        link,
         images,
+        item_type,
+        link,
+        title,
         cover_image_url,
-        video_url,
         duration,
         height,
+        video_url,
         width
         );
 }
@@ -71,25 +71,25 @@ void pin_media_metadata_free(pin_media_metadata_t *pin_media_metadata) {
         return ;
     }
     listEntry_t *listEntry;
-    if (pin_media_metadata->item_type) {
-        free(pin_media_metadata->item_type);
-        pin_media_metadata->item_type = NULL;
-    }
-    if (pin_media_metadata->title) {
-        free(pin_media_metadata->title);
-        pin_media_metadata->title = NULL;
-    }
     if (pin_media_metadata->description) {
         free(pin_media_metadata->description);
         pin_media_metadata->description = NULL;
+    }
+    if (pin_media_metadata->images) {
+        image_size_free(pin_media_metadata->images);
+        pin_media_metadata->images = NULL;
+    }
+    if (pin_media_metadata->item_type) {
+        free(pin_media_metadata->item_type);
+        pin_media_metadata->item_type = NULL;
     }
     if (pin_media_metadata->link) {
         free(pin_media_metadata->link);
         pin_media_metadata->link = NULL;
     }
-    if (pin_media_metadata->images) {
-        image_metadata_images_free(pin_media_metadata->images);
-        pin_media_metadata->images = NULL;
+    if (pin_media_metadata->title) {
+        free(pin_media_metadata->title);
+        pin_media_metadata->title = NULL;
     }
     if (pin_media_metadata->cover_image_url) {
         free(pin_media_metadata->cover_image_url);
@@ -105,25 +105,30 @@ void pin_media_metadata_free(pin_media_metadata_t *pin_media_metadata) {
 cJSON *pin_media_metadata_convertToJSON(pin_media_metadata_t *pin_media_metadata) {
     cJSON *item = cJSON_CreateObject();
 
-    // pin_media_metadata->item_type
-    if(pin_media_metadata->item_type) {
-    if(cJSON_AddStringToObject(item, "item_type", pin_media_metadata->item_type) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // pin_media_metadata->title
-    if(pin_media_metadata->title) {
-    if(cJSON_AddStringToObject(item, "title", pin_media_metadata->title) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
     // pin_media_metadata->description
     if(pin_media_metadata->description) {
     if(cJSON_AddStringToObject(item, "description", pin_media_metadata->description) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
+    // pin_media_metadata->images
+    if(pin_media_metadata->images) {
+    cJSON *images_local_JSON = image_size_convertToJSON(pin_media_metadata->images);
+    if(images_local_JSON == NULL) {
+    goto fail; //model
+    }
+    cJSON_AddItemToObject(item, "images", images_local_JSON);
+    if(item->child == NULL) {
+    goto fail;
+    }
+    }
+
+
+    // pin_media_metadata->item_type
+    if(pin_media_metadata->item_type) {
+    if(cJSON_AddStringToObject(item, "item_type", pin_media_metadata->item_type) == NULL) {
     goto fail; //String
     }
     }
@@ -137,15 +142,10 @@ cJSON *pin_media_metadata_convertToJSON(pin_media_metadata_t *pin_media_metadata
     }
 
 
-    // pin_media_metadata->images
-    if(pin_media_metadata->images) {
-    cJSON *images_local_JSON = image_metadata_images_convertToJSON(pin_media_metadata->images);
-    if(images_local_JSON == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "images", images_local_JSON);
-    if(item->child == NULL) {
-    goto fail;
+    // pin_media_metadata->title
+    if(pin_media_metadata->title) {
+    if(cJSON_AddStringToObject(item, "title", pin_media_metadata->title) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -153,14 +153,6 @@ cJSON *pin_media_metadata_convertToJSON(pin_media_metadata_t *pin_media_metadata
     // pin_media_metadata->cover_image_url
     if(pin_media_metadata->cover_image_url) {
     if(cJSON_AddStringToObject(item, "cover_image_url", pin_media_metadata->cover_image_url) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // pin_media_metadata->video_url
-    if(pin_media_metadata->video_url) {
-    if(cJSON_AddStringToObject(item, "video_url", pin_media_metadata->video_url) == NULL) {
     goto fail; //String
     }
     }
@@ -178,6 +170,14 @@ cJSON *pin_media_metadata_convertToJSON(pin_media_metadata_t *pin_media_metadata
     if(pin_media_metadata->height) {
     if(cJSON_AddNumberToObject(item, "height", pin_media_metadata->height) == NULL) {
     goto fail; //Numeric
+    }
+    }
+
+
+    // pin_media_metadata->video_url
+    if(pin_media_metadata->video_url) {
+    if(cJSON_AddStringToObject(item, "video_url", pin_media_metadata->video_url) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -202,31 +202,7 @@ pin_media_metadata_t *pin_media_metadata_parseFromJSON(cJSON *pin_media_metadata
     pin_media_metadata_t *pin_media_metadata_local_var = NULL;
 
     // define the local variable for pin_media_metadata->images
-    image_metadata_images_t *images_local_nonprim = NULL;
-
-    // pin_media_metadata->item_type
-    cJSON *item_type = cJSON_GetObjectItemCaseSensitive(pin_media_metadataJSON, "item_type");
-    if (cJSON_IsNull(item_type)) {
-        item_type = NULL;
-    }
-    if (item_type) { 
-    if(!cJSON_IsString(item_type) && !cJSON_IsNull(item_type))
-    {
-    goto end; //String
-    }
-    }
-
-    // pin_media_metadata->title
-    cJSON *title = cJSON_GetObjectItemCaseSensitive(pin_media_metadataJSON, "title");
-    if (cJSON_IsNull(title)) {
-        title = NULL;
-    }
-    if (title) { 
-    if(!cJSON_IsString(title) && !cJSON_IsNull(title))
-    {
-    goto end; //String
-    }
-    }
+    image_size_t *images_local_nonprim = NULL;
 
     // pin_media_metadata->description
     cJSON *description = cJSON_GetObjectItemCaseSensitive(pin_media_metadataJSON, "description");
@@ -235,6 +211,27 @@ pin_media_metadata_t *pin_media_metadata_parseFromJSON(cJSON *pin_media_metadata
     }
     if (description) { 
     if(!cJSON_IsString(description) && !cJSON_IsNull(description))
+    {
+    goto end; //String
+    }
+    }
+
+    // pin_media_metadata->images
+    cJSON *images = cJSON_GetObjectItemCaseSensitive(pin_media_metadataJSON, "images");
+    if (cJSON_IsNull(images)) {
+        images = NULL;
+    }
+    if (images) { 
+    images_local_nonprim = image_size_parseFromJSON(images); //nonprimitive
+    }
+
+    // pin_media_metadata->item_type
+    cJSON *item_type = cJSON_GetObjectItemCaseSensitive(pin_media_metadataJSON, "item_type");
+    if (cJSON_IsNull(item_type)) {
+        item_type = NULL;
+    }
+    if (item_type) { 
+    if(!cJSON_IsString(item_type) && !cJSON_IsNull(item_type))
     {
     goto end; //String
     }
@@ -252,13 +249,16 @@ pin_media_metadata_t *pin_media_metadata_parseFromJSON(cJSON *pin_media_metadata
     }
     }
 
-    // pin_media_metadata->images
-    cJSON *images = cJSON_GetObjectItemCaseSensitive(pin_media_metadataJSON, "images");
-    if (cJSON_IsNull(images)) {
-        images = NULL;
+    // pin_media_metadata->title
+    cJSON *title = cJSON_GetObjectItemCaseSensitive(pin_media_metadataJSON, "title");
+    if (cJSON_IsNull(title)) {
+        title = NULL;
     }
-    if (images) { 
-    images_local_nonprim = image_metadata_images_parseFromJSON(images); //nonprimitive
+    if (title) { 
+    if(!cJSON_IsString(title) && !cJSON_IsNull(title))
+    {
+    goto end; //String
+    }
     }
 
     // pin_media_metadata->cover_image_url
@@ -268,18 +268,6 @@ pin_media_metadata_t *pin_media_metadata_parseFromJSON(cJSON *pin_media_metadata
     }
     if (cover_image_url) { 
     if(!cJSON_IsString(cover_image_url) && !cJSON_IsNull(cover_image_url))
-    {
-    goto end; //String
-    }
-    }
-
-    // pin_media_metadata->video_url
-    cJSON *video_url = cJSON_GetObjectItemCaseSensitive(pin_media_metadataJSON, "video_url");
-    if (cJSON_IsNull(video_url)) {
-        video_url = NULL;
-    }
-    if (video_url) { 
-    if(!cJSON_IsString(video_url) && !cJSON_IsNull(video_url))
     {
     goto end; //String
     }
@@ -309,6 +297,18 @@ pin_media_metadata_t *pin_media_metadata_parseFromJSON(cJSON *pin_media_metadata
     }
     }
 
+    // pin_media_metadata->video_url
+    cJSON *video_url = cJSON_GetObjectItemCaseSensitive(pin_media_metadataJSON, "video_url");
+    if (cJSON_IsNull(video_url)) {
+        video_url = NULL;
+    }
+    if (video_url) { 
+    if(!cJSON_IsString(video_url) && !cJSON_IsNull(video_url))
+    {
+    goto end; //String
+    }
+    }
+
     // pin_media_metadata->width
     cJSON *width = cJSON_GetObjectItemCaseSensitive(pin_media_metadataJSON, "width");
     if (cJSON_IsNull(width)) {
@@ -323,22 +323,22 @@ pin_media_metadata_t *pin_media_metadata_parseFromJSON(cJSON *pin_media_metadata
 
 
     pin_media_metadata_local_var = pin_media_metadata_create_internal (
-        item_type && !cJSON_IsNull(item_type) ? strdup(item_type->valuestring) : NULL,
-        title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
         description && !cJSON_IsNull(description) ? strdup(description->valuestring) : NULL,
-        link && !cJSON_IsNull(link) ? strdup(link->valuestring) : NULL,
         images ? images_local_nonprim : NULL,
+        item_type && !cJSON_IsNull(item_type) ? strdup(item_type->valuestring) : NULL,
+        link && !cJSON_IsNull(link) ? strdup(link->valuestring) : NULL,
+        title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
         cover_image_url && !cJSON_IsNull(cover_image_url) ? strdup(cover_image_url->valuestring) : NULL,
-        video_url && !cJSON_IsNull(video_url) ? strdup(video_url->valuestring) : NULL,
         duration ? duration->valuedouble : 0,
         height ? height->valuedouble : 0,
+        video_url && !cJSON_IsNull(video_url) ? strdup(video_url->valuestring) : NULL,
         width ? width->valuedouble : 0
         );
 
     return pin_media_metadata_local_var;
 end:
     if (images_local_nonprim) {
-        image_metadata_images_free(images_local_nonprim);
+        image_size_free(images_local_nonprim);
         images_local_nonprim = NULL;
     }
     return NULL;

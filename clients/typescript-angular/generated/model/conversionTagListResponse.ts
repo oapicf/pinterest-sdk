@@ -7,10 +7,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { ConversionTagResponse } from './conversionTagResponse';
+import { ConversionTag } from './conversionTag';
 
 
 export interface ConversionTagListResponse { 
-    items?: Array<ConversionTagResponse>;
+    items?: Array<ConversionTag>;
 }
 

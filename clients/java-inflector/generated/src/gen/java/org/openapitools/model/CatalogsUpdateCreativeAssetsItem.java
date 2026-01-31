@@ -15,8 +15,11 @@ import org.openapitools.model.CatalogsUpdatableCreativeAssetsAttributes;
  **/
 
 @ApiModel(description = "A creative assets item to be updated.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsUpdateCreativeAssetsItem   {
+  @JsonProperty("attributes")
+  private CatalogsUpdatableCreativeAssetsAttributes attributes;
+
   @JsonProperty("creative_assets_id")
   private String creativeAssetsId;
 
@@ -52,8 +55,22 @@ public class CatalogsUpdateCreativeAssetsItem   {
   @JsonProperty("operation")
   private OperationEnum operation;
 
+  /**
+   **/
+  public CatalogsUpdateCreativeAssetsItem attributes(CatalogsUpdatableCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("attributes")
-  private CatalogsUpdatableCreativeAssetsAttributes attributes;
+  public CatalogsUpdatableCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(CatalogsUpdatableCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+  }
 
   /**
    * The catalog creative assets item id in the merchant namespace
@@ -90,23 +107,6 @@ public class CatalogsUpdateCreativeAssetsItem   {
     this.operation = operation;
   }
 
-  /**
-   **/
-  public CatalogsUpdateCreativeAssetsItem attributes(CatalogsUpdatableCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("attributes")
-  public CatalogsUpdatableCreativeAssetsAttributes getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(CatalogsUpdatableCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -117,14 +117,14 @@ public class CatalogsUpdateCreativeAssetsItem   {
       return false;
     }
     CatalogsUpdateCreativeAssetsItem catalogsUpdateCreativeAssetsItem = (CatalogsUpdateCreativeAssetsItem) o;
-    return Objects.equals(creativeAssetsId, catalogsUpdateCreativeAssetsItem.creativeAssetsId) &&
-        Objects.equals(operation, catalogsUpdateCreativeAssetsItem.operation) &&
-        Objects.equals(attributes, catalogsUpdateCreativeAssetsItem.attributes);
+    return Objects.equals(attributes, catalogsUpdateCreativeAssetsItem.attributes) &&
+        Objects.equals(creativeAssetsId, catalogsUpdateCreativeAssetsItem.creativeAssetsId) &&
+        Objects.equals(operation, catalogsUpdateCreativeAssetsItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(creativeAssetsId, operation, attributes);
+    return Objects.hash(attributes, creativeAssetsId, operation);
   }
 
   @Override
@@ -132,9 +132,9 @@ public class CatalogsUpdateCreativeAssetsItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsUpdateCreativeAssetsItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

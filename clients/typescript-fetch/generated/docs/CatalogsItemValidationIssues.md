@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
-`itemNumber` | number
-`itemId` | string
 `errors` | [CatalogsItemValidationErrors](CatalogsItemValidationErrors.md)
+`itemId` | string
+`itemNumber` | number
 `warnings` | [CatalogsItemValidationWarnings](CatalogsItemValidationWarnings.md)
 
 ## Example
@@ -18,9 +18,9 @@ import type { CatalogsItemValidationIssues } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "itemNumber": 0,
-  "itemId": DS0294-L,
   "errors": null,
+  "itemId": DS0294-L,
+  "itemNumber": 0,
   "warnings": null,
 } satisfies CatalogsItemValidationIssues
 

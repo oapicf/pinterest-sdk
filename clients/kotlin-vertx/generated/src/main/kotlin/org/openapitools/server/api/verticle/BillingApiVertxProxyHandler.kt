@@ -19,6 +19,8 @@ import com.google.gson.Gson
 import org.openapitools.server.api.model.AdsCreditRedeemRequest
 import org.openapitools.server.api.model.AdsCreditRedeemResponse
 import org.openapitools.server.api.model.AdsCreditsDiscountsGet200Response
+import org.openapitools.server.api.model.BillingInvoiceDownloadResponse
+import org.openapitools.server.api.model.BillingInvoicesGet200Response
 import org.openapitools.server.api.model.BillingProfilesGet200Response
 import org.openapitools.server.api.model.Error
 import org.openapitools.server.api.model.SSIOAccountResponse
@@ -107,6 +109,50 @@ class BillingApiVertxProxyHandler(private val vertx: Vertx, private val service:
                     val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
                     GlobalScope.launch(vertx.dispatcher()){
                         val result = service.adsCreditsDiscountsGet(adAccountId,bookmark,pageSize,context)
+                        val payload = JsonObject(Json.encode(result.payload)).toBuffer()
+                        val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
+                        msg.reply(res.toJson())
+                    }.invokeOnCompletion{
+                        it?.let{ throw it }
+                    }
+                }
+        
+                "billingInvoiceDownloadGet" -> {
+                    val params = context.params
+                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
+                    if(adAccountId == null){
+                        throw IllegalArgumentException("adAccountId is required")
+                    }
+                    val billingInvoiceId = ApiHandlerUtils.searchStringInJson(params,"billing_invoice_id")
+                    if(billingInvoiceId == null){
+                        throw IllegalArgumentException("billingInvoiceId is required")
+                    }
+                    GlobalScope.launch(vertx.dispatcher()){
+                        val result = service.billingInvoiceDownloadGet(adAccountId,billingInvoiceId,context)
+                        val payload = JsonObject(Json.encode(result.payload)).toBuffer()
+                        val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
+                        msg.reply(res.toJson())
+                    }.invokeOnCompletion{
+                        it?.let{ throw it }
+                    }
+                }
+        
+                "billingInvoicesGet" -> {
+                    val params = context.params
+                    val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
+                    if(adAccountId == null){
+                        throw IllegalArgumentException("adAccountId is required")
+                    }
+                    val bookmark = ApiHandlerUtils.searchStringInJson(params,"bookmark")
+                    val pageSize = ApiHandlerUtils.searchIntegerInJson(params,"page_size")
+                    val sort = ApiHandlerUtils.searchStringInJson(params,"sort")
+                    val order = ApiHandlerUtils.searchStringInJson(params,"order")
+                    val status = ApiHandlerUtils.searchStringInJson(params,"status")
+                    val documentType = ApiHandlerUtils.searchStringInJson(params,"document_type")
+                    val startDueDate = java.time.LocalDate.parse(ApiHandlerUtils.searchStringInJson(params,"start_due_date"))
+                    val endDueDate = java.time.LocalDate.parse(ApiHandlerUtils.searchStringInJson(params,"end_due_date"))
+                    GlobalScope.launch(vertx.dispatcher()){
+                        val result = service.billingInvoicesGet(adAccountId,bookmark,pageSize,sort,order,status,documentType,startDueDate,endDueDate,context)
                         val payload = JsonObject(Json.encode(result.payload)).toBuffer()
                         val res = OperationResponse(result.statusCode,result.statusMessage,payload,result.headers)
                         msg.reply(res.toJson())

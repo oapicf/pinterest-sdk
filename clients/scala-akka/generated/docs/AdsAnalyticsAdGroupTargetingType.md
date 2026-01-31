@@ -1,0 +1,9 @@
+
+
+# AdsAnalyticsAdGroupTargetingType
+
+## Enum
+
+
+
+

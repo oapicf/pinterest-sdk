@@ -18,11 +18,15 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
+ * @param absoluteDateRange 
  * @param dynamicDateRange 
  * @param relativeDateRange 
- * @param absoluteDateRange 
  */
 data class TemplateResponseDateRange(
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("absolute_date_range") val absoluteDateRange: TemplateResponseDateRangeAbsoluteDateRange? = null,
 
     @field:Valid
     @Schema(example = "null", description = "")
@@ -30,11 +34,7 @@ data class TemplateResponseDateRange(
 
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("relative_date_range") val relativeDateRange: TemplateResponseDateRangeRelativeDateRange? = null,
-
-    @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("absolute_date_range") val absoluteDateRange: TemplateResponseDateRangeAbsoluteDateRange? = null
+    @get:JsonProperty("relative_date_range") val relativeDateRange: TemplateResponseDateRangeRelativeDateRange? = null
 ) {
 
 }

@@ -12,25 +12,25 @@ import AnyCodable
 
 public struct CatalogsProductGroupMultipleStringCriteria: Codable, JSONEncodable, Hashable {
 
-    public var values: [String]
     public var negated: Bool? = false
+    public var values: [String]
 
-    public init(values: [String], negated: Bool? = false) {
-        self.values = values
+    public init(negated: Bool? = false, values: [String]) {
         self.negated = negated
+        self.values = values
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case values
         case negated
+        case values
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(values, forKey: .values)
         try container.encodeIfPresent(negated, forKey: .negated)
+        try container.encode(values, forKey: .values)
     }
 }
 

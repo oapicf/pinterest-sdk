@@ -7,8 +7,8 @@
 
 static catalogs_items_post_filters_t *catalogs_items_post_filters_create_internal(
     pinterest_rest_api_catalogs_type__e catalog_type,
-    list_t *item_ids,
     char *catalog_id,
+    list_t *item_ids,
     list_t *hotel_ids,
     list_t *creative_assets_ids
     ) {
@@ -17,8 +17,8 @@ static catalogs_items_post_filters_t *catalogs_items_post_filters_create_interna
         return NULL;
     }
     catalogs_items_post_filters_local_var->catalog_type = catalog_type;
-    catalogs_items_post_filters_local_var->item_ids = item_ids;
     catalogs_items_post_filters_local_var->catalog_id = catalog_id;
+    catalogs_items_post_filters_local_var->item_ids = item_ids;
     catalogs_items_post_filters_local_var->hotel_ids = hotel_ids;
     catalogs_items_post_filters_local_var->creative_assets_ids = creative_assets_ids;
 
@@ -28,15 +28,15 @@ static catalogs_items_post_filters_t *catalogs_items_post_filters_create_interna
 
 __attribute__((deprecated)) catalogs_items_post_filters_t *catalogs_items_post_filters_create(
     pinterest_rest_api_catalogs_type__e catalog_type,
-    list_t *item_ids,
     char *catalog_id,
+    list_t *item_ids,
     list_t *hotel_ids,
     list_t *creative_assets_ids
     ) {
     return catalogs_items_post_filters_create_internal (
         catalog_type,
-        item_ids,
         catalog_id,
+        item_ids,
         hotel_ids,
         creative_assets_ids
         );
@@ -51,16 +51,16 @@ void catalogs_items_post_filters_free(catalogs_items_post_filters_t *catalogs_it
         return ;
     }
     listEntry_t *listEntry;
+    if (catalogs_items_post_filters->catalog_id) {
+        free(catalogs_items_post_filters->catalog_id);
+        catalogs_items_post_filters->catalog_id = NULL;
+    }
     if (catalogs_items_post_filters->item_ids) {
         list_ForEach(listEntry, catalogs_items_post_filters->item_ids) {
             free(listEntry->data);
         }
         list_freeList(catalogs_items_post_filters->item_ids);
         catalogs_items_post_filters->item_ids = NULL;
-    }
-    if (catalogs_items_post_filters->catalog_id) {
-        free(catalogs_items_post_filters->catalog_id);
-        catalogs_items_post_filters->catalog_id = NULL;
     }
     if (catalogs_items_post_filters->hotel_ids) {
         list_ForEach(listEntry, catalogs_items_post_filters->hotel_ids) {
@@ -96,6 +96,14 @@ cJSON *catalogs_items_post_filters_convertToJSON(catalogs_items_post_filters_t *
     }
 
 
+    // catalogs_items_post_filters->catalog_id
+    if(catalogs_items_post_filters->catalog_id) {
+    if(cJSON_AddStringToObject(item, "catalog_id", catalogs_items_post_filters->catalog_id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
     // catalogs_items_post_filters->item_ids
     if (!catalogs_items_post_filters->item_ids) {
         goto fail;
@@ -110,14 +118,6 @@ cJSON *catalogs_items_post_filters_convertToJSON(catalogs_items_post_filters_t *
     if(cJSON_AddStringToObject(item_ids, "", item_idsListEntry->data) == NULL)
     {
         goto fail;
-    }
-    }
-
-
-    // catalogs_items_post_filters->catalog_id
-    if(catalogs_items_post_filters->catalog_id) {
-    if(cJSON_AddStringToObject(item, "catalog_id", catalogs_items_post_filters->catalog_id) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -193,6 +193,18 @@ catalogs_items_post_filters_t *catalogs_items_post_filters_parseFromJSON(cJSON *
     
     catalog_type_local_nonprim = catalogs_type_parseFromJSON(catalog_type); //custom
 
+    // catalogs_items_post_filters->catalog_id
+    cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_items_post_filtersJSON, "catalog_id");
+    if (cJSON_IsNull(catalog_id)) {
+        catalog_id = NULL;
+    }
+    if (catalog_id) { 
+    if(!cJSON_IsString(catalog_id) && !cJSON_IsNull(catalog_id))
+    {
+    goto end; //String
+    }
+    }
+
     // catalogs_items_post_filters->item_ids
     cJSON *item_ids = cJSON_GetObjectItemCaseSensitive(catalogs_items_post_filtersJSON, "item_ids");
     if (cJSON_IsNull(item_ids)) {
@@ -216,18 +228,6 @@ catalogs_items_post_filters_t *catalogs_items_post_filters_parseFromJSON(cJSON *
             goto end;
         }
         list_addElement(item_idsList , strdup(item_ids_local->valuestring));
-    }
-
-    // catalogs_items_post_filters->catalog_id
-    cJSON *catalog_id = cJSON_GetObjectItemCaseSensitive(catalogs_items_post_filtersJSON, "catalog_id");
-    if (cJSON_IsNull(catalog_id)) {
-        catalog_id = NULL;
-    }
-    if (catalog_id) { 
-    if(!cJSON_IsString(catalog_id) && !cJSON_IsNull(catalog_id))
-    {
-    goto end; //String
-    }
     }
 
     // catalogs_items_post_filters->hotel_ids
@@ -283,8 +283,8 @@ catalogs_items_post_filters_t *catalogs_items_post_filters_parseFromJSON(cJSON *
 
     catalogs_items_post_filters_local_var = catalogs_items_post_filters_create_internal (
         catalog_type_local_nonprim,
-        item_idsList,
         catalog_id && !cJSON_IsNull(catalog_id) ? strdup(catalog_id->valuestring) : NULL,
+        item_idsList,
         hotel_idsList,
         creative_assets_idsList
         );

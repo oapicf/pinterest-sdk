@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.AdvancedAuctionProcessedItem
+open OpenAPI.Model.AdvancedAuctionItemsSubmitRecord
 
 module AdvancedAuctionProcessedItems =
 
@@ -11,6 +11,6 @@ module AdvancedAuctionProcessedItems =
 
   type AdvancedAuctionProcessedItems = {
     CatalogId : string;
-    Items : AdvancedAuctionProcessedItem[];
+    Items : AdvancedAuctionItemsSubmitRecord[];
   }
   //#endregion

@@ -16,8 +16,8 @@ import org.openapitools.vertxweb.server.model.CatalogsType;
 public class CatalogsItemsFilters   {
   
   private CatalogsType catalogType;
-  private List<String> itemIds = new ArrayList<>();
   private String catalogId;
+  private List<String> itemIds = new ArrayList<>();
   private List<String> hotelIds = new ArrayList<>();
   private List<String> creativeAssetsIds = new ArrayList<>();
 
@@ -25,10 +25,10 @@ public class CatalogsItemsFilters   {
 
   }
 
-  public CatalogsItemsFilters (CatalogsType catalogType, List<String> itemIds, String catalogId, List<String> hotelIds, List<String> creativeAssetsIds) {
+  public CatalogsItemsFilters (CatalogsType catalogType, String catalogId, List<String> itemIds, List<String> hotelIds, List<String> creativeAssetsIds) {
     this.catalogType = catalogType;
-    this.itemIds = itemIds;
     this.catalogId = catalogId;
+    this.itemIds = itemIds;
     this.hotelIds = hotelIds;
     this.creativeAssetsIds = creativeAssetsIds;
   }
@@ -43,21 +43,21 @@ public class CatalogsItemsFilters   {
   }
 
     
-  @JsonProperty("item_ids")
-  public List<String> getItemIds() {
-    return itemIds;
-  }
-  public void setItemIds(List<String> itemIds) {
-    this.itemIds = itemIds;
-  }
-
-    
   @JsonProperty("catalog_id")
   public String getCatalogId() {
     return catalogId;
   }
   public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
+  }
+
+    
+  @JsonProperty("item_ids")
+  public List<String> getItemIds() {
+    return itemIds;
+  }
+  public void setItemIds(List<String> itemIds) {
+    this.itemIds = itemIds;
   }
 
     
@@ -89,15 +89,15 @@ public class CatalogsItemsFilters   {
     }
     CatalogsItemsFilters catalogsItemsFilters = (CatalogsItemsFilters) o;
     return Objects.equals(catalogType, catalogsItemsFilters.catalogType) &&
-        Objects.equals(itemIds, catalogsItemsFilters.itemIds) &&
         Objects.equals(catalogId, catalogsItemsFilters.catalogId) &&
+        Objects.equals(itemIds, catalogsItemsFilters.itemIds) &&
         Objects.equals(hotelIds, catalogsItemsFilters.hotelIds) &&
         Objects.equals(creativeAssetsIds, catalogsItemsFilters.creativeAssetsIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemIds, catalogId, hotelIds, creativeAssetsIds);
+    return Objects.hash(catalogType, catalogId, itemIds, hotelIds, creativeAssetsIds);
   }
 
   @Override
@@ -106,8 +106,8 @@ public class CatalogsItemsFilters   {
     sb.append("class CatalogsItemsFilters {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    itemIds: ").append(toIndentedString(itemIds)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    itemIds: ").append(toIndentedString(itemIds)).append("\n");
     sb.append("    hotelIds: ").append(toIndentedString(hotelIds)).append("\n");
     sb.append("    creativeAssetsIds: ").append(toIndentedString(creativeAssetsIds)).append("\n");
     sb.append("}");

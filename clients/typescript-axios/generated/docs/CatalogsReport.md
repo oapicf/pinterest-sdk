@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **report_status** | **string** |  | [optional] [default to undefined]
-**url** | **string** | URL to download the report | [optional] [default to undefined]
 **size** | **number** | Size of the report in bytes | [optional] [default to undefined]
+**url** | **string** | URL to download the report | [optional] [default to undefined]
 
 ## Example
 
@@ -16,8 +16,8 @@ import { CatalogsReport } from './api';
 
 const instance: CatalogsReport = {
     report_status,
-    url,
     size,
+    url,
 };
 ```
 

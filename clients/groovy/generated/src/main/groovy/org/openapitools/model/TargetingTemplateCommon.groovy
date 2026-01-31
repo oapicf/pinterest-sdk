@@ -13,16 +13,16 @@ import org.openapitools.model.TrackingUrls;
 
 @Canonical
 class TargetingTemplateCommon {
-    /* targeting template name */
-    String name
     /* Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. */
     Boolean autoTargetingEnabled = true
     
-    TargetingSpec targetingAttributes
+    List<TargetingTemplateKeyword> keywords = new ArrayList<>()
+    /* targeting template name */
+    String name
     
     PlacementGroupType placementGroup = PlacementGroupType.ALL
     
-    List<TargetingTemplateKeyword> keywords = new ArrayList<>()
+    TargetingSpec targetingAttributes
     
     TrackingUrls trackingUrls
 }

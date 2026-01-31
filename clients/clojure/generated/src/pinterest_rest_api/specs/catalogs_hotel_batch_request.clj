@@ -9,11 +9,11 @@
 
 (def catalogs-hotel-batch-request-data
   {
+   (ds/opt :catalog_id) string?
    (ds/req :catalog_type) string?
    (ds/req :country) country-spec
-   (ds/req :language) string?
    (ds/req :items) (s/coll-of catalogs-hotel-batch-item-spec)
-   (ds/opt :catalog_id) string?
+   (ds/req :language) string?
    })
 
 (def catalogs-hotel-batch-request-spec

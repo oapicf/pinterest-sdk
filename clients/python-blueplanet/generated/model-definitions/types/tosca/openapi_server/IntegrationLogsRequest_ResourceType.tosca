@@ -1,0 +1,37 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server IntegrationLogsRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a IntegrationLogsRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  IntegrationLog = openapi_server.resourceTypes.IntegrationLog
+}
+resourceTypes {
+
+  IntegrationLogsRequest {
+    title = IntegrationLogsRequest
+    description = IntegrationLogsRequest
+    derivedFrom = Root
+    properties {
+        logs {
+          type = array
+          items.type = IntegrationLog
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  IntegrationLogsRequest {
+    title = IntegrationLogsRequest
+    description = IntegrationLogsRequest
+    implements = openapi_server.resourceTypes.IntegrationLogsRequest
+
+  }
+}

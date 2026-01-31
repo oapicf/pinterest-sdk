@@ -1,7 +1,6 @@
 package org.openapitools.vertxweb.server.api;
 
 import org.openapitools.vertxweb.server.model.Audience;
-import org.openapitools.vertxweb.server.model.AudienceCreateCustomRequest;
 import org.openapitools.vertxweb.server.model.AudienceCreateRequest;
 import org.openapitools.vertxweb.server.model.AudienceUpdateRequest;
 import org.openapitools.vertxweb.server.model.AudiencesList200Response;
@@ -38,7 +37,6 @@ public class AudiencesApiHandler {
 
     public void mount(RouterBuilder builder) {
         builder.operation("audiencesCreate").handler(this::audiencesCreate);
-        builder.operation("audiencesCreateCustom").handler(this::audiencesCreateCustom);
         builder.operation("audiencesGet").handler(this::audiencesGet);
         builder.operation("audiencesList").handler(this::audiencesList);
         builder.operation("audiencesUpdate").handler(this::audiencesUpdate);
@@ -58,31 +56,6 @@ public class AudiencesApiHandler {
         logger.debug("Parameter audienceCreateRequest is {}", audienceCreateRequest);
 
         api.audiencesCreate(adAccountId, audienceCreateRequest)
-            .onSuccess(apiResponse -> {
-                routingContext.response().setStatusCode(apiResponse.getStatusCode());
-                if (apiResponse.hasData()) {
-                    routingContext.json(apiResponse.getData());
-                } else {
-                    routingContext.response().end();
-                }
-            })
-            .onFailure(routingContext::fail);
-    }
-
-    private void audiencesCreateCustom(RoutingContext routingContext) {
-        logger.info("audiencesCreateCustom()");
-
-        // Param extraction
-        RequestParameters requestParameters = routingContext.get(ValidationHandler.REQUEST_CONTEXT_KEY);
-
-        String adAccountId = requestParameters.pathParameter("ad_account_id") != null ? requestParameters.pathParameter("ad_account_id").getString() : null;
-        RequestParameter body = requestParameters.body();
-        AudienceCreateCustomRequest audienceCreateCustomRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AudienceCreateCustomRequest>(){}) : null;
-
-        logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter audienceCreateCustomRequest is {}", audienceCreateCustomRequest);
-
-        api.audiencesCreateCustom(adAccountId, audienceCreateCustomRequest)
             .onSuccess(apiResponse -> {
                 routingContext.response().setStatusCode(apiResponse.getStatusCode());
                 if (apiResponse.hasData()) {

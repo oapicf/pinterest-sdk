@@ -23,17 +23,22 @@ Items_batch_post_request::~Items_batch_post_request()
 void
 Items_batch_post_request::__init()
 {
+	//catalog_id = std::string();
 	//catalog_type = std::string();
 	//country = new Country();
-	//language = std::string();
 	//new std::list()std::list> items;
-	//catalog_id = std::string();
+	//language = std::string();
 	//operation = new BatchOperation();
 }
 
 void
 Items_batch_post_request::__cleanup()
 {
+	//if(catalog_id != NULL) {
+	//
+	//delete catalog_id;
+	//catalog_id = NULL;
+	//}
 	//if(catalog_type != NULL) {
 	//
 	//delete catalog_type;
@@ -44,20 +49,15 @@ Items_batch_post_request::__cleanup()
 	//delete country;
 	//country = NULL;
 	//}
-	//if(language != NULL) {
-	//
-	//delete language;
-	//language = NULL;
-	//}
 	//if(items != NULL) {
 	//items.RemoveAll(true);
 	//delete items;
 	//items = NULL;
 	//}
-	//if(catalog_id != NULL) {
+	//if(language != NULL) {
 	//
-	//delete catalog_id;
-	//catalog_id = NULL;
+	//delete language;
+	//language = NULL;
 	//}
 	//if(operation != NULL) {
 	//
@@ -72,6 +72,17 @@ Items_batch_post_request::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *catalog_idKey = "catalog_id";
+	node = json_object_get_member(pJsonObject, catalog_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&catalog_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *catalog_typeKey = "catalog_type";
 	node = json_object_get_member(pJsonObject, catalog_typeKey);
 	if (node !=NULL) {
@@ -94,17 +105,6 @@ Items_batch_post_request::fromJson(char* jsonStr)
 			
 			Country* obj = static_cast<Country*> (&country);
 			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
-	const gchar *languageKey = "language";
-	node = json_object_get_member(pJsonObject, languageKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&language, node, "std::string", "");
-		} else {
 			
 		}
 	}
@@ -132,13 +132,13 @@ Items_batch_post_request::fromJson(char* jsonStr)
 		}
 		
 	}
-	const gchar *catalog_idKey = "catalog_id";
-	node = json_object_get_member(pJsonObject, catalog_idKey);
+	const gchar *languageKey = "language";
+	node = json_object_get_member(pJsonObject, languageKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&catalog_id, node, "std::string", "");
+			jsonToValue(&language, node, "std::string", "");
 		} else {
 			
 		}
@@ -170,6 +170,15 @@ Items_batch_post_request::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
+		std::string obj = getCatalogId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *catalog_idKey = "catalog_id";
+	json_object_set_member(pJsonObject, catalog_idKey, node);
+	if (isprimitive("std::string")) {
 		std::string obj = getCatalogType();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -192,15 +201,6 @@ Items_batch_post_request::toJson()
 	}
 	const gchar *countryKey = "country";
 	json_object_set_member(pJsonObject, countryKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getLanguage();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *languageKey = "language";
-	json_object_set_member(pJsonObject, languageKey, node);
 	if (isprimitive("ItemDeleteBatchRecord")) {
 		list<ItemDeleteBatchRecord> new_list = static_cast<list <ItemDeleteBatchRecord> > (getItems());
 		node = converttoJson(&new_list, "ItemDeleteBatchRecord", "array");
@@ -227,14 +227,14 @@ Items_batch_post_request::toJson()
 	const gchar *itemsKey = "items";
 	json_object_set_member(pJsonObject, itemsKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getCatalogId();
+		std::string obj = getLanguage();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *catalog_idKey = "catalog_id";
-	json_object_set_member(pJsonObject, catalog_idKey, node);
+	const gchar *languageKey = "language";
+	json_object_set_member(pJsonObject, languageKey, node);
 	if (isprimitive("BatchOperation")) {
 		BatchOperation obj = getOperation();
 		node = converttoJson(&obj, "BatchOperation", "");
@@ -255,6 +255,18 @@ Items_batch_post_request::toJson()
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+std::string
+Items_batch_post_request::getCatalogId()
+{
+	return catalog_id;
+}
+
+void
+Items_batch_post_request::setCatalogId(std::string  catalog_id)
+{
+	this->catalog_id = catalog_id;
 }
 
 std::string
@@ -281,18 +293,6 @@ Items_batch_post_request::setCountry(Country  country)
 	this->country = country;
 }
 
-std::string
-Items_batch_post_request::getLanguage()
-{
-	return language;
-}
-
-void
-Items_batch_post_request::setLanguage(std::string  language)
-{
-	this->language = language;
-}
-
 std::list<ItemDeleteBatchRecord>
 Items_batch_post_request::getItems()
 {
@@ -306,15 +306,15 @@ Items_batch_post_request::setItems(std::list <ItemDeleteBatchRecord> items)
 }
 
 std::string
-Items_batch_post_request::getCatalogId()
+Items_batch_post_request::getLanguage()
 {
-	return catalog_id;
+	return language;
 }
 
 void
-Items_batch_post_request::setCatalogId(std::string  catalog_id)
+Items_batch_post_request::setLanguage(std::string  language)
 {
-	this->catalog_id = catalog_id;
+	this->language = language;
 }
 
 BatchOperation

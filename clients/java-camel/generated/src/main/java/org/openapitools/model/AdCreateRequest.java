@@ -10,6 +10,8 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CreativeType;
+import org.openapitools.model.CustomizableCTAType;
+import org.openapitools.model.DisclosureType;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.GridClickType;
 import org.openapitools.model.QuizPinData;
@@ -29,7 +31,7 @@ import javax.annotation.Generated;
  * AdCreateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdCreateRequest {
 
   private String adGroupId;
@@ -49,7 +51,15 @@ public class AdCreateRequest {
 
   private CreativeType creativeType;
 
+  private JsonNullable<CustomizableCTAType> customizableCtaType = JsonNullable.<CustomizableCTAType>undefined();
+
   private JsonNullable<String> destinationUrl = JsonNullable.<String>undefined();
+
+  private JsonNullable<DisclosureType> disclosureType = JsonNullable.<DisclosureType>undefined();
+
+  private JsonNullable<String> disclosureUrl = JsonNullable.<String>undefined();
+
+  private JsonNullable<GridClickType> gridClickType = JsonNullable.<GridClickType>undefined();
 
   private JsonNullable<String> iosDeepLink = JsonNullable.<String>undefined();
 
@@ -57,88 +67,17 @@ public class AdCreateRequest {
 
   private Boolean isRemovable;
 
+  private JsonNullable<@Pattern(regexp = "^(AG)?\\d+$") String> leadFormId = JsonNullable.<String>undefined();
+
   private JsonNullable<String> name = JsonNullable.<String>undefined();
+
+  private JsonNullable<QuizPinData> quizPinData = JsonNullable.<QuizPinData>undefined();
 
   private EntityStatus status;
 
   private JsonNullable<TrackingUrls> trackingUrls = JsonNullable.<TrackingUrls>undefined();
 
   private JsonNullable<String> viewTrackingUrl = JsonNullable.<String>undefined();
-
-  private JsonNullable<@Pattern(regexp = "^(AG)?\\d+$") String> leadFormId = JsonNullable.<String>undefined();
-
-  private JsonNullable<GridClickType> gridClickType = JsonNullable.<GridClickType>undefined();
-
-  /**
-   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
-   */
-  public enum CustomizableCtaTypeEnum {
-    GET_OFFER("GET_OFFER"),
-    
-    LEARN_MORE("LEARN_MORE"),
-    
-    ORDER_NOW("ORDER_NOW"),
-    
-    SHOP_NOW("SHOP_NOW"),
-    
-    SIGN_UP("SIGN_UP"),
-    
-    SUBSCRIBE("SUBSCRIBE"),
-    
-    BUY_NOW("BUY_NOW"),
-    
-    CONTACT_US("CONTACT_US"),
-    
-    GET_QUOTE("GET_QUOTE"),
-    
-    VISIT_SITE("VISIT_SITE"),
-    
-    APPLY_NOW("APPLY_NOW"),
-    
-    BOOK_NOW("BOOK_NOW"),
-    
-    REQUEST_DEMO("REQUEST_DEMO"),
-    
-    REGISTER_NOW("REGISTER_NOW"),
-    
-    FIND_A_DEALER("FIND_A_DEALER"),
-    
-    ADD_TO_CART("ADD_TO_CART"),
-    
-    WATCH_NOW("WATCH_NOW"),
-    
-    READ_MORE("READ_MORE");
-
-    private final String value;
-
-    CustomizableCtaTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static CustomizableCtaTypeEnum fromValue(String value) {
-      for (CustomizableCtaTypeEnum b : CustomizableCtaTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  private JsonNullable<CustomizableCtaTypeEnum> customizableCtaType = JsonNullable.<CustomizableCtaTypeEnum>undefined();
-
-  private JsonNullable<QuizPinData> quizPinData = JsonNullable.<QuizPinData>undefined();
 
   private String pinId;
 
@@ -319,6 +258,26 @@ public class AdCreateRequest {
     this.creativeType = creativeType;
   }
 
+  public AdCreateRequest customizableCtaType(CustomizableCTAType customizableCtaType) {
+    this.customizableCtaType = JsonNullable.of(customizableCtaType);
+    return this;
+  }
+
+  /**
+   * Get customizableCtaType
+   * @return customizableCtaType
+   */
+  @Valid 
+  @Schema(name = "customizable_cta_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("customizable_cta_type")
+  public JsonNullable<CustomizableCTAType> getCustomizableCtaType() {
+    return customizableCtaType;
+  }
+
+  public void setCustomizableCtaType(JsonNullable<CustomizableCTAType> customizableCtaType) {
+    this.customizableCtaType = customizableCtaType;
+  }
+
   public AdCreateRequest destinationUrl(String destinationUrl) {
     this.destinationUrl = JsonNullable.of(destinationUrl);
     return this;
@@ -337,6 +296,66 @@ public class AdCreateRequest {
 
   public void setDestinationUrl(JsonNullable<String> destinationUrl) {
     this.destinationUrl = destinationUrl;
+  }
+
+  public AdCreateRequest disclosureType(DisclosureType disclosureType) {
+    this.disclosureType = JsonNullable.of(disclosureType);
+    return this;
+  }
+
+  /**
+   * Get disclosureType
+   * @return disclosureType
+   */
+  @Valid 
+  @Schema(name = "disclosure_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("disclosure_type")
+  public JsonNullable<DisclosureType> getDisclosureType() {
+    return disclosureType;
+  }
+
+  public void setDisclosureType(JsonNullable<DisclosureType> disclosureType) {
+    this.disclosureType = disclosureType;
+  }
+
+  public AdCreateRequest disclosureUrl(String disclosureUrl) {
+    this.disclosureUrl = JsonNullable.of(disclosureUrl);
+    return this;
+  }
+
+  /**
+   * URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
+   * @return disclosureUrl
+   */
+  
+  @Schema(name = "disclosure_url", description = "URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("disclosure_url")
+  public JsonNullable<String> getDisclosureUrl() {
+    return disclosureUrl;
+  }
+
+  public void setDisclosureUrl(JsonNullable<String> disclosureUrl) {
+    this.disclosureUrl = disclosureUrl;
+  }
+
+  public AdCreateRequest gridClickType(GridClickType gridClickType) {
+    this.gridClickType = JsonNullable.of(gridClickType);
+    return this;
+  }
+
+  /**
+   * Get gridClickType
+   * @return gridClickType
+   */
+  @Valid 
+  @Schema(name = "grid_click_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("grid_click_type")
+  public JsonNullable<GridClickType> getGridClickType() {
+    return gridClickType;
+  }
+
+  public void setGridClickType(JsonNullable<GridClickType> gridClickType) {
+    this.gridClickType = gridClickType;
   }
 
   public AdCreateRequest iosDeepLink(String iosDeepLink) {
@@ -399,6 +418,26 @@ public class AdCreateRequest {
     this.isRemovable = isRemovable;
   }
 
+  public AdCreateRequest leadFormId(String leadFormId) {
+    this.leadFormId = JsonNullable.of(leadFormId);
+    return this;
+  }
+
+  /**
+   * Lead form ID for lead ad generation.
+   * @return leadFormId
+   */
+  @Pattern(regexp = "^(AG)?\\d+$") 
+  @Schema(name = "lead_form_id", description = "Lead form ID for lead ad generation.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("lead_form_id")
+  public JsonNullable<@Pattern(regexp = "^(AG)?\\d+$") String> getLeadFormId() {
+    return leadFormId;
+  }
+
+  public void setLeadFormId(JsonNullable<String> leadFormId) {
+    this.leadFormId = leadFormId;
+  }
+
   public AdCreateRequest name(String name) {
     this.name = JsonNullable.of(name);
     return this;
@@ -417,6 +456,26 @@ public class AdCreateRequest {
 
   public void setName(JsonNullable<String> name) {
     this.name = name;
+  }
+
+  public AdCreateRequest quizPinData(QuizPinData quizPinData) {
+    this.quizPinData = JsonNullable.of(quizPinData);
+    return this;
+  }
+
+  /**
+   * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
+   * @return quizPinData
+   */
+  @Valid 
+  @Schema(name = "quiz_pin_data", description = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("quiz_pin_data")
+  public JsonNullable<QuizPinData> getQuizPinData() {
+    return quizPinData;
+  }
+
+  public void setQuizPinData(JsonNullable<QuizPinData> quizPinData) {
+    this.quizPinData = quizPinData;
   }
 
   public AdCreateRequest status(EntityStatus status) {
@@ -479,86 +538,6 @@ public class AdCreateRequest {
     this.viewTrackingUrl = viewTrackingUrl;
   }
 
-  public AdCreateRequest leadFormId(String leadFormId) {
-    this.leadFormId = JsonNullable.of(leadFormId);
-    return this;
-  }
-
-  /**
-   * Lead form ID for lead ad generation.
-   * @return leadFormId
-   */
-  @Pattern(regexp = "^(AG)?\\d+$") 
-  @Schema(name = "lead_form_id", description = "Lead form ID for lead ad generation.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("lead_form_id")
-  public JsonNullable<@Pattern(regexp = "^(AG)?\\d+$") String> getLeadFormId() {
-    return leadFormId;
-  }
-
-  public void setLeadFormId(JsonNullable<String> leadFormId) {
-    this.leadFormId = leadFormId;
-  }
-
-  public AdCreateRequest gridClickType(GridClickType gridClickType) {
-    this.gridClickType = JsonNullable.of(gridClickType);
-    return this;
-  }
-
-  /**
-   * Get gridClickType
-   * @return gridClickType
-   */
-  @Valid 
-  @Schema(name = "grid_click_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("grid_click_type")
-  public JsonNullable<GridClickType> getGridClickType() {
-    return gridClickType;
-  }
-
-  public void setGridClickType(JsonNullable<GridClickType> gridClickType) {
-    this.gridClickType = gridClickType;
-  }
-
-  public AdCreateRequest customizableCtaType(CustomizableCtaTypeEnum customizableCtaType) {
-    this.customizableCtaType = JsonNullable.of(customizableCtaType);
-    return this;
-  }
-
-  /**
-   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
-   * @return customizableCtaType
-   */
-  
-  @Schema(name = "customizable_cta_type", example = "LEARN_MORE", description = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("customizable_cta_type")
-  public JsonNullable<CustomizableCtaTypeEnum> getCustomizableCtaType() {
-    return customizableCtaType;
-  }
-
-  public void setCustomizableCtaType(JsonNullable<CustomizableCtaTypeEnum> customizableCtaType) {
-    this.customizableCtaType = customizableCtaType;
-  }
-
-  public AdCreateRequest quizPinData(QuizPinData quizPinData) {
-    this.quizPinData = JsonNullable.of(quizPinData);
-    return this;
-  }
-
-  /**
-   * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
-   * @return quizPinData
-   */
-  @Valid 
-  @Schema(name = "quiz_pin_data", description = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("quiz_pin_data")
-  public JsonNullable<QuizPinData> getQuizPinData() {
-    return quizPinData;
-  }
-
-  public void setQuizPinData(JsonNullable<QuizPinData> quizPinData) {
-    this.quizPinData = quizPinData;
-  }
-
   public AdCreateRequest pinId(String pinId) {
     this.pinId = pinId;
     return this;
@@ -595,18 +574,20 @@ public class AdCreateRequest {
         equalsNullable(this.carouselIosDeepLinks, adCreateRequest.carouselIosDeepLinks) &&
         equalsNullable(this.clickTrackingUrl, adCreateRequest.clickTrackingUrl) &&
         Objects.equals(this.creativeType, adCreateRequest.creativeType) &&
+        equalsNullable(this.customizableCtaType, adCreateRequest.customizableCtaType) &&
         equalsNullable(this.destinationUrl, adCreateRequest.destinationUrl) &&
+        equalsNullable(this.disclosureType, adCreateRequest.disclosureType) &&
+        equalsNullable(this.disclosureUrl, adCreateRequest.disclosureUrl) &&
+        equalsNullable(this.gridClickType, adCreateRequest.gridClickType) &&
         equalsNullable(this.iosDeepLink, adCreateRequest.iosDeepLink) &&
         Objects.equals(this.isPinDeleted, adCreateRequest.isPinDeleted) &&
         Objects.equals(this.isRemovable, adCreateRequest.isRemovable) &&
+        equalsNullable(this.leadFormId, adCreateRequest.leadFormId) &&
         equalsNullable(this.name, adCreateRequest.name) &&
+        equalsNullable(this.quizPinData, adCreateRequest.quizPinData) &&
         Objects.equals(this.status, adCreateRequest.status) &&
         equalsNullable(this.trackingUrls, adCreateRequest.trackingUrls) &&
         equalsNullable(this.viewTrackingUrl, adCreateRequest.viewTrackingUrl) &&
-        equalsNullable(this.leadFormId, adCreateRequest.leadFormId) &&
-        equalsNullable(this.gridClickType, adCreateRequest.gridClickType) &&
-        equalsNullable(this.customizableCtaType, adCreateRequest.customizableCtaType) &&
-        equalsNullable(this.quizPinData, adCreateRequest.quizPinData) &&
         Objects.equals(this.pinId, adCreateRequest.pinId);
   }
 
@@ -616,7 +597,7 @@ public class AdCreateRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(adGroupId, hashCodeNullable(androidDeepLink), hashCodeNullable(carouselAndroidDeepLinks), hashCodeNullable(carouselDestinationUrls), hashCodeNullable(carouselIosDeepLinks), hashCodeNullable(clickTrackingUrl), creativeType, hashCodeNullable(destinationUrl), hashCodeNullable(iosDeepLink), isPinDeleted, isRemovable, hashCodeNullable(name), status, hashCodeNullable(trackingUrls), hashCodeNullable(viewTrackingUrl), hashCodeNullable(leadFormId), hashCodeNullable(gridClickType), hashCodeNullable(customizableCtaType), hashCodeNullable(quizPinData), pinId);
+    return Objects.hash(adGroupId, hashCodeNullable(androidDeepLink), hashCodeNullable(carouselAndroidDeepLinks), hashCodeNullable(carouselDestinationUrls), hashCodeNullable(carouselIosDeepLinks), hashCodeNullable(clickTrackingUrl), creativeType, hashCodeNullable(customizableCtaType), hashCodeNullable(destinationUrl), hashCodeNullable(disclosureType), hashCodeNullable(disclosureUrl), hashCodeNullable(gridClickType), hashCodeNullable(iosDeepLink), isPinDeleted, isRemovable, hashCodeNullable(leadFormId), hashCodeNullable(name), hashCodeNullable(quizPinData), status, hashCodeNullable(trackingUrls), hashCodeNullable(viewTrackingUrl), pinId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -637,18 +618,20 @@ public class AdCreateRequest {
     sb.append("    carouselIosDeepLinks: ").append(toIndentedString(carouselIosDeepLinks)).append("\n");
     sb.append("    clickTrackingUrl: ").append(toIndentedString(clickTrackingUrl)).append("\n");
     sb.append("    creativeType: ").append(toIndentedString(creativeType)).append("\n");
+    sb.append("    customizableCtaType: ").append(toIndentedString(customizableCtaType)).append("\n");
     sb.append("    destinationUrl: ").append(toIndentedString(destinationUrl)).append("\n");
+    sb.append("    disclosureType: ").append(toIndentedString(disclosureType)).append("\n");
+    sb.append("    disclosureUrl: ").append(toIndentedString(disclosureUrl)).append("\n");
+    sb.append("    gridClickType: ").append(toIndentedString(gridClickType)).append("\n");
     sb.append("    iosDeepLink: ").append(toIndentedString(iosDeepLink)).append("\n");
     sb.append("    isPinDeleted: ").append(toIndentedString(isPinDeleted)).append("\n");
     sb.append("    isRemovable: ").append(toIndentedString(isRemovable)).append("\n");
+    sb.append("    leadFormId: ").append(toIndentedString(leadFormId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    quizPinData: ").append(toIndentedString(quizPinData)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    trackingUrls: ").append(toIndentedString(trackingUrls)).append("\n");
     sb.append("    viewTrackingUrl: ").append(toIndentedString(viewTrackingUrl)).append("\n");
-    sb.append("    leadFormId: ").append(toIndentedString(leadFormId)).append("\n");
-    sb.append("    gridClickType: ").append(toIndentedString(gridClickType)).append("\n");
-    sb.append("    customizableCtaType: ").append(toIndentedString(customizableCtaType)).append("\n");
-    sb.append("    quizPinData: ").append(toIndentedString(quizPinData)).append("\n");
     sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -27,28 +27,28 @@ class HotelProcessingRecordTest : ShouldSpec() {
         // uncomment below to create an instance of HotelProcessingRecord
         //val modelInstance = HotelProcessingRecord()
 
-        // to test the property `hotelId` - The catalog hotel id in the merchant namespace
-        should("test hotelId") {
-            // uncomment below to test the property
-            //modelInstance.hotelId shouldBe ("TODO")
-        }
-
         // to test the property `errors` - Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
         should("test errors") {
             // uncomment below to test the property
             //modelInstance.errors shouldBe ("TODO")
         }
 
-        // to test the property `warnings` - Array with the validation warnings for the item processing record
-        should("test warnings") {
+        // to test the property `hotelId` - The catalog hotel id in the merchant namespace
+        should("test hotelId") {
             // uncomment below to test the property
-            //modelInstance.warnings shouldBe ("TODO")
+            //modelInstance.hotelId shouldBe ("TODO")
         }
 
         // to test the property `status`
         should("test status") {
             // uncomment below to test the property
             //modelInstance.status shouldBe ("TODO")
+        }
+
+        // to test the property `warnings` - Array with the validation warnings for the item processing record
+        should("test warnings") {
+            // uncomment below to test the property
+            //modelInstance.warnings shouldBe ("TODO")
         }
 
     }

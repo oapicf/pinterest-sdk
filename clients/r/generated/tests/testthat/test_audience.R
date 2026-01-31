@@ -13,6 +13,38 @@ test_that("ad_account_id", {
   #expect_equal(model.instance$`ad_account_id`, "EXPECTED_RESULT")
 })
 
+test_that("audience_type", {
+  # tests for the property `audience_type` (character)
+  # &lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`audience_type`, "EXPECTED_RESULT")
+})
+
+test_that("created_by_company_name", {
+  # tests for the property `created_by_company_name` (character)
+  # The company that created this audience.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`created_by_company_name`, "EXPECTED_RESULT")
+})
+
+test_that("created_timestamp", {
+  # tests for the property `created_timestamp` (integer)
+  # Creation time. Unix timestamp in seconds.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`created_timestamp`, "EXPECTED_RESULT")
+})
+
+test_that("description", {
+  # tests for the property `description` (character)
+  # Audience description.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`description`, "EXPECTED_RESULT")
+})
+
 test_that("id", {
   # tests for the property `id` (character)
   # Audience ID.
@@ -27,22 +59,6 @@ test_that("name", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
-})
-
-test_that("audience_type", {
-  # tests for the property `audience_type` (character)
-  # &lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`audience_type`, "EXPECTED_RESULT")
-})
-
-test_that("description", {
-  # tests for the property `description` (character)
-  # Audience description.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`description`, "EXPECTED_RESULT")
 })
 
 test_that("rule", {
@@ -74,14 +90,6 @@ test_that("type", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`type`, "EXPECTED_RESULT")
-})
-
-test_that("created_timestamp", {
-  # tests for the property `created_timestamp` (integer)
-  # Creation time. Unix timestamp in seconds.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`created_timestamp`, "EXPECTED_RESULT")
 })
 
 test_that("updated_timestamp", {

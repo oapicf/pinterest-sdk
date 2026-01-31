@@ -7,32 +7,32 @@
 #' @title LeadsExportCreateRequest
 #' @description LeadsExportCreateRequest Class
 #' @format An \code{R6Class} generator object
-#' @field start_date Export leads collected on and after start date (UTC). Format: YYYY-MM-DD character
-#' @field end_date Export leads collected on and before end date (UTC). Format: YYYY-MM-DD character
 #' @field ad_id ID for the ad collecting leads character
+#' @field end_date Export leads collected on and before end date (UTC). Format: YYYY-MM-DD character
+#' @field start_date Export leads collected on and after start date (UTC). Format: YYYY-MM-DD character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 LeadsExportCreateRequest <- R6::R6Class(
   "LeadsExportCreateRequest",
   public = list(
-    `start_date` = NULL,
-    `end_date` = NULL,
     `ad_id` = NULL,
+    `end_date` = NULL,
+    `start_date` = NULL,
 
     #' @description
     #' Initialize a new LeadsExportCreateRequest class.
     #'
-    #' @param start_date Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
-    #' @param end_date Export leads collected on and before end date (UTC). Format: YYYY-MM-DD
     #' @param ad_id ID for the ad collecting leads
+    #' @param end_date Export leads collected on and before end date (UTC). Format: YYYY-MM-DD
+    #' @param start_date Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
     #' @param ... Other optional arguments.
-    initialize = function(`start_date`, `end_date`, `ad_id`, ...) {
-      if (!missing(`start_date`)) {
-        if (!(is.character(`start_date`) && length(`start_date`) == 1)) {
-          stop(paste("Error! Invalid data for `start_date`. Must be a string:", `start_date`))
+    initialize = function(`ad_id`, `end_date`, `start_date`, ...) {
+      if (!missing(`ad_id`)) {
+        if (!(is.character(`ad_id`) && length(`ad_id`) == 1)) {
+          stop(paste("Error! Invalid data for `ad_id`. Must be a string:", `ad_id`))
         }
-        self$`start_date` <- `start_date`
+        self$`ad_id` <- `ad_id`
       }
       if (!missing(`end_date`)) {
         if (!(is.character(`end_date`) && length(`end_date`) == 1)) {
@@ -40,11 +40,11 @@ LeadsExportCreateRequest <- R6::R6Class(
         }
         self$`end_date` <- `end_date`
       }
-      if (!missing(`ad_id`)) {
-        if (!(is.character(`ad_id`) && length(`ad_id`) == 1)) {
-          stop(paste("Error! Invalid data for `ad_id`. Must be a string:", `ad_id`))
+      if (!missing(`start_date`)) {
+        if (!(is.character(`start_date`) && length(`start_date`) == 1)) {
+          stop(paste("Error! Invalid data for `start_date`. Must be a string:", `start_date`))
         }
-        self$`ad_id` <- `ad_id`
+        self$`start_date` <- `start_date`
       }
     },
 
@@ -79,17 +79,17 @@ LeadsExportCreateRequest <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       LeadsExportCreateRequestObject <- list()
-      if (!is.null(self$`start_date`)) {
-        LeadsExportCreateRequestObject[["start_date"]] <-
-          self$`start_date`
+      if (!is.null(self$`ad_id`)) {
+        LeadsExportCreateRequestObject[["ad_id"]] <-
+          self$`ad_id`
       }
       if (!is.null(self$`end_date`)) {
         LeadsExportCreateRequestObject[["end_date"]] <-
           self$`end_date`
       }
-      if (!is.null(self$`ad_id`)) {
-        LeadsExportCreateRequestObject[["ad_id"]] <-
-          self$`ad_id`
+      if (!is.null(self$`start_date`)) {
+        LeadsExportCreateRequestObject[["start_date"]] <-
+          self$`start_date`
       }
       return(LeadsExportCreateRequestObject)
     },
@@ -101,14 +101,14 @@ LeadsExportCreateRequest <- R6::R6Class(
     #' @return the instance of LeadsExportCreateRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`start_date`)) {
-        self$`start_date` <- this_object$`start_date`
+      if (!is.null(this_object$`ad_id`)) {
+        self$`ad_id` <- this_object$`ad_id`
       }
       if (!is.null(this_object$`end_date`)) {
         self$`end_date` <- this_object$`end_date`
       }
-      if (!is.null(this_object$`ad_id`)) {
-        self$`ad_id` <- this_object$`ad_id`
+      if (!is.null(this_object$`start_date`)) {
+        self$`start_date` <- this_object$`start_date`
       }
       self
     },
@@ -131,9 +131,9 @@ LeadsExportCreateRequest <- R6::R6Class(
     #' @return the instance of LeadsExportCreateRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`start_date` <- this_object$`start_date`
-      self$`end_date` <- this_object$`end_date`
       self$`ad_id` <- this_object$`ad_id`
+      self$`end_date` <- this_object$`end_date`
+      self$`start_date` <- this_object$`start_date`
       self
     },
 
@@ -143,13 +143,13 @@ LeadsExportCreateRequest <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
-      # check the required field `start_date`
-      if (!is.null(input_json$`start_date`)) {
-        if (!(is.character(input_json$`start_date`) && length(input_json$`start_date`) == 1)) {
-          stop(paste("Error! Invalid data for `start_date`. Must be a string:", input_json$`start_date`))
+      # check the required field `ad_id`
+      if (!is.null(input_json$`ad_id`)) {
+        if (!(is.character(input_json$`ad_id`) && length(input_json$`ad_id`) == 1)) {
+          stop(paste("Error! Invalid data for `ad_id`. Must be a string:", input_json$`ad_id`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for LeadsExportCreateRequest: the required field `start_date` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for LeadsExportCreateRequest: the required field `ad_id` is missing."))
       }
       # check the required field `end_date`
       if (!is.null(input_json$`end_date`)) {
@@ -159,13 +159,13 @@ LeadsExportCreateRequest <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for LeadsExportCreateRequest: the required field `end_date` is missing."))
       }
-      # check the required field `ad_id`
-      if (!is.null(input_json$`ad_id`)) {
-        if (!(is.character(input_json$`ad_id`) && length(input_json$`ad_id`) == 1)) {
-          stop(paste("Error! Invalid data for `ad_id`. Must be a string:", input_json$`ad_id`))
+      # check the required field `start_date`
+      if (!is.null(input_json$`start_date`)) {
+        if (!(is.character(input_json$`start_date`) && length(input_json$`start_date`) == 1)) {
+          stop(paste("Error! Invalid data for `start_date`. Must be a string:", input_json$`start_date`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for LeadsExportCreateRequest: the required field `ad_id` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for LeadsExportCreateRequest: the required field `start_date` is missing."))
       }
     },
 
@@ -182,12 +182,12 @@ LeadsExportCreateRequest <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      # check if the required `start_date` is null
-      if (is.null(self$`start_date`)) {
+      # check if the required `ad_id` is null
+      if (is.null(self$`ad_id`)) {
         return(FALSE)
       }
 
-      if (!str_detect(self$`start_date`, "^(\\d{4})-(\\d{2})-(\\d{2})$")) {
+      if (!str_detect(self$`ad_id`, "^\\d+$")) {
         return(FALSE)
       }
 
@@ -200,12 +200,12 @@ LeadsExportCreateRequest <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `ad_id` is null
-      if (is.null(self$`ad_id`)) {
+      # check if the required `start_date` is null
+      if (is.null(self$`start_date`)) {
         return(FALSE)
       }
 
-      if (!str_detect(self$`ad_id`, "^\\d+$")) {
+      if (!str_detect(self$`start_date`, "^(\\d{4})-(\\d{2})-(\\d{2})$")) {
         return(FALSE)
       }
 
@@ -218,13 +218,13 @@ LeadsExportCreateRequest <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      # check if the required `start_date` is null
-      if (is.null(self$`start_date`)) {
-        invalid_fields["start_date"] <- "Non-nullable required field `start_date` cannot be null."
+      # check if the required `ad_id` is null
+      if (is.null(self$`ad_id`)) {
+        invalid_fields["ad_id"] <- "Non-nullable required field `ad_id` cannot be null."
       }
 
-      if (!str_detect(self$`start_date`, "^(\\d{4})-(\\d{2})-(\\d{2})$")) {
-        invalid_fields["start_date"] <- "Invalid value for `start_date`, must conform to the pattern ^(\\d{4})-(\\d{2})-(\\d{2})$."
+      if (!str_detect(self$`ad_id`, "^\\d+$")) {
+        invalid_fields["ad_id"] <- "Invalid value for `ad_id`, must conform to the pattern ^\\d+$."
       }
 
       # check if the required `end_date` is null
@@ -236,13 +236,13 @@ LeadsExportCreateRequest <- R6::R6Class(
         invalid_fields["end_date"] <- "Invalid value for `end_date`, must conform to the pattern ^(\\d{4})-(\\d{2})-(\\d{2})$."
       }
 
-      # check if the required `ad_id` is null
-      if (is.null(self$`ad_id`)) {
-        invalid_fields["ad_id"] <- "Non-nullable required field `ad_id` cannot be null."
+      # check if the required `start_date` is null
+      if (is.null(self$`start_date`)) {
+        invalid_fields["start_date"] <- "Non-nullable required field `start_date` cannot be null."
       }
 
-      if (!str_detect(self$`ad_id`, "^\\d+$")) {
-        invalid_fields["ad_id"] <- "Invalid value for `ad_id`, must conform to the pattern ^\\d+$."
+      if (!str_detect(self$`start_date`, "^(\\d{4})-(\\d{2})-(\\d{2})$")) {
+        invalid_fields["start_date"] <- "Invalid value for `start_date`, must conform to the pattern ^(\\d{4})-(\\d{2})-(\\d{2})$."
       }
 
       invalid_fields

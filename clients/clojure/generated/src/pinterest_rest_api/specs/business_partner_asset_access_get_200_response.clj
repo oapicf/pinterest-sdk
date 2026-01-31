@@ -8,8 +8,8 @@
 
 (def business-partner-asset-access-get-200-response-data
   {
-   (ds/req :items) (s/coll-of get-partner-assets-response-spec)
    (ds/opt :bookmark) string?
+   (ds/req :items) (s/coll-of get-partner-assets-response-spec)
    })
 
 (def business-partner-asset-access-get-200-response-spec

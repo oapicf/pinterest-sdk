@@ -26,10 +26,10 @@ class CatalogsProductGroupCreateRequestTest : ShouldSpec() {
         // uncomment below to create an instance of CatalogsProductGroupCreateRequest
         //val modelInstance = CatalogsProductGroupCreateRequest()
 
-        // to test the property `name`
-        should("test name") {
+        // to test the property `feedId` - Catalog Feed id pertaining to the catalog product group.
+        should("test feedId") {
             // uncomment below to test the property
-            //modelInstance.name shouldBe ("TODO")
+            //modelInstance.feedId shouldBe ("TODO")
         }
 
         // to test the property `filters`
@@ -38,10 +38,10 @@ class CatalogsProductGroupCreateRequestTest : ShouldSpec() {
             //modelInstance.filters shouldBe ("TODO")
         }
 
-        // to test the property `feedId` - Catalog Feed id pertaining to the catalog product group.
-        should("test feedId") {
+        // to test the property `name`
+        should("test name") {
             // uncomment below to test the property
-            //modelInstance.feedId shouldBe ("TODO")
+            //modelInstance.name shouldBe ("TODO")
         }
 
         // to test the property `description`

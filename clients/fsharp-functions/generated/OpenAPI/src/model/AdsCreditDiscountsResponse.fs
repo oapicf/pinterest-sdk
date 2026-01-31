@@ -16,16 +16,16 @@ module AdsCreditDiscountsResponse =
     Active : bool;
     [<JsonProperty(PropertyName = "advertiser_id")>]
     AdvertiserId : string;
-    [<JsonProperty(PropertyName = "discountType")>]
-    DiscountType : string option;
-    [<JsonProperty(PropertyName = "discountInMicroCurrency")>]
-    DiscountInMicroCurrency : decimal option;
     [<JsonProperty(PropertyName = "discountCurrency")>]
     DiscountCurrency : string option;
-    [<JsonProperty(PropertyName = "title")>]
-    Title : string option;
+    [<JsonProperty(PropertyName = "discountInMicroCurrency")>]
+    DiscountInMicroCurrency : decimal option;
+    [<JsonProperty(PropertyName = "discountType")>]
+    DiscountType : string option;
     [<JsonProperty(PropertyName = "remainingDiscountInMicroCurrency")>]
     RemainingDiscountInMicroCurrency : decimal option;
+    [<JsonProperty(PropertyName = "title")>]
+    Title : string option;
   }
 
   //#endregion

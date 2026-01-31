@@ -115,7 +115,7 @@ end:
 
 // Create audience
 //
-// Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.
+// Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
 //
 audience_t*
 AudiencesAPI_audiencesCreate(apiClient_t *apiClient, char *ad_account_id, audience_create_request_t *audience_create_request)
@@ -207,109 +207,6 @@ AudiencesAPI_audiencesCreate(apiClient_t *apiClient, char *ad_account_id, audien
     if (localVarSingleItemJSON_audience_create_request) {
         cJSON_Delete(localVarSingleItemJSON_audience_create_request);
         localVarSingleItemJSON_audience_create_request = NULL;
-    }
-    free(localVarBodyParameters);
-    return elementToReturn;
-end:
-    free(localVarPath);
-    return NULL;
-
-}
-
-// Create custom audience
-//
-// Create a custom audience and find the audiences you want your ads to reach.
-//
-audience_t*
-AudiencesAPI_audiencesCreateCustom(apiClient_t *apiClient, char *ad_account_id, audience_create_custom_request_t *audience_create_custom_request)
-{
-    list_t    *localVarQueryParameters = NULL;
-    list_t    *localVarHeaderParameters = NULL;
-    list_t    *localVarFormParameters = NULL;
-    list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = list_createList();
-    char      *localVarBodyParameters = NULL;
-    size_t     localVarBodyLength = 0;
-
-    // clear the error code from the previous api call
-    apiClient->response_code = 0;
-
-    // create the path
-    char *localVarPath = strdup("/ad_accounts/{ad_account_id}/audiences/custom");
-
-    if(!ad_account_id)
-        goto end;
-
-
-    // Path Params
-    long sizeOfPathParams_ad_account_id = strlen(ad_account_id)+3 + sizeof("{ ad_account_id }") - 1;
-    if(ad_account_id == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_ad_account_id = malloc(sizeOfPathParams_ad_account_id);
-    sprintf(localVarToReplace_ad_account_id, "{%s}", "ad_account_id");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_ad_account_id, ad_account_id);
-
-
-
-    // Body Param
-    cJSON *localVarSingleItemJSON_audience_create_custom_request = NULL;
-    if (audience_create_custom_request != NULL)
-    {
-        //not string, not binary
-        localVarSingleItemJSON_audience_create_custom_request = audience_create_custom_request_convertToJSON(audience_create_custom_request);
-        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_audience_create_custom_request);
-        localVarBodyLength = strlen(localVarBodyParameters);
-    }
-    list_addElement(localVarHeaderType,"application/json"); //produces
-    list_addElement(localVarContentType,"application/json"); //consumes
-    apiClient_invoke(apiClient,
-                    localVarPath,
-                    localVarQueryParameters,
-                    localVarHeaderParameters,
-                    localVarFormParameters,
-                    localVarHeaderType,
-                    localVarContentType,
-                    localVarBodyParameters,
-                    localVarBodyLength,
-                    "POST");
-
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Success");
-    //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Unexpected error");
-    //}
-    //nonprimitive not container
-    audience_t *elementToReturn = NULL;
-    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
-        cJSON *AudiencesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = audience_parseFromJSON(AudiencesAPIlocalVarJSON);
-        cJSON_Delete(AudiencesAPIlocalVarJSON);
-        if(elementToReturn == NULL) {
-            // return 0;
-        }
-    }
-
-    //return type
-    if (apiClient->dataReceived) {
-        free(apiClient->dataReceived);
-        apiClient->dataReceived = NULL;
-        apiClient->dataReceivedLen = 0;
-    }
-    
-    
-    
-    list_freeList(localVarHeaderType);
-    list_freeList(localVarContentType);
-    free(localVarPath);
-    free(localVarToReplace_ad_account_id);
-    if (localVarSingleItemJSON_audience_create_custom_request) {
-        cJSON_Delete(localVarSingleItemJSON_audience_create_custom_request);
-        localVarSingleItemJSON_audience_create_custom_request = NULL;
     }
     free(localVarBodyParameters);
     return elementToReturn;

@@ -9,8 +9,8 @@
 -export_type([openapi_order_lines_list_200_response/0]).
 
 -type openapi_order_lines_list_200_response() ::
-  [ {'items', list(openapi_order_line:openapi_order_line()) }
-  | {'bookmark', binary() }
+  [ {'bookmark', binary() }
+  | {'items', list(openapi_order_line:openapi_order_line()) }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_order_lines_list_200_response() ->
     openapi_order_lines_list_200_response([]).
 
 openapi_order_lines_list_200_response(Fields) ->
-  Default = [ {'items', list(openapi_order_line:openapi_order_line()) }
-            , {'bookmark', binary() }
+  Default = [ {'bookmark', binary() }
+            , {'items', list(openapi_order_line:openapi_order_line()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

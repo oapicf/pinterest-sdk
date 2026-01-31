@@ -41,8 +41,10 @@ import javax.annotation.Generated;
   @JsonSubTypes.Type(value = CatalogsUpsertHotelItem.class, name = "UPSERT")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelBatchItem {
+
+  private CatalogsUpdatableHotelAttributes attributes;
 
   private String hotelId;
 
@@ -81,8 +83,6 @@ public class CatalogsHotelBatchItem {
 
   private OperationEnum operation;
 
-  private CatalogsUpdatableHotelAttributes attributes;
-
   public CatalogsHotelBatchItem() {
     super();
   }
@@ -90,9 +90,29 @@ public class CatalogsHotelBatchItem {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsHotelBatchItem(String hotelId, OperationEnum operation, CatalogsUpdatableHotelAttributes attributes) {
+  public CatalogsHotelBatchItem(CatalogsUpdatableHotelAttributes attributes, String hotelId, OperationEnum operation) {
+    this.attributes = attributes;
     this.hotelId = hotelId;
     this.operation = operation;
+  }
+
+  public CatalogsHotelBatchItem attributes(CatalogsUpdatableHotelAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  /**
+   * Get attributes
+   * @return attributes
+   */
+  @NotNull @Valid 
+  @Schema(name = "attributes", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("attributes")
+  public CatalogsUpdatableHotelAttributes getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(CatalogsUpdatableHotelAttributes attributes) {
     this.attributes = attributes;
   }
 
@@ -136,26 +156,6 @@ public class CatalogsHotelBatchItem {
     this.operation = operation;
   }
 
-  public CatalogsHotelBatchItem attributes(CatalogsUpdatableHotelAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  /**
-   * Get attributes
-   * @return attributes
-   */
-  @NotNull @Valid 
-  @Schema(name = "attributes", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("attributes")
-  public CatalogsUpdatableHotelAttributes getAttributes() {
-    return attributes;
-  }
-
-  public void setAttributes(CatalogsUpdatableHotelAttributes attributes) {
-    this.attributes = attributes;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -165,23 +165,23 @@ public class CatalogsHotelBatchItem {
       return false;
     }
     CatalogsHotelBatchItem catalogsHotelBatchItem = (CatalogsHotelBatchItem) o;
-    return Objects.equals(this.hotelId, catalogsHotelBatchItem.hotelId) &&
-        Objects.equals(this.operation, catalogsHotelBatchItem.operation) &&
-        Objects.equals(this.attributes, catalogsHotelBatchItem.attributes);
+    return Objects.equals(this.attributes, catalogsHotelBatchItem.attributes) &&
+        Objects.equals(this.hotelId, catalogsHotelBatchItem.hotelId) &&
+        Objects.equals(this.operation, catalogsHotelBatchItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hotelId, operation, attributes);
+    return Objects.hash(attributes, hotelId, operation);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsHotelBatchItem {\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -3,14 +3,6 @@ Protected Class AdAccountCreateSubscriptionRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Standard HTTPS webhook URL.
-		#tag EndNote
-		webhook_url As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
 			Lead form ID.
 		#tag EndNote
 		lead_form_id As Xoson.O.OptionalString
@@ -26,6 +18,11 @@ Protected Class AdAccountCreateSubscriptionRequest
 
 
 	#tag Property, Flags = &h0
+		partner_metadata As OpenAPIClient.Models.AdAccountCreateSubscriptionRequestPartnerMetadata
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		#tag Note
 			Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
 		#tag EndNote
@@ -34,7 +31,10 @@ Protected Class AdAccountCreateSubscriptionRequest
 
 
 	#tag Property, Flags = &h0
-		partner_metadata As OpenAPIClient.Models.AdAccountCreateSubscriptionRequestPartnerMetadata
+		#tag Note
+			Standard HTTPS webhook URL.
+		#tag EndNote
+		webhook_url As String
 	#tag EndProperty
 
 
@@ -75,14 +75,6 @@ Protected Class AdAccountCreateSubscriptionRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="webhook_url"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="lead_form_id"
 			Visible=false
 			Group="Behavior"
@@ -99,6 +91,14 @@ Protected Class AdAccountCreateSubscriptionRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="partner_metadata"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="AdAccountCreateSubscriptionRequestPartnerMetadata"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="partner_refresh_token"
 			Visible=false
 			Group="Behavior"
@@ -107,11 +107,11 @@ Protected Class AdAccountCreateSubscriptionRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="partner_metadata"
+			Name="webhook_url"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="AdAccountCreateSubscriptionRequestPartnerMetadata"
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

@@ -3,12 +3,13 @@ package org.openapitools.api;
 import org.openapitools.api.ApiUtils
 import org.openapitools.model.AdAccount
 import org.openapitools.model.AdAccountAnalyticsResponseInner
-import org.openapitools.model.AdAccountCreateRequest
+import org.openapitools.model.AdAccountCreate
 import org.openapitools.model.AdAccountsList200Response
 import org.openapitools.model.AdsAnalyticsCreateAsyncRequest
 import org.openapitools.model.AdsAnalyticsCreateAsyncResponse
 import org.openapitools.model.AdsAnalyticsGetAsyncResponse
 import org.openapitools.model.AdsAnalyticsTargetingType
+import org.openapitools.model.ConversionProductReportRequest
 import org.openapitools.model.ConversionReportAttributionType
 import org.openapitools.model.CreateMMMReportRequest
 import org.openapitools.model.CreateMMMReportResponse
@@ -16,6 +17,9 @@ import org.openapitools.model.Error
 import org.openapitools.model.GetMMMReportResponse
 import org.openapitools.model.Granularity
 import org.openapitools.model.MetricsResponse
+import org.openapitools.model.PinterestLibError
+import org.openapitools.model.ReportingTimeZone
+import org.openapitools.model.TemplateBasedReport
 import org.openapitools.model.TemplatesList200Response
 
 class AdAccountsApi {
@@ -23,7 +27,7 @@ class AdAccountsApi {
     String versionPath = ""
     ApiUtils apiUtils = new ApiUtils();
 
-    def adAccountAnalytics ( String adAccountId, Date startDate, Date endDate, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, Closure onSuccess, Closure onFailure)  {
+    def adAccountAnalytics ( String adAccountId, Date startDate, Date endDate, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/analytics"
 
         // params
@@ -77,6 +81,9 @@ class AdAccountsApi {
         if (conversionReportTime != null) {
             queryParams.put("conversion_report_time", conversionReportTime)
         }
+        if (reportingTimezone != null) {
+            queryParams.put("reporting_timezone", reportingTimezone)
+        }
 
 
 
@@ -87,7 +94,7 @@ class AdAccountsApi {
 
     }
 
-    def adAccountTargetingAnalyticsGet ( String adAccountId, Date startDate, Date endDate, List<AdsAnalyticsTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes, Closure onSuccess, Closure onFailure)  {
+    def adAccountTargetingAnalyticsGet ( String adAccountId, Date startDate, Date endDate, List<AdsAnalyticsTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, List<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts/${ad_account_id}/targeting_analytics"
 
         // params
@@ -151,6 +158,9 @@ class AdAccountsApi {
         if (attributionTypes != null) {
             queryParams.put("attribution_types", attributionTypes)
         }
+        if (reportingTimezone != null) {
+            queryParams.put("reporting_timezone", reportingTimezone)
+        }
 
 
 
@@ -161,7 +171,7 @@ class AdAccountsApi {
 
     }
 
-    def adAccountsCreate ( AdAccountCreateRequest adAccountCreateRequest, Closure onSuccess, Closure onFailure)  {
+    def adAccountsCreate ( AdAccountCreate adAccountCreate, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts"
 
         // params
@@ -171,14 +181,14 @@ class AdAccountsApi {
         def contentType
 
         // verify required params are set
-        if (adAccountCreateRequest == null) {
-            throw new RuntimeException("missing required params adAccountCreateRequest")
+        if (adAccountCreate == null) {
+            throw new RuntimeException("missing required params adAccountCreate")
         }
 
 
 
         contentType = 'application/json';
-        bodyParams = adAccountCreateRequest
+        bodyParams = adAccountCreate
 
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
@@ -211,7 +221,7 @@ class AdAccountsApi {
 
     }
 
-    def adAccountsList ( String bookmark, Integer pageSize, Boolean includeSharedAccounts, Closure onSuccess, Closure onFailure)  {
+    def adAccountsList ( Boolean includeSharedAccounts, String bookmark, Integer pageSize, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/ad_accounts"
 
         // params
@@ -221,14 +231,14 @@ class AdAccountsApi {
         def contentType
 
 
+        if (includeSharedAccounts != null) {
+            queryParams.put("include_shared_accounts", includeSharedAccounts)
+        }
         if (bookmark != null) {
             queryParams.put("bookmark", bookmark)
         }
         if (pageSize != null) {
             queryParams.put("page_size", pageSize)
-        }
-        if (includeSharedAccounts != null) {
-            queryParams.put("include_shared_accounts", includeSharedAccounts)
         }
 
 
@@ -237,6 +247,36 @@ class AdAccountsApi {
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
                     "GET", "",
                     AdAccountsList200Response.class )
+
+    }
+
+    def analyticsCreateConversionProductReport ( String adAccountId, ConversionProductReportRequest conversionProductReportRequest, Closure onSuccess, Closure onFailure)  {
+        String resourcePath = "/ad_accounts/${ad_account_id}/reports/brand_category_sku"
+
+        // params
+        def queryParams = [:]
+        def headerParams = [:]
+        def bodyParams
+        def contentType
+
+        // verify required params are set
+        if (adAccountId == null) {
+            throw new RuntimeException("missing required params adAccountId")
+        }
+        // verify required params are set
+        if (conversionProductReportRequest == null) {
+            throw new RuntimeException("missing required params conversionProductReportRequest")
+        }
+
+
+
+        contentType = 'application/json';
+        bodyParams = conversionProductReportRequest
+
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+                    "POST", "",
+                    AdsAnalyticsCreateAsyncResponse.class )
 
     }
 
@@ -333,7 +373,38 @@ class AdAccountsApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
                     "POST", "",
-                    AdsAnalyticsCreateAsyncResponse.class )
+                    TemplateBasedReport.class )
+
+    }
+
+    def analyticsGetConversionProductReport ( String adAccountId, String token, Closure onSuccess, Closure onFailure)  {
+        String resourcePath = "/ad_accounts/${ad_account_id}/reports/brand_category_sku"
+
+        // params
+        def queryParams = [:]
+        def headerParams = [:]
+        def bodyParams
+        def contentType
+
+        // verify required params are set
+        if (adAccountId == null) {
+            throw new RuntimeException("missing required params adAccountId")
+        }
+        // verify required params are set
+        if (token == null) {
+            throw new RuntimeException("missing required params token")
+        }
+
+        if (token != null) {
+            queryParams.put("token", token)
+        }
+
+
+
+
+        apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, contentType,
+                    "GET", "",
+                    AdsAnalyticsGetAsyncResponse.class )
 
     }
 

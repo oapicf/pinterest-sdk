@@ -15,14 +15,14 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param CAMPAIGN_ID The ID of the campaing that this metrics belongs to.
+ * @param CAMPAIGN_ID The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
  * @param DATE Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
  */
 data class CampaignsAnalyticsResponseInner(
 
     @get:Pattern(regexp="^\\d+$")
-    @Schema(example = "null", required = true, description = "The ID of the campaing that this metrics belongs to.")
-    @get:JsonProperty("CAMPAIGN_ID", required = true) val CAMPAIGN_ID: kotlin.String,
+    @Schema(example = "null", description = "The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true.")
+    @get:JsonProperty("CAMPAIGN_ID") val CAMPAIGN_ID: kotlin.String? = null,
 
     @field:Valid
     @Schema(example = "null", description = "Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)")

@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsReportDistributionIssueFilter   {
   
+  private String catalogId;
 
 
   public enum ReportTypeEnum {
@@ -27,23 +28,13 @@ public class CatalogsReportDistributionIssueFilter   {
   }
 
   private ReportTypeEnum reportType;
-  private String catalogId;
 
   public CatalogsReportDistributionIssueFilter () {
 
   }
 
-  public CatalogsReportDistributionIssueFilter (ReportTypeEnum reportType, String catalogId) {
-    this.reportType = reportType;
+  public CatalogsReportDistributionIssueFilter (String catalogId, ReportTypeEnum reportType) {
     this.catalogId = catalogId;
-  }
-
-    
-  @JsonProperty("report_type")
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-  public void setReportType(ReportTypeEnum reportType) {
     this.reportType = reportType;
   }
 
@@ -56,6 +47,15 @@ public class CatalogsReportDistributionIssueFilter   {
     this.catalogId = catalogId;
   }
 
+    
+  @JsonProperty("report_type")
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -66,13 +66,13 @@ public class CatalogsReportDistributionIssueFilter   {
       return false;
     }
     CatalogsReportDistributionIssueFilter catalogsReportDistributionIssueFilter = (CatalogsReportDistributionIssueFilter) o;
-    return Objects.equals(reportType, catalogsReportDistributionIssueFilter.reportType) &&
-        Objects.equals(catalogId, catalogsReportDistributionIssueFilter.catalogId);
+    return Objects.equals(catalogId, catalogsReportDistributionIssueFilter.catalogId) &&
+        Objects.equals(reportType, catalogsReportDistributionIssueFilter.reportType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, catalogId);
+    return Objects.hash(catalogId, reportType);
   }
 
   @Override
@@ -80,8 +80,8 @@ public class CatalogsReportDistributionIssueFilter   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsReportDistributionIssueFilter {\n");
     
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

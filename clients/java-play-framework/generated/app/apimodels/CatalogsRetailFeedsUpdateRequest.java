@@ -17,32 +17,43 @@ import javax.validation.Valid;
 /**
  * Request object for updating a feed.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsRetailFeedsUpdateRequest   {
-  @JsonProperty("default_currency")
-  @Valid
+  @JsonProperty("catalog_type")
+  @NotNull
+@Valid
 
-  private NullableCurrency defaultCurrency;
-
-  @JsonProperty("name")
-  
-  private String name;
-
-  @JsonProperty("format")
-  @Valid
-
-  private CatalogsFormat format;
+  private CatalogsType catalogType;
 
   @JsonProperty("credentials")
   @Valid
 
   private CatalogsFeedCredentials credentials;
 
+  @JsonProperty("default_availability")
+  @Valid
+
+  private ProductAvailabilityType defaultAvailability;
+
+  @JsonProperty("default_currency")
+  @Valid
+
+  private NullableCurrency defaultCurrency;
+
+  @JsonProperty("format")
+  @Valid
+
+  private CatalogsFormat format;
+
   @JsonProperty("location")
   @Pattern(regexp="^(http|https|ftp|sftp)://")
 
   private String location;
+
+  @JsonProperty("name")
+  
+  private String name;
 
   @JsonProperty("preferred_processing_schedule")
   @Valid
@@ -54,66 +65,21 @@ public class CatalogsRetailFeedsUpdateRequest   {
 
   private CatalogsStatus status;
 
-  @JsonProperty("catalog_type")
-  @NotNull
-@Valid
-
-  private CatalogsType catalogType;
-
-  @JsonProperty("default_availability")
-  @Valid
-
-  private ProductAvailabilityType defaultAvailability;
-
-  public CatalogsRetailFeedsUpdateRequest defaultCurrency(NullableCurrency defaultCurrency) {
-    this.defaultCurrency = defaultCurrency;
+  public CatalogsRetailFeedsUpdateRequest catalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
     return this;
   }
 
    /**
-   * Get defaultCurrency
-   * @return defaultCurrency
+   * Get catalogType
+   * @return catalogType
   **/
-  public NullableCurrency getDefaultCurrency() {
-    return defaultCurrency;
+  public CatalogsType getCatalogType() {
+    return catalogType;
   }
 
-  public void setDefaultCurrency(NullableCurrency defaultCurrency) {
-    this.defaultCurrency = defaultCurrency;
-  }
-
-  public CatalogsRetailFeedsUpdateRequest name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * A human-friendly name associated to a given feed.
-   * @return name
-  **/
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public CatalogsRetailFeedsUpdateRequest format(CatalogsFormat format) {
-    this.format = format;
-    return this;
-  }
-
-   /**
-   * Get format
-   * @return format
-  **/
-  public CatalogsFormat getFormat() {
-    return format;
-  }
-
-  public void setFormat(CatalogsFormat format) {
-    this.format = format;
+  public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
   }
 
   public CatalogsRetailFeedsUpdateRequest credentials(CatalogsFeedCredentials credentials) {
@@ -133,6 +99,57 @@ public class CatalogsRetailFeedsUpdateRequest   {
     this.credentials = credentials;
   }
 
+  public CatalogsRetailFeedsUpdateRequest defaultAvailability(ProductAvailabilityType defaultAvailability) {
+    this.defaultAvailability = defaultAvailability;
+    return this;
+  }
+
+   /**
+   * Get defaultAvailability
+   * @return defaultAvailability
+  **/
+  public ProductAvailabilityType getDefaultAvailability() {
+    return defaultAvailability;
+  }
+
+  public void setDefaultAvailability(ProductAvailabilityType defaultAvailability) {
+    this.defaultAvailability = defaultAvailability;
+  }
+
+  public CatalogsRetailFeedsUpdateRequest defaultCurrency(NullableCurrency defaultCurrency) {
+    this.defaultCurrency = defaultCurrency;
+    return this;
+  }
+
+   /**
+   * Get defaultCurrency
+   * @return defaultCurrency
+  **/
+  public NullableCurrency getDefaultCurrency() {
+    return defaultCurrency;
+  }
+
+  public void setDefaultCurrency(NullableCurrency defaultCurrency) {
+    this.defaultCurrency = defaultCurrency;
+  }
+
+  public CatalogsRetailFeedsUpdateRequest format(CatalogsFormat format) {
+    this.format = format;
+    return this;
+  }
+
+   /**
+   * Get format
+   * @return format
+  **/
+  public CatalogsFormat getFormat() {
+    return format;
+  }
+
+  public void setFormat(CatalogsFormat format) {
+    this.format = format;
+  }
+
   public CatalogsRetailFeedsUpdateRequest location(String location) {
     this.location = location;
     return this;
@@ -148,6 +165,23 @@ public class CatalogsRetailFeedsUpdateRequest   {
 
   public void setLocation(String location) {
     this.location = location;
+  }
+
+  public CatalogsRetailFeedsUpdateRequest name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * A human-friendly name associated to a given feed.
+   * @return name
+  **/
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   public CatalogsRetailFeedsUpdateRequest preferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
@@ -184,40 +218,6 @@ public class CatalogsRetailFeedsUpdateRequest   {
     this.status = status;
   }
 
-  public CatalogsRetailFeedsUpdateRequest catalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
-   /**
-   * Get catalogType
-   * @return catalogType
-  **/
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-
-  public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-  }
-
-  public CatalogsRetailFeedsUpdateRequest defaultAvailability(ProductAvailabilityType defaultAvailability) {
-    this.defaultAvailability = defaultAvailability;
-    return this;
-  }
-
-   /**
-   * Get defaultAvailability
-   * @return defaultAvailability
-  **/
-  public ProductAvailabilityType getDefaultAvailability() {
-    return defaultAvailability;
-  }
-
-  public void setDefaultAvailability(ProductAvailabilityType defaultAvailability) {
-    this.defaultAvailability = defaultAvailability;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -228,20 +228,20 @@ public class CatalogsRetailFeedsUpdateRequest   {
       return false;
     }
     CatalogsRetailFeedsUpdateRequest catalogsRetailFeedsUpdateRequest = (CatalogsRetailFeedsUpdateRequest) o;
-    return Objects.equals(defaultCurrency, catalogsRetailFeedsUpdateRequest.defaultCurrency) &&
-        Objects.equals(name, catalogsRetailFeedsUpdateRequest.name) &&
-        Objects.equals(format, catalogsRetailFeedsUpdateRequest.format) &&
+    return Objects.equals(catalogType, catalogsRetailFeedsUpdateRequest.catalogType) &&
         Objects.equals(credentials, catalogsRetailFeedsUpdateRequest.credentials) &&
+        Objects.equals(defaultAvailability, catalogsRetailFeedsUpdateRequest.defaultAvailability) &&
+        Objects.equals(defaultCurrency, catalogsRetailFeedsUpdateRequest.defaultCurrency) &&
+        Objects.equals(format, catalogsRetailFeedsUpdateRequest.format) &&
         Objects.equals(location, catalogsRetailFeedsUpdateRequest.location) &&
+        Objects.equals(name, catalogsRetailFeedsUpdateRequest.name) &&
         Objects.equals(preferredProcessingSchedule, catalogsRetailFeedsUpdateRequest.preferredProcessingSchedule) &&
-        Objects.equals(status, catalogsRetailFeedsUpdateRequest.status) &&
-        Objects.equals(catalogType, catalogsRetailFeedsUpdateRequest.catalogType) &&
-        Objects.equals(defaultAvailability, catalogsRetailFeedsUpdateRequest.defaultAvailability);
+        Objects.equals(status, catalogsRetailFeedsUpdateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultCurrency, name, format, credentials, location, preferredProcessingSchedule, status, catalogType, defaultAvailability);
+    return Objects.hash(catalogType, credentials, defaultAvailability, defaultCurrency, format, location, name, preferredProcessingSchedule, status);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -250,15 +250,15 @@ public class CatalogsRetailFeedsUpdateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailFeedsUpdateRequest {\n");
     
-    sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
+    sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
+    sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
     sb.append("}");
     return sb.toString();
   }

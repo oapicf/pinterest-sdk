@@ -2,6 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
+import org.openapitools.model.CatalogsProductGroupFilterOperatorTypeCriteria
 import org.openapitools.model.CatalogsProductGroupMultipleMediaTypesCriteria
 import org.openapitools.model.CatalogsProductGroupMultipleStringCriteria
 import org.openapitools.model.CatalogsProductGroupMultipleStringListCriteria
@@ -19,6 +20,7 @@ import org.openapitools.model.GoogleProductCategory4Filter
 import org.openapitools.model.GoogleProductCategory5Filter
 import org.openapitools.model.GoogleProductCategory6Filter
 import org.openapitools.model.MediaTypeFilter
+import org.openapitools.model.TitleKeywordsFilter
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -46,6 +48,7 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param GOOGLE_PRODUCT_CATEGORY_1 
  * @param GOOGLE_PRODUCT_CATEGORY_0 
  * @param MEDIA_TYPE 
+ * @param TITLE_KEYWORDS 
  */
 data class CatalogsCreativeAssetsProductGroupFilterKeys(
 
@@ -55,23 +58,23 @@ data class CatalogsCreativeAssetsProductGroupFilterKeys(
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("CUSTOM_LABEL_0", required = true) val CUSTOM_LABEL_0: CatalogsProductGroupMultipleStringCriteria,
+    @get:JsonProperty("CUSTOM_LABEL_0", required = true) val CUSTOM_LABEL_0: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("CUSTOM_LABEL_1", required = true) val CUSTOM_LABEL_1: CatalogsProductGroupMultipleStringCriteria,
+    @get:JsonProperty("CUSTOM_LABEL_1", required = true) val CUSTOM_LABEL_1: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("CUSTOM_LABEL_2", required = true) val CUSTOM_LABEL_2: CatalogsProductGroupMultipleStringCriteria,
+    @get:JsonProperty("CUSTOM_LABEL_2", required = true) val CUSTOM_LABEL_2: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("CUSTOM_LABEL_3", required = true) val CUSTOM_LABEL_3: CatalogsProductGroupMultipleStringCriteria,
+    @get:JsonProperty("CUSTOM_LABEL_3", required = true) val CUSTOM_LABEL_3: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("CUSTOM_LABEL_4", required = true) val CUSTOM_LABEL_4: CatalogsProductGroupMultipleStringCriteria,
+    @get:JsonProperty("CUSTOM_LABEL_4", required = true) val CUSTOM_LABEL_4: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
@@ -103,7 +106,11 @@ data class CatalogsCreativeAssetsProductGroupFilterKeys(
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("MEDIA_TYPE", required = true) val MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria
+    @get:JsonProperty("MEDIA_TYPE", required = true) val MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria,
+
+    @field:Valid
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("TITLE_KEYWORDS", required = true) val TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria
 ) {
 
 }

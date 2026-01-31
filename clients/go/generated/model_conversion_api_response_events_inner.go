@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,10 +22,10 @@ var _ MappedNullable = &ConversionApiResponseEventsInner{}
 
 // ConversionApiResponseEventsInner struct for ConversionApiResponseEventsInner
 type ConversionApiResponseEventsInner struct {
-	// Whether the event was processed successfully.
-	Status string `json:"status"`
 	// Error message containing more information about why the event failed to be processed.
 	ErrorMessage NullableString `json:"error_message,omitempty"`
+	// Whether the event was processed successfully.
+	Status string `json:"status"`
 	// Warning messages about any fields in the event which are not standard. These are not critical to event processing.
 	WarningMessage NullableString `json:"warning_message,omitempty"`
 }
@@ -48,30 +48,6 @@ func NewConversionApiResponseEventsInner(status string) *ConversionApiResponseEv
 func NewConversionApiResponseEventsInnerWithDefaults() *ConversionApiResponseEventsInner {
 	this := ConversionApiResponseEventsInner{}
 	return &this
-}
-
-// GetStatus returns the Status field value
-func (o *ConversionApiResponseEventsInner) GetStatus() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value
-// and a boolean to check if the value has been set.
-func (o *ConversionApiResponseEventsInner) GetStatusOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Status, true
-}
-
-// SetStatus sets field value
-func (o *ConversionApiResponseEventsInner) SetStatus(v string) {
-	o.Status = v
 }
 
 // GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -114,6 +90,30 @@ func (o *ConversionApiResponseEventsInner) SetErrorMessageNil() {
 // UnsetErrorMessage ensures that no value is present for ErrorMessage, not even an explicit nil
 func (o *ConversionApiResponseEventsInner) UnsetErrorMessage() {
 	o.ErrorMessage.Unset()
+}
+
+// GetStatus returns the Status field value
+func (o *ConversionApiResponseEventsInner) GetStatus() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value
+// and a boolean to check if the value has been set.
+func (o *ConversionApiResponseEventsInner) GetStatusOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Status, true
+}
+
+// SetStatus sets field value
+func (o *ConversionApiResponseEventsInner) SetStatus(v string) {
+	o.Status = v
 }
 
 // GetWarningMessage returns the WarningMessage field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -168,10 +168,10 @@ func (o ConversionApiResponseEventsInner) MarshalJSON() ([]byte, error) {
 
 func (o ConversionApiResponseEventsInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["status"] = o.Status
 	if o.ErrorMessage.IsSet() {
 		toSerialize["error_message"] = o.ErrorMessage.Get()
 	}
+	toSerialize["status"] = o.Status
 	if o.WarningMessage.IsSet() {
 		toSerialize["warning_message"] = o.WarningMessage.Get()
 	}

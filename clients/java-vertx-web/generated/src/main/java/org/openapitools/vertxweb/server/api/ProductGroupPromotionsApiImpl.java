@@ -4,10 +4,12 @@ import org.openapitools.vertxweb.server.model.Error;
 import org.openapitools.vertxweb.server.model.Granularity;
 import java.time.LocalDate;
 import org.openapitools.vertxweb.server.model.ProductGroupAnalyticsResponseInner;
+import org.openapitools.vertxweb.server.model.ProductGroupPromotion;
 import org.openapitools.vertxweb.server.model.ProductGroupPromotionCreateRequest;
 import org.openapitools.vertxweb.server.model.ProductGroupPromotionResponse;
 import org.openapitools.vertxweb.server.model.ProductGroupPromotionUpdateRequest;
 import org.openapitools.vertxweb.server.model.ProductGroupPromotionsList200Response;
+import org.openapitools.vertxweb.server.model.ReportingTimeZone;
 
 import org.openapitools.vertxweb.server.ApiResponse;
 
@@ -25,7 +27,7 @@ public class ProductGroupPromotionsApiImpl implements ProductGroupPromotionsApi 
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<ProductGroupPromotionResponse>> productGroupPromotionsGet(String adAccountId, String productGroupPromotionId) {
+    public Future<ApiResponse<ProductGroupPromotion>> productGroupPromotionsGet(String adAccountId, String productGroupPromotionId) {
         return Future.failedFuture(new HttpException(501));
     }
 
@@ -37,7 +39,7 @@ public class ProductGroupPromotionsApiImpl implements ProductGroupPromotionsApi 
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<List<ProductGroupAnalyticsResponseInner>>> productGroupsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> productGroupIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime) {
+    public Future<ApiResponse<List<ProductGroupAnalyticsResponseInner>>> productGroupsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> productGroupIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone) {
         return Future.failedFuture(new HttpException(501));
     }
 

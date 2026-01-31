@@ -5,13 +5,13 @@
 
 
 char* auth_respond_invites_body_invites_inner_action_inner_ToString(pinterest_rest_api_auth_respond_invites_body_invites_inner_action_INNER_e inner) {
-    char *innerArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "PROFILE_PUBLISHER" };
+    char *innerArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "FINANCE_EDIT", "FINANCE_VIEW", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "CATALOGS_VIEWER", "PROFILE_PUBLISHER", "CONSUMER_USER" };
     return innerArray[inner - 1];
 }
 
 pinterest_rest_api_auth_respond_invites_body_invites_inner_action_INNER_e auth_respond_invites_body_invites_inner_action_inner_FromString(char* inner) {
     int stringToReturn = 0;
-    char *innerArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "PROFILE_PUBLISHER" };
+    char *innerArray[] =  { "NULL", "ADMIN", "ANALYST", "FINANCE_MANAGER", "FINANCE_EDIT", "FINANCE_VIEW", "AUDIENCE_MANAGER", "CAMPAIGN_MANAGER", "CATALOGS_MANAGER", "CATALOGS_VIEWER", "PROFILE_PUBLISHER", "CONSUMER_USER" };
     size_t sizeofArray = sizeof(innerArray) / sizeof(innerArray[0]);
     while(stringToReturn < sizeofArray) {
         if(strcmp(inner, innerArray[stringToReturn]) == 0) {

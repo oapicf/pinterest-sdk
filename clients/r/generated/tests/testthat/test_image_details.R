@@ -5,13 +5,6 @@ context("Test ImageDetails")
 
 model_instance <- ImageDetails$new()
 
-test_that("width", {
-  # tests for the property `width` (integer)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`width`, "EXPECTED_RESULT")
-})
-
 test_that("height", {
   # tests for the property `height` (integer)
 
@@ -24,4 +17,11 @@ test_that("url", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`url`, "EXPECTED_RESULT")
+})
+
+test_that("width", {
+  # tests for the property `width` (integer)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`width`, "EXPECTED_RESULT")
 })

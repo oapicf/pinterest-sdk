@@ -14,14 +14,14 @@ import org.openapitools.model.AudienceInsightType;
 class AudienceInsightsResponse {
     /* Category interest distribution */
     List<AudienceCategory> categories = new ArrayList<>()
-    
-    AudienceDemographics demographics
-    
-    AudienceInsightType type = AudienceInsightType.YOUR_TOTAL_AUDIENCE
     /* Generation date */
     String date
+    
+    AudienceDemographics demographics
     /* Population count. */
     Integer size
     /* Indicates whether the audience size has been rounded up to the next highest upper boundary. */
     Boolean sizeIsUpperBound
+    
+    AudienceInsightType type = AudienceInsightType.YOUR_TOTAL_AUDIENCE
 }

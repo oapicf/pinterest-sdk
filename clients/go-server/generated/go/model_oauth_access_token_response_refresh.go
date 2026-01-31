@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,24 +17,33 @@ package openapi
 // OauthAccessTokenResponseRefresh - A successful OAuth access token response for the refresh token flow.
 type OauthAccessTokenResponseRefresh struct {
 
-	ResponseType string `json:"response_type,omitempty"`
-
 	AccessToken string `json:"access_token"`
-
-	TokenType string `json:"token_type"`
 
 	ExpiresIn int32 `json:"expires_in"`
 
+	ResponseType string `json:"response_type,omitempty"`
+
 	Scope string `json:"scope"`
+
+	TokenType string `json:"token_type"`
+
+	RefreshToken string `json:"refresh_token"`
+
+	RefreshTokenExpiresAt int32 `json:"refresh_token_expires_at"`
+
+	RefreshTokenExpiresIn int32 `json:"refresh_token_expires_in"`
 }
 
 // AssertOauthAccessTokenResponseRefreshRequired checks if the required fields are not zero-ed
 func AssertOauthAccessTokenResponseRefreshRequired(obj OauthAccessTokenResponseRefresh) error {
 	elements := map[string]interface{}{
 		"access_token": obj.AccessToken,
-		"token_type": obj.TokenType,
 		"expires_in": obj.ExpiresIn,
 		"scope": obj.Scope,
+		"token_type": obj.TokenType,
+		"refresh_token": obj.RefreshToken,
+		"refresh_token_expires_at": obj.RefreshTokenExpiresAt,
+		"refresh_token_expires_in": obj.RefreshTokenExpiresIn,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

@@ -73,14 +73,14 @@ private class OASAnalyticsMetricsResponseTest {
     private static void maintainRenamedProperties() {
         OASAnalyticsMetricsResponse analyticsMetricsResponse = new OASAnalyticsMetricsResponse();
         Map<String, String> x-property-mappings = analyticsMetricsResponse.getx-property-mappings();
-        System.assertEquals('summaryMetrics', x-property-mappings.get('summary_metrics'));
         System.assertEquals('dailyMetrics', x-property-mappings.get('daily_metrics'));
+        System.assertEquals('summaryMetrics', x-property-mappings.get('summary_metrics'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASAnalyticsMetricsResponse analyticsMetricsResponse = new OASAnalyticsMetricsResponse();
-        System.assertEquals(new Map<String, Double>(), analyticsMetricsResponse.summaryMetrics);
         System.assertEquals(new List<OASAnalyticsDailyMetrics>(), analyticsMetricsResponse.dailyMetrics);
+        System.assertEquals(new Map<String, Double>(), analyticsMetricsResponse.summaryMetrics);
     }
 }

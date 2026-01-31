@@ -83,7 +83,9 @@ cJSON *catalogs_creative_assets_item_error_response_convertToJSON(catalogs_creat
 
 
     // catalogs_creative_assets_item_error_response->errors
-    if(catalogs_creative_assets_item_error_response->errors) {
+    if (!catalogs_creative_assets_item_error_response->errors) {
+        goto fail;
+    }
     cJSON *errors = cJSON_AddArrayToObject(item, "errors");
     if(errors == NULL) {
     goto fail; //nonprimitive container
@@ -97,7 +99,6 @@ cJSON *catalogs_creative_assets_item_error_response_convertToJSON(catalogs_creat
     goto fail;
     }
     cJSON_AddItemToArray(errors, itemLocal);
-    }
     }
     }
 
@@ -148,7 +149,11 @@ catalogs_creative_assets_item_error_response_t *catalogs_creative_assets_item_er
     if (cJSON_IsNull(errors)) {
         errors = NULL;
     }
-    if (errors) { 
+    if (!errors) {
+        goto end;
+    }
+
+    
     cJSON *errors_local_nonprimitive = NULL;
     if(!cJSON_IsArray(errors)){
         goto end; //nonprimitive container
@@ -165,13 +170,12 @@ catalogs_creative_assets_item_error_response_t *catalogs_creative_assets_item_er
 
         list_addElement(errorsList, errorsItem);
     }
-    }
 
 
     catalogs_creative_assets_item_error_response_local_var = catalogs_creative_assets_item_error_response_create_internal (
         catalog_type_local_nonprim,
         creative_assets_id && !cJSON_IsNull(creative_assets_id) ? strdup(creative_assets_id->valuestring) : NULL,
-        errors ? errorsList : NULL
+        errorsList
         );
 
     return catalogs_creative_assets_item_error_response_local_var;

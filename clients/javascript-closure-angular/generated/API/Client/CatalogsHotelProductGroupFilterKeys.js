@@ -24,31 +24,31 @@ API.Client.CatalogsHotelProductGroupFilterKeys.prototype.HOTEL_ID;
 API.Client.CatalogsHotelProductGroupFilterKeys.prototype.BRAND;
 
 /**
- * @type {!API.Client.CatalogsProductGroupMultipleStringCriteria}
+ * @type {!API.Client.CatalogsProductGroupFilterOperatorTypeCriteria}
  * @export
  */
 API.Client.CatalogsHotelProductGroupFilterKeys.prototype.cUSTOMLABEL0;
 
 /**
- * @type {!API.Client.CatalogsProductGroupMultipleStringCriteria}
+ * @type {!API.Client.CatalogsProductGroupFilterOperatorTypeCriteria}
  * @export
  */
 API.Client.CatalogsHotelProductGroupFilterKeys.prototype.cUSTOMLABEL1;
 
 /**
- * @type {!API.Client.CatalogsProductGroupMultipleStringCriteria}
+ * @type {!API.Client.CatalogsProductGroupFilterOperatorTypeCriteria}
  * @export
  */
 API.Client.CatalogsHotelProductGroupFilterKeys.prototype.cUSTOMLABEL2;
 
 /**
- * @type {!API.Client.CatalogsProductGroupMultipleStringCriteria}
+ * @type {!API.Client.CatalogsProductGroupFilterOperatorTypeCriteria}
  * @export
  */
 API.Client.CatalogsHotelProductGroupFilterKeys.prototype.cUSTOMLABEL3;
 
 /**
- * @type {!API.Client.CatalogsProductGroupMultipleStringCriteria}
+ * @type {!API.Client.CatalogsProductGroupFilterOperatorTypeCriteria}
  * @export
  */
 API.Client.CatalogsHotelProductGroupFilterKeys.prototype.cUSTOMLABEL4;
@@ -58,4 +58,10 @@ API.Client.CatalogsHotelProductGroupFilterKeys.prototype.cUSTOMLABEL4;
  * @export
  */
 API.Client.CatalogsHotelProductGroupFilterKeys.prototype.COUNTRY;
+
+/**
+ * @type {!API.Client.CatalogsProductGroupMultipleStringCriteria}
+ * @export
+ */
+API.Client.CatalogsHotelProductGroupFilterKeys.prototype.TITLE_KEYWORDS;
 

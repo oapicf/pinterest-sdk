@@ -3,6 +3,8 @@ package org.openapitools.server.api.verticle
 import org.openapitools.server.api.model.AdsCreditRedeemRequest
 import org.openapitools.server.api.model.AdsCreditRedeemResponse
 import org.openapitools.server.api.model.AdsCreditsDiscountsGet200Response
+import org.openapitools.server.api.model.BillingInvoiceDownloadResponse
+import org.openapitools.server.api.model.BillingInvoicesGet200Response
 import org.openapitools.server.api.model.BillingProfilesGet200Response
 import org.openapitools.server.api.model.Error
 import org.openapitools.server.api.model.SSIOAccountResponse
@@ -35,6 +37,12 @@ interface BillingApi  {
     /* adsCreditsDiscountsGet
      * Get ads credit discounts */
     suspend fun adsCreditsDiscountsGet(adAccountId:kotlin.String?,bookmark:kotlin.String?,pageSize:kotlin.Int?,context:OperationRequest):Response<AdsCreditsDiscountsGet200Response>
+    /* billingInvoiceDownloadGet
+     * Get download url for a billing invoice */
+    suspend fun billingInvoiceDownloadGet(adAccountId:kotlin.String?,billingInvoiceId:kotlin.String?,context:OperationRequest):Response<BillingInvoiceDownloadResponse>
+    /* billingInvoicesGet
+     * Get billing invoices */
+    suspend fun billingInvoicesGet(adAccountId:kotlin.String?,bookmark:kotlin.String?,pageSize:kotlin.Int?,sort:kotlin.String?,order:kotlin.String?,status:kotlin.String?,documentType:kotlin.String?,startDueDate:java.time.LocalDate?,endDueDate:java.time.LocalDate?,context:OperationRequest):Response<BillingInvoicesGet200Response>
     /* billingProfilesGet
      * Get billing profiles */
     suspend fun billingProfilesGet(adAccountId:kotlin.String?,isActive:kotlin.Boolean?,bookmark:kotlin.String?,pageSize:kotlin.Int?,context:OperationRequest):Response<BillingProfilesGet200Response>

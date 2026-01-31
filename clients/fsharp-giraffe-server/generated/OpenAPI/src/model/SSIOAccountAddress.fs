@@ -9,9 +9,9 @@ module SSIOAccountAddress =
 
 
   type SSIOAccountAddress = {
-    Display : string;
-    Purpose : string;
     AddressId : string;
+    Display : string;
     OrderLegalEntity : string;
+    Purpose : string;
   }
   //#endregion

@@ -17,9 +17,10 @@ module CatalogsRetailBatchRequest =
   //#endregion
 
   type CatalogsRetailBatchRequest = {
+    CatalogId : string;
     CatalogType : CatalogTypeEnum;
     Country : Country;
-    Language : LanguageEnum;
     Items : CatalogsRetailBatchRequestItemsInner[];
+    Language : LanguageEnum;
   }
   //#endregion

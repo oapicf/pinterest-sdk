@@ -6,8 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.CatalogsCreativeAssetsAttributes
 import org.openapitools.model.CatalogsType
-import org.openapitools.model.ItemResponseAnyOf
-import org.openapitools.model.ItemResponseAnyOf1
+import org.openapitools.model.ItemResponseOneOf
+import org.openapitools.model.ItemResponseOneOf1
 import org.openapitools.model.ItemValidationEvent
 import org.openapitools.model.Pin
 import javax.validation.constraints.DecimalMax
@@ -22,20 +22,28 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
- * Object describing an item record
+ * Object describing an item record or error
  * @param catalogType 
+ * @param errors Array with the errors for the item id requested
+ * @param attributes 
  * @param itemId The catalog item id in the merchant namespace
  * @param pins The pins mapped to the item
- * @param attributes 
  * @param hotelId The catalog hotel id in the merchant namespace
  * @param creativeAssetsId The catalog creative assets id in the merchant namespace
- * @param errors Array with the errors for the item id requested
  */
 data class ItemResponse(
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsType,
+
+    @field:Valid
+    @Schema(example = "null", required = true, description = "Array with the errors for the item id requested")
+    @get:JsonProperty("errors", required = true) val errors: kotlin.collections.List<ItemValidationEvent>,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("attributes") val attributes: CatalogsCreativeAssetsAttributes? = null,
 
     @Schema(example = "DS0294-M", description = "The catalog item id in the merchant namespace")
     @get:JsonProperty("item_id") val itemId: kotlin.String? = null,
@@ -45,19 +53,11 @@ data class ItemResponse(
     @Schema(example = "null", description = "The pins mapped to the item")
     @get:JsonProperty("pins") val pins: kotlin.collections.List<Pin>? = null,
 
-    @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("attributes") val attributes: CatalogsCreativeAssetsAttributes? = null,
-
     @Schema(example = "DS0294-M", description = "The catalog hotel id in the merchant namespace")
     @get:JsonProperty("hotel_id") val hotelId: kotlin.String? = null,
 
     @Schema(example = "DS0294-M", description = "The catalog creative assets id in the merchant namespace")
-    @get:JsonProperty("creative_assets_id") val creativeAssetsId: kotlin.String? = null,
-
-    @field:Valid
-    @Schema(example = "null", description = "Array with the errors for the item id requested")
-    @get:JsonProperty("errors") val errors: kotlin.collections.List<ItemValidationEvent>? = null
+    @get:JsonProperty("creative_assets_id") val creativeAssetsId: kotlin.String? = null
 ) {
 
 }

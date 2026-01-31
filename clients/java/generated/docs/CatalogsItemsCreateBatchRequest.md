@@ -9,9 +9,9 @@ Request object to create catalogs items
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**country** | **Country** |  |  |
+|**items** | [**List&lt;ItemCreateBatchRecord&gt;**](ItemCreateBatchRecord.md) | Array with catalogs items |  |
 |**language** | [**LanguageEnum**](#LanguageEnum) | We recommend using the CatalogsLocale values. |  |
 |**operation** | **BatchOperation** |  |  |
-|**items** | [**List&lt;ItemCreateBatchRecord&gt;**](ItemCreateBatchRecord.md) | Array with catalogs items |  |
 
 
 

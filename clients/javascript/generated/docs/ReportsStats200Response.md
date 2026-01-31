@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[CatalogsReportStats]**](CatalogsReportStats.md) |  | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[CatalogsReportStats]**](CatalogsReportStats.md) |  | 
 
 

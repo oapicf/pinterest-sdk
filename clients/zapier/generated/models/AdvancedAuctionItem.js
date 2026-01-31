@@ -8,14 +8,14 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
+                key: `${keyPrefix}country`,
+                ...Country.fields(`${keyPrefix}country`, isInput),
+            },
+            {
                 key: `${keyPrefix}item_id`,
                 label: `The catalog retail item id in the merchant namespace - [${labelPrefix}item_id]`,
                 required: true,
                 type: 'string',
-            },
-            {
-                key: `${keyPrefix}country`,
-                ...Country.fields(`${keyPrefix}country`, isInput),
             },
             {
                 key: `${keyPrefix}language`,
@@ -27,8 +27,8 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'item_id': bundle.inputData?.[`${keyPrefix}item_id`],
             'country': bundle.inputData?.[`${keyPrefix}country`],
+            'item_id': bundle.inputData?.[`${keyPrefix}item_id`],
             'language': bundle.inputData?.[`${keyPrefix}language`],
             'bid_options': utils.removeIfEmpty(AdvancedAuctionBidOptions.mapping(bundle, `${keyPrefix}bid_options`)),
         }

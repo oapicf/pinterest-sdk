@@ -1,22 +1,24 @@
 #' Create a new TargetingSpec
 #'
 #' @description
-#' Ad group targeting specification defining the ad group target audience. For example, `{\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"AGE_BUCKET\":[\"25-34\"]}`
+#' Ad group targeting specification defining the ad group target audience. For example, `{\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"MINIMUM_AGE\":\"18\", \"MAXIMUM_AGE\":\"65+\"}`
 #'
 #' @docType class
 #' @title TargetingSpec
 #' @description TargetingSpec Class
 #' @format An \code{R6Class} generator object
-#' @field AGE_BUCKET Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted. list(character) [optional]
-#' @field APPTYPE Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted. list(character) [optional]
+#' @field AGE_BUCKET **Legacy field.** Predefined age ranges. We recommend using MINIMUM_AGE and MAXIMUM_AGE instead for more flexible targeting. Cannot be combined with MINIMUM_AGE/MAXIMUM_AGE. If neither AGE_BUCKET nor MINIMUM_AGE/MAXIMUM_AGE are specified, all ages will be targeted. list(\link{TargetingSpecAgeBucket}) [optional]
+#' @field APPTYPE Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted. list(\link{TargetingSpecAppType}) [optional]
 #' @field AUDIENCE_EXCLUDE Excluded customer list IDs. Used to drive new customer acquisition goals. For example: [\"2542620905475\"]. Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_EXCLUDE field is missing, the default behavior in terms of ad delivery is that **No users will be excluded**. list(character) [optional]
 #' @field AUDIENCE_INCLUDE Targeted customer list IDs. For example: [\"2542620905473\"]. Audience lists need to have at least 100 people with Pinterest accounts in them Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_INCLUDE field is missing, the default behavior in terms of ad delivery is that **All users will be included**. list(character) [optional]
-#' @field GENDER Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**. list(character) [optional]
+#' @field GENDER Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**. list(\link{TargetingSpecGender}) [optional]
 #' @field GEO Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a> or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both. At least one of LOCATION or GEO must be specified. If the GEO field is missing, then only LOCATION values will be targeted (see LOCATION field below). list(character) [optional]
 #' @field INTEREST Array of interest object IDs. If the INTEREST field is missing, the default behavior in terms of ad delivery is that **All interests will be targeted**. list(character) [optional]
-#' @field LOCALE 24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be targeted, only english non-sublanguage will be targeted**. list(character) [optional]
-#' @field LOCATION 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, click here. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above). list(character) [optional]
-#' @field SHOPPING_RETARGETING Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting list(\link{TargetingSpecSHOPPINGRETARGETING}) [optional]
+#' @field LOCALE 24 ISO 639-1 two-letter language codes. If the LOCALE field is not included in the request, all languages are targeted. list(character) [optional]
+#' @field LOCATION 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a>. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above). list(character) [optional]
+#' @field MAXIMUM_AGE Maximum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\", \"65+\". Must be used together with `MINIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted. character [optional]
+#' @field MINIMUM_AGE Minimum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\". Note: 65+ is not allowed for minimum age. Must be used together with `MAXIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted. character [optional]
+#' @field SHOPPING_RETARGETING Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting list(\link{TargetingSpecShoppingRetargeting}) [optional]
 #' @field TARGETING_STRATEGY  list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -33,33 +35,37 @@ TargetingSpec <- R6::R6Class(
     `INTEREST` = NULL,
     `LOCALE` = NULL,
     `LOCATION` = NULL,
+    `MAXIMUM_AGE` = NULL,
+    `MINIMUM_AGE` = NULL,
     `SHOPPING_RETARGETING` = NULL,
     `TARGETING_STRATEGY` = NULL,
 
     #' @description
     #' Initialize a new TargetingSpec class.
     #'
-    #' @param AGE_BUCKET Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted.
+    #' @param AGE_BUCKET **Legacy field.** Predefined age ranges. We recommend using MINIMUM_AGE and MAXIMUM_AGE instead for more flexible targeting. Cannot be combined with MINIMUM_AGE/MAXIMUM_AGE. If neither AGE_BUCKET nor MINIMUM_AGE/MAXIMUM_AGE are specified, all ages will be targeted.
     #' @param APPTYPE Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted.
     #' @param AUDIENCE_EXCLUDE Excluded customer list IDs. Used to drive new customer acquisition goals. For example: [\"2542620905475\"]. Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_EXCLUDE field is missing, the default behavior in terms of ad delivery is that **No users will be excluded**.
     #' @param AUDIENCE_INCLUDE Targeted customer list IDs. For example: [\"2542620905473\"]. Audience lists need to have at least 100 people with Pinterest accounts in them Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_INCLUDE field is missing, the default behavior in terms of ad delivery is that **All users will be included**.
     #' @param GENDER Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.
     #' @param GEO Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a> or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both. At least one of LOCATION or GEO must be specified. If the GEO field is missing, then only LOCATION values will be targeted (see LOCATION field below).
     #' @param INTEREST Array of interest object IDs. If the INTEREST field is missing, the default behavior in terms of ad delivery is that **All interests will be targeted**.
-    #' @param LOCALE 24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be targeted, only english non-sublanguage will be targeted**.
-    #' @param LOCATION 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, click here. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
+    #' @param LOCALE 24 ISO 639-1 two-letter language codes. If the LOCALE field is not included in the request, all languages are targeted.
+    #' @param LOCATION 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a>. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
+    #' @param MAXIMUM_AGE Maximum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\", \"65+\". Must be used together with `MINIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
+    #' @param MINIMUM_AGE Minimum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\". Note: 65+ is not allowed for minimum age. Must be used together with `MAXIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
     #' @param SHOPPING_RETARGETING Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting
     #' @param TARGETING_STRATEGY 
     #' @param ... Other optional arguments.
-    initialize = function(`AGE_BUCKET` = NULL, `APPTYPE` = NULL, `AUDIENCE_EXCLUDE` = NULL, `AUDIENCE_INCLUDE` = NULL, `GENDER` = NULL, `GEO` = NULL, `INTEREST` = NULL, `LOCALE` = NULL, `LOCATION` = NULL, `SHOPPING_RETARGETING` = NULL, `TARGETING_STRATEGY` = NULL, ...) {
+    initialize = function(`AGE_BUCKET` = NULL, `APPTYPE` = NULL, `AUDIENCE_EXCLUDE` = NULL, `AUDIENCE_INCLUDE` = NULL, `GENDER` = NULL, `GEO` = NULL, `INTEREST` = NULL, `LOCALE` = NULL, `LOCATION` = NULL, `MAXIMUM_AGE` = NULL, `MINIMUM_AGE` = NULL, `SHOPPING_RETARGETING` = NULL, `TARGETING_STRATEGY` = NULL, ...) {
       if (!is.null(`AGE_BUCKET`)) {
         stopifnot(is.vector(`AGE_BUCKET`), length(`AGE_BUCKET`) != 0)
-        sapply(`AGE_BUCKET`, function(x) stopifnot(is.character(x)))
+        sapply(`AGE_BUCKET`, function(x) stopifnot(R6::is.R6(x)))
         self$`AGE_BUCKET` <- `AGE_BUCKET`
       }
       if (!is.null(`APPTYPE`)) {
         stopifnot(is.vector(`APPTYPE`), length(`APPTYPE`) != 0)
-        sapply(`APPTYPE`, function(x) stopifnot(is.character(x)))
+        sapply(`APPTYPE`, function(x) stopifnot(R6::is.R6(x)))
         self$`APPTYPE` <- `APPTYPE`
       }
       if (!is.null(`AUDIENCE_EXCLUDE`)) {
@@ -74,7 +80,7 @@ TargetingSpec <- R6::R6Class(
       }
       if (!is.null(`GENDER`)) {
         stopifnot(is.vector(`GENDER`), length(`GENDER`) != 0)
-        sapply(`GENDER`, function(x) stopifnot(is.character(x)))
+        sapply(`GENDER`, function(x) stopifnot(R6::is.R6(x)))
         self$`GENDER` <- `GENDER`
       }
       if (!is.null(`GEO`)) {
@@ -96,6 +102,18 @@ TargetingSpec <- R6::R6Class(
         stopifnot(is.vector(`LOCATION`), length(`LOCATION`) != 0)
         sapply(`LOCATION`, function(x) stopifnot(is.character(x)))
         self$`LOCATION` <- `LOCATION`
+      }
+      if (!is.null(`MAXIMUM_AGE`)) {
+        if (!(is.character(`MAXIMUM_AGE`) && length(`MAXIMUM_AGE`) == 1)) {
+          stop(paste("Error! Invalid data for `MAXIMUM_AGE`. Must be a string:", `MAXIMUM_AGE`))
+        }
+        self$`MAXIMUM_AGE` <- `MAXIMUM_AGE`
+      }
+      if (!is.null(`MINIMUM_AGE`)) {
+        if (!(is.character(`MINIMUM_AGE`) && length(`MINIMUM_AGE`) == 1)) {
+          stop(paste("Error! Invalid data for `MINIMUM_AGE`. Must be a string:", `MINIMUM_AGE`))
+        }
+        self$`MINIMUM_AGE` <- `MINIMUM_AGE`
       }
       if (!is.null(`SHOPPING_RETARGETING`)) {
         stopifnot(is.vector(`SHOPPING_RETARGETING`), length(`SHOPPING_RETARGETING`) != 0)
@@ -142,11 +160,11 @@ TargetingSpec <- R6::R6Class(
       TargetingSpecObject <- list()
       if (!is.null(self$`AGE_BUCKET`)) {
         TargetingSpecObject[["AGE_BUCKET"]] <-
-          self$`AGE_BUCKET`
+          lapply(self$`AGE_BUCKET`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`APPTYPE`)) {
         TargetingSpecObject[["APPTYPE"]] <-
-          self$`APPTYPE`
+          lapply(self$`APPTYPE`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`AUDIENCE_EXCLUDE`)) {
         TargetingSpecObject[["AUDIENCE_EXCLUDE"]] <-
@@ -158,7 +176,7 @@ TargetingSpec <- R6::R6Class(
       }
       if (!is.null(self$`GENDER`)) {
         TargetingSpecObject[["GENDER"]] <-
-          self$`GENDER`
+          lapply(self$`GENDER`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`GEO`)) {
         TargetingSpecObject[["GEO"]] <-
@@ -175,6 +193,14 @@ TargetingSpec <- R6::R6Class(
       if (!is.null(self$`LOCATION`)) {
         TargetingSpecObject[["LOCATION"]] <-
           self$`LOCATION`
+      }
+      if (!is.null(self$`MAXIMUM_AGE`)) {
+        TargetingSpecObject[["MAXIMUM_AGE"]] <-
+          self$`MAXIMUM_AGE`
+      }
+      if (!is.null(self$`MINIMUM_AGE`)) {
+        TargetingSpecObject[["MINIMUM_AGE"]] <-
+          self$`MINIMUM_AGE`
       }
       if (!is.null(self$`SHOPPING_RETARGETING`)) {
         TargetingSpecObject[["SHOPPING_RETARGETING"]] <-
@@ -195,10 +221,10 @@ TargetingSpec <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`AGE_BUCKET`)) {
-        self$`AGE_BUCKET` <- ApiClient$new()$deserializeObj(this_object$`AGE_BUCKET`, "array[character]", loadNamespace("openapi"))
+        self$`AGE_BUCKET` <- ApiClient$new()$deserializeObj(this_object$`AGE_BUCKET`, "array[TargetingSpecAgeBucket]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`APPTYPE`)) {
-        self$`APPTYPE` <- ApiClient$new()$deserializeObj(this_object$`APPTYPE`, "array[character]", loadNamespace("openapi"))
+        self$`APPTYPE` <- ApiClient$new()$deserializeObj(this_object$`APPTYPE`, "array[TargetingSpecAppType]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`AUDIENCE_EXCLUDE`)) {
         self$`AUDIENCE_EXCLUDE` <- ApiClient$new()$deserializeObj(this_object$`AUDIENCE_EXCLUDE`, "array[character]", loadNamespace("openapi"))
@@ -207,7 +233,7 @@ TargetingSpec <- R6::R6Class(
         self$`AUDIENCE_INCLUDE` <- ApiClient$new()$deserializeObj(this_object$`AUDIENCE_INCLUDE`, "array[character]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`GENDER`)) {
-        self$`GENDER` <- ApiClient$new()$deserializeObj(this_object$`GENDER`, "array[character]", loadNamespace("openapi"))
+        self$`GENDER` <- ApiClient$new()$deserializeObj(this_object$`GENDER`, "array[TargetingSpecGender]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`GEO`)) {
         self$`GEO` <- ApiClient$new()$deserializeObj(this_object$`GEO`, "array[character]", loadNamespace("openapi"))
@@ -221,8 +247,14 @@ TargetingSpec <- R6::R6Class(
       if (!is.null(this_object$`LOCATION`)) {
         self$`LOCATION` <- ApiClient$new()$deserializeObj(this_object$`LOCATION`, "array[character]", loadNamespace("openapi"))
       }
+      if (!is.null(this_object$`MAXIMUM_AGE`)) {
+        self$`MAXIMUM_AGE` <- this_object$`MAXIMUM_AGE`
+      }
+      if (!is.null(this_object$`MINIMUM_AGE`)) {
+        self$`MINIMUM_AGE` <- this_object$`MINIMUM_AGE`
+      }
       if (!is.null(this_object$`SHOPPING_RETARGETING`)) {
-        self$`SHOPPING_RETARGETING` <- ApiClient$new()$deserializeObj(this_object$`SHOPPING_RETARGETING`, "array[TargetingSpecSHOPPINGRETARGETING]", loadNamespace("openapi"))
+        self$`SHOPPING_RETARGETING` <- ApiClient$new()$deserializeObj(this_object$`SHOPPING_RETARGETING`, "array[TargetingSpecShoppingRetargeting]", loadNamespace("openapi"))
       }
       if (!is.null(this_object$`TARGETING_STRATEGY`)) {
         self$`TARGETING_STRATEGY` <- ApiClient$new()$deserializeObj(this_object$`TARGETING_STRATEGY`, "array[character]", loadNamespace("openapi"))
@@ -248,16 +280,18 @@ TargetingSpec <- R6::R6Class(
     #' @return the instance of TargetingSpec
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`AGE_BUCKET` <- ApiClient$new()$deserializeObj(this_object$`AGE_BUCKET`, "array[character]", loadNamespace("openapi"))
-      self$`APPTYPE` <- ApiClient$new()$deserializeObj(this_object$`APPTYPE`, "array[character]", loadNamespace("openapi"))
+      self$`AGE_BUCKET` <- ApiClient$new()$deserializeObj(this_object$`AGE_BUCKET`, "array[TargetingSpecAgeBucket]", loadNamespace("openapi"))
+      self$`APPTYPE` <- ApiClient$new()$deserializeObj(this_object$`APPTYPE`, "array[TargetingSpecAppType]", loadNamespace("openapi"))
       self$`AUDIENCE_EXCLUDE` <- ApiClient$new()$deserializeObj(this_object$`AUDIENCE_EXCLUDE`, "array[character]", loadNamespace("openapi"))
       self$`AUDIENCE_INCLUDE` <- ApiClient$new()$deserializeObj(this_object$`AUDIENCE_INCLUDE`, "array[character]", loadNamespace("openapi"))
-      self$`GENDER` <- ApiClient$new()$deserializeObj(this_object$`GENDER`, "array[character]", loadNamespace("openapi"))
+      self$`GENDER` <- ApiClient$new()$deserializeObj(this_object$`GENDER`, "array[TargetingSpecGender]", loadNamespace("openapi"))
       self$`GEO` <- ApiClient$new()$deserializeObj(this_object$`GEO`, "array[character]", loadNamespace("openapi"))
       self$`INTEREST` <- ApiClient$new()$deserializeObj(this_object$`INTEREST`, "array[character]", loadNamespace("openapi"))
       self$`LOCALE` <- ApiClient$new()$deserializeObj(this_object$`LOCALE`, "array[character]", loadNamespace("openapi"))
       self$`LOCATION` <- ApiClient$new()$deserializeObj(this_object$`LOCATION`, "array[character]", loadNamespace("openapi"))
-      self$`SHOPPING_RETARGETING` <- ApiClient$new()$deserializeObj(this_object$`SHOPPING_RETARGETING`, "array[TargetingSpecSHOPPINGRETARGETING]", loadNamespace("openapi"))
+      self$`MAXIMUM_AGE` <- this_object$`MAXIMUM_AGE`
+      self$`MINIMUM_AGE` <- this_object$`MINIMUM_AGE`
+      self$`SHOPPING_RETARGETING` <- ApiClient$new()$deserializeObj(this_object$`SHOPPING_RETARGETING`, "array[TargetingSpecShoppingRetargeting]", loadNamespace("openapi"))
       self$`TARGETING_STRATEGY` <- ApiClient$new()$deserializeObj(this_object$`TARGETING_STRATEGY`, "array[character]", loadNamespace("openapi"))
       self
     },
@@ -283,6 +317,14 @@ TargetingSpec <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      if (!str_detect(self$`MAXIMUM_AGE`, "^\\d+\\+?$")) {
+        return(FALSE)
+      }
+
+      if (!str_detect(self$`MINIMUM_AGE`, "^\\d+$")) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -292,6 +334,14 @@ TargetingSpec <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      if (!str_detect(self$`MAXIMUM_AGE`, "^\\d+\\+?$")) {
+        invalid_fields["MAXIMUM_AGE"] <- "Invalid value for `MAXIMUM_AGE`, must conform to the pattern ^\\d+\\+?$."
+      }
+
+      if (!str_detect(self$`MINIMUM_AGE`, "^\\d+$")) {
+        invalid_fields["MINIMUM_AGE"] <- "Invalid value for `MINIMUM_AGE`, must conform to the pattern ^\\d+$."
+      }
+
       invalid_fields
     },
 

@@ -2,12 +2,12 @@ package models
 
 type ConversionTagCommon struct {
 
-	// Ad account ID.
-	AdAccountId string `json:"ad_account_id,omitempty"`
-
 	// Tag code snippet.
 	CodeSnippet string `json:"code_snippet,omitempty"`
 
+	Configs ConversionTagConfigs `json:"configs,omitempty"`
+
+	// The enhanced match status of the tag
 	EnhancedMatchStatus *EnhancedMatchStatusType `json:"enhanced_match_status,omitempty"`
 
 	// Tag ID.
@@ -17,12 +17,8 @@ type ConversionTagCommon struct {
 	LastFiredTimeMs *float32 `json:"last_fired_time_ms,omitempty"`
 
 	// Conversion tag name.
-	Name string `json:"name,omitempty"`
-
-	Status EntityStatus `json:"status,omitempty"`
+	Name string `json:"name"`
 
 	// Version number.
 	Version string `json:"version,omitempty"`
-
-	Configs ConversionTagConfigs `json:"configs,omitempty"`
 }

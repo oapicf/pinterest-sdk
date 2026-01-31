@@ -20,15 +20,15 @@ typedef struct business_asset_members_get_200_response_t business_asset_members_
 
 
 typedef struct business_asset_members_get_200_response_t {
-    list_t *items; //nonprimitive container
     char *bookmark; // string
+    list_t *items; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
 } business_asset_members_get_200_response_t;
 
 __attribute__((deprecated)) business_asset_members_get_200_response_t *business_asset_members_get_200_response_create(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
 );
 
 void business_asset_members_get_200_response_free(business_asset_members_get_200_response_t *business_asset_members_get_200_response);

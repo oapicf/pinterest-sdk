@@ -5,18 +5,18 @@ context("Test UserSummary")
 
 model_instance <- UserSummary$new()
 
-test_that("username", {
-  # tests for the property `username` (character)
-  # Username
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`username`, "EXPECTED_RESULT")
-})
-
 test_that("type", {
   # tests for the property `type` (character)
   # Always \&quot;user\&quot;
 
   # uncomment below to test the property
   #expect_equal(model.instance$`type`, "EXPECTED_RESULT")
+})
+
+test_that("username", {
+  # tests for the property `username` (character)
+  # Username
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`username`, "EXPECTED_RESULT")
 })

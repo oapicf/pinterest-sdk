@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,13 +20,13 @@ var _ MappedNullable = &HotelProcessingRecord{}
 
 // HotelProcessingRecord Object describing an item processing record
 type HotelProcessingRecord struct {
-	// The catalog hotel id in the merchant namespace
-	HotelId *string `json:"hotel_id,omitempty"`
 	// Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
 	Errors []ItemValidationEvent `json:"errors,omitempty"`
+	// The catalog hotel id in the merchant namespace
+	HotelId *string `json:"hotel_id,omitempty"`
+	Status *ItemProcessingStatus `json:"status,omitempty"`
 	// Array with the validation warnings for the item processing record
 	Warnings []ItemValidationEvent `json:"warnings,omitempty"`
-	Status *ItemProcessingStatus `json:"status,omitempty"`
 }
 
 // NewHotelProcessingRecord instantiates a new HotelProcessingRecord object
@@ -44,38 +44,6 @@ func NewHotelProcessingRecord() *HotelProcessingRecord {
 func NewHotelProcessingRecordWithDefaults() *HotelProcessingRecord {
 	this := HotelProcessingRecord{}
 	return &this
-}
-
-// GetHotelId returns the HotelId field value if set, zero value otherwise.
-func (o *HotelProcessingRecord) GetHotelId() string {
-	if o == nil || IsNil(o.HotelId) {
-		var ret string
-		return ret
-	}
-	return *o.HotelId
-}
-
-// GetHotelIdOk returns a tuple with the HotelId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *HotelProcessingRecord) GetHotelIdOk() (*string, bool) {
-	if o == nil || IsNil(o.HotelId) {
-		return nil, false
-	}
-	return o.HotelId, true
-}
-
-// HasHotelId returns a boolean if a field has been set.
-func (o *HotelProcessingRecord) HasHotelId() bool {
-	if o != nil && !IsNil(o.HotelId) {
-		return true
-	}
-
-	return false
-}
-
-// SetHotelId gets a reference to the given string and assigns it to the HotelId field.
-func (o *HotelProcessingRecord) SetHotelId(v string) {
-	o.HotelId = &v
 }
 
 // GetErrors returns the Errors field value if set, zero value otherwise.
@@ -110,36 +78,36 @@ func (o *HotelProcessingRecord) SetErrors(v []ItemValidationEvent) {
 	o.Errors = v
 }
 
-// GetWarnings returns the Warnings field value if set, zero value otherwise.
-func (o *HotelProcessingRecord) GetWarnings() []ItemValidationEvent {
-	if o == nil || IsNil(o.Warnings) {
-		var ret []ItemValidationEvent
+// GetHotelId returns the HotelId field value if set, zero value otherwise.
+func (o *HotelProcessingRecord) GetHotelId() string {
+	if o == nil || IsNil(o.HotelId) {
+		var ret string
 		return ret
 	}
-	return o.Warnings
+	return *o.HotelId
 }
 
-// GetWarningsOk returns a tuple with the Warnings field value if set, nil otherwise
+// GetHotelIdOk returns a tuple with the HotelId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HotelProcessingRecord) GetWarningsOk() ([]ItemValidationEvent, bool) {
-	if o == nil || IsNil(o.Warnings) {
+func (o *HotelProcessingRecord) GetHotelIdOk() (*string, bool) {
+	if o == nil || IsNil(o.HotelId) {
 		return nil, false
 	}
-	return o.Warnings, true
+	return o.HotelId, true
 }
 
-// HasWarnings returns a boolean if a field has been set.
-func (o *HotelProcessingRecord) HasWarnings() bool {
-	if o != nil && !IsNil(o.Warnings) {
+// HasHotelId returns a boolean if a field has been set.
+func (o *HotelProcessingRecord) HasHotelId() bool {
+	if o != nil && !IsNil(o.HotelId) {
 		return true
 	}
 
 	return false
 }
 
-// SetWarnings gets a reference to the given []ItemValidationEvent and assigns it to the Warnings field.
-func (o *HotelProcessingRecord) SetWarnings(v []ItemValidationEvent) {
-	o.Warnings = v
+// SetHotelId gets a reference to the given string and assigns it to the HotelId field.
+func (o *HotelProcessingRecord) SetHotelId(v string) {
+	o.HotelId = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -174,6 +142,38 @@ func (o *HotelProcessingRecord) SetStatus(v ItemProcessingStatus) {
 	o.Status = &v
 }
 
+// GetWarnings returns the Warnings field value if set, zero value otherwise.
+func (o *HotelProcessingRecord) GetWarnings() []ItemValidationEvent {
+	if o == nil || IsNil(o.Warnings) {
+		var ret []ItemValidationEvent
+		return ret
+	}
+	return o.Warnings
+}
+
+// GetWarningsOk returns a tuple with the Warnings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HotelProcessingRecord) GetWarningsOk() ([]ItemValidationEvent, bool) {
+	if o == nil || IsNil(o.Warnings) {
+		return nil, false
+	}
+	return o.Warnings, true
+}
+
+// HasWarnings returns a boolean if a field has been set.
+func (o *HotelProcessingRecord) HasWarnings() bool {
+	if o != nil && !IsNil(o.Warnings) {
+		return true
+	}
+
+	return false
+}
+
+// SetWarnings gets a reference to the given []ItemValidationEvent and assigns it to the Warnings field.
+func (o *HotelProcessingRecord) SetWarnings(v []ItemValidationEvent) {
+	o.Warnings = v
+}
+
 func (o HotelProcessingRecord) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -184,17 +184,17 @@ func (o HotelProcessingRecord) MarshalJSON() ([]byte, error) {
 
 func (o HotelProcessingRecord) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.HotelId) {
-		toSerialize["hotel_id"] = o.HotelId
-	}
 	if !IsNil(o.Errors) {
 		toSerialize["errors"] = o.Errors
 	}
-	if !IsNil(o.Warnings) {
-		toSerialize["warnings"] = o.Warnings
+	if !IsNil(o.HotelId) {
+		toSerialize["hotel_id"] = o.HotelId
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.Warnings) {
+		toSerialize["warnings"] = o.Warnings
 	}
 	return toSerialize, nil
 }

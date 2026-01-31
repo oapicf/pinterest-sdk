@@ -20,16 +20,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class InviteExceptionResponse  {
   
  /**
-  * Unique identifier of the invite/request.
-  */
-  @ApiModelProperty(example = "383791336903426391", value = "Unique identifier of the invite/request.")
-  private String inviteOrRequestId;
-
- /**
   * Error code associated with the error in performing the action on the invite/request.
   */
   @ApiModelProperty(example = "403", value = "Error code associated with the error in performing the action on the invite/request.")
   private Integer code;
+
+ /**
+  * Unique identifier of the invite/request.
+  */
+  @ApiModelProperty(example = "383791336903426391", value = "Unique identifier of the invite/request.")
+  private String inviteOrRequestId;
 
  /**
   * Error message associated with the error in performing the action on the invite/request.
@@ -42,30 +42,6 @@ public class InviteExceptionResponse  {
   */
   @ApiModelProperty(example = "[\"businessMember0101\",\"business+member@business.com\"]", value = "A list of users' usernames or emails OR a list of partner ids that caused the error.")
   private List<String> usersOrPartnerIds;
- /**
-  * Unique identifier of the invite/request.
-  * @return inviteOrRequestId
-  */
-  @JsonProperty("invite_or_request_id")
- @Pattern(regexp="^\\d+$")  public String getInviteOrRequestId() {
-    return inviteOrRequestId;
-  }
-
-  /**
-   * Sets the <code>inviteOrRequestId</code> property.
-   */
- public void setInviteOrRequestId(String inviteOrRequestId) {
-    this.inviteOrRequestId = inviteOrRequestId;
-  }
-
-  /**
-   * Sets the <code>inviteOrRequestId</code> property.
-   */
-  public InviteExceptionResponse inviteOrRequestId(String inviteOrRequestId) {
-    this.inviteOrRequestId = inviteOrRequestId;
-    return this;
-  }
-
  /**
   * Error code associated with the error in performing the action on the invite/request.
   * @return code
@@ -87,6 +63,30 @@ public class InviteExceptionResponse  {
    */
   public InviteExceptionResponse code(Integer code) {
     this.code = code;
+    return this;
+  }
+
+ /**
+  * Unique identifier of the invite/request.
+  * @return inviteOrRequestId
+  */
+  @JsonProperty("invite_or_request_id")
+ @Pattern(regexp="^\\d+$")  public String getInviteOrRequestId() {
+    return inviteOrRequestId;
+  }
+
+  /**
+   * Sets the <code>inviteOrRequestId</code> property.
+   */
+ public void setInviteOrRequestId(String inviteOrRequestId) {
+    this.inviteOrRequestId = inviteOrRequestId;
+  }
+
+  /**
+   * Sets the <code>inviteOrRequestId</code> property.
+   */
+  public InviteExceptionResponse inviteOrRequestId(String inviteOrRequestId) {
+    this.inviteOrRequestId = inviteOrRequestId;
     return this;
   }
 
@@ -156,15 +156,15 @@ public class InviteExceptionResponse  {
       return false;
     }
     InviteExceptionResponse inviteExceptionResponse = (InviteExceptionResponse) o;
-    return Objects.equals(this.inviteOrRequestId, inviteExceptionResponse.inviteOrRequestId) &&
-        Objects.equals(this.code, inviteExceptionResponse.code) &&
+    return Objects.equals(this.code, inviteExceptionResponse.code) &&
+        Objects.equals(this.inviteOrRequestId, inviteExceptionResponse.inviteOrRequestId) &&
         Objects.equals(this.message, inviteExceptionResponse.message) &&
         Objects.equals(this.usersOrPartnerIds, inviteExceptionResponse.usersOrPartnerIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(inviteOrRequestId, code, message, usersOrPartnerIds);
+    return Objects.hash(code, inviteOrRequestId, message, usersOrPartnerIds);
   }
 
   @Override
@@ -172,8 +172,8 @@ public class InviteExceptionResponse  {
     StringBuilder sb = new StringBuilder();
     sb.append("class InviteExceptionResponse {\n");
     
-    sb.append("    inviteOrRequestId: ").append(toIndentedString(inviteOrRequestId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    inviteOrRequestId: ").append(toIndentedString(inviteOrRequestId)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    usersOrPartnerIds: ").append(toIndentedString(usersOrPartnerIds)).append("\n");
     sb.append("}");

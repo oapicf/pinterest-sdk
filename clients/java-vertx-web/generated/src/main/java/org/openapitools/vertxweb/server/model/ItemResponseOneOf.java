@@ -1,0 +1,146 @@
+package org.openapitools.vertxweb.server.model;
+
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
+import org.openapitools.vertxweb.server.model.CatalogsCreativeAssetsAttributes;
+import org.openapitools.vertxweb.server.model.CatalogsCreativeAssetsItemResponse;
+import org.openapitools.vertxweb.server.model.CatalogsHotelItemResponse;
+import org.openapitools.vertxweb.server.model.CatalogsRetailItemResponse;
+import org.openapitools.vertxweb.server.model.CatalogsType;
+import org.openapitools.vertxweb.server.model.Pin;
+
+/**
+ * Successful item response
+ **/
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ItemResponseOneOf   {
+  
+  private CatalogsType catalogType;
+  private CatalogsCreativeAssetsAttributes attributes;
+  private String itemId;
+  private List<Pin> pins;
+  private String hotelId;
+  private String creativeAssetsId;
+
+  public ItemResponseOneOf () {
+
+  }
+
+  public ItemResponseOneOf (CatalogsType catalogType, CatalogsCreativeAssetsAttributes attributes, String itemId, List<Pin> pins, String hotelId, String creativeAssetsId) {
+    this.catalogType = catalogType;
+    this.attributes = attributes;
+    this.itemId = itemId;
+    this.pins = pins;
+    this.hotelId = hotelId;
+    this.creativeAssetsId = creativeAssetsId;
+  }
+
+    
+  @JsonProperty("catalog_type")
+  public CatalogsType getCatalogType() {
+    return catalogType;
+  }
+  public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
+  }
+
+    
+  @JsonProperty("attributes")
+  public CatalogsCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+  }
+
+    
+  @JsonProperty("item_id")
+  public String getItemId() {
+    return itemId;
+  }
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
+  }
+
+    
+  @JsonProperty("pins")
+  public List<Pin> getPins() {
+    return pins;
+  }
+  public void setPins(List<Pin> pins) {
+    this.pins = pins;
+  }
+
+    
+  @JsonProperty("hotel_id")
+  public String getHotelId() {
+    return hotelId;
+  }
+  public void setHotelId(String hotelId) {
+    this.hotelId = hotelId;
+  }
+
+    
+  @JsonProperty("creative_assets_id")
+  public String getCreativeAssetsId() {
+    return creativeAssetsId;
+  }
+  public void setCreativeAssetsId(String creativeAssetsId) {
+    this.creativeAssetsId = creativeAssetsId;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    ItemResponseOneOf itemResponseOneOf = (ItemResponseOneOf) o;
+    return Objects.equals(catalogType, itemResponseOneOf.catalogType) &&
+        Objects.equals(attributes, itemResponseOneOf.attributes) &&
+        Objects.equals(itemId, itemResponseOneOf.itemId) &&
+        Objects.equals(pins, itemResponseOneOf.pins) &&
+        Objects.equals(hotelId, itemResponseOneOf.hotelId) &&
+        Objects.equals(creativeAssetsId, itemResponseOneOf.creativeAssetsId);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(catalogType, attributes, itemId, pins, hotelId, creativeAssetsId);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class ItemResponseOneOf {\n");
+    
+    sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
+    sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
+    sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
+    sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}

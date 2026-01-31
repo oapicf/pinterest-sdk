@@ -12,7 +12,7 @@ module CatalogsRetailItemErrorResponse =
 
   type CatalogsRetailItemErrorResponse = {
     CatalogType : CatalogsType;
-    ItemId : string;
     Errors : ItemValidationEvent[];
+    ItemId : string;
   }
   //#endregion

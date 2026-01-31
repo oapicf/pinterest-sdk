@@ -5,13 +5,6 @@ context("Test CatalogsReportDistributionStats")
 
 model_instance <- CatalogsReportDistributionStats$new()
 
-test_that("report_type", {
-  # tests for the property `report_type` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`report_type`, "EXPECTED_RESULT")
-})
-
 test_that("catalog_id", {
   # tests for the property `catalog_id` (character)
   # ID of the catalog entity.
@@ -36,6 +29,22 @@ test_that("code_label", {
   #expect_equal(model.instance$`code_label`, "EXPECTED_RESULT")
 })
 
+test_that("ineligible_for_ads", {
+  # tests for the property `ineligible_for_ads` (character)
+  # Indicates if issue makes items ineligible for ads distribution
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ineligible_for_ads`, "EXPECTED_RESULT")
+})
+
+test_that("ineligible_for_organic", {
+  # tests for the property `ineligible_for_organic` (character)
+  # Indicates if issue makes items ineligible for organic distribution
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`ineligible_for_organic`, "EXPECTED_RESULT")
+})
+
 test_that("message", {
   # tests for the property `message` (character)
   # Title message describing the diagnostic issue
@@ -52,18 +61,9 @@ test_that("occurrences", {
   #expect_equal(model.instance$`occurrences`, "EXPECTED_RESULT")
 })
 
-test_that("ineligible_for_ads", {
-  # tests for the property `ineligible_for_ads` (character)
-  # Indicates if issue makes items ineligible for ads distribution
+test_that("report_type", {
+  # tests for the property `report_type` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`ineligible_for_ads`, "EXPECTED_RESULT")
-})
-
-test_that("ineligible_for_organic", {
-  # tests for the property `ineligible_for_organic` (character)
-  # Indicates if issue makes items ineligible for organic distribution
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`ineligible_for_organic`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`report_type`, "EXPECTED_RESULT")
 })

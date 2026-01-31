@@ -8,10 +8,21 @@
  * Do not edit the class manually.
  */
 import { CatalogsHotelProductGroupFilters } from './catalogsHotelProductGroupFilters';
+import { CatalogsHotelProductGroupType } from './catalogsHotelProductGroupType';
 
 
 export interface CatalogsHotelProductGroup { 
+    /**
+     * Catalog id pertaining to the hotel product group.
+     */
+    catalog_id: string;
     catalog_type: CatalogsHotelProductGroup.CatalogTypeEnum;
+    /**
+     * Unix timestamp in seconds of when catalog product group was created.
+     */
+    created_at?: number;
+    description?: string | null;
+    filters: CatalogsHotelProductGroupFilters;
     /**
      * ID of the hotel product group.
      */
@@ -20,20 +31,11 @@ export interface CatalogsHotelProductGroup {
      * Name of hotel product group
      */
     name?: string;
-    description?: string | null;
-    filters: CatalogsHotelProductGroupFilters;
-    /**
-     * Unix timestamp in seconds of when catalog product group was created.
-     */
-    created_at?: number;
+    type: CatalogsHotelProductGroupType;
     /**
      * Unix timestamp in seconds of last time catalog product group was updated.
      */
     updated_at?: number;
-    /**
-     * Catalog id pertaining to the hotel product group.
-     */
-    catalog_id: string;
 }
 export namespace CatalogsHotelProductGroup {
     export const CatalogTypeEnum = {

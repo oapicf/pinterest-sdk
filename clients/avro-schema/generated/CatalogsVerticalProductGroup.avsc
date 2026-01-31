@@ -5,6 +5,11 @@
   "name": "CatalogsVerticalProductGroup",
   "fields": [
     {
+      "name": "catalog_id",
+      "type": "string",
+      "doc": "Catalog id pertaining to the creative assets product group."
+    },
+    {
       "name": "catalog_type",
       "type": {
         "type": "enum",
@@ -16,42 +21,8 @@
       "doc": ""
     },
     {
-      "name": "id",
-      "type": "string",
-      "doc": "ID of the creative assets product group."
-    },
-    {
-      "name": "name",
+      "name": "country",
       "type": ["null", "string"],
-      "doc": "Name of creative assets product group",
-      "default": null
-    },
-    {
-      "name": "description",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "filters",
-      "type": "model.CatalogsCreativeAssetsProductGroupFilters",
-      "doc": ""
-    },
-    {
-      "name": "is_featured",
-      "type": ["null", "boolean"],
-      "doc": "boolean indicator of whether the product group is being featured or not",
-      "default": null
-    },
-    {
-      "name": "type",
-      "type": ["null", "model.CatalogsProductGroupType"],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "status",
-      "type": ["null", "model.CatalogsProductGroupStatus"],
       "doc": "",
       "default": null
     },
@@ -62,15 +33,10 @@
       "default": null
     },
     {
-      "name": "updated_at",
-      "type": ["null", "int"],
-      "doc": "Unix timestamp in seconds of last time catalog product group was updated.",
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "",
       "default": null
-    },
-    {
-      "name": "catalog_id",
-      "type": "string",
-      "doc": "Catalog id pertaining to the creative assets product group."
     },
     {
       "name": "feed_id",
@@ -78,15 +44,48 @@
       "doc": "id of the catalogs feed belonging to this catalog product group"
     },
     {
-      "name": "country",
-      "type": ["null", "string"],
-      "doc": "",
+      "name": "filters",
+      "type": "model.CatalogsCreativeAssetsProductGroupFilters",
+      "doc": ""
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "doc": "ID of the creative assets product group."
+    },
+    {
+      "name": "is_featured",
+      "type": ["null", "boolean"],
+      "doc": "boolean indicator of whether the product group is being featured or not",
       "default": null
     },
     {
       "name": "locale",
       "type": ["null", "string"],
       "doc": "",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
+      "doc": "Name of creative assets product group",
+      "default": null
+    },
+    {
+      "name": "status",
+      "type": ["null", "model.CatalogsProductGroupStatus"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "type",
+      "type": "model.CatalogsHotelProductGroupType",
+      "doc": ""
+    },
+    {
+      "name": "updated_at",
+      "type": ["null", "int"],
+      "doc": "Unix timestamp in seconds of last time catalog product group was updated.",
       "default": null
     }
   ]

@@ -1,0 +1,72 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server Keyword"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a Keyword"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  MatchTypeResponse = openapi_server.resourceTypes.MatchTypeResponse
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  Keyword {
+    title = Keyword
+    description = Keyword
+    derivedFrom = Root
+    properties {
+        bid {
+          type =  integer
+          description = "&lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group."
+          optional = false
+        }
+        match_type {
+          type = MatchTypeResponse
+          description = ""
+          optional = true
+        }
+        value {
+          type =  string
+          description = "Keyword value (120 chars max)."
+          optional = true
+        }
+        archived {
+          type =  boolean
+          description = ""
+          optional = false
+        }
+        id {
+          type =  string
+          description = "Keyword ID ."
+          optional = false
+        }
+        parent_id {
+          type =  string
+          description = "Keyword parent entity ID (advertiser, campaign, ad group)."
+          optional = false
+        }
+        parent_type {
+          type =  string
+          description = "Parent entity type"
+          optional = false
+        }
+        type {
+          type =  string
+          description = "Always keyword"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  Keyword {
+    title = Keyword
+    description = Keyword
+    implements = openapi_server.resourceTypes.Keyword
+
+  }
+}

@@ -11,9 +11,9 @@ The class is defined in **[CatalogsCreativeAssetsProductGroupUpdateRequest.java]
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalogType** | [**CatalogTypeEnum**](#CatalogTypeEnum) |  |  [optional property]
-**name** | `String` |  |  [optional property]
 **description** | `String` |  |  [optional property]
 **filters** | [`CatalogsCreativeAssetsProductGroupFilters`](CatalogsCreativeAssetsProductGroupFilters.md) |  |  [optional property]
+**name** | `String` |  |  [optional property]
 
 ## CatalogTypeEnum
 

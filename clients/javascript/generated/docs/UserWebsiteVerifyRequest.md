@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**website** | **String** |  | [optional] 
 **verificationMethod** | **String** |  | [optional] [default to &#39;METATAG&#39;]
+**website** | **String** |  | [optional] 
 
 
 

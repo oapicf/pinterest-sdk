@@ -10,10 +10,24 @@ API.Client.PinMediaWithVideo = function() {}
  * @type {!string}
  * @export
  */
-API.Client.PinMediaWithVideo.prototype.mediaType;
+API.Client.PinMediaWithVideo.prototype.coverImageUrl;
 
 /**
- * @type {!API.Client.PinMediaWithImage_allOf_images}
+ * Duration (in miliseconds). Field maybe null after creation due to video processing time.
+ * @type {!number}
+ * @export
+ */
+API.Client.PinMediaWithVideo.prototype.duration;
+
+/**
+ * Height (in pixels). Field maybe null after creation due to video processing time.
+ * @type {!number}
+ * @export
+ */
+API.Client.PinMediaWithVideo.prototype.height;
+
+/**
+ * @type {!API.Client.ImageSize}
  * @export
  */
 API.Client.PinMediaWithVideo.prototype.images;
@@ -22,33 +36,23 @@ API.Client.PinMediaWithVideo.prototype.images;
  * @type {!string}
  * @export
  */
-API.Client.PinMediaWithVideo.prototype.coverImageUrl;
+API.Client.PinMediaWithVideo.prototype.mediaType;
 
 /**
- * Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
+ * Video url (720p).  **Note:** This field is limited and not available to all apps.
  * @type {!string}
  * @export
  */
 API.Client.PinMediaWithVideo.prototype.videoUrl;
 
 /**
- * Duration (in milliseconds)
- * @type {!number}
- * @export
- */
-API.Client.PinMediaWithVideo.prototype.duration;
-
-/**
- * Height (in pixels)
- * @type {!number}
- * @export
- */
-API.Client.PinMediaWithVideo.prototype.height;
-
-/**
- * Width (in pixels)
+ * Width (in pixels). Field maybe null after creation due to video processing time.
  * @type {!number}
  * @export
  */
 API.Client.PinMediaWithVideo.prototype.width;
 
+/** @enum {string} */
+API.Client.PinMediaWithVideo.MediaTypeEnum = { 
+  video: 'video',
+}

@@ -5,22 +5,22 @@
 -export_type([openapi_tracking_urls/0]).
 
 -type openapi_tracking_urls() ::
-    #{ 'impression' => list(),
+    #{ 'audience_verification' => list(),
+       'buyable_button' => list(),
        'click' => list(),
        'engagement' => list(),
-       'buyable_button' => list(),
-       'audience_verification' => list()
+       'impression' => list()
      }.
 
-encode(#{ 'impression' := Impression,
+encode(#{ 'audience_verification' := AudienceVerification,
+          'buyable_button' := BuyableButton,
           'click' := Click,
           'engagement' := Engagement,
-          'buyable_button' := BuyableButton,
-          'audience_verification' := AudienceVerification
+          'impression' := Impression
         }) ->
-    #{ 'impression' => Impression,
+    #{ 'audience_verification' => AudienceVerification,
+       'buyable_button' => BuyableButton,
        'click' => Click,
        'engagement' => Engagement,
-       'buyable_button' => BuyableButton,
-       'audience_verification' => AudienceVerification
+       'impression' => Impression
      }.

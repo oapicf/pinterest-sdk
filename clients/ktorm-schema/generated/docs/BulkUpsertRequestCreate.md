@@ -5,22 +5,13 @@
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
-**campaigns** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;CampaignCreateRequest&gt;**](CampaignCreateRequest.md) |  |  [optional]
 **adGroups** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;AdGroupCreateRequest&gt;**](AdGroupCreateRequest.md) |  |  [optional]
 **ads** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;AdCreateRequest&gt;**](AdCreateRequest.md) |  |  [optional]
-**productGroups** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;ProductGroupPromotionCreateRequest&gt;**](ProductGroupPromotionCreateRequest.md) |  |  [optional]
+**campaigns** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;CampaignCreateRequest&gt;**](CampaignCreateRequest.md) |  |  [optional]
+**catalogProductGroups** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;MultipleProductGroupsInner&gt;**](MultipleProductGroupsInner.md) |  |  [optional]
 **keywords** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;KeywordsRequest&gt;**](KeywordsRequest.md) |  |  [optional]
-
-
-# **Table `BulkUpsertRequestCreateCampaignCreateRequest`**
-(mapped from: BulkUpsertRequestCreateCampaignCreateRequest)
-
-## Properties
-Name | Mapping | SQL Type | Default | Type | Description | Notes
----- | ------- | -------- | ------- | ---- | ----------- | -----
-bulkUpsertRequestCreate | bulkUpsertRequestCreate | long | | kotlin.Long | Primary Key | *one*
-campaignCreateRequest | campaignCreateRequest | long | | kotlin.Long | Foreign Key | *many*
-
+**labels** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;LabelCreateRequest&gt;**](LabelCreateRequest.md) |  |  [optional]
+**productGroups** | `One-To-Many` | `----` | `----`  | [**kotlin.Array&lt;ProductGroupPromotionCreateRequest&gt;**](ProductGroupPromotionCreateRequest.md) |  |  [optional]
 
 
 # **Table `BulkUpsertRequestCreateAdGroupCreateRequest`**
@@ -45,14 +36,25 @@ adCreateRequest | adCreateRequest | long | | kotlin.Long | Foreign Key | *many*
 
 
 
-# **Table `BulkUpsertRequestCreateProductGroupPromotionCreateRequest`**
-(mapped from: BulkUpsertRequestCreateProductGroupPromotionCreateRequest)
+# **Table `BulkUpsertRequestCreateCampaignCreateRequest`**
+(mapped from: BulkUpsertRequestCreateCampaignCreateRequest)
 
 ## Properties
 Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 bulkUpsertRequestCreate | bulkUpsertRequestCreate | long | | kotlin.Long | Primary Key | *one*
-productGroupPromotionCreateRequest | productGroupPromotionCreateRequest | long | | kotlin.Long | Foreign Key | *many*
+campaignCreateRequest | campaignCreateRequest | long | | kotlin.Long | Foreign Key | *many*
+
+
+
+# **Table `BulkUpsertRequestCreateMultipleProductGroupsInner`**
+(mapped from: BulkUpsertRequestCreateMultipleProductGroupsInner)
+
+## Properties
+Name | Mapping | SQL Type | Default | Type | Description | Notes
+---- | ------- | -------- | ------- | ---- | ----------- | -----
+bulkUpsertRequestCreate | bulkUpsertRequestCreate | long | | kotlin.Long | Primary Key | *one*
+multipleProductGroupsInner | multipleProductGroupsInner | long | | kotlin.Long | Foreign Key | *many*
 
 
 
@@ -64,6 +66,28 @@ Name | Mapping | SQL Type | Default | Type | Description | Notes
 ---- | ------- | -------- | ------- | ---- | ----------- | -----
 bulkUpsertRequestCreate | bulkUpsertRequestCreate | long | | kotlin.Long | Primary Key | *one*
 keywordsRequest | keywordsRequest | long | | kotlin.Long | Foreign Key | *many*
+
+
+
+# **Table `BulkUpsertRequestCreateLabelCreateRequest`**
+(mapped from: BulkUpsertRequestCreateLabelCreateRequest)
+
+## Properties
+Name | Mapping | SQL Type | Default | Type | Description | Notes
+---- | ------- | -------- | ------- | ---- | ----------- | -----
+bulkUpsertRequestCreate | bulkUpsertRequestCreate | long | | kotlin.Long | Primary Key | *one*
+labelCreateRequest | labelCreateRequest | long | | kotlin.Long | Foreign Key | *many*
+
+
+
+# **Table `BulkUpsertRequestCreateProductGroupPromotionCreateRequest`**
+(mapped from: BulkUpsertRequestCreateProductGroupPromotionCreateRequest)
+
+## Properties
+Name | Mapping | SQL Type | Default | Type | Description | Notes
+---- | ------- | -------- | ------- | ---- | ----------- | -----
+bulkUpsertRequestCreate | bulkUpsertRequestCreate | long | | kotlin.Long | Primary Key | *one*
+productGroupPromotionCreateRequest | productGroupPromotionCreateRequest | long | | kotlin.Long | Foreign Key | *many*
 
 
 

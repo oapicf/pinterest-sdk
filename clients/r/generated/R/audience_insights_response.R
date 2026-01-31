@@ -8,11 +8,11 @@
 #' @description AudienceInsightsResponse Class
 #' @format An \code{R6Class} generator object
 #' @field categories Category interest distribution list(\link{AudienceCategory}) [optional]
-#' @field demographics  \link{AudienceDemographics} [optional]
-#' @field type  \link{AudienceInsightType} [optional]
 #' @field date Generation date character [optional]
+#' @field demographics  \link{AudienceDemographics} [optional]
 #' @field size Population count. integer [optional]
 #' @field size_is_upper_bound Indicates whether the audience size has been rounded up to the next highest upper boundary. character [optional]
+#' @field type  \link{AudienceInsightType} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -20,44 +20,37 @@ AudienceInsightsResponse <- R6::R6Class(
   "AudienceInsightsResponse",
   public = list(
     `categories` = NULL,
-    `demographics` = NULL,
-    `type` = NULL,
     `date` = NULL,
+    `demographics` = NULL,
     `size` = NULL,
     `size_is_upper_bound` = NULL,
+    `type` = NULL,
 
     #' @description
     #' Initialize a new AudienceInsightsResponse class.
     #'
     #' @param categories Category interest distribution
-    #' @param demographics demographics
-    #' @param type type
     #' @param date Generation date
+    #' @param demographics demographics
     #' @param size Population count.
     #' @param size_is_upper_bound Indicates whether the audience size has been rounded up to the next highest upper boundary.
+    #' @param type type
     #' @param ... Other optional arguments.
-    initialize = function(`categories` = NULL, `demographics` = NULL, `type` = NULL, `date` = NULL, `size` = NULL, `size_is_upper_bound` = NULL, ...) {
+    initialize = function(`categories` = NULL, `date` = NULL, `demographics` = NULL, `size` = NULL, `size_is_upper_bound` = NULL, `type` = NULL, ...) {
       if (!is.null(`categories`)) {
         stopifnot(is.vector(`categories`), length(`categories`) != 0)
         sapply(`categories`, function(x) stopifnot(R6::is.R6(x)))
         self$`categories` <- `categories`
-      }
-      if (!is.null(`demographics`)) {
-        stopifnot(R6::is.R6(`demographics`))
-        self$`demographics` <- `demographics`
-      }
-      if (!is.null(`type`)) {
-        if (!(`type` %in% c())) {
-          stop(paste("Error! \"", `type`, "\" cannot be assigned to `type`. Must be .", sep = ""))
-        }
-        stopifnot(R6::is.R6(`type`))
-        self$`type` <- `type`
       }
       if (!is.null(`date`)) {
         if (!(is.character(`date`) && length(`date`) == 1)) {
           stop(paste("Error! Invalid data for `date`. Must be a string:", `date`))
         }
         self$`date` <- `date`
+      }
+      if (!is.null(`demographics`)) {
+        stopifnot(R6::is.R6(`demographics`))
+        self$`demographics` <- `demographics`
       }
       if (!is.null(`size`)) {
         if (!(is.numeric(`size`) && length(`size`) == 1)) {
@@ -70,6 +63,13 @@ AudienceInsightsResponse <- R6::R6Class(
           stop(paste("Error! Invalid data for `size_is_upper_bound`. Must be a boolean:", `size_is_upper_bound`))
         }
         self$`size_is_upper_bound` <- `size_is_upper_bound`
+      }
+      if (!is.null(`type`)) {
+        if (!(`type` %in% c())) {
+          stop(paste("Error! \"", `type`, "\" cannot be assigned to `type`. Must be .", sep = ""))
+        }
+        stopifnot(R6::is.R6(`type`))
+        self$`type` <- `type`
       }
     },
 
@@ -108,17 +108,13 @@ AudienceInsightsResponse <- R6::R6Class(
         AudienceInsightsResponseObject[["categories"]] <-
           lapply(self$`categories`, function(x) x$toSimpleType())
       }
-      if (!is.null(self$`demographics`)) {
-        AudienceInsightsResponseObject[["demographics"]] <-
-          self$`demographics`$toSimpleType()
-      }
-      if (!is.null(self$`type`)) {
-        AudienceInsightsResponseObject[["type"]] <-
-          self$`type`$toSimpleType()
-      }
       if (!is.null(self$`date`)) {
         AudienceInsightsResponseObject[["date"]] <-
           self$`date`
+      }
+      if (!is.null(self$`demographics`)) {
+        AudienceInsightsResponseObject[["demographics"]] <-
+          self$`demographics`$toSimpleType()
       }
       if (!is.null(self$`size`)) {
         AudienceInsightsResponseObject[["size"]] <-
@@ -127,6 +123,10 @@ AudienceInsightsResponse <- R6::R6Class(
       if (!is.null(self$`size_is_upper_bound`)) {
         AudienceInsightsResponseObject[["size_is_upper_bound"]] <-
           self$`size_is_upper_bound`
+      }
+      if (!is.null(self$`type`)) {
+        AudienceInsightsResponseObject[["type"]] <-
+          self$`type`$toSimpleType()
       }
       return(AudienceInsightsResponseObject)
     },
@@ -141,24 +141,24 @@ AudienceInsightsResponse <- R6::R6Class(
       if (!is.null(this_object$`categories`)) {
         self$`categories` <- ApiClient$new()$deserializeObj(this_object$`categories`, "array[AudienceCategory]", loadNamespace("openapi"))
       }
+      if (!is.null(this_object$`date`)) {
+        self$`date` <- this_object$`date`
+      }
       if (!is.null(this_object$`demographics`)) {
         `demographics_object` <- AudienceDemographics$new()
         `demographics_object`$fromJSON(jsonlite::toJSON(this_object$`demographics`, auto_unbox = TRUE, digits = NA))
         self$`demographics` <- `demographics_object`
-      }
-      if (!is.null(this_object$`type`)) {
-        `type_object` <- AudienceInsightType$new()
-        `type_object`$fromJSON(jsonlite::toJSON(this_object$`type`, auto_unbox = TRUE, digits = NA))
-        self$`type` <- `type_object`
-      }
-      if (!is.null(this_object$`date`)) {
-        self$`date` <- this_object$`date`
       }
       if (!is.null(this_object$`size`)) {
         self$`size` <- this_object$`size`
       }
       if (!is.null(this_object$`size_is_upper_bound`)) {
         self$`size_is_upper_bound` <- this_object$`size_is_upper_bound`
+      }
+      if (!is.null(this_object$`type`)) {
+        `type_object` <- AudienceInsightType$new()
+        `type_object`$fromJSON(jsonlite::toJSON(this_object$`type`, auto_unbox = TRUE, digits = NA))
+        self$`type` <- `type_object`
       }
       self
     },
@@ -182,11 +182,11 @@ AudienceInsightsResponse <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`categories` <- ApiClient$new()$deserializeObj(this_object$`categories`, "array[AudienceCategory]", loadNamespace("openapi"))
-      self$`demographics` <- AudienceDemographics$new()$fromJSON(jsonlite::toJSON(this_object$`demographics`, auto_unbox = TRUE, digits = NA))
-      self$`type` <- AudienceInsightType$new()$fromJSON(jsonlite::toJSON(this_object$`type`, auto_unbox = TRUE, digits = NA))
       self$`date` <- this_object$`date`
+      self$`demographics` <- AudienceDemographics$new()$fromJSON(jsonlite::toJSON(this_object$`demographics`, auto_unbox = TRUE, digits = NA))
       self$`size` <- this_object$`size`
       self$`size_is_upper_bound` <- this_object$`size_is_upper_bound`
+      self$`type` <- AudienceInsightType$new()$fromJSON(jsonlite::toJSON(this_object$`type`, auto_unbox = TRUE, digits = NA))
       self
     },
 

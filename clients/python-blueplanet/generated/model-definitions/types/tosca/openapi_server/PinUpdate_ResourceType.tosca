@@ -1,0 +1,68 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server PinUpdate"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a PinUpdate"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CarouselSlot = openapi_server.resourceTypes.CarouselSlot
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  PinUpdate {
+    title = PinUpdate
+    description = PinUpdate
+    derivedFrom = Root
+    properties {
+        alt_text {
+          type =  string
+          description = ""
+          optional = false
+        }
+        board_id {
+          type =  string
+          description = "The board to which this Pin belongs."
+          optional = false
+        }
+        board_section_id {
+          type =  string
+          description = "The board section to which this Pin belongs."
+          optional = false
+        }
+        carousel_slots {
+          type = array
+          items.type = CarouselSlot
+          description = "Carousel Pin slots data."
+          optional = false
+        }
+        description {
+          type =  string
+          description = ""
+          optional = false
+        }
+        link {
+          type =  string
+          description = ""
+          optional = false
+        }
+        title {
+          type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  PinUpdate {
+    title = PinUpdate
+    description = PinUpdate
+    implements = openapi_server.resourceTypes.PinUpdate
+
+  }
+}

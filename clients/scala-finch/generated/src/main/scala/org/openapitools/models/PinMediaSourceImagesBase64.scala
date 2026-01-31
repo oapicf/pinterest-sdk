@@ -5,18 +5,18 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.PinMediaSourceImagesBase64ItemsInner
+import org.openapitools.models.PinMediaSourceImagesBase64Item
 import scala.collection.immutable.Seq
 
 /**
- * Multiple Base64-encoded images media source
- * @param sourceUnderscoretype 
- * @param items Array with image objects.
+ * Multiple Base64-based images media source
  * @param index 
+ * @param items Array with image objects.
+ * @param sourceUnderscoretype The source type of the media.
  */
-case class PinMediaSourceImagesBase64(sourceUnderscoretype: Option[String],
-                items: Seq[PinMediaSourceImagesBase64ItemsInner],
-                index: Option[Int]
+case class PinMediaSourceImagesBase64(index: Option[Int],
+                items: Seq[PinMediaSourceImagesBase64Item],
+                sourceUnderscoretype: String
                 )
 
 object PinMediaSourceImagesBase64 {

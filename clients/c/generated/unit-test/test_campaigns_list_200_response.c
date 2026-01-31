@@ -22,13 +22,13 @@ campaigns_list_200_response_t* instantiate_campaigns_list_200_response(int inclu
   campaigns_list_200_response_t* campaigns_list_200_response = NULL;
   if (include_optional) {
     campaigns_list_200_response = campaigns_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     campaigns_list_200_response = campaigns_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

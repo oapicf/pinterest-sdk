@@ -20,18 +20,18 @@ typedef struct catalogs_feed_ingestion_t catalogs_feed_ingestion_t;
 
 
 typedef struct catalogs_feed_ingestion_t {
-    char *id; // string
-    char *feed_id; // string
     char *created_at; //date time
+    char *feed_id; // string
+    char *id; // string
     pinterest_rest_api_catalogs_feed_processing_status__e status; //referenced enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_feed_ingestion_t;
 
 __attribute__((deprecated)) catalogs_feed_ingestion_t *catalogs_feed_ingestion_create(
-    char *id,
-    char *feed_id,
     char *created_at,
+    char *feed_id,
+    char *id,
     pinterest_rest_api_catalogs_feed_processing_status__e status
 );
 

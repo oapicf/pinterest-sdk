@@ -46,6 +46,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get Catalog id pertaining to the creative assets product group.
+	 */
+	std::string getCatalogId();
+
+	/*! \brief Set Catalog id pertaining to the creative assets product group.
+	 */
+	void setCatalogId(std::string  catalog_id);
 	/*! \brief Get 
 	 */
 	std::string getCatalogType();
@@ -53,20 +60,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setCatalogType(std::string  catalog_type);
-	/*! \brief Get ID of the creative assets product group.
+	/*! \brief Get Unix timestamp in seconds of when catalog product group was created.
 	 */
-	std::string getId();
+	int getCreatedAt();
 
-	/*! \brief Set ID of the creative assets product group.
+	/*! \brief Set Unix timestamp in seconds of when catalog product group was created.
 	 */
-	void setId(std::string  id);
-	/*! \brief Get Name of creative assets product group
-	 */
-	std::string getName();
-
-	/*! \brief Set Name of creative assets product group
-	 */
-	void setName(std::string  name);
+	void setCreatedAt(int  created_at);
 	/*! \brief Get 
 	 */
 	std::string getDescription();
@@ -81,13 +81,20 @@ public:
 	/*! \brief Set 
 	 */
 	void setFilters(CatalogsCreativeAssetsProductGroupFilters  filters);
-	/*! \brief Get Unix timestamp in seconds of when catalog product group was created.
+	/*! \brief Get ID of the creative assets product group.
 	 */
-	int getCreatedAt();
+	std::string getId();
 
-	/*! \brief Set Unix timestamp in seconds of when catalog product group was created.
+	/*! \brief Set ID of the creative assets product group.
 	 */
-	void setCreatedAt(int  created_at);
+	void setId(std::string  id);
+	/*! \brief Get Name of creative assets product group
+	 */
+	std::string getName();
+
+	/*! \brief Set Name of creative assets product group
+	 */
+	void setName(std::string  name);
 	/*! \brief Get Unix timestamp in seconds of last time catalog product group was updated.
 	 */
 	int getUpdatedAt();
@@ -95,23 +102,16 @@ public:
 	/*! \brief Set Unix timestamp in seconds of last time catalog product group was updated.
 	 */
 	void setUpdatedAt(int  updated_at);
-	/*! \brief Get Catalog id pertaining to the creative assets product group.
-	 */
-	std::string getCatalogId();
-
-	/*! \brief Set Catalog id pertaining to the creative assets product group.
-	 */
-	void setCatalogId(std::string  catalog_id);
 
 private:
+	std::string catalog_id;
 	std::string catalog_type;
-	std::string id;
-	std::string name;
+	int created_at;
 	std::string description;
 	CatalogsCreativeAssetsProductGroupFilters filters;
-	int created_at;
+	std::string id;
+	std::string name;
 	int updated_at;
-	std::string catalog_id;
 	void __init();
 	void __cleanup();
 

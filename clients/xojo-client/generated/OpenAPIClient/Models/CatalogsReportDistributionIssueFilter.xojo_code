@@ -2,15 +2,15 @@
 Protected Class CatalogsReportDistributionIssueFilter
 
 	#tag Property, Flags = &h0
-		report_type As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		#tag Note
 			Unique identifier of a catalog. If not given, oldest catalog will be used
 		#tag EndNote
 		catalog_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		report_type As String
 	#tag EndProperty
 
 

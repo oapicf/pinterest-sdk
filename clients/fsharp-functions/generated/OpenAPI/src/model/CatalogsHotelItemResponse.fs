@@ -13,14 +13,14 @@ module CatalogsHotelItemResponse =
 
   [<CLIMutable>]
   type CatalogsHotelItemResponse = {
+    [<JsonProperty(PropertyName = "attributes")>]
+    Attributes : CatalogsHotelAttributes;
     [<JsonProperty(PropertyName = "catalog_type")>]
     CatalogType : CatalogsType;
     [<JsonProperty(PropertyName = "hotel_id")>]
     HotelId : string;
     [<JsonProperty(PropertyName = "pins")>]
     Pins : Pin[];
-    [<JsonProperty(PropertyName = "attributes")>]
-    Attributes : CatalogsHotelAttributes;
   }
 
   //#endregion

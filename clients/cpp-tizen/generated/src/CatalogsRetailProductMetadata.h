@@ -47,20 +47,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get The user-created unique ID that represents the product.
-	 */
-	std::string getItemId();
-
-	/*! \brief Set The user-created unique ID that represents the product.
-	 */
-	void setItemId(std::string  item_id);
-	/*! \brief Get The parent ID of the product.
-	 */
-	std::string getItemGroupId();
-
-	/*! \brief Set The parent ID of the product.
-	 */
-	void setItemGroupId(std::string  item_group_id);
 	/*! \brief Get 
 	 */
 	NonNullableProductAvailabilityType getAvailability();
@@ -68,6 +54,27 @@ public:
 	/*! \brief Set 
 	 */
 	void setAvailability(NonNullableProductAvailabilityType  availability);
+	/*! \brief Get 
+	 */
+	NonNullableCatalogsCurrency getCurrency();
+
+	/*! \brief Set 
+	 */
+	void setCurrency(NonNullableCatalogsCurrency  currency);
+	/*! \brief Get The parent ID of the product.
+	 */
+	std::string getItemGroupId();
+
+	/*! \brief Set The parent ID of the product.
+	 */
+	void setItemGroupId(std::string  item_group_id);
+	/*! \brief Get The user-created unique ID that represents the product.
+	 */
+	std::string getItemId();
+
+	/*! \brief Set The user-created unique ID that represents the product.
+	 */
+	void setItemId(std::string  item_id);
 	/*! \brief Get The price of the product.
 	 */
 	long long getPrice();
@@ -82,21 +89,14 @@ public:
 	/*! \brief Set The discounted price of the product.
 	 */
 	void setSalePrice(long long  sale_price);
-	/*! \brief Get 
-	 */
-	NonNullableCatalogsCurrency getCurrency();
-
-	/*! \brief Set 
-	 */
-	void setCurrency(NonNullableCatalogsCurrency  currency);
 
 private:
-	std::string item_id;
-	std::string item_group_id;
 	NonNullableProductAvailabilityType availability;
+	NonNullableCatalogsCurrency currency;
+	std::string item_group_id;
+	std::string item_id;
 	long long price;
 	long long sale_price;
-	NonNullableCatalogsCurrency currency;
 	void __init();
 	void __cleanup();
 

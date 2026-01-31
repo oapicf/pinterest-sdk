@@ -13,45 +13,45 @@ import AnyCodable
 /** Request object for creating a feed. Please, be aware that \&quot;default_country\&quot; and \&quot;default_locale\&quot; are not required in the spec for forward compatibility but for now the API will not accept requests without those fields. */
 public struct CatalogsHotelFeedsCreateRequest: Codable, JSONEncodable, Hashable {
 
-    public static let locationRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(http|https|ftp|sftp):\/\//")
     public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public var defaultCurrency: NullableCurrency?
-    /** A human-friendly name associated to a given feed. */
-    public var name: String
-    public var format: CatalogsFormat
-    public var defaultLocale: CatalogsFeedsCreateRequestDefaultLocale
-    public var credentials: CatalogsFeedCredentials?
-    /** The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
-    public var location: String
-    public var preferredProcessingSchedule: CatalogsFeedProcessingSchedule?
-    public var catalogType: CatalogsType
+    public static let locationRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(http|https|ftp|sftp):\/\//")
     /** Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. */
     public var catalogId: String?
+    public var catalogType: CatalogsType
+    public var credentials: CatalogsFeedCredentials?
+    public var defaultCurrency: NullableCurrency?
+    public var defaultLocale: CatalogsFeedsCreateRequestDefaultLocale
+    public var format: CatalogsFormat
+    /** The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing. */
+    public var location: String
+    /** A human-friendly name associated to a given feed. */
+    public var name: String
+    public var preferredProcessingSchedule: CatalogsFeedProcessingSchedule?
     public var status: CatalogsStatus? = "ACTIVE"
 
-    public init(defaultCurrency: NullableCurrency? = nil, name: String, format: CatalogsFormat, defaultLocale: CatalogsFeedsCreateRequestDefaultLocale, credentials: CatalogsFeedCredentials? = nil, location: String, preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = nil, catalogType: CatalogsType, catalogId: String? = nil, status: CatalogsStatus? = "ACTIVE") {
-        self.defaultCurrency = defaultCurrency
-        self.name = name
-        self.format = format
-        self.defaultLocale = defaultLocale
-        self.credentials = credentials
-        self.location = location
-        self.preferredProcessingSchedule = preferredProcessingSchedule
-        self.catalogType = catalogType
+    public init(catalogId: String? = nil, catalogType: CatalogsType, credentials: CatalogsFeedCredentials? = nil, defaultCurrency: NullableCurrency? = nil, defaultLocale: CatalogsFeedsCreateRequestDefaultLocale, format: CatalogsFormat, location: String, name: String, preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = nil, status: CatalogsStatus? = "ACTIVE") {
         self.catalogId = catalogId
+        self.catalogType = catalogType
+        self.credentials = credentials
+        self.defaultCurrency = defaultCurrency
+        self.defaultLocale = defaultLocale
+        self.format = format
+        self.location = location
+        self.name = name
+        self.preferredProcessingSchedule = preferredProcessingSchedule
         self.status = status
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case defaultCurrency = "default_currency"
-        case name
-        case format
-        case defaultLocale = "default_locale"
-        case credentials
-        case location
-        case preferredProcessingSchedule = "preferred_processing_schedule"
-        case catalogType = "catalog_type"
         case catalogId = "catalog_id"
+        case catalogType = "catalog_type"
+        case credentials
+        case defaultCurrency = "default_currency"
+        case defaultLocale = "default_locale"
+        case format
+        case location
+        case name
+        case preferredProcessingSchedule = "preferred_processing_schedule"
         case status
     }
 
@@ -59,15 +59,15 @@ public struct CatalogsHotelFeedsCreateRequest: Codable, JSONEncodable, Hashable 
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(defaultCurrency, forKey: .defaultCurrency)
-        try container.encode(name, forKey: .name)
-        try container.encode(format, forKey: .format)
-        try container.encode(defaultLocale, forKey: .defaultLocale)
-        try container.encodeIfPresent(credentials, forKey: .credentials)
-        try container.encode(location, forKey: .location)
-        try container.encodeIfPresent(preferredProcessingSchedule, forKey: .preferredProcessingSchedule)
-        try container.encode(catalogType, forKey: .catalogType)
         try container.encodeIfPresent(catalogId, forKey: .catalogId)
+        try container.encode(catalogType, forKey: .catalogType)
+        try container.encodeIfPresent(credentials, forKey: .credentials)
+        try container.encodeIfPresent(defaultCurrency, forKey: .defaultCurrency)
+        try container.encode(defaultLocale, forKey: .defaultLocale)
+        try container.encode(format, forKey: .format)
+        try container.encode(location, forKey: .location)
+        try container.encode(name, forKey: .name)
+        try container.encodeIfPresent(preferredProcessingSchedule, forKey: .preferredProcessingSchedule)
         try container.encodeIfPresent(status, forKey: .status)
     }
 }

@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`items` | Array&lt;object&gt;
 `bookmark` | string
+`items` | Array&lt;object&gt;
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { Paginated } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "items": null,
   "bookmark": null,
+  "items": null,
 } satisfies Paginated
 
 console.log(example)

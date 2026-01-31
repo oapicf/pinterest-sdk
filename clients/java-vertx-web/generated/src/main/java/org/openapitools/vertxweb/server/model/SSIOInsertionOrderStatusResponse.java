@@ -8,17 +8,26 @@ import org.openapitools.jackson.nullable.JsonNullable;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SSIOInsertionOrderStatusResponse   {
   
+  private String creationTime;
   private String pinOrderId;
   private String status;
-  private String creationTime;
 
   public SSIOInsertionOrderStatusResponse () {
 
   }
 
-  public SSIOInsertionOrderStatusResponse (String pinOrderId, String status, String creationTime) {
+  public SSIOInsertionOrderStatusResponse (String creationTime, String pinOrderId, String status) {
+    this.creationTime = creationTime;
     this.pinOrderId = pinOrderId;
     this.status = status;
+  }
+
+    
+  @JsonProperty("creation_time")
+  public String getCreationTime() {
+    return creationTime;
+  }
+  public void setCreationTime(String creationTime) {
     this.creationTime = creationTime;
   }
 
@@ -40,15 +49,6 @@ public class SSIOInsertionOrderStatusResponse   {
     this.status = status;
   }
 
-    
-  @JsonProperty("creation_time")
-  public String getCreationTime() {
-    return creationTime;
-  }
-  public void setCreationTime(String creationTime) {
-    this.creationTime = creationTime;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -59,14 +59,14 @@ public class SSIOInsertionOrderStatusResponse   {
       return false;
     }
     SSIOInsertionOrderStatusResponse ssIOInsertionOrderStatusResponse = (SSIOInsertionOrderStatusResponse) o;
-    return Objects.equals(pinOrderId, ssIOInsertionOrderStatusResponse.pinOrderId) &&
-        Objects.equals(status, ssIOInsertionOrderStatusResponse.status) &&
-        Objects.equals(creationTime, ssIOInsertionOrderStatusResponse.creationTime);
+    return Objects.equals(creationTime, ssIOInsertionOrderStatusResponse.creationTime) &&
+        Objects.equals(pinOrderId, ssIOInsertionOrderStatusResponse.pinOrderId) &&
+        Objects.equals(status, ssIOInsertionOrderStatusResponse.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(pinOrderId, status, creationTime);
+    return Objects.hash(creationTime, pinOrderId, status);
   }
 
   @Override
@@ -74,9 +74,9 @@ public class SSIOInsertionOrderStatusResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSIOInsertionOrderStatusResponse {\n");
     
+    sb.append("    creationTime: ").append(toIndentedString(creationTime)).append("\n");
     sb.append("    pinOrderId: ").append(toIndentedString(pinOrderId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    creationTime: ").append(toIndentedString(creationTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }

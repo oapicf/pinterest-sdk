@@ -7,49 +7,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class LinkedBusiness   {
   
-  private String username;
-  private String imageSmallUrl;
-  private String imageMediumUrl;
   private String imageLargeUrl;
+  private String imageMediumUrl;
+  private String imageSmallUrl;
   private String imageXlargeUrl;
+  private String username;
 
   public LinkedBusiness () {
 
   }
 
-  public LinkedBusiness (String username, String imageSmallUrl, String imageMediumUrl, String imageLargeUrl, String imageXlargeUrl) {
-    this.username = username;
-    this.imageSmallUrl = imageSmallUrl;
-    this.imageMediumUrl = imageMediumUrl;
+  public LinkedBusiness (String imageLargeUrl, String imageMediumUrl, String imageSmallUrl, String imageXlargeUrl, String username) {
     this.imageLargeUrl = imageLargeUrl;
-    this.imageXlargeUrl = imageXlargeUrl;
-  }
-
-    
-  @JsonProperty("username")
-  public String getUsername() {
-    return username;
-  }
-  public void setUsername(String username) {
-    this.username = username;
-  }
-
-    
-  @JsonProperty("image_small_url")
-  public String getImageSmallUrl() {
-    return imageSmallUrl;
-  }
-  public void setImageSmallUrl(String imageSmallUrl) {
-    this.imageSmallUrl = imageSmallUrl;
-  }
-
-    
-  @JsonProperty("image_medium_url")
-  public String getImageMediumUrl() {
-    return imageMediumUrl;
-  }
-  public void setImageMediumUrl(String imageMediumUrl) {
     this.imageMediumUrl = imageMediumUrl;
+    this.imageSmallUrl = imageSmallUrl;
+    this.imageXlargeUrl = imageXlargeUrl;
+    this.username = username;
   }
 
     
@@ -62,12 +35,39 @@ public class LinkedBusiness   {
   }
 
     
+  @JsonProperty("image_medium_url")
+  public String getImageMediumUrl() {
+    return imageMediumUrl;
+  }
+  public void setImageMediumUrl(String imageMediumUrl) {
+    this.imageMediumUrl = imageMediumUrl;
+  }
+
+    
+  @JsonProperty("image_small_url")
+  public String getImageSmallUrl() {
+    return imageSmallUrl;
+  }
+  public void setImageSmallUrl(String imageSmallUrl) {
+    this.imageSmallUrl = imageSmallUrl;
+  }
+
+    
   @JsonProperty("image_xlarge_url")
   public String getImageXlargeUrl() {
     return imageXlargeUrl;
   }
   public void setImageXlargeUrl(String imageXlargeUrl) {
     this.imageXlargeUrl = imageXlargeUrl;
+  }
+
+    
+  @JsonProperty("username")
+  public String getUsername() {
+    return username;
+  }
+  public void setUsername(String username) {
+    this.username = username;
   }
 
 
@@ -80,16 +80,16 @@ public class LinkedBusiness   {
       return false;
     }
     LinkedBusiness linkedBusiness = (LinkedBusiness) o;
-    return Objects.equals(username, linkedBusiness.username) &&
-        Objects.equals(imageSmallUrl, linkedBusiness.imageSmallUrl) &&
+    return Objects.equals(imageLargeUrl, linkedBusiness.imageLargeUrl) &&
         Objects.equals(imageMediumUrl, linkedBusiness.imageMediumUrl) &&
-        Objects.equals(imageLargeUrl, linkedBusiness.imageLargeUrl) &&
-        Objects.equals(imageXlargeUrl, linkedBusiness.imageXlargeUrl);
+        Objects.equals(imageSmallUrl, linkedBusiness.imageSmallUrl) &&
+        Objects.equals(imageXlargeUrl, linkedBusiness.imageXlargeUrl) &&
+        Objects.equals(username, linkedBusiness.username);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(username, imageSmallUrl, imageMediumUrl, imageLargeUrl, imageXlargeUrl);
+    return Objects.hash(imageLargeUrl, imageMediumUrl, imageSmallUrl, imageXlargeUrl, username);
   }
 
   @Override
@@ -97,11 +97,11 @@ public class LinkedBusiness   {
     StringBuilder sb = new StringBuilder();
     sb.append("class LinkedBusiness {\n");
     
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
-    sb.append("    imageSmallUrl: ").append(toIndentedString(imageSmallUrl)).append("\n");
-    sb.append("    imageMediumUrl: ").append(toIndentedString(imageMediumUrl)).append("\n");
     sb.append("    imageLargeUrl: ").append(toIndentedString(imageLargeUrl)).append("\n");
+    sb.append("    imageMediumUrl: ").append(toIndentedString(imageMediumUrl)).append("\n");
+    sb.append("    imageSmallUrl: ").append(toIndentedString(imageSmallUrl)).append("\n");
     sb.append("    imageXlargeUrl: ").append(toIndentedString(imageXlargeUrl)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("}");
     return sb.toString();
   }

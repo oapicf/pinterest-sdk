@@ -26,28 +26,28 @@ class CreateMMMReportResponseDataTest : ShouldSpec() {
         // uncomment below to create an instance of CreateMMMReportResponseData
         //val modelInstance = CreateMMMReportResponseData()
 
-        // to test the property `reportStatus`
-        should("test reportStatus") {
-            // uncomment below to test the property
-            //modelInstance.reportStatus shouldBe ("TODO")
-        }
-
-        // to test the property `token`
-        should("test token") {
-            // uncomment below to test the property
-            //modelInstance.token shouldBe ("TODO")
-        }
-
         // to test the property `message`
         should("test message") {
             // uncomment below to test the property
             //modelInstance.message shouldBe ("TODO")
         }
 
+        // to test the property `reportStatus`
+        should("test reportStatus") {
+            // uncomment below to test the property
+            //modelInstance.reportStatus shouldBe ("TODO")
+        }
+
         // to test the property `status`
         should("test status") {
             // uncomment below to test the property
             //modelInstance.status shouldBe ("TODO")
+        }
+
+        // to test the property `token`
+        should("test token") {
+            // uncomment below to test the property
+            //modelInstance.token shouldBe ("TODO")
         }
 
     }

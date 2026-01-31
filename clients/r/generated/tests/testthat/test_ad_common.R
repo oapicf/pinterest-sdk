@@ -60,12 +60,41 @@ test_that("creative_type", {
   #expect_equal(model.instance$`creative_type`, "EXPECTED_RESULT")
 })
 
+test_that("customizable_cta_type", {
+  # tests for the property `customizable_cta_type` (CustomizableCTAType)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`customizable_cta_type`, "EXPECTED_RESULT")
+})
+
 test_that("destination_url", {
   # tests for the property `destination_url` (character)
   # Destination URL.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`destination_url`, "EXPECTED_RESULT")
+})
+
+test_that("disclosure_type", {
+  # tests for the property `disclosure_type` (DisclosureType)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`disclosure_type`, "EXPECTED_RESULT")
+})
+
+test_that("disclosure_url", {
+  # tests for the property `disclosure_url` (character)
+  # URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`disclosure_url`, "EXPECTED_RESULT")
+})
+
+test_that("grid_click_type", {
+  # tests for the property `grid_click_type` (GridClickType)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`grid_click_type`, "EXPECTED_RESULT")
 })
 
 test_that("ios_deep_link", {
@@ -92,12 +121,28 @@ test_that("is_removable", {
   #expect_equal(model.instance$`is_removable`, "EXPECTED_RESULT")
 })
 
+test_that("lead_form_id", {
+  # tests for the property `lead_form_id` (character)
+  # Lead form ID for lead ad generation.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`lead_form_id`, "EXPECTED_RESULT")
+})
+
 test_that("name", {
   # tests for the property `name` (character)
   # Name of the ad - 255 chars max.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
+})
+
+test_that("quiz_pin_data", {
+  # tests for the property `quiz_pin_data` (QuizPinData)
+  # Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`quiz_pin_data`, "EXPECTED_RESULT")
 })
 
 test_that("status", {
@@ -120,35 +165,4 @@ test_that("view_tracking_url", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`view_tracking_url`, "EXPECTED_RESULT")
-})
-
-test_that("lead_form_id", {
-  # tests for the property `lead_form_id` (character)
-  # Lead form ID for lead ad generation.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`lead_form_id`, "EXPECTED_RESULT")
-})
-
-test_that("grid_click_type", {
-  # tests for the property `grid_click_type` (GridClickType)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`grid_click_type`, "EXPECTED_RESULT")
-})
-
-test_that("customizable_cta_type", {
-  # tests for the property `customizable_cta_type` (character)
-  # Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`customizable_cta_type`, "EXPECTED_RESULT")
-})
-
-test_that("quiz_pin_data", {
-  # tests for the property `quiz_pin_data` (QuizPinData)
-  # Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`quiz_pin_data`, "EXPECTED_RESULT")
 })

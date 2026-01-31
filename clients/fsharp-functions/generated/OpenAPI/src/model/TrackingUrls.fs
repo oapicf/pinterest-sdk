@@ -10,16 +10,16 @@ module TrackingUrls =
 
   [<CLIMutable>]
   type TrackingUrls = {
-    [<JsonProperty(PropertyName = "impression")>]
-    Impression : string[];
+    [<JsonProperty(PropertyName = "audience_verification")>]
+    AudienceVerification : string[];
+    [<JsonProperty(PropertyName = "buyable_button")>]
+    BuyableButton : string[];
     [<JsonProperty(PropertyName = "click")>]
     Click : string[];
     [<JsonProperty(PropertyName = "engagement")>]
     Engagement : string[];
-    [<JsonProperty(PropertyName = "buyable_button")>]
-    BuyableButton : string[];
-    [<JsonProperty(PropertyName = "audience_verification")>]
-    AudienceVerification : string[];
+    [<JsonProperty(PropertyName = "impression")>]
+    Impression : string[];
   }
 
   //#endregion

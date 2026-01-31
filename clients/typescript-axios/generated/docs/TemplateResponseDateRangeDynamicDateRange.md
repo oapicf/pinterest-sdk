@@ -6,8 +6,8 @@ The dynamic date range of the template
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **string** | The date range type | [optional] [default to undefined]
 **range** | **string** | The dynamic range type | [optional] [default to undefined]
+**type** | **string** | The date range type | [optional] [default to undefined]
 
 ## Example
 
@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 import { TemplateResponseDateRangeDynamicDateRange } from './api';
 
 const instance: TemplateResponseDateRangeDynamicDateRange = {
-    type,
     range,
+    type,
 };
 ```
 

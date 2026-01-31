@@ -15,51 +15,32 @@ import java.util.Objects;
 
 public class LinkedBusiness   {
   
-  private String username;
-
-  private String imageSmallUrl;
+  private String imageLargeUrl;
 
   private String imageMediumUrl;
 
-  private String imageLargeUrl;
+  private String imageSmallUrl;
 
   private String imageXlargeUrl;
 
+  private String username;
+
   /**
-   * Username
+   * image_large_url
    **/
-  public LinkedBusiness username(String username) {
-    this.username = username;
+  public LinkedBusiness imageLargeUrl(String imageLargeUrl) {
+    this.imageLargeUrl = imageLargeUrl;
     return this;
   }
 
   
-  @ApiModelProperty(example = "username", value = "Username")
-  @JsonProperty("username")
-  public String getUsername() {
-    return username;
+  @ApiModelProperty(example = "https://www.example.com/dj23454f53dfk2324.jpg", value = "image_large_url")
+  @JsonProperty("image_large_url")
+  public String getImageLargeUrl() {
+    return imageLargeUrl;
   }
-  public void setUsername(String username) {
-    this.username = username;
-  }
-
-
-  /**
-   * image_small_url
-   **/
-  public LinkedBusiness imageSmallUrl(String imageSmallUrl) {
-    this.imageSmallUrl = imageSmallUrl;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "https://www.example.com/dj23454f53dfk2324.jpg", value = "image_small_url")
-  @JsonProperty("image_small_url")
-  public String getImageSmallUrl() {
-    return imageSmallUrl;
-  }
-  public void setImageSmallUrl(String imageSmallUrl) {
-    this.imageSmallUrl = imageSmallUrl;
+  public void setImageLargeUrl(String imageLargeUrl) {
+    this.imageLargeUrl = imageLargeUrl;
   }
 
 
@@ -83,21 +64,21 @@ public class LinkedBusiness   {
 
 
   /**
-   * image_large_url
+   * image_small_url
    **/
-  public LinkedBusiness imageLargeUrl(String imageLargeUrl) {
-    this.imageLargeUrl = imageLargeUrl;
+  public LinkedBusiness imageSmallUrl(String imageSmallUrl) {
+    this.imageSmallUrl = imageSmallUrl;
     return this;
   }
 
   
-  @ApiModelProperty(example = "https://www.example.com/dj23454f53dfk2324.jpg", value = "image_large_url")
-  @JsonProperty("image_large_url")
-  public String getImageLargeUrl() {
-    return imageLargeUrl;
+  @ApiModelProperty(example = "https://www.example.com/dj23454f53dfk2324.jpg", value = "image_small_url")
+  @JsonProperty("image_small_url")
+  public String getImageSmallUrl() {
+    return imageSmallUrl;
   }
-  public void setImageLargeUrl(String imageLargeUrl) {
-    this.imageLargeUrl = imageLargeUrl;
+  public void setImageSmallUrl(String imageSmallUrl) {
+    this.imageSmallUrl = imageSmallUrl;
   }
 
 
@@ -120,6 +101,25 @@ public class LinkedBusiness   {
   }
 
 
+  /**
+   * Username
+   **/
+  public LinkedBusiness username(String username) {
+    this.username = username;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "username", value = "Username")
+  @JsonProperty("username")
+  public String getUsername() {
+    return username;
+  }
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -130,16 +130,16 @@ public class LinkedBusiness   {
       return false;
     }
     LinkedBusiness linkedBusiness = (LinkedBusiness) o;
-    return Objects.equals(this.username, linkedBusiness.username) &&
-        Objects.equals(this.imageSmallUrl, linkedBusiness.imageSmallUrl) &&
+    return Objects.equals(this.imageLargeUrl, linkedBusiness.imageLargeUrl) &&
         Objects.equals(this.imageMediumUrl, linkedBusiness.imageMediumUrl) &&
-        Objects.equals(this.imageLargeUrl, linkedBusiness.imageLargeUrl) &&
-        Objects.equals(this.imageXlargeUrl, linkedBusiness.imageXlargeUrl);
+        Objects.equals(this.imageSmallUrl, linkedBusiness.imageSmallUrl) &&
+        Objects.equals(this.imageXlargeUrl, linkedBusiness.imageXlargeUrl) &&
+        Objects.equals(this.username, linkedBusiness.username);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(username, imageSmallUrl, imageMediumUrl, imageLargeUrl, imageXlargeUrl);
+    return Objects.hash(imageLargeUrl, imageMediumUrl, imageSmallUrl, imageXlargeUrl, username);
   }
 
   @Override
@@ -147,11 +147,11 @@ public class LinkedBusiness   {
     StringBuilder sb = new StringBuilder();
     sb.append("class LinkedBusiness {\n");
     
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
-    sb.append("    imageSmallUrl: ").append(toIndentedString(imageSmallUrl)).append("\n");
-    sb.append("    imageMediumUrl: ").append(toIndentedString(imageMediumUrl)).append("\n");
     sb.append("    imageLargeUrl: ").append(toIndentedString(imageLargeUrl)).append("\n");
+    sb.append("    imageMediumUrl: ").append(toIndentedString(imageMediumUrl)).append("\n");
+    sb.append("    imageSmallUrl: ").append(toIndentedString(imageSmallUrl)).append("\n");
     sb.append("    imageXlargeUrl: ").append(toIndentedString(imageXlargeUrl)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("}");
     return sb.toString();
   }

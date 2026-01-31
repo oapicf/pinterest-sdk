@@ -22,10 +22,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("page_visit_conversion_tags_get_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PageVisitConversionTagsGet200Response   {
-  private @Valid List<@Valid ConversionEventResponse> items = new ArrayList<>();
   private String bookmark;
+  private @Valid List<@Valid ConversionEventResponse> items = new ArrayList<>();
 
   public PageVisitConversionTagsGet200Response() {
   }
@@ -35,6 +35,25 @@ public class PageVisitConversionTagsGet200Response   {
     @JsonProperty(required = true, value = "items") List<@Valid ConversionEventResponse> items
   ) {
     this.items = items;
+  }
+
+  /**
+   **/
+  public PageVisitConversionTagsGet200Response bookmark(String bookmark) {
+    this.bookmark = bookmark;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("bookmark")
+  public String getBookmark() {
+    return bookmark;
+  }
+
+  @JsonProperty("bookmark")
+  public void setBookmark(String bookmark) {
+    this.bookmark = bookmark;
   }
 
   /**
@@ -72,25 +91,6 @@ public class PageVisitConversionTagsGet200Response   {
 
     return this;
   }
-  /**
-   **/
-  public PageVisitConversionTagsGet200Response bookmark(String bookmark) {
-    this.bookmark = bookmark;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("bookmark")
-  public String getBookmark() {
-    return bookmark;
-  }
-
-  @JsonProperty("bookmark")
-  public void setBookmark(String bookmark) {
-    this.bookmark = bookmark;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -101,13 +101,13 @@ public class PageVisitConversionTagsGet200Response   {
       return false;
     }
     PageVisitConversionTagsGet200Response pageVisitConversionTagsGet200Response = (PageVisitConversionTagsGet200Response) o;
-    return Objects.equals(this.items, pageVisitConversionTagsGet200Response.items) &&
-        Objects.equals(this.bookmark, pageVisitConversionTagsGet200Response.bookmark);
+    return Objects.equals(this.bookmark, pageVisitConversionTagsGet200Response.bookmark) &&
+        Objects.equals(this.items, pageVisitConversionTagsGet200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -115,8 +115,8 @@ public class PageVisitConversionTagsGet200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PageVisitConversionTagsGet200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

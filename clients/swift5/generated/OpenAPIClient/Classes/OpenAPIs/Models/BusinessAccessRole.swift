@@ -17,6 +17,8 @@ public enum BusinessAccessRole: String, Codable, CaseIterable {
     case analyst = "ANALYST"
     case sosReader = "SOS_READER"
     case financeManager = "FINANCE_MANAGER"
+    case financeView = "FINANCE_VIEW"
+    case financeEdit = "FINANCE_EDIT"
     case audienceManager = "AUDIENCE_MANAGER"
     case campaignManager = "CAMPAIGN_MANAGER"
     case catalogsManager = "CATALOGS_MANAGER"

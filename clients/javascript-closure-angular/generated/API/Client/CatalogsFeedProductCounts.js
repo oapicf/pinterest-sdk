@@ -7,16 +7,16 @@ goog.provide('API.Client.CatalogsFeedProductCounts');
 API.Client.CatalogsFeedProductCounts = function() {}
 
 /**
- * The number of products in the feed file.
- * @type {!number}
- * @export
- */
-API.Client.CatalogsFeedProductCounts.prototype.original;
-
-/**
  * The number of products successfully ingested from the feed file.
  * @type {!number}
  * @export
  */
 API.Client.CatalogsFeedProductCounts.prototype.ingested;
+
+/**
+ * The number of products in the feed file.
+ * @type {!number}
+ * @export
+ */
+API.Client.CatalogsFeedProductCounts.prototype.original;
 

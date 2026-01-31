@@ -12,12 +12,12 @@ import org.joda.time.DateTime
 import CatalogsRetailListProductsByCatalogBasedFilterRequest._
 
 case class CatalogsRetailListProductsByCatalogBasedFilterRequest (
-  /* Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. */
-  catalogType: CatalogType,
-/* Catalog id pertaining to the retail product group. */
+  /* Catalog id pertaining to the retail product group. */
   catalogId: String,
-filters: CatalogsProductGroupFilters,
+/* Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. */
+  catalogType: CatalogType,
 country: Country,
+filters: CatalogsProductGroupFilters,
 locale: CatalogsLocale)
 
 object CatalogsRetailListProductsByCatalogBasedFilterRequest {

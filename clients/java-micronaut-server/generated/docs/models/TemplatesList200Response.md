@@ -8,8 +8,8 @@ The class is defined in **[TemplatesList200Response.java](../../src/main/java/or
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [`List&lt;TemplateResponse&gt;`](TemplateResponse.md) |  | 
 **bookmark** | `String` |  |  [optional property]
+**items** | [`List&lt;TemplateResponse&gt;`](TemplateResponse.md) |  | 
 
 
 

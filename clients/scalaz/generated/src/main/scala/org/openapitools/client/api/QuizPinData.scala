@@ -14,9 +14,9 @@ import QuizPinData._
 case class QuizPinData (
   questions: Option[List[QuizPinQuestion]],
 results: Option[List[QuizPinResult]],
+tieBreakerCustomResult: Option[QuizPinResult],
 /* Quiz ad tie breaker type, default is RANDOM */
-  tieBreakerType: Option[TieBreakerType],
-tieBreakerCustomResult: Option[QuizPinResult])
+  tieBreakerType: Option[TieBreakerType])
 
 object QuizPinData {
   import DateTimeCodecs._

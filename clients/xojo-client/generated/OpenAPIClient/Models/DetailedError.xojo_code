@@ -7,12 +7,12 @@ Protected Class DetailedError
 
 
 	#tag Property, Flags = &h0
-		message As String
+		details As Object
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		details As Object
+		message As String
 	#tag EndProperty
 
 
@@ -61,19 +61,19 @@ Protected Class DetailedError
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="message"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="details"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="Object"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="message"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

@@ -1,0 +1,178 @@
+# coding: utf-8
+
+from typing import Dict, List  # noqa: F401
+import importlib
+import pkgutil
+
+from openapi_server.apis.product_group_promotions_api_base import BaseProductGroupPromotionsApi
+import openapi_server.impl
+
+from fastapi import (  # noqa: F401
+    APIRouter,
+    Body,
+    Cookie,
+    Depends,
+    Form,
+    Header,
+    HTTPException,
+    Path,
+    Query,
+    Response,
+    Security,
+    status,
+)
+
+from openapi_server.models.extra_models import TokenModel  # noqa: F401
+from datetime import date
+from pydantic import Field, StrictInt, StrictStr, field_validator
+from typing import List, Optional
+from typing_extensions import Annotated
+from openapi_server.models.error import Error
+from openapi_server.models.granularity import Granularity
+from openapi_server.models.product_group_analytics_response_inner import ProductGroupAnalyticsResponseInner
+from openapi_server.models.product_group_promotion import ProductGroupPromotion
+from openapi_server.models.product_group_promotion_create_request import ProductGroupPromotionCreateRequest
+from openapi_server.models.product_group_promotion_response import ProductGroupPromotionResponse
+from openapi_server.models.product_group_promotion_update_request import ProductGroupPromotionUpdateRequest
+from openapi_server.models.product_group_promotions_list200_response import ProductGroupPromotionsList200Response
+from openapi_server.models.reporting_time_zone import ReportingTimeZone
+from openapi_server.security_api import get_token_pinterest_oauth2, get_token_client_credentials
+
+router = APIRouter()
+
+ns_pkg = openapi_server.impl
+for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
+    importlib.import_module(name)
+
+
+@router.get(
+    "/ad_accounts/{ad_account_id}/product_group_promotions",
+    responses={
+        200: {"model": ProductGroupPromotionsList200Response, "description": "Success"},
+        "default": {"model": Error, "description": "Unexpected error"},
+    },
+    tags=["product_group_promotions"],
+    summary="Get product group promotions",
+    response_model_by_alias=True,
+)
+async def product_group_promotions_list(
+    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    product_group_promotion_ids: Annotated[Optional[Annotated[List[Annotated[str, Field(strict=True)]], Field(min_length=1, max_length=250)]], Field(description="List of Product group promotion Ids.")] = Query(None, description="List of Product group promotion Ids.", alias="product_group_promotion_ids"),
+    entity_statuses: Annotated[Optional[List[StrictStr]], Field(description="Entity status")] = Query(["ACTIVE","PAUSED"], description="Entity status", alias="entity_statuses"),
+    ad_group_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Ad group Id.")] = Query(None, description="Ad group Id.", alias="ad_group_id", regex=r"^\d+$", max_length=18),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.")] = Query(25, description="Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information.", alias="page_size", ge=1, le=250),
+    order: Annotated[Optional[StrictStr], Field(description="The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.")] = Query(None, description="The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", alias="order"),
+    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    token_pinterest_oauth2: TokenModel = Security(
+        get_token_pinterest_oauth2, scopes=["ads:read"]
+    ),
+) -> ProductGroupPromotionsList200Response:
+    """List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  &lt;b&gt;Note:&lt;/b&gt; ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error."""
+    if not BaseProductGroupPromotionsApi.subclasses:
+        raise HTTPException(status_code=500, detail="Not implemented")
+    return await BaseProductGroupPromotionsApi.subclasses[0]().product_group_promotions_list(ad_account_id, product_group_promotion_ids, entity_statuses, ad_group_id, page_size, order, bookmark)
+
+
+@router.post(
+    "/ad_accounts/{ad_account_id}/product_group_promotions",
+    responses={
+        200: {"model": ProductGroupPromotionResponse, "description": "Success"},
+        "default": {"model": Error, "description": "Unexpected error"},
+    },
+    tags=["product_group_promotions"],
+    summary="Create product group promotions",
+    response_model_by_alias=True,
+)
+async def product_group_promotions_create(
+    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    product_group_promotion_create_request: Annotated[ProductGroupPromotionCreateRequest, Field(description="List of Product Group Promotions to create, size limit [1, 30].")] = Body(None, description="List of Product Group Promotions to create, size limit [1, 30]."),
+    token_pinterest_oauth2: TokenModel = Security(
+        get_token_pinterest_oauth2, scopes=["ads:write"]
+    ),
+) -> ProductGroupPromotionResponse:
+    """Add one or more product groups from your catalog to an existing ad group. (Product groups added to an ad group are a &#39;product group promotion.&#39;)"""
+    if not BaseProductGroupPromotionsApi.subclasses:
+        raise HTTPException(status_code=500, detail="Not implemented")
+    return await BaseProductGroupPromotionsApi.subclasses[0]().product_group_promotions_create(ad_account_id, product_group_promotion_create_request)
+
+
+@router.patch(
+    "/ad_accounts/{ad_account_id}/product_group_promotions",
+    responses={
+        200: {"model": ProductGroupPromotionResponse, "description": "Success"},
+        "default": {"model": Error, "description": "Unexpected error"},
+    },
+    tags=["product_group_promotions"],
+    summary="Update product group promotions",
+    response_model_by_alias=True,
+)
+async def product_group_promotions_update(
+    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    product_group_promotion_update_request: Annotated[ProductGroupPromotionUpdateRequest, Field(description="Parameters to update Product group promotions")] = Body(None, description="Parameters to update Product group promotions"),
+    token_pinterest_oauth2: TokenModel = Security(
+        get_token_pinterest_oauth2, scopes=["ads:write"]
+    ),
+) -> ProductGroupPromotionResponse:
+    """Update multiple existing Product Group Promotions (by product_group_id)"""
+    if not BaseProductGroupPromotionsApi.subclasses:
+        raise HTTPException(status_code=500, detail="Not implemented")
+    return await BaseProductGroupPromotionsApi.subclasses[0]().product_group_promotions_update(ad_account_id, product_group_promotion_update_request)
+
+
+@router.get(
+    "/ad_accounts/{ad_account_id}/product_group_promotions/{product_group_promotion_id}",
+    responses={
+        200: {"model": ProductGroupPromotion, "description": "Success"},
+        "default": {"model": Error, "description": "Unexpected error"},
+    },
+    tags=["product_group_promotions"],
+    summary="Get a product group promotion by id",
+    response_model_by_alias=True,
+)
+async def product_group_promotions_get(
+    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    product_group_promotion_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of a product group promotion")] = Path(..., description="Unique identifier of a product group promotion", regex=r"^\d+$", max_length=18),
+    token_pinterest_oauth2: TokenModel = Security(
+        get_token_pinterest_oauth2, scopes=["ads:read"]
+    ),
+) -> ProductGroupPromotion:
+    """Get a product group promotion by id"""
+    if not BaseProductGroupPromotionsApi.subclasses:
+        raise HTTPException(status_code=500, detail="Not implemented")
+    return await BaseProductGroupPromotionsApi.subclasses[0]().product_group_promotions_get(ad_account_id, product_group_promotion_id)
+
+
+@router.get(
+    "/ad_accounts/{ad_account_id}/product_groups/analytics",
+    responses={
+        200: {"model": List[ProductGroupAnalyticsResponseInner], "description": "Success"},
+        400: {"model": Error, "description": "Invalid ad account ads analytics parameters."},
+        "default": {"model": Error, "description": "Unexpected error"},
+    },
+    tags=["product_group_promotions"],
+    summary="Get product group analytics",
+    response_model_by_alias=True,
+)
+async def product_groups_analytics(
+    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    start_date: Annotated[date, Field(description="Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")] = Query(None, description="Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", alias="start_date"),
+    end_date: Annotated[date, Field(description="Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")] = Query(None, description="Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", alias="end_date"),
+    product_group_ids: Annotated[List[Annotated[str, Field(strict=True)]], Field(min_length=1, max_length=250, description="List of Product group Ids to use to filter the results.")] = Query(None, description="List of Product group Ids to use to filter the results.", alias="product_group_ids"),
+    columns: Annotated[List[StrictStr], Field(description="Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned")] = Query(None, description="Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.&lt;br/&gt;For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).&lt;br/&gt;If a column has no value, it may not be returned", alias="columns"),
+    granularity: Annotated[Granularity, Field(description="TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly")] = Query(None, description="TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly", alias="granularity"),
+    click_window_days: Annotated[Optional[StrictInt], Field(description="Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.")] = Query(30, description="Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.", alias="click_window_days"),
+    engagement_window_days: Annotated[Optional[StrictInt], Field(description="Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.")] = Query(30, description="Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.&lt;br&gt; &lt;strong&gt;Note:&lt;/strong&gt; This parameter no longer returns new data. However, you can still access historic data through &lt;strong&gt;Sept 30, 2027&lt;/strong&gt;.", alias="engagement_window_days"),
+    view_window_days: Annotated[Optional[StrictInt], Field(description="Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.")] = Query(1, description="Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.", alias="view_window_days"),
+    conversion_report_time: Annotated[Optional[StrictStr], Field(description="The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.")] = Query(TIME_OF_AD_ACTION, description="The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", alias="conversion_report_time"),
+    reporting_timezone: Annotated[Optional[ReportingTimeZone], Field(description="Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.")] = Query(None, description="Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.", alias="reporting_timezone"),
+    token_pinterest_oauth2: TokenModel = Security(
+        get_token_pinterest_oauth2, scopes=["ads:read"]
+    ),
+    token_client_credentials: TokenModel = Security(
+        get_token_client_credentials, scopes=["ads:read"]
+    ),
+) -> List[ProductGroupAnalyticsResponseInner]:
+    """Get analytics for the specified product groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days."""
+    if not BaseProductGroupPromotionsApi.subclasses:
+        raise HTTPException(status_code=500, detail="Not implemented")
+    return await BaseProductGroupPromotionsApi.subclasses[0]().product_groups_analytics(ad_account_id, start_date, end_date, product_group_ids, columns, granularity, click_window_days, engagement_window_days, view_window_days, conversion_report_time, reporting_timezone)

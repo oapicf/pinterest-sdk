@@ -5,7 +5,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 
 /**
- * Refers ads entity type
+ * Refers ads entity type. Schedule enum is only applicable to beta users
  **/
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum BulkEntityType {
 
-    @JsonProperty("CAMPAIGN") CAMPAIGN(String.valueOf("CAMPAIGN")), @JsonProperty("AD_GROUP") AD_GROUP(String.valueOf("AD_GROUP")), @JsonProperty("PRODUCT_GROUP") PRODUCT_GROUP(String.valueOf("PRODUCT_GROUP")), @JsonProperty("AD") AD(String.valueOf("AD")), @JsonProperty("KEYWORD") KEYWORD(String.valueOf("KEYWORD"));
+    @JsonProperty("CAMPAIGN") CAMPAIGN(String.valueOf("CAMPAIGN")), @JsonProperty("AD_GROUP") AD_GROUP(String.valueOf("AD_GROUP")), @JsonProperty("PRODUCT_GROUP") PRODUCT_GROUP(String.valueOf("PRODUCT_GROUP")), @JsonProperty("AD") AD(String.valueOf("AD")), @JsonProperty("KEYWORD") KEYWORD(String.valueOf("KEYWORD")), @JsonProperty("LABEL") LABEL(String.valueOf("LABEL")), @JsonProperty("SCHEDULE") SCHEDULE(String.valueOf("SCHEDULE"));
 
 
     private String value;

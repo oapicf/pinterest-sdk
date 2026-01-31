@@ -5,6 +5,14 @@ context("Test CatalogsRetailBatchRequest")
 
 model_instance <- CatalogsRetailBatchRequest$new()
 
+test_that("catalog_id", {
+  # tests for the property `catalog_id` (character)
+  # Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`catalog_id`, "EXPECTED_RESULT")
+})
+
 test_that("catalog_type", {
   # tests for the property `catalog_type` (character)
 
@@ -19,18 +27,18 @@ test_that("country", {
   #expect_equal(model.instance$`country`, "EXPECTED_RESULT")
 })
 
-test_that("language", {
-  # tests for the property `language` (character)
-  # We recommend using the CatalogsLocale values.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`language`, "EXPECTED_RESULT")
-})
-
 test_that("items", {
   # tests for the property `items` (array[CatalogsRetailBatchRequestItemsInner])
   # Array with catalogs item operations
 
   # uncomment below to test the property
   #expect_equal(model.instance$`items`, "EXPECTED_RESULT")
+})
+
+test_that("language", {
+  # tests for the property `language` (character)
+  # We recommend using the CatalogsLocale values.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`language`, "EXPECTED_RESULT")
 })

@@ -14,7 +14,7 @@ API.Client.UpdatePartnerAssetsResult = function() {}
 API.Client.UpdatePartnerAssetsResult.prototype.assetId;
 
 /**
- * Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+ * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
  * @type {!string}
  * @export
  */

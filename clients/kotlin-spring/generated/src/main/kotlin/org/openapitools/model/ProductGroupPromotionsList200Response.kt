@@ -2,7 +2,7 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.ProductGroupPromotionResponseItem
+import org.openapitools.model.ProductGroupPromotion
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -23,7 +23,7 @@ data class ProductGroupPromotionsList200Response(
 
     @field:Valid
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("items", required = true) val items: kotlin.collections.List<ProductGroupPromotionResponseItem>,
+    @get:JsonProperty("items", required = true) val items: kotlin.collections.List<ProductGroupPromotion>,
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("bookmark") val bookmark: kotlin.String? = null

@@ -23,19 +23,19 @@ audience_category_t* instantiate_audience_category(int include_optional) {
   if (include_optional) {
     audience_category = audience_category_create(
       "1234567",
-      "travel",
-      0.551,
       1.2,
       "1234567",
+      "travel",
+      0.551,
       list_createList()
     );
   } else {
     audience_category = audience_category_create(
       "1234567",
-      "travel",
-      0.551,
       1.2,
       "1234567",
+      "travel",
+      0.551,
       list_createList()
     );
   }

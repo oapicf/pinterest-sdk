@@ -1,11 +1,11 @@
 #import "OAIMediaApi.h"
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
-#import "OAIError.h"
+#import "OAIMedia.h"
 #import "OAIMediaList200Response.h"
 #import "OAIMediaUpload.h"
-#import "OAIMediaUploadDetails.h"
-#import "OAIMediaUploadRequest.h"
+#import "OAIMediaUploadCreate.h"
+#import "OAIPinterestLibError.h"
 
 
 @interface OAIMediaApi ()
@@ -55,18 +55,18 @@ NSInteger kOAIMediaApiMissingParamErrorCode = 234513;
 
 ///
 /// Register media upload
-/// Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
-///  @param mediaUploadRequest Create a media upload request 
+/// Register your intent to upload media.  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using `curl`, for example) to `upload_url` using the `Content-Type` header value. Send the media file's contents as the request's `file` parameter and also include all of the parameters from `upload_parameters`.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
+///  @param mediaUploadCreate  
 ///
 ///  @returns OAIMediaUpload*
 ///
--(NSURLSessionTask*) mediaCreateWithMediaUploadRequest: (OAIMediaUploadRequest*) mediaUploadRequest
+-(NSURLSessionTask*) mediaCreateWithMediaUploadCreate: (OAIMediaUploadCreate*) mediaUploadCreate
     completionHandler: (void (^)(OAIMediaUpload* output, NSError* error)) handler {
-    // verify the required parameter 'mediaUploadRequest' is set
-    if (mediaUploadRequest == nil) {
-        NSParameterAssert(mediaUploadRequest);
+    // verify the required parameter 'mediaUploadCreate' is set
+    if (mediaUploadCreate == nil) {
+        NSParameterAssert(mediaUploadCreate);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"mediaUploadRequest"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"mediaUploadCreate"] };
             NSError* error = [NSError errorWithDomain:kOAIMediaApiErrorDomain code:kOAIMediaApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -98,7 +98,7 @@ NSInteger kOAIMediaApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = mediaUploadRequest;
+    bodyParam = mediaUploadCreate;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"
@@ -121,13 +121,13 @@ NSInteger kOAIMediaApiMissingParamErrorCode = 234513;
 
 ///
 /// Get media upload details
-/// Get details for a registered media upload, including its current status.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
-///  @param mediaId Media identifier 
+/// Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
+///  @param mediaId Unique identifier for this media upload. Used to track status and for attaching during Pin creation. 
 ///
-///  @returns OAIMediaUploadDetails*
+///  @returns OAIMedia*
 ///
 -(NSURLSessionTask*) mediaGetWithMediaId: (NSString*) mediaId
-    completionHandler: (void (^)(OAIMediaUploadDetails* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAIMedia* output, NSError* error)) handler {
     // verify the required parameter 'mediaId' is set
     if (mediaId == nil) {
         NSParameterAssert(mediaId);
@@ -179,20 +179,20 @@ NSInteger kOAIMediaApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIMediaUploadDetails*"
+                              responseType: @"OAIMedia*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIMediaUploadDetails*)data, error);
+                                    handler((OAIMedia*)data, error);
                                 }
                             }];
 }
 
 ///
 /// List media uploads
-/// List media uploads filtered by given parameters.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
+/// List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.
 ///  @param bookmark Cursor used to fetch the next page of items (optional)
 ///
-///  @param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional, default to @25)
+///  @param pageSize Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional, default to @25)
 ///
 ///  @returns OAIMediaList200Response*
 ///

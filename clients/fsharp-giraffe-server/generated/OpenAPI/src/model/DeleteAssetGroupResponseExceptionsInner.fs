@@ -9,8 +9,8 @@ module DeleteAssetGroupResponseExceptionsInner =
 
 
   type DeleteAssetGroupResponse_exceptions_inner = {
+    AssetGroupId : string;
     Code : int;
     Message : string;
-    AssetGroupId : string;
   }
   //#endregion

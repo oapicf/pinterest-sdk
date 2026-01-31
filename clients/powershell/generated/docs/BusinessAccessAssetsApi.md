@@ -36,7 +36,7 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
-$CreateAssetGroupBody = Initialize-CreateAssetGroupBody -AssetGroupName "Canada Ad Accounts" -AssetGroupDescription "Asset groups that has ad accounts shared in Canada" -AssetGroupTypes "BRAND" # CreateAssetGroupBody | 
+$CreateAssetGroupBody = Initialize-CreateAssetGroupBody -AssetGroupDescription "Asset groups that has ad accounts shared in Canada" -AssetGroupName "Canada Ad Accounts" -AssetGroupTypes "BRAND" # CreateAssetGroupBody | 
 
 # Create a new asset group.
 try {
@@ -138,7 +138,7 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
-$UpdateAssetGroupBodyAssetGroupsToUpdateInner = Initialize-UpdateAssetGroupBodyAssetGroupsToUpdateInner -AssetGroupId "666791336903426391" -Name "Canada Ad Accounts" -Description "Asset groups that has ad accounts shared in Canada" -AssetGroupTypes "BRAND" -AssetsToAdd "549755885175" -AssetsToRemove "549755885175"
+$UpdateAssetGroupBodyAssetGroupsToUpdateInner = Initialize-UpdateAssetGroupBodyAssetGroupsToUpdateInner -AssetGroupId "666791336903426391" -AssetGroupTypes "BRAND" -AssetsToAdd "549755885175" -AssetsToRemove "549755885175" -Description "Asset groups that has ad accounts shared in Canada" -Name "Canada Ad Accounts"
 $UpdateAssetGroupBody = Initialize-UpdateAssetGroupBody -AssetGroupsToUpdate $UpdateAssetGroupBodyAssetGroupsToUpdateInner # UpdateAssetGroupBody | 
 
 # Update asset groups.
@@ -177,6 +177,7 @@ Name | Type | Description  | Notes
 > BusinessAssetMembersGet200Response Invoke-BusinessAssetMembersGet<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-BusinessId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AssetId] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-FetchSystemUsers] <System.Nullable[Boolean]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Bookmark] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PageSize] <System.Nullable[Int32]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-StartIndex] <System.Nullable[Int32]><br>
@@ -194,13 +195,14 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
 $AssetId = "729090764583391194" # String | Unique identifier of a business asset.
+$FetchSystemUsers = $true # Boolean | Fetches system users if True. Fetches regular user employees if False. (optional) (default to $false)
 $Bookmark = "MyBookmark" # String | Cursor used to fetch the next page of items (optional)
 $PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 $StartIndex = 0 # Int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
 
 # Get members with access to asset
 try {
-    $Result = Invoke-BusinessAssetMembersGet -BusinessId $BusinessId -AssetId $AssetId -Bookmark $Bookmark -PageSize $PageSize -StartIndex $StartIndex
+    $Result = Invoke-BusinessAssetMembersGet -BusinessId $BusinessId -AssetId $AssetId -FetchSystemUsers $FetchSystemUsers -Bookmark $Bookmark -PageSize $PageSize -StartIndex $StartIndex
 } catch {
     Write-Host ("Exception occurred when calling Invoke-BusinessAssetMembersGet: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -213,6 +215,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **BusinessId** | **String**| Unique identifier of the requesting business. | 
  **AssetId** | **String**| Unique identifier of a business asset. | 
+ **FetchSystemUsers** | **Boolean**| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to $false]
  **Bookmark** | **String**| Cursor used to fetch the next page of items | [optional] 
  **PageSize** | **Int32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
  **StartIndex** | **Int32**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
@@ -612,7 +615,7 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
-$DeletePartnerAssetAccessBodyAccessesInner = Initialize-DeletePartnerAssetAccessBodyAccessesInner -PartnerId "1234567890123" -AssetId "549755885175" -PartnerType "INTERNAL"
+$DeletePartnerAssetAccessBodyAccessesInner = Initialize-DeletePartnerAssetAccessBodyAccessesInner -AssetId "549755885175" -PartnerId "1234567890123" -PartnerType "INTERNAL"
 $DeletePartnerAssetAccessBody = Initialize-DeletePartnerAssetAccessBody -Accesses $DeletePartnerAssetAccessBodyAccessesInner # DeletePartnerAssetAccessBody | 
 
 # Delete partner access to asset
@@ -664,7 +667,7 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
-$UpdatePartnerAssetAccessBodyAccessesInner = Initialize-UpdatePartnerAssetAccessBodyAccessesInner -PartnerId "1234567890123" -AssetId "549755885175" -Permissions "ADMIN"
+$UpdatePartnerAssetAccessBodyAccessesInner = Initialize-UpdatePartnerAssetAccessBodyAccessesInner -AssetId "549755885175" -PartnerId "1234567890123" -Permissions "ADMIN"
 $UpdatePartnerAssetAccessBody = Initialize-UpdatePartnerAssetAccessBody -Accesses $UpdatePartnerAssetAccessBodyAccessesInner # UpdatePartnerAssetAccessBody | A list of assets and permissions to assign to your partners.
 
 # Assign/Update partner asset permissions

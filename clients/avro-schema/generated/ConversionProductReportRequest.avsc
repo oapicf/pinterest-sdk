@@ -1,0 +1,141 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "Request for a brand, category, SKU report",
+  "name": "ConversionProductReportRequest",
+  "fields": [
+    {
+      "name": "ad_group_ids",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "List of ad group ids. <br>Only support ad_group_ids field when level of the report is AD_GROUP.",
+      "default": null
+    },
+    {
+      "name": "campaign_ids",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "List of campaign ids. <br>Only support campaign_ids field when level of the report is CAMPAIGN.",
+      "default": null
+    },
+    {
+      "name": "campaign_objective_types",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.ObjectiveType"
+      }],
+      "doc": "List of values for filtering. Default is ['CONSIDERATION','AWARENESS','WEB_CONVERSION','VIDEO_COMPLETION'].",
+      "default": null
+    },
+    {
+      "name": "click_window_days",
+      "type": ["model.ConversionAttributionWindowDays", "null"],
+      "doc": "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.",
+      "default": 30
+    },
+    {
+      "name": "columns",
+      "type": {
+        "type": "array",
+        "items": "model.ConversionProductReportingColumn"
+      },
+      "doc": "Metric and entity columns"
+    },
+    {
+      "name": "conversion_product_attribution_type",
+      "type": ["null", {
+        "type": "enum",
+        "name": "ConversionProductReportRequest_conversionUnderscoreproductUnderscoreattributionUnderscoretype",
+        "symbols": [
+          "DEFAULT",
+          "BRAND_ATTRIBUTION"
+        ]
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "conversion_product_breakdown",
+      "type": ["null", {
+        "type": "enum",
+        "name": "ConversionProductReportRequest_conversionUnderscoreproductUnderscorebreakdown",
+        "symbols": [
+          "PRODUCT_BRAND",
+          "PRODUCT_CATEGORY",
+          "PRODUCT_BRAND_AND_CATEGORY",
+          "PRODUCT_SKU",
+          "PRODUCT_SKU_GROUP"
+        ]
+      }],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "conversion_report_time",
+      "type": ["model.ConversionReportTimeType", "null"],
+      "doc": "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.",
+      "default": ConversionReportTimeType.TIME_OF_AD_ACTION
+    },
+    {
+      "name": "end_date",
+      "type": "string",
+      "doc": "Metric report end date (UTC). Format: YYYY-MM-DD.<br> A max of 1 year is allowed between the start and end date for reports."
+    },
+    {
+      "name": "granularity",
+      "type": {
+        "type": "enum",
+        "name": "ConversionProductReportRequest_granularity",
+        "symbols": [
+          "WEEK",
+          "MONTH",
+          "TOTAL"
+        ]
+      },
+      "doc": "TOTAL - metrics are aggregated over the specified date range.<br> WEEK - metrics are broken down weekly.<br> MONTH - metrics are broken down monthly."
+    },
+    {
+      "name": "level",
+      "type": {
+        "type": "enum",
+        "name": "ConversionProductReportRequest_level",
+        "symbols": [
+          "ADVERTISER",
+          "CAMPAIGN",
+          "AD_GROUP"
+        ]
+      },
+      "doc": "Level of the report"
+    },
+    {
+      "name": "product_sku_ids",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "List of SKU ids. <br>Only support product_sku_ids field when report breakdown type is PRODUCT_SKU_GROUP.",
+      "default": null
+    },
+    {
+      "name": "report_name",
+      "type": "string",
+      "doc": "Name of the conversion product report."
+    },
+    {
+      "name": "start_date",
+      "type": "string",
+      "doc": "Metric report start date (UTC). Format: YYYY-MM-DD.<br> Start date must be after 2024-03-16. 7 day minimum time window for report is required."
+    },
+    {
+      "name": "view_window_days",
+      "type": ["model.ConversionAttributionWindowDays", "null"],
+      "doc": "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` day.",
+      "default": 30
+    }
+  ]
+
+}

@@ -27,8 +27,8 @@ import io.swagger.v3.oas.annotations.media.Schema
  * A request object that can have multiple operations on a single batch
  * @param catalogType 
  * @param country 
- * @param language We recommend using the CatalogsLocale values.
  * @param items Array with creative assets item operations
+ * @param language We recommend using the CatalogsLocale values.
  * @param catalogId Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
  */
 @JsonIgnoreProperties(
@@ -49,11 +49,11 @@ interface CatalogsVerticalBatchRequest {
                 @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "")
         val country: Country
 
-                @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "We recommend using the CatalogsLocale values.")
-        val language: CatalogsVerticalBatchRequest.Language
-
                 @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "Array with creative assets item operations")
         val items: kotlin.collections.List<CatalogsCreativeAssetsBatchItem>
+
+                @get:Schema(example = "null", requiredMode = Schema.RequiredMode.REQUIRED, description = "We recommend using the CatalogsLocale values.")
+        val language: CatalogsVerticalBatchRequest.Language
 
                 @get:Schema(example = "2680059592705", description = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
         val catalogId: kotlin.String? 

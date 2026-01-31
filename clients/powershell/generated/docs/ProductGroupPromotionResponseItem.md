@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**VarData** | [**ProductGroupPromotionResponseElement**](ProductGroupPromotionResponseElement.md) |  | [optional] 
+**VarData** | [**ProductGroupPromotion**](ProductGroupPromotion.md) |  | [optional] 
 **Exceptions** | [**Exception[]**](Exception.md) |  | [optional] 
 
 ## Examples

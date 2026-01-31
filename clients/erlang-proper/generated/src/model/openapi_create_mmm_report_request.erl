@@ -10,13 +10,13 @@
 
 -type openapi_create_mmm_report_request() ::
   [ {'countries', list(openapi_targeting_advertiser_country:openapi_targeting_advertiser_country()) }
-  | {'report_name', binary() }
-  | {'start_date', binary() }
+  | {'columns', list(openapi_m_mm_reporting_column:openapi_m_mm_reporting_column()) }
   | {'end_date', binary() }
   | {'granularity', binary() }
   | {'level', binary() }
+  | {'report_name', binary() }
+  | {'start_date', binary() }
   | {'targeting_types', list(openapi_m_mm_reporting_targeting_type:openapi_m_mm_reporting_targeting_type()) }
-  | {'columns', list(openapi_m_mm_reporting_column:openapi_m_mm_reporting_column()) }
   ].
 
 
@@ -25,13 +25,13 @@ openapi_create_mmm_report_request() ->
 
 openapi_create_mmm_report_request(Fields) ->
   Default = [ {'countries', list(openapi_targeting_advertiser_country:openapi_targeting_advertiser_country()) }
-            , {'report_name', binary() }
-            , {'start_date', binary() }
+            , {'columns', list(openapi_m_mm_reporting_column:openapi_m_mm_reporting_column()) }
             , {'end_date', binary() }
             , {'granularity', elements([<<"DAY">>, <<"WEEK">>]) }
             , {'level', elements([<<"CAMPAIGN_TARGETING">>, <<"AD_GROUP_TARGETING">>]) }
+            , {'report_name', binary() }
+            , {'start_date', binary() }
             , {'targeting_types', list(openapi_m_mm_reporting_targeting_type:openapi_m_mm_reporting_targeting_type(), 1, 5) }
-            , {'columns', list(openapi_m_mm_reporting_column:openapi_m_mm_reporting_column()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

@@ -22,13 +22,13 @@ feeds_list_200_response_t* instantiate_feeds_list_200_response(int include_optio
   feeds_list_200_response_t* feeds_list_200_response = NULL;
   if (include_optional) {
     feeds_list_200_response = feeds_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     feeds_list_200_response = feeds_list_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

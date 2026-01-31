@@ -5,20 +5,27 @@
   "name": "TargetingTemplateUpdateRequest",
   "fields": [
     {
+      "name": "id",
+      "type": "string",
+      "doc": "Targeting template ID"
+    },
+    {
       "name": "operation_type",
       "type": {
         "type": "enum",
         "name": "TargetingTemplateUpdateRequest_operationUnderscoretype",
         "symbols": [
-          "REMOVE"
+          "REMOVE",
+          "UPDATE"
         ]
       },
       "doc": ""
     },
     {
-      "name": "id",
-      "type": "string",
-      "doc": "Targeting template ID"
+      "name": "targeting_attributes",
+      "type": ["null", "model.TargetingSpec"],
+      "doc": "",
+      "default": null
     }
   ]
 

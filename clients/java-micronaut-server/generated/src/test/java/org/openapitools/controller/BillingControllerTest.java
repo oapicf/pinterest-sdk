@@ -3,8 +3,11 @@ package org.openapitools.controller;
 import org.openapitools.model.AdsCreditRedeemRequest;
 import org.openapitools.model.AdsCreditRedeemResponse;
 import org.openapitools.model.AdsCreditsDiscountsGet200Response;
+import org.openapitools.model.BillingInvoiceDownloadResponse;
+import org.openapitools.model.BillingInvoicesGet200Response;
 import org.openapitools.model.BillingProfilesGet200Response;
 import org.openapitools.model.Error;
+import java.time.LocalDate;
 import org.openapitools.model.SSIOAccountResponse;
 import org.openapitools.model.SSIOCreateInsertionOrderRequest;
 import org.openapitools.model.SSIOCreateInsertionOrderResponse;
@@ -63,7 +66,7 @@ public class BillingControllerTest {
      *
      * The method should: Redeem ad credits
      *
-     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      *
      * TODO fill in the parameters and test return value.
      */
@@ -97,7 +100,7 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@2c189612");
+            .accept("[Ljava.lang.String;@1578b99c");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdsCreditRedeemResponse.class);
@@ -111,7 +114,7 @@ public class BillingControllerTest {
      *
      * The method should: Get ads credit discounts
      *
-     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      *
      * TODO fill in the parameters and test return value.
      */
@@ -145,7 +148,7 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@7abbc708");
+            .accept("[Ljava.lang.String;@4032b079");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)); // The query parameter format should be 
@@ -158,11 +161,122 @@ public class BillingControllerTest {
     }
 
     /**
+     * This test is used to validate the implementation of billingInvoiceDownloadGet() method
+     *
+     * The method should: Get download url for a billing invoice
+     *
+     * Get download url for a billing invoice.
+     *
+     * TODO fill in the parameters and test return value.
+     */
+    @Test
+    @Disabled("Not Implemented")
+    void billingInvoiceDownloadGetMethodTest() {
+        // given
+        String adAccountId = "example";
+        String billingInvoiceId = "example";
+
+        // when
+        BillingInvoiceDownloadResponse result = controller.billingInvoiceDownloadGet(adAccountId, billingInvoiceId).block();
+
+        // then
+        Assertions.assertTrue(true);
+    }
+
+    /**
+     * This test is used to check that the api available to client through
+     * '/ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download' to the features of billingInvoiceDownloadGet() works as desired.
+     *
+     * TODO fill in the request parameters and test response.
+     */
+    @Test
+    @Disabled("Not Implemented")
+    void billingInvoiceDownloadGetClientApiTest() throws IOException {
+        // given
+        String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/billing_invoice/{billing_invoice_id}/download").expand(new HashMap<String, Object>(){{
+            // Fill in the path variables
+            put("ad_account_id", "example");
+            put("billing_invoice_id", "example");
+        }});
+        MutableHttpRequest<?> request = HttpRequest.GET(uri)
+            .accept("[Ljava.lang.String;@6c7daaf5");
+
+        // when
+        HttpResponse<?> response = client.toBlocking().exchange(request, BillingInvoiceDownloadResponse.class);
+
+        // then
+        Assertions.assertEquals(HttpStatus.OK, response.status());
+    }
+
+    /**
+     * This test is used to validate the implementation of billingInvoicesGet() method
+     *
+     * The method should: Get billing invoices
+     *
+     * Get billing invoices in the advertiser account.
+     *
+     * TODO fill in the parameters and test return value.
+     */
+    @Test
+    @Disabled("Not Implemented")
+    void billingInvoicesGetMethodTest() {
+        // given
+        String adAccountId = "example";
+        String bookmark = "example";
+        Integer pageSize = 25;
+        String sort = "DUE_DATE";
+        String order = "ASCENDING";
+        String status = "OPEN";
+        String documentType = "INVOICE";
+        LocalDate startDueDate = LocalDate.of(2001, 2, 3);
+        LocalDate endDueDate = LocalDate.of(2001, 2, 3);
+
+        // when
+        BillingInvoicesGet200Response result = controller.billingInvoicesGet(adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate).block();
+
+        // then
+        Assertions.assertTrue(true);
+    }
+
+    /**
+     * This test is used to check that the api available to client through
+     * '/ad_accounts/{ad_account_id}/billing_invoices' to the features of billingInvoicesGet() works as desired.
+     *
+     * TODO fill in the request parameters and test response.
+     */
+    @Test
+    @Disabled("Not Implemented")
+    void billingInvoicesGetClientApiTest() throws IOException {
+        // given
+        String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/billing_invoices").expand(new HashMap<String, Object>(){{
+            // Fill in the path variables
+            put("ad_account_id", "example");
+        }});
+        MutableHttpRequest<?> request = HttpRequest.GET(uri)
+            .accept("[Ljava.lang.String;@15076c00");
+        request.getParameters()
+            .add("bookmark", "example") // The query parameter format should be 
+            .add("page_size", String.valueOf(25)) // The query parameter format should be 
+            .add("sort", "DUE_DATE") // The query parameter format should be 
+            .add("order", "ASCENDING") // The query parameter format should be 
+            .add("status", "OPEN") // The query parameter format should be 
+            .add("document_type", "INVOICE") // The query parameter format should be 
+            .add("start_due_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
+            .add("end_due_date", String.valueOf(LocalDate.of(2001, 2, 3))); // The query parameter format should be 
+
+        // when
+        HttpResponse<?> response = client.toBlocking().exchange(request, BillingInvoicesGet200Response.class);
+
+        // then
+        Assertions.assertEquals(HttpStatus.OK, response.status());
+    }
+
+    /**
      * This test is used to validate the implementation of billingProfilesGet() method
      *
      * The method should: Get billing profiles
      *
-     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      *
      * TODO fill in the parameters and test return value.
      */
@@ -197,7 +311,7 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@101e09d8");
+            .accept("[Ljava.lang.String;@45638365");
         request.getParameters()
             .add("is_active", String.valueOf(false)) // The query parameter format should be 
             .add("bookmark", "example") // The query parameter format should be 
@@ -247,7 +361,7 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@134458bb");
+            .accept("[Ljava.lang.String;@108752c8");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, SSIOAccountResponse.class);
@@ -295,7 +409,7 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@7b04f4c7");
+            .accept("[Ljava.lang.String;@112c682f");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, SSIOCreateInsertionOrderResponse.class);
@@ -343,7 +457,7 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@5f23ef28");
+            .accept("[Ljava.lang.String;@3f656166");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, SSIOEditInsertionOrderResponse.class);
@@ -391,7 +505,7 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@3f137ddd");
+            .accept("[Ljava.lang.String;@66c4b544");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)); // The query parameter format should be 
@@ -442,7 +556,7 @@ public class BillingControllerTest {
             put("pin_order_id", "0Q01N0000015hekSVDFDC");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@ea37b04");
+            .accept("[Ljava.lang.String;@4c7faa46");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, SSIOInsertionOrderStatusResponse.class);
@@ -491,7 +605,7 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@52dd14db");
+            .accept("[Ljava.lang.String;@3e60def6");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 

@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CUSTOMLABEL3** | [**CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  | 
+**CUSTOMLABEL3** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  | 
 
 ## Methods
 
 ### NewCustomLabel3Filter
 
-`func NewCustomLabel3Filter(cUSTOMLABEL3 CatalogsProductGroupMultipleStringCriteria, ) *CustomLabel3Filter`
+`func NewCustomLabel3Filter(cUSTOMLABEL3 CatalogsProductGroupFilterOperatorTypeCriteria, ) *CustomLabel3Filter`
 
 NewCustomLabel3Filter instantiates a new CustomLabel3Filter object
 This constructor will assign default values to properties that have it defined,
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCUSTOMLABEL3
 
-`func (o *CustomLabel3Filter) GetCUSTOMLABEL3() CatalogsProductGroupMultipleStringCriteria`
+`func (o *CustomLabel3Filter) GetCUSTOMLABEL3() CatalogsProductGroupFilterOperatorTypeCriteria`
 
 GetCUSTOMLABEL3 returns the CUSTOMLABEL3 field if non-nil, zero value otherwise.
 
 ### GetCUSTOMLABEL3Ok
 
-`func (o *CustomLabel3Filter) GetCUSTOMLABEL3Ok() (*CatalogsProductGroupMultipleStringCriteria, bool)`
+`func (o *CustomLabel3Filter) GetCUSTOMLABEL3Ok() (*CatalogsProductGroupFilterOperatorTypeCriteria, bool)`
 
 GetCUSTOMLABEL3Ok returns a tuple with the CUSTOMLABEL3 field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCUSTOMLABEL3
 
-`func (o *CustomLabel3Filter) SetCUSTOMLABEL3(v CatalogsProductGroupMultipleStringCriteria)`
+`func (o *CustomLabel3Filter) SetCUSTOMLABEL3(v CatalogsProductGroupFilterOperatorTypeCriteria)`
 
 SetCUSTOMLABEL3 sets CUSTOMLABEL3 field to given value.
 

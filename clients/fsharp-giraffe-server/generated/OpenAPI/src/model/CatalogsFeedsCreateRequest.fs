@@ -17,15 +17,15 @@ module CatalogsFeedsCreateRequest =
 
 
   type CatalogsFeedsCreateRequest = {
-    DefaultCurrency : NullableCurrency;
-    Name : string;
-    Format : CatalogsFormat;
-    DefaultLocale : CatalogsFeedsCreateRequestDefaultLocale;
     Credentials : CatalogsFeedCredentials;
-    Location : string;
-    PreferredProcessingSchedule : CatalogsFeedProcessingSchedule;
-    DefaultCountry : Country;
     DefaultAvailability : ProductAvailabilityType;
+    DefaultCountry : Country;
+    DefaultCurrency : NullableCurrency;
+    DefaultLocale : CatalogsFeedsCreateRequestDefaultLocale;
+    Format : CatalogsFormat;
+    Location : string;
+    Name : string;
+    PreferredProcessingSchedule : CatalogsFeedProcessingSchedule;
     Status : CatalogsStatus;
   }
   //#endregion

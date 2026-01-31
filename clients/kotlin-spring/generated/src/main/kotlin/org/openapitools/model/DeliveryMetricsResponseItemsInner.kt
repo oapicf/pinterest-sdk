@@ -17,15 +17,12 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param name Metric's name.
  * @param category Category name
  * @param definition How the metric is defined.
  * @param displayName Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.
+ * @param name Metric's name.
  */
 data class DeliveryMetricsResponseItemsInner(
-
-    @Schema(example = "AD_GROUP_ID", description = "Metric's name.")
-    @get:JsonProperty("name") val name: kotlin.String? = null,
 
     @Schema(example = "ADS", description = "Category name")
     @get:JsonProperty("category") val category: DeliveryMetricsResponseItemsInner.Category? = null,
@@ -34,7 +31,10 @@ data class DeliveryMetricsResponseItemsInner(
     @get:JsonProperty("definition") val definition: kotlin.String? = null,
 
     @Schema(example = "Ad group ID", description = "Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.")
-    @get:JsonProperty("display_name") val displayName: kotlin.String? = null
+    @get:JsonProperty("display_name") val displayName: kotlin.String? = null,
+
+    @Schema(example = "AD_GROUP_ID", description = "Metric's name.")
+    @get:JsonProperty("name") val name: kotlin.String? = null
 ) {
 
     /**

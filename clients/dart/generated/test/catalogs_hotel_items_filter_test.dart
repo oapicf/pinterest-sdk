@@ -16,6 +16,12 @@ void main() {
   // final instance = CatalogsHotelItemsFilter();
 
   group('test CatalogsHotelItemsFilter', () {
+    // Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+    // String catalogId
+    test('to test the property `catalogId`', () async {
+      // TODO
+    });
+
     // String catalogType
     test('to test the property `catalogType`', () async {
       // TODO
@@ -23,12 +29,6 @@ void main() {
 
     // List<String> hotelIds (default value: const [])
     test('to test the property `hotelIds`', () async {
-      // TODO
-    });
-
-    // Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
-    // String catalogId
-    test('to test the property `catalogId`', () async {
       // TODO
     });
 

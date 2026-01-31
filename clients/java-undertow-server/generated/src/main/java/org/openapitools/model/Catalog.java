@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -26,14 +26,14 @@ import org.openapitools.model.CatalogsType;
  */
 
 @ApiModel(description = "Catalog entity")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class Catalog   {
   
   private Date createdAt;
   private String id;
   private Date updatedAt;
-  private String name;
   private CatalogsType catalogType;
+  private String name;
 
   /**
    */
@@ -88,6 +88,23 @@ public class Catalog   {
   }
 
   /**
+   */
+  public Catalog catalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("catalog_type")
+  public CatalogsType getCatalogType() {
+    return catalogType;
+  }
+  public void setCatalogType(CatalogsType catalogType) {
+    this.catalogType = catalogType;
+  }
+
+  /**
    * A human-friendly name associated to a catalog entity.
    */
   public Catalog name(String name) {
@@ -105,23 +122,6 @@ public class Catalog   {
     this.name = name;
   }
 
-  /**
-   */
-  public Catalog catalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("catalog_type")
-  public CatalogsType getCatalogType() {
-    return catalogType;
-  }
-  public void setCatalogType(CatalogsType catalogType) {
-    this.catalogType = catalogType;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -135,13 +135,13 @@ public class Catalog   {
     return Objects.equals(createdAt, catalog.createdAt) &&
         Objects.equals(id, catalog.id) &&
         Objects.equals(updatedAt, catalog.updatedAt) &&
-        Objects.equals(name, catalog.name) &&
-        Objects.equals(catalogType, catalog.catalogType);
+        Objects.equals(catalogType, catalog.catalogType) &&
+        Objects.equals(name, catalog.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, id, updatedAt, name, catalogType);
+    return Objects.hash(createdAt, id, updatedAt, catalogType, name);
   }
 
   @Override
@@ -152,8 +152,8 @@ public class Catalog   {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

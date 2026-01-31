@@ -18,11 +18,13 @@ typedef struct catalogs_product_group_filter_keys_t catalogs_product_group_filte
 #include "availability_filter.h"
 #include "brand_filter.h"
 #include "catalogs_product_group_currency_criteria.h"
+#include "catalogs_product_group_filter_operator_type_criteria.h"
 #include "catalogs_product_group_multiple_gender_criteria.h"
 #include "catalogs_product_group_multiple_media_types_criteria.h"
 #include "catalogs_product_group_multiple_string_criteria.h"
 #include "catalogs_product_group_multiple_string_list_criteria.h"
 #include "catalogs_product_group_pricing_criteria.h"
+#include "catalogs_product_group_uint32_criteria.h"
 #include "condition_filter.h"
 #include "currency_filter.h"
 #include "custom_label0_filter.h"
@@ -30,6 +32,11 @@ typedef struct catalogs_product_group_filter_keys_t catalogs_product_group_filte
 #include "custom_label2_filter.h"
 #include "custom_label3_filter.h"
 #include "custom_label4_filter.h"
+#include "custom_number0_filter.h"
+#include "custom_number1_filter.h"
+#include "custom_number2_filter.h"
+#include "custom_number3_filter.h"
+#include "custom_number4_filter.h"
 #include "gender_filter.h"
 #include "google_product_category0_filter.h"
 #include "google_product_category1_filter.h"
@@ -49,6 +56,7 @@ typedef struct catalogs_product_group_filter_keys_t catalogs_product_group_filte
 #include "product_type2_filter.h"
 #include "product_type3_filter.h"
 #include "product_type4_filter.h"
+#include "title_keywords_filter.h"
 
 
 
@@ -60,11 +68,11 @@ typedef struct catalogs_product_group_filter_keys_t {
     catalogs_product_group_multiple_string_criteria_t *availability; //object
     catalogs_product_group_multiple_string_criteria_t *brand; //object
     catalogs_product_group_multiple_string_criteria_t *condition; //object
-    catalogs_product_group_multiple_string_criteria_t *custom_label_0; //object
-    catalogs_product_group_multiple_string_criteria_t *custom_label_1; //object
-    catalogs_product_group_multiple_string_criteria_t *custom_label_2; //object
-    catalogs_product_group_multiple_string_criteria_t *custom_label_3; //object
-    catalogs_product_group_multiple_string_criteria_t *custom_label_4; //object
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_0; //object
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_1; //object
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_2; //object
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_3; //object
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_4; //object
     catalogs_product_group_multiple_string_criteria_t *item_group_id; //object
     catalogs_product_group_multiple_gender_criteria_t *gender; //object
     catalogs_product_group_multiple_media_types_criteria_t *media_type; //object
@@ -81,6 +89,12 @@ typedef struct catalogs_product_group_filter_keys_t {
     catalogs_product_group_multiple_string_list_criteria_t *google_product_category_1; //object
     catalogs_product_group_multiple_string_list_criteria_t *google_product_category_0; //object
     catalogs_product_group_multiple_string_criteria_t *product_group; //object
+    catalogs_product_group_uint32_criteria_t *custom_number_0; //object
+    catalogs_product_group_uint32_criteria_t *custom_number_1; //object
+    catalogs_product_group_uint32_criteria_t *custom_number_2; //object
+    catalogs_product_group_uint32_criteria_t *custom_number_3; //object
+    catalogs_product_group_uint32_criteria_t *custom_number_4; //object
+    catalogs_product_group_multiple_string_criteria_t *title_keywords; //object
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_product_group_filter_keys_t;
@@ -93,11 +107,11 @@ __attribute__((deprecated)) catalogs_product_group_filter_keys_t *catalogs_produ
     catalogs_product_group_multiple_string_criteria_t *availability,
     catalogs_product_group_multiple_string_criteria_t *brand,
     catalogs_product_group_multiple_string_criteria_t *condition,
-    catalogs_product_group_multiple_string_criteria_t *custom_label_0,
-    catalogs_product_group_multiple_string_criteria_t *custom_label_1,
-    catalogs_product_group_multiple_string_criteria_t *custom_label_2,
-    catalogs_product_group_multiple_string_criteria_t *custom_label_3,
-    catalogs_product_group_multiple_string_criteria_t *custom_label_4,
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_0,
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_1,
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_2,
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_3,
+    catalogs_product_group_filter_operator_type_criteria_t *custom_label_4,
     catalogs_product_group_multiple_string_criteria_t *item_group_id,
     catalogs_product_group_multiple_gender_criteria_t *gender,
     catalogs_product_group_multiple_media_types_criteria_t *media_type,
@@ -113,7 +127,13 @@ __attribute__((deprecated)) catalogs_product_group_filter_keys_t *catalogs_produ
     catalogs_product_group_multiple_string_list_criteria_t *google_product_category_2,
     catalogs_product_group_multiple_string_list_criteria_t *google_product_category_1,
     catalogs_product_group_multiple_string_list_criteria_t *google_product_category_0,
-    catalogs_product_group_multiple_string_criteria_t *product_group
+    catalogs_product_group_multiple_string_criteria_t *product_group,
+    catalogs_product_group_uint32_criteria_t *custom_number_0,
+    catalogs_product_group_uint32_criteria_t *custom_number_1,
+    catalogs_product_group_uint32_criteria_t *custom_number_2,
+    catalogs_product_group_uint32_criteria_t *custom_number_3,
+    catalogs_product_group_uint32_criteria_t *custom_number_4,
+    catalogs_product_group_multiple_string_criteria_t *title_keywords
 );
 
 void catalogs_product_group_filter_keys_free(catalogs_product_group_filter_keys_t *catalogs_product_group_filter_keys);

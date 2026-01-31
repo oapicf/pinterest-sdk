@@ -17,18 +17,18 @@ import { CatalogsProductGroupFiltersRequest } from './catalogsProductGroupFilter
  */
 export interface CatalogsRetailProductGroupCreateRequest { 
     /**
-     * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
-     */
-    catalog_type: CatalogsRetailProductGroupCreateRequest.CatalogTypeEnum;
-    name: string;
-    description?: string | null;
-    filters: CatalogsProductGroupFiltersRequest;
-    /**
      * Catalog id pertaining to the retail product group.
      */
     catalog_id: string;
-    country: Country;
-    locale: CatalogsLocale;
+    /**
+     * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
+     */
+    catalog_type: CatalogsRetailProductGroupCreateRequest.CatalogTypeEnum;
+    country?: Country;
+    description?: string | null;
+    filters: CatalogsProductGroupFiltersRequest;
+    locale?: CatalogsLocale;
+    name: string;
 }
 export namespace CatalogsRetailProductGroupCreateRequest {
     export const CatalogTypeEnum = {

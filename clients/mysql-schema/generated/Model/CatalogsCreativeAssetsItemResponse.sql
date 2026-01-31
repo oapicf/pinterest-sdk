@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsCreativeAssetsItemResponse`
 --
-SELECT `catalog_type`, `creative_assets_id`, `pins`, `attributes` FROM `CatalogsCreativeAssetsItemResponse` WHERE 1;
+SELECT `attributes`, `catalog_type`, `creative_assets_id`, `pins` FROM `CatalogsCreativeAssetsItemResponse` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsCreativeAssetsItemResponse`
 --
-INSERT INTO `CatalogsCreativeAssetsItemResponse`(`catalog_type`, `creative_assets_id`, `pins`, `attributes`) VALUES (?, ?, ?, ?);
+INSERT INTO `CatalogsCreativeAssetsItemResponse`(`attributes`, `catalog_type`, `creative_assets_id`, `pins`) VALUES (?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsCreativeAssetsItemResponse`
 --
-UPDATE `CatalogsCreativeAssetsItemResponse` SET `catalog_type` = ?, `creative_assets_id` = ?, `pins` = ?, `attributes` = ? WHERE 1;
+UPDATE `CatalogsCreativeAssetsItemResponse` SET `attributes` = ?, `catalog_type` = ?, `creative_assets_id` = ?, `pins` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsCreativeAssetsItemResponse`

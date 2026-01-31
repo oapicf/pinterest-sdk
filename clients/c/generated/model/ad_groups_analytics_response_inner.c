@@ -54,11 +54,10 @@ cJSON *ad_groups_analytics_response_inner_convertToJSON(ad_groups_analytics_resp
     cJSON *item = cJSON_CreateObject();
 
     // ad_groups_analytics_response_inner->ad_group_id
-    if (!ad_groups_analytics_response_inner->ad_group_id) {
-        goto fail;
-    }
+    if(ad_groups_analytics_response_inner->ad_group_id) {
     if(cJSON_AddStringToObject(item, "AD_GROUP_ID", ad_groups_analytics_response_inner->ad_group_id) == NULL) {
     goto fail; //String
+    }
     }
 
 
@@ -86,14 +85,11 @@ ad_groups_analytics_response_inner_t *ad_groups_analytics_response_inner_parseFr
     if (cJSON_IsNull(ad_group_id)) {
         ad_group_id = NULL;
     }
-    if (!ad_group_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(ad_group_id))
+    if (ad_group_id) { 
+    if(!cJSON_IsString(ad_group_id) && !cJSON_IsNull(ad_group_id))
     {
     goto end; //String
+    }
     }
 
     // ad_groups_analytics_response_inner->date
@@ -110,7 +106,7 @@ ad_groups_analytics_response_inner_t *ad_groups_analytics_response_inner_parseFr
 
 
     ad_groups_analytics_response_inner_local_var = ad_groups_analytics_response_inner_create_internal (
-        strdup(ad_group_id->valuestring),
+        ad_group_id && !cJSON_IsNull(ad_group_id) ? strdup(ad_group_id->valuestring) : NULL,
         date ? strdup(date->valuestring) : NULL
         );
 

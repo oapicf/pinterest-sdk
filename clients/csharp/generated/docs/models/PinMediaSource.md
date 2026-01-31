@@ -1,5 +1,5 @@
 # Org.OpenAPITools.Model.PinMediaSource
-Pin media source.
+Pin media source that can be an image, video, or a mix of both passed in as a request.
 
 ## Properties
 

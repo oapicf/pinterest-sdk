@@ -15,25 +15,25 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * The result, and link out, based on the user’s choice.
- * @param organicPinId 
  * @param androidDeepLink 
- * @param iosDeepLink 
  * @param destinationUrl 
+ * @param iosDeepLink 
+ * @param organicPinId 
  * @param resultId 
  */
 data class QuizPinResult(
 
     @Schema(example = "null", description = "")
-    @get:JsonProperty("organic_pin_id") val organicPinId: kotlin.String? = null,
+    @get:JsonProperty("android_deep_link") val androidDeepLink: kotlin.String? = null,
 
     @Schema(example = "null", description = "")
-    @get:JsonProperty("android_deep_link") val androidDeepLink: kotlin.String? = null,
+    @get:JsonProperty("destination_url") val destinationUrl: kotlin.String? = null,
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("ios_deep_link") val iosDeepLink: kotlin.String? = null,
 
     @Schema(example = "null", description = "")
-    @get:JsonProperty("destination_url") val destinationUrl: kotlin.String? = null,
+    @get:JsonProperty("organic_pin_id") val organicPinId: kotlin.String? = null,
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("result_id") val resultId: java.math.BigDecimal? = null

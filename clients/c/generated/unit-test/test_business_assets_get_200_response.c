@@ -22,13 +22,13 @@ business_assets_get_200_response_t* instantiate_business_assets_get_200_response
   business_assets_get_200_response_t* business_assets_get_200_response = NULL;
   if (include_optional) {
     business_assets_get_200_response = business_assets_get_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     business_assets_get_200_response = business_assets_get_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

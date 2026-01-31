@@ -2,7 +2,7 @@ package org.openapitools.server.model
 
 
 /**
- * Media upload status
+ * = Media upload status =
  *
 */
 final case class MediaUploadStatus (

@@ -14,10 +14,6 @@
  */
 export interface KeywordMetrics { 
     /**
-     * Average cost per click
-     */
-    avg_cpc_in_micro_currency?: number;
-    /**
      * Keyword\'s search frequency. This value is based on keyword frequency in pepsi client response
      */
     keyword_query_volume?: string;

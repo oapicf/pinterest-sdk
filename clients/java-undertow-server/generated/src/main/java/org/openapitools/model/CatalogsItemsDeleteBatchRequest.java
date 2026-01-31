@@ -3,7 +3,7 @@
  *
  * Pinterest's REST API
  *
- * OpenAPI document version: 5.14.0
+ * OpenAPI document version: 5.23.0
  * Maintained by: blah+oapicf@cliffano.com
  *
  * AUTO-GENERATED FILE, DO NOT MODIFY!
@@ -30,10 +30,11 @@ import org.openapitools.model.ItemDeleteBatchRecord;
  */
 
 @ApiModel(description = "Request object to delete catalogs items")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-31T04:53:14.867699604Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItemsDeleteBatchRequest   {
   
   private Country country;
+  private List<ItemDeleteBatchRecord> items = new ArrayList<>();
 
 
   public enum LanguageEnum {
@@ -160,7 +161,6 @@ public class CatalogsItemsDeleteBatchRequest   {
 
   private LanguageEnum language;
   private BatchOperation operation;
-  private List<ItemDeleteBatchRecord> items = new ArrayList<>();
 
   /**
    */
@@ -177,6 +177,24 @@ public class CatalogsItemsDeleteBatchRequest   {
   }
   public void setCountry(Country country) {
     this.country = country;
+  }
+
+  /**
+   * Array with catalogs items
+   */
+  public CatalogsItemsDeleteBatchRequest items(List<ItemDeleteBatchRecord> items) {
+    this.items = items;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "Array with catalogs items")
+  @JsonProperty("items")
+  public List<ItemDeleteBatchRecord> getItems() {
+    return items;
+  }
+  public void setItems(List<ItemDeleteBatchRecord> items) {
+    this.items = items;
   }
 
   /**
@@ -214,24 +232,6 @@ public class CatalogsItemsDeleteBatchRequest   {
     this.operation = operation;
   }
 
-  /**
-   * Array with catalogs items
-   */
-  public CatalogsItemsDeleteBatchRequest items(List<ItemDeleteBatchRecord> items) {
-    this.items = items;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "Array with catalogs items")
-  @JsonProperty("items")
-  public List<ItemDeleteBatchRecord> getItems() {
-    return items;
-  }
-  public void setItems(List<ItemDeleteBatchRecord> items) {
-    this.items = items;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -243,14 +243,14 @@ public class CatalogsItemsDeleteBatchRequest   {
     }
     CatalogsItemsDeleteBatchRequest catalogsItemsDeleteBatchRequest = (CatalogsItemsDeleteBatchRequest) o;
     return Objects.equals(country, catalogsItemsDeleteBatchRequest.country) &&
+        Objects.equals(items, catalogsItemsDeleteBatchRequest.items) &&
         Objects.equals(language, catalogsItemsDeleteBatchRequest.language) &&
-        Objects.equals(operation, catalogsItemsDeleteBatchRequest.operation) &&
-        Objects.equals(items, catalogsItemsDeleteBatchRequest.items);
+        Objects.equals(operation, catalogsItemsDeleteBatchRequest.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, language, operation, items);
+    return Objects.hash(country, items, language, operation);
   }
 
   @Override
@@ -259,9 +259,9 @@ public class CatalogsItemsDeleteBatchRequest   {
     sb.append("class CatalogsItemsDeleteBatchRequest {\n");
     
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

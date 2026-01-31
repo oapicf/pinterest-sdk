@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**LeadFormResponse[]**](LeadFormResponse.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**LeadFormResponse[]**](LeadFormResponse.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$LeadFormsList200Response = Initialize-PSOpenAPIToolsLeadFormsList200Response  -Items null `
- -Bookmark null
+$LeadFormsList200Response = Initialize-PSOpenAPIToolsLeadFormsList200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

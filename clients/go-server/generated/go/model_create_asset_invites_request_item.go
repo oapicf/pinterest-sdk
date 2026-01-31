@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -17,21 +17,21 @@ package openapi
 // CreateAssetInvitesRequestItem - Object declaring an asset role update to an invite.
 type CreateAssetInvitesRequestItem struct {
 
+	// An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
+	AssetIdToPermissions map[string][]Permissions `json:"asset_id_to_permissions"`
+
 	// Unique identifier of an invite.
 	InviteId string `json:"invite_id" validate:"regexp=^\\\\d+$"`
 
 	InviteType InviteType `json:"invite_type"`
-
-	// An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
-	AssetIdToPermissions map[string][]Permissions `json:"asset_id_to_permissions"`
 }
 
 // AssertCreateAssetInvitesRequestItemRequired checks if the required fields are not zero-ed
 func AssertCreateAssetInvitesRequestItemRequired(obj CreateAssetInvitesRequestItem) error {
 	elements := map[string]interface{}{
+		"asset_id_to_permissions": obj.AssetIdToPermissions,
 		"invite_id": obj.InviteId,
 		"invite_type": obj.InviteType,
-		"asset_id_to_permissions": obj.AssetIdToPermissions,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

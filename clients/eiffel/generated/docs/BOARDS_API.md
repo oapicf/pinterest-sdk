@@ -182,19 +182,19 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **boards_create**
-> boards_create (board: BOARD ; ad_account_id:  detachable STRING_32 ): detachable BOARD
+> boards_create (board_create: BOARD_CREATE ; ad_account_id:  detachable STRING_32 ): detachable BOARD
 
 
 Create board
 
-Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **board** | [**BOARD**](BOARD.md)| Create a board using a single board json object. | 
+ **board_create** | [**BOARD_CREATE**](BOARD_CREATE.md)|  | 
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 
@@ -218,14 +218,14 @@ Name | Type | Description  | Notes
 
 Delete board
 
-Delete a board owned by the \"operation user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Delete a board owned by the \"operation user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **board_id** | **STRING_32**| Unique identifier of a board. | [default to null]
+ **board_id** | **STRING_32**|  | [default to null]
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
@@ -249,14 +249,14 @@ Name | Type | Description  | Notes
 
 Get board
 
-Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Get a board owned by the operation user_account - or a group board that has been shared with this account. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **board_id** | **STRING_32**| Unique identifier of a board. | [default to null]
+ **board_id** | **STRING_32**|  | [default to null]
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
@@ -275,12 +275,12 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **boards_list**
-> boards_list (ad_account_id:  detachable STRING_32 ; bookmark:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ; privacy:  detachable STRING_32 ): detachable BOARDS_LIST_200_RESPONSE
+> boards_list (ad_account_id:  detachable STRING_32 ; privacy:  detachable BOARD_PRIVACY_FILTER ; bookmark:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ): detachable BOARDS_LIST_200_RESPONSE
 
 
 List boards
 
-Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
+Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. * If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
 
 
 ### Parameters
@@ -288,9 +288,9 @@ Get a list of the boards owned by the \"operation user_account\" + group boards 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [optional] [default to null]
+ **privacy** | [**BOARD_PRIVACY_FILTER**](.md)| The privacy level of the board | [optional] [default to null]
  **bookmark** | **STRING_32**| Cursor used to fetch the next page of items | [optional] [default to null]
- **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **privacy** | **STRING_32**| Privacy setting for a board. | [optional] [default to null]
+ **page_size** | **INTEGER_32**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25]
 
 ### Return type
 
@@ -308,7 +308,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **boards_list_pins**
-> boards_list_pins (board_id: STRING_32 ; bookmark:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ; creative_types:  detachable LIST [STRING_32] ; ad_account_id:  detachable STRING_32 ; pin_metrics:  detachable BOOLEAN ): detachable BOARDS_LIST_PINS_200_RESPONSE
+> boards_list_pins (board_id: STRING_32 ; bookmark:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ; creative_types:  detachable LIST [CREATIVE_TYPE] ; ad_account_id:  detachable STRING_32 ; pin_metrics:  detachable BOOLEAN ): detachable BOARDS_LIST_PINS_200_RESPONSE
 
 
 List Pins on board
@@ -323,9 +323,9 @@ Name | Type | Description  | Notes
  **board_id** | **STRING_32**| Unique identifier of a board. | [default to null]
  **bookmark** | **STRING_32**| Cursor used to fetch the next page of items | [optional] [default to null]
  **page_size** | **INTEGER_32**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]
- **creative_types** | [**LIST [STRING_32]**](STRING_32.md)| Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] [default to null]
+ **creative_types** | [**LIST [CREATIVE_TYPE]**](CREATIVE_TYPE.md)| Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. | [optional] [default to null]
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [optional] [default to null]
- **pin_metrics** | **BOOLEAN**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false]
+ **pin_metrics** | **BOOLEAN**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false]
 
 ### Return type
 
@@ -343,29 +343,29 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **boards_update**
-> boards_update (board_id: STRING_32 ; board_update: BOARD_UPDATE ; ad_account_id:  detachable STRING_32 ): detachable BOARD
+> boards_update (board_id: STRING_32 ; board_with_update_privacy_update: BOARD_WITH_UPDATE_PRIVACY_UPDATE ; ad_account_id:  detachable STRING_32 ): detachable BOARD_WITH_UPDATE_PRIVACY
 
 
 Update board
 
-Update a board owned by the \"operating user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
+Update a board owned by the \"operating user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
 
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **board_id** | **STRING_32**| Unique identifier of a board. | [default to null]
- **board_update** | [**BOARD_UPDATE**](BOARD_UPDATE.md)| Update a board. | 
+ **board_id** | **STRING_32**|  | [default to null]
+ **board_with_update_privacy_update** | [**BOARD_WITH_UPDATE_PRIVACY_UPDATE**](BOARD_WITH_UPDATE_PRIVACY_UPDATE.md)|  | 
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [optional] [default to null]
 
 ### Return type
 
-[**BOARD**](Board.md)
+[**BOARD_WITH_UPDATE_PRIVACY**](BoardWithUpdatePrivacy.md)
 
 ### Authorization
 
-[pinterest_oauth2](../README.md#pinterest_oauth2)
+[pinterest_oauth2](../README.md#pinterest_oauth2), [client_credentials](../README.md#client_credentials)
 
 ### HTTP request headers
 

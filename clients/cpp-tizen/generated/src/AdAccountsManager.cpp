@@ -96,7 +96,7 @@ static bool adAccountAnalyticsProcessor(MemoryStruct_s p_chunk, long code, char*
 }
 
 static bool adAccountAnalyticsHelper(char * accessToken,
-	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, 
+	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, ReportingTimeZone reportingTimezone, 
 	void(* handler)(std::list<AdAccountAnalyticsResponse_inner>, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -159,6 +159,13 @@ static bool adAccountAnalyticsHelper(char * accessToken,
 		queryParams.erase("conversion_report_time");
 	}
 
+
+	itemAtq = stringify(&reportingTimezone, "ReportingTimeZone");
+	queryParams.insert(pair<string, string>("reporting_timezone", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("reporting_timezone");
+	}
+
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
@@ -219,22 +226,22 @@ static bool adAccountAnalyticsHelper(char * accessToken,
 
 
 bool AdAccountsManager::adAccountAnalyticsAsync(char * accessToken,
-	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, 
+	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, ReportingTimeZone reportingTimezone, 
 	void(* handler)(std::list<AdAccountAnalyticsResponse_inner>, Error, void* )
 	, void* userData)
 {
 	return adAccountAnalyticsHelper(accessToken,
-	adAccountId, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, 
+	adAccountId, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone, 
 	handler, userData, true);
 }
 
 bool AdAccountsManager::adAccountAnalyticsSync(char * accessToken,
-	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, 
+	std::string adAccountId, Date startDate, Date endDate, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, ReportingTimeZone reportingTimezone, 
 	void(* handler)(std::list<AdAccountAnalyticsResponse_inner>, Error, void* )
 	, void* userData)
 {
 	return adAccountAnalyticsHelper(accessToken,
-	adAccountId, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, 
+	adAccountId, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone, 
 	handler, userData, false);
 }
 
@@ -299,7 +306,7 @@ static bool adAccountTargetingAnalyticsGetProcessor(MemoryStruct_s p_chunk, long
 }
 
 static bool adAccountTargetingAnalyticsGetHelper(char * accessToken,
-	std::string adAccountId, Date startDate, Date endDate, std::list<AdsAnalyticsTargetingType> targetingTypes, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, ConversionReportAttributionType attributionTypes, 
+	std::string adAccountId, Date startDate, Date endDate, std::list<AdsAnalyticsTargetingType> targetingTypes, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, std::list<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone, 
 	void(* handler)(MetricsResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -368,11 +375,20 @@ static bool adAccountTargetingAnalyticsGetHelper(char * accessToken,
 		queryParams.erase("conversion_report_time");
 	}
 
+	for (std::list
+	<ConversionReportAttributionType>::iterator queryIter = attributionTypes.begin(); queryIter != attributionTypes.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "ConversionReportAttributionType");
+		if( itemAt.empty()){
+			continue;
+		}
+		queryParams.insert(pair<string, string>("attributionTypes", itemAt));
+	}
+	
 
-	itemAtq = stringify(&attributionTypes, "ConversionReportAttributionType");
-	queryParams.insert(pair<string, string>("attribution_types", itemAtq));
+	itemAtq = stringify(&reportingTimezone, "ReportingTimeZone");
+	queryParams.insert(pair<string, string>("reporting_timezone", itemAtq));
 	if( itemAtq.empty()==true){
-		queryParams.erase("attribution_types");
+		queryParams.erase("reporting_timezone");
 	}
 
 	string mBody = "";
@@ -435,22 +451,22 @@ static bool adAccountTargetingAnalyticsGetHelper(char * accessToken,
 
 
 bool AdAccountsManager::adAccountTargetingAnalyticsGetAsync(char * accessToken,
-	std::string adAccountId, Date startDate, Date endDate, std::list<AdsAnalyticsTargetingType> targetingTypes, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, ConversionReportAttributionType attributionTypes, 
+	std::string adAccountId, Date startDate, Date endDate, std::list<AdsAnalyticsTargetingType> targetingTypes, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, std::list<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone, 
 	void(* handler)(MetricsResponse, Error, void* )
 	, void* userData)
 {
 	return adAccountTargetingAnalyticsGetHelper(accessToken,
-	adAccountId, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, 
+	adAccountId, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone, 
 	handler, userData, true);
 }
 
 bool AdAccountsManager::adAccountTargetingAnalyticsGetSync(char * accessToken,
-	std::string adAccountId, Date startDate, Date endDate, std::list<AdsAnalyticsTargetingType> targetingTypes, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, ConversionReportAttributionType attributionTypes, 
+	std::string adAccountId, Date startDate, Date endDate, std::list<AdsAnalyticsTargetingType> targetingTypes, std::list<std::string> columns, Granularity granularity, int clickWindowDays, int engagementWindowDays, int viewWindowDays, std::string conversionReportTime, std::list<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone, 
 	void(* handler)(MetricsResponse, Error, void* )
 	, void* userData)
 {
 	return adAccountTargetingAnalyticsGetHelper(accessToken,
-	adAccountId, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, 
+	adAccountId, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone, 
 	handler, userData, false);
 }
 
@@ -495,6 +511,36 @@ static bool adAccountsCreateProcessor(MemoryStruct_s p_chunk, long code, char* e
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -515,7 +561,7 @@ static bool adAccountsCreateProcessor(MemoryStruct_s p_chunk, long code, char* e
 }
 
 static bool adAccountsCreateHelper(char * accessToken,
-	std::shared_ptr<AdAccountCreateRequest> adAccountCreateRequest, 
+	std::shared_ptr<AdAccountCreate> adAccountCreate, 
 	void(* handler)(AdAccount, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -536,11 +582,11 @@ static bool adAccountsCreateHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("AdAccountCreateRequest")) {
-		node = converttoJson(&adAccountCreateRequest, "AdAccountCreateRequest", "");
+	if (isprimitive("AdAccountCreate")) {
+		node = converttoJson(&adAccountCreate, "AdAccountCreate", "");
 	}
 	
-	char *jsonStr =  adAccountCreateRequest.toJson();
+	char *jsonStr =  adAccountCreate.toJson();
 	node = json_from_string(jsonStr, NULL);
 	g_free(static_cast<gpointer>(jsonStr));
 	
@@ -599,22 +645,22 @@ static bool adAccountsCreateHelper(char * accessToken,
 
 
 bool AdAccountsManager::adAccountsCreateAsync(char * accessToken,
-	std::shared_ptr<AdAccountCreateRequest> adAccountCreateRequest, 
+	std::shared_ptr<AdAccountCreate> adAccountCreate, 
 	void(* handler)(AdAccount, Error, void* )
 	, void* userData)
 {
 	return adAccountsCreateHelper(accessToken,
-	adAccountCreateRequest, 
+	adAccountCreate, 
 	handler, userData, true);
 }
 
 bool AdAccountsManager::adAccountsCreateSync(char * accessToken,
-	std::shared_ptr<AdAccountCreateRequest> adAccountCreateRequest, 
+	std::shared_ptr<AdAccountCreate> adAccountCreate, 
 	void(* handler)(AdAccount, Error, void* )
 	, void* userData)
 {
 	return adAccountsCreateHelper(accessToken,
-	adAccountCreateRequest, 
+	adAccountCreate, 
 	handler, userData, false);
 }
 
@@ -648,6 +694,31 @@ static bool adAccountsGetProcessor(MemoryStruct_s p_chunk, long code, char* erro
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -816,6 +887,31 @@ static bool adAccountsListProcessor(MemoryStruct_s p_chunk, long code, char* err
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -836,7 +932,7 @@ static bool adAccountsListProcessor(MemoryStruct_s p_chunk, long code, char* err
 }
 
 static bool adAccountsListHelper(char * accessToken,
-	std::string bookmark, int pageSize, bool includeSharedAccounts, 
+	bool includeSharedAccounts, std::string bookmark, int pageSize, 
 	void(* handler)(Ad_accounts_list_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -854,6 +950,13 @@ static bool adAccountsListHelper(char * accessToken,
 	string itemAtq;
 	
 
+	itemAtq = stringify(&includeSharedAccounts, "bool");
+	queryParams.insert(pair<string, string>("include_shared_accounts", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("include_shared_accounts");
+	}
+
+
 	itemAtq = stringify(&bookmark, "std::string");
 	queryParams.insert(pair<string, string>("bookmark", itemAtq));
 	if( itemAtq.empty()==true){
@@ -865,13 +968,6 @@ static bool adAccountsListHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("page_size", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("page_size");
-	}
-
-
-	itemAtq = stringify(&includeSharedAccounts, "bool");
-	queryParams.insert(pair<string, string>("include_shared_accounts", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("include_shared_accounts");
 	}
 
 	string mBody = "";
@@ -928,22 +1024,197 @@ static bool adAccountsListHelper(char * accessToken,
 
 
 bool AdAccountsManager::adAccountsListAsync(char * accessToken,
-	std::string bookmark, int pageSize, bool includeSharedAccounts, 
+	bool includeSharedAccounts, std::string bookmark, int pageSize, 
 	void(* handler)(Ad_accounts_list_200_response, Error, void* )
 	, void* userData)
 {
 	return adAccountsListHelper(accessToken,
-	bookmark, pageSize, includeSharedAccounts, 
+	includeSharedAccounts, bookmark, pageSize, 
 	handler, userData, true);
 }
 
 bool AdAccountsManager::adAccountsListSync(char * accessToken,
-	std::string bookmark, int pageSize, bool includeSharedAccounts, 
+	bool includeSharedAccounts, std::string bookmark, int pageSize, 
 	void(* handler)(Ad_accounts_list_200_response, Error, void* )
 	, void* userData)
 {
 	return adAccountsListHelper(accessToken,
-	bookmark, pageSize, includeSharedAccounts, 
+	includeSharedAccounts, bookmark, pageSize, 
+	handler, userData, false);
+}
+
+static bool analyticsCreateConversionProductReportProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(AdsAnalyticsCreateAsyncResponse, Error, void* )
+	= reinterpret_cast<void(*)(AdsAnalyticsCreateAsyncResponse, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	AdsAnalyticsCreateAsyncResponse out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("AdsAnalyticsCreateAsyncResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "AdsAnalyticsCreateAsyncResponse", "AdsAnalyticsCreateAsyncResponse");
+			json_node_free(pJson);
+
+			if ("AdsAnalyticsCreateAsyncResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool analyticsCreateConversionProductReportHelper(char * accessToken,
+	std::string adAccountId, std::shared_ptr<ConversionProductReportRequest> conversionProductReportRequest, 
+	void(* handler)(AdsAnalyticsCreateAsyncResponse, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	if (isprimitive("ConversionProductReportRequest")) {
+		node = converttoJson(&conversionProductReportRequest, "ConversionProductReportRequest", "");
+	}
+	
+	char *jsonStr =  conversionProductReportRequest.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
+
+	string url("/ad_accounts/{ad_account_id}/reports/brand_category_sku");
+	int pos;
+
+	string s_adAccountId("{");
+	s_adAccountId.append("ad_account_id");
+	s_adAccountId.append("}");
+	pos = url.find(s_adAccountId);
+	url.erase(pos, s_adAccountId.length());
+	url.insert(pos, stringify(&adAccountId, "std::string"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("POST");
+
+	if(strcmp("PUT", "POST") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(AdAccountsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = analyticsCreateConversionProductReportProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (AdAccountsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), analyticsCreateConversionProductReportProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __AdAccountsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool AdAccountsManager::analyticsCreateConversionProductReportAsync(char * accessToken,
+	std::string adAccountId, std::shared_ptr<ConversionProductReportRequest> conversionProductReportRequest, 
+	void(* handler)(AdsAnalyticsCreateAsyncResponse, Error, void* )
+	, void* userData)
+{
+	return analyticsCreateConversionProductReportHelper(accessToken,
+	adAccountId, conversionProductReportRequest, 
+	handler, userData, true);
+}
+
+bool AdAccountsManager::analyticsCreateConversionProductReportSync(char * accessToken,
+	std::string adAccountId, std::shared_ptr<ConversionProductReportRequest> conversionProductReportRequest, 
+	void(* handler)(AdsAnalyticsCreateAsyncResponse, Error, void* )
+	, void* userData)
+{
+	return analyticsCreateConversionProductReportHelper(accessToken,
+	adAccountId, conversionProductReportRequest, 
 	handler, userData, false);
 }
 
@@ -1300,14 +1571,14 @@ bool AdAccountsManager::analyticsCreateReportSync(char * accessToken,
 static bool analyticsCreateTemplateReportProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(AdsAnalyticsCreateAsyncResponse, Error, void* )
-	= reinterpret_cast<void(*)(AdsAnalyticsCreateAsyncResponse, Error, void* )> (voidHandler);
+	void(* handler)(TemplateBasedReport, Error, void* )
+	= reinterpret_cast<void(*)(TemplateBasedReport, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	AdsAnalyticsCreateAsyncResponse out;
+	TemplateBasedReport out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -1315,18 +1586,43 @@ static bool analyticsCreateTemplateReportProcessor(MemoryStruct_s p_chunk, long 
 
 
 
-		if (isprimitive("AdsAnalyticsCreateAsyncResponse")) {
+		if (isprimitive("TemplateBasedReport")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "AdsAnalyticsCreateAsyncResponse", "AdsAnalyticsCreateAsyncResponse");
+			jsonToValue(&out, pJson, "TemplateBasedReport", "TemplateBasedReport");
 			json_node_free(pJson);
 
-			if ("AdsAnalyticsCreateAsyncResponse" == "std::string") {
+			if ("TemplateBasedReport" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -1364,7 +1660,7 @@ static bool analyticsCreateTemplateReportProcessor(MemoryStruct_s p_chunk, long 
 
 static bool analyticsCreateTemplateReportHelper(char * accessToken,
 	std::string adAccountId, std::string templateId, Date startDate, Date endDate, Granularity granularity, 
-	void(* handler)(AdsAnalyticsCreateAsyncResponse, Error, void* )
+	void(* handler)(TemplateBasedReport, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -1468,7 +1764,7 @@ static bool analyticsCreateTemplateReportHelper(char * accessToken,
 
 bool AdAccountsManager::analyticsCreateTemplateReportAsync(char * accessToken,
 	std::string adAccountId, std::string templateId, Date startDate, Date endDate, Granularity granularity, 
-	void(* handler)(AdsAnalyticsCreateAsyncResponse, Error, void* )
+	void(* handler)(TemplateBasedReport, Error, void* )
 	, void* userData)
 {
 	return analyticsCreateTemplateReportHelper(accessToken,
@@ -1478,11 +1774,177 @@ bool AdAccountsManager::analyticsCreateTemplateReportAsync(char * accessToken,
 
 bool AdAccountsManager::analyticsCreateTemplateReportSync(char * accessToken,
 	std::string adAccountId, std::string templateId, Date startDate, Date endDate, Granularity granularity, 
-	void(* handler)(AdsAnalyticsCreateAsyncResponse, Error, void* )
+	void(* handler)(TemplateBasedReport, Error, void* )
 	, void* userData)
 {
 	return analyticsCreateTemplateReportHelper(accessToken,
 	adAccountId, templateId, startDate, endDate, granularity, 
+	handler, userData, false);
+}
+
+static bool analyticsGetConversionProductReportProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(AdsAnalyticsGetAsyncResponse, Error, void* )
+	= reinterpret_cast<void(*)(AdsAnalyticsGetAsyncResponse, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	AdsAnalyticsGetAsyncResponse out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("AdsAnalyticsGetAsyncResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "AdsAnalyticsGetAsyncResponse", "AdsAnalyticsGetAsyncResponse");
+			json_node_free(pJson);
+
+			if ("AdsAnalyticsGetAsyncResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool analyticsGetConversionProductReportHelper(char * accessToken,
+	std::string adAccountId, std::string token, 
+	void(* handler)(AdsAnalyticsGetAsyncResponse, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+
+	itemAtq = stringify(&token, "std::string");
+	queryParams.insert(pair<string, string>("token", itemAtq));
+
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	string url("/ad_accounts/{ad_account_id}/reports/brand_category_sku");
+	int pos;
+
+	string s_adAccountId("{");
+	s_adAccountId.append("ad_account_id");
+	s_adAccountId.append("}");
+	pos = url.find(s_adAccountId);
+	url.erase(pos, s_adAccountId.length());
+	url.insert(pos, stringify(&adAccountId, "std::string"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("GET");
+
+	if(strcmp("PUT", "GET") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(AdAccountsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = analyticsGetConversionProductReportProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (AdAccountsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), analyticsGetConversionProductReportProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __AdAccountsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool AdAccountsManager::analyticsGetConversionProductReportAsync(char * accessToken,
+	std::string adAccountId, std::string token, 
+	void(* handler)(AdsAnalyticsGetAsyncResponse, Error, void* )
+	, void* userData)
+{
+	return analyticsGetConversionProductReportHelper(accessToken,
+	adAccountId, token, 
+	handler, userData, true);
+}
+
+bool AdAccountsManager::analyticsGetConversionProductReportSync(char * accessToken,
+	std::string adAccountId, std::string token, 
+	void(* handler)(AdsAnalyticsGetAsyncResponse, Error, void* )
+	, void* userData)
+{
+	return analyticsGetConversionProductReportHelper(accessToken,
+	adAccountId, token, 
 	handler, userData, false);
 }
 

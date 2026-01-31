@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**CatalogsFeedProcessingResult[]**](CatalogsFeedProcessingResult.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**CatalogsFeedProcessingResult[]**](CatalogsFeedProcessingResult.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$FeedProcessingResultsList200Response = Initialize-PSOpenAPIToolsFeedProcessingResultsList200Response  -Items null `
- -Bookmark null
+$FeedProcessingResultsList200Response = Initialize-PSOpenAPIToolsFeedProcessingResultsList200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

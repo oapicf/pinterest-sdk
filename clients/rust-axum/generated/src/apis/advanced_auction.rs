@@ -44,6 +44,10 @@ pub enum AdvancedAuctionItemsSubmitSlashPostResponse {
     Status200_ResponseContainingTheResultsOfTheItemBidOptionsOperations
     (models::AdvancedAuctionProcessedItems)
     ,
+    /// Response containing the results of the item bid options operations (where some/all operation results have errors)
+    Status206_ResponseContainingTheResultsOfTheItemBidOptionsOperations
+    (models::AdvancedAuctionProcessedItems)
+    ,
     /// Invalid request parameters.
     Status400_InvalidRequestParameters
     (models::Error)

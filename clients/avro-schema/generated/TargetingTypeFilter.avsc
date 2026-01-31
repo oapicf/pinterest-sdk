@@ -7,10 +7,29 @@
     {
       "name": "targeting_types",
       "type": ["null", {
-        "type": "array",
-        "items": "model.AdsAnalyticsTargetingType"
+        "type": "enum",
+        "name": "TargetingTypeFilter_targetingUnderscoretypes",
+        "symbols": [
+          "KEYWORD",
+          "APPTYPE",
+          "GENDER",
+          "LOCATION",
+          "PLACEMENT",
+          "COUNTRY",
+          "TARGETED_INTEREST",
+          "PINNER_INTEREST",
+          "AUDIENCE_INCLUDE",
+          "GEO",
+          "AGE_BUCKET",
+          "REGION",
+          "MEDIA_TYPE",
+          "AGE_BUCKET_AND_GENDER",
+          "AUDIENCE_MULTIPLIER",
+          "CREATIVE_ENHANCEMENTS",
+          "LOCAL_ADS_STORE_CODE"
+        ]
       }],
-      "doc": "List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.",
+      "doc": "List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AUDIENCE_MULTIPLIER\"] is only available in CAMPAIGN_TARGETING level. [\"MEDIA_TYPE\"] is only available in PRODUCT_ITEM_TARGETING level. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.",
       "default": null
     }
   ]

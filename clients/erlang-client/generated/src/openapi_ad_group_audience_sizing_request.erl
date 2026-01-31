@@ -6,24 +6,24 @@
 
 -type openapi_ad_group_audience_sizing_request() ::
     #{ 'auto_targeting_enabled' => boolean(),
-       'placement_group' => openapi_placement_group_type:openapi_placement_group_type(),
        'creative_types' => list(),
-       'targeting_spec' => openapi_targeting_spec:openapi_targeting_spec(),
+       'keywords' => list(),
+       'placement_group' => openapi_placement_group_type:openapi_placement_group_type(),
        'product_group_ids' => list(),
-       'keywords' => list()
+       'targeting_spec' => openapi_targeting_spec:openapi_targeting_spec()
      }.
 
 encode(#{ 'auto_targeting_enabled' := AutoTargetingEnabled,
-          'placement_group' := PlacementGroup,
           'creative_types' := CreativeTypes,
-          'targeting_spec' := TargetingSpec,
+          'keywords' := Keywords,
+          'placement_group' := PlacementGroup,
           'product_group_ids' := ProductGroupIds,
-          'keywords' := Keywords
+          'targeting_spec' := TargetingSpec
         }) ->
     #{ 'auto_targeting_enabled' => AutoTargetingEnabled,
-       'placement_group' => PlacementGroup,
        'creative_types' => CreativeTypes,
-       'targeting_spec' => TargetingSpec,
+       'keywords' => Keywords,
+       'placement_group' => PlacementGroup,
        'product_group_ids' => ProductGroupIds,
-       'keywords' => Keywords
+       'targeting_spec' => TargetingSpec
      }.

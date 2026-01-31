@@ -18,103 +18,93 @@ package org.openapitools.client.models
 import org.openapitools.client.models.BoardOwner
 import org.openapitools.client.models.CreativeType
 import org.openapitools.client.models.PinMedia
-import org.openapitools.client.models.PinMediaSource
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Pin
+ * Pin model containing properties related to a Pinterest Pin.
  *
  * @param id 
- * @param createdAt 
- * @param link 
- * @param title 
- * @param description 
- * @param dominantColor Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".
  * @param altText 
- * @param creativeType 
  * @param boardId The board to which this Pin belongs.
- * @param boardSectionId The board section to which this Pin belongs.
  * @param boardOwner 
- * @param isOwner Whether the \"operation user_account\" is the Pin owner.
- * @param media 
- * @param mediaSource 
- * @param parentPinId The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
- * @param isStandard Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
+ * @param boardSectionId The board section to which this Pin belongs.
+ * @param createdAt 
+ * @param creativeType 
+ * @param description 
+ * @param dominantColor Dominant pin color. Hex number, e.g. `#6E7874`.
  * @param hasBeenPromoted Whether the Pin has been promoted or not.
- * @param note Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
+ * @param isOwner Whether the \"operation user_account\" is the Pin owner.
+ * @param isStandard Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information.
+ * @param link 
+ * @param media 
+ * @param parentPinId The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).
  * @param pinMetrics Pin metrics with associated time intervals if any.
+ * @param title 
  */
 
 
 data class Pin (
 
     @Json(name = "id")
-    val id: kotlin.String? = null,
-
-    @Json(name = "created_at")
-    val createdAt: java.time.OffsetDateTime? = null,
-
-    @Json(name = "link")
-    val link: kotlin.String? = null,
-
-    @Json(name = "title")
-    val title: kotlin.String? = null,
-
-    @Json(name = "description")
-    val description: kotlin.String? = null,
-
-    /* Dominant pin color. Hex number, e.g. \\\"#6E7874\\\". */
-    @Json(name = "dominant_color")
-    val dominantColor: kotlin.String? = null,
+    val id: kotlin.String,
 
     @Json(name = "alt_text")
     val altText: kotlin.String? = null,
-
-    @Json(name = "creative_type")
-    val creativeType: CreativeType? = null,
 
     /* The board to which this Pin belongs. */
     @Json(name = "board_id")
     val boardId: kotlin.String? = null,
 
+    @Json(name = "board_owner")
+    val boardOwner: BoardOwner? = null,
+
     /* The board section to which this Pin belongs. */
     @Json(name = "board_section_id")
     val boardSectionId: kotlin.String? = null,
 
-    @Json(name = "board_owner")
-    val boardOwner: BoardOwner? = null,
+    @Json(name = "created_at")
+    val createdAt: java.time.OffsetDateTime? = null,
 
-    /* Whether the \"operation user_account\" is the Pin owner. */
-    @Json(name = "is_owner")
-    val isOwner: kotlin.Boolean? = null,
+    @Json(name = "creative_type")
+    val creativeType: CreativeType? = null,
 
-    @Json(name = "media")
-    val media: PinMedia? = null,
+    @Json(name = "description")
+    val description: kotlin.String? = null,
 
-    @Json(name = "media_source")
-    val mediaSource: PinMediaSource? = null,
-
-    /* The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>. */
-    @Json(name = "parent_pin_id")
-    val parentPinId: kotlin.String? = null,
-
-    /* Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information. */
-    @Json(name = "is_standard")
-    val isStandard: kotlin.Boolean? = null,
+    /* Dominant pin color. Hex number, e.g. `#6E7874`. */
+    @Json(name = "dominant_color")
+    val dominantColor: kotlin.String? = null,
 
     /* Whether the Pin has been promoted or not. */
     @Json(name = "has_been_promoted")
     val hasBeenPromoted: kotlin.Boolean? = null,
 
-    /* Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>. */
-    @Json(name = "note")
-    val note: kotlin.String? = null,
+    /* Whether the \"operation user_account\" is the Pin owner. */
+    @Json(name = "is_owner")
+    val isOwner: kotlin.Boolean? = null,
+
+    /* Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information. */
+    @Json(name = "is_standard")
+    val isStandard: kotlin.Boolean? = null,
+
+    @Json(name = "link")
+    val link: kotlin.String? = null,
+
+    @Json(name = "media")
+    val media: PinMedia? = null,
+
+    /* The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest). */
+    @Json(name = "parent_pin_id")
+    val parentPinId: kotlin.String? = null,
 
     /* Pin metrics with associated time intervals if any. */
     @Json(name = "pin_metrics")
-    val pinMetrics: kotlin.Any? = null
+    val pinMetrics: kotlin.Any? = null,
+
+    @Json(name = "title")
+    val title: kotlin.String? = null
 
 ) {
 

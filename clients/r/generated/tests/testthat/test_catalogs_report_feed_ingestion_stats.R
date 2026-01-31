@@ -5,13 +5,6 @@ context("Test CatalogsReportFeedIngestionStats")
 
 model_instance <- CatalogsReportFeedIngestionStats$new()
 
-test_that("report_type", {
-  # tests for the property `report_type` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`report_type`, "EXPECTED_RESULT")
-})
-
 test_that("catalog_id", {
   # tests for the property `catalog_id` (character)
   # ID of the catalog entity.
@@ -50,6 +43,13 @@ test_that("occurrences", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`occurrences`, "EXPECTED_RESULT")
+})
+
+test_that("report_type", {
+  # tests for the property `report_type` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`report_type`, "EXPECTED_RESULT")
 })
 
 test_that("severity", {

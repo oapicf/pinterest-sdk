@@ -9,8 +9,8 @@
 -export_type([openapi_ads_credits_discounts_get_200_response/0]).
 
 -type openapi_ads_credits_discounts_get_200_response() ::
-  [ {'items', list(openapi_ads_credit_discounts_response:openapi_ads_credit_discounts_response()) }
-  | {'bookmark', binary() }
+  [ {'bookmark', binary() }
+  | {'items', list(openapi_ads_credit_discounts_response:openapi_ads_credit_discounts_response()) }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_ads_credits_discounts_get_200_response() ->
     openapi_ads_credits_discounts_get_200_response([]).
 
 openapi_ads_credits_discounts_get_200_response(Fields) ->
-  Default = [ {'items', list(openapi_ads_credit_discounts_response:openapi_ads_credit_discounts_response()) }
-            , {'bookmark', binary() }
+  Default = [ {'bookmark', binary() }
+            , {'items', list(openapi_ads_credit_discounts_response:openapi_ads_credit_discounts_response()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

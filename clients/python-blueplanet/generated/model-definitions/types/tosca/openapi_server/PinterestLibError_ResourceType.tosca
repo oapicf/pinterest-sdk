@@ -1,0 +1,40 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server PinterestLibError"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a PinterestLibError"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  PinterestLibError {
+    title = PinterestLibError
+    description = PinterestLibError
+    derivedFrom = Root
+    properties {
+        code {
+          type =  integer
+          description = ""
+          optional = true
+        }
+        message {
+          type =  string
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  PinterestLibError {
+    title = PinterestLibError
+    description = PinterestLibError
+    implements = openapi_server.resourceTypes.PinterestLibError
+
+  }
+}

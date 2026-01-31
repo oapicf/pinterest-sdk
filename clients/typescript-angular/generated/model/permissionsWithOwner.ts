@@ -13,6 +13,8 @@ export const PermissionsWithOwner = {
     Admin: 'ADMIN',
     Analyst: 'ANALYST',
     FinanceManager: 'FINANCE_MANAGER',
+    FinanceEdit: 'FINANCE_EDIT',
+    FinanceView: 'FINANCE_VIEW',
     AudienceManager: 'AUDIENCE_MANAGER',
     CampaignManager: 'CAMPAIGN_MANAGER',
     CatalogsManager: 'CATALOGS_MANAGER',

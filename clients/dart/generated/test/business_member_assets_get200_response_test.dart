@@ -16,14 +16,14 @@ void main() {
   // final instance = BusinessMemberAssetsGet200Response();
 
   group('test BusinessMemberAssetsGet200Response', () {
-    // List asset permissions the given member was granted.
-    // List<AssetIdPermissions> items (default value: const [])
-    test('to test the property `items`', () async {
+    // String bookmark
+    test('to test the property `bookmark`', () async {
       // TODO
     });
 
-    // String bookmark
-    test('to test the property `bookmark`', () async {
+    // List asset permissions the given member was granted.
+    // List<AssetIdPermissions> items (default value: const [])
+    test('to test the property `items`', () async {
       // TODO
     });
 

@@ -73,7 +73,7 @@ private class OASCatalogsFeedIngestionTest {
     private static void maintainRenamedProperties() {
         OASCatalogsFeedIngestion catalogsFeedIngestion = new OASCatalogsFeedIngestion();
         Map<String, String> x-property-mappings = catalogsFeedIngestion.getx-property-mappings();
-        System.assertEquals('feedId', x-property-mappings.get('feed_id'));
         System.assertEquals('createdAt', x-property-mappings.get('created_at'));
+        System.assertEquals('feedId', x-property-mappings.get('feed_id'));
     }
 }

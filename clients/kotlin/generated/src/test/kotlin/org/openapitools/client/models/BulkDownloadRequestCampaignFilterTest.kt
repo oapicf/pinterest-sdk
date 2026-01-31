@@ -27,10 +27,10 @@ class BulkDownloadRequestCampaignFilterTest : ShouldSpec() {
         // uncomment below to create an instance of BulkDownloadRequestCampaignFilter
         //val modelInstance = BulkDownloadRequestCampaignFilter()
 
-        // to test the property `startTime` - Unix UTC timestamp.
-        should("test startTime") {
+        // to test the property `campaignStatus`
+        should("test campaignStatus") {
             // uncomment below to test the property
-            //modelInstance.startTime shouldBe ("TODO")
+            //modelInstance.campaignStatus shouldBe ("TODO")
         }
 
         // to test the property `endTime` - Unix UTC timestamp.
@@ -45,16 +45,16 @@ class BulkDownloadRequestCampaignFilterTest : ShouldSpec() {
             //modelInstance.name shouldBe ("TODO")
         }
 
-        // to test the property `campaignStatus`
-        should("test campaignStatus") {
-            // uncomment below to test the property
-            //modelInstance.campaignStatus shouldBe ("TODO")
-        }
-
         // to test the property `objectiveType`
         should("test objectiveType") {
             // uncomment below to test the property
             //modelInstance.objectiveType shouldBe ("TODO")
+        }
+
+        // to test the property `startTime` - Unix UTC timestamp.
+        should("test startTime") {
+            // uncomment below to test the property
+            //modelInstance.startTime shouldBe ("TODO")
         }
 
     }

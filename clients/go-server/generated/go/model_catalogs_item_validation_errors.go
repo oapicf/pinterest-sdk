@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -36,9 +36,9 @@ type CatalogsItemValidationErrors struct {
 
 	INVALID_DOMAIN CatalogsItemValidationDetails `json:"INVALID_DOMAIN,omitempty"`
 
-	ITEMID_MISSING CatalogsItemValidationDetails `json:"ITEMID_MISSING,omitempty"`
-
 	ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE CatalogsItemValidationDetails `json:"ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE,omitempty"`
+
+	ITEMID_MISSING CatalogsItemValidationDetails `json:"ITEMID_MISSING,omitempty"`
 
 	LINK_FORMAT_INVALID CatalogsItemValidationDetails `json:"LINK_FORMAT_INVALID,omitempty"`
 
@@ -95,10 +95,10 @@ func AssertCatalogsItemValidationErrorsRequired(obj CatalogsItemValidationErrors
 	if err := AssertCatalogsItemValidationDetailsRequired(obj.INVALID_DOMAIN); err != nil {
 		return err
 	}
-	if err := AssertCatalogsItemValidationDetailsRequired(obj.ITEMID_MISSING); err != nil {
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE); err != nil {
 		return err
 	}
-	if err := AssertCatalogsItemValidationDetailsRequired(obj.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE); err != nil {
+	if err := AssertCatalogsItemValidationDetailsRequired(obj.ITEMID_MISSING); err != nil {
 		return err
 	}
 	if err := AssertCatalogsItemValidationDetailsRequired(obj.LINK_FORMAT_INVALID); err != nil {
@@ -169,10 +169,10 @@ func AssertCatalogsItemValidationErrorsConstraints(obj CatalogsItemValidationErr
 	if err := AssertCatalogsItemValidationDetailsConstraints(obj.INVALID_DOMAIN); err != nil {
 		return err
 	}
-	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ITEMID_MISSING); err != nil {
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE); err != nil {
 		return err
 	}
-	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE); err != nil {
+	if err := AssertCatalogsItemValidationDetailsConstraints(obj.ITEMID_MISSING); err != nil {
 		return err
 	}
 	if err := AssertCatalogsItemValidationDetailsConstraints(obj.LINK_FORMAT_INVALID); err != nil {

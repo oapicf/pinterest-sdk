@@ -12,20 +12,20 @@ import org.joda.time.DateTime
 import IntegrationMetadata._
 
 case class IntegrationMetadata (
-  id: Option[String],
-externalBusinessId: Option[String],
-connectedMerchantId: Option[String],
-connectedUserId: Option[String],
+  additionalId1: Option[String],
 connectedAdvertiserId: Option[String],
 connectedLbaId: Option[String],
+connectedMerchantId: Option[String],
 connectedTagId: Option[String],
+connectedUserId: Option[String],
+createdTimestamp: Option[BigDecimal],
+externalBusinessId: Option[String],
+id: Option[String],
 partnerAccessTokenExpiry: Option[BigDecimal],
+partnerMetadata: Option[String],
 partnerRefreshTokenExpiry: Option[BigDecimal],
 scopes: Option[String],
-createdTimestamp: Option[BigDecimal],
-updatedTimestamp: Option[BigDecimal],
-additionalId1: Option[String],
-partnerMetadata: Option[String])
+updatedTimestamp: Option[BigDecimal])
 
 object IntegrationMetadata {
   import DateTimeCodecs._

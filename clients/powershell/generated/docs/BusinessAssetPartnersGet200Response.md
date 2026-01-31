@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**UserSingleAssetBinding[]**](UserSingleAssetBinding.md) | List of partners with permissions to the asset. | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**UserSingleAssetBinding[]**](UserSingleAssetBinding.md) | List of partners with permissions to the asset. | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$BusinessAssetPartnersGet200Response = Initialize-PSOpenAPIToolsBusinessAssetPartnersGet200Response  -Items null `
- -Bookmark null
+$BusinessAssetPartnersGet200Response = Initialize-PSOpenAPIToolsBusinessAssetPartnersGet200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

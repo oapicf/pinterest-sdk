@@ -5,11 +5,11 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **creative_assets_id** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  |
-| **custom_label_0** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  |
-| **custom_label_1** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  |
-| **custom_label_2** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  |
-| **custom_label_3** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  |
-| **custom_label_4** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  |
+| **custom_label_0** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  |
+| **custom_label_1** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  |
+| **custom_label_2** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  |
+| **custom_label_3** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  |
+| **custom_label_4** | [**CatalogsProductGroupFilterOperatorTypeCriteria**](.md) |  |  |
 | **google_product_category_6** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  |  |
 | **google_product_category_5** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  |  |
 | **google_product_category_4** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  |  |
@@ -18,6 +18,7 @@
 | **google_product_category_1** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  |  |
 | **google_product_category_0** | [**CatalogsProductGroupMultipleStringListCriteria**](.md) |  |  |
 | **media_type** | [**CatalogsProductGroupMultipleMediaTypesCriteria**](.md) |  |  |
+| **title_keywords** | [**CatalogsProductGroupMultipleStringCriteria**](.md) |  |  |
 
 ## Example
 
@@ -38,7 +39,8 @@ instance = PinterestSdkClient::CatalogsCreativeAssetsProductGroupFilterKeys.new(
   google_product_category_2: null,
   google_product_category_1: null,
   google_product_category_0: null,
-  media_type: null
+  media_type: null,
+  title_keywords: null
 )
 ```
 

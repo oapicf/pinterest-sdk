@@ -13,11 +13,12 @@ module OauthAccessTokenResponseCode =
 
   type OauthAccessTokenResponseCode = {
     RefreshToken : string;
+    RefreshTokenExpiresAt : int;
     RefreshTokenExpiresIn : int;
-    ResponseType : ResponseTypeEnum;
     AccessToken : string;
-    TokenType : string;
     ExpiresIn : int;
+    ResponseType : ResponseTypeEnum;
     Scope : string;
+    TokenType : string;
   }
   //#endregion

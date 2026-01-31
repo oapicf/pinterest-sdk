@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -20,12 +20,13 @@ import (
 // checks if the PinMediaSourceImagesURL type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &PinMediaSourceImagesURL{}
 
-// PinMediaSourceImagesURL Multiple images urls-based media source
+// PinMediaSourceImagesURL Multiple URL-based images media source
 type PinMediaSourceImagesURL struct {
-	SourceType *string `json:"source_type,omitempty"`
-	// Array with image objects.
-	Items []PinMediaSourceImagesURLItemsInner `json:"items"`
 	Index *int32 `json:"index,omitempty"`
+	// Array with image objects.
+	Items []PinMediaSourceImagesURLItem `json:"items"`
+	// The source type of the media.
+	SourceType string `json:"source_type"`
 }
 
 type _PinMediaSourceImagesURL PinMediaSourceImagesURL
@@ -34,9 +35,10 @@ type _PinMediaSourceImagesURL PinMediaSourceImagesURL
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPinMediaSourceImagesURL(items []PinMediaSourceImagesURLItemsInner) *PinMediaSourceImagesURL {
+func NewPinMediaSourceImagesURL(items []PinMediaSourceImagesURLItem, sourceType string) *PinMediaSourceImagesURL {
 	this := PinMediaSourceImagesURL{}
 	this.Items = items
+	this.SourceType = sourceType
 	return &this
 }
 
@@ -46,62 +48,6 @@ func NewPinMediaSourceImagesURL(items []PinMediaSourceImagesURLItemsInner) *PinM
 func NewPinMediaSourceImagesURLWithDefaults() *PinMediaSourceImagesURL {
 	this := PinMediaSourceImagesURL{}
 	return &this
-}
-
-// GetSourceType returns the SourceType field value if set, zero value otherwise.
-func (o *PinMediaSourceImagesURL) GetSourceType() string {
-	if o == nil || IsNil(o.SourceType) {
-		var ret string
-		return ret
-	}
-	return *o.SourceType
-}
-
-// GetSourceTypeOk returns a tuple with the SourceType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PinMediaSourceImagesURL) GetSourceTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.SourceType) {
-		return nil, false
-	}
-	return o.SourceType, true
-}
-
-// HasSourceType returns a boolean if a field has been set.
-func (o *PinMediaSourceImagesURL) HasSourceType() bool {
-	if o != nil && !IsNil(o.SourceType) {
-		return true
-	}
-
-	return false
-}
-
-// SetSourceType gets a reference to the given string and assigns it to the SourceType field.
-func (o *PinMediaSourceImagesURL) SetSourceType(v string) {
-	o.SourceType = &v
-}
-
-// GetItems returns the Items field value
-func (o *PinMediaSourceImagesURL) GetItems() []PinMediaSourceImagesURLItemsInner {
-	if o == nil {
-		var ret []PinMediaSourceImagesURLItemsInner
-		return ret
-	}
-
-	return o.Items
-}
-
-// GetItemsOk returns a tuple with the Items field value
-// and a boolean to check if the value has been set.
-func (o *PinMediaSourceImagesURL) GetItemsOk() ([]PinMediaSourceImagesURLItemsInner, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Items, true
-}
-
-// SetItems sets field value
-func (o *PinMediaSourceImagesURL) SetItems(v []PinMediaSourceImagesURLItemsInner) {
-	o.Items = v
 }
 
 // GetIndex returns the Index field value if set, zero value otherwise.
@@ -136,6 +82,54 @@ func (o *PinMediaSourceImagesURL) SetIndex(v int32) {
 	o.Index = &v
 }
 
+// GetItems returns the Items field value
+func (o *PinMediaSourceImagesURL) GetItems() []PinMediaSourceImagesURLItem {
+	if o == nil {
+		var ret []PinMediaSourceImagesURLItem
+		return ret
+	}
+
+	return o.Items
+}
+
+// GetItemsOk returns a tuple with the Items field value
+// and a boolean to check if the value has been set.
+func (o *PinMediaSourceImagesURL) GetItemsOk() ([]PinMediaSourceImagesURLItem, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Items, true
+}
+
+// SetItems sets field value
+func (o *PinMediaSourceImagesURL) SetItems(v []PinMediaSourceImagesURLItem) {
+	o.Items = v
+}
+
+// GetSourceType returns the SourceType field value
+func (o *PinMediaSourceImagesURL) GetSourceType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.SourceType
+}
+
+// GetSourceTypeOk returns a tuple with the SourceType field value
+// and a boolean to check if the value has been set.
+func (o *PinMediaSourceImagesURL) GetSourceTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SourceType, true
+}
+
+// SetSourceType sets field value
+func (o *PinMediaSourceImagesURL) SetSourceType(v string) {
+	o.SourceType = v
+}
+
 func (o PinMediaSourceImagesURL) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -146,13 +140,11 @@ func (o PinMediaSourceImagesURL) MarshalJSON() ([]byte, error) {
 
 func (o PinMediaSourceImagesURL) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.SourceType) {
-		toSerialize["source_type"] = o.SourceType
-	}
-	toSerialize["items"] = o.Items
 	if !IsNil(o.Index) {
 		toSerialize["index"] = o.Index
 	}
+	toSerialize["items"] = o.Items
+	toSerialize["source_type"] = o.SourceType
 	return toSerialize, nil
 }
 
@@ -162,6 +154,7 @@ func (o *PinMediaSourceImagesURL) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"items",
+		"source_type",
 	}
 
 	allProperties := make(map[string]interface{})

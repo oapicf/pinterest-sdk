@@ -1,0 +1,9 @@
+package models
+// LookbackPeriodOptions : Days in lookback window in the GET Conversion EQS response.
+type LookbackPeriodOptions string
+
+// List of LookbackPeriodOptions
+const (
+	_1D LookbackPeriodOptions = "1d"
+	_14D LookbackPeriodOptions = "14d"
+)

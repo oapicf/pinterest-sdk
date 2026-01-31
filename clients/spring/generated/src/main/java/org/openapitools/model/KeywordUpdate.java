@@ -22,14 +22,14 @@ import javax.annotation.Generated;
  * KeywordUpdate
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class KeywordUpdate {
-
-  private String id;
 
   private @Nullable Boolean archived;
 
   private JsonNullable<Integer> bid = JsonNullable.<Integer>undefined();
+
+  private String id;
 
   public KeywordUpdate() {
     super();
@@ -39,26 +39,6 @@ public class KeywordUpdate {
    * Constructor with only required parameters
    */
   public KeywordUpdate(String id) {
-    this.id = id;
-  }
-
-  public KeywordUpdate id(String id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Keyword ID.
-   * @return id
-   */
-  @NotNull @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "id", example = "2886364308355", description = "Keyword ID.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
     this.id = id;
   }
 
@@ -102,6 +82,26 @@ public class KeywordUpdate {
     this.bid = bid;
   }
 
+  public KeywordUpdate id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * Keyword ID.
+   * @return id
+   */
+  @NotNull @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "id", example = "2886364308355", description = "Keyword ID.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -111,9 +111,9 @@ public class KeywordUpdate {
       return false;
     }
     KeywordUpdate keywordUpdate = (KeywordUpdate) o;
-    return Objects.equals(this.id, keywordUpdate.id) &&
-        Objects.equals(this.archived, keywordUpdate.archived) &&
-        equalsNullable(this.bid, keywordUpdate.bid);
+    return Objects.equals(this.archived, keywordUpdate.archived) &&
+        equalsNullable(this.bid, keywordUpdate.bid) &&
+        Objects.equals(this.id, keywordUpdate.id);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -122,7 +122,7 @@ public class KeywordUpdate {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, archived, hashCodeNullable(bid));
+    return Objects.hash(archived, hashCodeNullable(bid), id);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -136,9 +136,9 @@ public class KeywordUpdate {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class KeywordUpdate {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    archived: ").append(toIndentedString(archived)).append("\n");
     sb.append("    bid: ").append(toIndentedString(bid)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

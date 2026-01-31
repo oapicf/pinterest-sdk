@@ -22,13 +22,13 @@ page_visit_conversion_tags_get_200_response_t* instantiate_page_visit_conversion
   page_visit_conversion_tags_get_200_response_t* page_visit_conversion_tags_get_200_response = NULL;
   if (include_optional) {
     page_visit_conversion_tags_get_200_response = page_visit_conversion_tags_get_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   } else {
     page_visit_conversion_tags_get_200_response = page_visit_conversion_tags_get_200_response_create(
-      list_createList(),
-      "0"
+      "0",
+      list_createList()
     );
   }
 

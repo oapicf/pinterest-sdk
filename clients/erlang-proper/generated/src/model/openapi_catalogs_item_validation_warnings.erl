@@ -9,14 +9,174 @@
 -export_type([openapi_catalogs_item_validation_warnings/0]).
 
 -type openapi_catalogs_item_validation_warnings() ::
-  [ {'AD_LINK_FORMAT_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  [ {'AD_IMAGE_0_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_0_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_0_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_0_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_0_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_0_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_0_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_10_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_10_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_10_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_10_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_10_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_10_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_10_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_11_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_11_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_11_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_11_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_11_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_11_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_11_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_12_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_12_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_12_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_12_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_12_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_12_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_12_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_13_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_13_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_13_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_13_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_13_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_13_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_13_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_14_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_14_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_14_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_14_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_14_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_14_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_14_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_15_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_15_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_15_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_15_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_15_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_15_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_15_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_16_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_16_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_16_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_16_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_16_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_16_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_16_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_17_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_17_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_17_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_17_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_17_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_17_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_17_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_18_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_18_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_18_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_18_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_18_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_18_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_18_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_19_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_19_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_19_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_19_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_19_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_19_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_19_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_1_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_1_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_1_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_1_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_1_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_1_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_1_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_2_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_2_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_2_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_2_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_2_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_2_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_2_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_3_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_3_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_3_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_3_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_3_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_3_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_3_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_4_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_4_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_4_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_4_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_4_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_4_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_4_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_5_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_5_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_5_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_5_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_5_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_5_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_5_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_6_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_6_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_6_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_6_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_6_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_6_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_6_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_7_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_7_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_7_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_7_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_7_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_7_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_7_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_8_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_8_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_8_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_8_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_8_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_8_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_8_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_9_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_9_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_9_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_9_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_9_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_9_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_IMAGE_9_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_LINK_FORMAT_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   | {'AD_LINK_SAME_AS_LINK', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_VIDEO_0_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_VIDEO_0_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_VIDEO_0_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_VIDEO_0_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_VIDEO_0_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_VIDEO_0_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_VIDEO_0_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_VIDEO_1_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_VIDEO_1_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_VIDEO_1_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_VIDEO_1_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_VIDEO_1_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_VIDEO_1_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_VIDEO_1_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_VIDEO_2_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_VIDEO_2_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_VIDEO_2_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_VIDEO_2_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_VIDEO_2_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_VIDEO_2_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'AD_VIDEO_2_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   | {'ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   | {'ADDITIONAL_IMAGE_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   | {'ADWORDS_FORMAT_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   | {'ADWORDS_SAME_AS_LINK', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   | {'AGE_GROUP_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
-  | {'SIZE_SYSTEM_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   | {'ANDROID_DEEP_LINK_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   | {'AVAILABILITY_DATE_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   | {'COUNTRY_DOES_NOT_MAP_TO_CURRENCY', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
@@ -39,19 +199,21 @@
   | {'OPTIONAL_PRODUCT_CATEGORY_MISSING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   | {'PRODUCT_CATEGORY_DEPTH_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   | {'PRODUCT_TYPE_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
-  | {'SALES_PRICE_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
-  | {'SALES_PRICE_TOO_LOW', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
-  | {'SALES_PRICE_TOO_HIGH', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   | {'SALE_DATE_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
-  | {'SHIPPING_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'SALES_PRICE_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'SALES_PRICE_TOO_HIGH', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'SALES_PRICE_TOO_LOW', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   | {'SHIPPING_HEIGHT_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'SHIPPING_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   | {'SHIPPING_WEIGHT_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   | {'SHIPPING_WIDTH_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'SIZE_SYSTEM_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   | {'SIZE_TYPE_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   | {'TAX_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   | {'TITLE_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   | {'TOO_MANY_ADDITIONAL_IMAGE_LINKS', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   | {'UTM_SOURCE_AUTO_CORRECTED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  | {'VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   | {'WEIGHT_UNIT_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
   ].
 
@@ -60,14 +222,174 @@ openapi_catalogs_item_validation_warnings() ->
     openapi_catalogs_item_validation_warnings([]).
 
 openapi_catalogs_item_validation_warnings(Fields) ->
-  Default = [ {'AD_LINK_FORMAT_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+  Default = [ {'AD_IMAGE_0_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_0_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_0_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_0_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_0_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_0_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_0_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_10_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_10_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_10_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_10_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_10_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_10_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_10_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_11_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_11_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_11_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_11_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_11_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_11_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_11_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_12_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_12_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_12_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_12_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_12_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_12_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_12_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_13_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_13_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_13_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_13_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_13_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_13_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_13_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_14_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_14_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_14_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_14_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_14_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_14_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_14_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_15_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_15_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_15_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_15_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_15_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_15_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_15_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_16_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_16_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_16_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_16_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_16_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_16_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_16_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_17_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_17_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_17_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_17_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_17_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_17_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_17_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_18_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_18_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_18_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_18_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_18_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_18_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_18_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_19_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_19_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_19_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_19_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_19_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_19_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_19_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_1_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_1_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_1_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_1_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_1_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_1_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_1_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_2_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_2_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_2_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_2_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_2_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_2_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_2_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_3_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_3_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_3_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_3_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_3_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_3_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_3_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_4_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_4_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_4_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_4_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_4_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_4_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_4_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_5_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_5_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_5_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_5_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_5_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_5_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_5_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_6_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_6_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_6_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_6_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_6_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_6_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_6_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_7_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_7_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_7_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_7_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_7_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_7_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_7_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_8_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_8_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_8_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_8_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_8_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_8_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_8_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_9_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_9_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_9_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_9_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_9_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_9_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_IMAGE_9_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_LINK_FORMAT_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             , {'AD_LINK_SAME_AS_LINK', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_VIDEO_0_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_VIDEO_0_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_VIDEO_0_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_VIDEO_0_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_VIDEO_0_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_VIDEO_0_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_VIDEO_0_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_VIDEO_1_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_VIDEO_1_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_VIDEO_1_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_VIDEO_1_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_VIDEO_1_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_VIDEO_1_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_VIDEO_1_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_VIDEO_2_LINK_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_VIDEO_2_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_VIDEO_2_LINK_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_VIDEO_2_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_VIDEO_2_TAG_DUPLICATED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_VIDEO_2_TAG_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'AD_VIDEO_2_TAG_REQUIRED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             , {'ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             , {'ADDITIONAL_IMAGE_LINK_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             , {'ADWORDS_FORMAT_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             , {'ADWORDS_SAME_AS_LINK', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             , {'AGE_GROUP_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
-            , {'SIZE_SYSTEM_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             , {'ANDROID_DEEP_LINK_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             , {'AVAILABILITY_DATE_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             , {'COUNTRY_DOES_NOT_MAP_TO_CURRENCY', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
@@ -90,19 +412,21 @@ openapi_catalogs_item_validation_warnings(Fields) ->
             , {'OPTIONAL_PRODUCT_CATEGORY_MISSING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             , {'PRODUCT_CATEGORY_DEPTH_WARNING', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             , {'PRODUCT_TYPE_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
-            , {'SALES_PRICE_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
-            , {'SALES_PRICE_TOO_LOW', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
-            , {'SALES_PRICE_TOO_HIGH', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             , {'SALE_DATE_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
-            , {'SHIPPING_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'SALES_PRICE_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'SALES_PRICE_TOO_HIGH', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'SALES_PRICE_TOO_LOW', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             , {'SHIPPING_HEIGHT_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'SHIPPING_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             , {'SHIPPING_WEIGHT_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             , {'SHIPPING_WIDTH_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'SIZE_SYSTEM_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             , {'SIZE_TYPE_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             , {'TAX_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             , {'TITLE_LENGTH_TOO_LONG', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             , {'TOO_MANY_ADDITIONAL_IMAGE_LINKS', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             , {'UTM_SOURCE_AUTO_CORRECTED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
+            , {'VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             , {'WEIGHT_UNIT_INVALID', openapi_catalogs_item_validation_details:openapi_catalogs_item_validation_details() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).

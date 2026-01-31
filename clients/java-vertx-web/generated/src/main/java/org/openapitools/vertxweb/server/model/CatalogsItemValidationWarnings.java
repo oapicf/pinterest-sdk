@@ -8,14 +8,174 @@ import org.openapitools.vertxweb.server.model.CatalogsItemValidationDetails;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsItemValidationWarnings   {
   
+  private CatalogsItemValidationDetails AD_IMAGE_0_LINK_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_0_LINK_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_0_LINK_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_0_LINK_WARNING;
+  private CatalogsItemValidationDetails AD_IMAGE_0_TAG_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_0_TAG_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_0_TAG_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_10_LINK_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_10_LINK_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_10_LINK_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_10_LINK_WARNING;
+  private CatalogsItemValidationDetails AD_IMAGE_10_TAG_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_10_TAG_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_10_TAG_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_11_LINK_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_11_LINK_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_11_LINK_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_11_LINK_WARNING;
+  private CatalogsItemValidationDetails AD_IMAGE_11_TAG_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_11_TAG_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_11_TAG_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_12_LINK_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_12_LINK_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_12_LINK_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_12_LINK_WARNING;
+  private CatalogsItemValidationDetails AD_IMAGE_12_TAG_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_12_TAG_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_12_TAG_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_13_LINK_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_13_LINK_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_13_LINK_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_13_LINK_WARNING;
+  private CatalogsItemValidationDetails AD_IMAGE_13_TAG_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_13_TAG_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_13_TAG_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_14_LINK_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_14_LINK_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_14_LINK_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_14_LINK_WARNING;
+  private CatalogsItemValidationDetails AD_IMAGE_14_TAG_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_14_TAG_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_14_TAG_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_15_LINK_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_15_LINK_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_15_LINK_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_15_LINK_WARNING;
+  private CatalogsItemValidationDetails AD_IMAGE_15_TAG_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_15_TAG_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_15_TAG_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_16_LINK_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_16_LINK_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_16_LINK_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_16_LINK_WARNING;
+  private CatalogsItemValidationDetails AD_IMAGE_16_TAG_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_16_TAG_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_16_TAG_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_17_LINK_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_17_LINK_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_17_LINK_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_17_LINK_WARNING;
+  private CatalogsItemValidationDetails AD_IMAGE_17_TAG_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_17_TAG_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_17_TAG_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_18_LINK_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_18_LINK_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_18_LINK_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_18_LINK_WARNING;
+  private CatalogsItemValidationDetails AD_IMAGE_18_TAG_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_18_TAG_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_18_TAG_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_19_LINK_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_19_LINK_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_19_LINK_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_19_LINK_WARNING;
+  private CatalogsItemValidationDetails AD_IMAGE_19_TAG_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_19_TAG_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_19_TAG_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_1_LINK_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_1_LINK_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_1_LINK_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_1_LINK_WARNING;
+  private CatalogsItemValidationDetails AD_IMAGE_1_TAG_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_1_TAG_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_1_TAG_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_2_LINK_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_2_LINK_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_2_LINK_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_2_LINK_WARNING;
+  private CatalogsItemValidationDetails AD_IMAGE_2_TAG_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_2_TAG_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_2_TAG_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_3_LINK_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_3_LINK_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_3_LINK_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_3_LINK_WARNING;
+  private CatalogsItemValidationDetails AD_IMAGE_3_TAG_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_3_TAG_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_3_TAG_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_4_LINK_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_4_LINK_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_4_LINK_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_4_LINK_WARNING;
+  private CatalogsItemValidationDetails AD_IMAGE_4_TAG_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_4_TAG_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_4_TAG_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_5_LINK_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_5_LINK_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_5_LINK_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_5_LINK_WARNING;
+  private CatalogsItemValidationDetails AD_IMAGE_5_TAG_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_5_TAG_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_5_TAG_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_6_LINK_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_6_LINK_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_6_LINK_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_6_LINK_WARNING;
+  private CatalogsItemValidationDetails AD_IMAGE_6_TAG_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_6_TAG_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_6_TAG_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_7_LINK_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_7_LINK_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_7_LINK_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_7_LINK_WARNING;
+  private CatalogsItemValidationDetails AD_IMAGE_7_TAG_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_7_TAG_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_7_TAG_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_8_LINK_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_8_LINK_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_8_LINK_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_8_LINK_WARNING;
+  private CatalogsItemValidationDetails AD_IMAGE_8_TAG_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_8_TAG_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_8_TAG_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_9_LINK_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_9_LINK_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_9_LINK_REQUIRED;
+  private CatalogsItemValidationDetails AD_IMAGE_9_LINK_WARNING;
+  private CatalogsItemValidationDetails AD_IMAGE_9_TAG_DUPLICATED;
+  private CatalogsItemValidationDetails AD_IMAGE_9_TAG_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_IMAGE_9_TAG_REQUIRED;
   private CatalogsItemValidationDetails AD_LINK_FORMAT_WARNING;
   private CatalogsItemValidationDetails AD_LINK_SAME_AS_LINK;
+  private CatalogsItemValidationDetails AD_VIDEO_0_LINK_DUPLICATED;
+  private CatalogsItemValidationDetails AD_VIDEO_0_LINK_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_VIDEO_0_LINK_REQUIRED;
+  private CatalogsItemValidationDetails AD_VIDEO_0_LINK_WARNING;
+  private CatalogsItemValidationDetails AD_VIDEO_0_TAG_DUPLICATED;
+  private CatalogsItemValidationDetails AD_VIDEO_0_TAG_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_VIDEO_0_TAG_REQUIRED;
+  private CatalogsItemValidationDetails AD_VIDEO_1_LINK_DUPLICATED;
+  private CatalogsItemValidationDetails AD_VIDEO_1_LINK_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_VIDEO_1_LINK_REQUIRED;
+  private CatalogsItemValidationDetails AD_VIDEO_1_LINK_WARNING;
+  private CatalogsItemValidationDetails AD_VIDEO_1_TAG_DUPLICATED;
+  private CatalogsItemValidationDetails AD_VIDEO_1_TAG_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_VIDEO_1_TAG_REQUIRED;
+  private CatalogsItemValidationDetails AD_VIDEO_2_LINK_DUPLICATED;
+  private CatalogsItemValidationDetails AD_VIDEO_2_LINK_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_VIDEO_2_LINK_REQUIRED;
+  private CatalogsItemValidationDetails AD_VIDEO_2_LINK_WARNING;
+  private CatalogsItemValidationDetails AD_VIDEO_2_TAG_DUPLICATED;
+  private CatalogsItemValidationDetails AD_VIDEO_2_TAG_LENGTH_TOO_LONG;
+  private CatalogsItemValidationDetails AD_VIDEO_2_TAG_REQUIRED;
   private CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
   private CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_WARNING;
   private CatalogsItemValidationDetails ADWORDS_FORMAT_WARNING;
   private CatalogsItemValidationDetails ADWORDS_SAME_AS_LINK;
   private CatalogsItemValidationDetails AGE_GROUP_INVALID;
-  private CatalogsItemValidationDetails SIZE_SYSTEM_INVALID;
   private CatalogsItemValidationDetails ANDROID_DEEP_LINK_INVALID;
   private CatalogsItemValidationDetails AVAILABILITY_DATE_INVALID;
   private CatalogsItemValidationDetails COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
@@ -38,34 +198,196 @@ public class CatalogsItemValidationWarnings   {
   private CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_MISSING;
   private CatalogsItemValidationDetails PRODUCT_CATEGORY_DEPTH_WARNING;
   private CatalogsItemValidationDetails PRODUCT_TYPE_LENGTH_TOO_LONG;
-  private CatalogsItemValidationDetails SALES_PRICE_INVALID;
-  private CatalogsItemValidationDetails SALES_PRICE_TOO_LOW;
-  private CatalogsItemValidationDetails SALES_PRICE_TOO_HIGH;
   private CatalogsItemValidationDetails SALE_DATE_INVALID;
-  private CatalogsItemValidationDetails SHIPPING_INVALID;
+  private CatalogsItemValidationDetails SALES_PRICE_INVALID;
+  private CatalogsItemValidationDetails SALES_PRICE_TOO_HIGH;
+  private CatalogsItemValidationDetails SALES_PRICE_TOO_LOW;
   private CatalogsItemValidationDetails SHIPPING_HEIGHT_INVALID;
+  private CatalogsItemValidationDetails SHIPPING_INVALID;
   private CatalogsItemValidationDetails SHIPPING_WEIGHT_INVALID;
   private CatalogsItemValidationDetails SHIPPING_WIDTH_INVALID;
+  private CatalogsItemValidationDetails SIZE_SYSTEM_INVALID;
   private CatalogsItemValidationDetails SIZE_TYPE_INVALID;
   private CatalogsItemValidationDetails TAX_INVALID;
   private CatalogsItemValidationDetails TITLE_LENGTH_TOO_LONG;
   private CatalogsItemValidationDetails TOO_MANY_ADDITIONAL_IMAGE_LINKS;
   private CatalogsItemValidationDetails UTM_SOURCE_AUTO_CORRECTED;
+  private CatalogsItemValidationDetails VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED;
   private CatalogsItemValidationDetails WEIGHT_UNIT_INVALID;
 
   public CatalogsItemValidationWarnings () {
 
   }
 
-  public CatalogsItemValidationWarnings (CatalogsItemValidationDetails AD_LINK_FORMAT_WARNING, CatalogsItemValidationDetails AD_LINK_SAME_AS_LINK, CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_WARNING, CatalogsItemValidationDetails ADWORDS_FORMAT_WARNING, CatalogsItemValidationDetails ADWORDS_SAME_AS_LINK, CatalogsItemValidationDetails AGE_GROUP_INVALID, CatalogsItemValidationDetails SIZE_SYSTEM_INVALID, CatalogsItemValidationDetails ANDROID_DEEP_LINK_INVALID, CatalogsItemValidationDetails AVAILABILITY_DATE_INVALID, CatalogsItemValidationDetails COUNTRY_DOES_NOT_MAP_TO_CURRENCY, CatalogsItemValidationDetails CUSTOM_LABEL_LENGTH_TOO_LONG, CatalogsItemValidationDetails DESCRIPTION_LENGTH_TOO_LONG, CatalogsItemValidationDetails EXPIRATION_DATE_INVALID, CatalogsItemValidationDetails GENDER_INVALID, CatalogsItemValidationDetails GTIN_INVALID, CatalogsItemValidationDetails IMAGE_LINK_WARNING, CatalogsItemValidationDetails IOS_DEEP_LINK_INVALID, CatalogsItemValidationDetails IS_BUNDLE_INVALID, CatalogsItemValidationDetails ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE, CatalogsItemValidationDetails LINK_FORMAT_WARNING, CatalogsItemValidationDetails MIN_AD_PRICE_INVALID, CatalogsItemValidationDetails MPN_INVALID, CatalogsItemValidationDetails MULTIPACK_INVALID, CatalogsItemValidationDetails OPTIONAL_CONDITION_INVALID, CatalogsItemValidationDetails OPTIONAL_CONDITION_MISSING, CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_INVALID, CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_MISSING, CatalogsItemValidationDetails PRODUCT_CATEGORY_DEPTH_WARNING, CatalogsItemValidationDetails PRODUCT_TYPE_LENGTH_TOO_LONG, CatalogsItemValidationDetails SALES_PRICE_INVALID, CatalogsItemValidationDetails SALES_PRICE_TOO_LOW, CatalogsItemValidationDetails SALES_PRICE_TOO_HIGH, CatalogsItemValidationDetails SALE_DATE_INVALID, CatalogsItemValidationDetails SHIPPING_INVALID, CatalogsItemValidationDetails SHIPPING_HEIGHT_INVALID, CatalogsItemValidationDetails SHIPPING_WEIGHT_INVALID, CatalogsItemValidationDetails SHIPPING_WIDTH_INVALID, CatalogsItemValidationDetails SIZE_TYPE_INVALID, CatalogsItemValidationDetails TAX_INVALID, CatalogsItemValidationDetails TITLE_LENGTH_TOO_LONG, CatalogsItemValidationDetails TOO_MANY_ADDITIONAL_IMAGE_LINKS, CatalogsItemValidationDetails UTM_SOURCE_AUTO_CORRECTED, CatalogsItemValidationDetails WEIGHT_UNIT_INVALID) {
+  public CatalogsItemValidationWarnings (CatalogsItemValidationDetails AD_IMAGE_0_LINK_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_0_LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_0_LINK_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_0_LINK_WARNING, CatalogsItemValidationDetails AD_IMAGE_0_TAG_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_0_TAG_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_0_TAG_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_10_LINK_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_10_LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_10_LINK_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_10_LINK_WARNING, CatalogsItemValidationDetails AD_IMAGE_10_TAG_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_10_TAG_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_10_TAG_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_11_LINK_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_11_LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_11_LINK_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_11_LINK_WARNING, CatalogsItemValidationDetails AD_IMAGE_11_TAG_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_11_TAG_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_11_TAG_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_12_LINK_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_12_LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_12_LINK_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_12_LINK_WARNING, CatalogsItemValidationDetails AD_IMAGE_12_TAG_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_12_TAG_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_12_TAG_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_13_LINK_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_13_LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_13_LINK_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_13_LINK_WARNING, CatalogsItemValidationDetails AD_IMAGE_13_TAG_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_13_TAG_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_13_TAG_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_14_LINK_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_14_LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_14_LINK_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_14_LINK_WARNING, CatalogsItemValidationDetails AD_IMAGE_14_TAG_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_14_TAG_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_14_TAG_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_15_LINK_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_15_LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_15_LINK_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_15_LINK_WARNING, CatalogsItemValidationDetails AD_IMAGE_15_TAG_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_15_TAG_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_15_TAG_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_16_LINK_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_16_LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_16_LINK_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_16_LINK_WARNING, CatalogsItemValidationDetails AD_IMAGE_16_TAG_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_16_TAG_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_16_TAG_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_17_LINK_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_17_LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_17_LINK_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_17_LINK_WARNING, CatalogsItemValidationDetails AD_IMAGE_17_TAG_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_17_TAG_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_17_TAG_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_18_LINK_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_18_LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_18_LINK_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_18_LINK_WARNING, CatalogsItemValidationDetails AD_IMAGE_18_TAG_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_18_TAG_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_18_TAG_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_19_LINK_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_19_LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_19_LINK_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_19_LINK_WARNING, CatalogsItemValidationDetails AD_IMAGE_19_TAG_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_19_TAG_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_19_TAG_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_1_LINK_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_1_LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_1_LINK_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_1_LINK_WARNING, CatalogsItemValidationDetails AD_IMAGE_1_TAG_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_1_TAG_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_1_TAG_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_2_LINK_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_2_LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_2_LINK_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_2_LINK_WARNING, CatalogsItemValidationDetails AD_IMAGE_2_TAG_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_2_TAG_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_2_TAG_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_3_LINK_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_3_LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_3_LINK_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_3_LINK_WARNING, CatalogsItemValidationDetails AD_IMAGE_3_TAG_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_3_TAG_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_3_TAG_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_4_LINK_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_4_LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_4_LINK_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_4_LINK_WARNING, CatalogsItemValidationDetails AD_IMAGE_4_TAG_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_4_TAG_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_4_TAG_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_5_LINK_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_5_LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_5_LINK_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_5_LINK_WARNING, CatalogsItemValidationDetails AD_IMAGE_5_TAG_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_5_TAG_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_5_TAG_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_6_LINK_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_6_LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_6_LINK_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_6_LINK_WARNING, CatalogsItemValidationDetails AD_IMAGE_6_TAG_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_6_TAG_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_6_TAG_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_7_LINK_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_7_LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_7_LINK_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_7_LINK_WARNING, CatalogsItemValidationDetails AD_IMAGE_7_TAG_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_7_TAG_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_7_TAG_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_8_LINK_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_8_LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_8_LINK_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_8_LINK_WARNING, CatalogsItemValidationDetails AD_IMAGE_8_TAG_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_8_TAG_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_8_TAG_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_9_LINK_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_9_LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_9_LINK_REQUIRED, CatalogsItemValidationDetails AD_IMAGE_9_LINK_WARNING, CatalogsItemValidationDetails AD_IMAGE_9_TAG_DUPLICATED, CatalogsItemValidationDetails AD_IMAGE_9_TAG_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_IMAGE_9_TAG_REQUIRED, CatalogsItemValidationDetails AD_LINK_FORMAT_WARNING, CatalogsItemValidationDetails AD_LINK_SAME_AS_LINK, CatalogsItemValidationDetails AD_VIDEO_0_LINK_DUPLICATED, CatalogsItemValidationDetails AD_VIDEO_0_LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_VIDEO_0_LINK_REQUIRED, CatalogsItemValidationDetails AD_VIDEO_0_LINK_WARNING, CatalogsItemValidationDetails AD_VIDEO_0_TAG_DUPLICATED, CatalogsItemValidationDetails AD_VIDEO_0_TAG_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_VIDEO_0_TAG_REQUIRED, CatalogsItemValidationDetails AD_VIDEO_1_LINK_DUPLICATED, CatalogsItemValidationDetails AD_VIDEO_1_LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_VIDEO_1_LINK_REQUIRED, CatalogsItemValidationDetails AD_VIDEO_1_LINK_WARNING, CatalogsItemValidationDetails AD_VIDEO_1_TAG_DUPLICATED, CatalogsItemValidationDetails AD_VIDEO_1_TAG_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_VIDEO_1_TAG_REQUIRED, CatalogsItemValidationDetails AD_VIDEO_2_LINK_DUPLICATED, CatalogsItemValidationDetails AD_VIDEO_2_LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_VIDEO_2_LINK_REQUIRED, CatalogsItemValidationDetails AD_VIDEO_2_LINK_WARNING, CatalogsItemValidationDetails AD_VIDEO_2_TAG_DUPLICATED, CatalogsItemValidationDetails AD_VIDEO_2_TAG_LENGTH_TOO_LONG, CatalogsItemValidationDetails AD_VIDEO_2_TAG_REQUIRED, CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG, CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_WARNING, CatalogsItemValidationDetails ADWORDS_FORMAT_WARNING, CatalogsItemValidationDetails ADWORDS_SAME_AS_LINK, CatalogsItemValidationDetails AGE_GROUP_INVALID, CatalogsItemValidationDetails ANDROID_DEEP_LINK_INVALID, CatalogsItemValidationDetails AVAILABILITY_DATE_INVALID, CatalogsItemValidationDetails COUNTRY_DOES_NOT_MAP_TO_CURRENCY, CatalogsItemValidationDetails CUSTOM_LABEL_LENGTH_TOO_LONG, CatalogsItemValidationDetails DESCRIPTION_LENGTH_TOO_LONG, CatalogsItemValidationDetails EXPIRATION_DATE_INVALID, CatalogsItemValidationDetails GENDER_INVALID, CatalogsItemValidationDetails GTIN_INVALID, CatalogsItemValidationDetails IMAGE_LINK_WARNING, CatalogsItemValidationDetails IOS_DEEP_LINK_INVALID, CatalogsItemValidationDetails IS_BUNDLE_INVALID, CatalogsItemValidationDetails ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE, CatalogsItemValidationDetails LINK_FORMAT_WARNING, CatalogsItemValidationDetails MIN_AD_PRICE_INVALID, CatalogsItemValidationDetails MPN_INVALID, CatalogsItemValidationDetails MULTIPACK_INVALID, CatalogsItemValidationDetails OPTIONAL_CONDITION_INVALID, CatalogsItemValidationDetails OPTIONAL_CONDITION_MISSING, CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_INVALID, CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_MISSING, CatalogsItemValidationDetails PRODUCT_CATEGORY_DEPTH_WARNING, CatalogsItemValidationDetails PRODUCT_TYPE_LENGTH_TOO_LONG, CatalogsItemValidationDetails SALE_DATE_INVALID, CatalogsItemValidationDetails SALES_PRICE_INVALID, CatalogsItemValidationDetails SALES_PRICE_TOO_HIGH, CatalogsItemValidationDetails SALES_PRICE_TOO_LOW, CatalogsItemValidationDetails SHIPPING_HEIGHT_INVALID, CatalogsItemValidationDetails SHIPPING_INVALID, CatalogsItemValidationDetails SHIPPING_WEIGHT_INVALID, CatalogsItemValidationDetails SHIPPING_WIDTH_INVALID, CatalogsItemValidationDetails SIZE_SYSTEM_INVALID, CatalogsItemValidationDetails SIZE_TYPE_INVALID, CatalogsItemValidationDetails TAX_INVALID, CatalogsItemValidationDetails TITLE_LENGTH_TOO_LONG, CatalogsItemValidationDetails TOO_MANY_ADDITIONAL_IMAGE_LINKS, CatalogsItemValidationDetails UTM_SOURCE_AUTO_CORRECTED, CatalogsItemValidationDetails VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED, CatalogsItemValidationDetails WEIGHT_UNIT_INVALID) {
+    this.AD_IMAGE_0_LINK_DUPLICATED = AD_IMAGE_0_LINK_DUPLICATED;
+    this.AD_IMAGE_0_LINK_LENGTH_TOO_LONG = AD_IMAGE_0_LINK_LENGTH_TOO_LONG;
+    this.AD_IMAGE_0_LINK_REQUIRED = AD_IMAGE_0_LINK_REQUIRED;
+    this.AD_IMAGE_0_LINK_WARNING = AD_IMAGE_0_LINK_WARNING;
+    this.AD_IMAGE_0_TAG_DUPLICATED = AD_IMAGE_0_TAG_DUPLICATED;
+    this.AD_IMAGE_0_TAG_LENGTH_TOO_LONG = AD_IMAGE_0_TAG_LENGTH_TOO_LONG;
+    this.AD_IMAGE_0_TAG_REQUIRED = AD_IMAGE_0_TAG_REQUIRED;
+    this.AD_IMAGE_10_LINK_DUPLICATED = AD_IMAGE_10_LINK_DUPLICATED;
+    this.AD_IMAGE_10_LINK_LENGTH_TOO_LONG = AD_IMAGE_10_LINK_LENGTH_TOO_LONG;
+    this.AD_IMAGE_10_LINK_REQUIRED = AD_IMAGE_10_LINK_REQUIRED;
+    this.AD_IMAGE_10_LINK_WARNING = AD_IMAGE_10_LINK_WARNING;
+    this.AD_IMAGE_10_TAG_DUPLICATED = AD_IMAGE_10_TAG_DUPLICATED;
+    this.AD_IMAGE_10_TAG_LENGTH_TOO_LONG = AD_IMAGE_10_TAG_LENGTH_TOO_LONG;
+    this.AD_IMAGE_10_TAG_REQUIRED = AD_IMAGE_10_TAG_REQUIRED;
+    this.AD_IMAGE_11_LINK_DUPLICATED = AD_IMAGE_11_LINK_DUPLICATED;
+    this.AD_IMAGE_11_LINK_LENGTH_TOO_LONG = AD_IMAGE_11_LINK_LENGTH_TOO_LONG;
+    this.AD_IMAGE_11_LINK_REQUIRED = AD_IMAGE_11_LINK_REQUIRED;
+    this.AD_IMAGE_11_LINK_WARNING = AD_IMAGE_11_LINK_WARNING;
+    this.AD_IMAGE_11_TAG_DUPLICATED = AD_IMAGE_11_TAG_DUPLICATED;
+    this.AD_IMAGE_11_TAG_LENGTH_TOO_LONG = AD_IMAGE_11_TAG_LENGTH_TOO_LONG;
+    this.AD_IMAGE_11_TAG_REQUIRED = AD_IMAGE_11_TAG_REQUIRED;
+    this.AD_IMAGE_12_LINK_DUPLICATED = AD_IMAGE_12_LINK_DUPLICATED;
+    this.AD_IMAGE_12_LINK_LENGTH_TOO_LONG = AD_IMAGE_12_LINK_LENGTH_TOO_LONG;
+    this.AD_IMAGE_12_LINK_REQUIRED = AD_IMAGE_12_LINK_REQUIRED;
+    this.AD_IMAGE_12_LINK_WARNING = AD_IMAGE_12_LINK_WARNING;
+    this.AD_IMAGE_12_TAG_DUPLICATED = AD_IMAGE_12_TAG_DUPLICATED;
+    this.AD_IMAGE_12_TAG_LENGTH_TOO_LONG = AD_IMAGE_12_TAG_LENGTH_TOO_LONG;
+    this.AD_IMAGE_12_TAG_REQUIRED = AD_IMAGE_12_TAG_REQUIRED;
+    this.AD_IMAGE_13_LINK_DUPLICATED = AD_IMAGE_13_LINK_DUPLICATED;
+    this.AD_IMAGE_13_LINK_LENGTH_TOO_LONG = AD_IMAGE_13_LINK_LENGTH_TOO_LONG;
+    this.AD_IMAGE_13_LINK_REQUIRED = AD_IMAGE_13_LINK_REQUIRED;
+    this.AD_IMAGE_13_LINK_WARNING = AD_IMAGE_13_LINK_WARNING;
+    this.AD_IMAGE_13_TAG_DUPLICATED = AD_IMAGE_13_TAG_DUPLICATED;
+    this.AD_IMAGE_13_TAG_LENGTH_TOO_LONG = AD_IMAGE_13_TAG_LENGTH_TOO_LONG;
+    this.AD_IMAGE_13_TAG_REQUIRED = AD_IMAGE_13_TAG_REQUIRED;
+    this.AD_IMAGE_14_LINK_DUPLICATED = AD_IMAGE_14_LINK_DUPLICATED;
+    this.AD_IMAGE_14_LINK_LENGTH_TOO_LONG = AD_IMAGE_14_LINK_LENGTH_TOO_LONG;
+    this.AD_IMAGE_14_LINK_REQUIRED = AD_IMAGE_14_LINK_REQUIRED;
+    this.AD_IMAGE_14_LINK_WARNING = AD_IMAGE_14_LINK_WARNING;
+    this.AD_IMAGE_14_TAG_DUPLICATED = AD_IMAGE_14_TAG_DUPLICATED;
+    this.AD_IMAGE_14_TAG_LENGTH_TOO_LONG = AD_IMAGE_14_TAG_LENGTH_TOO_LONG;
+    this.AD_IMAGE_14_TAG_REQUIRED = AD_IMAGE_14_TAG_REQUIRED;
+    this.AD_IMAGE_15_LINK_DUPLICATED = AD_IMAGE_15_LINK_DUPLICATED;
+    this.AD_IMAGE_15_LINK_LENGTH_TOO_LONG = AD_IMAGE_15_LINK_LENGTH_TOO_LONG;
+    this.AD_IMAGE_15_LINK_REQUIRED = AD_IMAGE_15_LINK_REQUIRED;
+    this.AD_IMAGE_15_LINK_WARNING = AD_IMAGE_15_LINK_WARNING;
+    this.AD_IMAGE_15_TAG_DUPLICATED = AD_IMAGE_15_TAG_DUPLICATED;
+    this.AD_IMAGE_15_TAG_LENGTH_TOO_LONG = AD_IMAGE_15_TAG_LENGTH_TOO_LONG;
+    this.AD_IMAGE_15_TAG_REQUIRED = AD_IMAGE_15_TAG_REQUIRED;
+    this.AD_IMAGE_16_LINK_DUPLICATED = AD_IMAGE_16_LINK_DUPLICATED;
+    this.AD_IMAGE_16_LINK_LENGTH_TOO_LONG = AD_IMAGE_16_LINK_LENGTH_TOO_LONG;
+    this.AD_IMAGE_16_LINK_REQUIRED = AD_IMAGE_16_LINK_REQUIRED;
+    this.AD_IMAGE_16_LINK_WARNING = AD_IMAGE_16_LINK_WARNING;
+    this.AD_IMAGE_16_TAG_DUPLICATED = AD_IMAGE_16_TAG_DUPLICATED;
+    this.AD_IMAGE_16_TAG_LENGTH_TOO_LONG = AD_IMAGE_16_TAG_LENGTH_TOO_LONG;
+    this.AD_IMAGE_16_TAG_REQUIRED = AD_IMAGE_16_TAG_REQUIRED;
+    this.AD_IMAGE_17_LINK_DUPLICATED = AD_IMAGE_17_LINK_DUPLICATED;
+    this.AD_IMAGE_17_LINK_LENGTH_TOO_LONG = AD_IMAGE_17_LINK_LENGTH_TOO_LONG;
+    this.AD_IMAGE_17_LINK_REQUIRED = AD_IMAGE_17_LINK_REQUIRED;
+    this.AD_IMAGE_17_LINK_WARNING = AD_IMAGE_17_LINK_WARNING;
+    this.AD_IMAGE_17_TAG_DUPLICATED = AD_IMAGE_17_TAG_DUPLICATED;
+    this.AD_IMAGE_17_TAG_LENGTH_TOO_LONG = AD_IMAGE_17_TAG_LENGTH_TOO_LONG;
+    this.AD_IMAGE_17_TAG_REQUIRED = AD_IMAGE_17_TAG_REQUIRED;
+    this.AD_IMAGE_18_LINK_DUPLICATED = AD_IMAGE_18_LINK_DUPLICATED;
+    this.AD_IMAGE_18_LINK_LENGTH_TOO_LONG = AD_IMAGE_18_LINK_LENGTH_TOO_LONG;
+    this.AD_IMAGE_18_LINK_REQUIRED = AD_IMAGE_18_LINK_REQUIRED;
+    this.AD_IMAGE_18_LINK_WARNING = AD_IMAGE_18_LINK_WARNING;
+    this.AD_IMAGE_18_TAG_DUPLICATED = AD_IMAGE_18_TAG_DUPLICATED;
+    this.AD_IMAGE_18_TAG_LENGTH_TOO_LONG = AD_IMAGE_18_TAG_LENGTH_TOO_LONG;
+    this.AD_IMAGE_18_TAG_REQUIRED = AD_IMAGE_18_TAG_REQUIRED;
+    this.AD_IMAGE_19_LINK_DUPLICATED = AD_IMAGE_19_LINK_DUPLICATED;
+    this.AD_IMAGE_19_LINK_LENGTH_TOO_LONG = AD_IMAGE_19_LINK_LENGTH_TOO_LONG;
+    this.AD_IMAGE_19_LINK_REQUIRED = AD_IMAGE_19_LINK_REQUIRED;
+    this.AD_IMAGE_19_LINK_WARNING = AD_IMAGE_19_LINK_WARNING;
+    this.AD_IMAGE_19_TAG_DUPLICATED = AD_IMAGE_19_TAG_DUPLICATED;
+    this.AD_IMAGE_19_TAG_LENGTH_TOO_LONG = AD_IMAGE_19_TAG_LENGTH_TOO_LONG;
+    this.AD_IMAGE_19_TAG_REQUIRED = AD_IMAGE_19_TAG_REQUIRED;
+    this.AD_IMAGE_1_LINK_DUPLICATED = AD_IMAGE_1_LINK_DUPLICATED;
+    this.AD_IMAGE_1_LINK_LENGTH_TOO_LONG = AD_IMAGE_1_LINK_LENGTH_TOO_LONG;
+    this.AD_IMAGE_1_LINK_REQUIRED = AD_IMAGE_1_LINK_REQUIRED;
+    this.AD_IMAGE_1_LINK_WARNING = AD_IMAGE_1_LINK_WARNING;
+    this.AD_IMAGE_1_TAG_DUPLICATED = AD_IMAGE_1_TAG_DUPLICATED;
+    this.AD_IMAGE_1_TAG_LENGTH_TOO_LONG = AD_IMAGE_1_TAG_LENGTH_TOO_LONG;
+    this.AD_IMAGE_1_TAG_REQUIRED = AD_IMAGE_1_TAG_REQUIRED;
+    this.AD_IMAGE_2_LINK_DUPLICATED = AD_IMAGE_2_LINK_DUPLICATED;
+    this.AD_IMAGE_2_LINK_LENGTH_TOO_LONG = AD_IMAGE_2_LINK_LENGTH_TOO_LONG;
+    this.AD_IMAGE_2_LINK_REQUIRED = AD_IMAGE_2_LINK_REQUIRED;
+    this.AD_IMAGE_2_LINK_WARNING = AD_IMAGE_2_LINK_WARNING;
+    this.AD_IMAGE_2_TAG_DUPLICATED = AD_IMAGE_2_TAG_DUPLICATED;
+    this.AD_IMAGE_2_TAG_LENGTH_TOO_LONG = AD_IMAGE_2_TAG_LENGTH_TOO_LONG;
+    this.AD_IMAGE_2_TAG_REQUIRED = AD_IMAGE_2_TAG_REQUIRED;
+    this.AD_IMAGE_3_LINK_DUPLICATED = AD_IMAGE_3_LINK_DUPLICATED;
+    this.AD_IMAGE_3_LINK_LENGTH_TOO_LONG = AD_IMAGE_3_LINK_LENGTH_TOO_LONG;
+    this.AD_IMAGE_3_LINK_REQUIRED = AD_IMAGE_3_LINK_REQUIRED;
+    this.AD_IMAGE_3_LINK_WARNING = AD_IMAGE_3_LINK_WARNING;
+    this.AD_IMAGE_3_TAG_DUPLICATED = AD_IMAGE_3_TAG_DUPLICATED;
+    this.AD_IMAGE_3_TAG_LENGTH_TOO_LONG = AD_IMAGE_3_TAG_LENGTH_TOO_LONG;
+    this.AD_IMAGE_3_TAG_REQUIRED = AD_IMAGE_3_TAG_REQUIRED;
+    this.AD_IMAGE_4_LINK_DUPLICATED = AD_IMAGE_4_LINK_DUPLICATED;
+    this.AD_IMAGE_4_LINK_LENGTH_TOO_LONG = AD_IMAGE_4_LINK_LENGTH_TOO_LONG;
+    this.AD_IMAGE_4_LINK_REQUIRED = AD_IMAGE_4_LINK_REQUIRED;
+    this.AD_IMAGE_4_LINK_WARNING = AD_IMAGE_4_LINK_WARNING;
+    this.AD_IMAGE_4_TAG_DUPLICATED = AD_IMAGE_4_TAG_DUPLICATED;
+    this.AD_IMAGE_4_TAG_LENGTH_TOO_LONG = AD_IMAGE_4_TAG_LENGTH_TOO_LONG;
+    this.AD_IMAGE_4_TAG_REQUIRED = AD_IMAGE_4_TAG_REQUIRED;
+    this.AD_IMAGE_5_LINK_DUPLICATED = AD_IMAGE_5_LINK_DUPLICATED;
+    this.AD_IMAGE_5_LINK_LENGTH_TOO_LONG = AD_IMAGE_5_LINK_LENGTH_TOO_LONG;
+    this.AD_IMAGE_5_LINK_REQUIRED = AD_IMAGE_5_LINK_REQUIRED;
+    this.AD_IMAGE_5_LINK_WARNING = AD_IMAGE_5_LINK_WARNING;
+    this.AD_IMAGE_5_TAG_DUPLICATED = AD_IMAGE_5_TAG_DUPLICATED;
+    this.AD_IMAGE_5_TAG_LENGTH_TOO_LONG = AD_IMAGE_5_TAG_LENGTH_TOO_LONG;
+    this.AD_IMAGE_5_TAG_REQUIRED = AD_IMAGE_5_TAG_REQUIRED;
+    this.AD_IMAGE_6_LINK_DUPLICATED = AD_IMAGE_6_LINK_DUPLICATED;
+    this.AD_IMAGE_6_LINK_LENGTH_TOO_LONG = AD_IMAGE_6_LINK_LENGTH_TOO_LONG;
+    this.AD_IMAGE_6_LINK_REQUIRED = AD_IMAGE_6_LINK_REQUIRED;
+    this.AD_IMAGE_6_LINK_WARNING = AD_IMAGE_6_LINK_WARNING;
+    this.AD_IMAGE_6_TAG_DUPLICATED = AD_IMAGE_6_TAG_DUPLICATED;
+    this.AD_IMAGE_6_TAG_LENGTH_TOO_LONG = AD_IMAGE_6_TAG_LENGTH_TOO_LONG;
+    this.AD_IMAGE_6_TAG_REQUIRED = AD_IMAGE_6_TAG_REQUIRED;
+    this.AD_IMAGE_7_LINK_DUPLICATED = AD_IMAGE_7_LINK_DUPLICATED;
+    this.AD_IMAGE_7_LINK_LENGTH_TOO_LONG = AD_IMAGE_7_LINK_LENGTH_TOO_LONG;
+    this.AD_IMAGE_7_LINK_REQUIRED = AD_IMAGE_7_LINK_REQUIRED;
+    this.AD_IMAGE_7_LINK_WARNING = AD_IMAGE_7_LINK_WARNING;
+    this.AD_IMAGE_7_TAG_DUPLICATED = AD_IMAGE_7_TAG_DUPLICATED;
+    this.AD_IMAGE_7_TAG_LENGTH_TOO_LONG = AD_IMAGE_7_TAG_LENGTH_TOO_LONG;
+    this.AD_IMAGE_7_TAG_REQUIRED = AD_IMAGE_7_TAG_REQUIRED;
+    this.AD_IMAGE_8_LINK_DUPLICATED = AD_IMAGE_8_LINK_DUPLICATED;
+    this.AD_IMAGE_8_LINK_LENGTH_TOO_LONG = AD_IMAGE_8_LINK_LENGTH_TOO_LONG;
+    this.AD_IMAGE_8_LINK_REQUIRED = AD_IMAGE_8_LINK_REQUIRED;
+    this.AD_IMAGE_8_LINK_WARNING = AD_IMAGE_8_LINK_WARNING;
+    this.AD_IMAGE_8_TAG_DUPLICATED = AD_IMAGE_8_TAG_DUPLICATED;
+    this.AD_IMAGE_8_TAG_LENGTH_TOO_LONG = AD_IMAGE_8_TAG_LENGTH_TOO_LONG;
+    this.AD_IMAGE_8_TAG_REQUIRED = AD_IMAGE_8_TAG_REQUIRED;
+    this.AD_IMAGE_9_LINK_DUPLICATED = AD_IMAGE_9_LINK_DUPLICATED;
+    this.AD_IMAGE_9_LINK_LENGTH_TOO_LONG = AD_IMAGE_9_LINK_LENGTH_TOO_LONG;
+    this.AD_IMAGE_9_LINK_REQUIRED = AD_IMAGE_9_LINK_REQUIRED;
+    this.AD_IMAGE_9_LINK_WARNING = AD_IMAGE_9_LINK_WARNING;
+    this.AD_IMAGE_9_TAG_DUPLICATED = AD_IMAGE_9_TAG_DUPLICATED;
+    this.AD_IMAGE_9_TAG_LENGTH_TOO_LONG = AD_IMAGE_9_TAG_LENGTH_TOO_LONG;
+    this.AD_IMAGE_9_TAG_REQUIRED = AD_IMAGE_9_TAG_REQUIRED;
     this.AD_LINK_FORMAT_WARNING = AD_LINK_FORMAT_WARNING;
     this.AD_LINK_SAME_AS_LINK = AD_LINK_SAME_AS_LINK;
+    this.AD_VIDEO_0_LINK_DUPLICATED = AD_VIDEO_0_LINK_DUPLICATED;
+    this.AD_VIDEO_0_LINK_LENGTH_TOO_LONG = AD_VIDEO_0_LINK_LENGTH_TOO_LONG;
+    this.AD_VIDEO_0_LINK_REQUIRED = AD_VIDEO_0_LINK_REQUIRED;
+    this.AD_VIDEO_0_LINK_WARNING = AD_VIDEO_0_LINK_WARNING;
+    this.AD_VIDEO_0_TAG_DUPLICATED = AD_VIDEO_0_TAG_DUPLICATED;
+    this.AD_VIDEO_0_TAG_LENGTH_TOO_LONG = AD_VIDEO_0_TAG_LENGTH_TOO_LONG;
+    this.AD_VIDEO_0_TAG_REQUIRED = AD_VIDEO_0_TAG_REQUIRED;
+    this.AD_VIDEO_1_LINK_DUPLICATED = AD_VIDEO_1_LINK_DUPLICATED;
+    this.AD_VIDEO_1_LINK_LENGTH_TOO_LONG = AD_VIDEO_1_LINK_LENGTH_TOO_LONG;
+    this.AD_VIDEO_1_LINK_REQUIRED = AD_VIDEO_1_LINK_REQUIRED;
+    this.AD_VIDEO_1_LINK_WARNING = AD_VIDEO_1_LINK_WARNING;
+    this.AD_VIDEO_1_TAG_DUPLICATED = AD_VIDEO_1_TAG_DUPLICATED;
+    this.AD_VIDEO_1_TAG_LENGTH_TOO_LONG = AD_VIDEO_1_TAG_LENGTH_TOO_LONG;
+    this.AD_VIDEO_1_TAG_REQUIRED = AD_VIDEO_1_TAG_REQUIRED;
+    this.AD_VIDEO_2_LINK_DUPLICATED = AD_VIDEO_2_LINK_DUPLICATED;
+    this.AD_VIDEO_2_LINK_LENGTH_TOO_LONG = AD_VIDEO_2_LINK_LENGTH_TOO_LONG;
+    this.AD_VIDEO_2_LINK_REQUIRED = AD_VIDEO_2_LINK_REQUIRED;
+    this.AD_VIDEO_2_LINK_WARNING = AD_VIDEO_2_LINK_WARNING;
+    this.AD_VIDEO_2_TAG_DUPLICATED = AD_VIDEO_2_TAG_DUPLICATED;
+    this.AD_VIDEO_2_TAG_LENGTH_TOO_LONG = AD_VIDEO_2_TAG_LENGTH_TOO_LONG;
+    this.AD_VIDEO_2_TAG_REQUIRED = AD_VIDEO_2_TAG_REQUIRED;
     this.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG = ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
     this.ADDITIONAL_IMAGE_LINK_WARNING = ADDITIONAL_IMAGE_LINK_WARNING;
     this.ADWORDS_FORMAT_WARNING = ADWORDS_FORMAT_WARNING;
     this.ADWORDS_SAME_AS_LINK = ADWORDS_SAME_AS_LINK;
     this.AGE_GROUP_INVALID = AGE_GROUP_INVALID;
-    this.SIZE_SYSTEM_INVALID = SIZE_SYSTEM_INVALID;
     this.ANDROID_DEEP_LINK_INVALID = ANDROID_DEEP_LINK_INVALID;
     this.AVAILABILITY_DATE_INVALID = AVAILABILITY_DATE_INVALID;
     this.COUNTRY_DOES_NOT_MAP_TO_CURRENCY = COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
@@ -88,20 +410,1282 @@ public class CatalogsItemValidationWarnings   {
     this.OPTIONAL_PRODUCT_CATEGORY_MISSING = OPTIONAL_PRODUCT_CATEGORY_MISSING;
     this.PRODUCT_CATEGORY_DEPTH_WARNING = PRODUCT_CATEGORY_DEPTH_WARNING;
     this.PRODUCT_TYPE_LENGTH_TOO_LONG = PRODUCT_TYPE_LENGTH_TOO_LONG;
-    this.SALES_PRICE_INVALID = SALES_PRICE_INVALID;
-    this.SALES_PRICE_TOO_LOW = SALES_PRICE_TOO_LOW;
-    this.SALES_PRICE_TOO_HIGH = SALES_PRICE_TOO_HIGH;
     this.SALE_DATE_INVALID = SALE_DATE_INVALID;
-    this.SHIPPING_INVALID = SHIPPING_INVALID;
+    this.SALES_PRICE_INVALID = SALES_PRICE_INVALID;
+    this.SALES_PRICE_TOO_HIGH = SALES_PRICE_TOO_HIGH;
+    this.SALES_PRICE_TOO_LOW = SALES_PRICE_TOO_LOW;
     this.SHIPPING_HEIGHT_INVALID = SHIPPING_HEIGHT_INVALID;
+    this.SHIPPING_INVALID = SHIPPING_INVALID;
     this.SHIPPING_WEIGHT_INVALID = SHIPPING_WEIGHT_INVALID;
     this.SHIPPING_WIDTH_INVALID = SHIPPING_WIDTH_INVALID;
+    this.SIZE_SYSTEM_INVALID = SIZE_SYSTEM_INVALID;
     this.SIZE_TYPE_INVALID = SIZE_TYPE_INVALID;
     this.TAX_INVALID = TAX_INVALID;
     this.TITLE_LENGTH_TOO_LONG = TITLE_LENGTH_TOO_LONG;
     this.TOO_MANY_ADDITIONAL_IMAGE_LINKS = TOO_MANY_ADDITIONAL_IMAGE_LINKS;
     this.UTM_SOURCE_AUTO_CORRECTED = UTM_SOURCE_AUTO_CORRECTED;
+    this.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED = VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED;
     this.WEIGHT_UNIT_INVALID = WEIGHT_UNIT_INVALID;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_0_LINK_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE0LINKDUPLICATED() {
+    return AD_IMAGE_0_LINK_DUPLICATED;
+  }
+  public void setADIMAGE0LINKDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_0_LINK_DUPLICATED) {
+    this.AD_IMAGE_0_LINK_DUPLICATED = AD_IMAGE_0_LINK_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_0_LINK_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE0LINKLENGTHTOOLONG() {
+    return AD_IMAGE_0_LINK_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE0LINKLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_0_LINK_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_0_LINK_LENGTH_TOO_LONG = AD_IMAGE_0_LINK_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_0_LINK_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE0LINKREQUIRED() {
+    return AD_IMAGE_0_LINK_REQUIRED;
+  }
+  public void setADIMAGE0LINKREQUIRED(CatalogsItemValidationDetails AD_IMAGE_0_LINK_REQUIRED) {
+    this.AD_IMAGE_0_LINK_REQUIRED = AD_IMAGE_0_LINK_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_0_LINK_WARNING")
+  public CatalogsItemValidationDetails getADIMAGE0LINKWARNING() {
+    return AD_IMAGE_0_LINK_WARNING;
+  }
+  public void setADIMAGE0LINKWARNING(CatalogsItemValidationDetails AD_IMAGE_0_LINK_WARNING) {
+    this.AD_IMAGE_0_LINK_WARNING = AD_IMAGE_0_LINK_WARNING;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_0_TAG_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE0TAGDUPLICATED() {
+    return AD_IMAGE_0_TAG_DUPLICATED;
+  }
+  public void setADIMAGE0TAGDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_0_TAG_DUPLICATED) {
+    this.AD_IMAGE_0_TAG_DUPLICATED = AD_IMAGE_0_TAG_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_0_TAG_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE0TAGLENGTHTOOLONG() {
+    return AD_IMAGE_0_TAG_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE0TAGLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_0_TAG_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_0_TAG_LENGTH_TOO_LONG = AD_IMAGE_0_TAG_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_0_TAG_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE0TAGREQUIRED() {
+    return AD_IMAGE_0_TAG_REQUIRED;
+  }
+  public void setADIMAGE0TAGREQUIRED(CatalogsItemValidationDetails AD_IMAGE_0_TAG_REQUIRED) {
+    this.AD_IMAGE_0_TAG_REQUIRED = AD_IMAGE_0_TAG_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_10_LINK_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE10LINKDUPLICATED() {
+    return AD_IMAGE_10_LINK_DUPLICATED;
+  }
+  public void setADIMAGE10LINKDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_10_LINK_DUPLICATED) {
+    this.AD_IMAGE_10_LINK_DUPLICATED = AD_IMAGE_10_LINK_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_10_LINK_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE10LINKLENGTHTOOLONG() {
+    return AD_IMAGE_10_LINK_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE10LINKLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_10_LINK_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_10_LINK_LENGTH_TOO_LONG = AD_IMAGE_10_LINK_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_10_LINK_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE10LINKREQUIRED() {
+    return AD_IMAGE_10_LINK_REQUIRED;
+  }
+  public void setADIMAGE10LINKREQUIRED(CatalogsItemValidationDetails AD_IMAGE_10_LINK_REQUIRED) {
+    this.AD_IMAGE_10_LINK_REQUIRED = AD_IMAGE_10_LINK_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_10_LINK_WARNING")
+  public CatalogsItemValidationDetails getADIMAGE10LINKWARNING() {
+    return AD_IMAGE_10_LINK_WARNING;
+  }
+  public void setADIMAGE10LINKWARNING(CatalogsItemValidationDetails AD_IMAGE_10_LINK_WARNING) {
+    this.AD_IMAGE_10_LINK_WARNING = AD_IMAGE_10_LINK_WARNING;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_10_TAG_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE10TAGDUPLICATED() {
+    return AD_IMAGE_10_TAG_DUPLICATED;
+  }
+  public void setADIMAGE10TAGDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_10_TAG_DUPLICATED) {
+    this.AD_IMAGE_10_TAG_DUPLICATED = AD_IMAGE_10_TAG_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_10_TAG_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE10TAGLENGTHTOOLONG() {
+    return AD_IMAGE_10_TAG_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE10TAGLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_10_TAG_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_10_TAG_LENGTH_TOO_LONG = AD_IMAGE_10_TAG_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_10_TAG_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE10TAGREQUIRED() {
+    return AD_IMAGE_10_TAG_REQUIRED;
+  }
+  public void setADIMAGE10TAGREQUIRED(CatalogsItemValidationDetails AD_IMAGE_10_TAG_REQUIRED) {
+    this.AD_IMAGE_10_TAG_REQUIRED = AD_IMAGE_10_TAG_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_11_LINK_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE11LINKDUPLICATED() {
+    return AD_IMAGE_11_LINK_DUPLICATED;
+  }
+  public void setADIMAGE11LINKDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_11_LINK_DUPLICATED) {
+    this.AD_IMAGE_11_LINK_DUPLICATED = AD_IMAGE_11_LINK_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_11_LINK_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE11LINKLENGTHTOOLONG() {
+    return AD_IMAGE_11_LINK_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE11LINKLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_11_LINK_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_11_LINK_LENGTH_TOO_LONG = AD_IMAGE_11_LINK_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_11_LINK_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE11LINKREQUIRED() {
+    return AD_IMAGE_11_LINK_REQUIRED;
+  }
+  public void setADIMAGE11LINKREQUIRED(CatalogsItemValidationDetails AD_IMAGE_11_LINK_REQUIRED) {
+    this.AD_IMAGE_11_LINK_REQUIRED = AD_IMAGE_11_LINK_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_11_LINK_WARNING")
+  public CatalogsItemValidationDetails getADIMAGE11LINKWARNING() {
+    return AD_IMAGE_11_LINK_WARNING;
+  }
+  public void setADIMAGE11LINKWARNING(CatalogsItemValidationDetails AD_IMAGE_11_LINK_WARNING) {
+    this.AD_IMAGE_11_LINK_WARNING = AD_IMAGE_11_LINK_WARNING;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_11_TAG_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE11TAGDUPLICATED() {
+    return AD_IMAGE_11_TAG_DUPLICATED;
+  }
+  public void setADIMAGE11TAGDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_11_TAG_DUPLICATED) {
+    this.AD_IMAGE_11_TAG_DUPLICATED = AD_IMAGE_11_TAG_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_11_TAG_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE11TAGLENGTHTOOLONG() {
+    return AD_IMAGE_11_TAG_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE11TAGLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_11_TAG_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_11_TAG_LENGTH_TOO_LONG = AD_IMAGE_11_TAG_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_11_TAG_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE11TAGREQUIRED() {
+    return AD_IMAGE_11_TAG_REQUIRED;
+  }
+  public void setADIMAGE11TAGREQUIRED(CatalogsItemValidationDetails AD_IMAGE_11_TAG_REQUIRED) {
+    this.AD_IMAGE_11_TAG_REQUIRED = AD_IMAGE_11_TAG_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_12_LINK_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE12LINKDUPLICATED() {
+    return AD_IMAGE_12_LINK_DUPLICATED;
+  }
+  public void setADIMAGE12LINKDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_12_LINK_DUPLICATED) {
+    this.AD_IMAGE_12_LINK_DUPLICATED = AD_IMAGE_12_LINK_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_12_LINK_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE12LINKLENGTHTOOLONG() {
+    return AD_IMAGE_12_LINK_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE12LINKLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_12_LINK_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_12_LINK_LENGTH_TOO_LONG = AD_IMAGE_12_LINK_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_12_LINK_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE12LINKREQUIRED() {
+    return AD_IMAGE_12_LINK_REQUIRED;
+  }
+  public void setADIMAGE12LINKREQUIRED(CatalogsItemValidationDetails AD_IMAGE_12_LINK_REQUIRED) {
+    this.AD_IMAGE_12_LINK_REQUIRED = AD_IMAGE_12_LINK_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_12_LINK_WARNING")
+  public CatalogsItemValidationDetails getADIMAGE12LINKWARNING() {
+    return AD_IMAGE_12_LINK_WARNING;
+  }
+  public void setADIMAGE12LINKWARNING(CatalogsItemValidationDetails AD_IMAGE_12_LINK_WARNING) {
+    this.AD_IMAGE_12_LINK_WARNING = AD_IMAGE_12_LINK_WARNING;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_12_TAG_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE12TAGDUPLICATED() {
+    return AD_IMAGE_12_TAG_DUPLICATED;
+  }
+  public void setADIMAGE12TAGDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_12_TAG_DUPLICATED) {
+    this.AD_IMAGE_12_TAG_DUPLICATED = AD_IMAGE_12_TAG_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_12_TAG_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE12TAGLENGTHTOOLONG() {
+    return AD_IMAGE_12_TAG_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE12TAGLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_12_TAG_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_12_TAG_LENGTH_TOO_LONG = AD_IMAGE_12_TAG_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_12_TAG_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE12TAGREQUIRED() {
+    return AD_IMAGE_12_TAG_REQUIRED;
+  }
+  public void setADIMAGE12TAGREQUIRED(CatalogsItemValidationDetails AD_IMAGE_12_TAG_REQUIRED) {
+    this.AD_IMAGE_12_TAG_REQUIRED = AD_IMAGE_12_TAG_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_13_LINK_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE13LINKDUPLICATED() {
+    return AD_IMAGE_13_LINK_DUPLICATED;
+  }
+  public void setADIMAGE13LINKDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_13_LINK_DUPLICATED) {
+    this.AD_IMAGE_13_LINK_DUPLICATED = AD_IMAGE_13_LINK_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_13_LINK_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE13LINKLENGTHTOOLONG() {
+    return AD_IMAGE_13_LINK_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE13LINKLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_13_LINK_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_13_LINK_LENGTH_TOO_LONG = AD_IMAGE_13_LINK_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_13_LINK_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE13LINKREQUIRED() {
+    return AD_IMAGE_13_LINK_REQUIRED;
+  }
+  public void setADIMAGE13LINKREQUIRED(CatalogsItemValidationDetails AD_IMAGE_13_LINK_REQUIRED) {
+    this.AD_IMAGE_13_LINK_REQUIRED = AD_IMAGE_13_LINK_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_13_LINK_WARNING")
+  public CatalogsItemValidationDetails getADIMAGE13LINKWARNING() {
+    return AD_IMAGE_13_LINK_WARNING;
+  }
+  public void setADIMAGE13LINKWARNING(CatalogsItemValidationDetails AD_IMAGE_13_LINK_WARNING) {
+    this.AD_IMAGE_13_LINK_WARNING = AD_IMAGE_13_LINK_WARNING;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_13_TAG_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE13TAGDUPLICATED() {
+    return AD_IMAGE_13_TAG_DUPLICATED;
+  }
+  public void setADIMAGE13TAGDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_13_TAG_DUPLICATED) {
+    this.AD_IMAGE_13_TAG_DUPLICATED = AD_IMAGE_13_TAG_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_13_TAG_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE13TAGLENGTHTOOLONG() {
+    return AD_IMAGE_13_TAG_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE13TAGLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_13_TAG_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_13_TAG_LENGTH_TOO_LONG = AD_IMAGE_13_TAG_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_13_TAG_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE13TAGREQUIRED() {
+    return AD_IMAGE_13_TAG_REQUIRED;
+  }
+  public void setADIMAGE13TAGREQUIRED(CatalogsItemValidationDetails AD_IMAGE_13_TAG_REQUIRED) {
+    this.AD_IMAGE_13_TAG_REQUIRED = AD_IMAGE_13_TAG_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_14_LINK_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE14LINKDUPLICATED() {
+    return AD_IMAGE_14_LINK_DUPLICATED;
+  }
+  public void setADIMAGE14LINKDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_14_LINK_DUPLICATED) {
+    this.AD_IMAGE_14_LINK_DUPLICATED = AD_IMAGE_14_LINK_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_14_LINK_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE14LINKLENGTHTOOLONG() {
+    return AD_IMAGE_14_LINK_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE14LINKLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_14_LINK_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_14_LINK_LENGTH_TOO_LONG = AD_IMAGE_14_LINK_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_14_LINK_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE14LINKREQUIRED() {
+    return AD_IMAGE_14_LINK_REQUIRED;
+  }
+  public void setADIMAGE14LINKREQUIRED(CatalogsItemValidationDetails AD_IMAGE_14_LINK_REQUIRED) {
+    this.AD_IMAGE_14_LINK_REQUIRED = AD_IMAGE_14_LINK_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_14_LINK_WARNING")
+  public CatalogsItemValidationDetails getADIMAGE14LINKWARNING() {
+    return AD_IMAGE_14_LINK_WARNING;
+  }
+  public void setADIMAGE14LINKWARNING(CatalogsItemValidationDetails AD_IMAGE_14_LINK_WARNING) {
+    this.AD_IMAGE_14_LINK_WARNING = AD_IMAGE_14_LINK_WARNING;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_14_TAG_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE14TAGDUPLICATED() {
+    return AD_IMAGE_14_TAG_DUPLICATED;
+  }
+  public void setADIMAGE14TAGDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_14_TAG_DUPLICATED) {
+    this.AD_IMAGE_14_TAG_DUPLICATED = AD_IMAGE_14_TAG_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_14_TAG_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE14TAGLENGTHTOOLONG() {
+    return AD_IMAGE_14_TAG_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE14TAGLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_14_TAG_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_14_TAG_LENGTH_TOO_LONG = AD_IMAGE_14_TAG_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_14_TAG_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE14TAGREQUIRED() {
+    return AD_IMAGE_14_TAG_REQUIRED;
+  }
+  public void setADIMAGE14TAGREQUIRED(CatalogsItemValidationDetails AD_IMAGE_14_TAG_REQUIRED) {
+    this.AD_IMAGE_14_TAG_REQUIRED = AD_IMAGE_14_TAG_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_15_LINK_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE15LINKDUPLICATED() {
+    return AD_IMAGE_15_LINK_DUPLICATED;
+  }
+  public void setADIMAGE15LINKDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_15_LINK_DUPLICATED) {
+    this.AD_IMAGE_15_LINK_DUPLICATED = AD_IMAGE_15_LINK_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_15_LINK_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE15LINKLENGTHTOOLONG() {
+    return AD_IMAGE_15_LINK_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE15LINKLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_15_LINK_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_15_LINK_LENGTH_TOO_LONG = AD_IMAGE_15_LINK_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_15_LINK_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE15LINKREQUIRED() {
+    return AD_IMAGE_15_LINK_REQUIRED;
+  }
+  public void setADIMAGE15LINKREQUIRED(CatalogsItemValidationDetails AD_IMAGE_15_LINK_REQUIRED) {
+    this.AD_IMAGE_15_LINK_REQUIRED = AD_IMAGE_15_LINK_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_15_LINK_WARNING")
+  public CatalogsItemValidationDetails getADIMAGE15LINKWARNING() {
+    return AD_IMAGE_15_LINK_WARNING;
+  }
+  public void setADIMAGE15LINKWARNING(CatalogsItemValidationDetails AD_IMAGE_15_LINK_WARNING) {
+    this.AD_IMAGE_15_LINK_WARNING = AD_IMAGE_15_LINK_WARNING;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_15_TAG_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE15TAGDUPLICATED() {
+    return AD_IMAGE_15_TAG_DUPLICATED;
+  }
+  public void setADIMAGE15TAGDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_15_TAG_DUPLICATED) {
+    this.AD_IMAGE_15_TAG_DUPLICATED = AD_IMAGE_15_TAG_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_15_TAG_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE15TAGLENGTHTOOLONG() {
+    return AD_IMAGE_15_TAG_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE15TAGLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_15_TAG_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_15_TAG_LENGTH_TOO_LONG = AD_IMAGE_15_TAG_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_15_TAG_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE15TAGREQUIRED() {
+    return AD_IMAGE_15_TAG_REQUIRED;
+  }
+  public void setADIMAGE15TAGREQUIRED(CatalogsItemValidationDetails AD_IMAGE_15_TAG_REQUIRED) {
+    this.AD_IMAGE_15_TAG_REQUIRED = AD_IMAGE_15_TAG_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_16_LINK_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE16LINKDUPLICATED() {
+    return AD_IMAGE_16_LINK_DUPLICATED;
+  }
+  public void setADIMAGE16LINKDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_16_LINK_DUPLICATED) {
+    this.AD_IMAGE_16_LINK_DUPLICATED = AD_IMAGE_16_LINK_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_16_LINK_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE16LINKLENGTHTOOLONG() {
+    return AD_IMAGE_16_LINK_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE16LINKLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_16_LINK_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_16_LINK_LENGTH_TOO_LONG = AD_IMAGE_16_LINK_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_16_LINK_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE16LINKREQUIRED() {
+    return AD_IMAGE_16_LINK_REQUIRED;
+  }
+  public void setADIMAGE16LINKREQUIRED(CatalogsItemValidationDetails AD_IMAGE_16_LINK_REQUIRED) {
+    this.AD_IMAGE_16_LINK_REQUIRED = AD_IMAGE_16_LINK_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_16_LINK_WARNING")
+  public CatalogsItemValidationDetails getADIMAGE16LINKWARNING() {
+    return AD_IMAGE_16_LINK_WARNING;
+  }
+  public void setADIMAGE16LINKWARNING(CatalogsItemValidationDetails AD_IMAGE_16_LINK_WARNING) {
+    this.AD_IMAGE_16_LINK_WARNING = AD_IMAGE_16_LINK_WARNING;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_16_TAG_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE16TAGDUPLICATED() {
+    return AD_IMAGE_16_TAG_DUPLICATED;
+  }
+  public void setADIMAGE16TAGDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_16_TAG_DUPLICATED) {
+    this.AD_IMAGE_16_TAG_DUPLICATED = AD_IMAGE_16_TAG_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_16_TAG_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE16TAGLENGTHTOOLONG() {
+    return AD_IMAGE_16_TAG_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE16TAGLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_16_TAG_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_16_TAG_LENGTH_TOO_LONG = AD_IMAGE_16_TAG_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_16_TAG_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE16TAGREQUIRED() {
+    return AD_IMAGE_16_TAG_REQUIRED;
+  }
+  public void setADIMAGE16TAGREQUIRED(CatalogsItemValidationDetails AD_IMAGE_16_TAG_REQUIRED) {
+    this.AD_IMAGE_16_TAG_REQUIRED = AD_IMAGE_16_TAG_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_17_LINK_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE17LINKDUPLICATED() {
+    return AD_IMAGE_17_LINK_DUPLICATED;
+  }
+  public void setADIMAGE17LINKDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_17_LINK_DUPLICATED) {
+    this.AD_IMAGE_17_LINK_DUPLICATED = AD_IMAGE_17_LINK_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_17_LINK_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE17LINKLENGTHTOOLONG() {
+    return AD_IMAGE_17_LINK_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE17LINKLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_17_LINK_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_17_LINK_LENGTH_TOO_LONG = AD_IMAGE_17_LINK_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_17_LINK_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE17LINKREQUIRED() {
+    return AD_IMAGE_17_LINK_REQUIRED;
+  }
+  public void setADIMAGE17LINKREQUIRED(CatalogsItemValidationDetails AD_IMAGE_17_LINK_REQUIRED) {
+    this.AD_IMAGE_17_LINK_REQUIRED = AD_IMAGE_17_LINK_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_17_LINK_WARNING")
+  public CatalogsItemValidationDetails getADIMAGE17LINKWARNING() {
+    return AD_IMAGE_17_LINK_WARNING;
+  }
+  public void setADIMAGE17LINKWARNING(CatalogsItemValidationDetails AD_IMAGE_17_LINK_WARNING) {
+    this.AD_IMAGE_17_LINK_WARNING = AD_IMAGE_17_LINK_WARNING;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_17_TAG_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE17TAGDUPLICATED() {
+    return AD_IMAGE_17_TAG_DUPLICATED;
+  }
+  public void setADIMAGE17TAGDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_17_TAG_DUPLICATED) {
+    this.AD_IMAGE_17_TAG_DUPLICATED = AD_IMAGE_17_TAG_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_17_TAG_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE17TAGLENGTHTOOLONG() {
+    return AD_IMAGE_17_TAG_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE17TAGLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_17_TAG_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_17_TAG_LENGTH_TOO_LONG = AD_IMAGE_17_TAG_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_17_TAG_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE17TAGREQUIRED() {
+    return AD_IMAGE_17_TAG_REQUIRED;
+  }
+  public void setADIMAGE17TAGREQUIRED(CatalogsItemValidationDetails AD_IMAGE_17_TAG_REQUIRED) {
+    this.AD_IMAGE_17_TAG_REQUIRED = AD_IMAGE_17_TAG_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_18_LINK_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE18LINKDUPLICATED() {
+    return AD_IMAGE_18_LINK_DUPLICATED;
+  }
+  public void setADIMAGE18LINKDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_18_LINK_DUPLICATED) {
+    this.AD_IMAGE_18_LINK_DUPLICATED = AD_IMAGE_18_LINK_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_18_LINK_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE18LINKLENGTHTOOLONG() {
+    return AD_IMAGE_18_LINK_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE18LINKLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_18_LINK_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_18_LINK_LENGTH_TOO_LONG = AD_IMAGE_18_LINK_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_18_LINK_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE18LINKREQUIRED() {
+    return AD_IMAGE_18_LINK_REQUIRED;
+  }
+  public void setADIMAGE18LINKREQUIRED(CatalogsItemValidationDetails AD_IMAGE_18_LINK_REQUIRED) {
+    this.AD_IMAGE_18_LINK_REQUIRED = AD_IMAGE_18_LINK_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_18_LINK_WARNING")
+  public CatalogsItemValidationDetails getADIMAGE18LINKWARNING() {
+    return AD_IMAGE_18_LINK_WARNING;
+  }
+  public void setADIMAGE18LINKWARNING(CatalogsItemValidationDetails AD_IMAGE_18_LINK_WARNING) {
+    this.AD_IMAGE_18_LINK_WARNING = AD_IMAGE_18_LINK_WARNING;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_18_TAG_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE18TAGDUPLICATED() {
+    return AD_IMAGE_18_TAG_DUPLICATED;
+  }
+  public void setADIMAGE18TAGDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_18_TAG_DUPLICATED) {
+    this.AD_IMAGE_18_TAG_DUPLICATED = AD_IMAGE_18_TAG_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_18_TAG_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE18TAGLENGTHTOOLONG() {
+    return AD_IMAGE_18_TAG_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE18TAGLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_18_TAG_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_18_TAG_LENGTH_TOO_LONG = AD_IMAGE_18_TAG_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_18_TAG_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE18TAGREQUIRED() {
+    return AD_IMAGE_18_TAG_REQUIRED;
+  }
+  public void setADIMAGE18TAGREQUIRED(CatalogsItemValidationDetails AD_IMAGE_18_TAG_REQUIRED) {
+    this.AD_IMAGE_18_TAG_REQUIRED = AD_IMAGE_18_TAG_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_19_LINK_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE19LINKDUPLICATED() {
+    return AD_IMAGE_19_LINK_DUPLICATED;
+  }
+  public void setADIMAGE19LINKDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_19_LINK_DUPLICATED) {
+    this.AD_IMAGE_19_LINK_DUPLICATED = AD_IMAGE_19_LINK_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_19_LINK_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE19LINKLENGTHTOOLONG() {
+    return AD_IMAGE_19_LINK_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE19LINKLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_19_LINK_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_19_LINK_LENGTH_TOO_LONG = AD_IMAGE_19_LINK_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_19_LINK_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE19LINKREQUIRED() {
+    return AD_IMAGE_19_LINK_REQUIRED;
+  }
+  public void setADIMAGE19LINKREQUIRED(CatalogsItemValidationDetails AD_IMAGE_19_LINK_REQUIRED) {
+    this.AD_IMAGE_19_LINK_REQUIRED = AD_IMAGE_19_LINK_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_19_LINK_WARNING")
+  public CatalogsItemValidationDetails getADIMAGE19LINKWARNING() {
+    return AD_IMAGE_19_LINK_WARNING;
+  }
+  public void setADIMAGE19LINKWARNING(CatalogsItemValidationDetails AD_IMAGE_19_LINK_WARNING) {
+    this.AD_IMAGE_19_LINK_WARNING = AD_IMAGE_19_LINK_WARNING;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_19_TAG_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE19TAGDUPLICATED() {
+    return AD_IMAGE_19_TAG_DUPLICATED;
+  }
+  public void setADIMAGE19TAGDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_19_TAG_DUPLICATED) {
+    this.AD_IMAGE_19_TAG_DUPLICATED = AD_IMAGE_19_TAG_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_19_TAG_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE19TAGLENGTHTOOLONG() {
+    return AD_IMAGE_19_TAG_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE19TAGLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_19_TAG_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_19_TAG_LENGTH_TOO_LONG = AD_IMAGE_19_TAG_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_19_TAG_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE19TAGREQUIRED() {
+    return AD_IMAGE_19_TAG_REQUIRED;
+  }
+  public void setADIMAGE19TAGREQUIRED(CatalogsItemValidationDetails AD_IMAGE_19_TAG_REQUIRED) {
+    this.AD_IMAGE_19_TAG_REQUIRED = AD_IMAGE_19_TAG_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_1_LINK_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE1LINKDUPLICATED() {
+    return AD_IMAGE_1_LINK_DUPLICATED;
+  }
+  public void setADIMAGE1LINKDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_1_LINK_DUPLICATED) {
+    this.AD_IMAGE_1_LINK_DUPLICATED = AD_IMAGE_1_LINK_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_1_LINK_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE1LINKLENGTHTOOLONG() {
+    return AD_IMAGE_1_LINK_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE1LINKLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_1_LINK_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_1_LINK_LENGTH_TOO_LONG = AD_IMAGE_1_LINK_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_1_LINK_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE1LINKREQUIRED() {
+    return AD_IMAGE_1_LINK_REQUIRED;
+  }
+  public void setADIMAGE1LINKREQUIRED(CatalogsItemValidationDetails AD_IMAGE_1_LINK_REQUIRED) {
+    this.AD_IMAGE_1_LINK_REQUIRED = AD_IMAGE_1_LINK_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_1_LINK_WARNING")
+  public CatalogsItemValidationDetails getADIMAGE1LINKWARNING() {
+    return AD_IMAGE_1_LINK_WARNING;
+  }
+  public void setADIMAGE1LINKWARNING(CatalogsItemValidationDetails AD_IMAGE_1_LINK_WARNING) {
+    this.AD_IMAGE_1_LINK_WARNING = AD_IMAGE_1_LINK_WARNING;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_1_TAG_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE1TAGDUPLICATED() {
+    return AD_IMAGE_1_TAG_DUPLICATED;
+  }
+  public void setADIMAGE1TAGDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_1_TAG_DUPLICATED) {
+    this.AD_IMAGE_1_TAG_DUPLICATED = AD_IMAGE_1_TAG_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_1_TAG_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE1TAGLENGTHTOOLONG() {
+    return AD_IMAGE_1_TAG_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE1TAGLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_1_TAG_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_1_TAG_LENGTH_TOO_LONG = AD_IMAGE_1_TAG_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_1_TAG_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE1TAGREQUIRED() {
+    return AD_IMAGE_1_TAG_REQUIRED;
+  }
+  public void setADIMAGE1TAGREQUIRED(CatalogsItemValidationDetails AD_IMAGE_1_TAG_REQUIRED) {
+    this.AD_IMAGE_1_TAG_REQUIRED = AD_IMAGE_1_TAG_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_2_LINK_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE2LINKDUPLICATED() {
+    return AD_IMAGE_2_LINK_DUPLICATED;
+  }
+  public void setADIMAGE2LINKDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_2_LINK_DUPLICATED) {
+    this.AD_IMAGE_2_LINK_DUPLICATED = AD_IMAGE_2_LINK_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_2_LINK_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE2LINKLENGTHTOOLONG() {
+    return AD_IMAGE_2_LINK_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE2LINKLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_2_LINK_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_2_LINK_LENGTH_TOO_LONG = AD_IMAGE_2_LINK_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_2_LINK_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE2LINKREQUIRED() {
+    return AD_IMAGE_2_LINK_REQUIRED;
+  }
+  public void setADIMAGE2LINKREQUIRED(CatalogsItemValidationDetails AD_IMAGE_2_LINK_REQUIRED) {
+    this.AD_IMAGE_2_LINK_REQUIRED = AD_IMAGE_2_LINK_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_2_LINK_WARNING")
+  public CatalogsItemValidationDetails getADIMAGE2LINKWARNING() {
+    return AD_IMAGE_2_LINK_WARNING;
+  }
+  public void setADIMAGE2LINKWARNING(CatalogsItemValidationDetails AD_IMAGE_2_LINK_WARNING) {
+    this.AD_IMAGE_2_LINK_WARNING = AD_IMAGE_2_LINK_WARNING;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_2_TAG_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE2TAGDUPLICATED() {
+    return AD_IMAGE_2_TAG_DUPLICATED;
+  }
+  public void setADIMAGE2TAGDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_2_TAG_DUPLICATED) {
+    this.AD_IMAGE_2_TAG_DUPLICATED = AD_IMAGE_2_TAG_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_2_TAG_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE2TAGLENGTHTOOLONG() {
+    return AD_IMAGE_2_TAG_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE2TAGLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_2_TAG_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_2_TAG_LENGTH_TOO_LONG = AD_IMAGE_2_TAG_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_2_TAG_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE2TAGREQUIRED() {
+    return AD_IMAGE_2_TAG_REQUIRED;
+  }
+  public void setADIMAGE2TAGREQUIRED(CatalogsItemValidationDetails AD_IMAGE_2_TAG_REQUIRED) {
+    this.AD_IMAGE_2_TAG_REQUIRED = AD_IMAGE_2_TAG_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_3_LINK_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE3LINKDUPLICATED() {
+    return AD_IMAGE_3_LINK_DUPLICATED;
+  }
+  public void setADIMAGE3LINKDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_3_LINK_DUPLICATED) {
+    this.AD_IMAGE_3_LINK_DUPLICATED = AD_IMAGE_3_LINK_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_3_LINK_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE3LINKLENGTHTOOLONG() {
+    return AD_IMAGE_3_LINK_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE3LINKLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_3_LINK_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_3_LINK_LENGTH_TOO_LONG = AD_IMAGE_3_LINK_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_3_LINK_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE3LINKREQUIRED() {
+    return AD_IMAGE_3_LINK_REQUIRED;
+  }
+  public void setADIMAGE3LINKREQUIRED(CatalogsItemValidationDetails AD_IMAGE_3_LINK_REQUIRED) {
+    this.AD_IMAGE_3_LINK_REQUIRED = AD_IMAGE_3_LINK_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_3_LINK_WARNING")
+  public CatalogsItemValidationDetails getADIMAGE3LINKWARNING() {
+    return AD_IMAGE_3_LINK_WARNING;
+  }
+  public void setADIMAGE3LINKWARNING(CatalogsItemValidationDetails AD_IMAGE_3_LINK_WARNING) {
+    this.AD_IMAGE_3_LINK_WARNING = AD_IMAGE_3_LINK_WARNING;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_3_TAG_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE3TAGDUPLICATED() {
+    return AD_IMAGE_3_TAG_DUPLICATED;
+  }
+  public void setADIMAGE3TAGDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_3_TAG_DUPLICATED) {
+    this.AD_IMAGE_3_TAG_DUPLICATED = AD_IMAGE_3_TAG_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_3_TAG_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE3TAGLENGTHTOOLONG() {
+    return AD_IMAGE_3_TAG_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE3TAGLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_3_TAG_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_3_TAG_LENGTH_TOO_LONG = AD_IMAGE_3_TAG_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_3_TAG_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE3TAGREQUIRED() {
+    return AD_IMAGE_3_TAG_REQUIRED;
+  }
+  public void setADIMAGE3TAGREQUIRED(CatalogsItemValidationDetails AD_IMAGE_3_TAG_REQUIRED) {
+    this.AD_IMAGE_3_TAG_REQUIRED = AD_IMAGE_3_TAG_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_4_LINK_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE4LINKDUPLICATED() {
+    return AD_IMAGE_4_LINK_DUPLICATED;
+  }
+  public void setADIMAGE4LINKDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_4_LINK_DUPLICATED) {
+    this.AD_IMAGE_4_LINK_DUPLICATED = AD_IMAGE_4_LINK_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_4_LINK_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE4LINKLENGTHTOOLONG() {
+    return AD_IMAGE_4_LINK_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE4LINKLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_4_LINK_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_4_LINK_LENGTH_TOO_LONG = AD_IMAGE_4_LINK_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_4_LINK_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE4LINKREQUIRED() {
+    return AD_IMAGE_4_LINK_REQUIRED;
+  }
+  public void setADIMAGE4LINKREQUIRED(CatalogsItemValidationDetails AD_IMAGE_4_LINK_REQUIRED) {
+    this.AD_IMAGE_4_LINK_REQUIRED = AD_IMAGE_4_LINK_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_4_LINK_WARNING")
+  public CatalogsItemValidationDetails getADIMAGE4LINKWARNING() {
+    return AD_IMAGE_4_LINK_WARNING;
+  }
+  public void setADIMAGE4LINKWARNING(CatalogsItemValidationDetails AD_IMAGE_4_LINK_WARNING) {
+    this.AD_IMAGE_4_LINK_WARNING = AD_IMAGE_4_LINK_WARNING;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_4_TAG_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE4TAGDUPLICATED() {
+    return AD_IMAGE_4_TAG_DUPLICATED;
+  }
+  public void setADIMAGE4TAGDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_4_TAG_DUPLICATED) {
+    this.AD_IMAGE_4_TAG_DUPLICATED = AD_IMAGE_4_TAG_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_4_TAG_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE4TAGLENGTHTOOLONG() {
+    return AD_IMAGE_4_TAG_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE4TAGLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_4_TAG_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_4_TAG_LENGTH_TOO_LONG = AD_IMAGE_4_TAG_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_4_TAG_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE4TAGREQUIRED() {
+    return AD_IMAGE_4_TAG_REQUIRED;
+  }
+  public void setADIMAGE4TAGREQUIRED(CatalogsItemValidationDetails AD_IMAGE_4_TAG_REQUIRED) {
+    this.AD_IMAGE_4_TAG_REQUIRED = AD_IMAGE_4_TAG_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_5_LINK_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE5LINKDUPLICATED() {
+    return AD_IMAGE_5_LINK_DUPLICATED;
+  }
+  public void setADIMAGE5LINKDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_5_LINK_DUPLICATED) {
+    this.AD_IMAGE_5_LINK_DUPLICATED = AD_IMAGE_5_LINK_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_5_LINK_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE5LINKLENGTHTOOLONG() {
+    return AD_IMAGE_5_LINK_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE5LINKLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_5_LINK_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_5_LINK_LENGTH_TOO_LONG = AD_IMAGE_5_LINK_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_5_LINK_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE5LINKREQUIRED() {
+    return AD_IMAGE_5_LINK_REQUIRED;
+  }
+  public void setADIMAGE5LINKREQUIRED(CatalogsItemValidationDetails AD_IMAGE_5_LINK_REQUIRED) {
+    this.AD_IMAGE_5_LINK_REQUIRED = AD_IMAGE_5_LINK_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_5_LINK_WARNING")
+  public CatalogsItemValidationDetails getADIMAGE5LINKWARNING() {
+    return AD_IMAGE_5_LINK_WARNING;
+  }
+  public void setADIMAGE5LINKWARNING(CatalogsItemValidationDetails AD_IMAGE_5_LINK_WARNING) {
+    this.AD_IMAGE_5_LINK_WARNING = AD_IMAGE_5_LINK_WARNING;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_5_TAG_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE5TAGDUPLICATED() {
+    return AD_IMAGE_5_TAG_DUPLICATED;
+  }
+  public void setADIMAGE5TAGDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_5_TAG_DUPLICATED) {
+    this.AD_IMAGE_5_TAG_DUPLICATED = AD_IMAGE_5_TAG_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_5_TAG_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE5TAGLENGTHTOOLONG() {
+    return AD_IMAGE_5_TAG_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE5TAGLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_5_TAG_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_5_TAG_LENGTH_TOO_LONG = AD_IMAGE_5_TAG_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_5_TAG_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE5TAGREQUIRED() {
+    return AD_IMAGE_5_TAG_REQUIRED;
+  }
+  public void setADIMAGE5TAGREQUIRED(CatalogsItemValidationDetails AD_IMAGE_5_TAG_REQUIRED) {
+    this.AD_IMAGE_5_TAG_REQUIRED = AD_IMAGE_5_TAG_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_6_LINK_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE6LINKDUPLICATED() {
+    return AD_IMAGE_6_LINK_DUPLICATED;
+  }
+  public void setADIMAGE6LINKDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_6_LINK_DUPLICATED) {
+    this.AD_IMAGE_6_LINK_DUPLICATED = AD_IMAGE_6_LINK_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_6_LINK_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE6LINKLENGTHTOOLONG() {
+    return AD_IMAGE_6_LINK_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE6LINKLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_6_LINK_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_6_LINK_LENGTH_TOO_LONG = AD_IMAGE_6_LINK_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_6_LINK_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE6LINKREQUIRED() {
+    return AD_IMAGE_6_LINK_REQUIRED;
+  }
+  public void setADIMAGE6LINKREQUIRED(CatalogsItemValidationDetails AD_IMAGE_6_LINK_REQUIRED) {
+    this.AD_IMAGE_6_LINK_REQUIRED = AD_IMAGE_6_LINK_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_6_LINK_WARNING")
+  public CatalogsItemValidationDetails getADIMAGE6LINKWARNING() {
+    return AD_IMAGE_6_LINK_WARNING;
+  }
+  public void setADIMAGE6LINKWARNING(CatalogsItemValidationDetails AD_IMAGE_6_LINK_WARNING) {
+    this.AD_IMAGE_6_LINK_WARNING = AD_IMAGE_6_LINK_WARNING;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_6_TAG_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE6TAGDUPLICATED() {
+    return AD_IMAGE_6_TAG_DUPLICATED;
+  }
+  public void setADIMAGE6TAGDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_6_TAG_DUPLICATED) {
+    this.AD_IMAGE_6_TAG_DUPLICATED = AD_IMAGE_6_TAG_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_6_TAG_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE6TAGLENGTHTOOLONG() {
+    return AD_IMAGE_6_TAG_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE6TAGLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_6_TAG_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_6_TAG_LENGTH_TOO_LONG = AD_IMAGE_6_TAG_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_6_TAG_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE6TAGREQUIRED() {
+    return AD_IMAGE_6_TAG_REQUIRED;
+  }
+  public void setADIMAGE6TAGREQUIRED(CatalogsItemValidationDetails AD_IMAGE_6_TAG_REQUIRED) {
+    this.AD_IMAGE_6_TAG_REQUIRED = AD_IMAGE_6_TAG_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_7_LINK_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE7LINKDUPLICATED() {
+    return AD_IMAGE_7_LINK_DUPLICATED;
+  }
+  public void setADIMAGE7LINKDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_7_LINK_DUPLICATED) {
+    this.AD_IMAGE_7_LINK_DUPLICATED = AD_IMAGE_7_LINK_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_7_LINK_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE7LINKLENGTHTOOLONG() {
+    return AD_IMAGE_7_LINK_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE7LINKLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_7_LINK_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_7_LINK_LENGTH_TOO_LONG = AD_IMAGE_7_LINK_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_7_LINK_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE7LINKREQUIRED() {
+    return AD_IMAGE_7_LINK_REQUIRED;
+  }
+  public void setADIMAGE7LINKREQUIRED(CatalogsItemValidationDetails AD_IMAGE_7_LINK_REQUIRED) {
+    this.AD_IMAGE_7_LINK_REQUIRED = AD_IMAGE_7_LINK_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_7_LINK_WARNING")
+  public CatalogsItemValidationDetails getADIMAGE7LINKWARNING() {
+    return AD_IMAGE_7_LINK_WARNING;
+  }
+  public void setADIMAGE7LINKWARNING(CatalogsItemValidationDetails AD_IMAGE_7_LINK_WARNING) {
+    this.AD_IMAGE_7_LINK_WARNING = AD_IMAGE_7_LINK_WARNING;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_7_TAG_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE7TAGDUPLICATED() {
+    return AD_IMAGE_7_TAG_DUPLICATED;
+  }
+  public void setADIMAGE7TAGDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_7_TAG_DUPLICATED) {
+    this.AD_IMAGE_7_TAG_DUPLICATED = AD_IMAGE_7_TAG_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_7_TAG_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE7TAGLENGTHTOOLONG() {
+    return AD_IMAGE_7_TAG_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE7TAGLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_7_TAG_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_7_TAG_LENGTH_TOO_LONG = AD_IMAGE_7_TAG_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_7_TAG_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE7TAGREQUIRED() {
+    return AD_IMAGE_7_TAG_REQUIRED;
+  }
+  public void setADIMAGE7TAGREQUIRED(CatalogsItemValidationDetails AD_IMAGE_7_TAG_REQUIRED) {
+    this.AD_IMAGE_7_TAG_REQUIRED = AD_IMAGE_7_TAG_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_8_LINK_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE8LINKDUPLICATED() {
+    return AD_IMAGE_8_LINK_DUPLICATED;
+  }
+  public void setADIMAGE8LINKDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_8_LINK_DUPLICATED) {
+    this.AD_IMAGE_8_LINK_DUPLICATED = AD_IMAGE_8_LINK_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_8_LINK_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE8LINKLENGTHTOOLONG() {
+    return AD_IMAGE_8_LINK_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE8LINKLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_8_LINK_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_8_LINK_LENGTH_TOO_LONG = AD_IMAGE_8_LINK_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_8_LINK_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE8LINKREQUIRED() {
+    return AD_IMAGE_8_LINK_REQUIRED;
+  }
+  public void setADIMAGE8LINKREQUIRED(CatalogsItemValidationDetails AD_IMAGE_8_LINK_REQUIRED) {
+    this.AD_IMAGE_8_LINK_REQUIRED = AD_IMAGE_8_LINK_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_8_LINK_WARNING")
+  public CatalogsItemValidationDetails getADIMAGE8LINKWARNING() {
+    return AD_IMAGE_8_LINK_WARNING;
+  }
+  public void setADIMAGE8LINKWARNING(CatalogsItemValidationDetails AD_IMAGE_8_LINK_WARNING) {
+    this.AD_IMAGE_8_LINK_WARNING = AD_IMAGE_8_LINK_WARNING;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_8_TAG_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE8TAGDUPLICATED() {
+    return AD_IMAGE_8_TAG_DUPLICATED;
+  }
+  public void setADIMAGE8TAGDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_8_TAG_DUPLICATED) {
+    this.AD_IMAGE_8_TAG_DUPLICATED = AD_IMAGE_8_TAG_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_8_TAG_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE8TAGLENGTHTOOLONG() {
+    return AD_IMAGE_8_TAG_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE8TAGLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_8_TAG_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_8_TAG_LENGTH_TOO_LONG = AD_IMAGE_8_TAG_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_8_TAG_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE8TAGREQUIRED() {
+    return AD_IMAGE_8_TAG_REQUIRED;
+  }
+  public void setADIMAGE8TAGREQUIRED(CatalogsItemValidationDetails AD_IMAGE_8_TAG_REQUIRED) {
+    this.AD_IMAGE_8_TAG_REQUIRED = AD_IMAGE_8_TAG_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_9_LINK_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE9LINKDUPLICATED() {
+    return AD_IMAGE_9_LINK_DUPLICATED;
+  }
+  public void setADIMAGE9LINKDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_9_LINK_DUPLICATED) {
+    this.AD_IMAGE_9_LINK_DUPLICATED = AD_IMAGE_9_LINK_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_9_LINK_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE9LINKLENGTHTOOLONG() {
+    return AD_IMAGE_9_LINK_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE9LINKLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_9_LINK_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_9_LINK_LENGTH_TOO_LONG = AD_IMAGE_9_LINK_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_9_LINK_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE9LINKREQUIRED() {
+    return AD_IMAGE_9_LINK_REQUIRED;
+  }
+  public void setADIMAGE9LINKREQUIRED(CatalogsItemValidationDetails AD_IMAGE_9_LINK_REQUIRED) {
+    this.AD_IMAGE_9_LINK_REQUIRED = AD_IMAGE_9_LINK_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_9_LINK_WARNING")
+  public CatalogsItemValidationDetails getADIMAGE9LINKWARNING() {
+    return AD_IMAGE_9_LINK_WARNING;
+  }
+  public void setADIMAGE9LINKWARNING(CatalogsItemValidationDetails AD_IMAGE_9_LINK_WARNING) {
+    this.AD_IMAGE_9_LINK_WARNING = AD_IMAGE_9_LINK_WARNING;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_9_TAG_DUPLICATED")
+  public CatalogsItemValidationDetails getADIMAGE9TAGDUPLICATED() {
+    return AD_IMAGE_9_TAG_DUPLICATED;
+  }
+  public void setADIMAGE9TAGDUPLICATED(CatalogsItemValidationDetails AD_IMAGE_9_TAG_DUPLICATED) {
+    this.AD_IMAGE_9_TAG_DUPLICATED = AD_IMAGE_9_TAG_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_9_TAG_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADIMAGE9TAGLENGTHTOOLONG() {
+    return AD_IMAGE_9_TAG_LENGTH_TOO_LONG;
+  }
+  public void setADIMAGE9TAGLENGTHTOOLONG(CatalogsItemValidationDetails AD_IMAGE_9_TAG_LENGTH_TOO_LONG) {
+    this.AD_IMAGE_9_TAG_LENGTH_TOO_LONG = AD_IMAGE_9_TAG_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_IMAGE_9_TAG_REQUIRED")
+  public CatalogsItemValidationDetails getADIMAGE9TAGREQUIRED() {
+    return AD_IMAGE_9_TAG_REQUIRED;
+  }
+  public void setADIMAGE9TAGREQUIRED(CatalogsItemValidationDetails AD_IMAGE_9_TAG_REQUIRED) {
+    this.AD_IMAGE_9_TAG_REQUIRED = AD_IMAGE_9_TAG_REQUIRED;
   }
 
     
@@ -120,6 +1704,195 @@ public class CatalogsItemValidationWarnings   {
   }
   public void setADLINKSAMEASLINK(CatalogsItemValidationDetails AD_LINK_SAME_AS_LINK) {
     this.AD_LINK_SAME_AS_LINK = AD_LINK_SAME_AS_LINK;
+  }
+
+    
+  @JsonProperty("AD_VIDEO_0_LINK_DUPLICATED")
+  public CatalogsItemValidationDetails getADVIDEO0LINKDUPLICATED() {
+    return AD_VIDEO_0_LINK_DUPLICATED;
+  }
+  public void setADVIDEO0LINKDUPLICATED(CatalogsItemValidationDetails AD_VIDEO_0_LINK_DUPLICATED) {
+    this.AD_VIDEO_0_LINK_DUPLICATED = AD_VIDEO_0_LINK_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_VIDEO_0_LINK_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADVIDEO0LINKLENGTHTOOLONG() {
+    return AD_VIDEO_0_LINK_LENGTH_TOO_LONG;
+  }
+  public void setADVIDEO0LINKLENGTHTOOLONG(CatalogsItemValidationDetails AD_VIDEO_0_LINK_LENGTH_TOO_LONG) {
+    this.AD_VIDEO_0_LINK_LENGTH_TOO_LONG = AD_VIDEO_0_LINK_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_VIDEO_0_LINK_REQUIRED")
+  public CatalogsItemValidationDetails getADVIDEO0LINKREQUIRED() {
+    return AD_VIDEO_0_LINK_REQUIRED;
+  }
+  public void setADVIDEO0LINKREQUIRED(CatalogsItemValidationDetails AD_VIDEO_0_LINK_REQUIRED) {
+    this.AD_VIDEO_0_LINK_REQUIRED = AD_VIDEO_0_LINK_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_VIDEO_0_LINK_WARNING")
+  public CatalogsItemValidationDetails getADVIDEO0LINKWARNING() {
+    return AD_VIDEO_0_LINK_WARNING;
+  }
+  public void setADVIDEO0LINKWARNING(CatalogsItemValidationDetails AD_VIDEO_0_LINK_WARNING) {
+    this.AD_VIDEO_0_LINK_WARNING = AD_VIDEO_0_LINK_WARNING;
+  }
+
+    
+  @JsonProperty("AD_VIDEO_0_TAG_DUPLICATED")
+  public CatalogsItemValidationDetails getADVIDEO0TAGDUPLICATED() {
+    return AD_VIDEO_0_TAG_DUPLICATED;
+  }
+  public void setADVIDEO0TAGDUPLICATED(CatalogsItemValidationDetails AD_VIDEO_0_TAG_DUPLICATED) {
+    this.AD_VIDEO_0_TAG_DUPLICATED = AD_VIDEO_0_TAG_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_VIDEO_0_TAG_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADVIDEO0TAGLENGTHTOOLONG() {
+    return AD_VIDEO_0_TAG_LENGTH_TOO_LONG;
+  }
+  public void setADVIDEO0TAGLENGTHTOOLONG(CatalogsItemValidationDetails AD_VIDEO_0_TAG_LENGTH_TOO_LONG) {
+    this.AD_VIDEO_0_TAG_LENGTH_TOO_LONG = AD_VIDEO_0_TAG_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_VIDEO_0_TAG_REQUIRED")
+  public CatalogsItemValidationDetails getADVIDEO0TAGREQUIRED() {
+    return AD_VIDEO_0_TAG_REQUIRED;
+  }
+  public void setADVIDEO0TAGREQUIRED(CatalogsItemValidationDetails AD_VIDEO_0_TAG_REQUIRED) {
+    this.AD_VIDEO_0_TAG_REQUIRED = AD_VIDEO_0_TAG_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_VIDEO_1_LINK_DUPLICATED")
+  public CatalogsItemValidationDetails getADVIDEO1LINKDUPLICATED() {
+    return AD_VIDEO_1_LINK_DUPLICATED;
+  }
+  public void setADVIDEO1LINKDUPLICATED(CatalogsItemValidationDetails AD_VIDEO_1_LINK_DUPLICATED) {
+    this.AD_VIDEO_1_LINK_DUPLICATED = AD_VIDEO_1_LINK_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_VIDEO_1_LINK_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADVIDEO1LINKLENGTHTOOLONG() {
+    return AD_VIDEO_1_LINK_LENGTH_TOO_LONG;
+  }
+  public void setADVIDEO1LINKLENGTHTOOLONG(CatalogsItemValidationDetails AD_VIDEO_1_LINK_LENGTH_TOO_LONG) {
+    this.AD_VIDEO_1_LINK_LENGTH_TOO_LONG = AD_VIDEO_1_LINK_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_VIDEO_1_LINK_REQUIRED")
+  public CatalogsItemValidationDetails getADVIDEO1LINKREQUIRED() {
+    return AD_VIDEO_1_LINK_REQUIRED;
+  }
+  public void setADVIDEO1LINKREQUIRED(CatalogsItemValidationDetails AD_VIDEO_1_LINK_REQUIRED) {
+    this.AD_VIDEO_1_LINK_REQUIRED = AD_VIDEO_1_LINK_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_VIDEO_1_LINK_WARNING")
+  public CatalogsItemValidationDetails getADVIDEO1LINKWARNING() {
+    return AD_VIDEO_1_LINK_WARNING;
+  }
+  public void setADVIDEO1LINKWARNING(CatalogsItemValidationDetails AD_VIDEO_1_LINK_WARNING) {
+    this.AD_VIDEO_1_LINK_WARNING = AD_VIDEO_1_LINK_WARNING;
+  }
+
+    
+  @JsonProperty("AD_VIDEO_1_TAG_DUPLICATED")
+  public CatalogsItemValidationDetails getADVIDEO1TAGDUPLICATED() {
+    return AD_VIDEO_1_TAG_DUPLICATED;
+  }
+  public void setADVIDEO1TAGDUPLICATED(CatalogsItemValidationDetails AD_VIDEO_1_TAG_DUPLICATED) {
+    this.AD_VIDEO_1_TAG_DUPLICATED = AD_VIDEO_1_TAG_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_VIDEO_1_TAG_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADVIDEO1TAGLENGTHTOOLONG() {
+    return AD_VIDEO_1_TAG_LENGTH_TOO_LONG;
+  }
+  public void setADVIDEO1TAGLENGTHTOOLONG(CatalogsItemValidationDetails AD_VIDEO_1_TAG_LENGTH_TOO_LONG) {
+    this.AD_VIDEO_1_TAG_LENGTH_TOO_LONG = AD_VIDEO_1_TAG_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_VIDEO_1_TAG_REQUIRED")
+  public CatalogsItemValidationDetails getADVIDEO1TAGREQUIRED() {
+    return AD_VIDEO_1_TAG_REQUIRED;
+  }
+  public void setADVIDEO1TAGREQUIRED(CatalogsItemValidationDetails AD_VIDEO_1_TAG_REQUIRED) {
+    this.AD_VIDEO_1_TAG_REQUIRED = AD_VIDEO_1_TAG_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_VIDEO_2_LINK_DUPLICATED")
+  public CatalogsItemValidationDetails getADVIDEO2LINKDUPLICATED() {
+    return AD_VIDEO_2_LINK_DUPLICATED;
+  }
+  public void setADVIDEO2LINKDUPLICATED(CatalogsItemValidationDetails AD_VIDEO_2_LINK_DUPLICATED) {
+    this.AD_VIDEO_2_LINK_DUPLICATED = AD_VIDEO_2_LINK_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_VIDEO_2_LINK_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADVIDEO2LINKLENGTHTOOLONG() {
+    return AD_VIDEO_2_LINK_LENGTH_TOO_LONG;
+  }
+  public void setADVIDEO2LINKLENGTHTOOLONG(CatalogsItemValidationDetails AD_VIDEO_2_LINK_LENGTH_TOO_LONG) {
+    this.AD_VIDEO_2_LINK_LENGTH_TOO_LONG = AD_VIDEO_2_LINK_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_VIDEO_2_LINK_REQUIRED")
+  public CatalogsItemValidationDetails getADVIDEO2LINKREQUIRED() {
+    return AD_VIDEO_2_LINK_REQUIRED;
+  }
+  public void setADVIDEO2LINKREQUIRED(CatalogsItemValidationDetails AD_VIDEO_2_LINK_REQUIRED) {
+    this.AD_VIDEO_2_LINK_REQUIRED = AD_VIDEO_2_LINK_REQUIRED;
+  }
+
+    
+  @JsonProperty("AD_VIDEO_2_LINK_WARNING")
+  public CatalogsItemValidationDetails getADVIDEO2LINKWARNING() {
+    return AD_VIDEO_2_LINK_WARNING;
+  }
+  public void setADVIDEO2LINKWARNING(CatalogsItemValidationDetails AD_VIDEO_2_LINK_WARNING) {
+    this.AD_VIDEO_2_LINK_WARNING = AD_VIDEO_2_LINK_WARNING;
+  }
+
+    
+  @JsonProperty("AD_VIDEO_2_TAG_DUPLICATED")
+  public CatalogsItemValidationDetails getADVIDEO2TAGDUPLICATED() {
+    return AD_VIDEO_2_TAG_DUPLICATED;
+  }
+  public void setADVIDEO2TAGDUPLICATED(CatalogsItemValidationDetails AD_VIDEO_2_TAG_DUPLICATED) {
+    this.AD_VIDEO_2_TAG_DUPLICATED = AD_VIDEO_2_TAG_DUPLICATED;
+  }
+
+    
+  @JsonProperty("AD_VIDEO_2_TAG_LENGTH_TOO_LONG")
+  public CatalogsItemValidationDetails getADVIDEO2TAGLENGTHTOOLONG() {
+    return AD_VIDEO_2_TAG_LENGTH_TOO_LONG;
+  }
+  public void setADVIDEO2TAGLENGTHTOOLONG(CatalogsItemValidationDetails AD_VIDEO_2_TAG_LENGTH_TOO_LONG) {
+    this.AD_VIDEO_2_TAG_LENGTH_TOO_LONG = AD_VIDEO_2_TAG_LENGTH_TOO_LONG;
+  }
+
+    
+  @JsonProperty("AD_VIDEO_2_TAG_REQUIRED")
+  public CatalogsItemValidationDetails getADVIDEO2TAGREQUIRED() {
+    return AD_VIDEO_2_TAG_REQUIRED;
+  }
+  public void setADVIDEO2TAGREQUIRED(CatalogsItemValidationDetails AD_VIDEO_2_TAG_REQUIRED) {
+    this.AD_VIDEO_2_TAG_REQUIRED = AD_VIDEO_2_TAG_REQUIRED;
   }
 
     
@@ -165,15 +1938,6 @@ public class CatalogsItemValidationWarnings   {
   }
   public void setAGEGROUPINVALID(CatalogsItemValidationDetails AGE_GROUP_INVALID) {
     this.AGE_GROUP_INVALID = AGE_GROUP_INVALID;
-  }
-
-    
-  @JsonProperty("SIZE_SYSTEM_INVALID")
-  public CatalogsItemValidationDetails getSIZESYSTEMINVALID() {
-    return SIZE_SYSTEM_INVALID;
-  }
-  public void setSIZESYSTEMINVALID(CatalogsItemValidationDetails SIZE_SYSTEM_INVALID) {
-    this.SIZE_SYSTEM_INVALID = SIZE_SYSTEM_INVALID;
   }
 
     
@@ -375,21 +2139,21 @@ public class CatalogsItemValidationWarnings   {
   }
 
     
+  @JsonProperty("SALE_DATE_INVALID")
+  public CatalogsItemValidationDetails getSALEDATEINVALID() {
+    return SALE_DATE_INVALID;
+  }
+  public void setSALEDATEINVALID(CatalogsItemValidationDetails SALE_DATE_INVALID) {
+    this.SALE_DATE_INVALID = SALE_DATE_INVALID;
+  }
+
+    
   @JsonProperty("SALES_PRICE_INVALID")
   public CatalogsItemValidationDetails getSALESPRICEINVALID() {
     return SALES_PRICE_INVALID;
   }
   public void setSALESPRICEINVALID(CatalogsItemValidationDetails SALES_PRICE_INVALID) {
     this.SALES_PRICE_INVALID = SALES_PRICE_INVALID;
-  }
-
-    
-  @JsonProperty("SALES_PRICE_TOO_LOW")
-  public CatalogsItemValidationDetails getSALESPRICETOOLOW() {
-    return SALES_PRICE_TOO_LOW;
-  }
-  public void setSALESPRICETOOLOW(CatalogsItemValidationDetails SALES_PRICE_TOO_LOW) {
-    this.SALES_PRICE_TOO_LOW = SALES_PRICE_TOO_LOW;
   }
 
     
@@ -402,21 +2166,12 @@ public class CatalogsItemValidationWarnings   {
   }
 
     
-  @JsonProperty("SALE_DATE_INVALID")
-  public CatalogsItemValidationDetails getSALEDATEINVALID() {
-    return SALE_DATE_INVALID;
+  @JsonProperty("SALES_PRICE_TOO_LOW")
+  public CatalogsItemValidationDetails getSALESPRICETOOLOW() {
+    return SALES_PRICE_TOO_LOW;
   }
-  public void setSALEDATEINVALID(CatalogsItemValidationDetails SALE_DATE_INVALID) {
-    this.SALE_DATE_INVALID = SALE_DATE_INVALID;
-  }
-
-    
-  @JsonProperty("SHIPPING_INVALID")
-  public CatalogsItemValidationDetails getSHIPPINGINVALID() {
-    return SHIPPING_INVALID;
-  }
-  public void setSHIPPINGINVALID(CatalogsItemValidationDetails SHIPPING_INVALID) {
-    this.SHIPPING_INVALID = SHIPPING_INVALID;
+  public void setSALESPRICETOOLOW(CatalogsItemValidationDetails SALES_PRICE_TOO_LOW) {
+    this.SALES_PRICE_TOO_LOW = SALES_PRICE_TOO_LOW;
   }
 
     
@@ -426,6 +2181,15 @@ public class CatalogsItemValidationWarnings   {
   }
   public void setSHIPPINGHEIGHTINVALID(CatalogsItemValidationDetails SHIPPING_HEIGHT_INVALID) {
     this.SHIPPING_HEIGHT_INVALID = SHIPPING_HEIGHT_INVALID;
+  }
+
+    
+  @JsonProperty("SHIPPING_INVALID")
+  public CatalogsItemValidationDetails getSHIPPINGINVALID() {
+    return SHIPPING_INVALID;
+  }
+  public void setSHIPPINGINVALID(CatalogsItemValidationDetails SHIPPING_INVALID) {
+    this.SHIPPING_INVALID = SHIPPING_INVALID;
   }
 
     
@@ -444,6 +2208,15 @@ public class CatalogsItemValidationWarnings   {
   }
   public void setSHIPPINGWIDTHINVALID(CatalogsItemValidationDetails SHIPPING_WIDTH_INVALID) {
     this.SHIPPING_WIDTH_INVALID = SHIPPING_WIDTH_INVALID;
+  }
+
+    
+  @JsonProperty("SIZE_SYSTEM_INVALID")
+  public CatalogsItemValidationDetails getSIZESYSTEMINVALID() {
+    return SIZE_SYSTEM_INVALID;
+  }
+  public void setSIZESYSTEMINVALID(CatalogsItemValidationDetails SIZE_SYSTEM_INVALID) {
+    this.SIZE_SYSTEM_INVALID = SIZE_SYSTEM_INVALID;
   }
 
     
@@ -492,6 +2265,15 @@ public class CatalogsItemValidationWarnings   {
   }
 
     
+  @JsonProperty("VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED")
+  public CatalogsItemValidationDetails getVIDEOREQUIREDWHENADVIDEOPROVIDED() {
+    return VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED;
+  }
+  public void setVIDEOREQUIREDWHENADVIDEOPROVIDED(CatalogsItemValidationDetails VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED) {
+    this.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED = VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED;
+  }
+
+    
   @JsonProperty("WEIGHT_UNIT_INVALID")
   public CatalogsItemValidationDetails getWEIGHTUNITINVALID() {
     return WEIGHT_UNIT_INVALID;
@@ -510,14 +2292,174 @@ public class CatalogsItemValidationWarnings   {
       return false;
     }
     CatalogsItemValidationWarnings catalogsItemValidationWarnings = (CatalogsItemValidationWarnings) o;
-    return Objects.equals(AD_LINK_FORMAT_WARNING, catalogsItemValidationWarnings.AD_LINK_FORMAT_WARNING) &&
+    return Objects.equals(AD_IMAGE_0_LINK_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_0_LINK_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_0_LINK_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_0_LINK_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_0_LINK_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_0_LINK_REQUIRED) &&
+        Objects.equals(AD_IMAGE_0_LINK_WARNING, catalogsItemValidationWarnings.AD_IMAGE_0_LINK_WARNING) &&
+        Objects.equals(AD_IMAGE_0_TAG_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_0_TAG_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_0_TAG_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_0_TAG_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_0_TAG_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_0_TAG_REQUIRED) &&
+        Objects.equals(AD_IMAGE_10_LINK_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_10_LINK_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_10_LINK_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_10_LINK_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_10_LINK_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_10_LINK_REQUIRED) &&
+        Objects.equals(AD_IMAGE_10_LINK_WARNING, catalogsItemValidationWarnings.AD_IMAGE_10_LINK_WARNING) &&
+        Objects.equals(AD_IMAGE_10_TAG_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_10_TAG_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_10_TAG_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_10_TAG_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_10_TAG_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_10_TAG_REQUIRED) &&
+        Objects.equals(AD_IMAGE_11_LINK_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_11_LINK_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_11_LINK_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_11_LINK_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_11_LINK_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_11_LINK_REQUIRED) &&
+        Objects.equals(AD_IMAGE_11_LINK_WARNING, catalogsItemValidationWarnings.AD_IMAGE_11_LINK_WARNING) &&
+        Objects.equals(AD_IMAGE_11_TAG_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_11_TAG_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_11_TAG_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_11_TAG_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_11_TAG_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_11_TAG_REQUIRED) &&
+        Objects.equals(AD_IMAGE_12_LINK_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_12_LINK_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_12_LINK_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_12_LINK_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_12_LINK_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_12_LINK_REQUIRED) &&
+        Objects.equals(AD_IMAGE_12_LINK_WARNING, catalogsItemValidationWarnings.AD_IMAGE_12_LINK_WARNING) &&
+        Objects.equals(AD_IMAGE_12_TAG_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_12_TAG_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_12_TAG_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_12_TAG_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_12_TAG_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_12_TAG_REQUIRED) &&
+        Objects.equals(AD_IMAGE_13_LINK_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_13_LINK_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_13_LINK_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_13_LINK_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_13_LINK_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_13_LINK_REQUIRED) &&
+        Objects.equals(AD_IMAGE_13_LINK_WARNING, catalogsItemValidationWarnings.AD_IMAGE_13_LINK_WARNING) &&
+        Objects.equals(AD_IMAGE_13_TAG_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_13_TAG_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_13_TAG_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_13_TAG_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_13_TAG_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_13_TAG_REQUIRED) &&
+        Objects.equals(AD_IMAGE_14_LINK_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_14_LINK_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_14_LINK_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_14_LINK_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_14_LINK_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_14_LINK_REQUIRED) &&
+        Objects.equals(AD_IMAGE_14_LINK_WARNING, catalogsItemValidationWarnings.AD_IMAGE_14_LINK_WARNING) &&
+        Objects.equals(AD_IMAGE_14_TAG_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_14_TAG_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_14_TAG_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_14_TAG_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_14_TAG_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_14_TAG_REQUIRED) &&
+        Objects.equals(AD_IMAGE_15_LINK_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_15_LINK_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_15_LINK_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_15_LINK_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_15_LINK_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_15_LINK_REQUIRED) &&
+        Objects.equals(AD_IMAGE_15_LINK_WARNING, catalogsItemValidationWarnings.AD_IMAGE_15_LINK_WARNING) &&
+        Objects.equals(AD_IMAGE_15_TAG_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_15_TAG_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_15_TAG_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_15_TAG_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_15_TAG_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_15_TAG_REQUIRED) &&
+        Objects.equals(AD_IMAGE_16_LINK_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_16_LINK_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_16_LINK_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_16_LINK_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_16_LINK_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_16_LINK_REQUIRED) &&
+        Objects.equals(AD_IMAGE_16_LINK_WARNING, catalogsItemValidationWarnings.AD_IMAGE_16_LINK_WARNING) &&
+        Objects.equals(AD_IMAGE_16_TAG_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_16_TAG_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_16_TAG_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_16_TAG_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_16_TAG_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_16_TAG_REQUIRED) &&
+        Objects.equals(AD_IMAGE_17_LINK_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_17_LINK_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_17_LINK_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_17_LINK_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_17_LINK_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_17_LINK_REQUIRED) &&
+        Objects.equals(AD_IMAGE_17_LINK_WARNING, catalogsItemValidationWarnings.AD_IMAGE_17_LINK_WARNING) &&
+        Objects.equals(AD_IMAGE_17_TAG_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_17_TAG_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_17_TAG_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_17_TAG_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_17_TAG_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_17_TAG_REQUIRED) &&
+        Objects.equals(AD_IMAGE_18_LINK_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_18_LINK_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_18_LINK_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_18_LINK_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_18_LINK_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_18_LINK_REQUIRED) &&
+        Objects.equals(AD_IMAGE_18_LINK_WARNING, catalogsItemValidationWarnings.AD_IMAGE_18_LINK_WARNING) &&
+        Objects.equals(AD_IMAGE_18_TAG_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_18_TAG_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_18_TAG_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_18_TAG_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_18_TAG_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_18_TAG_REQUIRED) &&
+        Objects.equals(AD_IMAGE_19_LINK_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_19_LINK_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_19_LINK_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_19_LINK_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_19_LINK_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_19_LINK_REQUIRED) &&
+        Objects.equals(AD_IMAGE_19_LINK_WARNING, catalogsItemValidationWarnings.AD_IMAGE_19_LINK_WARNING) &&
+        Objects.equals(AD_IMAGE_19_TAG_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_19_TAG_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_19_TAG_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_19_TAG_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_19_TAG_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_19_TAG_REQUIRED) &&
+        Objects.equals(AD_IMAGE_1_LINK_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_1_LINK_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_1_LINK_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_1_LINK_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_1_LINK_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_1_LINK_REQUIRED) &&
+        Objects.equals(AD_IMAGE_1_LINK_WARNING, catalogsItemValidationWarnings.AD_IMAGE_1_LINK_WARNING) &&
+        Objects.equals(AD_IMAGE_1_TAG_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_1_TAG_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_1_TAG_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_1_TAG_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_1_TAG_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_1_TAG_REQUIRED) &&
+        Objects.equals(AD_IMAGE_2_LINK_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_2_LINK_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_2_LINK_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_2_LINK_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_2_LINK_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_2_LINK_REQUIRED) &&
+        Objects.equals(AD_IMAGE_2_LINK_WARNING, catalogsItemValidationWarnings.AD_IMAGE_2_LINK_WARNING) &&
+        Objects.equals(AD_IMAGE_2_TAG_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_2_TAG_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_2_TAG_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_2_TAG_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_2_TAG_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_2_TAG_REQUIRED) &&
+        Objects.equals(AD_IMAGE_3_LINK_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_3_LINK_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_3_LINK_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_3_LINK_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_3_LINK_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_3_LINK_REQUIRED) &&
+        Objects.equals(AD_IMAGE_3_LINK_WARNING, catalogsItemValidationWarnings.AD_IMAGE_3_LINK_WARNING) &&
+        Objects.equals(AD_IMAGE_3_TAG_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_3_TAG_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_3_TAG_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_3_TAG_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_3_TAG_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_3_TAG_REQUIRED) &&
+        Objects.equals(AD_IMAGE_4_LINK_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_4_LINK_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_4_LINK_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_4_LINK_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_4_LINK_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_4_LINK_REQUIRED) &&
+        Objects.equals(AD_IMAGE_4_LINK_WARNING, catalogsItemValidationWarnings.AD_IMAGE_4_LINK_WARNING) &&
+        Objects.equals(AD_IMAGE_4_TAG_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_4_TAG_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_4_TAG_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_4_TAG_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_4_TAG_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_4_TAG_REQUIRED) &&
+        Objects.equals(AD_IMAGE_5_LINK_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_5_LINK_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_5_LINK_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_5_LINK_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_5_LINK_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_5_LINK_REQUIRED) &&
+        Objects.equals(AD_IMAGE_5_LINK_WARNING, catalogsItemValidationWarnings.AD_IMAGE_5_LINK_WARNING) &&
+        Objects.equals(AD_IMAGE_5_TAG_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_5_TAG_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_5_TAG_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_5_TAG_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_5_TAG_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_5_TAG_REQUIRED) &&
+        Objects.equals(AD_IMAGE_6_LINK_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_6_LINK_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_6_LINK_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_6_LINK_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_6_LINK_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_6_LINK_REQUIRED) &&
+        Objects.equals(AD_IMAGE_6_LINK_WARNING, catalogsItemValidationWarnings.AD_IMAGE_6_LINK_WARNING) &&
+        Objects.equals(AD_IMAGE_6_TAG_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_6_TAG_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_6_TAG_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_6_TAG_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_6_TAG_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_6_TAG_REQUIRED) &&
+        Objects.equals(AD_IMAGE_7_LINK_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_7_LINK_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_7_LINK_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_7_LINK_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_7_LINK_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_7_LINK_REQUIRED) &&
+        Objects.equals(AD_IMAGE_7_LINK_WARNING, catalogsItemValidationWarnings.AD_IMAGE_7_LINK_WARNING) &&
+        Objects.equals(AD_IMAGE_7_TAG_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_7_TAG_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_7_TAG_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_7_TAG_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_7_TAG_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_7_TAG_REQUIRED) &&
+        Objects.equals(AD_IMAGE_8_LINK_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_8_LINK_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_8_LINK_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_8_LINK_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_8_LINK_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_8_LINK_REQUIRED) &&
+        Objects.equals(AD_IMAGE_8_LINK_WARNING, catalogsItemValidationWarnings.AD_IMAGE_8_LINK_WARNING) &&
+        Objects.equals(AD_IMAGE_8_TAG_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_8_TAG_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_8_TAG_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_8_TAG_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_8_TAG_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_8_TAG_REQUIRED) &&
+        Objects.equals(AD_IMAGE_9_LINK_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_9_LINK_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_9_LINK_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_9_LINK_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_9_LINK_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_9_LINK_REQUIRED) &&
+        Objects.equals(AD_IMAGE_9_LINK_WARNING, catalogsItemValidationWarnings.AD_IMAGE_9_LINK_WARNING) &&
+        Objects.equals(AD_IMAGE_9_TAG_DUPLICATED, catalogsItemValidationWarnings.AD_IMAGE_9_TAG_DUPLICATED) &&
+        Objects.equals(AD_IMAGE_9_TAG_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_IMAGE_9_TAG_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_IMAGE_9_TAG_REQUIRED, catalogsItemValidationWarnings.AD_IMAGE_9_TAG_REQUIRED) &&
+        Objects.equals(AD_LINK_FORMAT_WARNING, catalogsItemValidationWarnings.AD_LINK_FORMAT_WARNING) &&
         Objects.equals(AD_LINK_SAME_AS_LINK, catalogsItemValidationWarnings.AD_LINK_SAME_AS_LINK) &&
+        Objects.equals(AD_VIDEO_0_LINK_DUPLICATED, catalogsItemValidationWarnings.AD_VIDEO_0_LINK_DUPLICATED) &&
+        Objects.equals(AD_VIDEO_0_LINK_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_VIDEO_0_LINK_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_VIDEO_0_LINK_REQUIRED, catalogsItemValidationWarnings.AD_VIDEO_0_LINK_REQUIRED) &&
+        Objects.equals(AD_VIDEO_0_LINK_WARNING, catalogsItemValidationWarnings.AD_VIDEO_0_LINK_WARNING) &&
+        Objects.equals(AD_VIDEO_0_TAG_DUPLICATED, catalogsItemValidationWarnings.AD_VIDEO_0_TAG_DUPLICATED) &&
+        Objects.equals(AD_VIDEO_0_TAG_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_VIDEO_0_TAG_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_VIDEO_0_TAG_REQUIRED, catalogsItemValidationWarnings.AD_VIDEO_0_TAG_REQUIRED) &&
+        Objects.equals(AD_VIDEO_1_LINK_DUPLICATED, catalogsItemValidationWarnings.AD_VIDEO_1_LINK_DUPLICATED) &&
+        Objects.equals(AD_VIDEO_1_LINK_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_VIDEO_1_LINK_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_VIDEO_1_LINK_REQUIRED, catalogsItemValidationWarnings.AD_VIDEO_1_LINK_REQUIRED) &&
+        Objects.equals(AD_VIDEO_1_LINK_WARNING, catalogsItemValidationWarnings.AD_VIDEO_1_LINK_WARNING) &&
+        Objects.equals(AD_VIDEO_1_TAG_DUPLICATED, catalogsItemValidationWarnings.AD_VIDEO_1_TAG_DUPLICATED) &&
+        Objects.equals(AD_VIDEO_1_TAG_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_VIDEO_1_TAG_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_VIDEO_1_TAG_REQUIRED, catalogsItemValidationWarnings.AD_VIDEO_1_TAG_REQUIRED) &&
+        Objects.equals(AD_VIDEO_2_LINK_DUPLICATED, catalogsItemValidationWarnings.AD_VIDEO_2_LINK_DUPLICATED) &&
+        Objects.equals(AD_VIDEO_2_LINK_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_VIDEO_2_LINK_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_VIDEO_2_LINK_REQUIRED, catalogsItemValidationWarnings.AD_VIDEO_2_LINK_REQUIRED) &&
+        Objects.equals(AD_VIDEO_2_LINK_WARNING, catalogsItemValidationWarnings.AD_VIDEO_2_LINK_WARNING) &&
+        Objects.equals(AD_VIDEO_2_TAG_DUPLICATED, catalogsItemValidationWarnings.AD_VIDEO_2_TAG_DUPLICATED) &&
+        Objects.equals(AD_VIDEO_2_TAG_LENGTH_TOO_LONG, catalogsItemValidationWarnings.AD_VIDEO_2_TAG_LENGTH_TOO_LONG) &&
+        Objects.equals(AD_VIDEO_2_TAG_REQUIRED, catalogsItemValidationWarnings.AD_VIDEO_2_TAG_REQUIRED) &&
         Objects.equals(ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG, catalogsItemValidationWarnings.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG) &&
         Objects.equals(ADDITIONAL_IMAGE_LINK_WARNING, catalogsItemValidationWarnings.ADDITIONAL_IMAGE_LINK_WARNING) &&
         Objects.equals(ADWORDS_FORMAT_WARNING, catalogsItemValidationWarnings.ADWORDS_FORMAT_WARNING) &&
         Objects.equals(ADWORDS_SAME_AS_LINK, catalogsItemValidationWarnings.ADWORDS_SAME_AS_LINK) &&
         Objects.equals(AGE_GROUP_INVALID, catalogsItemValidationWarnings.AGE_GROUP_INVALID) &&
-        Objects.equals(SIZE_SYSTEM_INVALID, catalogsItemValidationWarnings.SIZE_SYSTEM_INVALID) &&
         Objects.equals(ANDROID_DEEP_LINK_INVALID, catalogsItemValidationWarnings.ANDROID_DEEP_LINK_INVALID) &&
         Objects.equals(AVAILABILITY_DATE_INVALID, catalogsItemValidationWarnings.AVAILABILITY_DATE_INVALID) &&
         Objects.equals(COUNTRY_DOES_NOT_MAP_TO_CURRENCY, catalogsItemValidationWarnings.COUNTRY_DOES_NOT_MAP_TO_CURRENCY) &&
@@ -540,25 +2482,27 @@ public class CatalogsItemValidationWarnings   {
         Objects.equals(OPTIONAL_PRODUCT_CATEGORY_MISSING, catalogsItemValidationWarnings.OPTIONAL_PRODUCT_CATEGORY_MISSING) &&
         Objects.equals(PRODUCT_CATEGORY_DEPTH_WARNING, catalogsItemValidationWarnings.PRODUCT_CATEGORY_DEPTH_WARNING) &&
         Objects.equals(PRODUCT_TYPE_LENGTH_TOO_LONG, catalogsItemValidationWarnings.PRODUCT_TYPE_LENGTH_TOO_LONG) &&
-        Objects.equals(SALES_PRICE_INVALID, catalogsItemValidationWarnings.SALES_PRICE_INVALID) &&
-        Objects.equals(SALES_PRICE_TOO_LOW, catalogsItemValidationWarnings.SALES_PRICE_TOO_LOW) &&
-        Objects.equals(SALES_PRICE_TOO_HIGH, catalogsItemValidationWarnings.SALES_PRICE_TOO_HIGH) &&
         Objects.equals(SALE_DATE_INVALID, catalogsItemValidationWarnings.SALE_DATE_INVALID) &&
-        Objects.equals(SHIPPING_INVALID, catalogsItemValidationWarnings.SHIPPING_INVALID) &&
+        Objects.equals(SALES_PRICE_INVALID, catalogsItemValidationWarnings.SALES_PRICE_INVALID) &&
+        Objects.equals(SALES_PRICE_TOO_HIGH, catalogsItemValidationWarnings.SALES_PRICE_TOO_HIGH) &&
+        Objects.equals(SALES_PRICE_TOO_LOW, catalogsItemValidationWarnings.SALES_PRICE_TOO_LOW) &&
         Objects.equals(SHIPPING_HEIGHT_INVALID, catalogsItemValidationWarnings.SHIPPING_HEIGHT_INVALID) &&
+        Objects.equals(SHIPPING_INVALID, catalogsItemValidationWarnings.SHIPPING_INVALID) &&
         Objects.equals(SHIPPING_WEIGHT_INVALID, catalogsItemValidationWarnings.SHIPPING_WEIGHT_INVALID) &&
         Objects.equals(SHIPPING_WIDTH_INVALID, catalogsItemValidationWarnings.SHIPPING_WIDTH_INVALID) &&
+        Objects.equals(SIZE_SYSTEM_INVALID, catalogsItemValidationWarnings.SIZE_SYSTEM_INVALID) &&
         Objects.equals(SIZE_TYPE_INVALID, catalogsItemValidationWarnings.SIZE_TYPE_INVALID) &&
         Objects.equals(TAX_INVALID, catalogsItemValidationWarnings.TAX_INVALID) &&
         Objects.equals(TITLE_LENGTH_TOO_LONG, catalogsItemValidationWarnings.TITLE_LENGTH_TOO_LONG) &&
         Objects.equals(TOO_MANY_ADDITIONAL_IMAGE_LINKS, catalogsItemValidationWarnings.TOO_MANY_ADDITIONAL_IMAGE_LINKS) &&
         Objects.equals(UTM_SOURCE_AUTO_CORRECTED, catalogsItemValidationWarnings.UTM_SOURCE_AUTO_CORRECTED) &&
+        Objects.equals(VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED, catalogsItemValidationWarnings.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED) &&
         Objects.equals(WEIGHT_UNIT_INVALID, catalogsItemValidationWarnings.WEIGHT_UNIT_INVALID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(AD_LINK_FORMAT_WARNING, AD_LINK_SAME_AS_LINK, ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG, ADDITIONAL_IMAGE_LINK_WARNING, ADWORDS_FORMAT_WARNING, ADWORDS_SAME_AS_LINK, AGE_GROUP_INVALID, SIZE_SYSTEM_INVALID, ANDROID_DEEP_LINK_INVALID, AVAILABILITY_DATE_INVALID, COUNTRY_DOES_NOT_MAP_TO_CURRENCY, CUSTOM_LABEL_LENGTH_TOO_LONG, DESCRIPTION_LENGTH_TOO_LONG, EXPIRATION_DATE_INVALID, GENDER_INVALID, GTIN_INVALID, IMAGE_LINK_WARNING, IOS_DEEP_LINK_INVALID, IS_BUNDLE_INVALID, ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE, LINK_FORMAT_WARNING, MIN_AD_PRICE_INVALID, MPN_INVALID, MULTIPACK_INVALID, OPTIONAL_CONDITION_INVALID, OPTIONAL_CONDITION_MISSING, OPTIONAL_PRODUCT_CATEGORY_INVALID, OPTIONAL_PRODUCT_CATEGORY_MISSING, PRODUCT_CATEGORY_DEPTH_WARNING, PRODUCT_TYPE_LENGTH_TOO_LONG, SALES_PRICE_INVALID, SALES_PRICE_TOO_LOW, SALES_PRICE_TOO_HIGH, SALE_DATE_INVALID, SHIPPING_INVALID, SHIPPING_HEIGHT_INVALID, SHIPPING_WEIGHT_INVALID, SHIPPING_WIDTH_INVALID, SIZE_TYPE_INVALID, TAX_INVALID, TITLE_LENGTH_TOO_LONG, TOO_MANY_ADDITIONAL_IMAGE_LINKS, UTM_SOURCE_AUTO_CORRECTED, WEIGHT_UNIT_INVALID);
+    return Objects.hash(AD_IMAGE_0_LINK_DUPLICATED, AD_IMAGE_0_LINK_LENGTH_TOO_LONG, AD_IMAGE_0_LINK_REQUIRED, AD_IMAGE_0_LINK_WARNING, AD_IMAGE_0_TAG_DUPLICATED, AD_IMAGE_0_TAG_LENGTH_TOO_LONG, AD_IMAGE_0_TAG_REQUIRED, AD_IMAGE_10_LINK_DUPLICATED, AD_IMAGE_10_LINK_LENGTH_TOO_LONG, AD_IMAGE_10_LINK_REQUIRED, AD_IMAGE_10_LINK_WARNING, AD_IMAGE_10_TAG_DUPLICATED, AD_IMAGE_10_TAG_LENGTH_TOO_LONG, AD_IMAGE_10_TAG_REQUIRED, AD_IMAGE_11_LINK_DUPLICATED, AD_IMAGE_11_LINK_LENGTH_TOO_LONG, AD_IMAGE_11_LINK_REQUIRED, AD_IMAGE_11_LINK_WARNING, AD_IMAGE_11_TAG_DUPLICATED, AD_IMAGE_11_TAG_LENGTH_TOO_LONG, AD_IMAGE_11_TAG_REQUIRED, AD_IMAGE_12_LINK_DUPLICATED, AD_IMAGE_12_LINK_LENGTH_TOO_LONG, AD_IMAGE_12_LINK_REQUIRED, AD_IMAGE_12_LINK_WARNING, AD_IMAGE_12_TAG_DUPLICATED, AD_IMAGE_12_TAG_LENGTH_TOO_LONG, AD_IMAGE_12_TAG_REQUIRED, AD_IMAGE_13_LINK_DUPLICATED, AD_IMAGE_13_LINK_LENGTH_TOO_LONG, AD_IMAGE_13_LINK_REQUIRED, AD_IMAGE_13_LINK_WARNING, AD_IMAGE_13_TAG_DUPLICATED, AD_IMAGE_13_TAG_LENGTH_TOO_LONG, AD_IMAGE_13_TAG_REQUIRED, AD_IMAGE_14_LINK_DUPLICATED, AD_IMAGE_14_LINK_LENGTH_TOO_LONG, AD_IMAGE_14_LINK_REQUIRED, AD_IMAGE_14_LINK_WARNING, AD_IMAGE_14_TAG_DUPLICATED, AD_IMAGE_14_TAG_LENGTH_TOO_LONG, AD_IMAGE_14_TAG_REQUIRED, AD_IMAGE_15_LINK_DUPLICATED, AD_IMAGE_15_LINK_LENGTH_TOO_LONG, AD_IMAGE_15_LINK_REQUIRED, AD_IMAGE_15_LINK_WARNING, AD_IMAGE_15_TAG_DUPLICATED, AD_IMAGE_15_TAG_LENGTH_TOO_LONG, AD_IMAGE_15_TAG_REQUIRED, AD_IMAGE_16_LINK_DUPLICATED, AD_IMAGE_16_LINK_LENGTH_TOO_LONG, AD_IMAGE_16_LINK_REQUIRED, AD_IMAGE_16_LINK_WARNING, AD_IMAGE_16_TAG_DUPLICATED, AD_IMAGE_16_TAG_LENGTH_TOO_LONG, AD_IMAGE_16_TAG_REQUIRED, AD_IMAGE_17_LINK_DUPLICATED, AD_IMAGE_17_LINK_LENGTH_TOO_LONG, AD_IMAGE_17_LINK_REQUIRED, AD_IMAGE_17_LINK_WARNING, AD_IMAGE_17_TAG_DUPLICATED, AD_IMAGE_17_TAG_LENGTH_TOO_LONG, AD_IMAGE_17_TAG_REQUIRED, AD_IMAGE_18_LINK_DUPLICATED, AD_IMAGE_18_LINK_LENGTH_TOO_LONG, AD_IMAGE_18_LINK_REQUIRED, AD_IMAGE_18_LINK_WARNING, AD_IMAGE_18_TAG_DUPLICATED, AD_IMAGE_18_TAG_LENGTH_TOO_LONG, AD_IMAGE_18_TAG_REQUIRED, AD_IMAGE_19_LINK_DUPLICATED, AD_IMAGE_19_LINK_LENGTH_TOO_LONG, AD_IMAGE_19_LINK_REQUIRED, AD_IMAGE_19_LINK_WARNING, AD_IMAGE_19_TAG_DUPLICATED, AD_IMAGE_19_TAG_LENGTH_TOO_LONG, AD_IMAGE_19_TAG_REQUIRED, AD_IMAGE_1_LINK_DUPLICATED, AD_IMAGE_1_LINK_LENGTH_TOO_LONG, AD_IMAGE_1_LINK_REQUIRED, AD_IMAGE_1_LINK_WARNING, AD_IMAGE_1_TAG_DUPLICATED, AD_IMAGE_1_TAG_LENGTH_TOO_LONG, AD_IMAGE_1_TAG_REQUIRED, AD_IMAGE_2_LINK_DUPLICATED, AD_IMAGE_2_LINK_LENGTH_TOO_LONG, AD_IMAGE_2_LINK_REQUIRED, AD_IMAGE_2_LINK_WARNING, AD_IMAGE_2_TAG_DUPLICATED, AD_IMAGE_2_TAG_LENGTH_TOO_LONG, AD_IMAGE_2_TAG_REQUIRED, AD_IMAGE_3_LINK_DUPLICATED, AD_IMAGE_3_LINK_LENGTH_TOO_LONG, AD_IMAGE_3_LINK_REQUIRED, AD_IMAGE_3_LINK_WARNING, AD_IMAGE_3_TAG_DUPLICATED, AD_IMAGE_3_TAG_LENGTH_TOO_LONG, AD_IMAGE_3_TAG_REQUIRED, AD_IMAGE_4_LINK_DUPLICATED, AD_IMAGE_4_LINK_LENGTH_TOO_LONG, AD_IMAGE_4_LINK_REQUIRED, AD_IMAGE_4_LINK_WARNING, AD_IMAGE_4_TAG_DUPLICATED, AD_IMAGE_4_TAG_LENGTH_TOO_LONG, AD_IMAGE_4_TAG_REQUIRED, AD_IMAGE_5_LINK_DUPLICATED, AD_IMAGE_5_LINK_LENGTH_TOO_LONG, AD_IMAGE_5_LINK_REQUIRED, AD_IMAGE_5_LINK_WARNING, AD_IMAGE_5_TAG_DUPLICATED, AD_IMAGE_5_TAG_LENGTH_TOO_LONG, AD_IMAGE_5_TAG_REQUIRED, AD_IMAGE_6_LINK_DUPLICATED, AD_IMAGE_6_LINK_LENGTH_TOO_LONG, AD_IMAGE_6_LINK_REQUIRED, AD_IMAGE_6_LINK_WARNING, AD_IMAGE_6_TAG_DUPLICATED, AD_IMAGE_6_TAG_LENGTH_TOO_LONG, AD_IMAGE_6_TAG_REQUIRED, AD_IMAGE_7_LINK_DUPLICATED, AD_IMAGE_7_LINK_LENGTH_TOO_LONG, AD_IMAGE_7_LINK_REQUIRED, AD_IMAGE_7_LINK_WARNING, AD_IMAGE_7_TAG_DUPLICATED, AD_IMAGE_7_TAG_LENGTH_TOO_LONG, AD_IMAGE_7_TAG_REQUIRED, AD_IMAGE_8_LINK_DUPLICATED, AD_IMAGE_8_LINK_LENGTH_TOO_LONG, AD_IMAGE_8_LINK_REQUIRED, AD_IMAGE_8_LINK_WARNING, AD_IMAGE_8_TAG_DUPLICATED, AD_IMAGE_8_TAG_LENGTH_TOO_LONG, AD_IMAGE_8_TAG_REQUIRED, AD_IMAGE_9_LINK_DUPLICATED, AD_IMAGE_9_LINK_LENGTH_TOO_LONG, AD_IMAGE_9_LINK_REQUIRED, AD_IMAGE_9_LINK_WARNING, AD_IMAGE_9_TAG_DUPLICATED, AD_IMAGE_9_TAG_LENGTH_TOO_LONG, AD_IMAGE_9_TAG_REQUIRED, AD_LINK_FORMAT_WARNING, AD_LINK_SAME_AS_LINK, AD_VIDEO_0_LINK_DUPLICATED, AD_VIDEO_0_LINK_LENGTH_TOO_LONG, AD_VIDEO_0_LINK_REQUIRED, AD_VIDEO_0_LINK_WARNING, AD_VIDEO_0_TAG_DUPLICATED, AD_VIDEO_0_TAG_LENGTH_TOO_LONG, AD_VIDEO_0_TAG_REQUIRED, AD_VIDEO_1_LINK_DUPLICATED, AD_VIDEO_1_LINK_LENGTH_TOO_LONG, AD_VIDEO_1_LINK_REQUIRED, AD_VIDEO_1_LINK_WARNING, AD_VIDEO_1_TAG_DUPLICATED, AD_VIDEO_1_TAG_LENGTH_TOO_LONG, AD_VIDEO_1_TAG_REQUIRED, AD_VIDEO_2_LINK_DUPLICATED, AD_VIDEO_2_LINK_LENGTH_TOO_LONG, AD_VIDEO_2_LINK_REQUIRED, AD_VIDEO_2_LINK_WARNING, AD_VIDEO_2_TAG_DUPLICATED, AD_VIDEO_2_TAG_LENGTH_TOO_LONG, AD_VIDEO_2_TAG_REQUIRED, ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG, ADDITIONAL_IMAGE_LINK_WARNING, ADWORDS_FORMAT_WARNING, ADWORDS_SAME_AS_LINK, AGE_GROUP_INVALID, ANDROID_DEEP_LINK_INVALID, AVAILABILITY_DATE_INVALID, COUNTRY_DOES_NOT_MAP_TO_CURRENCY, CUSTOM_LABEL_LENGTH_TOO_LONG, DESCRIPTION_LENGTH_TOO_LONG, EXPIRATION_DATE_INVALID, GENDER_INVALID, GTIN_INVALID, IMAGE_LINK_WARNING, IOS_DEEP_LINK_INVALID, IS_BUNDLE_INVALID, ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE, LINK_FORMAT_WARNING, MIN_AD_PRICE_INVALID, MPN_INVALID, MULTIPACK_INVALID, OPTIONAL_CONDITION_INVALID, OPTIONAL_CONDITION_MISSING, OPTIONAL_PRODUCT_CATEGORY_INVALID, OPTIONAL_PRODUCT_CATEGORY_MISSING, PRODUCT_CATEGORY_DEPTH_WARNING, PRODUCT_TYPE_LENGTH_TOO_LONG, SALE_DATE_INVALID, SALES_PRICE_INVALID, SALES_PRICE_TOO_HIGH, SALES_PRICE_TOO_LOW, SHIPPING_HEIGHT_INVALID, SHIPPING_INVALID, SHIPPING_WEIGHT_INVALID, SHIPPING_WIDTH_INVALID, SIZE_SYSTEM_INVALID, SIZE_TYPE_INVALID, TAX_INVALID, TITLE_LENGTH_TOO_LONG, TOO_MANY_ADDITIONAL_IMAGE_LINKS, UTM_SOURCE_AUTO_CORRECTED, VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED, WEIGHT_UNIT_INVALID);
   }
 
   @Override
@@ -566,14 +2510,174 @@ public class CatalogsItemValidationWarnings   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsItemValidationWarnings {\n");
     
+    sb.append("    AD_IMAGE_0_LINK_DUPLICATED: ").append(toIndentedString(AD_IMAGE_0_LINK_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_0_LINK_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_0_LINK_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_0_LINK_REQUIRED: ").append(toIndentedString(AD_IMAGE_0_LINK_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_0_LINK_WARNING: ").append(toIndentedString(AD_IMAGE_0_LINK_WARNING)).append("\n");
+    sb.append("    AD_IMAGE_0_TAG_DUPLICATED: ").append(toIndentedString(AD_IMAGE_0_TAG_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_0_TAG_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_0_TAG_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_0_TAG_REQUIRED: ").append(toIndentedString(AD_IMAGE_0_TAG_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_10_LINK_DUPLICATED: ").append(toIndentedString(AD_IMAGE_10_LINK_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_10_LINK_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_10_LINK_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_10_LINK_REQUIRED: ").append(toIndentedString(AD_IMAGE_10_LINK_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_10_LINK_WARNING: ").append(toIndentedString(AD_IMAGE_10_LINK_WARNING)).append("\n");
+    sb.append("    AD_IMAGE_10_TAG_DUPLICATED: ").append(toIndentedString(AD_IMAGE_10_TAG_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_10_TAG_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_10_TAG_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_10_TAG_REQUIRED: ").append(toIndentedString(AD_IMAGE_10_TAG_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_11_LINK_DUPLICATED: ").append(toIndentedString(AD_IMAGE_11_LINK_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_11_LINK_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_11_LINK_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_11_LINK_REQUIRED: ").append(toIndentedString(AD_IMAGE_11_LINK_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_11_LINK_WARNING: ").append(toIndentedString(AD_IMAGE_11_LINK_WARNING)).append("\n");
+    sb.append("    AD_IMAGE_11_TAG_DUPLICATED: ").append(toIndentedString(AD_IMAGE_11_TAG_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_11_TAG_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_11_TAG_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_11_TAG_REQUIRED: ").append(toIndentedString(AD_IMAGE_11_TAG_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_12_LINK_DUPLICATED: ").append(toIndentedString(AD_IMAGE_12_LINK_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_12_LINK_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_12_LINK_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_12_LINK_REQUIRED: ").append(toIndentedString(AD_IMAGE_12_LINK_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_12_LINK_WARNING: ").append(toIndentedString(AD_IMAGE_12_LINK_WARNING)).append("\n");
+    sb.append("    AD_IMAGE_12_TAG_DUPLICATED: ").append(toIndentedString(AD_IMAGE_12_TAG_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_12_TAG_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_12_TAG_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_12_TAG_REQUIRED: ").append(toIndentedString(AD_IMAGE_12_TAG_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_13_LINK_DUPLICATED: ").append(toIndentedString(AD_IMAGE_13_LINK_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_13_LINK_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_13_LINK_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_13_LINK_REQUIRED: ").append(toIndentedString(AD_IMAGE_13_LINK_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_13_LINK_WARNING: ").append(toIndentedString(AD_IMAGE_13_LINK_WARNING)).append("\n");
+    sb.append("    AD_IMAGE_13_TAG_DUPLICATED: ").append(toIndentedString(AD_IMAGE_13_TAG_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_13_TAG_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_13_TAG_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_13_TAG_REQUIRED: ").append(toIndentedString(AD_IMAGE_13_TAG_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_14_LINK_DUPLICATED: ").append(toIndentedString(AD_IMAGE_14_LINK_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_14_LINK_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_14_LINK_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_14_LINK_REQUIRED: ").append(toIndentedString(AD_IMAGE_14_LINK_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_14_LINK_WARNING: ").append(toIndentedString(AD_IMAGE_14_LINK_WARNING)).append("\n");
+    sb.append("    AD_IMAGE_14_TAG_DUPLICATED: ").append(toIndentedString(AD_IMAGE_14_TAG_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_14_TAG_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_14_TAG_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_14_TAG_REQUIRED: ").append(toIndentedString(AD_IMAGE_14_TAG_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_15_LINK_DUPLICATED: ").append(toIndentedString(AD_IMAGE_15_LINK_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_15_LINK_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_15_LINK_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_15_LINK_REQUIRED: ").append(toIndentedString(AD_IMAGE_15_LINK_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_15_LINK_WARNING: ").append(toIndentedString(AD_IMAGE_15_LINK_WARNING)).append("\n");
+    sb.append("    AD_IMAGE_15_TAG_DUPLICATED: ").append(toIndentedString(AD_IMAGE_15_TAG_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_15_TAG_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_15_TAG_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_15_TAG_REQUIRED: ").append(toIndentedString(AD_IMAGE_15_TAG_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_16_LINK_DUPLICATED: ").append(toIndentedString(AD_IMAGE_16_LINK_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_16_LINK_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_16_LINK_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_16_LINK_REQUIRED: ").append(toIndentedString(AD_IMAGE_16_LINK_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_16_LINK_WARNING: ").append(toIndentedString(AD_IMAGE_16_LINK_WARNING)).append("\n");
+    sb.append("    AD_IMAGE_16_TAG_DUPLICATED: ").append(toIndentedString(AD_IMAGE_16_TAG_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_16_TAG_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_16_TAG_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_16_TAG_REQUIRED: ").append(toIndentedString(AD_IMAGE_16_TAG_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_17_LINK_DUPLICATED: ").append(toIndentedString(AD_IMAGE_17_LINK_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_17_LINK_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_17_LINK_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_17_LINK_REQUIRED: ").append(toIndentedString(AD_IMAGE_17_LINK_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_17_LINK_WARNING: ").append(toIndentedString(AD_IMAGE_17_LINK_WARNING)).append("\n");
+    sb.append("    AD_IMAGE_17_TAG_DUPLICATED: ").append(toIndentedString(AD_IMAGE_17_TAG_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_17_TAG_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_17_TAG_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_17_TAG_REQUIRED: ").append(toIndentedString(AD_IMAGE_17_TAG_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_18_LINK_DUPLICATED: ").append(toIndentedString(AD_IMAGE_18_LINK_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_18_LINK_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_18_LINK_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_18_LINK_REQUIRED: ").append(toIndentedString(AD_IMAGE_18_LINK_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_18_LINK_WARNING: ").append(toIndentedString(AD_IMAGE_18_LINK_WARNING)).append("\n");
+    sb.append("    AD_IMAGE_18_TAG_DUPLICATED: ").append(toIndentedString(AD_IMAGE_18_TAG_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_18_TAG_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_18_TAG_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_18_TAG_REQUIRED: ").append(toIndentedString(AD_IMAGE_18_TAG_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_19_LINK_DUPLICATED: ").append(toIndentedString(AD_IMAGE_19_LINK_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_19_LINK_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_19_LINK_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_19_LINK_REQUIRED: ").append(toIndentedString(AD_IMAGE_19_LINK_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_19_LINK_WARNING: ").append(toIndentedString(AD_IMAGE_19_LINK_WARNING)).append("\n");
+    sb.append("    AD_IMAGE_19_TAG_DUPLICATED: ").append(toIndentedString(AD_IMAGE_19_TAG_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_19_TAG_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_19_TAG_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_19_TAG_REQUIRED: ").append(toIndentedString(AD_IMAGE_19_TAG_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_1_LINK_DUPLICATED: ").append(toIndentedString(AD_IMAGE_1_LINK_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_1_LINK_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_1_LINK_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_1_LINK_REQUIRED: ").append(toIndentedString(AD_IMAGE_1_LINK_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_1_LINK_WARNING: ").append(toIndentedString(AD_IMAGE_1_LINK_WARNING)).append("\n");
+    sb.append("    AD_IMAGE_1_TAG_DUPLICATED: ").append(toIndentedString(AD_IMAGE_1_TAG_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_1_TAG_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_1_TAG_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_1_TAG_REQUIRED: ").append(toIndentedString(AD_IMAGE_1_TAG_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_2_LINK_DUPLICATED: ").append(toIndentedString(AD_IMAGE_2_LINK_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_2_LINK_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_2_LINK_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_2_LINK_REQUIRED: ").append(toIndentedString(AD_IMAGE_2_LINK_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_2_LINK_WARNING: ").append(toIndentedString(AD_IMAGE_2_LINK_WARNING)).append("\n");
+    sb.append("    AD_IMAGE_2_TAG_DUPLICATED: ").append(toIndentedString(AD_IMAGE_2_TAG_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_2_TAG_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_2_TAG_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_2_TAG_REQUIRED: ").append(toIndentedString(AD_IMAGE_2_TAG_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_3_LINK_DUPLICATED: ").append(toIndentedString(AD_IMAGE_3_LINK_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_3_LINK_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_3_LINK_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_3_LINK_REQUIRED: ").append(toIndentedString(AD_IMAGE_3_LINK_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_3_LINK_WARNING: ").append(toIndentedString(AD_IMAGE_3_LINK_WARNING)).append("\n");
+    sb.append("    AD_IMAGE_3_TAG_DUPLICATED: ").append(toIndentedString(AD_IMAGE_3_TAG_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_3_TAG_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_3_TAG_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_3_TAG_REQUIRED: ").append(toIndentedString(AD_IMAGE_3_TAG_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_4_LINK_DUPLICATED: ").append(toIndentedString(AD_IMAGE_4_LINK_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_4_LINK_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_4_LINK_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_4_LINK_REQUIRED: ").append(toIndentedString(AD_IMAGE_4_LINK_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_4_LINK_WARNING: ").append(toIndentedString(AD_IMAGE_4_LINK_WARNING)).append("\n");
+    sb.append("    AD_IMAGE_4_TAG_DUPLICATED: ").append(toIndentedString(AD_IMAGE_4_TAG_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_4_TAG_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_4_TAG_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_4_TAG_REQUIRED: ").append(toIndentedString(AD_IMAGE_4_TAG_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_5_LINK_DUPLICATED: ").append(toIndentedString(AD_IMAGE_5_LINK_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_5_LINK_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_5_LINK_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_5_LINK_REQUIRED: ").append(toIndentedString(AD_IMAGE_5_LINK_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_5_LINK_WARNING: ").append(toIndentedString(AD_IMAGE_5_LINK_WARNING)).append("\n");
+    sb.append("    AD_IMAGE_5_TAG_DUPLICATED: ").append(toIndentedString(AD_IMAGE_5_TAG_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_5_TAG_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_5_TAG_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_5_TAG_REQUIRED: ").append(toIndentedString(AD_IMAGE_5_TAG_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_6_LINK_DUPLICATED: ").append(toIndentedString(AD_IMAGE_6_LINK_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_6_LINK_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_6_LINK_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_6_LINK_REQUIRED: ").append(toIndentedString(AD_IMAGE_6_LINK_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_6_LINK_WARNING: ").append(toIndentedString(AD_IMAGE_6_LINK_WARNING)).append("\n");
+    sb.append("    AD_IMAGE_6_TAG_DUPLICATED: ").append(toIndentedString(AD_IMAGE_6_TAG_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_6_TAG_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_6_TAG_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_6_TAG_REQUIRED: ").append(toIndentedString(AD_IMAGE_6_TAG_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_7_LINK_DUPLICATED: ").append(toIndentedString(AD_IMAGE_7_LINK_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_7_LINK_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_7_LINK_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_7_LINK_REQUIRED: ").append(toIndentedString(AD_IMAGE_7_LINK_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_7_LINK_WARNING: ").append(toIndentedString(AD_IMAGE_7_LINK_WARNING)).append("\n");
+    sb.append("    AD_IMAGE_7_TAG_DUPLICATED: ").append(toIndentedString(AD_IMAGE_7_TAG_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_7_TAG_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_7_TAG_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_7_TAG_REQUIRED: ").append(toIndentedString(AD_IMAGE_7_TAG_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_8_LINK_DUPLICATED: ").append(toIndentedString(AD_IMAGE_8_LINK_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_8_LINK_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_8_LINK_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_8_LINK_REQUIRED: ").append(toIndentedString(AD_IMAGE_8_LINK_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_8_LINK_WARNING: ").append(toIndentedString(AD_IMAGE_8_LINK_WARNING)).append("\n");
+    sb.append("    AD_IMAGE_8_TAG_DUPLICATED: ").append(toIndentedString(AD_IMAGE_8_TAG_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_8_TAG_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_8_TAG_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_8_TAG_REQUIRED: ").append(toIndentedString(AD_IMAGE_8_TAG_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_9_LINK_DUPLICATED: ").append(toIndentedString(AD_IMAGE_9_LINK_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_9_LINK_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_9_LINK_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_9_LINK_REQUIRED: ").append(toIndentedString(AD_IMAGE_9_LINK_REQUIRED)).append("\n");
+    sb.append("    AD_IMAGE_9_LINK_WARNING: ").append(toIndentedString(AD_IMAGE_9_LINK_WARNING)).append("\n");
+    sb.append("    AD_IMAGE_9_TAG_DUPLICATED: ").append(toIndentedString(AD_IMAGE_9_TAG_DUPLICATED)).append("\n");
+    sb.append("    AD_IMAGE_9_TAG_LENGTH_TOO_LONG: ").append(toIndentedString(AD_IMAGE_9_TAG_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_IMAGE_9_TAG_REQUIRED: ").append(toIndentedString(AD_IMAGE_9_TAG_REQUIRED)).append("\n");
     sb.append("    AD_LINK_FORMAT_WARNING: ").append(toIndentedString(AD_LINK_FORMAT_WARNING)).append("\n");
     sb.append("    AD_LINK_SAME_AS_LINK: ").append(toIndentedString(AD_LINK_SAME_AS_LINK)).append("\n");
+    sb.append("    AD_VIDEO_0_LINK_DUPLICATED: ").append(toIndentedString(AD_VIDEO_0_LINK_DUPLICATED)).append("\n");
+    sb.append("    AD_VIDEO_0_LINK_LENGTH_TOO_LONG: ").append(toIndentedString(AD_VIDEO_0_LINK_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_VIDEO_0_LINK_REQUIRED: ").append(toIndentedString(AD_VIDEO_0_LINK_REQUIRED)).append("\n");
+    sb.append("    AD_VIDEO_0_LINK_WARNING: ").append(toIndentedString(AD_VIDEO_0_LINK_WARNING)).append("\n");
+    sb.append("    AD_VIDEO_0_TAG_DUPLICATED: ").append(toIndentedString(AD_VIDEO_0_TAG_DUPLICATED)).append("\n");
+    sb.append("    AD_VIDEO_0_TAG_LENGTH_TOO_LONG: ").append(toIndentedString(AD_VIDEO_0_TAG_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_VIDEO_0_TAG_REQUIRED: ").append(toIndentedString(AD_VIDEO_0_TAG_REQUIRED)).append("\n");
+    sb.append("    AD_VIDEO_1_LINK_DUPLICATED: ").append(toIndentedString(AD_VIDEO_1_LINK_DUPLICATED)).append("\n");
+    sb.append("    AD_VIDEO_1_LINK_LENGTH_TOO_LONG: ").append(toIndentedString(AD_VIDEO_1_LINK_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_VIDEO_1_LINK_REQUIRED: ").append(toIndentedString(AD_VIDEO_1_LINK_REQUIRED)).append("\n");
+    sb.append("    AD_VIDEO_1_LINK_WARNING: ").append(toIndentedString(AD_VIDEO_1_LINK_WARNING)).append("\n");
+    sb.append("    AD_VIDEO_1_TAG_DUPLICATED: ").append(toIndentedString(AD_VIDEO_1_TAG_DUPLICATED)).append("\n");
+    sb.append("    AD_VIDEO_1_TAG_LENGTH_TOO_LONG: ").append(toIndentedString(AD_VIDEO_1_TAG_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_VIDEO_1_TAG_REQUIRED: ").append(toIndentedString(AD_VIDEO_1_TAG_REQUIRED)).append("\n");
+    sb.append("    AD_VIDEO_2_LINK_DUPLICATED: ").append(toIndentedString(AD_VIDEO_2_LINK_DUPLICATED)).append("\n");
+    sb.append("    AD_VIDEO_2_LINK_LENGTH_TOO_LONG: ").append(toIndentedString(AD_VIDEO_2_LINK_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_VIDEO_2_LINK_REQUIRED: ").append(toIndentedString(AD_VIDEO_2_LINK_REQUIRED)).append("\n");
+    sb.append("    AD_VIDEO_2_LINK_WARNING: ").append(toIndentedString(AD_VIDEO_2_LINK_WARNING)).append("\n");
+    sb.append("    AD_VIDEO_2_TAG_DUPLICATED: ").append(toIndentedString(AD_VIDEO_2_TAG_DUPLICATED)).append("\n");
+    sb.append("    AD_VIDEO_2_TAG_LENGTH_TOO_LONG: ").append(toIndentedString(AD_VIDEO_2_TAG_LENGTH_TOO_LONG)).append("\n");
+    sb.append("    AD_VIDEO_2_TAG_REQUIRED: ").append(toIndentedString(AD_VIDEO_2_TAG_REQUIRED)).append("\n");
     sb.append("    ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG: ").append(toIndentedString(ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG)).append("\n");
     sb.append("    ADDITIONAL_IMAGE_LINK_WARNING: ").append(toIndentedString(ADDITIONAL_IMAGE_LINK_WARNING)).append("\n");
     sb.append("    ADWORDS_FORMAT_WARNING: ").append(toIndentedString(ADWORDS_FORMAT_WARNING)).append("\n");
     sb.append("    ADWORDS_SAME_AS_LINK: ").append(toIndentedString(ADWORDS_SAME_AS_LINK)).append("\n");
     sb.append("    AGE_GROUP_INVALID: ").append(toIndentedString(AGE_GROUP_INVALID)).append("\n");
-    sb.append("    SIZE_SYSTEM_INVALID: ").append(toIndentedString(SIZE_SYSTEM_INVALID)).append("\n");
     sb.append("    ANDROID_DEEP_LINK_INVALID: ").append(toIndentedString(ANDROID_DEEP_LINK_INVALID)).append("\n");
     sb.append("    AVAILABILITY_DATE_INVALID: ").append(toIndentedString(AVAILABILITY_DATE_INVALID)).append("\n");
     sb.append("    COUNTRY_DOES_NOT_MAP_TO_CURRENCY: ").append(toIndentedString(COUNTRY_DOES_NOT_MAP_TO_CURRENCY)).append("\n");
@@ -596,19 +2700,21 @@ public class CatalogsItemValidationWarnings   {
     sb.append("    OPTIONAL_PRODUCT_CATEGORY_MISSING: ").append(toIndentedString(OPTIONAL_PRODUCT_CATEGORY_MISSING)).append("\n");
     sb.append("    PRODUCT_CATEGORY_DEPTH_WARNING: ").append(toIndentedString(PRODUCT_CATEGORY_DEPTH_WARNING)).append("\n");
     sb.append("    PRODUCT_TYPE_LENGTH_TOO_LONG: ").append(toIndentedString(PRODUCT_TYPE_LENGTH_TOO_LONG)).append("\n");
-    sb.append("    SALES_PRICE_INVALID: ").append(toIndentedString(SALES_PRICE_INVALID)).append("\n");
-    sb.append("    SALES_PRICE_TOO_LOW: ").append(toIndentedString(SALES_PRICE_TOO_LOW)).append("\n");
-    sb.append("    SALES_PRICE_TOO_HIGH: ").append(toIndentedString(SALES_PRICE_TOO_HIGH)).append("\n");
     sb.append("    SALE_DATE_INVALID: ").append(toIndentedString(SALE_DATE_INVALID)).append("\n");
-    sb.append("    SHIPPING_INVALID: ").append(toIndentedString(SHIPPING_INVALID)).append("\n");
+    sb.append("    SALES_PRICE_INVALID: ").append(toIndentedString(SALES_PRICE_INVALID)).append("\n");
+    sb.append("    SALES_PRICE_TOO_HIGH: ").append(toIndentedString(SALES_PRICE_TOO_HIGH)).append("\n");
+    sb.append("    SALES_PRICE_TOO_LOW: ").append(toIndentedString(SALES_PRICE_TOO_LOW)).append("\n");
     sb.append("    SHIPPING_HEIGHT_INVALID: ").append(toIndentedString(SHIPPING_HEIGHT_INVALID)).append("\n");
+    sb.append("    SHIPPING_INVALID: ").append(toIndentedString(SHIPPING_INVALID)).append("\n");
     sb.append("    SHIPPING_WEIGHT_INVALID: ").append(toIndentedString(SHIPPING_WEIGHT_INVALID)).append("\n");
     sb.append("    SHIPPING_WIDTH_INVALID: ").append(toIndentedString(SHIPPING_WIDTH_INVALID)).append("\n");
+    sb.append("    SIZE_SYSTEM_INVALID: ").append(toIndentedString(SIZE_SYSTEM_INVALID)).append("\n");
     sb.append("    SIZE_TYPE_INVALID: ").append(toIndentedString(SIZE_TYPE_INVALID)).append("\n");
     sb.append("    TAX_INVALID: ").append(toIndentedString(TAX_INVALID)).append("\n");
     sb.append("    TITLE_LENGTH_TOO_LONG: ").append(toIndentedString(TITLE_LENGTH_TOO_LONG)).append("\n");
     sb.append("    TOO_MANY_ADDITIONAL_IMAGE_LINKS: ").append(toIndentedString(TOO_MANY_ADDITIONAL_IMAGE_LINKS)).append("\n");
     sb.append("    UTM_SOURCE_AUTO_CORRECTED: ").append(toIndentedString(UTM_SOURCE_AUTO_CORRECTED)).append("\n");
+    sb.append("    VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED: ").append(toIndentedString(VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED)).append("\n");
     sb.append("    WEIGHT_UNIT_INVALID: ").append(toIndentedString(WEIGHT_UNIT_INVALID)).append("\n");
     sb.append("}");
     return sb.toString();

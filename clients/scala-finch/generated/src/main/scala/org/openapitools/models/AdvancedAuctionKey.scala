@@ -10,12 +10,12 @@ import org.openapitools.models.Language
 
 /**
  * Object uniquely identifying a retail catalog item
- * @param itemUnderscoreid The catalog retail item id in the merchant namespace
  * @param country 
+ * @param itemUnderscoreid The catalog retail item id in the merchant namespace
  * @param language 
  */
-case class AdvancedAuctionKey(itemUnderscoreid: String,
-                country: Country,
+case class AdvancedAuctionKey(country: Country,
+                itemUnderscoreid: String,
                 language: Language
                 )
 

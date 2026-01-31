@@ -54,11 +54,10 @@ cJSON *campaigns_analytics_response_inner_convertToJSON(campaigns_analytics_resp
     cJSON *item = cJSON_CreateObject();
 
     // campaigns_analytics_response_inner->campaign_id
-    if (!campaigns_analytics_response_inner->campaign_id) {
-        goto fail;
-    }
+    if(campaigns_analytics_response_inner->campaign_id) {
     if(cJSON_AddStringToObject(item, "CAMPAIGN_ID", campaigns_analytics_response_inner->campaign_id) == NULL) {
     goto fail; //String
+    }
     }
 
 
@@ -86,14 +85,11 @@ campaigns_analytics_response_inner_t *campaigns_analytics_response_inner_parseFr
     if (cJSON_IsNull(campaign_id)) {
         campaign_id = NULL;
     }
-    if (!campaign_id) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(campaign_id))
+    if (campaign_id) { 
+    if(!cJSON_IsString(campaign_id) && !cJSON_IsNull(campaign_id))
     {
     goto end; //String
+    }
     }
 
     // campaigns_analytics_response_inner->date
@@ -110,7 +106,7 @@ campaigns_analytics_response_inner_t *campaigns_analytics_response_inner_parseFr
 
 
     campaigns_analytics_response_inner_local_var = campaigns_analytics_response_inner_create_internal (
-        strdup(campaign_id->valuestring),
+        campaign_id && !cJSON_IsNull(campaign_id) ? strdup(campaign_id->valuestring) : NULL,
         date ? strdup(date->valuestring) : NULL
         );
 

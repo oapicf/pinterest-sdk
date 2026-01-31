@@ -7,9 +7,9 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(LeadsExportCreateRequest, () {
-    // Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
-    // String startDate
-    test('to test the property `startDate`', () async {
+    // ID for the ad collecting leads
+    // String adId
+    test('to test the property `adId`', () async {
       // TODO
     });
 
@@ -19,9 +19,9 @@ void main() {
       // TODO
     });
 
-    // ID for the ad collecting leads
-    // String adId
-    test('to test the property `adId`', () async {
+    // Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
+    // String startDate
+    test('to test the property `startDate`', () async {
       // TODO
     });
 

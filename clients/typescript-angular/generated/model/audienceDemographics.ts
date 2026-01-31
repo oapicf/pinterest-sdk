@@ -19,20 +19,20 @@ export interface AudienceDemographics {
      */
     ages?: Array<AudienceDemographicValue>;
     /**
-     * Gender distribution.
+     * Country area distribution.
      */
-    genders?: Array<AudienceDemographicValue>;
+    countries?: Array<AudienceDemographicValue>;
     /**
      * Device usage distribution.
      */
     devices?: Array<AudienceDemographicValue>;
     /**
+     * Gender distribution.
+     */
+    genders?: Array<AudienceDemographicValue>;
+    /**
      * Geographic metro area distribution.
      */
     metros?: Array<AudienceDemographicValue>;
-    /**
-     * Country area distribution.
-     */
-    countries?: Array<AudienceDemographicValue>;
 }
 

@@ -1,0 +1,42 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "BrandAccountsCreateRequest",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "Brand Account name"
+    },
+    {
+      "name": "username",
+      "type": "string",
+      "doc": "Brand Account username"
+    },
+    {
+      "name": "country",
+      "type": "model.Country",
+      "doc": ""
+    },
+    {
+      "name": "about",
+      "type": ["null", "string"],
+      "doc": "Brand Account about information",
+      "default": null
+    },
+    {
+      "name": "website",
+      "type": ["null", "string"],
+      "doc": "Brand Account website",
+      "default": null
+    },
+    {
+      "name": "profile_image",
+      "type": ["null", "model.ImageBase64"],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

@@ -7,11 +7,11 @@
 
 (def audience-insight-category-common-data
   {
+   (ds/opt :id) string?
+   (ds/opt :index) float?
    (ds/opt :key) string?
    (ds/opt :name) string?
    (ds/opt :ratio) float?
-   (ds/opt :index) float?
-   (ds/opt :id) string?
    })
 
 (def audience-insight-category-common-spec

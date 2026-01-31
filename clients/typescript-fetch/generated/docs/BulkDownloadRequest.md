@@ -7,11 +7,11 @@ Ad entities to get in bulk request.
 
 Name | Type
 ------------ | -------------
-`entityTypes` | [Array&lt;BulkEntityType&gt;](BulkEntityType.md)
-`entityIds` | Array&lt;string&gt;
-`updatedSince` | string
 `campaignFilter` | [BulkDownloadRequestCampaignFilter](BulkDownloadRequestCampaignFilter.md)
+`entityIds` | Array&lt;string&gt;
+`entityTypes` | [Array&lt;BulkEntityType&gt;](BulkEntityType.md)
 `outputFormat` | [BulkOutputFormat](BulkOutputFormat.md)
+`updatedSince` | string
 
 ## Example
 
@@ -20,11 +20,11 @@ import type { BulkDownloadRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "entityTypes": ["CAMPAIGN","AD_GROUP"],
-  "entityIds": null,
-  "updatedSince": 1622848072,
   "campaignFilter": null,
+  "entityIds": null,
+  "entityTypes": ["CAMPAIGN","AD_GROUP"],
   "outputFormat": null,
+  "updatedSince": 1622848072,
 } satisfies BulkDownloadRequest
 
 console.log(example)

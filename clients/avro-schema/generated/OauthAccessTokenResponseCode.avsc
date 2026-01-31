@@ -6,11 +6,29 @@
   "fields": [
     {
       "name": "refresh_token",
+      "type": ["null", "string"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "refresh_token_expires_at",
+      "type": ["null", "int"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "refresh_token_expires_in",
+      "type": ["null", "int"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "access_token",
       "type": "string",
       "doc": ""
     },
     {
-      "name": "refresh_token_expires_in",
+      "name": "expires_in",
       "type": "int",
       "doc": ""
     },
@@ -29,7 +47,7 @@
       "default": null
     },
     {
-      "name": "access_token",
+      "name": "scope",
       "type": "string",
       "doc": ""
     },
@@ -38,16 +56,6 @@
       "type": "string",
       "doc": "",
       "default": "bearer"
-    },
-    {
-      "name": "expires_in",
-      "type": "int",
-      "doc": ""
-    },
-    {
-      "name": "scope",
-      "type": "string",
-      "doc": ""
     }
   ]
 

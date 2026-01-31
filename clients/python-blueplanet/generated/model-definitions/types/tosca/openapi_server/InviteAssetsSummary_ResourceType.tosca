@@ -1,0 +1,44 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server InviteAssetsSummary"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a InviteAssetsSummary"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  InviteAssetsSummaryAdAccountsInner = openapi_server.resourceTypes.InviteAssetsSummaryAdAccountsInner
+  InviteAssetsSummaryProfilesInner = openapi_server.resourceTypes.InviteAssetsSummaryProfilesInner
+}
+resourceTypes {
+
+  InviteAssetsSummary {
+    title = InviteAssetsSummary
+    description = InviteAssetsSummary
+    derivedFrom = Root
+    properties {
+        ad_accounts {
+          type = array
+          items.type = InviteAssetsSummaryAdAccountsInner
+          description = "List of ad account IDs and respective permission levels that will be assigned."
+          optional = false
+        }
+        profiles {
+          type = array
+          items.type = InviteAssetsSummaryProfilesInner
+          description = "List of profile IDs and respective permission levels that will be assigned."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  InviteAssetsSummary {
+    title = InviteAssetsSummary
+    description = InviteAssetsSummary
+    implements = openapi_server.resourceTypes.InviteAssetsSummary
+
+  }
+}

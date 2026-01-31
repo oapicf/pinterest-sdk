@@ -1,6 +1,5 @@
 namespace OpenAPI
 open OpenAPI.Model.Audience
-open OpenAPI.Model.AudienceCreateCustomRequest
 open OpenAPI.Model.AudienceCreateRequest
 open OpenAPI.Model.AudienceUpdateRequest
 open OpenAPI.Model.AudiencesList200Response
@@ -23,14 +22,6 @@ module AudiencesApiServiceImplementation =
           else
             let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
             AudiencesCreateDefaultStatusCode { content = content }
-
-        member this.AudiencesCreateCustom (parameters:AudiencesCreateCustomBodyParams) =
-          if true then
-            let content = "Success" :> obj :?> Audience // this cast is obviously wrong, and is only intended to allow generated project to compile   
-            AudiencesCreateCustomStatusCode200 { content = content }
-          else
-            let content = "Unexpected error" :> obj :?> Error // this cast is obviously wrong, and is only intended to allow generated project to compile   
-            AudiencesCreateCustomDefaultStatusCode { content = content }
 
         member this.AudiencesGet () =
           if true then

@@ -8,9 +8,9 @@
 
 (def catalogs-feed-ingestion-data
   {
-   (ds/req :id) string?
-   (ds/req :feed_id) string?
    (ds/req :created_at) inst?
+   (ds/req :feed_id) string?
+   (ds/req :id) string?
    (ds/req :status) catalogs-feed-processing-status-spec
    })
 

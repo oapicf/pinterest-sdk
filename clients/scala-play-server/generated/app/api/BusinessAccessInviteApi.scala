@@ -15,7 +15,7 @@ import model.InviteType
 import model.RespondToInvitesResponseArray
 import model.UpdateInvitesResultsResponseArray
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 trait BusinessAccessInviteApi {
   /**
     * Create a request to access an existing partner&#39;s assets.
@@ -27,7 +27,7 @@ trait BusinessAccessInviteApi {
   /**
     * Cancel invites/requests
     * Cancel membership/partnership invites and/or requests.
-    * @param businessId Business id
+    * @param businessId Unique identifier of the requesting business.
     * @param cancelInvitesBody A list with invite ids
     */
   def cancelInvitesOrRequests(businessId: String, cancelInvitesBody: CancelInvitesBody): DeleteInvitesResultsResponseArray
@@ -43,7 +43,7 @@ trait BusinessAccessInviteApi {
   /**
     * Create invites or requests
     * Create batch invites or requests. Can create batch invites or requests as described below. - Invite members to join the business. This would required specifying the following:     - invite_type&#x3D;\&quot;MEMBER_INVITE\&quot;     - business_role&#x3D;\&quot;EMPLOYEE\&quot; OR business_role&#x3D;\&quot;BIZ_ADMIN\&quot; (To learn more about business roles, visit     https://help.pinterest.com/en/business/article/profile-permissions-in-business-access.)     - members - Invite partners to access your business assets. This would require specifying the following:     - invite_type&#x3D;\&quot;PARTNER_INVITE\&quot;     - business_role&#x3D;\&quot;PARTNER\&quot;     - partners - Request to be a partner so you can access their assets. This would require specifying the following:     - invite_type&#x3D;\&quot;PARTNER_REQUEST\&quot;     - business_role&#x3D;\&quot;PARTNER\&quot;     - partners
-    * @param businessId Business id
+    * @param businessId Unique identifier of the requesting business.
     * @param createMembershipOrPartnershipInvitesBody An object with the properties: invite_type, partners, members, business_role
     */
   def createMembershipOrPartnershipInvites(businessId: String, createMembershipOrPartnershipInvitesBody: CreateMembershipOrPartnershipInvitesBody): CreateInvitesResultsResponseArray

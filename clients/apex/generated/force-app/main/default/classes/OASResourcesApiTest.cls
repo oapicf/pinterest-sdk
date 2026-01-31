@@ -35,6 +35,23 @@ private class OASResourcesApiTest {
         expectedResponse = OASAdAccountsCountryResponse.getExample();
         response = (OASAdAccountsCountryResponse) api.adAccountCountriesGet();
         System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASResourcesApi(client);
+
+        js = JSON.serialize(OASAdAccountsCountryResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsCountryResponse.getExample();
+        response = (OASAdAccountsCountryResponse) api.adAccountCountriesGet();
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsCountryResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsCountryResponse.getExample();
+        response = (OASAdAccountsCountryResponse) api.adAccountCountriesGet();
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -59,6 +76,23 @@ private class OASResourcesApiTest {
         OASDeliveryMetricsResponse expectedResponse;
         String js = '';
 
+        client = new OASClient();
+        api = new OASResourcesApi(client);
+
+        js = JSON.serialize(OASDeliveryMetricsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASDeliveryMetricsResponse.getExample();
+        response = (OASDeliveryMetricsResponse) api.deliveryMetricsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASDeliveryMetricsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASDeliveryMetricsResponse.getExample();
+        response = (OASDeliveryMetricsResponse) api.deliveryMetricsGet(params);
+        System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASResourcesApi(client);
 
@@ -117,12 +151,29 @@ private class OASResourcesApiTest {
         expectedResponse = OASSingleInterestTargetingOptionResp.getExample();
         response = (OASSingleInterestTargetingOptionResp) api.interestTargetingOptionsGet(params);
         System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASResourcesApi(client);
+
+        js = JSON.serialize(OASSingleInterestTargetingOptionResp.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSingleInterestTargetingOptionResp.getExample();
+        response = (OASSingleInterestTargetingOptionResp) api.interestTargetingOptionsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSingleInterestTargetingOptionResp.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSingleInterestTargetingOptionResp.getExample();
+        response = (OASSingleInterestTargetingOptionResp) api.interestTargetingOptionsGet(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Get lead form questions
      *
-     * Get a list of all lead form question type names. Some questions might not be used.\n\n&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get a list of all lead form question type names. Some questions might not be used.\n\n&lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/using-beta-and-restricted-features/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
      */
     @isTest
     private static void leadFormQuestionsGetTest() {
@@ -213,6 +264,23 @@ private class OASResourcesApiTest {
         List<Object> expectedResponse;
         String js = '';
 
+        client = new OASClient();
+        api = new OASResourcesApi(client);
+
+        js = JSON.serialize(List.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = List.getExample();
+        response = (List<Object>) api.targetingOptionsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(List.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = List.getExample();
+        response = (List<Object>) api.targetingOptionsGet(params);
+        System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASResourcesApi(client);
 

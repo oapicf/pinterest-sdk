@@ -6,10 +6,10 @@
 
 Name | Type
 ------------ | -------------
-`reportStatus` | [BulkReportingJobStatus](BulkReportingJobStatus.md)
-`token` | string
 `message` | string
+`reportStatus` | [BulkReportingJobStatus](BulkReportingJobStatus.md)
 `status` | string
+`token` | string
 
 ## Example
 
@@ -18,10 +18,10 @@ import type { CreateMMMReportResponseData } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "reportStatus": null,
-  "token": null,
   "message": null,
+  "reportStatus": null,
   "status": success,
+  "token": null,
 } satisfies CreateMMMReportResponseData
 
 console.log(example)

@@ -20,11 +20,11 @@ public class LeadsExportCreateRequestTest {
     }
 
     /**
-     * Test the property 'startDate'
+     * Test the property 'adId'
      */
     @Test
-    public void startDateTest() {
-        // TODO: test startDate
+    public void adIdTest() {
+        // TODO: test adId
     }
 
     /**
@@ -36,11 +36,11 @@ public class LeadsExportCreateRequestTest {
     }
 
     /**
-     * Test the property 'adId'
+     * Test the property 'startDate'
      */
     @Test
-    public void adIdTest() {
-        // TODO: test adId
+    public void startDateTest() {
+        // TODO: test startDate
     }
 
 }

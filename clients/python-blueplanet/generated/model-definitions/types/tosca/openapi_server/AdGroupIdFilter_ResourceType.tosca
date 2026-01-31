@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdGroupIdFilter"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdGroupIdFilter"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  AdGroupIdFilter {
+    title = AdGroupIdFilter
+    description = AdGroupIdFilter
+    derivedFrom = Root
+    properties {
+        ad_group_ids {
+          type = array
+          items.type =  string
+          description = "List of ad group ids"
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdGroupIdFilter {
+    title = AdGroupIdFilter
+    description = AdGroupIdFilter
+    implements = openapi_server.resourceTypes.AdGroupIdFilter
+
+  }
+}

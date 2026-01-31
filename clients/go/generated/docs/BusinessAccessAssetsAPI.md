@@ -41,7 +41,7 @@ import (
 
 func main() {
 	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
-	createAssetGroupBody := *openapiclient.NewCreateAssetGroupBody("Canada Ad Accounts", "Asset groups that has ad accounts shared in Canada", []openapiclient.AssetGroupType{openapiclient.AssetGroupType("BRAND")}) // CreateAssetGroupBody | 
+	createAssetGroupBody := *openapiclient.NewCreateAssetGroupBody("Asset groups that has ad accounts shared in Canada", "Canada Ad Accounts", []openapiclient.AssetGroupType{openapiclient.AssetGroupType("BRAND")}) // CreateAssetGroupBody | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -237,7 +237,7 @@ Name | Type | Description  | Notes
 
 ## BusinessAssetMembersGet
 
-> BusinessAssetMembersGet200Response BusinessAssetMembersGet(ctx, businessId, assetId).Bookmark(bookmark).PageSize(pageSize).StartIndex(startIndex).Execute()
+> BusinessAssetMembersGet200Response BusinessAssetMembersGet(ctx, businessId, assetId).FetchSystemUsers(fetchSystemUsers).Bookmark(bookmark).PageSize(pageSize).StartIndex(startIndex).Execute()
 
 Get members with access to asset
 
@@ -258,13 +258,14 @@ import (
 func main() {
 	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
 	assetId := "729090764583391194" // string | Unique identifier of a business asset.
+	fetchSystemUsers := true // bool | Fetches system users if True. Fetches regular user employees if False. (optional) (default to false)
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
 	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 	startIndex := int32(0) // int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BusinessAccessAssetsAPI.BusinessAssetMembersGet(context.Background(), businessId, assetId).Bookmark(bookmark).PageSize(pageSize).StartIndex(startIndex).Execute()
+	resp, r, err := apiClient.BusinessAccessAssetsAPI.BusinessAssetMembersGet(context.Background(), businessId, assetId).FetchSystemUsers(fetchSystemUsers).Bookmark(bookmark).PageSize(pageSize).StartIndex(startIndex).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BusinessAccessAssetsAPI.BusinessAssetMembersGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -292,6 +293,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **fetchSystemUsers** | **bool** | Fetches system users if True. Fetches regular user employees if False. | [default to false]
  **bookmark** | **string** | Cursor used to fetch the next page of items | 
  **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
  **startIndex** | **int32** | An index to start fetching the results from. Only the results starting from this index will be returned. | [default to 0]
@@ -807,7 +809,7 @@ import (
 
 func main() {
 	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
-	deletePartnerAssetAccessBody := *openapiclient.NewDeletePartnerAssetAccessBody([]openapiclient.DeletePartnerAssetAccessBodyAccessesInner{*openapiclient.NewDeletePartnerAssetAccessBodyAccessesInner("1234567890123", "549755885175")}) // DeletePartnerAssetAccessBody | 
+	deletePartnerAssetAccessBody := *openapiclient.NewDeletePartnerAssetAccessBody([]openapiclient.DeletePartnerAssetAccessBodyAccessesInner{*openapiclient.NewDeletePartnerAssetAccessBodyAccessesInner("549755885175", "1234567890123")}) // DeletePartnerAssetAccessBody | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -879,7 +881,7 @@ import (
 
 func main() {
 	businessId := "729090764583391194" // string | Unique identifier of the requesting business.
-	updatePartnerAssetAccessBody := *openapiclient.NewUpdatePartnerAssetAccessBody([]openapiclient.UpdatePartnerAssetAccessBodyAccessesInner{*openapiclient.NewUpdatePartnerAssetAccessBodyAccessesInner("1234567890123", "549755885175", []openapiclient.Permissions{openapiclient.Permissions("ADMIN")})}) // UpdatePartnerAssetAccessBody | A list of assets and permissions to assign to your partners.
+	updatePartnerAssetAccessBody := *openapiclient.NewUpdatePartnerAssetAccessBody([]openapiclient.UpdatePartnerAssetAccessBodyAccessesInner{*openapiclient.NewUpdatePartnerAssetAccessBodyAccessesInner("549755885175", "1234567890123", []openapiclient.Permissions{openapiclient.Permissions("ADMIN")})}) // UpdatePartnerAssetAccessBody | A list of assets and permissions to assign to your partners.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

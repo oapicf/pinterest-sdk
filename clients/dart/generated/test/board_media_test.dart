@@ -16,7 +16,7 @@ void main() {
   // final instance = BoardMedia();
 
   group('test BoardMedia', () {
-    // Board cover image.
+    // Board cover image
     // String imageCoverUrl
     test('to test the property `imageCoverUrl`', () async {
       // TODO

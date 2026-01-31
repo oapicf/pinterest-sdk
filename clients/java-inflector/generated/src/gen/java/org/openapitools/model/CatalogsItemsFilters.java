@@ -21,16 +21,16 @@ import org.openapitools.model.CatalogsType;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItemsFilters   {
   @JsonProperty("catalog_type")
   private CatalogsType catalogType;
 
-  @JsonProperty("item_ids")
-  private List<String> itemIds = new ArrayList<>();
-
   @JsonProperty("catalog_id")
   private String catalogId;
+
+  @JsonProperty("item_ids")
+  private List<String> itemIds = new ArrayList<>();
 
   @JsonProperty("hotel_ids")
   private List<String> hotelIds = new ArrayList<>();
@@ -56,23 +56,6 @@ public class CatalogsItemsFilters   {
   }
 
   /**
-   **/
-  public CatalogsItemsFilters itemIds(List<String> itemIds) {
-    this.itemIds = itemIds;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("item_ids")
-  public List<String> getItemIds() {
-    return itemIds;
-  }
-  public void setItemIds(List<String> itemIds) {
-    this.itemIds = itemIds;
-  }
-
-  /**
    * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
    **/
   public CatalogsItemsFilters catalogId(String catalogId) {
@@ -88,6 +71,23 @@ public class CatalogsItemsFilters   {
   }
   public void setCatalogId(String catalogId) {
     this.catalogId = catalogId;
+  }
+
+  /**
+   **/
+  public CatalogsItemsFilters itemIds(List<String> itemIds) {
+    this.itemIds = itemIds;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("item_ids")
+  public List<String> getItemIds() {
+    return itemIds;
+  }
+  public void setItemIds(List<String> itemIds) {
+    this.itemIds = itemIds;
   }
 
   /**
@@ -135,15 +135,15 @@ public class CatalogsItemsFilters   {
     }
     CatalogsItemsFilters catalogsItemsFilters = (CatalogsItemsFilters) o;
     return Objects.equals(catalogType, catalogsItemsFilters.catalogType) &&
-        Objects.equals(itemIds, catalogsItemsFilters.itemIds) &&
         Objects.equals(catalogId, catalogsItemsFilters.catalogId) &&
+        Objects.equals(itemIds, catalogsItemsFilters.itemIds) &&
         Objects.equals(hotelIds, catalogsItemsFilters.hotelIds) &&
         Objects.equals(creativeAssetsIds, catalogsItemsFilters.creativeAssetsIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemIds, catalogId, hotelIds, creativeAssetsIds);
+    return Objects.hash(catalogType, catalogId, itemIds, hotelIds, creativeAssetsIds);
   }
 
   @Override
@@ -152,8 +152,8 @@ public class CatalogsItemsFilters   {
     sb.append("class CatalogsItemsFilters {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    itemIds: ").append(toIndentedString(itemIds)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    itemIds: ").append(toIndentedString(itemIds)).append("\n");
     sb.append("    hotelIds: ").append(toIndentedString(hotelIds)).append("\n");
     sb.append("    creativeAssetsIds: ").append(toIndentedString(creativeAssetsIds)).append("\n");
     sb.append("}");

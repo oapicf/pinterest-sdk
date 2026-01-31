@@ -1,0 +1,51 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsCreativeAssetsBatchItem"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsCreativeAssetsBatchItem"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsCreateCreativeAssetsItem = openapi_server.resourceTypes.CatalogsCreateCreativeAssetsItem
+  CatalogsDeleteCreativeAssetsItem = openapi_server.resourceTypes.CatalogsDeleteCreativeAssetsItem
+  CatalogsUpdatableCreativeAssetsAttributes = openapi_server.resourceTypes.CatalogsUpdatableCreativeAssetsAttributes
+  CatalogsUpdateCreativeAssetsItem = openapi_server.resourceTypes.CatalogsUpdateCreativeAssetsItem
+  CatalogsUpsertCreativeAssetsItem = openapi_server.resourceTypes.CatalogsUpsertCreativeAssetsItem
+}
+resourceTypes {
+
+  CatalogsCreativeAssetsBatchItem {
+    title = CatalogsCreativeAssetsBatchItem
+    description = CatalogsCreativeAssetsBatchItem
+    derivedFrom = Root
+    properties {
+        attributes {
+          type = CatalogsUpdatableCreativeAssetsAttributes
+          description = ""
+          optional = true
+        }
+        creative_assets_id {
+          type =  string
+          description = "The catalog creative assets id in the merchant namespace"
+          optional = true
+        }
+        operation {
+          type =  string
+          description = ""
+          enum = ["DELETE"]
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsCreativeAssetsBatchItem {
+    title = CatalogsCreativeAssetsBatchItem
+    description = CatalogsCreativeAssetsBatchItem
+    implements = openapi_server.resourceTypes.CatalogsCreativeAssetsBatchItem
+
+  }
+}

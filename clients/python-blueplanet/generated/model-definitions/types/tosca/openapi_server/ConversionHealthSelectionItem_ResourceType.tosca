@@ -1,0 +1,50 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ConversionHealthSelectionItem"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ConversionHealthSelectionItem"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  ConversionHealthSelectionItem {
+    title = ConversionHealthSelectionItem
+    description = ConversionHealthSelectionItem
+    derivedFrom = Root
+    properties {
+        conversion_type {
+          type =  
+          description = "Status for conversion types"
+          optional = false
+        }
+        criteria {
+          type =  
+          description = "Status for criteria"
+          optional = false
+        }
+        ingestion_source {
+          type =  
+          description = "Status for ingestion sources"
+          optional = false
+        }
+        status {
+          type =  
+          description = "Overall status for this selection item"
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ConversionHealthSelectionItem {
+    title = ConversionHealthSelectionItem
+    description = ConversionHealthSelectionItem
+    implements = openapi_server.resourceTypes.ConversionHealthSelectionItem
+
+  }
+}

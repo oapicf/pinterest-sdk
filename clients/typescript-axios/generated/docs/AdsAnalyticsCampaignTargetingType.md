@@ -32,4 +32,6 @@ Reporting targeting type for campaigns
 
 * `AgeBucketAndGender` (value: `'AGE_BUCKET_AND_GENDER'`)
 
+* `AudienceMultiplier` (value: `'AUDIENCE_MULTIPLIER'`)
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

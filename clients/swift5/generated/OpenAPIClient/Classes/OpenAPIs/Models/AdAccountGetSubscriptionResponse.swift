@@ -13,50 +13,50 @@ import AnyCodable
 public struct AdAccountGetSubscriptionResponse: Codable, JSONEncodable, Hashable {
 
     public static let leadFormIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     public static let userAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Lead form ID. */
     public var leadFormId: String?
     /** Standard HTTPS webhook URL. */
     public var webhookUrl: String?
-    /** Subscription ID. */
-    public var id: String?
-    /** User account used to subscribe lead data. */
-    public var userAccountId: String?
     /** The Ad Account ID that this lead form belongs to. */
     public var adAccountId: String?
     /** API version. */
     public var apiVersion: String?
-    /** Base64 encoded key for client to decrypt lead data. */
-    public var cryptographicKey: String?
+    /** Lead subscription creation time. Unix timestamp in milliseconds. */
+    public var createdTime: Int?
     /** Lead data encryption algorithm. */
     public var cryptographicAlgorithm: String?
-    /** Lead form creation time. Unix timestamp in milliseconds. */
-    public var createdTime: Int?
+    /** Base64 encoded key for client to decrypt lead data. */
+    public var cryptographicKey: String?
+    /** Subscription ID. */
+    public var id: String?
+    /** User account used to subscribe lead data. */
+    public var userAccountId: String?
 
-    public init(leadFormId: String? = nil, webhookUrl: String? = nil, id: String? = nil, userAccountId: String? = nil, adAccountId: String? = nil, apiVersion: String? = nil, cryptographicKey: String? = nil, cryptographicAlgorithm: String? = nil, createdTime: Int? = nil) {
+    public init(leadFormId: String? = nil, webhookUrl: String? = nil, adAccountId: String? = nil, apiVersion: String? = nil, createdTime: Int? = nil, cryptographicAlgorithm: String? = nil, cryptographicKey: String? = nil, id: String? = nil, userAccountId: String? = nil) {
         self.leadFormId = leadFormId
         self.webhookUrl = webhookUrl
-        self.id = id
-        self.userAccountId = userAccountId
         self.adAccountId = adAccountId
         self.apiVersion = apiVersion
-        self.cryptographicKey = cryptographicKey
-        self.cryptographicAlgorithm = cryptographicAlgorithm
         self.createdTime = createdTime
+        self.cryptographicAlgorithm = cryptographicAlgorithm
+        self.cryptographicKey = cryptographicKey
+        self.id = id
+        self.userAccountId = userAccountId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case leadFormId = "lead_form_id"
         case webhookUrl = "webhook_url"
-        case id
-        case userAccountId = "user_account_id"
         case adAccountId = "ad_account_id"
         case apiVersion = "api_version"
-        case cryptographicKey = "cryptographic_key"
-        case cryptographicAlgorithm = "cryptographic_algorithm"
         case createdTime = "created_time"
+        case cryptographicAlgorithm = "cryptographic_algorithm"
+        case cryptographicKey = "cryptographic_key"
+        case id
+        case userAccountId = "user_account_id"
     }
 
     // Encodable protocol methods
@@ -65,13 +65,13 @@ public struct AdAccountGetSubscriptionResponse: Codable, JSONEncodable, Hashable
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(leadFormId, forKey: .leadFormId)
         try container.encodeIfPresent(webhookUrl, forKey: .webhookUrl)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(userAccountId, forKey: .userAccountId)
         try container.encodeIfPresent(adAccountId, forKey: .adAccountId)
         try container.encodeIfPresent(apiVersion, forKey: .apiVersion)
-        try container.encodeIfPresent(cryptographicKey, forKey: .cryptographicKey)
-        try container.encodeIfPresent(cryptographicAlgorithm, forKey: .cryptographicAlgorithm)
         try container.encodeIfPresent(createdTime, forKey: .createdTime)
+        try container.encodeIfPresent(cryptographicAlgorithm, forKey: .cryptographicAlgorithm)
+        try container.encodeIfPresent(cryptographicKey, forKey: .cryptographicKey)
+        try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(userAccountId, forKey: .userAccountId)
     }
 }
 

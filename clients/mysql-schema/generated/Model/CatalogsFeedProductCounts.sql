@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsFeedProductCounts`
 --
-SELECT `original`, `ingested` FROM `CatalogsFeedProductCounts` WHERE 1;
+SELECT `ingested`, `original` FROM `CatalogsFeedProductCounts` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsFeedProductCounts`
 --
-INSERT INTO `CatalogsFeedProductCounts`(`original`, `ingested`) VALUES (?, ?);
+INSERT INTO `CatalogsFeedProductCounts`(`ingested`, `original`) VALUES (?, ?);
 
 --
 -- UPDATE template for table `CatalogsFeedProductCounts`
 --
-UPDATE `CatalogsFeedProductCounts` SET `original` = ?, `ingested` = ? WHERE 1;
+UPDATE `CatalogsFeedProductCounts` SET `ingested` = ?, `original` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsFeedProductCounts`

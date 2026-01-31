@@ -1,8 +1,13 @@
 
 <h2>CatalogsRetailProductMetadata</h2>
 <ul class="parameter">
-  <li class="param-required-true">itemUnderscoreid : String
-    <br/>The user-created unique ID that represents the product.
+  <li class="param-required-true">availability : NonNullableProductAvailabilityType
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">currency : NonNullableCatalogsCurrency
+    <br/>
   </li>
 </ul>
 <ul class="parameter">
@@ -11,8 +16,8 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-true">availability : NonNullableProductAvailabilityType
-    <br/>
+  <li class="param-required-true">itemUnderscoreid : String
+    <br/>The user-created unique ID that represents the product.
   </li>
 </ul>
 <ul class="parameter">
@@ -23,10 +28,5 @@
 <ul class="parameter">
   <li class="param-required-true">saleUnderscoreprice : BigDecimal
     <br/>The discounted price of the product.
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-true">currency : NonNullableCatalogsCurrency
-    <br/>
   </li>
 </ul>

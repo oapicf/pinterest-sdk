@@ -28,6 +28,14 @@ public class CatalogsCreativeAssetsBatchItemTest {
     }
 
     /**
+     * Test the property 'attributes'
+     */
+    @Test
+    public void attributesTest() {
+        // TODO: test attributes
+    }
+
+    /**
      * Test the property 'creativeAssetsId'
      */
     @Test
@@ -41,14 +49,6 @@ public class CatalogsCreativeAssetsBatchItemTest {
     @Test
     public void operationTest() {
         // TODO: test operation
-    }
-
-    /**
-     * Test the property 'attributes'
-     */
-    @Test
-    public void attributesTest() {
-        // TODO: test attributes
     }
 
 }

@@ -1,0 +1,27 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [{
+    "label": "General",
+    "children": [
+      {"model": "label"},
+      {"model": "description"}
+    ]
+  },{
+    "label": "Details",
+    "model": "properties",
+    "children": [
+      {"model": "catalog_id" },
+      {"model": "catalog_type" },
+      {"model": "credentials" },
+      {"model": "default_country" },
+      {"model": "default_currency" },
+      {"model": "default_locale" },
+      {"model": "format" },
+      {"model": "location" },
+      {"model": "name" },
+      {"model": "preferred_processing_schedule" },
+      {"model": "status" },
+    ]
+  }]
+}

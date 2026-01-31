@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.vertxweb.server.model.AdvancedAuctionProcessedItem;
+import org.openapitools.vertxweb.server.model.AdvancedAuctionItemsSubmitRecord;
 
 /**
  * Response object containing the results of an operation on an item bid option
@@ -15,13 +15,13 @@ import org.openapitools.vertxweb.server.model.AdvancedAuctionProcessedItem;
 public class AdvancedAuctionProcessedItems   {
   
   private String catalogId;
-  private List<AdvancedAuctionProcessedItem> items = new ArrayList<>();
+  private List<AdvancedAuctionItemsSubmitRecord> items = new ArrayList<>();
 
   public AdvancedAuctionProcessedItems () {
 
   }
 
-  public AdvancedAuctionProcessedItems (String catalogId, List<AdvancedAuctionProcessedItem> items) {
+  public AdvancedAuctionProcessedItems (String catalogId, List<AdvancedAuctionItemsSubmitRecord> items) {
     this.catalogId = catalogId;
     this.items = items;
   }
@@ -37,10 +37,10 @@ public class AdvancedAuctionProcessedItems   {
 
     
   @JsonProperty("items")
-  public List<AdvancedAuctionProcessedItem> getItems() {
+  public List<AdvancedAuctionItemsSubmitRecord> getItems() {
     return items;
   }
-  public void setItems(List<AdvancedAuctionProcessedItem> items) {
+  public void setItems(List<AdvancedAuctionItemsSubmitRecord> items) {
     this.items = items;
   }
 

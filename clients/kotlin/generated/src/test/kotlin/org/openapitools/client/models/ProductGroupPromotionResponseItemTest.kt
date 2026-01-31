@@ -20,7 +20,7 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.ProductGroupPromotionResponseItem
 import org.openapitools.client.models.Exception
-import org.openapitools.client.models.ProductGroupPromotionResponseElement
+import org.openapitools.client.models.ProductGroupPromotion
 
 class ProductGroupPromotionResponseItemTest : ShouldSpec() {
     init {

@@ -15,25 +15,19 @@ API.Client.OauthAccessTokenResponseCode.prototype.refreshToken;
  * @type {!number}
  * @export
  */
+API.Client.OauthAccessTokenResponseCode.prototype.refreshTokenExpiresAt;
+
+/**
+ * @type {!number}
+ * @export
+ */
 API.Client.OauthAccessTokenResponseCode.prototype.refreshTokenExpiresIn;
 
 /**
  * @type {!string}
  * @export
  */
-API.Client.OauthAccessTokenResponseCode.prototype.responseType;
-
-/**
- * @type {!string}
- * @export
- */
 API.Client.OauthAccessTokenResponseCode.prototype.accessToken;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.OauthAccessTokenResponseCode.prototype.tokenType;
 
 /**
  * @type {!number}
@@ -45,7 +39,19 @@ API.Client.OauthAccessTokenResponseCode.prototype.expiresIn;
  * @type {!string}
  * @export
  */
+API.Client.OauthAccessTokenResponseCode.prototype.responseType;
+
+/**
+ * @type {!string}
+ * @export
+ */
 API.Client.OauthAccessTokenResponseCode.prototype.scope;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.OauthAccessTokenResponseCode.prototype.tokenType;
 
 /** @enum {string} */
 API.Client.OauthAccessTokenResponseCode.ResponseTypeEnum = { 

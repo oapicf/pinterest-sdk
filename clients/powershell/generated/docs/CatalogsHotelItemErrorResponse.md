@@ -4,16 +4,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
+**Errors** | [**ItemValidationEvent[]**](ItemValidationEvent.md) | Array with the errors for the item id requested | 
 **HotelId** | **String** | The catalog hotel id in the merchant namespace | [optional] 
-**Errors** | [**ItemValidationEvent[]**](ItemValidationEvent.md) | Array with the errors for the item id requested | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
 $CatalogsHotelItemErrorResponse = Initialize-PSOpenAPIToolsCatalogsHotelItemErrorResponse  -CatalogType null `
- -HotelId DS0294-M `
- -Errors null
+ -Errors null `
+ -HotelId DS0294-M
 ```
 
 - Convert the resource to JSON

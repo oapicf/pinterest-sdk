@@ -14,26 +14,12 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-31T04:54:58.059572557Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreateAssetGroupBody   {
   
-  private String assetGroupName;
   private String assetGroupDescription;
+  private String assetGroupName;
   private List<AssetGroupType> assetGroupTypes = new ArrayList<>();
-
-  /**
-   * Asset Group name
-   **/
-  
-  @ApiModelProperty(example = "Canada Ad Accounts", required = true, value = "Asset Group name")
-  @JsonProperty("asset_group_name")
-  @NotNull
-  public String getAssetGroupName() {
-    return assetGroupName;
-  }
-  public void setAssetGroupName(String assetGroupName) {
-    this.assetGroupName = assetGroupName;
-  }
 
   /**
    * Asset group description
@@ -47,6 +33,20 @@ public class CreateAssetGroupBody   {
   }
   public void setAssetGroupDescription(String assetGroupDescription) {
     this.assetGroupDescription = assetGroupDescription;
+  }
+
+  /**
+   * Asset Group name
+   **/
+  
+  @ApiModelProperty(example = "Canada Ad Accounts", required = true, value = "Asset Group name")
+  @JsonProperty("asset_group_name")
+  @NotNull
+  public String getAssetGroupName() {
+    return assetGroupName;
+  }
+  public void setAssetGroupName(String assetGroupName) {
+    this.assetGroupName = assetGroupName;
   }
 
   /**
@@ -74,14 +74,14 @@ public class CreateAssetGroupBody   {
       return false;
     }
     CreateAssetGroupBody createAssetGroupBody = (CreateAssetGroupBody) o;
-    return Objects.equals(this.assetGroupName, createAssetGroupBody.assetGroupName) &&
-        Objects.equals(this.assetGroupDescription, createAssetGroupBody.assetGroupDescription) &&
+    return Objects.equals(this.assetGroupDescription, createAssetGroupBody.assetGroupDescription) &&
+        Objects.equals(this.assetGroupName, createAssetGroupBody.assetGroupName) &&
         Objects.equals(this.assetGroupTypes, createAssetGroupBody.assetGroupTypes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetGroupName, assetGroupDescription, assetGroupTypes);
+    return Objects.hash(assetGroupDescription, assetGroupName, assetGroupTypes);
   }
 
   @Override
@@ -89,8 +89,8 @@ public class CreateAssetGroupBody   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateAssetGroupBody {\n");
     
-    sb.append("    assetGroupName: ").append(toIndentedString(assetGroupName)).append("\n");
     sb.append("    assetGroupDescription: ").append(toIndentedString(assetGroupDescription)).append("\n");
+    sb.append("    assetGroupName: ").append(toIndentedString(assetGroupName)).append("\n");
     sb.append("    assetGroupTypes: ").append(toIndentedString(assetGroupTypes)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -25,12 +25,6 @@ class ImageDetailsTest : ShouldSpec() {
         // uncomment below to create an instance of ImageDetails
         //val modelInstance = ImageDetails()
 
-        // to test the property `width`
-        should("test width") {
-            // uncomment below to test the property
-            //modelInstance.width shouldBe ("TODO")
-        }
-
         // to test the property `height`
         should("test height") {
             // uncomment below to test the property
@@ -41,6 +35,12 @@ class ImageDetailsTest : ShouldSpec() {
         should("test url") {
             // uncomment below to test the property
             //modelInstance.url shouldBe ("TODO")
+        }
+
+        // to test the property `width`
+        should("test width") {
+            // uncomment below to test the property
+            //modelInstance.width shouldBe ("TODO")
         }
 
     }

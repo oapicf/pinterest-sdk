@@ -22,37 +22,52 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("BulkDownloadRequest_campaign_filter")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BulkDownloadRequestCampaignFilter   {
-  private String startTime;
+  private @Valid List<CampaignSummaryStatus> campaignStatus = new ArrayList<>();
   private String endTime;
   private String name;
-  private @Valid List<CampaignSummaryStatus> campaignStatus = new ArrayList<>();
   private @Valid List<ObjectiveType> objectiveType = new ArrayList<>();
+  private String startTime;
 
   public BulkDownloadRequestCampaignFilter() {
   }
 
   /**
-   * Unix UTC timestamp.
    **/
-  public BulkDownloadRequestCampaignFilter startTime(String startTime) {
-    this.startTime = startTime;
+  public BulkDownloadRequestCampaignFilter campaignStatus(List<CampaignSummaryStatus> campaignStatus) {
+    this.campaignStatus = campaignStatus;
     return this;
   }
 
   
-  @ApiModelProperty(example = "1622848072", value = "Unix UTC timestamp.")
-  @JsonProperty("start_time")
-   @Pattern(regexp="^\\d+$")public String getStartTime() {
-    return startTime;
+  @ApiModelProperty(value = "")
+  @JsonProperty("campaign_status")
+  public List<CampaignSummaryStatus> getCampaignStatus() {
+    return campaignStatus;
   }
 
-  @JsonProperty("start_time")
-  public void setStartTime(String startTime) {
-    this.startTime = startTime;
+  @JsonProperty("campaign_status")
+  public void setCampaignStatus(List<CampaignSummaryStatus> campaignStatus) {
+    this.campaignStatus = campaignStatus;
   }
 
+  public BulkDownloadRequestCampaignFilter addCampaignStatusItem(CampaignSummaryStatus campaignStatusItem) {
+    if (this.campaignStatus == null) {
+      this.campaignStatus = new ArrayList<>();
+    }
+
+    this.campaignStatus.add(campaignStatusItem);
+    return this;
+  }
+
+  public BulkDownloadRequestCampaignFilter removeCampaignStatusItem(CampaignSummaryStatus campaignStatusItem) {
+    if (campaignStatusItem != null && this.campaignStatus != null) {
+      this.campaignStatus.remove(campaignStatusItem);
+    }
+
+    return this;
+  }
   /**
    * Unix UTC timestamp.
    **/
@@ -95,41 +110,6 @@ public class BulkDownloadRequestCampaignFilter   {
 
   /**
    **/
-  public BulkDownloadRequestCampaignFilter campaignStatus(List<CampaignSummaryStatus> campaignStatus) {
-    this.campaignStatus = campaignStatus;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("campaign_status")
-  public List<CampaignSummaryStatus> getCampaignStatus() {
-    return campaignStatus;
-  }
-
-  @JsonProperty("campaign_status")
-  public void setCampaignStatus(List<CampaignSummaryStatus> campaignStatus) {
-    this.campaignStatus = campaignStatus;
-  }
-
-  public BulkDownloadRequestCampaignFilter addCampaignStatusItem(CampaignSummaryStatus campaignStatusItem) {
-    if (this.campaignStatus == null) {
-      this.campaignStatus = new ArrayList<>();
-    }
-
-    this.campaignStatus.add(campaignStatusItem);
-    return this;
-  }
-
-  public BulkDownloadRequestCampaignFilter removeCampaignStatusItem(CampaignSummaryStatus campaignStatusItem) {
-    if (campaignStatusItem != null && this.campaignStatus != null) {
-      this.campaignStatus.remove(campaignStatusItem);
-    }
-
-    return this;
-  }
-  /**
-   **/
   public BulkDownloadRequestCampaignFilter objectiveType(List<ObjectiveType> objectiveType) {
     this.objectiveType = objectiveType;
     return this;
@@ -163,6 +143,26 @@ public class BulkDownloadRequestCampaignFilter   {
 
     return this;
   }
+  /**
+   * Unix UTC timestamp.
+   **/
+  public BulkDownloadRequestCampaignFilter startTime(String startTime) {
+    this.startTime = startTime;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "1622848072", value = "Unix UTC timestamp.")
+  @JsonProperty("start_time")
+   @Pattern(regexp="^\\d+$")public String getStartTime() {
+    return startTime;
+  }
+
+  @JsonProperty("start_time")
+  public void setStartTime(String startTime) {
+    this.startTime = startTime;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -173,16 +173,16 @@ public class BulkDownloadRequestCampaignFilter   {
       return false;
     }
     BulkDownloadRequestCampaignFilter bulkDownloadRequestCampaignFilter = (BulkDownloadRequestCampaignFilter) o;
-    return Objects.equals(this.startTime, bulkDownloadRequestCampaignFilter.startTime) &&
+    return Objects.equals(this.campaignStatus, bulkDownloadRequestCampaignFilter.campaignStatus) &&
         Objects.equals(this.endTime, bulkDownloadRequestCampaignFilter.endTime) &&
         Objects.equals(this.name, bulkDownloadRequestCampaignFilter.name) &&
-        Objects.equals(this.campaignStatus, bulkDownloadRequestCampaignFilter.campaignStatus) &&
-        Objects.equals(this.objectiveType, bulkDownloadRequestCampaignFilter.objectiveType);
+        Objects.equals(this.objectiveType, bulkDownloadRequestCampaignFilter.objectiveType) &&
+        Objects.equals(this.startTime, bulkDownloadRequestCampaignFilter.startTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startTime, endTime, name, campaignStatus, objectiveType);
+    return Objects.hash(campaignStatus, endTime, name, objectiveType, startTime);
   }
 
   @Override
@@ -190,11 +190,11 @@ public class BulkDownloadRequestCampaignFilter   {
     StringBuilder sb = new StringBuilder();
     sb.append("class BulkDownloadRequestCampaignFilter {\n");
     
-    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
+    sb.append("    campaignStatus: ").append(toIndentedString(campaignStatus)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    campaignStatus: ").append(toIndentedString(campaignStatus)).append("\n");
     sb.append("    objectiveType: ").append(toIndentedString(objectiveType)).append("\n");
+    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }

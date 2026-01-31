@@ -11,7 +11,7 @@ The class is defined in **[AdvancedAuctionProcessedItems.java](../../src/main/ja
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalogId** | `String` | Catalog id pertaining to all items |  [optional property]
-**items** | [`List&lt;AdvancedAuctionProcessedItem&gt;`](AdvancedAuctionProcessedItem.md) | Array of advanced auction processed items |  [optional property]
+**items** | [`List&lt;AdvancedAuctionItemsSubmitRecord&gt;`](AdvancedAuctionItemsSubmitRecord.md) | Array of advanced auction processed items |  [optional property]
 
 
 

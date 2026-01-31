@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "LabelsResponse",
+  "fields": [
+    {
+      "name": "errors",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.LabelError"
+      }],
+      "doc": "Labels that were not successfully applied.",
+      "default": null
+    },
+    {
+      "name": "labels",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.Label"
+      }],
+      "doc": "",
+      "default": null
+    }
+  ]
+
+}

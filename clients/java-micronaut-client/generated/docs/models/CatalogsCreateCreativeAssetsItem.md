@@ -10,9 +10,10 @@ The class is defined in **[CatalogsCreateCreativeAssetsItem.java](../../src/main
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**attributes** | [`CatalogsCreativeAssetsAttributes`](CatalogsCreativeAssetsAttributes.md) |  | 
 **creativeAssetsId** | `String` | The catalog creative assets id in the merchant namespace | 
 **operation** | [**OperationEnum**](#OperationEnum) |  | 
-**attributes** | [`CatalogsCreativeAssetsAttributes`](CatalogsCreativeAssetsAttributes.md) |  | 
+
 
 
 ## OperationEnum
@@ -20,6 +21,5 @@ Name | Type | Description | Notes
 Name | Value
 ---- | -----
 CREATE | `"CREATE"`
-
 
 

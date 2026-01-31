@@ -9,8 +9,8 @@
 
 (def advanced-auction-key-data
   {
-   (ds/req :item_id) string?
    (ds/req :country) country-spec
+   (ds/req :item_id) string?
    (ds/req :language) language-spec
    })
 

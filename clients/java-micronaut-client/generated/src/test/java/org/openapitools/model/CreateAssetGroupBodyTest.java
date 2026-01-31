@@ -24,19 +24,19 @@ public class CreateAssetGroupBodyTest {
     }
 
     /**
-     * Test the property 'assetGroupName'
-     */
-    @Test
-    public void assetGroupNameTest() {
-        // TODO: test assetGroupName
-    }
-
-    /**
      * Test the property 'assetGroupDescription'
      */
     @Test
     public void assetGroupDescriptionTest() {
         // TODO: test assetGroupDescription
+    }
+
+    /**
+     * Test the property 'assetGroupName'
+     */
+    @Test
+    public void assetGroupNameTest() {
+        // TODO: test assetGroupName
     }
 
     /**

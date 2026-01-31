@@ -28,18 +28,18 @@ test_that("rule", {
   #expect_equal(model.instance$`rule`, "EXPECTED_RESULT")
 })
 
-test_that("description", {
-  # tests for the property `description` (character)
-  # Audience description.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`description`, "EXPECTED_RESULT")
-})
-
 test_that("audience_type", {
   # tests for the property `audience_type` (AudienceType)
   # &lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`audience_type`, "EXPECTED_RESULT")
+})
+
+test_that("description", {
+  # tests for the property `description` (character)
+  # Audience description.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`description`, "EXPECTED_RESULT")
 })

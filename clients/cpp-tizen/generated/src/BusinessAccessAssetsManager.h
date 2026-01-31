@@ -138,6 +138,7 @@ bool assetGroupUpdateAsync(char * accessToken,
  * Get all the members the requesting business has granted access to on the given asset.
  * \param businessId Unique identifier of the requesting business. *Required*
  * \param assetId Unique identifier of a business asset. *Required*
+ * \param fetchSystemUsers Fetches system users if True. Fetches regular user employees if False.
  * \param bookmark Cursor used to fetch the next page of items
  * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
  * \param startIndex An index to start fetching the results from. Only the results starting from this index will be returned.
@@ -146,7 +147,7 @@ bool assetGroupUpdateAsync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool businessAssetMembersGetSync(char * accessToken,
-	std::string businessId, std::string assetId, std::string bookmark, int pageSize, int startIndex, 
+	std::string businessId, std::string assetId, bool fetchSystemUsers, std::string bookmark, int pageSize, int startIndex, 
 	void(* handler)(Business_asset_members_get_200_response, Error, void* )
 	, void* userData);
 
@@ -155,6 +156,7 @@ bool businessAssetMembersGetSync(char * accessToken,
  * Get all the members the requesting business has granted access to on the given asset.
  * \param businessId Unique identifier of the requesting business. *Required*
  * \param assetId Unique identifier of a business asset. *Required*
+ * \param fetchSystemUsers Fetches system users if True. Fetches regular user employees if False.
  * \param bookmark Cursor used to fetch the next page of items
  * \param pageSize Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
  * \param startIndex An index to start fetching the results from. Only the results starting from this index will be returned.
@@ -163,7 +165,7 @@ bool businessAssetMembersGetSync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool businessAssetMembersGetAsync(char * accessToken,
-	std::string businessId, std::string assetId, std::string bookmark, int pageSize, int startIndex, 
+	std::string businessId, std::string assetId, bool fetchSystemUsers, std::string bookmark, int pageSize, int startIndex, 
 	void(* handler)(Business_asset_members_get_200_response, Error, void* )
 	, void* userData);
 

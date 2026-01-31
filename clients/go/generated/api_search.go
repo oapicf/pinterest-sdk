@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -70,7 +70,7 @@ func (r ApiSearchPartnerPinsRequest) Execute() (*SearchPartnerPins200Response, *
 /*
 SearchPartnerPins Search pins by a given search term
 
-<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
+<strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
 
 Get the top 10 Pins by a given search term.
 
@@ -379,7 +379,7 @@ func (r ApiSearchUserPinsListRequest) Bookmark(bookmark string) ApiSearchUserPin
 	return r
 }
 
-func (r ApiSearchUserPinsListRequest) Execute() (*PinsList200Response, *http.Response, error) {
+func (r ApiSearchUserPinsListRequest) Execute() (*SearchUserPinsList200Response, *http.Response, error) {
 	return r.ApiService.SearchUserPinsListExecute(r)
 }
 
@@ -402,13 +402,13 @@ func (a *SearchAPIService) SearchUserPinsList(ctx context.Context) ApiSearchUser
 }
 
 // Execute executes the request
-//  @return PinsList200Response
-func (a *SearchAPIService) SearchUserPinsListExecute(r ApiSearchUserPinsListRequest) (*PinsList200Response, *http.Response, error) {
+//  @return SearchUserPinsList200Response
+func (a *SearchAPIService) SearchUserPinsListExecute(r ApiSearchUserPinsListRequest) (*SearchUserPinsList200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *PinsList200Response
+		localVarReturnValue  *SearchUserPinsList200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchUserPinsList")

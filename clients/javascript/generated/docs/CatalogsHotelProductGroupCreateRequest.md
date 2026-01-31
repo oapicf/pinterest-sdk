@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**catalogId** | **String** | Catalog id pertaining to the hotel product group. | 
 **catalogType** | **String** |  | 
-**name** | **String** |  | 
 **description** | **String** |  | [optional] 
 **filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  | 
-**catalogId** | **String** | Catalog id pertaining to the hotel product group. | 
+**name** | **String** |  | 
 
 
 

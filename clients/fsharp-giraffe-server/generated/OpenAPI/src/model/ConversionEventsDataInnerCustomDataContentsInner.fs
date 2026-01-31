@@ -10,10 +10,10 @@ module ConversionEventsDataInnerCustomDataContentsInner =
 
   type ConversionEvents_data_inner_custom_data_contents_inner = {
     Id : string;
+    ItemBrand : string;
+    ItemCategory : string;
+    ItemName : string;
     ItemPrice : string;
     Quantity : int64;
-    ItemName : string;
-    ItemCategory : string;
-    ItemBrand : string;
   }
   //#endregion

@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | [**AdAccountGetSubscriptionResponse[]**](AdAccountGetSubscriptionResponse.md) |  | 
 **Bookmark** | **String** |  | [optional] 
+**Items** | [**LeadSubscription[]**](LeadSubscription.md) |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$AdAccountsSubscriptionsGetList200Response = Initialize-PSOpenAPIToolsAdAccountsSubscriptionsGetList200Response  -Items null `
- -Bookmark null
+$AdAccountsSubscriptionsGetList200Response = Initialize-PSOpenAPIToolsAdAccountsSubscriptionsGetList200Response  -Bookmark null `
+ -Items null
 ```
 
 - Convert the resource to JSON

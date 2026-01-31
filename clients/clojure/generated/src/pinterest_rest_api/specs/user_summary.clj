@@ -7,8 +7,8 @@
 
 (def user-summary-data
   {
-   (ds/opt :username) string?
    (ds/opt :type) string?
+   (ds/opt :username) string?
    })
 
 (def user-summary-spec

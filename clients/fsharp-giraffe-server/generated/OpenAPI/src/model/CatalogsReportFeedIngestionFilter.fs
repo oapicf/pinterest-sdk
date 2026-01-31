@@ -12,8 +12,8 @@ module CatalogsReportFeedIngestionFilter =
   //#endregion
 
   type CatalogsReportFeedIngestionFilter = {
-    ReportType : ReportTypeEnum;
     FeedId : string;
     ProcessingResultId : string;
+    ReportType : ReportTypeEnum;
   }
   //#endregion

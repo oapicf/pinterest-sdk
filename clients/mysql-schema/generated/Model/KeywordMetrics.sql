@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `KeywordMetrics`
 --
-SELECT `avg_cpc_in_micro_currency`, `keyword_query_volume` FROM `KeywordMetrics` WHERE 1;
+SELECT `keyword_query_volume` FROM `KeywordMetrics` WHERE 1;
 
 --
 -- INSERT template for table `KeywordMetrics`
 --
-INSERT INTO `KeywordMetrics`(`avg_cpc_in_micro_currency`, `keyword_query_volume`) VALUES (?, ?);
+INSERT INTO `KeywordMetrics`(`keyword_query_volume`) VALUES (?);
 
 --
 -- UPDATE template for table `KeywordMetrics`
 --
-UPDATE `KeywordMetrics` SET `avg_cpc_in_micro_currency` = ?, `keyword_query_volume` = ? WHERE 1;
+UPDATE `KeywordMetrics` SET `keyword_query_volume` = ? WHERE 1;
 
 --
 -- DELETE template for table `KeywordMetrics`

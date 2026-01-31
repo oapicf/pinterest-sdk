@@ -7,8 +7,11 @@ import play.api.mvc._
 import model.AdsCreditRedeemRequest
 import model.AdsCreditRedeemResponse
 import model.AdsCreditsDiscountsGet200Response
+import model.BillingInvoiceDownloadResponse
+import model.BillingInvoicesGet200Response
 import model.BillingProfilesGet200Response
 import model.Error
+import java.time.LocalDate
 import model.SSIOAccountResponse
 import model.SSIOCreateInsertionOrderRequest
 import model.SSIOCreateInsertionOrderResponse
@@ -18,7 +21,7 @@ import model.SSIOInsertionOrderStatusResponse
 import model.SsioInsertionOrdersStatusGetByAdAccount200Response
 import model.SsioOrderLinesGetByAdAccount200Response
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-31T05:12:04.015471536Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Singleton
 class BillingApiController @Inject()(cc: ControllerComponents, api: BillingApi) extends AbstractController(cc) {
   /**
@@ -50,6 +53,54 @@ class BillingApiController @Inject()(cc: ControllerComponents, api: BillingApi) 
         .map(value => value.toInt)
         
       api.adsCreditsDiscountsGet(adAccountId, bookmark, pageSize)
+    }
+
+    val result = executeApi()
+    val json = Json.toJson(result)
+    Ok(json)
+  }
+
+  /**
+    * GET /v5/ad_accounts/:adAccountId/billing_invoice/:billingInvoiceId/download
+    * @param adAccountId Unique identifier of an ad account.
+    * @param billingInvoiceId Unique identifier of a billing invoice.
+    */
+  def billingInvoiceDownloadGet(adAccountId: String, billingInvoiceId: String): Action[AnyContent] = Action { request =>
+    def executeApi(): BillingInvoiceDownloadResponse = {
+      api.billingInvoiceDownloadGet(adAccountId, billingInvoiceId)
+    }
+
+    val result = executeApi()
+    val json = Json.toJson(result)
+    Ok(json)
+  }
+
+  /**
+    * GET /v5/ad_accounts/:adAccountId/billing_invoices?bookmark=[value]&pageSize=[value]&sort=[value]&order=[value]&status=[value]&documentType=[value]&startDueDate=[value]&endDueDate=[value]
+    * @param adAccountId Unique identifier of an ad account.
+    */
+  def billingInvoicesGet(adAccountId: String): Action[AnyContent] = Action { request =>
+    def executeApi(): BillingInvoicesGet200Response = {
+      val bookmark = request.getQueryString("bookmark")
+        
+      val pageSize = request.getQueryString("page_size")
+        .map(value => value.toInt)
+        
+      val sort = request.getQueryString("sort")
+        
+      val order = request.getQueryString("order")
+        
+      val status = request.getQueryString("status")
+        
+      val documentType = request.getQueryString("document_type")
+        
+      val startDueDate = request.getQueryString("start_due_date")
+        .map(value => LocalDate.parse(value))
+        
+      val endDueDate = request.getQueryString("end_due_date")
+        .map(value => LocalDate.parse(value))
+        
+      api.billingInvoicesGet(adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate)
     }
 
     val result = executeApi()

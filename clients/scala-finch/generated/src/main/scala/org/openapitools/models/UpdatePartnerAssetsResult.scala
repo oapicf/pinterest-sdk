@@ -10,7 +10,7 @@ import scala.collection.immutable.Seq
 /**
  * An object containing the permissions a business partner has on the asset.
  * @param assetUnderscoreid Unique identifier of a business asset.
- * @param assetUnderscoretype Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+ * @param assetUnderscoretype Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
  * @param partnerUnderscoreid Unique identifier of a business partner.
  * @param permissions Permission levels member or partner has on an asset.
  */

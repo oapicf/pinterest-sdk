@@ -7,7 +7,7 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(AppTypeMultipliers, () {
-    // TargetingSpecAppType APP_TYPE
+    // String APP_TYPE
     test('to test the property `APP_TYPE`', () async {
       // TODO
     });

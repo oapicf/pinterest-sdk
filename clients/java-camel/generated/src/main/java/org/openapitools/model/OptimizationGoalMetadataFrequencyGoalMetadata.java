@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("OptimizationGoalMetadata_frequency_goal_metadata")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-31T04:53:41.522099385Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OptimizationGoalMetadataFrequencyGoalMetadata {
 
   private Integer frequency;
@@ -77,11 +77,13 @@ public class OptimizationGoalMetadataFrequencyGoalMetadata {
   }
 
   /**
-   * Get frequency
+   * Frequency target can only be between 2 and 20
+   * minimum: 2
+   * maximum: 20
    * @return frequency
    */
-  
-  @Schema(name = "frequency", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Min(value = 2) @Max(value = 20) 
+  @Schema(name = "frequency", description = "Frequency target can only be between 2 and 20", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("frequency")
   public Integer getFrequency() {
     return frequency;

@@ -8,11 +8,11 @@ import org.openapitools._
 
 /**
  * Pin URL-based media source for product pin creation. Currently the field is only available to a list of beta users.
- * @param sourceUnderscoretype 
  * @param isUnderscoreaffiliateUnderscorelink This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
+ * @param sourceUnderscoretype 
  */
-case class PinMediaSourcePinURL(sourceUnderscoretype: String,
-                isUnderscoreaffiliateUnderscorelink: Option[Boolean]
+case class PinMediaSourcePinURL(isUnderscoreaffiliateUnderscorelink: Option[Boolean],
+                sourceUnderscoretype: String
                 )
 
 object PinMediaSourcePinURL {

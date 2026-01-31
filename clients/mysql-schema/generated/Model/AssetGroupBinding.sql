@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `AssetGroupBinding`
 --
-SELECT `id`, `asset_group_name`, `asset_group_description`, `asset_group_types`, `ad_accounts_ids`, `profiles_ids`, `created_time`, `updated_time`, `owner`, `created_by` FROM `AssetGroupBinding` WHERE 1;
+SELECT `ad_accounts_ids`, `asset_group_description`, `asset_group_name`, `asset_group_types`, `catalogs_ids`, `created_by`, `created_time`, `id`, `owner`, `profiles_ids`, `updated_time` FROM `AssetGroupBinding` WHERE 1;
 
 --
 -- INSERT template for table `AssetGroupBinding`
 --
-INSERT INTO `AssetGroupBinding`(`id`, `asset_group_name`, `asset_group_description`, `asset_group_types`, `ad_accounts_ids`, `profiles_ids`, `created_time`, `updated_time`, `owner`, `created_by`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `AssetGroupBinding`(`ad_accounts_ids`, `asset_group_description`, `asset_group_name`, `asset_group_types`, `catalogs_ids`, `created_by`, `created_time`, `id`, `owner`, `profiles_ids`, `updated_time`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `AssetGroupBinding`
 --
-UPDATE `AssetGroupBinding` SET `id` = ?, `asset_group_name` = ?, `asset_group_description` = ?, `asset_group_types` = ?, `ad_accounts_ids` = ?, `profiles_ids` = ?, `created_time` = ?, `updated_time` = ?, `owner` = ?, `created_by` = ? WHERE 1;
+UPDATE `AssetGroupBinding` SET `ad_accounts_ids` = ?, `asset_group_description` = ?, `asset_group_name` = ?, `asset_group_types` = ?, `catalogs_ids` = ?, `created_by` = ?, `created_time` = ?, `id` = ?, `owner` = ?, `profiles_ids` = ?, `updated_time` = ? WHERE 1;
 
 --
 -- DELETE template for table `AssetGroupBinding`

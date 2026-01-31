@@ -13,8 +13,8 @@ import GetMMMReportResponseData._
 
 case class GetMMMReportResponseData (
   reportStatus: Option[ReportStatus],
-url: Option[String],
-size: Option[BigDecimal])
+size: Option[BigDecimal],
+url: Option[String])
 
 object GetMMMReportResponseData {
   import DateTimeCodecs._

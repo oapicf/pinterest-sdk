@@ -11,7 +11,7 @@ import org.openapitools.model.Catalog;
 @Canonical
 class CatalogsList200Response {
     
-    List<Catalog> items = new ArrayList<>()
-    
     String bookmark
+    
+    List<Catalog> items = new ArrayList<>()
 }

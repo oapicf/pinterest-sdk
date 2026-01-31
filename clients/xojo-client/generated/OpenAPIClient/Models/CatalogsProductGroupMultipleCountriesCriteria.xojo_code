@@ -2,12 +2,12 @@
 Protected Class CatalogsProductGroupMultipleCountriesCriteria
 
 	#tag Property, Flags = &h0
-		values() As Country
+		negated As Xoson.O.OptionalBoolean
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		negated As Xoson.O.OptionalBoolean
+		values() As Country
 	#tag EndProperty
 
 
@@ -48,19 +48,19 @@ Protected Class CatalogsProductGroupMultipleCountriesCriteria
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="values"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Country"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="negated"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="values"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Country"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

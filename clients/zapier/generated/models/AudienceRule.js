@@ -1,11 +1,28 @@
 const utils = require('../utils/utils');
+const EventData = require('../models/EventData');
 const ObjectiveType = require('../models/ObjectiveType');
-const PinterestTagEventData = require('../models/PinterestTagEventData');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
+            {
+                key: `${keyPrefix}ad_account_id`,
+                label: `Ad account ID. - [${labelPrefix}ad_account_id]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}ad_id`,
+                label: `Ad ID for engagement audience filter. - [${labelPrefix}ad_id]`,
+                list: true,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}campaign_id`,
+                label: `Campaign ID for engagement audience filter. - [${labelPrefix}campaign_id]`,
+                list: true,
+                type: 'string',
+            },
             {
                 key: `${keyPrefix}country`,
                 label: `Valid countries include: \"US\", \"CA\", and \"GB\". - [${labelPrefix}country]`,
@@ -28,11 +45,32 @@ module.exports = {
                 type: 'string',
             },
             {
+                key: `${keyPrefix}engager_type`,
+                label: `Optional for ENGAGEMENT. Engager type value should be 1-2. - [${labelPrefix}engager_type]`,
+                type: 'integer',
+            },
+            {
                 key: `${keyPrefix}event`,
                 label: `A Pinterest tag event. Optional for VISITOR `audience_type`. Possible values are `pagevisit`, `signup`, `checkout`, `viewcategory`, `search`, `addtocart`, `watchvideo`, `lead`, and `custom`. This field also accepts a partner-defined Pinterest tag event. - [${labelPrefix}event]`,
                 type: 'string',
             },
-            ...PinterestTagEventData.fields(`${keyPrefix}event_data`, isInput),
+            ...EventData.fields(`${keyPrefix}event_data`, isInput),
+            {
+                key: `${keyPrefix}event_source`,
+                label: `Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: web, mobile, offline - [${labelPrefix}event_source]`,
+                dict: true,
+            },
+            {
+                key: `${keyPrefix}ingestion_source`,
+                label: `Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: tag, mmp, file_upload, conversions_api - [${labelPrefix}ingestion_source]`,
+                dict: true,
+            },
+            {
+                key: `${keyPrefix}objective_type`,
+                list: true,
+                type: 'string',
+                ...ObjectiveType.fields(`${keyPrefix}objective_type`, isInput),
+            },
             {
                 key: `${keyPrefix}percentage`,
                 label: `Percentage should be 1-10. The targeted audience should be this % size across Pinterest. - [${labelPrefix}percentage]`,
@@ -71,55 +109,24 @@ module.exports = {
                 label: `The conversion tag ID, or the Pinterest tag ID, that you use on your website. For VISITOR `audience_type`. - [${labelPrefix}visitor_source_id]`,
                 type: 'string',
             },
-            {
-                key: `${keyPrefix}event_source`,
-                label: `Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: web, mobile, offline - [${labelPrefix}event_source]`,
-                dict: true,
-            },
-            {
-                key: `${keyPrefix}ingestion_source`,
-                label: `Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: tag, mmp, file_upload, conversions_api - [${labelPrefix}ingestion_source]`,
-                dict: true,
-            },
-            {
-                key: `${keyPrefix}engager_type`,
-                label: `Optional for ENGAGEMENT. Engager type value should be 1-2. - [${labelPrefix}engager_type]`,
-                type: 'integer',
-            },
-            {
-                key: `${keyPrefix}campaign_id`,
-                label: `Campaign ID for engagement audience filter. - [${labelPrefix}campaign_id]`,
-                list: true,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}ad_id`,
-                label: `Ad ID for engagement audience filter. - [${labelPrefix}ad_id]`,
-                list: true,
-                type: 'string',
-            },
-            {
-                key: `${keyPrefix}objective_type`,
-                list: true,
-                type: 'string',
-                ...ObjectiveType.fields(`${keyPrefix}objective_type`, isInput),
-            },
-            {
-                key: `${keyPrefix}ad_account_id`,
-                label: `Ad account ID. - [${labelPrefix}ad_account_id]`,
-                type: 'string',
-            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
+            'ad_account_id': bundle.inputData?.[`${keyPrefix}ad_account_id`],
+            'ad_id': bundle.inputData?.[`${keyPrefix}ad_id`],
+            'campaign_id': bundle.inputData?.[`${keyPrefix}campaign_id`],
             'country': bundle.inputData?.[`${keyPrefix}country`],
             'customer_list_id': bundle.inputData?.[`${keyPrefix}customer_list_id`],
             'engagement_domain': bundle.inputData?.[`${keyPrefix}engagement_domain`],
             'engagement_type': bundle.inputData?.[`${keyPrefix}engagement_type`],
+            'engager_type': bundle.inputData?.[`${keyPrefix}engager_type`],
             'event': bundle.inputData?.[`${keyPrefix}event`],
-            'event_data': utils.removeIfEmpty(PinterestTagEventData.mapping(bundle, `${keyPrefix}event_data`)),
+            'event_data': utils.removeIfEmpty(EventData.mapping(bundle, `${keyPrefix}event_data`)),
+            'event_source': bundle.inputData?.[`${keyPrefix}event_source`],
+            'ingestion_source': bundle.inputData?.[`${keyPrefix}ingestion_source`],
+            'objective_type': utils.childMapping(bundle.inputData?.[`${keyPrefix}objective_type`], `${keyPrefix}objective_type`, ObjectiveType),
             'percentage': bundle.inputData?.[`${keyPrefix}percentage`],
             'pin_id': bundle.inputData?.[`${keyPrefix}pin_id`],
             'prefill': bundle.inputData?.[`${keyPrefix}prefill`],
@@ -127,13 +134,6 @@ module.exports = {
             'seed_id': bundle.inputData?.[`${keyPrefix}seed_id`],
             'url': bundle.inputData?.[`${keyPrefix}url`],
             'visitor_source_id': bundle.inputData?.[`${keyPrefix}visitor_source_id`],
-            'event_source': bundle.inputData?.[`${keyPrefix}event_source`],
-            'ingestion_source': bundle.inputData?.[`${keyPrefix}ingestion_source`],
-            'engager_type': bundle.inputData?.[`${keyPrefix}engager_type`],
-            'campaign_id': bundle.inputData?.[`${keyPrefix}campaign_id`],
-            'ad_id': bundle.inputData?.[`${keyPrefix}ad_id`],
-            'objective_type': utils.childMapping(bundle.inputData?.[`${keyPrefix}objective_type`], `${keyPrefix}objective_type`, ObjectiveType),
-            'ad_account_id': bundle.inputData?.[`${keyPrefix}ad_account_id`],
         }
     },
 }

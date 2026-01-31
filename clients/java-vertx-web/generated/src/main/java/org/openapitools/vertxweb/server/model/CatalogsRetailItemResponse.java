@@ -18,19 +18,28 @@ import org.openapitools.vertxweb.server.model.Pin;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsRetailItemResponse   {
   
+  private ItemAttributes attributes;
   private CatalogsType catalogType;
   private String itemId;
   private List<Pin> pins;
-  private ItemAttributes attributes;
 
   public CatalogsRetailItemResponse () {
 
   }
 
-  public CatalogsRetailItemResponse (CatalogsType catalogType, String itemId, List<Pin> pins, ItemAttributes attributes) {
+  public CatalogsRetailItemResponse (ItemAttributes attributes, CatalogsType catalogType, String itemId, List<Pin> pins) {
+    this.attributes = attributes;
     this.catalogType = catalogType;
     this.itemId = itemId;
     this.pins = pins;
+  }
+
+    
+  @JsonProperty("attributes")
+  public ItemAttributes getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(ItemAttributes attributes) {
     this.attributes = attributes;
   }
 
@@ -61,15 +70,6 @@ public class CatalogsRetailItemResponse   {
     this.pins = pins;
   }
 
-    
-  @JsonProperty("attributes")
-  public ItemAttributes getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(ItemAttributes attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -80,15 +80,15 @@ public class CatalogsRetailItemResponse   {
       return false;
     }
     CatalogsRetailItemResponse catalogsRetailItemResponse = (CatalogsRetailItemResponse) o;
-    return Objects.equals(catalogType, catalogsRetailItemResponse.catalogType) &&
+    return Objects.equals(attributes, catalogsRetailItemResponse.attributes) &&
+        Objects.equals(catalogType, catalogsRetailItemResponse.catalogType) &&
         Objects.equals(itemId, catalogsRetailItemResponse.itemId) &&
-        Objects.equals(pins, catalogsRetailItemResponse.pins) &&
-        Objects.equals(attributes, catalogsRetailItemResponse.attributes);
+        Objects.equals(pins, catalogsRetailItemResponse.pins);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, pins, attributes);
+    return Objects.hash(attributes, catalogType, itemId, pins);
   }
 
   @Override
@@ -96,10 +96,10 @@ public class CatalogsRetailItemResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsRetailItemResponse {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

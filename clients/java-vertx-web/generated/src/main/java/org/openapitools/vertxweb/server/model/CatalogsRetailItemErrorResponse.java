@@ -17,17 +17,17 @@ import org.openapitools.vertxweb.server.model.ItemValidationEvent;
 public class CatalogsRetailItemErrorResponse   {
   
   private CatalogsType catalogType;
-  private String itemId;
   private List<ItemValidationEvent> errors = new ArrayList<>();
+  private String itemId;
 
   public CatalogsRetailItemErrorResponse () {
 
   }
 
-  public CatalogsRetailItemErrorResponse (CatalogsType catalogType, String itemId, List<ItemValidationEvent> errors) {
+  public CatalogsRetailItemErrorResponse (CatalogsType catalogType, List<ItemValidationEvent> errors, String itemId) {
     this.catalogType = catalogType;
-    this.itemId = itemId;
     this.errors = errors;
+    this.itemId = itemId;
   }
 
     
@@ -40,21 +40,21 @@ public class CatalogsRetailItemErrorResponse   {
   }
 
     
-  @JsonProperty("item_id")
-  public String getItemId() {
-    return itemId;
-  }
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
-  }
-
-    
   @JsonProperty("errors")
   public List<ItemValidationEvent> getErrors() {
     return errors;
   }
   public void setErrors(List<ItemValidationEvent> errors) {
     this.errors = errors;
+  }
+
+    
+  @JsonProperty("item_id")
+  public String getItemId() {
+    return itemId;
+  }
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
   }
 
 
@@ -68,13 +68,13 @@ public class CatalogsRetailItemErrorResponse   {
     }
     CatalogsRetailItemErrorResponse catalogsRetailItemErrorResponse = (CatalogsRetailItemErrorResponse) o;
     return Objects.equals(catalogType, catalogsRetailItemErrorResponse.catalogType) &&
-        Objects.equals(itemId, catalogsRetailItemErrorResponse.itemId) &&
-        Objects.equals(errors, catalogsRetailItemErrorResponse.errors);
+        Objects.equals(errors, catalogsRetailItemErrorResponse.errors) &&
+        Objects.equals(itemId, catalogsRetailItemErrorResponse.itemId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, errors);
+    return Objects.hash(catalogType, errors, itemId);
   }
 
   @Override
@@ -83,8 +83,8 @@ public class CatalogsRetailItemErrorResponse   {
     sb.append("class CatalogsRetailItemErrorResponse {\n");
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

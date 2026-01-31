@@ -23,28 +23,28 @@ import com.squareup.moshi.JsonClass
 /**
  * Request object for creating a hotel product group.
  *
- * @param catalogType 
- * @param name 
- * @param filters 
  * @param catalogId Catalog id pertaining to the hotel product group.
+ * @param catalogType 
+ * @param filters 
+ * @param name 
  * @param description 
  */
 
 
 data class CatalogsHotelProductGroupCreateRequest (
 
+    /* Catalog id pertaining to the hotel product group. */
+    @Json(name = "catalog_id")
+    val catalogId: kotlin.String,
+
     @Json(name = "catalog_type")
     val catalogType: CatalogsHotelProductGroupCreateRequest.CatalogType,
-
-    @Json(name = "name")
-    val name: kotlin.String,
 
     @Json(name = "filters")
     val filters: CatalogsHotelProductGroupFilters,
 
-    /* Catalog id pertaining to the hotel product group. */
-    @Json(name = "catalog_id")
-    val catalogId: kotlin.String,
+    @Json(name = "name")
+    val name: kotlin.String,
 
     @Json(name = "description")
     val description: kotlin.String? = null

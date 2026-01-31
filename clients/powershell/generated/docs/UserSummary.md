@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Username** | **String** | Username | [optional] 
 **Type** | **String** | Always &quot;&quot;user&quot;&quot; | [optional] 
+**Username** | **String** | Username | [optional] 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$UserSummary = Initialize-PSOpenAPIToolsUserSummary  -Username username `
- -Type user
+$UserSummary = Initialize-PSOpenAPIToolsUserSummary  -Type user `
+ -Username username
 ```
 
 - Convert the resource to JSON

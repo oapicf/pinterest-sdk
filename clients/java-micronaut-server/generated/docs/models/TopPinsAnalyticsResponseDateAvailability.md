@@ -8,8 +8,8 @@ The class is defined in **[TopPinsAnalyticsResponseDateAvailability.java](../../
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**latestAvailableTimestamp** | `BigDecimal` |  |  [optional property]
 **isRealtime** | `Boolean` |  |  [optional property]
+**latestAvailableTimestamp** | `BigDecimal` |  |  [optional property]
 
 
 

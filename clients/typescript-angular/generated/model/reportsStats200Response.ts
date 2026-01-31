@@ -11,7 +11,7 @@ import { CatalogsReportStats } from './catalogsReportStats';
 
 
 export interface ReportsStats200Response { 
-    items: Array<CatalogsReportStats>;
     bookmark?: string | null;
+    items: Array<CatalogsReportStats>;
 }
 

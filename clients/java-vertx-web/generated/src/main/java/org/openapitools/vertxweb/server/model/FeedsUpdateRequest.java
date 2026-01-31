@@ -18,12 +18,12 @@ import org.openapitools.vertxweb.server.model.ProductAvailabilityType;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class FeedsUpdateRequest   {
   
+  private CatalogsFeedCredentials credentials;
   private ProductAvailabilityType defaultAvailability;
   private NullableCurrency defaultCurrency;
-  private String name;
   private CatalogsFormat format;
-  private CatalogsFeedCredentials credentials;
   private String location;
+  private String name;
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
   private CatalogsStatus status;
 
@@ -31,15 +31,24 @@ public class FeedsUpdateRequest   {
 
   }
 
-  public FeedsUpdateRequest (ProductAvailabilityType defaultAvailability, NullableCurrency defaultCurrency, String name, CatalogsFormat format, CatalogsFeedCredentials credentials, String location, CatalogsFeedProcessingSchedule preferredProcessingSchedule, CatalogsStatus status) {
+  public FeedsUpdateRequest (CatalogsFeedCredentials credentials, ProductAvailabilityType defaultAvailability, NullableCurrency defaultCurrency, CatalogsFormat format, String location, String name, CatalogsFeedProcessingSchedule preferredProcessingSchedule, CatalogsStatus status) {
+    this.credentials = credentials;
     this.defaultAvailability = defaultAvailability;
     this.defaultCurrency = defaultCurrency;
-    this.name = name;
     this.format = format;
-    this.credentials = credentials;
     this.location = location;
+    this.name = name;
     this.preferredProcessingSchedule = preferredProcessingSchedule;
     this.status = status;
+  }
+
+    
+  @JsonProperty("credentials")
+  public CatalogsFeedCredentials getCredentials() {
+    return credentials;
+  }
+  public void setCredentials(CatalogsFeedCredentials credentials) {
+    this.credentials = credentials;
   }
 
     
@@ -61,15 +70,6 @@ public class FeedsUpdateRequest   {
   }
 
     
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
-
-    
   @JsonProperty("format")
   public CatalogsFormat getFormat() {
     return format;
@@ -79,21 +79,21 @@ public class FeedsUpdateRequest   {
   }
 
     
-  @JsonProperty("credentials")
-  public CatalogsFeedCredentials getCredentials() {
-    return credentials;
-  }
-  public void setCredentials(CatalogsFeedCredentials credentials) {
-    this.credentials = credentials;
-  }
-
-    
   @JsonProperty("location")
   public String getLocation() {
     return location;
   }
   public void setLocation(String location) {
     this.location = location;
+  }
+
+    
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
   }
 
     
@@ -124,19 +124,19 @@ public class FeedsUpdateRequest   {
       return false;
     }
     FeedsUpdateRequest feedsUpdateRequest = (FeedsUpdateRequest) o;
-    return Objects.equals(defaultAvailability, feedsUpdateRequest.defaultAvailability) &&
+    return Objects.equals(credentials, feedsUpdateRequest.credentials) &&
+        Objects.equals(defaultAvailability, feedsUpdateRequest.defaultAvailability) &&
         Objects.equals(defaultCurrency, feedsUpdateRequest.defaultCurrency) &&
-        Objects.equals(name, feedsUpdateRequest.name) &&
         Objects.equals(format, feedsUpdateRequest.format) &&
-        Objects.equals(credentials, feedsUpdateRequest.credentials) &&
         Objects.equals(location, feedsUpdateRequest.location) &&
+        Objects.equals(name, feedsUpdateRequest.name) &&
         Objects.equals(preferredProcessingSchedule, feedsUpdateRequest.preferredProcessingSchedule) &&
         Objects.equals(status, feedsUpdateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultAvailability, defaultCurrency, name, format, credentials, location, preferredProcessingSchedule, status);
+    return Objects.hash(credentials, defaultAvailability, defaultCurrency, format, location, name, preferredProcessingSchedule, status);
   }
 
   @Override
@@ -144,12 +144,12 @@ public class FeedsUpdateRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class FeedsUpdateRequest {\n");
     
+    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("    defaultAvailability: ").append(toIndentedString(defaultAvailability)).append("\n");
     sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
-    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");

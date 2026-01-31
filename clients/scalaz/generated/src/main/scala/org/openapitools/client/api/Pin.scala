@@ -13,34 +13,31 @@ import java.time.OffsetDateTime
 import Pin._
 
 case class Pin (
-  id: Option[String],
-createdAt: Option[OffsetDateTime],
-link: Option[String],
-title: Option[String],
-description: Option[String],
-/* Dominant pin color. Hex number, e.g. \\\"#6E7874\\\". */
-  dominantColor: Option[String],
-altText: Option[String],
-creativeType: Option[CreativeType],
+  altText: Option[String],
 /* The board to which this Pin belongs. */
   boardId: Option[String],
+boardOwner: Option[BoardOwner],
 /* The board section to which this Pin belongs. */
   boardSectionId: Option[String],
-boardOwner: Option[BoardOwner],
-/* Whether the \"operation user_account\" is the Pin owner. */
-  isOwner: Option[Boolean],
-media: Option[PinMedia],
-mediaSource: Option[PinMediaSource],
-/* The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>. */
-  parentPinId: Option[String],
-/* Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information. */
-  isStandard: Option[Boolean],
+createdAt: Option[OffsetDateTime],
+creativeType: Option[CreativeType],
+description: Option[String],
+/* Dominant pin color. Hex number, e.g. `#6E7874`. */
+  dominantColor: Option[String],
 /* Whether the Pin has been promoted or not. */
   hasBeenPromoted: Option[Boolean],
-/* Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>. */
-  note: Option[String],
+id: String,
+/* Whether the \"operation user_account\" is the Pin owner. */
+  isOwner: Option[Boolean],
+/* Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information. */
+  isStandard: Option[Boolean],
+link: Option[String],
+media: Option[PinMedia],
+/* The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest). */
+  parentPinId: Option[String],
 /* Pin metrics with associated time intervals if any. */
-  pinMetrics: Option[Any])
+  pinMetrics: Option[Any],
+title: Option[String])
 
 object Pin {
   import DateTimeCodecs._

@@ -1,0 +1,46 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server OauthAccessTokenRequestRefresh"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a OauthAccessTokenRequestRefresh"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  OauthAccessTokenRequestRefresh {
+    title = OauthAccessTokenRequestRefresh
+    description = OauthAccessTokenRequestRefresh
+    derivedFrom = Root
+    properties {
+        refresh_token {
+          type =  string
+          description = ""
+          optional = true
+        }
+        scope {
+          type =  string
+          description = ""
+          optional = false
+        }
+        grant_type {
+          type =  string
+          description = ""
+          enum = ["authorization_code", "refresh_token", "client_credentials"]
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  OauthAccessTokenRequestRefresh {
+    title = OauthAccessTokenRequestRefresh
+    description = OauthAccessTokenRequestRefresh
+    implements = openapi_server.resourceTypes.OauthAccessTokenRequestRefresh
+
+  }
+}

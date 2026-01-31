@@ -9,8 +9,8 @@
 -export_type([openapi_ad_accounts_subscriptions_get_list_200_response/0]).
 
 -type openapi_ad_accounts_subscriptions_get_list_200_response() ::
-  [ {'items', list(openapi_ad_account_get_subscription_response:openapi_ad_account_get_subscription_response()) }
-  | {'bookmark', binary() }
+  [ {'bookmark', binary() }
+  | {'items', list(openapi_lead_subscription:openapi_lead_subscription()) }
   ].
 
 
@@ -18,8 +18,8 @@ openapi_ad_accounts_subscriptions_get_list_200_response() ->
     openapi_ad_accounts_subscriptions_get_list_200_response([]).
 
 openapi_ad_accounts_subscriptions_get_list_200_response(Fields) ->
-  Default = [ {'items', list(openapi_ad_account_get_subscription_response:openapi_ad_account_get_subscription_response()) }
-            , {'bookmark', binary() }
+  Default = [ {'bookmark', binary() }
+            , {'items', list(openapi_lead_subscription:openapi_lead_subscription()) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

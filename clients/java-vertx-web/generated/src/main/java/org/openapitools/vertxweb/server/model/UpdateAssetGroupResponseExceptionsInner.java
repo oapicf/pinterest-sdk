@@ -7,17 +7,26 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UpdateAssetGroupResponseExceptionsInner   {
   
+  private String assetGroupId;
   private Integer code;
   private String message;
-  private String assetGroupId;
 
   public UpdateAssetGroupResponseExceptionsInner () {
 
   }
 
-  public UpdateAssetGroupResponseExceptionsInner (Integer code, String message, String assetGroupId) {
+  public UpdateAssetGroupResponseExceptionsInner (String assetGroupId, Integer code, String message) {
+    this.assetGroupId = assetGroupId;
     this.code = code;
     this.message = message;
+  }
+
+    
+  @JsonProperty("asset_group_id")
+  public String getAssetGroupId() {
+    return assetGroupId;
+  }
+  public void setAssetGroupId(String assetGroupId) {
     this.assetGroupId = assetGroupId;
   }
 
@@ -39,15 +48,6 @@ public class UpdateAssetGroupResponseExceptionsInner   {
     this.message = message;
   }
 
-    
-  @JsonProperty("asset_group_id")
-  public String getAssetGroupId() {
-    return assetGroupId;
-  }
-  public void setAssetGroupId(String assetGroupId) {
-    this.assetGroupId = assetGroupId;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -58,14 +58,14 @@ public class UpdateAssetGroupResponseExceptionsInner   {
       return false;
     }
     UpdateAssetGroupResponseExceptionsInner updateAssetGroupResponseExceptionsInner = (UpdateAssetGroupResponseExceptionsInner) o;
-    return Objects.equals(code, updateAssetGroupResponseExceptionsInner.code) &&
-        Objects.equals(message, updateAssetGroupResponseExceptionsInner.message) &&
-        Objects.equals(assetGroupId, updateAssetGroupResponseExceptionsInner.assetGroupId);
+    return Objects.equals(assetGroupId, updateAssetGroupResponseExceptionsInner.assetGroupId) &&
+        Objects.equals(code, updateAssetGroupResponseExceptionsInner.code) &&
+        Objects.equals(message, updateAssetGroupResponseExceptionsInner.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message, assetGroupId);
+    return Objects.hash(assetGroupId, code, message);
   }
 
   @Override
@@ -73,9 +73,9 @@ public class UpdateAssetGroupResponseExceptionsInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateAssetGroupResponseExceptionsInner {\n");
     
+    sb.append("    assetGroupId: ").append(toIndentedString(assetGroupId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    assetGroupId: ").append(toIndentedString(assetGroupId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

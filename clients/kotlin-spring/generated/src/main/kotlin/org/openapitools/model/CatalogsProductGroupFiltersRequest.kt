@@ -2,9 +2,9 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
+import org.openapitools.model.AllOf
+import org.openapitools.model.AnyOf
 import org.openapitools.model.CatalogsProductGroupFilterKeys
-import org.openapitools.model.CatalogsProductGroupFiltersRequestAnyOf
-import org.openapitools.model.CatalogsProductGroupFiltersRequestAnyOf1
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email

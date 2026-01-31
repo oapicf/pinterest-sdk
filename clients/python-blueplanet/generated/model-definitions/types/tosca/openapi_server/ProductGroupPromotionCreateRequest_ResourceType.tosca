@@ -1,0 +1,43 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ProductGroupPromotionCreateRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ProductGroupPromotionCreateRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ProductGroupPromotion = openapi_server.resourceTypes.ProductGroupPromotion
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  ProductGroupPromotionCreateRequest {
+    title = ProductGroupPromotionCreateRequest
+    description = ProductGroupPromotionCreateRequest
+    derivedFrom = Root
+    properties {
+        ad_group_id {
+          type =  string
+          description = "ID of the Ad Group the Product Group Promotion belongs to."
+          optional = true
+        }
+        product_group_promotion {
+          type = array
+          items.type = ProductGroupPromotion
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ProductGroupPromotionCreateRequest {
+    title = ProductGroupPromotionCreateRequest
+    description = ProductGroupPromotionCreateRequest
+    implements = openapi_server.resourceTypes.ProductGroupPromotionCreateRequest
+
+  }
+}

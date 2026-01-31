@@ -1,0 +1,71 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsProductGroupsUpdateRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsProductGroupsUpdateRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsCreativeAssetsProductGroupFilters = openapi_server.resourceTypes.CatalogsCreativeAssetsProductGroupFilters
+  CatalogsLocale = openapi_server.resourceTypes.CatalogsLocale
+  CatalogsProductGroupUpdateRequest = openapi_server.resourceTypes.CatalogsProductGroupUpdateRequest
+  CatalogsVerticalProductGroupUpdateRequest = openapi_server.resourceTypes.CatalogsVerticalProductGroupUpdateRequest
+  Country = openapi_server.resourceTypes.Country
+}
+resourceTypes {
+
+  CatalogsProductGroupsUpdateRequest {
+    title = CatalogsProductGroupsUpdateRequest
+    description = CatalogsProductGroupsUpdateRequest
+    derivedFrom = Root
+    properties {
+        description {
+          type =  string
+          description = ""
+          optional = false
+        }
+        filters {
+          type = CatalogsCreativeAssetsProductGroupFilters
+          description = ""
+          optional = false
+        }
+        is_featured {
+          type =  boolean
+          description = "boolean indicator of whether the product group is being featured or not"
+          optional = false
+        }
+        name {
+          type =  string
+          description = ""
+          optional = false
+        }
+        catalog_type {
+          type =  string
+          description = ""
+          enum = ["CREATIVE_ASSETS"]
+          optional = false
+        }
+        country {
+          type = Country
+          description = ""
+          optional = false
+        }
+        locale {
+          type = CatalogsLocale
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsProductGroupsUpdateRequest {
+    title = CatalogsProductGroupsUpdateRequest
+    description = CatalogsProductGroupsUpdateRequest
+    implements = openapi_server.resourceTypes.CatalogsProductGroupsUpdateRequest
+
+  }
+}

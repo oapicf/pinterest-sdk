@@ -21,17 +21,16 @@ import io.kotlintest.specs.ShouldSpec
 import org.openapitools.client.models.ConversionTagCommon
 import org.openapitools.client.models.ConversionTagConfigs
 import org.openapitools.client.models.EnhancedMatchStatusType
-import org.openapitools.client.models.EntityStatus
 
 class ConversionTagCommonTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of ConversionTagCommon
         //val modelInstance = ConversionTagCommon()
 
-        // to test the property `adAccountId` - Ad account ID.
-        should("test adAccountId") {
+        // to test the property `name` - Conversion tag name.
+        should("test name") {
             // uncomment below to test the property
-            //modelInstance.adAccountId shouldBe ("TODO")
+            //modelInstance.name shouldBe ("TODO")
         }
 
         // to test the property `codeSnippet` - Tag code snippet.
@@ -40,7 +39,13 @@ class ConversionTagCommonTest : ShouldSpec() {
             //modelInstance.codeSnippet shouldBe ("TODO")
         }
 
-        // to test the property `enhancedMatchStatus`
+        // to test the property `configs`
+        should("test configs") {
+            // uncomment below to test the property
+            //modelInstance.configs shouldBe ("TODO")
+        }
+
+        // to test the property `enhancedMatchStatus` - The enhanced match status of the tag
         should("test enhancedMatchStatus") {
             // uncomment below to test the property
             //modelInstance.enhancedMatchStatus shouldBe ("TODO")
@@ -58,28 +63,10 @@ class ConversionTagCommonTest : ShouldSpec() {
             //modelInstance.lastFiredTimeMs shouldBe ("TODO")
         }
 
-        // to test the property `name` - Conversion tag name.
-        should("test name") {
-            // uncomment below to test the property
-            //modelInstance.name shouldBe ("TODO")
-        }
-
-        // to test the property `status`
-        should("test status") {
-            // uncomment below to test the property
-            //modelInstance.status shouldBe ("TODO")
-        }
-
         // to test the property `version` - Version number.
         should("test version") {
             // uncomment below to test the property
             //modelInstance.version shouldBe ("TODO")
-        }
-
-        // to test the property `configs`
-        should("test configs") {
-            // uncomment below to test the property
-            //modelInstance.configs shouldBe ("TODO")
         }
 
     }

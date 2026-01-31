@@ -9,7 +9,7 @@ test_that("BulkDownloadCreate", {
   # tests for BulkDownloadCreate
   # base path: https://api.pinterest.com/v5
   # Get advertiser entities in bulk
-  # Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, and/or keywords; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+  # Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
   # @param ad_account_id character Unique identifier of an ad account.
   # @param bulk_download_request BulkDownloadRequest Parameters to get ad entities in bulk
   # @return [BulkDownloadResponse]
@@ -36,7 +36,7 @@ test_that("BulkUpsertCreate", {
   # tests for BulkUpsertCreate
   # base path: https://api.pinterest.com/v5
   # Create/update ad entities in bulk
-  # Either create or update any combination of campaigns, ad groups, product groups, ads, or keywords. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
+  # Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
   # @param ad_account_id character Unique identifier of an ad account.
   # @param bulk_upsert_request BulkUpsertRequest Parameters to get create/update ad entities in bulk
   # @return [BulkUpsertResponse]

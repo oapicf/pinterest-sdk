@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server DeleteInvitesResultsResponseArrayItemsInnerException"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a DeleteInvitesResultsResponseArrayItemsInnerException"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  DeleteInvitesResultsResponseArrayItemsInnerException {
+    title = DeleteInvitesResultsResponseArrayItemsInnerException
+    description = DeleteInvitesResultsResponseArrayItemsInnerException
+    derivedFrom = Root
+    properties {
+        invite_id {
+          type =  string
+          description = "Unique identifier of an invite."
+          optional = false
+        }
+        message {
+          type =  string
+          description = "Error message associated with the error in performing the action on the invite/request."
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  DeleteInvitesResultsResponseArrayItemsInnerException {
+    title = DeleteInvitesResultsResponseArrayItemsInnerException
+    description = DeleteInvitesResultsResponseArrayItemsInnerException
+    implements = openapi_server.resourceTypes.DeleteInvitesResultsResponseArrayItemsInnerException
+
+  }
+}

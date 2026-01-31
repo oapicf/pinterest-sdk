@@ -10,24 +10,15 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CatalogsProductGroupMultipleStringListCriteria   {
   
-  private List<List<String>> values = new ArrayList<>();
   private Boolean negated = false;
+  private List<List<String>> values = new ArrayList<>();
 
   public CatalogsProductGroupMultipleStringListCriteria () {
 
   }
 
-  public CatalogsProductGroupMultipleStringListCriteria (List<List<String>> values, Boolean negated) {
-    this.values = values;
+  public CatalogsProductGroupMultipleStringListCriteria (Boolean negated, List<List<String>> values) {
     this.negated = negated;
-  }
-
-    
-  @JsonProperty("values")
-  public List<List<String>> getValues() {
-    return values;
-  }
-  public void setValues(List<List<String>> values) {
     this.values = values;
   }
 
@@ -40,6 +31,15 @@ public class CatalogsProductGroupMultipleStringListCriteria   {
     this.negated = negated;
   }
 
+    
+  @JsonProperty("values")
+  public List<List<String>> getValues() {
+    return values;
+  }
+  public void setValues(List<List<String>> values) {
+    this.values = values;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -50,13 +50,13 @@ public class CatalogsProductGroupMultipleStringListCriteria   {
       return false;
     }
     CatalogsProductGroupMultipleStringListCriteria catalogsProductGroupMultipleStringListCriteria = (CatalogsProductGroupMultipleStringListCriteria) o;
-    return Objects.equals(values, catalogsProductGroupMultipleStringListCriteria.values) &&
-        Objects.equals(negated, catalogsProductGroupMultipleStringListCriteria.negated);
+    return Objects.equals(negated, catalogsProductGroupMultipleStringListCriteria.negated) &&
+        Objects.equals(values, catalogsProductGroupMultipleStringListCriteria.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, negated);
+    return Objects.hash(negated, values);
   }
 
   @Override
@@ -64,8 +64,8 @@ public class CatalogsProductGroupMultipleStringListCriteria   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupMultipleStringListCriteria {\n");
     
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

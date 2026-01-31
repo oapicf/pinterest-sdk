@@ -22,15 +22,15 @@ catalogs_report_feed_ingestion_filter_t* instantiate_catalogs_report_feed_ingest
   catalogs_report_feed_ingestion_filter_t* catalogs_report_feed_ingestion_filter = NULL;
   if (include_optional) {
     catalogs_report_feed_ingestion_filter = catalogs_report_feed_ingestion_filter_create(
-      pinterest_rest_api_catalogs_report_feed_ingestion_filter_REPORTTYPE_FEED_INGESTION_ISSUES,
       "a",
-      "a"
+      "a",
+      pinterest_rest_api_catalogs_report_feed_ingestion_filter_REPORTTYPE_FEED_INGESTION_ISSUES
     );
   } else {
     catalogs_report_feed_ingestion_filter = catalogs_report_feed_ingestion_filter_create(
-      pinterest_rest_api_catalogs_report_feed_ingestion_filter_REPORTTYPE_FEED_INGESTION_ISSUES,
       "a",
-      "a"
+      "a",
+      pinterest_rest_api_catalogs_report_feed_ingestion_filter_REPORTTYPE_FEED_INGESTION_ISSUES
     );
   }
 

@@ -19,6 +19,9 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
+import org.openapitools.client.models.BrandAccountsCreate200Response
+import org.openapitools.client.models.BrandAccountsCreateRequest
+import org.openapitools.client.models.BrandAccountsUpdateRequest
 import org.openapitools.client.models.DeletePartnersRequest
 import org.openapitools.client.models.DeletePartnersResponse
 import org.openapitools.client.models.DeletedMembersResponse
@@ -29,6 +32,7 @@ import org.openapitools.client.models.GetBusinessPartners200Response
 import org.openapitools.client.models.MemberBusinessRole
 import org.openapitools.client.models.MembersToDeleteBody
 import org.openapitools.client.models.PartnerType
+import org.openapitools.client.models.SystemUserUpdateRequest
 import org.openapitools.client.models.UpdateMemberBusinessRoleBody
 import org.openapitools.client.models.UpdateMemberResultsResponseArray
 
@@ -54,6 +58,163 @@ open class BusinessAccessRelationshipsApi(basePath: kotlin.String = defaultBaseP
         val defaultBasePath: String by lazy {
             System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
         }
+    }
+
+    /**
+     * POST /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts
+     * Create a Brand Account
+     * Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+     * @param businessHierarchyId business hierarchy node id
+     * @param brandAccountsCreateRequest 
+     * @return BrandAccountsCreate200Response
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun brandAccountsCreate(businessHierarchyId: kotlin.String, brandAccountsCreateRequest: BrandAccountsCreateRequest) : BrandAccountsCreate200Response {
+        val localVarResponse = brandAccountsCreateWithHttpInfo(businessHierarchyId = businessHierarchyId, brandAccountsCreateRequest = brandAccountsCreateRequest)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as BrandAccountsCreate200Response
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts
+     * Create a Brand Account
+     * Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+     * @param businessHierarchyId business hierarchy node id
+     * @param brandAccountsCreateRequest 
+     * @return ApiResponse<BrandAccountsCreate200Response?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun brandAccountsCreateWithHttpInfo(businessHierarchyId: kotlin.String, brandAccountsCreateRequest: BrandAccountsCreateRequest) : ApiResponse<BrandAccountsCreate200Response?> {
+        val localVariableConfig = brandAccountsCreateRequestConfig(businessHierarchyId = businessHierarchyId, brandAccountsCreateRequest = brandAccountsCreateRequest)
+
+        return request<BrandAccountsCreateRequest, BrandAccountsCreate200Response>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation brandAccountsCreate
+     *
+     * @param businessHierarchyId business hierarchy node id
+     * @param brandAccountsCreateRequest 
+     * @return RequestConfig
+     */
+    fun brandAccountsCreateRequestConfig(businessHierarchyId: kotlin.String, brandAccountsCreateRequest: BrandAccountsCreateRequest) : RequestConfig<BrandAccountsCreateRequest> {
+        val localVariableBody = brandAccountsCreateRequest
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts".replace("{"+"business_hierarchy_id"+"}", encodeURIComponent(businessHierarchyId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * PATCH /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}
+     * Update a Brand Account
+     * Update an existing Brand Account
+     * @param businessHierarchyId business hierarchy node id
+     * @param brandAccountId Unique identifier of a brand account.
+     * @param brandAccountsUpdateRequest 
+     * @return BrandAccountsCreate200Response
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun brandAccountsUpdate(businessHierarchyId: kotlin.String, brandAccountId: kotlin.String, brandAccountsUpdateRequest: BrandAccountsUpdateRequest) : BrandAccountsCreate200Response {
+        val localVarResponse = brandAccountsUpdateWithHttpInfo(businessHierarchyId = businessHierarchyId, brandAccountId = brandAccountId, brandAccountsUpdateRequest = brandAccountsUpdateRequest)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as BrandAccountsCreate200Response
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * PATCH /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}
+     * Update a Brand Account
+     * Update an existing Brand Account
+     * @param businessHierarchyId business hierarchy node id
+     * @param brandAccountId Unique identifier of a brand account.
+     * @param brandAccountsUpdateRequest 
+     * @return ApiResponse<BrandAccountsCreate200Response?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun brandAccountsUpdateWithHttpInfo(businessHierarchyId: kotlin.String, brandAccountId: kotlin.String, brandAccountsUpdateRequest: BrandAccountsUpdateRequest) : ApiResponse<BrandAccountsCreate200Response?> {
+        val localVariableConfig = brandAccountsUpdateRequestConfig(businessHierarchyId = businessHierarchyId, brandAccountId = brandAccountId, brandAccountsUpdateRequest = brandAccountsUpdateRequest)
+
+        return request<BrandAccountsUpdateRequest, BrandAccountsCreate200Response>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation brandAccountsUpdate
+     *
+     * @param businessHierarchyId business hierarchy node id
+     * @param brandAccountId Unique identifier of a brand account.
+     * @param brandAccountsUpdateRequest 
+     * @return RequestConfig
+     */
+    fun brandAccountsUpdateRequestConfig(businessHierarchyId: kotlin.String, brandAccountId: kotlin.String, brandAccountsUpdateRequest: BrandAccountsUpdateRequest) : RequestConfig<BrandAccountsUpdateRequest> {
+        val localVariableBody = brandAccountsUpdateRequest
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.PATCH,
+            path = "/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}".replace("{"+"business_hierarchy_id"+"}", encodeURIComponent(businessHierarchyId.toString())).replace("{"+"brand_account_id"+"}", encodeURIComponent(brandAccountId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
     }
 
     /**
@@ -299,6 +460,7 @@ open class BusinessAccessRelationshipsApi(basePath: kotlin.String = defaultBaseP
      * Get business members
      * Get all members of the specified business. The return response will include the member&#39;s business_role and assets they have access to if assets_summary&#x3D;TRUE
      * @param businessId Unique identifier of the requesting business.
+     * @param fetchSystemUsers Fetches system users if True. Fetches regular user employees if False. (optional, default to false)
      * @param assetsSummary Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional, default to false)
      * @param businessRoles A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. (optional)
      * @param memberIds A list of business members ids separated by comma. (optional)
@@ -314,8 +476,8 @@ open class BusinessAccessRelationshipsApi(basePath: kotlin.String = defaultBaseP
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getBusinessMembers(businessId: kotlin.String, assetsSummary: kotlin.Boolean? = false, businessRoles: kotlin.collections.List<MemberBusinessRole>? = null, memberIds: kotlin.String? = null, startIndex: kotlin.Int? = 0, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : GetBusinessMembers200Response {
-        val localVarResponse = getBusinessMembersWithHttpInfo(businessId = businessId, assetsSummary = assetsSummary, businessRoles = businessRoles, memberIds = memberIds, startIndex = startIndex, bookmark = bookmark, pageSize = pageSize)
+    fun getBusinessMembers(businessId: kotlin.String, fetchSystemUsers: kotlin.Boolean? = false, assetsSummary: kotlin.Boolean? = false, businessRoles: kotlin.collections.List<MemberBusinessRole>? = null, memberIds: kotlin.String? = null, startIndex: kotlin.Int? = 0, bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25) : GetBusinessMembers200Response {
+        val localVarResponse = getBusinessMembersWithHttpInfo(businessId = businessId, fetchSystemUsers = fetchSystemUsers, assetsSummary = assetsSummary, businessRoles = businessRoles, memberIds = memberIds, startIndex = startIndex, bookmark = bookmark, pageSize = pageSize)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as GetBusinessMembers200Response
@@ -337,6 +499,7 @@ open class BusinessAccessRelationshipsApi(basePath: kotlin.String = defaultBaseP
      * Get business members
      * Get all members of the specified business. The return response will include the member&#39;s business_role and assets they have access to if assets_summary&#x3D;TRUE
      * @param businessId Unique identifier of the requesting business.
+     * @param fetchSystemUsers Fetches system users if True. Fetches regular user employees if False. (optional, default to false)
      * @param assetsSummary Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional, default to false)
      * @param businessRoles A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. (optional)
      * @param memberIds A list of business members ids separated by comma. (optional)
@@ -349,8 +512,8 @@ open class BusinessAccessRelationshipsApi(basePath: kotlin.String = defaultBaseP
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun getBusinessMembersWithHttpInfo(businessId: kotlin.String, assetsSummary: kotlin.Boolean?, businessRoles: kotlin.collections.List<MemberBusinessRole>?, memberIds: kotlin.String?, startIndex: kotlin.Int?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<GetBusinessMembers200Response?> {
-        val localVariableConfig = getBusinessMembersRequestConfig(businessId = businessId, assetsSummary = assetsSummary, businessRoles = businessRoles, memberIds = memberIds, startIndex = startIndex, bookmark = bookmark, pageSize = pageSize)
+    fun getBusinessMembersWithHttpInfo(businessId: kotlin.String, fetchSystemUsers: kotlin.Boolean?, assetsSummary: kotlin.Boolean?, businessRoles: kotlin.collections.List<MemberBusinessRole>?, memberIds: kotlin.String?, startIndex: kotlin.Int?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : ApiResponse<GetBusinessMembers200Response?> {
+        val localVariableConfig = getBusinessMembersRequestConfig(businessId = businessId, fetchSystemUsers = fetchSystemUsers, assetsSummary = assetsSummary, businessRoles = businessRoles, memberIds = memberIds, startIndex = startIndex, bookmark = bookmark, pageSize = pageSize)
 
         return request<Unit, GetBusinessMembers200Response>(
             localVariableConfig
@@ -361,6 +524,7 @@ open class BusinessAccessRelationshipsApi(basePath: kotlin.String = defaultBaseP
      * To obtain the request config of the operation getBusinessMembers
      *
      * @param businessId Unique identifier of the requesting business.
+     * @param fetchSystemUsers Fetches system users if True. Fetches regular user employees if False. (optional, default to false)
      * @param assetsSummary Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional, default to false)
      * @param businessRoles A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. (optional)
      * @param memberIds A list of business members ids separated by comma. (optional)
@@ -369,10 +533,13 @@ open class BusinessAccessRelationshipsApi(basePath: kotlin.String = defaultBaseP
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @return RequestConfig
      */
-    fun getBusinessMembersRequestConfig(businessId: kotlin.String, assetsSummary: kotlin.Boolean?, businessRoles: kotlin.collections.List<MemberBusinessRole>?, memberIds: kotlin.String?, startIndex: kotlin.Int?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
+    fun getBusinessMembersRequestConfig(businessId: kotlin.String, fetchSystemUsers: kotlin.Boolean?, assetsSummary: kotlin.Boolean?, businessRoles: kotlin.collections.List<MemberBusinessRole>?, memberIds: kotlin.String?, startIndex: kotlin.Int?, bookmark: kotlin.String?, pageSize: kotlin.Int?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
+                if (fetchSystemUsers != null) {
+                    put("fetch_system_users", listOf(fetchSystemUsers.toString()))
+                }
                 if (assetsSummary != null) {
                     put("assets_summary", listOf(assetsSummary.toString()))
                 }
@@ -509,6 +676,84 @@ open class BusinessAccessRelationshipsApi(basePath: kotlin.String = defaultBaseP
         return RequestConfig(
             method = RequestMethod.GET,
             path = "/businesses/{business_id}/partners".replace("{"+"business_id"+"}", encodeURIComponent(businessId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * PATCH /businesses/{business_id}/system_users/{system_user_id}
+     * Update a system user information.
+     * Update a system user information such as name.
+     * @param businessId Unique identifier of the requesting business.
+     * @param systemUserId Unique identifier of a system user.
+     * @param systemUserUpdateRequest 
+     * @return void
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun systemUserUpdate(businessId: kotlin.String, systemUserId: kotlin.String, systemUserUpdateRequest: SystemUserUpdateRequest) : Unit {
+        val localVarResponse = systemUserUpdateWithHttpInfo(businessId = businessId, systemUserId = systemUserId, systemUserUpdateRequest = systemUserUpdateRequest)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> Unit
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * PATCH /businesses/{business_id}/system_users/{system_user_id}
+     * Update a system user information.
+     * Update a system user information such as name.
+     * @param businessId Unique identifier of the requesting business.
+     * @param systemUserId Unique identifier of a system user.
+     * @param systemUserUpdateRequest 
+     * @return ApiResponse<Unit?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Throws(IllegalStateException::class, IOException::class)
+    fun systemUserUpdateWithHttpInfo(businessId: kotlin.String, systemUserId: kotlin.String, systemUserUpdateRequest: SystemUserUpdateRequest) : ApiResponse<Unit?> {
+        val localVariableConfig = systemUserUpdateRequestConfig(businessId = businessId, systemUserId = systemUserId, systemUserUpdateRequest = systemUserUpdateRequest)
+
+        return request<SystemUserUpdateRequest, Unit>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation systemUserUpdate
+     *
+     * @param businessId Unique identifier of the requesting business.
+     * @param systemUserId Unique identifier of a system user.
+     * @param systemUserUpdateRequest 
+     * @return RequestConfig
+     */
+    fun systemUserUpdateRequestConfig(businessId: kotlin.String, systemUserId: kotlin.String, systemUserUpdateRequest: SystemUserUpdateRequest) : RequestConfig<SystemUserUpdateRequest> {
+        val localVariableBody = systemUserUpdateRequest
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.PATCH,
+            path = "/businesses/{business_id}/system_users/{system_user_id}".replace("{"+"business_id"+"}", encodeURIComponent(businessId.toString())).replace("{"+"system_user_id"+"}", encodeURIComponent(systemUserId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,

@@ -5,7 +5,7 @@
  *
  * Pinterest's REST API
  *
- * API version: 5.14.0
+ * API version: 5.23.0
  * Contact: blah+oapicf@cliffano.com
  */
 
@@ -16,22 +16,22 @@ package openapi
 
 type LeadsExportCreateRequest struct {
 
-	// Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
-	StartDate string `json:"start_date" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
+	// ID for the ad collecting leads
+	AdId string `json:"ad_id" validate:"regexp=^\\\\d+$"`
 
 	// Export leads collected on and before end date (UTC). Format: YYYY-MM-DD
 	EndDate string `json:"end_date" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
 
-	// ID for the ad collecting leads
-	AdId string `json:"ad_id" validate:"regexp=^\\\\d+$"`
+	// Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
+	StartDate string `json:"start_date" validate:"regexp=^(\\\\d{4})-(\\\\d{2})-(\\\\d{2})$"`
 }
 
 // AssertLeadsExportCreateRequestRequired checks if the required fields are not zero-ed
 func AssertLeadsExportCreateRequestRequired(obj LeadsExportCreateRequest) error {
 	elements := map[string]interface{}{
-		"start_date": obj.StartDate,
-		"end_date": obj.EndDate,
 		"ad_id": obj.AdId,
+		"end_date": obj.EndDate,
+		"start_date": obj.StartDate,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

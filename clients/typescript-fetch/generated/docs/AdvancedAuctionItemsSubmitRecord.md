@@ -8,10 +8,11 @@ Object describing an item bid option operation
 Name | Type
 ------------ | -------------
 `operation` | [AdvancedAuctionOperation](AdvancedAuctionOperation.md)
-`itemId` | string
 `country` | [Country](Country.md)
+`itemId` | string
 `language` | [Language](Language.md)
 `bidOptions` | [AdvancedAuctionBidOptions](AdvancedAuctionBidOptions.md)
+`errors` | [Array&lt;AdvancedAuctionOperationError&gt;](AdvancedAuctionOperationError.md)
 `updateMask` | [Array&lt;UpdateMaskBidOptionField&gt;](UpdateMaskBidOptionField.md)
 
 ## Example
@@ -22,10 +23,11 @@ import type { AdvancedAuctionItemsSubmitRecord } from ''
 // TODO: Update the object below with actual values
 const example = {
   "operation": null,
-  "itemId": DS0294-M,
   "country": null,
+  "itemId": DS0294-M,
   "language": null,
   "bidOptions": null,
+  "errors": null,
   "updateMask": [BID, APP_TYPE_BID_MULTIPLIER_SET],
 } satisfies AdvancedAuctionItemsSubmitRecord
 

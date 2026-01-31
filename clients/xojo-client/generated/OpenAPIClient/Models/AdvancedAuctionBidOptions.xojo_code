@@ -2,15 +2,15 @@
 Protected Class AdvancedAuctionBidOptions
 
 	#tag Property, Flags = &h0
-		#tag Note
-			Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.
-		#tag EndNote
-		bid_in_micro_currency As Xoson.O.OptionalInt64
+		app_type_multipliers As Xoson.O.OptionalAppTypeMultipliers
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		app_type_multipliers As Xoson.O.OptionalAppTypeMultipliers
+		#tag Note
+			Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.
+		#tag EndNote
+		bid_in_micro_currency As Xoson.O.OptionalInt64
 	#tag EndProperty
 
 
@@ -56,19 +56,19 @@ Protected Class AdvancedAuctionBidOptions
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="bid_in_micro_currency"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Int64"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="app_type_multipliers"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="AppTypeMultipliers"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="bid_in_micro_currency"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Int64"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

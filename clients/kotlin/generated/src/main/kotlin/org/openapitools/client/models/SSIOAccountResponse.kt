@@ -24,38 +24,38 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param eligible Advertiser eligible to create order lines
- * @param canEdit Advertiser eligible to update order lines
  * @param billtoInfos An array of Salesforce account information that includes address, io terms, etc.
+ * @param canEdit Advertiser eligible to update order lines
  * @param currency 
- * @param pmpNames 
+ * @param eligible Advertiser eligible to create order lines
  * @param error Error indicator from Salesforce which could be \"No Error\"
+ * @param pmpNames 
  */
 
 
 data class SSIOAccountResponse (
 
-    /* Advertiser eligible to create order lines */
-    @Json(name = "eligible")
-    val eligible: kotlin.Boolean? = null,
+    /* An array of Salesforce account information that includes address, io terms, etc. */
+    @Json(name = "billto_infos")
+    val billtoInfos: kotlin.collections.List<SSIOAccountItem>? = null,
 
     /* Advertiser eligible to update order lines */
     @Json(name = "can_edit")
     val canEdit: kotlin.Boolean? = null,
 
-    /* An array of Salesforce account information that includes address, io terms, etc. */
-    @Json(name = "billto_infos")
-    val billtoInfos: kotlin.collections.List<SSIOAccountItem>? = null,
-
     @Json(name = "currency")
     val currency: kotlin.String? = null,
 
-    @Json(name = "pmp_names")
-    val pmpNames: kotlin.collections.List<SSIOAccountPMPName>? = null,
+    /* Advertiser eligible to create order lines */
+    @Json(name = "eligible")
+    val eligible: kotlin.Boolean? = null,
 
     /* Error indicator from Salesforce which could be \"No Error\" */
     @Json(name = "error")
-    val error: kotlin.String? = null
+    val error: kotlin.String? = null,
+
+    @Json(name = "pmp_names")
+    val pmpNames: kotlin.collections.List<SSIOAccountPMPName>? = null
 
 ) {
 

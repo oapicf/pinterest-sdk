@@ -16,7 +16,7 @@ import javax.validation.Valid;
 /**
  * Catalogs Hotel Feed object
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-31T04:53:01.455950794Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsHotelFeed   {
   @JsonProperty("created_at")
@@ -36,16 +36,11 @@ public class CatalogsHotelFeed   {
 
   private OffsetDateTime updatedAt;
 
-  @JsonProperty("name")
+  @JsonProperty("catalog_id")
   @NotNull
+@Pattern(regexp="^\\d+$")
 
-  private String name;
-
-  @JsonProperty("format")
-  @NotNull
-@Valid
-
-  private CatalogsFormat format;
+  private String catalogId;
 
   @JsonProperty("catalog_type")
   @NotNull
@@ -59,10 +54,32 @@ public class CatalogsHotelFeed   {
 
   private CatalogsFeedCredentials credentials;
 
+  @JsonProperty("default_currency")
+  @NotNull
+@Valid
+
+  private NullableCurrency defaultCurrency;
+
+  @JsonProperty("default_locale")
+  @NotNull
+
+  private String defaultLocale;
+
+  @JsonProperty("format")
+  @NotNull
+@Valid
+
+  private CatalogsFormat format;
+
   @JsonProperty("location")
   @NotNull
 
   private String location;
+
+  @JsonProperty("name")
+  @NotNull
+
+  private String name;
 
   @JsonProperty("preferred_processing_schedule")
   @NotNull
@@ -75,23 +92,6 @@ public class CatalogsHotelFeed   {
 @Valid
 
   private CatalogsStatus status;
-
-  @JsonProperty("default_currency")
-  @NotNull
-@Valid
-
-  private NullableCurrency defaultCurrency;
-
-  @JsonProperty("default_locale")
-  @NotNull
-
-  private String defaultLocale;
-
-  @JsonProperty("catalog_id")
-  @NotNull
-@Pattern(regexp="^\\d+$")
-
-  private String catalogId;
 
   public CatalogsHotelFeed createdAt(OffsetDateTime createdAt) {
     this.createdAt = createdAt;
@@ -144,38 +144,21 @@ public class CatalogsHotelFeed   {
     this.updatedAt = updatedAt;
   }
 
-  public CatalogsHotelFeed name(String name) {
-    this.name = name;
+  public CatalogsHotelFeed catalogId(String catalogId) {
+    this.catalogId = catalogId;
     return this;
   }
 
    /**
-   * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
-   * @return name
+   * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
+   * @return catalogId
   **/
-  public String getName() {
-    return name;
+  public String getCatalogId() {
+    return catalogId;
   }
 
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public CatalogsHotelFeed format(CatalogsFormat format) {
-    this.format = format;
-    return this;
-  }
-
-   /**
-   * Get format
-   * @return format
-  **/
-  public CatalogsFormat getFormat() {
-    return format;
-  }
-
-  public void setFormat(CatalogsFormat format) {
-    this.format = format;
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
   }
 
   public CatalogsHotelFeed catalogType(CatalogsType catalogType) {
@@ -212,6 +195,57 @@ public class CatalogsHotelFeed   {
     this.credentials = credentials;
   }
 
+  public CatalogsHotelFeed defaultCurrency(NullableCurrency defaultCurrency) {
+    this.defaultCurrency = defaultCurrency;
+    return this;
+  }
+
+   /**
+   * Get defaultCurrency
+   * @return defaultCurrency
+  **/
+  public NullableCurrency getDefaultCurrency() {
+    return defaultCurrency;
+  }
+
+  public void setDefaultCurrency(NullableCurrency defaultCurrency) {
+    this.defaultCurrency = defaultCurrency;
+  }
+
+  public CatalogsHotelFeed defaultLocale(String defaultLocale) {
+    this.defaultLocale = defaultLocale;
+    return this;
+  }
+
+   /**
+   * The locale used within a feed for product descriptions.
+   * @return defaultLocale
+  **/
+  public String getDefaultLocale() {
+    return defaultLocale;
+  }
+
+  public void setDefaultLocale(String defaultLocale) {
+    this.defaultLocale = defaultLocale;
+  }
+
+  public CatalogsHotelFeed format(CatalogsFormat format) {
+    this.format = format;
+    return this;
+  }
+
+   /**
+   * Get format
+   * @return format
+  **/
+  public CatalogsFormat getFormat() {
+    return format;
+  }
+
+  public void setFormat(CatalogsFormat format) {
+    this.format = format;
+  }
+
   public CatalogsHotelFeed location(String location) {
     this.location = location;
     return this;
@@ -227,6 +261,23 @@ public class CatalogsHotelFeed   {
 
   public void setLocation(String location) {
     this.location = location;
+  }
+
+  public CatalogsHotelFeed name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+   * @return name
+  **/
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   public CatalogsHotelFeed preferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
@@ -263,57 +314,6 @@ public class CatalogsHotelFeed   {
     this.status = status;
   }
 
-  public CatalogsHotelFeed defaultCurrency(NullableCurrency defaultCurrency) {
-    this.defaultCurrency = defaultCurrency;
-    return this;
-  }
-
-   /**
-   * Get defaultCurrency
-   * @return defaultCurrency
-  **/
-  public NullableCurrency getDefaultCurrency() {
-    return defaultCurrency;
-  }
-
-  public void setDefaultCurrency(NullableCurrency defaultCurrency) {
-    this.defaultCurrency = defaultCurrency;
-  }
-
-  public CatalogsHotelFeed defaultLocale(String defaultLocale) {
-    this.defaultLocale = defaultLocale;
-    return this;
-  }
-
-   /**
-   * The locale used within a feed for product descriptions.
-   * @return defaultLocale
-  **/
-  public String getDefaultLocale() {
-    return defaultLocale;
-  }
-
-  public void setDefaultLocale(String defaultLocale) {
-    this.defaultLocale = defaultLocale;
-  }
-
-  public CatalogsHotelFeed catalogId(String catalogId) {
-    this.catalogId = catalogId;
-    return this;
-  }
-
-   /**
-   * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
-   * @return catalogId
-  **/
-  public String getCatalogId() {
-    return catalogId;
-  }
-
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -327,21 +327,21 @@ public class CatalogsHotelFeed   {
     return Objects.equals(createdAt, catalogsHotelFeed.createdAt) &&
         Objects.equals(id, catalogsHotelFeed.id) &&
         Objects.equals(updatedAt, catalogsHotelFeed.updatedAt) &&
-        Objects.equals(name, catalogsHotelFeed.name) &&
-        Objects.equals(format, catalogsHotelFeed.format) &&
+        Objects.equals(catalogId, catalogsHotelFeed.catalogId) &&
         Objects.equals(catalogType, catalogsHotelFeed.catalogType) &&
         Objects.equals(credentials, catalogsHotelFeed.credentials) &&
-        Objects.equals(location, catalogsHotelFeed.location) &&
-        Objects.equals(preferredProcessingSchedule, catalogsHotelFeed.preferredProcessingSchedule) &&
-        Objects.equals(status, catalogsHotelFeed.status) &&
         Objects.equals(defaultCurrency, catalogsHotelFeed.defaultCurrency) &&
         Objects.equals(defaultLocale, catalogsHotelFeed.defaultLocale) &&
-        Objects.equals(catalogId, catalogsHotelFeed.catalogId);
+        Objects.equals(format, catalogsHotelFeed.format) &&
+        Objects.equals(location, catalogsHotelFeed.location) &&
+        Objects.equals(name, catalogsHotelFeed.name) &&
+        Objects.equals(preferredProcessingSchedule, catalogsHotelFeed.preferredProcessingSchedule) &&
+        Objects.equals(status, catalogsHotelFeed.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, id, updatedAt, name, format, catalogType, credentials, location, preferredProcessingSchedule, status, defaultCurrency, defaultLocale, catalogId);
+    return Objects.hash(createdAt, id, updatedAt, catalogId, catalogType, credentials, defaultCurrency, defaultLocale, format, location, name, preferredProcessingSchedule, status);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -353,16 +353,16 @@ public class CatalogsHotelFeed   {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
-    sb.append("    location: ").append(toIndentedString(location)).append("\n");
-    sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
     sb.append("    defaultLocale: ").append(toIndentedString(defaultLocale)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

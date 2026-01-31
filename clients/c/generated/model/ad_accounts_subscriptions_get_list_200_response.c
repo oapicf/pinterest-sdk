@@ -6,27 +6,27 @@
 
 
 static ad_accounts_subscriptions_get_list_200_response_t *ad_accounts_subscriptions_get_list_200_response_create_internal(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     ad_accounts_subscriptions_get_list_200_response_t *ad_accounts_subscriptions_get_list_200_response_local_var = malloc(sizeof(ad_accounts_subscriptions_get_list_200_response_t));
     if (!ad_accounts_subscriptions_get_list_200_response_local_var) {
         return NULL;
     }
-    ad_accounts_subscriptions_get_list_200_response_local_var->items = items;
     ad_accounts_subscriptions_get_list_200_response_local_var->bookmark = bookmark;
+    ad_accounts_subscriptions_get_list_200_response_local_var->items = items;
 
     ad_accounts_subscriptions_get_list_200_response_local_var->_library_owned = 1;
     return ad_accounts_subscriptions_get_list_200_response_local_var;
 }
 
 __attribute__((deprecated)) ad_accounts_subscriptions_get_list_200_response_t *ad_accounts_subscriptions_get_list_200_response_create(
-    list_t *items,
-    char *bookmark
+    char *bookmark,
+    list_t *items
     ) {
     return ad_accounts_subscriptions_get_list_200_response_create_internal (
-        items,
-        bookmark
+        bookmark,
+        items
         );
 }
 
@@ -39,22 +39,30 @@ void ad_accounts_subscriptions_get_list_200_response_free(ad_accounts_subscripti
         return ;
     }
     listEntry_t *listEntry;
-    if (ad_accounts_subscriptions_get_list_200_response->items) {
-        list_ForEach(listEntry, ad_accounts_subscriptions_get_list_200_response->items) {
-            ad_account_get_subscription_response_free(listEntry->data);
-        }
-        list_freeList(ad_accounts_subscriptions_get_list_200_response->items);
-        ad_accounts_subscriptions_get_list_200_response->items = NULL;
-    }
     if (ad_accounts_subscriptions_get_list_200_response->bookmark) {
         free(ad_accounts_subscriptions_get_list_200_response->bookmark);
         ad_accounts_subscriptions_get_list_200_response->bookmark = NULL;
+    }
+    if (ad_accounts_subscriptions_get_list_200_response->items) {
+        list_ForEach(listEntry, ad_accounts_subscriptions_get_list_200_response->items) {
+            lead_subscription_free(listEntry->data);
+        }
+        list_freeList(ad_accounts_subscriptions_get_list_200_response->items);
+        ad_accounts_subscriptions_get_list_200_response->items = NULL;
     }
     free(ad_accounts_subscriptions_get_list_200_response);
 }
 
 cJSON *ad_accounts_subscriptions_get_list_200_response_convertToJSON(ad_accounts_subscriptions_get_list_200_response_t *ad_accounts_subscriptions_get_list_200_response) {
     cJSON *item = cJSON_CreateObject();
+
+    // ad_accounts_subscriptions_get_list_200_response->bookmark
+    if(ad_accounts_subscriptions_get_list_200_response->bookmark) {
+    if(cJSON_AddStringToObject(item, "bookmark", ad_accounts_subscriptions_get_list_200_response->bookmark) == NULL) {
+    goto fail; //String
+    }
+    }
+
 
     // ad_accounts_subscriptions_get_list_200_response->items
     if (!ad_accounts_subscriptions_get_list_200_response->items) {
@@ -68,19 +76,11 @@ cJSON *ad_accounts_subscriptions_get_list_200_response_convertToJSON(ad_accounts
     listEntry_t *itemsListEntry;
     if (ad_accounts_subscriptions_get_list_200_response->items) {
     list_ForEach(itemsListEntry, ad_accounts_subscriptions_get_list_200_response->items) {
-    cJSON *itemLocal = ad_account_get_subscription_response_convertToJSON(itemsListEntry->data);
+    cJSON *itemLocal = lead_subscription_convertToJSON(itemsListEntry->data);
     if(itemLocal == NULL) {
     goto fail;
     }
     cJSON_AddItemToArray(items, itemLocal);
-    }
-    }
-
-
-    // ad_accounts_subscriptions_get_list_200_response->bookmark
-    if(ad_accounts_subscriptions_get_list_200_response->bookmark) {
-    if(cJSON_AddStringToObject(item, "bookmark", ad_accounts_subscriptions_get_list_200_response->bookmark) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -98,6 +98,18 @@ ad_accounts_subscriptions_get_list_200_response_t *ad_accounts_subscriptions_get
 
     // define the local list for ad_accounts_subscriptions_get_list_200_response->items
     list_t *itemsList = NULL;
+
+    // ad_accounts_subscriptions_get_list_200_response->bookmark
+    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(ad_accounts_subscriptions_get_list_200_responseJSON, "bookmark");
+    if (cJSON_IsNull(bookmark)) {
+        bookmark = NULL;
+    }
+    if (bookmark) { 
+    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
+    {
+    goto end; //String
+    }
+    }
 
     // ad_accounts_subscriptions_get_list_200_response->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(ad_accounts_subscriptions_get_list_200_responseJSON, "items");
@@ -121,27 +133,15 @@ ad_accounts_subscriptions_get_list_200_response_t *ad_accounts_subscriptions_get
         if(!cJSON_IsObject(items_local_nonprimitive)){
             goto end;
         }
-        ad_account_get_subscription_response_t *itemsItem = ad_account_get_subscription_response_parseFromJSON(items_local_nonprimitive);
+        lead_subscription_t *itemsItem = lead_subscription_parseFromJSON(items_local_nonprimitive);
 
         list_addElement(itemsList, itemsItem);
     }
 
-    // ad_accounts_subscriptions_get_list_200_response->bookmark
-    cJSON *bookmark = cJSON_GetObjectItemCaseSensitive(ad_accounts_subscriptions_get_list_200_responseJSON, "bookmark");
-    if (cJSON_IsNull(bookmark)) {
-        bookmark = NULL;
-    }
-    if (bookmark) { 
-    if(!cJSON_IsString(bookmark) && !cJSON_IsNull(bookmark))
-    {
-    goto end; //String
-    }
-    }
-
 
     ad_accounts_subscriptions_get_list_200_response_local_var = ad_accounts_subscriptions_get_list_200_response_create_internal (
-        itemsList,
-        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL
+        bookmark && !cJSON_IsNull(bookmark) ? strdup(bookmark->valuestring) : NULL,
+        itemsList
         );
 
     return ad_accounts_subscriptions_get_list_200_response_local_var;
@@ -149,7 +149,7 @@ end:
     if (itemsList) {
         listEntry_t *listEntry = NULL;
         list_ForEach(listEntry, itemsList) {
-            ad_account_get_subscription_response_free(listEntry->data);
+            lead_subscription_free(listEntry->data);
             listEntry->data = NULL;
         }
         list_freeList(itemsList);

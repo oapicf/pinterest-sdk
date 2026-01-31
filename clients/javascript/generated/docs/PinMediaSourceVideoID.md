@@ -4,12 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sourceType** | **String** |  | 
-**coverImageUrl** | **String** | Cover image url. | [optional] 
-**coverImageContentType** | **String** | Content type for cover image Base64. | [optional] 
+**coverImageContentType** | [**ContentType**](ContentType.md) | Content type for cover image Base64. | [optional] 
 **coverImageData** | **String** | Cover image Base64. | [optional] 
-**mediaId** | **String** |  | 
+**coverImageKeyFrameTime** | **Number** | Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used. | [optional] 
+**coverImageUrl** | **String** | Cover image URL. | [optional] 
 **isStandard** | **Boolean** | Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users. | [optional] [default to true]
+**mediaId** | **String** |  | 
+**sourceType** | **String** |  | 
 
 
 
@@ -17,17 +18,6 @@ Name | Type | Description | Notes
 
 
 * `video_id` (value: `"video_id"`)
-
-
-
-
-
-## Enum: CoverImageContentTypeEnum
-
-
-* `image/jpeg` (value: `"image/jpeg"`)
-
-* `image/png` (value: `"image/png"`)
 
 
 

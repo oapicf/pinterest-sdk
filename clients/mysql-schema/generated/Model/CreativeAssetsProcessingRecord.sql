@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CreativeAssetsProcessingRecord`
 --
-SELECT `creative_assets_id`, `errors`, `warnings`, `status` FROM `CreativeAssetsProcessingRecord` WHERE 1;
+SELECT `creative_assets_id`, `errors`, `status`, `warnings` FROM `CreativeAssetsProcessingRecord` WHERE 1;
 
 --
 -- INSERT template for table `CreativeAssetsProcessingRecord`
 --
-INSERT INTO `CreativeAssetsProcessingRecord`(`creative_assets_id`, `errors`, `warnings`, `status`) VALUES (?, ?, ?, ?);
+INSERT INTO `CreativeAssetsProcessingRecord`(`creative_assets_id`, `errors`, `status`, `warnings`) VALUES (?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CreativeAssetsProcessingRecord`
 --
-UPDATE `CreativeAssetsProcessingRecord` SET `creative_assets_id` = ?, `errors` = ?, `warnings` = ?, `status` = ? WHERE 1;
+UPDATE `CreativeAssetsProcessingRecord` SET `creative_assets_id` = ?, `errors` = ?, `status` = ?, `warnings` = ? WHERE 1;
 
 --
 -- DELETE template for table `CreativeAssetsProcessingRecord`

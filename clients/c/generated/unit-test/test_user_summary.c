@@ -22,13 +22,13 @@ user_summary_t* instantiate_user_summary(int include_optional) {
   user_summary_t* user_summary = NULL;
   if (include_optional) {
     user_summary = user_summary_create(
-      "username",
-      "user"
+      "user",
+      "username"
     );
   } else {
     user_summary = user_summary_create(
-      "username",
-      "user"
+      "user",
+      "username"
     );
   }
 

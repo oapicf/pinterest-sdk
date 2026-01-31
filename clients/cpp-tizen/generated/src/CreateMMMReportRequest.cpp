@@ -24,13 +24,13 @@ void
 CreateMMMReportRequest::__init()
 {
 	//new std::list()std::list> countries;
-	//report_name = std::string();
-	//start_date = std::string();
+	//new std::list()std::list> columns;
 	//end_date = std::string();
 	//granularity = std::string();
 	//level = std::string();
+	//report_name = std::string();
+	//start_date = std::string();
 	//new std::list()std::list> targeting_types;
-	//new std::list()std::list> columns;
 }
 
 void
@@ -41,15 +41,10 @@ CreateMMMReportRequest::__cleanup()
 	//delete countries;
 	//countries = NULL;
 	//}
-	//if(report_name != NULL) {
-	//
-	//delete report_name;
-	//report_name = NULL;
-	//}
-	//if(start_date != NULL) {
-	//
-	//delete start_date;
-	//start_date = NULL;
+	//if(columns != NULL) {
+	//columns.RemoveAll(true);
+	//delete columns;
+	//columns = NULL;
 	//}
 	//if(end_date != NULL) {
 	//
@@ -66,15 +61,20 @@ CreateMMMReportRequest::__cleanup()
 	//delete level;
 	//level = NULL;
 	//}
+	//if(report_name != NULL) {
+	//
+	//delete report_name;
+	//report_name = NULL;
+	//}
+	//if(start_date != NULL) {
+	//
+	//delete start_date;
+	//start_date = NULL;
+	//}
 	//if(targeting_types != NULL) {
 	//targeting_types.RemoveAll(true);
 	//delete targeting_types;
 	//targeting_types = NULL;
-	//}
-	//if(columns != NULL) {
-	//columns.RemoveAll(true);
-	//delete columns;
-	//columns = NULL;
 	//}
 	//
 }
@@ -108,27 +108,29 @@ CreateMMMReportRequest::fromJson(char* jsonStr)
 		}
 		
 	}
-	const gchar *report_nameKey = "report_name";
-	node = json_object_get_member(pJsonObject, report_nameKey);
+	const gchar *columnsKey = "columns";
+	node = json_object_get_member(pJsonObject, columnsKey);
 	if (node !=NULL) {
 	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&report_name, node, "std::string", "");
-		} else {
-			
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<MMMReportingColumn> new_list;
+			MMMReportingColumn inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("MMMReportingColumn")) {
+					jsonToValue(&inst, temp_json, "MMMReportingColumn", "");
+				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
+					
+				}
+				new_list.push_back(inst);
+			}
+			columns = new_list;
 		}
-	}
-	const gchar *start_dateKey = "start_date";
-	node = json_object_get_member(pJsonObject, start_dateKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&start_date, node, "std::string", "");
-		} else {
-			
-		}
+		
 	}
 	const gchar *end_dateKey = "end_date";
 	node = json_object_get_member(pJsonObject, end_dateKey);
@@ -163,6 +165,28 @@ CreateMMMReportRequest::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *report_nameKey = "report_name";
+	node = json_object_get_member(pJsonObject, report_nameKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&report_name, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *start_dateKey = "start_date";
+	node = json_object_get_member(pJsonObject, start_dateKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&start_date, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *targeting_typesKey = "targeting_types";
 	node = json_object_get_member(pJsonObject, targeting_typesKey);
 	if (node !=NULL) {
@@ -184,30 +208,6 @@ CreateMMMReportRequest::fromJson(char* jsonStr)
 				new_list.push_back(inst);
 			}
 			targeting_types = new_list;
-		}
-		
-	}
-	const gchar *columnsKey = "columns";
-	node = json_object_get_member(pJsonObject, columnsKey);
-	if (node !=NULL) {
-	
-		{
-			JsonArray* arr = json_node_get_array(node);
-			JsonNode*  temp_json;
-			list<MMMReportingColumn> new_list;
-			MMMReportingColumn inst;
-			for (guint i=0;i<json_array_get_length(arr);i++) {
-				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("MMMReportingColumn")) {
-					jsonToValue(&inst, temp_json, "MMMReportingColumn", "");
-				} else {
-					
-					inst.fromJson(json_to_string(temp_json, false));
-					
-				}
-				new_list.push_back(inst);
-			}
-			columns = new_list;
 		}
 		
 	}
@@ -248,24 +248,31 @@ CreateMMMReportRequest::toJson()
 	
 	const gchar *countriesKey = "countries";
 	json_object_set_member(pJsonObject, countriesKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getReportName();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
+	if (isprimitive("MMMReportingColumn")) {
+		list<MMMReportingColumn> new_list = static_cast<list <MMMReportingColumn> > (getColumns());
+		node = converttoJson(&new_list, "MMMReportingColumn", "array");
+	} else {
+		node = json_node_alloc();
+		list<MMMReportingColumn> new_list = static_cast<list <MMMReportingColumn> > (getColumns());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+		for (list<MMMReportingColumn>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			mygerror = NULL;
+			MMMReportingColumn obj = *it;
+			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
+			json_array_add_element(json_array, node_temp);
+			g_clear_error(&mygerror);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
 		
 	}
-	const gchar *report_nameKey = "report_name";
-	json_object_set_member(pJsonObject, report_nameKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getStartDate();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *start_dateKey = "start_date";
-	json_object_set_member(pJsonObject, start_dateKey, node);
+
+
+	
+	const gchar *columnsKey = "columns";
+	json_object_set_member(pJsonObject, columnsKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getEndDate();
 		node = converttoJson(&obj, "std::string", "");
@@ -293,6 +300,24 @@ CreateMMMReportRequest::toJson()
 	}
 	const gchar *levelKey = "level";
 	json_object_set_member(pJsonObject, levelKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getReportName();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *report_nameKey = "report_name";
+	json_object_set_member(pJsonObject, report_nameKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getStartDate();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *start_dateKey = "start_date";
+	json_object_set_member(pJsonObject, start_dateKey, node);
 	if (isprimitive("MMMReportingTargetingType")) {
 		list<MMMReportingTargetingType> new_list = static_cast<list <MMMReportingTargetingType> > (getTargetingTypes());
 		node = converttoJson(&new_list, "MMMReportingTargetingType", "array");
@@ -318,31 +343,6 @@ CreateMMMReportRequest::toJson()
 	
 	const gchar *targeting_typesKey = "targeting_types";
 	json_object_set_member(pJsonObject, targeting_typesKey, node);
-	if (isprimitive("MMMReportingColumn")) {
-		list<MMMReportingColumn> new_list = static_cast<list <MMMReportingColumn> > (getColumns());
-		node = converttoJson(&new_list, "MMMReportingColumn", "array");
-	} else {
-		node = json_node_alloc();
-		list<MMMReportingColumn> new_list = static_cast<list <MMMReportingColumn> > (getColumns());
-		JsonArray* json_array = json_array_new();
-		GError *mygerror;
-		
-		for (list<MMMReportingColumn>::iterator it = new_list.begin(); it != new_list.end(); it++) {
-			mygerror = NULL;
-			MMMReportingColumn obj = *it;
-			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
-			json_array_add_element(json_array, node_temp);
-			g_clear_error(&mygerror);
-		}
-		json_node_init_array(node, json_array);
-		json_array_unref(json_array);
-		
-	}
-
-
-	
-	const gchar *columnsKey = "columns";
-	json_object_set_member(pJsonObject, columnsKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -363,28 +363,16 @@ CreateMMMReportRequest::setCountries(std::list <TargetingAdvertiserCountry> coun
 	this->countries = countries;
 }
 
-std::string
-CreateMMMReportRequest::getReportName()
+std::list<MMMReportingColumn>
+CreateMMMReportRequest::getColumns()
 {
-	return report_name;
+	return columns;
 }
 
 void
-CreateMMMReportRequest::setReportName(std::string  report_name)
+CreateMMMReportRequest::setColumns(std::list <MMMReportingColumn> columns)
 {
-	this->report_name = report_name;
-}
-
-std::string
-CreateMMMReportRequest::getStartDate()
-{
-	return start_date;
-}
-
-void
-CreateMMMReportRequest::setStartDate(std::string  start_date)
-{
-	this->start_date = start_date;
+	this->columns = columns;
 }
 
 std::string
@@ -423,6 +411,30 @@ CreateMMMReportRequest::setLevel(std::string  level)
 	this->level = level;
 }
 
+std::string
+CreateMMMReportRequest::getReportName()
+{
+	return report_name;
+}
+
+void
+CreateMMMReportRequest::setReportName(std::string  report_name)
+{
+	this->report_name = report_name;
+}
+
+std::string
+CreateMMMReportRequest::getStartDate()
+{
+	return start_date;
+}
+
+void
+CreateMMMReportRequest::setStartDate(std::string  start_date)
+{
+	this->start_date = start_date;
+}
+
 std::list<MMMReportingTargetingType>
 CreateMMMReportRequest::getTargetingTypes()
 {
@@ -433,18 +445,6 @@ void
 CreateMMMReportRequest::setTargetingTypes(std::list <MMMReportingTargetingType> targeting_types)
 {
 	this->targeting_types = targeting_types;
-}
-
-std::list<MMMReportingColumn>
-CreateMMMReportRequest::getColumns()
-{
-	return columns;
-}
-
-void
-CreateMMMReportRequest::setColumns(std::list <MMMReportingColumn> columns)
-{
-	this->columns = columns;
 }
 
 

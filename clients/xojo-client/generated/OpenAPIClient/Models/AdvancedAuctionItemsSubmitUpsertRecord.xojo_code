@@ -2,15 +2,15 @@
 Protected Class AdvancedAuctionItemsSubmitUpsertRecord
 
 	#tag Property, Flags = &h0
-		#tag Note
-			The catalog retail item id in the merchant namespace
-		#tag EndNote
-		item_id As String
+		country As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		country As String
+		#tag Note
+			The catalog retail item id in the merchant namespace
+		#tag EndNote
+		item_id As String
 	#tag EndProperty
 
 
@@ -21,6 +21,14 @@ Protected Class AdvancedAuctionItemsSubmitUpsertRecord
 
 	#tag Property, Flags = &h0
 		bid_options As OpenAPIClient.Models.AdvancedAuctionBidOptions
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+		#tag EndNote
+		errors() As OpenAPIClient.Models.AdvancedAuctionOperationError
 	#tag EndProperty
 
 
@@ -69,19 +77,19 @@ Protected Class AdvancedAuctionItemsSubmitUpsertRecord
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="item_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="country"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
 			Type="Country"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="item_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -98,6 +106,14 @@ Protected Class AdvancedAuctionItemsSubmitUpsertRecord
 			Group="Behavior"
 			InitialValue=""
 			Type="AdvancedAuctionBidOptions"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="errors"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="AdvancedAuctionOperationError"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

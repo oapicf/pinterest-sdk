@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;SharedAudienceAccount&gt;](SharedAudienceAccount.md)
 `bookmark` | string
+`items` | [Array&lt;SharedAudienceAccount&gt;](SharedAudienceAccount.md)
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { AdAccountsAudiencesSharedAccountsList200Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "items": null,
   "bookmark": null,
+  "items": null,
 } satisfies AdAccountsAudiencesSharedAccountsList200Response
 
 console.log(example)

@@ -23,34 +23,14 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Object describing an item processing record")
 @JsonTypeName("ItemProcessingRecord")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ItemProcessingRecord   {
-  private String itemId;
   private @Valid List<@Valid ItemValidationEvent> errors = new ArrayList<>();
-  private @Valid List<@Valid ItemValidationEvent> warnings = new ArrayList<>();
+  private String itemId;
   private ItemProcessingStatus status;
+  private @Valid List<@Valid ItemValidationEvent> warnings = new ArrayList<>();
 
   public ItemProcessingRecord() {
-  }
-
-  /**
-   * The catalog item id in the merchant namespace
-   **/
-  public ItemProcessingRecord itemId(String itemId) {
-    this.itemId = itemId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "DS0294-M", value = "The catalog item id in the merchant namespace")
-  @JsonProperty("item_id")
-  public String getItemId() {
-    return itemId;
-  }
-
-  @JsonProperty("item_id")
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
   }
 
   /**
@@ -90,6 +70,45 @@ public class ItemProcessingRecord   {
     return this;
   }
   /**
+   * The catalog item id in the merchant namespace
+   **/
+  public ItemProcessingRecord itemId(String itemId) {
+    this.itemId = itemId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog item id in the merchant namespace")
+  @JsonProperty("item_id")
+  public String getItemId() {
+    return itemId;
+  }
+
+  @JsonProperty("item_id")
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
+  }
+
+  /**
+   **/
+  public ItemProcessingRecord status(ItemProcessingStatus status) {
+    this.status = status;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("status")
+  public ItemProcessingStatus getStatus() {
+    return status;
+  }
+
+  @JsonProperty("status")
+  public void setStatus(ItemProcessingStatus status) {
+    this.status = status;
+  }
+
+  /**
    * Array with the validation warnings for the item processing record
    **/
   public ItemProcessingRecord warnings(List<@Valid ItemValidationEvent> warnings) {
@@ -125,25 +144,6 @@ public class ItemProcessingRecord   {
 
     return this;
   }
-  /**
-   **/
-  public ItemProcessingRecord status(ItemProcessingStatus status) {
-    this.status = status;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("status")
-  public ItemProcessingStatus getStatus() {
-    return status;
-  }
-
-  @JsonProperty("status")
-  public void setStatus(ItemProcessingStatus status) {
-    this.status = status;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -154,15 +154,15 @@ public class ItemProcessingRecord   {
       return false;
     }
     ItemProcessingRecord itemProcessingRecord = (ItemProcessingRecord) o;
-    return Objects.equals(this.itemId, itemProcessingRecord.itemId) &&
-        Objects.equals(this.errors, itemProcessingRecord.errors) &&
-        Objects.equals(this.warnings, itemProcessingRecord.warnings) &&
-        Objects.equals(this.status, itemProcessingRecord.status);
+    return Objects.equals(this.errors, itemProcessingRecord.errors) &&
+        Objects.equals(this.itemId, itemProcessingRecord.itemId) &&
+        Objects.equals(this.status, itemProcessingRecord.status) &&
+        Objects.equals(this.warnings, itemProcessingRecord.warnings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemId, errors, warnings, status);
+    return Objects.hash(errors, itemId, status, warnings);
   }
 
   @Override
@@ -170,10 +170,10 @@ public class ItemProcessingRecord   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ItemProcessingRecord {\n");
     
-    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
+    sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -7,9 +7,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.model.AllOf;
+import org.openapitools.model.AnyOf;
 import org.openapitools.model.CatalogsProductGroupFilterKeys;
-import org.openapitools.model.CatalogsProductGroupFiltersRequestAnyOf;
-import org.openapitools.model.CatalogsProductGroupFiltersRequestAnyOf1;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 

@@ -12,16 +12,17 @@ import org.joda.time.DateTime
 import AdAccount._
 
 case class AdAccount (
-  id: Option[String],
-name: Option[String],
-owner: Option[AdAccountOwner],
-country: Option[Country],
-currency: Option[Currency],
-permissions: Option[List[BusinessAccessRole]],
-/* Creation time. Unix timestamp in seconds. */
+  country: Option[Country],
+/*  Creation time. Unix timestamp in seconds. */
   createdTime: Option[Integer],
-/* Last update time. Unix timestamp in seconds. */
-  updatedTime: Option[Integer])
+currency: Option[Currency],
+id: String,
+/* Ad account name. */
+  name: Option[String],
+/* Ad account owner */
+  owner: Option[AdAccountOwner],
+permissions: Option[List[BusinessAccessRole]],
+updatedTime: Option[Integer])
 
 object AdAccount {
   import DateTimeCodecs._

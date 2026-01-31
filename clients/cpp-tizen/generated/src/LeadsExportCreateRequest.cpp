@@ -23,28 +23,28 @@ LeadsExportCreateRequest::~LeadsExportCreateRequest()
 void
 LeadsExportCreateRequest::__init()
 {
-	//start_date = std::string();
-	//end_date = std::string();
 	//ad_id = std::string();
+	//end_date = std::string();
+	//start_date = std::string();
 }
 
 void
 LeadsExportCreateRequest::__cleanup()
 {
-	//if(start_date != NULL) {
+	//if(ad_id != NULL) {
 	//
-	//delete start_date;
-	//start_date = NULL;
+	//delete ad_id;
+	//ad_id = NULL;
 	//}
 	//if(end_date != NULL) {
 	//
 	//delete end_date;
 	//end_date = NULL;
 	//}
-	//if(ad_id != NULL) {
+	//if(start_date != NULL) {
 	//
-	//delete ad_id;
-	//ad_id = NULL;
+	//delete start_date;
+	//start_date = NULL;
 	//}
 	//
 }
@@ -54,13 +54,13 @@ LeadsExportCreateRequest::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *start_dateKey = "start_date";
-	node = json_object_get_member(pJsonObject, start_dateKey);
+	const gchar *ad_idKey = "ad_id";
+	node = json_object_get_member(pJsonObject, ad_idKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&start_date, node, "std::string", "");
+			jsonToValue(&ad_id, node, "std::string", "");
 		} else {
 			
 		}
@@ -76,13 +76,13 @@ LeadsExportCreateRequest::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *ad_idKey = "ad_id";
-	node = json_object_get_member(pJsonObject, ad_idKey);
+	const gchar *start_dateKey = "start_date";
+	node = json_object_get_member(pJsonObject, start_dateKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("std::string")) {
-			jsonToValue(&ad_id, node, "std::string", "");
+			jsonToValue(&start_date, node, "std::string", "");
 		} else {
 			
 		}
@@ -100,14 +100,14 @@ LeadsExportCreateRequest::toJson()
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
 	if (isprimitive("std::string")) {
-		std::string obj = getStartDate();
+		std::string obj = getAdId();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *start_dateKey = "start_date";
-	json_object_set_member(pJsonObject, start_dateKey, node);
+	const gchar *ad_idKey = "ad_id";
+	json_object_set_member(pJsonObject, ad_idKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getEndDate();
 		node = converttoJson(&obj, "std::string", "");
@@ -118,14 +118,14 @@ LeadsExportCreateRequest::toJson()
 	const gchar *end_dateKey = "end_date";
 	json_object_set_member(pJsonObject, end_dateKey, node);
 	if (isprimitive("std::string")) {
-		std::string obj = getAdId();
+		std::string obj = getStartDate();
 		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
 		
 	}
-	const gchar *ad_idKey = "ad_id";
-	json_object_set_member(pJsonObject, ad_idKey, node);
+	const gchar *start_dateKey = "start_date";
+	json_object_set_member(pJsonObject, start_dateKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -135,15 +135,15 @@ LeadsExportCreateRequest::toJson()
 }
 
 std::string
-LeadsExportCreateRequest::getStartDate()
+LeadsExportCreateRequest::getAdId()
 {
-	return start_date;
+	return ad_id;
 }
 
 void
-LeadsExportCreateRequest::setStartDate(std::string  start_date)
+LeadsExportCreateRequest::setAdId(std::string  ad_id)
 {
-	this->start_date = start_date;
+	this->ad_id = ad_id;
 }
 
 std::string
@@ -159,15 +159,15 @@ LeadsExportCreateRequest::setEndDate(std::string  end_date)
 }
 
 std::string
-LeadsExportCreateRequest::getAdId()
+LeadsExportCreateRequest::getStartDate()
 {
-	return ad_id;
+	return start_date;
 }
 
 void
-LeadsExportCreateRequest::setAdId(std::string  ad_id)
+LeadsExportCreateRequest::setStartDate(std::string  start_date)
 {
-	this->ad_id = ad_id;
+	this->start_date = start_date;
 }
 
 

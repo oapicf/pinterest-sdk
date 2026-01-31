@@ -1,0 +1,18 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CampaignIdFilter",
+  "fields": [
+    {
+      "name": "campaign_ids",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "List of campaign ids",
+      "default": null
+    }
+  ]
+
+}

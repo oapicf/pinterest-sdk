@@ -12,7 +12,7 @@ module CatalogsHotelItemErrorResponse =
 
   type CatalogsHotelItemErrorResponse = {
     CatalogType : CatalogsType;
-    HotelId : string;
     Errors : ItemValidationEvent[];
+    HotelId : string;
   }
   //#endregion

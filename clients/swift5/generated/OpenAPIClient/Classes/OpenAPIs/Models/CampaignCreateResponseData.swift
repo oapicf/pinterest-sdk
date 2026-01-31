@@ -17,81 +17,88 @@ public struct CampaignCreateResponseData: Codable, JSONEncodable, Hashable {
     public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
     /** Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema. */
     public var adAccountId: String?
-    /** Campaign name. */
-    public var name: String?
-    public var status: EntityStatus?
-    /** Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time. */
-    public var lifetimeSpendCap: Int?
     /** Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time. */
     public var dailySpendCap: Int?
-    /** Order line ID that appears on the invoice. */
-    public var orderLineId: String?
-    public var trackingUrls: TrackingUrls?
-    /** Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. */
-    public var startTime: Int?
-    /** Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns. */
+    /** Timestamp in Unix format for scheduling when ads in the campaign stop appearing. Must occur after any end times for child ad groups. If `end_time` is not specified for the campaign, ads run indefinitely unless you update the campaign, changing their status to `paused`. Learn about <a href=\"/docs/api-features/managing-campaigns/#campaign-scheduling\" target=\"blank\">scheduling campaigns</a>. Different end times can be set for the campaign's child ad groups, but they cannot occur after an `end_time` specified for the campaign. - If your campaign has a child ad group with an end time specified, and if you update that campaign with an `end_time` that is earlier than that of the ad group, the campaign `end_time` will supersede the ad group `end_time`, and the request will not return an error. - In this scenario, if you call <a href=\"/docs/api/v5/campaigns-list\" target=\"blank\">List campaigns</a> or <a href=\"/docs/api/v5/ad_groups-list\" target=\"blank\">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence. */
     public var endTime: Int?
-    /** Determine if a campaign has flexible daily budgets setup. */
-    public var isFlexibleDailyBudgets: Bool?
-    /** When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account. */
-    public var defaultAdGroupBudgetInMicroCurrency: Int?
     /** Specifies whether the campaign was created in the automated campaign flow */
     public var isAutomatedCampaign: Bool?
-    /** Campaign ID. */
-    public var id: String?
-    public var objectiveType: ObjectiveType?
-    /** Campaign creation time. Unix timestamp in seconds. */
-    public var createdTime: Int?
-    /** UTC timestamp. Last update time. */
-    public var updatedTime: Int?
-    /** Always \"campaign\". */
-    public var type: String?
+    /** Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\". */
+    public var isFlexibleDailyBudgets: Bool?
+    /** Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time. */
+    public var lifetimeSpendCap: Int?
+    /** Campaign name. */
+    public var name: String?
+    /** Order line ID that appears on the invoice. */
+    public var orderLineId: String?
+    /** Timestamp in Unix format for scheduling when ads in the campaign start to appear. Must precede any start times set for child ad groups. Defaults to current time if no time is specified. Learn about <a href=\"/docs/api-features/managing-campaigns/#campaign-scheduling\" target=\"blank\">scheduling campaigns</a>. Different start times can be set for the campaign's child ad groups, but they cannot occur before a `start_time` specified for the campaign. - If your campaign has a child ad group with a start time specified, and if you update that campaign with a `start_time` that is later than that of the ad group, the campaign `start_time` will supersede the ad group `start_time`, and the request will not return an error. - In this scenario, if you call <a href=\"/docs/api/v5/campaigns-list\" target=\"blank\">List campaigns</a> or <a href=\"/docs/api/v5/ad_groups-list\" target=\"blank\">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence. */
+    public var startTime: Int?
+    public var status: EntityStatus?
+    public var trackingUrls: TrackingUrls?
+    /** When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account. */
+    public var defaultAdGroupBudgetInMicroCurrency: Int?
     /** Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared. */
     public var isCampaignBudgetOptimization: Bool?
+    /** Campaign ID. */
+    public var id: String?
+    public var bidOptions: CampaignBidOptions?
+    /** Campaign creation time. Unix timestamp in seconds. */
+    public var createdTime: Int?
+    /** Enable Pinterest Performance+ for your campaign. To learn more, see <a href=\"https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\">Pinterest Performance+ Setup</a>. */
+    public var isPerformancePlus: Bool?
+    public var objectiveType: ObjectiveType?
     public var summaryStatus: CampaignSummaryStatus?
+    /** Always \"campaign\". */
+    public var type: String?
+    /** UTC timestamp. Last update time. */
+    public var updatedTime: Int?
 
-    public init(adAccountId: String? = nil, name: String? = nil, status: EntityStatus? = nil, lifetimeSpendCap: Int? = nil, dailySpendCap: Int? = nil, orderLineId: String? = nil, trackingUrls: TrackingUrls? = nil, startTime: Int? = nil, endTime: Int? = nil, isFlexibleDailyBudgets: Bool? = nil, defaultAdGroupBudgetInMicroCurrency: Int? = nil, isAutomatedCampaign: Bool? = nil, id: String? = nil, objectiveType: ObjectiveType? = nil, createdTime: Int? = nil, updatedTime: Int? = nil, type: String? = nil, isCampaignBudgetOptimization: Bool? = nil, summaryStatus: CampaignSummaryStatus? = nil) {
+    public init(adAccountId: String? = nil, dailySpendCap: Int? = nil, endTime: Int? = nil, isAutomatedCampaign: Bool? = nil, isFlexibleDailyBudgets: Bool? = nil, lifetimeSpendCap: Int? = nil, name: String? = nil, orderLineId: String? = nil, startTime: Int? = nil, status: EntityStatus? = nil, trackingUrls: TrackingUrls? = nil, defaultAdGroupBudgetInMicroCurrency: Int? = nil, isCampaignBudgetOptimization: Bool? = nil, id: String? = nil, bidOptions: CampaignBidOptions? = nil, createdTime: Int? = nil, isPerformancePlus: Bool? = nil, objectiveType: ObjectiveType? = nil, summaryStatus: CampaignSummaryStatus? = nil, type: String? = nil, updatedTime: Int? = nil) {
         self.adAccountId = adAccountId
-        self.name = name
-        self.status = status
-        self.lifetimeSpendCap = lifetimeSpendCap
         self.dailySpendCap = dailySpendCap
-        self.orderLineId = orderLineId
-        self.trackingUrls = trackingUrls
-        self.startTime = startTime
         self.endTime = endTime
-        self.isFlexibleDailyBudgets = isFlexibleDailyBudgets
-        self.defaultAdGroupBudgetInMicroCurrency = defaultAdGroupBudgetInMicroCurrency
         self.isAutomatedCampaign = isAutomatedCampaign
-        self.id = id
-        self.objectiveType = objectiveType
-        self.createdTime = createdTime
-        self.updatedTime = updatedTime
-        self.type = type
+        self.isFlexibleDailyBudgets = isFlexibleDailyBudgets
+        self.lifetimeSpendCap = lifetimeSpendCap
+        self.name = name
+        self.orderLineId = orderLineId
+        self.startTime = startTime
+        self.status = status
+        self.trackingUrls = trackingUrls
+        self.defaultAdGroupBudgetInMicroCurrency = defaultAdGroupBudgetInMicroCurrency
         self.isCampaignBudgetOptimization = isCampaignBudgetOptimization
+        self.id = id
+        self.bidOptions = bidOptions
+        self.createdTime = createdTime
+        self.isPerformancePlus = isPerformancePlus
+        self.objectiveType = objectiveType
         self.summaryStatus = summaryStatus
+        self.type = type
+        self.updatedTime = updatedTime
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case adAccountId = "ad_account_id"
-        case name
-        case status
-        case lifetimeSpendCap = "lifetime_spend_cap"
         case dailySpendCap = "daily_spend_cap"
-        case orderLineId = "order_line_id"
-        case trackingUrls = "tracking_urls"
-        case startTime = "start_time"
         case endTime = "end_time"
-        case isFlexibleDailyBudgets = "is_flexible_daily_budgets"
-        case defaultAdGroupBudgetInMicroCurrency = "default_ad_group_budget_in_micro_currency"
         case isAutomatedCampaign = "is_automated_campaign"
-        case id
-        case objectiveType = "objective_type"
-        case createdTime = "created_time"
-        case updatedTime = "updated_time"
-        case type
+        case isFlexibleDailyBudgets = "is_flexible_daily_budgets"
+        case lifetimeSpendCap = "lifetime_spend_cap"
+        case name
+        case orderLineId = "order_line_id"
+        case startTime = "start_time"
+        case status
+        case trackingUrls = "tracking_urls"
+        case defaultAdGroupBudgetInMicroCurrency = "default_ad_group_budget_in_micro_currency"
         case isCampaignBudgetOptimization = "is_campaign_budget_optimization"
+        case id
+        case bidOptions = "bid_options"
+        case createdTime = "created_time"
+        case isPerformancePlus = "is_performance_plus"
+        case objectiveType = "objective_type"
         case summaryStatus = "summary_status"
+        case type
+        case updatedTime = "updated_time"
     }
 
     // Encodable protocol methods
@@ -99,24 +106,26 @@ public struct CampaignCreateResponseData: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(adAccountId, forKey: .adAccountId)
-        try container.encodeIfPresent(name, forKey: .name)
-        try container.encodeIfPresent(status, forKey: .status)
-        try container.encodeIfPresent(lifetimeSpendCap, forKey: .lifetimeSpendCap)
         try container.encodeIfPresent(dailySpendCap, forKey: .dailySpendCap)
-        try container.encodeIfPresent(orderLineId, forKey: .orderLineId)
-        try container.encodeIfPresent(trackingUrls, forKey: .trackingUrls)
-        try container.encodeIfPresent(startTime, forKey: .startTime)
         try container.encodeIfPresent(endTime, forKey: .endTime)
-        try container.encodeIfPresent(isFlexibleDailyBudgets, forKey: .isFlexibleDailyBudgets)
-        try container.encodeIfPresent(defaultAdGroupBudgetInMicroCurrency, forKey: .defaultAdGroupBudgetInMicroCurrency)
         try container.encodeIfPresent(isAutomatedCampaign, forKey: .isAutomatedCampaign)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(objectiveType, forKey: .objectiveType)
-        try container.encodeIfPresent(createdTime, forKey: .createdTime)
-        try container.encodeIfPresent(updatedTime, forKey: .updatedTime)
-        try container.encodeIfPresent(type, forKey: .type)
+        try container.encodeIfPresent(isFlexibleDailyBudgets, forKey: .isFlexibleDailyBudgets)
+        try container.encodeIfPresent(lifetimeSpendCap, forKey: .lifetimeSpendCap)
+        try container.encodeIfPresent(name, forKey: .name)
+        try container.encodeIfPresent(orderLineId, forKey: .orderLineId)
+        try container.encodeIfPresent(startTime, forKey: .startTime)
+        try container.encodeIfPresent(status, forKey: .status)
+        try container.encodeIfPresent(trackingUrls, forKey: .trackingUrls)
+        try container.encodeIfPresent(defaultAdGroupBudgetInMicroCurrency, forKey: .defaultAdGroupBudgetInMicroCurrency)
         try container.encodeIfPresent(isCampaignBudgetOptimization, forKey: .isCampaignBudgetOptimization)
+        try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(bidOptions, forKey: .bidOptions)
+        try container.encodeIfPresent(createdTime, forKey: .createdTime)
+        try container.encodeIfPresent(isPerformancePlus, forKey: .isPerformancePlus)
+        try container.encodeIfPresent(objectiveType, forKey: .objectiveType)
         try container.encodeIfPresent(summaryStatus, forKey: .summaryStatus)
+        try container.encodeIfPresent(type, forKey: .type)
+        try container.encodeIfPresent(updatedTime, forKey: .updatedTime)
     }
 }
 

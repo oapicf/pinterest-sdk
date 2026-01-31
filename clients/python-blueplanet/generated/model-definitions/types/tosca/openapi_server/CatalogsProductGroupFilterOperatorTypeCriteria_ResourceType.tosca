@@ -1,0 +1,47 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsProductGroupFilterOperatorTypeCriteria"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsProductGroupFilterOperatorTypeCriteria"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  CatalogsProductGroupFilterOperatorTypeCriteria {
+    title = CatalogsProductGroupFilterOperatorTypeCriteria
+    description = CatalogsProductGroupFilterOperatorTypeCriteria
+    derivedFrom = Root
+    properties {
+        filter_operator_type {
+          type =  string
+          description = ""
+          enum = ["IS", "CONTAINS"]
+          optional = false
+        }
+        negated {
+          type =  boolean
+          description = ""
+          optional = false
+        }
+        values {
+          type = array
+          items.type =  string
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsProductGroupFilterOperatorTypeCriteria {
+    title = CatalogsProductGroupFilterOperatorTypeCriteria
+    description = CatalogsProductGroupFilterOperatorTypeCriteria
+    implements = openapi_server.resourceTypes.CatalogsProductGroupFilterOperatorTypeCriteria
+
+  }
+}

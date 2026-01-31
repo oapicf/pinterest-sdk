@@ -12,9 +12,8 @@ import org.joda.time.DateTime
 import MediaList200Response._
 
 case class MediaList200Response (
-  /* Media */
-  items: List[MediaUploadDetails],
-bookmark: Option[String])
+  bookmark: Option[String],
+items: List[Media])
 
 object MediaList200Response {
   import DateTimeCodecs._

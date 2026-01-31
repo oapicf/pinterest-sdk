@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -23,9 +23,9 @@ var _ MappedNullable = &CatalogsFeedIngestion{}
 
 // CatalogsFeedIngestion struct for CatalogsFeedIngestion
 type CatalogsFeedIngestion struct {
-	Id string `json:"id"`
-	FeedId string `json:"feed_id"`
 	CreatedAt time.Time `json:"created_at"`
+	FeedId string `json:"feed_id"`
+	Id string `json:"id"`
 	Status CatalogsFeedProcessingStatus `json:"status"`
 }
 
@@ -35,11 +35,11 @@ type _CatalogsFeedIngestion CatalogsFeedIngestion
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsFeedIngestion(id string, feedId string, createdAt time.Time, status CatalogsFeedProcessingStatus) *CatalogsFeedIngestion {
+func NewCatalogsFeedIngestion(createdAt time.Time, feedId string, id string, status CatalogsFeedProcessingStatus) *CatalogsFeedIngestion {
 	this := CatalogsFeedIngestion{}
-	this.Id = id
-	this.FeedId = feedId
 	this.CreatedAt = createdAt
+	this.FeedId = feedId
+	this.Id = id
 	this.Status = status
 	return &this
 }
@@ -52,28 +52,28 @@ func NewCatalogsFeedIngestionWithDefaults() *CatalogsFeedIngestion {
 	return &this
 }
 
-// GetId returns the Id field value
-func (o *CatalogsFeedIngestion) GetId() string {
+// GetCreatedAt returns the CreatedAt field value
+func (o *CatalogsFeedIngestion) GetCreatedAt() time.Time {
 	if o == nil {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 
-	return o.Id
+	return o.CreatedAt
 }
 
-// GetIdOk returns a tuple with the Id field value
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsFeedIngestion) GetIdOk() (*string, bool) {
+func (o *CatalogsFeedIngestion) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Id, true
+	return &o.CreatedAt, true
 }
 
-// SetId sets field value
-func (o *CatalogsFeedIngestion) SetId(v string) {
-	o.Id = v
+// SetCreatedAt sets field value
+func (o *CatalogsFeedIngestion) SetCreatedAt(v time.Time) {
+	o.CreatedAt = v
 }
 
 // GetFeedId returns the FeedId field value
@@ -100,28 +100,28 @@ func (o *CatalogsFeedIngestion) SetFeedId(v string) {
 	o.FeedId = v
 }
 
-// GetCreatedAt returns the CreatedAt field value
-func (o *CatalogsFeedIngestion) GetCreatedAt() time.Time {
+// GetId returns the Id field value
+func (o *CatalogsFeedIngestion) GetId() string {
 	if o == nil {
-		var ret time.Time
+		var ret string
 		return ret
 	}
 
-	return o.CreatedAt
+	return o.Id
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsFeedIngestion) GetCreatedAtOk() (*time.Time, bool) {
+func (o *CatalogsFeedIngestion) GetIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.CreatedAt, true
+	return &o.Id, true
 }
 
-// SetCreatedAt sets field value
-func (o *CatalogsFeedIngestion) SetCreatedAt(v time.Time) {
-	o.CreatedAt = v
+// SetId sets field value
+func (o *CatalogsFeedIngestion) SetId(v string) {
+	o.Id = v
 }
 
 // GetStatus returns the Status field value
@@ -158,9 +158,9 @@ func (o CatalogsFeedIngestion) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsFeedIngestion) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
-	toSerialize["feed_id"] = o.FeedId
 	toSerialize["created_at"] = o.CreatedAt
+	toSerialize["feed_id"] = o.FeedId
+	toSerialize["id"] = o.Id
 	toSerialize["status"] = o.Status
 	return toSerialize, nil
 }
@@ -170,9 +170,9 @@ func (o *CatalogsFeedIngestion) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"id",
-		"feed_id",
 		"created_at",
+		"feed_id",
+		"id",
 		"status",
 	}
 

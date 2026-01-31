@@ -7,7 +7,8 @@ Pin with multiple videos.
 
 Name | Type
 ------------ | -------------
-`items` | [Array&lt;VideoMetadata&gt;](VideoMetadata.md)
+`items` | [Array&lt;VideoMetadataWithItemType&gt;](VideoMetadataWithItemType.md)
+`mediaType` | string
 
 ## Example
 
@@ -17,6 +18,7 @@ import type { PinMediaWithVideos } from ''
 // TODO: Update the object below with actual values
 const example = {
   "items": null,
+  "mediaType": null,
 } satisfies PinMediaWithVideos
 
 console.log(example)

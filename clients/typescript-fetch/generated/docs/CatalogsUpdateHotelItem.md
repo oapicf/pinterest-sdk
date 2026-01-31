@@ -7,9 +7,9 @@ Object describing an hotel item batch record
 
 Name | Type
 ------------ | -------------
+`attributes` | [CatalogsUpdatableHotelAttributes](CatalogsUpdatableHotelAttributes.md)
 `hotelId` | string
 `operation` | string
-`attributes` | [CatalogsUpdatableHotelAttributes](CatalogsUpdatableHotelAttributes.md)
 
 ## Example
 
@@ -18,9 +18,9 @@ import type { CatalogsUpdateHotelItem } from ''
 
 // TODO: Update the object below with actual values
 const example = {
+  "attributes": null,
   "hotelId": DS0294-M,
   "operation": null,
-  "attributes": null,
 } satisfies CatalogsUpdateHotelItem
 
 console.log(example)

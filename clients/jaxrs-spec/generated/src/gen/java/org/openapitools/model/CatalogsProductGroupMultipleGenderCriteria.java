@@ -20,10 +20,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CatalogsProductGroupMultipleGenderCriteria")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsProductGroupMultipleGenderCriteria   {
-  private @Valid List<Gender> values = new ArrayList<>();
   private Boolean negated = false;
+  private @Valid List<Gender> values = new ArrayList<>();
 
   public CatalogsProductGroupMultipleGenderCriteria() {
   }
@@ -33,6 +33,25 @@ public class CatalogsProductGroupMultipleGenderCriteria   {
     @JsonProperty(required = true, value = "values") List<Gender> values
   ) {
     this.values = values;
+  }
+
+  /**
+   **/
+  public CatalogsProductGroupMultipleGenderCriteria negated(Boolean negated) {
+    this.negated = negated;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("negated")
+  public Boolean getNegated() {
+    return negated;
+  }
+
+  @JsonProperty("negated")
+  public void setNegated(Boolean negated) {
+    this.negated = negated;
   }
 
   /**
@@ -70,25 +89,6 @@ public class CatalogsProductGroupMultipleGenderCriteria   {
 
     return this;
   }
-  /**
-   **/
-  public CatalogsProductGroupMultipleGenderCriteria negated(Boolean negated) {
-    this.negated = negated;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("negated")
-  public Boolean getNegated() {
-    return negated;
-  }
-
-  @JsonProperty("negated")
-  public void setNegated(Boolean negated) {
-    this.negated = negated;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -99,13 +99,13 @@ public class CatalogsProductGroupMultipleGenderCriteria   {
       return false;
     }
     CatalogsProductGroupMultipleGenderCriteria catalogsProductGroupMultipleGenderCriteria = (CatalogsProductGroupMultipleGenderCriteria) o;
-    return Objects.equals(this.values, catalogsProductGroupMultipleGenderCriteria.values) &&
-        Objects.equals(this.negated, catalogsProductGroupMultipleGenderCriteria.negated);
+    return Objects.equals(this.negated, catalogsProductGroupMultipleGenderCriteria.negated) &&
+        Objects.equals(this.values, catalogsProductGroupMultipleGenderCriteria.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, negated);
+    return Objects.hash(negated, values);
   }
 
   @Override
@@ -113,8 +113,8 @@ public class CatalogsProductGroupMultipleGenderCriteria   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsProductGroupMultipleGenderCriteria {\n");
     
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    negated: ").append(toIndentedString(negated)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

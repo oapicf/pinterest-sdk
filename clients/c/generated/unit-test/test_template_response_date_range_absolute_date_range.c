@@ -22,15 +22,15 @@ template_response_date_range_absolute_date_range_t* instantiate_template_respons
   template_response_date_range_absolute_date_range_t* template_response_date_range_absolute_date_range = NULL;
   if (include_optional) {
     template_response_date_range_absolute_date_range = template_response_date_range_absolute_date_range_create(
-      "absolute",
+      6.027456183070403,
       0.8008281904610115,
-      6.027456183070403
+      "absolute"
     );
   } else {
     template_response_date_range_absolute_date_range = template_response_date_range_absolute_date_range_create(
-      "absolute",
+      6.027456183070403,
       0.8008281904610115,
-      6.027456183070403
+      "absolute"
     );
   }
 

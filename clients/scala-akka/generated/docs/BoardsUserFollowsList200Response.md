@@ -7,8 +7,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**Seq&lt;Board&gt;**](Board.md) |  | 
 **bookmark** | **String** |  |  [optional]
+**items** | [**Seq&lt;Board&gt;**](Board.md) |  | 
 
 
 

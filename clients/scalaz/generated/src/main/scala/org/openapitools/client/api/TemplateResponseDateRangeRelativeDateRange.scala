@@ -12,12 +12,12 @@ import org.joda.time.DateTime
 import TemplateResponseDateRangeRelativeDateRange._
 
 case class TemplateResponseDateRangeRelativeDateRange (
-  /* The date range type */
-  `type`: Option[String],
+  /* The end date of the date range */
+  endDaysInPast: Option[BigDecimal],
 /* The start date of the date range */
   startDaysInPast: Option[BigDecimal],
-/* The end date of the date range */
-  endDaysInPast: Option[BigDecimal])
+/* The date range type */
+  `type`: Option[String])
 
 object TemplateResponseDateRangeRelativeDateRange {
   import DateTimeCodecs._

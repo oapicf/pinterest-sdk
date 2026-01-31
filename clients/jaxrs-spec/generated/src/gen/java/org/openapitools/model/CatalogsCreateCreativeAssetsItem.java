@@ -19,8 +19,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "A creative assets item to be created.")
 @JsonTypeName("CatalogsCreateCreativeAssetsItem")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-31T04:55:24.841422791Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreateCreativeAssetsItem   {
+  private CatalogsCreativeAssetsAttributes attributes;
   private String creativeAssetsId;
   public enum OperationEnum {
 
@@ -70,19 +71,37 @@ public class CatalogsCreateCreativeAssetsItem   {
 }
 
   private OperationEnum operation;
-  private CatalogsCreativeAssetsAttributes attributes;
 
   public CatalogsCreateCreativeAssetsItem() {
   }
 
   @JsonCreator
   public CatalogsCreateCreativeAssetsItem(
+    @JsonProperty(required = true, value = "attributes") CatalogsCreativeAssetsAttributes attributes,
     @JsonProperty(required = true, value = "creative_assets_id") String creativeAssetsId,
-    @JsonProperty(required = true, value = "operation") OperationEnum operation,
-    @JsonProperty(required = true, value = "attributes") CatalogsCreativeAssetsAttributes attributes
+    @JsonProperty(required = true, value = "operation") OperationEnum operation
   ) {
+    this.attributes = attributes;
     this.creativeAssetsId = creativeAssetsId;
     this.operation = operation;
+  }
+
+  /**
+   **/
+  public CatalogsCreateCreativeAssetsItem attributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "attributes")
+  @NotNull @Valid public CatalogsCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
+
+  @JsonProperty(required = true, value = "attributes")
+  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
     this.attributes = attributes;
   }
 
@@ -125,25 +144,6 @@ public class CatalogsCreateCreativeAssetsItem   {
     this.operation = operation;
   }
 
-  /**
-   **/
-  public CatalogsCreateCreativeAssetsItem attributes(CatalogsCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "attributes")
-  @NotNull @Valid public CatalogsCreativeAssetsAttributes getAttributes() {
-    return attributes;
-  }
-
-  @JsonProperty(required = true, value = "attributes")
-  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -154,14 +154,14 @@ public class CatalogsCreateCreativeAssetsItem   {
       return false;
     }
     CatalogsCreateCreativeAssetsItem catalogsCreateCreativeAssetsItem = (CatalogsCreateCreativeAssetsItem) o;
-    return Objects.equals(this.creativeAssetsId, catalogsCreateCreativeAssetsItem.creativeAssetsId) &&
-        Objects.equals(this.operation, catalogsCreateCreativeAssetsItem.operation) &&
-        Objects.equals(this.attributes, catalogsCreateCreativeAssetsItem.attributes);
+    return Objects.equals(this.attributes, catalogsCreateCreativeAssetsItem.attributes) &&
+        Objects.equals(this.creativeAssetsId, catalogsCreateCreativeAssetsItem.creativeAssetsId) &&
+        Objects.equals(this.operation, catalogsCreateCreativeAssetsItem.operation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(creativeAssetsId, operation, attributes);
+    return Objects.hash(attributes, creativeAssetsId, operation);
   }
 
   @Override
@@ -169,9 +169,9 @@ public class CatalogsCreateCreativeAssetsItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsCreateCreativeAssetsItem {\n");
     
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -16,30 +16,13 @@ import org.openapitools.model.CustomerList;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-31T04:51:24.974216359Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CustomerListsList200Response   {
-  @JsonProperty("items")
-  private List<CustomerList> items = new ArrayList<>();
-
   @JsonProperty("bookmark")
   private String bookmark;
 
-  /**
-   **/
-  public CustomerListsList200Response items(List<CustomerList> items) {
-    this.items = items;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty("items")
-  public List<CustomerList> getItems() {
-    return items;
-  }
-  public void setItems(List<CustomerList> items) {
-    this.items = items;
-  }
+  private List<CustomerList> items = new ArrayList<>();
 
   /**
    **/
@@ -58,6 +41,23 @@ public class CustomerListsList200Response   {
     this.bookmark = bookmark;
   }
 
+  /**
+   **/
+  public CustomerListsList200Response items(List<CustomerList> items) {
+    this.items = items;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("items")
+  public List<CustomerList> getItems() {
+    return items;
+  }
+  public void setItems(List<CustomerList> items) {
+    this.items = items;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -68,13 +68,13 @@ public class CustomerListsList200Response   {
       return false;
     }
     CustomerListsList200Response customerListsList200Response = (CustomerListsList200Response) o;
-    return Objects.equals(items, customerListsList200Response.items) &&
-        Objects.equals(bookmark, customerListsList200Response.bookmark);
+    return Objects.equals(bookmark, customerListsList200Response.bookmark) &&
+        Objects.equals(items, customerListsList200Response.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, bookmark);
+    return Objects.hash(bookmark, items);
   }
 
   @Override
@@ -82,8 +82,8 @@ public class CustomerListsList200Response   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CustomerListsList200Response {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    bookmark: ").append(toIndentedString(bookmark)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

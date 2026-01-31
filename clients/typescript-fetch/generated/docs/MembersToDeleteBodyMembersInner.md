@@ -6,8 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`memberId` | string
 `businessRole` | [BusinessRoleForMembers](BusinessRoleForMembers.md)
+`memberId` | string
 
 ## Example
 
@@ -16,8 +16,8 @@ import type { MembersToDeleteBodyMembersInner } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "memberId": 140943737684417,
   "businessRole": null,
+  "memberId": 140943737684417,
 } satisfies MembersToDeleteBodyMembersInner
 
 console.log(example)

@@ -9,8 +9,8 @@ module LeadsExportCreateRequest =
 
 
   type LeadsExportCreateRequest = {
-    StartDate : string;
-    EndDate : string;
     AdId : string;
+    EndDate : string;
+    StartDate : string;
   }
   //#endregion

@@ -22,21 +22,21 @@ ssio_account_response_t* instantiate_ssio_account_response(int include_optional)
   ssio_account_response_t* ssio_account_response = NULL;
   if (include_optional) {
     ssio_account_response = ssio_account_response_create(
-      true,
-      true,
       list_createList(),
+      true,
       "USD",
-      list_createList(),
-      "No Error"
+      true,
+      "No Error",
+      list_createList()
     );
   } else {
     ssio_account_response = ssio_account_response_create(
-      true,
-      true,
       list_createList(),
+      true,
       "USD",
-      list_createList(),
-      "No Error"
+      true,
+      "No Error",
+      list_createList()
     );
   }
 

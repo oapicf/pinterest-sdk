@@ -9,7 +9,7 @@
 
 
 #include <string>
-#include "ImageMetadata_images.h"
+#include "ImageSize.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -48,25 +48,25 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::string getItemType();
-
-	/*! \brief Set 
-	 */
-	void setItemType(std::string  item_type);
-	/*! \brief Get 
-	 */
-	std::string getTitle();
-
-	/*! \brief Set 
-	 */
-	void setTitle(std::string  title);
-	/*! \brief Get 
-	 */
 	std::string getDescription();
 
 	/*! \brief Set 
 	 */
 	void setDescription(std::string  description);
+	/*! \brief Get 
+	 */
+	ImageSize getImages();
+
+	/*! \brief Set 
+	 */
+	void setImages(ImageSize  images);
+	/*! \brief Get 
+	 */
+	std::string getItemType();
+
+	/*! \brief Set 
+	 */
+	void setItemType(std::string  item_type);
 	/*! \brief Get 
 	 */
 	std::string getLink();
@@ -76,18 +76,18 @@ public:
 	void setLink(std::string  link);
 	/*! \brief Get 
 	 */
-	ImageMetadata_images getImages();
+	std::string getTitle();
 
 	/*! \brief Set 
 	 */
-	void setImages(ImageMetadata_images  images);
+	void setTitle(std::string  title);
 
 private:
-	std::string item_type;
-	std::string title;
 	std::string description;
+	ImageSize images;
+	std::string item_type;
 	std::string link;
-	ImageMetadata_images images;
+	std::string title;
 	void __init();
 	void __cleanup();
 

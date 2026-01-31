@@ -27,7 +27,7 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-31T04:52:46.215362801Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Controller
 public class AdvancedAuctionApiController implements AdvancedAuctionApi {
     private final ObjectMapper objectMapper;
@@ -77,6 +77,11 @@ public class AdvancedAuctionApiController implements AdvancedAuctionApi {
         @ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
+
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<AdvancedAuctionProcessedItems>(objectMapper.readValue("", AdvancedAuctionProcessedItems.class), HttpStatus.OK);
+        }
+
 
         if (accept != null && accept.contains("application/json")) {
             return new ResponseEntity<AdvancedAuctionProcessedItems>(objectMapper.readValue("", AdvancedAuctionProcessedItems.class), HttpStatus.OK);

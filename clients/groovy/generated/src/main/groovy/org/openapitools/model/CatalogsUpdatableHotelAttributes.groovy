@@ -12,22 +12,14 @@ import org.openapitools.model.CatalogsHotelGuestRatings;
 
 @Canonical
 class CatalogsUpdatableHotelAttributes {
-    /* The hotel's name. */
-    String name
-    /* Link to the product page */
-    String link
-    /* Brief description of the hotel. */
-    String description
-    /* The brand to which this hotel belongs to. */
-    String brand
-    /* Latitude of the hotel. */
-    BigDecimal latitude
-    /* Longitude of the hotel. */
-    BigDecimal longitude
-    /* A list of neighborhoods where the hotel is located */
-    List<String> neighborhood
     
     CatalogsHotelAddress address
+    /* Base price of the hotel room per night followed by the ISO currency code */
+    String basePrice
+    /* The brand to which this hotel belongs to. */
+    String brand
+    /* The type of property. The category can be any type of internal description desired. */
+    String category
     /* Custom grouping of hotels */
     String customLabel0
     /* Custom grouping of hotels */
@@ -38,12 +30,20 @@ class CatalogsUpdatableHotelAttributes {
     String customLabel3
     /* Custom grouping of hotels */
     String customLabel4
-    /* The type of property. The category can be any type of internal description desired. */
-    String category
-    /* Base price of the hotel room per night followed by the ISO currency code */
-    String basePrice
-    /* Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel. */
-    String salePrice
+    /* Brief description of the hotel. */
+    String description
     
     CatalogsHotelGuestRatings guestRatings
+    /* Latitude of the hotel. */
+    BigDecimal latitude
+    /* Link to the product page */
+    String link
+    /* Longitude of the hotel. */
+    BigDecimal longitude
+    /* The hotel's name. */
+    String name
+    /* A list of neighborhoods where the hotel is located */
+    List<String> neighborhood
+    /* Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel. */
+    String salePrice
 }

@@ -17,27 +17,27 @@ public struct CatalogsRetailListProductsByCatalogBasedFilterRequest: Codable, JS
         case retail = "RETAIL"
     }
     public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    /** Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. */
-    public var catalogType: CatalogType
     /** Catalog id pertaining to the retail product group. */
     public var catalogId: String
-    public var filters: CatalogsProductGroupFilters
+    /** Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. */
+    public var catalogType: CatalogType
     public var country: Country
+    public var filters: CatalogsProductGroupFilters
     public var locale: CatalogsLocale
 
-    public init(catalogType: CatalogType, catalogId: String, filters: CatalogsProductGroupFilters, country: Country, locale: CatalogsLocale) {
-        self.catalogType = catalogType
+    public init(catalogId: String, catalogType: CatalogType, country: Country, filters: CatalogsProductGroupFilters, locale: CatalogsLocale) {
         self.catalogId = catalogId
-        self.filters = filters
+        self.catalogType = catalogType
         self.country = country
+        self.filters = filters
         self.locale = locale
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case catalogType = "catalog_type"
         case catalogId = "catalog_id"
-        case filters
+        case catalogType = "catalog_type"
         case country
+        case filters
         case locale
     }
 
@@ -45,10 +45,10 @@ public struct CatalogsRetailListProductsByCatalogBasedFilterRequest: Codable, JS
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(catalogType, forKey: .catalogType)
         try container.encode(catalogId, forKey: .catalogId)
-        try container.encode(filters, forKey: .filters)
+        try container.encode(catalogType, forKey: .catalogType)
         try container.encode(country, forKey: .country)
+        try container.encode(filters, forKey: .filters)
         try container.encode(locale, forKey: .locale)
     }
 }

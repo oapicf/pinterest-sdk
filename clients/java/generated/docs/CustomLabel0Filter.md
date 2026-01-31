@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**CUSTOM_LABEL_0** | **CatalogsProductGroupMultipleStringCriteria** |  |  |
+|**CUSTOM_LABEL_0** | **CatalogsProductGroupFilterOperatorTypeCriteria** |  |  |
 
 
 

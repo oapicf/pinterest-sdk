@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,13 +22,13 @@ var _ MappedNullable = &TargetingTemplateCreate{}
 
 // TargetingTemplateCreate struct for TargetingTemplateCreate
 type TargetingTemplateCreate struct {
-	// Name of targeting template.
-	Name string `json:"name"`
 	// Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
 	AutoTargetingEnabled *bool `json:"auto_targeting_enabled,omitempty"`
-	TargetingAttributes TargetingSpec `json:"targeting_attributes"`
-	PlacementGroup *PlacementGroupType `json:"placement_group,omitempty"`
 	Keywords []TargetingTemplateKeyword `json:"keywords,omitempty"`
+	// Name of targeting template.
+	Name string `json:"name"`
+	PlacementGroup *PlacementGroupType `json:"placement_group,omitempty"`
+	TargetingAttributes TargetingSpec `json:"targeting_attributes"`
 	TrackingUrls NullableTrackingUrls `json:"tracking_urls,omitempty"`
 }
 
@@ -40,12 +40,12 @@ type _TargetingTemplateCreate TargetingTemplateCreate
 // will change when the set of required properties is changed
 func NewTargetingTemplateCreate(name string, targetingAttributes TargetingSpec) *TargetingTemplateCreate {
 	this := TargetingTemplateCreate{}
-	this.Name = name
 	var autoTargetingEnabled bool = true
 	this.AutoTargetingEnabled = &autoTargetingEnabled
-	this.TargetingAttributes = targetingAttributes
+	this.Name = name
 	var placementGroup PlacementGroupType = ALL
 	this.PlacementGroup = &placementGroup
+	this.TargetingAttributes = targetingAttributes
 	return &this
 }
 
@@ -59,30 +59,6 @@ func NewTargetingTemplateCreateWithDefaults() *TargetingTemplateCreate {
 	var placementGroup PlacementGroupType = ALL
 	this.PlacementGroup = &placementGroup
 	return &this
-}
-
-// GetName returns the Name field value
-func (o *TargetingTemplateCreate) GetName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value
-// and a boolean to check if the value has been set.
-func (o *TargetingTemplateCreate) GetNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Name, true
-}
-
-// SetName sets field value
-func (o *TargetingTemplateCreate) SetName(v string) {
-	o.Name = v
 }
 
 // GetAutoTargetingEnabled returns the AutoTargetingEnabled field value if set, zero value otherwise.
@@ -117,28 +93,60 @@ func (o *TargetingTemplateCreate) SetAutoTargetingEnabled(v bool) {
 	o.AutoTargetingEnabled = &v
 }
 
-// GetTargetingAttributes returns the TargetingAttributes field value
-func (o *TargetingTemplateCreate) GetTargetingAttributes() TargetingSpec {
+// GetKeywords returns the Keywords field value if set, zero value otherwise.
+func (o *TargetingTemplateCreate) GetKeywords() []TargetingTemplateKeyword {
+	if o == nil || IsNil(o.Keywords) {
+		var ret []TargetingTemplateKeyword
+		return ret
+	}
+	return o.Keywords
+}
+
+// GetKeywordsOk returns a tuple with the Keywords field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetingTemplateCreate) GetKeywordsOk() ([]TargetingTemplateKeyword, bool) {
+	if o == nil || IsNil(o.Keywords) {
+		return nil, false
+	}
+	return o.Keywords, true
+}
+
+// HasKeywords returns a boolean if a field has been set.
+func (o *TargetingTemplateCreate) HasKeywords() bool {
+	if o != nil && !IsNil(o.Keywords) {
+		return true
+	}
+
+	return false
+}
+
+// SetKeywords gets a reference to the given []TargetingTemplateKeyword and assigns it to the Keywords field.
+func (o *TargetingTemplateCreate) SetKeywords(v []TargetingTemplateKeyword) {
+	o.Keywords = v
+}
+
+// GetName returns the Name field value
+func (o *TargetingTemplateCreate) GetName() string {
 	if o == nil {
-		var ret TargetingSpec
+		var ret string
 		return ret
 	}
 
-	return o.TargetingAttributes
+	return o.Name
 }
 
-// GetTargetingAttributesOk returns a tuple with the TargetingAttributes field value
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *TargetingTemplateCreate) GetTargetingAttributesOk() (*TargetingSpec, bool) {
+func (o *TargetingTemplateCreate) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.TargetingAttributes, true
+	return &o.Name, true
 }
 
-// SetTargetingAttributes sets field value
-func (o *TargetingTemplateCreate) SetTargetingAttributes(v TargetingSpec) {
-	o.TargetingAttributes = v
+// SetName sets field value
+func (o *TargetingTemplateCreate) SetName(v string) {
+	o.Name = v
 }
 
 // GetPlacementGroup returns the PlacementGroup field value if set, zero value otherwise.
@@ -173,36 +181,28 @@ func (o *TargetingTemplateCreate) SetPlacementGroup(v PlacementGroupType) {
 	o.PlacementGroup = &v
 }
 
-// GetKeywords returns the Keywords field value if set, zero value otherwise.
-func (o *TargetingTemplateCreate) GetKeywords() []TargetingTemplateKeyword {
-	if o == nil || IsNil(o.Keywords) {
-		var ret []TargetingTemplateKeyword
+// GetTargetingAttributes returns the TargetingAttributes field value
+func (o *TargetingTemplateCreate) GetTargetingAttributes() TargetingSpec {
+	if o == nil {
+		var ret TargetingSpec
 		return ret
 	}
-	return o.Keywords
+
+	return o.TargetingAttributes
 }
 
-// GetKeywordsOk returns a tuple with the Keywords field value if set, nil otherwise
+// GetTargetingAttributesOk returns a tuple with the TargetingAttributes field value
 // and a boolean to check if the value has been set.
-func (o *TargetingTemplateCreate) GetKeywordsOk() ([]TargetingTemplateKeyword, bool) {
-	if o == nil || IsNil(o.Keywords) {
+func (o *TargetingTemplateCreate) GetTargetingAttributesOk() (*TargetingSpec, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Keywords, true
+	return &o.TargetingAttributes, true
 }
 
-// HasKeywords returns a boolean if a field has been set.
-func (o *TargetingTemplateCreate) HasKeywords() bool {
-	if o != nil && !IsNil(o.Keywords) {
-		return true
-	}
-
-	return false
-}
-
-// SetKeywords gets a reference to the given []TargetingTemplateKeyword and assigns it to the Keywords field.
-func (o *TargetingTemplateCreate) SetKeywords(v []TargetingTemplateKeyword) {
-	o.Keywords = v
+// SetTargetingAttributes sets field value
+func (o *TargetingTemplateCreate) SetTargetingAttributes(v TargetingSpec) {
+	o.TargetingAttributes = v
 }
 
 // GetTrackingUrls returns the TrackingUrls field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -257,17 +257,17 @@ func (o TargetingTemplateCreate) MarshalJSON() ([]byte, error) {
 
 func (o TargetingTemplateCreate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
 	if !IsNil(o.AutoTargetingEnabled) {
 		toSerialize["auto_targeting_enabled"] = o.AutoTargetingEnabled
-	}
-	toSerialize["targeting_attributes"] = o.TargetingAttributes
-	if !IsNil(o.PlacementGroup) {
-		toSerialize["placement_group"] = o.PlacementGroup
 	}
 	if !IsNil(o.Keywords) {
 		toSerialize["keywords"] = o.Keywords
 	}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.PlacementGroup) {
+		toSerialize["placement_group"] = o.PlacementGroup
+	}
+	toSerialize["targeting_attributes"] = o.TargetingAttributes
 	if o.TrackingUrls.IsSet() {
 		toSerialize["tracking_urls"] = o.TrackingUrls.Get()
 	}

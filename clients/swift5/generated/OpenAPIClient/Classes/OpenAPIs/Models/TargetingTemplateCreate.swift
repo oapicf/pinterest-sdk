@@ -12,30 +12,30 @@ import AnyCodable
 
 public struct TargetingTemplateCreate: Codable, JSONEncodable, Hashable {
 
-    /** Name of targeting template. */
-    public var name: String
     /** Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>. */
     public var autoTargetingEnabled: Bool? = true
-    public var targetingAttributes: TargetingSpec
-    public var placementGroup: PlacementGroupType?
     public var keywords: [TargetingTemplateKeyword]?
+    /** Name of targeting template. */
+    public var name: String
+    public var placementGroup: PlacementGroupType?
+    public var targetingAttributes: TargetingSpec
     public var trackingUrls: TrackingUrls?
 
-    public init(name: String, autoTargetingEnabled: Bool? = true, targetingAttributes: TargetingSpec, placementGroup: PlacementGroupType? = nil, keywords: [TargetingTemplateKeyword]? = nil, trackingUrls: TrackingUrls? = nil) {
-        self.name = name
+    public init(autoTargetingEnabled: Bool? = true, keywords: [TargetingTemplateKeyword]? = nil, name: String, placementGroup: PlacementGroupType? = nil, targetingAttributes: TargetingSpec, trackingUrls: TrackingUrls? = nil) {
         self.autoTargetingEnabled = autoTargetingEnabled
-        self.targetingAttributes = targetingAttributes
-        self.placementGroup = placementGroup
         self.keywords = keywords
+        self.name = name
+        self.placementGroup = placementGroup
+        self.targetingAttributes = targetingAttributes
         self.trackingUrls = trackingUrls
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case name
         case autoTargetingEnabled = "auto_targeting_enabled"
-        case targetingAttributes = "targeting_attributes"
-        case placementGroup = "placement_group"
         case keywords
+        case name
+        case placementGroup = "placement_group"
+        case targetingAttributes = "targeting_attributes"
         case trackingUrls = "tracking_urls"
     }
 
@@ -43,11 +43,11 @@ public struct TargetingTemplateCreate: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(name, forKey: .name)
         try container.encodeIfPresent(autoTargetingEnabled, forKey: .autoTargetingEnabled)
-        try container.encode(targetingAttributes, forKey: .targetingAttributes)
-        try container.encodeIfPresent(placementGroup, forKey: .placementGroup)
         try container.encodeIfPresent(keywords, forKey: .keywords)
+        try container.encode(name, forKey: .name)
+        try container.encodeIfPresent(placementGroup, forKey: .placementGroup)
+        try container.encode(targetingAttributes, forKey: .targetingAttributes)
         try container.encodeIfPresent(trackingUrls, forKey: .trackingUrls)
     }
 }

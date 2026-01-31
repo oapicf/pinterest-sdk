@@ -1,0 +1,43 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server PinMediaWithImages"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a PinMediaWithImages"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  ImageMetadata = openapi_server.resourceTypes.ImageMetadata
+}
+resourceTypes {
+
+  PinMediaWithImages {
+    title = PinMediaWithImages
+    description = PinMediaWithImages
+    derivedFrom = Root
+    properties {
+        items {
+          type = array
+          items.type = ImageMetadata
+          description = ""
+          optional = false
+        }
+        media_type {
+          type =  string
+          description = ""
+          enum = ["multiple_images"]
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  PinMediaWithImages {
+    title = PinMediaWithImages
+    description = PinMediaWithImages
+    implements = openapi_server.resourceTypes.PinMediaWithImages
+
+  }
+}

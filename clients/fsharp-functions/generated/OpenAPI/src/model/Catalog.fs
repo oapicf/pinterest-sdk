@@ -18,10 +18,10 @@ module Catalog =
     Id : string;
     [<JsonProperty(PropertyName = "updated_at")>]
     UpdatedAt : DateTime;
-    [<JsonProperty(PropertyName = "name")>]
-    Name : string option;
     [<JsonProperty(PropertyName = "catalog_type")>]
     CatalogType : CatalogsType;
+    [<JsonProperty(PropertyName = "name")>]
+    Name : string option;
   }
 
   //#endregion

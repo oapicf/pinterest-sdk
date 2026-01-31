@@ -4,13 +4,9 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.time.OffsetDateTime;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
-import org.openapitools.model.BoardOwner;
-import org.openapitools.model.PinMedia;
 import org.openapitools.model.PinMediaSource;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
 import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -24,25 +20,12 @@ import java.util.*;
 import javax.annotation.Generated;
 
 /**
- * Pin
+ * Resource create operation model.
  */
 
-@Schema(name = "PinCreate", description = "Pin")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Schema(name = "PinCreate", description = "Resource create operation model.")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinCreate {
-
-  private @Nullable String id;
-
-  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-  private @Nullable OffsetDateTime createdAt;
-
-  private JsonNullable<@Size(max = 2048) String> link = JsonNullable.<String>undefined();
-
-  private JsonNullable<@Size(max = 100) String> title = JsonNullable.<String>undefined();
-
-  private JsonNullable<@Size(max = 800) String> description = JsonNullable.<String>undefined();
-
-  private JsonNullable<String> dominantColor = JsonNullable.<String>undefined();
 
   private JsonNullable<@Size(max = 500) String> altText = JsonNullable.<String>undefined();
 
@@ -50,135 +33,19 @@ public class PinCreate {
 
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> boardSectionId = JsonNullable.<String>undefined();
 
-  private @Nullable BoardOwner boardOwner;
+  private JsonNullable<@Size(max = 800) String> description = JsonNullable.<String>undefined();
 
-  private @Nullable PinMedia media;
+  private JsonNullable<String> dominantColor = JsonNullable.<String>undefined();
+
+  private JsonNullable<@Size(max = 2048) String> link = JsonNullable.<String>undefined();
 
   private @Nullable PinMediaSource mediaSource;
 
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> parentPinId = JsonNullable.<String>undefined();
 
-  private JsonNullable<String> note = JsonNullable.<String>undefined();
+  private JsonNullable<@Pattern(regexp = "^\\d+$") String> sponsorId = JsonNullable.<String>undefined();
 
-  public PinCreate id(@Nullable String id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Get id
-   * @return id
-   */
-  @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "id", accessMode = Schema.AccessMode.READ_ONLY, example = "813744226420795884", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("id")
-  public @Nullable String getId() {
-    return id;
-  }
-
-  public void setId(@Nullable String id) {
-    this.id = id;
-  }
-
-  public PinCreate createdAt(@Nullable OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
-    return this;
-  }
-
-  /**
-   * Get createdAt
-   * @return createdAt
-   */
-  @Valid 
-  @Schema(name = "created_at", accessMode = Schema.AccessMode.READ_ONLY, example = "2020-01-01T20:10:40Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("created_at")
-  public @Nullable OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-
-  public void setCreatedAt(@Nullable OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
-  }
-
-  public PinCreate link(String link) {
-    this.link = JsonNullable.of(link);
-    return this;
-  }
-
-  /**
-   * Get link
-   * @return link
-   */
-  @Size(max = 2048) 
-  @Schema(name = "link", example = "https://www.pinterest.com/", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("link")
-  public JsonNullable<@Size(max = 2048) String> getLink() {
-    return link;
-  }
-
-  public void setLink(JsonNullable<String> link) {
-    this.link = link;
-  }
-
-  public PinCreate title(String title) {
-    this.title = JsonNullable.of(title);
-    return this;
-  }
-
-  /**
-   * Get title
-   * @return title
-   */
-  @Size(max = 100) 
-  @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("title")
-  public JsonNullable<@Size(max = 100) String> getTitle() {
-    return title;
-  }
-
-  public void setTitle(JsonNullable<String> title) {
-    this.title = title;
-  }
-
-  public PinCreate description(String description) {
-    this.description = JsonNullable.of(description);
-    return this;
-  }
-
-  /**
-   * Get description
-   * @return description
-   */
-  @Size(max = 800) 
-  @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("description")
-  public JsonNullable<@Size(max = 800) String> getDescription() {
-    return description;
-  }
-
-  public void setDescription(JsonNullable<String> description) {
-    this.description = description;
-  }
-
-  public PinCreate dominantColor(String dominantColor) {
-    this.dominantColor = JsonNullable.of(dominantColor);
-    return this;
-  }
-
-  /**
-   * Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".
-   * @return dominantColor
-   */
-  
-  @Schema(name = "dominant_color", example = "#6E7874", description = "Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("dominant_color")
-  public JsonNullable<String> getDominantColor() {
-    return dominantColor;
-  }
-
-  public void setDominantColor(JsonNullable<String> dominantColor) {
-    this.dominantColor = dominantColor;
-  }
+  private JsonNullable<@Size(max = 100) String> title = JsonNullable.<String>undefined();
 
   public PinCreate altText(String altText) {
     this.altText = JsonNullable.of(altText);
@@ -240,44 +107,64 @@ public class PinCreate {
     this.boardSectionId = boardSectionId;
   }
 
-  public PinCreate boardOwner(@Nullable BoardOwner boardOwner) {
-    this.boardOwner = boardOwner;
+  public PinCreate description(String description) {
+    this.description = JsonNullable.of(description);
     return this;
   }
 
   /**
-   * Get boardOwner
-   * @return boardOwner
+   * Get description
+   * @return description
    */
-  @Valid 
-  @Schema(name = "board_owner", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("board_owner")
-  public @Nullable BoardOwner getBoardOwner() {
-    return boardOwner;
+  @Size(max = 800) 
+  @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("description")
+  public JsonNullable<@Size(max = 800) String> getDescription() {
+    return description;
   }
 
-  public void setBoardOwner(@Nullable BoardOwner boardOwner) {
-    this.boardOwner = boardOwner;
+  public void setDescription(JsonNullable<String> description) {
+    this.description = description;
   }
 
-  public PinCreate media(@Nullable PinMedia media) {
-    this.media = media;
+  public PinCreate dominantColor(String dominantColor) {
+    this.dominantColor = JsonNullable.of(dominantColor);
     return this;
   }
 
   /**
-   * Get media
-   * @return media
+   * Dominant pin color. Hex number, e.g. `#6E7874`.
+   * @return dominantColor
    */
-  @Valid 
-  @Schema(name = "media", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("media")
-  public @Nullable PinMedia getMedia() {
-    return media;
+  
+  @Schema(name = "dominant_color", description = "Dominant pin color. Hex number, e.g. `#6E7874`.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("dominant_color")
+  public JsonNullable<String> getDominantColor() {
+    return dominantColor;
   }
 
-  public void setMedia(@Nullable PinMedia media) {
-    this.media = media;
+  public void setDominantColor(JsonNullable<String> dominantColor) {
+    this.dominantColor = dominantColor;
+  }
+
+  public PinCreate link(String link) {
+    this.link = JsonNullable.of(link);
+    return this;
+  }
+
+  /**
+   * Get link
+   * @return link
+   */
+  @Size(max = 2048) 
+  @Schema(name = "link", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("link")
+  public JsonNullable<@Size(max = 2048) String> getLink() {
+    return link;
+  }
+
+  public void setLink(JsonNullable<String> link) {
+    this.link = link;
   }
 
   public PinCreate mediaSource(@Nullable PinMediaSource mediaSource) {
@@ -306,11 +193,11 @@ public class PinCreate {
   }
 
   /**
-   * The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
+   * The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).
    * @return parentPinId
    */
   @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "parent_pin_id", description = "The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "parent_pin_id", description = "The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("parent_pin_id")
   public JsonNullable<@Pattern(regexp = "^\\d+$") String> getParentPinId() {
     return parentPinId;
@@ -320,24 +207,44 @@ public class PinCreate {
     this.parentPinId = parentPinId;
   }
 
-  public PinCreate note(String note) {
-    this.note = JsonNullable.of(note);
+  public PinCreate sponsorId(String sponsorId) {
+    this.sponsorId = JsonNullable.of(sponsorId);
     return this;
   }
 
   /**
-   * Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
-   * @return note
+   * The sponsor account id to request paid partnership from.  Currently the field is only available to a list of users in a closed beta.
+   * @return sponsorId
    */
-  
-  @Schema(name = "note", description = "Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("note")
-  public JsonNullable<String> getNote() {
-    return note;
+  @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "sponsor_id", description = "The sponsor account id to request paid partnership from.  Currently the field is only available to a list of users in a closed beta.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("sponsor_id")
+  public JsonNullable<@Pattern(regexp = "^\\d+$") String> getSponsorId() {
+    return sponsorId;
   }
 
-  public void setNote(JsonNullable<String> note) {
-    this.note = note;
+  public void setSponsorId(JsonNullable<String> sponsorId) {
+    this.sponsorId = sponsorId;
+  }
+
+  public PinCreate title(String title) {
+    this.title = JsonNullable.of(title);
+    return this;
+  }
+
+  /**
+   * Get title
+   * @return title
+   */
+  @Size(max = 100) 
+  @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("title")
+  public JsonNullable<@Size(max = 100) String> getTitle() {
+    return title;
+  }
+
+  public void setTitle(JsonNullable<String> title) {
+    this.title = title;
   }
 
   @Override
@@ -349,20 +256,16 @@ public class PinCreate {
       return false;
     }
     PinCreate pinCreate = (PinCreate) o;
-    return Objects.equals(this.id, pinCreate.id) &&
-        Objects.equals(this.createdAt, pinCreate.createdAt) &&
-        equalsNullable(this.link, pinCreate.link) &&
-        equalsNullable(this.title, pinCreate.title) &&
-        equalsNullable(this.description, pinCreate.description) &&
-        equalsNullable(this.dominantColor, pinCreate.dominantColor) &&
-        equalsNullable(this.altText, pinCreate.altText) &&
+    return equalsNullable(this.altText, pinCreate.altText) &&
         Objects.equals(this.boardId, pinCreate.boardId) &&
         equalsNullable(this.boardSectionId, pinCreate.boardSectionId) &&
-        Objects.equals(this.boardOwner, pinCreate.boardOwner) &&
-        Objects.equals(this.media, pinCreate.media) &&
+        equalsNullable(this.description, pinCreate.description) &&
+        equalsNullable(this.dominantColor, pinCreate.dominantColor) &&
+        equalsNullable(this.link, pinCreate.link) &&
         Objects.equals(this.mediaSource, pinCreate.mediaSource) &&
         equalsNullable(this.parentPinId, pinCreate.parentPinId) &&
-        equalsNullable(this.note, pinCreate.note);
+        equalsNullable(this.sponsorId, pinCreate.sponsorId) &&
+        equalsNullable(this.title, pinCreate.title);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -371,7 +274,7 @@ public class PinCreate {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, hashCodeNullable(link), hashCodeNullable(title), hashCodeNullable(description), hashCodeNullable(dominantColor), hashCodeNullable(altText), boardId, hashCodeNullable(boardSectionId), boardOwner, media, mediaSource, hashCodeNullable(parentPinId), hashCodeNullable(note));
+    return Objects.hash(hashCodeNullable(altText), boardId, hashCodeNullable(boardSectionId), hashCodeNullable(description), hashCodeNullable(dominantColor), hashCodeNullable(link), mediaSource, hashCodeNullable(parentPinId), hashCodeNullable(sponsorId), hashCodeNullable(title));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -385,20 +288,16 @@ public class PinCreate {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PinCreate {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    link: ").append(toIndentedString(link)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    dominantColor: ").append(toIndentedString(dominantColor)).append("\n");
     sb.append("    altText: ").append(toIndentedString(altText)).append("\n");
     sb.append("    boardId: ").append(toIndentedString(boardId)).append("\n");
     sb.append("    boardSectionId: ").append(toIndentedString(boardSectionId)).append("\n");
-    sb.append("    boardOwner: ").append(toIndentedString(boardOwner)).append("\n");
-    sb.append("    media: ").append(toIndentedString(media)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    dominantColor: ").append(toIndentedString(dominantColor)).append("\n");
+    sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("    mediaSource: ").append(toIndentedString(mediaSource)).append("\n");
     sb.append("    parentPinId: ").append(toIndentedString(parentPinId)).append("\n");
-    sb.append("    note: ").append(toIndentedString(note)).append("\n");
+    sb.append("    sponsorId: ").append(toIndentedString(sponsorId)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("}");
     return sb.toString();
   }

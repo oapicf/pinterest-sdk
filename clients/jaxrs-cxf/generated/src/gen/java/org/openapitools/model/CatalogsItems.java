@@ -26,21 +26,21 @@ public class CatalogsItems  {
 
   @Valid
 
-  private List<@Valid ItemResponse> items = new ArrayList<>();
+  private List<ItemResponse> items = new ArrayList<>();
  /**
    * Array with catalogs items
    * @return items
   **/
   @JsonProperty("items")
-  public List<@Valid ItemResponse> getItems() {
+  public List<ItemResponse> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid ItemResponse> items) {
+  public void setItems(List<ItemResponse> items) {
     this.items = items;
   }
 
-  public CatalogsItems items(List<@Valid ItemResponse> items) {
+  public CatalogsItems items(List<ItemResponse> items) {
     this.items = items;
     return this;
   }

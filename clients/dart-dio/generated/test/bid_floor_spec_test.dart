@@ -7,8 +7,18 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(BidFloorSpec, () {
+    // ActionType billableEvent
+    test('to test the property `billableEvent`', () async {
+      // TODO
+    });
+
     // BuiltList<Country> countries
     test('to test the property `countries`', () async {
+      // TODO
+    });
+
+    // CreativeType creativeType
+    test('to test the property `creativeType`', () async {
       // TODO
     });
 
@@ -22,18 +32,8 @@ void main() {
       // TODO
     });
 
-    // ActionType billableEvent
-    test('to test the property `billableEvent`', () async {
-      // TODO
-    });
-
     // OptimizationGoalMetadata optimizationGoalMetadata
     test('to test the property `optimizationGoalMetadata`', () async {
-      // TODO
-    });
-
-    // CreativeType creativeType
-    test('to test the property `creativeType`', () async {
       // TODO
     });
 

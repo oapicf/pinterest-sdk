@@ -59,6 +59,13 @@ public:
 	/*! \brief Set Creation time. Unix timestamp in seconds.
 	 */
 	void setCreatedTime(long long  created_time);
+	/*! \brief Get Customer list errors
+	 */
+	std::string getExceptions();
+
+	/*! \brief Set Customer list errors
+	 */
+	void setExceptions(std::string  exceptions);
 	/*! \brief Get Customer list ID.
 	 */
 	std::string getId();
@@ -115,17 +122,11 @@ public:
 	/*! \brief Set Last update time. Unix timestamp in seconds.
 	 */
 	void setUpdatedTime(long long  updated_time);
-	/*! \brief Get Customer list errors
-	 */
-	std::string getExceptions();
-
-	/*! \brief Set Customer list errors
-	 */
-	void setExceptions(std::string  exceptions);
 
 private:
 	std::string ad_account_id;
 	long long created_time;
+	std::string exceptions;
 	std::string id;
 	std::string name;
 	long long num_batches;
@@ -134,7 +135,6 @@ private:
 	std::string status;
 	std::string type;
 	long long updated_time;
-	std::string exceptions;
 	void __init();
 	void __cleanup();
 

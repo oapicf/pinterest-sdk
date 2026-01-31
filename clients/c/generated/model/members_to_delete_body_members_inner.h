@@ -20,15 +20,15 @@ typedef struct members_to_delete_body_members_inner_t members_to_delete_body_mem
 
 
 typedef struct members_to_delete_body_members_inner_t {
-    char *member_id; // string
     pinterest_rest_api_business_role_for_members__e business_role; //referenced enum
+    char *member_id; // string
 
     int _library_owned; // Is the library responsible for freeing this object?
 } members_to_delete_body_members_inner_t;
 
 __attribute__((deprecated)) members_to_delete_body_members_inner_t *members_to_delete_body_members_inner_create(
-    char *member_id,
-    pinterest_rest_api_business_role_for_members__e business_role
+    pinterest_rest_api_business_role_for_members__e business_role,
+    char *member_id
 );
 
 void members_to_delete_body_members_inner_free(members_to_delete_body_members_inner_t *members_to_delete_body_members_inner);

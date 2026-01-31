@@ -14,7 +14,7 @@ test_that("catalog_id", {
 })
 
 test_that("items", {
-  # tests for the property `items` (array[AdvancedAuctionProcessedItem])
+  # tests for the property `items` (array[AdvancedAuctionItemsSubmitRecord])
   # Array of advanced auction processed items
 
   # uncomment below to test the property

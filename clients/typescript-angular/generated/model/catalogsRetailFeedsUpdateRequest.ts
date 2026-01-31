@@ -20,21 +20,21 @@ import { NullableCurrency } from './nullableCurrency';
  * Request object for updating a feed.
  */
 export interface CatalogsRetailFeedsUpdateRequest { 
-    default_currency?: NullableCurrency | null;
-    /**
-     * A human-friendly name associated to a given feed.
-     */
-    name?: string;
-    format?: CatalogsFormat;
+    catalog_type: CatalogsType;
     credentials?: CatalogsFeedCredentials | null;
+    default_availability?: ProductAvailabilityType | null;
+    default_currency?: NullableCurrency | null;
+    format?: CatalogsFormat;
     /**
      * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
      */
     location?: string;
+    /**
+     * A human-friendly name associated to a given feed.
+     */
+    name?: string;
     preferred_processing_schedule?: CatalogsFeedProcessingSchedule | null;
     status?: CatalogsStatus;
-    catalog_type: CatalogsType;
-    default_availability?: ProductAvailabilityType | null;
 }
 export namespace CatalogsRetailFeedsUpdateRequest {
 }

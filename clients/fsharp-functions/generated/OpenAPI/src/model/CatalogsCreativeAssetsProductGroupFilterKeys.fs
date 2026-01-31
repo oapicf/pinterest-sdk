@@ -3,6 +3,7 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
+open OpenAPI.Model.CatalogsProductGroupFilterOperatorTypeCriteria
 open OpenAPI.Model.CatalogsProductGroupMultipleMediaTypesCriteria
 open OpenAPI.Model.CatalogsProductGroupMultipleStringCriteria
 open OpenAPI.Model.CatalogsProductGroupMultipleStringListCriteria
@@ -20,6 +21,7 @@ open OpenAPI.Model.GoogleProductCategory4Filter
 open OpenAPI.Model.GoogleProductCategory5Filter
 open OpenAPI.Model.GoogleProductCategory6Filter
 open OpenAPI.Model.MediaTypeFilter
+open OpenAPI.Model.TitleKeywordsFilter
 
 module CatalogsCreativeAssetsProductGroupFilterKeys =
 
@@ -30,15 +32,15 @@ module CatalogsCreativeAssetsProductGroupFilterKeys =
     [<JsonProperty(PropertyName = "CREATIVE_ASSETS_ID")>]
     CREATIVE_ASSETS_ID : CatalogsProductGroupMultipleStringCriteria;
     [<JsonProperty(PropertyName = "CUSTOM_LABEL_0")>]
-    CUSTOMLABEL0 : CatalogsProductGroupMultipleStringCriteria;
+    CUSTOMLABEL0 : CatalogsProductGroupFilterOperatorTypeCriteria;
     [<JsonProperty(PropertyName = "CUSTOM_LABEL_1")>]
-    CUSTOMLABEL1 : CatalogsProductGroupMultipleStringCriteria;
+    CUSTOMLABEL1 : CatalogsProductGroupFilterOperatorTypeCriteria;
     [<JsonProperty(PropertyName = "CUSTOM_LABEL_2")>]
-    CUSTOMLABEL2 : CatalogsProductGroupMultipleStringCriteria;
+    CUSTOMLABEL2 : CatalogsProductGroupFilterOperatorTypeCriteria;
     [<JsonProperty(PropertyName = "CUSTOM_LABEL_3")>]
-    CUSTOMLABEL3 : CatalogsProductGroupMultipleStringCriteria;
+    CUSTOMLABEL3 : CatalogsProductGroupFilterOperatorTypeCriteria;
     [<JsonProperty(PropertyName = "CUSTOM_LABEL_4")>]
-    CUSTOMLABEL4 : CatalogsProductGroupMultipleStringCriteria;
+    CUSTOMLABEL4 : CatalogsProductGroupFilterOperatorTypeCriteria;
     [<JsonProperty(PropertyName = "GOOGLE_PRODUCT_CATEGORY_6")>]
     GOOGLEPRODUCTCATEGORY6 : CatalogsProductGroupMultipleStringListCriteria;
     [<JsonProperty(PropertyName = "GOOGLE_PRODUCT_CATEGORY_5")>]
@@ -55,6 +57,8 @@ module CatalogsCreativeAssetsProductGroupFilterKeys =
     GOOGLEPRODUCTCATEGORY0 : CatalogsProductGroupMultipleStringListCriteria;
     [<JsonProperty(PropertyName = "MEDIA_TYPE")>]
     MEDIA_TYPE : CatalogsProductGroupMultipleMediaTypesCriteria;
+    [<JsonProperty(PropertyName = "TITLE_KEYWORDS")>]
+    TITLE_KEYWORDS : CatalogsProductGroupMultipleStringCriteria;
   }
 
   //#endregion

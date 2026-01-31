@@ -12,26 +12,25 @@ import AnyCodable
 
 public struct AdAccountsList200Response: Codable, JSONEncodable, Hashable {
 
-    /** Ad accounts */
-    public var items: [AdAccount]
     public var bookmark: String?
+    public var items: [AdAccount]
 
-    public init(items: [AdAccount], bookmark: String? = nil) {
-        self.items = items
+    public init(bookmark: String? = nil, items: [AdAccount]) {
         self.bookmark = bookmark
+        self.items = items
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case items
         case bookmark
+        case items
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(items, forKey: .items)
         try container.encodeIfPresent(bookmark, forKey: .bookmark)
+        try container.encode(items, forKey: .items)
     }
 }
 

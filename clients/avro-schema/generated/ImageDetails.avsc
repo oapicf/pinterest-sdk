@@ -5,11 +5,6 @@
   "name": "ImageDetails",
   "fields": [
     {
-      "name": "width",
-      "type": "int",
-      "doc": ""
-    },
-    {
       "name": "height",
       "type": "int",
       "doc": ""
@@ -17,6 +12,11 @@
     {
       "name": "url",
       "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "width",
+      "type": "int",
       "doc": ""
     }
   ]

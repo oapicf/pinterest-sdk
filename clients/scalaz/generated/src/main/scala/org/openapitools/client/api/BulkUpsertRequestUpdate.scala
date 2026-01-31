@@ -12,11 +12,13 @@ import org.joda.time.DateTime
 import BulkUpsertRequestUpdate._
 
 case class BulkUpsertRequestUpdate (
-  campaigns: Option[List[CampaignUpdateRequest]],
-adGroups: Option[List[AdGroupUpdateRequest]],
+  adGroups: Option[List[AdGroupUpdateRequest]],
 ads: Option[List[AdUpdateRequest]],
-productGroups: Option[List[ProductGroupPromotionUpdateRequest]],
-keywords: Option[List[KeywordUpdate]])
+campaigns: Option[List[CampaignUpdateRequest]],
+catalogProductGroups: Option[List[CatalogsProductGroupsUpdateRequest]],
+keywords: Option[List[KeywordUpdate]],
+labels: Option[List[LabelBulkUpdateRequest]],
+productGroups: Option[List[ProductGroupPromotionUpdateRequest]])
 
 object BulkUpsertRequestUpdate {
   import DateTimeCodecs._

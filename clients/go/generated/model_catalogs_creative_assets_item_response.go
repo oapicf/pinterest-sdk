@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -22,12 +22,12 @@ var _ MappedNullable = &CatalogsCreativeAssetsItemResponse{}
 
 // CatalogsCreativeAssetsItemResponse Object describing a hotel record
 type CatalogsCreativeAssetsItemResponse struct {
+	Attributes *CatalogsCreativeAssetsAttributes `json:"attributes,omitempty"`
 	CatalogType CatalogsType `json:"catalog_type"`
 	// The catalog creative assets id in the merchant namespace
 	CreativeAssetsId *string `json:"creative_assets_id,omitempty"`
 	// The pins mapped to the item
 	Pins []Pin `json:"pins,omitempty"`
-	Attributes *CatalogsCreativeAssetsAttributes `json:"attributes,omitempty"`
 }
 
 type _CatalogsCreativeAssetsItemResponse CatalogsCreativeAssetsItemResponse
@@ -48,6 +48,38 @@ func NewCatalogsCreativeAssetsItemResponse(catalogType CatalogsType) *CatalogsCr
 func NewCatalogsCreativeAssetsItemResponseWithDefaults() *CatalogsCreativeAssetsItemResponse {
 	this := CatalogsCreativeAssetsItemResponse{}
 	return &this
+}
+
+// GetAttributes returns the Attributes field value if set, zero value otherwise.
+func (o *CatalogsCreativeAssetsItemResponse) GetAttributes() CatalogsCreativeAssetsAttributes {
+	if o == nil || IsNil(o.Attributes) {
+		var ret CatalogsCreativeAssetsAttributes
+		return ret
+	}
+	return *o.Attributes
+}
+
+// GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogsCreativeAssetsItemResponse) GetAttributesOk() (*CatalogsCreativeAssetsAttributes, bool) {
+	if o == nil || IsNil(o.Attributes) {
+		return nil, false
+	}
+	return o.Attributes, true
+}
+
+// HasAttributes returns a boolean if a field has been set.
+func (o *CatalogsCreativeAssetsItemResponse) HasAttributes() bool {
+	if o != nil && !IsNil(o.Attributes) {
+		return true
+	}
+
+	return false
+}
+
+// SetAttributes gets a reference to the given CatalogsCreativeAssetsAttributes and assigns it to the Attributes field.
+func (o *CatalogsCreativeAssetsItemResponse) SetAttributes(v CatalogsCreativeAssetsAttributes) {
+	o.Attributes = &v
 }
 
 // GetCatalogType returns the CatalogType field value
@@ -139,38 +171,6 @@ func (o *CatalogsCreativeAssetsItemResponse) SetPins(v []Pin) {
 	o.Pins = v
 }
 
-// GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *CatalogsCreativeAssetsItemResponse) GetAttributes() CatalogsCreativeAssetsAttributes {
-	if o == nil || IsNil(o.Attributes) {
-		var ret CatalogsCreativeAssetsAttributes
-		return ret
-	}
-	return *o.Attributes
-}
-
-// GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CatalogsCreativeAssetsItemResponse) GetAttributesOk() (*CatalogsCreativeAssetsAttributes, bool) {
-	if o == nil || IsNil(o.Attributes) {
-		return nil, false
-	}
-	return o.Attributes, true
-}
-
-// HasAttributes returns a boolean if a field has been set.
-func (o *CatalogsCreativeAssetsItemResponse) HasAttributes() bool {
-	if o != nil && !IsNil(o.Attributes) {
-		return true
-	}
-
-	return false
-}
-
-// SetAttributes gets a reference to the given CatalogsCreativeAssetsAttributes and assigns it to the Attributes field.
-func (o *CatalogsCreativeAssetsItemResponse) SetAttributes(v CatalogsCreativeAssetsAttributes) {
-	o.Attributes = &v
-}
-
 func (o CatalogsCreativeAssetsItemResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -181,15 +181,15 @@ func (o CatalogsCreativeAssetsItemResponse) MarshalJSON() ([]byte, error) {
 
 func (o CatalogsCreativeAssetsItemResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Attributes) {
+		toSerialize["attributes"] = o.Attributes
+	}
 	toSerialize["catalog_type"] = o.CatalogType
 	if !IsNil(o.CreativeAssetsId) {
 		toSerialize["creative_assets_id"] = o.CreativeAssetsId
 	}
 	if o.Pins != nil {
 		toSerialize["pins"] = o.Pins
-	}
-	if !IsNil(o.Attributes) {
-		toSerialize["attributes"] = o.Attributes
 	}
 	return toSerialize, nil
 }

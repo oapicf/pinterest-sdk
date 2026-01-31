@@ -23,9 +23,9 @@ import com.squareup.moshi.JsonClass
  * A successful OAuth client token response for the client token flow.
  *
  * @param accessToken 
- * @param tokenType 
  * @param expiresIn 
  * @param scope 
+ * @param tokenType 
  * @param responseType 
  */
 
@@ -35,14 +35,14 @@ data class OauthAccessTokenResponseClientCredentials (
     @Json(name = "access_token")
     val accessToken: kotlin.String,
 
-    @Json(name = "token_type")
-    val tokenType: kotlin.String = "bearer",
-
     @Json(name = "expires_in")
     val expiresIn: kotlin.Int,
 
     @Json(name = "scope")
     val scope: kotlin.String,
+
+    @Json(name = "token_type")
+    val tokenType: kotlin.String = "bearer",
 
     @Json(name = "response_type")
     val responseType: OauthAccessTokenResponseClientCredentials.ResponseType? = null

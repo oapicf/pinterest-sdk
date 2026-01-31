@@ -4,13 +4,79 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 Feature | HTTP request | Description
 ------------- | ------------- | -------------
+[**brand_accounts_create**](BUSINESSACCESSRELATIONSHIPS_API.md#brand_accounts_create) | **Post** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts | Create a Brand Account
+[**brand_accounts_update**](BUSINESSACCESSRELATIONSHIPS_API.md#brand_accounts_update) | **Patch** /business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id} | Update a Brand Account
 [**business_employers**](BUSINESSACCESSRELATIONSHIPS_API.md#business_employers) | **Get** /businesses/employers | List business employers for user
 [**business_members**](BUSINESSACCESSRELATIONSHIPS_API.md#business_members) | **Get** /businesses/{business_id}/members | Get business members
 [**business_partners**](BUSINESSACCESSRELATIONSHIPS_API.md#business_partners) | **Get** /businesses/{business_id}/partners | Get business partners
 [**delete_business_membership**](BUSINESSACCESSRELATIONSHIPS_API.md#delete_business_membership) | **Delete** /businesses/{business_id}/members | Terminate business memberships
 [**delete_business_partners**](BUSINESSACCESSRELATIONSHIPS_API.md#delete_business_partners) | **Delete** /businesses/{business_id}/partners | Terminate business partnerships
+[**system_user_update**](BUSINESSACCESSRELATIONSHIPS_API.md#system_user_update) | **Patch** /businesses/{business_id}/system_users/{system_user_id} | Update a system user information.
 [**update_business_memberships**](BUSINESSACCESSRELATIONSHIPS_API.md#update_business_memberships) | **Patch** /businesses/{business_id}/members | Update member&#39;s business role
 
+
+# **brand_accounts_create**
+> brand_accounts_create (business_hierarchy_id: STRING_32 ; brand_accounts_create_request: BRAND_ACCOUNTS_CREATE_REQUEST ): detachable BRAND_ACCOUNTS_CREATE_200_RESPONSE
+
+
+Create a Brand Account
+
+Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **business_hierarchy_id** | **STRING_32**| business hierarchy node id | [default to null]
+ **brand_accounts_create_request** | [**BRAND_ACCOUNTS_CREATE_REQUEST**](BRAND_ACCOUNTS_CREATE_REQUEST.md)|  | 
+
+### Return type
+
+[**BRAND_ACCOUNTS_CREATE_200_RESPONSE**](brand_accounts_create_200_response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **brand_accounts_update**
+> brand_accounts_update (business_hierarchy_id: STRING_32 ; brand_account_id: STRING_32 ; brand_accounts_update_request: BRAND_ACCOUNTS_UPDATE_REQUEST ): detachable BRAND_ACCOUNTS_CREATE_200_RESPONSE
+
+
+Update a Brand Account
+
+Update an existing Brand Account
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **business_hierarchy_id** | **STRING_32**| business hierarchy node id | [default to null]
+ **brand_account_id** | **STRING_32**| Unique identifier of a brand account. | [default to null]
+ **brand_accounts_update_request** | [**BRAND_ACCOUNTS_UPDATE_REQUEST**](BRAND_ACCOUNTS_UPDATE_REQUEST.md)|  | 
+
+### Return type
+
+[**BRAND_ACCOUNTS_CREATE_200_RESPONSE**](brand_accounts_create_200_response.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **business_employers**
 > business_employers (page_size:  detachable INTEGER_32 ; bookmark:  detachable STRING_32 ): detachable GET_BUSINESS_EMPLOYERS_200_RESPONSE
@@ -44,7 +110,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **business_members**
-> business_members (business_id: STRING_32 ; assets_summary:  detachable BOOLEAN ; business_roles:  detachable LIST [MEMBER_BUSINESS_ROLE] ; member_ids:  detachable STRING_32 ; start_index:  detachable INTEGER_32 ; bookmark:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ): detachable GET_BUSINESS_MEMBERS_200_RESPONSE
+> business_members (business_id: STRING_32 ; fetch_system_users:  detachable BOOLEAN ; assets_summary:  detachable BOOLEAN ; business_roles:  detachable LIST [MEMBER_BUSINESS_ROLE] ; member_ids:  detachable STRING_32 ; start_index:  detachable INTEGER_32 ; bookmark:  detachable STRING_32 ; page_size:  detachable INTEGER_32 ): detachable GET_BUSINESS_MEMBERS_200_RESPONSE
 
 
 Get business members
@@ -57,6 +123,7 @@ Get all members of the specified business. The return response will include the 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **business_id** | **STRING_32**| Unique identifier of the requesting business. | [default to null]
+ **fetch_system_users** | **BOOLEAN**| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to false]
  **assets_summary** | **BOOLEAN**| Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to false]
  **business_roles** | [**LIST [MEMBER_BUSINESS_ROLE]**](MEMBER_BUSINESS_ROLE.md)| A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned. | [optional] [default to null]
  **member_ids** | **STRING_32**| A list of business members ids separated by comma. | [optional] [default to null]
@@ -165,6 +232,38 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DELETE_PARTNERS_RESPONSE**](DeletePartnersResponse.md)
+
+### Authorization
+
+[pinterest_oauth2](../README.md#pinterest_oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **system_user_update**
+> system_user_update (business_id: STRING_32 ; system_user_id: STRING_32 ; system_user_update_request: SYSTEM_USER_UPDATE_REQUEST )
+
+
+Update a system user information.
+
+Update a system user information such as name.
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **business_id** | **STRING_32**| Unique identifier of the requesting business. | [default to null]
+ **system_user_id** | **STRING_32**| Unique identifier of a system user. | [default to null]
+ **system_user_update_request** | [**SYSTEM_USER_UPDATE_REQUEST**](SYSTEM_USER_UPDATE_REQUEST.md)|  | 
+
+### Return type
+
+{empty response body)
 
 ### Authorization
 

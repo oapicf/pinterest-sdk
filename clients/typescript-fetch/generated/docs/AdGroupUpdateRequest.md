@@ -6,24 +6,28 @@
 
 Name | Type
 ------------ | -------------
-`name` | string
-`status` | [EntityStatus](EntityStatus.md)
-`budgetInMicroCurrency` | number
-`bidInMicroCurrency` | number
-`optimizationGoalMetadata` | [OptimizationGoalMetadata](OptimizationGoalMetadata.md)
-`budgetType` | [BudgetType](BudgetType.md)
-`startTime` | number
-`endTime` | number
-`targetingSpec` | [TargetingSpec](TargetingSpec.md)
-`lifetimeFrequencyCap` | number
-`trackingUrls` | [TrackingUrls](TrackingUrls.md)
 `autoTargetingEnabled` | boolean
-`placementGroup` | [PlacementGroupType](PlacementGroupType.md)
-`pacingDeliveryType` | [PacingDeliveryType](PacingDeliveryType.md)
-`campaignId` | string
-`billableEvent` | [ActionType](ActionType.md)
+`bidInMicroCurrency` | number
 `bidStrategyType` | string
+`billableEvent` | [ActionType](ActionType.md)
+`budgetInMicroCurrency` | number
+`budgetType` | [BudgetType](BudgetType.md)
+`campaignId` | string
+`endTime` | number
+`isCreativeOptimization` | boolean
+`lifetimeFrequencyCap` | number
+`name` | string
+`optimizationGoalMetadata` | [OptimizationGoalMetadata](OptimizationGoalMetadata.md)
+`pacingDeliveryType` | [PacingDeliveryType](PacingDeliveryType.md)
+`placementGroup` | [PlacementGroupType](PlacementGroupType.md)
+`promotionApplicationLevel` | string
+`promotionId` | string
+`startTime` | number
+`status` | [EntityStatus](EntityStatus.md)
+`targetingSpec` | [TargetingSpec](TargetingSpec.md)
 `targetingTemplateIds` | Array&lt;string&gt;
+`trackingUrls` | [TrackingUrls](TrackingUrls.md)
+`bidMultiplier` | number
 `id` | string
 
 ## Example
@@ -33,24 +37,28 @@ import type { AdGroupUpdateRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "name": Ad Group For Pin: 687195905986,
-  "status": null,
-  "budgetInMicroCurrency": 5000000,
-  "bidInMicroCurrency": 5000000,
-  "optimizationGoalMetadata": null,
-  "budgetType": null,
-  "startTime": 5686848000,
-  "endTime": 5705424000,
-  "targetingSpec": null,
-  "lifetimeFrequencyCap": 100,
-  "trackingUrls": null,
   "autoTargetingEnabled": true,
-  "placementGroup": null,
-  "pacingDeliveryType": null,
-  "campaignId": 626736533506,
-  "billableEvent": null,
+  "bidInMicroCurrency": 5000000,
   "bidStrategyType": MAX_BID,
+  "billableEvent": null,
+  "budgetInMicroCurrency": 5000000,
+  "budgetType": null,
+  "campaignId": 626736533506,
+  "endTime": 5705424000,
+  "isCreativeOptimization": true,
+  "lifetimeFrequencyCap": 100,
+  "name": Ad Group For Pin: 687195905986,
+  "optimizationGoalMetadata": null,
+  "pacingDeliveryType": null,
+  "placementGroup": null,
+  "promotionApplicationLevel": ITEM,
+  "promotionId": 7834020347906,
+  "startTime": 5686848000,
+  "status": null,
+  "targetingSpec": null,
   "targetingTemplateIds": null,
+  "trackingUrls": null,
+  "bidMultiplier": 1,
   "id": 2680060704746,
 } satisfies AdGroupUpdateRequest
 

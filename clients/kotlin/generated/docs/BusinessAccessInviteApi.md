@@ -77,7 +77,7 @@ Cancel membership/partnership invites and/or requests.
 //import org.openapitools.client.models.*
 
 val apiInstance = BusinessAccessInviteApi()
-val businessId : kotlin.String = 729090764583391194 // kotlin.String | Business id
+val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
 val cancelInvitesBody : CancelInvitesBody =  // CancelInvitesBody | A list with invite ids
 try {
     val result : DeleteInvitesResultsResponseArray = apiInstance.cancelInvitesOrRequests(businessId, cancelInvitesBody)
@@ -92,7 +92,7 @@ try {
 ```
 
 ### Parameters
-| **businessId** | **kotlin.String**| Business id | |
+| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **cancelInvitesBody** | [**CancelInvitesBody**](CancelInvitesBody.md)| A list with invite ids | |
@@ -177,7 +177,7 @@ Create batch invites or requests. Can create batch invites or requests as descri
 //import org.openapitools.client.models.*
 
 val apiInstance = BusinessAccessInviteApi()
-val businessId : kotlin.String = 729090764583391194 // kotlin.String | Business id
+val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
 val createMembershipOrPartnershipInvitesBody : CreateMembershipOrPartnershipInvitesBody =  // CreateMembershipOrPartnershipInvitesBody | An object with the properties: invite_type, partners, members, business_role
 try {
     val result : CreateInvitesResultsResponseArray = apiInstance.createMembershipOrPartnershipInvites(businessId, createMembershipOrPartnershipInvitesBody)
@@ -192,7 +192,7 @@ try {
 ```
 
 ### Parameters
-| **businessId** | **kotlin.String**| Business id | |
+| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **createMembershipOrPartnershipInvitesBody** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md)| An object with the properties: invite_type, partners, members, business_role | |

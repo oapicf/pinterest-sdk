@@ -3,7 +3,7 @@ Pinterest REST API
 
 Pinterest's REST API
 
-API version: 5.14.0
+API version: 5.23.0
 Contact: blah+oapicf@cliffano.com
 */
 
@@ -26,7 +26,7 @@ type CatalogsCreativeAssetsItemErrorResponse struct {
 	// The catalog creative assets id in the merchant namespace
 	CreativeAssetsId *string `json:"creative_assets_id,omitempty"`
 	// Array with the errors for the item id requested
-	Errors []ItemValidationEvent `json:"errors,omitempty"`
+	Errors []ItemValidationEvent `json:"errors"`
 }
 
 type _CatalogsCreativeAssetsItemErrorResponse CatalogsCreativeAssetsItemErrorResponse
@@ -35,9 +35,10 @@ type _CatalogsCreativeAssetsItemErrorResponse CatalogsCreativeAssetsItemErrorRes
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsCreativeAssetsItemErrorResponse(catalogType CatalogsType) *CatalogsCreativeAssetsItemErrorResponse {
+func NewCatalogsCreativeAssetsItemErrorResponse(catalogType CatalogsType, errors []ItemValidationEvent) *CatalogsCreativeAssetsItemErrorResponse {
 	this := CatalogsCreativeAssetsItemErrorResponse{}
 	this.CatalogType = catalogType
+	this.Errors = errors
 	return &this
 }
 
@@ -105,34 +106,26 @@ func (o *CatalogsCreativeAssetsItemErrorResponse) SetCreativeAssetsId(v string) 
 	o.CreativeAssetsId = &v
 }
 
-// GetErrors returns the Errors field value if set, zero value otherwise.
+// GetErrors returns the Errors field value
 func (o *CatalogsCreativeAssetsItemErrorResponse) GetErrors() []ItemValidationEvent {
-	if o == nil || IsNil(o.Errors) {
+	if o == nil {
 		var ret []ItemValidationEvent
 		return ret
 	}
+
 	return o.Errors
 }
 
-// GetErrorsOk returns a tuple with the Errors field value if set, nil otherwise
+// GetErrorsOk returns a tuple with the Errors field value
 // and a boolean to check if the value has been set.
 func (o *CatalogsCreativeAssetsItemErrorResponse) GetErrorsOk() ([]ItemValidationEvent, bool) {
-	if o == nil || IsNil(o.Errors) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Errors, true
 }
 
-// HasErrors returns a boolean if a field has been set.
-func (o *CatalogsCreativeAssetsItemErrorResponse) HasErrors() bool {
-	if o != nil && !IsNil(o.Errors) {
-		return true
-	}
-
-	return false
-}
-
-// SetErrors gets a reference to the given []ItemValidationEvent and assigns it to the Errors field.
+// SetErrors sets field value
 func (o *CatalogsCreativeAssetsItemErrorResponse) SetErrors(v []ItemValidationEvent) {
 	o.Errors = v
 }
@@ -151,9 +144,7 @@ func (o CatalogsCreativeAssetsItemErrorResponse) ToMap() (map[string]interface{}
 	if !IsNil(o.CreativeAssetsId) {
 		toSerialize["creative_assets_id"] = o.CreativeAssetsId
 	}
-	if !IsNil(o.Errors) {
-		toSerialize["errors"] = o.Errors
-	}
+	toSerialize["errors"] = o.Errors
 	return toSerialize, nil
 }
 
@@ -163,6 +154,7 @@ func (o *CatalogsCreativeAssetsItemErrorResponse) UnmarshalJSON(data []byte) (er
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"catalog_type",
+		"errors",
 	}
 
 	allProperties := make(map[string]interface{})

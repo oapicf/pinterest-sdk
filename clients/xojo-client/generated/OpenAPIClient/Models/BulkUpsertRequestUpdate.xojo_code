@@ -2,11 +2,6 @@
 Protected Class BulkUpsertRequestUpdate
 
 	#tag Property, Flags = &h0
-		campaigns() As OpenAPIClient.Models.CampaignUpdateRequest
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		ad_groups() As OpenAPIClient.Models.AdGroupUpdateRequest
 	#tag EndProperty
 
@@ -17,12 +12,27 @@ Protected Class BulkUpsertRequestUpdate
 
 
 	#tag Property, Flags = &h0
-		product_groups() As OpenAPIClient.Models.ProductGroupPromotionUpdateRequest
+		campaigns() As OpenAPIClient.Models.CampaignUpdateRequest
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		catalog_product_groups() As OpenAPIClient.Models.CatalogsProductGroupsUpdateRequest
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		keywords() As OpenAPIClient.Models.KeywordUpdate
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		labels() As OpenAPIClient.Models.LabelBulkUpdateRequest
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		product_groups() As OpenAPIClient.Models.ProductGroupPromotionUpdateRequest
 	#tag EndProperty
 
 
@@ -63,14 +73,6 @@ Protected Class BulkUpsertRequestUpdate
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="campaigns"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="CampaignUpdateRequest"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="ad_groups"
 			Visible=false
 			Group="Behavior"
@@ -87,11 +89,19 @@ Protected Class BulkUpsertRequestUpdate
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="product_groups"
+			Name="campaigns"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="ProductGroupPromotionUpdateRequest"
+			Type="CampaignUpdateRequest"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="catalog_product_groups"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="CatalogsProductGroupsUpdateRequest"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -100,6 +110,22 @@ Protected Class BulkUpsertRequestUpdate
 			Group="Behavior"
 			InitialValue=""
 			Type="KeywordUpdate"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="labels"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="LabelBulkUpdateRequest"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="product_groups"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="ProductGroupPromotionUpdateRequest"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

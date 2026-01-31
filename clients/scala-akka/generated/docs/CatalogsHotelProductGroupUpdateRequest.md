@@ -9,9 +9,9 @@ Request object for updating a hotel product group.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalogType** | [**CatalogType**](#CatalogType) |  |  [optional]
-**name** | **String** |  |  [optional]
 **description** | **String** |  |  [optional]
 **filters** | [**CatalogsHotelProductGroupFilters**](CatalogsHotelProductGroupFilters.md) |  |  [optional]
+**name** | **String** |  |  [optional]
 
 
 ## Enum: CatalogType

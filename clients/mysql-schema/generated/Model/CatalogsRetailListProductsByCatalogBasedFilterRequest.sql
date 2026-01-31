@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `CatalogsRetailListProductsByCatalogBasedFilterRequest`
 --
-SELECT `catalog_type`, `catalog_id`, `filters`, `country`, `locale` FROM `CatalogsRetailListProductsByCatalogBasedFilterRequest` WHERE 1;
+SELECT `catalog_id`, `catalog_type`, `country`, `filters`, `locale` FROM `CatalogsRetailListProductsByCatalogBasedFilterRequest` WHERE 1;
 
 --
 -- INSERT template for table `CatalogsRetailListProductsByCatalogBasedFilterRequest`
 --
-INSERT INTO `CatalogsRetailListProductsByCatalogBasedFilterRequest`(`catalog_type`, `catalog_id`, `filters`, `country`, `locale`) VALUES (?, ?, ?, ?, ?);
+INSERT INTO `CatalogsRetailListProductsByCatalogBasedFilterRequest`(`catalog_id`, `catalog_type`, `country`, `filters`, `locale`) VALUES (?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `CatalogsRetailListProductsByCatalogBasedFilterRequest`
 --
-UPDATE `CatalogsRetailListProductsByCatalogBasedFilterRequest` SET `catalog_type` = ?, `catalog_id` = ?, `filters` = ?, `country` = ?, `locale` = ? WHERE 1;
+UPDATE `CatalogsRetailListProductsByCatalogBasedFilterRequest` SET `catalog_id` = ?, `catalog_type` = ?, `country` = ?, `filters` = ?, `locale` = ? WHERE 1;
 
 --
 -- DELETE template for table `CatalogsRetailListProductsByCatalogBasedFilterRequest`

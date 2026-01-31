@@ -23,21 +23,21 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param assetGroupName Asset Group name
  * @param assetGroupDescription Asset group description
+ * @param assetGroupName Asset Group name
  * @param assetGroupTypes Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
  */
 
 
 data class CreateAssetGroupBody (
 
-    /* Asset Group name */
-    @Json(name = "asset_group_name")
-    val assetGroupName: kotlin.String,
-
     /* Asset group description */
     @Json(name = "asset_group_description")
     val assetGroupDescription: kotlin.String,
+
+    /* Asset Group name */
+    @Json(name = "asset_group_name")
+    val assetGroupName: kotlin.String,
 
     /* Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group. */
     @Json(name = "asset_group_types")

@@ -19,14 +19,14 @@ module CatalogsVerticalFeedsUpdateRequest =
 
 
   type CatalogsVerticalFeedsUpdateRequest = {
-    DefaultCurrency : NullableCurrency;
-    Name : string;
-    Format : CatalogsFormat;
+    CatalogType : CatalogsType;
     Credentials : CatalogsFeedCredentials;
+    DefaultAvailability : ProductAvailabilityType;
+    DefaultCurrency : NullableCurrency;
+    Format : CatalogsFormat;
     Location : string;
+    Name : string;
     PreferredProcessingSchedule : CatalogsFeedProcessingSchedule;
     Status : CatalogsStatus;
-    CatalogType : CatalogsType;
-    DefaultAvailability : ProductAvailabilityType;
   }
   //#endregion

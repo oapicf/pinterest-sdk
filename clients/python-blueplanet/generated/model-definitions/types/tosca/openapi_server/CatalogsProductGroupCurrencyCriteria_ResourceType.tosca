@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsProductGroupCurrencyCriteria"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsProductGroupCurrencyCriteria"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  NonNullableCatalogsCurrency = openapi_server.resourceTypes.NonNullableCatalogsCurrency
+}
+resourceTypes {
+
+  CatalogsProductGroupCurrencyCriteria {
+    title = CatalogsProductGroupCurrencyCriteria
+    description = CatalogsProductGroupCurrencyCriteria
+    derivedFrom = Root
+    properties {
+        negated {
+          type =  boolean
+          description = ""
+          optional = false
+        }
+        values {
+          type = NonNullableCatalogsCurrency
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsProductGroupCurrencyCriteria {
+    title = CatalogsProductGroupCurrencyCriteria
+    description = CatalogsProductGroupCurrencyCriteria
+    implements = openapi_server.resourceTypes.CatalogsProductGroupCurrencyCriteria
+
+  }
+}

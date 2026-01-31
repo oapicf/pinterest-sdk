@@ -6,53 +6,13 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">name : String
-    <br/>Campaign name.
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">status : EntityStatus
-    <br/>
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">lifetimeUnderscorespendUnderscorecap : Integer
-    <br/>Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time.
-  </li>
-</ul>
-<ul class="parameter">
   <li class="param-required-false">dailyUnderscorespendUnderscorecap : Integer
     <br/>Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;lifetime_spend_cap\&quot; cannot be set at the same time.
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">orderUnderscorelineUnderscoreid : String
-    <br/>Order line ID that appears on the invoice.
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">trackingUnderscoreurls : TrackingUrls
-    <br/>
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">startUnderscoretime : Integer
-    <br/>Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-  </li>
-</ul>
-<ul class="parameter">
   <li class="param-required-false">endUnderscoretime : Integer
-    <br/>Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">isUnderscoreflexibleUnderscoredailyUnderscorebudgets : Boolean
-    <br/>Determine if a campaign has flexible daily budgets setup.
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">defaultUnderscoreadUnderscoregroupUnderscorebudgetUnderscoreinUnderscoremicroUnderscorecurrency : Integer
-    <br/>When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
+    <br/>Timestamp in Unix format for scheduling when ads in the campaign stop appearing. Must occur after any end times for child ad groups. If &#x60;end_time&#x60; is not specified for the campaign, ads run indefinitely unless you update the campaign, changing their status to &#x60;paused&#x60;. Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-campaigns/#campaign-scheduling\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling campaigns&lt;/a&gt;. Different end times can be set for the campaign&#39;s child ad groups, but they cannot occur after an &#x60;end_time&#x60; specified for the campaign. - If your campaign has a child ad group with an end time specified, and if you update that campaign with an &#x60;end_time&#x60; that is earlier than that of the ad group, the campaign &#x60;end_time&#x60; will supersede the ad group &#x60;end_time&#x60;, and the request will not return an error. - In this scenario, if you call &lt;a href&#x3D;\&quot;/docs/api/v5/campaigns-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List campaigns&lt;/a&gt; or &lt;a href&#x3D;\&quot;/docs/api/v5/ad_groups-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List ad groups&lt;/a&gt;, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.
   </li>
 </ul>
 <ul class="parameter">
@@ -61,12 +21,57 @@
   </li>
 </ul>
 <ul class="parameter">
+  <li class="param-required-false">isUnderscoreflexibleUnderscoredailyUnderscorebudgets : Boolean
+    <br/>Determine if a campaign has setup for flexible daily budgets, also known as \&quot;Pinterest Performance+ budgets\&quot;.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">lifetimeUnderscorespendUnderscorecap : Integer
+    <br/>Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \&quot;daily_spend_cap\&quot; cannot be set at the same time.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">name : String
+    <br/>Campaign name.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">orderUnderscorelineUnderscoreid : String
+    <br/>Order line ID that appears on the invoice.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">startUnderscoretime : Integer
+    <br/>Timestamp in Unix format for scheduling when ads in the campaign start to appear. Must precede any start times set for child ad groups. Defaults to current time if no time is specified. Learn about &lt;a href&#x3D;\&quot;/docs/api-features/managing-campaigns/#campaign-scheduling\&quot; target&#x3D;\&quot;blank\&quot;&gt;scheduling campaigns&lt;/a&gt;. Different start times can be set for the campaign&#39;s child ad groups, but they cannot occur before a &#x60;start_time&#x60; specified for the campaign. - If your campaign has a child ad group with a start time specified, and if you update that campaign with a &#x60;start_time&#x60; that is later than that of the ad group, the campaign &#x60;start_time&#x60; will supersede the ad group &#x60;start_time&#x60;, and the request will not return an error. - In this scenario, if you call &lt;a href&#x3D;\&quot;/docs/api/v5/campaigns-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List campaigns&lt;/a&gt; or &lt;a href&#x3D;\&quot;/docs/api/v5/ad_groups-list\&quot; target&#x3D;\&quot;blank\&quot;&gt;List ad groups&lt;/a&gt;, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">status : EntityStatus
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">trackingUnderscoreurls : TrackingUrls
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">defaultUnderscoreadUnderscoregroupUnderscorebudgetUnderscoreinUnderscoremicroUnderscorecurrency : Integer
+    <br/>When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">isUnderscorecampaignUnderscorebudgetUnderscoreoptimization : Boolean
+    <br/>Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
+  </li>
+</ul>
+<ul class="parameter">
   <li class="param-required-false">id : String
     <br/>Campaign ID.
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">objectiveUnderscoretype : ObjectiveType
+  <li class="param-required-false">bidUnderscoreoptions : CampaignBidOptions
     <br/>
   </li>
 </ul>
@@ -76,8 +81,18 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">updatedUnderscoretime : Integer
-    <br/>UTC timestamp. Last update time.
+  <li class="param-required-false">isUnderscoreperformanceUnderscoreplus : Boolean
+    <br/>Enable Pinterest Performance+ for your campaign. To learn more, see &lt;a href&#x3D;\&quot;https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\&quot;&gt;Pinterest Performance+ Setup&lt;/a&gt;.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">objectiveUnderscoretype : ObjectiveType
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">summaryUnderscorestatus : CampaignSummaryStatus
+    <br/>
   </li>
 </ul>
 <ul class="parameter">
@@ -86,12 +101,7 @@
   </li>
 </ul>
 <ul class="parameter">
-  <li class="param-required-false">isUnderscorecampaignUnderscorebudgetUnderscoreoptimization : Boolean
-    <br/>Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
-  </li>
-</ul>
-<ul class="parameter">
-  <li class="param-required-false">summaryUnderscorestatus : CampaignSummaryStatus
-    <br/>
+  <li class="param-required-false">updatedUnderscoretime : Integer
+    <br/>UTC timestamp. Last update time.
   </li>
 </ul>

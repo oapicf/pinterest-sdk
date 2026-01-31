@@ -1,0 +1,64 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server CatalogsProductGroupProductCountsVertical"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a CatalogsProductGroupProductCountsVertical"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CatalogsCreativeAssetsProductGroupProductCounts = openapi_server.resourceTypes.CatalogsCreativeAssetsProductGroupProductCounts
+  CatalogsHotelProductGroupProductCounts = openapi_server.resourceTypes.CatalogsHotelProductGroupProductCounts
+  CatalogsRetailProductGroupProductCounts = openapi_server.resourceTypes.CatalogsRetailProductGroupProductCounts
+  CatalogsType = openapi_server.resourceTypes.CatalogsType
+}
+resourceTypes {
+
+  CatalogsProductGroupProductCountsVertical {
+    title = CatalogsProductGroupProductCountsVertical
+    description = CatalogsProductGroupProductCountsVertical
+    derivedFrom = Root
+    properties {
+        catalog_type {
+          type = CatalogsType
+          description = ""
+          optional = true
+        }
+        in_stock {
+          type =  
+          description = ""
+          optional = true
+        }
+        out_of_stock {
+          type =  
+          description = ""
+          optional = true
+        }
+        preorder {
+          type =  
+          description = ""
+          optional = true
+        }
+        total {
+          type =  
+          description = ""
+          optional = true
+        }
+        videos {
+          type =  
+          description = ""
+          optional = true
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  CatalogsProductGroupProductCountsVertical {
+    title = CatalogsProductGroupProductCountsVertical
+    description = CatalogsProductGroupProductCountsVertical
+    implements = openapi_server.resourceTypes.CatalogsProductGroupProductCountsVertical
+
+  }
+}

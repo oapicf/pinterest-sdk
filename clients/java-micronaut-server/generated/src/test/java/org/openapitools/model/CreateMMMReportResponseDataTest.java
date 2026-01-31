@@ -22,22 +22,6 @@ public class CreateMMMReportResponseDataTest {
     }
 
     /**
-     * Test the property 'reportStatus'
-     */
-    @Test
-    public void reportStatusTest() {
-        // TODO: test reportStatus
-    }
-
-    /**
-     * Test the property 'token'
-     */
-    @Test
-    public void tokenTest() {
-        // TODO: test token
-    }
-
-    /**
      * Test the property 'message'
      */
     @Test
@@ -46,11 +30,27 @@ public class CreateMMMReportResponseDataTest {
     }
 
     /**
+     * Test the property 'reportStatus'
+     */
+    @Test
+    public void reportStatusTest() {
+        // TODO: test reportStatus
+    }
+
+    /**
      * Test the property 'status'
      */
     @Test
     public void statusTest() {
         // TODO: test status
+    }
+
+    /**
+     * Test the property 'token'
+     */
+    @Test
+    public void tokenTest() {
+        // TODO: test token
     }
 
 }

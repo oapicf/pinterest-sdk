@@ -23,14 +23,14 @@ ads_analytics_get_async_response_t* instantiate_ads_analytics_get_async_response
   if (include_optional) {
     ads_analytics_get_async_response = ads_analytics_get_async_response_create(
       "FINISHED",
-      "0",
-      1.337
+      1.337,
+      "0"
     );
   } else {
     ads_analytics_get_async_response = ads_analytics_get_async_response_create(
       "FINISHED",
-      "0",
-      1.337
+      1.337,
+      "0"
     );
   }
 

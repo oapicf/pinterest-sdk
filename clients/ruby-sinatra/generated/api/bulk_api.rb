@@ -7,7 +7,7 @@ MyApp.add_route('POST', '/v5/ad_accounts/{ad_account_id}/bulk/download', {
   "nickname" => "bulk_download/create",
   "responseClass" => "BulkDownloadResponse",
   "endpoint" => "/ad_accounts/{ad_account_id}/bulk/download",
-  "notes" => "Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, and/or keywords; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.",
+  "notes" => "Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.",
   "parameters" => [
     {
       "name" => "ad_account_id",
@@ -71,7 +71,7 @@ MyApp.add_route('POST', '/v5/ad_accounts/{ad_account_id}/bulk/upsert', {
   "nickname" => "bulk_upsert/create",
   "responseClass" => "BulkUpsertResponse",
   "endpoint" => "/ad_accounts/{ad_account_id}/bulk/upsert",
-  "notes" => "Either create or update any combination of campaigns, ad groups, product groups, ads, or keywords. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.",
+  "notes" => "Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.",
   "parameters" => [
     {
       "name" => "ad_account_id",

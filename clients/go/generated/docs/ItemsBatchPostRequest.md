@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CatalogId** | Pointer to **string** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] 
 **CatalogType** | **string** |  | 
 **Country** | [**Country**](Country.md) |  | 
-**Language** | **string** | We recommend using the CatalogsLocale values. | 
 **Items** | [**[]ItemDeleteBatchRecord**](ItemDeleteBatchRecord.md) | Array with catalogs items | 
-**CatalogId** | Pointer to **string** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] 
+**Language** | **string** | We recommend using the CatalogsLocale values. | 
 **Operation** | [**BatchOperation**](BatchOperation.md) |  | 
 
 ## Methods
 
 ### NewItemsBatchPostRequest
 
-`func NewItemsBatchPostRequest(catalogType string, country Country, language string, items []ItemDeleteBatchRecord, operation BatchOperation, ) *ItemsBatchPostRequest`
+`func NewItemsBatchPostRequest(catalogType string, country Country, items []ItemDeleteBatchRecord, language string, operation BatchOperation, ) *ItemsBatchPostRequest`
 
 NewItemsBatchPostRequest instantiates a new ItemsBatchPostRequest object
 This constructor will assign default values to properties that have it defined,
@@ -29,6 +29,31 @@ will change when the set of required properties is changed
 NewItemsBatchPostRequestWithDefaults instantiates a new ItemsBatchPostRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCatalogId
+
+`func (o *ItemsBatchPostRequest) GetCatalogId() string`
+
+GetCatalogId returns the CatalogId field if non-nil, zero value otherwise.
+
+### GetCatalogIdOk
+
+`func (o *ItemsBatchPostRequest) GetCatalogIdOk() (*string, bool)`
+
+GetCatalogIdOk returns a tuple with the CatalogId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCatalogId
+
+`func (o *ItemsBatchPostRequest) SetCatalogId(v string)`
+
+SetCatalogId sets CatalogId field to given value.
+
+### HasCatalogId
+
+`func (o *ItemsBatchPostRequest) HasCatalogId() bool`
+
+HasCatalogId returns a boolean if a field has been set.
 
 ### GetCatalogType
 
@@ -70,26 +95,6 @@ and a boolean to check if the value has been set.
 SetCountry sets Country field to given value.
 
 
-### GetLanguage
-
-`func (o *ItemsBatchPostRequest) GetLanguage() string`
-
-GetLanguage returns the Language field if non-nil, zero value otherwise.
-
-### GetLanguageOk
-
-`func (o *ItemsBatchPostRequest) GetLanguageOk() (*string, bool)`
-
-GetLanguageOk returns a tuple with the Language field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLanguage
-
-`func (o *ItemsBatchPostRequest) SetLanguage(v string)`
-
-SetLanguage sets Language field to given value.
-
-
 ### GetItems
 
 `func (o *ItemsBatchPostRequest) GetItems() []ItemDeleteBatchRecord`
@@ -110,30 +115,25 @@ and a boolean to check if the value has been set.
 SetItems sets Items field to given value.
 
 
-### GetCatalogId
+### GetLanguage
 
-`func (o *ItemsBatchPostRequest) GetCatalogId() string`
+`func (o *ItemsBatchPostRequest) GetLanguage() string`
 
-GetCatalogId returns the CatalogId field if non-nil, zero value otherwise.
+GetLanguage returns the Language field if non-nil, zero value otherwise.
 
-### GetCatalogIdOk
+### GetLanguageOk
 
-`func (o *ItemsBatchPostRequest) GetCatalogIdOk() (*string, bool)`
+`func (o *ItemsBatchPostRequest) GetLanguageOk() (*string, bool)`
 
-GetCatalogIdOk returns a tuple with the CatalogId field if it's non-nil, zero value otherwise
+GetLanguageOk returns a tuple with the Language field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCatalogId
+### SetLanguage
 
-`func (o *ItemsBatchPostRequest) SetCatalogId(v string)`
+`func (o *ItemsBatchPostRequest) SetLanguage(v string)`
 
-SetCatalogId sets CatalogId field to given value.
+SetLanguage sets Language field to given value.
 
-### HasCatalogId
-
-`func (o *ItemsBatchPostRequest) HasCatalogId() bool`
-
-HasCatalogId returns a boolean if a field has been set.
 
 ### GetOperation
 

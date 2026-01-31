@@ -7,14 +7,15 @@
 
 (def catalogs-feed-ingestion-errors-data
   {
-   (ds/opt :LINE_LEVEL_INTERNAL_ERROR) int?
-   (ds/opt :LARGE_PRODUCT_COUNT_DECREASE) int?
    (ds/opt :ACCOUNT_FLAGGED) int?
-   (ds/opt :IMAGE_LEVEL_INTERNAL_ERROR) int?
+   (ds/opt :FETCH_GOOGLE_SHEET_NOT_SHARED) int?
    (ds/opt :IMAGE_FILE_NOT_ACCESSIBLE) int?
-   (ds/opt :IMAGE_MALFORMED_URL) int?
    (ds/opt :IMAGE_FILE_NOT_FOUND) int?
    (ds/opt :IMAGE_INVALID_FILE) int?
+   (ds/opt :IMAGE_LEVEL_INTERNAL_ERROR) int?
+   (ds/opt :IMAGE_MALFORMED_URL) int?
+   (ds/opt :LARGE_PRODUCT_COUNT_DECREASE) int?
+   (ds/opt :LINE_LEVEL_INTERNAL_ERROR) int?
    })
 
 (def catalogs-feed-ingestion-errors-spec

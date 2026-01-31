@@ -61,26 +61,26 @@ private class OASProductGroupPromotionsApiTest {
 
         OASClient client;
         OASProductGroupPromotionsApi api;
-        OASProductGroupPromotionResponse response;
-        OASProductGroupPromotionResponse expectedResponse;
+        OASProductGroupPromotion response;
+        OASProductGroupPromotion expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASProductGroupPromotionsApi(client);
 
-        js = JSON.serialize(OASProductGroupPromotionResponse.getExample());
+        js = JSON.serialize(OASProductGroupPromotion.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASProductGroupPromotionResponse.getExample();
-        response = (OASProductGroupPromotionResponse) api.productGroupPromotionsGet(params);
+        expectedResponse = OASProductGroupPromotion.getExample();
+        response = (OASProductGroupPromotion) api.productGroupPromotionsGet(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASProductGroupPromotionResponse.getExample());
+        js = JSON.serialize(OASProductGroupPromotion.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASProductGroupPromotionResponse.getExample();
-        response = (OASProductGroupPromotionResponse) api.productGroupPromotionsGet(params);
+        expectedResponse = OASProductGroupPromotion.getExample();
+        response = (OASProductGroupPromotion) api.productGroupPromotionsGet(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -176,7 +176,7 @@ private class OASProductGroupPromotionsApiTest {
     /**
      * Get product group analytics
      *
-     * Get analytics for the specified product groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options.\n- The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.\n- If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days.\n- If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
+     * Get analytics for the specified product groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options.\n- The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.\n  - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.\n- If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      */
     @isTest
     private static void productGroupsAnalyticsTest() {
@@ -195,7 +195,8 @@ private class OASProductGroupPromotionsApiTest {
             'clickWindowDays' => 1,
             'engagementWindowDays' => '',
             'viewWindowDays' => '',
-            'conversionReportTime' => TIME_OF_AD_ACTION
+            'conversionReportTime' => TIME_OF_AD_ACTION,
+            'reportingTimezone' => ''
         };
 
         OASClient client;
@@ -204,6 +205,31 @@ private class OASProductGroupPromotionsApiTest {
         List<OASProductGroupAnalyticsResponseInne> expectedResponse;
         String js = '';
 
+        client = new OASClient();
+        api = new OASProductGroupPromotionsApi(client);
+
+        js = JSON.serialize(List.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = List.getExample();
+        response = (List<OASProductGroupAnalyticsResponseInne>) api.productGroupsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(List.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = List.getExample();
+        response = (List<OASProductGroupAnalyticsResponseInne>) api.productGroupsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(List.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = List.getExample();
+        response = (List<OASProductGroupAnalyticsResponseInne>) api.productGroupsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASProductGroupPromotionsApi(client);
 

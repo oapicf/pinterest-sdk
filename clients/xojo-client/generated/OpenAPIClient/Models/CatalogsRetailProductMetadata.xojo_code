@@ -2,10 +2,12 @@
 Protected Class CatalogsRetailProductMetadata
 
 	#tag Property, Flags = &h0
-		#tag Note
-			The user-created unique ID that represents the product.
-		#tag EndNote
-		item_id As String
+		availability As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		currency As String
 	#tag EndProperty
 
 
@@ -18,7 +20,10 @@ Protected Class CatalogsRetailProductMetadata
 
 
 	#tag Property, Flags = &h0
-		availability As String
+		#tag Note
+			The user-created unique ID that represents the product.
+		#tag EndNote
+		item_id As String
 	#tag EndProperty
 
 
@@ -35,11 +40,6 @@ Protected Class CatalogsRetailProductMetadata
 			The discounted price of the product.
 		#tag EndNote
 		sale_price As Double
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		currency As String
 	#tag EndProperty
 
 
@@ -80,11 +80,19 @@ Protected Class CatalogsRetailProductMetadata
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="item_id"
+			Name="availability"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="String"
+			Type="NonNullableProductAvailabilityType"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="currency"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="NonNullableCatalogsCurrency"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -96,11 +104,11 @@ Protected Class CatalogsRetailProductMetadata
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="availability"
+			Name="item_id"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="NonNullableProductAvailabilityType"
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -117,14 +125,6 @@ Protected Class CatalogsRetailProductMetadata
 			Group="Behavior"
 			InitialValue=""
 			Type="Double"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="currency"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="NonNullableCatalogsCurrency"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

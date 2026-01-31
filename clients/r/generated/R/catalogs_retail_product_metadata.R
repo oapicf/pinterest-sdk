@@ -7,48 +7,36 @@
 #' @title CatalogsRetailProductMetadata
 #' @description CatalogsRetailProductMetadata Class
 #' @format An \code{R6Class} generator object
-#' @field item_id The user-created unique ID that represents the product. character
-#' @field item_group_id The parent ID of the product. character
 #' @field availability  \link{NonNullableProductAvailabilityType}
+#' @field currency  \link{NonNullableCatalogsCurrency}
+#' @field item_group_id The parent ID of the product. character
+#' @field item_id The user-created unique ID that represents the product. character
 #' @field price The price of the product. numeric
 #' @field sale_price The discounted price of the product. numeric
-#' @field currency  \link{NonNullableCatalogsCurrency}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CatalogsRetailProductMetadata <- R6::R6Class(
   "CatalogsRetailProductMetadata",
   public = list(
-    `item_id` = NULL,
-    `item_group_id` = NULL,
     `availability` = NULL,
+    `currency` = NULL,
+    `item_group_id` = NULL,
+    `item_id` = NULL,
     `price` = NULL,
     `sale_price` = NULL,
-    `currency` = NULL,
 
     #' @description
     #' Initialize a new CatalogsRetailProductMetadata class.
     #'
-    #' @param item_id The user-created unique ID that represents the product.
-    #' @param item_group_id The parent ID of the product.
     #' @param availability availability
+    #' @param currency currency
+    #' @param item_group_id The parent ID of the product.
+    #' @param item_id The user-created unique ID that represents the product.
     #' @param price The price of the product.
     #' @param sale_price The discounted price of the product.
-    #' @param currency currency
     #' @param ... Other optional arguments.
-    initialize = function(`item_id`, `item_group_id`, `availability`, `price`, `sale_price`, `currency`, ...) {
-      if (!missing(`item_id`)) {
-        if (!(is.character(`item_id`) && length(`item_id`) == 1)) {
-          stop(paste("Error! Invalid data for `item_id`. Must be a string:", `item_id`))
-        }
-        self$`item_id` <- `item_id`
-      }
-      if (!missing(`item_group_id`)) {
-        if (!(is.character(`item_group_id`) && length(`item_group_id`) == 1)) {
-          stop(paste("Error! Invalid data for `item_group_id`. Must be a string:", `item_group_id`))
-        }
-        self$`item_group_id` <- `item_group_id`
-      }
+    initialize = function(`availability`, `currency`, `item_group_id`, `item_id`, `price`, `sale_price`, ...) {
       if (!missing(`availability`)) {
         if (!(`availability` %in% c())) {
           stop(paste("Error! \"", `availability`, "\" cannot be assigned to `availability`. Must be .", sep = ""))
@@ -56,18 +44,30 @@ CatalogsRetailProductMetadata <- R6::R6Class(
         stopifnot(R6::is.R6(`availability`))
         self$`availability` <- `availability`
       }
-      if (!missing(`price`)) {
-        self$`price` <- `price`
-      }
-      if (!missing(`sale_price`)) {
-        self$`sale_price` <- `sale_price`
-      }
       if (!missing(`currency`)) {
         if (!(`currency` %in% c())) {
           stop(paste("Error! \"", `currency`, "\" cannot be assigned to `currency`. Must be .", sep = ""))
         }
         stopifnot(R6::is.R6(`currency`))
         self$`currency` <- `currency`
+      }
+      if (!missing(`item_group_id`)) {
+        if (!(is.character(`item_group_id`) && length(`item_group_id`) == 1)) {
+          stop(paste("Error! Invalid data for `item_group_id`. Must be a string:", `item_group_id`))
+        }
+        self$`item_group_id` <- `item_group_id`
+      }
+      if (!missing(`item_id`)) {
+        if (!(is.character(`item_id`) && length(`item_id`) == 1)) {
+          stop(paste("Error! Invalid data for `item_id`. Must be a string:", `item_id`))
+        }
+        self$`item_id` <- `item_id`
+      }
+      if (!missing(`price`)) {
+        self$`price` <- `price`
+      }
+      if (!missing(`sale_price`)) {
+        self$`sale_price` <- `sale_price`
       }
     },
 
@@ -102,17 +102,21 @@ CatalogsRetailProductMetadata <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CatalogsRetailProductMetadataObject <- list()
-      if (!is.null(self$`item_id`)) {
-        CatalogsRetailProductMetadataObject[["item_id"]] <-
-          self$`item_id`
+      if (!is.null(self$`availability`)) {
+        CatalogsRetailProductMetadataObject[["availability"]] <-
+          self$`availability`$toSimpleType()
+      }
+      if (!is.null(self$`currency`)) {
+        CatalogsRetailProductMetadataObject[["currency"]] <-
+          self$`currency`$toSimpleType()
       }
       if (!is.null(self$`item_group_id`)) {
         CatalogsRetailProductMetadataObject[["item_group_id"]] <-
           self$`item_group_id`
       }
-      if (!is.null(self$`availability`)) {
-        CatalogsRetailProductMetadataObject[["availability"]] <-
-          self$`availability`$toSimpleType()
+      if (!is.null(self$`item_id`)) {
+        CatalogsRetailProductMetadataObject[["item_id"]] <-
+          self$`item_id`
       }
       if (!is.null(self$`price`)) {
         CatalogsRetailProductMetadataObject[["price"]] <-
@@ -121,10 +125,6 @@ CatalogsRetailProductMetadata <- R6::R6Class(
       if (!is.null(self$`sale_price`)) {
         CatalogsRetailProductMetadataObject[["sale_price"]] <-
           self$`sale_price`
-      }
-      if (!is.null(self$`currency`)) {
-        CatalogsRetailProductMetadataObject[["currency"]] <-
-          self$`currency`$toSimpleType()
       }
       return(CatalogsRetailProductMetadataObject)
     },
@@ -136,27 +136,27 @@ CatalogsRetailProductMetadata <- R6::R6Class(
     #' @return the instance of CatalogsRetailProductMetadata
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`item_id`)) {
-        self$`item_id` <- this_object$`item_id`
-      }
-      if (!is.null(this_object$`item_group_id`)) {
-        self$`item_group_id` <- this_object$`item_group_id`
-      }
       if (!is.null(this_object$`availability`)) {
         `availability_object` <- NonNullableProductAvailabilityType$new()
         `availability_object`$fromJSON(jsonlite::toJSON(this_object$`availability`, auto_unbox = TRUE, digits = NA))
         self$`availability` <- `availability_object`
+      }
+      if (!is.null(this_object$`currency`)) {
+        `currency_object` <- NonNullableCatalogsCurrency$new()
+        `currency_object`$fromJSON(jsonlite::toJSON(this_object$`currency`, auto_unbox = TRUE, digits = NA))
+        self$`currency` <- `currency_object`
+      }
+      if (!is.null(this_object$`item_group_id`)) {
+        self$`item_group_id` <- this_object$`item_group_id`
+      }
+      if (!is.null(this_object$`item_id`)) {
+        self$`item_id` <- this_object$`item_id`
       }
       if (!is.null(this_object$`price`)) {
         self$`price` <- this_object$`price`
       }
       if (!is.null(this_object$`sale_price`)) {
         self$`sale_price` <- this_object$`sale_price`
-      }
-      if (!is.null(this_object$`currency`)) {
-        `currency_object` <- NonNullableCatalogsCurrency$new()
-        `currency_object`$fromJSON(jsonlite::toJSON(this_object$`currency`, auto_unbox = TRUE, digits = NA))
-        self$`currency` <- `currency_object`
       }
       self
     },
@@ -179,12 +179,12 @@ CatalogsRetailProductMetadata <- R6::R6Class(
     #' @return the instance of CatalogsRetailProductMetadata
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`item_id` <- this_object$`item_id`
-      self$`item_group_id` <- this_object$`item_group_id`
       self$`availability` <- NonNullableProductAvailabilityType$new()$fromJSON(jsonlite::toJSON(this_object$`availability`, auto_unbox = TRUE, digits = NA))
+      self$`currency` <- NonNullableCatalogsCurrency$new()$fromJSON(jsonlite::toJSON(this_object$`currency`, auto_unbox = TRUE, digits = NA))
+      self$`item_group_id` <- this_object$`item_group_id`
+      self$`item_id` <- this_object$`item_id`
       self$`price` <- this_object$`price`
       self$`sale_price` <- this_object$`sale_price`
-      self$`currency` <- NonNullableCatalogsCurrency$new()$fromJSON(jsonlite::toJSON(this_object$`currency`, auto_unbox = TRUE, digits = NA))
       self
     },
 
@@ -194,13 +194,17 @@ CatalogsRetailProductMetadata <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
-      # check the required field `item_id`
-      if (!is.null(input_json$`item_id`)) {
-        if (!(is.character(input_json$`item_id`) && length(input_json$`item_id`) == 1)) {
-          stop(paste("Error! Invalid data for `item_id`. Must be a string:", input_json$`item_id`))
-        }
+      # check the required field `availability`
+      if (!is.null(input_json$`availability`)) {
+        stopifnot(R6::is.R6(input_json$`availability`))
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for CatalogsRetailProductMetadata: the required field `item_id` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsRetailProductMetadata: the required field `availability` is missing."))
+      }
+      # check the required field `currency`
+      if (!is.null(input_json$`currency`)) {
+        stopifnot(R6::is.R6(input_json$`currency`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsRetailProductMetadata: the required field `currency` is missing."))
       }
       # check the required field `item_group_id`
       if (!is.null(input_json$`item_group_id`)) {
@@ -210,11 +214,13 @@ CatalogsRetailProductMetadata <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsRetailProductMetadata: the required field `item_group_id` is missing."))
       }
-      # check the required field `availability`
-      if (!is.null(input_json$`availability`)) {
-        stopifnot(R6::is.R6(input_json$`availability`))
+      # check the required field `item_id`
+      if (!is.null(input_json$`item_id`)) {
+        if (!(is.character(input_json$`item_id`) && length(input_json$`item_id`) == 1)) {
+          stop(paste("Error! Invalid data for `item_id`. Must be a string:", input_json$`item_id`))
+        }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for CatalogsRetailProductMetadata: the required field `availability` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for CatalogsRetailProductMetadata: the required field `item_id` is missing."))
       }
       # check the required field `price`
       if (!is.null(input_json$`price`)) {
@@ -225,12 +231,6 @@ CatalogsRetailProductMetadata <- R6::R6Class(
       if (!is.null(input_json$`sale_price`)) {
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CatalogsRetailProductMetadata: the required field `sale_price` is missing."))
-      }
-      # check the required field `currency`
-      if (!is.null(input_json$`currency`)) {
-        stopifnot(R6::is.R6(input_json$`currency`))
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for CatalogsRetailProductMetadata: the required field `currency` is missing."))
       }
     },
 
@@ -247,23 +247,23 @@ CatalogsRetailProductMetadata <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      # check if the required `item_id` is null
-      if (is.null(self$`item_id`)) {
-        return(FALSE)
-      }
-
       # check if the required `availability` is null
       if (is.null(self$`availability`)) {
         return(FALSE)
       }
 
-      # check if the required `price` is null
-      if (is.null(self$`price`)) {
+      # check if the required `currency` is null
+      if (is.null(self$`currency`)) {
         return(FALSE)
       }
 
-      # check if the required `currency` is null
-      if (is.null(self$`currency`)) {
+      # check if the required `item_id` is null
+      if (is.null(self$`item_id`)) {
+        return(FALSE)
+      }
+
+      # check if the required `price` is null
+      if (is.null(self$`price`)) {
         return(FALSE)
       }
 
@@ -276,24 +276,24 @@ CatalogsRetailProductMetadata <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      # check if the required `item_id` is null
-      if (is.null(self$`item_id`)) {
-        invalid_fields["item_id"] <- "Non-nullable required field `item_id` cannot be null."
-      }
-
       # check if the required `availability` is null
       if (is.null(self$`availability`)) {
         invalid_fields["availability"] <- "Non-nullable required field `availability` cannot be null."
       }
 
-      # check if the required `price` is null
-      if (is.null(self$`price`)) {
-        invalid_fields["price"] <- "Non-nullable required field `price` cannot be null."
-      }
-
       # check if the required `currency` is null
       if (is.null(self$`currency`)) {
         invalid_fields["currency"] <- "Non-nullable required field `currency` cannot be null."
+      }
+
+      # check if the required `item_id` is null
+      if (is.null(self$`item_id`)) {
+        invalid_fields["item_id"] <- "Non-nullable required field `item_id` cannot be null."
+      }
+
+      # check if the required `price` is null
+      if (is.null(self$`price`)) {
+        invalid_fields["price"] <- "Non-nullable required field `price` cannot be null."
       }
 
       invalid_fields

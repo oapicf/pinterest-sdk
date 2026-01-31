@@ -1,5 +1,6 @@
 package controllers;
 
+import apimodels.ConversionAccessTokenResponse;
 import apimodels.Error;
 import apimodels.OauthAccessTokenResponse;
 
@@ -28,6 +29,25 @@ public abstract class OauthApiControllerImpInterface {
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
 
+    public Result oauthConversionTokenHttp(Http.Request request) throws Exception {
+        if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
+            return unauthorized();
+        }
+
+        ConversionAccessTokenResponse obj = oauthConversionToken(request);
+
+        if (configuration.getBoolean("useOutputBeanValidation")) {
+            OpenAPIUtils.validate(obj);
+        }
+
+        JsonNode result = mapper.valueToTree(obj);
+
+        return ok(result);
+
+    }
+
+    public abstract ConversionAccessTokenResponse oauthConversionToken(Http.Request request) throws Exception;
+
     public Result oauthTokenHttp(Http.Request request, String grantType) throws Exception {
         OauthAccessTokenResponse obj = oauthToken(request, grantType);
 
@@ -42,5 +62,13 @@ public abstract class OauthApiControllerImpInterface {
     }
 
     public abstract OauthAccessTokenResponse oauthToken(Http.Request request, String grantType) throws Exception;
+
+    public Result tokenRevokeHttp(Http.Request request, String token, String tokenTypeHint) throws Exception {
+        tokenRevoke(request, token, tokenTypeHint);
+        return ok();
+
+    }
+
+    public abstract void tokenRevoke(Http.Request request, String token, String tokenTypeHint) throws Exception;
 
 }

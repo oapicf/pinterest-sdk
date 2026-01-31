@@ -22,37 +22,37 @@ public class CatalogsCreativeAssetsFeed   {
   private OffsetDateTime createdAt;
   private String id;
   private OffsetDateTime updatedAt;
-  private String name;
-  private CatalogsFormat format;
+  private String catalogId;
   private CatalogsType catalogType;
   private CatalogsFeedCredentials credentials;
-  private String location;
-  private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
-  private CatalogsStatus status;
+  private Country defaultCountry;
   private NullableCurrency defaultCurrency;
   private String defaultLocale;
-  private Country defaultCountry;
-  private String catalogId;
+  private CatalogsFormat format;
+  private String location;
+  private String name;
+  private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
+  private CatalogsStatus status;
 
   public CatalogsCreativeAssetsFeed () {
 
   }
 
-  public CatalogsCreativeAssetsFeed (OffsetDateTime createdAt, String id, OffsetDateTime updatedAt, String name, CatalogsFormat format, CatalogsType catalogType, CatalogsFeedCredentials credentials, String location, CatalogsFeedProcessingSchedule preferredProcessingSchedule, CatalogsStatus status, NullableCurrency defaultCurrency, String defaultLocale, Country defaultCountry, String catalogId) {
+  public CatalogsCreativeAssetsFeed (OffsetDateTime createdAt, String id, OffsetDateTime updatedAt, String catalogId, CatalogsType catalogType, CatalogsFeedCredentials credentials, Country defaultCountry, NullableCurrency defaultCurrency, String defaultLocale, CatalogsFormat format, String location, String name, CatalogsFeedProcessingSchedule preferredProcessingSchedule, CatalogsStatus status) {
     this.createdAt = createdAt;
     this.id = id;
     this.updatedAt = updatedAt;
-    this.name = name;
-    this.format = format;
+    this.catalogId = catalogId;
     this.catalogType = catalogType;
     this.credentials = credentials;
-    this.location = location;
-    this.preferredProcessingSchedule = preferredProcessingSchedule;
-    this.status = status;
+    this.defaultCountry = defaultCountry;
     this.defaultCurrency = defaultCurrency;
     this.defaultLocale = defaultLocale;
-    this.defaultCountry = defaultCountry;
-    this.catalogId = catalogId;
+    this.format = format;
+    this.location = location;
+    this.name = name;
+    this.preferredProcessingSchedule = preferredProcessingSchedule;
+    this.status = status;
   }
 
     
@@ -83,21 +83,12 @@ public class CatalogsCreativeAssetsFeed   {
   }
 
     
-  @JsonProperty("name")
-  public String getName() {
-    return name;
+  @JsonProperty("catalog_id")
+  public String getCatalogId() {
+    return catalogId;
   }
-  public void setName(String name) {
-    this.name = name;
-  }
-
-    
-  @JsonProperty("format")
-  public CatalogsFormat getFormat() {
-    return format;
-  }
-  public void setFormat(CatalogsFormat format) {
-    this.format = format;
+  public void setCatalogId(String catalogId) {
+    this.catalogId = catalogId;
   }
 
     
@@ -119,30 +110,12 @@ public class CatalogsCreativeAssetsFeed   {
   }
 
     
-  @JsonProperty("location")
-  public String getLocation() {
-    return location;
+  @JsonProperty("default_country")
+  public Country getDefaultCountry() {
+    return defaultCountry;
   }
-  public void setLocation(String location) {
-    this.location = location;
-  }
-
-    
-  @JsonProperty("preferred_processing_schedule")
-  public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
-    return preferredProcessingSchedule;
-  }
-  public void setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
-    this.preferredProcessingSchedule = preferredProcessingSchedule;
-  }
-
-    
-  @JsonProperty("status")
-  public CatalogsStatus getStatus() {
-    return status;
-  }
-  public void setStatus(CatalogsStatus status) {
-    this.status = status;
+  public void setDefaultCountry(Country defaultCountry) {
+    this.defaultCountry = defaultCountry;
   }
 
     
@@ -164,21 +137,48 @@ public class CatalogsCreativeAssetsFeed   {
   }
 
     
-  @JsonProperty("default_country")
-  public Country getDefaultCountry() {
-    return defaultCountry;
+  @JsonProperty("format")
+  public CatalogsFormat getFormat() {
+    return format;
   }
-  public void setDefaultCountry(Country defaultCountry) {
-    this.defaultCountry = defaultCountry;
+  public void setFormat(CatalogsFormat format) {
+    this.format = format;
   }
 
     
-  @JsonProperty("catalog_id")
-  public String getCatalogId() {
-    return catalogId;
+  @JsonProperty("location")
+  public String getLocation() {
+    return location;
   }
-  public void setCatalogId(String catalogId) {
-    this.catalogId = catalogId;
+  public void setLocation(String location) {
+    this.location = location;
+  }
+
+    
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+
+    
+  @JsonProperty("preferred_processing_schedule")
+  public CatalogsFeedProcessingSchedule getPreferredProcessingSchedule() {
+    return preferredProcessingSchedule;
+  }
+  public void setPreferredProcessingSchedule(CatalogsFeedProcessingSchedule preferredProcessingSchedule) {
+    this.preferredProcessingSchedule = preferredProcessingSchedule;
+  }
+
+    
+  @JsonProperty("status")
+  public CatalogsStatus getStatus() {
+    return status;
+  }
+  public void setStatus(CatalogsStatus status) {
+    this.status = status;
   }
 
 
@@ -194,22 +194,22 @@ public class CatalogsCreativeAssetsFeed   {
     return Objects.equals(createdAt, catalogsCreativeAssetsFeed.createdAt) &&
         Objects.equals(id, catalogsCreativeAssetsFeed.id) &&
         Objects.equals(updatedAt, catalogsCreativeAssetsFeed.updatedAt) &&
-        Objects.equals(name, catalogsCreativeAssetsFeed.name) &&
-        Objects.equals(format, catalogsCreativeAssetsFeed.format) &&
+        Objects.equals(catalogId, catalogsCreativeAssetsFeed.catalogId) &&
         Objects.equals(catalogType, catalogsCreativeAssetsFeed.catalogType) &&
         Objects.equals(credentials, catalogsCreativeAssetsFeed.credentials) &&
-        Objects.equals(location, catalogsCreativeAssetsFeed.location) &&
-        Objects.equals(preferredProcessingSchedule, catalogsCreativeAssetsFeed.preferredProcessingSchedule) &&
-        Objects.equals(status, catalogsCreativeAssetsFeed.status) &&
+        Objects.equals(defaultCountry, catalogsCreativeAssetsFeed.defaultCountry) &&
         Objects.equals(defaultCurrency, catalogsCreativeAssetsFeed.defaultCurrency) &&
         Objects.equals(defaultLocale, catalogsCreativeAssetsFeed.defaultLocale) &&
-        Objects.equals(defaultCountry, catalogsCreativeAssetsFeed.defaultCountry) &&
-        Objects.equals(catalogId, catalogsCreativeAssetsFeed.catalogId);
+        Objects.equals(format, catalogsCreativeAssetsFeed.format) &&
+        Objects.equals(location, catalogsCreativeAssetsFeed.location) &&
+        Objects.equals(name, catalogsCreativeAssetsFeed.name) &&
+        Objects.equals(preferredProcessingSchedule, catalogsCreativeAssetsFeed.preferredProcessingSchedule) &&
+        Objects.equals(status, catalogsCreativeAssetsFeed.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, id, updatedAt, name, format, catalogType, credentials, location, preferredProcessingSchedule, status, defaultCurrency, defaultLocale, defaultCountry, catalogId);
+    return Objects.hash(createdAt, id, updatedAt, catalogId, catalogType, credentials, defaultCountry, defaultCurrency, defaultLocale, format, location, name, preferredProcessingSchedule, status);
   }
 
   @Override
@@ -220,17 +220,17 @@ public class CatalogsCreativeAssetsFeed   {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
-    sb.append("    location: ").append(toIndentedString(location)).append("\n");
-    sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
     sb.append("    defaultCurrency: ").append(toIndentedString(defaultCurrency)).append("\n");
     sb.append("    defaultLocale: ").append(toIndentedString(defaultLocale)).append("\n");
-    sb.append("    defaultCountry: ").append(toIndentedString(defaultCountry)).append("\n");
-    sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    preferredProcessingSchedule: ").append(toIndentedString(preferredProcessingSchedule)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

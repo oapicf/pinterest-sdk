@@ -25,19 +25,19 @@ public class TopPinsAnalyticsResponsePinsInnerTest {
     }
 
     /**
-     * Test the property 'metrics'
-     */
-    @Test
-    public void metricsTest() {
-        // TODO: test metrics
-    }
-
-    /**
      * Test the property 'dataStatus'
      */
     @Test
     public void dataStatusTest() {
         // TODO: test dataStatus
+    }
+
+    /**
+     * Test the property 'metrics'
+     */
+    @Test
+    public void metricsTest() {
+        // TODO: test metrics
     }
 
     /**

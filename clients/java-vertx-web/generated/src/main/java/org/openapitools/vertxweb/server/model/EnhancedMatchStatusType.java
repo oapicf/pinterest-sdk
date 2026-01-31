@@ -2,14 +2,11 @@ package org.openapitools.vertxweb.server.model;
 
 import java.util.Objects;
 
-/**
- * The enhanced match status of the tag
- **/
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * The enhanced match status of the tag
+ * Gets or Sets EnhancedMatchStatusType
  */
 public enum EnhancedMatchStatusType {
   

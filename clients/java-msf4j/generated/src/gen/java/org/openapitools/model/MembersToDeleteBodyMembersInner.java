@@ -12,31 +12,13 @@ import org.openapitools.model.BusinessRoleForMembers;
 /**
  * MembersToDeleteBodyMembersInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-31T04:52:33.064583645Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class MembersToDeleteBodyMembersInner   {
-  @JsonProperty("member_id")
-  private String memberId;
-
   @JsonProperty("business_role")
   private BusinessRoleForMembers businessRole;
 
-  public MembersToDeleteBodyMembersInner memberId(String memberId) {
-    this.memberId = memberId;
-    return this;
-  }
-
-   /**
-   * Unique identifier of the member
-   * @return memberId
-  **/
-  @ApiModelProperty(example = "140943737684417", required = true, value = "Unique identifier of the member")
-  public String getMemberId() {
-    return memberId;
-  }
-
-  public void setMemberId(String memberId) {
-    this.memberId = memberId;
-  }
+  @JsonProperty("member_id")
+  private String memberId;
 
   public MembersToDeleteBodyMembersInner businessRole(BusinessRoleForMembers businessRole) {
     this.businessRole = businessRole;
@@ -56,6 +38,24 @@ public class MembersToDeleteBodyMembersInner   {
     this.businessRole = businessRole;
   }
 
+  public MembersToDeleteBodyMembersInner memberId(String memberId) {
+    this.memberId = memberId;
+    return this;
+  }
+
+   /**
+   * Unique identifier of the member
+   * @return memberId
+  **/
+  @ApiModelProperty(example = "140943737684417", required = true, value = "Unique identifier of the member")
+  public String getMemberId() {
+    return memberId;
+  }
+
+  public void setMemberId(String memberId) {
+    this.memberId = memberId;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -66,13 +66,13 @@ public class MembersToDeleteBodyMembersInner   {
       return false;
     }
     MembersToDeleteBodyMembersInner membersToDeleteBodyMembersInner = (MembersToDeleteBodyMembersInner) o;
-    return Objects.equals(this.memberId, membersToDeleteBodyMembersInner.memberId) &&
-        Objects.equals(this.businessRole, membersToDeleteBodyMembersInner.businessRole);
+    return Objects.equals(this.businessRole, membersToDeleteBodyMembersInner.businessRole) &&
+        Objects.equals(this.memberId, membersToDeleteBodyMembersInner.memberId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(memberId, businessRole);
+    return Objects.hash(businessRole, memberId);
   }
 
   @Override
@@ -80,8 +80,8 @@ public class MembersToDeleteBodyMembersInner   {
     StringBuilder sb = new StringBuilder();
     sb.append("class MembersToDeleteBodyMembersInner {\n");
     
-    sb.append("    memberId: ").append(toIndentedString(memberId)).append("\n");
     sb.append("    businessRole: ").append(toIndentedString(businessRole)).append("\n");
+    sb.append("    memberId: ").append(toIndentedString(memberId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

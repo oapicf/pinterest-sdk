@@ -2,19 +2,6 @@
 Protected Class PinMediaSourceVideoID
 
 	#tag Property, Flags = &h0
-		source_type As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Cover image url.
-		#tag EndNote
-		cover_image_url As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		#tag Note
 			Content type for cover image Base64.
 		#tag EndNote
@@ -31,7 +18,18 @@ Protected Class PinMediaSourceVideoID
 
 
 	#tag Property, Flags = &h0
-		media_id As String
+		#tag Note
+			Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.
+		#tag EndNote
+		cover_image_key_frame_time As Xoson.O.OptionalInteger
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Cover image URL.
+		#tag EndNote
+		cover_image_url As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -43,16 +41,19 @@ Protected Class PinMediaSourceVideoID
 	#tag EndProperty
 
 
+	#tag Property, Flags = &h0
+		media_id As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		source_type As String
+	#tag EndProperty
+
+
     #tag Enum, Name = Source_typeEnum, Type = Integer, Flags = &h0
         
         VideoId
-        
-    #tag EndEnum
-
-    #tag Enum, Name = Cover_image_content_typeEnum, Type = Integer, Flags = &h0
-        
-        ImageSlashJpeg
-        ImageSlashPng
         
     #tag EndEnum
 
@@ -63,19 +64,6 @@ Protected Class PinMediaSourceVideoID
 		    
 		    Case Source_typeEnum.VideoId
 		      Return "video_id"
-		    
-		  End Select
-		  Return ""
-		End Function
-	#tag EndMethod
-	#tag Method, Flags = &h0
-		Shared Function Cover_image_content_typeEnumToString(value As Cover_image_content_typeEnum) As String
-		  Select Case value
-		    
-		    Case Cover_image_content_typeEnum.ImageSlashJpeg
-		      Return "image/jpeg"
-		    Case Cover_image_content_typeEnum.ImageSlashPng
-		      Return "image/png"
 		    
 		  End Select
 		  Return ""
@@ -117,11 +105,11 @@ Protected Class PinMediaSourceVideoID
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="cover_image_url"
+			Name="cover_image_content_type"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="String"
+			Type="ContentType"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -133,7 +121,15 @@ Protected Class PinMediaSourceVideoID
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="media_id"
+			Name="cover_image_key_frame_time"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="cover_image_url"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
@@ -146,6 +142,14 @@ Protected Class PinMediaSourceVideoID
 			Group="Behavior"
 			InitialValue=""
 			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="media_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

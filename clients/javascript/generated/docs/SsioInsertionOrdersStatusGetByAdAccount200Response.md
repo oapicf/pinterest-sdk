@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[SSIOInsertionOrderStatus]**](SSIOInsertionOrderStatus.md) | Insertion orders status by ad acount id | 
 **bookmark** | **String** |  | [optional] 
+**items** | [**[SSIOInsertionOrderStatus]**](SSIOInsertionOrderStatus.md) | Insertion orders status by ad acount id | 
 
 

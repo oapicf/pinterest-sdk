@@ -17,12 +17,6 @@
       "default": null
     },
     {
-      "name": "name",
-      "type": ["null", "string"],
-      "doc": "",
-      "default": null
-    },
-    {
       "name": "description",
       "type": ["null", "string"],
       "doc": "",
@@ -31,6 +25,12 @@
     {
       "name": "filters",
       "type": ["null", "model.CatalogsHotelProductGroupFilters"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "name",
+      "type": ["null", "string"],
       "doc": "",
       "default": null
     }

@@ -16,49 +16,30 @@ import java.util.Objects;
 
 public class TermsOfService   {
   
-  private String id;
-
-  private String html;
+  private String adAccountId;
 
   private Boolean hasAccepted;
 
-  private String adAccountId;
+  private String html;
+
+  private String id;
 
   /**
-   * The ID of the terms of service
+   * The ID of the ad account.
    **/
-  public TermsOfService id(String id) {
-    this.id = id;
+  public TermsOfService adAccountId(String adAccountId) {
+    this.adAccountId = adAccountId;
     return this;
   }
 
   
-  @ApiModelProperty(example = "2650449554526", value = "The ID of the terms of service")
-  @JsonProperty("id")
-  public String getId() {
-    return id;
+  @ApiModelProperty(example = "549755885175", value = "The ID of the ad account.")
+  @JsonProperty("ad_account_id")
+  public String getAdAccountId() {
+    return adAccountId;
   }
-  public void setId(String id) {
-    this.id = id;
-  }
-
-
-  /**
-   * The terms of service content
-   **/
-  public TermsOfService html(String html) {
-    this.html = html;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "example test", value = "The terms of service content")
-  @JsonProperty("html")
-  public String getHtml() {
-    return html;
-  }
-  public void setHtml(String html) {
-    this.html = html;
+  public void setAdAccountId(String adAccountId) {
+    this.adAccountId = adAccountId;
   }
 
 
@@ -82,21 +63,40 @@ public class TermsOfService   {
 
 
   /**
-   * The ID of the ad account.
+   * The terms of service content
    **/
-  public TermsOfService adAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
+  public TermsOfService html(String html) {
+    this.html = html;
     return this;
   }
 
   
-  @ApiModelProperty(example = "549755885175", value = "The ID of the ad account.")
-  @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
-    return adAccountId;
+  @ApiModelProperty(example = "example test", value = "The terms of service content")
+  @JsonProperty("html")
+  public String getHtml() {
+    return html;
   }
-  public void setAdAccountId(String adAccountId) {
-    this.adAccountId = adAccountId;
+  public void setHtml(String html) {
+    this.html = html;
+  }
+
+
+  /**
+   * The ID of the terms of service
+   **/
+  public TermsOfService id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "2650449554526", value = "The ID of the terms of service")
+  @JsonProperty("id")
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
   }
 
 
@@ -110,15 +110,15 @@ public class TermsOfService   {
       return false;
     }
     TermsOfService termsOfService = (TermsOfService) o;
-    return Objects.equals(this.id, termsOfService.id) &&
-        Objects.equals(this.html, termsOfService.html) &&
+    return Objects.equals(this.adAccountId, termsOfService.adAccountId) &&
         Objects.equals(this.hasAccepted, termsOfService.hasAccepted) &&
-        Objects.equals(this.adAccountId, termsOfService.adAccountId);
+        Objects.equals(this.html, termsOfService.html) &&
+        Objects.equals(this.id, termsOfService.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, html, hasAccepted, adAccountId);
+    return Objects.hash(adAccountId, hasAccepted, html, id);
   }
 
   @Override
@@ -126,10 +126,10 @@ public class TermsOfService   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TermsOfService {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    html: ").append(toIndentedString(html)).append("\n");
-    sb.append("    hasAccepted: ").append(toIndentedString(hasAccepted)).append("\n");
     sb.append("    adAccountId: ").append(toIndentedString(adAccountId)).append("\n");
+    sb.append("    hasAccepted: ").append(toIndentedString(hasAccepted)).append("\n");
+    sb.append("    html: ").append(toIndentedString(html)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

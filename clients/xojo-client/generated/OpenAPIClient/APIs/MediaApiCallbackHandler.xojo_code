@@ -7,7 +7,7 @@ Protected Interface MediaApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub MediaGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.MediaUploadDetails)
+		Sub MediaGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.Media)
 		  
 		End Sub
 	#tag EndMethod

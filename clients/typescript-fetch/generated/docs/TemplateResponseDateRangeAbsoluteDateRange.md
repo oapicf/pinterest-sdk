@@ -7,9 +7,9 @@ The absolute date range of the template
 
 Name | Type
 ------------ | -------------
-`type` | string
-`startDate` | number
 `endDate` | number
+`startDate` | number
+`type` | string
 
 ## Example
 
@@ -18,9 +18,9 @@ import type { TemplateResponseDateRangeAbsoluteDateRange } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "type": absolute,
-  "startDate": 0.8008281904610115,
   "endDate": 6.027456183070403,
+  "startDate": 0.8008281904610115,
+  "type": absolute,
 } satisfies TemplateResponseDateRangeAbsoluteDateRange
 
 console.log(example)

@@ -53,11 +53,11 @@ public:
 	/*! \brief Set Unique identifier of a business asset.
 	 */
 	void setAssetId(std::string  asset_id);
-	/*! \brief Get Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+	/*! \brief Get Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
 	 */
 	std::string getAssetType();
 
-	/*! \brief Set Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+	/*! \brief Set Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
 	 */
 	void setAssetType(std::string  asset_type);
 	/*! \brief Get Unique identifier of a business partner.

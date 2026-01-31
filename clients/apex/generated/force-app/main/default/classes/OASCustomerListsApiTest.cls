@@ -3,7 +3,7 @@ private class OASCustomerListsApiTest {
     /**
      * Create customer lists
      *
-     * &lt;p&gt;Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).&lt;/p&gt;\n&lt;p&gt;A customer list is one of the four types of Pinterest audiences: for more information, see &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/audience-targeting&quot; target&#x3D;&quot;_blank&quot;&gt;Audience targeting&lt;/a&gt;\nor the &lt;a href&#x3D;&quot;/docs/api-features/targeting-overview/&quot; target&#x3D;&quot;_blank&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;p/&gt;\n &lt;p&gt;&lt;b&gt;Please review our &lt;u&gt;&lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/audience-targeting#section-13341&quot; target&#x3D;&quot;_blank&quot;&gt;requirements&lt;/a&gt;&lt;/u&gt; for what type of information is allowed when uploading a customer list.&lt;/b&gt;&lt;/p&gt;\n&lt;p&gt;When you create a customer list, the system scans the list for existing Pinterest accounts;\nthe list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process\nis complete. The filtered list – containing only the Pinterest accounts that were included in your starting\nlist – is what will be used to create the audience.&lt;/p&gt;\n&lt;p&gt;Note that once you have created your customer list, you must convert it into an audience (of the “ CUSTOMER_LIST” type)\nusing the &lt;a href&#x3D;&quot;#operation/create_audience_handler&quot;&gt;create audience endpoint&lt;/a&gt; before it can be used.&lt;/p&gt;
+     * &lt;p&gt;Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).&lt;/p&gt;\n&lt;p&gt;A customer list is one of the four types of Pinterest audiences: for more information, see &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/audience-targeting&quot; target&#x3D;&quot;_blank&quot;&gt;Audience targeting&lt;/a&gt;\nor the &lt;a href&#x3D;&quot;/docs/api-features/targeting-overview/&quot; target&#x3D;&quot;_blank&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;p/&gt;\n&lt;p&gt;&lt;b&gt;Please review our &lt;u&gt;&lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/audience-targeting#section-13341&quot; target&#x3D;&quot;_blank&quot;&gt;requirements&lt;/a&gt;&lt;/u&gt; for what type of information is allowed when uploading a customer list.&lt;/b&gt;&lt;/p&gt;\n&lt;p&gt;When you create a customer list, the system scans the list for existing Pinterest accounts;\nthe list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process\nis complete. The filtered list – containing only the Pinterest accounts that were included in your starting\nlist – is what will be used to create the audience.&lt;/p&gt;\n&lt;p&gt;To use your customer list after creating it, convert it into a customer list audience by passing the &#x60;CUSTOMER_LIST&#x60; audience type at the &lt;a href&#x3D;&quot;https://developer.pinterest.com/docs/api/v5/audiences-create&quot; target&#x3D;&quot;blank&quot;&gt;create audience endpoint&lt;/a&gt;.&lt;/p&gt;
      */
     @isTest
     private static void customerListsCreateTest() {
@@ -82,6 +82,23 @@ private class OASCustomerListsApiTest {
         expectedResponse = OASCustomerList.getExample();
         response = (OASCustomerList) api.customerListsGet(params);
         System.assertEquals(expectedResponse, response);
+        client = new OASClient();
+        api = new OASCustomerListsApi(client);
+
+        js = JSON.serialize(OASCustomerList.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCustomerList.getExample();
+        response = (OASCustomerList) api.customerListsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCustomerList.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCustomerList.getExample();
+        response = (OASCustomerList) api.customerListsGet(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -131,7 +148,7 @@ private class OASCustomerListsApiTest {
     /**
      * Update customer list
      *
-     * &lt;p&gt;Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)&lt;/p&gt;\n&lt;p&gt;When you add records to an existing customer list, the system scans the additions for existing Pinterest\naccounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records\n to add will be deleted when the matching process is complete.&lt;/p&gt;\n&lt;p&gt;For more information, see &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/audience-targeting&quot; target&#x3D;&quot;_blank&quot;&gt;Audience targeting&lt;/a&gt;\nor the &lt;a href&#x3D;&quot;/docs/api-features/targeting-overview/&quot; target&#x3D;&quot;_blank&quot;&gt;Audiences&lt;/a&gt;\nsection of the ads management guide.&lt;/p&gt;
+     * &lt;p&gt;Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)&lt;/p&gt;\n&lt;p&gt;When you add records to an existing customer list, the system scans the additions for existing Pinterest\naccounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records\nto add will be deleted when the matching process is complete.&lt;/p&gt;\n&lt;p&gt;For more information, see &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/audience-targeting&quot; target&#x3D;&quot;_blank&quot;&gt;Audience targeting&lt;/a&gt;\nor the &lt;a href&#x3D;&quot;/docs/api-features/targeting-overview/&quot; target&#x3D;&quot;_blank&quot;&gt;Audiences&lt;/a&gt;\nsection of the ads management guide.&lt;/p&gt;
      */
     @isTest
     private static void customerListsUpdateTest() {

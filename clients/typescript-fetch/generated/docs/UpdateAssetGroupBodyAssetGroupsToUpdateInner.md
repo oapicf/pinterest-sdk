@@ -7,11 +7,11 @@
 Name | Type
 ------------ | -------------
 `assetGroupId` | string
-`name` | string
-`description` | string
 `assetGroupTypes` | [Array&lt;AssetGroupType&gt;](AssetGroupType.md)
 `assetsToAdd` | Array&lt;string&gt;
 `assetsToRemove` | Array&lt;string&gt;
+`description` | string
+`name` | string
 
 ## Example
 
@@ -21,11 +21,11 @@ import type { UpdateAssetGroupBodyAssetGroupsToUpdateInner } from ''
 // TODO: Update the object below with actual values
 const example = {
   "assetGroupId": 666791336903426391,
-  "name": Canada Ad Accounts,
-  "description": Asset groups that has ad accounts shared in Canada,
   "assetGroupTypes": ["BRAND","LOCATION_OR_LANGUAGE","PRODUCT_LINE","OTHER"],
   "assetsToAdd": null,
   "assetsToRemove": null,
+  "description": Asset groups that has ad accounts shared in Canada,
+  "name": Canada Ad Accounts,
 } satisfies UpdateAssetGroupBodyAssetGroupsToUpdateInner
 
 console.log(example)

@@ -12,12 +12,12 @@ import org.joda.time.DateTime
 import TemplateResponseDateRangeAbsoluteDateRange._
 
 case class TemplateResponseDateRangeAbsoluteDateRange (
-  /* The date range type */
-  `type`: Option[String],
+  /* The end date of the date range */
+  endDate: Option[BigDecimal],
 /* The start date of the date range */
   startDate: Option[BigDecimal],
-/* The end date of the date range */
-  endDate: Option[BigDecimal])
+/* The date range type */
+  `type`: Option[String])
 
 object TemplateResponseDateRangeAbsoluteDateRange {
   import DateTimeCodecs._

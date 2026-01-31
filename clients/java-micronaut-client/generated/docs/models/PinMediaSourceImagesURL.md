@@ -2,7 +2,7 @@
 
 # PinMediaSourceImagesURL
 
-Multiple images urls-based media source
+Multiple URL-based images media source
 
 The class is defined in **[PinMediaSourceImagesURL.java](../../src/main/java/org/openapitools/model/PinMediaSourceImagesURL.java)**
 
@@ -10,16 +10,16 @@ The class is defined in **[PinMediaSourceImagesURL.java](../../src/main/java/org
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sourceType** | [**SourceTypeEnum**](#SourceTypeEnum) |  |  [optional property]
-**items** | [`List&lt;PinMediaSourceImagesURLItemsInner&gt;`](PinMediaSourceImagesURLItemsInner.md) | Array with image objects. | 
 **index** | `Integer` |  |  [optional property]
+**items** | [`List&lt;PinMediaSourceImagesURLItem&gt;`](PinMediaSourceImagesURLItem.md) | Array with image objects. | 
+**sourceType** | [**SourceTypeEnum**](#SourceTypeEnum) | The source type of the media. | 
+
+
 
 ## SourceTypeEnum
 
 Name | Value
 ---- | -----
 MULTIPLE_IMAGE_URLS | `"multiple_image_urls"`
-
-
 
 

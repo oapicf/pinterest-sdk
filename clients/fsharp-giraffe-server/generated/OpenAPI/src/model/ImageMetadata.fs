@@ -2,7 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.ImageMetadataImages
+open OpenAPI.Model.ImageSize
 open OpenAPI.Model.string option
 
 module ImageMetadata =
@@ -11,10 +11,10 @@ module ImageMetadata =
 
 
   type ImageMetadata = {
-    ItemType : string;
-    Title : string option;
     Description : string option;
+    Images : ImageSize;
+    ItemType : string;
     Link : string option;
-    Images : ImageMetadataImages;
+    Title : string option;
   }
   //#endregion

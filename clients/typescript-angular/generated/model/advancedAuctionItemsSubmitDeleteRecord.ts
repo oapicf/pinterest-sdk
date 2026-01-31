@@ -9,18 +9,23 @@
  */
 import { Language } from './language';
 import { Country } from './country';
+import { AdvancedAuctionOperationError } from './advancedAuctionOperationError';
 
 
 /**
  * Object describing an item bid option deletion operation
  */
 export interface AdvancedAuctionItemsSubmitDeleteRecord { 
+    country: Country;
     /**
      * The catalog retail item id in the merchant namespace
      */
     item_id: string;
-    country: Country;
     language: Language;
+    /**
+     * Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+     */
+    errors?: Array<AdvancedAuctionOperationError>;
 }
 export namespace AdvancedAuctionItemsSubmitDeleteRecord {
 }

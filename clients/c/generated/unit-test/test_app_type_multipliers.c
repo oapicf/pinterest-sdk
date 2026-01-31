@@ -22,11 +22,11 @@ app_type_multipliers_t* instantiate_app_type_multipliers(int include_optional) {
   app_type_multipliers_t* app_type_multipliers = NULL;
   if (include_optional) {
     app_type_multipliers = app_type_multipliers_create(
-      pinterest_rest_api_app_type_multipliers__android_mobile
+      pinterest_rest_api_app_type_multipliers_APPTYPE_android_mobile
     );
   } else {
     app_type_multipliers = app_type_multipliers_create(
-      pinterest_rest_api_app_type_multipliers__android_mobile
+      pinterest_rest_api_app_type_multipliers_APPTYPE_android_mobile
     );
   }
 

@@ -1,0 +1,67 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server AdGroupAudienceSizingRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a AdGroupAudienceSizingRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  AdGroupAudienceSizingRequestKeywordsInner = openapi_server.resourceTypes.AdGroupAudienceSizingRequestKeywordsInner
+  PlacementGroupType = openapi_server.resourceTypes.PlacementGroupType
+  TargetingSpec = openapi_server.resourceTypes.TargetingSpec
+}
+resourceTypes {
+
+  AdGroupAudienceSizingRequest {
+    title = AdGroupAudienceSizingRequest
+    description = AdGroupAudienceSizingRequest
+    derivedFrom = Root
+    properties {
+        auto_targeting_enabled {
+          type =  boolean
+          description = "Enable auto-targeting for ad group. Default value is True. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/performance-plus-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;Pinterest Performance+ targeting\&quot;&lt;/a&gt;."
+          optional = false
+        }
+        creative_types {
+          type = array
+          items.type =  string
+          description = "Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead."
+          enum = ["REGULAR", "VIDEO", "SHOPPING", "CAROUSEL", "MAX_VIDEO", "SHOP_THE_PIN", "COLLECTION", "IDEA"]
+          optional = false
+        }
+        keywords {
+          type = array
+          items.type = AdGroupAudienceSizingRequestKeywordsInner
+          description = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted."
+          optional = false
+        }
+        placement_group {
+          type = PlacementGroupType
+          description = "&lt;a href&#x3D;\&quot;/docs/redoc/#section/Placement-group\&quot;&gt;Placement group&lt;/a&gt;."
+          optional = false
+        }
+        product_group_ids {
+          type = array
+          items.type =  string
+          description = "Targeted product group IDs. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This can only be combined with shopping/catalog sales campaigns. For more information, &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/shopping-ads#section-14571\&quot; target&#x3D;\&quot;_blank\&quot;&gt;click here&lt;/a&gt;. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored."
+          optional = false
+        }
+        targeting_spec {
+          type = TargetingSpec
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  AdGroupAudienceSizingRequest {
+    title = AdGroupAudienceSizingRequest
+    description = AdGroupAudienceSizingRequest
+    implements = openapi_server.resourceTypes.AdGroupAudienceSizingRequest
+
+  }
+}

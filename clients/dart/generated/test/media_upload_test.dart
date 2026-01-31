@@ -27,14 +27,15 @@ void main() {
       // TODO
     });
 
-    // The URL where you will POST your media file.
-    // String uploadUrl
-    test('to test the property `uploadUrl`', () async {
+    // The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
+    // MediaUploadParameters uploadParameters
+    test('to test the property `uploadParameters`', () async {
       // TODO
     });
 
-    // MediaUploadAllOfUploadParameters uploadParameters
-    test('to test the property `uploadParameters`', () async {
+    // The URL where you will POST your media file.
+    // String uploadUrl
+    test('to test the property `uploadUrl`', () async {
       // TODO
     });
 

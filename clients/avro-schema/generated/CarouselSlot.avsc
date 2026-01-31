@@ -1,0 +1,27 @@
+{
+  "namespace": "model",
+  "type": "record",
+  "doc": "",
+  "name": "CarouselSlot",
+  "fields": [
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "doc": "Carousel Pin slot description.",
+      "default": null
+    },
+    {
+      "name": "link",
+      "type": ["null", "string"],
+      "doc": "Carousel Pin slot link.",
+      "default": null
+    },
+    {
+      "name": "title",
+      "type": ["null", "string"],
+      "doc": "Carousel Pin slot title.",
+      "default": null
+    }
+  ]
+
+}

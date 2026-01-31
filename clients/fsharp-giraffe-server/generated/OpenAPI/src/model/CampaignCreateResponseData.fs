@@ -2,6 +2,7 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
+open OpenAPI.Model.CampaignBidOptions
 open OpenAPI.Model.CampaignSummaryStatus
 open OpenAPI.Model.EntityStatus
 open OpenAPI.Model.ObjectiveType
@@ -17,23 +18,25 @@ module CampaignCreateResponseData =
 
   type CampaignCreateResponseData = {
     AdAccountId : string;
-    Name : string;
-    Status : EntityStatus;
-    LifetimeSpendCap : int option;
     DailySpendCap : int option;
-    OrderLineId : string option;
-    TrackingUrls : TrackingUrls;
-    StartTime : int option;
     EndTime : int option;
-    IsFlexibleDailyBudgets : bool option;
-    DefaultAdGroupBudgetInMicroCurrency : int option;
     IsAutomatedCampaign : bool option;
-    Id : string;
-    ObjectiveType : ObjectiveType;
-    CreatedTime : int;
-    UpdatedTime : int;
-    Type : string;
+    IsFlexibleDailyBudgets : bool option;
+    LifetimeSpendCap : int option;
+    Name : string;
+    OrderLineId : string option;
+    StartTime : int option;
+    Status : EntityStatus;
+    TrackingUrls : TrackingUrls;
+    DefaultAdGroupBudgetInMicroCurrency : int option;
     IsCampaignBudgetOptimization : bool option;
+    Id : string;
+    BidOptions : CampaignBidOptions;
+    CreatedTime : int;
+    IsPerformancePlus : bool;
+    ObjectiveType : ObjectiveType;
     SummaryStatus : CampaignSummaryStatus;
+    Type : string;
+    UpdatedTime : int;
   }
   //#endregion

@@ -6,22 +6,22 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}report_status`,
-                ...BulkReportingJobStatus.fields(`${keyPrefix}report_status`, isInput),
-            },
-            {
-                key: `${keyPrefix}token`,
-                label: `[${labelPrefix}token]`,
-                type: 'string',
-            },
-            {
                 key: `${keyPrefix}message`,
                 label: `[${labelPrefix}message]`,
                 type: 'string',
             },
             {
+                key: `${keyPrefix}report_status`,
+                ...BulkReportingJobStatus.fields(`${keyPrefix}report_status`, isInput),
+            },
+            {
                 key: `${keyPrefix}status`,
                 label: `[${labelPrefix}status]`,
+                type: 'string',
+            },
+            {
+                key: `${keyPrefix}token`,
+                label: `[${labelPrefix}token]`,
                 type: 'string',
             },
         ]
@@ -29,10 +29,10 @@ module.exports = {
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'report_status': bundle.inputData?.[`${keyPrefix}report_status`],
-            'token': bundle.inputData?.[`${keyPrefix}token`],
             'message': bundle.inputData?.[`${keyPrefix}message`],
+            'report_status': bundle.inputData?.[`${keyPrefix}report_status`],
             'status': bundle.inputData?.[`${keyPrefix}status`],
+            'token': bundle.inputData?.[`${keyPrefix}token`],
         }
     },
 }

@@ -16,16 +16,16 @@ module AudienceInsightsResponse =
   type AudienceInsightsResponse = {
     [<JsonProperty(PropertyName = "categories")>]
     Categories : AudienceCategory[];
-    [<JsonProperty(PropertyName = "demographics")>]
-    Demographics : AudienceDemographics;
-    [<JsonProperty(PropertyName = "type")>]
-    Type : AudienceInsightType;
     [<JsonProperty(PropertyName = "date")>]
     Date : string option;
+    [<JsonProperty(PropertyName = "demographics")>]
+    Demographics : AudienceDemographics;
     [<JsonProperty(PropertyName = "size")>]
     Size : int;
     [<JsonProperty(PropertyName = "size_is_upper_bound")>]
     SizeIsUpperBound : bool;
+    [<JsonProperty(PropertyName = "type")>]
+    Type : AudienceInsightType;
   }
 
   //#endregion

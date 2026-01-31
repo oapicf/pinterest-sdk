@@ -5,6 +5,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.openapitools.model.CatalogsType;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -21,43 +22,10 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsCreateRequest", description = "Request object for creating a catalog.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreateRequest {
 
-  /**
-   * Type of the catalog entity.
-   */
-  public enum CatalogTypeEnum {
-    HOTEL("HOTEL");
-
-    private final String value;
-
-    CatalogTypeEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static CatalogTypeEnum fromValue(String value) {
-      for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private CatalogTypeEnum catalogType;
+  private CatalogsType catalogType;
 
   private String name;
 
@@ -68,28 +36,28 @@ public class CatalogsCreateRequest {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsCreateRequest(CatalogTypeEnum catalogType, String name) {
+  public CatalogsCreateRequest(CatalogsType catalogType, String name) {
     this.catalogType = catalogType;
     this.name = name;
   }
 
-  public CatalogsCreateRequest catalogType(CatalogTypeEnum catalogType) {
+  public CatalogsCreateRequest catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
     return this;
   }
 
   /**
-   * Type of the catalog entity.
+   * Get catalogType
    * @return catalogType
    */
-  @NotNull 
-  @Schema(name = "catalog_type", description = "Type of the catalog entity.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @NotNull @Valid 
+  @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalog_type")
-  public CatalogTypeEnum getCatalogType() {
+  public CatalogsType getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogTypeEnum catalogType) {
+  public void setCatalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
   }
 

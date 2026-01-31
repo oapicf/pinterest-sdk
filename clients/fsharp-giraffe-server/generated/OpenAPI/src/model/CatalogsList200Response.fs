@@ -11,7 +11,7 @@ module CatalogsList200Response =
 
 
   type catalogs_list_200_response = {
-    Items : Catalog[];
     Bookmark : string option;
+    Items : Catalog[];
   }
   //#endregion

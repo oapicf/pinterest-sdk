@@ -16,6 +16,12 @@ void main() {
   // final instance = DeleteAssetGroupResponseExceptionsInner();
 
   group('test DeleteAssetGroupResponseExceptionsInner', () {
+    // Asset group id of the exception.
+    // String assetGroupId
+    test('to test the property `assetGroupId`', () async {
+      // TODO
+    });
+
     // Error code associated with the error deleting asset group.
     // int code
     test('to test the property `code`', () async {
@@ -25,12 +31,6 @@ void main() {
     // Error message associated with the error deleting asset group.
     // String message
     test('to test the property `message`', () async {
-      // TODO
-    });
-
-    // Asset group id of the exception.
-    // String assetGroupId
-    test('to test the property `assetGroupId`', () async {
       // TODO
     });
 

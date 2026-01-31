@@ -5,11 +5,25 @@ context("Test BidFloorSpec")
 
 model_instance <- BidFloorSpec$new()
 
+test_that("billable_event", {
+  # tests for the property `billable_event` (ActionType)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`billable_event`, "EXPECTED_RESULT")
+})
+
 test_that("countries", {
   # tests for the property `countries` (array[Country])
 
   # uncomment below to test the property
   #expect_equal(model.instance$`countries`, "EXPECTED_RESULT")
+})
+
+test_that("creative_type", {
+  # tests for the property `creative_type` (CreativeType)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`creative_type`, "EXPECTED_RESULT")
 })
 
 test_that("currency", {
@@ -26,23 +40,9 @@ test_that("objective_type", {
   #expect_equal(model.instance$`objective_type`, "EXPECTED_RESULT")
 })
 
-test_that("billable_event", {
-  # tests for the property `billable_event` (ActionType)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`billable_event`, "EXPECTED_RESULT")
-})
-
 test_that("optimization_goal_metadata", {
   # tests for the property `optimization_goal_metadata` (OptimizationGoalMetadata)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`optimization_goal_metadata`, "EXPECTED_RESULT")
-})
-
-test_that("creative_type", {
-  # tests for the property `creative_type` (CreativeType)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`creative_type`, "EXPECTED_RESULT")
 })

@@ -9,9 +9,9 @@ use WWW::OpenAPIClient::Object::CatalogsItemsUpsertBatchRequest;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | [**Country**](Country.md) |  | 
+**items** | [**ARRAY[ItemUpsertBatchRecord]**](ItemUpsertBatchRecord.md) | Array with catalogs items | 
 **language** | **string** | We recommend using the CatalogsLocale values. | 
 **operation** | [**BatchOperation**](BatchOperation.md) |  | 
-**items** | [**ARRAY[ItemUpsertBatchRecord]**](ItemUpsertBatchRecord.md) | Array with catalogs items | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

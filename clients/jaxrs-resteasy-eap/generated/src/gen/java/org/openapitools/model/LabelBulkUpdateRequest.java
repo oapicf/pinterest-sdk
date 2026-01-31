@@ -1,0 +1,123 @@
+package org.openapitools.model;
+
+import java.util.Objects;
+import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+import io.swagger.annotations.*;
+
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-31T04:55:11.834541491Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+public class LabelBulkUpdateRequest   {
+  
+  private String id;
+
+  /**
+   * Set status to &#x60;ARCHIVED&#x60; to remove the label from the parent entity.
+   */
+  public enum StatusEnum {
+    ARCHIVED("ARCHIVED");
+    private String value;
+
+    StatusEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+  }
+
+  private StatusEnum status;
+  private String value;
+
+  /**
+   * Label ID.
+   **/
+  
+  @ApiModelProperty(example = "1106385754497", required = true, value = "Label ID.")
+  @JsonProperty("id")
+  @NotNull
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  /**
+   * Set status to &#x60;ARCHIVED&#x60; to remove the label from the parent entity.
+   **/
+  
+  @ApiModelProperty(example = "ARCHIVED", value = "Set status to `ARCHIVED` to remove the label from the parent entity.")
+  @JsonProperty("status")
+  public StatusEnum getStatus() {
+    return status;
+  }
+  public void setStatus(StatusEnum status) {
+    this.status = status;
+  }
+
+  /**
+   * &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; value field will be deprecated. Label name. 100-character limit.
+   **/
+  
+  @ApiModelProperty(value = "</p><strong>Note:</strong> value field will be deprecated. Label name. 100-character limit.")
+  @JsonProperty("value")
+ @Size(max=100)  public String getValue() {
+    return value;
+  }
+  public void setValue(String value) {
+    this.value = value;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    LabelBulkUpdateRequest labelBulkUpdateRequest = (LabelBulkUpdateRequest) o;
+    return Objects.equals(this.id, labelBulkUpdateRequest.id) &&
+        Objects.equals(this.status, labelBulkUpdateRequest.status) &&
+        Objects.equals(this.value, labelBulkUpdateRequest.value);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, status, value);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class LabelBulkUpdateRequest {\n");
+    
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}
+

@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** |  | [optional] [default to undefined]
-**name** | **string** |  | [optional] [default to undefined]
 **child_interests** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
+**id** | **string** |  | [optional] [default to undefined]
 **level** | **number** |  | [optional] [default to undefined]
+**name** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -16,10 +16,10 @@ Name | Type | Description | Notes
 import { SingleInterestTargetingOptionResponse } from './api';
 
 const instance: SingleInterestTargetingOptionResponse = {
-    id,
-    name,
     child_interests,
+    id,
     level,
+    name,
 };
 ```
 

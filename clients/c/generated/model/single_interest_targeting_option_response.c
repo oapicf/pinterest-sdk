@@ -6,35 +6,35 @@
 
 
 static single_interest_targeting_option_response_t *single_interest_targeting_option_response_create_internal(
-    char *id,
-    char *name,
     list_t *child_interests,
-    int level
+    char *id,
+    int level,
+    char *name
     ) {
     single_interest_targeting_option_response_t *single_interest_targeting_option_response_local_var = malloc(sizeof(single_interest_targeting_option_response_t));
     if (!single_interest_targeting_option_response_local_var) {
         return NULL;
     }
-    single_interest_targeting_option_response_local_var->id = id;
-    single_interest_targeting_option_response_local_var->name = name;
     single_interest_targeting_option_response_local_var->child_interests = child_interests;
+    single_interest_targeting_option_response_local_var->id = id;
     single_interest_targeting_option_response_local_var->level = level;
+    single_interest_targeting_option_response_local_var->name = name;
 
     single_interest_targeting_option_response_local_var->_library_owned = 1;
     return single_interest_targeting_option_response_local_var;
 }
 
 __attribute__((deprecated)) single_interest_targeting_option_response_t *single_interest_targeting_option_response_create(
-    char *id,
-    char *name,
     list_t *child_interests,
-    int level
+    char *id,
+    int level,
+    char *name
     ) {
     return single_interest_targeting_option_response_create_internal (
-        id,
-        name,
         child_interests,
-        level
+        id,
+        level,
+        name
         );
 }
 
@@ -47,6 +47,13 @@ void single_interest_targeting_option_response_free(single_interest_targeting_op
         return ;
     }
     listEntry_t *listEntry;
+    if (single_interest_targeting_option_response->child_interests) {
+        list_ForEach(listEntry, single_interest_targeting_option_response->child_interests) {
+            free(listEntry->data);
+        }
+        list_freeList(single_interest_targeting_option_response->child_interests);
+        single_interest_targeting_option_response->child_interests = NULL;
+    }
     if (single_interest_targeting_option_response->id) {
         free(single_interest_targeting_option_response->id);
         single_interest_targeting_option_response->id = NULL;
@@ -55,34 +62,11 @@ void single_interest_targeting_option_response_free(single_interest_targeting_op
         free(single_interest_targeting_option_response->name);
         single_interest_targeting_option_response->name = NULL;
     }
-    if (single_interest_targeting_option_response->child_interests) {
-        list_ForEach(listEntry, single_interest_targeting_option_response->child_interests) {
-            free(listEntry->data);
-        }
-        list_freeList(single_interest_targeting_option_response->child_interests);
-        single_interest_targeting_option_response->child_interests = NULL;
-    }
     free(single_interest_targeting_option_response);
 }
 
 cJSON *single_interest_targeting_option_response_convertToJSON(single_interest_targeting_option_response_t *single_interest_targeting_option_response) {
     cJSON *item = cJSON_CreateObject();
-
-    // single_interest_targeting_option_response->id
-    if(single_interest_targeting_option_response->id) {
-    if(cJSON_AddStringToObject(item, "id", single_interest_targeting_option_response->id) == NULL) {
-    goto fail; //String
-    }
-    }
-
-
-    // single_interest_targeting_option_response->name
-    if(single_interest_targeting_option_response->name) {
-    if(cJSON_AddStringToObject(item, "name", single_interest_targeting_option_response->name) == NULL) {
-    goto fail; //String
-    }
-    }
-
 
     // single_interest_targeting_option_response->child_interests
     if(single_interest_targeting_option_response->child_interests) {
@@ -101,10 +85,26 @@ cJSON *single_interest_targeting_option_response_convertToJSON(single_interest_t
     }
 
 
+    // single_interest_targeting_option_response->id
+    if(single_interest_targeting_option_response->id) {
+    if(cJSON_AddStringToObject(item, "id", single_interest_targeting_option_response->id) == NULL) {
+    goto fail; //String
+    }
+    }
+
+
     // single_interest_targeting_option_response->level
     if(single_interest_targeting_option_response->level) {
     if(cJSON_AddNumberToObject(item, "level", single_interest_targeting_option_response->level) == NULL) {
     goto fail; //Numeric
+    }
+    }
+
+
+    // single_interest_targeting_option_response->name
+    if(single_interest_targeting_option_response->name) {
+    if(cJSON_AddStringToObject(item, "name", single_interest_targeting_option_response->name) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -122,30 +122,6 @@ single_interest_targeting_option_response_t *single_interest_targeting_option_re
 
     // define the local list for single_interest_targeting_option_response->child_interests
     list_t *child_interestsList = NULL;
-
-    // single_interest_targeting_option_response->id
-    cJSON *id = cJSON_GetObjectItemCaseSensitive(single_interest_targeting_option_responseJSON, "id");
-    if (cJSON_IsNull(id)) {
-        id = NULL;
-    }
-    if (id) { 
-    if(!cJSON_IsString(id) && !cJSON_IsNull(id))
-    {
-    goto end; //String
-    }
-    }
-
-    // single_interest_targeting_option_response->name
-    cJSON *name = cJSON_GetObjectItemCaseSensitive(single_interest_targeting_option_responseJSON, "name");
-    if (cJSON_IsNull(name)) {
-        name = NULL;
-    }
-    if (name) { 
-    if(!cJSON_IsString(name) && !cJSON_IsNull(name))
-    {
-    goto end; //String
-    }
-    }
 
     // single_interest_targeting_option_response->child_interests
     cJSON *child_interests = cJSON_GetObjectItemCaseSensitive(single_interest_targeting_option_responseJSON, "child_interests");
@@ -169,6 +145,18 @@ single_interest_targeting_option_response_t *single_interest_targeting_option_re
     }
     }
 
+    // single_interest_targeting_option_response->id
+    cJSON *id = cJSON_GetObjectItemCaseSensitive(single_interest_targeting_option_responseJSON, "id");
+    if (cJSON_IsNull(id)) {
+        id = NULL;
+    }
+    if (id) { 
+    if(!cJSON_IsString(id) && !cJSON_IsNull(id))
+    {
+    goto end; //String
+    }
+    }
+
     // single_interest_targeting_option_response->level
     cJSON *level = cJSON_GetObjectItemCaseSensitive(single_interest_targeting_option_responseJSON, "level");
     if (cJSON_IsNull(level)) {
@@ -181,12 +169,24 @@ single_interest_targeting_option_response_t *single_interest_targeting_option_re
     }
     }
 
+    // single_interest_targeting_option_response->name
+    cJSON *name = cJSON_GetObjectItemCaseSensitive(single_interest_targeting_option_responseJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
+    if (name) { 
+    if(!cJSON_IsString(name) && !cJSON_IsNull(name))
+    {
+    goto end; //String
+    }
+    }
+
 
     single_interest_targeting_option_response_local_var = single_interest_targeting_option_response_create_internal (
-        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
-        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
         child_interests ? child_interestsList : NULL,
-        level ? level->valuedouble : 0
+        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL,
+        level ? level->valuedouble : 0,
+        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL
         );
 
     return single_interest_targeting_option_response_local_var;

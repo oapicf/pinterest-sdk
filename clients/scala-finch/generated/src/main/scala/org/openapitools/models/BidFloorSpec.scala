@@ -15,19 +15,19 @@ import scala.collection.immutable.Seq
 
 /**
  * 
+ * @param billableUnderscoreevent 
  * @param countries 
+ * @param creativeUnderscoretype 
  * @param currency 
  * @param objectiveUnderscoretype 
- * @param billableUnderscoreevent 
  * @param optimizationUnderscoregoalUnderscoremetadata 
- * @param creativeUnderscoretype 
  */
-case class BidFloorSpec(countries: Option[Seq[Country]],
+case class BidFloorSpec(billableUnderscoreevent: ActionType,
+                countries: Option[Seq[Country]],
+                creativeUnderscoretype: Option[CreativeType],
                 currency: Currency,
                 objectiveUnderscoretype: Option[ObjectiveType],
-                billableUnderscoreevent: ActionType,
-                optimizationUnderscoregoalUnderscoremetadata: Option[OptimizationGoalMetadata],
-                creativeUnderscoretype: Option[CreativeType]
+                optimizationUnderscoregoalUnderscoremetadata: Option[OptimizationGoalMetadata]
                 )
 
 object BidFloorSpec {

@@ -9,6 +9,7 @@ module.exports = {
                     'PROFILE',
                     'ASSET_GROUP',
                     'CONVERSION_TAG',
+                    'CATALOG',
                 ],
             }
         )

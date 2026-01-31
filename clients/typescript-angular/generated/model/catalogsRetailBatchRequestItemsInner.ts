@@ -16,16 +16,20 @@ import { CatalogsUpsertRetailItem } from './catalogsUpsertRetailItem';
 
 
 export interface CatalogsRetailBatchRequestItemsInner { 
+    attributes: ItemAttributesRequest;
     /**
      * The catalog item id in the merchant namespace
      */
     item_id: string;
     operation: CatalogsRetailBatchRequestItemsInner.OperationEnum;
-    attributes: ItemAttributesRequest;
     /**
      * The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
      */
     update_mask?: Array<UpdateMaskFieldType> | null;
+    /**
+     * The millisecond timestamp when the item was lastly modified by the merchant.
+     */
+    last_updated_time?: number;
 }
 export namespace CatalogsRetailBatchRequestItemsInner {
     export const OperationEnum = {

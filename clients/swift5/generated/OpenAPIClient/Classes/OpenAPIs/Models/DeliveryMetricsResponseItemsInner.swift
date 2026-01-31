@@ -16,37 +16,37 @@ public struct DeliveryMetricsResponseItemsInner: Codable, JSONEncodable, Hashabl
         case ads = "ADS"
         case organic = "ORGANIC"
     }
-    /** Metric's name. */
-    public var name: String?
     /** Category name */
     public var category: Category?
     /** How the metric is defined. */
     public var definition: String?
     /** Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager. */
     public var displayName: String?
+    /** Metric's name. */
+    public var name: String?
 
-    public init(name: String? = nil, category: Category? = nil, definition: String? = nil, displayName: String? = nil) {
-        self.name = name
+    public init(category: Category? = nil, definition: String? = nil, displayName: String? = nil, name: String? = nil) {
         self.category = category
         self.definition = definition
         self.displayName = displayName
+        self.name = name
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case name
         case category
         case definition
         case displayName = "display_name"
+        case name
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(category, forKey: .category)
         try container.encodeIfPresent(definition, forKey: .definition)
         try container.encodeIfPresent(displayName, forKey: .displayName)
+        try container.encodeIfPresent(name, forKey: .name)
     }
 }
 

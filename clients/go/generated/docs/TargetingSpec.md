@@ -4,16 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AGE_BUCKET** | Pointer to **[]string** | Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted. | [optional] 
-**APPTYPE** | Pointer to **[]string** | Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted. | [optional] 
+**AGE_BUCKET** | Pointer to [**[]TargetingSpecAgeBucket**](TargetingSpecAgeBucket.md) | **Legacy field.** Predefined age ranges. We recommend using MINIMUM_AGE and MAXIMUM_AGE instead for more flexible targeting. Cannot be combined with MINIMUM_AGE/MAXIMUM_AGE. If neither AGE_BUCKET nor MINIMUM_AGE/MAXIMUM_AGE are specified, all ages will be targeted. | [optional] 
+**APPTYPE** | Pointer to [**[]TargetingSpecAppType**](TargetingSpecAppType.md) | Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted. | [optional] 
 **AUDIENCE_EXCLUDE** | Pointer to **[]string** | Excluded customer list IDs. Used to drive new customer acquisition goals. For example: [\&quot;2542620905475\&quot;]. Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_EXCLUDE field is missing, the default behavior in terms of ad delivery is that **No users will be excluded**. | [optional] 
 **AUDIENCE_INCLUDE** | Pointer to **[]string** | Targeted customer list IDs. For example: [\&quot;2542620905473\&quot;]. Audience lists need to have at least 100 people with Pinterest accounts in them Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_INCLUDE field is missing, the default behavior in terms of ad delivery is that **All users will be included**. | [optional] 
-**GENDER** | Pointer to **[]string** | Targeted genders. Values: [\&quot;unknown\&quot;,\&quot;male\&quot;,\&quot;female\&quot;]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**. | [optional] 
+**GENDER** | Pointer to [**[]TargetingSpecGender**](TargetingSpecGender.md) | Targeted genders. Values: [\&quot;unknown\&quot;,\&quot;male\&quot;,\&quot;female\&quot;]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**. | [optional] 
 **GEO** | Pointer to **[]string** | Location region codes, e.g., \&quot;BE-VOV\&quot; (East Flanders, Belgium) For complete list, &lt;a href&#x3D;\&quot;https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\&quot; target&#x3D;\&quot;_blank\&quot;&gt;click here&lt;/a&gt; or postal codes, e.g., \&quot;US-94107\&quot;. Use either region codes or postal codes but not both. At least one of LOCATION or GEO must be specified. If the GEO field is missing, then only LOCATION values will be targeted (see LOCATION field below). | [optional] 
 **INTEREST** | Pointer to **[]string** | Array of interest object IDs. If the INTEREST field is missing, the default behavior in terms of ad delivery is that **All interests will be targeted**. | [optional] 
-**LOCALE** | Pointer to **[]string** | 24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be targeted, only english non-sublanguage will be targeted**. | [optional] 
-**LOCATION** | Pointer to **[]string** | 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\&quot;US\&quot;, \&quot;807\&quot;]). For complete list, click here. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above). | [optional] 
-**SHOPPING_RETARGETING** | Pointer to [**[]TargetingSpecSHOPPINGRETARGETING**](TargetingSpecSHOPPINGRETARGETING.md) | Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting | [optional] 
+**LOCALE** | Pointer to **[]string** | 24 ISO 639-1 two-letter language codes. If the LOCALE field is not included in the request, all languages are targeted. | [optional] 
+**LOCATION** | Pointer to **[]string** | 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\&quot;US\&quot;, \&quot;807\&quot;]). For complete list, &lt;a href&#x3D;\&quot;https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\&quot; target&#x3D;\&quot;_blank\&quot;&gt;click here&lt;/a&gt;. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above). | [optional] 
+**MAXIMUM_AGE** | Pointer to **string** | Maximum age to target (inclusive). Values: \&quot;18\&quot;, \&quot;19\&quot;, ..., \&quot;65\&quot;, \&quot;65+\&quot;. Must be used together with &#x60;MINIMUM_AGE&#x60;. Cannot be combined with &#x60;AGE_BUCKET&#x60;. If neither &#x60;MINIMUM_AGE&#x60;/&#x60;MAXIMUM_AGE&#x60; nor &#x60;AGE_BUCKET&#x60; are specified, all ages will be targeted. | [optional] 
+**MINIMUM_AGE** | Pointer to **string** | Minimum age to target (inclusive). Values: \&quot;18\&quot;, \&quot;19\&quot;, ..., \&quot;65\&quot;. Note: 65+ is not allowed for minimum age. Must be used together with &#x60;MAXIMUM_AGE&#x60;. Cannot be combined with &#x60;AGE_BUCKET&#x60;. If neither &#x60;MINIMUM_AGE&#x60;/&#x60;MAXIMUM_AGE&#x60; nor &#x60;AGE_BUCKET&#x60; are specified, all ages will be targeted. | [optional] 
+**SHOPPING_RETARGETING** | Pointer to [**[]TargetingSpecShoppingRetargeting**](TargetingSpecShoppingRetargeting.md) | Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting | [optional] 
 **TARGETING_STRATEGY** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
@@ -37,20 +39,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAGE_BUCKET
 
-`func (o *TargetingSpec) GetAGE_BUCKET() []string`
+`func (o *TargetingSpec) GetAGE_BUCKET() []TargetingSpecAgeBucket`
 
 GetAGE_BUCKET returns the AGE_BUCKET field if non-nil, zero value otherwise.
 
 ### GetAGE_BUCKETOk
 
-`func (o *TargetingSpec) GetAGE_BUCKETOk() (*[]string, bool)`
+`func (o *TargetingSpec) GetAGE_BUCKETOk() (*[]TargetingSpecAgeBucket, bool)`
 
 GetAGE_BUCKETOk returns a tuple with the AGE_BUCKET field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAGE_BUCKET
 
-`func (o *TargetingSpec) SetAGE_BUCKET(v []string)`
+`func (o *TargetingSpec) SetAGE_BUCKET(v []TargetingSpecAgeBucket)`
 
 SetAGE_BUCKET sets AGE_BUCKET field to given value.
 
@@ -72,20 +74,20 @@ HasAGE_BUCKET returns a boolean if a field has been set.
 UnsetAGE_BUCKET ensures that no value is present for AGE_BUCKET, not even an explicit nil
 ### GetAPPTYPE
 
-`func (o *TargetingSpec) GetAPPTYPE() []string`
+`func (o *TargetingSpec) GetAPPTYPE() []TargetingSpecAppType`
 
 GetAPPTYPE returns the APPTYPE field if non-nil, zero value otherwise.
 
 ### GetAPPTYPEOk
 
-`func (o *TargetingSpec) GetAPPTYPEOk() (*[]string, bool)`
+`func (o *TargetingSpec) GetAPPTYPEOk() (*[]TargetingSpecAppType, bool)`
 
 GetAPPTYPEOk returns a tuple with the APPTYPE field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAPPTYPE
 
-`func (o *TargetingSpec) SetAPPTYPE(v []string)`
+`func (o *TargetingSpec) SetAPPTYPE(v []TargetingSpecAppType)`
 
 SetAPPTYPE sets APPTYPE field to given value.
 
@@ -177,20 +179,20 @@ HasAUDIENCE_INCLUDE returns a boolean if a field has been set.
 UnsetAUDIENCE_INCLUDE ensures that no value is present for AUDIENCE_INCLUDE, not even an explicit nil
 ### GetGENDER
 
-`func (o *TargetingSpec) GetGENDER() []string`
+`func (o *TargetingSpec) GetGENDER() []TargetingSpecGender`
 
 GetGENDER returns the GENDER field if non-nil, zero value otherwise.
 
 ### GetGENDEROk
 
-`func (o *TargetingSpec) GetGENDEROk() (*[]string, bool)`
+`func (o *TargetingSpec) GetGENDEROk() (*[]TargetingSpecGender, bool)`
 
 GetGENDEROk returns a tuple with the GENDER field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGENDER
 
-`func (o *TargetingSpec) SetGENDER(v []string)`
+`func (o *TargetingSpec) SetGENDER(v []TargetingSpecGender)`
 
 SetGENDER sets GENDER field to given value.
 
@@ -340,22 +342,72 @@ HasLOCATION returns a boolean if a field has been set.
 `func (o *TargetingSpec) UnsetLOCATION()`
 
 UnsetLOCATION ensures that no value is present for LOCATION, not even an explicit nil
+### GetMAXIMUM_AGE
+
+`func (o *TargetingSpec) GetMAXIMUM_AGE() string`
+
+GetMAXIMUM_AGE returns the MAXIMUM_AGE field if non-nil, zero value otherwise.
+
+### GetMAXIMUM_AGEOk
+
+`func (o *TargetingSpec) GetMAXIMUM_AGEOk() (*string, bool)`
+
+GetMAXIMUM_AGEOk returns a tuple with the MAXIMUM_AGE field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMAXIMUM_AGE
+
+`func (o *TargetingSpec) SetMAXIMUM_AGE(v string)`
+
+SetMAXIMUM_AGE sets MAXIMUM_AGE field to given value.
+
+### HasMAXIMUM_AGE
+
+`func (o *TargetingSpec) HasMAXIMUM_AGE() bool`
+
+HasMAXIMUM_AGE returns a boolean if a field has been set.
+
+### GetMINIMUM_AGE
+
+`func (o *TargetingSpec) GetMINIMUM_AGE() string`
+
+GetMINIMUM_AGE returns the MINIMUM_AGE field if non-nil, zero value otherwise.
+
+### GetMINIMUM_AGEOk
+
+`func (o *TargetingSpec) GetMINIMUM_AGEOk() (*string, bool)`
+
+GetMINIMUM_AGEOk returns a tuple with the MINIMUM_AGE field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMINIMUM_AGE
+
+`func (o *TargetingSpec) SetMINIMUM_AGE(v string)`
+
+SetMINIMUM_AGE sets MINIMUM_AGE field to given value.
+
+### HasMINIMUM_AGE
+
+`func (o *TargetingSpec) HasMINIMUM_AGE() bool`
+
+HasMINIMUM_AGE returns a boolean if a field has been set.
+
 ### GetSHOPPING_RETARGETING
 
-`func (o *TargetingSpec) GetSHOPPING_RETARGETING() []TargetingSpecSHOPPINGRETARGETING`
+`func (o *TargetingSpec) GetSHOPPING_RETARGETING() []TargetingSpecShoppingRetargeting`
 
 GetSHOPPING_RETARGETING returns the SHOPPING_RETARGETING field if non-nil, zero value otherwise.
 
 ### GetSHOPPING_RETARGETINGOk
 
-`func (o *TargetingSpec) GetSHOPPING_RETARGETINGOk() (*[]TargetingSpecSHOPPINGRETARGETING, bool)`
+`func (o *TargetingSpec) GetSHOPPING_RETARGETINGOk() (*[]TargetingSpecShoppingRetargeting, bool)`
 
 GetSHOPPING_RETARGETINGOk returns a tuple with the SHOPPING_RETARGETING field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSHOPPING_RETARGETING
 
-`func (o *TargetingSpec) SetSHOPPING_RETARGETING(v []TargetingSpecSHOPPINGRETARGETING)`
+`func (o *TargetingSpec) SetSHOPPING_RETARGETING(v []TargetingSpecShoppingRetargeting)`
 
 SetSHOPPING_RETARGETING sets SHOPPING_RETARGETING field to given value.
 
